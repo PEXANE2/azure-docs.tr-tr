@@ -1,22 +1,37 @@
 ---
-title: Yerleşik politika girişimleri listesi
-description: Azure İlkesi için yerleşik ilke girişimlerini listeleyin. Kategoriler, Düzenleyici Uyumluluk, Konuk Yapılandırması ve daha fazlasını içerir.
-ms.date: 01/31/2020
+title: Yerleşik ilke girişimleri listesi
+description: Azure Ilkesi için yerleşik ilke girişimlerini listeleyin. Kategoriler, mevzuata uyumluluğu, Konuk yapılandırma ve daha fazlasını içerir.
+ms.date: 04/24/2020
 ms.topic: sample
-ms.openlocfilehash: f98a5d611e807875390102d67efd1b0f0f262628
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: generated
+ms.openlocfilehash: 119a016431e399a94fbaffa527172005b9355f42
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239752"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146509"
 ---
-# <a name="azure-policy-built-in-initiative-definitions"></a>Azure İlkesi yerleşik girişim tanımları
+# <a name="azure-policy-built-in-initiative-definitions"></a>Azure Ilkesi yerleşik girişim tanımları
 
-Bu sayfa, Azure İlkesi yerleşik girişim tanımlarının bir dizinidir.
+Bu sayfa, Azure Ilkesi yerleşik girişim tanımlarının bir dizinidir.
 
-[Azure İlkesi GitHub repo'sundaki](https://github.com/Azure/azure-policy)girişim tanım kaynağına bağlı her yerleşik bağlantıdaki ad. **Yerleşikler, meta verilerdeki** **kategori** özelliğine göre gruplandırılır. Belirli bir **kategoriye**atlamak için sayfanın sağ tarafındaki menüyü kullanın. Aksi takdirde, tarayıcınızın arama özelliğini kullanmak için <kbd>Ctrl</kbd>-<kbd>F'yi</kbd> kullanın.
+Her yerleşik bir ad, [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda girişim tanımı kaynağına bağlanır. Yerleşik bileşenler, **meta verilerde** **Kategori** özelliğine göre gruplandırılır. Belirli bir **kategoriye**geçmek için sayfanın sağ tarafındaki menüyü kullanın. Aksi takdirde, tarayıcınızın arama özelliğini kullanmak için <kbd>CTRL</kbd>-<kbd>F</kbd> kullanın.
 
-[!INCLUDE [azure-policy-samples-policyset-index](../../../../includes/azure-policy-samples-policyset-index.md)]
+## <a name="guest-configuration"></a>Konuk Yapılandırması
+
+[!INCLUDE [azure-policy-samples-policysets-guest-configuration](../../../../includes/policy/samples/bycat/policysets-guest-configuration.md)]
+
+## <a name="monitoring"></a>İzleme
+
+[!INCLUDE [azure-policy-samples-policysets-monitoring](../../../../includes/policy/samples/bycat/policysets-monitoring.md)]
+
+## <a name="regulatory-compliance"></a>Mevzuata uyumluluğu
+
+[!INCLUDE [azure-policy-samples-policysets-regulatory-compliance](../../../../includes/policy/samples/bycat/policysets-regulatory-compliance.md)]
+
+## <a name="security-center"></a>Güvenlik Merkezi
+
+[!INCLUDE [azure-policy-samples-policysets-security-center](../../../../includes/policy/samples/bycat/policysets-security-center.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

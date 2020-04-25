@@ -5,29 +5,29 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 5c1cbebd671568d200321615ad34f52cb636c6c8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: f830d42ef09a60b1f9ced43250b24a68003d1e87
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878094"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128992"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) uygulamaları ölçeklendirme
 
-Öğreticileri izlediyseniz, AKS'de çalışan bir Kubernetes kümeniz var ve örnek Azure Oylama uygulamasını dağıttınız. Yedi öğreticinin beşinci parçası olan bu öğreticide, uygulamada pod’ları ölçeklendirirsiniz ve otomatik pod ölçeklendirmeyi denersiniz. Ayrıca, barındırılan iş yükleri için kümenin kapasitesini değiştirmek üzere Azure VM düğümlerinin sayısını ölçeklendirmeyi de öğrenirsiniz. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+Öğreticileri izlediyseniz, AKS 'de çalışan bir Kubernetes kümeniz vardır ve örnek Azure oylama uygulamasını dağıttınız. Yedi öğreticinin beşinci parçası olan bu öğreticide, uygulamada pod’ları ölçeklendirirsiniz ve otomatik pod ölçeklendirmeyi denersiniz. Ayrıca, barındırılan iş yükleri için kümenin kapasitesini değiştirmek üzere Azure VM düğümlerinin sayısını ölçeklendirmeyi de öğrenirsiniz. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Kubernetes düğümlerini ölçeklendirme
 > * Uygulamanızı çalıştıran Kubernetes podlarını el ile ölçeklendirme
 > * Uygulama ön ucunu çalıştıran otomatik ölçeklendirme podlarını yapılandırma
 
-Ek öğreticilerde, Azure Oy uygulaması yeni bir sürüme güncelleştirilir.
+Ek öğreticilerde, Azure oy uygulaması yeni bir sürüme güncelleştirilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Önceki öğreticilerde, bir uygulama bir kapsayıcı görüntüsüne paketlenmişti. Bu resim Azure Kapsayıcı Kayıt Defteri'ne yüklendi ve bir AKS kümesi oluşturdunuz. Uygulama daha sonra AKS kümesine dağıtıldı. Bu adımları yapmadıysanız ve takip etmek istiyorsanız, Tutorial 1 ile başlayın [– Kapsayıcı görüntüleri oluşturun.][aks-tutorial-prepare-app]
+Önceki öğreticilerde, bir uygulama bir kapsayıcı görüntüsüne paketlendi. Bu görüntü, Azure Container Registry yüklendi ve bir AKS kümesi oluşturdunuz. Uygulama daha sonra AKS kümesine dağıtıldı. Bu adımları tamamlamadıysanız ve takip etmek istiyorsanız, [öğretici 1 – kapsayıcı görüntüleri oluşturma][aks-tutorial-prepare-app]ile başlayın.
 
-Bu öğretici, Azure CLI sürümünü 2.0.53 veya daha sonra çalıştırdığınızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
+Bu öğreticide, Azure CLı sürüm 2.0.53 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
 ## <a name="manually-scale-pods"></a>Pod’ları el ile ölçeklendirme
 
@@ -51,7 +51,7 @@ azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-AKS ek bölmeleri oluşturduğunu doğrulamak için [kubectl get pods][kubectl-get] çalıştırın. Yaklaşık bir dakika sonra ek podlar kümenizde kullanılabilir duruma gelir:
+[Kubectl][kubectl-get] 'yi yeniden çalıştırarak, aks 'lerin ek düğüm oluşturduğunu doğrulayın. Yaklaşık bir dakika sonra ek podlar kümenizde kullanılabilir duruma gelir:
 
 ```console
 kubectl get pods
@@ -74,14 +74,14 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query kuberne
 ```
 
 > [!NOTE]
-> AKS kümeniz *1,10'dan*küçükse, Metrics Server otomatik olarak yüklenmez. Yüklemek, GitHub `metrics-server` repo'yu klonlamak ve örnek kaynak tanımlarını yükleyin. Bu YAML tanımlarının içeriğini görüntülemek için bkz. [Kuberenetes 1.8+ için Ölçüm Sunucusu][metrics-server-github].
+> AKS kümeniz *1,10*'den küçükse, ölçüm sunucusu otomatik olarak yüklenmez. Ölçüm sunucusu yükleme bildirimleri, ölçüm sunucusu sürümlerindeki `components.yaml` bir varlık olarak kullanılabilir, bu da bunları bir URL aracılığıyla yükleyebileceğiniz anlamına gelir. Bu YAML tanımları hakkında daha fazla bilgi edinmek için README 'ın [dağıtım][metrics-server-github] bölümüne bakın.
 > 
+> Örnek yükleme:
 > ```console
-> git clone https://github.com/kubernetes-incubator/metrics-server.git
-> kubectl create -f metrics-server/deploy/1.8+/
+> kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 > ```
 
-Otomatik ölçeklendiricikullanmak için, bölmelerinizdeki ve bölmenizdeki tüm kapsayıcıların CPU isteklerive sınırları tanımlı olması gerekir. `azure-vote-front` Dağıtımda, ön uç kapsayıcısı 0,5 CPU sınırıyla 0,25 CPU ister. Bu kaynak istekleri ve sınırları aşağıdaki örnek snippet gösterildiği gibi tanımlanır:
+Otomatik Scaler 'yi kullanmak için, yığınlarınızdaki tüm kapsayıcılar ve yığınlarınızın CPU istekleri ve sınırları tanımlı olmalıdır. `azure-vote-front` Dağıtımda, ön uç kapsayıcısı, 0,5 CPU sınırlaması Ile 0,25 CPU talep ediyor. Bu kaynak istekleri ve limitleri aşağıdaki örnek kod parçacığında gösterildiği gibi tanımlanmıştır:
 
 ```yaml
 resources:
@@ -91,13 +91,13 @@ resources:
      cpu: 500m
 ```
 
-Aşağıdaki örnek, *azure-vote-front* dağıtımındaki podların sayısını otomatik olarak ölçeklendirmek için [kubectl autoscale][kubectl-autoscale] komutunu kullanır. Tüm bölmelerde ortalama CPU kullanımı istenen kullanımlarının %50'sini aşarsa, otomatik ölçeklendirici bölmeleri en fazla *10* örneğe kadar artırır. Daha sonra dağıtım için en az *3* örnek tanımlanır:
+Aşağıdaki örnek, *azure-vote-front* dağıtımındaki podların sayısını otomatik olarak ölçeklendirmek için [kubectl autoscale][kubectl-autoscale] komutunu kullanır. Tüm FID 'ler genelinde ortalama CPU kullanımı, istenen kullanımlarının %50 ' ünü aşarsa, otomatik Scaler, Pod 'leri en fazla *10* örneğe kadar artırır. Dağıtım için en az *3* örnek tanımlanmıştır:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
-Alternatif olarak, otomatik ölçeklendirici davranışını ve kaynak sınırlarını tanımlamak için bir bildirim dosyası oluşturabilirsiniz. Aşağıda, bir manifesto dosyasının `azure-vote-hpa.yaml`bir örneği verilmiştir.
+Alternatif olarak, otomatik Scaler davranışını ve kaynak sınırlarını tanımlamak için bir bildirim dosyası da oluşturabilirsiniz. Aşağıda adlı `azure-vote-hpa.yaml`bir bildirim dosyası örneği verilmiştir.
 
 ```yaml
 apiVersion: autoscaling/v1
@@ -128,7 +128,7 @@ spec:
   targetCPUUtilizationPercentage: 50 # target CPU utilization
 ```
 
-Bildirim `kubectl apply` dosyasında tanımlanan otomatik ölçekleyiciyi uygulamak için `azure-vote-hpa.yaml` kullanın.
+Bildirim dosyasında tanımlanan otomatik Scaler 'ı uygulamak için kullanın `kubectl apply` `azure-vote-hpa.yaml`
 
 ```
 kubectl apply -f azure-vote-hpa.yaml
@@ -147,7 +147,7 @@ Birkaç dakika sonra Azure Vote uygulamasında en az yük ile, pod çoğaltmalar
 
 ## <a name="manually-scale-aks-nodes"></a>AKS düğümlerini el ile ölçeklendirme
 
-Önceki öğreticideki komutları kullanarak Kubernetes kümenizi oluşturduysanız, iki düğümü vardır. Kümenizde daha fazla veya daha az kapsayıcı iş yükü planlıyorsanız, düğüm sayısını el ile ayarlayabilirsiniz.
+Önceki öğreticideki komutları kullanarak Kubernetes kümenizi oluşturduysanız iki düğüm vardır. Kümenizde daha fazla veya daha az kapsayıcı iş yükü planlıyorsanız, düğüm sayısını el ile ayarlayabilirsiniz.
 
 Aşağıdaki örnek, *myAKSCluster* adlı Kubernetes kümesinde düğümlerin sayısını üçe yükseltir. Komutun tamamlanması birkaç dakika sürer.
 
@@ -155,7 +155,7 @@ Aşağıdaki örnek, *myAKSCluster* adlı Kubernetes kümesinde düğümlerin sa
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 ```
 
-Küme başarıyla ölçeklendiğinde, çıktı aşağıdaki örneğe benzer:
+Küme başarıyla ölçeklendirildiğinde, çıktı aşağıdaki örneğe benzer:
 
 ```
 "agentPoolProfiles": [
@@ -192,7 +192,7 @@ Kubernetes’te uygulama güncelleştirmeyi öğrenmek için sonraki öğreticiy
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-scale]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale
 [kubernetes-hpa]: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
-[metrics-server-github]: https://github.com/kubernetes-incubator/metrics-server/tree/master/deploy/1.8%2B
+[metrics-server-github]: https://github.com/kubernetes-sigs/metrics-server/blob/master/README.md#deployment
 [metrics-server]: https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/#metrics-server
 
 <!-- LINKS - internal -->

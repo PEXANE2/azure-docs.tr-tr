@@ -2,33 +2,30 @@
 title: Azure API Management’ta yayımlanmış API’leri izleme | Microsoft Docs
 description: Azure API Management’ta API’nizi izleme hakkında bilgi edinmek için bu öğreticideki adımları izleyin.
 services: api-management
-documentationcenter: ''
 author: vladvino
 manager: cfowler
-editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bee93cf84f4beda0684127102942447630219881
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238373"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128838"
 ---
 # <a name="monitor-published-apis"></a>Yayımlanan API’leri izleme
 
 Azure İzleyici ile Azure kaynaklarından gelen ölçüm ve günlükleri görselleştirebilir, sorgulayabilir, yönlendirebilir, arşivleyebilir ve bunlar üzerinde işlem uygulayabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Etkinlik günlüklerini görüntüleme
-> * Tanılama günlüklerini görüntüleme
+> * Kaynak günlüklerini görüntüle
 > * API'nizin ölçümlerini görüntüleme 
 > * API'niz yetkisiz çağrılar aldığında bir uyarı kuralı ayarlama
 
@@ -48,7 +45,7 @@ Aşağıdaki videoda, Azure İzleyici'yi kullanarak API Management’ı izleme i
 
 API Management, dakika başı yaydığı ölçümlerle API’lerinizin durumu hakkında neredeyse gerçek zamanlı görünürlük sağlar. Bazı kullanılabilir ölçümlerin özeti aşağıda verilmiştir:
 
-* Kapasite: APIM hizmetlerinizi yükseltme/düşürme konusunda karar vermenize yardımcı olur. Ölçüm, dakika başına yayılır ve raporlama zamanındaki ağ geçidi kapasitesini yansıtır. Ölçüm, CPU ile bellek kullanımı gibi ağ geçidi kaynakları temel alınarak hesaplanan 0-100 aralığında değişir.
+* Kapasite: APıM hizmetlerinizi yükseltme/eski sürüme düşürme hakkında kararlar almanıza yardımcı olur. Ölçüm, dakika başına yayılır ve raporlama zamanındaki ağ geçidi kapasitesini yansıtır. Ölçüm, CPU ile bellek kullanımı gibi ağ geçidi kaynakları temel alınarak hesaplanan 0-100 aralığında değişir.
 * Toplam Ağ Geçidi İsteği: dönem içindeki API isteklerinin sayısı. 
 * Başarılı Ağ Geçidi İstekleri: 304, 307 ve 301’den küçük herhangi bir kod (örneğin, 200) dahil olmak üzere başarılı HTTP yanıt kodları almış API isteklerinin sayısı.
 * Başarısız Ağ Geçidi İstekleri: 400 ve 500’den büyük herhangi bir kod dahil olmak üzere hatalı HTTP yanıt kodları almış API isteklerinin sayısı.
@@ -63,9 +60,9 @@ API Management, dakika başı yaydığı ölçümlerle API’lerinizin durumu ha
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-1. Açılan listeden ilgilendiğiniz ölçümleri seçin. Örneğin, **İstekler**. 
+1. Açılan listeden ilgilendiğiniz ölçümleri seçin. Örneğin, **istekler**. 
 1. Grafikte, API çağrılarının toplam sayısı gösterilmektedir.
-1. Grafik, **İstekler** ölçümünün boyutları kullanılarak filtrelenebilir. Örneğin, Ekle **filtresine**tıklayın, **Arka Uç Yanıt Kodu'nu**seçin, değer olarak 500 girin. Grafik, API arka ucunda başarısız olan isteklerin sayısını gösterir.   
+1. Grafik, **istek** ölçümünün boyutları kullanılarak filtrelenebilir. Örneğin, **Filtre Ekle**' ye tıklayın, **arka uç yanıt kodu**' nu seçin, değer olarak 500 girin. Artık grafik, API arka ucunda başarısız olan isteklerin sayısını gösterir.   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Yetkisiz istekler için uyarı kuralı ayarlama
 
@@ -77,28 +74,28 @@ API Management, dakika başı yaydığı ölçümlerle API’lerinizin durumu ha
 
 Uyarıları yapılandırmak için:
 
-1. Sayfanın altındaki menü çubuğundan **Uyarılar'ı** seçin.
+1. Sayfanın alt kısmındaki menü çubuğundan **Uyarılar** ' ı seçin.
 
     ![alerts](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. Bu uyarı için **Yeni uyarı kuralını** tıklatın.
-3. Koşul **Ekle'ye**tıklayın.
-4. Sinyal türüaçılırken **Ölçümler'i** seçin.
-5. İzlenecek sinyal olarak **Yetkisiz Ağ Geçidi İsteği'ni** seçin.
+2. Bu uyarı için **Yeni bir uyarı kuralına** tıklayın.
+3. **Koşul Ekle**' ye tıklayın.
+4. Sinyal türü açılan kutusunda **ölçümler** ' i seçin.
+5. İzlenecek sinyal olarak **yetkisiz ağ geçidi isteği** ' ni seçin.
 
     ![alerts](./media/api-management-azure-monitor/signal-type.png)
 
-6. **Yapılsinyal mantığı** görünümünde, uyarının tetiklendiği bir eşik belirtin ve **Bitti'yi**tıklatın.
+6. **Sinyal mantığını Yapılandır** görünümünde, uyarının tetiklenme sonrasında bir eşik belirtin ve **bitti**' ye tıklayın.
 
     ![alerts](./media/api-management-azure-monitor/threshold.png)
 
-7. Varolan bir Eylem Grubu seçin veya yeni bir grup oluşturun. Aşağıdaki örnekte, yöneticilere bir e-posta gönderilecektir. 
+7. Mevcut bir eylem grubu seçin veya yeni bir tane oluşturun. Aşağıdaki örnekte, yöneticilere bir e-posta gönderilir. 
 
     ![alerts](./media/api-management-azure-monitor/action-details.png)
 
-8. Bir ad, uyarı kuralının açıklaması sağlayın ve önem düzeyini seçin. 
-9. **Uyarı kuralını oluştur'a**basın.
-10. Şimdi, API anahtarı olmadan Konferans API'sini aramayı deneyin. Uyarı tetiklenecek ve yöneticilere e-posta gönderilecektir. 
+8. Uyarı kuralının adını, açıklamasını girin ve önem derecesini seçin. 
+9. **Uyarı kuralı oluştur**' a basın.
+10. Şimdi, bir API anahtarı olmadan konferans API 'sini çağırmayı deneyin. Uyarı tetiklenir ve e-posta yöneticilere gönderilir. 
 
 ## <a name="activity-logs"></a>Etkinlik Günlükleri
 
@@ -120,20 +117,20 @@ Etkinlik günlüklerini görüntülemek için:
 
 3. İstenen filtre kapsamını seçin ve **Uygula**’ya tıklayın.
 
-## <a name="diagnostic-logs"></a>Tanılama Günlükleri
+## <a name="resource-logs"></a>Kaynak günlükleri
 
-Tanılama günlükleri, denetim ve sorun giderme konularında önemli işlem ve hatalar hakkında zengin bilgiler sağlar. Tanılama günlükleri, etkinlik günlüklerinden farklıdır. Etkinlik günlükleri, Azure kaynaklarınız üzerinde gerçekleştirilen işlemler hakkında bilgi sağlar. Tanılama günlükleri, kaynağınızın kendisi tarafından gerçekleştirilen işlemler hakkında bilgi sağlar.
+Kaynak günlükleri, denetim ve sorun giderme amacıyla önemli işlemler ve hatalar hakkında zengin bilgiler sağlar. Kaynak günlükleri etkinlik günlüklerinden farklıdır. Etkinlik günlükleri, Azure kaynaklarınız üzerinde gerçekleştirilen işlemlere yönelik öngörüler sağlar. Kaynak günlükleri, kaynağınızın gerçekleştirdiği işlemlere ilişkin öngörüler sağlar.
 
-Tanılama günlüklerini yapılandırmak için:
+Kaynak günlüklerini yapılandırmak için:
 
 1. APIM hizmet örneğinizi seçin.
 2. **Tanılama ayarları**'na tıklayın.
 
-    ![tanılama günlükleri](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
+    ![Kaynak günlükleri](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. **Tanılamayı aç**’a tıklayın. Tanılama günlüklerini ölçümlerle birlikte bir depolama hesabına arşivleyebilir, bir Etkinlik Hub'ına aktarabilir veya Azure Monitor günlüklerine gönderebilirsiniz. 
+3. **Tanılamayı aç**’a tıklayın. Kaynak günlüklerini, ölçümlerle birlikte bir depolama hesabına arşivleyebilir, bunları bir olay hub 'ına bağlayabilir veya Azure Izleyici günlüklerine gönderebilirsiniz. 
 
-API Management şu anda her bir girdi aşağıdaki şemayı içerecek şekilde tek tek API isteğiyle ilgili tanılama günlükleri (saatlik olarak toplanır) sağlar:
+API Management Şu anda her bir girdiyle aşağıdaki şemaya sahip her bir API isteği hakkında kaynak günlükleri (toplu olarak saatlik) sağlar:
 
 ```json
 {  
@@ -183,15 +180,15 @@ API Management şu anda her bir girdi aşağıdaki şemayı içerecek şekilde t
 | Özellik  | Tür | Açıklama |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | boole | HTTP isteği, 2xx veya 3xx aralığı içinde yanıt durum koduyla tamamlandıysa true olur |
-| time | date-time | Ağ geçidi nin isteği işlemeye başladığı zaman damgası |
+| time | date-time | Ağ geçidinin başladığı zaman zaman damgası isteği işleme |
 | operationName | string | 'Microsoft.ApiManagement/GatewayLogs' sabit değeri |
 | category | string | 'GatewayLogs' sabit değeri |
-| durationMs | integer | Tam olarak gönderilen yanıta kadar istek alındığı andan milisaniye sayısı. ClienTime, cacheTime ve backendTime içerir. |
+| durationMs | integer | Kısa süre sonra gönderilen istek sayısı dolduğunda, ağ geçidi tarafından alınan istek süresi (milisaniye). ClienTime, cacheTime ve backendTime bilgilerini içerir. |
 | callerIpAddress | string | İlk Ağ Geçidi çağıranın (bir aracı olabilir) IP adresi |
 | correlationId | string | API Management tarafından atanmış benzersiz http isteği tanımlayıcısı |
 | location | string | İsteği işleyen Ağ Geçidinin bulunduğu Azure bölgesinin adı |
 | httpStatusCodeCategory | string | Http yanıtı durum kodunun kategorisi: Başarılı (301 veya daha küçük ya da 304 ya da 307), Yetkisiz (401, 403, 429), Hatalı (400, 500 ve 600 arası), Diğer |
-| resourceId | string | API Yönetimi kaynağının kimliği /ABONELIKLER/\<abonelik\<>/KAYNAK GRUPLARI/ kaynak grubu>/Providers/MICROSOFT. APIMANAGEMENT/SERVICE/\<isim> |
+| resourceId | string | /SUBSCRIPTIONS/\<aboneliğinin>/RESOURCEGROUPS/\<Resource-Group>/providers/microsoftAPI Management kaynağının kimliği. ICLAIMANA/HIZMET/\<ad> |
 | properties | object | Geçerli isteğin özellikleri |
 | method | string | Gelen isteğin HTTP yöntemi |
 | url | string | Gelen isteğin URL’si |
@@ -214,7 +211,7 @@ API Management şu anda her bir girdi aşağıdaki şemayı içerecek şekilde t
 | apimSubscriptionId | string | Geçerli istek için abonelik varlığı tanımlayıcısı | 
 | backendId | string | Geçerli istek için arka uç varlığı tanımlayıcısı | 
 | LastError | object | Son istek işleme hatası | 
-| elapsed | integer | Ağ geçidinin isteği aldığı gün ile hatanın oluştuğu an arasında geçen milisaniye sayısı | 
+| elapsed | integer | Ağ geçidinin isteği aldığı ve hatanın gerçekleştiği sırada geçen milisaniye sayısı | 
 | source | string | İlke veya işleme iç işleyicisinin adı hataya neden oldu | 
 | scope | string | Hataya neden olan ilkeyi içeren ilke belgesinin kapsamı | 
 | section | string | Hataya neden olan ilkeyi içeren ilke belgesinin bölümü | 
@@ -227,7 +224,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
 > * Etkinlik günlüklerini görüntüleme
-> * Tanılama günlüklerini görüntüleme
+> * Kaynak günlüklerini görüntüle
 > * API'nizin ölçümlerini görüntüleme
 > * API'niz yetkisiz çağrılar aldığında bir uyarı kuralı ayarlama
 

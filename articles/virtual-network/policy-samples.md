@@ -1,6 +1,6 @@
 ---
 title: İlke şablonu örnekleri | Microsoft Docs
-description: Sanal Ağ için Azure ilke şablonu örnekleri.
+description: Sanal ağ için Azure Ilke şablonu örnekleri.
 services: virtual-network
 documentationcenter: ''
 author: KumudD
@@ -16,25 +16,25 @@ ms.workload: ''
 ms.date: 05/02/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: db10520508eb0b216a59cc643394ab27fd5ffa69
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7d8b3852f31965099d8a46d2e095be0522c7e763
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77169894"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144522"
 ---
-# <a name="azure-policy-sample-built-ins-for-virtual-network"></a>Sanal ağ için Azure ilke örnekleri yerleşikleri
+# <a name="azure-policy-sample-built-ins-for-virtual-network"></a>Sanal ağ için Azure Ilke örneği yerleşik bileşenleri
 
-Aşağıdaki tabloda [Azure İlkesi](../governance/policy/overview.md) örneklerine bağlantılar bulunmaktadır. Örnekler, [Azure İlkesi örnek deposunda](https://github.com/Azure/azure-policy) bulunur.
+Aşağıdaki tabloda [Azure ilke](../governance/policy/overview.md) örnekleri bağlantıları yer almaktadır. Örnekler, [Azure İlkesi örnek deposunda](https://github.com/Azure/azure-policy) bulunur.
 
 ## <a name="network"></a>Ağ
 
-[!INCLUDE [azure-policy-samples-policies-network](../../includes/azure-policy-samples-policies-network.md)]
+[!INCLUDE [azure-policy-samples-policies-network](../../includes/policy/samples/bycat/policies-network.md)]
 
 ## <a name="tags"></a>Etiketler
 
-[!INCLUDE [azure-policy-samples-policies-tags](../../includes/azure-policy-samples-policies-tags.md)]
+[!INCLUDE [azure-policy-samples-policies-tags](../../includes/policy/samples/bycat/policies-tags.md)]
 
 ## <a name="general"></a>Genel
 
-[!INCLUDE [azure-policy-samples-policies-general](../../includes/azure-policy-samples-policies-general.md)]
+[!INCLUDE [azure-policy-samples-policies-general](../../includes/policy/samples/bycat/policies-general.md)]

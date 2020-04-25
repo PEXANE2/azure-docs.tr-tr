@@ -1,180 +1,265 @@
 ---
-title: Power Apps'tan Azure Bilişsel Arama nasıl sorgulanır?
+title: "Öğretici: Power Apps 'ten sorgu"
 titleSuffix: Azure Cognitive Search
-description: Bilişsel Arama'ya özel bağlayıcı nın nasıl oluşturulması ve Bir Güç Uygulaması'ndan nasıl görselleştirilen hakkında adım adım kılavuz
+description: Azure Bilişsel Arama dizinine bağlanan, sorgular gönderen ve sonuçları işleyen bir Power App oluşturma hakkında adım adım yönergeler.
 author: luiscabrer
 manager: eladz
 ms.author: luisca
 ms.service: cognitive-search
 ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: c246f8652227a5ad2c0798880e530d6039cdeea8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.topic: tutorial
+ms.date: 04/25/2020
+ms.openlocfilehash: eafd0ced64567ec7b51ff0f8aac19668343867ea
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385121"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129600"
 ---
-# <a name="how-to-query-a-cognitive-search-index-from-power-apps"></a>Power Apps'tan Bilişsel Arama dizini nasıl sorgulanır?
+# <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Öğretici: Power Apps 'ten bir Bilişsel Arama dizini sorgulama
 
-Bu belge, arama sonuçlarınızı bir arama dizininden alabilmeniz için Power Apps özel bağlayıcısı nasıl oluşturulabileceğinizi gösterir. Ayrıca, bir arama sorgusunun nasıl yayınlanır ve bir Power App'in sonuçlarını nasıl görselleştirin. 
+Azure Bilişsel Arama 'de aranabilir içeriğiniz için özel bir uygulama oluşturmak üzere Power Apps 'in hızlı uygulama geliştirme ortamından yararlanın.
+
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+
+> [!div class="checklist"]
+> * Azure Bilişsel Arama bağlanma
+> * Sorgu isteği ayarlama
+> * Bir tuval uygulamasında sonuçları görselleştirin
+
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) açın.
 
 ## <a name="prerequisites"></a>Ön koşullar
-*    Özel bağlayıcılar oluşturma özelliğiyle Power Apps hesabına erişim.
-*    Azure Arama Dizini oluşturduğunuzu varsayıyoruz.
 
-## <a name="create-a-custom-connector-to-query-azure-search"></a>Azure Arama sorgusu için özel bir bağlayıcı oluşturma
+* [Power Apps hesabı](http://make.powerapps.com)
 
-Azure Bilişsel Arama sonuçlarını gösteren bir PowerApp'a sahip olmanın iki ana adımı vardır. İlk olarak, arama dizini sorgulayabilir bir bağlayıcı oluşturalım. Bir [sonraki bölümde,](#visualize-results-from-the-custom-connector) konektör tarafından döndürülen sonuçları görselleştirmek için Power Apps uygulamanızı güncelleştireceğiz.
+* [Oteller-örnek Dizin](search-get-started-portal.md)
 
-1. [make.powerapps.com](http://make.powerapps.com) gidin ve **Oturum Açın.**
+* [API anahtarını sorgula](search-security-api-keys.md#find-existing-keys)
 
-1. **Veri** > **Özel Bağlayıcıları** Ara
+## <a name="1---create-a-custom-connector"></a>1-özel bağlayıcı oluşturma
+
+Power Apps 'teki bir bağlayıcı, veri kaynağı bağlantısıdır. Bu adımda, buluttaki bir arama dizinine bağlanmak için özel bir bağlayıcı oluşturacaksınız.
+
+1. Power Apps ['Te oturum açın](http://make.powerapps.com) .
+
+1. Sol tarafta, **veri** > **özel bağlayıcıları**' nı genişletin.
  
-    :::image type="content" source="./media/search-howto-powerapps/1-2-custom-connector.png" alt-text="Özel konektör menüsü" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-2-custom-connector.png" alt-text="Özel bağlayıcı menüsü" border="true":::
 
-1. **+ Yeni özel bağlayıcıyı** tıklatın ve sonra **boştan Oluştur'u**seçin.
+1. **+ Yeni özel bağlayıcı**' ı seçin ve **boş oluştur**' u seçin.
 
-    :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="Boş menüden oluşturma" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-3-create-blank.png" alt-text="Boş menüden oluştur" border="true":::
 
-1. Özel konektörünüze bir ad verin. (diğer bir şey, *AzureSearchQuery*), ve sonra **Devam et'i**tıklatın. Bu, yeni bağlayıcınızı oluşturmak için bir sihirbaz getirir.
+1. Özel bağlayıcınıza bir ad verin (örneğin, *AzureSearchQuery*) ve ardından **devam**' a tıklayın.
 
-1. Bilgileri Genel Sayfaya girin.
+1. Genel sayfasına bilgi girin:
 
-    - Simge arka plan rengi (örneğin, #007ee5)
-    - Açıklama (örneğin, "Azure Bilişsel Arama'nın bağlayıcısı")
-    - Ana Bilgisayar'da arama hizmeti URL'nizi girmeniz `<yourservicename>.search.windows.net`gerekir (örneğin, )
-    - Temel URL için "/"
-    
-    :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="Genel bilgi diyaloğu" border="true":::
+   * Simge arka plan rengi (örneğin, #007ee5)
+   * Açıklama (örneğin, "Azure 'a bağlayıcı Bilişsel Arama")
+   * Konakta, arama hizmeti URL 'nizi (gibi `<yourservicename>.search.windows.net`) girmeniz gerekir
+   * Taban URL 'SI için, "/" girmeniz yeterlidir.
 
-1. Güvenlik Sayfasında, *API Anahtarını* **Kimlik Doğrulama Türü**olarak ayarlayın, parametre etiketini ve parametre ad alanlarını *api anahtarı*olarak ayarlayın. **Parametre konumu**için, aşağıda gösterildiği gibi *Üstbilgi'yi* seçin.
- 
+    :::image type="content" source="./media/search-howto-powerapps/1-5-general-info.png" alt-text="Genel bilgiler iletişim kutusu" border="true":::
+
+1. Güvenlik sayfasında, *API anahtarını* **kimlik doğrulama türü**olarak ayarlayın, hem parametre etiketini hem de parametre adını *API anahtarı*olarak ayarlayın. **Parametre konumu**için aşağıda gösterildiği gibi *üst bilgi* ' yi seçin.
+
     :::image type="content" source="./media/search-howto-powerapps/1-6-authentication-type.png" alt-text="Kimlik doğrulama türü seçeneği" border="true":::
 
-1. Tanımlar Sayfasında, dizini sorgulayacak bir eylem oluşturmak için **+ Yeni Eylem'i** seçin. Özet ve işlem kimliği adı için "Sorgu" değerini girin. *"Arama dizinini sorgular"* gibi bir açıklama girin.
- 
+1. Tanımlar sayfasında, dizinde sorgulama yapılacak bir eylem oluşturmak için **+ yeni eylem** ' i seçin. Özet için "Query" değerini ve işlem KIMLIĞI adını girin. *"Arama dizinini sorgulama"* gibi bir açıklama girin.
+
     :::image type="content" source="./media/search-howto-powerapps/1-7-new-action.png" alt-text="Yeni eylem seçenekleri" border="true":::
 
+1. Aşağı kaydırın. Istekler ' de, arama hizmetinize bir sorgu isteği yapılandırmak için **örnekten + Içeri aktar** ' ı seçin:
 
-1. Parametreleri ve üstbilgileri tanımlamak için **örnekten + İçe Aktar** düğmesine basın. Ardından, sorgu isteğini tanımlarsınız.  
+   * Fiili seçin`GET`
 
-    * Fiili seçin`GET`
-    * URL için arama dizininiz için örnek bir sorgu girin, örneğin:
-       
-    >https://yoursearchservicename.search.windows.net/indexes/yourindexname/docs?search=*&api-version=2019-05-06-Önizleme
-    
+   * URL için, arama dizininiz için bir örnek sorgu girin (`search=*` tüm belgeler ' i döndürür `$select=` , alanlar seçmenizi sağlar). API sürümü gereklidir. Tam olarak belirtilen URL şöyle görünebilir:`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2019-05-06`
 
-    **Power Apps** sorguparametrelerini ayıklamak için sözdizimini kullanır. Arama alanını açıkça tanımladığımıza dikkat edin. 
+   * Üst bilgiler için yazın `Content-Type`. 
 
-    :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Örnekten içeri aktarma" border="false":::
+     **Power Apps** , sorgudan parametreleri ayıklamak için söz dizimini kullanır. Arama alanını açık bir şekilde tanımladığımızda dikkat edin. 
 
-1.  İstek iletişim kutusunu otomatik olarak doldurmak için **İçe Aktar'ı** tıklatın.
+       :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Örnekten içeri aktarma" border="true":::
 
-    :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Örnek diyalogdan alma" border="false":::
+1. Isteği otomatik olarak doldurmanız için **Içeri aktar** ' a tıklayın. **..** . Öğesine tıklayarak parametre meta verilerini ayarlamayı doldurun. Her parametrenin yanındaki simge. Her bir parametre güncelleştirmesinden sonra Istek sayfasına dönmek için **geri** ' ye tıklayın.
 
+   :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Örnekten Al iletişim kutusu" border="true":::
 
-1. Parametre meta verilerini tıklatarak tam ayarı **...** parametrelerin her birinin yanındaki sembolü.
+1. *Arama*için `*` : **varsayılan değer**olarak ayarlayın, **gerekli** olarak ayarlayın ve **görünürlüğü** *hiçbiri* *olarak ayarlayın* . 
 
-    - Arama *search*için `*` : **Varsayılan değer**olarak ayarlayın, *yanlış* **olarak** ayarlayın ve **görünürlüğü** *hiçbirine*ayarlayın. 
+    :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Arama parametresi meta verileri" border="true":::
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Parametre meta verilerini arama" border="true":::
+1. *Seçim*için: `HotelName,Description,Address/City` **varsayılan değer**olarak ayarla, **gerekli** ayarını *false*olarak ayarlayın ve **görünürlüğü** *hiçbiri*olarak ayarlayın.  
 
-    - *api-version*için `2019-05-06-Preview` : **Varsayılan değer**olarak ayarlayın, **görünürlüğü** dahili olarak ayarlayın ve *True*için **gerekli** ayarlayın.  
+    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Sürüm parametresi meta verileri" border="true":::
+
+1. *Api sürümü*için `2019-05-06` : **varsayılan değer** **olarak ayarlayın,** *true*olarak ayarlayın ve **görünürlüğü** *iç*olarak ayarlayın.  
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Sürüm parametresi meta verileri" border="true":::
 
-    - Benzer şekilde, *api-key*için , **gerektiği**gibi ayarlayın , *dahili* **görünürlük**ile . Varsayılan **değer**olarak arama hizmeti API anahtarınızı girin.
-    
-    Bu değişiklikleri yaptıktan **sonra, Swagger Düzenleyici** görünümüne geçiş yapın. Parametreler bölümünde aşağıdaki yapılandırmayı görmeniz gerekir:    
+1. *Içerik türü*için: olarak `application/json`ayarlayın.
 
-    ```
-          parameters:
-          - {name: search, in: query, required: false, type: string, default: '*'}
-          - {name: api-version, in: query, required: true, type: string, default: 2019-05-06-Preview,
-            x-ms-visibility: internal}
-          - {name: api-key, in: header, required: true, type: string, default: YOURKEYGOESHERE,
-            x-ms-visibility: internal}
+1. Bu değişiklikleri yaptıktan sonra, **Swagger düzenleyici** görünümüne geçiş yapın. Parametreler bölümünde aşağıdaki yapılandırmayı görmeniz gerekir:
+
+    ```JSON
+    parameters:
+      - {name: search, in: query, required: false, type: string, default: '*'}
+      - {name: $select, in: query, required: false, type: string, default: 'HotelName,Description,Address/City'}
+      - {name: api-version, in: query, required: true, type: string, default: '2019-05-06',
+        x-ms-visibility: internal}
+      - {name: Content-Type, in: header, required: false, type: string}
     ```
 
-1. Yanıt bölümünde **"Varsayılan yanıt ekle"** seçeneğini tıklayın. Bu çok önemlidir, çünkü **Power Apps'ın** yanıtın şemasını anlamalarına yardımcı olur. Örnek bir yanıt yapıştırın.
+1. 3 ' e geri dönün **. Adım iste** ve yanıt bölümüne kaydır. **"Varsayılan yanıt Ekle"** ye tıklayın. Bu kritik öneme sahiptir çünkü Power Apps 'in yanıt şemasını anlamasına yardımcı olur. 
+
+1. Örnek bir yanıt yapıştırın. Örnek bir yanıtı yakalamanın kolay bir yolu Azure portal arama Gezgini ' dir. Arama Gezgini ' nde, istek için aynı sorguyu girmeniz gerekir, ancak sonuçları yalnızca iki belgeyle sınırlamak için **$Top = 2** ' yi ekleyin:: `search=*&$select=HotelName,Description,Address/City&$top=2`. 
+
+   Power Apps 'in yalnızca şemayı algılaması için bazı sonuçlara ihtiyacı vardır.
+
+    ```JSON
+    {
+        "@odata.context": "https://mydemo.search.windows.net/indexes('hotels-sample-index')/$metadata#docs(*)",
+        "value": [
+            {
+                "@search.score": 1,
+                "HotelName": "Arcadia Resort & Restaurant",
+                "Description": "The largest year-round resort in the area offering more of everything for your vacation – at the best value!  What can you enjoy while at the resort, aside from the mile-long sandy beaches of the lake? Check out our activities sure to excite both young and young-at-heart guests. We have it all, including being named “Property of the Year” and a “Top Ten Resort” by top publications.",
+                "Address": {
+                    "City": "Seattle"
+                }
+            },
+            {
+                "@search.score": 1,
+                "HotelName": "Travel Resort",
+                "Description": "The Best Gaming Resort in the area.  With elegant rooms & suites, pool, cabanas, spa, brewery & world-class gaming.  This is the best place to play, stay & dine.",
+                "Address": {
+                    "City": "Albuquerque"
+                }
+            }
+        ]
+    }
+    ```
 
     > [!TIP] 
-    > Girebileceğiniz JSON yanıtı için bir karakter sınırı vardır, bu nedenle JSON'u yapıştırmadan önce basitleştirmek isteyebilirsiniz. Yanıtın önemli yönü şeması/biçimi. Örnek yanıttaki gerçek değerler daha az önemlidir ve karakter sayısını azaltmak için basitleştirilmiş olabilir.
-    
+    > Girebileceğiniz JSON yanıtı için bir karakter sınırı vardır. bu nedenle, bunu yapıştırmadan önce JSON 'ı basitleştirmek isteyebilirsiniz. Yanıtın şeması ve biçimi değerlerden daha önemlidir. Örneğin, açıklama alanı yalnızca ilk cümleyi basitleşmelidir.
 
-1.    Test etmeden önce ekranın sağ üst kısmındaki **Oluştur bağlayıcısı** düğmesini tıklatın.
+1. Sağ üst köşedeki **bağlayıcı oluştur** ' a tıklayın.
 
-1.  Test Sayfasında **+ Yeni Bağlantı'yı**tıklatın ve *api tuşu*için değer olarak arama hizmeti sorgu anahtarınızı girin.
+## <a name="2---test-the-connection"></a>2-bağlantıyı test etme
 
-    Bu adım sizi sihirbazın dışına ve Bağlantılar sayfasına götürebilir. Bağlantıyı gerçekten sınamak için Özel Bağlantılar düzenleyicisine geri dönmek isteyebilirsiniz. Özel **Bağlayıcı'ya** gidin > Yeni oluşturulan Bağlayıcıyı seçin > *...* > **Özellikleri Görüntüle** > **4.** > ** **Test sayfasına geri dönmek için test edin.
+Bağlayıcı ilk oluşturulduğunda, test etmek için özel bağlayıcılar listesinden yeniden açmanız gerekir. Daha sonra, ek güncelleştirmeler yaparsanız, sihirbaz içinden test edebilirsiniz.
 
-1.    Şimdi dizininizden sonuç aldığınızdan emin olmak için **Test işlemini** tıklatın. Başarılı olduysanız 200 durumu görmeniz gerekir ve yanıtın gövdesinde arama sonuçlarınızı açıklayan JSON'u görmeniz gerekir.
+Bu görev için bir [sorgu API 'si anahtarına](search-security-api-keys.md#find-existing-keys) ihtiyacınız olacak. Bir bağlantı her oluşturulduğunda, bir uygulamaya bir test çalıştırması veya dahil edilmesi durumunda bağlayıcı, Azure Bilişsel Arama bağlanmak için kullanılan sorgu API anahtarına ihtiyaç duyuyor.
 
+1. En solda **özel bağlayıcılar**' a tıklayın.
 
+1. Bağlayıcıyı ada göre ara (Bu öğreticide, "AzureSearchQuery").
 
+1. Bağlayıcıyı seçin, eylemler listesini genişletin ve **özellikleri görüntüle**' yi seçin.
 
-## <a name="visualize-results-from-the-custom-connector"></a>Özel konektörden sonuçları görselleştirin
-Bu öğreticinin amacı, güç uygulamaları yla nasıl süslü kullanıcı deneyimleri oluşturacağınızı size göstermemektir, bu nedenle Kullanıcı Bira düzeni minimalist olacaktır. Arama kutusu, arama düğmesi içeren bir PowerApp oluşturalım ve sonuçları galeri kontrolünde görüntüleyelim.  PowerApp, Azure Arama'dan veri almak için yakın zamanda oluşturulan özel bağlayıcımıza bağlanır.
+    :::image type="content" source="./media/search-howto-powerapps/1-11-1-test-connector.png" alt-text="Özellikleri Görüntüle" border="true":::
 
-1. Yeni Power App oluşturun. **Uygulamalar** bölümüne gidin, **+ Yeni uygulamaya**tıklayın ve **Tuval'i**seçin.
+1. Sağ üst köşedeki **Düzenle** ' yi seçin.
+
+1. 4 seçeneğini belirleyin **. **Test sayfasını açmak için test edin.
+
+1. Test Işleminde **+ Yeni bağlantı**' ya tıklayın.
+
+1. Bir sorgu API anahtarı girin. Bu, bir dizine salt okuma erişimi için bir Azure Bilişsel Arama sorgusudur. Anahtarı Azure portal [bulabilirsiniz](search-security-api-keys.md#find-existing-keys) . 
+
+1. Işlemler ' de **test işlemi** düğmesine tıklayın. Başarılı olursanız, 200 durumunda bir durum görmeniz ve yanıt gövdesinde arama sonuçlarını açıklayan JSON görmeniz gerekir.
+
+    :::image type="content" source="./media/search-howto-powerapps/1-11-2-test-connector.png" alt-text="JSON yanıtı" border="true":::
+
+## <a name="3---visualize-results"></a>3-sonuçları görselleştirin
+
+Bu adımda, sonuçlar için bir arama kutusuyla, bir arama düğmesiyle ve bir görüntüleme alanına sahip bir Power App oluşturun. Power App, Azure Search verileri almak için son oluşturulan özel bağlayıcıya bağlanır.
+
+1. Sol tarafta **uygulamalar** > **+ Yeni uygulama** > **tuvali**' ni genişletin.
 
     :::image type="content" source="./media/search-howto-powerapps/2-1-create-canvas.png" alt-text="Tuval uygulaması oluşturma" border="true":::
 
-1. İstediğiniz uygulama türünü seçin. Bu öğretici için **Telefon Düzeni**ile boş bir **uygulama** oluşturun. **Power Apps Studio** görünecektir.
+1. Uygulama türünü seçin. Bu öğreticide, **Telefon düzeninde** **boş bir uygulama** oluşturun. **Power Apps Studio** görüntülenir.
 
-1. Stüdyoya girdiğimizde **Veri Kaynakları** sekmesini seçin ve yeni oluşturduğunuz yeni Bağlayıcı'yı tıklatın. Bizim durumumuzda, bu *AzureSearchQuery*denir. **Bağlantı ekle'yi**tıklatın.
+1. Studio 'da bir kez **veri kaynakları** sekmesini seçin ve yeni oluşturduğunuz bağlayıcıya tıklayın. Bu durumda, *AzureSearchQuery*olarak adlandırılır. **Bağlantı ekle**' ye tıklayın.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-3-connect-connector.png" alt-text="connector'u bağlayın" border="true":::
+   Sorgu API anahtarını girin.
 
-    *AzureSearchQuery* artık uygulamanızdan kullanılabilecek bir veri kaynağıdır.
-    
-1. Formumuza birkaç denetim ekleyebilmemiz için **Ekle sekmesine**gidin.
+    :::image type="content" source="./media/search-howto-powerapps/2-3-connect-connector.png" alt-text="bağlayıcı bağlama" border="true":::
 
-    :::image type="content" source="./media/search-howto-powerapps/2-4-add-controls.png" alt-text="Denetim ekleme" border="true":::
+    Artık *AzureSearchQuery* , uygulamanızdan kullanılabilecek bir veri kaynağıdır.
 
-1.  Aşağıdaki öğeleri ekleyin:
-    -   "Sorgu:" değerine sahip bir Metin Etiketi
-    -   Metin Giriş öğesi *(txtQuery*deyin, varsayılan değer: "*")
-    -   "Arama" metninin yer alan bir düğmesi 
-    -   Dikey Galeri adlı *(galeriSonuçları*deyin)
-    
-    Formunuz şuna benzer:
+1. **Ekle sekmesinde**tuvale birkaç denetim ekleyin.
 
-    :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="Düzeni denetler" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/2-4-add-controls.png" alt-text="Denetimleri Ekle" border="true":::
 
-1. **Arama düğmesini** sorgulamak için düğmeyi seçin ve **OnSelect'te**gerçekleştirmek için aşağıdaki eylemi yapıştırın:
+1. Aşağıdaki öğeleri ekleyin:
+
+   * "Query:" değerine sahip bir metin etiketi
+   * Bir metin girişi öğesi ( *Txtquery*çağırın, varsayılan değer: "*")
+   * "Ara" metnini içeren bir düğme 
+   * Dikey bir galeri çağrıldı (Bu, bir *Gallerresults*çağrısı yapın)
+
+    Tuval şuna benzer görünmelidir:
+
+    :::image type="content" source="./media/search-howto-powerapps/2-5-controls-layout.png" alt-text="Denetim düzeni" border="true":::
+
+1. **Arama düğmesine** bir sorgu vermesini sağlamak için, aşağıdaki eylemi **OnSelect**içine yapıştırın:
 
     ```
     If(!IsBlank(txtQuery.Text),
-        ClearCollect(azResult, AzureSearchQuery.Get({search: txtQuery.Text}).value))
+        ClearCollect(azResult, AzureSearchQuery.Query({search: txtQuery.Text}).value))
     ```
 
-    :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Düğme OnSelect" border="true":::
- 
-    Bu eylem, *txtQuery* metin kutusundaki metni sorgu terimi olarak kullanarak, arama sorgusunun sonucuyla birlikte *azResult* adlı yeni bir koleksiyonu güncelleştirmek için düğmeye neden olur.
-    
-1.  Bir sonraki adım olarak, oluşturduğumuz dikey galeriyi *azResult* koleksiyonuna bağlayacaktır. Galeri denetimini seçin ve özellikler bölmesinde aşağıdaki eylemleri gerçekleştirin.
+   Aşağıdaki ekran görüntüsünde, **OnSelect** eyleminin formül çubuğu gösterilmektedir.
 
-    -  **DataSource'u** *azResult*olarak ayarlayın.
-    
-    -  Dizininizdeki veri türüne bağlı olarak sizin için çalışan bir **Düzen** seçin. Bu durumda, *Başlık, altyazı ve vücut* düzeni kullanılır.
-    
-    -  Alanları ve görselleştirmek istediğiniz alanları **seçin.**
+       :::image type="content" source="./media/search-howto-powerapps/2-6-search-button-event.png" alt-text="Button OnSelect" border="true":::
 
-    Bağlayıcıyı tanımladığımızda örnek bir sonuç sağladığımız için, uygulama dizininizde bulunan alanların farkındadır.
+   Bu eylem, düğmenin Sorgu terimi olarak *txtquery* metin kutusundaki metni kullanarak, *azresult* adlı yeni bir koleksiyonu, arama sorgusunun sonucuyla güncelleştirmesine neden olur.
+
+   > [!NOTE]
+   > Formül sözdizimi hatası alırsanız bunu deneyin "' ClearCollect ' işlevinin bazı geçersiz işlevleri vardır":
+   > 
+   > * İlk olarak bağlayıcı başvurusunun doğru olduğundan emin olun. Bağlayıcı adını temizleyin ve bağlayıcının adını yazmaya başlayın. IntelliSense, doğru bağlayıcıyı ve fiili 'i önermelidir.
+   > 
+   > * Hata devam ederse, bağlayıcıyı silin ve yeniden oluşturun. Bağlayıcının birden çok örneği varsa, uygulama yanlış bir tane kullanıyor olabilir.
+   > 
+
+1. Dikey Galeri denetimini, önceki adımı tamamladığınızda oluşturulan *Azresult* koleksiyonuna bağlayın. 
+
+   Galeri denetimini seçin ve Özellikler bölmesinde aşağıdaki eylemleri gerçekleştirin.
+
+   * **Veri kaynağını** *azresult*olarak ayarlayın.
+   * Dizininizdeki verilerin türüne göre sizin için uygun bir **Düzen** seçin. Bu durumda, *Başlık, alt başlık ve gövde* düzeni kullandık.
+   * **Alanları düzenleyin**ve görselleştirmek istediğiniz alanları seçin.
+
+    Bağlayıcıyı tanımladığımızda bir örnek sonuç sağladığımızdan, uygulama dizininizdeki kullanılabilir alanları algılar.
     
     :::image type="content" source="./media/search-howto-powerapps/2-7-gallery-select-fields.png" alt-text="Galeri alanları" border="true":::   
  
-1.  Uygulamayı önizlemek için **F5** tuşuna basın.  
+1. Uygulamayı önizlemek için **F5** tuşuna basın.  
 
-    Alanların hesaplanan değerlere ayarlanabileceğini unutmayın.      
-    Örneğin, *"Resim, Başlık ve Altyazı"* düzenini kullanarak ayar yapmak ve *Görüntü* işlevini veri ve dosya adı için kök yolunun (örneğin,) `"https://mystore.blob.core.windows.net/multilang/" & ThisItem.metadata_storage_name`biraraya getirmesi olarak belirtmek aşağıdaki sonucu oluşturur.
+    :::image type="content" source="./media/search-howto-powerapps/2-8-3-final.png" alt-text="Uygulamanın son hali" border="true":::    
 
-    :::image type="content" source="./media/search-howto-powerapps/2-8-2-final.png" alt-text="Uygulamanın son hali" border="true":::        
+<!--     Remember that the fields can be set to calculated values.
+
+    For the example, setting using the *"Image, Title and Subtitle"* layout and specifying the *Image* function as the concatenation of the root path for the data and the file name (for instance, `"https://mystore.blob.core.windows.net/multilang/" & ThisItem.metadata_storage_name`) will produce the result below.
+
+    :::image type="content" source="./media/search-howto-powerapps/2-8-2-final.png" alt-text="Final app" border="true":::         -->
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
+
+Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
+
+Ücretsiz bir hizmet kullanıyorsanız, üç Dizin, Dizin Oluşturucu ve veri kaynağı ile sınırlı olduğunu unutmayın. Sınırın altında kalmak için portalda ayrı ayrı öğeleri silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi ve çevrimiçi eğitim için [Power Apps Öğrenme Kataloğu'na](https://docs.microsoft.com/powerapps/learning-catalog/get-started)bakın.
+Power Apps, özel uygulamalar için hızlı uygulama geliştirmeyi mümkün bir şekilde sunar. Artık bir arama dizinine nasıl bağlanacağınızı öğrenmiş olduğunuza göre, özel bir Power App 'te zengin bir görselleştirme deneyimi oluşturma hakkında daha fazla bilgi edinin.
+
+> [!div class="nextstepaction"]
+> [Power Apps öğrenme kataloğu](https://docs.microsoft.com/powerapps/learning-catalog/get-started)
 

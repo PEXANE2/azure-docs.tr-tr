@@ -1,50 +1,50 @@
 ---
-title: 'Öğretici: Veri almak & kabul et - Azure Veri Paylaşımı'
-description: Öğretici - Azure Veri Paylaşımı'nı kullanarak veri kabul edin ve alın
+title: 'Öğretici: & alma verileri kabul etme-Azure veri paylaşma'
+description: Öğretici-Azure veri paylaşımının kullanıldığı verileri kabul edin ve alın
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 5b7d9cd7e7d438cf2beac76d5d8bcc78d377a8f4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4dff48f909cd3febbbb7e92dcf96070020b8f57c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77083097"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145145"
 ---
-# <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Öğretici: Azure Veri Paylaşımı'nı kullanarak veri kabul edin ve alın  
+# <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Öğretici: Azure veri paylaşımının kullanıldığı verileri kabul edin ve alın  
 
-Bu eğitimde, Azure Veri Paylaşımı'nı kullanarak veri paylaşımı davetini nasıl kabul edeceğinizi öğreneceksiniz. Sizinle paylaşılan verileri nasıl alacağınızı ve sizinle paylaşılan verilerin en son anlık görüntüsüne her zaman sahip olmanızı sağlamak için düzenli bir yenileme aralığını nasıl etkinleştireceğinizi öğreneceksiniz. 
+Bu öğreticide, Azure veri paylaşma kullanarak bir veri paylaşımının davetini kabul etme hakkında bilgi edineceksiniz. Sizinle paylaşılan verilerin nasıl alınacağını ve her zaman sizinle paylaşılan verilerin en son anlık görüntüsüne sahip olduğunuzdan emin olmak için düzenli yenileme aralığını nasıl etkinleştireceğinizi öğreneceksiniz. 
 
 > [!div class="checklist"]
-> * Azure Veri Paylaşımı davetini kabul etme
-> * Azure Veri Paylaşımı hesabı oluşturma
+> * Azure Veri Paylaşma davetini kabul etme
+> * Azure veri paylaşma hesabı oluşturma
 > * Verileriniz için bir hedef belirtin
 > * Zamanlanmış yenileme için veri paylaşımınıza abonelik oluşturma
 
 ## <a name="prerequisites"></a>Ön koşullar
-Veri paylaşımı davetini kabul etmeden önce, aşağıda listelenen bir dizi Azure kaynağı sağlamanız gerekir. 
+Bir veri paylaşma davetini kabul etmeden önce, aşağıda listelenen birkaç Azure kaynağı sağlamalısınız. 
 
-Veri paylaşımı davetini kabul etmeden önce tüm ön koşulların tamamlandığından emin olun. 
+Bir veri paylaşma davetini kabul etmeden önce tüm önkoşulların tümünün tamamlandığından emin olun. 
 
-* Azure Aboneliği: Azure aboneliğiniz yoksa, başlamadan önce ücretsiz bir [hesap](https://azure.microsoft.com/free/) oluşturun.
-* Veri Paylaşımı daveti: Microsoft Azure'dan "Azure Veri Paylaşımı **<yourdataprovider@domain.com>** daveti" başlıklı bir davet.
-* Bir Veri Paylaşımı kaynağı ve hedef Azure veri depolarınızın bulunduğu Azure aboneliğini oluşturacağınız Azure aboneliğinde [Microsoft.DataShare kaynak sağlayıcısını](concepts-roles-permissions.md#resource-provider-registration) kaydedin.
+* Azure aboneliği: bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* Veri paylaşma daveti: "Azure Data Share davetiyesi **<yourdataprovider@domain.com>**" başlıklı konuyla bir Microsoft Azure daveti.
+* [Microsoft. DataShare kaynak sağlayıcısını](concepts-roles-permissions.md#resource-provider-registration) , bir veri paylaşma kaynağı ve hedef Azure veri mağazalarınızın bulunduğu Azure aboneliğini oluşturacağınız Azure aboneliğine kaydedin.
 
-### <a name="receive-data-into-a-storage-account"></a>Bir depolama hesabına veri alın: 
+### <a name="receive-data-into-a-storage-account"></a>Bir depolama hesabına veri alma: 
 
-* Azure Depolama hesabı: Zaten hesabınız yoksa, bir Azure [Depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)oluşturabilirsiniz. 
-* *Microsoft.Storage/storageAccounts/write*adresinde bulunan depolama hesabına yazma izni. Bu izin Katılımcı rolünde vardır. 
-* *Microsoft.Authorization/role assignments/write'da*bulunan depolama hesabına rol ataması ekleme izni. Bu izin Sahibi rolünde vardır.  
+* Azure depolama hesabı: henüz yoksa bir [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)oluşturabilirsiniz. 
+* *Microsoft. Storage/storageAccounts/Write*içinde bulunan depolama hesabına yazma izni. Bu izin, katkıda bulunan rolünde bulunur. 
+* *Microsoft. Authorization/role atamalar/Write*' de bulunan depolama hesabına rol ataması ekleme izni. Bu izin sahip rolünde bulunur.  
 
-### <a name="receive-data-into-a-sql-based-source"></a>Verileri SQL tabanlı bir kaynağa alın:
+### <a name="receive-data-into-a-sql-based-source"></a>SQL tabanlı bir kaynağa veri alma:
 
-* *Microsoft.Sql/servers/databases/write*adresinde bulunan SQL sunucusundaki veritabanlarına yazma izni. Bu izin Katılımcı rolünde vardır. 
-* Azure SQL Veritabanı'na veya Azure SQL Veri Ambarına erişmek için veri paylaşımı kaynağının yönetilen kimliği için izin. Bu aşağıdaki adımlar la yapılabilir: 
-    1. Kendinizi SQL sunucusu için Azure Active Directory Yöneticisi olarak ayarlayın.
-    1. Azure Etkin Dizini'ni kullanarak Azure SQL Veritabanı/Veri Ambarı'na bağlanın.
-    1. Veri Paylaşımı Yönetilen Kimliği 'db_datareader, db_datawriter, db_ddladmin' olarak eklemek için aşağıdaki komut dosyasını yürütmek için Sorgu Düzenleyicisi'ni (önizleme) kullanın. SQL Server kimlik doğrulaması değil, Active Directory kullanarak bağlanmanız gerekir. 
+* *Microsoft. SQL/Servers/veritabanları/Write*'TA bulunan SQL Server 'da veritabanlarına yazma izni. Bu izin, katkıda bulunan rolünde bulunur. 
+* Azure SQL veritabanı veya Azure SQL veri ambarı 'na erişmek için veri paylaşımının yönetilen kimliği izni. Bu, aşağıdaki adımlarla yapılabilir: 
+    1. Kendinizi SQL Server için Azure Active Directory yöneticisi olarak ayarlayın.
+    1. Azure Active Directory kullanarak Azure SQL veritabanı/veri ambarına bağlanın.
+    1. Veri paylaşımının yönetilen kimliğini bir ' db_datareader, db_datawriter, db_ddladmin ' olarak eklemek için aşağıdaki betiği yürütmek üzere sorgu Düzenleyicisi 'ni (Önizleme) kullanın. SQL Server kimlik doğrulaması değil Active Directory kullanarak bağlanmanız gerekir. 
 
         ```sql
         create user "<share_acc_name>" from external provider; 
@@ -52,86 +52,88 @@ Veri paylaşımı davetini kabul etmeden önce tüm ön koşulların tamamlandı
         exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
         exec sp_addrolemember db_ddladmin, "<share_acc_name>";
         ```      
-        *<share_acc_name>* Veri Paylaşımı kaynağınızın adı olduğunu unutmayın. Henüz bir Veri Paylaşımı kaynağı oluşturmadıysanız, bu ön koşula daha sonra geri dönebilirsiniz.         
+        *<share_acc_name>* veri paylaşma kaynağınızın adı olduğunu unutmayın. Henüz bir veri paylaşma kaynağı oluşturmadıysanız, bu ön koşul daha sonra geri dönebilirsiniz.         
 
-* İstemci IP SQL Server Firewall erişimi. Bu aşağıdaki adımlar la yapılabilir: 
-    1. Azure portalındaki SQL sunucusunda *Güvenlik Duvarları'na ve sanal ağlara* gidin
-    1. Azure Hizmetlerine erişime izin vermek için **"geçiş"** seçeneğini tıklatın.
-    1. **İstemci IP Ekle'yi** ve **Kaydet'i**tıklatın. İstemci IP adresi değiştirilebilir. Azure portalından bir SQL hedefine veri aldığınızda bu işlemin yinelenmesi gerekebilir. Ayrıca bir IP aralığı ekleyebilirsiniz. 
+* İstemci IP SQL Server güvenlik duvarı erişimi. Bu, aşağıdaki adımlarla yapılabilir: 
+    1. Azure portal 'deki SQL Server 'da *güvenlik duvarları ve sanal ağlar* ' a gidin.
+    1. Azure hizmetlerine erişime izin vermek **için Aç düğmesine** tıklayın.
+    1. **+ ISTEMCI IP Ekle** ' ye tıklayın ve **Kaydet**' e tıklayın. İstemci IP adresi değişebilir. Bu işlemin bir SQL hedefine Azure portal bir dahaki sefer veri alıyorsanız tekrarlanması gerekebilir. Ayrıca, bir IP aralığı ekleyebilirsiniz. 
 
 
-### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümesine veri alın: 
+### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümesine veri alma: 
 
-* Veri sağlayıcısının Veri Gezgini kümesiyle aynı Azure veri merkezinde bir Azure Veri Gezgini kümesi: Zaten bir kümeniz yoksa, bir [Azure Veri Gezgini kümesi](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal)oluşturabilirsiniz. Veri sağlayıcısının kümesinin Azure veri merkezini bilmiyorsanız, kümeyi daha sonra oluşturabilirsiniz.
-* *Microsoft.Kusto/clusters/write'da*bulunan Azure Veri Gezgini kümesine yazma izni. Bu izin Katılımcı rolünde vardır. 
-* *Microsoft.Authorization/role assignments/write'da*bulunan Azure Veri Gezgini kümesine rol ataması ekleme izni. Bu izin Sahibi rolünde vardır. 
+* Veri sağlayıcısının Veri Gezgini kümesiyle aynı Azure veri merkezindeki bir Azure Veri Gezgini kümesi: henüz yoksa bir [azure Veri Gezgini kümesi](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal)oluşturabilirsiniz. Veri sağlayıcısının kümesinin Azure veri merkezini bilmiyorsanız, kümeyi daha sonra işlem içinde oluşturabilirsiniz.
+* *Microsoft. kusto/kümeler/Write*Içinde bulunan Azure Veri Gezgini kümesine yazma izni. Bu izin, katkıda bulunan rolünde bulunur. 
+* *Microsoft. Authorization/role atamalar/Write*' de bulunan Azure Veri Gezgini kümesine rol ataması ekleme izni. Bu izin sahip rolünde bulunur. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/)oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
-## <a name="open-invitation"></a>Açık davet
+## <a name="open-invitation"></a>Daveti aç
 
-1. Veri sağlayıcınızdan gelen bir davet için gelen kutunuzu kontrol edin. Davet, Microsoft **Azure'dan, Azure Veri <yourdataprovider@domain.com>Paylaşımı daveti. ** Birden çok davet varsa doğru paylaşımı kabul ettiğinizden emin olmak için paylaşım adını not alın. 
+1. Daveti e-postayla veya doğrudan Azure portal açabilirsiniz. 
 
-1. Davetinizi Azure'da görmek için **Görünüm davetiyesinde** seçin. Bu sizi Alınan Paylaşımlar görünümüne götürür.
+   E-postadaki daveti açmak için, veri sağlayıcınızdan bir davet için gelen kutunuza bakın. Davet, ' **den <yourdataprovider@domain.com>Azure veri paylaşma daveti **başlıklı Microsoft Azure. Azure 'da davetinizi görmek için **daveti görüntüle** ' ye tıklayın. 
 
-   ![Davetiye](./media/invitations.png "Davetiye listesi") 
+   Daveti doğrudan Azure portal açmak için Azure portal **veri paylaşma davetlerini** arayın. Bu, sizi veri paylaşma davetlerinin listesine götürür.
 
-1. Görüntülemek istediğiniz paylaşımı seçin. 
+   ![Lerinin](./media/invitations.png "Davetlerin listesi") 
+
+1. Görüntülemek istediğiniz paylaşma seçeneğini belirleyin. 
 
 ## <a name="accept-invitation"></a>Daveti kabul et
-1. **Kullanım Koşulları**da dahil olmak üzere tüm alanların gözden geçirildikten emin olun. Kullanım koşullarını kabul ederseniz, kabul ettiğinizi belirtmek için kutuyu işaretlemeniz gerekir. 
+1. **Kullanım koşulları**dahil olmak üzere tüm alanların incelendiğini doğrulayın. Kullanım koşullarını kabul ediyorsanız, kabul ettiğinizi belirtmek için kutuyu denetlemeniz gerekir. 
 
    ![Kullanım koşulları](./media/terms-of-use.png "Kullanım koşulları") 
 
-1. *Hedef Veri Paylaşımı Hesabı*altında, Veri Paylaşımınızı dağıtacağınız Abonelik ve Kaynak Grubu'nu seçin. 
+1. *Hedef veri paylaşma hesabı*altında, veri paylaşımınızı dağıtmak istediğiniz aboneliği ve kaynak grubunu seçin. 
 
-   Veri **Paylaşımı Hesabı** alanı için, varolan bir Veri Paylaşımı hesabınız yoksa **yeni oluştur'u** seçin. Aksi takdirde, veri paylaşımınızı kabul etmek istediğiniz varolan bir Veri Paylaşımı hesabını seçin. 
+   **Veri** paylaşma hesabı alanı için, mevcut bir veri paylaşma hesabınız yoksa **Yeni oluştur** ' u seçin. Aksi takdirde, veri paylaşımınızı kabul etmek istediğiniz mevcut bir veri paylaşma hesabı seçin. 
 
-   Alınan **Paylaşım Adı** alanı için, veri sağlama tarafından belirtilen varsayılan ı bırakabilir veya alınan pay için yeni bir ad belirtebilirsiniz. 
+   **Alınan paylaşma adı** alanı için, veriler tarafından belirtilen varsayılanı bırakabilir veya alınan paylaşıma yönelik yeni bir ad belirtebilirsiniz. 
 
-   ![Hedef veri paylaşımı hesabı](./media/target-data-share.png "Hedef veri paylaşımı hesabı") 
+   ![Hedef veri paylaşma hesabı](./media/target-data-share.png "Hedef veri paylaşma hesabı") 
 
-1. Kullanım koşullarını kabul edip payınız için bir konum belirledikten *sonra, Kabul Et'de Seçin ve yapılandırın.* Bir paylaşım aboneliği oluşturulur.
+1. Kullanım koşullarını kabul ettikten ve paylaşımınız için bir konum belirttikten sonra *kabul et ve Yapılandır*' ı seçin. Bir paylaşma aboneliği oluşturulacak.
 
-   Anlık görüntü tabanlı paylaşım için, bir sonraki ekran verilerinizin kopyalanması için bir hedef depolama hesabı seçmeniz ister. 
+   Anlık görüntü tabanlı paylaşım için bir sonraki ekranda, verilerinize kopyalanacak bir hedef depolama hesabı seçmeniz istenir. 
 
-   ![Seçenekleri kabul et](./media/accept-options.png "Seçenekleri kabul et") 
+   ![Kabul etme seçenekleri](./media/accept-options.png "Kabul etme seçenekleri") 
 
-   Daveti şimdi kabul etmeyi ancak hedef veri deponuzu daha sonra yapılandırmayı tercih ediyorsanız, *kabul et ve daha sonra yapılandır.* Depolama alanınızı daha sonra yapılandırmaya devam etmek için, veri paylaşımı yapılandırmanızı nasıl sürdüreceklerine ilişkin ayrıntılı adımlar için [veri kümesi eşlemeleri sayfasını yapılandırın](how-to-configure-mapping.md) sayfasına bakın. 
+   Şimdi daveti kabul etmek ancak hedef veri deponuzu daha sonra yapılandırmak isterseniz, *kabul et ve Yapılandır*' ı seçin. Depolama alanınızı daha sonra yapılandırmaya devam etmek için veri paylaşma yapılandırmanızı nasıl sürdürüleceği hakkında ayrıntılı adımlar için bkz. veri [kümesi eşlemelerini yapılandırma](how-to-configure-mapping.md) sayfası. 
 
-   Yerinde paylaşım için, veri paylaşımı yapılandırmanızı nasıl sürdüreceklerine ilişkin ayrıntılı adımlar için [veri kümesi eşlemelerini yapılandırma](how-to-configure-mapping.md) sayfasına bakın. 
+   Yerinde paylaşım için, veri paylaşımı yapılandırmanızı nasıl sürdürüleceği hakkında ayrıntılı adımlar için bkz. veri [kümesi eşlemelerini yapılandırma](how-to-configure-mapping.md) sayfası. 
 
-   Daveti kabul etmek istemiyorsanız *Reddet'i*seçin. 
+   Daveti kabul etmek istemiyorsanız *Reddet*' i seçin. 
 
 ## <a name="configure-storage"></a>Depolama alanını yapılandırma
-1. *Hedef Depolama Ayarları*altında, verilerinizi almak istediğiniz Abonelik, Kaynak grubu ve depolama hesabını seçin. 
+1. *Hedef depolama ayarları*altında, verilerinizi almak istediğiniz aboneliği, kaynak grubunu ve depolama hesabını seçin. 
 
    ![Hedef depolama ayarları](./media/target-storage-settings.png "Hedef depolama") 
 
-1. Verilerinizin düzenli olarak güncelleştirilmesini sağlamak için anlık görüntü ayarlarını etkinleştirdiğinizden emin olun. Yalnızca veri sağlayıcınız veri paylaşımına dahil edilmişse anlık görüntü ayar çizelgesi göreceğinizi unutmayın. 
+1. Verilerinizin düzenli olarak güncelleştirilmesini sağlamak için, anlık görüntü ayarlarını etkinleştirdiğinizden emin olun. Veri sağlayıcınız onu veri paylaşımında içerdiğine yalnızca bir anlık görüntü ayarı görürsünüz. 
 
    ![Anlık görüntü ayarları](./media/snapshot-settings.png "Anlık görüntü ayarları") 
 
-1. *Kaydet'i*seçin. 
+1. *Kaydet*’i seçin. 
 
 > [!IMPORTANT]
-> SQL tabanlı veri alıyorsanız ve bu verileri SQL tabanlı bir kaynağa almak istiyorsanız, veri setinizin hedefi olarak bir SQL Server'ı nasıl yapılandıracağınızı öğrenmek için [bir veri kümesi eşleme](how-to-configure-mapping.md) kılavuzunu yapılandırın' ı ziyaret edin. 
+> SQL tabanlı verileri alıyorsanız ve bu verileri SQL tabanlı bir kaynağa almak istiyorsanız, veri kümeniz için hedef olarak SQL Server yapılandırmayı öğrenmek üzere [bir veri kümesi eşleme](how-to-configure-mapping.md) nasıl yapılır Kılavuzu ' nu ziyaret edin. 
 
-## <a name="trigger-a-snapshot"></a>Anlık görüntü tetikleme
+## <a name="trigger-a-snapshot"></a>Anlık görüntü tetikleyin
 Bu adımlar yalnızca anlık görüntü tabanlı paylaşım için geçerlidir.
 
-1. Alınan Paylaşımlar -> Ayrıntılar sekmesinde **Tetikleyici anlık görüntü'nü**seçerek anlık görüntü tetikleyebilirsiniz. Burada, verilerinizin tam veya artımlı anlık görüntüsünü tetikleyebilirsiniz. Veri sağlayıcınızdan ilk kez veri alıyorsanız, tam kopyayı seçin. 
+1. Alınan paylaşımlar-> Ayrıntılar sekmesinde bir anlık görüntüyü **tetikleyici anlık görüntüsünü**seçerek tetikleyebilirsiniz. Burada, verilerinizin tam veya artımlı anlık görüntüsünü tetikleyebilirsiniz. Veri sağlayıcınızdan ilk kez veri alıyorsanız tam kopya ' ı seçin. 
 
-   ![Tetikanlık](./media/trigger-snapshot.png "Tetikanlık") 
+   ![Görüntüyü Tetikle](./media/trigger-snapshot.png "Görüntüyü Tetikle") 
 
-1. Son çalıştırma durumu *başarılı*olduğunda, alınan verileri görüntülemek için hedef veri deposuna gidin. **Veri Kümeleri'ni**seçin ve Hedef Yol'daki bağlantıyı tıklatın. 
+1. Son çalıştırma durumu *başarılı*olduğunda, alınan verileri görüntülemek için hedef veri deposuna gidin. **Veri kümeleri**' ni seçin ve Hedef yoldaki bağlantıya tıklayın. 
 
    ![Tüketici veri kümeleri](./media/consumer-datasets.png "Tüketici veri kümesi eşleme") 
 
 ## <a name="view-history"></a>Geçmişi görüntüleme
-Anlık görüntülerinizin geçmişini görüntülemek için Alınan Paylaşımlar -> Geçmişi'ne gidin. Burada, son 60 gün içinde oluşturulan tüm anlık görüntülerin geçmişini bulacaksınız. 
+Anlık görüntülerinizin geçmişini görüntülemek için, alınan paylaşımlar-> geçmişi ' ne gidin. Burada, son 60 gün için oluşturulan tüm anlık görüntülerin geçmişini bulacaksınız. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu eğitimde, bir Azure Veri Paylaşımını nasıl kabul edin ve alacağınızı öğrendiniz. Azure Veri Paylaşımı kavramları hakkında daha fazla bilgi edinmek için Kavramlara devam [edin: Azure Veri Paylaşımı Terminolojisi.](terminology.md)
+Bu öğreticide, bir Azure veri paylaşımının nasıl kabul edileceği ve alınacağı hakkında daha fazla öğrendiniz. Azure veri paylaşımında kavramlar hakkında daha fazla bilgi edinmek için bkz. [Azure veri paylaşma terminolojisi](terminology.md).
