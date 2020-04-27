@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 135232e3e9894bcef1ef657e41f5ad3a5e307289
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "69014699"
 ---
 ### <a name="media-services-v3-latest"></a>Media Services v3 (en son)
 
-Azure Medya Hizmetleri'nin en son sürümüne göz atın! 
+Azure Media Services en son sürümüne göz atın! 
 
 * [Genel bakış](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
 * [Kavramlar](https://docs.microsoft.com/azure/media-services/latest/concepts-overview)
@@ -24,5 +24,5 @@ Azure Medya Hizmetleri'nin en son sürümüne göz atın!
 
 * [Genel bakış](https://docs.microsoft.com/azure/media-services/previous/media-services-overview)
 * [Hesap oluşturma](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-create-account)
-* [İsteğe bağlı teslim](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-vod-get-started)
-* [Canlı yayın](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-live-passthrough-get-started)
+* [İsteğe bağlı olarak sunun](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-vod-get-started)
+* [Canlı sunma](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-live-passthrough-get-started)

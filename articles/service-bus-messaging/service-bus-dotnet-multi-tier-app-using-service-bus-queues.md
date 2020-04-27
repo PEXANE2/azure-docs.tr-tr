@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60403426"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Azure Service Bus kuyruklarını kullanan çok katmanlı .NET uygulaması
@@ -33,7 +33,7 @@ Visual Studio ve .NET için ücretsiz Azure SDK kullanarak Microsoft Azure'a yö
 
 Bu öğreticide, Azure bulut hizmetinde çok katmanlı bir uygulama derleyip çalıştıracaksınız. Ön uç, bir ASP.NET MVC web rolüdür. Arka uç ise Service Bus kuyruğu kullanan bir çalışan rolüdür. Aynı çok katmanlı uygulamayı, bulut hizmeti yerine bir Azure web sitesine dağıtılan web projesi özelliğine sahip ön uçla da oluşturabilirsiniz. Ayrıca, [.NET bulut/şirket içi karma uygulama](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) öğreticisine de başvurabilirsiniz.
 
-Aşağıdaki ekran görüntüsü tamamlanan uygulamayı gösterir.
+Aşağıdaki ekran görüntüsünde, tamamlanmış uygulama gösterilmektedir.
 
 ![][0]
 
@@ -50,7 +50,7 @@ Bu iletişim mekanizması, doğrudan mesajlaşma ile karşılaştırıldığınd
 
 * **Zamana bağlı ayırma.** Zaman uyumsuz mesajlaşma düzeni sayesinde üreticilerin ve tüketicilerin aynı anda çevrimiçi olması gerekmez. Service Bus, kullanıcı taraf iletileri almaya hazır olana kadar güvenli bir şekilde depolar. Bu özellik, dağıtılan uygulamanın bileşenlerinin isteğe bağlı olarak (örneğin, bakım için) veya bir bileşenin çökmesinden dolayı bağlantısının sistemin tamamını etkilemeden kesilmesine olanak sağlar. Ayrıca, kullanıcı uygulamanın yalnızca günün belirli zamanlarında çevrimiçi olması gerekebilir.
 * **Yük dengeleme.** Birçok uygulamada, sistem yükü zamana göre değişirken çalışmanın her birimi için gereken işleme süresi genel olarak aynıdır. Bir kuyruk aracılığıyla ileti üreticileri ve tüketicileri arasında bağlantı kurmak, kullanıcı uygulamaya (çalışan) en fazla yük yerine yalnızca ortalama yük sağlanması gerektiği anlamına gelir. Gelen yük hacmi değiştikçe kuyruğun derinliği artar ve daralır. Bu işlem, uygulama yükünü sunmak için gereken altyapı miktarı bağlamında doğrudan para tasarrufu sağlar.
-* **Yük dengeleme.** Yük arttıkça kuyruktan okunmak üzere daha fazla çalışan işlemi eklenebilir. Her ileti yalnızca bir çalışan işlemi tarafından işlenir. Ayrıca bu çekme tabanlı yük dengelemesi, çalışan makineler işleme gücü bağlamında farklılık gösterse bile çalışan makinelerin optimum kullanımına olanak sağlar. Çalışan makinelerin işleme gücündeki farklar, her birinin iletileri kendi maksimum hızında çekmesinden kaynaklanır. Bu düzen, genelde *rakip tüketici* düzeni olarak adlandırılır.
+* **Yük Dengeleme.** Yük arttıkça kuyruktan okunmak üzere daha fazla çalışan işlemi eklenebilir. Her ileti yalnızca bir çalışan işlemi tarafından işlenir. Ayrıca bu çekme tabanlı yük dengelemesi, çalışan makineler işleme gücü bağlamında farklılık gösterse bile çalışan makinelerin optimum kullanımına olanak sağlar. Çalışan makinelerin işleme gücündeki farklar, her birinin iletileri kendi maksimum hızında çekmesinden kaynaklanır. Bu düzen, genelde *rakip tüketici* düzeni olarak adlandırılır.
   
   ![][2]
 
@@ -58,7 +58,7 @@ Aşağıdaki bölümlerde, bu mimariyi uygulayan kod ele alınır.
 
 ## <a name="create-a-namespace"></a>Ad alanı oluşturma
 
-İlk adım, bir *ad alanı*oluşturmak ve bu ad alanı için paylaşılan [erişim imzası (SAS)](service-bus-sas.md) anahtarı elde etmektir. Ad alanı, Service Bus tarafından kullanıma sunulan her uygulama için bir uygulama sınırı sağlar. Bir ad alanı oluşturulduğunda sistem tarafından bir SAS anahtarı oluşturulur. Ad alanı adı ve SAS anahtarı birleşimi ile Service Bus hizmetinin bir uygulamaya erişim kimliğini doğrulayan kimlik bilgisi sağlanır.
+İlk adım, bir *ad alanı*oluşturmak ve bu ad alanı Için [paylaşılan ERIŞIM imzası (SAS)](service-bus-sas.md) anahtarı edinmektir. Ad alanı, Service Bus tarafından kullanıma sunulan her uygulama için bir uygulama sınırı sağlar. Bir ad alanı oluşturulduğunda sistem tarafından bir SAS anahtarı oluşturulur. Ad alanı adı ve SAS anahtarı birleşimi ile Service Bus hizmetinin bir uygulamaya erişim kimliğini doğrulayan kimlik bilgisi sağlanır.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -177,7 +177,7 @@ Bu bölümde, uygulamanızın görüntülediği çeşitli sayfalar oluşturursun
 6. Görünüm oluşturmanız için bir iletişim kutusu belirir. **Şablon** listesinde **Oluştur** seçeneğini belirleyin. **Model sınıfı** listesinde **OnlineOrder** sınıfını seçin.
    
    ![][15]
-7. **Ekle**’ye tıklayın.
+7. **Ekle**'ye tıklayın.
 8. Şimdi, uygulamanızın görüntülenen adını değiştirin. **Çözüm Gezgini**'nde, **Views\Shared\\_Layout.cshtml** dosyasına çift tıklayarak dosyayı Visual Studio düzenleyicisinde açın.
 9. **My ASP.NET Application** uygulamasının tüm örneklerini **Northwind Traders Products** olarak değiştirin.
 10. **Home**, **About** ve **Contact** bağlantılarını kaldırın. Vurgulanmış kodu silme:

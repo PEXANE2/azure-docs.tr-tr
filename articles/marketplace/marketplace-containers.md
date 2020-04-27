@@ -1,6 +1,6 @@
 ---
-title: Kapsayıcılar Azure Marketi Için Yayımlama Kılavuzu Sunuyor
-description: Bu makalede, Market'te Kapsayıcıların yayımlanması gereken gereksinimler açıklanmaktadır
+title: Azure Market 'te kapsayıcı teklifleri için Yayımlama Kılavuzu
+description: Bu makalede, Azure Marketi 'nde kapsayıcı tekliflerini yayımlama gereksinimleri açıklanmaktadır.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: dsindona
 ms.service: marketplace
@@ -8,42 +8,40 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 80bcf0d5d37a44cee2aab38161abac619542204a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 99aecee930e5d77302ad54babd927588519e33fd
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81684316"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160469"
 ---
-# <a name="containers-offer-publishing-guide"></a>Konteynerler Teklif Yayın Kılavuzu
+# <a name="publishing-guide-for-container-offers"></a>Kapsayıcı teklifleri için Yayımlama Kılavuzu
 
-Kapsayıcı, kapsayıcı resminizi Azure Marketi'nde yayımlamanıza yardımcı olur. Bu teklifin gereksinimlerini anlamak için bu kılavuzu kullanın. 
+Kapsayıcı, kapsayıcı görüntünüzü Azure Market 'Te yayımlamanıza yardımcı olur. Bu teklifin gereksinimlerini anlamak için bu kılavuzu kullanın. 
 
-Bunlar, Market aracılığıyla dağıtılan ve faturalanan işlem teklifleridir. Bir kullanıcının gördüğü eylem çağrısı "Şimdi Al" dır.
+Kapsayıcı teklifleri, Azure Marketi aracılığıyla dağıtılan ve faturalandırılan işlem teklifleridir. Kullanıcının gördüğü eyleme yapılan çağrı "Şimdi al" dır.
 
-Çözümünüz Kubernetes tabanlı Azure kapsayıcı hizmeti olarak sağlanan docker kapsayıcı görüntüsü olduğunda Konteyner teklif türünü kullanın.
+Çözümünüz bir Kubernetes tabanlı Azure Container Service örneği olarak ayarlanan bir Docker kapsayıcı görüntüsü olduğunda *kapsayıcı* teklif türünü kullanın. 
 
->[!NOTE]
->Örneğin, Azure Kubernetes Hizmeti veya Azure Kapsayıcı Örnekleri gibi Kubernetes tabanlı bir Azure kapsayıcı hizmeti, Kubernetes tabanlı bir kapsayıcı çalışma zamanı için Azure müşterilerinin seçimi.  
+> [!NOTE]
+> Kubernetes tabanlı Azure Container Service örneklerinin örnekleri olan Azure Kubernetes hizmeti veya Azure Container Instances, Kubernetes tabanlı bir kapsayıcı çalışma zamanı için Azure müşterilerinin seçimi.  
 
-Microsoft şu anda ücretsiz ve kendi lisansını getir (BYOL) lisans modellerini desteklemektedir.
+Microsoft şu anda ücretsiz ve kendi lisansını getir (KLG) lisanslama modellerini desteklemektedir.
 
-## <a name="containers-offer"></a>Konteynerler Teklif
+## <a name="container-offer-requirements"></a>Kapsayıcı teklif gereksinimleri
 
 | Gereksinim | Ayrıntılar |  
 |:--- |:--- |  
-| Faturalama ve ölçüm | Ücretsiz veya BYOL faturalandırma modelini destekleyin. |  
-| Dockerfile'den oluşturulmuş görüntü | Konteyner görüntüleri Docker görüntü belirtimine dayalı olmalı ve dockerdosyasından oluşturulmalıdır.<ul> <li>Docker görüntüleri oluşturma hakkında daha fazla bilgi için [docs.docker.com/engine/reference/builder/#usage'da](https://docs.docker.com/engine/reference/builder/#usage)bulunan Kullanım bölümünü ziyaret edin.</li> </ul> |  
-| ACR'de Barındırma | Kapsayıcı görüntüleri bir Azure Kapsayıcı Kayıt Defteri (ACR) deposunda barındırılmalıdır.<ul> <li>ACR ile çalışma hakkında daha fazla bilgi için Quickstart: [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal'da](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)bulunan Azure portal sayfasını kullanarak bir konteyner kayıt defteri oluşturun.</li> </ul> |  
-| Resim etiketleme | Kapsayıcı görüntüler en az 1 etiket içermelidir (maksimum etiket: 16).<ul> <li>Bir görüntüyü etiketleme hakkında daha fazla bilgi [için, docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag)adresinde bulunan docker etiket sayfasını ziyaret edin.</li> </ul> |  
+| Faturalandırma ve ölçüm | Ücretsiz veya KLG faturalandırma modelini destekler.<br><br> |  
+| Dockerfile dosyasından oluşturulan resim | Kapsayıcı görüntülerinin Docker görüntü belirtimine dayalı olması ve Dockerfile 'dan oluşturulması gerekir.<br> <br>Docker görüntülerini oluşturma hakkında daha fazla bilgi için [Dockerfile başvurusunun](https://docs.docker.com/engine/reference/builder/#usage)"kullanım" bölümüne bakın.<br><br> |  
+| Azure Container Registry deposunda barındırma | Kapsayıcı görüntülerinin bir Azure Container Registry deposunda barındırılması gerekir.<br> <br>Azure Container Registry ile çalışma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal kullanarak özel kapsayıcı kayıt defteri oluşturma](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).<br><br> |  
+| Resim etiketleme | Kapsayıcı görüntülerinin en az bir etiket içermesi gerekir (en fazla etiket sayısı: 16).<br><br>Bir görüntüyü etiketleme hakkında daha fazla bilgi için `docker tag` [Docker belgeleri](https://docs.docker.com/engine/reference/commandline/tag) sitesindeki sayfasına bakın.<br><br> |  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Eğer bunu yapmadıysanız, 
+Henüz yapmadıysanız, [Azure Marketi ile bulut işletmenizi nasıl büyütireceğinizi](https://azuremarketplace.microsoft.com/sell)öğrenin.
 
-- Pazar yeri hakkında [bilgi edinin.](https://azuremarketplace.microsoft.com/sell)
+Iş Ortağı Merkezi 'nde çalışmaya kaydolmak ve başlamak için:
 
-Ortak Merkezi'ne kaydolmak için yeni bir teklif oluşturmaya veya varolan bir teklif üzerinde çalışmaya başlayın:
-
-- Teklifinizi oluşturmak veya tamamlamak için [Partner Center'da oturum açın.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
-- Bkz. Daha fazla bilgi için [bir Azure kapsayıcı teklifi oluşturun.](./partner-center-portal/create-azure-container-offer.md)
+- Teklifinizi oluşturmak veya tamamlayabilmeniz için [Iş Ortağı Merkezi ' nde oturum açın](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
+- Daha fazla bilgi için bkz. [Azure Container teklifi oluşturma](./partner-center-portal/create-azure-container-offer.md) .

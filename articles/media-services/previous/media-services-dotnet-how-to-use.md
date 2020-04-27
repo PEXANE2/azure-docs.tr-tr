@@ -1,6 +1,6 @@
 ---
-title: .NET ile Medya Hizmetleri Geliştirme için Bilgisayar Nasıl Ayarlanır?
-description: .NET için Medya Hizmetleri SDK'yı kullanarak Medya Hizmetleri için ön koşullar hakkında bilgi edinin. Ayrıca Visual Studio uygulaması oluşturmayı da öğrenin.
+title: Bilgisayarı .NET ile Media Services geliştirme için ayarlama
+description: .NET için Media Services SDK 'sını kullanarak Media Services önkoşulları hakkında bilgi edinin. Ayrıca, Visual Studio uygulaması oluşturmayı öğrenin.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,57 +15,57 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 51fffbd170daecfec6fcea95caa0526e6d881407
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "64724108"
 ---
-# <a name="media-services-development-with-net"></a>.NET ile Medya Hizmetleri geliştirme 
+# <a name="media-services-development-with-net"></a>.NET ile Media Services geliştirme 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
-Bu makalede, .NET kullanarak Medya Hizmetleri uygulamalarını geliştirmeye nasıl başlarıaçıklanmıştır.
+Bu makalede, .NET kullanarak Media Services uygulamaları geliştirmeye nasıl başlayabileceği açıklanır.
 
-**Azure Media Services .NET SDK** kitaplığı ,NET'i kullanarak Medya Hizmetlerine karşı program yapmanızı sağlar. .NET ile geliştirmeyi daha da kolaylaştırmak için **Azure Media Services .NET SDK Uzantıları** kitaplığı sağlanır. Bu kitaplık, .NET kodunuzu basitleştiren bir dizi uzantı yöntemi ve yardımcı işlevi içerir. Her iki kitaplık da **NuGet** ve **GitHub**üzerinden kullanılabilir.
+**Azure Media Services .NET SDK** kitaplığı, .net kullanarak Media Services karşı programlama yapmanızı sağlar. .NET ile geliştirmeyi daha da kolaylaştırmak için **Azure Media Services .NET SDK uzantıları** kitaplığı sağlanır. Bu kitaplık, .NET kodunuzu basitleştirecek bir uzantı yöntemleri ve yardımcı işlevler kümesi içerir. Her iki kitaplık da **NuGet** ve **GitHub**aracılığıyla kullanılabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* Yeni veya mevcut bir Azure aboneliğinde bir Media Services hesabı. Makaleye bakın [Medya Hizmetleri Hesabı Oluşturma .](media-services-portal-create-account.md)
-* İşletim Sistemleri: Windows 10, Windows 7, Windows 2008 R2 veya Windows 8.
-* .NET Framework 4.5 veya sonrası.
+* Yeni veya mevcut bir Azure aboneliğinde bir Media Services hesabı. [Media Services hesabı oluşturma](media-services-portal-create-account.md)makalesine bakın.
+* İşletim sistemleri: Windows 10, Windows 7, Windows 2008 R2 veya Windows 8.
+* .NET Framework 4,5 veya üzeri.
 * Visual Studio.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio projesi oluşturup yapılandırma
-Bu bölümde Visual Studio'da nasıl bir proje oluşturulup Medya Hizmetleri geliştirmeiçin nasıl ayarlayabileceğiniz gösterilmektedir.  Bu durumda, proje bir C# Windows konsol uygulamasıdır, ancak burada gösterilen aynı kurulum adımları Medya Hizmetleri uygulamaları için oluşturabileceğiniz diğer proje türleri (örneğin, Windows Forms uygulaması veya ASP.NET Web uygulaması) için geçerlidir.
+Bu bölümde, Visual Studio 'da bir proje oluşturma ve Media Services geliştirme için ayarlama gösterilmektedir.  Bu durumda, proje bir C# Windows konsol uygulamasıdır, ancak burada gösterilen kurulum adımları, Media Services uygulamalar için oluşturabileceğiniz diğer proje türleri için de geçerlidir (örneğin, bir Windows Forms uygulaması veya bir ASP.NET Web uygulaması).
 
-Bu bölümde, Medya Hizmetleri .NET SDK uzantıları ve diğer bağımlı kitaplıkları eklemek için **NuGet'in** nasıl kullanılacağı gösterilmektedir.
+Bu bölümde, Media Services .NET SDK uzantıları ve diğer bağımlı kitaplıkları eklemek için **NuGet** 'in nasıl kullanılacağı gösterilmektedir.
 
-Alternatif olarak, GitHub 'dan[(github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) veya [github.com/Azure/azure-sdk-for-media-services-extensions)](https://github.com/Azure/azure-sdk-for-media-services-extensions)en son Medya Hizmetleri .NET SDK bitlerini alabilir), çözümü oluşturabilir ve müşteri projesine başvuruları ekleyebilirsiniz. Gerekli tüm bağımlılıklar otomatik olarak indirilir ve ayıklanır.
+Alternatif olarak, GitHub 'dan ([GitHub.com/Azure/Azure-SDK-for-Media-Services](https://github.com/Azure/azure-sdk-for-media-services) veya [GitHub.com/Azure/Azure-SDK-for-Media-Services-Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)) en son Media Services .NET SDK bitlerini alabilir, çözümü oluşturabilir ve başvuruları istemci projesine ekleyebilirsiniz. Tüm gerekli bağımlılıklar otomatik olarak indirilir ve ayıklanır.
 
-1. Visual Studio’da yeni bir C# Konsol Uygulaması oluşturun. **Ad,** **Konum**ve **Çözüm adını**girin ve ardından Tamam'ı tıklatın.
+1. Visual Studio’da yeni bir C# Konsol Uygulaması oluşturun. **Ad**, **konum**ve **çözüm adını**girin ve ardından Tamam ' a tıklayın.
 2. Çözümü derleyin.
-3. **Azure Medya Hizmetleri .NET SDK Uzantılarını** **(windowsazure.mediaservices.extensions)** yüklemek ve eklemek için **NuGet'i** kullanın. Bu paketin yüklenmesiyle **Media Services .NET SDK** da yüklenir ve diğer tüm gerekli bağımlılıklar eklenir.
+3. **Azure Media Services .NET SDK uzantıları** yüklemek ve eklemek için **NuGet** kullanın (**windowsazure. mediaservices. Extensions**). Bu paketin yüklenmesiyle **Media Services .NET SDK** da yüklenir ve diğer tüm gerekli bağımlılıklar eklenir.
    
-    NuGet'in en yeni sürümünün yüklü olduğundan emin olun. Daha fazla bilgi ve yükleme yönergeleri için [NuGet'e](https://nuget.codeplex.com/)bakın.
+    NuGet 'in en yeni sürümünün yüklü olduğundan emin olun. Daha fazla bilgi ve yükleme yönergeleri için bkz. [NuGet](https://nuget.codeplex.com/).
 
-    1. Çözüm Gezgini'nde, projenin adını sağ tıklatın ve **NuGet Paketlerini Yönet'i**seçin.
+    1. Çözüm Gezgini, projenin adına sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin.
 
     2. NuGet Paketlerini Yönet iletişim kutusu görünür.
 
-    3. Çevrimiçi galeride Azure MediaServices Uzantıları'nı arayın, **Azure Media Services .NET SDK Uzantıları** **'nı (windowsazure.mediaservices.extensions)** seçin ve sonra **Yükle** düğmesini tıklatın.
+    3. Çevrimiçi galeride Azure MediaServices uzantıları için arama yapın **Azure Media Services .NET SDK uzantıları** ' nı (**windowsazure. mediaservices. Extensions**) seçin ve ardından **Install** düğmesine tıklayın.
    
-    4. Proje değiştirilir ve Medya Hizmetleri .NET SDK Uzantıları, Medya Hizmetleri .NET SDK ve diğer bağımlı derlemelere başvurular eklenir.
-4. Daha temiz bir geliştirme ortamını tanıtmak için NuGet Paketi Geri Yükleme'yi etkinleştirmeyi düşünün. Daha fazla bilgi için [NuGet Paketi Geri Yükleme"](https://docs.nuget.org/consume/package-restore)başlıklı bilgi için.
-5. **System.Configuration** derlemesine bir başvuru ekleyin. Bu derleme System.Configuration içerir. Yapılandırma dosyalarına erişmek için kullanılan **ConfigurationManager** sınıfı (örneğin, App.config).
+    4. Proje değiştirilir ve Media Services .NET SDK uzantıları, Media Services .NET SDK ve diğer bağımlı derlemeler eklenir.
+4. Bir temizleyici geliştirme ortamını yükseltmek için, NuGet paket geri yüklemeyi etkinleştirmeyi göz önünde bulundurun. Daha fazla bilgi için bkz. [NuGet paketini geri yükleme "](https://docs.nuget.org/consume/package-restore).
+5. **System. Configuration** derlemesine bir başvuru ekleyin. Bu derleme System. Configuration içerir. Yapılandırma dosyalarına erişmek için kullanılan (örneğin, App. config **) sınıf.**
    
-    1. Başvuruları Yönet iletişim kutusunu kullanarak başvuru eklemek için Çözüm Gezgini'ndeki proje adını sağ tıklatın. Ardından **Ekle'yi**tıklatın, ardından **Başvuru...'u tıklatın.**
+    1. Başvuruları Yönet iletişim kutusunu kullanarak başvurular eklemek için Çözüm Gezgini proje adına sağ tıklayın. Ardından **Ekle**' ye ve ardından **başvuru...** öğesine tıklayın.
    
     2. Başvuruları Yönet iletişim kutusu görüntülenir.
-    3. .NET çerçeve derlemeleri altında System.Configuration derlemesini bulun ve seçin ve **Tamam**tuşuna basın.
-6. App.config dosyasını açın ve dosyaya bir **uygulama Ayarları** bölümü ekleyin. Medya Hizmetleri API'sine bağlanmak için gereken değerleri ayarlayın. Daha fazla bilgi için Azure [AD kimlik doğrulaması yla Azure Medya Hizmetleri API'sine eriş'e](media-services-use-aad-auth-to-access-ams-api.md)bakın. 
+    3. .NET Framework derlemeleri altında, System. Configuration derlemesini bulun ve seçin ve **Tamam**' a basın.
+6. App. config dosyasını açın ve dosyaya bir **appSettings** bölümü ekleyin. Media Services API 'sine bağlanmak için gereken değerleri ayarlayın. Daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure Media Services API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md). 
 
-    **Hizmet ana** kimlik doğrulama yöntemini kullanarak bağlanmak için gereken değerleri ayarlayın.
+    **Hizmet sorumlusu** kimlik doğrulama yöntemini kullanarak bağlanmak için gereken değerleri ayarlayın.
 
         ```csharp
                 <configuration>
@@ -79,8 +79,8 @@ Alternatif olarak, GitHub 'dan[(github.com/Azure/azure-sdk-for-media-services](h
                 </configuration>
         ```
 
-7. Projenize **System.Configuration** referansını ekleyin.
-8. Program.cs dosyanın başındaki mevcut **ifadeleri** aşağıdaki kodla üzerine yazın:
+7. **System. Configuration** başvurusunu projenize ekleyin.
+8. Program.cs dosyasının başındaki mevcut **using** deyimlerinin üzerine aşağıdaki kodu yazın:
 
     ```csharp      
             using System;
@@ -92,11 +92,11 @@ Alternatif olarak, GitHub 'dan[(github.com/Azure/azure-sdk-for-media-services](h
             using System.Linq;
     ```
 
-    Bu noktada, bir Medya Hizmetleri uygulaması geliştirmeye başlamaya hazırsınız.    
+    Bu noktada, bir Media Services uygulaması geliştirmeye başlamaya başlayabilirsiniz.    
 
 ## <a name="example"></a>Örnek
 
-Burada AMS API'ye bağlanan ve kullanılabilir tüm Medya İşlemcileri listeleyen küçük bir örnek verilmiştir.
+AMS API 'sine bağlanan ve tüm kullanılabilir medya Işlemcilerini listeleyen küçük bir örnek aşağıda verilmiştir.
 
 ```csharp
         class Program
@@ -135,7 +135,7 @@ Burada AMS API'ye bağlanan ve kullanılabilir tüm Medya İşlemcileri listeley
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık [AMS API'sine bağlanabilir](media-services-use-aad-auth-to-access-ams-api.md) ve [geliştirmeye başlayabilirsiniz.](media-services-dotnet-get-started.md)
+Artık [AMS API 'sine bağlanabilir](media-services-use-aad-auth-to-access-ams-api.md) ve [geliştirmeye](media-services-dotnet-get-started.md)başlayabilirsiniz.
 
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları

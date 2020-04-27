@@ -1,6 +1,6 @@
 ---
-title: HB serisi ve HC serisi Sanal Makinelerile bilinen sorunlar - Azure Sanal Makineler | Microsoft Dokümanlar
-description: Azure'da HB serisi VM boyutlarıyla ilgili bilinen sorunlar hakkında bilgi edinin.
+title: HB Serisi ve HC Serisi VM 'lerle ilgili bilinen sorunlar-Azure sanal makineleri | Microsoft Docs
+description: Azure 'da HB Serisi VM boyutlarıyla ilgili bilinen sorunlar hakkında bilgi edinin.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,35 +13,35 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: 8d4b57fb2fee3849e102868c86fe3cab465fc70d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67707791"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>HB serisi ve HC serisi sanal makineler ile ilgili bilinen sorunlar
 
-Bu makalede, HB serisi ve HC serisi VM'ler kullanılırken en sık karşılaşılan sorunlar ve çözümler yer alabı.
+Bu makalede, HB Serisi ve HC Serisi VM 'Leri kullanırken en yaygın sorunlar ve çözümler sağlanmaktadır.
 
-## <a name="dram-on-hb-series"></a>HB serisi dram
+## <a name="dram-on-hb-series"></a>DRAM on HB Serisi
 
-HB serisi VM'ler şu anda konuk VM'lere yalnızca 228 GB RAM maruz bırakabilir. Bunun nedeni, sayfaların konuk VM için ayrılmış AMD CCX'in (NUMA etki alanları) yerel DRAM'ına atanmasını önlemek için Azure hipervizörünün bilinen bir sınırlamasıdır.
+HB Serisi VM 'Ler Şu anda Konuk VM 'lere yalnızca 228 GB RAM kullanıma sunabilir. Bunun nedeni, sayfaların Konuk sanal makine için ayrılmış olan (NUMA etki alanları) yerel DRAM 'ye atanmasını engellemek için Azure hiper yöneticisinin bilinen bir sınırlamasıdır.
 
 ## <a name="accelerated-networking"></a>Hızlandırılmış Ağ
 
-Azure Hızlandırılmış Ağ şu anda etkin değil, ancak Önizleme dönemi boyunca ilerledikçe etkinleştirilir. Bu özellik desteklendiğinde müşterilerimizi bilgilendiririz.
+Azure hızlandırılmış ağ Iletişimi Şu anda etkin değil, ancak önizleme dönemi boyunca ilerliyoruz. Bu özellik desteklenmiş olduğunda müşterileri bilgilendireceğiz.
 
-## <a name="qp0-access-restriction"></a>qp0 Erişim Kısıtlaması
+## <a name="qp0-access-restriction"></a>qp0 erişim kısıtlaması
 
-Güvenlik açıklarına neden olabilecek düşük düzeyli donanım erişimini önlemek için, Sıra Çifti 0'a konuk VM'ler erişemez. Bu yalnızca genellikle ConnectX-5 NIC'nin yönetimiyle ilişkili eylemleri etkilemeli ve ibdiagnet gibi bazı InfiniBand tanılamalarını çalıştırmayı etkilemelidir, ancak son kullanıcı uygulamalarının kendileri çalışmamalıdır.
+Güvenlik açıklarına neden olan alt düzey donanım erişimini engellemek için, 0 kuyruk çifti Konuk VM 'Ler tarafından erişilemez. Bu, genellikle yalnızca ConnectX-5 NIC yönetimi ile ilişkili eylemleri ve ıdiagnet gibi bazı InfiniBand tanılamayı çalıştırıyor, ancak son kullanıcı uygulamalarının kendisini etkilemez.
 
-## <a name="ud-transport"></a>UD Taşımacılık
+## <a name="ud-transport"></a>UD taşıması
 
-Lansmanda, HB- ve HC serisi Dinamik Bağlantılı Taşımayı (DCT) desteklemez. DCT desteği zaman içinde uygulanacaktır. Güvenilir Bağlantı (RC) ve Güvenilmez Datagram (UD) aktarımları desteklenir.
+Başlatılırken, HB ve HC Serisi dinamik olarak bağlı taşımayı (DCT) desteklemez. DCT desteği zaman içinde uygulanır. Güvenilir bağlantı (RC) ve güvenilir olmayan veri birimi (UD) aktarımları desteklenir.
 
-## <a name="gss-proxy"></a>GSS Proxy
+## <a name="gss-proxy"></a>GSS proxy
 
-GSS Proxy CentOS / RHEL 7.5 nfs ile kullanıldığında önemli bir performans ve duyarlılık cezası olarak tezahür edebilir bilinen bir hata vardır. Bu, şu şekilde azaltılabilir:
+GSS proxy 'Si, SP1 ile kullanıldığında önemli bir performans ve yanıt verme cezası olarak bildirimde bulunan CentOS/RHEL 7,5 ' de bilinen bir hataya sahiptir. Bu, ile azaltılabilir:
 
 ```console
 sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
@@ -49,11 +49,11 @@ sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
 
 ## <a name="cache-cleaning"></a>Önbellek Temizleme
 
-HPC sistemlerinde, bir sonraki kullanıcıya aynı düğüm atanmadan önce bir iş bittikten sonra belleği temizlemek genellikle yararlıdır. Linux'ta uygulamaları çalıştırdıktan sonra, herhangi bir uygulama çalıştırmamarağmen, arabellek belleğiniz artarken kullanılabilir belleğinizin aza dığını görebilirsiniz.
+HPC sistemlerinde, bir sonraki kullanıcıya aynı düğüm atanmadan önce, bir iş bittikten sonra belleği temizlemek genellikle yararlı olur. Linux 'ta uygulama çalıştırdıktan sonra, herhangi bir uygulama çalıştırmamasına rağmen arabellek belleğinizin arttığı sırada kullanılabilir belleğinizin azaldığı fark edebilirsiniz.
 
 ![Komut isteminin ekran görüntüsü](./media/known-issues/cache-cleaning-1.png)
 
-Kullanarak `numactl -H` hangi NUMAnode(lar) bellek ile arabelleğe olduğunu gösterir (muhtemelen tüm). Linux'ta, kullanıcılar arabelleğe alınmış veya önbelleğe alınmış belleği 'ücretsiz'e döndürmek için önbellekleri üç şekilde temizleyebilir. Kök olmak ya da sudo izinleri olması gerekir.
+Kullanmak `numactl -H` , belleğin hangi numlik ile arabelleğe alındığına (muhtemelen büyük olasılıkla) sahip olduğunu gösterir. Linux 'ta kullanıcılar, arabelleğe alınmış veya önbelleğe alınmış belleği ' ücretsiz ' olarak döndürmek için önbellekleri üç yolla temizleyebilir. Kök olmanız veya sudo izinleriniz olması gerekir.
 
 ```console
 echo 1 > /proc/sys/vm/drop_caches [frees page-cache]
@@ -65,7 +65,7 @@ echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 
 ## <a name="kernel-warnings"></a>Çekirdek uyarıları
 
-Linux altında HB serisi VM önyükleme yaparken aşağıdaki çekirdek uyarı iletilerini görebilirsiniz.
+Linux altında bir HB Serisi VM 'yi önyüklerken aşağıdaki çekirdek uyarı iletilerini görebilirsiniz.
 
 ```console
 [  0.004000] WARNING: CPU: 4 PID: 0 at arch/x86/kernel/smpboot.c:376 topology_sane.isra.3+0x80/0x90
@@ -85,8 +85,8 @@ Linux altında HB serisi VM önyükleme yaparken aşağıdaki çekirdek uyarı i
 [  0.004000] ---[ end trace 73fc0e0825d4ca1f ]---
 ```
 
-Bu uyarıyı yoksayabilirsiniz. Bunun nedeni, Azure hipervizörünün zaman içinde ele alınacağı bilinen bir sınırlamadır.
+Bu uyarıyı yoksayabilirsiniz. Bunun nedeni, Azure hiper yöneticinin zaman içinde ele alacak bilinen bir sınırlamasıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure'da [yüksek performanslı bilgi işlem](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.
+Azure 'da [yüksek performanslı bilgi işlem](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.

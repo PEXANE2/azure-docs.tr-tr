@@ -1,6 +1,6 @@
 ---
-title: StorSimple Virtual Array cihaz özet bıçak | Microsoft Dokümanlar
-description: StorSimple Aygıt Yöneticisi için aygıt özet bıçağını açıklar ve StorSimple Virtual Array'inizin durumunu izlemek için nasıl kullanılacağını açıklar.
+title: StorSimple Sanal dizi cihazı Özet dikey penceresi | Microsoft Docs
+description: StorSimple Aygıt Yöneticisi için cihaz Özeti dikey penceresini açıklar ve StorSimple Sanal dizininizdeki sistem durumunu izlemek için nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
 ms.openlocfilehash: 9edc0b552f5c2f38e646bc4b44dd8df5c16b0457
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61408515"
 ---
-# <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>StorSimple Virtual Array'e bağlı StorSimple Device Manager için aygıt özet bıçağını kullanın
+# <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>StorSimple Sanal dizisine bağlı StorSimple Aygıt Yöneticisi için cihaz Özeti dikey penceresini kullanın
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple Device Manager aygıt bıçağı, belirli bir StorSimple Aygıt Yöneticisi'ne kayıtlı bir StorSimple Virtual Array'in özet görünümünü sağlayarak sistem yöneticisinin dikkatine ihtiyaç duyan aygıt sorunlarını vurgular. Bu öğretici, aygıt özeti bıçağını tanıtır, içeriği ve işlevi açıklar ve bu bıçaktan gerçekleştirebileceğiniz görevleri açıklar.
+StorSimple Aygıt Yöneticisi cihaz dikey penceresi, belirli bir StorSimple Aygıt Yöneticisi kayıtlı bir StorSimple Sanal dizisinin Özet görünümünü sağlar ve bu da Sistem Yöneticisi 'nin dikkatini çekmesini gerektiren cihaz sorunlarını vurgular. Bu öğretici, cihaz Özeti dikey penceresini tanıtır, içerik ve işlevi açıklar ve bu dikey pencereden gerçekleştirebileceğiniz görevleri açıklar.
 
-Cihaz özeti bıçak aşağıdaki bilgileri görüntüler:
+Cihaz Özeti dikey penceresinde aşağıdaki bilgiler görüntülenir:
 
 ![Cihaz panosu](./media/storsimple-virtual-array-device-summary/device-blade.png)
 
@@ -35,25 +35,25 @@ Cihaz özeti bıçak aşağıdaki bilgileri görüntüler:
 
 ## <a name="management"></a>Yönetim
 
-StorSimple aygıt bıçaklarında, StorSimple cihazınızı yönetme seçeneklerini görürsünüz. Yönetimin komutlarını bıçağın üstündeve sol tarafında görüyorsunuz. Paylaşımlar veya birimler eklemek veya sanal diziniz üzerinde güncelleştirmek veya başarısız olmak için bu seçenekleri kullanın.
+StorSimple cihaz dikey penceresinde, StorSimple cihazınızı yönetme seçeneklerini görürsünüz. Yönetim komutlarını dikey pencerenin üst kısmında ve sol tarafta görürsünüz. Paylaşımlar veya birimler eklemek veya sanal dizinizi güncelleştirmek ya da devretmek için bu seçenekleri kullanın.
 
-Temel alan, durum, model, yazılım sürümü gibi bazı önemli özellikleri n yanı sıra dizinin **Web Ara Birimi'ne** bağlantı yakalar. Bir dahili ağdaysanız, sanal dizinizi yönetmek için [doğrudan yerel web web web ui'sini](storsimple-ova-web-ui-admin.md) başlatabilirsiniz.
+Essentials alanı, durum, model, yazılım sürümü ve dizinin **Web Kullanıcı arabirimine** bir bağlantı gibi önemli özelliklerden bazılarını yakalar. Bir iç ağ kullanıyorsanız, sanal dizinizi yönetmek için doğrudan [Yerel Web Kullanıcı arabirimini](storsimple-ova-web-ui-admin.md) başlatabilirsiniz.
 
 ![Cihaz temelleri](./media/storsimple-virtual-array-device-summary/device-essentials.png)
 
-## <a name="storsimple-device-summary"></a>StorBasit cihaz özeti
+## <a name="storsimple-device-summary"></a>StorSimple cihaz Özeti
 
-* **Uyarılar** döşemesi, uyarı şiddetine göre gruplanmış sanal diziniz için tüm etkin uyarıların anlık görüntüsünü sağlar. **Uyarılar** bıçağını açmak için döşemeyi tıklatın ve ardından önerilen eylemler de dahil olmak üzere bu uyarıyla ilgili ek ayrıntıları görüntülemek için tek bir uyarıyı tıklatın. Sorun çözülmüşse uyarıyı da temizleyebilirsiniz.
+* **Uyarılar** kutucuğu, sanal diziniz için uyarı önem derecesine göre gruplandırılan tüm etkin uyarıların anlık görüntüsünü sağlar. Kutucuğa tıklayarak **Uyarılar** dikey penceresini açın ve ardından bu uyarıya ilişkin ek ayrıntıları görüntülemek için önerilen eylemler dahil olmak üzere tek bir uyarıya tıklayın. Sorun çözümlenirse uyarıyı da temizleyebilirsiniz.
 
-* **Kapasite** döşemesi, sanal aygıtta aynı depoiçin kullanılabilen toplam depolama alanına göre sağlanan ve sanal aygıt ta kalan birincil depolamayı görüntüler. **Sağlanan,** kullanılmak üzere hazırlanan ve ayrılan depolama miktarını ifade eder, **Kalan** bu aygıt ta sağlanabilir kalan kapasiteyi ifade eder. **Kalan Katmanlı** kapasite bulut da dahil olmak üzere sağlanabilir kullanılabilir kapasitedir, **Kalan Yerel** ise bu sanal diziye bağlı disklerde kalan kapasitedir.
+* **Kapasite** kutucuğu, sanal cihaz genelinde sağlanan ve kalan toplam depolama alanı ile ilişkili birincil depolama alanını görüntüler. **Sağlanan** , kullanıma hazır ve kullanım için ayrılan depolama miktarına başvuruyorsa, **kalan** , bu cihaz genelinde sağlanabilen kalan kapasiteyi ifade eder. **Kalan katmanlı** kapasite, bulut dahil olmak üzere sağlanan kapasiteye sahip olsa da, **kalan yerel** , bu sanal diziye bağlı disklerde kalan kapasiteye sahip olur.
 
-* **Kullanım** grafiğinde, sanal dizinizde kullanılan birincil depolama alanının yanı sıra varsayılan zaman dilimi olan son 7 gün içinde tüketilen bulut depolamasını görüntüleyebilirsiniz. Farklı bir zaman ölçeği seçmek için grafiğin sağ üst köşesindeki **Edit** seçeneğini kullanın.
+* **Kullanım** grafiğinde, sanal diziniz genelinde kullanılan birincil depolamayı, son 7 gün içinde tüketilen bulut depolama alanını ve varsayılan zaman aralığını görüntüleyebilirsiniz. Farklı bir zaman ölçeği seçmek için grafiğin sağ üst köşesindeki **Düzenle** seçeneğini kullanın.
 
-* **Hisse** ler veya **Birimler** döşemesi, cihazınızda duruma göre gruplanmış hisse veya birim sayısının bir özetini sağlar. **Hisse** ler veya **Birimler** liste bıçaklarını açmak için döşemeyi tıklatın ve sonra özelliklerini görüntülemek veya değiştirmek için tek bir paylaşım veya birimin üzerine tıklayın. Daha fazla bilgi [için, paylaşımları](storsimple-virtual-array-manage-shares.md) nasıl yöneteceklerine veya birimleri nasıl [yönetenene](storsimple-virtual-array-manage-volumes.md)bakın.
+* **Paylaşımlar** veya **birimler** kutucuğu, cihazınızdaki durum ile gruplanan paylaşımların veya birimlerin bir özetini sağlar. Kutucuğa tıklayarak **Paylaşımlar** veya **birimler** listesi dikey penceresini açın ve ardından tek bir paylaşıma veya birime tıklayarak özelliklerini görüntüleyin veya değiştirin. Daha fazla bilgi için bkz. [paylaşımları yönetme](storsimple-virtual-array-manage-shares.md) veya [birimleri yönetme](storsimple-virtual-array-manage-volumes.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Şunları nasıl yapacağınızı öğrenin:
-- [StorSimple Virtual Array'deki paylaşımları yönetme](storsimple-virtual-array-manage-shares.md)
+- [StorSimple Sanal dizisindeki paylaşımları yönetme](storsimple-virtual-array-manage-shares.md)
     
-- [StorSimple Virtual Array'de birimleri yönetme](storsimple-virtual-array-manage-volumes.md)
+- [StorSimple Sanal dizisindeki birimleri yönetme](storsimple-virtual-array-manage-volumes.md)
 

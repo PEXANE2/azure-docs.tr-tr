@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs'daki bir laboratuvarda VM'yi yeniden dağıtma | Microsoft Dokümanlar
-description: Azure DevTest Labs'da sanal bir makineyi yeniden dağıtmayı (bir Azure düğümünden diğerine taşıma) öğrenin.
+title: Azure DevTest Labs bir laboratuvarda sanal makineyi yeniden dağıtma | Microsoft Docs
+description: Azure DevTest Labs bir sanal makineyi yeniden dağıtmayı öğrenin (bir Azure düğümünden diğerine geçiş).
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,31 +15,31 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 4500fcfa6fbfb346a6e5c7fd045ba0046a901b91
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60561633"
 ---
-# <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs'daki bir laboratuvarda VM'yi yeniden dağıtma
-Uzak bir masaüstü bağlantısı üzerinden bir laboratuvardaki sanal makineye (VM) bağlanamıyorsanız, VM'yi yeniden dağıtın ve yeniden bağlanmayı deneyin. Bir VM'yi yeniden dağıttığınızda, DevTest Labs VM'yi üzerinde çalışan düğümden Azure altyapısı nda yeni bir düğüme taşır. Daha sonra tüm yapılandırma seçenekleri ve ilişkili kaynakları korurken VM başlar. Bu özellik, uzak masaüstü bağlantınızı veya uygulama erişiminizi laboratuarda Windows tabanlı VM'lere gidermek için harcadığınız zamandan tasarruf etmenizi sağlar. 
+# <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvarda sanal makineyi yeniden dağıtma
+Bir laboratuvarda Uzak Masaüstü bağlantısı aracılığıyla bir sanal makineye (VM) bağlanamıyorsanız, VM 'yi yeniden dağıtın ve tekrar bağlanmayı deneyin. Bir VM 'yi yeniden dağıtırken, DevTest Labs VM 'yi çalıştıran düğümden Azure altyapısı içindeki yeni bir düğüme taşıdır. Daha sonra tüm yapılandırma seçeneklerinizi ve ilişkili kaynaklarınızı korurken VM 'yi başlatır. Bu özellik, uzak masaüstü bağlantınızın giderilmesi veya laboratuvardaki Windows tabanlı VM 'lere erişim için harcanan süreyi kaydeder. 
 
-## <a name="steps-to-redeploy-a-vm-in-a-lab"></a>Bir VM'yi laboratuvarda yeniden dağıtma adımları 
-Bir VM'yi Azure DevTest Labs'daki bir laboratuvarda yeniden dağıtmak için aşağıdaki adımları izleyin: 
+## <a name="steps-to-redeploy-a-vm-in-a-lab"></a>Laboratuvarda bir VM 'yi yeniden dağıtma adımları 
+Azure DevTest Labs bir laboratuvarda bir sanal makineyi yeniden dağıtmak için aşağıdaki adımları uygulayın: 
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-2. **Tüm Hizmetler'i**seçin ve ardından listeden **DevTest Labs'ı** seçin.
-3. Laboratuvarlar listesinden, yeniden dağıtmak istediğiniz VM'yi içeren laboratuarı seçin.  
-4. Sol panelde **Sanal Makinelerim'i**seçin. 
-5. VM'ler listesinden bir VM seçin.
-6. VM'niz in Sanal Makine sayfasında, sol menüde **OPERATIONS** altında **Yeniden Dağıt'ı** seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+2. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
+3. Laboratuvarlar listesinden, yeniden dağıtmak istediğiniz VM 'yi içeren Laboratuvarı seçin.  
+4. Sol bölmede **sanal makinelerim**' ı seçin. 
+5. VM 'Ler listesinden bir VM seçin.
+6. VM 'nizin sanal makine sayfasında sol menüdeki **işlemler** ' in altında yeniden **Dağıt** ' ı seçin.
 
     ![Yeniden dağıtım](media/devtest-lab-redeploy-vm/redeploy.png)
-7. Sayfadaki bilgileri okuyun ve **Yeniden Dağıt düğmesini** seçin. 9. **Bildirimler** penceresinde yeniden dağıtma işleminin durumunu denetleyin.
+7. Sayfadaki bilgileri okuyun ve yeniden **Dağıt** düğmesini seçin. 9. **Bildirimler** penceresindeki yeniden dağıtma işleminin durumunu denetleyin.
 
-    ![Durumu yeniden dağıtma](media/devtest-lab-redeploy-vm/redeploy-status.png)
+    ![Yeniden dağıtım durumu](media/devtest-lab-redeploy-vm/redeploy-status.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure DevTest Labs'da bir VM'i nasıl yeniden [boyutlandırıracağız](devtest-lab-resize-vm.md)öğrenin, bkz.
+Azure DevTest Labs bir sanal makineyi yeniden boyutlandırmayı öğrenin, bkz. [bir VM 'Yi yeniden boyutlandırma](devtest-lab-resize-vm.md).
 
 

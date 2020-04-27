@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri kullanarak DRM alt sisteminin karma tasarımı | Microsoft Dokümanlar
-description: Bu konu, Azure Medya Hizmetleri'ni kullanarak DRM alt sisteminin karma tasarımını tartışır.
+title: Azure Media Services kullanarak DRM alt sisteminin hibrit tasarımı | Microsoft Docs
+description: Bu konu, Azure Media Services kullanılarak DRM alt sisteminin karma tasarımını ele alır.
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -15,41 +15,41 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: d2f4ddfbff791fbfeb2eb006a628c0fdeb4fdce1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44095cb85c62fd40032263d96ad678bdeb5effc0
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74975202"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159412"
 ---
-# <a name="hybrid-design-of-drm-subsystems"></a>DRM alt sistemlerinin hibrid tasarımı 
+# <a name="hybrid-design-of-drm-subsystems"></a>DRM alt sistemlerinin karma tasarımı 
 
-Bu konu, Azure Medya Hizmetleri'ni kullanarak DRM alt sisteminin karma tasarımını tartışır.
+Bu konu, Azure Media Services kullanılarak DRM alt sisteminin karma tasarımını ele alır.
 
 ## <a name="overview"></a>Genel Bakış
 
 Azure Media Services aşağıdaki üç DRM sistemi için destek sağlar:
 
 * PlayReady
-* Widevine (Modüler)
+* Widevine (modüler)
 * FairPlay
 
-DRM desteği DRM şifreleme (dinamik şifreleme) ve lisans teslimini içerir ve Azure Media Player tarayıcı oynatıcı SDK olarak 3 DRM'nin tümini destekler.
+DRM desteği, tüm 3 DRMs 'Leri bir tarayıcı oynatıcı SDK 'Sı olarak desteklemek Azure Media Player, DRM şifrelemesini (dinamik şifrelemeyi) ve lisans teslimini içerir.
 
-DRM/CENC alt sistem tasarımı ve uygulamasının ayrıntılı bir tedavisi için, [multi-DRM ve Erişim Kontrolü ile CENC](media-services-cenc-with-multidrm-access-control.md)başlıklı belgeye bakın.
+DRM/CENC alt sistemi tasarımı ve uygulamasını ayrıntılı bir şekilde görmek için lütfen bkz. [birden çok DRM ve Access Control CENC](media-services-cenc-with-multidrm-access-control.md)adlı belge.
 
-Üç DRM sistemi için tam destek sunsak da, bazen müşterilerin karma bir DRM alt sistemi oluşturmak için Azure Medya Hizmetleri'ne ek olarak kendi altyapı/alt sistemlerinin çeşitli bölümlerini kullanmaları gerekir.
+Üç DRM sistemine yönelik kapsamlı destek sunuyoruz, ancak bazen müşterilerin karma bir DRM alt sistemi oluşturmak için Azure Media Services ek olarak kendi altyapısının/alt sistemlerinin çeşitli parçalarını kullanması gerekir.
 
-Aşağıda müşteriler tarafından sorulan bazı sık sorulan sorular şunlardır:
+Müşteriler tarafından istenen bazı yaygın sorular aşağıda verilmiştir:
 
-* "Kendi DRM lisans sunucularımı kullanabilir miyim?" (Bu durumda, müşteriler gömülü iş mantığı ile DRM lisans sunucusu çiftliğine yatırım yaptık).
-* "AMS'de içerik barındırmadan Azure Medya Hizmetleri'ndeki yalnızca DRM lisans tesliminizi kullanabilir miyim?"
+* "Kendi DRM lisans sunucularımı kullanabilir miyim?" (Bu durumda, müşteriler, gömülü iş mantığı ile DRM lisans sunucusu grubuna yatırım yapmış demektir).
+* "AMS 'de içerik barındırmadan yalnızca Azure Media Services için DRM lisans teslimatını kullanabilir miyim?"
 
 ## <a name="modularity-of-the-ams-drm-platform"></a>AMS DRM platformunun modülerliği
 
-Kapsamlı bir bulut video platformunun parçası olarak Azure Media Services DRM, esneklik ve modülerlik göz önünde bulundurularak bir tasarıma sahiptir. Azure Medya Hizmetleri'ni aşağıdaki tabloda açıklanan aşağıdaki farklı kombinasyonlardan herhangi biriyle kullanabilirsiniz (tabloda kullanılan notasyonun açıklaması aşağıdaki). 
+Azure Media Services DRM, kapsamlı bir bulut video platformunun bir parçası olarak esneklik ve modülerliği göz önünde bulundurularak bir tasarıma sahiptir. Aşağıdaki tabloda açıklanan aşağıdaki farklı birleşimlerden herhangi biriyle Azure Media Services kullanabilirsiniz (aşağıdaki tabloda kullanılan Gösterimin açıklaması). 
 
-|**& menşeini barındıran içerik**|**İçerik şifreleme**|**DRM lisansı verme**|
+|**& kaynağı barındıran içerik**|**İçerik şifreleme**|**DRM lisansı verme**|
 |---|---|---|
 |AMS|AMS|AMS|
 |AMS|AMS|Üçüncü taraf|
@@ -57,86 +57,86 @@ Kapsamlı bir bulut video platformunun parçası olarak Azure Media Services DRM
 |AMS|Üçüncü taraf|Üçüncü taraf|
 |Üçüncü taraf|Üçüncü taraf|AMS|
 
-### <a name="content-hosting--origin"></a>& menşeini barındıran içerik
+### <a name="content-hosting--origin"></a>& kaynağı barındıran içerik
 
-* AMS: video varlık AMS barındırılan ve akış AMS akışı uç noktaları (ancak mutlaka dinamik ambalaj) geçer.
-* Üçüncü taraf: video AMS dışında bir üçüncü taraf akış platformunda barındırılır ve teslim edilir.
+* AMS: video varlığı AMS 'de barındırılır ve akış, AMS akış uç noktaları üzerinden (dinamik paketleme olması gerekmez).
+* Üçüncü taraf: video, AMS dışında bir üçüncü taraf akış platformunda barındırılır ve teslim edilir.
 
 ### <a name="content-encryption"></a>İçerik şifreleme
 
-* AMS: içerik şifreleme, AMS dinamik şifreleme ile dinamik/isteğe bağlı olarak gerçekleştirilir.
-* Üçüncü taraf: içerik şifreleme, ön işleme iş akışı kullanılarak AMS dışında gerçekleştirilir.
+* AMS: içerik şifreleme, AMS dinamik şifrelemesi tarafından dinamik olarak/isteğe bağlı olarak gerçekleştirilir.
+* Üçüncü taraf: içerik şifreleme, bir ön işleme iş akışı kullanılarak AMS dışında gerçekleştirilir.
 
 ### <a name="drm-license-delivery"></a>DRM lisansı verme
 
 * AMS: DRM lisansı AMS lisans teslim hizmeti tarafından teslim edilir.
-* Üçüncü taraf: DRM lisansı AMS dışında bir üçüncü taraf DRM lisans sunucusu tarafından teslim edilir.
+* Üçüncü taraf: DRM lisansı, AMS dışında bir üçüncü taraf DRM lisans sunucusu tarafından dağıtılır.
 
-## <a name="configure-based-on-your-hybrid-scenario"></a>Karma senaryonuza göre yapılandırma
+## <a name="configure-based-on-your-hybrid-scenario"></a>Karma senaryonuz temelinde yapılandırma
 
 ### <a name="content-key"></a>İçerik anahtarı
 
-Bir içerik anahtarının yapılandırması sayesinde, hem AMS dinamik şifreleme hem de AMS lisans teslim hizmetinin aşağıdaki özniteliklerini denetleyebilirsiniz:
+Bir içerik anahtarı yapılandırması sayesinde, hem AMS dinamik şifreleme hem de AMS lisans teslimat hizmeti 'nin aşağıdaki özniteliklerini denetleyebilirsiniz:
 
 * Dinamik DRM şifrelemesi için kullanılan içerik anahtarı.
-* DRM lisans içeriği lisans teslim hizmetleri tarafından teslim edilecek: haklar, içerik anahtarı ve kısıtlamalar.
-* İçerik **türü anahtar yetkilendirme ilkesi kısıtlaması:** açık, IP veya belirteç kısıtlaması.
-* **İçerik anahtar yetkilendirme ilkesi kısıtlamasının** **belirteç** türü kullanılıyorsa, bir lisans verilmeden önce **içerik anahtarı yetkilendirme ilkesi kısıtlamasının** karşılanması gerekir.
+* Lisans Teslim Hizmetleri tarafından teslim edilecek DRM lisans içeriği: haklar, içerik anahtarı ve kısıtlamalar.
+* **İçerik anahtarı yetkilendirme ilkesi kısıtlamasının**türü: açık, IP veya belirteç kısıtlaması.
+* **İçerik anahtarı yetkilendirme ilkesi kısıtlamasının** **belirteç** türü kullanılırsa, bir lisans verilmeden önce **içerik anahtarı yetkilendirme ilkesi kısıtlamasının** karşılanması gerekir.
 
 ### <a name="asset-delivery-policy"></a>Varlık teslim ilkesi
 
-Bir varlık teslim ilkesinin yapılandırması sayesinde, AMS dinamik paketleyici si ve AMS akış bitiş noktasının dinamik şifrelemesi tarafından kullanılan aşağıdaki öznitelikleri denetleyebilirsiniz:
+Bir varlık teslim ilkesinin yapılandırması sayesinde, AMS dinamik paketleyicisi tarafından kullanılan aşağıdaki öznitelikleri ve bir AMS akış uç noktasının dinamik şifrelemesini kontrol edebilirsiniz:
 
-* Streaming protokolü ve DRM şifreleme kombinasyonu, CENC altında DASH (PlayReady ve Widevine), PlayReady altında düzgün akış, Widevine veya PlayReady altında HLS.
-* İlgili DRM'lerin her biri için varsayılan/katıştüre lisans teslim URL'leri.
-* DASH MPD veya HLS çalma listesindeki lisans edinme URL'leri (LA_URLs) sırasıyla Widevine ve FairPlay için anahtar kimliği (KID) sorgu dizesini içerir.
+* CENC (PlayReady ve Widevine) altındaki DASH gibi akış protokolü ve DRM şifreleme kombinasyonu, Widevine veya PlayReady altında PlayReady, HLS altında kesintisiz akış.
+* Dahil edilen her bir DRMs için varsayılan/katıştırılmış lisans teslimi URL 'Leri.
+* DASH MPD veya HLS çalma listesindeki lisans alma URL 'Lerinin (LA_URLs) Widevine ve FairPlay için anahtar KIMLIĞI (KıD) sorgu dizesini içerip içermediğini belirtir.
 
 ## <a name="scenarios-and-samples"></a>Senaryolar ve örnekler
 
-Önceki bölümdeki açıklamalara dayanarak, aşağıdaki beş karma senaryo da ilgili **İçerik anahtarı**-**Varlık teslim ilkesi** yapılandırma kombinasyonlarını kullanır (son sütunda belirtilen örnekler tabloyu izler):
+Önceki bölümde yer alan açıklamaları temel alarak, aşağıdaki beş karma senaryo ilgili **içerik anahtarı**-**varlık teslim ilkesi** yapılandırma kombinasyonlarını kullanır (son sütunda bahsedilen örnekler tablosunu izler):
 
-|**& menşeini barındıran içerik**|**DRM şifreleme**|**DRM lisansı verme**|**İçerik anahtarını yapılandırma**|**Varlık teslim ilkesini yapılandırma**|**Örnek**|
+|**& kaynağı barındıran içerik**|**DRM şifrelemesi**|**DRM lisansı verme**|**İçerik anahtarını yapılandır**|**Varlık teslim ilkesini yapılandırma**|**Örnek**|
 |---|---|---|---|---|---|
-|AMS|AMS|AMS|Evet|Evet|Örnek 1|
-|AMS|AMS|Üçüncü taraf|Evet|Evet|Örnek 2|
-|AMS|Üçüncü taraf|AMS|Evet|Hayır|Örnek 3|
-|AMS|Üçüncü taraf|Dışında|Hayır|Hayır|Örnek 4|
-|Üçüncü taraf|Üçüncü taraf|AMS|Evet|Hayır|    
+|AMS|AMS|AMS|Yes|Yes|Örnek 1|
+|AMS|AMS|Üçüncü taraf|Yes|Yes|Örnek 2|
+|AMS|Üçüncü taraf|AMS|Yes|Hayır|Örnek 3|
+|AMS|Üçüncü taraf|Dışarıya|Hayır|Hayır|Örnek 4|
+|Üçüncü taraf|Üçüncü taraf|AMS|Yes|Hayır|    
 
-Örneklerde, PlayReady koruması hem DASH hem de düzgün akış için çalışır. Aşağıdaki video URL'leri düzgün akış URL'leridir. Karşılık gelen DASH URL'lerini almak için "(format=mpd-time-csf)" ekle. Bir tarayıcıda test etmek için [azure medya test oynatıcısını](https://aka.ms/amtest) kullanabilirsiniz. Hangi akış protokolünü kullanacağınızı, hangi teknoloji altında kullanacağınızı yapılandırmanızı sağlar. IE11 ve Windows 10'daki Microsoft Edge, EME aracılığıyla PlayReady'yi destekler. Daha fazla bilgi için [test aracı yla ilgili ayrıntılara](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/)bakın.
+Örneklerde, PlayReady koruması hem DASH hem de kesintisiz akış için geçerlidir. Aşağıdaki video URL 'Leri kesintisiz akış URL 'lardır. Karşılık gelen DASH URL 'Lerini almak için, yalnızca "(format = MPD-Time-CSF)" ekleyin. [Azure Medya test yürütücüyü](https://aka.ms/amtest) bir tarayıcıda test etmek için kullanabilirsiniz. Hangi akış protokolünü kullanacağınızı, hangi teknoloji altında kullanacağınızı yapılandırmanıza olanak tanır. IE11 ve Windows 10 ' da Microsoft Edge, EME aracılığıyla PlayReady 'yi destekler. Daha fazla bilgi için, bkz. [test aracı hakkında ayrıntılar](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
 
 ### <a name="sample-1"></a>Örnek 1
 
-* Kaynak (taban) URL:https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest 
-* PlayReady LA_URL (DASH & pürüzsüz):https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
-* Widevine LA_URL (DASH):https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4 
-* FairPlay LA_URL (HLS):https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8 
+* Kaynak (temel) URL 'SI:`https://willzhanmswest.streaming.mediaservices.windows.net/1efbd6bb-1e66-4e53-88c3-f7e5657a9bbd/RussianWaltz.ism/manifest` 
+* PlayReady LA_URL (DASH & Düzgünleştir):`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
+* Wıdevine LA_URL (DASH):`https://willzhanmswest.keydelivery.mediaservices.windows.net/Widevine/?kid=78de73ae-6d0f-470a-8f13-5c91f7c4` 
+* FairPlay LA_URL (HLS):`https://willzhanmswest.keydelivery.mediaservices.windows.net/FairPlay/?kid=ba7e8fb0-ee22-4291-9654-6222ac611bd8` 
 
 ### <a name="sample-2"></a>Örnek 2
 
-* Kaynak (taban) URL:https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
-* PlayReady LA_URL (DASH & pürüzsüz):http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
+* Kaynak (temel) URL 'SI:https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
+* PlayReady LA_URL (DASH & Düzgünleştir):`http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx` 
 
 ### <a name="sample-3"></a>Örnek 3
 
-* Kaynak URL:https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500.ism/manifest 
-* PlayReady LA_URL (DASH & pürüzsüz):https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/ 
+* Kaynak URL 'SI:https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500.ism/manifest 
+* PlayReady LA_URL (DASH & Düzgünleştir):`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/` 
 
 ### <a name="sample-4"></a>Örnek 4
 
-* Kaynak URL:https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
-* PlayReady LA_URL (DASH & pürüzsüz):https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
+* Kaynak URL 'SI:https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
+* PlayReady LA_URL (DASH & Düzgünleştir):`https://willzhan12.cloudapp.net/playready/rightsmanager.asmx` 
 
 ## <a name="additional-notes"></a>Ek notlar
 
-* Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="summary"></a>Özet
 
-Özetle, Azure Medya Hizmetleri DRM bileşenleri esnektir, bu konuda açıklandığı gibi içerik anahtarını ve varlık teslim ilkesini düzgün şekilde yapılandırarak bunları karma bir senaryoda kullanabilirsiniz.
+Özet olarak, DRM bileşenleri Azure Media Services, bu konuda açıklandığı gibi, içerik anahtarını ve varlık teslim ilkesini düzgün şekilde yapılandırarak bunları karma bir senaryoda kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Medya Hizmetleri öğrenme yollarını görüntüleyin.
+Media Services öğrenme yollarını görüntüleyin.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

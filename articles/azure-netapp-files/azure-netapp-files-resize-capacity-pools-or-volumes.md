@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Dosyaları için kapasite havuzunu veya birimi yeniden boyutlandırın | Microsoft Dokümanlar
-description: Kapasite havuzunun veya birimin boyutununasıl değiştireceğinizi açıklar.
+title: Azure NetApp Files için kapasite havuzunu veya birimi yeniden boyutlandırın | Microsoft Docs
+description: Bir kapasite havuzunun veya birimin boyutunun nasıl değiştirileceğini açıklar.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,28 +15,28 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: b-juche
 ms.openlocfilehash: c58ceef57b984f46b86bb2a8577c53b75082b78b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65794623"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Kapasitesi havuzunu veya birimi yeniden boyutlandırma
-Kapasite havuzunun veya birimin boyutunu gerektiği gibi değiştirebilirsiniz. 
+Bir kapasite havuzunun veya birimin boyutunu gerektiği gibi değiştirebilirsiniz. 
 
-## <a name="resize-the-capacity-pool"></a>Kapasite havuzunu yeniden boyutlandırma 
+## <a name="resize-the-capacity-pool"></a>Kapasite havuzunu yeniden boyutlandır 
 
-Kapasite havuzu boyutunu 1-TiB artışlarında veya kararnamelerde değiştirebilirsiniz. Ancak, kapasite havuzu boyutu 4 TiB'den küçük olamaz. Kapasite havuzunun yeniden boyutlandırılması, satın alınan Azure NetApp Dosyaları kapasitesini değiştirir.
+Kapasite havuzu boyutunu 1-TiB artışlarla değiştirebilir veya azaltır. Ancak, kapasite havuzu boyutu 4 TiB 'den küçük olamaz. Kapasite havuzunun yeniden boyutlandırılması, satın alınan Azure NetApp Files kapasitesini değiştirir.
 
-1. NetApp Hesabı Yönet çubuğundan yeniden boyutlandırmak istediğiniz kapasite havuzunu tıklatın. 
-2. Kapasite havuzu adını sağ tıklatın veya "..." bağlam menüsünü görüntülemek için kapasite havuzunun satırının sonundaki simge. 
+1. NetApp hesabını Yönet dikey penceresinde, yeniden boyutlandırmak istediğiniz kapasite havuzuna tıklayın. 
+2. Kapasite havuzu adına sağ tıklayın veya "..." düğmesine tıklayın. bağlam menüsünü göstermek için kapasite havuzu satırının sonundaki simge. 
 3. Kapasite havuzunu yeniden boyutlandırmak veya silmek için bağlam menüsü seçeneklerini kullanın.
 
 ## <a name="resize-a-volume"></a>Bir birimi yeniden boyutlandırma
 
-Gerektiğinde bir birimin boyutunu değiştirebilirsiniz. Birimin kapasite kullanımı, havuzunun sağlanan kapasitesinden sayılır.
+Bir birimin boyutunu gerektiği gibi değiştirebilirsiniz. Birimin kapasite kullanımı, havuzunun sağlanan kapasitesinden sayılır.
 
-1. NetApp Hesabı Yönet **çubuğundan, Birimler'i**tıklatın. 
-2. Yeniden boyutlandırmak istediğiniz birimin adını sağ tıklatın veya "..." bağlam menüsünü görüntülemek için birim satırının sonundaki simge.
+1. NetApp hesabını Yönet dikey penceresinde **birimler**' e tıklayın. 
+2. Yeniden boyutlandırmak istediğiniz birimin adına sağ tıklayın veya "..." düğmesine tıklayın. bağlam menüsünü göstermek için birimin satırının sonundaki simge.
 3. Birimi yeniden boyutlandırmak veya silmek için bağlam menüsü seçeneklerini kullanın.
 

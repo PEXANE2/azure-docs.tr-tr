@@ -1,8 +1,8 @@
 ---
-title: Azure Media Services v3 ile çevrimdışı PlayReady akışını yapılandırın
-description: Bu makalede, Windows 10 için PlayReady çevrimdışı olarak oynatma kakış için Azure Medya Hizmetleri hesabınızı nasıl yapılandırabileceğiniz gösterilmektedir.
+title: Azure Media Services v3 ile çevrimdışı PlayReady akışını yapılandırma
+description: Bu makalede, Windows 10 için Azure Media Services hesabınızı çevrimdışı olarak nasıl yapılandıracağınız açıklanmaktadır.
 services: media-services
-keywords: DASH, DRM, Widevine Çevrimdışı Mod, ExoPlayer, Android
+keywords: DASH, DRM, Widevine çevrimdışı modu, Exooynatıcı, Android
 documentationcenter: ''
 author: willzhan
 manager: steveng
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 151aadadb5674f7f144d42b1f9d5115501ed381d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 63b835d5d6c442f19f6d1fbe1710547ab96e1b40
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887240"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160248"
 ---
-# <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Medya Hizmetleri v3 ile Windows 10 için Çevrimdışı PlayReady Streaming
+# <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Media Services v3 ile Windows 10 için çevrimdışı PlayReady akışı
 
-Azure Medya Hizmetleri, DRM koruması yla çevrimdışı indirme/oynatmayı destekler. Bu makale, Windows 10/PlayReady istemcileri için Azure Medya Hizmetlerinin çevrimdışı desteğini kapsar. aşağıdaki makalelerde iOS/FairPlay ve Android/Widevine cihazları için çevrimdışı mod desteği hakkında bilgi edinebilirsiniz:
+Azure Media Services, DRM koruması ile çevrimdışı indirmeyi/kayıttan yürütmeyi destekler. Bu makalede, Windows 10/PlayReady istemcileri için Azure Media Services çevrimdışı desteği ele alınmaktadır. Aşağıdaki makalelerde iOS/FairPlay ve Android/Widevine cihazları için çevrimdışı mod desteği hakkında bilgi edinebilirsiniz:
 
 - [iOS için Çevrimdışı FairPlay Akışı](offline-fairplay-for-ios.md)
-- [Android için Çevrimdışı Widevine Streaming](offline-widevine-for-android.md)
+- [Android için çevrimdışı Widevine akışı](offline-widevine-for-android.md)
 
 > [!NOTE]
-> Çevrimdışı DRM, yalnızca içeriği karşıdan yüklediğinizde lisans için tek bir istekte bulunmak için faturalandırılır. Hatalar faturalandırılmez.
+> Çevrimdışı DRM yalnızca içeriği indirdiğinizde lisans için tek bir istek yapmak üzere faturalandırılır. Tüm hatalar faturalandırılmaz.
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu bölümde çevrimdışı mod oynatma bazı arka plan verir, özellikle neden:
+Bu bölüm, çevrimdışı modda Kayıttan yürütmede bazı arka plan sağlar, özellikle neden:
 
-* Bazı ülkelerde/bölgelerde, Internet kullanılabilirliği ve/veya bant genişliği hala sınırlıdır.Kullanıcılar, tatmin edici görüntüleme deneyimi için içeriği yeterince yüksek çözünürlükte izleyebilmek için önce indirmeyi seçebilir. Bu durumda, daha sık, sorun ağ kullanılabilirliği değil, daha ziyade sınırlı ağ bant genişliğidir. OTT/OVP sağlayıcıları çevrimdışı mod desteği istiyor.
-* Netflix 2016 Q3 hissedar konferansında açıklandığı gibi, içerik indirme "oft-talep edilen bir özellik", ve "biz buna açığız" Netflix CEO'su Reed Hastings tarafından söyledi.
-* Bazı içerik sağlayıcılar, bir ülke/bölge sınırının ötesinde DRM lisans teslimine izin verebilir. Bir kullanıcının yurt dışına seyahat etmesi gerekiyorsa ve hala içerik izlemek istiyorsa, çevrimdışı indirme gereklidir.
+* Bazı ülkelerde/bölgelerde Internet kullanılabilirliği ve/veya bant genişliği hala sınırlı olur.Kullanıcılar, tatmin edici görüntüleme deneyimi için yeterince yüksek çözünürlükte içerik izleyebilmek için önce indirmeyi seçebilir. Bu durumda, genellikle ağ bant genişliği sınırlı olduğundan, sorun ağ kullanılabilirliği değildir. OTT/OVP sağlayıcıları çevrimdışı mod desteği istiyor.
+* Netflix 2016 Q3 shareş konferansında, içerik indirme "oft-istenen bir özelliktir" ve "açık olan", Netflix CEO Hastings tarafından söylenen
+* Bazı içerik sağlayıcıları, bir ülke/bölge kenarlığının ötesinde DRM lisans teslimine izin verebilir. Bir kullanıcının kuruluşunun seyahat yapması ve yine de içerik izlemek istiyorsa, çevrimdışı indirme gerekir.
  
-Çevrimdışı modu uygularken karşılaştığımız zorluk aşağıdakigibidir:
+Çevrimdışı modu uygulamamız zor olan zorluk aşağıda verilmiştir:
 
-* MP4 birçok oyuncu, kodlayıcı araçları tarafından desteklenir, ancak MP4 konteyner ve DRM arasında hiçbir bağlama yoktur;
-* Uzun vadede, CENC ile CFF gitmek için bir yoldur. Ancak, bugün, araçlar / oyuncu destek ekosistemi henüz orada değil. Bugün bir çözüme ihtiyacımız var.
+* MP4 birçok oyuncu, kodlayıcı araçları tarafından desteklenir, ancak MP4 kapsayıcısı ile DRM arasında bağlama yoktur;
+* Uzun dönemde CENC ile CFF, gitmenin yoludur. Ancak, günümüzde araçlar/yürütücü ekosistemi henüz desteklemez. Bugün bir çözüme ihtiyacımız var.
  
-Fikir: H264/AAC ile düzgün akış ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) dosya formatı PlayReady (AES-128 TO) ile bir bağlayıcıvardır. Tek tek düzgün streaming .ismv dosyası (ses video muxed varsayarak) kendisi bir fMP4 ve oynatma için kullanılabilir. Düzgün bir akış içeriği PlayReady şifrelemesi üzerinden geçerse, her .ismv dosyası PlayReady korumalı parçalı MP4 olur. Tercih edilen bitrate ile bir .ismv dosyası seçebilir ve indirmek için .mp4 olarak yeniden adlandırabilirsiniz.
+Fikir: H264/AAC ile kesintisiz akış ([pff](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) dosya biçimi PLAYREADY (AES-128 Mrk) ile bir bağlamaya sahiptir. Tek bir kesintisiz akış. IMV dosyası (videonun videoda zaman içinde olduğu varsayılarak), bir fMP4 ve kayıttan yürütme için kullanılabilir. Kesintisiz bir akış içeriği PlayReady şifrelemesi aracılığıyla gelirse her. ismv dosyası PlayReady korumalı parçalanmış bir MP4 haline gelir. Tercih edilen bit hızında bir. ISMV dosyası seçebiliriz ve bunu indirmek üzere. mp4 olarak yeniden adlandırabilirsiniz.
 
-Aşamalı indirmek için PlayReady korumalı MP4 barındırma için iki seçenek vardır:
+Aşamalı indirme için PlayReady korumalı MP4 barındırmak için iki seçenek vardır:
 
-* Bu MP4'ü aynı kapsayıcı/medya hizmeti varlığına koyup aşamalı olarak indirmek için Azure Medya Hizmetleri akış bitiş noktasından yararlanabilirsiniz;
-* Azure Medya Hizmetlerini atlayarak Doğrudan Azure Depolama'dan kademeli olarak indirmek için SAS bulucu su kullanılabilir.
+* Bunlardan biri, bu MP4 aynı kapsayıcı/medya hizmeti varlığına yerleştirebilir ve aşamalı indirme için Azure Media Services akış uç noktasından yararlanabilir;
+* Bir tane, doğrudan Azure Storage 'dan aşamalı indirme için SAS Konumlandırıcı 'yı kullanabilir, Azure Media Services atlayarak.
  
 İki tür PlayReady lisans teslimi kullanabilirsiniz:
 
-* Azure Medya Hizmetleri'nde PlayReady lisans teslim hizmeti;
-* PlayReady lisans sunucuları her yerde barındırılan.
+* Azure Media Services 'de PlayReady lisans teslim hizmeti;
+* Her yerde barındırılan PlayReady lisans sunucuları.
 
-Aşağıda iki test varlıkları kümesi vardır, ilki AMS'de PlayReady lisans teslimini kullanırken ikincisi, Bir Azure VM'de barındırılan PlayReady lisans sunucumu kullanarak:
+Aşağıda, birinci bir Azure VM 'de barındırılan PlayReady lisans sunucusu kullanılırken AMS 'de PlayReady lisans teslimini kullanan iki test varlığı kümesi verilmiştir:
 
 Varlık #1:
 
-* Aşamalı indirme URL'si:[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4")
-* PlayReady LA_URL (AMS):[https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
+* Aşamalı indirme URL 'SI:[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA_URL (AMS):`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
 
 Varlık #2:
 
-* Aşamalı indirme URL'si:[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* PlayReady LA_URL (şirket içinde):[https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
+* Aşamalı indirme URL 'SI:[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
+* PlayReady LA_URL (Şirket içi):`https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
 
-Oynatma testi için Windows 10'da Evrensel Windows Uygulaması kullandık. [Windows 10 Evrensel örneklerinde,](https://github.com/Microsoft/Windows-universal-samples) [Adaptif Akış Örneği](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming)adı verilen temel bir oynatıcı örneği vardır. Tek yapmamız gereken indirilen videoyu seçip uyarlamalı akış kaynağı yerine kaynak olarak kullanmamız için kodu eklemek. Değişiklikler düğme tıklatma olay işleyicisi bulunmaktadır:
+Kayıttan yürütme testi için Windows 10 ' da bir Evrensel Windows uygulaması kullandık. [Windows 10 Universal örneklerinde](https://github.com/Microsoft/Windows-universal-samples), [uyarlamalı akış örneği](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming)adında bir temel oynatıcı örneği vardır. Her şey, indirilen videoyu seçmek ve bunu uyarlamalı akış kaynağı yerine kaynak olarak kullanmak üzere bizimle ilgili kod eklemektir. Değişiklikler düğme Click olay işleyicisi:
 
 ```csharp
 private async void LoadUri_Click(object sender, RoutedEventArgs e)
@@ -111,16 +111,16 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 }
 ```
 
-![PlayReady korumalı fMP4 çevrimdışı mod oynatma](./media/offline-playready-for-windows/offline-playready1.jpg)
+![PlayReady Protected fMP4 çevrimdışı modda kayıttan yürütme](./media/offline-playready-for-windows/offline-playready1.jpg)
 
-Video PlayReady koruması altında olduğundan, ekran görüntüsü videoyu içeremez.
+Video PlayReady koruması altında olduğundan, ekran görüntüsü videoyu dahil edemeyecektir.
 
-Özetle, Azure Medya Hizmetleri'nde çevrimdışı modu elde ettik:
+Özet bölümünde, Azure Media Services çevrimdışı modu elde ediyoruz:
 
-* İçerik kodlaması ve PlayReady şifrelemesi Azure Medya Hizmetleri'nde veya diğer araçlarda yapılabilir;
-* İçerik, aşamalı olarak indirilen Azure Medya Hizmetleri veya Azure Depolama'da barındırılabilir;
-* PlayReady lisans teslimi Azure Medya Hizmetleri'nden veya başka bir yerden olabilir;
-* Hazırlanan düzgün akış içeriği dash üzerinden çevrimiçi akış için kullanılabilir veya DRM olarak PlayReady ile sorunsuz.
+* İçerik dönüştürme ve PlayReady şifrelemesi, Azure Media Services veya diğer araçlarda yapılabilir;
+* İçerik, aşamalı indirme için Azure Media Services veya Azure Storage 'da barındırılabilir;
+* PlayReady lisans teslimi Azure Media Services veya başka bir yerde olabilir;
+* Hazırlanan kesintisiz akış içeriği, DRM olarak PlayReady ile DASH veya pürüzsüz aracılığıyla çevrimiçi akış için de kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

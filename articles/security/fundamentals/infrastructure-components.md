@@ -1,6 +1,6 @@
 ---
-title: Azure bilgi sistemi bileşenleri ve sınırları
-description: Bu makalede, Microsoft Azure mimarisi ve yönetimi genel bir açıklamasını sağlar.
+title: Azure Information System bileşenleri ve sınırları
+description: Bu makalede Microsoft Azure mimarisine ve yönetimine ilişkin genel bir açıklama sunulmaktadır.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,117 +16,117 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68727208"
 ---
-# <a name="azure-information-system-components-and-boundaries"></a>Azure bilgi sistemi bileşenleri ve sınırları
-Bu makalede, Azure mimarisi ve yönetimi genel bir açıklamasını sağlar. Azure sistem ortamı aşağıdaki ağlardan oluşur:
+# <a name="azure-information-system-components-and-boundaries"></a>Azure Information System bileşenleri ve sınırları
+Bu makalede, Azure mimarisine ve yönetimine ilişkin genel bir açıklama sunulmaktadır. Azure sistem ortamı aşağıdaki ağlardan oluşur:
 
 - Microsoft Azure üretim ağı (Azure ağı)
-- Microsoft kurumsal ağ (corpnet)
+- Microsoft kurumsal ağ (Corpnet)
 
-Bu ağların işletilmesi nden ve bakımından ayrı BT ekipleri sorumludur.
+Ayrı BT ekipleri, bu ağların işlemlerinden ve bakımının sorumluluğundadır.
 
 ## <a name="azure-architecture"></a>Azure mimarisi
-Azure, bir veri merkezi ağı aracılığıyla uygulama ve hizmetleri oluşturmak, dağıtmak ve yönetmek için bir bulut bilgi işlem platformu ve altyapısıdır. Microsoft bu veri merkezlerini yönetir. Azure, belirttiğiniz kaynak sayısına bağlı olarak kaynak gereksinimine göre sanal makineler (VM' ler) oluşturur. Bu VM'ler, bulutta kullanılmak üzere tasarlanmış ve herkese açık olmayan bir Azure hipervizöründe çalışır.
+Azure, bir veri merkezi ağı aracılığıyla uygulama ve hizmet oluşturmaya, dağıtmaya ve yönetmeye yönelik bir bulut bilgi işlem platformudur ve altyapısıdır. Microsoft bu veri merkezlerini yönetir. Azure, belirttiğiniz kaynak sayısına bağlı olarak, kaynak gereksinimini temel alan sanal makineler (VM 'Ler) oluşturur. Bu VM 'Ler, bulutta kullanılmak üzere tasarlanan ve herkese açık olmayan bir Azure Hiper Yöneticisi üzerinde çalışır.
 
-Her Azure fiziksel sunucu düğümünde, doğrudan donanımın üzerinde çalışan bir hipervizör vardır. Hipervizör bir düğümü değişken sayıda konuk VM'ye böler. Her düğüm de ana bilgisayar işletim sistemini çalıştıran bir kök VM vardır. Her VM'de Windows Güvenlik Duvarı etkindir. Hizmet tanımı dosyasını yapılandırarak hangi bağlantı noktalarının adreslenebilir olduğunu tanımlarsınız. Bu bağlantı noktaları, dahili veya harici olarak açık ve adreslenebilir olan lardır. Tüm trafik ve disk ve ağa erişim hipervizör ve kök işletim sistemi tarafından aracılık edilir.
+Her Azure fiziksel sunucu düğümünde, doğrudan donanım üzerinde çalışan bir hiper yönetici vardır. Hiper yönetici, bir düğümü değişken sayıda konuk VM 'ye böler. Her düğümün aynı zamanda ana bilgisayar işletim sistemini çalıştıran bir kök VM 'si vardır. Her VM 'de Windows Güvenlik Duvarı etkindir. Hizmet tanımı dosyasını yapılandırarak hangi bağlantı noktalarının adreslenebilir olduğunu tanımlarsınız. Bu bağlantı noktaları açık ve adreslenebilir, dahili veya harici tek alanlardır. Tüm trafik ve diske ve ağa erişim hiper yönetici ve kök işletim sistemi tarafından dağıtılır.
 
-Ana bilgisayar katmanında Azure VM'ler en son Windows Server'ın özelleştirilmiş ve sertleştirilmiş bir sürümünü çalıştırın. Azure, Windows Server'ın yalnızca VM'leri barındırmak için gereken bileşenleri içeren bir sürümünü kullanır. Bu, performansı artırır ve saldırı yüzeyini azaltır. Makine sınırları, işletim sistemi güvenliğine bağlı olmayan hipervizör tarafından uygulanır.
+Azure VM 'Leri, ana bilgisayar katmanında en son Windows Server 'ın özelleştirilmiş ve sağlamlaştırılmış bir sürümünü çalıştırır. Azure, yalnızca VM 'Leri barındırmak için gereken bileşenleri içeren bir Windows Server sürümü kullanır. Bu, performansı artırır ve saldırı yüzeyini azaltır. Makine sınırları, işletim sistemi güvenliğine bağlı olmayan hiper yönetici tarafından zorlanır.
 
-### <a name="azure-management-by-fabric-controllers"></a>Kumaş denetleyicileri tarafından Azure yönetimi
+### <a name="azure-management-by-fabric-controllers"></a>Doku denetleyicileri tarafından Azure yönetimi
 
-Azure'da, fiziksel sunucularda (bıçaklar/düğümler) çalışan VM'ler yaklaşık 1000 küme halinde gruplandırılır. VM'ler, kumaş denetleyicisi (FC) adı verilen ölçeklenmiş ve gereksiz platform yazılım bileşeni tarafından bağımsız olarak yönetilir.
+Azure 'da, fiziksel sunucularda çalışan VM 'Ler (dikey pencereler/düğümler) 1000 hakkında kümeler halinde gruplandırılır. VM 'Ler, yapı denetleyicisi (FC) adlı genişleme ve yedekli platform yazılım bileşeni tarafından bağımsız olarak yönetilir.
 
-Her FC kendi kümesinde çalışan uygulamaların yaşam döngüsünü yönetir ve kendi kontrolü altındaki donanımın durumunu hükümler ve izler. Bir sunucunun başarısız olduğunu belirlediğinde, vm örneklerini sağlıklı sunucularda reenkarne etmek gibi otonom işlemler çalıştırıyor. FC ayrıca uygulamaları dağıtma, güncelleştirme ve ölçekleme gibi uygulama yönetimi işlemleri de gerçekleştirir.
+Her FC, kümesinde çalışan uygulamaların yaşam döngüsünü yönetir ve denetimi altındaki donanımın durumunu sağlar ve izler. Sunucu başarısız olduğunu belirlediğinde, sağlıklı sunuculardaki sanal makine örneklerini yeniden eğim etme gibi Autonomic işlemleri çalıştırır. FC, uygulamaları dağıtma, güncelleştirme ve ölçeklendirme gibi uygulama yönetimi işlemlerini de gerçekleştirir.
 
-Veri merkezi kümelere ayrılmıştır. Kümeler FC düzeyinde hataları yalıttır ve belirli hata sınıflarının sunucuları oluştukları kümenin ötesinde etkilemesini engeller. Belirli bir Azure kümesine hizmet veren FC'ler bir FC kümesinde gruplandırılır.
+Veri merkezi kümelere bölünmüştür. Kümeler, hataları FC düzeyinde yalıtır ve belirli hata sınıflarının, meydana geldikleri kümenin ötesinde sunucuları etkilemesini önler. Belirli bir Azure kümesine hizmeti sunan FCs, bir FC kümesi halinde gruplandırılır.
 
 ### <a name="hardware-inventory"></a>Donanım envanteri
 
-FC, bootstrap yapılandırma işlemi sırasında Azure donanım ve ağ aygıtlarının envanterini hazırlar. Azure üretim ortamına giren tüm yeni donanım ve ağ bileşenleri, önyükleme yapılandırma işlemini izlemelidir. FC, datacenter.xml yapılandırma dosyasında listelenen tüm envanterin yönetiminden sorumludur.
+FC, önyükleme yapılandırma işlemi sırasında Azure donanım ve ağ cihazlarının envanterini hazırlar. Azure üretim ortamının girildiği yeni donanım ve ağ bileşenlerinin önyükleme yapılandırma işlemini izlemesi gerekir. FC, Datacenter. xml yapılandırma dosyasında listelenen tüm envanteri yönetmekten sorumludur.
 
-### <a name="fc-managed-operating-system-images"></a>FC tarafından yönetilen işletim sistemi görüntüleri
+### <a name="fc-managed-operating-system-images"></a>FC ile yönetilen işletim sistemi görüntüleri
 
-İşletim sistemi ekibi, Azure üretim ortamındaki tüm ana bilgisayar ve konuk VM'lerde dağıtılan Sanal Sabit Diskler şeklinde görüntüler sağlar. Takım, bu temel görüntüleri otomatik bir çevrimdışı oluşturma işlemi yle oluşturur. Temel görüntü, çekirdek ve diğer temel bileşenlerin Azure ortamını desteklemek üzere değiştirildiği ve optimize edildiği işletim sisteminin bir sürümüdür.
+İşletim sistemi ekibi, Azure üretim ortamındaki tüm ana bilgisayarlarda ve konuk VM 'lerde dağıtılan sanal sabit diskler biçiminde görüntüler sağlar. Takım, bu temel görüntüleri otomatik bir çevrimdışı derleme işlemi aracılığıyla oluşturur. Temel görüntü, çekirdek ve diğer çekirdek bileşenlerinin değiştirildiği ve Azure ortamını destekleyecek şekilde iyileştirdiği işletim sisteminin bir sürümüdür.
 
-Kumaş la yönetilen işletim sistemi görüntüleri üç türü vardır:
+Üç tür doku ile yönetilen işletim sistemi görüntüsü vardır:
 
-- Ana bilgisayar: Ana bilgisayar VM'lerde çalışan özelleştirilmiş bir işletim sistemi.
-- Yerel: Kiracılarla çalışan yerel bir işletim sistemi (örneğin, Azure Depolama). Bu işletim sisteminin hipervizörü yoktur.
-- Misafir: Konuk VM'ler üzerinde çalışan bir konuk işletim sistemi.
+- Konak: konak VM 'lerde çalışan özelleştirilmiş bir işletim sistemidir.
+- Yerel: kiracılar üzerinde çalışan yerel bir işletim sistemi (örneğin, Azure depolama). Bu işletim sisteminde herhangi bir hiper yönetici yok.
+- Konuk: Konuk VM 'lerde çalışan bir konuk işletim sistemi.
 
-Ana bilgisayar ve yerel FC tarafından yönetilen işletim sistemleri bulutta kullanılmak üzere tasarlanmıştır ve genel olarak erişilemez.
+Konak ve yerel FC ile yönetilen işletim sistemleri, bulutta kullanılmak üzere tasarlanmıştır ve herkese açık bir şekilde erişilebilir değildir.
 
-#### <a name="host-and-native-operating-systems"></a>Ana bilgisayar ve yerel işletim sistemleri
+#### <a name="host-and-native-operating-systems"></a>Konak ve yerel işletim sistemleri
 
-Ana bilgisayar ve yerel, kumaş aracılarını barındıran ve bir işlem düğümüüzerinde çalışan (düğümde ilk VM olarak çalışır) ve depolama düğümleri üzerinde çalışan sertleştirilmiş işletim sistemi görüntüleridir. Ana bilgisayar ve yerel en iyi duruma getirilmiş temel görüntüleri kullanmanın yararı, API'ler veya kullanılmayan bileşenler tarafından maruz kalan yüzey alanını azaltmasın. Bunlar yüksek güvenlik riskleri sunabilir ve işletim sisteminin ayak izini artırabilir. Azaltılmış ayak izi işletim sistemleri yalnızca Azure için gerekli bileşenleri içerir.
+Konak ve yerel, yapı aracılarını barındıran ve bir işlem düğümünde (düğümde ilk VM olarak çalışır) ve depolama düğümlerinde çalışan sağlamlaştırılmış işletim sistemi görüntüleridir. Konak ve yerel için iyileştirilmiş temel görüntüleri kullanmanın avantajı, API 'Ler veya kullanılmayan bileşenler tarafından sunulan yüzey alanını azaltmasıdır. Bunlar, yüksek güvenlik riskleri sunabilir ve işletim sisteminin parmak izini artırabilir. Azaltılan işletim sistemleri yalnızca Azure 'a gereken bileşenleri içerir.
 
 #### <a name="guest-operating-system"></a>Konuk işletim sistemi
 
-Konuk işletim sistemi VM'lerinde çalışan Azure dahili bileşenlerinin Uzak Masaüstü Protokolü'nü çalıştırma fırsatı yoktur. Temel yapılandırma ayarlarında yapılan tüm değişikliklerin değişiklik ve sürüm yönetimi sürecinden geçmesi gerekir.
+Konuk işletim sistemi VM 'lerinde çalışan Azure iç bileşenlerinin Uzak Masaüstü Protokolü çalıştırma olanağı yoktur. Taban çizgisi yapılandırma ayarlarındaki tüm değişiklikler değişiklik ve sürüm yönetimi sürecini kullanmalıdır.
 
 ## <a name="azure-datacenters"></a>Azure veri merkezleri
-Microsoft Bulut Altyapısı ve İşlemleri (MCIO) ekibi, tüm Microsoft çevrimiçi hizmetleri için fiziksel altyapıyı ve veri merkezi olanaklarını yönetir. MCIO, öncelikle veri merkezleri içindeki fiziksel ve çevresel denetimlerin yönetilmesinden ve dış çevre ağ aygıtlarını (kenar yönlendiricileri ve veri merkezi yönlendiricileri gibi) yönetmek ve desteklemekten sorumludur. MCIO ayrıca veri merkezindeki raflarda minimum sunucu donanımını kurmakla da sorumludur. Müşterilerin Azure ile doğrudan etkileşimi yoktur.
+Microsoft Bulut altyapı ve Işlemler (MCıO) ekibi, tüm Microsoft çevrimiçi hizmetler için fiziksel altyapıyı ve veri merkezi olanaklarını yönetir. MCIO öncelikle veri merkezlerinde fiziksel ve çevresel denetimleri yönetmekten ve dış çevre ağ cihazlarını (uç yönlendiriciler ve veri merkezi yönlendiricileri gibi) yönetmeye ve desteklemeye yöneliktir. MCıO, veri merkezindeki raflarda en düşük sunucu donanımını ayarlamaktan de sorumludur. Müşterilerin Azure ile doğrudan etkileşimi yoktur.
 
-## <a name="service-management-and-service-teams"></a>Servis yönetimi ve servis ekipleri
-Hizmet ekipleri olarak bilinen çeşitli mühendislik grupları Azure hizmetinin desteğini yönetir. Her hizmet ekibi Azure için bir destek alanından sorumludur. Her servis ekibi, hizmetteki hataları araştırmak ve çözmek için bir mühendisi 24x7'ye hazır hale getirmelidir. Hizmet ekipleri varsayılan olarak Azure'da çalışan donanıma fiziksel erişime sahip değildir.
+## <a name="service-management-and-service-teams"></a>Hizmet yönetimi ve hizmet takımları
+Hizmet takımları olarak bilinen çeşitli mühendislik grupları, Azure hizmeti desteğini yönetir. Her hizmet ekibi, Azure desteği olan bir alandan sorumludur. Her hizmet ekibinin, hizmette oluşan sorunları araştırmak ve çözmek için bir mühendis 7/24 kullanılabilir hale gelmelidir. Hizmet ekipleri, varsayılan olarak Azure 'da donanıma fiziksel erişime sahip değildir.
 
-Servis ekipleri şunlardır:
+Hizmet takımları şunlardır:
 
-- Uygulama Platformu
+- Uygulama platformu
 - Azure Active Directory
 - Azure İşlem
-- Azure Net
+- Azure ağı
 - Bulut Mühendisliği Hizmetleri
-- ISSD: Güvenlik
-- Çok Faktörlü Kimlik Doğrulama
-- SQL Database
+- ISSD: güvenlik
+- Çok faktörlü kimlik doğrulaması
+- SQL Veritabanı
 - Depolama
 
 ## <a name="types-of-users"></a>Kullanıcı türleri
-Microsoft çalışanları (veya yüklenicileri) dahili kullanıcı olarak kabul edilir. Diğer tüm kullanıcılar dış kullanıcı olarak kabul edilir. Tüm Azure dahili kullanıcılarının çalışan durumları, müşteri verilerine erişimlerini (erişim veya erişim yok) tanımlayan bir duyarlılık düzeyiyle sınıflandırılır. Azure'daki kullanıcı ayrıcalıkları (kimlik doğrulama gerçekleştikten sonra yetkilendirme izni) aşağıdaki tabloda açıklanmıştır:
+Microsoft 'un çalışanları (veya yükleniciler), iç Kullanıcı olarak kabul edilir. Diğer tüm kullanıcılar dış Kullanıcı olarak kabul edilir. Tüm Azure iç kullanıcılarının çalışan durumu, müşteri verilerine erişimini tanımlayan bir duyarlılık düzeyiyle kategorize edilir (erişim veya erişim yok). Azure 'a yönelik kullanıcı ayrıcalıkları (kimlik doğrulama gerçekleştikten sonra yetkilendirme izni) aşağıdaki tabloda açıklanmıştır:
 
-| Rol | Dahili veya harici | Duyarlılık düzeyi | Gerçekleştirilen yetkili ayrıcalıklar ve işlevler | Erişim türü
+| Rol | İç veya dış | Duyarlılık düzeyi | Gerçekleştirilen yetkili ayrıcalıklar ve işlevler | Erişim türü
 | --- | --- | --- | --- | --- |
-| Azure veri merkezi mühendisi | İç | Müşteri verilerine erişim yok | Binaların fiziksel güvenliğini yönetin. Veri merkezine girip çıkmak için devriye gezin ve tüm giriş noktalarını izleyin. Veri merkezine giriş ve çıkışta, veri merkezi içinde genel hizmetler (yemek veya temizlik gibi) veya BT çalışmaları sağlayan temizlenmeden bazı personele eşlik edin. Ağ donanımının rutin izleme ve bakımını gerçekleştirin. Çeşitli araçlar kullanarak olay yönetimi ve kesme düzeltme çalışması gerçekleştirin. Veri merkezlerinde fiziksel donanımın rutin izleme ve bakımını gerçekleştirin. Mülk sahiplerinden talep üzerine çevreye erişim. Adli soruşturma ları gerçekleştirebilir, olay raporlarını kaydedebilecek ve zorunlu güvenlik eğitimi ve politika gereksinimleri gerektirebilir. Tarayıcılar ve günlük toplama gibi kritik güvenlik araçlarının operasyonel mülkiyeti ve bakımı. | Ortama kalıcı erişim. |
-| Azure olay triajı (hızlı yanıt mühendisleri) | İç | Müşteri verilerine erişim | MCIO, destek ve mühendislik ekipleri arasındaki iletişimi yönetin. Platform olaylarını, dağıtım sorunlarını ve hizmet isteklerini üçleme. | Müşteri olmayan sistemlere sınırlı kalıcı erişimle ortama tam zamanında erişim. |
-| Azure dağıtım mühendisleri | İç | Müşteri verilerine erişim | Azure'u desteklemek için platform bileşenlerini, yazılımları ve zamanlanmış yapılandırma değişikliklerini dağıtın ve yükseltin. | Müşteri olmayan sistemlere sınırlı kalıcı erişimle ortama tam zamanında erişim. |
-| Azure müşteri kesintisi desteği (kiracı) | İç | Müşteri verilerine erişim | Tek tek işlem kiracıları ve Azure hesapları için platform kesintilerini ve hatalarını hata ayıklama ve tanılama. Hataları analiz edin. Kritik düzeltmeleri platforma veya müşteriye yönlendirin ve destek genelinde teknik iyileştirmeler geliştirin. | Müşteri olmayan sistemlere sınırlı kalıcı erişimle ortama tam zamanında erişim. |
-| Azure canlı site mühendisleri (izleme mühendisleri) ve olay | İç | Müşteri verilerine erişim | Tanılama araçlarını kullanarak platform sağlığını tanılar ve azla. Toplu sürücü düzeltmeleri, kesintilerden kaynaklanan öğeleri onarmak ve kesinti geri yükleme eylemlerine yardımcı olun. | Müşteri olmayan sistemlere sınırlı kalıcı erişimle ortama tam zamanında erişim. |
+| Azure veri merkezi mühendisi | İç | Müşteri verilerine erişim yok | Şirket için fiziksel güvenliği yönetin. Veri merkezinde yer alan ve giden patrols gerçekleştirin ve tüm giriş noktalarını izleyin. Genel Hizmetler (örneğin, dinleme veya temizleme gibi) sağlayan ve veri merkezinde çalışan belirli bir temizlenmiş personeli içeri ve dışarı aktarmak. Ağ donanımının rutin izleme ve bakımını gerçekleştirin. Çeşitli araçlar kullanarak olay yönetimi ve onarım işleri gerçekleştirin. Veri merkezlerinde fiziksel donanımın rutin izlenmesini ve bakımını gerçekleştirin. Özellik sahiplerinden isteğe bağlı ortama erişim. Adli araştırmalar gerçekleştirebilir, olay raporlarını günlüğe kaydeder ve zorunlu güvenlik eğitimi ve ilke gereksinimleri gerektirir. Tarayıcılar ve günlük toplama gibi kritik güvenlik araçlarının işletimsel sahipliği ve bakımı. | Ortama kalıcı erişim. |
+| Azure olay önceliklendirme (hızlı yanıt mühendisleri) | İç | Müşteri verilerine erişim | MCIO, destek ve mühendislik takımları arasındaki iletişimleri yönetin. Platform olayları, dağıtım sorunları ve hizmet istekleri önceliklendirme. | Müşteriye ait olmayan sistemlere sınırlı kalıcı erişimle, ortama tam zamanında erişim. |
+| Azure dağıtım mühendisleri | İç | Müşteri verilerine erişim | Azure desteğiyle platform bileşenlerini, yazılımlarını ve zamanlanan yapılandırma değişikliklerini dağıtın ve yükseltin. | Müşteriye ait olmayan sistemlere sınırlı kalıcı erişimle, ortama tam zamanında erişim. |
+| Azure müşteri kesintisi desteği (kiracı) | İç | Müşteri verilerine erişim | Bireysel işlem kiracılarının ve Azure hesaplarının hata ayıklama ve tanılama sorunlarını giderme. Hataları analiz edin. Platform veya müşteri için kritik düzeltmeleri sürüyor ve destek genelinde teknik iyileştirmeleri sürüyor. | Müşteriye ait olmayan sistemlere sınırlı kalıcı erişimle, ortama tam zamanında erişim. |
+| Azure Live site mühendisleri (izleme mühendisleri) ve olay | İç | Müşteri verilerine erişim | Tanılama araçlarını kullanarak platform sistem durumunu tanılayın ve azaltabilirsiniz. Birim sürücüleri için düzeltme, kesintiden kaynaklanan öğeleri onarır ve geri yükleme eylemlerine yardımcı olur. | Müşteriye ait olmayan sistemlere sınırlı kalıcı erişimle, ortama tam zamanında erişim. |
 |Azure müşterileri | Dış | Yok | Yok | Yok |
 
-Azure, kuruluş kullanıcılarının ve müşterilerinin (veya kuruluş kullanıcıları adına hareket eden işlemlerin) kimliğini doğrulamak için benzersiz tanımlayıcılar kullanır. Bu, Azure ortamının bir parçası olan tüm varlıklar ve aygıtlar için geçerlidir.
+Azure, kurumsal kullanıcıların ve müşterilerin (veya kuruluş kullanıcıları adına işlem gören işlemlerin) kimliğini doğrulamak için benzersiz tanımlayıcılar kullanır. Bu, Azure ortamının bir parçası olan tüm varlıklar ve cihazlar için geçerlidir.
 
-### <a name="azure-internal-authentication"></a>Azure dahili kimlik doğrulaması
+### <a name="azure-internal-authentication"></a>Azure iç kimlik doğrulaması
 
-Azure dahili bileşenleri arasındaki iletişim TLS şifreleme ile korunur. Çoğu durumda, X.509 sertifikaları kendi imzalı. Azure ağı dışından erişilebilen bağlantılara sahip sertifikalar ve FC'ler için sertifikalar bir istisnadır. FC'lerin, güvenilir bir ca tarafından desteklenen bir Microsoft Yetki Sertifikası (CA) tarafından verilen sertifikaları vardır. Bu, FC ortak anahtarlarının kolayca devredilmesine olanak tanır. Ayrıca, Microsoft geliştirici araçları FC ortak anahtarlarını kullanır. Geliştiriciler yeni uygulama görüntüleri gönderdiğinde, görüntüler katıştılı sırları korumak için bir FC ortak anahtarıyla şifrelenir.
+Azure iç bileşenleri arasındaki iletişimler TLS şifrelemesi ile korunur. Çoğu durumda, X. 509.440 sertifikaları kendinden imzalanır. Azure ağı dışından erişilebilen bağlantılara sahip sertifikalara, FCs için sertifikalar gibi bir özel durum söz konusu olabilir. FCs, güvenilen bir kök CA tarafından desteklenen bir Microsoft yetkilisi sertifikası (CA) tarafından verilmiş sertifikalara sahiptir. Bu, FC ortak anahtarlarının kolayca alınmasına izin verir. Ayrıca, Microsoft Geliştirici Araçları FC ortak anahtarlarını kullanır. Geliştiriciler yeni uygulama görüntülerini gönderdiğinde, gömülü gizli dizileri korumak için görüntüler bir FC ortak anahtarıyla şifrelenir.
 
-### <a name="azure-hardware-device-authentication"></a>Azure donanım aygıtı kimlik doğrulaması
+### <a name="azure-hardware-device-authentication"></a>Azure donanım cihaz kimlik doğrulaması
 
-FC, kendi kontrolü altındaki çeşitli donanım aygıtlarına kimlik doğrulamak için kullanılan bir kimlik bilgileri kümesini (anahtarlar ve/veya parolalar) tutar. Microsoft, bu kimlik bilgilerine erişimi engellemek için bir sistem kullanır. Özellikle, bu kimlik bilgilerinin taşınması, kalıcılığı ve kullanımı Azure geliştiricilerinin, yöneticilerinin ve yedekleme hizmetlerinin ve personelin hassas, gizli veya özel bilgilere erişimini önlemek için tasarlanmıştır.
+FC, kendi denetimi altındaki çeşitli donanım cihazlarına kimliğini doğrulamak için kullanılan bir dizi kimlik bilgisi (anahtarlar ve/veya parolalar) sağlar. Microsoft bu kimlik bilgilerine erişimi engellemek için bir sistem kullanır. Özellikle, bu kimlik bilgilerinin taşınması, kalıcılığı ve kullanılması, Azure geliştiricilerinin, yöneticilerin ve yedekleme hizmetlerinin ve personelin gizli, gizli veya özel bilgilere erişmesini engelleyecek şekilde tasarlanmıştır.
 
-Microsoft, FC'nin ana kimlik ortak anahtarına dayalı şifreleme kullanır. Bu, ağ donanım aygıtlarına erişmek için kullanılan kimlik bilgilerini aktarmak için FC kurulum ve FC yeniden yapılandırma zamanlarında oluşur. FC kimlik bilgilerine ihtiyaç duyduğunda, FC kimlik bilgilerini alır ve şifresini çözer.
+Microsoft, FC 'nin ana kimlik ortak anahtarı temel alınarak şifrelemeyi kullanır. Bu, ağ donanımı cihazlarına erişmek için kullanılan kimlik bilgilerini aktarmak üzere FC kurulumu ve FC yeniden yapılandırma saatlerinde oluşur. FC kimlik bilgilerine ihtiyaç duyduğunda, FC bunları alır ve şifresini çözer.
 
-### <a name="network-devices"></a>Ağ aygıtları
+### <a name="network-devices"></a>Ağ cihazları
 
-Azure ağ ekibi, ağ hizmeti hesaplarını, bir Azure istemcisinin ağ aygıtlarına (yönlendiriciler, anahtarlar ve yük bakiyeleri) kimlik doğrulaması yapabilmesini sağlayacak şekilde yapılandırır.
+Azure ağ ekibi, bir Azure istemcisinin Ağ cihazlarına (yönlendiriciler, anahtarlar ve yük dengeleyiciler) kimlik doğrulaması yapmasını sağlamak üzere ağ hizmeti hesaplarını yapılandırır.
 
 ## <a name="secure-service-administration"></a>Güvenli hizmet yönetimi
-Azure işlemleri personelinin güvenli yönetici iş istasyonlarını (SAWs) kullanması gerekir. Müşteriler ayrıcalıklı erişim iş istasyonlarını kullanarak benzer denetimleri uygulayabilir. SAWs ile, yönetim personeli kullanıcının standart kullanıcı hesabından ayrı ayrı atanmış bir yönetim hesabı kullanır. SAW, bu hassas hesaplar için güvenilir bir iş istasyonu sağlayarak bu hesap ayırma uygulaması üzerine inşa eder.
+Güvenli yönetici iş istasyonlarını (SAWs) kullanmak için Azure operasyon personeli gereklidir. Müşteriler, ayrıcalıklı erişim iş istasyonlarını kullanarak benzer denetimleri uygulayabilir. SAWs ile yönetim personeli, kullanıcının standart kullanıcı hesabından ayrı olarak atanmış ayrı bir yönetim hesabı kullanır. Bu, bu hassas hesaplar için güvenilir bir iş istasyonu sağlayarak bu hesabın ayrım uygulaması üzerinde oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Microsoft'un Azure altyapısının güvenliğini sağlamaya yardımcı olmak için neler yaptığı hakkında daha fazla bilgi edinmek için bkz:
+Microsoft 'un Azure altyapısını güvenli hale getirmeye yardımcı olma hakkında daha fazla bilgi edinmek için bkz.:
 
-- [Azure tesisleri, tesisler ve fiziksel güvenlik](physical-security.md)
-- [Azure altyapısı kullanılabilirliği](infrastructure-availability.md)
+- [Azure tesisler, şirket içi ve fiziksel güvenlik](physical-security.md)
+- [Azure altyapı kullanılabilirliği](infrastructure-availability.md)
 - [Azure ağ mimarisi](infrastructure-network.md)
 - [Azure üretim ağı](production-network.md)
-- [Azure SQL Veritabanı güvenlik özellikleri](infrastructure-sql.md)
+- [Azure SQL veritabanı güvenlik özellikleri](infrastructure-sql.md)
 - [Azure üretim işlemleri ve yönetimi](infrastructure-operations.md)
 - [Azure altyapı izleme](infrastructure-monitoring.md)
 - [Azure altyapı bütünlüğü](infrastructure-integrity.md)
-- [Azure müşteri veri koruması](protection-customer-data.md)
+- [Azure müşteri verileri koruması](protection-customer-data.md)

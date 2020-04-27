@@ -1,6 +1,6 @@
 ---
-title: Android için H264 Tek Bitrate 720p | Microsoft Dokümanlar
-description: Konu Android görev önceden ayarlanmış **için H264 Single Bitrate 720p** genel bir bakış verir.
+title: Android için H264 tek bit hızı 720p | Microsoft Docs
+description: Bu konu, **Android Için H264 tek bit hızı 720p için** bir genel bakış sunar.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: da44cf33882d2658b20f117053d486177117a5a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61131027"
 ---
 # <a name="h264-single-bitrate-720p-for-android"></a>Android için H264 Single Bitrate 720p
-`Media Encoder Standard`kodlama işleri oluştururken kullanabileceğiniz bir kodlama ön ayarları kümesini tanımlar. A'yı, `preset name` medya dosyanızı kodlamak istediğiniz biçimi belirtmek için de kullanabilirsiniz. Veya kendi JSON veya XML tabanlı hazır ayarlarınızı (UTF-8 veya UTF-16 kodlaması kullanarak) oluşturabilirsiniz. Daha sonra özel ön ayarını kodlayıcıya geçirirsiniz. Bu `Media Encoder Standard` kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi [için, Ortam Kodlayıcı Standardı için Görev Hazır Ayarları'na](media-services-mes-presets-overview.md)bakın.  
+`Media Encoder Standard`kodlama işleri oluştururken kullanabileceğiniz bir kodlama önayarları kümesi tanımlar. Medya dosyanızı kodlamak istediğiniz biçimi `preset name` belirtmek için bir kullanabilirsiniz. Ya da kendi JSON veya XML tabanlı önayarlarınızı oluşturabilirsiniz (UTF-8 veya UTF-16 kodlaması kullanarak). Daha sonra özel önayar kodlayıcıya geçirebilirsiniz. Bu `Media Encoder Standard` kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi için bkz. [Media Encoder Standard Için görev önayarları](media-services-mes-presets-overview.md).  
   
-Bu `H264 Single Bitrate 720p for Android` konu, XML ve JSON biçiminde önceden ayarlanmışı gösterir.  
+Bu konu, `H264 Single Bitrate 720p for Android` XML ve JSON biçimindeki ön ayarı gösterir.  
   
-Bu ön ayar, 2000 kbps bithızına ve stereo AAC'ye sahip tek bir MP4 dosyası üretir. Bu önceden ayarlanmış profil, bitrate, örnekleme hızı vb. hakkında ayrıntılı bilgi için aşağıda tanımlanan XML veya JSON'u inceleyin. Bu hazır ayarlardaki her öğenin ne anlama geldiğini ve her öğe için geçerli değerleri açıklamaları için [Media Encoder Standart şeması](media-services-mes-schema.md) konusuna bakın.  
+Bu önayar, bit hızı 2000 kbps ve stereo AAC olan tek bir MP4 dosyası üretir. Bu önayar için profil, bit hızı, örnekleme oranı vb. hakkında ayrıntılı bilgi için, aşağıda tanımlanan XML veya JSON 'u inceleyin. Bu önayarlardır her öğe ve her öğe için geçerli değerler hakkında açıklamalar için [Media Encoder Standard şeması](media-services-mes-schema.md) konusuna bakın.  
   
  XML  
   

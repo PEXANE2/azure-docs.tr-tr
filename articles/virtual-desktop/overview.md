@@ -1,6 +1,6 @@
 ---
 title: Windows Sanal Masaüstü nedir? - Azure
-description: Windows Sanal Masaüstü'ne genel bakış.
+description: Windows sanal masaüstü 'ne genel bakış.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,135 +8,135 @@ ms.topic: overview
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 927696d029bf1b8742dc0001e03799322f368191
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3dd971cec33fa9f840a48e597fb3bed9a7965895
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261729"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160026"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
-Windows Sanal Masaüstü bulutta çalışan bir masaüstü ve uygulama sanallaştırma hizmetidir.
+Windows sanal masaüstü, bulutta çalışan bir masaüstü ve uygulama sanallaştırma hizmetidir.
 
-Azure'da Windows Sanal Masaüstü çalıştırdığınızda şunları yapabilirsiniz:
+Azure 'da Windows sanal masaüstü 'Nü çalıştırdığınızda şunları yapabilirsiniz:
 
-* Ölçeklenebilirlik ile tam bir Windows 10 sağlayan çok oturumlu bir Windows 10 dağıtımı ayarlama
-* Office 365 ProPlus'ı sanallaştırın ve çok kullanıcılı sanal senaryolarda çalışacak şekilde optimize edin
-* Windows 7 sanal masaüstlerine ücretsiz Genişletilmiş Güvenlik Güncelleştirmeleri sağlayın
-* Mevcut Uzak Masaüstü Hizmetleri (RDS) ve Windows Server masaüstü ve uygulamalarınızı herhangi bir bilgisayara taşıyın
-* Hem masaüstü hem de uygulamaları sanallaştırma
-* Windows 10, Windows Server ve Windows 7 masaüstü ve uygulamalarını birleşik bir yönetim deneyimiyle yönetme
+* Ölçeklenebilirlik ile tam bir Windows 10 sunan çoklu oturum Windows 10 dağıtımı ayarlama
+* Office 365 ProPlus 'ı sanallaştırın ve çoklu Kullanıcı sanal senaryolarında çalıştırmak için iyileştirin
+* Ücretsiz genişletilmiş güvenlik güncelleştirmeleri ile Windows 7 sanal masaüstlerini sağlama
+* Mevcut Uzak Masaüstü Hizmetleri (RDS) ve Windows Server Masaüstlerinizi ve uygulamalarınızı herhangi bir bilgisayara getirme
+* Masaüstlerini ve uygulamaları sanallaştırın
+* Windows 10, Windows Server ve Windows 7 Masaüstü ve uygulamalarını birleştirilmiş bir yönetim deneyimiyle yönetin
 
-## <a name="introductory-video"></a>Tanıtım videosu
+## <a name="introductory-video"></a>Tanıtım Videosu
 
-Windows Sanal Masaüstü hakkında bilgi edinin, neden benzersiz olduğunu ve bu videoda yenilikler hakkında bilgi edinin:
+Windows sanal masaüstü hakkında, neden benzersiz olduğunu ve bu videodaki yenilikler hakkında bilgi edinin:
 
 <br></br><iframe src="https://www.youtube.com/embed/NQFtI3JLtaU" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
-Windows Sanal Masaüstü hakkında daha fazla video için [çalma listemize](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev)bakın.
+Windows sanal masaüstü hakkında daha fazla video için [çalma listemize](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev)bakın.
 
 ## <a name="key-capabilities"></a>Temel işlevler
 
-Windows Sanal Masaüstü ile ölçeklenebilir ve esnek bir ortam ayarlayabilirsiniz:
+Windows sanal masaüstü ile ölçeklenebilir ve esnek bir ortam ayarlayabilirsiniz:
 
 * Ek ağ geçidi sunucuları çalıştırmak zorunda kalmadan Azure aboneliğinizde tam bir masaüstü sanallaştırma ortamı oluşturun.
-* Çeşitli iş yüklerinizi karşılamak için istediğiniz kadar ana bilgisayar havuzu yayınlayın.
-* Azure Galerisi'nden üretim iş yükleri için kendi resminizi veya testinizi getirin.
-* Havuzlanmış, çok oturumlu kaynaklarla maliyetleri azaltın. Windows Server'daki Windows Sanal Masaüstü ve Uzak Masaüstü Oturum Ana Bilgisayar (RDSH) rolüne özel yeni Windows 10 Enterprise çok oturumlu özelliğiyle, kullanıcılarınıza aynı kaynakları sağlarken sanal makine ve işletim sistemi (OS) ek yükü sayısını büyük ölçüde azaltabilirsiniz.
-* Kişisel (kalıcı) masaüstü bilgisayarlar aracılığıyla bireysel sahiplik sağlayın.
+* Farklı iş yüklerinize uyum sağlamak için ihtiyacınız olan sayıda konak havuzu yayımlayın.
+* Azure Galerisi 'nden üretim iş yükleri veya test için kendi görüntünüzü getirin.
+* Havuza alınmış, çoklu oturum kaynaklarıyla maliyetleri azaltın. Windows Server 'da Windows sanal masaüstü ve Uzak Masaüstü Oturumu Ana Bilgisayarı (RDSH) rolü için özel Windows 10 Enterprise çoklu oturum özelliği sayesinde, kullanıcılarınıza aynı kaynakları sağlarken sanal makine sayısını ve işletim sistemi (OS) ek yükünü büyük ölçüde azaltabilirsiniz.
+* Kişisel (kalıcı) masaüstleri aracılığıyla tek bir sahiplik sağlayın.
 
 Sanal masaüstlerini dağıtabilir ve yönetebilirsiniz:
 
-* Ana bilgisayar havuzlarını yapılandırmak, uygulama grupları oluşturmak, kullanıcıları atamak ve kaynakları yayımlamak için Windows Virtual Desktop PowerShell ve REST arabirimlerini kullanın.
-* Tek bir ana bilgisayar havuzundan tam masaüstü veya tek tek uzak uygulamalar yayınlayın, farklı kullanıcı grupları için ayrı uygulama grupları oluşturun ve hatta görüntü sayısını azaltmak için kullanıcıları birden çok uygulama grubuna atayın.
-* Ortamınızı yönetirken, çeşitli yapılandırma veya kullanıcı hatalarını anlamak için roller atamak ve tanılama toplamak için yerleşik yerleşik erişimi kullanın.
-* Hataları gidermek için yeni Tanılama hizmetini kullanın.
-* Yalnızca görüntüyü ve sanal makineleri yönetin, altyapıyı değil. Uzak Masaüstü Hizmetlerinde yaptığınız gibi Uzak Masaüstü rollerini, sadece Azure aboneliğinizdeki sanal makineleri kişisel olarak yönetmeniz gerekmez.
+* Konak havuzlarını yapılandırmak, uygulama grupları oluşturmak, kullanıcı atamak ve kaynakları yayımlamak için Windows sanal masaüstü PowerShell ve REST arabirimlerini kullanın.
+* Tek bir konak havuzundan tam masaüstü veya ayrı ayrı uzak uygulamalar yayımlayın, farklı Kullanıcı kümeleri için ayrı ayrı uygulama grupları oluşturun, hatta görüntü sayısını azaltmak için kullanıcıları birden çok uygulama grubuna atayın.
+* Ortamınızı yönetirken, rol atamak ve çeşitli yapılandırma veya kullanıcı hatalarını anlamak için tanılama toplamak üzere yerleşik olarak atanmış erişimi kullanın.
+* Hataları gidermek için yeni tanılama hizmetini kullanın.
+* Altyapıyı değil, yalnızca görüntüyü ve sanal makineleri yönetin. Yalnızca Azure aboneliğinizdeki sanal makineler Uzak Masaüstü Hizmetleri gibi uzak masaüstü rollerini kişisel olarak yönetmeniz gerekmez.
 
-Ayrıca, kullanıcıları sanal masaüstünüze atayabilir ve bağlayabilirsiniz:
+Ayrıca, sanal masaüstlerine Kullanıcı atayabilir ve bunları bağlayabilirsiniz:
 
-* Kullanıcılar, atandıktan sonra, kullanıcıları yayınlanmış Windows masaüstü ve uygulamalarına bağlamak için herhangi bir Windows Sanal Masaüstü istemcisini başlatabilir. Cihazınızdaki yerel bir uygulama veya Windows Virtual Desktop HTML5 web istemcisi aracılığıyla herhangi bir cihazdan bağlanın.
-* Hizmete ters bağlantılar aracılığıyla kullanıcıları güvenli bir şekilde kurun, böylece gelen bağlantı noktalarını açık bırakmak zorunda kalmadan.
+* Kullanıcılar, atandıktan sonra kullanıcıları yayınlanan Windows Masaüstü ve uygulamalarına bağlamak için herhangi bir Windows sanal masaüstü istemcisini başlatabilir. Cihazınızdaki veya Windows sanal masaüstü HTML5 Web istemcisinde bulunan yerel bir uygulama aracılığıyla herhangi bir cihazdan bağlantı yapın.
+* Hizmete ters bağlantılar aracılığıyla kullanıcıları güvenle oluşturun, bu nedenle herhangi bir gelen bağlantı noktasını açık bırakmanız gerekmez.
 
 ## <a name="requirements"></a>Gereksinimler
 
-Windows Sanal Masaüstü'nü kurmak ve kullanıcılarınızı Windows masaüstü ve uygulamalarına başarıyla bağlamak için gereken birkaç şey vardır.
+Windows sanal masaüstü 'Nü kurmak ve kullanıcılarınızı Windows Masaüstü ve uygulamalarına başarıyla bağlamak için gereken birkaç nokta vardır.
 
-Aşağıdaki İş ses teşekkülleri için destek eklemeyi planlıyoruz, bu nedenle dağıtmayı planladığınız masaüstü ve uygulamalara göre kullanıcılarınız için [uygun lisanslara](https://azure.microsoft.com/pricing/details/virtual-desktop/) sahip olduğunuzdan emin olun:
+Aşağıdaki Işletim sistemleri için destek eklemeyi planlıyoruz; bu nedenle, dağıtmayı planladığınız masaüstü ve uygulamalara bağlı olarak kullanıcılarınız için [uygun lisanslara](https://azure.microsoft.com/pricing/details/virtual-desktop/) sahip olduğunuzdan emin olun:
 
 |İşletim Sistemi|Gerekli lisans|
 |---|---|
-|Windows 10 Enterprise çoklu oturum veya Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, İş<br>Windows E3, E5, A3, A5|
-|Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, İş<br>Windows E3, E5, A3, A5|
-|Windows Server 2012 R2, 2016, 2019|Yazılım Güvencesi ile RDS İstemci Erişim Lisansı (CAL)|
+|Windows 10 Enterprise çoklu oturum veya Windows 10 Enterprise|Microsoft 365 E3, E5, a3, A5, F3, Iş<br>Windows E3, E5, a3, a5|
+|Windows 7 Enterprise |Microsoft 365 E3, E5, a3, A5, F3, Iş<br>Windows E3, E5, a3, a5|
+|Windows Server 2012 R2, 2016, 2019|Yazılım güvencesi içeren RDS Istemci erişim lisansı (CAL)|
 
-Altyapınızın Windows Sanal Masaüstü'nü desteklemek için aşağıdaki şeylere ihtiyacı vardır:
+Altyapınız Windows sanal masaüstünü desteklemek için aşağıdaki şeylere ihtiyaç duyuyor:
 
-* [Azure Etkin Dizini](/azure/active-directory/)
-* Azure Etkin Dizinile senkronize bir Windows Server Etkin Dizini. Bunu aşağıdakilerden biriyle yapılandırabilirsiniz:
-  * Azure AD Connect (karma kuruluşlar için)
-  * Azure AD Etki Alanı Hizmetleri (karma veya bulut kuruluşları için)
-* Windows Server Etkin Dizini içeren veya bağlı sanal ağ içeren bir Azure aboneliği
+* Bir [Azure Active Directory](/azure/active-directory/)
+* Bir Windows Server, Azure Active Directory eşitlenmiş Active Directory. Bunu, aşağıdakilerden biriyle yapılandırabilirsiniz:
+  * Azure AD Connect (Hibrit kuruluşlar için)
+  * Azure AD Domain Services (karma veya bulut kurumları için)
+* Windows Server 'a bağlı olan veya içeren bir sanal ağ içeren bir Azure aboneliği Active Directory
   
-Windows Sanal Masaüstü için oluşturduğunuz Azure sanal makineleri:
+Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri şu şekilde olmalıdır:
 
-* [Standart etki alanı birleştirilmiş](../active-directory-domain-services/active-directory-ds-comparison.md) veya [Karma AD katıldı.](../active-directory/devices/hybrid-azuread-join-plan.md) Sanal makineler Azure AD'ye katıldı olamaz.
-* Aşağıdaki [desteklenen işletim sistemi görüntülerinden](#supported-virtual-machine-os-images)birini çalıştırma.
+* [Standart etki alanına katılmış](../active-directory-domain-services/active-directory-ds-comparison.md) veya [karma ad 'ye katılmış](../active-directory/devices/hybrid-azuread-join-plan.md). Sanal makineler Azure AD 'ye katılmış olamaz.
+* Aşağıdaki [desteklenen işletim sistemi görüntülerinden](#supported-virtual-machine-os-images)birini çalıştırın.
 
 >[!NOTE]
->Azure aboneliğine ihtiyacınız varsa, [bir aylık ücretsiz deneme sürümüne kaydolabilirsiniz.](https://azure.microsoft.com/free/) Azure'un ücretsiz deneme sürümünü kullanıyorsanız, Windows Server Etkin Dizininizi Azure Etkin Dizini ile senkronize tutmak için Azure AD Etki Alanı Hizmetlerini kullanmanız gerekir.
+>Bir Azure aboneliğine ihtiyacınız varsa, bir [aylık ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/free/). Azure 'un ücretsiz deneme sürümünü kullanıyorsanız, Windows Server Active Directory Azure Active Directory ile eşitlenmiş halde tutmak için Azure AD Domain Services kullanmanız gerekir.
 
-Windows Sanal Masaüstü için oluşturduğunuz Azure sanal makinelerinin aşağıdaki URL'lere erişimi olmalıdır:
+Windows sanal masaüstü için oluşturduğunuz Azure sanal makinelerinin aşağıdaki URL 'Lere erişimi olmalıdır:
 
-|Adres|Giden TCP bağlantı noktası|Amaç|Servis Etiketi|
+|Adres|Giden TCP bağlantı noktası|Amaç|Hizmet etiketi|
 |---|---|---|---|
-|*.wvd.microsoft.com|443|Servis trafiği|WindowsVirtualDesktop|
-|mrsglobalsteus2prod.blob.core.windows.net|443|Aracı ve SXS yığın güncellemeleri|AzureCloud|
-|*.core.windows.net|443|Acente trafiği|AzureCloud|
-|*.servicebus.windows.net|443|Acente trafiği|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|Acente trafiği|AzureCloud|
+|*. wvd.microsoft.com|443|Hizmet trafiği|WindowsVirtualDesktop|
+|mrsglobalsteus2prod.blob.core.windows.net|443|Aracı ve SXS yığın güncelleştirmeleri|AzureCloud|
+|*.core.windows.net|443|Aracı trafiği|AzureCloud|
+|*.servicebus.windows.net|443|Aracı trafiği|AzureCloud|
+|prod.warmpath.msftcloudes.com|443|Aracı trafiği|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Market|AzureCloud|
 |kms.core.windows.net|1688|Windows etkinleştirme|Internet|
 
 >[!IMPORTANT]
->Hizmet sorunlarını önlemek için çoğu durumda URL yerine servis etiketlerini kullanmanızı öneririz. Bu URL'lerin engelini kaldırmak, güvenilir bir Windows Sanal Masaüstü dağıtımı için çok önemlidir. Bu URL'lere erişimi engellemek desteklenmez ve hizmet işlevselliğini etkiler. Bu URL'ler yalnızca Windows Sanal Masaüstü sitelerine ve kaynaklarına karşılık gelir ve Azure Active Directory gibi diğer hizmetler için URL içermez.
+>Hizmet sorunlarını engellemek için çoğu durumda URL yerine hizmet etiketlerini kullanmanızı öneririz. Güvenilir bir Windows sanal masaüstü dağıtımı için bu URL 'Lerin engellemesini kaldırma işlemi gereklidir. Bu URL 'lere erişimin engellenmesi desteklenmez ve hizmet işlevlerini etkiler. Bu URL 'Ler yalnızca Windows sanal masaüstü siteleri ve kaynaklarına karşılık gelir ve Azure Active Directory gibi diğer hizmetlere yönelik URL 'Ler içermez.
 
-Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağlı URL'ler listelenemeniz gerekir:
+Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağlı URL 'Ler listelenmektedir:
 
-|Adres|Giden TCP bağlantı noktası|Amaç|Servis Etiketi|
+|Adres|Giden TCP bağlantı noktası|Amaç|Hizmet etiketi|
 |---|---|---|---|
-|*.microsoftonline.com|443|MS Online Hizmetlerine Kimlik Doğrulama|None|
-|*.events.data.microsoft.com|443|Telemetri Servisi|None|
-|www.msftconnecttest.com|443|İşletim sistemi internete bağlı olup olmadığını algılar|None|
-|*.prod.do.dsp.mp.microsoft.com|443|Windows Update|None|
-|login.windows.net|443|MS Online Hizmetlere Giriş, Office 365|None|
-|*.sfx.ms|443|OneDrive istemci yazılımı için güncelleştirmeler|None|
-|*.digicert.com|443|Sertifika iptal denetimi|None|
+|*.microsoftonline.com|443|MS Online Services ile kimlik doğrulama|Hiçbiri|
+|*. events.data.microsoft.com|443|Telemetri hizmeti|Hiçbiri|
+|www.msftconnecttest.com|443|İşletim sisteminin Internet 'e bağlı olup olmadığını algılar|Hiçbiri|
+|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Hiçbiri|
+|login.windows.net|443|MS online hizmetlerinde oturum açın, Office 365|Hiçbiri|
+|*. sfx.ms|443|OneDrive istemci yazılımı güncelleştirmeleri|Hiçbiri|
+|*. digicert.com|443|Sertifika iptal denetimi|Hiçbiri|
 
 
 >[!NOTE]
->Windows Sanal Masaüstü'nde şu anda ağ trafiğine izin vermek için beyaz listeye alabileceğiniz IP adresi aralıklarının bir listesi yok. Şu anda yalnızca belirli URL'leri beyaz listeye alma yı destekliyoruz.
+>Windows sanal masaüstü, ağ trafiğine izin vermek için beyaz listeye sahip bir IP adresi aralığı listesine sahip değil. Şu anda yalnızca belirli URL 'Lerin beyaz listeye alınmasını destekliyoruz.
 >
->Gerekli Azure Etkin Dizin le ilgili URL'ler de dahil olmak üzere Office ile ilgili [URL'lerin](/office365/enterprise/urls-and-ip-address-ranges)listesi için bkz.
+>Gerekli Azure Active Directory ilgili URL 'Ler dahil olmak üzere Office ile ilgili URL 'Lerin bir listesi için bkz. [office 365 URL 'leri ve IP adresi aralıkları](/office365/enterprise/urls-and-ip-address-ranges).
 >
->Servis trafiğini içeren URL'ler için joker karakter (*) kullanmanız gerekir. Aracıyla ilgili trafik için * kullanmamayı tercih ederseniz, joker karaktersiz URL'leri şu şekilde bulabilirsiniz:
+>Hizmet trafiğiyle ilgili URL 'Ler için (*) joker karakterini kullanmanız gerekir. Aracıyla ilgili trafik için * kullanmayı tercih ediyorsanız, joker karakterleri olmayan URL 'Leri bulma hakkında bilgi edinebilirsiniz:
 >
->1. Sanal makinelerinizi Windows Sanal Masaüstü ana bilgisayar havuzuna kaydedin.
->2. **Olay görüntüleyicisini** açın ve **Windows günlükleri** > **Application** > **WVD-Agent** gidin ve Olay Kimliği 3702 arayın.
->3. Event ID 3702 altında bulduğunuz URL'leri beyaz listele. Event ID 3702 altındaki URL'ler bölgeye özgür. Sanal makinelerinizi dağıtmak istediğiniz her bölge için ilgili URL'lerle beyaz liste işlemini yinelemeniz gerekir.
+>1. Sanal makinelerinizi Windows sanal masaüstü ana bilgisayar havuzuna kaydedin.
+>2. **Olay Görüntüleyicisi** 'ni açın ve **Windows günlükleri** > **uygulaması** > **WVD-Agent** ' a gidin ve olay kimliği 3702 ' i arayın.
+>3. Olay KIMLIĞI 3702 altında bulduğunuz URL 'Leri beyaz listeye ekleyin. Olay KIMLIĞI 3702 altındaki URL 'Ler bölgeye özeldir. Beyaz Listeleme işlemini, sanal makinelerinizi dağıtmak istediğiniz her bölge için ilgili URL 'lerle tekrarlamanız gerekecektir.
 
-Windows Sanal Masaüstü, kullanıcılara sağladığınız Windows masaüstü ve uygulamalarını ve Microsoft tarafından Azure'da bir hizmet olarak barındırılan yönetim çözümünü kapsar. Masaüstü bilgisayarlar ve uygulamalar herhangi bir Azure bölgesindeki sanal makinelerde (VM' ler) dağıtılabilir ve bu Sanal Bilgisayarlara yönelik yönetim çözümü ve verileri ABD'de bulunabilir. Bu, ABD'ye veri aktarımı yla sonuçlanabilir.
+Windows sanal masaüstü, kullanıcılara ve Microsoft tarafından Azure 'da bir hizmet olarak barındırılan yönetim çözümüne ait olan Windows Masaüstü ve uygulamalarını içerir. Masaüstleri ve uygulamalar, herhangi bir Azure bölgesindeki sanal makinelerde (VM) dağıtılabilir ve bu VM 'Lerin yönetim çözümü ve verileri Birleşik Devletler yer alır. Bu, Birleşik Devletler veri aktarımına neden olabilir.
 
 En iyi performans için, ağınızın aşağıdaki gereksinimleri karşıladığından emin olun:
 
-* Müşteri ağından ana bilgisayar havuzlarının dağıtıldığı Azure bölgesine gidiş-dönüş (RTT) gecikmesi 150 ms'den az olmalıdır.
-* Masaüstü ve uygulamaları barındıran VM'ler yönetim hizmetine bağlandığında ağ trafiği ülke/bölge sınırları dışında akabilir.
-* Ağ performansını optimize etmek için, oturum ana bilgisayar larının VM'lerinin yönetim hizmetiyle aynı Azure bölgesinde toplanmış olmasını öneririz.
+* İstemci ağından, ana bilgisayar havuzlarının dağıtıldığı Azure bölgesine gidiş dönüş (RTT) gecikmesi 150 MS 'den az olmalıdır.
+* Masaüstleri ve uygulamalar barındıran VM 'Ler Yönetim hizmetine bağlandığında ağ trafiği ülke/bölge kenarlıklarının dışına akabilir.
+* Ağ performansını iyileştirmek için, oturum ana bilgisayarının VM 'lerinin yönetim hizmeti ile aynı Azure bölgesinde birlikte bulunmasını öneririz.
 
-## <a name="supported-remote-desktop-clients"></a>Desteklenen Uzak Masaüstü istemcileri
+## <a name="supported-remote-desktop-clients"></a>Desteklenen uzak masaüstü istemcileri
 
-Aşağıdaki Uzak Masaüstü istemcileri Windows Sanal Masaüstü'nü destekler:
+Aşağıdaki uzak masaüstü istemcileri Windows sanal masaüstünü destekler:
 
 * [Windows Masaüstü](connect-windows-7-and-10.md)
 * [Web](connect-web.md)
@@ -145,51 +145,51 @@ Aşağıdaki Uzak Masaüstü istemcileri Windows Sanal Masaüstü'nü destekler:
 * [Android (Önizleme)](connect-android.md)
 
 > [!IMPORTANT]
-> Windows Sanal Masaüstü, RemoteApp ve Masaüstü Bağlantıları (RADC) istemcisini veya Uzak Masaüstü Bağlantısı (MSTSC) istemcisini desteklemez.
+> Windows sanal masaüstü, RemoteApp ve Masaüstü bağlantıları (ÇDC) istemcisini veya Uzak Masaüstü Bağlantısı (MSTSC) istemcisini desteklemez.
 
 > [!IMPORTANT]
-> Windows Sanal Masaüstü şu anda Windows Mağazası'ndan Uzak Masaüstü istemcisini desteklemiyor. Bu istemci için destek gelecekteki bir sürümde eklenecektir.
+> Windows sanal masaüstü Şu anda Windows Mağazası 'ndan uzak masaüstü istemcisini desteklememektedir. Bu istemciye yönelik destek gelecekteki bir sürüme eklenecektir.
 
-Uzak Masaüstü istemcileri aşağıdaki URL'lere erişebilmeli:
+Uzak Masaüstü istemcilerinin aşağıdaki URL 'Lere erişimi olmalıdır:
 
-|Adres|Giden TCP bağlantı noktası|Amaç|İstemci(ler)|
+|Adres|Giden TCP bağlantı noktası|Amaç|İstemci (ler)|
 |---|---|---|---|
-|*.wvd.microsoft.com|443|Servis trafiği|Tümü|
-|*.servicebus.windows.net|443|Veri sorun giderme|Tümü|
+|*. wvd.microsoft.com|443|Hizmet trafiği|Tümü|
+|*.servicebus.windows.net|443|Sorun giderme verileri|Tümü|
 |go.microsoft.com|443|Microsoft FWLinks|Tümü|
-|aka.ms|443|Microsoft URL kısaltıcı|Tümü|
+|aka.ms|443|Microsoft URL kısaltalayıcı|Tümü|
 |docs.microsoft.com|443|Belgeler|Tümü|
 |privacy.microsoft.com|443|Gizlilik bildirimi|Tümü|
-|query.prod.cms.rt.microsoft.com|443|İstemci güncellemeleri|Windows Masaüstü|
+|query.prod.cms.rt.microsoft.com|443|İstemci güncelleştirmeleri|Windows Masaüstü|
 
 >[!IMPORTANT]
->Bu URL'lerin açılması güvenilir bir istemci deneyimi için çok önemlidir. Bu URL'lere erişimi engellemek desteklenmez ve hizmet işlevselliğini etkiler. Bu URL'ler yalnızca istemci sitelerine ve kaynaklarına karşılık gelir ve Azure Etkin Dizini gibi diğer hizmetler için URL içermez.
+>Bu URL 'Leri açmak, güvenilir bir istemci deneyimi için gereklidir. Bu URL 'lere erişimin engellenmesi desteklenmez ve hizmet işlevlerini etkiler. Bu URL 'Ler yalnızca istemci sitelerine ve kaynaklarına karşılık gelir ve Azure Active Directory gibi diğer hizmetlere yönelik URL 'Ler içermez.
 
 ## <a name="supported-virtual-machine-os-images"></a>Desteklenen sanal makine işletim sistemi görüntüleri
 
-Windows Sanal Masaüstü aşağıdaki x64 işletim sistemi görüntülerini destekler:
+Windows sanal masaüstü aşağıdaki x64 işletim sistemi görüntülerini destekler:
 
-* Windows 10 Enterprise çoklu oturum, sürüm 1809 veya sonrası
-* Windows 10 Enterprise, sürüm 1809 veya sonrası
+* Windows 10 Enterprise multi-session, sürüm 1809 veya üzeri
+* Windows 10 Enterprise, sürüm 1809 veya üzeri
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Windows Sanal Masaüstü x86 (32 bit), Windows 10 Enterprise N veya Windows 10 Enterprise KN işletim sistemi görüntülerini desteklemez. Windows 7, sektör boyutu sınırlaması nedeniyle yönetilen Azure Depolama'da barındırılan VHD veya VHDX tabanlı profil çözümlerini de desteklemez.
+Windows sanal masaüstü, x86 (32-bit), Windows 10 Enterprise N veya Windows 10 Enterprise KN işletim sistemi görüntülerini desteklemez. Windows 7, bir sektör boyutu sınırlaması nedeniyle yönetilen Azure depolama üzerinde barındırılan VHD veya VHDX tabanlı profil çözümlerini de desteklemez.
 
-Kullanılabilir otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda gösterildiği gibi hangi işletim sistemi ve sürümü seçtiğinize bağlıdır: 
+Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda gösterildiği gibi, hangi işletim sistemi ve sürümü seçdiğinize bağlıdır: 
 
-|İşletim sistemi|Azure Resim Galerisi|Manuel VM dağıtımı|Azure Kaynak Yöneticisi şablon tümleştirmesi|Azure Marketi'nde sağlama ana bilgisayar havuzları|Windows Sanal Masaüstü Aracısı güncellemeleri|
+|İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|Windows sanal masaüstü Aracısı güncelleştirmeleri|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10 çoklu oturum, sürüm 1903|Evet|Evet|Evet|Evet|Automatic|
-|Windows 10 çoklu oturum, sürüm 1809|Evet|Evet|Hayır|Hayır|Automatic|
-|Windows 10 Enterprise, sürüm 1903|Evet|Evet|Evet|Evet|Automatic|
-|Windows 10 Enterprise, sürüm 1809|Evet|Evet|Hayır|Hayır|Automatic|
-|Windows 7 Enterprise|Evet|Evet|Hayır|Hayır|El ile|
-|Windows Server 2019|Evet|Evet|Hayır|Hayır|Automatic|
-|Windows Server 2016|Evet|Evet|Evet|Evet|Automatic|
-|Windows Server 2012 R2|Evet|Evet|Hayır|Hayır|Automatic|
+|Windows 10 çoklu oturum, sürüm 1903|Yes|Yes|Yes|Yes|Automatic|
+|Windows 10 çoklu oturum, sürüm 1809|Yes|Yes|Hayır|Hayır|Automatic|
+|Windows 10 Enterprise, sürüm 1903|Yes|Yes|Yes|Yes|Automatic|
+|Windows 10 Enterprise, sürüm 1809|Yes|Yes|Hayır|Hayır|Automatic|
+|Windows 7 Enterprise|Yes|Yes|Hayır|Hayır|El ile|
+|Windows Server 2019|Yes|Yes|Hayır|Hayır|Automatic|
+|Windows Server 2016|Yes|Yes|Yes|Yes|Automatic|
+|Windows Server 2012 R2|Yes|Yes|Hayır|Hayır|Automatic|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gölü Depolama Gen1 nedir? | Microsoft Belgeleri
-description: Veri Gölü Depolama Gen1'e (daha önce Azure Veri Gölü Deposu olarak bilinir) ve diğer veri depoları üzerinden sağladığı değere genel bakış
+title: Azure Data Lake Storage 1. nedir? | Microsoft Belgeleri
+description: Data Lake Storage 1. (daha önce Azure Data Lake Store olarak bilinirdi) ve diğer veri depoları üzerinde sağladığı değeri genel bakış
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
@@ -8,80 +8,80 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: twooley
 ms.openlocfilehash: 99384374226fd89cfd672c6b4f851a1743db0764
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67118797"
 ---
-# <a name="what-is-azure-data-lake-storage-gen1"></a>Azure Veri Gölü Depolama Gen1 nedir?
+# <a name="what-is-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. nedir?
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-Azure Veri Gölü Depolama Gen1, büyük veri analitik iş yükleri için kurumsal çapında hiper ölçekli bir depodur. Azure Data Lake, işletimsel ve keşifsel analiz için herhangi bir boyuta, türe ve alma hızına sahip olan verileri tek bir konumda yakalamanıza olanak sağlar.
+Azure Data Lake Storage 1., büyük veri analizi iş yükleri için kurumsal çapta bir hiper ölçek deposudur. Azure Data Lake, işletimsel ve keşifsel analiz için herhangi bir boyuta, türe ve alma hızına sahip olan verileri tek bir konumda yakalamanıza olanak sağlar.
 
-Data Lake Storage Gen1'e WebHDFS uyumlu REST API'leri kullanılarak Hadoop'tan (HDInsight kümesi ile kullanılabilir) erişilebilir. Depolanan veriler üzerinde analiz sağlamak üzere tasarlanmıştır ve veri analizi senaryoları için performans için ayarlanmıştır. Veri Gölü Depolama Gen1 tüm kurumsal sınıf yetenekleri içerir: güvenlik, yönetilebilirlik, ölçeklenebilirlik, güvenilirlik ve kullanılabilirlik.
+Data Lake Storage 1., Webileuyumlu REST API 'Leri kullanılarak Hadoop 'tan (HDInsight kümesiyle kullanılabilir) erişilebilir. Depolanan verilerde analizler etkinleştirmek ve veri analizi senaryoları için performans için ayarlanmıştır. Data Lake Storage 1. tüm kurumsal sınıf özellikleri içerir: güvenlik, yönetilebilirlik, ölçeklenebilirlik, güvenilirlik ve kullanılabilirlik.
 
 ![Azure Data Lake](./media/data-lake-store-overview/data-lake-store-concept.png)
 
 ## <a name="key-capabilities"></a>Temel işlevler
 
-Veri Gölü Depolama Gen1'in bazı önemli yetenekleri şunlardır.
+Data Lake Storage 1. temel özellikleri şunlardır.
 
 ### <a name="built-for-hadoop"></a>Hadoop için geliştirilmiştir
 
-Data Lake Storage Gen1, Hadoop Dağıtılmış Dosya Sistemi (HDFS) ile uyumlu ve Hadoop ekosistemi ile çalışan bir Apache Hadoop dosya sistemidir. WebHDFS API'sini kullanan mevcut HDInsight uygulamalarınız veya hizmetleriniz Veri Gölü Depolama Gen1 ile kolayca tümleşebilir. Data Lake Storage Gen1, uygulamalar için WebHDFS uyumlu BIR REST arabirimini de ortaya çıkarır.
+Data Lake Storage 1., Hadoop Dağıtılmış Dosya Sistemi (bir) ile uyumlu ve Hadoop ekosistemi ile birlikte çalışarak bir Apache Hadoop dosya sistemidir. Webbir API kullanan mevcut HDInsight uygulamalarınız veya hizmetleriniz Data Lake Storage 1. kolayca tümleştirilebilir. Data Lake Storage 1. Ayrıca, uygulamalar için bir Web, uyumlu REST arabirimi sunar.
 
-MapReduce veya Hive gibi Hadoop analitik çerçevelerini kullanarak Veri Gölü Depolama Gen1'de depolanan verileri kolayca analiz edebilirsiniz. Azure HDInsight kümelerini sağlayabilir ve bunları Veri Gölü Depolama Gen1'de depolanan verilere doğrudan erişmek üzere yapılandırabilirsiniz.
+MapReduce veya Hive gibi Hadoop analitik çerçeveleri kullanarak Data Lake Storage 1. depolanan verileri kolayca çözümleyebilirsiniz. Azure HDInsight kümelerini temin edebilir ve bunları Data Lake Storage 1. ' de depolanan verilere doğrudan erişecek şekilde yapılandırabilirsiniz.
 
 ### <a name="unlimited-storage-petabyte-files"></a>Sınırsız depolama, petabayt boyutlu dosyalar
 
-Data Lake Storage Gen1 sınırsız depolama sağlar ve analiz için çeşitli verileri saklayabilir. Hesap boyutlarına, dosya boyutlarına veya veri gölünde depolanabilecek veri miktarına herhangi bir sınır koymaz. Tek tek dosyalar kilobayt boyutu petabayt arasında olabilir. Veriler, birden çok kopya oluşturarak uzun bir şekilde depolanır. Verilerin veri gölünde depolanabileceği süre için bir sınır yoktur.
+Data Lake Storage 1., sınırsız depolama sağlar ve analiz için çeşitli verileri saklayabilir. Hesap boyutları, dosya boyutları veya bir veri Gölü içinde depolanabilecek veri miktarı için herhangi bir sınır yoktur. Tek dosyalar kilobayt ile petabaytlarca arasında değişebilir. Veriler birden çok kopya yapılarak durarak saklanır. Verilerin Veri Gölü içinde saklanabileceği süre için bir sınır yoktur.
 
 ### <a name="performance-tuned-for-big-data-analytics"></a>Büyük veri analizi için performans ayarı yapılmıştır
 
-Veri Gölü Depolama Gen1, büyük miktarda veriyi sorgulamak ve analiz etmek için büyük iş gücü gerektiren büyük ölçekli analitik sistemleri çalıştırmak için oluşturulmuştür. Veri gölü, bir dosyanın parçalarını birkaç ayrı depolama sunucusu üzerinde dağıtır. Bu, veri analizinin gerçekleştirilmesi için dosyanın paralel olarak okunması sırasında okuma verimini artırır.
+Data Lake Storage 1., büyük miktarlarda veriyi sorgulamak ve analiz etmek için büyük ölçekli verimlilik gerektiren büyük ölçekli analitik sistemleri çalıştırmak için oluşturulmuştur. Veri gölü, bir dosyanın parçalarını birkaç ayrı depolama sunucusu üzerinde dağıtır. Bu, veri analizinin gerçekleştirilmesi için dosyanın paralel olarak okunması sırasında okuma verimini artırır.
 
-### <a name="enterprise-ready-highly-available-and-secure"></a>Kurumsal hazır: Yüksek kullanılabilir ve güvenli
+### <a name="enterprise-ready-highly-available-and-secure"></a>Kurumsal kullanıma hazır: yüksek oranda kullanılabilir ve güvenli
 
-Data Lake Storage Gen1 endüstri standardı kullanılabilirlik ve güvenilirlik sağlar. Veri varlıklarınız, herhangi bir beklenmeyen arızaya karşı koruma sağlamak üzere yedekli kopyaların oluşturulmasıyla sağlam bir şekilde depolanır.
+Data Lake Storage 1. sektör standardı kullanılabilirliği ve güvenilirliği sağlar. Veri varlıklarınız, herhangi bir beklenmeyen arızaya karşı koruma sağlamak üzere yedekli kopyaların oluşturulmasıyla sağlam bir şekilde depolanır.
 
-Data Lake Storage Gen1, depolanan veriler için kurumsal dereceli güvenlik de sağlar. Daha fazla bilgi için bkz: [Azure Veri Gölü Depolama Gen1'de veri güvenliğini sağlama.](#DataLakeStoreSecurity)
+Data Lake Storage 1. Ayrıca, depolanan veriler için kurumsal düzeyde güvenlik sağlar. Daha fazla bilgi için bkz. [Azure Data Lake Storage 1. verileri güvenli hale getirme](#DataLakeStoreSecurity).
 
 ### <a name="all-data"></a>Tüm veriler
 
-Data Lake Storage Gen1, herhangi bir veriyi önceden dönüşüm gerektirmeden yerel biçiminde depolayabilir. Veri Gölü Depolama Gen1, veriler yüklenmeden önce bir şema tanımlanmasını gerektirmez, bu da verileri yorumlamak ve analiz sırasında bir şema tanımlamak için ayrı analitik çerçeveye bırakır. Rasgele boyutve biçimlerden oluşan dosyaları depolama yeteneği, Veri Gölü Depolama Gen1'in yapılandırılmış, yarı yapılandırılmış ve yapılandırılmamış verileri işlemesini mümkün kılar.
+Data Lake Storage 1., tüm verileri yerel biçiminde, önceki dönüşümlere gerek kalmadan depolayabilirler. Data Lake Storage 1., veriler yüklenmeden önce bir şemanın tanımlanmasını gerektirmez, verileri yorumlamak ve analiz sırasında bir şema tanımlamak için onu ayrı analitik çerçeveye bırakın. Rastgele boyut ve biçimlerin dosyalarını depolayabilme özelliği, Data Lake Storage 1. yapılandırılmış, yarı yapılandırılmış ve yapılandırılmamış verileri işlemesini mümkün hale getirir.
 
-Veri için Veri Gölü Depolama Gen1 kapsayıcıları aslında klasörler ve dosyalardır. SDK'lar, Azure portalı ve Azure Powershell'i kullanarak depolanan verileri kullanırsınız. Verilerinizi bu arabirimleri ve uygun kapsayıcıları kullanarak depoya koyarsanız, her türlü veriyi depolayabilirsiniz. Veri Gölü Depolama Gen1, depolanan veri türüne göre herhangi bir özel veri işleme gerçekleştirmez.
+Veriler için Data Lake Storage 1. kapsayıcılar temelde klasörler ve dosyalardır. SDK 'Ları, Azure portal ve Azure PowerShell 'i kullanarak depolanan veriler üzerinde işlem yapabilirsiniz. Bu arabirimleri kullanarak ve uygun kapsayıcıları kullanarak verilerinizi mağazaya yerleştirirseniz, herhangi bir veri türünü saklayabilirsiniz. Data Lake Storage 1., depoladığı verilerin türüne göre hiçbir özel veri işleme gerçekleştirmez.
 
 ## <a name="securing-data"></a><a name="DataLakeStoreSecurity"></a>Verilerin güvenliğini sağlama
 
-Veri Gölü Depolama Gen1, kimlik doğrulaması için Azure Etkin Dizin (Azure AD) ve verilerinize erişimi yönetmek için denetim listelerine (AçL' lar) erişir.
+Data Lake Storage 1., kimlik doğrulaması için Azure Active Directory (Azure AD) ve verilerinize erişimi yönetmek için erişim denetim listeleri (ACL 'Ler) kullanır.
 
 | Özellik | Açıklama |
 | --- | --- |
-| Kimlik doğrulaması |Veri Gölü Depolama Gen1, Veri Gölü Depolama Gen1'de depolanan tüm veriler için kimlik ve erişim yönetimi için Azure AD ile tümleşir. Tümleştirme sayesinde, Veri Gölü Depolama Gen1, çok faktörlü kimlik doğrulama, Koşullu Erişim, rol tabanlı erişim denetimi, uygulama kullanım izleme, güvenlik izleme ve uyarı gibi tüm Azure AD özelliklerinden yararlanır. Data Lake Storage Gen1, REST arabirimi içinde kimlik doğrulama için OAuth 2.0 protokolünü destekler. Bkz. [Veri Gölü Depolama Gen1 kimlik doğrulaması.](data-lakes-store-authentication-using-azure-active-directory.md)|
-| Erişim denetimi |Data Lake Storage Gen1, WebHDFS protokolü tarafından açığa çıkarılan POSIX tarzı izinleri destekleyerek erişim denetimi sağlar. Root klasöründe, alt klasörlerde ve tek tek dosyalarda Aç'ları etkinleştirebilirsiniz. ACD'lerin Veri Gölü Depolama Gen1 bağlamında nasıl çalıştığı hakkında daha fazla bilgi için Veri [Gölü Depolama Gen1'de Erişim denetimine](data-lake-store-access-control.md)bakın. |
-| Şifreleme |Veri Gölü Depolama Gen1, hesapta depolanan veriler için şifreleme de sağlar. Veri Gölü Depolama Gen1 hesabı oluştururken şifreleme ayarlarını belirtirsiniz. Verilerinizin şifrelenmesini seçebilir veya şifreleme yi tercih edebilirsiniz. Daha fazla bilgi için Bkz. [Veri Gölü Depolama Gen1'de Şifreleme.](data-lake-store-encryption.md) Şifrelemeyle ilgili yapılandırmanın nasıl sağlayabileceğine ilişkin talimatlar için [bkz.](data-lake-store-get-started-portal.md) |
+| Kimlik doğrulaması |Data Lake Storage 1., Data Lake Storage 1. depolanan tüm veriler için kimlik ve erişim yönetimi için Azure AD ile tümleşir. Tümleştirme nedeniyle, çok faktörlü kimlik doğrulaması, koşullu erişim, rol tabanlı erişim denetimi, uygulama kullanımı izleme, güvenlik izleme ve uyarı gibi tüm Azure AD özelliklerinden faydaların Data Lake Storage 1.. Data Lake Storage 1., REST arabirimi içinde kimlik doğrulaması için OAuth 2,0 protokolünü destekler. [Data Lake Storage 1. kimlik doğrulaması](data-lakes-store-authentication-using-azure-active-directory.md)' na bakın.|
+| Erişim denetimi |Data Lake Storage 1., Webdapterprotocol tarafından sunulan POSIX stili izinleri destekleyerek erişim denetimi sağlar. ACL 'Leri kök klasörde, alt klasörlerde ve tek tek dosyalarda etkinleştirebilirsiniz. ACL 'Lerin Data Lake Storage 1. bağlamında nasıl çalıştığı hakkında daha fazla bilgi için, bkz. [Data Lake Storage 1. Access Control](data-lake-store-access-control.md). |
+| Şifreleme |Data Lake Storage 1., hesapta depolanan veriler için de şifreleme sağlar. Data Lake Storage 1. bir hesap oluştururken şifreleme ayarlarını belirtirsiniz. Verilerinizin şifrelenmesini veya şifrelemeyi kabul etmesinin tercih edilebilir. Daha fazla bilgi için bkz. [Data Lake Storage 1. şifreleme](data-lake-store-encryption.md). Şifrelemeyle ilgili yapılandırma sağlama hakkında yönergeler için, bkz. [Azure Portal kullanarak Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md). |
 
-Veri Gölü Depolama Gen1'de verilerin nasıl güvenli hale verilecesine ilişkin talimatlar [için](data-lake-store-secure-data.md)bkz.
+Data Lake Storage 1. verileri nasıl koruyacağınız hakkında yönergeler için bkz. [Azure Data Lake Storage 1. verileri güvenli hale getirme](data-lake-store-secure-data.md).
 
 ## <a name="application-compatibility"></a>Uygulama uyumluluğu
 
-Data Lake Storage Gen1, Hadoop ekosistemindeki çoğu açık kaynak bileşeniile uyumludur. Ayrıca diğer Azure hizmetleriyle de iyi bir şekilde bütünleşir. Açık kaynak bileşenleri ve diğer Azure hizmetleriyle Data Lake Storage Gen1'i nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları kullanın:
+Data Lake Storage 1., Hadoop ekosistemindeki çoğu açık kaynaklı bileşenlerle uyumludur. Ayrıca, diğer Azure hizmetleriyle de iyi tümleşir. Açık kaynaklı bileşenler ve diğer Azure hizmetleriyle Data Lake Storage 1. nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları kullanın:
 
-- Data Lake Storage Gen1 ile birlikte çalışabiliyor açık kaynak uygulamaların listesi için [Azure Veri Gölü Depolama Gen1 ile uyumlu uygulamalar](data-lake-store-compatible-oss-other-applications.md) ve hizmetlere bakın.
-- Daha geniş bir senaryo aralığı sağlamak için Veri Gölü Depolama Gen1'in diğer Azure hizmetleriyle nasıl kullanılacağını anlamak için [diğer Azure hizmetleriyle tümleştirme](data-lake-store-integrate-with-other-services.md) bölümüne bakın.
-- Veri Göl [Depolama Gen1'i kullanarak](data-lake-store-data-scenarios.md) veri alma, veri işleme, veri indirme ve verileri görselleştirme gibi senaryolarda Veri Gölü Depolama Gen1'in nasıl kullanılacağını öğrenmek için senaryolara bakın.
+- Data Lake Storage 1. ile birlikte çalışabilen açık kaynaklı uygulamaların bir listesi için bkz. [Azure Data Lake Storage 1. ile uyumlu uygulamalar ve hizmetler](data-lake-store-compatible-oss-other-applications.md) .
+- Daha geniş bir senaryoyu etkinleştirmek için diğer Azure hizmetleriyle Data Lake Storage 1. nasıl kullanacağınızı anlamak için bkz. [diğer Azure hizmetleriyle tümleştirme](data-lake-store-integrate-with-other-services.md) .
+- Verileri alma, verileri işleme, verileri indirme ve verileri görselleştirme gibi senaryolarda Data Lake Storage 1. kullanmayı öğrenmek için [Data Lake Storage 1. kullanma senaryolarına](data-lake-store-data-scenarios.md) bakın.
 
-## <a name="data-lake-storage-gen1-file-system"></a>Veri Gölü Depolama Gen1 dosya sistemi
+## <a name="data-lake-storage-gen1-file-system"></a>Data Lake Storage 1. dosya sistemi
 
-Data Lake Storage Gen1'e Hadoop ortamlarında (HDInsight kümesi ile kullanılabilir) AzureDataLakeFilesystem (adl://) dosya sistemi üzerinden erişilebilir. adl:// kullanan uygulamalar ve hizmetler, şu anda WebHDFS'de bulunmayan diğer performans optimizasyonlarından yararlanabilir. Sonuç olarak, Data Lake Storage Gen1, webhdfs API'sını doğrudan kullanmaya devam ederek önerilen adl:// kullanma seçeneğiyle en iyi performansı kullanma veya varolan kodu koruma esnekliği sağlar. Azure HDInsight, Veri Gölü Depolama Gen1'de en iyi performansı sağlamak için AzureDataLakeFilesystem'den tam olarak yararlanır.
+Data Lake Storage 1., Hadoop ortamlarında (HDInsight kümesiyle kullanılabilir) FileSystem AzureDataLakeFilesystem (adl://) aracılığıyla erişilebilir. Adl://kullanan uygulamalar ve hizmetler, şu anda Webbir 'da kullanılamayan daha fazla performans iyileştirmelerinden yararlanabilir. Sonuç olarak, Data Lake Storage 1., Webbir API 'yi doğrudan kullanmaya devam ederek adl://kullanma veya mevcut kodu sürdürme seçeneklerinin önerilen seçeneğiyle en iyi performansı kullanma esnekliği sağlar. Azure HDInsight, Data Lake Storage 1. en iyi performansı sağlamak için AzureDataLakeFilesystem 'i tamamen kullanır.
 
-Verilerinize Data Lake Storage Gen1'i kullanarak `adl://<data_lake_storage_gen1_name>.azuredatalakestore.net`erişebilirsiniz. Veri Gölü Depolama Gen1'deki verilere nasıl erişilir hakkında daha fazla bilgi [için, depolanan verilerin özelliklerini görüntüleyin.](data-lake-store-get-started-portal.md#properties)
+Kullanarak `adl://<data_lake_storage_gen1_name>.azuredatalakestore.net`Data Lake Storage 1. verilerinize erişebilirsiniz. Data Lake Storage 1. verilere erişme hakkında daha fazla bilgi için bkz. [depolanan verilerin özelliklerini görüntüleme](data-lake-store-get-started-portal.md#properties).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portalını kullanarak Veri Gölü Depolama Gen1 ile başlayın](data-lake-store-get-started-portal.md)
-- [.NET SDK kullanarak Veri Gölü Depolama Gen1 ile başlayın](data-lake-store-get-started-net-sdk.md)
-- [Veri Gölü Depolama Gen1 ile Azure HDInsight'ı kullanın](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Azure portal kullanarak Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)
+- [.NET SDK kullanarak Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-net-sdk.md)
+- [Azure HDInsight 'ı Data Lake Storage 1. ile kullanma](data-lake-store-hdinsight-hadoop-use-portal.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Olay Idamı'nda coğrafi felaket kurtarma | Microsoft Dokümanlar
-description: Azure Olay Idamı'nın coğrafi durum kurtarmayı (GeoDR) otomatik olarak nasıl desteklediğini açıklar.
+title: Azure Event Grid coğrafi olağanüstü durum kurtarma | Microsoft Docs
+description: Azure Event Grid coğrafi olağanüstü durum kurtarmayı (GeoDR) otomatik olarak nasıl desteklediğini açıklar.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,33 +8,33 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: spelluru
 ms.openlocfilehash: 5b5c973a8daa8776efb0909092c569ea46902265
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66307325"
 ---
-# <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure Olay Grid'de sunucu tarafı coğrafi felaket kurtarma
-Olay Grid şimdi meta-veri otomatik bir jeo felaket kurtarma (GeoDR) sadece yeni, ama tüm mevcut etki alanları, konular ve olay abonelikleri vardır. Tüm Azure bölgesi çökerse, Olay Idamı etkinlikle ilgili tüm altyapı meta verilerinizi eşleştirilmiş bir bölgeyle eşitletirmiş olur. Yeni olaylarınız sizin müdahaleniz olmadan tekrar akmaya başlayacak. 
+# <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure Event Grid 'de sunucu tarafı coğrafi olağanüstü durum kurtarma
+Event Grid artık yalnızca yeni, ancak var olan tüm etki alanları, konular ve olay abonelikleri için değil, meta verilere yönelik otomatik coğrafi bir olağanüstü durum kurtarma (GeoDR) vardır. Bir Azure bölgesinin tamamı kapalıysa Event Grid, tüm olayla ilgili altyapı meta verilerlerinizin eşleştirilmiş bir bölgeyle eşitlenmesi zaten olur. Yeni olaylarınız, sizin tarafınızdan araya girmeden yeniden akışa sunulacaktır. 
 
-Olağanüstü durum kurtarma iki ölçümle ölçülür:
+Olağanüstü durum kurtarma iki ölçüm ile ölçülür:
 
-- [Kurtarma Noktası Hedefi (RPO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective): kaybedilebilecek dakika veya saat veri.
-- [Kurtarma Süresi Hedefi (RTO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective): hizmetin saat dakikaları kapalı olabilir.
+- [Kurtarma noktası hedefi (RPO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective): kaybolmuş olabilecek verilerin dakikası veya saatleri.
+- [Kurtarma süresi hedefi (RTO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective): hizmetin dakika cinsinden bir süre olması olabilir.
 
-Olay Grid otomatik failover meta veri (olay abonelikleri vb) ve veri (olaylar) için farklı RDO ve RTO'lar vardır. Aşağıdakilerden farklı belirtimler gerekiyorsa, yine de [konu durumu apis kullanarak üzerinde](custom-disaster-recovery.md)kendi istemci tarafı başarısız uygulayabilirsiniz.
+Event Grid otomatik yük devretmede, meta verileriniz (olay abonelikleri vb.) ve verileriniz (olaylar) için farklı RPOs ve RTOs vardır. Aşağıdakilerden farklı belirtilere ihtiyacınız varsa, [Konu durumu API 'lerini kullanarak kendi istemci tarafı yük devrelerinizi](custom-disaster-recovery.md)de uygulayabilirsiniz.
 
 ## <a name="recovery-point-objective-rpo"></a>Kurtarma noktası hedefi (RPO)
-- **Meta veri RPO**: sıfır dakika. Olay Izgara'da bir kaynak oluşturulduğunda, bölgeler arasında anında çoğaltılır. Bir hata oluştuğunda, hiçbir meta veri kaybolmaz.
-- **Veri RPO**: Sisteminiz sağlıklıysa ve bölgesel arıza sırasında mevcut trafiğe yakalanmışsa, etkinlikler için RPO yaklaşık 5 dakikadır.
+- **Meta veri RPO 'su**: sıfır dakika. Event Grid her zaman bir kaynak oluşturulduğunda, bölgeler arasında anında çoğaltılır. Yük devretme gerçekleştiğinde, hiçbir meta veri kaybolmaz.
+- **Veri RPO 'su**: sistem sağlıklı ve bölgesel yük devretme sırasında mevcut trafiğe girerse, olaylar için RPO yaklaşık 5 dakikadır.
 
 ## <a name="recovery-time-objective-rto"></a>Kurtarma süresi hedefi (RTO)
-- **Metadata RTO**: Genellikle çok daha hızlı bir şekilde, 60 dakika içinde gerçekleşir rağmen, Olay Grid konular ve abonelikler için arama oluşturma/güncelleme/silme kabul etmeye başlar.
-- **Veri RTO**: Meta veriler gibi, genellikle çok daha hızlı olur, ancak 60 dakika içinde, Olay Grid bölgesel bir arıza sonra yeni trafik kabul başlayacak.
+- **Meta veri RTO**: genellikle 60 dakika içinde çok daha hızlı bir şekilde gerçekleşse de Event Grid konular ve abonelikler için oluşturma/güncelleştirme/silme çağrılarını kabul edecek şekilde başlayacaktır.
+- **Veri RTO**: meta veriler gibi genellikle çok daha hızlı bir şekilde gerçekleşir, ancak 60 dakika içinde Event Grid, bölgesel bir yük devretmeden sonra yeni trafiği kabul etmeye başlayacaktır.
 
 > [!NOTE]
-> Olay Izgara meta veri GeoDR için maliyet: $0.
+> Event Grid meta veri GeoDR maliyeti: $0.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kendi istemci tarafı failover mantığını uygulamak istiyorsanız, [bkz.](custom-disaster-recovery.md)
+İstemci tarafı yük devretme mantığınızı uygulamak istiyorsanız, bkz. [Event Grid özel konular için kendi olağanüstü durum kurtarmayı oluşturma](custom-disaster-recovery.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 8a287ec5cd33c9f2a96af7ad8162f7c8f54df118
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134175"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160162"
 ---
 # <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Elektronik tasarım otomasyonu için Azure NetApp Files kullanmanın avantajları
 
@@ -77,9 +77,9 @@ Tüm iş yükü, eşzamanlı çalışan işlevsel ve fiziksel aşamaların bir k
 
 İşlevsel aşama, ilk belirtimlerden ve mantıksal tasarımdan oluşur. Fiziksel aşama, mantıksal bir yonaya dönüştürüldüğünde gerçekleşir. Oturum açma ve bant dışı aşamalar sırasında son denetimler tamamlanır ve tasarım, üretim için bir döküme dağıtılır.  
 
-İşlevsel aşamalar, sıralı ve rastgele okuma ve yazma g/ç 'nin bir karışımını içerir. İşlevsel aşamalar, dosya stat ve erişim çağrıları gibi meta veri açısından yoğun bir işlemdir. Meta veri işlemleri boyut olmadan etkili olsa da, okuma ve yazma işlemleri 1 K ve 16 K arasında değişir. Çoğu okuma 4 K ile 16 K arasındadır.  Çoğu yazma 4 K veya daha az.  Fiziksel aşamalar, 32 K ve 64 K OP boyutları karışımıyla tamamen sıralı okuma ve yazma işlemlerinden oluşur.  
+İşlevsel aşama sıralı ve rastgele okuma ve yazma g/ç 'nin bir karışımını içerir. İşlevsel aşama, dosya stat ve erişim çağrıları gibi meta veri açısından yoğun bir işlemdir. Meta veri işlemleri boyut olmadan etkili olsa da, okuma ve yazma işlemleri 1 K ve 16 K arasında değişir. Çoğu okuma 4 K ile 16 K arasındadır.  Çoğu yazma 4 K veya daha az. Fiziksel aşama, 32 K ve 64 K OP boyutları karışımıyla tamamen sıralı okuma ve yazma işlemlerinden oluşur.  
 
-Yukarıdaki grafiklerde, verimlilik çoğu iş yükünün sıralı fiziksel aşamalarından gelir. G/ç, küçük rastgele ve meta veri yoğun işlevsel aşamalardan geliyor. Her iki aşama de paralel olarak gerçekleşir. 
+Yukarıdaki grafiklerde, üretilen işin çoğu iş yükünün sıralı fiziksel aşamasından gelir. G/ç, küçük rastgele ve meta veri yoğun işlevsel aşamasından geliyor. Her iki aşama de paralel olarak gerçekleşir. 
 
 Sonuç olarak, ölçeklenebilir bant genişliğine sahip olmak üzere EDA tasarımı için Azure NetApp Files Azure işlem ile eşleştirirsiniz. 
 

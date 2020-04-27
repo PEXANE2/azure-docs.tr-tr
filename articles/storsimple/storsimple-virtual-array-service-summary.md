@@ -1,6 +1,6 @@
 ---
-title: StorSimple Virtual Array hizmet özeti bıçak | Microsoft Dokümanlar
-description: StorSimple Device Manager için hizmet özeti bıçak açıklar ve StorSimple Virtual Array durumunu izlemek için nasıl kullanılacağını açıklar.
+title: StorSimple Sanal dizi hizmeti Özet dikey penceresi | Microsoft Docs
+description: StorSimple Aygıt Yöneticisi için hizmet Özeti dikey penceresini açıklar ve bu hizmetin StorSimple Sanal dizininizdeki sistem durumunu izlemek için nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -15,36 +15,36 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 9c05bddaeb3c34400db1ec75c624ef00a85d9444
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "64720722"
 ---
-# <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>StorSimple Virtual Array'e bağlı StorSimple Device Manager için servis özet bıçağını kullanın
+# <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>StorSimple Sanal dizisine bağlı StorSimple Aygıt Yöneticisi için hizmet Özeti dikey penceresini kullanın
 ## <a name="overview"></a>Genel Bakış
-StorSimple Device Manager'ın hizmet özet bıçağı, hizmetinize bağlı Olan StorSimple Sanal Dizilerin (şirket içi sanal aygıtlar veya sanal aygıtlar olarak da bilinir) özet görünümünü sağlayarak sisteme ihtiyaç duyanları vurgular yöneticinin dikkati. Bu öğretici, hizmet özeti bıçak tanıttı, içerik ve işlev açıklar ve bu bıçak gerçekleştirebilirsiniz görevleri açıklar.
+StorSimple Aygıt Yöneticisi için hizmet Özeti dikey penceresi, hizmetinize bağlı olan StorSimple Sanal dizilerinin (Ayrıca, StorSimple şirket içi sanal cihazlar veya sanal cihazlar olarak da bilinir) bir Özet görünümünü sağlar ve bu sayede sistem yöneticisinin dikkatini çekmesini sağlar. Bu öğretici, hizmet Özeti dikey penceresini tanıtır, içerik ve işlevi açıklar ve bu dikey pencereden gerçekleştirebileceğiniz görevleri açıklar.
 
-![Servis panosu](./media/storsimple-virtual-array-service-summary/service-blade.png)
+![Hizmet panosu](./media/storsimple-virtual-array-service-summary/service-blade.png)
 
-## <a name="management-commands-and-essentials"></a>Yönetim komutları ve temelleri
-StorSimple özet bıçak, StorSimple Aygıt Yöneticisi hizmeti yanı sıra bu hizmete kayıtlı sanal dizileri yönetmek için seçenekler bakın. Yönetimin komutlarını bıçağın üstündeve sol tarafında görüyorsunuz.
+## <a name="management-commands-and-essentials"></a>Yönetim komutları ve temel bileşenler
+StorSimple Özet dikey penceresinde, StorSimple Aygıt Yöneticisi hizmetinizi ve bu hizmete kayıtlı sanal dizileri yönetme seçeneklerini görürsünüz. Yönetim komutlarını dikey pencerenin üst kısmında ve sol tarafta görürsünüz.
 
-Paylaşım veya birim eklemek veya sanal dizilerde çalışan çeşitli işleri izlemek gibi çeşitli işlemleri gerçekleştirmek için bu seçenekleri kullanın.
+Paylaşımlar veya birimler ekleme gibi çeşitli işlemleri gerçekleştirmek veya sanal diziler üzerinde çalışan çeşitli işleri izlemek için bu seçenekleri kullanın.
 
-Temel alan, StorSimple Aygıt Yöneticinizin oluşturulduğu kaynak grubu, konum ve abonelik gibi bazı önemli özellikleri yakalar.
+Essentials alanı, StorSimple Aygıt Yöneticisi oluşturulduğu kaynak grubu, konum ve abonelik gibi bazı önemli özelliklerden bazılarını yakalar.
 
-## <a name="storsimple-device-manager-service-summary"></a>StorSimple Device Manager hizmet özeti
-* **Uyarılar** döşemesi, uyarı şiddetine göre gruplanmış tüm sanal aygıtlar daki tüm etkin uyarıların anlık görüntüsünü sağlar. Döşemeyi tıklattığınızda, önerilen eylemler de dahil olmak üzere bu uyarıyla ilgili ek ayrıntıları görüntülemek için tek bir uyarıyı tıklatabileceğiniz **Uyarılar** bıçağı açılır. Sorun çözülmüşse uyarıyı da temizleyebilirsiniz.
-* **Kapasite** döşemesi ekranları, tüm sanal aygıtlar arasında kullanılabilen toplam depolama alanına göre tüm sanal aygıtlar arasında sağlanan ve kalan birincil depolamayı gösterir. **Sağlanan,** kullanılmak üzere hazırlanan ve ayrılan depolama miktarını ifade eder, **Kalan** tüm sanal aygıtlar arasında sağlanabilir kalan kapasiteyi ifade eder. **Kalan Katmanlı** kapasite bulut da dahil olmak üzere sağlanabilir kullanılabilir kapasitedir, **Kalan Yerel** ise sanal dizilere bağlı disklerde kalan kapasitedir.
-* **Kullanım** grafiğinde, sanal aygıtlarınız için ilgili ölçümleri görebilirsiniz. Tüm sanal aygıtlarda kullanılan birincil depolama alanının yanı sıra, varsayılan zaman dilimi olan son 7 gün içinde sanal aygıtlar tarafından tüketilen bulut depolamasını da görüntüleyebilirsiniz. Farklı bir zaman ölçeği seçmek için grafiğin sağ üst köşesindeki **Edit** seçeneğini kullanın.
-* **Aygıtlar** döşemesi, aygıt durumuna göre gruplanan StorSimple Device Manager'ınızdaki sanal dizi sayısının bir özetini sağlar. **Cihazlar** listesi bıçağını açmak için bu döşemeyi tıklatın ve ardından cihaza özgü aygıt özetini delmek için tek bir aygıtı tıklatın. Belirli bir aygıt özet bıçağından aygıta özel eylemler de gerçekleştirebilirsiniz. Cihaz özet bıçağı hakkında daha fazla bilgi için [Aygıt özet bıçağına](storsimple-virtual-array-device-summary.md)gidin.
+## <a name="storsimple-device-manager-service-summary"></a>StorSimple Aygıt Yöneticisi hizmeti Özeti
+* **Uyarılar** kutucuğu, tüm sanal cihazlarda uyarı önem derecesine göre gruplandırılan tüm etkin uyarıların anlık görüntüsünü sağlar. Kutucuğa tıkladığınızda, önerilen eylemler de dahil olmak üzere uyarı hakkında ek ayrıntıları görüntülemek için tek bir uyarıya tıklabileceğiniz **Uyarılar** dikey penceresi açılır. Sorun çözümlenirse uyarıyı da temizleyebilirsiniz.
+* **Kapasite** kutucuğu, tüm sanal cihazlarda kullanılabilir olan ve tüm sanal cihazlarda bulunan toplam depolamaya göre sağlanan ve kalan birincil depolamayı gösterir. **Sağlanan** ve kullanım için ayrılan depolama miktarına başvuruyorsa, **kalan** , tüm sanal cihazlarda sağlanabilen kalan kapasiteyi ifade eder. **Kalan katmanlı** kapasite, bulut dahil olmak üzere sağlanan kapasiteye sahip olsa da, **kalan yerel** , sanal dizilere bağlı disklerde kalan kapasiteye sahip olur.
+* **Kullanım** grafiğinde, sanal cihazlarınızla ilgili ölçümleri görebilirsiniz. Tüm sanal cihazlarda kullanılan birincil depolamayı, ayrıca son 7 gün boyunca sanal aygıtlar tarafından tüketilen bulut depolama alanını ve varsayılan zaman aralığını görüntüleyebilirsiniz. Farklı bir zaman ölçeği seçmek için grafiğin sağ üst köşesindeki **Düzenle** seçeneğini kullanın.
+* **Cihazlar** kutucuğu, storsimple Aygıt Yöneticisi cihaz durumuna göre gruplanmış sanal dizi sayısının özetini sağlar. Bu kutucuğa tıklayarak **cihazlar** listesi dikey penceresini açın ve cihaza özgü cihaz özetine gitmek için tek bir cihaza tıklayın. Ayrıca, belirli bir cihaz Özeti dikey penceresinden cihaza özgü eylemler gerçekleştirebilirsiniz. Cihaz Özeti dikey penceresi hakkında daha fazla bilgi için [cihaz Özeti dikey penceresine](storsimple-virtual-array-device-summary.md)gidin.
 
 ## <a name="view-the-activity-logs"></a>Etkinlik günlüklerini görüntüleme
-StorSimple Device Manager'ınızda gerçekleştirilen çeşitli işlemleri görüntülemek için StorSimple servis özet bıçağınızın sol tarafındaki **Etkinlik günlükleri** bağlantısını tıklatın. Bu, gerçekleştirilen son işlemlerin bir özetini görebileceğiniz **Etkinlik günlükleri** bıçağına götürür.
+StorSimple Aygıt Yöneticisi içinde yürütülen çeşitli işlemleri görüntülemek için, StorSimple hizmet Özeti dikey pencerenizin sol tarafındaki **etkinlik günlükleri** bağlantısına tıklayın. Bu, sizi gerçekleştirilen son işlemlerin özetini görebileceğiniz **etkinlik günlükleri** dikey penceresine götürür.
 
 ![Etkinlik Günlükleri](./media/storsimple-virtual-array-service-summary/activity-log.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[StorSimple Virtual Array'inizi yönetmek için yerel web kullanıcı](storsimple-ova-web-ui-admin.md)arama ayını nasıl kullanacağınızı öğrenin.
+[StorSimple Sanal dizinizi yönetmek için yerel Web Kullanıcı arabirimini nasıl kullanacağınızı](storsimple-ova-web-ui-admin.md)öğrenin.
 

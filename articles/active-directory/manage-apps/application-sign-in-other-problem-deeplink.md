@@ -1,6 +1,6 @@
 ---
-title: Deeplink kullanarak bir uygulamaya oturum açma sorunları | Microsoft Dokümanlar
-description: Azure AD'yi kullanarak deeplink URL'den bir uygulamaya erişen sorunları giderme sorunları nasıl giderilir?
+title: Derin bağlantı kullanarak bir uygulamada oturum açma sorunları | Microsoft Docs
+description: Azure AD kullanarak bir uygulamaya ayrıntılı bağlantı URL 'sinden erişme sorunları nasıl giderilir?
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,265 +17,265 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 44825f32a13db0a221252c042dc9f23ec43a9c8f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65825424"
 ---
-# <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>Deeplink kullanarak bir uygulamada oturum açma sorunları
+# <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>Ayrıntılı bağlantı kullanarak bir uygulamada oturum açma sorunları
 
-Erişim Paneli, Azure Etkin Dizini'nde (Azure AD) çalışan bir kullanıcının Azure AD yöneticisinin kendilerine erişim izni verdiği bulut tabanlı uygulamaları görüntülemesini ve başlatmasını sağlayan web tabanlı bir portaldır. 
+Erişim paneli, Azure Active Directory (Azure AD) ' de iş veya okul hesabı olan bir kullanıcının Azure AD yöneticisinin erişim izni verdiği bulut tabanlı uygulamaları görüntülemesini ve başlatmasını sağlayan Web tabanlı bir portaldır. 
 
-Bu uygulamalar Azure AD portalında kullanıcı adına yapılandırılır. Uygulama düzgün bir şekilde yapılandırılmalı ve kullanıcının üyesi olduğu bir gruba Access Panel'de uygulamayı görmek için atanmalıdır.
+Bu uygulamalar, Azure AD portalındaki Kullanıcı adına yapılandırılır. Uygulama, uygulamayı erişim paneli 'nde görmek için bir Kullanıcı ya da Kullanıcı üyesi olan bir gruba atanmalıdır.
 
-Derin bağlantılar veya Kullanıcı erişim URL'leri, kullanıcılarınızın parola-SSO uygulamalarına doğrudan tarayıcılarının URL çubuklarından erişmek için kullanabileceği bağlantılardır. Bu bağlantıya yönlendirilerek, kullanıcılar önce Access Paneli'ne gitmek zorunda kalmadan uygulamada otomatik olarak oturum alabilmelerini sağlar. Bu, kullanıcıların bu uygulamalara Office 365 uygulama başlatıcısından erişmek için kullandıkları bağlantıdır.
+Derin bağlantılar veya Kullanıcı erişimi URL 'Leri, kullanıcılarınızın parola SSO uygulamalarına doğrudan tarayıcıların URL çubuklarından erişmek için kullanabileceği bağlantılardır. Bu bağlantıya giderek, kullanıcılar önce erişim paneline gitmek zorunda kalmadan otomatik olarak uygulamada oturum açmalıdır. Bu, kullanıcıların Office 365 uygulama başlatıcısı 'ndan bu uygulamalara erişmek için kullandığı bağlantıdır.
 
-## <a name="general-issues-to-check-first"></a>Önce kontrol etmek için genel konular
+## <a name="general-issues-to-check-first"></a>Önce denetlenecek genel sorunlar
 
--   Erişim Paneli için minimum gereksinimleri karşılayan bir **tarayıcı** kullandığınızdan emin olun.
+-   Erişim paneli için en düşük gereksinimleri karşılayan bir **tarayıcı** kullandığınızdan emin olun.
 
--   Kullanıcının tarayıcısının uygulamanın URL'sini **güvenilir sitelerine**eklemiştir.
+-   Kullanıcının tarayıcısının uygulamanın URL 'sini **Güvenilen sitelerine**eklediğinizden emin olun.
 
--   Uygulamanın doğru şekilde **yapılandırıldığından** emin olun.
+-   Uygulamanın doğru şekilde **yapılandırıldığını** kontrol ettiğinizden emin olun.
 
--   Oturum açma için kullanıcının hesabının **etkin** olduğundan emin olun.
+-   Oturum açma işlemlerinin Kullanıcı hesabının **etkinleştirildiğinden** emin olun.
 
--   Kullanıcının hesabının **kilitlendirolmadığından** emin olun.
+-   Kullanıcı hesabının **kilitlenmediğinden** emin olun.
 
--   Kullanıcının **parolasının süresinin dolmadığından veya unutulmadığından** emin olun.
+-   Kullanıcının **parolasının dolmadığından veya unutulmuş** olduğundan emin olun.
 
--   Çok **Faktörlü Kimlik Doğrulama'nın** kullanıcı erişimini engellemediğinden emin olun.
+-   **Multi-Factor Authentication** Kullanıcı erişimini engellemediğinden emin olun.
 
--   **Koşullu Erişim ilkesinin** veya **Kimlik Koruma** ilkesinin kullanıcı erişimini engellemediğinden emin olun.
+-   **Koşullu erişim ilkesi** veya **kimlik koruma** ilkesinin Kullanıcı erişimini engellemediğinden emin olun.
 
--   Çok Faktörlü Kimlik Doğrulama veya Koşullu Erişim ilkelerinin uygulanmasına izin vermek için kullanıcının **kimlik doğrulama iletişim bilgisinin** güncel olduğundan emin olun.
+-   Multi-Factor Authentication veya koşullu erişim ilkelerinin zorlanmasını sağlamak için kullanıcının **kimlik doğrulaması iletişim bilgilerinin** güncel olduğundan emin olun.
 
--   Tarayıcınızın çerezlerini temizlemeyi ve yeniden oturum açmaya çalışmayı da denediğinden emin olun.
+-   Ayrıca, tarayıcınızın tanımlama bilgilerini temizlemeyi ve yeniden oturum açmayı denediğinizden emin olun.
 
-## <a name="checking-the-deeplink"></a>deeplink kontrol
+## <a name="checking-the-deeplink"></a>Ayrıntılı bağlantı denetleniyor
 
-Doğru deeplink'e sahip olup olmadığını kontrol etmek için aşağıdaki adımları izleyin:
+Doğru ayrıntılı bağlantı olup olmadığını denetlemek için şu adımları izleyin:
 
-1. Azure [**portalını**](https://portal.azure.com/) açın ve **Global Administrator** veya **Co-admin** olarak oturum açın.
+1. [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** veya **ortak yönetici** olarak oturum açın.
 
-2. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
+2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
 
-3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
+3. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
 
-4. Azure Active Directory sol navigasyon menüsünden **Kurumsal Uygulamalar'ı** tıklatın.
+4. Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' a tıklayın.
 
-5. **tüm uygulamalarınızın** listesini görüntülemek için Tüm Uygulamalar'ı tıklatın.
+5. tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' a tıklayın.
 
-   * Burada gösterilmesini istediğiniz uygulamayı göremiyorsanız, **Tüm Uygulamalar Listesi'nin** en üstündeki **Filtre** denetimini kullanın ve Tüm Uygulamalar için **Göster** seçeneğini **ayarlayın.**
+   * Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
 
-6. Azure [**portalını**](https://portal.azure.com/) açın ve **Global Administrator** veya **Co-admin** olarak oturum açın.
+6. [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** veya **ortak yönetici** olarak oturum açın.
 
-7. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
+7. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
 
-8. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
+8. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
 
-9. Azure Active Directory sol navigasyon menüsünden **Kurumsal Uygulamalar'ı** tıklatın.
+9. Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' a tıklayın.
 
-10. **tüm uygulamalarınızın** listesini görüntülemek için Tüm Uygulamalar'ı tıklatın.
+10. tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' a tıklayın.
 
-    * Burada gösterilmesini istediğiniz uygulamayı göremiyorsanız, **Tüm Uygulamalar Listesi'nin** en üstündeki **Filtre** denetimini kullanın ve Tüm Uygulamalar için **Göster** seçeneğini **ayarlayın.**
+    * Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
 
-11. Deeplink'i kontrol etmek istediğiniz uygulamayı seçin.
+11. Ayrıntılı bağlantısını kontrol etmek istediğiniz uygulamayı seçin.
 
-12. Kullanıcı **Erişimi URL**etiketini bulun. Deeplink'iniz bu URL ile eşleşmelidir.
+12. **Kullanıcı erişim URL 'si**etiketini bulun. Ayrıntılı bağlantınız Bu URL ile eşleşmelidir.
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>Access Panel Tarayıcı uzantısı nasıl yüklenir?
+## <a name="how-to-install-the-access-panel-browser-extension"></a>Erişim paneli tarayıcı uzantısını nasıl yüklenir
 
-Access Panel Tarayıcı uzantısını yüklemek için aşağıdaki adımları izleyin:
+Erişim paneli tarayıcı uzantısını yüklemek için şu adımları izleyin:
 
-1.  Desteklenen tarayıcılardan birinde [Erişim Paneli'ni](https://myapps.microsoft.com) açın ve Azure AD'nizde **kullanıcı** olarak oturum açın.
+1.  Desteklenen tarayıcılardan birinde [erişim panelini](https://myapps.microsoft.com) açın ve Azure AD 'de **Kullanıcı** olarak oturum açın.
 
-2.  Access Paneli'ndeki bir **parola-SSO uygulamasını** tıklatın.
+2.  Erişim panelinde bir **Password-SSO uygulamasına** tıklayın.
 
-3.  Yazılımı yüklemek isteyen istemi, **Şimdi Yükle'yi**seçin.
+3.  Yazılımı yüklemek isteyip istememe isteminde **Şimdi yüklensin**' i seçin.
 
-4.  Tarayıcınıza bağlı olarak indirme linkine yönlendirilirsiniz. Uzantıyı tarayıcınıza **ekleyin.**
+4.  Tarayıcınıza bağlı olarak, indirme bağlantısına yönlendirilirsiniz. Uzantıyı tarayıcınıza **ekleyin** .
 
-5.  Tarayıcınız sorarsa, uzantıyı **etkinleştir** veya **ona izin ver'i** seçin.
+5.  Tarayıcınız istediğinde, uzantıyı **etkinleştirmek** veya **izin vermek** için seçin.
 
-6.  Yüklendikten sonra tarayıcı oturumunuzu **yeniden başlatın.**
+6.  Yüklendikten sonra tarayıcı oturumunuzu **yeniden başlatın** .
 
-7.  Access Paneli'nde oturum açın ve parola-SSO uygulamalarınızı **başlatıp başlatamayacağınızı** görün
+7.  Erişim panelinde oturum açın ve parola SSO uygulamalarınızı **başlatıp başlatamadıysanız** bkz.
 
-Chrome ve Firefox'un uzantısını aşağıdaki doğrudan bağlantılardan da indirebilirsiniz:
+Chrome ve Firefox uzantısını şu doğrudan bağlantılardan de indirebilirsiniz:
 
--   [Chrome Erişim Paneli Uzantısı](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+-   [Chrome erişim paneli uzantısı](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Firefox Erişim Paneli Uzantısı](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
+-   [Firefox erişim paneli uzantısı](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD galerisi uygulaması için parola tek oturum açma nasıl yapılandırılır?
+## <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD Galeri uygulaması için parola çoklu oturum açmayı yapılandırma
 
-Azure AD galerisinden bir uygulamayı yapılandırmak için şunları yapmalısınız:
+Azure AD Galerisi 'nden bir uygulamayı yapılandırmak için şunları yapmanız gerekir:
 
--   [Azure REKLAM galerisinden uygulama ekleme](#add-an-application-from-the-azure-ad-gallery)
+-   [Azure AD Galerisi 'nden uygulama ekleme](#add-an-application-from-the-azure-ad-gallery)
 
--   [Parola tek oturum açma için uygulamayı yapılandırma](#configure-the-application-for-password-single-sign-on)
+-   [Uygulamayı parola çoklu oturum açma için yapılandırma](#configure-the-application-for-password-single-sign-on)
 
-### <a name="add-an-application-from-the-azure-ad-gallery"></a>Azure REKLAM galerisinden uygulama ekleme
+### <a name="add-an-application-from-the-azure-ad-gallery"></a>Azure AD Galerisi 'nden uygulama ekleme
 
-Azure AD Galerisi'nden bir uygulama eklemek için aşağıdaki adımları izleyin:
+Azure AD Galerisi 'nden bir uygulama eklemek için şu adımları izleyin:
 
-1.  Azure [portalını](https://portal.azure.com) açın ve **Global Administrator** veya **Co-admin**olarak oturum açın.
+1.  [Azure Portal](https://portal.azure.com) açın ve **genel yönetici** veya **ortak yönetici**olarak oturum açın.
 
-2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
+2.  Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
 
-3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
+3.  Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
 
-4.  Azure Active Directory sol navigasyon menüsünden **Kurumsal Uygulamalar'ı** tıklatın.
+4.  Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' a tıklayın.
 
-5.  **Kurumsal Uygulamalar** bölmesinin sağ üst köşesindeki **Ekle** düğmesini tıklatın.
+5.  **Kurumsal uygulamalar** bölmesindeki sağ üst köşedeki **Ekle** düğmesine tıklayın.
 
-6.  **Galeri bölümünden ekle** bölümünden bir ad textbox **girin,** uygulamanın adını yazın.
+6.  **Galeriden Ekle** bölümünden **bir ad girin** metin kutusuna uygulamanın adını yazın.
 
-7.  Tek oturum açma için yapılandırmak istediğiniz uygulamayı seçin.
+7.  Çoklu oturum açma için yapılandırmak istediğiniz uygulamayı seçin.
 
-8.  Uygulamayı eklemeden önce, adını **Ad** metin kutusundan değiştirebilirsiniz.
+8.  Uygulamayı eklemeden önce **ad metin kutusundan adını değiştirebilirsiniz** .
 
-9.  Uygulamayı eklemek için **Ekle'yi**tıklatın.
+9.  Uygulamayı eklemek için **Ekle**' ye tıklayın.
 
 Kısa bir süre sonra, uygulamanın yapılandırma bölmesini görebilirsiniz.
 
-### <a name="configure-the-application-for-password-single-sign-on"></a>Parola tek oturum açma için uygulamayı yapılandırma
+### <a name="configure-the-application-for-password-single-sign-on"></a>Uygulamayı parola çoklu oturum açma için yapılandırma
 
-Bir uygulama için tek oturum açma yapılandırmak için aşağıdaki adımları izleyin:
+Bir uygulama için çoklu oturum açmayı yapılandırmak için aşağıdaki adımları izleyin:
 
-1. Azure [**portalını**](https://portal.azure.com/) açın ve **Global Administrator** veya **Co-admin** olarak oturum açın.
+1. [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** veya **ortak yönetici** olarak oturum açın.
 
-2. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
+2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
 
-3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
+3. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
 
-4. Azure Active Directory sol navigasyon menüsünden **Kurumsal Uygulamalar'ı** tıklatın.
+4. Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' a tıklayın.
 
-5. **tüm uygulamalarınızın** listesini görüntülemek için Tüm Uygulamalar'ı tıklatın.
+5. tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' a tıklayın.
 
-   * Burada gösterilmesini istediğiniz uygulamayı göremiyorsanız, **Tüm Uygulamalar Listesi'nin** en üstündeki **Filtre** denetimini kullanın ve Tüm Uygulamalar için **Göster** seçeneğini **ayarlayın.**
+   * Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
 
-6. Tek oturum açma yapılandırmak istediğiniz uygulamayı seçin.
+6. Çoklu oturum açmayı yapılandırmak istediğiniz uygulamayı seçin.
 
-7. Uygulama yüklendikten sonra, uygulamanın sol navigasyon menüsünden **Tek oturum** açma'yı tıklatın.
+7. Uygulama yüklendikten sonra, uygulamanın sol taraftaki gezinti menüsünden **Çoklu oturum açma** seçeneğine tıklayın.
 
-8. Parola tabanlı Oturum Açma modunu **seçin.**
+8. Mod **parola tabanlı oturum açmayı seçin.**
 
-9. [Kullanıcıları uygulamaya atayın.](#how-to-assign-a-user-to-an-application-directly)
+9. [Kullanıcılara uygulama atama](#how-to-assign-a-user-to-an-application-directly).
 
-10. Ayrıca, kullanıcıların satırlarını seçerek ve **Kimlik Bilgilerini Güncelleştir'e** tıklayarak ve kullanıcı adına kullanıcı adı ve parola girerek kullanıcı adına kimlik bilgileri de sağlayabilirsiniz. Aksi takdirde, kullanıcılardan başlatıldıktan sonra kimlik bilgilerini kendileri girmeleri istenir.
+10. Ayrıca, kullanıcıların adına Kullanıcı adına kimlik bilgileri de sağlayabilirsiniz ve **kimlik bilgilerini güncelleştir** ' i tıklatarak ve Kullanıcı adına Kullanıcı adını ve parolayı girebilirsiniz. Aksi takdirde, kullanıcılardan başlatma sırasında kimlik bilgilerini girmesi istenir.
 
-## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Galeri dışı bir uygulama için parola tek oturum açma nasıl yapılandırılır?
+## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Galeri dışı bir uygulama için parola çoklu oturum açmayı yapılandırma
 
-Azure AD galerisinden bir uygulamayı yapılandırmak için şunları yapmalısınız:
+Azure AD Galerisi 'nden bir uygulamayı yapılandırmak için şunları yapmanız gerekir:
 
--   [Galeri dışı uygulama ekleme](#add-a-non-gallery-application)
+-   [Galeri dışı bir uygulama ekleme](#add-a-non-gallery-application)
 
--   [Parola tek oturum açma için uygulamayı yapılandırma](#configure-the-application-for-password-single-sign-on)
+-   [Uygulamayı parola çoklu oturum açma için yapılandırma](#configure-the-application-for-password-single-sign-on)
 
-### <a name="add-a-non-gallery-application"></a>Galeri dışı uygulama ekleme
+### <a name="add-a-non-gallery-application"></a>Galeri dışı bir uygulama ekleme
 
-Azure AD Galerisi'nden bir uygulama eklemek için aşağıdaki adımları izleyin:
+Azure AD Galerisi 'nden bir uygulama eklemek için şu adımları izleyin:
 
-1.  Azure [portalını](https://portal.azure.com) açın ve **Global Administrator** veya **Co-admin**olarak oturum açın.
+1.  [Azure Portal](https://portal.azure.com) açın ve **genel yönetici** veya **ortak yönetici**olarak oturum açın.
 
-2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
+2.  Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
 
-3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
+3.  Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
 
-4.  Azure Active Directory sol navigasyon menüsünden **Kurumsal Uygulamalar'ı** tıklatın.
+4.  Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' a tıklayın.
 
-5.  **Kurumsal Uygulamalar** bölmesinin sağ üst köşesindeki **Ekle** düğmesini tıklatın.
+5.  **Kurumsal uygulamalar** bölmesindeki sağ üst köşedeki **Ekle** düğmesine tıklayın.
 
-6.  **Galeri Dışı uygulamasını tıklatın.**
+6.  **Galeri dışı uygulama** ' ya tıklayın.
 
-7.  **Uygulamanızın** adını Ad metin kutusuna girin. **Ekle'yi seçin.**
+7.  **Ad** metin kutusuna uygulamanızın adını girin. Ekle ' yi seçin **.**
 
 Kısa bir süre sonra, uygulamanın yapılandırma bölmesini görebilirsiniz.
 
-### <a name="configure-the-application-for-password-single-sign-on"></a>Parola tek oturum açma için uygulamayı yapılandırma
+### <a name="configure-the-application-for-password-single-sign-on"></a>Uygulamayı parola çoklu oturum açma için yapılandırma
 
-Bir uygulama için tek oturum açma yapılandırmak için aşağıdaki adımları izleyin:
+Bir uygulama için çoklu oturum açmayı yapılandırmak için aşağıdaki adımları izleyin:
 
-1.  Azure [**portalını**](https://portal.azure.com/) açın ve **Global Administrator** veya **Co-admin** olarak oturum açın.
+1.  [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** veya **ortak yönetici** olarak oturum açın.
 
-2.  Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
+2.  Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
 
-3.  Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
+3.  Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
 
-4.  Azure Active Directory sol navigasyon menüsünden **Kurumsal Uygulamalar'ı** tıklatın.
+4.  Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' a tıklayın.
 
-5.  **tüm uygulamalarınızın** listesini görüntülemek için Tüm Uygulamalar'ı tıklatın.
+5.  tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' a tıklayın.
 
-    1.  Burada gösterilmesini istediğiniz uygulamayı göremiyorsanız, **Tüm Uygulamalar Listesi'nin** en üstündeki **Filtre** denetimini kullanın ve Tüm Uygulamalar için **Göster** seçeneğini **ayarlayın.**
+    1.  Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
 
-6.  Tek oturum açma yapılandırmak istediğiniz uygulamayı seçin.
+6.  Çoklu oturum açmayı yapılandırmak istediğiniz uygulamayı seçin.
 
-7.  Uygulama yüklendikten sonra, uygulamanın sol navigasyon menüsünden **Tek oturum** açma'yı tıklatın.
+7.  Uygulama yüklendikten sonra, uygulamanın sol taraftaki gezinti menüsünden **Çoklu oturum açma** seçeneğine tıklayın.
 
-8.  Parola tabanlı Oturum Açma modunu **seçin.**
+8.  Mod **parola tabanlı oturum açmayı seçin.**
 
-9.  Oturum **Açma**URL'sini, kullanıcıların oturum açabilmek için kullanıcı adlarını ve parolalarını girdikleri URL'yi girin. Oturum açma alanlarının URL'de görünür olduğundan emin olun.
+9.  Oturum açmak için kullanıcıların kullanıcı adını ve parolasını girmesi için **oturum açma URL**'sini girin. Oturum açma alanlarının URL 'de görünür olduğundan emin olun.
 
-10. Kullanıcıları uygulamaya atayın.
+10. Kullanıcılara uygulama atama.
 
-11. Ayrıca, kullanıcıların satırlarını seçerek ve **Kimlik Bilgilerini Güncelleştir'e** tıklayarak ve kullanıcı adına kullanıcı adı ve parola girerek kullanıcı adına kimlik bilgileri de sağlayabilirsiniz. Aksi takdirde, kullanıcılardan başlatıldıktan sonra kimlik bilgilerini kendileri girmeleri istenir.
+11. Ayrıca, kullanıcıların adına Kullanıcı adına kimlik bilgileri de sağlayabilirsiniz ve **kimlik bilgilerini güncelleştir** ' i tıklatarak ve Kullanıcı adına Kullanıcı adını ve parolayı girebilirsiniz. Aksi takdirde, kullanıcılardan başlatma sırasında kimlik bilgilerini girmesi istenir.
 
-## <a name="how-to-assign-a-user-to-an-application-directly"></a>Bir kullanıcıyı doğrudan bir uygulamaya atama
+## <a name="how-to-assign-a-user-to-an-application-directly"></a>Bir kullanıcıyı doğrudan uygulamaya atama
 
-Bir veya daha fazla kullanıcıyı doğrudan bir uygulamaya atamak için aşağıdaki adımları izleyin:
+Bir uygulamaya doğrudan bir veya daha fazla kullanıcı atamak için şu adımları izleyin:
 
-1. Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
+1. [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** olarak oturum açın.
 
-2. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
+2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
 
-3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
+3. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
 
-4. Azure Active Directory sol navigasyon menüsünden **Kurumsal Uygulamalar'ı** tıklatın.
+4. Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' a tıklayın.
 
-5. **tüm uygulamalarınızın** listesini görüntülemek için Tüm Uygulamalar'ı tıklatın.
+5. tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' a tıklayın.
 
-   * Burada gösterilmesini istediğiniz uygulamayı göremiyorsanız, **Tüm Uygulamalar Listesi'nin** en üstündeki **Filtre** denetimini kullanın ve Tüm Uygulamalar için **Göster** seçeneğini **ayarlayın.**
+   * Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
 
-6. Listeden bir kullanıcı atamak istediğiniz uygulamayı seçin.
+6. Listeden Kullanıcı atamak istediğiniz uygulamayı seçin.
 
-7. Uygulama yüklendikten sonra, uygulamanın sol daki gezinme menüsünden **Kullanıcılar ve Gruplar'ı** tıklatın.
+7. Uygulama yüklendikten sonra, uygulamanın sol taraftaki gezinti menüsünden **Kullanıcılar ve gruplar** ' a tıklayın.
 
-8. **Atama** **Ekle** bölmesini açmak için Kullanıcılar **ve Gruplar** listesinin üst kısmındaki Ekle düğmesini tıklatın.
+8. **Atama Ekle** bölmesini açmak için **Kullanıcılar ve gruplar** listesinin üstündeki **Ekle** düğmesine tıklayın.
 
-9. **Atama Ekle** bölmesinden Kullanıcılar **ve gruplar** seçicisini tıklatın.
+9. **atama Ekle** bölmesinden **Kullanıcılar ve gruplar** seçicisini tıklatın.
 
-10. Ada veya **e-posta adresi** arama kutusuna atamak istediğiniz kullanıcının **tam adını** veya **e-posta adresini** yazın.
+10. **Ada veya e-posta adresine göre ara** arama kutusuna, ilgilendiğiniz kullanıcının **tam adını** veya **e-posta adresini** yazın.
 
-11. Bir **onay kutusunu**ortaya çıkarmak için listedeki **kullanıcının** üzerine taşırın. Kullanıcınızı **Seçili** listeye eklemek için, kullanıcının profil fotoğrafının veya logosunun yanındaki onay kutusunu tıklatın.
+11. Bir **onay kutusunu**açığa çıkarmak için listedeki **kullanıcının** üzerine gelin. Kullanıcıyı **Seçili** listeye eklemek için kullanıcının profil fotoğrafı veya logosu yanındaki onay kutusuna tıklayın.
 
-12. **İsteğe bağlı:** **Birden fazla kullanıcı eklemek**istiyorsanız, **ada veya e-posta adresi** arama kutusuna başka bir tam **ad** veya **e-posta adresi** yazın ve bu kullanıcıyı **Seçili** listeye eklemek için onay kutusunu tıklatın.
+12. **Isteğe bağlı:** Birden **fazla kullanıcı eklemek**istiyorsanız **ada veya e-posta adresine göre ara** kutusuna başka bir **tam ad** veya **e-posta adresi** yazın ve bu kullanıcıyı **Seçili** listeye eklemek için onay kutusuna tıklayın.
 
-13. Kullanıcıları seçmeyi bitirdiğinizde, bunları uygulamaya atanacak kullanıcı ve gruplar listesine eklemek için **Seç** düğmesini tıklatın.
+13. Kullanıcıları seçmeyi tamamladığınızda, uygulamayı atanacak kullanıcılar ve gruplar listesine eklemek için **Seç** düğmesine tıklayın.
 
-14. **İsteğe bağlı:** Seçtiğiniz kullanıcılara atamak için bir rol seçmek için **Atama Ekle** bölmesinde **Rol** seçiyi seçin.
+14. **Isteğe bağlı:** seçtiğiniz kullanıcılara atanacak bir rol seçmek Için **atama Ekle** bölmesinde **rol seçicisini Seç** ' e tıklayın.
 
-15. Uygulamayı seçili kullanıcılara atamak için **Atla** düğmesini tıklatın.
+15. Uygulamayı seçili kullanıcılara atamak için **ata** düğmesine tıklayın.
 
-Kısa bir süre sonra, seçtiğiniz kullanıcılar bu uygulamaları Access Paneli'nde başlatabilir.
+Kısa bir süre sonra, seçtiğiniz kullanıcılar erişim panelinde bu uygulamaları başlatabilir.
 
-## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Bu sorun giderme adımları sorunu çözmüyorsa. 
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Bu sorun giderme adımları sorunu çözmezse. 
 
-varsa aşağıdaki bilgileri içeren bir destek bileti açın:
+varsa, aşağıdaki bilgilerle bir destek bileti açın:
 
--   Korelasyon hatası kimliği
+-   Bağıntı hata KIMLIĞI
 
--   UPN (kullanıcı e-posta adresi)
+-   UPN (Kullanıcı e-posta adresi)
 
--   Kiracı Kimliği
+-   Değerine
 
 -   Tarayıcı türü
 
--   Hata oluşur sırasında saat dilimi ve saat/zaman dilimi oluşur
+-   Hata sırasında saat dilimi ve zaman/zaman dilimi
 
--   Kemancı izleri
+-   Fiddler izlemeleri
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Application Proxy ile uygulamalarınızda tek oturum açma sağlayın](application-proxy-configure-single-sign-on-with-kcd.md)
+[Uygulama proxy 'Si ile uygulamalarınıza çoklu oturum açma sağlama](application-proxy-configure-single-sign-on-with-kcd.md)

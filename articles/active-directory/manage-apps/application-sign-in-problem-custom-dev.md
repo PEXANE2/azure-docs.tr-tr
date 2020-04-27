@@ -1,6 +1,6 @@
 ---
-title: Özel olarak geliştirilmiş bir uygulamada oturum açma sorunları | Microsoft Dokümanlar
-description: Azure AD ile geliştirdiğiniz bir uygulamada oturum açamamanıza neden olabilecek sık karşılaşılan hatalar
+title: Özel olarak geliştirilmiş bir uygulamada oturum açma sorunları | Microsoft Docs
+description: Azure AD ile geliştirmiş olduğunuz bir uygulamada oturum açmanıza neden olabilecek yaygın hatalar
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,30 +17,30 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8ad2499aea8bf4e41ca00d6c78d76e112f0493e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65825232"
 ---
 # <a name="problems-signing-in-to-a-custom-developed-application"></a>Özel olarak geliştirilmiş bir uygulamada oturum açma sorunları
 
-Bir uygulamada oturum açamamanıza neden olabilecek çeşitli hatalar vardır. İnsanların bu sorunla karşılaşmasının en büyük nedeni yanlış yapılandırılmış uygulamalardır.
+Bir uygulamada oturum açmanıza neden olabilecek birkaç hata vardır. İnsanların bu sorundan karşılaştığı en büyük neden yanlış yapılandırılmış uygulamalardır.
 
 ## <a name="errors-related-to--misconfigured-apps"></a>Yanlış yapılandırılmış uygulamalarla ilgili hatalar
 
-* Portaldaki her iki yapılandırmanın da uygulamanızdakilerle eşleşin. Özellikle, İstemci/Uygulama Kimliği, Yanıt URL'leri, İstemci Sırları/Anahtarları ve Uygulama Kimliği URI'yi karşılaştırın.
+* Portaldaki yapılandırmaların, uygulamanızda sahip olduğunuz ile eşleştiğini doğrulayın. Özellikle, Istemci/uygulama KIMLIĞINI, yanıt URL 'Lerini, Istemci gizli dizilerini/anahtarlarını ve uygulama KIMLIĞI URI 'sini karşılaştırın.
 
-* Yalnızca yapılandırdığınız kaynakları istediğinizden emin olmak için, kod içinde erişmek istediğiniz kaynağı **Gerekli Kaynaklar** sekmesinde yapılandırılan izinlerle karşılaştırın.
+* Yalnızca yapılandırdığınız kaynakları istediğinizden emin olmak için, kodda erişim isteğinde bulunan kaynağı **gerekli kaynaklar** sekmesinde yapılandırılan izinlerle karşılaştırın.
 
-* Benzer hatalar veya sorunlar için [Azure AD StackOverflow'a](https://stackoverflow.com/questions/tagged/azure-active-directory) bakın.
+* Benzer hatalar veya sorunlar için bkz. [Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure AD Geliştirici Kılavuzu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)<br>
 
-[Uygulamaları Azure AD'ye İzin Verme ve Tümleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
+[Uygulamaları Azure AD 'ye onay ve Tümleştirme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
 
-[Azure AD v2.0 yakınsanan Uygulamalar için Onay ve İzin](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Azure AD v 2.0 yakınsama uygulamaları için onay ve Izinler](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
 [Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory>)

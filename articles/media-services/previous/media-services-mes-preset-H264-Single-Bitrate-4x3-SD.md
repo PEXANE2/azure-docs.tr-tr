@@ -1,6 +1,6 @@
 ---
-title: H264 Tek Bitrate 4x3 SD Media Encoder Standart hazır- Azure | Microsoft Dokümanlar
-description: Konu **H264 Tek Bitrate 4x3 SD** görev ön ayarını genel bir bakış verir.
+title: H264 tekli bit hızı 4x3 SD Media Encoder Standard önayar-Azure | Microsoft Docs
+description: Bu konu, **H264 tekli bit hızı 4x3 SD** görevi önayarıyla genel bir bakış sunar.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: a1359bacdf6735ca49e22d7c7b6d0014d56f1735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61129483"
 ---
 # <a name="h264-single-bitrate-4x3-sd"></a>H264 Single Bitrate 4x3 SD
-`Media Encoder Standard`kodlama işleri oluştururken kullanabileceğiniz bir kodlama ön ayarları kümesini tanımlar. A'yı, `preset name` medya dosyanızı kodlamak istediğiniz biçimi belirtmek için de kullanabilirsiniz. Veya kendi JSON veya XML tabanlı hazır ayarlarınızı (UTF-8 veya UTF-16 kodlaması kullanarak) oluşturabilirsiniz. Daha sonra özel ön ayarını kodlayıcıya geçirirsiniz. Bu `Media Encoder Standard` kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi [için, Ortam Kodlayıcı Standardı için Görev Hazır Ayarları'na](media-services-mes-presets-overview.md)bakın.  
+`Media Encoder Standard`kodlama işleri oluştururken kullanabileceğiniz bir kodlama önayarları kümesi tanımlar. Medya dosyanızı kodlamak istediğiniz biçimi `preset name` belirtmek için bir kullanabilirsiniz. Ya da kendi JSON veya XML tabanlı önayarlarınızı oluşturabilirsiniz (UTF-8 veya UTF-16 kodlaması kullanarak). Daha sonra özel önayar kodlayıcıya geçirebilirsiniz. Bu `Media Encoder Standard` kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi için bkz. [Media Encoder Standard Için görev önayarları](media-services-mes-presets-overview.md).  
   
- Bu `H264 Single Bitrate 4x3 SD` konu, XML ve JSON biçiminde önceden ayarlanmışı gösterir.  
+ Bu konu, `H264 Single Bitrate 4x3 SD` XML ve JSON biçimindeki ön ayarı gösterir.  
   
- Bu ön ayar, 1800 kbps bithızı na ve stereo AAC sese sahip tek bir MP4 dosyası üretir. Bu önceden ayarlanmış profil, bitrate, örnekleme hızı vb. hakkında ayrıntılı bilgi için aşağıda tanımlanan XML veya JSON'u inceleyin. Bu hazır ayarlardaki her öğenin ne anlama geldiğini ve her öğe için geçerli değerleri açıklamaları için [Media Encoder Standart şeması](media-services-mes-schema.md) konusuna bakın.  
+ Bu önayar, bit hızı 1800 kbps ve stereo AAC ses içeren tek bir MP4 dosyası üretir. Bu önayar için profil, bit hızı, örnekleme oranı vb. hakkında ayrıntılı bilgi için, aşağıda tanımlanan XML veya JSON 'u inceleyin. Bu önayarlardır her öğe ve her öğe için geçerli değerler hakkında açıklamalar için [Media Encoder Standard şeması](media-services-mes-schema.md) konusuna bakın.  
   
  XML  
   

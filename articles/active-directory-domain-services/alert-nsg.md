@@ -1,6 +1,6 @@
 ---
-title: Azure AD DS'deki ağ güvenlik grubu uyarılarını çözümle | Microsoft Dokümanlar
-description: Azure Active Directory Etki Alanı Hizmetleri için ağ güvenliği grubu yapılandırma uyarılarını nasıl sorun gidereceğinizi ve çözeceğinizi öğrenin
+title: Azure AD DS ağ güvenlik grubu uyarılarını çözümleme | Microsoft Docs
+description: Azure Active Directory Domain Services için ağ güvenlik grubu yapılandırma uyarılarını sorun giderme ve çözümleme hakkında bilgi edinin
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,38 +12,38 @@ ms.topic: troubleshooting
 ms.date: 09/19/2019
 ms.author: iainfou
 ms.openlocfilehash: 959f1e3f25602938d769c574ea975c4bba9300e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71257996"
 ---
-# <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Etki Alanı Hizmetlerinde ağ yapılandırma uyarıları
+# <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services ağ yapılandırması uyarıları
 
-Uygulamaların ve hizmetlerin Azure Active Directory Domain Services (Azure AD DS) ile doğru şekilde iletişim kurmasına izin vermek için, trafiğin akmasına izin vermek için belirli ağ bağlantı noktalarının açık olması gerekir. Azure'da ağ güvenlik gruplarını kullanarak trafik akışını denetlersiniz. Azure AD DS yönetilen etki alanının sistem durumu, gerekli ağ güvenlik grubu kuralları yerinde değilse bir uyarı gösterir.
+Uygulama ve hizmetlerin Azure Active Directory Domain Services (Azure AD DS) ile doğru iletişim kurmasına izin vermek için belirli ağ bağlantı noktalarının açık olması gerekir. Azure 'da ağ güvenlik gruplarını kullanarak trafik akışını kontrol edersiniz. Azure AD DS yönetilen bir etki alanının sistem durumu, gerekli ağ güvenlik grubu kuralları yerinde değilse bir uyarı gösterir.
 
-Bu makale, ağ güvenliği grubu yapılandırma sorunları için yaygın uyarıları anlamanıza ve çözmenize yardımcı olur.
+Bu makale, ağ güvenlik grubu yapılandırma sorunları için genel uyarıları anlamanıza ve çözmenize yardımcı olur.
 
-## <a name="alert-aadds104-network-error"></a>Uyarı AADDS104: Ağ hatası
+## <a name="alert-aadds104-network-error"></a>Uyarı AADDS104: ağ hatası
 
 ### <a name="alert-message"></a>Uyarı iletisi
 
-*Microsoft, yönetilen bu etki alanı için etki alanı denetleyicilerine erişemiyor. Sanal ağınızda yapılandırılan bir ağ güvenlik grubu (NSG) yönetilen etki alanına erişimi engellerse, bu durum oluşabilir. Başka bir olası nedeni internetten gelen trafiği engelleyen kullanıcı tanımlı bir rota varsa.*
+*Microsoft bu yönetilen etki alanı için etki alanı denetleyicilerine ulaşamıyor. Sanal ağınızda yapılandırılan bir ağ güvenlik grubu (NSG), yönetilen etki alanına erişimi engelliyorsa bu durum oluşabilir. Olası bir neden, internet 'ten gelen trafiği engelleyen Kullanıcı tanımlı bir yol olup olmalarıdır.*
 
-Geçersiz ağ güvenliği grubu kuralları, Azure AD DS'nin ağ hatalarının en yaygın nedenidir. Sanal ağ için ağ güvenlik grubu belirli bağlantı noktalarına ve protokollere erişime izin vermelidir. Bu bağlantı noktaları engellenirse, Azure platformu yönetilen etki alanını izleyebilir veya güncelleştiremez. Azure AD dizini ile Azure AD DS yönetilen etki alanı arasındaki eşitleme de etkilenir. Hizmetkesintisini önlemek için varsayılan bağlantı noktalarını açık tuttuğundan emin olun.
+Azure AD DS için ağ hatalarının en yaygın nedeni geçersiz ağ güvenlik grubu kuralları. Sanal ağ için ağ güvenlik grubu, belirli bağlantı noktalarına ve protokollere erişime izin vermelidir. Bu bağlantı noktaları engellenirse Azure platformu, yönetilen etki alanını izleyemez veya güncelleştiremez. Azure AD dizini ile Azure AD DS yönetilen etki alanı arasındaki eşitleme de etkilenir. Hizmette kesintiye uğramasını önlemek için varsayılan bağlantı noktalarını açık tutmanız gerekir.
 
 ## <a name="default-security-rules"></a>Varsayılan güvenlik kuralları
 
-Aşağıdaki varsayılan gelen ve giden güvenlik kuralları, Azure AD DS yönetilen bir etki alanı için ağ güvenlik grubuna uygulanır. Bu kurallar Azure AD DS'yi güvende tutar ve Azure platformunun yönetilen etki alanını izlemesine, yönetmesine ve güncelleştirmesine olanak tanır. Ayrıca, [güvenli LDAP'yi yapılandırdığınızda][configure-ldaps]gelen trafiğe izin veren ek bir kuralınız da olabilir.
+Aşağıdaki varsayılan gelen ve giden güvenlik kuralları, Azure AD DS yönetilen bir etki alanı için ağ güvenlik grubuna uygulanır. Bu kurallar Azure AD DS güvende tutar ve Azure platformunun yönetilen etki alanını izlemesine, yönetmesine ve güncelleştirmesine izin verir. Ayrıca, [GÜVENLI LDAP yapılandırırsanız][configure-ldaps]gelen trafiğe izin veren ek bir kuralınız olabilir.
 
 ### <a name="inbound-security-rules"></a>Gelen güvenlik kuralları
 
 | Öncelik | Adı | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
 |----------|------|------|----------|--------|-------------|--------|
-| 101      | SyncWithAzureAD'a izin verme | 443 | TCP | AzureActiveDirectoryDomainServices | Herhangi biri | İzin Ver |
-| 201      | İzin VERMERD | 3389 | TCP | Corpnetsaw | Herhangi biri | İzin Ver |
+| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Herhangi biri | İzin Ver |
+| 201      | AllowRD | 3389 | TCP | Corpnetgördünüz | Herhangi biri | İzin Ver |
 | 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Herhangi biri | İzin Ver |
-| 65000    | AllVnetInBound | Herhangi biri | Herhangi biri | VirtualNetwork | VirtualNetwork | İzin Ver |
+| 65000    | Allvnetınbound | Herhangi biri | Herhangi biri | VirtualNetwork | VirtualNetwork | İzin Ver |
 | 65001    | AllowAzureLoadBalancerInBound | Herhangi biri | Herhangi biri | AzureLoadBalancer | Herhangi biri | İzin Ver |
 | 65500    | DenyAllInBound | Herhangi biri | Herhangi biri | Herhangi biri | Herhangi biri | Reddet |
 
@@ -51,39 +51,39 @@ Aşağıdaki varsayılan gelen ve giden güvenlik kuralları, Azure AD DS yönet
 
 | Öncelik | Adı | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
 |----------|------|------|----------|--------|-------------|--------|
-| 65000    | AllVnetOutBound | Herhangi biri | Herhangi biri | VirtualNetwork | VirtualNetwork | İzin Ver |
-| 65001    | İzin VerinAzureLoadBalancerOutBound | Herhangi biri | Herhangi biri |  Herhangi biri | Internet | İzin Ver |
+| 65000    | Allvnetoutbağlanmadı | Herhangi biri | Herhangi biri | VirtualNetwork | VirtualNetwork | İzin Ver |
+| 65001    | AllowAzureLoadBalancerOutBound | Herhangi biri | Herhangi biri |  Herhangi biri | Internet | İzin Ver |
 | 65500    | DenyAllOutBound | Herhangi biri | Herhangi biri | Herhangi biri | Herhangi biri | Reddet |
 
 >[!NOTE]
-> Azure AD DS'nin sanal ağdan sınırsız giden erişime ihtiyacı vardır. Sanal ağ için giden erişimi kısıtlayan ek kurallar oluşturmanızı önermiyoruz.
+> Azure AD DS sanal ağdan sınırsız giden erişime ihtiyaç duyuyor. Sanal ağ için giden erişimi kısıtlayan ek kurallar oluşturmanızı önermiyoruz.
 
-## <a name="verify-and-edit-existing-security-rules"></a>Varolan güvenlik kurallarını doğrulama ve bu kuralları yeniden yapma
+## <a name="verify-and-edit-existing-security-rules"></a>Mevcut güvenlik kurallarını doğrulama ve düzenleme
 
-Varolan güvenlik kurallarını doğrulamak ve varsayılan bağlantı noktalarının açık olduğundan emin olmak için aşağıdaki adımları tamamlayın:
+Mevcut güvenlik kurallarını doğrulamak ve varsayılan bağlantı noktalarının açık olduğundan emin olmak için aşağıdaki adımları izleyin:
 
-1. Azure portalında Ağ güvenlik **gruplarını**arayın ve seçin.
-1. Yönetilen etki alanınızın ilişkili ağ güvenlik grubunu seçin *(Örneğin, AADDS-contoso.com-NSG.*
-1. Genel **Bakış** sayfasında, varolan gelen ve giden güvenlik kuralları gösterilir.
+1. Azure portal **ağ güvenlik grupları**' nı arayıp seçin.
+1. Yönetilen etki alanınız ile ilişkili ağ güvenlik grubunu (örneğin, *Aeklemesine-contoso.com-NSG*) seçin.
+1. **Genel bakış** sayfasında, var olan gelen ve giden güvenlik kuralları gösterilir.
 
-    Gelen ve giden kuralları gözden geçirin ve önceki bölümdeki gerekli kurallar listesiyle karşılaştırın. Gerekirse, gerekli trafiği engelleyen özel kuralları seçin ve silin. Gerekli kurallardan herhangi biri eksikse, sonraki bölüme bir kural ekleyin.
+    Gelen ve giden kurallarını gözden geçirin ve önceki bölümde gerekli kuralların listesiyle karşılaştırın. Gerekirse, gerekli trafiği engelleyen tüm özel kuralları seçin ve silin. Gerekli kuralların herhangi biri eksikse, sonraki bölümde bir kural ekleyin.
 
-    Gerekli trafiğe izin vermek için kurallar ekledikten veya sildikten sonra, Azure AD DS yönetilen etki alanının sağlık durumu iki saat içinde otomatik olarak kendini güncelleştirir ve uyarıyı kaldırır.
+    Gerekli trafiğe izin veren kuralları ekledikten veya sildikten sonra, Azure AD DS yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.
 
 ### <a name="add-a-security-rule"></a>Güvenlik kuralı ekleme
 
-Eksik güvenlik kuralı eklemek için aşağıdaki adımları tamamlayın:
+Eksik bir güvenlik kuralı eklemek için aşağıdaki adımları izleyin:
 
-1. Azure portalında Ağ güvenlik **gruplarını**arayın ve seçin.
-1. Yönetilen etki alanınızın ilişkili ağ güvenlik grubunu seçin *(Örneğin, AADDS-contoso.com-NSG.*
-1. Sol paneldeki **Ayarlar'ın** altında, eklemeniz gereken kurala bağlı olarak *Gelen Güvenlik Kuralları'nı* veya Giden *güvenlik kurallarını* tıklatın.
-1. **Ekle'yi**seçin, ardından bağlantı noktasına, protokole, yöne vb. göre gerekli kuralı oluşturun. Hazır olduğunda **Tamam'ı**seçin.
+1. Azure portal **ağ güvenlik grupları**' nı arayıp seçin.
+1. Yönetilen etki alanınız ile ilişkili ağ güvenlik grubunu (örneğin, *Aeklemesine-contoso.com-NSG*) seçin.
+1. Sol bölmedeki **Ayarlar** ' ın altında, hangi kurala eklemek istediğinize bağlı olarak *gelen güvenlik kuralları* veya *giden güvenlik kuralları* ' na tıklayın.
+1. **Ekle**' yi seçin, ardından bağlantı noktası, protokol, yön vb. temel alarak gerekli kuralı oluşturun. Hazırlık sırasında **Tamam**' ı seçin.
 
 Güvenlik kuralının eklenmesi ve listede gösterilmesi birkaç dakika sürer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorunlarınız hala varsa, ek sorun giderme yardımı için [bir Azure destek isteği açın.][azure-support]
+Hala sorun yaşıyorsanız, ek sorun giderme yardımı için [bir Azure destek isteği açın][azure-support] .
 
 <!-- INTERNAL LINKS -->
 [azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

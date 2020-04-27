@@ -1,6 +1,6 @@
 ---
-title: Micro Focus Enterprise Server 4.0'ı Azure Sanal Makinelerde Docker Konteynerinde Çalıştırın
-description: Micro Focus Enterprise Server'ı Azure Sanal Makineler'deki Docker konteynerinde çalıştırarak IBM z/OS ana bilgisayar yüklerinizi yeniden barındırın.
+title: Azure sanal makinelerinde bir Docker kapsayıcısında Micro Focus Enterprise Server 4,0 çalıştırma
+description: Azure sanal makinelerinde bir Docker kapsayıcısında mikro odak kurumsal sunucusunu çalıştırarak IBM z/OS ana iş yüklerinizi yeniden barındırın.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -9,166 +9,166 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 30d99c3f4767eb50361f7074c0d508fcf309faca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61488485"
 ---
-# <a name="run-micro-focus-enterprise-server-40-in-a-docker-container-on-azure"></a>Micro Focus Enterprise Server 4.0'ı Azure'daki Docker Konteynerinde Çalıştırın
+# <a name="run-micro-focus-enterprise-server-40-in-a-docker-container-on-azure"></a>Azure 'daki bir Docker kapsayıcısında mikro odak kurumsal sunucu 4,0 ' i çalıştırın
 
-Micro Focus Enterprise Server 4.0'ı Azure'daki docker konteynerinde çalıştırabilirsiniz. Bu öğretici nasıl gösterir. Enterprise Server için Windows CICS (Müşteri Bilgi Kontrol Sistemi) acctdemo gösterisini kullanır.
+Micro Focus Enterprise Server 4,0 ' i Azure 'daki bir Docker kapsayıcısında çalıştırabilirsiniz. Bu öğreticide nasıl yapılacağı gösterilmektedir. Enterprise Server için Windows CICS (müşteri bilgileri denetim sistemi) acctdemo gösterisini kullanır.
 
-Docker uygulamalara taşınabilirlik ve yalıtım ekler. Örneğin, docker görüntüsünü bir Windows VM'den başka bir windows vm'de çalıştırmak için veya docker ile bir Windows sunucusuna aktarabilirsiniz. Docker görüntüsü, Enterprise Server'ı yüklemek zorunda kalmadan yeni konumda aynı yapılandırmayla çalışır. Görüntünün bir parçası. Lisansla ilgili hususlar hala geçerlidir.
+Docker, uygulamalara taşınabilirlik ve yalıtım ekler. Örneğin, bir Windows VM 'den bir Docker görüntüsünü başka bir şekilde veya bir depodan Docker ile bir Windows Server 'a aktarabilirsiniz. Docker görüntüsü, kurumsal sunucu yüklemesi gerekmeden aynı yapılandırmaya sahip yeni konumda çalışır. Bu, görüntünün bir parçasıdır. Lisanslama konuları hala geçerlidir.
 
-Bu öğretici, Azure Marketi'nden **Windows 2016 Veri Merkezi'ni Kapsayıcılar** sanal makinesiyle (VM) yükler. Bu VM **Docker 18.09.0**içerir. Aşağıdaki adımlar, kapsayıcıyı nasıl dağıtabileceğinizi, çalıştırabileceğinizi ve 3270 emülatörüyle nasıl bağlanabileceğinizi gösterir.
+Bu öğreticide, Azure Marketi 'nden kapsayıcılar sanal makinesi (VM) **Ile Windows 2016 Datacenter** yüklenir. Bu VM, **Docker 18.09.0**içerir. Aşağıdaki adımlarda, kapsayıcıyı dağıtma, çalıştırma ve sonra da bir 3270 öykünücüsü ile bağlanma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce, şu ön koşullara göz atın:
+Başlamadan önce Şu önkoşullara göz atın:
 
 - Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-- Micro Focus yazılımı ve geçerli bir lisans (veya deneme lisansı). Mevcut bir Micro Focus müşterisiyseniz, Micro Focus temsilcinize başvurun. Aksi takdirde, [bir deneme isteyin.](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/)
+- Mikro odak yazılımı ve geçerli bir lisans (veya deneme lisansı). Mevcut bir Micro Focus müşterisiyseniz, mikro odak temsilcinizle iletişime geçin. Aksi takdirde, [bir deneme isteyin](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/).
 
      > [!NOTE]
-     > Docker tanıtım dosyaları Enterprise Server 4.0'a dahildir. Bu öğretici\_ent\_server\_dockerfiles\_4.0 windows.zip kullanır. Enterprise Server yükleme dosyasına eriştin veya başlamak için *Micro Focus'a* gidin.
+     > Docker tanıtım dosyaları Enterprise Server 4,0 ' ye dahildir. Bu öğretici, ENT\_Server\_dockerfile 'ları destekliyor\_4,0\_Windows. zip ' i kullanır. Bu, kurumsal sunucu yükleme dosyasına eriştiğiniz yerden erişin veya başlamak için *Micro Focus* ' a gidin.
 
-- [Enterprise Server ve Enterprise Developer](https://www.microfocus.com/documentation/enterprise-developer/#")için belgeler .
+- [Kurumsal sunucu ve Kurumsal Geliştirici](https://www.microfocus.com/documentation/enterprise-developer/#")belgeleri.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-1. Ent\_sunucusu\_dockerfiles\_4.0\_windows.zip dosyasından medya güvenli. ES-Docker-Prod-XXXXXXXX.mflic lisans dosyası (Docker görüntüleri oluşturmak için gerekli) güvenli.
+1. Medyayı ENT\_Server\_dockerfile 'ları destekliyor\_4,0\_Windows. zip dosyasından güvenli hale getirin. ES-Docker-prod-XXXXXXXX. mflik lisanslama dosyasının güvenliğini sağlayın (Docker görüntülerini derlemek için gereklidir).
 
-2. VM'yi oluşturun. Bunu yapmak için Azure portalını açın, sol üstten **kaynak oluştur'u** seçin ve *windows sunucusuna*göre filtre uygulayın. Sonuçlarda, **Kapsayıcılar ile Windows Server 2016 Datacenter 'ı**seçin.
+2. VM 'yi oluşturun. Bunu yapmak için, Azure portal açın, sol üstteki **kaynak oluştur** ' u seçin ve *Windows Server*'a göre filtreleyin. Sonuçlarda **Windows Server 2016 Datacenter – kapsayıcılar**' ı seçin.
 
-     ![Azure portalı arama sonuçları](media/01-portal.png)
+     ![Azure portal arama sonuçları](media/01-portal.png)
 
-3. VM özelliklerini yapılandırmak için örnek ayrıntıları seçin:
+3. VM 'nin özelliklerini yapılandırmak için örnek ayrıntıları ' nı seçin:
 
-    1. Bir VM boyutu seçin. Bu öğretici için, 2 vCPUs ve 7 GB bellek içeren **standart\_ds2 v2** VM kullanmayı düşünün.
+    1. Bir VM boyutu seçin. Bu öğreticide, 2 vCPU ve 7 GB bellek içeren **Standart BIR DS2\_v2** VM kullanmayı düşünün.
 
-    2. Dağıtmak istediğiniz **Bölge** ve **Kaynak Grubu'nu** seçin.
+    2. Dağıtmak istediğiniz **bölgeyi** ve **kaynak grubunu** seçin.
 
     3. **Kullanılabilirlik seçenekleri**için varsayılan ayarı kullanın.
 
     4. **Kullanıcı adı**için, kullanmak istediğiniz yönetici hesabını ve parolayı yazın.
 
-    5. Bağlantı **noktası 3389 RDP'nin** açık olduğundan emin olun. VM'de oturum açabilmeniz için yalnızca bu bağlantı noktasının herkese açık olması gerekir. Ardından tüm varsayılan değerleri kabul edin ve **Gözden Geçir+ oluştur'u**tıklatın.
+    5. **3389 RDP bağlantı noktasının** açık olduğundan emin olun. VM 'de oturum açabilmeniz için yalnızca bu bağlantı noktasının herkese açık olması gerekir. Ardından tüm varsayılan değerleri kabul edin ve **gözden geçir + oluştur**' a tıklayın.
 
-     ![Sanal makine bölmesi oluşturma](media/container-02.png)
+     ![Sanal makine bölmesi oluştur](media/container-02.png)
 
-4. Dağıtımın bitmesini bekleyin (birkaç dakika). İleti, VM'nizin oluşturulduğunu belirtir.
+4. Dağıtımın bitmesini bekleyin (birkaç dakika). Bir ileti, sanal makinenizin oluşturulduğunu belirtir.
 
-5. VM'iniz için **Genel Bakış** bıçağına gitmek için **Kaynağa Git'i** tıklatın.
+5. VM 'nizin **genel bakış** dikey penceresine gitmek Için **Kaynağa Git** ' e tıklayın.
 
-6. Sağdaki **Bağlan** düğmesini tıklatın. **Sanal makineye Bağlan** seçenekleri sağda görünür.
+6. Sağ tarafta **Bağlan** düğmesine tıklayın. **Sanal makineye bağlan** seçenekleri sağda görünür.
 
-7. VM'ye eklemenize olanak tanıyan RDP dosyasını indirmek için **RDP Dosyasını İndir** düğmesini tıklatın.
+7. VM 'ye eklemenize olanak tanıyan RDP dosyasını indirmek için **RDP dosyasını indir** düğmesine tıklayın.
 
-8. Dosya indirmeyi bitirdikten sonra, dosyayı açın ve VM için oluşturduğunuz kullanıcı adı ve parolayı yazın.
+8. Dosya indirmeyi tamamladıktan sonra, açın ve VM için oluşturduğunuz Kullanıcı adını ve parolayı yazın.
 
      > [!NOTE]
-     > Oturum etmek için şirket kimlik bilgilerinizi kullanmayın. (RDP istemcisi bunları kullanmak isteyebileceğini varsayar. Yok.)
+     > Oturum açmak için şirket kimlik bilgilerinizi kullanmayın. (RDP istemcisi bunları kullanmak isteyebileceğiniz varsayılır. Değilsiniz.)
 
-9.  **Daha Fazla Seçenek'i**seçin ve ardından VM kimlik bilgilerinizi seçin.
+9.  **Diğer seçimler**' ı seçin, ardından VM kimlik bilgilerinizi seçin.
 
-Bu noktada, VM çalışıyor ve RDP ile bağlı. İmzalandın ve bir sonraki adım için hazırsın.
+Bu noktada, VM çalışır ve RDP aracılığıyla iliştirilir. Oturumunuz açıldı ve bir sonraki adım için hazırsınız.
 
-## <a name="create-a-sandbox-directory-and-upload-the-zip-file"></a>Bir sandbox dizini oluşturun ve zip dosyasını yükleyin
+## <a name="create-a-sandbox-directory-and-upload-the-zip-file"></a>Korumalı alan dizini oluşturma ve ZIP dosyasını karşıya yükleme
 
-1.  Demo ve lisans dosyalarını yükleyebileceğiniz VM'de bir dizin oluşturun. Örneğin, **C:\\Sandbox**.
+1.  VM üzerinde tanıtım ve lisans dosyalarını karşıya yükleyebileceğiniz bir dizin oluşturun. Örneğin, **C:\\Sandbox**.
 
-2.  Oluşturduğunuz dizine **ent\_\_server dockerfiles\_4.0\_windows.zip** ve **ES-Docker-Prod-XXXXXXXX.mflic** dosyasını yükleyin.
+2.  **ENT\_Server\_dockerfile 'ları destekliyor\_4,0\_Windows. ZIP** ve **es-Docker-prod-xxxxxxxx. mflik** dosyasını oluşturduğunuz dizine yükleyin.
 
-3.  Zip dosyasının içeriğini, ayıklama işlemi tarafından oluşturulan **ent\_server\_dockerfiles\_4.0\_windows** dizinine ayıklayın. Bu dizin bir okuma dosyası (.html ve .txt dosyası olarak) ve iki alt dizin, **EnterpriseServer** ve **Örnekler**içerir.
+3.  ZIP dosyasının içeriğini, ayıklama işlemi tarafından oluşturulan **ENT\_Server\_dockerfile 'ları destekliyor\_4,0\_Windows** dizinine ayıklayın. Bu dizin bir Benioku dosyası (. html ve. txt dosyası) ve iki alt dizin, **Enterpriseserver** ve **örnekleri**içerir.
 
-4.  **KOPYA ES-Docker-Prod-XXXXXXXX.mflic** C:\\Sandbox\\\_kayıt\_sunucusu\_dockerfiles\_\\4.0 windows\\EnterpriseServer\\ve\_\_C:\_Sandbox kayıt sunucusu dockerfiles 4.0\_windows\\Örnekler\\CICS dizinleri.
+4.  **Es-Docker-prod-xxxxxxxx. mflik** \\'i C:\\Sandbox ENT\_Server\_dockerfile 'ları destekliyor\_4,0\_Windows\\enterpriseserver ve C:\\Sandbox\\ENT\_Server\_dockerfile 'ları destekliyor\_4,0\_Windows\\örnekleri\\CICS dizinleri olarak kopyalayın.
 
 > [!NOTE]
-> Lisans dosyasını her iki diziniçin de kopyaladığınızdan emin olun. Görüntülerin düzgün bir şekilde lisanslı olduğundan emin olmak için Docker yapı adımı için gereklidirler.
+> Lisanslama dosyasını her iki dizine da kopyalamadığınızdan emin olun. Görüntülerin doğru lisanslanmış olduğundan emin olmak için Docker derleme adımının olması gerekir.
 
 ## <a name="check-docker-version-and-create-base-image"></a>Docker sürümünü denetleyin ve temel görüntü oluşturun
 
 > [!IMPORTANT]
-> Uygun Docker görüntüsünü oluşturmak iki aşamalı bir işlemdir. İlk olarak, Enterprise Server 4.0 temel görüntüsünü oluşturun.Sonra x64 platformu için başka bir görüntü oluşturun. X86 (32 bit) görüntü oluşturabiliyor sanız da, 64 bit lik görüntüyü kullanın.
+> Uygun Docker görüntüsünü oluşturmak, iki adımlı bir işlemdir. İlk olarak, Enterprise Server 4,0 temel görüntüsünü oluşturun.Ardından x64 platformu için başka bir görüntü oluşturun. Bir x86 (32-bit) görüntüsü oluşturabilseniz de 64 bit görüntüsünü kullanın.
 
 1. Bir komut istemi açın.
 
-2. Docker'ın yüklü olup olmadığını kontrol edin. Komut istemine şunları yazın:
+2. Docker 'ın yüklü olduğundan emin olun. Komut istemine şunları yazın:
 
     ```
         docker version
     ```
 
-     Örneğin, sürüm 18.09.0 bu yazıldığında oldu.
+     Örneğin, bu yazıldığında sürüm 18.09.0 idi.
 
-3. Dizini değiştirmek için **cd \Sandbox\ent_server_dockerfiles_4.0_windows\EnterpriseServer**yazın.
+3. Dizini değiştirmek için **CD \Sandbox\ ent_server_dockerfiles_4.0_windows \EnterpriseServer**yazın.
 
-4. İlk temel görüntü için yapı işlemini başlatmak için **bld.bat IacceptEULA** yazın. Bu işlemin çalışması için birkaç dakika bekleyin. Sonuçlarda, biri x64, diğeri x86 için olmak üzere oluşturulan iki görüntüye dikkat edin:
+4. İlk temel görüntü için derleme işlemini başlatmak üzere **Bld. bat IAcceptEula** yazın. Bu işlemin çalışması için birkaç dakika bekleyin. Sonuçlarda, biri x64 ve diğeri x86 için oluşturulmuş iki resme dikkat edin:
 
-     ![Görüntüleri gösteren komut penceresi](media/container-04.png)
+     ![Görüntüleri gösterme Komut penceresi](media/container-04.png)
 
-5. CICS gösterimi için son görüntüyü oluşturmak **için,\\cd Sandbox\\kayıt\_sunucusu\_dockerfiles\_4.0\\\\\_windows Örnekler CICS**yazarak CICS dizinine geçin.
+5. CICS demo 'in son görüntüsünü oluşturmak için, **CD\\korumalı\\\_sunucu\_dockerfile 'ları destekliyor\_4,0\_Windows\\örnekleri\\CICS**yazarak CICS dizinine geçin.
 
-6. Görüntüyü oluşturmak için **bld.bat x64**yazın. İşlemin çalışması ve görüntünün oluşturulduğunu belirten ileti için birkaç dakika bekleyin.
+6. Görüntüyü oluşturmak için, **Bld. bat x64**yazın. İşlemin çalışması için birkaç dakika bekleyin ve görüntünün oluşturulduğunu belirten ileti.
 
-7. VM'de yüklü olan tüm Docker görüntülerinin listesini görüntülemek için **docker görüntüleri** yazın. **Microfocus/es-acctdemo** bunlardan biri olduğundan emin olun.
+7. VM 'de yüklü olan tüm Docker görüntülerinin listesini göstermek için **Docker görüntülerini** yazın. **Mikro Focus/es-acctdemo** 'in bunlardan biri olduğundan emin olun.
 
-     ![es-acctdemo görüntüsünü gösteren komut penceresi](media/container-05.png)
+     ![Es-acctdemo görüntüsünü gösteren Komut penceresi](media/container-05.png)
 
 ## <a name="run-the-image"></a>Görüntüyü çalıştırma 
 
-1.  Enterprise Server 4.0 ve acctdemo uygulamasını komut istemi türünden başlatmak için:
+1.  Enterprise Server 4,0 ve acctdemo uygulamasını başlatmak için komut isteminde şunu yazın:
 
     ```
          docker run -p 16002:86/tcp -p 16002:86/udp -p 9040-9050:9040-9050 -p 9000-9010:9000-9010 -ti --network="nat" --rm microfocus/es-acctdemo:win_4.0_x64
     ```
 
-2.  [X3270](http://x3270.bgp.nu/) gibi bir 3270 terminal emülatörü yükleyin ve çalışan görüntüye 9040 portu üzerinden takmak için kullanın.
+2.  [X3270](http://x3270.bgp.nu/) gibi bir 3270 Terminal öykünücüsü yükleyip, bağlantı noktası 9040 üzerinden, çalıştıran görüntüye eklemek için kullanın.
 
-3.  Acctdemo kapsayıcısının IP adresini alın, böylece Docker yönettiği kapsayıcılar için BIR DHCP sunucusu olarak hareket edebilir:
+3.  Acctdemo kapsayıcısının IP adresini alın. Docker, yönettiği kapsayıcılar için bir DHCP sunucusu işlevi görebilir:
 
-    1.  Çalışan konteynerin kimliğini alın. Komut isteminde **Docker ps** yazın ve bu örnekte ID **(22a0fe3159d0)** not edin. Bir sonraki adıma sakla.
+    1.  Çalışan kapsayıcının KIMLIĞINI alın. Komut istemine **Docker PS** YAZıN ve kimliği (Bu örnekte**22a0fe3159d0** ) göz önünde bulun. Bir sonraki adım için kaydedin.
 
-    2.  Acctdemo kapsayıcısının IP adresini almak için, önceki adımdaki konteyner kimliğini aşağıdaki gibi kullanın:
+    2.  Acctdemo kapsayıcısının IP adresini almak için önceki adımdaki kapsayıcı KIMLIĞINI aşağıdaki gibi kullanın:
 
     ```
        docker inspect <containerID> --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
     ```
 
-       Örnek:
+       Örneğin:
 
     ```   
         docker inspect 22a0fe3159d0 --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
     ```
-4. Acctdemo resminin IP adresine dikkat edin. Örneğin, aşağıdaki çıktıdaki adres 172.19.202.52'dir.
+4. Acctdemo görüntüsünün IP adresini aklınızda tut. Örneğin, aşağıdaki çıktıda bulunan adres 172.19.202.52 ' dir.
 
-     ![IP adresini gösteren komut penceresi](media/container-06.png)
+     ![IP adresini gösteren Komut penceresi](media/container-06.png)
 
-5. Emülatör kullanarak görüntüyü monte edin. Acctdemo görüntü ve port 9040 adresini kullanmak için emülatör yapılandırın. Burada, **172.19.202.52:9040**. Seninki de benzer olacak. **CICS ekranına Signon** açılır.
+5. Öykünücüyü kullanarak görüntüyü bağlayın. Öykünücüyü, acctdemo görüntüsünün adresini ve 9040 numaralı bağlantı noktasını kullanacak şekilde yapılandırın. İşte bu **172.19.202.52:9040**. Sizinki benzer olacaktır. **CICS-CICS** Screen ekranında açılır.
 
-    ![CICS ekranında oturum açma](media/container-07.png)
+    ![CICS Screen 'e oturum açma](media/container-07.png)
 
-6. **Password**için **USERID** ve **SYSAD** için **SYSAD'ı** girerek CICS Bölgesi'ne giriş girin.
+6. **Kullanıcı kimliği** Için **Sysad** ve **parola**için **sysad** girerek CICS bölgesinde oturum açın.
 
-7. Emülatörün anahtar haritasını kullanarak ekranı temizleyin. x3270 için **Keymap** menüsü seçeneğini seçin.
+7. Öykünücünün keymap 'ini kullanarak ekranı temizleyin. X3270 için, **keymap** menü seçeneğini belirleyin.
 
-8. Acctdemo uygulamasını başlatmak için **ACCT**yazın. Uygulamanın başlangıç ekranı görüntülenir.
+8. Acctdemo uygulamasını başlatmak için **ACCT**yazın. Uygulama için ilk ekran görüntülenir.
 
-     ![Hesap Demo ekranı](media/container-08.png)
+     ![Hesap tanıtımı ekranı](media/container-08.png)
 
-9. Görüntü hesabı türleri ile denemeler. Örneğin, İstek için **D** ve **HESAP**için **11111** yazın. Deneyecek diğer hesap numaraları 22222, 33333 ve benzeridir.
+9. Görüntüleme hesabı türleriyle denemeler yapın. Örneğin, Istek için **D** , **Hesap**için **11111** yazın. Deneyebileceğiniz diğer hesap numaraları 22222, 33333 vb...
 
-     ![Hesap Demo ekranı](media/container-09.png)
+     ![Hesap tanıtımı ekranı](media/container-09.png)
 
-10. Enterprise Server Administration konsolunu görüntülemek için komut istemine gidin ve başlangıç yazın **http:172.19.202.52:86**
+10. Enterprise Server Yönetim konsolunu göstermek için komut istemine gidin ve **Başlat http: 172.19.202.52:86** yazın.
 
-     ![Kurumsal Sunucu Yönetimi konsolu](media/container-010.png)
+     ![Enterprise Server Yönetim Konsolu](media/container-010.png)
 
-İşte bu kadar! Şimdi bir Docker konteynerinde cics uygulamasını çalıştırıyor ve yönetiyorsunuz.
+İşte bu kadar! Artık bir Docker kapsayıcısında bir CICS uygulaması çalıştırıyorsunuz ve yönetiyorsunuz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure'da Micro Focus Enterprise Server 4.0 ve Enterprise Developer 4.0'ı yükleyin](./set-up-micro-focus-azure.md)
+- [Azure 'da Micro Focus Enterprise Server 4,0 ve Enterprise Developer 4,0 'yi yükler](./set-up-micro-focus-azure.md)
 - [Ana bilgisayar uygulaması geçişi](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

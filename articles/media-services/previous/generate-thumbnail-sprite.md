@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri ile küçük resim sprite oluşturma | Microsoft Dokümanlar
-description: Bu konu, Azure Medya Hizmetleri ile küçük resim sprite'ı nasıl oluşturacağınızı gösterir.
+title: Azure Media Services bir küçük resim Sprite oluştur | Microsoft Docs
+description: Bu konu, Azure Media Services ile bir küçük resim Sprite oluşturmayı gösterir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,26 +12,26 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: e5d32d1bc3bd704b03e58c62251a323ed3f4662c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61229059"
 ---
 # <a name="generate-a-thumbnail-sprite"></a>Küçük resim görüntüsü oluşturma  
 
-Bir VTT dosyasıyla birlikte, tek bir (büyük) görüntüde birleştirilmiş birden çok küçük çözünürlüklü küçük resim içeren bir JPEG dosyası olan küçük resim sprite oluşturmak için Media Encoder Standard'ı kullanabilirsiniz. Bu VTT dosyası, her küçük resmin temsil ettiği giriş videosundaki zaman aralığını, büyük JPEG dosyasındaki küçük resmin boyutu ve koordinatlarıyla birlikte belirtir. Video oynatıcılar VTT dosyasını ve sprite görüntüsünü kullanarak bir 'görsel' arama çubuğu gösterir ve görüntüleyiciye video zaman çizelgesi boyunca ileri geri ovma yaparken görsel geri bildirim sağlar.
+Bir VTT dosyasıyla birlikte tek bir (büyük) görüntüde birlikte bulunan birden çok küçük çözünürlüklü küçük resim içeren bir JPEG dosyası olan küçük resim sprite oluşturmak için Media Encoder Standard kullanabilirsiniz. Bu VTT dosyası, her bir küçük resmin, büyük JPEG dosyasındaki bu küçük resmin boyutuyla ve koordinatlarıyla birlikte gösterdiği, giriş videosunun zaman aralığını belirtir. Video oyuncuları, bir ' görsel ' SeekBar göstermek için VTT dosyasını ve Sprite görüntüsünü kullanır ve video zaman çizelgesinde geri ve ileri ilerledikçe görsel geri bildirimde bulunan bir Görüntüleyici sağlar.
 
-Thumbnail Sprite, önceden ayarlanmış oluşturmak için Media Encoder Standard kullanmak için:
+Küçük resim sprite oluşturmak için Media Encoder Standard kullanmak için önceden ayarlanmış:
 
-1. JPG küçük resim görüntü biçimini kullanmalısınız
-2. Başlat/Adım/Aralık değerlerini zaman damgası veya % değerleri (çerçeve sayıları değil) olarak belirtmeli 
+1. JPG küçük resim biçimi kullanılmalıdır
+2. Başlangıç/adım/Aralık değerleri, zaman damgası olarak veya% values (çerçeve sayıları değil) olarak belirtilmelidir 
     
-    1. Zaman damgalarını ve % değerlerini karıştırmak sorun değildir
+    1. Zaman damgaları ve% değerleri karıştırmak normaldir
 
-3. Negatif olmayan bir sayı 1'den büyük veya eşit olarak SpriteColumn değerine sahip olmalıdır
+3. SpriteColumn değeri, negatif olmayan bir sayı olarak 1 ' den büyük veya buna eşit olmalıdır
 
-    1. SpriteColumn M >= 1 olarak ayarlanmışsa, çıkış görüntüsü M sütunlu bir dikdörtgendir. #2 üzerinden oluşturulan küçük resim sayısı M'nin tam bir katı değilse, son satır eksik olur ve siyah piksellerle bırakılır.  
+    1. SpriteColumn, e >= 1 olarak ayarlandıysa, çıkış resmi, e-sütunları olan bir dikdörtgendir. #2 aracılığıyla oluşturulan küçük resim sayısı, son satırın tam katı olmaması halinde, son satır eksik olur ve siyah piksellerle kalır.  
 
 Örnek aşağıda verilmiştir:
 
@@ -68,9 +68,9 @@ Thumbnail Sprite, önceden ayarlanmış oluşturmak için Media Encoder Standard
 
 ## <a name="known-issues"></a>Bilinen Sorunlar
 
-1.  Tek bir görüntü satırı içeren sprite görüntü oluşturmak mümkün değildir (SpriteColumn = 1 tek bir sütunlu bir görüntüyle sonuçlanır).
-2.  Sprite görüntülerinin orta büyüklükteki JPEG görüntülerine parçalanması henüz desteklenmez. Bu nedenle, dikkat küçük resimlerin sayısını ve boyutlarını sınırlamak için alınmalıdır, böylece ortaya çıkan dikişli Küçük Resim Sprite yaklaşık 8M piksel veya daha az.
-3.  Azure Media Player, Microsoft Edge, Chrome ve Firefox tarayıcılarında sprites destekler. VTT ayrıştırma IE11'de desteklenmez.
+1.  Tek bir görüntü satırı içeren bir sprite görüntüsü oluşturmak mümkün değildir (SpriteColumn = 1, tek sütunlu bir görüntüyle sonuçlanır).
+2.  Hareketli görüntüleri orta ölçekli JPEG görüntülerine parçalama henüz desteklenmiyor. Bu nedenle, sonuçta elde edilen küçük resim Sprite 'ın yaklaşık 8Gb piksel veya daha az olması için küçük resimlerin sayısını ve boyutunu sınırlamak üzere dikkatli olunmalıdır.
+3.  Azure Media Player, Microsoft Edge, Chrome ve Firefox tarayıcılarındaki spritları destekler. VTT ayrıştırma ıE11 içinde desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

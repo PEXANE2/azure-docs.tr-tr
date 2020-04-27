@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect'te eşitlemeyen bir özniteliği giderme | Microsoft Dokümanlar'
-description: Bu konu, sorun giderme görevini kullanarak öznitelik eşitlemesi ile sorunları giderme için nasıl adımlar sağlar.
+title: Azure AD Connect içinde eşitlenmeyen bir özniteliğin sorunlarını giderme | Microsoft Docs '
+description: Bu konuda, sorun giderme görevini kullanarak öznitelik eşitlemeyle ilgili sorunları gidermeye yönelik adımlar sağlanmaktadır.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,79 +16,79 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a639b14c9313179816f6376aa0c5642a645ea344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60455998"
 ---
-# <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Azure AD Connect'te eşitlemeyen bir özniteliği sorun giderme
+# <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Azure AD Connect eşitlemede bir özniteliğin sorunlarını giderme
 
 ## <a name="recommended-steps"></a>**Önerilen Adımlar**
 
-Öznitelik eşitleme sorunlarını araştırmadan önce, **Azure AD Connect** eşitleme işlemini anlayalım:
+Öznitelik eşitleme sorunlarını araştırmadan önce **Azure AD Connect** eşitleme işlemini anlaalım:
 
-  ![Azure AD Connect Senkronizasyon Süreci](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/syncingprocess.png)
+  ![Eşitleme Işlemini Azure AD Connect](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/syncingprocess.png)
 
 ### <a name="terminology"></a>**Terminoloji**
 
-* **CS:** Bağlayıcı Alanı, veritabanında bir tablo.
-* **MV:** Metaverse, veritabanında bir tablo.
-* **AD:** Aktif Dizin
-* **AAD:** Azure Etkin Dizin
+* **CS:** Bağlayıcı alanı, veritabanındaki bir tablodur.
+* **MV:** Meta veri deposu, veritabanındaki bir tablo.
+* **Ad:** Active Directory
+* **AAD:** Azure Active Directory
 
-### <a name="synchronization-steps"></a>**Eşitleme Adımları**
+### <a name="synchronization-steps"></a>**Eşitleme adımları**
 
-* AD'den alma: Etkin Dizin nesneleri AD CS'ye getirilir.
+* AD 'den içeri aktar: Active Directory nesneleri AD CS 'ye getirilir.
 
-* AAD'den alma: Azure Active Directory nesneleri AAD CS'ye getirilir.
+* AAD 'den içeri aktar: Azure Active Directory nesneleri AAD CS 'ye alınır.
 
-* Eşitleme: **Gelen Eşitleme Kuralları** ve **Giden Eşitleme Kuralları,** öncelik sayısının daha düşükten yükseğe doğru sırasına göre çalıştırılır. Eşitleme Kurallarını görüntülemek için masaüstü uygulamalarından **Eşitleme Kuralları** Düzenleyicisi'ne gidebilirsiniz. **Gelen Eşitleme Kuralları** CS'den MV'ye veri getirir. **Giden Eşitleme Kuralları** verileri MV'den CS'ye taşır.
+* Eşitleme: **gelen eşitleme kuralları** ve **giden eşitleme kuralları** , daha düşük bir öncelik sayısı sırasına göre çalışır. Eşitleme kurallarını görüntülemek için, Masaüstü uygulamalarından **eşitleme kuralları Düzenleyicisi** ' ne gidebilirsiniz. **Gelen eşitleme KURALLARı** CS 'den MV 'ye veri getirir. **Giden eşitleme kuralları** , verileri MV 'dan CS 'ye gider.
 
-* AD'ye dışa aktarma: Eşitleme çalıştırdıktan sonra nesneler AD CS'den **Active Directory'ye**dışa aktarılır.
+* AD 'ye Aktar: eşitleme çalıştırıldıktan sonra, nesneler AD CS 'den **Active Directory**'ye dışarı aktarılabilir.
 
-* AAD'ye dışa aktarma: Eşitleme çalıştırdıktan sonra nesneler AAD CS'den **Azure Etkin Dizini'ne**dışa aktarılır.
+* AAD 'ye Aktar: eşitleme çalıştırıldıktan sonra, nesneler AAD CS 'den **Azure Active Directory**dışarı aktarılmalıdır.
 
-### <a name="step-by-step-investigation"></a>**Adım Adım Araştırma**
+### <a name="step-by-step-investigation"></a>**Adım adım araştırma**
 
-* Araştırmamıza **Metaverse'den** başlayacağız ve kaynaktan hedefe öznitelik eşlenemelerine bakacağız.
+* **Meta** veri deposundaki aramamıza başlayacağız ve kaynaktan hedefe öznitelik eşlemesine bakacağız.
 
-* Masaüstü uygulamalarından, aşağıda gösterildiği gibi **Eşitleme Hizmet Yöneticisi'ni** başlatın:
+* Masaüstü uygulamalarından aşağıda gösterildiği gibi **Synchronization Service Manager** başlatın:
 
-  ![Başlatma Senkronizasyon Servis Yöneticisi](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/startmenu.png)
+  ![Synchronization Service Manager Başlat](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/startmenu.png)
 
-* **Eşitleme Hizmeti Yöneticisi'nde** **Metaverse Arama'yı**seçin, **Nesne Türüne Göre Kapsam'ı**seçin, öznitelik kullanarak nesneyi seçin ve **Arama** düğmesini tıklatın.
+* **Synchronization Service Manager**meta veri deposu **aramasını**seçin, **nesne türüne göre kapsam**' ı seçin, bir öznitelik kullanarak nesneyi seçin ve **Ara** düğmesine tıklayın.
 
-  ![Metaverse Arama](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvsearch.png)
+  ![Meta veri deposu arama](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvsearch.png)
 
-* Tüm özniteliklerini görüntülemek için **Metaverse** aramasında bulunan nesneyi çift tıklatın. Tüm **Bağlayıcı Boşluklarında**karşılık gelen nesneye bakmak için **Bağlayıcılar** sekmesine tıklayabilirsiniz.
+* Tüm özniteliklerini görüntülemek için **Metadize** aramasında bulunan nesneye çift tıklayın. Tüm **bağlayıcı alanlarında**karşılık gelen nesneye bakmak için **Bağlayıcılar** sekmesine tıklayabilirsiniz.
 
-  ![Metaverse Nesne Konektörleri](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvattributes.png)
+  ![Meta veri deposu nesne bağlayıcıları](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvattributes.png)
 
-* **Bağlayıcı Alanı** özniteliklerini görüntülemek için **Active Directory Connector'a** çift tıklayın. **Önizleme** düğmesine tıklayın, aşağıdaki iletişim kutusunda **Önizleme Oluştur** düğmesine tıklayın.
+* **Bağlayıcı alanı** özniteliklerini görüntülemek Için **Active Directory bağlayıcıya** çift tıklayın. **Önizleme** düğmesine tıklayın, aşağıdaki Iletişim kutusunda **Önizleme Oluştur** düğmesine tıklayın.
 
-  ![Bağlayıcı Alan Öznitelikleri](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
+  ![Bağlayıcı alanı öznitelikleri](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
 
-* Şimdi Alma **Öznitelik Akışı**tıklayın , Bu **Metaverse** **Aktif Dizin Bağlayıcı Alanı** öznitelikleri akışını gösterir. **Eşitleme Kuralı** sütunu, bu özniteliğe hangi **Eşitleme Kuralının** katkıda bulunduğunu gösterir. **Veri Kaynağı** sütunu Bağlayıcı **Alanı'ndaki**öznitelikleri gösterir. **Metaverse Öznitelik** **sütunmetaverse**öznitelikleri gösterir. Burada eşitleme değil öznitelik için bakabilirsiniz. Özniteliği burada bulamazsanız, bu eşlenmez ve özniteliği eşlemek için yeni özel **Eşitleme Kuralı** oluşturmanız gerekir.
+* Şimdi **Içeri aktarma öznitelik akışı**' na tıklayın, bu, **Active Directory bağlayıcı alanından** **metadize**'ye özniteliklerin akışını gösterir. **Eşitleme kuralı** sütunu, bu özniteliğe katkıda bulunulan **eşitleme kuralını** gösterir. **Veri kaynağı** sütunu, **bağlayıcı**alanındaki öznitelikleri gösterir. **Metadize özniteliği** sütunu, **meta**veri deposundaki öznitelikleri gösterir. Burada eşitleme değil özniteliği arayabilirsiniz. Burada özniteliği bulamazsanız, bu eşlenmez ve özniteliği eşlemek için yeni özel **eşitleme kuralı** oluşturmanız gerekir.
 
-  ![Bağlayıcı Alan Öznitelikleri](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/cstomvattributeflow.png)
+  ![Bağlayıcı alanı öznitelikleri](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/cstomvattributeflow.png)
 
-* Giden Eşitleme **Kuralları'nı**kullanarak **Metaverse'den** **Active Directory Connector Space'e** öznitelik akışını görüntülemek için sol bölmedeki Dışa Aktarma **Özniteliği Akışını** tıklatın.
+* **Meta** veri deposundaki öznitelik akışını **giden eşitleme kurallarını**kullanarak **Active Directory bağlayıcı alanına** geri doğru görüntülemek Için sol bölmedeki **öznitelik akışını dışarı aktar** ' a tıklayın.
 
-  ![Bağlayıcı Alan Öznitelikleri](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
+  ![Bağlayıcı alanı öznitelikleri](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
 
-* Benzer şekilde, Azure **Active Directory Connector Space** nesnesini görüntüleyebilir ve **Metaverse'den** **Bağlayıcı Alanı'na** öznitelik akışını görüntülemek için **Önizleme'yi** oluşturabilirsiniz ve bunun tersi de bu şekilde bir özniteliğin neden eşitlenmediğini araştırabilirsiniz.
+* Benzer şekilde, **Azure Active Directory bağlayıcı alanı** nesnesini görüntüleyebilir ve **meta** veri deposundaki öznitelik akışını **bağlayıcı alanına** görüntülemek için **Önizleme** oluşturabilir ve bunun tersini yapabilir. bu şekilde, bir özniteliğin neden eşitlenmediğini inceleyebilirsiniz.
 
-## <a name="recommended-documents"></a>**Önerilen Belgeler**
-* [Azure AD Connect eşitleme: Teknik Kavramlar](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
-* [Azure AD Connect eşitlemi: Mimariyi anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
-* [Azure AD Connect eşitlemi: Bildirimsel Sağlama'yı Anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Azure AD Connect eşitlemi: Bildirimsel Sağlama İfadelerini Anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
+## <a name="recommended-documents"></a>**Önerilen belgeler**
+* [Azure AD Connect eşitleme: teknik kavramlar](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
+* [Azure AD Connect eşitleme: mimariyi anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
+* [Azure AD Connect eşitleme: bildirime dayalı sağlamayı anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
+* [Azure AD Connect eşitleme: bildirim temelli sağlama Ifadelerini anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
 * [Azure AD Connect eşitleme: Varsayılan yapılandırmayı anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
-* [Azure AD Connect eşitleme: Kullanıcıları, Grupları ve Kişileri Anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Azure AD Connect eşitleme: Gölge öznitelikleri](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Azure AD Connect eşitleme: kullanıcıları, grupları ve kişileri anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
+* [Azure AD Connect eşitleme: gölge öznitelikleri](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [Azure AD Connect eşitleme.](how-to-connect-sync-whatis.md)
-- [Melez kimlik nedir?](whatis-hybrid-identity.md)
+- [Azure AD Connect eşitleme](how-to-connect-sync-whatis.md).
+- [Karma kimlik nedir?](whatis-hybrid-identity.md).

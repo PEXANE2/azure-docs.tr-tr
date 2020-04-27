@@ -1,6 +1,6 @@
 ---
 title: Media Encoder Standard ve .NET kullanarak küçük resim oluşturma
-description: Bu konu, Bir varlığı kodlamak ve media encoder Standard'ı kullanarak aynı anda küçük resimler oluşturmak için .NET'in nasıl kullanılacağını gösterir.
+description: Bu konuda, Media Encoder Standard kullanarak aynı anda bir varlık kodlamak ve küçük resimler oluşturmak için .NET kullanımı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,25 +15,25 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61244238"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Media Encoder Standard ve .NET kullanarak küçük resim oluşturma 
 
-[JPEG,](https://en.wikipedia.org/wiki/JPEG) [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics)veya [BMP](https://en.wikipedia.org/wiki/BMP_file_format) görüntü dosyası biçimlerindeki giriş videonuzdan bir veya daha fazla küçük resim oluşturmak için Media Encoder Standard'ı kullanabilirsiniz. Yalnızca resim üreten Görevler gönderebilir veya küçük resim oluşturmayı kodlamayla birleştirebilirsiniz. Bu makalede, bu tür senaryolar için birkaç örnek XML ve JSON küçük resim hazır ayarlar sağlar. Makalenin sonunda, kodlama görevini gerçekleştirmek için Medya Hizmetleri .NET SDK'nın nasıl kullanılacağını gösteren bir [örnek kod](#code_sample) vardır.
+Giriş videoınızdan [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics)veya [BMP](https://en.wikipedia.org/wiki/BMP_file_format) resim dosyası biçimlerinde bir veya daha fazla küçük resim oluşturmak için Media Encoder Standard kullanabilirsiniz. Yalnızca görüntü üreten görevler gönderebilir veya küçük resim oluşturmayı kodlama ile birleştirebilirsiniz. Bu makale, bu tür senaryolar için birkaç örnek XML ve JSON küçük ayarı sağlar. Makalenin sonunda, kodlama görevini gerçekleştirmek için Media Services .NET SDK ' nın nasıl kullanılacağını gösteren [örnek bir kod](#code_sample) vardır.
 
-Örnek hazır ayarlarda kullanılan öğeler hakkında daha fazla bilgi için [Media Encoder Standard şeasını](media-services-mes-schema.md)gözden geçirmelisiniz.
+Örnek ön ayarlarda kullanılan öğeler hakkında daha fazla bilgi için [Media Encoder Standard şemayı](media-services-mes-schema.md)gözden geçirmeniz gerekir.
 
-[Dikkat Edilmesi Gerekenler](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) bölümünü gözden geçirin.
+[Konular](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) bölümünü gözden geçirdiğinizden emin olun.
     
-## <a name="example-of-a-single-png-file-preset"></a>"Tek Bir PNG dosyası" ön ayar örneği
+## <a name="example-of-a-single-png-file-preset"></a>"Tek PNG dosyası" önayarı örneği
 
-Aşağıdaki JSON ve XML ön ayarı, kodlayıcının "ilginç" bir çerçeve bulmak için en iyi çabayı sarf ettiği giriş videosunun ilk birkaç saniyesinden itibaren tek bir çıkış PNG dosyası üretmek için kullanılabilir. Çıktı görüntü boyutlarının %100 olarak ayarlandığını, yani bunların giriş videosunun boyutlarıyla eşleştin. "Çıktılar" bölümündeki "Biçim" ayarının "Codec" bölümündeki "PngLayers" kullanımını eşleştirmek için nasıl gerekli olduğuna da dikkat edin. 
+Aşağıdaki JSON ve XML önayarı, giriş videosunun ilk birkaç saniyesindeki tek bir çıkış PNG dosyası oluşturmak için kullanılabilir ve bu, kodlayıcının "ilginç" bir çerçeve bulmak için en iyi çaba denemesi yapar. Çıkış resmi boyutlarının %100 olarak ayarlandığını, yani bu, giriş videosunun boyutlarıyla eşleştiğini unutmayın. Ayrıca "çıktılar" içindeki "biçim" ayarının "bir" codec bileşenleri "bölümünde" Pngkatmanları "kullanımıyla eşleşmesi için nasıl gerekli olduğunu göz önünde bulabilirsiniz. 
 
-### <a name="json-preset"></a>JSON hazır
+### <a name="json-preset"></a>JSON önceden ayarı
 
 ```json
     {
@@ -62,7 +62,7 @@ Aşağıdaki JSON ve XML ön ayarı, kodlayıcının "ilginç" bir çerçeve bul
     }
 ```
     
-### <a name="xml-preset"></a>XML ön ayar
+### <a name="xml-preset"></a>XML önayarı
 
 ```xml
     <?xml version="1.0" encoding="utf-16"?>
@@ -85,11 +85,11 @@ Aşağıdaki JSON ve XML ön ayarı, kodlayıcının "ilginç" bir çerçeve bul
     </Preset>
 ```
 
-## <a name="example-of-a-series-of-jpeg-images-preset"></a>"JPEG görüntüleri serisi" önceden ayarlanmış bir örnek
+## <a name="example-of-a-series-of-jpeg-images-preset"></a>"Bir dizi JPEG görüntüsü" ön ayarı örneği
 
-Aşağıdaki JSON ve XML ön ayı, görüntü boyutunun giriş videosunun dörtte biri olarak belirtildiği giriş zaman çizelgesinin %95'i olan %5, %15, ..., giriş zaman damgalarında 10 görüntüden oluşan bir set üretmek için kullanılabilir.
+Aşağıdaki JSON ve XML önayarı, zaman damgalarının %5 ' i, %15 ' i,..., %95, giriş zaman çizelgesinin, görüntü boyutunun giriş videosunun bir çeyrekte olduğu bir üç aylık dönem olarak belirtildiği bir dizi 10 görüntü oluşturmak için kullanılabilir.
 
-### <a name="json-preset"></a>JSON hazır
+### <a name="json-preset"></a>JSON önceden ayarı
 
 ```json
     {
@@ -121,7 +121,7 @@ Aşağıdaki JSON ve XML ön ayı, görüntü boyutunun giriş videosunun dörtt
     }
 ```
 
-### <a name="xml-preset"></a>XML ön ayar
+### <a name="xml-preset"></a>XML önayarı
     
 ```xml
     <?xml version="1.0" encoding="utf-16"?>
@@ -145,11 +145,11 @@ Aşağıdaki JSON ve XML ön ayı, görüntü boyutunun giriş videosunun dörtt
     </Preset>
 ```
 
-## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>"Belirli bir zaman damgası olan tek görüntü" ön kümesi örneği
+## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>"Belirli bir zaman damgasında bir resim" önceden ayarlanmış örneği
 
-Aşağıdaki JSON ve XML ön ayar, giriş videosunun 30 saniyelik işaretinde tek bir JPEG görüntüsü oluşturmak için kullanılabilir. Bu ön ayar, giriş videosunun süresi 30 saniyeden fazla olmasını bekler (aksi takdirde iş başarısız olur).
+Aşağıdaki JSON ve XML önayarı, giriş videosunun 30 saniyelik işaretinde tek bir JPEG görüntüsü oluşturmak için kullanılabilir. Bu önayar, giriş videosunun süre içinde 30 saniyeden uzun olmasını bekler (Aksi takdirde iş başarısız olur).
 
-### <a name="json-preset"></a>JSON hazır
+### <a name="json-preset"></a>JSON önceden ayarı
 
 ```json
     {
@@ -181,7 +181,7 @@ Aşağıdaki JSON ve XML ön ayar, giriş videosunun 30 saniyelik işaretinde te
     }
 ```
 
-### <a name="xml-preset"></a>XML ön ayar
+### <a name="xml-preset"></a>XML önayarı
 ```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -204,13 +204,13 @@ Aşağıdaki JSON ve XML ön ayar, giriş videosunun 30 saniyelik işaretinde te
     </Preset>
 ```
 
-## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>"Farklı çözünürlüklerde küçük resimler" ön ayar örneği
+## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>"Farklı çözünürlüklerden küçük resimler" önceden ayarlanmış örneği
 
-Aşağıdaki önceden ayar, tek bir görevde farklı çözünürlüklerde küçük resimler oluşturmak için kullanılabilir. Örnekte, giriş zaman çizelgesinin %5, %15, ..., %95'inde, kodlayıcı iki görüntü oluşturur – biri giriş video çözünürlüğünün %100'ü, diğeri %50'dir.
+Aşağıdaki önayar, bir görevde farklı çözünürlüklere küçük resimler oluşturmak için kullanılabilir. Örnekte, konumlarda %5, %15%,..., giriş zaman çizelgesinin %95 ' unda, kodlayıcı iki görüntü oluşturur: biri, giriş video çözünürlüğünün %100 ' i ve diğeri de %50.
 
-Dosya Adı'nda {Çözünürlük} makrosu kullanımına dikkat edin; çıktı görüntülerinin dosya adını oluştururken önakümenin Kodlama bölümünde belirttiğiniz genişliği ve yüksekliği kullanmak için kodlayıcıya işaret gösterir. Bu aynı zamanda farklı görüntüler arasında kolayca ayırt yardımcı olur
+Dosya adında {Resolution} makrosunun kullanımını göz önünde edin; Bu, kodlayıcının, çıkış görüntülerinin dosya adını oluştururken önceden ayarlanmış kodlama bölümünde belirttiğiniz genişlik ve yüksekliği kullanacağını gösterir. Bu Ayrıca, farklı görüntüleri kolayca ayırt etmenize de yardımcı olur
 
-### <a name="json-preset"></a>JSON hazır
+### <a name="json-preset"></a>JSON önceden ayarı
 
 ```json
     {
@@ -249,7 +249,7 @@ Dosya Adı'nda {Çözünürlük} makrosu kullanımına dikkat edin; çıktı gö
     }
 ```
 
-### <a name="xml-preset"></a>XML ön ayar
+### <a name="xml-preset"></a>XML önayarı
 ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -279,10 +279,10 @@ Dosya Adı'nda {Çözünürlük} makrosu kullanımına dikkat edin; çıktı gö
 
 ## <a name="example-of-generating-a-thumbnail-while-encoding"></a>Kodlama sırasında küçük resim oluşturma örneği
 
-Yukarıdaki örneklerin tümü yalnızca görüntü üreten bir kodlama görevini nasıl gönderebileceğinizi tartışmış olsa da, video/ses kodlamasını küçük resim oluşturmayla birleştirebilirsiniz. Aşağıdaki JSON ve XML ön ayar, kodlama sırasında bir küçük resim oluşturmak için **Media Encoder Standard'ı** söyler.
+Yukarıdaki örneklerin hepsi yalnızca görüntü üreten bir kodlama görevini nasıl gönderebileceğinizi ele alırken video/ses kodlamasını küçük resim oluşturma ile de birleştirebilirsiniz. Aşağıdaki JSON ve XML önayarı kodlama sırasında küçük resim oluşturmak **Media Encoder Standard** söyler.
 
-### <a name="json-preset"></a><a id="json"></a>JSON hazır
-Şema hakkında bilgi için [bu](https://msdn.microsoft.com/library/mt269962.aspx) makaleye bakın.
+### <a name="json-preset"></a><a id="json"></a>JSON önceden ayarı
+Şema hakkında daha fazla bilgi için [Bu](https://msdn.microsoft.com/library/mt269962.aspx) makaleye bakın.
 
 ```json
     {
@@ -346,8 +346,8 @@ Yukarıdaki örneklerin tümü yalnızca görüntü üreten bir kodlama görevin
     }
 ```
 
-### <a name="xml-preset"></a><a id="xml"></a>XML ön ayar
-Şema hakkında bilgi için [bu](https://msdn.microsoft.com/library/mt269962.aspx) makaleye bakın.
+### <a name="xml-preset"></a><a id="xml"></a>XML önayarı
+Şema hakkında daha fazla bilgi için [Bu](https://msdn.microsoft.com/library/mt269962.aspx) makaleye bakın.
 
 ```csharp
     <?xml version="1.0" encoding="utf-16"?>
@@ -401,23 +401,23 @@ Yukarıdaki örneklerin tümü yalnızca görüntü üreten bir kodlama görevin
     </Preset>   
 ```
 
-## <a name="encode-video-and-generate-thumbnail-with-net"></a><a id="code_sample"></a>Videoyu kodlayın ve .NET ile küçük resim oluşturun
+## <a name="encode-video-and-generate-thumbnail-with-net"></a><a id="code_sample"></a>.NET ile video kodlama ve küçük resim oluşturma
 
-Aşağıdaki kod örneği, aşağıdaki görevleri gerçekleştirmek için Medya Hizmetleri .NET SDK'yı kullanır:
+Aşağıdaki kod örneği aşağıdaki görevleri gerçekleştirmek için Media Services .NET SDK kullanır:
 
-* Kodlama işi oluşturun.
-* Media Encoder Standart kodlayıcısına başvurun.
-* Kodlama ön ayarını içeren önceden ayarlanmış [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) veya [JSON'u](media-services-dotnet-generate-thumbnail-with-mes.md#json) ve küçük resimler oluşturmak için gereken bilgileri yükleyin. Bu [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) veya [JSON'u](media-services-dotnet-generate-thumbnail-with-mes.md#json) bir dosyaya kaydedebilir ve dosyayı yüklemek için aşağıdaki kodu kullanabilirsiniz.
+* Bir kodlama işi oluşturun.
+* Media Encoder Standard Kodlayıcısı için bir başvuru alın.
+* Kodlama ön ayarını ve küçük resim oluşturmak için gereken bilgileri içeren [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) veya [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) 'yi yükleyin. Bu [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) veya [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) dosyasını bir dosyaya kaydedebilir ve dosyayı yüklemek için aşağıdaki kodu kullanabilirsiniz.
   
         // Load the XML (or JSON) from the local file.
         string configuration = File.ReadAllText(fileName);  
 * İşe tek bir kodlama görevi ekleyin. 
-* Kodlanacak giriş kıymetini belirtin.
-* Kodlanmış kıymeti içeren bir çıktı kıymeti oluşturun.
-* İş ilerlemesini denetlemek için bir olay işleyicisi ekleyin.
-* İşi gönderin.
+* Kodlanacak giriş varlığını belirtin.
+* Kodlanmış varlığı içeren bir çıkış varlığı oluşturun.
+* İşin ilerlemesini denetlemek için bir olay işleyicisi ekleyin.
+* İşi gönder.
 
-Geliştirme ortamınızı nasıl ayarlayabileceğinize ilişkin yol tarifleri için [.NET](media-services-dotnet-how-to-use.md) makalesi ile Medya Hizmetleri geliştirme sine bakın.
+Geliştirme ortamınızı ayarlama hakkında yönergeler için bkz. [.NET ile Media Services geliştirme](media-services-dotnet-how-to-use.md) makalesi.
 
 ```csharp
 using System;
@@ -548,22 +548,22 @@ namespace EncodeAndGenerateThumbnails
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 Aşağıdaki noktalara dikkat edilmelidir:
 
-* Başlangıç/Adım/Aralık için açık zaman damgalarının kullanılması, giriş kaynağının en az 1 dakika uzunluğunda olduğunu varsayar.
-* Jpg/Png/BmpImage öğeleri Başlangıç, Adım ve Aralık dize özelliklerine sahiptir – bunlar şu şekilde yorumlanabilir:
+* Başlangıç/adım/Aralık için açık zaman damgalarının kullanımı, giriş kaynağının en az 1 dakika uzunluğunda olduğunu varsayar.
+* JPG/PNG/Bmpımage öğelerinde başlangıç, adım ve Aralık dizesi öznitelikleri vardır; bunlar şöyle yorumlanabilecek:
   
-  * Çerçeve Numarası negatif olmayan tümsalar, örneğin "Başlangıç": "120",
-  * %-suffixed olarak ifade edilirse kaynak süresine göre, örneğin "Başlangıç": "%15", OR
-  * HH:MM:SS olarak ifade edilirse zaman damgası... Biçim. Örneğin "Başlat" : "00:01:00"
+  * Negatif olmayan tamsayılarla çerçeve numarası, örneğin "Başlat": "120",
+  * %-Sonfixed olarak ifade edilen kaynak süresine göreli, örneğin "Başlat": "15%" veya
+  * SS: DD: SS olarak ifade edilen zaman damgası... formatını. Örneğin, "Başlat": "00:01:00"
     
-    Notaları istediğiniz gibi karıştırıp eşleştirebilirsiniz.
+    Gösterimleri sizin için karıştırabilir ve eşleştirebilirsiniz.
     
-    Ayrıca, Başlat ayrıca özel bir Makro destekler:{Best}, içerik NOT ilk "ilginç" çerçevebelirlemek için çalışır: (Başlat {Best} olarak ayarlandığında Adım ve Aralık yoksayılır)
-  * Varsayılanlar: Başlat:{En Iyi}
-* Çıkış biçiminin her Görüntü biçimi için açıkça sağlanması gerekir: Jpg/Png/BmpFormat. Mevcut olduğunda, MES JpgFormat ve benzeri JpgVideo eşleşir. OutputFormat, görüntü çıktıbiçimleri için (bir ve yalnızca bir kez) bulunması gereken yeni bir görüntü kodlayıcıya özgü Makro: {Index}'i sunar.
+    Ayrıca, Başlat, içerik notunun ilk "ilginç" çerçevesini belirlemeyi deneyen {Best} özel makrosunu da destekler: (başlatma {En Iyi} olarak ayarlandığında adım ve Aralık yok sayılır)
+  * Varsayılanlar: başlangıç: {En Iyi}
+* Her görüntü biçimi için çıkış biçiminin açıkça sağlanması gerekir: jpg/png/BmpFormat. Mevcut olduğunda, JpgVideo ile JpgFormat arasında devam eder. OutputFormat, görüntü çıkış biçimleri için mevcut olması gereken (bir kez ve yalnızca bir kez) yeni bir görüntü codec bileşeni ({Index}) sunuyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kodlama işi beklemedeyken [iş ilerlemesini](media-services-check-job-progress.md) denetleyebilirsiniz.
+Kodlama işi beklenirken [işin ilerlemesini](media-services-check-job-progress.md) kontrol edebilirsiniz.
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -572,5 +572,5 @@ Kodlama işi beklemedeyken [iş ilerlemesini](media-services-check-job-progress.
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-[Medya Hizmetleri Kodlama Genel Bakış](media-services-encode-asset.md)
+[Media Services kodlamaya genel bakış](media-services-encode-asset.md)
 

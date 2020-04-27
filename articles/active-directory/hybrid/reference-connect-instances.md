@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Hizmet örneklerini eşitleme | Microsoft Dokümanlar'
+title: 'Azure AD Connect: hizmet örneklerini Eşitle | Microsoft Docs'
 description: Bu sayfa, Azure AD örnekleri için özel hususlar belgeler.
 services: active-directory
 documentationcenter: ''
@@ -17,55 +17,55 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c342eac5460d8d52422b0497b1283f367660eb3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66298826"
 ---
-# <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Örneğin özel hususlar
-Azure AD Connect en yaygın olarak azure AD ve Office 365'in dünya çapındaki örneğiyle kullanılır. Ama diğer örnekleri de vardır ve bu URL'ler ve diğer özel hususlar için farklı gereksinimleri vardır.
+# <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: örneklerle ilgili özel konular
+Azure AD Connect en yaygın olarak, Azure AD ve Office 365 'nin dünya çapındaki örneğiyle kullanılır. Ancak başka örnekler de vardır ve bunlar, URL 'Ler ve diğer özel hususlar için farklı gereksinimlere sahiptir.
 
-## <a name="microsoft-cloud-germany"></a>Microsoft Cloud Almanya
-[Microsoft Cloud Germany,](https://www.microsoft.de/cloud-deutschland) bir Alman veri mütevellisi tarafından işletilen egemen bir bulutdur.
+## <a name="microsoft-cloud-germany"></a>Almanya Microsoft Bulut
+[Almanya Microsoft bulut](https://www.microsoft.de/cloud-deutschland) , bir Almanya veri emanetçisi tarafından çalıştırılan bir sogeign bulutu.
 
-| URL'ler proxy sunucusunda açılacak |
+| Proxy sunucuda açılacak URL 'Ler |
 | --- |
-| \*.microsoftonline.de |
+| \*. microsoftonline.de |
 | \*.windows.net |
-| +Sertifika İptal Listeleri |
+| + Sertifika Iptal listeleri |
 
-Azure AD kiracınızda oturum açarak oturum açbaktığınızda, onmicrosoft.de etki alanında bir hesap kullanmanız gerekir.
+Azure AD kiracınızda oturum açtığınızda, onmicrosoft.de etki alanında bir hesap kullanmanız gerekir.
 
-Şu anda Microsoft Cloud Almanya'da bulunmayan özellikler:
+Microsoft Bulut Almanya 'da Şu anda mevcut olmayan özellikler:
 
-* **Parola geri yazımı,** Azure AD Connect sürümü 1.1.570.0 ve sonrasında önizleme için kullanılabilir.
-* Diğer Azure AD Premium hizmetleri kullanılamıyor.
+* **Parola geri yazma** , Azure AD Connect sürüm 1.1.570.0 ve sonrasında önizleme için kullanılabilir.
+* Diğer Azure AD Premium hizmetleri kullanılamaz.
 
-## <a name="microsoft-azure-government"></a>Microsoft Azure Yönetimi
-[Microsoft Azure Devlet bulutu,](https://azure.microsoft.com/features/gov/) ABD hükümeti için bir bulut.
+## <a name="microsoft-azure-government"></a>Microsoft Azure Kamu
+[Microsoft Azure Kamu Bulutu](https://azure.microsoft.com/features/gov/) ABD hükümeti için bir bulutdır.
 
-Bu bulut DirSync önceki sürümleri tarafından desteklenmiştir. Azure AD Connect'in 1.1.180'lik yapısından bulutun yeni nesli desteklenir. Bu nesil yalnızca ABD tabanlı uç noktaları kullanıyor ve proxy sunucunuzda açılacak farklı bir URL listesine sahip.
+Bu bulut, DirSync 'in daha eski sürümleri tarafından desteklenmektedir. Derleme 1.1.180 Azure AD Connect, bulutun yeni nesli desteklenir. Bu nesil yalnızca ABD tabanlı uç noktaları kullanıyor ve proxy sunucunuzda açılacak farklı bir URL listesine sahip.
 
-| URL'ler proxy sunucusunda açılacak |
+| Proxy sunucuda açılacak URL 'Ler |
 | --- |
 | \*.microsoftonline.com |
 | \*.microsoftonline.us |
-| \*.windows.net (Otomatik Azure Kamu kiracı algılaması için gereklidir) |
-| \*.gov.us.microsoftonline.com |
-| +Sertifika İptal Listeleri |
+| \*. windows.net (otomatik Azure Kamu kiracısı algılaması için gereklidir) |
+| \*. gov.us.microsoftonline.com |
+| + Sertifika Iptal listeleri |
 
 > [!NOTE]
-> Azure AD Connect sürüm 1.1.647.0 itibariyle, proxy sunucunuzda *.windows.net açık olması koşuluyla, kayıt defterinde AzureInstance değerini ayarlamak artık gerekli değildir. Ancak, Azure AD Connect sunucularından Internet bağlantısına izin vermemektedir(
+> Azure AD Connect sürüm 1.1.647.0 itibariyle, kayıt defterindeki AzureInstance değerini ayarlamak, ara sunucunuzda *. windows.net açık olması için artık gerekli değildir. Ancak, Azure AD Connect sunucusundan Internet bağlantısına izin vermediği müşteriler için aşağıdaki el ile yapılandırma kullanılabilir.
 
-### <a name="manual-configuration"></a>Manuel Yapılandırma
+### <a name="manual-configuration"></a>El ile yapılandırma
 
-Azure AD Connect'in Azure Kamu senkronizasyon uç noktalarını kullandığından emin olmak için aşağıdaki el ile yapılandırma adımları kullanılır.
+Azure AD Connect Azure Kamu eşitleme uç noktalarını kullandığından emin olmak için aşağıdaki el ile yapılandırma adımları kullanılır.
 
 1. Azure AD Connect yüklemesini başlatın.
-2. EULA'yı kabul etmeniz gereken ilk sayfayı gördüğünüzde, devam etmeyin ancak yükleme sihirbazını çalışır durumda bırakın.
-3. Regedit'i başlatın ve `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` kayıt `4`defteri anahtarını değerle değiştirin.
-4. Azure AD Connect yükleme sihirbazına geri dön, EULA'yı kabul et ve devam et. Yükleme sırasında, **özel yapılandırma** yükleme yolunu (Express yüklemesi değil) kullandığınızdan emin olun, ardından yüklemeye her zamanki gibi devam edin.
+2. EULA 'Yı kabul etmeniz beklenen ilk sayfayı gördüğünüzde, devam etmeyin ancak Yükleme Sihirbazı 'nı çalışır durumda bırakın.
+3. Regedit 'i başlatın ve kayıt defteri anahtarını `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` değerine `4`değiştirin.
+4. Azure AD Connect yükleme sihirbazına dönün, EULA 'yı kabul edin ve devam edin. Yükleme sırasında, **özel yapılandırma** yükleme yolunu (hızlı yükleme değil) kullandığınızdan emin olun, ardından yüklemeye her zamanki gibi devam edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

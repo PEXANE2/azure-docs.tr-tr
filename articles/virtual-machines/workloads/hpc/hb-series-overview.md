@@ -1,6 +1,6 @@
 ---
-title: HB serisi VM'ye genel bakış - Azure Sanal Makineler | Microsoft Dokümanlar
-description: Azure'da HB serisi VM boyutu için önizleme desteği hakkında bilgi edinin.
+title: HB Serisi VM 'ye genel bakış-Azure sanal makineleri | Microsoft Docs
+description: Azure 'da HB Serisi VM boyutu için Önizleme desteği hakkında bilgi edinin.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,58 +13,58 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
 ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67707768"
 ---
-# <a name="hb-series-virtual-machines-overview"></a>HB serisi sanal makinelere genel bakış
+# <a name="hb-series-virtual-machines-overview"></a>HB Serisi sanal makinelere genel bakış
 
-AMD EPYC'de yüksek performanslı bilgi işlem (HPC) uygulama performansını en üst düzeye çıkarmak, düşünceli bir yaklaşım bellek yerelliği ve işlem yerleşimi gerektirir. Aşağıda AMD EPYC mimarisive HPC uygulamaları için Azure'da uygulamamızı ana hatlarını sıralıyoruz. Fiziksel bir NUMA etki alanına başvurmak için "pNUMA" terimini ve sanallaştırılmış numa etki alanına başvurmak için "vNUMA" terimini kullanacağız.
+Yüksek performanslı bilgi işlem (HPC) uygulama performansının AMD EPıC üzerinde en üst düzeye çıkarmak, düşünceli bir yaklaşım bellek konumu ve işlem yerleşimi gerektirir. Aşağıda, AMD EPıC mimarisini ve bu uygulamayı HPC uygulamaları için Azure 'da uygulamamız ana hatlarıyla planlıyoruz. "PNUMA" terimini bir fiziksel NUMA etki alanına ve "vNUMA" adlı bir sanallaştırılmış NUMA etki alanına başvuracak şekilde kullanacağız.
 
-Fiziksel olarak, bir HB serisi 2 * 32 çekirdekli EPYC 7551 CPU toplam 64 fiziksel çekirdek için. Bu 64 çekirdek, her biri dört çekirdek olan ve "CPU Kompleksi" (veya "CCX") olarak bilinen 16 pNUMA etki alanına (soket başına 8) ayrılır. Her CCX'in kendi L3 önbelleği vardır, bu da bir işletim sistemi nin pNUMA/vNUMA sınırını nasıl göreceğidir. Bitişik CCXs bir çift fiziksel DRAM (HB serisi sunucularda DRAM 32 GB) iki kanal erişim paylaşır.
+Fiziksel olarak, bir HB Serisi 64 toplam 32 fiziksel çekirdek için 2 *-çekirdekli EPYıC 7551 CPU olur. Bu 64 çekirdekler, her biri dört çekirdekli ve "CPU karmaşık" (veya "CCX") olarak bilinen 16 pNUMA etki alanlarına (yuva başına 8) bölünmüştür. Her CCX 'in kendi L3 önbelleği vardır. Bu, bir işletim sisteminin bir pNUMA/vNUMA sınırını nasıl görebileceği anlamına gelir. Bitişik CCXs çifti, iki fiziksel DRAM kanalına erişimi paylaşır (32 GB/s-serisi sunucu).
 
-Azure hipervizörünün VM'ye müdahale etmeden çalışmasına yer sağlamak için fiziksel pNUMA etki alanı 0 (ilk CCX) rezerve ediyoruz. Daha sonra VM için pNUMA etki alanları 1-15 (kalan CCX birimleri) atıyoruz. VM göreceksiniz:
+Azure Hiper Yöneticisi 'nin VM ile kesintiye uğramadan çalışması için oda sağlamak üzere fiziksel pNUMA etki alanı 0 ' ı (ilk CCX) ayırdık. Daha sonra VM için pNUMA etki alanları 1-15 (kalan CCX birimleri) atarsınız. VM şu şekilde görüntülenir:
 
 `(15 vNUMA domains) * (4 cores/vNUMA) = 60`VM başına çekirdek
 
-VM, kendisi, pNUMA 0 ona verilmediğini bilmiyor. VM, vSocket 0'da 7 vNUMA ve vSocket 1'de 8 vNUMA ile vNUMA 0-14 olarak vNUMA 15'i anlar. Bu asimetrik olsa da, işletim sisteminiz önyükleme yapmalı ve normal şekilde çalışmalıdır. Daha sonra bu kılavuzda, bu asimetrik NUMA düzeninde MPI uygulamalarını en iyi nasıl çalıştırabileceğimizi öğretiyoruz.
+Sanal makine, pNUMA 0 ' ın kendisine verilmediğini bilmez. VM, vNUMA 0-14 olarak pNUMA 1-15 'yi, vSocket 0 ve vSocket 1 üzerinde 8 vNUMA üzerinde 7 vNUMA ile anlamıştır. Bu, asimetrik olsa da, işletim sistemi normal şekilde önyükleme ve çalışır olmalıdır. Bu kılavuzda daha sonra, bu asimetrik NUMA düzeninde MPı uygulamalarının ne kadar iyi çalıştırılacağını öğreneceksiniz.
 
-Proses sabitleme HB serisi VM'lerde çalışacaktır, çünkü altta yatan silikonu konuk VM'ye maruz bırakırız. Optimum performans ve tutarlılık için proses sabitlemeyi şiddetle tavsiye ediyoruz.
+İşlem sabitleme, HB Serisi VM 'lerde çalışarak temel bir Silicon as 'yi konuk VM 'de kullanıma sunduk. En iyi performans ve tutarlılık için işlem sabitlenmesini önemle öneririz.
 
-LinkedIn'deki [AMD EPYC mimarisi](https://bit.ly/2Epv3kC) ve [çok yongalı mimariler](https://bit.ly/2GpQIMb) hakkında daha fazla görüş. Daha ayrıntılı bilgi için [AMD EPYC İşlemciler için HPC Tuning Guide'a](https://bit.ly/2T3AWZ9)bakın.
+Daha fazla bilgi için bkz. LinkedIn 'de daha fazla [AMD epi mimarisi](https://bit.ly/2Epv3kC) ve [Çoklu yonga mimarileri](https://bit.ly/2GpQIMb) . Daha ayrıntılı bilgi için bkz. [AMD EPYıC işlemcileri Için HPC ayarlama Kılavuzu](https://bit.ly/2T3AWZ9).
 
-Aşağıdaki diyagram, Azure Hypervisor ve HB serisi VM için ayrılmış çekirdeklerin ayrıştırıcısını gösterir.
+Aşağıdaki diyagramda, Azure Hiper Yöneticisi ve HB Serisi VM için ayrılan çekirdekler gösterilmektedir.
 
-![Azure Hypervisor ve HB serisi VM için ayrılmış çekirdeklerin ayrılması](./media/hb-series-overview/segregation-cores.png)
+![Azure Hiper Yöneticisi ve HB Serisi VM için ayrılan çekirdekler](./media/hb-series-overview/segregation-cores.png)
 
 ## <a name="hardware-specifications"></a>Donanım belirtimleri
 
-| HW Teknik Özellikleri                | HB serisi VM                     |
+| HW belirtimleri                | HB Serisi VM                     |
 |----------------------------------|----------------------------------|
 | Çekirdekler                            | 60 (SMT devre dışı)                |
-| CPU                              | AMD EPYC 7551*                   |
-| Cpu Frekansı (AVX dışı)          | ~2,55 GHz (tek + tüm çekirdekler)   |
-| Bellek                           | 4 GB/çekirdek (toplam 240)            |
+| CPU                              | AMD EPYıC 7551 *                   |
+| CPU sıklığı (AVX olmayan)          | ~ 2,55 GHz (tek + tüm çekirdekler)   |
+| Bellek                           | 4 GB/çekirdek (240 toplam)            |
 | Yerel Disk                       | 700 GB NVMe                      |
-| ınfiniband                       | 100 Gb EDR Mellanox ConnectX-5** |
-| Ağ                          | 50 Gb Ethernet (40 Gb kullanılabilir) Azure ikinci Gen SmartNIC*** |
+| InfiniBand                       | 100 GB EDR Mellanox ConnectX-5 * * |
+| Ağ                          | 50 GB Ethernet (40 GB kullanılabilir) Azure ikinci gen Smartnıc * * * |
 
-## <a name="software-specifications"></a>Yazılım özellikleri
+## <a name="software-specifications"></a>Yazılım belirtimleri
 
-| SW Teknik Özellikleri           |HB serisi VM           |
+| Yazılım belirtimleri           |HB Serisi VM           |
 |-----------------------------|-----------------------|
-| Max MPI İş Boyutu            | 6000 çekirdek (100 sanal makine ölçek seti) 12000 çekirdek (200 sanal makine ölçek kümesi)  |
-| MPI Desteği                 | MVAPICH2, OpenMPI, MPICH, Platform MPI, Intel MPI  |
-| Ek Çerçeveler       | Birleşik İletişim X, libfabric, PGAS |
-| Azure Depolama Desteği       | Std + Premium (maksimum 4 disk) |
-| SRIOV RDMA için İşletim Sistemi Desteği   | CentOS/RHEL 7.6+, SLES 12 SP4+, WinServer 2016+  |
-| Azure CycleCloud Desteği    | Evet                         |
-| Azure Toplu Destek         | Evet                         |
+| Maksimum MPı Işi boyutu            | 6000 çekirdek (100 sanal makine ölçek kümeleri) 12000 çekirdek (200 Sanal Makine Ölçek Kümeleri)  |
+| MPı desteği                 | MVAPICH2, OpenMPI, MPICH, platform MPı, Intel MPı  |
+| Ek çerçeveler       | Birleşik Iletişim X, libfabric, PGAS |
+| Azure depolama desteği       | STD + Premium (en fazla 4 disk) |
+| SRLOV RDMA için işletim sistemi desteği   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +  |
+| Azure CycleCloud desteği    | Yes                         |
+| Azure Batch desteği         | Yes                         |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure'da [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) ve [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) için HPC VM boyutları hakkında daha fazla bilgi edinin.
+* Azure 'da [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) ve [WINDOWS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) için HPC VM boyutları hakkında daha fazla bilgi edinin.
 
-* Azure'da [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.
+* Azure 'da [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.

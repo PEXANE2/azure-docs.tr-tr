@@ -1,8 +1,8 @@
 ---
-title: 'Azure AD Connect: Geçiş Kimlik Doğrulamayı Sorun Giderme | Microsoft Dokümanlar'
-description: Bu makalede, Azure Etkin Dizin (Azure AD) Geçiş Kimlik Doğrulaması'nda nasıl sorun giderilen açıklanmaktadır.
+title: 'Azure AD Connect: doğrudan kimlik doğrulama sorunlarını giderme | Microsoft Docs'
+description: Bu makalede Azure Active Directory (Azure AD) geçişli kimlik doğrulamanın nasıl giderileceği açıklanmaktadır.
 services: active-directory
-keywords: Azure AD Connect Pass-through Authentication sorun giderme, Active Directory'yi, Azure AD, SSO, Tek Oturum Açma için gerekli bileşenleri yükleme
+keywords: Azure AD Connect geçişli kimlik doğrulaması, Active Directory yüklemesi, Azure AD, SSO, çoklu oturum açma için gerekli bileşenler hakkında sorun giderme
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,123 +17,123 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60456173"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory Geçişli Kimlik Doğrulaması Sorunlarını Giderme
 
-Bu makale, Azure AD Geçiş Kimlik Doğrulaması ile ilgili sık karşılaşılan sorunlarla ilgili sorun giderme bilgilerini bulmanıza yardımcı olur.
+Bu makale, Azure AD geçişli kimlik doğrulamasıyla ilgili yaygın sorunlar hakkında sorun giderme bilgilerini bulmanıza yardımcı olur.
 
 >[!IMPORTANT]
->Geçiş Kimlik Doğrulama ile kullanıcı oturum açma sorunlarıyla karşı karşıyaysanız, yalnızca buluta yönelik bir Global Administrator hesabı olmadan özelliği devre dışı bırakmayın veya Geçiş Kimlik Doğrulama Aracıları'nı kaldırmayın. Yalnızca [buluta özel Global Administrator hesabı ekleme](../active-directory-users-create-azure-portal.md)hakkında bilgi edinin. Bu adımı yapmak çok önemlidir ve kiracınızın dışında kalmamanızı sağlar.
+>Doğrudan kimlik doğrulamasıyla Kullanıcı oturum açma sorunlarınız varsa, geri dönebilmeniz için özelliği devre dışı bırakıp doğrudan kimlik doğrulama aracılarını, yalnızca bulutta yer alan bir genel yönetici hesabına sahip olmadan kaldırın. [Yalnızca bulut genel yönetici hesabı ekleme](../active-directory-users-create-azure-portal.md)hakkında bilgi edinin. Bu adımın yapılması kritik bir öneme sahiptir ve kiracınızdan kilitlenmemesini sağlar.
 
 ## <a name="general-issues"></a>Genel sorunlar
 
-### <a name="check-status-of-the-feature-and-authentication-agents"></a>Özelliğin durumunu ve Kimlik Doğrulama Aracılarını denetleme
+### <a name="check-status-of-the-feature-and-authentication-agents"></a>Özelliğin ve kimlik doğrulama aracılarının durumunu denetleme
 
-Geçiş Kimlik Doğrulama özelliğinin kiracınızda hala **Etkin** olduğundan ve Kimlik Doğrulama Aracılarının durumunun **Etkin**değil, **Etkin**olmadığından emin olun. Azure Active Directory yönetici merkezindeki **Azure AD Connect** bıtırıntına giderek durumu kontrol [edebilirsiniz.](https://aad.portal.azure.com/)
+Doğrudan kimlik doğrulama özelliğinin kiracınızda hala **etkinleştirildiğinden** ve kimlik doğrulama aracılarının durumunun **etkin** **ve etkin olmadığından emin olun.** [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com/) **Azure AD Connect** dikey penceresine giderek durumu kontrol edebilirsiniz.
 
-![Azure Active Directory yönetici merkezi - Azure AD Connect blade](./media/tshoot-connect-pass-through-authentication/pta7.png)
+![Azure Active Directory Yönetim Merkezi-Azure AD Connect dikey pencere](./media/tshoot-connect-pass-through-authentication/pta7.png)
 
-![Azure Active Directory yönetici merkezi - Geçiş Kimlik Doğrulama bıçağı](./media/tshoot-connect-pass-through-authentication/pta11.png)
+![Azure Active Directory Yönetim Merkezi-geçişli kimlik doğrulama dikey penceresi](./media/tshoot-connect-pass-through-authentication/pta11.png)
 
-### <a name="user-facing-sign-in-error-messages"></a>Kullanıcıya bakan oturum açma hatası iletileri
+### <a name="user-facing-sign-in-error-messages"></a>Kullanıcıya yönelik oturum açma hata iletileri
 
-Kullanıcı Geçiş Kimlik Doğrulaması'nı kullanarak oturum açamıyorsa, Azure AD oturum açma ekranında aşağıdaki kullanıcıya dönük hatalardan birini görebilir: 
+Kullanıcı geçişli kimlik doğrulaması kullanarak oturum açamıyor ise Azure AD oturum açma ekranında aşağıdaki kullanıcıya yönelik hatalardan birini görebilirler: 
 
 |Hata|Açıklama|Çözüm
 | --- | --- | ---
-|AADSTS80001|Etkin Dizine bağlanılamıyor|Aracı sunucularının, parolalarının doğrulanması gereken ve Active Directory'ye bağlanabilen kullanıcılarla aynı AD ormanına üye olduğundan emin olun.  
-|AADSTS8002|Etkin Dizin'e bağlanan bir zaman ası oluştu|Etkin Dizin'in kullanılabilir olduğundan ve aracılardan gelen isteklere yanıt verdiğinden emin olun.
-|AADSTS80004|Aracıya geçen kullanıcı adı geçerli değildi|Kullanıcının doğru kullanıcı adı ile oturum açmaya çalıştığından emin olun.
-|AADSTS80005|Doğrulama öngörülemeyen WebException karşılaştı|Geçici bir hata. İsteği yeniden deneyin. Başarısız olmaya devam ederse, Microsoft desteğine başvurun.
-|AADSTS80007|Active Directory ile iletişim kurma hatası oluştu|Daha fazla bilgi için aracı günlüklerini denetleyin ve Active Directory'nin beklendiği gibi çalıştığını doğrulayın.
+|AADSTS80001|Active Directory ile bağlantı kurulamıyor|Aracı sunucularının, parolalarının doğrulanması gereken kullanıcılarla aynı AD ormanının üyesi olduğundan ve Active Directory bağlanabildiklerinden emin olun.  
+|AADSTS8002|Active Directory bağlantısında bir zaman aşımı oluştu|Active Directory kullanılabilir olduğundan ve aracılardan gelen isteklere yanıt verdiğinden emin olun.
+|AADSTS80004|Aracıya geçirilen Kullanıcı adı geçerli değil|Kullanıcının doğru kullanıcı adıyla oturum açmaya çalıştığından emin olun.
+|AADSTS80005|Doğrulama öngörülemeyen WebException ile karşılaştı|Geçici bir hata. İsteği yeniden deneyin. Başarısız olmaya devam ederse, Microsoft destek 'e başvurun.
+|AADSTS80007|Active Directory ile iletişim kurulurken bir hata oluştu|Daha fazla bilgi için aracı günlüklerine bakın ve Active Directory beklendiği gibi çalıştığını doğrulayın.
 
-### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory yönetici merkezinde oturum açma hatası nedenleri (Premium lisansa ihtiyaç duyar)
+### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory Yönetim merkezinde oturum açma hatası nedenleri (Premium lisans gerekir)
 
-Kiracınızda bununla ilişkili bir Azure AD Premium lisansı varsa, [Azure Etkin Dizin yönetici merkezindeki](https://aad.portal.azure.com/)oturum açma faaliyet [raporuna](../reports-monitoring/concept-sign-ins.md) da bakabilirsiniz.
+Kiracınızda ilişkili bir Azure AD Premium lisansı varsa, [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com/) [oturum açma etkinlik raporuna](../reports-monitoring/concept-sign-ins.md) da bakabilirsiniz.
 
-![Azure Active Directory yönetici merkezi - Oturum açma raporu](./media/tshoot-connect-pass-through-authentication/pta4.png)
+![Azure Active Directory Yönetim Merkezi-oturum açma işlemleri raporu](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-Azure **Active Directory** -> yönetici merkezinde Azure Active [Directory](https://aad.portal.azure.com/) **Oturum** Açma'ya gidin ve belirli bir kullanıcının oturum açma etkinliğini tıklatın. **OTURUM AÇMA HATA KODU** alanına bakın. Aşağıdaki tabloyu kullanarak bu alanın değerini bir hata nedeni ve çözümle eşleştirin:
+[Azure Active Directory Yönetim Merkezi](https://aad.portal.azure.com/) 'nde **Azure Active Directory** -> **oturum açma** bölümüne gidin ve belirli bir kullanıcının oturum açma etkinliğine tıklayın. **Oturum açma hata kodu** alanını bulun. Aşağıdaki tabloyu kullanarak bu alanın değerini bir hata nedeni ve çözümüyle eşleyin:
 
 |Oturum açma hata kodu|Oturum açma hatası nedeni|Çözüm
 | --- | --- | ---
-| 50144 | Kullanıcının Active Directory parolasının süresi doldu. | Şirket içi Active Directory'nizde kullanıcının parolasını sıfırla.
-| 80001 | Kullanılabilir Kimlik Doğrulama Aracısı yok. | Kimlik Doğrulama Aracısı yükleyin ve kaydedin.
-| 80002 | Kimlik Doğrulama Aracısı'nın parola doğrulama isteği zaman aşımına uğradı. | Etkin Dizininize Kimlik Doğrulama Aracısı'ndan erişilip erişilemeyip erişilemeyini kontrol edin.
-| 80003 | Kimlik Doğrulama Aracısı tarafından geçersiz yanıt alındı. | Sorun birden çok kullanıcı arasında sürekli olarak tekrarlanabilirse, Active Directory yapılandırmanızı kontrol edin.
-| 80004 | Oturum açma isteğinde yanlış Kullanıcı Asıl Adı (UPN) kullanıldı. | Kullanıcıdan doğru kullanıcı adı ile oturum açmasını isteyin.
+| 50144 | Kullanıcının Active Directory parolasının süresi doldu. | Şirket içi Active Directory kullanıcının parolasını sıfırlayın.
+| 80001 | Kullanılabilir Kimlik Doğrulama Aracısı yok. | Bir kimlik doğrulama Aracısı yükleyip kaydedin.
+| 80002 | Kimlik Doğrulama Aracısı'nın parola doğrulama isteği zaman aşımına uğradı. | Active Directory kimlik doğrulama aracısından erişilebilir olup olmadığını denetleyin.
+| 80003 | Kimlik Doğrulama Aracısı tarafından geçersiz yanıt alındı. | Sorun birden çok Kullanıcı genelinde sürekli olarak tekrarlanabilir ise Active Directory yapılandırmanızı denetleyin.
+| 80004 | Oturum açma isteğinde yanlış Kullanıcı Asıl Adı (UPN) kullanıldı. | Kullanıcıdan doğru kullanıcı adıyla oturum açmasını isteyin.
 | 80005 | Kimlik Doğrulama Aracısı: Hata oluştu. | Geçici hata. Daha sonra tekrar deneyin.
-| 80007 | Kimlik Doğrulama Aracısı Active Directory'ye bağlanamadı. | Etkin Dizininize Kimlik Doğrulama Aracısı'ndan erişilip erişilemeyip erişilemeyini kontrol edin.
-| 80010 | Kimlik Doğrulama Aracısı parolanın şifresini çözemedi. | Sorun sürekli olarak tekrarlanabilirse, yeni bir Kimlik Doğrulama Aracısı yükleyin ve kaydedin. Ve mevcut olanı kaldırın. 
-| 80011 | Kimlik Doğrulama Aracısı şifre çözme anahtarını alamıyor. | Sorun sürekli olarak tekrarlanabilirse, yeni bir Kimlik Doğrulama Aracısı yükleyin ve kaydedin. Ve mevcut olanı kaldırın.
+| 80007 | Kimlik Doğrulama Aracısı Active Directory'ye bağlanamadı. | Active Directory kimlik doğrulama aracısından erişilebilir olup olmadığını denetleyin.
+| 80010 | Kimlik Doğrulama Aracısı parolanın şifresini çözemedi. | Sorun sürekli olarak tekrarlanabilir ise, yeni bir kimlik doğrulama Aracısı yükleyip kaydedin. Ve geçerli olanı kaldırın. 
+| 80011 | Kimlik Doğrulama Aracısı şifre çözme anahtarını alamıyor. | Sorun sürekli olarak tekrarlanabilir ise, yeni bir kimlik doğrulama Aracısı yükleyip kaydedin. Ve geçerli olanı kaldırın.
 
 >[!IMPORTANT]
->Geçiş Kimlik Doğrulama Aracıları, Kullanıcı adlarını ve parolalarını Active Directory'ye karşı [Win32 LogonUser API'sini](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)arayarak doğrulayarak Azure AD kullanıcılarının kimliğini doğrular. Sonuç olarak, Iş istasyonu oturum açma erişimini sınırlamak için Active Directory'deki "Logon To" ayarını ayarladıysanız, Geçiş Kimlik Doğrulama Aracılarını barındıran sunucuları "Oturum Açma" sunucuları listesine de eklemeniz gerekir. Bunu yapmamak, kullanıcılarınızın Azure AD'de oturum açmalarını engeller.
+>Doğrudan kimlik doğrulama aracıları, [Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)'sini çağırarak kullanıcı adlarını ve parolalarını Active Directory karşı DOĞRULAYARAK Azure AD kullanıcılarının kimliğini doğrular. Sonuç olarak, iş istasyonu oturum erişimini sınırlandırmak için Active Directory ' de "oturum aç" ayarını ayarladıysanız, doğrudan kimlik doğrulama aracılarını barındıran sunucuları da "oturum açma" sunucuları listesine eklemeniz gerekir. Bunun başarısız olması, kullanıcılarınızın Azure AD 'de oturum açmasını engeller.
 
-## <a name="authentication-agent-installation-issues"></a>Kimlik Doğrulama Aracısı yükleme sorunları
-
-### <a name="an-unexpected-error-occurred"></a>Beklenmeyen bir hata oluştu
-
-[Sunucudan aracı günlüklerini toplayın](#collecting-pass-through-authentication-agent-logs) ve sorununuzun microsoft desteğine başvurun.
-
-## <a name="authentication-agent-registration-issues"></a>Kimlik Doğrulama Aracısı kayıt sorunları
-
-### <a name="registration-of-the-authentication-agent-failed-due-to-blocked-ports"></a>Kimlik Doğrulama Aracısının kaydı engellenen bağlantı noktaları nedeniyle başarısız oldu
-
-Kimlik Doğrulama Aracısı'nın yüklü olduğu sunucunun [burada](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)listelenen hizmet URL'lerimiz ve bağlantı noktalarımızla iletişim kurabileceğinden emin olun.
-
-### <a name="registration-of-the-authentication-agent-failed-due-to-token-or-account-authorization-errors"></a>Kimlik Doğrulama Aracısının kaydı belirteç veya hesap yetkilendirme hataları nedeniyle başarısız oldu
-
-Tüm Azure AD Connect veya bağımsız Kimlik Doğrulama Aracısı yükleme ve kayıt işlemleri için yalnızca buluta özel bir Global Administrator hesabı kullandığınızdan emin olun. MFA etkin Global Administrator hesaplarında bilinen bir sorun vardır; Geçici olarak MFA'yı geçici olarak kapatın (yalnızca işlemleri tamamlamak için).
+## <a name="authentication-agent-installation-issues"></a>Kimlik doğrulama Aracısı yükleme sorunları
 
 ### <a name="an-unexpected-error-occurred"></a>Beklenmeyen bir hata oluştu
 
-[Sunucudan aracı günlüklerini toplayın](#collecting-pass-through-authentication-agent-logs) ve sorununuzun microsoft desteğine başvurun.
+Sunucudan [Aracı günlüklerini toplayın](#collecting-pass-through-authentication-agent-logs) ve sorununuzla Microsoft desteği başvurun.
 
-## <a name="authentication-agent-uninstallation-issues"></a>Kimlik Doğrulama Aracısı yükleme sorunlarını kaldırma
+## <a name="authentication-agent-registration-issues"></a>Kimlik doğrulama Aracısı kayıt sorunları
 
-### <a name="warning-message-when-uninstalling-azure-ad-connect"></a>Azure AD Connect'i yüklerken uyarı iletisi
+### <a name="registration-of-the-authentication-agent-failed-due-to-blocked-ports"></a>Engellenen bağlantı noktaları nedeniyle kimlik doğrulama aracısının kaydı başarısız oldu
 
-Kiracınızda Geçiş Kimlik Doğrulaması etkinleştirilmişse ve Azure AD Connect'i kaldırmaya çalışıyorsanız, bu size şu uyarı iletisini gösterir: "Kullanıcılar, başka Geçiş Kimlik Doğrulama aracınız yoksa Azure AD'de oturum açamayacaktır diğer sunucular."
+Kimlik doğrulama aracısının yüklü olduğu sunucunun hizmet URL 'lerimiz ve [burada](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)listelenen bağlantı noktalarıyla iletişim kurabildiğinden emin olun.
 
-Kullanıcı oturum açmayı önlemek için Azure AD Connect'i kaldırmadan önce kurulumuuzun yüksek oranda [kullanılabilir](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) olduğundan emin olun.
+### <a name="registration-of-the-authentication-agent-failed-due-to-token-or-account-authorization-errors"></a>Kimlik doğrulama aracısının kaydı, belirteç veya hesap yetkilendirme hataları nedeniyle başarısız oldu
 
-## <a name="issues-with-enabling-the-feature"></a>Özelliği etkinleştirme yle ilgili sorunlar
+Tüm Azure AD Connect veya tek başına kimlik doğrulama Aracısı yüklemesi ve kayıt işlemleri için yalnızca bulutta yer alan bir genel yönetici hesabı kullandığınızdan emin olun. MFA özellikli genel yönetici hesaplarında bilinen bir sorun var; geçici çözüm olarak MFA 'yı geçici olarak devre dışı bırakın (yalnızca işlemleri gerçekleştirmek için).
 
-### <a name="enabling-the-feature-failed-because-there-were-no-authentication-agents-available"></a>Kullanılabilir Kimlik Doğrulama Aracısı olmadığından özelliği etkinleştirme
+### <a name="an-unexpected-error-occurred"></a>Beklenmeyen bir hata oluştu
 
-Kiracınızda Geçiş Kimlik Doğrulaması'nı etkinleştirmek için en az bir etkin Kimlik Doğrulama Aracısı'na sahip olmanız gerekir. Azure AD Connect'i veya bağımsız bir Kimlik Doğrulama Aracısı'nı yükleyerek bir Kimlik Doğrulama Aracısı yükleyebilirsiniz.
+Sunucudan [Aracı günlüklerini toplayın](#collecting-pass-through-authentication-agent-logs) ve sorununuzla Microsoft desteği başvurun.
 
-### <a name="enabling-the-feature-failed-due-to-blocked-ports"></a>Engellenen bağlantı noktaları nedeniyle özelliği etkinleştirme
+## <a name="authentication-agent-uninstallation-issues"></a>Kimlik doğrulama Aracısı kaldırma sorunları
 
-Azure AD Connect'in yüklü olduğu sunucunun [burada](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)listelenen hizmet URL'lerimiz ve bağlantı noktalarımızla iletişim kurabileceğinden emin olun.
+### <a name="warning-message-when-uninstalling-azure-ad-connect"></a>Azure AD Connect kaldırılırken uyarı iletisi
 
-### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>Belirteç veya hesap yetkilendirme hataları nedeniyle başarısız olan özelliği etkinleştirme
+Kiracınızda geçiş kimlik doğrulaması etkinse ve Azure AD Connect kaldırmayı denerseniz, şu uyarı iletisini gösterir: "diğer sunucularda başka bir geçiş kimlik doğrulama Aracısı yüklü değilse, kullanıcılar Azure AD 'de oturum açamaz."
 
-Özelliği etkinleştirirken yalnızca buluta özel Global Administrator hesabı kullandığınızdan emin olun. Çok faktörlü kimlik doğrulama (MFA) etkin leştirilmiş Global Administrator hesapları ile bilinen bir sorun vardır; Geçici olarak MFA'yı geçici olarak kapatın (yalnızca işlemi tamamlamak için).
+Kullanıcı oturumu kesmemek için Azure AD Connect kaldırmadan önce, kurulum uygulamanızın [yüksek oranda kullanılabilir](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) olduğundan emin olun.
 
-## <a name="collecting-pass-through-authentication-agent-logs"></a>Geçiş Kimlik Doğrulama Aracısı günlüklerini toplama
+## <a name="issues-with-enabling-the-feature"></a>Özelliği etkinleştirme ile ilgili sorunlar
 
-Sahip olabileceğiniz sorunun türüne bağlı olarak, Geçiş Kimlik Doğrulama Aracısı günlükleri için farklı yerlerde bakmanız gerekir.
+### <a name="enabling-the-feature-failed-because-there-were-no-authentication-agents-available"></a>Kullanılabilir kimlik doğrulama Aracısı olmadığından özelliğin etkinleştirilmesi başarısız oldu
+
+Kiracınızda doğrudan kimlik doğrulamayı etkinleştirmek için en az bir etkin kimlik doğrulama aracısına sahip olmanız gerekir. Azure AD Connect veya bağımsız bir kimlik doğrulama Aracısı yükleyerek bir kimlik doğrulama aracısı yükleyebilirsiniz.
+
+### <a name="enabling-the-feature-failed-due-to-blocked-ports"></a>Engellenen bağlantı noktaları nedeniyle özelliğin etkinleştirilmesi başarısız oldu
+
+Azure AD Connect yüklü olduğu sunucunun hizmet URL 'lerimiz ve [burada](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)listelenen bağlantı noktalarıyla iletişim kurabildiğinden emin olun.
+
+### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>Belirteç veya hesap yetkilendirme hataları nedeniyle özelliğin etkinleştirilmesi başarısız oldu
+
+Özelliği etkinleştirirken yalnızca bulutta yer alan bir genel yönetici hesabı kullandığınızdan emin olun. Multi-Factor Authentication (MFA) özellikli genel yönetici hesaplarında bilinen bir sorun vardır; geçici çözüm olarak MFA 'yı geçici olarak devre dışı bırakın (yalnızca işlemi gerçekleştirmek için).
+
+## <a name="collecting-pass-through-authentication-agent-logs"></a>Doğrudan kimlik doğrulama Aracısı günlüklerini toplama
+
+Sahip olduğunuz sorunun türüne bağlı olarak, geçişli kimlik doğrulama Aracısı günlükleri için farklı yerlere bakmanız gerekir.
 
 ### <a name="azure-ad-connect-logs"></a>Azure AD Connect günlükleri
 
-Yüklemeyle ilgili hatalar için Azure AD Connect günlüklerini **%ProgramData%\AADConnect\trace-\*.log adresinden kontrol edin.**
+Yüklemeyle ilgili hatalar için **%ProgramData%\aadconnect\trace-\*. log**konumundaki Azure AD Connect günlüklerine bakın.
 
-### <a name="authentication-agent-event-logs"></a>Kimlik Doğrulama Aracısı olay günlükleri
+### <a name="authentication-agent-event-logs"></a>Kimlik doğrulama Aracısı olay günlükleri
 
-Kimlik Doğrulama Aracısı ile ilgili hatalar için, sunucuda Olay Görüntüleyici uygulamasını açın ve **Uygulama ve Hizmet Günlükleri\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**altında kontrol edin.
+Kimlik doğrulama aracısıyla ilgili hatalar için, sunucuda Olay Görüntüleyicisi uygulamasını açın ve **uygulama ve hizmet Logs\microsoft\azureadconnect\authenticationt\0\ yönetici**' nin altına bakın.
 
-Ayrıntılı analizler için "Oturum" günlüğünü etkinleştirin (bu seçeneği bulmak için Olay Görüntüleyicisi uygulamasının içine sağ tıklayın). Normal işlemler sırasında bu günlük etkinken Kimlik Doğrulama Aracısını çalıştırmayın; yalnızca sorun giderme için kullanın. Günlük içeriği yalnızca günlük yeniden devre dışı bırakıldıktan sonra görünür.
+Ayrıntılı analiz için, "oturum" günlüğünü etkinleştirin (Bu seçeneği bulmak için Olay Görüntüleyicisi uygulamasının içine sağ tıklayın). Kimlik Doğrulama aracısını normal işlemler sırasında bu günlük etkin olarak çalıştırmayın; yalnızca sorun giderme için kullanın. Günlük içeriği yalnızca günlük yeniden devre dışı bırakıldıktan sonra görünür.
 
 ### <a name="detailed-trace-logs"></a>Ayrıntılı izleme günlükleri
 
-Kullanıcı oturum açma hatalarını gidermek için **%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\\**adresinde izleme günlüklerini arayın. Bu günlükler, geçiş kimlik doğrulama özelliğini kullanarak belirli bir kullanıcı oturum açmanın başarısız olmasının nedenlerini içerir. Bu hatalar, önceki oturum açma hatası nedenleri tablosunda gösterilen oturum açma hatası nedenleriyle de eşlenir. Aşağıda örnek bir günlük girişi verilmiştir:
+Kullanıcı oturum açma hatalarıyla ilgili sorunları gidermek için **%ProgramData%\microsoft\azure AD Connect Authentication\\**me \ izleme konumundaki izleme günlüklerini arayın. Bu Günlükler, belirli bir Kullanıcı oturum açma özelliğinin doğrudan kimlik doğrulama özelliğini kullanarak başarısız olma nedenlerini içerir. Bu hatalar, yukarıdaki oturum açma hatası nedenleri tablosunda gösterilen oturum açma hatası nedenlerinden de eşleştirilir. Aşağıda örnek bir günlük girişi verilmiştir:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
@@ -141,15 +141,15 @@ Kullanıcı oturum açma hatalarını gidermek için **%ProgramData%\Microsoft\A
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
 
-Komut istemini açarak ve aşağıdaki komutu çalıştırarak hatanın açıklayıcı ayrıntılarını ('1328' önceki örnekte) alabilirsiniz (Not: Günlüklerinizde gördüğünüz gerçek hata numarasıyla '1328'i değiştirin):
+Komut istemi 'ni açıp aşağıdaki komutu çalıştırarak (Yukarıdaki örnekte ' 1328 ') hatanın açıklayıcı ayrıntılarını alabilirsiniz (Note: ' 1328 ' ifadesini günlüklerinizi gördüğünüz gerçek hata numarasıyla değiştirin):
 
 `Net helpmsg 1328`
 
 ![Doğrudan Kimlik Doğrulama](./media/tshoot-connect-pass-through-authentication/pta3.png)
 
-### <a name="domain-controller-logs"></a>Etki Alanı Denetleyicigünlükleri
+### <a name="domain-controller-logs"></a>Etki alanı denetleyicisi günlükleri
 
-Denetim günlüğü etkinse, Etki Alanı Denetleyicilerinizin güvenlik günlüklerinde ek bilgiler bulunabilir. Geçiş Kimlik Doğrulama Aracıları tarafından gönderilen oturum açma isteklerini sorgulamanın basit bir yolu aşağıdaki gibidir:
+Denetim günlüğü etkinse, etki alanı denetleyicilerinizin güvenlik günlüklerinde ek bilgiler bulunabilir. Doğrudan kimlik doğrulama aracıları tarafından gönderilen oturum açma isteklerini sorgulamak için basit bir yol aşağıdaki gibidir:
 
 ```
     <QueryList>
@@ -159,11 +159,11 @@ Denetim günlüğü etkinse, Etki Alanı Denetleyicilerinizin güvenlik günlük
     </QueryList>
 ```
 
-## <a name="performance-monitor-counters"></a>Performans Monitörü sayaçları
+## <a name="performance-monitor-counters"></a>Performans Izleyicisi sayaçları
 
-Kimlik Doğrulama Aracılarını izlemenin başka bir yolu da, Kimlik Doğrulama Aracısı'nın yüklü olduğu her sunucudaki belirli Performans İzleyici sayaçlarını izlemektir. Aşağıdaki Genel sayaçları **(# PTA kimlik doğrulamaları,** **başarısız kimlik doğrulamaları #PTA** ve başarısız kimlik **doğrulamaları #PTA)** ve Hata sayaçlarını **(# PTA kimlik doğrulama hataları)** kullanın:
+Kimlik doğrulama aracılarını izlemenin bir diğer yolu da, kimlik doğrulama aracısının yüklendiği her bir sunucuda belirli performans Izleyicisi sayaçlarını izlemedir. Aşağıdaki genel sayaçları (**# PTA kimlik doğrulamaları**, **#PTA başarısız kimlik** doğrulamaları ve **#PTA başarılı kimlik doğrulamaları**) ve hata sayaçlarını (**# PTA kimlik doğrulama hataları**) kullanın:
 
-![Geçiş Kimlik Doğrulama Performans Monitörü sayaçları](./media/tshoot-connect-pass-through-authentication/pta12.png)
+![Geçişli kimlik doğrulaması performans Izleyicisi sayaçları](./media/tshoot-connect-pass-through-authentication/pta12.png)
 
 >[!IMPORTANT]
->Geçiş Kimlik Doğrulaması, yük _dengelemesi değil,_ birden çok Kimlik Doğrulama Aracısı kullanarak yüksek kullanılabilirlik sağlar. Yapılandırmanıza bağlı _olarak,_ tüm Kimlik Doğrulama Aracılarınız kabaca _eşit_ sayıda istek almaz. Belirli bir Kimlik Doğrulama Aracısı hiç trafik alıyor olabilir.
+>Geçişli kimlik doğrulaması, yük dengelemesi _değil_ birden fazla kimlik doğrulama Aracısı kullanarak yüksek kullanılabilirlik sağlar. Yapılandırmanıza bağlı olarak, tüm kimlik doğrulama aracılarınız kabaca _eşit_ sayıda _istek almaz._ Belirli bir kimlik doğrulama aracısının hiçbir trafik alabilmesi mümkündür.

@@ -1,6 +1,6 @@
 ---
-title: .NET kullanarak Media Encoder Standardı ile bir varlığı kodlayın | Microsoft Dokümanlar
-description: Bu makalede, Media Encoder Standard kullanarak bir varlığı kodlamak için .NET'in nasıl kullanılacağı gösterilmektedir.
+title: .NET kullanarak Media Encoder Standard bir varlık kodlayın | Microsoft Docs
+description: Bu makalede, Media Encoder Standard kullanarak bir varlığı kodlamak için .NET kullanımı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -16,57 +16,57 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 259e32d55f25c4a146b7ff358eb503763dd5fab2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "69016580"
 ---
-# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>.NET'i kullanarak Media Encoder Standard ile bir varlığı kodlama  
+# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>.NET kullanarak Media Encoder Standard bir varlık kodla  
 
-Kodlama işleri, Medya Hizmetleri'nde en yaygın işleme işlemlerinden biridir. Medya dosyalarını bir kodlamadan diğerine dönüştürmek için kodlama işleri oluşturursunuz. Kodladiğinizde, yerleşik Medya Encoder'ını kullanabilirsiniz. Medya Hizmetleri ortağı tarafından sağlanan bir kodlayıcıyı da kullanabilirsiniz; üçüncü taraf kodlayıcılar Azure Marketi'nden edinilebilir. 
+Kodlama işleri, Media Services en yaygın işlem işlemlerinden biridir. Bir kodlamadan diğerine medya dosyalarını dönüştürmek için kodlama işleri oluşturursunuz. Kodlarken, yerleşik Medya Kodlayıcısı Media Services kullanabilirsiniz. Bir Media Services iş ortağı tarafından sunulan bir kodlayıcı de kullanabilirsiniz; üçüncü taraf kodlayıcılar Azure Marketi aracılığıyla kullanılabilir. 
 
-Bu makalede, .NET'in varlıklarınızı Media Encoder Standard (MES) ile kodlamak için nasıl kullanılacağı gösterilmektedir. Media Encoder [Standard, burada](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)açıklanan kodlayıcı presetlerinden biri kullanılarak yapılandırılır.
+Bu makalede, varlıklarınızı Media Encoder Standard (MES) ile kodlamak için .NET kullanımı gösterilmektedir. Media Encoder Standard, [burada](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)açıklanan kodlayıcılar önayarlarından biri kullanılarak yapılandırılır.
 
-Kaynak dosyalarınızı her zaman uyarlanabilir bir bitrate MP4 setine kodlamanız ve ardından [Dinamik Ambalaj'ı](media-services-dynamic-packaging-overview.md)kullanarak seti istenilen biçime dönüştürmeniz önerilir. 
+Kaynak dosyalarınızı her zaman Uyarlamalı bit hızı bir MP4 kümesine kodlamak ve sonra [dinamik paketleme](media-services-dynamic-packaging-overview.md)kullanarak kümeyi istenen biçime dönüştürmeniz önerilir. 
 
-Çıktı varlığınız depolama şifreliyse, varlık teslim ilkesini yapılandırmanız gerekir. Daha fazla bilgi için [bkz.](media-services-dotnet-configure-asset-delivery-policy.md)
+Çıkış varlığınız depolama şifreli ise, varlık teslim ilkesini yapılandırmanız gerekir. Daha fazla bilgi için bkz. [varlık teslim Ilkesini yapılandırma](media-services-dotnet-configure-asset-delivery-policy.md).
 
 > [!NOTE]
-> MES, giriş dosyası adının ilk 32 karakterini içeren bir ad içeren bir çıktı dosyası üretir. Ad, önceden ayarlanmış dosyada belirtilene dayanır. Örneğin, "FileName": "{Basename}_{Index}{Extension}". {Basename} giriş dosyası adının ilk 32 karakteriyle değiştirilir.
+> MES, giriş dosyası adının ilk 32 karakterini içeren bir çıkış dosyası oluşturur. Ad, önceden ayarlanan dosyada belirtime göre belirlenir. Örneğin, "FileName": "{baseName} _ {Index} {Extension}". {BaseName}, giriş dosyası adının ilk 32 karakteriyle değiştirilmiştir.
 > 
 > 
 
-### <a name="mes-formats"></a>MES Biçimleri
-[Biçimler ve codec'ler](media-services-media-encoder-standard-formats.md)
+### <a name="mes-formats"></a>MES biçimleri
+[Biçimler ve codec bileşenleri](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>MES Ön ayarları
-Media Encoder [Standard, burada](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)açıklanan kodlayıcı presetlerinden biri kullanılarak yapılandırılır.
+Media Encoder Standard, [burada](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)açıklanan kodlayıcılar önayarlarından biri kullanılarak yapılandırılır.
 
-### <a name="input-and-output-metadata"></a>Giriş ve çıktı meta verileri
-MES kullanarak bir giriş kıymetini (veya varlıkları) kodlarken, bu kodlama görevinin başarıyla tamamlanmasından sonra bir çıktı kıymeti elde edersiniz. Çıktı varlığı, kullandığınız kodlama ön ayarını temel alan video, ses, küçük resimler, manifesto vb. içerir.
+### <a name="input-and-output-metadata"></a>Giriş ve çıkış meta verileri
+MES kullanarak bir giriş varlığını (veya varlıkları) kodlarken, bu kodlama görevinin başarıyla tamamlanmasında bir çıkış varlığı alırsınız. Çıktı varlığı, kullandığınız kodlama ön ayarını temel alarak video, ses, küçük resim, bildirim vb. içerir.
 
-Çıktı varlığı, giriş kıymeti hakkında meta verileri içeren bir dosya da içerir. Meta data XML dosyasının adı aşağıdaki biçime sahiptir: <asset_id>_metadata.xml (örneğin, 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml), <asset_id> giriş varlığının AssetId değeridir. Bu giriş meta veri XML şema [burada](media-services-input-metadata-schema.md)açıklanmıştır.
+Çıktı varlığı, giriş varlığı hakkında meta veriler içeren bir dosya da içerir. Meta veri XML dosyasının adı şu biçimdedir: <asset_id>_metadata. xml (örneğin, 41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata. xml); burada <Asset_id>, giriş varlığının AssetId değeridir. Bu giriş meta veri XML şeması [burada](media-services-input-metadata-schema.md)açıklanmıştır.
 
-Çıktı varlığı, çıktı varlığı yla ilgili meta verileri içeren bir dosya da içerir. Meta data XML dosyasının adı aşağıdaki biçimi vardır: <source_file_name>_manifest.xml (örneğin, BigBuckBunny_manifest.xml). Bu çıktı meta veri XML şema [burada](media-services-output-metadata-schema.md)açıklanmıştır.
+Çıktı varlığı Ayrıca çıkış varlığı hakkında meta veriler içeren bir dosya içerir. Meta veri XML dosyasının adı şu biçimdedir: <source_file_name>_manifest. xml (örneğin, BigBuckBunny_manifest. xml). Bu çıktı meta veri XML şeması [burada](media-services-output-metadata-schema.md)açıklanmıştır.
 
-İki meta veri dosyasından birini incelemek istiyorsanız, bir SAS bulucu oluşturup dosyayı yerel bilgisayarınıza indirebilirsiniz. Medya Hizmetleri .NET SDK Uzantılarını Kullanarak Bir SAS bulucu su nasıl oluşturulup dosyayı indirebileceğinize ilişkin bir örnek bulabilirsiniz.
+İki meta veri dosyasından birini incelemek istiyorsanız SAS Konumlandırıcı oluşturabilir ve dosyayı yerel bilgisayarınıza indirebilirsiniz. SAS Konumlandırıcı oluşturma ve Media Services .NET SDK uzantılarını kullanarak bir dosyayı indirme hakkında bir örnek bulabilirsiniz.
 
 ## <a name="download-sample"></a>Örnek indirme
-[Buradan](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)MES ile nasıl kodlanabileceğinizi gösteren bir örnek alıp çalıştırabilirsiniz.
+[Buradan](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)nasıl kodlayacağınızı gösteren bir örnek alabilir ve çalıştırabilirsiniz.
 
 ## <a name="net-sample-code"></a>.NET örnek kodu
 
-Aşağıdaki kod örneği, aşağıdaki görevleri gerçekleştirmek için Medya Hizmetleri .NET SDK'yı kullanır:
+Aşağıdaki kod örneği aşağıdaki görevleri gerçekleştirmek için Media Services .NET SDK kullanır:
 
-* Kodlama işi oluşturun.
-* Media Encoder Standart kodlayıcısına başvurun.
-* [Uyarlanabilir Akış](media-services-autogen-bitrate-ladder-with-mes.md) ön ayarını kullanmayı belirtin. 
+* Bir kodlama işi oluşturun.
+* Media Encoder Standard Kodlayıcısı için bir başvuru alın.
+* [Uyarlamalı akış](media-services-autogen-bitrate-ladder-with-mes.md) önceden ayarının kullanılacağını belirtin. 
 * İşe tek bir kodlama görevi ekleyin. 
-* Kodlanacak giriş kıymetini belirtin.
-* Kodlanmış kıymeti içeren bir çıktı kıymeti oluşturun.
-* İş ilerlemesini denetlemek için bir olay işleyicisi ekleyin.
-* İşi gönderin.
+* Kodlanacak giriş varlığını belirtin.
+* Kodlanmış varlığı içeren bir çıkış varlığı oluşturun.
+* İşin ilerlemesini denetlemek için bir olay işleyicisi ekleyin.
+* İşi gönder.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio projesi oluşturup yapılandırma
 
@@ -196,12 +196,12 @@ namespace MediaEncoderStandardSample
 }
 ```
 
-## <a name="advanced-encoding-features-to-explore"></a>Keşfedilecek Gelişmiş Kodlama Özellikleri
-* [Küçük resimler nasıl üretilir?](media-services-dotnet-generate-thumbnail-with-mes.md)
-* [Kodlama sırasında küçük resim oluşturma](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
-* [Kodlama sırasında videoları kırpma](media-services-crop-video.md)
+## <a name="advanced-encoding-features-to-explore"></a>Araştırılacak gelişmiş kodlama özellikleri
+* [Küçük resim oluşturma](media-services-dotnet-generate-thumbnail-with-mes.md)
+* [Kodlama sırasında küçük resimler oluşturma](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
+* [Kodlama sırasında videoları kırpın](media-services-crop-video.md)
 * [Kodlama ön ayarlarını özelleştirme](media-services-custom-mes-presets-with-dotnet.md)
-* [Görüntüyü içeren bir videoyu yerle bir veya filigranla kaplama](media-services-advanced-encoding-with-mes.md#overlay)
+* [Görüntü ile video paylaşma veya filigran](media-services-advanced-encoding-with-mes.md#overlay)
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -210,6 +210,6 @@ namespace MediaEncoderStandardSample
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[.NET](media-services-dotnet-generate-thumbnail-with-mes.md)
-[Media Services Kodlama Genel Bakış](media-services-encode-asset.md) ile Media Encoder Standard kullanarak küçük resim oluşturma
+[.Net](media-services-dotnet-generate-thumbnail-with-mes.md)
+[Media Services kodlamaya genel bakış](media-services-encode-asset.md) ile Media Encoder Standard kullanarak küçük resim oluşturma
 

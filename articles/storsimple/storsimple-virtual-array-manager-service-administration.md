@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure StorSimple Manager Sanal Dizi yönetimi | Microsoft Dokümanlar
-description: Azure portalındaki StorSimple Aygıt Yöneticisi hizmetini kullanarak StorSimple şirket içi Sanal Dizinizi nasıl yöneteceklerinizi öğrenin.
+title: Microsoft Azure StorSimple Manager Sanal dizi yönetimi | Microsoft Docs
+description: Azure portal StorSimple Aygıt Yöneticisi hizmetini kullanarak StorSimple şirket içi sanal dizinizi yönetmeyi öğrenin.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,67 +15,67 @@ ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: bb6bb491ca71e5ced5aecc8137e9e1cbd950e80b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "62123814"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>StorSimple Sanal Dizinizi yönetmek için StorSimple Device Manager hizmetini kullanın
-![kurulum işlemi akışı](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
+# <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>StorSimple Sanal dizinizi yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
+![işlem akışını ayarla](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
 
 ## <a name="overview"></a>Genel Bakış
-Bu makalede, storSimple Device Manager hizmet arabirimine nasıl bağlanılacak ve çeşitli seçenekler de dahil olmak üzere açıklanır ve bu kullanıcı arabirimi aracılığıyla gerçekleştirilebilecek belirli iş akışlarına bağlantılar sağlar.
+Bu makalede, bağlantı kurmak ve kullanılabilir çeşitli seçenekler dahil olmak üzere StorSimple Aygıt Yöneticisi hizmet arabirimi açıklanmakta ve bu kullanıcı arabirimi aracılığıyla gerçekleştirilebilecek belirli iş akışlarının bağlantıları sağlanmaktadır.
 
-Bu makaleyi okuduktan sonra, nasıl yapılacağını bilecek:
+Bu makaleyi okuduktan sonra şunları yapabilirsiniz:
 
-* StorSimple Device Manager hizmetine bağlanın
-* StorSimple Aygıt Yöneticisi Kullanıcı UI'da gezinme
-* StorSimple Device Manager hizmeti aracılığıyla StorSimple Virtual Array'inizi yönetin
+* StorSimple Aygıt Yöneticisi hizmetine bağlanma
+* StorSimple Aygıt Yöneticisi Kullanıcı arabiriminde gezin
+* StorSimple Sanal dizinizi StorSimple Aygıt Yöneticisi hizmeti aracılığıyla yönetin
 
 > [!NOTE]
-> StorSimple 8000 serisi cihaz için kullanılabilir yönetim seçeneklerini görüntülemek için [StorSimple cihazınızı yönetmek için StorSimple Manager hizmetini kullanın.](storsimple-manager-service-administration.md)
+> StorSimple 8000 serisi cihaz için kullanılabilen yönetim seçeneklerini görüntülemek için, StorSimple [cihazınızı yönetmek Için StorSimple Yöneticisi hizmetini kullanma](storsimple-manager-service-administration.md)bölümüne gidin.
 > 
 > 
 
-## <a name="connect-to-the-storsimple-device-manager-service"></a>StorSimple Device Manager hizmetine bağlanın
-StorSimple Aygıt Yöneticisi hizmeti Microsoft Azure'da çalışır ve birden çok StorSimple Sanal Diziye bağlanır. Bu aygıtları yönetmek için tarayıcıda çalışan merkezi bir Microsoft Azure portalı kullanırsınız. StorSimple Device Manager hizmetine bağlanmak için aşağıdakileri yapın.
+## <a name="connect-to-the-storsimple-device-manager-service"></a>StorSimple Aygıt Yöneticisi hizmetine bağlanma
+StorSimple Aygıt Yöneticisi hizmeti Microsoft Azure ' de çalışır ve birden çok StorSimple Sanal dizilerine bağlanır. Bu cihazları yönetmek için tarayıcıda çalışan Merkezi Microsoft Azure portal kullanırsınız. StorSimple Aygıt Yöneticisi hizmetine bağlanmak için aşağıdakileri yapın.
 
 #### <a name="to-connect-to-the-service"></a>Hizmete bağlanmak için
-1. [https://ms.portal.azure.com](https://ms.portal.azure.com)Git.
-2. Microsoft hesap kimlik bilgilerinizi kullanarak, Microsoft Azure portalında oturum açın (bölmenin sağ üst kısmında bulunan).
-3. Belirli bir abonelikteki tüm cihaz yöneticilerinizi görüntülemek için StorSimple Device Managers'da Gözat (> 'Filtre' olarak gidin.
+1. Adresine gidin [https://ms.portal.azure.com](https://ms.portal.azure.com).
+2. Microsoft hesabı kimlik bilgilerinizi kullanarak Microsoft Azure portal oturum açın (bölmenin sağ üst kısmında bulunur).
+3. Belirli bir abonelikteki tüm cihaz yöneticlerinizi görüntülemek için StorSimple cihaz yöneticilerinde ' filtre ' > ' Filter ' bölümüne gidin.
 
-## <a name="use-the-storsimple-device-manager-service-to-perform-management-tasks"></a>Yönetim görevlerini gerçekleştirmek için StorSimple Device Manager hizmetini kullanın
-Aşağıdaki tablo, StorSimple Device Manager hizmet özeti bıçak içinde gerçekleştirilebilecek tüm ortak yönetim görevlerinin ve karmaşık iş akışlarının bir özetini gösterir. Bu görevler, başlatıldıkları bıçaklara göre düzenlenir.
+## <a name="use-the-storsimple-device-manager-service-to-perform-management-tasks"></a>Yönetim görevlerini gerçekleştirmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
+Aşağıdaki tabloda, StorSimple Aygıt Yöneticisi hizmeti Özeti dikey penceresinde gerçekleştirilebilecek tüm ortak yönetim görevlerinin ve karmaşık iş akışlarının özeti gösterilmektedir. Bu görevler, başlatıldığı dikey pencerelere göre düzenlenmiştir.
 
-Her iş akışı hakkında daha fazla bilgi için tablodaki uygun yordamı tıklatın.
+Her iş akışı hakkında daha fazla bilgi için, tabloda ilgili yordama tıklayın.
 
-#### <a name="storsimple-device-manager-workflows"></a>StorSimple Device Manager iş akışları
-| Bunu yapmak istiyorsanız ... | Bu yordamı kullanın |
+#### <a name="storsimple-device-manager-workflows"></a>StorSimple Aygıt Yöneticisi iş akışları
+| Bunu yapmak istiyorsanız... | Bu yordamı kullanın |
 | --- | --- |
-| Hizmet oluşturma</br>Bir hizmeti silme</br>Hizmet kayıt anahtarı alma</br>Hizmet kayıt anahtarını yeniden oluşturma |[StorSimple Device Manager hizmetini dağıtın](storsimple-virtual-array-manage-service.md) |
-| Etkinlik günlüklerini görüntüleme |[StorSimple hizmet özetini kullanma](storsimple-virtual-array-service-summary.md) |
-| Sanal Diziyi Devre Dışı Bırakma</br>Sanal Dizi silme |[Sanal bir diziyi devre dışı bırakma veya silme](storsimple-virtual-array-deactivate-and-delete-device.md) |
-| Olağanüstü durum kurtarma ve cihaz arıza</br>Failover ön koşullar</br>İş sürekliliği felaket kurtarma (BCDR)</br>Olağanüstü durum kurtarma sırasında hatalar |[StorSimple Virtual Array'iniz için olağanüstü durum kurtarma ve cihaz arızası](storsimple-virtual-array-failover-dr.md) |
-| Paylaşımları ve hacimleri yedekleme</br>Manuel yedekleme alın</br>Yedekleme zamanlamasını değiştirme</br>Varolan yedeklemeleri görüntüleme |[StorSimple Sanal Dizinizi yedekle](storsimple-virtual-array-backup.md) |
-| Yedekleme kümesinde kopya paylaşımları</br>Yedekleme kümesinden kopya birimleri</br>Öğe düzeyinde kurtarma (yalnızca dosya sunucusu) |[StorSimple Virtual Array'inizin bir yedeğinden klonlama](storsimple-virtual-array-clone.md) |
-| Depolama hesapları hakkında</br>Depolama hesabı ekleme</br>Depolama hesabını edin</br>Bir depolama hesabını silme |[StorSimple Virtual Array için depolama hesaplarını yönetme](storsimple-virtual-array-manage-storage-accounts.md) |
-| Erişim denetimi kayıtları hakkında</br>Erişim denetimi kaydı ekleme veya değiştirme </br>Erişim denetimi kaydını silme |[StorSimple Virtual Array için erişim kontrol kayıtlarını yönetme](storsimple-virtual-array-manage-acrs.md) |
-| İş ayrıntılarını görüntüleme |[StorSimple Virtual Array işlerini yönetme](storsimple-virtual-array-manage-jobs.md) |
-| Uyarı ayarlarını yapılandırma</br>Uyarı bildirimleri alma</br>Uyarıları yönetme</br>Uyarıları gözden geçirin |[StorSimple Virtual Array için uyarıları görüntüleme ve yönetme](storsimple-virtual-array-manage-alerts.md) |
-| Aygıt yöneticisi parolasını değiştirme |[StorSimple Virtual Array aygıt yöneticisi parolasını değiştirme](storsimple-virtual-array-change-device-admin-password.md) |
-| Yazılım güncelleştirmelerini yükleme |[Sanal Dizinizi Güncelleyin](storsimple-virtual-array-install-update.md) |
+| Hizmet oluşturma</br>Hizmet silme</br>Hizmet kayıt anahtarı alma</br>Hizmet kayıt anahtarını yeniden üret |[StorSimple Aygıt Yöneticisi hizmetini dağıtma](storsimple-virtual-array-manage-service.md) |
+| Etkinlik günlüklerini görüntüleme |[StorSimple hizmet özetini kullanın](storsimple-virtual-array-service-summary.md) |
+| Sanal diziyi devre dışı bırak</br>Sanal diziyi silme |[Sanal diziyi devre dışı bırakma veya silme](storsimple-virtual-array-deactivate-and-delete-device.md) |
+| Olağanüstü durum kurtarma ve cihaz yük devretme</br>Yük devretme önkoşulları</br>İş sürekliliği olağanüstü durum kurtarma (BCDR)</br>Olağanüstü durum kurtarma sırasında hatalar |[StorSimple Sanal diziniz için olağanüstü durum kurtarma ve cihaz yük devretmesi](storsimple-virtual-array-failover-dr.md) |
+| Paylaşımları ve birimleri yedekleme</br>El ile yedekleme yapın</br>Yedekleme zamanlamasını değiştirme</br>Mevcut yedeklemeleri görüntüle |[StorSimple Sanal dizinizi yedekleyin](storsimple-virtual-array-backup.md) |
+| Yedekleme kümesinde kopya paylaşımları</br>Yedekleme kümesinden kopya birimleri</br>Öğe düzeyinde kurtarma (yalnızca dosya sunucusu) |[StorSimple Sanal dizininizin bir yedeklemesinden kopyalayın](storsimple-virtual-array-clone.md) |
+| Depolama hesapları hakkında</br>Depolama hesabı ekleme</br>Depolama hesabını düzenleme</br>Bir depolama hesabını silme |[StorSimple Sanal dizisi için depolama hesaplarını yönetme](storsimple-virtual-array-manage-storage-accounts.md) |
+| Erişim denetimi kayıtları hakkında</br>Erişim denetimi kaydı ekleme veya değiştirme </br>Erişim denetimi kaydını silme |[StorSimple Sanal dizisi için erişim denetim kayıtlarını yönetme](storsimple-virtual-array-manage-acrs.md) |
+| İş ayrıntılarını görüntüleme |[StorSimple Sanal dizisi işlerini yönetin](storsimple-virtual-array-manage-jobs.md) |
+| Uyarı ayarlarını yapılandırma</br>Uyarı bildirimleri alma</br>Uyarıları yönetme</br>Uyarıları gözden geçirin |[StorSimple Sanal dizisi için uyarıları görüntüleyin ve yönetin](storsimple-virtual-array-manage-alerts.md) |
+| Cihaz yönetici parolasını değiştirme |[StorSimple Sanal dizisi cihaz yönetici parolasını değiştirme](storsimple-virtual-array-change-device-admin-password.md) |
+| Yazılım güncelleştirmelerini yükler |[Sanal dizinizi güncelleştirme](storsimple-virtual-array-install-update.md) |
 
 > [!NOTE]
-> Aşağıdaki görevler için [yerel web ui](storsimple-ova-web-ui-admin.md) kullanmalısınız:
+> Aşağıdaki görevler için [Yerel Web Kullanıcı arabirimini](storsimple-ova-web-ui-admin.md) kullanmanız gerekir:
 > 
 > * [Hizmet veri şifreleme anahtarını alma](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)
 > * [Destek paketi oluşturma](storsimple-ova-web-ui-admin.md#generate-a-log-package)
-> * [Sanal Diziyi durdurup yeniden başlatın](storsimple-ova-web-ui-admin.md#shut-down-and-restart-your-device)
+> * [Sanal diziyi durdurma ve yeniden başlatma](storsimple-ova-web-ui-admin.md#shut-down-and-restart-your-device)
 > 
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Web Kullanıcı Arabirimi ve nasıl kullanılacağı hakkında bilgi için [StorSimple Virtual Array'inizi yönetmek için StorSimple web Kullanıcı Arabirimi'ni kullanın.](storsimple-ova-web-ui-admin.md)
+Web Kullanıcı arabirimi ve nasıl kullanılacağı hakkında bilgi için, StorSimple [sanal dizinizi yönetmek üzere StorSimple Web Kullanıcı arabirimini kullanma](storsimple-ova-web-ui-admin.md)bölümüne gidin.
 

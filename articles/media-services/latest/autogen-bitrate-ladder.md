@@ -1,6 +1,6 @@
 ---
-title: Medya Hizmetlerinde Standart Kodlayıcı ile videoları kodlayın - Azure | Microsoft Dokümanlar
-description: Bu konu, giriş çözünürlüğü ve bitrate'yi temel alan otomatik olarak oluşturulan bitrate merdiveniyle bir giriş videosunu kodlamak için Medya Hizmetleri'ndeki Standart Kodlayıcı'nın nasıl kullanılacağını gösterir.
+title: Media Services-Azure 'da standart kodlayıcıyla videoları kodlayın | Microsoft Docs
+description: Bu konu başlığı Media Services altında Standart kodlayıcının, giriş ve bit hızını temel alarak otomatik olarak oluşturulan bir bit hızı el ile bir giriş videosunu kodlamak için nasıl kullanılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,32 +15,32 @@ ms.date: 02/10/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: c25c32f35adc1c017f0f4c012c82bd7e0af8d452
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "60733326"
 ---
-#  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Otomatik olarak oluşturulan bithızı merdiveni ile kodlama
+#  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Otomatik olarak üretilen bit hızı el ile kodla
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, giriş çözünürlüğü ve bitrate dayalı otomatik olarak oluşturulan bitrate merdiven (bitrate çözünürlüğü çiftleri) içine bir giriş video kodlamak için Medya Hizmetleri Standart Encoder nasıl kullanılacağı açıklanır. Bu yerleşik kodlayıcı ayarı veya önceden ayarlanmış, giriş çözünürlüğünü ve bitrate'yi asla aşmaz. Örneğin, giriş 3 Mbps'de 720p ise, çıkış en iyi ihtimalle 720p kalır ve 3 Mbps'den düşük hızlarda başlar.
+Bu makalede, giriş ve bit hızını temel alarak bir giriş videosunu otomatik olarak oluşturulan bir bit hızı (bit hızı çözme çiftleri) olarak kodlamak için Media Services 'de standart kodlayıcının nasıl kullanılacağı açıklanmaktadır. Bu yerleşik kodlayıcı ayarı veya önayar, hiçbir şekilde giriş çözünürlüğünü ve bit hızını aşmaz. Örneğin, giriş 3 Mbps hızında olursa çıktı en iyi 720p kalır ve 3 Mbps 'den düşük oranlarda başlatılır.
 
 ### <a name="encoding-for-streaming"></a>Akış için kodlama
 
-**Transform'da** **AdaptiveStreaming** hazır kümesini kullandığınızda, HLS ve DASH gibi akış protokolleri aracılığıyla teslim için uygun bir çıktı elde elabilirsiniz. Bu önceden ayarlanmışı kullanırken, hizmet kaç video katmanı oluşturacağı ve hangi bit hızında ve çözünürlükte oluşturacağı konusunda akıllıca belirler. Çıktı içeriği, AAC kodlu ses ve H.264 kodlu videonun ara ayrılmadığı MP4 dosyalarını içerir.
+**Dönüşümde** **uyarlamalı akış** ön ayarını kullandığınızda, HLS ve Dash gibi akış protokolleri aracılığıyla teslim için uygun bir çıktı alırsınız. Bu önayarı kullanırken hizmet, kaç video katmanını ve ne kadar bit hızını ve çözümlemeyi belirler. Çıkış içeriği, AAC kodlamalı ses ve H., ile kodlanmış videonun araya eklemeli olduğu MP4 dosyalarını içerir.
 
-Bu ön akışın nasıl kullanıldığına bir örnek görmek için [bir dosyayı akış'a](stream-files-dotnet-quickstart.md)bakın.
+Bu önayarın nasıl kullanıldığına ilişkin bir örnek görmek için bkz. [akış a dosyası](stream-files-dotnet-quickstart.md).
 
 ## <a name="output"></a>Çıktı
 
-Bu bölümde, **AdaptiveStreaming** ön akışına kodlanması sonucunda Medya Hizmetleri kodlayıcısı tarafından üretilen çıktı video katmanlarının üç örneği gösterilmektedir. Her durumda, çıkış 128 kbps kodlanmış stereo ses ile bir ses sadece MP4 dosyası içerir.
+Bu bölümde, Media Services Kodlayıcısı tarafından, **uyarlamalı akış** ön ayarıyla kodlama sonucu olarak üretilen çıkış video katmanlarının üç örneği gösterilmektedir. Her durumda, çıktı 128 Kbps hızında, stereo ses kodlamalı bir salt ses MP4 dosyası içerir.
 
 ### <a name="example-1"></a>Örnek 1
-Yükseklik "1080" ve kare hızı "29.970" ile kaynak 6 video katmanları üretir:
+"1080" yüksekliğinde ve "29,970" kare hızına sahip kaynak 6 video katmanı üretir:
 
-|Katman|Height|Genişlik|Bit hızı (kbps)|
+|Katman|Height|Genişlik|Bit hızı (Kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -50,9 +50,9 @@ Yükseklik "1080" ve kare hızı "29.970" ile kaynak 6 video katmanları üretir
 |6|180|320|380|
 
 ### <a name="example-2"></a>Örnek 2
-Yüksekliği "720" ve kare hızı "23.970" olan kaynak 5 video katmanı üretir:
+"720" yüksekliğinde ve "23,970" kare hızına sahip kaynak 5 video katmanı üretir:
 
-|Katman|Height|Genişlik|Bit hızı (kbps)|
+|Katman|Height|Genişlik|Bit hızı (Kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -61,9 +61,9 @@ Yüksekliği "720" ve kare hızı "23.970" olan kaynak 5 video katmanı üretir:
 |5|180|320|320|
 
 ### <a name="example-3"></a>Örnek 3
-Yükseklik "360" ve kare hızı "29.970" ile kaynak 3 video katmanları üretir:
+"360" yüksekliğinde ve "29,970" kare hızına sahip kaynak 3 video katmanı üretir:
 
-|Katman|Height|Genişlik|Bit hızı (kbps)|
+|Katman|Height|Genişlik|Bit hızı (Kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|

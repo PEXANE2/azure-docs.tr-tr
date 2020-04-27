@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri ile kodlama yaparken bir videonun alt klibi
-description: Bu konu, .NET SDK kullanarak Azure Medya Hizmetleri ile kodlama yaparken bir videonun nasıl alt klip kesilen nasıl açıklanır
+title: Azure Media Services ile kodlarken bir videoyu alt kırpın
+description: Bu konuda, .NET SDK kullanarak Azure Media Services kodlama sırasında bir videonun nasıl alt kırpılacağını açıklamaktadır
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
 ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67305058"
 ---
-# <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Medya Hizmetleri ile kodlama yaparken bir videonun alt klibi - .NET
+# <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Media Services .NET ile kodlarken bir videoyu alt kırpın
 
-Bir [İş'i](https://docs.microsoft.com/rest/api/media/jobs)kullanarak kodlarken videoyu kırpabilir veya alt kesebilirsiniz. Bu [işlevsellik, BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) hazır ayarları veya [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) hazır ayarları kullanılarak oluşturulan herhangi bir [Transform](https://docs.microsoft.com/rest/api/media/transforms) ile çalışır.
+Bir [işi](https://docs.microsoft.com/rest/api/media/jobs)kullanarak kodlarken videoyu kırpabilir veya alt kırpabilirsiniz. Bu işlev, [Builtınstandardencoderönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) ön ayarları veya [Standardencoderönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) önayarları kullanılarak oluşturulan [dönüşümlerle](https://docs.microsoft.com/rest/api/media/transforms) birlikte kullanılır.
 
-Aşağıdaki C# örneği, bir kodlama işi gönderirken Bir Varlık'taki videoyu kırpan bir iş oluşturur. 
+Aşağıdaki C# örneği bir varlık içinde bir kodlama işi gönderdiği bir videoyu kırpan bir iş oluşturur. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu konuda açıklanan adımları tamamlamak için şunları yapmak zorundasınız:
+Bu konuda açıklanan adımları tamamlayabilmeniz için şunları yapmanız gerekir:
 
 - [Azure Media Services hesabı oluşturma](create-account-cli-how-to.md)
-- Bir Dönüşüm ve giriş ve çıktı Varlıkları oluşturun. .NET öğreticisini [kullanarak Yükleme, kodlama ve akış videolarında](stream-files-tutorial-with-api.md) Varlıkları Dönüştür ve giriş ve çıktı olarak nasıl oluşturabileceğinizi görebilirsiniz.
-- Kodlama kavramı konusunu gözden [geçirin.](encoding-concept.md)
+- Bir dönüşüm ve giriş ve çıkış varlıkları oluşturun. .NET öğreticisini [kullanarak karşıya yükleme, kodlama ve akış videoları](stream-files-tutorial-with-api.md) Için nasıl dönüşüm ve giriş ve çıkış varlıkları oluşturulacağını görebilirsiniz.
+- [Kodlama kavramı](encoding-concept.md) konusunu gözden geçirin.
 
 ## <a name="example"></a>Örnek
 
@@ -91,4 +91,4 @@ private static async Task<Job> JobWithBuiltInStandardEncoderWithSingleClipAsync(
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Özel bir dönüştürme ile kodlama](customize-encoder-presets-how-to.md) 
+[Özel dönüşümle kodlama](customize-encoder-presets-how-to.md) 

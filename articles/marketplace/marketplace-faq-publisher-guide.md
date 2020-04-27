@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 4b166af219c8983e5765ef4c884ced7eb0689f54
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 1cd536f4a7c3751e2b85f40e582c1eb1c5bf2c74
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106687"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82160520"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft ticari market hakkında SSS
 
@@ -57,8 +57,9 @@ Müşteriler Azure Market ile Azure üzerinde oluşturulmuş veya oluşturulmuş
 Azure Market teklifleri şu şekilde satın alınabilir:
 
 * [Web tabanlı storefront](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Azure portal](https://portal.azure.com) <br>
-[!Note] Bir Azure hesabı gerektirir. Henüz bir hesabınız yoksa, **Azure 'A hoş geldiniz** sayfasına yönlendirilirsiniz, bir tane oluşturabilirsiniz.  
+* [Azure portal](https://portal.azure.com) <br> 
+>[!Note]
+>Bir Azure hesabı gerektirir. Henüz bir hesabınız yoksa, **Azure 'A hoş geldiniz** sayfasına yönlendirilirsiniz, bir tane oluşturabilirsiniz.  
 * [Azure komut satırı arabirimi (CLı)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
@@ -336,7 +337,7 @@ Müşteri adayları, ürünlerinizi Market 'ten dağıtan müşterilerdir. Ürü
 
 **Lider hedefini ayarlama konusunda nereden yardım alabilirim?**
 
-Iş Ortağı Merkezi 'nde daha fazla bilgi edinin [-Müşteri liderleri belgelerini alın](./partner-center-portal/commercial-marketplace-get-customer-leads.md) veya teklif türü ve [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) müşteri adayı yönetiğinizi seçerek bir destek bileti gönderebilirsiniz.
+Iş Ortağı Merkezi 'nde daha fazla bilgi edinin [-Müşteri liderleri belgelerini alın](./partner-center-portal/commercial-marketplace-get-customer-leads.md) veya teklif türünü ve müşteri adayı yönetimini seçerek [Yardım ve destek](https://partner.microsoft.com/support/v2/?stage=1) aracılığıyla bir destek bileti gönderebilirsiniz.
 
 **Market 'teki bir teklifi yayımlamak için bir müşteri adayı hedefi yapılandırmak istiyorum mu?**
 

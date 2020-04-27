@@ -1,6 +1,6 @@
 ---
-title: Medya Hizmetleri varlıklarını bilgisayarınıza indirin - Azure | Microsoft Dokümanlar
-description: Varlıkları bilgisayarınıza indirme hakkında bilgi edinin. Kod örnekleri C# olarak yazılır ve .NET için Medya Hizmetleri SDK'sını kullanın.
+title: Media Services varlıkları bilgisayarınıza indirme-Azure | Microsoft Docs
+description: Varlıkları bilgisayarınıza indirme hakkında bilgi edinin. Kod örnekleri C# dilinde yazılır ve .NET için Media Services SDK kullanır.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61465669"
 ---
-# <a name="how-to-deliver-an-asset-by-download"></a>Nasıl yapılsın: Bir varlığı indirerek teslim etme  
-Bu makalede, Medya Hizmetleri'ne yüklenen medya varlıklarını teslim etme seçenekleri açıklanır. Çok sayıda uygulama senaryosunda Medya Hizmetleri içeriği sunabilirsiniz. Kodladıktan sonra, oluşturulan ortam varlıklarını indirin veya bir akış bulucu kullanarak bunlara erişin. Daha iyi performans ve ölçeklenebilirlik için, İçerik Dağıtım Ağı (CDN) kullanarak içerik de sağlayabilirsiniz.
+# <a name="how-to-deliver-an-asset-by-download"></a>Nasıl yapılır: indirme yoluyla varlık sunma  
+Bu makalede, Media Services yüklenen medya varlıklarını sunmaya yönelik seçenekler açıklanmaktadır. Birçok uygulama senaryosunda Media Services içeriği sunabilirsiniz. Kodlama sonrasında, üretilen medya varlıklarını indirin veya bir akış Bulucu kullanarak bunlara erişin. Daha iyi performans ve ölçeklenebilirlik sağlamak için, Content Delivery Network (CDN) kullanarak da içerik sağlayabilirsiniz.
 
-Bu örnek, medya varlıklarınıN Medya Hizmetlerinden yerel bilgisayarınıza nasıl indirilebildiğini gösterir. Kod, Medya Hizmetleri hesabıyla ilişkili işleri iş kimliğiyle sorgular ve **ÇıktıMediaAssets** koleksiyonuna erişir (bir işi çalıştırmadan kaynaklanan bir veya daha fazla çıktı ortamı varlığı kümesidir). Bu örnek, çıktı medya varlıklarının bir işten nasıl indirilebildiğini gösterir, ancak diğer varlıkları indirmek için aynı yaklaşımı uygulayabilirsiniz.
+Bu örnekte, Media Services ' den yerel bilgisayarınıza medya varlıklarının nasıl indirileceği gösterilmektedir. Kod, iş KIMLIĞINE göre Media Services hesabıyla ilişkili işleri sorgular ve **Outputmediavarlıklarının** koleksiyonuna erişir (bir işi çalıştırmanın sonucu olan bir veya daha fazla çıktı medya varlığı kümesidir). Bu örnek, bir işten çıkış medya varlıklarının nasıl indirileceği gösterir, ancak diğer varlıkları indirmek için aynı yaklaşımı uygulayabilir.
 
 >[!NOTE]
->Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Her zaman aynı gün / erişim izinleri kullanıyorsanız, örneğin, uzun bir süre (yükleme olmayan ilkeler) yerinde kalması amaçlanan bulucular için ilkeler kullanıyorsanız aynı ilke kimliği kullanın. Daha fazla bilgi için [bu makaleye](media-services-dotnet-manage-entities.md#limit-access-policies) bakın.
+>Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Aynı gün/erişim izinlerini (örneğin, uzun bir süre (karşıya yükleme olmayan ilkeler) yerinde kalması amaçlanan konum belirleyicilerinin ilkeleri gibi her zaman kullandığınız ilke KIMLIĞINI kullanın. Daha fazla bilgi için [bu makaleye](media-services-dotnet-manage-entities.md#limit-access-policies) bakın.
 
 ```csharp
     // Download the output asset of the specified job to a local folder.

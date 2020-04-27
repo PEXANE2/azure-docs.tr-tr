@@ -1,6 +1,6 @@
 ---
-title: Taleplere duyarlı uygulamalar - Azure AD App Proxy | Microsoft Dokümanlar
-description: Kullanıcılarınız tarafından güvenli uzaktan erişim için ADFS taleplerini kabul eden şirket içi ASP.NET uygulamaları nasıl yayınlanır?
+title: Talep kullanan uygulamalar-Azure AD Uygulaması Proxy | Microsoft Docs
+description: Kullanıcılarınız tarafından güvenli uzaktan erişim için ADFS taleplerini kabul eden şirket içi ASP.NET uygulamalarını yayımlama.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,46 +16,46 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbc5c356ea5a542fdc12b11aff236c56b146b3d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68477251"
 ---
-# <a name="working-with-claims-aware-apps-in-application-proxy"></a>Application Proxy'de hak iddialarla ilgili uygulamalarla çalışma
-[Taleplere duyarlı uygulamalar,](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) Güvenlik Belirteci Hizmeti'ne (STS) yeniden yönlendirme gerçekleştirir. STS, bir belirteç karşılığında kullanıcıdan kimlik bilgilerini ister ve kullanıcıyı uygulamaya yönlendirir. Uygulama Proxy'nin bu yönlendirmelerle çalışmasını etkinleştirmenin birkaç yolu vardır. Taleplere duyarlı uygulamalar için dağıtımınızı yapılandırmak için bu makaleyi kullanın. 
+# <a name="working-with-claims-aware-apps-in-application-proxy"></a>Uygulama proxy 'sinde talep kullanan uygulamalarla çalışma
+[Talep kullanan uygulamalar](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) , güvenlik belirteci hizmeti 'NE (STS) yeniden yönlendirme gerçekleştirir. STS, bir belirteç için Exchange 'deki kullanıcıdan kimlik bilgilerini ister ve sonra kullanıcıyı uygulamaya yönlendirir. Uygulama proxy 'Sinin bu yeniden yönlendirmelere çalışması için birkaç yol vardır. Talep kullanan uygulamalar için dağıtımınızı yapılandırmak üzere bu makaleyi kullanın. 
 
 ## <a name="prerequisites"></a>Ön koşullar
-Taleplere duyarlı uygulamanın yönlendirilen STS'nin şirket içi ağınızın dışında kullanılabildiğinden emin olun. STS'yi bir proxy aracılığıyla veya dış bağlantılara izin vererek kullanılabilir hale getirebilirsiniz. 
+Talep kullanan uygulamanın yönlendirdiği STS 'nin şirket içi ağınızın dışında kullanılabilir olduğundan emin olun. Bir proxy aracılığıyla veya dış bağlantılara izin vererek, STS 'yi kullanılabilir hale getirebilirsiniz. 
 
 ## <a name="publish-your-application"></a>Uygulamanızı yayımlama
 
-1. [Uygulama Proxy ile uygulamaları yayımla'da](application-proxy-add-on-premises-application.md)açıklanan talimatlara göre başvurunuzu yayınlayın.
-2. Portaldaki uygulama sayfasına gidin ve **Tek oturum açma'yı**seçin.
-3. **Ön Kimlik Doğrulama Yönteminiz**olarak Azure **Active Directory'yi** seçtiyseniz, **Dahili Kimlik Doğrulama Yönteminiz**olarak Azure AD tek oturum açma **devre dışı bırakıldığını** seçin. **Ön Authentication Yönteminiz**olarak **Passthrough'ı** seçtiyseniz, hiçbir şeyi değiştirmeniz gerekmez.
+1. Uygulamanızı [uygulama proxy 'si Ile yayımlama](application-proxy-add-on-premises-application.md)bölümünde açıklanan yönergelere göre yayımlayın.
+2. Portalda uygulama sayfasına gidin ve **Çoklu oturum açma**seçeneğini belirleyin.
+3. **Ön**kimlik doğrulama yönteminiz olarak **Azure Active Directory** ' yi seçtiyseniz, **Iç KIMLIK doğrulama yönteminiz**olarak **Azure AD çoklu oturum açma devre dışı** ' yı seçin. **Ön kimlik doğrulama yönteminiz**olarak **PASSTHROUGH** ' i seçerseniz, herhangi bir değişiklik yapmanız gerekmez.
 
-## <a name="configure-adfs"></a>ADFS'yi yapılandırma
+## <a name="configure-adfs"></a>ADFS 'yi yapılandırma
 
-ADFS'yi taleplere duyarlı uygulamalar için iki şekilde yapılandırabilirsiniz. İlközel etki alanları kullanarak. İkincisi WS-Federation ile. 
+, Talebe duyarlı uygulamalar için ADFS 'yi iki şekilde yapılandırabilirsiniz. İlki özel etki alanları kullanmaktır. İkincisi WS-Federation ' dir. 
 
-### <a name="option-1-custom-domains"></a>Seçenek 1: Özel etki alanları
+### <a name="option-1-custom-domains"></a>Seçenek 1: özel etki alanları
 
-Uygulamalarınız için tüm dahili URL'ler tam nitelikli alan adları (FQDNs) ise, uygulamalarınız için [özel etki alanlarını](application-proxy-configure-custom-domain.md) yapılandırabilirsiniz. Dahili URL'lerle aynı olan harici URL'ler oluşturmak için özel etki alanlarını kullanın. Harici URL'leriniz dahili URL'lerinizle eşleştiğinde, STS kullanıcılarınızın şirket içinde veya uzak olup olmadığı konusunda yeniden yönlendirmeler sağlar. 
+Uygulamalarınızın tüm iç URL 'Leri tam etki alanı adları (FQDN) ise, uygulamalarınız için [özel etki alanları](application-proxy-configure-custom-domain.md) yapılandırabilirsiniz. İç URL 'Lerle aynı olan dış URL 'Ler oluşturmak için özel etki alanlarını kullanın. Dış URL 'niz iç URL 'lerinizle eşleşiyorsa, STS yönlendirmeleri kullanıcılarınızın şirket içinde veya uzak olup olmadığına bakılmaksızın çalışır. 
 
-### <a name="option-2-ws-federation"></a>Seçenek 2: WS-Federasyon
+### <a name="option-2-ws-federation"></a>Seçenek 2: WS-Federation
 
-1. ADFS Yönetimini açın.
-2. **Güvenen Parti Güvenleri'ne**gidin , Uygulama Proxy ile yayınladığınız uygulamaya sağ tıklayın ve **Özellikler'i**seçin.  
+1. ADFS yönetimi 'ni açın.
+2. **Bağlı olan taraf güvenleri**' ne gidin, uygulama proxy 'si ile yayımlamakta olduğunuz uygulamaya sağ tıklayın ve **Özellikler**' i seçin.  
 
-   ![Güvenen Parti Güvenleri Uygulama adına sağ tıklayın - ekran görüntüsü](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
+   ![Bağlı olan taraf güvenleri uygulama adı ' na sağ tıklayın-ekran görüntüsü](./media/application-proxy-configure-for-claims-aware-applications/appproxyrelyingpartytrust.png)  
 
-3. Uç **Noktalar** sekmesinde, **Bitiş Noktası türü** **altında, WS-Federation'ı**seçin.
-4. **Güvenilen URL**altında, **Dış URL** altında Uygulama Proxy'ye girdiğiniz URL'yi girin ve **Tamam'ı**tıklatın.  
+3. Uç **noktalar** sekmesinde, **uç nokta türü**altında, **WS-Federation**' ı seçin.
+4. **GÜVENILEN URL**altında, **dış URL** altına uygulama proxy 'sine girdiğiniz URL 'yi girin ve **Tamam**' a tıklayın.  
 
-   ![Endpoint ekleme - Güvenilir URL değerini ayarla - ekran görüntüsü](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
+   ![Uç nokta ekleme-güvenilen URL değeri ayarlama-ekran görüntüsü](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Taleplerden haberdar olmayan uygulamalar için tek oturum açma yı [etkinleştirme](configure-single-sign-on-non-gallery-applications.md)
-* [Yerel istemci uygulamalarının proxy uygulamalarıyla etkileşimkurmasını etkinleştirme](application-proxy-configure-native-client-application.md)
+* Talep kullanmayan uygulamalar için [Çoklu oturum açmayı etkinleştir](configure-single-sign-on-non-gallery-applications.md)
+* [Yerel istemci uygulamalarının proxy uygulamalarıyla etkileşime geçmesini sağlama](application-proxy-configure-native-client-application.md)
 
 

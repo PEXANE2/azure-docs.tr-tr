@@ -1,6 +1,6 @@
 ---
-title: DevTest Labs sanal makineniz için özel eserler oluşturun | Microsoft Dokümanlar
-description: Azure DevTest Labs ile kullanmak üzere kendi yapılarınızı nasıl yazarak kullanacağınızı öğrenin.
+title: DevTest Labs sanal makineniz için özel yapılar oluşturun | Microsoft Docs
+description: Azure DevTest Labs ile kullanmak için kendi yapılarınızı nasıl yazacağınızı öğrenin.
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,25 +15,25 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66399210"
 ---
-# <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>DevTest Labs sanal makineniz için özel yapılar oluşturun
+# <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>DevTest Labs sanal makineniz için özel yapılar oluşturma
 
-Bu makalede açıklanan adımların genel bir özeti için aşağıdaki videoyu izleyin:
+Bu makalede açıklanan adımlara genel bir bakış için aşağıdaki videoyu izleyin:
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/how-to-author-custom-artifacts/player]
 >
 >
 
 ## <a name="overview"></a>Genel Bakış
-Bir VM sağlamadan sonra uygulamanızı dağıtmak ve ayarlamak için *yapıları* kullanabilirsiniz. Yapı, bir yapı tanım dosyası ve Git deposundaki bir klasörde depolanan diğer komut dosyası dosyalarından oluşur. Yapı tanım dosyaları JSON ve VM'ye yüklemek istediğinizi belirtmek için kullanabileceğiniz ifadelerden oluşur. Örneğin, bir yapının adını, çalıştırılaca komutu ve komut çalıştırıldığında kullanılabilen parametreleri tanımlayabilirsiniz. Yapı tanım dosyasındaki diğer komut dosyası dosyalarına adıyla başvurabilirsiniz.
+Bir VM sağlamadıktan sonra, uygulamanızı dağıtmak ve ayarlamak için *yapıtları* kullanabilirsiniz. Yapıt bir yapıt tanım dosyasından ve git deposundaki bir klasörde depolanan diğer betik dosyalarından oluşur. Yapıt tanımı dosyaları, bir VM 'ye ne yüklemek istediğinizi belirtmek için kullanabileceğiniz JSON ve ifadelerden oluşur. Örneğin, bir yapıt adı, çalıştırılacak bir komut ve komut çalıştırıldığında kullanılabilir parametreler tanımlayabilirsiniz. Yapıt tanım dosyası içindeki diğer betik dosyalarına adı ile başvurabilirsiniz.
 
-## <a name="artifact-definition-file-format"></a>Yapı tanımı dosya biçimi
-Aşağıdaki örnek, tanım dosyasının temel yapısını oluşturan bölümleri gösterir:
+## <a name="artifact-definition-file-format"></a>Yapıt tanım dosyası biçimi
+Aşağıdaki örnek, bir tanım dosyasının temel yapısını oluşturan bölümleri gösterir:
 
     {
       "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
@@ -55,16 +55,16 @@ Aşağıdaki örnek, tanım dosyasının temel yapısını oluşturan bölümler
 
 | Öğe adı | Gerekli mi? | Açıklama |
 | --- | --- | --- |
-| $schema |Hayır |JSON şema dosyasının yeri. JSON şema dosyası, tanım dosyasının geçerliliğini sınamanıza yardımcı olabilir. |
-| başlık |Evet |Laboratuvarda görüntülenen yapıtın adı. |
-| açıklama |Evet |Laboratuvarda görüntülenen yapının açıklaması. |
-| iconUri |Hayır |Uri simgesi laboratuarda görüntülenir. |
-| hedefOsType |Evet |Yapının yüklü olduğu VM işletim sistemi. Desteklenen seçenekler Windows ve Linux'tır. |
-| parametreler |Hayır |Yapı yükleme komutu bir makinede çalıştırıldığında sağlanan değerler. Bu, yapınızı özelleştirmenize yardımcı olur. |
-| Runcommand |Evet |VM'de çalıştırılan artifakt yükleme komutu. |
+| $schema |Hayır |JSON Şema dosyasının konumu. JSON şema dosyası, tanım dosyasının geçerliliğini test etmenize yardımcı olabilir. |
+| başlık |Yes |Laboratuvarda görünen yapıt adı. |
+| açıklama |Yes |Laboratuvarda görünen yapının açıklaması. |
+| ıconuri |Hayır |Laboratuvarda görünen simgenin URI 'SI. |
+| targetOsType |Yes |Yapıtın yüklendiği VM 'nin işletim sistemi. Desteklenen seçenekler Windows ve Linux. |
+| parametreler |Hayır |Bir makinede yapıt install komutu çalıştırıldığında belirtilen değerler. Bu, yapıtı özelleştirmenize yardımcı olur. |
+| Eylemine |Yes |Bir VM üzerinde yürütülen yapıt install komutu. |
 
-### <a name="artifact-parameters"></a>Yapı parametreleri
-Tanım dosyasının parametreler bölümünde, bir yapı yı yüklerken kullanıcının hangi değerleri giriş yapabileceğinizi belirtin. Yapı yükleme komutundaki bu değerlere başvurabilirsiniz.
+### <a name="artifact-parameters"></a>Yapıt parametreleri
+Tanım dosyasının parametreler bölümünde, bir kullanıcının bir yapıtı yüklediklerinde hangi değerlere giriş yapabilir olduğunu belirtin. Yapıt install komutunda bu değerlere başvurabilirsiniz.
 
 Parametreleri tanımlamak için aşağıdaki yapıyı kullanın:
 
@@ -78,19 +78,19 @@ Parametreleri tanımlamak için aşağıdaki yapıyı kullanın:
 
 | Öğe adı | Gerekli mi? | Açıklama |
 | --- | --- | --- |
-| type |Evet |Parametre değeri türü. İzin verilen türler için aşağıdaki listeye bakın. |
-| displayName |Evet |Laboratuarda bir kullanıcıya görüntülenen parametrenin adı. |
-| açıklama |Evet |Laboratuvarda görüntülenen parametrenin açıklaması. |
+| type |Yes |Parametre değerinin türü. İzin verilen türler için aşağıdaki listeye bakın. |
+| displayName |Yes |Laboratuvardaki bir kullanıcıya görüntülenen parametrenin adı. |
+| açıklama |Yes |Laboratuvarda görüntülenen parametrenin açıklaması. |
 
-İzin verilen türleri şunlardır:
+İzin verilen türler şunlardır:
 
-* string (herhangi bir geçerli JSON dizesi)
-* int (geçerli JSON sondası)
-* bool (herhangi bir geçerli JSON Boolean)
-* dizi (herhangi bir geçerli JSON dizisi)
+* dize (geçerli JSON dizesi)
+* int (herhangi bir geçerli JSON tamsayı)
+* bool (herhangi bir geçerli JSON Boole değeri)
+* dizi (geçerli JSON dizisi)
 
-## <a name="secrets-as-secure-strings"></a>Güvenli dizeleri olarak Sırlar
-Sırları güvenli dizeler olarak bildirin. Burada `parameters` **artifactfile.json** dosyasının bölümünde güvenli bir dize parametresi bildirmek için sözdizimi:
+## <a name="secrets-as-secure-strings"></a>Güvenli dizeler olarak gizli diziler
+Gizli dizeleri güvenli dizeler olarak bildirin. `parameters` **Artifactfile. JSON** dosyasının bölümünde güvenli dize parametresi bildirmek için sözdizimi aşağıda verilmiştir:
 
 ```json
 
@@ -102,7 +102,7 @@ Sırları güvenli dizeler olarak bildirin. Burada `parameters` **artifactfile.j
     },
 ```
 
-Artefakt yükleme komutu için ConvertTo-SecureString komutunu kullanarak oluşturulan güvenli dizeyi alan PowerShell komut dosyasını çalıştırın. 
+Yapıt install komutu için, ConvertTo-SecureString komutu kullanılarak oluşturulan güvenli dizeyi alan PowerShell betiğini çalıştırın. 
 
 ```json
   "runCommand": {
@@ -110,19 +110,19 @@ Artefakt yükleme komutu için ConvertTo-SecureString komutunu kullanarak oluşt
   }
 ```
 
-Tam örnek artifactfile.json ve artifact.ps1 (PowerShell komut dosyası) [için, GitHub bu örnek](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)bakın.
+Tüm örnek artifactfile. JSON ve yapıt. ps1 (PowerShell betiği) için [GitHub 'da bu örneğe](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)bakın.
 
-Dikkat edilmesi gereken bir diğer önemli nokta, kullanıcı hata ayıklama için yakalanan çıktı olarak konsola sırlarını günlüğe kaydetmemektir. 
+Bir diğer önemli nokta, Kullanıcı hata ayıklaması için çıktı yakalandığından gizli dizileri konsola günlüğe kaydetmek değildir. 
 
-## <a name="artifact-expressions-and-functions"></a>Yapı ifadeleri ve işlevleri
-Yapı yükleme komutunu oluşturmak için ifadeleri ve işlevleri kullanabilirsiniz.
-İfadeler parantez ([ ve ]) ile çevrilidir ve yapı yüklendiğinde değerlendirilir. İfadeler JSON dize değerinde herhangi bir yerde görünebilir. İfadeler her zaman başka bir JSON değeri döndürer. Bir parantez ([) ile başlayan bir edebi dize kullanmanız gerekiyorsa, iki parantez ([[[).
-Genellikle, bir değer oluşturmak için işlevli ifadeler kullanırsınız. JavaScript'te olduğu gibi işlev çağrıları **da functionName (arg1, arg2, arg3)** olarak biçimlendirilir.
+## <a name="artifact-expressions-and-functions"></a>Yapıt ifadeleri ve işlevleri
+Yapıt install komutunu oluşturmak için ifadeleri ve işlevleri kullanabilirsiniz.
+İfadeler köşeli ayraçlar ([ve]) ile çevrelenmiş ve yapıt yüklendiği zaman değerlendirilir. İfadeler, JSON dize değerinde herhangi bir yerde görünebilir. İfadeler her zaman başka bir JSON değeri döndürür. Köşeli ayraç ([) ile başlayan bir sabit dize kullanmanız gerekiyorsa, iki köşeli ayraç ([[) kullanmanız gerekir.
+Genellikle, bir değer oluşturmak için işlevleri işlevlerle birlikte kullanırsınız. JavaScript içinde olduğu gibi, işlev çağrıları **fonksiyonadı (arg1, arg2, arg3)** olarak biçimlendirilir.
 
-Aşağıdaki liste ortak işlevleri gösterir:
+Aşağıdaki listede yaygın işlevler gösterilmektedir:
 
-* **parametreler(parameterName)**: Yapı komutu çalıştırıldığında sağlanan bir parametre değerini verir.
-* **concat(arg1, arg2, arg3,.....)**: Birden çok dize değerlerini birleştirir. Bu işlev çeşitli bağımsız değişkenler alabilir.
+* **Parametreler (ParameterName)**: yapıt komutu çalıştırıldığında belirtilen bir parametre değeri döndürür.
+* **Concat (arg1, arg2, arg3,.....)**: birden çok dize değerini birleştirir. Bu işlev, çeşitli bağımsız değişkenler alabilir.
 
 Aşağıdaki örnek, bir değer oluşturmak için ifadelerin ve işlevlerin nasıl kullanılacağını gösterir:
 
@@ -133,25 +133,25 @@ Aşağıdaki örnek, bir değer oluşturmak için ifadelerin ve işlevlerin nas�
     , ' -Password ', parameters('installPassword'))]"
     }
 
-## <a name="create-a-custom-artifact"></a>Özel bir yapı oluşturma
+## <a name="create-a-custom-artifact"></a>Özel yapıt oluşturma
 
-1. Bir JSON düzenleyicisi yükleyin. Artifakı tanım dosyalarıyla çalışmak için bir JSON düzenleyicisine ihtiyacınız var. Windows, Linux ve OS X için kullanılabilen [Visual Studio Code'u](https://code.visualstudio.com/)kullanmanızı öneririz.
-2. Örnek bir artifactfile.json tanım dosyası alın. [GitHub depomuzda](https://github.com/Azure/azure-devtestlab)DevTest Labs ekibi tarafından oluşturulan yapılara göz atın. Kendi yapılarınızı oluşturmanıza yardımcı olabilecek zengin bir yapıt kütüphanesi oluşturduk. Bir yapı tanım dosyası indirin ve kendi yapılarınızı oluşturmak için dosyada değişiklik yapın.
-3. IntelliSense'i kullanın. Yapı tanım dosyası oluşturmak için kullanabileceğiniz geçerli öğeleri görmek için IntelliSense'i kullanın. Ayrıca, bir öğenin değerleri için farklı seçenekleri de görebilirsiniz. Örneğin, **targetOsType** öğesini sizler lediğinizde, IntelliSense Size Windows veya Linux için iki seçenek gösterir.
-4. Yapıyı DevTest Labs veya [kendi Git deponuz](devtest-lab-add-artifact-repo.md) [için herkese açık Git deposunda](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) saklayın. Genel depoda, başkaları tarafından paylaşılan ve doğrudan kullanabileceğiniz yapıları görüntüleyebilir veya gereksinimlerinize uyacak şekilde özelleştirebilirsiniz.
+1. JSON Düzenleyicisi yükler. Yapıt tanım dosyalarıyla çalışmak için bir JSON düzenleyicisine ihtiyacınız vardır. Windows, Linux ve OS X için kullanılabilen [Visual Studio Code](https://code.visualstudio.com/)kullanmanızı öneririz.
+2. Örnek bir artifactfile. JSON tanım dosyası alın. [GitHub deponuzda](https://github.com/Azure/azure-devtestlab)DevTest Labs ekibi tarafından oluşturulan yapıtları inceleyin. Kendi yapılarınızı oluşturmanıza yardımcı olabilecek zengin bir yapıt kitaplığı oluşturduk. Kendi yapıtlarınızı oluşturmak için bir yapıt tanım dosyası indirin ve üzerinde değişiklikler yapın.
+3. IntelliSense 'in kullanımını yapın. Bir yapıt tanım dosyası oluşturmak için kullanabileceğiniz geçerli öğeleri görmek için IntelliSense kullanın. Ayrıca, bir öğenin değerleri için farklı seçenekleri görebilirsiniz. Örneğin, **Targetostype** öğesini düzenlediğinizde, IntelliSense Windows veya Linux için size iki seçenek gösterir.
+4. Yapıtı DevTest Labs veya [kendi git deponuzdaki](devtest-lab-add-artifact-repo.md) [genel git deposunda](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) depolayın. Ortak depoda, başkaları tarafından paylaşılan yapıtları, doğrudan kullanabileceğiniz veya gereksinimlerinize uyacak şekilde özelleştirebilmeniz için görüntüleyebilirsiniz.
    
-   1. Her yapı için ayrı bir dizin oluşturun. Dizin adı, yapı adı ile aynı olmalıdır.
-   2. Yapı tanım dosyasını (artifactfile.json) oluşturduğunuz dizinde depolayın.
-   3. Yapı yükleme komutundan başvurulan komut dosyalarını depolayın.
+   1. Her yapıt için ayrı bir dizin oluşturun. Dizin adı yapıt adı ile aynı olmalıdır.
+   2. Yapıt tanım dosyasını (artifactfile. JSON) oluşturduğunuz dizinde depolayın.
+   3. Yapıt install komutuyla başvurulan betikleri depolayın.
       
-      Yapı klasörünün nasıl görünebileceğine bir örnek aşağıda verilmiştir:
+      Yapıt klasörünün nasıl görünebileceğini gösteren bir örnek aşağıda verilmiştir:
       
-      ![Artefakt klasörü örneği](./media/devtest-lab-artifact-author/git-repo.png)
-5. Yapıları depolamak için kendi deponuzu kullanıyorsanız, makaledeki yönergeleri izleyerek depoyu laboratuvara ekleyin: [Yapılar ve şablonlar için git deposu ekleyin.](devtest-lab-add-artifact-repo.md)
+      ![Yapıt klasörü örneği](./media/devtest-lab-artifact-author/git-repo.png)
+5. Yapıtları depolamak için kendi deponuzu kullanıyorsanız, Şu makaledeki yönergeleri izleyerek depoyu laboratuvara ekleyin: [yapılar ve şablonlar Için Git deposu ekleme](devtest-lab-add-artifact-repo.md).
 
 ## <a name="related-articles"></a>İlgili makaleler:
-* [DevTest Labs'da yapı hataları nasıl tanılanır?](devtest-lab-troubleshoot-artifact-failure.md)
-* [DevTest Labs'da Kaynak Yöneticisi şablonu kullanarak vm'ye varolan bir Active Directory etki alanına katılma](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [DevTest Labs 'de yapıt başarısızlıklarını tanılama](devtest-lab-troubleshoot-artifact-failure.md)
+* [DevTest Labs 'de bir Kaynak Yöneticisi şablonu kullanarak bir VM 'yi mevcut bir Active Directory etki alanına katma](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Bir git artifon deposunu laboratuvara](devtest-lab-add-artifact-repo.md)nasıl ekleyeceğinizi öğrenin.
+* [Laboratuvara git yapıt deposu eklemeyi](devtest-lab-add-artifact-repo.md)öğrenin.

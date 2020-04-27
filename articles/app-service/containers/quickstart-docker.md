@@ -1,75 +1,75 @@
 ---
-title: 'Quickstart: Özel bir Linux kapsayıcısı çalıştırın'
-description: Azure Konteyner Kayıt Defterleri'ni kullanarak ilk özel kapsayıcınızı dağıtarak Azure Uygulama Hizmeti'ndeki Linux kapsayıcılarıyla başlayın.
+title: 'Hızlı başlangıç: özel bir Linux kapsayıcısını çalıştırma'
+description: Azure Container Registry kullanarak ilk özel kapsayıcınızı dağıtarak Azure App Service Linux kapsayıcıları ile çalışmaya başlayın.
 author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
-ms.openlocfilehash: 62e6b007e89fc6be726d3d971ca838770db9cb6e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 51607f44f75cbd93c7ecf1c77bb52c73b27b5f3c
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75422143"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159754"
 ---
-# <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>Azure Uygulama Hizmetine özel bir Linux kapsayıcısı dağıtma
+# <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>Azure App Service için özel bir Linux kapsayıcısı dağıtın
 
-Linux'taki Uygulama Hizmeti, .NET, PHP, Node.js ve diğerleri gibi diller için destek sağlayan Linux'ta önceden tanımlanmış uygulama yığınları sağlar. Ayrıca web uygulamanızı Azure’da zaten tanımlı olmayan bir uygulama yığınında çalıştırmak için özel bir Docker görüntüsü de kullanabilirsiniz. Bu hızlı başlangıç, bir görüntüyü [Azure Kapsayıcı Kayıt Defteri'nden](/azure/container-registry) (ACR) Uygulama Hizmetine nasıl dağıtabileceğinizi gösterir.
+Linux üzerinde App Service, Linux üzerinde .NET, PHP, Node. js ve diğerleri gibi diller desteğiyle önceden tanımlanmış uygulama yığınları sağlar. Ayrıca web uygulamanızı Azure’da zaten tanımlı olmayan bir uygulama yığınında çalıştırmak için özel bir Docker görüntüsü de kullanabilirsiniz. Bu hızlı başlangıçta, bir [Azure Container Registry](/azure/container-registry) (ACR) App Service bir görüntünün nasıl dağıtılacağı gösterilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure [hesabı](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
+* Bir [Azure hesabı](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
 * [Docker](https://www.docker.com/community-edition)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [VS Kodu için Azure Uygulama Hizmeti uzantısı.](vscode:extension/ms-azuretools.vscode-azureappservice) Bu uzantıyı, Azure Platformu'nda (PaaS) Linux Web Apps'ı oluşturmak, yönetmek ve dağıtmak için kullanabilirsiniz.
-* [VS Kodu için Docker uzantısı.](vscode:extension/ms-azuretools.vscode-docker) Bu uzantıyı, yerel Docker görüntülerinin ve komutlarının yönetimini basitleştirmek ve yerleşik uygulama görüntülerini Azure'a dağıtmak için kullanabilirsiniz.
+* [Vs Code için Azure App Service uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Bu uzantıyı Azure platformunda bir hizmet olarak (PaaS) Linux Web Apps oluşturmak, yönetmek ve dağıtmak için kullanabilirsiniz.
+* [Vs Code Için Docker uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker). Bu uzantıyı, yerel Docker görüntüleri ve komutlarının yönetimini basitleştirmek ve oluşturulan uygulama görüntülerini Azure 'a dağıtmak için kullanabilirsiniz.
 
 ## <a name="create-an-image"></a>Görüntü oluşturma
 
-Bu hızlı başlangıcı tamamlamak için, bir [Azure Konteyner Kayıt Defteri'nde](/azure/container-registry)depolanan uygun bir web uygulaması görüntüsüne ihtiyacınız olacaktır. Quickstart'taki yönergeleri [izleyin: Azure portalını kullanarak özel bir kapsayıcı kayıt defteri oluşturun,](/azure/container-registry/container-registry-get-started-portal)ancak `mcr.microsoft.com/azuredocs/go` `hello-world` görüntü yerine resmi kullanın. Başvuru için, [örnek Dockerfile Azure Örnekleri repo bulunur.](https://github.com/Azure-Samples/go-docs-hello-world)
+Bu hızlı başlangıcı tamamlayabilmeniz için, [Azure Container Registry](/azure/container-registry)depolanan uygun bir Web uygulaması görüntüsüne ihtiyacınız olacaktır. [Hızlı başlangıç: Azure Portal kullanarak özel kapsayıcı kayıt defteri oluşturma](/azure/container-registry/container-registry-get-started-portal)' daki yönergeleri izleyin, ancak görüntü yerine `mcr.microsoft.com/azuredocs/go` `hello-world` görüntüyü kullanın. Başvuru için, [Azure örnekleri deposunda örnek Dockerfile bulunur](https://github.com/Azure-Samples/go-docs-hello-world).
 
 > [!IMPORTANT]
-> Kapsayıcı kayıt defterini oluştururken **Yönetici Kullanıcı** seçeneğini **Etkinleştirmeye** ayarladığınızdan emin olun. Azure portalındaki kayıt defteri sayfanızın **Erişim tuşları** bölümünden de ayarlayabilirsiniz. Bu ayar, Uygulama Hizmeti erişimi için gereklidir.
+> Kapsayıcı kayıt defterini oluştururken **Yönetici Kullanıcı** seçeneğini **etkinleştirmek** için ayarladığınızdan emin olun. Ayrıca, Azure portal kayıt defteri sayfanızın **erişim tuşları** bölümünden de ayarlayabilirsiniz. App Service erişim için bu ayar gereklidir.
 
-## <a name="sign-in"></a>Oturum aç
+## <a name="sign-in"></a>Oturum açma
 
-Ardından, VS Kodu'nu başlatın ve Uygulama Hizmeti uzantısını kullanarak Azure hesabınızda oturum açın. Bunu yapmak için Etkinlik Çubuğu'ndaki Azure logosunu seçin, **APP SERVICE** explorer'a gidin, ardından **Azure'da Oturum Aç'ı** seçin ve yönergeleri izleyin.
+Sonra, VS Code başlatın ve App Service uzantısını kullanarak Azure hesabınızda oturum açın. Bunu yapmak için etkinlik çubuğunda Azure logosu ' nu seçin, **App SERVICE** Gezgini ' ne gidin ve **Azure 'da oturum aç** ' ı seçin ve yönergeleri izleyin.
 
-![Azure'da oturum açma](./media/quickstart-docker/sign-in.png)
+![Azure 'da oturum açın](./media/quickstart-docker/sign-in.png)
 
 ## <a name="check-prerequisites"></a>Önkoşulları denetleme
 
-Artık tüm ön koşulların düzgün bir şekilde yüklenip yapılandırılmadığını kontrol edebilirsiniz.
+Artık tüm önkoşulların doğru yüklenip yapılandırılmadığını kontrol edebilirsiniz.
 
-VS Code'da, Durum Çubuğu'nda Azure e-posta adresinizi ve **APP SERVICE** explorer'da aboneliğinizi görmeniz gerekir.
+VS Code, Azure e-posta adresinizi durum çubuğunda ve aboneliğiniz için **App SERVICE** Explorer 'da görmeniz gerekir.
 
-Ardından, Docker'ın yüklü ve çalışır durumda olduğunu doğrulayın. Aşağıdaki komut, çalışıyorsa Docker sürümünü görüntüler.
+Ardından, Docker 'ın yüklü ve çalışır olduğunu doğrulayın. Aşağıdaki komut, çalışıyorsa Docker sürümünü görüntüler.
 
 ```bash
 docker --version
 ```
 
-Son olarak, Azure Konteyner Kayıt Defterinizin bağlı olduğundan emin olun. Bunu yapmak için Etkinlik Çubuğu'ndaki Docker logosunu seçin ve ardından **REGISTRIES'e**gidin.
+Son olarak, Azure Container Registry bağlı olduğundan emin olun. Bunu yapmak için etkinlik çubuğunda Docker logosunu seçin ve ardından **kayıt defterleri**' ne gidin.
 
 ![Kayıt Defterleri](./media/quickstart-docker/registries.png)
 
-## <a name="deploy-the-image-to-azure-app-service"></a>Görüntüyü Azure Uygulama Hizmetine dağıtma
+## <a name="deploy-the-image-to-azure-app-service"></a>Görüntüyü Azure App Service dağıtma
 
-Artık her şey yapılandırıldığına göre, resminizi doğrudan Docker uzantılı gezginden [Azure Uygulama Hizmeti'ne](https://azure.microsoft.com/services/app-service/) dağıtabilirsiniz.
+Artık her şey yapılandırıldığına göre, görüntünüzü doğrudan Docker uzantı Gezgini 'nden [Azure App Service](https://azure.microsoft.com/services/app-service/) dağıtabilirsiniz.
 
-**Docker** gezgininde **Kayıt Defteri** düğümünün altındaki resmi bulun ve etiketlerini göstermek için genişletin. Bir etiketi sağ tıklatın ve ardından **Azure Uygulama Hizmetine Resmi Dağıt'ı**seçin.
+**Docker** Gezgini 'Ndeki **kayıt defterleri** düğümü altında görüntüyü bulun ve etiketlerini göstermek için genişletin. Bir etikete sağ tıklayın ve sonra **Azure App Service görüntüyü dağıt**' ı seçin.
 
-Buradan, bir abonelik, genel olarak benzersiz bir uygulama adı, Kaynak Grubu ve bir Uygulama Hizmet Planı seçmek için istemleri izleyin. Fiyatlandırma katmanı ve bölge için **B1 Basic'i** seçin.
+Buradan bir abonelik, genel olarak benzersiz bir uygulama adı, kaynak grubu ve bir App Service planı seçmek için istemleri izleyin. Fiyatlandırma Katmanı ve bir bölge için **B1 Basic** ' i seçin.
 
-Dağıtımdan sonra uygulamanız `http://<app name>.azurewebsites.net`' dan edinilebilir.
+Dağıtımdan sonra uygulamanız ' de kullanılabilir `http://<app name>.azurewebsites.net`.
 
-**Kaynak Grubu,** Uygulamanızın Azure'daki tüm kaynaklarının adlandırılmış bir koleksiyonudur. Örneğin, Bir Kaynak Grubu bir web sitesine, veritabanına ve Azure İşi'ne başvuruda bulunabilir.
+**Kaynak grubu** , Azure 'daki tüm uygulamanızın kaynaklarının adlandırılmış bir koleksiyonudur. Örneğin, bir kaynak grubu bir Web sitesi, bir veritabanı ve bir Azure Işlevi için başvuru içerebilir.
 
-**Uygulama Hizmet Planı,** web sitenizi barındırmak için kullanılacak fiziksel kaynakları tanımlar. Bu hızlı başlatma, **Linux** altyapısı nda **temel** barındırma planı kullanır, bu da sitenin diğer web sitelerinin yanı sıra bir Linux makinesinde barındırılan bir araç olacağı anlamına gelir. **Temel** planla başlarsanız, azure portalını kullanarak ölçeklendirebilirsiniz, böylece sizinki bir makinede çalışan tek sitedir.
+**App Service planı** , Web sitenizi barındırmak için kullanılacak fiziksel kaynakları tanımlar. Bu hızlı başlangıç, **Linux** altyapısında **temel** bir barındırma planı kullanır. Bu, sitenin diğer Web sitelerinden daha farklı bir Linux makinesinde barındırılması anlamına gelir. **Temel** planla başlatırsanız, bir makinede çalışan tek site olmak üzere ölçeğini ölçeklendirmek için Azure Portal kullanabilirsiniz.
 
-## <a name="browse-the-website"></a>Web sitesine göz atın
+## <a name="browse-the-website"></a>Web sitesine gidin
 
-**İşlemin** durumunu belirtmek için dağıtım sırasında Çıktı paneli açılır. İşlem tamamlandığında, **APP SERVICE** explorer'da oluşturduğunuz uygulamayı bulun, sağ tıklayın ve ardından tarayıcınızda siteyi açmak için Web **Sitesine Gözat'ı** seçin.
+İşlemin durumunu göstermek için dağıtım sırasında **Çıkış** paneli açılır. İşlem tamamlandığında, **App SERVICE** Explorer 'da oluşturduğunuz uygulamayı bulun, sağ tıklayın ve siteyi tarayıcınızda açmak Için **Web sitesine gidin** ' i seçin.
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)
@@ -78,11 +78,11 @@ Dağıtımdan sonra uygulamanız `http://<app name>.azurewebsites.net`' dan edin
 
 Tebrikler, bu hızlı başlangıcı başarıyla tamamladınız!
 
-Ardından, diğer Azure uzantılarına göz atın.
+Daha sonra diğer Azure uzantılarına göz atın.
 
 * [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
 * [Azure İşlevleri](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
-* [Azure CLI Araçları](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
-* [Azure Kaynak Yöneticisi Araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+* [Azure CLı araçları](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
+* [Azure Resource Manager araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
-Veya [Azure Araçları](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) uzantı paketini yükleyerek hepsini elde edin.
+Ya da [Azure Araçları](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) uzantısı paketini yükleyerek tümünü alın.

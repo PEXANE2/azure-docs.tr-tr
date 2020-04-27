@@ -1,6 +1,6 @@
 ---
-title: Azure'da Ses, VoIP ve SMS Mesajlaşması için Twilio'nun kullanılması
-description: Azure'daki Twilio API hizmetiyle nasıl telefon görüşmesi yapacağınızı ve SMS mesajı göndermeyi öğrenin. Düğüm.js ile yazılmış kod örnekleri.
+title: Azure 'da Voice, VoIP ve SMS mesajlaşması için Twilio kullanma
+description: Azure 'da bir telefon araması yapmayı ve Twilio API hizmetiyle SMS iletisi göndermenizi öğrenin. Node. js içinde yazılan kod örnekleri.
 services: ''
 documentationcenter: nodejs
 author: georgewallace
@@ -13,61 +13,61 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 164bedffcf9a1aca9f1fa46dea254fb928abcf04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "69637262"
 ---
-# <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Azure'da Ses, VoIP ve SMS Mesajlaşması için Twilio'nun kullanılması
-Bu kılavuz, Azure'da Twilio ve node.js ile iletişim kuranbilen uygulamaların nasıl geliştirilebildiğini gösterir.
+# <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Azure 'da Voice, VoIP ve SMS mesajlaşması için Twilio kullanma
+Bu kılavuzda, Azure 'da Twilio ve Node. js ile iletişim kuran uygulamalar oluşturma işlemlerinin nasıl yapılacağı gösterilmiştir.
 
 <a id="whatis"/>
 
 ## <a name="what-is-twilio"></a>Twilio nedir?
-Twilio, geliştiricilerin telefon görüşmeleri yapıp almasını, kısa mesaj göndermesini ve almasını ve VoIP aramalarını tarayıcı tabanlı ve yerel mobil uygulamalara yerleştirmesini kolaylaştıran bir API platformudur. Dalmadan önce bunun nasıl işlediğini kısaca inceleyelim.
+Twilio, geliştiricilerin telefon aramaları yapmasını ve almasını, SMS mesajları göndermesini ve almasını ve VoIP 'e, tarayıcı tabanlı ve yerel mobil uygulamalara çağrı yapmasını kolaylaştıran bir API platformudur. Bu, içinde kullanılmadan önce bunun nasıl çalıştığını kısaca ele alalım.
 
-### <a name="receiving-calls-and-text-messages"></a>Arama ve Kısa Mesaj Alma
-Twilio, geliştiricilerin hem arama hem de kısa mesaj göndermek ve almak için kullanılabilecek [programlanabilir telefon numaraları satın][purchase_phone] almalarına olanak tanır. Bir Twilio numarası gelen bir arama veya metin aldığında, Twilio web uygulamanıza bir HTTP POST veya GET isteği göndererek arama veya metni nasıl işleyeceğiniz hakkında talimatlar ister. Sunucunuz Twilio'nun HTTP isteğine, bir çağrının veya metnin nasıl işleyeceğinigösteren yönergeler içeren basit bir XML etiketi kümesi olan [TwiML][twiml]ile yanıt verecektir. Biz sadece bir dakika içinde TwiML örnekleri göreceksiniz.
+### <a name="receiving-calls-and-text-messages"></a>Aramalar ve metin Iletileri alma
+Twilio, geliştiricilerin hem çağrı hem de SMS mesajları göndermek ve almak için kullanılabilecek [programlanabilir telefon numaralarını satın][purchase_phone] almasına olanak tanır. Bir Twilio numarası gelen bir çağrı veya metin aldığında, Twilio, Web uygulamanızı bir HTTP POST veya GET isteği göndererek, çağrının veya metnin nasıl işleneceği hakkında yönergeler ister. Sunucunuz [Twiml][twiml]Ile Twilio HTTP isteğine yanıt verir. Bu, bir çağrının veya metnin nasıl işleneceği hakkında yönergeler içeren basıt bir XML etiketleri kümesidir. Yalnızca birkaç dakika içinde TwiML örnekleri görülecektir.
 
-### <a name="making-calls-and-sending-text-messages"></a>Arama Yapma ve Kısa Mesaj Gönderme
-Geliştiriciler, Twilio web hizmeti API'sine HTTP isteklerini gerçekleştirerek kısa mesaj gönderebilir veya giden telefon görüşmeleri başlatabilir. Giden aramalar için geliştirici, bağlı olduğunda giden aramayı nasıl işleyeceğiniz için TwiML yönergelerini döndüren bir URL de belirtmelidir.
+### <a name="making-calls-and-sending-text-messages"></a>Çağrı yapma ve SMS mesajı gönderme
+Geliştiriciler Twilio Web hizmeti API 'sine HTTP istekleri yaparak, SMS mesajları gönderebilir veya giden telefon aramaları başlatabilir. Giden çağrılar için, geliştirici bağlantı kurulduktan sonra giden çağrının nasıl işleneceği için TwiML yönergeleri döndüren bir URL de belirtmelidir.
 
-### <a name="embedding-voip-capabilities-in-ui-code-javascript-ios-or-android"></a>VoIP Özelliklerini UI koduna (JavaScript, iOS veya Android) yerleştirme
-Twilio, herhangi bir masaüstü web tarayıcısı, iOS uygulaması veya Android uygulamasını VoIP telefonuna dönüştürebilen istemci tarafındaki bir SDK sağlar. Bu makalede, tarayıcıda VoIP arama nasıl kullanılacağı üzerinde durulacak. Tarayıcıda çalışan *Twilio JavaScript SDK'ya* ek olarak, JavaScript istemcisine bir "yetenek belirteci" vermek için sunucu tarafı uygulaması (node.js uygulamamız) kullanılmalıdır. Sen [Twilio dev blogda][voipnode]node.js ile VoIP kullanma hakkında daha fazla bilgi edinebilirsiniz.
+### <a name="embedding-voip-capabilities-in-ui-code-javascript-ios-or-android"></a>Kullanıcı arabirimi kodunda VoIP özelliklerini katıştırma (JavaScript, iOS veya Android)
+Twilio, herhangi bir Masaüstü Web tarayıcısını, iOS uygulamasını veya Android uygulamasını bir VoIP telefonuna dönüştürmek için bir istemci tarafı SDK 'Sı sağlar. Bu makalede, tarayıcıda çağıran VoIP kullanma konusuna odaklanacağız. Tarayıcıda çalışan *Twilio JavaScript SDK 'sına* ek olarak, JavaScript istemcisine "yetenek belirteci" vermek için bir sunucu tarafı uygulamanın (node. js uygulamamız) kullanılması gerekir. [Twilio dev blogu üzerinde][voipnode]Node. js ile VoIP kullanma hakkında daha fazla bilgi edinebilirsiniz.
 
 <a id="signup"/>
 
-## <a name="sign-up-for-twilio-microsoft-discount"></a>Twilio için Kaydolun (Microsoft İndirimi)
-Twilio hizmetlerini kullanmadan önce [bir hesaba kaydolmalısınız.][signup] Microsoft Azure müşterileri özel bir indirimden yararlanabilir - [buradan kaydolduğunuzdan emin olun!][signup]
+## <a name="sign-up-for-twilio-microsoft-discount"></a>Twilio 'ye kaydolma (Microsoft Indirim)
+Twilio hizmetlerini kullanmadan önce [bir hesap için kaydolmanız][signup]gerekir. Microsoft Azure müşteriler özel bir indirim elde [edin. buraya kaydolduğunuzdan emin olun][signup]!
 
 <a id="azuresite"/>
 
-## <a name="create-and-deploy-a-nodejs-azure-website"></a>Bir düğüm oluşturma ve dağıtma Azure Web Sitesi
-Ardından, Azure'da çalışan bir düğüm.js web sitesi oluşturmanız gerekir. [Bunu yapmak için resmi belgeler burada yer almaktadır.][azure_new_site] Yüksek bir düzeyde, aşağıdakileri yapacaksınız:
+## <a name="create-and-deploy-a-nodejs-azure-website"></a>Node. js Azure Web sitesi oluşturma ve dağıtma
+Daha sonra, Azure üzerinde çalışan bir Node. js web sitesi oluşturmanız gerekecektir. [Bu işlemi gerçekleştirmek için resmi belgeler burada yer alır][azure_new_site]. Yüksek düzeyde, şunları yapabilirsiniz:
 
-* Azure hesabına kaydolma, zaten hesabınız yoksa
-* Yeni bir web sitesi oluşturmak için Azure yönetici konsolunu kullanma
-* Kaynak denetim desteği ekleme (git kullandığınızı varsayalım)
-* Basit bir `server.js` düğüm.js web uygulaması ile dosya oluşturma
-* Bu basit uygulamayı Azure'a dağıtma
+* Bir Azure hesabına kaydolma, zaten yoksa
+* Yeni bir Web sitesi oluşturmak için Azure Yönetici Konsolu 'nu kullanma
+* Kaynak denetimi desteği ekleme (git 'i kullandığınızı varsayacağız)
+* Basit Node. `server.js` js web uygulaması ile dosya oluşturma
+* Bu basit uygulamayı Azure 'a dağıtma
 
 <a id="twiliomodule"/>
 
-## <a name="configure-the-twilio-module"></a>Twilio Modüllerini Yapılandırın
-Daha sonra, Twilio API kullanan basit bir düğüm.js uygulaması yazmaya başlayacaktır. Başlamadan önce, Twilio hesap kimlik kimlik kimlik lerimizi yapılandırmamız gerekir.
+## <a name="configure-the-twilio-module"></a>Twilio modülünü yapılandırma
+Daha sonra, Twilio API 'sini kullanan basit bir Node. js uygulaması yazmaya başlayacağız. Başlamadan önce, Twilio hesabı kimlik bilgilerinizi yapılandırmamız gerekir.
 
-### <a name="configuring-twilio-credentials-in-system-environment-variables"></a>Sistem Ortamı Değişkenlerinde Twilio Kimlik Bilgilerinin Yapılandırılması
-Twilio arka uç karşı kimlik doğrulaması istekleri yapmak için, bizim hesap SID ve auth belirteci, bizim Twilio hesabı için kullanıcı adı ve şifre olarak ayarlanmış olarak işlev gerekir. Bunları Azure'daki düğüm modülüyle kullanılmak üzere yapılandırmanın en güvenli yolu, doğrudan Azure yönetici konsoluna ayarlayabildiğiniz sistem ortamı değişkenleridir.
+### <a name="configuring-twilio-credentials-in-system-environment-variables"></a>Sistem ortam değişkenlerinde Twilio kimlik bilgilerini yapılandırma
+Kimliği doğrulanmış istekleri Twilio arka ucuna karşı yapmak için, Twilio hesabımızın Kullanıcı adı ve parola olarak işlev gösteren hesap SID 'SI ve kimlik doğrulama belirtecimize ihtiyacımız var. Bunları Azure 'da node modülü ile kullanmak üzere yapılandırmanın en güvenli yolu, doğrudan Azure Yönetici Konsolu 'nda ayarlayabileceğiniz sistem ortam değişkenleri aracılığıyla yapılır.
 
-Düğüm.js web sitenizi seçin ve "CONFIGURE" bağlantısını tıklayın.  Biraz aşağı kaydırırsanız, uygulamanız için yapılandırma özelliklerini ayarlayabileceğiniz bir alan görürsünüz.  Twilio hesap kimlik bilgilerinizi[(Twilio Konsolunuzda bulunan)][twilio_console]gösterildiği gibi `TWILIO_ACCOUNT_SID` `TWILIO_AUTH_TOKEN`girin - sırasıyla bunları adlandırın ve belirttiğinizden emin olun:
+Node. js web sitenizi seçin ve "YAPıLANDıR" bağlantısına tıklayın.  Bir bit aşağı kaydırırsanız, uygulamanız için yapılandırma özelliklerini ayarlayabileceğiniz bir alan görürsünüz.  Twilio hesabı kimlik bilgilerinizi ([Twilio konsolunuzun içinde bulunur][twilio_console]) gösterildiği gibi girin; bunları `TWILIO_ACCOUNT_SID` sırasıyla, ve `TWILIO_AUTH_TOKEN`olarak girdiğinizden emin olun:
 
-![Azure yönetici konsolu][azure-admin-console]
+![Azure Yönetici Konsolu][azure-admin-console]
 
-Bu değişkenleri yapılandırıldıktan sonra, uygulamanızı Azure konsolunda yeniden başlatın.
+Bu değişkenleri yapılandırdıktan sonra, Azure konsolu 'nda uygulamanızı yeniden başlatın.
 
-### <a name="declaring-the-twilio-module-in-packagejson"></a>Twilio modüllerini paket içinde bildirme.json
-Sonra, [npm]üzerinden düğüm modülü bağımlılıklarını yönetmek için bir package.json oluşturmamız gerekir. *Azure/düğüm.js* öğreticisinde oluşturduğunuz `package.json` `server.js` dosyayla aynı düzeyde, '.  Bu dosyanın içine aşağıdakileri yerleştirin:
+### <a name="declaring-the-twilio-module-in-packagejson"></a>Twilio modülünü Package. JSON içinde bildirme
+Daha sonra, [NPM]aracılığıyla düğüm modülü bağımlılıklarımızı yönetmek için bir Package. JSON oluşturmamız gerekiyor. `server.js` *Azure/Node. js* öğreticisinde oluşturduğunuz dosyayla aynı düzeyde adlı `package.json`bir dosya oluşturun.  Bu dosyanın içine şunu girin:
 
 ```json
 {
@@ -88,12 +88,12 @@ Sonra, [npm]üzerinden düğüm modülü bağımlılıklarını yönetmek için 
 }
 ```
 
-Bu, twilio modüllerini bağımlılık olarak, popüler [Express web çerçevesi][express] ve EJS şablon motoru olarak bildirir.  Tamam, şimdi hepimiz hazırız.
+Bu, Twilio modülünü bağımlılık olarak, popüler [Express Web çerçevesi][express] ve EJS şablon altyapısını bildirir.  Artık tüm bunlar için bir kod yazalım!
 
 <a id="makecall"/>
 
-## <a name="make-an-outbound-call"></a>Giden Arama Yapma
-Seçtiğimiz bir numaraya çağrı yapacak basit bir form oluşturalım. Açın `server.js`ve aşağıdaki kodu girin. "CHANGE_ME" yazan yere dikkat edin - azure web sitenizin adını oraya koyun:
+## <a name="make-an-outbound-call"></a>Giden bir çağrı yapın
+Seçtiğimiz bir sayıya çağrı oluşturacak basit bir form oluşturalım. `server.js`Açın ve aşağıdaki kodu girin. Burada "CHANGE_ME" ifadesinin olduğunu ve Azure Web sitenizin adını buraya yerleştirdiğini aklınızda bulabilirsiniz:
 
 ```javascript
 // Module dependencies
@@ -165,7 +165,7 @@ app.listen(app.get('port'), function(){
 });
 ```
 
-Ardından, bu dizinin `views` içinde aşağıdaki `index.ejs` içerikleri içeren bir dosya oluşturun:
+Sonra, bu dizinin içinde adlı `views` bir dizin oluşturun, aşağıdaki içeriklerle adlı `index.ejs` bir dosya oluşturun:
 
 ```html
 <!DOCTYPE html>
@@ -187,12 +187,12 @@ Ardından, bu dizinin `views` içinde aşağıdaki `index.ejs` içerikleri içer
 </html>
 ```
 
-Şimdi, web sitenizi Azure'a dağıtın ve evinizi açın. Metin alanına telefon numaranızı girebilmeli ve Twilio numaranızdan bir çağrı alabilmelisiniz!
+Şimdi, Web sitenizi Azure 'a dağıtın ve evinizin açın. Telefon numaranızı metin alanına girebilmeniz ve Twilio numaranızı bir çağrı alabilmesi gerekir!
 
 <a id="sendmessage"/>
 
-## <a name="send-an-sms-message"></a>SMS Mesajı Gönder
-Şimdi, bir kısa mesaj göndermek için bir kullanıcı arabirimi ve form işleme mantığı oluşturalım. `server.js`Açın ve son çağrıdan sonra aşağıdaki `app.post`kodu ekleyin:
+## <a name="send-an-sms-message"></a>SMS Iletisi gönder
+Şimdi bir kısa mesaj göndermek için bir kullanıcı arabirimi ve form işleme mantığı ayarlayalım. `server.js`Açın ve son çağrısından sonra aşağıdaki kodu ekleyin `app.post`:
 
 ```javascript
 app.post('/sms', (request, response) => {
@@ -216,7 +216,7 @@ app.post('/sms', (request, response) => {
 });
 ```
 
-In `views/index.ejs`, bir numara ve kısa mesaj göndermek için ilk in altında başka bir form ekleyin:
+' `views/index.ejs`De, bir sayı ve bir kısa mesaj göndermek için ilk birinin altına başka bir form ekleyin:
 
 ```html
 <form action="/sms" method="POST">
@@ -228,26 +228,26 @@ In `views/index.ejs`, bir numara ve kısa mesaj göndermek için ilk in altında
 </form>
 ```
 
-Uygulamanızı Azure'a yeniden dağıtın ve artık bu formu gönderip kendinize (veya en yakın arkadaşlarınızdan herhangi birini) kısa mesaj gönderebilmelisiniz!
+Uygulamanızı Azure 'a yeniden dağıtın ve artık bu formu gönderebilmeniz ve kendinize (ya da en yakın arkadaşlarınızın herhangi birine) bir kısa mesaj gönderebilmelisiniz!
 
 <a id="nextsteps"/>
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Artık iletişim kuranabilecek uygulamalar oluşturmak için node.js ve Twilio kullanmanın temellerini öğrendiniz. Ama bu örnekler ancak Twilio ve node.js ile mümkün olan yüzeyçizik. Node.js ile Twilio kullanarak daha fazla bilgi için aşağıdaki kaynaklara göz atın:
+Artık, iletişim kuran uygulamalar oluşturmak için Node. js ve Twilio kullanma hakkında temel bilgileri öğrendiniz. Ancak bu örnekler, Twilio ve Node. js ile mümkün olduğunca fazla şeyi baştan halce. Node. js ile Twilio kullanma hakkında daha fazla bilgi için aşağıdaki kaynaklara göz atın:
 
-* [Resmi modül dokümanları][docs]
-* [Node.js uygulamaları ile VoIP Üzerinde Öğretici][voipnode]
-* [Votr - node.js ve CouchDB (üç bölümden) ile gerçek zamanlı SMS oylama uygulaması][votr]
-* [Tarayıcıda programlamayı düğümleme.js ile eşleştirme][pair]
+* [Resmi modül belgeleri][docs]
+* [Node. js uygulamalarıyla VoIP hakkında öğretici][voipnode]
+* [Votr-Node. js ve Couşdb (üç bölümden oluşan) ile gerçek zamanlı bir SMS oylama uygulaması][votr]
+* [Node. js ile tarayıcıda programlama ile eşleştirme][pair]
 
-Umarız Azure'da düğüm.js ve Twilio'nun hacklemelerini seversiniz!
+Azure 'da Node. js ve Twilio 'ı beğeneceğinizi umuyoruz!
 
 [purchase_phone]: https://www.twilio.com/console/phone-numbers/search
 [twiml]: https://www.twilio.com/docs/api/twiml
 [signup]: https://ahoy.twilio.com/azure
 [azure_new_site]: app-service/app-service-web-get-started-nodejs.md
 [twilio_console]: https://www.twilio.com/console
-[npm]: https://npmjs.org
+[NPM]: https://npmjs.org
 [express]: https://expressjs.com
 [voipnode]: https://www.twilio.com/blog/2013/04/introduction-to-twilio-client-with-node-js.html
 [docs]: https://www.twilio.com/docs/libraries/reference/twilio-node/

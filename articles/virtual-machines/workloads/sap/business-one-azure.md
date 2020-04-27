@@ -1,6 +1,6 @@
 ---
-title: Azure Sanal Makinelerde SAP Business One | Microsoft Dokümanlar
-description: Azure'da SAP Business One.
+title: Azure sanal makinelerinde SAP Business One | Microsoft Docs
+description: Azure 'da SAP Business One.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -16,143 +16,143 @@ ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 18409f93ab50f7d031ec78a55b9eaf8ad1b85a49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70101406"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Sanal Makineler'de SAP Business One
-Bu belge, SAP Business One'ı Azure Sanal Makinelere dağıtmak için kılavuz sağlar. Belgeler, SAP için Business one yükleme belgelerinin yerini alamaz. Belgeler, Azure altyapısının Business One uygulamalarını çalıştırması için temel planlama ve dağıtım yönergelerini kapsamalıdır.
+Bu belge, Azure sanal makinelerinde SAP Business One dağıtımı için rehberlik sağlar. Belgeler, SAP için Iş 'nin yükleme belgelerinin yerini almaz. Belgeler, Azure altyapısına ilişkin Iş tek uygulamaları çalıştırmak için temel planlama ve dağıtım yönergelerini kapsamalıdır.
 
-Business One iki farklı veritabanını destekler:
-- SQL Server - sap note #928839 - [Microsoft SQL Server için Sürüm Planlama](https://launchpad.support.sap.com/#/notes/928839)
-- SAP HANA - SAP HANA için tam SAP Business One destek matrisi için, [SAP Ürün Kullanılabilirlik](https://support.sap.com/pam) Matrisi'ni kullanıma
+İş biri iki farklı veritabanını destekler:
+- SQL Server-Bkz. [SAP Note #928839-Microsoft SQL Server Için yayın planlaması](https://launchpad.support.sap.com/#/notes/928839)
+- SAP HANA-SAP HANA için tam SAP Business One destek matrisi için [SAP ürün kullanılabilirliği matrisini](https://support.sap.com/pam) kullanıma alın
 
-SQL Server ile ilgili olarak, [SAP NetWeaver için Azure Sanal Makineler DBMS dağıtımında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide) belgelenen temel dağıtım konuları geçerlidir. SAP HANA için bu belgede dikkate alınacak hususlar belirtilmiştir.
+SQL Server, [SAP NetWeaver Için Azure sanal MAKINELER DBMS dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide) 'nda belgelendiği gibi temel dağıtım konuları geçerlidir. SAP HANA için bu belgede dikkat edilecek noktalar bahsedilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu kılavuzu kullanmak için aşağıdaki Azure bileşenleri hakkında temel bilgiye ihtiyacınız vardır:
+Bu kılavuzu kullanmak için aşağıdaki Azure bileşenleriyle temel bilgilere ihtiyacınız vardır:
 
-- [Windows'da Azure sanal makineleri](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
-- [Linux'ta Azure sanal makineleri](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-- [PowerShell ile Azure ağ ve sanal ağ yönetimi](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-virtual-network)
-- [CLI ile Azure ağ ve sanal ağlar](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+- [Windows üzerinde Azure sanal makineleri](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+- [Linux üzerinde Azure sanal makineleri](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
+- [PowerShell ile Azure ağ iletişimi ve sanal ağlar yönetimi](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-virtual-network)
+- [CLı ile Azure ağı ve sanal ağlar](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 - [Azure CLI ile Azure disklerini yönetme](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
-Yalnızca bir iş ile ilgileniyor olsanız bile, [AZURE Sanal Makinelerin SAP NetWeaver için planlanması ve uygulanması](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) iyi bir bilgi kaynağı olabilir.
+Yalnızca iş ile ilgileniyor olsanız bile, [SAP NetWeaver Için Azure sanal makineleri planlama ve uygulama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) belgeleri iyi bir bilgi kaynağı olabilir.
 
-Sap Business One'ı dağıtan örnek olarak şu varsayım:
+Bu varsayımı, SAP Işletmasının dağıtıldığı bir örnek olarak kullanılır:
 
-- VM gibi belirli bir altyapıya SAP HANA yüklemeye aşina
-- SAP Business One uygulamasını Azure VM'ler gibi bir altyapıya yüklemeye aşina
-- SAP Business One işletimine aşina ve seçilen DBMS sistemi
-- Azure'da altyapı dağıtma ya da dağıtma hakkında bilgi
+- VM gibi belirli bir altyapıya SAP HANA yükleme hakkında bilgi sahibi
+- SAP Business One uygulamasını Azure VM 'Leri gibi bir altyapıya yükleme
+- İşletim SAP Business One ve seçilen DBMS sistemi hakkında bilgi sahibi
+- Azure 'da altyapı dağıtımı hakkında bilgi edinin
 
-Tüm bu alanlar bu belgede yer alacaktır.
+Tüm bu alanların bu belgede kapsanmayacak.
 
-Azure belgelerinin yanı sıra, Business One'a atıfta bulunan veya iş bir için SAP'nin ana Notları olan ana SAP Notları'ndan haberdar olmalısınız:
+Azure belgelerinin yanı sıra, Iş için SAP 'den bir veya iş için merkezi notlar olan ana SAP notlarını bilmeniz gerekir:
 
-- [528296 - SAP Business One Bültenleri ve İlgili Ürünler Için Genel Genel Bakış Notu](https://launchpad.support.sap.com/#/notes/528296)
-- [2216195 - SAP Business One 9.2 için Sürüm Güncellemeler Notu, SAP HANA için sürüm](https://launchpad.support.sap.com/#/notes/2216195)
-- [2483583 - SAP Business One için Merkez Not 9,3](https://launchpad.support.sap.com/#/notes/2483583)
-- [2483615 - SAP Business One için Sürüm Güncellemeler Notu 9.3](https://launchpad.support.sap.com/#/notes/2483615)
-- [2483595 - SAP Business One için Toplu Not 9.3 Genel Konular](https://launchpad.support.sap.com/#/notes/2483595)
-- [2027458 - SAP Business One'ın SAP HANA İle İlgili Konuları için Kolektif Danışmanlık Notu, SAP HANA için sürüm](https://launchpad.support.sap.com/#/notes/2027458)
-
-
-## <a name="business-one-architecture"></a>Business One Mimarlık
-Business One iki katmanı olan bir uygulamadır:
-
-- 'Şişman' istemcisi olan bir istemci katmanı
-- Kiracı için veritabanı şemasını içeren bir veritabanı katmanı
-
-İstemci kısmında hangi bileşenlerin çalıştığını ve sunucu bölümünde hangi parçaların çalıştığını sap [Business One Administrator's Guide'da](https://help.sap.com/http.svc/rc/879bd9289df34a47af838e67d74ea302/9.3/en-US/AdministratorGuide_SQL.pdf) daha iyi bir genel bakış belgelenmiştir 
-
-İstemci katmanı ile DBMS katmanı arasında ağır gecikme açısından kritik etkileşim olduğundan, Azure'da dağıtılırken her iki aşamanın da Azure'da bulunması gerekir. kullanıcıların daha sonra Business One istemci bileşenleri için bir RDS hizmeti çalıştıran bir veya birden çok VM içine RDS olması olağandır.
-
-### <a name="sizing-vms-for-sap-business-one"></a>SAP Business One için BOYUTlandırma VM'leri
-
-İstemci VM(ler) boyutlandırma ile ilgili olarak, kaynak gereksinimleri SAP tarafından belge [SAP Business One Donanım Gereksinimleri Kılavuzu'nda](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)belgelenir. Azure için, belgenin 2.4 bölümünde belirtilen gereksinimlere odaklanmanız ve hesaplamanız gerekir.
-
-Business One istemci bileşenlerini ve DBMS ana bilgisayarını barındırmak için Azure sanal makineleri olduğundan, yalnızca SAP NetWeaver tarafından desteklenen VM'lere izin verilir. SAP NetWeaver desteklenen Azure VM'lerinin listesini bulmak [için SAP Note #1928533'ı](https://launchpad.support.sap.com/#/notes/1928533)okuyun.
-
-SAP HANA'nın Business One için DBMS arka ucu olarak çalıştırıldığı, [HANA certifeid IaaS platform listesinde](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) HANA'da Business için listelenen sadece VM'ler HANA için desteklenmektedir. Business One istemci bileşenleri, SAP HANA'nın DBMS sistemi olarak bu güçlü kısıtlamadan etkilenmez.
-
-### <a name="operating-system-releases-to-use-for-sap-business-one"></a>SAP Business One için kullanılacak işletim sistemi bültenleri
-
-Prensip olarak, her zaman en son işletim sistemi sürümlerini kullanmak en iyisidir. Özellikle Linux alanında, yeni Azure işlevi Suse ve Red Hat'in daha yeni sürümleriyle tanıtıldı. Windows tarafında, Windows Server 2016'nın kullanılması önerilir.
+- [528296-genel bakış, SAP Business One yayınları ve Ilgili ürünler için](https://launchpad.support.sap.com/#/notes/528296)
+- [2216195-sürüm güncelleştirmeleri için SAP Business One 9,2, sürüm SAP HANA](https://launchpad.support.sap.com/#/notes/2216195)
+- [2483583-SAP Business One 9,3 için merkezi](https://launchpad.support.sap.com/#/notes/2483583)
+- [2483615-yayın güncelleştirmeleri için SAP Business One 9,3](https://launchpad.support.sap.com/#/notes/2483615)
+- [2483595-SAP Business One 9,3 genel sorunlar için toplu Not](https://launchpad.support.sap.com/#/notes/2483595)
+- [2027458-SAP HANA Ilgili SAP Business One konuları için toplu danışmanlık, SAP HANA sürümü](https://launchpad.support.sap.com/#/notes/2027458)
 
 
-## <a name="deploying-infrastructure-in-azure-for-sap-business-one"></a>SAP Business One için Azure'da altyapı dağıtma
-Sonraki birkaç bölümde, SAP'yi dağıtmak için önemli olan altyapı parçaları.
+## <a name="business-one-architecture"></a>İş One mimarisi
+İş, iki katmana sahip bir uygulamadır:
+
+- ' FAT ' istemcisiyle istemci katmanı
+- Bir kiracının veritabanı şemasını içeren bir veritabanı katmanı
+
+İstemci bölümünde hangi bileşenlerin çalıştığını ve sunucu bölümünde çalışmakta olan parçaların [SAP Business One Yönetici Kılavuzu](https://help.sap.com/http.svc/rc/879bd9289df34a47af838e67d74ea302/9.3/en-US/AdministratorGuide_SQL.pdf) 'nda belgelendiği daha iyi bir genel bakış 
+
+İstemci katmanı ve DBMS katmanı arasında ağır gecikme süresi açısından kritik bir etkileşim olduğundan, her iki katmanın Azure 'da dağıtma sırasında Azure 'da bulunması gerekir. Kullanıcıların, Iş tek istemci bileşenleri için bir RDS hizmetini çalıştıran bir veya birden çok VM 'de RDS.
+
+### <a name="sizing-vms-for-sap-business-one"></a>SAP Iş için VM 'Leri boyutlandırma
+
+İstemci VM 'leri boyutlandırmasıyla ilgili olarak, kaynak gereksinimleri, belge [SAP Iş bir donanım gereksinimleri Kılavuzu](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)'nda SAP tarafından belgelenmiştir. Azure için, belge Bölüm 2,4 ' de belirtilen gereksinimlere odaklanmanız ve hesaplamanız gerekir.
+
+Iş tek istemci bileşenlerini ve DBMS konağını barındırmak için Azure sanal makineleri olarak yalnızca SAP NetWeaver destekleniyor olan VM 'Lere izin verilir. SAP NetWeaver desteklenen Azure VM 'lerinin listesini bulmak için [SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533)makalesini okuyun.
+
+Iş için DBMS arka ucu olarak SAP HANA çalıştırmak, yalnızca Hana [sertifikası](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) 'nda Hana 'da iş Için listelenen VM 'ler için desteklenir. Iş One istemci bileşenleri, SAP HANA DBMS sistemi olarak bu daha güçlü kısıtlamadan etkilenmez.
+
+### <a name="operating-system-releases-to-use-for-sap-business-one"></a>SAP Business One için kullanılacak işletim sistemi sürümleri
+
+İlke ' de en son işletim sistemi sürümlerini kullanmak her zaman en iyisidir. Özellikle Linux alanında yeni Azure işlevselliği, SUSE ve Red Hat 'in farklı, son küçük sürümleriyle birlikte sunulmuştur. Windows tarafında, Windows Server 2016 kullanılması önemle önerilir.
+
+
+## <a name="deploying-infrastructure-in-azure-for-sap-business-one"></a>Azure 'da SAP Business One için altyapı dağıtma
+Sonraki birkaç bölümde SAP dağıtmaya yönelik altyapı parçaları.
 
 ### <a name="azure-network-infrastructure"></a>Azure ağ altyapısı
-Azure'da dağıtmanız gereken ağ altyapısı, tek bir Business One sistemini kendiniz için dağıtıp dağıtmadığınıza bağlıdır. İster müşteriler için düzinelerce Business One sistemine ev sahipliği yapan bir ev sahibi olun. Ayrıca, Azure'a nasıl bağlanıp bağlanmadığınızkonusunda tasarımda küçük değişiklikler de olabilir. Farklı olanaklardan geçerek, Azure'a VPN bağlantısına sahip olduğunuz ve Active Directory'nizi [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design) veya [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) aracılığıyla Azure'a genişlettiğiniz bir tasarım.
+Azure 'da dağıtmanız gereken ağ altyapısı, kendiniz için tek bir Iş sistemi dağıtdığınıza bağlıdır. Ya da müşteriler için düzinelerce Iş için bir sistem barındıran bir barındırıcı olup olmadığı. Ayrıca, Azure 'a nasıl bağlanabileceğini tasarımda küçük değişiklikler de olabilir. Azure 'a VPN bağlantınız olan ve Active Directory [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design) veya [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) aracılığıyla Azure 'a genişleten bir tasarıma sahip farklı olasılıklardan ilerleyeceğiz.
 
-![Business One ile basit ağ yapılandırması](./media/business-one-azure/simple-network-with-VPN.PNG)
+![Iş ile basit ağ yapılandırması](./media/business-one-azure/simple-network-with-VPN.PNG)
 
-Sunulan basitleştirilmiş yapılandırma, yönlendirmeyi denetlemeye ve sınırlamaya izin veren birkaç güvenlik örneği sunar. Bu ile başlar 
+Sunulan Basitleştirilmiş yapılandırma, yönlendirmeyi denetlemeye ve sınırlamaya izin veren çeşitli güvenlik örnekleri sunar. İle başlar 
 
-- Müşteri şirket içi taraftaki yönlendirici/güvenlik duvarı.
-- Bir sonraki örnek, SAP Business'ınızı bir yapılandırmanızda çalıştırdığınız Azure VNet için yönlendirme ve güvenlik kurallarını tanıtmak için kullanabileceğiniz [Azure Ağ Güvenlik Grubu'dur.](https://docs.microsoft.com/azure/virtual-network/security-overview)
-- Business One istemcisi kullanıcılarının veritabanını çalıştıran Business One sunucusunu da görebilmesi için, Business one istemcisini barındıran VM'yi ve iş bir sunucusunu VNet içindeki iki farklı alt ağda ayırmanız gerekir.
-- İş bir sunucusuna erişimi sınırlamak için iki farklı alt ağiçin yeniden atanan Azure NSG'yi kullanırsınız.
+- Müşterinin Şirket içi tarafında yönlendirici/güvenlik duvarı.
+- Sonraki örnek, içinde SAP Business One yapılandırmanızı çalıştırdığınız Azure VNet 'in yönlendirme ve güvenlik kurallarını tanıtmak için kullanabileceğiniz [Azure ağ güvenlik grubudur](https://docs.microsoft.com/azure/virtual-network/security-overview) .
+- Iş kolu kullanıcılarının, veritabanını çalıştıran Iş tek bir sunucuyu çalıştıran sunucuyu görebilmesi için, iş bir istemciyi ve iş tek sunucusunu barındıran VM 'yi VNet 'in içindeki iki farklı alt ağda ayırmanız gerekir.
+- Iş tek sunucuya erişimi sınırlandırmak için, Azure NSG 'yi iki farklı alt ağa yeniden atandı.
 
-Azure ağ yapılandırmasının daha gelişmiş bir sürümü, [hub ve spoke mimarisinin](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)Azure belgelenmiş en iyi uygulamalarını temel almaktadır. Hub ve spoke'nin mimari deseni, ilk basitleştirilmiş yapılandırmayı şu şekilde değiştirir:
+Azure ağ yapılandırması 'nın daha karmaşık bir sürümü, [hub ve bağlı bileşen mimarisinin Azure tarafından belgelenen en iyi yöntemlerini](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)temel alır. Hub ve bağlı bileşen mimari mimarisi, ilk Basitleştirilmiş yapılandırmayı şöyle bir şekilde değiştirir:
 
 
-![Business One ile hub ve spoke yapılandırması](./media/business-one-azure/hub-spoke-network-with-VPN.PNG)
+![Iş ile hub ve bağlı bileşen yapılandırması](./media/business-one-azure/hub-spoke-network-with-VPN.PNG)
 
-Kullanıcıların Azure'a özel bir bağlantı olmadan internet üzerinden bağlandığı durumlarda, Azure'daki ağın tasarımı, [Azure ile Internet arasındaki DMZ](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-dmz)için Azure başvuru mimarisinde belgelenen ilkelerle uyumlu olmalıdır.
+Kullanıcıların Azure 'a özel bağlantı olmadan internet üzerinden bağlandığı durumlar için, Azure 'da ağ tasarımı, Azure [Ile internet arasında DMZ](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-dmz)için Azure başvuru mimarisinde belgelenen ilkelere göre hizalanmalıdır.
 
-### <a name="business-one-database-server"></a>Business One veritabanı sunucusu
-Veritabanı türü için SQL Server ve SAP HANA kullanılabilir. DBMS'den bağımsız olarak, azure VM'lerde ve ilgili ağ ve depolama konularında DBMS dağıtımları hakkında genel bir anlayış elde etmek [için, SAP iş yükü için Azure Sanal Makineler DBMS dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) için gereken bilgileri okumanız gerekir.
+### <a name="business-one-database-server"></a>İş tek veritabanı sunucusu
+Veritabanı türü için SQL Server ve SAP HANA kullanılabilir. DBMS 'den bağımsız olarak, Azure VM 'Leri [Için Azure sanal MAKINELER DBMS dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) ve ilgili ağ ve depolama konuları hakkında genel bilgi edinmek IÇIN, SAP iş yüküne yönelik belge konularını okumalısınız.
 
-Zaten belirli ve genel veritabanı belgelerinde vurgulanmış olsa da, kendinizi aşina yapmalısınız:
+Yalnızca belirli ve genel veritabanı belgelerinde vurgulandı olsa da şunları öğrenmelisiniz:
 
-- [Azure'daki Windows sanal makinelerinin kullanılabilirliğini yönetin](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) ve [Azure'daki Linux sanal makinelerinin kullanılabilirliğini yönetin](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability)
+- Azure ['Da Windows sanal makinelerinin kullanılabilirliğini yönetme](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) ve [Linux sanal makinelerinin Azure 'da kullanılabilirliğini yönetme](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability)
 - [Sanal Makineler için SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
-Bu belgeler, depolama türleri ve yüksek kullanılabilirlik yapılandırmaseçimi ne karar vermenize yardımcı olur.
+Bu belgeler, depolama türleri ve yüksek kullanılabilirlik yapılandırması seçimine karar vermenize yardımcı olmalıdır.
 
-Prensipte şunları yapmalısın:
+İlke ' de şunları yapmalısınız:
 
-- Standart HDD'ler üzerinden Premium SSD'leri kullanın. Kullanılabilir disk türleri hakkında daha fazla bilgi edinmek için makalemize bir [disk türü seçin](../../windows/disks-types.md)
-- Azure Yönetilen diskleri yönetilmeyen diskler üzerinde kullanma
-- Disk yapılandırmanızla yapılandırılan yeterli IOPS ve G/Ç iş sahibi olduğunuzdan emin olun
-- Uygun maliyetli depolama yapılandırması için /hana/veri ve /hana/log hacmini birleştirin
+- Standart HDD 'ler üzerinden Premium SSD 'leri kullanın. Kullanılabilir disk türleri hakkında daha fazla bilgi edinmek için bkz. makalemiz [bir disk türü seçin](../../windows/disks-types.md)
+- Yönetilmeyen diskler üzerinde Azure yönetilen disklerini kullanma
+- Disk yapılandırmanızla yapılandırılmış yeterli ıOPS ve g/ç aktarım hızına sahip olduğunuzdan emin olun
+- Maliyetli bir depolama yapılandırması sağlamak için/Hana/Data ve/Hana/log birimini birleştirin
 
 
 #### <a name="sql-server-as-dbms"></a>DBMS olarak SQL Server
-SQL Server'ı Business One için DBMS olarak dağıtmak [için, SAP NetWeaver için SQL Server Azure Sanal Makineler DBMS dağıtımı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver)na gidin. 
+Iş için DBMS olarak SQL Server dağıtmak için, [SAP NetWeaver Için Azure sanal MAKINELER DBMS dağıtımı SQL Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver)belgeye gidin. 
 
 SQL Server için DBMS tarafı için kaba boyutlandırma tahminleri şunlardır:
 
 | Kullanıcı sayısı | Sanal çekirdek | Bellek | Örnek VM türleri |
 | --- | --- | --- | --- |
-| 20'ye kadar | 4 | 16 GB | D4s_v3, E4s_v3 |
-| 40'a kadar | 8 | 32 GB | D8s_v3, E8s_v3 |
-| 80'e kadar | 16 | 64 GB | D16s_v3, E16s_v3 |
-| 150'ye kadar | 32 | 128 GB | D32s_v3, E32s_v3 |
+| en fazla 20 | 4 | 16 GB | D4s_v3, E4s_v3 |
+| 40 kadar | 8 | 32 GB | D8s_v3, E8s_v3 |
+| 80 kadar | 16 | 64 GB | D16s_v3, E16s_v3 |
+| 150 kadar | 32 | 128 GB | D32s_v3, E32s_v3 |
 
-Yukarıda listelenen boyutlandırma ile başlamak için bir fikir vermelidir. Daha az veya daha fazla kaynağa ihtiyacınız olabilir, bu durumda azure'da bir uyarlama kolaydır. VM türleri arasında bir değişiklik, VM'nin yeniden başlatılmasıyla mümkündür.
+Yukarıda listelenen boyut, ile başlamak için bir fikir vermelidir. Daha az veya daha fazla kaynağa ihtiyacınız olabilir, bu durumda Azure üzerinde bir uyumluluk daha kolay olur. VM türleri arasında bir değişiklik, yalnızca VM 'nin yeniden başlatılmasına olanak tanır.
 
-#### <a name="sap-hana-as-dbms"></a>SAP HANA - DBMS
-Aşağıdaki bölümlerde SAP HANA'yı DBMS olarak kullanarak [Azure işlemleri kılavuzundaki BELGE SAP HANA'nın](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)dikkatlerini takip etmelisiniz.
+#### <a name="sap-hana-as-dbms"></a>DBMS olarak SAP HANA
+SAP HANA DBMS olarak kullanarak aşağıdaki bölümlerde, [Azure işlemler Kılavuzu 'ndaki belge SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)ilgili hususları izlemeniz gerekir.
 
-Azure'da Business One veritabanı olarak SAP HANA çevresinde yüksek kullanılabilirlik ve olağanüstü durum kurtarma yapılandırmaları için, [Azure sanal makineleri için SAP HANA yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview) belgelerini ve bu belgeden işaret edilen belgeleri okumalısınız.
+Azure 'da bir Iş için veritabanı olarak SAP HANA çevresindeki yüksek kullanılabilirlik ve olağanüstü durum kurtarma yapılandırmalarında, [Azure sanal makineler için yüksek kullanılabilirlik SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview) ve bu belgeden ulaşılan belgeler için belgeleri okumanız gerekir.
 
-SAP HANA yedekleme ve geri yükleme stratejileri için, [Azure Sanal Makineler'de SAP HANA için](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide) belge Yedekleme kılavuzunu ve bu belgeden işaret edilen belgeleri okumalısınız.
+SAP HANA yedekleme ve geri yükleme stratejileri için, [Azure sanal makinelerinde SAP HANA belge yedekleme kılavuzunu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide) ve bu belgeden işaret edilen belgeleri okumanız gerekir.
 
  
-### <a name="business-one-client-server"></a>Business One istemci sunucusu
-Bu bileşenler için depolama konuları birincil endişe değildir. yine de, güvenilir bir platforma sahip olmak istiyorum. Bu nedenle, bu VM için, temel VHD için bile Azure Premium Depolama'yı kullanmanız gerekir. [SAP Business One Donanım Gereksinimleri Kılavuzu'nda](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)verilen verilerle VM'yi boyutlandırma. Azure için, belgenin 2.4 bölümünde belirtilen gereksinimlere odaklanmanız ve hesaplamanız gerekir. Gereksinimleri hesaplarken, sizin için ideal VM'yi bulmak için bunları aşağıdaki belgelerle karşılaştırmanız gerekir:
+### <a name="business-one-client-server"></a>İş tek istemci sunucusu
+Bu bileşenler için depolama konuları birincil sorun değildir. Bununla birlikte, güvenilir bir platforma sahip olmak istiyorsunuz. Bu nedenle, temel VHD için bile bu sanal makine için Azure Premium Depolama kullanmanız gerekir. VM 'yi, [SAP Business One donanım gereksinimleri kılavuzunda](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)verilen verilerle boyutlandırma. Azure için, belge Bölüm 2,4 ' de belirtilen gereksinimlere odaklanmanız ve hesaplamanız gerekir. Gereksinimleri hesaplarken, sizin için ideal VM 'yi bulmak için bunları aşağıdaki belgelere göre karşılaştırmanız gerekir:
 
 - [Azure'daki Windows sanal makinesi boyutları](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
-- [SAP Not #1928533](https://launchpad.support.sap.com/#/notes/1928533)
+- [SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
-Gereken CPU ve bellek sayısını Microsoft tarafından belgelenenlerle karşılaştırın. Ayrıca VM'leri seçerken ağ iş buzunu aklınızda bulundurun.
+Microsoft tarafından belgelenme için gereken CPU ve bellek sayısını karşılaştırın. Ayrıca, VM 'Leri seçerken ağ aktarım hızını göz önünde bulundurun.
 
 
 

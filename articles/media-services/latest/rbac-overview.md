@@ -1,6 +1,6 @@
 ---
-title: Medya Hizmetleri hesapları için rol tabanlı erişim denetimi - Azure | Microsoft Dokümanlar
-description: Bu makalede, Azure Medya Hizmetleri hesapları için rol tabanlı erişim denetimi (RBAC) açıklanmaktadır.
+title: Media Services hesapları için rol tabanlı erişim denetimi-Azure | Microsoft Docs
+description: Bu makalede Azure Media Services hesapları için rol tabanlı erişim denetimi (RBAC) açıklanmaktadır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,21 +13,21 @@ ms.date: 05/23/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 93b2cd3a2565b14ea07d6db6b14dd146e4223528
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "66236912"
 ---
-# <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Medya Hizmetleri hesapları için rol tabanlı erişim denetimi (RBAC)
+# <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Media Services hesapları için rol tabanlı erişim denetimi (RBAC)
 
-Şu anda Azure Medya Hizmetleri, hizmete özgü özel roller tanımlamamaktadır. Medya Hizmetleri hesabına tam erişim elde etmek için müşteriler **Sahibi** veya **Katılımcı'nın**yerleşik rollerini kullanabilir. Bu roller arasındaki temel fark şudur: **Sahibi** bir kaynağa kimlerin erişebileceğini ve **Katılımcının** erişemeyeceğini denetleyebilir. Yerleşik **Reader** rolü de kullanılabilir, ancak kullanıcı veya uygulama yalnızca Medya Hizmetleri API'lerine okuma erişimine sahip olur. 
+Şu anda Azure Media Services, hizmete özgü özel bir rol tanımlamaz. Müşteriler Media Services hesabına tam erişim sağlamak için, **sahip** veya **katkıda**bulunan yerleşik rollerini kullanabilir. Bu roller arasındaki temel fark şudur: **sahip** , bir kaynağa kimlerin erişebileceğini denetleyebilir ve **katkıda** bulunan başarısız olur. Yerleşik **okuyucu** rolü de kullanılabilir, ancak kullanıcı veya uygulamanın yalnızca Media Services API 'lerine okuma erişimi olur. 
 
 ## <a name="design-principles"></a>Tasarım ilkeleri
 
-v3 API’nin temel tasarım ilkelerinden biri API’yi daha güvenli hale getirmektir. v3 API'ler **Get** or **List** işlemlerindeki sırları veya kimlik bilgilerini döndürmez. Anahtarlar her zaman null, boş veya yanıttan ayıklanmış olur. Kullanıcının sırları veya kimlik bilgilerini almak için ayrı bir eylem yöntemi çağırması gerekir. **Reader** rolü Asset.ListContainerSas, StreamingLocator.ListContentKeys, ContentKeyPolicies.GetPolicyPropertiesWithSecrets gibi işlemleri arayamaz. Ayrı eylemlere sahip olmak, istenirse özel bir rolde daha ayrıntılı RBAC güvenlik izinleri ayarlamanızı sağlar.
+v3 API’nin temel tasarım ilkelerinden biri API’yi daha güvenli hale getirmektir. v3 API 'Leri, **Get** veya **list** işlemlerinde gizli dizileri veya kimlik bilgilerini döndürmez. Anahtarlar her zaman null, boş veya yanıttan ayıklanmış olur. Kullanıcıların gizli dizileri veya kimlik bilgilerini almak için ayrı bir eylem yöntemi çağırması gerekir. **Okuyucu** rolü, varlık. ListContainerSas, StreamingLocator. ListContentKeys, ContentKeyPolicies. Getpolicypropertieswithgizlilikler gibi işlemleri çağıramaz. Ayrı eylemlere sahip olmak isterseniz özel bir rolde daha ayrıntılı RBAC güvenlik izinleri ayarlamanıza olanak sağlar.
 
-Medya Hizmetleri'nin desteklediği işlemleri listelemek için şunları yapın:
+Media Services işlemlerini desteklemek için şunları yapın:
 
 ```csharp
 foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operations.List())
@@ -36,16 +36,16 @@ foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operation
 }
 ```
 
-[Yerleşik rol tanımları](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) makalesi, rolün tam olarak ne sağladığını söyler. 
+[Yerleşik rol tanımları](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) makalesi, rolün ne olduğunu tam olarak söyler. 
 
 Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Klasik abonelik yönetici rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 - [Azure kaynakları için RBAC nedir?](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [Erişimi yönetmek için RBAC'ı kullanın](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [Medya Hizmetleri kaynak sağlayıcı işlemleri](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftmedia)
+- [Erişimi yönetmek için RBAC kullanma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
+- [Media Services kaynak sağlayıcısı işlemleri](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftmedia)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Medya Hizmetleri v3 API'leri ile geliştirme](media-services-apis-overview.md)
-- [Medya Hizmetleri .NET'i kullanarak içerik anahtarı ilkesini elde edin](get-content-key-policy-dotnet-howto.md)
+- [Media Services v3 API 'Leri ile geliştirme](media-services-apis-overview.md)
+- [Media Services .NET kullanarak içerik anahtarı ilkesi al](get-content-key-policy-dotnet-howto.md)

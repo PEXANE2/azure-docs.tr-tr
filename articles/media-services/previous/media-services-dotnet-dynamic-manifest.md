@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services .NET SDK ile Filtre Oluşturma
-description: Bu konu, istemcinizin bir akışın belirli bölümlerini akışı için bunları kullanabilmesi için filtrelerin nasıl oluşturulabileceğini açıklar. Medya Hizmetleri, bu seçici akışı elde etmek için dinamik bildirimler oluşturur.
+description: Bu konuda, istemcinizin bir akışın belirli bölümlerini akışa almak için bunları kullanabilmesi için filtrelerin nasıl oluşturulacağı açıklanmaktadır. Media Services, bu seçmeli akışa ulaşmak için dinamik bildirimler oluşturuyor.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,37 +16,37 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: cenkdin
 ms.openlocfilehash: c60b223f91a151bf63cabc5e95816f2545022503
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "69016597"
 ---
-# <a name="creating-filters-with-media-services-net-sdk"></a>Medya Hizmetleri ile Filtre Oluşturma .NET SDK 
+# <a name="creating-filters-with-media-services-net-sdk"></a>Media Services .NET SDK ile Filtreler oluşturma 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
-> * [Geri kalanı](media-services-rest-dynamic-manifest.md)
+> * [REST](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
-2.17 sürümüyle başlayarak, Medya Hizmetleri varlıklarınız için filtreler tanımlamanıza olanak tanır. Bu filtreler, müşterilerinizin aşağıdaki gibi şeyler yapmayı seçmelerine olanak tanıyan sunucu tarafı kurallarıdır: videonun yalnızca bir bölümünü oynatma (videonun tamamını oynatmak yerine) veya yalnızca müşterinizin cihazının işleyebilir ses ve video yorumlamalarının bir alt kümesini belirtin (bunun yerine varlıkla ilişkili tüm yorumlamalar). Varlıklarınızın bu filtrelemi, müşterinizin belirtilen filtre(ler'e dayalı bir video akışı için istek üzerine oluşturulan **Dinamik Bildirimler)** aracılığıyla gerçekleştirilir.
+2,17 sürümünden itibaren, Media Services varlıklarınız için filtreler tanımlamanızı sağlar. Bu filtreler, müşterilerinizin, bir videonun yalnızca bir bölümünü kayıttan yürütme (videonun tamamını çalmak yerine) veya yalnızca müşterinizin cihazının işleyebileceği ses ve video çevirilerinin bir alt kümesini (varlıkla ilişkili tüm yorumlamalar yerine) belirtmek için bir sunucu tarafı kurallarıdır. Varlıklarınızın bu şekilde filtrelenmesi, müşterinizin, belirtilen filtreye göre video akışı isteği üzerine oluşturulan **dinamik bildirimle**gerçekleştirilir.
 
-Filtreler ve Dinamik Bildirim ile ilgili daha ayrıntılı bilgi için [Dinamik bildirimlere genel bakış](media-services-dynamic-manifest-overview.md)bakın.
+Filtreler ve dinamik bildirimle ilgili daha ayrıntılı bilgi için bkz. [dinamik bildirimlere genel bakış](media-services-dynamic-manifest-overview.md).
 
-Bu makalede, filtre oluşturmak, güncelleştirmek ve silmek için Media Services .NET SDK'nın nasıl kullanılacağı gösterilmektedir. 
+Bu makalede, filtre oluşturmak, güncelleştirmek ve silmek için .NET SDK Media Services nasıl kullanılacağı gösterilmektedir. 
 
-Bir filtreyi güncellerseniz, kuralların yenilenmesi için bitiş noktası akışının iki dakika kadar sürebileceğini unutmayın. İçerik bu filtre kullanılarak sunulduysa (ve yakınlıkve CDN önbelleklerinde önbelleğe alınmışsa), bu filtreyi güncelleştirmek oynatıcı hatalarına neden olabilir. Filtreyi güncelledikten sonra önbelleği her zaman temizleyin. Bu seçenek mümkün değilse, farklı bir filtre kullanmayı düşünün. 
+Note bir filtreyi güncelleştirirseniz akış uç noktasının kuralların yenilenmesi için iki dakika sürebilir. İçerik bu filtre kullanılarak sunulduysa (ve proxy 'lerde ve CDN önbelleklerde önbelleğe alınmışsa), bu filtrenin güncelleştirilmesi oynatıcı hatalara neden olabilir. Filtreyi güncelleştirdikten sonra her zaman önbelleğin işaretini kaldırın. Bu seçenek mümkün değilse, farklı bir filtre kullanmayı düşünün. 
 
 ## <a name="types-used-to-create-filters"></a>Filtre oluşturmak için kullanılan türler
-Filtreler oluşturulurken aşağıdaki türler kullanılır: 
+Şu türler, filtre oluştururken kullanılır: 
 
-* **IStreamingFiltresi**.  Bu tür aşağıdaki REST API [Filtresi](https://docs.microsoft.com/rest/api/media/operations/filter) dayanmaktadır
-* **iStreamingAssetFiltresi**. Bu tür aşağıdaki REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter) dayanmaktadır
-* **SunumZaman Aralığı**. Bu tür aşağıdaki REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange) dayanmaktadır
-* **FilterTrackSelectStatement** ve **IFilterTrackPropertyCondition**. Bu türler aşağıdaki REST API'leri [FilterTrackSelect ve FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect) dayanmaktadır
+* **Imingfilter**.  Bu tür, aşağıdaki REST API [filtreye](https://docs.microsoft.com/rest/api/media/operations/filter) dayalıdır
+* **Imingassetfilter**. Bu tür, aşağıdaki REST API [Assetfilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter) öğesine dayalıdır
+* **Presentationtimerange**. Bu tür, şu REST API [Presentationtimerange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange) öğesine dayalıdır
+* **Filtertrackselectdeyimin** ve **Ifiltertrackpropertycondition**. Bu türler, şu REST API 'Lerine dayalıdır [Filtertrackselect ve FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
-## <a name="createupdatereaddelete-global-filters"></a>Genel filtreler oluşturma/güncelleme/Okuma/Silme
-Aşağıdaki kod, varlık filtreleri oluşturmak, güncelleştirmek, okumak ve silmek için .NET'in nasıl kullanılacağını gösterir.
+## <a name="createupdatereaddelete-global-filters"></a>Genel Filtreleri oluştur/güncelleştir/oku/Sil
+Aşağıdaki kod, varlık filtrelerini oluşturmak, güncelleştirmek, okumak ve silmek için .NET 'in nasıl kullanılacağını gösterir.
 
 ```csharp
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
@@ -75,8 +75,8 @@ Aşağıdaki kod, varlık filtreleri oluşturmak, güncelleştirmek, okumak ve s
     filter.Delete();
 ```
 
-## <a name="createupdatereaddelete-asset-filters"></a>Varlık filtreleri oluşturma/güncelleme/Okuma/Silme
-Aşağıdaki kod, varlık filtreleri oluşturmak, güncelleştirmek, okumak ve silmek için .NET'in nasıl kullanılacağını gösterir.
+## <a name="createupdatereaddelete-asset-filters"></a>Varlık filtrelerini oluştur/güncelleştir/oku/Sil
+Aşağıdaki kod, varlık filtrelerini oluşturmak, güncelleştirmek, okumak ve silmek için .NET 'in nasıl kullanılacağını gösterir.
 
 ```csharp
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
@@ -107,20 +107,20 @@ Aşağıdaki kod, varlık filtreleri oluşturmak, güncelleştirmek, okumak ve s
 ```
 
 
-## <a name="build-streaming-urls-that-use-filters"></a>Filtreler kullanan akış URL'leri oluşturma
-Varlıklarınızın nasıl yayımlayacağı ve teslim edilen hakkında bilgi için [bkz.](media-services-deliver-content-overview.md)
+## <a name="build-streaming-urls-that-use-filters"></a>Filtreler kullanan akış URL 'Leri oluşturma
+Varlıklarınızı yayımlama ve teslim etme hakkında daha fazla bilgi için bkz. [müşterilere Içerik sunma genel bakış](media-services-deliver-content-overview.md).
 
-Aşağıdaki örnekler, akış URL'lerinize nasıl filtre ekleyeceğinizgösterilmektedir.
+Aşağıdaki örneklerde, akış URL 'Lerine filtrelerin nasıl ekleneceği gösterilmektedir.
 
 **MPEG DASH** 
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
-**Apple HTTP Canlı Akış (HLS) V4**
+**Apple HTTP Canlı Akışı (HLS) v4**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
 
-**Apple HTTP Canlı Akış (HLS) V3**
+**Apple HTTP Canlı Akışı (HLS) v3**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
 
@@ -136,5 +136,5 @@ Aşağıdaki örnekler, akış URL'lerinize nasıl filtre ekleyeceğinizgösteri
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-[Dinamik manifestolara genel bakış](media-services-dynamic-manifest-overview.md)
+[Dinamik bildirimlere genel bakış](media-services-dynamic-manifest-overview.md)
 

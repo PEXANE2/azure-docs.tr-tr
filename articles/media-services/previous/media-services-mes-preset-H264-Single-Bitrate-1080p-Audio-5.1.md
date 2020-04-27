@@ -1,6 +1,6 @@
 ---
-title: H264 Tek Bitrate 1080p Ses 5.1 | Microsoft Dokümanlar
-description: Konu **H264 Tek Bitrate 1080p Ses 5.1** görev önceden ayarlanmış bir bakış verir.
+title: H264 tekli bit hızı 1080p ses 5,1 | Microsoft Docs
+description: Bu konu, **H264 tekli bit hızı 1080P ses 5,1** görevi önayarıyla genel bir bakış sunar.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 83d1c279552a75b959c19fb37e859806571f48eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61463625"
 ---
 # <a name="h264-single-bitrate-1080p-audio-51"></a>H264 Single Bitrate 1080p Audio 5.1
 
-`Media Encoder Standard`kodlama işleri oluştururken kullanabileceğiniz bir kodlama ön ayarları kümesini tanımlar. A'yı, `preset name` medya dosyanızı kodlamak istediğiniz biçimi belirtmek için de kullanabilirsiniz. Veya kendi JSON veya XML tabanlı hazır ayarlarınızı (UTF-8 veya UTF-16 kodlaması kullanarak) oluşturabilirsiniz. Daha sonra özel ön ayarını kodlayıcıya geçirirsiniz. Bu `Media Encoder Standard` kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi [için, Ortam Kodlayıcı Standardı için Görev Hazır Ayarları'na](media-services-mes-presets-overview.md)bakın.  
+`Media Encoder Standard`kodlama işleri oluştururken kullanabileceğiniz bir kodlama önayarları kümesi tanımlar. Medya dosyanızı kodlamak istediğiniz biçimi `preset name` belirtmek için bir kullanabilirsiniz. Ya da kendi JSON veya XML tabanlı önayarlarınızı oluşturabilirsiniz (UTF-8 veya UTF-16 kodlaması kullanarak). Daha sonra özel önayar kodlayıcıya geçirebilirsiniz. Bu `Media Encoder Standard` kodlayıcı tarafından desteklenen tüm önceden ayarlanmış adların listesi için bkz. [Media Encoder Standard Için görev önayarları](media-services-mes-presets-overview.md).  
   
- Bu `H264 Single Bitrate 1080p Audio 5.1` konu, XML ve JSON formatında önceden ayarlanmışı gösterir...  
+ Bu konuda, `H264 Single Bitrate 1080p Audio 5.1` XML ve JSON biçimindeki ön ayar gösterilmektedir.  
   
- Bu ön ayar, 6750 kbps bit hızına ve AAC 5.1 sese sahip tek bir MP4 dosyası üretir. Bu önceden ayarlanmış profil, bitrate, örnekleme hızı vb. hakkında ayrıntılı bilgi için aşağıda tanımlanan XML veya JSON'u inceleyin. Her öğenin ne anlama geldiğini ve her öğe için geçerli değerleri açıklamaları için [Ortam Kodlayıcı Standart şemasına](media-services-mes-schema.md)bakın.  
+ Bu önceden tanımlı, 6750 kbps ve AAC 5,1 ses hızında tek bir MP4 dosyası üretir. Bu önayar için profil, bit hızı, örnekleme oranı vb. hakkında ayrıntılı bilgi için, aşağıda tanımlanan XML veya JSON 'u inceleyin. Her öğenin anlamı ve her öğe için geçerli değerler hakkında açıklamalar için [Media Encoder Standard şemasına](media-services-mes-schema.md)bakın.  
   
  XML  
   

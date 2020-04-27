@@ -1,6 +1,6 @@
 ---
-title: Akış Analizi'nden Azure Veri Gölü Depolama Gen1'e veri akışı | Microsoft Dokümanlar
-description: Verileri Azure Veri Gölü Depolama Gen1'e aktarmak için Azure Akış Analizi'ni kullanın
+title: Stream Analytics veri akışı Azure Data Lake Storage 1. | Microsoft Docs
+description: Azure Data Lake Storage 1. içine veri akışı için Azure Stream Analytics kullanma
 services: data-lake-store,stream-analytics
 documentationcenter: ''
 author: twooley
@@ -13,110 +13,110 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60194952"
 ---
-# <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Azure Akış Analizi'ni kullanarak Azure Depolama Blob'undan Azure Veri Gölü Depolama Gen1'e veri akışı
-Bu makalede, Azure Veri Gölü Depolama Gen1'inbir Azure Akışı Analizi işi için çıktı olarak nasıl kullanılacağını öğreneceksiniz. Bu makale, bir Azure Depolama blob (giriş) verileri okur ve Veri Gölü Depolama Gen1 (çıktı) verileri yazar basit bir senaryo gösterir.
+# <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Azure Stream Analytics kullanarak Azure Data Lake Storage 1. Azure Depolama Blobu veri akışı
+Bu makalede, Azure Data Lake Storage 1. bir Azure Stream Analytics iş için çıktı olarak nasıl kullanacağınızı öğreneceksiniz. Bu makalede, verileri bir Azure depolama blobundan (giriş) okuyan ve verileri Data Lake Storage 1. (çıktı) yazan basit bir senaryo gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure Depolama hesabı.** Bir Stream Analytics işi için veri girişi yapmak için bu hesaptan bir blob kapsayıcısı kullanırsınız. Bu öğretici için, **storageforasa** adlı bir depolama hesabınız ve **depoforasacontainer**adı verilen hesap içinde bir kapsayıcınız olduğunu varsayalım. Kapsayıcıyı oluşturduktan sonra, ona örnek bir veri dosyası yükleyin. 
+* **Azure depolama hesabı**. Bu hesaptan bir blob kapsayıcısını, bir Stream Analytics işi için veri girmek üzere kullanacaksınız. Bu öğreticide, **storageforasa** adlı bir depolama hesabınız ve **storageforasacontainer**adlı hesap içinde bir kapsayıcı olduğunu varsayalım. Kapsayıcıyı oluşturduktan sonra bir örnek veri dosyası yükleyin. 
   
-* **Bir Veri Gölü Depolama Gen1 hesabı**. [Azure Portalını kullanarak Azure Veri Gölü Depolama Gen1 ile başlayın](data-lake-store-get-started-portal.md)yönergeleri izleyin. **Myadlsg1**adında bir Veri Gölü Depolama Gen1 hesabınız olduğunu varsayalım. 
+* **Data Lake Storage 1. hesabı**. [Azure portalını kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)konusundaki yönergeleri izleyin. **Myadlsg1**adlı bir Data Lake Storage 1. hesabınız olduğunu varsayalım. 
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics İşi oluşturma
-Giriş kaynağı ve çıktı hedefi içeren bir Akış Analizi işi oluşturarak başlarsınız. Bu öğretici için kaynak bir Azure blob kapsayıcıve hedef Veri Gölü Depolama Gen1 olduğunu.
+Giriş kaynağı ve çıkış hedefi içeren bir Stream Analytics işi oluşturarak başlayın. Bu öğretici için kaynak bir Azure Blob kapsayıcısıdır ve hedef Data Lake Storage 1..
 
 1. [Azure Portal](https://portal.azure.com)'da oturum açın.
 
-2. Sol **bölmeden, Akış Analizi işlerini**tıklatın ve sonra **Ekle'yi**tıklatın.
+2. Sol bölmeden **Stream Analytics işleri**' ne ve ardından **Ekle**' ye tıklayın.
 
-    ![Akış Analizi İşi Oluşturma](./media/data-lake-store-stream-analytics/create.job.png "Akış Analizi işi oluşturma")
+    ![Stream Analytics Işi oluşturma](./media/data-lake-store-stream-analytics/create.job.png "Akış Analizi işi oluşturma")
 
     > [!NOTE]
-    > Depolama hesabıyla aynı bölgede iş oluşturduğunuzdan emin olun, yoksa bölgeler arasında veri taşıma nın ek maliyetine tabi olacaktır.
+    > Depolama hesabı ile aynı bölgede iş oluşturduğunuzdan emin olun veya bölgeler arasında veri taşımaya yönelik ek ücret ödemeniz gerekir.
     >
 
-## <a name="create-a-blob-input-for-the-job"></a>İş için blob girişi oluşturma
+## <a name="create-a-blob-input-for-the-job"></a>İş için bir blob girişi oluşturma
 
-1. **Girişler** sekmesini tıklatın ve sonra **Ekle'yi**tıklatın, sol bölmeden Akış Analizi işi için sayfayı açın.
+1. Stream Analytics işi için sayfayı açın, sol bölmede **girişler** sekmesine tıklayın ve ardından **Ekle**' ye tıklayın.
 
-    ![İşinize giriş ekleme](./media/data-lake-store-stream-analytics/create.input.1.png "İşinize giriş ekleme")
+    ![İşinize bir giriş ekleyin](./media/data-lake-store-stream-analytics/create.input.1.png "İşinize bir giriş ekleyin")
 
-2. Yeni **giriş** bıçağında aşağıdaki değerleri sağlayın.
+2. **Yeni giriş** dikey penceresinde aşağıdaki değerleri sağlayın.
 
-    ![İşinize giriş ekleme](./media/data-lake-store-stream-analytics/create.input.2.png "İşinize giriş ekleme")
+    ![İşinize bir giriş ekleyin](./media/data-lake-store-stream-analytics/create.input.2.png "İşinize bir giriş ekleyin")
 
-   * **Giriş takma adı**için, iş girişi için benzersiz bir ad girin.
-   * **Kaynak türü için**Veri **akışı'nı**seçin.
-   * **Kaynak**için **Blob depolama alanını**seçin.
-   * **Abonelik**için, **geçerli abonelikten blob depolama yı kullan'ı**seçin.
-   * **Depolama hesabı**için, ön koşulların bir parçası olarak oluşturduğunuz depolama hesabını seçin. 
-   * **Kapsayıcı**için, seçili depolama hesabında oluşturduğunuz kapsayıcıyı seçin.
-   * **Olay serileştirme biçimi**için **CSV'yi**seçin.
-   * **Delimiter**için **sekme**seçin.
-   * **Kodlama**için **UTF-8'i**seçin.
+   * **Giriş diğer adı**için, iş girişi için benzersiz bir ad girin.
+   * **Kaynak türü**için **veri akışı**' nı seçin.
+   * **Kaynak**için **BLOB depolama**' yı seçin.
+   * **Abonelik**için **geçerli abonelikten blob depolamayı kullan**' ı seçin.
+   * **Depolama hesabı**için, önkoşulların bir parçası olarak oluşturduğunuz depolama hesabını seçin. 
+   * **Kapsayıcı**için, seçilen depolama hesabında oluşturduğunuz kapsayıcıyı seçin.
+   * **Olay serileştirme biçimi**için **CSV**' yi seçin.
+   * **Sınırlayıcı**için **sekme**' i seçin.
+   * **Kodlama**için **UTF-8**' i seçin.
 
-     **Oluştur'u**tıklatın. Portal şimdi girişi ekler ve ona bağlantı sınar.
+     **Oluştur**' a tıklayın. Portal şimdi girişi ekler ve ona bağlantıyı sınar.
 
 
-## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>İş için veri gölü depolama gen1 çıktısı oluşturma
+## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>İş için Data Lake Storage 1. çıktısı oluşturma
 
-1. Akış Analizi işi için sayfayı açın, **Çıktılar** sekmesini tıklatın, **Ekle'yi**tıklatın ve **Veri Gölü Depolama Gen1'i**seçin.
+1. Stream Analytics işi için sayfayı açın, **çıktılar** sekmesine tıklayın, **Ekle**' ye tıklayın ve **Data Lake Storage 1.**' i seçin.
 
-    ![İşinize çıktı ekleme](./media/data-lake-store-stream-analytics/create.output.1.png "İşinize çıktı ekleme")
+    ![İşinize bir çıktı ekleyin](./media/data-lake-store-stream-analytics/create.output.1.png "İşinize bir çıktı ekleyin")
 
-2. Yeni **çıkış** bıçağında aşağıdaki değerleri sağlayın.
+2. **Yeni çıkış** dikey penceresinde aşağıdaki değerleri sağlayın.
 
-    ![İşinize çıktı ekleme](./media/data-lake-store-stream-analytics/create.output.2.png "İşinize çıktı ekleme")
+    ![İşinize bir çıktı ekleyin](./media/data-lake-store-stream-analytics/create.output.2.png "İşinize bir çıktı ekleyin")
 
-    * **Çıktı diğer adı için,** iş çıktısı için benzersiz bir ad girin. Bu, sorgu çıktısını bu Veri Gölü Depolama Gen1 hesabına yönlendirmek için sorgularda kullanılan kolay bir addır.
-    * Veri Gölü Depolama Gen1 hesabına erişim izni istenecektir. **Yetkilendir'i**tıklatın.
+    * **Çıktı diğer adı**için iş çıktısı için benzersiz bir ad girin. Bu, sorgu çıkışını bu Data Lake Storage 1. hesabına yönlendirmek için sorgularda kullanılan kolay bir addır.
+    * Data Lake Storage 1. hesabına erişimi yetkilendirmeniz istenir. **Yetkilendir**'e tıklayın.
 
-3. Yeni **çıkış** bıçağında, aşağıdaki değerleri sağlamaya devam edin.
+3. **Yeni çıkış** dikey penceresinde aşağıdaki değerleri sağlamaya devam edin.
 
-    ![İşinize çıktı ekleme](./media/data-lake-store-stream-analytics/create.output.3.png "İşinize çıktı ekleme")
+    ![İşinize bir çıktı ekleyin](./media/data-lake-store-stream-analytics/create.output.3.png "İşinize bir çıktı ekleyin")
 
-   * **Hesap adı için,** iş çıktısının gönderilmesini istediğiniz yerde oluşturduğunuz Veri Gölü Depolama Gen1 hesabını seçin.
-   * **Yol öneki deseni**için, belirtilen Veri Gölü Depolama Gen1 hesabına dosyalarınızı yazmak için kullanılan bir dosya yolu girin.
-   * **Tarih biçimi**için, önek yolunda bir tarih belirteci kullandıysanız, dosyalarınızın düzenlendiği tarih biçimini seçebilirsiniz.
-   * **Zaman biçimi**için, önek yolunda bir zaman belirteci kullandıysanız, dosyalarınızın düzenlendiği zaman biçimini belirtin.
-   * **Olay serileştirme biçimi**için **CSV'yi**seçin.
-   * **Delimiter**için **sekme**seçin.
-   * **Kodlama**için **UTF-8'i**seçin.
+   * **Hesap adı**için, iş çıktısının gönderilmesini istediğiniz yerde zaten oluşturduğunuz Data Lake Storage 1. hesabı seçin.
+   * **Yol ön eki**için, belirtilen Data Lake Storage 1. hesabı içinde dosyalarınızı yazmak için kullanılan bir dosya yolu girin.
+   * **Tarih biçimi**için, önek yolunda bir tarih belirteci kullandıysanız dosyalarınızın düzenlendiği tarih biçimini seçebilirsiniz.
+   * **Saat biçimi**için, ön ek yolunda bir zaman belirteci kullandıysanız dosyalarınızın düzenlendiği zaman biçimini belirtin.
+   * **Olay serileştirme biçimi**için **CSV**' yi seçin.
+   * **Sınırlayıcı**için **sekme**' i seçin.
+   * **Kodlama**için **UTF-8**' i seçin.
     
-     **Oluştur'u**tıklatın. Portal şimdi çıktıyı ekler ve bağlantıyı sınar.
+     **Oluştur**' a tıklayın. Portal şimdi çıktıyı ekler ve ona bağlantıyı sınar.
     
 ## <a name="run-the-stream-analytics-job"></a>Stream Analytics işini çalıştırma
 
-1. Akış Analizi işini çalıştırmak için **Sorgu** sekmesinden bir sorgu çalıştırmanız gerekir. Bu öğretici için, aşağıdaki ekran yakalamada gösterildiği gibi, yer tutucuları iş giriş ve çıktı takma adlarıyla değiştirerek örnek sorguyu çalıştırabilirsiniz.
+1. Bir Stream Analytics işini çalıştırmak için, **sorgu** sekmesinden bir sorgu çalıştırmanız gerekir. Bu öğreticide, aşağıdaki ekran görüntüsünde gösterildiği gibi yer tutucuları iş ve çıkış diğer adlarıyla değiştirerek örnek sorguyu çalıştırabilirsiniz.
 
     ![Sorgu çalıştırma](./media/data-lake-store-stream-analytics/run.query.png "Sorgu çalıştırma")
 
-2. Ekranın üst kısmından **Kaydet'i** tıklatın ve ardından **Genel Bakış** sekmesinden **Başlat'ı**tıklatın. İletişim kutusundan Özel **Saat'i**seçin ve ardından geçerli tarih ve saati ayarlayın.
+2. Ekranın üstündeki **Kaydet** ' e tıklayın ve ardından **genel bakış** sekmesinden **Başlat**' a tıklayın. İletişim kutusunda **özel saat**' i seçin ve geçerli tarih ve saati ayarlayın.
 
-    ![İş zamanını ayarlama](./media/data-lake-store-stream-analytics/run.query.2.png "İş zamanını ayarlama")
+    ![İş süresini ayarla](./media/data-lake-store-stream-analytics/run.query.2.png "İş süresini ayarla")
 
-    İşe başlamak için **Başlat'ı** tıklatın. İşe başlamak birkaç dakika kadar sürebilir.
+    İşi başlatmak için **Başlat** ' a tıklayın. İşin başlatılması birkaç dakika sürebilir.
 
-3. Blob'dan verileri seçmek için işi tetiklemek için, örnek bir veri dosyasını blob kapsayıcısına kopyalayın. [Azure Veri Gölü Git Deposu'ndan](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)örnek bir veri dosyası alabilirsiniz. Bu öğretici için, **dosyavehicle1_09142014.csv**kopyalayalım. Verileri bir blob kapsayıcısına yüklemek için [Azure Depolama Gezgini](https://storageexplorer.com/)gibi çeşitli istemciler kullanabilirsiniz.
+3. İşi Blobun verileri seçmek üzere tetiklemek için, blob kapsayıcısına bir örnek veri dosyası kopyalayın. [Azure Data Lake git deposundan](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)örnek bir veri dosyası alabilirsiniz. Bu öğreticide **vehicle1_09142014. csv**dosyasını kopyalayalim. Blob kapsayıcısına veri yüklemek için [Azure Depolama Gezgini](https://storageexplorer.com/)gibi çeşitli istemcileri kullanabilirsiniz.
 
-4. **İzleme**altında **Genel Bakış** sekmesinden verilerin nasıl işlendiğini görün.
+4. **Genel bakış** sekmesinde, **izleme**altında, verilerin nasıl işlendiği konusuna bakın.
 
     ![İşi izleme](./media/data-lake-store-stream-analytics/run.query.3.png "İşi izleme")
 
-5. Son olarak, iş çıktısı verilerinin Veri Gölü Depolama Gen1 hesabında kullanılabildiğini doğrulayabilirsiniz. 
+5. Son olarak, iş çıkışı verilerinin Data Lake Storage 1. hesapta kullanılabilir olduğunu doğrulayabilirsiniz. 
 
     ![Çıkışı doğrulama](./media/data-lake-store-stream-analytics/run.query.4.png "Çıkışı doğrulama")
 
-    Veri Gezgini bölmesinde, çıktının Veri Gölü Depolama Gen1 çıktı ayarlarında belirtildiği gibi`streamanalytics/job/output/{date}/{time}`bir klasör yoluna yazıldığına dikkat edin ( ).  
+    Veri Gezgini bölmesinde, çıktının Data Lake Storage 1. çıkış ayarları 'nda (`streamanalytics/job/output/{date}/{time}`) belirtilen bir klasör yoluna yazıldığını unutmayın.  
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Veri Gölü Depolama Gen1'i kullanmak için bir HDInsight kümesi oluşturun](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Data Lake Storage 1. kullanmak için bir HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-portal.md)

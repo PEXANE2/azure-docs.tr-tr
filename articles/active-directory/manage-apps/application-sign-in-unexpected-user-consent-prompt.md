@@ -1,6 +1,6 @@
 ---
-title: Bir uygulamada oturum açarken beklenmeyen onay istemi | Microsoft Dokümanlar
-description: Bir kullanıcı, Azure AD ile tümleştirdiğiniz ve beklemediğiniz bir uygulama için onay istemi gördüğünde sorun giderme
+title: Bir uygulamada oturum açarken beklenmeyen onay istemi | Microsoft Docs
+description: Bir Kullanıcı Azure AD ile tümleştirmiş olduğunuz bir uygulama için bir onay istemi gördüğünde sorun giderme
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,38 +17,38 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83d043ecef152f977437e21e2caec40d1c40ce0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "65781144"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Bir uygulamada oturum açarken beklenmeyen onay istemi
 
-Azure Etkin Dizinile tümleşen birçok uygulama, çalıştırmak için çeşitli kaynaklara izin gerektirir. Bu kaynaklar Azure Etkin Dizinile de entegre edildiğinde, azure AD onay çerçevesi kullanılarak bunlara erişim izni istenir. 
+Azure Active Directory ile tümleştirilen birçok uygulama, çalıştırmak için çeşitli kaynaklara izinler gerektirir. Bu kaynaklar ayrıca Azure Active Directory ile tümleştirildiğinde, bunlara erişim izinleri Azure AD onay çerçevesi kullanılarak istenir. 
 
-Bu, genellikle tek seferlik bir işlem olan bir uygulama ilk kez kullanıldığında bir onay isteminin gösterilmesiyle sonuçlanır. 
+Bu, genellikle tek seferlik bir işlem olan bir uygulama ilk kez kullanıldığında bir onay istemi gösterilmekte olur. 
 
-## <a name="scenarios-in-which-users-see-consent-prompts"></a>Kullanıcıların onay istemlerini gördüğü senaryolar
+## <a name="scenarios-in-which-users-see-consent-prompts"></a>Kullanıcıların onay istemlerini göreceği senaryolar
 
 Çeşitli senaryolarda ek istemler beklenebilir:
 
 * Uygulamanın gerektirdiği izinler kümesi değişti.
 
-* Uygulamayı ilk olarak kabul eden kullanıcı yönetici değildi ve şimdi farklı (yönetici olmayan) Kullanıcı uygulamayı ilk kez kullanıyor.
+* Uygulamaya ilk olarak bağlanan kullanıcı yönetici değildi ve artık farklı (yönetici olmayan) bir Kullanıcı uygulamayı ilk kez kullanıyor.
 
-* Başvuruyu ilk olarak kabul eden kullanıcı bir yöneticiydi, ancak tüm kuruluş adına izin vermedi.
+* Uygulamayı ilk olarak uygulamaya veren kullanıcı bir yöneticiydi, ancak kuruluşun tamamı adına izin vermedi.
 
-* Uygulama, başlangıçta onay verildikten sonra ek izin istemek için [artımlı ve dinamik onay](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent) kullanıyor. Bu genellikle, bir uygulama ekinin isteğe bağlı özellikleri temel işlevsellik için gerekli olanların ötesinde izinler gerektirdiğinde kullanılır.
+* Uygulama, izin ilk kez verildikten sonra ek izinler istemek için [artımlı ve dinamik onay](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent) kullanıyor. Bu, genellikle bir uygulamanın isteğe bağlı özelliklerinin temel işlevselliği için gerekenlerden daha fazla izin gerektirmesi durumunda kullanılır.
 
-* Başlangıçta onay verildikten sonra onay iptal edildi.
+* Onay, başlangıçta verildikten sonra iptal edildi.
 
-* Geliştirici, uygulamayı her kullanıldığında bir onay istemi gerektirecek şekilde yapılandırmıştır (not: bu en iyi uygulama değildir).
+* Geliştirici uygulamayı her kullanıldığında bir onay istemi gerektirecek şekilde yapılandırmıştır (Not: Bu en iyi yöntem değildir).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
--   [Azure Etkin Dizin 'de uygulamalar, izinler ve onay (v1.0 bitiş noktası)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
+-   [Azure Active Directory uygulamalar, izinler ve onay (v 1.0 uç noktası)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
 
--   [Azure Etkin Dizini'nde kapsamlar, izinler ve onay (v2.0 bitiş noktası)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
+-   [Azure Active Directory (v 2.0 uç noktası) kapsamlar, izinler ve onay](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
 
 

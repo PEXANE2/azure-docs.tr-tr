@@ -3,12 +3,12 @@ title: Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine e
 description: Azure 'un Temsilcili kaynak yönetimine nasıl bir müşteri ekleneceğini ve bunların kendi kiracınız aracılığıyla kaynaklarına erişilmesine ve yönetilmesine izin vermeyi öğrenin.
 ms.date: 04/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1bc9cadab966c4d9ae3ddbc12a75f42f69e0c12f
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 2b8bf3125dd97397f83a2a2cbf23090bce41ad40
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146307"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82161117"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 
@@ -199,6 +199,8 @@ Bu, abonelik düzeyinde bir dağıtım olduğundan Azure portal başlatılamaz. 
 
 > [!IMPORTANT]
 > Bu abonelik düzeyi dağıtım, eklendi olan abonelik için [sahip yerleşik rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) sahip olan (veya eklendi olan kaynak gruplarını içeren) müşterinin kiracısında Konuk olmayan bir hesap tarafından yapılmalıdır. Aboneliği temsil edebilen tüm kullanıcıları görmek için, müşterinin kiracısındaki bir Kullanıcı Azure portal aboneliği seçebilir, **erişim denetimini (IAM)** açabilir ve [sahip rolüne sahip tüm kullanıcıları görüntüleyebilir](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
+>
+> Abonelik, [bulut çözümü sağlayıcısı (CSP) programı](../concepts/cloud-solution-provider.md)aracılığıyla oluşturulduysa, hizmet sağlayıcı kiracınızda [yönetici Aracısı](https://docs.microsoft.com/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) rolüne sahip olan tüm kullanıcılar dağıtımı gerçekleştirebilir.
 
 ### <a name="powershell"></a>PowerShell
 

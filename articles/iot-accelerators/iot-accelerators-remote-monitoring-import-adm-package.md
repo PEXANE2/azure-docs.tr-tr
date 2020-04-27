@@ -1,6 +1,6 @@
 ---
-title: Uzaktan İzleme çözümü alma paketi - Azure | Microsoft Dokümanlar
-description: Bu makalede, otomatik bir cihaz yönetim paketinin Uzaktan İzleme çözüm hızlandırıcısına nasıl aktarılacak
+title: Uzaktan Izleme çözümü içeri aktarma paketi-Azure | Microsoft Docs
+description: Bu makalede otomatik bir cihaz yönetim paketinin uzaktan Izleme çözüm hızlandırıcısına nasıl aktarılacağı açıklanır
 author: dominicbetts
 manager: philmea
 ms.author: dobett
@@ -9,56 +9,56 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "61443454"
 ---
-# <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Uzaktan İzleme çözüm hızlandırıcınıza otomatik cihaz yönetim paketi alma
+# <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Otomatik cihaz yönetim paketini uzaktan Izleme çözüm hızlandırıcısına aktarma
 
-Otomatik aygıt yönetimi yapılandırması, bir aygıt grubuna dağıtılan yapılandırma değişikliklerini tanımlar. Bu makalede, kuruluşunuzdaki bir geliştiricinin otomatik aygıt yönetimi yapılandırması oluşturduğunu varsayar. Bir geliştiricinin yapılandırmayı nasıl oluşturduğu hakkında bilgi edinmek için aşağıdaki IoT Hub nasıl yapılsA makalelerine bakın:
+Otomatik Cihaz Yönetimi yapılandırması, bir cihaz grubuna dağıtılacak yapılandırma değişikliklerini tanımlar. Bu makalede, kuruluşunuzdaki bir geliştiricinin zaten bir otomatik cihaz yönetimi yapılandırması oluşturduğunu varsaymaktadır. Bir geliştiricinin yapılandırma oluşturma hakkında bilgi edinmek için aşağıdaki IoT Hub nasıl yapılır makalelerinden birine bakın:
 
-- [Azure portalını kullanarak IoT aygıtlarını ölçekte yapılandırma ve izleme](../iot-hub/iot-hub-auto-device-config.md)
-- [Azure CLI'yi kullanarak IoT aygıtlarını ölçekte yapılandırma ve izleme](../iot-hub/iot-hub-auto-device-config-cli.md)
+- [Azure portal kullanarak IoT cihazlarını ölçeklendirerek yapılandırma ve izleme](../iot-hub/iot-hub-auto-device-config.md)
+- [Azure CLı kullanarak IoT cihazlarını ölçeklendirerek yapılandırma ve izleme](../iot-hub/iot-hub-auto-device-config-cli.md)
 
-Geliştirici, geliştirme ortamında otomatik aygıt yönetimi yapılandırması oluşturur ve sınar. Hazır olduğunuzda, yapılandırmayı Uzaktan İzleme çözüm hızlandırıcınıza aktarabilirsiniz.
+Geliştirici bir geliştirme ortamında otomatik cihaz yönetimi yapılandırması oluşturur ve test eder. Hazırsanız, yapılandırmayı uzaktan Izleme çözüm hızlandırıcısına aktarabilirsiniz.
 
-## <a name="export-a-configuration"></a>Yapılandırmayı dışa aktarma
+## <a name="export-a-configuration"></a>Yapılandırmayı dışarı aktar
 
-Geliştirme ortamınızdan otomatik aygıt yönetimi yapılandırmasını dışa aktarmak için Azure portalını kullanın:
+Otomatik cihaz yönetimi yapılandırmasını geliştirme ortamınızdan dışarı aktarmak için Azure portal kullanın:
 
-1. Azure portalında, IoT aygıtlarınızı geliştirmek ve test etmek için kullandığınız IoT hub'ına gidin. **IoT cihaz yapılandırması**tıklayın:
+1. Azure portal IoT cihazlarınızı geliştirmek ve test etmek için kullandığınız IoT Hub 'ına gidin. **IoT cihaz yapılandırması**' na tıklayın:
 
     [![IoT cihaz yapılandırması](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-expanded.png#lightbox)
 
-1. Kullanmak istediğiniz yapılandırmayı tıklatın. **Cihaz Yapılandırma Ayrıntıları** sayfası görüntüler:
+1. Kullanmak istediğiniz yapılandırmaya tıklayın. **Cihaz yapılandırma ayrıntıları** sayfası şunu görüntüler:
 
-    [![IoT cihaz yapılandırma detayı](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
-1. **Yapılandırma dosyasını İndir'e**tıklayın :
+    [![IoT cihaz yapılandırması ayrıntısı](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
+1. **Yapılandırma dosyasını indir**' e tıklayın:
 
-    [![Yapılandırma dosyasını karşıdan yükleme](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
+    [![Yapılandırma dosyasını indir](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
 
-1. JSON dosyasını **configuration.json**adlı yerel bir dosya olarak kaydedin.
+1. JSON dosyasını **Configuration. JSON**adlı yerel bir dosya olarak kaydedin.
 
-Artık otomatik aygıt yönetimi yapılandırmasını içeren bir dosyanız var. Sonraki bölümde, bu yapılandırmayı paket olarak Uzaktan İzleme çözümüne aktarın.
+Artık otomatik cihaz yönetimi yapılandırmasını içeren bir dosyanız vardır. Sonraki bölümde, bu yapılandırmayı uzaktan Izleme çözümüne bir paket olarak içeri aktarırsınız.
 
-## <a name="import-a-package"></a>Paket alma
+## <a name="import-a-package"></a>Bir paketi içeri aktar
 
-Otomatik aygıt yönetimi yapılandırmasını paket olarak çözüme almak için aşağıdaki adımları izleyin:
+Otomatik cihaz yönetimi yapılandırmasını çözümünüze bir paket olarak içeri aktarmak için aşağıdaki adımları izleyin:
 
-1. Uzaktan İzleme **Packages** web Kullanıcı Arama ![Hizmeti:Paketler sayfasında paketler sayfasına gidin](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
+1. Uzaktan Izleme Web Kullanıcı arabirimindeki **paketler** sayfasına gidin: ![paketler sayfası](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
 
-1. **+ Yeni Paket'i**tıklatın, paket türü olarak **Yapılandırma'yı** seçin ve önceki bölümde kaydettiğiniz **configuration.json** dosyasını seçmek için **Gözat'ı** tıklatın:
+1. **+ Yeni paket**' e tıklayın, paket türü olarak **yapılandırma** ' yı seçin ve önceki bölümde kaydettiğiniz **Configuration. JSON** dosyasını seçmek için **Araştır** ' a tıklayın:
 
-    ![Yapılandırmayı seçin](media/iot-accelerators-remote-monitoring-import-adm-package/uploadpackage.png)
+    ![Yapılandırma Seç](media/iot-accelerators-remote-monitoring-import-adm-package/uploadpackage.png)
 
-1. Paketi Uzaktan İzleme çözümünüze eklemek için **Yükle'yi** tıklatın:
+1. Paketi uzaktan Izleme çözümünüze eklemek için **karşıya yükle** ' ye tıklayın:
 
-    ![Yüklenen paket](media/iot-accelerators-remote-monitoring-import-adm-package/uploadedpackage.png)
+    ![Paket karşıya yüklendi](media/iot-accelerators-remote-monitoring-import-adm-package/uploadedpackage.png)
 
-Şimdi paket olarak otomatik aygıt yönetimi yapılandırması yükledin. **Dağıtımlar** sayfasında, bu paketi bağlı aygıtlarınıza dağıtabilirsiniz.
+Artık paket olarak bir otomatik cihaz yönetimi yapılandırması yüklediniz. **Dağıtımlar** sayfasında, bu paketi bağlı cihazlarınıza dağıtabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir yapılandırma paketi oluşturmayı ve uzaktan izleme çözümünden nasıl içe aktarabileceğinizi öğrendiğiniz için, bir sonraki adım, [Uzaktan İzleme'ye bağlı aygıtları toplu olarak](iot-accelerators-remote-monitoring-bulk-configuration-update.md)yönetmeyi öğrenmektir.
+Bir yapılandırma paketi oluşturmayı ve uzaktan Izleme çözümünden içine aktarmayı öğrendiğinize göre, bir sonraki adım, [uzaktan izlemeye bağlı cihazların toplu olarak nasıl yönetileceğini](iot-accelerators-remote-monitoring-bulk-configuration-update.md)öğrendiğinize bağlıdır.
