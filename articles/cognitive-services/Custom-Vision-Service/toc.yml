@@ -13,30 +13,14 @@
       items:
         - name: Web portalını kullanma
           href: getting-started-build-a-classifier.md
-        - name: .NET SDK’sini kullanma
-          href: csharp-tutorial.md
-        - name: Python SDK'yı kullanma
-          href: python-tutorial.md
-        - name: Java SDK'yı kullanma
-          href: java-tutorial.md
-        - name: Node.js SDK'yı kullanma
-          href: node-tutorial.md
-        - name: Go SDK'yı kullanma
-          href: go-tutorial.md
+        - name: Özel Görüntü İşleme SDK’sını kullanma
+          href: quickstarts/image-classification.md
     - name: Nesne algılayıcısı oluşturma
       items:
         - name: Web portalını kullanma
           href: get-started-build-detector.md
-        - name: .NET SDK’sini kullanma
-          href: csharp-tutorial-od.md
-        - name: Python SDK'yı kullanma
-          href: python-tutorial-od.md
-        - name: Java SDK'yı kullanma
-          href: java-tutorial-od.md
-        - name: Node.js SDK'yı kullanma
-          href: node-tutorial-object-detection.md
-        - name: Go SDK'yı kullanma
-          href: go-tutorial-object-detection.md
+        - name: Özel Görüntü İşleme SDK’sını kullanma
+          href: quickstarts/object-detection.md
 - name: Öğreticiler
   items:
     - name: IoT cihazında görsel durumları raporlama

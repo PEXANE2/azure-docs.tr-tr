@@ -39,6 +39,9 @@
         - name: Python
           href: /azure/databricks/languages/python
           maintainContext: true
+        - name: Koalas
+          href: /azure/databricks/languages/koalas
+          maintainContext: true
         - name: R
           items:
             - name: R kılavuzu
@@ -1058,6 +1061,8 @@
             - name: Gizli dizi iş akışı örneği
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
+        - name: GDPR’ye yönelik en iyi uygulamalar
+          href: /azure/databricks/security/privacy/gdpr-delta
         - name: Küme çalışan düğümleri arasındaki trafiği şifreleme
           href: /azure/databricks/security/encryption/encrypt-otw
         - name: Not defterleri için müşteri tarafından yönetilen anahtarları etkinleştirme
@@ -1611,8 +1616,24 @@
               href: /azure/databricks/dev-tools/api/latest/examples
               maintainContext: true
             - name: Kimlik Doğrulaması
-              href: /azure/databricks/dev-tools/api/latest/authentication
-              maintainContext: true
+              items:
+                - name: Kişisel erişim belirteçleri
+                  href: /azure/databricks/dev-tools/api/latest/authentication
+                  maintainContext: true
+                - name: Azure Active Directory (AAD) belirteçleri
+                  items:
+                    - name: AAD belirteci kimlik doğrulamasına genel bakış
+                      href: /azure/databricks/dev-tools/api/latest/aad/index
+                      maintainContext: true
+                    - name: AAD Kimlik Doğrulaması Kitaplığı’nı kullanarak AAD belirteci alma
+                      href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
+                      maintainContext: true
+                    - name: Bir hizmet sorumlusu kullanarak AAD belirteci alma
+                      href: /azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token
+                      maintainContext: true
+                    - name: AAD erişim belirteçlerine ilişkin sorunları giderme
+                      href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
+                      maintainContext: true
             - name: Kümeler
               href: /azure/databricks/dev-tools/api/latest/clusters
               maintainContext: true

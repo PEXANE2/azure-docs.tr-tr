@@ -83,7 +83,7 @@
       href: traffic-manager-load-balancing-azure.md
     - name: Traffic Manager performansını ölçme
       href: traffic-manager-performance-considerations.md
-    - name: Tanılama günlüklerini etkinleştirme
+    - name: Kaynak günlüklerini etkinleştirme
       href: traffic-manager-diagnostic-logs.md
     - name: Traffic Manager’ı yönetmek için Azure PowerShell’i kullanma
       href: traffic-manager-powershell-arm.md

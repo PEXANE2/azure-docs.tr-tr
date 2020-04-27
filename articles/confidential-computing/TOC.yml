@@ -1,0 +1,33 @@
+- name: Azure gizli bilgi işlem
+  href: overview.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: Azure portalda oluşturma
+      href: quick-create-portal.md
+    - name: Market ile oluşturma
+      href: quick-create-marketplace.md
+- name: Kavramlar
+  expanded: true
+  items:
+    - name: Sanal Makineler’e yönelik çözümler
+      href: virtual-machine-solutions.md
+- name: Kaynaklar
+  expanded: true
+  items:
+    - name: SSS
+      href: faq.md
+    - name: Gizli bilgi işlem hakkında geri bildirim
+      href: 'https://feedback.azure.com/forums/919792-azure-confidential-compute'
+    - name: StackOverflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-confidential-computing'
+    - name: Enclave SDK’sını açma
+      href: 'https://aka.ms/oesdkGitHubRepo'
+    - name: Gizli Bilgi İşlem Konsorsiyumu
+      href: 'https://confidentialcomputing.io/'
+    - name: Azure'da Sanal Makineler
+      href: 'https://docs.microsoft.com/azure/virtual-machines/'
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/#DC1s-C8s%20v2'
+    - name: Bölgeler
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=virtual-machines'

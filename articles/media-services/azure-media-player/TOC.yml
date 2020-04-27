@@ -34,7 +34,9 @@
       href: azure-media-player-localization.md
 - name: Örnekler
   items:
-    - name: Azure Media Player Örnekleri
+    - name: Azure Media Player tanıtımları
+      href: demos.md
+    - name: Azure Media Player örnekleri
       href: 'https://github.com/Azure-Samples/azure-media-player-samples'
 - name: Başvuru
   items:

@@ -1828,8 +1828,8 @@
       items:
         - name: Netskope Yönetici Konsolu
           href: netskope-administrator-console-provisioning-tutorial.md
-        - name: New Relic (Sınırlı Sürüm)
-          href: new-relic-limited-release-provisioning-tutorial.md
+        - name: Kuruluşa göre New Relic
+          href: new-relic-by-organization-provisioning-tutorial.md
         - name: Netsuite
           href: netsuite-provisioning-tutorial.md
         - name: OfficeSpace Software

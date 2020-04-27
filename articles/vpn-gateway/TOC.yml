@@ -210,7 +210,7 @@
       items:
         - name: Ölçümlere dayalı uyarılar ayarlama
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
-        - name: Tanılama günlüğüne dayalı uyarılar ayarlama
+        - name: Kaynak günlüklerine dayalı uyarılar ayarlama
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Paket yakalamalarını yapılandırma
       href: packet-capture.md

@@ -219,7 +219,7 @@
           href: stream-analytics-troubleshoot-output.md
         - name: Sorgu mantığı
           href: stream-analytics-troubleshoot-query.md
-        - name: Etkinlik ve tanılama günlükleri
+        - name: Etkinlik ve kaynak günlükleri
           href: stream-analytics-job-diagnostic-logs.md
         - name: Veri hataları
           href: data-errors.md

@@ -107,7 +107,7 @@
       href: billing-troubleshoot-azure-payment-issues.md
     - name: Reddedilen kart
       href: troubleshoot-declined-card.md
-    - name: Kaydolma sorunları
+    - name: Azure hesabına kaydolma sorunları
       href: troubleshoot-azure-sign-up.md
     - name: Abonelik oturum açma sorunları
       href: troubleshoot-sign-in-issue.md
