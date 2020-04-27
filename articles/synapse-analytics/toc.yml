@@ -320,8 +320,6 @@
           href: troubleshoot/troubleshoot-synapse-studio.md
         - name: PowerShell ile Synapse Analytics Studio sorunlarını giderme
           href: troubleshoot/troubleshoot-synapse-studio-powershell.md
-        - name: Power BI ile tümleştirme
-          items: null
 - name: Nasıl yapılır
   items:
     - name: Güvenlik

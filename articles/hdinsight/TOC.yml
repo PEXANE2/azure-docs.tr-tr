@@ -39,6 +39,8 @@
       items:
         - name: HDInsight üzerindeki Apache Hadoop bileşenleri
           href: ./hdinsight-component-versioning.md
+        - name: Hortonworks sürüm notları
+          href: ./hortonworks-release-notes.md
         - name: Yüksek kullanılabilirlik bileşenleri
           href: ./hdinsight-high-availability-components.md
         - name: Azure HDInsight’ta Apache Ambari
@@ -59,10 +61,17 @@
           href: ./cluster-management-best-practices.md
         - name: Kullanılabilirlik ve güvenilirlik
           href: ./hdinsight-high-availability-linux.md
-        - name: Depolama seçeneklerini karşılaştırın
-          href: ./hdinsight-hadoop-compare-storage-options.md
         - name: Yönetilen kimlikleri anlama
           href: ./hdinsight-managed-identities.md
+        - name: Depolama seçeneklerini karşılaştırın
+          href: hdinsight-hadoop-compare-storage-options.md
+          items:
+            - name: Azure Depolama’ya genel bakış
+              href: overview-azure-storage.md
+            - name: Azure Data Lake Storage 1. Nesil’e genel bakış
+              href: overview-data-lake-storage-gen1.md
+            - name: Azure Data Lake Storage 2. Nesil’e genel bakış
+              href: overview-data-lake-storage-gen2.md
     - name: Nasıl yapılır
       items:
         - name: Küme oluşturma
@@ -122,6 +131,8 @@
               href: hdinsight-hadoop-linux-use-ssh-unix.md
             - name: SSH tüneli kullanma
               href: hdinsight-linux-ambari-ssh-tunnel.md
+            - name: HDInsight ile SCP kullanma
+              href: ./use-scp.md
             - name: Veri erişiminin kısıtlama
               href: hdinsight-storage-sharedaccesssignature-permissions.md
             - name: Kullanıcıları Apache Ambari Görünümleri için yetkilendirme
@@ -216,6 +227,8 @@
           items:
             - name: Betik eylemlerindeki sorunları giderme
               href: ./troubleshoot-script-action.md
+            - name: Kaynak oluşturma hataları
+              href: ./troubleshoot-resource-creation-fails.md
     - name: Başvuru
       items:
         - name: Azure PowerShell

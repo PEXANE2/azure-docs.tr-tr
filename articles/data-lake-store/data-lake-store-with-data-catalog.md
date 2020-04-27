@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Kataloğu'nda Azure Veri Gölü Depolama Gen1'den veri kaydetme | Microsoft Dokümanlar
-description: Azure Veri Kataloğu'nda Azure Veri Gölü Depolama Gen1'den veri kaydetme
+title: Azure Veri Kataloğu 'nda Azure Data Lake Storage 1. verileri kaydetme | Microsoft Docs
+description: Azure Veri Kataloğu 'nda Azure Data Lake Storage 1. verileri kaydetme
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: twooley
@@ -13,71 +13,71 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60196611"
 ---
-# <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Azure Veri Kataloğu'nda Azure Veri Gölü Depolama Gen1'den veri kaydetme
-Bu makalede, Veri Kataloğu ile tümleştirerek verilerinizi kuruluş içinde bulunabilir hale getirmek için Azure Veri Gölü Depolama Gen1'i Azure Veri Kataloğu ile nasıl entegre edeceğinizi öğreneceksiniz. Veri kataloglama hakkında daha fazla bilgi için [Azure Veri Kataloğu'na](../data-catalog/data-catalog-what-is-data-catalog.md)bakın. Veri Kataloğu'nu kullanabileceğiniz senaryoları anlamak için [Azure Veri Kataloğu ortak senaryolarına](../data-catalog/data-catalog-common-scenarios.md)bakın.
+# <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda Azure Data Lake Storage 1. verileri kaydetme
+Bu makalede, verileri veri kataloğu ile tümleştirerek bir kuruluşta bulunabilir hale getirmek için Azure Data Lake Storage 1. Azure Veri Kataloğu ile tümleştirmeyi öğreneceksiniz. Verileri kataloglandırma hakkında daha fazla bilgi için bkz. [Azure Veri Kataloğu](../data-catalog/data-catalog-what-is-data-catalog.md). Veri kataloğunu kullanabileceğiniz senaryoları anlamak için bkz. [Azure Veri Kataloğu genel senaryoları](../data-catalog/data-catalog-common-scenarios.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiye başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 * **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-* Veri Gölü Depolama Gen1 için **Azure aboneliğinizi etkinleştirin.** Bkz. [yönergeler](data-lake-store-get-started-portal.md).
-* **Bir Veri Gölü Depolama Gen1 hesabı**. [Azure Portalını kullanarak Azure Veri Gölü Depolama Gen1 ile başlayın](data-lake-store-get-started-portal.md)yönergeleri izleyin. Bu öğretici için, **datacatalogstore**adlı bir Veri Gölü Depolama Gen1 hesabı oluşturun.
+* Data Lake Storage 1. için **Azure aboneliğinizi etkinleştirin** . Bkz. [yönergeler](data-lake-store-get-started-portal.md).
+* **Data Lake Storage 1. hesabı**. [Azure portalını kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)konusundaki yönergeleri izleyin. Bu öğretici için **datacatalogstore**adlı bir Data Lake Storage 1. hesabı oluşturun.
 
-    Hesabı oluşturduktan sonra, bir örnek veri kümesi yükleyin. Bu öğretici için, [Azure Veri Gölü Git Deposu'ndaki](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/) **AmbulanceData** klasörü altındaki tüm .csv dosyalarını yükleyelim. Verileri bir blob kapsayıcısına yüklemek için [Azure Depolama Gezgini](https://storageexplorer.com/)gibi çeşitli istemciler kullanabilirsiniz.
-* **Azure Veri Kataloğu**. Kuruluşunuzun kuruluşunuz için zaten bir Azure Veri Kataloğu oluşturulmuş olması gerekir. Her kuruluş için yalnızca bir kataloga izin verilir.
+    Hesabı oluşturduktan sonra, ona bir örnek veri kümesi yükleyin. Bu öğreticide, [Azure Data Lake git deposundaki](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/) **AmbulanceData** klasörünün altındaki tüm. csv dosyalarını karşıya yüklememize izin verin. Blob kapsayıcısına veri yüklemek için [Azure Depolama Gezgini](https://storageexplorer.com/)gibi çeşitli istemcileri kullanabilirsiniz.
+* **Azure Veri Kataloğu**. Kuruluşunuz için kuruluşunuz için oluşturulmuş bir Azure Veri Kataloğu zaten olmalıdır. Her kuruluş için yalnızca bir kataloğa izin verilir.
 
-## <a name="register-data-lake-storage-gen1-as-a-source-for-data-catalog"></a>Veri Gölü Depolama Gen1'i Veri Kataloğu için kaynak olarak kaydedin
+## <a name="register-data-lake-storage-gen1-as-a-source-for-data-catalog"></a>Veri Kataloğu için kaynak olarak Data Lake Storage 1. kaydetme
 
 > [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/ADCwithADL/player]
 
-1. 'ye `https://azure.microsoft.com/services/data-catalog`gidin ve **Başlat'ı**tıklatın.
+1. `https://azure.microsoft.com/services/data-catalog`Adresine gidin ve **kullanmaya**başlayın ' a tıklayın.
 1. Azure Veri Kataloğu portalında oturum açın ve **Verileri yayımla**'ya tıklayın.
 
     ![Veri kaynağını kaydetme](./media/data-lake-store-with-data-catalog/register-data-source.png "Veri kaynağını kaydetme")
-1. Sonraki sayfada Uygulamayı **Başlat'ı**tıklatın. Bu, uygulama bildirimi dosyasını bilgisayarınıza indirir. Uygulamayı başlatmak için manifesto dosyasına çift tıklayın.
-1. Hoş Geldiniz sayfasında **Oturum Aç'ı**tıklatın ve kimlik bilgilerinizi girin.
+1. Sonraki sayfada, **Uygulamayı Başlat**' a tıklayın. Bu işlem, bilgisayarınızda uygulama bildirim dosyasını indirir. Uygulamayı başlatmak için bildirim dosyasına çift tıklayın.
+1. Hoş geldiniz sayfasında **oturum aç**' a tıklayın ve kimlik bilgilerinizi girin.
 
     ![Hoş Geldiniz ekranı](./media/data-lake-store-with-data-catalog/welcome.screen.png "Hoş Geldiniz ekranı")
-1. Veri Kaynağı Seç sayfasında **Azure Veri Gölü Deposu'nu**seçin ve sonra **İleri'yi**tıklatın.
+1. Veri kaynağı seçin sayfasında **Azure Data Lake Store**' yi seçin ve ardından **İleri**' ye tıklayın.
 
     ![Veri kaynağı seçme](./media/data-lake-store-with-data-catalog/select-source.png "Veri kaynağı seçme")
-1. Bir sonraki sayfada, Veri Kataloğu'na kaydetmek istediğiniz Veri Gölü Depolama Gen1 hesap adını girin. Diğer seçenekleri varsayılan olarak bırakın ve sonra **Bağlan'ı**tıklatın.
+1. Sonraki sayfada, veri kataloğuna kaydetmek istediğiniz Data Lake Storage 1. hesap adını girin. Diğer seçenekleri varsayılan olarak bırakın ve sonra **Bağlan**' a tıklayın.
 
     ![Veri kaynağına bağlanma](./media/data-lake-store-with-data-catalog/connect-to-source.png "Veri kaynağına bağlanma")
-1. Bir sonraki sayfa aşağıdaki bölümlere ayrılabilir.
+1. Sonraki sayfa aşağıdaki kesimlere ayrılabilir.
 
-    a. **Sunucu Hiyerarşisi** kutusu Veri Gölü Depolama Gen1 hesap klasörü yapısını temsil eder. **$Root** Veri Gölü Depolama Gen1 hesap kökünü temsil eder ve **AmbulanceData,** Veri Gölü Depolama Gen1 hesabının kökünde oluşturulan klasörü temsil eder.
+    a. **Sunucu hiyerarşisi** kutusu Data Lake Storage 1. Hesap klasörü yapısını temsil eder. **$Root** , Data Lake Storage 1. hesap kökünü temsil eder ve **AmbulanceData** Data Lake Storage 1. hesabının kökünde oluşturulan klasörü temsil eder.
 
-    b. **Kullanılabilir nesneler** **kutusu, AmbulanceData** klasörü altındaki dosya ve klasörleri listeler.
+    b. **Kullanılabilir nesneler** kutusu **AmbulanceData** klasörü altındaki dosya ve klasörleri listeler.
 
-    c. **Kutuda kaydedilecek nesneler,** Azure Veri Kataloğu'na kaydetmek istediğiniz dosya ve klasörleri listeler.
+    c. **Kaydedilecek nesneler** Box, Azure Veri Kataloğu 'nda kaydetmek istediğiniz dosya ve klasörleri listeler.
 
-    ![Veri yapısını görüntüleme](./media/data-lake-store-with-data-catalog/view-data-structure.png "Veri yapısını görüntüleme")
-1. Bu öğretici için, tüm dosyaları dizine kaydettirmeniz gerekir. Bunun için, tüm dosyaları **kayıtlı** kutuya taşımak için (![nesneleri taşı](./media/data-lake-store-with-data-catalog/move-objects.png "Nesneleri taşıma")) düğmesini tıklatın.
+    ![Veri yapısını görüntüle](./media/data-lake-store-with-data-catalog/view-data-structure.png "Veri yapısını görüntüle")
+1. Bu öğreticide, dizindeki tüm dosyaları kaydetmeniz gerekir. Bu şekilde, tüm dosyaları **kaydedilecek nesneler** kutusuna taşımak için (![nesneleri taşı](./media/data-lake-store-with-data-catalog/move-objects.png "Nesneleri taşı")) düğmesine tıklayın.
 
-    Veriler kuruluş çapında bir veri kataloğuna kaydedilecektir, daha sonra verileri hızla bulmak için kullanabileceğiniz bazı meta verileri eklemek önerilir bir yaklaşımdır. Örneğin, veri sahibine (örneğin, verileri yükleyen bir e-posta adresi) veya verileri tanımlamak için bir etiket ekleyebilirsiniz. Aşağıdaki ekran yakalama, verilere eklediğiniz bir etiketi gösterir.
+    Veriler kuruluş genelinde bir veri kataloğunda kaydedilecek, daha sonra verileri hızlı bir şekilde bulmak için kullanabileceğiniz bazı meta verileri eklemek önerilen bir yaklaşımdır. Örneğin, veri sahibi için bir e-posta adresi ekleyebilirsiniz (örneğin, verileri karşıya yükleyen bir tane) veya verileri tanımlamak için bir etiket ekleyebilirsiniz. Aşağıdaki ekran yakalama, verilere eklediğiniz bir etiketi gösterir.
 
-    ![Veri yapısını görüntüleme](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Veri yapısını görüntüleme")
+    ![Veri yapısını görüntüle](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Veri yapısını görüntüle")
 
-    **Kaydol'u**tıklatın.
-1. Aşağıdaki ekran yakalama, verilerin Veri Kataloğu'na başarıyla kaydolduğunu gösterir.
+    **Kaydol**' a tıklayın.
+1. Aşağıdaki ekran yakalama, verilerin veri kataloğunda başarıyla kaydedildiğini gösterir.
 
-    ![Kayıt tamamlandı](./media/data-lake-store-with-data-catalog/registration-complete.png "Veri yapısını görüntüleme")
-1. Veri Kataloğu portalına geri dönmek ve kayıtlı verilere artık portaldan erişebileceğinizi doğrulamak için **Portalı Görüntüle'yi** tıklatın. Verileri aramak için, verileri kaydederken kullandığınız etiketi kullanabilirsiniz.
+    ![Kayıt Tamam](./media/data-lake-store-with-data-catalog/registration-complete.png "Veri yapısını görüntüle")
+1. Veri Kataloğu portalına geri dönmek ve artık portaldan kayıtlı verilere erişebildiğinizi doğrulamak için **portalı görüntüle** ' ye tıklayın. Verileri aramak için, verileri kaydederken kullandığınız etiketi kullanabilirsiniz.
 
-     ![Katalogdaki verileri arama](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "Katalogdaki verileri arama")
-1. Artık verilere ek açıklamalar ve belgeler ekleme gibi işlemler gerçekleştirebilirsiniz. Daha fazla bilgi için aşağıdaki bağlantılara bakın.
+     ![Katalogda veri arama](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "Katalogda veri arama")
+1. Artık verilere ek açıklama ve belge ekleme gibi işlemler yapabilirsiniz. Daha fazla bilgi için aşağıdaki bağlantılara bakın.
 
-    * [Veri Kataloğu'ndaki veri kaynaklarına açıklama](../data-catalog/data-catalog-how-to-annotate.md)
-    * [Veri Kataloğu'ndaki belge veri kaynakları](../data-catalog/data-catalog-how-to-documentation.md)
+    * [Veri kataloğunda veri kaynaklarına açıklama ekleme](../data-catalog/data-catalog-how-to-annotate.md)
+    * [Veri kataloğunda belge veri kaynakları](../data-catalog/data-catalog-how-to-documentation.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Veri Kataloğu'ndaki veri kaynaklarına açıklama](../data-catalog/data-catalog-how-to-annotate.md)
-* [Veri Kataloğu'ndaki belge veri kaynakları](../data-catalog/data-catalog-how-to-documentation.md)
-* [Veri Gölü Depolama Gen1'i diğer Azure hizmetleriyle tümleştirin](data-lake-store-integrate-with-other-services.md)
+* [Veri kataloğunda veri kaynaklarına açıklama ekleme](../data-catalog/data-catalog-how-to-annotate.md)
+* [Veri kataloğunda belge veri kaynakları](../data-catalog/data-catalog-how-to-documentation.md)
+* [Data Lake Storage 1. diğer Azure hizmetleriyle tümleştirin](data-lake-store-integrate-with-other-services.md)
