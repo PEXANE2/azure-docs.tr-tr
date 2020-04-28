@@ -1,41 +1,41 @@
 ---
-title: Hizmet Kumaş ı hizmetlerinin kullanılabilirliği
-description: Azure Hizmet Kumaşı uygulamasında bir hizmetin hata algılama, hata algılama ve kurtarma durumu açıklanır.
+title: Service Fabric hizmetlerinin kullanılabilirliği
+description: Bir Azure Service Fabric uygulamasında bir hizmetin hata algılama, yük devretme ve kurtarma işlemini açıklar.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 5306439184561e8dec8303a7b149f51d6c2f6e08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75551871"
 ---
-# <a name="availability-of-service-fabric-services"></a>Hizmet Kumaş ı hizmetlerinin kullanılabilirliği
-Bu makalede, Azure Hizmet Dokusu'nun bir hizmetin kullanılabilirliğini nasıl koruduğuna genel bir bakış sunulmaktadır.
+# <a name="availability-of-service-fabric-services"></a>Service Fabric hizmetlerinin kullanılabilirliği
+Bu makalede, Azure Service Fabric 'nin bir hizmetin kullanılabilirliğini nasıl koruduğu konusunda genel bir bakış sunulmaktadır.
 
-## <a name="availability-of-service-fabric-stateless-services"></a>Hizmet Kumaş stateless hizmetlerin durumu
-Service Fabric hizmetleri durumlu veya devletsiz olabilir. Devletsiz hizmet, kullanılabilir veya güvenilir olması gereken yerel bir [durumu](service-fabric-concepts-state.md) olmayan bir uygulama hizmetidir.
+## <a name="availability-of-service-fabric-stateless-services"></a>Service Fabric durum bilgisi olmayan Hizmetlerin kullanılabilirliği
+Service Fabric Hizmetleri durum bilgisiz veya durumsuz olabilir. Durum bilgisi olmayan bir hizmet, yüksek oranda kullanılabilir veya güvenilir olması gereken [yerel bir durumu](service-fabric-concepts-state.md) olmayan bir uygulama hizmetidir.
 
-Devletsiz bir hizmet oluşturmak `InstanceCount`için bir . Örnek sayısı, kümede çalışan devletsiz hizmetin uygulama mantığının örnek sayısını tanımlar. Örnek sayısını artırmak, devletsiz bir hizmeti ölçeklemenin önerilen yoludur.
+Durum bilgisi olmayan bir hizmet oluşturmak için `InstanceCount`tanımlama gerekir. Örnek sayısı, kümede çalışması gereken durum bilgisi olmayan hizmetin uygulama mantığının örnek sayısını tanımlar. Örnek sayısının artırılması, durum bilgisi olmayan bir hizmetin ölçeğini genişletmek için önerilen yoldur.
 
-Bir durum dışı adlandırılmış hizmet örneği başarısız olduğunda, kümedeki uygun bir düğümde yeni bir örnek oluşturulur. Örneğin, devlet siz bir hizmet örneği Düğüm1'de başarısız olabilir ve Düğüm5'te yeniden oluşturulabilir.
+Durum bilgisi olmayan adlandırılmış hizmetin bir örneği başarısız olursa, kümedeki uygun bir düğümde yeni bir örnek oluşturulur. Örneğin, durum bilgisi olmayan bir hizmet örneği Düğüm1 üzerinde başarısız olabilir ve Düğüm5 üzerinde yeniden oluşturulabilir.
 
-## <a name="availability-of-service-fabric-stateful-services"></a>Hizmet Kumaş ı devlet hizmetlerinin mevcudiyeti
-Bir devlet hizmetinin bununla ilişkili bir durumu vardır. Service Fabric'te, devlethizmeti bir yineleme kümesi olarak modellenir. Her yineleme hizmet kodu çalışan bir örneğidir. Yineleme de bu hizmet için devletin bir kopyası vardır. Okuma ve yazma işlemleri *Birincil*adı verilen tek bir yinelemede gerçekleştirilir. Yazma işlemlerinden durum değişiklikleri, *Etkin İkinciler*olarak adlandırılan çoğaltma kümesindeki diğer yinelemelere *çoğaltılır* ve uygulanır. 
+## <a name="availability-of-service-fabric-stateful-services"></a>Service Fabric durum bilgisi olan hizmetlerin kullanılabilirliği
+Durum bilgisi olan bir hizmetin kendisiyle ilişkilendirilmiş bir durumu vardır. Service Fabric, durum bilgisi olan bir hizmet bir çoğaltmalar kümesi olarak modellenir. Her çoğaltma, hizmetin kodunun çalışan bir örneğidir. Çoğaltma Ayrıca bu hizmetin durumunun bir kopyasına sahiptir. Okuma ve yazma işlemleri, *birincil*olarak adlandırılan tek bir çoğaltmada gerçekleştirilir. Yazma işlemlerinden gelen değişiklikler, *Etkin ikincil*adı verilen ve uygulanan çoğaltma kümesindeki diğer yinelemelere *çoğaltılır* . 
 
-Yalnızca bir Birincil yineleme olabilir, ancak birden çok Etkin İkincil yineleme olabilir. Etkin İkincil yinelemelerin sayısı yapılandırılabilir ve daha fazla sayıda yineleme daha fazla eşzamanlı yazılım ve donanım hatalarını tolere edebilir.
+Yalnızca bir birincil çoğaltma olabilir, ancak birden çok etkin Ikincil çoğaltma olabilir. Etkin Ikincil çoğaltmaların sayısı yapılandırılabilir ve daha yüksek sayıda çoğaltma daha fazla sayıda eşzamanlı yazılım ve donanım hatasını kabul edebilir.
 
-Birincil yineleme aşağı giderse, Hizmet Kumaşı Etkin İkincil yinelemelerden birini yeni Birincil yineleme yapar. Bu Etkin İkincil yineleme zaten *çoğaltma*yoluyla, devletin güncelleştirilmiş sürümü vardır ve daha fazla okuma/yazma işlemleri işleme devam edebilirsiniz. Bu işlem *yeniden yapılandırma* olarak bilinir ve [yeniden yapılandırma](service-fabric-concepts-reconfiguration.md) makalesinde daha fazla açıklanmıştır.
+Birincil çoğaltma kapalıysa Service Fabric etkin Ikincil çoğaltmalardan birini yeni birincil çoğaltma yapar. Bu etkin Ikincil çoğaltma, *çoğaltma*aracılığıyla durumun güncelleştirilmiş sürümüne zaten sahip ve daha fazla okuma/yazma işlemi işlemeye devam edebilir. Bu işlem yeniden *yapılandırma olarak bilinir ve yeniden* [yapılandırma](service-fabric-concepts-reconfiguration.md) makalesinde daha ayrıntılı olarak açıklanmıştır.
 
-Birincil veya Etkin İkincil olmak çoğaltma kavramı, *çoğaltma rolü*olarak bilinir. Bu [yinelemeler, Yinelemeler ve örnekler](service-fabric-concepts-replica-lifecycle.md) makalesinde daha fazla açıklanmıştır. 
+Bir çoğaltma kavramı birincil ya da etkin bir Ikincil değer olan *çoğaltma rolü*olarak bilinir. Bu çoğaltmalar [çoğaltmalar ve örnekler](service-fabric-concepts-replica-lifecycle.md) makalesinde daha ayrıntılı olarak açıklanmıştır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Service Fabric kavramları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Ölçekleme Servisi Kumaş hizmetleri](service-fabric-concepts-scalability.md)
-- [Bölümleme Servisi Kumaş hizmetleri](service-fabric-concepts-partitioning.md)
-- [Devleti tanımlama ve yönetme](service-fabric-concepts-state.md)
+- [Service Fabric hizmetlerini ölçeklendirme](service-fabric-concepts-scalability.md)
+- [Service Fabric Hizmetleri bölümlendirme](service-fabric-concepts-partitioning.md)
+- [Durum tanımlama ve yönetme](service-fabric-concepts-state.md)
 - [Reliable Services](service-fabric-reliable-services-introduction.md)
 

@@ -1,43 +1,43 @@
 ---
-title: Mevcut bir yürütülebilir yazılımı Azure Hizmet Kumaşı'na paketle
-description: Varolan bir uygulamayı, hizmet kumaşı kümesine dağıtılabilmek için konuk çalıştırılabilir olarak paketleme hakkında bilgi edinin.
+title: Mevcut bir yürütülebiliri Azure 'da paketleyin Service Fabric
+description: Mevcut bir uygulamayı Konuk yürütülebilir dosyası olarak paketleme hakkında bilgi edinin. bu nedenle bir Service Fabric kümesine dağıtılabilir.
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 3d7aab28a32effa2caf7b04b830d72e5e3dfda56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75457824"
 ---
-# <a name="deploy-an-existing-executable-to-service-fabric"></a>Hizmet Kumaşı'na mevcut bir çalıştırılabilir dağıtma
-Hizmet olarak Azure Hizmet Kumaşı'nda Node.js, Java veya C++ gibi her türlü kodu çalıştırabilirsiniz. Service Fabric, bu tür hizmetleri konuk yürütülebilir olarak ifade eder.
+# <a name="deploy-an-existing-executable-to-service-fabric"></a>Service Fabric için mevcut bir yürütülebiliri dağıtın
+Azure Service Fabric bir hizmet olarak Node. js, Java veya C++ gibi herhangi bir tür kodu çalıştırabilirsiniz. Service Fabric Konuk yürütülebilir dosyaları olan bu hizmet türlerine başvurur.
 
-Konuk icra edilebilir ler Service Fabric tarafından vatansız hizmetler gibi ele alınır. Sonuç olarak, kullanılabilirlik ve diğer ölçümlere bağlı olarak kümedeki düğümlere yerleştirilirler. Bu makalede, Visual Studio veya komut satırı yardımcı programını kullanarak, bir Hizmet Kumaşı kümesine çalıştırılabilen bir konuğun nasıl paketleyip dağıtılacağa kadar açıklanmaktadır.
+Konuk yürütülebilir dosyaları, durum bilgisi olmayan hizmetler gibi Service Fabric tarafından işlenir. Sonuç olarak, kullanılabilirlik ve diğer ölçümlere göre bir kümedeki düğümlere yerleştirilir. Bu makalede, Visual Studio veya komut satırı yardımcı programını kullanarak bir Service Fabric kümesine Konuk yürütülebilir dosyası paketleme ve dağıtma açıklanır.
 
-## <a name="benefits-of-running-a-guest-executable-in-service-fabric"></a>Hizmet Kumaşı'nda çalıştırılabilen bir misafiri çalıştırmanın faydaları
-Hizmet Kumaşı kümesinde çalıştırılabilen bir konuk çalıştırmanın birkaç avantajı vardır:
+## <a name="benefits-of-running-a-guest-executable-in-service-fabric"></a>Service Fabric bir konuk yürütülebilir dosyası çalıştırmanın avantajları
+Service Fabric kümesinde Konuk yürütülebilir dosyası çalıştırmanın çeşitli avantajları vardır:
 
-* Yüksek kullanılabilirlik. Service Fabric'te çalışan uygulamalar son derece kullanılabilir hale getirilir. Service Fabric, uygulama örneklerinin çalışmasını sağlar.
-* Sağlık takibi. Service Fabric sistem durumu izleme, bir uygulamanın çalışıyorsa algılar ve bir hata varsa tanılama bilgileri sağlar.   
-* Uygulama yaşam döngüsü yönetimi. Hiçbir kesinti ile yükseltmeleri sağlamanın yanı sıra, Servis Kumaş bir yükseltme sırasında bildirilen kötü bir sağlık olayı varsa önceki sürüme otomatik geri alma sağlar.    
-* Yoğun -luğu. Bir kümede birden çok uygulama çalıştırabilirsiniz, bu da her uygulamanın kendi donanımında çalışması gereksinimini ortadan kaldırır.
-* Keşfedilebilirlik: REST'i kullanarak kümedeki diğer hizmetleri bulmak için Servis Kumaşı Adlandırma hizmetini arayabilirsiniz. 
+* Yüksek kullanılabilirlik. Service Fabric çalışan uygulamalar yüksek oranda kullanılabilir hale getirilir. Service Fabric, bir uygulamanın örneklerinin çalıştırılmasını sağlar.
+* Sistem durumu izleme. Service Fabric sistem durumu izleme, bir uygulamanın çalışıp çalışmadığını algılar ve bir hata varsa tanılama bilgileri sağlar.   
+* Uygulama yaşam döngüsü yönetimi. Kapalı kalma süresi olmadan yükseltmeler sağlamanın yanı sıra, yükseltme sırasında hatalı bir sistem durumu olayı oluşursa, Service Fabric önceki sürüme otomatik geri alma olanağı sağlar.    
+* Yoğunluklu. Birden çok uygulamayı bir kümede çalıştırabilirsiniz ve bu, her uygulamanın kendi donanımında çalışması gereksinimini ortadan kaldırır.
+* Keşfedilebilir: REST kullanarak kümedeki diğer hizmetleri bulmak için Service Fabric adlandırma hizmetini çağırabilirsiniz. 
 
 ## <a name="samples"></a>Örnekler
-* [Uygulanabilir bir konuğu paketlemek ve dağıtmak için örnek](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [REST kullanarak Adlandırma hizmeti aracılığıyla iletişim kuran iki konuk çalıştırılabilir (C# ve nodejs) örneği](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+* [Konuk yürütülebilir dosyası paketleme ve dağıtma örneği](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [REST kullanarak adlandırma hizmeti üzerinden iletişim kuran iki konuk yürütülebilir dosya (C# ve NodeJS) örneği](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
-## <a name="overview-of-application-and-service-manifest-files"></a>Uygulama ve hizmet bildirimi dosyalarına genel bakış
-Bir konuk çalıştırılabilir dağıtmanın bir parçası olarak, [uygulama modelinde](service-fabric-application-model.md)açıklandığı gibi Hizmet Kumaş ambalaj ve dağıtım modeli anlamak yararlıdır. Service Fabric ambalaj modeli iki XML dosyasına dayanır: uygulama ve hizmet bildirimleri. ApplicationManifest.xml ve ServiceManifest.xml dosyaları için şema tanımı *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*içine Hizmet Kumaş SDK ile yüklenir.
+## <a name="overview-of-application-and-service-manifest-files"></a>Uygulama ve hizmet bildirim dosyalarına genel bakış
+Konuk yürütülebiliri dağıtmanın bir parçası olarak, Service Fabric paketleme ve dağıtım modelinin [uygulama modeli](service-fabric-application-model.md)bölümünde açıklandığı gibi anlaşılması yararlı olur. Service Fabric paketleme modeli iki XML dosyasına dayanır: uygulama ve hizmet bildirimleri. ApplicationManifest. xml ve ServiceManifest. xml dosyaları için şema tanımı, Service Fabric SDK 'Sı ile *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*içine yüklenir.
 
-* **Başvuru bildirimi** Uygulama bildirimi, uygulamayı tanımlamak için kullanılır. Bu, onu oluşturan hizmetleri ve örnek sayısı gibi bir veya daha fazla hizmetin nasıl dağıtılmasını tanımlamak için kullanılan diğer parametreleri listeler.
+* **Uygulama bildirimi** Uygulama bildirimi, uygulamayı tanımlamakta kullanılır. Bu, oluşturan Hizmetleri ve örnek sayısı gibi bir veya daha fazla hizmetin nasıl dağıtılması gerektiğini tanımlamak için kullanılan diğer parametreleri listeler.
 
-  Hizmet Kumaşı'nda uygulama dağıtım ve yükseltme birimidir. Bir uygulama, olası hataların ve olası geri almaların yönetildiği tek bir birim olarak yükseltilebilir. Service Fabric, yükseltme işleminin başarılı olduğunu veya yükseltme başarısız olursa uygulamayı bilinmeyen veya kararsız durumda bırakmadığını garanti eder.
-* **Hizmet bildirimi** Hizmet bildirimi, bir hizmetin bileşenlerini açıklar. Hizmetin adı ve türü, kodu ve yapılandırması gibi verileri içerir. Hizmet bildirimi, dağıtıldıktan sonra hizmeti yapılandırmak için kullanılabilecek bazı ek parametreler de içerir.
+  Service Fabric, uygulama bir dağıtım ve yükseltme birimidir. Bir uygulama, olası hataların ve olası geri göndermeler yönetildiği tek bir birim olarak yükseltilebilir. Service Fabric yükseltme işleminin başarılı olmasını güvence altına alır veya yükseltme başarısız olursa, uygulamayı bilinmeyen veya kararsız durumda bırakmaz.
+* **Hizmet bildirimi** Hizmet bildirimi, bir hizmetin bileşenlerini açıklar. Bu, hizmetin adı ve türü ile kodu ve yapılandırması gibi verileri içerir. Hizmet bildirimi aynı zamanda hizmeti dağıtıldıktan sonra yapılandırmak için kullanılabilecek bazı ek parametreler de içerir.
 
 ## <a name="application-package-file-structure"></a>Uygulama paketi dosya yapısı
-Bir uygulamayı Hizmet Kumaşı'na dağıtmak için, uygulama önceden tanımlanmış bir dizin yapısını izlemelidir. Aşağıda bu yapının bir örneği verilmiştir.
+Bir uygulamayı Service Fabric dağıtmak için uygulama önceden tanımlanmış bir dizin yapısını izlemelidir. Aşağıda bu yapıya bir örnek verilmiştir.
 
 ```
 |-- ApplicationPackageRoot
@@ -51,14 +51,14 @@ Bir uygulamayı Hizmet Kumaşı'na dağıtmak için, uygulama önceden tanımlan
     |-- ApplicationManifest.xml
 ```
 
-ApplicationPackageRoot, uygulamayı tanımlayan ApplicationManifest.xml dosyasını içerir. Uygulamada yer alan her hizmet için bir alt dizini, hizmetin gerektirdiği tüm yapıları içermek için kullanılır. Bu alt dizinler ServiceManifest.xml ve genellikle aşağıdaki gibidir:
+ApplicationPackageRoot, uygulamayı tanımlayan ApplicationManifest. xml dosyasını içerir. Uygulamanın içerdiği her hizmet için bir alt dizin, hizmetin gerektirdiği tüm yapıtları içermesi için kullanılır. Bu alt dizinler ServiceManifest. xml ' dir ve genellikle aşağıdaki gibi:
 
-* *Kod*. Bu dizin hizmet kodunu içerir.
-* *Config*. Bu dizin, hizmetin belirli yapılandırma ayarlarını almak için çalışma zamanında erişebileceği bir Settings.xml dosyası (ve gerekirse diğer dosyalar) içerir.
-* *Veri*. Bu, hizmetin ihtiyaç duyabileceği ek yerel verileri depolamak için ek bir dizinidir. Veriler yalnızca geçici verileri depolamak için kullanılmalıdır. Hizmet Dokusu, hizmetin taşınması gerekiyorsa (örneğin, başarısız olma sırasında) veri dizinindeki değişiklikleri kopyalamaz veya çoğaltmaz.
+* *Kod*. Bu dizin, hizmet kodunu içerir.
+* *Yapılandırma*. Bu dizin, belirli yapılandırma ayarlarını almak için hizmetin çalışma zamanında erişebileceği bir Settings. xml dosyası (ve gerekirse diğer dosyalar) içerir.
+* *Veri*. Bu, hizmetin ihtiyacı olabilecek ek yerel verileri depolamak için ek bir dizindir. Verilerin yalnızca kısa ömürlü verileri depolamak için kullanılması gerekir. Service Fabric, hizmetin yeniden konumlandırılması gerekiyorsa (örneğin, yük devretme sırasında) veri dizinine değişiklikleri kopyalamaz veya çoğaltmaz.
 
 > [!NOTE]
-> İhtiyacınız yoksa `config` dizinleri `data` oluşturmak zorunda değilsiniz.
+> İhtiyacınız yoksa `config` ve `data` dizinleri oluşturmanız gerekmez.
 >
 >
 
@@ -66,7 +66,7 @@ ApplicationPackageRoot, uygulamayı tanımlayan ApplicationManifest.xml dosyası
 İlgili bilgi ve görevler için aşağıdaki makalelere bakın.
 * [Konuk tarafından yürütülebilir bir uygulama dağıtma](service-fabric-deploy-existing-app.md)
 * [Konuk tarafından yürütülebilir birden çok uygulama dağıtma](service-fabric-deploy-multiple-apps.md)
-* [Visual Studio'yu kullanarak ilk konuk çalıştırılabilir uygulamanızı oluşturun](quickstart-guest-app.md)
-* Paketleme aracının ön salıverilme bağlantısı da dahil olmak üzere, uygulanabilir bir konuk paketleme [ve dağıtma için örnek](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [REST kullanarak Adlandırma hizmeti aracılığıyla iletişim kuran iki konuk çalıştırılabilir (C# ve nodejs) örneği](https://github.com/Azure-Samples/service-fabric-containers)
+* [Visual Studio kullanarak ilk Konuk yürütülebilir uygulamanızı oluşturma](quickstart-guest-app.md)
+* Paketleme aracının ön sürümüne bir bağlantı dahil olmak üzere, [Konuk yürütülebilir dosyası paketleme ve dağıtma örneği](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [REST kullanarak adlandırma hizmeti üzerinden iletişim kuran iki konuk yürütülebilir dosya (C# ve NodeJS) örneği](https://github.com/Azure-Samples/service-fabric-containers)
 

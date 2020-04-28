@@ -1,21 +1,21 @@
 ---
-title: Azure Hizmet Kumaşı küme sertifikasıüzerinde devir
-description: Sertifika ortak adı ile tanımlanan Hizmet Kumaşı küme sertifikasını nasıl devredin öğrenin.
+title: Azure Service Fabric küme sertifikasını alma
+description: Sertifika ortak adı tarafından tanımlanan Service Fabric kümesi sertifikasını nasıl alabileceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 94cc6841886b1b0eb4271ac0f727a2e3561e0081
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451971"
 ---
-# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Service Fabric küme sertifikasını el ile devir
-Service Fabric küme sertifikası nın süresi dolmak üzereyken, sertifikayı güncelleştirmeniz gerekir.  Küme, [ortak ada göre](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (küçük parmak izi yerine) sertifikaları kullanacak şekilde ayarlanmışsa, sertifika devri basittir.  Yeni bir son kullanma tarihi olan bir sertifika yetkilisinden yeni bir sertifika alın.  Azure portal Küme oluşturma iş akışı sırasında oluşturulan sertifikaları içerecek şekilde üretim Hizmeti Kumaş kümeleri için kendi imzalı sertifikalar desteklenmez. Yeni sertifika, eski sertifikayla aynı ortak ada sahip olmalıdır. 
+# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Service Fabric kümesi sertifikasını el ile alma
+Service Fabric küme sertifikasının süresi dolmak üzere kapatıldığında, sertifikayı güncelleştirmeniz gerekir.  Küme, ortak ada (parmak izi yerine) [göre sertifikalar kullanmak üzere ayarlandıysa](service-fabric-cluster-change-cert-thumbprint-to-cn.md) Sertifika geçişi basittir.  Yeni bir sona erme tarihine sahip bir sertifika yetkilisinden yeni bir sertifika alın.  Otomatik olarak imzalanan sertifikalar, Azure portal kümesi oluşturma iş akışı sırasında oluşturulan sertifikaları dahil etmek için üretim Service Fabric kümeleri için desteklenmez. Yeni sertifika, eski sertifikayla aynı ortak ada sahip olmalıdır. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Service Fabric kümesi, beyan edilen sertifikayı otomatik olarak kullanır ve gelecekteki son kullanma tarihine daha fazla girer; ana bilgisayara birden fazla doğrulama sertifikası yüklendiğinde. En iyi yöntem, Azure Kaynaklarını sağlamak için Bir Kaynak Yöneticisi şablonu kullanmaktır. Üretim dışı ortam için aşağıdaki komut dosyası, yeni bir sertifikayı anahtar kasasına yüklemek ve ardından sertifikayı sanal makine ölçeğine yüklemek için kullanılabilir: 
+Service Fabric küme, gelecek süre sonu tarihi ile birlikte otomatik olarak tanımlanan sertifikayı kullanır; konakta birden fazla doğrulama sertifikası yüklü olduğunda. En iyi uygulama, Azure kaynaklarını sağlamak için Kaynak Yöneticisi şablonu kullanmaktır. Üretim dışı ortamda, bir anahtar kasasına yeni bir sertifika yüklemek ve ardından sertifikayı sanal makine ölçek kümesine yüklemek için aşağıdaki betik kullanılabilir: 
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -71,9 +71,9 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Virtual
 ```
 
 >[!NOTE]
-> Hesaplamalar Sanal Makine Ölçeği Set Sırları her gizli bir sürümbenzersiz kaynak olduğu gibi, iki ayrı sırlar için aynı kaynak id desteklemez. 
+> Sanal makine ölçek kümesi gizli dizileri, her gizli sürümü sürümlü benzersiz bir kaynak olduğundan, bu, iki ayrı gizli dizi için aynı kaynak kimliğini desteklemez. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* Küme [güvenliği](service-fabric-cluster-security.md)hakkında bilgi edinin.
+* [Küme güvenliği](service-fabric-cluster-security.md)hakkında bilgi edinin.
 * [Küme sertifikalarını güncelleştirme ve yönetme](service-fabric-cluster-security-update-certs-azure.md)

@@ -1,71 +1,71 @@
 ---
-title: Resim etiketi en iyi uygulamalar
-description: Azure konteyner kayıt defterine görüntüleri iterken ve görüntüler çekerken Docker konteyner görüntülerini etiketlemek ve sürüm yapmak için en iyi uygulamalar
+title: Resim etiketi en iyi uygulamaları
+description: Resimleri bir Azure Container Registry 'ye gönderirken ve resimleri çekirken Docker kapsayıcı görüntülerini etiketleme ve sürüm oluşturma için en iyi uygulamalar
 author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75445746"
 ---
-# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Kapsayıcı görüntülerini etiketleme ve sürüm leme önerileri
+# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Kapsayıcı görüntülerini etiketleme ve sürüm oluşturma önerileri
 
-Kapsayıcı görüntülerini bir kapsayıcı kayıt defterine dağıtırken ve sonra dağıtırken, görüntü etiketleme ve sürüm leme için bir stratejiye ihtiyacınız vardır. Bu makalede, iki yaklaşım ve her konteyner yaşam döngüsü sırasında uygun nerede anlatılmaktadır:
+Kapsayıcı görüntüleri bir kapsayıcı kayıt defterine dağıtmaya ve sonra dağıttıktan sonra, görüntü etiketleme ve sürüm oluşturma stratejisine ihtiyacınız vardır. Bu makalede, her birinin kapsayıcı yaşam döngüsü sırasında uygun olduğu iki yaklaşım ele alınmaktadır:
 
-* Kararlı etiketler - Örneğin, *mycontainerimage:1.0*gibi önemli veya küçük bir sürümü belirtmek için yeniden kullandığınız **etiketler.**
-* **Benzersiz etiketler** - *Mycontainerimage:abc123*gibi bir kayıt defterine itinher görüntü için farklı bir etiket .
+* **Kararlı Etiketler** -Örneğin, *mycontainerımage: 1.0*gibi büyük veya küçük bir sürümü göstermek için yeniden kullandığınız Etiketler.
+* **Benzersiz Etiketler** -bir kayıt defterine gönderdiğiniz her görüntü için, *mycontainerımage: abc123*gibi farklı bir etiket.
 
-## <a name="stable-tags"></a>Kararlı etiketler
+## <a name="stable-tags"></a>Kararlı Etiketler
 
-**Öneri**: Konteyner yapılarınızın **temel görüntülerini** korumak için kararlı etiketler kullanın. Bu etiketler güncelleştirmeleri almaya devam ettiği ve üretim ortamlarında tutarsızlıklara neden olabileceğinden, kararlı etiketlerle dağıtımlardan kaçının.
+**Öneri**: kapsayıcı derlemelerinizin **temel görüntülerini** sürdürmek için kararlı Etiketler kullanın. Bu Etiketler güncelleştirmeleri almaya devam ettiğinden ve üretim ortamlarında tutarsızlıklar getirebildiğinden, kararlı etiketlere sahip dağıtımlardan kaçının.
 
-*Kararlı etiketler,* bir geliştiricinin veya bir yapı sisteminin güncelleştirmeleri almaya devam eden belirli bir etiketi çekmeye devam edebileceği anlamına gelir. Ahır, içindekilerin dondurulduğu anlamına gelmez. Bunun yerine, kararlı görüntü nün bu sürümün amacı için kararlı olması gerektiğini ima eder. "Kararlı" kalmak için, güvenlik düzeltme eki veya çerçeve güncelleştirmeleri uygulamak için hizmet olabilir.
+*Kararlı Etiketler* bir geliştirici veya bir yapı sistemi anlamına gelir. Bu, güncelleştirmeleri almaya devam eden belirli bir etiketi çekmeye devam edebilir. Kararlı değildir çünkü içeriğin dondurulmuş olması anlamına gelir. Bunun yerine, kararlı bir şekilde görüntünün bu sürümün amacı için kararlı olması gerektiğini belirtir. "Kararlı" kalmak için güvenlik düzeltme eklerini veya çerçeve güncelleştirmelerini uygulamak üzere hizmet vermiş olabilir.
 
 ### <a name="example"></a>Örnek
 
-Bir çerçeve ekibi sürüm 1.0'ı gemiyle karşılar. Küçük güncellemeler de dahil olmak üzere güncellemeleri göndereceğini biliyorlar. Belirli bir büyük ve küçük sürüm için kararlı etiketleri desteklemek için, kararlı etiketleri iki kümesi vardır.
+Bir çerçeve ekibi 1,0 sürümünü sevk eder. Bunlar, küçük güncelleştirmeler de dahil olmak üzere güncelleştirmeleri sevk edeceğiz. Belirli bir ana ve alt sürüm için kararlı etiketleri desteklemek üzere iki kararlı etiket kümesi vardır.
 
-* `:1`– ana sürüm için kararlı bir etiket. `1`"en yeni" veya "en son" 1.* sürümünü temsil eder.
-* `:1.0`- sürüm 1.0 için kararlı bir etiket, bir geliştiricinin 1.0 güncelleştirmelerine bağlanmasına ve yayımlandığında 1.1'e yuvarlanmamasını sağlar.
+* `:1`– Ana sürüm için kararlı bir etiket. `1`"en yeni" veya "en son" 1. * sürümünü temsil eder.
+* `:1.0`-sürüm 1,0 ' e yönelik kararlı bir etiket, bir geliştiricinin güncelleştirme 1,0 güncelleştirmelerine bağlamasını sağlar ve yayımlandığınızda 1,1 'e geri alınamaz.
 
-Takım ayrıca, `:latest` geçerli ana sürüm ne olursa olsun, en son kararlı etiketi işaret etiketi ni kullanır.
+Takım Ayrıca, geçerli ana `:latest` sürümün ne olduğuna bakılmaksızın, en son kararlı etikete işaret eden etiketini kullanır.
 
-Temel görüntü güncelleştirmeleri veya çerçevenin herhangi bir hizmet sürümü olduğunda, kararlı etiketleri olan görüntüler, bu sürümün en güncel kararlı sürümünü temsil eden en yeni özete güncelleştirilir.
+Temel görüntü güncelleştirmeleri kullanılabilir olduğunda veya Framework 'ün herhangi bir hizmet sürümü sürümünde, kararlı etiketlere sahip görüntüler, bu sürümün en güncel kararlı sürümünü temsil eden en yeni Özet olarak güncelleştirilir.
 
-Bu durumda, hem büyük hem de küçük etiketlersürekli olarak servis ediliyor. Temel görüntü senaryosundan, bu görüntü sahibinin servisli görüntüler sağlamasına olanak tanır.
+Bu durumda, hem birincil hem de ikincil etiketlere sürekli olarak bakım yapılıyor. Temel görüntü senaryosundan bu, görüntü sahibinin hizmet verilen görüntüleri sağlamasına izin verir.
 
-### <a name="delete-untagged-manifests"></a>Etiketlenmemiş bildirimleri silme
+### <a name="delete-untagged-manifests"></a>Etiketlenmemiş bildirimleri Sil
 
-Kararlı etiketi olan bir görüntü güncelleştirilirse, önceden etiketlenmiş görüntü etiketlenmemiş olur ve bu da yetim bir görüntüyle sonuçlanır. Önceki resmin manifestosu ve benzersiz katman verileri kayıt defterinde kalır. Kayıt defteri boyutunuzu korumak için, kararlı görüntü güncelleştirmelerinden kaynaklanan etiketlenmemiş bildirimleri düzenli aralıklarla silebilirsiniz. Örneğin, etiketlenmemiş bildirimleri [otomatik olarak temizleme,](container-registry-auto-purge.md) belirli bir süreden daha eski direnebilir veya etiketlenmemiş bildirimler için bir [bekletme ilkesi](container-registry-retention-policy.md) ayarlayın.
+Kararlı bir etiketi olan bir görüntü güncelleştirilirse, önceden etiketlenmiş görüntü etiketsiz olur ve bu, yalnız bırakılmış bir görüntüye neden olur. Önceki görüntünün bildirimi ve benzersiz katman verileri kayıt defterinde kalır. Kayıt defteri boyutunuzu korumak için, kararlı görüntü güncelleştirmelerinden kaynaklanan etiketlenmemiş bildirimleri düzenli aralıklarla silebilirsiniz. Örneğin, belirli bir süreden daha eski olan etiketlenmemiş bildirimleri [otomatik olarak temizle](container-registry-auto-purge.md) veya etiketlenmemiş bildirimler için bir [bekletme ilkesi](container-registry-retention-policy.md) ayarlayın.
 
-## <a name="unique-tags"></a>Benzersiz etiketler
+## <a name="unique-tags"></a>Benzersiz Etiketler
 
-**Öneri**: Özellikle birden çok düğümüzerinde ölçeklendirilebilen bir ortamda **dağıtımlar**için benzersiz etiketler kullanın. Bileşenlerin tutarlı bir sürümünün kasıtlı olarak dağıtımını isteyebilirsiniz. Kapsayıcınız yeniden başlatılırsa veya bir orkestratör daha fazla örneği ölçeklendirirse, ana bilgisayarlarınız yanlışlıkla diğer düğümlerle tutarsız yeni bir sürüm çekmez.
+**Öneri**: özellikle birden çok düğümde ölçeklenebilen bir ortamda **dağıtımlar**için benzersiz Etiketler kullanın. Büyük olasılıkla bileşenlerin tutarlı bir sürümünün bilinçli dağıtımlarını istersiniz. Kapsayıcınız yeniden başlatılırsa veya bir Orchestrator daha fazla örnek ölçeklendiyse, ana bilgisayarınız yanlışlıkla daha yeni bir sürüm çekmez ve diğer düğümlerle tutarsız.
 
-Benzersiz etiketleme, bir kayıt defterine itilen her görüntünün benzersiz bir etiketi olduğu anlamına gelir. Etiketler yeniden kullanılmaz. Benzersiz etiketler oluşturmak için izleyebileceğiniz çeşitli desenler vardır:
+Benzersiz etiketleme, bir kayıt defterine gönderilen her görüntünün benzersiz bir etiketi olduğu anlamına gelir. Etiketler yeniden kullanılmaz. Aşağıdakiler de dahil olmak üzere benzersiz Etiketler oluşturmak için izleyebileceğiniz çeşitli desenler vardır:
 
-* **Tarih-zaman damgası** - Bu yaklaşım oldukça yaygındır, çünkü görüntünün ne zaman üretedildiğini açıkça anlayabilirsiniz. Ama, nasıl geri yapı sistemi ile ilişkilendirmek için? Aynı anda tamamlanan yapıyı bulmak zorunda mısın? Hangi saat dilimindesin? Tüm yapı sistemleriniz UTC'ye ayarlandı mı?
-* **Git commit** – Bu yaklaşım, temel görüntü güncelleştirmelerini desteklemeye başlayana kadar çalışır. Bir temel görüntü güncelleştirmesi gerçekleşirse, yapı sisteminiz önceki yapıyla aynı Git commit ile başlatılır. Ancak, temel görüntü yeni içeriğe sahiptir. Genel olarak, Git commit *yarı*kararlı bir etiket sağlar.
-* **Manifest özeti** - Bir konteyner kayıt defterine itilen her konteyner görüntüsü, benzersiz bir SHA-256 karma veya özet tarafından tanımlanan bir manifesto ile ilişkilidir. Benzersiz olsa da, özet uzun, okunması zor ve yapı ortamınızla ilgisizdir.
-* **Yapı Kimliği** - Bu seçenek, büyük olasılıkla artımlı olduğundan en iyi seçenek olabilir ve tüm yapıları ve günlükleri bulmak için belirli yapıyla ilişkilendirmenize olanak tanır. Ancak, apaçık bir özet gibi, bir insan için okumak zor olabilir.
+* **Tarih-saat damgası** -bu yaklaşım oldukça yaygındır çünkü görüntünün ne zaman oluşturulduğunu açıkça anlayabilirsiniz. Ancak, derleme sisteminize nasıl geri bağıntılı? Aynı zamanda tamamlanan derlemeyi bulmanız gerekiyor mu? Hangi saat dilimini kullanıyorsunuz? Tüm derleme sistemleriniz UTC 'ye göre ayarlanmış mı?
+* **Git yürütmesi** – bu yaklaşım, temel görüntü güncelleştirmelerini desteklemeye başlamadan işe yarar. Bir temel görüntü güncelleştirmesi gerçekleşdiğinde, derleme sisteminiz önceki derleme ile aynı git yürütmesiyle birlikte çıkar. Ancak, temel görüntüde yeni içerik bulunur. Genel olarak, bir git yürütmesi *yarı*kararlı bir etiket sağlar.
+* **Bildirim Özeti** -bir kapsayıcı kayıt defterine gönderilen her kapsayıcı görüntüsü, BENZERSIZ bir SHA-256 karması veya Özet tarafından tanımlanan bir bildirimle ilişkilendirilir. Benzersiz olsa da Özet, derleme ortamınızla bağıntılı, okunması ve bağıntısız bir biçimde yapılır.
+* **Derleme kimliği** -Bu seçenek büyük olasılıkla artımlı olduğundan en iyi şekilde olabilir ve tüm yapıtları ve günlükleri bulmak için belirli bir yapıya geri ilişki kurmanıza olanak tanır. Bununla birlikte, bir bildirim Özeti gibi, insanların okuması zor olabilir.
 
-  Kuruluşunuzda birden çok yapı sistemi varsa, etiketi yapı sistemi adı ile `<build-system>-<build-id>`öne etmek bu seçeneğin bir varyasyonudur: . Örneğin, yapıları API ekibinin Jenkins yapı sisteminden ve web ekibinin Azure Ardışık Hatları yapı sisteminden ayırt edebilirsiniz.
+  Kuruluşunuzun çeşitli yapı sistemleri varsa, bu seçenek üzerinde yapı sistemi adı ile etiketin önüne önek olarak eklenir: `<build-system>-<build-id>`. Örneğin, derlemeleri API ekibinin Jenkins derleme sisteminden ve Web ekibinin Azure Pipelines derleme sisteminden ayırt edebilirsiniz.
 
-### <a name="lock-deployed-image-tags"></a>Dağıtılan resim etiketlerini kilitleme
+### <a name="lock-deployed-image-tags"></a>Dağıtılan görüntü etiketlerini kilitle
 
-En iyi uygulama olarak, bağlı olduğu herhangi bir resim `write-enabled` etiketini, `false`özniteliğini ' ye ayarlayarak [kilitlemenizi](container-registry-image-lock.md) öneririz. Bu uygulama, bir resmi yanlışlıkla kayıt defterinden kaldırmanızı ve büyük olasılıkla dağıtımlarınızı kesintiye uğratmanızı önler. Kilitleme adımını sürüm ardınıza ekleyebilirsiniz.
+En iyi uygulama olarak, tüm dağıtılan görüntü etiketlerini, `write-enabled` özniteliğini olarak `false`ayarlayarak [kilitlemenizi](container-registry-image-lock.md) öneririz. Bu uygulama, yanlışlıkla bir görüntüyü kayıt defterinden kaldırmanızı ve dağıtımlarınızı kesintiye engel olmasını önler. Yayın işlem hattınızda kilitleme adımını dahil edebilirsiniz.
 
-Dağıtılan bir görüntüyü kilitlemek, kayıt defterinizi korumak için Azure Konteyner Kayıt Defteri özelliklerini kullanarak kayıt defterinizden dağıtılmamış diğer görüntüleri kaldırmanıza olanak tanır. Örneğin, etiketlenmemiş bildirimleri veya belirli bir süreden daha eski olmayan görüntülerin kilidini açan [otomatik temizleme](container-registry-auto-purge.md) veya etiketlenmemiş bildirimler için bir [bekletme ilkesi](container-registry-retention-policy.md) ayarlayın.
+Dağıtılan bir görüntünün kilitlenmesi, kayıt defterinizi sürdürmek için Azure Container Registry özellikleri kullanarak Kayıt defterinizden diğer, dağıtılmamış görüntüleri kaldırmanıza olanak tanır. Örneğin, etiketlenmemiş bildirimleri veya belirtilen süreden daha eski görüntüleri [otomatik olarak temizle](container-registry-auto-purge.md) veya etiketlenmemiş bildirimler için bir [bekletme ilkesi](container-registry-retention-policy.md) ayarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makaledeki kavramların daha ayrıntılı bir tartışma için, blog yazısı [Docker Etiketleme bakın: etiketleme ve docker görüntüleri sürüm için en iyi uygulamalar](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
+Bu makaledeki kavramların daha ayrıntılı bir açıklaması için, Docker [resimlerini etiketleme ve sürüm oluşturma Için en iyi uygulamalar](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/)bölümüne bakın.
 
-Azure kapsayıcı kayıt defterinizin performansını ve uygun maliyetli kullanımını en üst düzeye çıkarmak [için Azure Kapsayıcı Kayıt Defteri için en iyi uygulamalara](container-registry-best-practices.md)bakın.
+Azure Container Registry 'nizin performansını ve düşük maliyetli kullanımını en üst düzeye çıkarmak için bkz. [Azure Container Registry Için en iyi uygulamalar](container-registry-best-practices.md).
 
 <!-- IMAGES -->
 

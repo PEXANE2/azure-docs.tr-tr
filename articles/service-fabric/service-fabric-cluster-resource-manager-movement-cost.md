@@ -1,28 +1,28 @@
 ---
-title: 'Hizmet Kumaş Küme Kaynak Yöneticisi: Hareket maliyeti'
-description: Service Fabric hizmetlerinin hareket maliyeti ve dinamik yapılandırma da dahil olmak üzere herhangi bir mimari ihtiyaca uyacak şekilde nasıl belirtilebileceği hakkında bilgi edinin.
+title: 'Service Fabric kümesi Kaynak Yöneticisi: taşıma maliyeti'
+description: Service Fabric Hizmetleri için taşıma maliyeti ve dinamik yapılandırma dahil olmak üzere mimari gereksinimlerine uyacak şekilde nasıl belirtileyeceğinizi öğrenin.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: af3e01d0d5a605c052be24eed8e14ee3449e2c79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75563352"
 ---
-# <a name="service-movement-cost"></a>Servis hareketi maliyeti
-Hizmet Kumaş Küme Kaynak Yöneticisi'nin bir kümede hangi değişiklikleri yapacağını belirlemeye çalışırken dikkate aldığında göz önünde bulundururbir etken, bu değişikliklerin maliyetidir. "Maliyet" kavramı kümenin ne kadar geliştirilebileceğine göre işlem görür. Dengeleme, parçalanma ve diğer gereksinimler için hizmetlerin taşınmasında maliyet hesaba katLanır. Amaç, gereksinimleri en az yıkıcı veya pahalı bir şekilde karşılamaktır.
+# <a name="service-movement-cost"></a>Hizmet taşıma maliyeti
+Service Fabric kümenin Kaynak Yöneticisi, bir kümede yapılacak değişikliklerin ne kadar değişiklik yaptığını belirlemeye çalışırken dikkate aldığı bir faktör bu değişikliklerin maliyetidir. "Maliyet" kavramı, kümenin ne kadar iyileşebileceğini bir şekilde satın alabilir. Hizmetler, Dengeleme, birleştirme ve diğer gereksinimler için Hizmetleri taşırken buna göre belirlenir. Amaç, gereksinimleri en az karışıklığa veya pahalı bir şekilde karşılamaktır.
 
-Taşıma hizmetleri CPU süresine ve ağ bant genişliğine en az maliyeti. Devlet hizmetleri için, bu hizmetlerin durumunu kopyalamak, ek bellek ve disk tüketerek gerektirir. Azure Hizmet Kumaş Küme Kaynak Yöneticisi'nin birlikte geldiği çözümlerin maliyetini en aza indirmek, kümenin kaynaklarının gereksiz yere harcanmamasını sağlamaya yardımcı olur. Ancak, kümedeki kaynakların tahsisini önemli ölçüde artıracak çözümleri de yok saymak istemezsiniz.
+Hizmet maliyetleri CPU süresi ve ağ bant genişliği en az bir olarak taşınıyor. Durum bilgisi olan hizmetler için, ek bellek ve disk kullanan bu hizmetlerin durumunun kopyalanmasını gerektirir. Azure Service Fabric kümesinin Kaynak Yöneticisi birlikte geldiği çözümlerin maliyetini en aza indirmek, kümenin kaynaklarının gereksiz şekilde harcanmadığından emin olmanıza yardımcı olur. Ancak, kümedeki kaynakların ayrılmasını önemli ölçüde iyileştirebilecek çözümleri de yoksaymak istemezsiniz.
 
-Küme Kaynak Yöneticisi'nin, kümeyi yönetmeye çalışırken maliyetleri hesaplamanın ve sınırlamanın iki yolu vardır. İlk mekanizma sadece yapacağı her hareketi saymaktır. Yaklaşık aynı bakiye (skor) ile iki çözüm oluşturulursa, Küme Kaynak Yöneticisi en düşük maliyete (toplam hamle sayısı) sahip olanı tercih eder.
+Küme Kaynak Yöneticisi, maliyetleri yönetmeye çalışırken maliyeti ve sınırlandırmanın iki yolu vardır. İlk mekanizma, yaptığı her taşımayı saymadır. Aynı Bakiye (puan) hakkında iki çözüm oluşturulursa, Küme Kaynak Yöneticisi en düşük maliyetle (Toplam iz sayısı) birini tercih eder.
 
-Bu strateji iyi çalışıyor. Ancak varsayılan veya statik yüklerde olduğu gibi, karmaşık bir sistemde tüm hareketlerin eşit olması olası değildir. Bazı çok daha pahalı olması muhtemeldir.
+Bu strateji iyi bir şekilde çalışmaktadır. Ancak, varsayılan veya statik yüklere göre, tüm taşımaların eşit olduğu karmaşık bir sistemde olma ihtimali düşüktür. Bazıları büyük olasılıkla çok daha pahalıdır.
 
-## <a name="setting-move-costs"></a>Taşıma Maliyetlerini Ayarlama 
-Oluşturulduğunda bir hizmetiçin varsayılan taşıma maliyetini belirtebilirsiniz:
+## <a name="setting-move-costs"></a>Taşıma maliyetlerini ayarlama 
+Bir hizmetin oluşturulduğu sırada varsayılan taşıma maliyetini belirtebilirsiniz:
 
 PowerShell:
 
@@ -40,7 +40,7 @@ serviceDescription.DefaultMoveCost = MoveCost.Medium;
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Ayrıca, hizmet oluşturulduktan sonra bir hizmet için MoveCost'u dinamik olarak belirtebilir veya güncelleştirebilirsiniz: 
+Hizmet oluşturulduktan sonra bir hizmet için de MoveCost 'ı dinamik olarak belirtebilir veya güncelleştirebilirsiniz: 
 
 PowerShell: 
 
@@ -56,9 +56,9 @@ updateDescription.DefaultMoveCost = MoveCost.High;
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/ServiceName"), updateDescription);
 ```
 
-## <a name="dynamically-specifying-move-cost-on-a-per-replica-basis"></a>Yineleme başına hareket maliyetini dinamik olarak belirtme
+## <a name="dynamically-specifying-move-cost-on-a-per-replica-basis"></a>Taşıma maliyetini çoğaltma başına dinamik olarak belirtme
 
-Önceki parçacıkların tümü, hizmetin kendisi dışından bir kerede bütün bir hizmet için MoveCost belirtmek içindir. Ancak, taşıma maliyeti en yararlı olan, belirli bir hizmet nesnesinin taşıma maliyetinin ömrü boyunca değiştiğinde olmasıdır. Hizmetlerin kendileri muhtemelen belirli bir zamanı taşımak için ne kadar maliyetli oldukları konusunda en iyi fikre sahip olduğundan, hizmetlerin çalışma süresi boyunca kendi bireysel taşıma maliyetini bildirmesi için bir API vardır. 
+Yukarıdaki kod parçacıklarının hepsi hizmetin dışından bir hizmetin tamamına yönelik MoveCost belirtmektir. Ancak, taşıma maliyeti en çok yararlı olur ve belirli bir hizmet nesnesinin taşıma maliyeti, kullanım ömrü boyunca değişir. Hizmetler muhtemelen belirli bir süreyi taşımanın ne kadar maliyetlerine ait olduğu konusunda en iyi fikir sahibi olduğundan, hizmetler için çalışma zamanı sırasında kendi bireysel taşıma maliyetlerini raporlamak üzere bir API 'SI vardır. 
 
 C#:
 
@@ -67,34 +67,34 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
 ## <a name="impact-of-move-cost"></a>Taşıma maliyetinin etkisi
-MoveCost beş seviyeleri vardır: Sıfır, Düşük, Orta, Yüksek ve Çok Yüksek. Aşağıdaki kurallar geçerlidir:
+MoveCost beş düzeye sahiptir: sıfır, düşük, orta, yüksek ve VeryHigh. Aşağıdaki kurallar geçerlidir:
 
-* MoveCosts, Sıfır ve Çok Yüksek hariç olmak üzere birbirine göredir. 
-* Sıfır hareket maliyeti, hareketin serbest olduğu ve çözümün puanına göre sayılmaması gerektiği anlamına gelir.
-* Taşıma maliyetinizi Yüksek veya Çok Yüksek olarak ayarlamak, yinelemenin *hiçbir zaman* taşınmayacağıma dair bir garanti *sağlamaz.*
-* VeryHigh taşıma maliyetine sahip yinelemeler yalnızca kümede başka bir şekilde düzeltilemeyen bir kısıtlama ihlali varsa taşınır (ihlali düzeltmek için diğer birçok yinelemenin taşınması gerekse bile)
+* Sıfır ve VeryHigh dışında, Movemaliyetler birbirleriyle ilişkilidir. 
+* Sıfır taşıma maliyeti, hareketin ücretsiz olduğu ve çözüm puanına göre saymamalıdır olması anlamına gelir.
+* Taşıma maliyetinizi High veya VeryHigh olarak ayarlamak, çoğaltmanın *hiçbir* şekilde taşınmayacağı *garantisi sağlamaz.*
+* VeryHigh taşıma maliyeti olan çoğaltmalar yalnızca kümede başka bir şekilde sabitlenemez bir kısıtlama ihlali varsa (diğer birçok çoğaltmanın ihlalin ihlaline yol açmasının gerekli olsa bile)
 
 
 
 <center>
 
-![Hareket için yinelemeleri seçerken maliyeti bir faktör olarak taşıma][Image1]
+![Taşıma için çoğaltmaları seçerken maliyeti bir faktör olarak taşıyın][Image1]
 </center>
 
-MoveCost, genel olarak en az kesintiye neden olan ve eşdeğer bakiyeye ulaşmaya devam ederken elde etmesi en kolay çözümleri bulmanıza yardımcı olur. Bir hizmetin maliyet kavramı birçok şeye göreolabilir. Taşıma maliyetinizi hesaplamada en sık karşılaşılan etkenler şunlardır:
+MoveCost, en az kesintiye neden olan çözümleri bulmanıza yardımcı olur ve yine de eşdeğer bakiyeye ulaşan en kolay şekilde elde edilir. Hizmetin maliyet kavramı birçok şeylere göre olabilir. Taşıma maliyetinizi hesaplamak için en yaygın etmenler şunlardır:
 
 - Hizmetin taşıması gereken durum veya veri miktarı.
-- Müşterilerin kopukluk maliyeti. Birincil yinelemeyi taşımak genellikle ikincil bir yinelemeyi taşıma maliyetinden daha maliyetlidir.
-- Bir uçuş operasyonunu bölmenin bedeli. Veri deposu düzeyindeki bazı işlemler veya istemci çağrısına yanıt olarak gerçekleştirilen işlemler maliyetlidir. Belli bir noktadan sonra, eğer yapmak zorunda değilsen onları durdurmak istemezsin. Bu nedenle, işlem devam ederken, hareket etme olasılığını azaltmak için bu hizmet nesnesinin taşıma maliyetini artırırsınız. İşlem bittiğinde, maliyeti normale ayarlarsınız.
+- İstemcilerin bağlantısının kesilmesi maliyeti. Birincil çoğaltmayı taşımak, genellikle ikincil bir çoğaltmanın taşınması maliyetinden daha maliyetlidir.
+- Uçuş sırasında bir işlemi kesme maliyeti. Veri deposu düzeyindeki veya bir istemci çağrısına yanıt olarak gerçekleştirilen işlemlerde bazı işlemler maliyetlidir. Belirli bir noktadan sonra, gerek duymuyorsanız durdurmak istemezsiniz. Bu nedenle işlem devam ederken, hareket olasılığını azaltmak için bu hizmet nesnesinin taşıma maliyetini artırırsınız. İşlem tamamlandığında, maliyeti normal olarak ayarlayın.
 
 > [!IMPORTANT]
-> Çok Yüksek taşıma maliyetini kullanmak, Küme Kaynak Yöneticisi'nin kümede genel olarak en iyi yerleşim çözümlerini bulma yeteneğini önemli ölçüde kısıtlayıştır olduğundan dikkatle düşünülmelidir. VeryHigh taşıma maliyetine sahip yinelemeler yalnızca kümede başka bir şekilde düzeltilemeyen bir kısıtlama ihlali varsa taşınır (ihlali düzeltmek için diğer birçok yinelemenin taşınması gerekse bile)
+> VeryHigh taşıma maliyetinin kullanılması, Küme Kaynak Yöneticisi kümede küresel olarak en uygun yerleştirme çözümünü bulma becerisini önemli ölçüde kısıtladığından, dikkatli bir şekilde ele alınmalıdır. VeryHigh taşıma maliyeti olan çoğaltmalar yalnızca kümede başka bir şekilde sabitlenemez bir kısıtlama ihlali varsa (diğer birçok çoğaltmanın ihlalin ihlaline yol açmasının gerekli olsa bile)
 
-## <a name="enabling-move-cost-in-your-cluster"></a>Kümenizde taşıma maliyetini etkinleştirme
-Daha ayrıntılı MoveCosts'in dikkate alınabilmesi için, MoveCost'un kümenizde etkinleştirilmesi gerekir. Bu ayar olmadan, movecost hesaplamak için hamle sayma varsayılan modu kullanılır ve MoveCost raporları yoksayılır.
+## <a name="enabling-move-cost-in-your-cluster"></a>Kümenizde taşıma maliyeti etkinleştiriliyor
+Daha ayrıntılı bir MoveCost 'in hesaba alınması için, kümenizde MoveCost özelliğinin etkinleştirilmesi gerekir. Bu ayar olmadan, varsayılan sayım hareketi modu, MoveCost hesaplamak için kullanılır ve MoveCost raporları yok sayılır.
 
 
-ClusterManifest.xml:
+ClusterManifest. xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -102,7 +102,7 @@ ClusterManifest.xml:
         </Section>
 ```
 
-Bağımsız dağıtımlar için ClusterConfig.json veya Azure barındırılan kümeler için Template.json aracılığıyla:
+Tek başına dağıtımlar için ClusterConfig. JSON veya Azure 'da barındırılan kümeler için Template. JSON aracılığıyla:
 
 ```json
 "fabricSettings": [
@@ -119,7 +119,7 @@ Bağımsız dağıtımlar için ClusterConfig.json veya Azure barındırılan k�
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Service Fabric Cluster Resource Manger kümedeki tüketimi ve kapasiteyi yönetmek için ölçümler kullanır. Ölçümler ve bunları nasıl yapılandıracağınız hakkında daha fazla bilgi edinmek için, [kaynak tüketimini yönetme ve Hizmet Kumaşı'ndaki yükü ölçümlerle](service-fabric-cluster-resource-manager-metrics.md)yönetme'ye göz atın.
-- Küme Kaynak Yöneticisi'nin kümedeki yükü nasıl yönettiği ve dengelerde nasıl yönettiği hakkında bilgi edinmek [için, Hizmet Kumaşı kümenizi dengeleme](service-fabric-cluster-resource-manager-balancing.md)konusuna göz atın.
+- Service Fabric küme kaynak yöneticisi, kümedeki tüketimi ve kapasiteyi yönetmek için ölçümleri kullanır. Ölçümler ve bunların nasıl yapılandırılacağı hakkında daha fazla bilgi edinmek için [ölçüm ile Service Fabric kaynak tüketimini yönetmeyi ve yüklemeyi](service-fabric-cluster-resource-manager-metrics.md)inceleyin.
+- Kaynak Yöneticisi kümenin, kümedeki yükü nasıl yönettiğini ve dengeleyeceğinizi öğrenmek için, [Service Fabric kümenizin dengelenmesini](service-fabric-cluster-resource-manager-balancing.md)inceleyin.
 
 [Image1]:./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png

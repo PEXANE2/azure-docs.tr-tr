@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75469342"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure Storage Bağlı Hizmeti
-**Azure Depolama bağlantılı hizmet,** veri fabrikasına Azure Depolama'ya küresel erişim sağlayan hesap **anahtarını**kullanarak bir Azure depolama hesabını Azure veri fabrikasına bağlamanızı sağlar. Aşağıdaki tablo, Azure Depolama bağlantılı hizmete özgü JSON öğeleri için açıklama sağlar.
+**Azure depolama bağlı hizmeti** , veri fabrikasını Azure depolama 'ya genel erişimle sağlayan **hesap anahtarını**kullanarak bir Azure Depolama hesabını Azure veri fabrikasına bağlayabilmeniz için izin verir. Aşağıdaki tabloda, Azure Storage bağlı hizmetine özgü JSON öğelerine ilişkin açıklama verilmiştir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type |Tür özelliği şu şekilde ayarlanmalıdır: **AzureStorage** |Evet |
-| Connectionstring |ConnectionString özelliği için Azure depolamasına bağlanmak için gereken bilgileri belirtin. |Evet |
+| type |Type özelliği: **Azurestorage** olarak ayarlanmalıdır |Yes |
+| Dizisi |ConnectionString özelliği için Azure depolama 'ya bağlanmak için gereken bilgileri belirtin. |Yes |
 
-Depolama hesabı erişim anahtarlarını nasıl alınız hakkında bilgi için [bkz.](../articles/storage/common/storage-account-keys-manage.md)
+Depolama hesabı erişim anahtarlarını alma hakkında daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../articles/storage/common/storage-account-keys-manage.md).
 
-**Örnek:**  
+**Örneğinde**  
 
 ```json
 {
@@ -35,24 +35,24 @@ Depolama hesabı erişim anahtarlarını nasıl alınız hakkında bilgi için [
 }
 ```
 
-### <a name="azure-storage-sas-linked-service"></a>Azure Depolama Sas Bağlantılı Hizmet
-Paylaşılan erişim imzası (SAS), depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. Bir istemciye, hesap erişim anahtarlarınızı paylaşmak zorunda kalmadan, belirli bir süre için ve belirli bir izin kümesiyle depolama hesabınızdaki nesnelere sınırlı izinler verme olanağı sağlar. SAS, sorgu parametrelerinde bir depolama kaynağına doğrulanmış erişim için gerekli tüm bilgileri kapsayan bir URI'dir. SAS ile depolama kaynaklarına erişmek için istemcinin yalnızca SAS'ta uygun oluşturucu ya da yönteme geçmesi gerekir. SAS hakkında daha fazla bilgi için bkz: [Paylaşılan erişim imzalarını (SAS) kullanarak Azure Depolama kaynaklarına sınırlı erişim izni](../articles/storage/common/storage-sas-overview.md)ver.
+### <a name="azure-storage-sas-linked-service"></a>Azure Storage SAS bağlı hizmeti
+Paylaşılan erişim imzası (SAS), depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. Bu, belirli bir süre boyunca ve hesap erişim anahtarlarınızı paylaşmak zorunda kalmadan, belirtilen bir süre ve belirli bir izin kümesiyle bir istemci sınırlı izinleri vermenizi sağlar. SAS, bir depolama kaynağına kimlik doğrulamalı erişim için gereken tüm bilgileri sorgu parametrelerinde kapsayan bir URI 'dir. SAS ile depolama kaynaklarına erişmek için, istemcinin yalnızca SAS 'yi uygun oluşturucuya veya yönteme geçirmesi gerekir. SAS hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../articles/storage/common/storage-sas-overview.md).
 
 > [!IMPORTANT]
-> Azure Veri Fabrikası artık yalnızca **Hizmet SAS'ı** destekler, ancak Hesap SAS'ı desteklemez. Azure portalından veya Storage Explorer'dan generable SAS URL'sinin desteklenmeyen bir Hesap SAS olduğunu unutmayın.
+> Azure Data Factory artık yalnızca **HIZMET SAS** 'yi destekliyor ancak hesap SAS 'sı değil. Azure portal veya Depolama Gezgini tarafından kullanılabilen SAS URL 'sinin, desteklenmeyen bir hesap SAS 'si olduğunu not edin.
 
 > [!TIP]
-> Depolama hesabınız için bir Service SAS oluşturmak için PowerShell komutlarının altında uygulayabilirsiniz (yer tutucuları değiştirin ve gerekli izni verin):`$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> Depolama hesabınız için bir hizmet SAS oluşturmak için aşağıdaki PowerShell komutlarını çalıştırabilirsiniz (yer tutucuları değiştirin ve gerekli izni verin):`$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
-Azure Depolama SAS bağlantılı hizmeti, Paylaşılan Erişim İmzası (SAS) kullanarak bir Azure Depolama Hesabı'nı Azure veri fabrikasına bağlamanızı sağlar. Veri fabrikasına depolamadaki tüm/belirli kaynaklara (blob/konteyner) sınırlı/zamana bağlı erişim sağlar. Aşağıdaki tablo, Azure Depolama SAS bağlantılı hizmetine özgü JSON öğeleri için açıklama sağlar. 
+Azure Storage SAS bağlı hizmeti, bir Azure Depolama hesabını, paylaşılan erişim Imzası (SAS) kullanarak bir Azure Data Factory 'ye bağlayabilmeniz için izin verir. Veri fabrikasını depolama alanındaki tüm/belirli kaynaklara (blob/kapsayıcı) kısıtlı/zamana göre erişim ile sağlar. Aşağıdaki tabloda, Azure Storage SAS bağlı hizmetine özgü JSON öğeleri için açıklama verilmiştir. 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type |Tür özelliği şu şekilde ayarlanmalıdır: **AzureStorageSas** |Evet |
-| sasUri |Blob, kapsayıcı veya tablo gibi Azure Depolama kaynaklarına Paylaşılan Erişim İmza URI'sini belirtin.  |Evet |
+| type |Type özelliği: **Azurestorampasas** olarak ayarlanmalıdır |Yes |
+| sasUri |Blob, kapsayıcı veya tablo gibi Azure depolama kaynakları için paylaşılan erişim Imzası URI 'SI belirtin.  |Yes |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -66,9 +66,9 @@ Azure Depolama SAS bağlantılı hizmeti, Paylaşılan Erişim İmzası (SAS) ku
 }
 ```
 
-Bir **SAS URI**oluştururken, aşağıdakileri göz önünde bulundurarak:  
+**SAS URI 'si**oluştururken şunları göz önünde bulundurarak:  
 
-* Veri fabrikanızda bağlantılı hizmetin (okuma, yazma, okuma/yazma) nasıl kullanıldığına bağlı olarak nesneler üzerinde uygun okuma/yazma **izinleri** ayarlayın.
-* **Son kullanma süresini** uygun şekilde ayarlayın. Azure Depolama nesnelerine erişimin ardışık ardışık aygıtın etkin süresi içinde sona ermediğinden emin olun.
-* Uri ihtiyaca göre doğru konteyner/blob veya Tablo düzeyinde oluşturulmalıdır. Bir Azure blob için Bir SAS Uri Veri Fabrikası hizmeti belirli bir blob erişmesine olanak sağlar. Azure blob konteynerine bir SAS Uri, Veri Fabrikası hizmetinin bu kapsayıcıdaki lekeler aracılığıyla tekrarlanmasına olanak tanır. Daha sonra daha fazla/daha az nesneye erişim sağlamanız veya SAS URI'yi güncelleştirmeniz gerekiyorsa, bağlantılı hizmeti yeni URI ile güncelleştirmeyi unutmayın.   
+* Veri fabrikanızdaki bağlantılı hizmetin (okuma, yazma, okuma/yazma) nasıl kullanıldığını temel alarak nesneler üzerinde uygun okuma/yazma **izinleri** ayarlayın.
+* **Süre sonu süresini** uygun şekilde ayarlayın. Azure Storage nesnelerine erişimin, işlem hattının etkin döneminde sona ermediğinden emin olun.
+* URI, ihtiyacınıza göre doğru kapsayıcı/blob veya tablo düzeyinde oluşturulmalıdır. Bir Azure blobuna bir SAS URI 'Si, Data Factory hizmetinin bu Blobun erişmesini sağlar. Bir Azure Blob kapsayıcısının SAS URI 'Si, Data Factory hizmetinin o kapsayıcıdaki Bloblar arasında yineleme yapmasına izin verir. Daha sonra daha fazla/daha az nesneye erişim sağlamanız veya SAS URI 'sini güncelleştirmeniz gerekiyorsa, bağlantılı hizmeti yeni URI ile güncelleştirmeyi unutmayın.   
 

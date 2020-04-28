@@ -1,6 +1,6 @@
 ---
-title: Visual Studio ve C# ile Apache Storm topolojileri - Azure HDInsight
-description: C#'da Fırtına topolojisi oluşturmayı öğrenin. Visual Studio için Hadoop araçlarını kullanarak Visual Studio'da bir kelime sayısı topolojisi oluşturun.
+title: Visual Studio ve C# ile topoloji Apache Storm-Azure HDInsight
+description: C# ' de bir fırtınası topolojisi oluşturmayı öğrenin. Visual Studio için Hadoop araçlarını kullanarak Visual Studio 'da bir sözcük sayısı topolojisi oluşturun.
 ROBOTS: NOINDEX
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,49 +9,49 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.openlocfilehash: 1903c2faab865152d1f3666f3c9dadd745058b56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75612300"
 ---
-# <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake araçlarını kullanarak Apache Storm için C# topolojileri geliştirin
+# <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake araçları 'nı kullanarak Apache Storm için C# topolojileri geliştirme
 
-Visual Studio için Azure Veri Gölü (Apache Hadoop) araçlarını kullanarak C# Apache Storm topolojisi oluşturmayı öğrenin. Bu belge Visual Studio'da bir Fırtına projesi oluşturma, yerel olarak test etme ve Azure HDInsight kümesinde bir Apache Storm'a dağıtma sürecinden geçer.
+Visual Studio için Azure Data Lake (Apache Hadoop) araçlarını kullanarak C# Apache Storm topolojisi oluşturmayı öğrenin. Bu belgede, Visual Studio 'da bir fırtınası projesi oluşturma, yerel olarak test etme ve Azure HDInsight kümesinde bir Apache Storm dağıtma işlemi gösterilmektedir.
 
-Ayrıca, C# ve Java bileşenlerini kullanan hibrit topolojileri nasıl oluşturabileceğinizi de öğrenirsiniz.
+Ayrıca C# ve Java bileşenlerini kullanan karma topolojiler oluşturmayı öğreneceksiniz.
 
-C# topolojileri .NET 4.5'i kullanır ve HDInsight kümesinde çalışmak için Mono'yu kullanır. Olası uyumsuzluklar hakkında bilgi için [Mono uyumluluğu'na](https://www.mono-project.com/docs/about-mono/compatibility/)bakın. C# topolojisini kullanmak için, `Microsoft.SCP.Net.SDK` projeniz tarafından kullanılan NuGet paketini 0.10.0.6 veya sonraki sürümlere güncelleştirmeniz gerekir. Paketin sürümünün ayrıca HDInsight üzerinde yüklü olan Storm ana sürümüyle eşleşmesi gerekir.
+C# topolojileri, .NET 4,5 kullanır ve HDInsight kümesinde çalıştırmak için mono kullanır. Olası uyumsuzluklar hakkında daha fazla bilgi için bkz. [mono uyumluluk](https://www.mono-project.com/docs/about-mono/compatibility/). C# topolojisi kullanmak için, projeniz tarafından kullanılan `Microsoft.SCP.Net.SDK` NuGet paketini 0.10.0.6 veya üzeri sürümüne güncelleştirmeniz gerekir. Paketin sürümünün ayrıca HDInsight üzerinde yüklü olan Storm ana sürümüyle eşleşmesi gerekir.
 
-| HDInsight sürümü | Apache Storm sürümü | SCP.NET sürümü | Varsayılan Mono sürümü |
+| HDInsight sürümü | Apache Storm sürümü | SCP.NET sürümü | Varsayılan mono sürümü |
 |:-----------------:|:-------------:|:---------------:|:--------------------:|
-| 3.4 | 0.10.0.x | 0.10.0.x | 3.2.8 |
-| 3,5 | 1.0.2.x | 1.0.0.x | 4.2.1 |
-| 3.6 | 1.1.0.x | 1.0.0.x | 4.2.8 |
+| 3.4 | 0.10.0. x | 0.10.0. x | 3.2.8 |
+| 3,5 | 1.0.2. x | 1.0.0. x | 4.2.1 |
+| 3,6 | 1.1.0. x | 1.0.0. x | 4.2.8 |
 
 ## <a name="prerequisite"></a>Önkoşul
 
-HDInsight'ta bir Apache Storm kümesi. Bkz. [Azure portalını kullanarak Apache Hadoop kümeleri oluşturun](../hdinsight-hadoop-create-linux-clusters-portal.md) ve Küme türü için **Fırtına'yı**seçin. **Storm**
+HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **fırtınası** seçme.
 
-## <a name="install-visual-studio"></a>Visual Studio yükleme
+## <a name="install-visual-studio"></a>Visual Studio'yu yükleme
 
-[Visual Studio'yı](https://visualstudio.microsoft.com/downloads/)kullanarak SCP.NET ile C# topolojileri geliştirebilirsiniz. Buradaki talimatlar Visual Studio 2019'u kullanır, ancak Visual Studio'nun önceki sürümlerini de kullanabilirsiniz.
+[Visual Studio 'yu](https://visualstudio.microsoft.com/downloads/)kullanarak SCP.net Ile C# topolojileri geliştirebilirsiniz. Buradaki yönergeler Visual Studio 2019 kullanır, ancak Visual Studio 'nun önceki sürümlerini de kullanabilirsiniz.
 
-## <a name="install-data-lake-tools-for-visual-studio"></a>Visual Studio için Veri Gölü araçlarını yükleyin
+## <a name="install-data-lake-tools-for-visual-studio"></a>Visual Studio için Data Lake araçları 'nı yükler
 
-Visual Studio için Veri Gölü araçlarını yüklemek [için, Visual Studio için Veri Gölü araçlarını kullanmaya başlayın'daki](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-data-lake-tools-for-visual-studio)adımları izleyin.
+Visual Studio için Data Lake araçları 'nı yüklemek için, [Visual Studio için Data Lake araçları 'nı kullanmaya başlama](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-data-lake-tools-for-visual-studio)bölümündeki adımları izleyin.
 
-## <a name="install-java"></a>Java'yı Yükle
+## <a name="install-java"></a>Java 'Yı yükler
 
-Visual Studio'dan bir Storm topolojisi gönderdiğinde, SCP.NET topoloji ve bağımlılıkları içeren bir zip dosyası oluşturur. Java, Linux tabanlı kümelerle daha uyumlu bir biçim kullandığından, bu zip dosyalarını oluşturmak için kullanılır.
+Visual Studio 'dan bir fırtınası topolojisi gönderdiğinizde, SCP.NET, topolojiyi ve bağımlılıklarını içeren bir ZIP dosyası oluşturur. Java, Linux tabanlı kümeler ile daha uyumlu bir biçim kullandığından, bu ZIP dosyalarını oluşturmak için kullanılır.
 
-1. Geliştirme ortamınıza Java Geliştirici Kiti7 veya daha sonra yükleyin. [Oracle](https://openjdk.java.net/)Oracle'dan Oracle JDK alabilirsiniz. Diğer Java [dağıtımlarını](/java/azure/jdk/)da kullanabilirsiniz.
+1. Geliştirme ortamınıza Java geliştirici seti (JDK) 7 veya üstünü yükler. Oracle JDK 'yi [Oracle](https://openjdk.java.net/)'dan edinebilirsiniz. [Diğer Java dağıtımlarını](/java/azure/jdk/)da kullanabilirsiniz.
 
-2. Ortam `JAVA_HOME` değişkenini Java içeren dizine ayarlayın.
+2. `JAVA_HOME` Ortam değişkenini Java içeren dizine ayarlayın.
 
-3. Ortam `PATH` değişkenini `%JAVA_HOME%\bin` dizini içerecek şekilde ayarlayın.
+3. `PATH` Ortam değişkenini `%JAVA_HOME%\bin` dizini içerecek şekilde ayarlayın.
 
-Java ve JDK'nın doğru yüklenmiş olduğunu doğrulamak için aşağıdaki C# konsol uygulamasını oluşturabilir ve çalıştırabilirsiniz:
+Java ve JDK 'nin doğru yüklendiğini doğrulamak için aşağıdaki C# konsol uygulamasını derleyip çalıştırabilirsiniz:
 
 ```csharp
 using System;
@@ -85,76 +85,76 @@ namespace ConsoleApplication2
 }
 ```
 
-## <a name="apache-storm-templates"></a>Apaçi Fırtınası şablonları
+## <a name="apache-storm-templates"></a>Apache Storm şablonları
 
-Visual Studio için Veri Gölü araçları aşağıdaki şablonları sağlar:
+Visual Studio için Data Lake araçları aşağıdaki şablonları sağlar:
 
 | Proje türü | Gösteriler |
 | --- | --- |
-| Fırtına Uygulaması |Boş bir Fırtına topoloji projesi. |
-| Storm Azure SQL Yazar Örneği |Azure SQL Veritabanına nasıl yazılır? |
-| Storm Azure Cosmos DB Okuyucu Örneği |Azure Cosmos DB'den okuma. |
-| Storm Azure Cosmos DB Yazar Örneği |Azure Cosmos DB'ye nasıl yazılır? |
-| Fırtına EventHub Okuyucu Örneği |Azure Etkinlik Hub'larından okuma. |
-| Fırtına EventHub Yazar Örneği |Azure Etkinlik Hub'larına yazma. |
-| Fırtına HBase Okuyucu Örneği |HDInsight kümelerinde HBase'den okuma. |
-| Fırtına HBase Yazar Örnek |HDInsight kümelerinde HBase'e nasıl yazılır? |
-| Fırtına Hibrid Örnek |Java bileşeni nasıl kullanılır? |
-| Fırtına Örneği |Temel bir kelime sayısı topoloji. |
+| Fırtınası uygulaması |Boş bir fırtınası topolojisi projesi. |
+| Fırtınası Azure SQL yazıcı örneği |Azure SQL veritabanı 'na yazma. |
+| Fırtınası Azure Cosmos DB okuyucu örneği |Azure Cosmos DB nasıl okunmalıdır. |
+| Fırtınası Azure Cosmos DB yazıcı örneği |Azure Cosmos DB yazma. |
+| Fırtınası EventHub okuyucu örneği |Azure Event Hubs nasıl okunmalıdır. |
+| Fırtınası EventHub yazıcı örneği |Azure Event Hubs yazma. |
+| Fırtınası HBase okuyucu örneği |HDInsight kümelerinde HBase 'den okuma. |
+| Fırtınası HBase yazıcı örneği |HDInsight kümelerinde HBase 'e yazma. |
+| Fırtınası karma örneği |Java bileşeni kullanma. |
+| Fırtınası örneği |Temel bir sözcük sayısı topolojisi. |
 
 > [!WARNING]  
-> Tüm şablonlar Linux tabanlı HDInsight ile çalışmaz. Şablonlar tarafından kullanılan NuGet paketleri Mono ile uyumlu olmayabilir. Olası sorunları belirlemek için [Mono uyumluluğu'na](https://www.mono-project.com/docs/about-mono/compatibility/) bakın ve [.NET Taşınabilirlik Çözümleyicisini](../hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis)kullanın.
+> Tüm şablonlar Linux tabanlı HDInsight ile çalışmaz. Şablonlar tarafından kullanılan NuGet paketleri Mono ile uyumlu olmayabilir. Olası sorunları belirlemek için bkz. [mono uyumluluğu](https://www.mono-project.com/docs/about-mono/compatibility/) ve [.net taşınabilirlik Çözümleyicisi](../hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis)'ni kullanma.
 
-Bu belgedeki adımlarda, bir topoloji oluşturmak için temel Fırtına Uygulaması proje türünü kullanırsınız.
+Bu belgedeki adımlarda, bir topoloji oluşturmak için temel fırtınası uygulaması proje türünü kullanırsınız.
 
 ### <a name="apache-hbase-templates"></a>Apache HBase şablonları
 
-HBase okuyucu ve yazar şablonları HDInsight kümesinde bir HBase ile iletişim kurmak için HBase JAVA API değil, HBase REST API kullanın.
+HBase okuyucu ve yazıcı şablonları, HDInsight kümesinde HBase ile iletişim kurmak için HBase Java API 'sini değil HBase REST API kullanır.
 
 ### <a name="eventhub-templates"></a>EventHub şablonları
 
 > [!IMPORTANT]  
-> EventHub Reader şablonuna dahil olan Java tabanlı EventHub spout bileşeni, HDInsight sürüm 3.5 veya sonraki sürümde Storm ile çalışmayabilir. Bu bileşenin güncelleştirilmiş bir sürümü [GitHub](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/HDI3.5/lib)mevcuttur.
+> EventHub okuyucu şablonuna dahil edilen Java tabanlı EventHub Spout bileşeni, HDInsight sürüm 3,5 veya sonraki bir sürümü üzerinde geçiş ile çalışmayabilir. Bu bileşenin güncelleştirilmiş bir sürümü [GitHub](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/HDI3.5/lib)' da bulunabilir.
 
-Bu bileşeni kullanan ve HDInsight 3.5'te Storm ile çalışan bir örnek topoloji için [GitHub'a](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)bakın.
+Bu bileşeni kullanan ve HDInsight 3,5 üzerinde fırtınası ile birlikte çalışabilen örnek bir topoloji için bkz. [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub).
 
 ## <a name="create-a-c-topology"></a>C# topolojisi oluşturma
 
-Visual Studio'da bir C# topoloji projesi oluşturmak için:
+Visual Studio 'da C# topolojisi projesi oluşturmak için:
 
 1. Visual Studio'yu açın.
 
-1. **Başlat** penceresinde yeni **bir proje oluştur'u**seçin.
+1. **Başlangıç** penceresinde **Yeni proje oluştur**' u seçin.
 
-1. Yeni **bir proje oluştur** penceresinde, **Fırtına Uygulaması'na**kaydırın ve seçin, ardından **İleri'yi**seçin.
+1. **Yeni proje oluştur** penceresinde, ' ye kaydırın ve **fırtınası uygulaması**' nı seçin ve ardından **İleri**' yi seçin.
 
-1. Yeni **proje pencerenizi Yapılandır' da** *WordCount'un* **proje adını** girin, projeye gidin veya proje için **Konum** dizini yolu oluşturun ve ardından **Oluştur'u**seçin.
+1. **Yeni projenizi yapılandırın** penceresinde, *WORDCOUNT*için bir **Proje adı** girin, proje için bir **konum** dizini yolu seçin veya oluşturun ve ardından **Oluştur**' u seçin.
 
-    ![Fırtına uygulaması, Yeni proje iletişim kutusu, Visual Studio yapıla](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
+    ![Fırtınası uygulaması, yeni projenizi yapılandırma iletişim kutusu, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
 
-Projeyi oluşturduktan sonra aşağıdaki dosyalara sahip olmalısınız:
+Projeyi oluşturduktan sonra, aşağıdaki dosyalara sahip olmanız gerekir:
 
-* *Program.cs*: Projenizin topoloji tanımı. Varsayılan olarak bir emzme ve bir cıvatadan oluşan varsayılan topoloji oluşturulur.
+* *Program.cs*: projeniz için topoloji tanımı. Bir Spout ve bir sürgüden oluşan varsayılan topoloji varsayılan olarak oluşturulur.
 
-* *Spout.cs*: Rastgele sayılar yayılan bir örnek.
+* *Spout.cs*: rastgele sayılar sağlayan bir Spout örneği.
 
-* *Bolt.cs*: Emkitarafından yayılan sayıların sayısını tutan örnek bir cıvatadır.
+* *Bolt.cs*: Spout tarafından yayılan sayı sayısını tutan bir örnek sürgüsü.
 
-Projeyi oluşturduğunuzda, NuGet en son [SCP.NET paketini](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/)indirir.
+Projeyi oluşturduğunuzda, NuGet en son [SCP.net paketini](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/)indirir.
 
-### <a name="implement-the-spout"></a>Spout'u uygulayın
+### <a name="implement-the-spout"></a>Spout 'yi uygulama
 
-Ardından, topolojideki verileri harici bir kaynaktan okumak için kullanılan emzitiçin kodu ekleyin. Bu spout rastgele topoloji içine bir cümle yalar.
+Ardından, bir dış kaynaktan bir topolojideki verileri okumak için kullanılan Spout için kodu ekleyin. Bu Spout, topolojiye rastgele bir tümce yayar.
 
-1. Açık *Spout.cs*. Bir emzit için ana bileşenler şunlardır:
+1. *Spout.cs*'i açın. Spout ana bileşenleri şunlardır:
 
-   * `NextTuple`: Emzin yeni tuples yatmasına izin verildiğinde Fırtına tarafından çağrılır.
+   * `NextTuple`: Spout 'in yeni tanımlama gruplarını yaymak için izin verildiğinde fırtınası tarafından çağırılır.
 
-   * `Ack`(yalnızca işlemsel topoloji): Topolojideki diğer bileşenler tarafından, pout'tan gönderilen tupüller için başlatılan bildirimleri işler. Bir tuple'ı kabul etmek, supout'un akış aşağı bileşenleri tarafından başarılı bir şekilde işlenmiş olduğunu bilmesini sağlar.
+   * `Ack`(yalnızca işlem topolojisi): Spout 'dan gönderilen tanımlama grupları için topolojideki diğer bileşenler tarafından başlatılan bildirimleri Işler. Bir tanımlama grubunun ele alındığı, biriktirme listesini aşağı akış bileşenleri tarafından başarıyla işlendiğini bildirir.
 
-   * `Fail`(yalnızca işlemsel topoloji): Topolojideki diğer bileşenleri başarısız işleyen tupülleri işler. Bir `Fail` yöntem uygulamak, yeniden işlenebilecek şekilde tuple'ı yeniden yayılabilmenizi sağlar.
+   * `Fail`(yalnızca işlem topolojisi): topolojideki diğer bileşenleri işlemek için başarısız olan tanımlama gruplarını Işler. Bir `Fail` yöntemi uygulamak, kayıt düzeninin yeniden işlenebilmesi için yeniden yaymasını sağlar.
 
-2. `Spout` Sınıfın içeriğini aşağıdaki metinle değiştirin:
+2. `Spout` Sınıfının içeriğini aşağıdaki metinle değiştirin:
 
     ```csharp
     private Context ctx;
@@ -214,24 +214,24 @@ Ardından, topolojideki verileri harici bir kaynaktan okumak için kullanılan e
     }
     ```
 
-### <a name="implement-the-bolts"></a>Cıvataları uygulayın
+### <a name="implement-the-bolts"></a>Cıvatları uygulama
 
-Şimdi bu örnekte iki Storm cıvata oluşturun:
+Şimdi bu örnekte iki ters fırtınası oluşturun:
 
 1. Varolan *Bolt.cs* dosyasını projeden silin.
 
-2. **Çözüm Gezgini'nde**projeyi sağ tıklatın ve**Yeni öğe** **ekle'yi** > seçin. Listeden Storm **Bolt'u**seçin ve ad olarak *Splitter.cs* girin. Yeni dosyanın kodunda, ad alanı adını `WordCount`' la değiştirin. Daha sonra *Counter.cs*adlı ikinci bir cıvata oluşturmak için bu işlemi tekrarlayın.
+2. **Çözüm Gezgini**, projeye sağ tıklayın ve**Yeni öğe** **Ekle** > ' yi seçin. Listeden **fırtınası**' ı seçin ve ad olarak *Splitter.cs* girin. Yeni dosyanın kodunda, ad alanı adını olarak `WordCount`değiştirin. Ardından, *Counter.cs*adlı ikinci bir sürgüyi oluşturmak için bu işlemi tekrarlayın.
 
-   * *Splitter.cs*: Cümleleri tek tek sözcüklere bölen ve yeni bir kelime akışı yayar.
+   * *Splitter.cs*: cümleleri tek tek sözcüklere ayıran bir sürgüler uygular ve yeni bir sözcük akışı yayar.
 
-   * *Counter.cs*: Her sözcüğü sayan bir cıvata uygular ve her kelime için yeni bir kelime akışı ve sayı yakar.
+   * *Counter.cs*: her bir sözcüğü sayan bir sürgüsü uygular ve yeni bir sözcük akışı ve her bir sözcüğün sayısını yayar.
 
      > [!NOTE]  
-     > Bu cıvatalar akışları okumak ve yazmak, ancak bir veritabanı veya hizmet gibi kaynaklarla iletişim kurmak için bir cıvata kullanabilirsiniz.
+     > Bu cıvatları, akışları okur ve yazar, ancak bir veritabanı veya hizmet gibi kaynaklarla iletişim kurmak için de bir cıvata kullanabilirsiniz.
 
-3. Açık *Splitter.cs*. Varsayılan olarak tek bir `Execute`yöntemi vardır: . Cıvata `Execute` işleme için bir tuple aldığında yöntem denir. Burada, gelen tuples okuyabilir ve işleyebilir ve giden tuples yontma.
+3. *Splitter.cs*'i açın. Varsayılan olarak yalnızca bir yönteme sahiptir: `Execute`. Bu `Execute` Yöntem, sürgülü işleme için bir demet aldığında çağrılır. Burada, gelen tanımlama gruplarını okuyabilir ve işleyebilir ve giden tanımlama gruplarını görüntüleyebilirsiniz.
 
-4. `Splitter` Sınıfın içeriğini aşağıdaki kodla değiştirin:
+4. `Splitter` Sınıfının içeriğini aşağıdaki kodla değiştirin:
 
     ```csharp
     private Context ctx;
@@ -277,7 +277,7 @@ Ardından, topolojideki verileri harici bir kaynaktan okumak için kullanılan e
     }
     ```
 
-5. *Counter.cs*açın ve sınıf içeriğini aşağıdaki kodla değiştirin:
+5. *Counter.cs*'i açın ve sınıf içeriğini şu kodla değiştirin:
 
     ```csharp
     private Context ctx;
@@ -331,17 +331,17 @@ Ardından, topolojideki verileri harici bir kaynaktan okumak için kullanılan e
     }
     ```
 
-### <a name="define-the-topology"></a>Topolojiyi tanımlayın
+### <a name="define-the-topology"></a>Topolojiyi tanımlama
 
-Dışa doğru lar ve cıvatalar, verilerin bileşenler arasında nasıl aktığını tanımlayan bir grafikte düzenlenir. Bu topoloji için grafik aşağıdaki gibidir:
+Spout ve cıvatları, verilerin bileşenler arasında nasıl akacağını tanımlayan bir grafikte düzenlenir. Bu topoloji için grafik aşağıdaki gibidir:
 
-![Emzit ve cıvata bileşen düzenleme diyagramı, Fırtına topolojisi](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
+![Spout ve cıvam bileşeni düzenleme diyagramı, fırtınası topolojisi](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
 
-Püskürtme, Splitter cıvataörneklerine dağıtılan cümleler yayar. Splitter cıvatası cümleleri Sayaç cıvatasına dağıtılan sözcüklere böler.
+Spout, Splitter sürgüsü örneklerine dağıtılan cümleler yayar. Bölümlendirici, tümce, sayaç ayraçına dağıtılan kelimelerin içine alınır.
 
-Sayaç örneği sözcük sayısını yerel olarak tuttuğundan, belirli sözcüklerin aynı Sayaç cıvata örneğine aktığından emin olmak istersiniz. Her örnek belirli sözcükleri izler. Splitter cıvatası hiçbir durumu korumadığından, bölücünün hangi cümleyi aldığı gerçekten önemli değildir.
+Sayaç örneği yerel olarak sözcük sayısını taşıdığı için, belirli sözcüklerin aynı sayaç sürgüsü örneğine akmasını sağlamak istiyorsunuz. Her örnek belirli sözcükleri izler. Splitter sürgüsü durum içermediğinden, bu, ayırıcının hangi örneğinin hangi cümleyi alacağını oldukça önemlidir.
 
-Açık *Program.cs*. Önemli `GetTopologyBuilder`yöntem, Fırtına'ya gönderilen topolojiyi tanımlamak için kullanılır. Daha önce `GetTopologyBuilder` açıklanan topolojiyi uygulamak için içeriği aşağıdaki kodla değiştirin:
+*Program.cs*'i açın. Önemli yöntemi `GetTopologyBuilder`, fırtınası 'ya gönderilen topolojiyi tanımlamak için kullanılır. Daha önce açıklanan topolojiyi `GetTopologyBuilder` uygulamak için aşağıdaki kodla içeriğini değiştirin:
 
 ```csharp
 // Create a new topology named 'WordCount'
@@ -401,98 +401,98 @@ topologyBuilder.SetTopologyConfig(new Dictionary<string, string>()
 return topologyBuilder;
 ```
 
-## <a name="submit-the-topology"></a>Topolojiyi gönderin
+## <a name="submit-the-topology"></a>Topolojiyi gönder
 
-Topolojiyi HDInsight kümenize göndermeye hazırsınız.
+Artık topolojiyi HDInsight kümenize göndermeye hazırsınız.
 
-1. **Sunucu Gezginini** **Görüntüle'ye** > gidin.
+1. **Sunucu Gezgini** **görüntüle** > ' ye gidin.
 
-1. Azure'a **Azure**sağ tıklayın, **Microsoft Azure Aboneliğine Bağlan'ı seçin...** ve oturum açma işlemini tamamlayın.
+1. **Azure**' a sağ tıklayın, **Microsoft Azure aboneliğine Bağlan...** öğesini seçin ve oturum açma işlemini doldurun.
 
-1. **Solution Explorer'da**projeyi sağ tıklatın ve **HDInsight'ta Fırtınaya Gönder'i**seçin.
+1. **Çözüm Gezgini**, projeye sağ tıklayın ve **HDInsight 'Ta fırtınası 'ya gönder**' i seçin.
 
-1. **Topoloji Gönder** iletişim kutusunda, **Fırtına Kümesi** açılır listesinin altında, HDInsight kümesinde Fırtına'nızı seçin ve ardından **Gönder'i**seçin. **Çıktı** bölmesini görüntüleyerek gönderinin başarılı olup olmadığını kontrol edebilirsiniz.
+1. **Topolojiyi gönder** iletişim kutusunda, **fırtınası kümesi** aşağı açılan listesinde, HDInsight kümesinde fırtınası ' ı seçin ve ardından **Gönder**' i seçin. **Çıkış** bölmesini görüntüleyerek gönderimin başarılı olup olmadığını kontrol edebilirsiniz.
 
-    Topoloji başarıyla gönderildiğinde, küme için **Fırtına Topolojileri Görünümü** penceresi görünmelidir. Çalışan topoloji hakkındaki bilgileri görüntülemek için listeden **WordCount** topolojisini seçin.
+    Topoloji başarıyla gönderildiğinde, küme için **fırtınası topolojileri görünüm** penceresi görünmelidir. Çalışan topoloji hakkındaki bilgileri görüntülemek için listeden **WORDCOUNT** topolojisini seçin.
 
-    ![Fırtına topolojisi görüş penceresi, HDInsight kümesi, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
-
-    > [!NOTE]  
-    > Ayrıca Server **Explorer'dan Fırtına Topolojilerini** de görüntüleyebilirsiniz. **Server Explorer** **Azure** > **HDInsight'ı**genişletin, HDInsight kümesinde Bir Fırtına'ya sağ tıklayın ve ardından Fırtına **Topolojilerini Görüntüle'yi**seçin.
-
-    Topolojideki bileşenler hakkındaki bilgileri görüntülemek için diyagramda bir bileşen seçin.
-
-1. **Topoloji Özeti** bölümünde, topolojiyi durdurmak için **Öldür'i** seçin.
+    ![Fırtınası topolojisi Görünüm penceresi, HDInsight kümesi, Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
 
     > [!NOTE]  
-    > Fırtına topolojileri devre dışı bırakılınceye veya küme silinene kadar çalışmaya devam ederler.
+    > Ayrıca, **Sunucu Gezgini**karşı **fırtınası topolojilerini** görüntüleyebilirsiniz. **Azure** > **HDInsight**' ı genişletin, HDInsight kümesinde bir fırtınası ' a sağ tıklayın ve ardından **fırtınası topolojilerini görüntüle**' yi seçin.
 
-## <a name="transactional-topology"></a>İşlemsel topoloji
+    Topolojideki bileşenler hakkında bilgi görüntülemek için diyagramda bir bileşen seçin.
 
-Önceki topoloji işlem dışıdır. Topolojideki bileşenler iletileri yeniden oynatma işlevini uygulamaz. İşlemsel topoloji örneği için bir proje oluşturun ve proje türü olarak **Fırtına Örneği'ni** seçin.
+1. Topoloji **Özeti** bölümünde, topolojiyi durdurmak için **Sonlandır** ' ı seçin.
 
-İşlemsel topolojiler, verilerin yeniden oynatını desteklemek için aşağıdakileri uygular:
+    > [!NOTE]  
+    > Fırtınası topolojileri devre dışı bırakılıncaya veya küme silinene kadar çalışmaya devam eder.
 
-* **Meta veri önbelleğe alma**: Bir hata oluşursa verilerin alınabilmesi ve yeniden yayımlanabilmesi için, emdirme, yayılan veriler le ilgili meta verileri depolamalıdır. Örnek tarafından yayılan veriler küçük olduğundan, her tuple için ham veri yeniden oynatmak için bir sözlükte depolanır.
+## <a name="transactional-topology"></a>İşlem topolojisi
 
-* **Ack**: Topolojideki her `this.ctx.Ack(tuple)` cıvata, bir tuple'ı başarıyla işlettiğini kabul etmek için arayabilir. Tüm cıvatalar tuple'ı kabul `Ack` ettiğinde, emzit yöntemi çağrılır. Yöntem, `Ack` emzin yeniden yürütülür için önbelleğe alınmış verileri kaldırmasına olanak tanır.
+Önceki topoloji işlem dışı. Topolojideki bileşenler, iletileri yeniden almak için işlevsellik uygulamaz. İşlem topolojisine bir örnek için, bir proje oluşturun ve proje türü olarak **fırtınası örneği** ' ni seçin.
 
-* **Fail**: Her `this.ctx.Fail(tuple)` cıvata, işlemin bir tuple için başarısız olduğunu belirtmek için arayabilir. Hata, önbelleğe `Fail` alınan meta veriler kullanılarak tuple'ın yeniden oynatılabildiği emme yöntemine yayılır.
+İşlem topolojileri, verileri yeniden yürütmeyi desteklemek için aşağıdakileri uygular:
 
-* **SıraLı ID**: Bir tuple yayan bir zaman, benzersiz bir sıra kimliği belirtilebilir. Bu değer, yeniden oynatma (ve`Ack` `Fail`) işleme için tuple'ı tanımlar. Örneğin, **Fırtına Örneği** projesindeki emzme veri yayan aşağıdaki yöntem çağrısını kullanır:
+* **Meta veri önbelleğe alma**: Spout, bir hata oluşursa verilerin alınıp yeniden yayınlanabilmesi için, oluşturulan verilerle ilgili meta verileri depolaması gerekir. Örnek tarafından yayılan veriler küçük olduğundan, her bir demet için ham veriler yeniden oynatma için bir sözlükte depolanır.
+
+* **ACK**: topolojideki her bir sürgülü, `this.ctx.Ack(tuple)` bir kayıt düzeni başarıyla işlendiğini bildirmek için çağrı yapabilir. Tüm cıvatları, kayıt kümesini kabul eder, Spout `Ack` yöntemi çağrılır. `Ack` Yöntemi, Spout 'ın yeniden oynatma için önbelleğe alınmış verileri kaldırmasına izin verir.
+
+* **Başarısız**: her bir demet, `this.ctx.Fail(tuple)` işlemenin bir tanımlama grubu için başarısız olduğunu göstermek için çağırabilir. Hata, kayıt düzeninin önbelleğe `Fail` alınmış meta veriler kullanılarak yeniden çalınabilecek Spout yöntemine yayar.
+
+* **Sıra kimliği**: bir kayıt düzeni yayırken, benzersiz BIR sıra kimliği belirtilebilir. Bu değer, yeniden yürütme (`Ack` ve `Fail`) işleme için tanımlama grubu tanımlar. Örneğin, **fırtınası örnek** projesindeki Spout, verileri yayırken aşağıdaki yöntem çağrısını kullanır:
 
   `this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), lastSeqId);`
 
-  Bu kod, 'de bulunan `lastSeqId`sıralı kimlik değeri yle birlikte varsayılan akışa bir cümle içeren bir tuple yayır. Bu örnek, `lastSeqId` yayılan her tuple için artımlı.
+  Bu kod, içinde `lastSeqId`yer alan sıra kimliği değeri ile varsayılan akışa bir cümle içeren bir tanımlama grubu yayar. Bu örnek için, `lastSeqId` her bir tanımlama grubu için artırılır.
 
-**Storm Sample** projesinde gösterildiği gibi, bir bileşenin işlem olup olmadığı yapılandırmaya bağlı olarak çalışma zamanında ayarlanabilir.
+**Fırtınası örnek** projesinde gösterildiği gibi, bir bileşenin hareketsel olup olmadığı, yapılandırmaya göre çalışma zamanında ayarlanabilir.
 
-## <a name="hybrid-topology-with-c-and-java"></a>C# ve Java ile hibrit topoloji
+## <a name="hybrid-topology-with-c-and-java"></a>C# ve Java ile karma topolojisi
 
-Ayrıca, bazı bileşenlerin C# ve diğerlerinin Java olduğu karma topolojiler oluşturmak için Visual Studio için Veri Gölü araçlarını da kullanabilirsiniz.
+Visual Studio için Data Lake araçları 'nı, bazı bileşenlerin C# olduğu ve diğerlerinin Java olduğu karma topolojiler oluşturmak için de kullanabilirsiniz.
 
-Hibrit topoloji örneği için bir proje oluşturun ve **Storm Hybrid Sample'ı**seçin. Bu örneklem türü aşağıdaki kavramları gösterir:
+Karma topolojinin bir örneği için bir proje oluşturun ve sonra da **fırtınası karma örneği**' ni seçin. Bu örnek türü aşağıdaki kavramları gösterir:
 
-* **Java spout** ve **C#** cıvata `HybridTopology_javaSpout_csharpBolt` : Sınıfta tanımlanır.
+* **Java Spout** ve **C# sürgüsü**: `HybridTopology_javaSpout_csharpBolt` sınıfta tanımlı.
 
-  `HybridTopologyTx_javaSpout_csharpBolt` Sınıfta bir işlem sürümü tanımlanır.
+  `HybridTopologyTx_javaSpout_csharpBolt` Sınıfında bir işlem sürümü tanımlanmıştır.
 
-* **C# spout** ve **Java**cıvata `HybridTopology_csharpSpout_javaBolt` : Sınıfta tanımlanır.
+* **C# Spout** ve **Java sürgüsü**: `HybridTopology_csharpSpout_javaBolt` sınıfında tanımlı.
 
-  `HybridTopologyTx_csharpSpout_javaBolt` Sınıfta bir işlem sürümü tanımlanır.
+  `HybridTopologyTx_csharpSpout_javaBolt` Sınıfında bir işlem sürümü tanımlanmıştır.
 
   > [!NOTE]  
-  > Bu sürüm ayrıca, bir metin dosyasından Clojure kodunun Java bileşeni olarak nasıl kullanılacağını da gösterir.
+  > Bu sürüm ayrıca bir metin dosyasındaki Clojure kodunun Java bileşeni olarak nasıl kullanılacağını gösterir.
 
-Proje gönderildiğinde kullanılan topolojiyi değiştirmek için, `[Active(true)]` deyimi kümeye göndermeden önce kullanmak istediğiniz topolojiye taşıyın.
+Proje gönderildiğinde kullanılan topolojiyi değiştirmek için, `[Active(true)]` ifadeyi kümeye göndermeden önce, kullanmak istediğiniz topolojiye taşıyın.
 
 > [!NOTE]  
-> Gerekli olan tüm Java dosyaları *JavaDependency* klasöründe bu projenin bir parçası olarak sağlanır.
+> Gerekli olan tüm Java dosyaları *Javadependency* klasöründe bu projenin bir parçası olarak sağlanır.
 
-Hibrit bir topoloji oluştururken ve gönderirken aşağıdakileri göz önünde bulundurun:
+Karma topoloji oluştururken ve gönderirken aşağıdakileri göz önünde bulundurun:
 
-* Bir `JavaComponentConstructor` emzme veya cıvata için Java sınıfının bir örneğini oluşturmak için kullanın.
+* Bir `JavaComponentConstructor` Spout veya cıvata Java sınıfının bir örneğini oluşturmak için kullanın.
 
-* Java `microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer` nesnelerinden JSON'a kadar Java bileşenlerine verileri seri hale getirmek için kullanın.
+* Java `microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer` nesnelerinden JSON 'a veri aktarmak veya bu bileşenleri kapatmak için kullanın.
 
-* Topolojiyi sunucuya gönderirken, **Java Dosyası yollarını**belirtmek için Ek **yapılandırmalar** seçeneğini kullanmanız gerekir. Belirtilen yol, Java sınıflarınızı içeren JAR dosyalarına sahip dizini olmalıdır.
+* Topoloji sunucuya gönderilirken, **Java dosya yollarını**belirtmek için **ek konfigürasyonlar** seçeneğini kullanmanız gerekir. Belirtilen yol, Java sınıflarınızı içeren JAR dosyalarına sahip olan dizin olmalıdır.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-0.9.4.203 sürümüSCP.NET, özellikle Event Hub spout (Olay Hub'larından okunan bir Java emzmesi) ile çalışmak için yeni bir sınıf ve yöntem sunar. Bir Olay Hub'ı (örneğin, **Storm EventHub Reader Sample** şablonunu kullanarak) kullanan bir topoloji oluşturduğunuzda, aşağıdaki API'leri kullanın:
+SCP.NET Version 0.9.4.203, özellikle Olay Hub 'ı (Event Hubs okuyan bir Java Spout) ile birlikte çalışmak için yeni bir sınıf ve yöntem sunar. Bir olay hub 'ı (örneğin, **fırtınası EventHub okuyucu örnek** şablonunu kullanarak) kullanan bir topoloji oluşturduğunuzda, aşağıdaki API 'leri kullanın:
 
-* `EventHubSpoutConfig`sınıf: Emzit bileşeni nin yapılandırmasını içeren bir nesne oluşturur.
+* `EventHubSpoutConfig`Sınıf: Spout bileşeni yapılandırmasını içeren bir nesne oluşturur.
 
-* `TopologyBuilder.SetEventHubSpout`yöntem: Olay Hub'ı emzme bileşenini topolojiye ekler.
+* `TopologyBuilder.SetEventHubSpout`Yöntem: Olay Hub 'ı Spout bileşenini topolojiye ekler.
 
 > [!NOTE]  
-> Yine de `CustomizedInteropJSONSerializer` emzit tarafından üretilen verileri serihale getirmek için kullanmanız gerekir.
+> Spout tarafından üretilen verileri `CustomizedInteropJSONSerializer` seri hale getirmek için kullanmaya devam etmeniz gerekir.
 
-## <a name="use-configurationmanager"></a>ConfigurationManager'ı kullan
+## <a name="use-configurationmanager"></a>ConfigurationManager kullanın
 
-Cıvata ve emzme bileşenlerinden yapılandırma değerlerini almak için **ConfigurationManager'u** kullanmayın. Bunu yapmak null işaretçi özel bir durum neden olabilir. Bunun yerine, projenizin yapılandırmasını topoloji bağlamında anahtar ve değer çifti olarak Fırtına topolojisine geçirin. Yapılandırma değerlerine dayanan her bileşen, başlatma sırasında bunları bağlamından almalıdır.
+Cıvam ve Spout bileşenlerinden yapılandırma değerlerini almak için **ConfigurationManager** kullanmayın. Bunun yapılması null işaretçi özel durumuna neden olabilir. Bunun yerine, projenizin yapılandırmasını, topoloji bağlamına anahtar ve değer çifti olarak fırtınası topolojisine geçirin. Yapılandırma değerlerini kullanan her bir bileşen, başlatma sırasında bunları bağlamdan almalıdır.
 
-Aşağıdaki kod, bu değerlerin nasıl alınabildiğini gösterir:
+Aşağıdaki kod, bu değerlerin nasıl alınacağını gösterir:
 
 ```csharp
 public class MyComponent : ISCPBolt
@@ -517,7 +517,7 @@ public class MyComponent : ISCPBolt
 }
 ```
 
-Bileşeninizin `Get` bir örneğini döndürmek için bir yöntem kullanıyorsanız, `Context` bileşeninizin hem de `Dictionary<string, Object>` parametrelerini oluşturucuya geçtiğinden emin olmalısınız. Aşağıdaki örnek, bu `Get` değerleri düzgün bir şekilde geçen temel bir yöntemdir:
+Bileşeninizin bir örneğini `Get` döndürmek için bir yöntem kullanıyorsanız, oluşturucuya hem hem de `Context` `Dictionary<string, Object>` parametrelerini geçirdiğinden emin olmanız gerekir. Aşağıdaki örnek, bu değerleri düzgün `Get` şekilde geçiren temel bir yöntemdir:
 
 ```csharp
 public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
@@ -526,63 +526,63 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 }
 ```
 
-## <a name="how-to-update-scpnet"></a>SCP.NET nasıl güncellenir?
+## <a name="how-to-update-scpnet"></a>SCP.NET 'i güncelleştirme
 
-NuGet aracılığıyla SCP.NET destek paketi yükseltme son sürümleri. Yeni bir güncelleştirme kullanılabilir olduğunda, bir yükseltme bildirimi alırsınız. Yükseltmeyi el ile denetlemek için aşağıdaki adımları izleyin:
+SCP.NET Destek paketinin son sürümleri NuGet aracılığıyla yükseltilir. Yeni bir güncelleştirme kullanılabilir olduğunda, bir yükseltme bildirimi alırsınız. Bir yükseltmeyi el ile denetlemek için şu adımları izleyin:
 
 1. **Çözüm Gezgini**’nde projeye sağ tıklayın ve **NuGet Paketlerini Yönet**’i seçin.
 
-2. Paket yöneticisinden **Güncelleştirmeler'i**seçin. SCP.NET destek paketi için bir güncelleştirme varsa, listelenir. Paket için **Güncelleştir'i** seçin ve ardından **Değişiklikleri Önizleme** iletişim kutusunda yüklemek için **Tamam'ı** seçin.
+2. Paket Yöneticisi ' nden **güncelleştirmeler**' i seçin. SCP.NET destek paketine yönelik bir güncelleştirme varsa, bu listelenir. Paket için **Güncelleştir** ' i seçin ve ardından **Değişiklikleri Önizle** iletişim kutusunda **Tamam** ' ı seçerek yüklemeyi seçin.
 
 > [!IMPORTANT]  
-> Projeniz NuGet kullanmayan SCP.NET önceki bir sürümüyle oluşturulduysa, daha yeni bir sürüme güncelleştirmek için aşağıdaki adımları gerçekleştirmeniz gerekir:
+> Projeniz NuGet kullanmayan bir SCP.NET önceki sürümüyle oluşturulduysa, daha yeni bir sürüme güncelleştirmek için aşağıdaki adımları gerçekleştirmeniz gerekir:
 >
 > 1. **Çözüm Gezgini**’nde projeye sağ tıklayın ve **NuGet Paketlerini Yönet**’i seçin.
-> 2. **Arama** alanını kullanarak projeye arama yapın `Microsoft.SCP.Net.SDK` ve sonra ekleyin.
+> 2. **Arama** alanını kullanarak projeye arama yapın ve ekleyin `Microsoft.SCP.Net.SDK` .
 
-## <a name="troubleshoot-common-issues-with-topologies"></a>Topolojilerle ilgili sık karşılaşılan sorunları giderme
+## <a name="troubleshoot-common-issues-with-topologies"></a>Topolojilerle ilgili yaygın sorunları giderme
 
-### <a name="null-pointer-exceptions"></a>Null işaretçi özel durumlar
+### <a name="null-pointer-exceptions"></a>Null işaretçi özel durumları
 
-Linux tabanlı HDInsight kümesine sahip bir C# topolojisi kullanıyorsanız, çalışma zamanında yapılandırma ayarlarını okumak için **ConfigurationManager'u** kullanan cıvata ve spout bileşenleri null işaretçi özel durumları döndürebilir.
+Linux tabanlı HDInsight kümesiyle C# topolojisi kullanırken, çalışma zamanında yapılandırma ayarlarını okumak için **ConfigurationManager** kullanan cıvam ve Spout bileşenleri null işaretçi özel durumları döndürebilir.
 
-Projenizin yapılandırması, topoloji bağlamında anahtar ve değer çifti olarak Fırtına topolojisine aktarılır. Başharfe çevrildiğinde bileşenlerinize geçirilen sözlük nesnesinden alınabilir.
+Projenizin yapılandırması, topoloji bağlamına anahtar ve değer çifti olarak fırtınası topolojisine geçirilir. Bunlar, başlatıldığında, bileşenlerinizi geçirilen sözlük nesnesinden alınabilir.
 
-Daha fazla bilgi için bu belgenin [ConfigurationManager kullan](#use-configurationmanager) bölümüne bakın.
+Daha fazla bilgi için bu belgenin [ConfigurationManager öğesini kullanma](#use-configurationmanager) bölümüne bakın.
 
-### <a name="systemtypeloadexception"></a>System.TypeLoadException
+### <a name="systemtypeloadexception"></a>System. TypeLoadException
 
-Linux tabanlı HDInsight kümesine sahip bir C# topolojisi kullanıyorsanız, aşağıdaki hatayla karşılaşabilirsiniz:
+Linux tabanlı HDInsight kümesiyle C# topolojisi kullanırken, şu hata boyunca karşılaşabilirsiniz:
 
 `System.TypeLoadException: Failure has occurred while loading a type.`
 
-Bu hata, Mono'nun desteklediği .NET sürümüyle uyumlu olmayan bir ikili kullandığınızda oluşur.
+Bu hata, mono 'nin desteklediği .NET sürümü ile uyumlu olmayan bir ikili kullandığınızda oluşur.
 
-Linux tabanlı HDInsight kümeleri için, projenizin .NET 4.5 için derlenmiş ikili kullanımlar kullandığından emin olun.
+Linux tabanlı HDInsight kümeleri için, projenizin .NET 4,5 için derlenmiş ikili dosyaları kullandığından emin olun.
 
-### <a name="test-a-topology-locally"></a>Bir topolojiyi yerel olarak test edin
+### <a name="test-a-topology-locally"></a>Topolojiyi yerel olarak test etme
 
-Bir kümeye topoloji dağıtmak kolay olsa da, bazı durumlarda bir topolojiyi yerel olarak test etmeniz gerekebilir. Bu makalede örnek topolojiyi geliştirme ortamınızda yerel olarak çalıştırmak ve test etmek için aşağıdaki adımları kullanın.
+Bir kümeye topoloji dağıtmak kolay olsa da, bazı durumlarda bir topolojiyi yerel olarak test etmeniz gerekebilir. Bu makaledeki örnek topolojiyi geliştirme ortamınızda yerel olarak çalıştırmak ve test etmek için aşağıdaki adımları kullanın.
 
 > [!WARNING]  
-> Yerel testler yalnızca temel, C#-sadece topolojiler için çalışır. Birden çok akış kullanan hibrit topolojiler veya topolojiler için yerel testleri kullanamazsınız.
+> Yerel test yalnızca temel, yalnızca C# topolojileri için geçerlidir. Birden çok akış kullanan karma topolojiler veya topolojiler için yerel test kullanamazsınız.
 
-1. **Çözüm Gezgini'nde**projeyi sağ tıklatın ve **Özellikler'i**seçin. Proje özelliklerinde. Daha sonra **Çıktı türünü** Konsol **Uygulaması**olarak değiştirin.
+1. **Çözüm Gezgini**, projeye sağ tıklayın ve **Özellikler**' i seçin. Proje özelliklerinde. Ardından **çıktı türünü** **konsol uygulaması**olarak değiştirin.
 
-   ![HDInsight Storm uygulaması, proje özellikleri, Çıkış türü](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
+   ![HDInsight fırtınası uygulaması, proje özellikleri, çıkış türü](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
 
    > [!NOTE]
-   > Topolojiyi bir kümeye dağıtmadan önce **Çıktı türünü** **Sınıf Kitaplığı'na** değiştirmeyi unutmayın.
+   > Topolojiyi bir kümeye dağıtmadan önce, **çıkış türünü** yeniden **sınıf kitaplığına** değiştirmeyi unutmayın.
 
-1. **Çözüm Gezgini'nde,** projeyi sağ tıklatın ve ardından**Yeni Öğe** **Ekle'yi** > seçin. **Sınıf'ı**seçin ve sınıf adı olarak *LocalTest.cs* girin. Son olarak, **Ekle'yi**seçin.
+1. **Çözüm Gezgini**, projeye sağ tıklayın ve ardından**Yeni öğe** **Ekle** > ' yi seçin. **Sınıf**' ı seçin ve sınıf adı olarak *LocalTest.cs* girin. Son olarak, **Ekle**' yi seçin.
 
-1. *LocalTest.cs*açın ve en `using` üstte aşağıdaki ifadeyi ekleyin:
+1. *LocalTest.cs*açın ve aşağıdaki `using` ifadeyi en üste ekleyin:
 
     ```csharp
     using Microsoft.SCP;
     ```
 
-1. `LocalTest` Sınıfın içeriği olarak aşağıdaki kodu kullanın:
+1. `LocalTest` Sınıfının içeriği olarak aşağıdaki kodu kullanın:
 
     ```csharp
     // Drives the topology components
@@ -661,9 +661,9 @@ Bir kümeye topoloji dağıtmak kolay olsa da, bazı durumlarda bir topolojiyi y
     }
     ```
 
-    Kod yorumlarını okumak için bir dakikaayırın. Bu kod, geliştirme ortamındaki bileşenleri çalıştırmak için kullanır. `LocalContext` Bileşenler arasındaki veri akışını yerel sürücüdeki metin dosyalarına kadar devam eder.
+    Kod açıklamalarını okumak için bir dakikanızı ayırın. Bu kod, `LocalContext` geliştirme ortamındaki bileşenleri çalıştırmak için kullanır. Yerel sürücüdeki bileşenler arasındaki veri akışını sürdürür.
 
-1. *Program.cs*açın ve `Main` yönteme aşağıdaki kodu ekleyin:
+1. *Program.cs*açın ve `Main` yöntemine aşağıdaki kodu ekleyin:
 
     ```csharp
     Console.WriteLine("Starting tests");
@@ -684,83 +684,83 @@ Bir kümeye topoloji dağıtmak kolay olsa da, bazı durumlarda bir topolojiyi y
     Console.ReadKey();
     ```
 
-1. Değişiklikleri kaydedin ve ardından **F5'i** seçin veya projeyi başlatmak için **Hata Ayıklama** > **Hata Ayıklama'yı** seçin. Bir konsol penceresi görünmeli ve testler ilerledikçe durumu günlüğe kaydedin. `Tests finished` Göründüğünde, pencereyi kapatmak için herhangi bir tuşu seçin.
+1. Değişiklikleri kaydedin ve ardından **F5** ' i seçin veya > projeyi başlatmak için hata**ayıklamayı Başlat** ' **ı seçin.** Bir konsol penceresi görünür ve test ilerleme durumu olarak günlüğe kaydedilir. `Tests finished` Göründüğünde, pencereyi kapatmak için herhangi bir anahtar seçin.
 
-1. Projenizi içeren dizini bulmak için **Windows Gezgini'ni** kullanın. (Örneğin: *C:\\\\\<Kullanıcılar \\your_user_name\\>\\kaynak\\repos WordCount WordCount*.) Daha sonra bu dizinde, *Bin'i*açın ve hata *ayıklama'yı*seçin. Testler çalıştırıldığında üretilen metin dosyalarını görmelisiniz: *sentences.txt*, *counter.txt*, ve *splitter.txt*. Her metin dosyasını açın ve verileri inceleyin.
+1. Projenizi içeren dizini bulmak için **Windows Gezgini** 'ni kullanın. (Örneğin: *C\\: kullanıcılar\\\<your_user_name \\>kaynak\\depoları\\WORDCOUNT\\WORDCOUNT*.) Sonra bu dizinde, *bin*' i açın ve ardından *Hata Ayıkla*' yı seçin. Testler çalıştırıldığında üretilen metin dosyalarını görmeniz gerekir: *cümleler. txt*, *Counter. txt*ve *Splitter. txt*. Her metin dosyasını açın ve verileri inceleyin.
 
    > [!NOTE]  
-   > Dize verileri, bu dosyalarda ondalık değerler dizisi olarak kalır. Örneğin, `[[97,103,111]]` **splitter.txt** dosyasında sözcüğü *önceki*sözcüğü temsil eder.
+   > Dize verileri, bu dosyalardaki ondalık değerlerin bir dizisi olarak devam ettirir. Örneğin, `[[97,103,111]]` **Splitter. txt** dosyasında *önce*sözcüğü temsil eder.
 
 > [!NOTE]  
-> HDInsight kümesinde Bir Fırtına'ya dağıtmadan önce proje özelliklerinde **Proje türünü** **Sınıf Kitaplığı'na** geri ayarladığınızda emin olun.
+> HDInsight kümesindeki bir fırtınası üzerine dağıtılmadan önce proje özelliklerinde **proje türünü** **sınıf kitaplığına** geri ayarladığınızdan emin olun.
 
 ### <a name="log-information"></a>Günlük bilgileri
 
-Topoloji bileşenlerinizdeki bilgileri kullanarak kolayca `Context.Logger`günlüğe kaydedebilirsiniz. Örneğin, aşağıdaki komut bir bilgi günlüğü girişi oluşturur:
+Kullanarak `Context.Logger`topoloji bileşenlerinizin bilgilerini kolayca günlüğe kaydedebilirsiniz. Örneğin, aşağıdaki komut bir bilgi günlüğü girişi oluşturur:
 
 `Context.Logger.Info("Component started");`
 
-Günlüğe kaydedilmiş bilgiler **Server Explorer'da**bulunan **Hadoop Hizmet Günlüğü'nden**görüntülenebilir. HDInsight kümenizde Storm'unuzun girişini genişletin ve **hadoop Hizmet Günlüğü'nüz'i**genişletin. Son olarak, görüntülemek için günlük dosyasını seçin.
+Günlüğe kaydedilen bilgiler, **Sunucu Gezgini**bulunan **Hadoop hizmeti günlüğünden**görüntülenebilir. HDInsight kümesinde fırtınası için girişi genişletin ve ardından **Hadoop hizmeti günlüğü**' ne genişletin. Son olarak, görüntülenecek günlük dosyasını seçin.
 
 > [!NOTE]  
-> Günlükler, kümeniz tarafından kullanılan Azure depolama hesabında depolanır. Visual Studio'daki günlükleri görüntülemek için depolama hesabının sahibi olan Azure aboneliğinde oturum açmanız gerekir.
+> Günlükler, kümeniz tarafından kullanılan Azure depolama hesabında depolanır. Günlükleri Visual Studio 'da görüntülemek için, depolama hesabının sahibi olan Azure aboneliğinde oturum açmanız gerekir.
 
-### <a name="view-error-information"></a>Hata bilgilerini görüntüleme
+### <a name="view-error-information"></a>Hata bilgilerini görüntüle
 
 Çalışan bir topolojide oluşan hataları görüntülemek için aşağıdaki adımları kullanın:
 
-1. **Server Explorer'dan**HDInsight kümesinde Fırtına'ya sağ tıklayın ve **Fırtına Topolojilerini Görüntüle'yi**seçin.
+1. **Sunucu Gezgini**, HDInsight kümesindeki fırtınası kümesine sağ tıklayın ve **fırtınası topolojilerini görüntüle**' yi seçin.
 
-   **Spout** ve **Cıvatalar**için **Son Hata** sütunu son hata yla ilgili bilgiler içerir.
+   **Spout** ve **Cıvatları**için **son hata** sütunu son hata hakkındaki bilgileri içerir.
 
-2. Hata listelenen bileşen için **Spout KIMLIĞI** veya **Bolt Kimliği'ni** seçin. Ayrıntılar sayfası, sayfanın altındaki **Hatalar** bölümünde ek hata bilgilerini görüntüler.
+2. Listelenen bir hata içeren bileşen için **Spout kimliği** veya **cıvatıd kimliğini** seçin. Ayrıntılar sayfasında sayfanın altındaki **hatalar** bölümünde ek hata bilgileri görüntülenir.
 
-3. Daha fazla bilgi edinmek için, son birkaç dakikaiçin Fırtına alt günlüğü görmek için sayfanın **Uygulayıcılar** bölümünden bir **Bağlantı Noktası** seçin.
+3. Daha fazla bilgi edinmek için, sayfanın **Yürüticileri** bölümünde bir **bağlantı noktası** seçin.
 
-### <a name="errors-submitting-topologies"></a>Topoloji gönderen hatalar
+### <a name="errors-submitting-topologies"></a>Topolojileri gönderme hataları
 
-HDInsight'a bir topoloji gönderen hatalarla karşılaşırsanız, HDInsight kümenizde topoloji gönderimi işleyen sunucu tarafındaki bileşenlerin günlüklerini bulabilirsiniz. Bu günlükleri indirmek için bir komut satırından aşağıdaki komutu kullanın:
+HDInsight 'a bir topoloji gönderme hatalarıyla karşılaşırsanız, HDInsight kümenizdeki topoloji gönderimini işleyen sunucu tarafı bileşenlerine yönelik Günlükler bulabilirsiniz. Bu günlükleri indirmek için komut satırından aşağıdaki komutu kullanın:
 
 ```cmd
 scp sshuser@clustername-ssh.azurehdinsight.net:/var/log/hdinsight-scpwebapi/hdinsight-scpwebapi.out .
 ```
 
-Küme için *sshuser* kullanıcısını SSH kullanıcı hesabıyla değiştirin. *Clustername'yi* HDInsight kümesinin adıyla değiştirin. HDInsight kullanımı `scp` ve `ssh` hdinsight ile ilgili daha fazla bilgi için, [HDInsight ile SSH'yi kullan'a](../hdinsight-hadoop-linux-use-ssh-unix.md)bakın.
+*Sshuser* ÖĞESINI kümenin SSH kullanıcı hesabı ile değiştirin. *Clustername* değerini HDInsight kümesinin adıyla değiştirin. Ve `scp` `ssh` HDInsight ile kullanma hakkında daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Gönderimler birden çok nedenden dolayı başarısız olabilir:
 
 * JDK yüklü değil veya yolda değil.
-* Gerekli Java bağımlılıkları gönderime dahil değildir.
-* Bağımlılıklar uyumsuzdur.
-* Topoloji adları çoğaltılır.
+* Gerekli Java bağımlılıkları göndermeye dahil değildir.
+* Bağımlılıklar uyumsuz.
+* Topoloji adları yineleniyor.
 
-*hdinsight-scpwebapi.out* log dosyası nda `FileNotFoundException`bir , özel durum aşağıdaki koşullardan kaynaklanabilir:
+*Hdinsight-scpwebapi. out* günlük dosyası bir `FileNotFoundException`içeriyorsa, özel durumun nedeni aşağıdaki koşullardan biri olabilir:
 
-* JDK geliştirme ortamında yolda değil. JDK'nın geliştirme ortamına yüklü olduğunu ve `%JAVA_HOME%/bin` bu yolun içinde olduğunu doğrulayın.
-* Java bağımlılığını kaçırıyorsun. Gönderinin bir parçası olarak gerekli .jar dosyalarını dahil ettiğinizden emin olun.
+* JDK, geliştirme ortamındaki yolda değil. JDK 'nin geliştirme ortamında yüklü olduğunu ve bu `%JAVA_HOME%/bin` yolda olduğunu doğrulayın.
+* Java bağımlılığı eksik. Gönderim kapsamında gerekli. jar dosyalarını dahil ettiğinizden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Olay Hub'larından gelen verileri işleme örneği için, [HDInsight'ta Storm ile Azure Etkinlik Hub'larından İşlem etkinliklerine](apache-storm-develop-csharp-event-hub-topology.md)bakın.
+Event Hubs verilerinin işlenmesiyle ilgili bir örnek için bkz. [HDInsight 'Ta fırtınası Ile Azure Event Hubs işleme olayları](apache-storm-develop-csharp-event-hub-topology.md).
 
-Akış verilerini birden çok akışa bölen Bir C# [topolojisi örneği için Bkz. C# Storm örneğine](https://github.com/Blackmist/csharp-storm-example)bakın.
+Akış verilerini birden çok akışa ayıran C# topolojisi örneği için bkz. [C# fırtınası örneği](https://github.com/Blackmist/csharp-storm-example).
 
-C# topolojileri oluşturma hakkında daha fazla bilgi bulmak için [GitHub'a](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md)bakın.
+C# topolojileri oluşturma hakkında daha fazla bilgi edinmek için bkz. [GitHub](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/SCPNet-GettingStarted.md).
 
-HDInsight ile çalışmanın daha fazla yolu ve HDInsight örneklerinde daha fazla Storm için aşağıdaki belgelere bakın:
+HDInsight ve HDInsight örnekleri üzerinde daha fazla fırtınası ile çalışmanın daha fazla yolu için aşağıdaki belgelere bakın:
 
 **Microsoft SCP.NET**
 
-* [Azure HDInsight'ta Apache Storm için SCP programlama kılavuzu](apache-storm-scp-programming-guide.md)
+* [Azure HDInsight 'ta Apache Storm için SCP Programlama Kılavuzu](apache-storm-scp-programming-guide.md)
 
 **HDInsight üzerinde Apache Storm**
 
-* [Azure HDInsight'ta Apache Storm topolojilerini dağıtın ve yönetin](apache-storm-deploy-monitor-topology-linux.md)
-* [Örnek Apache Storm, Azure HDInsight'ta topolojiler](apache-storm-example-topology.md)
+* [Azure HDInsight 'ta Apache Storm topolojileri dağıtma ve yönetme](apache-storm-deploy-monitor-topology-linux.md)
+* [Azure HDInsight 'ta örnek Apache Storm topolojileri](apache-storm-example-topology.md)
 
-**Apache Hadoop HDInsight üzerinde**
+**HDInsight üzerinde Apache Hadoop**
 
-* [Azure HDInsight'ta Apache Hive ve HiveQL nedir?](../hadoop/hdinsight-use-hive.md)
+* [Azure HDInsight 'ta Apache Hive ve HiveQL nedir?](../hadoop/hdinsight-use-hive.md)
 * [HDInsight üzerinde Apache Hadoop ile MapReduce'u kullanma](../hadoop/hdinsight-use-mapreduce.md)
 
 **HDInsight üzerinde Apache HBase**

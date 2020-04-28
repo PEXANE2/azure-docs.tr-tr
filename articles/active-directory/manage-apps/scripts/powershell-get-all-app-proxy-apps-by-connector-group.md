@@ -1,6 +1,6 @@
 ---
-title: PowerShell örneği - Tüm Uygulama Proxy bağlayıcı gruplarını listele
-description: Atanan uygulamalarla birlikte tüm Azure Active Directory (Azure AD) Application Proxy Bağlayıcısı gruplarını listeleyen PowerShell örneği.
+title: PowerShell örneği-tüm uygulama proxy Bağlayıcısı gruplarını Listele
+description: Atanmış uygulamalarla tüm Azure Active Directory (Azure AD) uygulama proxy Bağlayıcısı gruplarını listeleyen PowerShell örneği.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9dcf2eb6a1904e4a7223a19e598f0c06ddc36f71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75482172"
 ---
-# <a name="get-all-application-proxy-apps-and-list-by-connector-group"></a>Tüm Uygulama Proxy uygulamalarını ve listesini bağlayıcı grubuna göre edinin
+# <a name="get-all-application-proxy-apps-and-list-by-connector-group"></a>Tüm uygulama proxy uygulamalarını ve bağlayıcı grubuna göre listeyi al
 
-Bu PowerShell komut dosyası örneği, atanan uygulamalarla birlikte tüm Azure Active Directory (Azure AD) Application Proxy Bağlayıcı grupları hakkındaki bilgileri listeler.
+Bu PowerShell betiği örneği, atanan uygulamalarla tüm Azure Active Directory (Azure AD) uygulama proxy Bağlayıcısı gruplarıyla ilgili bilgileri listeler.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ Bu PowerShell komut dosyası örneği, atanan uygulamalarla birlikte tüm Azure 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Bu örnek [için AzureAD V2 PowerShell grafik modülü modülü](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) veya [Graph modülü önizleme sürümü için AzureAD V2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) gerekir.
+Bu örnek, Graf modülü (azuread) [Için Azuread v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) 'ı veya Graf modülü önizleme sürümü (azureadpreview) [Için Azuread v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) 'i gerektirir.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -39,14 +39,14 @@ Bu örnek [için AzureAD V2 PowerShell grafik modülü modülü](https://docs.mi
 
 | Komut | Notlar |
 |---|---|
-|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Bir servis müdürü alır. |
-|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Azure AD uygulaması alır. |
-|[Al-AzureADApplicationProxyApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyapplication?view=azureadps-2.0) | Azure AD'de Uygulama Proxy için yapılandırılan bir uygulamayı alır. |
-| [AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup?view=azureadps-2.0) | Tüm bağlayıcı gruplarının veya belirtilen bağlayıcı grubunun ayrıntılarının listesini alır. |
+|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Hizmet sorumlusu alır. |
+|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Bir Azure AD uygulaması alır. |
+|[Get-Azureadapplicationproxun](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyapplication?view=azureadps-2.0) | Azure AD 'de uygulama proxy 'Si için yapılandırılmış bir uygulamayı alır. |
+| [Get-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup?view=azureadps-2.0) | Tüm bağlayıcı gruplarının bir listesini veya belirtilmişse, belirtilen bağlayıcı grubunun ayrıntılarını alır. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD PowerShell modülü hakkında daha fazla bilgi için [Azure AD PowerShell modülüne genel bakış](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)bilgisine bakın.
+Azure AD PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure AD PowerShell modülüne genel bakış](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
 
-Uygulama Proxy'si için diğer PowerShell örnekleri için Azure [AD Application Proxy için Azure AD PowerShell örneklerine](../application-proxy-powershell-samples.md)bakın.
+Uygulama proxy 'Si için diğer PowerShell örnekleri için bkz. Azure [ad uygulama ara sunucusu Için Azure AD PowerShell örnekleri](../application-proxy-powershell-samples.md).

@@ -1,6 +1,6 @@
 ---
-title: HDInsight .NET SDK kullanarak Apache Hive sorgularını çalıştırın - Azure
-description: HDInsight .NET SDK'yı kullanarak Apache Hadoop işlerini Azure HDInsight Apache Hadoop'a nasıl göndereceğinizi öğrenin.
+title: HDInsight .NET SDK-Azure kullanarak Apache Hive sorguları çalıştırma
+description: HDInsight .NET SDK kullanarak Azure HDInsight Apache Hadoop Apache Hadoop işleri göndermeyi öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,43 +9,43 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: a9d71c8aebb9cc4a0adbd461aead6e2612bd13bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75552500"
 ---
-# <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK kullanarak Apache Hive sorgularını çalıştırın
+# <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK kullanarak Apache Hive sorguları çalıştırma
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-HDInsight .NET SDK'yı kullanarak Apache Hive sorgularını nasıl göndereceğinizi öğrenin. Hive tablolarını listelemek için hive sorgusu göndermek ve sonuçları görüntülemek için bir C# programı yazarsınız.
+HDInsight .NET SDK kullanarak Apache Hive sorguları göndermeyi öğrenin. Hive tablolarını listelemek için bir Hive sorgusu göndermek üzere bir C# programı yazdığınızda, sonuçları görüntüleyebilirsiniz.
 
 > [!NOTE]  
-> Bu makaledeki adımlar bir Windows istemcisinden gerçekleştirilmelidir. Hive ile çalışmak için bir Linux, OS X veya Unix istemcisi kullanma hakkında daha fazla bilgi için makalenin üst kısmında gösterilen sekme seçiciyi kullanın.
+> Bu makaledeki adımların bir Windows istemcisinden gerçekleştirilmesi gerekir. Bir Linux, OS X veya UNIX istemcisini Hive ile çalışmak üzere kullanma hakkında bilgi için, makalenin üst kısmında gösterilen sekme seçiciyi kullanın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaleye başlamadan önce aşağıdaki öğelere sahip olmalısınız:
+Bu makaleye başlamadan önce aşağıdaki öğelere sahip olmanız gerekir:
 
-* HDInsight'ta bir Apache Hadoop kümesi. Bkz. [HDInsight'ta Linux tabanlı Hadoop'u kullanmaya başlayın.](apache-hadoop-linux-tutorial-get-started.md)
+* HDInsight 'ta bir Apache Hadoop kümesi. Bkz. [HDInsight 'Ta Linux tabanlı Hadoop kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md).
 
     > [!IMPORTANT]  
-    > HDInsight .NET SDK, 15 Eylül 2017 itibarıyla yalnızca Azure Depolama hesaplarından dönen Hive sorgu sonuçlarını destekler. Bu örneği, Azure Veri Gölü Depolamasını birincil depolama alanı olarak kullanan bir HDInsight kümesiyle kullanırsanız, .NET SDK'yı kullanarak arama sonuçlarını alamazsınız.
+    > 15 Eylül 2017 itibariyle, HDInsight .NET SDK yalnızca Azure depolama hesaplarından Hive sorgu sonuçları döndürmeyi destekler. Bu örneği, birincil depolama olarak Azure Data Lake Storage kullanan bir HDInsight kümesiyle birlikte kullanırsanız, .NET SDK kullanarak arama sonuçlarını alamazsınız.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/community/) 2013 ve sonrası. En azından iş yükü **.NET masaüstü geliştirme** yüklü olmalıdır.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/community/) 2013 ve ötesi. En düşük iş yükü **.net masaüstü geliştirmenin** yüklenmesi gerekir.
 
-## <a name="run-a-hive-query"></a>Kovan Sorgusu Çalıştır
+## <a name="run-a-hive-query"></a>Hive sorgusu çalıştırma
 
-HDInsight .NET SDK ,NET istemci kitaplıkları sağlar, bu da .NET'ten HDInsight kümeleriyle çalışmayı kolaylaştırır.
+HDInsight .NET SDK 'Sı .NET istemci kitaplıkları sağlar. Bu, .NET 'teki HDInsight kümeleriyle çalışmayı kolaylaştırır.
 
-1. Visual Studio'da C# konsolu uygulaması oluşturun.
+1. Visual Studio 'da bir C# konsol uygulaması oluşturun.
 
-1. Nuget Paket Yöneticisi Konsolundan aşağıdaki komutu çalıştırın:
+1. NuGet paket yöneticisi konsolundan aşağıdaki komutu çalıştırın:
 
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
-1. Değişkenlerin değerlerini başlatmak için aşağıdaki kodu `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName`edin: . Ardından, Visual Studio'daki **Program.cs** tüm içeriği olarak gözden geçirilmiş kodu kullanın.
+1. Değişkenlerin değerlerini başlatmak için aşağıdaki kodu düzenleyin: `ExistingClusterName, ExistingClusterUsername, ExistingClusterPassword,DefaultStorageAccountName,DefaultStorageAccountKey,DefaultStorageContainerName`. Ardından, düzeltilen kodu Visual Studio 'daki tüm **program.cs** içeriği olarak kullanın.
 
     ```csharp
     using System.Collections.Generic;
@@ -134,16 +134,16 @@ HDInsight .NET SDK ,NET istemci kitaplıkları sağlar, bu da .NET'ten HDInsight
 
 1. Uygulamayı çalıştırmak için **F5**'e basın.
 
-Uygulamanın çıktısı aşağıdakilere benzer olmalıdır:
+Uygulamanın çıkışı şuna benzer olmalıdır:
 
-![HDInsight Hadoop Kovan iş çıktısı](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
+![HDInsight Hadoop Hive iş çıktısı](./media/apache-hadoop-use-hive-dotnet-sdk/hdinsight-hadoop-use-hive-net-sdk-output.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede, HDInsight .NET SDK kullanarak Apache Hive sorguları göndermeyi öğrendiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [Azure HDInsight ile başlayın](apache-hadoop-linux-tutorial-get-started.md)
-* [HDInsight'ta Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-provision-linux-clusters.md)
-* [HDInsight .NET SDK referansı](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
-* [HDInsight ile Apache Sqoop kullanın](apache-hadoop-use-sqoop-mac-linux.md)
-* [Etkileşimli olmayan kimlik doğrulaması .NET HDInsight uygulamaları oluşturma](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
+* [Azure HDInsight 'ı kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md)
+* [HDInsight 'ta Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-provision-linux-clusters.md)
+* [HDInsight .NET SDK başvurusu](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [HDInsight ile Apache Sqoop kullanma](apache-hadoop-use-sqoop-mac-linux.md)
+* [Etkileşimli olmayan kimlik doğrulaması ile çalıştırılan .NET HDInsight uygulamaları oluşturma](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)

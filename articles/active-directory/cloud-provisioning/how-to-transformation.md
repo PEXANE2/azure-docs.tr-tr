@@ -1,6 +1,6 @@
 ---
-title: Azure AD Bulut sağlama dönüşümlerini bağlayın
-description: Bu makalede, varsayılan öznitelik eşlemeleri değiştirmek için dönüşümleri nasıl kullanılacağı açıklanmaktadır.
+title: Azure AD Connect bulut sağlama dönüşümleri
+description: Bu makalede, varsayılan öznitelik eşlemelerini değiştirmek için dönüşümlerin nasıl kullanılacağı açıklanır.
 author: billmath
 ms.author: billmath
 manager: davba
@@ -9,32 +9,32 @@ ms.topic: article
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
 ms.openlocfilehash: ec12927b40096b7ff04fae6b7cbc69a7bc11e8f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75549304"
 ---
 # <a name="transformations"></a>Dönüşümler
 
-Dönüşümle, bulut sağlama özelliğini kullanarak bir özniteliğin Azure Etkin Dizin (Azure AD) ile nasıl eşitlendirilebildiğini varsayılan olarak değiştirebilirsiniz.
+Bir dönüşümle, bir özniteliğin bulut sağlamasını kullanarak Azure Active Directory (Azure AD) ile nasıl eşitlendiğine ilişkin varsayılan davranışı değiştirebilirsiniz.
 
-Bu görevi yapmak için şemayı yeniden ve ardından bir web isteği aracılığıyla yeniden göndermeniz gerekir.
+Bu görevi yapmak için şemayı düzenlemeniz ve bir Web isteği aracılığıyla yeniden göndermeniz gerekir.
 
-Bulut sağlama özellikleri hakkında daha fazla bilgi için azure [AD şemasını anlama](concept-attributes.md)konusuna bakın.
+Bulut sağlama öznitelikleri hakkında daha fazla bilgi için bkz. [Azure AD şemasını anlama](concept-attributes.md).
 
 
-## <a name="retrieve-the-schema"></a>Şeayı alın
-Şemayı almak için [şemayı Görüntüle'deki](concept-attributes.md#view-the-schema)adımları izleyin. 
+## <a name="retrieve-the-schema"></a>Şemayı alma
+Şemayı almak için [Şemayı görüntüleme](concept-attributes.md#view-the-schema)bölümündeki adımları izleyin. 
 
 ## <a name="custom-attribute-mapping"></a>Özel öznitelik eşleme
-Özel bir öznitelik eşlemi eklemek için aşağıdaki adımları izleyin.
+Özel bir öznitelik eşlemesi eklemek için aşağıdaki adımları izleyin.
 
-1. Şeayı [Visual Studio Code](https://code.visualstudio.com/)gibi bir metin veya kod düzenleyicisine kopyalayın.
+1. Şemayı, [Visual Studio Code](https://code.visualstudio.com/)gibi bir metin veya kod düzenleyicisine kopyalayın.
 1. Şemada güncelleştirmek istediğiniz nesneyi bulun.
 
    ![Şemadaki nesne](media/how-to-transformation/transform1.png)</br>
-1. Kullanıcı nesnesinin `ExtensionAttribute3` altındaki kodu bulun.
+1. Kullanıcı nesnesinin `ExtensionAttribute3` altındaki kodunu bulun.
 
     ```
                             {
@@ -62,7 +62,7 @@ Bulut sağlama özellikleri hakkında daha fazla bilgi için azure [AD şemasın
                                 }
                             },
     ```
-1. Şirket özniteliğinin eşlenecek şekilde kodu `ExtensionAttribute3`edin.
+1. Şirket özniteliğinin eşlendiği şekilde kodu düzenleyin `ExtensionAttribute3`.
 
    ```
                                     {
@@ -90,25 +90,25 @@ Bulut sağlama özellikleri hakkında daha fazla bilgi için azure [AD şemasın
                                         }
                                     },
    ```
- 1. Şemayı Graph Explorer'a geri kopyalayın, **İstek Türünü** **PUT**olarak değiştirin ve **Sorguyu Çalıştır'ı**seçin.
+ 1. Şemayı Graph Explorer 'a geri kopyalayın, **Istek türünü** **koymak**Için değiştirin ve **Sorguyu Çalıştır**' ı seçin.
 
     ![Sorguyu Çalıştır](media/how-to-transformation/transform2.png)
 
- 1. Şimdi, Azure portalında bulut sağlama yapılandırmasına gidin ve **yeniden başlat'ı**seçin.
+ 1. Artık Azure portal, bulut sağlama yapılandırmasına gidin ve **sağlamayı yeniden Başlat**' ı seçin.
 
-    ![Sağlamayı yeniden başlatma](media/how-to-transformation/transform3.png)
+    ![Sağlamayı yeniden Başlat](media/how-to-transformation/transform3.png)
 
- 1. Bir süre sonra, Grafik Gezgini'nde aşağıdaki sorguyu çalıştırarak `https://graph.microsoft.com/beta/users/{Azure AD user UPN}`özniteliklerin doldurulmakta olduğunu doğrulayın: .
- 1. Şimdi değeri görmelisiniz.
+ 1. Biraz sonra, Graph Explorer 'da aşağıdaki sorguyu çalıştırarak özniteliklerin doldurulduğundan emin olun: `https://graph.microsoft.com/beta/users/{Azure AD user UPN}`.
+ 1. Şimdi değeri görmeniz gerekir.
 
-    ![Değer görüntülenir](media/how-to-transformation/transform4.png)
+    ![Değer görünür](media/how-to-transformation/transform4.png)
 
-## <a name="custom-attribute-mapping-with-function"></a>İşlevli özel öznitelik eşleme
-Daha gelişmiş eşleme için, verileri işlemenize ve kuruluşunuzun gereksinimlerine uygun öznitelikler için değerler oluşturmanıza olanak tanıyan işlevleri kullanabilirsiniz.
+## <a name="custom-attribute-mapping-with-function"></a>İşlev ile özel öznitelik eşleme
+Daha gelişmiş eşleme için, verileri işlemenizi ve kuruluşunuzun ihtiyaçlarına uyacak şekilde özniteliklerin değerlerini oluşturmayı sağlayan işlevleri kullanabilirsiniz.
 
-Bu görevi yapmak için önceki adımları izleyin ve sonra son değeri oluşturmak için kullanılan işlevi edin.
+Bu görevi yapmak için önceki adımları izleyin ve son değeri oluşturmak için kullanılan işlevi düzenleyin.
 
-Sözdizimi ve ifade örnekleri hakkında bilgi için bkz: [Azure Etkin Dizini'ndeki öznitelik eşlemeleri için ifadeler yazma.](reference-expressions.md)
+Sözdizimi ve ifade örnekleri hakkında daha fazla bilgi için, bkz. [Azure Active Directory öznitelik eşlemeleri için Ifadeler yazma](reference-expressions.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar 

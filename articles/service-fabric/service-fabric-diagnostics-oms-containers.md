@@ -1,52 +1,52 @@
 ---
-title: Azure Monitor günlükleriyle kapsayıcıları izleme
-description: Azure Hizmet Kumaşı kümelerinde çalışan kapsayıcıları izlemek için Azure Monitor günlüklerini kullanın.
+title: Azure Izleyici günlükleri ile kapsayıcıları izleme
+description: Azure Service Fabric kümelerinde çalıştırılan kapsayıcıları izlemek için Azure Izleyici günlüklerini kullanın.
 author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 8d4231de13da3f8b2960bd4852136f803a97a546
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614443"
 ---
-# <a name="monitor-containers-with-azure-monitor-logs"></a>Azure Monitor günlükleriyle kapsayıcıları izleme
+# <a name="monitor-containers-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile kapsayıcıları izleme
  
-Bu makalede, kapsayıcı olaylarını görüntülemek için Azure Monitor günlükleri kapsayıcı izleme çözümünü ayarlamak için gereken adımlar ele geçmektedir. Kapsayıcı olayları toplamak için kümenizi ayarlamak için bu [adım adım öğreticiye](service-fabric-tutorial-monitoring-wincontainers.md)bakın. 
+Bu makalede, kapsayıcı olaylarını görüntülemek için Azure Izleyici günlükleri kapsayıcı izleme çözümünü ayarlamak için gereken adımlar ele alınmaktadır. Kümenizi kapsayıcı olayları toplayacak şekilde ayarlamak için bu [adım adım öğreticiye](service-fabric-tutorial-monitoring-wincontainers.md)bakın. 
 
 [!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)]
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="set-up-the-container-monitoring-solution"></a>Konteyner izleme çözümünü ayarlama
+## <a name="set-up-the-container-monitoring-solution"></a>Kapsayıcı izleme çözümünü ayarlama
 
 > [!NOTE]
-> Kümeniz için Azure Monitor günlüklerinin ayarlanması ve düğümlerinizde Log Analytics aracısının dağıtılması gerekir. Bunu yapmazsanız, Azure Monitor [günlüklerini ayarla](service-fabric-diagnostics-oms-setup.md) ve [Log Analytics aracısını önce bir kümeye ekleyin](service-fabric-diagnostics-oms-agent.md) adımlarını izleyin.
+> Kümeniz için Azure Izleyici günlüklerini ayarlamış olmanız ve Log Analytics aracısının düğümlere dağıtılmasını sağlayabilirsiniz. Aksi takdirde, [Azure izleyici günlüklerini ayarlama](service-fabric-diagnostics-oms-setup.md) ve [Log Analytics aracısını önce kümeye ekleme](service-fabric-diagnostics-oms-agent.md) bölümündeki adımları uygulayın.
 
-1. Kümeniz Azure Monitor günlükleri ve Log Analytics aracısıyla ayarlandıktan sonra konteynırlarınızı dağıtın. Bir sonraki adıma geçmeden önce konteynerlerinizin dağıtılmasını bekleyin.
+1. Kümeniz Azure Izleyici günlükleri ve Log Analytics aracısında kurulduktan sonra Kapsayıcılarınızı dağıtın. Bir sonraki adıma geçmeden önce kapsayıcılarınızın dağıtılmasını bekleyin.
 
-2. Azure Marketi'nde, *Kapsayıcı İzleme Çözümü'ni* arayın ve İzleme + Yönetim kategorisi altında görünen **Kapsayıcı İzleme Çözümü** kaynağını tıklayın.
+2. Azure Marketi 'nde *kapsayıcı Izleme çözümünü* arayın ve izleme ve yönetim kategorisinin altında görüntülenen **kapsayıcı izleme çözümü** kaynağına tıklayın.
 
     ![Kapsayıcılar çözümü ekleme](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
-3. Küme için zaten oluşturulmuş olan aynı çalışma alanı içinde çözüm oluşturun. Bu değişiklik, aracının kapsayıcılar üzerinde docker verileri toplamaya başlamasını otomatik olarak tetikler. Yaklaşık 15 dakika içinde, aşağıdaki resimde gösterildiği gibi, gelen günlükleri ve istatistikleri ile çözüm ışığı görmelisiniz.
+3. Çözümü, küme için önceden oluşturulmuş aynı çalışma alanı içinde oluşturun. Bu değişiklik, kapsayıcılarda Docker verilerinin toplamaya başlamak için aracıyı otomatik olarak tetikler. Yaklaşık 15 dakika içinde, aşağıdaki görüntüde gösterildiği gibi çözüm ışığını gelen Günlükler ve istatistikler ile birlikte görmeniz gerekir.
 
-    ![Temel Günlük Analiz Panosu](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
+    ![Temel Log Analytics panosu](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
 
-Aracı, Azure Monitor günlüklerinde sorgulanabilen veya performans göstergelerini görselleştirmek için kullanılabilen kapsayıcıya özgü birkaç günlük toplamayı sağlar. Toplanan günlük türleri şunlardır:
+Aracı, Azure Izleyici günlüklerinde sorgulanabilen birkaç kapsayıcıya özgü günlük koleksiyonunun toplanmasını sağlar veya performans göstergelerini görselleştirmek için kullanılabilir. Toplanan günlük türleri şunlardır:
 
-* ContainerInventory: kapsayıcı konumu, adı ve görüntüleri hakkındaki bilgileri gösterir
-* ContainerImageInventory: D'ler veya boyutlar da dahil olmak üzere dağıtılan görüntüler hakkında bilgi
-* ContainerLog: belirli hata günlükleri, docker günlükleri (stdout, vb) ve diğer girişler
-* ContainerServiceLog: çalıştırılabilen docker daemon komutları
-* Perf: kapsayıcı işlemci, bellek, ağ trafiği, disk i/o ve ana bilgisayar makinelerinden özel ölçümler dahil performans sayaçları
+* Containerınventory: kapsayıcı konumu, adı ve görüntüleri hakkında bilgi gösterir
+* Containerımageınventory: kimlikler veya boyutlar dahil dağıtılan görüntülerle ilgili bilgiler
+* ContainerLog: belirli hata günlükleri, Docker günlükleri (stdout, vb.) ve diğer girdiler
+* ContainerServiceLog: çalışan Docker Daemon komutları
+* Performans: kapsayıcı CPU, bellek, ağ trafiği, disk g/ç ve konak makinelerinden özel ölçümler dahil performans sayaçları
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Monitor günlükleri Kapsayıcıçözümü](../azure-monitor/insights/containers.md)hakkında daha fazla bilgi edinin.
-* Servis Kumaşı - [Servis Kumaşı ve konteynerler](service-fabric-containers-overview.md) hakkında daha fazla bilgi edinin
-* Azure Monitor [günlüklerinin](../log-analytics/log-analytics-log-searches.md) bir parçası olarak sunulan günlük arama ve sorgulama özelliklerine aşina olun
-* Algılama ve tanılama da yardımcı olmak için [otomatik uyarı](../log-analytics/log-analytics-alerts.md) kuralları ayarlamak için Azure Monitor günlüklerini yapılandırın
+* [Azure izleyici günlük kapsayıcıları çözümü](../azure-monitor/insights/containers.md)hakkında daha fazla bilgi edinin.
+* Service Fabric [Service Fabric ve kapsayıcılarda](service-fabric-containers-overview.md) kapsayıcı düzenlemesi hakkında daha fazla bilgi edinin
+* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../log-analytics/log-analytics-log-searches.md) özellikleriyle familiarized alın
+* Algılama ve tanılama konusunda yardımcı olmak üzere [otomatik uyarı](../log-analytics/log-analytics-alerts.md) kuralları ayarlamak Için Azure izleyici günlüklerini yapılandırma

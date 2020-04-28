@@ -1,71 +1,71 @@
 ---
-title: Azure Hizmet Kumaşı ile sağlık durumunu bildirin ve kontrol edin
-description: Azure Hizmet Dokusu'nun sağladığı sistem durumu izleme araçlarını kullanarak hizmet kodunuzdan sistem durumu raporlarını nasıl göndereceğinizi ve hizmetinizin durumunu nasıl denetleyebilirsiniz.
+title: Azure Service Fabric sistem durumunu raporlama ve denetleme
+description: Hizmet kodunuzda sistem durumu raporlarının nasıl gönderileceğini ve Azure Service Fabric tarafından sağlanan sistem durumu izleme araçlarını kullanarak hizmetinizin sistem durumunu nasıl denetleyeceğinizi öğrenin.
 author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 2b7a9c44a84e3ce15eaec22c8f57bb48f79dae05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75464631"
 ---
 # <a name="report-and-check-service-health"></a>Hizmet durumunu raporlama ve denetleme
-Hizmetleriniz sorunlarla karşılaştığında, olaylara ve kesintilere yanıt verme ve düzeltme yeteneğiniz, sorunları hızlı bir şekilde algılama yeteneğinize bağlıdır. Hizmet kodunuzdan Azure Hizmet Dokusu sistem durumu yöneticisine sorun ve hata bildiriyorsanız, Hizmet Dokusu'nun sistem durumunu denetlemek için sağladığı standart sistem durumu izleme araçlarını kullanabilirsiniz.
+Hizmetleriniz sorunlarla karşılaştığında, olayları ve kesintilere yanıt verme ve bunları çözme imkanını sorunları hızlı bir şekilde algılamanıza bağlıdır. Hizmet kodunuzda Azure Service Fabric Health Manager sorunlarını ve başarısızlıklarını raporlayabilir, sistem durumunu denetlemek için Service Fabric sağladığı standart sistem durumu izleme araçlarını kullanabilirsiniz.
 
-Hizmetten sağlık durumunu bildirmenin üç yolu vardır:
+Hizmetten sistem durumunu bildirebilmeniz için üç yol vardır:
 
-* [Bölüm](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) veya [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) nesnelerini kullanın.  
-  Geçerli bağlamın `Partition` `CodePackageActivationContext` bir parçası olan öğelerin sistem durumunu bildirmek için nesneleri ve nesneleri kullanabilirsiniz. Örneğin, yinelemenin bir parçası olarak çalışan kod, yalnızca bu yinelemede, ait olduğu bölüme ve parçası olduğu uygulamada sistem durumu bildirebilir.
+* [Bölüm](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) veya [Codepackageactivationcontext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) nesneleri kullanın.  
+  Ve `Partition` `CodePackageActivationContext` nesnelerini, geçerli bağlamın parçası olan öğelerin sistem durumunu raporlamak için kullanabilirsiniz. Örneğin, bir çoğaltmanın parçası olarak çalışan kod yalnızca o çoğaltma üzerinde sistem durumunu, ait olduğu bölümü ve bir parçası olan uygulamayı rapor edebilir.
 * `FabricClient` adresini kullanın.   
-  Küme `FabricClient` [güvenli](service-fabric-cluster-security.md) değilse veya hizmet yönetici ayrıcalıklarıyla çalışıyorsa, hizmet kodundan sistem durumunu bildirmek için kullanabilirsiniz. Gerçek dünya senaryolarının çoğu güvenli olmayan kümeler kullanmaz veya yönetici ayrıcalıkları sağlamaz. `FabricClient`, kümenin bir parçası olan herhangi bir varlık üzerinde sistem durumunu bildirebilirsiniz. İdeal olarak, ancak, hizmet kodu yalnızca kendi durumuyla ilgili raporlar göndermelidir.
-* KÜME, uygulama, dağıtılan uygulama, hizmet, hizmet paketi, bölümleme, çoğaltma veya düğüm düzeylerinde REST API'lerini kullanın. Bu, bir kapsayıcının içinden durumu bildirmek için kullanılabilir.
+  Küme güvenli değilse `FabricClient` veya hizmet yönetici ayrıcalıklarıyla çalışıyorsa, hizmet kodundan sistem durumunu raporlamak için [secure](service-fabric-cluster-security.md) ' i kullanabilirsiniz. En gerçek dünyada senaryolar güvenli olmayan kümeler kullanmaz veya yönetici ayrıcalıkları sağlamaz. İle `FabricClient`, kümenin bir parçası olan herhangi bir varlıkta sistem durumunu rapor edebilirsiniz. Bununla birlikte, hizmet kodu yalnızca kendi sistem durumuyla ilgili raporları göndermelidir.
+* Küme, uygulama, dağıtılan uygulama, hizmet, hizmet paketi, bölüm, çoğaltma veya düğüm düzeylerinde REST API 'Leri kullanın. Bu, bir kapsayıcı içinden sistem durumunu raporlamak için kullanılabilir.
 
-Bu makale, hizmet kodundan sağlık raporları bir örnek size yol. Örnek, Service Fabric tarafından sağlanan araçların sistem durumu durumunu denetlemek için nasıl kullanılabileceğini de gösterir. Bu makale, Hizmet Kumaşı'nın sistem durumu izleme yeteneklerine hızlı bir giriş olması amaçlanmıştır. Daha ayrıntılı bilgi için, bu makalenin sonundaki bağlantıyla başlayan sağlık la ilgili derinlemesine makale serisini okuyabilirsiniz.
+Bu makalede, hizmet kodundan sistem durumunu raporlayan bir örnek adım adım açıklanmaktadır. Örnek ayrıca, Service Fabric tarafından belirtilen araçların sistem durumunu denetlemek için nasıl kullanılabileceğini gösterir. Bu makale, Service Fabric sistem durumu izleme yeteneklerine hızlı bir giriş yapmak için tasarlanmıştır. Daha ayrıntılı bilgi için, bu makalenin sonundaki bağlantıyla başlayan sistem durumu hakkında ayrıntılı makalelerin serisini okuyabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Aşağıdakileri yüklemiş olmalısınız:
+Aşağıdakilerin yüklü olması gerekir:
 
 * Visual Studio 2015 veya Visual Studio 2019
-* Servis Kumaş ı SDK
+* Service Fabric SDK
 
-## <a name="to-create-a-local-secure-dev-cluster"></a>Yerel bir güvenli dev kümesi oluşturmak için
-* PowerShell'i yönetici ayrıcalıklarıyla açın ve aşağıdaki komutları çalıştırın:
+## <a name="to-create-a-local-secure-dev-cluster"></a>Yerel bir güvenli geliştirici kümesi oluşturmak için
+* PowerShell 'i yönetici ayrıcalıklarıyla açın ve aşağıdaki komutları çalıştırın:
 
-![Güvenli bir dev kümenin nasıl oluşturulabildiğini gösteren komutlar](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-secure-dev-cluster.png)
+![Güvenli bir geliştirici kümesi oluşturmayı gösteren komutlar](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-secure-dev-cluster.png)
 
-## <a name="to-deploy-an-application-and-check-its-health"></a>Bir uygulamayı dağıtmak ve sistem durumunu kontrol etmek için
-1. Yönetici olarak Visual Studio'u açın.
-1. **Durum Hizmeti** şablonu kullanarak bir proje oluşturun.
+## <a name="to-deploy-an-application-and-check-its-health"></a>Bir uygulamayı dağıtmak ve durumunu denetlemek için
+1. Visual Studio 'Yu yönetici olarak açın.
+1. **Durum bilgisi olan hizmet** şablonunu kullanarak bir proje oluşturun.
    
-    ![Stateful Service ile Hizmet Kumaşı uygulaması oluşturma](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-stateful-service-application-dialog.png)
+    ![Durum bilgisi olan hizmet ile Service Fabric uygulaması oluşturma](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-stateful-service-application-dialog.png)
 1. Uygulamayı hata ayıklama modunda çalıştırmak için **F5** tuşuna basın. Uygulama yerel kümeye dağıtılır.
-1. Uygulama çalışmaya devam ettikten sonra, bildirim alanındaki Yerel Küme Yöneticisi simgesine sağ tıklayın ve Hizmet Kumaş Gezgini'ni açmak için kısayol menüsünden **Yerel Kümeyi Yönet'i** seçin.
+1. Uygulama çalıştırıldıktan sonra, bildirim alanında Yerel Küme Yöneticisi simgesine sağ tıklayın ve Service Fabric Explorer açmak için kısayol menüsünden **Yerel kümeyi Yönet** ' i seçin.
    
-    ![Bildirim alanından Hizmet Kumaş Explorer'ı aç](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/LaunchSFX.png)
-1. Uygulama durumu bu resimde olduğu gibi görüntülenmelidir. Şu anda, uygulama hiçbir hata ile sağlıklı olmalıdır.
+    ![Bildirim alanından Service Fabric Explorer aç](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/LaunchSFX.png)
+1. Uygulama durumu bu görüntüde olduğu gibi görüntülenmelidir. Bu sırada, uygulamanın hatasız olması gerekir.
    
-    ![Hizmet Kumaş Explorer sağlıklı uygulama](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-healthy-app.png)
-1. PowerShell'i kullanarak da sağlığınızı kontrol edebilirsiniz. Bir uygulamanın durumunu denetlemek için kullanabilirsiniz ```Get-ServiceFabricApplicationHealth``` ve ```Get-ServiceFabricServiceHealth``` bir hizmetin durumunu denetlemek için kullanabilirsiniz. PowerShell'de aynı uygulama için sağlık raporu bu resimde.
+    ![Service Fabric Explorer sağlıklı uygulama](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-healthy-app.png)
+1. Ayrıca, PowerShell kullanarak sistem durumunu kontrol edebilirsiniz. Uygulamanın sistem durumunu ```Get-ServiceFabricApplicationHealth``` denetlemek için öğesini kullanabilir ve bir hizmetin sistem durumunu denetlemek ```Get-ServiceFabricServiceHealth``` için ' i kullanabilirsiniz. Bu görüntüde, PowerShell 'deki aynı uygulama için sistem durumu raporu bulunur.
    
-    ![PowerShell'de sağlıklı uygulama](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/ps-healthy-app-report.png)
+    ![PowerShell 'de sağlıklı uygulama](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/ps-healthy-app-report.png)
 
-## <a name="to-add-custom-health-events-to-your-service-code"></a>Hizmet kodunuza özel sağlık olayları eklemek için
-Visual Studio'daki Service Fabric proje şablonları örnek kod içerir. Aşağıdaki adımlar, servis kodunuzdan özel sağlık olaylarını nasıl bildirebileceğinizi gösterir. Bu tür raporlar, Service Fabric Explorer, Azure portal sistem durumu görünümü ve PowerShell gibi Hizmet Dokusu'nun sağladığı sistem durumu izleme için standart araçlarda otomatik olarak ortaya çıkar.
+## <a name="to-add-custom-health-events-to-your-service-code"></a>Hizmet kodunuza özel sistem durumu olayları eklemek için
+Visual Studio 'daki Service Fabric proje şablonları örnek kod içerir. Aşağıdaki adımlarda, hizmet kodunuzda özel sistem durumu olaylarını nasıl bildirekullanabileceğiniz gösterilmektedir. Bu raporlar, Service Fabric Explorer, Azure portal sistem durumu görünümü ve PowerShell gibi Service Fabric sağladığı sistem durumu izleme için standart araçlarda otomatik olarak gösterilir.
 
-1. Visual Studio'da daha önce oluşturduğunuz uygulamayı yeniden açın veya **Stateful Service** Visual Studio şablonuna bakarak yeni bir uygulama oluşturun.
-1. Stateful1.cs dosyasını açın ve `myDictionary.TryGetValueAsync` aramayı `RunAsync` yöntemde bulun. Bu uygulamadaki anahtar mantık `result` bir sayıyı çalışır durumda tutmak olduğundan, bu yöntemin sayacın geçerli değerini tutan bir yöntem döndürür olduğunu görebilirsiniz. Bu uygulama gerçek bir uygulamaysa ve sonuç eksikliği bir hata yıtemsil ettiyse, bu olayı işaretlemek isteyebilirsiniz.
-1. Sonuç eksikliği bir hata temsil ettiğinde bir sistem durumu olayını bildirmek için aşağıdaki adımları ekleyin.
+1. Daha önce Visual Studio 'da oluşturduğunuz uygulamayı yeniden açın veya **durum bilgisi olan hizmet** Visual Studio şablonunu kullanarak yeni bir uygulama oluşturun.
+1. Stateful1.cs dosyasını açın ve `myDictionary.TryGetValueAsync` `RunAsync` yöntemi içinde çağrısını bulun. Bu yöntemin, bu uygulamadaki anahtar mantığı bir `result` sayıyı çalışır durumda tutacağından, bu yöntemin, sayacın geçerli değerini tutan bir döndürür. Bu uygulama gerçek bir uygulamadır ve sonucun bulunmaması bir hatayı gösteriyorsa, bu olayı işaretlemek istersiniz.
+1. Sonucun olmaması bir başarısızlığı temsil ettiğinde bir sistem durumu olayı raporlamak için aşağıdaki adımları ekleyin.
    
-    a. `System.Fabric.Health` Stateful1.cs dosyasına ad alanını ekleyin.
+    a. Stateful1.cs dosyasına `System.Fabric.Health` ad alanını ekleyin.
    
     ```csharp
     using System.Fabric.Health;
     ```
    
-    b. `myDictionary.TryGetValueAsync` Aramadan sonra aşağıdaki kodu ekleyin
+    b. `myDictionary.TryGetValueAsync` Çağrıdan sonra aşağıdaki kodu ekleyin
    
     ```csharp
     if (!result.HasValue)
@@ -74,9 +74,9 @@ Visual Studio'daki Service Fabric proje şablonları örnek kod içerir. Aşağ�
         this.Partition.ReportReplicaHealth(healthInformation);
     }
     ```
-    Yineleme durumunu bildiriyoruz çünkü devlet hizmetinden bildiriliyor. Parametre, `HealthInformation` bildirilen sağlık sorunu yla ilgili bilgileri depolar.
+    Durum bilgisi olan bir hizmetten bildirildiği için çoğaltma sistem durumu raporlıyoruz. `HealthInformation` Parametresi, bildirilen sistem durumu sorunuyla ilgili bilgileri depolar.
    
-    Devletsiz bir hizmet oluşturduysanız, aşağıdaki kodu kullanın
+    Durum bilgisi olmayan bir hizmet oluşturduysanız, aşağıdaki kodu kullanın
    
     ```csharp
     if (!result.HasValue)
@@ -85,15 +85,15 @@ Visual Studio'daki Service Fabric proje şablonları örnek kod içerir. Aşağ�
         this.Partition.ReportInstanceHealth(healthInformation);
     }
     ```
-1. Hizmetiniz yönetici ayrıcalıklarıyla çalışıyorsa veya küme [güvenli](service-fabric-cluster-security.md)değilse, `FabricClient` aşağıdaki adımlarda gösterildiği gibi durumu bildirmek için de kullanabilirsiniz.  
+1. Hizmetiniz yönetici ayrıcalıklarıyla çalışıyorsa veya küme [güvenli](service-fabric-cluster-security.md)değilse, aşağıdaki adımlarda gösterildiği gibi sistem durumunu raporlamak için de kullanabilirsiniz `FabricClient` .  
    
-    a. Bildirimden `FabricClient` `var myDictionary` sonra örneği oluşturun.
+    a. `var myDictionary` Bildirimden sonra `FabricClient` örneği oluşturun.
    
     ```csharp
     var fabricClient = new FabricClient(new FabricClientSettings() { HealthReportSendInterval = TimeSpan.FromSeconds(0) });
     ```
    
-    b. `myDictionary.TryGetValueAsync` Aramadan sonra aşağıdaki kodu ekleyin.
+    b. `myDictionary.TryGetValueAsync` Çağrıdan sonra aşağıdaki kodu ekleyin.
    
     ```csharp
     if (!result.HasValue)
@@ -105,7 +105,7 @@ Visual Studio'daki Service Fabric proje şablonları örnek kod içerir. Aşağ�
         fabricClient.HealthManager.ReportHealth(replicaHealthReport);
     }
     ```
-1. Bu başarısızlığı simüle edelim ve sistem durumu izleme araçlarında görünelim. Hatayı simüle etmek için, daha önce eklediğiniz sistem durumu raporlama kodundaki ilk satırı belirtin. İlk satırı açıklamayaptıktan sonra, kod aşağıdaki örnek gibi görünür.
+1. Bu hatanın benzetimini yapmanızı sağlar ve sistem durumu izleme araçlarında göster bölümüne bakın. Hatanın benzetimini yapmak için, daha önce eklediğiniz sistem durumu raporlama kodundaki ilk satırı açıklama olarak değerlendirin. İlk satırı yorumladıktan sonra, kod aşağıdaki örneğe benzer şekilde görünür.
    
     ```csharp
     //if(!result.HasValue)
@@ -114,24 +114,24 @@ Visual Studio'daki Service Fabric proje şablonları örnek kod içerir. Aşağ�
         this.Partition.ReportReplicaHealth(healthInformation);
     }
     ```
-   Bu kod, her çalıştırışta `RunAsync` sağlık raporunu çalıştırıyor. Değişikliği yaptıktan sonra, uygulamayı çalıştırmak için **F5** tuşuna basın.
-1. Uygulama çalıştırıladıktan sonra, uygulamanın durumunu kontrol etmek için Service Fabric Explorer'ı açın. Bu kez, Service Fabric Explorer uygulamanın sağlıksız olduğunu gösterir. Uygulama sağlıksız olarak gösterir, çünkü daha önce eklediğimiz koddan bildirilen hata.
+   Bu kod, her `RunAsync` çalıştırıldığında sistem durumu raporunu tetikler. Değişikliği yaptıktan sonra **F5** tuşuna basarak uygulamayı çalıştırın.
+1. Uygulama çalıştırıldıktan sonra uygulamanın sistem durumunu denetlemek için Service Fabric Explorer açın. Bu kez Service Fabric Explorer, uygulamanın sağlıksız olduğunu gösterir. Daha önce eklediğimiz koddan bildirilen hata nedeniyle uygulama sağlıksız olarak gösterilir.
    
-    ![Hizmet Kumaş Explorer sağlıksız uygulama](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
-1. Hizmet Kumaş Explorer'ın ağaç görünümünde birincil yinelemeyi seçerseniz, **Sistem Durumu'nun** da bir hata gösterdiğini görürsünüz. Service Fabric Explorer, koddaki `HealthInformation` parametreye eklenen sistem durumu raporu ayrıntılarını da görüntüler. Aynı sistem durumu raporlarını PowerShell ve Azure portalında da görebilirsiniz.
+    ![Service Fabric Explorer sağlıksız uygulama](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
+1. Service Fabric Explorer ağaç görünümünde birincil çoğaltmayı seçerseniz, **sistem durumunun** bir hata olduğunu görürsünüz. Service Fabric Explorer ayrıca, koddaki `HealthInformation` parametreye eklenen sistem durumu raporu ayrıntılarını görüntüler. Aynı sistem durumu raporlarını PowerShell ve Azure portal görebilirsiniz.
    
-    ![Hizmet Kumaş Explorer çoğaltma sağlık](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/replica-health-error-report-sfx.png)
+    ![Service Fabric Explorer çoğaltma durumu](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/replica-health-error-report-sfx.png)
 
-Bu rapor, başka bir raporla değiştirilene veya bu yineleme silinene kadar sistem durumu yöneticisinde kalır. Bu sağlık raporunu `TimeToLive` nesnede ayarlamadığımız için, raporun süresi hiç dolmaz. `HealthInformation`
+Bu rapor, başka bir rapor tarafından değiştirilene veya bu çoğaltma silinene kadar sistem durumu yöneticisinde kalır. Nesnedeki bu sistem durumu raporu `TimeToLive` için ayarlanmadığı için, raporun süresi dolmadı. `HealthInformation`
 
-Sağlık durumunun en ayrıntılı düzeyde rapor edilmesini öneririz, bu durumda yineleme dir. Ayrıca sağlık durumunu `Partition`da bildirebilirsiniz.
+Bu durumda çoğaltma olan en ayrıntılı düzeyde sistem durumunun bildirilmesi önerilir. Ayrıca sistem durumunu da rapor edebilirsiniz `Partition`.
 
 ```csharp
 HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
 this.Partition.ReportPartitionHealth(healthInformation);
 ```
 
-Sağlık durumunu `Application`bildirmek `DeployedApplication`için `DeployedServicePackage`, `CodePackageActivationContext`ve , .
+, `Application` `DeployedApplication`Ve `DeployedServicePackage`üzerinde sistem durumunu raporlamak için kullanın `CodePackageActivationContext`.
 
 ```csharp
 HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
@@ -140,7 +140,7 @@ activationContext.ReportApplicationHealth(healthInformation);
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Hizmet Kumaş sağlığı derin dalış](service-fabric-health-introduction.md)
-* [Hizmet sağlığını raporlamak için REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
-* [Uygulama durumunu bildirmek için REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
+* [Service Fabric sistem durumu hakkında ayrıntılı bilgi](service-fabric-health-introduction.md)
+* [Raporlama hizmeti durumu için REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
+* [Uygulama durumunu raporlamak için REST API](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
 

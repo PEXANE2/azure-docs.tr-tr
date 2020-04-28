@@ -1,6 +1,6 @@
 ---
-title: Yönetilen diskler - Azure Kaynak Yöneticisi şablonları - Linux VM'leri
-description: Linux VM'leri için Azure Kaynak Yöneticisi şablonlarında yönetilen disklerin nasıl kullanılacağıhakkında ayrıntılar
+title: Yönetilen diskler-Azure Resource Manager şablonları-Linux VM 'Leri
+description: Linux VM 'Leri için Azure Resource Manager şablonlarda yönetilen diskleri kullanma hakkında ayrıntılı bilgi
 services: virtual-machines-linux
 documentationcenter: ''
 author: jboeshart
@@ -13,11 +13,11 @@ ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
 ms.openlocfilehash: 9b6cb890c972b8fa86b823571511250cead08898
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75458564"
 ---
-# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Azure Kaynak Yöneticisi Şablonlarında Yönetilen Diskleri Kullanma
+# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda yönetilen diskleri kullanma
 [!INCLUDE [virtual-machines-using-managed-disks-template-deployments](../../../includes/virtual-machines-using-managed-disks-template-deployments.md)]

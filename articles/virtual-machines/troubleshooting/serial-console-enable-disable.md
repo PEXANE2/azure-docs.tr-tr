@@ -1,6 +1,6 @@
 ---
-title: Azure Seri Konsolu etkinleştirme ve devre dışı kalım | Microsoft Dokümanlar
-description: Azure Seri Konsolu hizmetini etkinleştirme ve devre dışı etme
+title: Azure seri konsolunu etkinleştirme ve devre dışı bırakma | Microsoft Docs
+description: Azure seri konsol hizmetini etkinleştirme ve devre dışı bırakma
 services: virtual-machines
 documentationcenter: ''
 author: asinn826
@@ -15,46 +15,46 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451298"
 ---
-# <a name="enable-and-disable-the-azure-serial-console"></a>Azure Seri Konsolu'nu etkinleştirme ve devre dışı
+# <a name="enable-and-disable-the-azure-serial-console"></a>Azure seri konsolu 'Nu etkinleştirme ve devre dışı bırakma
 
-Diğer kaynaklar gibi Azure Seri Konsolu da etkinleştirilebilir ve devre dışı bırakılabilir. Seri Konsol, global Azure'daki tüm abonelikler için varsayılan olarak etkinleştirilir. Şu anda, Seri Konsol'u devre dışı bırakmak tüm aboneliğiniz için hizmeti devre dışı bırakacaktır. Seri Konsol'u abonelik için devre dışı bırakmak veya yeniden etkinleştirmek, katılımcı düzeyinde erişim veya abonelik üzerinde gerektirir.
+Tıpkı diğer tüm kaynaklar gibi Azure seri konsolu etkinleştirilebilir ve devre dışı bırakılabilir. Seri konsol, genel Azure 'daki tüm abonelikler için varsayılan olarak etkindir. Şu anda, seri konsolunun devre dışı bırakılması, tüm aboneliğiniz için hizmeti devre dışı bırakacak. Abonelik için seri konsolunun devre dışı bırakılması veya yeniden etkinleştirilmesi abonelik üzerinde katkıda bulunan düzey erişimi veya üzeri gerektirir.
 
-Ayrıca, önyükleme tanılama devre dışı bırakarak tek bir VM veya sanal makine ölçeği kümesi örneği için seri konsolu devre dışı bırakabilirsiniz. Hem VM/sanal makine ölçeği setinde hem de önyükleme tanılama depolama hesabınızda katılımcı düzeyinde erişim ekive erişim ekidir.
+Ayrıca, önyükleme tanılamayı devre dışı bırakarak tek bir VM veya sanal makine ölçek kümesi örneği için seri konsolunu devre dışı bırakabilirsiniz. Hem VM/sanal makine ölçek kümesi hem de önyükleme tanılama depolama hesabınızda katkıda bulunan düzeyinde erişime veya üstüne ihtiyacınız olacak.
 
-## <a name="vm-level-disable"></a>VM düzeyinde devre dışı
-Seri konsol, önyükleme tanılama ayarını devre dışı bırakarak belirli bir VM veya sanal makine ölçeği için devre dışı bırakılabilir. VM veya sanal makine ölçeği kümesinin seri konsolunu devre dışı bırakabilmek için Azure portalından önyükleme tanılamasını kapatın. Seri konsolu sanal makine ölçeği kümesinde kullanıyorsanız, sanal makine ölçeği set örneklerinizi en son modele yükselttiniz.
+## <a name="vm-level-disable"></a>VM düzeyi devre dışı
+Seri konsol, önyükleme tanılaması ayarı devre dışı bırakılarak belirli bir VM veya sanal makine ölçek kümesi için devre dışı bırakılabilir. VM 'nin veya sanal makine ölçek kümesinin seri konsolunu devre dışı bırakmak için Azure portal önyükleme tanılamayı devre dışı bırakın. Bir sanal makine ölçek kümesinde seri konsol kullanıyorsanız, sanal makine ölçek kümesi örneklerinizi en son modele yükseltdiğinizden emin olun.
 
 
-## <a name="subscription-level-enabledisable"></a>Abonelik düzeyi etkinleştirme/devre dışı
+## <a name="subscription-level-enabledisable"></a>Abonelik düzeyi etkinleştir/devre dışı bırak
 
 > [!NOTE]
-> Bu komutu çalıştırmadan önce doğru bulutta (Azure Genel Bulutu, Azure ABD Devlet Bulutu) olduğunuzdan emin olun. Bulutunuzu kontrol `az cloud list` edebilir ve `az cloud set -n <Name of cloud>`ayarlayabilirsiniz.
+> Bu komutu çalıştırmadan önce doğru bulutta olduğunuzdan emin olun (Azure genel bulutu, Azure ABD kamu bulutu). İle `az cloud list` denetim yapabilir ve bulutunuzu ile `az cloud set -n <Name of cloud>`ayarlayabilirsiniz.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Seri konsol, Azure CLI'deki aşağıdaki komutları kullanarak tüm abonelik için devre dışı bırakabilir ve yeniden etkinleştirilebilir (komutları çalıştırabileceğiniz Azure Bulut Kabuğu örneğini başlatmak için "Deneyin" düğmesini kullanabilirsiniz):
+Seri konsol, Azure CLı 'de aşağıdaki komutlar kullanılarak aboneliğin tamamı için devre dışı bırakılabilir ve yeniden etkinleştirilebilir (komutları çalıştırabileceğiniz Azure Cloud Shell bir örneğini başlatmak için "deneyin" düğmesini kullanabilirsiniz:
 
-Bir abonelik için seri konsolunu devre dışı kullanabilirsiniz:
+Bir abonelik için seri konsolunu devre dışı bırakmak için aşağıdaki komutları kullanın:
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
 az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
-Abonelik için seri konsolu etkinleştirmek için aşağıdaki komutları kullanın:
+Abonelik için seri konsolunu etkinleştirmek üzere aşağıdaki komutları kullanın:
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
 az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
-Abonelik için seri konsolun geçerli etkin/devre dışı bırakılmış durumunu almak için aşağıdaki komutları kullanın:
+Bir abonelik için seri konsolunun geçerli etkin/devre dışı durumunu almak için aşağıdaki komutları kullanın:
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
@@ -63,16 +63,16 @@ az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.Seria
 
 ### <a name="powershell"></a>PowerShell
 
-Seri konsol PowerShell kullanılarak da etkinleştirilebilir ve devre dışı bırakılır.
+Seri konsol, PowerShell kullanılarak da etkinleştirilebilir ve devre dışı bırakılabilir.
 
-Bir abonelik için seri konsolunu devre dışı kullanabilirsiniz:
+Bir abonelik için seri konsolunu devre dışı bırakmak için aşağıdaki komutları kullanın:
 ```azurepowershell-interactive
 $subscription=(Get-AzContext).Subscription.Id
 
 Invoke-AzResourceAction -Action disableConsole -ResourceId /subscriptions/$subscription/providers/Microsoft.SerialConsole/consoleServices/default -ApiVersion 2018-05-01
 ```
 
-Abonelik için seri konsolu etkinleştirmek için aşağıdaki komutları kullanın:
+Abonelik için seri konsolunu etkinleştirmek üzere aşağıdaki komutları kullanın:
 ```azurepowershell-interactive
 $subscription=(Get-AzContext).Subscription.Id
 
@@ -80,6 +80,6 @@ Invoke-AzResourceAction -Action enableConsole -ResourceId /subscriptions/$subscr
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Linux VM'leri için Azure Seri Konsolu](./serial-console-linux.md) hakkında daha fazla bilgi edinin
-* [Windows VM'ler için Azure Seri Konsolu](./serial-console-windows.md) hakkında daha fazla bilgi edinin
-* Azure [Seri Konsolu'ndaki güç yönetimi seçenekleri](./serial-console-power-options.md) hakkında bilgi edinin
+* [Linux VM 'leri Için Azure seri konsolu](./serial-console-linux.md) hakkında daha fazla bilgi edinin
+* [Windows VM 'leri Için Azure seri konsolu](./serial-console-windows.md) hakkında daha fazla bilgi edinin
+* [Azure seri konsolu 'nda güç yönetimi seçenekleri](./serial-console-power-options.md) hakkında bilgi edinin

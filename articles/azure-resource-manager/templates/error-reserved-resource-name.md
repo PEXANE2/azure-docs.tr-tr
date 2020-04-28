@@ -1,22 +1,22 @@
 ---
 title: Ayrılmış kaynak adı hataları
-description: Ayrılmış bir sözcük içeren bir kaynak adı sağlarken hataların nasıl çözüleceğini açıklar.
+description: Ayrılmış bir sözcük içeren bir kaynak adı sağlarken hataların nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
 ms.date: 11/08/2017
 ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75477635"
 ---
 # <a name="resolve-reserved-resource-name-errors"></a>Ayrılmış kaynak adı hatalarını çözümle
 
-Bu makalede, adına ayrılmış bir sözcük içeren bir kaynak dağıtılırken karşılaştığınız hata açıklanmaktadır.
+Bu makalede, adında ayrılmış bir sözcük içeren bir kaynağı dağıttığınızda karşılaştığınız hata açıklanır.
 
 ## <a name="symptom"></a>Belirti
 
-Ortak bir bitiş noktası üzerinden kullanılabilen bir kaynak dağıtırken, aşağıdaki hatayı alabilirsiniz:
+Ortak bir uç nokta aracılığıyla kullanılabilen bir kaynak dağıtıldığında, şu hatayı alabilirsiniz:
 
 ```
 Code=ReservedResourceName;
@@ -25,46 +25,46 @@ Message=The resource name <resource-name> or a part of the name is a trademarked
 
 ## <a name="cause"></a>Nedeni
 
-Genel bitiş noktası olan kaynaklar, adiçinde ayrılmış sözcükleri veya ticari markaları kullanamaz.
+Ortak uç noktası olan kaynaklar, adında ayrılmış kelimeleri veya ticari markaları kullanamaz.
 
 Aşağıdaki sözcükler ayrılmıştır:
 
 * ERİŞİM
-* Azure
-* Bing
+* MAVISI
+* CıLARı
 * BIZSPARK
-* Biztalk
+* BıZ
 * CORTANA
-* Directx
-* Dotnet
-* Dynamics
+* DIRECTX
+* OLMALı
+* CRM
 * EXCEL
-* Exchange
-* Forefront
-* Groove
+* DEĞIŞIMI
+* FOREFRONT
+* ĞA
 * HOLOLENS
 * HYPERV
-* Kinect
-* Lync
+* KINECT
+* Kurumsal
 * MSDN
 * O365
-* Office
-* OFİs 365
-* ONEDRIVE
-* Onenote
-* Outlook
-* Powerpoint
-* Sharepoint
-* Skype
-* Visio
+* OFFICE
+* OFFICE365
+* KLASÖR
+* 'TA
+* OFFICE
+* PROGRAMLARıNDA
+* SHAREPOINT
+* TOPLANTıSıNA
+* \
 * VISUALSTUDIO
 
-Aşağıdaki sözcükler, addaki tüm sözcük veya alt dize olarak kullanılamaz:
+Aşağıdaki sözcükler, adında tam bir sözcük veya alt dize olarak kullanılamaz:
 
-* Oturum açma
-* Microsoft
-* Windows
-* Xbox
+* LOGıN
+* MICROSOFT
+* PENCERELERIN
+* YENILIKLER
 
 ## <a name="solution"></a>Çözüm
 

@@ -1,20 +1,20 @@
 ---
-title: Linux'ta Apache Tomcat için bir konteyner oluşturma
-description: Azure Service Fabric'te Apache Tomcat sunucusunda çalışan bir uygulamayı ortaya çıkarmak için Linux kapsayıcısı oluşturun. Uygulamanız ve Apache Tomcat sunucunuzla bir Docker görüntüsü oluşturun, görüntüyü bir konteyner kayıt defterine itin, Service Fabric konteyner uygulaması oluşturun ve dağıtın.
+title: Linux 'ta Apache Tomcat için kapsayıcı oluşturma
+description: Azure Service Fabric 'de Apache Tomcat sunucusunda çalışan bir uygulamayı açığa çıkarmak için Linux kapsayıcısı oluşturun. Uygulamanızla ve Apache Tomcat sunucusuyla bir Docker görüntüsü oluşturun, görüntüyü bir kapsayıcı kayıt defterine gönderin, Service Fabric kapsayıcı uygulaması oluşturun ve dağıtın.
 ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614426"
 ---
-# <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Linux üzerinde Apache Tomcat sunucu çalıştıran Service Fabric konteyner oluşturun
-Apache Tomcat, Java Servlet ve Java Server teknolojilerinin popüler, açık kaynak uygulamasıdır. Bu makalede, Apache Tomcat ve basit bir Web uygulaması ile bir kapsayıcı oluşturmak, Linux çalıştıran bir Service Fabric küme için konteyner dağıtmak ve Web uygulamasına bağlanmak nasıl gösterilmektedir.  
+# <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Linux 'ta Apache Tomcat Server çalıştıran Service Fabric kapsayıcısı oluşturma
+Apache Tomcat, Java Servlet ve Java sunucu teknolojilerinin popüler, açık kaynaklı bir uygulamasıdır. Bu makalede Apache Tomcat ve basit bir Web uygulamasıyla kapsayıcı oluşturma, kapsayıcıyı Linux çalıştıran bir Service Fabric kümesine dağıtma ve Web uygulamasına bağlanma işlemlerinin nasıl yapılacağı gösterilmektedir.  
 
-Apache Tomcat hakkında daha fazla bilgi edinmek için [Apache Tomcat ana sayfasına](https://tomcat.apache.org/)bakın. 
+Apache Tomcat hakkında daha fazla bilgi edinmek için bkz. [Apache Tomcat giriş sayfası](https://tomcat.apache.org/). 
 
 ## <a name="prerequisites"></a>Ön koşullar
 * Şunları çalıştıran bir geliştirme bilgisayarı:
@@ -22,24 +22,24 @@ Apache Tomcat hakkında daha fazla bilgi edinmek için [Apache Tomcat ana sayfas
   * [Linux için Docker CE](https://docs.docker.com/engine/installation/#prior-releases). 
   * [Service Fabric CLI](service-fabric-cli.md)
 
-* Azure Kapsayıcı Kayıt Defteri'nde bir kapsayıcı kayıt defteri. [Azure portalı](../container-registry/container-registry-get-started-portal.md) veya [Azure CLI'yi](./service-fabric-tutorial-create-container-images.md#deploy-azure-container-registry)kullanarak Azure aboneliğinizde bir kapsayıcı kayıt defteri oluşturabilirsiniz. 
+* Azure Container Registry bir kapsayıcı kayıt defteri. Azure aboneliğinizde [Azure Portal](../container-registry/container-registry-get-started-portal.md) veya [Azure CLI](./service-fabric-tutorial-create-container-images.md#deploy-azure-container-registry)kullanarak bir kapsayıcı kayıt defteri oluşturabilirsiniz. 
 
-## <a name="build-a-tomcat-image-and-run-it-locally"></a>Bir Tomcat görüntüsü oluşturun ve yerel olarak çalıştırın
-Apache Tomcat görüntüsünü ve basit bir Web uygulamasını temel alan bir Docker görüntüsü oluşturmak için bu bölümdeki adımları izleyin ve ardından yerel sisteminizdeki bir kapsayıcıda çalıştırın. 
+## <a name="build-a-tomcat-image-and-run-it-locally"></a>Tomcat görüntüsü oluşturun ve yerel olarak çalıştırın
+Apache Tomcat görüntüsünü ve basit bir Web uygulamasını temel alan bir Docker görüntüsü oluşturmak ve ardından bunu yerel sisteminizdeki bir kapsayıcıda çalıştırmak için bu bölümdeki adımları izleyin. 
  
-1. Geliştirme bilgisayarınızdaJava örnekleri deposu [ile başlayan Hizmet Kumaşını](https://github.com/Azure-Samples/service-fabric-java-getting-started) klonla.
+1. Geliştirme bilgisayarınızda [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started) örnekleri deposuna Başlarken Service Fabric klonlayın.
 
    ```bash
    git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
    ```
 
-1. Dizinleri Apache Tomcat sunucu örnek dizinine değiştirin (*service-fabric-java-getting-started/container-apache-tomcat-web-server-sample):*
+1. Dizinleri Apache Tomcat sunucusu örnek dizinine değiştirme (*Service-Fabric-Java-alma-başlatma/kapsayıcı-Apache-Tomcat-Web-Server-Sample*):
 
    ```bash
    cd service-fabric-java-getting-started/container-apache-tomcat-web-server-sample
    ```
 
-1. Docker Hub'da bulunan resmi [Tomcat resmi görüntüsünü](https://hub.docker.com/_/tomcat/) ve Tomcat sunucu örneğini temel alan bir Docker dosyası oluşturun. *Service-fabric-java-getting-started/container-apache-tomcat-web-server-sample* directory'sinde *Dockerfile* (dosya uzantısı olmadan) adında bir dosya oluşturun. Aşağıdakini *Dockerfile* dosyasına ekleyin ve değişikliklerinizi kaydedin:
+1. Docker Hub ve Tomcat sunucu örneğinde bulunan resmi [Tomcat görüntüsünü](https://hub.docker.com/_/tomcat/) temel alan bir Docker dosyası oluşturun. *Service-Fabric-Java-alma-başlatma/kapsayıcı-Apache-Tomcat-Web-Server-Sample* dizininde, *dockerfile* adlı bir dosya oluşturun (dosya uzantısı olmadan). Aşağıdakini *Dockerfile* dosyasına ekleyin ve değişikliklerinizi kaydedin:
 
    ```
    FROM library/tomcat
@@ -52,13 +52,13 @@ Apache Tomcat görüntüsünü ve basit bir Web uygulamasını temel alan bir Do
    Daha fazla bilgi için [Dockerfile başvurusuna](https://docs.docker.com/engine/reference/builder/) bakın.
 
 
-4. Web `docker build` uygulamanızı çalıştıran görüntüyü oluşturmak için komutu çalıştırın:
+4. Web uygulamanızı `docker build` çalıştıran görüntüyü oluşturmak için komutunu çalıştırın:
 
    ```bash
    docker build . -t tomcattest
    ```
 
-   Bu komut, Dockerfile'daki yönergeleri kullanarak yeni görüntüyü oluşturur ve görüntüyü `tomcattest`adlandırma (-t etiketleme) oluşturur. Bir kapsayıcı görüntüsü oluşturmak için, temel görüntü önce Docker Hub'dan indirilir ve uygulama eklenir. 
+   Bu komut, Dockerfile içindeki yönergeleri kullanarak yeni görüntüyü oluşturur, bu da görüntüyü `tomcattest`adlandırarak (-t etiketleme). Bir kapsayıcı görüntüsü oluşturmak için, temel görüntü ilk olarak Docker Hub 'ından indirilir ve uygulamaya eklenir. 
 
    Oluşturma komutu tamamlandıktan sonra, yeni görüntü üzerindeki bilgileri görmek için `docker images` komutunu çalıştırın:
 
@@ -69,41 +69,41 @@ Apache Tomcat görüntüsünü ve basit bir Web uygulamasını temel alan bir Do
    tomcattest                    latest              86838648aab6        2 minutes ago       194 MB
    ```
 
-5. Kapsayıcılı uygulamanızın kapsayıcı kayıt defterini itmeden önce yerel olarak çalıştığını doğrulayın:
+5. Kapsayıcı kayıt defterine göndermeden önce Kapsayıcılı uygulamanızın yerel olarak çalıştığını doğrulayın:
  
    ```bash
    docker run -itd --name tomcat-site -p 8080:8080 tomcattest.
    ```
    
-   * `--name`kapsayıcıyı adlandırır, böylece kimliği yerine dostu bir ad kullanarak ona başvurabilirsiniz.
-   * `-p`kapsayıcı ve ana bilgisayar işletim sistemi arasındaki bağlantı noktası eşleğini belirtir. 
+   * `--name`kapsayıcının KIMLIĞI yerine kolay bir ad kullanarak başvurabilmeniz için kapsayıcıyı adlandırır.
+   * `-p`kapsayıcı ve konak işletim sistemi arasındaki bağlantı noktası eşlemesini belirtir. 
 
    > [!Note]
-   > `-p` Parametre ile açtığınız bağlantı noktası, Tomcat uygulamanızın isteklerini dinlediği bağlantı noktası olmalıdır. Geçerli örnekte, *ApacheTomcat/conf/server.xml* dosyasında HTTP istekleri için bağlantı noktası 8080'i dinlemek üzere yapılandırılan bir Bağlayıcı vardır. Bu bağlantı noktası, ana bilgisayardaki 8080 portuna eşlenir. 
+   > `-p` Parametresiyle açtığınız bağlantı noktası, Tomcat uygulamanızın istekleri dinlediği bağlantı noktası olmalıdır. Geçerli örnekte, HTTP istekleri için 8080 numaralı bağlantı noktasında dinlemek üzere *ApacheTomcat/conf/Server. xml* dosyasında yapılandırılmış bir bağlayıcı vardır. Bu bağlantı noktası konaktaki 8080 numaralı bağlantı noktasına eşlenir. 
 
-   Diğer parametreler hakkında bilgi edinmek için [Docker çalıştırılabelgesini](https://docs.docker.com/engine/reference/commandline/run/)görün.
+   Diğer parametreler hakkında daha fazla bilgi için bkz. [Docker Run belgeleri](https://docs.docker.com/engine/reference/commandline/run/).
 
-1. Kapsayıcınızı test etmek için bir tarayıcı açın ve aşağıdaki URL'lerden birini girin. "Merhaba Dünya!" her URL için hoş geldiniz ekranı.
+1. Kapsayıcınızı test etmek için bir tarayıcı açın ve aşağıdaki URL 'Lerden birini girin. "Merhaba Dünya!" çeşidinin bir türevini görürsünüz her URL için hoş geldiniz ekranı.
 
    - `http://localhost:8080/hello` 
    - `http://localhost:8080/hello/sayhello` 
    - `http://localhost:8080/hello/sayhi` 
 
-   ![Merhaba dünya /sayhi](./media/service-fabric-get-started-tomcat/hello.png)
+   ![Merhaba Dünya/sayhi](./media/service-fabric-get-started-tomcat/hello.png)
 
-2. Kapsayıcıyı durdurun ve geliştirme bilgisayarınızdan silin:
+2. Kapsayıcıyı durdurup geliştirme bilgisayarınızdan silin:
 
    ```bash
    docker stop tomcat-site
    docker rm tomcat-site
    ```
 
-## <a name="push-the-tomcat-image-to-your-container-registry"></a>Tomcat görüntüsünü konteyner kayıt defterinize itin
-Tomcat görüntüsünün geliştirme bilgisayarınızdaki bir kapsayıcıda çalıştığını doğruladığınıza göre, bunu konteyner kayıt defterindeki bir depoya itin. Bu makalede, görüntüyü depolamak için Azure Kapsayıcı Kayıt Defteri kullanılır, ancak bazı adımlar değişikliğiyle seçtiğiniz herhangi bir kapsayıcı kayıt defterini kullanabilirsiniz. Bu makalede, kayıt defteri adı *myregistry* olarak kabul edilir ve tam kayıt defteri adı myregistry.azurecr.io. Bunları senaryonuz için uygun şekilde değiştirin. 
+## <a name="push-the-tomcat-image-to-your-container-registry"></a>Tomcat görüntüsünü kapsayıcı Kayıt defterinize gönderme
+Tomcat görüntüsünün geliştirme bilgisayarınızdaki bir kapsayıcıda çalıştığını doğruladığınıza göre, kapsayıcıyı kapsayıcı kayıt defterindeki bir depoya gönderin. Bu makale, görüntüyü depolamak için Azure Container Registry kullanır, ancak bazı adımları değişikliklerle seçtiğiniz herhangi bir kapsayıcı kayıt defterini kullanabilirsiniz. Bu makalede, kayıt defteri adının *myregistry* olduğu varsayılır ve tam kayıt defteri adı myregistry.azurecr.io olur. Bunları senaryonuz için uygun şekilde değiştirin. 
 
-1. Kayıt `docker login` defteri [kimlik bilgilerinizle](../container-registry/container-registry-authentication.md)konteyner kayıt defterinizde oturum açmanız için çalıştırın.
+1. Kayıt `docker login` defteri [kimlik bilgilerinizle](../container-registry/container-registry-authentication.md), kapsayıcı kayıt defterinizde oturum açmak için ' i çalıştırın.
 
-   Aşağıdaki örnekte, bir Azure Active Directory [hizmet sorumlusunun](../active-directory/develop/app-objects-and-service-principals.md) kimliği ve parolası geçirilmiştir. Örneğin, bir otomasyon senaryosu için kayıt defterinize bir hizmet sorumlusu atamış olabilirsiniz. Veya, kayıt defteri kullanıcı adınızı ve parolanızı kullanarak oturum açabilirsiniz.
+   Aşağıdaki örnekte, bir Azure Active Directory [hizmet sorumlusunun](../active-directory/develop/app-objects-and-service-principals.md) kimliği ve parolası geçirilmiştir. Örneğin, bir otomasyon senaryosu için kayıt defterinize bir hizmet sorumlusu atamış olabilirsiniz. Ya da kayıt defteri Kullanıcı adınızı ve parolanızı kullanarak oturum açmanız gerekir.
 
    ```bash
    docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -121,25 +121,25 @@ Tomcat görüntüsünün geliştirme bilgisayarınızdaki bir kapsayıcıda çal
    docker push myregistry.azurecr.io/samples/tomcattest
    ```
 
-## <a name="build-and-deploy-the-service-fabric-container-application"></a>Service Fabric konteyner uygulamasını oluşturun ve dağıtın
-Artık Tomcat görüntüsünü bir konteyner kayıt defterine ittiğinize göre, Tomcat görüntüsünü kayıt defterinizden çeken ve kümenizde kapsayıcı bir hizmet olarak çalıştıran bir Service Fabric kapsayıcı uygulaması oluşturabilir ve dağıtabilirsiniz. 
+## <a name="build-and-deploy-the-service-fabric-container-application"></a>Service Fabric kapsayıcı uygulaması oluşturma ve dağıtma
+Tomcat görüntüsünü bir kapsayıcı kayıt defterine itilmiş olduğunuza göre, Kayıt defterinizden Tomcat görüntüsünü çeken Service Fabric bir kapsayıcı uygulaması oluşturup dağıtabilir ve bunu kümenizde kapsayıcılı bir hizmet olarak çalıştırabilirsiniz. 
 
-1. Yerel klonunuzun dışında yeni bir dizin oluşturun *(hizmet-kumaş-java-getting-started* directory ağacının dışında). Ona geçin ve bir konteyner uygulaması için bir iskele oluşturmak için Yeoman kullanın: 
+1. Yerel kopya dışında yeni bir dizin oluşturun ( *Service-Fabric-Java-Başlarken* dizin ağacının dışında). Bu anahtara geçin ve bir kapsayıcı uygulaması için bir yapı iskelesi oluşturmak için Yeumman kullanın: 
 
    ```bash
    yo azuresfcontainer 
    ```
    İstendiğinde aşağıdaki değerleri girin:
 
-   * Başvurunuzu adlandırın: ServiceFabricTomcat
+   * Uygulamanızı adlandırın: ServiceFabricTomcat
    * Uygulama hizmetinin adı: TomcatService
-   * Resim Adı Girişi: Konteyner kayıt defterinizdeki kapsayıcı resminin URL'sini sağlayın; örneğin, myregistry.azurecr.io/samples/tomcattest.
-   * Komutlar: Bunu boş bırakın. Bu görüntüde iş yükü giriş noktası tanımlanmış olduğundan, giriş komutlarının açıkça belirtilmesi gerekmez (komutlar kapsayıcının içinde çalıştırılır ve bu da başlatma sonrasında kapsayıcıyı çalışır durumda tutar).
-   * Konuk konteyner uygulama örnekleri sayısı: 1
+   * Görüntü adını girin: kapsayıcı kayıt defterinizde kapsayıcı görüntüsünün URL 'sini sağlayın; Örneğin, myregistry.azurecr.io/samples/tomcattest.
+   * Komutlar: bu alanı boş bırakın. Bu görüntüde iş yükü giriş noktası tanımlanmış olduğundan, giriş komutlarının açıkça belirtilmesi gerekmez (komutlar kapsayıcının içinde çalıştırılır ve bu da başlatma sonrasında kapsayıcıyı çalışır durumda tutar).
+   * Konuk kapsayıcı uygulaması örneklerinin sayısı: 1
 
    ![Kapsayıcılar için Service Fabric Yeoman oluşturucusu](./media/service-fabric-get-started-tomcat/yo-generator.png)
 
-10. Hizmet manifestosunda *(ServiceFabricTomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest.xml),* uygulamanızın isteklerini dinlediği portu açmak için root **ServiceManfest** etiketinin altına aşağıdaki XML'yi ekleyin. **Endpoint** etiketi bitiş noktası için protokolü ve bağlantı noktasını bildirir. Bu makale için, konteynerservis port 8080 dinler: 
+10. Hizmet bildiriminde (*Servicefabrictomcat/ServiceFabricTomcat/TomcatServicePkg/ServiceManifest. xml*), uygulamanızın istekleri dinlediği bağlantı noktasını açmak Için kök **Servicemanfest** etiketinin altına aşağıdaki XML 'i ekleyin. **Endpoint** etiketi, uç nokta için protokolü ve bağlantı noktasını bildirir. Bu makalede Kapsayıcılı hizmet 8080 numaralı bağlantı noktasını dinler: 
 
    ```xml
    <Resources>
@@ -152,7 +152,7 @@ Artık Tomcat görüntüsünü bir konteyner kayıt defterine ittiğinize göre,
    </Resources>
    ```
 
-11. Uygulama bildiriminde (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml),* **ServiceManifestImport** etiketi altında aşağıdaki XML'yi ekleyin. **Depo Kimlik Bilgileri** etiketindeki Hesap **Adı** ve **Parola'yı** konteyner kayıt defterinizin adı ve oturum açmanız için gereken parolayla değiştirin.
+11. Uygulama bildiriminde (*Servicefabrictomcat/servicefabrictomcat/ApplicationManifest. xml*), **servicemanifestımport** etiketinin altına aşağıdaki XML 'i ekleyin. İmza kayıt defterinizin adı ve parola ile **RepositoryCredentials** oturum açmak için gereken parolayı içeren **AccountName** ve **parolayı** değiştirin.
 
    ```xml
    <Policies>
@@ -163,60 +163,60 @@ Artık Tomcat görüntüsünü bir konteyner kayıt defterine ittiğinize göre,
    </Policies>
    ```
 
-   **ContainerHostPolicies** etiketi, kapsayıcı ana bilgisayarlarını etkinleştirme ilkeleri belirtir.
+   **Containerhostpolicies** etiketi, kapsayıcı konaklarını etkinleştirmek için ilkeleri belirler.
     
-   * **PortBinding** etiketi, kapsayıcı bağlantı noktası bağlantı noktası eşleme ilkesini yapılandırır. Konteyner Dockerfile belirtildiği gibi port 8080 ortaya çıkarır, çünkü **ContainerPort** özniteliği 8080 olarak ayarlanır. **EndpointRef** özniteliği, önceki adımda hizmet bildiriminde tanımlanan bitiş noktası olan "endpointTest" olarak ayarlanır. Böylece, 8080 portundaki servise gelen talepler konteyner üzerindeki 8080 portuna eşlenir. 
-   * **Depo Kimlik Bilgileri** etiketi, kapsayıcının görüntüyü çektiği (özel) depoyla kimlik doğrulaması gereken kimlik bilgilerini belirtir. Görüntü halka açık bir depodan çekilecekse bu politikaya ihtiyacınız yoktur.
+   * **Portbinding** etiketi, kapsayıcı bağlantı noktası ile ana bilgisayar bağlantı noktası eşleme ilkesini yapılandırır. Kapsayıcı, Dockerfile içinde belirtildiği gibi 8080 bağlantı noktasını kullanıma sunduğundan **containerport** özniteliği 8080 olarak ayarlanır. **Endpointref** özniteliği, önceki adımda hizmet bildiriminde tanımlanan uç nokta olan "EndpointTest" olarak ayarlanır. Bu nedenle, 8080 numaralı bağlantı noktasında hizmete gelen istekler, kapsayıcıda 8080 numaralı bağlantı noktasına eşlenir. 
+   * **Depo\kimlik bilgileri** etiketi, kapsayıcının görüntünün aldığı (özel) depoyla kimliğini doğrulamak için gereken kimlik bilgilerini belirtir. Görüntü ortak bir depodan çekilmeniz durumunda bu ilkeye ihtiyacınız yoktur.
     
 
-12. *ServiceFabricTomcat* klasöründe servis kumaş kümenize bağlanın. 
+12. *Servicefabrictomcat* klasöründe, Service Fabric kümenize bağlanın. 
 
-   * Yerel Service Fabric kümesine bağlanmak için çalıştırın:
+   * Yerel Service Fabric kümesine bağlanmak için şunu çalıştırın:
 
      ```bash
      sfctl cluster select --endpoint http://localhost:19080
      ```
     
-   * Güvenli bir Azure kümesine bağlanmak için, istemci sertifikasının *ServiceFabricTomcat* dizininde .pem dosyası olarak bulunduğundan emin olun ve çalıştırın: 
+   * Güvenli bir Azure kümesine bağlanmak için, istemci sertifikasının *Servicefabrictomcat* dizininde. pek dosyası olarak bulunduğundan emin olun ve şunu çalıştırın: 
 
      ```bash
      sfctl cluster select --endpoint https://PublicIPorFQDN:19080 -pem your-certificate.pem -no-verify
      ```
-     Önceki komutta, istemci `your-certificate.pem` sertifika dosyanızın adıyla değiştirin. Geliştirme ve test ortamlarında küme sertifikası genellikle istemci sertifikası olarak kullanılır. Sertifikanız kendi imzalı değilse, parametreyi `-no-verify` atla. 
+     Önceki komutta, öğesini istemci sertifika `your-certificate.pem` dosyanızın adıyla değiştirin. Geliştirme ve test ortamlarında, küme sertifikası genellikle istemci sertifikası olarak kullanılır. Sertifikanız kendinden imzalı değilse, `-no-verify` parametresini atlayın. 
        
-     Küme sertifikaları genellikle .pfx dosyaları olarak yerel olarak indirilir. Pem formatında sertifikanız zaten yoksa, .pfx dosyasından bir .pem dosyası oluşturmak için aşağıdaki komutu çalıştırabilirsiniz:
+     Küme sertifikaları genellikle. pfx dosyaları olarak yerel olarak indirilir. Henüz bir pek biçiminde sertifikanız yoksa, bir. pfx dosyasından bir. ped dosyası oluşturmak için aşağıdaki komutu çalıştırabilirsiniz:
 
      ```bash
      openssl pkcs12 -in your-certificate.pfx -out your-certificate.pem -nodes -passin pass:your-pfx-password
      ```
 
-     .pfx dosyanız parola korumalı `-passin pass:` değilse, son parametreyi kullanın.
+     . Pfx dosyanız parola korumalı değilse, son parametre için kullanın `-passin pass:` .
 
 
-13. Uygulamayı kümenize dağıtmak için şablonda sağlanan yükleme komut dosyasını çalıştırın. Komut dosyası, uygulama paketini kümenin görüntü deposuna kopyalar, uygulama türünü kaydeder ve uygulamanın bir örneğini oluşturur.
+13. Uygulamayı kümenize dağıtmak için şablonda sağlanmış olan Install betiğini çalıştırın. Betik, uygulama paketini kümenin görüntü deposuna kopyalar, uygulama türünü kaydeder ve uygulamanın bir örneğini oluşturur.
 
      ```bash
      ./install.sh
      ```
 
-   Yükleme komut dosyasını çalıştırdıktan sonra bir tarayıcı açın ve Service Fabric Explorer'a gidin:
+   Install betiğini çalıştırdıktan sonra bir tarayıcı açın ve Service Fabric Explorer şuraya gidin:
     
-   * Yerel bir kümede, (Mac `http://localhost:19080/Explorer` OS X'te kullanıyorsanız yerel ev *sahibini* VM'nin özel IP'si ile değiştirin).
-   * Güvenli bir Azure `https://PublicIPorFQDN:19080/Explorer`kümesinde. 
+   * Yerel bir kümede (Mac OS X vagrant kullanıyorsanız, `http://localhost:19080/Explorer` *localhost* 'U VM 'nin özel IP 'si ile değiştirin) kullanın.
+   * Güvenli bir Azure kümesinde kullanın `https://PublicIPorFQDN:19080/Explorer`. 
     
-   **Uygulamalar** düğümünüzü genişletin ve artık uygulama türünüz, **ServiceFabricTomcatType**ve bu tür ilk örneği için başka bir giriş olduğunu unutmayın. Uygulamanın tam olarak dağıtılması birkaç dakika sürebilir, bu nedenle sabırlı olun.
+   **Uygulamalar** düğümünü genişletin ve artık uygulama türü, **Servicefabrictomcattype**ve bu türün ilk örneği için başka bir giriş olduğunu unutmayın. Uygulamanın tam olarak dağıtılması birkaç dakika sürebilir, bu nedenle hasta olmalıdır.
 
    ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
 
 
-1. Tomcat sunucusundaki uygulamaya erişmek için bir tarayıcı penceresi açın ve aşağıdaki URL'lerden birini girin. Yerel kümeye dağıttıysanız, *PublicIPorFQDN*için *localhost'u* kullanın. "Merhaba Dünya!" her URL için hoş geldiniz ekranı.
+1. Tomcat sunucusundaki uygulamaya erişmek için bir tarayıcı penceresi açın ve aşağıdaki URL 'Lerden birini girin. Yerel kümeye dağıttıysanız, *Publicıporfqdn*için *localhost* kullanın. "Merhaba Dünya!" çeşidinin bir türevini görürsünüz her URL için hoş geldiniz ekranı.
 
    * http://PublicIPorFQDN:8080/hello  
    * http://PublicIPorFQDN:8080/hello/sayhello
    * http://PublicIPorFQDN:8080/hello/sayhi
 
 ## <a name="clean-up"></a>Temizleme
-Uygulama örneğini kümenizden silmek ve uygulama türünü kaldırmak için şablonda sağlanan kaldırma komut dosyasını kullanın.
+Kümeden uygulama örneğini silmek ve uygulama türünün kaydını silmek için şablonda belirtilen kaldırma betiğini kullanın.
 
 ```bash
 ./uninstall.sh
@@ -230,8 +230,8 @@ docker rmi myregistry.azurecr.io/samples/tomcattest
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Ek Linux kapsayıcı özellikleri nde hızlı adımlar için, [Linux'ta ilk Service Fabric konteyner uygulamanızı oluşturun'i](service-fabric-get-started-containers-linux.md)okuyun.
-* Linux kapsayıcıları hakkında daha ayrıntılı adımlar için, [Bir Linux konteyner uygulaması öğretici oluştur'u](service-fabric-tutorial-create-container-images.md) okuyun.
+* Ek Linux kapsayıcı özellikleri hakkında hızlı adımlar için [Linux üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturun](service-fabric-get-started-containers-linux.md).
+* Linux kapsayıcılarıyla ilgili daha ayrıntılı adımlar için, [Linux kapsayıcı uygulaması oluşturma öğreticisi](service-fabric-tutorial-create-container-images.md) öğreticisini okuyun.
 * [Service Fabric’te kapsayıcı](service-fabric-containers-overview.md) çalıştırma hakkında daha fazla bilgi edinin.
 
 

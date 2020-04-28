@@ -1,39 +1,39 @@
 ---
 title: Kiracılar arasında kimlik doğrulaması
-description: Azure Kaynak Yöneticisi'nin kiracılar arasında kimlik doğrulama isteklerini nasıl işleyeceğini açıklar.
+description: Azure Resource Manager kiracılar genelinde kimlik doğrulama isteklerini nasıl işlediğini açıklar.
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: 7a13ba6f6cbfc10c52484c45e4011da7a0d8ee4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75478831"
 ---
-# <a name="authenticate-requests-across-tenants"></a>Kiracılar arasında istekleri doğrulama
+# <a name="authenticate-requests-across-tenants"></a>Kiracılar genelinde isteklerin kimliğini doğrulama
 
-Çok kiracılı bir uygulama oluştururken, farklı kiracılarda bulunan kaynaklar için kimlik doğrulama isteklerini işlemeniz gerekebilir. Sık karşılaşılan bir senaryo, bir kiracıdaki sanal bir makinenin başka bir kiracıda sanal ağa katılması gerektiğidir. Azure Kaynak Yöneticisi, istekleri farklı kiracılara doğrulamak için yardımcı belirteçleri depolamak için bir üstbilgi değeri sağlar.
+Çok kiracılı bir uygulama oluştururken, farklı kiracılarda bulunan kaynaklar için kimlik doğrulama isteklerini işlemeniz gerekebilir. Bir Kiracıdaki bir sanal makinenin başka bir Kiracıdaki sanal bir ağa katılması gereken yaygın bir senaryo. Azure Resource Manager, farklı kiracılara yönelik isteklerin kimliğini doğrulamak için yardımcı belirteçleri depolamak üzere bir üst bilgi değeri sağlar.
 
-## <a name="header-values-for-authentication"></a>Kimlik doğrulaması için üstbilgi değerleri
+## <a name="header-values-for-authentication"></a>Kimlik doğrulaması için üst bilgi değerleri
 
-İstek aşağıdaki kimlik doğrulama üstbilgi değerlerine sahiptir:
+İstek aşağıdaki kimlik doğrulama üst bilgisi değerlerine sahiptir:
 
 | Üst bilgi adı | Açıklama | Örnek değer |
 | ----------- | ----------- | ------------ |
 | Yetkilendirme | Birincil belirteç | Taşıyıcı &lt;birincil belirteç&gt; |
-| x-ms-yetkilendirme-yardımcı | Yardımcı belirteçler | Taşıyıcı &lt;&gt;yardımcı jeton1 , Şifreli Taşıyıcı &lt;yardımcı-belirteç2&gt;, &lt;Taşıyıcı yardımcı-belirteç3&gt; |
+| x-MS-yetkilendirme-yardımcı | Yardımcı belirteçler | Taşıyıcı &lt;yardımcı-token1&gt;, encryptedtaşıyıcı &lt;yardımcı-token2&gt;, taşıyıcı &lt;yardımcı-token3&gt; |
 
-Yardımcı başlık en fazla üç yardımcı belirteç tutabilir. 
+Yardımcı üst bilgi en fazla üç yardımcı belirteç tutabilir. 
 
-Çok kiracılı uygulamanızın kodunda, diğer kiracılar Için kimlik doğrulama belirteci alın ve bunları yardımcı üstbilgide saklayın. Tüm belirteçler aynı kullanıcıdan veya uygulamadan olmalıdır. Kullanıcı veya uygulama diğer kiracılara konuk olarak davet edilmiş olmalıdır.
+Çok kiracılı uygulamanızın kodunda, diğer kiracıların kimlik doğrulama belirtecini alın ve bunları yardımcı üstbilgilere depolayın. Tüm belirteçler aynı kullanıcı veya uygulamadan olmalıdır. Kullanıcı veya uygulama diğer kiracılara Konuk olarak davet edilmiş olmalıdır.
 
-## <a name="processing-the-request"></a>İsteğin işlenmesi
+## <a name="processing-the-request"></a>İstek işleniyor
 
-Uygulamanız Kaynak Yöneticisi'ne bir istek gönderdiğinde, istek birincil belirteçteki kimlik altında çalıştırılır. Birincil belirteç geçerli ve süresi dolmamış olmalıdır. Bu belirteç, aboneliği yönetebilen bir kiracıdan olmalıdır.
+Uygulamanız Kaynak Yöneticisi bir istek gönderdiğinde, istek birincil belirteçten kimlik altında çalıştırılır. Birincil belirtecin geçerli olması ve geçerliliği dolmamış olması gerekir. Bu belirteç, aboneliği yönetebileceğini bir kiracıdan olmalıdır.
 
-İstek farklı kiracıdan bir kaynağa başvurur, Kaynak Yöneticisi isteğin işlenebilir olup olmadığını belirlemek için yardımcı belirteçleri denetler. Üstbilgideki tüm yardımcı belirteçler geçerli ve süresi dolmamış olmalıdır. Herhangi bir belirteç süresi dolmuşsa, Kaynak Yöneticisi bir 401 yanıt kodu döndürür. Yanıt, geçerli olmayan belirteçteki istemci kimliğini ve kiracı kimliğini içerir. Yardımcı üstbilgi kiracı için geçerli bir belirteç içeriyorsa, çapraz kiracı isteği işlenir.
+İstek farklı kiracıdan bir kaynağa başvurduğunda, Kaynak Yöneticisi isteğin işlenip işlenemediğini anlamak için yardımcı belirteçleri denetler. Başlıktaki tüm yardımcı belirteçler geçerli ve geçerliliği geçmemiş olmalıdır. Herhangi bir belirtecin kullanım geçerliliği dolmuşsa Kaynak Yöneticisi, 401 yanıt kodu döndürür. Yanıt, geçerli olmayan belirteçten istemci KIMLIĞINI ve kiracı KIMLIĞINI içerir. Yardımcı üst bilgi kiracı için geçerli bir belirteç içeriyorsa, çapraz kiracı isteği işlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Kimlik doğrulama istekleri hakkında bilgi edinmek için [kimlik doğrulama akışları ve uygulama senaryolarına](../../active-directory/develop/authentication-flows-app-scenarios.md)bakın.
-* Belirteçler hakkında daha fazla bilgi için [Azure Etkin Dizin erişim belirteçleri'ne](../../active-directory/develop/access-tokens.md)bakın.
+* Kimlik doğrulama istekleri hakkında bilgi edinmek için bkz. [kimlik doğrulama akışları ve uygulama senaryoları](../../active-directory/develop/authentication-flows-app-scenarios.md).
+* Belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory erişim belirteçleri](../../active-directory/develop/access-tokens.md).

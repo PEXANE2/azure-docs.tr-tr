@@ -1,52 +1,52 @@
 ---
-title: Eşzamanlı operasyonların durumu
-description: Azure'da eşzamanlı işlemlerin nasıl izlenir olduğunu açıklar. Uzun süren bir işlemin durumunu almak için kullandığınız değerleri gösterir.
+title: Zaman uyumsuz işlemlerin durumu
+description: Azure 'da zaman uyumsuz işlemlerin nasıl izleneceğini açıklar. Uzun süre çalışan bir işlemin durumunu almak için kullandığınız değerleri gösterir.
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.custom: seodec18
 ms.openlocfilehash: 1cf8898e5fd63e35447f6580e13347ba6d7fc413
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75485448"
 ---
-# <a name="track-asynchronous-azure-operations"></a>Eşzamanlı Azure işlemlerini izleme
-Bazı Azure REST işlemleri, işlem hızlı bir şekilde tamamlanamadığından eş senkronize bir şekilde çalışır. Bu makalede, yanıt döndürülen değerler üzerinden eşsenkronize işlemlerin durumunu izlemek için nasıl açıklanmaktadır.  
+# <a name="track-asynchronous-azure-operations"></a>Zaman uyumsuz Azure işlemlerini izleme
+İşlem hızlı bir şekilde tamamlanamadığından bazı Azure REST işlemleri zaman uyumsuz olarak çalışır. Bu makalede, yanıtta döndürülen değerler aracılığıyla zaman uyumsuz işlemlerin durumunun nasıl izleneceği açıklanır.  
 
-## <a name="status-codes-for-asynchronous-operations"></a>Eşzamanlı işlemler için durum kodları
-Bir eşzamanlı işlem başlangıçta ya bir HTTP durum kodu döndürür:
+## <a name="status-codes-for-asynchronous-operations"></a>Zaman uyumsuz işlemler için durum kodları
+Zaman uyumsuz bir işlem başlangıçta bir HTTP durum kodu döndürür:
 
-* 201 (Oluşturuldu)
-* 202 (Kabul) 
+* 201 (oluşturuldu)
+* 202 (kabul edildi) 
 
-İşlem başarıyla tamamlandığında, aşağıdakilerden biri döndürür:
+İşlem başarıyla tamamlandığında, aşağıdakilerden birini döndürür:
 
-* 200 (Tamam)
-* 204 (İçerik Yok) 
+* 200 (TAMAM)
+* 204 (Içerik yok) 
 
-Yürüttüğün işlemin yanıtlarını görmek için [REST API belgelerine](/rest/api/) bakın.
+Yürütmekte olduğunuz işlemin yanıtlarını görmek için [REST API belgelerine](/rest/api/) bakın.
 
-## <a name="monitor-status-of-operation"></a>Operasyonun monitör durumu
-Eşzamanlı REST işlemleri, işlemin durumunu belirlemek için kullandığınız üstbilgi değerlerini döndürür. İncelenecek üç üstbilgi değeri vardır:
+## <a name="monitor-status-of-operation"></a>İşlemin durumunu izle
+Zaman uyumsuz REST işlemleri, işlemin durumunu belirlemede kullandığınız üst bilgi değerlerini döndürür. İnceleyecek olabilecek üç üst bilgi değeri vardır:
 
-* `Azure-AsyncOperation`- Operasyonun devam eden durumunu kontrol etmek için URL. İşleminiz bu değeri döndürürse, işlemin durumunu izlemek için her zaman (Konum yerine) kullanın.
-* `Location`- Bir işlemin ne zaman tamamlandığını belirlemek için URL. Bu değeri yalnızca Azure-AsyncOperation döndürülmediğinde kullanın.
-* `Retry-After`- Eşzamanlı işlemin durumunu kontrol etmeden önce bekleyecek saniye sayısı.
+* `Azure-AsyncOperation`-İşlemin devam eden durumunu denetlemek için URL. İşlem bu değeri döndürürse, işlemin durumunu izlemek için her zaman kullanın (konum yerine).
+* `Location`-Bir işlemin ne zaman tamamlandığını belirlemek için URL. Bu değeri yalnızca Azure-AsyncOperation döndürülmediğinde kullanın.
+* `Retry-After`-Zaman uyumsuz işlemin durumu denetlenmeden önce beklenecek saniye sayısı.
 
-Ancak, her eşzamanlı işlem tüm bu değerleri döndürür. Örneğin, bir işlem için Azure-AsyncOperation üstbilgi değerini ve başka bir işlem için Konum üstbilgi değerini değerlendirmeniz gerekebilir. 
+Ancak, her zaman uyumsuz işlem bu değerlerin tümünü döndürmez. Örneğin, bir işlem için Azure-AsyncOperation üst bilgi değerini ve başka bir işlemin konum üst bilgi değerini değerlendirmeniz gerekebilir. 
 
-Bir istek için herhangi bir üstbilgi değeri almak gibi üstbilgi değerlerini alırsınız. Örneğin, C#'da üstbilgi değerini aşağıdaki `HttpWebResponse` kodla `response` birlikte adlı bir nesneden alırsınız:
+Bir istek için herhangi bir üst bilgi değerini alarak üst bilgi değerlerini alırsınız. Örneğin, C# ' de, başlık değerini aşağıdaki kodla adlı `HttpWebResponse` `response` bir nesneden alırsınız:
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 ```
 
-## <a name="azure-asyncoperation-request-and-response"></a>Azure-Asyncİşlem isteği ve yanıtı
+## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation isteği ve yanıtı
 
-Eşzamanlı işlemin durumunu almak için, Azure-AsyncOperation üstbilgi değerindeki URL'ye GET isteği gönderin.
+Zaman uyumsuz işlemin durumunu almak için Azure-AsyncOperation üstbilgi değerindeki URL 'ye bir GET isteği gönderin.
 
-Bu işlemden gelen yanıtın gövdesi, işlem hakkında bilgi içerir. Aşağıdaki örnek, işlemden döndürülen olası değerleri gösterir:
+Bu işlemden yanıt gövdesi, işlem hakkındaki bilgileri içerir. Aşağıdaki örnek, işlemden döndürülen olası değerleri gösterir:
 
 ```json
 {
@@ -66,35 +66,35 @@ Bu işlemden gelen yanıtın gövdesi, işlem hakkında bilgi içerir. Aşağıd
 }
 ```
 
-Yalnızca `status` tüm yanıtlar için döndürülür. Durum Başarısız olduğunda veya İptal Edildiğinde hata nesnesi döndürülür. Diğer tüm değerler isteğe bağlıdır; bu nedenle, aldığınız yanıt örnekten farklı görünebilir.
+Yalnızca `status` tüm yanıtlar için döndürülür. Hata nesnesi, durum başarısız olduğunda veya Iptal edildiğinde döndürülür. Diğer tüm değerler isteğe bağlıdır; Bu nedenle, aldığınız yanıt bu örnekteki değerden farklı görünebilir.
 
-## <a name="provisioningstate-values"></a>sağlamaDevlet değerleri
+## <a name="provisioningstate-values"></a>provisioningState değerleri
 
-Bir kaynak oluşturan, güncelleyen veya silen işlemler (PUT, `provisioningState` PATCH, DELETE) genellikle bir değer döndürür. Bir işlem tamamlandığında, aşağıdaki üç değerden biri döndürülür: 
+Kaynak oluşturan, güncelleştiren veya silen (PUT, PATCH, SIL) işlemler genellikle bir `provisioningState` değer döndürüyor. Bir işlem tamamlandığında, aşağıdaki üç değerden biri döndürülür: 
 
 * Başarılı oldu
 * Başarısız
 * İptal edildi
 
-Diğer tüm değerler işlemin hala çalıştığını gösterir. Kaynak sağlayıcısı durumunu gösteren özelleştirilmiş bir değer döndürebilir. Örneğin, istek alınıp çalıştırıldığında **Kabul** edilebilirsiniz.
+Diğer tüm değerler işlemin hala çalıştığını gösterir. Kaynak sağlayıcı, durumunu gösteren özelleştirilmiş bir değer döndürebilir. Örneğin, istek alındığında ve çalıştırıldığında **kabul** edilebilir.
 
-## <a name="example-requests-and-responses"></a>Örnek istekler ve yanıtlar
+## <a name="example-requests-and-responses"></a>Örnek istekleri ve yanıtları
 
 ### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>Sanal makineyi başlatın (Azure-AsyncOperation ile 202)
-Bu örnek, sanal makineler için **çalıştırmayı başlatma** durumunun nasıl belirlenebildiğini gösterir. İlk istek aşağıdaki biçimdedir:
+Bu örnek, sanal makineler için **başlatma** işleminin durumunun nasıl belirleneceğini gösterir. İlk istek aşağıdaki biçimdedir:
 
 ```HTTP
 POST 
 https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Compute/virtualMachines/{vm-name}/start?api-version=2016-03-30
 ```
 
-Durum kodu 202'yi döndürür. Üstbilgi değerleri arasında şunları görürsünüz:
+202 durum kodunu döndürür. Üst bilgi değerleri arasında şunu görürsünüz:
 
 ```HTTP
 Azure-AsyncOperation : https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
 ```
 
-Eşzamanlı işlemin durumunu denetlemek için, bu URL'ye başka bir istek gönderme.
+Bu URL 'ye başka bir istek göndererek zaman uyumsuz işlemin durumunu denetlemek için.
 
 ```HTTP
 GET 
@@ -111,28 +111,28 @@ Yanıt gövdesi işlemin durumunu içerir:
 }
 ```
 
-### <a name="deploy-resources-201-with-azure-asyncoperation"></a>Kaynakları dağıtma (Azure-AsyncOperation ile 201)
+### <a name="deploy-resources-201-with-azure-asyncoperation"></a>Kaynakları dağıtma (Azure ile zaman uyumsuz coperation ile 201)
 
-Bu örnek, kaynakları Azure'a dağıtmak için **dağıtım** işleminin durumunu nasıl belirleyeceklerini gösterir. İlk istek aşağıdaki biçimdedir:
+Bu örnekte, Azure 'a kaynak dağıtmaya yönelik **dağıtımlar** işleminin durumunun nasıl belirleneceği gösterilmektedir. İlk istek aşağıdaki biçimdedir:
 
 ```HTTP
 PUT
 https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/microsoft.resources/deployments/{deployment-name}?api-version=2016-09-01
 ```
 
-Durum kodu 201'i döndürür. Yanıtın gövdesi şunları içerir:
+201 durum kodunu döndürür. Yanıtın gövdesi şunları içerir:
 
 ```json
 "provisioningState":"Accepted",
 ```
 
-Üstbilgi değerleri arasında şunları görürsünüz:
+Üst bilgi değerleri arasında şunu görürsünüz:
 
 ```HTTP
 Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
 ```
 
-Eşzamanlı işlemin durumunu denetlemek için, bu URL'ye başka bir istek gönderme.
+Bu URL 'ye başka bir istek göndererek zaman uyumsuz işlemin durumunu denetlemek için.
 
 ```HTTP
 GET 
@@ -151,38 +151,38 @@ Dağıtım tamamlandığında, yanıt şunları içerir:
 {"status":"Succeeded"}
 ```
 
-### <a name="create-storage-account-202-with-location-and-retry-after"></a>Depolama hesabı oluşturma (Konum ve Yeniden Deneme-Sonra ile 202)
+### <a name="create-storage-account-202-with-location-and-retry-after"></a>Depolama hesabı oluştur (konum ve yeniden dene ile 202)
 
-Bu örnek, depolama hesapları için **oluşturma** işleminin durumunu nasıl belirleyeceklerini gösterir. İlk istek aşağıdaki biçimdedir:
+Bu örnek, depolama hesapları için **oluşturma** işleminin durumunun nasıl belirleneceğini gösterir. İlk istek aşağıdaki biçimdedir:
 
 ```HTTP
 PUT
 https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2016-01-01
 ```
 
-İstek gövdesi depolama hesabının özelliklerini içerir:
+Ve istek gövdesi depolama hesabı için özellikler içerir:
 
 ```json
 { "location": "South Central US", "properties": {}, "sku": { "name": "Standard_LRS" }, "kind": "Storage" }
 ```
 
-Durum kodu 202'yi döndürür. Üstbilgi değerleri arasında aşağıdaki iki değer e görebilirsiniz:
+202 durum kodunu döndürür. Üst bilgi değerleri arasında aşağıdaki iki değeri görürsünüz:
 
 ```HTTP
 Location: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
 Retry-After: 17
 ```
 
-Yeniden Deneme-Sonra'da belirtilen saniye sayısını bekledikten sonra, bu URL'ye başka bir istek göndererek eşzamanlı işlemin durumunu denetleyin.
+Yeniden deneme sırasında belirtilen saniye sayısını bekledikten sonra, bu URL 'ye başka bir istek göndererek zaman uyumsuz işlemin durumunu denetleyin.
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
 ```
 
-İstek hala çalışıyorsa, bir durum kodu 202 alırsınız. İstek tamamlandıysa, bir durum kodu 200 alırsınız ve yanıtın gövdesi oluşturulan depolama hesabının özelliklerini içerir.
+İstek hala çalışıyorsa 202 bir durum kodu alırsınız. İstek tamamlandıysa, 200 durum kodunu alır ve yanıtın gövdesi oluşturulan depolama hesabının özelliklerini içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Her REST işlemi yle ilgili belgeler için [REST API belgelerine](/rest/api/)bakın.
-* Kaynak Yöneticisi REST API aracılığıyla şablonları dağıtma hakkında bilgi için kaynak [yöneticisi şablonları ve Kaynak Yöneticisi REST API ile kaynakları](../templates/deploy-rest.md)dağıtın'a bakın.
+* Her REST işlemi hakkındaki belgeler için [REST API belgelerine](/rest/api/)bakın.
+* Kaynak Yöneticisi REST API üzerinden şablon dağıtma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonlarıyla kaynakları dağıtma ve Kaynak Yöneticisi REST API](../templates/deploy-rest.md).

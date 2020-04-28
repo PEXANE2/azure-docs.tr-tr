@@ -1,48 +1,48 @@
 ---
-title: Azure Site Kurtarma ile Hyper-V VM disklerini olağanüstü durum kurtarmadan Azure'a hariç tutma
-description: Hyper-V VM disklerinin Azure Site Kurtarma ile çoğaltılmasından Azure'a nasıl dışlanır?
+title: Hyper-V VM disklerini olağanüstü durum kurtarma 'dan Azure 'a Azure Site Recovery hariç tutma
+description: Hyper-V VM disklerini Azure Site Recovery Azure 'a çoğaltmadan dışlama.
 author: mayurigupta13
 manager: rochakm
 ms.topic: conceptual
 ms.author: mayg
 ms.date: 11/12/2019
 ms.openlocfilehash: 50fb6da2905b2ae27547f25cce3d7a76ca7976b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75498126"
 ---
 # <a name="exclude-disks-from-replication"></a>Diskleri çoğaltmanın dışında tutma
 
-Bu makalede, Hyper-V VM'leri Azure'a kopyalarken disklerin nasıl dışlanmayacağı açıklanmaktadır. Diskleri birkaç nedenden dolayı çoğaltmadan hariç tutmak isteyebilirsiniz:
+Bu makalede, Hyper-V VM 'lerini Azure 'a çoğaltırken disklerin nasıl hariç tutulacağı açıklanır. Birçok nedenden dolayı diskleri çoğaltmadan dışlamak isteyebilirsiniz:
 
-- Dışlanan diskte çalkalanan önemsiz verilerin çoğaltılmadığından emin olun.
-- Çoğaltmanız gerekmeyen diskleri hariç tutarak tüketilen çoğaltma bant genişliğini veya hedef tarafındaki kaynakları optimize edin.
-- İhtiyacınız olmayan verileri çoğaltmayarak depolama alanı ve ağ kaynaklarını kaydedin.
+- Çıkarılan disk üzerinde önemli olmayan verilerin çoğaltılmadığından emin olun.
+- Çoğaltmak zorunda olmadığınız diskleri dışlayarak tüketilen çoğaltma bant genişliğini veya hedef tarafı kaynakları iyileştirin.
+- İhtiyaç duymamakta olduğunuz verileri çoğaltmayana depolama ve ağ kaynaklarını kaydedin.
 
-Diskleri çoğaltmadan çıkarmadan önce:
+Diskleri çoğaltmadan hariç tutmak için:
 
-- Diskleri hariç tlandırma hakkında [daha fazla bilgi edinin.](exclude-disks-replication.md)
-- Bir diski dışlamanın çoğaltmayı, başarısızı ve başarısızı nasıl etkilediğini gösteren [tipik dışlama senaryolarını](exclude-disks-replication.md#typical-scenarios) ve [örneklerini](exclude-disks-replication.md#example-1-exclude-the-sql-server-tempdb-disk) gözden geçirin.
+- Diskleri dışarıda bırakma hakkında [daha fazla bilgi edinin](exclude-disks-replication.md) .
+- Bir diskin çoğaltma, yük devretme ve yeniden çalışma işlemlerini nasıl etkilediğini gösteren [tipik dışlama senaryolarını](exclude-disks-replication.md#typical-scenarios) ve [örnekleri](exclude-disks-replication.md#example-1-exclude-the-sql-server-tempdb-disk) gözden geçirin.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
 Başlamadan önce aşağıdakilere dikkat edin:
 
-- **Çoğaltma**: Varsayılan olarak bir makinedeki tüm diskler çoğaltılır.
+- **Çoğaltma**: varsayılan olarak bir makinedeki tüm diskler çoğaltılır.
 - **Disk türü**:
-    - Temel diskleri çoğaltmadan hariç tutabilirsiniz.
+    - Temel diskleri çoğaltmanın dışında bırakabilirsiniz.
     - İşletim sistemi diskleri dışarıda tutulamaz.
-    - Dinamik diskleri dışarıda tutmamanızı öneririz. Site Kurtarma, konuk VM'de hangi VHD'nin temel veya dinamik olduğunu belirleyemez.  Tüm bağımlı dinamik birim diskleri hariç tutmazsanız, korumalı dinamik disk VM üzerinde başarısız bir diske dönüşür ve bu diskteki verilere erişilemez.
-- **Diskekleme/kaldırma/dışlama**: Çoğaltmayı etkinleştirdikten sonra çoğaltma için diskleri ekleyip/çıkaramazsınız/çıkaramazsınız. Bir disk eklemek/kaldırmak veya dışlamak istiyorsanız, VM için korumayı devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
-- **Failover**: Başarısız olduktan sonra, uygulamalar üzerinde başarısız olursa çalışmak için diskleri dışlamanız gerekir, bu diskleri el ile oluşturmanız gerekir. Alternatif olarak, makinenin arızalanması sırasında diskoluşturmak için Azure otomasyonu kurtarma planına entegre edebilirsiniz.
-- **Failback**: Başarısız olduktan sonra şirket içi sitenize geri döndüğünüzde, Azure'da el ile oluşturduğunuz diskler geri başarısız olmaz. Örneğin, üç disk üzerinde başarısız olur ve doğrudan bir Azure VM üzerinde iki disk oluşturursanız, yalnızca üzerinde başarısız olan üç disk geri başarısız olur. Başarısız geri dönüşte veya VM'lerin ters çoğaltmasında el ile oluşturulan diskleri dahil emezsiniz.
+    - Dinamik diskleri dışarıda tutmamanızı öneririz. Site Recovery Konuk sanal makinede temel veya dinamik olan VHD 'YI tanımlayamıyor.  Tüm bağımlı dinamik birim disklerini dışlamazsanız, korunan dinamik disk yük devredilen VM 'de başarısız bir disk haline gelir ve diskteki verilere erişilemez.
+- **Diskleri Ekle/Kaldır/çıkar**: çoğaltmayı etkinleştirdikten sonra çoğaltma için disk ekleyemez/kaldıramaz/dışlayabilirsiniz. Bir diski eklemek/kaldırmak veya dışlamak istiyorsanız, VM 'nin korumasını devre dışı bırakmanız ve yeniden etkinleştirmeniz gerekir.
+- **Yük devretme**: yük devretmenin ardından, yük devretme sonrasında uygulamaların çalışması için diskleri hariç tutmak gerekiyorsa, bu diskleri el ile oluşturmanız gerekir. Alternatif olarak, makinenin yük devretmesi sırasında diski oluşturmak için Azure Otomasyonu 'nu bir kurtarma planıyla tümleştirebilirsiniz.
+- Yeniden **çalışma**: yük devretmeden sonra şirket içi sitenize geri döndüğünüzde, Azure 'da el ile oluşturduğunuz diskler yeniden başarısız olur. Örneğin, üç disk üzerinde yük devretmek ve doğrudan bir Azure VM üzerinde iki disk oluşturursanız, yük devredilen yalnızca üç disk yeniden başarısız olur. Yeniden çalışma sırasında veya VM 'lerin tersine çoğaltılmasıyla el ile oluşturulan diskleri dahil edebilirsiniz.
 
 ## <a name="exclude-disks"></a>Diskleri dışlama
 
-1. Bir Hyper-V VM için [çoğaltmayı etkinleştirdiğinizde](site-recovery-hyper-v-site-to-azure.md) diskleri dışlamak için, çoğaltmak istediğiniz VM'leri seçtikten sonra, **Çoğaltma** > **Özelliklerini** > **Yapılandırmayı** Etkinleştir sayfasında, **sütunçoğaltmak için Diskleri** gözden geçirin. Varsayılan olarak tüm diskler çoğaltma için seçilir.
-2. Belirli bir diski çoğaltmak istemiyorsanız, dışlamak istediğiniz disklerin seçimini **çoğaltmak** için Diskler'de. 
+1. Diskleri dışlamak için bir Hyper-V VM için [çoğaltmayı etkinleştirdiğinizde](site-recovery-hyper-v-site-to-azure.md) , çoğaltmak istediğiniz VM 'leri seçtikten sonra, **çoğaltma** > **özelliklerini** > **Yapılandır Özellikler** sayfasında, sütunu **çoğaltmak için diskleri** gözden geçirin. Varsayılan olarak, tüm diskler çoğaltma için seçilir.
+2. Belirli bir diski çoğaltmak istemiyorsanız, **diskler** ' de dışlamak istediğiniz disklerin seçimini temizleyin. 
 
     ![Diskleri çoğaltmanın dışında tutma](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)
 

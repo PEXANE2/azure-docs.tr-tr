@@ -1,35 +1,35 @@
 ---
-title: Azure Ağ kaynaklarını yeni abonelik veya kaynak grubuna taşıma
-description: Sanal ağları ve diğer ağ kaynaklarını yeni bir kaynak grubuna veya aboneye taşımak için Azure Kaynak Yöneticisi'ni kullanın.
+title: Azure ağ kaynaklarını yeni aboneliğe veya kaynak grubuna taşıma
+description: Sanal ağları ve diğer ağ kaynaklarını yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.openlocfilehash: 0cd6887d3489f2ffede0f5e3d63533a33a6ccc04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75485240"
 ---
 # <a name="move-guidance-for-networking-resources"></a>Ağ kaynakları için kılavuzu taşıma
 
-Bu makalede, belirli senaryolar için sanal ağların ve diğer ağ kaynaklarının nasıl taşınır.
+Bu makalede, belirli senaryolar için sanal ağların ve diğer ağ kaynaklarının nasıl taşınacağı açıklanır.
 
 ## <a name="dependent-resources"></a>Bağımlı kaynaklar
 
-Sanal bir ağı taşırken, bağımlı kaynaklarını da taşımanız gerekir. VPN Ağ Geçitleri için IP adreslerini, sanal ağ ağ ağ larını ve ilişkili tüm bağlantı kaynaklarını taşımanız gerekir. Yerel ağ ağ geçitleri farklı bir kaynak grubunda olabilir.
+Bir sanal ağı taşırken bağımlı kaynaklarını da taşımanız gerekir. VPN ağ geçitleri için IP adreslerini, sanal ağ geçitlerini ve tüm ilişkili bağlantı kaynaklarını taşımanız gerekir. Yerel ağ geçitleri farklı bir kaynak grubunda olabilir.
 
-Ağ arabirim kartı olan sanal bir makineyi yeni bir aboneye taşımak için tüm bağımlı kaynakları taşımanız gerekir. Ağ arabirimi kartı için sanal ağı, sanal ağ için diğer tüm ağ arabirim kartlarını ve VPN ağ geçitlerini taşıyın.
+Bir sanal makineyi bir ağ arabirimi kartıyla yeni bir aboneliğe taşımak için tüm bağımlı kaynakları taşımanız gerekir. Ağ arabirim kartının sanal ağını, sanal ağ için tüm diğer ağ arabirimi kartlarını ve VPN ağ geçitlerini taşıyın.
 
-Daha fazla bilgi [için, abonelikler arasında taşıma senaryosuna](../move-resource-group-and-subscription.md#scenario-for-move-across-subscriptions)bakın.
+Daha fazla bilgi için bkz. [abonelikler arasında taşıma senaryosu](../move-resource-group-and-subscription.md#scenario-for-move-across-subscriptions).
 
-## <a name="peered-virtual-network"></a>Eşli sanal ağ
+## <a name="peered-virtual-network"></a>Eşlenen sanal ağ
 
-Eşlenen bir sanal ağı taşımak için öncelikle sanal ağ eşlemesi devre dışı bmelisiniz. Devre dışı bırakıldıktan sonra sanal ağı taşıyabilirsiniz. Taşımadan sonra, sanal ağ eşlemesini yeniden etkinleştirin.
+Eşlenen bir sanal ağı taşımak için öncelikle sanal ağ eşlemesini devre dışı bırakmanız gerekir. Devre dışı bırakıldıktan sonra sanal ağı taşıyabilirsiniz. Taşıdıktan sonra sanal ağ eşlemesini yeniden etkinleştirin.
 
 ## <a name="subnet-links"></a>Alt ağ bağlantıları
 
-Sanal ağ kaynak gezinme bağlantılarına sahip bir alt ağ içeriyorsa, sanal ağı farklı bir aboneye taşıyamazsınız. Örneğin, Redis için bir Azure Önbelleği kaynağı bir alt ağa dağıtılırsa, bu alt ağda bir kaynak gezinti bağlantısı vardır.
+Sanal ağ, kaynak gezintisi bağlantıları içeren bir alt ağ içeriyorsa, sanal ağı farklı bir aboneliğe taşıyamazsınız. Örneğin, Redsıs kaynağı için bir Azure önbelleği bir alt ağa dağıtılmışsa, bu alt ağda bir kaynak gezinti bağlantısı bulunur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Komutların kaynakları taşıması [için](../move-resource-group-and-subscription.md)bkz.
+Kaynakları taşıma komutları için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../move-resource-group-and-subscription.md).

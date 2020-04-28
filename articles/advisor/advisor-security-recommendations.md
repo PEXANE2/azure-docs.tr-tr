@@ -1,37 +1,37 @@
 ---
-title: Azure Danışmanı ile kaynakları daha güvenli hale getirin
-description: Azure dağıtımlarınızın güvenliğini artırmaya yardımcı olmak için Azure Danışmanı'nı kullanın.
+title: Azure Danışmanı ile kaynakları daha güvenli hale getirme
+description: Azure dağıtımlarınızın güvenliğini artırmaya yardımcı olmak için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 01/29/2019
 ms.openlocfilehash: 5a4b7e9a9d9a7919155db361fd2c96ed98e6e5a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75443032"
 ---
-# <a name="make-resources-more-secure-with-azure-advisor"></a>Azure Danışmanı ile kaynakları daha güvenli hale getirin
+# <a name="make-resources-more-secure-with-azure-advisor"></a>Azure Danışmanı ile kaynakları daha güvenli hale getirme
 
-Azure Danışmanı, tüm Azure kaynaklarınız için önerilerin tutarlı ve birleştirilmiş bir görünümünü sağlar. Size güvenlik önerileri sunmak için Azure Güvenlik Merkezi ile tümleşir. Danışman panosundaki **Güvenlik** sekmesinden güvenlik önerileri alabilirsiniz.
+Azure Advisor, tüm Azure kaynaklarınız için tutarlı ve birleştirilmiş bir öneriler görünümü sağlar. Güvenlik önerileri sağlamak için Azure Güvenlik Merkezi ile tümleşir. Güvenlik önerilerini Advisor panosu 'ndaki **güvenlik** sekmesinden edinebilirsiniz.
 
-Güvenlik Merkezi, artırılmış görünürlük aracılığıyla tehditleri engellemenize, algılamanıza ve yanıtlamanıza, ayrıca Azure kaynaklarınızın güvenliğini denetlemenize yardımcı olur. Azure kaynaklarınızın güvenlik durumunu düzenli aralıklarla analiz eder. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde öneriler oluşturur. Öneriler, gereksinim duyduğunuz denetimleri yapılandırma sürecinde size yol gösterin. 
+Güvenlik Merkezi, artırılmış görünürlük aracılığıyla tehditleri engellemenize, algılamanıza ve yanıtlamanıza, ayrıca Azure kaynaklarınızın güvenliğini denetlemenize yardımcı olur. Azure kaynaklarınızın güvenlik durumunu düzenli olarak analiz eder. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde öneriler oluşturur. Öneriler, ihtiyacınız olan denetimleri yapılandırma sürecinde size kılavuzluk eder. 
 
-Güvenlik önerileri hakkında daha fazla bilgi için Azure [Güvenlik Merkezi'nde güvenlik önerilerini yönetme'ye](https://azure.microsoft.com/documentation/articles/security-center-recommendations/)bakın.
+Güvenlik önerileri hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde güvenlik önerilerini yönetme](https://azure.microsoft.com/documentation/articles/security-center-recommendations/).
 
-## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Azure Danışmanı'nda Güvenlik önerilerine nasıl erişilir?
+## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Azure Advisor 'da güvenlik önerilerine erişme
 
-1. [Azure portalında](https://portal.azure.com)oturum açın ve [ardından Danışman'ı](https://aka.ms/azureadvisordashboard)açın.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve [danışman](https://aka.ms/azureadvisordashboard)' yi açın.
 
-2.  Danışman panosunda **Güvenlik** sekmesini tıklatın.
+2.  Advisor panosunda **güvenlik** sekmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Danışman önerileri hakkında daha fazla bilgi edinmek için bkz:
-* [Danışmana Giriş](advisor-overview.md)
+Danışman önerileri hakkında daha fazla bilgi edinmek için bkz.:
+* [Advisor 'a giriş](advisor-overview.md)
 * [Danışman’ı kullanmaya başlama](advisor-get-started.md)
-* [Danışman Maliyet önerileri](advisor-cost-recommendations.md)
-* [Danışman Performans önerileri](advisor-performance-recommendations.md)
-* [Danışman Yüksek Kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)
-* [Danışman Operasyonel Mükemmellik önerileri](advisor-operational-excellence-recommendations.md)
+* [Danışman maliyet önerileri](advisor-cost-recommendations.md)
+* [Advisor performans önerileri](advisor-performance-recommendations.md)
+* [Danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)
+* [Danışman Işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)
 
  

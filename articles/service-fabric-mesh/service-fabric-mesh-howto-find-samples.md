@@ -1,26 +1,26 @@
 ---
-title: Azure Hizmet Kumaş Kafesi örneklerini bul
-description: Burada kullanılabilir Hizmet Kumaş Örgü örnek uygulamaların bir dizin's. Bu örneklerdeki kaynak kodu, Hizmet Kumaşı Kaynak Modeli'ni kullanarak belirli bir senaryonun nasıl elde edilebildiğini gösterir.
+title: Azure Service Fabric kafes örneklerini bulma
+description: Kullanılabilir Service Fabric kafes örnek uygulamalarının bir dizini aşağıda verilmiştir. Bu örneklerdeki kaynak kodu, Service Fabric kaynak modeli kullanılarak belirli bir senaryonun nasıl elde alınacağını gösterir.
 ms.date: 12/03/2018
 ms.topic: conceptual
 ms.openlocfilehash: c944ddc26f2e2d099cf9552acb8287c363d0c768
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75461915"
 ---
-# <a name="find-service-fabric-mesh-samples"></a>Servis Kumaş Örgü Örnekleri Bul
+# <a name="find-service-fabric-mesh-samples"></a>Service Fabric ağ örneklerini bulma
 
-Bu tablo, kullanılabilir Hizmet Kumaş Örgü örnek uygulamaları özetliyor. Bu örneklerdeki kaynak kodu, Hizmet Kumaşı Kaynak Modeli'ni kullanarak belirli bir senaryonun nasıl elde edilebildiğini gösterir.
+Bu tabloda, kullanılabilir Service Fabric kafes örnek uygulamaları özetlenmektedir. Bu örneklerdeki kaynak kodu, Service Fabric kaynak modeli kullanılarak belirli bir senaryonun nasıl elde alınacağını gösterir.
 
-Şablonları doğrudan Azure'a dağıtma hakkında daha fazla bilgi için [örnek şablon GitHub sayfasına bakın.](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/README.md)
+Şablonları doğrudan Azure 'a dağıtma hakkında daha fazla bilgi için bkz [. örnek şablon GitHub sayfası.](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/README.md)
 
-|Örnek Şablon|Senaryo Açıklaması|Kaynak Kodu|Geliştirici Araçları|
+|Örnek şablon|Senaryo Açıklaması|Kaynak kodu|Geliştirici Araçları|
 |------------|--------------------|----------|----------------------|
-| [Merhaba Dünya Uygulaması](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/helloworld) | Statik web sayfası bir kapsayıcıda barındırılan. Linux için nginx kullanır, Windows IIS için | [Kaynak Kodu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/helloworld) | Hiçbir gereksinim yok |
-| [Azure Dosya Birimleri için Sayaç Uygulaması](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/counter/readme.md) | Azure Dosyaları tabanlı birimi kapsayıcının içine monte ederek durumu depolayın. <br><br> **Not:** Bu şablon, zaten sağlanan [Talimatlar](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share) için bir Azure Dosyaları dosya paylaşımı gerektirir | [Kaynak Kodu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) | Görsel Stüdyo Örgü Takım |
-| [TodoListApp](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/todolist) | DNS tabanlı çözünürlüğü kullanan ön uç ve arka uç hizmeti içeren bir uygulama oluşturun. [Burada](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore) bir öğretici olarak kullanılır | [Kaynak Kodu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/todolistapp) | Görsel Stüdyo Örgü Takım |
-| [Görsel Nesneler Uygulaması](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/visualobjects) | Bir uygulama içindeki mikro hizmetleri ölçeklendirin ve yükseltin. | [Kaynak Kodu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/visualobjects) |  Görsel Stüdyo Örgü Takım |
-| [Oylama Uygulaması](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/voting) | DNS tabanlı çözünürlüğü kullanan ön uç ve arka uç hizmeti içeren bir uygulama oluşturma | [Kaynak Kodu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp) | Windows sürümü için Visual Studio Mesh Tooling, VS Kodu / dotnet CLI Linux sürümü için kullanılabilir |
-| [Servis Kumaşı Güvenilir Hacimler Için Sayaç Uygulaması](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/counter/readme.sfreliablevolume.md)| Servis Kumaş ı Güvenilir Disk tabanlı hacmi konteynerin içine monte ederek durumu depolayın.| [Kaynak Kodu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) | Görsel Stüdyo Örgü Takım |
+| [Merhaba Dünya uygulaması](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/helloworld) | Kapsayıcıda barındırılan statik Web sayfası. Linux için Windows IIS için NGINX kullanır | [Kaynak kodu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/helloworld) | Gereksinim yok |
+| [Azure dosya birimleri için sayaç uygulaması](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/counter/readme.md) | Kapsayıcının içindeki Azure dosya tabanlı birimi bağlayarak durumu saklayın. <br><br> **Note:** Bu şablon, zaten sağlanmış [yönergeler](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share) Için bir Azure dosyaları dosya paylaşımında gereklidir | [Kaynak kodu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) | Visual Studio kafes araçları |
+| [TodoListApp](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/todolist) | DNS tabanlı çözüm kullanan ön uç ve arka uç hizmetiyle bir uygulama oluşturun. [Burada](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore) öğretici olarak kullanılır | [Kaynak kodu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/todolistapp) | Visual Studio kafes araçları |
+| [Görsel nesneler uygulaması](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/visualobjects) | Bir uygulama içindeki mikro hizmetleri ölçeklendirin ve yükseltin. | [Kaynak kodu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/visualobjects) |  Visual Studio kafes araçları |
+| [Oylama uygulaması](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/voting) | DNS tabanlı çözüm kullanan ön uç ve arka uç hizmetiyle uygulama oluşturma | [Kaynak kodu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp) | Windows sürümü için Visual Studio kafes araçları, VS Code/DotNet CLı, Linux sürümü için kullanılabilir |
+| [Service Fabric güvenilir birimler için sayaç uygulaması](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/counter/readme.sfreliablevolume.md)| Kapsayıcının içinde güvenilir disk tabanlı birim Service Fabric bağlayarak durumu saklayın.| [Kaynak kodu](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) | Visual Studio kafes araçları |

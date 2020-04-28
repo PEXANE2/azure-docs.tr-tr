@@ -1,6 +1,6 @@
 ---
-title: Azure Bildirim Hub'ları iOS için Güvenli Push
-description: Azure'dan bir iOS uygulamasına güvenli anında iletme bildirimleri nasıl göndereceğinizi öğrenin. Amaç-C ve C# ile yazılmış kod örnekleri.
+title: İOS için Azure Notification Hubs güvenli gönderimi
+description: Azure 'dan bir iOS uygulamasına güvenli anında iletme bildirimleri göndermeyi öğrenin. Kod örnekleri, amaç-C ve C# dilinde yazılmıştır.
 documentationcenter: ios
 author: sethmanheim
 manager: femila
@@ -17,13 +17,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 96d1dd514f6fb9c11d7194714337583d6b4387cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75530757"
 ---
-# <a name="azure-notification-hubs-secure-push"></a>Azure Bildirim Hub'ları Güvenli Push
+# <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs güvenli gönderim
 
 > [!div class="op_single_selector"]
 > * [Windows Evrensel](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -32,47 +32,47 @@ ms.locfileid: "75530757"
 
 ## <a name="overview"></a>Genel Bakış
 
-Microsoft Azure'da anında bildirim desteği, mobil cihazlar için hem tüketici hem de kurumsal uygulamalar için anında iletme bildirimlerinin uygulanmasını büyük ölçüde kolaylaştıran, kullanımı kolay, çok platformlu, ölçeklenmiş bir anında iletme altyapısına erişmenizi sağlar Platform.
+Microsoft Azure anında iletme bildirimi desteği, mobil platformlar için hem tüketici hem de kurumsal uygulamalarda anında iletme bildirimlerinin uygulanmasını büyük ölçüde kolaylaştıran, kullanımı kolay, çok platformlu, ölçeği genişletilmiş bir gönderim altyapısına erişmenizi sağlar.
 
-Düzenleyici veya güvenlik kısıtlamaları nedeniyle, bazen bir uygulama bildirime standart anında iletme bildirimi altyapısı aracılığıyla aktarılamayan bir şey eklemek isteyebilir. Bu öğretici, istemci aygıtı ve uygulama arka ucu arasında güvenli, kimlik doğrulaması yla bağlantı yoluyla hassas bilgileri göndererek aynı deneyimi nasıl elde edilebiz açıklanır.
+Yasal düzenlemeler veya güvenlik kısıtlamaları nedeniyle, bazen bir uygulama, bildirime standart anında iletme bildirimi altyapısı üzerinden aktarılamayan bir şey eklemek isteyebilir. Bu öğreticide, istemci aygıtı ile uygulama arka ucu arasında güvenli, kimliği doğrulanmış bir bağlantıyla gizli bilgiler göndererek aynı deneyimin nasıl elde edileceğini açıklanmaktadır.
 
-Yüksek bir düzeyde, akış aşağıdaki gibidir:
+Yüksek düzeyde, akış şu şekildedir:
 
-1. Uygulama arka uç:
-   * Güvenli yükü arka uç veritabanında saklar.
-   * Bu bildirimin kimliğini aygıta gönderir (güvenli bilgi gönderilmez).
+1. Uygulama arka ucu:
+   * Güvenli yükü arka uç veritabanında depolar.
+   * Bu bildirimin KIMLIĞINI cihaza gönderir (güvenli bilgi gönderilmez).
 2. Bildirim alırken cihazdaki uygulama:
-   * Aygıt, güvenli yükü isteyen arka uçla bağlantı kurur.
+   * Cihaz, güvenli yük isteyen arka uca iletişim kurar.
    * Uygulama, yükü cihazda bir bildirim olarak gösterebilir.
 
-Önceki akışta (ve bu öğreticide) aygıtın, kullanıcı oturum açtıktan sonra yerel depolama alanında bir kimlik doğrulama belirteci depoladığını varsaymak önemlidir. Bu, aygıt bu belirteci kullanarak bildirimin güvenli yükünü alabildiği için sorunsuz bir deneyim garanti eder. Uygulamanız cihazda kimlik doğrulama belirteçleri depolamazveya bu belirteçlerin süresi dolmuşsa, bildirimin alınmasından sonra cihaz uygulaması kullanıcıdan uygulamayı başlatmasını isteyen genel bir bildirim görüntülemelidir. Uygulama daha sonra kullanıcının kimliğini doğrular ve bildirim yükünü gösterir.
+Önceki akışta (ve bu öğreticide), Kullanıcı oturum açtıktan sonra cihazın yerel depolamada bir kimlik doğrulama belirteci depoladığını varsaytık. Bu, cihazın bu belirteci kullanarak bildirimin güvenli yükünü alabilmesi için sorunsuz bir deneyim sağlar. Uygulamanız, kimlik doğrulama belirteçlerini cihazda depolamaz veya bu belirteçlerin kullanım tarihi dolmuşsa, bildirim alındıktan sonra cihaz uygulaması, kullanıcıdan uygulamayı başlatması istenmeden ilgili genel bir bildirim görüntülemelidir. Uygulama daha sonra kullanıcının kimliğini doğrular ve bildirim yükünü gösterir.
 
-Bu Güvenli Push öğreticisi, anında iletme bildiriminin güvenli bir şekilde nasıl gönderilebildiğini gösterir. Öğretici, [Kullanıcıları Bildir](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) öğreticisine göre inşa eder, bu nedenle önce bu öğreticideki adımları tamamlamanız gerekir.
+Bu güvenli gönderim öğreticisinde güvenli bir anında iletme bildirimi gönderme gösterilmektedir. Öğretici [kullanıcılara bildirme](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) öğreticisini oluşturur, bu nedenle öncelikle bu öğreticideki adımları tamamlamalısınız.
 
 > [!NOTE]
-> Bu öğretici, bildirim hub'ınızı [Bildirim Hub'larıyla (iOS) Başlat'ta](notification-hubs-ios-apple-push-notification-apns-get-started.md)açıklandığı şekilde oluşturduğunuzu ve yapılandırdığınızı varsayar.
+> Bu öğreticide, Bildirim Hub 'ınızı [Notification Hubs (iOS) Ile çalışmaya](notification-hubs-ios-apple-push-notification-apns-get-started.md)başlama konusunda açıklandığı gibi oluşturduğunuzu ve yapılandırdığınızı varsaymaktadır.
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
-## <a name="modify-the-ios-project"></a>iOS projesini değiştirme
+## <a name="modify-the-ios-project"></a>İOS projesini değiştirme
 
-Uygulamanızın arka ucunu yalnızca bir bildirimin *kimliğini* göndermek için değiştirdiğinize göre, bu bildirimi işlemek için iOS uygulamanızı değiştirmeniz ve görüntülenecek güvenli iletiyi almak için arka uçunuzu geri aramanız gerekir.
+Yalnızca bir bildirimin *kimliğini* göndermek için uygulamanızın arka ucuna göre değiştirildiğimize göre, bu bildirimi işleyecek iOS uygulamanızı değiştirmeniz ve görüntülenecek güvenli iletiyi almak için arka uca geri çağrı yapmanız gerekir.
 
-Bu amaca ulaşmak için, güvenli içeriği uygulamanın arka ucundan almak için mantığı yazmamız gerekir.
+Bu hedefe ulaşmak için, uygulama arka ucundan güvenli içerik almak üzere mantığı yazmanız gerekir.
 
-1. ' `AppDelegate.m`de, uygulamanın sessiz bildirimler için kaydolduğundan emin olun, böylece arka uçtan gönderilen bildirim kimliğini işler. didFinishLaunchingWithOptions seçeneğini `UIRemoteNotificationTypeNewsstandContentAvailability` ekleyin:
+1. ' `AppDelegate.m`De, uygulamanın arka uca GÖNDERILEN bildirim kimliğini işleyeceği şekilde sessiz bildirimler için kaydoldığından emin olun. Didsonlandırhlaunchingwithoptions içindeki `UIRemoteNotificationTypeNewsstandContentAvailability` seçeneği ekleyin:
 
     ```objc
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
     ```
-2. En `AppDelegate.m` üstteki uygulama bölümünüze aşağıdaki bildirimle eklemenizde:
+2. Aşağıdaki bildirimle `AppDelegate.m` en üstteki uygulama ekleme bölümünde:
 
     ```objc
     @interface AppDelegate ()
     - (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
     @end
     ```
-3. Daha sonra uygulama bölümüne aşağıdaki kodu ekleyin ve `{back-end endpoint}` yer tutucuyu daha önce elde edilen arka uç için bitiş noktasıyla ikame edin:
+3. Ardından, daha önce elde edilen arka ucunuzla birlikte yer tutucuyu `{back-end endpoint}` yerine, uygulama bölümüne aşağıdaki kodu ekleyin:
 
     ```objc
     NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";
@@ -119,14 +119,14 @@ Bu amaca ulaşmak için, güvenli içeriği uygulamanın arka ucundan almak içi
     }
     ```
 
-    Bu yöntem, paylaşılan tercihlerde depolanan kimlik bilgilerini kullanarak bildirim içeriğini almak için uygulamanızı geri uç olarak çağırır.
+    Bu yöntem, paylaşılan tercihlerinde depolanan kimlik bilgilerini kullanarak bildirim içeriğini almak için uygulamanızın arka uca çağrı yapın.
 
-4. Şimdi gelen bildirimi işlemek ve görüntülemek için içerik almak için yukarıdaki yöntemi kullanmak zorunda. İlk olarak, bir anında iletme bildirimi alırken iOS uygulamanızın arka planda çalışmasını sağlamamız gerekir. **XCode'da,** sol panelde uygulama projenizi seçin ve ardından merkezi bölmeden **Hedefler** bölümündeki ana uygulama hedefinizi tıklatın.
-5. Ardından merkezi bölmenizin üst kısmındaki **Yetenekler** sekmesini tıklatın ve **Uzak Bildirimler** onay kutusunu işaretleyin.
+4. Şimdi gelen bildirimi işleymemiz ve görüntülenecek içeriği almak için yukarıdaki yöntemi kullanmanız gerekir. İlk olarak, bir anında iletme bildirimi alırken iOS uygulamanızı arka planda çalışacak şekilde etkinleştireceğiz. **Xcode**'da sol panelde uygulama projenizi seçin ve ardından merkezi bölmedeki **hedefler** bölümünde ana uygulama hedefi ' ne tıklayın.
+5. Sonra, orta bölmenizi en üstündeki **yetenekler** sekmesine tıklayın ve **uzak bildirimler** onay kutusunu işaretleyin.
 
     ![][IOS1]
 
-6. Anında `AppDelegate.m` iletme bildirimlerini işlemek için aşağıdaki yöntemi ekleyin:
+6. İçinde `AppDelegate.m` anında iletme bildirimlerini işlemek için aşağıdaki yöntemi ekleyin:
 
     ```objc
     -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
@@ -151,14 +151,14 @@ Bu amaca ulaşmak için, güvenli içeriği uygulamanın arka ucundan almak içi
     }
     ```
 
-    Eksik kimlik doğrulama üstbilgi özelliği veya geri uç tarafından reddedilme durumlarını işlemek için tercih edilir olduğunu unutmayın. Bu servis taleplerinin özel olarak işlenmesi büyük oranda hedef kullanıcı deneyiminize bağlıdır. Seçeneklerden biri, kullanıcının gerçek bildirimi almak için kimlik doğrulaması için genel bir komut istemiyle bir bildirim görüntülemektir.
+    Eksik kimlik doğrulama üstbilgisi özelliği veya arka uç tarafından ret durumlarının işlenmesi tercih edilir. Bu durumların belirli işleme, genellikle hedef Kullanıcı deneyiminize bağlıdır. Bir seçenek, kullanıcının gerçek bildirimi almak için kimlik doğrulaması yapması için bir genel istem ile bir bildirim görüntülemektir.
 
-## <a name="run-the-application"></a>Uygulamayı Çalıştır
+## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı çalıştırmak için aşağıdakileri yapın:
+Uygulamayı çalıştırmak için şunları yapın:
 
-1. XCode'da uygulamayı fiziksel bir iOS aygıtında çalıştırın (anında iletme bildirimleri simülatörde çalışmaz).
-2. iOS uygulaması Kullanıcı Arabirimi'ne bir kullanıcı adı ve parola girin. Bunlar herhangi bir dize olabilir, ancak aynı değerolmalıdır.
-3. iOS uygulaması UI'de **Oturum Aç'ı**tıklatın. Ardından **Gönder tuşuna**bas. Bildirim merkezinizde görüntülenen güvenli bildirimi görmeniz gerekir.
+1. XCode 'da uygulamayı fiziksel bir iOS cihazında çalıştırın (anında iletme bildirimleri benzeticide çalışmaz).
+2. İOS uygulama kullanıcı arabiriminde, bir Kullanıcı adı ve parola girin. Bunlar herhangi bir dize olabilir, ancak aynı değer olmalıdır.
+3. İOS uygulama kullanıcı arabiriminde **oturum aç**' a tıklayın. Sonra **gönderme gönder**' e tıklayın. Bildirim merkezinizde güvenli bildirimin görüntülendiğini görmeniz gerekir.
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png

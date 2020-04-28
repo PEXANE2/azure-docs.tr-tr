@@ -1,27 +1,27 @@
 ---
-title: Hizmetler için ortam değişkenlerini belirtin
-description: Service Fabric'deki uygulamalar için ortam değişkenlerinin nasıl kullanılacağını gösterir
+title: Hizmetler için ortam değişkenlerini belirtme
+description: Service Fabric 'de uygulamalar için ortam değişkenlerinin nasıl kullanılacağını gösterir
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: f4c4f2a1c140e3d0f181c4fd55482056f9f91b62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614324"
 ---
-# <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Service Fabric'teki hizmetler için ortam değişkenleri nasıl belirtilir?
+# <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Service Fabric içindeki hizmetler için ortam değişkenlerini belirtme
 
-Bu makalede, Hizmet Kumaşı'ndaki bir hizmet veya kapsayıcı için ortam değişkenlerinin nasıl belirtilen bir şekilde belirtilen.
+Bu makalede, Service Fabric bir hizmet veya kapsayıcı için ortam değişkenlerini nasıl belirtebileceğiniz gösterilmektedir.
 
 ## <a name="procedure-for-specifying-environment-variables-for-services"></a>Hizmetler için ortam değişkenlerini belirtme yordamı
 
-Bu örnekte, bir kapsayıcı için bir ortam değişkeni ayarlarsınız. Makalede, zaten bir uygulama ve hizmet bildirimi var varsayar.
+Bu örnekte, bir kapsayıcı için bir ortam değişkeni ayarlarsınız. Makalede, zaten bir uygulama ve hizmet bildiriminiz olduğunu varsaymaktadır.
 
-1. ServiceManifest.xml dosyasını açın.
-2. Öğede, her ortam değişkeni `CodePackage` için yeni `EnvironmentVariables` bir öğe ve öğe `EnvironmentVariable` ekleyin.
+1. ServiceManifest. xml dosyasını açın.
+2. `CodePackage` Öğesinde, her ortam değişkeni için yeni `EnvironmentVariables` bir öğesi ve `EnvironmentVariable` bir öğesi ekleyin.
 
     ```xml
     <CodePackage Name="MyCode" Version="CodeVersion1">
@@ -35,7 +35,7 @@ Bu örnekte, bir kapsayıcı için bir ortam değişkeni ayarlarsınız. Makaled
 
    Ortam değişkenleri uygulama bildiriminde geçersiz kılınabilir.
 
-3. Uygulama bildirimindeki ortam değişkenlerini geçersiz kılmak `EnvironmentOverrides` için öğeyi kullanın.
+3. Uygulama bildiriminde ortam değişkenlerini geçersiz kılmak için `EnvironmentOverrides` öğesini kullanın.
 
     ```xml
       <ServiceManifestImport>
@@ -48,7 +48,7 @@ Bu örnekte, bir kapsayıcı için bir ortam değişkeni ayarlarsınız. Makaled
 
 ## <a name="specifying-environment-variables-dynamically-using-docker-compose"></a>Docker Compose kullanarak ortam değişkenlerini dinamik olarak belirtme
 
-Service Fabric Dağıtım [için Docker Compose kullanma](service-fabric-docker-compose.md#supported-compose-directives)yeteneğini destekler. Dosya oluşturma, ortam değişkenlerini kabuktan kaynaklayabilir. Bu davranış, istenen ortam değerlerini dinamik olarak değiştirmek için kullanılabilir:
+Service Fabric, [dağıtım için Docker Compose kullanma](service-fabric-docker-compose.md#supported-compose-directives)yeteneğini destekler. Oluşturma dosyaları, kabuktan ortam değişkenlerini kaynak olarak içerebilir. Bu davranış, istenen ortam değerlerini dinamik olarak değiştirmek için kullanılabilir:
 
 ```yml
 environment:
@@ -56,6 +56,6 @@ environment:
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede tartışılan temel kavramlardan bazıları hakkında daha fazla bilgi edinmek [için, birden çok ortam makalesi için uygulamaları yönet'e](service-fabric-manage-multiple-environment-app-configuration.md)bakın.
+Bu makalede ele alınan temel kavramlardan bazıları hakkında daha fazla bilgi edinmek için bkz. [birden çok ortam için uygulamaları yönetme makaleleri](service-fabric-manage-multiple-environment-app-configuration.md).
 
-Visual Studio'da bulunan diğer uygulama yönetimi özellikleri hakkında daha fazla bilgi için Visual [Studio'daki Hizmet Kumaşı uygulamalarınızı yönet'e](service-fabric-manage-application-in-visual-studio.md)bakın.
+Visual Studio 'da kullanılabilen diğer uygulama yönetimi özellikleri hakkında daha fazla bilgi için bkz. [Visual Studio 'da Service Fabric uygulamalarınızı yönetme](service-fabric-manage-application-in-visual-studio.md).

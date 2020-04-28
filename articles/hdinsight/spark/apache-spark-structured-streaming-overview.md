@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight'ta Yapılandırılmış Akış Kıvılcım
-description: HDInsight Spark kümelerinde Spark Yapılandırılmış Akış uygulamaları nasıl kullanılır?
+title: Azure HDInsight 'ta Spark yapılandırılmış akışı
+description: HDInsight Spark kümelerinde Spark yapılandırılmış akış uygulamalarını kullanma.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,58 +9,58 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: 19cfd5d8ed4100048c270fb41e5e54a920c61516
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75548845"
 ---
-# <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark Yapılandırılmış Akışa Genel Bakış
+# <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark yapılandırılmış akışa genel bakış
 
-[Apaçi Kıvılcım](https://spark.apache.org/) Yapılandırılmış Akış, veri akışlarını işlemek için ölçeklenebilir, yüksek iş letme, hataya dayanıklı uygulamalar uygulamanızı sağlar. Yapılandırılmış Akış, Spark SQL motoru üzerine kuruludur ve Toplu sorguları yazdığınız şekilde akış sorguları yazabilmeniz için Spark SQL Veri Çerçeveleri ve Veri Kümeleri'ndeki yapıları geliştirir.  
+[Apache Spark](https://spark.apache.org/) Yapılandırılmış akış, veri akışlarını işlemek için ölçeklenebilir, yüksek performanslı ve hataya dayanıklı uygulamalar uygulamanıza olanak sağlar. Yapılandırılmış akış Spark SQL altyapısı üzerine kurulmuştur ve derleme sorgularını, toplu sorguları yazacağınız şekilde yazmak için Spark SQL veri çerçevelerinden ve veri kümelerinden yapıları geliştirir.  
 
-Yapılandırılmış Akış uygulamaları HDInsight Spark kümelerinde çalışır ve Bir TCP soketi [(hata](https://kafka.apache.org/)ayıklama amacıyla), Azure Depolama veya Azure Veri Gölü Depolama'dan gelen akış verilerine bağlanır. Harici depolama hizmetlerine dayanan son iki seçenek, depolamaya eklenen yeni dosyaları izlemenize ve içeriklerini akışlı yatmaktadır gibi işlemenize olanak tanır.
+Yapılandırılmış akış uygulamaları, HDInsight Spark kümelerinde çalışır ve [Apache Kafka](https://kafka.apache.org/), TCP yuvası (hata ayıklama amacıyla), Azure depolama veya Azure Data Lake Storage akış verilerine bağlanır. Dış depolama hizmetlerine bağlı olan ikinci iki seçenek, depolama alanına eklenen yeni dosyaları izlemenize ve içerikleri akışla işleyecek şekilde işletirecektir.
 
-Yapılandırılmış Akış, seçim, projeksiyon, toplama, pencereleme ve akış DataFrame'ine başvuru DataFrame'leri ile katılma gibi giriş verilerine işlemleri uyguladığınız uzun soluklu bir sorgu oluşturur. Ardından, özel kod (SQL Veritabanı veya Power BI gibi) kullanarak sonuçları dosya depolamasına (Azure Depolama Lekeleri veya Veri Gölü Depolama) veya herhangi bir veri deposuna çıktınız. Yapılandırılmış Akış, HDInsight'ta hata ayıklama için oluşturulan verileri görebilmeniz için konsola yerel olarak hata ayıklama için çıktı ve bellek içi tabloya da çıkış sağlar.
+Yapılandırılmış akış, giriş verilerine seçim, projeksiyon, toplama, Pencereleme ve başvuru veri çerçevesi ile birleştirme gibi işlemler uyguladığınızda uzun süre çalışan bir sorgu oluşturur. Daha sonra, sonuçları dosya depolama alanına (Azure Storage blob 'Ları veya Data Lake Storage) veya özel kod (örneğin, SQL veritabanı veya Power BI) kullanarak herhangi bir veri deposuna çıktı olarak alırsınız. Yapılandırılmış akış, HDInsight 'ta hata ayıklama için oluşturulan verileri görebileceğiniz şekilde, yerel olarak hata ayıklama için konsola ve bellek içi tabloya yönelik çıktıyı da sağlar.
 
-![HDInsight ve Kıvılcım Yapılandırılmış Akış ile Akış İşleme](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
+![HDInsight ve Spark yapılandırılmış akışı ile akış Işleme](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
 
 > [!NOTE]  
-> Spark Structured Streaming, Spark Streaming'in (DStreams) yerini alıyor. İleriye dönük olarak, Yapılandırılmış Akış geliştirmeler ve bakım lar alırken, DStream'ler yalnızca bakım modunda olacaktır. Yapılandırılmış Akış şu anda kutunun dışında desteklediği kaynaklar ve lavabolar için DStreams kadar özellik tam değildir, bu nedenle uygun Spark akışı işleme seçeneğini seçmek için gereksinimlerinizi değerlendirin.
+> Spark yapısal akışı Spark akışını (DStreams) değiştiriyor. İleri, yapılandırılmış akış geliştirmeler ve bakım alacak, ancak DStreams yalnızca bakım modunda olacak. Yapılandırılmış akış şu anda özellik dışında, desteklediği kaynaklar ve havuzlar için DStreams olarak, uygun Spark akış işleme seçeneğini belirlemek için gereksinimlerinizi değerlendirin.
 
-## <a name="streams-as-tables"></a>Tablo olarak akışlar
+## <a name="streams-as-tables"></a>Tablolar olarak akışlar
 
-Spark Structured Streaming, derinlemesine sınırsız bir tablo olarak bir veri akışını temsil eder, yani yeni veriler geldikçe tablo büyümeye devam eder. Bu *giriş tablosu* sürekli olarak uzun süren bir sorgu tarafından işlenir ve sonuçlar bir çıktı *tablosuna*gönderilir:
+Spark yapılandırılmış akış, bir veri akışını derinlemesine sınırsız bir tablo olarak temsil eder, diğer bir deyişle, yeni veri geldiğinde tablo büyümeye devam eder. Bu *giriş tablosu* , uzun süre çalışan bir sorgu tarafından sürekli olarak işlenir ve bir *Çıkış tablosuna*gönderilir:
 
-![Yapılandırılmış Akış Kavramı](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
+![Yapılandırılmış akış kavramı](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
 
-Yapılandırılmış Akış'ta, veriler sisteme gelir ve hemen bir giriş tablosuna yutulrülir. Bu giriş tablosuna karşı işlem gerçekleştiren sorgular (DataFrame ve Dataset API'lerini kullanarak) yazarsınız. Sorgu çıktısı başka bir tablo, *sonuç tablosu*verir. Sonuç tablosu, örneğin ilişkisel bir veritabanı olan harici bir veri deposu için veri çizdiğiniz sorgunuzun sonuçlarını içerir. Giriş tablosundan verilerin işlenmesi nin zamanlaması *tetikleme aralığı*tarafından denetlenir. Varsayılan olarak, tetikleme aralığı sıfırdır, bu nedenle Yapılandırılmış Akış verileri gelir gelmez işlemeye çalışır. Uygulamada, bu, Yapılandırılmış Akış önceki sorgunun çalışmasını işleme yapılır yapılmaz, yeni alınan verilere karşı başka bir işleme çalıştırma başlattığı anlamına gelir. Etkine, akış verilerinin zaman tabanlı toplu işlenmeleri için bir aralıkta çalışacak şekilde yapılandırabilirsiniz.
+Yapılandırılmış akışta, veriler sisteme ulaşır ve hemen bir giriş tablosuna alınır. Bu giriş tablosuna yönelik işlemler gerçekleştiren sorguları (DataFrame ve DataSet API 'Leri kullanarak) yazarsınız. Sorgu çıktısı başka bir tablo, *Sonuçlar tablosu*oluşturur. Sonuçlar tablosu, bir dış veri deposu için veri çizdiğiniz, örneğin ilişkisel bir veritabanının sonuçlarını içerir. Giriş tablosundan verilerin işlendiği zaman zamanlaması, *tetikleyici aralığı*tarafından denetlenir. Varsayılan olarak, tetikleyici aralığı sıfırdır, bu nedenle yapılandırılmış akış, verileri ulaştığı anda işlemeye çalışır. Uygulamada, bu, yapılandırılmış akış önceki sorgunun çalışmasını işlemeyi tamamladıktan sonra, yeni alınan tüm verilere karşı başka bir işlem çalıştırması başlattığı anlamına gelir. Tetikleyiciyi, zaman tabanlı toplu işlerle işlenmek üzere bir aralıkta çalışacak şekilde yapılandırabilirsiniz.
 
-Sonuç tablolarında yer alan veriler, sorgunun en son işlenmesinden bu yana yalnızca yeni olan verileri içerebilir *(ek modu),* veya tablo her yeni veri olduğunda yenilenebilir, böylece tablo akış sorgusu başladığından beri tüm çıktı verilerini içerir *(tam mod).*
+Sonuçlar tablolarındaki veriler, yalnızca sorgunun son işlendiği zamandan beri yeni olan verileri (*ekleme modu*) içerebilir veya tablo, akış sorgusunun başlamasından bu yana tüm çıktı verilerini içermesi için her yeni veri her seferinde yenilenebilir. (*tamamlanmış mod*).
 
-### <a name="append-mode"></a>Ek modu
+### <a name="append-mode"></a>Ekleme modu
 
-Ek modunda, sonuç tablosunda yalnızca son sorgu çalıştırılmasından sonra sonuç tablosuna eklenen satırlar, sonuç tablosunda bulunur ve dış depolama alanına yazılır. Örneğin, en basit sorgu, giriş tablosundaki tüm verileri değiştirilmeden sonuç tablosuna kopyalar. Tetikleyici aralığı her zaman yeni veriler işlenir ve bu yeni verileri temsil eden satırlar sonuç tablosunda görünür.
+Append modunda, yalnızca son sorgu çalıştırmasından sonra sonuçlar tablosuna eklenen satırlar sonuçlar tablosunda bulunur ve dış depolamaya yazılır. Örneğin, en basit sorgu yalnızca girdi tablosundaki tüm verileri, değiştirilmemiş sonuçlar tablosuna kopyalar. Tetikleyici aralığı her geçtiğinde, yeni veriler işlenir ve bu yeni verileri temsil eden satırlar sonuçlar tablosunda görüntülenir.
 
-Termostat gibi sıcaklık sensörlerinden telemetri işlediğiniz bir senaryo düşünün. 95 derece sıcaklık okuması ile cihaz 1 için saat 00:01'de işlenen ilk tetikleyiciyi varsayalım. Sorgunun ilk tetikleyicisinde, sonuçlar tablosunda yalnızca saat 00:01 satırı görüntülenir. Saat 00:02'de başka bir olay geldiğinde, tek yeni satır saat0:02'li satırdır ve böylece sonuçlar tablosu yalnızca bir satır içerir.
+Bir termostat gibi Sıcaklık sensörlerinden Telemetriyi işlemekte olduğunuz bir senaryoyu düşünün. İlk tetikleyicinin, cihaz 1 ' de 95 derecenin okuduğu bir olayın 00:01. saatinde tek bir olay işlediğini varsayın. Sorgunun ilk tetikleyicisinde, sonuçlar tablosunda yalnızca 00:01 olan satır görüntülenir. Başka bir olay ulaştığında, yalnızca yeni satır 00:02 saat olur ve sonuç tablosu yalnızca bir satır içerir. 00:02
 
-![Yapılandırılmış Akış Ek Modu](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png)
+![Yapılandırılmış akış ekleme modu](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png)
 
-Ek modu kullanırken, sorgunuz projeksiyonlar (önemsediği sütunları seçmek), filtreleme (yalnızca belirli koşullarla eşleşen satırları seçmek) veya birleştirme (verileri statik bir arama tablosundaki verilerle artırma) uygular. Ek modu, yalnızca ilgili yeni verilerin dış depolamaya işaret etmesini kolaylaştırır.
+Append modunu kullanırken sorgunuz, tahminleri (ilgili olduğu sütunları seçerek), filtrelemeye (yalnızca belirli koşullara uyan satırları seçerek) veya katılımını (statik bir arama tablosundaki verilerle verileri genişlettirecek) uyguluyor. Ekleme modu, yalnızca ilgili yeni veri noktalarını dış depolamaya itmeyi kolaylaştırır.
 
-### <a name="complete-mode"></a>Tam mod
+### <a name="complete-mode"></a>Mod Tamam
 
-Tam modu kullanarak bu kez, aynı senaryoyu düşünün. Tam modda, tüm çıkış tablosu her tetikleyicide yenilenir, bu nedenle tablo yalnızca en son tetikleyici çalıştırmadan değil, tüm çalıştırmalardan gelen verileri içerir. Giriş tablosundan sonuç tablosuna değiştirilmemiş verileri kopyalamak için tam modu kullanabilirsiniz. Tetiklenen her çalıştırmada, yeni sonuç satırları önceki tüm satırlarla birlikte görüntülenir. Çıktı sonuçları tablosu, sorgu başladığından beri toplanan tüm verileri depolamaya başlar ve sonunda bellek biter. Tam mod, gelen verileri bir şekilde özetleyen toplu sorgularla kullanılmak üzere tasarlanmıştır, bu nedenle her tetikleyicide sonuç tablosu yeni bir özetle güncelleştirilir.
+Bu kez, tüm modunu kullanarak aynı senaryoyu göz önünde bulundurun. Tam modda tüm çıkış tablosu her tetikleyicide yenilenir, böylece tablo yalnızca en son tetikleyici çalıştırmasından değil, tüm çalıştırmalardan veri içerir. Verileri değiştirilmemiş şekilde giriş tablosundan sonuçlar tablosuna kopyalamak için, tamamlanmış modunu kullanabilirsiniz. Tetiklenen her çalıştırmada, yeni sonuç satırları önceki tüm satırlarla birlikte görüntülenir. Çıkış sonuçları tablosu, sorgunun başlamasından bu yana toplanan tüm verilerin depolanmasına ve sonunda belleğin tükenmesine neden olur. Tamamlanma modu, gelen verileri bir şekilde özetleyen toplam sorgularla birlikte kullanılmak üzere tasarlanmıştır. bu nedenle, her tetikleyici sonuç tablosu yeni bir Özet ile güncelleştirilir.
 
-Şimdiye kadar zaten işlenmiş beş saniye değerinde veri olduğunu varsayalım, ve altıncı saniye için veri işleme zamanı. Giriş tablosunda saat 00:01 ve saat 00:03 olayları vardır. Bu örnek sorgunun amacı, her beş saniyede bir aygıtın ortalama sıcaklığını vermektir. Bu sorgunun uygulanması, her 5 saniyelik pencerede düşen tüm değerleri alan, sıcaklığı nortalamaya çıkaran ve bu aralıktaki ortalama sıcaklık için bir satır üreten bir agrega uygular. İlk 5 saniyelik pencerenin sonunda iki tupül vardır: (00:01, 1, 95) ve (00:03, 1, 98). Yani pencere için 00:00-00:05 toplama 96,5 derece ortalama sıcaklık ile bir tuple üretir. Sonraki 5 saniyelik pencerede, saat 00:06'da sadece bir veri noktası var, yani ortaya çıkan ortalama sıcaklık 98 derece. Saat 00:10'da, tam modu kullanarak, sonuç tablosunda her iki pencere için de satırlar vardır 00:00-00:05 ve 00:05-00:10 sorgu, sadece yeni satırları değil, tüm toplu satırları çıkar. Bu nedenle, yeni pencereler eklendikçe sonuç tablosu büyümeye devam ediyor.
+Şimdiye kadar beş saniyelik verilerin zaten işlenmiş olduğunu varsayın ve altıncı saniye için verileri işlemeye zaman atalım. Giriş tablosunda 00:01 saati ve 00:03 zamanı için olaylar bulunur. Bu örnek sorgu hedefi, cihazın ortalama sıcaklığını beş saniyede bir vermektir. Bu sorgunun uygulanması, her 5 saniyelik pencerede kalan tüm değerleri alan bir toplama uygular, sıcaklığın ortalığını ve bu aralığa göre ortalama sıcaklık için bir satır üretir. İlk 5 saniyelik pencerenin sonunda, iki tanımlama grubu vardır: (00:01, 1, 95) ve (00:03, 1, 98). Bu nedenle, Windows 00:00-00:05 için toplama, 96,5 derecenin ortalama sıcaklığını içeren bir tanımlama grubu oluşturur. Sonraki 5 saniyelik pencerede 00:06 sırasında yalnızca bir veri noktası bulunur, bu nedenle elde edilen ortalama sıcaklık 98 derece olur. Bu zaman 00:10, tam modu kullanarak, sorgu yalnızca yenilerini değil, tüm toplanmış satırları çıktıdığı için, sonuçlar tablosu hem Windows 00:00-00:05 hem de 00:05-00:10 için satırlara sahiptir. Bu nedenle, yeni pencereler eklendikçe sonuçlar tablosu büyümeye devam eder.
 
-![Yapılandırılmış Akış Tam Modu](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
+![Yapılandırılmış akış tamamlanma modu](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
 
-Tam modu kullanan tüm sorgular tablonun sınırsız büyümesine neden olmaz.  Önceki örnekte, sıcaklığın zaman penceresine göre ortalamasını almak yerine, bunun yerine aygıt kimliğiyle ortalama sını göz önünde bulundurun. Sonuç tablosu, bu aygıttan alınan tüm veri noktaları arasında aygıtın ortalama sıcaklığına sahip sabit sayıda satır (aygıt başına bir) içerir. Yeni sıcaklıklar alındıkça, sonuçlar tablosu güncelleştirilir, böylece tablodaki ortalamalar her zaman geçerlidir.
+Tüm sorguların tamamı, tablonun sınır olmadan büyümesine neden olur.  Önceki örnekte, zaman içindeki sıcaklığın ortalamasını değil, cihaz KIMLIĞI tarafından bunun ortalaması altında düşünün. Sonuç tablosu, bu cihazdan alınan tüm veri noktalarında cihaz için Ortalama sıcaklığa sahip sabit sayıda satır (cihaz başına bir tane) içerir. Yeni sıcaklıklar alındığından, tablodaki ortalamalar her zaman geçerli olacak şekilde sonuçlar tablosu güncellenir.
 
-## <a name="components-of-a-spark-structured-streaming-application"></a>Kıvılcım Yapılandırılmış Akış uygulamasının bileşenleri
+## <a name="components-of-a-spark-structured-streaming-application"></a>Spark yapılandırılmış akış uygulamasının bileşenleri
 
-Basit bir örnek sorgu, sıcaklık okumalarını saat süren pencerelere göre özetleyebilir. Bu durumda, veriler Azure Depolama'daki JSON dosyalarında depolanır (HDInsight kümesi için varsayılan depolama alanı olarak eklenir):
+Basit örnek bir sorgu, saat-uzun pencereler için sıcaklık okumaları özetleyebilir. Bu durumda, veriler Azure Storage 'daki JSON dosyalarında (HDInsight kümesi için varsayılan depolama alanı olarak eklenir) depolanır:
 
     {"time":1469501107,"temp":"95"}
     {"time":1469501147,"temp":"95"}
@@ -68,11 +68,11 @@ Basit bir örnek sorgu, sıcaklık okumalarını saat süren pencerelere göre �
     {"time":1469501219,"temp":"95"}
     {"time":1469501225,"temp":"95"}
 
-Bu JSON dosyaları HDInsight `temps` kümesinin kapsayıcısının altındaki alt klasörde depolanır.
+Bu JSON dosyaları, HDInsight kümesinin kapsayıcısının `temps` altındaki alt klasörde depolanır.
 
 ### <a name="define-the-input-source"></a>Giriş kaynağını tanımlama
 
-Önce, verilerin kaynağını ve bu kaynağın gerektirdiği ayarları açıklayan bir DataFrame yapılandırın. Bu örnek, Azure Depolama'daki JSON dosyalarından yararlanır ve okuma zamanında bunlara bir şema uygular.
+İlk olarak, verilerin kaynağını ve bu kaynak için gereken tüm ayarları açıklayan bir veri çerçevesini yapılandırın. Bu örnek, Azure Storage 'daki JSON dosyalarından çizilir ve okuma sırasında bunlara bir şema uygular.
 
     import org.apache.spark.sql.types._
     import org.apache.spark.sql.functions._
@@ -86,19 +86,19 @@ Bu JSON dosyaları HDInsight `temps` kümesinin kapsayıcısının altındaki al
     //Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
     val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath) 
 
-#### <a name="apply-the-query"></a>Sorguyu uygulama
+#### <a name="apply-the-query"></a>Sorguyu Uygula
 
-Ardından, Akış Veri Çerçevesi'ne karşı istenen işlemleri içeren bir sorgu uygulayın. Bu durumda, bir toplama tüm satırları 1 saatlik pencerelere gruplanır ve ardından bu 1 saatlik penceredeki minimum, ortalama ve maksimum sıcaklıkları hesaplar.
+Ardından, akış veri çerçevesine yönelik istenen işlemleri içeren bir sorgu uygulayın. Bu durumda, bir toplama tüm satırları 1 saat Windows 'a gruplandırır ve sonra bu 1 saatlik pencerede minimum, ortalama ve maksimum sıcaklıkları hesaplar.
 
     val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
 
-### <a name="define-the-output-sink"></a>Çıkış lavabosu tanımlayın
+### <a name="define-the-output-sink"></a>Çıkış havuzunu tanımlama
 
-Ardından, her tetikleyici aralıkiçinde sonuç tablosuna eklenen satırların hedefini tanımlayın. Bu örnek, tüm satırları daha sonra SparkSQL ile sorgulayabileceğiniz bir bellek içi tabloya `temps` çıkar. Tam çıkış modu, tüm pencereler için tüm satırların her seferinde çıktı olmasını sağlar.
+Sonra, her tetikleyici aralığı içindeki sonuçlar tablosuna eklenen satırlar için hedefi tanımlayın. Bu örnek, tüm satırları daha sonra daha sonra daha sonra daha `temps` sonra mini bellekli bir tabloya çıkarır. Çıkış modunu tamamen doldurun tüm pencereler için tüm satırların her seferinde çıkış olmasını sağlar.
 
     val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete") 
 
-### <a name="start-the-query"></a>Sorguyu başlat
+### <a name="start-the-query"></a>Sorguyu Başlat
 
 Akış sorgusunu başlatın ve sonlandırma sinyali alınana kadar çalıştırın.
 
@@ -106,38 +106,38 @@ Akış sorgusunu başlatın ve sonlandırma sinyali alınana kadar çalıştır�
 
 ### <a name="view-the-results"></a>Sonuçları görüntüleme
 
-Sorgu çalışırken, aynı SparkSession'da, sorgu sonuçlarının depolandığı tabloya `temps` karşı bir SparkSQL sorgusu çalıştırabilirsiniz.
+Sorgu çalışırken, aynı mini oturumda sorgu sonuçlarının depolandığı `temps` tabloya karşı bir mini SQL sorgusu çalıştırabilirsiniz.
 
     select * from temps
 
 Bu sorgu aşağıdakilere benzer sonuçlar verir:
 
-| pencere |  min(temp) | avg(temp) | max(temp) |
+| pencere |  Min (geçici) | Ort (geçici) | en fazla (geçici) |
 | --- | --- | --- | --- |
-|{u'start': u'2016-07-26T02:00:00.000Z', u'end'... |    95 |    95.231579 | 99 |
-|{u'start': u'2016-07-26T03:00:00.000Z', u'end'...  |95 |   96.023048 | 99 |
-|{u'start': u'2016-07-26T04:00:00.000Z', u'end'...  |95 |   96.797133 | 99 |
-|{u'start': u'2016-07-26T05:00:00.000Z', u'end'...  |95 |   96.984639 | 99 |
-|{u'start': u'2016-07-26T06:00:00.000Z', u'end'...  |95 |   97.014749 | 99 |
-|{u'start': u'2016-07-26T07:00:00.000Z', u'end'...  |95 |   96.980971 | 99 |
-|{u'start': u'2016-07-26T08:00:00.000Z', u'end'...  |95 |   96.965997 | 99 |  
+|{uıtostart ': u ' 2016-07-26T02:00:00.000 Z ', uı'end '... |    95 |    95,231579 | 99 |
+|{uıtostart ': u ' 2016-07-26T03:00:00.000 Z ', uı'end '...  |95 |   96,023048 | 99 |
+|{uıtostart ': u ' 2016-07-26T04:00:00.000 Z ', uı'end '...  |95 |   96,797133 | 99 |
+|{uıtostart ': u ' 2016-07-26T05:00:00.000 Z ', uı'end '...  |95 |   96,984639 | 99 |
+|{uıtostart ': u ' 2016-07-26T06:00:00.000 Z ', uı'end '...  |95 |   97,014749 | 99 |
+|{uıtostart ': u ' 2016-07-26T07:00:00.000 Z ', uı'end '...  |95 |   96,980971 | 99 |
+|{uıtostart ': u ' 2016-07-26T08:00:00.000 Z ', uı'end '...  |95 |   96,965997 | 99 |  
 
-Spark Structured Stream API'si ile ilgili ayrıntılar ve desteklediği giriş veri kaynakları, işlemler ve çıktı lavaboları için [Apache Spark Structured Streaming Programlama Kılavuzu'na](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)bakın.
+Spark yapısal akış API 'SI ile birlikte, desteklediği giriş veri kaynakları, işlemler ve çıkış havuzları ile ilgili ayrıntılar için bkz. [Apache Spark yapısal akış Programlama Kılavuzu](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html).
 
-## <a name="checkpointing-and-write-ahead-logs"></a>Denetim noktası ve yazma günlükleri
+## <a name="checkpointing-and-write-ahead-logs"></a>Checkişaret ve sonradan yazma günlükleri
 
-Yapılandırılmış Akış, esneklik ve hata toleransı sağlamak için, akış işleminin düğüm hatalarına rağmen kesintisiz olarak devam etmesini sağlamak için *denetim noktasına* dayanır. HDInsight'ta Spark, Azure Depolama veya Veri Gölü Depolama sı dahil olmak üzere dayanıklı depolama için denetim noktaları oluşturur. Bu denetim noktaları, akış sorgusu yla ilgili ilerleme bilgilerini depolar. Buna ek olarak, Yapılandırılmış Akış bir *yazma-ahead günlük* (WAL) kullanır. WAL alınan ancak henüz bir sorgu tarafından işlenmemiş sindirilen verileri yakalar. Bir hata oluşursa ve işleme WAL yeniden başlatılırsa, kaynaktan alınan olaylar kaybolmaz.
+Yapılandırılmış akış esneklik ve hataya dayanıklılık sağlamak için, akış işlemenin düğüm hatalarıyla birlikte kesintisiz bir şekilde devam etmesini sağlamak için *denetim noktası* kullanır. HDInsight 'ta Spark, Azure Storage veya Data Lake Storage dayanıklı depolama için denetim noktaları oluşturur. Bu denetim noktaları, akış sorgusuyla ilgili ilerleme bilgilerini depolar. Ayrıca, yapılandırılmış akış bir *yazma öncesi günlük* (Wal) kullanır. WAL alınan verileri yakalar, ancak henüz bir sorgu tarafından işlenmemiştir. Bir hata oluşursa ve işlem WAL 'den yeniden başlatılırsa, kaynaktan alınan tüm olaylar kaybedilmez.
 
-## <a name="deploying-spark-streaming-applications"></a>Kıvılcım Akış uygulamalarını dağıtma
+## <a name="deploying-spark-streaming-applications"></a>Spark akış uygulamalarını dağıtma
 
-Genellikle bir JAR dosyasına yerel olarak bir Kıvılcım Akış uygulaması oluşturur sunuz ve ardından JAR dosyasını HDInsight kümenize bağlı varsayılan depolama alanına kopyalayarak HDInsight'ta Spark'a dağıtirsınız. Bir POST işlemi kullanarak kümenizden edinebileceğiniz [Apache Livy](https://livy.incubator.apache.org/) REST API'leri ile başvurunuzu başlatabilirsiniz. POST'un gövdesi, JAR'ınıza giden yolu, ana yöntemi akış uygulamasını tanımlayan ve çalıştıran sınıfın adını ve isteğe bağlı olarak işin kaynak gereksinimlerini (uygulayıcıların, bellek ve çekirdek sayısı gibi) sağlayan bir JSON belgesi içerir. ve uygulama kodunuzu gerektiren yapılandırma ayarları.
+Genellikle bir JAR dosyasına yerel olarak bir Spark akış uygulaması derleyin ve ardından JAR dosyasını HDInsight üzerinde Spark 'a dağıtarak, JAR dosyasını HDInsight kümenize bağlı varsayılan depolama alanına kopyalarsınız. Bir POST işlemi kullanarak, uygulamanızı kümenizde bulunan [Apache Livy](https://livy.incubator.apache.org/) REST API 'leriyle başlatabilirsiniz. GÖNDERI gövdesi, JAR 'nizin yolunu sağlayan bir JSON belgesi, ana yöntemi, akış uygulamasını tanımlayan ve çalıştıran sınıfın adı ve isteğe bağlı olarak işin kaynak gereksinimleri (yürütme sayısı, bellek ve çekirdek sayısı gibi) ve uygulama kodunuzun gerektirdiği tüm yapılandırma ayarlarını içerir.
 
-![Bir Kıvılcım Akış uygulaması dağıtma](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+![Spark akış uygulaması dağıtma](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-Tüm uygulamaların durumu, LIVY bitiş noktasına karşı get isteğiyle de kontrol edilebilir. Son olarak, LIVY bitiş noktasına karşı bir DELETE isteği vererek çalışan bir uygulamayı sonlandırabilirsiniz. LIVY API hakkında ayrıntılı bilgi için, [Apache LIVY ile Uzak işleri](apache-spark-livy-rest-interface.md) görün
+Tüm uygulamaların durumu, bir al uç noktasına karşı bir GET isteğiyle de denetlenebilir. Son olarak, çalışan bir uygulamayı, LIVY uç noktasına karşı SILME isteği vererek sonlandırabilirsiniz. LIVY API 'SI ile ilgili ayrıntılar için bkz. [Apache Livy Ile uzak işler](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [HDInsight'ta Bir Apache Spark kümesi oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Apache Spark Yapılandırılmış Akış Programlama Kılavuzu](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
-* [Apache LIVY ile Apache Spark işlerini uzaktan başlatın](apache-spark-livy-rest-interface.md)
+* [HDInsight 'ta Apache Spark kümesi oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md)
+* [Apache Spark yapılandırılmış akış Programlama Kılavuzu](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
+* [Apache LIVY ile Apache Spark işleri uzaktan başlatın](apache-spark-livy-rest-interface.md)

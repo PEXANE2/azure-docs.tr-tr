@@ -1,33 +1,33 @@
 ---
-title: Azure Hizmet Kumaş Kafesi'nde çalışan bir uygulamayı otomatik ölçeklendirme
-description: Service Fabric Mesh uygulamasının hizmetleri için otomatik ölçekilkelerini nasıl yapılandırabileceğinizi öğrenin.
+title: Azure Service Fabric ağı 'nda çalışan bir uygulamayı otomatik ölçeklendirme
+description: Service Fabric bir kafes uygulamasının Hizmetleri için otomatik ölçek ilkelerini nasıl yapılandıracağınızı öğrenin.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75461983"
 ---
-# <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Service Fabric Mesh uygulaması için otomatik ölçeklendirme ilkeleri oluşturma
-Uygulamaları Service Fabric Mesh'e dağıtmanın en önemli avantajlarından biri, hizmetlerinizi kolayca ölçeklendirebilme veya dışarı edebilme yeteneğidir. Bu, hizmetlerinizdeki çeşitli miktarda yükü işlemek veya kullanılabilirliği artırmak için kullanılmalıdır. Hizmetlerinizi el ile ölçeklendirebilir veya otomatik ölçeklendirme ilkeleri ayarlayabilirsiniz.
+# <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Service Fabric kafes uygulaması için otomatik ölçeklendirme ilkeleri oluşturma
+Service Fabric kafese uygulama dağıtmanın başlıca avantajlarından biri, hizmetlerinizi kolayca ölçeklendirebilme olanağı sağlar. Bu, hizmetinizdeki farklı yük miktarını işlemek veya kullanılabilirliği iyileştirmek için kullanılmalıdır. Hizmetlerinizi el ile ölçeklendirebilir veya otomatik ölçeklendirme ilkeleri ayarlayabilirsiniz.
 
-[Otomatik ölçeklendirme,](service-fabric-mesh-scalability.md#autoscaling-service-instances) hizmet örneklerinizin (yatay ölçeklendirme) sayısını dinamik olarak ölçeklendirmenize olanak tanır. Otomatik ölçekleme büyük esneklik sağlar ve CPU veya bellek kullanımına dayalı servis örneklerinin sağlanmasını veya kaldırılmasını sağlar.
+[Otomatik ölçeklendirme](service-fabric-mesh-scalability.md#autoscaling-service-instances) , hizmet örneklerinizin sayısını (yatay ölçeklendirme) dinamik olarak ölçeklendirmenize olanak tanır. Otomatik ölçeklendirme, büyük ölçüde esneklik sağlar ve CPU veya bellek kullanımına göre hizmet örneklerinin sağlanması veya kaldırılmasına olanak sağlar.
 
-## <a name="options-for-creating-an-auto-scaling-policy-trigger-and-mechanism"></a>Otomatik ölçekleme ilkesi, tetikleyici ve mekanizma oluşturma seçenekleri
-Ölçeklendirmek istediğiniz her hizmet için otomatik ölçeklendirme ilkesi tanımlanır. İlke YAML hizmet kaynak dosyasında veya JSON dağıtım şablonunda tanımlanır. Her ölçekleme ilkesi iki bölümden oluşur: bir tetikleyici ve ölçekleme mekanizması.
+## <a name="options-for-creating-an-auto-scaling-policy-trigger-and-mechanism"></a>Otomatik ölçeklendirme ilkesi, tetikleyici ve mekanizması oluşturma seçenekleri
+Otomatik ölçeklendirme ilkesi, ölçeklendirmek istediğiniz her hizmet için tanımlanır. İlke, YAML hizmeti kaynak dosyasında ya da JSON dağıtım şablonunda tanımlanır. Her ölçeklendirme ilkesi iki bölümden oluşur: bir tetikleyici ve ölçekleme mekanizması.
 
-Tetikleyici, otomatik ölçekleme ilkesinin ne zaman çağrıldırıldıcı olduğunu tanımlar.  Tetikleyici türünü (ortalama yük) ve izlenecek ölçümü (CPU veya bellek) belirtin.  Yüzde olarak belirtilen üst ve alt yük eşikleri. Ölçek aralığı, belirtilen kullanımın (ortalama CPU yükü gibi) şu anda dağıtılan tüm hizmet örnekleri arasında ne sıklıkta denetlenileceği (saniye cinsinden) tanımlar.  İzlenen metrik alt eşiğin altına düştüğünde veya üst eşiğin üzerine çıktığında mekanizma tetiklenir.  
+Tetikleyici, bir otomatik ölçeklendirme ilkesi çağrıldığında tanımlar.  Tetikleyici türünü (Ortalama Yük) ve izlenecek ölçüyü (CPU veya bellek) belirtin.  Yüzde olarak belirtilen üst ve alt yükleme eşikleri. Ölçek aralığı, şu anda dağıtılmış olan tüm hizmet örneklerinde belirtilen kullanımı (saniye cinsinden) (ortalama CPU yükü gibi) ne sıklıkta denetleyebileceğini tanımlar.  Bu mekanizma, izlenen ölçüm alt eşiğin altına düştüğünde veya üst eşiğin üstünde arttığında tetiklenir.  
 
-Ölçekleme mekanizması, ilke tetiklendiğinde ölçekleme işleminin nasıl gerçekleştirilini tanımlar.  Mekanizma türünü (yineleme ekleme/kaldırma), en küçük ve maksimum yineleme sayılarını (tümseler olarak) belirtin.  Hizmet yinelemelerinin sayısı hiçbir zaman minimum sayımaltında veya en yüksek sayımın üzerinde ölçeklendirilmez.  Ayrıca ölçeklendirme işleminde eklenecek veya kaldırılacak yineleme sayısı olan ölçek artışını tamsayı olarak belirtin.  
+Ölçeklendirme mekanizması, ilke tetiklendiğinde ölçeklendirme işleminin nasıl gerçekleştirileceğini tanımlar.  En düşük ve en fazla çoğaltma sayısını (tamsayı olarak) (örneğin, çoğaltma Ekle/Kaldır) belirtin.  Hizmet çoğaltmaları sayısı, hiçbir şekilde en düşük sayının altına veya en yüksek sayının altına ölçeklenmez.  Ayrıca ölçek artışını bir tamsayı olarak belirtin, bu da bir ölçeklendirme işleminde eklenecek veya kaldırılacak çoğaltmaların sayısıdır.  
 
-## <a name="define-an-auto-scaling-policy-in-a-json-template"></a>JSON şablonunda otomatik ölçekleme ilkesi tanımlama
+## <a name="define-an-auto-scaling-policy-in-a-json-template"></a>JSON şablonunda otomatik ölçeklendirme ilkesi tanımlama
 
-Aşağıdaki örnekte, JSON dağıtım şablonunda otomatik ölçekleme ilkesi gösterilmektedir.  Otomatik ölçeklendirme ilkesi, ölçeklendirilecek hizmetin özelliğinde beyan edilir.  Bu örnekte, bir CPU ortalama yük tetikleyicisi tanımlanır.  Dağıtılan tüm örneklerin ortalama CPU yükü 0,2'nin (%20) altına düşerse mekanizma tetiklenir. veya 0.8 (%80) üzerinde gider.  CPU yükü her 60 saniyede bir kontrol edilir.  İlke tetiklenirse örnekleri eklemek veya kaldırmak için ölçekleme mekanizması tanımlanır.  Hizmet örnekleri, bir tanesinin artışlarla eklenir veya kaldırılır.  Bir ve en fazla 40 örnek sayısı nın en az örnek sayısı da tanımlanır.
+Aşağıdaki örnek, bir JSON dağıtım şablonundaki bir otomatik ölçeklendirme ilkesini gösterir.  Otomatik ölçeklendirme ilkesi, bir hizmetin ölçeklenebileceği bir özelliği içinde bildirilmiştir.  Bu örnekte, bir CPU Ortalama Yük tetikleyicisi tanımlanmıştır.  Dağıtılan tüm örneklerin ortalama CPU yükü 0,2 altına düşerse mekanizma tetiklenir (%20) veya 0,8 (80%) üzerine gider.  CPU yükü her 60 saniyede bir denetlenir.  Ölçek mekanizması, ilke tetikleniyorsa örnek eklemek veya kaldırmak için tanımlanır.  Hizmet örnekleri, bir tane artışlarına eklenecek veya kaldırılacak.  Minimum örnek sayısı bir ve 40 en büyük örnek sayısı da tanımlanmıştır.
 
 ```json
 {
@@ -79,8 +79,8 @@ Aşağıdaki örnekte, JSON dağıtım şablonunda otomatik ölçekleme ilkesi g
 }
 ```
 
-## <a name="define-an-autoscale-policy-in-a-serviceyaml-resource-file"></a>Service.yaml kaynak dosyasında otomatik ölçeklendirme ilkesi tanımlama
-Aşağıdaki örnekte, bir hizmet kaynağı (YAML) dosyasında otomatik ölçekleme ilkesi gösterilmektedir.  Otomatik ölçeklendirme ilkesi ölçeklendirilecek hizmetin bir özelliği olarak bildirilir.  Bu örnekte, bir CPU ortalama yük tetikleyicisi tanımlanır.  Dağıtılan tüm örneklerin ortalama CPU yükü 0,2'nin (%20) altına düşerse mekanizma tetiklenir. veya 0.8 (%80) üzerinde gider.  CPU yükü her 60 saniyede bir kontrol edilir.  İlke tetiklenirse örnekleri eklemek veya kaldırmak için ölçekleme mekanizması tanımlanır.  Hizmet örnekleri, bir tanesinin artışlarla eklenir veya kaldırılır.  Bir ve en fazla 40 örnek sayısı nın en az örnek sayısı da tanımlanır.
+## <a name="define-an-autoscale-policy-in-a-serviceyaml-resource-file"></a>Bir Service. YAML kaynak dosyasında otomatik ölçeklendirme ilkesi tanımlama
+Aşağıdaki örnekte, bir hizmet kaynağı (YAML) dosyasındaki bir otomatik ölçeklendirme ilkesi gösterilmektedir.  Otomatik ölçeklendirme ilkesi, ölçeklendirilebilecek hizmetin bir özelliği olarak bildirilmiştir.  Bu örnekte, bir CPU Ortalama Yük tetikleyicisi tanımlanmıştır.  Dağıtılan tüm örneklerin ortalama CPU yükü 0,2 altına düşerse mekanizma tetiklenir (%20) veya 0,8 (80%) üzerine gider.  CPU yükü her 60 saniyede bir denetlenir.  Ölçek mekanizması, ilke tetikleniyorsa örnek eklemek veya kaldırmak için tanımlanır.  Hizmet örnekleri, bir tane artışlarına eklenecek veya kaldırılacak.  Minimum örnek sayısı bir ve 40 en büyük örnek sayısı da tanımlanmıştır.
 
 ```yaml
 ## Service definition ##
@@ -115,4 +115,4 @@ application:
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bir hizmeti el ile nasıl [ölçeklendireceklerini](service-fabric-mesh-tutorial-template-scale-services.md) öğrenin
+[Bir hizmeti el ile ölçeklendirmeyi](service-fabric-mesh-tutorial-template-scale-services.md) öğrenin

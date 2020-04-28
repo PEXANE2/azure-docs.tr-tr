@@ -1,6 +1,6 @@
 ---
-title: PowerShell örneği - Application Proxy uygulamalarında sertifikayı değiştir
-description: Azure Active Directory (Azure AD) Application Proxy uygulamalarında bir sertifikanın yerine toplu olarak verilen PowerShell örneği.
+title: PowerShell örneği-uygulama proxy 'Si uygulamalarındaki sertifikayı değiştirme
+description: Azure Active Directory (Azure AD) uygulama proxy 'Si uygulamaları genelinde bir sertifikayı toplu olarak değiştiren PowerShell örneği.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 91aafe00856f37e9d7e6b3babafecd2cbdf5f856
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75482003"
 ---
-# <a name="get-all-application-proxy-applications-published-with-the-identical-certificate-and-replace-it"></a>Tüm Uygulama Proxy uygulamalarını aynı sertifikayla yayınlatın ve değiştirin
+# <a name="get-all-application-proxy-applications-published-with-the-identical-certificate-and-replace-it"></a>Aynı sertifikayla yayınlanan tüm uygulama proxy uygulamalarını alın ve değiştirin
 
-Bu PowerShell komut dosyası örneği, aynı sertifikayla yayınlanan tüm Azure Active Directory (Azure AD) Uygulama Proxy uygulamaları için sertifikayı toplu olarak değiştirmenize olanak tanır.
+Bu PowerShell betiği örneği, aynı sertifikayla yayınlanan tüm Azure Active Directory (Azure AD) uygulama proxy uygulamaları için sertifikayı toplu olarak değiştirmenize izin verir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ Bu PowerShell komut dosyası örneği, aynı sertifikayla yayınlanan tüm Azure
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Bu örnek [için AzureAD V2 PowerShell grafik modülü modülü](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) veya [Graph modülü önizleme sürümü için AzureAD V2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) gerekir.
+Bu örnek, Graf modülü (azuread) [Için Azuread v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) 'ı veya Graf modülü önizleme sürümü (azureadpreview) [Için Azuread v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) 'i gerektirir.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -39,13 +39,13 @@ Bu örnek [için AzureAD V2 PowerShell grafik modülü modülü](https://docs.mi
 
 | Komut | Notlar |
 |---|---|
-|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Bir servis müdürü alır. |
-|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Azure AD uygulaması alır. |
-|[Al-AzureADApplicationProxyApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyapplication?view=azureadps-2.0) | Azure AD'de Uygulama Proxy için yapılandırılan bir uygulamayı alır. |
-|[Set-AzureADApplicationProxyApplicationCustomDomainCertificate](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplicationproxyapplicationcustomdomaincertificate?view=azureadps-2.0) | Azure AD'de Application Proxy için yapılandırılan bir uygulamaya sertifika atar. Bu komut sertifikayı yükler ve uygulamanın Özel Etki Alanlarını kullanmasına izin verir. |
+|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Hizmet sorumlusu alır. |
+|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Bir Azure AD uygulaması alır. |
+|[Get-Azureadapplicationproxun](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyapplication?view=azureadps-2.0) | Azure AD 'de uygulama proxy 'Si için yapılandırılmış bir uygulamayı alır. |
+|[Set-AzureADApplicationProxyApplicationCustomDomainCertificate](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplicationproxyapplicationcustomdomaincertificate?view=azureadps-2.0) | Azure AD 'de uygulama proxy 'Si için yapılandırılmış bir uygulamaya bir sertifika atar. Bu komut sertifikayı karşıya yükler ve uygulamanın özel etki alanlarını kullanmasına izin verir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD PowerShell modülü hakkında daha fazla bilgi için [Azure AD PowerShell modülüne genel bakış](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)bilgisine bakın.
+Azure AD PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure AD PowerShell modülüne genel bakış](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
 
-Uygulama Proxy'si için diğer PowerShell örnekleri için Azure [AD Application Proxy için Azure AD PowerShell örneklerine](../application-proxy-powershell-samples.md)bakın.
+Uygulama proxy 'Si için diğer PowerShell örnekleri için bkz. Azure [ad uygulama ara sunucusu Için Azure AD PowerShell örnekleri](../application-proxy-powershell-samples.md).

@@ -1,6 +1,6 @@
 ---
-title: PowerShell örneği - Joker karakterleri kullanarak Uygulama Proxy uygulamalarını listele
-description: Joker karakter kullanan tüm Azure Active Directory (Azure AD) Uygulama Proxy uygulamalarını listeleyen PowerShell örneği.
+title: PowerShell örneği-joker karakterler kullanarak uygulama proxy 'Si uygulamalarını listeleme
+description: Joker karakter kullanan tüm Azure Active Directory (Azure AD) uygulama proxy uygulamalarını listeleyen PowerShell örneği.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8149e9230de3e8b6c18d150c81ea67b1d861746c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75482029"
 ---
-# <a name="get-all-application-proxy-apps-using-wildcard-publishing"></a>Joker karakter yayımlamayı kullanarak tüm Application Proxy uygulamalarını edinin
+# <a name="get-all-application-proxy-apps-using-wildcard-publishing"></a>Joker bir yayımlama kullanarak tüm uygulama proxy uygulamalarını al
 
-Bu PowerShell komut dosyası örneği, joker karakter yayımlama yı kullanan tüm Azure Active Directory (Azure AD) Uygulama Proxy uygulamalarını listeler.
+Bu PowerShell betiği örneği, joker bir yayımlama kullanan tüm Azure Active Directory (Azure AD) uygulama proxy uygulamalarını listeler.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ Bu PowerShell komut dosyası örneği, joker karakter yayımlama yı kullanan t�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Bu örnek [için AzureAD V2 PowerShell grafik modülü modülü](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) veya [Graph modülü önizleme sürümü için AzureAD V2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) gerekir.
+Bu örnek, Graf modülü (azuread) [Için Azuread v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) 'ı veya Graf modülü önizleme sürümü (azureadpreview) [Için Azuread v2 PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) 'i gerektirir.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -39,12 +39,12 @@ Bu örnek [için AzureAD V2 PowerShell grafik modülü modülü](https://docs.mi
 
 | Komut | Notlar |
 |---|---|
-|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Bir servis müdürü alır. |
-|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Azure AD uygulaması alır. |
-|[Al-AzureADApplicationProxyApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyapplication?view=azureadps-2.0) | Azure AD'de Uygulama Proxy için yapılandırılan bir uygulamayı alır. |
+|[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Hizmet sorumlusu alır. |
+|[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Bir Azure AD uygulaması alır. |
+|[Get-Azureadapplicationproxun](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyapplication?view=azureadps-2.0) | Azure AD 'de uygulama proxy 'Si için yapılandırılmış bir uygulamayı alır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD PowerShell modülü hakkında daha fazla bilgi için [Azure AD PowerShell modülüne genel bakış](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)bilgisine bakın.
+Azure AD PowerShell modülü hakkında daha fazla bilgi için bkz. [Azure AD PowerShell modülüne genel bakış](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0).
 
-Uygulama Proxy'si için diğer PowerShell örnekleri için Azure [AD Application Proxy için Azure AD PowerShell örneklerine](../application-proxy-powershell-samples.md)bakın.
+Uygulama proxy 'Si için diğer PowerShell örnekleri için bkz. Azure [ad uygulama ara sunucusu Için Azure AD PowerShell örnekleri](../application-proxy-powershell-samples.md).
