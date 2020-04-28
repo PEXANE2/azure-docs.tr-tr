@@ -1,35 +1,35 @@
 ---
-title: Windows'da Azure Service Fabric Linux kümesini ayarlama
-description: Bu makalede, Windows geliştirme makinelerinde çalışan Service Fabric Linux kümelerinin nasıl kurulacağına ilişkindir. Bu özellikle çapraz platform geliştirme için yararlıdır.
+title: Windows 'da Azure Service Fabric Linux kümesi ayarlama
+description: Bu makalede, Windows geliştirme makinelerinde çalışan Linux kümelerinin Service Fabric nasıl ayarlanacağı ele alınmaktadır. Bu, özellikle platformlar arası geliştirme için yararlıdır.
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: 9f60b9d9b919a72250038ede2a2bd53278df79cb
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1798d57f9fc4004fd2c7d1f1901fcddf850626c2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309015"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193335"
 ---
-# <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Windows geliştirici makinenizde bir Linux Service Fabric kümesi ayarlama
+# <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Windows Geliştirici makinenizde Linux Service Fabric kümesi ayarlama
 
-Bu belge, Windows geliştirme makinelerinde yerel bir Linux Hizmet Dokusunun nasıl kurulabildiğini kapsar. Yerel bir Linux kümesi kurmak, Linux kümeleri için hedeflenen ancak Windows makinesinde geliştirilen uygulamaları hızlı bir şekilde test etmek için yararlıdır.
+Bu belgede, Windows geliştirme makinelerinde yerel bir Linux Service Fabric ayarlama ele alınmaktadır. Yerel bir Linux kümesi ayarlamak, Linux kümelerine hedeflenmiş ancak bir Windows makinesinde geliştirilen uygulamaları hızlı bir şekilde test etmek için kullanışlıdır.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Linux tabanlı Service Fabric kümeleri Windows'da yerel olarak çalışmaz. Yerel bir Service Fabric kümesini çalıştırmak için önceden yapılandırılmış docker kapsayıcı görüntüsü sağlanır. Başlamadan önce şunlar gereklidir:
+Linux tabanlı Service Fabric kümeleri Windows üzerinde yerel olarak çalışmaz. Yerel bir Service Fabric kümesini çalıştırmak için önceden yapılandırılmış bir Docker kapsayıcı görüntüsü sağlanır. Başlamadan önce şunlar gereklidir:
 
 * En az 4 GB RAM
 * [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)'ın en son sürümü
-* Docker Linux modunda çalışıyor olmalı
+* Docker, Linux modunda çalışıyor olmalıdır
 
 >[!TIP]
-> * Windows'unuza Docker yüklemek için resmi Docker [belgelerinde](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) belirtilen adımları izleyebilirsiniz. 
+> * Windows 'a Docker yüklemek için resmi Docker [belgelerinde](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) bahsedilen adımları izleyebilirsiniz. 
 > * Yüklemeyi tamamladıktan sonra, [burada](https://docs.docker.com/docker-for-windows/#check-versions-of-docker-engine-compose-and-machine) anlatılan adımları izleyerek yüklemeyi doğru yaptığınızı onaylayın
 
 
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>Yerel bir kapsayıcı oluşturma ve Service Fabric’i ayarlama
-Yerel bir Docker kapsayıcısı kurmak ve üzerinde bir hizmet kumaş kümesi nin çalışmasını sağlamak için PowerShell'de aşağıdaki adımları gerçekleştirin:
+Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümesi çalıştırmak için PowerShell 'de aşağıdaki adımları gerçekleştirin:
 
 
 1. Ana bilgisayarınızda Docker daemon yapılandırmasını aşağıdakiyle güncelleştirin ve Docker daemon programını yeniden başlatın: 
@@ -40,7 +40,7 @@ Yerel bir Docker kapsayıcısı kurmak ve üzerinde bir hizmet kumaş kümesi ni
       "fixed-cidr-v6": "2001:db8:1::/64"
     }
     ```
-    Güncellemenin tavsiye edilen yolu - Docker Icon > Ayarları > Daemon >'a gidin ve orada güncelleyin. Ardından, değişikliklerin etkili olması için Docker daemon'u yeniden başlatın. 
+    Güncelleştirme için tavsiye edilen yöntem, Docker simgesine > ayarlar > Daemon > Gelişmiş ' e gidin ve orada güncelleştirin. Sonra, değişikliklerin etkili olması için Docker Daemon programını yeniden başlatın. 
 
 2. Service Fabric Görüntünüzü derlemek için yeni bir dizinde `Dockerfile` adlı bir dosya oluşturun:
 
@@ -89,18 +89,18 @@ Yerel bir Docker kapsayıcısı kurmak ve üzerinde bir hizmet kumaş kümesi ni
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. Küme başlatmak için kısa bir süre alacak, aşağıdaki komutu kullanarak günlükleri görüntüleyebilir veya kümeler [http://localhost:19080](http://localhost:19080)sağlık görüntülemek için panoya atlamak:
+5. Kümenin başlatılması kısa bir süre sürer, aşağıdaki komutu kullanarak günlükleri görüntüleyebilir veya `http://localhost:19080` küme durumunu görüntülemek için panoya atlayabilirsiniz:
 
     ```powershell 
     docker logs sftestcluster
     ```
 
-6. Adım 5 başarıyla tamamlandıktan sonra, ``http://localhost:19080`` Windows'unuzdan gidebilirsiniz ve Service Fabric gezginini görebilirsiniz. Bu noktada, Windows geliştirici makinenizden herhangi bir aracı kullanarak bu kümeye bağlanabilir ve Linux Service Fabric kümeleri için hedeflenen uygulamayı dağıtabilirsiniz. 
+6. 5. adım başarıyla tamamlandıktan sonra, Windows ``http://localhost:19080`` 'tan bölümüne giderek Service Fabric Gezginini görebilirsiniz. Bu noktada, Windows Geliştirici makinenizden herhangi bir aracı kullanarak bu kümeye bağlanabilir ve Linux Service Fabric kümelerine hedeflenmiş uygulamayı dağıtabilirsiniz. 
 
     > [!NOTE]
     > Eclipse eklentisi Windows üzerinde şu anda desteklenmemektedir. 
 
-7. İşi bittiğinde, bu komutla kapsayıcıyı durdurup temizleyin:
+7. İşiniz bittiğinde kapsayıcıyı şu komutla durdurun ve temizleyin:
 
     ```powershell 
     docker rm -f sftestcluster
@@ -113,7 +113,7 @@ Yerel bir Docker kapsayıcısı kurmak ve üzerinde bir hizmet kumaş kümesi ni
  * DNS hizmeti çalışmıyor ve desteklenmiyor [Sorun No. 132](https://github.com/Microsoft/service-fabric/issues/132)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse) ile başlayın
+* [Tutulma](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse) ile çalışmaya başlama
 * Diğer [Java örneklerine](https://github.com/Azure-Samples/service-fabric-java-getting-started) göz atın
 
 

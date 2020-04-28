@@ -6,20 +6,20 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: e97ac14c91ec9fb05b25d422680d788b4498725f
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 931114a56d774c506b0b33fe4f4fc39e564c06c7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116732"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195103"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma
 
 HDInsight Spark kümeleri [Apache Zeppelin](https://zeppelin.apache.org/) not defterlerini içerir. Apache Spark işleri çalıştırmak için not defterlerini kullanın. Bu makalede, bir HDInsight kümesinde Zeppelin Not defterini kullanmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 * Kümelerinizin birincil depolama alanı için URI şeması. Düzen `wasb://` , Azure Data Lake Storage 2. veya `abfs://` `adl://` Azure Data Lake Storage 1. için Azure Blob depolama alanı olacaktır. BLOB depolama için güvenli aktarım etkinse URI olur `wasbs://`.  Daha fazla bilgi için bkz. [Azure Storage 'da güvenli aktarım gerektir](../../storage/common/storage-require-secure-transfer.md) .

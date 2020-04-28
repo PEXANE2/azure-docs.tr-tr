@@ -1,70 +1,70 @@
 ---
-title: Azure SQL Veritabanına veri okumak ve yazmak için Apache Spark'ı kullanma
-description: HDInsight Spark kümesi ile Azure SQL Veritabanı arasında nasıl bağlantı kurup kurmayı öğrenin. Verileri okumak, veri yazmak ve verileri SQL veritabanına aktarmak için
+title: Azure SQL veritabanı 'na veri okumak ve yazmak için Apache Spark kullanma
+description: HDInsight Spark kümesi ile Azure SQL veritabanı arasında bağlantı ayarlamayı öğrenin. Verileri okumak, veri yazmak ve bir SQL veritabanına veri akışı yapmak için
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 4e783a233bd35e012c02fbbbdc7f4223552fc734
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: c04280bf1cffea08204e1ea5ab54dbb87c23cf9b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81686856"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193216"
 ---
-# <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Azure SQL Veritabanına veri okumak ve yazmak için HDInsight Spark kümesini kullanın
+# <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Azure SQL veritabanı 'na veri okumak ve yazmak için HDInsight Spark kümesi kullanma
 
-Azure HDInsight'taki Bir Apache Spark kümesini Azure SQL Veritabanı'na nasıl bağlayabilirsiniz öğrenin. Ardından verileri SQL veritabanına okuyun, yazın ve aktarın. Bu makaledeki yönergeler, Scala kod parçacıklarını çalıştırmak için bir Jupyter Notebook kullanır. Ancak, Scala veya Python'da bağımsız bir uygulama oluşturabilir ve aynı görevleri yapabilirsiniz.
+Azure HDInsight 'ta bir Apache Spark kümesini Azure SQL veritabanı ile bağlamayı öğrenin. Sonra verileri SQL veritabanına okuyun, yazın ve veri akışını yapın. Bu makaledeki yönergeler, Scala kod parçacıklarını çalıştırmak için bir Jupyter Notebook kullanır. Ancak, Scala veya Python 'da tek başına bir uygulama oluşturabilir ve aynı görevleri gerçekleştirebilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure HDInsight Spark kümesi.  [HDInsight'ta Apache Spark kümesi oluştur'daki](apache-spark-jupyter-spark-sql.md)yönergeleri izleyin.
+* Azure HDInsight Spark küme.  [HDInsight 'ta Apache Spark kümesi oluşturma bölümündeki](apache-spark-jupyter-spark-sql.md)yönergeleri izleyin.
 
-* Azure SQL Veritabanı çözümünü karşılaştırabilirsiniz. Azure SQL [Veritabanı Oluştur'daki](../../sql-database/sql-database-get-started-portal.md)yönergeleri izleyin. Örnek **AdventureWorksLT** şeması ve verileri içeren bir veritabanı oluşturduğunuzdan emin olun. Ayrıca, istemcinizin IP adresinin sunucudaki SQL veritabanına erişmesine izin vermek için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturduğunuzdan emin olun. Güvenlik duvarı kuralını ekleme yönergeleri aynı makalede kullanılabilir. Azure SQL Veritabanınızı oluşturduktan sonra, aşağıdaki değerleri kullanışlı tuttuğunızdan emin olun. Bir Kıvılcım kümesinden veritabanına bağlanmak için bunlara ihtiyacınız vardır.
+* Azure SQL Veritabanı çözümünü karşılaştırabilirsiniz. [Azure SQL veritabanı oluşturma](../../sql-database/sql-database-get-started-portal.md)bölümündeki yönergeleri izleyin. Örnek **AdventureWorksLT** şeması ve verilerle bir veritabanı oluşturduğunuzdan emin olun. Ayrıca, istemci IP adresinin sunucudaki SQL veritabanına erişmesine izin vermek için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturduğunuzdan emin olun. Güvenlik duvarı kuralını ekleme yönergeleri aynı makalede bulunur. Azure SQL veritabanınızı oluşturduktan sonra, aşağıdaki değerleri yararlı tutmanız gerekir. Bir Spark kümesinden veritabanına bağlanmanız gerekir.
 
-    * Azure SQL Veritabanı'nı barındıran sunucu adı.
-    * Azure SQL Veritabanı adı.
-    * Azure SQL Database admin kullanıcı adı / şifre.
+    * Azure SQL veritabanını barındıran sunucu adı.
+    * Azure SQL veritabanı adı.
+    * Azure SQL veritabanı yönetici Kullanıcı adı/parolası.
 
-* SQL Server Management Studio (SSMS). Verileri bağlamak [ve sorgulamak için SSMS'i kullan yönergelerini](../../sql-database/sql-database-connect-query-ssms.md)izleyin.
+* SQL Server Management Studio (SSMS). [Verileri bağlanmak ve sorgulamak IÇIN SSMS kullanma](../../sql-database/sql-database-connect-query-ssms.md)yönergelerini izleyin.
 
 ## <a name="create-a-jupyter-notebook"></a>Jupyter Notebook oluşturma
 
-Kıvılcım kümesiyle ilişkili bir Jupyter Notebook oluşturarak başlayın. Bu not defterini, bu makalede kullanılan kod parçacıklarını çalıştırmak için kullanırsınız.
+Spark kümesiyle ilişkili bir Jupyter Notebook oluşturarak başlayın. Bu makalede kullanılan kod parçacıklarını çalıştırmak için bu not defterini kullanırsınız.
 
-1. Azure [portalından](https://portal.azure.com/)kümenizi açın.
-1. Sağ taraftaki Küme **panolarının** altındaki **Jupyter dizüstü bilgisayarını** seçin.  **Küme panolarını**görmüyorsanız, sol menüden **Genel Bakış'ı** seçin. İstenirse, küme için yönetici kimlik bilgilerini girin.
+1. [Azure Portal](https://portal.azure.com/), kümenizi açın.
+1. Sağ taraftaki **küme panoları** altında **Jupyter Not defteri** ' ni seçin.  **Küme panoları**görmüyorsanız, sol menüden **genel bakış** ' ı seçin. İstenirse, küme için yönetici kimlik bilgilerini girin.
 
-    ![Apache Spark üzerinde Jupyter dizüstü bilgisayar](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Kıvılcım üzerinde Jupyter dizüstü bilgisayar")
+    ![Apache Spark Jupyter Not defteri](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark üzerinde Jupyter Not defteri")
 
    > [!NOTE]  
-   > Ayrıca tarayıcınızda aşağıdaki URL'yi açarak Spark kümesindeki Jupyter dizüstü bilgisayarına da erişebilirsiniz. **CLUSTERNAME** değerini kümenizin adıyla değiştirin:
+   > Ayrıca, tarayıcınızda aşağıdaki URL 'YI açarak Spark kümesinde Jupyter not defterine erişebilirsiniz. **CLUSTERNAME** değerini kümenizin adıyla değiştirin:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-1. Jupyter dizüstü bilgisayarında, sağ üst köşeden **Yeni'yi**tıklatın ve ardından Bir Scala dizüstü bilgisayar oluşturmak için **Spark'ı** tıklatın. HDInsight Spark kümesindeki jupyter dizüstü bilgisayarlar da Python2 uygulamaları için **PySpark** çekirdeğini ve Python3 uygulamaları için **PySpark3** çekirdeğini sağlar. Bu makale için bir Scala dizüstü bilgisayar oluşturuyoruz.
+1. Jupyter not defterinde, sağ üst köşeden **Yeni**' ye ve ardından **Spark** ' a tıklayarak bir Scala Not defteri oluşturun. HDInsight Spark kümesindeki jupi Not defterleri, Python2 uygulamaları için **Pyspark** çekirdeği ve Python3 uygulamaları için **PySpark3** çekirdeğini de sağlar. Bu makalede bir Scala Not defteri oluşturacağız.
 
-    ![Kıvılcım jupyter dizüstü için Çekirdekler](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Kıvılcım jupyter dizüstü için Çekirdekler")
+    ![Spark 'ta Jupyter Not defteri için kernels](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Spark 'ta Jupyter Not defteri için kernels")
 
     Çekirdekler hakkında daha fazla bilgi için bkz. [HDInsight’ta Apache Spark kümeleri ile Jupyter not defterleri kullanma](apache-spark-jupyter-notebook-kernels.md).
 
    > [!NOTE]  
-   > Bu makalede, Spark'tan SQL veritabanına veri akışı yalnızca Şu anda Yalnızca Scala ve Java'da desteklendirilmediği için bir Spark (Scala) çekirdeği kullanıyoruz. Bu makalede tutarlılık için Python kullanılarak SQL'den okuma ve SQL'e yazma işlemi yapılabilse de, her üç işlem için de Scala'yı kullanıyoruz.
+   > Bu makalede Spark (Scala) çekirdeği kullanıyoruz çünkü Spark 'tan SQL veritabanı 'na veri akışı yalnızca Scala ve Java 'da desteklenmektedir. SQL 'e okuma ve yazma işlemi, bu makalede tutarlılık için Python kullanılarak yapılabilir, ancak üç işlem için de Scala kullanırız.
 
-1. Yeni bir not defteri varsayılan adı ile açılır, **Adsız**. Not defteri adını tıklatın ve seçtiğiniz bir ad girin.
+1. Varsayılan adla yeni bir not defteri **açılır.** Not defteri adına tıklayın ve seçtiğiniz bir adı girin.
 
     ![Not defteri adını belirtme](./media/apache-spark-connect-to-sql-database/hdinsight-spark-jupyter-notebook-name.png "Not defteri adını belirtme")
 
 Artık uygulamanızı oluşturmaya başlayabilirsiniz.
 
-## <a name="read-data-from-azure-sql-database"></a>Azure SQL Veritabanı'ndan verileri okuma
+## <a name="read-data-from-azure-sql-database"></a>Azure SQL veritabanı 'ndan veri okuma
 
-Bu bölümde, AdventureWorks veritabanında bulunan bir tablodaki verileri (örneğin **SalesLT.Address)** okuyun.
+Bu bölümde, AdventureWorks veritabanında bulunan bir tablodan (örneğin, **SalesLT. Address**) verileri okuyabilirsiniz.
 
-1. Yeni bir Jupyter not defterinde, bir kod hücresinde, aşağıdaki snippet'i yapıştırın ve yer tutucu değerlerini Azure SQL Veritabanınızın değerleriyle değiştirin.
+1. Yeni bir Jupyter not defterinde, bir kod hücresinde aşağıdaki kod parçacığını yapıştırın ve yer tutucu değerlerini Azure SQL veritabanınızın değerleriyle değiştirin.
 
     ```scala
     // Declare the values for your Azure SQL database
@@ -78,7 +78,7 @@ Bu bölümde, AdventureWorks veritabanında bulunan bir tablodaki verileri (örn
 
     Kod hücresini çalıştırmak için **SHIFT + ENTER** tuşlarına basın.  
 
-1. Spark veri çerçevesi API'lerine geçirebileceğiniz bir JDBC URL'si oluşturmak için aşağıdaki snippet'i kullanın. Kod parametreleri `Properties` tutmak için bir nesne oluşturur. Bir kod hücresine snippet yapıştırın ve çalıştırmak için **SHIFT + ENTER** tuşuna basın.
+1. Spark dataframe API 'Lerine geçirebilmeniz için bir JDBC URL 'SI oluşturmak üzere aşağıdaki kod parçacığını kullanın. Kod, parametreleri tutacak `Properties` bir nesne oluşturur. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
     ```scala
     import java.util.Properties
@@ -89,13 +89,13 @@ Bu bölümde, AdventureWorks veritabanında bulunan bir tablodaki verileri (örn
     connectionProperties.put("password", s"${jdbcPassword}")
     ```
 
-1. Azure SQL Veritabanınızdaki bir tablodaki verilerle birlikte bir veri çerçevesi oluşturmak için aşağıdaki snippet'i kullanın. Bu snippet'te, `SalesLT.Address` **AdventureWorksLT** veritabanının bir parçası olarak kullanılabilen bir tablo kullanıyoruz. Bir kod hücresine snippet yapıştırın ve çalıştırmak için **SHIFT + ENTER** tuşuna basın.
+1. Azure SQL veritabanınızdaki bir tablodaki verilerle bir dataframe oluşturmak için aşağıdaki kod parçacığını kullanın. Bu kod parçacığında, **AdventureWorksLT** veritabanının bir `SalesLT.Address` parçası olarak kullanılabilen bir tablo kullanıyoruz. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
     ```scala
     val sqlTableDF = spark.read.jdbc(jdbc_url, "SalesLT.Address", connectionProperties)
     ```
 
-1. Artık veri şemasını almak gibi veri çerçevesi üzerinde işlemler yapabilirsiniz:
+1. Artık dataframe üzerinde, veri şemasını alma gibi işlemler yapabilirsiniz:
 
     ```scala
     sqlTableDF.printSchema
@@ -103,25 +103,25 @@ Bu bölümde, AdventureWorks veritabanında bulunan bir tablodaki verileri (örn
 
     Aşağıdaki görüntüye benzer bir çıktı görürsünüz:
 
-    ![şema çıktısı](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "şema çıktısı")
+    ![şema çıkışı](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "şema çıkışı")
 
-1. En iyi 10 satırı almak gibi işlemler de yapabilirsiniz.
+1. Ayrıca, ilk 10 satırı alma gibi işlemleri de yapabilirsiniz.
 
     ```scala
     sqlTableDF.show(10)
     ```
 
-1. Veya veri kümesinden belirli sütunları alın.
+1. Ya da veri kümesinden belirli sütunları alın.
 
     ```scala
     sqlTableDF.select("AddressLine1", "City").show(10)
     ```
 
-## <a name="write-data-into-azure-sql-database"></a>Azure SQL Veritabanına veri yazma
+## <a name="write-data-into-azure-sql-database"></a>Azure SQL veritabanı 'na veri yazma
 
-Bu bölümde, Azure SQL Veritabanı'nda bir tablo oluşturmak ve verilerle doldurmak için kümede kullanılabilen örnek bir CSV dosyası kullanıyoruz. Örnek CSV dosyası **(HVAC.csv)** tüm HDInsight kümelerinde `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv`mevcuttur.
+Bu bölümde, Azure SQL veritabanı 'nda tablo oluşturmak ve verileri veriyle doldurmak için kümede bulunan örnek bir CSV dosyası kullanıyoruz. Örnek CSV dosyası (**HVAC. csv**), adresindeki `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv`tüm HDInsight kümelerinde kullanılabilir.
 
-1. Yeni bir Jupyter not defterinde, bir kod hücresinde, aşağıdaki snippet'i yapıştırın ve yer tutucu değerlerini Azure SQL Veritabanınızın değerleriyle değiştirin.
+1. Yeni bir Jupyter not defterinde, bir kod hücresinde aşağıdaki kod parçacığını yapıştırın ve yer tutucu değerlerini Azure SQL veritabanınızın değerleriyle değiştirin.
 
     ```scala
     // Declare the values for your Azure SQL database
@@ -135,7 +135,7 @@ Bu bölümde, Azure SQL Veritabanı'nda bir tablo oluşturmak ve verilerle doldu
 
     Kod hücresini çalıştırmak için **SHIFT + ENTER** tuşlarına basın.  
 
-1. Aşağıdaki parçacık, Spark veri çerçevesi API'lerine geçirebileceğiniz bir JDBC URL'si oluşturur. Kod parametreleri `Properties` tutmak için bir nesne oluşturur. Bir kod hücresine snippet yapıştırın ve çalıştırmak için **SHIFT + ENTER** tuşuna basın.
+1. Aşağıdaki kod parçacığı Spark dataframe API 'Lerine geçirebilmeniz için bir JDBC URL 'SI oluşturur. Kod, parametreleri tutacak `Properties` bir nesne oluşturur. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
     ```scala
     import java.util.Properties
@@ -146,53 +146,53 @@ Bu bölümde, Azure SQL Veritabanı'nda bir tablo oluşturmak ve verilerle doldu
     connectionProperties.put("password", s"${jdbcPassword}")
     ```
 
-1. HVAC.csv'deki verilerin şemasını ayıklamak ve csv'deki verileri bir veri çerçevesiiçinde yüklemek için şemayı kullanmak `readDf`için aşağıdaki snippet'i kullanın. Bir kod hücresine snippet yapıştırın ve çalıştırmak için **SHIFT + ENTER** tuşuna basın.
+1. HVAC. csv içindeki verilerin şemasını ayıklamak için aşağıdaki kod parçacığını kullanın ve veri çerçevesindeki CSV 'den verileri yüklemek için şemayı kullanın `readDf`. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
     ```scala
     val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
     val readDf = spark.read.format("csv").schema(userSchema).load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
     ```
 
-1. Geçici `readDf` bir tablo oluşturmak için `temphvactable`veri çerçevesini kullanın. Sonra bir kovan tablosu oluşturmak için `hvactable_hive`geçici tablo kullanın.
+1. Geçici bir `readDf` tablo oluşturmak için veri çerçevesini kullanın `temphvactable`. Ardından, `hvactable_hive`bir Hive tablosu oluşturmak için geçici tabloyu kullanın.
 
     ```scala
     readDf.createOrReplaceTempView("temphvactable")
     spark.sql("create table hvactable_hive as select * from temphvactable")
     ```
 
-1. Son olarak, Azure SQL Veritabanı'nda bir tablo oluşturmak için kovan tablosunu kullanın. Aşağıdaki parçacık Azure SQL `hvactable` Veritabanı'nda oluşturulur.
+1. Son olarak, Hive tablosunu kullanarak Azure SQL veritabanı 'nda tablo oluşturun. Aşağıdaki kod parçacığı Azure `hvactable` SQL veritabanı 'nda oluşturulur.
 
     ```scala
     spark.table("hvactable_hive").write.jdbc(jdbc_url, "hvactable", connectionProperties)
     ```
 
-1. SSMS kullanarak Azure SQL Veritabanı'na bağlanın `dbo.hvactable` ve orada bir veritabanı gördüğünüzden doğrulayın.
+1. SSMS kullanarak Azure SQL veritabanı 'na bağlanın ve `dbo.hvactable` burada görmediğinizi doğrulayın.
 
-    a. Aşağıdaki ekran görüntüsünde gösterildiği gibi bağlantı ayrıntılarını sağlayarak SSMS'i başlatın ve Azure SQL Veritabanı'na bağlanın.
+    a. SSMS 'yi başlatın ve aşağıdaki ekran görüntüsünde gösterildiği gibi bağlantı ayrıntılarını sağlayarak Azure SQL veritabanına bağlanın.
 
-    ![SSMS1'i kullanarak SQL veritabanına bağlanın](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "SSMS1'i kullanarak SQL veritabanına bağlanın")
+    ![SSMS1 kullanarak SQL veritabanı 'na bağlanma](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "SSMS1 kullanarak SQL veritabanı 'na bağlanma")
 
-    b. **Object**Explorer'dan, oluşturulan **dbo.hvactable'ı** görmek için Azure SQL Veritabanı'nı ve Tablo düğümlerini genişletin.
+    b. **Nesne Gezgini**, Azure SQL veritabanı ve tablo düğümünü genişleterek **dbo. hboş tablosunun** oluşturulduğunu görüntüleyin.
 
-    ![SSMS2'yi kullanarak SQL veritabanına bağlanın](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "SSMS2'yi kullanarak SQL veritabanına bağlanın")
+    ![SSMS2 kullanarak SQL veritabanı 'na bağlanma](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "SSMS2 kullanarak SQL veritabanı 'na bağlanma")
 
-1. Tablodaki sütunları görmek için SSMS'te bir sorgu çalıştırın.
+1. Tablodaki sütunları görmek için SSMS 'de bir sorgu çalıştırın.
 
     ```sql
     SELECT * from hvactable
     ```
 
-## <a name="stream-data-into-azure-sql-database"></a>Verileri Azure SQL Veritabanına aktarın
+## <a name="stream-data-into-azure-sql-database"></a>Azure SQL veritabanı 'na veri akışı
 
-Bu bölümde, verileri `hvactable` önceki bölümde Azure SQL Veritabanı'nda oluşturduğunuz veri akışı.
+Bu bölümde, önceki bölümde yer alan Azure SQL `hvactable` veritabanı 'nda zaten oluşturduğunuz ' a veri akışı yaptık.
 
-1. İlk adım olarak, `hvactable`hiçbir kayıt olduğundan emin olun. SSMS kullanarak, tabloda aşağıdaki sorguyu çalıştırın.
+1. İlk adım olarak, içinde hiçbir kayıt bulunmadığından emin olun `hvactable`. SSMS 'yi kullanarak tabloda aşağıdaki sorguyu çalıştırın.
 
     ```sql
     TRUNCATE TABLE [dbo].[hvactable]
     ```
 
-1. HDInsight Spark kümesinde yeni bir Jupyter dizüstü bilgisayar oluşturun. Bir kod hücresinde, aşağıdaki snippet yapıştırın ve sonra **SHIFT + ENTER**tuşuna basın :
+1. HDInsight Spark kümesinde yeni bir Jupyter Not defteri oluşturun. Bir kod hücresinde aşağıdaki kod parçacığını yapıştırın ve ardından **SHIFT + enter**tuşlarına basın:
 
     ```scala
     import org.apache.spark.sql._
@@ -202,7 +202,7 @@ Bu bölümde, verileri `hvactable` önceki bölümde Azure SQL Veritabanı'nda o
     import java.sql.{Connection,DriverManager,ResultSet}
     ```
 
-1. **Biz HVAC.csv** içine veri `hvactable`akışı . HVAC.csv dosyası kümede ' `/HdiSamples/HdiSamples/SensorSampleData/HVAC/`de mevcuttur. Aşağıdaki snippet' te, önce verilerin şemasını akışlı olarak elde ediyoruz. Daha sonra, bu şema kullanarak bir akış veri çerçevesi oluştururuz. Bir kod hücresine snippet yapıştırın ve çalıştırmak için **SHIFT + ENTER** tuşuna basın.
+1. **HVAC. csv** dosyasından veri akışı `hvactable`. HVAC. csv dosyası, konumundaki `/HdiSamples/HdiSamples/SensorSampleData/HVAC/`kümede kullanılabilir. Aşağıdaki kod parçacığında, ilk olarak akışa alınacak verilerin şemasını alırız. Daha sonra, bu şemayı kullanarak bir akış veri çerçevesi oluşturacağız. Parçacığı bir kod hücresine yapıştırın ve çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
     ```scala
     val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
@@ -210,11 +210,11 @@ Bu bölümde, verileri `hvactable` önceki bölümde Azure SQL Veritabanı'nda o
     readStreamDf.printSchema
     ```
 
-1. Çıktı **HVAC.csv**şema gösterir. Aynı `hvactable` şema da var. Çıktı, tablodaki sütunları listeler.
+1. Çıkış **HVAC. csv**şemasını gösterir. Aynı `hvactable` şemaya da sahiptir. Çıktı, tablodaki sütunları listeler.
 
-    !['hdinsight Apache Kıvılcım şeması tablosu'](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Tablo şeması")
+    ![' HDInsight Apache Spark şeması tablosu '](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Tablo şeması")
 
-1. Son olarak, HVAC.csv'deki verileri okumak ve Azure SQL `hvactable` Veritabanı'nda aktarmak için aşağıdaki snippet'i kullanın. Bir kod hücresine parçacık yapıştırın, yer tutucu değerlerini Azure SQL Veritabanınızın değerleriyle değiştirin ve çalıştırmak için **SHIFT + ENTER** tuşuna basın.
+1. Son olarak, HVAC. csv dosyasından verileri okumak ve Azure SQL veritabanı `hvactable` 'nda ' de akışa almak için aşağıdaki kod parçacığını kullanın. Parçacığı bir kod hücresine yapıştırın, yer tutucu değerlerini Azure SQL veritabanınızın değerleriyle değiştirin ve ardından çalıştırmak için **SHIFT + enter** tuşlarına basın.
 
     ```scala
     val WriteToSQLQuery  = readStreamDf.writeStream.foreach(new ForeachWriter[Row] {
@@ -257,7 +257,7 @@ Bu bölümde, verileri `hvactable` önceki bölümde Azure SQL Veritabanı'nda o
     var streamingQuery = WriteToSQLQuery.start()
     ```
 
-1. SQL Server Management Studio'da `hvactable` (SSMS) aşağıdaki sorguyu çalıştırarak verilerin aktarıldığını doğrulayın. Sorguyu her çalıştırdığınızda, tablodaki satır sayısının arta geldiğini gösterir.
+1. SQL Server Management Studio (SSMS) ' de aşağıdaki sorguyu `hvactable` çalıştırarak verilerin öğesine aktarılmakta olduğunu doğrulayın. Sorguyu her çalıştırdığınızda, tablodaki satır sayısını artan şekilde gösterir.
 
     ```sql
     SELECT COUNT(*) FROM hvactable
@@ -265,6 +265,6 @@ Bu bölümde, verileri `hvactable` önceki bölümde Azure SQL Veritabanı'nda o
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Veri Gölü Depolama'daki verileri analiz etmek için HDInsight Spark kümesini kullanın](apache-spark-use-with-data-lake-store.md)
-* [Azure HDInsight'ta apache Spark kümesinde veri yükleme ve sorgu çalıştırma](apache-spark-load-data-run-query.md)
-* [HDInsight'ta Apache Kafka ile Apache Spark Structured Streaming'i kullanma](../hdinsight-apache-kafka-spark-structured-streaming.md)
+* [Data Lake Storage verileri çözümlemek için HDInsight Spark kümesini kullanma](apache-spark-use-with-data-lake-store.md)
+* [Azure HDInsight 'ta Apache Spark kümesinde verileri yükleme ve sorguları çalıştırma](apache-spark-load-data-run-query.md)
+* [HDInsight üzerinde Apache Kafka ile yapılandırılmış Apache Spark akışını kullanma](../hdinsight-apache-kafka-spark-structured-streaming.md)

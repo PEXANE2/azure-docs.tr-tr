@@ -1,68 +1,69 @@
 ---
-title: HDInsight'ta Azure Veri Gölü Depolama Gen2'ye genel bakış
-description: HDInsight'ta Veri Gölü Depolama Gen2'ye Genel Bakış.
+title: HDInsight 'ta Azure Data Lake Storage 2. genel bakış
+description: HDInsight 'ta Data Lake Storage 2. genel bakış.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 677d8348cc230e4f64915ac5fc1e86b9b50ab5c3
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: a7ae1a0f77d0d19fc48695ddc5cc3d3a14d65ab9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873348"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195137"
 ---
-# <a name="azure-data-lake-storage-gen2-overview-in-hdinsight"></a>HDInsight'ta Azure Veri Gölü Depolama Gen2'ye genel bakış
+# <a name="azure-data-lake-storage-gen2-overview-in-hdinsight"></a>HDInsight 'ta Azure Data Lake Storage 2. genel bakış
 
-Azure Veri Gölü Depolama Gen2, Azure Veri Gölü Depolama Gen1'in temel özelliklerini alır ve Azure Blob depolama alanına entegre eder. Bu özellikler arasında Hadoop, Azure Etkin Dizin (Azure AD) ve POSIX tabanlı erişim denetim listeleri (AçS) ile uyumlu bir dosya sistemi bulunur. Bu kombinasyon, Azure Veri Gölü Depolama Gen1'in performansından yararlanmanızı sağlar. Blob depolamanın katmanlama ve veri yaşam döngüsü yönetimini kullanırken.
+Azure Data Lake Storage 2., Azure Data Lake Storage 1. temel özellikleri alır ve bunları Azure Blob depolama alanına tümleştirir. Bu özellikler Hadoop, Azure Active Directory (Azure AD) ve POSIX tabanlı erişim denetim listeleri (ACL 'Ler) ile uyumlu bir dosya sistemi içerir. Bu bileşim Azure Data Lake Storage 1. performansından yararlanmanızı sağlar. Ayrıca, blob depolamanın katmanlama ve veri yaşam döngüsü yönetimini de kullanıyor.
 
-Azure Veri Gölü Depolama Gen2 hakkında daha fazla bilgi için [bkz.](../storage/blobs/data-lake-storage-introduction.md)
+Azure Data Lake Storage 2. hakkında daha fazla bilgi için bkz. [Azure Data Lake Storage 2. giriş](../storage/blobs/data-lake-storage-introduction.md).
 
-## <a name="core-functionality-of-azure-data-lake-storage-gen2"></a>Azure Veri Gölü Depolama Gen2'nin temel işlevselliği
+## <a name="core-functionality-of-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. temel işlevselliği
 
-* **Hadoop ile uyumlu erişim:** Azure Veri Gölü Depolama Gen2'de, hadoop Dağıtılmış Dosya Sistemi (HDFS) ile verileri olduğu gibi yönetebilir ve erişebilirsiniz. Azure Blob Dosya Sistemi (ABFS) sürücüsü, Azure HDInsight ve Azure Databricks dahil olmak üzere tüm Apache Hadoop ortamlarında kullanılabilir. Veri Gölü Depolama Gen2'de depolanan verilere erişmek için ABFS'yi kullanın.
+* **Hadoop ile uyumlu olan erişim:** Azure Data Lake Storage 2., verileri bir Hadoop Dağıtılmış Dosya Sistemi (bir) ile yaptığınız gibi yönetebilir ve erişebilirsiniz. Azure blob dosya sistemi (ABFS) sürücüsü, Azure HDInsight ve Azure Databricks dahil olmak üzere tüm Apache Hadoop ortamlarında kullanılabilir. Data Lake Storage 2. depolanan verilere erişmek için ABFS kullanın.
 
-* **POSIX izinlerinin bir üst kümesi:** Data Lake Gen2'nin güvenlik modeli, ACL ve POSIX izinlerinin yanı sıra Data Lake Storage Gen2'ye özgü bazı ekstra parçalılıkları destekler. Ayarlar yönetici araçları veya Apache Hive ve Apache Spark gibi çerçeveler aracılığıyla yapılandırılabilir.
+* **POSIX Izinlerinin bir üst kümesi:** Data Lake Gen2 için güvenlik modeli, Data Lake Storage 2. özgü bazı ayrıntı düzeyi ile birlikte ACL ve POSIX izinlerini destekler. Ayarlar, Apache Hive ve Apache Spark gibi yönetim araçları veya çerçeveler aracılığıyla yapılandırılabilir.
 
-* **Maliyet etkinliği:** Data Lake Storage Gen2 düşük maliyetli depolama kapasitesi ve işlemleri sunar. Azure Blob depolama yaşam döngüleri, veriler yaşam döngüsü boyunca ilerlerken faturalandırma oranlarını ayarlayarak maliyetleri düşürmeye yardımcı olur.
+* **Maliyet verimliliği:** Data Lake Storage 2. düşük maliyetli depolama kapasitesi ve işlemler sunar. Azure Blob depolama ömrü döngüleri, verilerin yaşam döngüsü boyunca taşınmasıyla faturalandırma tarifelerinin daha düşük maliyetlerine yardımcı olur.
 
-* **Blob depolama araçları, çerçeveleri ve uygulamalarıyla uyumluluk:** Data Lake Storage Gen2, Blob depolama için çok çeşitli araçlar, çerçeveler ve uygulamalarla çalışmaya devam etmektedir.
+* **BLOB depolama araçları, çerçeveler ve uygulamalarla uyumluluk:** Data Lake Storage 2. blob depolamaya yönelik geniş bir araç, çerçeve ve uygulama dizisiyle çalışmaya devam eder.
 
-* **Optimize edilmiş sürücü:** ABFS sürücüsü özellikle büyük veri analitiği için optimize edilebiyi tasarlar. İlgili REST API'leri dağıtılmış dosya sistemi (DFS) bitiş noktası, dfs.core.windows.net ile su yüzüne çıkar.
+* **İyileştirilmiş sürücü:** ABFS sürücüsü, büyük veri analizi için özel olarak iyileştirilmiştir. Karşılık gelen REST API 'Leri, dağıtılmış dosya sistemi (DFS) uç noktası üzerinden dfs.core.windows.net.
 
-## <a name="whats-new-for-azure-data-lake-storage-gen-2"></a>Azure Veri Gölü Depolama Gen 2 için yenilikler
+## <a name="whats-new-for-azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2 ' deki yenilikler
 
-### <a name="managed-identities-for-secure-file-access"></a>Güvenli dosya erişimi için yönetilen kimlikler
+### <a name="managed-identities-for-secure-file-access"></a>Güvenli dosya erişimi için Yönetilen kimlikler
 
-Azure HDInsight, Azure Veri Gölü Depolama Gen2'deki dosyalara küme erişimini güvence altına almak için yönetilen kimlikleri kullanır. Yönetilen kimlikler, Azure hizmetlerine otomatik olarak yönetilen kimlik bilgileri kümesi sağlayan Azure Etkin Dizin özelliğidir. Bu kimlik bilgileri, Etkin Dizin kimlik doğrulamasını destekleyen herhangi bir hizmetin kimliğini doğrulamak için kullanılabilir. Yönetilen kimlikleri kullanmak, kimlik bilgilerini kod veya yapılandırma dosyalarında depolamanızı gerektirmez.
+Azure HDInsight, Azure Data Lake Storage 2. içindeki dosyalara küme erişiminin güvenliğini sağlamak için Yönetilen kimlikler kullanır. Yönetilen kimlikler, Azure hizmetlerini otomatik olarak yönetilen kimlik bilgileri kümesiyle sağlayan Azure Active Directory özelliğidir. Bu kimlik bilgileri, Active Directory kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanılabilir. Yönetilen kimliklerin kullanılması, kimlik bilgilerini kod veya yapılandırma dosyalarında depolamanızı gerektirmez.
 
-Daha fazla bilgi için Azure [kaynakları için Yönetilen kimlikler'e](../active-directory/managed-identities-azure-resources/overview.md)bakın.
+Daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
 
-### <a name="azure-blob-file-system-driver"></a>Azure Blob Dosya Sistemi sürücüsü
+### <a name="azure-blob-file-system-driver"></a>Azure blob dosya sistemi sürücüsü
 
-Apache Hadoop uygulamaları yerel disk depolama dan veri okumak ve yazmak için yerli bekliyoruz. ABFS gibi hadoop dosya sistemi sürücüsü, Hadoop uygulamalarının bulut depolama yla çalışmasını sağlar. Düzenli Hadoop dosya sistemi işlemlerini taklit ederek çalışır. Sürücü, uygulamadan alınan komutları gerçek bulut depolama platformunun anladığı işlemlere dönüştürür.
+Apache Hadoop uygulamalar yerel disk depolamadan veri okumayı ve yazmayı bekler. ABFS gibi bir Hadoop dosya sistemi sürücüsü, Hadoop uygulamalarının bulut depolamayla çalışmasını sağlar. , Normal Hadoop dosya sistemi işlemlerine öykünürken işe yarar. Sürücü, uygulamadan alınan komutları gerçek bulut depolama platformunun anladığı işlemlere dönüştürür.
 
-Daha önce Hadoop dosya sistemi sürücüsü, tüm dosya sistemi işlemlerini istemci tarafındaki Azure Depolama REST API çağrılarına dönüştürmüştü. Ve sonra REST API çağırdı. Ancak bu istemci tarafı dönüştürme, birden çok REST API çağrısıyla, bir dosyanın yeniden adlandırılması gibi tek bir dosya sistemi çalışması için çağrı yapılmasıyla sonuçlanır. ABFS, Hadoop dosya sistemi mantığını istemci tarafından sunucu tarafına taşıdı. Azure Veri Gölü Depolama Gen2 API artık Blob API ile paralel olarak çalışır. Artık yaygın Hadoop dosya sistemi işlemleri tek bir REST API çağrısıyla yürütülebileceğinden, bu geçiş performansı artırır.
+Daha önce, Hadoop dosya sistemi sürücüsü, tüm dosya sistemi işlemlerini istemci tarafında Azure depolama REST API olarak dönüştüryordu. Ve sonra REST API çağırılır. Bununla birlikte, bu istemci tarafı dönüştürmesi, bir dosyanın yeniden adlandırılması gibi tek bir dosya sistemi işlemi için birden çok REST API çağrısı sonucu oluşur. ABFS, Hadoop dosya sistemi mantığını istemci tarafından sunucu kenarına taşımıştır. Azure Data Lake Storage 2. API 'SI artık BLOB API 'SI ile paralel olarak çalışır. Artık yaygın Hadoop dosya sistemi işlemleri tek bir REST API çağrısıyla yürütülemediğinden, bu geçiş performansı geliştirir.
 
-Daha fazla bilgi için [Bkz. Azure Blob Filesystem sürücüsü (ABFS): Hadoop için özel bir Azure Depolama sürücüsü.](../storage/blobs/data-lake-storage-abfs-driver.md)
+Daha fazla bilgi için bkz. [Azure blob dosya sistemi sürücüsü (ABFS): Hadoop için adanmış bir Azure depolama sürücüsü](../storage/blobs/data-lake-storage-abfs-driver.md).
 
-### <a name="uri-scheme-for-azure-data-lake-storage-gen-2"></a>Azure Veri Gölü Depolama Gen 2 için URI şeması
+### <a name="uri-scheme-for-azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2 için URI düzeni
 
-Azure Veri Gölü Depolama Gen2, AZURE Depolama'daki dosyalara HDInsight'tan erişmek için yeni bir URI şeması kullanır:
+Azure Data Lake Storage 2., HDInsight 'tan Azure Storage 'daki dosyalara erişmek için yeni bir URI şeması kullanır:
 
 `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
 
-URI şeması SSL şifreli erişim sağlar.
+URI şeması, SSL şifreli erişim sağlar.
 
-`<FILE_SYSTEM_NAME>`dosya sistemi Veri Gölü Depolama Gen2 yolunu tanımlar.
+`<FILE_SYSTEM_NAME>`Data Lake Storage 2. dosya sisteminin yolunu tanımlar.
 
-`<ACCOUNT_NAME>`Azure Depolama hesap adını tanımlar. Tam uygun etki alanı adı (FQDN) gereklidir.
+`<ACCOUNT_NAME>`Azure depolama hesabı adını tanımlar. Tam uygun etki alanı adı (FQDN) gereklidir.
 
-`<PATH>`dosya veya dizin HDFS yol adıdır.
+`<PATH>`dosya ya da dizin \ yol adı.
 
-Değerler için `<FILE_SYSTEM_NAME>` `<ACCOUNT_NAME>` ve belirtilmemişse, varsayılan dosya sistemi kullanılır. Varsayılan dosya sistemindeki dosyalar için göreli bir yol veya mutlak bir yol kullanın. Örneğin, HDInsight kümeleriyle birlikte gelen `hadoop-mapreduce-examples.jar` dosya, aşağıdaki yollardan biri kullanılarak yönlendirilebilir:
+`<FILE_SYSTEM_NAME>` Ve `<ACCOUNT_NAME>` değerleri belirtilmemişse, varsayılan dosya sistemi kullanılır. Varsayılan dosya sistemindeki dosyalar için göreli bir yol veya mutlak bir yol kullanın. Örneğin, HDInsight kümeleriyle `hadoop-mapreduce-examples.jar` birlikte gelen dosyaya aşağıdaki yollardan biri kullanılarak başvurulabilir:
 
 ```
 abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
@@ -70,12 +71,12 @@ abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduc
 ```
 
 > [!NOTE]
-> Dosya adı `hadoop-examples.jar` HDInsight sürümleri 2.1 ve 1.6 kümelerindedir. HDInsight dışındaki dosyalarla çalışırken, çoğu yardımcı programABFS biçimini tanımadığını, bunun yerine `example/jars/hadoop-mapreduce-examples.jar`.
+> Dosya adı HDInsight sürüm `hadoop-examples.jar` 2,1 ve 1,6 kümelerinde bulunur. HDInsight dışındaki dosyalarla çalışırken, çoğu yardımcı programın ABFS biçimini tanımadığı ancak bunun yerine temel bir yol biçimi beklediği fark edeceksiniz `example/jars/hadoop-mapreduce-examples.jar`.
 
-Daha fazla bilgi için [bkz.](../storage/blobs/data-lake-storage-introduction-abfs-uri.md)
+Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. URI 'Si kullanma](../storage/blobs/data-lake-storage-introduction-abfs-uri.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Veri Gölü Depolama Gen2'ye Giriş](../storage/blobs/data-lake-storage-introduction.md)
+* [Azure Data Lake Storage 2. giriş](../storage/blobs/data-lake-storage-introduction.md)
 * [Azure Depolama’ya giriş](../storage/common/storage-introduction.md)
-* [Azure Veri Gölü Depolama Gen1 genel bakış](./overview-data-lake-storage-gen1.md)
+* [Azure Data Lake Storage 1. Nesil’e genel bakış](./overview-data-lake-storage-gen1.md)

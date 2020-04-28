@@ -1,136 +1,138 @@
 ---
-title: Text Analytics REST API ile duyarlılık analizi yapın
+title: Metin Analizi REST API ile yaklaşım analizini gerçekleştirme
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Azure Bilişsel Hizmetler Metin Analizi REST API ile metindeki duyarlılığı nasıl algılayacağınızı gösterecektir.
+description: Bu makalede, Azure bilişsel hizmetler Metin Analizi REST API metinle ilgili yaklaşım hakkında nasıl algılanacağı gösterilir.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: aahi
-ms.openlocfilehash: b3c112876bfd2578e6ebaa95c6902aa9b8f832d9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 99a62daf6dced88efd9bda591a0ca44a8b259a75
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79203466"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195647"
 ---
-# <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Nasıl yapilir: Metin Analizi API'sini kullanarak duyarlılığı algılama
+# <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Nasıl yapılır: Metin Analizi API'si kullanarak yaklaşımı algılama
 
-Metin Analizi API'nin Duygu Analizi özelliği metni değerlendirir ve her cümle için duyarlılık puanları ve etiketleri döndürür. Bu sosyal medya, müşteri değerlendirmeleri, tartışma forumları ve daha olumlu ve olumsuz duyguları tespit etmek için yararlıdır. API tarafından kullanılan AI modelleri hizmet tarafından sağlanır, sadece analiz için içerik göndermek zorunda.
+Metin Analizi API'si Yaklaşım Analizi özelliği metni değerlendirir ve her tümce için yaklaşım puanlarını ve etiketlerini döndürür. Bu, sosyal medya, müşteri incelemeleri, tartışma forumları ve daha fazlası için olumlu ve olumsuz yaklaşımı saptamak için yararlıdır. API tarafından kullanılan AI modelleri hizmet tarafından sağlanır, yalnızca analiz için içerik göndermeniz gerekir.
 
 > [!TIP]
-> Text Analytics ayrıca dil algılama için Linux tabanlı docker kapsayıcı görüntüsü sağlar, böylece [Text Analytics kapsayıcısını](text-analytics-how-to-install-containers.md) verilerinize yakın olarak yükleyebilir ve çalıştırabilirsiniz.
+> Metin Analizi Ayrıca, dil algılama için Linux tabanlı bir Docker kapsayıcı görüntüsü sağlar, bu sayede Metin Analizi kapsayıcısını verilerinize yakın şekilde [yükleyip çalıştırabilirsiniz](text-analytics-how-to-install-containers.md) .
 
-Sentiment Analysis, önizlemede daha fazla bilgi içeren çok çeşitli dilleri destekler. Daha fazla bilgi için bkz. [Desteklenen diller](../text-analytics-supported-languages.md).
+Yaklaşım Analizi, önizleme aşamasında çok çeşitli dilleri destekler. Daha fazla bilgi için bkz. [Desteklenen diller](../text-analytics-supported-languages.md).
 
 ## <a name="concepts"></a>Kavramlar
 
-Text Analytics API 0 ve 1 arasında bir duyarlılık puanı oluşturmak için bir makine öğrenme sınıflandırma algoritması kullanır. 1’e yakın puanlar pozitif yaklaşımı, 0’a yakın puanlar ise negatif yaklaşımı gösterir. Metindeki tek tek varlıklar yerine belgenin tamamında duygu analizi yapılır. Bu, duyarlılık puanlarının bir belge veya cümle düzeyinde döndürüldi anlamına gelir. 
+Metin Analizi API'si, 0 ile 1 arasında bir yaklaşım puanı oluşturmak için bir makine öğrenimi sınıflandırma algoritması kullanır. 1’e yakın puanlar pozitif yaklaşımı, 0’a yakın puanlar ise negatif yaklaşımı gösterir. Yaklaşım analizi, metinde tek tek varlıklar yerine tüm belgenin tamamında gerçekleştirilir. Bu, yaklaşım puanlarının bir belge veya tümce düzeyinde döndürüldüğü anlamına gelir. 
 
-Kullanılan model metin ve duygu dernekleri geniş bir korpus ile önceden eğitilir. Metin işleme, konuşmanın bir parçası çözümlemesi, sözcük yerleştirme ve sözcük çağrışımları gibi analiz tekniklerinin bir birleşimini kullanır. Algoritma hakkında daha fazla bilgi için bkz. [Metin Analizi Tanıtımı](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/). Şu anda, kendi eğitim verilerinizi sağlamak mümkün değildir. 
+Kullanılan model, çok sayıda metin ve yaklaşım ilişkilendirmeleriyle önceden eğitilmiş. Metin işleme, konuşma bölümü analizi, sözcük yerleşimi ve Word ilişkilendirmeleri gibi analize yönelik tekniklerin bir birleşimini kullanır. Algoritma hakkında daha fazla bilgi için bkz. [Metin Analizi Tanıtımı](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/). Şu anda kendi eğitim verilerinizi sağlamak mümkün değildir. 
 
-Belgeler büyük bir metin bloğu yerine daha az cümle içerdiğinde, doğruluk puanlama eğilimi vardır. Nesnellik değerlendirmesi aşamasında model, belgenin tamamının nesnel mi olduğunu yoksa yaklaşım mı içerdiğini belirler. Çoğunlukla objektif olan bir belge, daha fazla işleme gerektirilmeden 0,50 puanla sonuçlanan duygu algılama aşamasına ilerlemez. Ardışık alanda devam eden belgeler için, bir sonraki aşama 0,50'nin üzerinde veya altında bir puan oluşturur. Puan, belgede algılanan duyarlılık derecesine bağlıdır.
+Belgeler, büyük bir metin bloğu yerine daha az sayıda tümce içerdiğinde iyileştirebilecek Puanlama doğruluğu için bir kullanım eğilimi vardır. Nesnellik değerlendirmesi aşamasında model, belgenin tamamının nesnel mi olduğunu yoksa yaklaşım mı içerdiğini belirler. Genellikle hedefi olan bir belge, daha fazla işlem olmadan 0,50 puanı ile sonuçlanan yaklaşım algılama aşamasına ileretmez. Ardışık düzende devam eden belgeler için, sonraki aşama 0,50 veya üzeri bir puan üretir. Puan, belgede algılanan yaklaşım derecesine bağlıdır.
 
-## <a name="sentiment-analysis-versions-and-features"></a>Duygu Analizi sürümleri ve özellikleri
+## <a name="sentiment-analysis-versions-and-features"></a>Sürümler ve Özellikler Yaklaşım Analizi
 
-Text Analytics API, Sentiment Analysis'in v2 ve v3 olmak gibi iki versiyonunu sunar. Sentiment Analysis v3 (Genel önizleme), API'nin metin kategorizasyonu ve puanlamasının doğruluğu nda ve ayrıntılarında önemli iyileştirmeler sağlar.
+Metin Analizi API'si, Yaklaşım Analizi-v2 ve v3 'nin iki sürümünü sunmaktadır. Yaklaşım Analizi v3 (Genel Önizleme), API 'nin metin kategorisi ve Puanlama hakkında doğruluk ve ayrıntı açısından önemli geliştirmeler sağlar.
 
 > [!NOTE]
-> * Sentiment Analysis v3 istek biçimi ve [veri sınırları](../overview.md#data-limits) önceki sürümle aynıdır.
-> * Duyarlılık Analizi v3 aşağıdaki bölgelerde `Australia East`mevcuttur: `East Asia`, `East US` `East US 2`, `North Europe` `Southeast Asia` `South Central US` `UK South` `Central Canada` `Central US`, , `West Europe`, `West US 2`, , , , ve .
+> * Yaklaşım Analizi v3 istek biçimi ve [veri sınırları](../overview.md#data-limits) , önceki sürümle aynıdır.
+> * Yaklaşım Analizi `Australia East`v3 şu bölgelerde kullanılabilir:, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`ve. `West US 2`
 
-| Özellik                                   | Duygu Analizi v2 | Duygu Analizi v3 |
+| Özellik                                   | Yaklaşım Analizi v2 | Yaklaşım Analizi v3 |
 |-------------------------------------------|-----------------------|-----------------------|
-| Tek ve toplu iş istekleri için yöntemler    | X                     | X                     |
-| Belgenin tamamı için duyarlılık puanları  | X                     | X                     |
-| Bireysel cümleler için duygu puanları |                       | X                     |
-| Duygu etiketleme                        |                       | X                     |
-| Model sürümü                   |                       | X                     |
+| Tek ve toplu istekler için Yöntemler    | X                     | X                     |
+| Tüm belge için yaklaşım puanları  | X                     | X                     |
+| Ayrı cümleler için yaklaşım puanları |                       | X                     |
+| Yaklaşım etiketleme                        |                       | X                     |
+| Model sürümü oluşturma                   |                       | X                     |
 
-#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
-### <a name="sentiment-scoring"></a>Duygu puanlama
+### <a name="sentiment-scoring"></a>Yaklaşım Puanlama
 
-Sentiment Analysis v3, metni duygu etiketleri ile sınıfa verir (aşağıda açıklanmıştır). Döndürülen puanlar, modelin metnin pozitif, negatif veya nötr olduğuna olan güvenini temsil eder. Daha yüksek değerler daha yüksek güven anlamına da tır. 
+Yaklaşım Analizi v3, metni yaklaşım etiketleriyle sınıflandırır (aşağıda açıklanmıştır). Döndürülen puanlar, metnin pozitif, negatif veya nötr olduğu, modelin güvenini temsil eder. Daha yüksek değerler daha yüksek güvenilirliğe işaret eder. 
 
-### <a name="sentiment-labeling"></a>Duygu etiketleme
+### <a name="sentiment-labeling"></a>Yaklaşım etiketleme
 
-Duygu Analizi v3 puanları ve etiketleri bir cümle ve belge düzeyinde döndürebilir. Skorlar ve `positive`etiketler `negative`, `neutral`, ve . Belge düzeyinde, `mixed` duygu etiketi de puan olmadan iade edilebilir. Belgenin duyarlılığı aşağıda belirlenmiştir:
+Yaklaşım Analizi v3, bir tümce ve belge düzeyinde (`positive`, `negative`, ve `neutral`) güven puanlarıyla birlikte yaklaşım etiketleri getirir. `mixed` Yaklaşım etiketi belge düzeyinde de döndürülebilir. 
 
-| Cümle duyarlılığı                                                                            | Döndürülen belge etiketi |
+Belgenin yaklaşımı aşağıda belirlenir:
+
+| Tümce yaklaşımı                                                                            | Döndürülen belge etiketi |
 |-----------------------------------------------------------------------------------------------|-------------------------|
-| Belgede en `positive` az bir cümle var. Cümlelerin geri kalanı `neutral`. | `positive`              |
-| Belgede en `negative` az bir cümle var. Cümlelerin geri kalanı `neutral`. | `negative`              |
-| Belgede en `negative` az bir `positive` cümle ve en az bir cümle bulunmaktadır.    | `mixed`                 |
-| Belgedeki tüm cümleler `neutral`.                                                  | `neutral`               |
+| Belgede en az `positive` bir cümle vardır. Tümcelerin geri kalanı şunlardır `neutral`. | `positive`              |
+| Belgede en az `negative` bir cümle vardır. Tümcelerin geri kalanı şunlardır `neutral`. | `negative`              |
+| Belgede en az `negative` bir cümle ve en az `positive` bir cümle vardır.    | `mixed`                 |
+| Belgedeki tüm tümceler `neutral`.                                                  | `neutral`               |
 
-### <a name="model-versioning"></a>Model sürümü
+### <a name="model-versioning"></a>Model sürümü oluşturma
 
 > [!NOTE]
-> Duygu analizi için model sürümü sürümünde `v3.0-preview.1`başlayan mevcuttur.
+> Yaklaşım analizi için model sürümü oluşturma, sürümden `v3.0-preview.1`itibaren kullanılabilir.
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
 ### <a name="example-c-code"></a>Örnek C# kodu
 
-[GitHub'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/TextAnalyticsSentiment.cs)Sentiment Analysis'in bu sürümünü çağıran örnek bir C# uygulaması bulabilirsiniz.
+[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/TextAnalyticsSentiment.cs)üzerinde yaklaşım analizi bu sürümünü çağıran örnek bir C# uygulaması bulabilirsiniz.
 
 
-#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
-### <a name="sentiment-scoring"></a>Duygu puanlama
+### <a name="sentiment-scoring"></a>Yaklaşım Puanlama
 
-Duygu çözümleyicisi metni ağırlıklı olarak olumlu veya olumsuz olarak sınıflar. 0 ile 1 aralığında bir puan atar. 0,5’e yakın değerler nötr veya belirsizdir. 0,5 puanı, nötr olma durumunu belirtir. Bir dize duygusallık için analiz edilenemediğinde veya duyguları olmadığında, skor her zaman tam olarak 0,5'tir. Örneğin, İngilizce dil koduyla İspanyolca bir dize geçirirseniz puan 0,5 olur.
+Yaklaşım Çözümleyicisi, metni ağırlıklı pozitif veya negatif olarak sınıflandırır. 0 ile 1 arasında bir puan atar. 0,5’e yakın değerler nötr veya belirsizdir. 0,5 puanı, nötr olma durumunu belirtir. Bir dize yaklaşım için çözümlenememesi veya yaklaşım yoksa, puan her zaman 0,5 ' dir. Örneğin, İngilizce dil koduyla İspanyolca bir dize geçirirseniz puan 0,5 olur.
 
 ---
 
-## <a name="sending-a-rest-api-request"></a>REST API isteği gönderme 
+## <a name="sending-a-rest-api-request"></a>REST API isteği gönderiliyor 
 
 ### <a name="preparation"></a>Hazırlık
 
-Duyarlılık analizi üzerinde çalışmak için metin daha küçük miktarlarda verdiğinizde daha yüksek kaliteli bir sonuç üretir. Bu, büyük metin öbekleri üzerinde daha iyi performans gösteren anahtar ifade ayıklamasının tersidir. Her iki işlemden de en iyi sonuçları elde etmek için girişleri uygun şekilde yeniden yapılandırın.
+Yaklaşım analizi, üzerinde çalışmak üzere daha az miktarda metin verdiğiniz zaman daha yüksek kalitede bir sonuç üretir. Bu, büyük metin öbekleri üzerinde daha iyi performans gösteren anahtar ifade ayıklamasının tersidir. Her iki işlemden de en iyi sonuçları elde etmek için girişleri uygun şekilde yeniden yapılandırın.
 
-Bu biçimde JSON belgeleriniz olmalıdır: kimlik, metin ve dil.
+Bu biçimde JSON belgelerinize sahip olmanız gerekir: KIMLIK, metin ve dil.
 
-Belge boyutu belge başına 5.120 karakterin altında olmalıdır. Koleksiyon başına en fazla 1.000 öğe (d) öğeniz olabilir. Koleksiyon, istek gövdesinde gönderilir.
+Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiyon başına en fazla 1.000 öğe (kimlik) kullanabilirsiniz. Koleksiyon, istek gövdesinde gönderilir.
 
-## <a name="structure-the-request"></a>İsteği yapılandırma
+## <a name="structure-the-request"></a>İsteği yapısı
 
-Bir POST isteği oluşturun. Postacı'yı veya **API test** konsolu'nu aşağıdaki başvuru bağlantılarında [kullanarak](text-analytics-how-to-call-api.md) hızlı bir şekilde bir tane sini yapılandırabilir ve gönderebilirsiniz. 
+Bir POST isteği oluşturun. Hızlı bir şekilde yapısına ve gönderebilmeniz için aşağıdaki başvuru bağlantılarında [Postman](text-analytics-how-to-call-api.md) veya **API test konsolunu** kullanabilirsiniz. 
 
-#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
-[Duygu Analizi v3 referans](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
+[Yaklaşım Analizi v3 başvurusu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
 
-#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
-[Duygu Analizi v2 referans](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
+[Yaklaşım Analizi v2 başvurusu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
 ---
 
-Azure'da bir Text Analytics kaynağı veya anında metin [analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak duygu analizi için HTTPS bitiş noktasını ayarlayın. Kullanmak istediğiniz sürüm için doğru URL'yi eklemeniz gerekir. Örnek:
+Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTPS uç noktasını ayarlayın. Kullanmak istediğiniz sürüm için doğru URL 'YI dahil etmeniz gerekir. Örneğin:
 
 > [!NOTE]
-> Metin Analizi kaynağınızın anahtarını ve bitiş noktanızı azure portalında bulabilirsiniz. Bunlar, **kaynak yönetimi**altında kaynağın **Hızlı başlangıç** sayfasında yer alır. 
+> Azure portalında Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı bulabilirsiniz. Kaynak **yönetimi**altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
 
-#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
 
-#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
 ---
 
-Metin Analizi API anahtarınızı içerecek şekilde bir istek üstbilgisi ayarlayın. İstek gövdesinde, bu analiz için hazırladığınız JSON belgeleri koleksiyonunu sağlayın.
+Metin Analizi API'si anahtarınızı dahil etmek için bir istek üst bilgisi ayarlayın. İstek gövdesinde, bu analiz için hazırladığınız JSON belgeleri koleksiyonunu sağlayın.
 
-### <a name="example-sentiment-analysis-request"></a>Örnek Duygu Analizi talebi 
+### <a name="example-sentiment-analysis-request"></a>Örnek Yaklaşım Analizi isteği 
 
-Aşağıda, yaklaşım analizi için gönderebileceğiniz bir içerik örneği verilmiştir. İstek biçimi, API'nin her iki sürümü için de aynıdır.
+Aşağıda, yaklaşım analizi için gönderebileceğiniz bir içerik örneği verilmiştir. İstek biçimi, her iki API sürümü için de aynıdır.
     
 ```json
 {
@@ -149,24 +151,24 @@ Aşağıda, yaklaşım analizi için gönderebileceğiniz bir içerik örneği v
 }
 ```
 
-### <a name="post-the-request"></a>İsteğin ivetini gönderme
+### <a name="post-the-request"></a>İsteği gönder
 
-İstek alındığında analiz gerçekleştirilir. Dakika ve saniye gönderebileceğiniz isteklerin boyutu ve sayısı hakkında bilgi için genel bakışta [veri sınırları](../overview.md#data-limits) bölümüne bakın.
+İstek alındığında analiz gerçekleştirilir. Dakika ve saniye başına gönderebilmeniz için istek boyutu ve sayısı hakkında bilgi için genel bakış konusunun [veri sınırları](../overview.md#data-limits) bölümüne bakın.
 
-Text Analytics API'si devletsizdir. Hesabınızda hiçbir veri depolanır ve sonuçlar yanıtta hemen döndürülür.
+Metin Analizi API'si durum bilgisiz. Hesabınızda hiç veri depolanmaz ve sonuçlar yanıt içinde hemen döndürülür.
 
 
 ### <a name="view-the-results"></a>Sonuçları görüntüleme
 
-Duygu çözümleyicisi metni ağırlıklı olarak olumlu veya olumsuz olarak sınıflar. 0 ile 1 aralığında bir puan atar. 0,5’e yakın değerler nötr veya belirsizdir. 0,5 puanı, nötr olma durumunu belirtir. Bir dize duygusallık için analiz edilenemediğinde veya duyguları olmadığında, skor her zaman tam olarak 0,5'tir. Örneğin, İngilizce dil koduyla İspanyolca bir dize geçirirseniz puan 0,5 olur.
+Yaklaşım Çözümleyicisi, metni ağırlıklı pozitif veya negatif olarak sınıflandırır. 0 ile 1 arasında bir puan atar. 0,5’e yakın değerler nötr veya belirsizdir. 0,5 puanı, nötr olma durumunu belirtir. Bir dize yaklaşım için çözümlenememesi veya yaklaşım yoksa, puan her zaman 0,5 ' dir. Örneğin, İngilizce dil koduyla İspanyolca bir dize geçirirseniz puan 0,5 olur.
 
-Hemen çıktı döndürülür. Sonuçları JSON'u kabul eden bir uygulamaya aktarabilir veya çıktıyı yerel sistemdeki bir dosyaya kaydedebilirsiniz. Ardından, çıktıyı verileri sıralamak, aramak ve işlemek için kullanabileceğiniz bir uygulamaya aktarın. Çok dilli ve emoji desteği nedeniyle, yanıt metin uzaklıkları içerebilir. Daha fazla bilgi için [uzaklıkları nasıl işleyeceğinize](../concepts/text-offsets.md) bakın.
+Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya çıktıyı yerel sistemdeki bir dosyaya kaydedebilirsiniz. Sonra çıktıyı, verileri sıralamak, aramak ve işlemek için kullanabileceğiniz bir uygulamaya içeri aktarın. Çok dilli ve Emoji desteği nedeniyle, yanıt metin uzaklıkları içerebilir. Daha fazla bilgi için bkz. [uzaklıkları işleme](../concepts/text-offsets.md) .
 
-#### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
+#### <a name="version-30-preview"></a>[Sürüm 3,0-Önizleme](#tab/version-3)
 
-### <a name="sentiment-analysis-v3-example-response"></a>Duygu Analizi v3 örnek yanıt
+### <a name="sentiment-analysis-v3-example-response"></a>Yaklaşım Analizi v3 örnek yanıtı
 
-Sentiment Analysis v3'ten gelen yanıtlar, analiz edilen her cümle ve belge için duygu etiketleri ve puanları içerir. `documentScores`belge duyarlılığı etiketi `mixed`.
+Yaklaşım Analizi v3 'ten gelen yanıtlar, çözümlenen her tümce ve belge için yaklaşım etiketleri ve puanları içerir. `documentScores`Belge yaklaşım etiketi ise `mixed`döndürülmez.
 
 ```json
 {
@@ -238,11 +240,11 @@ Sentiment Analysis v3'ten gelen yanıtlar, analiz edilen her cümle ve belge iç
 }
 ```
 
-#### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
+#### <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
-### <a name="sentiment-analysis-v2-example-response"></a>Duygu Analizi v2 örnek yanıt
+### <a name="sentiment-analysis-v2-example-response"></a>Yaklaşım Analizi v2 örnek yanıtı
 
-Sentiment Analysis v2'den gelen yanıtlar, gönderilen her belge için duyarlılık puanları içerir.
+Yaklaşım Analizi v2 'nin yanıtları gönderilen her belge için yaklaşım puanlarını içerir.
 
 ```json
 {
@@ -261,15 +263,15 @@ Sentiment Analysis v2'den gelen yanıtlar, gönderilen her belge için duyarlıl
 
 ## <a name="summary"></a>Özet
 
-Bu makalede, Metin Analizi API'sini kullanarak duyarlılık analizi için kavramları ve iş akışını öğrendiniz. Özet:
+Bu makalede, Metin Analizi API'si kullanarak yaklaşım analizi için kavramları ve iş akışını öğrendiniz. Özet:
 
-+ Duygu Analizi seçilen diller için iki sürümde kullanılabilir.
-+ İstek gövdesindeki JSON belgeleri bir kimlik, metin ve dil kodu içerir.
-+ POST isteği, kişiselleştirilmiş bir erişim anahtarı ve aboneliğiniz için geçerli bir bitiş noktası kullanarak bir `/sentiment` bitiş [noktasıdır.](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)
-+ Her belge kimliği için duyarlılık puanından oluşan yanıt çıktısı, JSON'u kabul eden herhangi bir uygulamaya aktarılabilir. Örneğin, Excel ve Power BI.
++ Yaklaşım Analizi, iki sürümde seçili diller için kullanılabilir.
++ İstek gövdesindeki JSON belgeleri bir KIMLIK, metin ve dil kodu içerir.
++ POST isteği, kişiselleştirilmiş bir `/sentiment` [erişim anahtarı ve](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) aboneliğiniz için geçerli olan bir uç nokta kullanarak bir uç noktaya gönderilir.
++ Her belge KIMLIĞI için bir yaklaşım puanından oluşan yanıt çıkışı, JSON kabul eden herhangi bir uygulamaya akışla eklenebilir. Örneğin, Excel ve Power BI.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Metin Analizine genel bakış](../overview.md)
-* [Text Analytics istemci kitaplığını kullanma](../quickstarts/text-analytics-sdk.md)
+* [Metin Analizi istemci kitaplığını kullanma](../quickstarts/text-analytics-sdk.md)
 * [Yenilikler](../whats-new.md)

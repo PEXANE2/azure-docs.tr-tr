@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 50752dfefae1aab28e0b7e51d8c94cf5f04a5099
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 90e8aa4da88542648bec612553282ffe11b09eda
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149315"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192289"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Hızlı başlangıç: market 'te Azure gizli bilgi Işlem VM 'si dağıtma
 
@@ -21,7 +21,7 @@ Intel SGX ile desteklenen bir sanal makine (VM) oluşturmak için Azure Marketi 
 
 Bu öğretici, bir gizli bilgi işlem sanal makinesi dağıtmaya hızlı bir başlangıç yapmak istiyorsanız önerilir. VM 'Ler özel donanımda çalıştırılır ve belirli yapılandırma girişlerinin istendiği gibi çalışmasını gerektirir. Bu hızlı başlangıçta açıklanan Market teklifi, Kullanıcı girişini kısıtlayarak dağıtımı kolaylaştırır.
 
-Daha özel yapılandırmayla gizli bir işlem sanal makinesi dağıtmaya ilgileniyorsanız, [Azure Portal gizli işlem sanal makine dağıtım adımlarını izleyin.](quick-create-portal.md)
+Daha özel yapılandırmayla gizli bir işlem sanal makinesi dağıtmaya ilgileniyorsanız, [Azure Portal gizli işlem sanal makine dağıtım adımlarını](quick-create-portal.md)izleyin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

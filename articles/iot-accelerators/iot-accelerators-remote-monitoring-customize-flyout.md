@@ -1,6 +1,6 @@
 ---
-title: Uzaktan İzleme çözümü Kullanıcı Arabirimi'ne bir uçuş ekleme - Azure | Microsoft Dokümanlar
-description: Bu makalede, Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'nde bir sayfaya nasıl yeni bir flyout ekleyeceğiniz gösterilmektedir.
+title: Uzaktan Izleme çözümü Kullanıcı arabirimine bir açılır pencere ekleme | Microsoft Docs
+description: Bu makalede, uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimindeki bir sayfaya yeni bir açılır pencere ekleme konusu gösterilmektedir.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,60 +8,60 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3820b34a9c79f3b514327fa45a05eebaf8a2a1ca
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61447123"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193182"
 ---
-# <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'ne özel bir uçuş ekleme
+# <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimine özel bir açılır pencere ekleyin
 
-Bu makalede, Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'ndeki bir sayfaya nasıl yeni bir uçuş ekleyeceğiniz gösterilmektedir. Makalede şöyle anlatılmaktadır:
+Bu makalede, uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimindeki bir sayfanın üzerine yeni bir açılır pencere ekleme konusu gösterilmektedir. Makalede şunları açıklanmaktadır:
 
-- Yerel bir kalkınma ortamı nasıl hazırlanır.
-- Web Web Arama Hizmeti'ndeki bir sayfaya yeni bir uçuş ekleme.
+- Yerel bir geliştirme ortamı hazırlama.
+- Web Kullanıcı arabirimindeki bir sayfaya yeni bir açılır pencere ekleme.
 
-Bu makaledeki örnek uçuş, uzaktan izleme çözüm [hızlandırıcı web Kullanıcı Arabirimi'ne özel bir ızgara eklemenin](iot-accelerators-remote-monitoring-customize-grid.md) nasıl ekleniş yapılacağını gösteren ızgaraile sayfada görüntülenir.
+Bu makaledeki örnek açılır pencere, kılavuza, [Uzaktan izleme çözümü Hızlandırıcısı Web UI](iot-accelerators-remote-monitoring-customize-grid.md) ile ilgili nasıl ekleneceğini gösteren özel kılavuz ekleme kılavuzunu içeren sayfada görüntülenir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu nasıl yap'la ilgili kılavuzdaki adımları tamamlamak için, yerel geliştirme makinenize aşağıdaki yazılımın yüklenmesi gerekir:
+Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için, yerel geliştirme makinenizde aşağıdaki yazılımların yüklü olması gerekir:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Devam etmeden önce aşağıdaki makalelerdeki adımları tamamlamanız gerekir:
+Devam etmeden önce aşağıdaki makalelerdeki adımları tamamlamalısınız:
 
-- [Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'ne özel bir sayfa ekleyin.](iot-accelerators-remote-monitoring-customize-page.md)
-- [Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'ne özel bir hizmet ekleme](iot-accelerators-remote-monitoring-customize-service.md)
-- [Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'ne özel bir ızgara ekleme](iot-accelerators-remote-monitoring-customize-grid.md)
+- [Uzaktan izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimine özel bir sayfa ekleyin](iot-accelerators-remote-monitoring-customize-page.md).
+- [Uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimine özel bir hizmet ekleme](iot-accelerators-remote-monitoring-customize-service.md)
+- [Uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimine özel kılavuz ekleme](iot-accelerators-remote-monitoring-customize-grid.md)
 
 ## <a name="add-a-flyout"></a>Açılır öğe ekleme
 
-Web Web Arama Arabirimi'ne bir flyout eklemek için, flyout tanımlayan kaynak dosyaları eklemeniz ve web UI'nin yeni bileşenden haberdar olmasını sağlamak için varolan bazı dosyaları değiştirmeniz gerekir.
+Web Kullanıcı arabirimine bir açılır pencere eklemek için, açılır menüyü tanımlayan kaynak dosyaları eklemeniz ve var olan bazı dosyaları değiştirerek Web Kullanıcı arabirimini yeni bileşenden haberdar hale getirmeniz gerekir.
 
-### <a name="add-the-new-files-that-define-the-flyout"></a>Flyout tanımlayan yeni dosyaları ekleme
+### <a name="add-the-new-files-that-define-the-flyout"></a>Açılır menüyü tanımlayan yeni dosyaları ekleyin
 
-Başlamak **için, src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout** klasörü bir uçuş tanımlayan dosyaları içerir:
+Başlangıç yapmanız için, **src/Walkthrough/bileşenler/Pages/Pagewithaçılır/Flyout/exampleFlyout** klasörü, bir açılır pencere tanımlayan dosyaları içerir:
 
-**örnekFlyout.container.js**
+**exampleFlyout. Container. js**
 
 [!code-javascript[Example flyout container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example flyout container")]
 
-**ÖrnekFlyout.js**
+**exampleFlyout. js**
 
 [!code-javascript[Example flyout](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example flyout")]
 
-**src/walkthrough/components/pages/pages/pageWithFlyout/flyouts** klasörünü **src/components/pages/example** klasörüne kopyalayın.
+Src/ **Walkthrough/Components/Pages/Pagewithaçılır/Flyout** klasörünü **src/Components/Pages/example** klasörüne kopyalayın.
 
-### <a name="add-the-flyout-to-the-page"></a>Sayfaya flyout ekleme
+### <a name="add-the-flyout-to-the-page"></a>Açılır menüyü sayfaya ekleyin
 
-Flyout eklemek için **src/components/pages/example/basicPage.js** adresini değiştirin.
+Açılır menüyü eklemek için **src/Components/Pages/example/basicPage. js** öğesini değiştirin.
 
-**Bileşenlerden/paylaşılanlardan** yapılan ithalata **Btn** ekleyin ve **svgs** ve **ExampleFlyoutContainer**için ithalat ekleyin:
+**Bileşenler/paylaşılan** içeri aktarmaları Için **btn** ekleyin ve **svgs** ve **ExampleFlyoutContainer**için içeri aktarmaları ekleyin:
 
 ```js
 import {
@@ -76,7 +76,7 @@ import { svgs } from 'utilities';
 import { ExampleFlyoutContainer } from './flyouts/exampleFlyout';
 ```
 
-**closedFlyoutState** için bir **const** tanımı ekleyin ve oluşturucu daki duruma ekleyin:
+**Closedflsavstate** için bir **const** tanımı ekleyin ve oluşturucuyu oluşturucuya ekleyin:
 
 ```js
 const closedFlyoutState = { openFlyoutName: undefined };
@@ -88,7 +88,7 @@ export class BasicPage extends Component {
   }
 ```
 
-**BasicPage** sınıfına aşağıdaki işlevleri ekleyin:
+Aşağıdaki işlevleri **Basicpage** sınıfına ekleyin:
 
 ```js
   closeFlyout = () => this.setState(closedFlyoutState);
@@ -96,7 +96,7 @@ export class BasicPage extends Component {
   openFlyout = (name) => () => this.setState({ openFlyoutName: name });
 ```
 
-**Render** işlevine aşağıdaki **const** tanımları ekleyin:
+**Render** işlevine aşağıdaki **const** tanımlarını ekleyin:
 
 ```js
     const { openFlyoutName } = this.state;
@@ -104,7 +104,7 @@ export class BasicPage extends Component {
     const isExampleFlyoutOpen = openFlyoutName === 'example';
 ```
 
-Bağlam menüsüne flyout açmak için bir düğme ekleyin:
+Bağlam menüsüne açılan menüyü açmak için bir düğme ekleyin:
 
 ```js
       <ContextMenu key="context-menu">
@@ -113,7 +113,7 @@ Bağlam menüsüne flyout açmak için bir düğme ekleyin:
       </ContextMenu>,
 ```
 
-Sayfa içeriğine bazı metinler ve çıkış kapsayıcısı ekleyin:
+Sayfa içeriğine metin ve açılır pencere kapsayıcısını ekleyin:
 
 ```js
       <PageContent className="basic-page-container" key="page-content">
@@ -125,20 +125,20 @@ Sayfa içeriğine bazı metinler ve çıkış kapsayıcısı ekleyin:
       </PageContent>
 ```
 
-## <a name="test-the-flyout"></a>Uçuşu test edin
+## <a name="test-the-flyout"></a>Açılır menüyü test etme
 
-Web Web Arama Ekibi zaten yerel olarak çalışmıyorsa, deponun yerel kopyasının kökünde aşağıdaki komutu çalıştırın:
+Web Kullanıcı arabirimi zaten yerel olarak çalışmıyorsa, deponun yerel kopyasının kökünde aşağıdaki komutu çalıştırın:
 
 ```cmd/sh
 npm start
 ```
 
-Önceki komut ui'yi yerel [http://localhost:3000/dashboard](http://localhost:3000/dashboard)olarak çalışır. **Örnek** sayfasına gidin ve **Flyout'u Aç'ı**tıklatın.
+Önceki komut, Kullanıcı arabirimini ' de `http://localhost:3000/dashboard`yerel olarak çalıştırır. **Örnek** sayfasına gidin ve **açılan menüyü aç**' a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Uzaktan İzleme çözüm hızlandırıcısında web Kullanıcı Arabirimi'ndeki sayfaları eklemenize veya özelleştirmenize yardımcı olacak kaynakları öğrendiniz.
+Bu makalede, uzaktan Izleme çözüm hızlandırıcısında Web Kullanıcı arabirimindeki sayfaları eklemenize veya özelleştirmenize yardımcı olacak kaynaklar hakkında bilgi edindiniz.
 
-Şimdi bir sayfada bir flyout tanımladık, bir sonraki adım [Uzaktan İzleme çözüm hızlandırıcı web UI panoya bir panel eklemektir.](iot-accelerators-remote-monitoring-customize-panel.md)
+Bir sayfada açılır pencere tanımladınız bir sonraki adım, [Uzaktan izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimindeki panoya bir panel eklemektir](iot-accelerators-remote-monitoring-customize-panel.md).
 
-Uzaktan İzleme çözüm hızlandırıcısı hakkında daha fazla kavramsal bilgi için uzaktan [izleme mimarisine](iot-accelerators-remote-monitoring-sample-walkthrough.md)bakın.
+Uzaktan Izleme çözümü Hızlandırıcısı hakkında daha fazla kavramsal bilgi için bkz. [Uzaktan izleme mimarisi](iot-accelerators-remote-monitoring-sample-walkthrough.md).

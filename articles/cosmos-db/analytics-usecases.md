@@ -1,76 +1,76 @@
 ---
-title: Azure Cosmos DB ile yerleşik analizler için kullanım örnekleri.
-description: Azure Cosmos DB ile farklı kullanım durumlarında yerleşik analitiği nasıl kullanacağınızı öğrenin.
+title: Azure Cosmos DB ile yerleşik analiz için kullanım örnekleri.
+description: Farklı kullanım durumlarında Azure Cosmos DB ile yerleşik analiz kullanmayı öğrenin.
 author: markjbrown
 ms.author: mjbrown
 ms.topic: conceptual
 ms.service: cosmos-db
-ms.date: 09/26/2019
+ms.date: 04/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: adf1db2d737de7004b5ab71c8e0e44d61d1da8c9
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 9b1c3435222ada52c01f21c2c242dc886f566a81
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768507"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192859"
 ---
-# <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>Azure Cosmos DB ile yerleşik analizler için kullanım örnekleri
+# <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>Azure Cosmos DB ile yerleşik analiz için kullanım örnekleri
 
-Aşağıdaki kullanım örnekleri, Azure Cosmos DB'de Apache Spark ile yerleşik analiz kullanılarak elde edilebilir:
+Aşağıdaki kullanım örnekleri, Azure Cosmos DB Apache Spark yerleşik analizler kullanılarak elde edilebilir:
 
 ## <a name="htap-scenarios"></a>HTAP senaryoları
 
-Azure Cosmos DB'deki yerleşik analizler şu şekilde kullanılabilir:
+Azure Cosmos DB içindeki yerleşik analizler şu şekilde kullanılabilir:
 
-* İşlem işlemleri sırasında dolandırıcılığı algıla.
-* Bir E-Ticaret mağazasına göz atarken alışveriş yapanlara öneriler sağlayın.
-* Operatörleri kritik bir üretim ekipmanıparçasının yaklaşan arızalarına karşı uyarın.
-* Gerçek zamanlı analizleri doğrudan operasyonel verilere katıştırarak hızlı ve işlem uygulanabilir bilgiler oluşturun.
+* İşlem işleme sırasında sahtekarlık algıla.
+* Bir ECommerce Mağazası 'na göz atarken alışverişçilere öneriler sağlayın.
+* Uyarı işleçlerini, önemli bir üretim donanımı parçasının olası hatasına karşı uyarır.
+* Gerçek zamanlı analizleri doğrudan işletimsel verilere gömerek hızlı, eyleme dönüştürülebilir Öngörüler oluşturun.
 
-Azure Cosmos DB, yerel olarak yerleşik Apache Spark'ı kullanarak Karma İşlemsel/Analitik İşlemleme (HTAP) senaryolarını destekler. Azure Cosmos DB, geleneksel sistemlerle birlikte gelen operasyonel ve analitik ayrımı kaldırır.
+Azure Cosmos DB, yerel olarak yerleşik Apache Spark kullanarak karma Işlem/analitik Işleme (HTAP) senaryolarını destekler. Azure Cosmos DB geleneksel sistemlerle birlikte gelen işletimsel ve analitik ayrımı ortadan kaldırır.
 
-## <a name="globally-distributed-data-lake-without-requiring-any-etl"></a>Herhangi bir ETL gerektirmeden küresel olarak dağıtılan veri gölü
+## <a name="globally-distributed-data-lake-without-requiring-any-etl"></a>Herhangi bir ETL gerekmeden Global olarak dağıtılmış veri Gölü
 
-Azure Cosmos DB, yerel olarak yerleşik Apache Spark ile, tek bir sistem görüntüsü sağlayan küresel olarak dağıtılmış bir veri gölü oluşturmak için hızlı, basit ve ölçeklenebilir bir yol sağlar. Küresel olarak dağıtılan çok modelli veriler, pahalı ETL boru hatlarına yatırım yapma ihtiyacını ortadan kaldırarak, veri ekiplerinin veri kümelerini analiz etme şeklinde devrim çıkarır.
+Yerel olarak yerleşik Apache Spark Azure Cosmos DB, tek bir sistem görüntüsü sağlayan küresel olarak dağıtılan bir veri Gölü oluşturmak için hızlı, basit ve ölçeklenebilir bir yol sağlar. Küresel olarak dağıtılan çok modelli veriler, pahalı ETL işlem hattına yatırım yapmak ve isteğe bağlı olarak ölçeklendirmenin yanı sıra veri ekibinin veri kümelerini çözümleme şeklini ortadan kaldırır.
 
-## <a name="time-series-analytics-over-historic-data"></a>Geçmiş veriler üzerinde zaman serisi analitiği
+## <a name="time-series-analytics-over-historic-data"></a>Geçmiş veriler üzerinde zaman serisi analizi
 
-Bazı durumlarda, geçmişte tamamlanan olaylar üzerinde belirli bir zamanda olduğu gibi verilere dayalı soruları yanıtlamanız gerekebilir. Örneğin, belirli bir tarihte CRM etkinlik durumlarının sayısını almak için. Raporu bir hafta önce çalıştırdıysanız, durum sayısı, o anda her etkinliğin durumlarına göre olacaktır. Bugün aynı raporu çalıştırmak size durumları bugünkü gibi olan faaliyetlerin sayısını verecektir, geçen haftadan beri değişmiş olabilir, çünkü yaşam döngülerini açıktan kapanışa kadar devam ederler. Yani, davanın yaşam döngüsünün her aşamasında anlık rapor gerekir.
+Bazı durumlarda, geçmişte gerçekleşen olaylar üzerinde belirli bir zamanda, verileri temel alan soruları cevaplamak gerekebilir. Örneğin, belirli bir tarihteki CRM etkinlik durumlarının sayısını almak için. Raporu bir hafta önce çalıştırdıysanız, durum sayısı o zaman içindeki her bir etkinliğin durumlarına göre olur. Aynı raporu bugün çalıştırmak, durumları bugün olduğu gibi, son haftadan bu yana değişmiş olabilecek etkinliklerin sayısını, açık olan yaşam döngülerine giderek bu tarihten itibaren değiştirmiş olacak şekilde verir. Bu nedenle, büyük/küçük dönemin yaşam döngüsünün her aşamasında anlık görüntüye rapor etmeniz gerekir.
 
-Azure Cosmos DB ile kullanıcılar, zaman yolculuğu kavramını uygulayarak, veriler üzerinde geçmişe dönük olarak analiz sorgulayıp çalıştırabilme ve verilerin tarihteki belirli bir zaman noktasına nasıl baktığını sorabilme olana sahiptir. Bu, kullanıcıların verilerin hem geçerli hem de tarihi görünümlerini kolayca görüntüleyebileceği ve üzerinde analiz çalıştırabileceği anlamına gelir.
+Azure Cosmos DB, kullanıcılar zaman gezimi kavramını uygulama olasılığına sahiptir, verileri geriye dönük olarak sorgulayabilir ve çalıştırabilir ve verilerin geçmişte belirli bir zaman noktasında nasıl aranmasını isteyebilir. Bu, kullanıcıların hem geçerli hem geçmiş görünümlerini kolayca görüntüleyebileceği ve üzerinde analiz çalıştırabileceği anlamına gelir.
 
-## <a name="globally-distributed-machine-learning-and-ai"></a>Küresel olarak dağıtılan makine öğrenimi ve Yapay AI
+## <a name="globally-distributed-machine-learning-and-ai"></a>Küresel olarak dağıtılmış makine öğrenimi ve AI
 
-İşletmeler hızla büyüyen veri hacimleri ve genişleyen veri türleri ve biçimleri ile uğraşırken, dünya çapında petabayt ölçeğinde daha derin ve daha doğru öngörüler elde etme yeteneği neredeyse imkansız hale gelir. Azure Cosmos DB, yerel olarak yerleşik Apache Spark ile kapsamlı makine öğrenimi algoritmaları kitaplığı sunan küresel olarak dağıtılmış bir analiz platformu sağlar. Modelleri ve küme yönetimi özelliklerini oluşturmak ve eğitmek için etkileşimli Jupyter dizüstü bilgisayarları kullanabilirsiniz. Bu özellikler, isteğe bağlı olarak son derece ayarlanmış ve otomatik elastik Spark kümeleri sağlamanıza olanak tanır.
+İşletmeler hızlı bir şekilde büyüyen veri hacimlerini ve çeşitli veri türleri ve biçimlerini genişleterek, daha derin ve daha doğru Öngörüler elde etme olanağı dünya genelinde petaborlar üzerinde imkansız hale gelebilir. Yerel olarak yerleşik Apache Spark, Azure Cosmos DB, makine öğrenimi algoritmalarının kapsamlı kitaplığını sunan küresel bir şekilde dağıtılmış analiz platformu sağlar. Etkileşimli Jupyter not defterlerini, modeller oluşturup eğitme ve küme yönetimi özellikleri oluşturmak ve eğitebilmeniz için kullanabilirsiniz. Bu yetenekler, isteğe bağlı olarak yüksek düzeyde ayarlanmış ve otomatik elastik Spark kümeleri sağlamanıza olanak tanır.
 
-## <a name="deep-learning-on-multi-model-globally-distributed-data"></a>Çok modelli küresel olarak dağıtılmış veriler de Derin Öğrenme
+## <a name="deep-learning-on-multi-model-globally-distributed-data"></a>Çok modelli Global olarak dağıtılmış veriler hakkında derin öğrenme
 
-Derin öğrenme, veri hacmi ve karmaşıklığı artmaya devam ettikçe büyük veri tahmine dayalı analitik çözümleri sağlamanın ideal yoludur. Derin öğrenme ile işletmeler, ai, doğal dil işleme ve daha fazlası gibi tekniklerden yararlanan kullanım durumlarını sunmak için yapılandırılmamış ve yarı yapılandırılmış verilerin gücünden yararlanabilirler.
+Derin öğrenme, veri hacmi ve karmaşıklık büyümeye devam ettiğinden büyük veri tahmine dayalı analiz çözümleri sağlamanın ideal yoludur. Derin öğrenme sayesinde işletmeler, yapılandırılmamış ve yarı yapılandırılmış verilerin gücünden yararlanarak AI, doğal dil işleme ve daha fazlası gibi tekniklerden yararlanan kullanım örnekleri sunar.
 
-## <a name="reporting-integrating-with-power-apps-power-bi"></a>Raporlama (Power Apps, Power BI ile entegre)
+## <a name="reporting-integrating-with-power-apps-power-bi"></a>Raporlama (Power Apps, Power BI ile tümleştirme)
 
-Power BI, son kullanıcıların kendi başlarına rapor ve pano lar oluşturmalarını sağlayarak self servis iş zekası özellikleriyle etkileşimli görselleştirmeler sağlar. Yerleşik Spark konektörünü kullanarak Power BI Desktop'ı Azure Cosmos DB'deki Apache Spark kümelerine bağlayabilirsiniz. Bu bağlayıcı, Azure Cosmos DB'deki Apache Spark'a işlemeyi boşaltmak için doğrudan sorgu kullanmanızı sağlar, bu da Power BI'ye yüklemek istemediğiniz büyük miktarda veriye sahip olduğunuzda veya gerçek zamanlı analize yakın bir şekilde gerçekleştirmek istediğinizde harikadır.
+Power BI, self servis iş zekası özelliklerine sahip etkileşimli görselleştirmeler sunarak son kullanıcıların kendi kendilerine rapor ve Pano oluşturmalarına olanak sağlar. Yerleşik Spark bağlayıcısını kullanarak, Power BI Desktop Azure Cosmos DB Apache Spark kümelerine bağlayabilirsiniz. Bu bağlayıcı, Power BI yüklemek istemediğiniz veya neredeyse gerçek zamanlı analiz yapmak istediğiniz büyük miktarda veriniz olduğunda harika olan Azure Cosmos DB Apache Spark işleme yükünü devretmek için doğrudan sorgu kullanmanıza olanak sağlar.
 
-## <a name="iot-analytics-at-global-scale"></a>Küresel ölçekte IoT analitiği
+## <a name="iot-analytics-at-global-scale"></a>Küresel ölçekte IoT Analizi
 
-Artan ağ sensörlerinden elde edilen veriler, daha önce opak sistemlere ve süreçlere benzersiz bir görünürlük sağlar. Anahtar, IoT cihazlarının dünya çapında nerede dağıtıldıklarına bakılmaksızın bu bilgi torrentinde eyleme geçirilebilir öngörüler bulmaktır. Azure Cosmos DB, IOT şirketlerinin dünyanın her yerinde yüksek hızlı sensörü ve zaman serisi verilerini gerçek zamanlı olarak analiz etmesine olanak tanır. Gelişmiş müşteri deneyimleri, operasyonel verimlilikler ve yeni gelir fırsatları sunmak için birbirine bağlı bir dünyanın gerçek değerini kullanmanızı sağlar.
+Artan ağ sensörlerinden oluşturulan veriler, daha önce opak sistemler ve işlemlere, eski bir görünürlük getirir. Bu anahtar, IoT cihazlarının dünya genelinde dağıtıldığı durumlar ne olursa olsun, bu bilgilerin bu şekilde bu şekilde, eyleme dönüştürülebilir Öngörüler bulmaktadır. Azure Cosmos DB, ıOT şirketlerinin yüksek hızlı algılayıcı ve zaman serisi verilerini dünyanın her yerinden gerçek zamanlı olarak analiz etmesine olanak tanır. Geliştirilmiş müşteri deneyimleri, operasyonel verimlilik ve yeni gelir fırsatları sunmak için, birbirine bağlı bir dünyanın gerçek değerini bir şekilde kullanmanıza olanak sağlar.
 
-## <a name="stream-processing-and-event-analytics"></a>Akış işleme ve olay analizi 
+## <a name="stream-processing-and-event-analytics"></a>Akış işleme ve olay Analizi 
 
-Günlük dosyalarından sensör verilerine kadar, işletmeler giderek daha fazla veri "akışları" ile başa çıkmak için ihtiyaç var. Bu veriler, genellikle aynı anda birden çok kaynaktan sabit bir akışla gelir. Bu veri akışlarını diskte depolamak ve geriye dönük olarak analiz etmek mümkün olsa da, verileri geldiğinde işlemek ve üzerinde işlem yapmak bazen mantıklı veya önemli olabilir. Örneğin, finansal işlemlerle ilgili veri akışları, potansiyel olarak sahte hareketleri tanımlamak ve reddetmek için gerçek zamanlı olarak işlenebilir.
+Günlük dosyalarından Sensör verilerine kadar, işletmeler "akışlar" veri ile iş ihtiyacını artmaktadır. Bu veriler, genellikle birden çok kaynaktan aynı anda düzenli bir akışa ulaşır. Bu veri akışlarını diskte depolamak ve bunları geriye dönük olarak çözümlemek uygun olsa da, bu durum bazen, ulaştığı sırada verileri işlemek ve üzerinde işlem yapmak için uygun veya önemli olabilir. Örneğin, finansal işlemlerle ilgili veri akışları gerçek zamanlı olarak işlenebilir ve potansiyel olarak sahte işlemleri tespit edebilir ve reddedebilir.
 
-## <a name="interactive-analytics"></a>İnteraktif analitik
+## <a name="interactive-analytics"></a>Etkileşimli analiz
 
-Satış, üretkenlik veya hisse senedi fiyatları için statik panolar oluşturmak için önceden tanımlanmış sorguları çalıştırmanın yanı sıra, verileri etkileşimli olarak keşfetmek isteyebilirsiniz. Etkileşimli analitik, soru sormanızı, sonuçları görüntülemenize, yanıta dayalı olarak ilk soruyu değiştirmenize veya sonuçlara daha derinlemesine girmenize olanak sağlar. Azure Cosmos DB'deki Apache Spark, hızlı bir şekilde yanıt vererek ve uyarlayarak etkileşimli sorguları destekler.
+Satış, üretkenlik veya stok fiyatları için statik panolar oluşturmak üzere önceden tanımlanmış sorguları çalıştırmanın yanı sıra, verileri etkileşimli olarak araştırmak isteyebilirsiniz. Etkileşimli analiz, soru sormanız, sonuçları görüntülemeniz, ilk soruyu yanıta göre değiştirmek veya sonuçlara daha ayrıntılı bir bakış sağlamak için izin verir. Azure Cosmos DB Apache Spark, kolayca yanıt vererek ve uyarlanarak etkileşimli sorguları destekler.
 
-## <a name="data-exploration-using-jupyter-notebooks"></a>Jupyter dizüstü bilgisayarları kullanarak veri arama
+## <a name="data-exploration-using-jupyter-notebooks"></a>Jupyıter not defterlerini kullanarak veri araştırması
 
-Yeni bir veri setiniz olduğunda, çalışan modellere ve testlere dalmadan önce verilerinizi incelemeniz gerekir. Başka bir deyişle, araştırmacı veri çözümlemesi gerçekleştirmeniz gerekir. Veri arama çeşitli kararları bilgilendirebilir. Örneğin, verilerinizde kullanımı uygun yöntemler, verilerin belirli modelleme varsayımlarını karşılayıp karşılamadığı, verilerin temizlenmesi, yeniden yapılandırılması vb. gibi ayrıntıları bulabilirsiniz. Azure Cosmos DB'nin yerel olarak yerleşik Jupyter dizüstü bilgisayarlarını ve Apache Spark'ı kullanarak, işlemsel ve analitik veriler üzerinde hızlı ve etkili araştırmacı veri analizi yapabilirsiniz.
+Yeni bir veri kümeniz olduğunda, çalışma modellerini ve Testleri çalıştırmadan önce verilerinizi incelemeniz gerekir. Diğer bir deyişle, araştırmacı veri analizi yapmanız gerekir. Veri araştırması çeşitli kararlara bilgi verebilir. Örneğin, verilerinizde kullanılmak üzere uygun olan yöntemler gibi ayrıntıları, verilerin temizlenmesi, yeniden yapılandırılması vb. gibi belirli modelleme varsayımlarını karşılayıp karşılamadığını fark etmeksizin bulabilirsiniz. Azure Cosmos DB yerel olarak yerleşik jupi not defterlerini ve Apache Spark kullanarak, işlem ve analitik veriler üzerinde hızlı ve etkili araştırmacı veri analizi yapabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makalelere gidin bu kullanım örnekleri ile başlamak için:
+Bu kullanım durumlarını kullanmaya başlamak için aşağıdaki makalelere gidin:
 
-* [Azure Cosmos DB'de yerleşik Jupyter dizüstü bilgisayarlar](cosmosdb-jupyter-notebooks.md)
-* [Azure Cosmos hesapları için not defterleri etkinleştirme](enable-notebooks.md)
-* [Verileri analiz etmek ve görselleştirmek için not defteri oluşturma](create-notebook-visualize-data.md)
+* [Azure Cosmos DB yerleşik jupi Not defterleri](cosmosdb-jupyter-notebooks.md)
+* [Azure Cosmos hesapları için not defterlerini etkinleştirme](enable-notebooks.md)
+* [Verileri analiz etmek ve görselleştirmek için bir not defteri oluşturun](create-notebook-visualize-data.md)

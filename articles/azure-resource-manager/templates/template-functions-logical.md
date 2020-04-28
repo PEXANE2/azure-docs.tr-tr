@@ -1,24 +1,24 @@
 ---
-title: Şablon işlevleri - mantıksal
-description: Mantıksal değerleri belirlemek için Azure Kaynak Yöneticisi şablonunda kullanılacak işlevleri açıklar.
+title: Şablon işlevleri-mantıksal
+description: Mantıksal değerleri belirleyebilmek için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: f058baa32e5f93a4177913287a5e9873fa7a9acb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: 0072593e7d7830e75e2386bcfdd2907a873c7a87
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156319"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192323"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM şablonları için mantıksal işlevler
 
-Kaynak Yöneticisi, Azure Kaynak Yöneticisi (ARM) şablonlarınızda karşılaştırma yapmak için çeşitli işlevler sağlar.
+Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonlarınıza karşılaştırmalar yapmak için çeşitli işlevler sağlar.
 
-* [Ve](#and)
+* ['](#and)
 * [bool](#bool)
 * [if](#if)
-* [Değil](#not)
-* [Veya](#or)
+* [başlatılmadı](#not)
+* [veya](#or)
 
 ## <a name="and"></a>ve
 
@@ -30,17 +30,17 @@ Tüm parametre değerlerinin doğru olup olmadığını denetler.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boole |Doğru olup olmadığını kontrol etmek için ilk değer. |
-| arg2 |Evet |boole |Doğru olup olmadığını kontrol etmek için ikinci değer. |
+| arg1 |Yes |boole |Doğru olup olmadığını kontrol etmek için ilk değer. |
+| arg2 |Yes |boole |Doğru olup olmadığını kontrol etmek için ikinci değer. |
 | ek bağımsız değişkenler |Hayır |boole |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
-Tüm değerler doğruysa **True** döndürür; aksi takdirde, **False**.
+Tüm değerler true ise **true** döndürür; Aksi takdirde, **false**.
 
 ### <a name="examples"></a>Örnekler
 
-Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) mantıksal işlevlerin nasıl kullanılacağını gösterir.
+Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) , mantıksal işlevlerin nasıl kullanılacağını göstermektedir.
 
 ```json
 {
@@ -64,32 +64,32 @@ Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-Önceki örnekten çıktı:
+Yukarıdaki örnekteki çıktı:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False |
-| orExampleOutput | Bool | True |
-| notExampleOutput | Bool | False |
+| Andexamptaoutput | Bool | False |
+| Orexamptaoutput | Bool | True |
+| Notexamptaoutput | Bool | False |
 
 ## <a name="bool"></a>bool
 
 `bool(arg1)`
 
-Parametreyi boolean'a dönüştürür.
+Parametreyi Boole değerine dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |dize veya int |Boolean dönüştürmek için değer. |
+| arg1 |Yes |dize veya tamsayı |Boole değerine dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
-Dönüştürülen değerin bir boolean.
+Dönüştürülmüş değerin Boole değeri.
 
 ### <a name="examples"></a>Örnekler
 
-Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) bir dize veya tamsayı ile bool nasıl kullanılacağını gösterir.
+Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) , bool 'un dize veya tamsayı ile nasıl kullanılacağını göstermektedir.
 
 ```json
 {
@@ -117,40 +117,40 @@ Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-Varsayılan değerlerle önceki örnekten çıktı:
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
-| falseString | Bool | False |
-| trueInt | Bool | True |
-| falseInt | Bool | False |
+| Yanlışdize | Bool | False |
+| Trueınt | Bool | True |
+| Yanlışint | Bool | False |
 
 ## <a name="if"></a>if
 
 `if(condition, trueValue, falseValue)`
 
-Bir koşulun doğru veya yanlış olup olmadığına bağlı olarak bir değer verir.
+Bir koşulun doğru veya yanlış olduğunu temel alarak bir değer döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| Durum |Evet |boole |Doğru mu yanlış mı olduğunu kontrol etmek için gereken değer. |
-| Truevalue |Evet | dize, int, nesne veya dizi |Koşul doğru olduğunda döndürülecek değer. |
-| Falsevalue |Evet | dize, int, nesne veya dizi |Koşul yanlış olduğunda döndürülecek değer. |
+| koşul |Yes |boole |Doğru veya yanlış olduğunu denetlemek için değer. |
+| trueValue |Yes | dize, int, nesne veya dizi |Koşul doğru olduğunda döndürülecek değer. |
+| Yanlışdeğer |Yes | dize, int, nesne veya dizi |Koşul false olduğunda döndürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
-İlk parametre **True**olduğunda ikinci parametreyi verir; aksi takdirde, üçüncü parametre döndürür.
+İlk parametre **true**olduğunda ikinci parametreyi döndürür; Aksi takdirde, üçüncü parametreyi döndürür.
 
 ### <a name="remarks"></a>Açıklamalar
 
-Koşul **True**olduğunda, yalnızca gerçek değer değerlendirilir. Koşul **False**olduğunda, yalnızca yanlış değer değerlendirilir. **if** işlevi ile, yalnızca koşullu geçerli ifadeler ekleyebilirsiniz. Örneğin, bir koşul altında var olan ancak diğer koşul altında olmayan bir kaynağa başvuruyapabilirsiniz. Koşullu değerlendirme ifadelerinin bir örneği aşağıdaki bölümde gösterilmiştir.
+Koşul **doğru**olduğunda, yalnızca true değeri değerlendirilir. Koşul **false**olduğunda, yalnızca false değeri değerlendirilir. **IF** işleviyle, yalnızca koşullu olarak geçerli olan ifadeleri ekleyebilirsiniz. Örneğin, bir koşul altında bulunan ancak diğer koşulun altında olmayan bir kaynağa başvurabilirsiniz. Aşağıdaki bölümde, ifadeleri koşullu olarak değerlendirmek için bir örnek gösterilmiştir.
 
 ### <a name="examples"></a>Örnekler
 
-Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) işlevin `if` nasıl kullanılacağını gösterir.
+Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) , `if` işlevinin nasıl kullanılacağını göstermektedir.
 
 ```json
 {
@@ -175,15 +175,15 @@ Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-Önceki örnekten çıktı:
+Yukarıdaki örnekteki çıktı:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | yesOutput | Dize | evet |
 | noOutput | Dize | hayır |
-| objectOutput | Nesne | { "test": "value1" } |
+| objectOutput | Nesne | {"test": "değer1"} |
 
-Aşağıdaki [örnek şablon,](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) bu işlevin yalnızca koşullu olarak geçerli olan ifadelerle nasıl kullanılacağını gösterir.
+Aşağıdaki [örnek şablonda](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) , bu işlevin yalnızca koşullu olarak geçerli olan ifadelerle nasıl kullanılacağı gösterilmektedir.
 
 ```json
 {
@@ -235,21 +235,21 @@ Aşağıdaki [örnek şablon,](https://github.com/krnese/AzureDeploy/blob/master
 
 `not(arg1)`
 
-Boolean değerini zıt değerine dönüştürür.
+Boole değerini ters değerine dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boole |Dönüştürülecek değer. |
+| arg1 |Yes |boole |Dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
-Parametre **Yanlış**olduğunda **True'yı** döndürür. Parametre **Doğru**olduğunda **False'u** döndürür.
+Parametre **false**olduğunda **true** döndürür. Parametre **true**olduğunda **false** döndürür.
 
 ### <a name="examples"></a>Örnekler
 
-Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) mantıksal işlevlerin nasıl kullanılacağını gösterir.
+Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) , mantıksal işlevlerin nasıl kullanılacağını göstermektedir.
 
 ```json
 {
@@ -273,15 +273,15 @@ Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-Önceki örnekten çıktı:
+Yukarıdaki örnekteki çıktı:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False |
-| orExampleOutput | Bool | True |
-| notExampleOutput | Bool | False |
+| Andexamptaoutput | Bool | False |
+| Orexamptaoutput | Bool | True |
+| Notexamptaoutput | Bool | False |
 
-Aşağıdaki [örnek](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) [şabloneşitlerle](template-functions-comparison.md#equals) **değil** kullanır.
+Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) , [eşittir](template-functions-comparison.md#equals)ile **değil** .
 
 ```json
 {
@@ -295,13 +295,14 @@ Aşağıdaki [örnek](https://github.com/Azure/azure-docs-json-samples/blob/mast
             "value": "[not(equals(1, 2))]"
         }
     }
+}
 ```
 
-Önceki örnekten çıktı:
+Yukarıdaki örnekteki çıktı:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | True |
+| Checttequals | Bool | True |
 
 ## <a name="or"></a>or
 
@@ -313,17 +314,17 @@ Herhangi bir parametre değerinin doğru olup olmadığını denetler.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |boole |Doğru olup olmadığını kontrol etmek için ilk değer. |
-| arg2 |Evet |boole |Doğru olup olmadığını kontrol etmek için ikinci değer. |
+| arg1 |Yes |boole |Doğru olup olmadığını kontrol etmek için ilk değer. |
+| arg2 |Yes |boole |Doğru olup olmadığını kontrol etmek için ikinci değer. |
 | ek bağımsız değişkenler |Hayır |boole |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
-Herhangi bir değer doğruysa **True** döndürür; aksi takdirde, **False**.
+Herhangi bir değer true olduğunda **true** değerini döndürür; Aksi takdirde, **false**.
 
 ### <a name="examples"></a>Örnekler
 
-Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) mantıksal işlevlerin nasıl kullanılacağını gösterir.
+Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) , mantıksal işlevlerin nasıl kullanılacağını göstermektedir.
 
 ```json
 {
@@ -347,18 +348,15 @@ Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-Önceki örnekten çıktı:
+Yukarıdaki örnekteki çıktı:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False |
-| orExampleOutput | Bool | True |
-| notExampleOutput | Bool | False |
+| Andexamptaoutput | Bool | False |
+| Orexamptaoutput | Bool | True |
+| Notexamptaoutput | Bool | False |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Kaynak Yöneticisi şablonundaki bölümlerin açıklaması için [bkz.](template-syntax.md)
-* Birden çok şablonu birleştirmek için bkz: [Azure Kaynak Yöneticisi ile bağlantılı şablonları kullanma.](linked-templates.md)
-* Bir kaynak türü oluştururken belirli sayıda kez yeniden sıralamak için azure [kaynak yöneticisinde birden çok kaynak örneği oluşturma](copy-resources.md)bölümüne bakın.
-* Oluşturduğunuz şablonu nasıl dağıtabileceğinizi görmek için Azure [Kaynak Yöneticisi şablonuyla bir uygulama dağıt'a](deploy-powershell.md)bakın.
+* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
 

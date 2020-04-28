@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: Birden çok Sürükleyici Okuyucu kaynaklarını tümleştir'
+title: 'Öğretici: birden çok modern okuyucu kaynağını tümleştirme'
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide, birden çok Sürükleyici Okuyucu kaynaklarını kullanarak Sürükleyici Okuyucu'yu başlatan bir Düğüm.js uygulaması oluşturursunuz.
+description: Bu öğreticide, birden çok derinlikli okuyucu kaynağı kullanarak tam ekran okuyucuyu Başlatan bir Node. js uygulaması oluşturacaksınız.
 author: skamal
 manager: nitinme
 ms.service: cognitive-services
@@ -9,32 +9,32 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: 3912d55b13f3977818e8d898efa651ffeb1a798a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f68112095bc8a8fd9bcc1bd67ff77827d6d00fd7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76046278"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195630"
 ---
-# <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Öğretici: Birden çok Sürükleyici Okuyucu kaynaklarını tümleştir
+# <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Öğretici: birden çok modern okuyucu kaynağını tümleştirme
 
-Genel [bakışta,](./overview.md)Sürükleyici Okuyucu'nun ne olduğunu ve dil öğrenenler, yeni ortaya çıkan okuyucular ve öğrenme farklılıkları olan öğrenciler için okuma anlamayı geliştirmek için kanıtlanmış teknikleri nasıl uyguladığını öğrendiniz. [Düğüm.js quickstart,](./quickstart-nodejs.md)tek bir kaynak ile Immersive Reader nasıl kullanılacağını öğrendim. Bu öğretici, aynı uygulamada birden çok Sürükleyici Reader kaynağının nasıl tümleştirilenini kapsar. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+[Genel bakışta](./overview.md), derinlikli okuyucu ne olduğunu ve dil öğrenimi, gelişmekte olan okuyucular ve öğrenme farklılığı olan öğrenciler için okuma kavraışını geliştirmek üzere kendini kanıtlamış tekniklerin nasıl uyguladığını öğrendiniz. [Node. js hızlı başlangıç](./quickstart-nodejs.md)bölümünde, tek bir kaynakla modern okuyucu kullanmayı öğrendiniz. Bu öğreticide, aynı uygulamadaki birden çok derinlikli okuyucu kaynağını tümleştirme ele alınmaktadır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Varolan bir kaynak grubu altında birden çok Sürükleyici Okuyucu kaynağı oluşturma
-> * Birden çok kaynak kullanarak Sürükleyici Okuyucuyu başlatın
+> * Var olan bir kaynak grubu altında birden çok modern okuyucu kaynağı oluşturma
+> * Birden çok kaynak kullanarak tam ekran okuyucu başlatma
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* NodeJS ile Sürükleyici Okuyucu'yu başlatan bir web uygulaması oluşturmak için [hızlı başlatışları](./quickstart-nodejs.md) izleyin. Bu hızlı başlangıçta, tek bir Sürükleyici Okuyucu kaynağını yapılandırırsınız. Biz bu öğretici bunun üzerine inşa edecektir.
+* NodeJS ile modern okuyucuyu Başlatan bir Web uygulaması oluşturmak için [hızlı](./quickstart-nodejs.md) başlangıcı izleyin. Bu hızlı başlangıçta, tek bir tam ekran okuyucu kaynağı yapılandırırsınız. Bu öğreticide bunun üzerine oluşturacağız.
 
-## <a name="create-the-immersive-reader-resources"></a>Sürükleyici Okuyucu kaynaklarını oluşturma
+## <a name="create-the-immersive-reader-resources"></a>Tam ekran okuyucu kaynakları oluşturma
 
-Her Sürükleyici Reader kaynağı oluşturmak için [bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. **Create-ImmersiveReaderResource** komut `ResourceName`dosyası `ResourceSubdomain`, `ResourceLocation` ve parametreler olarak. Bunlar, oluşturulan her kaynak için benzersiz olmalıdır. Kalan parametreler, ilk Sürükleyici Okuyucu kaynağınızı ayarlarken kullandığınız parayla aynı olmalıdır. Bu şekilde, her kaynak aynı Azure kaynak grubuna ve Azure AD uygulamasına bağlanabilir.
+Her bir derinlikli okuyucu kaynağını oluşturmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. **Create-ImmersiveReaderResource** betiği, `ResourceName` `ResourceSubdomain`, ve `ResourceLocation` olarak parametreler içerir. Bunlar, oluşturulmakta olan her kaynak için benzersiz olmalıdır. Kalan parametreler, ilk derinlikli okuyucu kaynağınızı ayarlarken kullandığınız ile aynı olmalıdır. Bu şekilde, her bir kaynak aynı Azure Kaynak grubu ve Azure AD uygulaması ile bağlantılı olabilir.
 
-Aşağıdaki örnek, biri WestUS'ta, diğeri EastUS'ta olmak üzere iki kaynağın nasıl oluşturulabildiğini göstermektedir. için benzersiz değerlere dikkat `ResourceLocation`edin , ve . `ResourceSubdomain` `ResourceName`
+Aşağıdaki örnekte, biri WestUS ve diğeri EastUS içinde olmak üzere iki kaynağın nasıl oluşturulacağı gösterilmektedir. , `ResourceName` `ResourceSubdomain`Ve `ResourceLocation`için benzersiz değerlere dikkat edin.
 
 ```azurepowershell-interactive
 Create-ImmersiveReaderResource
@@ -64,9 +64,9 @@ Create-ImmersiveReaderResource
 
 ## <a name="add-resources-to-environment-configuration"></a>Ortam yapılandırmasına kaynak ekleme
 
-`TenantId`Hızlı başlatmada, , , `ClientId` `ClientSecret`ve `Subdomain` parametreleri içeren bir ortam yapılandırma dosyası oluşturdunuz. Tüm kaynaklarınız aynı Azure AD uygulamasını kullandığından, `TenantId`aynı değerleri `ClientId`, `ClientSecret`, ve . Yapılması gereken tek değişiklik, her kaynak için her alt etki alanını listelemektir.
+Hızlı başlangıçta, `TenantId`,, ve `ClientId` `ClientSecret` `Subdomain` parametrelerini içeren bir ortam yapılandırma dosyası oluşturdunuz. Tüm kaynaklarınız aynı Azure AD uygulamasını kullandığından, ve `TenantId` `ClientId` `ClientSecret`için aynı değerleri kullanabiliriz. Yapılması gereken tek değişiklik her bir kaynak için her bir alt etki alanını listeme amaçlıdır.
 
-Yeni __.env__ dosyanız artık aşağıdaki gibi görünmelidir:
+Yeni __. env__ dosyanız şimdi aşağıdakine benzer görünmelidir:
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -76,11 +76,11 @@ SUBDOMAIN_WUS={YOUR_WESTUS_SUBDOMAIN}
 SUBDOMAIN_EUS={YOUR_EASTUS_SUBDOMAIN}
 ```
 
-Bu dosyayı kaynak denetimine işlemeyeceğinden emin olun, çünkü kamuya açıklanmaması gereken sırlar içerir.
+Ortak olmaması gereken gizli dizileri içerdiğinden, bu dosyayı kaynak denetimine yürütmemeyi unutmayın.
 
-Daha sonra, birden çok kaynağımızı desteklemek için oluşturduğumuz _routes\index.js_ dosyasını değiştireceğiz. İçeriğini aşağıdaki kodla değiştirin.
+Daha sonra, birden çok kaynakmuzu desteklemek için oluşturduğumuz _routes\ındex.js_ dosyasını değiştiririz. İçeriğini aşağıdaki kodla değiştirin.
 
-Daha önce olduğu gibi, bu kod, hizmet temel parolanızı kullanarak bir Azure AD kimlik doğrulama belirteci alan bir API bitiş noktası oluşturur. Bu kez, kullanıcının bir kaynak konumu belirtmesine ve sorgu parametresi olarak geçirmesine olanak tanır. Daha sonra belirteç ve ilgili alt etki alanı içeren bir nesne döndürür.
+Daha önce olduğu gibi, bu kod hizmet sorumlusu parolanızı kullanarak bir Azure AD kimlik doğrulama belirteci alan bir API uç noktası oluşturur. Bu kez, kullanıcının bir kaynak konumu belirtmesini ve bunu bir sorgu parametresi olarak iletmesini sağlar. Ardından, belirteci ve ilgili alt etki alanını içeren bir nesne döndürür.
 
 ```javascript
 var express = require('express');
@@ -143,11 +143,11 @@ router.get('/GetTokenAndSubdomain', function(req, res) {
 module.exports = router;
 ```
 
-**Getimmersivereaderlaunchparams** API bitiş noktası, yetkisiz kullanıcıların Sürükleyici Reader hizmetinize ve faturanıza karşı kullanılacak jetonları almasını önlemek için bir tür kimlik doğrulamanın (örneğin, [OAuth)](https://oauth.net/2/)arkasına sabitlenmelidir; bu çalışma bu öğretici kapsamı dışındadır.
+**Getimmersivereaderlaunchparams** API uç noktası, yetkisiz kullanıcıların, bir dizi kimlik doğrulaması (örneğin, [OAuth](https://oauth.net/2/)) arkasında güvenli hale gelmelidir Bu iş, Bu öğreticinin kapsamı dışındadır.
 
-## <a name="launch-the-immersive-reader-with-sample-content"></a>Örnek içerikle Sürükleyici Okuyucuyu başlatın
+## <a name="launch-the-immersive-reader-with-sample-content"></a>Örnek içerikle modern okuyucu başlatma
 
-1. _Görünümler\index.pug'u_açın ve içeriğini aşağıdaki kodla değiştirin. Bu kod, sayfayı bazı örnek içerikle doldurur ve Sürükleyici Okuyucu'yu başlatan iki düğme ekler. Biri EastUS kaynağı için Sürükleyici Reader başlatmak için, diğeri de WestUS kaynağı için.
+1. _Views\ındex.Pug_dosyasını açın ve içeriğini aşağıdaki kodla değiştirin. Bu kod, sayfayı bazı örnek içerikle doldurur ve tam ekran okuyucuyu Başlatan iki düğme ekler. Bir tane, EastUS kaynağı için derinlikli okuyucu başlatma ve WestUS kaynağı için bir diğeri.
 
     ```pug
     doctype html
@@ -252,15 +252,15 @@ module.exports = router;
         }
     ```
 
-3. Web uygulamamız artık hazır. Çalıştırarak uygulamayı başlatın:
+3. Web Uygulamam artık hazır. Uygulamayı çalıştırarak başlatın:
 
     ```bash
     npm start
     ```
 
-4. Tarayıcınızı açın ve [http://localhost:3000](http://localhost:3000)' ye gidin. Yukarıdaki içeriği sayfada görmelisiniz. Bu kaynakları kullanarak Sürükleyici Okuyucu'yu başlatmak için **EastUS Immersive Reader** düğmesine veya **WestUS Immersive Reader** düğmesine tıklayın.
+4. Tarayıcınızı açın ve adresine `http://localhost:3000`gidin. Sayfada Yukarıdaki içeriği görmeniz gerekir. Bu ilgili kaynakları kullanarak tam ekran okuyucuyu başlatmak için **EastUS derinlikli okuyucu** düğmesine veya **WestUS derinlikli okuyucu** düğmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) ve [Immersive Reader SDK Referans](./reference.md) keşfedin
-* Kod örneklerini [GitHub'da](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp) görüntüleme
+* [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet
+* [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp) 'daki kod örneklerini görüntüle

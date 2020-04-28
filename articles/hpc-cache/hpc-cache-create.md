@@ -4,14 +4,14 @@ description: Azure HPC önbellek örneği oluşturma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: efa9037b345cdfc5f165e9c5e0c1831ea97b52ed
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 4ff31ca6a171beece1672802367f08768676efbc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106500"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195018"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC önbelleği oluşturma
 
@@ -29,7 +29,7 @@ ms.locfileid: "82106500"
 
 * Konum- [desteklenen bölgelerden](hpc-cache-overview.md#region-availability)birini seçin.
 * Sanal ağ-mevcut bir tane seçebilirsiniz veya yeni bir sanal ağ oluşturabilirsiniz.
-* Alt ağ-yalnızca bu Azure HPC önbellek örneği için kullanılacak en az 64 IP adresi (/24) olan bir alt ağ seçin veya oluşturun.
+* Alt ağ-en az 64 IP adresi olan bir alt ağ seçin veya oluşturun (/24). Bu alt ağ yalnızca bu Azure HPC önbellek örneği için kullanılmalıdır.
 
 ## <a name="set-cache-capacity"></a>Önbellek kapasitesini ayarla
 <!-- referenced from GUI - update aka.ms link if you change this header text -->
@@ -47,13 +47,13 @@ Kullanılabilir aktarım hızı değerlerinden birini ve önbellek depolama boyu
 
 Gerçek veri aktarımı hızının iş yüküne, ağ hızına ve depolama hedeflerinin türüne bağlı olduğunu unutmayın. Seçtiğiniz değerler tüm önbellek sistemi için en fazla aktarım hızını ayarlar, ancak bazıları ek yük görevleri için kullanılır. Örneğin, bir istemci önbellekte zaten depolanmayan bir dosya isterse veya dosya eski olarak işaretlenmişse önbelleğiniz, arka uç depolamadan getirmek için aktarım hızını kullanır.
 
-Azure HPC Cache, önbellek isabet oranlarını en üst düzeye çıkarmak için hangi dosyaların önbelleğe alınacağını ve ön yüklenmiş olduğunu yönetir Önbellek içeriği sürekli değerlendirilir ve dosyalar daha az sıklıkla erişildiği zaman uzun süreli depolamaya taşınır. Etkin çalışma dosyaları kümesini, meta veriler ve diğer ek yük için ek alanla rahatça tutabilecek bir önbellek depolama boyutu seçin.
+Azure HPC Cache, önbellek isabet oranlarını en üst düzeye çıkarmak için hangi dosyaların önbelleğe alınacağını ve ön yüklenmiş olduğunu yönetir Önbellek içerikleri sürekli değerlendirilir ve dosyalar daha az sıklıkta erişildiğinde uzun süreli depolamaya taşınır. Etkin çalışma dosyaları kümesini rahatça tutabilecek bir önbellek depolama boyutu, ayrıca meta veriler ve diğer ek yük için ek alan seçin.
 
 ![önbellek boyutlandırma sayfasının ekran görüntüsü](media/hpc-cache-create-capacity.png)
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>Azure Key Vault şifrelemeyi etkinleştir (isteğe bağlı)
 
-Önbelleğiniz, müşteri tarafından yönetilen şifreleme anahtarlarını destekleyen bir bölgedeyse, **önbellek** ve **Etiketler** sekmeleri arasında **disk şifreleme anahtarları** sayfası görüntülenir. Yayın zamanı itibariyle, bu seçenek Doğu ABD, Orta Güney ABD ve Batı ABD 2 desteklenir.
+Önbelleğiniz, müşteri tarafından yönetilen şifreleme anahtarlarını destekleyen bir bölgedeyse, **önbellek** ve **Etiketler** sekmeleri arasında **disk şifreleme anahtarları** sayfası görüntülenir. Yayın zamanında, bu seçenek Doğu ABD, Orta Güney ABD ve Batı ABD 2 desteklenir.
 
 Önbellek depolamayla kullanılan şifreleme anahtarlarını yönetmek istiyorsanız **disk şifreleme anahtarları** sayfasında Azure Key Vault bilgilerinizi sağlayın. Anahtar Kasası, önbellek ile aynı bölgede ve aynı abonelikte olmalıdır.
 

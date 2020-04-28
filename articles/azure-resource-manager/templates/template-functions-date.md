@@ -1,43 +1,43 @@
 ---
-title: Şablon işlevleri - tarih
-description: Tarihlerle çalışmak için Azure Kaynak Yöneticisi şablonunda kullanılacak işlevleri açıklar.
+title: Şablon işlevleri-Tarih
+description: Tarihlerle çalışmak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: 364b41e9e92cb248a7bd2fac5a41eb535adbf440
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.date: 04/27/2020
+ms.openlocfilehash: 0c31b26361a262a502b2a9e0fb068391846cab4b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084796"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192306"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM şablonları için tarih işlevleri
 
-Kaynak Yöneticisi, Azure Kaynak Yöneticisi (ARM) şablonlarınızdaki tarihlerle çalışmak için aşağıdaki işlevleri sağlar:
+Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonlarınızın tarihleri ile çalışmak için aşağıdaki işlevleri sağlar:
 
-* [tarihTimeAdd](#datetimeadd)
-* [utcŞimdi](#utcnow)
+* [dateTimeAdd](#datetimeadd)
+* [utcNow](#utcnow)
 
-## <a name="datetimeadd"></a>tarihTimeAdd
+## <a name="datetimeadd"></a>dateTimeAdd
 
 `dateTimeAdd(base, duration, [format])`
 
-Temel değere bir zaman süresi ekler. ISO 8601 formatı bekleniyor.
+Temel değere bir zaman süresi ekler. ISO 8601 biçimi bekleniyor.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| base | Evet | string | Eklemeiçin başlangıç datetime değeri. [ISO 8601 zaman damgası biçimini](https://en.wikipedia.org/wiki/ISO_8601)kullanın. |
-| süre | Evet | string | Taban eklemek için zaman değeri. Negatif bir değer olabilir. [ISO 8601 süre biçimini](https://en.wikipedia.org/wiki/ISO_8601#Durations)kullanın. |
-| biçim | Hayır | string | Tarih saati sonucunun çıktı biçimi. Sağlanmadıysa, temel değerin biçimi kullanılır. Standart [biçim dizeleri](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizeleri](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
+| base | Yes | string | Ekleme için başlangıç tarih saat değeri. [Iso 8601 zaman damgası biçimini](https://en.wikipedia.org/wiki/ISO_8601)kullanın. |
+| süre | Yes | string | Temele eklenecek zaman değeri. Negatif bir değer olabilir. [Iso 8601 Duration biçimini](https://en.wikipedia.org/wiki/ISO_8601#Durations)kullanın. |
+| biçim | Hayır | string | Tarih saat sonucu için çıkış biçimi. Sağlanmazsa, temel değerin biçimi kullanılır. [Standart biçim dizelerini](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizelerini](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
-Süre değerinin temel değere eklenmesinden kaynaklanan tarih saati değeri.
+Temel değere Duration değeri eklemekten kaynaklanan tarih saat değeri.
 
 ### <a name="examples"></a>Örnekler
 
-Aşağıdaki örnek şablon, zaman değerleri eklemenin farklı yollarını gösterir.
+Aşağıdaki örnek şablonda saat değerleri eklemenin farklı yolları gösterilmektedir.
 
 ```json
 {
@@ -72,15 +72,15 @@ Aşağıdaki örnek şablon, zaman değerleri eklemenin farklı yollarını gös
 }
 ```
 
-Önceki şablon bir temel zaman ile `2020-04-07 14:53:14Z`dağıtıldığında, çıktı:
+Yukarıdaki şablon bir taban saati ile dağıtıldığında `2020-04-07 14:53:14Z`, çıkış şu şekilde olur:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| add3Years | Dize | 07.07.2023 14:53:14 |
-| çıkarma9Gün | Dize | 29.03.2020 14:53:14 |
-| add1Hour | Dize | 07.07.2020 15:53:14 |
+| add3Years | Dize | 4/7/2023 2:53:14 PM |
+| subtract9Days | Dize | 3/29/2020 2:53:14 PM |
+| add1Hour | Dize | 4/7/2020 3:53:14 PM |
 
-Sonraki örnek şablon, Otomasyon zamanlamasının başlangıç saatinin nasıl ayarlanır olduğunu gösterir.
+Sonraki örnek şablonda, bir Otomasyon zamanlaması için başlangıç zamanının nasıl ayarlanacağı gösterilmektedir.
 
 ```json
 {
@@ -134,33 +134,33 @@ Sonraki örnek şablon, Otomasyon zamanlamasının başlangıç saatinin nasıl 
 }
 ```
 
-## <a name="utcnow"></a>utcŞimdi
+## <a name="utcnow"></a>utcNow
 
 `utcNow(format)`
 
-Geçerli (UTC) tarih saati değerini belirtilen biçimde verir. Format sağlanmadıysa, ISO 8601 (yyyyMddTHHmmssZ) biçimi kullanılır. **Bu işlev yalnızca bir parametre için varsayılan değerde kullanılabilir.**
+Belirtilen biçimdeki geçerli (UTC) Tarih/saat değerini döndürür. Biçim sağlanmazsa ISO 8601 (yyyyMMddTHHmmssZ) biçimi kullanılır. **Bu işlev, yalnızca bir parametre için varsayılan değerde kullanılabilir.**
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| biçim |Hayır |string |URI kodlanmış değeri bir dize dönüştürmek için. Standart [biçim dizeleri](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizeleri](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
+| biçim |Hayır |string |Dizeye dönüştürülecek URI kodlamalı değer. [Standart biçim dizelerini](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizelerini](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
 
 ### <a name="remarks"></a>Açıklamalar
 
-Bu işlevi yalnızca bir parametrenin varsayılan değeri için bir ifade içinde kullanabilirsiniz. Bu işlevi şablonda başka bir yerde kullanmak bir hata döndürür. Her çağrıldığında farklı bir değer döndürdüğünden, işlev şablonun diğer bölümlerinde izin verilmez. Aynı şablonu aynı parametrelerle dağıtmak güvenilir bir şekilde aynı sonuçları üretmez.
+Bu işlevi yalnızca bir parametresinin varsayılan değeri için bir ifade içinde kullanabilirsiniz. Bu işlevi bir şablonda başka bir yerde kullanmak bir hata döndürür. İşlevin her çağrılışında farklı bir değer döndürdüğünden, bu işleve şablon diğer bölümlerinde izin verilmiyor. Aynı parametrelerle aynı şablon dağıtmak, aynı sonuçları güvenilir bir şekilde üretmez.
 
-Daha önceki [başarılı bir dağıtımı yeniden dağıtmak için bu seçeneği](rollback-on-error.md)kullanırsanız ve önceki dağıtım utcNow kullanan bir parametre içeriyorsa, parametre yeniden değerlendirilmez. Bunun yerine, önceki dağıtımdaki parametre değeri geri alma dağıtımında otomatik olarak yeniden kullanılır.
+[Daha önceki başarılı bir dağıtımı yeniden dağıtmak için seçeneğini](rollback-on-error.md)kullanırsanız ve önceki dağıtım artık utckullanan bir parametre içeriyorsa, parametre yeniden değerlendirilmez. Bunun yerine, önceki dağıtımdaki parametre değeri geri alma dağıtımında otomatik olarak yeniden kullanılır.
 
-Varsayılan bir değer için utcNow işlevine dayanan bir şablonu yeniden dağıtılırken dikkatli olun. Yeniden dağıttığınızda ve parametre için bir değer sağlamadığınızda, işlev yeniden değerlendirilir. Yeni bir kaynak oluşturmak yerine varolan bir kaynağı güncelleştirmek istiyorsanız, önceki dağıtımdan parametre değerini geçirin.
+Varsayılan bir değer için utcNow işlevine dayanan bir şablonu yeniden dağıtmaya dikkat edin. Yeniden dağıtırken ve parametresi için bir değer sağlamazsanız, işlev yeniden değerlendirilerek yapılır. Yeni bir kaynak oluşturmak yerine var olan bir kaynağı güncelleştirmek istiyorsanız, önceki dağıtımdan parametre değerini geçirin.
 
 ### <a name="return-value"></a>Döndürülen değer
 
-Geçerli UTC tarih saati değeri.
+Geçerli UTC Tarih saat değeri.
 
 ### <a name="examples"></a>Örnekler
 
-Aşağıdaki örnek şablon, tarih saati değeri için farklı biçimleri gösterir.
+Aşağıdaki örnek şablonda tarih saat değeri için farklı biçimler gösterilmektedir.
 
 ```json
 {
@@ -199,15 +199,15 @@ Aşağıdaki örnek şablon, tarih saati değeri için farklı biçimleri göste
 }
 ```
 
-Önceki örnekteki çıktı her dağıtım için değişir, ancak benzer olacaktır:
+Yukarıdaki örnekteki çıktı her dağıtım için farklılık gösterir, ancak şuna benzer olacaktır:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
 | utcOutput | string | 20190305T175318Z |
-| utcShortOutput | string | 03/05/2019 |
+| Utckısaltoutput | string | 03/05/2019 |
 | utcCustomOutput | string | 3 5 |
 
-Sonraki örnek, etiket değeri ayarlarken işlevden bir değerin nasıl kullanılacağını gösterir.
+Sonraki örnekte, bir etiket değeri ayarlanırken işlevden bir değerin nasıl kullanılacağı gösterilmektedir.
 
 ```json
 {
@@ -242,3 +242,7 @@ Sonraki örnek, etiket değeri ayarlarken işlevden bir değerin nasıl kullanı
     }
 }
 ```
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).

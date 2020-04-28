@@ -5,18 +5,18 @@ author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: fbb6f4633ef6e984746a4fb4516380f4b2e3a9da
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: fa64ec526ab85e412b407da8566ac6f802ca2d20
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116783"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195290"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Hızlı başlangıç: Java kapsayıcı görüntülerini derleyin ve Azure Container Registry gönderin
 
 Bu hızlı başlangıçta, kapsayıcılı bir Java uygulamasının nasıl oluşturulacağı ve Maven JIB eklentisini kullanarak Azure Container Registry nasıl göndergörüntüleneceği gösterilmektedir. Maven ve JIB kullanımı, bir Azure Container Registry ile etkileşim kurmak için geliştirici araçları kullanmanın bir örneğidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği; henüz Azure aboneliğiniz yoksa [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) etkinleştirebilir veya [ücretsiz Azure hesabı](https://azure.microsoft.com/pricing/free-trial) için kaydolabilirsiniz.
 * [Azure Komut Satırı Arabirimi (CLI)](/cli/azure/overview).
@@ -108,13 +108,13 @@ Son olarak, proje yapılandırmanızı güncelleyebilir ve görüntünüzü derl
 
 1. Spring Boot uygulamanızın tamamlanmış proje dizinine (örneğin, "*C:\SpringBoot\gs-spring-boot-docker\complete*" veya "*/users/robert/SpringBoot/gs-spring-boot-docker/complete*") gidin ve *pom.xml* dosyasını metin düzenleyicide açın.
 
-1. `<properties>` *Pod. xml* dosyasındaki koleksiyonu aşağıdaki XML ile güncelleştirin. Yer tutucuyu kayıt defteri adınızla değiştirin ve değeri `<jib-maven-plugin.version>` `2.1.0`ile bir özellik veya [JIB-Maven-Plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)' in daha yeni bir sürümünü ekleyin.
+1. `<properties>` *Pod. xml* dosyasındaki koleksiyonu aşağıdaki XML ile güncelleştirin. Yer tutucuyu kayıt defteri adınızla değiştirin ve değeri `<jib-maven-plugin.version>` `2.2.0`ile bir özellik veya [JIB-Maven-Plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)' in daha yeni bir sürümünü ekleyin.
 
    ```xml
    <properties>
       <docker.image.prefix><your registry name>.azurecr.io</docker.image.prefix>
       <java.version>1.8</java.version>
-      <jib-maven-plugin.version>2.1.0</jib-maven-plugin.version>
+      <jib-maven-plugin.version>2.2.0</jib-maven-plugin.version>
    </properties>
    ```
 
@@ -139,7 +139,7 @@ Son olarak, proje yapılandırmanızı güncelleyebilir ve görüntünüzü derl
 1. Spring Boot uygulamanız için tamamlanmış proje dizinine gidin ve aşağıdaki komutu çalıştırarak görüntüyü oluşturun ve kayıt defterine gönderin:
 
    ```bash
-   mvn compile jib:build
+   az acr login && mvn compile jib:build
    ```
 
 > [!NOTE]

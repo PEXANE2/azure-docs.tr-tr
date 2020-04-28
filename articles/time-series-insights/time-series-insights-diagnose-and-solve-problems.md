@@ -1,140 +1,139 @@
 ---
-title: Sorunları tanıla, sorun giderme ve çözme - Azure Time Series Insights | Microsoft Dokümanlar
-description: Bu makalede, Azure Zaman Serisi Öngörüleri ortamınızdaki sık karşılaşılan sorunları nasıl tanılayabildiği, sorun gidereceğiniz ve çözeceğiniz açıklanmaktadır.
+title: Sorunları tanılama, sorun giderme ve çözme-Azure Time Series Insights
+description: Bu makalede Azure Time Series Insights ortamınızdaki yaygın sorunların nasıl tanılanacağı, giderileceği ve çözüleceği açıklanır.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
+ms.reviewer: v-mamcge
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 02/04/2020
 ms.custom: seodec18
-ms.openlocfilehash: 209df97169c71d910677ffdb2e2b12593882445b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d9efa1ebf1a3e3b146c4f45b0e84047562141cd
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80152611"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192723"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Time Series Insights ortamınızdaki sorunları tanılayın ve çözün
 
-Bu makalede, Azure Zaman Serisi Öngörüleri ortamınızda karşılaşabileceğiniz bazı sorunlar açıklanmaktadır. Makale, çözüm için potansiyel nedenler ve çözümler sunar.
+Bu makalede Azure Time Series Insights ortamınızda karşılaşabileceğiniz sorunlar açıklanmaktadır. Makalede olası nedenler ve çözüm çözümleri sunulmaktadır.
 
 ## <a name="video"></a>Video
 
-### <a name="learn-about-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>Sık karşılaşılan Time Series Insights müşteri zorlukları ve azaltıcı etkenler hakkında bilgi edinin.</br>
+### <a name="learn-about-common-time-series-insights-challenges-and-mitigationsbr"></a>Yaygın Time Series Insights zorlukları ve azaltmaları hakkında bilgi edinin</br>
 
 > [!VIDEO https://www.youtube.com/embed/7U0SwxAVSKw]
 
-## <a name="problem-no-data-is-shown"></a>Sorun: veri gösterilmez
+## <a name="problem-no-data-is-shown"></a>Sorun: veri gösterilmemiştir
 
-Azure Zaman [Serisi Öngörüleri gezgininde](https://insights.timeseries.azure.com) çeşitli sık nedenlerle veri oluşmaz:
+[Azure Time Series Insights Gezgininde](https://insights.timeseries.azure.com)hiçbir veri görünmemişse, bu genel nedenleri göz önünde bulundurun.
 
-### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Neden A: olay kaynağı verileri JSON formatında değil
+### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Neden: olay kaynak verileri JSON biçiminde değil
 
-Azure Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için [Desteklenen JSON şekillerini](./how-to-shape-query-json.md)okuyun.
+Azure Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için bkz. [desteklenen JSON şekilleri](./how-to-shape-query-json.md).
 
-### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Neden B: olay kaynağı anahtarı gerekli bir izin eksik
+### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Neden B: olay kaynak anahtarında gerekli bir izin eksik
 
-* Azure IoT Hub'ındaki bir IoT hub'ı **için, hizmet bağlama** izinlerine sahip anahtarı sağlamanız gerekir. Her ikiside **hizmet bağlama** izinleri olduğundan **iothubowner** veya **hizmet** ilkelerini seçin.
+* Azure IoT Hub IoT Hub 'ı için, hizmet bağlantısı izinleri olan anahtarı sağlamanız gerekir. **İothubowner** ya da **hizmet** İlkesi ' ni seçin. Her ikisinde de hizmet bağlantısı izinleri vardır.
 
-   [![IoT Hub hizmeti izinleri birbirine bağlar](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [![IoT Hub hizmet bağlantısı izinleri](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
-* Azure Etkinlik Hub'larında bir etkinlik hub'ı **için, dinleme** izinleri olan anahtarı sağlamanız gerekir. Her ikisi de **dinleme** izinleri **olduğundan, okuma** veya **yönetme** ilkeleriçalışır.
+* Azure Event Hubs bir olay hub 'ı için, dinleme izinleri olan anahtarı sağlamanız gerekir. **Okuma** ve **yönetme** ilkeleri her ikisi de dinleme izinleri içerdiğinden her ikisi de çalışacaktır.
 
-   [![Olay merkezi dinleme izinleri](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [![Olay Hub 'ı dinleme izinleri](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
-### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Neden C: sağlanan tüketici grubu Time Series Insights'a özel değildir
+### <a name="cause-c-the-provided-consumer-group-isnt-exclusive-to-time-series-insights"></a>Neden C: belirtilen tüketici grubu Time Series Insights özel değil
 
-Bir IoT hub'ı veya bir etkinlik hub'ı kaydettirdiğinizde, verileri okumak için kullanmak istediğiniz tüketici grubunu ayarlamak önemlidir. Bu tüketici grubu *paylaşılamaz.* Tüketici grubu paylaşılırsa, temel IoT hub'ı veya olay merkezi otomatik olarak ve okuyuculardan birinin bağlantısını rasgele keser. Zaman Serisi Öngörüleri için benzersiz bir tüketici grubu sağlayın.
+Bir IoT Hub 'ı veya bir olay hub 'ını kaydettiğinizde, verileri okumak için kullanmak istediğiniz tüketici grubunu ayarlamanız önemlidir. Bu Tüketici grubu *paylaşılamıyor*. Tüketici grubu paylaşılmışsa, temel alınan IoT Hub 'ı veya Olay Hub 'ı otomatik olarak okuyuculardan birinin bağlantısını keser. Okunacak Time Series Insights için benzersiz bir tüketici grubu sağlayın.
 
-### <a name="cause-d-the-environment-has-just-been-provisioned"></a>Neden D: çevre sadece temin edilmiştir
+### <a name="cause-d-the-environment-has-just-been-provisioned"></a>Neden D: ortam henüz sağlandı
 
-Veriler, ortam ve verileri ilk oluşturulduktan sonra birkaç dakika içinde Zaman Serisi Öngörüleri kaşifinizde görünür.
+Veriler, ortam ve verileri ilk oluşturulduktan sonra birkaç dakika içinde Time Series Insights Gezgini 'nde görünür.
 
-## <a name="problem-some-data-is-shown-but-data-is-missing"></a>Sorun: bazı veriler gösterilir, ancak veriler eksik
+## <a name="problem-some-data-is-shown-but-data-is-missing"></a>Sorun: bazı veriler gösteriliyor, ancak veriler eksik
 
-Veriler yalnızca kısmen görünüyorsa ve veriler geride kalıyor gibi görünüyorsa, birkaç olasılığı göz önünde bulundurmanız gerekir.
+Veriler yalnızca kısmen göründüğünde ve veriler yanlış olduğunda bu olası sorunları göz önünde bulundurun.
 
-### <a name="cause-a-your-environment-is-being-throttled"></a>Neden A: ortamınız daraltılıyor
+### <a name="cause-a-your-environment-is-being-throttled"></a>Neden: ortamınız kısıtlanıyor
 
-Veri içeren bir olay kaynağı oluşturduktan sonra ortamlar sağlandığında [azaltma](time-series-insights-environment-mitigate-latency.md) yaygın bir sorundur. Azure IoT Hub ve Azure Etkinlikleri Hub'ları verileri yedi güne kadar saklar. Zaman Serisi Öngörüleri her zaman etkinlik kaynağındaki en eski olayla başlar (ilk katılım, ilk çıkan veya *FIFO).*
+Veri içeren bir olay kaynağı oluşturduktan sonra, ortamlar sağlandığında [kısıtlama](time-series-insights-environment-mitigate-latency.md) yaygın bir sorundur. Azure IoT Hub ve Azure olayları hub 'Ları, verileri yedi güne kadar depolar. Time Series Insights her zaman olay kaynağındaki en eski olay (ilk ın, ilk çıkar veya *FIFO*) ile başlar.
 
-Örneğin, bir olay kaynağında, tek birimli Bir Zaman Serisi Öngörüleri ortamına bağlandığınızda 5 milyon olay varsa, Time Series Öngörüleri günde yaklaşık 1 milyon olay okur. Time Series Insights beş günlük gecikme süresi yaşıyor gibi görünebilir. Ancak, olan şey çevrenin daraltılması.
+Örneğin, bir S1, tek birimlik Time Series Insights ortamına bağlandığınızda bir olay kaynağında 5.000.000 olayındaysanız, Time Series Insights günde yaklaşık 1.000.000 olay okur. Time Series Insights beş günden fazla gecikme yaşmış olabilir. Ancak neler olduğu, ortamın kısıtlandığı şeydir.
 
-Olay kaynağınızda eski olaylar varsa, azaltmaya iki şekilde yaklaşabilirsiniz:
+Olay kaynağınızda eski olaylarınız varsa, azaltmayı iki şekilde değiştirebilirsiniz:
 
-- Zaman Serisi Öngörüleri'nde göstermek istemediğiniz eski olayları kaldırmaya yardımcı olmak için etkinlik kaynağınızın bekletme sınırlarını değiştirin.
-- Eski olayların iş bsayısını artırmak için daha büyük bir ortam boyutu (birim sayısı) sağlama. Yukarıdaki örneği kullanarak, aynı S1 ortamını bir gün için beş üniteye çıkarsanız, ortamın bir gün içinde yetişmesi gerekir. Sabit durumlu etkinlik üretiminiz günde 1 milyon veya daha az olaysa, etkinliğin kapasitesini yakaladıktan sonra bir birime indirebilirsiniz.
+- Time Series Insights ' de görünmesini istemediğiniz eski olayları kaldırmaya yardımcı olması için olay kaynağınızın saklama sınırlarını değiştirin.
+- Eski olayların aktarım hızını artırmak için daha büyük bir ortam boyutu sağlayın (birim sayısı). Yukarıdaki örnekte, aynı S1 ortamını bir gün için beş birim ile artırırsanız, ortam bir gün içinde yakalamalı. Sabit durum olay üretim, günde 1.000.000 veya daha az olay ise, Time Series Insights tamamlandıktan sonra olay kapasitesini bir birimle azaltabilirsiniz.
 
-Azaltma sınırı, çevrenin SKU türüne ve kapasitesine göre uygulanır. Ortamdaki tüm olay kaynakları bu kapasiteyi paylaşır. IoT hub'ınızın veya etkinlik hub'ınızın olay kaynağı verileri zorunlu sınırların ötesine itiyorsa, azaltma ve gecikme yle karşılaşırsınız.
+Zorlanan azaltma sınırı, ortamın SKU türünü ve kapasitesini temel alır. Ortamdaki tüm olay kaynakları bu kapasiteyi paylaşır. IoT Hub veya Olay Hub 'ınızın olay kaynağı verileri zorlanan limitlerin ötesinde alıyorsa, azaltma ve bir gecikme yaşar.
 
-Aşağıdaki şekil, S1 SKU'su ve 3 kapasiteli bir Time Series Insights ortamını göstermektedir. Günde 3 milyon etkinlik yapabilir.
+Aşağıdaki şekilde, S1 SKU 'SU ve 3 kapasitesi olan bir Time Series Insights ortamı gösterilmektedir. Günde 3.000.000 olay alabilir.
 
-[![Çevre SKU akım kapasitesi](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[![Ortam kapasitesi](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
-Örnek olarak, bir ortamın bir olay merkezinden iletiler yutturdugini varsay. Günlük giriş hızı ~67.000 mesajdır. Bu oran dakikada yaklaşık 46 iletianlamına gelir. 
+Bir olay hub 'ından iletileri gösteren bir ortam düşünün. 67.000 ileti hakkında günlük giriş oranına sahiptir. Bu oran her dakikada yaklaşık 46 ileti dönüştürür.
 
-* Her olay hub iletisi tek bir Time Series Insights olayına düzleştirilmişse, azaltma gerçekleşmez. 
-* Her olay hub iletisi 100 Zaman Serisi Öngörüleri etkinliğine düzleştirilmişse, her dakika 4.600 olay yutulmalıdır. 
+* Her olay hub 'ı iletisi tek bir Time Series Insights olayına düzleştirilir, azaltma gerçekleşmez.
+* Her olay hub 'ı iletisi 100 Time Series Insights olayına düzleştirilir, her dakika 4.600 olay belirtilmelidir.
 
-3 kapasiteye sahip bir S1 SKU ortamı dakikada sadece 2.100 etkinlik (günde 1 milyon etkinlik = üç birim = dakikada 2.100 olay) dakikada 700 olay) 
+Kapasitesi 3 olan bir S1 SKU ortamı, her dakikada yalnızca 2.100 olay alabilir (her gün 1.000.000 olay 700 = ayda, üç birim için dakikada olay = 2.100 olay).
 
-Düzleme mantığının nasıl çalıştığını üst düzey bir anlayış için [Desteklenen JSON şekillerini](./how-to-shape-query-json.md)okuyun.
+Düzleştirme mantığının nasıl çalıştığını yüksek düzeyde anlamak için bkz. [desteklenen JSON şekilleri](./how-to-shape-query-json.md).
 
-#### <a name="recommended-resolutions-for-excessive-throttling"></a>Aşırı azaltma için önerilen çözünürlükler
+#### <a name="recommended-resolutions-for-excessive-throttling"></a>Aşırı azaltma için önerilen çözümler
 
-Gecikmeyi gidermek için ortamınızın SKU kapasitesini artırın. Daha fazla bilgi için [Zaman Serisi Öngörüleri ortamınızı ölçeklendir'i](time-series-insights-how-to-scale-your-environment.md)okuyun.
+Gecikme sayısını onarmak için ortamınızın SKU kapasitesini artırın. Daha fazla bilgi için [Time Series Insights ortamınızdaki ölçeği](time-series-insights-how-to-scale-your-environment.md)okuyun.
 
-### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>Neden B: geçmiş verilerin ilk yutulması girişi yavaşlatır
+### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>Neden B: geçmiş verilerin Ilk alımı yavaşlar
 
-Varolan bir olay kaynağını bağlarsanız, Büyük olasılıkla IoT hub'ınız veya olay hub'ınız zaten veri içerir. Ortam, olay kaynağının ileti saklama döneminin başlangıcından itibaren veri çekmeye başlar. Bu varsayılan işleme geçersiz kılınamıyor. Azaltma yımeşgul edebilirsiniz. Azaltma, geçmiş verileri yuttukça yakalamak biraz zaman alabilir.
+Var olan bir olay kaynağını bağladığınızda, IoT Hub veya Olay Hub 'ınız zaten veri içeriyor olabilir. Ortam, olay kaynağının ileti bekletme döneminin başından itibaren veri çekmeye başlar. Bu varsayılan işlem geçersiz kılınamaz. Azaltmayı izleyebilirsiniz. Azaltma, geçmiş verileri alırken biraz zaman alabilir.
 
-#### <a name="recommended-resolutions-for-large-initial-ingestion"></a>Büyük başlatma alımı için önerilen çözünürlükler
+#### <a name="recommended-resolutions-for-large-initial-ingestion"></a>Büyük başlangıç alımı için önerilen çözümler
 
-Gecikmeyi gidermek için:
+Öteleme 'i onarmak için:
 
-1. SKU kapasitesini izin verilen maksimum değere yükseltin (bu durumda 10). Kapasiteyi artırdıktan sonra giriş işlemi çok daha hızlı bir şekilde yetişmeye başlar. Artan kapasite için ücretlendirilirsiniz. Ne kadar hızlı yetiştediğinizi görselleştirmek [için, Zaman Serisi Öngörüler gezgininde](https://insights.timeseries.azure.com)kullanılabilirlik grafiğini görüntüleyebilirsiniz.
+1. SKU kapasitesini izin verilen maksimum değere (Bu durumda 10) yükseltin. Kapasiteyi artırdıktan sonra, giriş işlemi çok daha hızlı bir şekilde daha hızlı bir şekilde çalışmaya başlar. Artan kapasite için ücretlendirilirsiniz. Ne kadar hızlı bir şekilde yakalamak istediğinizi görselleştirmek için, kullanılabilirlik grafiğini [Time Series Insights Gezgini](https://insights.timeseries.azure.com)'nde görüntüleyebilirsiniz.
 
-2. Gecikmeye yakalandığında, SKU kapasitesini normal giriş hızınıza düşürün.
+2. Öteleme yakalandığında, SKU kapasitesini normal giriş oranınızı azaltın.
 
-## <a name="problem-data-was-showing-previously-but-is-no-longer-showing"></a>Sorun: veriler daha önce gösteriyordu, ancak artık göstermiyor
+## <a name="problem-data-was-showing-previously-but-is-no-longer-showing"></a>Sorun: veriler daha önce gösteriliyor ancak artık gösterilmiyor
 
-TSI artık veri sindirmiyor, ancak olaylar hala Iot Hub'ına veya Olay Hub'ına akıyor
+Time Series Insights artık verileri geri alma, ancak olaylar hala IoT Hub veya Olay Hub 'ına akışa yaramazsa, bu olası nedeni göz önünde bulundurun.
 
-### <a name="cause-a-your-hub-access-key-was-regenerated-and-your-environment-needs-updating"></a>Neden A: Hub erişim anahtarınız yeniden oluşturuldu ve ortamınızın güncellenmesi gerekiyor
+### <a name="cause-a-your-hub-access-key-was-regenerated-and-your-environment-needs-to-be-updated"></a>Bunun nedeni: hub erişim anahtarınız yeniden üretildi ve ortamınızın güncelleştirilmesi gerekiyor
 
-Bu sorun, olay kaynağınızı oluştururken sağlanan anahtar artık geçerli olmadığında oluşur. Hub'ınızda telemetri görürsünüz, ancak Zaman Serisi Öngörülerinde Giriş Alınan İletiler yoktur. Anahtarın yenilenip oluşturulmadığından emin değilseniz, Olay Hub'larınızın Etkinlik günlüğünde "Ad Alanı Yetkilendirme Kuralları Oluştur veya Güncelleştir" için arama yapabilir veya IoT hub'ı için "IotHub Kaynağı Oluştur veya güncelleştir" araması yapabilirsiniz.
+Bu sorun, olay kaynağınızı oluştururken girilen anahtar artık geçerli olmadığında oluşur. Hub 'ınızda telemetri görürsünüz ancak Time Series Insights Ileti alınmadı. Anahtarın yeniden oluşturulup üretilmediğini bilmiyorsanız, "ad alanı yetkilendirme kuralları oluşturma veya güncelleştirme" için Olay Hub 'ının etkinlik günlüğünde arama yapabilirsiniz. IoT Hub 'ı için "ıothub kaynağı oluşturma veya güncelleştirme" araması yapın.
 
-Zaman Serisi Öngörüleri ortamınızı yeni anahtarla güncellemek için Azure portalında hub kaynağınızı açın ve yeni anahtarı kopyalayın. TSI kaynağınıza gidin ve Olay Kaynakları'nı tıklatın. 
+Time Series Insights ortamınızı yeni anahtarla güncelleştirmek için, hub kaynağınızı Azure portal açın ve yeni anahtarı kopyalayın. Time Series Insights kaynağına gidin ve **olay kaynaklarını**seçin:
 
-   [![Anahtarı güncelleştirin.](media/diagnose-and-solve-problems/update-hub-key-step-1.png)](media/diagnose-and-solve-problems/update-hub-key-step-1.png#lightbox)
+   [![Olay kaynaklarını seçin](media/diagnose-and-solve-problems/update-hub-key-step-1.png)](media/diagnose-and-solve-problems/update-hub-key-step-1.png#lightbox)
 
-Yutma işleminin durduğu olay kaynağını seçin, yeni tuşa yapıştırın ve Kaydet'i tıklatın.
+Alımı durdurulan olay kaynağını veya kaynakları seçin, yeni anahtarı yapıştırın ve **Kaydet**' i seçin:
 
-   [![Anahtarı güncelleştirin.](media/diagnose-and-solve-problems/update-hub-key-step-2.png)](media/diagnose-and-solve-problems/update-hub-key-step-2.png#lightbox)
+   [![Yeni anahtarı Yapıştır](media/diagnose-and-solve-problems/update-hub-key-step-2.png)](media/diagnose-and-solve-problems/update-hub-key-step-2.png#lightbox)
 
-## <a name="problem-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Sorun: olay kaynağımın zaman damgası özellik adı ayarı çalışmıyor
+## <a name="problem-the-event-sources-timestamp-property-name-setting-doesnt-work"></a>Sorun: olay kaynağının zaman damgası Özellik adı ayarı çalışmıyor
 
-Zaman damgası özelliğinin adı ve değerinin aşağıdaki kurallara uygun olduğundan emin olun:
+Olay kaynağınızdan JSON dizesi olarak gelen zaman damgası özelliği değerinin _yyyy-mm-ddTHH: mm: ss biçiminde olduğundan emin olun. GÖNDERILDIĞINDE FFFFFFFK BIÇIMINDE_. Örnek: **2008-04-12T12:53Z**.
 
-* Zaman damgası özelliği adı büyük/küçük harf duyarlıdır.
-* JSON dizesi olarak etkinlik kaynağınızdan gelen zaman damgası özellik değeri _yyyy-MM-ddTHH:mm:ss biçimine sahip olmalıdır. FFFFFFFK_. Bir örnek **2008-04-12T12:53Z**olduğunu.
+Zaman damgası özelliği adının büyük/küçük harfe duyarlı olduğunu unutmayın.
 
-Zaman damgası özelliği adınızın yakalandığını ve düzgün çalıştığından emin olmanın en kolay yolu, Time Series Insights gezginini kullanmaktır. Zaman Serisi Öngörüleri gezgininde, grafiği kullanarak, zaman damgası özellik adını girdikten sonra bir süre seçin. Seçimi sağ tıklatın ve ardından **Olayları Keşfet** seçeneğini belirleyin.
+Zaman damgası özelliği adınızın yakalanıp düzgün şekilde çalışmasını sağlamanın en kolay yolu Time Series Insights Gezginini kullanmaktır. Time Series Insights Gezgini ' nde, grafiği kullanarak, zaman damgası özellik adını girdikten sonra bir süre seçin. Seçime sağ tıklayın ve ardından **olayları keşfet**' i seçin.
 
-İlk sütun üstbilgi, zaman damgası özellik adınız olmalıdır. **Zaman Damgası**sözcüğünün yanında **($ts)** görüntülenir.
+İlk sütun üst bilgisi, zaman damgası özelliğinin adı olmalıdır. Sözcük **zaman damgasının**yanında **($TS)** görüntülenir.
 
-Aşağıdaki değerler görüntülenmez:
+Aşağıdaki değerler gösterilmez:
 
-- *(abc)*: Zaman Serisi Öngörüleri'nin veri değerlerini dizeler olarak okuduğunu gösterir.
-- *Takvim simgesi*: Zaman Serisi Öngörüleri'nin veri değerini *datetime*olarak okuduğunu gösterir.
-- *#*: Zaman Serisi Öngörüleri'nin veri değerlerini bir sonda olarak okuduğunu gösterir.
+- *(ABC)*: Time Series Insights, veri değerlerini dizeler olarak okudığını gösterir.
+- *Takvim simgesi*: Time Series Insights, veri değerlerini DateTime değerleri olarak okudığını gösterir.
+- *#*: Time Series Insights veri değerlerini tamsayılar olarak okudığını gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure [Zaman Serisi Öngörüleri'nde gecikme süresini nasıl azaltabilirsiniz](time-series-insights-environment-mitigate-latency.md)hakkında bilgi edinin.
+- [Azure Time Series Insights gecikme süresini azaltma](time-series-insights-environment-mitigate-latency.md)hakkında bilgi edinin.
 
-- [Zaman Serisi Öngörüleri ortamınızı nasıl ölçeklendireceklerini](time-series-insights-how-to-scale-your-environment.md)öğrenin.
+- [Time Series Insights ortamınızı ölçeklendirmeyi](time-series-insights-how-to-scale-your-environment.md)öğrenin.

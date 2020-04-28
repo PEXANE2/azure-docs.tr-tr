@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: b52af8f41f32c224fd7c4fa0f5c539b23d231f49
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: ae98325d98df1ac8a06e0c0bc950d89cc6b77eda
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149308"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192272"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure 'da gizli bilgi işlem
 
@@ -28,7 +28,8 @@ Azure gizli bilgi işlem, bulutta işlendiği sırada hassas verilerinizi yalıt
 ## <a name="overview"></a>Genel Bakış
 <p><p>
 
-> [!VIDEO https://www.youtube.com/embed/Qu6sP0XDMU8]
+
+> [!VIDEO https://www.youtube.com/embed/rT6zMOoLEqI]
 
 Bulut verilerinizin güvenliğini güvenli hale getirmenin önemli olduğunu biliyoruz. Kaygılarınızı duyduk. Müşterilerimiz hassas iş yüklerini buluta taşırken yalnızca birkaç soru aşağıda verilmiştir: 
 
@@ -76,7 +77,7 @@ Azure gizli bilgi işlem sanal makinelerinde, CPU 'nun bir parçası, uygulaman�
 
 ![VM modeli](media/overview/hardware-backed-enclave.png)
 
-Azure gizli bilgi işlem altyapısı şu anda çok sayıda sanal makinenin (VM) bir SKU 'sundan oluşur. Bu VM 'Ler, yazılım uzantısı koruyucusu (Intel SGX) ile Intel işlemcilerde çalışır. [INTEL SGX](https://intel.com/sgx) , gizli bilgi işlem ile daha iyi koruma sağlayan bir bileşendir. 
+Azure gizli bilgi işlem altyapısı şu anda çok sayıda sanal makinenin (VM) bir SKU 'sundan oluşur. Bu VM 'Ler Software Guard uzantısı (Intel SGX) ile Intel işlemcilerde çalışır. [INTEL SGX](https://intel.com/sgx) , gizli bilgi işlem ile daha iyi koruma sağlayan bir bileşendir. 
 
 Günümüzde Azure, donanım tabanlı şifreleme oluşturma için Intel SGX teknolojisini temel alan [DCsv2 serisi](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) sunmaktadır. Uygulama verilerinizi ve kullanımda olan kodları korumak için DCsv2 serisi VM 'lerde çalışacak güvenli şifreleme tabanlı uygulamalar oluşturabilirsiniz. 
 

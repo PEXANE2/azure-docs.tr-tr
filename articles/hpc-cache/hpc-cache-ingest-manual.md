@@ -1,43 +1,43 @@
 ---
-title: Azure HPC Önbellek veri yutmak - manuel kopyalama
-description: Azure HPC Önbelleğinde verileri Blob depolama hedefine taşımak için cp komutları nasıl kullanılır?
+title: Azure HPC önbellek verileri alma-el ile kopyalama
+description: Azure HPC önbelleğinde bir BLOB depolama hedefine veri taşımak için CP komutlarını kullanma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: fc397088e46f0d2b623080f3deed24c386e7d8b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d5f8e6b59a4ae0149f219738952b47ce399c2ff
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74168491"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195001"
 ---
-# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC Önbellek veri yutma - manuel kopyalama yöntemi
+# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC önbelleği veri alma-el ile kopyalama yöntemi
 
-Bu makalede, Azure HPC Önbelleği ile kullanılmak üzere verileri blob depolama kabına el ile kopyalamak için ayrıntılı yönergeler veremiş. Kopyalama hızını optimize etmek için çok iş parçacığı paralel işlemleri kullanır.
+Bu makalede, Azure HPC Cache ile kullanmak üzere verileri bir BLOB depolama kapsayıcısına el ile kopyalamak için ayrıntılı yönergeler sunulmaktadır. Kopyalama hızını iyileştirmek için çok iş parçacıklı paralel işlemler kullanır.
 
-Azure HPC Önbelleğiniz için verileri Blob depolama alanına taşıma hakkında daha fazla bilgi edinmek için [verileri Azure Blob depolama alanına taşı'nı](hpc-cache-ingest.md)okuyun.
+Azure HPC önbelleğiniz için verileri blob depolamaya taşıma hakkında daha fazla bilgi edinmek için [Azure Blob depolama 'ya veri taşıma](hpc-cache-ingest.md)makalesini okuyun.
 
 ## <a name="simple-copy-example"></a>Basit kopya örneği
 
-Önceden tanımlanmış dosya veya yol kümelerine karşı arka planda aynı anda birden fazla kopya komutu çalıştırarak istemciüzerinde çok iş parçacığı kopyasını el ile oluşturabilirsiniz.
+Önceden tanımlanmış dosya veya yol kümelerine yönelik olarak, arka planda birden fazla kopyalama komutu çalıştırarak, bir istemcide çok iş parçacıklı bir kopyayı el ile oluşturabilirsiniz.
 
-Linux/UNIX ``cp`` komutu, ``-p`` sahipliği ve mtime meta verilerini korumak için bağımsız değişkeni içerir. Aşağıdaki komutlara bu bağımsız değişkenin eklenmesi isteğe bağlıdır. (Bağımsız değişken ekleme, istemciden gönderilen dosya sistemi çağrılarının sayısını meta veri değişikliği için hedef dosya sistemine artırır.)
+Linux/UNIX ``cp`` komutu, sahiplik ve mtime meta verilerini korumak için bağımsız değişkenini ``-p`` içerir. Bu bağımsız değişkeni aşağıdaki komutlara eklemek isteğe bağlıdır. (Bağımsız değişkeni eklemek, meta veri değişikliği için istemciden hedef dosya sistemine gönderilen dosya sistemi çağrılarının sayısını artırır.)
 
-Bu basit örnek iki dosyayı paralel olarak kopyalar:
+Bu basit örnek, paralel olarak iki dosya kopyalar:
 
 ```bash
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-Bu komutu verdikten `jobs` sonra, komut iki iş parçacığının çalıştığını gösterir.
+Bu komutu verdikten sonra, `jobs` komut iki iş parçacığının çalıştığını gösterir.
 
-## <a name="copy-data-with-predictable-file-names"></a>Öngörülebilir dosya adlarıyla verileri kopyalama
+## <a name="copy-data-with-predictable-file-names"></a>Tahmin edilebilir dosya adlarıyla veri kopyalama
 
-Dosya adlarınız öngörülebilirse, paralel kopyalama iş parçacıkları oluşturmak için ifadeleri kullanabilirsiniz. 
+Dosya adlarınız tahmin edilebilir ise, paralel kopyalama iş parçacıkları oluşturmak için ifadeleri kullanabilirsiniz.
 
-Örneğin, dizininiz sırayla `0001` numaralandırılan 1000 dosya `1000`içeriyorsa, her biri 100 dosyayı kopyalayan on paralel iş parçacığı oluşturmak için aşağıdaki ifadeleri kullanabilirsiniz:
+Örneğin, dizininiz öğesinden `0001` öğesine sıralı olarak numaralandırılan 1000 dosyaları içeriyorsa, her bir Copy `1000`100 dosyası için 10 paralel iş parçacığı oluşturmak üzere aşağıdaki ifadeleri kullanabilirsiniz:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -52,11 +52,11 @@ cp /mnt/source/file8* /mnt/destination1/ & \
 cp /mnt/source/file9* /mnt/destination1/
 ```
 
-## <a name="copy-data-with-unstructured-file-names"></a>Yapılandırılmamış dosya adlarıyla verileri kopyalama
+## <a name="copy-data-with-unstructured-file-names"></a>Yapılandırılmamış dosya adlarıyla veri kopyalama
 
-Dosya adlandırma yapınız öngörülebilir değilse, dosyaları dizin adlarıyla gruplandırma yapabilirsiniz. 
+Dosya adlandırma yapınız tahmin edilebilir değilse, dosyaları dizin adlarına göre gruplandırabilirsiniz.
 
-Bu örnek, arka plan görevleri ``cp`` olarak çalıştırılan komutlara göndermek için tüm dizinleri toplar:
+Bu örnek, arka plan görevleri olarak çalıştırılan ``cp`` komutlara göndermek için tüm dizinleri toplar:
 
 ```bash
 /root
@@ -68,22 +68,22 @@ Bu örnek, arka plan görevleri ``cp`` olarak çalıştırılan komutlara gönde
 |-/dir1d
 ```
 
-Dosyalar toplandıktan sonra, alt dizinleri ve tüm içeriğini özyinelemeli olarak kopyalamak için paralel kopyalama komutları çalıştırabilirsiniz:
+Dosyalar toplandıktan sonra, alt dizinleri ve tüm içeriğini yinelemeli olarak kopyalamak için paralel kopyalama komutlarını çalıştırabilirsiniz:
 
 ```bash
 cp /mnt/source/* /mnt/destination/
-mkdir -p /mnt/destination/dir1 && cp /mnt/source/dir1/* mnt/destination/dir1/ & 
-cp -R /mnt/source/dir1/dir1a /mnt/destination/dir1/ & 
-cp -R /mnt/source/dir1/dir1b /mnt/destination/dir1/ & 
+mkdir -p /mnt/destination/dir1 && cp /mnt/source/dir1/* mnt/destination/dir1/ &
+cp -R /mnt/source/dir1/dir1a /mnt/destination/dir1/ &
+cp -R /mnt/source/dir1/dir1b /mnt/destination/dir1/ &
 cp -R /mnt/source/dir1/dir1c /mnt/destination/dir1/ & # this command copies dir1c1 via recursion
 cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 ```
 
-## <a name="when-to-add-mount-points"></a>Montaj noktaları ne zaman eklenir?
+## <a name="when-to-add-mount-points"></a>Bağlama noktaları ne zaman eklenir
 
-Tek bir hedef dosya sistemi montaj noktasına doğru giden yeterli paralel iş parçacığı na sahip olduktan sonra, daha fazla iş parçacığı eklemenin daha fazla iş parçacığı vermediği bir nokta olacaktır. (İşlem, veri türünüze bağlı olarak dosya/saniye veya bayt/saniye olarak ölçülecektir.) Veya daha kötüsü, aşırı iş parçacığı bazen bir iş çıkarma bozulmasına neden olabilir.  
+Tek bir hedef dosya sistemi bağlama noktasına karşı çok sayıda paralel iş parçacığına sahip olduktan sonra, daha fazla iş parçacığı eklemenin daha fazla verimlilik vermediği bir nokta olacaktır. (Aktarım hızı, veri türlerine bağlı olarak dosya/saniye veya bayt/saniye cinsinden ölçülecektir.) Ya da daha kötüleşiyor, iş parçacığı, bazen üretilen iş azalmasına neden olabilir.
 
-Bu durumda, aynı uzak dosya sistemi montaj yolunu kullanarak diğer Azure HPC Önbellek montaj adreslerine istemci tarafı montaj noktaları ekleyebilirsiniz:
+Bu durumda, aynı uzak dosya sistemi bağlama yolunu kullanarak diğer Azure HPC önbellek bağlama adreslerine istemci tarafı bağlama noktaları ekleyebilirsiniz:
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -92,7 +92,7 @@ Bu durumda, aynı uzak dosya sistemi montaj yolunu kullanarak diğer Azure HPC �
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-İstemci tarafı montaj noktaları eklemek, ek `/mnt/destination[1-3]` montaj noktalarına ek kopyalama komutları atarak daha fazla paralellik elde etmenizi sağlar.  
+İstemci tarafı bağlama noktaları eklemek ek `/mnt/destination[1-3]` bağlama noktalarına daha fazla paralellik elde etmenizi sağlar.
 
 Örneğin, dosyalarınız çok büyükse, farklı hedef yolları kullanmak için kopyalama komutlarını tanımlayabilir ve kopyayı gerçekleştiren istemciden paralel olarak daha fazla komut gönderebilirsiniz.
 
@@ -108,11 +108,11 @@ cp /mnt/source/file7* /mnt/destination2/ & \
 cp /mnt/source/file8* /mnt/destination3/ & \
 ```
 
-Yukarıdaki örnekte, üç hedef montaj noktası da istemci dosya kopyalama işlemleri tarafından hedeflenmektedir.
+Yukarıdaki örnekte, üç hedef bağlama noktası, istemci dosyası kopyalama işlemlerine yöneliktir.
 
-## <a name="when-to-add-clients"></a>İstemci ne zaman eklenir?
+## <a name="when-to-add-clients"></a>İstemcilerin ne zaman ekleneceği
 
-Son olarak, istemcinin yeteneklerine ulaştığınızda, daha fazla kopya iş parçacığı veya ek montaj noktaları eklemek ek dosya/sn veya bayt/sn artışı oluşturmaz. Bu durumda, kendi dosya kopyalama işlemleri kümelerini çalıştıracak aynı montaj noktaları kümesine sahip başka bir istemci dağıtabilirsiniz. 
+Son olarak, istemcinin özelliklerine ulaştınız, daha fazla kopyalama iş parçacığı veya ek bağlama noktası eklenmesi ek dosya/sn veya bayt/sn artışı vermez. Bu durumda, kendi dosya kopyalama işlemi kümelerini çalıştıran aynı bağlama noktaları kümesiyle başka bir istemciyi dağıtabilirsiniz.
 
 Örnek:
 
@@ -136,9 +136,9 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>Dosya bildirimleri oluşturma
 
-Yukarıdaki yaklaşımları anladıktan sonra (hedef başına birden çok kopya iş parçacığı, istemci başına birden çok hedef, ağ tarafından erişilebilen kaynak dosya sistemi başına birden çok istemci), şu öneriyi göz önünde bulundurun: Dosya bildirimleri oluşturun ve bunları kopyayla kullanın birden çok istemci arasında komutları.
+Yukarıdaki yaklaşımlar (her hedef için birden çok kopya iş parçacığı, istemci başına birden çok hedef, ağ erişimli kaynak dosya sistemi başına birden çok istemci) anlaşıldıktan sonra şu öneriyi göz önünde bulundurun: dosya bildirimleri oluşturun ve ardından birden çok istemcide kopyalama komutları ile bunları kullanın.
 
-Bu senaryo, dosyaların ``find`` veya dizinlerin bildirimlerini oluşturmak için UNIX komutunu kullanır:
+Bu senaryo, dosya veya ``find`` dizinlerin bildirimlerini oluşturmak için UNIX komutunu kullanır:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
@@ -153,12 +153,12 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Bu sonucu bir dosyaya yönlendirin:`find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Bu sonucu bir dosyaya yeniden yönlendir:`find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
-Ardından dosyaları saymak ve alt dizinlerin boyutlarını belirlemek için BASH komutlarını kullanarak manifestoyu yineleyebilirsiniz:
+Ardından, dosyaları saymak ve alt dizinlerin boyutlarını belirleyebilmek için BASH komutlarını kullanarak bildirimde yineleyebilirsiniz.
 
 ```bash
-ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l`    `du -sh ${i}`"; done
+ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l` `du -sh ${i}`"; done
 244    3.5M    ./atj5b5ab44b7f-02/support/gsi/2018-07-18T00:07:03EDT
 9      172K    ./atj5b5ab44b7f-02/support/gsi/stats_2018-07-18T05:01:00UTC
 124    5.8M    ./atj5b5ab44b7f-02/support/gsi/stats_2018-07-19T01:01:01UTC
@@ -194,7 +194,7 @@ ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `f
 33     2.8G    ./atj5b5ab44b7f-03/support/trace/rolling
 ```
 
-Son olarak, istemcilere gerçek dosya kopyalama komutları zanaat gerekir.  
+Son olarak, gerçek dosya kopyalama komutlarını istemcilere kopyalamanız gerekir.
 
 Dört istemciniz varsa, şu komutu kullanın:
 
@@ -202,19 +202,19 @@ Dört istemciniz varsa, şu komutu kullanın:
 for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 ```
 
-Beş istemciniz varsa, şuna benzer bir şey kullanın:
+Beş istemciniz varsa, şöyle bir şey kullanın:
 
 ```bash
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-Ve altı için .... Gerektiği gibi tahmin edin.
+Ve altı.... Gerektiğinde extrapogeç.
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-Komuttan çıktının bir parçası olarak elde edilen düzey dört dizinlerine yol adlarına sahip *N* istemcilerinizin her biri için bir tane olan N sonuçlanan dosyaları alırsınız. *N* `find` 
+Her *n* istemciniz için bir tane olmak üzere, `find` komutun çıktının bir parçası olarak elde edilen düzey dört dizine ait yol adlarına sahip *n* . bir dosya elde edersiniz.
 
 Kopyalama komutunu oluşturmak için her dosyayı kullanın:
 
@@ -222,6 +222,6 @@ Kopyalama komutunu oluşturmak için her dosyayı kullanın:
 for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt/source/${j} /mnt/destination/${j}" >> /tmp/client${i}_copy_commands ; done; done
 ```
 
-Yukarıdaki n *dosyaları,* her satır başına bir kopya komutu ile, istemci üzerinde bir BASH komut dosyası olarak çalıştırılabilir verecektir. 
+Yukarıdaki, her biri her satırda bir kopyalama komutu olan *N* dosya sağlayacak ve bu, istemcide Bash betiği olarak çalıştırılabilirler.
 
-Amaç, birden çok istemcide paralel olarak istemci başına aynı anda bu komut birden çok komut iş parçacığı çalıştırmaktır.
+Amaç, birden çok istemcide paralel olarak bu betiklerin birden çok iş parçacığını her istemci için aynı anda çalıştırmaktır.

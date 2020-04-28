@@ -1,7 +1,7 @@
 ---
-title: Çalışma alanı verilerini dışa aktarma veya silme
+title: Çalışma alanı verilerini dışarı aktarma veya silme
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning stüdyosu, CLI, SDK ve kimlik doğrulaması REST API'leriyle çalışma alanınızı nasıl dışa aktarıp silebilirsiniz öğrenin.
+description: Azure Machine Learning Studio, CLı, SDK ve kimliği doğrulanmış REST API 'Leri ile çalışma alanınızı dışarı aktarmayı veya silmeyi öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
-ms.date: 03/06/2020
+ms.date: 04/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4abef0146b4bf0cfaa254d196b0ca68f0d8ac883
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50234eb356314039b8023f0442207ae0b762676e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218280"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82191643"
 ---
-# <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning hizmeti çalışma alanı verilerinizi dışa aktarma veya silme
+# <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning hizmeti çalışma alanı verilerinizi dışarı veya silme
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning'de, kimlik doğrulaması yapılan REST API ile çalışma alanı verilerinizi dışa aktarabilir veya silebilirsiniz. Bu makalede nasıl söyler.
+Azure Machine Learning, çalışma alanı verilerinizi kimliği doğrulanmış REST API dışa aktarabilir veya silebilirsiniz. Bu makalede nasıl yapılacağı açıklanır.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -30,49 +30,49 @@ Azure Machine Learning'de, kimlik doğrulaması yapılan REST API ile çalışma
 
 ## <a name="control-your-workspace-data"></a>Çalışma alanı verilerinizi denetleme
 
-Azure Machine Learning tarafından depolanan ürün içi veriler, Azure Machine Learning stüdyosu, CLI, SDK ve kimlik doğrulaması REST API'leri aracılığıyla dışa aktarma ve silme için kullanılabilir. Telemetri verilerine Azure Gizlilik portalından erişilebilir. 
+Azure Machine Learning tarafından depolanan ürün içi veriler Azure Machine Learning Studio, CLı, SDK ve kimliği doğrulanmış REST API 'Leri aracılığıyla dışarı ve silmeye hazırdır. Telemetri verilerine Azure Gizlilik portalı üzerinden erişilebilir. 
 
-Azure Machine Learning'de kişisel veriler, çalışma geçmişi belgelerindeki kullanıcı bilgileri ve hizmetle olan bazı kullanıcı etkileşimlerinin telemetri kayıtlarından oluşur.
+Azure Machine Learning, kişisel veriler, çalışma geçmişi belgelerinin ve hizmet ile bazı kullanıcı etkileşimlerinin telemetri kayıtlarındaki Kullanıcı bilgilerinden oluşur.
 
-## <a name="delete-workspace-data-with-the-rest-api"></a>REST API ile çalışma alanı verilerini silme
+## <a name="delete-workspace-data-with-the-rest-api"></a>REST API çalışma alanı verilerini silme
 
-Verileri silmek için HTTP DELETE fiili ile aşağıdaki API aramaları yapılabilir. Bunlar, `https://management.core.windows.net/` bitiş noktası `Authorization: Bearer <arm-token>` için AAD erişim `<arm-token>` belirteci nerede istek bir üstbilgi sahip tarafından yetkilendirilir.  
+Verileri silmek için aşağıdaki API çağrıları HTTP DELETE fiili ile yapılabilir. Bunlar, istekte bir `Authorization: Bearer <arm-token>` üst bilgi varmış ve bu, `<arm-token>` `https://management.core.windows.net/` uç nokta için AAD erişim belirteci olduğu yetkilidir.  
 
-Bu belirteci nasıl alacağınızı öğrenmek ve Azure uç noktalarını aramak için ML kaynaklarını ve [Azure REST API belgelerini](https://docs.microsoft.com/rest/api/azure/) [yönetmek için REST'i kullan'a](how-to-manage-rest.md) bakın.  
+Bu belirteci alma ve Azure uç noktalarını çağırma hakkında bilgi edinmek için bkz. ML kaynaklarını ve [azure REST API belgelerini](https://docs.microsoft.com/rest/api/azure/) [yönetmek için REST kullanma](how-to-manage-rest.md) .  
 
-Aşağıdaki örneklerde, metni ilişkili {} kaynağı belirleyen örnek adlarla değiştirin.
+Aşağıdaki örneklerde, içindeki {} metni, ilişkili kaynağı belirten örnek adlarıyla değiştirin.
 
-### <a name="delete-an-entire-workspace"></a>Çalışma alanının tamamını silme
+### <a name="delete-an-entire-workspace"></a>Tüm çalışma alanını sil
 
-Tüm çalışma alanını silmek için bu aramayı kullanın.  
+Tüm çalışma alanını silmek için bu çağrıyı kullanın.  
 > [!WARNING]
-> Tüm bilgiler silinir ve çalışma alanı artık kullanılabilir olmayacaktır.
+> Tüm bilgiler silinecek ve çalışma alanı artık kullanılabilir olmayacaktır.
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}?api-version=2019-11-01
 
-### <a name="delete-models"></a>Modelleri silme
+### <a name="delete-models"></a>Modelleri Sil
 
-Modellerin ve kimliklerinin listesini almak için bu aramayı kullanın:
+Modellerin ve kimliklerinin bir listesini almak için bu çağrıyı kullanın:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models?api-version=2019-11-01
 
-Tek tek modeller ile silinebilir:
+Tek tek modeller şu şekilde silinebilir:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2019-11-01
 
-### <a name="delete-assets"></a>Varlıkları silme
+### <a name="delete-assets"></a>Varlıkları Sil
 
-Varlıkların ve kimliklerinin listesini almak için bu aramayı kullanın:
+Varlıkların bir listesini ve kimliklerini almak için bu çağrıyı kullanın:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2019-11-01
 
-Tek tek varlıklar şu şekilde silinebilir:
+Her bir varlık, ile silinebilir:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2019-11-01
 
 ### <a name="delete-images"></a>Görüntüleri silme
 
-Görüntülerin ve kimliklerinin listesini almak için bu aramayı kullanın:
+Görüntülerin ve kimliklerinin bir listesini almak için bu çağrıyı kullanın:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images?api-version=2019-11-01
 
@@ -80,184 +80,175 @@ Tek tek görüntüler şu şekilde silinebilir:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images/{id}?api-version=2019-11-01
 
-### <a name="delete-services"></a>Hizmetleri silme
+### <a name="delete-services"></a>Hizmetleri Sil
 
-Hizmetlerin ve kimliklerinin listesini almak için bu aramayı kullanın:
+Hizmetlerin ve kimliklerinin bir listesini almak için bu çağrıyı kullanın:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services?api-version=2019-11-01
 
-Bireysel hizmetler şu şekilde silinebilir:
+Ayrı hizmetler şu şekilde silinebilir:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2019-11-01
 
-## <a name="export-service-data-with-the-rest-api"></a>REST API ile hizmet verilerini dışa aktarma
+## <a name="export-service-data-with-the-rest-api"></a>Hizmet verilerini REST API dışa aktarma
 
-Veri aktarmak için HTTP GET fiili ile aşağıdaki API aramaları yapılabilir. Bunlar, istekte bir `Authorization: Bearer <arm-token>` üstbilgi nin olması `<arm-token>` yla yetkilendirilir, bitiş noktası için AAD erişim belirteci nerede`https://management.core.windows.net/`  
+Verileri dışarı aktarmak için, aşağıdaki API çağrıları HTTP GET fiili ile yapılabilir. Bunlar, istekte bir `Authorization: Bearer <arm-token>` üst bilgi varmış ve bu, uç nokta `<arm-token>` için AAD erişim belirteci olduğu durumlarda yetkilendirilir`https://management.core.windows.net/`  
 
-Bu belirteci nasıl alacağınızı öğrenmek ve Azure uç noktalarını aramak için ML kaynaklarını ve [Azure REST API belgelerini](https://docs.microsoft.com/rest/api/azure/) [yönetmek için REST'i kullan](how-to-manage-rest.md) 'a bakın.   
+Bu belirteci nasıl alabileceğinizi ve Azure uç noktalarına nasıl çağrılacağını öğrenmek için bkz. ML kaynaklarını ve [azure REST API belgelerini](https://docs.microsoft.com/rest/api/azure/) [yönetmek için REST kullanma](how-to-manage-rest.md) ..   
 
-Aşağıdaki örneklerde, metni ilişkili {} kaynağı belirleyen örnek adlarla değiştirin.
+Aşağıdaki örneklerde, içindeki {} metni, ilişkili kaynağı belirten örnek adlarıyla değiştirin.
 
-### <a name="export-workspace-information"></a>Çalışma Alanı bilgilerini dışa aktarma
+### <a name="export-workspace-information"></a>Çalışma alanı bilgilerini dışarı aktar
 
-Tüm çalışma alanlarının listesini almak için bu aramayı kullanın:
+Tüm çalışma alanlarının bir listesini almak için bu çağrıyı kullanın:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces?api-version=2019-11-01
 
-Bireysel çalışma alanı hakkında bilgi şu şekilde elde edilebilir:
+Tek bir çalışma alanıyla ilgili bilgiler şu şekilde edinilebilir:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}?api-version=2019-11-01
 
-### <a name="export-compute-information"></a>İhracat Bilgi
+### <a name="export-compute-information"></a>Işlem bilgilerini dışarı aktar
 
-Bir çalışma alanına bağlı tüm bilgi işlem hedefleri şu şekilde elde edilebilir:
+Bir çalışma alanına bağlı tüm işlem hedefleri şu şekilde elde edilebilir:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes?api-version=2019-11-01
 
-Tek bir bilgi işlem hedefi hakkında bilgi şu şekilde elde edilebilir:
+Tek bir işlem hedefi hakkında bilgi şu şekilde edinilebilir:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}?api-version=2019-11-01
 
-### <a name="export-run-history-data"></a>Çalışma geçmişi verilerini dışa aktarma
+### <a name="export-run-history-data"></a>Çalışma geçmişi verilerini dışarı aktar
 
-Tüm denemelerin ve bilgilerin listesini almak için bu aramayı kullanın:
+Tüm denemeleri ve bilgilerinin bir listesini almak için bu çağrıyı kullanın:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments 
 
-Belirli bir denemeiçin tüm çalıştırmalar aşağıdakiler tarafından elde edilebilir:
+Belirli bir deneme için tüm çalıştırmalar şu şekilde edinilebilir:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/runs 
 
-Run geçmiş öğeleri tarafından elde edilebilir:
+Çalıştırma geçmişi öğeleri şu şekilde elde edilebilir:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/runs/{runId} 
 
-Bir denemeiçin tüm çalıştırma ölçümleri şu şekilde elde edilebilir:
+Bir deneme için tüm çalıştırma ölçümleri şu şekilde edinilebilir:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/metrics 
 
-Tek bir çalıştırma ölçümü:
+Tek bir çalıştırma ölçümü şu şekilde elde edilebilir:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/metrics/{metricId}
 
-### <a name="export-artifacts"></a>Yapıtları dışa aktarma
+### <a name="export-artifacts"></a>Yapıtları dışarı aktar
 
-Yapıtların ve bunların yollarının listesini almak için bu aramayı kullanın:
+Yapıtların ve yollarının bir listesini almak için bu çağrıyı kullanın:
 
     https://{location}.experiments.azureml.net/artifact/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/artifacts/origins/ExperimentRun/containers/{runId}
 
-### <a name="export-notifications"></a>Dışa aktarma bildirimleri
+### <a name="export-notifications"></a>Bildirimleri dışarı aktar
 
-Depolanan görevlerin listesini almak için bu aramayı kullanın:
+Saklı görevlerin bir listesini almak için bu çağrıyı kullanın:
 
     https://{location}.experiments.azureml.net/notification/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/tasks
 
-Tek bir görev için bildirimler:
+Tek bir görev için bildirimler şu şekilde elde edilebilir:
 
     https://{location}.experiments.azureml.net/notification/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}tasks/{taskId}
 
-### <a name="export-data-stores"></a>Veri depolarını dışa aktarma
+### <a name="export-data-stores"></a>Veri depolarını dışarı aktar
 
-Veri depolarının listesini almak için bu aramayı kullanın:
+Veri depolarının bir listesini almak için bu çağrıyı kullanın:
 
     https://{location}.experiments.azureml.net/datastore/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores
 
-Bireysel veri depoları şu şekilde elde edilebilir:
+Tek tek veri depoları şu şekilde elde edilebilir:
 
     https://{location}.experiments.azureml.net/datastore/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}
 
 ### <a name="export-models"></a>Modelleri dışarı aktarma
 
-Modellerin ve kimliklerinin listesini almak için bu aramayı kullanın:
+Modellerin ve kimliklerinin bir listesini almak için bu çağrıyı kullanın:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models?api-version=2019-11-01
 
-Bireysel modeller elde edilebilir:
+Tek tek modeller şu şekilde edinilebilir:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2019-11-01
 
-### <a name="export-assets"></a>İhracat varlıkları
+### <a name="export-assets"></a>Varlıkları dışarı aktar
 
-Varlıkların ve kimliklerinin listesini almak için bu aramayı kullanın:
+Varlıkların bir listesini ve kimliklerini almak için bu çağrıyı kullanın:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2019-11-01
 
-Münferit varlıklar:
+Tek tek varlıklar şu şekilde edinilebilir:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2019-11-01
 
-### <a name="export-images"></a>Görüntüleri dışa aktarma
+### <a name="export-images"></a>Görüntüleri dışarı aktar
 
-Görüntülerin ve kimliklerinin listesini almak için bu aramayı kullanın:
+Görüntülerin ve kimliklerinin bir listesini almak için bu çağrıyı kullanın:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images?api-version=2019-11-01
 
-Bireysel görüntüler elde edilebilir:
+Tek tek görüntüler şu şekilde alınabilir:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images/{id}?api-version=2019-11-01
 
-### <a name="export-services"></a>İhracat hizmetleri
+### <a name="export-services"></a>Hizmetleri dışarı aktar
 
-Hizmetlerin ve kimliklerinin listesini almak için bu aramayı kullanın:
+Hizmetlerin ve kimliklerinin bir listesini almak için bu çağrıyı kullanın:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services?api-version=2019-11-01
 
-Bireysel hizmetler:
+Tek tek hizmetler şu şekilde edinilebilir:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2019-11-01
 
-### <a name="export-pipeline-experiments"></a>İhracat Boru Hattı Deneyleri
+### <a name="export-pipeline-experiments"></a>Dışarı aktarma işlem hattı denemeleri
 
-Bireysel deneyler:
+Tek tek denemeleri şu şekilde edinilebilir:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Experiments/{experimentId}
 
-### <a name="export-pipeline-graphs"></a>İhracat Boru Hattı Grafikleri
+### <a name="export-pipeline-graphs"></a>Ardışık düzen grafiklerini dışa aktarma
 
-Bireysel grafikler elde edilebilir:
+Tek tek grafikler şu şekilde alınabilir:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Graphs/{graphId}
 
-### <a name="export-pipeline-modules"></a>İhracat Boru Hattı Modülleri
+### <a name="export-pipeline-modules"></a>Ardışık düzen modüllerini dışarı aktarma
 
-Modüller:
+Modüller şu şekilde edinilebilir:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Modules/{id}
 
-### <a name="export-pipeline-templates"></a>Dışa Aktarma Boru Hattı Şablonları
+### <a name="export-pipeline-templates"></a>İşlem hattı şablonlarını dışarı aktarma
 
-Şablonlar tarafından elde edilebilir:
+Şablonlar şu şekilde edinilebilir:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Templates/{templateId}
 
-### <a name="export-pipeline-data-sources"></a>İhracat Boru Hattı Veri Kaynakları
+### <a name="export-pipeline-data-sources"></a>İşlem hattı veri kaynaklarını dışa aktarma
 
-Veri Kaynakları şu kaynaklarla elde edilebilir:
+Veri kaynakları şu şekilde elde edilebilir:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
 
-## <a name="delete-assets-in-the-designer"></a>Tasarımcıdaki varlıkları silme
+## <a name="delete-assets-in-the-designer"></a>Tasarımcıda varlıkları silme
 
-Denemenizi oluşturduğunuz tasarımcıda, tek tek varlıkları silin:
+Denemenizi oluşturduğunuz tasarımcıda tek tek varlıkları silin:
 
 1. Tasarımcıya git
 
-    ![Varlıkları silme](./media/how-to-export-delete-data/delete-experiment.png)
+    ![Varlıkları Sil](./media/how-to-export-delete-data/delete-experiment.png)
 
-1. Listede, silmek için tek tek ardışık düzen ektürününü seçin.
+1. Listede, silinecek tek işlem hattı taslağını seçin.
 
 1. **Sil**’i seçin.
 
-### <a name="delete-datasets-in-the-designer"></a>Tasarımcıdaki veri kümelerini silme
+### <a name="delete-datasets-in-the-designer"></a>Tasarımcıda veri kümelerini silme
 
-Tasarımcıdaki veri kümelerini silmek için, bağlı depolama hesaplarına gitmek ve oradaki veri kümelerini silmek için Azure portalını veya Depolama Gezgini'ni kullanın. Tasarımcıdaki veri kümelerinin kaydını kaldırmak yalnızca depolama daki başvuru noktasını kaldırır.
+Tasarımcıda veri kümelerini silmek için Azure portal veya Depolama Gezgini kullanarak bağlı depolama hesaplarına gidin ve veri kümelerini burada silin. Tasarımcıdaki veri kümelerinin kaydı, yalnızca depolamadaki başvuru noktasını kaldırır.
 
-## <a name="export-data-in-the-designer"></a>Tasarımcıda veri verme
-
-Denemenizi oluşturduğunuz tasarımcıda, eklediğiniz verileri dışa aktarın:
-
-1. Solda Veri **Kümeleri'ni**seçin.
-
-1. Listede, dışa aktarmak için veri kümesini seçin
-
-    ![Verileri indirme](./media/how-to-export-delete-data/unregister-dataset.png)
