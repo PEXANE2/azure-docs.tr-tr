@@ -108,6 +108,8 @@
           href: how-to-windows-shutdown.md
         - name: Destek bilgilerini görüntüleme (eğitmen)
           href: lab-creator-support-information.md
+        - name: Eğitmen görünümünden öğrenci VM’lerine erişme
+          href: instructor-access-virtual-machines.md
     - name: Sınıf laboratuvarlarında VM’lere bağlanma (öğrenci)
       items:
         - name: Sınıf laboratuvarlarına erişim

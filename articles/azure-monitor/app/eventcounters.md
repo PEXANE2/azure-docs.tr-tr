@@ -1,28 +1,28 @@
 ---
-title: Uygulama Öngörüleri'ndeki etkinlik sayaçları | Microsoft Dokümanlar
-description: Uygulama Öngörülerinde sistemi ve özel .NET/.NET Core EventCounters'ı izleyin.
+title: Application Insights 'de olay sayaçları | Microsoft Docs
+description: Application Insights 'de sistem ve özel .NET/.NET Core EventCounters ' i izleyin.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 2094c012e86131073fc66be4f2ac2fb2e81ef4c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1037766587f58a30c20f614726e1241c16e5a16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663598"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187104"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters giriş
 
-`EventCounter`sayaçları veya istatistikleri yayınlamak ve tüketmek için .NET/.NET Core mekanizmasıdır. [Bu belge,](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) nasıl `EventCounters` yayımlanıp tüketileceğine ilişkin genel bir bakış ve örnekler verir. EventCounter'lar tüm işletim sistemi platformlarında desteklenir - Windows, Linux ve macOS. Yalnızca Windows sistemlerinde desteklenen [PerformanceCounter'lar](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) için bir çapraz platform eşdeğeri olarak düşünülebilir.
+`EventCounter`, sayaçlar veya istatistikler yayımlamak ve kullanmak için .NET/.NET Core mekanizmasıdır. [Bu](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) belge, bir genel bakış `EventCounters` ve bunların nasıl yayımlanalınacağını ve kullanılacağına dair örneklere sahip olmanızı sağlar. EventCounters tüm işletim sistemi platformlarında desteklenir-Windows, Linux ve macOS. Yalnızca Windows sistemlerinde desteklenen [PerformanceCounters](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) için platformlar arası eşdeğer olarak düşünülebilir.
 
-Kullanıcılar gereksinimlerini karşılamak `EventCounters` için herhangi bir özel yayımlayabilirken, .NET Core 3.0 çalışma zamanı varsayılan olarak bu sayaçlardan oluşan bir küme yayımlar. Belge, Azure Uygulama Öngörüleri'nde `EventCounters` (sistem tanımlı veya kullanıcı tanımlı) toplamak ve görüntülemek için gereken adımlardan geçer.
+Kullanıcılar ihtiyaçlarını karşılamak için herhangi bir `EventCounters` özel yayım yaparken, .net Core 3,0 çalışma zamanı varsayılan olarak bu sayaçların bir kümesini yayımlar. Belge, Azure Application Insights toplamak ve görüntülemek `EventCounters` için gerekli adımları (sistem tanımlı veya Kullanıcı tanımlı) adım adım gösterecektir.
 
-## <a name="using-application-insights-to-collect-eventcounters"></a>EventCounter'ları toplamak için Uygulama Öngörülerini Kullanma
+## <a name="using-application-insights-to-collect-eventcounters"></a>EventCounters toplamak için Application Insights kullanma
 
-Application Insights, `EventCounters` yeni `EventCounterCollectionModule`yayımlanan nuget paketi [Microsoft.ApplicationInsights.EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector)bir parçasıdır ile toplama destekler. `EventCounterCollectionModule`[AspNetCore](asp-net-core.md) veya [WorkerService](worker-service.md)kullanırken otomatik olarak etkinleştirilir. `EventCounterCollectionModule`60 saniyelik yapılandırılamayan toplama frekansına sahip sayaçları toplar. EventCounters toplamak için gerekli özel izinler yoktur.
+Application Insights `EventCounterCollectionModule`, yeni `EventCounters` yayınlanan NuGet paketi [Microsoft. ApplicationInsights. eventcountercollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector)'ın bir parçası olan ile toplamayı destekler. `EventCounterCollectionModule`, [Aspnetcore](asp-net-core.md) veya [workerservice](worker-service.md)kullanılırken otomatik olarak etkinleştirilir. `EventCounterCollectionModule`yapılandırılabilir olmayan bir koleksiyon frekansı 60 saniye olan sayaçları toplar. EventCounters toplamak için gerekli özel izinler yoktur.
 
 ## <a name="default-counters-collected"></a>Toplanan varsayılan sayaçlar
 
-.NET Core 3.0'da çalışan uygulamalar için aşağıdaki sayaçlar SDK tarafından otomatik olarak toplanır. Sayaçların adı "Kategori| Sayaç".
+.NET Core 3,0 ' de çalışan uygulamalar için aşağıdaki sayaçlar SDK tarafından otomatik olarak toplanır. Sayaçların adı "Kategori | biçiminde olacaktır. Counter ".
 
 |Kategori | Sayaç|
 |---------------|-------|
@@ -51,11 +51,11 @@ Application Insights, `EventCounters` yeni `EventCounterCollectionModule`yayıml
 |`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
-> Microsoft.AspNetCore.Hosting kategorisi sayaçları yalnızca ASP.NET Çekirdek Uygulamalarına eklenir.
+> Microsoft. AspNetCore. Hosting kategorisi sayaçları yalnızca ASP.NET Core uygulamalarında eklenir.
 
 ## <a name="customizing-counters-to-be-collected"></a>Toplanacak sayaçları özelleştirme
 
-Aşağıdaki örnek, sayaçların nasıl ekleyeceğini/kaldırılacaklarını gösterir. Bu özelleştirme, `ConfigureServices` Application Insights telemetri koleksiyonu ya da `AddApplicationInsightsTelemetry()` `AddApplicationInsightsWorkerService()`. Aşağıda, ASP.NET Core uygulamasından bir örnek kod verilmiştir. Diğer uygulama türü için [bu](worker-service.md#configuring-or-removing-default-telemetrymodules) belgeye bakın.
+Aşağıdaki örnek, sayaçların nasıl ekleneceğini/kaldırılacağını gösterir. Bu özelleştirme, `ConfigureServices` `AddApplicationInsightsTelemetry()` veya `AddApplicationInsightsWorkerService()`kullanarak Application Insights telemetri koleksiyonu etkinleştirildikten sonra uygulamanızın yönteminde yapılır. Aşağıda bir ASP.NET Core uygulamasından örnek bir kod verilmiştir. Diğer uygulama türleri için [Bu](worker-service.md#configuring-or-removing-default-telemetrymodules) belgeye başvurun.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;
@@ -89,27 +89,27 @@ Aşağıdaki örnek, sayaçların nasıl ekleyeceğini/kaldırılacaklarını g�
     }
 ```
 
-## <a name="event-counters-in-metric-explorer"></a>Metrik Gezgin'deki olay sayaçları
+## <a name="event-counters-in-metric-explorer"></a>Ölçüm Gezgini 'nde olay sayaçları
 
-[Metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)Gezgini'nde EventCounter ölçümlerini görüntülemek için Uygulama Öngörüleri kaynağını seçin ve metrik ad alanı olarak Günlük tabanlı ölçümleri seçin. Ardından EventCounter ölçümleri Özel kategori altında görüntülenir.
+[Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)'Nde EventCounter ölçümlerini görüntülemek için Application Insights kaynak ' ı seçin ve ölçüm ad alanı olarak günlük tabanlı ölçümler ' i seçin. Daha sonra EventCounter ölçümleri özel kategori altında gösterilir.
 
 > [!div class="mx-imgBorder"]
-> ![Uygulama Öngörüleri'nde bildirilen etkinlik sayaçları](./media/event-counters/metrics-explorer-counter-list.png)
+> ![Application Insights bildirilen olay sayaçları](./media/event-counters/metrics-explorer-counter-list.png)
 
-## <a name="event-counters-in-analytics"></a>Analytics'te etkinlik sayaçları
+## <a name="event-counters-in-analytics"></a>Analiz içindeki olay sayaçları
 
-Ayrıca [Analytics'te,](../../azure-monitor/app/analytics.md) **özelMetrics** tablosunda olay sayacı raporlarını arayabilir ve görüntüleyebilirsiniz.
+Ayrıca, **Customölçümler** tablosunda [analiz](../../azure-monitor/app/analytics.md)' de olay sayacı raporlarını arayabilir ve görüntüleyebilirsiniz.
 
-Örneğin, hangi sayaçların toplandığını ve sorguiçin kullanılabilir olduğunu görmek için aşağıdaki sorguyu çalıştırın:
+Örneğin, hangi sayaçların toplandığını ve sorgu için kullanılabilir olduğunu görmek için aşağıdaki sorguyu çalıştırın:
 
 ```Kusto
 customMetrics | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Uygulama Öngörüleri'nde bildirilen etkinlik sayaçları](./media/event-counters/analytics-event-counters.png)
+> ![Application Insights bildirilen olay sayaçları](./media/event-counters/analytics-event-counters.png)
 
-Son dönemde belirli bir sayacın `ThreadPool Completed Work Item Count`grafiğini (örneğin: ) almak için aşağıdaki sorguyu çalıştırın.
+Belirli bir sayacın (örneğin: `ThreadPool Completed Work Item Count`) bir grafiğini son döneme almak için aşağıdaki sorguyu çalıştırın.
 
 ```Kusto
 customMetrics 
@@ -119,32 +119,32 @@ customMetrics
 | render timechart
 ```
 > [!div class="mx-imgBorder"]
-> ![Uygulama Öngörüleri'nde tek bir sayacın sohbeti](./media/event-counters/analytics-completeditems-counters.png)
+> ![Application Insights tek bir sayaca sohbet etme](./media/event-counters/analytics-completeditems-counters.png)
 
-Diğer telemetriler gibi **customMetrics'te** de uygulamanızın çalıştığı ana bilgisayar sunucusu örneğinin kimliğini gösteren bir sütun `cloud_RoleInstance` vardır. Yukarıdaki sorgu, örnek başına sayaç değerini gösterir ve farklı sunucu örneklerinin performansını karşılaştırmak için kullanılabilir.
+Diğer telemetri gibi, **Customölçümleri** de uygulamanızın çalıştırıldığı ana `cloud_RoleInstance` bilgisayar sunucusu örneğinin kimliğini belirten bir sütun içerir. Yukarıdaki sorgu, örnek başına sayaç değerini gösterir ve farklı sunucu örneklerinin performansını karşılaştırmak için kullanılabilir.
 
 ## <a name="alerts"></a>Uyarılar
-Diğer ölçümler gibi, bir olay sayacı belirttiğiniz sınırın dışına çıkarsa sizi uyarmak için [bir uyarı ayarlayabilirsiniz.](../../azure-monitor/app/alerts.md) Uyarılar bölmesini açın ve Uyarı Ekle'yi tıklatın.
+Diğer ölçümler gibi, bir olay sayacı belirttiğiniz sınırın dışında kaldığında sizi uyarmak üzere [bir uyarı ayarlayabilirsiniz](../../azure-monitor/app/alerts.md) . Uyarılar bölmesini açın ve uyarı Ekle ' ye tıklayın.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-### <a name="can-i-see-eventcounters-in-live-metrics"></a>Canlı Ölçümlerde EventCounters'ı görebilir miyim?
+### <a name="can-i-see-eventcounters-in-live-metrics"></a>Canlı ölçümlerde EventCounters görebilir miyim?
 
-Canlı Ölçümler bugün itibariyle EventCounters göstermez. Telemetriyi görmek için Metrik Explorer veya Analytics'i kullanın.
+Canlı ölçümler, bugün itibariyle EventCounters göstermez. Telemetriyi görmek için ölçüm Gezgini 'ni veya analizlerini kullanın.
 
-### <a name="which-platforms-can-i-see-the-default-list-of-net-core-30-counters"></a>.NET Core 3.0 sayaçlarının varsayılan listesini hangi platformlarda görebiliyorum?
+### <a name="which-platforms-can-i-see-the-default-list-of-net-core-30-counters"></a>.NET Core 3,0 sayaçlarının varsayılan listesini hangi platformlar görebilir?
 
-EventCounter herhangi bir özel izin gerektirmez ve tüm platformlarda desteklenir .NET Core 3.0 desteklenir. Buna aşağıdakiler dahildir:
+EventCounter herhangi bir özel izin gerektirmez ve tüm platformlarda desteklenir .NET Core 3,0 desteklenir. Buna aşağıdakiler dahildir:
 
-* **İşletim sistemi**: Windows, Linux veya macOS.
-* **Barındırma yöntemi**: Süreç içinde veya süreç dışında.
-* **Dağıtım yöntemi**: Çerçeveye bağımlı veya bağımsız.
-* **Web sunucusu**: IIS (Internet Information Server) veya Kerkenez.
-* **Barındırma platformu**: Azure Uygulama Hizmeti, Azure VM, Docker, Azure Kubernetes Hizmeti (AKS) vb. Web Apps özelliği.
+* **İşletim sistemi**: Windows, Linux veya MacOS.
+* **Barındırma yöntemi**: işlemde veya işlem dışı.
+* **Dağıtım yöntemi**: çerçeveye bağımlı veya kendine dahil.
+* **Web sunucusu**: IIS (Internet Information Server) veya Kestrel.
+* **Barındırma platformu**: Azure App Service, Azure VM, Docker, Azure Kubernetes hizmeti (aks) ve benzeri Web Apps özelliği.
 
-### <a name="i-have-enabled-application-insights-from-azure-web-app-portal-but-i-cant-see-eventcounters"></a>Azure Web App Portalı'ndan Uygulama Öngörüleri'ni etkinleştirdim. Ama EventCounters göremiyorum.?
+### <a name="i-have-enabled-application-insights-from-azure-web-app-portal-but-i-cant-see-eventcounters"></a>Azure Web App Portal 'dan Application Insights etkinleştirdim. Ancak EventCounters göremiyorum.?
 
- ASP.NET Core için [Uygulama Öngörüleri uzantısı](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps) henüz bu özelliği desteklemez. Bu özellik desteklendiğinde bu belge güncelleştirilir.
+ ASP.NET Core için [Application Insights uzantısı](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps) henüz bu özelliği desteklemez. Bu özellik destekleniyorsa, bu belge güncelleştirilecektir.
 
 ## <a name="next-steps"></a><a name="next"></a>Sonraki adımlar
 

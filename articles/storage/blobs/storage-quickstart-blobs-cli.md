@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: tamram
-ms.openlocfilehash: 237982c2135430891022ab7a823f8374844e8d90
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 333d9f12ff817a5264183666cd1b858075a93077
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82117582"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176694"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Bloblar oluşturma, indirme ve listeleme
 
@@ -22,7 +22,7 @@ Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut 
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -163,7 +163,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, dosyaları yerel bir dosya sistemi ile Azure Blob depolama alanındaki bir kapsayıcı arasında aktarmayı öğrendiniz. Azure Depolama’da bloblarla çalışma hakkında daha fazla bilgi edinmek için, Azure Blob depolamayla çalışma hakkındaki öğretici ile devam edin.
+Bu hızlı başlangıçta, dosyaları yerel bir dosya sistemi ile Azure Blob depolama alanındaki bir kapsayıcı arasında aktarmayı öğrendiniz. Azure CLı kullanarak blob depolamayla çalışma hakkında daha fazla bilgi edinmek için, BLOB depolama için Azure CLı örnekleri ' ni gezin.
 
 > [!div class="nextstepaction"]
-> [Nasıl yapılır: Azure CLI ile blob depolama işlemleri](storage-how-to-use-blobs-cli.md)
+> [BLOB depolama için Azure CLı örnekleri](/azure/storage/blobs/storage-samples-blobs-cli?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

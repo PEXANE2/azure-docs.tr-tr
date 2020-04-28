@@ -1,25 +1,19 @@
 ---
-title: Windows VM'lerinizi Azure'da izleme
-description: Azure'daki Windows sanal makineleri için izleme seçenekleri hakkında bilgi edinin.
-services: virtual-machines-windows
-documentationcenter: ''
+title: VM'lerinizi izleyin
+description: Azure'daki sanal makineler için izleme seçenekleri hakkında bilgi edinin.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: monitoring
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.date: 08/14/2017
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: b08c63d544ce40b439ce179621f323e99fcb55e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58546c84daa28a76de0429bf6c93bd421011b513
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033194"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865616"
 ---
 # <a name="how-to-monitor-virtual-machines-in-azure"></a>Azure'da sanal makineleri izleme
 

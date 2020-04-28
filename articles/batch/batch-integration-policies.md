@@ -4,12 +4,12 @@ description: Azure Ilkesi, kaynaklarınız üzerinde kurallar uygulayan ilkeler 
 ms.topic: article
 ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 74c087031a024b0c50d6c40057a4e2eda554be6f
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: a160de1277afea026a16f470c8f76cdc2ec1733f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116086"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184274"
 ---
 # <a name="integration-with-azure-policy"></a>Azure Ilkesiyle tümleştirme
 
@@ -26,7 +26,7 @@ Azure Batch, ilke uyumluluğunu yönetmenize yardımcı olmak için iki yerleşi
 
 Batch tarafından gereken kaynaklar şunlardır: hesap, işlem düğümü, havuz, iş ve görev. Bu nedenle, bu kaynakların belirli özelliklerine erişmek için özellik diğer adlarını kullanırsınız. [Diğer adlar](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases) hakkında daha fazla bilgi
 
-Geçerli diğer adları bildiğiniz ve kaynaklarınızı ve ilkelerinizi gözden geçirdiğinizden emin olmak için Visual Studio Code için Azure ilkesi uzantısını kullanın. Bu, Visual Studio Code tarafından desteklenen tüm platformlara yüklenebilir. Bu destek, Windows, Linux ve macOS içerir. Bkz. [yükleme yönergeleri](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode).
+Geçerli diğer adları bildiğiniz ve kaynaklarınızı ve ilkelerinizi gözden geçirdiğinizden emin olmak için Visual Studio Code için Azure Ilkesi uzantısını kullanın. Bu, Visual Studio Code tarafından desteklenen tüm platformlara yüklenebilir. Bu destek, Windows, Linux ve macOS içerir. Bkz. [yükleme yönergeleri](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode).
 
 
 

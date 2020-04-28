@@ -1,58 +1,56 @@
 ---
-title: Öğretici - Yerel Azure Kaynak Yöneticisi şablonu dağıtma
-description: Yerel bilgisayarınızdan Azure Kaynak Yöneticisi şablonunu nasıl dağıtılayınızı öğrenin
+title: Öğretici-yerel bir Azure Resource Manager şablonu dağıtma
+description: Yerel bilgisayarınızdan Azure Resource Manager şablonu dağıtmayı öğrenin
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c8e3eb62fa52caeaa63808b6b9ea199bdff5c4da
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7f134bb836d05d006ef2e474ea48382a671957fe
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80082261"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188833"
 ---
-# <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Öğretici: Yerel bir Azure Kaynak Yöneticisi şablonu dağıtma
+# <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Öğretici: yerel bir Azure Resource Manager şablonu dağıtma
 
-Yerel makinenizden azure kaynak yöneticisi şablonunu nasıl dağıtılayacaklarını öğrenin. Tamamlanması yaklaşık **8 dakika** sürer.
+Yerel makinenizden Azure Resource Manager şablonu dağıtmayı öğrenin. Yaklaşık **8 dakika** sürer.
 
-Bu öğretici bir serinin ilkidir. Seri boyunca ilerledikçe, bağlantılı bir şablon oluşturarak şablonu modüle eder, bağlantılı şablonu bir depolama hesabında saklar ve SAS belirteci kullanarak bağlantılı şablonu güvenli hale getirmekve şablonları dağıtmak için devop ardışık bir yapı oluşturmayı öğrenirsiniz. Bu seri şablon dağıtımına odaklanır.  Şablon geliştirmeyi öğrenmek istiyorsanız, [başlangıç eğitimlerine](./template-tutorial-create-first-template.md)bakın.
+Bu öğretici bir serinin birincisidir. Seriler aracılığıyla ilerleyerek, bağlantılı bir şablon oluşturarak şablonu modüle getirin, bağlantılı şablonu bir depolama hesabında depolar ve SAS belirtecini kullanarak bağlı şablonu güvenli hale getirin ve şablonları dağıtmak için bir DevOp Işlem hattı oluşturmayı öğreneceksiniz. Bu seri, şablon dağıtımına odaklanır.  Şablon geliştirmeyi öğrenmek isterseniz, [Başlangıç öğreticilerine](./template-tutorial-create-first-template.md)bakın.
 
-## <a name="get-tools"></a>Araçları alın
+## <a name="get-tools"></a>Araçları al
 
-Şablonları dağıtmak için gereken araçlara sahip olduğundan emin olarak başlayalım.
+Şablonları dağıtmanız için ihtiyacınız olan araçlara sahip olduğunuzdan başlayalım.
 
 ### <a name="command-line-deployment"></a>Komut satırı dağıtımı
 
-Şablonu dağıtmak için Azure PowerShell veya Azure CLI gerekir. Yükleme yönergeleri için bkz:
+Şablonu dağıtmak için Azure PowerShell ya da Azure CLı gerekir. Yükleme yönergeleri için bkz.:
 
-- [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps)
+- [Azure PowerShell yüklensin](/powershell/azure/install-az-ps)
 - [Windows'da Azure CLI'yi yükleme](/cli/azure/install-azure-cli-windows)
-- [Azure CLI'yi Linux'a yükleyin](/cli/azure/install-azure-cli-linux)
+- [Linux 'ta Azure CLı 'yı yükler](/cli/azure/install-azure-cli-linux)
 
-Azure PowerShell veya Azure CLI'yi yükledikten sonra ilk kez oturum açarak oturum açtın. Yardım için oturum [açma - PowerShell](/powershell/azure/install-az-ps#sign-in) veya [Oturum Aç - Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in)' ya bakın.
+Azure PowerShell veya Azure CLı yükledikten sonra, ilk kez oturum açarak emin olun. Yardım için bkz. [oturum açma-PowerShell](/powershell/azure/install-az-ps#sign-in) veya [Oturum Açma-Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
 
-### <a name="editor-optional"></a>Editör (İsteğe Bağlı)
+### <a name="editor-optional"></a>Düzenleyici (Isteğe bağlı)
 
-Şablonlar JSON dosyalarıdır. Şablonları gözden geçirmek/gözden geçirmek için iyi bir JSON düzenleyicisine ihtiyacınız vardır. Kaynak Yöneticisi Araçları uzantılı Visual Studio Code'u öneririz. Bu araçları yüklemeniz gerekiyorsa, [Azure Kaynak Yöneticisi şablonları oluşturmak için Visual Studio Kodunu Kullan'a](use-vs-code-to-create-template.md)bakın.
+Şablonlar JSON dosyalarıdır. Şablonları gözden geçirmek/düzenlemek için iyi bir JSON düzenleyicisine ihtiyacınız vardır. Kaynak Yöneticisi Araçları uzantısı ile Visual Studio Code önerilir. Bu araçları yüklemeniz gerekiyorsa, bkz. [Azure Resource Manager şablonları oluşturmak için Visual Studio Code kullanma](use-vs-code-to-create-template.md).
 
 ## <a name="review-template"></a>Şablonu gözden geçir
 
-Bu öğreticide kullanılan şablon, [Quickstart şablonları hakkında öğreticide](template-tutorial-quickstart-template.md)kullanılan şablona benzer. Şablonu oluşturmak istiyorsanız, bu öğretici üzerinden gidebilirsiniz. Ancak bu öğretici yi tamamlamak için gerekli değildir.
-
-Şablon, bir depolama hesabı, uygulama hizmet planı ve web uygulaması dağıtLar.
+Şablon bir depolama hesabı, App Service planı ve Web uygulaması dağıtır. Şablonu oluşturmaya ilgileniyorsanız, [hızlı başlangıç şablonları hakkında öğreticiye](template-tutorial-quickstart-template.md)gidebilirsiniz. Ancak bu öğreticiyi tamamlamak için gerekli değildir.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 
 > [!IMPORTANT]
-> Depolama hesabı adları uzunluk ve kullanım numaraları ve küçük harfler sadece 3 ve 24 karakter arasında olmalıdır. İsim benzersiz olmalı. Şablonda, depolama hesabı adı "depo" eklenen proje adıdır ve proje adı 3 ile 11 karakter arasında olmalıdır. Bu nedenle proje adı depolama hesabı adı gereksinimlerini karşılamalı ve 11 karakterden az karaktere sahiptir.
+> Depolama hesabı adları 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakam ve küçük harf kullanılmalıdır. Ad benzersiz olmalıdır. Şablonda, depolama hesabı adı "depola" eklenmiş proje adı ve proje adı 3 ila 11 karakter arasında olmalıdır. Bu nedenle, proje adı depolama hesabı adı gereksinimlerini karşılamalıdır ve 11 ' den az karakter içermelidir.
 
-Şablonun bir kopyasını .json uzantısı olan azuredeploy.json ile yerel bilgisayarınıza kaydedin. Bu şablonu daha sonra öğreticide dağıtın.
+Şablonun bir kopyasını. JSON uzantısıyla yerel bilgisayarınıza kaydedin, örneğin, azuredeploy. JSON. Bu şablonu öğreticide daha sonra dağıtırsınız.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Bir şablon dağıtmak için Azure PowerShell/Azure CLI ile çalışmaya başlamak için Azure kimlik bilgilerinizle oturum açın.
+Bir şablon dağıtmak için Azure PowerShell/Azure CLı ile çalışmaya başlamak için Azure kimlik bilgilerinizle oturum açın.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Connect-AzAccount
@@ -68,7 +66,7 @@ az login
 
 Birden çok Azure aboneliğiniz varsa, kullanmak istediğiniz aboneliği seçin:
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Select-AzSubscription [SubscriptionID/SubscriptionName]
@@ -84,9 +82,9 @@ az account set --subscription [SubscriptionID/SubscriptionName]
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
-Bir şablon dağıttığınızda, kaynakları içeren bir kaynak grubu belirtirsiniz. Dağıtım komutunu çalıştırmadan önce, Azure CLI veya Azure PowerShell ile kaynak grubu oluşturun. Azure PowerShell ve Azure CLI arasında seçim yapmak için aşağıdaki kod bölümündeki sekmeleri seçin. Bu makaledeki CLI örnekleri Bash kabuğu için yazılmıştır.
+Bir şablonu dağıtırken, kaynakları içerecek bir kaynak grubu belirtirsiniz. Dağıtım komutunu çalıştırmadan önce, kaynak grubunu Azure CLı veya Azure PowerShell ile oluşturun. Azure PowerShell ve Azure CLı arasında seçim yapmak için aşağıdaki kod bölümündeki sekmeleri seçin. Bu makaledeki CLı örnekleri bash kabuğu için yazılmıştır.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource and resource group names"
@@ -115,7 +113,7 @@ az group create \
 
 Şablonu dağıtmak için bir veya her iki dağıtım seçeneğini kullanın.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name"
@@ -130,7 +128,7 @@ New-AzResourceGroupDeployment `
   -verbose
 ```
 
-Azure PowerShell'i kullanarak şablon dağıtma hakkında daha fazla bilgi edinmek için [Kaynak Yöneticisi şablonlarıyla kaynakları dağıt ve Azure PowerShell'e](./deploy-powershell.md)bakın.
+Azure PowerShell kullanarak şablon dağıtma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure PowerShell ile kaynak dağıtma](./deploy-powershell.md).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -149,7 +147,7 @@ az deployment group create \
   --verbose
 ```
 
-Azure CLI'yi kullanarak şablon dağıtma hakkında daha fazla bilgi edinmek için kaynak [yöneticisi şablonlarıyla kaynakları dağıt ve Azure CLI'ye](./deploy-cli.md)bakın.
+Azure CLı kullanarak şablon dağıtma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynak dağıtma](./deploy-cli.md).
 
 ---
 
@@ -157,14 +155,14 @@ Azure CLI'yi kullanarak şablon dağıtma hakkında daha fazla bilgi edinmek iç
 
 Kaynak grubunu silerek dağıttığınız kaynakları temizleyin.
 
-1. Azure portalından sol menüden **Kaynak grubunu** seçin.
+1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üst menüden **kaynak grubunu sil'i** seçin.
+4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yerel bir şablonu nasıl dağıtabileceğinizi öğrendiniz. Bir sonraki öğreticide, şablonu bir ana şablona ve bağlantılı şablona ayırır sınız ve bağlantılı şablonu nasıl depolayıp güvenli hale getirtin.
+Yerel bir şablon dağıtmayı öğrendiniz. Sonraki öğreticide, şablonu bir ana şablona ve bağlı bir şablona ayırdınız ve bağlantılı şablonu nasıl depolayacağınızı ve güvenli hale ayarlayacağınızı öğreneceksiniz.
 
 > [!div class="nextstepaction"]
-> [Bağlantılı bir şablon dağıtma](./deployment-tutorial-linked-template.md)
+> [Bağlı şablon dağıtma](./deployment-tutorial-linked-template.md)

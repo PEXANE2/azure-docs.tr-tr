@@ -1,28 +1,28 @@
 ---
-title: Azure Dosya paylaşımı yedeklemesini Rest API ile yönetme
-description: Azure Yedekleme tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için REST API'yi nasıl kullanacağınızı öğrenin.
+title: REST API ile Azure dosya paylaşma yedeklemesini yönetme
+description: Azure Backup tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için REST API nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 9d29b226aff568c91de8e1f19ddc0c64f8169e4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e1d3463aa5d6ee10782e2ee17a7c17ffd64cb61
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444738"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184920"
 ---
-# <a name="manage-azure-file-share-backup-with-rest-api"></a>AZURE Dosya paylaşımı yedeklemesini REST API ile yönetme
+# <a name="manage-azure-file-share-backup-with-rest-api"></a>Azure dosya paylaşma yedeklemesini REST API ile yönetme
 
-Bu makalede, [Azure Yedekleme](https://docs.microsoft.com/azure/backup/backup-overview)tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için görevlerin nasıl gerçekleştirililizleyeceği açıklanmaktadır.
+Bu makalede, [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)tarafından yedeklenen Azure dosya paylaşımlarını yönetmek ve izlemek için görevlerin nasıl gerçekleştirileceği açıklanır.
 
 ## <a name="monitor-jobs"></a>İşleri izleme
 
-Azure Yedekleme hizmeti arka planda çalışan işleri tetikler. Buna yedeklemeyi tetikleme, işlemleri geri yükleme ve yedeklemeyi devre dışı bırakma gibi senaryolar dahildir. Bu işler kimliklerini kullanarak izlenebilir.
+Azure Backup hizmeti arka planda çalışan işleri tetikler. Bu, yedeklemeyi tetikleme, işlemleri geri yükleme ve yedeklemeyi devre dışı bırakma gibi senaryolar içerir. Bu işler kimlikleri kullanılarak izlenebilir.
 
-### <a name="fetch-job-information-from-operations"></a>Operasyonlardan iş bilgileri alma
+### <a name="fetch-job-information-from-operations"></a>İşlemlerden iş bilgilerini getir
 
-Yedeklemeyi tetikleme gibi bir işlem yanıtta her zaman bir jobID döndürecektir.
+Yedeklemenin tetiklenmesi gibi bir işlem, yanıtta her zaman bir iş kimliği döndürülür.
 
-Örneğin, [bir tetikleyici yedekleme REST API](backup-azure-file-share-rest-api.md#trigger-an-on-demand-backup-for-file-share) işleminin son yanıtı aşağıdaki gibidir:
+Örneğin, bir [tetikleyici yedekleme REST API](backup-azure-file-share-rest-api.md#trigger-an-on-demand-backup-for-file-share) işleminin son yanıtı aşağıdaki gibidir:
 
 ```json
 {
@@ -38,7 +38,7 @@ Yedeklemeyi tetikleme gibi bir işlem yanıtta her zaman bir jobID döndürecekt
 }
 ```
 
-Azure dosya paylaşımı yedekleme işi **jobId** alanı tarafından tanımlanır ve [get](https://docs.microsoft.com/rest/api/backup/jobdetails/) isteği kullanılarak burada belirtildiği gibi izlenebilir.
+Azure dosya paylaşma yedekleme işi, **JobId** alanı tarafından tanımlanır ve [burada](https://docs.microsoft.com/rest/api/backup/jobdetails/) belirtildiği gibi bir get isteği kullanılarak izlenebilir.
 
 ### <a name="tracking-the-job"></a>İşi izleme
 
@@ -46,7 +46,7 @@ Azure dosya paylaşımı yedekleme işi **jobId** alanı tarafından tanımlanı
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-{jobName} yukarıda belirtilen "jobId" dir. Yanıt her zaman "200 Tamam" **durum** alanı işin durumunu gösteren. "Tamamlandı" veya "Tamamlanmış Uyarılar" olduğunda, **genişletilmiş Bilgi** bölümü iş hakkında daha fazla ayrıntı ortaya çıkarır.
+{JobName}, yukarıda bahsedilen "JobId" dır. Yanıt her zaman "200 Tamam" dır. bu **durum** , işin durumunu gösteren durum alanıdır. "Completed" veya "Completedwithuyarılar" olduktan sonra **Extendeınfo** bölümü iş hakkında daha fazla ayrıntı gösterir.
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupJobs/e2ca2cf4-2eb9-4d4b-b16a-8e592d2a658b?api-version=2019-05-13'
@@ -56,11 +56,11 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 Adı  | Tür  |  Açıklama
 --- | --- | ----
-200 TAMAM |  İş Kaynağı  | Tamam
+200 TAMAM |  JobResource  | Tamam
 
 #### <a name="response-example"></a>Yanıt örneği
 
-*GET* URI gönderildikten sonra 200 yanıt döndürülür.
+URI 'yi *Al* gönderildikten sonra 200 yanıtı döndürülür.
 
 ```http
 HTTP/1.1" 200
@@ -109,11 +109,11 @@ HTTP/1.1" 200
 }
 ```
 
-## <a name="modify-policy"></a>İlkeyi değiştir
+## <a name="modify-policy"></a>İlkeyi Değiştir
 
-Dosya paylaşımının korunduğu ilkeyi değiştirmek için, korumayı etkinleştirmek için aynı biçimi kullanabilirsiniz. İstek ilkesinde yeni ilke kimliğini sağlaman ve isteği göndermeniz.
+Dosya paylaşımının korunduğu ilkeyi değiştirmek için, korumayı etkinleştirmek üzere aynı biçimi kullanabilirsiniz. İstek ilkesinde yeni ilke KIMLIĞINI sağlamanız ve isteği göndermeniz yeterlidir.
 
-Örneğin: *Testshare'in* koruma ilkesini *zamanlama1'dan* *zamanlama2'ye*değiştirmek için istek gövdesinde *zamanlama2* kimliği sağlayın.
+Örneğin: *TestShare* öğesinin koruma ilkesini *schedule1* ' den *schedule2*' ye değiştirmek için, istek gövdesinde *schedule2* kimliği sağlayın.
 
 ```json
 {
@@ -125,9 +125,9 @@ Dosya paylaşımının korunduğu ilkeyi değiştirmek için, korumayı etkinle�
 }
 ```
 
-## <a name="stop-protection-but-retain-existing-data"></a>Korumayı durdurun, ancak varolan verileri koruyun
+## <a name="stop-protection-but-retain-existing-data"></a>Korumayı durdurun, ancak mevcut verileri koruyun
 
-Korumalı bir dosya paylaşımında korumayı kaldırabilir, ancak zaten yedeklenmiş verileri saklayabilirsiniz. Bunu yapmak için,[yedeklemeyi etkinleştirmek](backup-azure-file-share-rest-api.md#enable-backup-for-the-file-share) ve isteği göndermek için kullandığınız istek gövdesindeki ilkeyi kaldırın. İlkeyle ilişkilendirme kaldırıldıktan sonra yedeklemeler artık tetiklenmez ve yeni kurtarma noktaları oluşturulmaz.
+Korumalı bir dosya paylaşımında korumayı kaldırabilir, ancak zaten yedeklenmiş olan verileri koruyabilirsiniz. Bunu yapmak için,[yedeklemeyi etkinleştirmek](backup-azure-file-share-rest-api.md#enable-backup-for-the-file-share) ve isteği göndermek üzere kullandığınız istek gövdesinde ilkeyi kaldırın. İlkeyle ilişkilendirme kaldırıldıktan sonra, yedeklemeler artık tetiklenmez ve yeni kurtarma noktası oluşturulmaz.
 
 ```json
 {
@@ -142,9 +142,9 @@ Korumalı bir dosya paylaşımında korumayı kaldırabilir, ancak zaten yedekle
 
 ### <a name="sample-response"></a>Örnek yanıt
 
-Dosya paylaşımı için korumayı durdurma, eşzamanlı bir işlemdir. İşlem, izlenmesi gereken başka bir işlem oluşturur. İki yanıt verir: başka bir işlem oluşturulduğunda 202 (Kabul) ve bu işlem tamamlandığında 200.
+Bir dosya paylaşımının korumasını durdurmak zaman uyumsuz bir işlemdir. İşlem izlenmesi gereken başka bir işlem oluşturur. Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 olan iki yanıt döndürür.
 
-İşlem başarıyla kabul edildiğinde yanıt üstbilgi:
+İşlem başarıyla kabul edildiğinde yanıt üst bilgisi:
 
 ```http
 HTTP/1.1" 202
@@ -166,7 +166,7 @@ msrest.http_logger :     'Azure-AsyncOperation': 'https://management.azure.com/S
 'Content-Length': '0'
 ```
 
-Ardından, get komutuyla konum üstbilgisini veya Azure-AsyncOperation üstbilgisini kullanarak ortaya çıkan işlemi izleyin:
+Ardından, GET komutuyla konum üstbilgisini veya Azure-AsyncOperation üstbilgisini kullanarak elde edilen işlemi izleyin:
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupoperations/b300922a-ad9c-4181-b4cd-d42ea780ad77?api-version=2016-12-01
@@ -190,15 +190,15 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ## <a name="stop-protection-and-delete-data"></a>Korumayı durdurma ve verileri silme
 
-Korumalı bir dosya paylaşımındaki korumayı kaldırmak ve yedekleme verilerini de silmek [için, burada](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)ayrıntılı olarak bir silme işlemi gerçekleştirin.
+Korumalı bir dosya paylaşımındaki korumayı kaldırmak ve yedekleme verilerini silmek için, [burada](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)ayrıntılı olarak bir silme işlemi gerçekleştirin.
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
-{containerName} ve {protectedItemName} parametreleri [burada](restore-azure-file-share-rest-api.md#fetch-containername-and-protecteditemname)ayarlanan gibidir.
+{ContainerName} ve {Koruyucuteditemname} parametreleri [burada](restore-azure-file-share-rest-api.md#fetch-containername-and-protecteditemname)ayarlanmış.
 
-Aşağıdaki örnekte, *azurefilesvault*ile korunan *testshare* dosya paylaşımı için korumayı durdurmak için bir işlem tetikler.
+Aşağıdaki örnek, *azurefilesvault*ile korunan *TestShare* dosya paylaşımının korumasını durdurmak için bir işlemi tetikler.
 
 ```http
 DELETE https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2/protectedItems/azurefileshare;testshare?api-version=2016-12-01
@@ -206,9 +206,9 @@ DELETE https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f4
 
 ### <a name="responses"></a>Yanıtlar
 
-Silme koruması eşzamanlı bir işlemdir. İşlem, ayrı olarak izlenmesi gereken başka bir işlem oluşturur.
-İki yanıt verir: başka bir işlem oluşturulduğunda 202 (Kabul) ve bu işlem tamamlandığında 204 (NoContent).
+Korumayı silme işlemi zaman uyumsuz bir işlemdir. İşlem ayrıca izlenmesi gereken başka bir işlem oluşturur.
+Bu işlem tamamlandığında, başka bir işlem oluşturulduğunda ve 204 (NoContent) olduğunda iki yanıt döndürür: 202 (kabul edildi).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Dosyası paylaşımları için yedeklemeyi yapılandırırken sorunları](troubleshoot-azure-files.md)nasıl gideriz öğrenin.
+* [Azure dosya paylaşımları için yedeklemeyi yapılandırırken sorunları nasıl giderebileceğinizi](troubleshoot-azure-files.md)öğrenin.

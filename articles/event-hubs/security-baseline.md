@@ -1,1091 +1,1091 @@
 ---
-title: Etkinlik Hub'ları için Azure Güvenlik Taban Çizgisi
-description: Etkinlik Hub'ları için Azure Güvenlik Taban Çizgisi
+title: Event Hubs için Azure Güvenlik temeli
+description: Event Hubs için Azure Güvenlik temeli
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1c7e18214ec175b8b21d25643098631a044da19c
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: c60c1d33954b5e12038fd66787225f4d0aeba62d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758323"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184716"
 ---
-# <a name="azure-security-baseline-for-event-hubs"></a>Etkinlik Hub'ları için Azure Güvenlik Taban Çizgisi
+# <a name="azure-security-baseline-for-event-hubs"></a>Event Hubs için Azure Güvenlik temeli
 
-Etkinlik Hub'ları için Azure Güvenlik Taban Çizgisi, dağıtımınızın güvenlik duruşunu geliştirmenize yardımcı olacak öneriler içerir.
+Event Hubs için Azure Güvenlik temeli, dağıtımınızın güvenlik duruşunu artırmanıza yardımcı olacak öneriler içerir.
 
-Bu hizmetin temeli, en iyi uygulamalar kılavuzumuzla Azure'da bulut çözümlerinizi nasıl güvenebileceğinize ilişkin öneriler sunan [Azure Güvenlik Kıyaslama sürümü 1.0'dan](https://docs.microsoft.com/azure/security/benchmarks/overview)alınmıştır.
+Bu hizmetin taban çizgisi, Azure [güvenlik kıyaslama sürümü 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview)' dan çizilir ve bu, en iyi yöntemler kılavuzumuzdan Azure 'da bulut çözümlerinizi nasıl güvence altına almak için öneriler sağlar.
 
-Daha fazla bilgi için [Azure Güvenlik Taban Çizgilerini genel olarak](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)görün.
+Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
 
 ## <a name="network-security"></a>Ağ Güvenliği
 
-*Daha fazla bilgi için [Güvenlik Denetimi: Ağ Güvenliği'ne](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)bakın.*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: ağ güvenliği](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Sanal Ağınızdaki Ağ Güvenlik Grupları veya Azure Güvenlik Duvarı'nı kullanarak kaynakları koruyun
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: sanal ağınızda Ağ güvenlik gruplarını veya Azure Güvenlik duvarını kullanarak kaynakları koruyun
 
-**Kılavuz**: Etkinlik hub'larının sanal ağ hizmeti uç noktalarıyla tümleştirilmesi, sanal ağlara bağlı sanal makineler gibi iş yüklerinden mesajlaşma yeteneklerine güvenli erişim sağlar ve ağ trafik yolu her iki uçta da güvenli hale gelir.
+**Rehberlik**: sanal ağ hizmet uç noktaları ile Olay Hub 'larının tümleştirilmesi, sanal ağlara bağlı sanal makineler gibi iş yüklerinden, her iki uçta da güvenli hale getirilen ağ trafiği yolu ile güvenli erişim sağlar.
 
-Bir kez en az bir sanal ağ alt ağ hizmet bitiş noktasına bağlı, ilgili Olay Hub'ları ad alanı artık sanal ağlarda herhangi bir yerden değil, yetkili alt ağlardan gelen trafiği kabul eder. Sanal ağ açısından bakıldığında, Olay Hub'larınızı bir hizmet bitiş noktasına bağlamak, sanal ağ alt ağından mesajlaşma hizmetine yalıtılmış bir ağ tünelini yapılandırır. 
+En az bir sanal ağ alt ağ hizmeti uç noktasına bağlandıktan sonra, ilgili Event Hubs ad alanı artık trafiği sanal ağlardaki her yerden kabul etmez. Sanal ağ perspektifinden, Event Hubs ad alanınızı bir hizmet uç noktasına bağlamak, sanal ağ alt ağından mesajlaşma hizmetine yalıtılmış bir ağ tüneli yapılandırır. 
 
-Azure Özel Bağlantı hizmetini kullanarak sizi özel ve güvenli bir şekilde Azure Etkinlik Hub'ları hizmetine bağlayan bir ağ arabirimi olan özel bir bitiş noktası da oluşturabilirsiniz. Özel bitiş noktası, VNet'inizden gelen özel bir IP adresini kullanır ve hizmeti VNet'inize etkin bir şekilde getirir. Hizmete giden tüm trafik özel bitiş noktasından yönlendirilebilir, bu nedenle ağ geçidi, NAT aygıtları, ExpressRoute veya VPN bağlantıları veya genel IP adresleri gerekmez. 
+Azure özel bağlantı hizmetini kullanarak özel olarak ve güvenli bir şekilde Azure Event Hubs hizmetine bağlayan bir ağ arabirimi olan özel bir uç nokta da oluşturabilirsiniz. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmete giden tüm trafik özel uç nokta aracılığıyla yönlendirilebilir, bu nedenle ağ geçitleri, NAT cihazları, ExpressRoute veya VPN bağlantıları ya da genel IP adresleri gerekmez. 
 
-Güvenlik duvarlarını kullanarak Azure Etkinlik Hub'larınızı da güvene alabilirsiniz. Azure Olay Hub'ları, gelen güvenlik duvarı desteği için IP tabanlı erişim denetimlerini destekler. Azure portalını, Azure Kaynak Yöneticisi şablonlarını kullanarak veya Azure CLI veya Azure PowerShell aracılığıyla güvenlik duvarı kuralları ayarlayabilirsiniz.
+Azure Event Hubs ad alanınızı güvenlik duvarları kullanarak da güvenli hale getirebilirsiniz. Azure Event Hubs, gelen güvenlik duvarı desteği için IP tabanlı erişim denetimlerini destekler. Azure portal, Azure Resource Manager şablonlarını veya Azure CLı veya Azure PowerShell aracılığıyla güvenlik duvarı kuralları belirleyebilirsiniz.
 
-Azure Etkinlik Hub'ları ile sanal ağ hizmeti uç noktaları nasıl kullanılır:https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
+Azure Event Hubs ile sanal ağ hizmet uç noktalarını kullanma:https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
 
-Daha fazla bilgi için bkz: Azure Etkinlik https://docs.microsoft.com/azure/event-hubs/private-link-serviceHub'larını Azure Özel Bağlantısıyla Tümleştirin: .
+Daha fazla bilgi için bkz. Azure Event Hubs Azure özel bağlantısı ile tümleştirme https://docs.microsoft.com/azure/event-hubs/private-link-service:.
 
-Olay Hub'ları ad alanında Sanal Ağlar Tümleştirmesini ve Güvenlik Duvarlarını etkinleştirin:https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls
+Event Hubs ad alanı üzerinde sanal ağlar tümleştirmesini ve güvenlik duvarlarını etkinleştirin:https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls
 
-Azure Olay Hub'ları ad alanları için IP güvenlik duvarı kuralları nasıl yapılandırılabilen:https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
-
-**Azure Güvenlik Merkezi izleme**: Evet
-
-**Sorumluluk**: Müşteri
-
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: Vnet, Subnet ve NIC'lerin yapılandırmasını ve trafiğini izleyin ve kaydedin
-
-**Yönlendirme**: Azure Güvenlik Merkezi'ni kullanın ve Azure'daki Etkinlik Hub'ları kaynaklarınızın güvenliğini sağlamaya yardımcı olmak için ağ koruma önerilerine uyun. Etkinlik hub'larınıza erişmek için Azure sanal makineleri kullanıyorsanız, ağ güvenlik grubu (NSG) akış günlüklerini etkinleştirin ve trafik denetimi için bir depolama hesabına günlükler gönderin.
-
-NSG Akış Günlükleri Nasıl Etkinleştirilir:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
-
-Azure Güvenlik Merkezi tarafından sağlanan Ağ Güvenliğini Anlama:https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
+Azure Event Hubs ad alanları için IP güvenlik duvarı kurallarını yapılandırma:https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="13-protect-critical-web-applications"></a>1.3: Kritik web uygulamalarını koruyun
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: VNet, alt ağlar ve NIC 'lerin yapılandırmasını ve trafiğini izleyin ve günlüğe kaydedin
 
-**Rehberlik**: Geçerli değildir; Bu öneri, Azure Uygulama Hizmeti'nde çalışan web uygulamaları veya bilgi işlem kaynakları için tasarlanmıştır.
+**Rehberlik**: Azure Güvenlik Merkezi 'ni kullanın ve azure 'daki Event Hubs kaynaklarınızın güvenliğini sağlamaya yardımcı olmak için ağ koruma önerilerini izleyin. Olay Hub 'larınızı erişmek için Azure sanal makineleri kullanıyorsanız, ağ güvenlik grubu (NSG) akış günlüklerini etkinleştirin ve trafik denetimi için günlükleri bir depolama hesabına gönderin.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+NSG akış günlüklerini etkinleştirme:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-**Sorumluluk**: Geçerli değil
-
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Bilinen kötü amaçlı IP adresleriyle iletişimi reddetme
-
-**Kılavuz :** Dağıtılmış hizmet reddi (DDoS) saldırılarına karşı korunmak için etkinlik hub'larınızla ilişkili sanal ağlarda DDoS Koruma Standardını etkinleştirin. Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimi reddetmek için Azure Güvenlik Merkezi Tümleşik Tehdit İstihbaratı'nı kullanın.
-
-DDoS koruması nasıl yapılandırılabilen:[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](/azure/virtual-network/manage-ddos-protection)
-
-Azure Güvenlik Merkezi Tümleşik Tehdit İstihbaratı hakkında daha fazla bilgi için:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+Azure Güvenlik Merkezi tarafından sunulan ağ güvenliğini anlama:https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Ağ paketlerini ve akış günlüklerini kaydetme
+### <a name="13-protect-critical-web-applications"></a>1,3: kritik Web uygulamalarını koruma
 
-**Kılavuz**: Etkinlik hub'larınıza erişmek için Azure sanal makineleri kullanıyorsanız, ağ güvenlik grubu (NSG) akış günlüklerini etkinleştirin ve trafik denetimi için günlükleri bir depolama hesabına gönderin. Ayrıca NSG akış günlüklerini bir Log Analytics çalışma alanına gönderebilir ve Azure bulutunuzdaki trafik akışıhakkında öngörüler sağlamak için Trafik Analitiği'ni kullanabilirsiniz. Traffic Analytics'in bazı avantajları, ağ etkinliğini görselleştirme ve etkin noktaları belirleme, güvenlik tehditlerini belirleme, trafik akışı desenlerini anlama ve ağ yanlış yapılandırmalarını saptabilme yeteneğidir.
+**Rehberlik**: uygulanamaz; Bu öneri, Azure App Service veya işlem kaynaklarında çalışan Web uygulamalarına yöneliktir.
 
-Anormal etkinliği araştırmak için gerekirse, Ağ İzleyicipaket yakalamayı etkinleştirin.
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-NSG Akış Günlükleri Nasıl Etkinleştirilir:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+**Sorumluluk**: geçerli değil
 
-Trafik Analizi ni etkinleştirme ve kullanma:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: bilinen kötü amaçlı IP adresleriyle iletişimleri reddetme
 
-Ağ İzleyicisi nasıl etkinleştirilir:https://docs.microsoft.com/azure/network-watcher/network-watcher-create
+**Rehberlik**: dağıtılmış hizmet reddi (DDoS) saldırılarına karşı koruma sağlamak için, Olay Hub 'larınızla ilişkili sanal ağlarda DDoS koruma standardını etkinleştirin. Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimleri reddetmek için Azure Güvenlik Merkezi tümleşik tehdit zekasını kullanın.
+
+DDoS korumasını yapılandırma:[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](/azure/virtual-network/manage-ddos-protection)
+
+Azure Güvenlik Merkezi tümleşik tehdit bilgileri hakkında daha fazla bilgi için:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Ağ tabanlı izinsiz giriş algılama/saldırı önleme sistemlerini (IDS/IPS) dağıtma
+### <a name="15-record-network-packets-and-flow-logs"></a>1,5: ağ paketlerini ve akış günlüklerini kaydetme
 
-**Kılavuz**: Etkinlik hub'larınıza erişmek için Azure sanal makineleri kullanıyorsanız, Azure Marketi'nden yük denetimi özellikleriyle IDS/IPS işlevselliğini destekleyen bir teklif seçin. Kuruluşunuz için yük denetimine dayalı izinsiz giriş tespiti ve/veya önleme gerekli değilse, Azure Etkinlik Hub'larının yerleşik güvenlik duvarı özelliğini kullanabilirsiniz. Güvenlik Duvarı kurallarını kullanarak, sınırlı sayıda IP adresi veya belirli bir IP adresi için Olay Hub'larınıza erişimi sınırlandırabilirsiniz.
+**Rehberlik**: Olay Hub 'larınızı erişmek için Azure sanal makinelerini kullanıyorsanız, ağ güvenlik grubu (NSG) akış günlüklerini etkinleştirin ve trafik denetimi için günlükleri bir depolama hesabına gönderin. Ayrıca, NSG akış günlüklerini bir Log Analytics çalışma alanına gönderebilir ve Azure bulutunuzda trafik akışına Öngörüler sağlamak için Trafik Analizi kullanabilirsiniz. Trafik Analizi avantajlarından bazıları, ağ etkinliğini görselleştirme ve etkin noktaları belirlemek, güvenlik tehditlerini belirlemek, trafik akışı düzenlerini anlamak ve ağ yapılandırmalarını saptamak için kullanılır.
+
+Anormal etkinlikleri araştırmak için gerekliyse, ağ Izleyicisi paket yakalamayı etkinleştirin.
+
+NSG akış günlüklerini etkinleştirme:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+
+Trafik Analizi etkinleştirme ve kullanma:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+
+Ağ Izleyicisi 'ni etkinleştirme:https://docs.microsoft.com/azure/network-watcher/network-watcher-create
+
+**Azure Güvenlik Merkezi izleme**: Evet
+
+**Sorumluluk**: müşteri
+
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: ağ tabanlı yetkisiz giriş algılama/yetkisiz erişim önleme sistemleri (KIMLIKLER/IP 'ler) dağıtma
+
+**Rehberlik**: Olay Hub 'larınız için Azure sanal makineleri kullanıyorsanız, yük İnceleme ÖZELLIKLERINE sahip kimlikleri/IP 'Leri destekleyen Azure Marketi 'nden bir teklif seçin. Kuruluşunuz için yük incelemesini temel alan yetkisiz giriş algılama ve/veya önleme gerekmiyorsa Azure Event Hubs ' yerleşik güvenlik duvarı özelliğini kullanabilirsiniz. Güvenlik duvarı kurallarını kullanarak, sınırlı bir IP adresi aralığı veya belirli bir IP adresi için Event Hubs ad uzayına erişimi sınırlayabilirsiniz.
 
 Azure Marketi:
 
 https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
-Belirli bir IP adresi için Olay Hub'larına güvenlik duvarı kuralı ekleme:
+Belirli bir IP adresi için Event Hubs bir güvenlik duvarı kuralı ekleme:
 
  https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
-**Azure Güvenlik Merkezi izleme**: Henüz kullanılamıyor
+**Azure Güvenlik Merkezi izleme**: henüz kullanılamıyor
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="17-manage-traffic-to-web-applications"></a>1.7: Web uygulamalarına trafik yönetme
+### <a name="17-manage-traffic-to-web-applications"></a>1,7: Web uygulamalarına trafiği yönetme
 
-**Rehberlik**: Geçerli değildir; Bu öneri, Azure Uygulama Hizmeti'nde çalışan web uygulamaları veya bilgi işlem kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, Azure App Service veya işlem kaynaklarında çalışan Web uygulamalarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Ağ güvenliği kurallarının karmaşıklığını ve yönetim ek lerini en aza indirmek
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: ağ güvenlik kurallarının karmaşıklığını ve yönetim yükünü en aza indirme
 
-**Yönerge**: Bu öneri, Azure Uygulama Hizmeti'nde çalışan web uygulamaları veya bilgi işlem kaynakları için geçerli değildir.
+**Rehberlik**: uygulanamaz, bu öneri Azure App Service veya işlem kaynaklarında çalışan Web uygulamalarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Ağ aygıtları için standart güvenlik yapılandırmalarını koruyun
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: ağ cihazları için standart güvenlik yapılandırmalarının bakımını yapma
 
-**Yönerge**: Azure İlkesi ile Azure Etkinlik Hub'ları ad alanlarınızla ilişkili ağ kaynakları için standart güvenlik yapılandırmaları tanımlayın ve uygulayın. Olay Hub'larınızın ağ yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak için "Microsoft.EventHub" ve "Microsoft.Network" ad alanlarında Azure İlkesi takma adlarını kullanın. Azure Etkinlik Hub'ları ile ilgili yerleşik ilke tanımlarından da yararlanabilirsiniz:
+**Kılavuz**: Azure Ilkesi ile Azure Event Hubs ad boşluklarınızla ilişkili ağ kaynakları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Event Hubs ad alanlarınızın ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. EventHub" ve "Microsoft. Network" ad alanlarında Azure Ilke diğer adlarını kullanın. Azure Event Hubs ile ilgili yerleşik ilke tanımlarını da kullanabilirsiniz; örneğin:
 
-- Olay Hub sanal ağ hizmeti bitiş noktası kullanmalıdır.
+- Olay Hub 'ı bir sanal ağ hizmeti uç noktası kullanmalıdır.
 
-Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Etkinlik Hub'ları için Azure Yerleşik İlkesi ad alanı:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
-
-
-
-Ağ oluşturmak için Azure İlkesi örnekleri:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
+Event Hubs ad alanı için Azure yerleşik Ilkesi:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
 
 
-Azure Blueprint nasıl oluşturulur:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+Ağ için Azure Ilke örnekleri:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: Müşteri
 
-### <a name="110-document-traffic-configuration-rules"></a>1.10: Belge trafiği yapılandırma kuralları
+Azure Blueprint oluşturma:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
-**Yönerge**: Sanal ağlar ve ağ güvenliği ve olay hub'larınızla ilişkili trafik akışıyla ilgili diğer kaynaklar için etiketler kullanın.
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
+
+**Sorumluluk**: müşteri
+
+### <a name="110-document-traffic-configuration-rules"></a>1,10: belge trafiği yapılandırma kuralları
+
+**Rehberlik**: sanal ağlar ve Olay Hub 'larınızla ilişkili ağ güvenliği ve trafik akışıyla ilgili diğer kaynaklar için Etiketler kullanın.
 
 Etiketler oluşturma ve kullanma:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Ağ kaynağı yapılandırmalarını izlemek ve değişiklikleri algılamak için otomatik araçlar kullanın
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: ağ kaynağı yapılandırmasını izlemek ve değişiklikleri algılamak için otomatikleştirilmiş araçları kullanın
 
-**Yönerge**: Ağ kaynak yapılandırmalarını izlemek ve Azure Olay Hub'ları ile ilgili ağ kaynaklarının değişikliklerini algılamak için Azure Etkinlik Günlüğü'ne kullanın. Azure Monitor'da kritik ağ kaynaklarında değişiklikler olduğunda tetikleyecek uyarılar oluşturun.
+**Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını Izleyin ve Azure Event Hubs ile ilgili ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
 
-Azure Etkinlik Günlüğü etkinliklerini görüntüleme ve alma:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
+Azure etkinlik günlüğü olaylarını görüntüleme ve alma:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-Azure Monitor'da uyarı oluşturma:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Azure Izleyici 'de uyarı oluşturma:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
 ## <a name="logging-and-monitoring"></a>Günlüğe Kaydetme ve İzleme
 
-*Daha fazla bilgi için [Güvenlik Denetimi: Günlüğe kaydetme ve izleme.](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: günlüğe kaydetme ve izleme](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Onaylanmış zaman senkronizasyon kaynaklarını kullanma
+### <a name="21-use-approved-time-synchronization-sources"></a>2,1: onaylanan zaman eşitleme kaynaklarını kullanın
 
-**Rehberlik**: Geçerli değildir; Microsoft, günlüklerde zaman damgaları için Azure Etkinlik Hub'ları gibi Azure kaynakları için kullanılan zaman kaynağını tutar.
+**Rehberlik**: uygulanamaz; Microsoft, günlüklerdeki zaman damgaları için Azure Event Hubs gibi Azure kaynakları için kullanılan saat kaynağını korur.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
 **Sorumluluk**: Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2.2: Merkezi güvenlik günlüğü yönetimini yapılandırma
+### <a name="22-configure-central-security-log-management"></a>2,2: Merkezi güvenlik günlüğü yönetimini yapılandırma
 
-**Yönlendirme**: Azure Monitor'da, Etkinlik Günlüğü ve Etkinlik Merkezi tanı lama ayarlarındaki olay hub'ları ile ilgili günlükleri, sorgulanmak üzere Günlük Analizi çalışma alanına veya uzun süreli arşiv depolama için bir depolama hesabına göndermek üzere yapılandırın.
+**Kılavuz**: Azure izleyici 'de, olayları bir Log Analytics çalışma alanına veya uzun vadeli arşiv depolamaya yönelik bir depolama hesabına göndermek Için etkinlik günlüğü ve Olay Hub 'ı Tanılama ayarları içindeki olay hub 'ları ile ilgili günlükleri yapılandırın.
 
-Azure Olay Hub'ları için Tanılama Ayarları nasıl yapılandırılabilen:https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
+Azure Event Hubs için tanılama ayarlarını yapılandırma:https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
 
-Azure Etkinlik Günlüğünü Anlama:https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
-
-**Azure Güvenlik Merkezi izleme**: Evet
-
-**Sorumluluk**: Müşteri
-
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Azure kaynakları için denetim günlüğe kaydetmeyi etkinleştirme
-
-**Kılavuz**: Azure Etkinlik Hub'larınız ad alanınız için Tanılama ayarlarını etkinleştirin. Azure Etkinlik Hub'ları için tanılama ayarlarının üç kategorisi vardır: Arşiv Günlükleri, Operasyonel Günlükler ve Otomatik Ölçekgünlükleri. Olay Hub'ları işlemleri sırasında neler olduğu hakkında bilgi almak için Operasyonel Günlükleri etkinleştirin, özellikle olay hub'ı oluşturma, kullanılan kaynaklar ve işlemin durumu dahil olmak üzere işlem türü.
-
-Ayrıca, Azure Etkinliği günlük tanılama ayarlarını etkinleştirebilir ve bunları bir Azure Depolama Hesabı'na, etkinlik merkezine veya Log Analytics çalışma alanına gönderebilirsiniz. Etkinlik günlükleri, Azure Etkinlik Hub'larınızda ve diğer kaynaklarda gerçekleştirilen işlemler hakkında bilgi sağlar. Etkinlik günlüklerini kullanarak, Azure Etkinlik Hub'ları ad alanlarınızda alınan herhangi bir yazma işlemi (PUT, POST, DELETE) için "ne, kim ve ne zaman" olduğunu belirleyebilirsiniz.
-
-Azure Etkinlik Hub'ları için Tanı lama Ayarları nasıl etkinleştirilir:https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
-
-Azure Etkinlik Günlüğü için Tanı lama Ayarları nasıl etkinleştirilir:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+Azure etkinlik günlüğünü anlama:https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: İşletim sistemlerinden güvenlik günlüklerini toplama
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: Azure kaynakları için denetim günlüğünü etkinleştirme
 
-**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+**Kılavuz**: Azure Event Hubs ad alanınız için tanılama ayarlarını etkinleştirin. Azure Event Hubs için üç tanılama ayarı kategorisi vardır: Arşiv günlükleri, Işletimsel Günlükler ve otomatik ölçeklendirme günlükleri. İşlem günlüklerini, Olay Hub 'ı oluşturma, kullanılan kaynaklar ve işlem durumu dahil olmak üzere Event Hubs işlemleri sırasında oluşan işlemler, özellikle de işlem türü hakkında bilgi yakalamak için etkinleştirin.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+Ayrıca, Azure etkinlik günlüğü tanılama ayarlarını etkinleştirebilir ve bunları bir Azure depolama hesabına, Olay Hub 'ına veya Log Analytics çalışma alanına gönderebilirsiniz. Etkinlik günlükleri, Azure Event Hubs ve diğer kaynaklarda gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Etkinlik günlüklerini kullanarak, Azure Event Hubs ad boşluklarında herhangi bir yazma işlemi (PUT, POST, SILME) için "ne, kim ve ne zaman" i belirleyebilirsiniz.
 
-**Sorumluluk**: Geçerli değil
+Azure Event Hubs için tanılama ayarlarını etkinleştirme:https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
 
-### <a name="25-configure-security-log-storage-retention"></a>2.5: Güvenlik günlüğü depolama tutma yapılandırma
+Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-**Kılavuz**: Azure Monitor'da, etkinlik merkeziyle ilgili olayları yakalamak ve incelemek için Log Analytics çalışma alanı saklama sürenizi kuruluşunuzun uyumluluk yönetmeliklerine göre ayarlayın.
+**Azure Güvenlik Merkezi izleme**: Evet
 
-Log Analytics çalışma alanları için günlük bekletme parametreleri nasıl ayarlanır:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+**Sorumluluk**: müşteri
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: işletim sistemlerinden güvenlik günlüklerini toplama
 
-**Sorumluluk**: Müşteri
+**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-### <a name="26-monitor-and-review-logs"></a>2.6: Günlükleri izleme ve inceleme
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Rehberlik**: Anormal davranışlar için günlükleri analiz edin ve izleyin ve olay merkezlerinizle ilgili sonuçları düzenli olarak gözden geçirin. Günlükleri gözden geçirmek ve günlük verilerinde sorgular gerçekleştirmek için Azure Monitor'un Günlük Analizi'ni kullanın. Alternatif olarak, Azure Sentinel'e veya üçüncü taraf bir SIEM'e veri etkinleştirebilir ve yerleşik veriler verebilirsiniz.
+**Sorumluluk**: geçerli değil
+
+### <a name="25-configure-security-log-storage-retention"></a>2,5: güvenlik günlüğü depolama bekletmesini yapılandırma
+
+**Kılavuz**: Azure izleyici 'de, Olay Hub 'ı ile ilgili olayları yakalamak ve gözden geçirmek için kuruluşunuzun uyumluluk düzenlemelerine göre Log Analytics çalışma alanı saklama süresini ayarlayın.
+
+Log Analytics çalışma alanları için günlük bekletme parametreleri ayarlama:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
+
+**Sorumluluk**: müşteri
+
+### <a name="26-monitor-and-review-logs"></a>2,6: günlükleri izleme ve gözden geçirme
+
+**Rehberlik**: anormal davranış için günlükleri çözümleyin ve izleyin ve Olay Hub 'larıyla ilgili sonuçları düzenli olarak gözden geçirin. Günlükleri gözden geçirmek ve günlük verilerinde sorgular gerçekleştirmek için Azure Izleyici Log Analytics kullanın. Alternatif olarak, Azure Sentinel 'e veya üçüncü taraf SıEM 'ye yönelik verileri etkinleştirebilir.
  
 
 Log Analytics çalışma alanı hakkında daha fazla bilgi için:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-Azure Monitor'da özel sorgular nasıl gerçekleştirililir:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+Azure Izleyici 'de özel sorgular gerçekleştirme:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
-Azure Sentinel'e nasıl binilir:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure Sentinel 'i ekleme:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Anormal aktivite için uyarıları etkinleştirme
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: anormal etkinlik için uyarıları etkinleştir
 
-**Kılavuz :** Azure Monitor'da, Etkinlik Günlüğü içindeki Azure Etkinlik Hub'ları ve Olay Hub'ları ile ilgili günlükleri yapılandırarak günlükleri sorgulanmak üzere Günlük Analizi çalışma alanına veya uzun süreli arşiv depolama alanı için bir depolama hesabına göndermek için Etkinlik Hub'ları tanıayarlarına dönüştürün. Güvenlik günlüklerinde ve olaylarında bulunan anormal etkinlikler için uyarılar oluşturmak için Günlük Analizi çalışma alanını kullanın.
+**Kılavuz**: Azure izleyici 'de, etkinlik günlüğü içinde Azure Event Hubs ile ilgili günlükleri yapılandırın ve bir Log Analytics çalışma alanına veya uzun vadeli arşiv depolaması için bir depolama hesabına Günlükler göndermek üzere tanılama ayarlarını Event Hubs. Güvenlik günlükleri ve olayları 'nda bulunan anormal etkinlikler için uyarı oluşturmak üzere Log Analytics çalışma alanını kullanın.
 
-Alternatif olarak, Azure Sentinel'e veri etkinleştirebilir ve yerleşik veriler de dahil olabilirsiniz. 
+Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir. 
 
-Azure Etkinlik Günlüğünü Anlayın:https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
+Azure etkinlik günlüğünü anlayın:https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
-Azure Olay Hub'ları için Tanılama Ayarları nasıl yapılandırılabilen:https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
+Azure Event Hubs için tanılama ayarlarını yapılandırma:https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs
 
-Log Analytics çalışma alanı günlük verilerinde nasıl uyarı olun:https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
+Log Analytics çalışma alanı günlük verilerinde uyarı alma:https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-Azure Sentinel'e nasıl binilir:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure Sentinel 'i ekleme:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Azure Güvenlik Merkezi izleme**: Henüz kullanılamıyor
+**Azure Güvenlik Merkezi izleme**: henüz kullanılamıyor
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="28-centralize-anti-malware-logging"></a>2.8: Kötü amaçlı yazılımdan koruma günlüğe kaydetmeyi merkezileştirin
+### <a name="28-centralize-anti-malware-logging"></a>2,8: kötü amaçlı yazılımdan koruma 'yı merkezileştirme
 
-**Rehberlik**: Geçerli değildir; Olay Hub'ı kötü amaçlı yazılımdan koruma günlüğe kaydetmeişlemini işlemez.
+**Rehberlik**: uygulanamaz; Olay Hub 'ı kötü amaçlı yazılımdan koruma günlüğünü işlemez.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="29-enable-dns-query-logging"></a>2.9: DNS sorgu günlüğe kaydetmeyi etkinleştirme
+### <a name="29-enable-dns-query-logging"></a>2,9: DNS sorgu günlüğünü etkinleştir
 
-**Rehberlik**: Geçerli değildir; Olay Hub'ları DNS ile ilgili günlükleri işlemez veya üretmez.
+**Rehberlik**: uygulanamaz; Event Hubs DNS ile ilgili günlükleri işlemez veya oluşturmaz.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="210-enable-command-line-audit-logging"></a>2.10: Komut satırı denetim günlüğe kaydetmeyi etkinleştirme
+### <a name="210-enable-command-line-audit-logging"></a>2,10: komut satırı denetim günlüğünü etkinleştir
 
-**Rehberlik**: Geçerli değildir; bu kılavuz, hesaplama kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu kılavuz işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
 ## <a name="identity-and-access-control"></a>Kimlik ve Erişim Denetimi
 
-*Daha fazla bilgi için [güvenlik denetimi: kimlik ve erişim denetimi'ne](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)bakın.*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: kimlik ve Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: İdari hesapların envanterini korumak
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: yönetim hesaplarının envanterini tutma
 
-**Yönerge**: Azure Active Directory (AD), açıkça atanması gereken ve sorgulanabilen yerleşik rollere sahiptir. Yönetim gruplarına üye hesapları bulmak için geçici sorgular gerçekleştirmek için Azure AD PowerShell modüllerini kullanın. 
+**Rehberlik**: Azure ACTIVE DIRECTORY (ad) açıkça atanması ve sorgulanabilir olması gereken yerleşik roller içerir. Yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü kullanın. 
 
-PowerShell ile Azure AD'de dizin rolü nasıl elde elabilirsiniz:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Azure AD 'de PowerShell ile dizin rolü alma:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-PowerShell ile Azure AD'de dizin rolünün üyelerini nasıl edinire bilgili olabilirsiniz:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="32-change-default-passwords-where-applicable"></a>3.2: Varsayılan parolaları varsa değiştirme
+### <a name="32-change-default-passwords-where-applicable"></a>3,2: uygun yerlerde varsayılan parolaları değiştirme
 
-**Yönlendirme**: Etkinlik Hub'larına düzlem erişimini kontrol edin Azure Active Directory (AD) aracılığıyla denetlenir. Azure AD varsayılan parola kavramına sahip değildir.
+**Rehberlik**: denetim düzlemi erişimi Event Hubs Azure ACTIVE DIRECTORY (ad) ile denetlenir. Azure AD varsayılan parola kavramına sahip değildir.
 
-Etkinlik Hub'larına veri düzlemi erişimi, Yönetilen Kimlikler veya Uygulama kayıtlarının yanı sıra paylaşılan erişim imzalarıyla Azure AD aracılığıyla denetlenir. Paylaşılan erişim imzaları, etkinlik hub'larınıza bağlanan istemciler tarafından kullanılır ve herhangi bir zamanda yeniden oluşturulabilir.
+Event Hubs veri düzlemi erişimi, Yönetilen kimlikler veya Uygulama kayıtları ile paylaşılan erişim imzaları ile Azure AD aracılığıyla denetlenir. Paylaşılan erişim imzaları, Olay Hub 'larınızı bağlayan istemciler tarafından kullanılır ve herhangi bir zamanda yeniden oluşturulabilir.
 
-Etkinlik Hub'ları için paylaşılan erişim imzalarını anlayın:https://docs.microsoft.com/azure/event-hubs/authenticate-shared-access-signature
+Event Hubs için paylaşılan erişim imzalarını anlayın:https://docs.microsoft.com/azure/event-hubs/authenticate-shared-access-signature
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Özel yönetim hesaplarını kullanma
+### <a name="33-use-dedicated-administrative-accounts"></a>3,3: adanmış yönetim hesapları kullanın
 
-**Rehberlik**: Özel yönetim hesaplarının kullanımı yla ilgili standart işletim prosedürleri oluşturun. Yönetim hesabı sayısını izlemek için Azure Güvenlik Merkezi Kimliği ve Erişim Yönetimi'ni kullanın.
+**Rehberlik**: adanmış yönetim hesaplarının kullanımı etrafında standart işletim yordamları oluşturun. Yönetim hesaplarının sayısını izlemek için Azure Güvenlik Merkezi kimlik ve erişim yönetimi 'ni kullanın.
 
-Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure Güvenlik Merkezi'nden veya yerleşik Azure İlkeleri'nden öneriler kullanabilirsiniz:
+Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure Güvenlik Merkezi veya yerleşik Azure Ilkeleri önerilerini kullanabilirsiniz; örneğin:
 
 - Aboneliğinize birden fazla sahip atanmalıdır
 
-- Sahip izinleri olan amortismana alınmış hesaplar aboneliğinizden kaldırılmalıdır
+- Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
 
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 
-Kimlik ve erişimi izlemek için Azure Güvenlik Merkezi nasıl kullanılır (Önizleme):https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Kimlik ve erişim (Önizleme) izlemek için Azure Güvenlik Merkezi 'ni kullanma:https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-Azure İlkesi nasıl kullanılır:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-**Azure Güvenlik Merkezi izleme**: Evet
-
-**Sorumluluk**: Müşteri
-
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Azure Active Directory ile tek oturum açma (SSO) kullanma
-
-**Kılavuz**: Microsoft Azure, Azure Etkin Dizini'ni (AD) temel alan kaynaklar ve uygulamalar için tümleşik erişim denetimi yönetimi sağlar. Azure Etkinlik Hub'ları ile Azure AD kullanmanın önemli bir avantajı, kimlik bilgilerinizi artık kodda depolamanız gerekmemese de. Bunun yerine, Microsoft Identity platformundan Bir OAuth 2.0 erişim jetonu isteyebilirsiniz. Belirteci istemek için kaynak adı\/https: /eventhubs.azure.net/. Azure AD, uygulamayı çalıştıran güvenlik ilkesinin (kullanıcı, grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulama başarılı olursa, Azure AD uygulamaya bir erişim belirteci döndürür ve uygulama daha sonra isteği Azure Olay Hub'ları kaynaklarına yetkilendirmek için erişim belirteci'ni kullanabilir.
-
-Etkinlik Hub'ları kaynaklarına erişmek için Azure AD ile bir uygulamanın kimliğinin doğrulanması:https://docs.microsoft.com/azure/event-hubs/authenticate-application
-
-Azure AD ile SSO'nun anlaşılması:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
-
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
-
-**Sorumluluk**: Müşteri
-
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Tüm Azure Active Directory tabanlı erişim için çok faktörlü kimlik doğrulamayı kullanın
-
-**Yönerge**: Azure Etkin Dizin Çok Faktörlü Kimlik Doğrulaması'nı (MFA) etkinleştirin ve Etkinlik Hub'ı tarafından etkinleştirilen kaynaklarınızın korunmasına yardımcı olmak için Azure Güvenlik Merkezi Kimliği ve erişim yönetimi önerilerini izleyin.
-
-Azure'da MFA nasıl etkinleştirilir:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
-
-Azure Güvenlik Merkezi'nde kimlik ve erişim nasıl izlenir:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+Azure Ilkesini kullanma:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Tüm idari görevler için özel makineleri (Ayrıcalıklı Erişim İş İstasyonları) kullanın
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Azure Active Directory ile çoklu oturum açma (SSO) kullanın
 
-**Kılavuz :** Event Hub özellikli kaynaklara giriş yapmak ve yapılandırmak üzere yapılandırılan Çok Faktörlü Kimlik Doğrulama (MFA) ile ayrıcalıklı erişim iş istasyonları (PAW) kullanın.
+**Rehberlik**: Microsoft Azure, Azure ACTIVE DIRECTORY (ad) temelinde kaynak ve uygulamalar için tümleşik erişim denetimi yönetimi sağlar. Azure AD 'yi Azure Event Hubs kullanmanın önemli bir avantajı, kimlik bilgilerinizi artık kodda depolamanızı gerektirmez. Bunun yerine, Microsoft Identity platform 'dan bir OAuth 2,0 erişim belirteci isteyebilirsiniz. Belirteç istemek için kaynak adı https:\//eventhubs.Azure.net/. Azure AD, uygulamayı çalıştıran güvenlik sorumlusu (bir Kullanıcı, Grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulaması başarılı olursa, Azure AD uygulamaya bir erişim belirteci döndürür ve uygulama Azure Event Hubs kaynaklarına istek yetkilendirmek için erişim belirtecini kullanabilir.
 
-Ayrıcalıklı Erişim İş İstasyonları hakkında bilgi edinin:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+Event Hubs kaynaklarına erişmek için Azure AD ile bir uygulamanın kimliğini doğrulama:https://docs.microsoft.com/azure/event-hubs/authenticate-application
 
-Azure'da MFA nasıl etkinleştirilir:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Azure AD ile SSO 'yu anlama:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: İdari hesaplardan şüpheli etkinliklere ilişkin günlük ve uyarı
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: tüm Azure Active Directory tabanlı erişim için Multi-Factor Authentication kullanın
 
-**Kılavuz :** Çevrede şüpheli veya güvensiz etkinlik oluştuğunda günlük ve uyarı oluşturma için Azure Active Directory (AD) Ayrıcalıklı Kimlik Yönetimi 'ni (PIM) kullanın. Riskli kullanıcı davranışıyla ilgili uyarıları ve raporları görüntülemek için Azure AD risk algılamalarını kullanın. Ek günlüğe kaydetme için Azure Güvenlik Merkezi risk algılama uyarılarını Azure Monitor'a gönderin ve eylem gruplarını kullanarak özel uyarı/bildirimleri yapılandırın.
+**Rehberlik**: Azure Active Directory MULTI-Factor AUTHENTICATION (MFA) etkinleştirin ve Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini Izleyerek Olay Hub 'ı özellikli kaynaklarınızın korunmasına yardımcı olun.
 
-Ayrıcalıklı Kimlik Yönetimi (PIM) nasıl dağıtılır:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Azure 'da MFA 'yı etkinleştirme:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Azure AD risk algılamalarını anlayın:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
-
-Özel uyarı ve bildirim için eylem grupları nasıl yapılandırılabilen:https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
+Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme:https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Azure kaynaklarını yalnızca onaylanan konumlardan yönetme
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: tüm yönetim görevleri için adanmış makineler (ayrıcalıklı erişim Iş Istasyonları) kullanın
 
-**Yönerge**: Yalnızca IP adresi aralıklarının veya ülkelerin/bölgelerin inbelirli mantıksal gruplandırmalarından erişime izin vermek için Koşullu Erişim Adlandırılmış Konumlar'ı kullanın.
+**Rehberlik**: Olay Hub 'ı etkin kaynakları oturum açmak ve yapılandırmak için yapılandırılmış MULTI-Factor AUTHENTICATION (MFA) ile ayrıcalıklı erişim iş istasyonları (Paw) kullanın.
 
+Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
+Azure 'da MFA 'yı etkinleştirme:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-Azure'da Adlandırılmış Konumlar nasıl yapılandırılabilen:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Sorumluluk**: müşteri
 
-**Sorumluluk**: Müşteri
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: yönetim hesaplarından şüpheli etkinlikte günlüğe kaydet ve uyar
 
-### <a name="39-use-azure-active-directory"></a>3.9: Azure Etkin Dizini Kullanma
+**Rehberlik**: ortamda şüpheli veya güvenli olmayan bir etkinlik oluştuğunda günlükler ve uyarılar oluşturmak için Azure ACTIVE DIRECTORY (AD) PRIVILEGED IDENTITY Management (PIM) kullanın. Riskli Kullanıcı davranışında uyarıları ve raporları görüntülemek için Azure AD risk algılamalarını kullanın. Ek günlük kaydı için Azure Güvenlik Merkezi risk algılama uyarılarını Azure Izleyicisine gönderin ve eylem gruplarını kullanarak özel uyarı/bildirim yapılandırın.
 
-**Yönerge**: Azure Etkin Dizin (AD) kullanıcı, Etkinlik Hub'ları gibi Azure kaynakları için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak kullanın. Bu, rol tabanlı erişim denetimine (RBAC) yönetime duyarlı kaynaklara izin verir.
+Privileged Identity Management dağıtma (PıM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
- Azure AD örneğini oluşturma ve yapılandırma:https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
+Azure AD risk algılamalarını anlama:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-Azure Etkinlik Hub'larının Azure Etkin Dizini (AAD) ile nasıl entegre olduğunu öğrenmek için Bkz. Azure Etkin Dizin'i kullanarak Etkinlik Hub kaynaklarına erişimi yetkilendirme:https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
-
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
-
-**Sorumluluk**: Müşteri
-
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Kullanıcı erişimini düzenli olarak gözden geçirin ve uzlaştırın
-
-**Rehberlik**: Azure Active Directory (AD), eski hesapları keşfetmenize yardımcı olacak günlükler sağlar. Ayrıca, grup üyeliklerini, kurumsal uygulamalara erişimi ve rol atamalarını verimli bir şekilde yönetmek için Azure Kimlik Erişim İncelemeleri'ni kullanın. Kullanıcı erişimi, yalnızca doğru Kullanıcıların sürekli erişime sahip olduğundan emin olmak için düzenli olarak gözden geçirilebilir.
-
-Ayrıca, Etkinlik Hub'larınızın paylaşılan erişim imzalarını düzenli olarak döndürün.
-
-Azure AD raporlamalarını anlayın:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
-
-Azure Kimlik Erişim İncelemeleri nasıl kullanılır:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
-
-Etkinlik Hub'ları için paylaşılan erişim imzalarını anlama:https://docs.microsoft.com/azure/event-hubs/authenticate-shared-access-signature
+Özel uyarı ve bildirim için eylem gruplarını yapılandırma:https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Devre dışı bırakılmış hesaplara erişim denemelerini izleme
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Azure kaynaklarını yalnızca onaylanan konumlardan yönetme
 
-**Kılavuz**: Herhangi bir SIEM/İzleme aracıyla tümleştirmenize olanak tanıyan Azure Active Directory (AD) oturum açma etkinliği, denetim ve risk olay günlüğü kaynaklarına erişebilirsiniz.
+**Rehberlik**: IP adresi aralıklarının veya ülkelerin/bölgelerin yalnızca belirli mantıksal gruplarından erişime izin vermek Için adlandırılmış konumlar kullanın.
 
-Azure AD kullanıcı hesapları için tanılama ayarları oluşturarak ve denetim günlüklerini ve oturum açma günlüklerini bir Log Analytics çalışma alanına göndererek bu işlemi kolaylaştırabilirsiniz. Log Analytics içinde istediğiniz günlük uyarılarını yapılandırabilirsiniz.
 
-Azure Etkinlik Günlükleri Azure Monitör'e nasıl entegre eleştirilir:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-Azure Etkin Dizin'i kullanarak Etkinlik Hub kaynaklarına erişimi yetkilendirmeyin:https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+Azure 'da adlandırılmış konumlar nasıl yapılandırılır:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Hesap giriş davranış sapması konusunda uyarı
+### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory kullanın
 
-**Yönlendirme**: Olay Hub'ları etkin leştirilmiş kaynaklarınız ile ilgili algılanan şüpheli eylemlere otomatik yanıtları yapılandırmak için Azure Active Directory'nin Kimlik Koruması ve risk algılama özelliklerini kullanın. Kuruluşunuzun güvenlik yanıtlarını uygulamak için Azure Sentinel aracılığıyla otomatik yanıtları etkinleştirmelisiniz.
+**Rehberlik**: Event Hubs gibi Azure kaynakları için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure ACTIVE DIRECTORY (ad) kullanın. Bu, yönetim duyarlı kaynaklara rol tabanlı erişim denetimi (RBAC) sağlar.
 
-Azure AD riskli oturum açmaları nasıl görüntülenebilen:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+ Azure AD örneği oluşturma ve yapılandırma:https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
-Kimlik Koruması risk ilkelerinin nasıl yapılandırılabilen ve etkinleştirilir:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+Azure Event Hubs Azure Active Directory (AAD) ile nasıl tümleştirildiğini öğrenmek için bkz. Azure Active Directory kullanarak Event Hubs kaynaklarına erişimi yetkilendirme:https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
 
-Azure Sentinel'e nasıl binilir:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Sorumluluk**: müşteri
 
-**Sorumluluk**: Müşteri
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: Kullanıcı erişimini düzenli olarak gözden geçirin ve karşılaştırın
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: Destek senaryoları sırasında Microsoft'a ilgili müşteri verilerine erişim sağlama
+**Rehberlik**: Azure ACTIVE DIRECTORY (ad) eski hesapları keşfetmenize yardımcı olacak Günlükler sağlar. Ayrıca, grup üyeliklerini etkin bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure kimlik erişimi Incelemelerini kullanın. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişimi düzenli olarak incelenebilir.
 
-**Rehberlik**: Şu anda mevcut değil; Müşteri Kilit Kutusu henüz Olay Hub'ları için desteklenmedi.
+Ek olarak, Event Hubs ' paylaşılan erişim imzalarınızı düzenli olarak döndürün.
 
-Müşteri Kilit Kutusu destekli hizmetler listesi:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Azure AD raporlamayı anlayın:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+
+Azure kimlik erişimi Incelemelerini kullanma:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+
+Event Hubs için paylaşılan erişim imzalarını anlama:https://docs.microsoft.com/azure/event-hubs/authenticate-shared-access-signature
+
+**Azure Güvenlik Merkezi izleme**: Evet
+
+**Sorumluluk**: müşteri
+
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: devre dışı bırakılmış hesaplara erişme girişimlerini izleme
+
+**Rehberlik**: herhangi bir SIEM/izleme aracıyla tümleştirmenize imkan tanıyan Azure ACTIVE DIRECTORY (ad) oturum açma etkinliğine, denetim ve risk olay günlüğü kaynaklarına erişiminiz vardır.
+
+Bu işlemi, Azure AD Kullanıcı hesapları için Tanılama ayarları oluşturarak ve Log Analytics çalışma alanına denetim günlüklerini ve oturum açma günlüklerini göndererek kolaylaştırabilirsiniz. Log Analytics içinde, istenen günlük uyarılarını yapılandırabilirsiniz.
+
+Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+
+Azure Active Directory kullanarak Event Hubs kaynaklarına erişim yetkisi verme:https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
+
+**Sorumluluk**: müşteri
+
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: hesap oturum açma davranışı sapmasından uyar
+
+**Rehberlik**: Event Hubs etkin kaynaklarla ilgili şüpheli eylemler için otomatik yanıtları yapılandırmak üzere Azure Active Directory kimlik koruması ve risk algılama özelliklerini kullanın. Kuruluşunuzun güvenlik yanıtlarını uygulamak için Azure Sentinel aracılığıyla otomatikleştirilmiş yanıtları etkinleştirmeniz gerekir.
+
+Azure AD riskli oturum açma işlemlerini görüntüleme:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+
+Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+
+Azure Sentinel 'i ekleme:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
+
+**Sorumluluk**: müşteri
+
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: destek senaryoları sırasında Microsoft 'un ilgili müşteri verilerine erişimini sağlama
+
+**Rehberlik**: Şu anda kullanılamıyor; Müşteri Kasası, Event Hubs için henüz desteklenmiyor.
+
+Müşteri Kasası tarafından desteklenen hizmetler listesi:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk**: Şu anda mevcut değil
+**Sorumluluk**: Şu anda kullanılamıyor
 
 ## <a name="data-protection"></a>Veri Koruma
 
-*Daha fazla bilgi için [güvenlik denetimi: veri koruma.](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: veri koruma](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Hassas Bilgilerin envanterini koruyun
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: hassas bilgilerin envanterini tutma
 
-**Yönerge**: Hassas bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olmak için Etkinlik Hub'larınızla ilgili kaynaklardaki etiketleri kullanın.
+**Rehberlik**: hassas bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olmak için Event Hubs ilişkili kaynaklarda Etiketler kullanın.
 
-Etiketler nasıl oluşturulur ve kullanılır:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Etiketler oluşturma ve kullanma:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Hassas bilgileri depolama veya işleme sistemlerini yalıtma
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: hassas bilgileri depolayan veya işleyen sistemleri yalıtma
 
-**Rehberlik**: Geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları uygulayın. Olay Hub'ları ad alanları, hizmet bitiş noktaları etkinleştirilmiş ve uygun şekilde etiketlenmiş sanal ağ tarafından ayrılmalıdır.
+**Rehberlik**: geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları uygulayın. Event Hubs ad alanları, hizmet uç noktaları etkinleştirilmiş ve uygun şekilde etiketlenmiş sanal ağ ile ayrılmalıdır.
 
-Güvenlik duvarları kullanarak Azure Etkinlik Hub'larınızı da güvene alabilirsiniz. Azure Olay Hub'ları, gelen güvenlik duvarı desteği için IP tabanlı erişim denetimlerini destekler. Azure portalını, Azure Kaynak Yöneticisi şablonlarını kullanarak veya Azure CLI veya Azure PowerShell aracılığıyla güvenlik duvarı kuralları ayarlayabilirsiniz.
+Azure Event Hubs ad alanınızı güvenlik duvarları kullanarak da güvence altına alabilirsiniz. Azure Event Hubs, gelen güvenlik duvarı desteği için IP tabanlı erişim denetimlerini destekler. Azure portal, Azure Resource Manager şablonlarını veya Azure CLı veya Azure PowerShell aracılığıyla güvenlik duvarı kuralları belirleyebilirsiniz.
 
 Ek Azure abonelikleri oluşturma:https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Yönetim Grupları nasıl oluşturulur:https://docs.microsoft.com/azure/governance/management-groups/create
+Yönetim Grupları oluşturma:https://docs.microsoft.com/azure/governance/management-groups/create
 
-Azure Olay Hub'ları ad alanları için IP güvenlik duvarı kurallarını yapılandırın:https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
+Azure Event Hubs ad alanları için IP güvenlik duvarı kurallarını yapılandırın:https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
-Etiketlernasıl oluşturulur ve kullanılır:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Etiketler oluşturma ve kullanma:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-Sanal Ağ nasıl oluşturulur:https://docs.microsoft.com/azure/virtual-network/quick-create-portal
+Sanal ağ oluşturma:https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Hassas bilgilerin yetkisiz aktarımının izlenmesi ve engellenmesi
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: hassas bilgilerin yetkisiz aktarımını izleme ve engelleme
 
-**Kılavuz**: Etkinlik hub'larınıza erişmek için sanal makineleri kullanırken, veri sızma olasılığını azaltmak için sanal ağları, hizmet bitiş noktalarını, Olay Hub'larını, ağ güvenlik gruplarını ve hizmet etiketlerini kullanın.
+**Rehberlik**: Olay Hub 'larınıza erişmek için sanal makineleri kullanırken, veri kaybı olasılığını azaltmak için sanal ağlar, hizmet uç noktaları, Event Hubs güvenlik duvarı, ağ güvenlik grupları ve hizmet etiketleri kullanın.
 
-Microsoft, Azure Etkinlik Hub'ları için temel altyapıyı yönetir ve müşteri verilerinin kaybolmasını veya açığa dökülmesini önlemek için sıkı denetimler uygulamıştır.
+Microsoft, Azure Event Hubs için temel altyapıyı yönetir ve müşteri verilerinin kaybını veya açıklanmasını engellemek için katı denetimler uygulamıştır.
 
-Azure Olay Hub'ları ad alanları için IP güvenlik duvarı kurallarını yapılandırın:https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
+Azure Event Hubs ad alanları için IP güvenlik duvarı kurallarını yapılandırın:https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
-Azure Etkinlik Hub'ları ile Sanal Ağ Hizmeti Bitiş Noktalarını Anlayın:https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
+Azure Event Hubs ile sanal ağ hizmet uç noktalarını anlayın:https://docs.microsoft.com/azure/event-hubs/event-hubs-service-endpoints
 
-Azure Etkinlik Hub'larını Azure Özel Bağlantısıyla tümleştirin:https://docs.microsoft.com/azure/event-hubs/private-link-service
+Azure Event Hubs Azure özel bağlantısıyla tümleştirin:https://docs.microsoft.com/azure/event-hubs/private-link-service
 
-Ağ Güvenlik Gruplarını ve Hizmet Etiketlerini Anlayın:https://docs.microsoft.com/azure/virtual-network/security-overview
+Ağ güvenlik gruplarını ve hizmet etiketlerini anlayın:https://docs.microsoft.com/azure/virtual-network/security-overview
 
-Azure'da müşteri verilerinin korunmasını anlayın:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Tüm hassas bilgileri taşıma sırasında şifreleme
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: yoldaki tüm hassas bilgileri şifreleyin
 
-**Yönerge**: Azure Etkinlik Hub'ları varsayılan olarak TLS şifreli iletişimleri zorlar. TLS sürümleri 1.0, 1.1 ve 1.2 şu anda desteklenmiştir. Ancak, TLS 1.0 ve 1.1 endüstri çapında amortismana giden bir yoldadır, bu nedenle mümkünse TLS 1.2'yi kullanın.
+**Rehberlik**: Azure Event Hubs varsayılan olarak TLS şifreli iletişimleri zorlar. TLS sürümleri 1,0, 1,1 ve 1,2 Şu anda desteklenmektedir. Ancak, bu durumda TLS 1,0 ve 1,1, sektör genelinde kullanımdan kalkmaya yönelik bir yoldur. bu nedenle, tüm mümkünse TLS 1,2 kullanın.
 
-Olay Hub'larının güvenlik özelliklerini anlamak için Ağ güvenliği ne bakınız:https://docs.microsoft.com/azure/event-hubs/network-security
+Event Hubs 'nin güvenlik özelliklerini anlamak için bkz. ağ güvenliği:https://docs.microsoft.com/azure/event-hubs/network-security
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
 **Sorumluluk**: Microsoft
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Hassas verileri tanımlamak için etkin bir bulma aracı kullanın
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: hassas verileri belirlemek için etkin bir keşif aracı kullanın
 
-**Kılavuz :** Azure Etkinlik Hub'ları için veri tanımlama, sınıflandırma ve kayıp önleme özellikleri henüz kullanılamıyor. Uyumluluk amacıyla gerekirse üçüncü taraf çözümlerini uygulayın.
+**Rehberlik**: veri tanımlama, sınıflandırma ve kayıp önleme özellikleri Azure Event Hubs için henüz kullanılamıyor. Uyumluluk amacıyla gerekliyse üçüncü taraf çözümünü uygulayın.
 
-Microsoft tarafından yönetilen temel platform için Microsoft, tüm müşteri içeriğini hassas olarak ele almakta ve müşteri verilerinin kaybolmasına ve açığa çıkmasına karşı korunmak için büyük çaba sarf eder. Microsoft, Azure içindeki müşteri verilerinin güvenli kalmasını sağlamak için sağlam veri koruma denetimleri ve yetenekleri paketi uygulamıştır ve bunları sürdürmektedir.
+Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm müşteri içeriklerini gizli olarak değerlendirir ve müşteri veri kaybına ve açığa çıkmasına karşı koruma sağlamak için harika uzunluklara gider. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-Azure'da müşteri verilerinin korunmasını anlayın:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk**: Paylaşılan
+**Sorumluluk**: paylaşılan
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Kaynaklara erişimi denetlemek için Azure RBAC'ı kullanın
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
-**Yönlendirme**: Azure Etkinlik Hub'ları, İstekleri Etkinlik Hub'ları kaynaklarına yetkilendirmek için Azure Active Directory (AD) kullanarak destekler. Azure AD ile, bir kullanıcı veya uygulama hizmeti ilkesi olabilecek bir güvenlik ilkesine izin vermek için rol tabanlı erişim denetimini (RBAC) kullanabilirsiniz.
+**Rehberlik**: Azure Event Hubs, istekleri Event Hubs kaynaklara yetkilendirmek için Azure ACTIVE DIRECTORY (ad) kullanmayı destekler. Azure AD ile rol tabanlı erişim denetimi 'ni (RBAC), bir kullanıcı veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusu için izin vermek üzere kullanabilirsiniz.
 
-Azure Etkinlik Hub'ları için Azure AD RBAC'ı ve kullanılabilir rolleri anlayın:https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+Azure AD RBAC ve Azure Event Hubs için kullanılabilir rolleri anlayın:https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Erişim denetimini uygulamak için ana bilgisayar tabanlı veri kaybı önlemeyi kullanın
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: erişim denetimini zorlamak için ana bilgisayar tabanlı veri kaybı önleme kullanın
 
-**Rehberlik**: Geçerli değildir; bu kılavuz, hesaplama kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu kılavuz işlem kaynaklarına yöneliktir.
 
-Microsoft, Olay Hub'ları için temel altyapıyı yönetir ve müşteri verilerinin kaybolmasını veya açığa dökülmesini önlemek için sıkı denetimler uygulamıştır.
+Microsoft, Event Hubs için temel altyapıyı yönetir ve müşteri verilerinin kaybını veya açıklanmasını engellemek için katı denetimler uygulamıştır.
 
-Azure'da müşteri verilerinin korunmasını anlayın:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Hassas bilgileri istirahatte şifreleme
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: hassas bilgileri Rest 'te şifreleyin
 
-**Yönerge**: Azure Olay Hub'ları, Microsoft tarafından yönetilen anahtarlar veya müşteri tarafından yönetilen anahtarlarla verileri istirahatte şifreleme seçeneğini destekler. Bu özellik, Azure Etkinlik Hub'ları verilerini kolaylaştırmak için kullanılan müşteri tarafından yönetilen anahtarlara erişimi oluşturmanıza, döndürmenize, devre dışı etmenizi ve iptal etmenizi sağlar.
+**Kılavuz**: Azure Event Hubs, bekleyen verileri Microsoft tarafından yönetilen anahtarlarla veya müşteri tarafından yönetilen anahtarlarla şifreleme seçeneğini destekler. Bu özellik, Azure Event Hubs verilerini bekleyen bir şekilde şifrelemek için kullanılan müşteri tarafından yönetilen anahtarlara erişimi oluşturmanıza, döndürmenize, devre dışı bırakmanızı ve iptal etmenize olanak sağlar.
 
-Azure Etkinlik Hub'larını şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırma:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
+Azure Event Hubs şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırma:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Kritik Azure kaynaklarında yapılan değişiklikleri kaydedin ve uyarı
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: kritik Azure kaynaklarında yapılan değişikliklerle ilgili günlük ve uyarı
 
-**Yönerge**: Azure Etkinlik Hub'larının ve diğer kritik veya ilgili kaynakların üretim örneklerinde değişikliklerin ne zaman yapılacağına ilişkin uyarılar oluşturmak için Azure Etkinliği günlüğüyle Azure Monitörünü kullanın.
+**Kılavuz**: Azure izleyici 'Yi Azure etkinlik günlüğü ile birlikte kullanarak Azure Event Hubs 'in üretim örneklerine ve diğer önemli veya ilgili kaynaklara yönelik değişikliklerin ne zaman gerçekleştiği hakkında uyarılar oluşturun.
 
-Azure Etkinlik Günlüğü etkinlikleri için uyarılar oluşturma:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+Azure etkinlik günlüğü olayları için uyarı oluşturma:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
 ## <a name="vulnerability-management"></a>Güvenlik Açığı Yönetimi
 
-*Daha fazla bilgi için [Güvenlik Denetimi: Güvenlik Açığı Yönetimi'ne](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)bakın.*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenlik açığı yönetimi](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Otomatik güvenlik açığı tarama araçlarını çalıştırın
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: otomatikleştirilmiş güvenlik açığı tarama araçlarını çalıştırma
 
-**Rehberlik**: Geçerli değildir; Microsoft, Olay Hub'larını destekleyen temel sistemlerde güvenlik açığı yönetimi gerçekleştirir.
+**Rehberlik**: uygulanamaz; Microsoft, Event Hubs destekleyen temel sistemler üzerinde güvenlik açığı yönetimi gerçekleştirir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
-
-**Sorumluluk**: Microsoft
-
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Otomatik işletim sistemi yama yönetimi çözümlerini dağıtma
-
-**Rehberlik**: Geçerli değildir; Microsoft, Olay Hub'larını destekleyen temel sistemlerde yama yönetimi gerçekleştirir.
-
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
 **Sorumluluk**: Microsoft
 
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Otomatik üçüncü taraf yazılım yama yönetimi çözümlerini dağıtma
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: otomatik işletim sistemi düzeltme eki yönetimi çözümünü dağıtma
 
-**Rehberlik**: Geçerli değildir; kıyaslama hesaplama kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Microsoft, Event Hubs destekleyen temel sistemlerde Düzeltme Eki Yönetimi gerçekleştirir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
-
-**Sorumluluk**: Microsoft
-
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Arka arkaya güvenlik açığı taramalarını karşılaştırın
-
-**Rehberlik**: Geçerli değildir; Microsoft, Olay Hub'larını destekleyen temel sistemlerde güvenlik açığı yönetimi gerçekleştirir.
-
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
 **Sorumluluk**: Microsoft
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Keşfedilen güvenlik açıklarının düzeltilmesine öncelik vermek için risk derecelendirme işlemi kullanın
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: otomatik üçüncü taraf yazılım düzeltme eki yönetimi çözümünü dağıtma
 
-**Rehberlik**: Geçerli değildir; Microsoft, Olay Hub'larını destekleyen temel sistemlerde güvenlik açığı yönetimi gerçekleştirir.
+**Rehberlik**: uygulanamaz; Kıyaslama işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
+
+**Sorumluluk**: Microsoft
+
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: geri dönüş güvenlik açığı taramalarını karşılaştırın
+
+**Rehberlik**: uygulanamaz; Microsoft, Event Hubs destekleyen temel sistemler üzerinde güvenlik açığı yönetimi gerçekleştirir.
+
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
+
+**Sorumluluk**: Microsoft
+
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: bulunan güvenlik açıklarının düzeltilmesine öncelik vermek için risk derecelendirme işlemi kullanın
+
+**Rehberlik**: uygulanamaz; Microsoft, Event Hubs destekleyen temel sistemler üzerinde güvenlik açığı yönetimi gerçekleştirir.
+
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
 **Sorumluluk**: Microsoft
 
 ## <a name="inventory-and-asset-management"></a>Envanter ve Varlık Yönetimi
 
-*Daha fazla bilgi için [güvenlik denetimi: Envanter ve Varlık Yönetimi'ne](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)bakın.*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: envanter ve varlık yönetimi](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
 
-### <a name="61-use-azure-asset-discovery"></a>6.1: Azure Varlık Bulma'yı kullanma
+### <a name="61-use-azure-asset-discovery"></a>6,1: Azure varlık bulmayı kullanma
 
-**Yönerge**: Aboneliğinizdeki tüm kaynakları (Azure Olay Hub'ları ad alanları dahil) sorgulamak ve keşfetmek için Azure Kaynak Grafiği'ni kullanın. Kiracınızda uygun (okuma) izinlere sahip olduğundan ve aboneliklerinizdeki tüm Azure aboneliklerinin yanı sıra kaynakları sıralayabildiğinizden emin olun.
+**Rehberlik**: abonelikleriniz dahilinde (Azure Event Hubs ad alanları dahil) tüm kaynakları sorgulamak ve saptamak Için Azure Kaynak grafiğini kullanın. Kiracınızda uygun (okuma) izinleriniz olduğundan ve aboneliklerinizdeki kaynakların yanı sıra tüm Azure aboneliklerinin listesini belirleyebildiğinizden emin olun.
 
-Azure Kaynak Grafiği ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Azure Kaynak Graf ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Azure Aboneliklerinizi görüntüleme:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Azure aboneliklerinizi görüntüleme:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Azure RBAC'ı anlayın:https://docs.microsoft.com/azure/role-based-access-control/overview
+Azure RBAC 'yi anlama:https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="62-maintain-asset-metadata"></a>6.2: Varlık meta verilerini koruma
+### <a name="62-maintain-asset-metadata"></a>6,2: varlık meta verilerini koruma
 
-**Yönerge**: Meta verileri mantıksal olarak taksonomi olarak düzenlemek için meta veriler veren Azure kaynaklarına etiketler uygulayın.
+**Kılavuz**: Azure kaynaklarına Etiketler uygulayarak bunları bir taksonomi halinde mantıksal olarak organize etmek için meta veriler verirsiniz.
 
 Etiketler oluşturma ve kullanma:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Yetkisiz Azure kaynaklarını silme
+### <a name="63-delete-unauthorized-azure-resources"></a>6,3: yetkisiz Azure kaynaklarını silme
 
-**Yönerge**: Azure Etkinlik Hub'larının ad alanlarını ve ilgili kaynaklarını düzenlemek ve izlemek için uygun olduğunda etiketleme, yönetim grupları ve ayrı abonelikler kullanın. Envanteri düzenli olarak uzlaştırın ve yetkisiz kaynakların abonelikten zamanında silindiğinden emin olun.
+**Rehberlik**: Azure Event Hubs ad alanlarını ve ilgili kaynakları düzenlemek ve izlemek için uygun yerlerde etiketleme, yönetim grupları ve ayrı abonelikler kullanın. Envanterin düzenli olarak mutabakatını yapın ve yetkisiz kaynakların aboneliğin zamanında silindiğinden emin olun.
 
 Ek Azure abonelikleri oluşturma:https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Yönetim Grupları nasıl oluşturulur:https://docs.microsoft.com/azure/governance/management-groups/create
+Yönetim Grupları oluşturma:https://docs.microsoft.com/azure/governance/management-groups/create
 
-Etiketler nasıl oluşturulur ve kullanılır:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Etiketler oluşturma ve kullanma:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Onaylanan Azure kaynaklarının ve yazılım başlıklarının envanterini koruyun
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: onaylanan Azure kaynakları ve yazılım başlıkları envanterini koruyun
 
-**Rehberlik**: Geçerli değildir; bu öneri, bir bütün olarak hesaplama kaynakları ve Azure için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, bir bütün olarak işlem kaynaklarına ve Azure 'a yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Onaylanmamış Azure kaynakları için izleme
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: onaylanmamış Azure kaynakları için izleyici
 
-**Yönerge**: Aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliğinde oluşturulabilecek kaynak türüne kısıtlamalar getirmek için Azure ilkesini kullanın:
+**Rehberlik**: aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliklerine oluşturulabilecek kaynak türlerine kısıtlamalar koymak Için Azure ilkesini kullanın:
 
 - İzin verilmeyen kaynak türleri
 
 - İzin verilen kaynak türleri
 
-Ayrıca, abonelik içindeki kaynakları sorgulamak/keşfetmek için Azure Kaynak Grafiği'ni kullanın.
+Ayrıca, Azure Kaynak Grafiği 'ni kullanarak abonelikler içindeki kaynakları sorgular/bulur.
 
-Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Azure Graph ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Bilgi işlem kaynakları içindeki onaylanmamış yazılım uygulamalarını izleme
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: işlem kaynakları içindeki onaylanmamış yazılım uygulamaları için izleyici
 
-**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Onaylanmamış Azure kaynaklarını ve yazılım uygulamalarını kaldırma
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: onaylanmamış Azure kaynaklarını ve yazılım uygulamalarını kaldırma
 
-**Rehberlik**: Geçerli değildir; bu öneri, bir bütün olarak hesaplama kaynakları ve Azure için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, bir bütün olarak işlem kaynaklarına ve Azure 'a yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="68-use-only-approved-applications"></a>6.8: Yalnızca onaylı uygulamaları kullanın
+### <a name="68-use-only-approved-applications"></a>6,8: yalnızca onaylanan uygulamaları kullan
 
-**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="69-use-only-approved-azure-services"></a>6.9: Yalnızca onaylanmış Azure hizmetlerini kullanma
+### <a name="69-use-only-approved-azure-services"></a>6,9: yalnızca onaylanan Azure hizmetlerini kullanın
 
-**Yönerge**: Aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliğinde oluşturulabilecek kaynak türüne kısıtlamalar getirmek için Azure ilkesini kullanın:
+**Rehberlik**: aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliklerine oluşturulabilecek kaynak türlerine kısıtlamalar koymak Için Azure ilkesini kullanın:
 
 - İzin verilmeyen kaynak türleri
 
 - İzin verilen kaynak türleri
 
-Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure İlkesi ile belirli bir kaynak türü nasıl reddedilecek:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Azure Ilkesiyle belirli bir kaynak türünü reddetme:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="610-implement-approved-application-list"></a>6.10: Onaylı başvuru listesini uygulama
+### <a name="610-implement-approved-application-list"></a>6,10: onaylanan uygulama listesini Uygula
 
-**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6.11: <div>Kullanıcıların komut dosyaları aracılığıyla Azure Kaynak Yöneticisi ile etkileşim deşme lerini sınırlandırın</div>
+### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6,11: <div>Kullanıcıların betikler aracılığıyla Azure Resource Manager etkileşim kurma yeteneğini sınırlayın</div>
 
-**Kılavuz**: "Microsoft Azure Yönetimi" Uygulaması için "Erişimi engelle" yapılandırarak kullanıcıların Azure Kaynak Yöneticisi ile etkileşim edebilmelerini sınırlamak için Azure Koşullu Erişimi yapılandırın.
+**Rehberlik**: "Microsoft Azure yönetimi" uygulaması için "erişimi engelle" yapılandırarak kullanıcıların Azure Resource Manager etkileşime geçmesini sınırlamak üzere Azure koşullu erişimini yapılandırın.
 
-Koşullu Erişim'i Azure Kaynak Yöneticisi'ne erişimi engellemek için yapılandırma:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Kullanıcıların bilgi işlem kaynakları içinde komut dosyalarını yürütme yeteneğini sınırlama
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: kullanıcıların işlem kaynakları içinde betikleri yürütme yeteneğini sınırlayın
 
-**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Yüksek riskli uygulamaları fiziksel veya mantıksal olarak ayırmak
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: yüksek riskli uygulamaları fiziksel olarak veya mantıksal olarak ayırt edin
 
-**Rehberlik**: Geçerli değildir; Bu öneri, Azure Uygulama Hizmeti'nde çalışan web uygulamaları veya bilgi işlem kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, Azure App Service veya işlem kaynaklarında çalışan Web uygulamalarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
 ## <a name="secure-configuration"></a>Güvenli Yapılandırma
 
-*Daha fazla bilgi için güvenlik [denetimi: Güvenli Yapılandırma'ya](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)bakın.*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenli yapılandırma](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Tüm Azure kaynakları için güvenli yapılandırmalar oluşturma
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: tüm Azure kaynakları için güvenli yapılandırma oluşturma
 
-**Yönerge**: Azure Etkinlik Hub'larınız için standart güvenlik yapılandırmalarını tanımlayın ve uygulayın. Yapılandırmaları denetlemek veya zorlamak için özel ilkeler oluşturmak için "Microsoft.EventHub" ad alanında Azure İlkesi takma adlarını kullanın. Azure Etkinlik Hub'ları için yerleşik ilke tanımlarından da yararlanabilirsiniz:
+**Rehberlik**: Azure Event Hubs dağıtımlarınız için standart güvenlik yapılandırması tanımlayın ve uygulayın. Konfigürasyonları denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. EventHub" ad alanındaki Azure Ilke diğer adlarını kullanın. Azure Event Hubs için yerleşik ilke tanımlarından da yararlanabilirsiniz:
 
-- Event Hub'daki tanılama günlükleri etkinleştirilmeli
+- Olay Hub 'ındaki tanılama günlükleri etkinleştirilmelidir
 
-- Olay Hub sanal ağ hizmeti bitiş noktası kullanmalıdır
+- Olay Hub 'ı bir sanal ağ hizmeti uç noktası kullanmalıdır
 
-Etkinlik Hub'ları için Azure Yerleşik İlkesi ad alanı:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
+Event Hubs ad alanı için Azure yerleşik Ilkesi:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
-Kullanılabilir Azure İlkesi diğer adlarını görüntüleme:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Güvenli işletim sistemi yapılandırmaları oluşturma
+### <a name="72-establish-secure-operating-system-configurations"></a>7,2: güvenli işletim sistemi yapılandırması oluşturma
 
-**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Güvenli Azure kaynak yapılandırmalarını koruyun
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: güvenli Azure Kaynak yapılandırmalarının bakımını yapma
 
-**Yol gösterici**: Olay Hub'ları etkin kaynaklarınızda güvenli ayarlar uygulamak için Azure ilkesini [reddet] ve [varsa dağıt] kullanın. 
+**Rehberlik**: Event Hubs etkinleştirilmiş kaynaklarınız genelinde güvenli ayarları zorlamak Için Azure ilkesi [reddetme] ve [dağıtım yok] kullanın. 
 
-Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
  
-Azure İlke Efektleri hakkında daha fazla bilgi için:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+Azure Ilke etkileri hakkında daha fazla bilgi için:https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Güvenli işletim sistemi yapılandırmalarını koruyun
+### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: güvenli işletim sistemi yapılandırmalarının bakımını yapma
 
-**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Azure kaynaklarının yapılandırmayı güvenli bir şekilde depolama
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Azure kaynaklarının yapılandırmasını güvenli bir şekilde depolayın
 
-**Yönlendirme**: Etkinlik Hub'larınız veya ilgili kaynaklarınız için özel Azure İlkesi tanımlarını kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos'unu kullanın.
+**Rehberlik**: Event Hubs veya ilgili kaynaklarınız Için özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos kullanın.
 
-Azure DevOps'lerde kod depolama:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Azure DevOps 'da kod depolama:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Azure Depobelgeleri:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Azure Repos belgeleri:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Özel işletim sistemi görüntülerini güvenli bir şekilde saklayın
+### <a name="76-securely-store-custom-operating-system-images"></a>7,6: özel işletim sistemi görüntülerini güvenli bir şekilde depolayın
 
-**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Sistem yapılandırma yönetim araçlarını dağıtma
+### <a name="77-deploy-system-configuration-management-tools"></a>7,7: sistem yapılandırma yönetimi araçlarını dağıtma
 
-**Yönerge**: Sistem yapılandırmalarını uyarmak, denetlemek ve uygulamak için özel ilkeler oluşturmak için "Microsoft.EventHub" ad alanında Azure İlkesi takma adlarını kullanın. Ayrıca, ilke özel durumlarını yönetmek için bir işlem ve ardışık hatlar geliştirin.
+**Rehberlik**: sistem yapılandırmalarına uyarı vermek, denetlemek ve zorlamak için özel ilkeler oluşturmak üzere "Microsoft. EventHub" ad alanındaki Azure ilke diğer adlarını kullanın. Ayrıca, ilke özel durumlarını yönetmek için bir işlem ve işlem hattı geliştirin.
 
-Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: İşletim sistemleri için sistem yapılandırma yönetim araçlarını dağıtma
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: işletim sistemleri için sistem yapılandırma yönetimi araçları dağıtma
 
-**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Azure hizmetleri için otomatik yapılandırma izleme uygulaması
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Azure hizmetleri için otomatik yapılandırma izlemeyi uygulayın
 
-**Yönerge**: Sistem yapılandırmalarını uyarmak, denetlemek ve uygulamak için özel ilkeler oluşturmak için "Microsoft.EventHub" ad alanında Azure İlkesi takma adlarını kullanın. Azure Etkinlik Hub'ları dağıtımlarınız ve ilgili kaynaklarınız için yapılandırmaları otomatik olarak uygulamak için Azure ilkesi [denetim], [reddet], [varsa dağıt] ve [varsa dağıt] kullanın.
+**Rehberlik**: sistem yapılandırmalarına uyarı vermek, denetlemek ve zorlamak için özel ilkeler oluşturmak üzere "Microsoft. EventHub" ad alanındaki Azure ilke diğer adlarını kullanın. Azure Event Hubs dağıtımlarınız ve ilgili kaynaklarınızın yapılandırmasını otomatik olarak zorlamak için [Denetim], [reddetme] ve [dağıtım yok] Azure Ilkesini kullanın.
 
-Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: İşletim sistemleri için otomatik yapılandırma izleme
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: işletim sistemleri için otomatik yapılandırma izlemeyi Uygula
 
-**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="711-manage-azure-secrets-securely"></a>7.11: Azure sırlarını güvenli bir şekilde yönetme
+### <a name="711-manage-azure-secrets-securely"></a>7,11: Azure gizli dizilerini güvenli bir şekilde yönetin
 
-**Yönlendirme**: Azure Uygulama Hizmeti'nde çalışan Azure sanal makineleri veya web uygulamaları için etkinlik hub'larınıza erişmek için kullanılabilir, Azure Etkinlik Hub'ları dağıtımlarınız için paylaşılan erişim imza yönetimini basitleştirmek ve güvence altına almak için Azure Key Vault ile birlikte Yönetilen Hizmet Kimliğini kullanın. Key Vault yumuşak silme etkin olduğundan emin olun.
+**Kılavuz**: Azure sanal makineleri veya Olay Hub 'larınıza erişmek için kullanılan Azure App Service çalışan Web uygulamaları Için, Azure Event Hubs dağıtımlarınız için paylaşılan erişim imza yönetimini basitleştirmek ve güvenli hale getirmek üzere Azure Key Vault ile birlikte yönetilen hizmet kimliği kullanın. Key Vault geçici silme özelliğinin etkinleştirildiğinden emin olun.
 
-Etkinlik Hub'ları kaynaklarına erişmek için Azure Etkin Dizini ile yönetilen bir kimliğin kimliğini doğrulatın:https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest
+Event Hubs kaynaklara erişmek için Azure Active Directory bir yönetilen kimliğin kimliğini doğrulayın:https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest
 
-Etkinlik Hub'ları için müşteri tarafından yönetilen anahtarları yapılandırın:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key 
+Event Hubs için müşteri tarafından yönetilen anahtarları yapılandırın:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key 
 
-Azure Yönetilen Kimliklerle nasıl tümleştirilir:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Azure yönetilen kimliklerle tümleştirme:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Anahtar Kasası nasıl oluşturulur:https://docs.microsoft.com/azure/key-vault/quick-create-portal
+Key Vault oluşturma:https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-Key Vault kimlik doğrulaması yönetilen bir kimlikle nasıl sağlayacaksınız:https://docs.microsoft.com/azure/key-vault/managed-identity
-
-**Azure Güvenlik Merkezi izleme**: Evet
-
-**Sorumluluk**: Müşteri
-
-### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Kimlikleri güvenli ve otomatik olarak yönetme
-
-**Yönlendirme**: Azure Uygulama Hizmeti'nde çalışan Azure sanal makineleri veya web uygulamaları etkinlik hub'larınıza erişmek için kullanılıyorsa, Azure Olay Hub'larını basitleştirmek ve güvence altına almak için Azure Key Vault ile birlikte Yönetilen Hizmet Kimliğini kullanın. Key Vault yumuşak silme etkin olduğundan emin olun.
-
-Azure Etkin Dizini'nde (AD) otomatik olarak yönetilen bir kimlikle Azure hizmetlerine yönetilen kimlik sağlamak için Yönetilen Kimlikler'i kullanın. Yönetilen Kimlikler, kodunuzda herhangi bir kimlik belgesi olmadan Azure Key Vault da dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen tüm hizmetlere kimlik doğrulamanızı sağlar.
-
-Etkinlik Hub'ları Kaynaklarına erişmek için Azure Etkin Dizini ile yönetilen bir kimliğin kimliğini doğrulatın:https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest 
-
-Etkinlik Hub'ları için müşteri tarafından yönetilen anahtarları yapılandırın:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key 
-
-Yönetilen Kimlikler nasıl yapılandırılır:https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
-
-Azure Yönetilen Kimliklerle nasıl tümleştirilir:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama:https://docs.microsoft.com/azure/key-vault/managed-identity
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: İstenmeden kimlik bilgisi maruziyetini ortadan kaldırın
+### <a name="712-manage-identities-securely-and-automatically"></a>7,12: kimlikleri güvenli ve otomatik olarak yönetme
 
-**Yönerge**: Kod içindeki kimlik bilgilerini tanımlamak için Kimlik Bilgisi Tarayıcısı'nı uygulayın. Kimlik Bilgisi Tarayıcısı, keşfedilen kimlik bilgilerinin Azure Anahtar Kasası gibi daha güvenli konumlara taşınmasını da teşvik edecektir.
+**Kılavuz**: Azure sanal makineleri veya Olay Hub 'larınız için kullanılan Azure App Service çalışan Web uygulamaları Için, Azure Event Hubs 'yi basitleştirmek ve güvenli hale getirmek için Azure Key Vault birlikte yönetilen hizmet kimliği kullanın. Key Vault geçici silme özelliğinin etkinleştirildiğinden emin olun.
 
-Kimlik Bilgisi Tarayıcı nasıl kurulturur:https://secdevtools.azurewebsites.net/helpcredscan.html
+Azure Active Directory (AD) içinde otomatik olarak yönetilen bir kimlik ile Azure hizmetleri sağlamak için Yönetilen kimlikler kullanın. Yönetilen kimlikler, kodunuzda kimlik bilgileri olmadan Azure Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmanıza olanak sağlar.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+Event Hubs kaynaklara erişmek için Azure Active Directory bir yönetilen kimliğin kimliğini doğrulayın:https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest 
 
-**Sorumluluk**: Müşteri
+Event Hubs için müşteri tarafından yönetilen anahtarları yapılandırın:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key 
+
+Yönetilen kimlikleri yapılandırma:https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+
+Azure yönetilen kimliklerle tümleştirme:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+
+**Azure Güvenlik Merkezi izleme**: Evet
+
+**Sorumluluk**: müşteri
+
+### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: istenmeyen kimlik bilgisi pozlamasını ortadan kaldırın
+
+**Rehberlik**: kod içinde kimlik bilgilerini tanımlamak Için kimlik bilgisi tarayıcısı uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerini Azure Key Vault gibi daha güvenli konumlara taşımayı de teşvik eder.
+
+Kimlik bilgisi tarayıcısını ayarlama:https://secdevtools.azurewebsites.net/helpcredscan.html
+
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
+
+**Sorumluluk**: müşteri
 
 ## <a name="malware-defense"></a>Kötü Amaçlı Yazılımdan Koruma
 
-*Daha fazla bilgi için [Güvenlik Kontrolü: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)' e bakın.*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: kötü amaçlı yazılımdan koruma](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Merkezi olarak yönetilen kötü amaçlı yazılımdan koruma yazılımlarını kullanın
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: merkezi olarak yönetilen kötü amaçlı yazılımdan koruma yazılımı kullanma
 
-**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-Microsoft kötü amaçlı yazılımdan koruma, Azure hizmetlerini destekleyen temel ana bilgisayarda etkindir (örneğin, Azure Uygulama Hizmeti), ancak müşteri içeriğinde çalışmaz.
+Microsoft kötü amaçlı yazılımdan koruma, Azure hizmetlerini destekleyen temel ana bilgisayarda (örneğin, Azure App Service) etkinleştirilir, ancak müşteri içeriklerde çalıştırılmaz.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: İşlem yapmayan Azure kaynaklarına yüklenecek dosyaları önceden taraya
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: işlem dışı Azure kaynaklarına yüklenecek dosyaları önceden Tara
 
-**Yönlendirme**: Azure Etkinlik Hub'ları, Uygulama Hizmeti, Veri Gölü Depolama, Blob Depolama, PostgreSQL için Azure Veritabanı gibi bilgi işlem dışı Azure kaynaklarına yüklenen tüm içerikleri önceden tarayın. Microsoft bu gibi durumlarda verilerinize erişemez.
+**Kılavuz**: Azure Event Hubs, App Service, Data Lake Storage, BLOB depolama, PostgreSQL Için Azure veritabanı vb. gibi Işlem dışı Azure kaynaklarına yüklenen tüm içerikleri önceden tarayın. Microsoft bu örneklerdeki verilerinize erişemez.
 
-Microsoft kötü amaçlı yazılımdan koruma, Azure hizmetlerini destekleyen temel ana bilgisayarda etkindir (örneğin, Redis için Azure Önbelleği), ancak müşteri içeriğinde çalışmaz.
+Microsoft 'un kötü amaçlı yazılımdan koruma özelliği, Azure hizmetlerini destekleyen temel ana bilgisayar üzerinde etkinleştirilmiştir (örneğin, Reddır için Azure önbelleği), ancak müşteri içeriği üzerinde çalışmaz.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Kötü amaçlı yazılımdan koruma yazılımının ve imzalarının güncelleştirilmesini sağlayın
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: kötü amaçlı yazılımdan koruma yazılımlarının ve imzaların güncelleştirildiğinden emin olun
 
-**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Geçerli değil
+**Sorumluluk**: geçerli değil
 
 ## <a name="data-recovery"></a>Veri Kurtarma
 
-*Daha fazla bilgi için [güvenlik denetimi: veri kurtarma](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: veri kurtarma](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Düzenli otomatik yedeklemeler sağlayın
+### <a name="91-ensure-regular-automated-back-ups"></a>9,1: düzenli Otomatik yedeklemeli UPS sağlayın
 
-**Yönerge**: Azure Olay Hub'ları için coğrafi durum kurtarmayı yapılandırın. Tüm Azure bölgeleri veya veri merkezleri (kullanılabilirlik bölgeleri kullanılıyorsa) kapalı kalma süresi yle karşılaştığında, veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam etmesi çok önemlidir. Bu nedenle, Jeo-felaket kurtarma ve Geo-çoğaltma herhangi bir kuruluş için önemli özelliklerdir. Azure Olay Hub'ları, ad alanı düzeyinde hem coğrafi felaket kurtarma yı hem de coğrafi çoğaltmayı destekler. 
+**Kılavuz**: Azure Event Hubs için coğrafi olağanüstü durum kurtarmayı yapılandırma. Azure bölgelerinin veya veri merkezlerinin (hiçbir kullanılabilirlik alanı kullanılmıyorsa) çalışma süresi kapalı kalma süresi, veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam edebilmesi için kritik öneme sahiptir. Bu nedenle, coğrafi olağanüstü durum kurtarma ve coğrafi çoğaltma, herhangi bir kuruluş için önemli özelliklerdir. Azure Event Hubs, ad alanı düzeyinde hem coğrafi olağanüstü durum kurtarmayı hem de Coğrafi çoğaltmayı destekler. 
 
-Azure Etkinlik Hub'ları için coğrafi durum kurtarmayı anlayın:https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones
+Azure Event Hubs coğrafi olağanüstü durum kurtarmayı anlayın:https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Komple sistem yedeklemelerini gerçekleştirin ve müşteri yönetilen anahtarları yedekleme
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: tüm sistem yedeklemelerini gerçekleştirin ve müşterinin yönettiği tüm anahtarları yedekleyin
 
-**Yönlendirme**: Azure Olay Hub'ları, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile veri şifrelemesini sağlar. Olay Hub'ları verileri depolamak için Azure Depolama'ya güvenir ve varsayılan olarak Azure Depolama ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. Müşteri tarafından yönetilen anahtarları depolamak için Azure Key Vault kullanıyorsanız, Anahtarlarınızın düzenli otomatik yedeklemelerini sağlayın.
+**Kılavuz**: Azure Event Hubs, Azure depolama hizmeti şifrelemesi (Azure SSE) ile bekleyen verilerin şifrelenmesini sağlar. Event Hubs, verileri depolamak için Azure depolama 'yı kullanır ve varsayılan olarak, Azure Storage ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. Müşteri tarafından yönetilen anahtarları depolamak için Azure Key Vault kullanıyorsanız, anahtarlarınızın düzenli otomatik yedeklemelerini sağlayın.
 
-Aşağıdaki PowerShell komutu yla Key Vault Secrets düzenli otomatik yedekleme sağlamak: Backup-AzKeyVaultSecret
+Aşağıdaki PowerShell komutuyla Key Vault Sırlarınızın düzenli otomatik yedeklemelerini sağlayın: Backup-AzKeyVaultSecret
 
-Azure Event Hub'ları verilerini yeniden şifrelemek için müşteri tarafından yönetilen anahtarlar nasıl yapılandırılabilen:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
+Bekleyen Azure Event Hubs verilerini şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırma:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
 
-Anahtar Vault Sırları yedeklemek için nasıl:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+Key Vault gizli dizileri yedekleme:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Müşteri yönetilen anahtarlar dahil tüm yedeklemeleri doğrulayın
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: müşterinin yönettiği anahtarlar dahil tüm yedeklemeleri doğrulama
 
-**Rehberlik**: Yedeklenen müşteri yönetilen anahtarlarının test restorasyonu.
+**Rehberlik**: yedeklenen müşteri tarafından yönetilen anahtarların sınamasını geri yükleme.
 
  
 
-Azure'da anahtar kasa sıtuşlarını geri yükleme:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+Azure 'da Anahtar Kasası anahtarlarını geri yükleme:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Yedeklerin ve müşteri yönetilen anahtarlarının korunmasını sağlayın
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: yedeklemelerin ve müşteri tarafından yönetilen anahtarların korunmasını sağlayın
 
-**Kılavuz**: Tuşları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault'ta yumuşak silme işlemini etkinleştirin. Azure Etkinlik Hub'ları, müşteri tarafından yönetilen anahtarların Yumuşak Silme ve Temizleme'yi yapılandırmak için gerekli.
+**Rehberlik**: anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault geçici silme özelliğini etkinleştirin. Azure Event Hubs, müşteri tarafından yönetilen anahtarların geçici silme ve bu şekilde temizlenme gerektirir.
 
-Olay Hub'ları verilerini yakalamak için kullanılan Azure Depolama hesabı için yumuşak silme yapılandırması. Bu özelliğin Azure Veri Gölü Depolama Gen 2 için henüz desteklenmediğini unutmayın.
+Event Hubs verileri yakalamak için kullanılan Azure depolama hesabı için geçici silme yapılandırın. Bu özelliğin henüz Azure Data Lake Storage Gen 2 için desteklenmediğini unutmayın.
 
-Key Vault'ta yumuşak silme nasıl etkinleştirilir:https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+Key Vault 'da geçici silmeyi etkinleştirme:https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-Anahtarlarla bir anahtar kasası ayarlayın:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
+Anahtarlar içeren bir Anahtar Kasası ayarlayın:https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key
 
-Azure Depolama lekeleri için yumuşak silme:https://docs.microsoft.com//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+Azure depolama Blobları için geçici silme:https://docs.microsoft.com//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
 ## <a name="incident-response"></a>Olay Yanıtı
 
-*Daha fazla bilgi için [Güvenlik Denetimi: Olay Yanıtı'na](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)bakın.*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: olay yanıtı](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
 
-### <a name="101-create-an-incident-response-guide"></a>10.1: Olay yanıt kılavuzu oluşturma
+### <a name="101-create-an-incident-response-guide"></a>10,1: olay yanıtı kılavuzu oluşturma
 
-**Rehberlik**: Personelin rollerini ve olay işleme/yönetim aşamalarını tanımlayan yazılı olay yanıt planları olduğundan emin olun.
+**Rehberlik**: personel rollerinin yanı sıra olay işleme/yönetim aşamalarını tanımlayan yazılı olay yanıt planları olduğundan emin olun.
 
-Azure Güvenlik Merkezi'nde İş Akışı Otomasyonları nasıl yapılandırılabilen:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
+Azure Güvenlik Merkezi 'nde Iş akışı Otomatiklamalar nasıl yapılandırılır:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
 
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Olay puanlama ve öncelik lendirme prosedürü oluşturma
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: olay Puanlama ve öncelik belirlemesi prosedürü oluşturma
 
-**Rehberlik**: Güvenlik Merkezi, her uyarıya katılma sırasının önceliklerini belirlemenize yardımcı olmak için uyarılara önem verir, böylece bir kaynak tehlikeye girdiğinde, bu uyarıya hemen ulaşabilirsiniz. Önem derecesi, Güvenlik Merkezi'nin bulguda ne kadar emin olduğuna veya uyarıyı vermek için kullanılan analize ve uyarıya yol açan etkinliğin arkasında kötü amaçlı niyet olduğuna dair güven düzeyine dayanır.
-
-**Azure Güvenlik Merkezi izleme**: Evet
-
-**Sorumluluk**: Müşteri
-
-### <a name="103-test-security-response-procedures"></a>10.3: Test Güvenliği Yanıt Prosedürleri
-
-**Rehberlik**: Sistemlerinizin olay yanıt yeteneklerini düzenli olarak test etmek için alıştırmalar yapın. Zayıf noktaları ve boşlukları belirleyin ve planı gerektiği gibi gözden geçirin.
-
-NIST'in yayınına bakın: BT Planları ve Yetenekleri için Test, Eğitim ve Egzersiz Programları Kılavuzu:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
-
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
-
-**Sorumluluk**: Müşteri
-
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Güvenlik olayı iletişim bilgilerini sağlayın ve güvenlik olayları için uyarı bildirimlerini yapılandırma
-
-**Kılavuz :** Microsoft Güvenlik Yanıt Merkezi (MSRC), müşterinin verilerine yasadışı veya yetkisiz bir taraf tarafından erişildiğini tespit ederse, güvenlik olayı iletişim bilgileri Microsoft tarafından sizinle iletişim kurmak için kullanılır.  Sorunların çözülmesini sağlamak için olaydan sonraki olayları gözden geçirin. 
-
-Azure Güvenlik Merkezi Güvenlik Kişisi nasıl ayarlanır:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+**Rehberlik**: Güvenlik Merkezi, her uyarıya katılma sırasını önceliklendirmenize yardımcı olmak için uyarılara önem derecesi atar. böylece, bir kaynak tehlikeye girdiğinde, hemen bu işe başlayabilirsiniz. Önem derecesi, uyarı veren etkinliğin arkasında kötü amaçlı bir amaç olduğunu ve uyarıyı vermek için kullanılan analitik düzeyini, ne kadar güvenli bir güvenlik merkezinin olduğunu temel alır.
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Olay yanıt sisteminize güvenlik uyarıları dahil edin
+### <a name="103-test-security-response-procedures"></a>10,3: test Güvenliği Yanıt yordamları
 
-**Kılavuz**: Sürekli Dışa Aktarma özelliğini kullanarak Azure Güvenlik Merkezi uyarılarınızı ve önerilerinizi dışa aktarın. Sürekli Dışa Aktarma, uyarı ve önerileri el ile veya sürekli olarak dışa aktarmanıza olanak tanır. Sentinel uyarılarını yayınlamak için Azure Güvenlik Merkezi veri konektörünü kullanabilirsiniz.
+**Rehberlik**: sistem olay yanıt yeteneklerini düzenli bir temposunda test etmek için alıştırmaları gerçekleştirin. Zayıf noktaları ve boşlukları belirleyip planı gerektiği şekilde gözden geçirin.
 
-Sürekli dışa aktarma nasıl yapılandırılabilen:https://docs.microsoft.com/azure/security-center/continuous-export
+NıST 'nin yayını: BT planları ve özellikleri için test, eğitim ve alıştırma programlarını inceleyin:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-Uyarıları Azure Sentinel'e nasıl aktarın:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Sorumluluk**: müşteri
 
-**Sorumluluk**: Müşteri
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: güvenlik olaylarına ilişkin iletişim ayrıntılarını sağlayın ve güvenlik olayları için uyarı bildirimleri yapılandırın
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Güvenlik uyarılarına yanıtı otomatikleştirin
+**Rehberlik**: Microsoft Güvenlik Yanıt MERKEZI (MSRC), müşterinin verilerine izinsiz veya yetkisiz bir taraf tarafından erişildiğini belirlerse, Microsoft tarafından sizinle iletişim kurmak için güvenlik olayı iletişim bilgileri kullanılacaktır.  Sorunların çözümlendiğinden emin olmak için gerçesonra olayları gözden geçirin. 
 
-**Yönerge**: Güvenlik uyarıları ve önerileri nde "Logic Apps" aracılığıyla yanıtları otomatik olarak tetiklemek için Azure Güvenlik Merkezi'ndeki İş Akışı Otomasyonu özelliğini kullanın.
+Azure Güvenlik Merkezi güvenlik Ilgili kişisini ayarlama:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-İş Akışı Otomasyonu ve Mantık Uygulamaları nasıl yapılandırılabilen:https://docs.microsoft.com/azure/security-center/workflow-automation
+**Azure Güvenlik Merkezi izleme**: Evet
 
-**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+**Sorumluluk**: müşteri
 
-**Sorumluluk**: Müşteri
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: güvenlik uyarılarını olay yanıt sisteminizle birleştirme
+
+**Rehberlik**: sürekli dışa aktarma özelliğini kullanarak Azure Güvenlik Merkezi uyarılarınızı ve önerilerinizi dışarı aktarın. Sürekli dışa aktarma, uyarıları ve önerileri el ile veya devam eden sürekli bir biçimde dışa aktarmanız sağlar. Uyarılar Sentinel 'i akışa almak için Azure Güvenlik Merkezi veri bağlayıcısını kullanabilirsiniz.
+
+Sürekli dışarı aktarmayı yapılandırma:https://docs.microsoft.com/azure/security-center/continuous-export
+
+Uyarıları Azure Sentinel 'e aktarma:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
+
+**Sorumluluk**: müşteri
+
+### <a name="106-automate-the-response-to-security-alerts"></a>10,6: güvenlik uyarılarına yanıtı otomatikleştirme
+
+**Rehberlik**: güvenlik uyarılarında ve önerilerinde "Logic Apps" aracılığıyla yanıtları otomatik olarak tetiklemek Için Azure Güvenlik Merkezi 'Nde Iş akışı Otomasyonu özelliğini kullanın.
+
+Iş akışı otomasyonunu yapılandırma ve Logic Apps:https://docs.microsoft.com/azure/security-center/workflow-automation
+
+**Azure Güvenlik Merkezi izleme**: uygulanamaz
+
+**Sorumluluk**: müşteri
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Sızma Testleri ve Red Team Alıştırmaları
 
-*Daha fazla bilgi için [Güvenlik Kontrolü: Penetrasyon Testleri ve Kırmızı Takım Egzersizleri'ne](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)bakın.*
+*Daha fazla bilgi için bkz. [güvenlik denetimi: Penetme testleri ve Red ekibi alıştırmaları](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Azure kaynaklarınızı düzenli olarak delme testini gerçekleştirin ve tüm kritik güvenlik bulgularının 60 gün içinde düzeltilmesini sağlayın
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: Azure kaynaklarınızın düzenli olarak sızma testini gerçekleştirin ve 60 gün içinde tüm kritik güvenlik bulgularını düzeltmeye dikkat edin
 
-**Kılavuz**: Penetrasyon Testlerinizin Microsoft ilkelerini ihlal etmediğini sağlamak https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1için lütfen Microsoft Etkileşim Kuralları'nı izleyin: .
-Microsoft'un stratejisi ve Red Teaming ve Microsoft yönetilen bulut altyapısı, hizmetleri ve uygulamalarına karşı canlı site penetrasyon testi nin uygulanması hakkında daha fazla bilgiyi burada bulabilirsiniz:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+**Rehberlik**: Penettim testlerinizin Microsoft ilkelerini ihlal etmediğinden emin olmak Için lütfen Microsoft katılım kurallarını izleyin: https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
+Microsoft 'un yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına yönelik kırmızı ekip oluşturma ve canlı site sızma testini yürütmeye yönelik daha fazla bilgi edinebilirsiniz:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: Müşteri
+**Sorumluluk**: müşteri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure [Güvenlik Kıyaslama'ya](https://docs.microsoft.com/azure/security/benchmarks/overview) bakın
-- [Azure Güvenlik Taban Çizgileri](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Bkz. [Azure Güvenlik kıyaslaması](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- [Azure güvenlik temelleri](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin

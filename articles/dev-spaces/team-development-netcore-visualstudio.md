@@ -9,12 +9,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: Bu öğreticide, Azure Kubernetes hizmetinde .NET Core uygulamasında takım geliştirme yapmak için Azure Dev Spaces ve Visual Studio 'Nun nasıl kullanılacağı gösterilmektedir
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: b4520ce35807fb022fa39ae9b00347a27e192380
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c84c77fe7a425318700903427ff1c4aaa4e73a11
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78245042"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166045"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Azure Dev Spaces ile .NET Core ve Visual Studio kullanarak takım geliştirme
 
@@ -122,7 +122,7 @@ Aşağıda, farklı alanların nasıl çalıştığını anlamanıza yardımcı 
 Azure Dev Spaces’ın bu yerleşik özelliği, her bir geliştiricinin alanlarındaki hizmetlerin tam yığınını yeniden oluşturmasına gerek kalmadan kodu paylaşılan bir ortamda uçtan uca test etmenize olanak sağlar. Bu yönlendirme, bu kılavuzun önceki adımında gösterildiği gibi yayma üst bilgilerinin uygulama kodunuzda iletilmesini gerektirir.
 
 ### <a name="test-code-running-in-the-_devscott_-space"></a>_Geliştirme/Scott_ alanında çalışan test kodu
-*Web ön*ucu ile birlikte yeni *mywebapi* sürümünüzü test etmek için tarayıcınızı *Web ön* ucu için genel erişim noktası URL 'si (örneğin, http://dev.webfrontend.123456abcdef.eus.azds.io) ) açın ve hakkında sayfasına gidin. "Hello from webfrontend and Hello from mywebapi" özgün iletisini görmelisiniz.
+*Web ön*ucu ile birlikte yeni *mywebapi* sürümünüzü test etmek için tarayıcınızı *Web ön* ucu için genel erişim noktası URL 'sine (örneğin, `http://dev.webfrontend.123456abcdef.eus.azds.io`) açın ve hakkında sayfasına gidin. "Hello from webfrontend and Hello from mywebapi" özgün iletisini görmelisiniz.
 
 Şimdi de http\://Scott.s.dev.webfrontend.123456abcdef.EUS.azds.io gibi bir şeyi okuyup tarayıcıyı YENILEMEK için URL 'nin bir parçası. *Mywebapi* projenizde ayarladığınız kesme noktasına isabet almalısınız. Devam etmek için F5’e tıkladığınızda tarayıcınızda yeni "Hello from webfrontend and mywebapi now says something new." iletisini artık görmeniz gerekir. Bunun nedeni, *mywebapi* içindeki güncelleştirilmiş kodunuzun yolunun _dev/Scott_ alanında çalışıyor olmasından kaynaklanır.
 

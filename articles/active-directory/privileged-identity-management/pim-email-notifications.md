@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 01/05/2019
+ms.date: 04/21/2020
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee5f2edbae28276f8485ae774a5b1c52e1af2fd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 201abd24bc4056337f1ffecd2dabd002ae352c74
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72756394"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866429"
 ---
 # <a name="email-notifications-in-pim"></a>PIM'deki e-posta bildirimleri
 
@@ -76,6 +76,18 @@ E-posta dört kutucuk içerir:
 | **PIM dışındaki rol atamaları** | Kullanıcılara Ayrıcalıklı Kimlik Yönetimi dışında (Azure AD içinde) kalıcı bir rol atananma sayısı. |
 
 **En iyi roller bölümünüze genel bakış,** her rol için toplam kalıcı ve uygun yönetici sayısına bağlı olarak kiracınızdaki en iyi beş rolü listeler. **Eyleme Geç** bağlantısı, kalıcı yöneticileri toplu olarak uygun yöneticilere dönüştürebileceğiniz [PIM sihirbazını](pim-security-wizard.md) açar.
+
+## <a name="email-timing-for-activation-approvals"></a>Etkinleştirme onayları için e-posta zamanlaması
+
+Kullanıcılar rollerini etkinleştirdiğinde ve rol ayarı onay gerektiriyorsa, onaylayanlar her onay için üç e-posta alır:
+
+- Kullanıcının etkinleştirme isteğini onaylama veya reddetme isteği (istek onay motoru tarafından gönderilir)
+- Kullanıcının isteği onaylanır (istek onay motoru tarafından gönderilir)
+- Kullanıcının rolü etkinleştirilir (Ayrıcalıklı Kimlik Yönetimi tarafından gönderilir)
+
+İstek onay motoru tarafından gönderilen ilk iki e-posta gecikebilir. Şu anda, e-postaların% 90 üç ila on dakika sürer, ama% 1 müşteriler için çok daha uzun olabilir, on beş dakikakadar.
+
+İlk e-posta gönderilmeden önce Azure portalında bir onay isteği onaylanırsa, ilk e-posta artık tetiklenmez ve diğer onaylayanlar onay isteğinin e-postayoluyla bildirilmez. Onlar bir e-posta alamadım ama beklenen davranış gibi görünebilir.
 
 ## <a name="pim-emails-for-azure-resource-roles"></a>Azure kaynak rolleri için PIM e-postaları
 

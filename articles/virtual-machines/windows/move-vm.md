@@ -1,24 +1,18 @@
 ---
 title: Azure'da windows vm kaynağını taşıma
 description: Kaynak Yöneticisi dağıtım modelinde bir Windows VM'yi başka bir Azure aboneliğine veya kaynak grubuna taşıyın.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/03/2019
 ms.author: cynthn
-ms.openlocfilehash: ed29c92d20a6b0d749ec44a22f42ec446ec58650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c3f5541405d1fd983bbf988b99d2b4e10d8908c
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919575"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865654"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Bir Windows sanal makinesini başka bir Azure aboneliğine veya kaynak grubuna taşıma
 Bu makalede, kaynak grupları veya abonelikler arasında bir Windows sanal makine (VM) taşımak için nasıl size yol. Kişisel bir abonelikte bir VM oluşturduysanız ve şimdi işinize devam etmek için şirketinizin aboneliğine taşımak istiyorsanız, abonelikler arasında taşıma kullanışlı olabilir. Taşımak için VM'yi başlatmanız gerekmez ve taşıma sırasında çalışmaya devam etmelidir.

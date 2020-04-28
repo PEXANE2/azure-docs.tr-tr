@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 9f14521c15c3497bed4ffbeba44cb5d78ee4df7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.openlocfilehash: aa3617b30fe1ef9b4d4a6c5fe5aac51bff95bb92
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74047978"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866685"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Azure Uygulama Ağ Geçidi oturumu afinite sorunları
 
@@ -22,7 +22,7 @@ Azure Application Gateway ile oturum afinite sorunlarını nasıl tanılayıp ç
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 Tanımlama bilgilerine dayalı oturum benzeşimi özelliği, bir kullanıcı oturumunu aynı sunucuda tutmak istediğinizde kullanışlıdır. Ağ geçidi ile yönetilen tanımlama bilgilerini kullanan Application Gateway, sonraki trafiği işleme amacıyla bir kullanıcı oturumundan aynı sunucuya yönlendirebilir. Bu, oturum durumunun bir kullanıcı oturumuna ait sunucuya yerel olarak kaydedildiği durumlarda önemlidir.
 
@@ -83,7 +83,7 @@ Bu sorunu tanımlamak için yönergeleri izleyin:
     **İpucu** Fiddler'ı nasıl kullanacağınızı bilmiyorsanız, alttaki **"Ağ trafiğini toplamak ve web hata ayıklayıcısını kullanarak analiz etmek istiyorum"** seçeneğini işaretleyin.
 
 2. İstemci tarafından sağlanan tanımlama bilgilerinin ARRAffinity ayrıntılarına sahip olup olmadığını belirlemek için oturum günlüklerini kontrol edin ve analiz edin. Çerez kümesiiçinde "**ARRAffinity=** *ARRAffinityValue*" gibi ARRAffinity ayrıntılarını bulamazsanız, istemci Ninder çerezi ile yanıtlamadığı anlamına gelir, bu uygulama ağ geçidi tarafından sağlanan.
-    Örnek:
+    Örneğin:
 
     ![sorun giderme-oturum-yakınlık-sorunlar-3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
@@ -97,7 +97,7 @@ Bu sorun, Internet Explorer ve diğer tarayıcıların çerezi kısa bir ad URL'
 
 #### <a name="resolution"></a>Çözüm
 
-Bu sorunu gidermek için Application Gateway'e FQDN kullanarak erişmeniz gerekir. Örneğin, kullanın [http://website.com](https://website.com/) [http://appgw.website.com](http://appgw.website.com/) veya .
+Bu sorunu gidermek için Application Gateway'e FQDN kullanarak erişmeniz gerekir. Örneğin, kullanın [http://website.com](https://website.com/) [http://appgw.website.com](http://website.com/) veya .
 
 ## <a name="additional-logs-to-troubleshoot"></a>Sorun gidermek için ek günlükler
 

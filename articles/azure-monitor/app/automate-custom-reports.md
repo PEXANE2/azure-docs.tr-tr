@@ -4,41 +4,41 @@ description: Azure Application Insights verileriyle özel günlük/haftalık/ayl
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: d91595a863901fcc420611ac644c7856e74320dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf251d63645efc70ee93e84827db47ae3055ae33
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77655132"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82161524"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights verileriyle özel raporları otomatikleştirin
 
-Süreli raporlar, bir ekibin iş açısından kritik hizmetlerinin nasıl olduğu konusunda bilgi sahibi tutulmasına yardımcı olur. Geliştiriciler, DevOps/SRE ekipleri ve yöneticileri, herkesin portalda oturum açmasına gerek kalmadan güvenilir bir şekilde öngörüler sunan otomatik raporlarla üretken olabilir. Bu tür raporlar, gecikme, yükleme veya arıza oranlarındaki ve herhangi bir uyarı kuralını tetiklemeyebilecek kademeli artışların belirlenmesine de yardımcı olabilir.
+Süreli raporlar, iş açısından kritik hizmetlerinin nasıl yaptığına dair bir ekibin bilgilendirilmesi konusunda yardımcı olur. Geliştiriciler, DevOps/SRE takımları ve yöneticileri, herkesin portalda oturum açmalarına gerek kalmadan öngörüleri güvenilir bir şekilde sunmanın yanı sıra otomatik raporlarla üretken olabilirler. Bu tür raporlar Ayrıca gecikme süreleri, yük veya hata ücretleriyle ilgili herhangi bir uyarı kuralını tetiklemeyen dereceli artışları belirlemenize yardımcı olabilir.
 
-Her işletmenin benzersiz raporlama ihtiyaçları vardır, örneğin: 
+Her kuruluşun benzersiz raporlama ihtiyaçları vardır, örneğin:
 
-* Bir raporda ölçümlerin veya özel ölçümlerin belirli yüzdelik toplamları.
-* Farklı hedef kitleler için günlük, haftalık ve aylık veri toplama ları için farklı raporlara sahip olun.
-* Bölge veya ortam gibi özel özniteliklere göre segmentasyon. 
-* Farklı aboneliklerde veya kaynak gruplarında olsalar bile, bazı AI kaynaklarını tek bir raporda gruplayın.
-* Seçici hedef kitleye gönderilen hassas ölçümleri içeren ayrı raporlar.
+* Belirli yüzdelik ölçüm toplamaları veya bir rapordaki özel ölçümler.
+* Farklı kitlelere yönelik günlük, haftalık ve aylık veri rultaları için farklı raporlara sahip olmak.
+* Bölge veya ortam gibi özel özniteliklere göre segmentleme.
+* Farklı aboneliklerde veya kaynak gruplarında olsalar dahi, bazı AI kaynaklarını tek bir raporda gruplandırabilirsiniz.
+* Seçmeli kitlelere gönderilen gizli ölçümleri içeren raporları ayırın.
 * Portal kaynaklarına erişimi olmayan hissedarlara raporlar.
 
 > [!NOTE] 
-> Haftalık Application Insights sindirmek e-posta herhangi bir özelleştirme izin vermedi ve aşağıda listelenen özel seçenekler lehine kesilecektir. Son haftalık özet e-posta 11 Haziran 2018 tarihinde gönderilecektir. Benzer özel raporlar almak için lütfen aşağıdaki seçeneklerden birini yapılandırın (aşağıda önerilen sorguyu kullanın).
+> Haftalık Application Insights Özet e-postası hiçbir özelleştirmeye izin vermedi ve aşağıda listelenen özel seçeneklerin yararına kullanımdan kaldırılacaktır. Son haftalık özet e-postası 11 Haziran 2018 tarihinde gönderilir. Benzer özel raporlar almak için lütfen aşağıdaki seçeneklerden birini yapılandırın (aşağıda önerilen sorguyu kullanın).
 
 ## <a name="to-automate-custom-report-emails"></a>Özel rapor e-postalarını otomatikleştirmek için
 
-Programda özel raporlar oluşturmak için Uygulama Öngörüleri verilerini [programlı olarak](https://dev.applicationinsights.io/) sorgulayabilirsiniz. Aşağıdaki seçenekler hızlı bir şekilde başlamanıza yardımcı olabilir:
+Bir zamanlamaya göre özel raporlar oluşturmak için [programlı olarak Application Insights verileri sorgulayabilirsiniz](https://dev.applicationinsights.io/) . Aşağıdaki seçenekler hızla başlamanıza yardımcı olabilir:
 
-* [Microsoft Flow ile raporları otomatikleştirin](automate-with-flow.md)
-* [Logic Apps ile raporları otomatikleştirin](automate-with-logic-apps.md)
-* İzleme senaryosunda "Uygulama Öngörüleri zamanlanmış özet" [Azure işlev](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) şablonunu kullanın. Bu işlev, e-postayı teslim etmek için SendGrid'i kullanır. 
+* [Raporları Microsoft Flow otomatikleştirin](automate-with-flow.md)
+* [Raporları Logic Apps otomatikleştirin](automate-with-logic-apps.md)
+* Izleme senaryosundaki "Application Insights zamanlanmış Özet" [Azure işlev](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) şablonunu kullanın. Bu işlev, e-postayı teslim etmek için SendGrid kullanır. 
 
     ![Azure işlev şablonu](./media/automate-custom-reports/azure-function-template.png)
 
-## <a name="sample-query-for-a-weekly-digest-email"></a>Haftalık özet e-posta için örnek sorgu
-Aşağıdaki sorgu, rapor gibi haftalık özet e-posta için birden çok veri kümesi arasında birleşiyi gösterir. Gerektiği gibi özelleştirin ve haftalık raporu otomatikleştirmek için yukarıda listelenen seçeneklerden herhangi biriyle kullanın.   
+## <a name="sample-query-for-a-weekly-digest-email"></a>Haftalık Özet e-postası için örnek sorgu
+Aşağıdaki sorguda, bir haftalık özet e-postası için rapor gibi birden çok veri kümesi arasında katılım gösterilmektedir. Bunu gerektiği gibi özelleştirin ve bir haftalık raporu otomatik hale getirmek için yukarıda listelenen seçeneklerden herhangi biriyle kullanın.
 
 ```AIQL
 let period=7d;
@@ -68,95 +68,89 @@ availabilityResults
 | project TotalRequests, FailedRequests, RequestsDuration, TotalDependencies, FailedDependencies, DependenciesDuration, TotalViews, TotalExceptions, OverallAvailability, AvailabilityDuration
 ```
 
-## <a name="application-insights-scheduled-digest-report"></a>Uygulama Öngörüleri zamanlanmış özet raporu
+## <a name="application-insights-scheduled-digest-report"></a>Application Insights zamanlanmış özet raporu
 
-1. Azure portalından Kaynak > **İşlem** > **İşlevi Uygulaması** **Oluştur'u**seçin.
+1. Azure İşlev Uygulaması oluşturun. (Application Insights _üzerinde_ yalnızca yeni işlev uygulaması Application Insights ile izlemek istiyorsanız gereklidir)
 
-   ![Azure Kaynak İşlevi Uygulaması ekran görüntüsü oluşturma](./media/automate-custom-reports/function-app-01.png)
+   [İşlev uygulaması oluşturmayı](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) öğrenmek Için Azure işlevleri belgelerini ziyaret edin
 
-2. Uygulamanız için uygun bilgileri girin ve _Oluştur'u_seçin. (Uygulama Öngörüleri _Yalnızca_ Yeni İşlev Uygulama uygulamanızı Uygulama Öngörüleri ile izlemek istiyorsanız gereklidir)
+2. Yeni İşlev Uygulaması dağıtımı tamamladıktan sonra **Kaynağa Git**' i seçin.
 
-   ![Azure Kaynak İşlevi Uygulama Ayarları ekran görüntüsü oluşturma](./media/automate-custom-reports/function-app-02.png)
+3. **Yeni işlev**' ı seçin.
 
-3. Yeni İşlev Uygulamanız dağıtımı tamamladıktan sonra **kaynağa git'i**seçin.
+   ![Yeni bir Işlev ekran görüntüsü oluştur](./media/automate-custom-reports/new-function.png)
 
-4. **Yeni işlevi**seçin.
-
-   ![Yeni bir İşlev ekran görüntüsü oluşturma](./media/automate-custom-reports/function-app-03.png)
-
-5. Uygulama **_Öngörüleri zamanlanmış özet şablonuna_** seçin.
+4. **_Application Insights zamanlanmış Özet şablonunu_** seçin.
 
      > [!NOTE]
-     > Varsayılan olarak, işlev uygulamaları runtime sürüm 2.x ile oluşturulur. Application Insights zamanlanmış özet şablonunu kullanmak için [Azure İşlevleri çalışma zamanı sürüm](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1.x'i** hedeflemeniz gerekir.  ![runtime ekran görüntüsü](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
+     > Varsayılan olarak, işlev uygulamaları çalışma zamanı sürüm 3. x ile oluşturulur. Application Insights zamanlanmış Özet şablonunu kullanmak için [Azure işlevleri çalışma zamanı sürüm](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1. x ' i** hedeflemelidir. Çalışma zamanı sürümünü değiştirmek için yapılandırma > Işlev çalışma zamanı ayarları ' na gidin. ![çalışma zamanı ekran görüntüsü](./media/automate-custom-reports/change-runtime-v.png)
 
+   ![Yeni Işlev Application Insights şablonu ekran görüntüsü](./media/automate-custom-reports/function-app-04.png)
 
+5. Raporunuz için uygun bir alıcı e-posta adresi girin ve **Oluştur**' u seçin.
 
-   ![Yeni Fonksiyon Uygulama Öngörüleri Şablonu ekran görüntüsü](./media/automate-custom-reports/function-app-04.png)
+   ![İşlev ayarları ekran görüntüsü](./media/automate-custom-reports/scheduled-digest.png)
 
-6. Raporunuz için uygun bir alıcı e-posta adresi girin ve **Oluştur'u**seçin.
+6. **İşlev uygulaması** > **platform özellikleri** > **yapılandırmanızı**seçin.
 
-   ![İşlev Ayarları ekran görüntüsü](./media/automate-custom-reports/function-app-05.png)
+    ![Azure Işlevi uygulama ayarları ekran görüntüsü](./media/automate-custom-reports/config.png)
 
-7. **İşlev Uygulama** > **Platformu özellikleri** > **uygulama ayarlarınızı**seçin.
+7. Karşılık gelen uygun değerlerle ``AI_APP_ID`` ``AI_APP_KEY``üç yeni uygulama ayarı oluşturun, ve. ``SendGridAPI`` **Kaydet**’i seçin.
 
-    ![Azure İşlevi Uygulama ayarları ekran görüntüsü](./media/automate-custom-reports/function-app-07.png)
-
-8. Uygun karşılık gelen değerlere ``AI_APP_ID`` ``AI_APP_KEY``sahip üç ``SendGridAPI``yeni uygulama ayarı oluşturun ve . **Kaydet'i**seçin.
-
-     ![Fonksiyon tümleştirme arabirimi ekran görüntüsü](./media/automate-custom-reports/function-app-08.png)
+     ![İşlev tümleştirme arabirimi ekran görüntüsü](./media/automate-custom-reports/app-settings.png)
     
-    (AI_ değerleri, rapor vermek istediğiniz Uygulama Öngörüleri Kaynağı için API Erişimi altında bulunabilir. Uygulama Öngörüleri API Anahtarınız yoksa, **API Anahtarı oluşturma**seçeneği vardır .)
+    (AI_ değerleri, raporlamak istediğiniz Application Insights kaynak için API erişimi altında bulunabilir. Application Insights API anahtarınız yoksa, **API anahtarı oluşturma**seçeneği vardır.)
     
-   * AI_APP_ID = Başvuru Kimliği
-   * AI_APP_KEY = API Anahtarı
-   * SendGridAPI =SendGrid API Anahtarı
+   * AI_APP_ID = uygulama KIMLIĞI
+   * AI_APP_KEY = API anahtarı
+   * SendGridAPI = SendGrid API anahtarı
 
      > [!NOTE]
-     > SendGrid hesabınız yoksa bir hesap oluşturabilirsiniz. SendGrid'in Azure İşlevleri için belgeleri [burada.](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid) Yalnızca SendGrid kurulumu ve bir API anahtarı oluşturmak için nasıl en az bir açıklama istiyorsanız bu makalenin sonunda sağlanır. 
+     > SendGrid hesabınız yoksa, bir tane oluşturabilirsiniz. Azure Işlevleri için SendGrid 'in belgeleri [burada](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Yalnızca SendGrid 'i ayarlama ve bir API anahtarı oluşturma konusunda en az bir açıklama istiyorsanız bu makalenin sonunda verilmiştir. 
 
-9. **Tümleştir'i** seçin ve Çıktılar altında **SendGrid'i tıklatın ($return)**.
+8. **Tümleştirme** ' i seçin ve çıktılar altında **sendgrid ($Return)** öğesine tıklayın.
 
-     ![Çıkış ekran görüntüsü](./media/automate-custom-reports/function-app-09.png)
+     ![Çıkış ekran görüntüsü](./media/automate-custom-reports/integrate.png)
 
-10. **SendGridAPI Anahtar Uygulaması Ayarı**altında, **SendGridAPI**için yeni oluşturduğunuz Uygulama Ayarını seçin.
+9. **SendGridAPI anahtar uygulaması ayarı**altında, **SendGridAPI**Için yeni oluşturduğunuz uygulama ayarınızı seçin.
 
-     ![İşlev Uygulaması ekran görüntüsünü çalıştır](./media/automate-custom-reports/function-app-010.png)
+     ![İşlev Uygulaması ekran görüntüsü Çalıştır](./media/automate-custom-reports/sendgrid-output.png)
 
-11. İşlev Uygulamanızı çalıştırın ve test edin.
+10. İşlev Uygulaması çalıştırın ve test edin.
 
-     ![Test Ekran Görüntüsü](./media/automate-custom-reports/function-app-11.png)
+     ![Test ekran görüntüsü](./media/automate-custom-reports/function-app-11.png)
 
-12. İletinin başarılı bir şekilde gönderildiğini/alındığını doğrulamak için e-postanızı kontrol edin.
+11. İletinin gönderildiğini/başarıyla alındığını onaylamak için e-postanızı kontrol edin.
 
      ![E-posta konu satırı ekran görüntüsü](./media/automate-custom-reports/function-app-12.png)
 
 ## <a name="sendgrid-with-azure"></a>Azure ile SendGrid
 
-Bu adımlar yalnızca zaten yapılandırılmış bir SendGrid hesabınız yoksa geçerlidir.
+Bu adımlar yalnızca önceden yapılandırılmış bir SendGrid hesabınız yoksa geçerlidir.
 
-1. Azure portalından **SendGrid E-posta Teslimi** için **kaynak araması oluşturma** > > **Oluştur'u** tıklatın ve SendGrid'e özgü oluşturma yönergelerini doldurun' u seçin. 
+1. Azure portal **kaynak oluştur** ' u seçin > **SendGrid e-posta teslimi** Için arama yapın > **Oluştur** ' a tıklayın > SendGrid 'e özgü oluşturma yönergelerini doldurun.
 
-     ![SendGrid Kaynak Ekran Görüntüsü Oluşturma](./media/automate-custom-reports/function-app-13.png)
+     ![SendGrid kaynağı oluştur ekran görüntüsü](./media/automate-custom-reports/sendgrid.png)
 
-2. SendGrid Hesapları altında oluşturulduktan sonra **Yönet'i**seçin.
+2. SendGrid hesapları altında oluşturulduktan sonra **Yönet**' i seçin.
 
-     ![Ayarlar API Anahtar Ekran Görüntüsü](./media/automate-custom-reports/function-app-14.png)
+     ![Ayarlar API anahtarı ekran görüntüsü](./media/automate-custom-reports/sendgrid-manage.png)
 
-3. Bu SendGrid'in sitesini başlatacak. **Ayarlar** > **API Tuşlarını**seçin.
+3. Bu, SendGrid 'in sitesini başlatacaktır. **Ayarlar** > **API anahtarları**' nı seçin.
 
-     ![API Anahtar Uygulaması Ekran Görüntüsü Oluşturma ve Görüntüleme](./media/automate-custom-reports/function-app-15.png)
+     ![API anahtarı uygulaması oluşturma ve görüntüleme ekran görüntüsü](./media/automate-custom-reports/function-app-15.png)
 
-4. API Anahtarı > **& Görünümü Oluştur'u** seçin (API Anahtarınız için hangi izin düzeyinin uygun olduğunu belirlemek için lütfen SendGrid'in kısıtlı erişimle ilgili belgelerini gözden geçirin. Tam Erişim burada yalnızca amaçlar için seçilir.)
+4. Bir API anahtarı oluşturun > **& görünümü oluştur**' a tıklayın. (API anahtarınıza uygun izin düzeyini belirlemek için, kısıtlı erişimle SendGrid 'in belgelerini gözden geçirin. Tam erişim burada yalnızca örnek amaçlıdır.)
 
    ![Tam erişim ekran görüntüsü](./media/automate-custom-reports/function-app-16.png)
 
-5. Anahtarın tamamını kopyalayın, Bu değer, İşlev Uygulaması ayarlarınızda ihtiyacınız olan şeydir, SendGridAPI'nin değeri olarak
+5. Tüm anahtarı kopyalayın, bu değer İşlev Uygulaması ayarlarınızda, SendGridAPI için değer olarak ihtiyaç duyduğunuz şeydir.
 
-   ![API anahtar ekran görüntüsünü kopyalama](./media/automate-custom-reports/function-app-17.png)
+   ![API anahtarını Kopyala ekran görüntüsü](./media/automate-custom-reports/function-app-17.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Analytics sorguları](../../azure-monitor/log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
-* [Uygulama Öngörüleri verilerini programlı olarak sorgulama](https://dev.applicationinsights.io/) hakkında daha fazla bilgi edinin
+* [Analiz sorguları](../../azure-monitor/log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
+* [Application Insights verileri programlı](https://dev.applicationinsights.io/) bir şekilde sorgulama hakkında daha fazla bilgi edinin
 * [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) hakkında daha fazla bilgi edinin.
 * [Microsoft Flow](https://ms.flow.microsoft.com)hakkında daha fazla bilgi edinin.

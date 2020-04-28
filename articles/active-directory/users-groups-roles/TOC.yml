@@ -18,7 +18,7 @@
       href: groups-quickstart-naming-policy.md
 - name: Öğreticiler
   items:
-    - name: Dinamik olarak doldurulan grup oluşturma
+    - name: Dinamik grup oluşturma
       href: groups-dynamic-tutorial.md
 - name: Kavramlar
   expanded: true
@@ -40,21 +40,23 @@
       items:
         - name: Kullanıcı oluşturma
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Kullanıcıları toplu oluşturma (önizleme)
+        - name: Kullanıcıları toplu oluşturma
           href: users-bulk-add.md
         - name: Kullanıcı profillerini yönetme
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Kullanıcı bilgilerini indirme (önizleme)
+        - name: Personelim temsilcisi
+          href: my-staff-configure.md
+        - name: Kullanıcı bilgilerini indirme
           href: users-bulk-download.md
         - name: Kullanıcı hesaplarını paylaşma
           href: users-sharing-accounts.md
         - name: Kullanıcıları yönetici rollerine atama
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Kullanıcıları toplu silme (önizleme)
+        - name: Kullanıcıları toplu silme
           href: users-bulk-delete.md
         - name: Silinen bir kullanıcıyı geri yükleme
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Kullanıcıları toplu geri yükleme (önizleme)
+        - name: Kullanıcıları toplu geri yükleme
           href: users-bulk-restore.md
         - name: Yönetilmeyen dizinde hesap oluşturma
           href: users-close-account.md
@@ -82,42 +84,18 @@
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Grupları yönetme
       items:
-        - name: Grup ve üye listelerinde arama yapma (önizleme)
-          href: groups-members-owners-search.md
+        - name: Azure AD gruplarıyla erişimi yönetme
+          href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Grup oluşturma (Azure portalı)
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Duyarlılık etiketleri atama (önizleme)
-          href: groups-assign-sensitivity-labels.md
         - name: Grupları Graph için Azure AD PowerShell (v2) ile yönetme
           href: groups-settings-v2-cmdlets.md
-        - name: Grupları PowerShell MSOnline ile yönetme
+        - name: PowerShell MSOnline ile grupları yönetme
           href: groups-settings-cmdlets.md
+        - name: Grup ve üye listelerinde arama yapma
+          href: groups-members-owners-search.md
         - name: Grup üyesi ekleme veya kaldırma
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Üyeleri toplu ekleme (önizleme)
-          href: groups-bulk-import-members.md
-        - name: Üyeleri toplu kaldırma (önizleme)
-          href: groups-bulk-remove-members.md
-        - name: Üye listesini toplu indirme (önizleme)
-          href: groups-bulk-download-members.md
-        - name: Grup sahiplerini yönetme
-          href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Grup listesini toplu indirme (önizleme)
-          href: groups-bulk-download.md
-        - name: Grupları gruplar ile yönetme
-          href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: SaaS uygulamalarına grup erişimi ekleme
-          href: groups-saasapps.md
-        - name: Grup adlandırma başvurusu
-          href: groups-naming-policy.md
-        - name: Gruplarda süre sonu başvurusu
-          href: groups-lifecycle.md
-        - name: Silinen grupları geri yükleme
-          href: groups-restore-deleted.md
-        - name: Grup ayarlarını yönetme
-          href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Grup self servisi kurma
-          href: groups-self-service-management.md
         - name: Dinamik gruplar
           items:
             - name: Dinamik grup oluşturma
@@ -128,6 +106,32 @@
               href: groups-dynamic-rule-validation.md
             - name: Grup üyeliği türünü değiştirme
               href: groups-change-type.md
+        - name: Üyeleri toplu ekleme
+          href: groups-bulk-import-members.md
+        - name: Üyeleri toplu kaldırma
+          href: groups-bulk-remove-members.md
+        - name: Üye listesini toplu indirme
+          href: groups-bulk-download-members.md
+        - name: Grup listesini toplu indirme
+          href: groups-bulk-download.md
+        - name: Silinen grupları geri yükleme
+          href: groups-restore-deleted.md
+        - name: Grup ayarlarını yönetme
+          href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Grup sahiplerini yönetme
+          href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Grupları gruplar ile yönetme
+          href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: SaaS uygulamalarına grup erişimi ekleme
+          href: groups-saasapps.md
+        - name: Grup adlandırma ilkesi ayarlama
+          href: groups-naming-policy.md
+        - name: Grup süre sonu ilkesi ayarlama
+          href: groups-lifecycle.md
+        - name: Grup self servisi kurma
+          href: groups-self-service-management.md
+        - name: Duyarlılık etiketleri atama
+          href: groups-assign-sensitivity-labels.md
     - name: Lisans atama
       items:
         - name: Bir gruba lisans atama
@@ -145,14 +149,15 @@
         - name: Lisanslama için hizmet planı kimlikleri
           href: licensing-service-plan-reference.md
     - name: Azure AD yönetici rolleri
+      expanded: true
       items:
         - name: Roller ve izinler
           href: directory-assign-admin-roles.md
         - name: Rolleri görüntüleme ve atama
           href: directory-manage-roles-portal.md
-        - name: Özel roller önizlemesi
+        - name: Özel rol
           items:
-            - name: Özel roller önizlemesi
+            - name: Özel rol
               href: roles-custom-overview.md
             - name: Özel rol oluştur
               href: roles-create-custom.md
@@ -162,7 +167,7 @@
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
             - name: PowerShell'de özel roller atama
               href: roles-assign-powershell.md
-            - name: Özel rol önizleme izinleri
+            - name: Özel rol izinleri
               href: roles-custom-available-permissions.md
             - name: Uygulama yöneticisi izinlerine temsilci seçme
               href: roles-delegate-app-roles.md
@@ -176,8 +181,20 @@
               href: directory-admin-roles-secure.md
             - name: Acil durum hesabı oluşturma
               href: directory-emergency-access.md
-        - name: Yönetim birimleri
-          href: directory-administrative-units.md
+        - name: Yönetim birimi
+          items:
+            - name: Yönetim birimlerine genel bakış
+              href: directory-administrative-units.md
+            - name: AU’ları ekleme ve yönetme
+              href: roles-admin-units-manage.md
+            - name: AU’larda kullanıcıları ekleme ve yönetme
+              href: roles-admin-units-add-manage-users.md
+            - name: AU’larda grupları ekleme ve yönetme
+              href: roles-admin-units-add-manage-groups.md
+            - name: AU kapsamıyla rol atama
+              href: roles-admin-units-assign-roles.md
+            - name: SSS ve sorun giderme
+              href: roles-admin-units-faq-troubleshoot.md
     - name: Oturum açmayı yönetme
       items:
         - name: Şirket markası özelleştirme

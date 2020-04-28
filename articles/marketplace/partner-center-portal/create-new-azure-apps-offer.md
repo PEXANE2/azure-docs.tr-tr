@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: a62551b31c51836dfa50534ee6db907c8a4e111a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 516ebce176f53a0495ea493f5327658162e7ea9e
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730612"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867276"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -221,6 +221,9 @@ Destek **iletişim** bölümünde, CSP iş ortaklarının teklifiniz için deste
 
 Bu bölümde, teklifinizi müşteriye gösterirken kullanılacak logolar ve resimler sağlayabilirsiniz. Tüm görüntüler .png formatında olmalıdır.
 
+>[!Note]
+>Dosya yükleme sorunu yaşıyorsanız, yerel ağınızın İş Ortağı https://upload.xboxlive.com Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
+
 #### <a name="store-logos"></a>Mağaza logoları
 
 Teklifinizin logosunu üç boyutta sağlayın: **Küçük (48 x 48)**, **Orta (90 X 90)** ve **Büyük (216 x 216).**
@@ -355,7 +358,7 @@ Planınız için fiyatları Abd Doları (USD) olarak belirlediyseniz ve başka b
 
 Bu plan için aylık fiyatı sağlayın.  Bu fiyat, bu çözüm tarafından dağıtılan kaynaklartarafından tahakkuk ettirilen herhangi bir Azure altyapısına veya istediğiniz kadar öde yazılım maliyetlerine ek olarak sunulur.
 
-Yerel para birimi cinsinden belirlenen fiyatlar (USD = Abd Doları) kurulum sırasında mevcut mevcut döviz kurları kullanılarak seçilen tüm piyasaların yerel para birimine dönüştürülür. Fiyatlandırma elektronik tablosunu dışa aktararak ve her pazardaki fiyatı gözden geçirerek yayımlamadan önce bu fiyatları doğrulayın. Özel fiyatları tek bir pazarda ayarlamak istiyorsanız, fiyatlandırma elektronik tablosunu değiştirin ve içe aktarın. 
+USD cinsinden belirlenen fiyatlar (USD = Abd Doları) kaydedildiğinde geçerli döviz kurları kullanılarak seçilen tüm piyasaların yerel para birimine dönüştürülür. Fiyatlandırma elektronik tablosunu dışa aktararak ve her pazardaki fiyatı gözden geçirerek yayımlamadan önce bu fiyatları doğrulayın. Özel fiyatları tek bir pazarda ayarlamak istiyorsanız, fiyatlandırma elektronik tablosunu değiştirin ve içe aktarın. 
 
 >[!Note]
 >Fiyatlandırma verilerinin dışa aktarılmasını etkinleştirmek için öncelikle fiyatlandırma değişikliklerinizi kaydetmeniz gerekir.
@@ -397,7 +400,16 @@ Tüm Azure uygulama planı paketleri, bu iki dosyayı bir `.zip` arşivin kök k
 
 * [createUiDefinition.json](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)adlı Azure uygulama oluşturma deneyimi için kullanıcı arabirimi tanımı.
 
+Desteklenen maksimum dosya boyutları şunlardır:
+
+* Toplam sıkıştırılmış `.zip` arşiv boyutunda 1 Gb'a kadar
+
+* Arşivdeki herhangi bir sıkıştırılmamış dosya için `.zip` 1 Gb'a kadar  
+
 Tüm yeni Azure uygulama teklifleri, Azure [iş ortağı müşteri kullanımı atıf GUID'i](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution) de içermelidir.
+
+>[!Note]
+>Dosya yükleme sorunu yaşıyorsanız, yerel ağınızın İş Ortağı https://upload.xboxlive.com Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 ### <a name="previously-published-packages"></a>Daha önce yayınlanmış paketler 
 

@@ -1,25 +1,19 @@
 ---
 title: PowerShell ile Kaynak Yöneticisine geçiş
 description: Bu makale, Azure PowerShell komutlarını kullanarak sanal makineler (VM'ler), sanal ağlar ve klasikten Azure Kaynak Yöneticisi'ne depolama hesapları gibi IaaS kaynaklarının platform destekli geçişinden geçer
-services: virtual-machines-windows
-documentationcenter: ''
 author: tanmaygore
 manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 2b3dff9b-2e99-4556-acc5-d75ef234af9c
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 12a77c4c21a26f1ec52bb3ffdc312df56d3c4537
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 314d7a4725709f00ba5cdbf54595857502bc5805
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249977"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865955"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>PowerShell'i kullanarak IaaS kaynaklarını klasikten Azure Kaynak Yöneticisi'ne geçirin
 
@@ -60,7 +54,7 @@ Yükleme yönergeleri için [Azure PowerShell'in nasıl yüklenir ve yapılandı
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>Adım 3: Abonelik için yönetici olduğunuzdan emin olun
 Bu geçişi gerçekleştirmek için, [Azure portalındaki](https://portal.azure.com)abonelik için yardımcı yönetici olarak eklenmeniz gerekir.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Hub** menüsünde **Abonelik'i**seçin. Görmüyorsanız, **Tüm hizmetler'i**seçin.
 3. Uygun abonelik girişini bulun ve ardından **MY ROLE** alanına bakın. Bir yardımcı yönetici için değer _Hesap yöneticisi_olmalıdır.
 

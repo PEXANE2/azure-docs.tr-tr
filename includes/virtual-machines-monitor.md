@@ -1,19 +1,21 @@
 ---
+title: include dosyası
+description: include dosyası
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 09/30/2019
 ms.author: cynthn
-ms.openlocfilehash: fbc6889507e58c4721597a1108337fcb1f8756a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: feea9696316723a2750be6fc1e13001224320324
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75751582"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865622"
 ---
 Azure'da barındırılan VM'lerin önemli ölçüde büyümesiyle, destekledikleri uygulamaları ve altyapı hizmetlerini etkileyen performans ve sistem durumu sorunlarını belirlemek önemlidir. Temel izleme, ana bilgisayar hipervizörü tarafından toplanan metrik cpu kullanımı, disk kullanımı, bellek kullanımı ve ağ trafiği tarafından Varsayılan olarak Azure ile teslim edilir. Ek metrik ve günlük verileri, konuk işletim sisteminden VM'lerinizdeki tanılamaları yapılandırmak için [uzantılar](../articles/virtual-machines/windows/extensions-features.md) kullanılarak toplanabilir.
 
-Azure Monitor, vm'ler için çalışan konuk işletim sistemi ,.NET tabanlı veya Java web uygulama bileşenleriyle performans ve sistem durumu sorunlarını algılamak ve tanılamaya yardımcı olmak için, VM'ler için Azure Monitor gibi kapsamlı özelliklerle merkezi leştirilmiş izleme sağlar ve Uygulama Öngörüleri.
+Azure Monitor, vm'ler ve Uygulama Öngörüleri için Azure Monitor gibi kapsamlı özelliklerle, vm'ler içinde çalışan konuk işletim sistemi ,.NET tabanlı veya Java web uygulama bileşenleriyle performans ve sistem durumu sorunlarını algılamaya ve tanılamaya yardımcı olmak için merkezi izleme sağlar.
 
 ## <a name="diagnostics-and-metrics"></a>Tanılama ve ölçümler 
 
@@ -68,7 +70,7 @@ Tanılama günlükleri ile yapabileceğiniz şeylerden bazıları şunlardır:
 
 Azure VM ve sanal makine ölçeği kümeleri tarafından desteklenen uygulama veya hizmetin görünürlüğü için, uygulamanın kullanılabilirliğini veya performansını etkileyip etkilemediği veya uygulamayla ilgili bir sorun olup olmadığını anlamak için konuk işletim sistemi veya VM'de çalışan iş yüküyle ilgili sorunların tanımlanması, hem [Sanal Ayarlar için Azure Monitörü'nü](../articles/azure-monitor/insights/vminsights-overview.md) hem de Uygulama [Öngörüleri'ni](../articles/azure-monitor/app/app-insights-overview.md)etkinleştirin.
 
-Sanal Makineler için Azure Monitörü, windows ve Linux VM'lerinizin performansını ve sistem durumunu analiz ederek azure sanal makinelerinizi (VM) ölçekte izler, diğer kaynaklara ve dış işlemlere farklı süreçler ve birbirine bağlı bağımlılıklar da dahil olmak üzere Keşf -eder. Sorunların araştırılması na ve VM'lerinizin kapasitesini değerlendirmeye yardımcı olmak için çeşitli eğilim performans çizelgeleri içerir. Bağımlılık haritası, izlenen ve izlenmeyen makineleri, işlemler ve bu makineler arasındaki başarısız ve etkin ağ bağlantılarını ve standart ağ bağlantısı ölçümlerine sahip eğilim grafiklerini gösterir. Uygulama Öngörüleri ile birlikte, UYGULAMANIZla birlikte, UYGULAMANIZ la uygulamanız arasındaki sorunları ilişkilendirebilmeniz için uygulamanızı izler ve HTTP istekleri, özel durumlar vb. gibi telemetrileri yakalarsınız. Azure Monitor tarafından VM'ler için toplanan verilerin izlenmesinden algılanan önemli koşullar hakkında sizi uyarmak için [Azure Monitor uyarılarını](../articles/azure-monitor/platform/alerts-overview.md) yapılandırın.
+Sanal Makineler için Azure Monitor, keşfettiği diğer kaynaklara ve dış işlemlere farklı süreçler ve birbirine bağlı bağımlılıklar da dahil olmak üzere Windows ve Linux VM'lerinizin performansını ve sistem durumunu analiz ederek Azure sanal makinelerinizi (VM) ölçekte izler. Sorunların araştırılması na ve VM'lerinizin kapasitesini değerlendirmeye yardımcı olmak için çeşitli eğilim performans çizelgeleri içerir. Bağımlılık haritası, izlenen ve izlenmeyen makineleri, işlemler ve bu makineler arasındaki başarısız ve etkin ağ bağlantılarını ve standart ağ bağlantısı ölçümlerine sahip eğilim grafiklerini gösterir. Uygulama Öngörüleri ile birlikte, UYGULAMANIZla birlikte, UYGULAMANIZ la uygulamanız arasındaki sorunları ilişkilendirebilmeniz için uygulamanızı izler ve HTTP istekleri, özel durumlar vb. gibi telemetrileri yakalarsınız. Azure Monitor tarafından VM'ler için toplanan verilerin izlenmesinden algılanan önemli koşullar hakkında sizi uyarmak için [Azure Monitor uyarılarını](../articles/azure-monitor/platform/alerts-overview.md) yapılandırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

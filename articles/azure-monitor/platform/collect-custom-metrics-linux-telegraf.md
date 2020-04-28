@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: c5ea32fb198a61391e1be3648d1d2d2e829a7214
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82137272"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186450"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
 
@@ -32,6 +32,9 @@ Azure Izleyici 'yi kullanarak, uygulama telemetriniz, Azure kaynaklarınızda ç
 Bu öğretici için Ubuntu 16,04 LTS işletim sistemini çalıştıran bir Linux sanal makinesi dağıyoruz. Telegraf Aracısı çoğu Linux işletim sistemi için desteklenir. IBU ve RPM paketlerinin her ikisi de [etkileyen](https://portal.influxdata.com/downloads)Linux ikilileri ile birlikte kullanılabilir. Ek yükleme yönergeleri ve seçenekleri için bu [telegraf yükleme kılavuzuna](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) bakın. 
 
 [Azure Portal](https://portal.azure.com) oturum açın.
+
+> [!NOTE]  
+> Klasik uyarı kurallarını geçirmek ve var olan bir Linux sanal makinesini kullanmak istiyorsanız, sanal makinede sistem tarafından atanan bir kimlik ayarlanmış olduğundan emin **olun.**
 
 Yeni bir Linux sanal makinesi oluşturun: 
 

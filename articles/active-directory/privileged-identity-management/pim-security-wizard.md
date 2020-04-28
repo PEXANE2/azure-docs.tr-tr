@@ -10,20 +10,23 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 04/21/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04bd0993873568ba7cce368ddd9277ed356b636c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9f12b2b31da4c7fe67eef9674d96b517d4e2bfa
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266578"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867746"
 ---
 # <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Azure AD, Ayrıcalıklı Kimlik Yönetimi'nde güvenlik sihirbazı rollerini üstlendi
 
 Azure Etkin Dizin (Azure AD) kuruluşunuzda Ayrıcalıklı Kimlik Yönetimi 'ni (PIM) kullanan ilk kişiyseniz, başlamak için size bir sihirbaz sunulur. Sihirbaz, ayrıcalıklı kimliklerin güvenlik risklerini ve bu riskleri azaltmak için Ayrıcalıklı Kimlik Yönetimi'ni nasıl kullanacağınızı anlamanıza yardımcı olur. Daha sonra yapmayı tercih ederseniz, sihirbazdaki varolan rol atamalarında herhangi bir değişiklik yapmanız gerekmez.
+
+> [!Important]
+> Güvenlik sihirbazı geçici olarak kullanılamıyor. Sabrınız için teşekkürler.
 
 ## <a name="wizard-overview"></a>Sihirbaza genel bakış
 
@@ -32,12 +35,12 @@ Kuruluşunuz Ayrıcalıklı Kimlik Yönetimi'ni kullanmaya başlamadan önce, t�
 Sihirbazın ikinci adımı, yöneticinin rol atamalarını değiştirme fırsatı verir.  
 
 > [!WARNING]
-> En az bir Global yöneticiniz ve bir kuruluş hesabı olan birden fazla Ayrıcalıklı rol yöneticiniz (Microsoft hesabı değil) olması önemlidir. Yalnızca bir Ayrıcalıklı rol yöneticisi varsa, bu hesap silinirse kuruluş Ayrıcalıklı Kimlik Yönetimi'ni yönetemez.
+> En az bir Global yöneticiniz ve bir iş veya okul hesabı olan birden fazla Ayrıcalıklı rol yöneticiniz (Microsoft hesabı değil) olması önemlidir. Yalnızca bir Ayrıcalıklı rol yöneticisi varsa, bu hesap silinirse kuruluş Ayrıcalıklı Kimlik Yönetimi'ni yönetemez.
 > Ayrıca, bir kullanıcının Microsoft hesabı varsa (diğer bir deyişle, Skype ve Outlook.com gibi Microsoft hizmetlerinde oturum açmada kullandıkları bir hesap) rol atamalarıkalıcı tutun. Bu rol için etkinleştirme için çok faktörlü kimlik doğrulaması gerektirmeyi planlıyorsanız, bu kullanıcı kilitlenir.
 
 ## <a name="run-the-wizard"></a>Sihirbazı çalıştırma
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. **Azure AD Ayrıcalıklı Kimlik Yönetimi'ni**açın.
 

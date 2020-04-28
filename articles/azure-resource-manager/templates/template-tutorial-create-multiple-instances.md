@@ -2,21 +2,21 @@
 title: Birden çok kaynak örneği oluşturma
 description: Birden çok Azure kaynağı örneği oluşturmak için bir Azure Resource Manager şablonu oluşturmayı öğrenin.
 author: mumian
-ms.date: 04/08/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 83afff3aa15caa1743f66eea9eaee541492b8d1c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b62cca48323d4e12a92c89d64ab67bf5b783c36f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260845"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183849"
 ---
-# <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Öğretici: ARM şablonları ile birden çok kaynak örneği oluşturma
+# <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Öğretici: ARM şablonlarıyla birden çok kaynak örneği oluşturma
 
-Azure kaynağının birden çok örneğini oluşturmak için Azure Kaynak Yöneticisi (ARM) şablonunuzda nasıl yinelenirken öğrenin. Bu öğreticide, bir şablonu değiştirerek üç depolama hesabı örneği oluşturacaksınız.
+Azure kaynağının birden çok örneğini oluşturmak için Azure Resource Manager (ARM) şablonunuzda yineleme yapmayı öğrenin. Bu öğreticide, bir şablonu değiştirerek üç depolama hesabı örneği oluşturacaksınız.
 
-![Azure Kaynak Yöneticisi birden çok örnek diyagramı oluşturur](./media/template-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
+![Azure Resource Manager birden çok örnek diyagramı oluşturuyor](./media/template-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -25,19 +25,19 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Şablonu düzenleme
 > * Şablonu dağıtma
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [ARM şablonları oluşturmak için Görsel Stüdyo Kodunu Kullan.](use-vs-code-to-create-template.md)
+* Visual Studio Code ve Resource Manager Araçları uzantısı. [ARM şablonları oluşturmak için Visual Studio Code kullanma](use-vs-code-to-create-template.md)konusuna bakın.
 
 ## <a name="open-a-quickstart-template"></a>Hızlı başlangıç şablonunu açma
 
-[Azure QuickStart Şablonları,](https://azure.microsoft.com/resources/templates/) ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu hızlı başlangıçta kullanılan şablon [Standart depolama hesabı oluşturma](https://azure.microsoft.com/resources/templates/101-storage-account-create/) olarak adlandırılır. Şablon, Azure Depolama hesabı kaynağını tanımlar.
+[Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/) , ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu hızlı başlangıçta kullanılan şablon [Standart depolama hesabı oluşturma](https://azure.microsoft.com/resources/templates/101-storage-account-create/) olarak adlandırılır. Şablon, Azure Depolama hesabı kaynağını tanımlar.
 
-1. Visual Studio Code'dan **Dosya**>**Aç Dosya'yı**seçin.
+1. Visual Studio Code **Dosya**>**Aç dosya**' yı seçin.
 2. **Dosya adı**’na şu URL’yi yapıştırın:
 
     ```url
@@ -45,7 +45,7 @@ Bu makaleyi tamamlamak için gerekenler:
     ```
 3. Dosyayı açmak için **Aç**’ı seçin.
 4. Şablonda tanımlı bir 'Microsoft.Storage/storageAccounts' kaynağı bulunur. Şablonu, [şablon başvurusu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts) ile karşılaştırın. Şablonu özelleştirmeden önce temel noktaları kavramak faydalı olacaktır.
-5. Dosyayı **azuredeploy.json** olarak yerel bilgisayarınıza kaydetmek için**Dosya Yı Kaydet'i** **seçin.**>
+5. Dosyayı yerel bilgisayarınıza **azuredeploy. JSON** olarak kaydetmek için **Dosya**>**farklı kaydet** ' i seçin.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 
@@ -108,13 +108,44 @@ Tamamlanan şablon aşağıdaki gibi görünür:
 }
 ```
 
-Birden çok örnek oluşturma hakkında daha fazla bilgi için [bkz.](./copy-resources.md)
+Birden çok örnek oluşturma hakkında daha fazla bilgi için bkz. [ARM şablonlarındaki bir kaynağın veya özelliğin birden çok örneğini dağıtma](./copy-resources.md)
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Dağıtım yordamı için Visual Studio Code hızlı başlangıçta [Şablonu dağıtma](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) bölümüne bakın.
+1. [Azure Cloud Shell](https://shell.azure.com) oturum açın
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+1. Sol üst köşedeki **PowerShell** veya **Bash** (CLI için) öğesini seçerek tercih ettiğiniz ortamı seçin.  Geçiş yaptığınızda kabuğun yeniden başlatılması gerekir.
+
+    ![Dosyayı karşıya yükleme Cloud Shell Azure portal](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
+
+1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Önceki ekran görüntüsüne bakın. Önceki bölümde kaydettiğiniz dosyayı seçin. Dosyayı karşıya yükledikten sonra, dosyanın başarıyla karşıya yüklendiğini doğrulamak için **ls** komutunu ve **Cat** komutunu kullanabilirsiniz.
+
+1. Cloud Shell aşağıdaki komutları çalıştırın. PowerShell kodunu veya CLI kodunu gösteren sekmeyi seçin.
+
+    # <a name="cli"></a>[CLI](#tab/CLI)
+
+    ```azurecli
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
+    echo "Enter the location (i.e. centralus):" &&
+    read location &&
+    resourceGroupName="${projectName}rg" &&
+    az group create --name $resourceGroupName --location "$location" &&
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
+    ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+    ```azurepowershell
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
+
+    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
+    ```
+
+    ---
 
 Üç depolama hesabının tümünü listelemek için --ad parametresini atlayın:
 
@@ -133,6 +164,7 @@ echo "Press [ENTER] to continue ..."
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
 $resourceGroupName = "${projectName}rg"
+
 Get-AzStorageAccount -ResourceGroupName $resourceGroupName
 Write-Host "Press [ENTER] to continue ..."
 ```
@@ -145,10 +177,10 @@ Depolama hesabı adlarını, şablondaki ad tanımıyla karşılaştırın.
 
 Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığınız kaynakları temizleyin.
 
-1. Azure portalından sol menüden **Kaynak grubunu** seçin.
+1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.  Kaynak grubunda toplam üç kaynak görürsünüz.
-4. Üst menüden **kaynak grubunu sil'i** seçin.
+4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

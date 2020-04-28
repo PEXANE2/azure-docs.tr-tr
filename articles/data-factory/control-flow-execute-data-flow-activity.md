@@ -1,6 +1,6 @@
 ---
-title: Veri Akışı etkinliği
-description: Bir veri fabrikası boru hattı içinden veri akışları yürütmek için nasıl.
+title: Veri akışı etkinliği
+description: Data Factory işlem hattının içinden veri akışları yürütme.
 services: data-factory
 documentationcenter: ''
 author: kromerm
@@ -8,19 +8,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 03/16/2020
-ms.openlocfilehash: 32088dd712cd0c70fc01de48add17a0b6a828dc8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/25/2020
+ms.openlocfilehash: 78ef749f36e9ffd3aae510d201b0700e5e197065
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415325"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183305"
 ---
-# <a name="data-flow-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Veri Akışı etkinliği
+# <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 'de veri akışı etkinliği
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Veri akışlarını eşleme yoluyla verileri dönüştürmek ve taşımak için Veri Akışı etkinliğini kullanın. Veri akışlarına yeniyseniz, [Bkz. Veri Akışı Haritalama](concepts-data-flow-overview.md)
+Veri akışı etkinliğini, veri akışları eşleme yoluyla dönüştürmek ve taşımak için kullanın. Veri akışlarınız için yeni başladıysanız bkz. [eşleme veri akışına genel bakış](concepts-data-flow-overview.md)
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -56,73 +56,73 @@ Veri akışlarını eşleme yoluyla verileri dönüştürmek ve taşımak için 
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-Dataflow | Yürütülen Veri Akışı na başvuru | DataFlowReference | Evet
-entegrasyonRuntime | Veri akışının çalıştığı bilgi işlem ortamı. Belirtilmemişse, Azure Tümleştirme çalışma süresi otomatik olarak çözülür | IntegrationRuntimeReference | Hayır
-compute.coreCount | Kıvılcım kümesinde kullanılan çekirdek sayısı. Yalnızca otomatik çözümleme Azure Tümleştirme çalışma süresi kullanılırsa belirtilebilir | 8, 16, 32, 48, 80, 144, 272 | Hayır
-compute.computeType | Kıvılcım kümesinde kullanılan işlem türü. Yalnızca otomatik çözümleme Azure Tümleştirme çalışma süresi kullanılırsa belirtilebilir | "Genel", "ComputeOptimized", "MemoryOptimized" | Hayır
-evreleme.linkedService | Bir SQL DW kaynağı veya lavabo kullanıyorsanız, PolyBase evreleme için kullanılan depolama hesabı | LinkedServiceReference | Yalnızca veri akışı bir SQL DW'yi okur veya yazarsa
-evreleme.folderPath | Bir SQL DW kaynağı veya lavabo kullanıyorsanız, Blob depolama hesabındaki klasör yolu PolyBase evreleme için kullanılır | Dize | Yalnızca veri akışı bir SQL DW'yi okur veya yazarsa
+veri akışı | Yürütülen veri akışının başvurusu | DataFlowReference | Yes
+ıntegrationruntime | Veri akışının çalıştığı işlem ortamı. Belirtilmemişse, Otomatik Çözümle Azure tümleştirme çalışma zamanı kullanılacaktır | IntegrationRuntimeReference | Hayır
+compute. coreCount | Spark kümesinde kullanılan çekirdek sayısı. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | 8, 16, 32, 48, 80, 144, 272 | Hayır
+compute. computeType | Spark kümesinde kullanılan işlem türü. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | "Genel", "ComputeOptimized", "Memoryoptimlanmış" | Hayır
+hazırlama. linkedService | Bir SQL DW kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan depolama hesabı | LinkedServiceReference | Yalnızca veri akışı bir SQL DW 'yi okuduğunda veya yazıyorsa
+hazırlama. folderPath | Bir SQL DW kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan BLOB depolama hesabındaki klasör yolu | Dize | Yalnızca veri akışı bir SQL DW 'yi okuduğunda veya yazıyorsa
 
-![Veri Akışını Yürütme](media/data-flow/activity-data-flow.png "Veri Akışını Yürütme")
+![Veri akışı yürütme](media/data-flow/activity-data-flow.png "Veri akışı yürütme")
 
-### <a name="dynamically-size-data-flow-compute-at-runtime"></a>Çalışma zamanında dinamik boyut veri akışı bilgi işlem
+### <a name="dynamically-size-data-flow-compute-at-runtime"></a>Çalışma zamanında veri akışı işlem boyutunu dinamik olarak boyutlandır
 
-Çekirdek Sayısı ve İşlem Türü özellikleri, gelen kaynak verilerinizin çalışma zamanındaki boyutuna göre ayarlanacak şekilde dinamik olarak ayarlanabilir. Kaynak veri kümesi verilerinin boyutunu bulmak için Arama veya Meta Verilerini Al gibi ardışık iş aktarım etkinliklerini kullanın. Ardından, Veri Akışı etkinlik özelliklerinde Dinamik İçerik Ekle'yi kullanın.
+Çekirdek sayısı ve Işlem türü özellikleri, çalışma zamanında gelen kaynak verilerinizin boyutuna ayarlanacak şekilde dinamik olarak ayarlanabilir. Kaynak veri kümesi verilerinin boyutunu bulmak için arama veya meta veri al gibi işlem hattı etkinliklerini kullanın. Ardından, veri akışı etkinlik özelliklerinde dinamik Içerik Ekle ' yi kullanın.
 
-![Dinamik Veri Akışı](media/data-flow/dyna1.png "Dinamik veri akışı")
+![Dinamik veri akışı](media/data-flow/dyna1.png "Dinamik veri akışı")
 
-[İşte bu tekniği açıklayan kısa bir video eğitimi](https://www.youtube.com/watch?v=jWSkJdtiJNM)
+[Bu tekniği açıklayan kısa bir video öğreticisi aşağıda verilmiştir](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
-### <a name="data-flow-integration-runtime"></a>Veri Akışı tümleştirme çalışma süresi
+### <a name="data-flow-integration-runtime"></a>Veri akışı tümleştirme çalışma zamanı
 
-Veri Akışı etkinlik yürütmeniz için hangi Tümleştirme Runtime'ını kullanacağınızı seçin. Varsayılan olarak, Veri Fabrikası dört alt çekirdekve yaşamak için zaman (TTL) ile otomatik çözümleme Azure Tümleştirme çalışma süresini kullanır. Bu IR genel bir amaç hesaplama türüne sahiptir ve fabrikanızla aynı bölgede çalışır. Veri akışı etkinliği yürütmeniz için belirli bölgeleri, bilgi işlem türünü, çekirdek sayılarını ve TTL'yi tanımlayan kendi Azure Tümleştirme Run zamanlarınızı oluşturabilirsiniz.
+Veri akışı etkinliği yürütmesinde kullanılacak Integration Runtime seçin. Data Factory, varsayılan olarak, Azure tümleştirme çalışma zamanını dört çalışan çekirdekle ve canlı kalma süresi (TTL) ile otomatik çözümle 'yi kullanacaktır. Bu IR genel amaçlı bir işlem türüne sahiptir ve fabrikanızın bulunduğu bölgede çalışır. Veri akışı etkinlik yürütmenizi için belirli bölgeleri, işlem türünü, çekirdek sayılarını ve TTL 'yi tanımlayan kendi Azure tümleştirme çalışma zamanlarını oluşturabilirsiniz.
 
-Pipeline yürütmeleri için küme, yürütme başlamadan önce başlatılması birkaç dakika süren bir iş kümesidir. TTL belirtilmemişse, her ardışık işlem de bu başlatma süresi gereklidir. Bir TTL belirtirseniz, sıcak küme havuzu son yürütmeden sonra belirtilen süre boyunca etkin kalır ve bu da daha kısa başlangıç süreleri ile sonuçlanır. Örneğin, 60 dakikalık bir TTL'niz varsa ve üzerinde saatte bir veri akışı çalıştırılırsa, küme havuzu etkin kalır. Daha fazla bilgi için Azure [tümleştirme çalışma zamanı'na](concepts-integration-runtime.md)bakın.
+İşlem hattı yürütmeleri için küme, yürütme başlamadan önce birkaç dakika süren bir iş kümesidir. TTL belirtilmemişse, bu başlangıç saati her işlem hattı çalıştırmasında gereklidir. Bir TTL belirtirseniz, son yürütmeden sonra belirtilen süre için bir sıcak küme havuzu etkin kalır ve daha kısa başlangıç süreleri elde edilir. Örneğin, 60 dakikalık bir TTL 'SI varsa ve bir veri akışını saatte bir kez çalıştırırsanız, küme havuzu etkin kalır. Daha fazla bilgi için bkz. [Azure tümleştirme çalışma zamanı](concepts-integration-runtime.md).
 
-![Azure Tümleştirme Çalışma Süresi](media/data-flow/ir-new.png "Azure Tümleştirme Çalışma Süresi")
+![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 
 > [!NOTE]
-> Veri Akışı etkinliğindeki Tümleştirme Çalışma Zamanı seçimi yalnızca ardışık alanınızın *tetiklenen yürütmeleri* için geçerlidir. Veri ayıklama ile ardışık alma hata ayıklama, hata ayıklama oturumunda belirtilen küme üzerinde çalışır.
+> Veri akışı etkinliğinde Integration Runtime seçimi yalnızca işlem hattınızdaki *tetiklenmiş yürütmeler* için geçerlidir. Veri akışları ile işlem hattınızda hata ayıklama, hata ayıklama oturumunda belirtilen kümede çalışır.
 
 ### <a name="polybase"></a>PolyBase
 
-Bir Azure SQL Veri Ambarı'nı lavabo veya kaynak olarak kullanıyorsanız, PolyBase toplu yükünüz için bir hazırlama konumu seçmeniz gerekir. PolyBase, verileri satır satır yüklemek yerine toplu olarak toplu yüklemeye olanak tanır. PolyBase, SQL DW'ye yükleme süresini önemli ölçüde azaltır.
+Bir Azure SQL veri ambarını havuz veya kaynak olarak kullanıyorsanız, PolyBase Batch yüklemeniz için bir hazırlama konumu seçmeniz gerekir. PolyBase, verileri satır satır olarak yüklemek yerine toplu olarak yüklemeye izin verir. PolyBase, yükleme süresini büyük ölçüde SQL DW 'ye düşürür.
 
-## <a name="parameterizing-data-flows"></a>Veri Akışlarını Parametreleme
+## <a name="parameterizing-data-flows"></a>Veri akışlarını parametrize etme
 
 ### <a name="parameterized-datasets"></a>Parametreli veri kümeleri
 
-Veri akışınız parametreli veri kümelerini kullanıyorsa, **Ayarlar** sekmesindeki parametre değerlerini ayarlayın.
+Veri akışınız parametreli veri kümeleri kullanıyorsa, **Ayarlar** sekmesinde parametre değerlerini ayarlayın.
 
-![Veri Akış Parametrelerini Çalıştırma](media/data-flow/params.png "Parametreler")
+![Veri akışı parametrelerini yürütme](media/data-flow/params.png "Parametreler")
 
 ### <a name="parameterized-data-flows"></a>Parametreli veri akışları
 
-Veri akışınız parametrelendirilmişse, **Parametreler** sekmesindeki veri akışı parametrelerinin dinamik değerlerini ayarlayın. Dinamik veya gerçek parametre değerleri atamak için ADF ardışık ifade dilini (yalnızca String türleri için) veya veri akışı ifade dilini kullanabilirsiniz. Daha fazla bilgi için [Bkz. Veri Akış Parametreleri.](parameters-data-flow.md)
+Veri akışınız parametreleştirilmiş ise, **Parametreler** sekmesindeki veri akışı parametrelerinin dinamik değerlerini ayarlayın. Dinamik veya değişmez değer parametre değerlerini atamak için ADF işlem hattı ifade dilini veya veri akışı ifade dilini kullanabilirsiniz. Daha fazla bilgi için bkz. [veri akışı parametreleri](parameters-data-flow.md). Bir veri akışı parametresine geçirilecek olan işlem hattı özelliklerini ifadeniz bir parçası olarak eklemek istiyorsanız işlem hattı ifadeleri ' ni seçin.
 
-![Veri Akış Parametre Örneği Yürütme](media/data-flow/parameter-example.png "Parametre Örneği")
+![Veri akışı parametre örneğini Yürüt](media/data-flow/parameter-example.png "Parametre örneği")
 
 ### <a name="parameterized-compute-properties"></a>Parametreli işlem özellikleri.
 
-Azure Tümleştirme çalışma zamanını otomatik çözümleme ve compute.coreCount ve compute.computeType değerlerini belirtirseniz, çekirdek sayımı veya işlem türünü parametrenize alabilirsiniz.
+Azure Integration Runtime 'ı otomatik çözümle ve COMPUTE. coreCount ve COMPUTE. computeType değerlerini belirttiğinizde çekirdek sayısı veya işlem türünü parametreleştirebilirsiniz.
 
-![Veri Akış Parametre Örneği Yürütme](media/data-flow/parameterize-compute.png "Parametre Örneği")
+![Veri akışı parametre örneğini Yürüt](media/data-flow/parameterize-compute.png "Parametre örneği")
 
-## <a name="pipeline-debug-of-data-flow-activity"></a>Veri Akışı etkinliğinin ardışık hatlar ayıklama
+## <a name="pipeline-debug-of-data-flow-activity"></a>Veri akışı etkinliğinin işlem hattı hata ayıklaması
 
-Veri Akışı etkinliği yle bir hata ayıklama ardışık etki veri hattı çalıştırmak için, üst çubuğunda **Veri Akışı Hata Ayıklama** kaydırıcısı üzerinden veri akışı hata ayıklama modunu açmanız gerekir. Hata ayıklama modu, veri akışını etkin bir Spark kümesine karşı çalıştırmanızı sağlar. Daha fazla bilgi için [Hata Ayıklama Modu'na](concepts-data-flow-debug-mode.md)bakın.
+Bir veri akışı etkinliğiyle bir hata ayıklama işlem hattı çalıştırması yürütmek için, üst çubuktaki **veri akışı hata ayıklama** kaydırıcısının üzerinden veri akışı hata ayıklama moduna geçmeniz gerekir. Hata ayıklama modu, veri akışını etkin bir Spark kümesine karşı çalıştırmanızı sağlar. Daha fazla bilgi için bkz. [hata ayıklama modu](concepts-data-flow-debug-mode.md).
 
 ![Hata ayıklama düğmesi](media/data-flow/debugbutton.png "Hata ayıklama düğmesi")
 
-Hata ayıklama ardışık işlem, Veri Akışı etkinlik ayarlarında belirtilen tümleştirme çalışma zamanı ortamına değil, etkin hata ayıklama kümesine karşı çalışır. Hata ayıklama modunu başlatırken hata ayıklama ortamını seçebilirsiniz.
+Hata ayıklama ardışık düzeni, veri akışı etkinlik ayarlarında belirtilen tümleştirme çalışma zamanı ortamı değil, etkin hata ayıklama kümesine karşı çalışır. Hata ayıklama modunu başlatırken işlem ortamını hata ayıkla seçeneğini belirleyebilirsiniz.
 
-## <a name="monitoring-the-data-flow-activity"></a>Veri Akışı etkinliğini izleme
+## <a name="monitoring-the-data-flow-activity"></a>Veri akışı etkinliğini izleme
 
-Veri Akışı etkinliği, bölümleme, aşama süresi ve veri soy bilgilerini görüntüleyebileceğiniz özel bir izleme deneyimine sahiptir. **Eylemler**altında gözlük simgesi üzerinden izleme bölmesini açın. Daha fazla bilgi için [bkz.](concepts-data-flow-monitoring.md)
+Veri akışı etkinliğinin bölümlemeyi, aşama süresini ve veri kökenini bilgilerini görüntüleyebileceğiniz özel bir izleme deneyimi vardır. **Eylemler**altında, gözlük simgesi aracılığıyla izleme bölmesini açın. Daha fazla bilgi için bkz. [veri akışlarını izleme](concepts-data-flow-monitoring.md).
 
-### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Sonraki bir etkinlikte Veri Akışı etkinlik sonuçlarını kullanma
+### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Sonraki bir etkinliğin veri akışı etkinlik sonuçlarını kullanma
 
-Veri akışı etkinliği, her bir lavaboya yazılan satır sayısıve her kaynaktan okunan satır sayısıyla ilgili ölçümleri doğuruyor. Bu sonuçlar, etkinlik `output` çalıştırma sonucu bölümünde döndürülür. Döndürülen ölçümler aşağıdaki json biçimindedir.
+Veri akışı etkinliği, her bir kaynaktan okunan her bir havuza ve satıra yazılan satır sayısıyla ilgili ölçümleri çıktı olarak verir. Bu sonuçlar, etkinlik çalıştırma sonucunun `output` bölümünde döndürülür. Döndürülen ölçümler aşağıdaki JSON biçimindedir.
 
 ``` json
 {
@@ -150,16 +150,16 @@ Veri akışı etkinliği, her bir lavaboya yazılan satır sayısıve her kaynak
 }
 ```
 
-Örneğin, 'dataflowActivity' adlı bir etkinlikte 'sink1' adlı bir lavaboya yazılan satır `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`sayısına ulaşmak için.
+Örneğin, ' dataflowActivity ' adlı bir etkinlikte ' sink1 ' adlı bir havuza yazılan satır sayısına ulaşmak için kullanın `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`.
 
-Bu lavaboda kullanılan 'source1' adlı bir kaynaktan okunan satır `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`sayısını almak için.
+Bu havuzda kullanılan ' source1 ' adlı bir kaynaktan okunan satır sayısını almak için kullanın `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`.
 
 > [!NOTE]
-> Bir lavaboda sıfır satır yazılmışsa, ölçümlerde gösterilmez. Varoluş `contains` işlevi kullanılarak doğrulanabilir. Örneğin, `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` herhangi bir satır lavabo1 için yazılmış olup olmadığını denetler.
+> Bir havuzda yazılmış sıfır satır varsa, ölçümler ' de gösterilmez. Varlık, `contains` işlevi kullanılarak doğrulanabilir. Örneğin, `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` sink1 'e herhangi bir satırın yazılıp yazılmadığını kontrol eder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri Fabrikası tarafından desteklenen denetim akışı etkinliklerine bakın: 
+Bkz. Data Factory tarafından desteklenen denetim akışı etkinlikleri: 
 
 - [If Condition Etkinliği](control-flow-if-condition-activity.md)
 - [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)

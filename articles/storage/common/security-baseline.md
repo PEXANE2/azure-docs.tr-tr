@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d083ba757004fa477038750ad6210e4bb30659ee
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 184b60f6147089cbdfd855b473b3346d021f7fbc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82120762"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176609"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure depolama için Azure Güvenlik temeli
 
@@ -140,7 +140,7 @@ Depolama hesabı ile ilgili yerleşik ilke tanımlarından da yararlanabilirsini
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: belge trafiği yapılandırma kuralları
 
-**Rehberlik**: ağ güvenlik grupları (NSG) ve ağ güvenliği ve trafik akışıyla ilgili diğer kaynaklar için Etiketler kullanın. Bireysel NSG kuralları için "Açıklama" alanını kullanarak ağa giden/giden trafiğe izin veren kuralların iş gereksinimini ve/veya süresini (vs.) belirtin. Tüm kaynakların etiketlerle oluşturulmasını ve mevcut etiketlenmemiş kaynakları bilgilendirmesini sağlamak için etiketlemeyle ilgili yerleşik Azure ilke tanımlarından herhangi birini ("etiket ve onun değeri gerektir" gibi) kullanın. Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzerinde arama yapabilir veya eylemler gerçekleştirebilirsiniz. 
+**Rehberlik**: ağ güvenlik grupları (NSG) ve ağ güvenliği ve trafik akışıyla ilgili diğer kaynaklar için Etiketler kullanın. Bireysel NSG kuralları için "Açıklama" alanını kullanarak ağa giden/giden trafiğe izin veren kuralların iş gereksinimini ve/veya süresini (vs.) belirtin. Tüm kaynakların etiketlerle oluşturulmasını ve mevcut etiketlenmemiş kaynakları bilgilendirmesini sağlamak için etiketlemeyle ilgili yerleşik Azure Ilke tanımlarından herhangi birini ("etiket ve onun değeri gerektir" gibi) kullanın. Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzerinde arama yapabilir veya eylemler gerçekleştirebilirsiniz. 
 
 - [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -687,7 +687,7 @@ Ayrıca, yetkisiz Azure kaynaklarını algılamak için Azure depolama için Gel
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: onaylanmamış Azure kaynakları için izleyici
 
-**Rehberlik**: aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliklerine oluşturulabilecek kaynak türlerine kısıtlamalar koymak için Azure ilkesini kullanın: 
+**Rehberlik**: aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliklerine oluşturulabilecek kaynak türlerine kısıtlamalar koymak Için Azure ilkesini kullanın: 
 
  - İzin verilmeyen kaynak türleri 
  - İzin verilen kaynak türleri 
@@ -730,7 +730,7 @@ Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları so
 
 ### <a name="69-use-only-approved-azure-services"></a>6,9: yalnızca onaylanan Azure hizmetlerini kullanın
 
-**Rehberlik**: aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliklerine oluşturulabilecek kaynak türlerine kısıtlamalar koymak için Azure ilkesini kullanın: 
+**Rehberlik**: aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliklerine oluşturulabilecek kaynak türlerine kısıtlamalar koymak Için Azure ilkesini kullanın: 
 
 - İzin verilmeyen kaynak türleri 
 - İzin verilen kaynak türleri 
@@ -783,7 +783,7 @@ Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları so
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: tüm Azure kaynakları için güvenli yapılandırma oluşturma
 
-**Rehberlik**: depolama hesabı örneklerinizin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak Için "Microsoft. Storage" ad alanındaki Azure ilke diğer adlarını kullanın. Azure depolama hesabı için yerleşik Azure ilke tanımlarını da kullanabilirsiniz, örneğin: 
+**Rehberlik**: depolama hesabı örneklerinizin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak Için "Microsoft. Storage" ad alanındaki Azure ilke diğer adlarını kullanın. Azure depolama hesabı için yerleşik Azure Ilke tanımlarını da kullanabilirsiniz, örneğin: 
 
 Depolama hesaplarına Kısıtlanmamış ağ erişimini denetleme depolama hesaplarında Gelişmiş tehdit koruması dağıtma depolama hesaplarında, yeni Azure Resource Manager kaynaklara geçirilmesi gerekir depolama hesaplarına Güvenli aktarım etkinleştirilmelidir 
 
@@ -807,7 +807,7 @@ Azure Güvenlik Merkezi 'nden, depolama hesaplarınız için güvenli bir yapıl
 
 ### <a name="73-maintain-secure-configurations-for-all-azure-resources"></a>7,3: tüm Azure kaynakları için güvenli yapılandırmaların bakımını yapma
 
-**Rehberlik**: depolama hesabı kaynaklarınız genelinde güvenli ayarları zorlamak için Azure ilkesi [reddetme] ve [dağıtım yok] kullanın. 
+**Rehberlik**: depolama hesabı kaynaklarınız genelinde güvenli ayarları zorlamak Için Azure ilkesi [reddetme] ve [dağıtım yok] kullanın. 
 
 - [Azure Ilkesini yapılandırma ve yönetme](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 

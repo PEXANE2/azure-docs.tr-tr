@@ -1,59 +1,138 @@
 ---
 title: Hesap erişim anahtarlarını yönetme
 titleSuffix: Azure Storage
-description: Depolama hesabı erişim anahtarlarınızı nasıl görüntüleyeceknizi, yöneteceklerinizi ve döndüreceklerinizi öğrenin.
+description: Depolama hesabı erişim anahtarlarınızı görüntüleme, yönetme ve döndürme hakkında bilgi edinin.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 04/24/2020
 ms.author: tamram
-ms.openlocfilehash: 50c0980800bbc9b2951bf9107114c1a4d9265558
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4ade2c2e60373298eecf4e85df7fffeae4f45207
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454671"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176642"
 ---
 # <a name="manage-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yönetme
 
-Bir depolama hesabı oluşturduğunuzda, Azure iki 512 bit depolama hesabı erişim anahtarı oluşturur. Bu anahtarlar, Paylaşılan Anahtar yetkilendirmesi aracılığıyla depolama hesabınızdaki verilere erişim yetkisi vermek için kullanılabilir.
+Bir depolama hesabı oluşturduğunuzda, Azure 2 512 bit depolama hesabı erişim anahtarları oluşturur. Bu anahtarlar, paylaşılan anahtar yetkilendirmesi aracılığıyla Depolama hesabınızdaki verilere erişim yetkisi vermek için kullanılabilir.
 
-Microsoft, erişim anahtarlarınızı yönetmek için Azure Key Vault'u kullanmanızı ve anahtarlarınızı düzenli olarak döndürmenizi ve yeniden oluşturmanızı önerir. Azure Key Vault'u kullanmak, uygulamalarınızı kesintiye uğramadan anahtarlarınızı döndürmenizi kolaylaştırır. Ayrıca anahtarlarınızı el ile de döndürebilirsiniz.
+Microsoft, erişim anahtarlarınızı yönetmek için Azure Key Vault kullanmanızı ve anahtarlarınızı düzenli olarak döndürmenizi ve yeniden oluşturmanızı önerir. Azure Key Vault kullanmak, anahtarlarınızı uygulamalarınıza kesinti olmadan döndürmeyi kolaylaştırır. Ayrıca, anahtarlarınızı el ile de döndürebilirsiniz.
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-## <a name="view-access-keys-and-connection-string"></a>Erişim anahtarlarını ve bağlantı dizelerini görüntüleme
+## <a name="view-account-access-keys"></a>Hesap erişim anahtarlarını görüntüle
 
-[!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
+Hesap erişim anahtarlarınızı Azure portal, PowerShell veya Azure CLı ile görüntüleyebilir ve kopyalayabilirsiniz. Azure portal, depolama hesabınız için kopyalayabilmeniz için bir bağlantı dizesi de sağlar.
 
-## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>Erişim anahtarlarınızı yönetmek için Azure Anahtar Kasası'nı kullanın
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Microsoft, erişim anahtarlarınızı yönetmek ve döndürmek için Azure Key Vault'u kullanmanızı önerir. Uygulamanız anahtarlarınıza Key Vault'ta güvenli bir şekilde erişebilir, böylece bunları uygulama kodunuzla depolamaktan kaçınabilirsiniz. Anahtar yönetimi için Key Vault'u kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Depolama hesabı erişim anahtarlarınızı veya Bağlantı dizenizi Azure portal görüntülemek ve kopyalamak için:
+
+1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
+1. **Ayarlar** altında **Erişim anahtarları**'nı seçin. Hesap erişim anahtarlarınız ve her bir anahtar için tam bağlantı dizesi görüntülenir.
+1. **KEY1**altındaki **anahtar** değerini bulun ve **Kopyala** düğmesine tıklayarak hesap anahtarını kopyalayın.
+1. Alternatif olarak, tüm bağlantı dizesini kopyalayabilirsiniz. **key1** bölümünde **Bağlantı dizesi** değerini bulun ve **Kopyala** düğmesine tıklayarak bağlantı dizesini kopyalayın.
+
+    :::image type="content" source="media/storage-account-keys-manage/portal-connection-string.png" alt-text="Azure portal erişim tuşlarının nasıl görüntüleneceğini gösteren ekran görüntüsü":::
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Hesap erişim anahtarlarınızı PowerShell ile almak için [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey) komutunu çağırın.
+
+Aşağıdaki örnek ilk anahtarı alır. İkinci anahtarı almak için yerine kullanın `Value[1]` `Value[0]`. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
+
+```powershell
+$storageAccountKey = `
+    (Get-AzStorageAccountKey `
+    -ResourceGroupName <resource-group> `
+    -Name <storage-account>).Value[0]
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Hesap erişim anahtarlarınızı Azure CLı ile listelemek için, aşağıdaki örnekte gösterildiği gibi [az Storage Account Keys List](/cli/azure/storage/account/keys#az-storage-account-keys-list) komutunu çağırın. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. 
+
+```azurecli-interactive
+az storage account keys list \
+  --resource-group <resource-group> \
+  --account-name <storage-account>
+```
+
+---
+
+Azure depolama 'ya erişmek için iki anahtardan birini kullanabilirsiniz, ancak genel olarak ilk anahtarı kullanmak iyi bir uygulamadır ve anahtarları döndürürken ikinci anahtarın kullanımını ayırabilirsiniz.
+
+Hesabın erişim anahtarlarını görüntülemek veya okumak için, kullanıcının bir hizmet yöneticisi olması ya da **Microsoft. Storage/storageAccounts/ListKeys/Action**IÇEREN bir RBAC rolü atanması gerekir. Bu eylemi içeren bazı yerleşik RBAC rolleri, **sahip**, **katkıda**bulunan ve **depolama hesabı anahtar operatörü hizmeti rolü** rolleridir. Hizmet Yöneticisi rolü hakkında daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure AD rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md). Azure depolama için yerleşik roller hakkında ayrıntılı bilgi için Azure [RBAC Için Azure yerleşik rollerinin](../../role-based-access-control/built-in-roles.md#storage) **depolama** bölümüne bakın.
+
+## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>Erişim anahtarlarınızı yönetmek için Azure Key Vault kullanın
+
+Microsoft, erişim anahtarlarınızı yönetmek ve döndürmek için Azure Key Vault kullanmayı önerir. Uygulamanız Key Vault içindeki Anahtarlarınıza güvenli bir şekilde erişebilir, böylece bunları uygulama kodunuzla depolamaktan kaçınabilirsiniz. Anahtar yönetimi için Key Vault kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Azure Key Vault ve PowerShell ile depolama hesabı anahtarlarını yönetme](../../key-vault/secrets/overview-storage-keys-powershell.md)
-- [Azure Anahtar Kasası ve Azure CLI ile depolama hesabı anahtarlarını yönetme](../../key-vault/secrets/overview-storage-keys.md)
+- [Azure Key Vault ve Azure CLı ile depolama hesabı anahtarlarını yönetme](../../key-vault/secrets/overview-storage-keys.md)
 
-## <a name="manually-rotate-access-keys"></a>Erişim tuşlarını el ile döndür
+## <a name="manually-rotate-access-keys"></a>Erişim tuşlarını el ile döndürme
 
-Microsoft, depolama hesabınızın güvenliğini sağlamaya yardımcı olmak için erişim anahtarlarınızı düzenli aralıklarla döndürmenizi önerir. Mümkünse, erişim anahtarlarınızı yönetmek için Azure Key Vault'u kullanın. Key Vault kullanmıyorsanız, anahtarlarınızı el ile döndürmeniz gerekir.
+Microsoft, depolama hesabınızı güvende tutmaya yardımcı olmak için erişim anahtarlarınızı düzenli aralıklarla döndürmenizi önerir. Mümkünse, erişim anahtarlarınızı yönetmek için Azure Key Vault kullanın. Key Vault kullanmıyorsanız, anahtarlarınızı el ile döndürmeniz gerekir.
 
-Anahtarlarınızı döndürebilmeniz için iki erişim anahtarı atanır. İki anahtara sahip olmak, uygulamanızın işlem boyunca Azure Depolama'ya erişimi korumasını sağlar.
+Anahtarlarınızı döndürebilmeniz için iki erişim tuşu atanır. İki anahtara sahip olmak, uygulamanızın işlem boyunca Azure depolama 'ya erişimini korumasını sağlar.
 
 > [!WARNING]
-> Erişim anahtarlarınızı yeniden oluşturmak, depolama hesabı anahtarına bağlı olan tüm uygulamaları veya Azure hizmetlerini etkileyebilir. Depolama hesabına erişmek için hesap anahtarını kullanan tüm istemcilerin, medya hizmetleri, bulut, masaüstü ve mobil uygulamalar ve [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)gibi Azure Depolama alanı için grafik kullanıcı arabirimi uygulamaları da dahil olmak üzere yeni anahtarı kullanmak üzere güncelleştirilmelidir.
+> Erişim anahtarlarınızın yeniden oluşturulması, depolama hesabı anahtarına bağlı olan tüm uygulamaları veya Azure hizmetlerini etkileyebilir. Depolama hesabına erişmek için hesap anahtarını kullanan istemciler, Media Services, bulut, masaüstü ve mobil uygulamalar gibi yeni anahtarı kullanacak şekilde ve [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)gibi Azure depolama için grafik kullanıcı arabirimi uygulamalarına yönelik olarak güncelleştirilmeleri gerekir.
 
-Depolama hesabı anahtarlarınızı döndürmek için aşağıdaki işlemi izleyin:
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. İkincil anahtarı kullanmak için uygulama kodunuzdaki bağlantı dizelerini güncelleştirin.
-2. Depolama hesabınız için birincil erişim tuşunu yeniden oluşturun. Azure portalındaki **Erişim Tuşları** çubuğunda, **Yeni Anahtar1'i Yeniden Oluştur'u**tıklatın ve ardından yeni bir anahtar oluşturmak istediğinizi doğrulamak için **Evet'i** tıklatın.
-3. Yeni birincil erişim tuşunu referans olarak kullanmak için bağlantı dizelerini güncelleştirin.
-4. İkincil erişim tuşunu da aynı şekilde yeniden oluşturun.
+Depolama hesabı erişim anahtarlarınızı Azure portal döndürmek için:
+
+1. Depolama hesabı için ikincil erişim anahtarına başvurmak üzere uygulama kodunuzda bağlantı dizelerini güncelleştirin.
+1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
+1. **Ayarlar** altında **Erişim anahtarları**'nı seçin.
+1. Depolama hesabınız için birincil erişim anahtarını yeniden oluşturmak üzere birincil erişim anahtarı ' nın yanındaki **Oluştur** düğmesini seçin.
+1. Yeni birincil erişim tuşunu referans olarak kullanmak için bağlantı dizelerini güncelleştirin.
+1. İkincil erişim tuşunu da aynı şekilde yeniden oluşturun.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Depolama hesabı erişim anahtarlarınızı PowerShell ile döndürmek için:
+
+1. Depolama hesabı için ikincil erişim anahtarına başvurmak üzere uygulama kodunuzda bağlantı dizelerini güncelleştirin.
+1. Aşağıdaki örnekte gösterildiği gibi, birincil erişim anahtarını yeniden oluşturmak için [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) komutunu çağırın:
+
+    ```powershell
+    New-AzStorageAccountKey -ResourceGroupName <resource-group> `
+      -Name <storage-account> `
+      -KeyName key1
+    ```
+
+1. Yeni birincil erişim tuşunu referans olarak kullanmak için bağlantı dizelerini güncelleştirin.
+1. İkincil erişim tuşunu da aynı şekilde yeniden oluşturun. İkincil anahtarı yeniden oluşturmak için yerine anahtar `key2` adı olarak kullanın `key1`.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Depolama hesabı erişim anahtarlarınızı Azure CLı ile döndürmek için:
+
+1. Depolama hesabı için ikincil erişim anahtarına başvurmak üzere uygulama kodunuzda bağlantı dizelerini güncelleştirin.
+1. Aşağıdaki örnekte gösterildiği gibi, birincil erişim anahtarını yeniden oluşturmak için [az Storage Account Keys Renew](/cli/azure/storage/account/keys#az-storage-account-keys-renew) komutunu çağırın:
+
+    ```azurecli-interactive
+    az storage account keys renew \
+      --resource-group <resource-group> \
+      --account-name <storage-account>
+      --key primary
+    ```
+
+1. Yeni birincil erişim tuşunu referans olarak kullanmak için bağlantı dizelerini güncelleştirin.
+1. İkincil erişim tuşunu da aynı şekilde yeniden oluşturun. İkincil anahtarı yeniden oluşturmak için yerine anahtar `key2` adı olarak kullanın `key1`.
+
+---
 
 > [!NOTE]
-> Microsoft, tüm uygulamalarınızdaki anahtarlardan yalnızca birini aynı anda kullanmanızı önerir. Key 1'i bazı yerlerde, Key 2'yi bazı yerlerde kullanırsanız, bazı uygulamaların erişimini kaybetmeden anahtarlarınızı döndüremezsiniz.
+> Microsoft, tüm uygulamalarınızda aynı anda yalnızca bir tane anahtar kullanılmasını önerir. Anahtar 1 ' i bazı yerlerde ve anahtar 2 ' de kullanırsanız, bazı uygulama erişimi kaybetmeksizin anahtarlarınızı döndüremezsiniz.
 
-Bir hesabın erişim anahtarlarını döndürmek için, kullanıcının bir Hizmet Yöneticisi olması veya **Microsoft.Storage/storageAccounts/regeneratekey/action**içeren bir RBAC rolü atanması gerekir. Bu eylemi içeren bazı yerleşik RBAC rolleri **Sahibi,** **Katılımcısı**ve **Depolama Hesabı Anahtar Operatörü Hizmeti Rolü** rolleridir. Hizmet Yöneticisi rolü hakkında daha fazla bilgi için [Bkz. Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure REKLAM rolleri.](../../role-based-access-control/rbac-and-directory-admin-roles.md) Azure Depolama için yerleşik RBAC rolleri hakkında ayrıntılı bilgi için Azure [RBAC için Azure yerleşik rollerdeki](../../role-based-access-control/built-in-roles.md#storage) **Depolama** bölümüne bakın.
+Bir hesabın erişim anahtarlarını döndürmek için, kullanıcının bir hizmet yöneticisi olması veya **Microsoft. Storage/storageAccounts/RegenerateKey/Action**IÇEREN bir RBAC rolü atanması gerekir. Bu eylemi içeren bazı yerleşik RBAC rolleri, **sahip**, **katkıda**bulunan ve **depolama hesabı anahtar operatörü hizmeti rolü** rolleridir. Hizmet Yöneticisi rolü hakkında daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure AD rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md). Azure depolama için yerleşik RBAC rolleri hakkında ayrıntılı bilgi için Azure [RBAC Için Azure yerleşik rollerinin](../../role-based-access-control/built-in-roles.md#storage) **depolama** bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

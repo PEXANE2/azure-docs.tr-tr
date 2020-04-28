@@ -1,21 +1,18 @@
 ---
 title: Azure Site Kurtarma ile Windows VM'lerinizi Azure Premium Depolama alanına taşıyın
 description: Site Kurtarma'yı kullanarak mevcut sanal makinelerinizi Azure Premium Depolama'ya geçirin. Premium Depolama, Azure Sanal Makinelerde çalışan Yoğun I/İş yoğun iş yükleri için yüksek performanslı, düşük gecikmeli disk desteği sunar.
-services: virtual-machines-windows,storage
-cloud: Azure
 author: luywang
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: bd5f9fc787a6299e8d7c14f4b99f6f4d59cf78af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 071596557de00c9dfb2afaa5751d9331c21ada99
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74819068"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866268"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Kurtarma'yı kullanarak Premium Depolama alanına geçiş
 
@@ -65,7 +62,7 @@ Bu geçiş senaryosu için Azure gereksinimleri şunlardır:
 * Başarısız olduklarında Sanal M'lerin bağlanacağı bir Azure sanal ağı. Azure sanal ağı, Site Kurtarma'nın çalıştığı ağla aynı bölgede olmalıdır.
 * Çoğaltma günlüklerini depolamak için azure standart depolama hesabı. Bu, geçirilen VM diskleri için aynı depolama hesabı olabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Önceki bölümde ilgili geçiş senaryosu bileşenlerini anlayın.
 * [Site Kurtarma'da başarısız](../../site-recovery/site-recovery-failover.md)lık hakkında bilgi edinerek kesinti sürenizi planlayın.
@@ -220,7 +217,7 @@ Sanal makineleri geçirmek için belirli senaryolar için aşağıdaki kaynaklar
 
 Ayrıca, Azure Depolama ve Azure Sanal Makineleri hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
-* [Azure Depolama](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Sanal Makineler](https://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png

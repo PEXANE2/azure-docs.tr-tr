@@ -1,24 +1,18 @@
 ---
 title: Azure portalını kullanarak bağlantı noktalarını VM'ye açma
-description: Azure Portalı'ndaki kaynak yöneticisi dağıtım modelini kullanarak windows vm'nize bir bağlantı noktası / bitiş noktası oluşturma yı öğrenin
-services: virtual-machines-windows
-documentationcenter: ''
+description: Azure Portalı'nı kullanarak Windows VM'inizin bağlantı noktasını nasıl açacağınızı / windows VM'inizin bitiş noktasını nasıl oluşturabilirsiniz öğrenin
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 130d3315b5a9a6f175bd3d67ed33a034ab5f8dda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1844236a77b688819832b3fe0bf6736beea4bfae
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75371420"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865496"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure portalı ile bağlantı noktaları sanal bir makineye nasıl açılır?
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -31,7 +25,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 1. VM için kaynak grubunu arayın ve seçin, **Ekle'yi**seçin, ardından **Ağ güvenlik grubunu**arayın ve seçin.
 
-2. **Oluştur'u**seçin.
+2. **Oluştur**’u seçin.
 
     **Ağ güvenlik grubu oluştur** penceresi açılır.
 

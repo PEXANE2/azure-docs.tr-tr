@@ -1,61 +1,58 @@
 ---
-title: Azure Kubernetes Hizmeti için Azure İlkesi öğrenin
-description: Azure Kubernetes Hizmeti'ndeki kümeleri yönetmek için Azure İlke'nin Rego ve Open İlkes Aracısını nasıl kullandığını öğrenin.
-ms.date: 03/27/2020
+title: Azure Kubernetes hizmeti için Azure Ilkesi öğrenin
+description: Azure Ilkesi 'nin Azure Kubernetes hizmetindeki kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin.
+ms.date: 03/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: d77c5cf94a8239f4617e563961cbe1cc40e48fe0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6c70d676914cf861ecc378efc4ec23a78879f6e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372654"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187724"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Azure Kubernetes Service için Azure İlkesini anlama
 
-Azure İlkesi, kümelerinizde merkezi ve tutarlı bir şekilde ölçekte zorlama lar ve korumalar uygulamak için [Azure Kubernetes Hizmeti](../../../aks/intro-kubernetes.md) (AKS) ile tümleşir.
-Azure İlkesi, [Açık İlke Aracısı](https://www.openpolicyagent.org/) (OPA) için bir _kabul denetleyiciwebhook'u_ olan [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3'ün kullanımını genişleterek, Azure kaynaklarınızın ve AKS kümelerinizin uyumluluk durumunu tek bir yerden yönetmeyi ve raporlamayı mümkün kılar.
+Azure Ilkesi [Azure Kubernetes hizmeti](../../../aks/intro-kubernetes.md) (aks) ile tümleşerek, kümelerinizde merkezi ve tutarlı bir şekilde ölçeklenebilir ve koruma uygular.
+[Açık Ilke Aracısı](https://www.openpolicyagent.org/) (Opa) için bir _giriş denetleyicisi Web kancası_ olan [Gatekeeper](https://github.com/open-policy-agent/gatekeeper/tree/master/deprecated) v2 kullanımını genişleterek Azure ilkesi, Azure kaynaklarınızın ve aks kümelerinin uyumluluk durumunu tek bir yerden yönetmeyi ve rapor yapmayı olanaklı kılar.
 
-> [!IMPORTANT]
-> AKS için Azure İlkesi Önizleme'dedir ve yalnızca yerleşik ilke tanımlarını destekler. Yerleşik ilkeler **Kubernetes** kategorisindedir. **EnforceRegoPolicy** etkisi ve ilgili **Kubernetes Hizmet** kategori ilkeleri _amortismana sunuluyor._ Bunun yerine, güncelleştirilmiş [EnforceOPAConstraint efektini](./effects.md#enforceopaconstraint) kullanın.
-
-> [!WARNING]
-> Bu özellik henüz tüm bölgelerde kullanılamıyor. Kullanıma ilişkin bir durum [için, AKS Sorunları - İlke Eklentisi için Değişiklik Kesme'ye](https://github.com/Azure/AKS/issues/1529)bakın.
+> [!NOTE]
+> AKS için Azure Ilkesi, sınırlı önizlemededir ve yalnızca yerleşik ilke tanımlarını destekler.
 
 ## <a name="overview"></a>Genel Bakış
 
-AKS kümenizle AKS için Azure İlkesi'ni etkinleştirmek ve kullanmak için aşağıdaki işlemleri yapmak için aşağıdaki işlemleri
+AKS kümenizdeki AKS için Azure Ilkesini etkinleştirmek ve kullanmak için aşağıdaki işlemleri gerçekleştirin:
 
 - [Önizleme özelliklerini kullanma](#opt-in-for-preview)
-- [Azure İlkesi Eklentisini Yükleme](#installation-steps)
-- [AKS için bir ilke tanımı atama](#built-in-policies)
-- [Doğrulama için bekleyin](#validation-and-reporting-frequency)
+- [Azure Ilke eklentisini yükler](#installation-steps)
+- [AKS için ilke tanımı atama](#built-in-policies)
+- [Doğrulamayı bekle](#validation-and-reporting-frequency)
 
-## <a name="opt-in-for-preview"></a>Önizleme için kabul edin
+## <a name="opt-in-for-preview"></a>Önizleme için kabul etme
 
-Azure İlkesi Eklentisi'ni yüklemeden veya hizmet özelliklerinden herhangi birini etkinleştirmeden önce **aboneliğinizmicrosoft.ContainerService** kaynak sağlayıcısını ve **Microsoft.PolicyInsights** kaynak sağlayıcısını etkinleştirmeli ve ardından önizlemeye katılmak üzere onaylanmalı. Önizlemeye katılmak için Azure portalında veya Azure CLI ile aşağıdaki adımları izleyin:
+Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini etkinleştirmeden önce aboneliğiniz **Microsoft. ContainerService** kaynak sağlayıcısı 'Nı ve **Microsoft. policınghts** kaynak sağlayıcısı 'nı etkinleştirip önizlemeye katılması için onaylanmalıdır. Önizlemeye katmak için Azure portal veya Azure CLı ile bu adımları izleyin:
 
-- Azure portalı:
+- Azure portal:
 
-  1. **Microsoft.ContainerService** ve **Microsoft.PolicyInsights** kaynak sağlayıcılarını kaydedin. Adımlar için [Kaynak sağlayıcıları ve türleri](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)bkz.
+  1. **Microsoft. ContainerService** ve **Microsoft. policınghts** kaynak sağlayıcılarını kaydedin. Adımlar için bkz. [kaynak sağlayıcıları ve türleri](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
   1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
 
-     ![Tüm Hizmetlerde Politika Ara](../media/rego-for-aks/search-policy.png)
+     :::image type="content" source="../media/rego-for-aks/search-policy.png" alt-text="Tüm hizmetlerde Ilke ara" border="false":::
 
-  1. Azure **İlkesi** sayfasının sol tarafında Önizlemeye Katıl'ı seçin.
+  1. Azure Ilke sayfasının sol tarafındaki **önizlemeyi Birleştir** ' i seçin.
 
-     ![AKS önizleme seçimi için Politikaya katıl](../media/rego-for-aks/join-aks-preview.png)
+     :::image type="content" source="../media/rego-for-aks/join-aks-preview.png" alt-text="AKS önizlemesi için Ilkeye katın" border="false":::
 
-  1. Önizlemeye eklenmesini istediğiniz abonelik satırını seçin.
+  1. Önizlemeye eklenmesini istediğiniz aboneliğin satırını seçin.
 
-  1. Abonelik listesinin en üstündeki **Kabul düğmesini** seçin.
+  1. Abonelikler listesinin en üstündeki **kabul** et düğmesini seçin.
 
-- Azure CLI:
+- Azure CLı:
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
 
-  # Provider register: Register the Azure Kubernetes Service provider
+  # Provider register: Register the Azure Kubernetes Services provider
   az provider register --namespace Microsoft.ContainerService
 
   # Provider register: Register the Azure Policy provider
@@ -70,27 +67,35 @@ Azure İlkesi Eklentisi'ni yüklemeden veya hizmet özelliklerinden herhangi bir
   # Once the above shows 'Registered' run the following to propagate the update
   az provider register -n Microsoft.ContainerService
   
+  # Feature register: enables the add-on to call the Azure Policy resource provider
+  az feature register --namespace Microsoft.PolicyInsights --name AKS-DataPlaneAutoApprove
+  
+  # Use the following to confirm the feature has registered
+  az feature list -o table --query "[?contains(name, 'Microsoft.PolicyInsights/AKS-DataPlaneAutoApprove')].{Name:name,State:properties.state}"
+  
+  # Once the above shows 'Registered' run the following to propagate the update
+  az provider register -n Microsoft.PolicyInsights
+  
   ```
 
-## <a name="azure-policy-add-on"></a>Azure İlkesi Eklentisi
+## <a name="azure-policy-add-on"></a>Azure Ilke eklentisi
 
-Kubernetes için _Azure İlkes_ eklentisi, Azure İlkesi hizmetini Gatekeeper kabul denetleyicisine bağlar. _Kube-sistem_ ad alanına yüklenen eklenti aşağıdaki işlevleri yerine getirir:
+Kubernetes için _Azure Ilke eklentisi_ , Azure Ilke hizmetini ağ geçidi denetleyicisi giriş denetleyicisine bağlar. _Azure-Policy_ ad alanına yüklenen eklenti aşağıdaki işlevleri yapar:
 
-- Kümedeki atamalar için Azure İlkesi hizmetini denetler.
-- Kümedeki ilkeleri [kısıtlama şablonu](https://github.com/open-policy-agent/gatekeeper#constraint-templates) ve [kısıtlama](https://github.com/open-policy-agent/gatekeeper#constraints) özel kaynakları olarak dağır.
-- Denetim ve uyumluluk ayrıntılarını Azure İlkesi hizmetine geri raporlar.
+- AKS kümesinin atamaları için Azure Ilkesini denetler
+- **Configmaps** olarak _rego_ ilke tanımı dahil olmak üzere ilke ayrıntılarını indirir ve önbelleğe alır
+- AKS kümesinde tam tarama uyumluluk denetimini çalıştırır
+- Denetim ve uyumluluk ayrıntılarını Azure Ilkesine geri bildirir
 
-### <a name="installing-the-add-on"></a>Eklentinin yüklenmesi
+### <a name="installing-the-add-on"></a>Eklentiyi yükleme
 
 #### <a name="prerequisites"></a>Ön koşullar
 
-Eklentiyi AKS kümenize yüklemeden önce önizleme uzantısı yüklü olmalıdır. Bu adım Azure CLI ile yapılır:
+Eklentiyi AKS kümenize yüklemeden önce, önizleme uzantısının yüklenmesi gerekir. Bu adım Azure CLı ile yapılır:
 
-1. Gatekeeper v2 ilkeleri yüklendiyse, **İlkeler (önizleme)** sayfasının altındaki AKS kümenizdeki **Devre ve Düzenle** düğmesini kaldırın.
+1. Azure CLı sürüm 2.0.62 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
-1. Azure CLI sürümü 2.0.62 veya daha sonra yüklenmiş ve yapılandırılan gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
-
-1. AKS kümesi sürüm _1.14_ veya daha yüksek olmalıdır. AKS küme sürümünüzü doğrulamak için aşağıdaki komut dosyasını kullanın:
+1. AKS kümesi sürüm _1,10_ veya üzeri olmalıdır. AKS küme sürümünüzü doğrulamak için aşağıdaki betiği kullanın:
 
    ```azurecli-interactive
    # Log in first with az login if you're not using Cloud Shell
@@ -99,7 +104,7 @@ Eklentiyi AKS kümenize yüklemeden önce önizleme uzantısı yüklü olmalıd�
    az aks list
    ```
 
-1. AKS için Azure CLI önizleme uzantısının _0.4.0_ sürümünü yükleyin: `aks-preview`
+1. AKS için Azure CLı önizleme uzantısının sürüm _0.4.0_ 'nı yükler, `aks-preview`:
 
    ```azurecli-interactive
    # Log in first with az login if you're not using Cloud Shell
@@ -112,28 +117,28 @@ Eklentiyi AKS kümenize yüklemeden önce önizleme uzantısı yüklü olmalıd�
    ```
 
    > [!NOTE]
-   > Daha önce aks önizleme uzantısını yüklediyseniz, tüm _güncelleştirmeleri_ komutu kullanarak yükleyin. `az extension update --name aks-preview`
+   > Daha önce _aks-Preview_ uzantısını yüklediyseniz, `az extension update --name aks-preview` komutunu kullanarak tüm güncelleştirmeleri yükleyebilirsiniz.
 
 #### <a name="installation-steps"></a>Yükleme adımları
 
-Ön koşullar tamamlandıktan sonra, yönetmek istediğiniz AKS kümesine Azure İlkesi Eklentisi'ni yükleyin.
+Önkoşullar tamamlandıktan sonra, yönetmek istediğiniz AKS kümesinde Azure Ilke eklentisini yükleyebilirsiniz.
 
-- Azure portalında
+- Azure portal
 
-  1. **Tüm hizmetleri**tıklatarak, ardından **Kubernetes hizmetlerini**arayarak ve seçerek AKS hizmetini Azure portalında başlatın.
+  1. **Tüm hizmetler**' e tıklayıp **Kubernetes Hizmetleri**' nı arayıp seçerek aks hizmetini Azure Portal başlatın.
 
-  1. AKS kümelerinizden birini seçin.
+  1. AKS kümelerinizdeki birini seçin.
 
-  1. Kubernetes hizmet sayfasının sol tarafında **İlkeler (önizleme)** seçeneğini belirleyin.
+  1. Kubernetes hizmet sayfasının sol tarafındaki **ilkeleri (Önizleme)** seçin.
 
-     ![AKS kümesinden ilkeler](../media/rego-for-aks/policies-preview-from-aks-cluster.png)
+     :::image type="content" source="../media/rego-for-aks/policies-preview-from-aks-cluster.png" alt-text="AKS kümesindeki ilkeler" border="false":::
 
-  1. Ana sayfada **Eklentiyi Etkinleştir** düğmesini seçin.
+  1. Ana sayfada **eklentiyi etkinleştir** düğmesini seçin.
 
-     ![AKS eklentisi için Azure İlkesi'ni etkinleştirme](../media/rego-for-aks/enable-policy-add-on.png)
+     :::image type="content" source="../media/rego-for-aks/enable-policy-add-on.png" alt-text="AKS eklentisi için Azure Ilkesini etkinleştirin" border="false":::
 
      > [!NOTE]
-     > **Eklentiyi Etkinleştir** düğmesi gri renkteyse, abonelik henüz önizlemeye eklenmedi. Gerekli adımlar [için önizleme için Opt-in'e](#opt-in-for-preview) bakın. Devre **Dışı Atdüğmesine** uygunsa, Gatekeeper v2 hala yüklenir ve kaldırılması gerekir.
+     > **Eklentiyi etkinleştir** düğmesi gri ise, abonelik henüz önizlemeye eklenmedi. Gerekli adımlar için bkz. [Önizleme Için kabul etme](#opt-in-for-preview) .
 
 - Azure CLI
 
@@ -145,81 +150,75 @@ Eklentiyi AKS kümenize yüklemeden önce önizleme uzantısı yüklü olmalıd�
 
 ### <a name="validation-and-reporting-frequency"></a>Doğrulama ve raporlama sıklığı
 
-Eklenti, ilke atamalarındaki değişiklikler için her 15 dakikada bir Azure İlkesi hizmetini denetler.
-Bu yenileme döngüsü sırasında, eklenti değişiklikleri denetler. Bu değişiklikler, kısıtlama şablonlarını ve kısıtlamaları oluşturur, güncelleştirir veya siler.
+Eklenti, her 5 dakikada bir ilke atamalarındaki değişiklikler için Azure Ilkesiyle birlikte denetlenir. Bu yenileme sürecinde eklenti, _Azure-Policy_ ad alanındaki tüm _configmaps_ 'ı kaldırır, ardından ağ geçidi denetleyicisi kullanımı için _configmaps_ 'ı yeniden oluşturur.
 
 > [!NOTE]
-> Küme yöneticisi, kısıtlama şablonları ve kısıtlama kaynakları oluşturma ve güncelleştirme iznine sahip olsa da, el ile güncelleştirmeler üzerine yazıldığı için bunlar desteklenmez.
+> Bir _küme yöneticisinin_ _Azure-Policy_ ad alanı için izni olabilir, ancak ad alanında değişiklik yapmak önerilmez veya desteklenmez. Yapılan el ile yapılan değişiklikler yenileme çevrimi sırasında kaybedilir.
 
-Her 15 dakikada bir, eklenti kümenin tam taramayı çağırır. Tam taramanın ayrıntılarını ve Gatekeeper tarafından kümedeki değişiklik denemelerinin gerçek zamanlı değerlendirmelerini topladıktan sonra, eklenti sonuçları herhangi bir Azure İlkesi ataması gibi [uyumluluk ayrıntılarına](../how-to/get-compliance-data.md#portal) dahil etmek üzere Azure İlkesi hizmetine geri bildirir. Yalnızca etkin ilke atamalarının sonuçları denetim döngüsü sırasında döndürülür. Denetim sonuçları, başarısız kısıtlamanın durum alanında listelenen [ihlaller](https://github.com/open-policy-agent/gatekeeper#audit) olarak da görülebilir.
+Her 5 dakikada bir eklenti, kümenin tam taramasını çağırır. Kümede değişiklik yapılmaya çalışılanmaz tam taramanın ayrıntılarını ve gerçek zamanlı değerlendirmelerinin ayrıntılarını topladıktan sonra, eklenti, tüm Azure Ilke atamaları gibi [Uyumluluk ayrıntılarına](../how-to/get-compliance-data.md) eklenmek üzere sonuçları Azure ilkesine geri bildirir. Denetim döngüsüyle yalnızca etkin ilke atamalarının sonuçları döndürülür.
 
 ## <a name="policy-language"></a>İlke dili
 
-Kubernetes'i yönetmek için Azure İlkesi dil yapısı, varolan ilkelere uyar. _EnforceOPAConstraint_ etkisi Kubernetes kümelerinizi yönetmek için kullanılır ve [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint) ve Gatekeeper v3 ile çalışmaya özel ayrıntı özelliklerini alır. Ayrıntılar ve örnekler için [EnforceOPAConstraint efektine](./effects.md#enforceopaconstraint) bakın.
-  
-_Details.constraintTemplate_ ve _details.constraint_ özelliklerinin bir parçası olarak, Azure İlkesi bu [Özel Kaynak Tanımlarının](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) UrI'lerini eklentiye geçirir. Rego, OPA ve Gatekeeper'ın Kubernetes kümesine bir isteği doğrulamak için desteklediği dildir. Azure İlkesi, Kubernetes yönetimi için varolan bir standardı destekleyerek, varolan kuralları yeniden kullanmanın ve birleşik bir bulut uyumluluğu raporlama deneyimi için Azure İlkesi ile eşleştirmeyi mümkün kılar. Daha fazla bilgi için [bkz: Rego nedir?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)
+AKS 'leri yönetmeye yönelik Azure Ilke dil yapısı, var olan ilkelerden daha sonra izler. Etkin hale getiren _ilke_ , aks kümelerinizi yönetmek için kullanılır ve Opa ve Gatekeeper v2 ile çalışmaya özgü _Ayrıntılar_ özellikleri alır. Ayrıntılar ve örnekler için bkz. [Enforceregopolicy](effects.md#enforceregopolicy) etkisi.
+
+İlke tanımındaki _Ayrıntılar. Policy_ özelliğinin bir parçası olarak Azure ilkesi bir rego ilkesinin URI 'sini eklentiye geçirir. Rego, Kubernetes kümesine yönelik bir isteği doğrulamak veya bu kümeye bir istek vermek için, OPA ve Gatekeeper desteği sunan dildir. Azure Ilkesi, Kubernetes yönetimi için mevcut bir standardı destekleyerek, mevcut kuralları yeniden kullanmayı ve birleştirilmiş bir bulut uyumluluk raporlama deneyimi için bunları Azure Ilkesiyle eşleştirmeye olanak tanır. Daha fazla bilgi için bkz. [rego nedir?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego).
 
 ## <a name="built-in-policies"></a>Yerleşik ilkeler
 
-Azure portalını kullanarak kümenizi yönetmeye yönelik yerleşik ilkeleri bulmak için aşağıdaki adımları izleyin:
+Azure portal kullanarak AKS 'leri yönetmeye yönelik yerleşik ilkeleri bulmak için şu adımları izleyin:
 
-1. Azure Portalı'nda Azure İlkesi hizmetini başlatın. Sol bölmedeki Tüm hizmetleri seçin ve ardından **İlke'yi**arayın ve seçin.
+1. Azure portal Azure Ilke hizmetini başlatın. Sol bölmedeki **tüm hizmetler** ' i seçin ve ardından **ilkeyi**arayıp seçin.
 
-1. Azure İlkesi sayfasının sol bölmesinde **Tanımlar'ı**seçin.
+1. Azure Ilkesi sayfasının sol bölmesinde **tanımlar**' ı seçin.
 
-1. Kategori açılır liste kutusundan, filtreyi temizlemek için Tümünü Seç'i kullanın ve ardından **Kubernetes'i**seçin.
+1. Kategori açılan listesi kutusundan, filtre seçimini kaldırmak için **Tümünü Seç** ' i kullanın ve ardından **Kubernetes hizmeti**' ni seçin.
 
-1. İlke tanımını seçin ve ardından **Atla** düğmesini seçin.
+1. İlke tanımını seçin, sonra **ata** düğmesini seçin.
 
-1. **Kapsamı,** ilke atamasının uygulanacağı Kubernetes kümesinin yönetim grubu, aboneliği veya kaynak grubuna ayarlayın.
+> [!NOTE]
+> AKS tanımı için Azure Ilkesi atarken, **kapsamın** aks küme kaynağını içermesi gerekir.
 
-   > [!NOTE]
-   > AKS tanımı için Azure İlkesi atarken, **Kapsam** AKS küme kaynağını içermelidir.
-
-1. İlke atamasına kolayca tanımlamak için kullanabileceğiniz bir **Ad** ve **Açıklama** verin.
-
-1. [İlke zorlamasını](./assignment-structure.md#enforcement-mode) aşağıdaki değerlerden birine ayarlayın.
-
-   - **Etkin** - Kümedeki ilkeyi uygulayın. Kubernetes'in ihlallerle giriş talepleri reddedildi.
-   
-   - **Devre Dışı -** Kümedeki ilkeyi uygulamayın. Kubernetes'in ihlallerle giriş talepleri reddedilmez. Uyumluluk değerlendirme sonuçları hala mevcuttur. Kümeleri çalıştırmak için yeni ilkeler sunarken, devre _dışı_ bırakma seçeneği, ihlalleri olan kabul istekleri reddedilmedikçe ilkeleri sınamak için yararlıdır.
-
-1. **Sonraki'ni**seçin.
-
-1. **Parametre değerlerini** ayarlama
-   
-   - Kubernetes ad alanlarını ilke değerlendirmesinden hariç tutmak için, ad **alanı dışlayıcılıklarında**ad alanları listesini belirtin. Bu dışlamak için tavsiye edilir: _kube-sistemi_
-
-1. **İncele ve oluştur**’u seçin.
-
-Alternatif olarak, bir AKS ilkesi bulmak ve atamak için [bir ilke ata- Portal](../assign-policy-portal.md) hızlı başlat. Örnek 'denetim vms' yerine Bir Kubernetes ilke tanımı arayın.
+Alternatif olarak, bir AKS ilkesini bulmak ve atamak için [Ilke atama-Portal](../assign-policy-portal.md) hızlı başlangıcı ' nı kullanın. ' Denetim VM 'leri ' örneği yerine bir Kubernetes ilke tanımı arayın.
 
 > [!IMPORTANT]
-> **Kategori Kubernetes** yerleşik ilkeleri sadece AKS ile kullanım içindir. Yerleşik ilkelerin listesi için [Kubernetes örneklerine](../samples/built-in-policies.md#kubernetes)bakın.
+> **Kubernetes hizmeti** kategorisindeki yerleşik ilkeler yalnızca aks ile kullanılabilir.
 
 ## <a name="logging"></a>Günlüğe Kaydetme
 
-### <a name="azure-policy-add-on-logs"></a>Azure İlkesi Eklenti günlükleri
+### <a name="azure-policy-add-on-logs"></a>Azure Ilke eklentisi günlükleri
 
-Bir Kubernetes denetleyicisi/kapsayıcısı olarak, hem Azure İlkes Eklentisi hem de Gatekeeper günlüklerini AKS kümesinde tutar. Günlükler AKS kümesinin **Öngörüler** sayfasında açıklanır. Daha fazla bilgi için, [kapsayıcılar için Azure Monitor ile AKS küme performansını anlayın' a](../../../azure-monitor/insights/container-insights-analyze.md)bakın.
+Bir Kubernetes denetleyicisi/kapsayıcısı olarak, Azure Ilke eklentisi AKS kümesinde günlükleri tutar. Günlükler, AKS kümesinin **Öngörüler** sayfasında gösterilir. Daha fazla bilgi için bkz. [kapsayıcılar Için Azure izleyici Ile AKS küme performansını anlama](../../../azure-monitor/insights/container-insights-analyze.md).
 
-## <a name="remove-the-add-on"></a>Eklentiyi kaldırma
+### <a name="gatekeeper-logs"></a>Gatekeeper günlükleri
 
-AKS kümenizden Azure İlke Eklentisi'ni kaldırmak için Azure portalını veya Azure CLI'yi kullanın:
+Yeni kaynak istekleri için Gatekeeper günlüklerini etkinleştirmek üzere [AKS 'Deki Kubernetes ana düğüm günlüklerini etkinleştirme ve gözden geçirme](../../../aks/view-master-logs.md)bölümündeki adımları izleyin.
+Yeni kaynak isteklerindeki reddedilen olayları görüntülemek için örnek bir sorgu aşağıda verilmiştir:
 
-- Azure portalında
+```kusto
+| where Category == "kube-audit"
+| where log_s contains "admission webhook"
+| limit 100
+```
 
-  1. **Tüm hizmetleri**tıklatarak, ardından **Kubernetes hizmetlerini**arayarak ve seçerek AKS hizmetini Azure portalında başlatın.
+Ağ geçidi denetleyicisi kapsayıcılarından günlükleri görüntülemek için, [AKS 'Deki Kubernetes ana düğüm günlüklerini etkinleştirme ve gözden geçirme](../../../aks/view-master-logs.md) bölümündeki adımları Izleyin ve **Tanılama ayarları** bölmesinde _kulane-apiserver_ seçeneğini işaretleyin.
 
-  1. Azure İlkesi Eklentisini devre dışı katmak istediğiniz AKS kümenizi seçin.
+## <a name="remove-the-add-on"></a>Eklentiyi kaldır
 
-  1. Kubernetes hizmet sayfasının sol tarafında **İlkeler (önizleme)** seçeneğini belirleyin.
+Azure Ilke eklentisini AKS kümenizdeki kaldırmak için Azure portal veya Azure CLı kullanın:
 
-     ![AKS kümesinden ilkeler](../media/rego-for-aks/policies-preview-from-aks-cluster.png)
+- Azure portal
 
-  1. Ana sayfada eklentiyi **devre dışı** bırakma düğmesini seçin.
+  1. **Tüm hizmetler**' e tıklayıp **Kubernetes Hizmetleri**' nı arayıp seçerek aks hizmetini Azure Portal başlatın.
 
-     ![AKS eklentisi için Azure İlkesini devre dışı](../media/rego-for-aks/disable-policy-add-on.png)
+  1. Azure Ilke eklentisini devre dışı bırakmak istediğiniz AKS kümenizi seçin.
+
+  1. Kubernetes hizmet sayfasının sol tarafındaki **ilkeleri (Önizleme)** seçin.
+
+     :::image type="content" source="../media/rego-for-aks/policies-preview-from-aks-cluster.png" alt-text="AKS kümesindeki ilkeler" border="false":::
+
+  1. Ana sayfada, **eklentiyi devre dışı bırak** düğmesini seçin.
+
+     :::image type="content" source="../media/rego-for-aks/disable-policy-add-on.png" alt-text="AKS eklentisi için Azure Ilkesini devre dışı bırakma" border="false":::
 
 - Azure CLI
 
@@ -229,35 +228,35 @@ AKS kümenizden Azure İlke Eklentisi'ni kaldırmak için Azure portalını veya
   az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group MyResourceGroup
   ```
 
-## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Azure İlkesi Eklentisi tarafından toplanan tanılama verileri
+## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Azure Ilke eklentisi tarafından toplanan tanılama verileri
 
-Kubernetes için Azure İlke Eklentisi sınırlı küme tanılama verileri toplar. Bu tanısal veriler yazılım ve performansla ilgili hayati önem taşıyan teknik verilerdir. Aşağıdaki şekillerde kullanılır:
+Kubernetes için Azure Ilke eklentisi, sınırlı küme tanılama verilerini toplar. Bu tanılama verileri, yazılım ve performansla ilgili önemli teknik verileri sağlar. Aşağıdaki yollarla kullanılır:
 
-- Azure İlkesi Eklentisini Güncel Tutun
-- Azure İlkesi Eklentisi Eklentisi'ni güvenli, güvenilir ve performanslı tutun
-- Eklentinin kullanımının toplu analizi yoluyla Azure İlkesi Eklentisini geliştirin
+- Azure Ilke eklentisini güncel tutun
+- Azure Policy eklentisini güvenli tutun, güvenilir, performansı
+- Eklentinin kullanılması için Azure Ilke eklentisini geliştirme ve toplama Analizi
 
-Eklenti tarafından toplanan bilgiler kişisel veri değildir. Aşağıdaki ayrıntılar şu anda toplanır:
+Eklenti tarafından toplanan bilgiler kişisel veriler değildir. Şu anda toplanan Ayrıntılar:
 
-- Azure İlkesi Eklenti aracısı sürümü
+- Azure Ilke eklentisi aracı sürümü
 - Küme türü
 - Küme bölgesi
 - Küme kaynak grubu
-- Kaynak kimliğini kümele
-- Küme abonelik kimliği
-- Küme İşletim Sistemi (Örnek: Linux)
-- Küme şehir (Örnek: Seattle)
-- Küme durumu veya eyalet (Örnek: Washington)
-- Küme ülke veya bölge (Örnek: Amerika Birleşik Devletleri)
-- İlke değerlendirmesinde aracı yüklemesi sırasında Azure İlkesi Eklentisi'nin karşılaştığı özel durumlar/hatalar
-- Azure İlkesi Eklentisi tarafından yüklenmemiş Gatekeeper ilkeleri sayısı
+- Küme kaynak KIMLIĞI
+- Küme abonelik KIMLIĞI
+- Küme işletim sistemi (örnek: Linux)
+- Küme şehri (örnek: Seattle)
+- Küme durumu veya bölgesi (örnek: Washington)
+- Küme ülkesi veya bölgesi (örnek: Birleşik Devletler)
+- İlke değerlendirmesinde aracı yüklemesi sırasında Azure Ilke eklentisi tarafından karşılaşılan özel durumlar/hatalar
+- Azure Ilke eklentisi tarafından yüklenmeyen Gatekeeper ilkelerinin sayısı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure İlkesi örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
+- [Azure ilke örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
 - [İlke tanım yapısını](definition-structure.md) gözden geçirin.
 - [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.
-- [İlkeleri programlı bir şekilde nasıl oluşturlayacağımı](../how-to/programmatically-create.md)anlayın.
-- Uyumluluk verilerini nasıl [alacağınızı](../how-to/get-compliance-data.md)öğrenin.
-- [Uyumlu olmayan kaynakları](../how-to/remediate-resources.md)nasıl düzelteriz öğrenin.
-- [Azure yönetim gruplarıyla kaynaklarınızı düzenleyin](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu gözden geçirin.
+- [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
+- [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/get-compliance-data.md)öğrenin.
+- [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
+- [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

@@ -1,128 +1,128 @@
 ---
-title: Azure HPC Önbellek NFS depolama hedeflerini sorun giderme
-description: NFS depolama hedefi oluştururken hataya neden olabilecek yapılandırma hatalarını ve diğer sorunları önlemek ve düzeltmek için ipuçları
+title: Azure HPC Cache NFS depolama hedefleri sorunlarını giderme
+description: NFS depolama hedefi oluştururken hata oluşmasına neden olabilecek yapılandırma hatalarını ve diğer sorunları önlemek ve onarmak için ipuçları
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: 0a24530810a448a713c01efbc8933b9f22d15b3b
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 72b6b0b78da23fd0891c0571c9137fefbfb0b077
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536378"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186626"
 ---
-# <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>SORUN GIDERme NAS yapılandırması ve NFS depolama hedef sorunları
+# <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS yapılandırma ve NFS depolama hedefi sorunlarını giderme
 
-Bu makalede, bazı yaygın yapılandırma hataları ve Azure HPC Önbelleğinin bir depolama hedefi olarak NFS depolama sistemi eklemesini engelleyebilecek diğer sorunlar için çözümler sağlar.
+Bu makalede, bazı yaygın yapılandırma hataları ve Azure HPC önbelleğinin depolama hedefi olarak NFS depolama sistemi eklemesini engelleyebilecek diğer sorunlar için çözümler sunulmaktadır.
 
-Bu makalede, bağlantı noktalarının nasıl denetlenen ve bir NAS sistemine kök erişiminin nasıl etkinleştirilen hakkında ayrıntılar yer almaktadır. Ayrıca, NFS depolama hedef oluşturma başarısız neden olabilir daha az yaygın sorunlar hakkında ayrıntılı bilgi içerir.
+Bu makale, bağlantı noktalarını denetleme ve bir NAS sistemine kök erişimin nasıl etkinleştirileceği hakkındaki ayrıntıları içerir. Ayrıca, NFS depolama hedefi oluşturmanın başarısız olmasına neden olabilecek daha az yaygın sorunlar hakkında ayrıntılı bilgiler içerir.
 
 > [!TIP]
-> Bu kılavuzu kullanmadan önce, [NFS depolama hedefleri için ön koşulları](hpc-cache-prereqs.md#nfs-storage-requirements)okuyun.
+> Bu kılavuzu kullanmadan önce, [NFS depolama hedefleri için önkoşulları](hpc-cache-prereqs.md#nfs-storage-requirements)okuyun.
 
-Sorununuzun çözümü burada yer almazsa, Microsoft Service ve Support'un sorunu araştırmak ve çözmek için sizinle çalışabilmesi için [lütfen bir destek bileti açın.](hpc-cache-support-ticket.md)
+Sorununuza yönelik çözüm buraya eklenmiyorsa, Microsoft hizmet ve destek 'in sorunu araştırmak ve çözmek için sizinle çalışabilmesi için lütfen [bir destek bileti açın](hpc-cache-support-ticket.md) .
 
-## <a name="check-port-settings"></a>Bağlantı noktası ayarlarını kontrol edin
+## <a name="check-port-settings"></a>Bağlantı noktası ayarlarını denetle
 
-Azure HPC Önbelleği, arka uç NAS depolama sistemindeki birkaç UDP/TCP bağlantı noktasının okuma/yazma erişimine ihtiyaç duyar. Bu bağlantı noktalarına NAS sisteminde erişilebilir olduğundan ve depolama sistemi ve önbellek alt ağı arasındaki güvenlik duvarları aracılığıyla bu bağlantı noktalarına trafiğe izin verildiğinden emin olun. Bu yapılandırmayı doğrulamak için veri merkeziniz için güvenlik duvarı ve ağ yöneticileriyle çalışmanız gerekebilir.
+Azure HPC Cache, arka uç NAS depolama sisteminde birkaç UDP/TCP bağlantı noktasına okuma/yazma erişimi gerektirir. Bu bağlantı noktalarına, NAS sisteminde erişilebildiğinden ve ayrıca, depolama sistemi ile önbellek alt ağı arasındaki güvenlik duvarları aracılığıyla bu bağlantı noktalarına giden trafiğe izin verildiğini doğrulayın. Bu yapılandırmayı doğrulamak için, veri merkezinize yönelik güvenlik duvarı ve ağ yöneticileri ile çalışmanız gerekebilir.
 
-Bağlantı noktaları farklı satıcılardan gelen depolama sistemleri için farklıdır, bu nedenle depolama hedefi ayarlarken sisteminizin gereksinimlerini kontrol edin.
+Bağlantı noktaları farklı satıcıların depolama sistemleri için farklıdır, bu nedenle bir depolama hedefi ayarlarken sisteminizin gereksinimlerini denetleyin.
 
-Genel olarak, önbelleğin bu bağlantı noktalarına erişmesi gerekir:
+Genellikle önbelleğin Bu bağlantı noktalarına erişmesi gerekir:
 
 | Protokol | Bağlantı noktası  | Hizmet  |
 |----------|-------|----------|
 | TCP/UDP  | 111   | rpcbind  |
 | TCP/UDP  | 2049  | NFS      |
 | TCP/UDP  | 4045  | nlockmgr |
-| TCP/UDP  | 4046  | monte   |
+| TCP/UDP  | 4046  | dağtd   |
 | TCP/UDP  | 4047  | durum   |
 
-Sisteminiz için gereken belirli bağlantı noktalarını ``rpcinfo`` öğrenmek için aşağıdaki komutu kullanın. Aşağıdaki komut, bağlantı noktalarını listeler ve ilgili sonuçları bir tabloda biçimlendirir. (storage_IP>terimi yerine sisteminiz *<in* IP adresini kullanın.)
+Sisteminiz için gerekli olan belirli bağlantı noktalarını öğrenmek için aşağıdaki ``rpcinfo`` komutu kullanın. Aşağıdaki komut, bağlantı noktalarını listeler ve ilgili sonuçları bir tabloyla biçimlendirir. ( *<storage_IP>* terimi yerıne sisteminizin IP adresini kullanın.)
 
-Bu komutu, NFS altyapısı yüklü olan herhangi bir Linux istemcisinden çıkarabilirsiniz. Küme alt ağı içinde bir istemci kullanıyorsanız, alt ağ ve depolama sistemi arasındaki bağlantıyı doğrulamaya da yardımcı olabilir.
+Bu komutu, NFS altyapısının yüklü olduğu herhangi bir Linux istemcisinden verebilirsiniz. Küme alt ağı içinde bir istemci kullanırsanız, alt ağ ve depolama sistemi arasındaki bağlantıyı doğrulamaya da yardımcı olabilir.
 
 ```bash
 rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
 ```
 
-``rpcinfo`` Sorgu tarafından döndürülen tüm bağlantı noktalarının Azure HPC Önbelleği'nin alt netinden sınırsız trafiğe izin verdiğinden emin olun.
+``rpcinfo`` Sorgu tarafından döndürülen tüm bağlantı NOKTALARıNıN Azure HPC önbelleğinin alt ağından sınırsız trafiğe izin verdiğinden emin olun.
 
-Bu ayarları hem NAS'ın kendisinde hem de depolama sistemi ile önbellek alt ağı arasındaki güvenlik duvarlarında denetleyin.
+Bu ayarları hem NAS hem de depolama sistemi ile önbellek alt ağı arasındaki tüm güvenlik duvarları üzerinde denetleyin.
 
-## <a name="check-root-access"></a>Kök erişimini denetleme
+## <a name="check-root-access"></a>Kök erişimi denetle
 
-Azure HPC Önbelleği, depolama hedefini oluşturmak için depolama sisteminizin dışa aktarımlarına erişmesi gerekir. Özellikle, kullanıcı kimliği 0 olarak dışa aktarma bağlar.
+Depolama hedefini oluşturmak için Azure HPC önbelleğinin depolama sisteminizin dışarı aktarımlarının erişimine ihtiyacı vardır. Özellikle, dışarı aktarmaları Kullanıcı KIMLIĞI 0 olarak takar.
 
-Farklı depolama sistemleri bu erişimi sağlamak için farklı yöntemler kullanır:
+Farklı depolama sistemleri bu erişimi etkinleştirmek için farklı yöntemler kullanır:
 
-* Linux sunucuları ``no_root_squash`` genellikle dışa ``/etc/exports``aktarılan yola ekler.
-* NetApp ve EMC sistemleri genellikle belirli IP adreslerine veya ağlara bağlı ihracat kurallarıyla erişimi denetler.
+* Linux sunucuları, içindeki ``no_root_squash`` ' de bulunan ``/etc/exports``yola genellikle eklenir.
+* NetApp ve EMC Sistemleri, genellikle belirli IP adreslerine veya ağlara bağlı olan dışa aktarma kurallarıyla erişimi denetler.
 
-Dışa aktarma kuralları kullanıyorsanız, önbelleğin önbellek alt netinden birden çok farklı IP adresi kullanabileceğini unutmayın. Tüm olası subnet IP adreslerinden erişime izin verin.
+Dışarı aktarma kuralları kullanılıyorsa, önbelleğin önbellek alt ağından birden çok farklı IP adresi kullandığını unutmayın. Olası alt ağ IP adreslerinden oluşan tam aralıktan erişime izin verin.
 
 > [!NOTE]
-> Varsayılan olarak, Azure HPC Önbelleği kök erişimini ezer. Ayrıntılar için [ek önbellek ayarlarını Yapılandır'ı](configuration.md#configure-root-squash) okuyun.
+> Varsayılan olarak, Azure HPC Cache squashes kök erişimi. Ayrıntılar için [ek önbellek ayarlarını yapılandırma](configuration.md#configure-root-squash) makalesini okuyun.
 
-Önbellek için doğru erişim düzeyini etkinleştirmek için NAS depolama satıcınızla birlikte çalışın.
+Önbellek için doğru erişim düzeyini etkinleştirmek üzere, NAS depolama satıcınızla birlikte çalışın.
 
-### <a name="allow-root-access-on-directory-paths"></a>Dizin yollarında kök erişimine izin verme
+### <a name="allow-root-access-on-directory-paths"></a>Dizin yollarında kök erişimine izin ver
 <!-- linked in prereqs article -->
 
-Hiyerarşik dizinler dışa aktaran NAS sistemleri için Azure HPC Önbelleği'nin her dışa aktarım düzeyine kök erişimi gerekir.
+Hiyerarşik dizinleri dışarı veren NAS sistemlerinde, Azure HPC Cache her bir dışarı aktarma düzeyine kök erişimi gerektirir.
 
-Örneğin, bir sistem şu gibi üç dışa aktarma gösterebilir:
+Örneğin, bir sistem aşağıdaki gibi üç dışarı aktarma gösterebilir:
 
 * ``/ifs``
 * ``/ifs/accounting``
 * ``/ifs/accounting/payroll``
 
-İhracat ``/ifs/accounting/payroll`` bir çocuk ``/ifs/accounting``, ``/ifs/accounting`` ve kendisi bir ``/ifs``çocuktur .
+Dışa aktarma ``/ifs/accounting/payroll`` bir alt öğesidir ``/ifs/accounting``ve ``/ifs/accounting`` kendisi öğesinin ``/ifs``bir alt öğesidir.
 
-Dışa aktarmayı ``payroll`` Bir HPC önbellek depolama hedefi olarak ``/ifs/`` eklerseniz, önbellek aslında bağlanır ve bordro dizinine buradan erişer. Bu nedenle Azure HPC Önbelleği'nin ``/ifs/accounting/payroll`` dışa aktarışa erişmek için kök erişimine ``/ifs`` ihtiyacı vardır.
+``payroll`` DıŞARı aktarmayı HPC önbellek depolama hedefi olarak eklerseniz, önbellek aslında bundan sonra bordro dizinine takar ``/ifs/`` ve erişir. Bu nedenle, ``/ifs/accounting/payroll`` Azure HPC önbelleğinin dışarı aktarmaya ``/ifs`` erişmesi için kök erişimine ihtiyacı vardır.
 
-Bu gereksinim, depolama sisteminin sağladığı dosya tutamaçları kullanılarak önbelleğin dosyaları dizinlere ve dosya çakışmasını önleme biçimiyle ilgilidir.
+Bu gereksinim, önbelleğin dosyaları dizinlediği ve dosya çakışmalarını önleyen, depolama sisteminin sağladığı Dosya tutamaçları ile ilgilidir.
 
-Hiyerarşik dışa aktarımlara sahip bir NAS sistemi, dosya farklı dışa aktarımlardan retrieveedilirse, aynı dosya için farklı dosya tutamaçları verebilir. Örneğin, bir istemci ``/ifs/accounting`` dosyayı monte ``payroll/2011.txt``edebilir ve erişebilir. Başka bir ``/ifs/accounting/payroll`` istemci dosyayı ``2011.txt``bağlar ve erişir. Depolama sisteminin dosyayı nasıl atadığına bağlı olarak, bu iki istemci aynı dosyayı ``<mount2>/payroll/2011.txt`` farklı dosya ``<mount3>/2011.txt``işletmeleriyle (biri için ve diğeri için) alabilir.
+Hiyerarşik dışarı aktarmalar içeren bir NAS sistemi, dosya farklı dışarı aktarımlardan alınırsa aynı dosya için farklı dosya tanıtıcıları verebilir. Örneğin, bir istemci dosyasına ``/ifs/accounting`` ``payroll/2011.txt``bağlayabilir ve erişebilir. Başka bir istemci ``/ifs/accounting/payroll`` dosyaya ``2011.txt``takar ve erişir. Depolama sisteminin dosya tanıtıcılarını nasıl atamadığına bağlı olarak, bu iki istemci farklı Dosya tanıtıcılarla aynı dosyayı alabilir (diğeri için ``<mount2>/payroll/2011.txt`` bir için ``<mount3>/2011.txt``).
 
-Arka uç depolama sistemi dosya tanıtıcıları için dahili diğer adları tutar, ancak Azure HPC Önbelleği dizin başvurusunda hangi dosyanın aynı öğeyi işaret ettiğini söyleyemez. Bu nedenle önbelleğin aynı dosya için önbelleğe alınmış farklı yazmaları olabilir ve aynı dosya olduğunu bilmediği için değişiklikleri yanlış uygulayabilir.
+Arka uç depolama sistemi, dosya tanıtıcıları için iç diğer adları tutar, ancak Azure HPC önbelleği, dizinindeki hangi dosya tanıtıcılarının aynı öğeye başvurulacağını söyleyebilir. Bu nedenle, önbelleğin aynı dosya için önbelleğe alınmış farklı yazmaları olabilir ve aynı dosya olduğunu bilmez çünkü değişiklikleri yanlış bir şekilde uygulayabilir.
 
-Azure HPC Önbelleği, birden çok dışaktaki dosyalar için bu olası dosya çakışmasını önlemek için, otomatik olarak yoldaki en sığ kullanılabilir dışa aktarıma (örnekte)``/ifs`` bağlanır ve bu dışa aktarmadan verilen dosya tutamacını kullanır. Birden çok dışak aynı temel yolu kullanıyorsa, Azure HPC Önbelleği'nin bu yola kök erişimi gerekir.
+Birden çok dışarı aktarmada bulunan dosyalar için bu olası dosya çarpışmasını önlemek için Azure HPC Cache, yoldaki (``/ifs`` örnekteki) otomatik olarak kullanılabilir dışarı aktarmayı otomatik olarak bağlar ve bu dışarı aktarma işleminden verilen dosya tanıtıcısını kullanır. Birden çok dışa aktarma aynı temel yolu kullanıyorsa, Azure HPC Cache 'in bu yola kök erişimi olması gerekir.
 
-## <a name="enable-export-listing"></a>İhracat girişini etkinleştirme
+## <a name="enable-export-listing"></a>Dışarı aktarma listesini etkinleştir
 <!-- link in prereqs article -->
 
-Azure HPC Önbelleği sorguladığında NAS dışa aktarımlarını listelemelidir.
+Azure HPC Cache tarafından sorgulandığında NAS 'ıN dışarı aktarmaları listemalıdır.
 
 Çoğu NFS depolama sisteminde, bir Linux istemcisinden aşağıdaki sorguyu göndererek bunu test edebilirsiniz:``showmount -e <storage IP address>``
 
-Mümkünse önbelleğinizle aynı sanal ağdan bir Linux istemcisi kullanın.
+Mümkünse önbelleğiniz ile aynı sanal ağdaki bir Linux istemcisini kullanın.
 
-Bu komut dışa aktarımları listelemiyorsa, önbellek depolama sisteminize bağlanmada sorun olur. Dışa aktarma girişini etkinleştirmek için NAS satıcınızla birlikte çalışın.
+Bu komut dışarı aktarmaları listemezse, önbellekte depolama sisteminize bağlanma sorunu olur. Dışarı aktarma listesini etkinleştirmek için NAS satıcınızla birlikte çalışın.
 
-## <a name="adjust-vpn-packet-size-restrictions"></a>VPN paket boyutu kısıtlamalarını ayarlama
+## <a name="adjust-vpn-packet-size-restrictions"></a>VPN paket boyutu kısıtlamalarını ayarla
 <!-- link in prereqs article and configuration article -->
 
-Önbellek ve NAS aygıtınız arasında VPN varsa, VPN tam boyutlu 1500 baytlık Ethernet paketlerini engelleyebilir. NAS ve Azure HPC Önbellek örneği arasındaki büyük değişimler tamamlanmazsa, ancak daha küçük güncelleştirmeler beklendiği gibi çalışırsa bu sorunla karşı laşabilirsiniz.
+Önbellek ve NAS cihazınız arasında bir VPN 'niz varsa VPN, tam boyutlu 1500 baytlık Ethernet paketlerini engelleyebilir. NAS ve Azure HPC önbellek örneği arasında büyük değişimler tamamlanmadığında bu sorunla karşılaşabilirsiniz, ancak daha küçük güncelleştirmeler beklendiği gibi çalışır.
 
-VPN yapılandırmanızın ayrıntılarını bilmediğiniz sürece sisteminizde bu sorun olup olmadığını anlamanın basit bir yolu yoktur. Bu sorunu denetlemenize yardımcı olabilecek birkaç yöntem aşağıda verilmiştir.
+VPN yapılandırmanızın ayrıntılarını bilmiyorsanız sisteminizde bu soruna sahip olup olmadığını belirlemenin basit bir yolu yoktur. Bu sorunu denetlemeye yardımcı olabilecek birkaç yöntem aşağıda verilmiştir.
 
-* Hangi paketlerin başarılı bir şekilde aktarım yaptığını algılamak için VPN'in her iki tarafındaki paket algılayıcılarını kullanın.
-* VPN'iniz ping komutlarına izin veriyorsa, tam boyutlu bir paket göndermeyi test edebilirsiniz.
+* Hangi paketlerin başarıyla aktarılmasını algılamak için VPN 'nin her iki tarafında da paket algılayıcılar kullanın.
+* VPN 'niz ping komutlarına izin veriyorsa, tam boyutlu bir paket göndermeyi test edebilirsiniz.
 
-  Bu seçenekleri ile NAS VPN üzerinden bir ping komutu çalıştırın. (<*storage_IP>* değeri yerine depolama sisteminizin IP adresini kullanın.)
+  Bu seçeneklerle, NAS için VPN üzerinden bir ping komutu çalıştırın. ( *<storage_IP>* değeri yerine depolama sisteminizin IP adresini kullanın.)
 
    ```bash
    ping -M do -s 1472 -c 1 <storage_IP>
    ```
 
-  Komuttaki seçenekler şunlardır:
+  Bunlar, komutundaki seçeneklerdir:
 
-  * ``-M do``- Parçalamayın
-  * ``-c 1``- Yalnızca bir paket gönder
-  * ``-s 1472``- Yükün boyutunu 1472 bayt olarak ayarlayın. Bu, Ethernet yükü için muhasebe yaptıktan sonra 1500 baytlık bir paket için maksimum boyut yüküdür.
+  * ``-M do``-Parçalara ayırma
+  * ``-c 1``-Yalnızca bir paket gönderin
+  * ``-s 1472``-Yükün boyutunu 1472 bayt olarak ayarlayın. Bu, Ethernet ek yükü için hesap oluşturulduktan sonra 1500 baytlık bir paketin en büyük boyut yüküdür.
 
   Başarılı bir yanıt şöyle görünür:
 
@@ -131,20 +131,20 @@ VPN yapılandırmanızın ayrıntılarını bilmediğiniz sürece sisteminizde b
   1480 bytes from 10.54.54.11: icmp_seq=1 ttl=64 time=2.06 ms
   ```
 
-  Ping 1472 bayt ile başarısız olursa, büyük olasılıkla bir paket boyutu sorunu vardır.
+  Ping, 1472 bayt ile başarısız olursa, büyük olasılıkla bir paket boyutu sorunu vardır.
 
-Sorunu gidermek için, uzak sistemin maksimum kare boyutunu düzgün bir şekilde algılaması için VPN'de MSS bağlamayı yapılandırmanız gerekebilir. Daha fazla bilgi edinmek için [VPN Ağ Geçidi IPsec/IKE parametreleri belgelerini](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) okuyun.
+Sorunu gidermek için, uzak sistemin en büyük çerçeve boyutunu düzgün bir şekilde algılamasını sağlamak üzere VPN üzerinde yüklenmi 'yi yapılandırmanız gerekebilir. Daha fazla bilgi için [VPN Gateway IPSec/IKE parametreleri belgelerini](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) okuyun.
 
-Bazı durumlarda, Azure HPC Önbelleği için MTU ayarını 1400 olarak değiştirmenin bir faydası olabilir. Ancak, önbellekte MTU'yu kısıtlarsanız, önbellekle etkileşimde olan istemciler ve arka uç depolama sistemleri için MTU ayarlarını da kısıtlamanız gerekir. Ayrıntılar için [ek Azure HPC Önbelleği ayarlarını yapılandır'ı](configuration.md#adjust-mtu-value) okuyun.
+Bazı durumlarda, Azure HPC önbelleği için MTU ayarının 1400 olarak değiştirilmesi yardımcı olabilir. Bununla birlikte, önbellekteki MTU değerini kısıtladığınızda, önbellek ile etkileşime geçen istemciler ve arka uç depolama sistemleri için MTU ayarlarını da kısıtlamalısınız. Ayrıntılar için [ek Azure HPC önbellek ayarlarını yapılandırın](configuration.md#adjust-mtu-value) makalesini okuyun.
 
-## <a name="check-for-acl-security-style"></a>ACL güvenlik stilini denetleyin
+## <a name="check-for-acl-security-style"></a>ACL güvenlik stilini denetle
 
-Bazı NAS sistemleri, erişim denetim listelerini (ALA)'leri geleneksel POSIX veya UNIX güvenliğiyle birleştiren karma bir güvenlik stili kullanır.
+Bazı NAS sistemleri, erişim denetim listelerini (ACL 'Ler) geleneksel POSIX veya UNIX güvenliği ile birleştiren karma bir güvenlik stili kullanır.
 
-Sisteminiz güvenlik stilini "ACL" kısaltması olmadan UNIX veya POSIX olarak bildiriyorsa, bu sorun sizi etkilemez.
+Sisteminiz, güvenlik stilini "ACL" kısaltmasının dahil edilmesi gerekmeden UNIX veya POSIX olarak raporladığında, bu sorun sizi etkilemez.
 
-ALA'lar kullanan sistemler için Azure HPC Önbelleğinin dosya erişimini denetlemek için kullanıcıya özel ek değerleri izlemesi gerekir. Bu, bir erişim önbelleği etkinleştirilerek yapılır. Erişim önbelleğini açmak için kullanıcıya yönelik bir denetim yoktur, ancak önbellek sisteminizde etkilenen depolama hedefleri için etkinleştirilmesini istemek için bir destek bileti açabilirsiniz.
+ACL kullanan sistemlerde, Azure HPC Cache 'in dosya erişimini denetlemek için kullanıcıya özgü ek değerleri izlemesi gerekir. Bu işlem, erişim önbelleği etkinleştirilerek yapılır. Erişim önbelleğini açmak için kullanıcıya yönelik bir denetim yoktur, ancak önbellek sisteminizdeki etkilenen depolama hedefleri için etkinleştirilmesini istemek üzere bir destek bileti açabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede ele alınmayan bir sorununuzun varsa, uzman yardımı almak için [bir destek bileti açın.](hpc-cache-support-ticket.md)
+Bu makalede açıklanmayan bir sorununuz varsa, uzman yardımı almak için [bir destek bileti açın](hpc-cache-support-ticket.md) .

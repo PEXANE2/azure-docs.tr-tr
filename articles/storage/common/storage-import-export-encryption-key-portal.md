@@ -1,6 +1,6 @@
 ---
-title: Alma/Dışa Aktarma hizmeti için müşteri tarafından yönetilen anahtarları yapılandırmak için Azure portalını kullanın
-description: Azure İçe Alma/Dışa Aktarma hizmeti için Azure Anahtar Kasası ile müşteri tarafından yönetilen anahtarları yapılandırmak için Azure portalını nasıl kullanacağınızı öğrenin. Müşteri tarafından yönetilen anahtarlar, erişim denetimleri oluşturmanıza, döndürmenize, devre dışı bettirmenize ve iptal etmenizi sağlar.
+title: Içeri/dışarı aktarma hizmeti için müşteri tarafından yönetilen anahtarları yapılandırmak üzere Azure portal kullanın
+description: Azure Içeri/dışarı aktarma hizmeti için Azure Key Vault ile müşteri tarafından yönetilen anahtarları yapılandırmak üzere Azure portal nasıl kullanacağınızı öğrenin. Müşteri tarafından yönetilen anahtarlar, erişim denetimleri oluşturmanıza, döndürmenize, devre dışı bırakmanızı ve iptal edebilmesini sağlar.
 services: storage
 author: alkohli
 ms.service: storage
@@ -8,103 +8,102 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ddcb47bfe8ba2b77efd8ff0aed52f1412107f0c5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: d3e4535c05ef077d14ef74310459a84af0f02fd5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456507"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176337"
 ---
-# <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Alma/Dışa Aktarma hizmeti için Azure Anahtar Kasası'nda müşteri tarafından yönetilen anahtarları kullanma
+# <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Içeri/dışarı aktarma hizmeti için Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanın
 
-Azure İçe Aktarma/Verme, sürücüleri şifreleme anahtarı yla kilitlemek için kullanılan BitLocker anahtarlarını korur. Varsayılan olarak, BitLocker anahtarları Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için müşteri tarafından yönetilen anahtarlar da sağlayabilirsiniz.
+Azure Içeri/dışarı aktarma, sürücüleri bir şifreleme anahtarı aracılığıyla kilitlemek için kullanılan BitLocker anahtarlarını korur. Varsayılan olarak, BitLocker anahtarları Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, müşteri tarafından yönetilen anahtarlar da sağlayabilirsiniz.
 
-Müşteri tarafından yönetilen anahtarlar oluşturulmalı ve Azure Anahtar Kasası'nda depolanmalıdır. Azure Anahtar Kasası hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](../../key-vault/general/overview.md)
+Müşteri tarafından yönetilen anahtarların bir Azure Key Vault oluşturulması ve depolanması gerekir. Azure Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../../key-vault/general/overview.md)
 
-Bu makalede, [Azure portalında](https://portal.azure.com/)Alma/Dışa Aktarma hizmeti yle müşteri tarafından yönetilen anahtarların nasıl kullanılacağı gösterilmektedir.
+Bu makalede, müşteri tarafından yönetilen anahtarların [Azure Portal](https://portal.azure.com/)Içeri/dışarı aktarma hizmeti ile nasıl kullanılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce şunlardan emin olun:
 
-1. Aşağıdaki talimatlara göre bir alma veya dışa aktarma işi oluşturdunuz:
+1. İçindeki yönergelere göre bir içeri veya dışarı aktarma işi oluşturdunuz:
 
-    - [Lekeler için bir alma işi oluşturun.](storage-import-export-data-to-blobs.md)
-    - [Dosyalar için bir alma işi oluşturun.](storage-import-export-data-to-files.md)
-    - [Lekeler için bir dışa aktarma işi oluşturma](storage-import-export-data-from-blobs.md)
+    - [Bloblar için bir içeri aktarma Işi oluşturun](storage-import-export-data-to-blobs.md).
+    - [Dosyalar için bir içeri aktarma Işi oluşturun](storage-import-export-data-to-files.md).
+    - [Blob 'lar için dışarı aktarma işi oluşturma](storage-import-export-data-from-blobs.md)
 
-2. BitLocker anahtarınızı korumak için kullanabileceğiniz bir anahtar bulunan mevcut bir Azure Anahtar Kasası'na sahipsiniz. Azure portalını kullanarak önemli bir kasa oluşturmayı öğrenmek için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../../key-vault/secrets/quick-create-portal.md)
+2. İçinde, BitLocker anahtarınızı korumak için kullanabileceğiniz bir anahtara sahip mevcut bir Azure Key Vault vardır. Azure portal kullanarak bir Anahtar Kasası oluşturmayı öğrenmek için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Key Vault gizli dizi ayarlama ve alma](../../key-vault/secrets/quick-create-portal.md).
 
-    - **Yumuşak silme** ve **temizleme yi yok** varolan Key Vault ayarlanır. Bu özellikler varsayılan olarak etkinleştirilir. Bu özellikleri etkinleştirmek için aşağıdaki makalelerden birinde **yumuşak silmeyi etkinleştirme** ve **Temizleme Korumasını Etkinleştirme** başlıklı bölümlere bakın:
+    - **Geçici silme** ve **temizleme** , mevcut Key Vault ayarlanır. Bu özellikler varsayılan olarak etkinleştirilmemiştir. Bu özellikleri etkinleştirmek için, aşağıdaki makalelerden birinde **geçici silme özelliğini etkinleştirme** ve **Temizleme korumasını etkinleştirme** başlıklı bölümlere bakın:
 
-        - [PowerShell ile yumuşak silme nasıl kullanılır.](../../key-vault/general/soft-delete-powershell.md)
-        - [CLI ile yumuşak silme nasıl kullanılır.](../../key-vault/general/soft-delete-cli.md)
-    - Mevcut anahtar kasası 2048 boyutunda veya daha büyük bir RSA anahtarına sahip olmalıdır. Anahtarlar hakkında daha fazla bilgi için [Azure Anahtar Kasası tuşları, sırlar ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)Key Vault **tuşlarına** bakın.
-    - Anahtar kasası, verilerinizin depolama hesabıyla aynı bölgede olmalıdır.  
-    - Varolan bir Azure Anahtar Kasası yoksa, aşağıdaki bölümde açıklandığı gibi satır satırda da oluşturabilirsiniz.
+        - [PowerShell ile geçici silme nasıl kullanılır](../../key-vault/general/soft-delete-powershell.md).
+        - [CLI ile geçici silme nasıl kullanılır](../../key-vault/general/soft-delete-cli.md).
+    - Mevcut Anahtar Kasası 2048 boyutunda bir RSA anahtarına veya daha fazlasına sahip olmalıdır. Anahtarlar hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizlilikler ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault anahtarlar** .
+    - Anahtar Kasası, verilerinizin depolama hesabıyla aynı bölgede olmalıdır.  
+    - Mevcut bir Azure Key Vault yoksa, aşağıdaki bölümde açıklandığı gibi satır içi de oluşturabilirsiniz.
 
 ## <a name="enable-keys"></a>Anahtarları etkinleştir
 
-İçe Alma/Dışa Aktarma hizmetiniz için müşteri tarafından yönetilen anahtarı yapılandırmak isteğe bağlıdır. Varsayılan olarak, İçe Alma/Dışa Aktarma hizmeti BitLocker anahtarınızı korumak için Microsoft yönetilen bir anahtar kullanır. Azure portalında müşteri tarafından yönetilen anahtarları etkinleştirmek için aşağıdaki adımları izleyin:
+Içeri/dışarı aktarma hizmetiniz için müşteri tarafından yönetilen anahtarı yapılandırmak isteğe bağlıdır. Varsayılan olarak, Içeri/dışarı aktarma hizmeti, BitLocker anahtarınızı korumak için Microsoft tarafından yönetilen bir anahtar kullanır. Azure portal müşteri tarafından yönetilen anahtarları etkinleştirmek için şu adımları izleyin:
 
-1. Alma işiniz için **Genel Bakış** bıçağına gidin.
-2. Sağ bölmede **BitLocker anahtarlarınızın nasıl şifreleneceğini seçin'i**seçin.
+1. Içeri aktarma işiniz için **genel bakış** dikey penceresine gidin.
+2. Sağ bölmede, **BitLocker anahtarlarınızın nasıl şifrelendiğini**seçin seçeneğini belirleyin.
 
-    ![Şifreleme seçeneğini seçin](./media/storage-import-export-encryption-key-portal/encryption-key-1.png)
+    ![Şifreleme seçeneğini belirleyin](./media/storage-import-export-encryption-key-portal/encryption-key-1.png)
 
-3. **Şifreleme** bıçağında, aygıt BitLocker anahtarını görüntüleyebilir ve kopyalayabilirsiniz. **Şifreleme türü**altında, BitLocker anahtarınızı nasıl korumak istediğinizi seçebilirsiniz. Varsayılan olarak, Microsoft yönetilen bir anahtar kullanılır.
+3. **Şifreleme** dikey penceresinde, cihaz BitLocker anahtarını görüntüleyebilir ve kopyalayabilirsiniz. **Şifreleme türü**altında, BitLocker anahtarınızı nasıl korumak istediğinizi seçebilirsiniz. Varsayılan olarak, Microsoft tarafından yönetilen anahtar kullanılır.
 
-    ![BitLocker tuşunu görüntüle](./media/storage-import-export-encryption-key-portal/encryption-key-2.png)
+    ![BitLocker anahtarını görüntüle](./media/storage-import-export-encryption-key-portal/encryption-key-2.png)
 
-4. Müşteri yönetilen anahtarını belirtme seçeneğiniz var. Müşteri yönetilen anahtarıseçtikten sonra, **anahtar kasasını ve anahtarı seçin.**
+4. Müşteri tarafından yönetilen anahtar belirtme seçeneğiniz vardır. Müşteri tarafından yönetilen anahtarı seçtikten sonra **Anahtar Kasası ve bir anahtar seçin**.
 
-    ![Müşteri yönetilen anahtarını seçin](./media/storage-import-export-encryption-key-portal/encryption-key-3.png)
+    ![Müşteri tarafından yönetilen anahtar seçin](./media/storage-import-export-encryption-key-portal/encryption-key-3.png)
 
-5. Azure **Key Vault bıçağından Seç tuşuile** abonelik otomatik olarak doldurulur. **Anahtar kasası**için, açılır listeden varolan bir anahtar kasası seçebilirsiniz.
+5. **Azure Key Vault anahtarı seç** dikey penceresinde, abonelik otomatik olarak doldurulur. **Anahtar Kasası**için, açılan listeden var olan bir anahtar kasasını seçebilirsiniz.
 
-    ![Azure Anahtar Kasası'nı seçin veya oluşturun](./media/storage-import-export-encryption-key-portal/encryption-key-4.png)
+    ![Azure Key Vault seçin veya oluşturun](./media/storage-import-export-encryption-key-portal/encryption-key-4.png)
 
-6. Ayrıca yeni bir anahtar tonoz oluşturmak için **yeni oluştur'u** da seçebilirsiniz. Create **tuşu tonoz bıçağında**kaynak grubunu ve anahtar kasa adını girin. Diğer tüm varsayılanları kabul edin. **Gözden Geçir + Oluştur'u**seçin.
+6. Yeni bir Anahtar Kasası oluşturmak için **Yeni oluştur** ' u de seçebilirsiniz. **Anahtar Kasası oluştur dikey**penceresinde, kaynak grubunu ve Anahtar Kasası adını girin. Diğer tüm varsayılanları kabul edin. **Gözden geçir + oluştur**' u seçin.
 
-    ![Yeni Azure Anahtar Kasası Oluşturma](./media/storage-import-export-encryption-key-portal/encryption-key-5.png)
+    ![Yeni Azure Key Vault oluştur](./media/storage-import-export-encryption-key-portal/encryption-key-5.png)
 
-7. Anahtar kasanızla ilişkili bilgileri gözden geçirin ve **Oluştur'u**seçin. Anahtar tonoz oluşturma tamamlamak için birkaç dakika bekleyin.
+7. Anahtar kasanız ile ilişkili bilgileri gözden geçirin ve **Oluştur**' u seçin. Anahtar Kasası oluşturma işleminin tamamlanabilmesi için birkaç dakika bekleyin.
 
-    ![Azure Anahtar Kasası Oluşturma](./media/storage-import-export-encryption-key-portal/encryption-key-6.png)
+    ![Azure Key Vault oluştur](./media/storage-import-export-encryption-key-portal/encryption-key-6.png)
 
-8. Azure **Anahtar Kasası'ndan Seç tuşu'nda,** varolan anahtar kasasında bir anahtar seçebilirsiniz.
+8. **Azure Key Vault anahtarı seç**' de, varolan anahtar kasasında bir anahtar seçebilirsiniz.
 
-9. Yeni bir anahtar kasası oluşturduysanız, anahtar oluşturmak için **yeni oluştur'u** seçin. RSA anahtar boyutu 2048 veya daha büyük olabilir.
+9. Yeni bir Anahtar Kasası oluşturduysanız, anahtar oluşturmak için **Yeni oluştur** ' u seçin. RSA anahtar boyutu 2048 veya daha büyük olabilir.
 
-    ![Azure Anahtar Kasası'nda yeni anahtar oluşturma](./media/storage-import-export-encryption-key-portal/encryption-key-7.png)
+    ![Azure Key Vault yeni anahtar oluştur](./media/storage-import-export-encryption-key-portal/encryption-key-7.png)
 
-    Anahtar kasasını oluşturduğunuzda yumuşak silme ve temizleme koruması etkinleştirilmezse, anahtar kasası yumuşak silme ve temizleme koruması etkin olacak şekilde güncelleştirilir.
+    Anahtar kasasını oluştururken geçici silme ve Temizleme koruması etkinleştirilmemişse, Anahtar Kasası, geçici silme ve Temizleme koruması etkin olacak şekilde güncelleştirilir.
 
-10. Anahtarınızın adını sağlayın, diğer varsayılanları kabul edin ve **Oluştur'u**seçin.
+10. Anahtarınız için ad belirtin, diğer varsayılanları kabul edin ve **Oluştur**' u seçin.
 
-    ![Yeni anahtar oluşturma](./media/storage-import-export-encryption-key-portal/encryption-key-8.png)
+    ![Yeni anahtar oluştur](./media/storage-import-export-encryption-key-portal/encryption-key-8.png)
 
-11. **Sürümü** seçin ve sonra **Seçin'i**seçin. Anahtar kasanızda bir anahtar oluşturulduğu size bildirilir.
+11. **Sürümü** seçin ve ardından **Seç**' i seçin. Anahtar Kasanızda bir anahtarın oluşturulduğunu size bildirirsiniz.
 
-    ![Anahtar kasasında oluşturulan yeni anahtar](./media/storage-import-export-encryption-key-portal/encryption-key-9.png)
+    ![Anahtar Kasası 'nda yeni anahtar oluşturuldu](./media/storage-import-export-encryption-key-portal/encryption-key-9.png)
 
-**Şifreleme** bıçağında, müşteri yönetilen anahtarınız için seçilen anahtar kasasını ve anahtarı görebilirsiniz.
+**Şifreleme** dikey penceresinde, anahtar kasasını ve müşterinizin yönettiği anahtar için seçilen anahtarı görebilirsiniz.
 
-## <a name="disable-keys"></a>Anahtarları devre dışı
+## <a name="disable-keys"></a>Anahtarları devre dışı bırak
 
-Microsoft yönetilen anahtarları yalnızca devre dışı bırakıp, alma/dışa aktarma işinin herhangi bir aşamasında müşteri yönetilen anahtarlarına taşıyabilirsiniz. Ancak, müşteri yönetilen anahtarı nı oluşturduktan sonra devre dışı kalamazsınız.
+Yalnızca Microsoft tarafından yönetilen anahtarları devre dışı bırakabilir ve içeri/dışarı aktarma işinin herhangi bir aşamasında müşterinin yönetilen anahtarlarına geçebilirsiniz. Ancak, bir kez oluşturduktan sonra müşterinin yönettiği anahtarı devre dışı bırakabilirsiniz.
 
-## <a name="troubleshoot-customer-managed-key-errors"></a>Müşteri tarafından yönetilen anahtar hatalarını giderme
+## <a name="troubleshoot-customer-managed-key-errors"></a>Müşterinin yönettiği anahtar hatalarında sorun giderme
 
-Müşteri yönetilen anahtarınızla ilgili herhangi bir hata alırsanız, sorun giderme için aşağıdaki tabloyu kullanın:
+Müşteri tarafından yönetilen anahtarınızla ilgili herhangi bir hata alırsanız, sorunlarını gidermek için aşağıdaki tabloyu kullanın:
 
-| Hata kodu     |Ayrıntılar     | Kurtarılabilir?    |
+| Hata kodu     |Ayrıntılar     | Gider?    |
 |----------------|------------|-----------------|
-| CmkErrorAccessİptal | Müşteri yönetilen anahtar uygulandı, ancak anahtar erişimi şu anda iptal edildi. Daha fazla bilgi için, anahtar erişimini nasıl [etkinleştirin' e](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)bakın.                                                      | Evet, kontrol edin: <ol><li>Anahtar kasası erişim ilkesinde hala MSI'ye sahip.</li><li>Erişim ilkesi, Get, Wrap, Unwrap için izinler sağlar.</li><li>Anahtar kasası güvenlik duvarının arkasındaki bir vNet'teyse, **Microsoft Trusted Services'a İzin Ver'in** etkin olup olmadığını denetleyin.</li></ol>                                                                                            |
-| CmkHatası Devre Dışı Bırakma      | Müşteri yönetilen anahtar uygulanır, ancak anahtar devre dışı bırakılır. Daha fazla bilgi için anahtarı nasıl [etkinleştirin' e](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate)bakın.                                                                             | Evet, anahtar sürümünü etkinleştirerek     |
-| CmkErrorNotFound      | Müşteri yönetilen bir anahtar uygulandı, ancak anahtarı bulamıyor. <br>Anahtar bekletme döneminden sonra silinir ve temizlenirse, anahtarı kurtaramazsınız. Anahtarı yedeklediyseniz, bu sorunu gidermek için anahtarı geri yükleyebilirsiniz. | Hayır, anahtar silindi ve bekletme döneminden sonra da temizlendi. <br>Evet, yalnızca müşteri anahtar yedeklenir ve geri yüklerse.  |
-| CmkErrorVaultNotFound | Müşteri yönetilen bir anahtar uygulanır, ancak anahtarla ilişkili anahtar kasasını bulamıyor.<br>Anahtar kasasını sildiyseniz, müşteri yönetilen anahtarını kurtaramazsınız.  Anahtar kasasını farklı bir kiracıya taşıdıysanız, [bkz.](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix) |   Hayır, eğer müşteri anahtar kasasını sildiyse.<br> Evet, anahtar kasakiracı göçünden geçtiyse, şu: <ol><li>anahtar kasasını eski kiracıya geri taşıyın.</li><li>set Identity = Yok ve sonra geri Identity = SystemAssigned, bu siler ve kimlik yeniden oluşturur</li></ol>|
+| Cmkerroraccessiptal edildi | Müşteri tarafından yönetilen anahtar uygulandı, ancak anahtar erişimi şu anda iptal edildi. Daha fazla bilgi için bkz. [anahtar erişimini etkinleştirme](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).                                                      | Evet, aşağıdakileri denetle: <ol><li>Anahtar Kasası hala MSI 'ye erişim ilkesinde sahiptir.</li><li>Erişim ilkesi, almak, kaydırmak, sarmadan kaldırmak için izinler sağlar.</li><li>Anahtar Kasası güvenlik duvarının arkasındaki bir vNet 'daysanız, **Microsoft güvenilir Hizmetleri 'Ne Izin ver** ' in etkinleştirilip etkinleştirilmediğini denetleyin.</li></ol>                                                                                            |
+| CmkErrorKeyDisabled      | Müşteri tarafından yönetilen anahtar uygulandı, ancak anahtar devre dışı bırakıldı. Daha fazla bilgi için bkz. [anahtarı etkinleştirme](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate).                                                                             | Evet, anahtar sürümünü etkinleştirerek     |
+| CmkErrorKeyNotFound      | Müşteri tarafından yönetilen anahtar uygulandı, ancak anahtarla ilişkili anahtar kasasını bulamıyor.<br>Anahtar kasasını sildiyseniz, müşteri tarafından yönetilen anahtarı kurtaramazsınız.  Anahtar kasasını farklı bir kiracıya geçirdiyseniz, [abonelik taşıdıktan sonra Anahtar Kasası KIRACı kimliğini değiştirme](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix)konusuna bakın. |   Anahtar kasasını sildiyseniz:<ol><li>Evet, temizleme koruma süresi içinde ise, [anahtar kasasını kurtarma](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)bölümündeki adımları kullanarak.</li><li>Temizleme koruma süresinin ötesinde, hayır.</li></ol><br>Diğer bir deyişle, Anahtar Kasası bir kiracı geçişi gerçekleştirmişse, aşağıdaki adımlardan biri kullanılarak kurtarılabilir: <ol><li>Anahtar kasasını eski kiracıya geri döndürür.</li><li>Değerini `Identity = None` ayarlayın ve ardından değerine geri ayarlayın `Identity = SystemAssigned`. Bu, yeni kimlik oluşturulduktan sonra kimliği siler ve yeniden oluşturur. Anahtar `Get`kasasının erişim ilkesindeki yeni kimlik için, `Wrap`ve `Unwrap` izinlerini etkinleştirin.</li></ol>|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Anahtar Kasası Nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+- [Azure Key Vault nedir](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

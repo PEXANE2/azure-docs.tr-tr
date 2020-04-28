@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 9bb1059087bdf8fc4eb852be7a995febc3336713
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 10fa16767061506eccf212c182e738246dc9fe7b
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115275"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867220"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Yeni dynamics 365 Business Central teklifi oluşturun
 
@@ -107,7 +107,7 @@ Teklifinizi uygun pazar yeri arama alanlarına yerleştirmek için kullanılacak
 
 Teklifinizin sürüm numarasını girin. Müşteriler bu sürümü teklifin ayrıntı sayfasında görür.
 
-### <a name="terms-and-conditions"></a>Hüküm ve koşullar
+### <a name="terms-and-conditions"></a>hüküm ve koşullar
 
 **Şartlar ve koşullar** alanında kendi yasal hüküm ve koşullarınızı sağlayın. Ayrıca, şart ve koşullarınızın bulunabileceği URL'yi de sağlayabilirsiniz. Müşterilerin teklifinizi denemeden önce bu koşulları kabul etmeleri gerekmektedir.
 
@@ -192,6 +192,9 @@ Burada teknik incelemeler, broşürler, denetim listeleri veya sunular gibi en a
 ### <a name="marketplace-images"></a>Pazar yeri görüntüleri
 
 Bu bölümde, teklifinizi müşteriye gösterirken kullanılacak logolar ve resimler sağlayabilirsiniz. Tüm görüntüler .png formatında olmalıdır. Teklif logonuzu iki boyutta yükleyin: **Küçük (48 x 48)** ve **Büyük (216 x 216)**.
+
+>[!Note]
+>Dosya yükleme sorunu yaşıyorsanız, yerel ağınızın İş Ortağı https://upload.xboxlive.com Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 

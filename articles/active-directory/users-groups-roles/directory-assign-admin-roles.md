@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 401a39d4a65c7aee67d62ed0a6ba77893a11c2d1
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 2403faf23294afbba539c7240e842f928fed83dc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101153"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181299"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -645,7 +645,7 @@ Kimlik deneyimi çerçevesinde güven çerçevesi ilkeleri oluşturun ve yöneti
 | Microsoft. Directory/kuruluş/temel/güncelleştirme | Azure Active Directory 'da kuruluştaki temel özellikleri güncelleştirin. |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
-| Microsoft. Commerce. faturalandırma/allEntities/allTasks | Office 365 faturalandırma 'nin tüm yönlerini yönetin. |
+| Microsoft. Commerce. faturalandırma/allEntities/allTasks | Faturalandırma 'nin tüm yönlerini yönetin. |
 | Microsoft. office365. webPortal/allEntities/temel/okuma | Microsoft. office365. webPortal 'daki tüm kaynaklarda temel özellikleri okuyun. |
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
@@ -755,7 +755,7 @@ Azure AD 'de cihazları yönetmek için tam erişim.
 | Microsoft. Azure. ınformationprotection/allEntities/allTasks | Azure Information Protection tüm yönlerini yönetin. |
 | Microsoft. Azure. serviceHealth/Allentitıes/allTasks | Azure hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. Azure. Supportbilet/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
-| Microsoft. Commerce. faturalandırma/allEntities/allTasks | Office 365 faturalandırma 'nin tüm yönlerini yönetin. |
+| Microsoft. Commerce. faturalandırma/allEntities/allTasks | Faturalandırma 'nin tüm yönlerini yönetin. |
 | Microsoft. Intune/allEntities/allTasks | Intune 'un tüm yönlerini yönetin. |
 | Microsoft. office365. Karmaşıssuancemanager/allEntities/allTasks | Office 365 uyumluluk Yöneticisi 'nin tüm yönlerini yönetme |
 | Microsoft. office365. desktopAnalytics/allEntities/allTasks | Masaüstü analizinin tüm yönlerini yönetin. |
@@ -1048,7 +1048,7 @@ Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez.
 
 | **Eylemler** | **Açıklama** |
 | --- | --- |
-| Microsoft. Commerce. faturalandırma/allEntities/okuma    | Office 365 faturalandırması 'nın tüm yönlerini okuyun. |
+| Microsoft. Commerce. faturalandırma/allEntities/okuma    | Faturalandırma 'nin tüm yönlerini okuyun. |
 | Microsoft. Directory/Yönetimtiveunits/Basic/Read    | Azure Active Directory ' de Yönetimtiveunits üzerindeki temel özellikleri okuyun. |
 | Microsoft. Directory/Yönetimtiveunits/Üyeler/Read    | Azure Active Directory içindeki Yönetimtiveunits. Members özelliğini okuyun. |
 | Microsoft. Directory/uygulamalar/temel/okuma    | Azure Active Directory içindeki uygulamalarda temel özellikleri okuyun. |

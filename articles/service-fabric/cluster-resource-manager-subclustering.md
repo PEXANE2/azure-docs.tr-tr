@@ -1,109 +1,109 @@
 ---
-title: Kümelenmiş ölçümlerin dengelenmesi
-description: Yerleştirme kısıtlamalarının dengeleme üzerindeki etkisi ve nasıl işleyeceğiniz
+title: Alt kümelenmiş ölçümlerin dengelenmesi
+description: Yerleştirme kısıtlamalarının dengelemeye ve nasıl işleneceğini gösteren etkisi
 author: nipavlo
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: nipavlo
-ms.openlocfilehash: 23782a86d31251cb1a3474e0395df716a2e832df
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7f571a851e4da147240c524b742bcd652bc54181
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81430649"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183134"
 ---
-# <a name="balancing-of-subclustered-metrics"></a>Kümelenmiş ölçümlerin dengelenmesi
+# <a name="balancing-of-subclustered-metrics"></a>Alt kümelenmiş ölçümlerin dengelenmesi
 
-## <a name="what-is-subclustering"></a>Subclustering nedir
+## <a name="what-is-subclustering"></a>Alt kümeleme nedir?
 
-Alt kümeleme, farklı yerleşim kısıtlamalarına sahip hizmetlerin ortak bir ölçüye sahip olması ve her ikisi nin de bunun için yük bildirmesi sonucu gerçekleşir. Hizmetler tarafından bildirilen yük önemli ölçüde farklıysa, düğümler üzerindeki toplam yük büyük bir standart sapmaya sahip olur ve mümkün olan en iyi dengeye sahip olsa bile küme dengesiz görünür.
+Alt kümeleme, farklı yerleştirme kısıtlamalarına sahip hizmetlerde ortak bir ölçüm olduğunda ve her iki raporu da bu BT için yükleme yaptığı zaman gerçekleşir. Hizmetler tarafından bildirilen yük önemli ölçüde farklıysa, düğümlerdeki Toplam yükün büyük bir standart sapması olur ve mümkün olan en iyi dengeyi elde etse bile, kümenin dengesizliği olduğu anlaşılıyor.
 
-## <a name="how-subclustering-affects-load-balancing"></a>Alt kümeleme yük dengelemeyi nasıl etkiler?
+## <a name="how-subclustering-affects-load-balancing"></a>Alt kümeleme yük dengelemeyi nasıl etkiler
 
-Hizmetler tarafından farklı düğümlerde bildirilen yük önemli ölçüde farklıysa, hiçbir düğümün olmadığı büyük bir dengesizlik varmış gibi görünebilir. Ayrıca, alt kümelenmenin neden olduğu yanlış dengesizlik gerçek dengesizlikten daha büyükse, Kaynak Yöneticisi dengeleme algoritmasını karıştırma ve kümede optimal olmayan dengeyi oluşturma potansiyeline sahiptir.
+Farklı düğümlerdeki hizmetler tarafından bildirilen yükün önemli ölçüde farklı olduğu durumlarda, hiç olmadığı büyük bir dengesizliği gibi görünebilir. Ayrıca, alt kümelemenin neden olduğu hatalı ımbakiye gerçek dengesizinden fazlaysa, Kaynak Yöneticisi Dengeleme algoritmasını karıştırıp kümedeki en iyi dengeyi elde etmek için olası olur.
 
-Örneğin, dört hizmetimiz olduğunu ve hepsinin metrik Metrik1 için bir yük raporettiğimizi varsayalım:
+Örneğin, dört hizmeti sunuyoruz ve hepsi ölçüm Metric1 için bir yük raporlarız:
 
-* Hizmet A – bir yerleşim kısıtlaması vardır "NodeType==Type1", 10 yük raporlar
-* Hizmet B – bir yerleşim kısıtlaması vardır "NodeType ==Type1", 10 yük raporlar
-* Hizmet C – "NodeType==Type2" bir yerleşim kısıtlaması vardır, 100 yük bildirir
-* Hizmet D – bir yerleşim kısıtlaması vardır "NodeType ==Type2", 100 yük raporlar
-* Ve dört düğümümüz var. Bunlardan ikitanesi "Type1" olarak nodeType kümesi ne de diğer ikisi "Type2" olarak ayarlanmıştır.
+* A hizmeti – "NodeType = = ön uç" yerleştirme kısıtlamasına sahiptir, 10 ' un bir yükünü raporlar
+* Hizmet B – "NodeType = = ön uç" yerleştirme kısıtlamasına sahiptir, 10 ' un bir yükünü raporlar
+* Service C: "NodeType = = arka uç" yerleştirme kısıtlamasına sahiptir, 100 yükünü raporlar
+* Hizmet D – "NodeType = = arka uç" yerleştirme kısıtlamasına sahiptir, 100 yükünü raporlar
+* Dört düğümünüz vardır. İkisi de, NodeType "ön uç" olarak ayarlanmış ve diğer iki "arka uç"
 
-Ve biz aşağıdaki yerleşim var:
+Aşağıdaki yerleşimi sunuyoruz:
 
 <center>
 
-![Alt kümelenmiş yerleşim örneği][Image1]
+![Alt kümelenmiş yerleştirme örneği][Image1]
 </center>
 
-Küme dengesiz görünebilir, 3 ve 4 düğümleri üzerinde büyük bir yük var, ancak bu yerleşim bu durumda mümkün olan en iyi dengeyi oluşturur.
+Küme dengesiz görünebilir, 3 ve 4. düğümlerde büyük bir yükleme yaptık, ancak bu yerleştirme bu durumda olası en iyi bakiyeyi oluşturuyor.
 
-Kaynak Yöneticisi alt kümeleme durumlarını tanıyabilir ve hemen hemen her durumda verilen durum için en uygun dengeyi üretebilir.
+Kaynak Yöneticisi, alt kümeleme durumlarını tanıyabilir ve neredeyse tüm durumlarda verilen durum için en uygun bakiyeyi üretebilir.
 
-Kaynak Yöneticisi'nin alt kümelenmiş bir ölçümü en iyi şekilde dengeleyemediğinde bazı istisnai durumlarda, alt kümelenmeyi algılamaya devam eder ve sorunu çözmenizi tavsiye edecek bir sistem durumu raporu oluşturur.
+Kaynak Yöneticisi, alt kümelenmiş bir ölçümü en iyi şekilde dengelemediği zaman bazı durumlar için alt kümelendirmeyi tespit eder ve sorunu çözmenizi sağlayacak bir sistem durumu raporu oluşturacaktır.
 
-## <a name="types-of-subclustering-and-how-they-are-handled"></a>Alt kümelenme türleri ve bunların nasıl işlenir
+## <a name="types-of-subclustering-and-how-they-are-handled"></a>Alt kümeleme türleri ve bunların nasıl işlendiği
 
-Alt kümelenme durumları üç farklı kategoriye ayırılabilir. Belirli bir alt kümelenme durumunun kategorisi, bunun Kaynak Yöneticisi tarafından nasıl işleneceğini belirler.
+Alt kümeleme durumları, üç farklı kategoride sınıflandırılabilir. Belirli bir alt kümeleme durumunun kategorisi, Kaynak Yöneticisi tarafından nasıl işleneceğini belirler.
 
-### <a name="first-category--flat-subclustering-with-disjoint-node-groups"></a>Birinci kategori – ayrık düğüm grupları ile düz alt kümeleme
+### <a name="first-category--flat-subclustering-with-disjoint-node-groups"></a>İlk kategori – ayrık düğüm gruplarıyla düz alt kümeleme
 
-Bu kategori, düğümlerin farklı gruplara ayrılabildiği ve her hizmetin yalnızca bu gruplardan birinde düğümlere yerleştirilebildiği en basit alt kümeleme biçimine sahiptir. Her düğüm yalnızca bir gruba ve bir gruba aittir. Yukarıda açıklanan durum, alt kümeleme durumlarının çoğu gibi bu kategoriye aittir. 
+Bu kategori, düğümlerin farklı gruplara ayrılabileceği ve her hizmetin yalnızca bu gruplardan birindeki düğümlere yerleştirilebileceği en basit alt kümeleme biçimine sahiptir. Her düğüm yalnızca bir gruba ve yalnızca bir gruba aittir. Yukarıda açıklanan durum, alt kümeleme durumlarının büyük bir kısmında olduğu şekilde bu kategoride yer alıyor. 
 
-Bu kategorideki durumlar için Kaynak Yöneticisi en uygun dengeyi üretebilir ve başka bir müdahaleye gerek yoktur.
+Bu kategorideki durumlar için Kaynak Yöneticisi en iyi bakiyeyi üretebilir ve daha fazla müdahale gerekmez.
 
-### <a name="second-category--subclustering-with-hierarchical-node-groups"></a>İkinci kategori – hiyerarşik düğüm grupları ile alt kümeleme
+### <a name="second-category--subclustering-with-hierarchical-node-groups"></a>İkinci kategori – hiyerarşik düğüm gruplarıyla alt kümeleme
 
-Bu durum, bir hizmet için izin verilen bir düğüm grubu, başka bir hizmet için izin verilen düğüm grubu kümesinin bir alt kümesi olduğunda ortaya çıkar. Bu durumun en yaygın örneği, bazı hizmetin tanımlanmış bir yerleşim kısıtlaması olması ve başka bir hizmetin yerleşim kısıtlaması olmaması ve herhangi bir düğüme yerleştirilemesidir.
+Bu durum, bir hizmet için izin verilen düğüm grubu, başka bir hizmet için izin verilen düğüm grubunun bir alt kümesi olduğunda meydana gelir. Bu durumun en yaygın örneği, bazı hizmette bir yerleştirme kısıtlaması olduğunda ve başka bir hizmetin yerleştirme kısıtlaması olmadığında ve herhangi bir düğüme yerleştirilebileceği durumdur.
 
 Örnek:
 
-* Hizmet A: hiçbir yerleşim kısıtlaması
-* Hizmet B: yerleşim kısıtlaması "NodeType==Type1"
-* Hizmet C: yerleşim kısıtlaması "NodeType==Type2"
+* Hizmet A: yerleştirme kısıtlaması yok
+* Hizmet B: yerleştirme kısıtlaması "NodeType = = ön uç"
+* Service C: yerleştirme kısıtlaması "NodeType = = arka uç"
 
-Bu yapılandırma, farklı hizmetler için düğüm grupları arasında bir alt küme-superset ilişkisi oluşturur.
+Bu yapılandırma, farklı hizmetlerin düğüm grupları arasında bir alt küme üst kümesi ilişkisi oluşturur.
 
 <center>
 
-![Alt küme alt kümeleri][Image2]
+![Alt küme alt kümesi alt kümeleri][Image2]
 </center>
 
-Bu durumda, bir suboptimal denge yapılır bir şans vardır.
+Bu durumda, bir alt yük dengelenmesi olasılığı vardır.
 
-Kaynak Yöneticisi bu durumu algılar ve Hizmet A'yı iki hizmete bölmenizi tavsiye eden bir sağlık raporu hazırlayacaktır – Type1 düğümlerine yerleştirilebilen Hizmet A1 ve Type2 düğümlerine yerleştirilebilen Hizmet A2. Bu bizi en iyi şekilde dengelenebilir ilk kategori durumuna geri getirecektir.
+Kaynak Yöneticisi, bu durumu tanıyacak ve arka uç düğümlerine yerleştirilebilecek bir ön uç düğümlerinde ve Service a2 hizmetine yerleştirilebilecek Service a1 hizmetini iki hizmet halinde bölmek için bir sistem durumu raporu oluşturur. Bu, en iyi şekilde dengelenebilir ilk kategori durumuna geri getirir.
 
-### <a name="third-category--subclustering-with-partial-overlap-between-node-sets"></a>Üçüncü kategori – düğüm kümeleri arasında kısmi çakışma ile alt kümeleme
+### <a name="third-category--subclustering-with-partial-overlap-between-node-sets"></a>Üçüncü kategori – düğüm kümeleri arasında kısmi çakışma olan alt kümeleme
 
-Bu durum, bazı hizmetlerin yerleştirilebileceği düğüm kümeleri arasında kısmi bir çakışma olduğunda ortaya çıkan durumdur.
+Bu durum, üzerinde bazı hizmetlerin yerleştirilebileceği düğüm kümeleri arasında kısmi bir çakışma olduğunda meydana gelir.
 
-Örneğin, NodeColor adında bir düğümüz varsa ve üç düğümüz varsa:
+Örneğin, NodeColor adlı bir Node özelliği varsa ve üç düğümünüz varsa:
 
-* Düğüm 1: DüğümColor=Kırmızı
-* Düğüm 2: DüğümColor=Mavi
-* Düğüm 2: DüğümColor=Yeşil
+* Düğüm 1: NodeColor = Red
+* Düğüm 2: NodeColor = mavi
+* Düğüm 2: NodeColor = yeşil
 
-Ve iki hizmetimiz var:
+Ve iki hizmetimiz vardır:
 
-* Hizmet A: yerleşim kısıtlaması ile "Renk ==Kırmızı || Renk ==Mavi"
-* Hizmet B: yerleşim kısıtlaması ile "Renk ==Mavi || Renk ==Yeşil"
+* Hizmet A: yerleştirme kısıtlamasıyla "Color = = Red | | Color = = mavi "
+* Hizmet B: yerleştirme kısıtlaması ile "Color = = Blue | | Color = = yeşil "
 
-Bu nedenle, Hizmet A düğümleri 1 ve 2 ve Hizmet B düğümleri 2 ve 3 yerleştirilebilir.
+Bu nedenle, A hizmeti 1 ve 2 düğümlerine yerleştirilebilir ve B hizmeti, 2 ve 3 düğümlerine yerleştirilebilir.
 
-Bu durumda, bir suboptimal denge yapılır bir şans vardır.
+Bu durumda, bir alt yük dengelenmesi olasılığı vardır.
 
-Kaynak Yöneticisi bu durumu algılar ve bazı hizmetleri bölmenizi tavsiye eden bir sağlık raporu hazırlayacaktır.
+Kaynak Yöneticisi bu durumu tanıyacak ve hizmetlerden bazılarını bölmeniz için sizi bildiren bir sistem durumu raporu oluşturacak.
 
-Bu durum için Kaynak Yöneticisi, birden çok bölme yapılabilecek ve hizmetleri bölmek için en uygun yolun hangi yol olacağını tahmin etmenin bir yolu olmadığından, hizmetlerin nasıl bölüneceği konusunda bir öneri veremez.
+Bu durumda Kaynak Yöneticisi, birden çok bölme yapılacağından ve hizmetlerin bölüneceği en uygun yöntemi tahmin etmenin bir yolu olmadığından, hizmetleri nasıl bölmeye yönelik bir teklife izin veremeyecektir.
 
-## <a name="configuring-subclustering"></a>Alt kümelemenin yapılandırılması
+## <a name="configuring-subclustering"></a>Alt kümeleme yapılandırma
 
-Kaynak Yöneticisi'nin alt kümeleme ile ilgili davranışı aşağıdaki yapılandırma parametreleri değiştirilerek değiştirilebilir:
-* SubclusteringEnabled - parametre, Kaynak Yöneticisi'nin yük dengelemesini yaparken alt kümelenmeyi dikkate alıp almayacağını belirler. Bu parametre kapatılırsa, Kaynak Yöneticisi alt kümelemayı yoklar ve genel düzeyde en iyi dengeyi sağlamaya çalışır. Bu parametrenin varsayılan değeri yanlıştır.
-* SubclusteringReportingPolicy - Kaynak Yöneticisi'nin hiyerarşik ve kısmi çakışan alt kümeleme için sistem durumu raporlarını nasıl yayacağını belirler. Sıfır değeri, alt kümeleme yle ilgili sağlık raporlarının kapatılması anlamına gelir, "1", alt kümeleme durumları için uyarı sağlık raporlarının üretileceği ve "2" değerinin "Tamam" sağlık raporları üreteceği anlamına gelir. Bu parametrenin varsayılan değeri "1"dir.
+Alt kümeleme hakkında Kaynak Yöneticisi davranışı aşağıdaki yapılandırma parametreleri değiştirilerek değiştirilebilir:
+* SubclusteringEnabled-parametresi, Yük Dengeleme yapılırken Kaynak Yöneticisi hesaba alt kümelendirmeyi alıp almayacağını belirler. Bu parametre kapatılmışsa, Kaynak Yöneticisi alt kümelendirmeyi yoksayacak ve küresel düzeyde en iyi dengeyi elde etmek için denenecek. Bu parametrenin varsayılan değeri false 'dur.
+* SubclusteringReportingPolicy-Kaynak Yöneticisi hiyerarşik ve kısmi çakışma alt Kümelemesi için nasıl durum raporları yayacağını belirler. Sıfır değeri, alt kümeleme hakkındaki sistem durumu raporlarının kapalı olduğu anlamına gelir, "1", sistem durumu raporlarının, alt kümeleme durumları ve "2" değeri "Tamam" durum raporları üretecektir. Bu parametre için varsayılan değer "1" değeridir.
 
-ClusterManifest.xml:
+ClusterManifest. xml:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -112,7 +112,7 @@ ClusterManifest.xml:
         </Section>
 ```
 
-Bağımsız dağıtımlar için ClusterConfig.json veya Azure barındırılan kümeler için Template.json aracılığıyla:
+Tek başına dağıtımlar için ClusterConfig. JSON veya Azure 'da barındırılan kümeler için Template. JSON aracılığıyla:
 
 ```json
 "fabricSettings": [
@@ -133,8 +133,8 @@ Bağımsız dağıtımlar için ClusterConfig.json veya Azure barındırılan k�
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Küme Kaynak Yöneticisi'nin kümedeki yükü nasıl yönettiği ve dengeler yaptığı hakkında bilgi edinmek [için, yükü dengeleme](service-fabric-cluster-resource-manager-balancing.md) makalesine göz atın
-* Hizmetlerinizin yalnızca belirli düğümlere yerleştirilecek şekilde nasıl sınırlandırılabildiğini öğrenmek için [Düğüm özelliklerini ve yerleşim kısıtlamalarını](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) görün
+* Kaynak Yöneticisi kümenin, kümedeki yükü nasıl yönettiğini ve dengelemediğini öğrenmek için [Yük Dengeleme](service-fabric-cluster-resource-manager-balancing.md) sayfasındaki makaleye göz atın
+* Hizmetlerinizin yalnızca belirli düğümlere yerleştirilebilecek şekilde kısıtlanmasını öğrenmek için bkz. [düğüm özellikleri ve yerleştirme kısıtlamaları](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)
 
 [Image1]:./media/cluster-resource-manager-subclustering/subclustered-placement.png
 [Image2]:./media/cluster-resource-manager-subclustering/subset-superset-nodes.png

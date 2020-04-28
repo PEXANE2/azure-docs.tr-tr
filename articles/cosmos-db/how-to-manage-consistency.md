@@ -1,73 +1,66 @@
 ---
-title: Azure Cosmos DB'de tutarlılığı yönetme
-description: Azure portalı, .Net SDK, Java SDK ve diğer çeşitli SDK'ları kullanarak Azure Cosmos DB'de tutarlılık düzeylerini nasıl yapılandırıp yönetebilirsiniz öğrenin
+title: Azure Cosmos DB tutarlılığı yönetme
+description: Azure portal, .NET SDK, Java SDK ve çeşitli diğer SDK 'Ları kullanarak Azure Cosmos DB tutarlılık düzeylerini yapılandırma ve yönetme hakkında bilgi edinin
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 04/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: 651daa0af8188b386220d97390e7a61615f94120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e18abf5d8e26dba7a48bd1deb7d53102b9971690
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369414"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184291"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB'deki tutarlılık düzeylerini yönetme
 
-Bu makalede, Azure Cosmos DB'de tutarlılık düzeylerinin nasıl yönetilenbir şekilde yönetilen. Varsayılan tutarlılık düzeyini yapılandırmayı, varsayılan tutarlılığı geçersiz kılmayı, oturum belirteçlerini el ile nasıl yöneteceğimi ve Probabilistically Bounded Satipness (PBS) ölçümlerini nasıl anlayacağınızı öğrenirsiniz.
+Bu makalede, Azure Cosmos DB ' de tutarlılık düzeylerinin nasıl yönetileceği açıklanmaktadır. Varsayılan tutarlılık düzeyini yapılandırmayı, varsayılan tutarlılığı geçersiz kılmayı, oturum belirteçlerini el ile yönetmeyi ve olasılık açısından iyi sınırlı Stalet (PBS) ölçüsünü anladığınızı öğrenirsiniz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="configure-the-default-consistency-level"></a>Varsayılan tutarlılık düzeyini yapılandırma
 
-[Varsayılan tutarlılık düzeyi,](consistency-levels.md) istemcilerin varsayılan olarak kullandığı tutarlılık düzeyidir. İstemciler her zaman geçersiz kılabilir.
+[Varsayılan tutarlılık düzeyi](consistency-levels.md) , istemcilerin varsayılan olarak kullandığı tutarlılık düzeyidir.
 
 ### <a name="cli"></a>CLI
 
+Oturum tutarlılığı olan bir Cosmos hesabı oluşturun ve ardından varsayılan tutarlılığı güncelleştirin.
+
 ```azurecli
-# create with a default consistency
-az cosmosdb create --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Session
+# Create a new account with Session consistency
+az cosmosdb create --name $accountName --resource-group $resourceGroupName --default-consistency-level Session
 
 # update an existing account's default consistency
-az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Eventual
+az cosmosdb update --name $accountName --resource-group $resourceGroupName --default-consistency-level Strong
 ```
 
 ### <a name="powershell"></a>PowerShell
 
-Bu örnek, Doğu ABD ve Batı ABD bölgelerinde birden çok yazma bölgesi etkinleştirilmiş yeni bir Azure Cosmos hesabı oluşturur. Varsayılan tutarlılık düzeyi *Oturum* tutarlılığı olarak ayarlanır.
+Oturum tutarlılığı olan bir Cosmos hesabı oluşturun ve ardından varsayılan tutarlılığı güncelleştirin.
 
 ```azurepowershell-interactive
-$locations = @(@{"locationName"="East US"; "failoverPriority"=0},
-             @{"locationName"="West US"; "failoverPriority"=1})
+# Create a new account with Session consistency
+New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+  -Location $locations -Name $accountName -DefaultConsistencyLevel "Session"
 
-$iprangefilter = ""
-
-$consistencyPolicy = @{"defaultConsistencyLevel"="Session"}
-
-$CosmosDBProperties = @{"databaseAccountOfferType"="Standard";
-                        "locations"=$locations;
-                        "consistencyPolicy"=$consistencyPolicy;
-                        "ipRangeFilter"=$iprangefilter;
-                        "enableMultipleWriteLocations"="true"}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-  -ApiVersion "2015-04-08" `
-  -ResourceGroupName "myResourceGroup" `
-  -Location "East US" `
-  -Name "myCosmosDbAccount" `
-  -Properties $CosmosDBProperties
+# Update an existing account's default consistency
+Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+  -Name $accountName -DefaultConsistencyLevel "Strong"
 ```
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
-Varsayılan tutarlılık düzeyini görüntülemek veya değiştirmek için Azure portalında oturum açın. Azure Cosmos hesabınızı bulun ve **Varsayılan tutarlılık** bölmesini açın. Yeni varsayılan olarak istediğiniz tutarlılık düzeyini seçin ve sonra **Kaydet'i**seçin. Azure portalı, müzik notalarıyla farklı tutarlılık düzeylerinin görselleştirilmesini de sağlar. 
+Varsayılan tutarlılık düzeyini görüntülemek veya değiştirmek için Azure portal oturum açın. Azure Cosmos hesabınızı bulun ve **varsayılan tutarlılık** bölmesini açın. Yeni varsayılan olarak istediğiniz tutarlılık düzeyini seçin ve ardından **Kaydet**' i seçin. Azure portal Ayrıca, müzik notlarıyla farklı tutarlılık seviyelerinin bir görselleştirmesi sağlar. 
 
-![Azure portalında tutarlılık menüsü](./media/how-to-manage-consistency/consistency-settings.png)
+![Azure portal tutarlılık menüsü](./media/how-to-manage-consistency/consistency-settings.png)
 
 ## <a name="override-the-default-consistency-level"></a>Varsayılan tutarlılık düzeyini geçersiz kılma
 
-İstemciler, hizmet tarafından belirlenen varsayılan tutarlılık düzeyini geçersiz kılabilir. Tutarlılık düzeyi, hesap düzeyinde ayarlanan varsayılan tutarlılık düzeyini geçersiz kılan istek başına ayarlanabilir.
+İstemciler, hizmet tarafından belirlenen varsayılan tutarlılık düzeyini geçersiz kılabilir. Tutarlılık düzeyi istek başına ayarlanabilir ve bu, hesap düzeyinde ayarlanan varsayılan tutarlılık düzeyini geçersiz kılar.
+
+> [!TIP]
+> Tutarlılık yalnızca istek düzeyinde **gevşek** olabilir. Daha zayıf bir tutarlılığa geçiş yapmak için Cosmos hesabının varsayılan tutarlılığını güncelleştirin.
 
 ### <a name="net-sdk-v2"></a><a id="override-default-consistency-dotnet"></a>.NET SDK V2
 
@@ -89,8 +82,8 @@ ItemRequestOptions requestOptions = new ItemRequestOptions { ConsistencyLevel = 
 
 var response = await client.GetContainer(databaseName, containerName)
     .CreateItemAsync(
-        item, 
-        new PartitionKey(itemPartitionKey), 
+        item,
+        new PartitionKey(itemPartitionKey),
         requestOptions);
 ```
 
@@ -140,9 +133,9 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 
 ## <a name="utilize-session-tokens"></a>Oturum belirteçlerini kullanma
 
-Azure Cosmos DB'deki tutarlılık düzeylerinden biri *Oturum* tutarlılığıdır. Bu, varsayılan olarak Cosmos hesaplarına uygulanan varsayılan düzeydir. *Oturum* tutarlılığı yla çalışırken, istemci ayarlanan tutarlılık düzeyinin korunduğundan emin olmak için her okuma/sorgu isteğiyle birlikte dahili olarak bir oturum belirteci kullanır.
+Azure Cosmos DB ' deki tutarlılık düzeylerinden biri *oturum* tutarlılığı. Bu, varsayılan olarak Cosmos hesaplarına uygulanan varsayılan düzeydir. *Oturum* tutarlılığı ile çalışırken, istemci, ayarlanan tutarlılık düzeyinin korunmasını sağlamak için her bir okuma/sorgu isteğiyle dahili olarak bir oturum belirteci kullanır.
 
-Oturum belirteçlerini el ile yönetmek için, yanıttan oturum belirteci alın ve istek başına ayarlayın. Oturum belirteçlerini el ile yönetmeniz gerekmiyorsa, bu örnekleri kullanmanız gerekmez. SDK oturum belirteçlerini otomatik olarak izler. Oturum belirteci'ni el ile ayarlamazsanız, varsayılan olarak, SDK en son oturum belirteci kullanır.
+Oturum belirteçlerini el ile yönetmek için, yanıttan oturum belirtecini alın ve istek başına bunları ayarlayın. Oturum belirteçlerini el ile yönetmeniz gerekmiyorsa, bu örnekleri kullanmanız gerekmez. SDK oturum belirteçlerini otomatik olarak izler. Oturum belirtecini el ile ayarlamazsanız, SDK varsayılan olarak en son oturum belirtecini kullanır.
 
 ### <a name="net-sdk-v2"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
 
@@ -231,18 +224,17 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Olasılığa Dayalı Sınırlanmış Eskime Durumu (PBS) ölçümünü izleme
 
-Nihai tutarlılık ne kadar nihaidir? Ortalama bir durumda, sürüm geçmişi ve zamanı ile ilgili bayatlık sınırları sunabilir. [**Probabilistically Bounded Bayatlık (PBS)**](https://pbs.cs.berkeley.edu/) metrik bayatlık olasılığını ölçmek için çalışır ve bir metrik olarak gösterir. PBS ölçümünü günü günü günü günü almak için Azure portalı **Ölçümler** bölmesini açın ve **Tutarlılık** sekmesini seçin. İş yükünüze göre güçlü tutarlı okuma olasılığı adlı grafiğe bakın **(Bkz. PBS)**.
+Ne kadar nihai tutarlılık? Ortalama durumda, sürüm geçmişi ve saatine göre, eskime sınırları sunarız. [**Olasılığa göre sınırlı stalet (PBS)**](https://pbs.cs.berkeley.edu/) ölçümü, eskime olasılığını ölçmenizi ve bunu bir ölçüm olarak gösterir. PBS ölçüsünü görüntülemek için Azure portal Azure Cosmos hesabınıza gidin. **Ölçümler** bölmesini açın ve **tutarlılık** sekmesini seçin. **iş yükünüze göre sağlam tutarlı okuma olasılığı**adlı GRAFIĞE göz atın (bkz. PBS).
 
-![Azure portalında PBS grafiği](./media/how-to-manage-consistency/pbs-metric.png)
-
+![Azure portal PBS grafiği](./media/how-to-manage-consistency/pbs-metric.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri çakışmalarını nasıl yönetecek veya Azure Cosmos DB'deki bir sonraki anahtar kavramına geçme hakkında daha fazla bilgi edinin. Aşağıdaki makalelere bakın:
+Veri çakışmalarını yönetme veya Azure Cosmos DB bir sonraki anahtar kavramına geçme hakkında daha fazla bilgi edinin. Aşağıdaki makalelere bakın:
 
-* [Azure Cosmos DB'de Tutarlılık Düzeyleri](consistency-levels.md)
+* [Azure Cosmos DB 'deki tutarlılık düzeyleri](consistency-levels.md)
 * [Bölgeler arasındaki çakışmaları yönetme](how-to-manage-conflicts.md)
 * [Bölümleme ve veri dağıtımı](partition-data.md)
-* [Modern dağıtılmış veritabanı sistemleri tasarımında tutarlılık dengeleri](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+* [Modern dağıtılmış veritabanı sistemleri tasarımında tutarlılık avantajları](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [Yüksek kullanılabilirlik](high-availability.md)
-* [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+* [SLA Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc41a18063202bfefb9ddf7238de17fc691984af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 28e591234e28770a90bed827e4d36c6342661dd1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77612147"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866595"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory’de Öznitelik Eşlemeleri için İfadeler Yazma
 Bir SaaS uygulamasına sağlama yı yapılandırdığınızda, belirtebileceğiniz öznitelik eşlemetürtürtürtür. Bunlar için, kullanıcılarınızın verilerini SaaS uygulaması için daha kabul edilebilir biçimlere dönüştürmenize olanak tanıyan komut dosyası na benzer bir ifade yazmanız gerekir.
@@ -29,7 +29,7 @@ Bir SaaS uygulamasına sağlama yı yapılandırdığınızda, belirtebileceğin
 
 * İfadenin tamamı, parantez içinde bağımsız değişkenlerin ardından gelen bir addan oluşan işlevler açısından tanımlanmalıdır: <br>
   *Fonksiyon`<<argument 1>>`Adı(`<<argument N>>`, )*
-* İşlevleri birbirinuzun içine yerleştirmeniz gerekebilir. Örnek: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
+* İşlevleri birbirinuzun içine yerleştirmeniz gerekebilir. Örneğin: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * Üç farklı türde bağımsız değişkeni işlevlere geçirebilirsiniz:
   
   1. Öznitelikleri, kare parantez içinde eklenmelidir. Örneğin: [öznitelikName]
@@ -38,7 +38,7 @@ Bir SaaS uygulamasına sağlama yı yapılandırdığınızda, belirtebileceğin
 * Dize sabitleri için, dizedeki bir ters eğik çizgi ( \ ) veya tırnak işaretine ( " ) ihtiyacınız varsa, ters eğik çizgi ( \ ) simgesiyle birlikte kaçmış olmalıdır. Örneğin: "Şirket adı: \\"Contoso\\""
 
 ## <a name="list-of-functions"></a>İşlevler Listesi
-[Ek](#append) &nbsp; &nbsp; &nbsp; &nbsp; [BitAnd](#bitand) &nbsp; &nbsp; [Count](#count) [CBool](#cbool) &nbsp; &nbsp; [CStr](#cstr) [Coalesce](#coalesce) &nbsp; &nbsp; &nbsp; [ConvertToBase64](#converttobase64) &nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp; CBool &nbsp; &nbsp; Coalesce &nbsp; &nbsp; ConvertToBase64 &nbsp; ConvertToUTF8Hex Count CStr &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Guid](#guid) &nbsp; [IIF](#iif) &nbsp; [InStr](#instr) &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; [DateFromNum](#datefromnum) &nbsp; &nbsp; &nbsp; [IsNullOrEmpty](#isnullorempty) [IsNull](#isnull) DateFromNum &nbsp; &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp; Guid &nbsp; &nbsp; IIF &nbsp; InStr &nbsp; IsNullIsNullOrEmpty &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [IsPresent](#ispresent) &nbsp; &nbsp; &nbsp; [IsString](#isstring) &nbsp; &nbsp; [Item](#item) &nbsp; [Mid](#mid) [Left](#left) [Join](#join) [Not](#not) [NormalizeDiacritics](#normalizediacritics) IsString &nbsp; &nbsp; Öğesi &nbsp; Join &nbsp; Sol &nbsp; Orta &nbsp; NormalizeDiacritics &nbsp; Değil &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; [Split](#split) RemoveDuplicates &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) SelectUniqueValue&nbsp; SingleAppRoleAssignment&nbsp; Split değiştirin&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ Stripspaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) [Switch](#switch) &nbsp; [Word](#word) [ToUpper](#toupper) Tolower&nbsp; Toupper&nbsp; Word'e geçiş&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+[Ek](#append) &nbsp; &nbsp; &nbsp; &nbsp; [BitVe](#bitand) &nbsp; &nbsp; &nbsp; [CBool](#cbool) &nbsp; [Not](#not) [Guid](#guid) &nbsp; [Mid](#mid) [Count](#count) &nbsp; [Item](#item) &nbsp; [Left](#left) [Join](#join) [CStr](#cstr) &nbsp; &nbsp; &nbsp; [InStr](#instr) &nbsp; &nbsp; [IIF](#iif) &nbsp; &nbsp; [IsPresent](#ispresent) &nbsp; [Replace](#replace) [FormatDateTime](#formatdatetime) &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) [RemoveDuplicates](#removeduplicates) [Coalesce](#coalesce) &nbsp; &nbsp; &nbsp; &nbsp; [IsString](#isstring) &nbsp; [DateFromNum](#datefromnum) &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [IsNull](#isnull) &nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp; [ConvertToBase64](#converttobase64) &nbsp; &nbsp; &nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp; &nbsp; &nbsp; &nbsp; CBool &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Coalesce &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp; &nbsp; Count &nbsp; &nbsp; &nbsp; &nbsp; CStr &nbsp; &nbsp; DateFromNum &nbsp; &nbsp; FormatDateTime &nbsp; Guid &nbsp; &nbsp; IIF &nbsp; &nbsp; InStr IsNull IsNullOrEmpty &nbsp; IsPresent &nbsp; IsString &nbsp; Madde &nbsp; Birleştirme Sol &nbsp; Orta &nbsp; NormalizeDiacritics Not RemoveDuplicates SelectUniqueValue değiştir &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) [Split](#split)&nbsp; [Word](#word) [StripSpaces](#stripspaces) &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) [ToUpper](#toupper) SingleAppRoleAssignment&nbsp; Split&nbsp;&nbsp; Stripspaces&nbsp; geçiş&nbsp; tolower&nbsp; toupper&nbsp; word&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
 ---
 ### <a name="append"></a>Ekle
@@ -461,7 +461,7 @@ Dize içindeki değerleri değiştirir. Sağlanan parametrelere bağlı olarak f
 | **regexGroupName** |İsteğe bağlı |Dize |**RegexPattern**içindeki grubun adı. Sadece **değiştirmePropertyName** kullanıldığında, biz **değiştirmeValue** olarak bu grubun değerini ayıklamak **gerekirPropertyName**. |
 | **değiştirmeDeğer** |İsteğe bağlı |Dize |Eskisini değiştirmek için yeni bir değer. |
 | **değiştirmeAttributeName** |İsteğe bağlı |Dize |Değiştirme değeri için kullanılacak özniteliğin adı |
-| **şablon** |İsteğe bağlı |Dize |**Şablon** değeri sağlandığında, şablonun içindeki **oldValue'ı** arar ve **kaynak** değeriyle değiştiririz. |
+| **Şablon** |İsteğe bağlı |Dize |**Şablon** değeri sağlandığında, şablonun içindeki **oldValue'ı** arar ve **kaynak** değeriyle değiştiririz. |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -469,11 +469,11 @@ Dize içindeki değerleri değiştirir. Sağlanan parametrelere bağlı olarak f
 
 **Açıklama:**<br> İfadeler kullanılarak tanımlanan benzersiz değer oluşturma kuralları olan en az iki bağımsız değişken gerektirir. İşlev her kuralı değerlendirir ve hedef uygulama/dizinde benzersizlik için oluşturulan değeri denetler. Bulunan ilk benzersiz değer döndürülen değer olacaktır. Tüm değerler hedefte zaten varsa, giriş emanet alır ve nedeni denetim günlüklerinde günlüğe kaydedilir. Sağlanabilir bağımsız değişken sayısına bir üst sınır yoktur.
 
-> [!NOTE]
-> - Bu üst düzey bir işlevdir, iç içe geçemez.
-> - Bu işlev, eşleşen bir önceliğe sahip özniteliklere uygulanamaz.  
-> - Bu işlev yalnızca giriş oluşturmaları için kullanılmak üzere dir. Bir öznitelik ile kullanırken, **Nesne oluşturma sırasında Yalnızca** **Eşleme Uygula** özelliğini ayarlayın.
-> - Bu işlev şu anda yalnızca "Active Directory User Provisioning için Çalışma Günü" için desteklenir. Diğer sağlama uygulamaları ile kullanılamaz. 
+
+ - Bu üst düzey bir işlevdir, iç içe geçemez.
+ - Bu işlev, eşleşen bir önceliğe sahip özniteliklere uygulanamaz.   
+ - Bu işlev yalnızca giriş oluşturmaları için kullanılmak üzere dir. Bir öznitelik ile kullanırken, **Nesne oluşturma sırasında Yalnızca** **Eşleme Uygula** özelliğini ayarlayın.
+ - Bu işlev şu anda yalnızca "Active Directory User Provisioning için Çalışma Günü" için desteklenir. Diğer sağlama uygulamaları ile kullanılamaz. 
 
 
 **Parametre:**<br> 

@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 2d6cae3a7a41eae05783d3bcc12ec2bfe8220c4c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 9b771a82d88f9902aeb6022f07811ded8a6e0e62
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82148316"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192842"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>Azure Cosmos DB için Cassandra API hakkında sık sorulan sorular
 
 ## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Apache Cassandra ve Cassandra API arasında bazı önemli farklılıklar nelerdir?
 
-- Apache Cassandra, Bölüm anahtarının boyutunda 100 MB 'lik bir sınır önerir. Azure Cosmos DB için Cassandra API, bölüm başına 10 GB 'a kadar izin verir.
+- Apache Cassandra, Bölüm anahtarının boyutunda 100 MB 'lik bir sınır önerir. Azure Cosmos DB için Cassandra API, bölüm başına 20 GB 'a kadar izin verir.
 - Apache Cassandra, dayanıklı işlemeleri devre dışı bırakmanızı sağlar. Kayıt günlüğüne yazmayı atlayabilir ve doğrudan memtables 'a gidebilirsiniz. Bu, düğüm, memtables 'ın disk üzerindeki SSTables 'a boşaltılmadan önce gelmesi durumunda veri kaybına yol açabilir. Azure Cosmos DB, veri kaybını önlemeye yardımcı olmak için her zaman sürekli olarak işlemeler uygular.
 - İş yükü birçok değişiklik veya silme işlemi içeriyorsa Apache Cassandra performansı azalyor olabilir. Bu nedenle, okuma iş yükünün en son verileri getirmek için atlamasını gerektiren kaldırıldı. İş yükünde çok sayıda değişiklik veya silme işlemi olduğunda Cassandra API, azalmayacak okuma performansını görmez.
 - Yüksek değişim iş yükleri senaryolarında SSTables 'ı diskte birleştirmek için düzenleme işleminin çalıştırılması gerekir. (Apache Cassandra yazmaları yalnızca Append olduğundan birleştirme gerekir. Birden çok güncelleştirme düzenli olarak birleştirilmek zorunda olan tek tek kalıcı girişler olarak depolanır. Bu durum, sıkıştırma sırasında daha fazla okuma performansına da yol açabilir. API, sıkıştırma uygulamadığından, bu performans etkisi Cassandra API olmaz.

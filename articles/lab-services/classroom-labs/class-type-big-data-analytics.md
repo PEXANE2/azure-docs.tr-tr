@@ -1,6 +1,6 @@
 ---
-title: Azure Laboratuvar Hizmetlerini kullanarak büyük veri analitiği öğretmek için bir laboratuvar ayarlayın | Microsoft Dokümanlar
-description: Hortonworks Veri Platformu'nun (HDP) Docker dağıtımını kullanarak büyük veri analitiğini öğretmek için nasıl bir laboratuvar kurup kurabilirsiniz öğrenin.
+title: Azure Lab Services kullanarak büyük veri analizlerini öğretmek için laboratuvar ayarlama | Microsoft Docs
+description: Hortonçalışmalar veri platformunun (HDP) Docker dağıtımını kullanarak büyük veri analizlerini öğretmek için laboratuvar ayarlamayı öğrenin.
 services: lab-services
 documentationcenter: na
 author: nicolela
@@ -14,123 +14,123 @@ ms.topic: article
 ms.date: 4/15/2020
 ms.author: nicolela
 ms.openlocfilehash: c499b7a0f1cd16bf57fef21742b01bda71249916
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538784"
 ---
-# <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>HortonWorks Veri Platformu'nun Docker dağıtımını kullanarak büyük veri analitiği için bir laboratuvar ayarlama
+# <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Hortonçalışmalar veri platformunun Docker dağıtımını kullanarak büyük veri analizlerinin bir laboratuvarını ayarlama
 
-Bu makalede, büyük bir veri analizi sınıföğretmek için bir laboratuvar kurmak nasıl gösterir.  Bu tür bir sınıfla, öğrenciler büyük hacimli verileri nasıl işleyeceğini ve veri öngörüleri elde etmek için makine ve istatistiksel öğrenme algoritmaları kullanmayı öğrenirler.  Öğrenciler için temel bir amaç, [Apache Hadoop'un](https://hadoop.apache.org/) büyük verileri depolamak, yönetmek ve işlemek için araçlar sağlayan açık kaynak yazılım paketi gibi veri analizi araçlarını kullanmayı öğrenmektir.
+Bu makalede, büyük bir veri analizi sınıfı öğretmek için bir laboratuvarın nasıl ayarlanacağı gösterilmektedir.  Bu tür bir sınıfta, öğrenciler büyük hacimlere yönelik verileri nasıl işleyeceğinizi ve veri öngörüleri türetmede makine ve istatistiksel öğrenme algoritmaları uygulamayı öğreniyor.  Öğrenciler için önemli bir amaç, büyük verileri depolamak, yönetmek ve işlemek için araçlar sağlayan [Apache Hadoop açık kaynaklı yazılım paketi](https://hadoop.apache.org/) gibi veri analizi araçlarını kullanmayı öğrenmektir.
 
-Bu laboratuvarda, öğrenciler [Hadoop Cloudera](https://www.cloudera.com/)tarafından sağlanan popüler bir ticari sürümünü kullanacak , [Hortonworks Veri Platformu (HDP)](https://www.cloudera.com/products/hdp.html)denir.  Özellikle öğrenciler, platformun ücretsiz olarak basitleştirilmiş, kullanımı kolay ve öğrenme ve deney amaçlı bir versiyonu olan [HDP Sandbox 3.0.1'i](https://www.cloudera.com/tutorials/getting-started-with-hdp-sandbox/1.html) kullanacaklar.  Bu sınıf, HDP Sandbox dağıtılmış Windows veya Linux sanal makineleri (VM) kullanabilse de, bu makalede Windows'un nasıl kullanılacağı gösterilecek.
+Bu laboratuvarda, öğrenciler, [Hortonçalışmalar veri platformu (HDP)](https://www.cloudera.com/products/hdp.html)olarak adlandırılan [Cloudera](https://www.cloudera.com/)tarafından verilen popüler bir Hadoop sürümü kullanacaktır.  Özel olarak, öğrenciler ücretsiz ve öğrenme ve deneme için tasarlanan, platformun Basitleştirilmiş, kullanımı kolay bir sürümü olan [HDP Sandbox 3.0.1](https://www.cloudera.com/tutorials/getting-started-with-hdp-sandbox/1.html) kullanır.  Bu sınıf, HDP korumalı alanı dağıtılan Windows veya Linux sanal makinelerini (VM) kullanabilir, ancak bu makalede Windows 'un nasıl kullanılacağı gösterilir.
 
-Bu laboratuvarın bir diğer ilginç yönü de, [Docker](https://www.docker.com/) konteynerlerini kullanarak HDP Sandbox'ı laboratuvar VM'lerine konuşlandırmamız.  Her Docker kapsayıcısı, yazılım uygulamalarının içinde çalışması için kendi yalıtılmış ortamını sağlar.  Kavramsal olarak, Docker kapsayıcıları iç içe vm'ler gibidir ve [Docker Hub'da](https://www.docker.com/products/docker-hub)sağlanan kapsayıcı görüntülerine dayalı çok çeşitli yazılım uygulamalarını kolayca dağıtmak ve çalıştırmak için kullanılabilir.  Cloudera'nın HDP Sandbox için dağıtım komut [dosyası, HDP Sandbox 3.0.1 Docker görüntüsünü](https://hub.docker.com/r/hortonworks/sandbox-hdp) Docker Hub'dan otomatik olarak çeker ve iki Docker kapsayıcısı çalıştırır:
-  - kum havuzu-hdp
-  - kum havuzu-proxy
+Bu laboratuvarın başka bir ilginç yönü de, [Docker](https://www.docker.com/) kapsayıcıları kullanılarak laboratuvar VM 'lerinde HDP korumalı alanı dağıtacağız.  Her Docker kapsayıcısı, yazılım uygulamalarının içinde çalışması için kendi yalıtılmış ortamını sağlar.  Kavramsal olarak Docker kapsayıcıları, iç içe geçmiş VM 'Ler gibidir ve [Docker Hub 'ında](https://www.docker.com/products/docker-hub)sunulan kapsayıcı görüntülerine göre çok çeşitli yazılım uygulamalarını kolayca dağıtmak ve çalıştırmak için kullanılabilir.  HDP korumalı alan için Cloudera 'nın dağıtım betiği, Docker Hub 'ından [HDP Sandbox 3.0.1 Docker görüntüsünü](https://hub.docker.com/r/hortonworks/sandbox-hdp) otomatik olarak çeker ve Iki Docker kapsayıcısı çalıştırır:
+  - korumalı alan-HDP
+  - korumalı alan-ara sunucu
 
 ## <a name="lab-configuration"></a>Laboratuvar yapılandırması
 
-Bu laboratuarı kurmak için başlamak için bir Azure aboneliğine ve laboratuvar hesabına ihtiyacınız var. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun. Azure aboneliği ni aldıktan sonra Azure Lab Hizmetleri'nde yeni bir laboratuvar hesabı oluşturabilirsiniz. Yeni bir laboratuvar hesabı oluşturma hakkında daha fazla bilgi için, [Laboratuvar Hesabı Kurma Öğretici'sine](tutorial-setup-lab-account.md)bakın.  Varolan bir laboratuvar hesabını da kullanabilirsiniz.
+Bu Laboratuvarı ayarlamak için, başlamak üzere bir Azure aboneliğine ve laboratuvar hesabına sahip olmanız gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. Bir Azure aboneliği aldıktan sonra, Azure Lab Services yeni bir laboratuvar hesabı oluşturabilirsiniz. Yeni laboratuvar hesabı oluşturma hakkında daha fazla bilgi için bkz. [Laboratuvar hesabı kurmak Için öğretici](tutorial-setup-lab-account.md).  Ayrıca var olan bir laboratuvar hesabı da kullanabilirsiniz.
 
-### <a name="lab-account-settings"></a>Laboratuvar hesap ayarları
+### <a name="lab-account-settings"></a>Laboratuvar hesabı ayarları
 
-Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Pazar yeri görüntülerini etkinleştirme hakkında daha fazla bilgi için laboratuvar [oluşturucularının kullanabileceği Market görüntülerini belirt'e](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)bakın.
+Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
 
-| Laboratuvar hesap ayarı | Yönergeler |
+| Laboratuvar hesabı ayarı | Yönergeler |
 | ------------------- | ------------ |
-|Pazar yeri görüntüsü| Windows 10 Pro görüntüsünü laboratuvar hesabınızda kullanmak üzere etkinleştirin.|
+|Market görüntüsü| Laboratuvar hesabınızda kullanılmak üzere Windows 10 Pro görüntüsünü etkinleştirin.|
 
 ### <a name="lab-settings"></a>Laboratuvar ayarları
 
-Sınıf laboratuarı kurarken aşağıdaki tablodaki ayarları kullanın.  Sınıf laboratuarı oluşturmak için daha fazla bilgi için [bkz.](tutorial-setup-classroom-lab.md)
+Bir sınıf Laboratuvarı ayarlarken aşağıdaki tablodaki ayarları kullanın.  Sınıf Laboratuvarı oluşturma hakkında daha fazla bilgi için bkz. [bir derslik Laboratuvarı ayarlama öğreticisi](tutorial-setup-classroom-lab.md).
 
-| Laboratuvar ayarları | Değer/talimatlar |
+| Laboratuvar ayarları | Değer/yönergeler |
 | ------------ | ------------------ |
-|Sanal Makine Boyutu| Orta (İç içe Sanallaştırma). Bu VM boyutu ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için en uygunudur.  Bu boyut iç içe sanallaştırmayı da destekler.|  
-|Sanal Makine Görüntüsü| Windows 10 Pro|
+|Sanal makine boyutu| Orta (Iç Içe sanallaştırma). Bu VM boyutu, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir.  Bu boyut, iç içe sanallaştırmayı da destekler.|  
+|Sanal makine görüntüsü| Windows 10 Pro|
 
 > [!NOTE] 
-> HDP Sandbox'ı Docker kullanarak dağıtmak için Medium (Nested Virtualization) kullanmamız gerekir:
->   - İç içe sanallaştırma ile Windows Hyper-V
+> Docker kullanarak HDP korumalı alan dağıtmak için, Orta (Iç Içe sanallaştırma) kullanmanız gerekir:
+>   - Windows Hyper-V iç içe sanallaştırma
 >   - En az 10 GB RAM
 
 ## <a name="template-machine-configuration"></a>Şablon makine yapılandırması
 
-Şablon makinesini ayarlamak için şunları yapacağız:
+Şablon makinesini ayarlamak için şunları göndereceğiz:
 - Docker'ı yükleme
-- HDP Sandbox'ı dağıtın
-- Docker kapsayıcılarını otomatik olarak başlatmak için PowerShell ve Windows Görev Zamanlayıcısı'nı kullanın
+- HDP korumalı alanı dağıtma
+- Docker kapsayıcılarını otomatik olarak başlatmak için PowerShell ve Windows Görev Zamanlayıcı kullanma
 
 ### <a name="install-docker"></a>Docker'ı yükleme
 
-Bu bölümdeki [adımlar, Cloudera'nın Docker konteynerleriyle dağıtım talimatlarına](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html)dayanmaktadır. 
+Bu bölümdeki adımlar, [Cloudera 'Nın Docker kapsayıcılarıyla dağıtım yönergelerini](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html)temel alır. 
 
-Docker kapsayıcılarını kullanmak için öncelikle Docker Desktop şablonu VM'ye yüklemeniz gerekir:
+Docker kapsayıcılarını kullanmak için, önce şablon VM 'ye Docker Desktop 'ı yüklemeniz gerekir:
 
-1. [Windows için Docker'ı](https://docs.docker.com/docker-for-windows/install/)yüklemek için [Önkoşullar bölümündeki](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#prerequisites) adımları izleyin. 
+1. [Docker for Windows](https://docs.docker.com/docker-for-windows/install/)yüklemek için [Önkoşullar bölümündeki](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#prerequisites) adımları izleyin. 
 
     > [!IMPORTANT] 
-    > Linux kapsayıcıları yapılandırma seçeneği **yerine Windows kapsayıcıları kullan** seçeneğinin işaretsiz bırakıldığından emin olun.
+    > **Linux kapsayıcıları yerine Windows kapsayıcıları kullan** yapılandırma seçeneğinin işaretli olmadığından emin olun.
 
-1. Windows **Kapsayıcıları ve Hyper-V özelliklerinin** açık olduğundan emin olun.
+1. **Windows kapsayıcıları ve Hyper-V özelliklerinin** açık olduğundan emin olun.
    ![Windows özelliklerini etkinleştirme veya devre dışı bırakma](../media/class-type-big-data-analytics/windows-hyperv-features.png)
 
-1. Docker'ın bellek yapılandırmasını yapılandırmak [için Windows için Bellek](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#memory-for-windows) bölümündeki adımları izleyin.
+1. Docker 'ın bellek yapılandırmasını yapılandırmak için [Windows Için bellek](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#memory-for-windows) bölümündeki adımları izleyin.
 
     > [!WARNING]
-    > Docker'ı yüklerken **Yanlışlıkla Linux kapsayıcıları yerine Windows kapsayıcıları kullan** seçeneğini kontrol ederseniz, bellek yapılandırma ayarlarını görmezsiniz.  Bunu düzeltmek için, [Windows Sistemi tepsisindeki Docker simgesine tıklayarak](https://docs.docker.com/docker-for-windows/#docker-settings-dialog)Linux kapsayıcılarını kullanmaya geçebilirsiniz; Docker Desktop menüsü açıldığında, **Linux kapsayıcılarına Geçiş'i**seçin.
+    > Docker 'ı yüklerken **Linux kapsayıcıları yerine Windows kapsayıcıları kullan** seçeneğini yanlışlıkla kontrol ederseniz bellek yapılandırma ayarlarını görmezsiniz.  Bunu yapmak için, [Windows Sistem tepsisindeki Docker simgesine tıklayarak](https://docs.docker.com/docker-for-windows/#docker-settings-dialog)Linux kapsayıcıları kullanmaya geçiş yapabilirsiniz; Docker masaüstü menüsü açıldığında, **Linux kapsayıcılarına geç**' i seçin.
  
-### <a name="deploy-hdp-sandbox"></a>HDP Sandbox'ı dağıtın
+### <a name="deploy-hdp-sandbox"></a>HDP korumalı alanı dağıtma
 
-Bu bölümde HDP Sandbox'ı dağıtacak ve tarayıcıyı kullanarak HDP Sandbox'a da erişeceksiniz.
+Bu bölümde, HDP korumalı alanı dağıtırsınız ve ayrıca, tarayıcıyı kullanarak HDP korumalı alana erişirsiniz.
 
-1. Sonraki adımları tamamlamak için tavsiye [edildiğinden, Git Bash'i](https://gitforwindows.org/) kılavuzun [Önkoşullar bölümünde](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#prerequisites) listelenen olarak yüklediğinizden emin olun.
+1. Sonraki adımları tamamlamak için önerildiği için, bu, kılavuzun [Önkoşullar bölümünde](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#prerequisites) listelenen [Git Bash](https://gitforwindows.org/) ' i yüklediğinizden emin olun.
 
-1. [Cloudera'nın Docker için Dağıtım ve Yükleme Kılavuzu'nu](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html)kullanarak aşağıdaki bölümlerdeki adımları tamamlayın:
+1. [Cloudera 'nın, Docker Için dağıtım ve kurulum kılavuzunu](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html)kullanarak, aşağıdaki bölümlerdeki adımları uygulayın:
    
-   -    HDP Sandbox'ı dağıtın
-   -    HDP Sandbox'ı doğrula
+   -    HDP korumalı alanı dağıtma
+   -    HDP korumalı alanını doğrula
 
     > [!WARNING] 
-    > HDP için en son .zip dosyasını indirdiğinizde,.zip dosyasını beyaz alan içeren bir dizin yoluna *kaydetmediğinizden* emin olun.
+    > HDP için en son. zip dosyasını indirdiğinizde,. zip dosyasını boşluk içeren bir dizin *yoluna kaydetmeyin* .
 
     > [!NOTE] 
-    > Dağıtım sırasında **Drive'ın paylaşılmadığını**belirten bir özel durum alırsanız, HDP'nin Linux kapsayıcılarının yerel Windows dosyalarına erişebilmeleri için C sürücünüzü Docker ile paylaşmanız gerekir.  Bunu düzeltmek için, Docker Desktop menüsünü açmak ve **Ayarlar'ı**seçmek için [Windows Sistemi tepsisindeki Docker simgesine tıklayın.](https://docs.docker.com/docker-for-windows/#docker-settings-dialog)  **Docker'ın Ayarlar** iletişim kutusu açıldığında, **Dosya Paylaşımı> Kaynakları'nı** seçin ve **C** sürücüsünü denetleyin.  Daha sonra HDP Sandbox dağıtmak için adımları tekrarlayabilirsiniz.
+    > Dağıtım sırasında **sürücü paylaşılmadığını**belirten bir özel durum alırsanız, HDP 'nin Linux kapsayıcılarının yerel Windows dosyalarına erişebilmesi için C sürücünüzü Docker ile paylaşmanız gerekir.  Bunu yapmak için, [Windows Sistem tepsisindeki Docker simgesine tıklayarak](https://docs.docker.com/docker-for-windows/#docker-settings-dialog) Docker Desktop menüsünü açın ve **Ayarlar**' ı seçin.  **Docker 'ın ayarlar** iletişim kutusu açıldığında, **kaynak > dosya paylaşımı** ' nı seçin ve **C** sürücüsünü denetleyin.  Ardından, HDP korumalı alanı dağıtmak için adımları tekrarlayabilirsiniz.
 
-1. HDP Sandbox için Docker konteynerleri dağıtıldıktan ve çalıştırıldıktan sonra, tarayıcınızı başlatarak ve Cloudera'nın [Sandbox Karşılama Sayfası'nı](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page) açma ve HDP Panosu'nu açma yönergelerini izleyerek ortama erişebilirsiniz.
+1. HDP korumalı alan için Docker Kapsayıcıları dağıtıldıktan ve çalışır olduktan sonra, tarayıcınızı başlatarak ve [korumalı alan karşılama sayfasını](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page) açmak ve HDP panosunu başlatmak Için aşağıdaki Cloudera yönergelerini izleyerek ortama erişebilirsiniz.
 
     > [!NOTE] 
-    > Bu yönergeler, öncelikle sandbox ortamının yerel IP adresini şablon VM'nizdeki ana bilgisayar dosyasındaki ana bilgisayar dosyasındaki sandbox-hdp.hortonworks.com eşlediğinizi varsayar.  Bu eşlemi **yapmazsanız,** 'ye ' için gezinerek [http://localhost:8080](http://localhost:8080)Sandbox HoşGeldiniz sayfasına erişebilirsiniz.
+    > Bu yönergelerde, önce Sandbox ortamının yerel IP adresini, şablon VM 'nizin ana bilgisayar dosyasındaki sandbox-hdp.hortonworks.com ile eşleştirdiğini varsayalım.  Bu **eşlemeyi yapmazsanız,** ' a giderek korumalı alan karşılama sayfasına erişebilirsiniz. [http://localhost:8080](http://localhost:8080)
 
-### <a name="automatically-start-docker-containers-when-students-log-in"></a>Öğrenciler oturum açtıklarında Docker konteynerlerini otomatik olarak başlatın
+### <a name="automatically-start-docker-containers-when-students-log-in"></a>Öğrenciler oturum açarken Docker kapsayıcılarını otomatik olarak Başlat
 
-Öğrenciler için kullanımı kolay bir deneyim sağlamak için, otomatik olarak bir PowerShell komut dosyası kullanacağız:
-  - Bir öğrenci başladığında ve kendi laboratuvar VM bağlanır HDP Sandbox Docker konteyner başlar.
-  - Tarayıcıyı başlatır ve Sandbox Karşılama Sayfası'na yönlendirin.
-Ayrıca, bir öğrenci VM'lerine giriş yaptığında bu komut dosyasını otomatik olarak çalıştırmak için Windows Görev Zamanlayıcısı'nı da kullanırız.
-Bunu ayarlamak için şu adımları izleyin: [Büyük Veri Analitiği komut dosyası.](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/BigDataAnalytics/)
+Öğrenciler için kullanımı kolay bir deneyim sağlamak üzere otomatik olarak şunları yapan bir PowerShell betiği kullanacağız:
+  - Bir öğrenci başlatıldığında ve laboratuvar VM 'lerine bağlanırken HDP korumalı alan Docker kapsayıcılarını başlatır.
+  - Tarayıcıyı başlatır ve korumalı alan karşılama sayfasına gider.
+Ayrıca, bir öğrenci sanal makinesine oturum açtığında bu betiği otomatik olarak çalıştırmak için Windows Görev Zamanlayıcı de kullanacağız.
+Bunu ayarlamak için şu adımları izleyin: [büyük veri analizi betiği](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/BigDataAnalytics/).
 
 ## <a name="cost-estimate"></a>Maliyet tahmini
 
 Bu laboratuvarın maliyetini tahmin etmek isterseniz, aşağıdaki örneği kullanabilirsiniz.
 
-20 saatlik planlanan ders süresi ve ödev veya ödevler için 10 saatlik kontenjanı olan 25 öğrenciden oluşan bir sınıf için, laboratuvar fiyatı:
-  - 25 öğrenci * (20 + 10) saat * 55 Laboratuvar Birimi * 0,01 USD /saat = 412,50 USD
+20 saatlik zamanlanan sınıf süresi ve ev ödevi veya atamalar için 10 saatlik kota içeren 25 öğrenciye sahip bir sınıf için, laboratuvar fiyatı şöyle olacaktır:
+  - 25 öğrenci * (20 + 10) saat * 55 laboratuvar birimi * 0,01 saat başına USD = 412,50 ABD Doları
 
-Fiyatlandırma hakkında daha fazla ayrıntı için Azure [Lab Hizmetleri Fiyatlandırması'na](https://azure.microsoft.com/pricing/details/lab-services/)bakın.
+Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Lab Services fiyatlandırması](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Sonuç
 
-Bu makale, Docker ile dağıtılan Hortonworks Veri Platformu'nu kullanan büyük bir veri analizi sınıfı için bir laboratuvar oluşturmak için gereken adımları size iletilmiştir.  Bu sınıf türü için kurulum benzer veri analizi sınıfları için kullanılabilir.  Bu kurulum, dağıtım için Docker kullanan diğer sınıf türleri için de geçerli olabilir.
+Bu makalede, Docker ile dağıtılan Hortonçalışmalar veri platformunu kullanan büyük bir veri analizi sınıfına yönelik bir laboratuvar oluşturmak için gereken adımlarda sorun ele geçirildi.  Bu sınıf türü için kurulum, benzer veri analizi sınıfları için kullanılabilir.  Bu kurulum Ayrıca, dağıtım için Docker kullanan diğer sınıf türleri için de geçerli olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sonraki adımlar herhangi bir laboratuvar kurmak için ortak.
+Sonraki adımlar, herhangi bir laboratuvarı ayarlamak için ortaktır.
 
 - [Şablon oluşturma ve yönetme](how-to-create-manage-template.md)
 - [Kullanıcı ekle](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Kota ayarlama](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Zamanlama ayarlama](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Öğrencilere e-posta kayıt bağlantıları](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Öğrenciler için e-posta kaydı bağlantıları](how-to-configure-student-usage.md#send-invitations-to-users)

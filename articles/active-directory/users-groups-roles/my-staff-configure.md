@@ -1,6 +1,6 @@
 ---
-title: Kullanıcı yönetimini (önizleme) temsilci vermek için Personelimi Kullanın - Azure AD | Microsoft Dokümanlar
-description: Personelimi ve yönetim birimlerini kullanarak kullanıcı yönetimini temsilciolarak
+title: Kullanıcı Yönetimi (Önizleme) için personelimi kullanma-Azure AD | Microsoft Docs
+description: Personel ve yönetim birimlerimi kullanarak Kullanıcı yönetimi temsilcisi seçme
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,96 +9,114 @@ ms.topic: article
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/14/2020
+ms.date: 04/23/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 3f7c12612dbe37de6b08cb05a64af460296ade93
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 282946a023e4e79ee79b05cc2a317efc5a4056e4
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81394221"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82165883"
 ---
-# <a name="manage-your-users-with-my-staff-preview"></a>Personelim (önizleme) ile kullanıcılarınızı yönetin
+# <a name="manage-your-users-with-my-staff-preview"></a>Personelim ile kullanıcılarınızı yönetme (Önizleme)
 
-Personelim, çalışanların Azure REKLAM hesaplarına erişebilmelerini sağlamak için mağaza yöneticisi veya ekip müşteri adayı gibi bir yetkili figüre, izinlere yetki vermenizi sağlar. Kuruluşlar, merkezi bir yardım masasına güvenmek yerine parolaları sıfırlama veya telefon numaralarını bir takım yöneticisine değiştirme gibi yaygın görevleri devredebilir. Personelim ile, hesabına erişemeyen bir kullanıcı, yardım masası veya BT personeli gerektirmeden yalnızca birkaç tıklamayla erişim sağlayabilir.
+Personeliniz, bir mağaza yöneticisi veya bir ekip lideri gibi yetkili bir şekilde temsilci seçmenize olanak sağlar. bu sayede, personel üyelerinin Azure AD hesaplarına erişebildiğinden emin olabilirsiniz. Kuruluşlar, merkezi bir yardım masasına güvenmek yerine, parolaları sıfırlama veya telefon numaralarını bir Team Manager 'a değiştirme gibi genel görevleri temsilcilibilirler. Personeli sayesinde, hesaplarına erişemesiz bir Kullanıcı, yardım masası veya BT personeli gerekmeden yalnızca birkaç tıklamayla erişim elde edebilir.
 
-Personelimi kuruluşunuz için yapılandırmadan önce, bu özelliğin işlevselliğini ve kullanıcılarınız üzerindeki etkisini anladığınızdan emin olmak için bu belgeleri ve [kullanıcı belgelerini](../user-help/my-staff-team-manager.md) gözden geçirmenizi öneririz. Kullanıcılarınızı yeni deneyime hazırlamak ve başarılı bir kullanıma yardımcı olmak için kullanıcı belgelerinden yararlanabilirsiniz.
+Kurumumu kuruluşunuz için yapılandırmadan önce bu belgenin yanı sıra bu özelliğin kullanıcılarınıza yönelik işlevselliğini ve etkisini anladığınızdan emin olmak için bu belgeleri ve [Kullanıcı belgelerini](../user-help/my-staff-team-manager.md) incelemenizi öneririz. Kullanıcıları yeni deneyimle eğitmeniz ve hazırlamak için Kullanıcı belgelerinden yararlanabilir ve başarılı bir dağıtım sağlanmasına yardımcı olabilirsiniz.
 
-## <a name="how-my-staff-works"></a>Personelim Nasıl Çalışır?
+## <a name="how-my-staff-works"></a>Personeliniz nasıl işe yarar?
 
-Personelim, bir rol atamasının yönetim denetiminin kapsamını sınırlamak için kullanılabilecek bir kaynak kapsayıcısı olan idari birimlere (AUs) dayanır. Personelim'de, AUs, bir kuruluşun mağaza veya departman gibi kullanıcılarının bir alt kümesini tanımlamak için kullanılır. Daha sonra, örneğin, kapsamı bir veya daha fazla AUs olan bir role bir takım yöneticisi atanabilir. Aşağıdaki örnekte, kullanıcıya Kimlik Doğrulama Yönetimi rolü verilmiştir ve üç U'su rolün kapsamıdır. Yönetim birimleri hakkında daha fazla bilgi için [Azure Etkin Dizini'nde Yönetim birimleri yönetimine](directory-administrative-units.md)bakın.
+Personeliniz, bir rol atamasının yönetim denetiminin kapsamını kısıtlamak için kullanılabilecek bir kaynak kapsayıcısı olan yönetim birimlerini (Avustralya) temel alır. Personelimde, bir mağaza veya departman gibi kuruluş kullanıcılarının bir alt kümesini tanımlamak için Avustralya kullanılır. Daha sonra, örneğin, kapsamı bir veya daha fazla au olan bir role ekip yöneticisi atanabilir. Aşağıdaki örnekte, kullanıcıya kimlik doğrulama yönetim rolü verildi ve üç Avustralya da rolün kapsamıdır. Yönetim birimleri hakkında daha fazla bilgi için bkz. [Azure Active Directory yönetim birimleri yönetimi](directory-administrative-units.md).
 
 ## <a name="how-to-enable-my-staff"></a>Personelimi etkinleştirme
 
-OSB'leri yapılandırdıktan sonra, bu kapsamı Personelime erişen kullanıcılarınız için uygulayabilirsiniz. Yalnızca yönetimrolü alan kullanıcılar Personelime erişebilir. Personelimi etkinleştirmek için aşağıdaki adımları tamamlayın:
+Au 'yı yapılandırdıktan sonra, bu kapsamı personelime erişen kullanıcılarınıza uygulayabilirsiniz. Yalnızca bir yönetim rolü atanmış kullanıcılar personelime erişebilir. Personelimi etkinleştirmek için aşağıdaki adımları izleyin:
 
-1. Kullanıcı yöneticisi olarak Azure portalında oturum açın.
-2. **Azure Active Directory** > **Kullanıcı ayarlarına** > göz atın**Kullanıcı özelliği önizlemeleri**Kullanıcı özelliği > **önizlemeleri Kullanıcı özelliği önizleme ayarlarını yönetin.**
-3. Yöneticiler altında **Personelim'e erişebilir,** tüm kullanıcılar, seçili kullanıcılar veya kullanıcı erişimi için etkinleştirmeyi seçebilirsiniz.
+1. Azure portal Kullanıcı Yöneticisi olarak oturum açın.
+2. Kullanıcı**ayarlarına** **Azure Active Directory** >  > Azure Active Directory, Kullanıcı**özelliği önizlemeleri** > **Kullanıcı özelliği Önizleme ayarlarını yönet**' e gidin.
+3. **Yöneticiler temsilcime erişebilme**altında, tüm kullanıcılar, seçili kullanıcılar veya Kullanıcı erişimi olmadan ' yi etkinleştirmeyi seçebilirsiniz.
 
 > [!Note]
-> Yalnızca yönetici rolü atanan kullanıcılar Personelime erişebilir. Yönetici rolü atanmamış bir kullanıcı için Personelimi etkinleştiriseniz, bunlar Personelime erişemez.
+> Yalnızca bir yönetici rolü atanmış kullanıcılar personelime erişebilir. Yönetici rolü atanmamış bir kullanıcı için personelimi etkinleştirirseniz, personelime erişemezler.
 
-## <a name="using-my-staff"></a>Personelimi Kullanma
+## <a name="conditional-access"></a>Koşullu erişim
 
-Bir kullanıcı Personelime gittiğinde, üzerinde yönetim izinleri bulunan [idari birimlerin](directory-administrative-units.md) adları gösterilir. [Personelim kullanıcı belgelerinde,](../user-help/my-staff-team-manager.md)idari birimlere başvurmak için "konum" terimini kullanırız. Yöneticiizinde AU kapsamı yoksa, izinler kuruluş genelinde geçerlidir. Personelim etkinleştirildikten sonra, etkinleştirilmiş ve yönetim rolü atanan kullanıcılar [https://mystaff.microsoft.com](https://mystaff.microsoft.com)bu göreve . Bu AU'daki kullanıcıları görüntülemek için bir AU seçebilir ve profillerini açmak için bir kullanıcı seçebilirler.
+Azure AD koşullu erişim ilkesini kullanarak personel portalından koruma sağlayabilirsiniz. Personelinize erişmeden önce Multi-Factor Authentication gerektirme gibi görevler için kullanın.
+
+[Azure AD koşullu erişim ilkelerini](https://docs.microsoft.com/azure/active-directory/conditional-access/)kullanarak personelimi korumanızı kesinlikle öneririz. Personelinize koşullu erişim ilkesi uygulamak için, PowerShell kullanarak personel hizmeti sorumlusunu el ile oluşturmanız gerekir.
+
+### <a name="apply-a-----conditional-access-policy-to-my-staff"></a>Personelinize koşullu erişim ilkesi uygulama
+
+1. [Microsoft Graph Beta PowerShell cmdlet 'lerini](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1)yükler.
+1. Aşağıdaki komutları çalıştırın:
+
+        Connect-Graph -Scopes "Directory.AccessAsUser.All"
+        New-MgServicePrincipal -DisplayName "My Staff" -AppId "ba9ff945-a723-4ab5-a977-bd8c9044fe61"
+
+1. Personel bulut uygulaması için geçerli bir koşullu erişim ilkesi oluşturun.
+
+    ![Personel uygulaması için koşullu erişim ilkesi oluşturma](media/my-staff-configure/conditional-access.png)
+
+## <a name="using-my-staff"></a>Personelimi kullanma
+
+Bir Kullanıcı personelime gittiğinde, yönetim izinlerinin bulunduğu [yönetim birimlerinin](directory-administrative-units.md) adları gösterilir. [Personelin kullanıcı belgelerinde](../user-help/my-staff-team-manager.md), yönetim birimlerine başvurmak için "konum" terimini kullanırız. Yöneticinin izinlerinin AU kapsamı yoksa, izinler kuruluş genelinde uygulanır. Personeliniz etkinleştirildikten sonra, etkin olan ve bir yönetim rolü atanmış olan kullanıcılar buna aracılığıyla [https://mystaff.microsoft.com](https://mystaff.microsoft.com)erişebilir. Bu otomatik olarak, bu AU 'daki kullanıcıları görüntülemek için bir AU seçebilir ve profillerini açmak için bir kullanıcı seçebilirsiniz.
 
 ## <a name="licenses"></a>Lisanslar
 
-Personelim portalımı kullanmasalar bile, Personelim'de etkinleştirilen her kullanıcı nın lisanslı olması gerekir. Etkinleştirilen her kullanıcı aşağıdaki Azure AD veya Microsoft 365 lisanslarından birine sahip olmalıdır:
+Personelimde etkin olan her Kullanıcı, personel portalını kullanmasa bile lisanslanmalıdır. Her etkin kullanıcı aşağıdaki Azure AD veya Microsoft 365 lisanslarından birine sahip olmalıdır:
 
 - Azure AD Premium P1 veya P2
 - Microsoft 365 F1 veya F3
 
 ## <a name="reset-a-users-password"></a>Kullanıcı parolasını sıfırlama
 
-Aşağıdaki roller, kullanıcının parolasını sıfırlama iznine sahiptir:
+Aşağıdaki rollerin bir kullanıcının parolasını sıfırlama izni vardır:
 
-- [Kimlik doğrulama yöneticisi](directory-assign-admin-roles.md#authentication-administrator)
-- [Ayrıcalıklı kimlik doğrulama yöneticisi](directory-assign-admin-roles.md#privileged-authentication-administrator)
+- [Kimlik doğrulama Yöneticisi](directory-assign-admin-roles.md#authentication-administrator)
+- [Ayrıcalıklı kimlik doğrulama Yöneticisi](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Genel yönetici](directory-assign-admin-roles.md#global-administrator--company-administrator)
-- [Yardım Masası yöneticisi](directory-assign-admin-roles.md#helpdesk-administrator)
-- [Kullanıcı yöneticisi](directory-assign-admin-roles.md#user-administrator)
+- [Yardım Masası Yöneticisi](directory-assign-admin-roles.md#helpdesk-administrator)
+- [Kullanıcı Yöneticisi](directory-assign-admin-roles.md#user-administrator)
 - [Parola yöneticisi](directory-assign-admin-roles.md#password-administrator)
 
-**Personelim'den**bir kullanıcının profilini açın. **Parolayı Sıfırla'yı**seçin.
+**Personelimin**içinden bir kullanıcının profilini açın. **Parolayı Sıfırla**' yı seçin.
 
-- Kullanıcı yalnızca buluttaysa, kullanıcıya verebileceğiniz geçici bir parola görebilirsiniz.
-- Kullanıcı şirket içi Active Directory'den senkronize edilirse, şirket içi REKLAM ilkelerinizi karşılayan bir parola girebilirsiniz. Daha sonra bu parolayı kullanıcıya verebilirsiniz.
+- Kullanıcı yalnızca bulutta ise, kullanıcıya verebileceğiniz geçici bir parola görebilirsiniz.
+- Kullanıcı şirket içi Active Directory eşitlendiğinde, şirket içi AD ilkelerinizi karşılayan bir parola girebilirsiniz. Daha sonra bu parolayı kullanıcıya verebilirsiniz.
 
     ![Parola sıfırlama ilerleme göstergesi ve başarı bildirimi](media/my-staff-configure/reset-password.png)
 
-Kullanıcının bir sonraki oturum açıncın parolasını değiştirmesi gerekir.
+Kullanıcının bir sonraki oturum açışlarında parolasını değiştirmesi gerekir.
 
 ## <a name="manage-a-phone-number"></a>Telefon numarasını yönetme
 
-**Personelim'den**bir kullanıcının profilini açın.
+**Personelimin**içinden bir kullanıcının profilini açın.
 
-- Kullanıcıiçin telefon numarası eklemek için **telefon numarası** ekle bölümünü seçin
-- Telefon numarasını değiştirmek için **telefon numarasını değiştir'i** seçin
-- Kullanıcının telefon numarasını kaldırmak için **telefon numarasını kaldır'ı** seçin
+- Kullanıcı için telefon numarası eklemek üzere **telefon numarası Ekle** bölümünü seçin
+- Telefon numarasını değiştirmek için **telefon numarasını Düzenle** ' yi seçin
+- Kullanıcının telefon numarasını kaldırmak için **telefon numarasını Kaldır** ' ı seçin
 
-Ayarlarınıza bağlı olarak, kullanıcı daha sonra SMS ile oturum açmak için ayarladığınız telefon numarasını kullanabilir, çok faktörlü kimlik doğrulama sıyrıklarını gerçekleştirebilir ve self servis parola sıfırlama gerçekleştirebilir.
+Ayarlarınıza bağlı olarak, kullanıcı SMS ile oturum açmak için ayarladığınız telefon numarasını kullanabilir, çok faktörlü kimlik doğrulaması gerçekleştirebilir ve self servis parola sıfırlama işlemini gerçekleştirebilir.
 
-Bir kullanıcının telefon numarasını yönetmek için aşağıdaki rollerden birine atanmalısınız:
+Bir kullanıcının telefon numarasını yönetmek için aşağıdaki rollerden birine atanmış olmanız gerekir:
 
-- [Kimlik doğrulama yöneticisi](directory-assign-admin-roles.md#authentication-administrator)
-- [Ayrıcalıklı kimlik doğrulama yöneticisi](directory-assign-admin-roles.md#privileged-authentication-administrator)
+- [Kimlik doğrulama Yöneticisi](directory-assign-admin-roles.md#authentication-administrator)
+- [Ayrıcalıklı kimlik doğrulama Yöneticisi](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Genel yönetici](directory-assign-admin-roles.md#global-administrator--company-administrator)
 
 ## <a name="search"></a>Arama
 
-Personelim'deki arama çubuğunu kullanarak kuruluşunuzdaki AU'ları ve kullanıcıları arayabilirsiniz. Kuruluşunuzdaki tüm ABD'lerde ve kullanıcılarda arama yapabilirsiniz, ancak yalnızca size yönetici izni verilen bir AU'da bulunan kullanıcılarda değişiklik yapabilirsiniz.
+Kuruluşumdaki arama çubuğunu kullanarak kuruluşunuzdaki Avustralya ve kullanıcılar için arama yapabilirsiniz. Kuruluşunuzdaki tüm Avustralya ve kullanıcılar arasında arama yapabilirsiniz, ancak yalnızca yönetici izinlerine sahip olduğunuz bir AU 'daki kullanıcılar için değişiklikler yapabilirsiniz.
 
-Ayrıca, BIR AU içinde bir kullanıcı için arama yapabilirsiniz. Bunu yapmak için, kullanıcı listesinin en üstündeki arama çubuğunu kullanın.
+Ayrıca, bir AU içinde kullanıcı da arayabilirsiniz. Bunu yapmak için, kullanıcı listesinin en üstündeki arama çubuğunu kullanın.
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 
-Azure Active Directory portalında Personelim'de gerçekleştirilen işlemleriçin denetim günlüklerini görüntüleyebilirsiniz. Personelim'de gerçekleştirilen bir eylem tarafından bir denetim günlüğü oluşturulduysa, denetim olayında EK BİlGİLER altında bu durum belirtilir.
+Azure Active Directory portalında personelimde gerçekleştirilen eylemler için Denetim günlüklerini görüntüleyebilirsiniz. Bir denetim günlüğü, personelimde gerçekleştirilen bir eylem tarafından oluşturulduysa, bunu denetim olayında ek ayrıntılar altında görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Personelim kullanıcı belgeleri](../user-help/my-staff-team-manager.md)
-[İdari birimler dokümantasyonu](directory-administrative-units.md)
+[Personel Kullanıcı belgeleri](../user-help/my-staff-team-manager.md)
+[yönetim birimleri belgeleri](directory-administrative-units.md)

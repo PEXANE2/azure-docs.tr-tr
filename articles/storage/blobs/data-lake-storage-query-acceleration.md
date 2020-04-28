@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 04/21/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 70a087e106e632d697052461928f3e1123a06b1b
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.openlocfilehash: 42eec4a0796a7f07c7e7d1c35571d9d4ddcf69d7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82137544"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176711"
 ---
 # <a name="azure-data-lake-storage-query-acceleration-preview"></a>Azure Data Lake Storage sorgu hızlandırma (Önizleme)
 
@@ -71,7 +71,7 @@ Bir uygulamanın sorgu hızlandırmasını nasıl tümleştirebileceğinizi gös
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Azure Data Lake Storage hizmeti içindeki daha fazla işlem yükü nedeniyle, sorgu hızlandırmasını kullanmaya yönelik fiyatlandırma modelinin normal Azure Data Lake Storage işlem modelinden farkı vardır. Sorgu hızlandırma, taranan veri miktarına ve çağırana döndürülen veri miktarına yönelik bir ücret ödemesine yönelik bir maliyet ücretlendirir.
+Azure Data Lake Storage hizmeti içindeki daha fazla işlem yükü nedeniyle, sorgu hızlandırmasını kullanmaya yönelik fiyatlandırma modelinin normal Azure Data Lake Storage işlem modelinden farkı vardır. Sorgu hızlandırma, taranan veri miktarına ve çağırana döndürülen veri miktarına yönelik bir ücret ödemesine yönelik bir maliyet ücretlendirir. Daha fazla bilgi için bkz. [Azure Data Lake Storage 2. fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/data-lake/).
 
 Faturalama modelinde değişikliğe rağmen sorgu hızlandırmanın fiyatlandırma modeli, bir iş yükü için toplam sahip olma maliyetini düşürmek üzere tasarlanmıştır ve bu da daha pahalı VM maliyetlerinde azalma olur.
 

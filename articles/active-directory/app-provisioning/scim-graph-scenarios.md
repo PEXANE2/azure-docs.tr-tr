@@ -1,6 +1,6 @@
 ---
-title: SCIM, Microsoft Graph ve Azure AD sağlama hizmetini kullanarak kullanıcılara hizmet vermek ve uygulamanızı ihtiyacı olan verilerle zenginleştirmek | Microsoft Dokümanlar
-description: SCIM ve Microsoft Graph'ı birlikte kullanarak kullanıcılara sağlama ve uygulamanızı ihtiyacı olan verilerle zenginleştirme .
+title: Kullanıcıları sağlamak ve uygulamanızı gereken verilerle zenginleştirmek için SCıM, Microsoft Graph ve Azure AD sağlama hizmeti 'ni kullanma | Microsoft Docs
+description: Kullanıcı sağlamak ve uygulamanızı gereken verilerle zenginleştirmenin yanı sıra SCıM 'i ve Microsoft Graph kullanma.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -12,36 +12,41 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134237b66a803abaf07621112e3a4a518a3ae8a7
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
-ms.translationtype: MT
+ms.openlocfilehash: 79ffe0474fcfeb28b49f5c2504ede86cd38459d9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82087627"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181843"
 ---
-# <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>SciM ve Microsoft Graph'ı kullanıcılara sağlama ve uygulamanızı ihtiyaç duyduğu verilerle zenginleştirmek için birlikte kullanma
+# <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Kullanıcı sağlamak ve uygulamanızı gereken verilere göre zenginleştirmek için SCıM ve Microsoft Graph birlikte kullanma
 
-**Hedef kitle:** Bu belge, Azure AD ile tümleşik uygulamalar oluşturan geliştiricilere yöneliktir. Zoom, ServiceNow ve DropBox gibi varolan bir uygulamayı entegre etmek isteyen başkaları için bunu atlayabilir ve uygulamaya özel [öğreticileri](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)gözden geçirebilirsiniz. 
+**Hedef kitle:** Bu belge, Azure AD ile tümleştirilecek uygulamalar oluşturmaya yönelik geliştiricilere yöneliktir. Yakınlaştırma, ServiceNow ve DropBox gibi Azure AD ile zaten tümleştirilmiş olan uygulamaları kullanmak isteyen diğerleri için, bu işlemi atlayabilir ve uygulamaya özgü [öğreticileri](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) inceleyebilir veya [sağlama hizmeti 'nin nasıl çalıştığını](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)inceleyebilirsiniz.
 
 **Yaygın senaryolar**
 
+Azure AD, sağlama için kullanıma hazır bir hizmet ve uygulamalarınızı oluşturmak için genişletilebilir bir platform sağlar. Karar ağacı, bir geliştiricinin sağlamayı otomatik hale getirmek için [SCIM](https://aka.ms/scimoverview) ve [Microsoft Graph](https://docs.microsoft.com/graph/overview) nasıl kullandığını özetler. 
+
 > [!div class="checklist"]
-> * Uygulamamda otomatik olarak kullanıcı oluşturma
-> * Artık erişememeleri gerektiğinde kullanıcıları uygulamamdan otomatik olarak kaldırın
-> * Sağlama için başvurumu birden çok kimlik sağlayıcısıyla tümleştir
-> * Uygulamamı Sharepoint, Outlook ve Office gibi Microsoft hizmetlerinden gelen verilerle zenginleştirin.
-> * Azure AD ve Active Directory'deki kullanıcıları ve grupları otomatik olarak oluşturun, güncelleyin ve silin
+> * Uygulamamda otomatik olarak Kullanıcı oluşturma
+> * Artık erişimleri olmadığında kullanıcıları uygulamamın içinden otomatik olarak kaldır
+> * Sağlama için uygulamamı birden çok kimlik sağlayıcısıyla tümleştirin
+> * Uygulamalarımı takımlar, Outlook ve Office gibi Microsoft hizmetlerinden alınan verilerle zenginleştirin.
+> * Azure AD 'de ve Active Directory Kullanıcıları ve grupları otomatik olarak oluşturun, güncelleştirin ve silin
 
-![SCIM Grafik karar ağacı](./media/user-provisioning/scim-graph.png)
+![SCıM Graf karar ağacı](./media/user-provisioning/scim-graph.png)
 
-## <a name="scenario-1-automatically-create-users-in-my-app"></a>Senaryo 1: Uygulamamda otomatik olarak kullanıcı oluşturma
-Bugün, BT yöneticileri uygulamamda her erişim gerektiğinde veya csv dosyalarını düzenli olarak yüklediklerinde el ile kullanıcı hesapları oluşturur. Süreç müşteriler için zaman alıcı ve benim uygulama nın benimsenmesini yavaşlatıyor. Tek ihtiyacım olan bir kullanıcı oluşturmak için ad, e-posta ve userPrincipalName gibi temel [kullanıcı](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) bilgileridir. Ayrıca, müşterilerim çeşitli IDP'ler kullanmak ve ben her IdP ile bir eşitleme motoru ve özel entegrasyonlar korumak için kaynaklara sahip değilsiniz. 
+## <a name="scenario-1-automatically-create-users-in-my-app"></a>Senaryo 1: uygulamamda otomatik olarak Kullanıcı oluşturma
+Günümüzde, BT yöneticileri kullanıcı hesaplarını el ile oluşturarak veya CSV dosyalarını uygulamama düzenli olarak yükleyerek kullanıcıları temin etmek. İşlem, müşteriler için zaman alabilir ve uygulamamın benimsenmesini yavaşlatır. Bir kullanıcı oluşturmak için tüm gerekli ad, e-posta ve userPrincipalName gibi temel Kullanıcı bilgileri gereklidir. 
 
-**Öneri**: SCIM uyumlu [/Users](https://aka.ms/scimreferencecode) bitiş noktasını destekleyin. Müşterileriniz, Azure AD sağlama hizmetiyle tümleştirmek ve erişime ihtiyaç duyduklarında otomatik olarak kullanıcı hesapları oluşturmak için bu bitiş noktasını kolayca kullanabilecektir. Bitiş noktasını bir kez oluşturabilirsiniz ve eşitleme motoru tutmak zorunda kalmadan tüm IDP'lerle uyumlu olacaktır. Bir kullanıcının nasıl oluşturulacağı yla ilgili aşağıdaki örnek isteğe göz atın.
+**Öneri**: 
+* Müşterileriniz çeşitli IDPs kullanıyorsa ve her biriyle tümleşecek bir eşitleme altyapısı sürdürmek istemiyorsanız, SCıM uyumlu [/Users](https://aka.ms/scimreferencecode) uç noktasını destekler. Müşterileriniz, Azure AD sağlama hizmeti ile tümleştirme için bu uç noktayı kolayca kullanabilir ve erişmesi gerektiğinde otomatik olarak Kullanıcı hesapları oluşturabilir. Uç noktayı bir kez derleyebilir ve tüm IDPs ile uyumlu hale gelir. Bir kullanıcının SCıM kullanarak nasıl oluşturulacağı için aşağıdaki örnek isteği inceleyin.
+* Azure AD 'de Kullanıcı nesnesinde ve Microsoft 'un diğer verilerinde bulunan kullanıcı verilerine ihtiyacınız varsa, Kullanıcı sağlaması için bir SCıM uç noktası oluşturmayı ve verilerin geri kalanını almak için Microsoft Graph çağırmayı düşünün. 
+
 
 ```json
 POST /Users
@@ -64,12 +69,12 @@ POST /Users
 }
 ```
     
-## <a name="scenario-2-automatically-remove-users-from-my-app"></a>Senaryo 2: Kullanıcıları uygulamamdan otomatik olarak kaldırma
-Uygulamamı kullanan müşteriler güvenlik odaklıdır ve çalışanların artık ihtiyaç duymadığında hesapları kaldırmak için yönetim gereksinimleri vardır. Uygulamamdan kaynaklanan hükmü nasıl otomatikleştirebilirim?
+## <a name="scenario-2-automatically-remove-users-from-my-app"></a>Senaryo 2: uygulamamın kullanıcılarını otomatik olarak kaldır
+Uygulamamı kullanan müşteriler güvenlik odaklı ve çalışanların artık ihtiyaç duymaları durumunda hesapları kaldırmak için idare gereksinimlerine sahiptir. Uygulamamın sağlamasını kaldırmayı nasıl otomatikleştirebilirim?
 
-**Tavsiye:** SCIM uyumlu /Users bitiş noktasını destekleyin. Azure AD sağlama hizmeti, kullanıcının artık erişimi olmadığında devre dışı bırakma ve silme isteği gönderir. Kullanıcıları hem devre dışı bırakma hem de silmeyi desteklemenizi öneririz. Devre dışı ve silme isteğinin nasıl göründüğüne yönelik aşağıdaki örneklere bakın. 
+**Öneri:** SCıM uyumlu/Users uç noktasını destekler. Azure AD sağlama hizmeti, kullanıcının artık erişimi olmaması durumunda devre dışı bırakılacak ve silinecek istekleri gönderecek. Kullanıcıların hem devre dışı bırakılmasını hem de silmenizi öneririz. Devre dışı bırakma ve silme isteğinin nasıl görüneceğine ilişkin aşağıdaki örneklere bakın. 
 
-Kullanıcıyı devre dışı
+Kullanıcıyı devre dışı bırak
 ```json
 PATCH /Users/5171a35d82074e068ce2 HTTP/1.1
 {
@@ -90,33 +95,33 @@ Kullanıcıyı silme
 DELETE /Users/5171a35d82074e068ce2 HTTP/1.1
 ```
 
-## <a name="scenario-3-automate-managing-group-memberships-in-my-app"></a>Senaryo 3: Uygulamamdaki grup üyeliklerini yönetmeyi otomatikleştirin
-Uygulamam çeşitli kaynaklara erişmek için gruplara dayanır ve müşteriler Azure AD'deki grupları yeniden kullanmak ister. Grupları Azure AD'den nasıl içe aktarıp üyelikler değiştikçe güncel tutabilirim?  
+## <a name="scenario-3-automate-managing-group-memberships-in-my-app"></a>Senaryo 3: uygulamamda grup üyeliklerini yönetmeyi otomatikleştirme
+Uygulamam çeşitli kaynaklara erişmek için grupları kullanır ve müşteriler Azure AD 'de sahip oldukları grupları yeniden kullanmak ister. Azure AD 'den grupları nasıl içeri aktarabilirim ve Üyelikler değiştikçe bunların güncelleştirilmesini nasıl sağlayabilirsiniz?  
 
-**Tavsiye:** SCIM uyumlu /Gruplar [bitiş noktasını](https://aka.ms/scimreferencecode)destekleyin. Azure AD sağlama hizmeti, uygulamanızda gruplar oluşturma ve üyelik güncelleştirmelerini yönetme yi dikkate alır. 
+**Öneri:** SCıM uyumlu/Groups [uç noktasını](https://aka.ms/scimreferencecode)destekler. Azure AD sağlama hizmeti, uygulamanızda Grup oluşturma ve üyelik güncelleştirmelerini yönetme işlemlerini ele alır. 
 
-## <a name="scenario-4-enrich-my-app-with-data-from-microsoft-services-such-as-teams-outlook-and-onedrive"></a>Senaryo 4: Uygulamamı Takımlar, Outlook ve OneDrive gibi Microsoft hizmetlerinden gelen verilerle zenginleştirin.
-Uygulamam Microsoft Teams'te yerleşiktir ve ileti verilerine dayanır. Buna ek olarak, OneDrive'da kullanıcılar için dosyaları da saklarız. Uygulamamı bu hizmetlerden ve Microsoft genelinden gelen verilerle nasıl zenginleştirebilirim?
+## <a name="scenario-4-enrich-my-app-with-data-from-microsoft-services-such-as-teams-outlook-and-onedrive"></a>Senaryo 4: ekipler, Outlook ve OneDrive gibi Microsoft hizmetlerinden alınan verilerle uygulamamı zenginleştirin
+Uygulamam Microsoft ekiplerinde yerleşik olarak bulunur ve ileti verilerini kullanır. Ayrıca, OneDrive 'daki kullanıcılar için dosyaları depolarız. Uygulamamı bu hizmetlerdeki ve Microsoft genelindeki verilerle nasıl zenginleştirebilirsiniz?
 
-**Tavsiye:** [Microsoft Graph,](https://docs.microsoft.com/graph/) Microsoft verilerine erişmek için giriş noktanızdır. Her iş yükü, ihtiyacınız olan verilerle API'leri ortaya çıkarır. Microsoft grafiği, yukarıdaki senaryolar için [SCIM sağlama](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) ile birlikte kullanılabilir. İhtiyacınız olan diğer verileri almak için grafiğe ararken uygulamanıza temel kullanıcı özniteliklerini sağlamak için SCIM'i kullanabilirsiniz. 
+**Öneri:** [Microsoft Graph](https://docs.microsoft.com/graph/) , Microsoft verilerine erişmek için giriş noktasıdır. Her iş yükü API 'Leri, gerek duyduğunuz verilerle birlikte kullanıma sunar. Microsoft Graph, yukarıdaki senaryolar için [SCIM sağlama](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) ile birlikte kullanılabilir. Gerekli olan herhangi bir veriyi almak için Graph 'ta çağırma yaparken, uygulamanızda temel kullanıcı özniteliklerini sağlamak için SCıM kullanabilirsiniz. 
 
-## <a name="scenario-5-track-changes-in-microsoft-services-such-as-teams-outlook-and-azure-ad"></a>Senaryo 5: Takımlar, Outlook ve Azure AD gibi Microsoft hizmetlerindeki değişiklikleri izleyin.
-Takımlar ve Outlook iletilerindeki değişiklikleri izleyebilmem ve bunlara gerçek zamanlı olarak tepki verebilmem gerekir. Bu değişiklikleri başvuruma nasıl itebilirim?
+## <a name="scenario-5-track-changes-in-microsoft-services-such-as-teams-outlook-and-azure-ad"></a>Senaryo 5: takımlar, Outlook ve Azure AD gibi Microsoft hizmetlerinde yapılan değişiklikleri Izleyin
+Ekipler ve Outlook iletilerindeki değişiklikleri izleyebilmem ve bunlara gerçek zamanlı olarak yanıt vermek istiyorum. Uygulamama bu değişiklikleri nasıl gönderebilirim?
 
-**Tavsiye:** Microsoft Graph, çeşitli kaynaklar için [değişiklik bildirimleri](https://docs.microsoft.com/graph/webhooks) ve değişiklik izleme sağlar. Değişiklik bildirimlerinin aşağıdaki sınırlamalarına dikkat edin:
-- Bir olay alıcısı bir olayı kabul ederse, ancak herhangi bir nedenle bu olay üzerinde hareket etmezse, olay kaybedilebilir
-- Bir olay alıcısı bir olayı kabul ederse, ancak herhangi bir nedenle bu olay üzerinde hareket etmezse, olay kaybedilebilir
-- Değişiklik bildirimleri her zaman [kaynak verilerini](https://docs.microsoft.com/graph/webhooks-with-resource-data) içermez Yukarıdaki nedenlerden dolayı, geliştiriciler genellikle eşitleme senaryoları için değişiklik izlemeile birlikte değişiklik bildirimlerini kullanır. 
+**Öneri:** Microsoft Graph çeşitli kaynaklar için [değişiklik bildirimleri](https://docs.microsoft.com/graph/webhooks) ve [değişiklik izleme](https://docs.microsoft.com/graph/delta-query-overview) sağlar. Değişiklik bildirimlerinin aşağıdaki sınırlamalarını aklınızda edin:
+- Bir olay alıcısı bir olay olduğunu bildirir, ancak herhangi bir nedenden dolayı üzerinde işlem gerçekleştiremezse, olay kaybolabilir
+- Bir olay alıcısı bir olay olduğunu bildirir, ancak herhangi bir nedenden dolayı üzerinde işlem gerçekleştiremezse, olay kaybolabilir
+- Değişiklik bildirimleri yukarıdaki nedenlerden dolayı her zaman [kaynak verilerini](https://docs.microsoft.com/graph/webhooks-with-resource-data) içermez, geliştiriciler genellikle değişiklik bildirimlerini, eşitleme senaryolarında değişiklik izleme ile birlikte kullanır. 
 
-## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>Senaryo 6: Azure AD'de kullanıcıları ve grupları sağlama.
-Uygulamam, müşterilerin Azure AD'de gereksinim duyduğu bir kullanıcı hakkında bilgi oluşturur. Bu, işe alma, kullanıcılar için telefon numaraları oluşturan bir iletişim uygulaması veya Azure AD'de değerli olabilecek veriler oluşturan başka bir uygulama dan daha iyi bir İk uygulaması olabilir. Azure AD'deki kullanıcı kaydını bu verilerle nasıl dolduracağım? 
+## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>Senaryo 6: Azure AD 'de Kullanıcı ve grup sağlama
+Uygulamam, müşterilerin Azure AD 'de ihtiyacı olan bir kullanıcı hakkında bilgi oluşturuyor. Bu, işe alma 'yı yönetenden bir ık uygulaması, kullanıcılar için telefon numarası oluşturan bir iletişim uygulaması veya Azure AD 'de değerli veriler üreten bir diğer uygulama olabilir. Azure AD 'deki Kullanıcı kaydı bu verilerle doldurulmi Nasıl yaparım?? 
 
-**Tavsiye** Microsoft grafiği, kullanıcıları Azure AD'ye sağlamak için bugün tümleştirebileceğiniz /Users ve/Groups uç noktalarını ortaya çıkarır. Azure Active Directory'nin bu kullanıcıların Active Directory'ye geri yazılmasına destek olmadığını lütfen unutmayın. 
+**Öneri** Microsoft Graph, Azure AD 'ye Kullanıcı sağlamak üzere bugün ile tümleştirebileceğiniz/Users ve/groups uç noktalarını kullanıma sunar. Azure Active Directory, bu kullanıcıların Active Directory yeniden yazmayı desteklemediğini unutmayın. 
 
 > [!NOTE]
-> Microsoft'un, İş Günü ve Başarı Faktörleri gibi İk uygulamalarından veri çeken bir sağlama hizmeti vardır. Bu tümleştirmeler Microsoft tarafından oluşturulur ve yönetilir. Hizmetimize yeni bir İk uygulaması onboarding için, [UserVoice](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests)üzerinde talep edebilirsiniz. 
+> Microsoft 'un, Workday ve başarılı etmenler gibi ık uygulamalardan veri çeken bir sağlama hizmeti vardır. Bu tümleştirmeler Microsoft tarafından oluşturulup yönetilir. Hizmetimizin yeni bir ık uygulaması eklemek için, [UserVoice](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests)üzerinde istek yapabilirsiniz. 
 
 ## <a name="related-articles"></a>İlgili makaleler:
 
-- [Eşitleme Microsoft Graph belgelerini gözden geçirme](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
-- [Azure AD ile özel bir SCIM uygulamasını tümleştirme](use-scim-to-provision-users-and-groups.md)
+- [Eşitleme Microsoft Graph belgelerini gözden geçirin](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Özel bir SCıM uygulamasını Azure AD ile tümleştirme](use-scim-to-provision-users-and-groups.md)

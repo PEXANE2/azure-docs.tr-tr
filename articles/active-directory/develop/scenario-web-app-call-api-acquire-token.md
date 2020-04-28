@@ -1,6 +1,6 @@
 ---
-title: Web API'lerini çağıran bir web uygulamasında belirteç alın - Microsoft kimlik platformu | Azure
-description: Web API'lerini çağıran bir web uygulaması için nasıl belirteç elde edebilirsiniz öğrenin
+title: Web API 'Leri çağıran Web uygulamasında bir belirteç alın-Microsoft Identity platform | Mavisi
+description: Web API 'Lerini çağıran bir Web uygulaması için belirteç alma hakkında bilgi edinin
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,23 +11,23 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1069b4288f8253ccb9a7774b3144d10d85dcdd36
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537126"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181741"
 ---
-# <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API'lerini çağıran bir web uygulaması: Uygulama için bir belirteç edinme
+# <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API 'Leri çağıran bir Web uygulaması: uygulama için belirteç alma
 
-İstemci uygulama nesnenizi oluşturabilirsiniz. Şimdi, bir web API aramak için bir belirteç elde etmek için kullanacağız. ASP.NET veya ASP.NET Core'da, web API'sini çağırmak denetleyicide yapılır:
+İstemci uygulama nesneniz oluşturdunuz. Şimdi, bir Web API 'sini çağırmak için bir belirteç almak üzere kullanacaksınız. ASP.NET veya ASP.NET Core ' de, bir Web API 'SI çağırmak denetleyicide yapılır:
 
-- Belirteç önbelleğini kullanarak web API'si için bir belirteç alın. Bu belirteci almak `AcquireTokenSilent` için, yöntemi arayın.
-- Erişim belirtecibir parametre olarak geçen, korumalı API çağırın.
+- Belirteç önbelleğini kullanarak Web API 'SI için bir belirteç alın. Bu belirteci almak için, MSAL `AcquireTokenSilent` yöntemini (veya Microsoft. Identity. Web 'de eşdeğerini) çağırın.
+- Erişim belirtecini bir parametre olarak geçirerek korunan API 'yi çağırın.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Denetleyici yöntemleri, kullanıcıların `[Authorize]` kimlik doğrulaması nın web uygulamasını kullanmasını gerektiren bir öznitelik tarafından korunur. Microsoft Graph çağıran kod şunlardır:
+Denetleyici yöntemleri, kullanıcıların kimlik doğrulamasından geçen `[Authorize]` ve Web uygulamasını kullanmasına zorlayan bir öznitelik tarafından korunur. Microsoft Graph çağıran kod aşağıda verilmiştir:
 
 ```csharp
 [Authorize]
@@ -45,16 +45,16 @@ public class HomeController : Controller
 }
 ```
 
-Hizmet `ITokenAcquisition` bağımlılık enjeksiyonu kullanılarak ASP.NET tarafından enjekte edilir.
+`ITokenAcquisition` Hizmet, bağımlılık ekleme kullanılarak ASP.NET tarafından eklenir.
 
-Microsoft Graph'ı aramak için bir `HomeController`belirteç alan eyleminin basitleştirilmiş kodu aşağıda verilmiştir:
+Aşağıda, Microsoft Graph çağrısı yapılacak bir belirteç alan `HomeController`eylemi için basitleştirilmiş kod verilmiştir:
 
 ```csharp
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
  string[] scopes = new string[]{"user.read"};
- string accessToken = await tokenAcquisition.GetAccessTokenOnBehalfOfUserAsync(scopes);
+ string accessToken = await tokenAcquisition.GetAccessTokenForUserAsync(scopes);
 
  // Use the access token to call a protected web API.
  HttpClient client = new HttpClient();
@@ -63,28 +63,28 @@ public async Task<IActionResult> Profile()
 }
 ```
 
-Bu senaryo için gerekli kodu daha iyi anlamak için, [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) öğreticisinin faz 2[(2-1-Web uygulaması Microsoft Graph'ı Arar)](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)adımına bakın.
+Bu senaryo için gereken kodu daha iyi anlamak için, [MS-Identity-aspnetcore-WebApp-öğreticisi](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) öğreticisinin 2. aşama ([2-1-Web uygulaması çağrı Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) adımına bakın.
 
-Diğer karmaşık varyasyonlar vardır, örneğin:
+Farklı karmaşık çeşitlemeler vardır, örneğin:
 
-- Birkaç API arıyorum.
-- Aşamalı onay ve koşullu erişim işleme.
+- Çeşitli API 'Ler çağırma.
+- Artımlı onay ve koşullu erişim işleniyor.
 
-Bu gelişmiş [adımlar, 3-WebApp-multi-API'ler](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs) öğreticinin 3.
+Bu gelişmiş adımlar [3-WebApp-Multi-API](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs) öğreticisinin Bölüm 3 ' te ele alınmıştır.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET kodu ASP.NET Core için gösterilen koda benzer:
+ASP.NET için kod ASP.NET Core gösterilen koda benzerdir:
 
-- [Authorize] özniteliği tarafından korunan bir denetleyici eylemi, denetleyicinin `ClaimsPrincipal` üyesinin kiracı kimliğini ve kullanıcı kimliğini ayıklar. (ASP.NET `HttpContext.User`kullanır .)
-- Oradan, MSAL.NET `IConfidentialClientApplication` bir nesne oluşturur.
-- Son olarak, `AcquireTokenSilent` gizli istemci uygulama yöntemi çağırır.
+- Bir [Yetkilendir] özniteliğiyle korunan bir denetleyici eylemi, denetleyicinin `ClaimsPrincipal` ÜYESININ Kiracı kimliğini ve Kullanıcı kimliğini ayıklar. (ASP.NET kullanımları `HttpContext.User`.)
+- Buradan, bir MSAL.NET `IConfidentialClientApplication` nesnesi oluşturur.
+- Son olarak, gizli istemci `AcquireTokenSilent` uygulamasının yöntemini çağırır.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java örneğinde, API çağıran kod [AuthPageController.java#L62'deki](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62)getUsersFromGraph yönteminde dir.
+Java örneğinde, bir API çağıran kod [Authpagecontroller. Java # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62)Içindeki getUsersFromGraph yönteminde bulunur.
 
-Yöntem. `getAuthResultBySilentFlow` Kullanıcının daha fazla kapsama izin alması gerekiyorsa, kod `MsalInteractionRequiredException` nesneyi kullanıcıya meydan okumak için işler.
+Yöntemi çağrılmaya `getAuthResultBySilentFlow`çalışır. Kullanıcının daha fazla kapsam için onay sağlaması gerekiyorsa, kod kullanıcıyı sınama için `MsalInteractionRequiredException` nesneyi işler.
 
 ```java
 @RequestMapping("/msal4jsample/graph/me")
@@ -144,9 +144,9 @@ public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServlet
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python örneğinde, Microsoft Graph adını veren kod [app.py#L53-L62'dedir.](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62)
+Python örneğinde Microsoft Graph çağıran kod [app. Sip # L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62).
 
-Kod, belirteç önbelleğinden bir belirteç almaya çalışır. Daha sonra, yetkilendirme üstbilgisini ayarladıktan sonra web API'sını çağırır. Bir belirteç alamıyorsa, kullanıcıyı yeniden imzalar.
+Kod, belirteç önbelleğinden bir belirteç almaya çalışır. Ardından, yetkilendirme üst bilgisini ayarladıktan sonra Web API 'sini çağırır. Belirteç alamazsanız, kullanıcıyı yeniden oturum açar.
 
 ```python
 @app.route("/graphcall")
@@ -160,6 +160,8 @@ def graphcall():
         ).json()
     return render_template('display.html', result=graph_data)
 ```
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 03/17/2020
-  ms.openlocfilehash: cba5540948f87eb6d0631cc11cc0d5e1134307fa
-  ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+  ms.openlocfilehash: 7f953c7de34e5574deb843dc42092103c8d9b87a
+  ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/14/2020
-  ms.locfileid: "81312971"
+  ms.lasthandoff: 04/17/2020
+  ms.locfileid: "81603336"
 highlightedContent:
   items:
   - title: Azure AD nedir?
@@ -210,15 +210,15 @@ conceptualContent:
       text: Daha fazla göster
   - title: Kimlik idaresi
     links:
+    - url: ./governance/entitlement-management-access-package-first.md
+      itemType: how-to-guide
+      text: Erişim paketi oluşturma
     - url: ./governance/create-access-review.md
       itemType: how-to-guide
-      text: Erişim gözden geçirmesi oluşturma
-    - url: ./governance/perform-access-review.md
-      itemType: how-to-guide
-      text: Erişim gözden geçirmesi başlatma
+      text: Grup veya uygulamaların erişim gözden geçirmesini oluşturma
     - url: ./conditional-access/terms-of-use.md
       itemType: how-to-guide
-      text: Kullanım koşullarını gerekli kılma
+      text: Kullanıcıların kullanım koşullarını kabul etmesini zorunlu tut
     footerLink:
       url: ./governance/index.yml
       text: Daha fazla göster

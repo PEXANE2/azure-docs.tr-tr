@@ -1,6 +1,6 @@
 ---
-title: Power BI Professional'a bağlanın
-description: Bu eğitimde, Power BI masaüstünü isteğe bağlı SQL'e (önizleme) nasıl bağlayacak adımlardan geçeceğiz.
+title: Power BI Professional 'a bağlanma
+description: Bu öğreticide, Power BI Desktop 'ı isteğe bağlı SQL (Önizleme) ile nasıl bağlayacağız adımları öğreneceksiniz.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,73 +9,73 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0ce8f3a447f1896ae6d96d343782f8cdb44d4c6f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a9db42bcd69d9a24a454c02c9bb0e2d339cb4860
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81422567"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185787"
 ---
-# <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Power BI Professional ile Synapse SQL'e bağlanın
+# <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Power BI Professional ile SYNAPSE SQL 'e bağlanma
 
 > [!div class="op_single_selector"]
 >
 > - [Azure Data Studio](get-started-azure-data-studio.md)
 > - [Power BI](get-started-power-bi-professional.md)
 > - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> - [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-Bu eğitimde, Power BI masaüstünü isteğe bağlı SQL'e (önizleme) nasıl bağlayacak adımlardan geçeceğiz.
+Bu öğreticide, Power BI Desktop 'ı isteğe bağlı SQL (Önizleme) hizmetine bağlama adımlarını inceleyeceğiz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Sorgu verme aracı:
 
-- Seçtiğiniz SQL istemcisi:
+- Tercih ettiğiniz SQL istemcisi:
 
   - Azure Data Studio
   - SQL Server Management Studio
 
-- Güç BI masaüstü yüklü
+- Power BI Masaüstü yüklendi
 
 Parametreler:
 
 | Parametre                                 | Açıklama                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL isteğe bağlı hizmet bitiş noktası adresi    | Sunucu adı olarak kullanılacak                                   |
-| SQL isteğe bağlı hizmet bitiş noktası bölgesi     | Örneklerde hangi depolama alanını kullanacağımızı belirlemek için kullanılacaktır |
-| Uç nokta erişimi için kullanıcı adı ve parola | Uç noktaya erişmek için kullanılacak                               |
-| Görünüm oluşturmak için kullanacağınız veritabanı     | Bu veritabanı örneklerde başlangıç noktası olarak kullanılacaktır       |
+| SQL isteğe bağlı hizmet uç noktası adresi    | Sunucu adı olarak kullanılacak                                   |
+| SQL isteğe bağlı hizmet uç noktası bölgesi     | Örneklerde hangi depolamanın kullanılacağını belirlemek için kullanılır |
+| Uç nokta erişimi için Kullanıcı adı ve parola | Uç noktaya erişmek için kullanılacak                               |
+| Görünümler oluşturmak için kullanacağınız veritabanı     | Bu veritabanı, örneklerde başlangıç noktası olarak kullanılacaktır       |
 
 ## <a name="first-time-setup"></a>İlk kez kurulum
 
-Örnekleri kullanmadan önce iki adım vardır:
+Örnek kullanılmadan önce iki adım vardır:
 
 1. Görünümleriniz için veritabanı oluşturma
-2. Depolama daki dosyalara erişmek için isteğe bağlı OLARAK SQL tarafından kullanılacak kimlik bilgileri oluşturma
+2. Depolamadaki dosyalara erişmek için SQL isteğe bağlı olarak kullanılacak kimlik bilgilerini oluşturun
 
 ### <a name="create-database"></a>Veritabanı oluşturma
 
-Demo ortamını kullanacağınız için, demo amacıyla kendi veritabanınızı oluşturmalısınız. Veritabanı içinde görünümler oluşturmak için gereklidir. Bu veritabanını, bu belgedeki bazı örnek sorgularda kullanırsınız.
+Bu başlangıç makalesinde, bir demo olarak kullanmak üzere kendi veritabanınızı oluşturmanız gerekir. Görünümler oluşturmak için bir veritabanı gereklidir. Bu veritabanı, bu belge içindeki bazı örnek sorgulardan bu veritabanını kullanacaksınız.
 
 > [!NOTE]
-> Veritabanlarının gerçek veriler için değil, yalnızca görüntüleme meta verileri için kullanıldığını unutmayın.
+> Veritabanları, gerçek veriler için değil yalnızca meta verileri görüntülemek için kullanılır.
 >
-> Kullandığınız veritabanı adını yazın, daha sonra ihtiyacınız olacak.
+> Kullanmakta olduğunuz veritabanı adını yazın, daha sonra üzerinde gerekecektir.
 
 ```sql
 DROP DATABASE IF EXISTS demo;
 ```
 
-### <a name="create-credentials"></a>Kimlik bilgileri oluşturma
+### <a name="create-credentials"></a>Kimlik bilgileri oluştur
 
-Sorguları çalıştırabilmeniz için kimlik bilgisi oluşturmamız gerekir. Bu kimlik bilgisi, depolama daki dosyalara erişmek için SQL on-demand hizmeti tarafından kullanılacaktır.
+Sorguları çalıştırabilmeniz için önce kimlik bilgileri oluşturuyoruz. Kimlik bilgileri, depolama alanındaki dosyalara erişmek için SQL isteğe bağlı hizmeti tarafından kullanılır.
 
 > [!NOTE]
-> Depolama hesabına erişmek için kimlik bilgisi oluşturmanız gerektiğini unutmayın. İsteğe bağlı SQL farklı bölgelerden depolama lara erişebilse de, aynı bölgede depolama ve Azure Synapse çalışma alanına sahip olmak daha iyi performans deneyimi sağlar.
+> Depolama hesabına erişim için kimlik bilgisi oluşturmanız gerekir. İsteğe bağlı SQL, farklı bölgelerdeki depolamaya erişebilse de depolama ve Azure SYNAPSE çalışma alanının aynı bölgede bulunması daha iyi performans deneyimi sağlar.
 
-**Nüfus Sayımı veri kapsayıcıları için kimlik bilgileri oluşturmak için nasıl kod snippet**, çalıştırın:
+**Census veri kapsayıcıları için kimlik bilgileri oluşturma hakkında kod parçacığı**, şunu çalıştırın:
 
 ```sql
 IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
@@ -90,22 +90,22 @@ SECRET = '';
 GO
 ```
 
-## <a name="creating-power-bi-desktop-report"></a>Power BI masaüstü raporu oluşturma
+## <a name="creating-power-bi-desktop-report"></a>Power BI Masaüstü raporu oluşturuluyor
 
-Power BI masaüstü uygulamasını açın ve "Veri al" seçeneğini belirleyin.
-![Power BI masaüstü uygulamasını açın ve veri almayı seçin.](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
+Power BI Masaüstü uygulamasını açın ve **veri al** seçeneğini belirleyin.
+![Power BI Masaüstü uygulamasını açın ve veri al ' ı seçin.](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
 
-### <a name="step-1---select-data-source"></a>Adım 1 - Veri kaynağını seçin
+### <a name="step-1---select-data-source"></a>1. adım-veri kaynağını seçme
 
-Menüde "Azure" ve ardından "Azure SQL Veritabanı"nı seçin.
+Menüden **Azure** ' u ve ardından **Azure SQL veritabanı**' nı seçin.
 ![Veri kaynağını seçin.](./media/get-started-power-bi-professional/step-1-select-data-source.png)
 
-### <a name="step-2---select-database"></a>Adım 2 - Veritabanını seçin
+### <a name="step-2---select-database"></a>2. adım-veritabanı seçme
 
-Veritabanı için URL yazın ve görünümün bulunduğu veritabanının adı.
-![Bitiş noktasında veritabanını seçin.](./media/get-started-power-bi-professional/step-2-db.png)
+Veritabanının URL 'sini ve görünümün bulunduğu veritabanının adını yazın.
+![Uç noktada veritabanı ' nı seçin.](./media/get-started-power-bi-professional/step-2-db.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Data Studio'yu kullanarak isteğe bağlı SQL'e nasıl bağlanıp bağlanılabildiğini öğrenmek için [Sorgu depolama dosyalarına](get-started-azure-data-studio.md) ilerleyin.
+Azure Data Studio kullanarak SQL isteğe bağlı olarak nasıl bağlanacağınızı öğrenmek için [sorgu depolama dosyalarına](get-started-azure-data-studio.md) ilerleyin.
  

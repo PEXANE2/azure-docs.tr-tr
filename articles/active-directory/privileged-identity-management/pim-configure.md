@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 11/08/2019
+ms.date: 04/21/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1f0708f0674633ddfee8b84388a2d96f2a04636
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bfb0cc61b61328df86c27498a1007f2372fb9548
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74899976"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867440"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management nedir?
 
@@ -50,9 +50,7 @@ Ayrıcalıklı Kimlik Yönetimi'ni ayarladıktan sonra, sol daki gezinme menüs�
 
 ## <a name="who-can-do-what"></a>Kim ne yapabilir?
 
-Ayrıcalıklı Kimlik Yönetimi'ni kullanan ilk kişiyseniz, dizindeki [Güvenlik Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) ve [Ayrıcalıklı Rol Yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rolleri otomatik olarak atanırsınız.
-
-Ayrıcalıklı Kimlik Yönetimi'ndeki Azure AD rolleri için, yalnızca Ayrıcalıklı Rol Yöneticisi rolünde olan bir kullanıcı diğer yöneticilerin atamalarını yönetebilir. Ayrıcalıklı [Kimlik Yönetimi'ni yönetmek için diğer yöneticilere erişim izni](pim-how-to-give-access-to-pim.md)verebilirsiniz. Genel Yöneticiler, Güvenlik Yöneticileri, Genel Okuyucular ve Güvenlik Okuyucuları, Ayrıcalıklı Kimlik Yönetimi'ndeki Azure AD rollerine atamaları da görüntüleyebilir.
+Ayrıcalıklı Kimlik Yönetimi'ndeki Azure AD rolleri için, yalnızca Ayrıcalıklı rol yöneticisi veya Genel yönetici rolünde olan bir kullanıcı diğer yöneticilerin atamalarını yönetebilir. Ayrıcalıklı [Kimlik Yönetimi'ni yönetmek için diğer yöneticilere erişim izni](pim-how-to-give-access-to-pim.md)verebilirsiniz. Genel Yöneticiler, Güvenlik Yöneticileri, Genel Okuyucular ve Güvenlik Okuyucuları, Ayrıcalıklı Kimlik Yönetimi'ndeki Azure AD rollerine atamaları da görüntüleyebilir.
 
 Ayrıcalıklı Kimlik Yönetimi'ndeki Azure kaynak rolleri için, yalnızca bir abonelik yöneticisi, kaynak Sahibi veya kaynak Kullanıcı Erişimi yöneticisi diğer yöneticilerin atamalarını yönetebilir. Ayrıcalıklı Rol Yöneticileri, Güvenlik Yöneticileri veya Güvenlik Okuyucuları olan kullanıcılar varsayılan olarak Ayrıcalıklı Kimlik Yönetimi'nde Azure kaynak rollerindeki atamaları görüntüleme ye erişemez.
 

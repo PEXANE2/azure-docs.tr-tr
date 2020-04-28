@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 3765c70b27fb98518f71a55f00acfe5b831044ec
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: d5edfab0963ec3fca24969d7a54038066ba08765
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146664"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188404"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için Kuruluş Güvenliği
 
@@ -26,7 +26,7 @@ Bir bulut hizmeti kullandığınızda, erişimi yalnızca ihtiyacı olan kullan�
 > [!NOTE]
 > Bu makaledeki bilgiler, Azure Machine Learning Python SDK sürümü 1.0.83.1 veya üzeri ile birlikte çalışmaktadır.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Azure Active Directory (Azure AD) kullanmak üzere yapılandırılmışsa Multi-Factor Authentication desteklenir. Kimlik doğrulama işlemi şu şekildedir:
 
@@ -78,7 +78,7 @@ Aşağıdaki tabloda, bazı önemli Azure Machine Learning işlemleri ve bunlar�
 Yerleşik roller ihtiyaçlarınızı karşılamıyorsa, özel roller oluşturabilirsiniz. Özel roller yalnızca çalışma alanındaki işlemler için desteklenir ve Machine Learning İşlem. Özel roller çalışma alanında ve bu çalışma alanındaki işlem kaynağında okuma, yazma veya silme izinlerine sahip olabilir. Rolü belirli bir çalışma alanı düzeyinde, belirli bir kaynak grubu düzeyinde veya belirli bir abonelik düzeyinde kullanılabilir hale getirebilirsiniz. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanında kullanıcıları ve rolleri yönetme](how-to-assign-roles.md).
 
 > [!WARNING]
-> Azure Machine Learning, Azure Active Directory işletmeden işletmeye işbirliği ile Şu anda desteklenmemektedir.
+> Azure Machine Learning Azure Active Directory işletmeden işletmeye işbirliğiyle desteklenir, ancak şu anda Azure Active Directory işletmeden müşteriye işbirliğiyle desteklenmez.
 
 ### <a name="securing-compute-targets-and-data"></a>İşlem hedeflerinin ve verilerin güvenliğini sağlama
 
@@ -385,10 +385,7 @@ Ayrıntılar aşağıda verilmiştir:
 
 * [TLS ile güvenli Azure Machine Learning Web Hizmetleri](how-to-secure-web-service.md)
 * [Web hizmeti olarak dağıtılan bir Machine Learning modeli kullanma](how-to-consume-web-service.md)
-* [Toplu tahminleri çalıştırma](how-to-use-parallel-run-step.md)
-* [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
-* [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)
-* [Azure Machine Learning SDK’sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+* [Azure Güvenlik Duvarı ile Azure Machine Learning kullanma](how-to-access-azureml-behind-firewall.md)
 * [Azure sanal ağ ile Azure Machine Learning kullanma](how-to-enable-virtual-network.md)
 * [Öneri sistemleri oluşturmak için en iyi uygulamalar](https://github.com/Microsoft/Recommenders)
 * [Azure 'da gerçek zamanlı bir öneri API 'SI oluşturun](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

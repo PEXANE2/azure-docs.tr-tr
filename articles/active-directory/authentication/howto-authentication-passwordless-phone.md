@@ -1,6 +1,6 @@
 ---
-title: Microsoft Authenticator uygulamasıyla parolasız oturum açma - Azure Active Directory
-description: Microsoft Authenticator uygulamasını kullanarak Azure AD'de parolasız oturum açmayı etkinleştirin (önizleme)
+title: Microsoft Authenticator App-Azure Active Directory ile passwordless oturum açma
+description: Microsoft Authenticator uygulamasını kullanarak Azure AD 'de passwordless oturum açmayı etkinleştirme (Önizleme)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,94 +12,94 @@ manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3412938cfc2ad3fbec293fd33f64e114e14e6f7e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81450981"
 ---
-# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator uygulamasıyla parolasız oturum açmayı etkinleştirme (önizleme)
+# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator uygulamasıyla passwordless oturum açmayı etkinleştirme (Önizleme)
 
-Microsoft Authenticator uygulaması, parola kullanmadan herhangi bir Azure REKLAM hesabında oturum açabilmek için kullanılabilir. [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification)teknolojisine benzer şekilde, Microsoft Authenticator bir aygıta bağlı olan ve biyometrik veya PIN kullanan bir kullanıcı kimlik bilgisini etkinleştirmek için anahtar tabanlı kimlik doğrulamasını kullanır. Bu kimlik doğrulama yöntemi, mobil cihazlar da dahil olmak üzere herhangi bir aygıt platformunda ve Microsoft kimlik doğrulama kitaplıklarıyla tümleşen herhangi bir uygulama veya web sitesinde kullanılabilir. 
+Microsoft Authenticator uygulaması, herhangi bir Azure AD hesabında parola kullanılmadan oturum açmak için kullanılabilir. [İş Için Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification)teknolojisine benzer şekilde, Microsoft Authenticator bir cihaza bağlı olan ve biyometrik ya da PIN kullanan kullanıcı kimlik bilgilerini etkinleştirmek için anahtar tabanlı kimlik doğrulaması kullanır. Bu kimlik doğrulama yöntemi, mobil ve Microsoft kimlik doğrulama kitaplıklarıyla tümleştirilen herhangi bir uygulama veya Web sitesi ile birlikte herhangi bir cihaz platformunda kullanılabilir. 
 
-![Kullanıcının oturum açma yı onaylamasını isteyen bir tarayıcı oturum açma örneği](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
+![Kullanıcının oturum açma onayını onaylamasını isteyen tarayıcı oturum açma örneği](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
 
-Bir kullanıcı adı girdikten sonra parola istemi görmek yerine, Microsoft Authenticator uygulamasından telefon oturum açma özelliğini etkinleştiren bir kişi, uygulamada bir numaraya dokunmalarını söyleyen bir ileti görür. Uygulamada, kullanıcı numarası eşleştirmek gerekir, Onayseçin, sonra pin veya biyometrik sağlamak, sonra kimlik doğrulama tamamlanır.
+Bir Kullanıcı adı girdikten sonra parola istemi görmek yerine, Microsoft Authenticator uygulamadan telefonla oturum açmayı etkinleştiren bir kişi, uygulamasının uygulamasındaki bir sayıya dokunmasını söyleyen bir ileti görür. Uygulamada, kullanıcının sayıyla eşleşmesi, Onayla ' yı seçmesi, sonra PIN veya biyometri sağlaması gerekir, bu durumda kimlik doğrulama tamamlanır.
 
 > [!NOTE]
-> Bu özellik Mart 2017'den beri Microsoft Authenticator uygulamasında olduğundan, ilke bir dizin için etkinleştirildiğinde kullanıcıların bu akışla hemen karşılaşabilme ve ilke tarafından etkinleştirilmedikleri takdirde bir hata iletisi görme olasılığı vardır. Kullanıcılarınızı bu değişikliğe hazırlayın ve unutmayın.
+> Bu özellik Mart 2017 ' den beri Microsoft Authenticator uygulamada vardı, bu nedenle ilke bir dizin için etkinleştirildiğinde, kullanıcılar bu akışla hemen karşılaşabilir ve ilke tarafından etkinleştirilmeyen bir hata mesajı görebilir. Kullanıcılarınıza bu değişikliği göz önünde bulundurun ve hazırlayın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Doğrulama yöntemi olarak anında iletme bildirimlerine izin verilen Azure Çok Faktörlü Kimlik Doğrulama 
-- iOS 8.0 veya daha büyük veya daha büyük olan cihazlarda veya Android 6.0 veya daha büyük cihazlarda yüklenmiş Microsoft Authenticator'Un en son sürümü.
+- Doğrulama yöntemi olarak izin verilen anında iletme bildirimleri ile Azure Multi-Factor Authentication 
+- İOS 8,0 veya üzerini çalıştıran cihazlarda yüklü Microsoft Authenticator en son sürümü veya Android 6,0 veya üzeri.
 
 > [!NOTE]
-> Azure AD PowerShell'i kullanarak önceki Microsoft Authenticator uygulamasında parolasız oturum açma önizlemesini etkinleştirdiyseniz, tüm diziniçin etkinleştirildi. Bu yeni yöntemi kullanarak etkinleştirin, PowerShell ilkesinin yerini alacaktır. Yeni Kimlik Doğrulama Yöntemleri aracılığıyla kiracınızdaki tüm kullanıcılara etkinleştirmenizi öneririz, aksi takdirde yeni ilkedeki kullanıcılar artık parolasız oturum açamaz. 
+> Azure AD PowerShell kullanarak önceki Microsoft Authenticator Apps 'ten daha az oturum açma önizlemesini etkinleştirdiyseniz, bu, tüm dizininiz için etkinleştirilmiştir. Bu yeni yöntemi kullanmayı etkinleştirirseniz, PowerShell ilkesinin yerini alacak. Yeni kimlik doğrulama yöntemleri aracılığıyla kiracınızdaki tüm kullanıcılar için etkinleştirmenizi öneririz, aksi takdirde yeni ilkede olmayan kullanıcılar artık parolasız olarak oturum açamaz. 
 
-## <a name="enable-passwordless-authentication-methods"></a>Parolasız kimlik doğrulama yöntemlerini etkinleştirme
+## <a name="enable-passwordless-authentication-methods"></a>Passwordless kimlik doğrulama yöntemlerini etkinleştir
 
-### <a name="enable-the-combined-registration-experience"></a>Birleştirilmiş kayıt deneyimini etkinleştirme
+### <a name="enable-the-combined-registration-experience"></a>Birleşik kayıt deneyimini etkinleştir
 
-Parolasız kimlik doğrulama yöntemlerinin kayıt özellikleri, birleştirilmiş kayıt özelliğine dayanır. Birleştirilmiş kaydı etkinleştirmek için [birleştirilmiş güvenlik bilgi kaydını etkinleştir,](howto-registration-mfa-sspr-combined.md)makaledeki adımları izleyin.
+Passwordless kimlik doğrulama yöntemlerinin kayıt özellikleri, Birleşik kayıt özelliğini kullanır. Birleşik kayıt özelliğini etkinleştirmek için [Birleşik güvenlik bilgileri kaydını etkinleştirme](howto-registration-mfa-sspr-combined.md)makalesindeki adımları izleyin.
 
-### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Parolasız telefon oturum açma kimlik doğrulama yöntemlerini etkinleştirme
+### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Passwordless telefon oturum açma kimlik doğrulama yöntemlerini etkinleştir
 
-1. [Azure portalında](https://portal.azure.com) oturum açın
-1. *Azure Active Directory*'yi bulun ve seçin. **Güvenlik** > **Kimlik Doğrulama yöntemlerini** > seçin Kimlik doğrulama yöntemi ilkesi **(Önizleme)**
-1. **Şifresiz telefon oturum açma**altında aşağıdaki seçenekleri seçin
-   1. **Etkinleştir** - Evet veya Hayır
-   1. **Hedef** - Tüm kullanıcılar veya Select kullanıcıları
-1. Yeni ilkeyi ayarlamak için **kaydet**
+1. [Azure Portal](https://portal.azure.com) oturum açın
+1. *Azure Active Directory*'yi bulun ve seçin. **Güvenlik** > **kimlik doğrulama yöntemleri** > **kimlik doğrulama yöntemi ilkesi (Önizleme)** seçeneğini belirleyin
+1. **Passwordless telefon oturumu açma**altında aşağıdaki seçenekleri belirleyin
+   1. **Etkinleştir** -Evet veya Hayır
+   1. **Hedef** -tüm kullanıcılar veya kullanıcıları seçin
+1. Yeni ilkeyi ayarlamak için **Kaydet**
 
-## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasının kullanıcı kaydı ve yönetimi
+## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasının Kullanıcı kaydı ve yönetimi
 
-1. Göz atın[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
-1. Zaten değilse oturum açın
-1. Kimlik doğrulayıcı uygulaması ekle **yöntemini**tıklatarak, **Authenticator uygulamasını**seçerek ve **Ekle'yi** tıklatarak bir kimlik doğrulayıcı uygulaması ekleme
+1. Buraya gidin[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
+1. Henüz yoksa oturum aç
+1. **Yöntem Ekle**' ye tıklayıp **Authenticator uygulaması**' nı seçip **Ekle** ' ye tıklayarak bir kimlik doğrulayıcı uygulaması ekleyin
 1. Microsoft Authenticator uygulamasını cihazınıza yüklemek ve yapılandırmak için yönergeleri izleyin
-1. Authenticator MFA uygulama kurulum akışını tamamlamak için **Bitti'yi** tıklatın. 
-1. **Microsoft Authenticator'da,** hesap açılır menüsünden **telefon oturum açma yı etkinleştir'i** seçin
-1. Şifresiz telefon oturum açma için kaydolmayı bitirmek için uygulamadaki yönergeleri izleyin. 
+1. Authenticator MFA uygulama kurulum akışını tamamladıktan sonra **bitti** ' ye tıklayın. 
+1. **Microsoft Authenticator**, hesap açılan menüsünden **Telefon oturum açmayı etkinleştir** ' i seçin.
+1. Parolasız telefon oturumu açma için kayıt işleminin bitmesini yapmak üzere uygulamadaki yönergeleri izleyin. 
 
-Kuruluşlar, Microsoft Authenticator uygulamasında daha fazla yardım sağlamak ve telefon oturum açmanızı etkinleştirmek için [kullanıcılarını telefonunuzla oturum aç'ın](../user-help/microsoft-authenticator-app-phone-signin-faq.md) ayarına yönlendirebilir. Bu ayarları uygulamak için oturumu niçin oturumu açmanız ve kiracıya yeniden giriş yapmanız gerekebilir. 
+Kuruluşlar, Microsoft Authenticator uygulamasında kurulum ve telefonla oturum açmayı etkinleştirme hakkında daha fazla yardım almak için [parolanğuna değil,](../user-help/microsoft-authenticator-app-phone-signin-faq.md) Kullanıcı kullanıcılarınızı telefonunuza işaret edebilir. Bu ayarları uygulamak için oturumunuzu kapatıp kiracıya yeniden oturum açmanız gerekebilir. 
 
-## <a name="sign-in-with-passwordless-credential"></a>Parolasız kimlik bilgisi ile oturum açma
+## <a name="sign-in-with-passwordless-credential"></a>Passwordless kimlik bilgileriyle oturum açın
 
-Genel önizleme için, kullanıcıları bu yeni kimlik belgesini oluşturmaya veya kullanmaya zorlamanın bir yolu yoktur. Bir kullanıcı yalnızca bir yönetici kiracısını etkinleştirdikten **ve** kullanıcı telefon oturum açmayı etkinleştirmek için Microsoft Authenticator uygulamasını güncelleştirince parolasız oturum açma ile karşılaşır.
+Genel önizleme için, kullanıcıların bu yeni kimlik bilgisini oluşturmasına veya kullanmasına zorlayacağı bir yol yoktur. Bir yönetici **kiracıyı etkinleştirdikten** sonra Kullanıcı Microsoft Authenticator uygulamasını telefonla oturum açmayı etkinleştirmek üzere güncelleştirdikten sonra, Kullanıcı parolasız oturum açma ile karşılaşacaktır.
 
-Web'de kullanıcı adınızı yazdıktan ve **İleri'yi**seçtikten sonra, kullanıcılara bir numara sunulur ve Microsoft Authenticator uygulamasında parolalarını kullanmak yerine kimlik doğrulaması yapmak için uygun numarayı seçmeleri istenir. 
+Web üzerinde Kullanıcı adınızı yazdıktan ve **İleri**' yi seçtikten sonra, kullanıcılara, parolasını kullanmak yerine kimlik doğrulaması yapmak için uygun numarayı seçmesi için bir sayı sunulur ve Microsoft Authenticator uygulamasında istenir. 
 
 ![Microsoft Authenticator uygulamasını kullanarak tarayıcı oturum açma örneği](./media/howto-authentication-passwordless-phone/web-sign-in-microsoft-authenticator-app.png)
 
 ## <a name="known-issues"></a>Bilinen Sorunlar
 
-### <a name="user-is-not-enabled-by-policy-but-still-has-passwordless-phone-sign-in-method-in-microsoft-authenticator"></a>Kullanıcı ilke tarafından etkinleştirilemez, ancak Microsoft Authenticator'da yine de şifresiz telefon oturum açma yöntemi vardır
+### <a name="user-is-not-enabled-by-policy-but-still-has-passwordless-phone-sign-in-method-in-microsoft-authenticator"></a>Kullanıcı, ilke tarafından etkinleştirilmemiş, ancak hala Microsoft Authenticator içinde passwordless telefon oturum açma yöntemi zaten içeriyor
 
-Bir kullanıcının bir noktada geçerli Microsoft Authenticator uygulamasında veya daha önceki bir aygıtta parolasız bir telefon oturum açma kimlik bilgisi oluşturmuş olması mümkündür. Bir yönetici, parolasız telefon oturum açma için kimlik doğrulama yöntemi ilkesini etkinleştirdikten sonra, kimlik bilgisi kayıtlı herhangi bir kullanıcı, ilkeyi kullanmalarına izin verilip etkinleştirilemediğine bakılmaksızın yeni oturum açma istemini deneyimlemeye başlar. Kullanıcının kimlik bilgilerini ilke yle kullanmasına izin verilmediyse, kimlik doğrulama akışını tamamladıktan sonra bir hata görür. 
+Bir kullanıcının bir noktada geçerli Microsoft Authenticator uygulamasında veya önceki bir cihazda parolasız telefon oturum açma kimlik bilgisi oluşturmuş olması mümkündür. Yönetici, passwordless telefon oturumu için kimlik doğrulama yöntemi ilkesini etkinleştirdikten sonra, kayıtlı kimlik bilgileri olan herhangi bir Kullanıcı, ilkeyi kullanma özelliğinin etkinleştirilip etkinleştirilmediğini dikkate almaksızın, yeni oturum açma istemiyle karşılaşmaya başlar. Kullanıcının kimlik bilgilerini ilkeye göre kullanmasına izin verilmiyorsa, kimlik doğrulama akışını tamamladıktan sonra bir hata görür. 
 
-Yönetici, kullanıcının şifresiz telefon oturum açma yı kullanmasını etkinleştirmeyi seçebilir veya kullanıcının yöntemi kaldırması gerekir. Kullanıcı artık kayıtlı aygıtı kullanmazsa, aygıtın [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) içine gidip kaldırabilir. MFA için Kimlik Doğrulayıcı'yı kullanmaya devam ediyorlarsa, Microsoft Authenticator'un içinden **telefon oturum açmayı devre dışı bırakmayı** seçebilirler.  
+Yönetici, kullanıcının passwordless telefon oturum açma özelliğini kullanmasını etkinleştirmeyi seçebilir veya kullanıcının yöntemi kaldırması gerekir. Kullanıcı artık kayıtlı cihaza sahip değilse, bu cihaz ona gidebilir [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) ve kaldırabilir. Hala MFA için kimlik doğrulayıcı kullanılıyorsa, Microsoft Authenticator içinden **telefonla oturum açmayı devre dışı bırak** seçeneğini seçebilirler.  
 
-### <a name="ad-fs-integration"></a>AD FS entegrasyonu
+### <a name="ad-fs-integration"></a>AD FS tümleştirme
 
-Bir kullanıcı Microsoft Authenticator parolasız kimlik bilgilerini etkinleştirdiğinde, bu kullanıcı için kimlik doğrulaması her zaman onay için bildirim göndermekten varsayılan olarak kabul edilir. Bu mantık, hibrit kiracıya giren kullanıcıların oturum açma doğrulaması için ADFS'ye yönlendirilen kullanıcıları, kullanıcının "Parolanızı bunun yerine kullanın" düğmesini tıklatmak için ek bir adım atmadan engellemez. Bu işlem ayrıca şirket içinde koşullu erişim ilkelerini ve geçiş kimlik doğrulama akışlarını da atlar. 
+Kullanıcı Microsoft Authenticator parolasız kimlik bilgisini etkinleştirmişse, bu kullanıcı için kimlik doğrulaması her zaman onay için bir bildirim gönderir. Bu mantık, karma Kiracıdaki kullanıcıların, Kullanıcı yerine "parolanızı kullan" düğmesine tıklamadan oturum açma doğrulaması için ADFS 'ye yönlendirilmesini engeller. Bu işlem, şirket içi koşullu erişim ilkelerinin yanı sıra geçişli kimlik doğrulama akışlarını da atlar. 
 
-Bir kullanıcının yanıtsız bir şifresiz telefon oturum açma doğrulaması varsa ve yeniden oturum açmaya çalışırsa, kullanıcı parola girmek için ADFS'ye götürülebilir.  
+Bir Kullanıcı yanıtlanmayan parolasız telefon oturum açma doğrulaması bekliyor ve yeniden oturum açmayı denediğinde, Kullanıcı bunun yerine bir parola girmesi için ADFS 'ye alınmış olabilir.  
 
 ### <a name="azure-mfa-server"></a>Azure MFA sunucusu
 
-Bir kuruluşun şirket içi Azure MFA sunucusu aracılığıyla MFA için etkinleştirilen son kullanıcılar, kimlik bilgisi içinde tek bir parolasız telefon işareti oluşturabilir ve kullanabilir. Kullanıcı Microsoft Authenticator'ın birden çok yüklemesini (5+) kimlik bilgisiyle yükseltmeye çalışırsa, bu değişiklik bir hataya neden olabilir.  
+Bir kuruluşun şirket içi Azure MFA sunucusu aracılığıyla MFA için etkinleştirilen son kullanıcılar, yine de tek bir parolasız telefon oturum açma kimlik bilgisi oluşturabilir ve kullanabilir. Kullanıcı, kimlik bilgileriyle Microsoft Authenticator birden çok yüklemeyi (5 +) yükseltmeyi denerse, bu değişiklik hataya neden olabilir.  
 
 ### <a name="device-registration"></a>Cihaz kaydı
 
-Bu yeni güçlü kimlik bilgilerini oluşturmanın ön koşullarından biri, Microsoft Authenticator uygulamasının yüklü olduğu aygıtın azure AD kiracısına tek bir kullanıcıya da kaydedilmesi gerektiğidir. Geçerli aygıt kaydı kısıtlamaları nedeniyle, bir aygıt yalnızca tek bir kiracıya kaydedilebilir. Bu sınır, telefon oturum açma için Microsoft Authenticator uygulamasında yalnızca bir iş veya okul hesabının etkinleştirilebileceği anlamına gelir.
+Bu yeni güçlü kimlik bilgisini oluşturmak için önkoşullardan biri olan, Microsoft Authenticator uygulamasının yüklendiği cihazın tek bir kullanıcıya Azure AD kiracısı içinde de kaydedilmesi gerekir. Geçerli cihaz kayıt kısıtlamaları nedeniyle, bir cihaz yalnızca tek bir kiracıda kaydedilebilir. Bu sınır, telefonla oturum açma için Microsoft Authenticator uygulamasındaki yalnızca bir iş veya okul hesabının etkinleştiribileceği anlamına gelir.
 
 ### <a name="intune-mobile-application-management"></a>Intune mobil uygulama yönetimi  
 
-Mobil uygulama yönetimi (MAM) gerektiren bir ilkeye tabi olan son kullanıcılar, Microsoft Kimlik Doğrulayıcı uygulamasına parolasız kimlik belgesini kaydedemez. 
+Mobil uygulama yönetimi (MAM) gerektiren bir ilkeye bağlı olan son kullanıcılar, Microsoft Authenticator uygulamasına passwordless kimlik bilgisini kaydedemez. 
 
 > [!NOTE]
-> Cihaz kaydı, aygıt yönetimi veya "MDM" ile aynı değildir. Yalnızca Azure AD dizininde bir aygıt kimliği ve kullanıcı kimliğini ilişkilendirer.  
+> Cihaz kaydı, cihaz yönetimi veya "MDM" ile aynı değildir. Yalnızca bir cihaz KIMLIĞINI ve kullanıcı KIMLIĞINI Azure AD dizininde bir araya ilişkilendirir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -107,4 +107,4 @@ Mobil uygulama yönetimi (MAM) gerektiren bir ilkeye tabi olan son kullanıcıla
 
 [Cihaz kaydı hakkında bilgi edinin](../devices/overview.md#getting-devices-in-azure-ad)
 
-[Azure Çok Faktörlü Kimlik Doğrulama hakkında bilgi edinin](../authentication/howto-mfa-getstarted.md)
+[Azure Multi-Factor Authentication hakkında bilgi edinin](../authentication/howto-mfa-getstarted.md)

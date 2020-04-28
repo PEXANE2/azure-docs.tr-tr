@@ -1,59 +1,59 @@
 ---
-title: Azure portalını kullanarak VM'leri geri yükleme
-description: Azure portalını kullanarak bir kurtarma noktasından bir Azure sanal makinesini geri yükleme
+title: Azure portal kullanarak VM 'Leri geri yükleme
+description: Azure portal kullanarak bir Azure sanal makinesini bir kurtarma noktasından geri yükleme
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: b9cdb187aa3b8750bead8e81ad6d0ee50dcb3d6c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 687406676320f93bab22e34ca95951035187718d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254929"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182897"
 ---
-# <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portalında Azure VM verileri nasıl geri yüklenir?
+# <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal Azure VM verilerini geri yükleme
 
-Bu makalede, [Azure Yedekleme](backup-overview.md) Kurtarma Hizmetleri kasalarında depolanan kurtarma noktalarından Azure VM verilerinin nasıl geri yüklenir.
+Bu makalede, Azure VM verilerinin [Azure Backup](backup-overview.md) kurtarma hizmetleri kasalarında depolanan kurtarma noktalarından nasıl geri yükleneceği açıklanmaktadır.
 
 ## <a name="restore-options"></a>Geri yükleme seçenekleri
 
-Azure Yedekleme, VM'yi geri yüklemenin çeşitli yollarını sağlar.
+Azure Backup bir VM 'yi geri yüklemek için çeşitli yollar sağlar.
 
-**Geri yükleme seçeneği** | **Şey**
+**Geri yükleme seçeneği** | **Bilgileri**
 --- | ---
-**Yeni bir VM oluşturun** | Hızlı bir şekilde oluşturur ve bir geri yükleme noktasından temel bir VM çalışır hale alır.<br/><br/> VM için bir ad belirtebilir, kaynak grubunu ve yerleştirileceği sanal ağı (VNet) seçebilir ve geri yüklenen VM için bir depolama hesabı belirtebilirsiniz. Yeni VM, kaynak VM ile aynı bölgede oluşturulmalıdır.
-**Diski geri yükle** | Daha sonra yeni bir VM oluşturmak için kullanılabilecek bir VM diski geri yükler.<br/><br/> Azure Yedekleme, bir VM özelleştirmenize ve oluşturmanıza yardımcı olacak bir şablon sağlar. <br/><br> Geri yükleme işi, özel VM ayarlarını belirtmek ve bir VM oluşturmak için karşıdan yükleyebileceğiniz ve kullanabileceğiniz bir şablon oluşturur.<br/><br/> Diskler, belirttiğiniz Kaynak Grubu'na kopyalanır.<br/><br/> Alternatif olarak, diski varolan bir VM'ye ekleyebilir veya PowerShell kullanarak yeni bir VM oluşturabilirsiniz.<br/><br/> Bu seçenek, VM'yi özelleştirmek, yedekleme sırasında olmayan yapılandırma ayarlarını eklemek veya şablon veya PowerShell kullanılarak yapılandırılması gereken ayarlar eklemek istiyorsanız yararlıdır.
-**Mevcut olanı değiştir** | Bir diski geri yükleyebilir ve varolan VM'deki bir diski değiştirmek için kullanabilirsiniz.<br/><br/> Geçerli VM var olmalıdır. Silinmişse, bu seçenek kullanılamaz.<br/><br/> Azure Yedekleme, diski değiştirmeden önce varolan VM'nin anlık görüntüsünü alır ve belirttiğiniz hazırlama konumunda saklar. VM'ye bağlı varolan diskler seçili geri yükleme noktasıyla değiştirilir.<br/><br/> Anlık görüntü kasaya kopyalanır ve saklama ilkesine uygun olarak saklanır. <br/><br/> Diski değiştir işleminden sonra, özgün disk kaynak grubunda tutulur. Gerekli değilse orijinal diskleri el ile silmeyi seçebilirsiniz. <br/><br/>Varolan değiştir, [özel görüntüler kullanılarak oluşturulan](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)VM'ler de dahil olmak üzere şifrelenmemiş yönetilen VM'ler için desteklenir. Klasik VM'ler için desteklenmez.<br/><br/> Geri yükleme noktası nın geçerli VM'den daha fazla veya daha az diski varsa, geri yükleme noktasındaki disk sayısı yalnızca VM yapılandırmasını yansıtır.<br><br> Yedekleme istemci uygulaması geri yükleme gerçekleştirirken bu kaynaklarda izinleri olmadığından, varolan varolan ları bağlantılı kaynaklarla [(kullanıcı tarafından atanan yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) veya Anahtar [Kasa](https://docs.microsoft.com/azure/key-vault/key-vault-overview)gibi) değiştirme desteklenmez.
-**Çapraz Bölge (ikincil bölge)** | Çapraz Bölge geri yüklemesi, [Azure eşleştirilmiş](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions)bir bölge olan ikincil bölgedeki Azure VM'lerini geri yüklemek için kullanılabilir.<br><br> Yedekleme ikincil bölgede yapılıyorsa, seçili kurtarma noktası için tüm Azure VM'lerini geri yükleyebilirsiniz.<br><br> Bu özellik aşağıdaki seçenekler için kullanılabilir:<br> * [VM oluşturma](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm) <br> * [Diskleri Geri Yükleme](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) <br><br> Şu anda [varolan diskleri değiştir](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#replace-existing-disks) seçeneğini destekliyoruz.<br><br> İzinler<br> İkincil bölgedeki geri yükleme işlemi Yedekleme Yöneticileri ve Uygulama yöneticileri tarafından gerçekleştirilebilir.
+**Yeni bir VM oluşturun** | Hızlı bir şekilde bir geri yükleme noktasından bir temel VM oluşturup çalışır.<br/><br/> VM için bir ad belirtebilir, yerleştirileceği kaynak grubunu ve sanal ağı (VNet) seçin ve geri yüklenen VM için bir depolama hesabı belirtin. Yeni VM 'nin, kaynak VM ile aynı bölgede oluşturulması gerekir.
+**Diski geri yükle** | Daha sonra yeni bir VM oluşturmak için kullanılabilecek bir VM diskini geri yükler.<br/><br/> Azure Backup, bir VM 'yi özelleştirmenize ve oluşturmanıza yardımcı olacak bir şablon sağlar. <br/><br> Geri yükleme işi, özel VM ayarlarını belirtmek ve bir VM oluşturmak için indirebileceğiniz ve kullanabileceğiniz bir şablon oluşturur.<br/><br/> Diskler belirttiğiniz kaynak grubuna kopyalanır.<br/><br/> Alternatif olarak, diski mevcut bir sanal makineye iliştirebilir veya PowerShell kullanarak yeni bir VM oluşturabilirsiniz.<br/><br/> Bu seçenek, VM 'yi özelleştirmek, yedekleme sırasında orada olmayan yapılandırma ayarlarını eklemek veya şablon ya da PowerShell kullanılarak yapılandırılması gereken ayarları eklemek istiyorsanız faydalıdır.
+**Mevcut olanı değiştir** | Bir diski geri yükleyebilir ve mevcut VM 'deki bir diski değiştirmek için kullanabilirsiniz.<br/><br/> Geçerli VM 'nin mevcut olması gerekir. Silinirse, bu seçenek kullanılamaz.<br/><br/> Azure Backup, diski değiştirmeden önce var olan sanal makinenin anlık görüntüsünü alır ve bunu belirttiğiniz hazırlama konumunda depolar. VM 'ye bağlı mevcut diskler, seçilen geri yükleme noktasıyla değiştirilmiştir.<br/><br/> Anlık görüntü kasaya kopyalanır ve bekletme ilkesine göre saklanır. <br/><br/> Disk değiştirme işleminden sonra, özgün disk kaynak grubunda tutulur. Gerekli değilse, özgün diskleri el ile silmeyi tercih edebilirsiniz. <br/><br/>[Özel görüntüler kullanılarak oluşturulan](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)VM 'ler dahil olmak üzere, var olanı Değiştir, şifrelenmemiş yönetilen sanal makineler için desteklenir. Klasik VM 'Lerde desteklenmez.<br/><br/> Geri yükleme noktası geçerli VM 'den daha fazla veya daha az disk içeriyorsa, geri yükleme noktasındaki disk sayısı yalnızca VM yapılandırmasını yansıtacaktır.<br><br> Yedekleme istemci uygulamasının geri yüklemeyi gerçekleştirirken bu kaynaklar üzerinde izinleri olmadığından, bağlı kaynaklarla ( [Kullanıcı tarafından atanan yönetilen-kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) veya [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)) VM 'ler için mevcut olanı Değiştir desteklenmez.
+**Çapraz bölge (ikincil bölge)** | Çapraz bölge geri yükleme, Azure [eşlenmiş bölgesi](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions)olan Ikincil bölgedeki Azure VM 'lerini geri yüklemek için kullanılabilir.<br><br> Yedekleme ikincil bölgede yapıldığında, seçilen kurtarma noktası için tüm Azure VM 'lerini geri yükleyebilirsiniz.<br><br> Bu özellik aşağıdaki seçenekler için kullanılabilir:<br> <li> [VM oluşturma](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm) <br> <li> [Diskleri geri yükleme](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) <br><br> [Mevcut diskleri Değiştir](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#replace-existing-disks) seçeneğini şu anda desteklemiyoruz.<br><br> İzinler<br> İkincil bölgedeki geri yükleme işlemi, Backup Admins ve App Admins tarafından gerçekleştirilebilir.
 
 > [!NOTE]
-> Azure VM'de belirli dosya ve klasörleri de kurtarabilirsiniz. [Daha fazla bilgi edinin](backup-azure-restore-files-from-vm.md).
+> Ayrıca, bir Azure VM 'de belirli dosya ve klasörleri kurtarabilirsiniz. [Daha fazla bilgi edinin](backup-azure-restore-files-from-vm.md).
 
 ## <a name="storage-accounts"></a>Depolama hesapları
 
-Depolama hesapları hakkında bazı ayrıntılar:
+Depolama hesaplarıyla ilgili bazı ayrıntılar:
 
-- **VM Oluştur**: Yeni bir VM oluşturduğunuzda, VM belirttiğiniz depolama hesabına yerleştirilir.
-- **Diski geri yükleme**: Bir diski geri yüklediğinizde, disk belirttiğiniz depolama hesabına kopyalanır. Geri yükleme işi, özel VM ayarlarını belirtmek için karşıdan yükleyebileceğiniz ve kullanabileceğiniz bir şablon oluşturur. Bu şablon belirtilen depolama hesabına yerleştirilir.
-- **Diski Değiştir**: Varolan bir VM'de bir diski değiştirdiğinizde, Azure Yedekleme diski değiştirmeden önce varolan VM'nin anlık görüntüsünü alır. Anlık görüntü, belirttiğiniz hazırlama konumunda (depolama hesabı) depolanır. Bu depolama hesabı anlık görüntünün geri yükleme işlemi sırasında geçici olarak depolanması için kullanılır ve bunu yapmak için daha sonra kolayca kaldırılabilecek yeni bir hesap oluşturmanızı öneririz.
-- **Depolama hesabı konumu**: Depolama hesabı kasaile aynı bölgede olmalıdır. Yalnızca bu hesaplar görüntülenir. Konumda depolama hesabı yoksa, bir tane oluşturmanız gerekir.
-- **Depolama türü**: Blob depolama desteklenmez.
-- **Depolama artıklığı**: Bölge yedekli depolama (ZRS) desteklenmez. Hesabın çoğaltma ve artıklık bilgileri, hesap adından sonra parantez içinde gösterilir.
-- **Premium depolama**:
-  - Premium olmayan VM'leri geri geri alırken, premium depolama hesapları desteklenmez.
-  - Yönetilen VM'leri geri geri alırken, ağ kurallarıyla yapılandırılan premium depolama hesapları desteklenmez.
+- **VM oluşturma**: yenı bir VM OLUŞTURDUĞUNUZDA, VM belirttiğiniz depolama hesabına yerleştirilir.
+- **Diski geri yükle**: bir diski geri yüklerken disk, belirttiğiniz depolama hesabına kopyalanır. Geri yükleme işi, karşıdan yükleyebileceğiniz ve özel VM ayarlarını belirtmek için kullanabileceğiniz bir şablon oluşturur. Bu şablon, belirtilen depolama hesabına yerleştirilir.
+- **Diski Değiştir**: mevcut bir sanal makinede bulunan bir diski değiştirirken Azure Backup diski değiştirmeden önce var olan sanal makinenin anlık görüntüsünü alır. Anlık görüntü, belirttiğiniz hazırlama konumunda (depolama hesabı) depolanır. Bu depolama hesabı, geri yükleme işlemi sırasında anlık görüntüyü geçici olarak depolamak için kullanılır ve bunu yapmak için, daha sonra kolayca kaldırılabileceği yeni bir hesap oluşturmanız önerilir.
+- **Depolama hesabı konumu**: depolama hesabı kasayla aynı bölgede olmalıdır. Yalnızca bu hesaplar görüntülenir. Konumda depolama hesabı yoksa, bir tane oluşturmanız gerekir.
+- **Depolama türü**: BLOB depolama desteklenmiyor.
+- **Depolama artıklığı**: bölge yedekli depolama (ZRS) desteklenmez. Hesap için çoğaltma ve artıklık bilgileri, hesap adından sonra parantez içinde gösterilir.
+- **Premium Depolama**:
+  - Premium olmayan VM 'Leri geri yüklerken, Premium Depolama hesapları desteklenmez.
+  - Yönetilen VM 'Leri geri yüklerken, ağ kurallarıyla yapılandırılmış Premium Depolama hesapları desteklenmez.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Bir VM geri yüklemek için (yeni bir VM oluşturmak), Geri Yükleme VM işlemi için doğru rol tabanlı erişim denetimi (RBAC) [izinlerine](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) sahip olduğundan emin olun.
+Bir VM 'yi geri yüklemek için (yeni bir VM oluşturun), VM 'Yi geri yükleme işlemi için doğru rol tabanlı erişim denetimi (RBAC) [izinlerine](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) sahip olduğunuzdan emin olun.
 
-İzinlerin yoksa, [bir diski geri](#restore-disks)yükleyebilirsiniz ve disk geri yüklendikten sonra, yeni bir VM oluşturmak için geri yükleme işleminin bir parçası olarak oluşturulan [şablonu kullanabilirsiniz.](#use-templates-to-customize-a-restored-vm)
+İzinleriniz yoksa [bir diski geri yükleyebilir](#restore-disks)ve ardından disk geri yüklendikten sonra, yenı bir VM oluşturmak için geri yükleme işleminin bir parçası olarak oluşturulan [şablonu kullanabilirsiniz](#use-templates-to-customize-a-restored-vm) .
 
 ## <a name="select-a-restore-point"></a>Geri yükleme noktası seçin
 
-1. Geri yüklemek istediğiniz VM ile ilişkili kasada Yedek **öğeler** > **Azure Sanal Makine'yi**tıklatın.
-2. VM'yi tıklatın. VM panosunda varsayılan olarak, son 30 güne ait kurtarma noktaları görüntülenir. 30 günden eski kurtarma noktalarını görüntüleyebilir veya tarihlere, zaman aralıklarına ve farklı anlık görüntü tutarlılığı türlerine göre kurtarma noktalarını bulmak için filtre uygulayabilirsiniz.
-3. VM'yi geri yüklemek için **VM'yi geri yükle'yi**tıklatın.
+1. Geri yüklemek istediğiniz VM ile ilişkili kasada, **yedekleme öğeleri** > **Azure sanal makinesi**' ne tıklayın.
+2. Bir VM 'ye tıklayın. Varsayılan olarak, VM panosunda son 30 günün kurtarma noktaları görüntülenir. 30 günden daha eski kurtarma noktalarını görüntüleyebilir veya tarihlere, zaman aralıklarına ve farklı anlık görüntü tutarlılığı türlerine göre kurtarma noktalarını bulmak için filtre uygulayabilirsiniz.
+3. VM 'yi geri yüklemek için **VM 'Yi geri yükle**'ye tıklayın.
 
     ![Geri yükleme noktası](./media/backup-azure-arm-restore-vms/restore-point.png)
 
@@ -61,167 +61,167 @@ Bir VM geri yüklemek için (yeni bir VM oluşturmak), Geri Yükleme VM işlemi 
 
 ## <a name="choose-a-vm-restore-configuration"></a>VM geri yükleme yapılandırması seçin
 
-1. **Geri Yükleme yapılandırmasında,** geri yükleme seçeneğini seçin:
-    - **Yeni Oluştur**: Yeni bir VM oluşturmak istiyorsanız bu seçeneği kullanın. Basit ayarlarla bir VM oluşturabilir veya diski geri yükleyebilir ve özelleştirilmiş bir VM oluşturabilirsiniz.
-    - **Varolanı Değiştir**: Varolan bir VM'deki diskleri değiştirmek istiyorsanız bu seçeneği kullanın.
+1. **Yapılandırma geri yükleme**' de bir geri yükleme seçeneği belirleyin:
+    - **Yeni oluştur**: yenı bir VM oluşturmak istiyorsanız bu seçeneği kullanın. Basit ayarlarla bir VM oluşturabilir veya bir diski geri yükleyebilir ve özelleştirilmiş bir VM oluşturabilirsiniz.
+    - **Varolanı değiştir**: mevcut bir sanal makinede bulunan diskleri değiştirmek istiyorsanız bu seçeneği kullanın.
 
-        ![Yapılandırma sihirbazı geri yükleme](./media/backup-azure-arm-restore-vms/restore-configuration.png)
+        ![Yapılandırma geri yükleme Sihirbazı](./media/backup-azure-arm-restore-vms/restore-configuration.png)
 
-2. Seçili geri yükleme seçeneğiniz için ayarları belirtin.
+2. Seçtiğiniz geri yükleme seçeneğiniz için ayarları belirtin.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-Geri yükleme [seçeneklerinden](#restore-options)biri olarak, bir geri yükleme noktasından temel ayarları ile hızlı bir şekilde bir VM oluşturabilirsiniz.
+[Geri yükleme seçeneklerinden](#restore-options)biri olarak, bir geri yükleme noktasından temel ayarlarla hızlı bir şekilde sanal makine oluşturabilirsiniz.
 
-1. **Geri Yükleme yapılandırmasında** > **Yeni** > Geri Yükleme Türü oluştur , **sanal makine oluştur'u**seçin.**Restore Type**
-2. **Sanal makine adında,** abonelikte bulunmayan bir VM belirtin.
-3. **Kaynak grubunda,** yeni VM için varolan bir kaynak grubu seçin veya genel olarak benzersiz bir ada sahip yeni bir kaynak grubu oluşturun. Zaten var olan bir ad atarsanız, Azure gruba VM ile aynı adı atar.
-4. **Sanal ağda,** VM'nin yerleştirileceği VNet'i seçin. Abonelikle ilişkili tüm VNet'ler görüntülenir. Alt ağı seçin. İlk alt ağ varsayılan olarak seçilir.
-5. **Depolama**Konumu'nda, VM'nin depolama hesabını belirtin. [Daha fazla bilgi edinin](#storage-accounts).
+1.  >  **Yapılandırma geri yükleme****Yeni** > **geri yükleme türü**' nde, **sanal makine oluştur**' u seçin.
+2. **Sanal makine adı**' nda, abonelikte mevcut olmayan bir VM belirtin.
+3. **Kaynak grubu**' nda, yeni VM için var olan bir kaynak grubunu seçin veya genel olarak benzersiz bir adla yeni bir tane oluşturun. Zaten var olan bir ad atarsanız Azure, gruba VM ile aynı adı atar.
+4. Sanal ağ ' da, VM 'nin yerleştirileceği **sanal ağı**seçin. Abonelikle ilişkili tüm VNET 'ler görüntülenir. Alt ağı seçin. İlk alt ağ varsayılan olarak seçilidir.
+5. **Depolama konumu**' nda, VM için depolama hesabını belirtin. [Daha fazla bilgi edinin](#storage-accounts).
 
-    ![Yapılandırma sihirbazı geri yükleme](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
+    ![Yapılandırma geri yükleme Sihirbazı](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
-6. **Geri Yükleme yapılandırmasında** **Tamam'ı**seçin. **Geri Yükle'de**geri yükleme işlemini tetiklemek için **Geri Yükle'yi** tıklatın.
+6. **Yapılandırma geri yükleme**' de **Tamam**' ı seçin. Geri **Yükle**' ye **tıklayarak geri yükleme işlemini** tetikleyin.
 
 ## <a name="restore-disks"></a>Diskleri geri yükleme
 
-Geri yükleme [seçeneklerinden](#restore-options)biri olarak, geri yükleme noktasından bir disk oluşturabilirsiniz. Daha sonra disk ile aşağıdakilerden birini yapabilirsiniz:
+[Geri yükleme seçeneklerinden](#restore-options)biri olarak, bir geri yükleme noktasından bir disk oluşturabilirsiniz. Ardından, aşağıdakilerden birini yapabilirsiniz:
 
-- Ayarları özelleştirmek ve VM dağıtımını tetiklemek için geri yükleme işlemi sırasında oluşturulan şablonu kullanın. Varsayılan şablon ayarlarını ve VM dağıtımı için şablonu gönderin.
-- [Geri yüklenen diskleri](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) varolan bir VM'ye takın.
-- PowerShell'i kullanarak geri yüklenen disklerden [yeni bir VM oluşturun.](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks)
+- Ayarları özelleştirmek için geri yükleme işlemi sırasında oluşturulan şablonu kullanın ve VM dağıtımını tetikleyin. Varsayılan şablon ayarlarını düzenlersiniz ve VM dağıtımı için şablonu gönderebilirsiniz.
+- [Geri yüklenen diskleri](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) var olan bir sanal makineye ekleyin.
+- PowerShell kullanarak geri yüklenen disklerden [Yeni BIR VM oluşturun](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) .
 
-1. **Geri Yükleme yapılandırmasında** > **Yeni** > Geri**Yükleme Türü**Oluştur , **diskleri Geri Yükle'yi**seçin.
-2. **Kaynak grubunda,** geri yüklenen diskler için varolan bir kaynak grubu seçin veya genel olarak benzersiz bir ada sahip yeni bir kaynak grubu oluşturun.
-3. **Depolama hesabında,** VHD'lerin kopyalanış ettiği hesabı belirtin. [Daha fazla bilgi edinin](#storage-accounts).
+1. **Yapılandırma** > geri yükleme**Yeni** > **geri yükleme türü**' nde **diskleri geri yükle**' yi seçin.
+2. **Kaynak grubu**' nda, geri yüklenen diskler için var olan bir kaynak grubunu seçin veya genel olarak benzersiz bir adla yeni bir tane oluşturun.
+3. **Depolama hesabı**' nda, VHD 'lerin kopyalanacağı hesabı belirtin. [Daha fazla bilgi edinin](#storage-accounts).
 
     ![Kurtarma yapılandırması tamamlandı](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
-4. **Geri Yükleme yapılandırmasında** **Tamam'ı**seçin. **Geri Yükle'de**geri yükleme işlemini tetiklemek için **Geri Yükle'yi** tıklatın.
+4. **Yapılandırma geri yükleme**' de **Tamam**' ı seçin. Geri **Yükle**' ye **tıklayarak geri yükleme işlemini** tetikleyin.
 
-Sanal makineniz yönetilen diskleri kullandığında ve **sanal makine oluştur** seçeneğini seçtiğinizde, Azure Yedekleme belirtilen depolama hesabını kullanmaz. **Diskleri Geri Yükle** ve **Anında Geri Yükleme**durumunda, depolama hesabı yalnızca şablonu depolamak için kullanılır. Yönetilen diskler belirtilen kaynak grubunda oluşturulur.
-Sanal makineniz yönetilmeyen diskler kullandığında, bunlar depolama hesabına blob olarak geri yüklenir.
+Sanal makineniz yönetilen diskler kullandığında ve **sanal makine oluştur** seçeneğini belirlediğinizde, Azure Backup belirtilen depolama hesabını kullanmaz. **Diskleri geri yükleme** ve **anında geri yükleme**durumunda depolama hesabı yalnızca şablonu depolamak için kullanılır. Yönetilen diskler, belirtilen kaynak grubunda oluşturulur.
+Sanal makineniz yönetilmeyen diskler kullandığında, depolama hesabına Bloblar olarak geri yüklenir.
 
-### <a name="use-templates-to-customize-a-restored-vm"></a>Geri yüklenen vm'yi özelleştirmek için şablonları kullanma
+### <a name="use-templates-to-customize-a-restored-vm"></a>Geri yüklenen bir VM 'yi özelleştirmek için şablonları kullanma
 
-Disk geri yüklendikten sonra, yeni bir VM'yi özelleştirmek ve oluşturmak için geri yükleme işleminin bir parçası olarak oluşturulan şablonu kullanın:
+Disk geri yüklendikten sonra, özelleştirmek ve yeni bir VM oluşturmak için geri yükleme işleminin bir parçası olarak oluşturulan şablonu kullanın:
 
-1. İlgili iş için **İş Ayrıntılarını Geri Yükle'yi** açın.
+1. İlgili iş için **geri yükleme Işi ayrıntıları** ' nı açın.
 
-2. **İş Ayrıntılarını Geri Yükle'de**şablon dağıtımını başlatmak için **Şablonu Dağıt'ı** seçin.
+2. **Iş geri yükleme ayrıntıları**' nda, şablon dağıtımını başlatmak Için **şablonu dağıt** ' ı seçin.
 
-    ![İş icabı geri yükleme](./media/backup-azure-arm-restore-vms/restore-job-drill-down1.png)
+    ![Geri yükleme işi detaya gitme](./media/backup-azure-arm-restore-vms/restore-job-drill-down1.png)
 
-3. Şablonda sağlanan VM ayarını özelleştirmek için **şablonu edit'i**tıklatın. Daha fazla özelleştirme eklemek istiyorsanız, **parametreleri edit'i**tıklatın.
-    - Özel bir şablondan kaynak dağıtma hakkında [daha fazla bilgi edinin.](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)
-    - Şablon yazma hakkında [daha fazla bilgi edinin.](../azure-resource-manager/templates/template-syntax.md)
+3. Şablonda belirtilen VM ayarını özelleştirmek için **Şablonu Düzenle**' ye tıklayın. Daha fazla özelleştirme eklemek istiyorsanız, **parametreleri Düzenle**' ye tıklayın.
+    - Özel bir şablondan kaynak dağıtma hakkında [daha fazla bilgi edinin](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) .
+    - Yazma şablonları hakkında [daha fazla bilgi edinin](../azure-resource-manager/templates/template-syntax.md) .
 
-   ![Yük şablonu dağıtımı](./media/backup-azure-arm-restore-vms/edit-template1.png)
+   ![Şablon dağıtımı yükle](./media/backup-azure-arm-restore-vms/edit-template1.png)
 
-4. VM için özel değerleri girin, **Şartlar ve Koşullar'ı** kabul edin ve **Satın Al'ı**tıklatın.
+4. VM için özel değerleri girin, **hüküm ve koşulları** kabul edin ve **satın al**' a tıklayın.
 
-   ![Şablon dağıtımı gönder](./media/backup-azure-arm-restore-vms/submitting-template1.png)
+   ![Şablon dağıtımını gönder](./media/backup-azure-arm-restore-vms/submitting-template1.png)
 
-## <a name="replace-existing-disks"></a>Varolan diskleri değiştirme
+## <a name="replace-existing-disks"></a>Mevcut diskleri Değiştir
 
-Geri yükleme [seçeneklerinden](#restore-options)biri olarak, varolan bir VM diskini seçili geri yükleme noktasıyla değiştirebilirsiniz. Tüm geri yükleme seçeneklerini [gözden geçirin.](#restore-options)
+[Geri yükleme seçeneklerinden](#restore-options)biri olarak, var olan bir VM diskini seçili geri yükleme noktasıyla değiştirebilirsiniz. Tüm geri yükleme seçeneklerini [gözden geçirin](#restore-options) .
 
-1. **Geri Yükle yapılandırmasında,** **varolan'ı değiştir'i**tıklatın.
-2. **Geri Yükle Türü'nde,** **disk/s'leri değiştir'i**seçin. Bu, varolan VM diskleri değiştirin kullanılacak geri yükleme noktasıdır.
-3. **Hazırlama**Konumu'nda, geri yükleme işlemi sırasında geçerli yönetilen disklerin anlık görüntülerinin nerede kaydedilmesi gerektiğini belirtin. [Daha fazla bilgi edinin](#storage-accounts).
+1. **Yapılandırma geri yükleme**' de **Varolanı değiştir**' e tıklayın.
+2. **Geri yükleme türü**' nde **disk/s 'yi Değiştir**' i seçin. Bu, var olan VM disklerini değiştirmek için kullanılacak geri yükleme noktasıdır.
+3. **Hazırlama konumu**bölümünde, geri yükleme işlemi sırasında geçerli yönetilen disklerin anlık görüntülerinin kaydedileceği yeri belirtin. [Daha fazla bilgi edinin](#storage-accounts).
 
-   ![Yapılandırma sihirbazına geri yükleme Varolan Değiştir](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
+   ![Yapılandırma geri yükleme Sihirbazı var olanı Değiştir](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
 
-## <a name="cross-region-restore"></a>Çapraz Bölge Geri Yükleme
+## <a name="cross-region-restore"></a>Çapraz bölge geri yükleme
 
-Geri yükleme [seçeneklerinden](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)biri olarak, Çapraz Bölge Geri Yükleme (CRR), Azure eşleştirilmiş bir bölge olan ikincil bir bölgede Azure VM'lerini geri yüklemenize olanak tanır.
+[Geri yükleme seçeneklerinden](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)biri olan çapraz bölge geri yükleme (CRR), Azure sanal makinelerini bir Azure eşlenmiş bölgesi olan ikincil bir bölgeye geri yüklemenize olanak tanır.
 
-Önizleme sırasında özelliğin yerleşik olması için lütfen [Başlamadan Önce bölümünü](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-cross-region-restore)okuyun.
+Önizleme sırasında özelliğe eklemek için lütfen [başlamadan önce bölümünü](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-cross-region-restore)okuyun.
 
-CRR etkin olup olmadığını görmek için, [Çapraz Bölge Geri Yüklemesini Yapılandır'daki](backup-create-rs-vault.md#configure-cross-region-restore) yönergeleri izleyin
+CRR 'nin etkin olup olmadığını görmek için [çapraz bölge geri yükleme 'Yi yapılandırma](backup-create-rs-vault.md#configure-cross-region-restore) bölümündeki yönergeleri izleyin.
 
-### <a name="view-backup-items-in-secondary-region"></a>Yedekleme öğelerini ikincil bölgede görüntüleme
+### <a name="view-backup-items-in-secondary-region"></a>İkincil bölgedeki yedekleme öğelerini görüntüle
 
-CRR etkinse, ikincil bölgedeki yedek öğeleri görüntüleyebilirsiniz.
+CRR etkinse, yedekleme öğelerini ikincil bölgede görüntüleyebilirsiniz.
 
-1. Portaldan, Kurtarma **Hizmetleri kasası** > **Yedekleme öğelerine** gidin
-2. İkincibölgedeki öğeleri görüntülemek için **İkincil Bölge'yi** tıklatın.
+1. Portaldan **Kurtarma Hizmetleri Kasası** > **yedekleme öğeleri** ' ne gidin
+2. İkincil bölgedeki öğeleri görüntülemek için **Ikincil bölge** ' ye tıklayın.
 
 ![İkincil bölgedeki sanal makineler](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
 
-![İkincil Bölge Seçin](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
+![Ikincil bölge seçin](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
 
-### <a name="restore-in-secondary-region"></a>İkinci bölgede geri yükleme
+### <a name="restore-in-secondary-region"></a>İkincil bölgede geri yükleme
 
-İkincil bölge geri yükleme kullanıcı deneyimi birincil bölge geri kullanıcı deneyimi benzer olacaktır. Geri yüklemenizi yapılandırmak için Yapılandırmayı Geri Yükle'deki ayrıntıları yapılandırırken, yalnızca ikincil bölge parametrelerini sağlamanız istenir.
+İkinci bölge geri yükleme kullanıcı deneyimi, birincil bölge geri yükleme kullanıcı deneyimiyle benzerdir. Geri yükleme yapılandırma dikey penceresinde geri yüklemeyi yapılandırmak için ayrıntıları yapılandırırken yalnızca ikincil bölge parametreleri sağlamanız istenir.
 
-![Geri yüklemek için VM'yi seçin](./media/backup-azure-arm-restore-vms/sec-restore.png)
+![Geri yüklenecek VM 'yi seçin](./media/backup-azure-arm-restore-vms/sec-restore.png)
 
-![Geri yükleme noktasını seçin](./media/backup-azure-arm-restore-vms/sec-rp.png)
+![Geri yükleme noktası seç](./media/backup-azure-arm-restore-vms/sec-rp.png)
 
-![Yapılandırmayı geri yükleme](./media/backup-azure-arm-restore-vms/rest-config.png)
+![Yapılandırma geri yükleme](./media/backup-azure-arm-restore-vms/rest-config.png)
 
-![Devam bildiriminde tetikleyici geri yükleme](./media/backup-azure-arm-restore-vms/restorenotifications.png)
+![Geri yükleme tetikleme devam ediyor bildirimi](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
-- VM'yi geri yüklemek ve oluşturmak için [VM oluştur'a](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm)bakın.
-- Disk olarak geri yüklemek için [diskleri geri yükleme'ye](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks)bakın.
+- Bir VM 'yi geri yüklemek ve oluşturmak için [VM oluşturma](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm)bölümüne bakın.
+- Disk olarak geri yüklemek için [diskleri geri yükleme](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks)bölümüne bakın.
 
 >[!NOTE]
->Geri yükleme tetiklendikten ve veri aktarım aşamasında niçin geri yükleme işi iptal edilemez.
+>Geri yükleme tetiklendikten ve veri aktarımı aşamasında geri yükleme işi iptal edilemez.
 
-### <a name="monitoring-secondary-region-restore-jobs"></a>İkincil bölgenin geri yüklenmesi işleri izleme
+### <a name="monitoring-secondary-region-restore-jobs"></a>İkincil bölge geri yükleme işlerini izleme
 
-1. Portaldan, Kurtarma **Hizmetleri vault** > **Backup Jobs** gidin
-2. İkincibölgedeki öğeleri görüntülemek için **İkincil Bölge'yi** tıklatın.
+1. Portaldan **Kurtarma Hizmetleri Kasası** > **yedekleme işleri** ' ne gidin
+2. İkincil bölgedeki öğeleri görüntülemek için **Ikincil bölge** ' ye tıklayın.
 
-![Yedek işler filtreuygulanmış](./media/backup-azure-arm-restore-vms/secbackupjobs.png)
+![Filtrelenen yedekleme işleri](./media/backup-azure-arm-restore-vms/secbackupjobs.png)
 
-## <a name="restore-vms-with-special-configurations"></a>Özel yapılandırmalarla VM'leri geri yükleme
+## <a name="restore-vms-with-special-configurations"></a>Özel yapılandırmalara sahip VM 'Leri geri yükleme
 
-VM'leri geri yüklemeniz gerekebilecek yaygın senaryolar vardır.
+VM 'Leri geri yüklemeniz gerekebilecek bazı yaygın senaryolar vardır.
 
 **Senaryo** | **Rehber**
 --- | ---
-**Hibrit Kullanım Avantajı nı kullanarak VM'leri geri yükleme** | Bir Windows VM [Hibrit Kullanım Avantajı (HUB) lisanslama](../virtual-machines/windows/hybrid-use-benefit-licensing.md)kullanıyorsa, diskleri geri yükleyin ve sağlanan şablonu **(Windows_Server**için **Lisans Türü** olarak ayarlanmış) veya PowerShell'i kullanarak yeni bir VM oluşturun.  Bu ayar, VM oluşturulduktan sonra da uygulanabilir.
-**Azure veri merkezi felaketi sırasında VM'leri geri yükleme** | Kasa GRS kullanırsa ve VM'nin birincil veri merkezi çökerse, Azure Yedekleme yedeklenmiş VM'leri eşleştirilmiş veri merkezine geri yükler. Eşleştirilmiş veri merkezinde bir depolama hesabı seçin ve normal olarak geri yükleyin. Azure Yedekleme, geri yüklenen VM'yi oluşturmak için eşleştirilmiş bölgedeki bilgi işlem hizmetini kullanır. Veri merkezi esnekliği hakkında [daha fazla bilgi edinin.](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)
-**Tek etki alanı denetleyicisi VM'yi tek etki alanında geri yükleme** | Diğer VM'ler gibi VM'yi geri yükleyin. Şunlara dikkat edin:<br/><br/> Etkin Dizin açısından bakıldığında, Azure VM diğer VM'ler gibidir.<br/><br/> Dizin Hizmetleri Geri Yükleme Modu (DSRM) de kullanılabilir, bu nedenle tüm Active Directory kurtarma senaryoları uygulanabilir. Sanallaştırılmış etki alanı denetleyicileri için yedekleme ve dikkatleri geri yükleme hakkında [daha fazla bilgi edinin.](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)
-**Tek etki alanında birden çok etki alanı denetleyiciVM'i geri yükleme** | Aynı etki alanında bulunan diğer etki alanı denetleyicilerine ağ üzerinden ulaşılabiliyorsa, etki alanı denetleyicisi herhangi bir VM gibi geri yüklenebilir. Etki alanında kalan son etki alanı denetleyicisiyse veya yalıtılmış bir ağda kurtarma gerçekleştirilirse, [bir orman kurtarma](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)kullanın.
-**Bir ormanda birden çok etki alanını geri yükleme** | Biz bir [orman kurtarma](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)öneririz.
-**Çıplak metal geri yükleme** | Azure VM'leri ile şirket içi hipervizörler arasındaki en büyük fark, Azure'da VM konsolu olmamasıdır. Bir konsol, çıplak metal kurtarma (BMR) türü yedekleme kullanarak kurtarma gibi belirli senaryolar için gereklidir. Ancak, kasadan VM geri yükleme BMR için tam bir yedektir.
-**Özel ağ yapılandırmaları ile VM'leri geri yükleme** | Özel ağ yapılandırmaları, dahili veya harici yük dengelemesi kullanan VM'leri, birden çok NICS veya birden çok ayrılmış IP adresi kullanarak içerir. Diski [geri yükleme seçeneğini](#restore-disks)kullanarak bu VM'leri geri yükleyin. Bu seçenek, VHD'lerin bir kopyasını belirtilen depolama hesabına dönüştürür ve yapılandırmanıza uygun olarak [dahili](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) veya [harici](/azure/load-balancer/quickstart-create-standard-load-balancer-powershell) yük dengeleyicisi, [birden çok NICS](../virtual-machines/windows/multiple-nics.md)veya birden çok ayrılmış IP [adresi](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)içeren bir VM oluşturabilirsiniz.
-**NIC/Subnet'te Ağ Güvenlik Grubu (NSG)** | Azure VM yedekleme, Vnet, subnet ve NIC düzeyinde NSG bilgilerinin Yedeklenmesini ve Geri Yükyükülmesini destekler.
-**Bölge Sabitlenmiş VM'ler** | Azure Yedekleme, zonlu sabitlenmiş VM'lerin yedeklenmesini ve geri yüklenmesini destekler. [Daha fazlasını öğrenin](https://azure.microsoft.com/global-infrastructure/availability-zones/)
+**Karma kullanım teklifi kullanarak VM 'Leri geri yükleme** | Bir Windows VM [karma kullanım avantajı (hub) lisanslama](../virtual-machines/windows/hybrid-use-benefit-licensing.md)kullanıyorsa, diskleri geri yükleyin ve belirtilen şablonu ( **Lisans türü** **Windows_Server**olarak ayarlanmış olan) veya PowerShell 'i kullanarak yeni bir VM oluşturun.  Bu ayar VM oluşturulduktan sonra da uygulanabilir.
+**Azure veri merkezi olağanüstü durum sırasında VM 'Leri geri yükleme** | Kasa GRS kullanıyorsa ve VM için birincil veri merkezi kapalıysa, Azure Backup yedeklenen VM 'Leri eşleştirilmiş veri merkezine geri yüklemeyi destekler. Eşleştirilmiş veri merkezinde bir depolama hesabı seçin ve normal olarak geri yükleyin. Azure Backup, geri yüklenen VM 'yi oluşturmak için eşleştirilmiş bölgedeki işlem hizmetini kullanır. Veri merkezi dayanıklılığı hakkında [daha fazla bilgi edinin](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md) .
+**Tek etki alanındaki tek etki alanı denetleyicisi sanal makinesini geri yükleme** | VM 'yi diğer VM 'ler gibi geri yükleyin. Şunlara dikkat edin:<br/><br/> Azure VM, Active Directory perspektifinden diğer tüm VM 'ler gibidir.<br/><br/> Dizin Hizmetleri geri yükleme modu (DSRM) da kullanılabilir, bu nedenle tüm Active Directory kurtarma senaryoları geçerlidir. Sanallaştırılmış etki alanı denetleyicileri için yedekleme ve geri yükleme konuları hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps) .
+**Tek etki alanında birden çok etki alanı denetleyicisi VM 'yi geri yükleme** | Ağ üzerinden aynı etki alanındaki diğer etki alanı denetleyicilerine ulaşılırsa, etki alanı denetleyicisi herhangi bir VM gibi geri yüklenebilir. Etki alanındaki son kalan etki alanı denetleyicisi ise veya yalıtılmış bir ağda kurtarma gerçekleştirilirse, bir [orman kurtarması](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)kullanın.
+**Birden çok etki alanını tek bir ormanda geri yükleme** | [Orman kurtarması](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)önerilir.
+**Tam geri yükleme** | Azure VM 'Leri ve şirket içi hiper yöneticilerde yer alan başlıca fark, Azure 'da kullanılabilir VM konsolunun olmaması olabilir. Bir konsol, çıplak kurtarma (BMR) türünde Yedekleme kullanarak kurtarma gibi belirli senaryolar için gereklidir. Ancak, kasadan VM geri yüklemesi BMR 'nin tam yerini alır.
+**Özel ağ yapılandırmalarına sahip VM 'Leri geri yükleme** | Özel ağ yapılandırmalarında, birden çok NIC veya birden çok ayrılmış IP adresi kullanarak iç veya dış yük dengelemesi kullanan VM 'Ler bulunur. [Diski geri yükle seçeneğini](#restore-disks)kullanarak bu VM 'leri geri yükleyin. Bu seçenek, VHD 'lerin bir kopyasını belirtilen depolama hesabına yapar ve ardından, yapılandırmanıza uygun olarak bir [iç](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) veya [dış](/azure/load-balancer/quickstart-create-standard-load-balancer-powershell) yük DENGELEYICI, [birden çok NIC](../virtual-machines/windows/multiple-nics.md)veya [bırden çok ayrılmış IP adresi](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)olan bir VM oluşturabilirsiniz.
+**NIC/alt ağ üzerinde ağ güvenlik grubu (NSG)** | Azure VM yedeklemesi, NSG bilgilerinin VNet, alt ağ ve NIC düzeyinde yedeklenmesini ve geri yüklenmesini destekler.
+**Bölge sabitlenmiş VM 'Ler** | Azure Backup, bölge sabitlenmiş sanal makinelerin yedeklenmesini ve geri yüklenmesini destekler. [Daha fazlasını öğrenin](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>Geri yükleme işlemini izleme
 
-Geri yükleme işlemini tetikledikten sonra, yedekleme hizmeti izleme için bir iş oluşturur. Azure Yedekleme, portaldaki işle ilgili bildirimler görüntüler. Görünür değillerse, **Bildirimler** simgesini seçin ve ardından İşlem idurumlarını görmek için **Tüm İşleri Görüntüle'yi** seçin.
+Geri yükleme işlemini tetikledikten sonra, yedekleme hizmeti izleme için bir iş oluşturur. Azure Backup portalda iş hakkında bildirimleri görüntüler. Bunlar görünmüyorsa, **Bildirimler** sembolünü seçin ve sonra geri yükleme işlemi durumunu görmek Için **tüm işleri görüntüle** ' yi seçin.
 
-![Tetikleyiciyi geri yükleme](./media/backup-azure-arm-restore-vms/restore-notification1.png)
+![Geri yükleme tetiklendi](./media/backup-azure-arm-restore-vms/restore-notification1.png)
 
  Geri yüklemeyi aşağıdaki gibi izleyin:
 
-1. İş işlemlerini görüntülemek için bildirimler köprübağlantısını tıklatın. Alternatif olarak, kasada Yedek **işleri**tıklatın ve ardından ilgili VM'yi tıklatın.
+1. İşle ilgili işlemleri görüntülemek için bildirimler köprüye tıklayın. Alternatif olarak, kasadaki **yedekleme işleri**' ne ve ardından ilgili VM 'ye tıklayın.
 
-    ![Kasadaki VM listesi](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
+    ![Kasadaki VM 'lerin listesi](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
 
-2. Geri yükleme ilerlemesini izlemek için, devam **etme**durumu olan herhangi bir geri yükleme işini tıklatın. Bu, geri yükleme ilerleme hakkında bilgi görüntüleyen ilerleme çubuğunu görüntüler:
+2. Geri yükleme ilerlemesini izlemek için **devam eden**durumunda olan herhangi bir geri yükleme işine tıklayın. Bu, geri yükleme ilerleme durumu hakkında bilgi görüntüleyen ilerleme çubuğunu görüntüler:
 
-    - **Tahmini geri yükleme süresi**: Başlangıçta geri yükleme işlemini tamamlamak için gereken süreyi sağlar. İşlem ilerledikçe, geri yükleme işlemi bittiğinde alınan süre azalır ve sıfıra ulaşır.
-    - **Geri yükleme yüzdesi.** Yapılan geri yükleme işleminin yüzdesini gösterir.
-    - **Aktarılan bayt sayısı**: Yeni bir VM oluşturarak geri alıyorsanız, aktarılacak toplam bayt sayısına göre aktarılan baytları gösterir.
+    - **Tahmini geri yükleme süresi**: başlangıçta geri yükleme işlemini tamamlaması için geçen süreyi sağlar. İşlem ilerledikçe, geri yükleme işlemi tamamlandığında geçen süre küçülür ve sıfıra ulaşmaz.
+    - **Geri yükleme yüzdesi**. Gerçekleştirilen geri yükleme işleminin yüzdesini gösterir.
+    - **Aktarılan bayt sayısı**: yenı bir VM oluşturarak geri yüklüyorsanız, aktarılacak baytların toplam sayısına göre aktarılan baytları gösterir.
 
-## <a name="post-restore-steps"></a>Geri yükleme adımları
+## <a name="post-restore-steps"></a>Geri yükleme sonrası adımlar
 
-VM'yi geri aldıktan sonra dikkat edilmesi gereken birkaç şey vardır:
+Bir VM 'yi geri yükledikten sonra dikkat etmeniz gereken birkaç nokta vardır:
 
-- Yedekleme yapılandırması sırasında bulunan uzantılar yüklenir, ancak etkinleştirilir. Bir sorun görürseniz uzantıları yeniden yükleyin.
-- Yedeklenmiş VM'nin statik bir IP adresi varsa, geri yüklenen VM'nin çakışmasını önlemek için dinamik bir IP adresi olacaktır. Geri [yüklenen VM'ye statik bir IP adresi ekleyebilirsiniz.](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description)
-- Geri yüklenen VM'nin kullanılabilirlik kümesi yoktur. Geri yükleme diski seçeneğini kullanıyorsanız, sağlanan şablonu veya PowerShell'i kullanarak diskten bir VM oluştururken [bir kullanılabilirlik kümesi belirtebilirsiniz.](../virtual-machines/windows/tutorial-availability-sets.md)
-- Güvenlik nedeniyle ubuntu gibi bulut girişi tabanlı bir Linux dağıtımı kullanıyorsanız, parola geri yüklemeden sonra engellenir. [Parolayı sıfırlamak](../virtual-machines/linux/reset-password.md)için geri yüklenen VM'deki VMAccess uzantısını kullanın. Bu dağıtımlarda SSH anahtarlarını kullanmanızı öneririz, böylece geri yüklemeden sonra parolayı sıfırlamanız gerekmez.
-- VM etki alanı denetleyicisi ile ilişkisi bozuldu nedeniyle bir kez geri yüklendikten sonra VM'ye erişemiyorsanız, VM'yi getirmek için aşağıdaki adımları izleyin:
-  - Kurtarılan bir VM'ye veri diski olarak OS diskini takın.
-  - Azure Aracısı'nın bu [bağlantıyı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)izleyerek yanıt vermediğini tespit ederse VM aracısını el ile yükleyin.
-  - Komut satırının VM'ye erişmesine izin vermek için VM'de Seri Konsol erişimini etkinleştirme
+- Yedekleme yapılandırması sırasında bulunan Uzantılar yüklü, ancak etkin değil. Bir sorun görürseniz, uzantıları yeniden yükleyin.
+- Yedeklenen VM 'nin statik bir IP adresi varsa, geri yüklenen VM 'nin çakışmayı önlemek için dinamik bir IP adresi olur. [Geri yüklenen VM 'ye statik BIR IP adresi ekleyebilirsiniz](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description).
+- Geri yüklenen bir VM 'nin kullanılabilirlik kümesi yok. Diski geri yükle seçeneğini kullanırsanız, belirtilen şablonu veya PowerShell 'i kullanarak diskten bir VM oluşturduğunuzda [bir kullanılabilirlik kümesi belirtebilirsiniz](../virtual-machines/windows/tutorial-availability-sets.md) .
+- Ubuntu gibi Cloud-init tabanlı bir Linux dağıtımı kullanırsanız, güvenlik nedenleriyle geri yüklemeden sonra parolanın engellenmesi engellenir. [Parolayı sıfırlamak](../virtual-machines/linux/reset-password.md)için GERI yüklenen VM 'de VMAccess uzantısını kullanın. Bu dağıtımlardaki SSH anahtarlarının kullanılması önerilir, bu nedenle geri yüklemeden sonra parolayı sıfırlamanız gerekmez.
+- VM 'nin etki alanı denetleyicisiyle bağlantısı kopmuş olduğundan sanal makineye geri yüklendikten sonra sanal makineye erişemiyorsanız, VM 'yi getirmek için aşağıdaki adımları izleyin:
+  - İşletim sistemi diskini kurtarılan bir VM 'ye veri diski olarak ekleyin.
+  - Bu [bağlantıyı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)Izleyerek Azure aracısının yanıt VERMEMESI durumunda VM aracısını el ile yükleyebilirsiniz.
+  - VM 'ye komut satırı erişimine izin vermek için sanal makinede seri konsol erişimini etkinleştirin
 
   ```cmd
     bcdedit /store <drive letter>:\boot\bcd /enum
@@ -232,21 +232,21 @@ VM'yi geri aldıktan sonra dikkat edilmesi gereken birkaç şey vardır:
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
     ```
 
-  - VM yeniden oluşturulduğunda, yerel yönetici hesabını ve parolasını sıfırlamak için Azure portalını kullanın
-  - VM'yi etki alanından çıkarmak için Seri konsol erişimini ve CMD'yi kullanma
+  - VM yeniden oluşturulduğunda, yerel yönetici hesabını ve parolasını sıfırlamak için Azure portal kullanın
+  - Etki alanından VM 'yi birleştirmek için Seri konsol Access ve CMD kullanın
 
     ```cmd
     cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force"
     ```
 
-- VM'ye katıldıktan ve yeniden başlatıldıktan sonra, yerel yönetici kimlik bilgileriyle VM'ye başarılı bir şekilde RDP'yi katabilecek ve VM'yi etki alanına başarıyla geri döndürebileceksiniz.
+- VM 'ye bir kez ve yeniden başlatıldıktan sonra, yerel yönetici kimlik bilgileri ile VM 'ye başarıyla RDP ve etki alanına başarıyla geri dönüş sağlayacaksınız.
 
-## <a name="backing-up-restored-vms"></a>Geri yüklenen VM'leri yedekleme
+## <a name="backing-up-restored-vms"></a>Geri yüklenen VM 'Leri yedekleme
 
-- İlk olarak yedeklenen VM ile aynı ada sahip aynı kaynak grubuna bir VM geri yüklediyseniz, yedekleme geri yüklemeden sonra VM'de devam edin.
-- VM'yi farklı bir kaynak grubuna geri yüklediyseniz veya geri yüklenen VM için farklı bir ad belirttiyseniz, geri yüklenen VM için yedekleme ayarlamanız gerekir.
+- Bir VM 'yi, ilk Yedeklenen VM ile aynı ada sahip aynı kaynak grubuna geri yüklediyseniz yedekleme, geri yüklemeden sonra VM 'de devam eder.
+- VM 'yi farklı bir kaynak grubuna geri yüklediyseniz veya geri yüklenen VM için farklı bir ad belirttiyseniz, geri yüklenen VM için yedeklemeyi ayarlamanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Geri yükleme işlemi sırasında güçlüklerle karşılaşırsanız, sık karşılaşılan sorunları ve hataları [gözden geçirin.](backup-azure-vms-troubleshoot.md#restore)
-- VM geri yüklendikten [sonra, sanal makineleri yönetme](backup-azure-manage-vms.md) hakkında bilgi edinin
+- Geri yükleme işlemi sırasında sorunlarla karşılaşırsanız, genel sorunları ve hataları [gözden geçirin](backup-azure-vms-troubleshoot.md#restore) .
+- VM geri yüklendikten sonra, [sanal makineleri yönetme](backup-azure-manage-vms.md) hakkında bilgi edinin

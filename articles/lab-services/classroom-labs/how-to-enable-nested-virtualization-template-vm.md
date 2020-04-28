@@ -1,6 +1,6 @@
 ---
-title: Azure Laboratuvar Hizmetleri'nde bir şablon VM'de iç içe sanallaştırmayı etkinleştirin | Microsoft Dokümanlar
-description: İçinde birden çok VM içeren bir şablon VM'yi nasıl oluşturabilirsiniz öğrenin.  Başka bir deyişle, Azure Lab Hizmetlerinde bir şablon VM'de iç içe sanallaştırmayı etkinleştirin.
+title: Azure Lab Services | bir şablon sanal makinesinde iç içe sanallaştırmayı etkinleştirme | Microsoft Docs
+description: İçinde birden çok VM içeren bir şablon VM 'si oluşturmayı öğrenin.  Diğer bir deyişle, Azure Lab Services bir şablon sanal makinesinde iç içe sanallaştırmayı etkinleştirin.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,51 +13,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 59b32834369f76d39bb4a253dad4ec541e7ef999
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c954c4689281838ea8c61c932cdcc3b74bac442
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502018"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184682"
 ---
-# <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Azure Laboratuvar Hizmetleri'nde şablon sanal makinede iç içe sanallaştırmayı etkinleştirme
+# <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Azure Lab Services bir şablon sanal makinesinde iç içe sanallaştırmayı etkinleştir
 
-Şu anda Azure Laboratuvar Hizmetleri, bir laboratuvarda bir şablon sanal makine ayarlamanızı ve tek bir kopyayı kullanıcılarınızın her biri için kullanılabilir hale getirmenizi sağlar. Ağ, güvenlik veya BT sınıflarını öğreten bir profesörseniz, her öğrencinize birden fazla sanal makinenin ağ üzerinden birbirleriyle konuşabileceği bir ortam sağlamanız gerekebilir.
+Şu anda Azure Lab Services, bir laboratuvarda bir şablon sanal makinesi ayarlamanıza ve tek bir kopyayı kullanıcılarınızın her biri için kullanılabilir hale getirmenizi sağlar. Bir Profesör eğitim ağı, güvenlik veya BT sınıflarındaysanız, öğrencilerinizi her birini, birden fazla sanal makinenin bir ağ üzerinden birbirleriyle iletişim kurabilecek bir ortamla birlikte sağlamanız gerekebilir.
 
-İç içe sanallaştırma, bir laboratuvarın şablon sanal makinesinin içinde çoklu VM ortamı oluşturmanıza olanak tanır. Şablonun yayımı, laboratuardaki her kullanıcıya içinde birden çok VM'nin yer verdiği sanal bir makine sağlar.  Bu makalede, Azure Lab Hizmetleri'nde bir şablon makinesinde iç içe sanallaştırmanın nasıl ayarlanılır.
+İç içe sanallaştırma, bir laboratuvarın şablon sanal makinesi içinde çoklu VM ortamı oluşturmanızı sağlar. Şablonu yayımlamak, her kullanıcıya, içindeki birden çok VM ile bir sanal makine oluşturacak şekilde laboratuvar sağlar.  Bu makalede, Azure Lab Services bir şablon makinesinde iç içe sanallaştırmanın nasıl ayarlanacağı ele alınmaktadır.
 
 ## <a name="what-is-nested-virtualization"></a>İç içe sanallaştırma nedir?
 
-İç içe sanallaştırma, sanal bir makine içinde sanal makineler oluşturmanıza olanak tanır. İç içe sanallaştırma Hyper-V üzerinden yapılır ve yalnızca Windows VM'lerde kullanılabilir.
+İç içe sanallaştırma, sanal makine içinde sanal makineler oluşturmanızı sağlar. İç içe sanallaştırma Hyper-V aracılığıyla yapılır ve yalnızca Windows VM 'lerinde kullanılabilir.
 
 İç içe sanallaştırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure'da İç Içe Sanallaştırma](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)
-- [Bir Azure VM'de iç içe sanallaştırmayı etkinleştirme](../../virtual-machines/windows/nested-virtualization.md)
+- [Azure 'da iç içe sanallaştırma](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)
+- [Azure VM 'de iç içe sanallaştırmayı etkinleştirme](../../virtual-machines/windows/nested-virtualization.md)
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-İç içe sanallaştırma içeren bir laboratuvar kurmadan önce, göz önünde bulundurulması gereken birkaç şey vardır.
+İç içe sanallaştırmaya sahip bir laboratuvar ayarlamadan önce göz önünde bulundurmanız gereken birkaç nokta vardır.
 
-- Yeni bir laboratuvar oluştururken, sanal makine boyutu için **Orta (İç içe sanallaştırma)** veya **Büyük (İç içe sanallaştırma)** boyutlarını seçin. Bu sanal makine boyutları iç içe sanallaştırmayı destekler.
-- Hem ana bilgisayar hem de istemci sanal makineleri için iyi performans sağlayacak bir boyut seçin.  Sanallaştırma kullanırken, seçtiğiniz boyutun yalnızca bir makine için değil, aynı anda çalıştırılması gereken istemci makineler için de yeterli olması gerektiğini unutmayın.
-- İstemci sanal makineleri, Azure sanal ağındaki DNS sunucuları gibi Azure kaynaklarına erişmez.
-- Ana bilgisayar sanal makine istemci makine internet bağlantısı na sahip olmak için izin vermek için kurulum gerektirir.
-- İstemci sanal makineleri bağımsız makineler olarak lisanslanır. Microsoft işletim sistemleri ve ürünleri için lisanslama hakkında bilgi için [Microsoft Lisanslama'ya](https://www.microsoft.com/licensing/default) bakın. Şablon makinesini ayarlamadan önce kullanılan diğer yazılımlar için lisans sözleşmelerini denetleyin.
+- Yeni bir laboratuvar oluştururken, sanal makine boyutu için **Orta (Iç içe sanallaştırma)** veya **büyük (iç içe sanallaştırma)** boyutlarını seçin. Bu sanal makine boyutları, iç içe sanallaştırmayı destekler.
+- Hem konak hem de istemci sanal makineleri için iyi performans sağlayacak bir boyut seçin.  Sanallaştırmayı kullanırken, seçtiğiniz boyutun yalnızca bir makine değil, ana bilgisayarın yanı sıra aynı anda çalışan Hyper-V makineleri için yeterli olması gerektiğini unutmayın.
+- İstemci sanal makineleri, Azure sanal ağındaki DNS sunucuları gibi Azure kaynaklarına erişemez.
+- Konak sanal makinesi, istemci makinenin internet bağlantısına izin vermek için kurulum gerektirir.
+- İstemci sanal makineleri bağımsız makineler olarak lisanslanır. Microsoft Operasyon sistemleri ve ürünleri için lisanslama hakkında bilgi için bkz. [Microsoft lisanslama](https://www.microsoft.com/licensing/default) . Şablon makinesini ayarlamadan önce kullanılan diğer yazılımlar için lisans sözleşmelerini denetleyin.
 
 ## <a name="enable-nested-virtualization-on-a-template-vm"></a>Şablon VM üzerinde iç içe yerleştirilmiş sanallaştırmayı etkinleştirme
 
-Bu makalede, bir laboratuvar hesabı ve laboratuvar oluşturduğunuz varsayar.  Yeni bir laboratuvar hesabı oluşturma hakkında daha fazla bilgi [için, bir Laboratuvar Hesabı kurmak için öğreticiye](tutorial-setup-lab-account.md)bakın. Laboratuvar oluşturma hakkında daha fazla bilgi için sınıf [laboratuarı öğreticisini ayarlamaya](tutorial-setup-classroom-lab.md)bakın.
+Bu makalede, bir laboratuar hesabı ve Laboratuvarı oluşturmuş olduğunuz varsayılmaktadır.  Yeni laboratuvar hesabı oluşturma hakkında daha fazla bilgi için bkz. [öğretici, laboratuvar hesabı ayarlama](tutorial-setup-lab-account.md). Laboratuvar oluşturma hakkında daha fazla bilgi için bkz. [sınıf Laboratuvarı ayarlama öğreticisi](tutorial-setup-classroom-lab.md).
 
 >[!IMPORTANT]
->Laboratuarı oluştururken sanal makine boyutu için **Büyük (iç içe sanallaştırma)** veya **Orta (iç içe sanallaştırma)** seçeneğini belirleyin.  İç içe sanallaştırma aksi takdirde çalışmaz.  
+>Laboratuvar oluştururken sanal makine boyutu için **büyük (iç içe sanallaştırma)** veya **Orta (iç içe sanallaştırma)** seçeneğini belirleyin.  İç içe sanallaştırma, aksi takdirde çalışmaz.  
 
-Şablon makinesine bağlanmak için [sınıf şablonu oluşturma ve yönetme'ye](how-to-create-manage-template.md)bakın.
+Şablon makinesine bağlanmak için bkz. [sınıf şablonu oluşturma ve yönetme](how-to-create-manage-template.md).
 
-### <a name="using-script-to-enable-nested-virtualization"></a>İç içe sanallaştırmayı etkinleştirmek için komut dosyasını kullanma
+İç içe sanallaştırmayı etkinleştirmek için birkaç görev gerçekleştirmeniz gerekir.  
 
-Windows Server 2016 veya Windows Server 2019 ile iç içe sanallaştırma için otomatik kurulumu kullanmak için, [azure Lab Hizmetleri'nde bir komut dosyası kullanarak bir şablon sanal makinede iç içe sanallaştırmayı etkinleştir'e](how-to-enable-nested-virtualization-template-vm-using-script.md)bakın. Hyper-V rolünü yüklemek için [Lab Services Hyper-V komut dosyaları](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV) kullanırsınız.  Komut dosyaları, Hyper-V sanal makinelerin internet erişimine sahip olması için ağ kurma özelliğini de belirler.
+- **Hyper-V rolünü etkinleştirin**. Laboratuvar Hizmetleri sanal makinesi üzerinde Hyper-V sanal makinelerinin oluşturulması ve çalıştırılması için Hyper-V rolü etkinleştirilmelidir.
+- **DHCP 'Yi etkinleştirin**.  Laboratuvar Hizmetleri sanal makinesinde DHCP rolü etkinleştirildiğinde, Hyper-V sanal makinelerine otomatik olarak bir IP adresi atanabilir.
+- **Hyper-V VM 'leri IÇIN NAT ağı oluşturun**.  NAT ağı Hyper-V sanal makinelerinin internet erişimine sahip olmasını sağlayacak şekilde ayarlanır.  Hyper-V sanal makineleri birbirleriyle iletişim kurabilir.
+
+>[!NOTE]
+>Laboratuvar Hizmetleri sanal makinesinde oluşturulan NAT ağı, Hyper-V VM 'nin aynı Laboratuvar Hizmetleri sanal makinesinde internet ve diğer Hyper-V VM 'lerine erişmesine izin verir.  Hyper-V VM, Azure sanal ağındaki DNS sunucuları gibi Azure kaynaklarına erişemeyecektir.
+
+Yukarıda listelenen görevlerin gerçekleştirilmesi, bir komut dosyası veya Windows araçları kullanılarak yapılabilir.  Daha fazla bilgi için aşağıdaki bölümleri okuyun.
+
+### <a name="using-script-to-enable-nested-virtualization"></a>İç içe sanallaştırmayı etkinleştirmek için betiği kullanma
+
+Windows Server 2016 veya Windows Server 2019 ile iç içe sanallaştırmaya yönelik otomatik kurulumu kullanmak için, [bir betik kullanarak Azure Lab Services bir şablon sanal makinesinde iç içe sanallaştırmayı etkinleştirme](how-to-enable-nested-virtualization-template-vm-using-script.md)makalesine bakın. Hyper-V rolünü yüklemek için, [Laboratuvar Hizmetleri Hyper-v betiklerinden](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV) betikleri kullanacaksınız.  Ayrıca, Hyper-V sanal makinelerinin internet erişimi olması için betikler ağ oluşturacak.
 
 ### <a name="using-windows-tools-to-enable-nested-virtualization"></a>İç içe sanallaştırmayı etkinleştirmek için Windows araçlarını kullanma
 
-Windows rolleri ve yönetim araçlarını kullanarak Windows Server 2016 veya Windows Server 2019 için iç içe [sanallaştırma,](how-to-enable-nested-virtualization-template-vm-ui.md)bkz.  Talimatlar ayrıca Hyper-V sanal makinelerin internet erişimine sahip olması için ağ kurmanın nasıl yapılacağını da kapsayacaktır.
+Windows Server 2016 veya Windows Server 2019 için iç içe geçmiş sanallaştırma kurulumu Windows rolleri ve yönetim araçları kullanılarak, bkz. [Azure Lab Services bir şablon sanal makinesinde iç içe sanallaştırmayı El Ile etkinleştirme](how-to-enable-nested-virtualization-template-vm-ui.md).  Yönergeler Ayrıca, Hyper-V sanal makinelerinin internet erişimi olması için ağın nasıl ayarlanacağını de kapsar.

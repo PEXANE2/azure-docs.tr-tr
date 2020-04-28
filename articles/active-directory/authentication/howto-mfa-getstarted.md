@@ -1,6 +1,6 @@
 ---
-title: Azure Çok Faktörlü Kimlik Doğrulama için dağıtım hususları
-description: Azure Çok Faktörlü Kimlik Doğrulama'nın başarılı bir şekilde uygulanması için dağıtım konuları ve stratejisi hakkında bilgi edinin
+title: Azure Multi-Factor Authentication dağıtım konuları
+description: Azure Multi-Factor Authentication başarılı bir şekilde uygulanması için dağıtım konuları ve stratejileri hakkında bilgi edinin
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,175 +12,175 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 845a202faccbbe0a604560ac57ae30f87344b95a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81451134"
 ---
-# <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Çok Faktörlü Kimlik Doğrulama dağıtımı planlama
+# <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Multi-Factor Authentication dağıtımı planlayın
 
-İnsanlar giderek karmaşıklaşan senaryolarda örgütsel kaynaklara bağlanıyor. İnsanlar, genellikle birden çok platformda akıllı telefonlar, tabletler, bilgisayarlar ve dizüstü bilgisayarlar kullanarak şirket ağında ve şirket dışında kuruluşa ait, kişisel ve ortak aygıtlardan bağlanır. Her zaman birbirine bağlı, çok cihazlı ve çok platformlu bu dünyada, kullanıcı hesaplarının güvenliği her zamankinden daha önemlidir. Parolalar, karmaşıklıkları ne olursa olsun, aygıtlar, ağlar ve platformlar arasında kullanılan parolalar, özellikle kullanıcılar hesaplar arasında parolaları yeniden kullanma eğiliminde olduklarında, kullanıcı hesabının güvenliğini sağlamak için artık yeterli değildir. Gelişmiş kimlik avı ve diğer sosyal mühendislik saldırıları, kullanıcı adlarının ve parolaların karanlık web'de yayınlanmasına ve satılmasına neden olabilir.
+İnsanlar, giderek daha karmaşık senaryolarda kurumsal kaynaklara bağlanıyor. Kullanıcılar, genellikle birden çok platformda akıllı telefonlar, tabletler, bilgisayarlar ve dizüstü bilgisayarlar ile kurumsal ağ üzerinde kuruluşa ait, kişisel ve kamu cihazlarından bağlanır. Bu her zaman bağlı, çok cihazlı ve çok platformlu dünyada, Kullanıcı hesaplarının güvenliği her zamankinden daha önemlidir. Parolalar,, özellikle de kullanıcılar hesapları arasında parolaları yeniden kullanmak için bir karmaşıklık ve cihazlar, ağlar ve platformlar genelinde kullanılan, Kullanıcı hesabının güvenliğini sağlamak için artık yeterli değildir. Gelişmiş kimlik avı ve diğer sosyal mühendislik saldırıları, Kullanıcı adları ve parolaların koyu Web üzerinden gönderilmesini ve satılmasını sağlayabilir.
 
-[Azure Çok Faktörlü Kimlik Doğrulama (MFA),](concept-mfa-howitworks.md) verilere ve uygulamalara erişimi korumaya yardımcı olur. İkinci bir kimlik doğrulama biçimini kullanarak ek bir güvenlik katmanı sağlar. Kuruluşlar, çözümü kendi özel gereksinimlerine uygun hale getirmek için [Koşullu Erişim'i](../conditional-access/overview.md) kullanabilir.
+[Azure Multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) , verilere ve uygulamalara erişimi korumaya yardımcı olur. İkinci bir kimlik doğrulama biçimi kullanarak ek bir güvenlik katmanı sağlar. Kuruluşlar, çözümün belirli ihtiyaçlarını karşılayacak şekilde [koşullu erişimi](../conditional-access/overview.md) kullanabilir.
 
-Bu dağıtım kılavuzu, Azure Çok Faktörlü Kimlik Doğrulama dağıtımını nasıl planlayacağınızı ve sonra nasıl test edilebilmektedir.
+Bu dağıtım kılavuzunda, bir Azure Multi-Factor Authentication toplaması 'nın nasıl planlanacağı ve test yapılacağı gösterilir.
 
-Azure Çok Faktörlü Kimlik Doğrulama'yı hızlı bir şekilde iş başında görmek ve ardından ek dağıtım hususlarını anlamak için geri gelmek için:
+Azure Multi-Factor Authentication hızlı bir şekilde görmek ve daha sonra ek dağıtım konularını anlamak için geri dönüp:
 
 > [!div class="nextstepaction"]
 > [Azure Multi-Factor Authentication’ı etkinleştirme](tutorial-enable-azure-mfa.md)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure Çok Faktörlü Kimlik Doğrulama'yı dağıtıma başlamadan önce göz önünde bulundurulması gereken ön koşul öğeleri vardır.
+Azure Multi-Factor Authentication dağıtımına başlamadan önce göz önünde bulundurmanız gereken önkoşul öğeleri vardır.
 
 | Senaryo | Önkoşul |
 | --- | --- |
-| Modern kimlik doğrulama ile **yalnızca buluta özel** kimlik ortamı | **Ek önkoşul görevi yok** |
-| **Karma** kimlik senaryoları | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) dağıtılır ve kullanıcı kimlikleri Azure Active Directory ile şirket içi Active Directory Etki Alanı Hizmetleri ile senkronize edilir veya federe edilir. |
-| Bulut erişimi için yayınlanan şirket içi eski uygulamalar | Azure AD [Application Proxy](../manage-apps/application-proxy.md) dağıtıldı. |
-| RADIUS Kimlik Doğrulaması ile Azure MFA'yı kullanma | Bir [Ağ İlkesi Sunucusu (NPS)](howto-mfa-nps-extension.md) dağıtıldı. |
-| Kullanıcılar microsoft Office 2010 veya daha önce veya iOS 11 veya daha önceki için Apple Mail'e sahiptir | iOS 12 veya daha sonra için [Microsoft Office 2013 veya sonraki](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o) adresine ve Apple postasına yükseltin. Koşullu Erişim, eski kimlik doğrulama protokolleri tarafından desteklenmez. |
+| Modern kimlik doğrulaması ile **yalnızca bulutta** bulunan kimlik ortamı | **Ek önkoşul görevi yok** |
+| **Karma** kimlik senaryoları | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) dağıtılır ve kullanıcı kimlikleri Azure Active Directory ile şirket içi Active Directory Domain Services ile eşitlenir veya Federe olur. |
+| Bulut erişimi için yayımlanan şirket içi eski uygulamalar | Azure AD [uygulama proxy 'si](../manage-apps/application-proxy.md) dağıtıldı. |
+| Azure MFA 'yı RADIUS kimlik doğrulamasıyla kullanma | Bir [ağ Ilkesi sunucusu (NPS)](howto-mfa-nps-extension.md) dağıtılır. |
+| Kullanıcılar Microsoft Office 2010 veya daha önceki bir sürümü veya iOS 11 veya daha önceki bir sürümü için Apple Mail | İOS 12 veya üzeri için [Microsoft Office 2013 veya sonraki bir sürüme](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o) ve Apple Mail 'e yükseltin. Koşullu erişim eski kimlik doğrulama protokolleri tarafından desteklenmez. |
 
-## <a name="plan-user-rollout"></a>Kullanıcı kullanıma sunulmasını planlama
+## <a name="plan-user-rollout"></a>Kullanıcı dağıtımını planlayın
 
-MFA kullanıma alma planınız, destek kapasiteniz dahilinde olan dağıtım dalgalarını izleyen bir pilot dağıtım içermelidir. Koşullu Erişim ilkelerinizi küçük bir pilot kullanıcı grubuna uygulayarak kullanıma başlayın. Pilot kullanıcılar, kullanılan işlem ve kayıt davranışları üzerindeki etkisini değerlendirdikten sonra, ilkeye daha fazla grup ekleyebilir veya varolan gruplara daha fazla kullanıcı ekleyebilirsiniz.
+MFA Dağıtım planınız, bir pilot dağıtımı ve ardından destek kapasiteniz dahilinde olan dağıtım dalgalarını içermelidir. Koşullu erişim ilkelerinizi küçük bir pilot kullanıcı grubuna uygulayarak, piyasaya çıkmayı başlatın. Pilot kullanıcılar, kullanılan işlem ve kayıt davranışları üzerindeki etkiyi değerlendirdikten sonra, ilkeye daha fazla grup ekleyebilir veya var olan gruplara daha fazla kullanıcı ekleyebilirsiniz.
 
-### <a name="user-communications"></a>Kullanıcı iletişimi
+### <a name="user-communications"></a>Kullanıcı iletişimleri
 
-Kullanıcıları, planlanan iletişimlerde, yaklaşan değişiklikler, Azure MFA kayıt gereksinimleri ve gerekli kullanıcı eylemleri hakkında bilgilendirmek çok önemlidir. İletişimin, iletişim, Değişim Yönetimi veya İnsan Kaynakları departmanları gibi kuruluşunuz içinden temsilcilerle birlikte geliştirilmesini öneririz.
+Kullanıcılara, planlı iletişimler, yaklaşan değişiklikler, Azure MFA kayıt gereksinimleri ve gerekli Kullanıcı eylemleri hakkında bilgi vermek önemlidir. İletişim, değişiklik yönetimi veya Insan kaynakları departmanları gibi, kuruluşunuzun içinden temsilcileriyle iletişim kurmanızı öneririz.
 
-Microsoft, iletişimlerinizi hazırlamanıza yardımcı olmak için [iletişim şablonları](https://aka.ms/mfatemplates) ve [son kullanıcı belgeleri](../user-help/security-info-setup-signin.md) sağlar. Bu sayfadaki [https://myprofile.microsoft.com](https://myprofile.microsoft.com) **Güvenlik Bilgileri** bağlantılarını seçerek kullanıcıları doğrudan kaydolmaya gönderebilirsiniz.
+Microsoft, iletişimlerinizin taslağını oluşturmanıza yardımcı olmak için [iletişim şablonları](https://aka.ms/mfatemplates) ve [Son Kullanıcı belgeleri](../user-help/security-info-setup-signin.md) sağlar. Kullanıcıları, bu sayfadaki [https://myprofile.microsoft.com](https://myprofile.microsoft.com) **güvenlik bilgileri** bağlantılarını seçerek doğrudan kaydettirmek üzere gönderebilirsiniz.
 
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 
-Azure Çok Faktörlü Kimlik Doğrulama, Koşullu Erişim ile ilkeleri zorlayarak dağıtılır. [Koşullu Erişim ilkesi,](../conditional-access/overview.md) kullanıcıların şu gibi belirli ölçütler karşılandığında çok faktörlü kimlik doğrulaması gerçekleştirmelerini gerektirebilir:
+Azure Multi-Factor Authentication, ilkeleri koşullu erişimle zorlayarak dağıtılır. [Koşullu erişim ilkesi](../conditional-access/overview.md) , bazı ölçütlere göre karşılandığında kullanıcıların Multi-Factor Authentication gerçekleştirmesini gerektirebilir:
 
-* Tüm kullanıcılar, belirli bir kullanıcı, bir grubun üyesi veya atanmış rol
-* Belirli bulut uygulamasına erişiliyor
+* Tüm kullanıcılar, belirli bir Kullanıcı, bir grubun üyesi veya atanmış rol
+* Erişildiği belirli bulut uygulamasına
 * Cihaz platformu
 * Cihazın durumu
-* Ağ konumu veya coğrafi konumdaki IP adresi
+* Ağ konumu veya coğrafi konumda bulunan IP adresi
 * İstemci uygulamaları
-* Oturum açma riski (Kimlik Koruması Gerektirir)
+* Oturum açma riski (kimlik koruması gerekir)
 * Uyumlu cihaz
-* Karma Azure AD birleştirilmiş aygıt
-* Onaylı istemci başvurusu
+* Karma Azure AD 'ye katılmış cihaz
+* Onaylanan istemci uygulaması
 
-Kuruluşunuza çok faktörlü kimlik doğrulamayı kullanıma çıkarmak için [çok faktörlü kimlik doğrulama maddelerinde](https://www.microsoft.com/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all) özelleştirilebilir posterleri ve e-posta şablonlarını kullanın.
+Multi-Factor Authentication [dağıtım malzemelerinden](https://www.microsoft.com/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all) özelleştirilebilir posterler ve e-posta şablonlarını kullanarak kuruluşunuza Multi-Factor Authentication 'ı kullanın.
 
-## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Koşullu Erişimile Çok Faktörlü Kimlik Doğrulamayı Etkinleştirme
+## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Koşullu erişimle Multi-Factor Authentication etkinleştirme
 
-Koşullu Erişim ilkeleri, kayıt dışı kullanıcıların önemli bir güvenlik göz önünde bulundurulması gereken ilk oturum açma sırasında kaydı tamamlamalarını gerektiren kaydı zorunlu kılmaktadır.
+Koşullu erişim ilkeleri kayıt uygulanmasını zorlar, kayıtsız kullanıcıların kaydı ilk oturum açma sırasında tamamlamaları gerekir, önemli bir güvenlik değerlendirmesi.
 
-[Azure AD Kimlik Koruması,](../identity-protection/howto-configure-risk-policies.md) Azure Çok Faktörlü Kimlik Doğrulama hikayesine hem bir kayıt ilkesi hem de otomatik risk algılama ve düzeltme ilkeleri sağlar. Kimlikten ödün verilen bir tehdit olduğunda parola değişikliklerini zorlamak veya aşağıdaki [olaylar](../reports-monitoring/concept-risk-events.md)tarafından riskli kabul edildiğinde MFA'yı gerektiren ilkeler oluşturulabilir:
+[Azure AD kimlik koruması](../identity-protection/howto-configure-risk-policies.md) , hem bir kayıt ilkesini hem de otomatik risk algılama ve düzeltme ilkelerini Azure Multi-Factor Authentication hikayesine katkıda bulunur. İlkeler, güvenliği tehlikeye giren bir kimlik tehditleri olduğunda veya bir oturum açma, aşağıdaki [Olaylar](../reports-monitoring/concept-risk-events.md)riskli olarak kabul edildiğinde MFA gerektirirken parola değişikliklerini zorlamak için oluşturulabilir:
 
 * Sızdırılan kimlik bilgileri
 * Anonim IP adreslerinden oturum açma işlemleri
 * Alışılmadık konumlara imkansız seyahat
 * Alışılmadık konumlardan oturum açma işlemleri
 * Bulaşma olan cihazlardan oturum açma işlemleri
-* Şüpheli etkinliklerle IP adreslerinden oturum açma
+* Şüpheli etkinliklerle IP adreslerinden oturum açma işlemleri
 
-Azure Active Directory Identity Protection tarafından algılanan risk algılamalarından bazıları gerçek zamanlı olarak gerçekleşir ve bazıları çevrimdışı işleme gerektirir. Yöneticiler, riskli davranışlar sergileyen ve el ile düzelten, parola değişikliği gerektiren veya Koşullu Erişim ilkelerinin bir parçası olarak çok faktörlü kimlik doğrulaması gerektiren kullanıcıları engellemeyi seçebilir.
+Azure Active Directory Kimlik Koruması tarafından algılanan bazı risk algılamaları gerçek zamanlı olarak oluşur ve bazıları çevrimdışı işleme gerektirir. Yöneticiler, riskli davranışlar gösteren ve el ile düzeltebilen, parola değişikliği gerektiren veya koşullu erişim ilkelerinin bir parçası olarak çok faktörlü kimlik doğrulaması gerektiren kullanıcıları engellemeyi seçebilirler.
 
 ## <a name="define-network-locations"></a>Ağ konumlarını tanımlama
 
-Kuruluşların [adlandırılmış konumları](../conditional-access/location-condition.md#named-locations)kullanarak ağlarını tanımlamak için Koşullu Erişim'i kullanmalarını öneririz. Kuruluşunuz Kimlik Koruması kullanıyorsa, adlandırılmış konumlar yerine risk tabanlı ilkeler kullanmayı düşünün.
+Kuruluşların, [adlandırılmış konumları](../conditional-access/location-condition.md#named-locations)kullanarak ağını tanımlamak Için koşullu erişim kullanmalarını öneririz. Kuruluşunuz kimlik koruması kullanıyorsa, adlandırılmış konumlar yerine risk tabanlı ilkeler kullanmayı göz önünde bulundurun.
 
-### <a name="configuring-a-named-location"></a>Adlandırılmış konumu yapılandırma
+### <a name="configuring-a-named-location"></a>Adlandırılmış bir konum yapılandırma
 
-1. Azure portalında **Azure Etkin Dizini'ni** açın
-2. **Güvenlik'i** Seçin
-3. **Yönet**altında, **Adlandırılmış Konumları** seçin
-4. **Yeni Konum** Seçin
+1. Azure portal **Azure Active Directory** açın
+2. **Güvenlik** seçin
+3. **Yönet**altında, **adlandırılmış konumlar** ' ı seçin.
+4. **Yeni konum** Seç
 5. **Ad** alanında anlamlı bir ad sağlayın
-6. *IP aralıklarını* veya *Ülkeler/Bölgeler'i* kullanarak konumu tanımlayıp tanımlamadığınızı seçin
-   1. IP *Aralıkları* kullanıyorsanız
-      1. *Güvenilir konum olarak işaretleyip işaretlememeye*karar verin. Güvenilir bir konumdan oturum açılması, kullanıcının oturum açma riskini azaltır. Bu konumu yalnızca girilen IP aralıklarının kuruluşunuzda kurulu ve güvenilir olduğunu biliyorsanız güvenilir olarak işaretleyin.
-      2. IP Aralıklarını Belirtin
-   2. *Ülkeler/Bölgeler* kullanıyorsanız
+6. *IP aralıklarını* veya *ülkeleri/bölgeleri* kullanarak konum tanımlamayı seçin
+   1. *IP aralıklarını* kullanıyorsanız
+      1. *Güvenilen konum olarak işaretistemediğinize*karar verin. Güvenilir bir konumdan oturum açılması, kullanıcının oturum açma riskini azaltır. Bu konumu yalnızca, girilen IP aralıklarının kuruluşunuzda kurulu olduğunu ve güvenilir olduğunu biliyorsanız güvenilir olarak işaretleyin.
+      2. IP aralıklarını belirtin
+   2. *Ülke/bölge* kullanılıyorsa
       1. Açılan menüyü genişletin ve bu adlandırılmış konum için tanımlamak istediğiniz ülkeleri veya bölgeleri seçin.
-      2. Bilinmeyen alanları dahil edip *etmemeye*karar verin. Bilinmeyen alanlar, bir ülkeye/bölgeye eşlenemez IP adresleridir.
-7. **Oluştur'u** seçin
+      2. *Bilinmeyen alanların*eklenip eklenmeyeceğini belirleyin. Bilinmeyen alan, bir ülkeye/bölgeye eşlenemeyen IP adresleridir.
+7. **Oluştur** ' u seçin
 
-## <a name="plan-authentication-methods"></a>Kimlik doğrulama yöntemlerini planla
+## <a name="plan-authentication-methods"></a>Kimlik doğrulama yöntemlerini planlayın
 
-Yöneticiler, kullanıcılar için kullanılabilir hale getirmek istedikleri [kimlik doğrulama yöntemlerini](../authentication/concept-authentication-methods.md) seçebilirler. Kullanıcıların birincil metodlarının kullanılamaması durumunda bir yedekleme yöntemine sahip olmaları için tek bir kimlik doğrulama yönteminden daha fazlasına izin vermek önemlidir. Yöneticilerin etkinleştirmek için aşağıdaki yöntemler kullanılabilir:
+Yöneticiler, kullanıcılar için kullanılabilir hale getirmek istedikleri [kimlik doğrulama yöntemlerini](../authentication/concept-authentication-methods.md) seçebilirler. Birincil yöntemi kullanılamaz durumda olduğunda kullanıcıların bir yedekleme yöntemine sahip olması için birden fazla kimlik doğrulama yöntemine izin vermek önemlidir. Yöneticilerin etkinleştiremeleri için aşağıdaki yöntemler kullanılabilir:
 
-### <a name="notification-through-mobile-app"></a>Mobil uygulama üzerinden bildirim
+### <a name="notification-through-mobile-app"></a>Mobil uygulama aracılığıyla bildirim
 
-Mobil cihazınızdaki Microsoft Authenticator uygulamasına bir anında iletme bildirimi gönderilir. Kullanıcı bildirimi görüntüler ve doğrulamayı tamamlamak için **Onay'ı** seçer. Mobil uygulama üzerinden anında iletme bildirimleri, kullanıcılar için en az müdahaleci seçeneği sağlar. Telefon yerine veri bağlantısı kullandıkları için aynı zamanda en güvenilir ve güvenli seçenektir.
+Mobil cihazınızda Microsoft Authenticator uygulamasına anında iletme bildirimi gönderilir. Kullanıcı bildirimi görüntüler ve doğrulamayı tamamlamaya yönelik **onaylamayı** seçer. Mobil uygulama aracılığıyla anında iletme bildirimleri, kullanıcılar için en az zorive seçeneğini sağlar. Bunlar ayrıca, telefon yerine bir veri bağlantısı kullandıkları için en güvenilir ve güvenli seçenektir.
 
 > [!NOTE]
-> Kuruluşunuzun Çin'de çalışan veya Çin'e seyahat eden personeli varsa, **Android cihazlardaki** **mobil uygulama yöntemiyle bildirim** o ülkede çalışmaz. Bu kullanıcılar için alternatif yöntemler kullanılabilir hale getirilmelidir.
+> Kuruluşunuzda Çin 'de çalışan veya Çin 'e geçiş yapan personel varsa, **Android cihazlarda** **mobil uygulama yöntemi ile ilgili bildirim** söz konusu ülkede çalışmaz. Bu kullanıcılar için alternatif yöntemler kullanılabilir hale gelmelidir.
 
-### <a name="verification-code-from-mobile-app"></a>Mobil uygulamadan doğrulama kodu
+### <a name="verification-code-from-mobile-app"></a>Mobil uygulamadaki doğrulama kodu
 
-Microsoft Authenticator uygulaması gibi bir mobil uygulama her 30 saniyede bir yeni bir OATH doğrulama kodu oluşturur. Kullanıcı doğrulama kodunu oturum açma arabirimine girer. Telefonun veri veya hücresel sinyale sahip olup olmadığı mobil uygulama seçeneği kullanılabilir.
+Microsoft Authenticator uygulaması gibi bir mobil uygulama, her 30 saniyede yeni bir OATH doğrulama kodu oluşturur. Kullanıcı doğrulama kodunu oturum açma arabirimine girer. Mobil uygulama seçeneği, telefonun bir veri ya da hücresel sinyal içerip içermediğini veya bu şekilde kullanılabilir.
 
-### <a name="call-to-phone"></a>Telefona çağrı
+### <a name="call-to-phone"></a>Telefon çağrısı
 
-Kullanıcıya otomatik sesli arama yerleştirilir. Kullanıcı aramayı yanıtlar ve **#** kimlik doğrulamasını onaylamak için telefon tuş takımıüzerinde basar. Telefonla arama, bir mobil uygulamadan bildirim veya doğrulama kodu için harika bir yedekleme yöntemidir.
+Kullanıcıya otomatik bir sesli çağrı konur. Kullanıcı, kimlik doğrulamasını onaylamak için çağrıyı **#** yanıtlar ve telefon tuş takımında basar. Telefon çağrısı, bir mobil uygulamadan bildirim veya doğrulama kodu için harika bir yedekleme yöntemidir.
 
 ### <a name="text-message-to-phone"></a>Telefona kısa mesaj
 
-Kullanıcıya doğrulama kodu içeren bir kısa mesaj gönderilir, kullanıcıdan oturum açma arabirimine doğrulama kodunu girmesi istenir.
+Kullanıcıya doğrulama kodu içeren bir SMS mesajı gönderilir, kullanıcıdan doğrulama kodunu oturum açma arabirimine girmesi istenir.
 
-### <a name="choose-verification-options"></a>Doğrulama seçeneklerini seçin
+### <a name="choose-verification-options"></a>Doğrulama seçeneklerini belirleyin
 
-1. **Azure Active Directory,** **Kullanıcılar**, **Çok Faktörlü Kimlik Doğrulama'ya**göz atın.
+1. **Azure Active Directory**, **Kullanıcılar**, **Multi-Factor Authentication**gidin.
 
-   ![Azure portalında Azure AD Kullanıcıları blade'inden Çok Faktörlü Kimlik Doğrulama portalına erişim](media/howto-mfa-getstarted/users-mfa.png)
+   ![Azure portal içindeki Azure AD kullanıcıları dikey penceresinden Multi-Factor Authentication portalına erişme](media/howto-mfa-getstarted/users-mfa.png)
 
-1. Hizmet **ayarlarına**göz atın açılır yeni sekmesinde.
-1. **Doğrulama seçenekleri**altında, kullanıcıların kullanabileceği yöntemler için tüm kutuları denetleyin.
+1. Yeni sekmede, **hizmet ayarlarına**gidin ' i açar.
+1. **Doğrulama seçenekleri**altında, kullanıcılara sunulan yöntemlerin tüm kutularını işaretleyin.
 
-   ![Çok Faktörlü Kimlik Doğrulama hizmet ayarları sekmesinde doğrulama yöntemlerini yapılandırma](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
+   ![Multi-Factor Authentication hizmeti ayarları sekmesinde doğrulama yöntemlerini yapılandırma](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
 
 1. **Kaydet**'e tıklayın.
-1. Hizmet **ayarları** sekmesini kapatın.
+1. **Hizmet ayarları** sekmesini kapatın.
 
 ## <a name="plan-registration-policy"></a>Kayıt ilkesini planla
 
-Yöneticiler, kullanıcıların yöntemlerini nasıl kaydedeceğini belirlemelidir. Kuruluşlar, Azure MFA ve self servis parola sıfırlama (SSPR) için [yeni birleştirilmiş kayıt deneyimini etkinleştirmelidir.](howto-registration-mfa-sspr-combined.md) SSPR, kullanıcıların çok faktörlü kimlik doğrulama için kullandıkları yöntemleri kullanarak parolalarını güvenli bir şekilde sıfırlamalarına olanak tanır. Bu kombine kaydı, her iki hizmet için de bir kez kayıt olma özelliğine sahip kullanıcılar için harika bir deneyim olduğu için öneririz. SSPR ve Azure MFA için aynı yöntemleri etkinleştirmek, kullanıcılarınızın her iki özelliği de kullanmak üzere kaydolmasına olanak tanır.
+Yöneticiler, kullanıcıların yöntemlerini nasıl kaydedeceğini belirlememelidir. Kuruluşlar, Azure MFA ve self servis parola sıfırlama (SSPR) için [Yeni Birleşik kayıt deneyimini etkinleştirmelidir](howto-registration-mfa-sspr-combined.md) . SSPR, kullanıcıların, çok faktörlü kimlik doğrulaması için kullandıkları yöntemleri kullanarak parolalarını güvenli bir şekilde sıfırlamasına olanak sağlar. Bu Birleşik kayıt, her iki hizmet için bir kez kayıt yeteneğine sahip olan kullanıcılar için harika bir deneyim olduğu için önerilir. SSPR ve Azure MFA için aynı yöntemlerin etkinleştirilmesi, kullanıcılarınızın her iki özelliği de kullanmak üzere kaydollemelerine izin verir.
 
-### <a name="registration-with-identity-protection"></a>Kimlik Koruması ile Kayıt
+### <a name="registration-with-identity-protection"></a>Kimlik koruması ile kaydolma
 
-Kuruluşunuz Azure Active Directory Identity Protection kullanıyorsa, [mfa kayıt ilkesini kullanıcılarınızın](../identity-protection/howto-mfa-policy.md) etkileşimli olarak bir sonraki oturum açmalarında kaydolmalarını istenecek şekilde yapılandırın.
+Kuruluşunuz Azure Active Directory Kimlik Koruması kullanıyorsa, kullanıcılarınıza etkileşimli olarak oturum açtıklarında kaydolmaları için, [MFA kayıt ilkesini yapılandırın](../identity-protection/howto-mfa-policy.md) .
 
-### <a name="registration-without-identity-protection"></a>Kimlik Koruması Olmadan Kayıt
+### <a name="registration-without-identity-protection"></a>Kimlik koruması olmadan kayıt
 
-Kuruluşunuzun Kimlik Koruması'nı etkinleştiren lisansları yoksa, kullanıcılardan oturum açma sırasında MFA'nın bir sonraki kez kaydolması istenir. Kullanıcılar MFA ile korunan uygulamaları kullanmıyorlarsa MFA'ya kaydolmayabilir. Kötü aktörlerin bir kullanıcının parolasını tahmin edememesi ve hesabın denetimini etkin bir şekilde alarak mfa'ya kaydolması için tüm kullanıcıların kaydedilmesi önemlidir.
+Kuruluşunuzun kimlik Korumasını etkinleştiren lisansı yoksa, kullanıcılardan oturum açma sırasında MFA 'nın bir sonraki sefer yapması istenir. MFA ile korunan uygulamaları kullanmayan kullanıcılar MFA için kaydedilmemiş olabilir. Kötü aktörlerin Kullanıcı parolasını tahmin edemeyeceği ve kendi adına MFA 'ya kaydolmasının yanı sıra hesabın denetimini etkili bir şekilde ele alması için tüm kullanıcıların kaydolmasını sağlamak önemlidir.
 
 #### <a name="enforcing-registration"></a>Kayıt zorlama
 
-Koşullu Erişim ilkesi aşağıdaki adımları kullanarak kullanıcıları Çok Faktörlü Kimlik Doğrulama için kaydolmaya zorlayabilir
+Aşağıdaki adımları kullanarak, koşullu erişim ilkesi kullanıcıları Multi-Factor Authentication kaydolmaya zorlayabilir
 
 1. Bir grup oluşturun, şu anda kayıtlı olmayan tüm kullanıcıları ekleyin.
-2. Koşullu Erişim'i kullanarak, tüm kaynaklara erişmek için bu grup için çok faktörlü kimlik doğrulamasını zorlar.
-3. Düzenli aralıklarla grup üyeliğini yeniden değerlendirin ve gruptan kaydolan kullanıcıları kaldırın.
+2. Koşullu erişimi kullanarak, tüm kaynaklara erişmek için bu grup için Multi-Factor Authentication 'ı zorlayın.
+3. Düzenli aralıklarla, Grup üyeliğini yeniden değerlendirin ve gruptan kaydolan kullanıcıları kaldırın.
 
-[MSOnline PowerShell modülüne](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)dayanan PowerShell komutlarına sahip kayıtlı ve kayıtlı olmayan Azure MFA kullanıcılarını tanımlayabilirsiniz.
+Kayıtlı ve kayıtlı olmayan Azure MFA kullanıcılarını [MSOnline PowerShell modülünü](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)kullanan PowerShell komutlarıyla belirleyebilirsiniz.
 
-#### <a name="identify-registered-users"></a>Kayıtlı kullanıcıları belirleme
+#### <a name="identify-registered-users"></a>Kayıtlı kullanıcıları tanımla
 
 ```PowerShell
 Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
 ```
 
-#### <a name="identify-non-registered-users"></a>Kayıtlı olmayan kullanıcıları belirleme
+#### <a name="identify-non-registered-users"></a>Kayıtlı olmayan kullanıcıları tanımla
 
 ```PowerShell
 Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
 ```
 
-### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Kullanıcıları kullanıcı başına MFA'dan Koşullu Erişim tabanlı MFA'ya dönüştürme
+### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Kullanıcı başına MFA 'dan koşullu erişim tabanlı MFA 'ya Kullanıcı dönüştürme
 
-Kullanıcılarınız kullanıcı başına etkin leştirilmiş ve zorunlu Azure Çok Faktörlü Kimlik Doğrulaması kullanılarak etkinleştirildiyse, aşağıdaki PowerShell Koşullu Erişim tabanlı Azure Çok Faktörlü Kimlik Doğrulamasına dönüştürme de size yardımcı olabilir.
+Kullanıcılarınız Kullanıcı başına etkin ve zorunlu kılınan Azure kullanılarak etkinleştirildiyse Multi-Factor Authentication aşağıdaki PowerShell, koşullu erişim tabanlı Azure Multi-Factor Authentication dönüştürmeyi yaparken size yardımcı olabilir.
 
-Bu PowerShell'i Birİm penceresinde `.PS1` çalıştırın veya yerel olarak çalışacak bir dosya olarak kaydedin.
+Bu PowerShell 'i bir ıSE penceresinde çalıştırın veya yerel olarak `.PS1` çalıştırmak için bir dosya olarak kaydedin.
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -217,101 +217,101 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> Biz son zamanlarda buna göre yukarıdaki davranış ve PowerShell komut değişti. Daha önce, komut dosyası MFA yöntemlerini kaydedin, MFA'yı devre dışı bıraktı ve yöntemleri geri yükledi. Devre dışı kalma için varsayılan davranış yöntemleri temizlemediği için artık bu artık gerekli değildir.
+> Kısa süre önce yukarıdaki davranışı ve PowerShell betiğini değiştirdik. Daha önce, komut dosyası MFA yöntemlerine kaydedilir, MFA 'yı devre dışı bırakmış ve yöntemleri geri yükledi. Artık devre dışı bırakma için varsayılan davranış metotları temizlemez.
 
-## <a name="plan-conditional-access-policies"></a>Koşullu Erişim ilkelerini planla
+## <a name="plan-conditional-access-policies"></a>Koşullu erişim ilkelerini planlayın
 
-MFA ve diğer denetimlerin ne zaman gerekli olduğunu belirleyecek olan Koşullu Erişim ilke stratejinizi planlamak için [Azure Etkin Dizinde Koşullu Erişim nedir?](../conditional-access/overview.md).
+MFA ve diğer denetimlerin ne zaman gerekli olacağını belirleyen koşullu erişim ilkesi stratejinizi planlamak için [Azure Active Directory, koşullu erişim nedir?](../conditional-access/overview.md)bölümüne bakın.
 
-Azure AD kiracınızın yanlışlıkla kilitlenmesini önlemeniz önemlidir. [Kiracınızda iki veya daha fazla acil durum erişim hesabı oluşturarak](../users-groups-roles/directory-emergency-access.md) ve bunları Koşullu Erişim politikanızdan hariç tutarak bu yanlışlıkla yönetim erişimi eksikliğinin etkisini azaltabilirsiniz.
+Azure AD kiracınızdan yanlışlıkla kilitlenmesini engellemeniz önemlidir. [Kiracınızda iki veya daha fazla acil durum erişim hesabı oluşturarak](../users-groups-roles/directory-emergency-access.md) ve bunları koşullu erişim ilkenize dışlayarak, bu yanlışlıkla yönetici erişimi eksikliğinden etkilerini azaltabilirsiniz.
 
-### <a name="create-conditional-access-policy"></a>Koşullu Erişim ilkesi oluşturma
+### <a name="create-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
-1. Genel bir yönetici hesabı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
-1. **Azure Etkin Dizin** > **Güvenliği** > **Koşullu Erişim'e**göz atın.
-1. **Yeni ilke**yi seçin.
-   ![Pilot gruptaki Azure portal kullanıcıları için MFA'yı etkinleştirmek için Koşullu Erişim ilkesi oluşturma](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
-1. İlkiniz için anlamlı bir ad sağlayın.
+1. [Azure Portal](https://portal.azure.com) bir genel yönetici hesabı kullanarak oturum açın.
+1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Yeni ilke**' yi seçin.
+   ![Pilot grubundaki Azure portal kullanıcılar için MFA 'yı etkinleştirmek üzere koşullu erişim ilkesi oluşturma](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
+1. İlkeniz için anlamlı bir ad girin.
 1. **Kullanıcılar ve gruplar**altında:
-   * **Ekle** sekmesinde, **Tüm kullanıcılar** radyo düğmesini seçin
-   * **Dışla** sekmesinde, Kullanıcılar **ve gruplar** için kutuyu işaretleyin ve acil durum erişim hesaplarınızı seçin.
+   * **Dahil et** sekmesinde, **tüm kullanıcılar** radyo düğmesini seçin.
+   * **Dışla** sekmesinde, **Kullanıcılar ve gruplar** kutusunu işaretleyin ve acil durum erişim hesaplarınızı seçin.
    * **Bitti**’ye tıklayın.
-1. **Bulut uygulamaları** **altında, Tüm bulut uygulamaları** radyo düğmesini seçin.
-   * İstEĞE **BAĞLI: Dışla** sekmesinde, kuruluşunuzun MFA gerektirmediği bulut uygulamalarını seçin.
+1. **Bulut uygulamaları**altında **tüm bulut uygulamaları** radyo düğmesini seçin.
+   * Isteğe bağlı: **Dışla** sekmesinde, kuruluşunuzun MFA gerektirmeyen bulut uygulamaları ' nı seçin.
    * **Bitti**’ye tıklayın.
-1. **Koşullar** altında bölümü:
-   * İsteğE BAĞLI: Azure Kimlik Koruması'nı etkinleştirdiyseniz, oturum açma riskini ilkenin bir parçası olarak değerlendirmeyi seçebilirsiniz.
-   * İstEĞE BAĞLI: Güvenilen konumlar veya adlandırılmış konumlar yapılandırıldıysanız, bu konumları ilkeden dahil etmek veya hariç tutmak için belirtebilirsiniz.
-1. **Grant**altında, **Grant erişim** radyo düğmesinin seçildiğinden emin olun.
-    * **Çok faktörlü kimlik doğrulaması gerekte**kutusunu işaretleyin.
-    * **Seç'i**tıklatın.
+1. **Koşullar** bölümünde:
+   * Isteğe bağlı: Azure kimlik koruması 'nı etkinleştirdiyseniz, ilkenin bir parçası olarak oturum açma riskini değerlendirmeyi seçebilirsiniz.
+   * Isteğe bağlı: güvenilen konumlar veya adlandırılmış konumlar yapılandırdıysanız, bu konumları ilke içinden dahil etmek veya hariç tutmak için belirtebilirsiniz.
+1. **İzin**ver ' in altında, **erişim verme** radyo düğmesinin seçili olduğundan emin olun.
+    * **Multi-Factor Authentication gerektir**kutusunu işaretleyin.
+    * **Seç**' e tıklayın.
 1. **Oturum** bölümünü atlayın.
-1. Etkinleştir **ilkesini** **A'ya**ayarlama
-1. **Oluştur'u**tıklatın.
+1. **Ilkeyi etkinleştir** **' i açık**yap olarak ayarlayın.
+1. **Oluştur**' a tıklayın.
 
-## <a name="plan-integration-with-on-premises-systems"></a>Şirket içi sistemlerle tümleştirme yi planlama
+## <a name="plan-integration-with-on-premises-systems"></a>Şirket içi sistemlerle tümleştirmeyi planlayın
 
-Azure AD'ye karşı doğrudan kimlik doğrulaması yapmayan bazı eski ve şirket içi uygulamalar, şu lar dahil olmak üzere MFA'yı kullanmak için ek adımlar gerektirir:
+Doğrudan Azure AD 'de kimlik doğrulaması olmayan bazı eski ve şirket içi uygulamalar, MFA 'yı kullanmak için ek adımlar gerektirir:
 
-* Uygulama proxy'sini kullanması gereken eski şirket içi uygulamalar.
-* NPS sunucusu ile MFA bağdaştırıcısı kullanması gereken şirket içi RADIUS uygulamaları.
-* AD FS 2016 veya daha yeni ile MFA adaptör kullanmak gerekir şirket içi AD FS uygulamaları.
+* Uygulama proxy 'si kullanması gereken eski şirket içi uygulamalar.
+* NPS sunucusu ile MFA bağdaştırıcısını kullanması gereken şirket içi RADIUS uygulamaları.
+* AD FS 2016 veya daha yeni bir sürümü ile MFA bağdaştırıcısını kullanması gereken şirket içi AD FS uygulamalar.
 
-Doğrudan Azure AD ile kimlik doğrulaması yapan ve modern kimlik doğrulamaya (WS-Fed, SAML, OAuth, OpenID Connect) sahip uygulamalar Koşullu Erişim ilkelerini doğrudan kullanabilir.
+Doğrudan Azure AD ile kimlik doğrulaması yapan ve modern kimlik doğrulamasına (WS-beslenir, SAML, OAuth, OpenID Connect) sahip olan uygulamalar, koşullu erişim ilkelerinin doğrudan kullanılabilmesini sağlayabilir.
 
-### <a name="use-azure-mfa-with-azure-ad-application-proxy"></a>Azure AD Uygulama Proxy ile Azure MFA'yı kullanma
+### <a name="use-azure-mfa-with-azure-ad-application-proxy"></a>Azure MFA 'yı Azure AD Uygulama Ara Sunucusu kullanma
 
-Şirket içinde ikamet eden uygulamalar Azure AD Uygulama Proxy'si aracılığıyla [Azure AD](../manage-apps/application-proxy.md) kiracınıza yayınlanabilir ve Azure AD kimlik doğrulamasını kullanacak şekilde yapılandırılırsa Azure Çok Faktörlü Kimlik Doğrulaması'ndan yararlanabilir.
+Şirket içinde bulunan uygulamalar Azure [ad uygulama ara sunucusu](../manage-apps/application-proxy.md) aracılığıyla Azure AD kiracınızda yayımlanabilir ve Azure AD ön kimlik doğrulamasını kullanmak üzere yapılandırıldıysa Azure Multi-Factor Authentication yararlanabilir.
 
-Bu uygulamalar, diğer Azure AD tümleşik uygulamaları gibi Azure Çok Faktörlü Kimlik Doğrulaması'nı uygulayan Koşullu Erişim ilkelerine tabidir.
+Bu uygulamalar, diğer Azure AD ile tümleştirilmiş tüm uygulamalar gibi Azure Multi-Factor Authentication uygulayan koşullu erişim ilkelerine tabidir.
 
-Aynı şekilde, tüm kullanıcı oturum açma ları için Azure Çok Faktörlü Kimlik Doğrulaması zorlanırsa, Azure AD Application Proxy ile yayınlanan şirket içi uygulamalar korunur.
+Benzer şekilde, Azure Multi-Factor Authentication tüm Kullanıcı oturum açma işlemleri için zorlanırsa, Azure AD Uygulama Ara Sunucusu ile yayınlanan şirket içi uygulamalar korunacaktır.
 
-### <a name="integrating-azure-multi-factor-authentication-with-network-policy-server"></a>Azure Çok Faktörlü Kimlik Doğrulamayı Ağ İlkesi Sunucusuyla Tümleştirme
+### <a name="integrating-azure-multi-factor-authentication-with-network-policy-server"></a>Azure Multi-Factor Authentication ağ Ilkesi sunucusu ile tümleştirme
 
-Azure MFA için Ağ İlkesi Sunucusu (NPS) uzantısı, varolan sunucularınızı kullanarak kimlik doğrulama altyapınıza bulut tabanlı MFA özellikleri ekler. NPS uzantısı ile, mevcut kimlik doğrulama akışınıza telefon görüşmesi, kısa mesaj veya telefon uygulaması doğrulaması ekleyebilirsiniz. Bu tümleştirmenin aşağıdaki sınırlamaları vardır:
+Azure MFA için ağ Ilkesi sunucusu (NPS) uzantısı, mevcut sunucularınızı kullanarak kimlik doğrulama altyapınıza bulut tabanlı MFA özellikleri ekler. NPS uzantısıyla, mevcut kimlik doğrulama akışınıza telefon araması, SMS mesajı veya telefon uygulaması doğrulaması ekleyebilirsiniz. Bu tümleştirme aşağıdaki sınırlamalara sahiptir:
 
-* CHAPv2 protokolü ile yalnızca kimlik doğrulama uygulaması push bildirimleri ve sesli arama desteklenir.
-* Koşullu Erişim ilkeleri uygulanamaz.
+* CHAPv2 protokolüyle, yalnızca Authenticator uygulama anında iletme bildirimleri ve sesli arama desteklenir.
+* Koşullu erişim ilkeleri uygulanamıyor.
 
-NPS uzantısı, [VPN,](howto-mfa-nps-extension-vpn.md) [Uzak Masaüstü Ağ Geçidi bağlantılarını](howto-mfa-nps-extension-rdg.md)veya diğer RADIUS özellikli uygulamaları korumak için ikinci bir kimlik doğrulama faktörü sağlamak için RADIUS ve bulut tabanlı Azure MFA arasında bir bağdaştırıcı görevi görür. Bu ortamda Azure MFA'ya kaydolan kullanıcılara tüm kimlik doğrulama girişimleri için meydan okunur, Koşullu Erişim ilkelerinin olmaması, MFA'nın her zaman gerekli olduğu anlamına gelir.
+NPS uzantısı, [VPN](howto-mfa-nps-extension-vpn.md), [Uzak Masaüstü Ağ Geçidi BAĞLANTıLARı](howto-mfa-nps-extension-rdg.md)veya diğer RADIUS özellikli uygulamaları korumak için ikinci bir kimlik doğrulama faktörü sağlamak üzere RADIUS ve bulut tabanlı Azure MFA arasında bir bağdaştırıcı görevi görür. Bu ortamda Azure MFA için kayıt yapan kullanıcılar, tüm kimlik doğrulama girişimleri için gerekli olacaktır, koşullu erişim ilkelerinin olmaması MFA her zaman gereklidir.
 
 #### <a name="implementing-your-nps-server"></a>NPS sunucunuzu uygulama
 
-Dağıtılmış ve halihazırda kullanılmakta olan bir NPS örneğiniz varsa, geçerli [NPS Altyapınızı Azure Çok Faktörlü Kimlik Doğrulaması ile tümleştir'e](howto-mfa-nps-extension.md)başvurun. NPS'yi ilk kez ayarlıyorsanız, yönergeler için [Network Policy Server'a (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) başvurun. Sorun giderme kılavuzu, [Azure Çok Faktörlü Kimlik Doğrulaması için NPS uzantısından gelen hata iletilerini çözümle](howto-mfa-nps-extension-errors.md)makalesinde bulunabilir.
+Dağıtılmış ve kullanımda olan bir NPS örneğiniz varsa, [mevcut NPS altyapınızı Azure Multi-Factor Authentication Ile tümleştirin](howto-mfa-nps-extension.md). NPS 'YI ilk kez ayarlıyorsanız yönergeler için [ağ Ilkesi sunucusu 'na (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) bakın. Sorun giderme kılavuzu, [Azure MULTI-Factor AUTHENTICATION NPS uzantısından hata Iletilerini çözümleme](howto-mfa-nps-extension-errors.md)makalesinde bulunabilir.
 
-#### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>MFA'ya kaydolmamış kullanıcılar için NPS hazırlama
+#### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>MFA için kayıtlı olmayan kullanıcılar için NPS 'YI hazırlama
 
-MFA'ya kayıtlı olmayan kullanıcıların kimlik doğrulaması yapmaya çalıştıklarında ne olacağını seçin. Özellik davranışını `REQUIRE_USER_MATCH` denetlemek için kayıt `HKLM\Software\Microsoft\AzureMFA` defteri ayarını kayıt defteri yolunda kullanın. Bu ayarın tek bir yapılandırma seçeneği vardır.
+MFA ile kayıtlı olmayan kullanıcılar kimlik doğrulamaya çalıştığında ne olacağını seçin. Özellik davranışını denetlemek için `REQUIRE_USER_MATCH` kayıt defteri yolundaki `HKLM\Software\Microsoft\AzureMFA` kayıt defteri ayarını kullanın. Bu ayarın tek bir yapılandırma seçeneği vardır.
 
 | Anahtar | Değer | Varsayılan |
 | --- | --- | --- |
-| `REQUIRE_USER_MATCH` | DOĞRU / YANLIŞ | Ayarlanmıyor (TRUE'ya eşdeğer) |
+| `REQUIRE_USER_MATCH` | DOĞRU/YANLıŞ | Ayarlanmadı (TRUE değerine denktir) |
 
-Bu ayarın amacı, bir kullanıcı MFA'ya kaydolmadığında ne yapacağını belirlemektir. Bu ayarı değiştirmenin etkileri aşağıdaki tabloda listelenmiştir.
+Bu ayarın amacı, bir Kullanıcı MFA 'ya kaydolmadıysa ne yapılacağını belirlemektir. Bu ayarı değiştirmenin etkileri aşağıdaki tabloda listelenmiştir.
 
-| Ayarlar | Kullanıcı MFA Durumu | Etkiler |
+| Ayarlar | Kullanıcı MFA durumu | Etkiler |
 | --- | --- | --- |
-| Anahtar yok | Kayıtlı değil | MFA mücadelesi başarısız oldu |
-| True / set'e ayarlanmış değer | Kayıtlı değil | MFA mücadelesi başarısız oldu |
-| Anahtar False olarak ayarlandı | Kayıtlı değil | MFA olmadan kimlik doğrulama |
-| Yanlış veya Doğru olarak ayarlanan anahtar | Kaydedildi | MFA ile kimlik doğrulaması yapılmalıdır |
+| Anahtar yok | Kaydedilmedi | MFA sınaması başarısız |
+| Değer true olarak ayarlandı/ayarlanmadı | Kaydedilmedi | MFA sınaması başarısız |
+| Anahtar false olarak ayarlandı | Kaydedilmedi | MFA olmadan kimlik doğrulama |
+| Anahtar yanlış veya doğru olarak ayarlandı | Kaydedildi | MFA ile kimlik doğrulaması yapılmalıdır |
 
-### <a name="integrate-with-active-directory-federation-services"></a>Aktif Dizin Federasyon Hizmetleri ile entegre
+### <a name="integrate-with-active-directory-federation-services"></a>Active Directory Federasyon Hizmetleri (AD FS) ile tümleştirin
 
-Kuruluşunuz Azure AD ile bıkmışsa, Hem şirket içinde hem de bulutta [AD FS kaynaklarını güvence altına almak için Azure Çok Faktörlü Kimlik Doğrulaması'nı](multi-factor-authentication-get-started-adfs.md)kullanabilirsiniz. Azure MFA, parolaları azaltmanızı ve kimlik doğrulaması için daha güvenli bir yol sağlamanızı sağlar. Windows Server 2016'dan başlayarak, artık birincil kimlik doğrulaması için Azure MFA'yı yapılandırabilirsiniz.
+Kuruluşunuz Azure AD ile federe ise, Azure Multi-Factor Authentication kullanarak hem şirket içindeki hem de buluttaki [AD FS kaynakları güvenli hale](multi-factor-authentication-get-started-adfs.md)getirebilirsiniz. Azure MFA, parolaları azaltmanıza ve kimlik doğrulaması için daha güvenli bir yol sağlamanıza olanak sağlar. Windows Server 2016 ' den itibaren, artık birincil kimlik doğrulaması için Azure MFA 'yı yapılandırabilirsiniz.
 
-Windows Server 2012 R2'deki AD FS'nin aksine, AD FS 2016 Azure MFA bağdaştırıcısı doğrudan Azure AD ile tümleşir ve şirket içi Azure MFA sunucusu gerektirmez. Azure MFA bağdaştırıcısı Windows Server 2016'da yerleşiktir ve ek yüklemeye gerek yoktur.
+Windows Server 2012 R2 'deki AD FS farklı olarak, AD FS 2016 Azure MFA bağdaştırıcısı doğrudan Azure AD ile tümleşir ve şirket içi Azure MFA sunucusu gerektirmez. Azure MFA bağdaştırıcısı, Windows Server 2016 ' de yerleşik olarak bulunur ve ek bir yüklemeye gerek yoktur.
 
-AD FS 2016 ile Azure MFA kullanırken ve hedef uygulama Koşullu Erişim ilkesine tabiyken, başka hususlar da vardır:
+Azure MFA AD FS 2016 ile kullanılırken ve hedef uygulama koşullu erişim ilkesine tabidir, ek hususlar vardır:
 
-* Koşullu Erişim, uygulama Azure AD'ye güvenen bir taraf olduğunda, AD FS 2016 veya daha yenisiyle befek olarak kullanılabilir.
-* Koşullu Erişim, uygulama AD FS 2016 veya AD FS 2019'un bağlı bir tarafı olduğunda ve AD FS 2016 veya AD FS 2019 ile yönetildiğinde veya federated olduğunda kullanılamaz.
-* AD FS 2016 veya AD FS 2019 birincil kimlik doğrulama yöntemi olarak Azure MFA'yı kullanacak şekilde yapılandırıldığında Koşullu Erişim de kullanılamaz.
+* Uygulama Azure AD 'ye bağlı olan bir taraf olan AD FS 2016 veya daha yeni bir sürümü ile federe olduğunda koşullu erişim kullanılabilir.
+* Uygulama bir bağlı olan taraf AD FS 2016 veya 2019 AD FS ve AD FS 2016 veya AD FS 2019 ile yönetilmiyorsa koşullu erişim kullanılamaz.
+* AD FS 2016 veya AD FS 2019, birincil kimlik doğrulama yöntemi olarak Azure MFA kullanacak şekilde yapılandırıldığında koşullu erişim de kullanılamaz.
 
-#### <a name="ad-fs-logging"></a>AD FS günlüğü
+#### <a name="ad-fs-logging"></a>Günlüğe kaydetme AD FS
 
-Standart AD FS 2016 ve 2019 oturum açma hem Windows Güvenlik Günlüğü ve AD FS Yönetici günlüğü, kimlik doğrulama istekleri ve bunların başarı veya başarısızlık hakkında bilgi içerir. Bu olaylardaki olay günlüğü verileri Azure MFA kullanılıp kullanılmadığını gösterir. Örneğin, bir AD FS Auditing Event ID 1200 şunları içerebilir:
+Hem Windows Güvenlik günlüğünde hem de AD FS Yönetim günlüğünde standart AD FS 2016 ve 2019 günlük kaydı, kimlik doğrulama istekleri ve bunların başarısı veya başarısızlığı hakkında bilgiler içerir. Bu olaylar içindeki olay günlüğü verileri, Azure MFA 'nın kullanılıp kullanılmadığını gösterir. Örneğin, AD FS bir denetim olay KIMLIĞI 1200 şunları içerebilir:
 
 ```
 <MfaPerformed>true</MfaPerformed>
@@ -320,51 +320,51 @@ Standart AD FS 2016 ve 2019 oturum açma hem Windows Güvenlik Günlüğü ve AD
 
 #### <a name="renew-and-manage-certificates"></a>Sertifikaları yenileme ve yönetme
 
-Her AD FS sunucusunda, yerel bilgisayarı My Store'da, sertifikanın son kullanma tarihini içeren OU=Microsoft AD FS Azure MFA adlı kendi imzalanmış azure MFA sertifikası olacaktır. Son kullanma tarihini belirlemek için her AD FS sunucusunda bu sertifikanın geçerlilik süresini denetleyin.
+Her bir AD FS sunucusunda, yerel bilgisayar My deposunda, sertifika sona erme tarihini içeren OU = Microsoft AD FS Azure MFA adlı kendinden imzalı bir Azure MFA sertifikası olacaktır. Son kullanma tarihini öğrenmek için, her bir AD FS sunucuda bu sertifikanın geçerlilik süresini denetleyin.
 
-Sertifikalarınızın geçerlilik süresi sona ermek üzereyse, [her AD FS sunucusunda yeni bir MFA sertifikası oluşturun ve doğrulayın.](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers)
+Sertifikalarınızın geçerlilik süresi dolmak üzere ise, [her bir AD FS sunucuda yeni BIR MFA sertifikası oluşturun ve doğrulayın](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers).
 
-Aşağıdaki kılavuz, AD FS sunucularınızdaki Azure MFA sertifikalarını nasıl yöneteceğimize ayrıntılı olarak açıklanmaktadır. AD FS'yi Azure MFA ile yapılandırdığınızda, `New-AdfsAzureMfaTenantCertificate` PowerShell cmdlet üzerinden oluşturulan sertifikalar iki yıl süreyle geçerlidir. Yenilenen sertifikaları, MFA hizmetindeki geçersiz kesintiler için sona ermeden önce yenileyin ve kurutun.
+Aşağıdaki kılavuzda, AD FS sunucularınızda Azure MFA sertifikalarını yönetme ayrıntıları verilmiştir. Azure MFA ile AD FS yapılandırdığınızda, `New-AdfsAzureMfaTenantCertificate` PowerShell cmdlet 'i aracılığıyla oluşturulan sertifikalar iki yıl için geçerlidir. MFA hizmetindeki ovoid kesintilerini sona ermeden önce yenilenen sertifikaları yenileyip yükler.
 
 ## <a name="implement-your-plan"></a>Planınızı uygulayın
 
-Çözümünüzü planladığınıza göre, aşağıdaki adımları izleyerek uygulayabilirsiniz:
+Çözümünüzü planladığınıza göre aşağıdaki adımları izleyerek uygulamasını uygulayabilirsiniz:
 
-1. Gerekli ön koşulları yerine getirin
-   1. Tüm karma senaryolar için [Azure AD Connect'i](../hybrid/whatis-hybrid-identity.md) dağıtma
-   1. Bulut erişimi için yayınlanan şirket içi uygulamalar için [Azure AD Uygulama Proxy'yi](../manage-apps/application-proxy.md) dağıtma
-   1. Herhangi bir RADIUS kimlik doğrulaması için [NPS'yi](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) dağıtma
-   1. Kullanıcıların, modern kimlik doğrulama özelliği ne olacaksa Microsoft Office'in desteklenen sürümlerine yükselttiklerinden emin olun
-1. Seçilen [kimlik doğrulama yöntemlerini](#choose-verification-options) yapılandırma
-1. [Adlandırılmış ağ konumlarınızı](../conditional-access/location-condition.md#named-locations) tanımlama
-1. MFA'yı kullanıma başlatmak için grupları seçin.
-1. [Koşullu Erişim ilkelerinizi](#create-conditional-access-policy) yapılandırma
-1. MFA kayıt politikanızı yapılandırın
-   1. [Kombine MFA ve SSPR](howto-registration-mfa-sspr-combined.md)
-   1. [Kimlik Koruması](../identity-protection/howto-mfa-policy.md) ile
-1. Kullanıcı iletişimi gönderin ve kullanıcıların[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
-1. [Kimlerin kaydolduğunu takip edin](#identify-non-registered-users)
+1. Gerekli önkoşulları karşılayın
+   1. Karma senaryolar için [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) dağıtma
+   1. Bulut erişimi için yayımlanan şirket içi uygulamalarda [Azure AD uygulama ara sunucusu](../manage-apps/application-proxy.md) dağıtma
+   1. Herhangi bir RADIUS kimlik doğrulaması için [NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) dağıtma
+   1. Kullanıcıların modern kimlik doğrulaması etkinken Microsoft Office desteklenen sürümlerine yükseltildiğinden emin olun
+1. Seçilen [kimlik doğrulama yöntemlerini](#choose-verification-options) Yapılandır
+1. [Adlandırılmış ağ konumlarınızı](../conditional-access/location-condition.md#named-locations) tanımlayın
+1. MFA kullanıma sunulmaya başlamak için grupları seçin.
+1. [Koşullu erişim ilkelerinizi](#create-conditional-access-policy) yapılandırın
+1. MFA kayıt ilkenizi yapılandırma
+   1. [Birleşik MFA ve SSPR](howto-registration-mfa-sspr-combined.md)
+   1. [Kimlik koruması](../identity-protection/howto-mfa-policy.md) ile
+1. Kullanıcı iletişimleri gönder ve kaydolmalarını kullanıcılara al[https://aka.ms/mfasetup](https://aka.ms/mfasetup)
+1. [Kimin kaydolduğunu takip edin](#identify-non-registered-users)
 
 > [!TIP]
-> Devlet bulutu kullanıcıları[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
+> Kamu Bulutu kullanıcıları şurada kaydedebilir:[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup)
 
 ## <a name="manage-your-solution"></a>Çözümünüzü yönetin
 
-Azure MFA için raporlar
+Azure MFA raporları
 
-Azure Çok Faktörlü Kimlik Doğrulama, Azure portalı üzerinden raporlar sağlar:
+Azure Multi-Factor Authentication Azure portal aracılığıyla rapor sağlar:
 
 | Rapor | Konum | Açıklama |
 | --- | --- | --- |
-| Kullanım ve dolandırıcılık uyarıları | Azure REKLAM > Oturum Açma | Genel kullanım, kullanıcı özeti ve kullanıcı ayrıntıları hakkında bilgi sağlar; belirtilen tarih aralığında gönderilen dolandırıcılık uyarılarının geçmişi. |
+| Kullanım ve sahtekarlık uyarıları | Azure AD > oturum açma işlemleri | Genel kullanım, Kullanıcı Özeti ve kullanıcı ayrıntıları hakkında bilgi sağlar; Ayrıca, belirtilen tarih aralığı boyunca gönderilen sahtekarlık uyarılarının geçmişi. |
 
-## <a name="troubleshoot-mfa-issues"></a>Sorun giderme MFA sorunları
+## <a name="troubleshoot-mfa-issues"></a>MFA sorunlarını giderme
 
-Microsoft Destek Merkezi'ndeki [Sorun Giderme Azure Çok Faktörlü Kimlik Doğrulama makalesinde](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) Azure MFA ile ilgili sık karşılaşılan sorunlara yönelik çözümler bulun.
+Azure MFA ile ilgili sık karşılaşılan sorunların çözümlerini, Microsoft Desteği merkezindeki [azure Multi-Factor Authentication sorun giderme makalesinde](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues) bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Çok Faktörlü Kimlik Doğrulama'yı iş başında görmek için aşağıdaki öğreticiyi tamamlayın:
+Azure Multi-Factor Authentication 'yi eylemde görmek için aşağıdaki öğreticiyi doldurun:
 
 > [!div class="nextstepaction"]
 > [Azure Multi-Factor Authentication’ı etkinleştirme](tutorial-enable-azure-mfa.md)

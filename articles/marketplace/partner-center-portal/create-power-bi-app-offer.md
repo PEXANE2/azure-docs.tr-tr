@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 776311d6e6395cbe462f958bd8685fa0259e1fc2
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: dc036ae3cba6aa4d3a689562afffb991fadc8c0a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674195"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867591"
 ---
 # <a name="create-a-power-bi-app"></a>Power BI uygulaması oluşturma
 
@@ -55,7 +55,7 @@ Bu iki değeri girdikten sonra Teklif'e genel bakış sayfasına devam etmek iç
 
 **Teklife genel bakış** sayfası, bu teklifi yayımlamak için gereken adımların (hem tamamlanmış hem de yaklaşan) ve her adımın tamamlanmasının ne kadar sürmesi gerektiğinin görsel bir gösterimini gösterir.
 
-Yaptığınız seçime bağlı olarak bu teklifle ilgili işlemleri gerçekleştirmek için bağlantılar içerir. Örnek:
+Yaptığınız seçime bağlı olarak bu teklifle ilgili işlemleri gerçekleştirmek için bağlantılar içerir. Örneğin:
 
 - Teklif taslaksa - [Taslak teklifi sil](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
 - Teklif canlıise - [Teklifi satmayı bırakın](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
@@ -128,7 +128,7 @@ En az bir ve en fazla üç kategori seçin. Bu kategoriler, teklifinizi uygun pa
 
 ### <a name="legal"></a>Yasal Bildirim
 
-#### <a name="terms-and-conditions"></a>Hüküm ve koşullar
+#### <a name="terms-and-conditions"></a>hüküm ve koşullar
 
 Kendi özel hüküm ve koşullarınızı sağlamak **için, Şartlar ve Koşullar** kutusuna en fazla 10.000 karakter girin. Hüküm ve koşullarınız daha uzun bir açıklama gerektiriyorsa, bulunabilecekleri yerlere tek bir web bağlantısı girin. Bu aktif bir bağlantı olarak müşterilere görüntülenir.
 
@@ -221,6 +221,9 @@ PDF formatında en az bir ve en fazla üç ilgili pazarlama belgesi sağlayın. 
 ### <a name="marketplace-images"></a>Pazar yeri görüntüleri
 
 Teklifinizle birlikte kullanılacak logolar ve resimler sağlayın. Tüm görüntüler .png formatında olmalıdır. Bulanık görüntüler reddedilir.
+
+>[!Note]
+>Dosya yükleme sorunu yaşıyorsanız, yerel ağınızın İş Ortağı https://upload.xboxlive.com Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="store-logos"></a>Mağaza logoları
 

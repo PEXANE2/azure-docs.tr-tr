@@ -1,6 +1,6 @@
 ---
-title: Bir web uygulamasından web api arama - Microsoft kimlik platformu | Azure
-description: Web API'larını çağıran bir web uygulaması oluşturmayı öğrenin (korumalı web API'sini çağırma)
+title: Web uygulamasından Web API 'si çağırma-Microsoft Identity platform | Mavisi
+description: Web API 'Lerini çağıran bir Web uygulaması oluşturmayı öğrenin (korumalı bir Web API 'SI çağırma)
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,20 +11,24 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c07241345a724e4489fb137cfe862cde6518b318
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 84df33137566445015848655cfecb87ba67ef123
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81868728"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181690"
 ---
-# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web API'lerini çağıran bir web uygulaması: Web API'sını arayın
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web API 'Leri çağıran bir Web uygulaması: Web API 'SI çağırma
 
-Artık bir belirteç var, korumalı web API arayabilirsiniz.
+Artık bir belirteciniz olduğuna göre, korumalı bir Web API 'SI çağırabilirsiniz.
+
+## <a name="call-a-protected-web-api"></a>Korumalı bir Web API 'SI çağırma
+
+Korumalı bir Web API 'SI çağırmak dile ve tercih ettiğiniz çerçeveye bağlıdır:
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Burada eylem için basitleştirilmiş `HomeController`kod. Bu kod, Microsoft Graph'ı aramak için bir belirteç alır. Microsoft Graph'ın REST API olarak nasıl adlandırılabildiğini göstermek için kod eklendi. Microsoft Graph API'nin URL'si appsettings.json dosyasında sağlanır `webOptions`ve aşağıdaki adlı bir değişkende okunur:
+Eylemi için basitleştirilmiş kod aşağıda verilmiştir `HomeController`. Bu kod, Microsoft Graph çağırmak için bir belirteç alır. Microsoft Graph REST API olarak nasıl çağrılacağını göstermek için kod eklenmiştir. Microsoft Graph API URL 'SI appSettings. json dosyasında verilmiştir ve adlı `webOptions`bir değişkende okundu:
 
 ```json
 {
@@ -40,48 +44,33 @@ Burada eylem için basitleştirilmiş `HomeController`kod. Bu kod, Microsoft Gra
 ```csharp
 public async Task<IActionResult> Profile()
 {
- var application = BuildConfidentialClientApplication(HttpContext, HttpContext.User);
- string accountIdentifier = claimsPrincipal.GetMsalAccountId();
- string loginHint = claimsPrincipal.GetLoginHint();
+ // Acquire the access token.
+ string[] scopes = new string[]{"user.read"};
+ string accessToken = await tokenAcquisition.GetAccessTokenForUserAsync(scopes);
 
- // Get the account.
- IAccount account = await application.GetAccountAsync(accountIdentifier);
+ // Use the access token to call a protected web API.
+ HttpClient client = new HttpClient();
+ client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+ 
+  var response = await httpClient.GetAsync($"{webOptions.GraphApiUrl}/beta/me");
 
- // Special case for guest users, because the guest ID / tenant ID are not surfaced.
- if (account == null)
- {
-  var accounts = await application.GetAccountsAsync();
-  account = accounts.FirstOrDefault(a => a.Username == loginHint);
- }
+  if (response.StatusCode == HttpStatusCode.OK)
+  {
+   var content = await response.Content.ReadAsStringAsync();
 
- AuthenticationResult result;
- result = await application.AcquireTokenSilent(new []{"user.read"}, account)
-                            .ExecuteAsync();
- var accessToken = result.AccessToken;
+   dynamic me = JsonConvert.DeserializeObject(content);
+   return me;
+  }
 
- // Calls the web API (Microsoft Graph in this case).
- HttpClient httpClient = new HttpClient();
- httpClient.DefaultRequestHeaders.Authorization =
-     new AuthenticationHeaderValue(Constants.BearerAuthorizationScheme,accessToken);
- var response = await httpClient.GetAsync($"{webOptions.GraphApiUrl}/beta/me");
-
- if (response.StatusCode == HttpStatusCode.OK)
- {
-  var content = await response.Content.ReadAsStringAsync();
-
-  dynamic me = JsonConvert.DeserializeObject(content);
-  return me;
- }
-
- ViewData["Me"] = me;
- return View();
+  ViewData["Me"] = me;
+  return View();
 }
 ```
 
 > [!NOTE]
-> Herhangi bir web API aramak için aynı ilkeyi kullanabilirsiniz.
+> Herhangi bir Web API 'sini çağırmak için aynı prensibi kullanabilirsiniz.
 >
-> Azure web API'lerinin çoğu, API'yi aramayı kolaylaştıran bir SDK sağlar. Bu, Microsoft Graph için de geçerlidir. Bir sonraki makalede, API kullanımını gösteren bir öğreticiyi nerede bulacağınızı öğreneceksiniz.
+> Çoğu Azure Web API 'SI, API 'nin çağrılmasını kolaylaştıran bir SDK sağlar. Bu aynı zamanda Microsoft Graph de geçerlidir. Sonraki makalede, API kullanımını gösteren bir öğreticiyi nerede bulacağınızı öğreneceksiniz.
 
 # <a name="java"></a>[Java](#tab/java)
 

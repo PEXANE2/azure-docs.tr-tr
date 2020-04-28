@@ -1,68 +1,73 @@
 ---
-title: Otomasyon hesabı oluşturmak için Azure Kaynak Yöneticisi şablonlarını kullanma | Microsoft Dokümanlar
-description: Bir Azure Otomasyon hesabı oluşturmak için bir Azure Kaynak Yöneticisi şablonu kullanabilirsiniz.
+title: Otomasyon hesabı oluşturmak için Azure Resource Manager şablonları kullanma | Microsoft Docs
+description: Azure Otomasyonu hesabı oluşturmak için bir Azure Resource Manager şablonu kullanabilirsiniz.
 ms.service: automation
 ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/15/2020
-ms.openlocfilehash: efe51fbada8ac70b24c16a5c7c1e0e91879e5e9f
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.date: 04/24/2020
+ms.openlocfilehash: 431b89df0ce06736a2e76e58797ded65751bb404
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81618691"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82165833"
 ---
-# <a name="create-automation-account-using-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanarak Otomasyon hesabı oluşturma
+# <a name="create-automation-account-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Otomasyon hesabı oluşturma
 
-Kaynak grubunuzda bir Azure Otomasyon hesabı oluşturmak için [Azure Kaynak Yöneticisi şablonlarını](../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Bu makalede, aşağıdakileri otomatikleştiren bir örnek şablon uymaktadır:
+Kaynak grubunuzda Azure Otomasyonu hesabı oluşturmak için [Azure Resource Manager şablonlarını](../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Bu makale, aşağıdakileri otomatikleştiren örnek bir şablon sağlar:
 
-* Azure Monitörü Log Analytics çalışma alanı oluşturulması.
-* Azure Otomasyon hesabı oluşturma.
+* Azure Izleyici Log Analytics çalışma alanı oluşturma.
+* Azure Otomasyonu hesabı oluşturma.
 * Otomasyon hesabını Log Analytics çalışma alanına bağlar.
 
-Şablon, bir veya daha fazla Azure veya Azure olmayan VM'lerin veya çözümlerin biniş kısmını otomatikleştirmez. 
+Şablon bir veya daha fazla Azure veya Azure dışı VM veya çözüm eklemeyi otomatik hale getirir. 
 
 >[!NOTE]
->Azure Kaynak Yöneticisi şablonu kullanırken Otomasyon Çalıştır Hesabı'nın oluşturulması desteklenmez. Portaldan veya PowerShell'den el ile Çalıştır [Hesabı](manage-runas-account.md)oluşturmak için bkz.
+>Azure Resource Manager şablonu kullanılırken Otomasyon farklı çalıştır hesabının oluşturulması desteklenmez. Portaldan veya PowerShell ile el ile bir farklı çalıştır hesabı oluşturmak için bkz. [Farklı Çalıştır hesabını yönetme](manage-runas-account.md).
 
 ## <a name="api-versions"></a>API sürümleri
 
-Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listeleneb.r.a.
+Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listelenmektedir.
 
 | Kaynak | Kaynak türü | API sürümü |
 |:---|:---|:---|
-| Çalışma alanı | çalışma alanı | 2017-03-15-önizleme |
+| Çalışma alanı | çalışma alanı | 2017-03-15-Önizleme |
 | Otomasyon hesabı | automation | 2015-10-31 | 
 
 ## <a name="before-using-the-template"></a>Şablonu kullanmadan önce
 
-PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure PowerShell Az modülü gerekir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir. Azure PowerShell ile dağıtım, [Yeni-AzResourceGroupDeployment'ı](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanır.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale Azure PowerShell az modülünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir. Azure PowerShell, dağıtım [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanır.
 
-CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure CLI sürüm 2.1.0 veya sonraki sürümlerini çalıştırdığınız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Azure CLI ile bu dağıtım [az grup dağıtımı oluşturma yı](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)kullanır. 
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.1.0 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Azure CLı ile bu dağıtım [az Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)kullanır. 
 
-JSON şablonu, aşağıdakiler için sizden istenmesi için yapılandırılmıştır:
+JSON şablonu şunları isteyecek şekilde yapılandırılır:
 
 * Çalışma alanının adı
-* Çalışma alanını oluşturacak bölge
+* Çalışma alanının oluşturulacağı bölge
 * Otomasyon hesabının adı
-* Hesap oluşturmak için bölge
-
-JSON şablonu, ortamınızda standart yapılandırma olarak kullanılabilecek diğer parametreler için varsayılan bir değer belirtir. Kuruluşunuzdaki paylaşılan erişim için şablonu bir Azure depolama hesabında depolayabilirsiniz. Şablonlarla çalışma hakkında daha fazla bilgi için [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynakları dağıt'a](../azure-resource-manager/templates/deploy-cli.md)bakın.
+* Hesabın oluşturulacağı bölge
 
 Şablondaki aşağıdaki parametreler, Log Analytics çalışma alanı için varsayılan bir değerle ayarlanır:
 
-* sku - Nisan 2018 fiyatlandırma modelinde yayımlanan yeni GB Başına fiyatlandırma katmanı için varsayılan
-* veri saklama - varsayılan otuz gün
-* kapasite rezervasyonu - varsayılan olarak 100 GB
+* SKU-Nisan 2018 fiyatlandırma modelinde yayınlanan yeni GB başına fiyatlandırma katmanına varsayılan olarak sahiptir
+* veri saklama-varsayılan olarak otuz gün
+* Kapasite ayırma-varsayılan olarak 100 GB olur
 
 >[!WARNING]
->Yeni Nisan 2018 fiyatlandırma modeline dahil olan bir abonelikte Log Analytics çalışma alanı oluşturmak veya yapılandırmak ise, tek geçerli Log Analytics fiyatlandırma katmanı **PerGB2018'dir.**
+>Yeni Nisan 2018 fiyatlandırma modelini kabul eden bir abonelikte Log Analytics çalışma alanı oluşturuyor veya yapılandırıyorsanız, geçerli Log Analytics fiyatlandırma katmanı yalnızca **PerGB2018**olur.
 >
 
->[!NOTE]
->Bu şablonu kullanmadan önce, erişim denetim modu, fiyatlandırma katmanı, bekletme ve kapasite rezervasyon düzeyi gibi çalışma alanı yapılandırma seçeneklerini tam olarak anlamak için [ek ayrıntıları](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) gözden geçirin. Azure Monitor günlüklerinde yeniyseniz ve daha önce bir çalışma alanı dağıtmadıysanız, erişim denetimi hakkında bilgi edinmek için [çalışma alanı tasarım](../azure-monitor/platform/design-logs-deployment.md) kılavuzunu ve kuruluşunuz için önerdiğimiz tasarım uygulama stratejilerinin anlaşılmasını gözden geçirmelisiniz.
+JSON şablonu, ortamınızda standart bir yapılandırma olarak kullanılacak diğer parametreler için varsayılan bir değer belirtir. Şablonu kuruluşunuzda paylaşılan erişim için bir Azure depolama hesabında saklayabilirsiniz. Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynak dağıtma](../azure-resource-manager/templates/deploy-cli.md).
+
+Yeni otomasyon hesabınıza bağlı bir Log Analytics çalışma alanı oluşturmaya, yapılandırmaya ve kullanmaya çalışırken hatalardan kaçınmak için, Azure Otomasyonu ve Azure Izleyici 'de yeni olan aşağıdaki yapılandırma ayrıntılarını anlamak önemlidir.
+
+* Erişim denetimi modu, fiyatlandırma katmanı, bekletme ve kapasite ayırma düzeyi gibi çalışma alanı yapılandırma seçeneklerini tam olarak anlamak için [ek ayrıntıları](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) gözden geçirin.
+
+* Log Analytics çalışma alanını ve aboneliğinizdeki Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklendiğinden, desteklenen bölgeleri satır içi olarak veya bir Parametreler dosyasında belirtmek için [çalışma alanı eşlemelerini](how-to/region-mappings.md) gözden geçirin.
+
+* Azure Izleyici günlükleri ile yeni bir çalışma alanı dağıtmadıysanız, erişim denetimi hakkında bilgi edinmek ve kuruluşunuz için önerdiğimiz tasarım uygulama stratejilerini anlamak için [çalışma alanı tasarım](../azure-monitor/platform/design-logs-deployment.md) kılavuzunu gözden geçirmeniz gerekir.
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
@@ -112,32 +117,6 @@ JSON şablonu, ortamınızda standart yapılandırma olarak kullanılabilecek di
         },
         "location": {
             "type": "string",
-            "allowedValues": [
-                "australiacentral",
-                "australiaeast",
-                "australiasoutheast",
-                "brazilsouth",
-                "canadacentral",
-                "centralindia",
-                "centralus",
-                "eastasia",
-                "eastus",
-                "eastus2",
-                "francecentral",
-                "japaneast",
-                "koreacentral",
-                "northcentralus",
-                "northeurope",
-                "southafricanorth",
-                "southcentralus",
-                "southeastasia",
-                "uksouth",
-                "ukwest",
-                "westcentralus",
-                "westeurope",
-                "westus",
-                "westus2"
-            ],
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
@@ -307,11 +286,11 @@ JSON şablonu, ortamınızda standart yapılandırma olarak kullanılabilecek di
     }
     ```
 
-2. Gereksinimlerinizi karşılamak için şablonu edin. Parametreleri satır değerleri olarak geçirmek yerine Kaynak [Yöneticisi parametreleri dosyası](../azure-resource-manager/templates/parameter-files.md) oluşturmayı düşünün.
+2. Gereksinimlerinizi karşılayacak şekilde şablonu düzenleyin. Parametreleri satır içi değerler olarak geçirmek yerine bir [Kaynak Yöneticisi Parameters dosyası](../azure-resource-manager/templates/parameter-files.md) oluşturmayı düşünün.
 
-3. Bu dosyayı deployAzAutomationAccttemplate.json olarak yerel bir klasöre kaydedin.
+3. Bu dosyayı yerel bir klasöre deployAzAutomationAccttemplate. JSON olarak kaydedin.
 
-4. Bu şablonu dağıtmaya hazırsınız. PowerShell veya Azure CLI'yi kullanabilirsiniz. Bir çalışma alanı ve Otomasyon hesap adı istendiğinde, tüm Azure aboneliklerinde genel olarak benzersiz bir ad sağlayın.
+4. Bu şablonu dağıtmaya hazırsınız. PowerShell veya Azure CLı kullanabilirsiniz. Bir çalışma alanı ve Otomasyon hesabı adı istendiğinde, tüm Azure abonelikleri genelinde genel olarak benzersiz bir ad sağlayın.
 
     **PowerShell**
 
@@ -325,10 +304,10 @@ JSON şablonu, ortamınızda standart yapılandırma olarak kullanılabilecek di
     az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deployAzAutomationAccttemplate.json
     ```
 
-    Dağıtımın tamamlanması birkaç dakika sürebilir. Bittiğinde, sonucu içeren aşağıdakine benzer bir ileti görürsünüz:
+    Dağıtımın tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonucu içeren aşağıdakine benzer bir ileti görürsünüz:
 
     ![Dağıtım tamamlandığında örnek sonuç](media/automation-create-account-template/template-output.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir Otomasyon hesabınız olduğuna göre, runbook'lar oluşturabilir ve el ile işlemleri otomatikleştirebilirsiniz.
+Artık bir Otomasyon hesabınız olduğuna göre, runbook 'lar oluşturabilir ve el ile işlemleri otomatikleştirebilirsiniz.

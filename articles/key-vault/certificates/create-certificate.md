@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 21bcaf8636638153ad5e5659ef3e1bff0631d9b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81430961"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866249"
 ---
 # <a name="certificate-creation-methods"></a>Sertifika oluşturma yöntemleri
 
@@ -80,10 +80,10 @@ Adreslenebilir anahtar ve gizli KV sertifika öznitelikleri kendi öznitelikleri
 ## <a name="partnered-ca-providers"></a>Ortak CA Sağlayıcıları
 Sertifika oluşturma el ile veya bir "Self" veren kullanılarak tamamlanabilir. Key Vault, sertifikaların oluşturulmasını kolaylaştırmak için belirli ihraççı sağlayıcılarla da iş ortağıdır. Bu ortak ihraççı sağlayıcılarla birlikte anahtar kasası için aşağıdaki sertifika türleri sipariş edilebilir.  
 
-|Sağlayıcı|Sertifika türü|  
-|--------------|----------------------|  
-|DigiCert|Key Vault DigiCert ile OV veya EV SSL sertifikaları sunuyor|
-|Globalsign|Key Vault GlobalSign ile OV veya EV SSL sertifikaları sunar|
+|Sağlayıcı|Sertifika türü|Yapılandırma kurulumu  
+|--------------|----------------------|------------------|  
+|DigiCert|Key Vault DigiCert ile OV veya EV SSL sertifikaları sunuyor| [Entegrasyon Rehberi](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
+|Globalsign|Key Vault GlobalSign ile OV veya EV SSL sertifikaları sunar| [Entegrasyon Rehberi](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  Sertifika veren kuruluş, Azure Key Vault'ta (KV) Sertifika Veren kaynağı olarak temsil edilen bir varlıktır. Bir KV sertifikasının kaynağı hakkında bilgi sağlamak için kullanılır; verenin adı, sağlayıcı, kimlik bilgileri ve diğer yönetim ayrıntıları.
 

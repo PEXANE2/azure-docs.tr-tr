@@ -1,375 +1,375 @@
 ---
-title: Azure Monitor veri modelini kaydeder
-description: Bu makalede, Azure Yedekleme verileri için Azure Monitor Log Analytics veri modeli ayrıntıları hakkında bilgi edinin.
+title: Azure Izleyici günlükleri veri modeli
+description: Bu makalede, Azure Backup verileri için Azure Izleyici Log Analytics veri modeli ayrıntıları hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: d14634c5e317682462e77e0549f064c75059f15c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72484923bc94e197cd195c0192b53feb3ef457ce
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586385"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183696"
 ---
-# <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Yedekleme verileri için Günlük Analizi veri modeli
+# <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup verileri için Log Analytics veri modeli
 
-Log Analytics'ten özel uyarılar oluşturmak için Günlük Analizi veri modelini kullanın.
+Log Analytics özel uyarılar oluşturmak için Log Analytics veri modelini kullanın.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 > [!NOTE]
 >
-> Bu veri modeli, Log Analytics'e (LA) tanılama olayları göndermek için Azure Tanılama Modu'na başvurur. Yeni Kaynak Özel Modu'nun veri modelini öğrenmek için aşağıdaki makaleye bakabilirsiniz: [Azure Yedekleme Tanılama Etkinlikleri için Veri Modeli](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
+> Bu veri modeli, Log Analytics (LA) öğesine tanılama olayları gönderme Azure Tanılama moduna başvurdadır. Yeni kaynağa özgü moda yönelik veri modelini öğrenmek için şu makaleye başvurabilirsiniz: [Azure Backup tanılama olayları Için veri modeli](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
-## <a name="using-azure-backup-data-model"></a>Azure Yedekleme veri modelini kullanma
+## <a name="using-azure-backup-data-model"></a>Azure Backup veri modelini kullanma
 
-Gereksinimlerinize göre görseller, özel sorgular ve pano oluşturmak için veri modelinin bir parçası olarak sağlanan aşağıdaki alanları kullanabilirsiniz.
+Gereksinimlerinize göre görseller, özel sorgular ve panolar oluşturmak için veri modelinin bir parçası olarak sunulan aşağıdaki alanları kullanabilirsiniz.
 
 ### <a name="alert"></a>Uyarı
 
-Bu tablo, uyarı ile ilgili alanlar hakkında ayrıntılı bilgi sağlar.
+Bu tablo, uyarı ile ilgili alanlarla ilgili ayrıntıları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| AlertUniqueId_s |Metin |Oluşturulan uyarının benzersiz tanımlayıcısı |
-| AlertType_s |Metin |Uyarı türü, örneğin, Yedekleme |
-| AlertStatus_s |Metin |Uyarının durumu, örneğin, Etkin |
+| AlertUniqueId_s |Metin |Oluşturulan uyarının benzersiz tanıtıcısı |
+| AlertType_s |Metin |Uyarının türü, örneğin, yedekleme |
+| AlertStatus_s |Metin |Uyarının durumu, örneğin, etkin |
 | AlertOccurrenceDateTime_s |Tarih/Saat |Uyarının oluşturulduğu tarih ve saat |
-| AlertSeverity_s |Metin |Uyarının önem derecesi, örneğin, Kritik |
-|AlertTimeToResolveInMinutes_s    | Sayı        |Bir uyarıyı çözmek için zaman alınır. Etkin uyarılar için boş.         |
-|AlertConsolidationStatus_s   |Metin         |Uyarının birleştirilmiş bir uyarı olup olmadığını belirleme         |
-|CountOfAlertsConsolidated_s     |Sayı         |Birleştirilmiş bir uyarıysa birleştirilmiş uyarı sayısı          |
-|AlertRaisedOn_s     |Metin         |Uyarının yükseltildiği varlık türü         |
-|AlertCode_s     |Metin         |Bir uyarı türünü benzersiz olarak tanımlamak için kod         |
-|RecommendedAction_s   |Metin         |Uyarıyı gidermek için önerilen eylem         |
-| EventName_s |Metin |Olayın adı. Her Zaman AzureBackupCentralReport |
+| AlertSeverity_s |Metin |Uyarının önem derecesi, örneğin, kritik |
+|AlertTimeToResolveInMinutes_s    | Sayı        |Bir uyarının çözülmesi için geçen süre. Etkin uyarılar için boş.         |
+|AlertConsolidationStatus_s   |Metin         |Uyarının birleştirilmiş bir uyarı olup olmadığını tanımla         |
+|CountOfAlertsConsolidated_s     |Sayı         |Birleştirilmiş bir uyarıda birleştirilmiş uyarı sayısı          |
+|AlertRaisedOn_s     |Metin         |Uyarının üzerinde ortaya çıkarılan varlık türü         |
+|AlertCode_s     |Metin         |Uyarı türünü benzersiz şekilde tanımlamak için kod         |
+|RecommendedAction_s   |Metin         |Uyarıyı çözümlemek için önerilen eylem         |
+| EventName_s |Metin |Olayın adı. Always AzureBackupCentralReport |
 | BackupItemUniqueId_s |Metin |Uyarıyla ilişkili yedekleme öğesinin benzersiz tanımlayıcısı |
-| SchemaVersion_s |Metin |Şemanın geçerli sürümü, örneğin **V2** |
-| State_s |Metin |Uyarı nesnesinin geçerli durumu, örneğin, Etkin, Silinmiş |
-| BackupManagementType_s |Metin |Yedekleme gerçekleştirmek için sağlayıcı türü, örneğin, IaaSVM, FileFolder hangi bu uyarı ait |
-| ThrottledRequests |Metin |Geçerli işlemin adı, örneğin, Uyarı |
-| Kategori |Metin |Azure Monitor günlüklerine itilen tanılama verileri kategorisi. Her Zaman AzureBackupReport |
-| Kaynak |Metin |Bu, verilerin toplandığı kaynaktır, Kurtarma Hizmetleri kasa adını gösterir |
-| ProtectedContainerUniqueId_s |Metin |Uyarıyla ilişkili korumalı sunucunun benzersiz tanımlayıcısı (V1'de ProtectedServerUniqueId_s)|
-| VaultUniqueId_s |Metin |Uyarı yla ilişkili korumalı kasanın benzersiz tanımlayıcısı |
-| SourceSystem |Metin |Geçerli verilerin kaynak sistemi - Azure |
-| ResourceId |Metin |Hangi verilerin toplandığı hakkında kaynak için benzersiz tanımlayıcı. Örneğin, Kurtarma Hizmetleri kasa kaynak kimliği |
-| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (ör. Kurtarma Hizmetleri kasası) verilerin toplandığı |
-| ResourceGroup |Metin |Kaynağın kaynak grubu (ör. Kurtarma Hizmetleri kasası) verilerin toplandığı |
-| ResourceProvider |Metin |Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft.RecoveryServices |
-| ResourceType |Metin |Verilerin toplandığı kaynak türü. Örneğin, Vaults |
+| SchemaVersion_s |Metin |Şemanın geçerli sürümü, örneğin **v2** |
+| State_s |Metin |Uyarı nesnesinin geçerli durumu, örneğin, etkin, silindi |
+| BackupManagementType_s |Metin |Yedekleme gerçekleştirmek için sağlayıcı türü, örneğin, bu uyarının ait olduğu ıaasvm, FileFolder |
+| ThrottledRequests |Metin |Geçerli işlemin adı, örneğin, uyarı |
+| Kategori |Metin |Azure Izleyici günlüklerine gönderilen tanılama verileri kategorisi. Always AzureBackupReport |
+| Kaynak |Metin |Bu, verilerin toplandığı kaynaktır, kurtarma hizmetleri kasasının adını gösterir |
+| ProtectedContainerUniqueId_s |Metin |Uyarıyla ilişkili korumalı sunucunun benzersiz tanıtıcısı (v1 'de ProtectedServerUniqueId_s)|
+| VaultUniqueId_s |Metin |Uyarıyla ilişkili korumalı kasasının benzersiz tanıtıcısı |
+| SourceSystem |Metin |Geçerli verilerin kaynak sistemi-Azure |
+| ResourceId |Metin |Verilerin toplandığı kaynak için benzersiz tanımlayıcı. Örneğin, bir kurtarma hizmetleri Kasası kaynak KIMLIĞI |
+| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceGroup |Metin |Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceProvider |Metin |Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft. RecoveryServices |
+| ResourceType |Metin |Verilerin toplandığı kaynak türü. Örneğin, kasa |
 
-### <a name="backupitem"></a>Yedekleme Öğesi
+### <a name="backupitem"></a>Backupıtem
 
-Bu tablo, yedekleme öğesi ile ilgili alanlar hakkında ayrıntılı bilgi sağlar.
+Bu tablo, yedekleme öğesiyle ilgili alanlarla ilgili ayrıntıları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| EventName_s |Metin |Olayın adı. Her Zaman AzureBackupCentralReport |  
+| EventName_s |Metin |Olayın adı. Always AzureBackupCentralReport |  
 | BackupItemUniqueId_s |Metin |Yedekleme öğesinin benzersiz tanımlayıcısı |
-| BackupItemId_s |Metin |Yedekleme öğesinin tanımlayıcısı (Bu alan sadece v1 şeması içindir) |
-| BackupItemName_s |Metin |Yedek öğenin adı |
-| BackupItemFriendlyName_s |Metin |Yedekleme öğesinin dostu adı |
-| BackupItemType_s |Metin |Yedekleme öğesi türü, örneğin, VM, FileFolder |
-| BackupItemProtectionState_s |Metin |Yedekleme Öğesinin Koruma Durumu |
-| BackupItemAppVersion_s |Metin |Yedek öğenin uygulama sürümü |
-| ProtectionState_s |Metin |Yedek öğenin geçerli koruma durumu, örneğin, Korumalı, Koruma Durduruldu |
-| ProtectionGroupName_s |Metin | Koruma Grubunun adı Yedek Öğe, varsa SC DPM ve MABS için korunur|
-| SecondaryBackupProtectionState_s |Metin |Yedekleme öğesi için ikincil korumanın etkin olup olmadığı|
-| SchemaVersion_s |Metin |Şema sürümü, örneğin, **V2** |
-| State_s |Metin |Yedek öğe nesnesinin durumu, örneğin, Etkin, Silinmiş |
-| BackupManagementType_s |Metin |Yedekleme gerçekleştirmek için sağlayıcı türü, örneğin, IaaSVM, FileFolder hangi bu yedekleme öğesia ait |
-| ThrottledRequests |Metin |Operasyonun adı, örneğin, BackupItem |
-| Kategori |Metin |Azure Monitor günlüklerine itilen tanılama verileri kategorisi. Her Zaman AzureBackupReport |
-| Kaynak |Metin |Verilerin toplandığı kaynak, örneğin, Kurtarma Hizmetleri kasa adı |
-| SourceSystem |Metin |Geçerli verilerin kaynak sistemi - Azure |
-| ResourceId |Metin |Toplanan veriler için kaynak kimliği, örneğin, Kurtarma Hizmetleri kasa kaynak kimliği |
-| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (eski için. Toplama Hizmetleri kasası) toplanan veriler için |
-| ResourceGroup |Metin |Kaynağın kaynak grubu (eski için. Toplama Hizmetleri kasası) toplanan veriler için |
-| ResourceProvider |Metin |Toplanan veriler için kaynak sağlayıcısı , örneğin, Microsoft.RecoveryServices |
-| ResourceType |Metin |Toplanan veriler için kaynağın türü, örneğin, Vaults |
+| BackupItemId_s |Metin |Yedekleme öğesinin tanımlayıcısı (Bu alan yalnızca v1 şeması içindir) |
+| BackupItemName_s |Metin |Yedekleme öğesinin adı |
+| BackupItemFriendlyName_s |Metin |Yedekleme öğesinin kolay adı |
+| BackupItemType_s |Metin |Yedekleme öğesinin türü, örneğin, VM, dosya klasörü |
+| BackupItemProtectionState_s |Metin |Yedekleme öğesinin koruma durumu |
+| BackupItemAppVersion_s |Metin |Yedekleme öğesinin uygulama sürümü |
+| ProtectionState_s |Metin |Yedekleme öğesinin geçerli koruma durumu, örneğin korumalı, Protectiondurduruldu |
+| ProtectionGroupName_s |Metin | Yedekleme öğesinin korunan koruma grubunun adı, SC DPM ve varsa MABS için|
+| SecondaryBackupProtectionState_s |Metin |Yedekleme öğesi için ikincil korumanın etkinleştirilip etkinleştirilmediği|
+| SchemaVersion_s |Metin |Şemanın sürümü, örneğin, **v2** |
+| State_s |Metin |Yedekleme öğesi nesnesinin durumu, örneğin, etkin, silindi |
+| BackupManagementType_s |Metin |Yedekleme gerçekleştirmek için sağlayıcı türü, örneğin, bu yedekleme öğesinin ait olduğu ıaasvm, FileFolder |
+| ThrottledRequests |Metin |İşlemin adı, örneğin, Backupıtem |
+| Kategori |Metin |Azure Izleyici günlüklerine gönderilen tanılama verileri kategorisi. Always AzureBackupReport |
+| Kaynak |Metin |Verilerin toplandığı kaynak (örneğin, kurtarma hizmetleri Kasası adı) |
+| SourceSystem |Metin |Geçerli verilerin kaynak sistemi-Azure |
+| ResourceId |Metin |Toplanmakta olan verilerin kaynak KIMLIĞI, örneğin kurtarma hizmetleri Kasası kaynak KIMLIĞI |
+| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (örn. Toplanan veriler için kurtarma hizmetleri Kasası) |
+| ResourceGroup |Metin |Kaynağın kaynak grubu (örn. Toplanan veriler için kurtarma hizmetleri Kasası) |
+| ResourceProvider |Metin |Toplanmakta olan veriler için kaynak sağlayıcı, örneğin, Microsoft. RecoveryServices |
+| ResourceType |Metin |Toplanmakta olan veriler için kaynak türü, örneğin Kasakasaları |
 
 ### <a name="backupitemassociation"></a>BackupItemAssociation
 
-Bu tablo, çeşitli varlıklar ile yedekleme öğesi ilişkileri hakkında ayrıntıları sağlar.
+Bu tablo, çeşitli varlıklarla yedekleme öğesi ilişkilendirmeleri hakkında ayrıntılar sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| EventName_s |Metin |Bu alan bu olayın adını temsil eder, her zaman AzureBackupCentralReport |  
-| BackupItemUniqueId_s |Metin |Yedekleme öğesinin benzersiz kimliği |
-| SchemaVersion_s |Metin |Bu alan şema geçerli sürümünü gösterir, bu **V2** olduğunu |
-| State_s |Metin |Yedekleme öğesi ilişkilendirme nesnesinin geçerli durumu, örneğin, Etkin, Silinmiş |
-| BackupManagementType_s |Metin |Yedekleme işi yapan sunucu için sağlayıcı türü, örneğin, IaaSVM, FileFolder |
+| EventName_s |Metin |Bu alan, bu olayın adını temsil eder, her zaman AzureBackupCentralReport |  
+| BackupItemUniqueId_s |Metin |Yedekleme öğesinin benzersiz KIMLIĞI |
+| SchemaVersion_s |Metin |Bu alan, şemanın geçerli sürümünü belirtir, **v2** 'dir |
+| State_s |Metin |Yedekleme öğesi ilişkilendirme nesnesinin geçerli durumu, örneğin, etkin, silindi |
+| BackupManagementType_s |Metin |Yedekleme işi yapan sunucu için sağlayıcı türü, örneğin ıaasvm, FileFolder |
 | BackupItemSourceSize_s |Metin | Yedekleme öğesinin ön uç boyutu |
-| BackupManagementServerUniqueId_s |Metin | Yedekleme Yönetim Sunucusu'nu benzersiz bir şekilde tanımlamak için alan, varsa Yedek Öğe tarafından korunur |
-| Kategori |Metin |Bu alan, Log Analytics'e itilen tanılama verileri kategorisini temsil eder, azureBackupReport'dur |
-| ThrottledRequests |Metin |Bu alan geçerli işlemin adını temsil eder - BackupItemAssociation |
-| Kaynak |Metin |Bu, verilerin toplandığı kaynaktır, Kurtarma Hizmetleri kasa adını gösterir |
-| ProtectedContainerUniqueId_s |Metin |Yedek öğeyle ilişkili korumalı sunucunun benzersiz tanımlayıcısı (V1'de ProtectedServerUniqueId_s) |
-| VaultUniqueId_s |Metin |Yedek öğeyi içeren kasanın benzersiz tanımlayıcısı |
-| SourceSystem |Metin |Geçerli verilerin kaynak sistemi - Azure |
-| ResourceId |Metin |Toplanan veriler için kaynak tanımlayıcısı. Örneğin, Kurtarma Hizmetleri kasa kaynak kimliği |
-| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (eski için. Kurtarma Hizmetleri kasası) verilerin toplandığı kasa |
-| ResourceGroup |Metin |Kaynağın kaynak grubu (eski için. Kurtarma Hizmetleri kasası) verilerin toplandığı kasa |
-| ResourceProvider |Metin |Toplanan veriler için kaynak sağlayıcısı , örneğin, Microsoft.RecoveryServices |
-| ResourceType |Metin |Veri için kaynağın türü toplanıyor, örneğin, Vaults |
+| BackupManagementServerUniqueId_s |Metin | Yedekleme yönetim sunucusunu benzersiz şekilde tanımlamak için alan, varsa yedekleme öğesi tarafından korunur |
+| Kategori |Metin |Bu alan, Log Analytics gönderilen tanılama verilerinin kategorisini temsil eder, AzureBackupReport |
+| ThrottledRequests |Metin |Bu alan geçerli işlemin adını temsil eder-BackupItemAssociation |
+| Kaynak |Metin |Bu, verilerin toplandığı kaynaktır, kurtarma hizmetleri kasasının adını gösterir |
+| ProtectedContainerUniqueId_s |Metin |Yedekleme öğesiyle ilişkili korumalı sunucunun benzersiz tanıtıcısı (v1 'de ProtectedServerUniqueId_s) |
+| VaultUniqueId_s |Metin |Yedekleme öğesini içeren kasanın benzersiz tanımlayıcısı |
+| SourceSystem |Metin |Geçerli verilerin kaynak sistemi-Azure |
+| ResourceId |Metin |Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI |
+| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceGroup |Metin |Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceProvider |Metin |Toplanmakta olan veriler için kaynak sağlayıcı, örneğin, Microsoft. RecoveryServices |
+| ResourceType |Metin |Verilerin toplandığı kaynak türü, örneğin kasa |
 
 ### <a name="backupmanagementserver"></a>BackupManagementServer
 
-Bu tablo, çeşitli varlıklar ile yedekleme öğesi ilişkileri hakkında ayrıntıları sağlar.
+Bu tablo, çeşitli varlıklarla yedekleme öğesi ilişkilendirmeleri hakkında ayrıntılar sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-|BackupManagementServerName_s     |Metin         |Yedekleme Yönetim Sunucusunun Adı        |
-|AzureBackupAgentVersion_s     |Metin         |Yedekleme Yönetim Sunucusundaki Azure Yedekleme Aracısının Sürümü          |
-|BackupManagementServerVersion_s     |Metin         |Yedekleme Yönetim Sunucusu Sürümü|
-|BackupManagementServerOSVersion_s    |Metin            |Yedekleme Yönetim Sunucusu'nun işletim sistemi sürümü|
-|BackupManagementServerType_s     |Metin         |MABS, SC DPM olarak Yedekleme Yönetim Sunucusu nun türü|
-|BackupManagementServerUniqueId_s     |Metin         |Yedekleme Yönetim Sunucusu'nu benzersiz bir şekilde tanımlama alanı       |
-| SourceSystem |Metin |Geçerli verilerin kaynak sistemi - Azure |
-| ResourceId |Metin |Toplanan veriler için kaynak tanımlayıcısı. Örneğin, Kurtarma Hizmetleri kasa kaynak kimliği |
-| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (eski için. Kurtarma Hizmetleri kasası) verilerin toplandığı kasa |
-| ResourceGroup |Metin |Kaynağın kaynak grubu (eski için. Kurtarma Hizmetleri kasası) verilerin toplandığı kasa |
-| ResourceProvider |Metin |Toplanan veriler için kaynak sağlayıcısı , örneğin, Microsoft.RecoveryServices |
-| ResourceType |Metin |Veri için kaynağın türü toplanıyor, örneğin, Vaults |
+|BackupManagementServerName_s     |Metin         |Yedekleme yönetim sunucusunun adı        |
+|AzureBackupAgentVersion_s     |Metin         |Yedekleme yönetim sunucusundaki Azure Backup aracısının sürümü          |
+|BackupManagementServerVersion_s     |Metin         |Yedekleme yönetim sunucusunun sürümü|
+|BackupManagementServerOSVersion_s    |Metin            |Yedekleme yönetim sunucusunun işletim sistemi sürümü|
+|BackupManagementServerType_s     |Metin         |Yedekleme yönetim sunucusunun türü, MABS, SC DPM olarak|
+|BackupManagementServerUniqueId_s     |Metin         |Yedekleme yönetim sunucusunu benzersiz olarak tanımlamak için alan       |
+| SourceSystem |Metin |Geçerli verilerin kaynak sistemi-Azure |
+| ResourceId |Metin |Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI |
+| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceGroup |Metin |Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceProvider |Metin |Toplanmakta olan veriler için kaynak sağlayıcı, örneğin, Microsoft. RecoveryServices |
+| ResourceType |Metin |Verilerin toplandığı kaynak türü, örneğin kasa |
 
 ### <a name="job"></a>İş
 
-Bu tablo, işle ilgili alanlar hakkında ayrıntılı bilgi sağlar.
+Bu tablo, işle ilgili alanlarla ilgili ayrıntıları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| EventName_s |Metin |Olayın adı. Her Zaman AzureBackupCentralReport |
+| EventName_s |Metin |Olayın adı. Always AzureBackupCentralReport |
 | BackupItemUniqueId_s |Metin |Yedekleme öğesinin benzersiz tanımlayıcısı |
-| SchemaVersion_s |Metin |Şema sürümü, örneğin, **V2** |
-| State_s |Metin |İş nesnesinin geçerli durumu, örneğin, Etkin, Silinmiş |
-| BackupManagementType_s |Metin |Yedekleme işi yapan sunucu için sağlayıcı türü, örneğin, IaaSVM, FileFolder |
-| ThrottledRequests |Metin |Bu alan geçerli işlemin adını temsil eder - İş |
-| Kategori |Metin |Bu alan, Azure Monitor günlüklerine itilen tanılama verileri kategorisini temsil eder, AzureBackupReport'dur |
-| Kaynak |Metin |Bu, verilerin toplandığı kaynaktır, Kurtarma Hizmetleri kasa adını gösterir |
-| ProtectedServerUniqueId_s |Metin |İşle ilişkili korumalı sunucunun benzersiz tanımlayıcısı |
-| ProtectedContainerUniqueId_s |Metin | İşin çalıştırılacağı korumalı kapsayıcıyı tanımlamak için benzersiz kimlik |
-| VaultUniqueId_s |Metin |Korunan kasanın benzersiz tanımlayıcısı |
-| JobOperation_s |Metin |Örneğin hangi işin çalıştırıldığı için çalışma, Yedekleme, Geri Yükleme, Yedekleme yi Yapılandırma |
-| JobStatus_s |Metin |Bitmiş işin durumu, örneğin, Tamamlanmış, Başarısız |
-| JobFailureCode_s |Metin |İş hatası nedeniyle Hata Kodu dizesi |
+| SchemaVersion_s |Metin |Şemanın sürümü, örneğin, **v2** |
+| State_s |Metin |İş nesnesinin geçerli durumu, örneğin, etkin, silindi |
+| BackupManagementType_s |Metin |Yedekleme işi yapan sunucu için sağlayıcı türü, örneğin ıaasvm, FileFolder |
+| ThrottledRequests |Metin |Bu alan geçerli işlemin adını temsil eder-Iş |
+| Kategori |Metin |Bu alan, Azure Izleyici günlüklerine gönderilen tanılama verilerinin kategorisini temsil eder, AzureBackupReport |
+| Kaynak |Metin |Bu, verilerin toplandığı kaynaktır, kurtarma hizmetleri kasasının adını gösterir |
+| ProtectedServerUniqueId_s |Metin |İşle ilişkili korumalı sunucunun benzersiz tanıtıcısı |
+| ProtectedContainerUniqueId_s |Metin | İşin çalıştırıldığı korunan kapsayıcıyı belirlemek için benzersiz KIMLIK |
+| VaultUniqueId_s |Metin |Korumalı kasanın benzersiz tanıtıcısı |
+| JobOperation_s |Metin |İşin çalıştırıldığı işlem Örneğin, yedekleme, geri yükleme, yedeklemeyi yapılandırma |
+| JobStatus_s |Metin |Tamamlanmış işin durumu, örneğin, tamamlandı, başarısız |
+| JobFailureCode_s |Metin |İş hatası oluştuğundan hata kodu dizesi |
 | JobStartDateTime_s |Tarih/Saat |İşin çalışmaya başladığı tarih ve saat |
-| BackupStorageDestination_s |Metin |Yedekleme depolama noktası, örneğin, Bulut, Disk  |
-| AdHocOrScheduledJob_s |Metin | İşin Geçici mi yoksa Zamanlanmış mı olduğunu belirtmek için alan |
+| BackupStorageDestination_s |Metin |Yedekleme depolamanın hedefi, örneğin, bulut, disk  |
+| AdHocOrScheduledJob_s |Metin | İşin geçici veya zamanlanmış olduğunu belirten alan |
 | JobDurationInSecs_s | Sayı |Saniye cinsinden toplam iş süresi |
-| DataTransferredInMB_s | Sayı |Bu iş için MB'ye aktarılan veriler|
-| JobUniqueId_g |Metin |İşi tanımlamak için benzersiz kimlik |
-| RecoveryJobDestination_s |Metin | Verilerin kurtarıldığı kurtarma işinin hedefi |
-| RecoveryJobRPDateTime_s |DateTime | Kurtarılmakta olan kurtarma noktasının oluşturulduğu tarih, Saat |
+| DataTransferredInMB_s | Sayı |Bu iş için MB olarak aktarılan veriler|
+| JobUniqueId_g |Metin |İşi tanımlamak için benzersiz KIMLIK |
+| RecoveryJobDestination_s |Metin | Verilerin kurtarıldığı bir kurtarma işinin hedefi |
+| RecoveryJobRPDateTime_s |DateTime | Kurtarılan kurtarma noktasının oluşturulduğu tarih, saat |
 | RecoveryJobRPLocation_s |Metin | Kurtarılan kurtarma noktasının depolandığı konum|
-| SourceSystem |Metin |Geçerli verilerin kaynak sistemi - Azure |
-| ResourceId |Metin |Toplanan veriler için kaynak tanımlayıcısı. Örneğin, Kurtarma Hizmetleri kasa kaynak kimliği|
-| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (ör. Kurtarma Hizmetleri kasası) verilerin toplandığı |
-| ResourceGroup |Metin |Kaynağın kaynak grubu (ör. Kurtarma Hizmetleri kasası) verilerin toplandığı |
-| ResourceProvider |Metin |Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft.RecoveryServices |
-| ResourceType |Metin |Verilerin toplandığı kaynak türü. Örneğin, Vaults |
+| SourceSystem |Metin |Geçerli verilerin kaynak sistemi-Azure |
+| ResourceId |Metin |Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI|
+| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceGroup |Metin |Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceProvider |Metin |Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft. RecoveryServices |
+| ResourceType |Metin |Verilerin toplandığı kaynak türü. Örneğin, kasa |
 
 ### <a name="policy"></a>İlke
 
-Bu tablo, ilke ile ilgili alanlar hakkında ayrıntılı bilgi sağlar.
+Bu tablo ilkeyle ilgili alanlarla ilgili ayrıntıları sağlar.
 
-| Alan | Veri Türü | Geçerli Sürümler | Açıklama |
+| Alan | Veri Türü | Uygulanabilir sürümler | Açıklama |
 | --- | --- | --- | --- |
-| EventName_s |Metin ||Bu alan bu olayın adını temsil eder, her zaman AzureBackupCentralReport |
-| SchemaVersion_s |Metin ||Bu alan şema geçerli sürümünü gösterir, bu **V2** olduğunu |
-| State_s |Metin ||İlke nesnesinin geçerli durumu, örneğin, Etkin, Silinmiş |
-| BackupManagementType_s |Metin ||Yedekleme işi yapan sunucu için sağlayıcı türü, örneğin, IaaSVM, FileFolder |
-| ThrottledRequests |Metin ||Bu alan geçerli işlemin adını temsil eder - İlke |
-| Kategori |Metin ||Bu alan, Azure Monitor günlüklerine itilen tanılama verileri kategorisini temsil eder, AzureBackupReport'dur |
-| Kaynak |Metin ||Bu, verilerin toplandığı kaynaktır, Kurtarma Hizmetleri kasa adını gösterir |
-| PolicyUniqueId_g |Metin ||İlkeyi tanımlamak için benzersiz kimlik |
+| EventName_s |Metin ||Bu alan, bu olayın adını temsil eder, her zaman AzureBackupCentralReport |
+| SchemaVersion_s |Metin ||Bu alan, şemanın geçerli sürümünü belirtir, **v2** 'dir |
+| State_s |Metin ||İlke nesnesinin geçerli durumu, örneğin, etkin, silindi |
+| BackupManagementType_s |Metin ||Yedekleme işi yapan sunucu için sağlayıcı türü, örneğin ıaasvm, FileFolder |
+| ThrottledRequests |Metin ||Bu alan geçerli işlemin adını temsil eder-Ilke |
+| Kategori |Metin ||Bu alan, Azure Izleyici günlüklerine gönderilen tanılama verilerinin kategorisini temsil eder, AzureBackupReport |
+| Kaynak |Metin ||Bu, verilerin toplandığı kaynaktır, kurtarma hizmetleri kasasının adını gösterir |
+| PolicyUniqueId_g |Metin ||İlkeyi tanımlamak için benzersiz KIMLIK |
 | PolicyName_s |Metin ||Tanımlanan ilkenin adı |
-| BackupFrequency_s |Metin ||Yedeklemelerin çalıştırılan sıklık, örneğin, günlük, haftalık |
+| BackupFrequency_s |Metin ||Yedeklemelerin çalıştırıldığı sıklık (örneğin, günlük, haftalık) |
 | BackupTimes_s |Metin ||Yedeklemelerin zamanlandığı tarih ve saat |
 | BackupDaysOfTheWeek_s |Metin ||Yedeklemelerin zamanlandığı haftanın günleri |
-| RetentionDuration_s |Tam Sayı ||Yapılandırılmış yedeklemeler için bekletme süresi |
-| DailyRetentionDuration_s |Tam Sayı ||Yapılandırılmış yedeklemeler için gün içinde toplam bekletme süresi |
-| DailyRetentionTimes_s |Metin ||Günlük bekletme yapılandırıldığı tarih ve saat |
-| WeeklyRetentionDuration_s |Ondalık Sayı ||Yapılandırılmış yedeklemeler için haftalar içinde toplam haftalık bekletme süresi |
-| WeeklyRetentionTimes_s |Metin ||Haftalık bekletme yapılandırıldığı tarih ve saat |
-| WeeklyRetentionDaysOfTheWeek_s |Metin ||Haftalık bekletme için seçilen haftanın günleri |
-| MonthlyRetentionDuration_s |Ondalık Sayı ||Yapılandırılmış yedeklemeler için aylar daki toplam bekletme süresi |
-| MonthlyRetentionTimes_s |Metin ||Aylık bekletme yapılandırıldığı tarih ve saat |
-| MonthlyRetentionFormat_s |Metin ||Aylık bekletme için yapılandırma türü, örneğin, günlük tabanlı günlük, haftalık haftalık tabanlı |
+| RetentionDuration_s |Tam Sayı ||Yapılandırılan yedeklemeler için bekletme süresi |
+| DailyRetentionDuration_s |Tam Sayı ||Yapılandırılan yedeklemeler için gün cinsinden toplam saklama süresi |
+| DailyRetentionTimes_s |Metin ||Günlük bekletmenin yapılandırıldığı tarih ve saat |
+| WeeklyRetentionDuration_s |Ondalık Sayı ||Yapılandırılan yedeklemeler için hafta cinsinden toplam haftalık saklama süresi |
+| WeeklyRetentionTimes_s |Metin ||Haftalık bekletmenin yapılandırıldığı tarih ve saat |
+| WeeklyRetentionDaysOfTheWeek_s |Metin ||Haftalık saklama için seçilen haftanın günleri |
+| MonthlyRetentionDuration_s |Ondalık Sayı ||Yapılandırılan yedeklemeler için aylık toplam bekletme süresi |
+| MonthlyRetentionTimes_s |Metin ||Aylık bekletmenin yapılandırıldığı tarih ve saat |
+| MonthlyRetentionFormat_s |Metin ||Aylık saklama için yapılandırma türü, örneğin günlük tabanlı için günlük, haftalık tabanlı için haftalık |
 | MonthlyRetentionDaysOfTheWeek_s |Metin ||Aylık saklama için seçilen haftanın günleri |
-| MonthlyRetentionWeeksOfTheMonth_s |Metin ||Aylık saklamanın yapılandırıldığı ayın haftaları, örneğin, İlk, Son vb. |
-| YearlyRetentionDuration_s |Ondalık Sayı ||Yapılandırılmış yedeklemeler için yıllar içinde toplam bekletme süresi |
-| YearlyRetentionTimes_s |Metin ||Yıllık bekletme yapılandırıldığı tarih ve saat |
-| YearlyRetentionMonthsOfTheYear_s |Metin ||Yıllık bekletme için seçilen yılın ayları |
-| YearlyRetentionFormat_s |Metin ||Yıllık bekletme için yapılandırma türü, örneğin, günlük tabanlı günlük, haftalık haftalık tabanlı | |
+| MonthlyRetentionWeeksOfTheMonth_s |Metin ||Aylık bekletme yapılandırıldığında ayın haftası (örneğin, First, Last vb.) |
+| YearlyRetentionDuration_s |Ondalık Sayı ||Yapılandırılan yedeklemeler için yıl cinsinden toplam saklama süresi |
+| YearlyRetentionTimes_s |Metin ||Yıllık bekletmenin yapılandırıldığı tarih ve saat |
+| YearlyRetentionMonthsOfTheYear_s |Metin ||Yıllık bekletme için seçilen yılın ayı |
+| YearlyRetentionFormat_s |Metin ||Yıllık saklama için yapılandırma türü, örneğin, günlük tabanlı için günlük, haftalık tabanlı için haftalık | |
 | YearlyRetentionDaysOfTheMonth_s |Metin ||Yıllık bekletme için seçilen ayın tarihleri |
-| SynchronisationFrequencyPerDay_s |Tam Sayı |v2|SC DPM ve MABS için bir dosya yedeklemesi günde kaç kez eşitlenir |
-| DiffBackupFormat_s |Metin |v2|Azure VM yedeklemesinde SQL için Diferansiyel yedeklemebiçimleri |
-| DiffBackupTime_s |Zaman |v2|Azure VM Yedekleme'de SQL için Diferansiyel yedekleme zamanı|
-| DiffBackupRetentionDuration_s |Ondalık Sayı |v2|Azure VM Yedekleme'de SQL için Diferansiyel yedeklemeler için bekletme süresi|
-| LogBackupFrequency_s |Ondalık Sayı |v2|SQL için Günlük yedeklemeleri için sıklık|
-| LogBackupRetentionDuration_s |Ondalık Sayı |v2|Azure VM Yedeklemesinde SQL için Günlük yedeklemeleri için bekletme süresi|
-| DiffBackupDaysofTheWeek_s |Metin |v2|Azure VM Yedekleme'de SQL için Diferansiyel yedeklemeler için haftanın günleri|
-| SourceSystem |Metin ||Geçerli verilerin kaynak sistemi - Azure |
-| ResourceId |Metin ||Toplanan veriler için kaynak tanımlayıcısı. Örneğin, Kurtarma Hizmetleri kasa kaynak kimliği |
-| SubscriptionId |Metin ||Kaynağın abonelik tanımlayıcısı (ör. Kurtarma Hizmetleri kasası) verilerin toplandığı |
-| ResourceGroup |Metin ||Kaynağın kaynak grubu (ör. Kurtarma Hizmetleri kasası) verilerin toplandığı |
-| ResourceProvider |Metin ||Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft.RecoveryServices |
-| ResourceType |Metin ||Verilerin toplandığı kaynak türü. Örneğin, Vaults |
+| SynchronisationFrequencyPerDay_s |Tam Sayı |v2|SC DPM ve MABS için bir dosya yedeklemesinin eşitlendiği gün sayısı |
+| DiffBackupFormat_s |Metin |v2|Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemelerinin biçimi |
+| DiffBackupTime_s |Zaman |v2|Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri süresi|
+| DiffBackupRetentionDuration_s |Ondalık Sayı |v2|Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri bekletme süresi|
+| LogBackupFrequency_s |Ondalık Sayı |v2|SQL için günlük yedeklemeleri sıklığı|
+| LogBackupRetentionDuration_s |Ondalık Sayı |v2|Azure VM yedeklemesi 'nde SQL için günlük yedeklemeleri bekletme süresi|
+| DiffBackupDaysofTheWeek_s |Metin |v2|Azure VM yedeklemesi 'nde SQL için değişiklik yedeklemeleri için haftanın günleri|
+| SourceSystem |Metin ||Geçerli verilerin kaynak sistemi-Azure |
+| ResourceId |Metin ||Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI |
+| SubscriptionId |Metin ||Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceGroup |Metin ||Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceProvider |Metin ||Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft. RecoveryServices |
+| ResourceType |Metin ||Verilerin toplandığı kaynak türü. Örneğin, kasa |
 
-### <a name="policyassociation"></a>Politikalar Birliği
+### <a name="policyassociation"></a>Poliyassociation
 
-Bu tablo, çeşitli kuruluşlarla ilke ilişkileri hakkında ayrıntılı bilgi sağlar.
+Bu tablo, çeşitli varlıklarla ilke ilişkilendirmeleri hakkında ayrıntılar sağlar.
 
-| Alan | Veri Türü | Geçerli Sürümler | Açıklama |
+| Alan | Veri Türü | Uygulanabilir sürümler | Açıklama |
 | --- | --- | --- | --- |
-| EventName_s |Metin ||Bu alan bu olayın adını temsil eder, her zaman AzureBackupCentralReport |
-| SchemaVersion_s |Metin ||Bu alan şema geçerli sürümünü gösterir, bu **V2** olduğunu |
-| State_s |Metin ||İlke nesnesinin geçerli durumu, örneğin, Etkin, Silinmiş |
-| BackupManagementType_s |Metin ||Yedekleme işi yapan sunucu için sağlayıcı türü, örneğin, IaaSVM, FileFolder |
-| ThrottledRequests |Metin ||Bu alan geçerli işlemin adını temsil eder - PolicyAssociation |
-| Kategori |Metin ||Bu alan, Azure Monitor günlüklerine itilen tanılama verileri kategorisini temsil eder, AzureBackupReport'dur |
-| Kaynak |Metin ||Bu, verilerin toplandığı kaynaktır, Kurtarma Hizmetleri kasa adını gösterir |
-| PolicyUniqueId_g |Metin ||İlkeyi tanımlamak için benzersiz kimlik |
-| VaultUniqueId_s |Metin ||Bu iipolitikasın ait olduğu kasanın benzersiz kimliği |
-| BackupManagementServerUniqueId_s |Metin |v2 |Yedekleme Yönetim Sunucusu'nu benzersiz bir şekilde tanımlamak için alan, varsa Yedek Öğe tarafından korunur        |
-| SourceSystem |Metin ||Geçerli verilerin kaynak sistemi - Azure |
-| ResourceId |Metin ||Toplanan veriler için kaynak tanımlayıcısı. Örneğin, Kurtarma Hizmetleri kasa kaynak kimliği |
-| SubscriptionId |Metin ||Kaynağın abonelik tanımlayıcısı (ör. Kurtarma Hizmetleri kasası) verilerin toplandığı |
-| ResourceGroup |Metin ||Kaynağın kaynak grubu (ör. Kurtarma Hizmetleri kasası) verilerin toplandığı |
-| ResourceProvider |Metin ||Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft.RecoveryServices |
-| ResourceType |Metin ||Verilerin toplandığı kaynak türü. Örneğin, Vaults |
+| EventName_s |Metin ||Bu alan, bu olayın adını temsil eder, her zaman AzureBackupCentralReport |
+| SchemaVersion_s |Metin ||Bu alan, şemanın geçerli sürümünü belirtir, **v2** 'dir |
+| State_s |Metin ||İlke nesnesinin geçerli durumu, örneğin, etkin, silindi |
+| BackupManagementType_s |Metin ||Yedekleme işi yapan sunucu için sağlayıcı türü, örneğin ıaasvm, FileFolder |
+| ThrottledRequests |Metin ||Bu alan geçerli işlemin adını temsil eder-PolicyAssociation |
+| Kategori |Metin ||Bu alan, Azure Izleyici günlüklerine gönderilen tanılama verilerinin kategorisini temsil eder, AzureBackupReport |
+| Kaynak |Metin ||Bu, verilerin toplandığı kaynaktır, kurtarma hizmetleri kasasının adını gösterir |
+| PolicyUniqueId_g |Metin ||İlkeyi tanımlamak için benzersiz KIMLIK |
+| VaultUniqueId_s |Metin ||Bu ilkenin ait olduğu kasanın benzersiz KIMLIĞI |
+| BackupManagementServerUniqueId_s |Metin |v2 |Yedekleme yönetim sunucusunu benzersiz şekilde tanımlamak için alan, varsa yedekleme öğesi tarafından korunur        |
+| SourceSystem |Metin ||Geçerli verilerin kaynak sistemi-Azure |
+| ResourceId |Metin ||Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI |
+| SubscriptionId |Metin ||Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceGroup |Metin ||Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceProvider |Metin ||Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft. RecoveryServices |
+| ResourceType |Metin ||Verilerin toplandığı kaynak türü. Örneğin, kasa |
 
-### <a name="protected-container"></a>Korumalı Konteyner
+### <a name="protected-container"></a>Korumalı kapsayıcı
 
-Bu tablo, Korumalı Kapsayıcılar hakkında temel alanlar sağlar. (V1'de ProtectedServer oldu)
+Bu tablo, korumalı kapsayıcılar hakkında temel alanlar sağlar. (V1 'de ProtectedServer idi)
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| ProtectedContainerUniqueId_s |Metin | Korumalı Kapsayıcıyı benzersiz bir şekilde tanımlamak için alan |
-| ProtectedContainerOSType_s |Metin |Korumalı Konteynerin İşletim Sistemi Tipi |
-| ProtectedContainerOSVersion_s |Metin |Korumalı Konteynerin İşletim Sistemi Sürümü |
-| AgentVersion_s |Metin |Aracı Yedekleme veya Koruma Aracısı sürüm numarası (SC DPM ve MABS durumunda) |
-| BackupManagementType_s |Metin |Yedekleme gerçekleştirmek için sağlayıcı türü. Örneğin, IaaSVM, FileFolder |
-| EntityState_s |Metin |Korumalı sunucu nesnesinin geçerli durumu. Örneğin, Etkin, Silinmiş |
-| ProtectedContainerFriendlyName_s |Metin |Korumalı sunucunun dostu adı |
-| ProtectedContainerName_s |Metin |Korunan Konteynerin Adı |
-| ProtectedContainerWorkloadType_s |Metin |Korunan Konteyner türü yedeklenir. Örneğin, IaaSVMContainer |
-| ProtectedContainerLocation_s |Metin |Korumalı Kapsayıcı'nın şirket içinde mi yoksa Azure'da mı bulunduğu |
-| ProtectedContainerType_s |Metin |Korumalı Kapsayıcı sunucu veya kapsayıcı olsun |
-| ProtectedContainerProtectionState_s'  |Metin |Korumalı Konteynerin Koruma Durumu |
+| ProtectedContainerUniqueId_s |Metin | Korumalı kapsayıcıyı benzersiz olarak tanımlamak için alan |
+| ProtectedContainerOSType_s |Metin |Korumalı kapsayıcının işletim sistemi türü |
+| ProtectedContainerOSVersion_s |Metin |Korumalı kapsayıcının işletim sistemi sürümü |
+| AgentVersion_s |Metin |Aracı yedeklemesinin veya koruma aracısının sürüm numarası (SC DPM ve MABS durumunda) |
+| BackupManagementType_s |Metin |Yedekleme gerçekleştirmek için sağlayıcı türü. Örneğin, ıaasvm, FileFolder |
+| EntityState_s |Metin |Korumalı sunucu nesnesinin geçerli durumu. Örneğin, etkin, silindi |
+| ProtectedContainerFriendlyName_s |Metin |Korumalı sunucunun kolay adı |
+| ProtectedContainerName_s |Metin |Korumalı kapsayıcının adı |
+| ProtectedContainerWorkloadType_s |Metin |Yedeklenen korumalı kapsayıcının türü. Örneğin, ıaasvmcontainer |
+| ProtectedContainerLocation_s |Metin |Korumalı kapsayıcının şirket içinde mi yoksa Azure 'da mı bulunduğu |
+| ProtectedContainerType_s |Metin |Korumalı kapsayıcının bir sunucu mı yoksa bir kapsayıcı mi olduğunu belirtir |
+| ProtectedContainerProtectionState_s '  |Metin |Korumalı kapsayıcının koruma durumu |
 
 ### <a name="storage"></a>Depolama
 
-Bu tablo, depolama yla ilgili alanlar hakkında ayrıntılı bilgi sağlar.
+Bu tablo, depolama ile ilgili alanlarla ilgili ayrıntıları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| CloudStorageInBytes_s |Ondalık Sayı |Yedeklemeler tarafından kullanılan, en son değere göre hesaplanan bulut yedekleme depolama alanı (Bu alan yalnızca v1 şeması içindir)|
-| ProtectedInstances_s |Ondalık Sayı |Faturalandırmada ön uç depolamasını hesaplamak için kullanılan, en son değere göre hesaplanan korumalı örnek sayısı |
-| EventName_s |Metin |Bu alan bu olayın adını temsil eder, her zaman AzureBackupCentralReport |
-| SchemaVersion_s |Metin |Bu alan şema geçerli sürümünü gösterir, bu **V2** olduğunu |
-| State_s |Metin |Depolama nesnesinin geçerli durumu, örneğin, Etkin, Silinmiş |
-| BackupManagementType_s |Metin |Yedekleme işi yapan sunucu için sağlayıcı türü, örneğin, IaaSVM, FileFolder |
-| ThrottledRequests |Metin |Bu alan geçerli işlemin adını temsil eder - Depolama |
-| Kategori |Metin |Bu alan, Azure Monitor günlüklerine itilen tanılama verileri kategorisini temsil eder, AzureBackupReport'dur |
-| Kaynak |Metin |Bu, verilerin toplandığı kaynaktır, Kurtarma Hizmetleri kasa adını gösterir |
-| ProtectedServerUniqueId_s |Metin |Depolama alanının hesaplandığı korumalı sunucunun benzersiz kimliği |
-| VaultUniqueId_s |Metin |Depolama için kasanın benzersiz kimliği hesaplanır |
-| SourceSystem |Metin |Geçerli verilerin kaynak sistemi - Azure |
-| ResourceId |Metin |Toplanan veriler için kaynak tanımlayıcısı. Örneğin, Kurtarma Hizmetleri kasa kaynak kimliği |
-| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (ör. Kurtarma Hizmetleri kasası) verilerin toplandığı |
-| ResourceGroup |Metin |Kaynağın kaynak grubu (ör. Kurtarma Hizmetleri kasası) verilerin toplandığı |
-| ResourceProvider |Metin |Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft.RecoveryServices |
-| ResourceType |Metin |Verilerin toplandığı kaynak türü. Örneğin, Vaults |
-| StorageUniqueId_s |Metin |Depolama varlığını tanımlamak için kullanılan benzersiz kimlik |
-| StorageType_s |Metin |Depolama Türü, örneğin Bulut, Hacim, Disk |
+| CloudStorageInBytes_s |Ondalık Sayı |Yedeklemeler tarafından kullanılan bulut yedekleme depolaması, en son değere göre hesaplanır (Bu alan yalnızca v1 şeması içindir)|
+| ProtectedInstances_s |Ondalık Sayı |En son değere göre hesaplanan, faturalandırma aşamasında ön uç depolamayı hesaplamak için kullanılan korumalı örnek sayısı |
+| EventName_s |Metin |Bu alan, bu olayın adını temsil eder, her zaman AzureBackupCentralReport |
+| SchemaVersion_s |Metin |Bu alan, şemanın geçerli sürümünü belirtir, **v2** 'dir |
+| State_s |Metin |Depolama nesnesinin geçerli durumu, örneğin, etkin, silindi |
+| BackupManagementType_s |Metin |Yedekleme işi yapan sunucu için sağlayıcı türü, örneğin ıaasvm, FileFolder |
+| ThrottledRequests |Metin |Bu alan, geçerli işlem-depolama alanının adını temsil eder |
+| Kategori |Metin |Bu alan, Azure Izleyici günlüklerine gönderilen tanılama verilerinin kategorisini temsil eder, AzureBackupReport |
+| Kaynak |Metin |Bu, verilerin toplandığı kaynaktır, kurtarma hizmetleri kasasının adını gösterir |
+| ProtectedServerUniqueId_s |Metin |Depolama alanının hesaplandığı korumalı sunucunun benzersiz KIMLIĞI |
+| VaultUniqueId_s |Metin |Depolama kasasının benzersiz KIMLIĞI hesaplanır |
+| SourceSystem |Metin |Geçerli verilerin kaynak sistemi-Azure |
+| ResourceId |Metin |Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI |
+| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceGroup |Metin |Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceProvider |Metin |Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft. RecoveryServices |
+| ResourceType |Metin |Verilerin toplandığı kaynak türü. Örneğin, kasa |
+| StorageUniqueId_s |Metin |Depolama varlığını tanımlamak için kullanılan benzersiz KIMLIK |
+| StorageType_s |Metin |Depolama türü, örneğin bulut, birim, disk |
 | StorageName_s |Metin |Depolama varlığının adı, örneğin E:\ |
-| StorageTotalSizeInGBs_s |Metin |Depolama varlığı tarafından tüketilen GB'deki toplam depolama boyutu|
+| StorageTotalSizeInGBs_s |Metin |Depolama varlığı tarafından tüketilen, GB cinsinden toplam depolama alanı boyutu|
 
-### <a name="storageassociation"></a>Depolama Derneği
+### <a name="storageassociation"></a>StorageAssociation
 
-Bu tablo, depolamayı diğer varlıklara bağlayan depolamayla ilgili temel alanları sağlar.
+Bu tablo, depolamayı diğer varlıklara bağlayan temel depolama ile ilgili alanları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- |  --- |
-| StorageUniqueId_s |Metin |Depolama varlığını tanımlamak için kullanılan benzersiz kimlik |
-| SchemaVersion_s |Metin |Bu alan şema geçerli sürümünü gösterir, bu **V2** olduğunu |
-| BackupItemUniqueId_s |Metin |Depolama varlığıyla ilgili yedekleme öğesini tanımlamak için kullanılan benzersiz kimlik |
-| BackupManagementServerUniqueId_s |Metin |Depolama varlığıyla ilgili yedekleme yönetim sunucusunu tanımlamak için kullanılan benzersiz kimlik|
-| VaultUniqueId_s |Metin |Depolama varlığıyla ilgili kasayı tanımlamak için kullanılan benzersiz kimlik|
-| StorageConsumedInMBs_s |Sayı|İlgili depolama alanında ilgili yedekleme maddesi tarafından tüketilen depolama alanının boyutu |
-| StorageAllocatedInMBs_s |Sayı |İlgili yedekleme maddesi tarafından, ilgili depolama türü Disk'in depolama alanında ayrılan depolama alanının boyutu|
+| StorageUniqueId_s |Metin |Depolama varlığını tanımlamak için kullanılan benzersiz KIMLIK |
+| SchemaVersion_s |Metin |Bu alan, şemanın geçerli sürümünü belirtir, **v2** 'dir |
+| BackupItemUniqueId_s |Metin |Depolama varlığıyla ilgili yedekleme öğesini tanımlamak için kullanılan benzersiz KIMLIK |
+| BackupManagementServerUniqueId_s |Metin |Depolama varlığıyla ilgili yedekleme yönetim sunucusunu tanımlamak için kullanılan benzersiz KIMLIK|
+| VaultUniqueId_s |Metin |Depolama varlığıyla ilgili kasayı tanımlamak için kullanılan benzersiz KIMLIK|
+| StorageConsumedInMBs_s |Sayı|Karşılık gelen depolama alanındaki karşılık gelen yedekleme öğesi tarafından tüketilen depolamanın boyutu |
+| StorageAllocatedInMBs_s |Sayı |Disk türünde karşılık gelen yedekleme öğesi tarafından ayrılan depolama alanı boyutu|
 
 ### <a name="vault"></a>Kasa
 
-Bu tablo, kasayla ilgili alanlar hakkında ayrıntılı bilgi sağlar.
+Bu tablo, kasala ilgili alanlarla ilgili ayrıntıları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| EventName_s |Metin |Bu alan bu olayın adını temsil eder, her zaman AzureBackupCentralReport |
-| SchemaVersion_s |Metin |Bu alan şema geçerli sürümünü gösterir, bu **V2** olduğunu |
-| State_s |Metin |Kasa nesnesinin geçerli durumu, örneğin, Etkin, Silinmiş |
-| ThrottledRequests |Metin |Bu alan geçerli işlemin adını temsil eder - Vault |
-| Kategori |Metin |Bu alan, Azure Monitor günlüklerine itilen tanılama verileri kategorisini temsil eder, AzureBackupReport'dur |
-| Kaynak |Metin |Bu, verilerin toplandığı kaynaktır, Kurtarma Hizmetleri kasa adını gösterir |
-| VaultUniqueId_s |Metin |Kasanın benzersiz kimliği |
+| EventName_s |Metin |Bu alan, bu olayın adını temsil eder, her zaman AzureBackupCentralReport |
+| SchemaVersion_s |Metin |Bu alan, şemanın geçerli sürümünü belirtir, **v2** 'dir |
+| State_s |Metin |Kasa nesnesinin geçerli durumu, örneğin, etkin, silindi |
+| ThrottledRequests |Metin |Bu alan, geçerli işlem kasasının adını temsil eder |
+| Kategori |Metin |Bu alan, Azure Izleyici günlüklerine gönderilen tanılama verilerinin kategorisini temsil eder, AzureBackupReport |
+| Kaynak |Metin |Bu, verilerin toplandığı kaynaktır, kurtarma hizmetleri kasasının adını gösterir |
+| VaultUniqueId_s |Metin |Kasanın benzersiz KIMLIĞI |
 | VaultName_s |Metin |Kasanın adı |
 | AzureDataCenter_s |Metin |Kasanın bulunduğu veri merkezi |
-| StorageReplicationType_s |Metin |Tonoz için depolama çoğaltma türü, örneğin, GeoRedundant |
-| SourceSystem |Metin |Geçerli verilerin kaynak sistemi - Azure |
-| ResourceId |Metin |Toplanan veriler için kaynak tanımlayıcısı. Örneğin, Kurtarma Hizmetleri kasa kaynak kimliği |
-| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (ör. Kurtarma Hizmetleri kasası) verilerin toplandığı |
-| ResourceGroup |Metin |Kaynağın kaynak grubu (ör. Kurtarma Hizmetleri kasası) verilerin toplandığı |
-| ResourceProvider |Metin |Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft.RecoveryServices |
-| ResourceType |Metin |Verilerin toplandığı kaynak türü. Örneğin, Vaults |
+| StorageReplicationType_s |Metin |Kasa için depolama çoğaltma türü (örneğin, Geoyedekli) |
+| SourceSystem |Metin |Geçerli verilerin kaynak sistemi-Azure |
+| ResourceId |Metin |Toplanmakta olan veriler için kaynak tanımlayıcısı. Örneğin, kurtarma hizmetleri Kasası kaynak KIMLIĞI |
+| SubscriptionId |Metin |Kaynağın abonelik tanımlayıcısı (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceGroup |Metin |Kaynağın kaynak grubu (örn. Verilerin toplandığı kurtarma hizmetleri Kasası) |
+| ResourceProvider |Metin |Verilerin toplandığı kaynak sağlayıcısı. Örneğin, Microsoft. RecoveryServices |
+| ResourceType |Metin |Verilerin toplandığı kaynak türü. Örneğin, kasa |
 
-### <a name="backup-management-server"></a>Yedekleme Yönetim Sunucusu
+### <a name="backup-management-server"></a>Yedekleme yönetim sunucusu
 
-Bu tablo, Yedekleme Yönetimi Sunucuları hakkında temel alanları sağlar.
+Bu tablo yedekleme yönetim sunucuları hakkında temel alanlar sağlar.
 
 |Alan  |Veri Türü  | Açıklama  |
 |---------|---------|----------|
-|BackupManagementServerName_s     |Metin         |Yedekleme Yönetim Sunucusunun Adı        |
-|AzureBackupAgentVersion_s     |Metin         |Yedekleme Yönetim Sunucusundaki Azure Yedekleme Aracısının Sürümü          |
-|BackupManagementServerVersion_s     |Metin         |Yedekleme Yönetim Sunucusu Sürümü|
-|BackupManagementServerOSVersion_s     |Metin            |Yedekleme Yönetim Sunucusu'nun işletim sistemi sürümü|
-|BackupManagementServerType_s     |Metin         |MABS, SC DPM olarak Yedekleme Yönetim Sunucusu nun türü|
-|BackupManagementServerUniqueId_s     |Metin         |Yedekleme Yönetim Sunucusu'nu benzersiz bir şekilde tanımlama alanı       |
+|BackupManagementServerName_s     |Metin         |Yedekleme yönetim sunucusunun adı        |
+|AzureBackupAgentVersion_s     |Metin         |Yedekleme yönetim sunucusundaki Azure Backup aracısının sürümü          |
+|BackupManagementServerVersion_s     |Metin         |Yedekleme yönetim sunucusunun sürümü|
+|BackupManagementServerOSVersion_s     |Metin            |Yedekleme yönetim sunucusunun işletim sistemi sürümü|
+|BackupManagementServerType_s     |Metin         |Yedekleme yönetim sunucusunun türü, MABS, SC DPM olarak|
+|BackupManagementServerUniqueId_s     |Metin         |Yedekleme yönetim sunucusunu benzersiz olarak tanımlamak için alan       |
 
-### <a name="preferredworkloadonvolume"></a>Tercih Edilen İş Yükü
+### <a name="preferredworkloadonvolume"></a>PreferredWorkloadOnVolume
 
-Bu tablo, bir Birim ile ilişkili iş yükü(ler) belirtir.
+Bu tablo, bir birimin ilişkilendirildiği iş yüklerini belirtir.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| StorageUniqueId_s |Metin |Depolama varlığını tanımlamak için kullanılan benzersiz kimlik |
+| StorageUniqueId_s |Metin |Depolama varlığını tanımlamak için kullanılan benzersiz KIMLIK |
 | BackupItemType_s |Metin |Bu birimin tercih edilen depolama alanı olduğu iş yükleri|
 
-### <a name="protectedinstance"></a>KorumaÖrneği
+### <a name="protectedinstance"></a>Protectedınstance
 
 Bu tablo, temel korumalı örneklerle ilgili alanları sağlar.
 
-| Alan | Veri Türü |Geçerli Sürümler | Açıklama |
+| Alan | Veri Türü |Uygulanabilir sürümler | Açıklama |
 | --- | --- | --- | --- |
-| BackupItemUniqueId_s |Metin |v2|DPM, MABS kullanılarak yedeklenen VM'lerin yedekleme öğesini tanımlamak için kullanılan benzersiz kimlik|
-| ProtectedContainerUniqueId_s |Metin |v2|DPM, MABS kullanılarak yedeklenen VM'ler dışında her şey için korumalı kapsayıcıyı tanımlamak için kullanılan benzersiz kimlik|
-| ProtectedInstanceCount_s |Metin |v2|İlgili yedekleme öğesi veya korumalı kapsayıcı için o tarih saatinde Korunan Örneklerin Sayısı|
+| BackupItemUniqueId_s |Metin |v2|DPM, MABS kullanılarak yedeklenen VM 'Ler için yedekleme öğesini tanımlamak üzere kullanılan benzersiz KIMLIK|
+| ProtectedContainerUniqueId_s |Metin |v2|DPM, MABS kullanılarak yedeklenen VM 'Ler hariç her şey için korunan kapsayıcıyı tanımlamak üzere kullanılan benzersiz KIMLIK|
+| ProtectedInstanceCount_s |Metin |v2|İlişkili yedekleme öğesi veya korunan kapsayıcı için bu tarih-saat için korunan örnek sayısı|
 
-### <a name="recoverypoint"></a>Kurtarma Noktası
+### <a name="recoverypoint"></a>RecoveryPoint
 
-Bu tablo temel kurtarma noktası ile ilgili alanları sağlar.
+Bu tablo, temel kurtarma noktasıyla ilgili alanları sağlar.
 
 | Alan | Veri Türü | Açıklama |
 | --- | --- | --- |
-| BackupItemUniqueId_s |Metin |DPM, MABS kullanılarak yedeklenen VM'lerin yedekleme öğesini tanımlamak için kullanılan benzersiz kimlik|
+| BackupItemUniqueId_s |Metin |DPM, MABS kullanılarak yedeklenen VM 'Ler için yedekleme öğesini tanımlamak üzere kullanılan benzersiz KIMLIK|
 | OldestRecoveryPointTime_s |Metin |Yedekleme öğesi için en eski kurtarma noktasının tarih saati|
-| OldestRecoveryPointLocation_s |Metin |Yedekleme öğesi için en eski kurtarma noktasının konumu|
+| OldestRecoveryPointLocation_s |Metin |Yedekleme öğesi için en eski kurtarma noktası konumu|
 | LatestRecoveryPointTime_s |Metin |Yedekleme öğesi için en son kurtarma noktasının tarih saati|
 | LatestRecoveryPointLocation_s |Metin |Yedekleme öğesi için en son kurtarma noktasının konumu|
 
-## <a name="sample-kusto-queries"></a>Örnek Kusto Sorguları
+## <a name="sample-kusto-queries"></a>Örnek kusto sorguları
 
-Aşağıda, Azure Tanılama tablosunda bulunan Azure Yedekleme verilerine sorgu yazmanıza yardımcı olacak birkaç örnek verilmiştir:
+Aşağıda Azure Tanılama tablosunda yer alan Azure Backup verilerine sorgu yazmanıza yardımcı olacak birkaç örnek verilmiştir:
 
 - Tüm başarılı yedekleme işleri
 
@@ -437,7 +437,7 @@ Aşağıda, Azure Tanılama tablosunda bulunan Azure Yedekleme verilerine sorgu 
     | project-away Resource
     ````
 
-- Tüm başarılı Azure Yedekleme aracı işleri
+- Tüm başarılı Azure Backup Aracısı işleri
 
     ````Kusto
     AzureDiagnostics
@@ -459,7 +459,12 @@ Aşağıda, Azure Tanılama tablosunda bulunan Azure Yedekleme verilerine sorgu 
     | extend Vault= Resource
     | project-away Resource
     ````
-    
+
+## <a name="v1-schema-vs-v2-schema"></a>V1 şeması vs v2 şeması
+Daha önce, Azure Backup Aracısı ve Azure VM yedeklemesi için tanılama verileri ***v1 şeması***olarak adlandırılan bir şemadaki Azure tanılama tabloya gönderilmiştir. Daha sonra, diğer senaryoları ve iş yüklerini desteklemek için yeni sütunlar eklenmiştir ve Tanılama verileri ***v2 şeması***olarak adlandırılan yeni bir şemaya itildi. 
+
+Geriye dönük uyumluluk nedenleriyle, Azure Backup Aracısı ve Azure VM yedeklemesi için tanılama verileri şu anda hem v1 hem de v2 şemasında Azure Tanılama tabloya gönderilmiştir (artık kullanımdan kaldırma yolunda v1 şeması ile). Günlük sorgularınızda SchemaVersion_s = = "v1" kayıtlarını filtreleyerek Log Analytics v1 şemasında hangi kayıtların olduğunu belirleyebilirsiniz.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri modelini gözden geçirdikten sonra, kendi panonuzu oluşturmak için Azure Monitor günlüklerinde [özel sorgular oluşturmaya](../azure-monitor/learn/tutorial-logs-dashboards.md) başlayabilirsiniz.
+Veri modelini gözden geçirdikten sonra, kendi panonuzu oluşturmak için Azure Izleyici günlüklerinde [özel sorgular oluşturmaya](../azure-monitor/learn/tutorial-logs-dashboards.md) başlayabilirsiniz.

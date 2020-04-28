@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 75e1f5fbfa41ac310d2a737dcfe28199715a094b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: d73c858bdbfee7c5b7c7e31b62b1f601b7b6838a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312872"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866449"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio'yu kullanarak Web İşleri geliştirme ve dağıtma - Azure App Service
 
@@ -30,7 +30,7 @@ Webİşler'in sürüm 3.x'ini kullanırken, WebJobs'u .NET Core konsol uygulamal
 > [!NOTE]
 > .NET Core WebJobs web projeleri ile bağlantılı olamaz. WebJob'unuzu bir web uygulamasıyla dağıtmanız gerekiyorsa, [WebJob'unuzu bir .NET Framework konsol uyrağı uygulaması olarak oluşturmanız](#webjobs-as-net-framework-console-apps)gerekir.  
 
-### <a name="deploy-to-azure-app-service"></a>Azure App Service’e dağıtma
+### <a name="deploy-to-azure-app-service"></a>Azure App Service'e dağıtma
 
 Visual Studio'dan .NET Core WebJob'u Uygulama Hizmetine yayımlamak, ASP.NET Core uygulamasını yayınlamakla aynı aracı kullanır.
 
@@ -79,7 +79,7 @@ Bir projeyi kendi başına WebJob olarak dağıtabilir veya web projesini dağı
 
 ![Web projesine bağlantı sağlayan WebJob projesini gösteren diyagram](./media/webjobs-dotnet-deploy-vs/link.png)
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Visual Studio 2015 kullanıyorsanız, [.NET (Visual Studio 2015) için Azure SDK'yı](https://azure.microsoft.com/downloads/)yükleyin.
 
@@ -175,7 +175,7 @@ Web İşler dağıtımı için bir Konsol Uygulaması yapılandırdığınızda,
           "runMode": "Continuous"
         }
 
-Bu dosyayı doğrudan edinebilirsiniz ve Visual Studio IntelliSense sağlar. Dosya şeması depolanır [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) ve orada görüntülenebilir.  
+Bu dosyayı doğrudan edinebilirsiniz ve Visual Studio IntelliSense sağlar. Dosya şeması depolanır [https://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json) ve orada görüntülenebilir.  
 
 ### <a name="webjobs-listjson"></a><a id="webjobslist"></a>webjobs-list.json
 Web İşler etkinleştirilmiş bir projeyi bir web projesine bağladiğinizde, Visual Studio WebJobs projesinin adını *web işi listesi.json* dosyasında web projesinin *Özellikleri* klasöründe depolar. Liste, aşağıdaki örnekte gösterildiği gibi birden çok Web İşler i
@@ -192,7 +192,7 @@ Web İşler etkinleştirilmiş bir projeyi bir web projesine bağladiğinizde, V
           ]
         }
 
-Bu dosyayı doğrudan edinebilirsiniz ve Visual Studio IntelliSense sağlar. Dosya şeması depolanır [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) ve orada görüntülenebilir.
+Bu dosyayı doğrudan edinebilirsiniz ve Visual Studio IntelliSense sağlar. Dosya şeması depolanır [https://schemastore.org](http://schemastore.org/schemas/json/webjobs-list.json) ve orada görüntülenebilir.
 
 ### <a name="deploy-a-webjobs-project"></a><a id="deploy"></a>Web İşler projesini dağıtma
 Bir web projesine bağlandığınız bir Webİşler projesi, web projesiyle otomatik olarak dağıtılır. Web projesi dağıtımı hakkında daha fazla bilgi için, sol navigasyonda**uygulama** dağıtma **kılavuzuna** > bakın.
