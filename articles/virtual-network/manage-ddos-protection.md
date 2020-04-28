@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 454278f0f45a73ec99f52d3f7e9e0c5ce95ecf7a
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: f208119ce80d6b728030ea96f13d6c3d0375e74a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133299"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182948"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure portal kullanarak Azure DDoS koruması standardını yönetme
 
@@ -241,4 +241,4 @@ Bir sanal ağ için DDoS korumasını etkinleştirmek üzere hesabınıza [sanal
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sanal ağlar için [Azure ilkesi](policy-samples.md) oluşturma ve uygulama
+- Sanal ağlar için [Azure ilke](policy-samples.md) tanımlarını oluşturma ve atama

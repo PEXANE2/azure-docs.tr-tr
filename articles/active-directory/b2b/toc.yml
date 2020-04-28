@@ -17,7 +17,7 @@
       items:
         - name: PowerShell aracılığıyla toplu davet
           href: bulk-invite-powershell.md
-        - name: Portal aracılığıyla toplu davet (önizleme)
+        - name: Portal aracılığıyla toplu davet
           href: tutorial-bulk-invite.md
         - name: Çok faktörlü kimlik doğrulamasını zorlama
           href: b2b-tutorial-require-mfa.md

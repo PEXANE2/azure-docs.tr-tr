@@ -1,26 +1,26 @@
 ---
-title: Şablon ile Key Vault gizli
-description: Dağıtım sırasında parametre olarak anahtar kasasından bir sırrın nasıl geçirilir olduğunu gösterir.
+title: Şablonla gizli Key Vault
+description: Dağıtım sırasında anahtar kasasından bir parametre olarak bir parolanın nasıl geçirileceğini gösterir.
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458275"
 ---
-# <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Dağıtım sırasında güvenli parametre değerini geçirmek için Azure Anahtar Kasası'nı kullanın
+# <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma
 
-Şablonunuza veya parametre dosyanıza doğrudan güvenli bir değer (parola gibi) koymak yerine, dağıtım sırasında değeri Azure [Anahtar Kasasından](../../key-vault/general/overview.md) alabilirsiniz. Parametre dosyanızdaki anahtar kasasına ve gizliye başvurarak değeri alırsınız. Değer hiçbir zaman açıklanamaz çünkü yalnızca anahtar kasa kimliğine başvurursunuz. Anahtar kasası, dağıtmakta olduğunuz kaynak grubundan farklı bir abonelikte bulunabilir.
+Güvenli bir değer (parola gibi) doğrudan şablon veya parametre dosyanıza koymak yerine, bir dağıtım sırasında [Azure Key Vault](../../key-vault/general/overview.md) değeri alabilirsiniz. Değeri, parametre dosyanızda anahtar kasası ve gizli dizi ile başvurarak alırsınız. Yalnızca kendi Anahtar Kasası KIMLIĞINE başvurduğundan değer hiçbir şekilde gösterilmez. Anahtar Kasası, dağıtmakta olduğunuz kaynak grubundan farklı bir abonelikte bulunabilir.
 
-Bu makalede, şablon parametresi olarak hassas bir değer geçirme senaryosu na odaklanın. Sanal makine özelliğini Anahtar Kasa'daki sertifikanın URL'sine ayarlama senaryosunu kapsamaz. Bu senaryonun hızlı başlangıç şablonu için, [Azure Anahtar Kasasından Bir Sertifikayı Sanal Makine'ye](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)yükleyin'e bakın.
+Bu makale, bir şablon parametresi olarak ' de hassas bir değer geçirme senaryosuna odaklanır. Bir sanal makine özelliğini bir Key Vault sertifikanın URL 'sine ayarlama senaryosunu kapsamaz. Bu senaryonun hızlı başlangıç şablonu için bkz. bir [sanal makineye Azure Key Vault sertifika yüklemeyi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows).
 
-## <a name="deploy-key-vaults-and-secrets"></a>Anahtar kasaları ve sırları dağıtın
+## <a name="deploy-key-vaults-and-secrets"></a>Anahtar kasaları ve gizli dizileri dağıtma
 
-Şablon dağıtımı sırasında anahtar kasasına `enabledForTemplateDeployment` erişmek için, `true`anahtar tonozuna ' ya ayarlı.
+Şablon dağıtımı sırasında bir anahtar kasasına erişmek için, anahtar `enabledForTemplateDeployment` kasasında öğesini olarak `true`ayarlayın.
 
-Zaten bir Anahtar Kasanız varsa, şablon dağıtımlarına izin verdiğinden emin olun.
+Zaten bir Key Vault varsa, şablon dağıtımlarının izin verdiğinden emin olun.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -36,7 +36,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ExampleVault -EnabledForTemplateDeployment
 
 ---
 
-Yeni bir Key Vault oluşturmak ve bir sır eklemek için şunları kullanın:
+Yeni bir Key Vault oluşturmak ve bir gizli dizi eklemek için şunu kullanın:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -65,7 +65,7 @@ $secret = Set-AzKeyVaultSecret -VaultName ExampleVault -Name 'ExamplePassword' -
 
 ---
 
-Anahtar kasasahibi olarak, otomatik olarak sırlarını oluşturma erişimi ne var. Sırlar ile çalışan kullanıcı anahtar kasasının sahibi değilse, aşağıdakilerle erişim izni ver:
+Anahtar kasasının sahibi olarak otomatik olarak gizli dizi oluşturma erişiminiz vardır. Gizli dizi ile çalışan Kullanıcı anahtar kasasının sahibi değilse, şu ile erişim izni verin:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -89,19 +89,19 @@ Set-AzKeyVaultAccessPolicy `
 
 ---
 
-Önemli kasalar oluşturma ve sır ekleme hakkında daha fazla bilgi için bkz:
+Anahtar kasaları oluşturma ve gizli dizileri ekleme hakkında daha fazla bilgi için bkz.:
 
-- [CLI kullanarak bir sırrı ayarlayın ve alın](../../key-vault/secrets/quick-create-cli.md)
-- [Powershell'i kullanarak bir sırrı ayarlayın ve alın](../../key-vault/secrets/quick-create-powershell.md)
-- [Portalı kullanarak bir sırrı ayarlayın ve alın](../../key-vault/secrets/quick-create-portal.md)
-- [.NET kullanarak bir sırrı ayarlayın ve alın](../../key-vault/secrets/quick-create-net.md)
-- [Node.js kullanarak bir sırrı ayarlayın ve alın](../../key-vault/secrets/quick-create-node.md)
+- [CLı kullanarak bir gizli dizi ayarlama ve alma](../../key-vault/secrets/quick-create-cli.md)
+- [PowerShell kullanarak bir gizli dizi ayarlama ve alma](../../key-vault/secrets/quick-create-powershell.md)
+- [Portalı kullanarak bir gizli dizi ayarlama ve alma](../../key-vault/secrets/quick-create-portal.md)
+- [.NET kullanarak bir gizli dizi ayarlama ve alma](../../key-vault/secrets/quick-create-net.md)
+- [Node. js kullanarak bir gizli dizi ayarlama ve alma](../../key-vault/secrets/quick-create-node.md)
 
-## <a name="grant-access-to-the-secrets"></a>Sırlara erişim izni ver
+## <a name="grant-access-to-the-secrets"></a>Gizli dizileri için erişim izni verme
 
-Şablonu dağıtan kullanıcının kaynak `Microsoft.KeyVault/vaults/deploy/action` grubunun kapsamı ve anahtar kasası için izin alması gerekir. [Sahibi](../../role-based-access-control/built-in-roles.md#owner) ve [Katılımcı](../../role-based-access-control/built-in-roles.md#contributor) rolleri hem bu erişimi verir. Anahtar kasasını oluşturduysanız, sahibi sizsiniz, bu yüzden izniniz var.
+Şablonu dağıtan kullanıcının, kaynak grubunun ve anahtar kasasının kapsamı için `Microsoft.KeyVault/vaults/deploy/action` izne sahip olması gerekir. [Sahip](../../role-based-access-control/built-in-roles.md#owner) ve [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rollerinin her ikisi de bu erişimi verir. Anahtar Kasası oluşturduysanız, izninizin olması gerekir.
 
-Aşağıdaki yordam, minimum izinle bir rolün nasıl oluşturulup oluşturulabildiğini ve kullanıcının nasıl atayılabildiğini gösterir
+Aşağıdaki yordamda, en düşük izinle bir rol oluşturma ve kullanıcının nasıl atanacağı gösterilmektedir
 
 1. Özel bir rol tanımı JSON dosyası oluşturun:
 
@@ -121,9 +121,9 @@ Aşağıdaki yordam, minimum izinle bir rolün nasıl oluşturulup oluşturulabi
       ]
     }
     ```
-    "00000000-0000-0000-0000-00000000000000000000000" yerine abonelik kimliği ile değiştirin.
+    "00000000-0000-0000-0000-000000000000" öğesini abonelik KIMLIĞIYLE değiştirin.
 
-2. JSON dosyasını kullanarak yeni rol oluşturun:
+2. JSON dosyasını kullanarak yeni rolü oluşturun:
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -147,19 +147,19 @@ Aşağıdaki yordam, minimum izinle bir rolün nasıl oluşturulup oluşturulabi
 
     ---
 
-    Örnekler, kaynak grubu düzeyinde kullanıcıya özel rolü atar.
+    Örnekler, kullanıcıya kaynak grubu düzeyinde özel rol atar.
 
-[Yönetilen Uygulama](../managed-applications/overview.md)şablonuna sahip bir Anahtar Kasası kullanırken, Appliance **Resource Provider** hizmet ilkesine erişim izni vermelisiniz. Daha fazla bilgi için Azure [Yönetilen Uygulamaları dağıtırken Access Key Vault gizli](../managed-applications/key-vault-access.md)bakın.
+[Yönetilen bir uygulama](../managed-applications/overview.md)şablonuyla bir Key Vault kullanırken, **gereç kaynak sağlayıcısı** hizmet sorumlusuna erişim vermeniz gerekir. Daha fazla bilgi için bkz. [Azure yönetilen uygulamalar dağıtıldığında erişim Key Vault gizliliği](../managed-applications/key-vault-access.md).
 
-## <a name="reference-secrets-with-static-id"></a>Statik kimlikli başvuru sırları
+## <a name="reference-secrets-with-static-id"></a>Statik KIMLIK ile başvuru gizli dizileri
 
-Bu yaklaşımla, şablona değil, parametre dosyasındaki anahtar kasasına başvurursunuz. Aşağıdaki resim, parametre dosyasının gizliye nasıl başvurulup bu değeri şablona nasıl aktardığını gösterir.
+Bu yaklaşımda, şablon değil, parametre dosyasındaki anahtar kasasına başvurun. Aşağıdaki görüntüde, parametre dosyasının gizli dizi ile nasıl başvurduğu gösterilmektedir ve bu değer şablona geçirilir.
 
-![Kaynak Yöneticisi anahtar kasa tümleştirmeStatik Kimlik diyagramı](./media/key-vault-parameter/statickeyvault.png)
+![Kaynak Yöneticisi Anahtar Kasası tümleştirme statik KIMLIK diyagramı](./media/key-vault-parameter/statickeyvault.png)
 
-[Öğretici: Azure Anahtar Kasası'nı Kaynak Yöneticisi Şablonu dağıtımına entegre](./template-tutorial-use-key-vault.md) etmek bu yöntemi kullanır.
+[Öğretici: Kaynak Yöneticisi Şablon dağıtımı Azure Key Vault tümleştirme](./template-tutorial-use-key-vault.md) bu yöntemi kullanır.
 
-Aşağıdaki şablon, yönetici parolası içeren bir SQL sunucusu dağıtlar. Parola parametresi güvenli bir dize olarak ayarlanır. Ancak şablon, bu değerin nereden geldiğini belirtmez.
+Aşağıdaki şablon, yönetici parolası içeren bir SQL Server dağıtır. Password parametresi güvenli bir dizeye ayarlanır. Ancak, şablon bu değerin nereden geldiğini belirtmez.
 
 ```json
 {
@@ -195,9 +195,9 @@ Aşağıdaki şablon, yönetici parolası içeren bir SQL sunucusu dağıtlar. P
 }
 ```
 
-Şimdi, önceki şablon için bir parametre dosyası oluşturun. Parametre dosyasında, şablondaki parametrenin adıyla eşleşen bir parametre belirtin. Parametre değeri için, anahtar kasasından gizli başvuru. Anahtar kasasının kaynak tanımlayıcısını ve sırrın adını geçirerek gizliye başvurursunuz:
+Şimdi, önceki şablon için bir parametre dosyası oluşturun. Parametre dosyasında, şablondaki parametrenin adıyla eşleşen bir parametre belirtin. Parametre değeri için anahtar kasasından gizli dizi başvurusu yapın. Anahtar kasasının kaynak tanımlayıcısını ve gizli anahtar adını geçirerek gizli dizi başvurusunu alırsınız:
 
-Aşağıdaki parametre dosyasında, anahtar kasa sıcağa zaten var olmalı ve kaynak kimliği için statik bir değer sağlarsınız.
+Aşağıdaki parametre dosyasında, Anahtar Kasası parolasının zaten mevcut olması ve kaynak KIMLIĞI için statik bir değer sağlamanız gerekir.
 
 ```json
 {
@@ -222,14 +222,14 @@ Aşağıdaki parametre dosyasında, anahtar kasa sıcağa zaten var olmalı ve k
 }
 ```
 
-Geçerli sürüm dışında gizli bir sürümünü kullanmanız gerekiyorsa, `secretVersion` özelliği kullanın.
+Parolanın geçerli sürümden farklı bir sürümünü kullanmanız gerekiyorsa, `secretVersion` özelliğini kullanın.
 
 ```json
 "secretName": "ExamplePassword",
 "secretVersion": "cd91b2b7e10e492ebb870a6ee0591b68"
 ```
 
-Şablonu dağıtın ve parametre dosyasına geçirin:
+Şablonu dağıtın ve parametre dosyasını geçirin:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -253,17 +253,17 @@ New-AzResourceGroupDeployment `
 
 ---
 
-## <a name="reference-secrets-with-dynamic-id"></a>Dinamik kimliği olan başvuru sırları
+## <a name="reference-secrets-with-dynamic-id"></a>Dinamik KIMLIK ile başvuru gizli dizileri
 
-Önceki bölümde parametreden anahtar kasa gizli için statik bir kaynak kimliği geçmek için nasıl gösterdi. Ancak, bazı senaryolarda, geçerli dağıtıma bağlı olarak değişen bir anahtar kasa sırrına başvurmanız gerekir. Veya, parametre dosyasında bir başvuru parametresi oluşturmak yerine parametre değerlerini şablona geçirmek isteyebilirsiniz. Her iki durumda da, bağlantılı bir şablon kullanarak önemli bir kasa gizli için kaynak kimliğini dinamik olarak oluşturabilirsiniz.
+Önceki bölümde, bir statik kaynak KIMLIĞININ parametresinden Anahtar Kasası gizli dizisi için nasıl geçirilediği gösterildi. Ancak bazı senaryolarda, geçerli dağıtıma göre farklılık gösteren bir Anahtar Kasası gizliliğine başvurmanız gerekir. Ya da parametre değerlerini parametre dosyasında bir başvuru parametresi oluşturmak yerine şablona geçirmek isteyebilirsiniz. Her iki durumda da, bağlantılı bir şablon kullanarak bir Anahtar Kasası parolasının kaynak KIMLIĞINI dinamik olarak oluşturabilirsiniz.
 
-Şablon ifadeleri parametre dosyasında izin verilmediği için parametreler dosyasındaki kaynak kimliğini dinamik olarak oluşturamazsınız.
+Parametreler dosyasında şablon ifadelerine izin verilmediğinden, Parametreler dosyasında dinamik olarak kaynak KIMLIĞI oluşturamazsınız.
 
-Üst şablonunuzda, iç içe geçen şablonu ekleyin ve dinamik olarak oluşturulan kaynak kimliğini içeren bir parametrede geçirin. Aşağıdaki resim, bağlı şablondaki bir parametrenin gizliye nasıl başvurulabilir olduğunu gösterir.
+Ana şablonunuzda, iç içe geçmiş şablonu ekleyin ve dinamik olarak üretilen kaynak KIMLIĞINI içeren bir parametreyi geçirin. Aşağıdaki görüntüde, bağlantılı şablondaki bir parametrenin gizli dizi nasıl başvurduğu gösterilmektedir.
 
-![Dinamik Kimlik](./media/key-vault-parameter/dynamickeyvault.png)
+![Dinamik KIMLIK](./media/key-vault-parameter/dynamickeyvault.png)
 
-Aşağıdaki şablon dinamik olarak anahtar kasa kimliğini oluşturur ve bir parametre olarak geçirir.
+Aşağıdaki şablon Anahtar Kasası KIMLIĞINI dinamik olarak oluşturur ve bir parametre olarak geçirir.
 
 ```json
 {
@@ -375,5 +375,5 @@ Aşağıdaki şablon dinamik olarak anahtar kasa kimliğini oluşturur ve bir pa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Anahtar kasaları hakkında genel bilgi için Azure [Anahtar Kasası nedir?](../../key-vault/general/overview.md)
-- Önemli sırlara başvurmanın tam örnekleri [için, Anahtar Kasa örneklerine](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)bakın.
+- Anahtar kasaları hakkında genel bilgi için bkz. [Azure Key Vault nedir?](../../key-vault/general/overview.md).
+- Anahtar gizli dizileri ile ilgili tüm örnekler için, [Key Vault örneklere](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)bakın.

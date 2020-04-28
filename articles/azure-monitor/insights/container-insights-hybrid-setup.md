@@ -2,17 +2,37 @@
 title: Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yapılandırma | Microsoft Docs
 description: Bu makalede, Azure Stack veya başka bir ortamda barındırılan Kubernetes kümelerini izlemek üzere kapsayıcılar için Azure Izleyicisini nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: c0dbbf9f65aa96db1ebcd0b03552bba8d1f91863
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.date: 04/22/2020
+ms.openlocfilehash: a0008f7a2d6b808a8ff55d85330801305361d7c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82143164"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185974"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile karma Kubernetes kümelerini yapılandırma
 
 Kapsayıcılar için Azure Izleyici, Azure 'da barındırılan kendinden yönetilen bir Kubernetes kümesi olan Azure Kubernetes hizmeti (AKS) ve [aks altyapısı](https://github.com/Azure/aks-engine)için zengin izleme deneyimi sağlar. Bu makalede, Azure dışında barındırılan Kubernetes kümelerinin izlenmesini etkinleştirme ve benzer bir izleme deneyimi elde etme açıklanmaktadır.
+
+## <a name="supported-configurations"></a>Desteklenen yapılandırmalar
+
+Kapsayıcılar için Azure Izleyici ile resmi olarak şunlar desteklenir.
+
+* Lý 
+
+    * Şirket içi Kubernetes
+    
+    * Azure 'da AKS altyapısı ve Azure Stack. Daha fazla bilgi için bkz. [Azure Stack aks altyapısı](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)
+    
+    * [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) sürüm 4 ve üzeri, şirket içi veya diğer bulut ortamları.
+
+* Kubernetes ve destek ilkesi sürümleri [desteklenen aks](../../aks/supported-kubernetes-versions.md)sürümleriyle aynıdır.
+
+* Kapsayıcı çalışma zamanı: Docker, Moby ve CRı uyumlu çalışma zamanları, CRı-O ve ContainerD.
+
+* Ana ve çalışılan düğümler için Linux işletim sistemi sürümü: Ubuntu (18,04 LTS ve 16,04 LTS) ve Red Hat Enterprise Linux CoreOS 43,81.
+
+* Erişim denetimi destekleniyor: Kubernetes RBAC ve RBAC olmayan
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -33,10 +53,9 @@ Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 * Linux için Log Analytics aracısının Kapsayıcılı sürümünün Azure Izleyici ile iletişim kurması için aşağıdaki proxy ve güvenlik duvarı yapılandırma bilgileri gereklidir:
 
     |Aracı Kaynağı|Bağlantı noktaları |
-    |------|---------|   
-    |*.ods.opinsights.azure.com |Bağlantı noktası 443 |  
-    |*.oms.opinsights.azure.com |Bağlantı noktası 443 |  
-    |*.blob.core.windows.net |Bağlantı noktası 443 |  
+    |------|---------|
+    |*.ods.opinsights.azure.com |Bağlantı noktası 443 |
+    |*.oms.opinsights.azure.com |Bağlantı noktası 443 |
     |*. dc.services.visualstudio.com |Bağlantı noktası 443 |
 
 * Kapsayıcılı Aracı, performans ölçümlerini toplamak için, `cAdvisor secure port: 10250` kümedeki `unsecure port :10255` tüm düğümlerde kubelet 'in ve açık olmasını gerektirir. Zaten yapılandırılmamışsa Kubelet 'in Cadvizörü üzerinde yapılandırmanızı `secure port: 10250` öneririz.
@@ -45,16 +64,6 @@ Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun:
 
 >[!IMPORTANT]
 >Karma Kubernetes kümelerini izlemek için desteklenen en düşük aracı sürümü ciprod10182019 veya daha yeni bir sürüm.
-
-## <a name="supported-configurations"></a>Desteklenen yapılandırmalar
-
-Kapsayıcılar için Azure Izleyici ile resmi olarak şunlar desteklenir.
-
-- Ortamlar: Azure 'da Kubernetes, AKS motoru ve Azure Stack. Daha fazla bilgi için bkz. [Azure Stack aks motoru](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
-- Kubernetes ve destek ilkesi sürümleri [desteklenen aks](../../aks/supported-kubernetes-versions.md)sürümleriyle aynıdır.
-- Kapsayıcı çalışma zamanı: Docker ve Moby
-- Ana ve çalışılan düğümler için Linux işletim sistemi sürümü: Ubuntu (18,04 LTS ve 16,04 LTS)
-- Erişim denetimi destekleniyor: Kubernetes RBAC ve RBAC olmayan
 
 ## <a name="enable-monitoring"></a>İzlemeyi etkinleştirme
 
@@ -242,7 +251,7 @@ Bu yöntem iki JSON şablonu içerir. Bir şablon, izlemeyi etkinleştirmek içi
 ## <a name="install-the-chart"></a>Grafiği yükler
 
 >[!NOTE]
->Aşağıdaki komutlar yalnızca Held sürüm 2 için geçerlidir. --Name parametresinin kullanımı, Held sürüm 3 ile geçerli değildir.
+>Aşağıdaki komutlar yalnızca Held sürüm 2 için geçerlidir. `--name` Parametresinin kullanımı, Held sürüm 3 ile geçerli değildir.
 
 HELı grafiğini etkinleştirmek için aşağıdakileri yapın:
 
@@ -272,6 +281,28 @@ HELı grafiğini etkinleştirmek için aşağıdakileri yapın:
     $ helm install --name myrelease-1 \
     --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
+
+### <a name="enable-the-helm-chart-using-the-api-model"></a>API modelini kullanarak Held grafiğini etkinleştirme
+
+AKS motoru küme belirtimi json dosyasında API modeli olarak da adlandırılan bir eklenti belirtebilirsiniz. Bu eklenti içinde, toplanan izleme verilerinin depolandığı Log Analytics çalışma `WorkspaceGUID` alanının `WorkspaceKey` Base64 kodlamalı sürümünü sağlayın.
+
+Azure Stack hub kümesi için desteklenen API tanımları, bu örnekte- [Kubernetes-Container-monitoring_existing_workspace_id_and_key. JSON](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json)dosyasında bulunabilir. Özellikle, **Kubernetesconfig**içinde **addons** özelliğini bulabilirsiniz:
+
+```json
+"orchestratorType": "Kubernetes",
+       "kubernetesConfig": {
+         "addons": [
+           {
+             "name": "container-monitoring",
+             "enabled": true,
+             "config": {
+               "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
+               "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
+             }
+           }
+         ]
+       }
+```
 
 ## <a name="configure-agent-data-collection"></a>Aracı veri toplamayı yapılandır
 

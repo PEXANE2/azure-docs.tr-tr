@@ -1,6 +1,6 @@
 ---
-title: Sorun giderme birleşik kayıt - Azure Active Directory
-description: Sorun Giderme Azure AD Çok Faktörlü Kimlik Doğrulaması ve self servis parola sıfırlama kombine kaydı
+title: Birleşik kayıt sorunlarını giderme-Azure Active Directory
+description: Azure AD Multi-Factor Authentication ve self servis parola sıfırlama Birleşik kayıt sorunlarını giderme
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,73 +12,73 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81450947"
 ---
-# <a name="troubleshooting-combined-security-information-registration"></a>Sorun giderme birleştirilmiş güvenlik bilgi kaydı
+# <a name="troubleshooting-combined-security-information-registration"></a>Birleşik güvenlik bilgileri kaydı sorunlarını giderme
 
-Bu makaledeki bilgiler, birleştirilmiş kayıt deneyimi kullanıcıları tarafından bildirilen sorun giderme sorunları olan yöneticilere rehberlik etmek içindir.
+Bu makaledeki bilgiler, birleştirilmiş kayıt deneyiminin kullanıcıları tarafından raporlanan sorunları gidermeye yönelik yöneticilere kılavuzluk edilir.
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 
-Birleşik kayıt için günlüğe kaydedilen olaylar, Azure REKLAM denetim günlüklerinde Kimlik Doğrulama Yöntemleri kategorisinde yer alır.
+Birleşik kayıt için günlüğe kaydedilen olaylar, Azure AD denetim günlüklerinde kimlik doğrulama yöntemleri kategorisinde bulunur.
 
-![Azure AD Denetimi, kayıt olaylarını gösteren arabirimi kaydeder](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
+![Kayıt olaylarını gösteren Azure AD denetim günlükleri arabirimi](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
-Aşağıdaki tablo, birleşik kayıt tarafından oluşturulan tüm denetim olaylarını listeler:
+Aşağıdaki tabloda, Birleşik kayıt tarafından oluşturulan tüm denetim olayları listelenmektedir:
 
 | Etkinlik | Durum | Neden | Açıklama |
 | --- | --- | --- | --- |
-| Kullanıcı gerekli tüm güvenlik bilgilerini kaydetti | Başarılı | Kullanıcı gerekli tüm güvenlik bilgilerini kaydetti. | Bu olay, bir kullanıcı kaydı başarıyla tamamladığında oluşur.|
-| Kullanıcı gerekli tüm güvenlik bilgilerini kaydetti | Hata | Kullanıcı güvenlik bilgileri kaydını iptal etti. | Bu olay, bir kullanıcı kesme modundan kaydı iptal ettiğinde oluşur.|
-| Kullanıcı kayıtlı güvenlik bilgileri | Başarılı | Kullanıcı kayıtlı *yöntem*. | Bu olay, bir kullanıcı tek bir yöntem kaydettiğinde oluşur. *Yöntem* Authenticator uygulaması, Telefon, E-posta, Güvenlik soruları, Uygulama şifresi, Alternatif telefon ve benzeri olabilir.| 
-| Kullanıcı gözden güvenlik bilgileri | Başarılı | Kullanıcı güvenlik bilgilerini başarıyla gözden geçirdi. | Bu olay, bir kullanıcı güvenlik bilgileri inceleme sayfasında **iyi görünüyor** seçtiğinde oluşur.|
-| Kullanıcı gözden güvenlik bilgileri | Hata | Kullanıcı güvenlik bilgilerini gözden geçiremedi. | Bu olay, bir kullanıcı güvenlik bilgileri inceleme sayfasında **iyi görünüyor** seçer ancak bir şey arka uçta başarısız olur oluşur.|
-| Kullanıcı silinen güvenlik bilgileri | Başarılı | Kullanıcı silinen *yöntem*. | Bu olay, bir kullanıcı tek bir yöntemi sildiğinde oluşur. *Yöntem* Authenticator uygulaması, Telefon, E-posta, Güvenlik soruları, Uygulama şifresi, Alternatif telefon ve benzeri olabilir.|
-| Kullanıcı silinen güvenlik bilgileri | Hata | Kullanıcı *yöntemi*silmek için başarısız oldu. | Bu olay, bir kullanıcı bir yöntemi silmeye çalıştığında ancak deneme bazı nedenlerden dolayı başarısız olduğunda oluşur. *Yöntem* Authenticator uygulaması, Telefon, E-posta, Güvenlik soruları, Uygulama şifresi, Alternatif telefon ve benzeri olabilir.|
-| Kullanıcı varsayılan güvenlik bilgilerini değiştirdi | Başarılı | Kullanıcı *yöntem*için varsayılan güvenlik bilgilerini değiştirdi. | Bu olay, bir kullanıcı varsayılan yöntemi değiştirdiğinde oluşur. *Yöntem* Authenticator uygulaması bildirimi, benim authenticator uygulaması veya belirteç bir kod olabilir, Çağrı +X XXXXXXXxxXXX, Metin bir kod +X XXXXXXXXX, ve benzeri.|
-| Kullanıcı varsayılan güvenlik bilgilerini değiştirdi | Hata | Kullanıcı *yöntem*için varsayılan güvenlik bilgilerini değiştirmek için başarısız oldu. | Bu olay, bir kullanıcı varsayılan yöntemi değiştirmeye çalıştığında ancak deneme nin bazı nedenlerden dolayı başarısız olması durumunda oluşur. *Yöntem* Authenticator uygulaması bildirimi, benim authenticator uygulaması veya belirteç bir kod olabilir, Çağrı +X XXXXXXXxxXXX, Metin bir kod +X XXXXXXXXX, ve benzeri.|
+| Kullanıcı tüm gerekli güvenlik bilgilerini kaydetti | Başarılı | Kullanıcı tüm gerekli güvenlik bilgilerini kaydetti. | Bu olay, bir kullanıcı kaydı başarıyla tamamladığında oluşur.|
+| Kullanıcı tüm gerekli güvenlik bilgilerini kaydetti | Hata | Kullanıcı güvenlik bilgileri kaydını iptal etti. | Bu olay, bir Kullanıcı kesme modundan kaydı iptal ettiğinde meydana gelir.|
+| Kullanıcı kayıtlı güvenlik bilgileri | Başarılı | Kullanıcı kayıtlı *yöntemi*. | Bu olay, bir kullanıcı tek bir yöntemi kaydettiğinde oluşur. *Yöntem* kimlik doğrulayıcı uygulaması, telefon, e-posta, güvenlik soruları, uygulama parolası, alternatif telefon vb. olabilir.| 
+| Kullanıcı tarafından gözden geçirilmiş güvenlik bilgileri | Başarılı | Kullanıcı, güvenlik bilgilerini başarıyla incelendi. | Bu olay, bir kullanıcı seçildiğinde güvenlik bilgileri incelemesi sayfasında **Iyi görünüyor** durumunda meydana gelir.|
+| Kullanıcı tarafından gözden geçirilmiş güvenlik bilgileri | Hata | Kullanıcı güvenlik bilgilerini inceleyemedi. | Bu olay, bir kullanıcı seçimi, güvenlik bilgileri incelemesi sayfasında **Iyi görünüyor** , ancak arka uçta bir hata oluşmadığında oluşur.|
+| Kullanıcı tarafından silinen güvenlik bilgileri | Başarılı | Kullanıcı tarafından silinen *Yöntem*. | Bu olay, bir kullanıcı tek bir yöntemi sildiğinde oluşur. *Yöntem* kimlik doğrulayıcı uygulaması, telefon, e-posta, güvenlik soruları, uygulama parolası, alternatif telefon vb. olabilir.|
+| Kullanıcı tarafından silinen güvenlik bilgileri | Hata | Kullanıcı *yöntemi*silemedi. | Bu olay, bir Kullanıcı bir yöntemi silmeye çalıştığında oluşur ancak deneme bir nedenden dolayı başarısız olur. *Yöntem* kimlik doğrulayıcı uygulaması, telefon, e-posta, güvenlik soruları, uygulama parolası, alternatif telefon vb. olabilir.|
+| Kullanıcı varsayılan güvenlik bilgilerini değiştirdi | Başarılı | Kullanıcı, *yöntemi*için varsayılan güvenlik bilgilerini değiştirdi. | Bu olay, bir Kullanıcı varsayılan yöntemi değiştirdiğinde oluşur. *Yöntem* , kimlik doğrulayıcı uygulama bildirimi, kimlik doğrulayıcı uygulamanızdan veya belirteçten bir kod, + x xxxxxxxxxx, bir kodu + x xxxxxxxxx ve benzeri gibi olabilir.|
+| Kullanıcı varsayılan güvenlik bilgilerini değiştirdi | Hata | Kullanıcı, *yöntemi*için varsayılan güvenlik bilgilerini değiştiremedi. | Bu olay, bir Kullanıcı varsayılan yöntemi değiştirmeyi denediğinde oluşur ancak deneme bir nedenden dolayı başarısız olur. *Yöntem* , kimlik doğrulayıcı uygulama bildirimi, kimlik doğrulayıcı uygulamanızdan veya belirteçten bir kod, + x xxxxxxxxxx, bir kodu + x xxxxxxxxx ve benzeri gibi olabilir.|
 
-## <a name="troubleshooting-interrupt-mode"></a>Sorun giderme kesme modu
-
-| Belirti | Sorun giderme adımları |
-| --- | --- |
-| Görmeyi umduğum yöntemleri göremiyorum. | 1. Kullanıcının Azure AD yöneticisi rolü olup olmadığını kontrol edin. Evet ise, SSPR yönetici ilkesi farklılıklarını görüntüleyin. <br> 2. Kullanıcının Çok Faktörlü Kimlik Doğrulama kaydı nın uygulanması veya SSPR kayıt uygulaması nedeniyle kesintiye uğrayıp uğramadığını belirleyin. Hangi yöntemlerin gösterilmesi gerektiğini belirlemek için "Birleşik kayıt modları" altındaki [akış şemasına](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes) bakın. <br> 3. Çok Faktörlü Kimlik Doğrulama veya SSPR ilkesinin ne kadar yakın zamanda değiştirilmediğini belirleyin. Değişiklik son zamanlarda yapıldıysa, güncelleştirilmiş ilkeğin yayılması biraz zaman alabilir.|
-
-## <a name="troubleshooting-manage-mode"></a>Sorun giderme yönetimi modu
+## <a name="troubleshooting-interrupt-mode"></a>Kesme modunda sorun giderme
 
 | Belirti | Sorun giderme adımları |
 | --- | --- |
-| Belirli bir yöntem ekleme seçeneğim yok. | 1. Yöntemin Çok Faktörlü Kimlik Doğrulama veya SSPR için etkinleştirilip etkinleştirilemeyeceğini belirleyin. <br> 2. Yöntem etkinleştirilirse, ilkeleri yeniden kaydedin ve yeniden test etmeden önce 1-2 saat bekleyin. <br> 3. Yöntem etkinse, kullanıcının ayarlamasına izin verilen yöntemin en yüksek sayısını zaten ayarlamadığından emin olun.|
+| Görmem beklenen yöntemleri görmüyorum. | 1. kullanıcının bir Azure AD yönetici rolüne sahip olup olmadığını denetleyin. Yanıt Evet ise, SSPR yönetici ilkesi farklılıklarını görüntüleyin. <br> 2. Multi-Factor Authentication kayıt zorlaması veya SSPR kayıt zorlaması nedeniyle kullanıcının kesintiye uğratılmadığını belirleme. Hangi yöntemlerin gösterilmesi gerektiğini öğrenmek için "Birleşik Kayıt modları" altındaki [Akış Çizelgesine](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes) bakın. <br> 3. Multi-Factor Authentication veya SSPR ilkesinin son değiştirilme sıklığını belirleme. Değişiklik son zamanlarda, güncelleştirilmiş ilkenin yayılması biraz zaman alabilir.|
 
-## <a name="disable-combined-registration"></a>Kombine kaydı devre dışı
+## <a name="troubleshooting-manage-mode"></a>Yönetme modu sorunlarını giderme
 
-Bir kullanıcı yeni birleştirilmiş deneyimde bir telefon numarası ve/veya mobil uygulama kaydettirdiğinde, hizmetimiz bu kullanıcıdaki yöntemler için bir bayrak kümesi (StrongAuthentication Methods) damgalar. Bu işlevsellik, çok faktörlü kimlik doğrulama gerektiğinde kullanıcının bu yöntemlerle Çok Faktörlü Kimlik Doğrulama gerçekleştirmesine olanak tanır.
+| Belirti | Sorun giderme adımları |
+| --- | --- |
+| Belirli bir yöntemi ekleme seçeneği yok. | 1. metodun Multi-Factor Authentication için mi yoksa SSPR için mi etkinleştirildiğini belirleme. <br> 2. Yöntem etkinleştirilirse, ilkeleri yeniden kaydedin ve test etmeden önce 1-2 saat bekleyin. <br> 3. Yöntem etkinleştirilirse, kullanıcının ayarlamaya izin verilen en fazla yöntem sayısını zaten ayarlamadığından emin olun.|
 
-Bir yönetici önizlemeyi etkinleştirilerse, kullanıcılar yeni deneyim üzerinden kaydolursa ve yönetici önizlemeyi devre dışı bırakırsa, kullanıcılar bilmeden Çoklu Faktörlü Kimlik Doğrulama'ya da kaydolabilir.
+## <a name="disable-combined-registration"></a>Birleşik kaydı devre dışı bırak
 
-Birleşik kaydı tamamlamış bir kullanıcı geçerli self servis parola sıfırlama (SSPR) [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)kayıt sayfasına giderse, kullanıcıdan bu sayfaya erişebilmeleri için Çok Faktörlü Kimlik Doğrulama'yı gerçekleştirmesi istenir. Bu adım teknik açıdan beklenmektedir, ancak daha önce yalnızca SSPR için kayıtlı olan kullanıcılar için yenidir. Bu ek adım, başka bir güvenlik düzeyi sağlayarak kullanıcının güvenlik duruşunu iyileştirse de, yöneticiler kullanıcılarını artık Çok Faktörlü Kimlik Doğrulama'yı gerçekleştirememek için geri almak isteyebilir.  
+Bir Kullanıcı yeni Birleşik deneyimde bir telefon numarası ve/veya mobil uygulama kaydettiğinde, hizmetimiz bu kullanıcı için bu yöntemler için bir bayrak kümesini (StrongAuthenticationMethods) damgalar. Bu işlevsellik, Multi-Factor Authentication gerektiğinde kullanıcının bu yöntemlerle Multi-Factor Authentication gerçekleştirmesini sağlar.
+
+Bir yönetici önizlemeyi etkinleştirirse, kullanıcılar yeni deneyimle kaydedilir ve ardından Yönetici önizlemeyi devre dışı bırakır, kullanıcılar Multi-Factor Authentication için de kayıt yaptırmayı geri alabilir.
+
+Birleşik kayıt işlemini tamamlamış bir Kullanıcı [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup), ' de geçerli self servis parola sıfırlama (SSPR) kayıt sayfasına gittiğinde, bu sayfaya erişebilmeleri için kullanıcıdan Multi-Factor Authentication gerçekleştirmesi istenir. Bu adım teknik bir bakış için beklenmektedir, ancak daha önce yalnızca SSPR için kaydolan kullanıcılar için yenidir. Bu ek adım, farklı bir güvenlik düzeyi sağlayarak kullanıcının güvenlik duruşunu iyileştirse de, Yöneticiler Multi-Factor Authentication yapabilmeleri için kullanıcılarını geri almak isteyebilir.  
 
 ### <a name="how-to-roll-back-users"></a>Kullanıcıları geri alma
 
-Yönetici olarak, bir kullanıcının Çok Faktörlü Kimlik Doğrulama ayarlarını sıfırlamak istiyorsanız, bir sonraki bölümde sağlanan PowerShell komut dosyasını kullanabilirsiniz. Komut dosyası, bir kullanıcının mobil uygulaması ve/veya telefon numarası için StrongAuthenticationMethods özelliğini temizler. Bu komut dosyasını kullanıcılarınız için çalıştırdıysanız, gerekirse Çok Faktörlü Kimlik Doğrulama için yeniden kaydolmaları gerekir. Etkilenen tüm kullanıcıları geri almadan önce bir veya iki kullanıcıyla geri alma test etmenizi öneririz.
+Yönetici olarak, bir kullanıcının Multi-Factor Authentication ayarlarını sıfırlamak istiyorsanız, sonraki bölümde sağlanmış olan PowerShell betiğini kullanabilirsiniz. Betik, bir kullanıcının mobil uygulaması ve/veya telefon numarası için StrongAuthenticationMethods özelliğini temizler. Kullanıcılarınız için bu betiği çalıştırırsanız, ihtiyaç duyduklarında Multi-Factor Authentication için yeniden kaydolmaları gerekir. Etkilenen tüm kullanıcıları geri almadan önce bir veya iki kullanıcıyla geri alma sınamasını öneririz.
 
-İzleyen adımlar, bir kullanıcıyı veya kullanıcı grubunu geri almanıza yardımcı olur.
+Aşağıdaki adımlar, bir kullanıcıyı veya kullanıcı grubunu geri almanıza yardımcı olur.
 
 #### <a name="prerequisites"></a>Ön koşullar
 
-1. Uygun Azure AD PowerShell modüllerini yükleyin. PowerShell penceresinde, modülleri yüklemek için aşağıdaki komutları çalıştırın:
+1. Uygun Azure AD PowerShell modüllerini yükler. Bir PowerShell penceresinde, modülleri yüklemek için şu komutları çalıştırın:
 
    ```powershell
    Install-Module -Name MSOnline
    Import-Module MSOnline
    ```
 
-1. Etkilenen kullanıcı nesnesi kimliklerinin listesini satır başına bir kimliği olan bir metin dosyası olarak bilgisayarınıza kaydedin. Dosyanın konumuna dikkat edin.
-1. Aşağıdaki komut dosyasını bilgisayarınıza kaydedin ve komut dosyasının konumuna dikkat edin:
+1. Etkilenen Kullanıcı nesne kimliklerinin listesini, satır başına bir KIMLIĞE sahip bir metin dosyası olarak bilgisayarınıza kaydedin. Dosyanın konumunu unutmayın.
+1. Aşağıdaki betiği bilgisayarınıza kaydedin ve komut dosyasının konumunu aklınızda olun:
 
    ```powershell
    <# 
@@ -139,22 +139,22 @@ Yönetici olarak, bir kullanıcının Çok Faktörlü Kimlik Doğrulama ayarlar�
    }
    ```
 
-#### <a name="rollback"></a>Geri alma
+#### <a name="rollback"></a>Etkin
 
-PowerShell penceresinde, komut dosyası ve kullanıcı dosyası konumlarını sağlayarak aşağıdaki komutu çalıştırın. İstendiğinde genel yönetici kimlik bilgilerini girin. Komut dosyası, her kullanıcı güncelleştirme işleminin sonucunu çıktıracaktır.
+Bir PowerShell penceresinde, komut dosyası ve Kullanıcı dosyası konumlarını sağlayarak aşağıdaki komutu çalıştırın. İstendiğinde genel yönetici kimlik bilgilerini girin. Komut dosyası her bir Kullanıcı güncelleştirme işleminin sonucunu çıktı olarak dolacak.
 
 `<script location> -path <user file location>`
 
-### <a name="disable-the-updated-experience"></a>Güncelleştirilmiş deneyimi devre dışı atma
+### <a name="disable-the-updated-experience"></a>Güncelleştirilmiş deneyimi devre dışı bırakın
 
-Kullanıcılarınız için güncelleştirilmiş deneyimi devre dışı katmak için aşağıdaki adımları tamamlayın:
+Kullanıcılarınız için güncelleştirilmiş deneyimi devre dışı bırakmak için şu adımları izleyin:
 
-1. Azure portalında kullanıcı yöneticisi olarak oturum açın.
-2. Azure **Active Directory** > **Kullanıcı ayarlarına** > gidin**Erişim paneli önizleme özellikleri için ayarları yönetin.**
-3. Kullanıcılar altında **güvenlik bilgilerini kaydetmek ve yönetmek için önizleme özelliklerini kullanabilir,** seçiciyi **Yok**olarak ayarlayabilir ve ardından **Kaydet'i**seçebilir.
+1. Azure portal Kullanıcı Yöneticisi olarak oturum açın.
+2. **Azure Active Directory** > **Kullanıcı ayarları** > **erişim paneli Önizleme özellikleri ayarlarını yönet**' e gidin.
+3. **Kullanıcılar altında güvenlik bilgilerini kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilir**, seçiciyi **none**olarak ayarlayabilir ve ardından **Kaydet**' i seçin.
 
-Kullanıcılardan artık güncelleştirilmiş deneyimi kullanarak kaydolması istenmez.
+Kullanıcılardan artık güncelleştirilmiş deneyim kullanılarak kaydolması istenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Self servis parola sıfırlama ve Azure Çok Faktörlü Kimlik Doğrulama için birleşik kayıt hakkında daha fazla bilgi edinin](concept-registration-mfa-sspr-combined.md)
+* [Self servis parola sıfırlama ve Azure Multi-Factor Authentication için Birleşik kayıt hakkında daha fazla bilgi edinin](concept-registration-mfa-sspr-combined.md)
