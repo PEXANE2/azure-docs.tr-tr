@@ -1,6 +1,6 @@
 ---
-title: Azure CLI'yi kullanarak Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
-description: Bu makalede, Azure CLI'yi kullanarak Azure Güvenlik Duvarı'nı nasıl dağıtabileceğinizi ve yapılandırabileceğinizi öğreneceksiniz.
+title: Azure CLı kullanarak Azure Güvenlik Duvarı dağıtma ve yapılandırma
+description: Bu makalede, Azure CLı kullanarak Azure Güvenlik Duvarı 'nı dağıtmayı ve yapılandırmayı öğreneceksiniz.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,24 +8,24 @@ ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: e97783d1a32916cad151f1d0858a8190d0005fd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73831977"
 ---
-# <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure CLI'yi kullanarak Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
+# <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure CLı kullanarak Azure Güvenlik Duvarı dağıtma ve yapılandırma
 
-Giden ağ erişimini denetleme, genel ağ güvenlik planının önemli bir parçasıdır. Örneğin, web sitelerine erişimi sınırlamak isteyebilirsiniz. Veya, giden IP adreslerini ve erişilebilen bağlantı noktalarını sınırlamak isteyebilirsiniz.
+Giden ağ erişimini denetleme, genel ağ güvenlik planının önemli bir parçasıdır. Örneğin, erişimi Web sitelerine kısıtlamak isteyebilirsiniz. Ya da, erişilebilen giden IP adreslerini ve bağlantı noktalarını sınırlamak isteyebilirsiniz.
 
 Azure Güvenlik Duvarı, Azure alt ağından giden ağ erişimini denetlemenin bir yoludur. Azure Güvenlik Duvarı ile şunları yapılandırabilirsiniz:
 
-* Bir alt ağdan erişilebilen tam etki alanı adlarını (FQDN) tanımlayan uygulama kuralları. FQDN, [SQL örneklerini](sql-fqdn-filtering.md)de içerebilir.
+* Bir alt ağdan erişilebilen tam etki alanı adlarını (FQDN) tanımlayan uygulama kuralları. FQDN, [SQL örnekleri de içerebilir](sql-fqdn-filtering.md).
 * Kaynak adres, protokol, hedef bağlantı noktası ve hedef adresini tanımlayan ağ kuralları.
 
 Ağ trafiğinizi güvenlik duvarından alt ağın varsayılan ağ geçidi olarak yönlendirdiğinizde ağ trafiği yapılandırılan güvenlik duvarı kurallarına tabi tutulur.
 
-Bu makale için, kolay dağıtım için üç alt ağ içeren basitleştirilmiş tek bir VNet oluşturursunuz. Üretim dağıtımları için hub [ve spoke modeli](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) önerilir. Güvenlik duvarı kendi VNet'indedir. İş yükü sunucuları, bir veya daha fazla alt ağla aynı bölgedeki eşlenmiş VNet'lerde bulunmaktadır.
+Bu makalede, kolay dağıtım için üç alt ağa sahip Basitleştirilmiş tek bir sanal ağ oluşturacaksınız. Üretim dağıtımları için bir [hub ve bağlı bileşen modeli](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) önerilir. Güvenlik duvarı kendi sanal ağı 'nda. İş yükü sunucuları, bir veya daha fazla alt ağ ile aynı bölgedeki eşlenmiş VNET 'lerde bulunur.
 
 * **AzureFirewallSubnet** - güvenlik duvarı bu alt ağdadır.
 * **Workload-SN**: İş yükü sunucusu bu alt ağda yer alır. Bu alt ağın ağ trafiği güvenlik duvarından geçer.
@@ -39,13 +39,13 @@ Bu makalede şunları öğreneceksiniz:
 > * Test amaçlı ağ ortamı oluşturma
 > * Güvenlik duvarı dağıtma
 > * Varsayılan rota oluşturma
-> * www.google.com erişime izin verecek şekilde bir uygulama kuralını yapılandırma
+> * Www.google.com erişimine izin vermek için bir uygulama kuralı yapılandırma
 > * Dış DNS sunucularına erişime izin vermek için ağ kuralı yapılandırma
 > * Güvenlik duvarını test etme
 
-İsterseniz, Azure [portalını](tutorial-firewall-deploy-portal.md) veya [Azure PowerShell'i](deploy-ps.md)kullanarak bu yordamı tamamlayabilirsiniz.
+İsterseniz, [Azure Portal](tutorial-firewall-deploy-portal.md) veya [Azure PowerShell](deploy-ps.md)kullanarak bu yordamı tamamlayabilirsiniz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -53,9 +53,9 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 ### <a name="azure-cli"></a>Azure CLI
 
-CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, Azure CLI sürüm 2.0.4 veya sonrası sürümü çalıştırın. Sürümü bulmak **için, az --sürümünü çalıştırın.** Yükleme veya yükseltme hakkında bilgi için Azure [CLI'yi yükle'ye]( /cli/azure/install-azure-cli)bakın.
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz Azure CLı sürüm 2.0.4 veya üstünü çalıştırın. Sürümü bulmak için **az--Version**çalıştırın. Yükleme veya yükseltme hakkında daha fazla bilgi için bkz. [Azure CLI 'Yı yükleme]( /cli/azure/install-azure-cli).
 
-Azure Güvenlik Duvarı uzantısını yükleyin:
+Azure Güvenlik Duvarı uzantısını yükler:
 
 ```azurecli-interactive
 az extension add -n azure-firewall
@@ -68,7 +68,7 @@ az extension add -n azure-firewall
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Kaynak grubu dağıtım için tüm kaynakları içerir.
+Kaynak grubu, dağıtımın tüm kaynaklarını içerir.
 
 ```azurecli-interactive
 az group create --name Test-FW-RG --location eastus
@@ -76,10 +76,10 @@ az group create --name Test-FW-RG --location eastus
 
 ### <a name="create-a-vnet"></a>Sanal ağ oluşturma
 
-Bu sanal ağ üç alt ağa sahiptir.
+Bu sanal ağın üç alt ağı vardır.
 
 > [!NOTE]
-> AzureFirewallSubnet alt ağının boyutu /26'dır. Alt ağ boyutu hakkında daha fazla bilgi için [Azure Güvenlik Duvarı SSS'si'ne](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)bakın.
+> AzureFirewallSubnet alt ağının boyutu/26 ' dır. Alt ağ boyutu hakkında daha fazla bilgi için bkz. [Azure Güvenlik DUVARı SSS](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
 ```azurecli-interactive
 az network vnet create \
@@ -106,7 +106,7 @@ az network vnet subnet create \
 Şimdi atlama ve iş yükü sanal makinelerini oluşturup uygun alt ağlara yerleştirin.
 İstendiğinde, sanal makine için bir parola yazın.
 
-Srv-Jump sanal makineoluşturun.
+SRV-atma sanal makinesini oluşturun.
 
 ```azurecli-interactive
 az vm create \
@@ -122,7 +122,7 @@ az vm open-port --port 3389 --resource-group Test-FW-RG --name Srv-Jump
 
 
 
-Belirli DNS sunucu IP adresleriyle Srv-Work için bir NIC oluşturun ve test etmek için ortak IP adresi oluşturmayın.
+Belirli DNS sunucusu IP adresleriyle ve test edilecek genel IP adresiyle çalışan, SRV için bir NIC oluşturun.
 
 ```azurecli-interactive
 az network nic create \
@@ -134,7 +134,7 @@ az network nic create \
    --dns-servers 209.244.0.3 209.244.0.4
 ```
 
-Şimdi iş yükü sanal makine oluşturun.
+Şimdi iş yükü sanal makinesini oluşturun.
 İstendiğinde, sanal makine için bir parola yazın.
 
 ```azurecli-interactive
@@ -149,7 +149,7 @@ az vm create \
 
 ## <a name="deploy-the-firewall"></a>Güvenlik duvarını dağıtma
 
-Şimdi güvenlik duvarını sanal ağa dağıtın.
+Artık güvenlik duvarını sanal ağa dağıtın.
 
 ```azurecli-interactive
 az network firewall create \
@@ -181,7 +181,7 @@ fwprivaddr="$(az network firewall ip-config list -g Test-FW-RG -f Test-FW01 --qu
 
 ## <a name="create-a-default-route"></a>Varsayılan rota oluşturma
 
-BGP rota yayılma devre dışı bırakılmış bir tablo oluşturma
+BGP yol yayma devre dışı olan bir tablo oluşturma
 
 ```azurecli-interactive
 az network route-table create \
@@ -203,7 +203,7 @@ az network route-table route create \
   --next-hop-ip-address $fwprivaddr
 ```
 
-Rota tablosunu alt ağla ilişkilendirme
+Yol tablosunu alt ağla ilişkilendir
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -216,7 +216,7 @@ az network vnet subnet update \
 
 ## <a name="configure-an-application-rule"></a>Uygulama kuralı yapılandırma
 
-Uygulama kuralı, www.google.com giden erişim sağlar.
+Uygulama kuralı, www.google.com 'e giden erişime izin verir.
 
 ```azurecli-interactive
 az network firewall application-rule create \
@@ -235,7 +235,7 @@ Azure Güvenlik Duvarı'nda varsayılan olarak izin verilen altyapı FQDN'leri i
 
 ## <a name="configure-a-network-rule"></a>Ağ kuralını yapılandırma
 
-Ağ kuralı, bağlantı noktası 53'teki (DNS) iki IP adresine giden erişime izin verir.
+Ağ kuralı, 53 (DNS) numaralı bağlantı noktasında iki IP adresine giden erişime izin verir.
 
 ```azurecli-interactive
 az network firewall network-rule create \
@@ -253,9 +253,9 @@ az network firewall network-rule create \
 
 ## <a name="test-the-firewall"></a>Güvenlik duvarını test etme
 
-Beklendiği gibi çalıştığını doğrulamak için güvenlik duvarını test edin.
+Şimdi, güvenlik duvarını test edin ve beklendiği gibi çalıştığını doğrulayın.
 
-1. **Srv-Work** sanal makinesinin özel IP adresine dikkat edin:
+1. **SRV-Work** sanal makinesi IÇIN özel IP adresini aklınızda edin:
 
    ```azurecli-interactive
    az vm list-ip-addresses \
@@ -263,16 +263,16 @@ Beklendiği gibi çalıştığını doğrulamak için güvenlik duvarını test 
    -n Srv-Work
    ```
 
-1. Uzak bir masaüstünü **Srv-Jump** sanal makinesine bağlayın ve oturum açın. Buradan, **Srv-Work** özel IP adresine uzak bir masaüstü bağlantısı açın ve oturum açın.
+1. Uzak bir masaüstünü **SRV-atma** sanal makinesine bağlayın ve oturum açın. Buradan, **SRV iş** özel IP adresine bir Uzak Masaüstü bağlantısı açın ve oturum açın.
 
-3. **SRV-Work'te**PowerShell penceresini açın ve aşağıdaki komutları çalıştırın:
+3. **SRV-iş**sayfasında bir PowerShell penceresi açın ve aşağıdaki komutları çalıştırın:
 
    ```
    nslookup www.google.com
    nslookup www.microsoft.com
    ```
 
-   Her iki komut da, DNS sorgularınızın güvenlik duvarından geçtiğini göstererek yanıtları döndürmelidir.
+   Her iki komut de DNS sorgularınızın güvenlik duvarından geçileceğini gösteren yanıtları döndürmelidir.
 
 1. Aşağıdaki komutları çalıştırın:
 
@@ -284,16 +284,16 @@ Beklendiği gibi çalıştığını doğrulamak için güvenlik duvarını test 
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   İstekler `www.google.com` başarılı olmalı `www.microsoft.com` ve istekler başarısız olmalıdır. Bu, güvenlik duvarı kurallarınızın beklendiği gibi çalıştığını gösterir.
+   `www.google.com` İsteklerin başarılı olması ve `www.microsoft.com` isteklerin başarısız olması gerekir. Bu, güvenlik duvarı kurallarınızın beklendiği şekilde kullanıldığını gösterir.
 
-Şimdi güvenlik duvarı kurallarının işe yaradığını doğruladınız:
+Artık Güvenlik Duvarı kurallarının çalıştığını doğruladınız:
 
 * Yapılandırılmış dış DNS sunucusunu kullanarak DNS adlarını çözümleyebilirsiniz.
 * İzin verilen bir FQDN'ye göz atabilir ancak diğerlerine göz atamazsınız.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Güvenlik duvarı kaynaklarınızı bir sonraki öğretici için saklayabilir veya artık gerekyoksa güvenlik duvarıyla ilgili tüm kaynakları silmek için **Test-FW-RG** kaynak grubunu silebilirsiniz:
+Güvenlik Duvarı kaynaklarınızı bir sonraki öğreticide tutabilir veya artık gerekmiyorsa, güvenlik duvarı ile ilgili tüm kaynakları silmek için **Test-FW-RG** kaynak grubunu silebilirsiniz:
 
 ```azurecli-interactive
 az group delete \

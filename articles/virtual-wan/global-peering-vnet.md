@@ -1,6 +1,6 @@
 ---
-title: Azure Virtual WAN için Global VNet eşlemeyapılandırma | Microsoft Dokümanlar
-description: Farklı bir bölgedeki bir VNet'i Sanal WAN hub'ınıza bağlayın.
+title: Azure sanal WAN için küresel VNet eşlemesini yapılandırma | Microsoft Docs
+description: Farklı bir bölgedeki VNet 'i sanal WAN hub 'ınıza bağlayın.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,41 +8,41 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 340472f84d2dd2c4f46d180992745a57e8ad1884
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73588232"
 ---
-# <a name="configure-global-vnet-peering-cross-region-vnet-for-virtual-wan"></a>Virtual WAN için Global VNet eşleme (bölgeler arası VNet) yapılandırma
+# <a name="configure-global-vnet-peering-cross-region-vnet-for-virtual-wan"></a>Sanal WAN için genel VNet eşlemesini (çapraz bölge VNet) yapılandırma
 
-Farklı bir bölgedeki bir VNet'i Virtual WAN hub'ınıza bağlayabilirsiniz.
+Farklı bir bölgedeki VNet 'i sanal WAN hub 'ınıza bağlayabilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Aşağıdaki ölçütleri karşıladığınızı doğrulayın:
 
-* Bölgeler arası VNet (spoke) başka bir Virtual WAN hub'ına bağlı değildir. Bir spoke yalnızca bir sanal hub'a bağlanabilir.
-* VNet (spoke) sanal ağ ağ geçidi (örneğin, bir Azure VPN Ağ Geçidi veya ExpressRoute sanal ağ ağ ağ geçidi) içermez. VNet sanal ağ ağ geçidi içeriyorsa, bağlı VNet'i hub'a bağlamadan önce ağ geçidini kaldırmanız gerekir.
+* Bölgeler arası VNet (bağlı bileşen) başka bir sanal WAN hub 'ına bağlı değil. Bir bağlı bileşen yalnızca bir sanal hub 'a bağlanabilir.
+* VNet (bağlı bileşen) bir sanal ağ geçidi içermez (örneğin, bir Azure VPN Gateway veya ExpressRoute sanal ağ geçidi). VNet bir sanal ağ geçidi içeriyorsa, bağlı olan VNet 'i hub 'a bağlamadan önce ağ geçidini kaldırmanız gerekir.
 
 ## <a name="register-this-feature"></a><a name="register"></a>Bu özelliği kaydedin
 
-PowerShell'i kullanarak bu özellik için kaydolabilirsiniz. Aşağıdaki örnekten "Try It" seçeneğini belirlerseniz, Azure Cloud-Shell açılır ve PowerShell cmdletlerini bilgisayarınıza yerel olarak yüklemeniz gerekmez. Gerekirse, 'Select-AzSubscription -SubscriptionId <subid>' cmdlet'i kullanarak abonelikleri değiştirebilirsiniz.
+PowerShell kullanarak bu özelliğe kaydolabilirsiniz. Aşağıdaki örnekteki "deneyin" seçeneğini belirlerseniz, Azure Cloud-Shell açılır ve PowerShell cmdlet 'lerini bilgisayarınıza yerel olarak yüklemeniz gerekmez. Gerekirse, ' Select-AzSubscription-SubscriptionID <subid>' cmdlet 'ini kullanarak abonelikleri değiştirebilirsiniz.
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName AllowCortexGlobalVnetPeering -ProviderNamespace Microsoft.Network
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.Network'
 ```
 
-## <a name="verify-registration"></a><a name="verify"></a>Kaydı doğrulama
+## <a name="verify-registration"></a><a name="verify"></a>Kaydı doğrula
 
 ```azurepowershell-interactive
 Get-AzProviderFeature -FeatureName AllowCortexGlobalVnetPeering -ProviderNamespace Microsoft.Network
 ```
 
-## <a name="connect-a-vnet-to-the-hub"></a><a name="hub"></a>Hub'a bir VNet bağlama
+## <a name="connect-a-vnet-to-the-hub"></a><a name="hub"></a>Sanal ağı hub 'a bağlama
 
-Bu adımda, hub'ınızla bölgeler arası VNet arasındaki eşleme bağlantısını oluşturursunuz. Bu adımları bağlanmak istediğiniz tüm sanal ağlar için tekrarlayın.
+Bu adımda, hub 'ınız ve bölgeler arası VNet arasındaki eşleme bağlantısını oluşturursunuz. Bu adımları bağlanmak istediğiniz tüm sanal ağlar için tekrarlayın.
 
 1. Sanal WAN'ınızın sayfasında **Sanal ağ bağlantıları**'na tıklayın.
 2. Sanal ağ bağlantısı sayfasında **+Bağlantı ekle**'ye tıklayın.
@@ -56,4 +56,4 @@ Bu adımda, hub'ınızla bölgeler arası VNet arasındaki eşleme bağlantısı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Virtual WAN hakkında daha fazla bilgi edinmek için [Virtual WAN Genel Bakış'a](virtual-wan-about.md)bakın.
+Sanal WAN hakkında daha fazla bilgi edinmek için bkz. [sanal WAN genel bakış](virtual-wan-about.md).

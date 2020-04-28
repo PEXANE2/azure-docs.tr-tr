@@ -1,7 +1,7 @@
 ---
-title: Anahtar Cümle çıkarma bilişsel beceri
+title: Bilişsel Beceri Anahtar İfade Ayıklama
 titleSuffix: Azure Cognitive Search
-description: Yapılandırılmamış metni değerlendirir ve her kayıt için Azure Bilişsel Arama'da bir AI zenginleştirme ardışık hattındaki anahtar ifadelerin listesini döndürür.
+description: Yapılandırılmamış metni değerlendirir ve her kayıt için Azure Bilişsel Arama içindeki bir AI zenginleştirme ardışık düzeninde anahtar tümceciklerin listesini döndürür.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,47 +9,47 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: ccdd25d82af2b4893260af18dac818816d9e4579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72791971"
 ---
-#   <a name="key-phrase-extraction-cognitive-skill"></a>Anahtar Cümle çıkarma bilişsel beceri
+#   <a name="key-phrase-extraction-cognitive-skill"></a>Bilişsel Beceri Anahtar İfade Ayıklama
 
-**Anahtar Tümcecik Ayıklama** becerisi yapılandırılmamış metni değerlendirir ve her kayıt için anahtar ifadelerin listesini döndürür. Bu beceri, Bilişsel Hizmetlerde [Metin Analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) tarafından sağlanan makine öğrenimi modellerini kullanır.
+**Anahtar ifade ayıklama** beceri yapılandırılmamış metinleri değerlendirir ve her kayıt için anahtar tümceciklerin bir listesini döndürür. Bu beceri bilişsel hizmetler 'de [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) tarafından sunulan makine öğrenimi modellerini kullanır.
 
-Bu özellik, kayıttaki ana konuşma noktalarını hızlı bir şekilde tanımlamanız gerekiyorsa yararlıdır. Örneğin, giriş metni verilen "Gıda lezzetli ve orada harika personel vardı", hizmet döner "gıda" ve "harika personel".
+Bu özellik, kayıttaki ana konuşmayı hızlı bir şekilde belirlemeniz gerekiyorsa yararlıdır. Örneğin, "gıda merak ediyor ve harika personel vardı" adlı giriş metni verildiğinde, hizmet "yiyecek" ve "harika personel" döndürür.
 
 > [!NOTE]
-> İşleme sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla Bilgi Al algoritması ekleyerek kapsamı genişlettikçe, [faturalandırılabilir Bilişsel Hizmetler kaynağı eklemeniz](cognitive-search-attach-cognitive-services.md)gerekir. Bilişsel Hizmetler'de API'leri ararken ve Azure Bilişsel Arama'da belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk ettirilir. Belgelerden metin çıkarma için herhangi bir ücret yoktur.
+> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
 >
-> Yerleşik becerilerin yürütülmesi, mevcut [Bilişsel Hizmetler ödeme-as-you gitmek fiyat](https://azure.microsoft.com/pricing/details/cognitive-services/)tahsil edilir. Görüntü çıkarma fiyatlandırması [Azure Bilişsel Arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmıştır.
+> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.KeyPhraseExtractionSkill 
+Microsoft. yetenekler. Text. KeyPhraseExtractionSkill 
 
 ## <a name="data-limits"></a>Veri sınırları
-Bir kaydın maksimum boyutu 50.000 karakter olarak [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçüldü. Verilerinizi anahtar tümcecik çıkarıcıya göndermeden önce ayırmanız gerekiyorsa, [Metin Bölme becerisini](cognitive-search-skill-textsplit.md)kullanmayı düşünün.
+Bir kaydın en büyük boyutu, tarafından [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Anahtar ifade ayıklayıcıya göndermeden önce verilerinizi kesmeniz gerekiyorsa, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
 
-## <a name="skill-parameters"></a>Beceri parametreleri
+## <a name="skill-parameters"></a>Yetenek parametreleri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
 | Girişler                | Açıklama |
 |---------------------|-------------|
-| defaultLanguageCode | (İsteğe bağlı) Dili açıkça belirtmeyin belgelere uygulanacak dil kodu.  Varsayılan dil kodu belirtilmemişse, Varsayılan dil kodu olarak İngilizce (en) kullanılır. <br/> [Desteklenen dillerin tam listesine](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)bakın. |
-| maxKeyPhraseCount   | (İsteğe bağlı) Üretilen en fazla anahtar tümcecik sayısı. |
+| defaultLanguageCode | Seçim Açıkça dil belirtmeyen belgelere uygulanacak dil kodu.  Varsayılan dil kodu belirtilmemişse, varsayılan dil kodu olarak Ingilizce (en) kullanılır. <br/> [Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)görüntüleyin. |
+| maxKeyPhraseCount   | Seçim Üretilecek anahtar tümceciklerin en fazla sayısı. |
 
-## <a name="skill-inputs"></a>Beceri girdileri
+## <a name="skill-inputs"></a>Beceri girişleri
 
 | Girişler     | Açıklama |
 |--------------------|-------------|
-| metin | İncelenecek metin.|
-| languageCode  |  Kayıtların dilini gösteren bir dize. Bu parametre belirtilmemişse, kayıtları çözümlemek için varsayılan dil kodu kullanılır. <br/>[Desteklenen dillerin tam listesine](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) bakın|
+| metin | Çözümlenecek metin.|
+| languageCode  |  Kayıtların dilini gösteren bir dize. Bu parametre belirtilmemişse, kayıtları çözümlemek için varsayılan dil kodu kullanılacaktır. <br/>[Desteklenen dillerin tam listesini](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) görün|
 
-##  <a name="sample-definition"></a>Örnek tanımı
+##  <a name="sample-definition"></a>Örnek tanım
 
 ```json
  {
@@ -116,11 +116,11 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 
 ## <a name="errors-and-warnings"></a>Hatalar ve uyarılar
-Desteklenmeyen bir dil kodu sağlarsanız, bir hata oluşturulur ve anahtar tümcecikler ayıklanmaz.
-Metniniz boşsa, bir uyarı üretilir.
-Metniniz 50.000 karakterden büyükse, yalnızca ilk 50.000 karakter analiz edilir ve bir uyarı verilir.
+Desteklenmeyen bir dil kodu sağlarsanız bir hata oluşturulur ve anahtar ifadeler ayıklanmaz.
+Metniniz boşsa bir uyarı üretilir.
+Metniniz 50.000 karakterden fazlaysa, yalnızca ilk 50.000 karakter analiz edilir ve bir uyarı verilir.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
-+ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)
++ [Beceri tanımlama](cognitive-search-defining-skillset.md)

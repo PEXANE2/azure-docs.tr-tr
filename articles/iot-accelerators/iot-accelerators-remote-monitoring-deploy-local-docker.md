@@ -1,6 +1,6 @@
 ---
-title: Uzaktan İzleme çözümünü yerel olarak dağıtın - Docker - Azure | Microsoft Dokümanlar
-description: Bu nasıl yapılılır kılavuzu, test ve geliştirme için Docker'ı kullanarak uzaktan izleme çözüm hızlandırıcısını yerel makinenize nasıl dağıtabileceğinizi gösterir.
+title: Uzaktan Izleme çözümünü yerel olarak dağıtma-Docker-Azure | Microsoft Docs
+description: Bu nasıl yapılır kılavuzunda, test ve geliştirme için Docker kullanarak uzaktan izleme çözümü hızlandırıcısının yerel makinenize nasıl dağıtılacağı gösterilmektedir.
 author: avneet723
 manager: hegate
 ms.author: avneets
@@ -9,73 +9,73 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73888829"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Uzaktan İzleme çözüm hızlandırıcısını yerel olarak dağıtın - Docker
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Uzaktan Izleme çözüm Hızlandırıcısını yerel olarak dağıtma-Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-Bu makalede, uzaktan izleme çözüm hızlandırıcısını test ve geliştirme için yerel makinenize nasıl dağıtabileceğinizgösterilmektedir. Mikro servisleri yerel Docker konteynerlerine nasıl dağıtabileceğinizi öğrenirsiniz. Yerel bir mikro hizmetler dağıtımı aşağıdaki bulut hizmetlerini kullanır: Buluttaki IoT Hub, Cosmos DB, Azure Akış Analizi ve Azure Zaman Serisi Öngörüleri hizmetleri.
+Bu makalede, test ve geliştirme için uzaktan Izleme çözümü hızlandırıcısının yerel makinenize nasıl dağıtılacağı gösterilmektedir. Mikro hizmetleri yerel Docker kapsayıcılarına dağıtmayı öğrenirsiniz. Yerel bir mikro hizmet dağıtımı, bulutta IoT Hub, Cosmos DB, Azure Akış Analizi ve Azure Time Series Insights Hizmetleri kullanır.
 
-Uzaktan İzleme çözüm hızlandırıcısını yerel makinenizde bir IDE'de çalıştırmak istiyorsanız, [Uzaktan İzleme çözüm hızlandırıcısını yerel olarak dağıtın - Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md)' a bakın.
+Uzaktan Izleme çözüm hızlandırıcıyı yerel makinenizde bir IDE 'de çalıştırmak istiyorsanız, bkz. [Uzaktan izleme çözüm Hızlandırıcısını yerel olarak dağıtma-Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Uzaktan İzleme çözüm hızlandırıcısı tarafından kullanılan Azure hizmetlerini dağıtmak için etkin bir Azure aboneliğine ihtiyacınız var.
+Uzaktan Izleme çözümü Hızlandırıcısı tarafından kullanılan Azure hizmetlerini dağıtmak için etkin bir Azure aboneliğine ihtiyacınız vardır.
 
 Hesabınız yoksa yalnızca birkaç dakika içinde ücretsiz bir deneme sürümü hesabı oluşturabilirsiniz. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
 
-### <a name="machine-setup"></a>Makine kurulumu
+### <a name="machine-setup"></a>Makine Kurulumu
 
-Yerel dağıtımı tamamlamak için, yerel geliştirme makinenize aşağıdaki araçların yüklenmesi gerekir:
+Yerel dağıtımı tamamlamaya yönelik olarak, yerel geliştirme makinenizde aşağıdaki araçların yüklü olması gerekir:
 
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
-* [Visual Studio](https://visualstudio.microsoft.com/) - Eğer mikro hizmetlerde değişiklik yapmayı planlıyorsanız.
-* [Node.js v8](https://nodejs.org/) - Bu yazılım, komut dosyalarının Azure kaynakları oluşturmak için kullandığı PCS CLI için bir ön koşuldur. Node.js v10 kullanmayın.
+* [Visual Studio](https://visualstudio.microsoft.com/) -mikro hizmetlerde değişiklik yapmayı planlıyorsanız.
+* [Node. js V8](https://nodejs.org/) -bu yazılım, betiklerin Azure kaynakları oluşturmak IÇIN KULLANDıĞı bilgisayar CLI için bir önkoşuldur. Node. js ile v10 arasındaki kullanmayın.
 
 > [!NOTE]
-> Bu araçlar Windows, Linux ve iOS gibi birçok platformda kullanılabilir.
+> Bu araçlar, Windows, Linux ve iOS gibi birçok platformda mevcuttur.
 
 [!INCLUDE [iot-accelerators-local-setup](../../includes/iot-accelerators-local-setup.md)]
 
-## <a name="run-the-microservices-in-docker"></a>Docker'da mikro hizmetleri çalıştırın
+## <a name="run-the-microservices-in-docker"></a>Mikro hizmetleri Docker 'da çalıştırma
 
-**Start.cmd** komut dosyası tarafından ayarlanan ortam değişkenlerine erişebilmek için yeni bir komut istemi açın. Windows'da, ortam değişkenlerinin aşağıdaki komutu çalıştırarak ayarlı olduğunu doğrulayabilirsiniz:
+**Start. cmd** betiği tarafından ayarlanan ortam değişkenlerine erişiminizin olduğundan emin olmak için yeni bir komut istemi açın. Windows 'da, aşağıdaki komutu çalıştırarak ortam değişkenlerinin ayarlandığını doğrulayabilirsiniz:
 
 ```cmd
 set PCS
 ```
 
-Komut, **start.cmd** komut dosyası tarafından ayarlanan tüm ortam değişkenlerini gösterir.
+Komut **Start. cmd** betiği tarafından ayarlanan tüm ortam değişkenlerini gösterir.
 
-Docker'ın yerel makinenizde çalıştığını unutmayın.
+Yerel makinenizde Docker 'ın çalıştığından emin olun.
 > [!NOTE]
-> Docker, Windows'ta çalışıyorsa [Linux kapsayıcıları](https://docs.docker.com/docker-for-windows/) çalıştırıyor olmalıdır.
+> Docker, Windows üzerinde çalışıyorsa [Linux kapsayıcıları](https://docs.docker.com/docker-for-windows/) çalıştırıyor olmalıdır.
 
-Yerel Docker kapsayıcılarında çalışan mikro hizmetlerin Azure bulut hizmetlerine erişmeleri gerekir. Docker ortamınızın internet bağlantısını, bir konteynerin içinden bir internet adresi pinglemek için aşağıdaki komutu kullanarak test edebilirsiniz:
+Yerel Docker kapsayıcılarında çalışan mikro hizmetlerin Azure bulut hizmetlerine erişmesi gerekir. Bir kapsayıcı içinden Internet adresine ping göndermek için aşağıdaki komutu kullanarak Docker ortamınızın Internet bağlantısını test edebilirsiniz:
 
 ```cmd/sh
 docker run --rm -ti library/alpine ping google.com
 ```
 
-Çözüm hızlandırıcısını çalıştırmak için, komut satırı ortamınızdaki **hizmetler\\komut dosyası\\yerel** klasörüne gidin ve aşağıdaki komutu çalıştırın:
+Çözüm hızlandırıcıyı çalıştırmak için komut satırı ortamınızda **\\hizmetler betikleri\\yerel** klasörüne gidin ve şu komutu çalıştırın:
 
 ```cmd/sh
 docker-compose up
 ```
 
 > [!NOTE] 
-> Çalıştırmadan `docker-compose up`önce Docker ile [yerel bir sürücüyü paylaştığınıza](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) emin olun.
+> Çalıştırmadan önce Docker ile [yerel bir sürücü paylaştığınızdan](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) emin olun `docker-compose up`.
 
-Bu komutu ilk çalıştırdığınızda Docker, konteynerleri yerel olarak oluşturmak için Docker hub'ından mikro hizmet görüntülerini indirir. Takip pistlerinde Docker konteynerleri hemen çalıştırZ.
+Bu komutu ilk kez çalıştırdığınızda Docker, kapsayıcıları yerel olarak oluşturmak için Docker Hub 'ından mikro hizmet görüntülerini indirir. Aşağıdaki çalışmalarda Docker Kapsayıcıları hemen çalıştırır.
 
 > [!TIP]
-> Microsoft sık sık yeni işlevlerle yeni Docker görüntüleri yayınlar. En son olanları çekmeden önce yerel Docker kaplarınızı ve ilgili görüntüleri temizlemek için aşağıdaki komut kümesini kullanabilirsiniz:
+> Microsoft sıklıkla yeni işlevlerle yeni Docker görüntüleri yayımlar. En son olanları çekmeden önce yerel Docker Kapsayıcılarınızı ve ilgili görüntüleri temizlemek için aşağıdaki komut kümesini kullanabilirsiniz:
 
 ```cmd/sh
 docker list
@@ -83,27 +83,27 @@ docker rm <list_of_containers>
 docker rmi <list_of_images>
 ```
 
-Kapsayıcıdan günlükleri görüntülemek için ayrı bir kabuk kullanabilirsiniz. Önce `docker ps` komutu kullanarak konteyner kimliğini bulun. Ardından, `docker logs {container-id} --tail 1000` belirtilen kapsayıcıiçin son 1000 girişi görüntülemek için kullanın.
+Kapsayıcılardan günlükleri görüntülemek için ayrı bir Shell kullanabilirsiniz. İlk olarak, `docker ps` komutunu kullanarak kapsayıcı kimliğini bulun. Ardından, `docker logs {container-id} --tail 1000` belirtilen kapsayıcının son 1000 girişlerini görüntülemek için kullanın.
 
-### <a name="start-the-stream-analytics-job"></a>Akış Analizi işini başlatın
+### <a name="start-the-stream-analytics-job"></a>Stream Analytics işini Başlat
 
-Akış Analizi işini başlatmak için aşağıdaki adımları izleyin:
+Stream Analytics işini başlatmak için aşağıdaki adımları izleyin:
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-1. Çözümünüz için oluşturulan **Kaynak grubuna** gidin. Kaynak grubunun **adı, start.cmd** komut dosyasını çalıştırdığınızda çözümünüz için seçtiğiniz addır.
-1. Kaynaklar **listesindeKi Akış Analizi işini** tıklatın.
-1. Akış Analizi iş **genel bakış** sayfasında **Başlat** düğmesini tıklatın. Ardından işe başlamak için **Başlat'ı** tıklatın.
+1. Çözümünüz için oluşturulan **kaynak grubuna** gidin. Kaynak grubunun adı, **Start. cmd** betiğini çalıştırdığınızda çözümünüz için seçtiğiniz addır.
+1. Kaynak listesinde **Stream Analytics işe** tıklayın.
+1. Stream Analytics iş **genel bakış** sayfasında **Başlat** düğmesine tıklayın. Şimdi işi başlatmak için **Başlat** ' a tıklayın.
 
-### <a name="connect-to-the-dashboard"></a>Panoya bağlanma
+### <a name="connect-to-the-dashboard"></a>Panoya Bağlan
 
-Uzaktan İzleme çözüm panosuna erişmek `http://localhost:8080` için tarayıcınızda gidin. Artık Web UI'sini ve yerel mikro hizmetleri kullanabilirsiniz.
+Uzaktan Izleme çözümü panosuna erişmek için tarayıcınızda sayfasına `http://localhost:8080` gidin. Artık Web Kullanıcı arabirimini ve yerel mikro hizmetleri kullanabilirsiniz.
 
 ## <a name="clean-up"></a>Temizleme
 
-Gereksiz ücretleri önlemek için, testinizi tamamladığınızda bulut hizmetlerini Azure aboneliğinizden kaldırın. Hizmetleri kaldırmak için Azure [portalına](https://ms.portal.azure.com) gidin ve **start.cmd** komut dosyasının oluşturduğu kaynak grubunu silin.
+Gereksiz ücretlerden kaçınmak için, testlerinizi bitirdiğinizde Azure aboneliğinizden bulut hizmetlerini kaldırın. Hizmetleri kaldırmak için [Azure Portal](https://ms.portal.azure.com) gidin ve **Start. cmd** betiğinin oluşturulduğu kaynak grubunu silin.
 
-Docker `docker-compose down --rmi all` görüntülerini kaldırmak ve yerel makinenizde yer açmak için komutu kullanın. Ayrıca, Kaynak Kodu GitHub'dan klonladığınızda oluşturulan Uzaktan İzleme deposunun yerel kopyasını da silebilirsiniz.
+Docker `docker-compose down --rmi all` görüntülerini kaldırmak ve yerel makinenizde boş alan boşaltmak için komutunu kullanın. Ayrıca, kaynak kodu GitHub 'dan Klonladığınız zaman oluşturulan uzaktan Izleme deposunun yerel kopyasını da silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uzaktan İzleme çözümünü dağıttığınız için bir sonraki adım [çözüm panosunun yeteneklerini keşfetmektir.](quickstart-remote-monitoring-deploy.md)
+Uzaktan Izleme çözümünü dağıttığınıza göre, bir sonraki adım [çözüm panosunun yeteneklerini araştırmakta](quickstart-remote-monitoring-deploy.md).

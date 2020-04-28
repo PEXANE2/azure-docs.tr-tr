@@ -1,6 +1,6 @@
 ---
-title: Bağlı Fabrika çözüm özellikleri - Azure | Microsoft Dokümanlar
-description: Bu makalede, Bulut panosu, kurallar ve uyarılar gibi Bağlı Fabrika önceden yapılandırılmış çözümün özelliklerine genel bir bakış açıklanmaktadır.
+title: Bağlı fabrika çözümü özellikleri-Azure | Microsoft Docs
+description: Bu makalede, önceden yapılandırılmış bağlı fabrika çözümünün bulut panosu, kuralları ve uyarıları gibi özelliklerine genel bir bakış açıklanmaktadır.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,60 +9,60 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
 ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73820103"
 ---
-# <a name="what-is-connected-factory-iot-solution-accelerator"></a>Connected Factory IoT çözüm hızlandırıcısı nedir?
+# <a name="what-is-connected-factory-iot-solution-accelerator"></a>Bağlı fabrika IoT Çözüm Hızlandırıcısı nedir?
 
-Connected Factory, Microsoft'un açık kaynak çözümünde olduğu gibi paketlenmiş Azure Endüstriyel IoT başvuru mimarisinin bir uygulamasıdır. Ticari bir ürün için bir başlangıç noktası olarak kullanabilirsiniz. Azure [IoT çözüm hızlandırıcılarından](https://www.azureiotsolutions.com/#solutions/types/CF)Azure aboneliğinize Bağlı Fabrika çözümünün önceden oluşturulmuş bir sürümünü dağıtabilirsiniz.
+Bağlı fabrika, Microsoft 'un Azure endüstriyel IoT başvuru mimarisinin, açık kaynaklı çözümde olduğu gibi paketlenmiş bir uygulamasıdır. Bunu ticari bir ürün için başlangıç noktası olarak kullanabilirsiniz. Azure [IoT çözüm hızlandırıcılarına](https://www.azureiotsolutions.com/#solutions/types/CF)bağlı fabrika çözümünün önceden oluşturulmuş bir sürümünü Azure aboneliğinize dağıtabilirsiniz.
 
-![Bağlı Fabrika çözüm panosu](./media/iot-accelerators-connected-factory-features/dashboard.png)
+![Bağlı fabrika çözümü panosu](./media/iot-accelerators-connected-factory-features/dashboard.png)
 
-Bağlı Fabrika çözüm hızlandırıcı [kodu GitHub'da mevcuttur.](https://github.com/Azure/azure-iot-connected-factory)
+Bağlı fabrika çözümü hızlandırıcı [kodu GitHub ' da kullanılabilir](https://github.com/Azure/azure-iot-connected-factory).
 
-Bağlı Fabrika aşağıdaki özellikleri içerir:
+Bağlı fabrika aşağıdaki özellikleri içerir:
 
 ## <a name="industrial-device-interoperability"></a>Endüstriyel cihaz birlikte çalışabilirliği
 
-- OPC UA arabirimi yle endüstriyel varlıklara bağlanın.
-- Onlardan canlı telemetri görmek için benzetimli üretim hatlarını (Docker kapsayıcılarında OPC UA sunucularını çalıştıran) kullanın.
-- Bulut panosundan OPC UA sunucularının OPC UA bilgi modeline göz atın.
+- OPC UA arabirimi ile endüstriyel varlıklara bağlanın.
+- Bu cihazlardan canlı telemetri görmek için sanal üretim hatlarını (Docker kapsayıcılarında OPC UA sunucuları çalıştıran) kullanın.
+- Bir bulut panosundan OPC UA sunucularının OPC UA bilgi modeline gözatamazsınız.
 
 ## <a name="remote-management"></a>Uzaktan yönetim
 
-- OPC UA varlıklarınızı bulut panosundan yapılandırın (arama yöntemleri, okuma ve yazma verileri).
-- OPC UA varlıklarınızdan telemetri verilerini bir bulut panosundan yayımlayın ve yayımlayın.
+- OPC UA varlıklarınızı bulut panosundan yapılandırın (çağrı yöntemleri, okuma ve yazma verileri).
+- Bir bulut panosundan OPC UA varlıklarınızdan telemetri verilerini yayımlayın ve yayımdan kaldırın.
 
 ## <a name="cloud-dashboard"></a>Bulut panosu
 
 - Telemetri önizlemelerini doğrudan bir bulut panosunda görüntüleyin.
-- Telemetri verilerindeki eğilimleri görüntüleyin ve Time Series Insights Explorer panosunu kullanarak korelasyonoluşturun.
-- Bulut panosundan hesaplanan Genel Ekipman Verimliliği (OEE) ve Anahtar Performans Göstergeleri 'ne (KP'ler) bakın.
+- Time Series Insights gezgin panosunu kullanarak telemetri verilerindeki eğilimleri görüntüleyin ve bağıntılar oluşturun.
+- Bkz. bulut panosundan hesaplanan genel ekipman verimliliği (OEE) ve ana performans göstergeleri (KPI).
 - Endüstriyel varlık hiyerarşilerini bir ağaç topolojisinde ve etkileşimli bir haritada görüntüleyin.
-- Bulut panosundan uyarıları görüntüleyin, onaylayın ve kapatın.
+- Bir bulut panosundan uyarıları görüntüleyin, kabul edin ve kapatın.
 
 ## <a name="azure-time-series-insights"></a>Azure Zaman Serisi Görüşleri
 
-- [Azure Zaman Serisi Öngörüleri,](../time-series-insights/time-series-insights-overview.md) büyük miktarda zaman serisi verilerini depolamak, görselleştirmek ve sorgulamak için oluşturulmuştür. Bağlı Fabrika bu hizmetlerden yararlanır.
-- Connected Factory, cihaz verilerinizin derin ve gerçek zamanlı analizini yapmanızı sağlayan bu hizmetle bütünleşir.
+- [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) , büyük miktarlarda zaman serisi verilerinin depolanması, görselleştirilmesi ve sorgulanması için oluşturulmuştur. Bağlı fabrika bu hizmetten yararlanır.
+- Bağlı fabrika bu hizmetle tümleşerek cihaz verilerinizin derin ve gerçek zamanlı analizini gerçekleştirmenize olanak tanır.
 
 ## <a name="rules-and-alerts"></a>Kurallar ve uyarılar
 
-[Uyarılar için eşik tabanlı kuralları yapılandırın.](iot-accelerators-connected-factory-configure.md)
+[Uyarılar için eşik tabanlı kurallar yapılandırın](iot-accelerators-connected-factory-configure.md).
 
-## <a name="end-to-end-security"></a>Uçuca güvenlik
+## <a name="end-to-end-security"></a>Uçtan uca güvenlik
 
-- Role Tabanlı Erişim Denetimi (RBAC) kullanan kullanıcılar için güvenlik izinlerini yapılandırın.
-- Uçuça şifreleme, OPC UA kimlik doğrulaması (X.509 sertifikaları kullanılarak) ve güvenlik belirteçleri kullanılarak uygulanır.
+- Rol tabanlı Access Control (RBAC) kullanan kullanıcılar için güvenlik izinlerini yapılandırma.
+- Uçtan uca şifreleme OPC UA kimlik doğrulaması (X. 509.440 sertifikaları kullanılarak) ve güvenlik belirteçleri kullanılarak uygulanır.
 
-## <a name="customizability"></a>Customizability
+## <a name="customizability"></a>Özelleştirme
 
-- Belirli iş gereksinimlerini karşılamak için çözümü özelleştirin.
-- Tam çözüm kaynak kodu GitHub mevcuttur. Bağlı [Fabrika önceden yapılandırılmış çözüm](https://github.com/Azure/azure-iot-connected-factory) deposuna bakın.
+- Çözümü belirli iş gereksinimlerini karşılayacak şekilde özelleştirin.
+- Tam çözüm kaynağı-GitHub 'da kullanılabilir kod. [Önceden yapılandırılmış bağlı fabrika çözüm](https://github.com/Azure/azure-iot-connected-factory) deposuna bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bağlı Fabrika çözüm hızlandırıcısı hakkında daha fazla bilgi edinmek için, [endüstriyel IoT aygıtlarımı yönetmek için Hızlı Başlatma'ya](quickstart-connected-factory-deploy.md)bakın bulut tabanlı bir çözümü deneyin.
+Bağlı fabrika çözümü Hızlandırıcısı hakkında daha fazla bilgi edinmek için bkz. hızlı başlangıç, [endüstriyel IoT cihazlarımı yönetmek için bulut tabanlı bir çözüm deneyin](quickstart-connected-factory-deploy.md).

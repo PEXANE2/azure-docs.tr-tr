@@ -1,6 +1,6 @@
 ---
-title: Azure IoT cihaz yönetimi w/ Visual Studio Cloud Explorer
-description: Doğrudan yöntemler ve Twin'in istenen özellik yönetimi seçeneklerini içeren Azure IoT Hub aygıt yönetimi için Visual Studio için Bulut Gezgini'ni kullanın.
+title: Azure IoT cihaz yönetimi w/Visual Studio Cloud Explorer
+description: Doğrudan Yöntemler ve Ikizi 'ın istenen özellikler yönetim seçeneklerine sahip Azure için Visual Studio IoT Hub cihaz yönetimi için Cloud Explorer 'ı kullanın.
 author: shizn
 ms.service: iot-hub
 services: iot-hub
@@ -8,107 +8,107 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73953193"
 ---
-# <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Azure IoT Hub aygıt yönetimi için Visual Studio için Bulut Gezgini'ni kullanma
+# <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Azure için Visual Studio IoT Hub cihaz yönetimi için Cloud Explorer 'ı kullanma
 
-![Uçuça diyagram](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
+![Uçtan uca diyagram](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
 
-[Cloud Explorer,](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) Azure kaynaklarınızı görüntülemenize, özelliklerini incelemenize ve Visual Studio içinden önemli geliştirici eylemleri gerçekleştirmenize olanak tanıyan kullanışlı bir Visual Studio uzantısıdır. Çeşitli görevleri gerçekleştirmek için kullanabileceğiniz yönetim seçenekleri ile birlikte gelir.
+[Bulut Gezgini](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) , Azure kaynaklarınızı görüntülemenize, özelliklerini Incelemenize ve Visual Studio içinden önemli geliştirici eylemleri gerçekleştirmenize olanak tanıyan yararlı bir Visual Studio uzantısıdır. Bu, çeşitli görevleri gerçekleştirmek için kullanabileceğiniz yönetim seçenekleriyle birlikte gelir.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 | Yönetim seçeneği          | Görev                    |
 |----------------------------|--------------------------------|
-| Doğrudan yöntemler             | İleti göndermeyi başlatma veya durdurma veya aygıtı yeniden başlatma gibi bir aygıt eylemi yapın.                                        |
-| Aygıt ikizini okuma           | Bir aygıtın bildirilen durumunu alın. Örneğin, aygıt LED'in yanıp söndüğünü bildiriyor.                                    |
-| Aygıt ikizini güncelleştir         | Bir aygıtı, LED'i yeşile ayarlama veya telemetri gönderme aralığını 30 dakikaya ayarlama gibi belirli durumlara koyun.         |
-| Buluttan cihaza iletiler   | Bildirimleri bir aygıta gönderin. Örneğin, "Bugün çok yağmur olasılığı yüksektir. Şemsiye getirmeyi unutma."              |
+| Doğrudan yöntemler             | İleti göndermeyi başlatma veya durdurma ya da cihazı yeniden başlatma gibi bir cihaz oluşturun.                                        |
+| Cihaz ikizi okuma           | Bir cihazın bildirilen durumunu alır. Örneğin, cihaz, LED 'in Şu anda yanıp söndüğünü bildiriyor.                                    |
+| Cihaz ikizi Güncelleştir         | Bir cihazı, bir ışığı yeşil olarak ayarlama veya telemetri gönderme aralığını 30 dakikaya ayarlama gibi belirli durumlara yerleştirin.         |
+| Buluttan cihaza iletiler   | Bir cihaza bildirim gönderin. Örneğin, "Bugün sizi yağmur olasıdır. Bir şemsiye getirmeyi unutmayın. "              |
 
-Bu seçenekleri kullanma konusundaki farklar ve kılavuzlar hakkında daha ayrıntılı açıklama için [Aygıttan buluta iletişim kılavuzuna](iot-hub-devguide-d2c-guidance.md) ve [Buluttan cihaza iletişim kılavuzuna](iot-hub-devguide-c2d-guidance.md)bakın.
+Bu seçenekleri kullanmayla ilgili farklılıklar ve yönergeler hakkında daha ayrıntılı bilgi için bkz. [cihazdan buluta iletişim Kılavuzu](iot-hub-devguide-d2c-guidance.md) ve [buluttan cihaza iletişim Kılavuzu](iot-hub-devguide-c2d-guidance.md).
 
-Cihaz ikizleri; meta veriler, yapılandırmalar ve koşullar gibi cihaz durumu bilgilerini depolayan JSON belgelerdir. IoT Hub, bağlanan her aygıt için bir aygıt ikizini kalıcı hale getirir. Cihaz ikizleri hakkında daha fazla bilgi için [bkz.](iot-hub-node-node-twin-getstarted.md)
+Cihaz ikizleri; meta veriler, yapılandırmalar ve koşullar gibi cihaz durumu bilgilerini depolayan JSON belgelerdir. IoT Hub, kendisine bağlanan her cihaz için bir cihaz ikizi devam ettirir. Cihaz TWINS hakkında daha fazla bilgi için bkz. [cihaz ikgörülerle çalışmaya başlama](iot-hub-node-node-twin-getstarted.md).
 
 ## <a name="what-you-learn"></a>Öğrenecekleriniz
 
-Bu makalede, geliştirme bilgisayarınızdaçeşitli yönetim seçenekleriyle Visual Studio için Bulut Gezgini'ni nasıl kullanacağınızı öğreneceksiniz.
+Bu makalede, geliştirme bilgisayarınızda çeşitli yönetim seçenekleriyle Visual Studio için bulut Gezgini 'ni nasıl kullanacağınızı öğreneceksiniz.
 
-## <a name="what-you-do"></a>Ne yaparsınız
+## <a name="what-you-do"></a>Yapabilecekleriniz
 
-Bu makalede, çeşitli yönetim seçenekleriyle Visual Studio için Cloud Explorer'ı çalıştırın.
+Bu makalede, çeşitli yönetim seçenekleriyle Visual Studio için Cloud Explorer 'ı çalıştırın.
 
 ## <a name="what-you-need"></a>Ne gerekiyor
 
-Aşağıdaki ön koşullara ihtiyacınız vardır:
+Aşağıdaki önkoşulların olması gerekir:
 
 - Etkin bir Azure aboneliği.
 
-- Aboneliğiniz altında bir Azure IoT Hub'ı.
+- Aboneliğiniz altındaki bir Azure IoT Hub.
 
-- Microsoft Visual Studio 2017 Güncelleştirme 9 veya daha sonra. Bu makale, [Visual Studio 2017 veya Visual Studio 2019'u kullansın.](https://www.visualstudio.com/vs/)
+- Microsoft Visual Studio 2017 güncelleştirme 9 veya üzeri. Bu makalede [Visual studio 2017 veya Visual studio 2019](https://www.visualstudio.com/vs/)kullanılmaktadır.
 
-- Varsayılan olarak Azure İş Yükü ile seçilen Visual Studio Installer'ın Bulut Gezgini bileşeni.
+- Azure Iş yükü ile varsayılan olarak seçilen Visual Studio Yükleyicisi bulut Gezgini bileşeni.
 
-## <a name="update-cloud-explorer-to-latest-version"></a>Bulut Gezgini'ni en son sürüme güncelleme
+## <a name="update-cloud-explorer-to-latest-version"></a>Bulut Gezginini en son sürüme Güncelleştir
 
-Visual Studio Installer for Visual Studio 2017'nin Cloud Explorer bileşeni yalnızca aygıttan buluta ve buluttan cihaza iletileri izlemeyi destekler. Visual Studio 2017'yi kullanmak için en son [Cloud Explorer'ı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS)indirip kurun.
+Visual Studio 2017 için Visual Studio Yükleyicisi bulut Gezgini bileşeni yalnızca cihazdan buluta ve buluttan cihaza iletileri izlemeyi destekler. Visual Studio 2017 ' i kullanmak için en son [bulut Gezginini](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS)indirip yükleyin.
 
-## <a name="sign-in-to-access-your-hub"></a>Hub'ınıza erişmek için oturum açın
+## <a name="sign-in-to-access-your-hub"></a>Hub 'ınıza erişmek için oturum açın
 
-1. Visual Studio'da Bulut Gezgini'ni açmak için**Bulut Gezgini'ni** **Görüntüle'yi** > seçin.
+1. Visual Studio 'da bulut Gezgini 'ni açmak için**bulut Gezginini** **görüntüle** > ' yi seçin.
 
-1. Aboneliklerinizi göstermek için Hesap Yönetimi simgesini seçin.
+1. Aboneliklerinizi göstermek için hesap yönetimi simgesini seçin.
 
-    ![Hesap Yönetimi simgesi](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
+    ![Hesap yönetimi simgesi](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
 
-1. Azure'da oturum unursanız, hesaplarınız görünür. Azure'da ilk kez oturum açabilmek için **hesap ekle'yi**seçin.
+1. Azure 'da oturum açtıysanız hesaplarınız görüntülenir. Azure 'da ilk kez oturum açmak için **Hesap Ekle**' yi seçin.
 
-1. Kullanmak istediğiniz Azure aboneliklerini seçin ve **Uygula'yı**seçin.
+1. Kullanmak istediğiniz Azure aboneliklerini seçin ve **Uygula**' yı seçin.
 
-1. Aboneliğinizi genişletin, ardından **IoT Hub'larını**genişletin.  Her hub'ın altında, bu hub için aygıtlarınızı görebilirsiniz. Yönetim seçeneklerine erişmek için tek bir aygıta sağ tıklayın.
+1. Aboneliğinizi genişlettikten sonra **IoT Hub 'ları**' nı genişletin.  Her hub 'ın altında bu hub için cihazlarınızı görebilirsiniz. Yönetim seçeneklerine erişmek için bir cihaza sağ tıklayın.
 
     ![Yönetim seçenekleri](media/iot-hub-device-management-visual-studio/management-options-vs2019.png)
 
 ## <a name="direct-methods"></a>Doğrudan yöntemler
 
-Doğrudan yöntemleri kullanmak için aşağıdaki adımları yapın:
+Doğrudan yöntemler kullanmak için aşağıdaki adımları uygulayın:
 
-1. Cihazınıza sağ tıklayın ve **Aygıtı Doğrudan Çağır Yöntemi'ni**seçin.
+1. Cihazınıza sağ tıklayıp **Cihaz doğrudan yöntemini çağır**' ı seçin.
 
-1. **Doğrudan Çağır Yöntemi'ne**yöntem adını ve yükünü girin ve ardından **Tamam'ı**seçin.
+1. Yöntem adını ve yükünü **doğrudan çağırma yöntemine**girip **Tamam**' ı seçin.
 
-    Sonuçlar **Çıktı'da**görünür.
+    Sonuçlar **çıktıda**görüntülenir.
 
-## <a name="update-device-twin"></a>Aygıt ikizini güncelleştir
+## <a name="update-device-twin"></a>Cihaz ikizi Güncelleştir
 
-Aygıt ikizini sağlamak için aşağıdaki adımları yapın:
+Bir cihaz ikizi düzenlemek için aşağıdaki adımları uygulayın:
 
-1. Cihazınıza sağ tıklayın ve **Aygıtı İkiz'i Edit'i**seçin.
+1. Cihazınıza sağ tıklayın ve **cihaz Ikizi Düzenle**' yi seçin.
 
-   **Bir azure-iot-device-twin.json** dosyası aygıt ikiziçeriği ile açılır.
+   Bir **Azure-IoT-Device-ikizi. JSON** dosyası, Device ikizi içeriğiyle açılır.
 
-1. **Azure-iot-device-twin.json** dosyasında **etiketlerin** veya özelliklerin bazı durumlarını **yapın.istenilen** alanlar.
+1. **Etiketlerin** veya özelliklerin bazı düzenlemeleri yapın **.** **Azure-IoT-Device-ikizi. JSON** dosyasında istenen alanlar.
 
-1. Aygıtı ikizi güncellemek için **Ctrl+S** tuşuna basın.
+1. Cihaz ikizi güncelleştirmek için **CTRL + S** tuşlarına basın.
 
-   Sonuçlar **Çıktı'da**görünür.
+   Sonuçlar **çıktıda**görüntülenir.
 
 ## <a name="send-cloud-to-device-messages"></a>Buluttan cihaza iletileri gönderme
 
-IoT Hub'ınızdan cihazınıza bir ileti göndermek için aşağıdaki adımları izleyin:
+IoT Hub cihazınıza bir ileti göndermek için şu adımları izleyin:
 
-1. Cihazınıza sağ tıklayın ve **C2D İleti gönder'i**seçin.
+1. Cihazınıza sağ tıklayın ve **C2D Iletisi gönder**' i seçin.
 
-1. **C2D ileti gönder iletisini** girin ve **Tamam'ı**seçin.
+1. **C2D Iletisi gönder** ' de iletiyi girin ve **Tamam**' ı seçin.
 
-   Sonuçlar **Çıktı'da**görünür.
+   Sonuçlar **çıktıda**görüntülenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Cloud Explorer for Visual Studio için çeşitli yönetim seçenekleriyle nasıl kullanılacağını öğrendiniz.
+Visual Studio için Cloud Explorer 'ı çeşitli yönetim seçenekleriyle nasıl kullanacağınızı öğrendiniz.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

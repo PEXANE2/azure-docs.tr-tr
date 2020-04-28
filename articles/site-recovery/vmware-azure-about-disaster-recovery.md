@@ -1,124 +1,124 @@
 ---
-title: Azure Site Kurtarma ile VMware olağanüstü durum kurtarma
-description: Bu makalede, Azure Site Kurtarma hizmetini kullanarak VMware VM'lerin Azure'a olağanüstü durum kurtarma sına genel bir bakış sunulmaktadır.
+title: Azure Site Recovery ile VMware olağanüstü durum kurtarma
+description: Bu makalede, Azure Site Recovery hizmeti kullanılarak Azure 'a VMware VM 'lerinin olağanüstü durum kurtarma konusuna genel bakış sunulmaktadır.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73954384"
 ---
-# <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>VMware VM'lerin Azure'a olağanüstü kurtarma sı hakkında
+# <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>VMware VM 'lerinin Azure 'a olağanüstü durum kurtarması hakkında
 
-Bu makalede, [Azure Site Kurtarma](site-recovery-overview.md) hizmetini kullanarak şirket içi VMware VM'lerden Azure'a olağanüstü durum kurtarma genel bakışı sunulmaktadır.
+Bu makalede, şirket içi VMware VM 'lerinin [Azure Site Recovery](site-recovery-overview.md) hizmeti kullanılarak Azure 'a olağanüstü durum kurtarma hakkında genel bakış sunulmaktadır.
 
 ## <a name="what-is-bcdr"></a>BCDR nedir?
 
-İş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejisi, işinizi çalışır durumda tutmaya yardımcı olur. Planlanan kapalı kalma süresi ve beklenmeyen kesintiler sırasında BCDR verileri güvenli ve kullanılabilir tutar ve uygulamaların çalışmaya devam edilmesini sağlar. Azure, bölgesel eşleştirme ve yüksek kullanılabilirlik depolama gibi platform BCDR özelliklerine ek olarak, BCDR çözümünüzün ayrılmaz bir parçası olarak Kurtarma Hizmetleri sağlar. Kurtarma hizmetleri şunları içerir: 
+İş sürekliliği ve olağanüstü durum kurtarma (BCDR) stratejisi, işinizi çalışır durumda tutmanıza yardımcı olur. Planlanan kapalı kalma süresi ve beklenmedik kesintiler sırasında, BCDR verileri güvenli ve kullanılabilir tutar ve uygulamaların çalışmaya devam etmesini sağlar. Azure, bölgesel eşleştirme ve yüksek kullanılabilirliğe sahip depolama gibi platform BCDR özelliklerine ek olarak, kurtarma hizmetleri için BCDR çözümünüzün bir parçası olarak sağlanır. Kurtarma Hizmetleri şunları içerir: 
 
-- [Azure Yedekleme,](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) şirket içi ve Azure VM verilerinizi yedekler. Bir dosyayı ve klasörleri, belirli iş yüklerini veya tüm VM'yi yedekleyebilirsiniz. 
-- [Azure Site Kurtarma,](site-recovery-overview.md) şirket içi makinelerde çalışan uygulamalar ve iş yükleri veya Azure IaaS VM'leri için esneklik ve olağanüstü durum kurtarma sağlar. Site Kurtarma çoğaltmayı yönetir ve kesintiler olduğunda Azure'a başarısız olur. Ayrıca, Azure'dan birincil sitenize kurtarma işlemlerini de işler. 
+- [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) , şirket Içi ve Azure VM verilerinizi yedekler. Bir dosya ve klasörleri, belirli iş yüklerini veya tüm VM 'leri yedekleyebilirsiniz. 
+- [Azure Site Recovery](site-recovery-overview.md) , şirket içi makinelerde çalışan uygulamalar ve iş yükleri ya da Azure IaaS VM 'leri için esnekliği ve olağanüstü durum kurtarma sağlar. Site Recovery çoğaltmayı düzenler ve kesintiler gerçekleştiğinde Azure 'a yük devretmeyi işler. Ayrıca, Azure 'dan birincil sitenize kurtarmayı işler. 
 
-## <a name="how-does-site-recovery-do-disaster-recovery"></a>Site Kurtarma olağanüstü durum kurtarma yı nasıl yapar?
+## <a name="how-does-site-recovery-do-disaster-recovery"></a>Site Recovery olağanüstü durum kurtarma nasıl yapılır?
 
-1. Azure'u ve şirket içi sitenizi hazırladıktan sonra, şirket içi makineleriniz için çoğaltmayı ayarlar ve etkinleştirin.
-2. Site Kurtarma, ilke ayarlarınıza uygun olarak makinenin ilk çoğaltmasını yönetir.
-3. İlk çoğaltmadan sonra, Site Kurtarma delta değişikliklerini Azure'da çoğaltır. 
-4. Her şey beklendiği gibi çoğalırken, bir felaket kurtarma tatbikatı çalıştırın.
-    - Matkap, gerçek bir ihtiyaç ortaya çıktığında, arızanın beklendiği gibi çalışmasını sağlamaya yardımcı olur.
-    - Matkap, üretim ortamınızı etkilemeden bir test hatası gerçekleştirir.
-5. Bir kesinti oluşursa, Azure'da tam bir kesinti çalıştırın. Tek bir makine de başarısız olabilir veya aynı anda birden çok makine üzerinde başarısız bir kurtarma planı oluşturabilirsiniz.
-6. Azure VM'leri, yönetilen disklerde veya depolama hesaplarındaki VM verilerinden oluşturulur. Kullanıcılar Azure VM'den uygulamalara ve iş yüklerine erişmeye devam edebilir
-7. Şirket içi siteniz yeniden kullanılabilir olduğunda Azure'dan geri dönmezsiniz.
-8. Geri başarısız olduktan ve birincil sitenizden bir kez daha çalıştıktan sonra, şirket içi VM'leri yeniden Azure'a çoğaltmaya başlarsınız.
-
-
-## <a name="how-do-i-know-if-my-environment-is-suitable-for-disaster-recovery-to-azure"></a>Ortamımın Azure'a olağanüstü durum kurtarma için uygun olup olmadığını nasıl anlarım?
-
-Site Kurtarma, desteklenen bir VMware VM veya fiziksel sunucuda çalışan tüm iş yükünü çoğaltabilir. Ortamınızda kontrol etmeniz gereken şeyler şunlardır:
-
-- VMware VM'leri kopyalarsanız, VMware sanallaştırma sunucularının doğru sürümlerini mi çalıştırıyorsunuz? [Burada kontrol edin.](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers)
-- Çoğaltmak istediğiniz makineler desteklenen bir işletim sistemi çalıştırıyor mu? [Burada kontrol edin.](vmware-physical-azure-support-matrix.md#replicated-machines)
-- Linux olağanüstü durum kurtarma için, makineler desteklenen bir dosya sistemi / konuk depolama çalışıyor? [Buraya bakın](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)
-- Çoğaltmak istediğiniz makineler Azure gereksinimlerine uygun mu? [Burada kontrol edin.](vmware-physical-azure-support-matrix.md#azure-vm-requirements)
-- Ağ yapılandırmanız desteklendi mi? [Burada kontrol edin.](vmware-physical-azure-support-matrix.md#network)
-- Depolama yapılandırmanız desteklendi mi? [Burada kontrol edin.](vmware-physical-azure-support-matrix.md#storage)
+1. Azure 'u ve şirket içi sitenizi hazırladıktan sonra, şirket içi makineleriniz için çoğaltmayı ayarlayıp etkinleştirin.
+2. Site Recovery, ilke ayarlarınıza uygun olarak makinenin ilk çoğaltmasını düzenler.
+3. İlk çoğaltmadan sonra, Site Recovery Delta değişikliklerini Azure 'a çoğaltır. 
+4. Her şey beklendiği gibi çoğaltıldığında, bir olağanüstü durum kurtarma detayına sahip olursunuz.
+    - Detaya gitme işlemi, gerçek bir ihtiyaç olduğunda yük devretmenin beklendiği gibi çalışmasını sağlamaya yardımcı olur.
+    - Detaya gitme, üretim ortamınızı etkilemeden yük devretme testi gerçekleştirir.
+5. Bir kesinti oluşursa, Azure 'a tam yük devretme çalıştırırsınız. Tek bir makinenin yükünü devretmek veya aynı anda birden fazla makine üzerinde başarısız olan bir kurtarma planı da oluşturabilirsiniz.
+6. Yük devretmede, yönetilen diskler veya depolama hesaplarındaki VM verilerinden Azure VM 'Leri oluşturulur. Kullanıcılar, Azure VM 'den uygulama ve iş yüklerine erişmeye devam edebilir
+7. Şirket içi siteniz yeniden kullanılabilir olduğunda Azure 'dan yeniden yük devreolursunuz.
+8. Yeniden başarısız olduktan ve birincil sitenizden daha sonra çalıştıktan sonra şirket içi VM 'Leri tekrar Azure 'a çoğaltmaya başlayabilirsiniz.
 
 
-## <a name="what-do-i-need-to-set-up-in-azure-before-i-start"></a>Başlamadan önce Azure'da ne ayarlamam gerekir?
+## <a name="how-do-i-know-if-my-environment-is-suitable-for-disaster-recovery-to-azure"></a>Nasıl yaparım?, ortamınızın Azure 'a olağanüstü durum kurtarma için uygun olup olmadığını bilmelidir mi?
 
-Azure'da aşağıdakileri hazırlamanız gerekir:
+Site Recovery, desteklenen bir VMware VM veya fiziksel sunucu üzerinde çalışan herhangi bir iş yükünü çoğaltabilir. Ortamınızda denetlemeniz gereken işlemler şunlardır:
 
-1. Azure hesabınızın Azure'da VM oluşturma izinlerine sahip olduğunu doğrulayın.
-2. Azure VM'lerinin depolama hesaplarından veya yönetilen disklerden oluşturulduklarında birleşeceği bir Azure ağı oluşturun.
-3. Site Kurtarma için bir Azure Kurtarma Hizmetleri kasası ayarlayın. Kasa Azure portalında bulunur ve Site Kurtarma dağıtımınızı dağıtmak, yapılandırmak, düzenlemek, izlemek ve sorun gidermek için kullanılır.
+- VMware VM 'lerini çoğaltdıysanız, VMware sanallaştırma sunucularının doğru sürümlerini çalıştırıyor musunuz? [Buraya bakın](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers).
+- Çoğaltmak istediğiniz makineler desteklenen bir işletim sistemi çalıştırıyor mu? [Buraya bakın](vmware-physical-azure-support-matrix.md#replicated-machines).
+- Linux olağanüstü durum kurtarma için desteklenen bir dosya sistemi/Konuk depolama çalıştıran makineler mi? [Buraya bakın](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)
+- Çoğaltmak istediğiniz makineler Azure gereksinimleriyle uyumlu değil mi? [Buraya bakın](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
+- Ağ yapılandırmanız destekleniyor mu? [Buraya bakın](vmware-physical-azure-support-matrix.md#network).
+- Depolama yapılandırmanız destekleniyor mu? [Buraya bakın](vmware-physical-azure-support-matrix.md#storage).
+
+
+## <a name="what-do-i-need-to-set-up-in-azure-before-i-start"></a>Başlamadan önce Azure 'da ayarlama yapmam gerekenler nelerdir?
+
+Azure 'da şunları hazırlamanız gerekir:
+
+1. Azure hesabınızın Azure 'da VM oluşturma izinlerine sahip olduğunu doğrulayın.
+2. Azure VM 'lerinin, yük devretmeden sonra depolama hesaplarından veya yönetilen disklerden oluşturulduklarında katılabilecekleri bir Azure ağı oluşturun.
+3. Site Recovery için bir Azure kurtarma hizmetleri Kasası ayarlayın. Kasa Azure portal bulunur ve Site Recovery dağıtımınızı dağıtmak, yapılandırmak, düzenlemek, izlemek ve sorunlarını gidermek için kullanılır.
 
 *Daha fazla yardım mı gerekiyor?*
 
-[Hesabınızı doğrulayarak,](tutorial-prepare-azure.md#verify-account-permissions) [ağ](tutorial-prepare-azure.md#set-up-an-azure-network)oluşturarak ve kasa oluşturarak Azure'u nasıl [ayarlayayınız](tutorial-prepare-azure.md#create-a-recovery-services-vault)öğrenin.
+[Hesabınızı doğrulayarak](tutorial-prepare-azure.md#verify-account-permissions), bir [ağ](tutorial-prepare-azure.md#set-up-an-azure-network)oluşturup [bir kasa ayarlayarak](tutorial-prepare-azure.md#create-a-recovery-services-vault)Azure 'u ayarlamayı öğrenin.
 
 
 
-## <a name="what-do-i-need-to-set-up-on-premises-before-i-start"></a>Başlamadan önce şirket içinde ne ayarlamam gerekiyor?
+## <a name="what-do-i-need-to-set-up-on-premises-before-i-start"></a>Başlamadan önce şirket içi olarak ne yapmam gerekir?
 
-Şirket içinde yapmanız gerekenler şunlardır:
+Şirket içinde şunları yapmanız gerekir:
 
 1. Birkaç hesap ayarlamanız gerekir:
 
-    - VMware VM'leri kopyalıyorsanız, VM'leri otomatik olarak keşfetmek için Site Kurtarma'nın vCenter Server veya vSphere ESXi ana bilgisayarlarına erişmesi için bir hesap gereklidir.
-    - Çoğaltmak istediğiniz her fiziksel makineye veya VM'ye Site Kurtarma Mobilitehizmeti aracısını yüklemek için bir hesap gereklidir.
+    - VMware VM 'lerini çoğaltırken, VM 'Leri otomatik olarak bulması için Site Recovery vCenter Server veya vSphere ESXi konaklarına erişim için bir hesap gerekir.
+    - Çoğaltmak istediğiniz her fiziksel makineye veya VM 'ye Site Recovery Mobility hizmet Aracısı 'nı yüklemek için bir hesap gerekir.
 
-2. Bunu daha önce yapmadıysanız VMware altyapınızın uyumluluğunu kontrol etmiş olmanız gerekir.
-3. Bir arızadan sonra Azure VM'lere bağlanabildiğinizden emin olun. RDP'yi şirket içi Windows makinelerinde veya Linux makinelerinde SSH'de ayarlarsınız.
+2. Daha önce yapmadıysanız, VMware altyapınızın uyumluluğunu denetlemeniz gerekir.
+3. Yük devretmeden sonra Azure VM 'lerine bağlanabildiğinizden emin olun. Şirket içi Windows makinelerde RDP veya Linux makinelerde SSH ayarlarsınız.
 
 *Daha fazla yardım mı gerekiyor?*
-- [Otomatik keşif](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) ve [Mobilite hizmetinin kurulumu](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-mobility-service-installation)için hesap hazırlayın.
-- VMware ayarlarınızın uyumlu olduğundan [doğrulayın.](vmware-azure-tutorial-prepare-on-premises.md#check-vmware-requirements)
-- [Prepare](vmware-azure-tutorial-prepare-on-premises.md#prepare-to-connect-to-azure-vms-after-failover) Başarısız olduktan sonra Azure'a bağlanın.
-- Başarısız olduktan sonra Azure VM'leri için IP adresleme ayarlama konusunda daha ayrıntılı yardım almak istiyorsanız, [bu makaleyi okuyun.](concepts-on-premises-to-azure-networking.md)
+- [Otomatik bulma](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) ve [Mobility hizmetinin yüklenmesi](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-mobility-service-installation)için hesapları hazırlayın.
+- VMware ayarlarınızın uyumlu olduğunu [doğrulayın](vmware-azure-tutorial-prepare-on-premises.md#check-vmware-requirements) .
+- Yük devretmeden sonra Azure 'a bağlanmanız için [hazırlayın](vmware-azure-tutorial-prepare-on-premises.md#prepare-to-connect-to-azure-vms-after-failover) .
+- Yük devretmeden sonra Azure VM 'Leri için IP adresleme ayarlama hakkında daha ayrıntılı yardım istiyorsanız [Bu makaleyi okuyun](concepts-on-premises-to-azure-networking.md).
 
-## <a name="how-do-i-set-up-disaster-recovery"></a>Olağanüstü durum kurtarmayı nasıl ayarlıyorum?
+## <a name="how-do-i-set-up-disaster-recovery"></a>Olağanüstü durum kurtarma Nasıl yaparım? mı?
 
-Azure ve şirket içi altyapınızı uygulamaya açtıktan sonra olağanüstü durum kurtarma yı ayarlayabilirsiniz.
+Azure ve şirket içi altyapınızı aldıktan sonra olağanüstü durum kurtarma ayarlayabilirsiniz.
 
-1. Dağıtmanız gereken bileşenleri anlamak için [VMware'i Azure mimarisine](vmware-azure-architecture.md)ve [fizikselden Azure mimarisine](physical-azure-architecture.md)inceleyin. Birkaç bileşen vardır, bu nedenle hepsinin birbirine nasıl uyduğunu anlamak önemlidir.
-2. **Kaynak ortamı**: Dağıtımın ilk adımı olarak çoğaltma kaynak ortamınızı ayarlarsınız. Neyi çoğaltmak istediğinizi ve nerede çoğaltmak istediğinizi belirtirsiniz.
-3. **Configuration server**: Şirket içi kaynak ortamınızda bir yapılandırma sunucusu ayarlamanız gerekir:
-    - Yapılandırma sunucusu tek bir şirket içi makinedir. VMware olağanüstü durum kurtarma için, indirilebilir ovf şablonundan dağıtılabilir bir VMware VM olarak dağıtmanızı öneririz.
-    - Yapılandırma sunucusu şirket içi ve Azure arasındaki iletişimi koordine eder
-    - Yapılandırma sunucusu makinesinde çalışan diğer bileşenlerden birkaçı.
-        - İşlem sunucusu, çoğaltma verilerini Azure'daki önbellek depolama hesabına alır, optimize eder ve gönderir. Ayrıca çoğaltmak istediğiniz makinelerde Mobilite hizmetinin otomatik olarak yüklenmesini işler ve VMware sunucularında VM'lerin otomatik olarak keşfini gerçekleştirir.
+1. Dağıtmanız gereken bileşenleri anlamak için, [VMware 'Den Azure mimarisine](vmware-azure-architecture.md)ve [fizikselden Azure mimarisine](physical-azure-architecture.md)gözden geçirin. Birçok bileşen vardır. bu nedenle, bunların tümünün nasıl bir araya uyduğunu anlamak önemlidir.
+2. **Kaynak ortam**: dağıtımda ilk bir adım olarak, çoğaltma kaynak ortamınızı ayarlarsınız. Ne çoğaltmak istediğinizi, ne de çoğaltmak istediğinizi belirtirsiniz.
+3. **Yapılandırma sunucusu**: şirket içi kaynak ortamınızda bir yapılandırma sunucusu ayarlamanız gerekir:
+    - Yapılandırma sunucusu, tek bir şirket içi makinedir. VMware olağanüstü durum kurtarma için, dosyayı indirilebilir bir OVF şablonundan dağıtılabilecek bir VMware VM olarak dağıtmanızı öneririz.
+    - Yapılandırma sunucusu, şirket içi ve Azure arasındaki iletişimleri koordine eder
+    - Yapılandırma sunucusu makinesinde çalışan birkaç bileşen vardır.
+        - İşlem sunucusu, Azure 'daki önbellek depolama hesabına çoğaltma verileri alır, iyileştirir ve gönderir. Ayrıca, çoğaltmak istediğiniz makinelere Mobility hizmetinin otomatik olarak yüklenmesini işler ve VMware sunucularında sanal makinelerin otomatik olarak bulunmasını gerçekleştirir.
         - Ana hedef sunucu, Azure'dan yeniden çalışma sırasında çoğaltma verilerini işler.
-    - Kurulum, yapılandırma sunucusunun kasaya kaydedilmesi, MySQL Server ve VMware PowerCLI'nin indirilmesi ve otomatik bulma ve Mobilite hizmet yüklemesi için oluşturulan hesapların belirtilmesi içerir.
-4. **Hedef ortamı**: Azure aboneliğinizi ve ağ ayarlarınızı belirterek hedef Azure ortamınızı ayarlarsınız.
-5. **Çoğaltma ilkesi**: Çoğaltmanın nasıl oluştuğunu belirtirsiniz. Ayarlar, kurtarma noktalarının ne sıklıkta oluşturulduğunu ve depolandığını ve uygulama tutarlı anlık görüntü oluşturulup oluşturulmayacağını içerir.
-6. **Çoğaltmayı etkinleştirin.** Şirket içi makineler için çoğaltmayı etkinleştirin. Mobilite hizmetini yüklemek için bir hesap oluşturduysanız, bir makine için çoğaltmayı etkinleştirdiğinizde bu hesap yüklenir. 
+    - Ayarla ayarı, kasadaki yapılandırma sunucusunu kaydetmek, MySQL Server ve VMware PowerCLI 'yi indirmek ve otomatik bulma ve Mobility hizmeti yüklemesi için oluşturulan hesapları belirtmek içerir.
+4. **Hedef ortam**: Azure aboneliğinizi ve ağ ayarlarınızı belirterek hedef Azure ortamınızı ayarlarsınız.
+5. **Çoğaltma İlkesi**: çoğaltmanın nasıl gerçekleşmesi gerektiğini belirtirsiniz. Ayarlar, kurtarma noktalarının ne sıklıkta oluşturulup depolandığını ve uygulamayla tutarlı anlık görüntülerin oluşturulup oluşturulmayacağını içerir.
+6. **Çoğaltmayı etkinleştirin**. Şirket içi makineler için çoğaltmayı etkinleştirirsiniz. Mobility hizmetini yüklemek için bir hesap oluşturduysanız, bir makine için çoğaltmayı etkinleştirdiğinizde yüklenir. 
 
 *Daha fazla yardım mı gerekiyor?*
 
-- Bu adımlarıhızlı bir walkthrough için, bizim [VMware öğretici](vmware-azure-tutorial.md)deneyebilirsiniz, ve [fiziksel sunucu walkthrough](physical-azure-disaster-recovery.md).
-- Kaynak ortamınızı ayarlama hakkında [daha fazla bilgi edinin.](vmware-azure-set-up-source.md)
-- Yapılandırma sunucusu gereksinimleri ve VMware çoğaltma için bir OVF şablonu ile yapılandırma sunucusu ayarlama [hakkında bilgi edinin.](vmware-azure-deploy-configuration-server.md) Herhangi bir nedenle şablon kullanamıyorsanız veya fiziksel sunucuları çoğaltıyorsanız, [bu yönergeleri kullanın.](physical-azure-set-up-source.md#set-up-the-source-environment)
-- Hedef ayarları hakkında [daha fazla bilgi edinin.](vmware-azure-set-up-target.md)
-- Çoğaltma ilkesi ayarlama hakkında [daha fazla bilgi alın.](vmware-azure-set-up-replication.md)
-- [Çoğaltmayı](vmware-azure-enable-replication.md) nasıl etkinleştiracağınızı öğrenin ve diskleri çoğaltmadan [hariç takın.](vmware-azure-exclude-disk.md)
+- Bu adımlara hızlı bir şekilde bir anlatım için, [VMware Öğreticimizi](vmware-azure-tutorial.md)ve [fiziksel sunucu gözden geçirmeyi](physical-azure-disaster-recovery.md)deneyebilirsiniz.
+- Kaynak ortamınızı ayarlama hakkında [daha fazla bilgi edinin](vmware-azure-set-up-source.md) .
+- Yapılandırma sunucusu gereksinimleri [hakkında bilgi edinin](vmware-azure-deploy-configuration-server.md) ve VMware çoğaltması için bir OVF şablonuyla yapılandırma sunucusunu ayarlama. Bir şablon kullanmıyorsanız veya fiziksel sunucuları çoğaltdıysanız, [Bu yönergeleri kullanın](physical-azure-set-up-source.md#set-up-the-source-environment).
+- Hedef ayarları hakkında [daha fazla bilgi edinin](vmware-azure-set-up-target.md) .
+- Çoğaltma İlkesi ayarlama hakkında [daha fazla bilgi alın](vmware-azure-set-up-replication.md) .
+- Çoğaltmayı etkinleştirme ve diskleri çoğaltmanın [dışında bırakma](vmware-azure-exclude-disk.md) hakkında [bilgi edinin](vmware-azure-enable-replication.md) .
 
 
-## <a name="something-went-wrong-how-do-i-troubleshoot"></a>Bir şeyler ters gitti, nasıl sorun giderebilirim?
+## <a name="something-went-wrong-how-do-i-troubleshoot"></a>Bir sorun oluştu, nasıl sorun giderebilirim?
 
-- İlk adım olarak, çoğaltılan öğelerin, işlerin ve altyapı sorunlarının durumunu doğrulamak ve hataları tanımlamak için [dağıtımınızı izlemeyi](site-recovery-monitor-and-troubleshoot.md) deneyin.
-- İlk çoğaltmayı tamamlayamıyorsanız veya devam eden çoğaltma beklendiği gibi çalışmıyorsa, sık karşılaşılan hatalar ve sorun giderme ipuçları için [bu makaleyi gözden geçirin.](vmware-azure-troubleshoot-replication.md)
-- Çoğaltmak istediğiniz makinelerde Mobilite hizmetinin otomatik olarak yüklenmesiyle ilgili sorunlar yaşıyorsanız, [bu makaledeki](vmware-azure-troubleshoot-push-install.md)yaygın hataları gözden geçirin.
-- Failover beklendiği gibi çalışmıyorsa, bu [makalede](site-recovery-failover-to-azure-troubleshoot.md)sık karşılaşılan hataları denetleyin.
-- Geri ödeme çalışmıyorsa, sorununuzun [bu makalede](vmware-azure-troubleshoot-failback-reprotect.md)görünüp görünmediğini denetleyin.
+- İlk adım olarak, çoğaltılan öğelerin, işlerin ve altyapı sorunlarının durumunu doğrulamak ve hataları belirlemek için [dağıtımınızı izlemeyi](site-recovery-monitor-and-troubleshoot.md) deneyin.
+- İlk çoğaltmayı tamamlayamazsa veya devam eden çoğaltma beklendiği gibi çalışmıyorsa, yaygın hatalar ve sorun giderme ipuçları için [Bu makaleyi gözden geçirin](vmware-azure-troubleshoot-replication.md) .
+- Çoğaltmak istediğiniz makinelere Mobility hizmetinin otomatik yüklemesiyle ilgili sorun yaşıyorsanız, [Bu makaledeki](vmware-azure-troubleshoot-push-install.md)yaygın hataları gözden geçirin.
+- Yük devretme beklendiği gibi çalışmıyorsa, [Bu makaledeki](site-recovery-failover-to-azure-troubleshoot.md)yaygın hataları kontrol edin.
+- Yeniden çalışma çalışmıyorsa, sorununuzun [Bu makalede](vmware-azure-troubleshoot-failback-reprotect.md)görünüp görüntülenmediğini denetleyin.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çoğaltma şimdi yerinde, bu failover beklendiği gibi çalıştığından emin olmak için [bir felaket kurtarma matkap çalıştırmalısınız.](tutorial-dr-drill-azure.md) 
+Çoğaltma artık yerinde olduğunda, yük devretmenin beklendiği gibi çalıştığından emin olmak için [bir olağanüstü durum kurtarma detayına](tutorial-dr-drill-azure.md) sahip olmanız gerekir. 

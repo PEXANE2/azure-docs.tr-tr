@@ -1,6 +1,6 @@
 ---
-title: Yönetilmeyen bir Azure REKLAM dizininde iş veya okul hesabını kapatma
-description: İş veya okul hesabınızı yönetilmeyen bir Azure Etkin Dizini'nde nasıl kapatabilirsiniz?
+title: Yönetilmeyen bir Azure AD dizininde iş veya okul hesabını kapatma
+description: Yönetilmeyen bir Azure Active Directory iş veya okul hesabınızı kapatma.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -14,47 +14,47 @@ ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3c101c0ef7932151e675c5c514ac558e6e0f94b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73815714"
 ---
-# <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>İş inizi veya okul hesabınızı yönetilmeyen bir dizinde kapatın
+# <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>İş veya okul hesabınızı yönetilmeyen bir dizinde kapatma
 
-Yönetilmeyen bir Azure Etkin Dizin (Azure AD) kuruluşunda bir kullanıcıysanız ve artık bu kuruluştaki uygulamaları kullanmanız veya bu kuruluşla herhangi bir ilişki sürdürmeniz gerekmiyorsa, hesabınızı istediğiniz zaman kapatabilirsiniz. Yönetilmeyen bir dizinin Global yöneticisi yoktur. Yönetilmeyen bir dizindeki kullanıcılar, bir yöneticiyle iletişim kurmak zorunda kalmadan hesaplarını kendi başlarına kapatabilirler.
+Yönetilmeyen bir Azure Active Directory (Azure AD) kuruluşunda bir kullanıcı ise ve bu kuruluştan uygulama kullanmanıza veya bununla ilişkili herhangi bir ilişkilendirmeyi sürdürmenize gerek kalmadığında, hesabınızı dilediğiniz zaman kapatabilirsiniz. Yönetilmeyen bir dizinin genel yöneticisi yok. Yönetilmeyen bir dizindeki kullanıcılar, bir yönetici ile iletişim kurmak zorunda kalmadan hesaplarını kendi kendilerine kapatabilir.
 
-Yönetilmeyen bir dizindeki kullanıcılar genellikle self servis kayıt sırasında oluşturulur. Örnek, ücretsiz hizmete kaydolan bir kuruluştaki bir bilgi çalışanı olabilir. Self servis kayıt hakkında daha fazla bilgi için azure [Active Directory için self servis kayıt nedir?](directory-self-service-signup.md)
+Yönetilmeyen dizindeki kullanıcılar genellikle self servis kaydolma sırasında oluşturulur. Örnek, bir kuruluşta ücretsiz bir hizmete kaydolan bir bilgi çalışanı olabilir. Self Servis kaydolma hakkında daha fazla bilgi için bkz. [Azure Active Directory için self servis kaydolma nedir?](directory-self-service-signup.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Hesabınızı kapatmadan önce aşağıdaki öğeleri onaylamanız gerekir:
+Hesabınızı kapatabilmeniz için önce aşağıdaki öğeleri onaylamanız gerekir:
 
-* Yönetilmeyen bir Azure REKLAM dizininin kullanıcısı olduğunuzdan emin olun. Yönetilen bir dizine aitseniz hesabınızı kapatamazsınız. Yönetilen bir dizine aitseniz ve hesabınızı kapatmak istiyorsanız, yöneticinizle iletişime geçmeniz gerekir. Yönetilmeyen bir dizine ait olup olmadığınızı nasıl belirleyebildiğiniz hakkında bilgi için [bkz.](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
+* Yönetilmeyen bir Azure AD dizininin kullanıcısı olduğunuzdan emin olun. Yönetilen bir dizine aitseniz, hesabınızı kapatamazsınız. Yönetilen bir dizine aitseniz ve hesabınızı kapatmak istiyorsanız yöneticinize başvurmanız gerekir. Yönetilmeyen bir dizine ait olup olmadığınızı belirleme hakkında daha fazla bilgi için bkz. [kullanıcıyı yönetilmeyen kiracıdan silme](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
 
-* Saklamak istediğiniz verileri kaydedin. Dışa aktarma isteğinin nasıl gönderilen hakkında bilgi için, [Yönetilmeyen Kiracılar için sistem tarafından oluşturulan günlüklere erişim ve dışa aktarma'ya](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)bakın.
+* Tutmak istediğiniz tüm verileri kaydedin. Dışarı aktarma isteği gönderme hakkında daha fazla bilgi için bkz. [yönetilmeyen kiracılar için sistem tarafından oluşturulan günlüklere erişme ve dışarı aktarma](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants).
 
 > [!WARNING]
-> Hesabınızı kapatmak geri alınamaz. Hesabınızı kapattığınızda, tüm kişisel veriler kaldırılır. Artık hesabınıza ve hesabınızla ilişkili verilere erişemeceksiniz.
+> Hesabınızı kapatmak geri alınamaz. Hesabınızı kapattığınızda tüm kişisel veriler kaldırılır. Hesabınıza ve hesabınızla ilişkili verilerinize artık erişemeyecektir.
 
 ## <a name="close-your-account"></a>Hesabınızı kapatma
 
-Yönetilmeyen bir çalışmayı veya okul hesabını kapatmak için aşağıdaki adımları izleyin:
+Yönetilmeyen bir iş veya okul hesabını kapatmak için şu adımları izleyin:
 
 1. Kapatmak istediğiniz hesabı kullanarak [hesabınızı kapatmak](https://go.microsoft.com/fwlink/?linkid=873123)için oturum açın.
 
-1. **Veri isteklerimde** **Hesabı Kapat'ı**seçin.
+1. **Veri isteklerim**sayfasında **Hesabı kapat**' ı seçin.
 
-    ![Veri isteklerim - Hesabı kapat](./media/users-close-account/close-account.png)
+    ![Veri isteklerim-hesabı kapat](./media/users-close-account/close-account.png)
 
-1. Onay iletisini gözden geçirin ve ardından **Evet'i**seçin.
+1. Onay iletisini gözden geçirin ve ardından **Evet**' i seçin.
 
-    ![Veri isteklerim - Kapat'ı onaylayın](./media/users-close-account/confirm-close.png)
+    ![Veri isteklerim-kapatmayı Onayla](./media/users-close-account/confirm-close.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory için self servis kayıt nedir?](directory-self-service-signup.md)
+- [Azure Active Directory için self servis kaydolma nedir?](directory-self-service-signup.md)
 - [Yönetilmeyen Kiracıdan kullanıcıyı silme](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
 - [Yönetilmeyen Kiracılar için sistem tarafından oluşturulan günlüklere erişme ve bu günlükleri dışarı aktarma](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)

@@ -1,6 +1,6 @@
 ---
-title: Azure DNS özel bölgelerinin otomatik kayıt özelliği nedir
-description: Azure DNS özel bölgelerinin otomatik kayıt özelliğine genel bakış
+title: Azure DNS özel bölgelerin oto kaydı özelliği nedir?
+description: Azure DNS özel bölgelerin oto kayıt özelliğine genel bakış
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,33 +8,33 @@ ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
 ms.openlocfilehash: 9d1854b459e799d5cbb401de9ac717dd7d0fde1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71961191"
 ---
-# <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>Azure DNS özel bölgelerinin otomatik kayıt özelliği nedir?
+# <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>Azure DNS özel bölgelerin oto kaydı özelliği nedir?
 
-Azure DNS özel bölgeler otomatik kayıt özelliği, sanal ağda dağıtılan sanal makineler için DNS kayıt yönetiminin acısını ortadan çıkarır. Bir sanal ağı özel bir DNS bölgesine [bağlayıp](./private-dns-virtual-network-links.md) tüm sanal makineler için otomatik kaydı etkinleştirdiğinizde, sanal ağda dağıtılan sanal makinelerin DNS kayıtları otomatik olarak özel DNS bölgesinde oluşturulur. İleriye dönük kayıtların (A kayıtları) ek olarak, sanal makineler için ters arama kayıtları (PTR kayıtları) da otomatik olarak oluşturulur.
-Sanal ağa daha fazla sanal makine eklerseniz, bu sanal makinelere ait DNS kayıtları da otomatik olarak bağlı özel DNS bölgesinde oluşturulur.
+Azure DNS özel bölgeler otomatik kayıt özelliği, bir sanal ağda dağıtılan sanal makineler için DNS kayıt yönetiminin ortadan çıkar. Bir [sanal ağı](./private-dns-virtual-network-links.md) özel bir DNS bölgesi ile bağladığınızda ve tüm sanal makineler için otomatik kaydı etkinleştirdiğinizde, sanal ağda dağıtılan sanal MAKINELER için DNS KAYıTLARı özel DNS bölgesinde otomatik olarak oluşturulur. İleriye doğru arama kayıtlarının (A kayıtları) yanı sıra, sanal makineler için de otomatik olarak kayıt (PTR kayıtları) oluşturulur.
+Sanal ağa daha fazla sanal makine eklerseniz, bu sanal makineler için DNS kayıtları Ayrıca bağlantılı özel DNS bölgesinde otomatik olarak oluşturulur.
 
-Sanal bir makineyi sildiğinizde, sanal makinenin DNS kayıtları özel DNS bölgesinden otomatik olarak silinir.
+Bir sanal makineyi sildiğinizde, sanal makine için DNS kayıtları otomatik olarak özel DNS bölgesinden silinir.
 
-Sanal ağ bağlantısı oluştururken "Otomatik kaydı etkinleştir" seçeneğini seçerek otomatik kaydı etkinleştirebilirsiniz.
+Bir sanal ağ bağlantısı oluştururken "otomatik kaydolmayı etkinleştir" seçeneğini belirleyerek otomatik kaydı etkinleştirebilirsiniz.
 
-![Otomatik Kaydı Etkinleştir](./media/privatedns-concepts/enable-autoregistration.png)
+![Otomatik kaydı etkinleştir](./media/privatedns-concepts/enable-autoregistration.png)
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
-* Otomatik kayıt yalnızca sanal makineler için çalışır. Dahili yük dengeleyicileri vb. gibi diğer tüm kaynaklar için, sanal ağa bağlı özel DNS bölgesinde el ile DNS kayıtları oluşturabilirsiniz.
-* DNS kayıtları yalnızca birincil sanal makine NIC için otomatik olarak oluşturulur. Sanal makinelerinizin birden fazla NIC'si varsa, diğer ağ arabirimleri için DNS kayıtlarını el ile oluşturabilirsiniz.
-* IPv6 (AAAA kayıtları) için otomatik kayıt desteklenmez.
+* Oto kayıt yalnızca sanal makineler için geçerlidir. İç yük dengeleyiciler gibi diğer tüm kaynaklar için, DNS kayıtlarını sanal ağa bağlı özel DNS bölgesinde el ile oluşturabilirsiniz.
+* DNS kayıtları yalnızca birincil sanal makine NIC 'ı için otomatik olarak oluşturulur. Sanal makinelerinizde birden fazla NIC varsa, diğer ağ arabirimlerinin DNS kayıtlarını el ile oluşturabilirsiniz.
+* IPv6 (AAAA kayıtları) için oto kaydı desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure PowerShell](./private-dns-getstarted-powershell.md) veya [Azure CLI'yi](./private-dns-getstarted-cli.md)kullanarak Azure DNS'de nasıl özel bir bölge oluşturabilirsiniz öğrenin.
+* [Azure PowerShell](./private-dns-getstarted-powershell.md) veya [Azure CLI](./private-dns-getstarted-cli.md)kullanarak Azure DNS bir özel bölge oluşturmayı öğrenin.
 
-* Azure DNS'deki özel bölgelerle gerçekleştirilebilecek bazı yaygın [özel bölge senaryoları](./private-dns-scenarios.md) hakkında bilgi edinin.
+* Azure DNS özel bölgelerle gerçekleştirilen bazı yaygın [özel bölge senaryoları](./private-dns-scenarios.md) hakkında bilgi edinin.
 
-* Belirli işlem türleri için bekleyebileceğiniz belirli davranışlar da dahil olmak üzere Azure DNS'deki özel bölgelerle ilgili sık sorulan sorular ve yanıtlar için [Bkz.](./dns-faq-private.md)
+* Belirli işlemler için bekleneceğiniz belirli davranış dahil olmak üzere Azure DNS özel bölgeler hakkında sık sorulan sorular ve yanıtlar için, bkz. [özel DNS SSS](./dns-faq-private.md).

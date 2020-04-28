@@ -1,6 +1,6 @@
 ---
-title: Yeni Elastik Veritabanı İşlerine Geçiş
-description: Yeni Elastik Veritabanı İşleri'ne geçirin.
+title: Yeni elastik veritabanı Işlerine geçiş
+description: Yeni elastik veritabanı Işlerine geçiş yapın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,28 +12,28 @@ ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: 5a7ed254de7b7ea32f2fb357d860354693e46e92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73827225"
 ---
-# <a name="migrate-to-the-new-elastic-database-jobs"></a>Yeni Elastik Veritabanı işlerine geçiş yapın
+# <a name="migrate-to-the-new-elastic-database-jobs"></a>Yeni Elastik Veritabanı işleri geçir
 
-[Elastik Veritabanı İşler](elastic-jobs-overview.md) yükseltilmiş bir sürümü kullanılabilir.
+[Elastik veritabanı işlerinin](elastic-jobs-overview.md) yükseltilen bir sürümü kullanılabilir.
 
-Elastik Veritabanı İşlerinin varolan bir müşteri barındırılan sürümü varsa, geçiş cmdlets ve komut dosyaları kolayca en son sürüme geçiş için sağlanır.
+Esnek veritabanı Işlerinin mevcut bir müşteri barındırılan sürümüne sahipseniz, en son sürüme kolayca geçiş yapmak için geçiş cmdlet 'leri ve komut dosyaları sağlanır.
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Elastik Veritabanı işlerinin yükseltilmiş sürümü, geçiş sırasında kullanılmak üzere yeni bir PowerShell cmdlets setine sahiptir. Bu yeni cmdletler, varolan tüm iş kimlik bilgilerinizi, hedeflerinizi (veritabanları, sunucular, özel koleksiyonlar dahil), iş tetikleyicilerini, iş zamanlamalarını, iş içeriğini ve işleri yeni bir Elastik İş aracısına aktarın.
+Elastik Veritabanı işleri yükseltilen sürümünde, geçiş sırasında kullanılmak üzere yeni bir PowerShell cmdlet 'leri kümesi vardır. Bu yeni cmdlet 'ler, tüm mevcut iş kimlik bilgilerinizi, hedefleri (veritabanları, sunucular, özel koleksiyonlar dahil), iş Tetikleyicileri, iş zamanlamaları, iş içerikleri ve işleri yeni bir elastik Iş aracısına aktarır.
 
-### <a name="install-the-latest-elastic-jobs-cmdlets"></a>En son Elastik İşler cmdlets yükleyin
+### <a name="install-the-latest-elastic-jobs-cmdlets"></a>En son elastik Işler cmdlet 'lerini yükler
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Henüz bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
-En son Elastik İş cmdlets almak için **Az.Sql** 1.1.1-önizleme modüllerini yükleyin. PowerShell'de yönetici erişimiyle aşağıdaki komutları çalıştırın.
+En son elastik Iş cmdlet 'lerini almak için **az. SQL** 1.1.1-Preview modülünü yükler. PowerShell'de yönetici erişimiyle aşağıdaki komutları çalıştırın.
 
 ```powershell
 # Installs the latest PackageManagement powershell package which PowerShellGet v1.6.5 is dependent on
@@ -54,9 +54,9 @@ Import-Module Az.Sql -RequiredVersion 1.1.1
 Get-Module Az.Sql
 ```
 
-### <a name="create-a-new-elastic-job-agent"></a>Yeni bir Elastik İş aracısı oluşturun
+### <a name="create-a-new-elastic-job-agent"></a>Yeni bir elastik Iş Aracısı oluşturun
 
-Yeni cmdlets yükledikten sonra, yeni bir Elastik İş ajan oluşturun.
+Yeni cmdlet 'leri yükledikten sonra yeni bir elastik Iş Aracısı oluşturun.
 
 ```powershell
 # Register your subscription for the for the Elastic Jobs public preview feature
@@ -68,9 +68,9 @@ $db = Get-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serv
 $agent = $db | New-AzSqlElasticJobAgent -Name <agentName>
 ```
 
-### <a name="install-the-old-elastic-database-jobs-cmdlets"></a>Eski Elastik Veritabanı İşler cmdlets yükleyin
+### <a name="install-the-old-elastic-database-jobs-cmdlets"></a>Eski elastik veritabanı Işleri cmdlet 'lerini yükler
 
-Geçiş *bazı eski* elastik iş cmdlets kullanmak gerekir, bu nedenle zaten yüklü yoksa aşağıdaki komutları çalıştırın.
+Geçişin bazı *eski* elastik iş cmdlet 'lerini kullanması gerekir. bu nedenle, zaten yüklü değilse aşağıdaki komutları çalıştırın.
 
 ```powershell
 # Install the old elastic job cmdlets if necessary and initialize the old jobs cmdlets
@@ -90,7 +90,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 ## <a name="migration"></a>Geçiş
 
-Şimdi hem eski hem de yeni Elastik İşler cmdlets başharflerine, iş kimlik bilgileri, hedefler ve işleri yeni *iş veritabanına*geçirin.
+Artık hem eski hem de yeni elastik Işler cmdlet 'leri başlatıldığına göre, iş kimlik bilgilerinizi, hedeflerinizi ve işlerinizi yeni *iş veritabanına*geçirin.
 
 ### <a name="setup"></a>Kurulum
 
@@ -138,7 +138,7 @@ function Migrate-Credentials ($agent) {
 }
 ```
 
-Kimlik bilgilerinizi geçirmek için, PowerShell nesnesini `$agent` daha öncekinden geçirerek aşağıdaki komutu uygulayın.
+Kimlik bilgilerinizi geçirmek için, daha önce `$agent` PowerShell nesnesine geçirerek aşağıdaki komutu yürütün.
 
 ```powershell
 Migrate-Credentials $agent
@@ -366,10 +366,10 @@ function Setup-TargetGroup ($tgName, $agent) {
 }
 ```
 
-Hedeflerinizi (sunucular, veritabanları ve özel koleksiyonlar) yeni iş veritabanınıza geçirmek için aşağıdakileri gerçekleştirmek için **Geçir-Hedef Grupları** cmdlet'ini çalıştırın:
+Hedeflerinizi (sunucular, veritabanları ve özel koleksiyonlarınız) yeni iş veritabanınıza geçirmek için, aşağıdaki işlemleri gerçekleştirmek üzere **Migrate-TargetGroups** cmdlet 'ini yürütün:
 
-- Sunucu ve veritabanları olan kök düzeyi hedefleri, yalnızca kök düzeyi\<hedefini\>içeren \<"(serverName , databaseName\>)" adlı yeni bir hedef grubuna geçirilir.
-- Özel bir koleksiyon, tüm alt hedefleri içeren yeni bir hedef gruba taşınır.
+- Sunucular ve veritabanları olan kök düzeyi hedefleri, yalnızca kök düzeyi hedefi içeren "\<(ServerName\>, \<DatabaseName\>)" adlı yeni bir hedef gruba geçirilecektir.
+- Özel bir koleksiyon, tüm alt hedefleri içeren yeni bir hedef gruba geçirilir.
 
 ```powershell
 Migrate-TargetGroups $agent
@@ -562,11 +562,11 @@ function Setup-JobStep ($newJob, $job) {
 }
 ```
 
-İşlerinizi, iş içeriğinizi, iş tetikleyicilerinizi ve iş zamanlamalarınızı yeni Elastik İş aracınızın veritabanına geçirmek için aracınızda geçen **Geçiş İşleri** cmdlet'ini çalıştırın.
+İşlerinizi, iş içeriğinizi, iş tetikleyicilerini ve iş zamanlamalarınızı yeni elastik Iş aracısının veritabanına geçirmek için, aracısında geçen **geçiş işleri** cmdlet 'ini yürütün.
 
-- Farklı zamanlamaları olan birden çok tetikleyicisi olan işler,\<adlandırma\> \<düzeniyle\>birden çok işe ayrılır: " jobName ( scheduleName )".
-- İş içeriği, ilişkili komut metniyle Birlikte JobStep adlı varsayılan bir iş adımı eklenerek bir işe geçirilir.
-- İşler varsayılan olarak devre dışı bırakılır, böylece bunları etkinleştirmeden önce doğrulayabilirsiniz.
+- Farklı zamanlamalarla birden çok tetikleyici içeren işler, adlandırma düzenine sahip birden çok iş halinde ayrılmıştır\<: "\> JobName\<(\>ScheduleName)".
+- İş içerikleri, ilişkili komut metniyle birlikte JobStep adlı bir varsayılan iş adımı eklenerek bir işe geçirilir.
+- İşler varsayılan olarak devre dışı bırakılmıştır, böylece bunları etkinleştirmeden önce bunları doğrulayabilirler.
 
 ```powershell
 Migrate-Jobs $agent
@@ -602,11 +602,11 @@ Job job4
 
 
 
-## <a name="migration-complete"></a>Geçiş Tamamlandı
+## <a name="migration-complete"></a>Geçiş Tamam
 
-*İş veritabanı* artık tüm iş kimlik bilgilerine, hedeflere, iş tetikleyicilerine, iş zamanlamalarına, iş içeriğine ve geçirilen işlere sahip olmalıdır.
+*İş veritabanı* artık iş kimlik bilgilerinin, hedeflerin, iş tetikleyicilerinin, iş zamanlamalarının, iş içeriklerinin ve üzerinden geçirilecek işlerin tümünü içermelidir.
 
-Her şeyin doğru şekilde geçirilmelerini doğrulamak için aşağıdaki komut dosyalarını kullanın:
+Her şeyin doğru şekilde geçirildiğini onaylamak için aşağıdaki komut dosyalarını kullanın:
 
 ```powershell
 $creds = $agent | Get-AzSqlElasticJobCredential
@@ -615,13 +615,13 @@ $jobs = $agent | Get-AzSqlElasticJob
 $steps = $jobs | Get-AzSqlElasticJobStep
 ```
 
-İşlerin doğru yürütülmesini test etmek için bunları başlatın:
+İşlerin doğru şekilde yürütülmesini test etmek için, onları başlatın:
 
 ```powershell
 $jobs | Start-AzSqlElasticJob
 ```
 
-Zamanlamada çalışan tüm işler için, arka planda çalıştırabilmeleri için bunları etkinleştirmeyi unutmayın:
+Bir zamanlamaya göre çalışan tüm işler için, arka planda çalışabilecek şekilde bunları etkinleştirmeyi unutmayın:
 
 ```powershell
 $jobs | Set-AzSqlElasticJob -Enable
@@ -629,5 +629,5 @@ $jobs | Set-AzSqlElasticJob -Enable
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [PowerShell'i kullanarak Elastik İşler oluşturma ve yönetme](elastic-jobs-powershell.md)
+- [PowerShell kullanarak elastik Işler oluşturma ve yönetme](elastic-jobs-powershell.md)
 - [Transact-SQL (T-SQL) kullanarak Elastik İşler oluşturma ve yönetme](elastic-jobs-tsql.md)

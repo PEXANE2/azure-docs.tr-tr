@@ -1,7 +1,7 @@
 ---
-title: Azure Arama .NET SDK sürümü 5'e yükseltin
+title: Azure Search .NET SDK sürüm 5 ' e yükseltme
 titleSuffix: Azure Cognitive Search
-description: Kodu eski sürümlerden Azure Arama .NET SDK sürüm 5'e geçirin. Yeniliklerin ve hangi kod değişikliklerinin gerekli olduğunu öğrenin.
+description: Kodu eski sürümlerden Azure Search .NET SDK sürüm 5 ' e geçirin. Nelerin yeni olduğunu ve hangi kod değişikliklerinin gerekli olduğunu öğrenin.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -10,94 +10,94 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: bb0cd191ba7e5939c55d11b484ed7a2c422f8c6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72793032"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Azure Arama .NET SDK sürümü 5'e yükseltin
+# <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Azure Search .NET SDK sürüm 5 ' e yükseltme
 
-[Azure Arama .NET SDK](https://aka.ms/search-sdk)sürümü 4.0 önizlemesini veya daha eski sürümünü kullanıyorsanız, bu makale, sürüm 5'i kullanmak üzere uygulamanızı yükseltmenize yardımcı olur.
+[Azure Search .NET SDK 'sının](https://aka.ms/search-sdk)sürüm 4,0-Önizleme veya daha eski bir sürümünü kullanıyorsanız, bu makale uygulamanızı sürüm 5 ' i kullanacak şekilde yükseltmenize yardımcı olur.
 
-Örnekler de dahil olmak üzere SDK'nın daha genel bir gözden geçirme için [,.NET Uygulamasından Azure Arama'nın nasıl kullanılacağına](search-howto-dotnet-sdk.md)bakın.
+Örnek içeren SDK hakkında daha genel bir anlatım için bkz. [.NET uygulamasından Azure Search kullanma](search-howto-dotnet-sdk.md).
 
-Azure Arama .NET SDK sürümü 5 önceki sürümlerden bazı değişiklikler içerir. Bunlar çoğunlukla küçüktür, bu nedenle kodunuzu değiştirmek yalnızca en az çaba yı gerektirmelidir. Yeni SDK sürümünü kullanmak için kodunuzu nasıl değiştireceğinize ilişkin yönergeler için [yükseltme adımları'na](#UpgradeSteps) bakın.
+Azure Search .NET SDK 'sının 5. sürümü önceki sürümlerden bazı değişiklikler içerir. Bunlar çoğunlukla düşüktür, bu nedenle kodunuzun değiştirilmesi yalnızca en az çaba gerektirir. Kodunuzu yeni SDK sürümünü kullanacak şekilde değiştirme hakkında yönergeler için bkz. [yükseltme adımları](#UpgradeSteps) .
 
 > [!NOTE]
-> Sürüm 2.0 önizleme veya daha eski kullanıyorsanız, önce sürüm 3'e yükseltmeniz ve ardından sürüm 5'e yükseltmeniz gerekir. Talimatlar için [Azure Arama .NET SDK sürüm 3'e yükseltme](search-dotnet-sdk-migration.md) ye bakın.
+> Sürüm 2,0-Önizleme veya daha eski bir sürümü kullanıyorsanız, önce sürüm 3 ' e yükseltmeniz ve ardından 5. sürüme yükseltmeniz gerekir. Yönergeler için bkz. [.NET SDK sürüm 3 Azure Search yükseltme](search-dotnet-sdk-migration.md) .
 >
-> Azure Arama hizmeti örneğiniz, en sonuncusu da dahil olmak üzere birkaç REST API sürümü destekler. Bir sürümü artık en son sürüm olmadığında kullanmaya devam edebilirsiniz, ancak en yeni sürümü kullanmak için kodunuzu geçirmenizi öneririz. REST API'sini kullanırken, api sürüm parametresi aracılığıyla her istekteki API sürümünü belirtmeniz gerekir. .NET SDK'yı kullanırken, kullandığınız SDK sürümü REST API'nin ilgili sürümünü belirler. Eski bir SDK kullanıyorsanız, hizmet daha yeni bir API sürümünü desteklemek üzere yükseltilse bile bu kodu hiçbir değişiklik olmadan çalıştırmaya devam edebilirsiniz.
+> Azure Search hizmet örneğiniz, en son sürüm dahil olmak üzere birkaç REST API sürümü destekler. Artık en son bir sürüm olmadığında bir sürümü kullanmaya devam edebilirsiniz, ancak kodunuzu en yeni sürümü kullanmak için geçirmeniz önerilir. REST API kullanırken, API sürümü parametresi aracılığıyla her istekte API sürümünü belirtmeniz gerekir. .NET SDK kullanıldığında, kullanmakta olduğunuz SDK sürümü REST API ilgili sürümünü belirler. Daha eski bir SDK kullanıyorsanız, hizmet daha yeni bir API sürümünü destekleyecek şekilde yükseltilse bile, bu kodu hiçbir değişiklik yapmadan çalıştırmaya devam edebilirsiniz.
 
 <a name="WhatsNew"></a>
 
-## <a name="whats-new-in-version-5"></a>Sürüm 5'teki yenilikler
-Azure Arama .NET SDK sürümü 5, Azure Arama REST API'sinin özellikle 2017-11-11 sürümü yle genel olarak kullanılabilir olan en son sürümünü hedefler. Bu, bir .NET uygulamasından Azure Arama'nın yeni özelliklerini aşağıdakiler de dahil olmak üzere kullanmayı mümkün kılar:
+## <a name="whats-new-in-version-5"></a>Sürüm 5 ' teki yenilikler
+Azure Search .NET SDK 'nın 5. sürümü, Azure Search REST API, özellikle 2017-11-11 olan en son genel kullanıma sunulan sürümü hedefler. Bu, aşağıdakiler de dahil olmak üzere bir .NET uygulamasından Azure Search yeni özelliklerini kullanmayı mümkün kılar:
 
 * [Eş anlamlılar](search-synonyms.md).
-* Artık dizinleyici yürütme geçmişindeki uyarılara programlı `Warning` olarak `IndexerExecutionResult` erişebilirsiniz (daha fazla ayrıntı için [.NET başvurusundaki](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) özelliğine bakın).
+* Artık, Dizin Oluşturucu yürütme geçmişinde uyarılara programlı olarak erişebilirsiniz (daha fazla `Warning` ayrıntı için `IndexerExecutionResult` bkz. [.net Reference](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) içindeki özelliği).
 * .NET Core 2 desteği.
-* Yeni paket yapısı, SDK'nın yalnızca ihtiyacınız olan bölümlerini kullanmayı destekler (ayrıntılar için [sürüm 5'teki son dakika değişikliklerine](#ListOfChanges) bakın).
+* Yeni paket yapısı yalnızca ihtiyacınız olan SDK bölümlerinin kullanılmasını destekler (Ayrıntılar için [sürüm 5 ' teki son değişikliklere](#ListOfChanges) bakın).
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Yükseltme adımları
-İlk olarak, NuGet `Microsoft.Azure.Search` Paket Yöneticisi Konsolunu kullanmak veya proje referanslarınıza sağ tıklayarak ve "NuGet Paketlerini Yönet"i seçerek NuGet başvurunuzu güncelleyin. Visual Studio'da.
+İlk olarak, NuGet ' i paket `Microsoft.Azure.Search` Yöneticisi konsolu 'nu kullanarak veya proje başvurularınızı sağ tıklatıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek NuGet başvurunuz ' ı güncelleştirin. Visual Studio 'da.
 
-NuGet yeni paketleri ve bunların bağımlılıklarını indirdikten sonra projenizi yeniden oluşturun. Kodunuzu nasıl yapılandırıldığına bağlı olarak, başarılı bir şekilde yeniden oluşturulabilir. Eğer öyleyse, gitmeye hazırsın!
+NuGet yeni paketleri ve bağımlılıklarını indirdikten sonra projenizi yeniden derleyin. Kodunuzun nasıl yapılandırıldığına bağlı olarak, başarıyla yeniden oluşturulabilir. Öyleyse başlamaya hazırsınız demektir!
 
-Yapınız başarısız olursa, aşağıdaki gibi bir yapı hatası görmeniz gerekir:
+Derlemeniz başarısız olursa, aşağıdaki gibi bir yapı hatası görmeniz gerekir:
 
     The name 'SuggesterSearchMode' does not exist in the current context
 
-Bir sonraki adım, bu yapı hatasını düzeltmektir. Hataya neyin neden olduğu ve nasıl düzeltilenle ilgili ayrıntılar için [sürüm 5'teki değişiklikleri](#ListOfChanges) kesme ye bakın.
+Sonraki adım bu derleme hatasını düzeltemedi. Hataya neden olan ve nasıl düzeltileceğini gösteren Ayrıntılar için [sürüm 5 ' teki son değişikliklere](#ListOfChanges) bakın.
 
-Azure Search .NET SDK'nın ambalajındaki değişiklikler nedeniyle, sürüm 5'i kullanmak için uygulamanızı yeniden oluşturmanız gerektiğini lütfen unutmayın. Bu değişiklikler [sürüm 5'teki Breaking değişikliklerinde](#ListOfChanges)ayrıntılı olarak açıklanmaktadır.
+Azure Search .NET SDK 'sının paketlenmesi nedeniyle, sürüm 5 ' i kullanabilmeniz için uygulamanızı yeniden oluşturmanız gerektiğini lütfen unutmayın. Bu değişiklikler [sürüm 5 ' teki önemli değişikliklere](#ListOfChanges)göre ayrıntılıdır.
 
-Eski yöntemler veya özelliklerle ilgili ek yapı uyarıları görebilirsiniz. Uyarılar, amortismana uymak yerine ne kullanılacağına ilişkin yönergeleri içerir. Örneğin, uygulamanız yöntemi `IndexingParametersExtensions.DoNotFailOnUnsupportedContentType` kullanıyorsa, "Bu davranış artık varsayılan olarak etkinleştirildi, bu nedenle bu yöntemi aramak artık gerekli değildir" yazan bir uyarı almalısınız.
+Eski yöntemler veya özelliklerle ilgili ek derleme uyarıları görebilirsiniz. Uyarılar, kullanım dışı özellik yerine, nelerin kullanılacağı hakkında yönergeler içerir. Örneğin, uygulamanız `IndexingParametersExtensions.DoNotFailOnUnsupportedContentType` yöntemini kullanıyorsa, "Bu davranış artık varsayılan olarak etkindir, bu nedenle bu yöntemin çağrılması artık gerekli değildir." ifadesini bildiren bir uyarı almalısınız.
 
-Herhangi bir yapı hatasını veya uyarıyı düzelttikte, isterseniz yeni işlevselliklerden yararlanmak için uygulamanızda değişiklikler yapabilirsiniz. SDK'daki yeni özellikler [sürüm 5'teki yeniliklerde](#WhatsNew)ayrıntılı olarak açıklanmaktadır.
+Herhangi bir derleme hatasını veya uyarıyı düzelttikten sonra, isterseniz yeni işlevlerden yararlanmak için uygulamanızda değişiklikler yapabilirsiniz. SDK 'daki yeni özellikler [sürüm 5 ' teki](#WhatsNew)Yenilikler bölümünde ayrıntılı olarak açıklanmıştır.
 
 <a name="ListOfChanges"></a>
 
-## <a name="breaking-changes-in-version-5"></a>Sürüm 5'teki değişiklikleri kesme
+## <a name="breaking-changes-in-version-5"></a>Sürüm 5 ' teki son değişiklikler
 
-### <a name="new-package-structure"></a>Yeni Paket Yapısı
+### <a name="new-package-structure"></a>Yeni paket yapısı
 
-Sürüm 5'teki en önemli kırılma `Microsoft.Azure.Search` değişimi, derlemenin ve içeriğinin şimdi dört ayrı NuGet paketi olarak dağıtılan dört ayrı derlemeye ayrılmış olmasıdır:
+Sürüm 5 ' teki en önemli önemli değişiklik, `Microsoft.Azure.Search` derlemenin ve içeriğinin artık dört ayrı NuGet paketi olarak dağıtılan dört ayrı derlemeye bölündüğü gibidir:
 
- - `Microsoft.Azure.Search`: Bu, diğer tüm Azure Arama paketlerini bağımlılık olarak içeren bir meta paketidir. SDK'nın önceki bir sürümünden yükseltme alıyorsanız, bu paketi yükseltmeniz ve yeniden oluşturmanız yeni sürümü kullanmaya başlamak için yeterli olacaktır.
- - `Microsoft.Azure.Search.Data`: Azure Arama'yı kullanarak bir .NET uygulaması geliştiriyorsanız ve yalnızca dizinlerinizdeki belgeleri sorgulamanız veya güncelleştirmeniz gerekiyorsa bu paketi kullanın. Dizinler, eşanlamlı haritalar veya diğer hizmet düzeyi kaynakları oluşturmanız veya güncelleştirmeniz gerekiyorsa, `Microsoft.Azure.Search` bunun yerine paketi kullanın.
- - `Microsoft.Azure.Search.Service`: Azure Arama dizinlerini, eşanlamlı haritaları, dizin leyicileri, veri kaynaklarını veya diğer hizmet düzeyi kaynakları yönetmek için .NET'te otomasyon geliştiriyorsanız bu paketi kullanın. Yalnızca dizinlerinizdeki belgeleri sorgulamanız veya güncelleştirmeniz `Microsoft.Azure.Search.Data` gerekiyorsa, bunun yerine paketi kullanın. Azure Arama'nın tüm işlevlerine ihtiyacınız `Microsoft.Azure.Search` varsa, bunun yerine paketi kullanın.
- - `Microsoft.Azure.Search.Common`: Azure Arama .NET kitaplıkları tarafından gereken yaygın türler. Bu paketi doğrudan uygulamanızda kullanmanız gerekmez; Sadece bir bağımlılık olarak kullanılmak üzere dir.
+ - `Microsoft.Azure.Search`: Bu, tüm diğer Azure Search paketlerini bağımlılık olarak içeren bir meta pakettir. SDK 'nın önceki bir sürümünden yükseltiyorsanız, bu paketin yükseltilmesi ve yeniden oluşturulması yeni sürümü kullanmaya başlamak için yeterli olmalıdır.
+ - `Microsoft.Azure.Search.Data`: Azure Search kullanarak bir .NET uygulaması geliştiriyorsanız bu paketi kullanın ve yalnızca dizininizdeki belgeleri sorgulayıp güncelleştirmeniz yeterlidir. Ayrıca dizinleri, eş anlamlı haritaları veya diğer hizmet düzeyi kaynaklarını oluşturmanız ya da güncelleştirmeniz gerekiyorsa, bunun yerine `Microsoft.Azure.Search` paketini kullanın.
+ - `Microsoft.Azure.Search.Service`: Azure Search dizinleri, eş anlamlı haritaları, Dizin oluşturucuyu, veri kaynaklarını veya diğer hizmet düzeyi kaynakları yönetmek için .NET 'te Otomasyon geliştiriyorsanız bu paketi kullanın. Dizininizdeki belgeleri sorgulamak veya güncelleştirmek istiyorsanız, bunun yerine `Microsoft.Azure.Search.Data` paketini kullanın. Tüm Azure Search işlevselliğine ihtiyacınız varsa, bunun yerine `Microsoft.Azure.Search` paketini kullanın.
+ - `Microsoft.Azure.Search.Common`: Azure Search .NET kitaplıkları için gereken ortak türler. Bu paketi uygulamanızda doğrudan kullanmanız gerekmez; Yalnızca bir bağımlılık olarak kullanılmak üzere tasarlanmıştır.
  
-Birçok tür derlemeler arasında taşındığından, bu değişiklik teknik olarak kırılıyor. Bu nedenle, SDK'nın sürüm 5'ine yükseltmek için uygulamanızı yeniden oluşturmanız gereklidir.
+Bu değişiklik, derlemeler arasında çok sayıda tür taşındığı için teknik olarak kesiliyor. Bu, SDK sürüm 5 ' e yükseltmek için uygulamanızı yeniden derleme işlemi için gereklidir.
 
-Sürüm 5'te, uygulamanızı yeniden oluşturmaya ek olarak kod değişiklikleri gerektirebilecek az sayıda başka kesme değişikliği vardır.
+Sürüm 5 ' te, uygulamanızı yeniden oluşturmak için ek olarak kod değişikliği gerektirebilecek daha az sayıda diğer Son değişiklik vardır.
 
-### <a name="change-to-suggesters"></a>Öneriyi Zekçilere Değiştir 
+### <a name="change-to-suggesters"></a>Öneri araçları olarak değiştir 
 
-Oluşturucu `Suggester` artık bir `enum` parametreye `SuggesterSearchMode`sahip değil. Bu enum un tek bir değeri vardı ve bu nedenle gereksiz oldu. Bunun sonucu olarak yapı hataları görürseniz, parametreye yapılan başvuruları kaldırmanız `SuggesterSearchMode` yeterlidir.
+`Suggester` Oluşturucunun için `enum` `SuggesterSearchMode`parametresi artık yoktur. Bu Enum yalnızca bir değer içeriyordu ve bu nedenle yedekli. Bunun sonucunda derleme hataları görürseniz, yalnızca `SuggesterSearchMode` parametreye başvuruları kaldırın.
 
-### <a name="removed-obsolete-members"></a>Eski üyeler kaldırıldı
+### <a name="removed-obsolete-members"></a>Artık kullanılmayan Üyeler kaldırıldı
 
-Önceki sürümlerde geçersiz olarak işaretlenmiş ve daha sonra sürüm 5'te kaldırılan yöntemler veya özelliklerle ilgili yapı hataları görebilirsiniz. Bu tür hatalarla karşılaşırsanız, bunları şu şekilde çözebilirsiniz:
+Önceki sürümlerde eski olarak işaretlenen ve daha sonra sürüm 5 ' te kaldırılan yöntemlerle veya özelliklerle ilgili derleme hataları görebilirsiniz. Bu tür hatalarla karşılaşırsanız, bu sorunları çözmek için aşağıdaki adımları uygulayın:
 
-- `IndexingParametersExtensions.IndexStorageMetadataOnly` Yöntemi kullanıyorsanız, bunun `SetBlobExtractionMode(BlobExtractionMode.StorageMetadata)` yerine kullanın.
-- `IndexingParametersExtensions.SkipContent` Yöntemi kullanıyorsanız, bunun `SetBlobExtractionMode(BlobExtractionMode.AllMetadata)` yerine kullanın.
+- `IndexingParametersExtensions.IndexStorageMetadataOnly` Yöntemini kullanıyorsanız bunun yerine kullanın `SetBlobExtractionMode(BlobExtractionMode.StorageMetadata)` .
+- `IndexingParametersExtensions.SkipContent` Yöntemini kullanıyorsanız bunun yerine kullanın `SetBlobExtractionMode(BlobExtractionMode.AllMetadata)` .
 
-### <a name="removed-preview-features"></a>Kaldırılan önizleme özellikleri
+### <a name="removed-preview-features"></a>Önizleme özellikleri kaldırıldı
 
-Sürüm 4.0-önizlemeden sürüm 5'e yükseltiyorsanız, Bu özellikler hala önizlemede olduğundan, Blob Indexers için JSON dizi ve CSV ayrıştırma desteğinin kaldırıldığını unutmayın. Özellikle, `IndexingParametersExtensions` sınıfın aşağıdaki yöntemleri kaldırıldı:
+Sürüm 4,0 ' den sürüm 5 ' e yükseltiyorsanız, bu özellikler hala önizlemede olduğundan blob Dizin oluşturucular için JSON dizisinin ve CSV ayrıştırma desteğinin kaldırıldığını unutmayın. Özellikle, `IndexingParametersExtensions` sınıfının aşağıdaki yöntemleri kaldırılmıştır:
 
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`
 
-Uygulamanız bu özelliklere sıkı bir bağımlılık içeriyorsa, Azure Arama .NET SDK sürümüne yükseltilemezsiniz. Sürüm 4.0-önizleme'yi kullanmaya devam edebilirsiniz. Ancak, **üretim uygulamalarında önizleme SDK'larını kullanmanızı önermediğimizi**lütfen unutmayın. Önizleme özellikleri yalnızca değerlendirme amaçlıdır ve değişebilir.
+Uygulamanızın bu özelliklere sabit bir bağımlılığı varsa, Azure Search .NET SDK 'sının 5 sürümüne yükseltemezsiniz. 4,0-Preview sürümünü kullanmaya devam edebilirsiniz. Ancak, lütfen **Üretim uygulamalarında önizleme SDK 'larını kullanmanızı önermiyoruz**. Önizleme özellikleri yalnızca değerlendirme amaçlıdır ve değişebilir.
 
 ## <a name="conclusion"></a>Sonuç
-Azure Arama .NET SDK'yı kullanma hakkında daha fazla ayrıntıya ihtiyacınız [varsa,.NET Nasıl Sunulur'a](search-howto-dotnet-sdk.md)bakın.
+Azure Search .NET SDK 'yı kullanma hakkında daha fazla ayrıntıya ihtiyacınız varsa bkz. [.NET nasıl yapılır](search-howto-dotnet-sdk.md).
 
-SDK hakkındaki görüşlerinizi bekliyoruz. Sorunlarla karşılaşırsanız, [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)konusunda bizden yardım istemekte çekinmeyin. Bir hata bulursanız, [Azure .NET SDK GitHub deposunda](https://github.com/Azure/azure-sdk-for-net/issues)bir sorun dosyalayabilirsiniz. Sorun başlığınızı "[Azure Arama]" ile önek yaptığınızdan emin olun.
+SDK 'daki geri bildirimlerinize hoş geldiniz. Sorunlarla karşılaşırsanız [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)hakkında yardım almak için bize danışabilirsiniz. Bir hata bulursanız, [Azure .NET SDK GitHub deposunda](https://github.com/Azure/azure-sdk-for-net/issues)bir sorun oluşturabilirsiniz. Sorun başlığınız "[Azure Search]" ile öneklediğinizden emin olun.
 
-Azure Arama'yı kullandığınız için teşekkür ederiz!
+Azure Search kullandığınız için teşekkürler!

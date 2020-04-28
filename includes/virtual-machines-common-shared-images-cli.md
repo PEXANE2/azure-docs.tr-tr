@@ -9,29 +9,29 @@ ms.date: 05/21/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 57736a3cd553e83294d5290867e261b626cb035f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66814785"
 ---
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makaledeki örneği tamamlamak için, genelleştirilmiş bir VM'nin varolan yönetilen bir görüntüsüne sahip olmalısınız. Daha fazla bilgi için [Bkz. Öğretici: Azure CLI ile azure VM'nin özel bir görüntüsünü oluşturun.](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) Yönetilen görüntü bir veri diski içeriyorsa, veri diskboyutu 1 TB'den fazla olamaz.
+Bu makaledeki örneği tamamlayabilmeniz için, genelleştirilmiş bir VM 'nin mevcut bir yönetilen görüntüsüne sahip olmanız gerekir. Daha fazla bilgi için bkz. [öğretici: Azure CLI Ile Azure VM 'nin özel bir görüntüsünü oluşturma](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Yönetilen görüntü bir veri diski içeriyorsa, veri diski boyutu 1 TB 'den fazla olamaz.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca bulut shell'i ayrı bir tarayıcı [https://shell.azure.com/bash](https://shell.azure.com/bash)sekmesinde başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
-CLI'yi yerel olarak yüklemeyi ve kullanmayı tercih ediyorsanız, [Azure CLI'yi yükle'ye](/cli/azure/install-azure-cli)bakın.
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ediyorsanız bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli).
 
-## <a name="create-an-image-gallery"></a>Resim galerisi oluşturma 
+## <a name="create-an-image-gallery"></a>Görüntü galerisi oluşturma 
 
-Resim galerisi, görüntü paylaşımını etkinleştirmek için kullanılan birincil kaynaktır. Galeri adı için izin verilen karakterler büyük veya küçük harfler, basamaklar, noktalar ve dönemlerdir. Galeri adı tire içeremez.   Galeri adları aboneliğinizde benzersiz olmalıdır. 
+Görüntü Galerisi, görüntü paylaşımını etkinleştirmek için kullanılan birincil kaynaktır. Galeri adı için izin verilen karakterler büyük veya küçük harflerden, rakamlardan, noktalardan ve noktalardan oluşur. Galeri adı tire içeremez.   Galeri adları, aboneliğiniz dahilinde benzersiz olmalıdır. 
 
-az sig create kullanarak bir resim galerisi [oluşturun.](/cli/azure/sig#az-sig-create) Aşağıdaki örnek, *myGalleryRG'de* *myGallery* adlı bir galeri oluşturur.
+[Az Sig Create](/cli/azure/sig#az-sig-create)kullanarak bir görüntü galerisi oluşturun. Aşağıdaki örnek *Mygallerrg*Içinde *MyGallery* adlı bir galeri oluşturur.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location WestCentralUS
@@ -40,9 +40,9 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 ## <a name="create-an-image-definition"></a>Görüntü tanımı oluşturma
 
-Görüntü tanımları görüntüler için mantıksal bir gruplandırma oluşturur. Bunlar, içlerinde oluşturulan görüntü sürümleri hakkındaki bilgileri yönetmek için kullanılır. Resim tanım adları büyük veya küçük harflerden, basamaklardan, noktalardan, tirelerden ve dönemlerden oluşur. Görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için [Resim tanımlarına](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)bakın.
+Görüntü tanımları görüntüler için bir mantıksal gruplama oluşturur. Bunlar içinde oluşturulan görüntü sürümleri hakkındaki bilgileri yönetmek için kullanılır. Görüntü tanımı adları büyük veya küçük harflerden, rakamlardan, noktalardan, çizgilerden ve noktalardan oluşabilir. Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla bilgi için bkz. [görüntü tanımları](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
 
-Az sig resim tanımı oluşturma 'nı kullanarak galeride ilk resim [tanımı oluşturun.](/cli/azure/sig/image-definition#az-sig-image-definition-create)
+Galeride [az Sig Image-Definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)kullanarak bir başlangıç görüntüsü tanımı oluşturun.
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -56,13 +56,13 @@ az sig image-definition create \
 ```
 
 
-## <a name="create-an-image-version"></a>Resim sürümü oluşturma 
+## <a name="create-an-image-version"></a>Görüntü sürümü oluşturma 
 
-[Az resim galerisi create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create)kullanarak gerektiği gibi görüntünün sürümlerini oluşturun. Görüntü sürümünü oluşturmak için taban çizgisi olarak kullanmak için yönetilen görüntünün kimliğini geçirmeniz gerekir. Kaynak grubundaki resimler hakkında bilgi almak için [az resim listesini](/cli/azure/image?view#az-image-list) kullanabilirsiniz. 
+[Az Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az-sig-image-version-create)kullanarak gereken görüntü sürümlerini oluşturun. Görüntü sürümü oluşturmak için taban çizgisi olarak kullanılacak yönetilen görüntünün KIMLIĞINI geçirmeniz gerekir. Kaynak grubundaki görüntüler hakkında bilgi almak için [az Image List](/cli/azure/image?view#az-image-list) kullanabilirsiniz. 
 
-Görüntü sürümü için izin verilen karakterler sayılar ve dönemlerdir. Sayılar 32 bitlik bir tamsayı aralığında olmalıdır. Biçim: *MajorVersion*. *MinorVersion*. *Yama*.
+Görüntü sürümü için izin verilen karakterler rakamlardan ve dönemlerdir. Sayılar 32 bitlik bir tamsayı aralığında olmalıdır. Biçim: *MajorVersion*. *MinorVersion*. *Düzeltme Eki*.
 
-Bu örnekte, görüntümüzün sürümü *1.0.0* ve biz *Batı Orta ABD* bölgesinde 2 çoğaltma oluşturmak için gidiyoruz, Güney Orta *ABD* bölgesinde 1 çoğaltma ve bölge yedekli depolama kullanarak Doğu *ABD 2* bölgesinde 1 çoğaltma.
+Bu örnekte, görüntüimizin sürümü *1.0.0* , *Orta Batı ABD* bölgesinde 2 çoğaltma, *Orta Güney ABD* bölgesinde 1 çoğaltma ve bölgesel olarak yedekli depolama alanı kullanarak *Doğu ABD 2* bölgesindeki 1 çoğaltma oluşturacağız.
 
 
 ```azurecli-interactive 
@@ -77,14 +77,14 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> Başka bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için önce görüntü sürümünün tamamen oluşturulmasını ve çoğaltılmasını beklemeniz gerekir.
+> Farklı bir görüntü sürümü oluşturmak için aynı yönetilen görüntüyü kullanabilmeniz için görüntü sürümünün oluşturulması ve çoğaltılması tamamen bitmesini beklemeniz gerekir.
 >
-> Ayrıca, görüntü sürümünü oluştururken ekleyerek `--storage-account-type standard_zrs` tüm görüntü sürüm yinelemelerinizi Bölge [Yedekdeposunda](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) da depolayabilirsiniz.
+> Görüntü sürümünü oluştururken ekleyerek `--storage-account-type standard_zrs` görüntü sürümü çoğaltmalarınızı, bölgesel olarak [yedekli depolama](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) alanında da saklayabilirsiniz.
 >
 
-## <a name="share-the-gallery"></a>Galeriyi paylaşın
+## <a name="share-the-gallery"></a>Galeriyi paylaşma
 
-Galeri düzeyindeki diğer kullanıcılarla paylaşmanızı öneririz. Galerinizin nesne kimliğini almak için [az sig show'u](/cli/azure/sig#az-sig-show)kullanın.
+Galeri düzeyindeki diğer kullanıcılarla paylaşmanızı öneririz. Galerinizin nesne KIMLIĞINI almak için [az SIG Show](/cli/azure/sig#az-sig-show)' ı kullanın.
 
 ```azurecli-interactive
 az sig show \
@@ -93,7 +93,7 @@ az sig show \
    --query id
 ```
 
-Kullanıcıya paylaşılan resim galerisine erişim sağlamak için nesne kimliğini, bir e-posta adresi ve [az rol ataması oluşturmanın](/cli/azure/role/assignment#az-role-assignment-create) yanı sıra kapsam olarak kullanın.
+Nesne KIMLIĞINI bir e-posta adresi ile birlikte kullanın ve bir kullanıcıya paylaşılan görüntü galerisine erişim sağlamak için [az role atama oluştur](/cli/azure/role/assignment#az-role-assignment-create) ' u kullanın.
 
 ```azurecli-interactive
 az role assignment create --role "Reader" --assignee <email address> --scope <gallery ID>

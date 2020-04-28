@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs'da VM'ye yapı ekleme | Microsoft Dokümanlar
-description: Azure DevTest Labs'daki bir laboratuvarda sanal makineye yapı eklemeyi öğrenin
+title: Azure DevTest Labs bir sanal makineye yapıt ekleme | Microsoft Docs
+description: Azure DevTest Labs bir laboratuvarda bir sanal makineye yapıt ekleme hakkında bilgi edinin
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,57 +15,57 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 27fec279582d845972b87ac635c87c16c239924e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73901321"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>VM’ye yapıt ekleme
-VM oluştururken, varolan yapıları ekleyebilirsiniz. Bu eserler ya kamu [DevTest Labs Git deposundan](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) veya kendi Git deposundan olabilir. Bu makalede, Azure portalına ve Azure PowerShell'i kullanarak yapıların nasıl ekleyeceğiniz gösterilmektedir. 
+Bir VM oluştururken, var olan yapıtları buna ekleyebilirsiniz. Bu yapıtlar, [ortak DevTest Labs git deposundan](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) veya kendi git deponuzdan olabilir. Bu makalede, Azure portal yapılarını ve Azure PowerShell kullanarak nasıl ekleyeceğiniz gösterilmektedir. 
 
-Azure DevTest Labs *yapıları,* Windows PowerShell komutları çalıştırma, Bash komutlarını çalıştırma ve yazılım yükleme gibi VM sağlandığında gerçekleştirilen *eylemleri* belirtmenize izin tanır. Yapı *parametreleri,* belirli senaryonuz için yapıyı özelleştirmenize izin sağlar.
+Azure DevTest Labs *yapıtlar* , Windows PowerShell betikleri çalıştırma, Bash komutlarını çalıştırma ve yazılım yükleme gıbı, VM sağlandığında gerçekleştirilen *eylemleri* belirtmenize olanak tanır. Yapıt *parametreleri* , belirli senaryonuz için yapıtı özelleştirmenize olanak sağlar.
 
-Özel yapılar nasıl oluşturulacak hakkında bilgi edinmek için makaleye bakın: [Özel yapılar oluşturun.](devtest-lab-artifact-author.md)
+Özel yapıtlar oluşturma hakkında bilgi edinmek için bkz. [özel yapıtlar oluşturma](devtest-lab-artifact-author.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-azure-portal"></a>Azure portalı kullanma 
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040)oturum açın.
-1. **Tüm Hizmetler'i**seçin ve ardından listeden **DevTest Labs'ı** seçin.
-1. Laboratuvarlar listesinden, çalışmak istediğiniz VM'yi içeren laboratuarı seçin.  
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
+1. Laboratuvarlar listesinden, çalışmak istediğiniz VM 'yi içeren Laboratuvarı seçin.  
 1. **Sanal makinelerimi**seçin.
-1. İstediğiniz VM'yi seçin.
-1. **Yapıtları Yönet'i**seçin. 
-1. **Yapıtları Uygula'yı**seçin.
-1. **Yapıtları Uygula** bölmesine, VM'ye eklemek istediğiniz yapıyı seçin.
-1. Yapı **ekle** bölmesine, gerekli parametre değerlerini ve ihtiyacınız olan isteğe bağlı parametreleri girin.  
-1. Yapıyı eklemek ve **yapıtları uygula** bölmesine dönmek için **Ekle'yi** seçin.
-1. VM'iniz için gerektiği gibi yapı eklemeye devam edin.
-1. Yapıtlarınızı ekledikten sonra, [yapıtların çalıştırılan sırasını değiştirebilirsiniz.](#change-the-order-in-which-artifacts-are-run) Ayrıca [bir yapıyı görüntülemek veya değiştirmek](#view-or-modify-an-artifact)için geri dönebilirsiniz.
-1. Yapı eklemeyi bitirdiğinizde Uygula'yı **seçin**
+1. İstediğiniz VM 'yi seçin.
+1. **Yapıtları Yönet**' i seçin. 
+1. **Yapıtları Uygula**' yı seçin.
+1. **Yapıtları Uygula** BÖLMESINDE, VM 'ye eklemek istediğiniz yapıtı seçin.
+1. **Yapıt Ekle** bölmesinde gerekli parametre değerlerini ve ihtiyacınız olan tüm isteğe bağlı parametreleri girin.  
+1. Yapıtı eklemek için **Ekle** ' yi seçin ve **yapıtları Uygula** bölmesine dönün.
+1. VM 'niz için gereken yapıtları eklemeye devam edin.
+1. Yapılarınızı ekledikten sonra [yapıtların çalıştırıldığı sırayı değiştirebilirsiniz](#change-the-order-in-which-artifacts-are-run). Ayrıca, [bir yapıtı görüntülemek veya değiştirmek](#view-or-modify-an-artifact)için geri dönebilirsiniz.
+1. Yapıtları eklemeyi tamamladığınızda **Uygula** ' yı seçin.
 
-### <a name="change-the-order-in-which-artifacts-are-run"></a>Yapıtların çalıştırılme sırasını değiştirme
-Varsayılan olarak, yapıtların eylemleri VM'ye eklendikleri sırada yürütülür. Aşağıdaki adımlar, yapıtların çalıştırılan sırayı nasıl değiştireceğini gösterir.
+### <a name="change-the-order-in-which-artifacts-are-run"></a>Yapıtların çalıştırıldığı sırayı değiştirme
+Varsayılan olarak, yapıtların eylemleri VM 'ye eklendikleri sırada yürütülür. Aşağıdaki adımlarda yapıtların çalıştırıldığı sıranın nasıl değiştirileceği gösterilmektedir.
 
-1. **Yapıtları Uygula** bölmesinin üst kısmında, VM'ye eklenen yapıların sayısını belirten bağlantıyı seçin.
+1. **Yapıtları Uygula** bölmesinin en üstünde, VM 'ye eklenmiş yapıların sayısını belirten bağlantıyı seçin.
    
-    ![VM'ye eklenen yapı sayısı](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. **Seçili eserler** bölmesindeki, yapıları sürükleyin ve istenilen sıraya bırakın. Yapıyı sürüklemede sorun yaşıyorsanız, yapının sol tarafından sürüklediğinizden emin olun. 
+    ![VM 'ye eklenen yapıt sayısı](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
+1. **Seçilen yapılar** bölmesinde, yapıtları istediğiniz sırada sürükleyin ve bırakın. Yapıtı sürüklerken sorun yaşıyorsanız, yapıtın sol tarafından sürüklediğinizden emin olun. 
 1. Tamamladığınızda **Tamam**’ı seçin.  
 
-### <a name="view-or-modify-an-artifact"></a>Bir yapıyı görüntüleme veya değiştirme
-Aşağıdaki adımlar, bir yapının parametrelerini nasıl görüntülenebildiğini veya değiştirilebildiğini gösterir:
+### <a name="view-or-modify-an-artifact"></a>Yapıtı görüntüleme veya değiştirme
+Aşağıdaki adımlarda, bir yapının parametrelerinin nasıl görüntüleneceği veya değiştirileceği gösterilmektedir:
 
-1. **Yapıtları Uygula** bölmesinin üst kısmında, VM'ye eklenen yapıların sayısını belirten bağlantıyı seçin.
+1. **Yapıtları Uygula** bölmesinin en üstünde, VM 'ye eklenmiş yapıların sayısını belirten bağlantıyı seçin.
    
-    ![VM'ye eklenen yapı sayısı](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. **Seçili yapılar** bölmesinde, görüntülemek veya görüntülemek istediğiniz yapıyı seçin.  
-1. Yapı **ekle** bölmesine, gerekli değişiklikleri yapın ve yapı **ekle** bölmesini kapatmak için **Tamam'ı** seçin.
-1. **Seçili yapılar** bölmesini kapatmak için **Tamam'ı** seçin.
+    ![VM 'ye eklenen yapıt sayısı](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
+1. **Seçilen yapılar** bölmesinde, görüntülemek veya düzenlemek istediğiniz yapıtı seçin.  
+1. **Yapıt Ekle** bölmesinde, gerekli değişiklikleri yapın ve **Tamam** ' ı seçerek **yapıt Ekle** bölmesini kapatın.
+1. **Seçilen yapılar** bölmesini kapatmak için **Tamam ' ı** seçin.
 
 ## <a name="use-powershell"></a>PowerShell kullanma
-Aşağıdaki komut dosyası belirtilen yapıyı belirtilen VM'ye uygular. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) komutu işlemi gerçekleştiren komutudur.  
+Aşağıdaki betik belirtilen yapıyı belirtilen VM 'ye uygular. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) komutu, işlemi gerçekleştiren bir işlemdir.  
 
 ```powershell
 #Requires -Module Az.Resources
@@ -164,9 +164,9 @@ if ($virtualMachine -ne $null) {
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Eserler le ilgili aşağıdaki makalelere bakın:
+Yapıtlar hakkında aşağıdaki makalelere bakın:
 
-- [Laboratuvarınız için zorunlu yapıları belirtin](devtest-lab-mandatory-artifacts.md)
+- [Laboratuvarınız için zorunlu yapıtlar belirtin](devtest-lab-mandatory-artifacts.md)
 - [Özel yapıtlar oluşturma](devtest-lab-artifact-author.md)
 - [Laboratuvara yapıt deposu ekleme](devtest-lab-artifact-author.md)
 - [Yapıt hatalarını tanılama](devtest-lab-troubleshoot-artifact-failure.md)

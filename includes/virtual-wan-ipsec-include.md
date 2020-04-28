@@ -9,19 +9,19 @@ ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 02ced43f8c3fc7c83359b78362e8ad0feeab3070
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72168394"
 ---
 >[!NOTE]
->Varsayılan ilkelerle çalışırken, Azure bir IPsec tünel kurulumu sırasında hem başlatıcı hem de yanıtlayıcı olarak hareket edebilir. Yalnızca yanıtlayıcı olarak Azure için destek yoktur.
+>Azure, varsayılan ilkelerle çalışırken bir IPSec tünel kurulumu sırasında hem Başlatıcı hem de Yanıtlayıcı görevi görebilir. Azure için yalnızca Yanıtlayıcı olarak destek yoktur.
 >
 
 ### <a name="initiator"></a>Başlatıcı
 
-Aşağıdaki bölümlerde, Azure tünelin başlatıcısı olduğunda desteklenen ilke birleşimleri listelenir.
+Aşağıdaki bölümlerde, Azure tünelde başlatıcı olduğunda desteklenen ilke birleşimleri listelenmektedir.
 
 **Aşama-1**
 
@@ -37,9 +37,9 @@ Aşağıdaki bölümlerde, Azure tünelin başlatıcısı olduğunda desteklenen
 * AES_256, SHA_256, PFS_NONE
 * AES_128, SHA_1, PFS_NONE
 
-### <a name="responder"></a>Yanıtlayıcı
+### <a name="responder"></a>Yanıtlayıcısı
 
-Aşağıdaki bölümlerde, Azure tünelin yanıtlayıcısı olduğunda desteklenen ilke birleşimleri listelenir.
+Aşağıdaki bölümlerde, Azure tünelden Yanıtlayıcı olduğunda desteklenen ilke birleşimleri listelenmektedir.
 
 **Aşama-1**
 

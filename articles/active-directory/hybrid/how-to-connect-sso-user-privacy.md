@@ -1,8 +1,8 @@
 ---
-title: Kullanıcı Gizliliği ve Azure REKLAM Sorunsuz Tek Oturum Açma | Microsoft Dokümanlar
-description: Bu makalede, Azure Etkin Dizin (Azure AD) Sorunsuz SSO ve GDPR uyumluluğu ele al.)
+title: Kullanıcı gizliliği ve Azure AD sorunsuz çoklu oturum açma | Microsoft Docs
+description: Bu makale Azure Active Directory (Azure AD) sorunsuz SSO ve GDPR uyumluluğu ile ilgilidir.
 services: active-directory
-keywords: Azure AD Connect, GDPR, Azure AD, SSO, Tek Oturum Açma için gerekli bileşenler nedir
+keywords: Azure AD Connect, GDPR, Azure AD, SSO, çoklu oturum açma için gerekli bileşenler
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9311c1060b953e87f163cb482db14cdd43f50d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60242098"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Kullanıcı Gizliliği ve Azure AD Sorunsuz Çoklu Oturum Açma
@@ -30,25 +30,25 @@ ms.locfileid: "60242098"
 ## <a name="overview"></a>Genel Bakış
 
 
-Azure AD Seamless SSO, Kişisel Verileri içerebilen aşağıdaki günlük türünü oluşturur: 
+Azure AD sorunsuz SSO, kişisel veriler içerebilen aşağıdaki günlük türünü oluşturur: 
 
-- Azure AD Connect izleme günlüğü dosyaları.
+- İzleme günlüğü dosyalarını Azure AD Connect.
 
-Sorunsuz SSO için kullanıcı gizliliğini iki şekilde geliştirin:
+Sorunsuz SSO için Kullanıcı gizliliğini iki şekilde geliştirebilirsiniz:
 
-1.  İstek üzerine, bir kişi için veri ayıklayın ve yüklemelerden bu kişiden veri kaldırın.
-2.  48 saatten fazla veri tutulmadığından emin olun.
+1.  İstek üzerine, bir kişiye ait verileri ayıklar ve bu kişiden verileri yüklemelerden kaldırın.
+2.  Hiçbir veri 48 saatten daha fazla korunmayacağından emin olun.
 
-İkinci seçeneği, uygulanması ve bakımı daha kolay olduğu için şiddetle tavsiye ediyoruz. Her günlük türü için aşağıdaki talimatlara bakın:
+Uygulamanız ve bakımının daha kolay olması için ikinci seçeneği kesinlikle öneririz. Her günlük türü için aşağıdaki yönergelere bakın:
 
-### <a name="delete-azure-ad-connect-trace-log-files"></a>Azure AD Bağlantı günlüğü dosyalarını silme
+### <a name="delete-azure-ad-connect-trace-log-files"></a>Azure AD Connect izleme günlüğü dosyalarını sil
 
-**%ProgramData%\AADConnect** klasörünün içeriğini kontrol edin ve bu eylem GDPR tarafından kapsanan veriler oluşturabileceğinden, Azure AD Connect'i yükledikten veya yükselttikten veya Sorunsuz SSO yapılandırmasını değiştirdikten sonraki 48 saat içinde bu klasörün izleme günlüğü içeriğini **(izleme-\*.log** dosyaları) silin.
+Bu eylem GDPR tarafından kapsanan verileri oluşturabileceği için, **%ProgramData%\AADConnect** klasörünün içeriğini denetleyin ve bu klasörün izleme günlüğü içeriğini (**Trace\*-. log** Files) Azure AD Connect yükleme veya yükseltme ya da sorunsuz SSO yapılandırmasını değiştirme gibi 48 saat içinde silin.
 
 >[!IMPORTANT]
->Bu dosya Azure AD Connect'in önceki yüklemedurumunu korumak için kullanıldığından ve yükseltme yüklemesi yapıldığında kullanıldığından, bu klasördeki **PersistedState.xml** dosyasını silmeyin. Bu dosya hiçbir zaman bir kişi hakkında veri içermez ve asla silinmemelidir.
+>Bu klasördeki **PersistedState. xml** dosyasını silmeyin, çünkü bu dosya önceki Azure AD Connect yüklemesinin durumunu korumak için kullanılır ve yükseltme yüklemesi tamamlandığında kullanılır. Bu dosya asla bir kişiyle ilgili hiçbir veri içermez ve hiçbir şekilde silinmemelidir.
 
-Windows Gezgini'ni kullanarak bu izleme günlüğü dosyalarını gözden geçirip silebilir veya gerekli eylemleri gerçekleştirmek için aşağıdaki PowerShell komut dosyasını kullanabilirsiniz:
+Bu izleme günlüğü dosyalarını Windows Gezgini 'ni kullanarak gözden geçirebilir ve silebilirsiniz ya da gerekli eylemleri gerçekleştirmek için aşağıdaki PowerShell betiğini kullanabilirsiniz:
 
 ```powershell
 $Files = ((Get-Item -Path "$env:programdata\aadconnect\trace-*.log").VersionInfo).FileName 
@@ -58,16 +58,16 @@ Foreach ($file in $Files) {
 }
 ```
 
-Komut dosyasını ". PS1" uzantısı. Bu komut dosyalarını gerektiği gibi çalıştırın.
+Betiği, "ile bir dosyaya kaydedin. PS1 "uzantısı. Bu betiği gerektiği gibi çalıştırın.
 
-İlgili Azure AD Connect GDPR gereksinimleri hakkında daha fazla bilgi edinmek için [bu makaleye](reference-connect-user-privacy.md)bakın.
+İlgili Azure AD Connect GDPR gereksinimleri hakkında daha fazla bilgi edinmek için [Bu makaleye](reference-connect-user-privacy.md)bakın.
 
-### <a name="note-about-domain-controller-logs"></a>Etki Alanı denetleyici günlükleri hakkında not
+### <a name="note-about-domain-controller-logs"></a>Etki alanı denetleyicisi günlükleri hakkında
 
-Denetim günlüğü etkinse, bu ürün Etki Alanı Denetleyicileriniz için güvenlik günlükleri oluşturabilir. Denetim ilkelerini yapılandırma hakkında daha fazla bilgi edinmek için bu [makaleyi](https://technet.microsoft.com/library/dd277403.aspx)okuyun.
+Denetim günlüğü etkinse, bu ürün etki alanı denetleyicileriniz için güvenlik günlükleri oluşturabilir. Denetim ilkelerini yapılandırma hakkında daha fazla bilgi edinmek için bu [makaleyi](https://technet.microsoft.com/library/dd277403.aspx)okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Güven Merkezi'ndeki Microsoft Gizlilik ilkesini inceleyin](https://www.microsoft.com/trustcenter)
-  - [**Sorun Giderme**](tshoot-connect-sso.md) - Özellik ile ilgili sık karşılaşılan sorunları nasıl çözeceğinizi öğrenin.
-  - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - Yeni özellik istekleri dosyalama için.
+* [Güven Merkezi 'nde Microsoft gizlilik ilkesini gözden geçirme](https://www.microsoft.com/trustcenter)
+  - [**Sorun giderme**](tshoot-connect-sso.md) -özellikle ilgili yaygın sorunları çözmeyi öğrenin.
+  - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) -yeni özellik isteklerini dosyalama.

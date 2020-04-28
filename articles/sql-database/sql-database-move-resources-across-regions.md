@@ -1,6 +1,6 @@
 ---
 title: Kaynakları başka bir bölgeye taşıma
-description: Azure SQL Veritabanınızı, Azure SQL elastik havuzunuzu veya Azure SQL yönetilen örneğini başka bir bölgeye nasıl taşıyabilirsiniz öğrenin.
+description: Azure SQL veritabanınızı, Azure SQL elastik havuzunu veya Azure SQL yönetilen örneğinizi başka bir bölgeye taşımayı öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,182 +12,182 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 06/25/2019
 ms.openlocfilehash: 851ef49a5c066f12a95baa54daf5e267cb4278c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73821425"
 ---
 # <a name="how-to-move-azure-sql-resources-to-another-region"></a>Azure SQL kaynaklarını başka bir bölgeye taşıma
 
-Bu makalede, Azure SQL Veritabanı tek veritabanı, elastik havuz ve yönetilen örnek yeni bir bölgeye taşımak için nasıl genel bir iş akışı öğretir. 
+Bu makalede, Azure SQL veritabanı tek veritabanı, esnek havuz ve yönetilen örneğinizi yeni bir bölgeye taşıma hakkında genel bir iş akışı öğretilir. 
 
 ## <a name="overview"></a>Genel Bakış
 
-Varolan Azure SQL kaynaklarınızı bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, işletmenizi yeni bir bölgeye genişletir siniz ve yeni müşteri tabanı için optimize etmek istersiniz. Veya uyumluluk nedenleriyle işlemleri farklı bir bölgeye taşımanız gerekir. Veya Azure, daha iyi bir yakınlık sağlayan ve müşteri deneyimini geliştiren yepyeni bir bölge yayımladı.  
+Mevcut Azure SQL kaynaklarınızı bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, işinizi yeni bir bölgeye genişlettikten sonra yeni müşteri tabanı için en iyileştirmek istiyorsunuz. Ya da uyumluluk nedenleriyle işlemleri farklı bir bölgeye taşımanız gerekir. Veya Azure, daha iyi bir yakınlık sağlayan ve müşteri deneyimini geliştiren yepyeni bir bölge yayımlamıştır.  
 
-Bu makalede, kaynakları farklı bir bölgeye taşımak için genel bir iş akışı sağlar. İş akışı aşağıdaki adımlardan oluşur: 
+Bu makale, kaynakları farklı bir bölgeye taşımak için genel bir iş akışı sağlar. İş akışı aşağıdaki adımlardan oluşur: 
 
-- Taşıma için ön koşulları doğrulayın 
-- Kaynakları kapsamda taşımaya hazırlanın
-- Hazırlık sürecini izleme
-- Taşıma işlemini test edin
-- Gerçek hareketi başlatma 
-- Kaynakları kaynak bölgeden kaldırma 
+- Taşıma için önkoşulları doğrulama 
+- Kapsamdaki kaynakları taşımaya hazırlanma
+- Hazırlama işlemini izleme
+- Taşıma işlemini test etme
+- Gerçek taşımayı başlatın 
+- Kaynakları kaynak bölgesinden kaldır 
 
 
 > [!NOTE]
-> Bu makale, Azure genel bulutu içindeki veya aynı egemen bulut içindeki geçişler için geçerlidir. 
+> Bu makale, Azure genel bulutundaki veya aynı sogeign bulutu içindeki geçişler için geçerlidir. 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="move-single-database"></a>Tek bir veritabanını taşıma
+## <a name="move-single-database"></a>Tek veritabanını taşı
 
 ### <a name="verify-prerequisites"></a>Önkoşulları doğrulama 
 
 1. Her kaynak sunucu için bir hedef mantıksal sunucu oluşturun. 
-1. [PowerShell'i](scripts/sql-database-create-and-configure-database-powershell.md)kullanarak güvenlik duvarını doğru özel durumlar dışında yapılandırın.  
-1. Mantıksal sunucuları doğru oturum açmalarla yapılandırın. Abonelik yöneticisi veya SQL sunucu yöneticisi değilseniz, ihtiyacınız olan izinleri atamak için yöneticiyle birlikte çalışın. Daha fazla bilgi için, [olağanüstü durum kurtarma sonrasında Azure SQL veritabanı güvenliğini nasıl yönetebilirsiniz'e](sql-database-geo-replication-security-config.md)bakın. 
-1. Veritabanlarınız TDE ile şifrelenmişse ve Azure anahtar kasasında kendi şifreleme anahtarınızı kullanıyorsa, doğru şifreleme materyalinin hedef bölgelerde sağlanmıştır ğından emin olun. Daha fazla bilgi için Azure [Anahtar Kasası'nda müşteri tarafından yönetilen anahtarlarla Azure SQL Saydam Veri Şifrelemesi'ne](transparent-data-encryption-byok-azure-sql.md) bakın
-1. Veritabanı düzeyinde denetim etkinleştirilmişse, denetimi devre dışı kaldırın ve bunun yerine sunucu düzeyinde denetimi etkinleştirin. Başarısız olduktan sonra, veritabanı düzeyinde denetim, hareketten sonra istenmeyen veya mümkün olacak bölgeler arası trafiği gerektirir. 
-1. Sunucu düzeyinde denetimler için şunları
-   - Depolama kapsayıcısı, Log Analytics veya etkinlik hub'ı varolan denetim günlüklerine sahip hedef bölgeye taşınır. 
-   - Denetim hedef sunucuda yapılandırılır. Daha fazla bilgi için [bkz.](sql-database-auditing.md) 
-1. Örneğinizin uzun vadeli bir bekletme ilkesi (LTR) varsa, varolan LTR yedeklemeleri geçerli sunucuyla ilişkili kalır. Hedef sunucu farklı olduğundan, sunucu silinse bile kaynak sunucuyu kullanarak kaynak bölgedeki eski LTR yedeklemelerine erişebilirsiniz. 
+1. [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md)kullanarak doğru özel durumlarla güvenlik duvarını yapılandırın.  
+1. Mantıksal sunucuları doğru oturum açma bilgileriyle yapılandırın. Abonelik Yöneticisi veya SQL Server yöneticisi değilseniz, ihtiyaç duyduğunuz izinleri atamak için yöneticiyle birlikte çalışın. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma sonrasında Azure SQL veritabanı güvenliğini yönetme](sql-database-geo-replication-security-config.md). 
+1. Veritabanlarınız TDE ile şifrelenirse ve Azure Anahtar Kasası 'nda kendi şifreleme anahtarınızı kullanıyorsa, hedef bölgelerde doğru şifreleme malzemesinin sağlandığından emin olun. Daha fazla bilgi için, bkz. [Azure SQL Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarlar](transparent-data-encryption-byok-azure-sql.md)
+1. Veritabanı düzeyinde Denetim etkinse, devre dışı bırakın ve bunun yerine sunucu düzeyinde denetimi etkinleştirin. Yük devretmeden sonra, veritabanı düzeyinde denetim, taşıma sonrasında istenen veya mümkün olmayan bölgeler arası trafiğe gerek duyar. 
+1. Sunucu düzeyinde denetimler için şunları doğrulayın:
+   - Depolama kapsayıcısı, Log Analytics veya var olan denetim günlükleriyle Olay Hub 'ı hedef bölgeye taşınır. 
+   - Denetim, hedef sunucuda yapılandırılır. Daha fazla bilgi için bkz. [SQL veritabanı denetimini kullanmaya başlama](sql-database-auditing.md). 
+1. Örneğinizde uzun süreli bir bekletme ilkesi varsa (LTR), mevcut LTR yedeklemeleri geçerli sunucu ile ilişkili olarak kalır. Hedef sunucu farklı olduğundan, kaynak sunucu ' da sunucu silinmiş olsa bile eski LTR yedeklemelere kaynak sunucuyu kullanarak erişebileceksiniz. 
 
   > [!NOTE]
-  > Bu, egemen bulut ile halka açık bir bölge arasında hareket etmek için yeterli olmayacaktır. Böyle bir geçiş, LTR yedeklemelerinin şu anda desteklenmeyen hedef sunucuya taşınmasını gerektirir. 
+  > Bu, bağımsız bulutu ve bir ortak bölge arasında geçiş yapmak için yeterli olacaktır. Bu tür bir geçiş, LTR yedeklemelerin Şu anda desteklenmeyen hedef sunucuya taşınmasını gerektirir. 
 
 ### <a name="prepare-resources"></a>Kaynakları hazırlama
 
-1. Kaynağın mantıksal sunucusu ile hedefin mantıksal sunucusu arasında bir [başarısızlık grubu](sql-database-single-database-failover-group-tutorial.md#2---create-the-failover-group) oluşturun.  
-1. Failover grubuna taşımak istediğiniz veritabanlarını ekleyin. 
-    - Eklenen tüm veritabanlarının çoğaltılması otomatik olarak başlatılır. Daha fazla bilgi için, [tek veritabanları ile failover grupları kullanmak için en iyi uygulamalar](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)bakın. 
+1. Kaynağın mantıksal sunucusu arasında hedefin mantıksal sunucusu arasında bir [Yük devretme grubu](sql-database-single-database-failover-group-tutorial.md#2---create-the-failover-group) oluşturun.  
+1. Yük devretme grubuna taşımak istediğiniz veritabanlarını ekleyin. 
+    - Tüm eklenen veritabanlarının çoğaltılması otomatik olarak başlatılacak. Daha fazla bilgi için bkz. [tek veritabanlarıyla yük devretme grupları kullanmak Için en iyi uygulamalar](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). 
  
-### <a name="monitor-the-preparation-process"></a>Hazırlık sürecini izleme
+### <a name="monitor-the-preparation-process"></a>Hazırlama işlemini izleme
 
-Kaynaktan hedefe veritabanlarınızın çoğaltılmasını izlemek için düzenli olarak [Get-AzSqlDatabaseFailoverGroup'u](/powershell/module/az.sql/get-azsqldatabasefailovergroup) arayabilirsiniz. Çoğaltma Durumu `Get-AzSqlDatabaseFailoverGroup` için bir özellik içeren çıktı **nesnesi:** 
-   - **ReplicationState = 2** (CATCH_UP) veritabanının eşitlenmiş olduğunu ve güvenli bir şekilde başarısız olabileceğini gösterir. 
-   - **ReplicationState = 0** (SEEDING) veritabanının henüz tohumlanmadığını ve başarısız bir girişimin başarısız olacağını gösterir. 
+Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) öğesini düzenli aralıklarla çağırabilirsiniz. Çıkış nesnesi `Get-AzSqlDatabaseFailoverGroup` **replicationstate**için bir özellik içerir: 
+   - **Replicationstate = 2** (CATCH_UP), veritabanının eşitlendiğini ve güvenle yük devretmekte olduğunu gösterir. 
+   - **Replicationstate = 0** (dengeli dağıtım), veritabanının henüz çalıştırılmadığını ve yük devretme denemesinin başarısız olacağını belirtir. 
 
-### <a name="test-synchronization"></a>Test eşitleme
+### <a name="test-synchronization"></a>Test eşitlemesi
 
-Bir kez `2` **ReplicationState,** her veritabanına bağlanmak veya ikincil bitiş `<fog-name>.secondary.database.windows.net` noktası kullanarak veritabanları alt kümesi ve bağlantı, uygun güvenlik yapılandırması ve veri çoğaltma sağlamak için veritabanlarına karşı herhangi bir sorgu gerçekleştirin. 
+**Replicationstate** olduktan sonra `2`, bağlantı, uygun güvenlik yapılandırması ve veri çoğaltma sağlamak için her bir veritabanına `<fog-name>.secondary.database.windows.net` veya ikincil uç noktayı kullanarak veritabanlarının alt kümesine bağlanın ve veritabanlarına yönelik sorgu gerçekleştirin. 
 
-### <a name="initiate-the-move"></a>Hareketi başlatma
+### <a name="initiate-the-move"></a>Taşımayı Başlat
 
-1. İkincil bitiş noktasını `<fog-name>.secondary.database.windows.net`kullanarak hedef sunucuya bağlanın.
-1. [Switch-AzSqlDatabaseFailoverGroup'u](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) kullanarak ikincil yönetilen örneği tam senkronizasyona sahip birincil örnek olarak değiştirin. Bu işlem ya başarılı olur ya da geri döner. 
-1. DNS CNAME giriş noktalarının hedef bölge IP adresine geldiğini tespit etmek için komutun `nslook up <fog-name>.secondary.database.windows.net` başarıyla tamamlandığını doğrulayın. Anahtar komutu başarısız olursa, CNAME güncelleştirilmeyecek. 
+1. İkincil uç noktayı `<fog-name>.secondary.database.windows.net`kullanarak hedef sunucuya bağlanın.
+1. İkincil yönetilen örneği tam eşitlemeyle birincil olacak şekilde değiştirmek için [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) komutunu kullanın. Bu işlem başarılı olur ya da geri alınacaktır. 
+1. DNS CNAME girişinin hedef bölgenin IP adresine işaret ettiğini `nslook up <fog-name>.secondary.database.windows.net` belirlemek için komutunu kullanarak komutun başarıyla tamamlandığını doğrulayın. Switch komutu başarısız olursa CNAME güncellenmez. 
 
 ### <a name="remove-the-source-databases"></a>Kaynak veritabanlarını kaldırma
 
-Taşıma tamamlandıktan sonra, gereksiz ücretleri önlemek için kaynak bölgedeki kaynakları kaldırın. 
+Taşıma tamamlandıktan sonra gereksiz ücretlerden kaçınmak için kaynak bölgedeki kaynakları kaldırın. 
 
-1. [Remove-AzSqlDatabaseFailoverGroup'u](/powershell/module/az.sql/remove-azsqldatabasefailovergroup)kullanarak failover grubunu silin. 
-1. Kaynak sunucudaki veritabanlarının her biri için [Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase) kullanarak her kaynak veritabanını silin. Bu, coğrafi çoğaltma bağlantılarını otomatik olarak sonlandırır. 
+1. [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup)kullanarak yük devretme grubunu silin. 
+1. Kaynak sunucudaki veritabanlarının her biri için [Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase) kullanarak her bir kaynak veritabanını silin. Bu, coğrafi çoğaltma bağlantılarını otomatik olarak sonlandırır. 
 1. [Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver)kullanarak kaynak sunucuyu silin. 
-1. Anahtar kasasını, denetim depolama kapsayıcılarını, olay merkezini, AAD örneğini ve diğer bağımlı kaynakları kaldırın ve bunlar için faturalandırılmayı durdurun. 
+1. Anahtar kasasını, denetim depolama kapsayıcıları, Olay Hub 'ı, AAD örneği ve diğer bağımlı kaynakları, bunlar için faturalandırılmaya izin verecek şekilde kaldırın. 
 
-## <a name="move-elastic-pools"></a>Elastik havuzları hareket ettirin
+## <a name="move-elastic-pools"></a>Elastik havuzları taşı
 
 ### <a name="verify-prerequisites"></a>Önkoşulları doğrulama 
 
 1. Her kaynak sunucu için bir hedef mantıksal sunucu oluşturun. 
-1. [PowerShell'i](scripts/sql-database-create-and-configure-database-powershell.md)kullanarak güvenlik duvarını doğru özel durumlar dışında yapılandırın. 
-1. Mantıksal sunucuları doğru oturum açmalarla yapılandırın. Abonelik yöneticisi veya SQL sunucu yöneticisi değilseniz, ihtiyacınız olan izinleri atamak için yöneticiyle birlikte çalışın. Daha fazla bilgi için, [olağanüstü durum kurtarma sonrasında Azure SQL veritabanı güvenliğini nasıl yönetebilirsiniz'e](sql-database-geo-replication-security-config.md)bakın. 
-1. Veritabanlarınız TDE ile şifrelenmişse ve Azure anahtar kasasında kendi şifreleme anahtarınızı kullanıyorsa, doğru şifreleme materyalinin hedef bölgede sağlanmıştırğından emin olun.
-1. Her kaynak elastik havuz için bir hedef elastik havuz oluşturun, havuzun aynı hizmet katmanında, aynı ada ve aynı boyutta oluşturulduğundan emin olun. 
-1. Veritabanı düzeyinde bir denetim etkinleştirilmişse, denetimi devre dışı kaldırın ve bunun yerine sunucu düzeyinde denetimi etkinleştirin. Başarısız olduktan sonra, veritabanı düzeyinde denetim, istenmeyen veya taşımadan sonra mümkün olan bölgeler arası trafik gerektirir. 
-1. Sunucu düzeyinde denetimler için şunları
-    - Depolama kapsayıcısı, Log Analytics veya etkinlik hub'ı varolan denetim günlüklerine sahip hedef bölgeye taşınır.
-    - Denetim yapılandırması hedef sunucuda yapılandırılır. Daha fazla bilgi için [SQL veritabanı denetimine](sql-database-auditing.md)bakın.
-1. Örneğinizin uzun vadeli bir bekletme ilkesi (LTR) varsa, varolan LTR yedeklemeleri geçerli sunucuyla ilişkili kalır. Hedef sunucu farklı olduğundan, sunucu silinse bile kaynak sunucuyu kullanarak kaynak bölgedeki eski LTR yedeklemelerine erişebilirsiniz. 
+1. [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md)kullanarak doğru özel durumlarla güvenlik duvarını yapılandırın. 
+1. Mantıksal sunucuları doğru oturum açma bilgileriyle yapılandırın. Abonelik Yöneticisi veya SQL Server yöneticisi değilseniz, ihtiyaç duyduğunuz izinleri atamak için yöneticiyle birlikte çalışın. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma sonrasında Azure SQL veritabanı güvenliğini yönetme](sql-database-geo-replication-security-config.md). 
+1. Veritabanlarınız TDE ile şifrelenirse ve Azure Anahtar Kasası 'nda kendi şifreleme anahtarınızı kullanıyorsa, hedef bölgede doğru şifreleme malzemesinin sağlandığından emin olun.
+1. Her bir kaynak elastik havuz için bir hedef elastik havuz oluşturun, bu havuzun aynı ada ve aynı boyuta sahip aynı hizmet katmanında oluşturulduğundan emin olun. 
+1. Veritabanı düzeyinde bir Denetim etkinse, devre dışı bırakın ve bunun yerine sunucu düzeyinde denetimi etkinleştirin. Yük devretmeden sonra, veritabanı düzeyinde denetim, istenen veya taşımadan sonra mümkün olmayan bölgeler arası trafiğe gerek duyar. 
+1. Sunucu düzeyinde denetimler için şunları doğrulayın:
+    - Depolama kapsayıcısı, Log Analytics veya var olan denetim günlükleriyle Olay Hub 'ı hedef bölgeye taşınır.
+    - Denetim yapılandırması hedef sunucuda yapılandırıldı. Daha fazla bilgi için bkz. [SQL veritabanı denetimi](sql-database-auditing.md).
+1. Örneğinizde uzun süreli bir bekletme ilkesi varsa (LTR), mevcut LTR yedeklemeleri geçerli sunucu ile ilişkili olarak kalır. Hedef sunucu farklı olduğundan, kaynak sunucu ' da sunucu silinmiş olsa bile eski LTR yedeklemelere kaynak sunucuyu kullanarak erişebileceksiniz. 
 
   > [!NOTE]
-  > Bu, egemen bulut ile halka açık bir bölge arasında hareket etmek için yeterli olmayacaktır. Böyle bir geçiş, LTR yedeklemelerinin şu anda desteklenmeyen hedef sunucuya taşınmasını gerektirir. 
+  > Bu, bağımsız bulutu ve bir ortak bölge arasında geçiş yapmak için yeterli olacaktır. Bu tür bir geçiş, LTR yedeklemelerin Şu anda desteklenmeyen hedef sunucuya taşınmasını gerektirir. 
 
-### <a name="prepare-to-move"></a>Hareket etmeye hazırlanın
+### <a name="prepare-to-move"></a>Taşımaya hazırlanma
  
-1.  Kaynak mantıksal sunucudaki her elastik havuz ile hedef sunucudaki karşıt elastik havuzu arasında ayrı bir [hata grubu](sql-database-elastic-pool-failover-group-tutorial.md#3---create-the-failover-group) oluşturun. 
-1.  Havuzdaki tüm veritabanlarını failover grubuna ekleyin. 
-    - Eklenen veritabanlarının çoğaltılması otomatik olarak başlatılır. Daha fazla bilgi [için, elastik havuzları olan başarısız gruplar için en iyi uygulamalara](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)bakın. 
+1.  Kaynak mantıksal sunucusundaki her elastik havuz ve hedef sunucudaki karşılık gelen elastik havuzu arasında ayrı bir [Yük devretme grubu](sql-database-elastic-pool-failover-group-tutorial.md#3---create-the-failover-group) oluşturun. 
+1.  Havuzdaki tüm veritabanlarını yük devretme grubuna ekleyin. 
+    - Eklenen veritabanlarının çoğaltılması otomatik olarak başlatılacak. Daha fazla bilgi için bkz. [elastik havuzlarla yük devretme grupları için en iyi uygulamalar](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). 
 
   > [!NOTE]
-  > Birden çok elastik havuz içeren bir başarısız grup oluşturmak mümkün olsa da, her havuz için ayrı bir başarısızlık grubu oluşturmanızı şiddetle öneririz. Taşımanız gereken birden çok elastik havuzda çok sayıda veritabanınız varsa, hazırlama adımlarını paralel olarak çalıştırabilir ve ardından taşıma adımını paralel olarak başlatabilirsiniz. Bu süreç daha iyi ölçeklendirilecek ve aynı failover grubunda birden fazla elastik havuza sahip olmak la karşılaştırıldığında daha az zaman alacaktır. 
+  > Birden çok elastik havuz içeren bir yük devretme grubu oluşturmak mümkün olsa da, her havuz için ayrı bir yük devretme grubu oluşturmanızı kesinlikle öneririz. Taşımanız gereken birden çok elastik havuzda çok sayıda veritabanınız varsa, hazırlık adımlarını paralel olarak çalıştırabilir ve ardından taşıma adımını paralel olarak başlatabilirsiniz. Bu işlem daha iyi ölçeklenecektir ve aynı yük devretme grubunda birden çok elastik havuza sahip olmaya kıyasla daha az zaman alır. 
 
-### <a name="monitor-the-preparation-process"></a>Hazırlık sürecini izleme
+### <a name="monitor-the-preparation-process"></a>Hazırlama işlemini izleme
 
-Kaynaktan hedefe veritabanlarınızın çoğaltılmasını izlemek için düzenli olarak [Get-AzSqlDatabaseFailoverGroup'u](/powershell/module/az.sql/get-azsqldatabasefailovergroup) arayabilirsiniz. Çoğaltma Durumu `Get-AzSqlDatabaseFailoverGroup` için bir özellik içeren çıktı **nesnesi:** 
-   - **ReplicationState = 2** (CATCH_UP) veritabanının eşitlenmiş olduğunu ve güvenli bir şekilde başarısız olabileceğini gösterir. 
-   - **ReplicationState = 0** (SEEDING) veritabanının henüz tohumlanmadığını ve başarısız bir girişimin başarısız olacağını gösterir. 
+Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) öğesini düzenli aralıklarla çağırabilirsiniz. Çıkış nesnesi `Get-AzSqlDatabaseFailoverGroup` **replicationstate**için bir özellik içerir: 
+   - **Replicationstate = 2** (CATCH_UP), veritabanının eşitlendiğini ve güvenle yük devretmekte olduğunu gösterir. 
+   - **Replicationstate = 0** (dengeli dağıtım), veritabanının henüz çalıştırılmadığını ve yük devretme denemesinin başarısız olacağını belirtir. 
 
-### <a name="test-synchronization"></a>Test eşitleme
+### <a name="test-synchronization"></a>Test eşitlemesi
  
-Bir kez `2` **ReplicationState,** her veritabanına bağlanmak veya ikincil bitiş `<fog-name>.secondary.database.windows.net` noktası kullanarak veritabanları alt kümesi ve bağlantı, uygun güvenlik yapılandırması ve veri çoğaltma sağlamak için veritabanlarına karşı herhangi bir sorgu gerçekleştirin. 
+**Replicationstate** olduktan sonra `2`, bağlantı, uygun güvenlik yapılandırması ve veri çoğaltma sağlamak için her bir veritabanına `<fog-name>.secondary.database.windows.net` veya ikincil uç noktayı kullanarak veritabanlarının alt kümesine bağlanın ve veritabanlarına yönelik sorgu gerçekleştirin. 
 
-### <a name="initiate-the-move"></a>Hareketi başlatma
+### <a name="initiate-the-move"></a>Taşımayı Başlat
  
-1. İkincil bitiş noktasını `<fog-name>.secondary.database.windows.net`kullanarak hedef sunucuya bağlanın.
-1. [Switch-AzSqlDatabaseFailoverGroup'u](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) kullanarak ikincil yönetilen örneği tam senkronizasyona sahip birincil örnek olarak değiştirin. Bu işlem ya başarılı olur ya da geri döner. 
-1. DNS CNAME giriş noktalarının hedef bölge IP adresine geldiğini tespit etmek için komutun `nslook up <fog-name>.secondary.database.windows.net` başarıyla tamamlandığını doğrulayın. Anahtar komutu başarısız olursa, CNAME güncelleştirilmeyecek. 
+1. İkincil uç noktayı `<fog-name>.secondary.database.windows.net`kullanarak hedef sunucuya bağlanın.
+1. İkincil yönetilen örneği tam eşitlemeyle birincil olacak şekilde değiştirmek için [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) komutunu kullanın. Bu işlem başarılı olur ya da geri alınacaktır. 
+1. DNS CNAME girişinin hedef bölgenin IP adresine işaret ettiğini `nslook up <fog-name>.secondary.database.windows.net` belirlemek için komutunu kullanarak komutun başarıyla tamamlandığını doğrulayın. Switch komutu başarısız olursa CNAME güncellenmez. 
 
-### <a name="remove-the-source-elastic-pools"></a>Kaynak elastik havuzları kaldırın
+### <a name="remove-the-source-elastic-pools"></a>Kaynak elastik havuzları kaldırma
  
-Taşıma tamamlandıktan sonra, gereksiz ücretleri önlemek için kaynak bölgedeki kaynakları kaldırın. 
+Taşıma tamamlandıktan sonra gereksiz ücretlerden kaçınmak için kaynak bölgedeki kaynakları kaldırın. 
 
-1. [Remove-AzSqlDatabaseFailoverGroup'u](/powershell/module/az.sql/remove-azsqldatabasefailovergroup)kullanarak failover grubunu silin.
-1. [Remove-AzSqlElasticPool](/powershell/module/az.sql/remove-azsqlelasticpool)kullanarak kaynak sunucudaki her kaynak elastik havuzu silin. 
+1. [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup)kullanarak yük devretme grubunu silin.
+1. [Remove-Azsqtalaçıkartma havuzunu](/powershell/module/az.sql/remove-azsqlelasticpool)kullanarak kaynak sunucudaki her bir kaynak elastik havuzu silin. 
 1. [Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver)kullanarak kaynak sunucuyu silin. 
-1. Anahtar kasasını, denetim depolama kapsayıcılarını, olay merkezini, AAD örneğini ve diğer bağımlı kaynakları kaldırın ve bunlar için faturalandırılmayı durdurun. 
+1. Anahtar kasasını, denetim depolama kapsayıcıları, Olay Hub 'ı, AAD örneği ve diğer bağımlı kaynakları, bunlar için faturalandırılmaya izin verecek şekilde kaldırın. 
 
-## <a name="move-managed-instance"></a>Yönetilen örneği taşıma
+## <a name="move-managed-instance"></a>Yönetilen örneği taşı
 
 ### <a name="verify-prerequisites"></a>Önkoşulları doğrulama
  
-1. Yönetilen her kaynak örneği için hedef bölgede aynı boyutta bir hedef yönetilen örnek oluşturun.  
-1. Yönetilen bir örnek için ağı yapılandırın. Daha fazla bilgi için [ağ yapılandırması'na](sql-database-howto-managed-instance.md#network-configuration)bakın.
-1. Hedef ana veritabanını doğru oturum açmalarla yapılandırın. Abonelik yöneticisi veya SQL sunucu yöneticisi değilseniz, ihtiyacınız olan izinleri atamak için yöneticiyle birlikte çalışın. 
-1. Veritabanlarınız TDE ile şifrelenmişse ve Azure anahtar kasasında kendi şifreleme anahtarınızı kullanıyorsa, aynı şifreleme anahtarlarına sahip AKV'nin hem kaynak hem de hedef bölgelerde bulunduğundan emin olun. Daha fazla bilgi için [Azure Key Vault'ta müşteri tarafından yönetilen anahtarlarla TDE'ye](transparent-data-encryption-byok-azure-sql.md)bakın.
-1. Örnekte denetim etkinse, aşağıdakileri
-    - Varolan günlükleri içeren depolama kapsayıcısı veya olay hub'ı hedef bölgeye taşınır. 
-    - Denetim hedef örnekte yapılandırılır. Daha fazla bilgi için, [yönetilen örnekle denetim](sql-database-managed-instance-auditing.md)etüt bakın.
-1. Örneğinizin uzun vadeli bir bekletme ilkesi (LTR) varsa, varolan LTR yedeklemeleri geçerli sunucuyla ilişkili kalır. Hedef sunucu farklı olduğundan, sunucu silinse bile kaynak sunucuyu kullanarak kaynak bölgedeki eski LTR yedeklemelerine erişebilirsiniz. 
+1. Her kaynak yönetilen örnek için, hedef bölgede aynı boyutta bir hedef yönetilen örnek oluşturun.  
+1. Ağı yönetilen bir örnek için yapılandırın. Daha fazla bilgi için bkz. [ağ yapılandırması](sql-database-howto-managed-instance.md#network-configuration).
+1. Hedef ana veritabanını doğru oturum açma bilgileriyle yapılandırın. Abonelik Yöneticisi veya SQL Server yöneticisi değilseniz, ihtiyaç duyduğunuz izinleri atamak için yöneticiyle birlikte çalışın. 
+1. Veritabanlarınız TDE ile şifrelenirse ve Azure Anahtar Kasası 'nda kendi şifreleme anahtarınızı kullanıyorsa, aynı şifreleme anahtarlarına sahip AKV 'nin hem kaynak hem de hedef bölgelerde bulunduğundan emin olun. Daha fazla bilgi için bkz. [Azure Key Vault içindeki müşteri tarafından yönetilen anahtarlarla TDE](transparent-data-encryption-byok-azure-sql.md).
+1. Örnek için denetim etkinleştirildiyse şunları doğrulayın:
+    - Depolama kapsayıcısı veya mevcut günlüklere sahip olay hub 'ı hedef bölgeye taşınır. 
+    - Denetim, hedef örnekte yapılandırıldı. Daha fazla bilgi için bkz. [yönetilen örnekle denetleme](sql-database-managed-instance-auditing.md).
+1. Örneğinizde uzun süreli bir bekletme ilkesi varsa (LTR), mevcut LTR yedeklemeleri geçerli sunucu ile ilişkili olarak kalır. Hedef sunucu farklı olduğundan, kaynak sunucu ' da sunucu silinmiş olsa bile eski LTR yedeklemelere kaynak sunucuyu kullanarak erişebileceksiniz. 
 
   > [!NOTE]
-  > Bu, egemen bulut ile halka açık bir bölge arasında hareket etmek için yeterli olmayacaktır. Böyle bir geçiş, LTR yedeklemelerinin şu anda desteklenmeyen hedef sunucuya taşınmasını gerektirir. 
+  > Bu, bağımsız bulutu ve bir ortak bölge arasında geçiş yapmak için yeterli olacaktır. Bu tür bir geçiş, LTR yedeklemelerin Şu anda desteklenmeyen hedef sunucuya taşınmasını gerektirir. 
 
 ### <a name="prepare-resources"></a>Kaynakları hazırlama
 
-Her kaynak örneği ile karşılık gelen hedef örnek arasında bir başarısız lık grubu oluşturun.
-    - Her örnekteki tüm veritabanlarının çoğaltılması otomatik olarak başlatılır. Daha fazla bilgi için [Otomatik başarısız gruplarına](sql-database-auto-failover-group.md) bakın.
+Her kaynak örneği ve ilgili hedef örneği arasında bir yük devretme grubu oluşturun.
+    - Her örnekteki tüm veritabanlarının çoğaltılması otomatik olarak başlatılacak. Daha fazla bilgi için bkz. [otomatik yük devretme grupları](sql-database-auto-failover-group.md) .
 
  
-### <a name="monitor-the-preparation-process"></a>Hazırlık sürecini izleme
+### <a name="monitor-the-preparation-process"></a>Hazırlama işlemini izleme
 
-Kaynaktan hedefe veritabanlarınızın çoğaltılmasını izlemek için düzenli olarak [Get-AzSqlDatabaseFailoverGroup'u](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) arayabilirsiniz. Çoğaltma Durumu `Get-AzSqlDatabaseFailoverGroup` için bir özellik içeren çıktı **nesnesi:** 
-   - **ReplicationState = 2** (CATCH_UP) veritabanının eşitlenmiş olduğunu ve güvenli bir şekilde başarısız olabileceğini gösterir. 
-   - **ReplicationState = 0** (SEEDING) veritabanının henüz tohumlanmadığını ve başarısız bir girişimin başarısız olacağını gösterir. 
+Veritabanlarınızı kaynaktan hedefe çoğaltmayı izlemek için, [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) öğesini düzenli aralıklarla çağırabilirsiniz. Çıkış nesnesi `Get-AzSqlDatabaseFailoverGroup` **replicationstate**için bir özellik içerir: 
+   - **Replicationstate = 2** (CATCH_UP), veritabanının eşitlendiğini ve güvenle yük devretmekte olduğunu gösterir. 
+   - **Replicationstate = 0** (dengeli dağıtım), veritabanının henüz çalıştırılmadığını ve yük devretme denemesinin başarısız olacağını belirtir. 
 
-### <a name="test-synchronization"></a>Test eşitleme
+### <a name="test-synchronization"></a>Test eşitlemesi
 
-Bir kez `2` **ReplicationState,** her veritabanına bağlanmak veya ikincil bitiş `<fog-name>.secondary.database.windows.net` noktası kullanarak veritabanları alt kümesi ve bağlantı, uygun güvenlik yapılandırması ve veri çoğaltma sağlamak için veritabanlarına karşı herhangi bir sorgu gerçekleştirin. 
+**Replicationstate** olduktan sonra `2`, bağlantı, uygun güvenlik yapılandırması ve veri çoğaltma sağlamak için her bir veritabanına `<fog-name>.secondary.database.windows.net` veya ikincil uç noktayı kullanarak veritabanlarının alt kümesine bağlanın ve veritabanlarına yönelik sorgu gerçekleştirin. 
 
-### <a name="initiate-the-move"></a>Hareketi başlatma 
+### <a name="initiate-the-move"></a>Taşımayı Başlat 
 
-1. İkincil bitiş noktasını `<fog-name>.secondary.database.windows.net`kullanarak hedef sunucuya bağlanın.
-1. [Switch-AzSqlDatabaseFailoverGroup'u](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) kullanarak ikincil yönetilen örneği tam senkronizasyona sahip birincil örnek olarak değiştirin. Bu işlem ya başarılı olur ya da geri döner. 
-1. DNS CNAME giriş noktalarının hedef bölge IP adresine geldiğini tespit etmek için komutun `nslook up <fog-name>.secondary.database.windows.net` başarıyla tamamlandığını doğrulayın. Anahtar komutu başarısız olursa, CNAME güncelleştirilmeyecek. 
+1. İkincil uç noktayı `<fog-name>.secondary.database.windows.net`kullanarak hedef sunucuya bağlanın.
+1. İkincil yönetilen örneği tam eşitlemeyle birincil olacak şekilde değiştirmek için [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) komutunu kullanın. Bu işlem başarılı olur ya da geri alınacaktır. 
+1. DNS CNAME girişinin hedef bölgenin IP adresine işaret ettiğini `nslook up <fog-name>.secondary.database.windows.net` belirlemek için komutunu kullanarak komutun başarıyla tamamlandığını doğrulayın. Switch komutu başarısız olursa CNAME güncellenmez. 
 
-### <a name="remove-the-source-managed-instances"></a>Kaynak yönetilen örnekleri kaldırma
-Taşıma tamamlandıktan sonra, gereksiz ücretleri önlemek için kaynak bölgedeki kaynakları kaldırın. 
+### <a name="remove-the-source-managed-instances"></a>Kaynak yönetilen örnekleri kaldır
+Taşıma tamamlandıktan sonra gereksiz ücretlerden kaçınmak için kaynak bölgedeki kaynakları kaldırın. 
 
-1. [Remove-AzSqlDatabaseFailoverGroup'u](/powershell/module/az.sql/remove-azsqldatabasefailovergroup)kullanarak failover grubunu silin. Bu, failover grubu yapılandırmasını düşürür ve iki örnek arasındaki coğrafi çoğaltma bağlantılarını sonlandırır. 
-1. [Remove-AzSqlInstance](/powershell/module/az.sql/remove-azsqlinstance)kullanarak kaynak yönetilen örneği silin. 
-1. Sanal küme, sanal ağ ve güvenlik grubu gibi kaynak grubundaki ek kaynakları kaldırın. 
+1. [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup)kullanarak yük devretme grubunu silin. Bu, yük devretme grubu yapılandırmasını bırakacak ve iki örnek arasında coğrafi çoğaltma bağlantılarını sonlandıracaktır. 
+1. [Remove-Azsqlınstance](/powershell/module/az.sql/remove-azsqlinstance)kullanarak kaynak yönetilen örneği silin. 
+1. Kaynak grubundaki sanal küme, sanal ağ ve güvenlik grubu gibi ek kaynakları kaldırın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-Azure SQL Veritabanınızı geçirildikten sonra [yönetin.](sql-database-manage-after-migration.md) 
+Geçiş yapıldıktan sonra Azure SQL veritabanınızı [yönetin](sql-database-manage-after-migration.md) . 
 

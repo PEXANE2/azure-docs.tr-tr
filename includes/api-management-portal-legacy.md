@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: b4c8e9b07905e954879e5b65adbaae765fc41c33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73176507"
 ---
 > [!NOTE]
-> Bu dokümantasyon içeriği eski geliştirici portalı hakkındadır. Yeni geliştirici portalı yla ilgili içerik için aşağıdaki makalelere bakın:
+> Bu belge içeriği eski geliştirici portalı ile ilgilidir. Yeni geliştirici portalı hakkında içerik için aşağıdaki makalelere bakın:
 > 
-> - [Azure API Yönetimi geliştirici portalına genel bakış](..\articles\api-management\api-management-howto-developer-portal.md)
-> - [Yönetilen geliştirici portalına erişin ve özelleştirin (öğretici)](..\articles\api-management\api-management-howto-developer-portal-customize.md)
+> - [Azure API Management geliştirici portalına genel bakış](..\articles\api-management\api-management-howto-developer-portal.md)
+> - [Yönetilen geliştirici portalına erişin ve bunları özelleştirin (öğretici)](..\articles\api-management\api-management-howto-developer-portal-customize.md)

@@ -1,6 +1,6 @@
 ---
-title: CLI kullanarak dış trafik yönlendirmesi - Azure Application Gateway
-description: Azure CLI'yi kullanarak dahili web trafiğini uygun havuza yönlendiren bir uygulama ağ geçidioluşturmayı öğrenin.
+title: CLı kullanarak dış trafik yönlendirmesi-Azure Application Gateway
+description: Azure CLı kullanarak iç Web trafiğini uygun havuza yönlendiren bir uygulama ağ geçidi oluşturmayı öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: fc955b4959bb20628463f7699a0b66ec2b89a393
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74011602"
 ---
-# <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Azure CLI'yi kullanarak harici yeniden yönlendirme içeren bir uygulama ağ geçidi oluşturma
+# <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Azure CLı kullanarak dış yeniden yönlendirmeye sahip bir uygulama ağ geçidi oluşturma
 
-Bir [uygulama ağ geçidi](overview.md)oluştururken web trafiği yeniden [yönlendirmesini](multiple-site-overview.md) yapılandırmak için Azure CLI'yi kullanabilirsiniz. Bu öğreticide, uygulama ağ geçidine gelen web trafiğini harici bir siteye yönlendiren bir dinleyici ve kural yapılandırırsınız.
+[Uygulama ağ geçidi](overview.md)oluştururken [Web trafiği yeniden yönlendirmeyi](multiple-site-overview.md) yapılandırmak için Azure CLI 'yi kullanabilirsiniz. Bu öğreticide, uygulama ağ geçidine gelen Web trafiğini bir dış siteye yönlendiren bir dinleyici ve kural yapılandırırsınız.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -25,7 +25,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Dinleyici ve yeniden yönlendirme kuralı oluşturma
 > * Uygulama ağ geçidi oluşturma
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -60,7 +60,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-*myAppGateway* adlı uygulama ağ geçidini oluşturmak için [az network application-gateway create](/cli/azure/network/application-gateway) komutunu kullanabilirsiniz. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Uygulama ağ geçidi, daha önce oluşturduğunuz *myAGSubnet* ve *myPublicIPAddress'e* atanır. 
+*myAppGateway* adlı uygulama ağ geçidini oluşturmak için [az network application-gateway create](/cli/azure/network/application-gateway) komutunu kullanabilirsiniz. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Application Gateway, daha önce oluşturduğunuz *Myagsubnet* ve *Mypublicıpaddress* öğesine atanır. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -86,9 +86,9 @@ Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Uygulama ağ 
 - *appGatewayFrontendIP*: *appGatewayHttpListener*’a *myAGPublicIPAddress*’i atar.
 - *kural 1*: *appGatewayHttpListener* ile ilişkili varsayılan yönlendirme kuralıdır.
 
-### <a name="add-the-redirection-configuration"></a>Yeniden yönlendirme yapılandırmasını ekleme
+### <a name="add-the-redirection-configuration"></a>Yeniden yönlendirme yapılandırmasını ekleyin
 
-[Az network application-gateway yönlendirme-config oluşturma](/cli/azure/network/application-gateway/redirect-config)kullanarak uygulama ağ geçidine www contoso.com için *\.www* *\.* consoto.org'dan dinleyiciye trafik gönderen yeniden yönlendirme yapılandırmasını ekleyin.
+[Az Network Application-Gateway Redirect-config Create](/cli/azure/network/application-gateway/redirect-config)komutunu kullanarak *www\.consoto.org* *\.* 'ten uygulama ağ geçidine giden trafiği gönderen yeniden yönlendirme yapılandırmasını ekleyin.
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -101,7 +101,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>Dinleyici ve yönlendirme kuralı ekleme
 
-Uygulama ağ geçidinin trafiği uygun şekilde yönlendirmesini sağlamak için dinleyici gerekir. [Az ağ uygulama ağ geçidi http-dinleyici az](/cli/azure/network/application-gateway) ağ [uygulama-ağ geçidi](/cli/azure/network/application-gateway)ön uç bağlantı noktası oluşturmak ile oluşturulan ön uç bağlantı noktası ile oluşturmak kullanarak dinleyici oluşturun. Dinleyicinin gelen trafiği nereye göndereceğini bilmesi için bir kural gereklidir. [az ağ uygulama ağ geçidi kuralı oluşturarak](/cli/azure/network/application-gateway)yeniden *yönlendirme* adlı temel bir kural oluşturun.
+Uygulama ağ geçidinin trafiği uygun şekilde yönlendirebilmesi için bir dinleyici gerekir. Az Network Application [-Gateway ön uç bağlantı noktası oluştur](/cli/azure/network/application-gateway)ile oluşturulan ön uç bağlantı noktasıyla [az Network Application-Gateway http-Listener Create](/cli/azure/network/application-gateway) kullanarak dinleyiciyi oluşturun. Dinleyicinin gelen trafiğin nereye gönderileceğini bilmesini sağlamak için bir kural gerekir. [Az Network Application-Gateway Rule Create](/cli/azure/network/application-gateway)kullanılarak *redirectrule* adlı bir temel kural oluşturun.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -128,7 +128,7 @@ az network application-gateway rule create \
 
 Uygulama ağ geçidinin genel IP adresini almak için [az network public-ip show](/cli/azure/network/public-ip) komutunu kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
 
-Tarayıcınızda *bing.com* görünmelisiniz.
+Tarayıcınızda *Bing.com* göründüğünü görmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

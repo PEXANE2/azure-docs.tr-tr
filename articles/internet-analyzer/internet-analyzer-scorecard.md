@@ -1,6 +1,6 @@
 ---
-title: Karnenizi Yorumlama | Microsoft Dokümanlar
-description: Azure Internet Çözümleyicisi için SSS.
+title: Karneyi yorumlama | Microsoft Docs
+description: Azure Internet çözümleyici hakkında SSS.
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
@@ -8,53 +8,53 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a05c704f62d93bdc110d8a5943dd266ca22eb5f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73512892"
 ---
 # <a name="interpreting-your-scorecard"></a>Karnenizi yorumlama
 
-Karne sekmesi, testlerinizin toplu ve çözümlenmiş sonuçlarını içerir. Her testin kendi karneleri vardır. Karneler, ağ gereksinimleriniz için veri odaklı sonuçlar sağlamak için ölçüm sonuçlarının hızlı ve anlamlı özetlerini sağlar. Internet Analyzer, karara odaklanmanızı sağlayarak analizle ilgilenir.
+Karne sekmesi, testlerinizin toplanan ve analiz edilen sonuçlarını içerir. Her testin kendi karneleri vardır. Karneler, ağ gereksinimleriniz için veri odaklı sonuçlar sağlamak üzere ölçüm sonuçlarının hızlı ve anlamlı özetlerini sağlar. Internet çözümleyici Analize odaklanarak karar vermenize olanak tanır.
 
-Karne sekmesi Internet Analyzer kaynak menüsünde bulunabilir. 
+Karne sekmesi Internet çözümleyici kaynak menüsünde bulunabilir. 
 
 
-## <a name="filters"></a>Filtreler
+## <a name="filters"></a>FilTReleri
 
-* ***Test:*** Sonuçları görüntülemek istediğiniz testi seçin - her testin kendi karnesi vardır. Test verileri, analizi tamamlamak için yeterli veri olduğunda görünür – çoğu durumda, bu 24 saat içinde olmalıdır. 
-* ***Bitiş tarihinden & süre:*** Günde üç karne oluşturulur – her karne farklı bir toplama dönemini yansıtır – 24 saat önce (gün), yedi gün önce (hafta) ve 30 gün önceki (ay). Görmek istediğiniz zaman döneminin son gününü seçmek için "Bitiş Tarihi" filtresini kullanın. 
-* ***Ülke:*** Son kullanıcınız olan her ülke için bir karne oluşturulur. Genel filtre tüm son kullanıcıları içerir.
+* ***Test:*** Sonuçlarını görüntülemek istediğiniz testi seçin-her bir testin kendi karnesi vardır. Analizi tamamlamaya yetecek kadar veri olduğunda test verileri görüntülenir; çoğu durumda bu, 24 saat içinde olmalıdır. 
+* ***Zaman aralığı & bitiş tarihi:*** Üç karne günlük olarak oluşturulur: her bir karne, bir önceki 24 saat (gün), önceki yedi gün (hafta) ve 30 gün önce (ay), farklı bir toplama dönemi yansıtır. Görmek istediğiniz dönemin son gününü seçmek için "bitiş tarihi" filtresini kullanın. 
+* ***Ülke:*** Son kullanıcılarınız olan her ülke için bir karne oluşturulur. Genel filtre tüm son kullanıcıları içerir.
 
 ## <a name="measurement-count"></a>Ölçüm sayısı
 
-Ölçüm sayısı analizin güvenini etkiler. Sayım ne kadar yüksekse, sonuç o kadar doğru olur. Testler en azından günde uç nokta başına en az 100 ölçüm hedeflemelidir. Ölçüm sayıları çok düşükse, lütfen JavaScript istemcisini uygulamanızda daha sık yürütecek şekilde yapılandırın. Küçük farklar beklenebilir ve tamam olsa da, A ve B uç noktaları için ölçüm sayıları çok benzer olmalıdır. Büyük farklılıklar söz konusu olduğunda, sonuçlara güvenilmemelidir.
+Ölçüm sayısı analizin güvenini etkiler. Count arttıkça, sonuç daha doğru olur. En azından, testler gün başına en az 100 ölçüm için hedeflemelidir. Ölçüm sayıları çok düşükse, lütfen JavaScript istemcisini uygulamanızda daha sık yürütülecek şekilde yapılandırın. A ve B uç noktaları için ölçü sayıları çok benzer olmalıdır, ancak küçük farklılıklar beklenen ve sorunsuz olmalıdır. Büyük farklılıklar söz konusu olduğunda sonuçlara güvenilmemelidir.
 
-## <a name="percentiles"></a>Yüzdelik Dilimleri
+## <a name="percentiles"></a>Yüzdebirlik değeri
 
-Milisaniye cinsinden ölçülen gecikme, Internet'teki bir kaynak ve hedef arasındaki hızı ölçmek için kullanılan popüler bir ölçütdür. Gecikme sonu verileri normalde dağıtılmaz (yani bir "Çan Eğrisi" takip etmez) çünkü aritmetik ortalama gibi istatistikleri kullanırken sonuçları çarpıtan büyük gecikme değerlerinin bir "uzun kuyruk" vardır. Alternatif olarak, yüzdelik veriler analiz etmek için "dağıtımgerektirmez" bir yol sağlar. Örnek olarak, ortanca veya yüzde 50, dağılımın ortasını özetler - değerlerin yarısı bunun üzerinde, yarısı ise bunun altındadır. 75. yüzdelik değer, dağıtımdaki tüm değerlerin %75'inden daha büyük olduğu anlamına gelir. Internet Analyzer, stenodaki yüzdelik dilimleri P50, P75 ve P95 olarak ifade eder.
+Milisaniye cinsinden ölçülen gecikme süresi, Internet 'teki bir kaynak ve hedef arasındaki hız ölçmeye yönelik popüler bir ölçümdür. Gecikme süresi normal şekilde dağıtılır (yani, aritmetik ortalama gibi istatistikler kullanırken sonuçları çarpıtabilecek büyük gecikme süreleriyle ilgili bir "uzun kuyruk" olduğundan). Alternatif olarak, yüzdebirlik değeri, verileri çözümlemek için "dağıtım ücretsizdir" bir yol sağlar. Örneğin, ortanca veya 50. Yüzdeliğini yüzdebirlik değeri, dağıtımın ortasında, değerlerin yukarısında ve yarısını özetler. 75. yüzdebirlik değeri, dağıtımındaki tüm değerlerin %75 ' inden büyük olduğu anlamına gelir. Internet Çözümleyicisi yüzdebirlik değeri, P50, P75 ve P95 şeklinde toplu olarak ifade eder.
 
-Internet Analyzer yüzdelik _örneklerdir._ Bu, gerçek popülasyon _ölçüsünün_aksinedir. Örneğin, Güney Kaliforniya Üniversitesi ve Microsoft öğrencileri arasındaki günlük gerçek nüfus ortanca gecikmesi, o gün deki tüm isteklerin ortanca gecikme değeridir. Uygulamada, tüm isteklerin değerini ölçmek pratik değildir, bu nedenle makul derecede büyük bir örneğin gerçek popülasyonu temsil ettiğini varsayıyoruz.
+Internet Çözümleyicisi yüzdebirlik değeri, _örnek ölçümlerdir_. Bu, doğru _popülasyon ölçüsüne_karşılık gelen bir değer. Örneğin, Güney California ve Microsoft University 'teki öğrenciler arasındaki günlük gerçek popülasyon medyan gecikmesi, bu gün içindeki tüm isteklerin ortanca gecikme değeridir. Uygulamada, tüm isteklerin değerini ölçmek pratik olduğundan, makul bir büyük örneğin doğru popülasyon temsilcisi olduğunu varsaytık.
 
-Analiz amacıyla, P50 (ortanca), gecikme dağılımı için beklenen bir değer olarak yararlıdır. P95 gibi daha yüksek yüzdelik artışlar, en kötü durumlarda gecikme gecikmesinin ne kadar yüksek olduğunu belirlemek için yararlıdır. Genel olarak müşteri gecikmesini anlamak istiyorsanız, P50 odaklanmak için doğru metriktir. Eğer en kötü performans gösteren müşteriler için performans anlamak ile ilgili iseniz, o zaman P95 odak noktası olmalıdır. P75 bu ikisi arasında bir dengedir.
+Analiz amaçları için, P50 (ortanca), bir gecikme süresi dağıtımı için beklenen değer olarak faydalıdır. P95 gibi daha yüksek yüzdebirlik değeri, en kötü gecikme süresinin en kötü durumda olduğunu belirlemek için faydalıdır. Müşteri gecikmesini genel olarak anlamak istiyorsanız, P50 doğru ölçüdür. En kötü performanslı müşterilere yönelik performansı anlamak istiyorsanız P95, odak olmalıdır. P75, aralarındaki bir dengedir.
 
 
-## <a name="deltas"></a>Deltalar
+## <a name="deltas"></a>Değişimleri
 
-Delta, A ve B uç noktaları için metrik değerler arasındaki farktır, B'nin A'ya göre yararını göstermek için hesaplanır. Deltalar mutlak (örn. 10 milisaniye) veya göreceli (%5) olabilir.
+Bir Delta, A ve B uç noktaları için ölçüm değerlerinde farklılık gösterir. deltas, b 'nin avantajlarından daha iyi olduğunu gösteren bir. pozitif değerler, b 'nin performansının daha kötü olduğunu gösterir. Deltas mutlak (ör. 10 milisaniye) veya göreli (%5) olabilir.
 
 ## <a name="confidence-interval"></a>Olasılık aralığı 
 
-Güven aralıkları (CI), ortanca, P75 veya ortalama gibi popülasyon metriklerini içerme olasılığı olan bir değer aralığıdır. Biz% 95 CI kullanarak ortak istatistiksel kuralı izleyin.
+Güvenirlik aralıkları (CI), ortanca, P75 veya ortalama gibi popülasyon ölçüsünü içeren bir değer aralığıdır. %95 CI kullanmanın genel istatistiksel kuralını izliyoruz.
 
-Internet Analyzer için, örnek ölçümün büyük olasılıkla gerçek popülasyon ölçümüne çok yakın olduğunu gösterdiğinden, dar bir güven aralığı iyidir. Geniş bir güven aralığı, örnek ölçümümüzün gerçek popülasyon ölçümümüzü yansıttığından daha az kesinlik anlamına gelir. CI'yi geliştirmenin en iyi yolu ölçüm sayılarını artırmaktır.
+Internet çözümleyici 'de, örnek ölçümün gerçek popülasyon ölçüsüne çok yakın olduğunu gösterdiği için dar bir güvenilirlik aralığı iyidir. Geniş bir güvenirlik aralığı, örnek ölçümünüzün gerçek popülasyon ölçümünü yansıttığımız daha az belirsizlik anlamına gelir. CI 'yı geliştirmenin en iyi yolu, ölçüm sayılarını artırmaktır.
 
 ## <a name="time-series"></a>Zaman serisi 
 
-Bir zaman serisi, bir ölçümün zaman içinde nasıl değiştiğini gösterir. Internet'te, yoğun trafik dönemleri, hafta içi-hafta sonu nüfus farklılıkları ve tatiller gibi performansı etkileyen birçok zamansal faktör vardır.
+Zaman serisinde bir ölçümün zaman içinde nasıl değiştiği gösterilmektedir. Internet 'te, yoğun trafik dönemleri, hafta içi hafta sonu oluşturma farkları ve tatiller gibi performansı etkileyen çok sayıda zamana bağlı etken vardır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi edinmek için [Internet Analyzer Genel](internet-analyzer-overview.md)Bakış'ımıza bakın.
+Daha fazla bilgi edinmek için bkz. [Internet Analyzer 'A genel bakış](internet-analyzer-overview.md).

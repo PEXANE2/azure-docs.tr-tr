@@ -1,6 +1,6 @@
 ---
-title: Veritabanı arası sorgularla başlayın
-description: dikey bölümlenmiş veritabanları ile elastik veritabanı sorgusu nasıl kullanılır
+title: Veritabanları arası sorguları kullanmaya başlama
+description: dikey olarak bölümlenmiş veritabanları ile elastik veritabanı sorgusu kullanma
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,29 +12,29 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: af93035766eaf1afa12d124b8379ee55c5567260
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823788"
 ---
-# <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Veritabanı arası sorgularla (dikey bölümleme) başlayın (önizleme)
+# <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Veritabanları arası sorguları kullanmaya başlama (dikey bölümlendirme) (Önizleme)
 
-Azure SQL Veritabanı için elastik veritabanı sorgusu (önizleme), tek bir bağlantı noktası kullanarak birden çok veritabanına yayılan T-SQL sorgularını çalıştırmanızı sağlar. Bu makale dikey [olarak bölümlenmiş veritabanları](sql-database-elastic-query-vertical-partitioning.md)için geçerlidir.  
+Azure SQL veritabanı için elastik veritabanı sorgusu (Önizleme), tek bir bağlantı noktası kullanarak birden çok veritabanına yayılan T-SQL sorguları çalıştırmanızı sağlar. Bu makale, [dikey olarak bölümlenmiş veritabanları](sql-database-elastic-query-vertical-partitioning.md)için geçerlidir.  
 
-Tamamlandığında, birden çok ilgili veritabanına yayılan sorguları gerçekleştirmek için Azure SQL Veritabanını nasıl yapılandıracağınızı ve kullanacağınızı öğreneceksiniz.
+İşlem tamamlandığında, birden fazla ilgili veritabanına yayılan sorgular gerçekleştirmek için bir Azure SQL veritabanını yapılandırmayı ve kullanmayı öğreneceksiniz.
 
-Esnek veritabanı sorgu özelliği hakkında daha fazla bilgi için Azure [SQL Veritabanı elastik veritabanı sorgusuna genel bakış](sql-database-elastic-query-overview.md)bilgisine bakın.
+Elastik veritabanı sorgusu özelliği hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı elastik veritabanı sorgusuna genel bakış](sql-database-elastic-query-overview.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-HERHANGI BIR Dış VERI KAYNAĞı izni değiştirin gereklidir. Bu izin ALTER DATABASE iznine dahildir. ALTER HERHANGI BIR Dış VERI Kaynağı izinleri temel veri kaynağıbaşvurmak için gereklidir.
+Herhangi bir dış VERI kaynağı iznini DEĞIŞTIR gereklidir. Bu izin ALTER DATABASE iznine dahildir. Temel alınan veri kaynağına başvurmak için herhangi bir dış VERI kaynağı izinlerini DEĞIŞTIRME gerekir.
 
-## <a name="create-the-sample-databases"></a>Örnek veritabanlarını oluşturma
+## <a name="create-the-sample-databases"></a>Örnek veritabanları oluşturma
 
-Başlangıç olarak, aynı veya farklı SQL Veritabanı sunucularında **müşteriler** ve **siparişler**olmak üzere iki veritabanı oluşturun.
+İle başlamak için, aynı ya da farklı SQL veritabanı sunucularında iki veritabanı, **Müşteri** ve **sipariş**oluşturun.
 
-**OrderInformation** tablosunu oluşturmak ve örnek verileri girdialmak için **Siparişler** veritabanında aşağıdaki sorguları yürütün.
+**Orderınformation** tablosunu oluşturmak ve örnek verileri girmek için **Orders** veritabanında aşağıdaki sorguları yürütün.
 
     CREATE TABLE [dbo].[OrderInformation](
         [OrderID] [int] NOT NULL,
@@ -46,7 +46,7 @@ Başlangıç olarak, aynı veya farklı SQL Veritabanı sunucularında **müşte
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1)
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8)
 
-Şimdi, **Müşteri Bilgileri** tablosunu oluşturmak ve örnek verileri girdialmak için **Müşteriler** veritabanındaki sorguyu uygulayın.
+Şimdi, **CustomerInformation** tablosunu oluşturmak ve örnek verileri girmek için **Customers** veritabanında aşağıdaki sorguyu yürütün.
 
     CREATE TABLE [dbo].[CustomerInformation](
         [CustomerID] [int] NOT NULL,
@@ -58,24 +58,24 @@ Başlangıç olarak, aynı veya farklı SQL Veritabanı sunucularında **müşte
     INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (2, 'Steve', 'XYZ')
     INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (3, 'Lylla', 'MNO')
 
-## <a name="create-database-objects"></a>Veritabanı nesneleri oluşturma
+## <a name="create-database-objects"></a>Veritabanı nesneleri oluştur
 
-### <a name="database-scoped-master-key-and-credentials"></a>Veritabanı kapsamı ana anahtar ve kimlik bilgileri
+### <a name="database-scoped-master-key-and-credentials"></a>Veritabanı kapsamlı ana anahtar ve kimlik bilgileri
 
-1. Visual Studio'da SQL Server Management Studio veya SQL Server Veri Araçları'nı açın.
-2. Orders veritabanına bağlanın ve aşağıdaki T-SQL komutlarını çalıştırın:
+1. Visual Studio 'da SQL Server Management Studio veya SQL Server Veri Araçları açın.
+2. Orders veritabanına bağlanın ve aşağıdaki T-SQL komutlarını yürütün:
 
         CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
         CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
         WITH IDENTITY = '<username>',
         SECRET = '<password>';  
 
-    "Kullanıcı adı" ve "parola" Müşteri veritabanında oturum açmak için kullanılan kullanıcı adı ve parola olmalıdır.
-    Elastik sorgularla Azure Etkin Dizini kullanılarak kimlik doğrulaması şu anda desteklenmez.
+    "Kullanıcı adı" ve "parola", müşteriler veritabanında oturum açmak için kullanılan Kullanıcı adı ve parola olmalıdır.
+    Elastik sorgularla Azure Active Directory kullanan kimlik doğrulaması şu anda desteklenmiyor.
 
 ### <a name="external-data-sources"></a>Dış veri kaynakları
 
-Harici bir veri kaynağı oluşturmak için Siparişler veritabanında aşağıdaki komutu uygulayın:
+Dış veri kaynağı oluşturmak için, siparişler veritabanında aşağıdaki komutu yürütün:
 
     CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH
         (TYPE = RDBMS,
@@ -86,7 +86,7 @@ Harici bir veri kaynağı oluşturmak için Siparişler veritabanında aşağıd
 
 ### <a name="external-tables"></a>Dış tablolar
 
-Siparişler veritabanında Müşteri Bilgileri tablosunun tanımıyla eşleşen harici bir tablo oluşturun:
+Siparişler veritabanında, CustomerInformation tablosunun tanımıyla eşleşen bir dış tablo oluşturun:
 
     CREATE EXTERNAL TABLE [dbo].[CustomerInformation]
     ( [CustomerID] [int] NOT NULL,
@@ -95,9 +95,9 @@ Siparişler veritabanında Müşteri Bilgileri tablosunun tanımıyla eşleşen 
     WITH
     ( DATA_SOURCE = MyElasticDBQueryDataSrc)
 
-## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Örnek elastik veritabanı T-SQL sorgusu yürütme
+## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Örnek esnek veritabanı T-SQL sorgusu yürütme
 
-Harici veri kaynağınızı ve dış tablolarınızı tanımladıktan sonra, artık dış tablolarınızı sorgulamak için T-SQL'i kullanabilirsiniz. Bu sorguyu Siparişler veritabanında yürüt:
+Dış veri kaynağınızı ve dış tablolarınızı tanımladıktan sonra artık dış tablolarınızı sorgulamak için T-SQL kullanabilirsiniz. Bu sorguyu siparişler veritabanında yürütün:
 
     SELECT OrderInformation.CustomerID, OrderInformation.OrderId, CustomerInformation.CustomerName, CustomerInformation.Company
     FROM OrderInformation
@@ -106,14 +106,14 @@ Harici veri kaynağınızı ve dış tablolarınızı tanımladıktan sonra, art
 
 ## <a name="cost"></a>Maliyet
 
-Şu anda, elastik veritabanı sorgu özelliği Azure SQL Veritabanınızın maliyetine dahildir.  
+Şu anda elastik veritabanı sorgusu özelliği, Azure SQL veritabanınızın maliyetine dahildir.  
 
-Fiyatlandırma bilgileri için [SQL Veritabanı Fiyatlandırması'na](https://azure.microsoft.com/pricing/details/sql-database)bakın.
+Fiyatlandırma bilgileri için bkz. [SQL veritabanı fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-database).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Esnek sorguya genel bakış için [bkz.](sql-database-elastic-query-overview.md)
-* Dikey olarak bölümlenmiş veriler için sözdizimi ve örnek sorgular için [bkz.](sql-database-elastic-query-vertical-partitioning.md)
-* Yatay bölümleme (parçalama) öğreticisi [için](sql-database-elastic-query-getting-started.md)bkz.
-* Yatay olarak bölümlenmiş veriler için sözdizimi ve örnek sorgular için bkz: [Yatay olarak bölümlenmiş verileri sorgula)](sql-database-elastic-query-horizontal-partitioning.md)
-* Tek bir uzak Azure SQL Veritabanında Transact-SQL deyimini yürüten veya yatay bir bölümleme düzeninde parça olarak hizmet veren veritabanları kümesini yürüten [sp\_ \_execute remote'a](https://msdn.microsoft.com/library/mt703714) bakın.
+* Elastik sorguya genel bakış için bkz. [elastik sorguya genel bakış](sql-database-elastic-query-overview.md).
+* Dikey olarak bölümlenmiş verilere yönelik sözdizimi ve örnek sorgular için bkz. [dikey olarak bölümlenmiş verileri sorgulama)](sql-database-elastic-query-vertical-partitioning.md)
+* Yatay bölümleme (parçalama) öğreticisi için bkz. [Yatay bölümleme (parçalama) için elastik sorgu ile çalışmaya](sql-database-elastic-query-getting-started.md)başlama.
+* Yatay olarak bölümlenmiş veriler için sözdizimi ve örnek sorgular için bkz. [yatay olarak bölümlenmiş verileri sorgulama)](sql-database-elastic-query-horizontal-partitioning.md)
+* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [\_SP Execute \_Remote](https://msdn.microsoft.com/library/mt703714) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.

@@ -1,6 +1,6 @@
 ---
-title: Azure Analiz Hizmetleri kaynak ve nesne sınırları | Microsoft Dokümanlar
-description: Bu makalede, bir Azure Çözümleme Hizmetleri sunucusu için kaynak ve nesne sınırları açıklanmaktadır.
+title: Kaynak ve nesne sınırlarını Azure Analysis Services | Microsoft Docs
+description: Bu makalede bir Azure Analysis Services sunucusu için kaynak ve nesne sınırları açıklanmaktadır.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,35 +8,35 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f309c9863eb2f3065251537380a2977839f990d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73573208"
 ---
-# <a name="analysis-services-resource-and-object-limits"></a>Analiz Hizmetleri kaynak ve nesne sınırları
+# <a name="analysis-services-resource-and-object-limits"></a>Kaynak ve nesne sınırlarını Analysis Services
 
-Bu makalede kaynak ve model nesne sýnýnýrlarý açıklanmaktadır.
+Bu makalede kaynak ve model nesne sınırları açıklanmaktadır.
 
 ## <a name="tier-limits"></a>Katman sınırları
 
-Geliştirici, temel ve standart katmanlar için QPU ve Bellek sınırları için [Azure Analiz Hizmetleri fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/analysis-services/)bakın.
+Geliştirici, temel ve standart katmanlara yönelik QPU ve bellek sınırları için [Azure Analysis Services fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/analysis-services/)bakın.
 
 ## <a name="object-limits"></a>Nesne sınırları
 
-Bu sınırlar teoriktir. Performans daha düşük sayılarda azalacaktır.
+Bu sınırlar teorik olarak ayarlanır. Performans, daha düşük sayılarda azalmalıdır.
 
-|Nesne|Maksimum boyutlar/sayılar|  
+|Nesne|En büyük boyut/sayı|  
 |------------|----------------------------|  
 |Bir örnekteki veritabanları|16.000|  
-|Veritabanındaki birleştirilmiş tablo ve sütun sayısı|16.000|  
-|Tablodaki satırlar|Sınırsız<br /><br /> **Uyarı:** Bu kısıtlama ile tabloda tek bir sütun fazla 1.999.999.997 farklı değerlere sahip olabilir.|  
-|Tablodaki hiyerarşiler|15,999|  
-|Hiyerarşideki düzeyler|15,999|  
+|Bir veritabanında birleştirilmiş tablo ve sütun sayısı|16.000|  
+|Tablodaki satırlar|Sınırsız<br /><br /> **Uyarı:** Tablodaki tek bir sütunun 1.999.999.997 ' den fazla farklı değere sahip olmadığı kısıtlamadır.|  
+|Bir tablodaki hiyerarşiler|15.999|  
+|Hiyerarşideki düzeyler|15.999|  
 |İlişkiler|8,000|  
-|Tüm tablodaki Anahtar Sütunlar|15,999|  
-|Tablolardaki ölçüler|2^31-1 = 2.147.483.647|  
-|Sorgu tarafından döndürülen hücreler|2^31-1 = 2.147.483.647|  
+|Tüm tablodaki anahtar sütunları|15.999|  
+|Tablolardaki ölçüler|2 ^ 31-1 = 2.147.483.647|  
+|Sorgu tarafından döndürülen hücreler|2 ^ 31-1 = 2.147.483.647|  
 |Kaynak sorgusunun kayıt boyutu|64 K|  
 |Nesne adlarının uzunluğu|512 karakter|  
 

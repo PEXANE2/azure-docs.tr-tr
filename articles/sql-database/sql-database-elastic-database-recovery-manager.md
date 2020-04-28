@@ -1,6 +1,6 @@
 ---
-title: Parça eşlemi sorunlarını gidermek için Kurtarma Yöneticisi
-description: Sabit haritalarla ilgili sorunları çözmek için RecoveryManager sınıfını kullanın
+title: Parça eşleme sorunlarını giderecek kurtarma Yöneticisi
+description: Parça eşlemeleriyle ilgili sorunları gidermek için RecoveryManager sınıfını kullanın
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,43 +12,43 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 6101e00ab98b0d8d901f2e42bf4083d40d0a3227
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823846"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>RecoveryManager sınıfı ile parça eşleme sorunlarını düzeltme
 
-[RecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) sınıfı, ADO.NET uygulamalara, parçalanmış bir veritabanı ortamında küresel parça lı harita (GSM) ve yerel parça lı harita (LSM) arasındaki tutarsızlıkları kolayca algılayabilme ve düzeltme olanağı sağlar.
+[RecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) sınıfı, ADO.NET uygulamalarına, parçalı bir veritabanı ortamındaki küresel parça HARITASI (GSM) ve yerel parça eşlemesi (LSM) arasındaki tutarsızlıkları kolayca algılamayı ve düzeltmesini sağlar.
 
-GSM ve LSM, her veritabanının eşleçlerini parçalı bir ortamda izler. Bazen, GSM ve LSM arasında bir mola oluşur. Bu durumda, kırılmayı algılamak ve onarmak için RecoveryManager sınıfını kullanın.
+GSM ve LSM, her veritabanının parçalı bir ortamda eşlenmesini izler. Bazen, GSM ve LSM arasında bir kesme oluşur. Bu durumda, kesmeyi algılamak ve onarmak için RecoveryManager sınıfını kullanın.
 
-RecoveryManager sınıfı [Elastik Veritabanı istemci kitaplığı](sql-database-elastic-database-client-library.md)bir parçasıdır.
+RecoveryManager sınıfı, [elastik veritabanı istemci kitaplığının](sql-database-elastic-database-client-library.md)bir parçasıdır.
 
-![Shard haritası][1]
+![Parça Haritası][1]
 
-Terim tanımları için Bkz. [Elastik Veritabanı araçları sözlüğü.](sql-database-elastic-scale-glossary.md) **ShardMapManager'ın** parçalanmış bir çözümdeki verileri yönetmek için nasıl kullanıldığını anlamak için Bkz. [Shard harita yönetimi.](sql-database-elastic-scale-shard-map-management.md)
+Terim tanımları için bkz. [elastik veritabanı araçları sözlüğü](sql-database-elastic-scale-glossary.md). Parçalı bir çözümdeki verileri yönetmek için **Shardmapmanager** 'ın nasıl kullanıldığını anlamak için bkz. parça [eşleme yönetimi](sql-database-elastic-scale-shard-map-management.md).
 
-## <a name="why-use-the-recovery-manager"></a>Kurtarma yöneticisi neden kullanılır?
+## <a name="why-use-the-recovery-manager"></a>Kurtarma Yöneticisi 'nin kullanılması
 
-Parçalanmış bir veritabanı ortamında, veritabanı başına bir kiracı ve sunucu başına birçok veritabanları vardır. Ayrıca ortamda birçok sunucu olabilir. Her veritabanı parça haritada eşlenir, bu nedenle aramalar doğru sunucuya ve veritabanına yönlendirilebilir. Veritabanları bir **parçalama anahtarına**göre izlenir ve her **parçaya**bir anahtar aralığı atanır. Örneğin, bir kırık anahtarı müşteri adlarını "D"den "F" arasında temsil edebilir. Tüm parçaların (aka veritabanları) ve bunların haritalama aralıkları haritalama **küresel parça harita (GSM)** bulunur. Her veritabanı da **yerel parça haritası (LSM)** olarak bilinen parça üzerinde bulunan aralıkları bir harita içerir. Bir uygulama bir parçaya bağlandığında, eşleme hızlı geri alma için uygulamayla önbelleğe alınarak önbelleğe alınr. LSM önbelleğe alınan verileri doğrulamak için kullanılır.
+Parçalı bir veritabanı ortamında, veritabanı başına tek bir kiracı ve sunucu başına çok sayıda veritabanı vardır. Ortamda çok sayıda sunucu da olabilir. Her bir veritabanı parça eşlemesinde eşlendiğinden, çağrılar doğru sunucuya ve veritabanına yönlendirilebilir. Veritabanları bir **parça anahtarına**göre izlenir ve her parçaya bir **dizi anahtar değer**atanır. Örneğin, bir parça anahtarı "D" ile "F" arasında müşteri adlarını temsil edebilir. Tüm parçaları (yani, veritabanları) ve bunların eşleme aralıklarını eşleme, **genel parça eşlemesinde (GSM)** bulunur. Her veritabanı Ayrıca, **yerel parça Haritası (LSM)** olarak bilinen parça üzerinde yer alan aralıkların haritasını içerir. Bir uygulama bir parça ile bağlanıyorsa, eşleme uygulamayla hızlı bir şekilde geri alma için önbelleğe alınır. LSM, önbelleğe alınmış verileri doğrulamak için kullanılır.
 
-GSM ve LSM aşağıdaki nedenlerle senkronize olmayabilir:
+Aşağıdaki nedenlerden dolayı GSM ve LSM eşitlenmemiş olabilir:
 
-1. Aralığıartık kullanımda olmadığına inanılan bir parçanın silinmesi veya bir parçanın yeniden adlandırılması. Bir parçayı silerken, öksüz bir **parça eşleneme**ile sonuçlanır. Benzer şekilde, yeniden adlandırılmış bir veritabanı, adlandırılmış bir parça eşleneme neden olabilir. Değişikliğin amacına bağlı olarak, parçanın kaldırılması veya parçanın konumunun güncellenmesi gerekebilir. Silinen bir veritabanını kurtarmak için [silinmiş veritabanını geri yükleme'ye](sql-database-recovery-using-backups.md)bakın.
-2. Bir coğrafi hata olayı oluşur. Devam etmek için, uygulamadaki sunucu adını ve veritabanı adı sabit harita yöneticisini güncelleştirmeli ve sonra parçalı haritadaki tüm parçaların parça eşleme ayrıntılarını güncelleştirmek gerekir. Bir coğrafi hata varsa, bu tür kurtarma mantığı, failover iş akışı içinde otomatikleştirilmelidir. Kurtarma eylemlerini otomatikleştirmek, coğrafi olarak etkin leştirilmiş veritabanları için sürtünmesiz bir yönetilebilirlik sağlar ve manuel insan eylemlerini önler. Veri merkezi kesintisi varsa veritabanını kurtarma seçenekleri hakkında bilgi edinmek için Bkz. [İş Sürekliliği](sql-database-business-continuity.md) ve [Olağanüstü Durum Kurtarma.](sql-database-disaster-recovery.md)
-3. Bir parça veya ShardMapManager veritabanı daha önceki bir noktaya geri yüklenir. Yedeklemeleri kullanarak zaman kurtarma noktası hakkında bilgi edinmek için [yedekleri kullanarak Kurtarma'ya](sql-database-recovery-using-backups.md)bakın.
+1. Bir parçanın, aralığı artık kullanımda veya bir parçanın yeniden adlandırılmasına inanmayacak şekilde silinmesi. Bir parçayı silme, **yalnız bırakılmış parça eşlemesinde**oluşur. Benzer şekilde, yeniden adlandırılmış bir veritabanı, yalnız bırakılmış bir parça eşlemesine neden olabilir. Değişikliğin amacına bağlı olarak, parçanın kaldırılması veya parça konumunun güncelleştirilmesi gerekir. Silinen bir veritabanını kurtarmak için bkz. [silinen veritabanını geri yükleme](sql-database-recovery-using-backups.md).
+2. Coğrafi Yük devretme olayı oluşur. Devam etmek için, birinin sunucu adını ve uygulama içindeki parça eşleme Yöneticisi 'nin veritabanı adını güncelleştirmesi ve sonra parça eşlemesindeki tüm parçalar için parça eşleme ayrıntılarını güncelleştirmesi gerekir. Coğrafi Yük devretme söz konusu olduğunda, bu kurtarma mantığının yük devretme iş akışı içinde otomatikleştirilmesi gerekir. Kurtarma eylemlerinin otomatikleştirilmesi, coğrafi olarak etkinleştirilmiş veritabanları için daha az yönetilebilirlik sunar ve el ile insan eylemlerini önler. Veri merkezi kesintisi olursa bir veritabanını kurtarmaya yönelik seçenekler hakkında bilgi edinmek için bkz. [Iş sürekliliği](sql-database-business-continuity.md) ve [olağanüstü durum kurtarma](sql-database-disaster-recovery.md).
+3. Parça veya ShardMapManager veritabanı daha önceki bir zaman noktasına geri yüklendi. Yedeklemeleri kullanarak zaman kurtarma hakkında bilgi edinmek için bkz. [yedeklemeleri kullanarak kurtarma](sql-database-recovery-using-backups.md).
 
-Azure SQL Veritabanı Elastik Veritabanı araçları, coğrafi çoğaltma ve Geri Yükleme hakkında daha fazla bilgi için aşağıdakilere bakın:
+Azure SQL veritabanı elastik veritabanı araçları, coğrafi çoğaltma ve geri yükleme hakkında daha fazla bilgi için aşağıdakilere bakın:
 
-* [Genel Bakış: SQL Veritabanı ile bulut iş sürekliliği ve veritabanı olağanüstü kurtarma](sql-database-business-continuity.md)
-* [Elastik veritabanı araçları yla başlayın](sql-database-elastic-scale-get-started.md)  
-* [ShardMap Yönetimi](sql-database-elastic-scale-shard-map-management.md)
+* [Genel Bakış: SQL veritabanı ile bulut iş sürekliliği ve veritabanı olağanüstü durum kurtarma](sql-database-business-continuity.md)
+* [Elastik veritabanı araçlarını kullanmaya başlama](sql-database-elastic-scale-get-started.md)  
+* [ShardMap yönetimi](sql-database-elastic-scale-shard-map-management.md)
 
-## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>RecoveryManager'ı Bir ShardMapManager'dan Alma
+## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>Bir ShardMapManager 'dan RecoveryManager alma
 
-İlk adım bir RecoveryManager örneği oluşturmaktır. [GetRecoveryManager yöntemi,](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager) geçerli [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) örneğinin kurtarma yöneticisini döndürür. Parça lı haritadaki tutarsızlıkları gidermek için, önce belirli parçalı harita için RecoveryManager'ı almanız gerekir.
+İlk adım, bir RecoveryManager örneği oluşturmaktır. [Getrecoverymanager yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager) , geçerli [shardmapmanager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) örneği için kurtarma yöneticisini döndürür. Parça haritadaki tutarsızlıklara yönelik olarak, ilk olarak belirli parça eşlemesi için RecoveryManager 'ı almalısınız.
 
    ```java
     ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnectionString,  
@@ -56,65 +56,65 @@ Azure SQL Veritabanı Elastik Veritabanı araçları, coğrafi çoğaltma ve Ger
              RecoveryManager rm = smm.GetRecoveryManager();
    ```
 
-Bu örnekte, RecoveryManager ShardMapManager'dan başharfe basılan. Bir ShardMap içeren ShardMapManager da zaten başharf.
+Bu örnekte, RecoveryManager, ShardMapManager 'dan başlatılır. Bir ShardMap içeren ShardMapManager da zaten başlatılmış.
 
-Bu uygulama kodu parça eşleminin kendisini manipüle ettiği için, fabrika yönteminde kullanılan kimlik bilgileri (önceki örnekte, smmConnectionString) bağlantı tarafından başvurulan GSM veritabanında okuma yazma izinleri olan kimlik bilgileri olmalıdır Dize. Bu kimlik bilgileri genellikle veribağımlı yönlendirme için bağlantıları açmak için kullanılan kimlik bilgileri farklıdır. Daha fazla bilgi için [bkz.](sql-database-elastic-scale-manage-credentials.md)
+Bu uygulama kodu parça haritasını kullandığından, Factory yönteminde kullanılan kimlik bilgileri (önceki örnekte, smmConnectionString), bağlantı dizesinin başvurduğu GSM veritabanında okuma-yazma izinlerine sahip kimlik bilgileri olmalıdır. Bu kimlik bilgileri genellikle veriye bağımlı yönlendirmeye yönelik bağlantıları açmak için kullanılan kimlik bilgilerinden farklıdır. Daha fazla bilgi için bkz. [elastik veritabanı istemcisinde kimlik bilgilerini kullanma](sql-database-elastic-scale-manage-credentials.md).
 
-## <a name="removing-a-shard-from-the-shardmap-after-a-shard-is-deleted"></a>Bir parça silindikten sonra ShardMap'ten bir parça çıkarma
+## <a name="removing-a-shard-from-the-shardmap-after-a-shard-is-deleted"></a>Parça silindikten sonra ShardMap 'ten parça kaldırma
 
-[DetachShard yöntemi](https://docs.microsoft.com/previous-versions/azure/dn842083(v=azure.100)) verilen parçayı parça eşlerinden ayırır ve parçayla ilişkili eşlemeleri siler.  
+[Çıkarılabilir parça yöntemi](https://docs.microsoft.com/previous-versions/azure/dn842083(v=azure.100)) , parça eşlemesinden verilen parçayı ayırır ve parça ile ilişkili eşlemeleri siler.  
 
-* Konum parametresi, parçanın ayrılmasıiçin özellikle sunucu adı ve veritabanı adı olan parça konumudur.
-* ShardMapName parametresi parça harita adıdır. Bu yalnızca birden çok parça eşlem aynı parça harita yöneticisi tarafından yönetildiğinde gereklidir. İsteğe bağlı.
+* Konum parametresi, parçalı olarak, özel olarak sunucu adı ve veritabanı adı olan parça konumudur.
+* ShardMapName parametresi parça eşleme adıdır. Bu, yalnızca birden çok parça eşlemesi aynı parça eşleme Yöneticisi tarafından yönetilmiyorsa gereklidir. İsteğe bağlı.
 
 > [!IMPORTANT]
-> Bu tekniği yalnızca güncelleştirilmiş eşleme aralığının boş olduğundan eminseniz kullanın. Yukarıdaki yöntemler taşınan aralık için verileri denetlemez, bu nedenle kodunuza denetimler eklemek en iyisidir.
+> Bu tekniği yalnızca, güncelleştirilmiş eşleme aralığının boş olduğundan eminseniz kullanın. Yukarıdaki yöntemler, taşınmakta olan Aralık için verileri denetlemez, bu nedenle kodunuzda denetimleri eklemek en iyisidir.
 
-Bu örnek, parça haritasındaki kırıkları kaldırır.
+Bu örnek, parça eşlemesinden parçaları kaldırır.
 
    ```java
    rm.DetachShard(s.Location, customerMap);
    ```
 
-Parça lı harita, parçasilinmeden önce GSM'deki parça konumunu yansıtır. Parça silindiğinden, bunun kasıtlı olduğu varsayılır ve parçalama anahtar aralığı artık kullanılmaz. Değilse, nokta-in zaman geri yürütme yapabilirsiniz. daha önceki bir noktadan parça kurtarmak için. (Bu durumda, parça tutarsızlıklarını algılamak için aşağıdaki bölümü gözden geçirin.) Kurtarmak için, [zaman kurtarma noktası](sql-database-recovery-using-backups.md)bakın.
+Parça Haritası, parçanın silinmesinden önce GSM içindeki parça konumunu yansıtır. Parça silindiği için bunun bilerek olduğu varsayılır ve parçalama anahtar aralığı artık kullanımda değildir. Aksi takdirde, zaman içinde nokta geri yüklemeyi çalıştırabilirsiniz. parçayı daha önceki bir zaman noktasından kurtarmak için. (Bu durumda, parçalı tutarsızlıkları algılamak için aşağıdaki bölümü gözden geçirin.) Kurtarmak için bkz. [Noktadan noktaya kurtarma](sql-database-recovery-using-backups.md).
 
-Veritabanı silmenin kasıtlı olduğu varsayıldığı için, son yönetimsel temizleme eylemi parça lı harita yöneticisindeki parçaya girişi silmektir. Bu, uygulamanın beklenen olmayan bir aralara yanlışlıkla bilgi yazmasını önler.
+Veritabanı silmenin kasıtlı olarak varsayıldığından, son yönetim Temizleme eylemi, parça eşleme Yöneticisi 'nde olan girişi silmek olur. Bu, uygulamanın istem dışı olarak beklenmeyen bir aralığa bilgi yazmasını engeller.
 
-## <a name="to-detect-mapping-differences"></a>Eşleme farklılıklarını algılamak için
+## <a name="to-detect-mapping-differences"></a>Eşleme farklarını algılamak için
 
-[DetectMappingDifferences yöntemi,](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences) gerçeğin kaynağı olarak parçaharitalardan birini (yerel veya küresel) seçer ve döndürür ve her iki parça haritadaki (GSM ve LSM) eşlemeleri uzlaştırır.
+[Detectmappingfarklar yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences) , parça haritalarından (yerel veya genel) birini seçip, her iki parça HARITADA (GSM ve LSM) eşlemeleri bağdaştırın.
 
    ```java
    rm.DetectMappingDifferences(location, shardMapName);
    ```
 
-* *Konum* sunucu adını ve veritabanı adını belirtir.
-* *ShardMapName* parametresi parça harita adıdır. Bu yalnızca birden çok parça eşlem aynı parça harita yöneticisi tarafından yönetiliyorsa gereklidir. İsteğe bağlı.
+* *Konum* , sunucu adını ve veritabanı adını belirtir.
+* *Shardmapname* parametresi parça eşleme adıdır. Bu, yalnızca birden çok parça eşlemesi aynı parça eşleme Yöneticisi tarafından yönetiliyorsa gereklidir. İsteğe bağlı.
 
-## <a name="to-resolve-mapping-differences"></a>Eşleme farklılıklarını gidermek için
+## <a name="to-resolve-mapping-differences"></a>Eşleme farklarını çözümlemek için
 
-[ResolveMappingDifferences yöntemi,](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences) gerçeğin kaynağı olarak parça haritalardan birini (yerel veya küresel) seçer ve her iki parça haritadaki (GSM ve LSM) eşlemeleri uzlaştırır.
+[Resolvemappingfarklılığı yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences) , parça haritalarından birini (yerel veya genel) bir arada seçer ve her iki parça HARITADA (GSM ve LSM) eşlemeleri karşılaştırın.
 
    ```java
    ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
    ```
 
-* *RecoveryToken* parametresi, GSM ve LSM arasındaki haritalama farklılıklarını belirli parça için numaralandırır.
-* [MappingDifferenceResolution numaralandırma,](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution) parça eşlemeleri arasındaki farkı çözme yöntemini belirtmek için kullanılır.
-* **MappingDifferenceResolution.KeepShardMapping LSM** doğru haritalama ve bu nedenle parça içinde eşleme kullanıldığında kullanılması önerilir. Bir failover varsa bu genellikle durumdur: parça şimdi yeni bir sunucuda bulunur. Parçanın önce GSM'den çıkarılması gerektiğinden (RecoveryManager.DetachShard yöntemini kullanarak), GSM'de artık bir eşleme yoktur. Bu nedenle, LSM parça eşleme yeniden kurmak için kullanılmalıdır.
+* *Recoverytoken* parametresi, belirli parça için GSM ve LSM arasındaki eşlemelerde farkları sıralar.
+* [MappingDifferenceResolution numaralandırması](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution) , parça eşlemeleri arasındaki farkı çözme yöntemini belirtmek için kullanılır.
+* **MappingDifferenceResolution. KeepShardMapping** , lsm doğru eşlemeyi içerdiğinde ve bu nedenle parçadaki eşlemenin kullanılması gerektiği için önerilir. Bu, genellikle bir yük devretme işlemi varsa olur: parça artık yeni bir sunucuda bulunur. Parçanın öncelikle GSM 'den kaldırılması gerektiğinden (RecoveryManager. çıkarılabilir parça yöntemi kullanılarak), GSM üzerinde artık bir eşleme yok. Bu nedenle, parça eşlemesini yeniden oluşturmak için LSM kullanılması gerekir.
 
-## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>Bir parça geri yüklendikten sonra ShardMap'e bir parça ekleme
+## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>Parça geri yüklendikten sonra ShardMap 'e parça iliştirme
 
-[AttachShard yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard) verilen parçayı parça eşlene bağlar. Daha sonra herhangi bir parça harita tutarsızlıkları algılar ve parça geri yükleme noktasında parça maç eşlemeleri güncelleştirir. Nokta-in time geri yükleme varsayılan zaman damgası ile eklenen yeni bir veritabanı için olduğundan, veritabanı da özgün veritabanı adını (parça geri yüklenmeden önce) yansıtacak şekilde yeniden adlandırıldı varsayılmaktadır.
+[Attachkıard yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard) , verilen parçayı parça eşlemesine iliştirir. Daha sonra, parça eşleme tutarsızlıklarını algılar ve eşlemeleri parça geri yüklemesinin noktasındaki parçalarla eşleşecek şekilde güncelleştirir. Bu, veritabanının, zaman damgasıyla eklenen yeni bir veritabanına varsayılan olarak, ilk veritabanı adını (parça geri yüklenmeden önce) yansıtacak şekilde yeniden adlandırılabileceği varsayılır.
 
    ```java
    rm.AttachShard(location, shardMapName)
    ```
 
 * *Konum* parametresi, eklenen parçanın sunucu adı ve veritabanı adıdır.
-* *ShardMapName* parametresi parça harita adıdır. Bu yalnızca birden çok parça eşlem aynı parça harita yöneticisi tarafından yönetildiğinde gereklidir. İsteğe bağlı.
+* *Shardmapname* parametresi parça eşleme adıdır. Bu, yalnızca birden çok parça eşlemesi aynı parça eşleme Yöneticisi tarafından yönetilmiyorsa gereklidir. İsteğe bağlı.
 
-Bu örnek, daha önceki bir noktadan geri yüklenen parça lı haritaya bir parça ekler. Parça (yani LSM'deki parçanın eşlemesi) geri yüklenmiş olduğundan, GSM'deki parça girişiyle potansiyel olarak tutarsızdır. Bu örnek kodun dışında, parça geri yüklendi ve veritabanının özgün adı yla yeniden adlandırıldı. Geri yüklenmiş olduğundan, LSM'deki eşlemenin güvenilir eşleme olduğu varsayılır.
+Bu örnek, kısa süre önce önceki bir noktadan geri yüklenen parça eşlemesine parça ekler. Parça (LSM içindeki parça için eşleme) geri yüklendiğinden bu yana, GSM içindeki parça girişi ile tutarsız olabilir. Bu örnek kodun dışında, parça geri yüklendi ve veritabanının özgün adı olarak yeniden adlandırıldı. Geri yüklendiği için, LSM içindeki eşlemenin güvenilen eşleme olduğunu varsaymıştı.
 
    ```java
    rm.AttachShard(s.Location, customerMap);
@@ -125,26 +125,26 @@ Bu örnek, daha önceki bir noktadan geri yüklenen parça lı haritaya bir par�
        }
    ```
 
-## <a name="updating-shard-locations-after-a-geo-failover-restore-of-the-shards"></a>Parçaların coğrafi olarak arızalanmasından (geri yüklendikten) sonra parça konumlarının güncellenmesi
+## <a name="updating-shard-locations-after-a-geo-failover-restore-of-the-shards"></a>Parçaları coğrafi Yük devretme (geri yükleme) sonrasında parça konumlarını güncelleştirme
 
-Bir coğrafi hata varsa, ikincil veritabanı yazma erişilebilir hale getirilir ve yeni birincil veritabanı olur. Sunucunun adı ve potansiyel veritabanı (yapılandırmanıza bağlı olarak), özgün birincil farklı olabilir. Bu nedenle GSM ve LSM'deki parçanın eşleme girişleri düzeltilmelidir. Benzer şekilde, veritabanı farklı bir ada veya konuma veya zaman içinde daha önceki bir noktaya geri yüklenirse, bu parça eşlemlerinde tutarsızlıklara neden olabilir. Shard Map Manager, açık bağlantıların doğru veritabanına dağıtımını işler. Dağıtım, parça lama haritasındaki verilere ve uygulama isteğinin hedefi olan parçalama anahtarının değerine dayanır. Bir coğrafi hatadan sonra, bu bilgiler kurtarılan veritabanının doğru sunucu adı, veritabanı adı ve parça eşlemesiyle güncelleştirilmelidir.
+Coğrafi Yük devretme varsa, ikincil veritabanına yazma erişimi yapılır ve yeni birincil veritabanı olur. Sunucunun adı ve potansiyel olarak veritabanı (yapılandırmanıza bağlı olarak) özgün Birincilden farklı olabilir. Bu nedenle, GSM ve LSM içindeki parça için olan eşleme girdileri düzeltilmelidir. Benzer şekilde, veritabanı farklı bir ada veya konuma veya daha önceki bir zaman noktasına geri yüklenirse, bu, parça haritalarındaki tutarsızlıklara neden olabilir. Parça eşleme Yöneticisi, açık bağlantıların doğru veritabanına dağıtımını işler. Dağıtım, parça eşlemesindeki verileri ve uygulama isteğinin hedefi olan parçalı anahtar değerini temel alır. Coğrafi Yük devretme sonrasında bu bilgilerin, kurtarılan veritabanının doğru sunucu adı, veritabanı adı ve parça eşlemesi ile güncelleştirilmeleri gerekir.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-Coğrafi hata ve kurtarma işlemleri genellikle uygulamanın bir bulut yöneticisi tarafından yönetilen ve Azure SQL veritabanları iş sürekliliği özelliklerinden birini kasıtlı olarak kullanan işlemlerdir. İş sürekliliği planlaması, iş operasyonlarının kesintisiz olarak devam etmesini sağlamak için süreçler, prosedürler ve önlemler gerektirir. RecoveryManager sınıfının bir parçası olarak kullanılabilen yöntemler, GSM ve LSM'nin alınan kurtarma eylemine bağlı olarak güncel tutulmasını sağlamak için bu iş akışı içinde kullanılmalıdır. GSM ve LSM'nin bir arıza olayından sonra doğru bilgileri doğru şekilde yansıtmasını sağlamak için beş temel adım vardır. Bu adımları yürütmek için uygulama kodu varolan araçlara ve iş akışına entegre edilebilir.
+Coğrafi Yük devretme ve kurtarma, genellikle Azure SQL veritabanlarının iş sürekliliği özelliklerinden birini kullanarak uygulamanın bulut Yöneticisi tarafından yönetilen işlemlerdir. İş sürekliliği planlaması, iş işlemlerinin kesintiye uğramadan devam edememesini sağlamak için işlemler, yordamlar ve ölçüler gerektirir. Bu iş akışında, GSM ve LSM 'nin gerçekleştirilen kurtarma eylemine göre güncel kalmasını sağlamak için, RecoveryManager sınıfının bir parçası olarak kullanılabilir yöntemler kullanılmalıdır. GSM ve LSM 'nin bir yük devretme olayından sonra doğru bilgileri yansıtmasını sağlamaya yönelik beş temel adım vardır. Bu adımları yürütmek için uygulama kodu mevcut araçlarla ve iş akışıyla tümleştirilebilir.
 
-1. RecoveryManager'ı ShardMapManager'dan alın.
-2. Eski parçayı parça haritadan ayırın.
-3. Yeni parça yı, yeni parça konumu da dahil olmak üzere parça lı haritaya yeni parçayı takın.
-4. GSM ve LSM arasındaki eşlemedeki tutarsızlıkları algıla.
-5. LSM'ye güvenerek GSM ve LSM arasındaki farkları giderin.
+1. ShardMapManager 'dan RecoveryManager 'ı alın.
+2. Eski parçalamayı parça eşlemesinden ayırın.
+3. Yeni parça konumu da dahil olmak üzere parça eşlemesine yeni parça ekleyin.
+4. GSM ve LSM arasındaki eşlemede tutarsızlıklar tespit edin.
+5. LSM 'ye güvenen GSM ve LSM arasındaki farkları çözün.
 
-Bu örnekte aşağıdaki adımları gerçekleştirir:
+Bu örnek aşağıdaki adımları gerçekleştirir:
 
-1. Failover olayından önce parça konumlarını yansıtan Parça Harita'daki kırıkları kaldırır.
-2. Yeni parça konumlarını yansıtan Parça Haritası'na parçaları bağlar ("Configuration.SecondaryServer" parametresi yeni sunucu adı dır, ancak aynı veritabanı adıdır).
+1. Yük devretme olayından önceki parça konumlarını yansıtan parça eşlemesinden parçaları kaldırır.
+2. Yeni parça konumlarını yansıtan parça eşlemesine parçalar ekler ("Configuration. SecondaryServer" parametresi yeni sunucu adı, ancak aynı veritabanı adıdır).
 3. Her parça için GSM ve LSM arasındaki eşleme farklarını algılayarak kurtarma belirteçlerini alır.
-4. Her parçanın LSM eşlemegüvenerek tutarsızlıkları giderir.
+4. Her bir parçanın LSM 'sinden eşleştirmeye güvenerek tutarsızlıkları çözer.
 
    ```java
    var shards = smm.GetShards();

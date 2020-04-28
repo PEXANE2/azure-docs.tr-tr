@@ -1,6 +1,6 @@
 ---
-title: Azure portalında kullanıcı etkinlik raporlarını bulma | Microsoft Dokümanlar
-description: Azure Active Directory kullanıcı etkinlik raporlarının Azure portalında nerede olduğunu öğrenin.
+title: Azure portal Kullanıcı etkinliği raporlarını bul | Microsoft Docs
+description: Azure Active Directory Kullanıcı etkinliği raporlarının nerede Azure portal olduğunu öğrenin.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,23 +15,23 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74008207"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure portalda etkinlik raporlarını bulma
 
-Bu makalede, Azure portalında Azure Etkin Dizin (Azure AD) kullanıcı etkinlik raporlarını nasıl bulacağınızı öğrenirsiniz.
+Bu makalede, Azure portal Azure Active Directory (Azure AD) Kullanıcı etkinliği raporlarının nasıl bulunacağını öğreneceksiniz.
 
 ## <a name="audit-logs-report"></a>Denetim günlükleri raporu
 
-Denetim günlükleri raporu, uygulama etkinlikleri yle ilgili çeşitli raporları bağlam tabanlı raporlama için tek bir görünümde birleştirir. Denetim günlükleri raporuna erişmek için:
+Denetim günlükleri raporu, uygulama etkinlikleri etrafında çeşitli raporları bağlam tabanlı raporlama için tek bir görünümde birleştirir. Denetim günlükleri raporuna erişmek için:
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-2. Dizininizi sağ üst köşeden seçin ve ardından sol gezinti bölmesinden **Azure Etkin Dizin** bıçağını seçin.
-3. Azure Etkin Dizin bıçağının **Etkinlik** bölümünden **Denetim günlüklerini** seçin. 
+2. Sağ üst köşedeki dizininizi seçin, sonra sol gezinti bölmesinden **Azure Active Directory** dikey penceresini seçin.
+3. Azure Active Directory dikey penceresinin **etkinlik** bölümünden **Denetim günlükleri** ' ni seçin. 
 
     ![Denetim günlükleri](./media/howto-find-activity-reports/482.png "Denetim günlükleri")
 
@@ -41,47 +41,47 @@ Denetim günlükleri raporu aşağıdaki raporları birleştirir:
 * Parola sıfırlama etkinliği
 * Parola sıfırlama kayıt etkinliği
 * Self servis grupları etkinliği
-* Office365 Grup Adı Değişiklikleri
+* Office365 grup adı değişiklikleri
 * Hesap sağlama etkinliği
-* Parola devri durumu
+* Parola geçiş durumu
 * Hesap hazırlama hataları
 
 ### <a name="filtering-on-audit-logs"></a>Denetim günlüklerinde filtreleme
 
-Denetim raporunda, **kategori** filtresinde belirterek belirli bir denetim veri kategorisine erişmek için gelişmiş filtreleme kullanabilirsiniz. Örneğin, kullanıcılarla ilgili tüm etkinlikleri görüntülemek için **UserManagement** kategorisini seçin. 
+Denetim verileri **Kategori filtresinde belirterek** belirli bir denetim verileri kategorisine erişmek için denetim raporundaki Gelişmiş filtreleme ' yi kullanabilirsiniz. Örneğin, kullanıcılarla ilgili tüm etkinlikleri görüntülemek için **Usermanagement** kategorisini seçin. 
 
 Kategoriler şunlardır:
 
 - Tümü
 - AdministrativeUnit
-- Uygulama Yönetimi
-- Kimlik doğrulaması
+- ApplicationManagement
+- Kimlik Doğrulaması
 - Yetkilendirme
 - İletişim
 - Cihaz
 - DeviceConfiguration
-- DizinYönetimi
-- Yetki Yönetimi
-- Grup Yönetimi
+- DirectoryManagement
+- EntitlementManagement
+- GroupManagement
 - Diğer
 - İlke
-- Kaynak Yönetimi
+- ResourceManagement
 - RoleManagement
 - Kullanıcı Yönetimi
 
-**Hizmet** açılır bırakma filtresini kullanarak belirli bir hizmete de filtre uygulayabilirsiniz. Örneğin, self servis parola yönetimiyle ilgili tüm denetim olaylarını almak için **Self servis Parola Yönetimi** filtresini seçin.
+Ayrıca **hizmet** açılan filtresini kullanarak belirli bir hizmete filtre uygulayabilirsiniz. Örneğin, self servis parola yönetimiyle ilgili tüm denetim olaylarını almak için **self servis parola yönetimi** filtresini seçin.
 
-Hizmetler şunlardır:
+Hizmetler şunları içerir:
 
 - Tümü
 - Erişim Gözden Geçirmeleri
 - Hesap Sağlama 
-- Uygulama SSO
+- Uygulama SSO 'SU
 - Kimlik Doğrulaması Yöntemleri
 - B2C
 - Koşullu Erişim
 - Çekirdek Dizin
-- Yetki Yönetimi
+- Yetkilendirme Yönetimi
 - Kimlik Koruması
 - Davetli Kullanıcılar
 - PIM
@@ -89,35 +89,35 @@ Hizmetler şunlardır:
 - Self Servis Parola Yönetimi
 - Kullanım Koşulları
 
-## <a name="sign-ins-report"></a>Oturum açma raporu 
+## <a name="sign-ins-report"></a>Oturum açma işlemleri raporu 
 
-**Oturum Açma görünümü,** tüm kullanıcı oturum açmalarını ve **Uygulama Kullanım** raporunu içerir. Ayrıca, **Kurumsal uygulamaların** yönet **bölümünde** uygulama kullanım bilgilerini de görüntüleyebilirsiniz.
+**Oturum açma** görünümü, tüm Kullanıcı oturum açma işlemlerinin yanı sıra **uygulama kullanımı** raporunu içerir. Ayrıca, uygulama kullanım bilgilerini **kurumsal uygulamalara** genel bakış ' ın **Yönet** bölümünde görüntüleyebilirsiniz.
 
 Oturum açma raporuna erişmek için:
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-2. Dizininizi sağ üst köşeden seçin ve ardından sol gezinti bölmesinden **Azure Etkin Dizin** bıçağını seçin.
-3. Azure Active Directory bıçağının **Etkinlik** bölümünden **Oturum Lar'ı** seçin. 
+2. Sağ üst köşedeki dizininizi seçin, sonra sol gezinti bölmesinden **Azure Active Directory** dikey penceresini seçin.
+3. Azure Active Directory dikey penceresinin **etkinlik** bölümünden **signins** ' i seçin. 
 
-    ![Oturum açma görünümü](./media/howto-find-activity-reports/483.png "Oturum açma görünümü")
+    ![Oturum açma işlemleri görünümü](./media/howto-find-activity-reports/483.png "Oturum açma işlemleri görünümü")
 
 
-### <a name="filtering-on-application-name"></a>Uygulama adına filtreleme
+### <a name="filtering-on-application-name"></a>Uygulama adında filtreleme
 
-Kullanıcı adını veya uygulama adını filtreleyerek uygulama kullanımıyla ilgili ayrıntıları görüntülemek için oturum açma raporunu kullanabilirsiniz.
+Kullanıcı adına veya uygulama adına filtreleyerek uygulama kullanımı hakkındaki ayrıntıları görüntülemek için oturum açma işlemleri raporunu kullanabilirsiniz.
 
-![Oturum Açma Etkinliklerini Filtrele sayfası](./media/howto-find-activity-reports/07.png "Oturum Açma Etkinliklerini Filtrele sayfası")
+![Oturum açma olaylarını filtrele sayfası](./media/howto-find-activity-reports/07.png "Oturum açma olaylarını filtrele sayfası")
 
 ## <a name="security-reports"></a>Güvenlik raporları
 
-### <a name="anomalous-activity-reports"></a>Anormal faaliyet raporları
+### <a name="anomalous-activity-reports"></a>Anormal etkinlik raporları
 
-Anormal etkinlik raporları, Azure AD'nin algılayıp raporlayabileceği güvenlikle ilgili risk algılamaları hakkında bilgi sağlar.
+Anormal etkinlik raporları, Azure AD 'nin tespit ve rapor etbildiği güvenlikle ilgili risk algılamaları hakkında bilgiler sağlar.
 
-Aşağıdaki tabloda Azure AD anormal etkinlik güvenlik raporları ve Azure portalında ilgili risk algılama türleri listeleilmektedir. Daha fazla bilgi için Azure [Etkin Dizin risk algılamalarına](concept-risk-events.md)bakın.  
+Aşağıdaki tabloda Azure AD anormal etkinlik güvenlik raporları ve Azure Portal ilgili risk algılama türleri listelenmektedir. Daha fazla bilgi için bkz. [risk algılamalarını Azure Active Directory](concept-risk-events.md).  
 
 
-| Azure AD anormal etkinlik raporu |  Kimlik koruma risk algılama türü|
+| Azure AD anormal etkinlik raporu |  Kimlik koruması risk algılama türü|
 | :--- | :--- |
 | Sızan kimlik bilgilerine sahip kullanıcılar | Sızdırılan kimlik bilgileri |
 | Düzensiz oturum açma etkinliği | Alışılmadık konumlara imkansız seyahat |
@@ -126,7 +126,7 @@ Aşağıdaki tabloda Azure AD anormal etkinlik güvenlik raporları ve Azure por
 | Şüpheli etkinlik gösteren IP adreslerinden gerçekleştirilen oturum açma işlemleri | Şüpheli etkinlik gösteren IP adreslerinden gerçekleştirilen oturum açma işlemleri |
 | - | Alışılmadık konumlardan oturum açma işlemleri |
 
-Aşağıdaki Azure AD anormal etkinlik güvenlik raporları, Azure portalında risk algılamaolarak dahil edilmez:
+Aşağıdaki Azure AD anormal etkinlik güvenlik raporları Azure Portal risk algılamaları olarak dahil edilmez:
 
 * Birden çok hatadan sonra gerçekleştirilen oturum açma işlemleri
 * Birden çok coğrafyadan gerçekleştirilen oturum açma işlemleri
@@ -134,16 +134,16 @@ Aşağıdaki Azure AD anormal etkinlik güvenlik raporları, Azure portalında r
 
 ### <a name="detected-risk-detections"></a>Algılanan risk algılamaları
 
-[Azure portalındaki](https://portal.azure.com) **Azure Active Directory** bıçağının **Güvenlik** bölümünde algılanan risk algılamalarla ilgili raporlara erişebilirsiniz. Algılanan risk algılamaları aşağıdaki raporlarda izlenir:   
+Algılanan risk algılamaları hakkındaki raporlara, [Azure portal](https://portal.azure.com) **Azure Active Directory** dikey penceresinin **güvenlik** bölümünde erişebilirsiniz. Algılanan risk algılamaları aşağıdaki raporlarda izlenir:   
 
 - [Risk altındaki kullanıcılar](concept-user-at-risk.md)
 - [Riskli oturum açma işlemleri](concept-risky-sign-ins.md)
 
     ![Güvenlik raporları](./media/howto-find-activity-reports/04.png "Güvenlik raporları")
 
-## <a name="troubleshoot-issues-with-activity-reports"></a>Etkinlik raporlarıyla ilgili sorun giderme sorunları
+## <a name="troubleshoot-issues-with-activity-reports"></a>Etkinlik raporlarıyla ilgili sorunları giderme
 
-### <a name="missing-data-in-the-downloaded-activity-logs"></a>İndirilen etkinlik günlüklerinde eksik veri
+### <a name="missing-data-in-the-downloaded-activity-logs"></a>İndirilen etkinlik günlüklerinde eksik veriler
 
 #### <a name="symptoms"></a>Belirtiler 
 
@@ -153,13 +153,13 @@ Etkinlik günlüklerini (denetim veya oturum açma) indirdim ve seçtiğim süre
  
 #### <a name="cause"></a>Nedeni
 
-Azure portalındaki etkinlik günlüklerini karşıdan yüklediğinizde, ölçeği en son ilk önce sıralanmış 250000 kayıtla sınırlandırıyoruz. 
+Etkinlik günlüklerini Azure portal indirdiğinizde, ölçeği 250000 kayıt olarak sınırlarız ve en son ilk olarak sıralanır. 
 
 #### <a name="resolution"></a>Çözüm
 
 Belirli bir noktadaki bir milyon kaydı getirmek için [Azure AD Raporlama API’lerini](concept-reporting-api.md) kullanabilirsiniz.
 
-### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Azure portalındaki son eylemler için eksik denetim verileri
+### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Azure portal en son işlemler için Denetim verileri eksik
 
 #### <a name="symptoms"></a>Belirtiler
 
@@ -180,7 +180,7 @@ Eylemler, etkinlik günlüklerinde hemen görünmez. Aşağıdaki tabloda etkinl
 
 15 dakika ile iki saat arasında bekleyin ve eylemlerin günlükte görüntülenip görüntülenmediğine bakın. İki saatten sonra da günlükler görünmüyorsa sorunla ilgilenebilmemiz için [destek bileti oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-### <a name="missing-logs-for-recent-user-sign-ins-in-the-azure-ad-sign-ins-activity-log"></a>Azure AD oturum açma etkinlik günlüğündeki son kullanıcı oturum açma günlükleri için eksik günlükler
+### <a name="missing-logs-for-recent-user-sign-ins-in-the-azure-ad-sign-ins-activity-log"></a>Azure AD oturum açma etkinlik günlüğündeki son kullanıcı oturum açma işlemleri için eksik Günlükler
 
 #### <a name="symptoms"></a>Belirtiler
 
@@ -227,5 +227,5 @@ Verileri 30 günden daha uzun bir süre boyunca saklamak için iki seçeneğiniz
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Denetim günlüklerine genel bakış](concept-audit-logs.md)
-* [Oturum açmalara genel bakış](concept-sign-ins.md)
+* [Oturum açma işlemleri genel bakış](concept-sign-ins.md)
 * [Riskli olaylara genel bakış](concept-risk-events.md)

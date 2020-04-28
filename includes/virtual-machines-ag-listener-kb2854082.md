@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 28aab15dc67e051190e8d4e35e92240a56fe54a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67188319"
 ---
-Ardından, kümedeki herhangi bir sunucu Windows Server 2008 R2 veya Windows Server 2012 çalıştırıyorsa, kümenin bir parçası olan şirket içi sunucuların veya Azure VM'lerinin her birinde [KB2854082](https://support.microsoft.com/kb/2854082) düzeltmesinin yüklü olduğunu doğrulamanız gerekir. Kümede bulunan ancak kullanılabilirlik grubunda olmayan herhangi bir sunucu veya VM de bu düzeltmeyi yüklü olmalıdır.
+Sonra, kümedeki herhangi bir sunucu Windows Server 2008 R2 veya Windows Server 2012 çalıştırıyorsa, düzeltme [KB2854082](https://support.microsoft.com/kb/2854082) ' nin her bir şirket içi sunucuda veya kümenin parçası olan Azure VM 'lerinde yüklü olduğunu doğrulamanız gerekir. Kümede olan ancak kullanılabilirlik grubunda olmayan tüm sunucu veya VM 'ler de bu düzeltmenin yüklü olması gerekir.
 
-Küme düğümlerinin her biri için uzak masaüstü oturumunda, [KB2854082'yi](https://support.microsoft.com/kb/2854082) yerel bir dizine indirin. Ardından, her küme düğümüne hotfix'i sırayla yükleyin. Küme hizmeti şu anda küme düğümünde çalışıyorsa, sunucu düzeltme yüklemesinin sonunda yeniden başlatılır.
+Küme düğümlerinin her biri için Uzak Masaüstü oturumunda, [KB2854082](https://support.microsoft.com/kb/2854082) 'i yerel bir dizine indirin. Sonra, düzeltmeyi her bir küme düğümüne sırayla yükler. Küme hizmeti şu anda küme düğümünde çalışıyorsa, düzeltme yüklemesinin sonunda sunucu yeniden başlatılır.
 
 > [!WARNING]
-> Küme hizmetini durdurma veya sunucuyu yeniden başlatma, kümenizin ve kullanılabilirlik grubunuzun çoğunluk durumunu etkiler ve kümenizin çevrimdışı olmasına neden olabilir. Yükleme sırasında kümenizin yüksek kullanılabilirliğini korumak için aşağıdakilerden emin olun:
+> Küme hizmetini durdurmak veya sunucuyu yeniden başlatmak, kümenizin ve kullanılabilirlik grubunun çekirdek durumunu etkiler ve kümenizin çevrimdışı çalışmasına neden olabilir. Yükleme sırasında kümenizin yüksek oranda kullanılabilirliğini sürdürmek için aşağıdakileri yaptığınızdan emin olun:
 > 
-> * Küme optimal çoğunluk sağlığı ndadır. 
-> * Düzeltmeyi herhangi bir düğüme yüklemeden önce, tüm küme düğümleri çevrimiçidir.
-> * Düzeltmeyi kümedeki başka bir düğüme yüklemeden önce, sunucuyu tamamen yeniden başlatmak da dahil olmak üzere, hotfix yüklemesinin tek bir düğümüzerinde tamamlanmasına izin verin.
+> * Küme, en iyi çekirdek sistem durumunda. 
+> * Düzeltmeyi herhangi bir düğüme yüklemeden önce, tüm küme düğümleri çevrimiçi olarak bulunur.
+> * Düzeltmeyi kümedeki başka bir düğüme yüklemeden önce, sunucuyu tamamen yeniden başlatmak da dahil olmak üzere düzeltme yüklemesinin tek bir düğümde tamamlanmasına izin verin.
 > 
 > 
 

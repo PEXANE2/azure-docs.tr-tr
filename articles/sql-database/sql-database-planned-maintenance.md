@@ -1,6 +1,6 @@
 ---
-title: Azure bakım etkinlikleri için planlama
-description: Azure SQL Veritabanınızda planlanan bakım etkinliklerine nasıl hazırlanacağınızı öğrenin.
+title: Azure bakım olaylarını planlama
+description: Planlı bakım olaylarını Azure SQL veritabanınıza hazırlama hakkında bilgi edinin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,38 +12,38 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
 ms.openlocfilehash: ba882176fbe17f7b74c786f421dde8fadd58d9b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73821311"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Azure SQL Veritabanı'nda Azure bakım olaylarını planlama
 
-Azure SQL veritabanınızda planlanan bakım etkinliklerine nasıl hazırlanacağınızı öğrenin.
+Azure SQL veritabanınızda planlı bakım olaylarına hazırlanma hakkında bilgi edinin.
 
-## <a name="what-is-a-planned-maintenance-event"></a>Planlı bakım olayı nedir
+## <a name="what-is-a-planned-maintenance-event"></a>Planlı bakım olayı nedir?
 
-Her veritabanı için Azure SQL DB, bir yinelemenin birincil olduğu bir veritabanı yinelemesi çoğunluğu tutar. Her zaman birincil yineleme çevrimiçi hizmet olmalıdır ve en az bir ikincil yineleme sağlıklı olmalıdır. Planlanan bakım sırasında, veritabanı çoğunluk üyeleri, istemci kapalı kalma süresi sağlamak için bir yanıt birincil yineleme ve en az bir ikincil yineleme çevrimiçi olması niyetiyle, birer birer çevrimdışı gidecek. Birincil yinelemenin çevrimdışı getirilmesi gerektiğinde, ikincil bir yinelemenin yeni birincil olacağı bir yeniden yapılandırma/başarısız olma işlemi oluşur.  
+Her veritabanı için Azure SQL DB, bir çoğaltmanın birincil olduğu veritabanı çoğaltmalarının bir çekirdeğini saklar. Her zaman bir birincil çoğaltmanın çevrimiçi bakım olması gerekir ve en az bir ikincil çoğaltma sağlıklı olmalıdır. Planlı bakım sırasında, veritabanı çekirdeğinin üyeleri tek seferde çevrimdışı olacak ve istemci kapalı kalma süresi olmamasını sağlamak için en az bir tane yanıt veren birincil çoğaltma ve çevrimiçi bir ikincil çoğaltma olduğundan emin olur. Birincil çoğaltmanın çevrimdışı hale getirilmesi gerektiğinde, bir ikincil çoğaltmanın yeni birincil hale gelmesi için bir yeniden yapılandırma/yük devretme işlemi meydana gelir.  
 
-## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Planlanan bakım etkinliğinde neler beklenebilir?
+## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Planlı bir bakım olayı sırasında beklenmeniz gerekenler
 
-Yeniden yapılandırmalar/arızalar genellikle 30 saniye içinde tamamlanır – ortalama 8 saniyedir. Zaten bağlıysa, uygulamanızın veritabanınızın sağlıklı kopya yeni birincil kopyasına yeniden bağlanması gerekir. Veritabanı yeni birincil yineleme çevrimiçi olmadan önce yeniden yapılandırma dan geçerken yeni bir bağlantı denenirse, hata 40613 (Database Kullanılamaz): "Veritabanı '{databasename}' sunucu '{servername}' şu anda kullanılamıyor. Lütfen bağlantıyı daha sonra yeniden deneyin.". Veritabanınızda uzun süre çalışan bir sorgu varsa, bu sorgu yeniden yapılandırma sırasında kesilir ve yeniden başlatılması gerekir.
+Yeniden yapılandırma/yük devretme işlemleri genellikle 30 saniye içinde tamamlanır – ortalama 8 saniyedir. Zaten bağlıysa, uygulamanızın veritabanının yeni birincil çoğaltmasını sağlıklı bir şekilde kopyalaması gerekir. Yeni birincil çoğaltma çevrimiçi olmadan önce veritabanı yeniden yapılandırılması sırasında yeni bir bağlantı denendiğinde, 40613 hatasını alırsınız (veritabanı kullanılamıyor): "' {ServerName} ' sunucusundaki" veritabanı ' {DatabaseName} ' Şu anda kullanılamıyor. Lütfen bağlantıyı daha sonra yeniden deneyin. ". Veritabanınızda çalışan uzun bir sorgu varsa, bu sorgu yeniden yapılandırma sırasında kesintiye uğratılacaktır ve yeniden başlatılması gerekir.
 
 ## <a name="retry-logic"></a>Yeniden Deneme Mantığı
 
-Bulut veritabanı hizmetine bağlanan herhangi bir istemci üretim uygulaması, sağlam bir bağlantı [yeniden deneme mantığı](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)uygulamalıdır. Bu, bu durumların hafifletimine yardımcı olur ve genellikle hataları son kullanıcıya saydam hale getirmelidir.
+Bir bulut veritabanı hizmetine bağlanan tüm istemci üretim uygulamaları sağlam bir bağlantı [yeniden deneme mantığı](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)uygulamalıdır. Bu durum, bu durumların azaltılmasına yardımcı olur ve genellikle hataları son kullanıcıya saydam hale getirir.
 
 ## <a name="frequency"></a>Frequency
 
-Her ay ortalama 1,7 planlı bakım olayı meydana gelir.
+Ortalama olarak, 1,7 planlı bakım olayları her ay oluşur.
 
 ## <a name="resource-health"></a>Kaynak Durumu
 
-SQL veritabanınızda oturum açma hataları yaşıyorsa, geçerli durum için [Azure portalındaki](https://portal.azure.com) [Kaynak Durumu](../service-health/resource-health-overview.md#get-started) penceresine bakın. Sistem Durumu Geçmişi bölümü, her olayın (varsa) kapalı kalma nedenini içerir.
+SQL veritabanınız oturum açma hatalarıyla karşılaşıyorsa, geçerli durum için [Azure portal](https://portal.azure.com) [kaynak durumu](../service-health/resource-health-overview.md#get-started) penceresine bakın. Sistem durumu geçmişi bölümü her bir olayın kesinti süresini (kullanılabilir olduğunda) içerir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- SQL Veritabanı için [Kaynak Durumu](sql-database-resource-health.md) hakkında daha fazla bilgi edinin
-- Yeniden deneme mantığı hakkında daha fazla bilgi için geçici [hatalar için Yeniden Deneme mantığına](sql-database-connectivity-issues.md#retry-logic-for-transient-errors) bakın
+- SQL veritabanı için [kaynak durumu](sql-database-resource-health.md) hakkında daha fazla bilgi edinin
+- Yeniden deneme mantığı hakkında daha fazla bilgi için bkz: [geçici hatalar Için yeniden deneme mantığı](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)

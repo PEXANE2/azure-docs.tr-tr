@@ -1,6 +1,6 @@
 ---
 title: Elastik veritabanı araçlarını kullanarak parça ekleme
-description: Bir parça kümesine yeni kırıklar eklemek için Elastik Ölçek API'leri nasıl kullanılır?
+description: Yeni parçaları bir parça kümesine eklemek için elastik ölçek API 'Leri kullanma.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,23 +12,23 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 4043fd374a314735173a1f07f46c8394592b81e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823705"
 ---
-# <a name="adding-a-shard-using-elastic-database-tools"></a>Elastik Veritabanı araçlarını kullanarak parça ekleme
+# <a name="adding-a-shard-using-elastic-database-tools"></a>Elastik veritabanı araçlarını kullanarak parça ekleme
 
-## <a name="to-add-a-shard-for-a-new-range-or-key"></a>Yeni bir aralık veya anahtar için parça eklemek için
+## <a name="to-add-a-shard-for-a-new-range-or-key"></a>Yeni bir Aralık veya anahtar için parça eklemek için
 
-Uygulamalar genellikle zaten var olan bir parça harita için, yeni anahtarlar veya anahtar aralıkları beklenen verileri işlemek için yeni kırıklar eklemek gerekir. Örneğin, Kiracı Kimliği tarafından bünyesine katfedilen bir uygulamanın yeni bir kiracı için yeni bir parça sağlaması gerekebilir veya aylık olarak biçilmiş veriler için her yeni ayın başlangıcından önce yeni bir parça sağlanması gerekebilir.
+Uygulamalar, zaten var olan bir parça eşlemesi için yeni anahtarlar veya anahtar aralıklarından beklenen verileri işlemek üzere genellikle yeni parçalar eklemesi gerekir. Örneğin, kiracı KIMLIĞI tarafından oluşturulmuş bir uygulamanın yeni bir kiracı için yeni bir parça sağlaması veya aylık veri parçaları, her yeni ay başlamadan önce sağlanan yeni bir parça gerektirebilir.
 
-Yeni anahtar değerleri aralığı zaten varolan bir eşlemenin bir parçası değilse, yeni parçayı eklemek ve yeni anahtarı veya aralığı bu parçayla ilişkilendirmek kolaydır.
+Yeni anahtar değerleri aralığı zaten varolan bir eşlemenin parçası değilse, yeni parçayı eklemek ve yeni anahtarı ya da aralığı bu parça ile ilişkilendirmek basittir.
 
-### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Örnek: varolan bir parça haritaya bir parça ve aralığı ekleme
+### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Örnek: var olan parça eşlemesine parça ve onun aralığını ekleme
 
-Bu örnek TryGetShard[(Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.NET](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))) CreateShard[(Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) yöntemlerini kullanır ve ShardLocation[(Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) sınıfının bir örneğini oluşturur. Aşağıdaki örnekte, **sample_shard_2** adlı bir veritabanı ve içindeki tüm gerekli şema nesneleri aralık tutmak için oluşturulmuştur [300, 400).  
+Bu örnek, TryGetShard[(Java,](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard).net [),](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))createkıard[(Java, .net](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard) [),](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)createrangemapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) yöntemleri) kullanır ve shardlocation ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)) sınıfının bir örneğini oluşturur. Aşağıdaki örnekte, **sample_shard_2** adlı bir veritabanı ve içindeki tüm gerekli şema nesneleri [300, 400) aralığını tutmak için oluşturulmuştur.  
 
 ```csharp
 // sm is a RangeShardMap object.
@@ -45,15 +45,15 @@ sm.CreateRangeMapping(new RangeMappingCreationInfo<long>
                             (new Range<long>(300, 400), shard2, MappingStatus.Online));
 ```
 
-.NET sürümü için powershell'i yeni bir Shard Harita Yöneticisi oluşturmak için alternatif olarak da kullanabilirsiniz. Burada bir örnek [mevcuttur.](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)
+.NET sürümünde, yeni bir parça eşleme Yöneticisi oluşturmak için alternatif olarak PowerShell 'i de kullanabilirsiniz. [Burada](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)bir örnek kullanılabilir.
 
-## <a name="to-add-a-shard-for-an-empty-part-of-an-existing-range"></a>Varolan aralığın boş bir parçası için parça eklemek için
+## <a name="to-add-a-shard-for-an-empty-part-of-an-existing-range"></a>Varolan bir aralığın boş bir bölümü için parça eklemek için
 
-Bazı durumlarda, bir aralığı zaten bir parçaya eşlemiş ve kısmen verilerle doldurmuş olabilirsiniz, ancak şimdi yaklaşan verilerin farklı bir parçaya yönlendirilmesini istiyorsunuz. Örneğin, gün aralığına göre parçalanırsınız ve zaten bir parçaya 50 gün ayırmışsınızdır, ancak 24. Elastik veritabanı [bölme birleştirme aracı](sql-database-elastic-scale-overview-split-and-merge.md) bu işlemi gerçekleştirebilir, ancak veri hareketi gerekli değilse (örneğin, gün aralığı için veri [25, 50), yani, gün 25 dahil 50 özel, henüz yok) tamamen Shard Harita Yönetimi API'leri kullanarak doğrudan gerçekleştirebilirsiniz.
+Bazı durumlarda, bir aralığı bir parça ile eşleştirerek verileri kısmen doldurmuş olabilirsiniz ancak bundan sonra yaklaşan verilerin farklı bir parçaya yönlendirilmek istiyorsunuz. Örneğin, gün aralığına göre parçalarmış ve bir parça için 50 gün önceden ayırmış olursunuz, ancak 24. gün, gelecekteki verilerin farklı bir parça içinde yer kaplamasını istiyorsunuz. Elastik veritabanı [bölünmüş birleştirme aracı](sql-database-elastic-scale-overview-split-and-merge.md) bu işlemi gerçekleştirebilir, ancak veri taşıma gerekli değilse (örneğin, gün aralığı için veriler [25, 50), diğer bir deyişle, 50 dışlamalı gün, henüz yok), bunu tamamen doğrudan parça eşleme yönetim API 'lerini kullanarak gerçekleştirebilirsiniz.
 
-### <a name="example-splitting-a-range-and-assigning-the-empty-portion-to-a-newly-added-shard"></a>Örnek: bir aralığı bölme ve boş kısmı yeni eklenen bir parçaya atama
+### <a name="example-splitting-a-range-and-assigning-the-empty-portion-to-a-newly-added-shard"></a>Örnek: aralığı bölme ve yeni eklenen parçaya boş bölüm atama
 
-"sample_shard_2" adlı bir veritabanı ve içindeki tüm gerekli şema nesneleri oluşturuldu.  
+"Sample_shard_2" adlı bir veritabanı ve içindeki tüm gerekli şema nesneleri oluşturuldu.  
 
 ```csharp
 // sm is a RangeShardMap object.
@@ -78,6 +78,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Önemli**: Bu tekniği yalnızca güncelleştirilmiş eşleme aralığının boş olduğundan eminseniz kullanın.  Önceki yöntemler taşınan aralık için verileri denetlemez, bu nedenle kodunuza denetimler eklemek en iyisidir.  Taşınan aralıkta satırlar varsa, gerçek veri dağıtımı güncelleştirilen parça eşle eşleşmez. Bu gibi durumlarda işlemi gerçekleştirmek için [bölme birleştirme aracını](sql-database-elastic-scale-overview-split-and-merge.md) kullanın.  
+**Önemli**: Bu tekniği yalnızca, güncelleştirilmiş eşleme aralığının boş olduğundan eminseniz kullanın.  Önceki yöntemler, taşınmakta olan aralığın verilerini denetlemez, bu nedenle kodunuzda denetimleri eklemek en iyisidir.  Taşınmakta olan aralıkta satırlar varsa, gerçek veri dağıtımı güncelleştirilmiş parça eşlemesiyle eşleşmez. Bu gibi durumlarda işlemi gerçekleştirmek için [bölünmüş birleştirme aracını](sql-database-elastic-scale-overview-split-and-merge.md) kullanın.  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

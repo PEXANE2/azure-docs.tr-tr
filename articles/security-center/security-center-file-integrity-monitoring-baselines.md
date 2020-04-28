@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi'nde Dosya Bütünlüğü İzleme
-description: Azure Güvenlik Merkezi'nde taban çizgilerini Dosya Bütünlüğü İzleme ile nasıl karşılaştırışta bulunun.
+description: Taban çizgilerini Azure Güvenlik Merkezi 'nde dosya bütünlüğü Izlemeyle karşılaştırmayı öğrenin.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,78 +14,78 @@ ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
 ms.openlocfilehash: bb45e1d1ee17a6daf16bd688982f79fda986bde5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73664402"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Dosya Bütünlüğünü İzleme (FIM) kullanarak ana hatları karşılaştırma
 
-Dosya Bütünlüğü İzleme (FIM), kaynaklarınızdaki hassas alanlarda değişiklikler meydana geldiğinde sizi bilgilendirir, böylece yetkisiz etkinliği araştırabilir ve ele alabilirsiniz. FIM, Windows dosyalarını, Windows kayıt defterlerini ve Linux dosyalarını izler.
+Dosya bütünlüğü Izleme (FIM), kaynaklarınızda hassas alanlarda değişiklik olduğunda sizi bilgilendirir. böylece, yetkisiz etkinlikleri araştırıp ele alabilirsiniz. FIM Windows dosyalarını, Windows kayıt defterlerini ve Linux dosyalarını izler.
 
-Bu konu, dosyalarda ve kayıt defterlerinde FIM'in nasıl etkinleştirilen açıklanmaktadır. FIM hakkında daha fazla bilgi için [Azure Güvenlik Merkezi'nde Dosya Bütünlüğü İzleme'ye](security-center-file-integrity-monitoring.md)bakın.
+Bu konu, dosyalarda ve kayıt defterlerinde FIM 'nin nasıl etkinleştirileceğini açıklamaktadır. FIM hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'Nde dosya bütünlüğü izleme](security-center-file-integrity-monitoring.md).
 
-## <a name="why-use-fim"></a>Neden FIM kullanıyorsun?
+## <a name="why-use-fim"></a>FIM neden kullanılmalıdır?
 
-İşletim sistemi, uygulamalar ve ilişkili yapılandırmalar kaynaklarınızın davranış ve güvenlik durumunu denetler. Bu nedenle, saldırganlar, bir kaynağın işletim sistemini ele geçirmek ve/veya algılanmadan etkinlikleri yürütmek için kaynaklarınızı denetleyen dosyaları hedefler.
+İşletim sistemi, uygulamalar ve ilişkili yapılandırma kaynaklarınızın davranışını ve güvenlik durumunu denetler. Bu nedenle, saldırganlar, bir kaynağın işletim sistemini fazla almak ve/veya etkinlikleri algılanmadan yürütmek için kaynaklarınızı denetleyen dosyaları hedefler.
 
-Aslında, PCI-DSS & ISO 17799 gibi birçok mevzuata uygunluk standardı FIM denetimlerinin uygulanmasını gerektirir.  
+Aslında, PCI DSS & ISO 17799 gibi birçok yasal uyumluluk standardı FIM denetimleri uygulamayı gerektirir.  
 
-## <a name="enable-built-in-recursive-registry-checks"></a>Yerleşik özyinelemeli kayıt defteri denetimlerini etkinleştirme
+## <a name="enable-built-in-recursive-registry-checks"></a>Yerleşik özyinelemeli kayıt defteri denetimlerini etkinleştir
 
-FIM kayıt defteri kovan varsayılanları, ortak güvenlik alanlarındaki özyinelemeli değişiklikleri izlemek için kullanışlı bir yol sağlar.  Örneğin, bir rakip, bir yürütmeyi başlangıç veya kapatmada yapılandırarak LOCAL_SYSTEM bağlamda yürütecek bir komut dosyası nı yapılandırabilir.  Bu tür değişiklikleri izlemek için yerleşik denetimi etkinleştirin.  
+FIM kayıt defteri Hive Varsayılanları, ortak güvenlik alanlarındaki özyinelemeli değişiklikleri izlemek için kullanışlı bir yol sağlar.  Örneğin, bir saldırgan başlatma veya kapatmada bir yürütme yapılandırarak LOCAL_SYSTEM bağlamda yürütülecek bir betiği yapılandırabilir.  Bu türdeki değişiklikleri izlemek için yerleşik denetimi etkinleştirin.  
 
 ![Kayıt Defteri](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
 
 >[!NOTE]
-> Özyinelemeli denetimler yalnızca önerilen güvenlik kovanları için geçerlidir, özel kayıt defteri yolları için değil.  
+> Özyinelemeli denetimler yalnızca önerilen güvenlik kovanları için geçerlidir ve özel kayıt defteri yollarına uygulanmaz.  
 
 ## <a name="adding-a-custom-registry-check"></a>Özel kayıt defteri denetimi ekleme
 
-FIM taban çizgileri, işletim sistemi için bilinen iyi bir durum özelliklerini tanımlayarak ve uygulamayı destekleyerek başlar.  Bu örnekte, Windows Server 2008 ve üzeri parola ilkesi yapılandırmalarına odaklanacağız.
+FIM temelleri, işletim sistemi ve destekleyici uygulama için bilinen iyi durumun özelliklerini tanımlayarak başlar.  Bu örnekte, Windows Server 2008 ve üzeri için parola ilkesi yapılandırmalarına odaklanacağız.
 
 
-|İlke Adı                 | Kayıt Defteri Ayarı|
+|İlke Adı                 | Kayıt defteri ayarı|
 |---------------------------------------|-------------|
-|Etki alanı denetleyicisi: Makine hesabı parola değişikliklerini reddet| MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RefusePasswordChange|
-|Etki alanı üyesi: Güvenli kanal verisini dijital olarak şifrele veya imzala (her zaman)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireSignOrSeal|
-|Etki alanı üyesi: Güvenli kanal verisini dijital olarak şifrele (uygun olduğunda)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SealSecureChannel|
-|Etki alanı üyesi: Güvenli kanal verisini dijital olarak imzala (uygun olduğunda)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SignSecureChannel|
-|Etki alanı üyesi: Makine hesabı parola değişikliklerini devreden çıkar|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DisablePasswordChange|
-|Etki alanı üyesi: En uzun hesap parolası yaşı|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\MaximumPasswordAge|
-|Etki alanı üyesi: Güçlü (Windows 2000 veya daha sonraki) oturum anahtarı gerektir|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireStrongKey|
-|Ağ güvenliği: NTLM'yi kısıtlama: Bu etki alanında NTLM kimlik doğrulaması|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RestrictNTLMInDomain|
-|Ağ güvenliği: NTLM'yi kısıtla: Bu etki alanında sunucu özel durumları ekle|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DCAllowedNTLMServers|
-|Ağ güvenliği: NTLM'yi kısıtlama: Bu etki alanında NTLM kimlik doğrulamasını denetleme|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\AuditNTLMInDomain|
+|Etki alanı denetleyicisi: Makine hesabı parola değişikliklerini reddet| Machıne\system\currentcontrolset\services \Netlogon\Parameters\RefusePasswordChange|
+|Etki alanı üyesi: Güvenli kanal verisini dijital olarak şifrele veya imzala (her zaman)|Machıne\system\currentcontrolset\services \Netlogon\parameters\requiresignorcontası|
+|Etki alanı üyesi: Güvenli kanal verisini dijital olarak şifrele (uygun olduğunda)|Machıne\system\currentcontrolset\services \Netlogon\Parameters\SealSecureChannel|
+|Etki alanı üyesi: Güvenli kanal verisini dijital olarak imzala (uygun olduğunda)|Machıne\system\currentcontrolset\services \Netlogon\Parameters\SignSecureChannel|
+|Etki alanı üyesi: Makine hesabı parola değişikliklerini devreden çıkar|Machıne\system\currentcontrolset\services \Netlogon\Parameters\DisablePasswordChange|
+|Etki alanı üyesi: En uzun hesap parolası yaşı|Machıne\system\currentcontrolset\services \Netlogon\parameters\maximferasswordavge|
+|Etki alanı üyesi: Güçlü (Windows 2000 veya daha sonraki) oturum anahtarı gerektir|Machıne\system\currentcontrolset\services \Netlogon\Parameters\RequireStrongKey|
+|Ağ güvenliği: NTLM 'yi kısıtla: Bu etki alanında NTLM kimlik doğrulaması|Machıne\system\currentcontrolset\services \Netlogon\Parameters\RestrictNTLMInDomain|
+|Ağ güvenliği: NTLM'yi kısıtla: Bu etki alanında sunucu özel durumları ekle|Machıne\system\currentcontrolset\services \Netlogon\Parameters\DCAllowedNTLMServers|
+|Ağ güvenliği: NTLM 'yi kısıtla: Bu etki alanında NTLM kimlik doğrulamasını denetle|Machıne\system\currentcontrolset\services \Netlogon\Parameters\AuditNTLMInDomain|
 
 > [!NOTE]
-> Çeşitli işletim sistemi sürümleri tarafından desteklenen kayıt defteri ayarları hakkında daha fazla bilgi edinmek için [Grup İlkesi Ayarları başvuru tablosuna](https://www.microsoft.com/download/confirmation.aspx?id=25250)bakın.
+> Çeşitli işletim sistemi sürümleri tarafından desteklenen kayıt defteri ayarları hakkında daha fazla bilgi edinmek için [Grup İlkesi ayarları başvuru elektronik tablosuna](https://www.microsoft.com/download/confirmation.aspx?id=25250)bakın.
 
-*FiM'i kayıt defteri taban çizgilerini izlemek için yapılandırmak için:*
+*FIM 'yi kayıt defteri temellerini izleyecek şekilde yapılandırmak için:*
 
-1. Windows **Registry For Change Registry for Change Tracking** penceresinde, Windows **Kayıt Defteri Anahtarı** metin kutusuna kayıt defteri anahtarını girin.
+1. **Değişiklik izleme Için Windows kayıt defteri Ekle** penceresinde, **Windows kayıt defteri anahtarı** metin kutusuna kayıt defteri anahtarını girin.
 
     <code>
 
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
     </code>
 
-      ![Kayıt defterinde FIM'i etkinleştirme](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
+      ![Kayıt defterinde FIM 'yi etkinleştirme](./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png)
 
-## <a name="tracking-changes-to-windows-files"></a>Windows dosyalarındaki değişiklikleri izleme
+## <a name="tracking-changes-to-windows-files"></a>Windows dosyalarında yapılan değişiklikleri izleme
 
-1. Windows **Dosyasını Değiştir İzleme** penceresine, **yol** girin metin kutusuna, izlemek istediğiniz dosyaları içeren klasörü girin. Aşağıdaki şekildeki örnekte, **Contoso Web App** D:\ **ContosWebApp** klasör yapısı içinde sürücü.  
-1. Ayar sınıfının adını sağlayarak, yinelemeyi etkinleştirerek ve joker karakter (*) sonekli üst klasörü belirterek özel bir Windows dosya girişi oluşturun.
+1. **Değişiklik izleme Için Windows dosyası Ekle** penceresinde, **yolu girin** metin kutusuna izlemek istediğiniz dosyaları içeren klasörü girin. Aşağıdaki şekildeki örnekte **contoso Web uygulaması** d:\ konumunda bulunur. **ContosWebApp** klasör yapısı içindeki sürücü.  
+1. Ayar sınıfının bir adını sağlayarak, özyinelemeyi etkinleştirerek ve en üst klasörü bir joker karakter (*) sonekiyle belirterek özel bir Windows dosya girişi oluşturun.
 
-    ![Dosyada FIM'i etkinleştirme](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
+    ![Dosya üzerinde FIM 'yi etkinleştirme](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)
 
 ## <a name="retrieving-change-data"></a>Değişiklik verilerini alma
 
-Dosya Bütünlüğü İzleme verileri Azure Log Analytics / ConfigurationChange tablo kümesi içinde bulunur.  
+Dosya bütünlüğü Izleme verileri Azure Log Analytics/ConfigurationChange tablo kümesi içinde bulunur.  
 
- 1. Kaynağa göre değişikliklerin özetini almak için bir zaman aralığı ayarlayın.
-Aşağıdaki örnekte, son on dört gün içinde kayıt defteri ve dosya kategorilerinde tüm değişiklikleri alıyor:
+ 1. Kaynak tarafından yapılan değişikliklerin özetini almak için bir zaman aralığı ayarlayın.
+Aşağıdaki örnekte, kayıt defteri ve dosya kategorilerindeki son on dört gündeki tüm değişiklikleri aldık:
 
     <code>
 
@@ -101,8 +101,8 @@ Aşağıdaki örnekte, son on dört gün içinde kayıt defteri ve dosya kategor
 
 1. Kayıt defteri değişikliklerinin ayrıntılarını görüntülemek için:
 
-    1. **Dosyaları** **where** yan tümcesinden kaldırma, 
-    1. Özetleme satırını kaldırın ve bir sıralama yan tümcesi ile değiştirin:
+    1. **WHERE** yan tümcesindeki **dosyaları** kaldırma, 
+    1. Özetleme satırını kaldırın ve bir sıralama yan tümcesiyle değiştirin:
 
     <code>
 
@@ -116,6 +116,6 @@ Aşağıdaki örnekte, son on dört gün içinde kayıt defteri ve dosya kategor
 
     </code>
 
-Raporlar arşivleme için CSV'ye ihraç edilebilir ve/veya Power BI raporuna kanalize edilebilir.  
+Raporlar, arşiv ve/veya channefor Power BI raporuna bir CSV 'ye aktarılabilir.  
 
 ![FIM verileri](./media/security-center-file-integrity-monitoring-baselines/baselines-data.png)

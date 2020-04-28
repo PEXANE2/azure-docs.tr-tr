@@ -1,6 +1,6 @@
 ---
-title: WebJob projeme (Visual Studio Azure Depolama) ne oldu?
-description: Visual Studio'ya bağlı hizmetleri kullanarak bir depolama hesabına bağlandıktan sonra bir Azure Webİş projesinde neler olduğunu açıklar
+title: WebJob projem (Visual Studio Azure Storage) için ne oldu?
+description: Visual Studio bağlı hizmetleri kullanılarak bir depolama hesabına bağlandıktan sonra bir Azure WebJob projesinde ne olduğunu açıklar
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,28 +14,28 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 17861b7c25dfaf9bc9399e5261cdf2a5b43caf21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72298736"
 ---
-# <a name="what-happened-to-my-webjob-project-visual-studio-azure-storage-connected-service"></a>WebJob projeme (Visual Studio Azure Depolama bağlantılı hizmet) ne oldu?
-## <a name="references-added"></a>Eklenen Referanslar
-Azure Depolama NuGet paketi Visual Studio projenize eklendi veya güncelleştirildi.  
-Bu paket aşağıdaki .NET referansları ekler:
+# <a name="what-happened-to-my-webjob-project-visual-studio-azure-storage-connected-service"></a>WebJob projem için ne oldu (Visual Studio Azure Storage bağlı hizmeti)?
+## <a name="references-added"></a>Başvurular eklendi
+Azure depolama NuGet paketi Visual Studio projenize eklendi veya güncelleştirildi.  
+Bu paket, aşağıdaki .NET başvurularını ekler:
 
-* **Microsoft.Data.Edm**
-* **Microsoft.Data.OData**
-* **Microsoft.Data.Services.Client**
-* **Microsoft.WindowsAzure.ConfigurationManager**
+* **Microsoft. Data. Edm**
+* **Microsoft. Data. OData**
+* **Microsoft. Data. Services. Client**
+* **Microsoft. WindowsAzure. ConfigurationManager**
 * **Microsoft.WindowsAzure.Storage**
 * **Newtonsoft.Json**
 * **System.Data**
-* **System.Spatial**
+* **System. uzamsal**
 
-## <a name="connection-string-for-azure-storage-added"></a>Azure Depolama için bağlantı dizesi eklendi
-Projenizin App.config dosyasında, **AzureWebJobsStorage** ve **AzureWebJobsDashboard** girişleri seçili depolama hesabının bağlantı dizesi ve anahtarıyla güncelleştirildi.
+## <a name="connection-string-for-azure-storage-added"></a>Azure depolama için bağlantı dizesi eklendi
+Projenizin App. config dosyasında, **AzureWebJobsStorage** ve **AzureWebJobsDashboard** girdileri seçili depolama hesabının bağlantı dizesi ve anahtarıyla güncelleştirildi.
 
-Daha fazla bilgi için Azure [Web İşleri dokümantasyon kaynaklarına](https://go.microsoft.com/fwlink/?linkid=390226)bakın.
+Daha fazla bilgi için bkz. [Azure WebJobs belge kaynakları](https://go.microsoft.com/fwlink/?linkid=390226).
 

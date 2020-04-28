@@ -1,29 +1,29 @@
 ---
-title: Azure Veri Paylaşımı'nda paylaşım aboneliğini iptal edin
-description: Azure Veri Paylaşımı'nı kullanarak bir alıcıdan paylaşım aboneliğini nasıl iptal edebilirsiniz öğrenin.
+title: Azure veri paylaşımında bir paylaşma aboneliğini iptal etme
+description: Azure veri paylaşımının kullanıldığı bir alıcıdan bir paylaşımın aboneliğini iptal etmeyi öğrenin.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 97f672b266c2df6956282aea6dec8d5207944943
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73476374"
 ---
-# <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share"></a>Azure Veri Paylaşımı'nda bir tüketicinin paylaşım aboneliğini iptal etme
+# <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share"></a>Azure veri paylaşımında bir tüketicinin paylaşılan aboneliğini iptal etme
 
-Bu makalede, Azure Veri Paylaşımı'nı kullanarak bir veya daha fazla tüketicinizden hisse aboneliğinin nasıl iptal edilebildiğini açıklanmaktadır. Bu, bir tüketicinin daha fazla anlık görüntü tetiklemesini önler. Tüketici henüz anlık görüntü tetiklemediyse, paylaşım aboneliği iptal edildikten sonra verileri asla almaz. Daha önce bir anlık görüntü tetikledilerse, ellerindeki en son veriler hesaplarında kalır.
+Bu makalede, Azure veri paylaşımının kullanıldığı bir veya daha fazla tüketiciden bir Share aboneliğinin nasıl iptal edileceği açıklanmaktadır. Bu, bir tüketicinin daha fazla anlık görüntü tetiklemesini önler. Tüketici henüz bir anlık görüntü tetiklemediyse, paylaşma aboneliği iptal edildikten sonra verileri hiçbir şekilde almamaları gerekir. Daha önce bir anlık görüntü tetiklerse, içerdikleri en son veriler hesabında kalır.
 
-## <a name="navigate-to-a-sent-data-share"></a>Gönderilen veri paylaşımına gidin
+## <a name="navigate-to-a-sent-data-share"></a>Gönderilen veri paylaşımında gezin
 
-Azure Veri Paylaşımı'nda, gönderdiğiniz paylaşıma gidin ve **Abonelikleri Paylaş** sekmesini seçin.
+Azure veri paylaşımında, gönderilen paylaşıma gidin ve **abonelikleri paylaşma** sekmesini seçin.
 
-![Paylaşım Aboneliğini İptal Et](./media/how-to/how-to-revoke-share-subscription/revoke-share-subscription.png) 
+![Paylaşma aboneliğini iptal et](./media/how-to/how-to-revoke-share-subscription/revoke-share-subscription.png) 
 
-Paylaşım aboneliklerini silmek istediğiniz alıcıların yanındaki kutuları işaretleyin ve ardından **İptal Et'i**tıklatın. Tüketici artık verilerinin güncelleştirmelerini almayacaktır.
+Paylaşma abonelikleri silmek istediğiniz alıcıların yanındaki kutuları işaretleyin ve ardından **iptal**' e tıklayın. Tüketici artık verileri için güncelleştirmeleri almaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Veri paylaşımlarınızı](how-to-monitor.md)nasıl izleyeceğiniz hakkında daha fazla bilgi edinin.
+[Veri paylaşımlarınızı izleme](how-to-monitor.md)hakkında daha fazla bilgi edinin.

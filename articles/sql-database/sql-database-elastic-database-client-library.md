@@ -1,6 +1,6 @@
 ---
 title: Ölçeklenebilir bulut veritabanları oluşturma
-description: Esnek veritabanı istemci kitaplığı ile ölçeklenebilir .NET veritabanı uygulamaları oluşturun
+description: Elastik veritabanı istemci kitaplığıyla ölçeklenebilir .NET veritabanı uygulamaları oluşturma
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,63 +12,63 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/25/2018
 ms.openlocfilehash: ae26f669ddbe2cc2c5b6e25a9c1c0229e88dc2e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823916"
 ---
 # <a name="building-scalable-cloud-databases"></a>Ölçeklenebilir bulut veritabanları oluşturma
 
-Veritabanlarını ölçekleme, Azure SQL Veritabanı için ölçeklenebilir araçlar ve özellikler kullanılarak kolayca gerçekleştirilebilir. Özellikle, ölçeklenmiş veritabanları oluşturmak ve yönetmek için **Elastik Veritabanı istemci kitaplığını** kullanabilirsiniz. Bu özellik, yüzlerce hatta binlerce Azure SQL veritabanı nı kullanarak parçalanmış uygulamaları kolayca geliştirmenizi sağlar.
+Veritabanlarının ölçeğini genişletme, Azure SQL veritabanı için ölçeklenebilir araçlar ve özellikler kullanılarak kolayca gerçekleştirilebilir. Özellikle, Genişletilebilir veritabanları oluşturup yönetmek için **elastik veritabanı istemci kitaplığını** kullanabilirsiniz. Bu özellik yüzlerce, hatta binlerce Azure SQL veritabanını kullanarak parçalı uygulamaları kolayca geliştirmenize olanak sağlar.
 
 İndirmek için:
 
-* Kütüphanenin Java sürümü, [Bkz. Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools).
-* Kitaplığın .NET sürümü, [bkz.](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)
+* Kitaplığın Java sürümü, bkz. [Maven merkezi deposu](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools).
+* Kitaplığın .NET sürümü, bkz. [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
 ## <a name="documentation"></a>Belgeler
 
 1. [Esnek Veritabanı araçlarını kullanmaya başlama](sql-database-elastic-scale-get-started.md)
-2. [Elastik Veritabanı özellikleri](sql-database-elastic-scale-introduction.md)
+2. [Elastik veritabanı özellikleri](sql-database-elastic-scale-introduction.md)
 3. [Parça eşleme yönetimi](sql-database-elastic-scale-shard-map-management.md)
-4. [Ölçeklendirmek için varolan veritabanlarını geçirme](sql-database-elastic-convert-to-use-elastic-tools.md)
+4. [Ölçeği genişletmek için mevcut veritabanlarını geçirme](sql-database-elastic-convert-to-use-elastic-tools.md)
 5. [Verilere bağımlı yönlendirme](sql-database-elastic-scale-data-dependent-routing.md)
 6. [Çok parçalı sorgular](sql-database-elastic-scale-multishard-querying.md)
-7. [Elastik Veritabanı araçlarını kullanarak parça ekleme](sql-database-elastic-scale-add-a-shard.md)
-8. [Elastik veritabanı araçları ve satır düzeyinde güvenlik ile çok kiracı uygulamaları](sql-database-elastic-tools-multi-tenant-row-level-security.md)
+7. [Elastik veritabanı araçlarını kullanarak parça ekleme](sql-database-elastic-scale-add-a-shard.md)
+8. [Elastik veritabanı araçları ve satır düzeyi güvenliği olan çok kiracılı uygulamalar](sql-database-elastic-tools-multi-tenant-row-level-security.md)
 9. [İstemci kitaplığı uygulamalarını yükseltme](sql-database-elastic-scale-upgrade-client-library.md) 
-10. [Esnek sorgulara genel bakış](sql-database-elastic-query-overview.md)
+10. [Elastik sorgulara genel bakış](sql-database-elastic-query-overview.md)
 11. [Esnek veritabanı araçları sözlüğü](sql-database-elastic-scale-glossary.md)
-12. [Entity Framework ile Elastik Veritabanı istemci kitaplığı](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)
-13. [Dapper ile elastik veritabanı istemci kitaplığı](sql-database-elastic-scale-working-with-dapper.md)
-14. [Bölme birleştirme aracı](sql-database-elastic-scale-overview-split-and-merge.md)
+12. [Entity Framework ile elastik veritabanı istemci kitaplığı](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)
+13. [Kaber ile elastik veritabanı istemci kitaplığı](sql-database-elastic-scale-working-with-dapper.md)
+14. [Bölünmüş birleştirme aracı](sql-database-elastic-scale-overview-split-and-merge.md)
 15. [Parça eşleme yöneticisi için performans sayaçları](sql-database-elastic-database-client-library.md) 
-16. [Elastik veritabanı araçları için SSS](sql-database-elastic-scale-faq.md)
+16. [Elastik veritabanı araçları hakkında SSS](sql-database-elastic-scale-faq.md)
 
-## <a name="client-capabilities"></a>İstemci yetenekleri
+## <a name="client-capabilities"></a>İstemci özellikleri
 
-*Parçaları* kullanarak uygulamaları ölçekleme hem geliştirici hem de yönetici için zorluklar sunar. İstemci kitaplığı, hem geliştiricilerin hem de yöneticilerin ölçeklenmiş veritabanlarını yönetmesine izin veren araçlar sağlayarak yönetim görevlerini basitleştirir. Tipik bir örnekte, yönetmek için "kırıklar" olarak bilinen birçok veritabanları vardır. Müşteriler aynı veritabanında birlikte bulunur ve müşteri başına bir veritabanı (tek kiracılı şema) vardır. İstemci kitaplığı şu özellikleri içerir:
+Parçalara *ayırma kullanarak uygulama* ölçekleme, hem geliştirici hem de yönetici için zorluk gösterir. İstemci kitaplığı, geliştiricilerin ve yöneticilerin ölçekli veritabanlarını yönetmesine izin veren araçlar sağlayarak yönetim görevlerini basitleştirir. Tipik bir örnekte, yönetilecek "parçalar" olarak bilinen birçok veritabanı vardır. Müşteriler aynı veritabanında birlikte bulunur ve müşteri başına bir veritabanı (tek kiracılı bir düzen) vardır. İstemci kitaplığı şu özellikleri içerir:
 
-- **Shard Map Management**: "Shard map manager" adı verilen özel bir veritabanı oluşturulur. Shard harita yönetimi, bir uygulamanın parçaları yla ilgili meta verileri yönetebilme yeteneğidir. Geliştiriciler bu işlevi veritabanlarını parça olarak kaydetmek, bu veritabanlarıiçin tek tek parçalama anahtarlarının veya anahtar aralıklarının eşlemelerini açıklamak ve veritabanlarının sayısı ve bileşimi kapasite değişikliklerini yansıtacak şekilde geliştikçe bu meta verileri korumak için kullanabilir. Elastik veritabanı istemci kitaplığı olmadan, parçalama uygularken yönetim kodunu yazmak için çok fazla zaman harcamanız gerekir. Ayrıntılar için [Shard harita yönetimine](sql-database-elastic-scale-shard-map-management.md)bakın.
+- Parça **eşleme yönetimi**: "parça eşleme Yöneticisi" adlı özel bir veritabanı oluşturulur. Parça eşleme yönetimi, bir uygulamanın parçaları hakkındaki meta verileri yönetmesine olanak tanır. Geliştiriciler bu işlevleri veritabanlarını parçalar halinde kaydetmek, bireysel anahtar veya anahtar aralıklarının bu veritabanlarına eşlemelerini göstermek ve bu meta verileri, veritabanlarının sayısı ve bileşimi kapasite değişikliklerini yansıtacak şekilde geliştikçe korumak için kullanabilir. Elastik veritabanı istemci kitaplığı olmadan, parça uygularken yönetim kodunu yazmak için çok zaman harcamanız gerekir. Ayrıntılar için bkz. parça [eşleme yönetimi](sql-database-elastic-scale-shard-map-management.md).
 
-- **Veribağımlı yönlendirme**: Uygulamaya gelen bir istek düşünün. İsteğin parçalama anahtar değerine bağlı olarak, uygulamanın anahtar değerini temel alarak doğru veritabanını belirlemesi gerekir. Daha sonra isteği işlemek için veritabanına bir bağlantı açar. Veri bağımlı yönlendirme, uygulamanın parça haritasına tek bir kolay çağrıyla bağlantıları açma olanağı sağlar. Veri bağımlı yönlendirme şimdi elastik veritabanı istemcikitaplığı işlevselliği kapsamında altyapı kodu başka bir alanoldu. Ayrıntılar için [bkz.](sql-database-elastic-scale-data-dependent-routing.md)
-- **Çok parçalı sorgular (MSQ)**: Bir istek birkaç (veya tümü) parça içerdiğinde çok parçalı sorgu çalışır. Çok parçalı bir sorgu, tüm kırıklarda veya bir dizi parçada aynı T-SQL kodunu yürütür. Katılımcı parçaların sonuçları UNION ALL semantik kullanılarak genel bir sonuç kümesinde birleştirilir. İstemci kitaplığı aracılığıyla açığa çıkarılan işlevler, bağlantı yönetimi, iş parçacığı yönetimi, hata işleme ve ara sonuç işleme gibi birçok görevi işler. MSQ en fazla yüzlerce parçayı sorgulayabilir. Ayrıntılar için, [Çoklu Parça sorgulama'ya](sql-database-elastic-scale-multishard-querying.md)bakın.
+- **Verilere bağımlı yönlendirme**: uygulamaya gelen bir isteği düşünün. İsteğin parçalı anahtar değerine bağlı olarak uygulamanın, anahtar değere göre doğru veritabanını belirlemesi gerekir. Ardından, isteği işlemek için veritabanına bir bağlantı açar. Verilere bağımlı yönlendirme, uygulamanın parça haritasının tek bir kolay çağrısıyla bağlantıları açabilmenizi sağlar. Verilere bağımlı yönlendirme, artık elastik veritabanı istemci kitaplığındaki işlevlere göre ele alınan bir altyapı kodu alanıdır. Ayrıntılar için bkz. [verilere bağımlı yönlendirme](sql-database-elastic-scale-data-dependent-routing.md).
+- **Çok parçalı sorgular (MSQ)**: bir istek birkaç (veya tüm) parçaları içeriyorsa, çok parçalı sorgulama işe yarar. Çok parçalı bir sorgu, tüm parçalarda veya bir parça kümesinde aynı T-SQL kodunu yürütür. Katılan parçalardan elde edilen sonuçlar UNıON ALL semantiği kullanılarak genel bir sonuç kümesiyle birleştirilir. İstemci kitaplığı aracılığıyla gösterilen işlevsellik, aşağıdakiler dahil olmak üzere pek çok görevi işler: bağlantı yönetimi, iş parçacığı yönetimi, hata işleme ve ara sonuç işleme. MSQ, yüzlerce parçalama sorgulayabilir. Ayrıntılar için bkz. [çok parçalı sorgulama](sql-database-elastic-scale-multishard-querying.md).
 
-Genel olarak, elastik veritabanı araçlarını kullanan müşteriler, kendi anlambilimleri olan çapraz parça işlemleri yerine, basılı yerel işlemleri gönderirken tam T-SQL işlevselliği elde etmeyi bekleyebilirler.
+Genel olarak, elastik veritabanı araçları kullanan müşteriler, kendi semantiğinin bulunduğu çapraz parçalar yerine, yerel işlemleri gönderirken tam T-SQL işlevselliği almayı bekleyebilir.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Elastik Veritabanı İstemci Kitaplığı ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22), [.NET](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)) - kitaplığı **indirmek** için.
+- , Kitaplığı **indirmek** için elastik veritabanı istemci kitaplığı ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22), [.net](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)).
 
-- İstemci işlevlerini gösteren **örnek uygulamayı** denemek için esnek [veritabanı araçlarıyla başlayın.](sql-database-elastic-scale-get-started.md)
+- İstemci işlevlerini gösteren **Örnek uygulamayı** denemek için [elastik veritabanı araçları 'nı kullanmaya](sql-database-elastic-scale-get-started.md) başlayın.
 
-- GitHub ([Java](https://github.com/Microsoft/elastic-db-tools-for-java/blob/master/README.md), [.NET](https://github.com/Azure/elastic-db-tools)) - koda katkıda bulunmak için.
-- [Azure SQL Veritabanı elastik sorgu genel bakış](sql-database-elastic-query-overview.md) - elastik sorgular kullanmak için.
+- GitHub ([Java](https://github.com/Microsoft/elastic-db-tools-for-java/blob/master/README.md), [.net](https://github.com/Azure/elastic-db-tools))-koda katkı sağlamak için.
+- [Azure SQL veritabanı elastik sorguya genel bakış](sql-database-elastic-query-overview.md) -elastik sorgular kullanmak için.
 
-- Bölünmüş **birleştirme aracını**kullanma yla ilgili talimatlar için [ölçeklenmiş bulut veritabanları arasında veri taşıma](sql-database-elastic-scale-overview-split-and-merge.md) .
+- [Ölçeği genişletilen bulut veritabanları arasında veri taşıma](sql-database-elastic-scale-overview-split-and-merge.md) - **bölünmüş birleştirme aracını**kullanma hakkında yönergeler için.
 
 
 

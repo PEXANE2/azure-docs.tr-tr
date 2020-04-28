@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell'i kullanarak Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
-description: Bu makalede, Azure PowerShell'i kullanarak Azure Güvenlik Duvarı'nı nasıl dağıtabileceğinizi ve yapılandırabileceğinizi öğreneceksiniz.
+title: Azure PowerShell kullanarak Azure Güvenlik duvarını dağıtma ve yapılandırma
+description: Bu makalede, Azure Güvenlik Duvarı 'nı Azure PowerShell kullanarak dağıtmayı ve yapılandırmayı öğreneceksiniz.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,15 +8,15 @@ ms.date: 4/10/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 7f48012ca1f97c2e28380d95da37863c4bc17f63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73831831"
 ---
-# <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure PowerShell'i kullanarak Azure Güvenlik Duvarı'nı dağıtma ve yapılandırma
+# <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure PowerShell kullanarak Azure Güvenlik duvarını dağıtma ve yapılandırma
 
-Giden ağ erişimini denetleme, genel ağ güvenlik planının önemli bir parçasıdır. Örneğin, web sitelerine erişimi sınırlamak isteyebilirsiniz. Veya, giden IP adreslerini ve erişilebilen bağlantı noktalarını sınırlamak isteyebilirsiniz.
+Giden ağ erişimini denetleme, genel ağ güvenlik planının önemli bir parçasıdır. Örneğin, erişimi Web sitelerine kısıtlamak isteyebilirsiniz. Ya da, erişilebilen giden IP adreslerini ve bağlantı noktalarını sınırlamak isteyebilirsiniz.
 
 Azure Güvenlik Duvarı, Azure alt ağından giden ağ erişimini denetlemenin bir yoludur. Azure Güvenlik Duvarı ile şunları yapılandırabilirsiniz:
 
@@ -25,7 +25,7 @@ Azure Güvenlik Duvarı, Azure alt ağından giden ağ erişimini denetlemenin b
 
 Ağ trafiğinizi güvenlik duvarından alt ağın varsayılan ağ geçidi olarak yönlendirdiğinizde ağ trafiği yapılandırılan güvenlik duvarı kurallarına tabi tutulur.
 
-Bu makale için, kolay dağıtım için üç alt ağ içeren basitleştirilmiş tek bir VNet oluşturursunuz. Üretim dağıtımları için, güvenlik duvarının kendi VNet'inde olduğu bir [hub ve spoke modeli](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) önerilir. İş yükü sunucuları, bir veya daha fazla alt ağla aynı bölgedeki eşlenmiş VNet'lerde bulunmaktadır.
+Bu makalede, kolay dağıtım için üç alt ağa sahip Basitleştirilmiş tek bir sanal ağ oluşturacaksınız. Üretim dağıtımları için, güvenlik duvarının kendi VNet 'inde bulunduğu bir [hub ve bağlı bileşen modeli](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) önerilir. İş yükü sunucuları, bir veya daha fazla alt ağ ile aynı bölgedeki eşlenmiş VNET 'lerde bulunur.
 
 * **AzureFirewallSubnet** - güvenlik duvarı bu alt ağdadır.
 * **Workload-SN**: İş yükü sunucusu bu alt ağda yer alır. Bu alt ağın ağ trafiği güvenlik duvarından geçer.
@@ -39,17 +39,17 @@ Bu makalede şunları öğreneceksiniz:
 > * Test amaçlı ağ ortamı oluşturma
 > * Güvenlik duvarı dağıtma
 > * Varsayılan rota oluşturma
-> * www.google.com erişime izin verecek şekilde bir uygulama kuralını yapılandırma
+> * Www.google.com erişimine izin vermek için bir uygulama kuralı yapılandırma
 > * Dış DNS sunucularına erişime izin vermek için ağ kuralı yapılandırma
 > * Güvenlik duvarını test etme
 
-İsterseniz, [Azure portalını](tutorial-firewall-deploy-portal.md)kullanarak bu yordamı tamamlayabilirsiniz.
+İsterseniz, [Azure Portal](tutorial-firewall-deploy-portal.md)kullanarak bu yordamı tamamlayabilirsiniz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu yordam, PowerShell'i yerel olarak çalıştırmanızı gerektirir. Azure PowerShell modüllerini yüklemiş olmalısınız. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
+Bu yordam, PowerShell 'i yerel olarak çalıştırmanızı gerektirir. Azure PowerShell modülünün yüklü olması gerekir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps). PowerShell sürümünü doğruladıktan sonra, Azure ile bağlantı oluşturmak için `Connect-AzAccount` komutunu çalıştırın.
 
 ## <a name="set-up-the-network"></a>Ağı ayarlama
 
@@ -57,7 +57,7 @@ Bu yordam, PowerShell'i yerel olarak çalıştırmanızı gerektirir. Azure Powe
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Kaynak grubu dağıtım için tüm kaynakları içerir.
+Kaynak grubu, dağıtımın tüm kaynaklarını içerir.
 
 ```azurepowershell
 New-AzResourceGroup -Name Test-FW-RG -Location "East US"
@@ -65,17 +65,17 @@ New-AzResourceGroup -Name Test-FW-RG -Location "East US"
 
 ### <a name="create-a-vnet"></a>Sanal ağ oluşturma
 
-Bu sanal ağ üç alt ağa sahiptir:
+Bu sanal ağın üç alt ağı vardır:
 
 > [!NOTE]
-> AzureFirewallSubnet alt ağının boyutu /26'dır. Alt ağ boyutu hakkında daha fazla bilgi için [Azure Güvenlik Duvarı SSS'si'ne](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)bakın.
+> AzureFirewallSubnet alt ağının boyutu/26 ' dır. Alt ağ boyutu hakkında daha fazla bilgi için bkz. [Azure Güvenlik DUVARı SSS](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
 ```azurepowershell
 $FWsub = New-AzVirtualNetworkSubnetConfig -Name AzureFirewallSubnet -AddressPrefix 10.0.1.0/26
 $Worksub = New-AzVirtualNetworkSubnetConfig -Name Workload-SN -AddressPrefix 10.0.2.0/24
 $Jumpsub = New-AzVirtualNetworkSubnetConfig -Name Jump-SN -AddressPrefix 10.0.3.0/24
 ```
-Şimdi, sanal ağ oluşturun:
+Şimdi sanal ağı oluşturun:
 
 ```azurepowershell
 $testVnet = New-AzVirtualNetwork -Name Test-FW-VN -ResourceGroupName Test-FW-RG `
@@ -87,7 +87,7 @@ $testVnet = New-AzVirtualNetwork -Name Test-FW-VN -ResourceGroupName Test-FW-RG 
 Şimdi atlama ve iş yükü sanal makinelerini oluşturup uygun alt ağlara yerleştirin.
 İstendiğinde, sanal makine için bir kullanıcı adı ve parola yazın.
 
-Srv-Jump sanal makineoluşturun.
+SRV-atma sanal makinesini oluşturun.
 
 ```azurepowershell
 New-AzVm `
@@ -100,7 +100,7 @@ New-AzVm `
     -Size "Standard_DS2"
 ```
 
-Ortak IP adresi olmayan bir iş yükü sanal makinesi oluşturun.
+Genel IP adresi olmayan bir iş yükü sanal makinesi oluşturun.
 İstendiğinde, sanal makine için bir kullanıcı adı ve parola yazın.
 
 ```azurepowershell
@@ -120,7 +120,7 @@ New-AzVM -ResourceGroupName Test-FW-RG -Location "East US" -VM $VirtualMachine -
 
 ## <a name="deploy-the-firewall"></a>Güvenlik duvarını dağıtma
 
-Şimdi güvenlik duvarını sanal ağa dağıtın.
+Artık güvenlik duvarını sanal ağa dağıtın.
 
 ```azurepowershell
 # Get a Public IP for the firewall
@@ -139,7 +139,7 @@ $AzfwPrivateIP
 
 ## <a name="create-a-default-route"></a>Varsayılan rota oluşturma
 
-BGP rota yayılma devre dışı bırakılmış bir tablo oluşturma
+BGP yol yayma devre dışı olan bir tablo oluşturma
 
 ```azurepowershell
 $routeTableDG = New-AzRouteTable `
@@ -168,7 +168,7 @@ Set-AzVirtualNetworkSubnetConfig `
 
 ## <a name="configure-an-application-rule"></a>Uygulama kuralı yapılandırma
 
-Uygulama kuralı, www.google.com giden erişim sağlar.
+Uygulama kuralı, www.google.com 'e giden erişime izin verir.
 
 ```azurepowershell
 $AppRule1 = New-AzFirewallApplicationRule -Name Allow-Google -SourceAddress 10.0.2.0/24 `
@@ -186,7 +186,7 @@ Azure Güvenlik Duvarı'nda varsayılan olarak izin verilen altyapı FQDN'leri i
 
 ## <a name="configure-a-network-rule"></a>Ağ kuralını yapılandırma
 
-Ağ kuralı, bağlantı noktası 53'teki (DNS) iki IP adresine giden erişime izin verir.
+Ağ kuralı, 53 (DNS) numaralı bağlantı noktasında iki IP adresine giden erişime izin verir.
 
 ```azurepowershell
 $NetRule1 = New-AzFirewallNetworkRule -Name "Allow-DNS" -Protocol UDP -SourceAddress 10.0.2.0/24 `
@@ -202,7 +202,7 @@ Set-AzFirewall -AzureFirewall $Azfw
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>**Srv-Work** ağ arabiriminin birincil ve ikincil DNS adresini değiştirme
 
-Bu yordamdaki sınama amacıyla, sunucunun birincil ve ikincil DNS adreslerini yapılandırın. Bu genel bir Azure Güvenlik Duvarı gereksinimi değildir.
+Bu yordamdaki sınama amacıyla sunucunun birincil ve ikincil DNS adreslerini yapılandırın. Bu genel bir Azure Güvenlik Duvarı gereksinimi değildir.
 
 ```azurepowershell
 $NIC.DnsSettings.DnsServers.Add("209.244.0.3")
@@ -212,24 +212,24 @@ $NIC | Set-AzNetworkInterface
 
 ## <a name="test-the-firewall"></a>Güvenlik duvarını test etme
 
-Beklendiği gibi çalıştığını doğrulamak için güvenlik duvarını test edin.
+Şimdi, güvenlik duvarını test edin ve beklendiği gibi çalıştığını doğrulayın.
 
-1. **Srv-Work** sanal makinesinin özel IP adresine dikkat edin:
+1. **SRV-Work** sanal makinesi IÇIN özel IP adresini aklınızda edin:
 
    ```
    $NIC.IpConfigurations.PrivateIpAddress
    ```
 
-1. Uzak bir masaüstünü **Srv-Jump** sanal makinesine bağlayın ve oturum açın. Buradan, **Srv-Work** özel IP adresine uzak bir masaüstü bağlantısı açın ve oturum açın.
+1. Uzak bir masaüstünü **SRV-atma** sanal makinesine bağlayın ve oturum açın. Buradan, **SRV iş** özel IP adresine bir Uzak Masaüstü bağlantısı açın ve oturum açın.
 
-3. **SRV-Work'te**PowerShell penceresini açın ve aşağıdaki komutları çalıştırın:
+3. **SRV-iş**sayfasında bir PowerShell penceresi açın ve aşağıdaki komutları çalıştırın:
 
    ```
    nslookup www.google.com
    nslookup www.microsoft.com
    ```
 
-   Her iki komut da, DNS sorgularınızın güvenlik duvarından geçtiğini göstererek yanıtları döndürmelidir.
+   Her iki komut de DNS sorgularınızın güvenlik duvarından geçileceğini gösteren yanıtları döndürmelidir.
 
 1. Aşağıdaki komutları çalıştırın:
 
@@ -241,16 +241,16 @@ Beklendiği gibi çalıştığını doğrulamak için güvenlik duvarını test 
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   İstekler `www.google.com` başarılı olmalı `www.microsoft.com` ve istekler başarısız olmalıdır. Bu, güvenlik duvarı kurallarınızın beklendiği gibi çalıştığını gösterir.
+   `www.google.com` İsteklerin başarılı olması ve `www.microsoft.com` isteklerin başarısız olması gerekir. Bu, güvenlik duvarı kurallarınızın beklendiği şekilde kullanıldığını gösterir.
 
-Şimdi güvenlik duvarı kurallarının işe yaradığını doğruladınız:
+Artık Güvenlik Duvarı kurallarının çalıştığını doğruladınız:
 
 * Yapılandırılmış dış DNS sunucusunu kullanarak DNS adlarını çözümleyebilirsiniz.
 * İzin verilen bir FQDN'ye göz atabilir ancak diğerlerine göz atamazsınız.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Güvenlik duvarı kaynaklarınızı bir sonraki öğretici için saklayabilir veya artık gerekyoksa güvenlik duvarıyla ilgili tüm kaynakları silmek için **Test-FW-RG** kaynak grubunu silebilirsiniz:
+Güvenlik Duvarı kaynaklarınızı bir sonraki öğreticide tutabilir veya artık gerekmiyorsa, güvenlik duvarı ile ilgili tüm kaynakları silmek için **Test-FW-RG** kaynak grubunu silebilirsiniz:
 
 ```azurepowershell
 Remove-AzResourceGroup -Name Test-FW-RG

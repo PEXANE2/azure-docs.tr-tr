@@ -1,9 +1,9 @@
 ---
-title: Raspberry Pi web simülatörünü Azure IoT Hub'ına (Node.js) bağlayın
-description: Raspberry Pi web simülatörünü Azure bulutuna veri göndermek için Azure IoT Hub'a bağlayın.
+title: Raspberry PI Web simülatörünü Azure IoT Hub 'a bağlama (node. js)
+description: Azure bulutuna veri göndermek için Raspberry Pi için Raspberry PI Web simülatörü Azure IoT Hub bağlayın.
 author: wesmc7777
 manager: philmea
-keywords: ahududu pi simülatörü, azure iot raspberry pi, raspberry pi iot hub, raspberry pi buluta veri göndermek, ahududu pi bulut
+keywords: Raspberry PI simülatör, Azure IoT Raspberry Pi, Raspberry PI IoT Hub, Raspberry Pi verileri buluta gönderme, Raspberry Pi-buluta
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
 ms.openlocfilehash: efbe41be6c923f3547df86fd6faeb56bff5e0802
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73954524"
 ---
-# <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Raspberry Pi çevrimiçi simülatörünü Azure IoT Hub'ına (Node.js) bağlayın
+# <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Raspberry PI çevrimiçi simülatörünü Azure IoT Hub 'a bağlama (node. js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-Bu eğitimde, Raspberry Pi online simülatörü ile çalışmanın temellerini öğrenerek başlar. Daha sonra [Azure IoT Hub'ını](about-iot-hub.md)kullanarak Pi simülatörünü buluta sorunsuz bir şekilde nasıl bağlayabileceğinizi öğrenirsiniz.
+Bu öğreticide, Raspberry PI çevrimiçi simülatörü ile çalışmanın temellerini öğrenerek başlarsınız. Daha sonra [Azure IoT Hub](about-iot-hub.md)kullanarak PI benzeticisinin buluta sorunsuz bir şekilde nasıl bağlanacağını öğreneceksiniz.
 
-Fiziksel cihazlarınız varsa, başlamak [için Raspberry Pi'yi Azure IoT Hub'a](iot-hub-raspberry-pi-kit-node-get-started.md) bağlayın'ı ziyaret edin.
+Fiziksel cihazlarınız varsa, kullanmaya başlamak için [Raspberry Pi Ile Azure IoT Hub bağlama](iot-hub-raspberry-pi-kit-node-get-started.md) makalesini ziyaret edin.
 
 <p>
 <div id="diag" style="width:100%; text-align:center">
@@ -36,34 +36,34 @@ Fiziksel cihazlarınız varsa, başlamak [için Raspberry Pi'yi Azure IoT Hub'a]
 <img src="media/iot-hub-raspberry-pi-web-simulator/6-button-default.png" alt="Start Raspberry Pi simulator" width="400" onmouseover="this.src='media/iot-hub-raspberry-pi-web-simulator/5-button-click.png';" onmouseout="this.src='media/iot-hub-raspberry-pi-web-simulator/6-button-default.png';">
 </div>
 
-## <a name="what-you-do"></a>Ne yaparsınız
+## <a name="what-you-do"></a>Yapabilecekleriniz
 
-* Raspberry Pi online simülatörü temellerini öğrenin.
+* Raspberry PI çevrimiçi simülatörü hakkında temel bilgileri öğrenin.
 
-* Bir IoT hub'ı oluşturun.
+* IoT Hub 'ı oluşturun.
 
-* Pi için bir cihazı IoT hub'ınıza kaydedin.
+* IoT Hub 'ınıza PI için bir cihaz kaydedin.
 
-* IoT hub'ınıza simüle sensör verilerini göndermek için Pi'de örnek bir uygulama çalıştırın.
+* IoT Hub 'ınıza sanal algılayıcı verileri göndermek için PI üzerinde örnek bir uygulama çalıştırın.
 
-Simüle edilmiş Raspberry Pi'yi oluşturduğunuz bir IoT hub'ına bağlayın. Sonra sensör verileri oluşturmak için simülatör ile örnek bir uygulama çalıştırın. Son olarak, sensör verilerini IoT hub'ınıza gönderirsiniz.
+Sanal Raspberry PI 'yi oluşturduğunuz bir IoT Hub 'ına bağlayın. Ardından, algılayıcı verileri oluşturmak için Benzetici ile örnek bir uygulama çalıştırırsınız. Son olarak, algılayıcı verilerini IoT Hub 'ınıza gönderirsiniz.
 
 ## <a name="what-you-learn"></a>Öğrenecekleriniz
 
-* Azure IoT hub'ı oluşturma ve yeni aygıt bağlantı dizenizi nasıl edinebilirsiniz? Azure hesabınız yoksa, birkaç dakika içinde [ücretsiz bir Azure deneme hesabı oluşturun.](https://azure.microsoft.com/free/)
+* Azure IoT Hub 'ı oluşturma ve yeni cihaz Bağlantı dizenizi alma. Azure hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir Azure deneme hesabı oluşturun](https://azure.microsoft.com/free/) .
 
-* Nasıl Raspberry Pi online simülatörü ile çalışmak.
+* Raspberry PI Çevrimiçi simülatör ile çalışma.
 
-* Sensör verilerini IoT hub'ınıza nasıl gönderirim?
+* IoT Hub 'ınıza algılayıcı verileri gönderme.
 
-## <a name="overview-of-raspberry-pi-web-simulator"></a>Raspberry Pi web simülatörüne genel bakış
+## <a name="overview-of-raspberry-pi-web-simulator"></a>Raspberry PI Web simülatörü 'ne genel bakış
 
-Raspberry Pi çevrimiçi simülatörü başlatmak için düğmeye tıklayın.
+Raspberry PI online simülatörü başlatmak için düğmeye tıklayın.
 
 > [!div class="button"]
-> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Raspberry Pi Simulator başlatın</a>
+> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Start Raspberry PI simülatör</a>
 
-Web simülatöründe üç alan vardır.
+Web benzeticisinde üç alan vardır.
 
 1. Derleme alanı - Varsayılan devrede Pi bir BME280 sensörü ve bir LED'le bağlanır. Bu alan önizleme sürümünde kilitli olduğundan şu anda özelleştirme yapamazsınız.
 
@@ -78,15 +78,15 @@ Web simülatöründe üç alan vardır.
    * **Katla/Genişlet** - Sağ tarafta konsol penceresini katlamanız/genişletmeniz için bir düğme yer alır.
 
 > [!NOTE]
-> Raspberry Pi web simülatörü artık önizleme sürümünde mevcuttur. [Gitter Sohbet Odası'nda](https://gitter.im/Microsoft/raspberry-pi-web-simulator)sesini duymak istiyoruz. Kaynak kodu [GitHub'da](https://github.com/Azure-Samples/raspberry-pi-web-simulator)herkese açıktır.
+> Raspberry PI Web simülatörü artık önizleme sürümünde kullanılabilir. [Gitter Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator)'de sesinizi dinlemek istiyoruz. Kaynak kodu [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator)üzerinde ortaktır.
 
-![Pi online simülatöre genel bakış](media/iot-hub-raspberry-pi-web-simulator/0-overview.png)
+![PI çevrimiçi simülatörünü genel bakış](media/iot-hub-raspberry-pi-web-simulator/0-overview.png)
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Yeni bir aygıtı IoT hub'ına kaydetme
+## <a name="register-a-new-device-in-the-iot-hub"></a>IoT Hub 'a yeni bir cihaz kaydetme
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
@@ -96,18 +96,18 @@ Web simülatöründe üç alan vardır.
 1. 
    ![Cihaz bağlantı dizesini değiştirme](media/iot-hub-raspberry-pi-web-simulator/1-connectionstring.png)
 
-2. Uygulamayı **Run** çalıştırmak `npm start` için Çalıştır veya yazın'ı seçin.
+2. Uygulamayı **Run** çalıştırmak için Çalıştır `npm start` veya yaz ' ı seçin.
 
-Raspberry Pi'den IoT hub'ınıza gönderilen sensör verilerini ve ![IoT hub'ınıza gönderilen iletileri gösteren aşağıdaki çıktıyı görmeniz gerekir](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
+Raspberry Pi 'den IoT Hub 'ınıza gönderilen algılayıcı verilerini ve IoT Hub ![çıkış algılayıcı verilerinize gönderilen iletileri gösteren aşağıdaki çıktıyı görmeniz gerekir](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
 
-## <a name="read-the-messages-received-by-your-hub"></a>Hub'ınız tarafından alınan iletileri okuma
+## <a name="read-the-messages-received-by-your-hub"></a>Hub 'ınız tarafından alınan iletileri okuyun
 
-IoT hub'ınız tarafından alınan iletileri simüle edilen cihazdan izlemenin bir yolu, Görsel Stüdyo Kodu için Azure IoT Araçlarını kullanmaktır. Daha fazla bilgi edinmek [için, cihazınızla IoT Hub arasında ileti gönderip almak için Visual Studio Kodu için Azure IoT Araçlarını Kullanın'a](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)bakın.
+Sanal cihazdan IoT Hub 'ınız tarafından alınan iletileri izlemenin bir yolu, Visual Studio Code için Azure IoT araçları 'nı kullanmaktır. Daha fazla bilgi edinmek için bkz. [Visual Studio Code Için Azure IoT araçlarını kullanarak cihazınız ve IoT Hub arasında ileti gönderme ve alma](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
 
-Cihazınız tarafından gönderilen verileri işlemenin daha fazla yolu için bir sonraki bölüme devam edin.
+Cihazınız tarafından gönderilen verileri daha fazla şekilde işlemek için bir sonraki bölüme geçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sensör verilerini toplamak ve IoT hub'ınıza göndermek için örnek bir uygulama çalıştırdınız.
+Algılayıcı verilerini toplamak ve IoT Hub 'ınıza göndermek için örnek bir uygulama çalıştırdık.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

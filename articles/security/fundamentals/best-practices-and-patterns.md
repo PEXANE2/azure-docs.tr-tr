@@ -1,6 +1,6 @@
 ---
-title: Güvenlik en iyi uygulamaları ve desenleri - Microsoft Azure | Microsoft Dokümanlar
-description: Bu makale, farklı Azure kaynakları için en iyi güvenlik uygulamaları ve desenleri ile bağlantı sağlar.
+title: En iyi güvenlik uygulamaları ve desenleri Microsoft Azure | Microsoft Docs
+description: Bu makalede, farklı Azure kaynakları için en iyi güvenlik uygulamalarına ve desenlerine bağlantı elde edersiniz.
 services: azure-security
 documentationcenter: na
 author: TerryLanfear
@@ -16,25 +16,25 @@ ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
 ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73889852"
 ---
-# <a name="azure-security-best-practices-and-patterns"></a>Azure güvenliği en iyi uygulamaları ve desenleri
+# <a name="azure-security-best-practices-and-patterns"></a>Azure Güvenlik en iyi uygulamaları ve desenleri
 
-Aşağıdaki makaleler, Azure'u kullanarak bulut çözümlerinizi tasarlarken, dağıtırken ve yönetirken kullanılacak en iyi güvenlik uygulamalarını içerir. Bu en iyi uygulamalar, Azure güvenliği ile ilgili deneyimlerimizden ve sizin gibi müşterilerin deneyimlerinden gelir.
+Aşağıdaki makaleler, Azure kullanarak bulut çözümlerinizi tasarlarken, dağıttığınızda ve yönetirken kullanabileceğiniz en iyi güvenlik uygulamalarını içerir. Bu en iyi uygulamalar, Azure güvenliği ve sizin gibi müşterilerin deneyimleri ile deneyimimizden gelir.
 
-En iyi uygulamalar BT profesyonelleri için bir kaynak olması amaçlanmıştır. Bu, güvenli Azure çözümleri geliştiren ve dağıtan tasarımcıları, mimarları, geliştiricileri ve sınayıcıları içerebilir.
+En iyi uygulamalar BT profesyonelleri için bir kaynak olmak üzere tasarlanmıştır. Bu, güvenli Azure çözümleri oluşturup dağıtan tasarımcılar, mimarlar, geliştiriciler ve test ediciler içerebilir.
 
 * [Azure sınır güvenliği en iyi yöntemleri](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
 * [Azure güvenliği için en iyi yöntemler](database-best-practices.md)
 * [Azure veri güvenliği ve şifreleme en iyi uygulamaları](data-encryption-best-practices.md)
-* [Azure kimlik yönetimi ve erişim denetimi güvenliği en iyi uygulamaları](identity-management-best-practices.md)
+* [Azure kimlik yönetimi ve erişim denetimi en iyi güvenlik uygulamaları](identity-management-best-practices.md)
 * [Azure ağ güvenliği en iyi uygulamaları](network-best-practices.md)
 * [Azure çalışma güvenliğine yönelik en iyi yöntemler](operational-best-practices.md)
-* [Azure PaaS En İyi Uygulamalar](paas-deployments.md)
+* [Azure PaaS En Iyi uygulamaları](paas-deployments.md)
 * [Azure Service Fabric güvenliği en iyi yöntemleri](service-fabric-best-practices.md)
 * [Azure VM güvenliği için en iyi yöntemler](iaas.md)
 * [Azure’da güvenli karma ağ mimarisi uygulama](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
@@ -44,6 +44,6 @@ En iyi uygulamalar BT profesyonelleri için bir kaynak olması amaçlanmıştır
 * [Azure Depolama’yı kullanarak PaaS web ve mobil uygulamalarının güvenliğini sağlama](paas-applications-using-storage.md)
 * [Azure'da IaaS iş yükleri için en iyi güvenlik yöntemleri](iaas.md)
 
-[Azure çözümleri için Güvenlik'in en iyi uygulamaları](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions) olan teknik inceleme, yukarıda listelenen makalelerde bulunan en iyi güvenlik uygulamaları koleksiyonudur.
+[Azure çözümleri için teknik Inceleme güvenlik en iyi yöntemleri](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions) , yukarıda listelenen makalelerde bulunan en iyi güvenlik uygulamalarının bir koleksiyonudur.
 
 [Teknik incelemeyi indirin](https://azure.microsoft.com/mediahandler/files/resourcefiles/security-best-practices-for-azure-solutions/Azure%20Security%20Best%20Practices.pdf)

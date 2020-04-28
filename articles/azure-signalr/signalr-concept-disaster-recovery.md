@@ -1,71 +1,71 @@
 ---
-title: Azure SignalR Hizmetinde esneklik ve olağanüstü durum kurtarma
-description: Esneklik ve olağanüstü durum kurtarma sağlamak için birden fazla SignalR hizmeti örneğinin nasıl ayarlanacaklarına ilişkin genel bir bakış
+title: Azure SignalR hizmetinde dayanıklılık ve olağanüstü durum kurtarma
+description: Dayanıklılık ve olağanüstü durum kurtarma sağlamak için birden çok SignalR hizmeti örneği ayarlama hakkında genel bakış
 author: chenkennt
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
 ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73747655"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Dayanıklılık ve olağanüstü durum kurtarma
 
-Esneklik ve olağanüstü durum kurtarma online sistemler için ortak bir ihtiyaçtır. Azure SignalR Hizmeti zaten %99,9 kullanılabilirliği garanti eder, ancak yine de bölgesel bir hizmettir.
-Hizmet örneğiniz her zaman bir bölgede çalışır ve bölge genelinde kesinti olduğunda başka bir bölgeye gitmez.
+Dayanıklılık ve olağanüstü durum kurtarma, çevrimiçi sistemlere yönelik yaygın bir gereksinimdir. Azure SignalR hizmeti% 99,9 kullanılabilirliği zaten garanti ediyor, ancak yine de bölgesel bir hizmet.
+Hizmet örneğiniz her zaman bir bölgede çalışmaktadır ve bölge genelinde kesinti olduğunda başka bir bölgeye yük devremez.
 
-Bunun yerine, hizmetImiz SDK birden çok SignalR servis örneğini desteklemek ve bazıları kullanılamadığında otomatik olarak diğer örneklere geçmek için bir işlev sağlar.
-Bu özellik sayesinde, bir felaket gerçekleştiğinde kurtarabilirsiniz, ancak doğru sistem topolojisini kendiniz kurmanız gerekir. Bunu nasıl yapacağınızı bu belgede öğreneceksiniz.
+Bunun yerine, hizmet SDK 'mız birden çok SignalR hizmeti örneğini desteklemeye yönelik bir işlevsellik sağlar ve bazıları kullanılabilir olmadığında otomatik olarak diğer örneklere geçiş yapar.
+Bu özellikle, bir olağanüstü durum gerçekleştiğinde kurtarabileceksiniz, ancak doğru sistem topolojisini kendiniz ayarlamanız gerekecektir. Bu belgede nasıl yapılacağını öğreneceksiniz.
 
-## <a name="high-available-architecture-for-signalr-service"></a>SignalR hizmeti için yüksek kullanılabilir mimari
+## <a name="high-available-architecture-for-signalr-service"></a>SignalR hizmeti için yüksek düzeyde kullanılabilir mimari
 
-SignalR hizmeti için bölgeler arası esneklik sağlamak için, farklı bölgelerde birden çok hizmet örneği ayarlamanız gerekir. Bu nedenle, bir bölge çöktüğinde, diğerleri yedek olarak kullanılabilir.
-Birden çok hizmet örneğini uygulama sunucusuna bağlarken, birincil ve ikincil olmak üzere iki rol vardır.
-Birincil çevrimiçi trafik alıyor ve ikincil birincil için tam işlevsel ama yedekleme örneği bir örnektir.
-SDK uygulamamızda, müzakere yalnızca birincil uç noktaları döndürecek, böylece normal durumda istemciler yalnızca birincil uç noktalara bağlanır.
-Ancak birincil örnek düştüğünde, istemci hala bağlantı kurabilmesi için anlaşma ikincil uç noktaları döndürecektir.
-Birincil örnek ve uygulama sunucusu normal sunucu bağlantıları üzerinden bağlanır, ancak ikincil örnek ve uygulama sunucusu zayıf bağlantı adı verilen özel bir bağlantı türü aracılığıyla bağlanır.
-Zayıf bir bağlantının temel farkı, ikincil örnek başka bir bölgede bulunduğundan istemci bağlantı yönlendirmesini kabul etmemesidir. İstemciyi başka bir bölgeye yönlendirmeen iyi bir seçim değildir (gecikme yitirmesi artar).
+SignalR hizmeti için çapraz bölge dayanıklılığı sağlamak üzere, farklı bölgelerde birden çok hizmet örneği ayarlamanız gerekir. Bu nedenle, bir bölge kapalıysa, diğerleri yedekleme olarak kullanılabilir.
+Birden çok hizmet örneğini App Server 'a bağlarken, birincil ve ikincil olmak üzere iki rol bulunur.
+Birincil, çevrimiçi trafik alan ve ikincil için tam işlevli ancak yedekleme örneği olan bir örneğidir.
+SDK uygulamamız içinde yalnızca birincil uç noktalar döndürülür, ancak normal durum istemcilerinin birincil uç noktalara yalnızca bağlanmasını sağlar.
+Ancak birincil örnek aşağı çalıştığında, istemci yine de bağlantı yapabilmeleri için Negotiate ikincil uç noktalar döndürür.
+Birincil örnek ve App Server normal sunucu bağlantıları aracılığıyla bağlanır, ancak ikincil örnek ve App Server, zayıf bağlantı adlı özel bir bağlantı türü aracılığıyla bağlanır.
+Zayıf bir bağlantının ana farkı, ikincil örnek başka bir bölgede bulunduğundan istemci bağlantı yönlendirmeyi kabul etmemektedir. Bir istemciyi başka bir bölgeye yönlendirme en iyi seçenektir (gecikme süresini artırır).
 
-Bir hizmet örneği, birden çok uygulama sunucusuna bağlanırken farklı rollere sahip olabilir.
-Bölgeler arası senaryo için tipik bir kurulum, iki (veya daha fazla) SignalR hizmet örneği ve uygulama sunucusuna sahip olmaktır.
-Her çift uygulama sunucusu ve SignalR hizmeti içinde aynı bölgede bulunan ve SignalR hizmeti birincil rol olarak uygulama sunucusuna bağlanır.
-Her çift arasında uygulama sunucusu ve SignalR hizmeti de bağlanır, ancak SignalR başka bir bölgedeki sunucuya bağlanırken ikincil olur.
+Birden çok uygulama sunucusuna bağlanırken bir hizmet örneği farklı rollere sahip olabilir.
+Çapraz bölge senaryosu için tipik bir kurulum, SignalR hizmet örneklerinin ve uygulama sunucularının iki (veya daha fazla) çiftine sahip olmak içindir.
+Her bir çift App Server ve SignalR hizmeti aynı bölgede bulunur ve SignalR hizmeti, uygulama sunucusuna birincil rol olarak bağlanır.
+Her bir çiftler arasında App Server ve SignalR hizmeti de bağlanır, ancak başka bir bölgedeki sunucuya bağlanırken SignalR ikincil hale gelir.
 
-Bu topoloji ile, tüm uygulama sunucuları ve SignalR hizmet örnekleri birbirine bağlı olduğundan, bir sunucudan gelen ileti tüm istemcilere iletilebilir.
-Ancak bir istemci bağlı olduğunda, en iyi ağ gecikmesi elde etmek için her zaman aynı bölgedeki uygulama sunucusuna yönlendirilir.
+Bu topolojide, tüm uygulama sunucuları ve SignalR hizmeti örnekleri birbirine bağlı olduğu için bir sunucudan gelen ileti yine de tüm istemcilere teslim edilebilir.
+Ancak, bir istemci bağlıyken, en iyi ağ gecikmesini sağlamak için her zaman aynı bölgedeki App Server 'a yönlendirilir.
 
-Aşağıda bu tür topoloji gösteren bir diyagram:
+Bu tür topolojiyi gösteren bir diyagram aşağıda verilmiştir:
 
 ![topology](media/signalr-concept-disaster-recovery/topology.png)
 
-## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Birden çok SignalR hizmeti örneği olan uygulama sunucularını yapılandırma
+## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Birden çok SignalR hizmeti örneğiyle App Servers yapılandırma
 
-Her bölgede SignalR hizmeti ve uygulama sunucuları oluşturulduktan sonra, uygulama sunucularınızı tüm SignalR hizmet örneklerine bağlanacak şekilde yapılandırabilirsiniz.
+Her bölgede SignalR hizmeti ve uygulama sunucuları oluşturulduktan sonra, uygulama sunucularınızı tüm SignalR hizmeti örneklerine bağlanacak şekilde yapılandırabilirsiniz.
 
-Bunu yapmanın iki yolu vardır:
+Bunu iki şekilde yapabilirsiniz:
 
-### <a name="through-config"></a>Config ile
+### <a name="through-config"></a>Yapılandırma üzerinden
 
-SignalR servis bağlantı dizesini çevre değişkenleri/uygulama ayarları/web.cofig aracılığıyla nasıl ayarladığınızı zaten bilmeniz `Azure:SignalR:ConnectionString`gerekir.
-Birden çok uç noktanız varsa, bunları her biri aşağıdaki biçimde birden çok config girişine ayarlayabilirsiniz:
+Adlı `Azure:SignalR:ConnectionString`bir yapılandırma girişinde, SignalR hizmeti bağlantı dizesinin ortam değişkenleri/uygulama ayarları/Web. cofıg aracılığıyla nasıl ayarlanacağını zaten bilmelisiniz.
+Birden çok uç noktalarınız varsa, bunları aşağıdaki biçimde birden çok yapılandırma girişi halinde ayarlayabilirsiniz:
 
 ```
 Azure:SignalR:ConnectionString:<name>:<role>
 ```
 
-Burada `<name>` bitiş noktasının adı `<role>` ve rolü (birincil veya ikincil).
-Ad isteğe bağlıdır, ancak yönlendirme davranışını birden çok uç nokta arasında daha da özelleştirmek istiyorsanız yararlı olacaktır.
+`<name>` Uç noktanın adı ve `<role>` rolü (birincil veya ikincil) bulunur.
+Ad isteğe bağlıdır, ancak yönlendirme davranışını birden fazla uç nokta arasında daha fazla özelleştirmek istiyorsanız yararlı olacaktır.
 
 ### <a name="through-code"></a>Kod aracılığıyla
 
-Bağlantı dizelerini başka bir yerde depolamayı tercih ederseniz, bunları kodunuzda okuyabilir `AddAzureSignalR()` ve (ASP.NET Core'da) veya `MapAzureSignalR()` (ASP.NET) ararken parametre olarak kullanabilirsiniz.
+Bağlantı dizelerini başka bir yerde depolamayı tercih ediyorsanız, bunları kodunuzda okuyabilir ve `AddAzureSignalR()` (ASP.NET Core) veya `MapAzureSignalR()` (ASP.net) olarak kullanabilirsiniz.
 
-İşte örnek kodu:
+Örnek kod aşağıda verilmiştir:
 
 ASP.NET Core:
 
@@ -88,51 +88,51 @@ app.MapAzureSignalR(GetType().FullName, hub,  options => options.Endpoints = new
     };
 ```
 
-Birden çok birincil veya ikincil örneği yapılandırabilirsiniz. Birden çok birincil ve/veya ikincil örnek varsa, anlaşma aşağıdaki sırada bir bitiş noktası döndürecektir:
+Birden çok birincil veya ikincil örnek yapılandırabilirsiniz. Birden çok birincil ve/veya ikincil örnek varsa, anlaş aşağıdaki sırada bir uç nokta döndürür:
 
-1. Çevrimiçi olarak en az bir birincil örnek varsa, rasgele bir birincil çevrimiçi örneği döndürün.
-2. Tüm birincil örnekler aşağıdaysa, rasgele bir ikincil çevrimiçi örneği döndürün.
+1. Çevrimiçi olarak en az bir birincil örnek varsa, rastgele bir birincil çevrimiçi örnek döndürün.
+2. Tüm birincil örnekler kapalıysa, rastgele bir ikincil çevrimiçi örnek döndürür.
 
-## <a name="failover-sequence-and-best-practice"></a>Failover dizisi ve en iyi uygulama
+## <a name="failover-sequence-and-best-practice"></a>Yük devretme sırası ve en iyi uygulama
 
-Şimdi doğru sistem topoloji kurulum var. Bir SignalR servis örneği düştüğünde, çevrimiçi trafik diğer örneklere yönlendirilir.
-Birincil örnek düştüğünde (ve bir süre sonra iyileştiğinde) aşağıda ne olur:
+Artık doğru sistem topolojisi kurulumuna sahipsiniz. Bir SignalR hizmeti örneği her çalıştığında çevrimiçi trafik diğer örneklere yönlendirilir.
+Birincil örnek aşağı doğru olduğunda (ve bir süre sonra kurtarıldığında) Bu durum aşağıda verilmiştir:
 
-1. Birincil hizmet örneği kapalı, bu örnekteki tüm sunucu bağlantıları bırakılır.
-2. Bu örne bağlı tüm sunucular çevrimdışı olarak işaretleyecek ve bu bitiş noktasını döndürmeyi durduracak ve ikincil bitiş noktasını döndürmeye başlayacak.
-3. Bu örnekteki tüm istemci bağlantıları da kapatılacak, istemciler yeniden bağlanır. Uygulama sunucuları artık ikincil bitiş noktasını döndürdüklerine göre, istemciler ikincil örneklere bağlanır.
-4. Şimdi ikincil örnek tüm online trafik alır. İkincil tüm uygulama sunucularına bağlı olduğu için sunucudan istemcilere tüm iletiler yine de teslim edilebilir. Ancak istemciden sunucuya iletiler yalnızca aynı bölgedeki uygulama sunucusuna yönlendirilir.
-5. Birincil örnek kurtarıldıktan ve çevrimiçi olarak geri döndükten sonra, uygulama sunucusu bağlantılarını yeniden kurar ve çevrimiçi olarak işaretler. Yeni istemciler birincil e yeniden bağlı böylece Negotiate şimdi birincil bitiş noktasını yeniden döndürecek. Ancak varolan istemciler bırakılacak ve bağlantılarını kesene kadar ikincil istemcilere yönlendirilmeye devam edeceklerdir.
+1. Birincil hizmet örneği çalışmıyor, bu örnekteki tüm sunucu bağlantıları bırakılacak.
+2. Bu örneğe bağlı tüm sunucular bu dosyayı çevrimdışı olarak işaretleyecek ve bu uç noktayı döndürmeyi ve ikincil uç noktayı döndürmeye başlayacak şekilde anlaşacak.
+3. Bu örnekteki tüm istemci bağlantıları da kapatılacak, istemciler yeniden bağlanır. Uygulama sunucuları artık ikincil uç nokta döndürdüğü için istemciler ikincil örneğe bağlanır.
+4. Artık ikincil örnek tüm çevrimiçi trafiği alır. Sunucudan istemcilere gönderilen tüm iletiler, ikincil olarak tüm uygulama sunucularına bağlı olduğundan yine de teslim edilebilir. Ancak, istemci-sunucu iletileri yalnızca aynı bölgedeki App Server 'a yönlendirilir.
+5. Birincil örnek kurtarıldıktan ve yeniden çevrimiçi olduktan sonra, App Server bu bağlantıya yeniden bağlantı kuracak ve çevrimiçi olarak işaretleyecek. Negotiate şimdi birincil uç noktayı geri döndürmektedir, böylece yeni istemciler birincil ağa geri bağlanır. Ancak mevcut istemciler bırakılmayacaktır ve bunların bağlantısı kesilene kadar ikinciye yönlendirilmeye devam edecektir.
 
-Aşağıdaki diyagramlar SignalR hizmetinde failover'ın nasıl yapıldığını göstermektedir:
+Aşağıdaki diyagramlarda, SignalR hizmetinde yük devretme işlemlerinin nasıl yapılacağı gösterilmektedir:
 
-Şekil.1 ![Failover'dan Önce Başarısız olmadan önce](media/signalr-concept-disaster-recovery/before-failover.png)
+Yük devretmeden önce yük devretmeden ![önce Fig. 1](media/signalr-concept-disaster-recovery/before-failover.png)
 
-Şekil.2 ![Failover'dan sonra başarısız olduktan sonra](media/signalr-concept-disaster-recovery/after-failover.png)
+Yük devretmenin ardından yük devretmeden ![sonra Fig. 2](media/signalr-concept-disaster-recovery/after-failover.png)
 
-Şekil.3 Primer sonrası ![kısa süre primer kurtarmalardan kısa bir süre sonra](media/signalr-concept-disaster-recovery/after-recover.png)
+Fig. 3 birincil kurtardıktan sonra birincil ![kısa zamandan sonra kısa bir süre](media/signalr-concept-disaster-recovery/after-recover.png)
 
-Normal durumda sadece birincil uygulama sunucusu ve SignalR hizmeti (mavi) online trafik var görebilirsiniz.
-Başarısız olduktan sonra, ikincil uygulama sunucusu ve SignalR hizmeti de etkin hale gelir.
-Birincil SignalR hizmeti yeniden çevrimiçi olduktan sonra, yeni istemciler birincil SignalR'a bağlanır. Ancak varolan istemciler yine de ikincil bağlantıya bağlanır, bu nedenle her iki örnekde de trafik vardır.
-Varolan tüm istemciler bağlantıyı kestikten sonra, sisteminiz normale döner (Şekil 1).
+Yalnızca birincil uygulama sunucusu ve SignalR hizmetinin çevrimiçi trafiğe sahip olması durumunda (mavi renkli), normal olarak görebilirsiniz.
+Yük devretmeden sonra, ikincil App Server ve SignalR hizmeti de etkin hale gelir.
+Birincil SignalR hizmeti yeniden çevrimiçi olduktan sonra, yeni istemciler birincil SignalR 'ye bağlanır. Ancak mevcut istemciler, her iki örnek de trafiğe sahip olacak şekilde ikinciye bağlanır.
+Tüm mevcut istemciler bağlantısını kestikten sonra sisteminiz normal (Fig. 1) durumuna geri alınacaktır.
 
-Çapraz bölge yüksek kullanılabilir mimarisi uygulamak için iki ana desen vardır:
+Bir çapraz bölge yüksek kullanılabilir mimarisi uygulamak için iki ana model vardır:
 
-1. Bunlardan ilki, tüm çevrimiçi trafiği ele alan bir çift uygulama sunucusu ve SignalR servis örneğine sahip olmak ve yedek olarak başka bir çifte sahip olmaktır (Fig.1'de gösterildiği gibi aktif/pasif olarak adlandırılır). 
-2. Diğeri ise, her biri çevrimiçi trafiğin bir parçası olan ve diğer çiftler için yedek olarak hizmet veren (Fig.3'e benzer aktif/etkin olarak adlandırılır) iki (veya daha fazla) uygulama sunucusu ve SignalR hizmet örneği çifti olmasıdır.
+1. Birincisi, tüm çevrimiçi trafiğe sahip bir dizi App Server ve SignalR hizmeti örneği ve yedek (etkin/Pasif, Fig. 1 ' de gösterilen) olarak başka bir çiftin bulunduğu bir çiftin olması olabilir. 
+2. Diğeri, her biri çevrimiçi trafiğin bir parçası olan ve diğer çiftler için (Fig. 3 ' e benzer) yedekleme görevi gören iki (veya daha fazla) uygulama sunucusu ve SignalR hizmeti örneği olmalıdır.
 
-SignalR hizmeti her iki deseni de destekleyebilir, temel fark uygulama sunucularını nasıl uyguladığınızdır.
-Uygulama sunucuları etkin/pasifse, SignalR hizmeti de etkin/pasif olacaktır (birincil uygulama sunucusu yalnızca birincil SignalR hizmet örneğini döndürdükçe).
-Uygulama sunucuları etkin/etkinse, SignalR hizmeti de etkin/etkin olacaktır (tüm uygulama sunucuları kendi birincil SignalR örneklerini döndüreceği için hepsi trafik alabilir).
+SignalR hizmeti her iki modeli de destekleyebilir, ana fark uygulama sunucularını nasıl uygulayabileceğinizi de açıklamaktadır.
+Uygulama sunucuları etkin/Pasif ise, SignalR hizmeti de etkin/Pasif olacaktır (birincil uygulama sunucusu yalnızca birincil SignalR hizmet örneğini döndürdüğünden).
+Uygulama sunucuları etkin/etkin ise, SignalR hizmeti de etkin/etkin olacaktır (tüm uygulama sunucuları kendi birincil SignalR örneklerini döndür, bu nedenle bunların hepsi trafik alabilir).
 
-Hangi desenleri kullanmayı seçerseniz seçin, her SignalR servis örneğini birincil olarak bir uygulama sunucusuna bağlamanız gerekir.
+Hangi desenleri kullanacağınızı bağımsız olarak Not etmeksizin, her bir SignalR hizmeti örneğini birincil olarak bir uygulama sunucusuna bağlamanız gerekir.
 
-Ayrıca SignalR bağlantısının doğası gereği (uzun bir bağlantıdır), müşteriler bir felaket olduğunda ve arıza olduğunda bağlantı düşüşleri yaşarlar.
-Son müşterilerinize saydam hale getirmek için bu tür servis taleplerini istemci tarafında ele almanız gerekir. Örneğin, bağlantı kapatıldıktan sonra yeniden bağlanmayı yapın.
+Ayrıca, SignalR bağlantısının doğası (uzun bir bağlantıdır) nedeniyle, bir olağanüstü durum ve yük devretme gerçekleşirken istemciler bağlantı düşmeye karşılaşacaktır.
+Bu tür durumları, son müşterileriniz için saydam hale getirmek üzere istemci tarafında işlemeniz gerekir. Örneğin, bir bağlantı kapatıldıktan sonra yeniden bağlanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, SignalR hizmeti için esneklik elde etmek için uygulamanızı yapılandırmayı öğrendiniz. SignalR hizmetinde sunucu/istemci bağlantısı ve bağlantı yönlendirmesi hakkında daha fazla bilgi almak için SignalR hizmeti dahili bilgileri için [bu makaleyi](signalr-concept-internals.md) okuyabilirsiniz.
+Bu makalede, uygulamanızı SignalR hizmeti için dayanıklılık elde etmek üzere nasıl yapılandıracağınızı öğrendiniz. SignalR hizmetinde sunucu/istemci bağlantısı ve bağlantı yönlendirme hakkında daha fazla ayrıntıyı anlamak için, SignalR hizmeti iç işlevleri için [Bu makaleyi](signalr-concept-internals.md) okuyabilirsiniz.
 
-Çok sayıda bağlantıyı işlemek için birden çok örneği birlikte kullanan parçalama gibi ölçeklendirme [senaryoları için, birden çok örneği nasıl ölçeklendirileceği](signalr-howto-scale-multi-instances.md)okundu.
+Çok sayıda bağlantıyı işlemek için birden çok örnek kullanan parçalama gibi ölçeklendirme senaryoları için, [birden çok örneği ölçeklendirme](signalr-howto-scale-multi-instances.md)konusunu okuyun.

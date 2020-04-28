@@ -1,6 +1,6 @@
 ---
-title: Uygulama Ağ Geçidi ile LetsEncrypt.org sertifikakullanma
-description: Bu makalede, LetsEncrypt.org'dan sertifika alma ve AKS kümeleri için Uygulama Ağ Geçidi'nde nasıl kullanılacağı hakkında bilgi verilmektedir.
+title: Application Gateway ile LetsEncrypt.org sertifikalarını kullanma
+description: Bu makalede, LetsEncrypt.org adresinden sertifika alma ve AKS kümeleri için Application Gateway kullanma hakkında bilgi verilmektedir.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73957979"
 ---
-# <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>AKS kümeleri için Uygulama Ağ Geçidi'nde LetsEncrypt.org olan sertifikaları kullanma
+# <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>AKS kümeleri için Application Gateway on LetsEncrypt.org ile Sertifikalar kullanma
 
-Bu bölüm, AKS'nizi [LetsEncrypt.org](https://letsencrypt.org/) kaldıraç yapacak ve etki alanınız için otomatik olarak bir TLS/SSL sertifikası alacak şekilde yapılandırır. Sertifika, AKS kümeniz için SSL/TLS sonlandırma gerçekleştirecek Olan Uygulama Ağ Geçidi'ne yüklenir. Burada açıklanan kurulum, sertifikaların oluşturulmasını ve yönetimini otomatikleştiren [sertifika yöneticisi](https://github.com/jetstack/cert-manager) Kubernetes eklentisini kullanır.
+Bu bölüm, [LetsEncrypt.org](https://letsencrypt.org/) 'ten yararlanmak ve etki alanınız için otomatik olarak bir TLS/SSL sertifikası almak üzere aks 'leri yapılandırır. Sertifika, AKS kümeniz için SSL/TLS sonlandırmasını gerçekleştirecek Application Gateway yüklenir. Burada açıklanan kurulum, sertifikaların oluşturulmasını ve yönetilmesini otomatikleştiren, [CERT-Manager](https://github.com/jetstack/cert-manager) Kubernetes eklentisini kullanır.
 
-Varolan AKS kümenize [cert yöneticisi](https://docs.cert-manager.io) yüklemek için aşağıdaki adımları izleyin.
+Mevcut AKS kümenize [CERT-Manager](https://docs.cert-manager.io) yüklemek için aşağıdaki adımları izleyin.
 
-1. Dümen Grafiği
+1. Helb grafiği
 
-    Dümen grafiğini yüklemek `cert-manager` için aşağıdaki komut dosyasını çalıştırın. Bu olacaktır:
+    `cert-manager` Held grafiğini yüklemek için aşağıdaki betiği çalıştırın. Şunları yapmak gerekir:
 
-    - AKS'nizde yeni `cert-manager` bir ad alanı oluşturma
-    - aşağıdaki CRD'leri oluşturun: Sertifika, Meydan Okuma, ClusterIssuer, Veren, Sipariş
-    - cert-manager grafiğini yükleme [(docs.cert-manager.io itibaren)](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#steps)
+    - AKS 'unuzda yeni `cert-manager` bir ad alanı oluşturun
+    - Şu CRD 'leri oluşturun: sertifika, sınama, Kümeverenin, veren, sipariş
+    - CERT-Manager grafiğini ( [docs.CERT-Manager.io)](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#steps) yükler
 
     ```bash
     #!/bin/bash
@@ -54,16 +54,16 @@ Varolan AKS kümenize [cert yöneticisi](https://docs.cert-manager.io) yüklemek
       jetstack/cert-manager
     ```
 
-2. ClusterIssuer Kaynak
+2. Clusterıssuer kaynağı
 
-    Bir `ClusterIssuer` kaynak oluşturun. İmzalanan sertifikaların alınacağı sertifika yetkilisini `cert-manager` `Lets Encrypt` temsil etmek le yükümlüdür.
+    Bir `ClusterIssuer` kaynak oluşturun. İmzalı sertifikaların elde edildiği `cert-manager` `Lets Encrypt` sertifika yetkilisini göstermek için bu gereklidir.
 
-    Sertifika yöneticisi, ad alanı `ClusterIssuer` olmayan kaynağı kullanarak birden çok ad alanından tüketilebilen sertifikalar verir. `Let’s Encrypt`belirli bir etki alanı adını denetlediğinizi doğrulamak ve size bir sertifika vermek için ACME protokolünü kullanır. `ClusterIssuer` [Burada](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html)özellikleri yapılandırma hakkında daha fazla bilgi . `ClusterIssuer`sınama için kullanılan `Lets Encrypt` evreleme ortamını kullanarak sertifika lar verme talimatı `cert-manager` verir (kök sertifika tarayıcı/istemci güven depolarında bulunmaz).
+    Sertifika Yöneticisi, gösterilemez `ClusterIssuer` olmayan kaynağı kullanarak birden çok ad alanından tüketilen sertifikalar verecek. `Let’s Encrypt`, belirli bir etki alanı adını kontrol ettiğini ve size bir sertifika verildiğinizi doğrulamak için ACME protokolünü kullanır. `ClusterIssuer` [Burada](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html)özellikleri yapılandırma hakkında daha fazla bilgi. `ClusterIssuer`, `Lets Encrypt` sınama `cert-manager` için kullanılan hazırlama ortamını (tarayıcı/istemci güven depolarında bulunmayan kök sertifika) kullanarak sertifika vermesini yönlendirir.
 
-    Aşağıdaki YAML'deki varsayılan meydan `http01`okuma türü. Diğer zorluklar letsencrypt.org belgelenmiştir [- Challenge Türleri](https://letsencrypt.org/docs/challenge-types/)
+    Aşağıdaki YAML 'de varsayılan sınama türü ' dir `http01`. Diğer sorunlar [letsencrypt.org-Challenge türlerinde](https://letsencrypt.org/docs/challenge-types/) belgelenmiştir
 
     > [!IMPORTANT] 
-    > Aşağıdaki `<YOUR.EMAIL@ADDRESS>` YAML güncelleme
+    > Aşağıdaki `<YOUR.EMAIL@ADDRESS>` YAML 'de Güncelleştir
 
     ```bash
     #!/bin/bash
@@ -93,15 +93,15 @@ Varolan AKS kümenize [cert yöneticisi](https://docs.cert-manager.io) yüklemek
     EOF
     ```
 
-3. Uygulamayı Dağıt
+3. Uygulama dağıtma
 
-    Lets Encrypt Certificate ile `guestbook` Uygulama Ağ Geçidi'ni kullanarak uygulamayı ortaya çıkarmak için bir Giriş kaynağı oluşturun.
+    Application Gateway kullanarak `guestbook` uygulamayı şifrelemeyi sağlayan bir giriş kaynağı oluşturun.
 
-    Uygulama Ağ Geçidi'nde DNS adı olan ortak bir Frontend `azure.com` IP yapılandırması `Azure DNS Zone` olduğundan emin olun (varsayılan etki alanını kullanarak veya bir hizmeti sağlama ve kendi özel etki alanınızı atama).
-    Sertifika yöneticisine `certmanager.k8s.io/cluster-issuer: letsencrypt-staging`etiketlenmiş Giriş kaynağını işlemesini söyleyen ek açıklamaya dikkat edin.
+    Application Gateway bir DNS adına sahip genel ön uç IP yapılandırmasına sahip olduğunuzdan emin olun (varsayılan `azure.com` etki alanını kullanarak veya bir `Azure DNS Zone` hizmet sağlayın ve kendi özel etki alanınızı atayın).
+    , CERT Manager `certmanager.k8s.io/cluster-issuer: letsencrypt-staging`'ın etiketli giriş kaynağını işlemesini söyleyen ek açıklamayı not edin.
 
     > [!IMPORTANT] 
-    > Aşağıdaki `<PLACEHOLDERS.COM>` YAML'de kendi etki alanınızla (veya uygulama ağ geçidi yle, örneğin 'kh-aks-ingress.westeurope.cloudapp.azure.com' ile güncelleştirin)
+    > Aşağıdaki `<PLACEHOLDERS.COM>` YAML 'de kendi etki alanınızı (veya Application Gateway bir, örneğin ' KH-aks-ingress.westeurope.cloudapp.Azure.com ') güncelleştirin
 
     ```bash
     kubectl apply -f - <<EOF
@@ -127,15 +127,15 @@ Varolan AKS kümenize [cert yöneticisi](https://docs.cert-manager.io) yüklemek
     EOF
     ```
 
-    Birkaç saniye sonra, otomatik `guestbook` olarak verilen **evreleme** `Lets Encrypt` sertifikasını kullanarak Uygulama Ağ Geçidi HTTPS url'si üzerinden hizmete erişebilirsiniz.
-    Tarayıcınız geçersiz bir sertifika yetkilisi hakkında sizi uyarabilir. Evreleme sertifikası `CN=Fake LE Intermediate X1`. Bu, sistemin beklendiği gibi çalıştığının ve üretim sertifikanız için hazır olduğunuzun bir göstergesidir.
+    Birkaç saniye sonra, otomatik olarak verilen **hazırlama** `Lets Encrypt` sertifikasını `guestbook` kullanarak Application Gateway https URL 'si aracılığıyla hizmete erişebilirsiniz.
+    Tarayıcınız size geçersiz bir sertifika yetkilisi tarafından uyarı verebilir. Hazırlama sertifikası tarafından `CN=Fake LE Intermediate X1`verilir. Bu, sistemin beklendiği gibi çalıştığı ve üretim sertifikanız için size hazırlandığının göstergesidir.
 
-4. Üretim Sertifikası
+4. Üretim sertifikası
 
-    Hazırlama sertifikanız başarıyla kurulduktan sonra bir üretim ACME sunucusuna geçebilirsiniz:
-    1. Giriş kaynağınızdaki evreleme ek açıklamasını aşağıdakilerle değiştirin:`certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
-    1. Önceki adımda `ClusterIssuer` oluşturduğunuz mevcut evrelemeyi silin ve yukarıdaki ClusterIssuer YAML'deki ACME sunucusunu değiştirerek yeni bir tane oluşturun`https://acme-v02.api.letsencrypt.org/directory`
+    Hazırlama sertifikanız başarıyla kurulduktan sonra bir üretim ACME sunucusuna geçiş yapabilirsiniz:
+    1. Giriş kaynağınızın hazırlama ek açıklamasını ile değiştirin:`certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
+    1. Önceki adımda oluşturduğunuz var `ClusterIssuer` olan hazırlama ' yı silin ve yukarıdaki ' i sunucu Ile yukarıdaki CLUSTERıSSUER YAML 'den değiştirerek yeni bir tane oluşturun.`https://acme-v02.api.letsencrypt.org/directory`
 
-5. Sertifikanın Sona Ermesi ve Yenilenmesi
+5. Sertifika süre sonu ve yenileme
 
-    Sertifikanın `Lets Encrypt` süresi dolmadan önce, `cert-manager` Sertifikaknetes gizli mağazasındaotomatik olarak güncellenir. Bu noktada, Uygulama Ağ Geçidi Giriş Denetleyicisi, Uygulama Ağ Geçidi'ni yapılandırmak için kullandığı giriş kaynaklarında başvurulan güncelleştirilmiş gizliyi uygular.
+    `Lets Encrypt` Sertifikanın süresi dolmadan önce, `cert-manager` Kubernetes gizli deposundaki sertifikayı otomatik olarak güncelleştirir. Bu noktada, Application Gateway giriş denetleyicisi, Application Gateway yapılandırmak için kullandığı giriş kaynaklarında başvurulan güncelleştirilmiş gizliliği uygular.

@@ -1,6 +1,6 @@
 ---
-title: What If aracını kullanarak Koşullu Erişimi Sorun Giderme - Azure Etkin Dizini
-description: Koşullu Erişim ilkelerinin hangileri ve neden uygulandığı nerede
+title: What If aracını kullanarak koşullu erişim sorunlarını giderme-Azure Active Directory
+description: Uygulanan koşullu erişim ilkelerinin nerede bulunacağı ve neden
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,70 +12,70 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73175829"
 ---
-# <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>What If aracını kullanarak Koşullu Erişim Sorunu Giderme
+# <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>What If aracını kullanarak koşullu erişim sorunlarını giderme
 
-Koşullu Erişim'deki [İyiLer aracı,](what-if-tool.md) bir ilkenin belirli bir durumda kullanıcıya neden uygulanıp uygulanmadığını veya bilinen bir durumda bir ilkenin uygulanıp uygulanmayacağını anlamaya çalışırken güçlüdür.
+Koşullu erişim 'teki [What If aracı](what-if-tool.md) , bir ilkenin belirli bir durumdaki bir kullanıcıya veya bir ilkenin bilinen bir durumda uygulanabileceğini anlamaya çalışırken etkili olur.
 
-Ne Varsa aracı **Azure portalı** > **Azure Active Directory** > **Koşullu Erişim** > **bulunur si .**
+What If Aracı, **Azure Portal** > **Azure Active Directory** > **koşullu erişim** > **What If**bulunur.
 
-![Koşullu Erişim Varsayılan durumda araç Ne olur](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
+![Koşullu erişim What If aracı varsayılan durumda](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
 
 > [!NOTE]
-> Ne Varsa aracı şu anda yalnızca rapor modunda ilkeleri değerlendirmez.
+> What If aracı şu anda ilkeleri yalnızca rapor modunda değerlendirmez.
 
-## <a name="gathering-information"></a>Bilgi toplama
+## <a name="gathering-information"></a>Bilgi toplanıyor
 
-What If aracının başlatılması için yalnızca bir **Kullanıcı** gerektirir. 
+What If aracı yalnızca bir **kullanıcının** çalışmaya başlamanızı gerektirir. 
 
-Aşağıdaki ek bilgiler isteğe bağlıdır, ancak belirli servis taleplerinin kapsamını daraltmaya yardımcı olur.
+Aşağıdaki ek bilgiler isteğe bağlıdır, ancak belirli durumlar için kapsamı daraltmanıza yardımcı olur.
 
 * Bulut uygulamaları veya eylemleri
 * IP adresi 
 * Ülke
 * Cihaz platformu
-* İstemci uygulamaları (önizleme)
-* Aygıt durumu (önizleme) 
+* İstemci uygulamaları (Önizleme)
+* Cihaz durumu (Önizleme) 
 * Oturum açma riski
 
-Bu bilgiler kullanıcıdan, aygıtlarından veya Azure AD oturum açma günlüğünden toplanabilir.
+Bu bilgiler, kullanıcıdan, cihazlarından veya Azure AD oturum açma günlüğünden toplanabilir.
 
-## <a name="generating-results"></a>Sonuç oluşturma
+## <a name="generating-results"></a>Sonuçlar üretiliyor
 
-Önceki bölümde toplanan ölçütleri girdiniz ve bir sonuç listesi oluşturmak için **Ne Olur'u** seçin. 
+Önceki bölümde toplanan ölçütleri girin ve sonuçların listesini oluşturmak için **What If** ' ı seçin. 
 
-Herhangi bir noktada, herhangi bir ölçüt girdisini temizlemek ve varsayılan duruma dönmek için **Sıfırla'yı** seçebilirsiniz.
+Herhangi bir noktada, herhangi bir ölçüt girişini temizlemek ve varsayılan duruma geri dönmek için **Sıfırla** ' yı seçebilirsiniz.
 
-## <a name="evaluating-results"></a>Sonuçları değerlendirme
+## <a name="evaluating-results"></a>Sonuçlar değerlendiriliyor
 
 ### <a name="policies-that-will-apply"></a>Uygulanacak ilkeler
 
-Bu liste, koşullar göz önüne alındığında hangi Koşullu Erişim ilkelerinin uygulanacağını gösterir. Liste, geçerli hibe ve oturum denetimlerini içerir. Örnekler arasında belirli bir uygulamaya erişmek için çok faktörlü kimlik doğrulaması gerektirilmesi verilebilir.
+Bu liste, koşullar verildiğinde hangi koşullu erişim ilkelerinin uygulanacağını gösterir. Liste, uygulanan izin ve oturum denetimlerini içerir. Örnek olarak, belirli bir uygulamaya erişmek için çok faktörlü kimlik doğrulamasının gerekli olması dahildir.
 
-### <a name="policies-that-will-not-apply"></a>Geçerli olmayacak ilkeler
+### <a name="policies-that-will-not-apply"></a>Uygulanmayacak ilkeler
 
-Bu liste, uygulanan koşullar uygulandığında uygulanmayacak Koşullu Erişim ilkelerini gösterir. Liste, herhangi bir ilkeyi ve neden geçerli olmadıklarını içerir. Örnekler arasında, bir ilkenin dışında tutulabilecek kullanıcılar ve gruplar verilebilir.
+Bu liste, koşullar uygulandığında geçerli olmayan koşullu erişim ilkelerini gösterir. Listede tüm ilkeler ve neden uygulanmamaları yer alır. Bir ilkeden dışlanması gereken kullanıcıları ve grupları örnekler arasında yer alır.
 
 ## <a name="use-case"></a>Kullanım örneği
 
-Birçok kuruluş ağ konumlarına dayalı ilkeler oluşturur, güvenilen konumlara izin verilir ve erişimin gerçekleşmemesi gereken konumları engeller.
+Birçok kuruluş, erişim olmaması gereken güvenilen konumlara ve engelleme konumlarına izin veren ağ konumlarına dayalı ilkeler oluşturur.
 
-Bir yapılandırmanın uygun şekilde yapıldığını doğrulamak için, yönetici erişimi taklit etmek için, izin verilmesi gereken bir konumdan ve reddedilmesi gereken bir konumdan What If aracını kullanabilir.
+Bir yapılandırmanın uygun şekilde yapıldığını doğrulamak için, bir yönetici What If aracını kullanarak, izin verilmesi gereken bir konumdan ve reddedilmesi gereken bir konumdan erişimi taklit etmek için kullanabilir.
 
-![Engel erişimi ile sonuçları gösteren araç Ne Olur](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)
+![Blok erişimi olan sonuçları gösteren What If araç](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)
 
-Bu durumda, Contoso'nun bu konumdan erişimi engellediği için kullanıcının Kuzey Kore seyahatinde herhangi bir bulut uygulamasına erişmeleri engellenir.
+Bu örnekte, contoso 'nun bu konumdan erişimi engellediği için kullanıcının, yolculuğuna yönelik tüm bulut uygulamalarını Kuzey Kore 'ye erişmesi engellenir.
 
-Bu sınama kapsamı daraltmak için diğer veri noktaları dahil etmek için genişletilebilir.
+Bu test, kapsamı daraltmak için diğer veri noktalarını içerecek şekilde genişletilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Koşullu Erişim Nedir?](overview.md)
+* [Koşullu Erişim nedir?](overview.md)
 * [Azure Active Directory Kimlik Koruması nedir?](../identity-protection/overview-v2.md)
 * [Cihaz kimliği nedir?](../devices/overview.md)
 * [Nasıl çalışır: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)

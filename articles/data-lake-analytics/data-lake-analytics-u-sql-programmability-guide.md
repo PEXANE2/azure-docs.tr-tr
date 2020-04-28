@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gölü için U-SQL programlanabilirlik kılavuzu
-description: Azure Veri Gölü Analytics'te bulut tabanlı büyük veri platformu oluşturmanıza olanak tanıyan hizmet kümesi hakkında bilgi edinin.
+title: Azure Data Lake için U-SQL programlamasına yönelik yönergeler
+description: Azure Data Lake Analytics ' de bulut tabanlı büyük veri platformu oluşturmanızı sağlayan hizmet kümesi hakkında bilgi edinin.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,23 +10,23 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: dc55615d7a5c6ae9a393ed4fd5f49cd92aedc0f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73162586"
 ---
-# <a name="u-sql-programmability-guide"></a>U-SQL programlanabilirlik kılavuzu
+# <a name="u-sql-programmability-guide"></a>U-SQL programlama kılavuzu
 
-U-SQL, büyük veri türü iş yükleri için tasarlanmış bir sorgu dilidir. U-SQL'in benzersiz özelliklerinden biri, C# tarafından sağlanan genişletilebilirlik ve programlanabilirlik ile SQL benzeri bildirimdilinin birleşimidir. Bu kılavuzda, C# tarafından etkinleştirilen U-SQL dilinin genişletilebilirliğine ve programlanabilirliğine odaklanırız.
+U-SQL, büyük veri iş yükleri türü için tasarlanan bir sorgu dilidir. U-SQL ' n i n benzersiz özelliklerinden biri, C# tarafından sunulan genişletilebilirlik ve programlama ile SQL benzeri bildirime dayalı dilin birleşimidir. Bu kılavuzda, C# tarafından etkinleştirilen U-SQL dilinin genişletilebilirlik ve programlamasına odaklanıyoruz.
 
 ## <a name="requirements"></a>Gereksinimler
 
-[Visual Studio için Azure Veri Gölü Araçlarını](https://www.microsoft.com/download/details.aspx?id=49504)indirin ve yükleyin.
+[Visual Studio için Azure Data Lake araçları](https://www.microsoft.com/download/details.aspx?id=49504)indirin ve yükleyin.
 
 ## <a name="get-started-with-u-sql"></a>U-SQL kullanmaya başlama  
 
-Aşağıdaki U-SQL komut dosyasına bakın:
+Aşağıdaki U-SQL betiğine bakın:
 
 ```
 @a  = 
@@ -44,11 +44,11 @@ Aşağıdaki U-SQL komut dosyasına bakın:
   FROM @a;    
 ```
 
-Bu komut dosyası iki `@a` Satır `@results`Kümesini tanımlar: ve . RowSet `@results` `@a`tanımlanır.
+Bu betik iki satır kümesi tanımlar `@a` : `@results`ve. Satır `@results` kümesi öğesinden `@a`tanımlandı.
 
-## <a name="c-types-and-expressions-in-u-sql-script"></a>U-SQL komut dosyasında C# türleri ve ifadeleri
+## <a name="c-types-and-expressions-in-u-sql-script"></a>U-SQL betikteki C# türleri ve ifadeleri
 
-U-SQL İfadesi, U-SQL mantıksal işlemleri `AND` `OR`ile birlikte `NOT`bir C# ifadesidir. U-SQL İfadeleri SELECT, EXTRACT, WHERE, HAVING, GROUP BY ve DECLARE ile kullanılabilir. Örneğin, aşağıdaki komut dosyası bir dizeyi DateTime değeri olarak parslar.
+U-SQL ifadesi, `AND` `OR`, ve `NOT`gibi u-SQL mantıksal işlemleriyle birleştirilmiş bir C# deyimidir. U-SQL Ifadeleri SELECT, EXTRACT, WHERE, HAVING, GROUP BY ve DECLARE ile kullanılabilir. Örneğin, aşağıdaki betik bir dizeyi bir tarih saat değeri olarak ayrıştırır.
 
 ```
 @results =
@@ -59,15 +59,15 @@ U-SQL İfadesi, U-SQL mantıksal işlemleri `AND` `OR`ile birlikte `NOT`bir C# i
   FROM @a;    
 ```
 
-Aşağıdaki parçacık, DECLARE deyiminde datetime değeri olarak bir dize parses.
+Aşağıdaki kod parçacığı bir dizeyi DECLARE ifadesinde DateTime değeri olarak ayrıştırır.
 
 ```
 DECLARE @d = DateTime.Parse("2016/01/01");
 ```
 
-### <a name="use-c-expressions-for-data-type-conversions"></a>Veri türü dönüştürmeleri için C# ifadelerini kullanma
+### <a name="use-c-expressions-for-data-type-conversions"></a>Veri türü dönüştürmeleri için C# ifadeleri kullanma
 
-Aşağıdaki örnek, C# ifadelerini kullanarak tarih zamanı veri dönüştürmesini nasıl yapabileceğinizi göstermektedir. Bu özel senaryoda, string datetime verileri gece yarısı 00:00:00 saat gösterimi ile standart datetime dönüştürülür.
+Aşağıdaki örnek, C# ifadelerini kullanarak bir tarih saat veri dönüştürmeyi nasıl yapabileceğinizi göstermektedir. Bu senaryoda, dize datetime verileri, gece 00:00:00 saat gösterimi ile standart tarih saat biçimine dönüştürülür.
 
 ```
 DECLARE @dt = "2016-07-06 10:23:15";
@@ -83,11 +83,11 @@ OUTPUT @rs1
   USING Outputters.Text();
 ```
 
-### <a name="use-c-expressions-for-todays-date"></a>Bugünün tarihi için C# ifadelerini kullanma
+### <a name="use-c-expressions-for-todays-date"></a>Bugünün tarihi için C# ifadelerini kullanın
 
 Bugünün tarihini çekmek için aşağıdaki C# ifadesini kullanabiliriz:`DateTime.Now.ToString("M/d/yyyy")`
 
-Bu ifadenin komut dosyasında nasıl kullanılacağına bir örnek aşağıda verilmiştir:
+Bu ifadenin bir betikte nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
 
 ```
 @rs1 =
@@ -102,43 +102,43 @@ Bu ifadenin komut dosyasında nasıl kullanılacağına bir örnek aşağıda ve
   FROM @rs0
   GROUP BY user, des;
 ```
-## <a name="using-net-assemblies"></a>.NET montajlarını kullanma
+## <a name="using-net-assemblies"></a>.NET derlemelerini kullanma
 
-U-SQL'in genişletilebilirlik modeli, .NET derlemelerinden özel kod ekleme yeteneğine büyük ölçüde dayanır. 
+U-SQL ' i n genişletilebilirlik modeli, .NET derlemelerinden özel kod ekleme imkanını kullanır. 
 
-### <a name="register-a-net-assembly"></a>Bir .NET derlemesi kaydedin
+### <a name="register-a-net-assembly"></a>.NET derlemesini kaydetme
 
-Bir `CREATE ASSEMBLY` U-SQL Veritabanına .NET derlemesi yerleştirmek için deyimi kullanın. Daha sonra, U-SQL komut dosyaları `REFERENCE ASSEMBLY` deyimini kullanarak bu derlemeleri kullanabilir. 
+Bir .NET `CREATE ASSEMBLY` derlemesini U-SQL veritabanına yerleştirmek için ifadesini kullanın. Daha sonra, U-SQL betikleri bu derlemeleri, `REFERENCE ASSEMBLY` ifadesini kullanarak kullanabilir. 
 
-Aşağıdaki kod, bir derlemenin nasıl kaydedilebildiğini gösterir:
+Aşağıdaki kod, bir derlemenin nasıl kaydedileceği gösterilmektedir:
 
 ```
 CREATE ASSEMBLY MyDB.[MyAssembly]
    FROM "/myassembly.dll";
 ```
 
-Aşağıdaki kod, bir derlemeye nasıl başvurulsüreceğini gösterir:
+Aşağıdaki kod, bir derlemeye nasıl başvurululacağını gösterir:
 
 ```
 REFERENCE ASSEMBLY MyDB.[MyAssembly];
 ```
 
-Bu konuyu daha ayrıntılı olarak kapsayan [montaj kayıt yönergelerine](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/) başvurun.
+Bu konuyu daha ayrıntılı olarak ele alan [derleme kayıt yönergelerine](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/) başvurun.
 
 
-### <a name="use-assembly-versioning"></a>Montaj sürümünü kullanma
-Şu anda U-SQL .NET Framework sürüm 4.5'i kullansın. Bu nedenle, kendi derlemelerinizin çalışma zamanının bu sürümüyle uyumlu olduğundan emin olun.
+### <a name="use-assembly-versioning"></a>Derleme sürümü oluşturma kullan
+Şu anda U-SQL .NET Framework 4,5 sürümünü kullanıyor. Bu nedenle, kendi derlemelerinizin çalışma zamanının bu sürümü ile uyumlu olduğundan emin olun.
 
-Daha önce de belirtildiği gibi, U-SQL 64 bit (x64) biçiminde kod çalışır. Bu nedenle kodunuzu x64 üzerinde çalışacak şekilde derlenmiş olduğundan emin olun. Aksi takdirde daha önce gösterilen yanlış biçim hatası olsun.
+Daha önce belirtildiği gibi, U-SQL kodu 64 bit (x64) biçiminde çalıştırır. Bu nedenle, kodunuzun x64 üzerinde çalışacak şekilde derlendiğinden emin olun. Aksi takdirde, daha önce gösterilen yanlış biçim hatasını alırsınız.
 
-Farklı bir çalışma zamanı, yerel derleme veya config dosyası gibi yüklenen her yükleme li DLL ve kaynak dosyası en fazla 400 MB olabilir. Dağıtılan kaynakların toplam boyutu, YA DEPLOY RESOURCE aracılığıyla veya derlemelere ve ek dosyalarına yapılan başvurular yoluyla, 3 GB'ı geçemez.
+Karşıya yüklenen her derleme DLL 'SI ve farklı bir çalışma zamanı, yerel bir derleme veya bir yapılandırma dosyası gibi kaynak dosyası en fazla 400 MB olabilir. Dağıtılan kaynakların toplam boyutu, kaynak DAĞıTMA yoluyla veya derlemelere ve bunların ek dosyalarına başvurular aracılığıyla 3 GB 'ı aşamaz.
 
-Son olarak, her U-SQL veritabanının belirli bir derlemenin yalnızca bir sürümünü içerebileceğini unutmayın. Örneğin, NewtonSoft Json.NET kitaplığı sürüm 7 ve sürüm 8'e ihtiyacınız varsa, bunları iki farklı veritabanına kaydetmeniz gerekir. Ayrıca, her komut dosyası yalnızca belirli bir derleme DLL bir sürümü ne başvurulabilir. Bu bağlamda, U-SQL C# montaj yönetimini ve semantik lerini sürüm den izler.
+Son olarak, her U-SQL veritabanının belirli bir derlemenin yalnızca bir sürümünü içerebileceğini unutmayın. Örneğin, NewtonSoft Json.NET kitaplığının hem sürüm 7 hem de sürüm 8 ' e ihtiyacınız varsa, bunları iki farklı veritabanına kaydetmeniz gerekir. Ayrıca, her bir betik belirli bir derleme DLL 'inin yalnızca bir sürümüne başvurabilir. Bu bakımdan, U-SQL C# derleme yönetimi ve sürüm oluşturma semantiğini izler.
 
-## <a name="use-user-defined-functions-udf"></a>Kullanıcı tanımlı işlevleri kullanın: UDF
-U-SQL kullanıcı tanımlı işlevler veya UDF, parametreleri kabul eden, bir eylem gerçekleştiren (karmaşık bir hesaplama gibi) ve bu eylemin sonucunu bir değer olarak döndüren programlama yordamlarıdır. UDF'nin geri dönüş değeri yalnızca tek bir skaler olabilir. U-SQL UDF, diğer C# skaler işlevleri gibi U-SQL baz komut dosyasında çağrılabilir.
+## <a name="use-user-defined-functions-udf"></a>Kullanıcı tanımlı işlevleri kullan: UDF
+U-SQL Kullanıcı tanımlı işlevleri veya UDF, parametreleri kabul eden, bir eylem gerçekleştiren (karmaşık bir hesaplama gibi) ve bu eylemin sonucunu bir değer olarak döndüren programlama yordamlardır. UDF 'nin dönüş değeri yalnızca tek bir skaler olabilir. U-SQL UDF, diğer C# skalar işlevleri gibi U-SQL temel komut dosyasında çağrılabilir.
 
-U-SQL kullanıcı tanımlı işlevleri **nigenel** ve **statik**olarak başlatmanızı öneririz.
+U-SQL Kullanıcı tanımlı işlevlerini **ortak** ve **statik**olarak başlatmalarını öneririz.
 
 ```
 public static string MyFunction(string param1)
@@ -147,11 +147,11 @@ public static string MyFunction(string param1)
 }
 ```
 
-Önce bir UDF oluşturma basit bir örnek bakalım.
+İlk olarak, UDF oluşturmaya yönelik basit bir örneğe bakalım.
 
-Bu kullanım durumu senaryosunda, belirli bir kullanıcı için ilk oturum açmanın mali üç aylık ve mali ayı da dahil olmak üzere mali dönemi belirlememiz gerekir. Senaryomuzda yılın ilk mali ayı Haziran'dır.
+Bu kullanım örneği senaryosunda, belirli bir kullanıcı için ilk oturum açma 'nın mali çeyreği ve mali ayı dahil olmak üzere mali dönemi belirlememiz gerekir. Senaryolarımızda yılın ilk mali ayı Haziran ' dır.
 
-Mali dönemi hesaplamak için aşağıdaki C# fonksiyonunu tanıtıyoruz:
+Mali dönemi hesaplamak için aşağıdaki C# işlevini sunuyoruz:
 
 ```
 public static string GetFiscalPeriod(DateTime dt)
@@ -188,11 +188,11 @@ public static string GetFiscalPeriod(DateTime dt)
 }
 ```
 
-Yalnızca mali ayı ve üç aylık dönemi hesaplar ve bir dize değeri döndürür. İlk mali çeyreğin ilk ayı olan Haziran ayında "Q1:P1"i kullanırız. Temmuz için ,biz "Q1:P2" ve benzeri kullanın.
+Yalnızca mali ayı ve çeyreği hesaplar ve bir dize değeri döndürür. Haziran için ilk mali çeyreğin ilk ayı olarak "Q1: P1" kullanırız. Temmuz için "Q1: P2", vb. kullanıyoruz.
 
-Bu, U-SQL projemizde kullanacağımız normal bir C# fonksiyonudur.
+Bu, U-SQL projemizdeki kullanabilmemiz için normal bir C# işlevidir.
 
-Kod arkası bölümü bu senaryoda şu şekilde görünür:
+Arka plan kod bölümünün Bu senaryoda nasıl göründüğünü aşağıda bulabilirsiniz:
 
 ```
 using Microsoft.Analytics.Interfaces;
@@ -242,13 +242,13 @@ namespace USQL_Programmability
 }
 ```
 
-Şimdi bu işlevi temel U-SQL komut dosyasından adlandıracağız. Bunu yapmak için, bu durumda NameSpace.Class.Function (parametre) olan ad alanı da dahil olmak üzere işlev için tam nitelikli bir ad sağlamamız gerekir.
+Şimdi bu işlevi temel U-SQL betiğiyle çağıracağız. Bunu yapmak için, bu örnekte ad alanı. Class. Function (parametre) olan ad alanı da dahil olmak üzere, işlev için tam nitelikli bir ad sağlamamız gerekir.
 
 ```
 USQL_Programmability.CustomFunctions.GetFiscalPeriod(dt)
 ```
 
-Aşağıdaki gerçek U-SQL temel komut dosyası:
+Aşağıda gerçek U-SQL taban betiği verilmiştir:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -280,7 +280,7 @@ OUTPUT @rs1
     USING Outputters.Text();
 ```
 
-Komut dosyası yürütme çıktı dosyası aşağıdadır:
+Komut dosyası yürütmenin çıkış dosyası aşağıda verilmiştir:
 
 ```
 0d8b9630-d5ca-11e5-8329-251efa3a2941,2016-02-11T07:04:17.2630000-08:00,2016-06-01T00:00:00.0000000,"Q3:8","User1",""
@@ -290,22 +290,22 @@ Komut dosyası yürütme çıktı dosyası aşağıdadır:
 301f23d2-d690-11e5-9a98-4b4f60a1836f,2016-02-11T09:01:33.9720000-08:00,2016-06-01T00:00:00.0000000,"Q3:8","User3",""
 ```
 
-Bu örnek, U-SQL'de satır içi UDF'nin basit bir kullanımını göstermektedir.
+Bu örnek, U-SQL ' de satır içi UDF 'nin basit bir kullanımını gösterir.
 
-### <a name="keep-state-between-udf-invocations"></a>UDF çağrıları arasında durumu koruma
-U-SQL C# programlanabilirlik nesneleri, kod arkasındaki global değişkenler aracılığıyla etkileşimi kullanarak daha karmaşık olabilir. Aşağıdaki iş kullanım örneği senaryosuna bakalım.
+### <a name="keep-state-between-udf-invocations"></a>UDF çağırmaları arasında durumu koru
+U-SQL C# programlama nesneleri daha karmaşık olabilir ve arka plan kod genel değişkenleri aracılığıyla etkileşimten faydalenebilir. Aşağıdaki iş kullanım örneği senaryosuna bakalım.
 
-Büyük kuruluşlarda, kullanıcılar dahili uygulama çeşitleri arasında geçiş yapabilir. Bunlar Microsoft Dynamics CRM, PowerBI ve benzeri içerir. Müşteriler, kullanıcıların farklı uygulamalar arasında nasıl geçiş yaptıklarına, kullanım eğilimlerinin ne olduğuna ve benzeri konularda bir telemetri çözümlemesi uygulamak isteyebilir. İşletmenin amacı uygulama kullanımını optimize etmektir. Ayrıca, farklı uygulamaları veya belirli oturum açma yordamlarını birleştirmek isteyebilirler.
+Büyük kuruluşlarda, kullanıcılar iç uygulamaların değişen özellikleri arasında geçiş yapabilir. Bunlar, Microsoft Dynamics CRM, PowerBI vb. içerebilir. Müşteriler, kullanıcıların farklı uygulamalar arasında nasıl geçiş yaptığını, kullanım eğilimlerinin ne olduğunu vb. bir telemetri Analizi uygulamak isteyebilir. İş için amaç, uygulama kullanımını iyileştirmektir. Ayrıca, farklı uygulamaları veya belirli oturum açma yordamlarını birleştirmek isteyebilirsiniz.
 
-Bu amaca ulaşmak için, gerçekleşen son oturum arasındaki oturum adlarını ve gecikme süresini belirlememiz gerekir.
+Bu hedefe ulaşmak için, gerçekleşen son oturum arasındaki oturum kimliklerini ve gecikme süresini belirlememiz gerekir.
 
-Önceki oturum açma yı bulmamız ve ardından bu oturuma aynı uygulamaya oluşturulan tüm oturumlara atamamız gerekir. İlk zorluk, U-SQL temel komut dosyasının LAG işlevine sahip zaten hesaplanmış sütunlar üzerinde hesaplamalar uygulamamıza izin vermemesidir. İkinci zorluk, tüm seanslar için belirli oturumu aynı zaman dilimi içinde tutmamız gerektiğidir.
+Önceki bir oturum açma bulduk ve bu oturum açma 'yı aynı uygulamaya oluşturulmakta olan tüm oturumlara atamanız gerekir. İlk zorluk, U-SQL taban betiğinizin, zaten GECIKME işlevli, önceden hesaplanmış sütunlar üzerinden hesaplamalar uygulamamıza izin vermediği bir sorundur. İkinci zorluk, belirli bir oturumu aynı süre içindeki tüm oturumlar için tutmanız gerekir.
 
-Bu sorunu çözmek için, kod arkası bölümünde genel `static public string globalSession;`bir değişken kullanırız: .
+Bu sorunu çözmek için, arka plan kod bölümünün içinde genel bir değişken kullanıyoruz: `static public string globalSession;`.
 
-Bu genel değişken, komut dosyası yürütmemiz sırasında tüm satır kümesine uygulanır.
+Bu genel değişken, komut dosyası yürütme sırasında tüm satır kümesine uygulanır.
 
-U-SQL programımızın kod arkası bölümü aşağıdaverevettir:
+U-SQL programımızın arka plan kod bölümü aşağıda verilmiştir:
 
 ```
 using Microsoft.Analytics.Interfaces;
@@ -343,9 +343,9 @@ namespace USQLApplication21
 }
 ```
 
-Bu örnek, `static public string globalSession;` `getStampUserSession` işlev içinde kullanılan genel değişkeni gösterir ve Oturum parametresi her değiştirilince yeniden başharfe dönüştürülebilir.
+Bu örnek, `getStampUserSession` işlev içinde kullanılan `static public string globalSession;` genel değişkeni gösterir ve oturum parametresi her değiştirildiğinde yeniden başlatılır.
 
-U-SQL temel komut dosyası aşağıdaki gibidir:
+U-SQL taban betiği aşağıdaki gibidir:
 
 ```
 DECLARE @in string = @"\UserSession\test1.tsv";
@@ -395,9 +395,9 @@ OUTPUT @rs2
     USING Outputters.Csv();
 ```
 
-İşlev `USQLApplication21.UserSession.getStampUserSession(UserSessionTimestamp)` burada ikinci bellek rowset hesaplama sırasında denir. Sütundan `UserSessionTimestamp` geçer ve değiştirilene `UserSessionTimestamp` kadar değeri döndürür.
+İşlevi `USQLApplication21.UserSession.getStampUserSession(UserSessionTimestamp)` ikinci bellek satır kümesi hesaplaması sırasında burada çağırılır. `UserSessionTimestamp` Sütunu geçirir ve değiştirilene kadar `UserSessionTimestamp` değeri döndürür.
 
-Çıktı dosyası aşağıdaki gibidir:
+Çıkış dosyası aşağıdaki gibidir:
 
 ```
 "2016-02-19T07:32:36.8420000-08:00","User1",,True,"72a0660e-22df-428e-b672-e0977007177f"
@@ -424,17 +424,17 @@ OUTPUT @rs2
 "2016-02-19T01:20:31.4800000-08:00","User4","2016-02-18T14:37:27.6560000-08:00",False,"2136f4cf-7c7d-43c1-8ae2-08f4ad6a6e08"
 ```
 
-Bu örnek, tüm bellek satır kümesine uygulanan kod arkası bölümünde genel bir değişken kullandığımız daha karmaşık bir kullanım örneği senaryosunu göstermektedir.
+Bu örnekte, tüm bellek satır kümesine uygulanan bir arka plan kod bölümü içinde genel bir değişken kullandığımız daha karmaşık bir kullanım örneği senaryosu gösterilmektedir.
 
-## <a name="use-user-defined-types-udt"></a>Kullanıcı tanımlı türleri kullanın: UDT
-Kullanıcı tanımlı türleri veya UDT, U-SQL'in başka bir programlanabilirlik özelliğidir. U-SQL UDT normal bir C# kullanıcı tanımlı türü gibi davranır. C# yerleşik ve özel kullanıcı tanımlı türlerin kullanımına izin veren güçlü bir şekilde yazılan bir dildir.
+## <a name="use-user-defined-types-udt"></a>Kullanıcı tanımlı türleri kullan: UDT
+Kullanıcı tanımlı türler veya UDT, U-SQL ' n i n diğer bir programlama özelliğidir. U-SQL UDT, normal bir C# Kullanıcı tanımlı tür gibi davranır. C#, yerleşik ve özel kullanıcı tanımlı türlerin kullanılmasına izin veren, türü kesin belirlenmiş bir dildir.
 
-U-SQL, UDT satır kümeslerinde vertices arasında geçirildiğinde rasgele UDT'leri dolaylı olarak serileştiremez veya seriselleştiremez. Bu, kullanıcının IFormatter arabirimini kullanarak açık bir formatter sağlaması gerektiği anlamına gelir. Bu, UDT için serileştirme ve deserialize yöntemleri ile U-SQL sağlar.
+U-SQL, bir UDT satır kümelerinde köşeler arasında geçirildiğinde rastgele olarak seri hale getirilemez veya seri durumdan çıkarılamıyor. Bu, kullanıcının IFormatter arabirimini kullanarak bir açık biçimlendirici sağlaması gerektiği anlamına gelir. Bu, UDT için serileştirme ve seri hale getirme yöntemleriyle U-SQL sağlar.
 
 > [!NOTE]
-> U-SQL'in yerleşik çıkarıcıları ve çıktıları şu anda UDT verilerini IFormatter kümesinde bile dosyalara veya dosyalardan serihale edemez veya serileştiremez. Bu nedenle, OUTPUT deyimi içeren bir dosyaya UDT verilerini yazarken veya bir çıkarıcıyla okurken, bir dize veya bayt dizisi olarak geçirmeniz gerekir. Sonra serileştirme ve deserialization kodu (yani, UDT's ToString() yöntemi) açıkça diyoruz. Kullanıcı tanımlı çıkarıcılar ve çıktılar, diğer taraftan, okuyabilir ve UDTs yazabilirsiniz.
+> U-SQL ' n i n yerleşik ayıklayıcıları ve outputşu anda, ıbiçimlendirici kümesi ile birlikte, UDT verilerini veya dosyalarından seri hale getirilemez veya seri durumdan çıkarılamıyor. Bu nedenle, bir dosyayı çıkış bildirimiyle bir dosyaya yazarken veya bir ayıklayıcısı ile okurken, bunu bir dize veya bayt dizisi olarak geçirmeniz gerekir. Daha sonra serileştirme ve seri durumdan çıkarma kodunu (yani, UDT 'nin ToString () yöntemi) açık olarak çağırabilirsiniz. Diğer yandan Kullanıcı tanımlı ayıklayıcıları ve outputler, UDTs okuyup yazabilir.
 
-BURADA gösterildiği gibi, EXTRACTOR veya OUTPUTTER 'de (önceki SELECT dışında) UDT kullanmaya çalışırsak:
+UDT 'yi, (önceki SEÇIM dışında) EXTRACTOR veya OUTPUT' i kullanmaya çalışırsam, burada gösterildiği gibi:
 
 ```
 @rs1 =
@@ -447,7 +447,7 @@ OUTPUT @rs1
     USING Outputters.Text();
 ```
 
-Aşağıdaki hatayı alıyoruz:
+Aşağıdaki hatayı alıyorsunuz:
 
 ```
 Error   1   E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
@@ -464,9 +464,9 @@ the preceding SELECT.   C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\
 USQL-Programmability\Types.usql 52  1   USQL-Programmability
 ```
 
-Outputter udt ile çalışmak için, ya ToString() yöntemi ile dize serileştirmek veya özel bir çıktı oluşturabilirsiniz.
+Outputter 'da UDT ile çalışmak için, bunu ToString () yöntemiyle String 'e serileştirmemiz veya özel bir outputter oluşturmanız gerekir.
 
-ŞU ANDA GRUP BY'de UDT'ler kullanılamaz. GROUP BY'de UDT kullanılıyorsa, aşağıdaki hata atılır:
+UDTs Şu anda GROUP BY içinde kullanılamaz. UDT GROUP BY içinde kullanılıyorsa aşağıdaki hata oluşur:
 
 ```
 Error   1   E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
@@ -483,7 +483,7 @@ C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\USQ
 62  5   USQL-Programmability
 ```
 
-Bir UDT tanımlamak için şunları yapmamız gerekir:
+Bir UDT tanımlamak için şunları yapmanız gerekir:
 
 * Aşağıdaki ad alanlarını ekleyin:
 
@@ -492,19 +492,19 @@ using Microsoft.Analytics.Interfaces
 using System.IO;
 ```
 
-* UDT `Microsoft.Analytics.Interfaces`arabirimleri için gerekli olan ekle. Buna ek `System.IO` olarak, IFormatter arabirimini tanımlamak için gerekli olabilir.
+* UDT `Microsoft.Analytics.Interfaces`arabirimleri için gerekli olan öğesini ekleyin. Ayrıca, `System.IO` IFormatter arabirimini tanımlamak gerekebilir.
 
-* SqlUserDefinedType özniteliği ile kullanılmış tanımlı bir tür tanımlayın.
+* SqlUserDefinedType özniteliğiyle kullanılan tanımlı bir tür tanımlayın.
 
-**SqlUserDefinedType,** bir derlemedeki bir tür tanımını U-SQL'de kullanıcı tanımlı tür (UDT) olarak işaretlemek için kullanılır. Öznitelikteki özellikler UDT'nin fiziksel özelliklerini yansıtır. Bu sınıf devralınamaz.
+**SqlUserDefinedType** , bir derlemedeki tür tanımını U-SQL içinde Kullanıcı tanımlı tür (udt) olarak işaretlemek için kullanılır. Öznitelikteki özellikler, UDT 'nin fiziksel özelliklerini yansıtır. Bu sınıf devralınamaz.
 
-SqlUserDefinedType UDT tanımı için gerekli bir özniteliktir.
+SqlUserDefinedType, UDT tanımı için gerekli bir özniteliktir.
 
-Sınıfın oluşturucusu:  
+Sınıfının Oluşturucusu:  
 
-* SqlUserDefinedTypeAttribute (type formatter)
+* SqlUserDefinedTypeAttribute (tür biçimlendirici)
 
-* Formatter yazın: Bir UDT formatter tanımlamak için gerekli parametre - özellikle, `IFormatter` arabirim türü burada geçirilmelidir.
+* Tür biçimlendirici: bir UDT biçimlendirici tanımlamak için gerekli parametre--özellikle `IFormatter` arabirimin türü geçirilmelidir.
 
 ```
 [SqlUserDefinedType(typeof(MyTypeFormatter))]
@@ -512,7 +512,7 @@ public class MyType
 { … }
 ```
 
-* Tipik UDT, aşağıdaki örnekte gösterildiği gibi IFormatter arabiriminin tanımını da gerektirir:
+* Tipik UDT, aşağıdaki örnekte gösterildiği gibi, IFormatter arabiriminin tanımını de gerektirir:
 
 ```
 public class MyTypeFormatter : IFormatter<MyType>
@@ -525,27 +525,27 @@ public class MyTypeFormatter : IFormatter<MyType>
 }
 ```
 
-Arabirim, `IFormatter` \<daktinomref adı="T" > kök türüne sahip bir nesne grafiğini serihale eder ve seri olarak devre dışı eder.
+Arabirim `IFormatter` , \<typeparamref Name = "T" > kök türü ile bir nesne grafiğini serileştirir ve serbest olarak serileştirir.
 
-\<typeparam adı="T">Nesne grafiğinin serihale ve seriselleştirmesi için kök türü.
+\<typeparam Name = "T" >serileştirme ve seri hale getirme için nesne grafiğinin kök türü.
 
-* **Deserialize**: Sağlanan akıştaki verileri deserialize eder ve nesnelerin grafiğini yeniden oluşturur.
+* **Seri durumdan çıkarma**: verileri belirtilen akışta ve nesnelerin grafının reconstitutes seri hale getirir.
 
-* Serialize : Verilen kökle birlikte bir nesneyi veya nesnelerin grafiğini, sağlanan akışa **serileştirir.**
+* **Serileştirme**: belirtilen akışa verilen köke sahip bir nesneyi veya nesne grafiğini seri hale getirir.
 
-`MyType`örnek: Türü örneği.  
-`IColumnWriter`yazar `IColumnReader` / okuyucu: Altta yatan sütun akışı.  
-`ISerializationContext`bağlam: Serileştirme sırasında akışın kaynağını veya hedef bağlamını belirten bir bayrak kümesitanımlayan enum.
+`MyType`Örnek: türünün örneği.  
+`IColumnWriter`Yazıcı/ `IColumnReader` okuyucu: temel alınan sütun akışı.  
+`ISerializationContext`Bağlam: serileştirme sırasında akış için kaynak veya hedef bağlamını belirten bir bayrak kümesini tanımlayan sabit listesi.
 
-* **Orta**: Kaynak veya hedef bağlamın kalıcı bir depo olmadığını belirtir.
+* **Ara**: kaynak veya hedef bağlamın kalıcı bir depo olduğunu belirtir.
 
-* **Kalıcılık**: Kaynak veya hedef bağlamın kalıcı bir depo olduğunu belirtir.
+* **Kalıcılık**: kaynak veya hedef bağlamın kalıcı bir mağaza olduğunu belirtir.
 
-Normal bir C# türü olarak, U-SQL UDT tanımı +/======== gibi işleçler için geçersiz kılmalar içerebilir. Statik yöntemleri de içerebilir. Örneğin, bu UDT'yi U-SQL MIN toplam işlevine parametre olarak kullanacaksak, < işleci geçersiz kılmayı tanımlamamız gerekir.
+Normal bir C# türü olarak, bir U-SQL UDT tanımı +/= =/! = gibi işleçler için geçersiz kılma işlemleri içerebilir. Statik yöntemler de içerebilir. Örneğin, bu UDT 'yi bir U-SQL MIN toplam işlevine parametre olarak kullanacaksanız, < işleci geçersiz kılmayı tanımlamanız gerekir.
 
-Daha önce bu kılavuzda, biçimdeki `Qn:Pn (Q1:P10)`belirli tarihten mali dönem tanımlaması için bir örnek gösterdik. Aşağıdaki örnek, mali dönem değerleri için özel bir türün nasıl tanımlandığını gösterir.
+Bu kılavuzda daha önce, biçimdeki `Qn:Pn (Q1:P10)`belirli bir tarihten itibaren mali dönem tanımlama için bir örnek verilmiştir. Aşağıdaki örnek, mali dönem değerleri için nasıl özel bir tür tanımlanacağını gösterir.
 
-Aşağıda özel UDT ve IFormatter arabirimi ile bir kod arkası bölümü bir örnektir:
+Özel UDT ve IFormatter arabirimi ile arka plan kod bölümünün bir örneği aşağıda verilmiştir:
 
 ```
 [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
@@ -646,11 +646,11 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-Tanımlanan tür iki sayı içerir: üç aylık ve ay. Operatörler `==/!=/>/<` ve `ToString()` statik yöntem burada tanımlanır.
+Tanımlı tür iki sayı içerir: çeyrek ve ay. Operators `==/!=/>/<` ve static yöntemi `ToString()` burada tanımlanmıştır.
 
-Daha önce de belirtildiği gibi, UDT SELECT ifadelerinde kullanılabilir, ancak özel serileştirme olmadan OUTPUTTER/EXTRACTOR'da kullanılamaz. Ya özel bir OUTPUTTER /EXTRACTOR ile `ToString()` bir dize olarak serihale veya kullanılması gerekir.
+Daha önce belirtildiği gibi, UDT SELECT ifadelerinde kullanılabilir, ancak özel serileştirme olmadan OUTPUTTER/EXTRACTOR içinde kullanılamaz. Ya da özel bir OUTPUTTER/EXTRACTOR ile kullanılan `ToString()` bir dize olarak serileştirilmelidir.
 
-Şimdi UDT kullanımını tartışalım. Kod arkası bölümünde, GetFiscalPeriod işlevimizi aşağıdaki şekilde değiştirdik:
+Şimdi UDT kullanımını tartışalım. Arka plan kod bölümünde, Getfcalperiod işlevimizi şu şekilde değiştirdik:
 
 ```
 public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
@@ -687,9 +687,9 @@ public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
 }
 ```
 
-Gördüğünüz gibi, Mali Dönem türümüzün değerini döndürür.
+Gördüğünüz gibi, Fcalperiod türünden değeri döndürür.
 
-Burada u-SQL temel komut dosyasında daha fazla nasıl kullanılacağına bir örnek salıyoruz. Bu örnek, U-SQL komut dosyasından farklı UDT çağırma biçimlerini gösterir.
+Burada U-SQL temel komut dosyasında nasıl kullanacağınızı gösteren bir örnek sunuyoruz. Bu örnek, U-SQL betikten farklı UDT çağırma biçimlerini gösterir.
 
 ```
 DECLARE @input_file string = @"c:\work\cosmos\usql-programmability\input_file.tsv";
@@ -735,7 +735,7 @@ OUTPUT @rs2
     USING Outputters.Text();
 ```
 
-Burada tam bir kod arkası bölümüne bir örnek verilmiştir:
+Aşağıda, arka plan kod bölümünün bir örneği verilmiştir:
 
 ```
 using Microsoft.Analytics.Interfaces;
@@ -895,10 +895,10 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-## <a name="use-user-defined-aggregates-udagg"></a>Kullanıcı tanımlı agregalar kullanın: UDAGG
-Kullanıcı tanımlı agregalar, U-SQL ile kutudan dışarı gönderilmemiş toplama yla ilgili işlevlerdir. Örnek, özel matematik hesaplamaları, dize concatenations, dizeleri ile manipülasyonlar ve benzeri gerçekleştirmek için bir toplam olabilir.
+## <a name="use-user-defined-aggregates-udagg"></a>Kullanıcı tanımlı toplamaları kullan: UBAGG
+Kullanıcı tanımlı toplamalar, U-SQL ile kullanıma sunulmayan toplamada ilgili tüm işlevlerdir. Örnek, özel matematik hesaplamaları, dize birleştirmeleri, dizelerdeki işlemler ve benzeri işlemleri gerçekleştirmek için bir toplama olabilir.
 
-Kullanıcı tanımlı toplam taban sınıf tanımı aşağıdaki gibidir:
+Kullanıcı tanımlı toplu temel sınıf tanımı aşağıdaki gibidir:
 
 ```csharp
     [SqlUserDefinedAggregate]
@@ -912,12 +912,12 @@ Kullanıcı tanımlı toplam taban sınıf tanımı aşağıdaki gibidir:
     }
 ```
 
-**SqlUserDefinedAggregate,** türün kullanıcı tanımlı bir toplam olarak kaydedilmesi gerektiğini belirtir. Bu sınıf devralınamaz.
+**SqlUserDefinedAggregate** , türün Kullanıcı tanımlı toplama olarak kaydedilmesi gerektiğini gösterir. Bu sınıf devralınamaz.
 
-SqlUserDefinedType özniteliği UDAGG tanımı için **isteğe bağlıdır.**
+SqlUserDefinedType özniteliği UDADGG tanımı için **isteğe bağlıdır** .
 
 
-Taban sınıf üç soyut parametre yi geçirmenizi sağlar: iki giriş parametreleri ve bir sonuç olarak. Veri türleri değişkendir ve sınıf kalıtım sırasında tanımlanmalıdır.
+Temel sınıf üç soyut parametre geçirmenize olanak sağlar: iki adet giriş parametresi ve diğeri sonuç olarak. Veri türleri değişkendir ve sınıf devralma sırasında tanımlanmalıdır.
 
 ```
 public class GuidAggregate : IAggregate<string, string, string>
@@ -935,21 +935,21 @@ public class GuidAggregate : IAggregate<string, string, string>
 }
 ```
 
-* **Init,** hesaplama sırasında her grup için bir kez çağrır. Her toplama grubu için bir başlatma yordamı sağlar.  
-* **Birikmesi** her değer için bir kez yürütülür. Toplama algoritması için ana işlevselliği sağlar. Sınıf devralma sırasında tanımlanan çeşitli veri türleri ile değerleri toplamak için kullanılabilir. Değişken veri türlerinin iki parametresini kabul edebilir.
-* **Sonlandırma,** her grup için sonucu çıktıetmek için işleme sonunda toplama grubu başına bir kez yürütülür.
+* **Init** , hesaplama sırasında her grup için bir kez çağırır. Her toplama grubu için bir başlatma yordamı sağlar.  
+* **Birikme** her bir değer için bir kez yürütülür. Toplama algoritması için ana işlevsellik sağlar. Bu, sınıf devralma sırasında tanımlanan çeşitli veri türleriyle değerleri toplamak için kullanılabilir. Değişken veri türlerinin iki parametresini kabul edebilir.
+* **Sonlandırma** , her grup için sonucu çıkarmak üzere işleme sonunda toplama grubu başına bir kez yürütülür.
 
-Doğru giriş ve çıktı veri türlerini bildirmek için sınıf tanımını aşağıdaki gibi kullanın:
+Doğru giriş ve çıkış veri türlerini bildirmek için aşağıdaki gibi sınıf tanımını kullanın:
 
 ```
 public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
-* T1: Biriken ilk parametre
-* T2: Birikecek ikinci parametre
-* TResult: Sonlandırma nın dönüş türü
+* T1: biriktirmek için Ilk parametre
+* T2: biriktirmek için Ikinci parametre
+* TResult: sonlandırma türü döndürme
 
-Örnek:
+Örneğin:
 
 ```
 public class GuidAggregate : IAggregate<string, int, int>
@@ -961,8 +961,8 @@ or
 public class GuidAggregate : IAggregate<string, string, string>
 ```
 
-### <a name="use-udagg-in-u-sql"></a>U-SQL'de UDAGG'ı kullanma
-UDAGG'ı kullanmak için, önce kod arkasında tanımlayın veya daha önce tartışıldığı gibi varolan programlanabilirlik DLL'den başvurun.
+### <a name="use-udagg-in-u-sql"></a>U-SQL içinde UıDAVGG kullanma
+UıLıGG 'yi kullanmak için, önce kodu arka planda tanımlayın veya daha önce anlatıldığı gibi var olan programlama DLL 'sinden başvuru yapın.
 
 Ardından aşağıdaki sözdizimini kullanın:
 
@@ -970,7 +970,7 @@ Ardından aşağıdaki sözdizimini kullanın:
 AGG<UDAGG_functionname>(param1,param2)
 ```
 
-İşte UDAGG bir örnektir:
+Aşağıda bir UBAGG örneği verilmiştir:
 
 ```
 public class GuidAggregate : IAggregate<string, string, string>
@@ -998,7 +998,7 @@ public class GuidAggregate : IAggregate<string, string, string>
 }
 ```
 
-Ve temel U-SQL komut dosyası:
+Ve Base U-SQL betiği:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -1023,63 +1023,63 @@ DECLARE @output_file string = @" \usql-programmability\output_file.tsv";
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
 
-Bu kullanım örneği senaryosunda, belirli kullanıcılar için sınıf GUID'leri birleştiririz.
+Bu kullanım örneği senaryosunda, belirli kullanıcılar için sınıf GUID 'Lerini birleştirme yaptık.
 
-## <a name="use-user-defined-objects-udo"></a>Kullanıcı tanımlı nesneleri kullanma: UDO
-U-SQL, kullanıcı tanımlı nesneler veya UDO olarak adlandırılan özel programlanabilirlik nesneleri tanımlamanızı sağlar.
+## <a name="use-user-defined-objects-udo"></a>Kullanıcı tanımlı nesneleri kullan: UDO
+U-SQL, Kullanıcı tanımlı nesneler veya UDO olarak adlandırılan özel programlama nesneleri tanımlamanıza olanak sağlar.
 
-U-SQL'de UDO listesi aşağıdavevettir:
+U-SQL içindeki UDO 'in bir listesi aşağıda verilmiştir:
 
-* Kullanıcı tanımlı çıkarıcılar
-    * Satır satır ayıklama
-    * Özel yapılandırılmış dosyalardan veri çıkarma uygulamak için kullanılır
+* Kullanıcı tanımlı ayıklayıcıları
+    * Satırı satıra göre Ayıkla
+    * Özel yapılandırılmış dosyalardan veri ayıklama uygulamak için kullanılır
 
-* Kullanıcı tanımlı çıktılar
-    * Satır satır çıktı
-    * Özel veri türlerini veya özel dosya biçimlerini çıktılamak için kullanılır
+* Kullanıcı tanımlı çıktıcılar
+    * Satıra göre çıkış satırı
+    * Özel veri türlerini veya özel dosya biçimlerini çıkarmak için kullanılır
 
 * Kullanıcı tanımlı işlemciler
-    * Bir satır alın ve bir satır üretin
-    * Sütun sayısını azaltmak veya varolan bir sütun kümesinden türetilen değerlerle yeni sütunlar üretmek için kullanılır
+    * Tek satır alın ve bir satır oluşturun
+    * Sütun sayısını azaltmak veya var olan bir sütun kümesinden türetilen değerlerle yeni sütunlar üretmek için kullanılır
 
-* Kullanıcı tanımlı değerlendiriciler
-    * Bir satır alın ve 0'dan n satıra kadar
-    * DıŞ/ÇAPRAZ UYGULAMA ile kullanılır
+* Kullanıcı tanımlı appliers
+    * Tek satır alın ve 0-n satır oluşturun
+    * Dış/çapraz uygulama ile kullanılır
 
-* Kullanıcı tanımlı kombinler
-    * Satır kümelerini birleştirir-- kullanıcı tanımlı JO'ları
+* Kullanıcı tanımlı combiners
+    * Satır kümelerini birleştirir--Kullanıcı tanımlı birleşimler
 
-* Kullanıcı tanımlı azaltıcılar
-    * N satırlarını alın ve bir satır üretin
+* Kullanıcı tanımlı azaltıcının
+    * N satır al ve bir satır üret
     * Satır sayısını azaltmak için kullanılır
 
-UDO genellikle u-SQL komut dosyasında aşağıdaki U-SQL deyimlerinin bir parçası olarak açıkça çağrılır:
+UıDO genellikle aşağıdaki U-SQL deyimlerinin bir parçası olarak U-SQL komut dosyasında açıkça çağırılır:
 
 * AYIKLA
-* Çıkış
-* Işlem
-* Birleştirmek
-* Azaltmak
+* ÇıKTıLARıN
+* IŞLE
+* BILE
+* AZAL
 
 > [!NOTE]  
-> UDO'lar 0,5 Gb bellek tüketmekle sınırlıdır.  Bu bellek sınırlaması yerel yürütmeler için geçerli değildir.
+> UDO 'lar 0,5 GB bellek kullanmak üzere sınırlandırılmıştır.  Bu bellek sınırlaması yerel yürütmeler için uygulanmaz.
 
-## <a name="use-user-defined-extractors"></a>Kullanıcı tanımlı çıkarıcılar kullanma
-U-SQL, EXTRACT deyimi ni kullanarak dış veri almanızı sağlar. Bir EXTRACT deyimi yerleşik UDO çıkarıcılar kullanabilirsiniz:  
+## <a name="use-user-defined-extractors"></a>Kullanıcı tanımlı ayıklayıcıları kullanma
+U-SQL, ayıklama ifadesini kullanarak dış verileri içeri aktarmanıza olanak tanır. EXTRACT ifadesinde yerleşik UıDO ayıklayıcıları kullanılabilir:  
 
-* *Extractors.Text()*: Farklı kodlamaların sınırlı metin dosyalarından çıkarma sağlar.
+* *Ayıklayıcıları. Text ()*: farklı kodlamalardan sınırlandırılmış metin dosyalarından ayıklama sağlar.
 
-* *Extractors.Csv()*: Farklı kodlamaların virgülle ayrılmış değer (CSV) dosyalarından çıkarma sağlar.
+* *Ayıklayıcıları. csv ()*: farklı kodlamalar için virgülle ayrılmış değer (CSV) dosyalarından ayıklama sağlar.
 
-* *Extractors.Tsv()*: Farklı kodlamaların sekme ayrılmış değer (TSV) dosyalarından çıkarma sağlar.
+* *Ayıklayıcıları. TSV ()*: farklı kodlamalara ait sekmeyle ayrılmış değer (TSV) dosyalarından ayıklama sağlar.
 
-Özel bir çıkarıcı geliştirmek yararlı olabilir. Aşağıdaki görevlerden herhangi birini yapmak istersek, veri alma sırasında bu yararlı olabilir:
+Özel bir ayıklayıcısı geliştirmek yararlı olabilir. Aşağıdaki görevlerden herhangi birini yapmak istiyorsam, bu, veri içeri aktarma sırasında yararlı olabilir:
 
-* Sütunları bölerek ve tek tek değerleri değiştirerek giriş verilerini değiştirin. PROCESSOR işlevi sütunları birleştirmek için daha iyidir.
+* Sütunları bölerek ve ayrı değerleri değiştirerek giriş verilerini değiştirin. IŞLEMCI işlevselliği sütunları birleştirmek için daha iyidir.
 * Web sayfaları ve e-postalar gibi yapılandırılmamış verileri veya XML/JSON gibi yarı yapılandırılmamış verileri ayrıştırın.
-* Desteklenmeyen kodlamada verileri ayrıştın.
+* Desteklenmeyen Kodlamadaki verileri ayrıştırın.
 
-Kullanıcı tanımlı bir çıkarıcı veya UDE tanımlamak için `IExtractor` bir arabirim oluşturmamız gerekir. Sütun/satır sınır çözücüler ve kodlama gibi çıkarıcıya tüm giriş parametrelerinin sınıfın oluşturucusu olarak tanımlanması gerekir. Arabirim `IExtractor` de aşağıdaki gibi `IEnumerable<IRow>` geçersiz kılma için bir tanım içermelidir:
+Kullanıcı tanımlı bir ayıklayıcı veya NCESI tanımlamak için bir `IExtractor` arabirim oluşturuyoruz. Yok edilecek sütun/satır sınırlayıcıları ve kodlama gibi tüm giriş parametrelerinin, sınıfın oluşturucusunda tanımlanması gerekir. `IExtractor` Arabirim Ayrıca `IEnumerable<IRow>` geçersiz kılma için aşağıdaki gibi bir tanım içermelidir:
 
 ```
 [SqlUserDefinedExtractor]
@@ -1093,20 +1093,20 @@ public class SampleExtractor : IExtractor
 }
 ```
 
-**SqlUserDefinedExtractor** özniteliği, türün kullanıcı tanımlı bir çıkarıcı olarak kaydedilmesi gerektiğini belirtir. Bu sınıf devralınamaz.
+**SqlUserDefinedExtractor** özniteliği, türün Kullanıcı tanımlı bir ayıklayıcı olarak kaydedilmesi gerektiğini belirtir. Bu sınıf devralınamaz.
 
-SqlUserDefinedExtractor UDE tanımı için isteğe bağlı bir özniteliktir. UDE nesnesi için AtomicFileProcessing özelliğini tanımlamak için kullanılır.
+SqlUserDefinedExtractor, NCESI tanımı için isteğe bağlı bir özniteliktir. NCESI nesnesi için AtomicFileProcessing özelliğini tanımlamak üzere kullanılır.
 
 * bool AtomicFileProcessing   
 
-* **true** = Bu çıkarıcının atomik giriş dosyaları gerektirdiğini gösterir (JSON, XML, ...)
-* **false** = Bu çıkarıcının bölünmüş / dağıtılmış dosyalarla başa çıkabileceğini gösterir (CSV, SEQ, ...)
+* **true** = bu ayıklayıcı atomik giriş dosyaları gerektirdiğini BELIRTIR (JSON, XML,...)
+* **false** = bu Extractor, bölünmüş/dağıtılmış DOSYALARLA (CSV, seq,...) ilgilenebileceğini belirtir
 
-Ana UDE programlanabilirlik nesneleri **giriş** ve **çıkış**vardır. Giriş nesnesi, giriş verilerini `IUnstructuredReader`. Çıktı nesnesi, ayıklayıcı etkinliğinin bir sonucu olarak çıktı verilerini ayarlamak için kullanılır.
+Ana NCESI programlama nesneleri **giriş** ve **Çıkış**. Giriş nesnesi, giriş verilerini olarak `IUnstructuredReader`sıralamak için kullanılır. Çıkış nesnesi, Extractor etkinliğinin sonucu olarak çıkış verilerini ayarlamak için kullanılır.
 
-Giriş verilerine ve `System.IO.Stream` . `System.IO.StreamReader`
+Giriş verilerine ve `System.IO.Stream` `System.IO.StreamReader`aracılığıyla erişilir.
 
-Giriş sütunları numaralandırmaiçin, önce bir satır delimiter kullanarak giriş akışını bölüşürüz.
+Giriş sütunları numaralandırması için, önce bir satır sınırlayıcısı kullanarak giriş akışını böleceğiz.
 
 ```
 foreach (Stream current in input.Split(my_row_delimiter))
@@ -1115,7 +1115,7 @@ foreach (Stream current in input.Split(my_row_delimiter))
 }
 ```
 
-Daha sonra, giriş satırLarını sütun bölümlerine daha fazla bölün.
+Ardından, giriş satırını daha fazla sütun bölümüne bölebilirsiniz.
 
 ```
 foreach (Stream current in input.Split(my_row_delimiter))
@@ -1127,17 +1127,17 @@ foreach (Stream current in input.Split(my_row_delimiter))
 }
 ```
 
-Çıktı verilerini ayarlamak için `output.Set` yöntemi kullanırız.
+Çıktı verilerini ayarlamak için `output.Set` yöntemini kullanıyoruz.
 
-Özel çıkarıcının yalnızca çıktıyla tanımlanan sütunları ve değerleri çıkardığını anlamak önemlidir. Yöntem çağrısını ayarlayın.
+Özel ayıklayıcı 'nın yalnızca çıkış ile tanımlanan sütunları ve değerleri çıktı olarak öğrendiğinden emin olmak önemlidir. Yöntem çağrısını ayarla.
 
 ```
 output.Set<string>(count, part);
 ```
 
-Gerçek çıkarıcı çıktısı çağırılarak `yield return output.AsReadOnly();`tetiklenir.
+Gerçek ayıklayıcı çıktısı çağırarak `yield return output.AsReadOnly();`tetiklenir.
 
-Aşağıdaki çıkarıcı örneği:
+Aşağıda, Extractor örneği verilmiştir:
 
 ```
 [SqlUserDefinedExtractor(AtomicFileProcessing = true)]
@@ -1196,9 +1196,9 @@ public class FullDescriptionExtractor : IExtractor
 }
 ```
 
-Bu kullanım örneği senaryosunda, çıkarıcı GUID'i "guid" sütunu için yeniden oluşturur ve "kullanıcı" sütununun değerlerini büyük harfe dönüştürür. Özel çıkarıcılar, giriş verilerini ayrıştarak ve değiştirerek daha karmaşık sonuçlar üretebilir.
+Bu kullanım örneği senaryosunda, Extractor "GUID" sütunu için GUID 'ı yeniden oluşturur ve "user" sütununun değerlerini büyük harfe dönüştürür. Özel ayıklayıcıları, giriş verilerini ayrıştırarak ve işleyerek daha karmaşık sonuçlar üretebilir.
 
-Aşağıda, özel bir çıkarıcı kullanan temel U-SQL komut dosyası vereme vardır:
+Aşağıda özel bir ayıklayıcısı kullanan temel U-SQL betiği verilmiştir:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -1216,22 +1216,22 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ```
 
-## <a name="use-user-defined-outputters"></a>Kullanıcı tanımlı çıktılayıcıları kullanma
-Kullanıcı tanımlı outputter, yerleşik U-SQL işlevselliğini genişletmenize olanak tanıyan başka bir U-SQL UDO'sudur. Çıkarıcıya benzer şekilde, birkaç yerleşik çıktı vardır.
+## <a name="use-user-defined-outputters"></a>Kullanıcı tanımlı çıktıcılar kullanın
+Kullanıcı tanımlı outputter, yerleşik U-SQL işlevlerini genişletmenizi sağlayan başka bir U-SQL UDO. Extractor ile benzer şekilde, çeşitli yerleşik outputler vardır.
 
-* *Outputters.Text()*: Farklı kodlamaların sınırlı metin dosyalarına veri yazar.
-* *Outputters.Csv()*: Farklı kodlamaların virgülle ayrılmış değer (CSV) dosyalarına veri yazar.
-* *Outputters.Tsv()*: Farklı kodlamaların sekme ayrılmış değer (TSV) dosyalarına veri yazar.
+* *Outputters. Text ()*: verileri farklı kodlamalara ait sınırlandırılmış metin dosyalarına yazar.
+* *Outputters. csv ()*: farklı kodlamalar için verileri virgülle ayrılmış değer (CSV) dosyalarına yazar.
+* *Outputters. TSV ()*: verileri farklı kodlamalara ait sekmeyle ayrılmış değer (TSV) dosyalarına yazar.
 
-Özel çıktı, verileri özel tanımlı biçimde yazmanızı sağlar. Bu, aşağıdaki görevler için yararlı olabilir:
+Özel çıktıcısı, verileri özel bir tanımlı biçimde yazmanızı sağlar. Bu, aşağıdaki görevler için yararlı olabilir:
 
 * Yarı yapılandırılmış veya yapılandırılmamış dosyalara veri yazma.
-* Desteklenen verileri yazma.
+* Veri yazma desteklenmeyen kodlamalar.
 * Çıktı verilerini değiştirme veya özel öznitelikler ekleme.
 
-Kullanıcı tanımlı çıktıyı tanımlamak için `IOutputter` arabirimi oluşturmamız gerekir.
+Kullanıcı tanımlı outputter tanımlamak için `IOutputter` arabirimini oluşturuyoruz.
 
-Temel `IOutputter` sınıf uygulaması aşağıdadır:
+Temel `IOutputter` sınıf uygulamasını aşağıda verilmiştir:
 
 ```
 public abstract class IOutputter : IUserDefinedOperator
@@ -1243,7 +1243,7 @@ public abstract class IOutputter : IUserDefinedOperator
 }
 ```
 
-Sütun/satır sınır çözücüler, kodlama ve benzeri gibi çıktıcıya tüm giriş parametrelerinin sınıfın oluşturucuda tanımlanması gerekir. Arabirim, `IOutputter` geçersiz kılma `void Output` için bir tanım da içermelidir. Öznitelik `[SqlUserDefinedOutputter(AtomicFileProcessing = true)` isteğe bağlı olarak atomik dosya işleme için ayarlanabilir. Daha fazla bilgi için aşağıdaki ayrıntılara bakın.
+Outputter için sütun/satır sınırlayıcıları, kodlama vb. gibi tüm giriş parametrelerinin, sınıfın oluşturucusunda tanımlanması gerekir. `IOutputter` Arabirim ayrıca geçersiz kılma için `void Output` bir tanım içermelidir. Öznitelik `[SqlUserDefinedOutputter(AtomicFileProcessing = true)` , atomik dosya işleme için isteğe bağlı olarak ayarlanabilir. Daha fazla bilgi için aşağıdaki ayrıntılara bakın.
 
 ```
 [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
@@ -1267,30 +1267,30 @@ public class MyOutputter : IOutputter
 }
 ```
 
-* `Output`her giriş satırı için çağrılır. Sıra kümesini `IUnstructuredWriter output` döndürür.
-* Oluşturucu sınıfı, parametreleri kullanıcı tarafından tanımlanan çıktıcıya geçirmek için kullanılır.
-* `Close`pahalı durumu serbest bırakmak veya son satırın ne zaman yazıldığını belirlemek için isteğe bağlı olarak geçersiz kılmak için kullanılır.
+* `Output`her giriş satırı için çağrılır. `IUnstructuredWriter output` Satır kümesini döndürür.
+* Oluşturucu sınıfı, parametreleri Kullanıcı tanımlı outputter 'a geçirmek için kullanılır.
+* `Close`, pahalı durum yayınlamak veya son satırın ne zaman yazıldığını belirleyebilmek için isteğe bağlı olarak geçersiz kılmak için kullanılır.
 
-**SqlUserDefinedOutputter** özniteliği, türün kullanıcı tanımlı bir çıktıcı olarak kaydedilmesi gerektiğini belirtir. Bu sınıf devralınamaz.
+**SqlUserDefinedOutputter** özniteliği, türün Kullanıcı tanımlı bir outputter olarak kaydedilmesi gerektiğini belirtir. Bu sınıf devralınamaz.
 
-SqlUserDefinedOutputter, kullanıcı tanımlı outputter tanımı için isteğe bağlı bir özelliktir. AtomicFileProcessing özelliğini tanımlamak için kullanılır.
+SqlUserDefinedOutputter, Kullanıcı tanımlı bir outputter tanımı için isteğe bağlı bir özniteliktir. AtomicFileProcessing özelliğini tanımlamak için kullanılır.
 
 * bool AtomicFileProcessing   
 
-* **true** = Bu çıkışın atomik çıkış dosyaları gerektirdiğini gösterir (JSON, XML, ...)
-* **false** = Bu çıktılayıcının bölünmüş / dağıtılmış dosyalarla başa çıkabileceğini gösterir (CSV, SEQ, ...)
+* **true** = bu outputter 'ın atomik çıkış dosyaları gerektirdiğini BELIRTIR (JSON, XML,...)
+* **false** = bu outputter 'ın bölünmüş/dağıtılmış DOSYALARLA (CSV, seq,...) ilgilenebileceğini belirtir
 
-Ana programlanabilirlik nesneleri **satır** ve **çıkış.** **Satır** nesnesi, çıktı verilerini arabirim `IRow` olarak sıralamak için kullanılır. **Çıktı,** çıktı verilerini hedef dosyaya ayarlamak için kullanılır.
+Ana programlama nesneleri **satır** ve **çıktıdır**. **Satır** nesnesi, çıkış verilerini arabirim olarak `IRow` listelemek için kullanılır. Çıktı verilerini hedef dosyaya ayarlamak için **Çıkış** kullanılır.
 
-Çıktı verilerine `IRow` arayüz üzerinden erişilir. Çıktı verileri bir defada bir satır geçirilir.
+Çıkış verilerine `IRow` arabiriminden erişilir. Çıkış verileri bir seferde bir satıra geçirilir.
 
-Tek tek değerler, IRow arabiriminin Get metodu çağırılarak numaralandırılır:
+Bağımsız değerler, IRow arabiriminin get yöntemi çağırarak numaralandırılır:
 
 ```
 row.Get<string>("column_name")
 ```
 
-Tek tek sütun adları `row.Schema`arayarak belirlenebilir:
+Tek tek sütun adları, çağırarak `row.Schema`belirlenebilir:
 
 ```
 ISchema schema = row.Schema;
@@ -1298,11 +1298,11 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-Bu yaklaşım, herhangi bir meta veri şeması için esnek bir çıktı oluşturabilmenizi sağlar.
+Bu yaklaşım, tüm meta veri şemaları için esnek bir outputderme oluşturmanızı sağlar.
 
-Çıktı verileri kullanılarak `System.IO.StreamWriter`dosyaya yazılır. Akış `IUnstructuredWriter output`parametresi, `output.BaseStream` 'nin bir parçası olarak ayarlanır.
+Çıktı verileri kullanılarak `System.IO.StreamWriter`dosyaya yazılır. Stream parametresi öğesinin `output.BaseStream` `IUnstructuredWriter output`parçası olarak olarak ayarlanır.
 
-Her satır yinelemeden sonra veri arabelleği dosyaya floş önemli olduğunu unutmayın. Buna ek `StreamWriter` olarak, nesne Tek kullanımlık öznitelik etkin (varsayılan) ve **kullanılan** anahtar kelime ile kullanılmalıdır:
+Her satır yinelemesi sonrasında dosyaya veri arabelleğini temizleme önemli olduğunu unutmayın. Ayrıca, `StreamWriter` nesnesi atılabilir özniteliğiyle (varsayılan) ve **using** anahtar sözcüğüyle birlikte kullanılmalıdır:
 
 ```
 using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._encoding))
@@ -1311,10 +1311,10 @@ using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._enc
 }
 ```
 
-Aksi takdirde, her yinelemeden sonra Flush() yöntemini açıkça arayın. Bunu aşağıdaki örnekte gösteririz.
+Aksi takdirde, her yinelemeden sonra açıkça flush () yöntemini çağırın. Bu, aşağıdaki örnekte gösterilmektedir.
 
-### <a name="set-headers-and-footers-for-user-defined-outputter"></a>Kullanıcı tanımlı çıktılayıcı için üstbilgi ve altbilgi ayarlama
-Üstbilgi ayarlamak için tek yineleme yürütme akışını kullanın.
+### <a name="set-headers-and-footers-for-user-defined-outputter"></a>Kullanıcı tanımlı outputter için üst bilgileri ve altbilgileri ayarlama
+Bir üst bilgi ayarlamak için tek yineleme yürütme akışını kullanın.
 
 ```
 public override void Output(IRow row, IUnstructuredWriter output)
@@ -1337,9 +1337,9 @@ if (isHeaderRow)
 
 İlk `if (isHeaderRow)` bloktaki kod yalnızca bir kez yürütülür.
 
-Altbilgi için, `System.IO.Stream` nesne örneğine başvuru yu`output.BaseStream`kullanın ( ). Altbilgiyi arabirimin Kapanış() yöntemine `IOutputter` yazın.  (Daha fazla bilgi için aşağıdaki örneğe bakın.)
+Alt bilgi için, `System.IO.Stream` Object (`output.BaseStream`) örneğine başvuruyu kullanın. Alt bilgisini `IOutputter` arabirimin Close () yöntemine yazın.  (Daha fazla bilgi için aşağıdaki örneğe bakın.)
 
-Aşağıda, kullanıcı tanımlı bir çıktılayıcı örneği verilmiştir:
+Aşağıda, Kullanıcı tanımlı bir outputter örneği verilmiştir:
 
 ```
 [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
@@ -1446,7 +1446,7 @@ public static class Factory
 }
 ```
 
-Ve U-SQL temel komut dosyası:
+Ve U-SQL taban betiği:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -1466,16 +1466,16 @@ OUTPUT @rs0
     USING new USQL_Programmability.HTMLOutputter(isHeader: true);
 ```
 
-Bu, tablo verileri içeren bir HTML dosyası oluşturan bir HTML çıktısı oluşturucudur.
+Bu, tablo verileri içeren bir HTML dosyası oluşturan bir HTML çıktıdır.
 
-### <a name="call-outputter-from-u-sql-base-script"></a>U-SQL temel komut dosyasından arama çıkışı
-Temel U-SQL komut dosyasından özel bir çıktıcı çağırmak için, outputter nesnesinin yeni örneğinin oluşturulması gerekir.
+### <a name="call-outputter-from-u-sql-base-script"></a>U-SQL taban betiğiyle çağrı çıktıcısı
+Temel U-SQL betiğinden özel bir outputter çağırmak için, outputter nesnesinin yeni örneğinin oluşturulması gerekir.
 
 ```sql
 OUTPUT @rs0 TO @output_file USING new USQL_Programmability.HTMLOutputter(isHeader: true);
 ```
 
-Temel komut dosyasında nesnenin bir örneğini oluşturmamak için, önceki örneğimizde gösterildiği gibi bir işlev sarıcı oluşturabiliriz:
+Temel betikte nesnenin bir örneğini oluşturmaktan kaçınmak için, önceki örnekte gösterildiği gibi bir işlev sarmalayıcı oluşturuyoruz:
 
 ```csharp
         // Define the factory classes
@@ -1488,7 +1488,7 @@ Temel komut dosyasında nesnenin bir örneğini oluşturmamak için, önceki ör
         }
 ```
 
-Bu durumda, özgün arama aşağıdaki gibi görünür:
+Bu durumda, özgün çağrı aşağıdaki gibi görünür:
 
 ```
 OUTPUT @rs0 
@@ -1497,11 +1497,11 @@ USING USQL_Programmability.Factory.HTMLOutputter(isHeader: true);
 ```
 
 ## <a name="use-user-defined-processors"></a>Kullanıcı tanımlı işlemcileri kullanma
-Kullanıcı tanımlı işlemci veya UDP, programlanabilirlik özellikleri uygulayarak gelen satırları işlemenizi sağlayan bir U-SQL UDO türüdür. UDP, sütunları birleştirmenizi, değerleri değiştirmenizi ve gerekirse yeni sütunlar eklemenizi sağlar. Temel olarak, gerekli veri öğelerini üretmek için bir satır kümesini işlemeye yardımcı olur.
+Kullanıcı tanımlı işlemci veya UDP, programlama özellikleri uygulayarak gelen satırları işlemenizi sağlayan bir U-SQL UDO türüdür. UDP sütunları birleştirip, değerleri değiştirmenize ve gerekirse yeni sütunlar eklemenize olanak sağlar. Temel olarak, gerekli veri öğelerini oluşturmak için bir satır kümesini işlemeye yardımcı olur.
 
-UdP tanımlamak için, UDP `IProcessor` için isteğe bağlı öznitelik içeren `SqlUserDefinedProcessor` bir arabirim oluşturmamız gerekir.
+UDP tanımlamak için, `IProcessor` `SqlUserDefinedProcessor` özniteliğine sahip bir arabirim oluşturmanız gerekır, bu, UDP için isteğe bağlıdır.
 
-Bu arabirim, aşağıdaki `IRow` örnekte gösterildiği gibi arabirim satır geçersiz kılma tanımıiçermelidir:
+Bu arabirim, aşağıdaki örnekte gösterildiği gibi, `IRow` arabirim satır kümesi geçersiz kılma tanımını içermelidir:
 
 ```
 [SqlUserDefinedProcessor]
@@ -1514,31 +1514,31 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-**SqlUserDefinedProcessor,** türün kullanıcı tanımlı bir işlemci olarak kaydedilmesi gerektiğini belirtir. Bu sınıf devralınamaz.
+**Sqluserdefinedprocessor** , türün Kullanıcı tanımlı bir işlemci olarak kaydedilmesi gerektiğini gösterir. Bu sınıf devralınamaz.
 
-SqlUserDefinedProcessor özniteliği UDP tanımı için **isteğe bağlıdır.**
+SqlUserDefinedProcessor özniteliği UDP tanımı için **isteğe bağlıdır** .
 
-Ana programlanabilirlik nesneleri **giriş** ve **çıktıdır.** Giriş nesnesi, giriş sütunlarını ve çıktılarını sıralamak ve işlemci etkinliği sonucunda çıktı verilerini ayarlamak için kullanılır.
+Ana programlama nesneleri **giriş** ve **Çıkış**' dır. Giriş nesnesi, giriş sütunlarını ve çıkışını numaralandırmak ve çıkış verilerini işlemci etkinliğinin sonucu olarak ayarlamak için kullanılır.
 
-Giriş sütunları numaralandırma için `input.Get` yöntemi kullanırız.
+Giriş sütunları numaralandırması için `input.Get` yöntemini kullanırız.
 
 ```
 string column_name = input.Get<string>("column_name");
 ```
 
-Yöntem için `input.Get` parametre, U-SQL temel komut `PRODUCE` dosyasının `PROCESS` deyiminin bir parçası olarak geçirilen bir sütundur. Burada doğru veri türünü kullanmalıyız.
+`input.Get` Yöntemi parametresi, U-SQL temel betiği `PROCESS` ifadesinin bir parçası `PRODUCE` olarak geçirilen bir sütundur. Burada doğru veri türünü kullandık.
 
-Çıktı için `output.Set` yöntemi kullanın.
+Çıktı için `output.Set` yöntemini kullanın.
 
-Özel üreticinin yalnızca `output.Set` yöntem çağrısıyla tanımlanan sütunları ve değerleri çıktıladığını unutmayın.
+Özel üreticinin yalnızca `output.Set` yöntem çağrısıyla tanımlanan sütunları ve değerleri çıktı olarak gösterdiğine dikkat edin.
 
 ```
 output.Set<string>("mycolumn", mycolumn);
 ```
 
-Gerçek işlemci çıkışı' n. `return output.AsReadOnly();`
+Gerçek işlemci çıkışı çağırarak `return output.AsReadOnly();`tetiklenir.
 
-Aşağıdaki bir işlemci örneği:
+Aşağıda bir işlemci örneği verilmiştir:
 
 ```
 [SqlUserDefinedProcessor]
@@ -1558,11 +1558,11 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-Bu kullanım durumu senaryosunda, işlemci varolan sütunları birleştirerek "full_description" adlı yeni bir sütun oluşturur-- bu durumda, büyük harfle "kullanıcı" ve "des". Ayrıca bir GUID'i yeniler ve özgün ve yeni GUID değerlerini döndürür.
+Bu kullanım örneği senaryosunda, işlemci mevcut sütunları birleştirerek "full_description" adlı yeni bir sütun oluşturuyor (Bu durumda, büyük harfle "user" ve "des"). Ayrıca bir GUID 'YI yeniden oluşturur ve özgün ve yeni GUID değerlerini döndürür.
 
-Önceki örnekten de görebileceğiniz gibi, yöntem çağrısı `output.Set` sırasında C# yöntemlerini arayabilirsiniz.
+Önceki örnekte görebileceğiniz gibi, yöntem çağrısı sırasında `output.Set` C# yöntemlerini çağırabilirsiniz.
 
-Aşağıda, özel bir işlemci kullanan temel U-SQL komut dosyası örneği verilmiştir:
+Aşağıda, özel bir işlemci kullanan bir Base U-SQL betiğinin örneği verilmiştir:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -1587,12 +1587,12 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
 
-## <a name="use-user-defined-appliers"></a>Kullanıcı tanımlı aplikeleri kullanma
-U-SQL kullanıcı tanımlı bir uygulama, sorgunun dış tablo ifadesi yle döndürülen her satır için özel bir C# işlevini çağırmanızı sağlar. Sağ giriş, sol girişten her satır için değerlendirilir ve üretilen satırlar son çıktı için birleştirilir. APPLY işleci tarafından üretilen sütunlistesi, sol ve sağ girişteki sütun kümesinin birleşimidir.
+## <a name="use-user-defined-appliers"></a>Kullanıcı tanımlı appliers kullanma
+U-SQL Kullanıcı tanımlı bir uygulayıcı, bir sorgunun dış tablo ifadesiyle döndürülen her satır için özel bir C# işlevini çağırmanızı sağlar. Doğru giriş, sol girdinin her bir satırı için değerlendirilir ve üretilen satırlar nihai çıkış için birleştirilir. APPLY işleci tarafından üretilen sütunların listesi, sol taraftaki sütun kümesinin ve doğru girişin birleşimidir.
 
-USQL SELECT ifadesinin bir parçası olarak kullanıcı tanımlı applier çağrılmaktadır.
+Kullanıcı tanımlı Uygulayıcı, USQL SELECT ifadesinin bir parçası olarak çağrılır.
 
-Kullanıcı tanımlı applier için tipik arama aşağıdaki gibi görünür:
+Kullanıcı tanımlı Uygulayıcı için tipik çağrı aşağıdakine benzer:
 
 ```
 SELECT …
@@ -1601,9 +1601,9 @@ CROSS APPLYis used to pass parameters
 new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
 ```
 
-SELECT ifadesinde appliers kullanma hakkında daha fazla bilgi için cross [APPLY ve OUTER APPLY'dan U-SQL SELECT Seçimi'ne](/u-sql/statements-and-expressions/select/from/select-selecting-from-cross-apply-and-outer-apply)bakın.
+Bir SELECT ifadesinde appliers kullanma hakkında daha fazla bilgi için, bkz. [U-SQL SELECT-Apply ve Outer Apply 'Tan seçme](/u-sql/statements-and-expressions/select/from/select-selecting-from-cross-apply-and-outer-apply).
 
-Kullanıcı tanımlı applier taban sınıf tanımı aşağıdaki gibidir:
+Kullanıcı tanımlı uygulayıcı temel sınıf tanımı aşağıdaki gibidir:
 
 ```
 public abstract class IApplier : IUserDefinedOperator
@@ -1614,7 +1614,7 @@ public abstract IEnumerable<IRow> Apply(IRow input, IUpdatableRow output);
 }
 ```
 
-Kullanıcı tanımlı bir apse tanımlamak için, `IApplier` kullanıcı tanımlı bir aplik tanımı için isteğe bağlı olan [`SqlUserDefinedApplier`] özniteliği ile arabirim oluşturmamız gerekir.
+Kullanıcı tanımlı bir uygulayıcı tanımlamak için `IApplier` arabirimi, Kullanıcı tanımlı uygulayıcı tanımı için isteğe bağlı olan [`SqlUserDefinedApplier`] özniteliğiyle oluşturmanız gerekir.
 
 ```
 [SqlUserDefinedApplier]
@@ -1632,23 +1632,23 @@ public class ParserApplier : IApplier
 }
 ```
 
-* Dış tablonun her satırı için uygula denir. Çıktı satır `IUpdatableRow` kümesini döndürür.
-* Oluşturucu sınıfı, parametreleri kullanıcı tanımlı apilete geçirmek için kullanılır.
+* Apply, dış tablonun her satırı için çağırılır. `IUpdatableRow` Çıkış satır kümesini döndürür.
+* Oluşturucu sınıfı, parametreleri Kullanıcı tanımlı uygulayıcı geçirmek için kullanılır.
 
-**SqlUserDefinedApplier,** türün kullanıcı tanımlı bir aplier olarak kaydedilmesi gerektiğini belirtir. Bu sınıf devralınamaz.
+**Sqluserdefinedapp,** türün Kullanıcı tanımlı bir uygulayıcı olarak kaydedilmesi gerektiğini belirtir. Bu sınıf devralınamaz.
 
-**SqlUserDefinedApplier,** kullanıcı tanımlı bir uygulama tanımı için **isteğe bağlıdır.**
+**Sqluserdefinedappfetıon** , Kullanıcı tanımlı bir uygulayıcı tanımı için **isteğe bağlıdır** .
 
 
-Ana programlanabilirlik nesneleri aşağıdaki gibidir:
+Ana programlama nesneleri aşağıdaki gibidir:
 
 ```
 public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 ```
 
-Giriş rowsets giriş `IRow` olarak geçirilir. Çıktı satırları çıkış arabirimi olarak `IUpdatableRow` oluşturulur.
+Giriş satır kümeleri girdi olarak `IRow` geçirilir. Çıkış satırları çıkış arabirimi olarak `IUpdatableRow` oluşturulur.
 
-Tek tek sütun adları `IRow` Şema yöntemi ni çağırarak belirlenebilir.
+Tek tek sütun adları, `IRow` şema yöntemi çağırarak belirlenebilir.
 
 ```
 ISchema schema = row.Schema;
@@ -1656,35 +1656,35 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-Gelen gerçek veri değerlerini `IRow`elde etmek için Get() arabirimi yöntemini `IRow` kullanırız.
+Gelen `IRow`gerçek veri değerlerini almak Için `IRow` arabirimin Get () yöntemini kullanırız.
 
 ```
 mycolumn = row.Get<int>("mycolumn")
 ```
 
-Ya da şema sütun adını kullanırız:
+Ya da şema sütun adını kullanıyoruz:
 
 ```
 row.Get<int>(row.Schema[0].Name)
 ```
 
-Çıktı değerleri çıktı ile `IUpdatableRow` ayarlanmalıdır:
+Çıkış değerlerinin çıkış ile `IUpdatableRow` ayarlanması gerekir:
 
 ```
 output.Set<int>("mycolumn", mycolumn)
 ```
 
-Özel uygulamacıların yalnızca yöntem çağrısıyla `output.Set` tanımlanan çıkış sütunlarını ve değerlerini anladığını anlamak önemlidir.
+Özel appliers yalnızca çıkış sütunlarının ve `output.Set` yöntem çağrısıyla tanımlanmış değerlerin olduğunu anlamak önemlidir.
 
-Gerçek çıktı çağırılarak `yield return output.AsReadOnly();`tetiklenir.
+Gerçek çıkış, çağırarak `yield return output.AsReadOnly();`tetiklenir.
 
-Kullanıcı tanımlı aplik parametreleri oluşturucuya iletilebilir. Applier, temel U-SQL Script'teki applier araması sırasında tanımlanması gereken değişken sayıda sütun döndürebilir.
+Kullanıcı tanımlı uygulayıcı parametreleri oluşturucuya geçirilebilir. Uygulayıcı, Base U-SQL betiğinde uygulayıcı çağrısı sırasında tanımlanması gereken sayıda sütun döndürebilir.
 
 ```
 new USQL_Programmability.ParserApplier ("all") AS properties(make string, model string, year string, type string, millage int);
 ```
 
-Aşağıda, kullanıcı tanımlı uygulama örneği verilmiştir:
+Kullanıcı tanımlı uygulayıcı örneği aşağıda verilmiştir:
 
 ```
 [SqlUserDefinedApplier]
@@ -1742,7 +1742,7 @@ public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 }
 ```
 
-Aşağıdaki kullanıcı tanımlı bu applier için temel U-SQL komut dosyası:
+Aşağıda, bu kullanıcı tanımlı Uygulayıcı için temel U-SQL betiği verilmiştir:
 
 ```
 DECLARE @input_file string = @"c:\usql-programmability\car_fleet.tsv";
@@ -1771,7 +1771,7 @@ DECLARE @output_file string = @"c:\usql-programmability\output_file.tsv";
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
 
-Bu kullanım örneği senaryosunda, kullanıcı tanımlı applier araç filosu özellikleri için virgül-delimited değer parser olarak davranır. Giriş dosyası satırları aşağıdaki gibi görünür:
+Bu kullanım örneği senaryosunda, Kullanıcı tanımlı Uygulayıcı, otomobil özellikleri için virgülle ayrılmış bir değer ayrıştırıcısı işlevi görür. Giriş dosyası satırları aşağıdaki gibi görünür:
 
 ```
 103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
@@ -1779,30 +1779,30 @@ Bu kullanım örneği senaryosunda, kullanıcı tanımlı applier araç filosu �
 210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
 ```
 
-Bu, make ve model gibi araç özelliklerini içeren bir özellik sütunu olan tipik bir sekme-sınırlandırılmış TSV dosyasıdır. Bu özellikler tablo sütunlarına ayrıştırılmalıdır. Sağlanan applier, geçirilen parametreye bağlı olarak sonuç satır kümesinde dinamik bir özellik sayısı oluşturmanıza da olanak tanır. Yalnızca tüm özellikleri veya belirli bir özellik kümesi oluşturabilirsiniz.
+Bu, oluşturma ve model gibi araba özelliklerini içeren bir özellikler sütunuyla sekmeyle ayrılmış tipik bir TSV dosyasıdır. Bu özellikler tablo sütunlarına ayrıştırılmalıdır. Ayrıca, verilen Uygulayıcı, sonuç satır kümesinde geçirilen parametreye göre dinamik bir dizi özellik oluşturmanıza olanak sağlar. Tüm özellikleri ya da yalnızca belirli bir özellikler kümesini oluşturabilirsiniz.
 
     …USQL_Programmability.ParserApplier ("all")
     …USQL_Programmability.ParserApplier ("make")
     …USQL_Programmability.ParserApplier ("make&model")
 
-Kullanıcı tanımlı applier applier nesnenin yeni bir örnek olarak çağrılabilir:
+Kullanıcı tanımlı Uygulayıcı, uygulayıcı nesnesinin yeni bir örneği olarak çağrılabilir:
 
 ```
 CROSS APPLY new MyNameSpace.MyApplier (parameter: "value") AS alias([columns types]…);
 ```
 
-Ya da bir sarma makinesi fabrikası yönteminin çağrılması ile:
+Ya da sarmalayıcı fabrikası yönteminin çağrılması:
 
 ```csharp
     CROSS APPLY MyNameSpace.MyApplier (parameter: "value") AS alias([columns types]…);
 ```
 
-## <a name="use-user-defined-combiners"></a>Kullanıcı tanımlı kombinleri kullanma
-Kullanıcı tanımlı birleşimcisi veya UDC, özel mantığa bağlı olarak sol ve sağ satır kümelerinden satırları birleştirmenizi sağlar. Kullanıcı tanımlı birleşim aracı, BIRLEŞ" ifadesi ile kullanılır.
+## <a name="use-user-defined-combiners"></a>Kullanıcı tanımlı combiners kullanma
+Kullanıcı tanımlı Birleştirici veya UDC, satırları sol ve sağ satır kümelerine özel mantığa göre birleştirmenizi sağlar. Kullanıcı tanımlı birleştirici, BIRLEŞTIRME ifadesiyle birlikte kullanılır.
 
-Birbirlatörü, hem giriş satır kümeleri, gruplandırma sütunları, beklenen sonuç şeması ve ek bilgiler hakkında gerekli bilgileri sağlayan BIRLEŞ tümleme ifadesi yle çağrılıyor.
+Bir birleştirici, hem giriş satır kümeleri, gruplama sütunları, beklenen sonuç şeması ve ek bilgiler hakkında gerekli bilgileri sağlayan BIRLEŞTIRME ifadesiyle çağrılır.
 
-Bir birbirliyi temel U-SQL komut dosyasında çağırmak için aşağıdaki sözdizimini kullanırız:
+Bir temel U-SQL betiğinde bir birleştirici çağırmak için aşağıdaki sözdizimini kullanıyoruz:
 
 ```
 Combine_Expression :=
@@ -1815,11 +1815,11 @@ Combine_Expression :=
     USING_Clause.
 ```
 
-Daha fazla bilgi için [birleştirme İfadesi (U-SQL)](/u-sql/statements-and-expressions/combine-expression)bakın.
+Daha fazla bilgi için bkz. [birleştirme ifadesi (U-SQL)](/u-sql/statements-and-expressions/combine-expression).
 
-Kullanıcı tanımlı bir birbirleşim tanımlamak `ICombiner` için, kullanıcı`SqlUserDefinedCombiner`tanımlı Birleşim tanımı için isteğe bağlı olan [ ] özniteliği ile arabirim oluşturmamız gerekir.
+Kullanıcı tanımlı bir birleştirici tanımlamak için `ICombiner` arabirimi, Kullanıcı tanımlı birleştirici tanımı için isteğe bağlı olan [`SqlUserDefinedCombiner`] özniteliğiyle oluşturmanız gerekir.
 
-Taban `ICombiner` sınıf tanımı:
+Temel `ICombiner` sınıf tanımı:
 
 ```
 public abstract class ICombiner : IUserDefinedOperator
@@ -1832,7 +1832,7 @@ public abstract IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-Arabirimin `ICombiner` özel uygulaması, Birleştirme `IEnumerable<IRow>` geçersiz kılma tanımını içermelidir.
+Bir `ICombiner` arabirimin özel uygulanması, `IEnumerable<IRow>` birleştirme geçersiz kılma tanımını içermelidir.
 
 ```
 [SqlUserDefinedCombiner]
@@ -1847,45 +1847,45 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-**SqlUserDefinedCombiner** özniteliği, türün kullanıcı tanımlı bir birleşimci olarak kaydedilmesi gerektiğini belirtir. Bu sınıf devralınamaz.
+**SqlUserDefinedCombiner** özniteliği, türün Kullanıcı tanımlı birleştirici olarak kaydedilmesi gerektiğini gösterir. Bu sınıf devralınamaz.
 
-**SqlUserDefinedCombiner** Combiner mod özelliğini tanımlamak için kullanılır. Kullanıcı tanımlı bir birbirleşim tanımı için isteğe bağlı bir özniteliktir.
+**SqlUserDefinedCombiner** , birleştirici Mode özelliğini tanımlamak için kullanılır. Kullanıcı tanımlı birleştirici tanımı için isteğe bağlı bir özniteliktir.
 
-CombinerMode Modu
+CombinerMode modu
 
-CombinerMode enum aşağıdaki değerleri alabilir:
+CombinerMode numaralandırması aşağıdaki değerleri alabilir:
 
-* Tam (0) Her çıkış satırı potansiyel olarak aynı anahtar değeriile sol ve sağ tüm giriş satırları bağlıdır.
+* Tam (0) her çıkış satırı büyük olasılıkla aynı anahtar değeriyle soldan ve sağda tüm giriş satırlarına bağlıdır.
 
-* Sol (1) Her çıkış satırı soldan tek bir giriş satırına bağlıdır (ve potansiyel olarak aynı anahtar değerine sahip sağdan tüm satırlar).
+* Sol (1) her çıkış satırı, sol taraftaki tek bir giriş satırına bağlıdır (ve potansiyel olarak aynı anahtar değeri ile sağdaki tüm satırlardan).
 
-* Sağ (2) Her çıkış satırı sağdan tek bir giriş satırına bağlıdır (ve potansiyel olarak aynı anahtar değerine sahip soldan tüm satırlar).
+* Sağ (2) her çıkış satırı, sağdaki tek bir giriş satırına bağlıdır (ve potansiyel olarak aynı anahtar değeri ile soldan tüm satırlar).
 
-* İç (3) Her çıkış satırı, aynı değere sahip, soldan ve soldan tek bir giriş satırına bağlıdır.
+* İç (3) her çıkış satırı, tek bir giriş satırına, aynı değer ile soldan ve sağdan bağlıdır.
 
-Örnek:`SqlUserDefinedCombiner(Mode=CombinerMode.Left)`[ ]
+Örnek: [`SqlUserDefinedCombiner(Mode=CombinerMode.Left)`]
 
 
-Ana programlanabilirlik nesneleri şunlardır:
+Ana programlama nesneleri şunlardır:
 
 ```csharp
     public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
         IUpdatableRow output
 ```
 
-Giriş sıra kümeleri, **sol** ve **sağ** `IRowset` arabirim türü olarak geçirilir. Her iki satır kümesi de işlenmek için numaralandırılmalıdır. Her arabirimi yalnızca bir kez sayısalatabilirsiniz, bu yüzden gerekirse sayısalolarak önbelleğe almak zorundayız.
+Giriş satır kümeleri, arabirimin **sol** ve **sağ** `IRowset` türü olarak geçirilir. Her iki satır kümesi de işlenmek üzere numaralandırılmalıdır. Her bir arabirimi yalnızca bir kez numaralandırabilirsiniz, bu nedenle gerekirse bunları listeletmemiz ve önbelleğe almanız gerekiyordu.
 
-Önbelleğe alma amacıyla, bir\<\> LINQ sorgu yürütmesi sonucu bir Liste T `IRow` bellek yapısı türü oluşturabilir, özellikle liste<>. Anonim veri türü numaralandırma sırasında da kullanılabilir.
+Önbelleğe alma amacıyla, bir LINQ sorgu yürütmesinin\<sonucu\> olarak, özel olarak<`IRow`> liste olarak bellek yapısı listesi oluşturuyoruz. Anonim veri türü ayrıca numaralandırma sırasında kullanılabilir.
 
-Linq sorguları hakkında daha fazla bilgi için [LINQ Sorgularına Giriş (C#)](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) ve İzlenebilir\<T\> arabirimi hakkında daha fazla bilgi için [Ayrılmaz\<T\> Arabirimi'ne](/dotnet/api/system.collections.generic.ienumerable-1) bakın.
+LINQ sorguları hakkında daha fazla bilgi için bkz. [LINQ Sorgularına Giriş (C#)](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) ve\<IEnumerable t\> arabirimi hakkında daha fazla bilgi için [IEnumerable\<t\> arabirimi](/dotnet/api/system.collections.generic.ienumerable-1) .
 
-Gelen gerçek veri değerlerini `IRowset`elde etmek için Get() arabirimi yöntemini `IRow` kullanırız.
+Gelen `IRowset`gerçek veri değerlerini almak Için `IRow` arabirimin Get () yöntemini kullanırız.
 
 ```
 mycolumn = row.Get<int>("mycolumn")
 ```
 
-Tek tek sütun adları `IRow` Şema yöntemi ni çağırarak belirlenebilir.
+Tek tek sütun adları, `IRow` şema yöntemi çağırarak belirlenebilir.
 
 ```
 ISchema schema = row.Schema;
@@ -1893,13 +1893,13 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-Veya şema sütun adını kullanarak:
+Ya da şema sütun adını kullanarak:
 
 ```
 c# row.Get<int>(row.Schema[0].Name)
 ```
 
-LINQ ile genel numaralandırma aşağıdaki gibi görünür:
+LINQ ile genel sabit listesi aşağıdaki gibi görünür:
 
 ```
 var myRowset =
@@ -1910,17 +1910,17 @@ var myRowset =
                           }).ToList();
 ```
 
-Her iki satır kümesini de sıraladıktan sonra, tüm satırları döngüye sokacağız. Sol satır kümesindeki her satır için, birleşicimizin durumunu karşılayan tüm satırları bulacağız.
+Her iki satır kümesi numaralandırıldıktan sonra tüm satırlarda döngü ekleyeceğiz. Sol satır kümesindeki her satır için, birleştirici durumunu karşılayan tüm satırları bulacağız.
 
-Çıktı değerleri çıktı ile `IUpdatableRow` ayarlanmalıdır.
+Çıkış değerlerinin çıkış ile `IUpdatableRow` ayarlanması gerekir.
 
 ```
 output.Set<int>("mycolumn", mycolumn)
 ```
 
-Gerçek `yield return output.AsReadOnly();`çıktı' ya çağrılarak tetiklenir.
+Gerçek çıktı, öğesine `yield return output.AsReadOnly();`çağırarak tetiklenir.
 
-Aşağıdaki bir birleşim örneği:
+Aşağıda bir birleştirici örneği verilmiştir:
 
 ```
 [SqlUserDefinedCombiner]
@@ -1974,9 +1974,9 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-Bu kullanım durumu senaryosunda, perakendeci için bir analiz raporu oluşturuyoruz. Amaç fazla 20.000 $ maliyet ve belirli bir zaman dilimi içinde normal perakendeci aracılığıyla daha hızlı web sitesi üzerinden satmak tüm ürünleri bulmaktır.
+Bu kullanım örneği senaryosunda, perakende için bir analiz raporu oluşturacağız. Amaç, $20.000 'den daha fazla maliyet sunan ve belirli bir zaman çerçevesinde normal satıcıdan daha hızlı satış yapan tüm ürünleri bulmaktır.
 
-Burada temel U-SQL komut dosyasıdır. Normal bir JOIN ile birbirlatörü arasındaki mantığı karşılaştırabilirsiniz:
+Temel U-SQL betiği aşağıda verilmiştir. Bir normal JOIN ve birleştirici arasındaki mantığı karşılaştırabilirsiniz:
 
 ```sql
 DECLARE @LocalURI string = @"\usql-programmability\";
@@ -2071,28 +2071,28 @@ OUTPUT @rs1 TO @output_file1 USING Outputters.Tsv();
 OUTPUT @rs2 TO @output_file2 USING Outputters.Tsv();
 ```
 
-Kullanıcı tanımlı bir birleşim aracı, applier nesnesinin yeni bir örneği olarak çağrılabilir:
+Kullanıcı tanımlı bir birleştirici, uygulayıcı nesnesinin yeni bir örneği olarak çağrılabilir:
 
 ```
 USING new MyNameSpace.MyCombiner();
 ```
 
 
-Ya da bir sarma makinesi fabrikası yönteminin çağrılması ile:
+Ya da sarmalayıcı fabrikası yönteminin çağrılması:
 
 ```
 USING MyNameSpace.MyCombiner();
 ```
 
-## <a name="use-user-defined-reducers"></a>Kullanıcı tanımlı azaltıcılar kullanma
+## <a name="use-user-defined-reducers"></a>Kullanıcı tanımlı azaltıcının kullanma
 
-U-SQL, kullanıcı tanımlı operatör genişletilebilirlik çerçevesini kullanarak ve bir IReducer arabirimi uygulayarak C# özel rowset indirgemecileryazmanızı sağlar.
+U-SQL, Kullanıcı tanımlı operatör genişletilebilirlik çerçevesini kullanarak ve bir IReducer arabirimi uygulayarak C# dilinde özel satır kümesi azaltıcının yazmanızı sağlar.
 
-Kullanıcı tanımlı azaltıcı veya UDR, veri ayıklama (alma) sırasında gereksiz satırları ortadan kaldırmak için kullanılabilir. Ayrıca, satır ve sütunları işlemek ve değerlendirmek için de kullanılabilir. Programlanabilirlik mantığına bağlı olarak, hangi satırların ayıklanması gerektiğini de tanımlayabilir.
+Kullanıcı tanımlı Reducer veya UDR, veri ayıklama (içeri aktarma) sırasında gereksiz satırları ortadan kaldırmak için kullanılabilir. Ayrıca, satırları ve sütunları işlemek ve değerlendirmek için de kullanılabilir. Programlama mantığını temel alarak, hangi satırların ayıklanmak gerektiğini de tanımlayabilir.
 
-UDR sınıfTanımlamak için isteğe bağlı `IReducer` `SqlUserDefinedReducer` bir öznitelik içeren bir arabirim oluşturmamız gerekir.
+UDR sınıfını tanımlamak için isteğe bağlı `IReducer` `SqlUserDefinedReducer` bir özniteliğe sahip bir arabirim oluşturuyoruz.
 
-Bu sınıf arabirimi `IEnumerable` arabirim rowset geçersiz kılma için bir tanım içermelidir.
+Bu sınıf arabirimi, `IEnumerable` arabirim satır kümesi geçersiz kılma için bir tanım içermelidir.
 
 ```
 [SqlUserDefinedReducer]
@@ -2107,15 +2107,15 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-**SqlUserDefinedReducer** özniteliği, türün kullanıcı tanımlı bir indirgeme civarı olarak kaydedilmesi gerektiğini belirtir. Bu sınıf devralınamaz.
-**SqlUserDefinedReducer,** kullanıcı tanımlı bir indirgemeci tanımı için isteğe bağlı bir özelliktir. Isrecursive özelliğitanımlamak için kullanılır.
+**SqlUserDefinedReducer** özniteliği, türün Kullanıcı tanımlı Reducer olarak kaydedilmesi gerektiğini gösterir. Bu sınıf devralınamaz.
+**SqlUserDefinedReducer** , Kullanıcı tanımlı Reducer tanımı için isteğe bağlı bir özniteliktir. Isyinelemeli özelliği tanımlamak için kullanılır.
 
-* bool IsRecursive    
-* **true** = Bu Azaltıcının uyumlu ve uyumlu olup olmadığını gösterir
+* bool Isyinelemeli    
+* **true** = bu Reducer ilişkilendirilebilir ve iletişim olup olmadığını belirtir
 
-Ana programlanabilirlik nesneleri **giriş** ve **çıktıdır.** Giriş nesnesi, giriş satırlarını sıralamak için kullanılır. Çıktı, etkinliği azaltmanın bir sonucu olarak çıktı satırlarını ayarlamak için kullanılır.
+Ana programlama nesneleri **giriş** ve **Çıkış**' dır. Giriş nesnesi, giriş satırlarını numaralandırmak için kullanılır. Çıktı, etkinliğin azaltılmasının sonucu olarak çıktı satırlarını ayarlamak için kullanılır.
 
-Giriş satırları numaralandırma için `Row.Get` yöntemi kullanırız.
+Giriş satırları numaralandırması için `Row.Get` yöntemini kullanırız.
 
 ```
 foreach (IRow row in input.Rows)
@@ -2124,19 +2124,19 @@ foreach (IRow row in input.Rows)
 }
 ```
 
-Yöntemin `Row.Get` parametresi, U-SQL temel komut dosyasının `PRODUCE` `REDUCE` sınıfının bir parçası olarak geçirilen bir sütundur. Burada da doğru veri türünü kullanmalıyız.
+`Row.Get` Yöntemi için parametresi, U-SQL temel betiği `PRODUCE` `REDUCE` ifadesinin sınıfının bir parçası olarak geçirilmiş bir sütundur. Burada doğru veri türünü de kullanmanız gerekir.
 
-Çıktı için `output.Set` yöntemi kullanın.
+Çıktı için `output.Set` yöntemini kullanın.
 
-Özel azaltıcının yalnızca yöntem çağrısıyla tanımlanan çıktı değerlerinin `output.Set` olduğunu anlamak önemlidir.
+Özel Reducer yalnızca `output.Set` yöntem çağrısıyla tanımlanan değerlerin çıkış yaptığını anlamak önemlidir.
 
 ```
 output.Set<string>("mycolumn", guid);
 ```
 
-Gerçek azaltıcı çıkışı çağırArak `yield return output.AsReadOnly();`tetiklenir.
+Gerçek Reducer çıkışı çağırarak `yield return output.AsReadOnly();`tetiklenir.
 
-Aşağıda bir indirgeyici örneği verilmiştir:
+Aşağıda bir Reducer örneği verilmiştir:
 
 ```
 [SqlUserDefinedReducer]
@@ -2172,9 +2172,9 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-Bu kullanım örneği senaryosunda, indirici boş bir kullanıcı adı olan satırları atlıyor. Satır kümesindeki her satır için, gerekli her sütunu okur, ardından kullanıcı adının uzunluğunu değerlendirir. Yalnızca kullanıcı adı değeri uzunluğu 0'dan fazlaysa gerçek satırı çıkar.
+Bu kullanım örneği senaryosunda, Reducer boş Kullanıcı adına sahip satırları atlıyor. Satır kümesindeki her satır için, gerekli her sütunu okur, ardından Kullanıcı adının uzunluğunu değerlendirir. Yalnızca Kullanıcı adı değerinin uzunluğu 0 ' dan büyükse gerçek satırı verir.
 
-Aşağıda özel bir indirgeci kullanan temel U-SQL komut dosyası verem:
+Aşağıda, özel bir Reducer kullanan temel U-SQL betiği verilmiştir:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file_reducer.tsv";

@@ -1,6 +1,6 @@
 ---
-title: 'Arızalı bir devreyi sıfırlama - ExpressRoute: PowerShell: Azure | Microsoft Dokümanlar'
-description: Bu makale, başarısız durumda olan bir ExpressRoute devresi sıfırlamanıza yardımcı olur.
+title: 'Başarısız bir devre sıfırlama-ExpressRoute: PowerShell: Azure | Microsoft Docs'
+description: Bu makale, başarısız durumundaki bir ExpressRoute devresini sıfırlamanıza yardımcı olur.
 services: expressroute
 author: anzaman
 ms.service: expressroute
@@ -9,19 +9,19 @@ ms.date: 11/28/2018
 ms.author: anzaman
 ms.custom: seodec18
 ms.openlocfilehash: deeb1c65cae7e3a5b42230dbda1ad8efa717ba0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73748114"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>Başarısız olan bir ExpressRoute devresini sıfırlama
 
-ExpressRoute devresindeki bir işlem başarıyla tamamlalamadığında, devre 'başarısız' durumuna gidebilir. Bu makale, başarısız bir Azure ExpressRoute devresi sıfırlamanıza yardımcı olur.
+ExpressRoute bağlantı hattı üzerindeki bir işlem başarıyla tamamlanmazsa, devre bir ' başarısız ' durumuna geçebilir. Bu makale, başarısız bir Azure ExpressRoute devresini sıfırlamanıza yardımcı olur.
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-## <a name="reset-a-circuit"></a>Devreyi sıfırlama
+## <a name="reset-a-circuit"></a>Devre sıfırlama
 
 1. Azure Resource Manager PowerShell cmdlet'lerinin en son sürümünü yükleyin. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-az-ps).
 
@@ -40,7 +40,7 @@ ExpressRoute devresindeki bir işlem başarıyla tamamlalamadığında, devre 'b
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
-5. Başarısız durumda olan bir devreyi sıfırlamak için aşağıdaki komutları çalıştırın:
+5. Başarısız durumundaki bir devreyi sıfırlamak için aşağıdaki komutları çalıştırın:
 
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -48,8 +48,8 @@ ExpressRoute devresindeki bir işlem başarıyla tamamlalamadığında, devre 'b
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-Devre artık sağlıklı olmalı. Devre hala başarısız durumdaysa [Microsoft desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ile bir destek bileti açın.
+Devre artık sağlıklı olmalıdır. Devre hala başarısız durumdaysa, [Microsoft desteğiyle](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) bir destek bileti açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorun yaşamaya devam ediyorsanız [Microsoft desteğiyle](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) bir destek bileti açın.
+Sorun yaşamaya devam ediyorsanız [Microsoft desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ile bir destek bileti açın.

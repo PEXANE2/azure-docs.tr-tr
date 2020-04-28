@@ -1,7 +1,7 @@
 ---
-title: Azure VM ağ iş buzunu test etme
+title: Azure VM ağı aktarım hızını test etme
 titlesuffix: Azure Virtual Network
-description: Azure sanal makine ağı iş birliğini nasıl test edebilirsiniz öğrenin.
+description: Azure sanal makine ağ aktarım hızını test etme hakkında bilgi edinin.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -13,124 +13,124 @@ ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
 ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60743096"
 ---
-# <a name="bandwidththroughput-testing-ntttcp"></a>Bant genişliği/İş-İş- İş Testi (NTTTCP)
+# <a name="bandwidththroughput-testing-ntttcp"></a>Bant genişliği/Işleme testi (NTTTCP)
 
-Azure'da ağ iş hacmi performansını test ederken, en iyi sonucu test etmek için ağı hedefleyen ve performansı etkileyebilecek diğer kaynakların kullanımını en aza indiren bir araç kullanmak gerekir. NTTTCP önerilir.
+Azure 'da ağ aktarım hızı performansını sınarken, sınama için ağı hedefleyen bir araç kullanmak ve performansı etkileyebilecek diğer kaynakların kullanımını en aza indirir. NTTTCP önerilir.
 
-Aracı aynı boyuttaki iki Azure VM'sine kopyalayın. Bir VM SENDER, diğeri ALıCı olarak işlev görür.
+Aracı aynı boyuttaki iki Azure VM 'ye kopyalayın. Bir VM, gönderen ve diğeri alıcı olarak çalışır.
 
-#### <a name="deploying-vms-for-testing"></a>Test için VM'leri dağıtma
-Bu testin amaçları için, iki VM'nin aynı Bulut Hizmetinde veya aynı Kullanılabilirlik Kümesi'nde olması gerekir, böylece dahili IP'lerini kullanabilir ve Yük Dengeleyicilerini testten çıkarabiliriz. VIP ile test etmek mümkündür, ancak bu tür testler bu belgenin kapsamı dışındadır.
+#### <a name="deploying-vms-for-testing"></a>Test için VM dağıtma
+Bu testin amaçları doğrultusunda, iç IP 'lerini kullanabilmeniz ve yük dengeleyicileri testten hariç tutmak için iki VM 'nin aynı bulut hizmetinde veya aynı Kullanılabilirlik kümesinde olması gerekir. VIP ile test kurulabilir, ancak bu tür bir test bu belgenin kapsamı dışındadır.
 
-ALICI'nın IP adresini not alın. Buna IP'ye "a.b.c.r" diyelim.
+ALıCıNıN IP adresini bir yere getirin. "A. b. c. r" IP 'si arayalım
 
-VM'deki çekirdek sayısını not edin. Buna "num\#\_cores" diyelim.
+VM 'deki çekirdek sayısını unutmayın. Bu "\#NUM\_çekirdekleri" arayalım
 
-Gönderen VM ve alıcı VM'de NTTTCP testini 300 saniye (veya 5 dakika) çalıştırın.
+Sender VM ve alıcı VM 'de 300 saniye (veya 5 dakika) boyunca NTTTCP testini çalıştırın.
 
-İpucu: Bu testi ilk kez ayarlarken, geri bildirimi daha erken almak için daha kısa bir test süresi deneyebilirsiniz. Araç beklendiği gibi çalıştığında, en doğru sonuçlar için test süresini 300 saniyeye kadar uzatın.
+İpucu: Bu testi ilk kez ayarlarken daha çabuk geri bildirim almak için daha kısa bir test süresi deneyebilirsiniz. Araç beklenen şekilde çalışmaya başladıktan sonra en doğru sonuçlar için test süresini 300 saniyeye uzatın.
 
 > [!NOTE]
-> Gönderen **ve** alıcı aynı test süresi **parametresini** (-t) belirtmelidir.
+> Gönderen **ve** alıcı **aynı** test süresi parametresini (-t) belirtmelidir.
 
 Tek bir TCP akışını 10 saniye boyunca test etmek için:
 
-Alıcı parametreleri: ntttcp -r -t 10 -P 1
+Alıcı parametreleri: NTttcp-r-t 10-P 1
 
-Gönderen parametreleri: ntttcp -s10.27.33.7 -t 10 -n 1 -P 1
+Gönderen parametreleri: NTttcp-s 10.27.33.7-t 10-n 1-P 1
 
 > [!NOTE]
-> Önceki örnek yalnızca yapılandırmanızı onaylamak için kullanılmalıdır. Geçerli sınama örnekleri daha sonra bu belgede ele alınmıştır.
+> Yukarıdaki örnek yalnızca yapılandırmanızı onaylamak için kullanılmalıdır. Bu belgenin ilerleyen kısımlarında, test için geçerli örnekler ele alınmıştır.
 
-## <a name="testing-vms-running-windows"></a>WINDOWS çalıştıran VM'leri test etme:
+## <a name="testing-vms-running-windows"></a>WINDOWS çalıştıran VM 'Leri test etme:
 
-#### <a name="get-ntttcp-onto-the-vms"></a>NTTTCP'yi VM'lere geçirin.
+#### <a name="get-ntttcp-onto-the-vms"></a>VM 'lere NTTTCP 'yi alın.
 
 En son sürümü indirin:<https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
 
-Ya da taşınırsa <https://www.bing.com/search?q=ntttcp+download> \< onu arayın: -- ilk vurulmalı
+Ya da, taşındıysanız arama yapın <https://www.bing.com/search?q=ntttcp+download> \< :--ilk isabet edilmelidir
 
-NTTTCP'yi c:\\tools gibi ayrı bir klasöre koymayı düşünün
+NTTTCP 'yi c:\\araçları gibi ayrı bir klasöre yerleştirmeyi düşünün
 
-#### <a name="allow-ntttcp-through-the-windows-firewall"></a>Windows güvenlik duvarından NTTTCP'ye izin verme
-ALıCı'da, NTTTCP trafiğinin gelmesine izin vermek için Windows Güvenlik Duvarı'nda İzin Ver kuralı oluşturun. Belirli TCP bağlantı noktalarının gelene izin vermek yerine, tüm NTTTCP programına adıyla izin vermek en kolayıdır.
+#### <a name="allow-ntttcp-through-the-windows-firewall"></a>Windows Güvenlik Duvarı üzerinden NTTTCP 'ye izin ver
+ALıCıDA, Windows Güvenlik Duvarı 'nda NTTTCP trafiğinin gelmesini sağlamak için bir Izin verme kuralı oluşturun. Gelen belirli TCP bağlantı noktalarına izin vermek yerine NTTTCP programının tamamına ada göre izin vermek en kolay yoldur.
 
-NTTTCP'nin Windows Güvenlik Duvarı'ndan şu şekilde geçmesine izin verin:
+Windows Güvenlik Duvarı üzerinden şu şekilde NTttcp 'ye izin ver:
 
-netsh advfirewall güvenlik duvarı\<kural\>\\programı eklemek = PATH ntttcp.exe adı="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
+netsh advfirewall firewall add rule program =\<Path\>\\NTttcp. exe name = "NTttcp" protokol = any dir = in Action = Allow Enable = Yes profile = any
 
-Örneğin, ntttcp.exe'yi "c:\\tools" klasörüne kopyaladıysanız, bu komut olacaktır: 
+Örneğin, NTttcp. exe ' yi "c:\\Tools" klasörüne kopyaladıysanız şu komut olacaktır: 
 
-netsh advfirewall güvenlik duvarı kural\\programı=c: araçlar\\nttcp.exe adı="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
+netsh advfirewall firewall add rule program = c:\\Araçlar\\NTttcp. exe name = "NTttcp" protokol = any dir = in Action = Allow Enable = Yes profile = any
 
-#### <a name="running-ntttcp-tests"></a>NTTTCP testlerini çalıştırma
+#### <a name="running-ntttcp-tests"></a>NTTTCP testleri çalıştırılıyor
 
-Alıcıda NTTTCP'yi başlatın **(POWERShell'den değil CMD'den çalıştırın):**
+ALıCıDA NTTTCP 'yi başlatın (PowerShell 'den değil,**cmd 'den çalıştırın**):
 
-ntttcp -r –m\*\#[2\_num\*çekirdek], a.b.c.r -t 300
+NTttcp-r – m [2\*\#NUM\_çekirdekler]\*,, a. b. c. r-t 300
 
-VM dört çekirdek ve 10.0.0.4 bir IP adresi varsa, bu gibi görünür:
+VM 'de dört çekirdek ve IP adresi 10.0.0.4 varsa, şöyle görünür:
 
-ntttcp -r –m\*8, 10.0.0.4 -t 300
-
-
-Gönderen 'de NTTTCP'yi başlatın **(PowerShell'den değil CMD'den çalıştırın):**
-
-ntttcp -s –m\*8, 10.0.0.4 -t 300 
-
-Sonuçları bekleyin.
+NTttcp-r – m 8,\*, 10.0.0.4-t 300
 
 
-## <a name="testing-vms-running-linux"></a>LINUX çalıştıran VM'leri test etme:
+GÖNDERENDEN NTTTCP 'yi başlatın (PowerShell 'den değil,**cmd 'den çalıştırın**):
 
-nttcp-for-linux kullanın. Bu kullanılabilir<https://github.com/Microsoft/ntttcp-for-linux>
+NTttcp-s – a 8,\*, 10.0.0.4-t 300 
 
-Linux VM'lerinde (hem SENDER hem de RECEIVER), VM'lerinizde nttcp-for-linux hazırlamak için bu komutları çalıştırın:
+Sonuçları bekle.
 
-CentOS - Yükle yükleyin:
+
+## <a name="testing-vms-running-linux"></a>LINUX çalıştıran VM 'Leri test etme:
+
+Linux için nttcp kullanın. Buradan kullanılabilir<https://github.com/Microsoft/ntttcp-for-linux>
+
+Linux VM 'lerinde (Gönderen ve alıcı), VM 'lerinize NTttcp-for-Linux hazırlamak için şu komutları çalıştırın:
+
+CentOS-git 'i yükler:
 ``` bash
   yum install gcc -y  
   yum install git -y
 ```
-Ubuntu - Git yükleyin:
+Ubuntu-git 'i yükler:
 ``` bash
  apt-get -y install build-essential  
  apt-get -y install git
 ```
-Her ikisinde de Yap ve Yükle:
+Her ikisine de oluştur ve yüklensin:
 ``` bash
  git clone https://github.com/Microsoft/ntttcp-for-linux
  cd ntttcp-for-linux/src
  make && make install
 ```
 
-Windows örneğinde olduğu gibi, Linux RECEIVER IP'sinin 10.0.0.4 olduğunu varsayıyoruz.
+Windows örneğinde olduğu gibi, Linux alıcının IP 10.0.0.4 olduğunu varsaytık
 
-Alıcı da NTTTCP-for-Linux'u başlatın:
+ALıCıDA NTTTCP-for-Linux 'ı başlatın:
 
 ``` bash
 ntttcp -r -t 300
 ```
 
-Ve GÖNDEREN'de, çalıştırın:
+GÖNDERENIN üzerinde şunu çalıştırın:
 
 ``` bash
 ntttcp -s10.0.0.4 -t 300
 ```
  
-Zaman parametresi verilmezse test uzunluğu varsayılan olarak 60 saniyeye
+Zaman parametresi verilmezse test uzunluğu varsayılan olarak 60 saniyedir
 
-## <a name="testing-between-vms-running-windows-and-linux"></a>Windows ve LINUX çalıştıran VM'ler arasında test:
+## <a name="testing-between-vms-running-windows-and-linux"></a>Windows ve LINUX çalıştıran VM 'Ler arasında test:
 
-Bu senaryolarda, testin çalıştırabilmesi için eşitlemesiz modunu etkinleştirmeliyiz. Bu, Linux için **-N ve** Windows için **-ns bayrağı** kullanılarak yapılır.
+Bu senaryolarda, testin çalışabilmesi için hiçbir eşitleme modunu etkinleştirmemiz gerekir. Bu, Linux için **-N bayrağı** ve Windows için **NS bayrağı** kullanılarak yapılır.
 
-#### <a name="from-linux-to-windows"></a>Linux'tan Windows'a:
+#### <a name="from-linux-to-windows"></a>Linux 'tan Windows 'a:
 
 Alıcı \<Windows>:
 
@@ -138,13 +138,13 @@ Alıcı \<Windows>:
 ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
 ```
 
-Gönderen \<Linux> :
+Sender \<Linux>:
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 ```
 
-#### <a name="from-windows-to-linux"></a>Windows'dan Linux'a:
+#### <a name="from-windows-to-linux"></a>Windows 'dan Linux 'a:
 
 Alıcı \<Linux>:
 
@@ -157,8 +157,8 @@ Gönderen \<Windows>:
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 ```
-## <a name="testing-cloud-service-instances"></a>Bulut Hizmeti Örneklerini Test Etme:
-ServiceDefinition.csdef'inize aşağıdaki bölümü eklemeniz gerekir
+## <a name="testing-cloud-service-instances"></a>Bulut hizmeti örnekleri sınanıyor:
+ServiceDefinition. csdef ' ye aşağıdaki bölümü eklemeniz gerekir
 ```xml
 <Endpoints>
   <InternalEndpoint name="Endpoint3" protocol="any" />
@@ -166,6 +166,6 @@ ServiceDefinition.csdef'inize aşağıdaki bölümü eklemeniz gerekir
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Sonuçlara bağlı olarak, senaryonuz için [ağ iş yeri makinelerini optimize](virtual-network-optimize-network-bandwidth.md) etmek için yer olabilir.
-* [Bant genişliğinin sanal makinelere](virtual-machine-network-throughput.md) nasıl tahsis edildiğini okuyun
-* Azure Sanal Ağı ile daha fazla bilgi edinin [sık sorulan sorular (SSS)](virtual-networks-faq.md)
+* Sonuçlara bağlı olarak, senaryolarınız için [ağ verimlilik makinelerini iyileştirmek](virtual-network-optimize-network-bandwidth.md) için yer olabilir.
+* [Bant genişliğinin sanal makinelere nasıl ayrıldığı](virtual-machine-network-throughput.md) hakkında bilgi edinin
+* [Azure sanal ağ hakkında sık sorulan sorular (SSS)](virtual-networks-faq.md) hakkında daha fazla bilgi edinin

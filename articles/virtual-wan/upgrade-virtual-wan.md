@@ -1,6 +1,6 @@
 ---
-title: Temelden Standarda Azure Sanal WAN yükseltme - Azure portalı | Microsoft Dokümanlar
-description: Daha fazla işlevsellik için sanal WAN türünü yükseltebilirsiniz.
+title: Azure sanal WAN 'ı temel 'ten standart Azure portal yükseltin | Microsoft Docs
+description: Sanal WAN türünü daha fazla işlevsellik için yükseltebilirsiniz.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,32 +8,32 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 83fd5bafb5496908403c50dc0e000fd33a836c95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73515817"
 ---
-# <a name="upgrade-a-virtual-wan-from-basic-to-standard"></a>Temelden Standarda sanal bir WAN yükseltme
+# <a name="upgrade-a-virtual-wan-from-basic-to-standard"></a>Bir sanal WAN 'ı temel 'ten Standart sürüme yükseltme
 
-Bu makale, Temel WAN'ı Standart WAN'a yükseltmenize yardımcı olur. 'Basic' WAN türü, temel SKU hub'ları olarak içindeki tüm hub'ları oluşturur. Temel hub'da yalnızca siteden siteye VPN işleviyle sınırlıdırsınız. 'Standart' WAN türü, içindeki tüm hub'ları Standart SKU hub'ları olarak oluşturur. Standart hub'ları kullandığınızda, Azure hub'ları aracılığıyla ExpressRoute, User (Noktaya Sayfa) VPN,tam ağ hub'ı ve VNet'ten VNet'e geçişi etkinleştirebilirsiniz.
+Bu makale, temel bir WAN 'ı standart bir WAN 'a yükseltmenize yardımcı olur. ' Temel ' WAN türü, onun içindeki tüm Hub 'ları temel SKU hub 'ları olarak oluşturur. Temel bir hub 'da, yalnızca siteden siteye VPN işlevselliği ile sınırlı olursunuz. ' Standart ' WAN türü, içindeki tüm Hub 'ları standart SKU hub 'ları olarak oluşturur. Standart Hub 'ları kullanırken ExpressRoute, Kullanıcı (Noktadan siteye) VPN, tam bir ağ hub 'ı ve Azure hub 'ları aracılığıyla VNet 'ten VNet 'e geçiş sağlayabilirsiniz.
 
-Aşağıdaki tablo, her WAN türü için kullanılabilir yapılandırmaları gösterir:
+Aşağıdaki tabloda her WAN türü için kullanılabilen yapılandırma gösterilmektedir:
 
 [!INCLUDE [Basic and Standard SKUs](../../includes/virtual-wan-standard-basic-include.md)]
 
 ## <a name="to-change-the-virtual-wan-type"></a>Sanal WAN türünü değiştirmek için
 
-1. Sanal WAN'ınızın sayfasında Yapılandırma sayfasını açmak için **Yapılandırma'yı** seçin.
+1. Sanal WAN 'nizin sayfasında yapılandırma sayfasını açmak için **yapılandırma** ' yı seçin.
 
    ![Sanal WAN diyagramı](./media/upgrade-virtual-wan/1.png)
-2. Sanal WAN türü için açılır dosyadan **Standart'ı** seçin.
+2. Sanal WAN türü için açılan listeden **Standart** ' ı seçin.
 
    ![Sanal WAN diyagramı](./media/upgrade-virtual-wan/2.png)
-3. Standart sanal WAN'a yükseltilerseniz, Temel sanal WAN'a geri dönemeyeceğinizdir. Yükseltmek istiyorsanız **Onayla'yı** seçin.
+3. Standart bir sanal WAN 'a yükseltirseniz, temel bir sanal WAN 'a geri dönmemek istediğinizi anlayın. Yükseltmek istiyorsanız **Onayla** ' yı seçin.
 
    ![Sanal WAN diyagramı](./media/upgrade-virtual-wan/4.png)
-4. Değişiklik kaydedildikten sonra, sanal WAN sayfanız bu örneğe benzer.
+4. Değişiklik kaydedildikten sonra, sanal WAN sayfanız bu örneğe benzer şekilde görünür.
 
    ![Sanal WAN diyagramı](./media/upgrade-virtual-wan/5.png)
 

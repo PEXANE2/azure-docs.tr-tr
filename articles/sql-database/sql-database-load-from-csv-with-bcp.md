@@ -1,5 +1,5 @@
 ---
-title: CSV dosyasından verileri veritabanına yükleme (bcp)
+title: CSV dosyasından veritabanına veri yükleme (bcp)
 description: Küçük veri boyutları için Azure SQL Veritabanına veri aktarırken bcp kullanır.
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/25/2019
 ms.openlocfilehash: b0df3d588f1d9b0a50c3ea7a583b0704e7e85c39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73827482"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>CSV dosyasından Azure SQL Veritabanı'na veri yükleme (düz dosyalar)
@@ -26,9 +26,9 @@ Bir CSV dosyasından Azure SQL Veritabanı’na veri aktarmak için bcp komut sa
 
 ### <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki adımları tamamlamak için şunları yapmanız gerekir:
+Bu makaledeki adımları tamamlayabilmeniz için şunlar gerekir:
 
-* Azure SQL Veritabanı sunucusu ve veritabanı
+* Azure SQL veritabanı sunucusu ve veritabanı
 * bcp komut satırı yardımcı programının yüklü olması
 * sqlcmd komut satırı yardımcı programının yüklü olması
 
@@ -38,7 +38,7 @@ bcp ve sqlcmd yardımcı programlarını [Microsoft İndirme Merkezi][Microsoft 
 
 UTF-8 biçimi bcp tarafından desteklenmediğinden, bu öğreticiyi kendi verilerinizle deniyorsanız verilerinizin ASCII veya UTF-16 kodlamasını kullanıyor olması gerekir. 
 
-## <a name="1-create-a-destination-table"></a>1. Hedef tablo oluşturma
+## <a name="1-create-a-destination-table"></a>1. bir hedef tablo oluşturun
 
 SQL Veritabanı'nda bir tabloyu hedef tablo olarak tanımlayın. Tablodaki sütunlar, veri dosyanızın tüm satırlarındaki verilere karşılık gelmelidir.
 
@@ -57,7 +57,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## <a name="2-create-a-source-data-file"></a>2. Kaynak veri dosyası oluşturma
+## <a name="2-create-a-source-data-file"></a>2. kaynak veri dosyası oluşturma
 
 Not Defteri'ni açın ve yeni bir metin dosyasına aşağıdaki veri satırlarını kopyalayıp dosyayı yerel geçici dizininize (C:\Temp\DimDate2.txt) kaydedin. Bu veri ASCII biçimindedir.
 
@@ -82,7 +82,7 @@ Not Defteri'ni açın ve yeni bir metin dosyasına aşağıdaki veri satırları
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t , 
 ```
 
-## <a name="3-load-the-data"></a>3. Verileri yükleyin
+## <a name="3-load-the-data"></a>3. verileri yükleme
 
 Verileri yüklemek için bir komut satırı açın; Sunucu Adı, Veritabanı Adı, Kullanıcı Adı ve Parola alanlarına kendi bilgilerinizi yazarak aşağıdaki komutu çalıştırın.
 

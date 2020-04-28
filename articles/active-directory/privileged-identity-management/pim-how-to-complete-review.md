@@ -1,6 +1,6 @@
 ---
-title: PIM'deki Azure REKLAM rollerinin erişim incelemesini bitiş - Azure AD | Microsoft Dokümanlar
-description: Azure AD Ayrıcalıklı Kimlik Yönetimi'nde (PIM) Azure AD rollerinin erişim incelemesini nasıl tamamlayamanızı ve sonuçları nasıl görüntüleyin
+title: PıM-Azure AD 'de Azure AD rollerinin erişim incelemesini tamamlama | Microsoft Docs
+description: Azure AD Privileged Identity Management (PıM) içinde Azure AD rollerinin erişim incelemesini tamamlamayı ve sonuçları görüntülemeyi öğrenin
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,52 +15,52 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe2d85d605b9ee418a5709ddcdb448c56be1d918
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74022274"
 ---
-# <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Ayrıcalıklı Kimlik Yönetimi'nde Azure AD rollerinin erişim incelemesini tamamlayın
+# <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rollerinin erişim incelemesini tamamlar
 
-Ayrıcalıklı rol [yöneticileri, bir erişim incelemesi başlatıldıktan](pim-how-to-start-security-review.md)sonra ayrıcalıklı erişimi gözden geçirebilirsiniz.  Ayrıcalıklı Kimlik Yönetimi (PIM), Azure Etkin Dizin (Azure AD) kuruluşunuzdaki kullanıcılara otomatik olarak bir e-posta göndererek erişimlerini gözden geçirmelerini sağlar. Bir kullanıcı bir e-posta almadıysa, onlara [erişim incelemesinin nasıl gerçekleştirilebileceğiyle](pim-how-to-perform-security-review.md)ilgili yönergeleri gönderebilirsiniz.
+Ayrıcalıklı rol yöneticileri, [erişim incelemesi başlatıldıktan](pim-how-to-start-security-review.md)sonra ayrıcalıklı erişimi gözden geçirebilir.  Privileged Identity Management (PıM), kullanıcıların erişimini gözden geçirmesini isteyen Azure Active Directory (Azure AD) kuruluşunuzdaki kullanıcılara otomatik olarak bir e-posta gönderir. Bir Kullanıcı bir e-posta göndermediyseniz, bunlara [erişim incelemesi gerçekleştirme](pim-how-to-perform-security-review.md)bölümündeki yönergeleri gönderebilirsiniz.
 
-Erişim inceleme süresi bittikten veya tüm kullanıcılar kendi incelemelerini tamamladıktan sonra, incelemeyi yönetmek ve sonuçları görmek için bu makaledeki adımları izleyin.
+Erişim gözden geçirme süresi dolduktan sonra veya tüm kullanıcılar kendi kendini gözden geçirmeyi tamamladıktan sonra, gözden geçirmeyi yönetmek ve sonuçları görmek için bu makaledeki adımları izleyin.
 
-## <a name="manage-access-reviews"></a>Erişim yorumlarını yönetme
+## <a name="manage-access-reviews"></a>Erişim incelemelerini yönetme
 
-1. [Azure portalına](https://portal.azure.com/) gidin ve panonuzdaki **Azure AD Ayrıcalıklı Kimlik Yönetimi** hizmetini seçin.
-1. Panodaki **Access değerlendirmeleri** bölümünü seçin.
-1. Yönetmek istediğiniz erişim incelemesini seçin.
+1. [Azure Portal](https://portal.azure.com/) gidin ve panonuzda **Azure AD Privileged Identity Management** hizmeti seçin.
+1. Panonun **erişim İncelemeleri** bölümünü seçin.
+1. Yönetmek istediğiniz erişim gözden geçirmeyi seçin.
 
-Erişim incelemesinin ayrıntı bıçak üzerinde, bu inceleme yönetmek için bir dizi seçenek vardır.
+Erişim incelemesinin ayrıntı dikey penceresinde, gözden geçirmeyi yönetmeye yönelik çeşitli seçenekler vardır.
 
-![Ayrıcalıklı Kimlik Yönetimi erişim inceleme düğmeleri - ekran görüntüsü](./media/pim-how-to-complete-review/review-buttons.png)
+![Privileged Identity Management erişim gözden geçirme düğmeleri-ekran görüntüsü](./media/pim-how-to-complete-review/review-buttons.png)
 
-### <a name="remind"></a>Hatırlat
+### <a name="remind"></a>Tmak
 
-Kullanıcıların kendilerini gözden geçirmeleri için bir erişim incelemesi ayarlanırsa, **Hatırlat** düğmesi bir bildirim gönderir.
+Kullanıcıların kendilerini gözden geçirmesi için bir erişim incelemesi ayarlandıysa, **hatırlat** düğmesi bir bildirim gönderir.
 
 ### <a name="stop"></a>Durdur
 
-Tüm erişim yorumlarının bir bitiş tarihi vardır, ancak erken bitirmek için **Durdur** düğmesini kullanabilirsiniz. Bu zamana kadar herhangi bir kullanıcı gözden geçirilmezse, incelemeyi durdurduktan sonra bunu yapamazlar. Bir inceleme durdurulduktan sonra yeniden başlatamazsınız.
+Tüm erişim incelemelerinin bitiş tarihi vardır, ancak daha önce bitirmek için **Durdur** düğmesini kullanabilirsiniz. Herhangi bir Kullanıcı bu süre içinde incelenmediyse, gözden geçirmeyi durdurduktan sonra bu kullanıcılara izin vermez. Bir gözden geçirmeyi durdurduktan sonra yeniden başlatmazsanız.
 
 ### <a name="apply"></a>Uygula
 
-Erişim incelemesi tamamlandıktan sonra, bitiş tarihine ulaştığınız veya el ile durdurduğunuz **için, Uygula** düğmesi incelemenin sonucunu uygular. Gözden geçirmede bir kullanıcının erişimi reddedildiyse, bu, rol atamasını kaldıracak adımdır.  
+Bir erişim incelemesi tamamlandıktan sonra, bitiş tarihine ulaştığınızdan veya el ile durdurduğundan, **Uygula** düğmesi gözden geçirme sonucunu uygular. Gözden geçirme sırasında bir kullanıcının erişimi reddedildiyse, bu adım rol atamasını kaldıracak olan adımdır.  
 
 ### <a name="export"></a>Dışarı Aktarma
 
-Erişim incelemesinin sonuçlarını el ile uygulamak istiyorsanız, incelemeyi dışa aktarabilirsiniz. **Dışa Aktarma** düğmesi bir CSV dosyasını indirmeye başlar. Sonuçları Excel'de veya CSV dosyalarını açan diğer programlarda yönetebilirsiniz.
+Erişim gözden geçirmesi sonuçlarını el ile uygulamak istiyorsanız, incelemeyi dışarı aktarabilirsiniz. **Dışarı aktar** DÜĞMESI bir CSV dosyasını indirmeye başlayacaktır. Sonuçları Excel veya CSV dosyalarını açan diğer programlarda yönetebilirsiniz.
 
 ### <a name="delete"></a>Sil
 
-İncelemeyle daha fazla ilgilenmiyorsanız, silin. **Silme** düğmesi, incelemeyi Ayrıcalıklı Kimlik Yönetimi hizmetinden kaldırır.
+Daha fazla inceleme ile ilgilenmiyorsanız, silin. **Sil** düğmesi Privileged Identity Management hizmetten gözden geçirmeyi kaldırır.
 
 > [!IMPORTANT]
-> Bu yıkıcı değişikliği onaylamanız gerekmez, bu nedenle bu incelemeyi silmek istediğinizi doğrulayın.
+> Bu bozucu değişikliği onaylamanız gerekmez, bu nedenle gözden geçirmeyi silmek istediğinizi doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ayrıcalıklı Kimlik Yönetimi'nde Azure AD rolleri için bir erişim incelemesi başlatma](pim-how-to-start-security-review.md)
-- [Ayrıcalıklı Kimlik Yönetimi'ndeki Azure REKLAM rollerimin erişim incelemesini gerçekleştirin](pim-how-to-perform-security-review.md)
+- [Privileged Identity Management Azure AD rolleri için erişim gözden geçirmesi başlatma](pim-how-to-start-security-review.md)
+- [Privileged Identity Management Azure AD rollerimin erişim incelemesini gerçekleştirin](pim-how-to-perform-security-review.md)

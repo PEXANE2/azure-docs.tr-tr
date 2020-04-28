@@ -1,6 +1,6 @@
 ---
-title: Uzaktan İzleme çözüm hızlandırıcıSSS - Azure | Microsoft Dokümanlar
-description: Bu makalede, Uzaktan İzleme çözüm hızlandırıcıları için sık sorulan soruları yanıtlar.
+title: Uzaktan Izleme Çözüm Hızlandırıcısı SSS-Azure | Microsoft Docs
+description: Bu makalede, uzaktan Izleme çözüm hızlandırıcılarına yönelik sık sorulan sorular yanıtlanmaktadır.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,44 +9,44 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: c410ac7f41adb623a7198320a1edced097778569
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73826244"
 ---
-# <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Uzaktan İzleme çözüm hızlandırıcısı için sık sorulan sorular
+# <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Uzaktan Izleme Çözüm Hızlandırıcısı için sık sorulan sorular
 
-Ayrıca bakınız, genel [SSS](iot-accelerators-faq.md).
+Ayrıca bkz. genel [SSS](iot-accelerators-faq.md).
 
-### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Yeni Uzaktan İzleme çözümünü sağlamak ne kadara mal olur?
+### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Yeni uzaktan Izleme çözümünü sağlama maliyeti ne kadar sürer?
 
-Yeni çözüm hızlandırıcıiki dağıtım seçeneği sunar:
+Yeni Çözüm Hızlandırıcısı iki dağıtım seçeneği sunar:
 
-* Daha düşük geliştirme maliyeti arayan geliştiriciler veya bir demo veya kavram kanıtı oluşturmak isteyen müşteriler için tasarlanmış *temel* bir seçenek.
-* Üretime hazır bir altyapı dağıtmak isteyen işletmeler için tasarlanmış *standart* bir seçenek.
+* Tanıtım veya kavram kanıtı oluşturmak isteyen geliştiricilere daha düşük geliştirme maliyeti veya müşterileri arayan geliştiriciler için tasarlanan *temel* bir seçenek.
+* Üretime yönelik bir altyapı dağıtmak isteyen kuruluşlar için tasarlanan *Standart* bir seçenek.
 
-### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>Çözümümü geliştirirken maliyetlerimi düşük tuttuğumdan nasıl emin olabilirim?
+### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>Çözümmi geliştirdiğimde maliyetlerimi bir daha tutdum nasıl emin olabilirim?
 
-İki farklı dağıtım sağlamanın yanı sıra, yeni Uzaktan İzleme çözümü, isteğe bağlı tüm simüle edilmiş aygıtları etkinleştirmek veya devre dışı kacak bir ayara sahiptir. Simülasyonun devre dışı bırakılması, çözümde alınan verileri ve dolayısıyla toplam maliyeti azaltır.
+İki farklı dağıtım sağlamaya ek olarak, yeni uzaktan Izleme çözümünün isteğe bağlı tüm sanal cihazları etkinleştirme veya devre dışı bırakma ayarı vardır. Benzetimi devre dışı bırakmak, çözümde alınan verileri azaltır ve bu nedenle genel maliyettir.
 
-### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Temel ve standart dağıtım seçenekleri arasındaki fark nedir? İki dağıtım seçeneği arasında nasıl karar veririm?
+### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Temel ve standart dağıtım seçenekleri arasındaki fark nedir? İki dağıtım seçeneği arasında Nasıl yaparım? karar veriyor musunuz?
 
-Her dağıtım seçeneği farklı ihtiyaçlara yanıt verir. Temel dağıtım, PoC ve küçük pilotlar geliştirmek ve başlamak için tasarlanmıştır. Bu minimum gerekli kaynaklar ve daha düşük bir maliyet ile aerodinamik bir mimari sağlar. Standart dağıtım, üretime hazır bir çözüm oluşturmak ve özelleştirmek için tasarlanmıştır ve bunu gerçekleştirmek için gerekli öğeleri içeren bir dağıtım sağlar. Güvenilirlik ve ölçek için, uygulama mikrohizmetleri Docker kapsayıcıları olarak oluşturulur ve bir orkestratör (varsayılan olarak Kubernetes) kullanılarak dağıtılır. Orkestratör, uygulamanın dağıtımından, ölçeklendirilmesinden ve yönetiminden sorumludur. Mevcut gereksinimlerinize göre bir seçenek seçmelisiniz. Proje aşamanıza bağlı olarak birini, diğerini veya her ikisinin bir birleşimini kullanabilirsiniz.
+Her dağıtım seçeneği farklı gereksinimlere yanıt verir. Temel dağıtım, başlamak ve PoC ve küçük Pilots geliştirmek için tasarlanmıştır. En düşük gerekli kaynaklarla ve daha düşük bir maliyetle daha kolay bir mimari sağlar. Standart dağıtım, üretime Ready bir çözüm oluşturup özelleştirmek için tasarlanmıştır ve bunu gerçekleştirmek için gerekli öğelerle bir dağıtım sağlar. Güvenilirlik ve ölçeklendirme için, uygulama mikro hizmetleri Docker Kapsayıcıları olarak oluşturulur ve Orchestrator kullanılarak dağıtılır (varsayılan olarak Kubernetes). Orchestrator, uygulamanın dağıtılması, ölçeklendirilmesi ve yönetimi sorumludur. Geçerli gereksinimlerinize göre bir seçenek seçmeniz gerekir. Proje aşamaınıza bağlı olarak, birini, diğerini veya bir bileşimini kullanabilirsiniz.
 
-### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Panodaki dinamik bir haritayı nasıl yapılandırıyorum?
+### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Panoda dinamik bir harita mi Nasıl yaparım??
 
-Daha fazla bilgi için, [dinamik bir haritadaki aygıtları görmek için Yükseltme haritası anahtarına](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map)bakın.
+Daha fazla bilgi için bkz. [dinamik bir haritadaki cihazları görmek için eşleme anahtarını yükseltme](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map).
 
-### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Uzaktan İzleme çözümünün önceki sürümü hakkında nerede bilgi bulabilirim?
+### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Uzaktan Izleme çözümünün önceki sürümüyle ilgili bilgileri nereden bulabilirim?
 
-Uzaktan İzleme çözüm hızlandırıcısının önceki sürümü, Önceden yapılandırılmış çözüm IoT Suite Uzaktan İzleme olarak biliniyordu. Arşivlenmiş belgeleri [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
+Uzaktan Izleme çözüm hızlandırıcısının önceki sürümü IoT Suite uzaktan Izleme çözümü olarak bilinir. Arşivlenmiş belgeleri adresinde [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/)bulabilirsiniz.
 
 ### <a name="next-steps"></a>Sonraki adımlar
 
 IoT çözüm hızlandırıcılarının diğer özellik ve yeteneklerinden bazılarını da keşfedebilirsiniz:
 
-* [Uzaktan İzleme çözüm hızlandırıcısının yeteneklerini keşfedin](quickstart-remote-monitoring-deploy.md)
-* [Tahmine Dayalı Bakım çözüm hızlandırıcıya genel bakış](iot-accelerators-predictive-overview.md)
-* [Bağlı Fabrika çözüm hızlandırıcıyı dağıtın](quickstart-connected-factory-deploy.md)
+* [Uzaktan Izleme çözüm hızlandırıcısının yeteneklerini keşfet](quickstart-remote-monitoring-deploy.md)
+* [Tahmine dayalı bakım çözüm hızlandırıcısına genel bakış](iot-accelerators-predictive-overview.md)
+* [Bağlı fabrika çözüm Hızlandırıcısını dağıtma](quickstart-connected-factory-deploy.md)
 * [Baştan sona IoT güvenliği](/azure/iot-fundamentals/iot-security-ground-up)

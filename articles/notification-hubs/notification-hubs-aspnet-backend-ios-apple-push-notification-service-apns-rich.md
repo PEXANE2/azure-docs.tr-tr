@@ -1,6 +1,6 @@
 ---
-title: Azure Bildirim Hub'ları Zengin Push
-description: Azure'dan bir iOS uygulamasına nasıl zengin anında iletme bildirimleri göndereceğinizi öğrenin. Amaç-C ve C# ile yazılmış kod örnekleri.
+title: Azure Notification Hubs zengin gönderim
+description: Azure 'dan bir iOS uygulamasına zengin anında iletme bildirimleri göndermeyi öğrenin. Kod örnekleri, amaç-C ve C# dilinde yazılmıştır.
 documentationcenter: ios
 services: notification-hubs
 author: sethmanheim
@@ -17,17 +17,17 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71212196"
 ---
-# <a name="azure-notification-hubs-rich-push"></a>Azure Bildirim Hub'ları Zengin Push
+# <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs zengin gönderim
 
 ## <a name="overview"></a>Genel Bakış
 
-Kullanıcıların anlık zengin içerikleriyle etkileşime girebilmesi için, bir uygulama düz metnin ötesine itmek isteyebilir. Bu bildirimler kullanıcı etkileşimlerini teşvik eder ve urller, sesler, resimler/kuponlar ve daha fazlası gibi içerikler sunar. Bu öğretici, [Kullanıcıları Bildir](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) konusuna göre biroluşturur ve yükleri içeren anında iletme bildirimlerinin nasıl gönderilebildiğini (örneğin, resim) gösterir.
+Kullanıcıları anlık zengin içerikle birlikte kullanmak için, bir uygulama düz metnin ötesine gönderim yapmak isteyebilir. Bu bildirimler kullanıcı etkileşimlerini yükseltir ve URL, ses, resim/kupon gibi içerikler sunar. Bu öğretici [kullanıcıları bilgilendir](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) konusuna sahiptir ve yükleri içeren anında iletme bildirimlerinin nasıl gönderileceğini gösterir (örneğin, görüntü).
 
 Bu öğretici iOS 7 & 8 ile uyumludur.
 
@@ -36,26 +36,26 @@ Bu öğretici iOS 7 & 8 ile uyumludur.
 Yüksek düzeyde:
 
 1. Uygulama arka ucu:
-   * Zengin yükü (bu durumda, görüntü) arka uç veritabanında/yerel depolamada saklar
-   * Bu zengin bildirimin kimliğini aygıta gönderir
+   * Zengin yükü (Bu durumda görüntüde) arka uç veritabanında/yerel depolamada depolar
+   * Bu zengin bildirimin KIMLIĞINI cihaza gönderir
 2. Cihazdaki uygulama:
-   * Aldığı kimlikle zengin yükü isteyen arka uçla iletişim kurun
-   * Veri alma tamamlandığında kullanıcılara cihazda bildirimler gönderir ve kullanıcılar daha fazla bilgi edinmek için dokunduğunda yükü hemen gösterir
+   * Aldığı KIMLIKLE zengin yük isteyen arka uca iletişim kurar
+   * Veri alımı tamamlandığında cihazda Kullanıcı bildirimleri gönderir ve kullanıcıların daha fazla bilgi edinmek için dokunduğunda yükü hemen gösterir
 
-## <a name="webapi-project"></a>WebAPI Projesi
+## <a name="webapi-project"></a>WebAPI projesi
 
-1. Visual Studio'da, [Kullanıcıları Bildir](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) öğreticisinde oluşturduğunuz **AppBackend** projesini açın.
-2. Kullanıcılara bildirmek istediğiniz bir resim edinin ve proje dizininizdeki bir **img** klasörüne koyun.
-3. Çözüm Gezgini'ndeki **Tüm Dosyaları Göster'i** tıklatın ve **Projeye Dahil**Etmek için klasörü sağ tıklatın.
-4. Görüntü seçildiğinde, Özellikler'deki Yapı Eylemi penceresini **Gömülü Kaynak**olarak değiştirin.
+1. Visual Studio 'da, [kullanıcıları bilgilendir](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) öğreticisinde oluşturduğunuz **apparka uç** projesini açın.
+2. Kullanıcılara bildirmek istediğiniz görüntüyü alın ve proje dizininizde bir **img** klasörüne yerleştirin.
+3. Çözüm Gezgini **tüm dosyaları göster** ' e tıklayın ve **projeye dahil**etmek için klasöre sağ tıklayın.
+4. Görüntü seçiliyken Özellikler penceresi yapı eylemini **gömülü kaynağa**değiştirin.
 
     ![][IOS2]
-5. In `Notifications.cs`, aşağıdaki ifadesini kullanarak ekleyin:
+5. İçinde `Notifications.cs`, aşağıdaki using ifadesini ekleyin:
 
     ```csharp
     using System.Reflection;
     ```
-6. Tüm `Notifications` sınıfı aşağıdaki kodla güncelleştirin. Yer tutucuları bildirim merkezi kimlik bilgileriniz ve resim dosya adınızla değiştirdiğinizden emin olun.
+6. Tüm `Notifications` sınıfı aşağıdaki kodla güncelleştirin. Yer tutucuları, Bildirim Hub 'ı kimlik bilgilerinizle ve görüntü dosyası adınızla değiştirdiğinizden emin olun.
 
     ```csharp
     public class Notification {
@@ -103,9 +103,9 @@ Yüksek düzeyde:
     ```
 
    > [!NOTE]
-   > (isteğe bağlı) Proje kaynaklarının nasıl ekleyip edinilir hakkında daha fazla bilgi için [Visual C# kullanarak kaynakları nasıl katıştırır ve erişirsiniz.](https://support.microsoft.com/kb/319292)
+   > seçim Proje kaynaklarını ekleme ve alma hakkında daha fazla bilgi için bkz. [Visual C# kullanarak kaynakları katıştırma ve bunlara erişme](https://support.microsoft.com/kb/319292) .
 
-7. In `NotificationsController.cs`, aşağıdaki parçacıklar ile 'NotificationsController yeniden tanımlayın. Bu, aygıta ilk sessiz zengin bildirim kimliği gönderir ve istemci tarafından görüntü alınmasını sağlar:
+7. ' `NotificationsController.cs`De, ' NotificationsController ' ı aşağıdaki kod parçacıklarıyla yeniden tanımlayın. Bu, cihaza bir ilk sessiz zengin bildirim kimliği gönderir ve görüntünün istemci tarafı alınmasına izin verir:
 
     ```csharp
     // Return http response with image binary
@@ -136,43 +136,43 @@ Yüksek düzeyde:
         return Request.CreateResponse(HttpStatusCode.OK);
     }
     ```
-8. Şimdi bu uygulamayı tüm cihazlardan erişilebilir hale getirmek için bir Azure Web Sitesine yeniden dağıtacağız. **AppBackend** projesine sağ tıklayıp **Yayımla**’yı seçin.
-9. Yayımlama hedefiniz olarak Azure Web Sitesini seçin. Azure hesabınızla oturum açın ve varolan veya yeni bir Web Sitesi seçin ve **Bağlantı** sekmesinde **hedef URL** özelliğine dikkat edin. Bu URL'yi daha sonra bu öğreticide *arka uç bitiş noktanız* olarak adlandıracağız. **Yayımla**’ta tıklayın.
+8. Şimdi bu uygulamayı tüm cihazlardan erişilebilir hale getirmek için bir Azure Web sitesine yeniden dağıtacağız. **AppBackend** projesine sağ tıklayıp **Yayımla**’yı seçin.
+9. Yayımlama hedefi olarak Azure Web sitesini seçin. Azure hesabınızla oturum açın ve var olan veya yeni bir Web sitesini seçin ve **bağlantı** SEKMESINDE **hedef URL** özelliğini bir yere göz önünde koyun. Bu öğreticide daha sonra *arka uç uç* noktanız olarak bu URL 'ye başvuracağız. **Yayımla**’ta tıklayın.
 
-## <a name="modify-the-ios-project"></a>iOS projesini değiştirme
+## <a name="modify-the-ios-project"></a>İOS projesini değiştirme
 
-Artık yalnızca bir *bildirimin kimliğini* göndermek için uygulama arka uçunuzu değiştirdiğinize göre, iOS uygulamanızı değiştirip bu kimliği işleyecek ve zengin iletiyi arka uçunuzdan alırsınız.
+Yalnızca bir bildirimin *kimliğini* göndermek için uygulamanızın arka ucunu değiştirdiğimize göre, iOS uygulamanızı bu kimliği işleyecek şekilde değiştirecek ve arka ucunuzdaki zengin iletiyi alacak şekilde değiştirmiş olursunuz.
 
-1. iOS projenizi açın ve **Hedefler** bölümündeki ana uygulama hedefinize giderek uzaktan bildirimleri etkinleştirin.
-2. **Özellikler'e**tıklayın, **Arka Plan Modlarını**açın ve **Uzak Bildirimler** onay kutusunu kontrol edin.
+1. İOS projenizi açın ve **hedefler** bölümünde ana uygulama hedeflerinize giderek uzak bildirimleri etkinleştirin.
+2. **Yetenekler**' e tıklayın, **arka plan modlarını**açın ve **uzak bildirimler** onay kutusunu işaretleyin.
 
     ![][IOS3]
-3. `Main.storyboard` [Kullanıcıyı Bildir](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) öğreticisinden bir Görünüm Denetleyicisi (bu eğitimde Home View Controller olarak anılacaktır) olduğundan emin olun.
-4. Film şeridinize bir **Gezinti Denetleyicisi** ekleyin ve gezintinin **kök görünümü** yapmak için Ana Görünüm Denetleyicisine denetim sürükleyin. Yalnızca Gezinti Denetleyicisi için Özniteliklerdeki İlk Görünüm Denetleyicisi'nin seçildiğinden emin olun. **Is Initial View Controller**
-5. Film şeridine **Görünüm Denetleyicisi** ekleyin ve **Görüntü Görünümü**ekleyin. Bu, kullanıcıların bildirime tıklayarak daha fazla bilgi edinmeyi seçtiklerinde görecekleri sayfadır. Hikaye şeridiniz aşağıdaki gibi görünmelidir:
+3. ' `Main.storyboard`İ açın ve Kullanıcı öğreticisini [bilgilendirdiğinizden](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) bir görünüm denetleyicinizin (Bu öğreticide giriş görünümü denetleyicisi olarak adlandırılır) olduğundan emin olun.
+4. Görsel taslağınızı bir **Gezinti denetleyicisi** ekleyin ve ana görünüm denetleyicisine sürükleyip sürükleyerek gezintinin **kök görünümünü** yapın. **Ilk görünüm denetleyicisinin** öznitelikler denetçisinde yalnızca gezinti denetleyicisi için seçildiğinden emin olun.
+5. Görsel taslağa bir **Görünüm denetleyicisi** ekleyin ve bir **görüntü görünümü**ekleyin. Bu, bildirim üzerine tıklayarak kullanıcıların daha fazla bilgi edinmeleri için göreceği sayfasıdır. Görsel taslağınızı aşağıdaki gibi görünmelidir:
 
     ![][IOS4]
-6. Storyboard'daki **Home View Controller'a** tıklayın ve Kimlik denetçisi altında **Özel Sınıf** ve **Storyboard Kimliği** olarak **homeViewController** olduğundan emin olun.
-7. **ImageViewController**olarak Görüntü Görünümü Denetleyicisi için aynı şeyi yapın.
-8. Ardından, az önce oluşturduğunuz UI'yi işlemek için **imageViewController** başlıklı yeni bir Görünüm Denetleyicisi sınıfı oluşturun.
-9. **imageViewController.h'de,** denetleyicinin arabirim bildirimlerine aşağıdakileri ekleyin. İkisini bağlamak için film şeridi görüntü görünümünden bu özelliklere denetim-sürükleme yaptığınızdan emin olun:
+6. Film şeridi ' ndeki **Giriş görünümü denetleyicisine** tıklayın ve kimlik denetçisi altında **özel sınıfı** ve **film şeridi kimliği** olarak **homeviewcontroller** olduğundan emin olun.
+7. Görüntü görüntüleme denetleyicisi için **ımageviewcontroller**ile aynı yapın.
+8. Ardından, az önce oluşturduğunuz Kullanıcı arabirimini işlemek için **ımageviewcontroller** başlıklı yeni bir görünüm denetleyicisi sınıfı oluşturun.
+9. **Imageviewcontroller. h**içinde, aşağıdaki denetleyiciyi denetleyicinin arabirim bildirimlerine ekleyin. İki tane bağlamak için görsel taslak görüntü görünümünden bu özelliklere denetimin sürükleyip sürüklediğinizden emin olun:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UIImageView *myImage;
     @property (strong) UIImage* imagePayload;
     ```
-10. In `imageViewController.m`, sonuna aşağıdaki `viewDidload`ekleyin:
+10. İçinde `imageViewController.m`, aşağıdakilerin sonuna şunu ekleyin `viewDidload`:
 
     ```objc
     // Display the UI Image in UI Image View
     [self.myImage setImage:self.imagePayload];
     ```
-11. Içinde `AppDelegate.m`, oluşturduğunuz görüntü denetleyicisini içe aktarın:
+11. ' `AppDelegate.m`De, oluşturduğunuz görüntü denetleyicisini içeri aktarın:
 
     ```objc
     #import "imageViewController.h"
     ```
-12. Aşağıdaki bildirimi içeren bir arabirim bölümü ekleyin:
+12. Aşağıdaki bildirime sahip bir arabirim bölümü ekleyin:
 
     ```objc
     @interface AppDelegate ()
@@ -189,7 +189,7 @@ Artık yalnızca bir *bildirimin kimliğini* göndermek için uygulama arka uçu
 
     @end
     ```
-13. , `AppDelegate`uygulamanızın sessiz bildirimler için kaydolduğundan `application: didFinishLaunchingWithOptions`emin olun:
+13. ' `AppDelegate`De, uygulamanızın ' de `application: didFinishLaunchingWithOptions`sessiz bildirimler için kaydolduktan emin olun:
 
     ```objc
     // Software version
@@ -233,7 +233,7 @@ Artık yalnızca bir *bildirimin kimliğini* göndermek için uygulama arka uçu
     return YES;
     ```
 
-14. Storyboard Kullanıcı Arabirimi değişikliklerini dikkate almak için `application:didRegisterForRemoteNotificationsWithDeviceToken` aşağıdaki uygulamanın yerine geç:
+14. Film şeridi Kullanıcı arabirimi değişikliğini hesaba `application:didRegisterForRemoteNotificationsWithDeviceToken` almak için aşağıdaki uygulamada yerine geçin:
 
     ```objc
     // Access navigation controller which is at the root of window
@@ -242,7 +242,7 @@ Artık yalnızca bir *bildirimin kimliğini* göndermek için uygulama arka uçu
     homeViewController *hvc = (homeViewController *)[nc.viewControllers objectAtIndex:0];
     hvc.deviceToken = deviceToken;
     ```
-15. Ardından, görüntüyü bitiş `AppDelegate.m` noktanızdan almak ve alma tamamlandığında yerel bir bildirim göndermek için aşağıdaki yöntemleri ekleyin. Yer tutucuyu `{backend endpoint}` arka uç bitiş noktanızla değiştirin:
+15. Ardından, uç noktanıza görüntüyü almak `AppDelegate.m` için aşağıdaki yöntemleri ekleyin ve alma tamamlandığında yerel bir bildirim gönderin. Yer tutucuyu `{backend endpoint}` arka uç uç noktanızla değiştirdiğinizden emin olun:
 
     ```objc
     NSString *const GetNotificationEndpoint = @"{backend endpoint}/api/notifications";
@@ -323,7 +323,7 @@ Artık yalnızca bir *bildirimin kimliğini* göndermek için uygulama arka uçu
         // Add "else if" here to handle more types of rich content such as url, sound files, etc.
     }
     ```
-16. Aşağıdaki `AppDelegate.m` yöntemlerle görüntü görünümü denetleyicisini açarak yukarıdaki yerel bildirimi işleyin:
+16. Aşağıdaki yöntemlerle içindeki `AppDelegate.m` görüntü görünümü denetleyicisini açarak yukarıdaki yerel bildirimi işleyin:
 
     ```objc
     // Helper: redirect users to image view controller
@@ -371,12 +371,12 @@ Artık yalnızca bir *bildirimin kimliğini* göndermek için uygulama arka uçu
     }
     ```
 
-## <a name="run-the-application"></a>Uygulamayı Çalıştır
+## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-1. XCode'da uygulamayı fiziksel bir iOS aygıtında çalıştırın (anında iletme bildirimleri simülatörde çalışmaz).
-2. iOS uygulaması Kullanıcı Arabirimi'nde, kimlik doğrulama için aynı değerde bir kullanıcı adı ve parola girin ve **Giriş Yap'ı**tıklatın.
-3. **Gönder tuşuna** bastığınızda uygulama içi bir uyarı görmeniz gerekir. **Daha Fazla'ya**tıklarsanız, uygulama arka uçunuza eklemeyi seçtiğiniz resme getirilirsiniz.
-4. Ayrıca Gönder **tuşuna** tıklayıp hemen cihazınızın ana düğmesine basabilirsiniz. Birkaç dakika içinde, bir anında iletme bildirimi alacaksınız. Üzerine dokunur sanız veya Daha Fazlasını tıklarsanız, uygulamanıza ve zengin resim içeriğine getirilirsiniz.
+1. XCode 'da uygulamayı fiziksel bir iOS cihazında çalıştırın (anında iletme bildirimleri benzeticide çalışmaz).
+2. İOS uygulama kullanıcı arabiriminde, kimlik doğrulaması için aynı değere sahip bir Kullanıcı adı ve parola girin ve **oturum aç**' a tıklayın.
+3. **Gönderim gönder** ' e tıklayın ve uygulama içi bir uyarı görmeniz gerekir. **Daha fazla**' ya tıklarsanız, uygulamanızın arka ucuna dahil etmek için seçtiğiniz görüntüye yönlendirilirsiniz.
+4. Ayrıca, **gönderme gönder** ' e tıklayabilir ve cihazınızın giriş düğmesine hemen basabilirsiniz. Birkaç dakika içinde bir anında iletme bildirimi alacaksınız. Üzerine dokunarak veya daha fazla ' a tıkladığınızda, uygulamanıza ve zengin görüntü içeriğine yönlendirilirsiniz.
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-1.png
 [IOS2]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-2.png

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 04/02/2019
 ms.author: wesmc
 ms.openlocfilehash: 498a7ee28b9404d0733e4615f4df635a8c904b51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67188180"
 ---
 ### <a name="cacheskuname"></a>cacheSKUName
 
-Redis için yeni Azure Önbelleğinin fiyatlandırma katmanı.
+Redin için yeni Azure önbelleğinin fiyatlandırma katmanı.
 
 ```json
     "cacheSKUName": {
@@ -30,11 +30,11 @@ Redis için yeni Azure Önbelleğinin fiyatlandırma katmanı.
     },
 ```
 
-Şablon, bu parametre (Temel, Standart veya Premium) için izin verilen değerleri tanımlar ve değer belirtilmemişse varsayılan bir değer (Temel) atar. Basic, 53 GB'a kadar birden fazla boyuta sahip tek bir düğüm sağlar. Standart, 53 GB'a kadar birden fazla boyut ve %99,9 SLA ile iki düğümlü Birincil/Çoğaltma sağlar.
+Şablon, bu parametre için izin verilen değerleri tanımlar (temel, standart veya Premium) ve hiçbir değer belirtilmemişse varsayılan bir değer (temel) atar. Temel, 53 GB 'a kadar kullanılabilir birden çok boyutu olan tek bir düğüm sağlar. Standart, 53 GB ve% 99,9 SLA kadar kullanılabilir birden çok boyut ile iki düğümlü birincil/çoğaltma sağlar.
 
 ### <a name="cacheskufamily"></a>cacheSKUFamily
 
-Sku için aile.
+SKU için aile.
 
 ```json
     "cacheSKUFamily": {
@@ -50,11 +50,11 @@ Sku için aile.
     },
 ```
 
-### <a name="cacheskucapacity"></a>önbellekSKUCapacity
+### <a name="cacheskucapacity"></a>cacheSKUCapacity
 
-Redis örneği için yeni Azure Önbelleği boyutu.
+Redsıs örneği için yeni Azure önbelleğinin boyutu.
 
-Temel ve Standart aileler için:
+Temel ve standart aileler için:
 
 ```json
     "cacheSKUCapacity": {
@@ -75,13 +75,13 @@ Temel ve Standart aileler için:
     }
 ```
 
-İzin verilen değerler 0'dan 6'ya kadar değil, 1'den 5'e kadar çalıştırılan lar dışında Premium değer önbellek kapasitesi aynı şekilde tanımlanır.
+Premium değer önbelleği kapasitesi, izin verilen değerler 0 ile 6 yerine 1 ile 5 arasında çalışacak şekilde tanımlanır.
 
-Şablon, bu parametre için izin verilen tamsayı değerlerini tanımlar (Temel ve Standart aileler için 0'dan 6'ya, Premium ailesi için 1'den 5'e kadar). Değer belirtilmemişse, şablon Temel ve Standart için 0 varsayılan değer, Premium için 1 atar.
+Şablon, bu parametre için izin verilen tamsayı değerlerini tanımlar (temel ve standart aileler için 0 ila 6); Premium Aile için 1 ila 5). Hiçbir değer belirtilmemişse, şablon temel ve standart için varsayılan değeri 0, Premium için 1 olarak atar.
 
 Değerler aşağıdaki önbellek boyutlarına karşılık gelir:
 
-| Değer | Temel ve Standart<br>önbellek boyutu | Premium<br>önbellek boyutu |
+| Değer | Temel ve standart<br>önbellek boyutu | Premium<br>önbellek boyutu |
 | :---: | :------------------------------: | :-------------------: |
 | 0     | 250 MB (varsayılan)                 | yok                   |
 | 1     | 1 GB                             | 6 GB (varsayılan)        |

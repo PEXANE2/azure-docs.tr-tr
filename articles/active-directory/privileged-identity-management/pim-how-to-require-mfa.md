@@ -1,6 +1,6 @@
 ---
-title: MFA veya 2FA ve Ayrıcalıklı Kimlik Yönetimi - Azure AD | Microsoft Dokümanlar
-description: Azure AD Ayrıcalıklı Kimlik Yönetimi'nin (PIM) çok faktörlü kimlik doğrulamayı (MFA) nasıl doğruladığını öğrenin.
+title: MFA veya 2FA ve Privileged Identity Management-Azure AD | Microsoft Docs
+description: Azure AD Privileged Identity Management (PıM) çok faktörlü kimlik doğrulamasını (MFA) nasıl doğrulayacağını öğrenin.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,30 +15,30 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6df593909c3ae5962e413eb84e64196fade0326b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74022149"
 ---
-# <a name="multi-factor-authentication-and-privileged-identity-management"></a>Çok faktörlü kimlik doğrulama ve Ayrıcalıklı Kimlik Yönetimi
+# <a name="multi-factor-authentication-and-privileged-identity-management"></a>Multi-Factor Authentication ve Privileged Identity Management
 
-Tüm yöneticileriniz için çok faktörlü kimlik doğrulama (MFA) yapmanızı öneririz. Bu, gizliliği ihlal edilen bir parola nedeniyle saldırı riskini azaltır.
+Tüm yöneticileriniz için Multi-Factor Authentication (MFA) gerektirmenizi öneririz. Bu, güvenliği aşılmış bir parola nedeniyle saldırının riskini azaltır.
 
-Kullanıcıların oturum açtıklarında çok faktörlü bir kimlik doğrulama yarışmasını tamamlamalarını gerektirebilirsiniz. Ayrıca, kullanıcıların Azure Etkin Dizin (Azure AD) Ayrıcalıklı Kimlik Yönetimi (PIM) bir rolü etkinleştirdiklerinde çok faktörlü bir kimlik doğrulama yarışmasını tamamlamalarını da gerektirebilirsiniz. Bu şekilde, kullanıcı oturum açtıklarında çok faktörlü bir kimlik doğrulama yarışmasını tamamlamadıysa, ayrıcalıklı kimlik yönetimi tarafından istenir.
+Kullanıcıların oturum açtıklarında bir Multi-Factor Authentication sınamasını tamamlamasını zorunlu kılabilirsiniz. Ayrıca, Azure Active Directory (Azure AD) Privileged Identity Management (PıM) ' de bir rolü etkinleştirdiklerinde kullanıcıların Multi-Factor Authentication sınamasını tamamlamasını de isteyebilirsiniz. Bu şekilde, Kullanıcı oturum açtıklarında bir Multi-Factor Authentication sınaması tamammadıysa, Privileged Identity Management tarafından bunu yapması istenir.
 
 > [!IMPORTANT]
-> Şu anda Azure Çok Faktörlü Kimlik Doğrulama, Microsoft kişisel hesaplarıyla değil, yalnızca iş veya okul hesaplarıyla çalışır (genellikle Skype, Xbox veya Outlook.com gibi Microsoft hizmetlerinde oturum açmada kullanılan kişisel bir hesap). Bu nedenle, kişisel bir hesap kullanan herkes, rollerini etkinleştirmek için çok faktörlü kimlik doğrulamasını kullanamadığından uygun bir yönetici olamaz. Bu kullanıcıların bir Microsoft hesabı kullanarak iş yüklerini yönetmeye devam etmeleri gerekiyorsa, şimdilik bunları kalıcı yöneticilere yükseltin.
+> Azure Multi-Factor Authentication, Microsoft kişisel hesapları değil yalnızca iş veya okul hesaplarıyla çalışır (genellikle Skype, Xbox veya Outlook.com gibi Microsoft hizmetlerinde oturum açmak için kullanılan bir kişisel hesaptır). Bu nedenle, kişisel hesap kullanan herkes, rollerini etkinleştirmek için Multi-Factor Authentication 'ı kullanamadığından uygun yönetici olamaz. Bu kullanıcıların bir Microsoft hesabı kullanarak iş yüklerini yönetmeye devam etmesi gerekiyorsa, bunları şimdilik kalıcı yöneticilerle yükseltin.
 
-## <a name="how-pim-validates-mfa"></a>PIM MFA'yı nasıl doğrular?
+## <a name="how-pim-validates-mfa"></a>PıM, MFA 'yı nasıl doğrular
 
-Bir kullanıcı bir rolü etkinleştirdiğinde çok faktörlü kimlik doğrulamayı doğrulamak için iki seçenek vardır.
+Kullanıcı bir rolü etkinleştirdiğinde Multi-Factor Authentication 'ı doğrulamaya yönelik iki seçenek vardır.
 
-En basit seçenek, ayrıcalıklı bir rolü etkinleştiren kullanıcılar için Azure Çok Faktörlü Kimlik Doğrulaması'na güvenmektir. Bunu yapmak için öncelikle bu kullanıcıların gerekirse lisanslı olup olmadığını ve Azure Çok Faktörlü Kimlik Doğrulaması'na kaydolup olmadığını kontrol edin. Azure Çok Faktörlü Kimlik Doğrulama'yı nasıl dağıtılayınız hakkında daha fazla bilgi için bulut [tabanlı Azure Çok Faktörlü Kimlik Doğrulaması'nı dağıt'a](../authentication/howto-mfa-getstarted.md)bakın. Oturum açtıklarında bu kullanıcılar için çok faktörlü kimlik doğrulaması uygulamak için Azure AD'yi yapılandırmanız önerilir, ancak gerekli değildir. Bunun nedeni, çok faktörlü kimlik doğrulama denetimlerinin Ayrıcalıklı Kimlik Yönetimi'nin kendisi tarafından yapılacak olmasıdır.
+En basit seçenek, ayrıcalıklı bir rolü etkinleştiren kullanıcılar için Azure Multi-Factor Authentication 'yi temel alır. Bunu yapmak için önce bu kullanıcıların lisanslanmış olup olmadığını ve Azure Multi-Factor Authentication için kaydolmadığını kontrol edin. Azure Multi-Factor Authentication dağıtma hakkında daha fazla bilgi için bkz. [bulut tabanlı azure Multi-Factor Authentication dağıtma](../authentication/howto-mfa-getstarted.md). Azure AD 'yi, oturum açtıklarında bu kullanıcılar için Multi-Factor Authentication 'ı zorlamak üzere yapılandırmanız önerilir, ancak gerekli değildir. Bunun nedeni, Multi-Factor Authentication denetimlerinin Privileged Identity Management tarafından yapılması olacaktır.
 
-Alternatif olarak, kullanıcılar şirket içinde kimlik doğrulama yaparsa, kimlik sağlayıcınızın çok faktörlü kimlik doğrulamadan sorumlu olmasını sağlayabilirsiniz. Örneğin, Azure AD'ye erişmeden önce AD Federation Hizmetlerini akıllı kart tabanlı kimlik doğrulaması gerektirecek şekilde yapılandırıldıysanız, [Azure Çok Faktörlü Kimlik Doğrulaması ve AD FS ile bulut kaynaklarını güvence altına](../authentication/howto-mfa-adfs.md) almak, Azure AD'ye hak talebinde bulunan AD FS'yi yapılandırma yönergeleri içerir. Bir kullanıcı bir rolü etkinleştirmeye çalıştığında, Ayrıcalıklı Kimlik Yönetimi, uygun talepleri aldıktan sonra çok faktörlü kimlik doğrulamanın kullanıcı için zaten doğrulandığını kabul eder.
+Alternatif olarak, kullanıcılar şirket içinde kimlik doğrulamasından getir, kimlik sağlayıcınızın Multi-Factor Authentication 'dan sorumlu olmasını sağlayabilirsiniz. Örneğin, Azure AD 'ye erişmeden önce akıllı kart tabanlı kimlik doğrulaması gerektiren AD Federasyon Hizmetleri 'ni, Azure [Multi-Factor Authentication ile bulut kaynaklarının güvenliğini sağlama ve AD FS](../authentication/howto-mfa-adfs.md) Azure AD 'ye talepler göndermek için AD FS yapılandırma yönergelerini içerir. Bir Kullanıcı bir rolü etkinleştirmeye çalıştığında, uygun talepler alındıktan sonra Privileged Identity Management, Kullanıcı için bu Multi-Factor Authentication 'ın zaten doğrulanmasını kabul eder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ayrıcalıklı Kimlik Yönetimi'nde Azure AD rol ayarlarını yapılandırma](pim-how-to-change-default-settings.md)
-- [Ayrıcalıklı Kimlik Yönetimi'nde Azure kaynak rol ayarlarını yapılandırma](pim-resource-roles-configure-role-settings.md)
+- [Privileged Identity Management Azure AD rol ayarlarını yapılandırma](pim-how-to-change-default-settings.md)
+- [Privileged Identity Management Azure Kaynak rolü ayarlarını yapılandırma](pim-resource-roles-configure-role-settings.md)

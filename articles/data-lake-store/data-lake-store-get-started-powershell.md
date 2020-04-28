@@ -1,30 +1,30 @@
 ---
-title: Azure Veri Gölü Depolama Gen1 ile başlayın - PowerShell | Microsoft Dokümanlar
-description: Azure Veri Gölü Depolama Gen1 hesabı oluşturmak ve temel işlemleri gerçekleştirmek için Azure PowerShell'i kullanın.
+title: Azure Data Lake Storage 1.-PowerShell ile çalışmaya başlama | Microsoft Docs
+description: Bir Azure Data Lake Storage 1. hesabı oluşturmak ve temel işlemleri gerçekleştirmek için Azure PowerShell kullanın.
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 42ddab6991b418af3e41da9966cdab69ded87461
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73837887"
 ---
-# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Azure PowerShell'i kullanarak Azure Veri Gölü Depolama Gen1 ile başlayın
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Azure PowerShell kullanarak Azure Data Lake Storage 1. kullanmaya başlama
 
 > [!div class="op_single_selector"]
 > * [Portal](data-lake-store-get-started-portal.md)
-> * [Powershell](data-lake-store-get-started-powershell.md)
+> * [PowerShell](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
 >
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-Azure Veri Gölü Depolama Gen1 hesabı oluşturmak ve klasör oluşturma, veri dosyalarını yükleme ve indirme, hesabınızı silme vb. gibi temel işlemleri gerçekleştirmek için Azure PowerShell'i nasıl kullanacağınızı öğrenin. Veri Gölü Depolama Gen1 hakkında daha fazla bilgi için, [Veri Gölü Depolama Gen1 Genel Bakış](data-lake-store-overview.md)bakın.
+Bir Azure Data Lake Storage 1. hesabı oluşturmak ve klasör oluşturma, veri dosyalarını karşıya yükleme ve indirme, hesabınızı silme gibi temel işlemleri gerçekleştirmek için Azure PowerShell nasıl kullanacağınızı öğrenin. Data Lake Storage 1. hakkında daha fazla bilgi için bkz. [Data Lake Storage 1. genel bakış](data-lake-store-overview.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -33,13 +33,13 @@ Azure Veri Gölü Depolama Gen1 hesabı oluşturmak ve klasör oluşturma, veri 
 * **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure PowerShell 1.0 veya üstü**. Bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview).
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
-Bu makalede, Azure hesap kimlik bilgilerinizi girmeniz istendiği Data Lake Storage Gen1 ile daha basit bir kimlik doğrulama yaklaşımı kullanılır. Veri Gölü Depolama Gen1 hesabına ve dosya sistemine erişim düzeyi, oturum açmış kullanıcının erişim düzeyine göre yönetilir. Ancak, son kullanıcı kimlik doğrulaması veya hizmete hizmet kimlik doğrulaması olan Data Lake Storage Gen1 ile kimlik doğrulaması yapmak için başka yaklaşımlar da vardır. Kimlik doğrulaması gerçekleştirmeyle ilgili yönergeler ve daha fazla bilgi için [Son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md) veya [Hizmetten hizmete kimlik doğrulaması](data-lake-store-authenticate-using-active-directory.md) bölümlerine göz atın.
+Bu makalede, Azure hesabı kimlik bilgilerinizi girmeniz istendiğinde Data Lake Storage 1. daha basit bir kimlik doğrulama yaklaşımı kullanılmaktadır. Data Lake Storage 1. hesaba ve dosya sistemine yönelik erişim düzeyi, oturum açmış kullanıcının erişim düzeyine göre yönetilir. Ancak, son kullanıcı kimlik doğrulaması veya hizmetten hizmete kimlik doğrulama olan Data Lake Storage 1. kimlik doğrulaması için başka yaklaşımlar vardır. Kimlik doğrulaması gerçekleştirmeyle ilgili yönergeler ve daha fazla bilgi için [Son kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-using-active-directory.md) veya [Hizmetten hizmete kimlik doğrulaması](data-lake-store-authenticate-using-active-directory.md) bölümlerine göz atın.
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. Nesil hesabı oluşturma
 
-1. Masaüstünüzde yeni bir Windows PowerShell penceresi açın. Azure hesabınızda oturum açmak, aboneliği ayarlamak ve Veri Gölü Depolama Gen1 sağlayıcısını kaydetmek için aşağıdaki snippet'i girin. Oturum açmanız istendiğinde, abonelik yöneticilerinden/sahibinden biri olarak oturum açtığınızdan emin olun:
+1. Masaüstünüzde yeni bir Windows PowerShell penceresi açın. Azure hesabınızda oturum açmak, aboneliği ayarlamak ve Data Lake Storage 1. sağlayıcıyı kaydetmek için aşağıdaki kod parçacığını girin. Oturum açmanız istendiğinde, abonelik yöneticileri/sahibinden biri olarak oturum çalıştırdığınızdan emin olun:
 
     ```PowerShell
     # Log in to your Azure account
@@ -55,16 +55,16 @@ Bu makalede, Azure hesap kimlik bilgilerinizi girmeniz istendiği Data Lake Stor
     Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
     ```
 
-1. Veri Gölü Depolama Gen1 hesabı, bir Azure kaynak grubuyla ilişkilidir. Bir kaynak grubu oluşturarak başlayın.
+1. Bir Data Lake Storage 1. hesabı bir Azure Kaynak grubuyla ilişkilendirilir. Bir kaynak grubu oluşturarak başlayın.
 
     ```PowerShell
     $resourceGroupName = "<your new resource group name>"
     New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
     ```
 
-    ![Azure Kaynak Grubu Oluşturma](./media/data-lake-store-get-started-powershell/ADL.PS.CreateResourceGroup.png "Azure Kaynak Grubu oluşturma")
+    ![Azure Kaynak grubu oluşturma](./media/data-lake-store-get-started-powershell/ADL.PS.CreateResourceGroup.png "Azure Kaynak Grubu oluşturma")
 
-1. Bir Veri Gölü Depolama Gen1 hesabı oluşturun. Belirttiğiniz ad yalnızca küçük harflerden ve rakamlardan oluşmalıdır.
+1. Data Lake Storage 1. hesabı oluşturun. Belirttiğiniz ad yalnızca küçük harflerden ve rakamlardan oluşmalıdır.
 
     ```PowerShell
     $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
@@ -83,7 +83,7 @@ Bu makalede, Azure hesap kimlik bilgilerinizi girmeniz istendiği Data Lake Stor
 
 ## <a name="create-directory-structures"></a>Dizin yapıları oluşturma
 
-Verileri yönetmek ve depolamak için Data Lake Storage Gen1 hesabınız altında dizinler oluşturabilirsiniz.
+Verileri yönetmek ve depolamak için Data Lake Storage 1. hesabınızın altında dizinler oluşturabilirsiniz.
 
 1. Bir kök dizin belirtin.
 
@@ -109,7 +109,7 @@ Verileri yönetmek ve depolamak için Data Lake Storage Gen1 hesabınız altınd
 
 ## <a name="upload-data"></a>Karşıya veri yükleme
 
-Verilerinizi doğrudan kök düzeyinde Veri Gölü Depolama Gen1'e veya hesap içinde oluşturduğunuz bir dizine yükleyebilirsiniz. Bu bölümdeki kod parçacıkları, birtakım örnek verilerin önceki bölümde oluşturduğunuz dizine (**mynewdirectory**) nasıl yükleneceğini göstermektedir.
+Verilerinizi doğrudan kök düzeyinde veya hesap içinde oluşturduğunuz bir dizine Data Lake Storage 1. yükleyebilirsiniz. Bu bölümdeki kod parçacıkları, birtakım örnek verilerin önceki bölümde oluşturduğunuz dizine (**mynewdirectory**) nasıl yükleneceğini göstermektedir.
 
 Karşıya yüklenecek örnek veri arıyorsanız [Azure Data Lake Git Deposu](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)'ndan **Ambulance Data** klasörünü alabilirsiniz. Dosyayı indirin ve bilgisayarınızda C:\sampledata\ gibi yerel bir dizinde depolayın.
 
@@ -153,7 +153,7 @@ Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
 
 ## <a name="delete-your-account"></a>Hesabınızı silin
 
-Veri Gölü Depolama Gen1 hesabınızı silmek için aşağıdaki komutu kullanın.
+Data Lake Storage 1. hesabınızı silmek için aşağıdaki komutu kullanın.
 
 ```PowerShell
 Remove-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
@@ -163,8 +163,8 @@ Remove-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Veri Gölü Depolama Gen1 ile PowerShell'i kullanmak için performans alamı kılavuzu](data-lake-store-performance-tuning-powershell.md)
-* [Büyük veri gereksinimleri için Azure Veri Gölü Depolama Gen1'i kullanma](data-lake-store-data-scenarios.md)
+* [PowerShell 'i Azure Data Lake Storage 1. kullanmaya yönelik performans ayarlama Kılavuzu](data-lake-store-performance-tuning-powershell.md)
+* [Büyük veri gereksinimleri için Azure Data Lake Storage 1. kullanma](data-lake-store-data-scenarios.md)
 * [Data Lake Storage Gen1'de verilerin güvenliğini sağlama](data-lake-store-secure-data.md)
-* [Veri Gölü Depolama Gen1 ile Azure Veri Gölü Analizini Kullanma](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Veri Gölü Depolama Gen1 ile Azure HDInsight'ı kullanın](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Data Lake Storage 1. ile Azure Data Lake Analytics kullanma](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Azure HDInsight 'ı Data Lake Storage 1. ile kullanma](data-lake-store-hdinsight-hadoop-use-portal.md)

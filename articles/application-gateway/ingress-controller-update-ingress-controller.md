@@ -1,6 +1,6 @@
 ---
-title: Miğfer ile yükseltme giriş denetleyicisi
-description: Bu makalede, Helm kullanarak bir Uygulama Ağ Geçidi Girişi yükseltme hakkında bilgi sağlar.
+title: Inress denetleyicisini Held ile yükseltme
+description: Bu makale, Held kullanarak bir Application Gateway girişini yükseltme hakkında bilgi sağlar.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 3903ccd1c15765d06cd1794a40567e2c70062538
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73795898"
 ---
 # <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>Helm kullanarak Application Gateway Giriş Denetleyicisini yükseltme 
 
-Kubernetes için Azure Uygulama Ağ Geçidi Denetleyicisi (AGIC), Azure Depolama'da barındırılan Bir Miğfer deposu kullanılarak yükseltilebilir.
+Kubernetes (AGIC) için Azure Application Gateway giriş denetleyicisi, Azure depolama 'da barındırılan bir Held deposu kullanılarak yükseltilebilir.
 
-Yükseltme prosedürüne başlamadan önce, gerekli depoyu eklediğinizden emin olun:
+Yükseltme yordamına başlamadan önce, gerekli depoyu eklemiş olduğunuzdan emin olun:
 
-- Şu anda eklenen Miğfer depolarınızı şu şekilde görüntüleyin:
+- Şu anda eklenmiş olan Held depolarınızı görüntüleyin:
 
     ```bash
     helm repo list
     ```
 
-- AGIC repo'yu aşağıdakilerle ekleyin:
+- AGIC depoyu şu şekilde ekleyin:
 
     ```bash
     helm repo add \
@@ -36,13 +36,13 @@ Yükseltme prosedürüne başlamadan önce, gerekli depoyu eklediğinizden emin 
 
 ## <a name="upgrade"></a>Yükseltme
 
-1. En son sürümü almak için AGIC Miğfer deposunu yenileyin:
+1. En son sürümü almak için AGIC Held deposunu yenileyin:
 
     ```bash
     helm repo update
     ```
 
-1. Grafiğin kullanılabilir `application-gateway-kubernetes-ingress` sürümlerini görüntüleyin:
+1. `application-gateway-kubernetes-ingress` Grafiğin kullanılabilir sürümlerini görüntüleyin:
 
     ``` bash
     helm search -l application-gateway-kubernetes-ingress
@@ -56,9 +56,9 @@ Yükseltme prosedürüne başlamadan önce, gerekli depoyu eklediğinizden emin 
     application-gateway-kubernetes-ingress/ingress-azure    0.6.0           0.6.0           Use Azure Application Gateway as the ingress for an Azure...
     ```
 
-    Yukarıdaki listeden en son kullanılabilir sürümü:`0.7.0-rc1`
+    Yukarıdaki listeden kullanılabilir en son sürüm:`0.7.0-rc1`
 
-1. Şu anda yüklü olan Miğfer grafiklerini görüntüleyin:
+1. Şu anda yüklü olan Held grafiklerini görüntüleyin:
 
     ```bash
     helm list
@@ -71,9 +71,9 @@ Yükseltme prosedürüne başlamadan önce, gerekli depoyu eklediğinizden emin 
     odd-billygoat   22              Fri Jun 21 15:56:06 2019        FAILED  ingress-azure-0.7.0-rc1 0.7.0-rc1       default
     ```
 
-    Yukarıdaki örnek yanıttan Helm grafik `odd-billygoat`yüklemesi adı verilir. Bu adı diğer komutlar için kullanacağız. Gerçek dağıtım adınız büyük olasılıkla farklı olacaktır.
+    Yukarıdaki örnek yanıttan hela grafik yüklemesi adı `odd-billygoat`verilir. Bu adı komutların geri kalanı için kullanacağız. Gerçek dağıtım adınız büyük olasılıkla farklı olacaktır.
 
-1. Miğfer dağıtımını yeni bir sürüme yükseltin:
+1. Held dağıtımını yeni bir sürüme yükseltin:
 
     ```bash
     helm upgrade \
@@ -82,9 +82,9 @@ Yükseltme prosedürüne başlamadan önce, gerekli depoyu eklediğinizden emin 
         --version 0.9.0-rc2
     ```
 
-## <a name="rollback"></a>Geri alma
+## <a name="rollback"></a>Etkin
 
-Miğfer dağıtımı başarısız olursa, önceki sürüme geri dönebilirsiniz.
+Held dağıtımı başarısız olursa, önceki bir sürüme geri alabilirsiniz.
 
 1. Bilinen son sağlıklı sürüm numarasını alın:
 
@@ -100,9 +100,9 @@ Miğfer dağıtımı başarısız olursa, önceki sürüme geri dönebilirsiniz.
     2               Fri Jun 21 15:56:06 2019        FAILED          ingress-azure-xx        xxxx
     ```
 
-    Komutun `helm history` örnek çıktısından, revizyonun son başarılı `odd-billygoat` dağıtımıgibi görünüyor.`1`
+    `helm history` Komutun örnek çıktısından, was düzeltdiğimiz `odd-billygoat` son başarılı dağıtımı gibi görünüyor`1`
 
-1. Son başarılı revizyona geri dönüş:
+1. Son başarılı düzeltmeye geri al:
 
     ```bash
     helm rollback odd-billygoat 1

@@ -1,6 +1,6 @@
 ---
-title: Azure Analiz Hizmetleri takma sunucu adları | Microsoft Dokümanlar
-description: Azure Çözümleme Hizmetleri sunucu adı takma adlarını nasıl oluşturabileceğinizi öğrenin. Kullanıcılar daha sonra sunucu adı yerine daha kısa bir takma adla sunucunuza bağlanabilir.
+title: Azure Analysis Services diğer ad sunucu adları | Microsoft Docs
+description: Azure Analysis Services sunucu adı diğer adları oluşturmayı öğrenin. Kullanıcılar daha sonra sunucu adı yerine daha kısa bir diğer ad ile sunucunuza bağlanabilir.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,42 +8,42 @@ ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 5e7017fad90e32cb8c4b952987fe248e463e4d03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73572287"
 ---
 # <a name="alias-server-names"></a>Diğer ad sunucu adları
 
-Kullanıcılar, sunucu adı takma adını kullanarak Azure Çözümleme Hizmetleri sunucunuza sunucu adı yerine daha kısa bir *takma adla* bağlanabilir. İstemci uygulamasından bağlanırken, diğer ad **link://** iletişim kuralı biçimini kullanarak bitiş noktası olarak belirtilir. Bitiş noktası daha sonra bağlanmak için gerçek sunucu adını döndürür.
+Bir sunucu adı diğer adı kullanarak, kullanıcılar sunucu adı yerine daha kısa bir *diğer adla* Azure Analysis Services sunucunuza bağlanabilir. Bir istemci uygulamasından bağlanırken, diğer ad **link://** protokol biçimi kullanılarak bir uç nokta olarak belirtilir. Bitiş noktası daha sonra bağlanmak için gerçek sunucu adını döndürür.
 
-Diğer adsunucu adları aşağıdakiler için iyidir:
+Diğer ad sunucu adları için uygundur:
 
-- Kullanıcıları etkilemeden modelleri sunucular arasında geçirme. 
-- Dostu sunucu adlarının kullanıcıların hatırlaması daha kolaydır. 
+- Kullanıcıları etkilemeden sunucular arasında modeller geçirme. 
+- Kolay sunucu adları kullanıcıların anımsamasını kolaylaştırır. 
 - Kullanıcıları günün farklı saatlerinde farklı sunuculara yönlendirin. 
-- Farklı bölgelerdeki kullanıcıları Azure Trafik Yöneticisi'ni kullanırken olduğu gibi coğrafi olarak daha yakın olan örneklere yönlendirin. 
+- Azure Traffic Manager kullanırken olduğu gibi, farklı bölgelerdeki kullanıcıları coğrafi olarak daha yakın örneklere doğrudan yönlendirin. 
 
-Geçerli bir Azure Çözümleme Hizmetleri sunucu adını döndüren herhangi bir HTTPS bitiş noktası takma ad olarak hizmet verebilir. Bitiş noktası 443 bağlantı noktası üzerinden HTTPS'yi desteklemeli ve bağlantı noktası URI'de belirtilmemelidir.
+Geçerli bir Azure Analysis Services sunucu adı döndüren herhangi bir HTTPS uç noktası, diğer ad olarak görev yapabilir. Uç noktanın 443 bağlantı noktası üzerinden HTTPS desteklemesi gerekir ve bağlantı noktası URI 'de belirtilmemelidir.
 
-![Bağlantı biçimini kullanarak diğer ad](media/analysis-services-alias/aas-alias-browser.png)
+![Bağlantı biçimi kullanan diğer ad](media/analysis-services-alias/aas-alias-browser.png)
 
-İstemciden bağlanırken, diğer ad sunucu adı **link://** iletişim kuralı biçimi kullanılarak girilir. Örneğin, Power BI Desktop'da:
+Bir istemciden bağlanırken, diğer ad sunucu adı **link://** protokol biçimi kullanılarak girilir. Örneğin, Power BI Desktop:
 
-![Power BI Masaüstü bağlantısı](media/analysis-services-alias/aas-alias-connect-pbid.png)
+![Power BI Desktop bağlantısı](media/analysis-services-alias/aas-alias-connect-pbid.png)
 
-## <a name="create-an-alias"></a>Takma ad oluşturma
+## <a name="create-an-alias"></a>Diğer ad oluştur
 
-Takma ad bitiş noktası oluşturmak için, geçerli bir Azure Çözümleme Hizmetleri sunucu adını döndüren tüm yöntemi kullanabilirsiniz. Örneğin, Azure Blob Depolama'da gerçek sunucu adını içeren bir dosyaya başvuru veya ASP.NET bir Web Forms uygulaması oluşturup yayımlayın.
+Bir diğer ad uç noktası oluşturmak için, geçerli bir Azure Analysis Services sunucu adı döndüren herhangi bir yöntemi kullanabilirsiniz. Örneğin, Azure Blob depolamada gerçek sunucu adını içeren bir dosyaya başvuru veya bir ASP.NET Web Forms uygulaması oluşturup yayımlayacaksınız.
 
-Bu örnekte, Visual Studio'da ASP.NET bir Web Formları Uygulaması oluşturulur. Ana sayfa başvurusu ve kullanıcı denetimi Varsayılan.aspx sayfasından kaldırılır. Default.aspx içeriği basitçe aşağıdaki Sayfa yönergesi vardır:
+Bu örnekte, Visual Studio 'da bir ASP.NET Web Forms uygulaması oluşturulur. Ana sayfa başvurusu ve Kullanıcı denetimi varsayılan. aspx sayfasından kaldırılır. Default. aspx ' in içeriği yalnızca aşağıdaki sayfa yönergedir:
 
 ```
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>
 ```
 
-Default.aspx.cs'daki Page_Load olayı, Azure Çözümleme Hizmetleri sunucu adını döndürmek için Yanıt.Write() yöntemini kullanır.
+Default.aspx.cs ' deki Page_Load olayı Azure Analysis Services sunucu adını döndürmek için Response. Write () yöntemini kullanır.
 
 ```
 protected void Page_Load(object sender, EventArgs e)

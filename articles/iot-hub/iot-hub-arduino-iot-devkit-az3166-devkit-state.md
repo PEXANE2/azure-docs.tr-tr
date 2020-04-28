@@ -1,6 +1,6 @@
 ---
-title: MXChip IoT DevKit kullanıcı LED'ini kontrol etmek için Azure aygıt ikizlerini kullanın | Microsoft Dokümanlar
-description: Bu eğitimde, DevKit durumlarını nasıl izleyeceğinizi ve Azure IoT Hub aygıt ikizleri ile kullanıcı LED'ini nasıl denetleyebilirsiniz öğrenin.
+title: Mxyongaıot DevKit Kullanıcı ıŞıĞıNı denetlemek için Azure cihaz TWINS kullanma | Microsoft Docs
+description: Bu öğreticide, DevKit durumlarını izlemeyi ve Azure IoT Hub cihaz TWINS ile Kullanıcı ıŞıĞıNı denetlemeyi öğrenin.
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -10,27 +10,27 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73483941"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
-Bu örneği, MXChip IoT DevKit WiFi bilgilerini ve sensör durumlarını izlemek ve Azure IoT Hub aygıt ikizlerini kullanarak kullanıcı LED'inin rengini denetlemek için kullanabilirsiniz.
+Bu örneği Mxyonga IoT DevKit WiFi bilgilerini ve algılayıcı durumlarını izlemek ve Azure IoT Hub cihaz TWINS 'i kullanarak kullanıcının rengini denetlemek için kullanabilirsiniz.
 
 ## <a name="what-you-learn"></a>Öğrenecekleriniz
 
-- Nasıl MXChip IoT DevKit sensör durumları izlemek için.
+- Mxyongaıot DevKit algılayıcı durumlarını izleme.
 
-- DevKit'in RGB LED'inin rengini kontrol etmek için Azure aygıt ikizleri nasıl kullanılır?
+- DevKit 'in RGB 'nin rengini denetlemek için Azure cihaz TWINS 'i kullanma.
 
 ## <a name="what-you-need"></a>Ne gerekiyor
 
-- [Başlangıç Kılavuzu'nu](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)izleyerek geliştirme ortamınızı ayarlayın.
+- [Başlarken Kılavuzunu](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)izleyerek geliştirme ortamınızı ayarlayın.
 
-- GitBash terminal pencerenizden (veya diğer Git komut satırı arabiriminden) aşağıdaki komutları yazın:
+- GitBash Terminal pencerenize (veya başka bir git komut satırı arabiriminden) aşağıdaki komutları yazın:
 
    ```bash
    git clone https://github.com/DevKitExamples/DevKitState.git
@@ -38,83 +38,83 @@ Bu örneği, MXChip IoT DevKit WiFi bilgilerini ve sensör durumlarını izlemek
    code .
    ```
 
-## <a name="provision-azure-services"></a>Azure Hizmetlerini Sağlama
+## <a name="provision-azure-services"></a>Azure hizmetlerini sağlama
 
-1. Visual Studio Code'da **Görevler** açılır menüsüne tıklayın ve **Görev Çalıştır'ı seçin...**  -  **bulut hükmü**.
+1. Visual Studio Code ' deki **Görevler** açılır menüsüne tıklayın ve **görevi çalıştır...** seçeneğini belirleyin.  -  **bulut sağlama**.
 
-2. İlerlemeniz **Karşılama** panelinin **TERMINAL** sekmesi altında görüntülenir.
+2. İlerleme durumu, **hoş geldiniz** panelinin **TERMINAL** sekmesi altında görüntülenir.
 
-3. İleti ile istendiğinde *hangi aboneliği seçmek istiyorsunuz,* bir abonelik seçin.
+3. *Hangi aboneliğin seçmek istediğiniz*iletiyle ilgili sorulduğunda bir abonelik seçin.
 
 4. Bir kaynak grubu seçin veya seçin. 
  
    > [!NOTE]
-   > Zaten ücretsiz bir IoT Hub'ınvarsa, bu adımı atlayabilirsiniz.
+   > Zaten ücretsiz bir IoT Hub varsa, bu adımı atlayabilirsiniz.
 
-5. İleti ile *istendiğinde, bir IoT hub'ı seçmek istediğiniz ioT hub'ını seçin*veya oluşturun.
+5. *Hangi IoT Hub 'ını seçmek*istediğinizi iletiyle birlikte sorulduğunda IoT Hub seçin veya oluşturun.
 
-6. Fonksiyon uygulamasına benzer bir *şey: fonksiyon uygulama adı: xxx*, görüntülenir. İşlev uygulama adını yazın; daha sonraki bir adımda kullanılacaktır.
+6. İşlev uygulamasına benzer bir şey *: işlev uygulaması adı: xxx*, görüntülenir. İşlev uygulama adını yazın; Bu, sonraki bir adımda kullanılacaktır.
 
-7. İleti *Kaynak Yöneticisi şablon dağıtımı: Bitti* görüntülenirken belirtilen Azure Kaynak Yöneticisi şablon dağıtımının tamamlanmasını bekleyin.
+7. Azure Resource Manager şablonu dağıtımının bitmesini bekleyin, bu, ileti *Kaynak Yöneticisi Şablon dağıtımı: bitti* görüntüleniyorsa gösterilir.
 
-## <a name="deploy-function-app"></a>Fonksiyon Uygulamasını Dağıt
+## <a name="deploy-function-app"></a>İşlev Uygulaması dağıt
 
-1. Visual Studio Code'da **Görevler** açılır menüsüne tıklayın ve **Görev Çalıştır'ı seçin...**  -  **bulut dağıtma.**
+1. Visual Studio Code ' deki **Görevler** açılır menüsüne tıklayın ve **görevi çalıştır...** seçeneğini belirleyin.  -  **bulut-dağıtım**.
 
-2. İşlev uygulama kodu yükleme işleminin tamamlanmasını bekleyin; mesaj *işlevi uygulaması dağıtır: Yapılır* görüntülenir.
+2. İşlev uygulaması kodu karşıya yükleme işleminin bitmesini bekleyin; uygulama dağıtımı *: bitti ileti işlevi* görüntülenir.
 
-## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>DevKit'te IoT Hub Aygıt Bağlantı Dizelerini Yapılandırma
+## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>DevKit 'te cihaz bağlantı dizesi IoT Hub yapılandırma
 
-1. MXChip IoT DevKit'inizi bilgisayarınıza bağlayın.
+1. Mxyongaıot DevKit 'nizi bilgisayarınıza bağlayın.
 
-2. Visual Studio Code'da **Görevler** açılır menüsüne tıklayın ve **Görev Çalıştır'ı seçin...**  -  **config-cihaz-bağlantı**
+2. Visual Studio Code ' deki **Görevler** açılır menüsüne tıklayın ve **görevi çalıştır...** seçeneğini belirleyin.  -  **yapılandırma-cihaz-bağlantı**
 
-3. MXChip IoT DevKit'te **A**tuşuna basın ve basılı tutun, **Sıfırla** düğmesine basın ve DekKit'in yapılandırma moduna girmesini sağlamak için **A** düğmesini bırakın.
+3. Mxyonun IoT DevKit ' te, **bir düğme a**'ya basın ve basılı tutun, **Sıfırla** düğmesine basın ve ardından **A** düğmesine basarak masaüstü oluşturma modunu yapılandırma moduna alın.
 
-4. Bağlantı dize yapılandırma işleminin tamamlanmasını bekleyin.
+4. Bağlantı dizesi yapılandırma işleminin tamamlanmasını bekleyin.
 
-## <a name="upload-arduino-code-to-devkit"></a>Arduino Kodunu DevKit'e Yükleyin
+## <a name="upload-arduino-code-to-devkit"></a>Arduino kodunu DevKit 'e yükle
 
-Bilgisayarınıza bağlı MXChip IoT DevKit'iniz ile:
+Mxyonun IoT DevKit ile bilgisayarınıza bağlı:
 
-1. Visual Studio Code'da **Görevler** açılır menüsüne tıklayın ve **Çalıştır Yap Görev'i seçin...** Arduino çizimi derlenir ve DevKit'e yüklenir.
+1. Visual Studio Code ' deki **Görevler** açılır menüsüne tıklayın ve **Yapı görevini Çalıştır..** . seçeneğini belirleyin. Arduino taslağı derlenir ve DevKit 'e yüklenir.
 
-2. Çizim başarıyla yüklendiğinde, Bir *Yapı & Yükleme Çizimi: başarı* iletisi görüntülenir.
+2. Taslak başarıyla karşıya yüklendiğinde, bir *derleme & taslağı karşıya yükle: başarı* iletisi görüntülenir.
 
-## <a name="monitor-devkit-state-in-browser"></a>DevKit Durumunu Tarayıcıda İzleyin
+## <a name="monitor-devkit-state-in-browser"></a>DevKit durumunu tarayıcıda izle
 
-1. Web tarayıcısında, gereksinim `DevKitState\web\index.html` duyduğunuz adım sırasında oluşturulan dosyayı açın.
+1. Bir Web tarayıcısında, ihtiyacınız olan adım `DevKitState\web\index.html` sırasında oluşturulan dosyayı açın.
 
-2. Aşağıdaki Web sayfası görüntülenir:![İşlev uygulama adını belirtin.](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state-function-app-name.png)
+2. Aşağıdaki Web sayfası görüntülenir:![İşlev uygulaması adını belirtin.](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state-function-app-name.png)
 
-3. Daha önce yazdığınız işlev uygulama adını girdin.
+3. Daha önce yazdığınız işlev uygulaması adını girin.
 
-4. **Bağlan** düğmesini tıklatın
+4. **Bağlan** düğmesine tıklayın
 
-5. Birkaç saniye içinde sayfa, DevKit'in WiFi bağlantı durumunu ve yerleşik sensörlerin her birinin durumunu yeniler ve görüntüler.
+5. Birkaç saniye içinde, sayfa yenilenir ve DevKit 'in WiFi bağlantısı durumunu ve ekleme sensörlerinden her birinin durumunu görüntüler.
 
-## <a name="control-the-devkits-user-led"></a>DevKit'in Kullanıcı LED'ini kontrol edin
+## <a name="control-the-devkits-user-led"></a>DevKit 'in Kullanıcı ıŞıĞıNı denetleme
 
-1. Web sayfası çizimindeki kullanıcı LED grafiğini tıklatın.
+1. Web sayfası çiziminde Kullanıcı tarafından LED grafiğine tıklayın.
 
-2. Birkaç saniye içinde ekran yenilenir ve kullanıcı LED'inin geçerli renk durumunu gösterir.
+2. Birkaç saniye içinde, ekran yenilenir ve kullanıcının geçerli renk durumunu gösterir.
 
-3. RGB kaydırıcı denetimleri çeşitli yerlerde tıklayarak RGB LED renk değerini değiştirmeyi deneyin.
+3. RGB kaydırıcı denetimlerinde çeşitli konumlara tıklayarak RGB 'nin renk değerini değiştirmeyi deneyin.
 
 ## <a name="example-operation"></a>Örnek işlem
 
 ![Örnek test yordamı](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Aygıt ikizinin ham verilerini Azure portalında görebilirsiniz: IoT Hub -\> IoT cihazları -\> * \<cihazınız\> *  - \> Aygıt İkiz.
+> Cihaz ikizi ham verilerini Azure Portal: IoT Hub-\> IoT cihazlarında-\> * \<cihaz\> *  - \> cihazınız ikizi ' de görebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Nasıl yapılacağını öğrendiniz:
-- Bir MXChip IoT DevKit cihazını Azure IoT Uzaktan İzleme çözüm hızlandırıcınıza bağlayın.
-- DevKit'in RGB LED'inin rengini algılamak ve kontrol etmek için Azure IoT aygıt ikizleri işlevini kullanın.
+- Bir Mxyonga IoT DevKit cihazını Azure IoT uzaktan Izleme çözüm hızlandırıcısına bağlayın.
+- Devkit 'in RGB 'nin rengini algılaması ve denetlemek için Azure IoT cihaz ikizlerini işlevini kullanın.
 
-Önerilen sonraki adımlar şunlardır:
+Önerilen sonraki adımlar aşağıda verilmiştir:
 
-* [Azure IoT Uzaktan İzleme çözüm hızlandırıcıya genel bakış](https://docs.microsoft.com/azure/iot-suite/)
-* [Bir MXChip IoT DevKit cihazını Azure IoT Merkezi uygulamanıza bağlayın](/azure/iot-central/core/howto-connect-devkit)
+* [Azure IoT uzaktan Izleme çözüm hızlandırıcısının genel bakış](https://docs.microsoft.com/azure/iot-suite/)
+* [Bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlama](/azure/iot-central/core/howto-connect-devkit)

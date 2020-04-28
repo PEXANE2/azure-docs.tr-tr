@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gölü Analizi'nde U-SQL kataloğunu kullanma
-description: Kod ve verileri paylaşmak için U-SQL kataloğunu nasıl kullanacağınızı öğrenin. Tablo değerinde işlevler oluşturun, görünümler oluşturun, tablolar oluşturun ve sorgulayın.
+title: Azure Data Lake Analytics 'de U-SQL kataloğunu kullanma
+description: U-SQL kataloğunu kullanarak kod ve veri paylaşma hakkında bilgi edinin. Tablo değerli işlevler oluşturun, görünümler oluşturun, tablo oluşturun ve bunları sorgulayın.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,19 +10,19 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.topic: conceptual
 ms.date: 05/09/2017
 ms.openlocfilehash: f3b9f14be4422373fb30f8c3d4909fd9c9546fdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71672837"
 ---
-# <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Azure Veri Gölü Analytics'teki U-SQL Kataloğu'na başlayın
+# <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics ' de U-SQL kataloğu ile çalışmaya başlama
 
 ## <a name="create-a-tvf"></a>TVF oluşturma
 
-Önceki U-SQL komut dosyasında, aynı kaynak dosyadan okumak için EXTRACT kullanımını yinelediniz. U-SQL tablo değeri nerenindeki işlevi (TVF) ile, verileri gelecekteki yeniden kullanım için kapsülleyebilirsiniz.  
+Önceki U-SQL komut dosyasında, aynı kaynak dosyadan okumak için ayıklama kullanımını tekrarlanmış olursunuz. U-SQL tablo değerli işlevi (TVF) sayesinde, daha sonra yeniden kullanmak üzere verileri kapsülleyebilirsiniz.  
 
-Aşağıdaki komut dosyası varsayılan veritabanı `Searchlog()` ve şema adlı bir TVF oluşturur:
+Aşağıdaki komut, varsayılan veritabanında ve şemada çağrılan `Searchlog()` bir TVF oluşturur:
 
 ```
 DROP FUNCTION IF EXISTS Searchlog;
@@ -53,7 +53,7 @@ RETURN;
 END;
 ```
 
-Aşağıdaki komut dosyası, önceki komut dosyasında tanımlanan TVF'yi nasıl kullanacağınızı gösterir:
+Aşağıdaki betik, önceki betikte tanımlanan TVF 'yi nasıl kullanacağınızı gösterir:
 
 ```
 @res =
@@ -72,9 +72,9 @@ OUTPUT @res
 
 ## <a name="create-views"></a>Görünümler oluşturma
 
-Tek bir sorgu ifadeniz varsa, TVF yerine bu ifadeyi kapsüllemek için U-SQL VIEW kullanabilirsiniz.
+Bir TVF yerine tek bir sorgu ifadeniz varsa, bu ifadeyi kapsüllemek için bir U-SQL görünümü kullanabilirsiniz.
 
-Aşağıdaki komut dosyası varsayılan `SearchlogView` veritabanı ve şema adlı bir görünüm oluşturur:
+Aşağıdaki komut, varsayılan veritabanında ve şemada `SearchlogView` adlı bir görünüm oluşturur:
 
 ```
 DROP VIEW IF EXISTS SearchlogView;
@@ -91,7 +91,7 @@ CREATE VIEW SearchlogView AS
 USING Extractors.Tsv();
 ```
 
-Aşağıdaki komut dosyası tanımlı görünümün kullanımını gösterir:
+Aşağıdaki betik, tanımlanan görünümün kullanımını gösterir:
 
 ```
 @res =
@@ -109,9 +109,9 @@ OUTPUT @res
 ```
 
 ## <a name="create-tables"></a>Tablo oluşturma
-İlişkisel veritabanı tablolarında olduğu gibi, U-SQL ile önceden tanımlanmış şema içeren bir tablo oluşturabilir veya tabloyu dolduran sorgudan şema çıkaran bir tablo oluşturabilirsiniz (CREATE TABLE AS SELECT veya CTAS olarak da bilinir).
+İlişkisel veritabanı tablolarında olduğu gibi, U-SQL ile, önceden tanımlanmış bir şema içeren bir tablo oluşturabilir veya tabloyu dolduran sorgudan (SELECT veya CTAS olarak da CREATE TABLE bilinir) şemayı gösteren bir tablo oluşturabilirsiniz.
 
-Aşağıdaki komut dosyasını kullanarak bir veritabanı ve iki tablo oluşturun:
+Aşağıdaki betiği kullanarak bir veritabanı ve iki tablo oluşturun:
 
 ```
 DROP DATABASE IF EXISTS SearchLogDb;
@@ -143,9 +143,9 @@ CREATE TABLE SearchLog2(
 ```
 
 ## <a name="query-tables"></a>Sorgu tabloları
-Önceki komut dosyasında oluşturulanlar gibi tabloları, veri dosyalarını sorguladığınız gibi sorgulayabilirsiniz. EXTRACT kullanarak bir satır kümesi oluşturmak yerine, artık tablo adına başvurabilirsiniz.
+Önceki betikte oluşturulanlar gibi tabloları, veri dosyalarını Sorgulayabileceğiniz şekilde sorgulayabilirsiniz. EXTRACT kullanarak bir satır kümesi oluşturmak yerine artık tablo adına başvurabilirsiniz.
 
-Tablolardan okumak için, daha önce kullandığınız dönüştürme komut dosyasını değiştirin:
+Tablolardan okumak için, daha önce kullandığınız dönüştürme betiğini değiştirin:
 
 ```
 @rs1 =
@@ -168,9 +168,9 @@ OUTPUT @res
 ```
 
  >[!NOTE]
- >Şu anda, tabloyu oluşturduğunuz komut dosyasındaki bir tabloda SELECT çalıştıramazsınız.
+ >Şu anda, tabloyu oluşturduğunuz bir betikle aynı komut dosyasında bir SELECT SEÇIMI çalıştıramazsınız.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * [Microsoft Azure Data Lake Analytics'e genel bakış](data-lake-analytics-overview.md)
 * [Visual Studio için Data Lake Araçları'nı kullanarak U-SQL betikleri geliştirme](data-lake-analytics-data-lake-tools-get-started.md)
-* [Azure portalLarını kullanarak Azure Veri Gölü Analizi işlerini izleme ve sorun giderme](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+* [Azure portal kullanarak Azure Data Lake Analytics işleri izleme ve sorunlarını giderme](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub cihaz akışları | Microsoft Dokümanlar
-description: Çeşitli buluttan cihaza iletişim senaryoları için güvenli çift yönlü TCP tünellerini kolaylaştıran Azure IoT Hub aygıt akışlarına genel bakış.
+title: Azure IoT Hub cihaz akışları | Microsoft Docs
+description: Çok sayıda buluttan cihaza iletişim senaryosu için güvenli çift yönlü TCP tünellerini kolaylaştıran Azure IoT Hub cihaz akışlarına genel bakış.
 author: robinsh
 services: iot-hub
 ms.service: iot-hub
@@ -8,87 +8,87 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
 ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73890465"
 ---
-# <a name="iot-hub-device-streams-preview"></a>IoT Hub Aygıt Akışları (önizleme)
+# <a name="iot-hub-device-streams-preview"></a>Cihaz akışlarını IoT Hub (Önizleme)
 
-Azure IoT Hub *aygıt akışları,* çeşitli buluttan cihaza iletişim senaryoları için güvenli çift yönlü TCP tünelleri oluşturulmasını kolaylaştırır. Aygıt akışı, aygıtınız ve hizmet bitiş noktaları arasında proxy görevi gören bir IoT Hub *akış bitiş noktası* tarafından aracılık edilir. Aşağıdaki diyagramda gösterilen bu kurulum, aygıtlar bir ağ güvenlik duvarının arkasındayken veya özel bir ağın içinde ikamet ettiğinde özellikle yararlıdır. Bu nedenle, IoT Hub aygıt akışları, müşterilerin Güvenlik Duvarı dostu bir şekilde ve gelen veya giden ağ güvenlik duvarı bağlantı noktalarını genişletmeye gerek kalmadan IoT aygıtlarına ulaşma gereksinimini gidermeye yardımcı olur.
+Azure IoT Hub *cihaz akışları* , çok sayıda buluttan cihaza iletişim senaryosu için güvenli ıkı yönlü TCP tünellerinin oluşturulmasını kolaylaştırır. Cihaz akışı, cihazınız ve hizmet uç noktalarınız arasında proxy görevi gören bir IoT Hub *akış uç noktası* tarafından dağıtılır. Aşağıdaki diyagramda gösterilen bu kurulum özellikle, cihazlar bir ağ güvenlik duvarının arkasındaysa veya bir özel ağın içinde olduğunda faydalıdır. Bu nedenle, IoT Hub cihaz akışları müşterilerin IoT cihazlarına bir güvenlik duvarı kullanımı kolay bir şekilde ulaşmasını ve gelen veya giden ağ güvenlik duvarı bağlantı noktalarını genel olarak açmaya gerek kalmadan yardımcı olur.
 
-!["IoT Hub cihaz akışları genel bakış"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-overview.png )
+!["Cihaz akışlarına genel bakış" IoT Hub](./media/iot-hub-device-streams-overview/iot-hub-device-streams-overview.png )
 
-IoT Hub aygıt akışlarını kullanarak, aygıtlar güvenli kalır ve yalnızca giden TCP bağlantılarını IoT hub'ın akış bitiş noktasına bağlantı noktası 443 üzerinden açmanız gerekir. Bir akış oluşturulduktan sonra, hizmet tarafı ve aygıt tarafındaki uygulamaların her biri, birbirine ham bayt gönderip almak için bir WebSocket istemci nesnesine programlı erişime sahip olur. Bu tüneltarafından sağlanan güvenilirlik ve sipariş garantileri TCP ile aynı derecededir.
+Cihaz akışlarını IoT Hub kullanarak, cihazlar güvenli kalır ve yalnızca IoT Hub 'ın 443 numaralı bağlantı noktası üzerinden akış uç noktasına giden TCP bağlantılarını açması gerekecektir. Bir akış kurulduktan sonra, hizmet tarafı ve cihaz tarafı uygulamaların her biri, bir WebSocket istemci nesnesine bir diğerine ham bayt gönderme ve alma için programlı erişim sağlar. Bu tünelle sunulan güvenilirlik ve sipariş garantisi TCP ile aynıdır.
 
 ## <a name="benefits"></a>Avantajlar
 
-IoT Hub aygıt akışları aşağıdaki avantajları sağlar:
+IoT Hub cihaz akışları aşağıdaki avantajları sağlar:
 
-* **Güvenlik duvarı dostu güvenli bağlantı:** IoT aygıtlarına, aygıtta veya ağ çevresinde gelen güvenlik duvarı bağlantı noktası açılmadan servis uç noktalarından ulaşılabilir (443 portu üzerinden yalnızca IoT Hub'a giden bağlantı gereklidir).
+* **Güvenlik duvarı kolay güvenli bağlantı:** Cihaz veya ağ duvarlar gelen güvenlik duvarı bağlantı noktası açılmadan, IoT cihazlarına hizmet uç noktalarından ulaşılabilir (443 numaralı bağlantı noktası üzerinden yalnızca IoT Hub giden bağlantı gerekir).
 
-* **Kimlik doğrulama:** Tünelin hem aygıt hem de servis taraflarının, ilgili kimlik bilgilerini kullanarak IoT Hub ile kimlik doğrulaması gerekir.
+* **Kimlik doğrulama:** Tünelin hem cihaz hem de hizmet tarafları, ilgili kimlik bilgilerini kullanarak IoT Hub kimlik doğrulaması yapması gerekir.
 
-* **Şifreleme:** Varsayılan olarak, IoT Hub aygıt akışları TLS özellikli bağlantıları kullanır. Bu, uygulamanın şifreleme kullanıp kullanmadığına bakılmaksızın trafiğin her zaman şifrelenmesini sağlar.
+* **Şifreleme:** Varsayılan olarak, IoT Hub cihaz akışları TLS özellikli bağlantıları kullanır. Bu, uygulamanın şifreleme kullanıp kullanmadığına bakılmaksızın trafiğin her zaman şifrelenmesini sağlar.
 
-* **Bağlantı nın basitliği:** Çoğu durumda, aygıt akışlarının kullanımı, IoT aygıtlarına bağlantı sağlamak için Sanal Özel Ağlar'ın karmaşık kurulumu gereksinimini ortadan kaldırır.
+* **Bağlantı basitliği:** Birçok durumda, cihaz akışlarının kullanımı, IoT cihazlarına bağlantı sağlamak için sanal özel ağların karmaşık kurulumunun gereksinimini ortadan kaldırır.
 
-* **TCP/IP yığını ile uyumluluk:** IoT Hub aygıt akışları TCP/IP uygulama trafiğini barındırabilir. Bu, çok çeşitli tescilli ve standartlara dayalı protokollerin bu özelliktan yararlanabileceği anlamına gelir.
+* **TCP/IP yığını Ile uyumluluk:** IoT Hub cihaz akışları TCP/IP uygulama trafiğine uyum sağlayabilir. Bu, standart tabanlı protokollerin çok çeşitli mülkiyet ve bu özellikten yararlanabilen anlamına gelir.
 
-* **Özel ağ kurulumlarında kullanım kolaylığı:** Hizmet, aygıtın IP adresi yerine aygıt kimliğine başvurarak bir aygıtla iletişim kurabilir. Bu, aygıtın özel bir ağ içinde bulunduğu ve özel bir IP adresine sahip olduğu veya IP adresinin dinamik olarak atandığı ve hizmet tarafında bilinmeyen durumlarda yararlıdır.
+* **Özel ağ kurulumlarına kullanım kolaylığı:** Hizmet, cihazın IP adresi yerine cihaz KIMLIĞINE başvurarak bir cihazla iletişim kurabilir. Bu, bir cihazın özel bir ağda bulunduğu ve özel bir IP adresine sahip olduğu ve IP adresinin dinamik olarak atandığı ve hizmet tarafında bilinmediği durumlarda faydalıdır.
 
-## <a name="device-stream-workflows"></a>Aygıt akışı iş akışları
+## <a name="device-stream-workflows"></a>Cihaz akışı iş akışları
 
-Hizmet, aygıt kimliğini sağlayarak bir aygıta bağlanmak istediğinde aygıt akışı başlatılır. Bu iş akışı özellikle, kullanıcının bir SSH veya RDP istemci programı kullanarak aygıtta çalışan SSH veya RDP sunucusuna uzaktan bağlanmayı planladığı SSH ve RDP dahil olmak üzere istemci/sunucu iletişim modeline uyar.
+Hizmet, cihaz KIMLIĞI sağlayarak bir cihaza bağlanmak istediğinde bir cihaz akışı başlatılır. Bu iş akışı özellikle SSH ve RDP dahil olmak üzere bir istemci/sunucu iletişim modeline uyum sağlar. Bu, kullanıcının bir SSH veya RDP istemci programı kullanarak cihazda çalışan SSH veya RDP sunucusuna uzaktan bağlanmasını amaçladığı bir istemci/sunucu iletişim modeline uyar.
 
-Aygıt akışı oluşturma işlemi, aygıt, hizmet, IoT hub'ının ana ve akış uç noktaları arasında bir anlaşma içerir. IoT hub'ının ana bitiş noktası aygıt akışının oluşturulmasını yönetirken, akış bitiş noktası hizmet ve aygıt arasında akan trafiği işler.
+Cihaz akışı oluşturma işlemi, cihaz, hizmet, IoT Hub 'ın ana ve akış uç noktaları arasında bir anlaşmasını içerir. IoT Hub 'ının ana uç noktası bir cihaz akışının oluşturulmasını düzenler, akış uç noktası hizmet ve cihaz arasında akan trafiği işler.
 
-### <a name="device-stream-creation-flow"></a>Aygıt akışı oluşturma akışı
+### <a name="device-stream-creation-flow"></a>Cihaz akışı oluşturma akışı
 
-SDK kullanarak bir cihaz akışının programlı oluşturulması aşağıdaki adımları içerir ve aşağıdaki şekilde de gösterilmiştir:
+SDK kullanarak bir cihaz akışının programlı bir şekilde oluşturulması, aşağıdaki şekilde de gösterildiği gibi aşağıdaki adımları içerir:
 
 !["Cihaz akışı el sıkışma işlemi"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-handshake.png)
 
-1. Cihaz uygulaması, cihaza yeni bir aygıt akışı başlatıldığında bilgilendirilmek üzere önceden bir geri arama kaydeder. Bu adım genellikle aygıt önyükleme ve IoT Hub'a bağlandığında gerçekleşir.
+1. Cihaz uygulaması, cihaza yeni bir cihaz akışı başlatıldığında bildirim almak için önceden bir geri çağırma kaydeder. Bu adım genellikle cihaz önyüklendiğinde ve IoT Hub bağlandığı zaman gerçekleşir.
 
-2. Hizmet tarafındaki program, aygıt kimliğini (IP adresi_değil)_ sağlayarak gerektiğinde bir aygıt akışı başlatır.
+2. Hizmet tarafı programı, cihaz KIMLIĞINI (IP adresi_değil_ ) sağlayarak gerektiğinde bir cihaz akışı başlatır.
 
-3. IoT hub, adım 1'de kayıtlı geri aramayı çağırarak aygıt tarafındaki programı notalar. Aygıt akış başlatma isteğini kabul edebilir veya reddedebilir. Bu mantık uygulama senaryonuza özgü olabilir. Akış isteği aygıt tarafından reddedilirse, IoT Hub hizmeti buna göre bildirir; aksi takdirde, aşağıdaki adımları izleyin.
+3. IoT Hub, 1. adımda kaydedilen geri aramayı çağırarak cihaz tarafı programını bilgilendirir. Cihaz, akış başlatma isteğini kabul edebilir veya reddedebilir. Bu mantık, Uygulama senaryonuz için özel olabilir. Akış isteği cihaz tarafından reddedilirse, IoT Hub hizmete uygun şekilde bildirir; Aksi takdirde, aşağıdaki adımlar izleyin.
 
-4. Aygıt, bağlantı noktası 443 üzerinden akış bitiş noktasına güvenli giden bir TCP bağlantısı oluşturur ve bağlantıyı bir WebSocket'e yükseltir. Akış bitiş noktasının URL'si ve kimlik doğrulamaiçin kullanılacak kimlik bilgileri, adım 3'te gönderilen isteğin bir parçası olarak IoT Hub tarafından aygıta sağlanır.
+4. Cihaz, bağlantı noktası 443 üzerinden akış uç noktasına güvenli bir giden TCP bağlantısı oluşturur ve bir WebSocket bağlantısını yükseltir. Kimlik doğrulaması için kullanılacak kimlik bilgilerinin yanı sıra akış uç noktasının URL 'SI, adım 3 ' te gönderilen isteğin bir parçası olarak IoT Hub tarafından, her ikisi de cihaza sağlanır.
 
-5. Hizmet, aygıtın akışı kabul etmesinin sonucu olarak bildirilir ve akış bitiş noktasına kendi WebSocket istemcisini oluşturmaya devam eder. Benzer şekilde, ioT Hub'dan akış uç noktası URL'si ve kimlik doğrulama bilgilerini alır.
+5. Hizmet, akışı kabul eden cihazın ve akış uç noktasına kendi WebSocket istemcisini oluşturmaya devam eden bir sonuç olduğunu bilgilendirilir. Benzer şekilde, akış uç noktası URL 'sini ve IoT Hub kimlik doğrulama bilgilerini alır.
 
-Yukarıdaki el sıkışma işleminde:
+Yukarıdaki el sıkışma sürecinde:
 
-* El sıkışma işlemi 60 saniye (adım 2 ile 5 arasında) içinde tamamlanmalıdır, aksi takdirde el sıkışma bir zaman dilimi ile başarısız olur ve hizmet buna göre bildirilir.
+* El sıkışma işlemi 60 saniye içinde tamamlanmalıdır (2 ila 5. adım), aksi takdirde el sıkışma zaman aşımı ile başarısız olur ve hizmet buna uygun şekilde bildirilir.
 
-* Yukarıdaki akış oluşturma akışı tamamlandıktan sonra, akış bitiş noktası proxy olarak hareket eder ve hizmet ve aygıt arasındaki trafiği ilgili WebSocket'leri üzerinden aktaracaktır.
+* Yukarıdaki akış oluşturma akışı tamamlandıktan sonra, akış uç noktası bir ara sunucu görevi görür ve hizmet ile cihaz arasındaki trafiği ilgili WebSockets üzerinden aktarır.
 
-* Aygıt ve hizmetin hem IoT Hub'ın ana bitiş noktasına hem de 443 portunüzerindeki akış bitiş noktasına giden bağlantıya ihtiyacı vardır. Bu uç noktaların URL'si, IoT Hub portalındaki *Genel Bakış* sekmesinde kullanılabilir.
+* Hem cihaz hem de hizmetin ana uç noktasına giden IoT Hub bağlantı ve 443 numaralı bağlantı noktası üzerinden akış uç noktası olması gerekir. Bu uç noktaların URL 'SI IoT Hub portalındaki *genel bakış* sekmesinde kullanılabilir.
 
-* Kurulu bir akışın güvenilirlik ve sipariş garantileri TCP ile eşittir.
+* Belirlenen akışın güvenilirlik ve sıralama garantisi TCP ile aynıdır.
 
-* IoT Hub ve akış uç noktası tüm bağlantılar TLS kullanır ve şifrelenir.
+* IoT Hub ve akış uç noktasına yapılan tüm bağlantılar TLS kullanır ve şifrelenir.
 
 ### <a name="termination-flow"></a>Sonlandırma akışı
 
-Ağ geçidine tcp bağlantılarından herhangi biri (hizmet veya aygıt tarafından) kesildiğinde, kurulan bir akış sona erer. Bu, WebSocket'i aygıt veya hizmet programlarında kapatarak veya ağ bağlantısı zaman arızası veya işlem hatası durumunda istemsiz olarak gerçekleşebilir. Aygıt veya hizmetin akış bitiş noktasına olan bağlantısının sona ermesi üzerine, diğer TCP bağlantısı da (zorla) sonlandırılır ve gerekirse akışı yeniden oluşturmak için hizmet ve aygıt sorumludur.
+Oluşturulan akış, ağ geçidine yönelik TCP bağlantılarının bağlantısı kesildiğinde (hizmet veya cihaz tarafından) sona erer. Bu, bir ağ bağlantısı zaman aşımı ya da işlem arızası durumunda WebSocket 'in cihaz veya hizmet programlarında veya involuntarily karşı bir süre içinde kapatılması yoluyla gönüllü olarak gerçekleşebilir. Cihazın veya hizmetin akış uç noktasına bağlantısı sonlandırdıktan sonra, diğer TCP bağlantısı da (zorla) sonlandırılır ve hizmet ve cihaz gerektiğinde akışı yeniden oluşturmaktan sorumludur.
 
-## <a name="connectivity-requirements"></a>Bağlantı Gereksinimleri
+## <a name="connectivity-requirements"></a>Bağlantı gereksinimleri
 
-Aygıt akışının hem aygıt hem de servis tarafları, IoT Hub'ına ve akış bitiş noktasına TLS özellikli bağlantılar kurabilme yeteneğine sahip olmalıdır. Bu, bu uç noktalara bağlantı 443 üzerinden giden bağlantı gerektirir. Bu uç noktalarla ilişkili ana bilgisayar adı, aşağıdaki şekilde gösterildiği gibi IoT Hub'ının *Genel Bakış* sekmesinde bulunabilir:
+Bir cihaz akışının cihaz ve hizmet tarafları, IoT Hub ve akış uç noktası için TLS özellikli bağlantı kurma yeteneğine sahip olmalıdır. Bu uç noktalara 443 numaralı bağlantı noktası üzerinden giden bağlantı gerekir. Bu uç noktalarla ilişkili ana bilgisayar adı, aşağıdaki şekilde gösterildiği gibi IoT Hub *genel bakış* sekmesinde bulunabilir:
 
-!["Aygıt akışı uç noktaları"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
+!["Cihaz akış uç noktaları"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
-Alternatif olarak, uç nokta bilgileri, özellikle hub'ın özellikleri bölümü `property.hostname` ve `property.deviceStreams` anahtarları altında Azure CLI kullanılarak alınabilir.
+Alternatif olarak, uç nokta bilgileri hub 'ın Özellikler bölümü, özellikle `property.hostname` ve `property.deviceStreams` anahtarları altında Azure CLI kullanılarak alınabilir.
 
 ```azurecli-interactive
 az iot hub devicestream show --name <YourIoTHubName>
 ```
 
-Çıktı, hub'ınızın aygıtının ve hizmetinin bir aygıt akışı oluşturmak için bağlanması gerekebileceği tüm uç noktaların JSON nesnesidir.
+Çıktı, hub 'ın cihazının ve hizmetinin bir cihaz akışı oluşturmak için bağlanması gerekebilecek tüm uç noktaların JSON nesnesidir.
 
 ```json
 {
@@ -99,118 +99,118 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Azure CLI sürümünü 2.0.57 veya daha yeni yüklediğinizden emin olun. [Azure CLI'yi yükle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) sayfasından en son sürümü indirebilirsiniz.
+> Azure CLı sürüm 2.0.57 veya daha yeni bir sürümü yüklediğinizden emin olun. [Azure CLI 'Yı yükle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) sayfasından en son sürümü indirebilirsiniz.
 >
 
-## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>Aygıt akış uç noktalarına giden bağlantıya izin ver
+## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>Cihaz akış uç noktalarına giden bağlantılara izin ver
 
-Bu makalenin başında belirtildiği gibi, aygıtınız aygıt akışları başlatma işlemi sırasında IoT Hub akış bitiş noktasına giden bir bağlantı oluşturur. Aygıttaki veya ağındaki güvenlik duvarlarınız, 443 bağlantı noktası üzerinden akış ağ geçidine giden bağlantıya izin vermelidir (iletişimin TLS kullanılarak şifrelenmiş bir WebSocket bağlantısı üzerinden gerçekleştiğini unutmayın).
+Bu makalenin başlangıcında belirtildiği gibi, cihazınız cihaz akışları başlatma işlemi sırasında akış uç noktası IoT Hub giden bir bağlantı oluşturur. Cihazdaki veya ağındaki güvenlik duvarlarınız, bağlantı noktası 443 üzerinden akış ağ geçidine giden bağlantıya izin vermelidir (iletişim, TLS kullanılarak şifrelenmiş bir WebSocket bağlantısı üzerinden yapılır).
 
-Aygıt akışı bitiş noktasının ana bilgisayarının adı, Genel Bakış sekmesi altındaki ![Azure IoT Hub portalında bulunabilir.](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
+Cihaz akış uç noktasının ana bilgisayar adı, genel bakış sekmesinin altındaki Azure IoT Hub portalında bulunabilir. !["cihaz akış uç noktaları"](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
-Alternatif olarak, bu bilgileri Azure CLI'yi kullanarak bulabilirsiniz:
+Alternatif olarak, Azure CLı kullanarak bu bilgileri bulabilirsiniz:
 
 ```azurecli-interactive
 az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Azure CLI sürümünü 2.0.57 veya daha yeni yüklediğinizden emin olun. [Azure CLI'yi yükle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) sayfasından en son sürümü indirebilirsiniz.
+> Azure CLı sürüm 2.0.57 veya daha yeni bir sürümü yüklediğinizden emin olun. [Azure CLI 'Yı yükle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) sayfasından en son sürümü indirebilirsiniz.
 >
 
-## <a name="troubleshoot-via-device-streams-activity-logs"></a>Aygıt Akışları Etkinlik Günlükleri ile Sorun Giderme
+## <a name="troubleshoot-via-device-streams-activity-logs"></a>Cihaz akışları etkinlik günlükleri aracılığıyla sorun giderme
 
-IoT Hub'ınızdaki aygıt akışlarının etkinlik günlüğünü toplamak için Azure Monitor günlüklerini ayarlayabilirsiniz. Bu, sorun giderme senaryolarında çok yararlı olabilir.
+Azure Izleyici günlüklerini, IoT Hub cihaz akışlarının etkinlik günlüğünü toplayacak şekilde ayarlayabilirsiniz. Sorun giderme senaryolarında bu çok faydalı olabilir.
 
-IoT Hub'ınızın aygıt akışı etkinlikleri için Azure Monitor günlüklerini yapılandırmak için aşağıdaki adımları izleyin:
+IoT Hub cihaz akışı etkinlikleri için Azure Izleyici günlüklerini yapılandırmak üzere aşağıdaki adımları izleyin:
 
-1. IoT Hub'ınızdaki *Tanılama ayarları* sekmesine gidin ve *tanılama* bağlantısını aç'a tıklayın.
+1. IoT Hub *Tanılama ayarları* sekmesine gidin ve *Tanılama bağlantısını aç* ' a tıklayın.
 
    !["Tanılama günlüklerini etkinleştirme"](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
 
-2. Tanılama ayarlarınız için bir ad sağlayın ve *Günlük Analişu'na Gönder* seçeneğini belirleyin. Varolan bir Log Analytics çalışma alanı kaynağını seçmek veya yeni bir kaynak oluşturmak için yönlendirilirsiniz. Ayrıca, listeden *DeviceStreams'i* denetleyin.
+2. Tanılama ayarlarınıza bir ad verin ve *Log Analytics gönder* seçeneğini belirleyin. Mevcut bir Log Analytics çalışma alanı kaynağı seçmek veya yeni bir tane oluşturmak için size kılavuzluk edecek. Ayrıca, listeden *Devicestreams* ' ı kontrol edin.
 
-    !["Aygıt akışlarını etkinleştir"](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
+    !["Cihaz akışları günlüklerini etkinleştir"](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
 
-3. Artık IoT Hub'ınızın portalındaki *Günlükler* sekmesi altında cihaz akışları günlüklerinize erişebilirsiniz. Aygıt akışı etkinlik günlükleri `AzureDiagnostics` tabloda `Category=DeviceStreams`görünür ve .
+3. Artık, IoT Hub portalınızdaki *Günlükler* sekmesinden cihaz akışları günlüklerine erişebilirsiniz. Cihaz akışı etkinlik günlükleri `AzureDiagnostics` tabloda görüntülenir ve olur. `Category=DeviceStreams`
 
-   Aşağıda gösterildiği gibi, hedef aygıtın kimliği ve işlemin sonucu da günlüklerde mevcuttur.
+   Aşağıda gösterildiği gibi, hedef cihazın kimliği ve işlemin sonucu da günlüklerde bulunur.
 
-   !["Erişim cihazı akışı günlükleri"](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
+   !["Cihaz akış günlüklerine erişin"](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
 
 ## <a name="regional-availability"></a>Bölgesel Kullanılabilirlik
 
-Genel önizleme sırasında, IoT Hub cihaz akışları Orta ABD, Orta ABD EUAP, Kuzey Avrupa ve Güneydoğu Asya bölgelerinde kullanılabilir. Lütfen hub'ınızı bu bölgelerden birinde oluşturduğunuzdan emin olun.
+Genel Önizleme sırasında IoT Hub cihaz akışları Orta ABD, Orta ABD EUAP, Kuzey Avrupa ve Güneydoğu Asya bölgelerinde kullanılabilir. Lütfen hub 'ınızı bu bölgelerden birinde oluşturduğunuzdan emin olun.
 
-## <a name="sdk-availability"></a>SDK Kullanılabilirliği
+## <a name="sdk-availability"></a>SDK kullanılabilirliği
 
-Her derenin iki tarafı (aygıt ve servis tarafında) tüneli kurmak için IoT Hub SDK'yı kullanır. Genel önizleme sırasında, müşteriler aşağıdaki SDK dillerinden birini seçebilir:
+Her akışın iki tarafı (cihaz ve hizmet tarafında), tüneli kurmak için IoT Hub SDK 'sını kullanın. Genel Önizleme sırasında, müşteriler aşağıdaki SDK dillerinden seçim yapabilir:
 
-* C ve C# SDK'nın destek cihazı cihaz tarafında akar.
+* C ve C# SDK 'Sı cihaz tarafında cihaz akışlarını destekler.
 
-* NodeJS ve C# SDK destek aygıtı servis tarafında akar.
+* NodeJS ve C# SDK 'Sı hizmet tarafında cihaz akışlarını destekler.
 
 ## <a name="iot-hub-device-stream-samples"></a>IoT Hub cihaz akışı örnekleri
 
-IoT Hub sayfasında iki [hızlı başlatma örneği](/azure/iot-hub) mevcuttur. Bunlar, aygıt akışlarının uygulamalar tarafından kullanımını gösterir.
+IoT Hub sayfasında iki [hızlı başlangıç örneği](/azure/iot-hub) bulunur. Bunlar, cihaz akışlarının uygulamalar tarafından kullanımını gösterir.
 
-* *Yankı* örneği cihaz akışlarının programlı kullanımını gösterir (SDK API's'ı doğrudan arayarak).
+* *Echo* örnek, cihaz akışlarının programlı kullanımını gösterır (SDK API 'si doğrudan çağırarak).
 
-* *Yerel proxy* örneği, aygıt akışları üzerinden hazır istemci/sunucu uygulama trafiğinin (SSH, RDP veya web gibi) tünel kazanlığını gösterir.
+* *Yerel proxy* örneği, cihaz akışları aracılığıyla raf dışı istemci/sunucu uygulama TRAFIĞININ (SSH, RDP veya Web gibi) tünelini gösterir.
 
-Bu örnekler aşağıda daha ayrıntılı olarak ele alınmıştır.
+Bu örnekler aşağıda daha ayrıntılı bir şekilde ele alınmıştır.
 
-### <a name="echo-sample"></a>Yankı Örneği
+### <a name="echo-sample"></a>Yankı örneği
 
-Yankı örneği, servis ve aygıt uygulamaları arasında bayt göndermek ve almak için cihaz akışlarının programlı kullanımını gösterir. Hizmet ve aygıt programlarını farklı dillerde kullanabileceğinizi unutmayın. Örneğin, C# hizmet programı ile C aygıt programını kullanabilirsiniz.
+Echo örnek, hizmet ve cihaz uygulamaları arasında bayt göndermek ve almak için cihaz akışlarının programlı kullanımını gösterir. Hizmet ve cihaz programlarını farklı dillerde kullanabileceğinizi unutmayın. Örneğin, C# hizmet programıyla C cihaz programını kullanabilirsiniz.
 
-İşte yankı örnekleri şunlardır:
+Yankı örnekleri aşağıda verilmiştir:
 
-* [C# servis ve servis programı](quickstart-device-streams-echo-csharp.md)
+* [C# hizmeti ve hizmet programı](quickstart-device-streams-echo-csharp.md)
 
-* [Düğüm.js servis programı](quickstart-device-streams-echo-nodejs.md)
+* [Node. js hizmet programı](quickstart-device-streams-echo-nodejs.md)
 
 * [C cihaz programı](quickstart-device-streams-echo-c.md)
 
 ### <a name="local-proxy-sample-for-ssh-or-rdp"></a>Yerel proxy örneği (SSH veya RDP için)
 
-Yerel proxy örneği, istemci ve sunucu programı arasındaki iletişimi içeren varolan bir uygulamanın trafiğinin tünel kazılmasını etkinleştirme nin bir yolunu gösterir. Bu kurulum, hizmet tarafının istemci (SSH veya RDP istemci programlarını çalıştıran) olarak çalıştığı Ve aygıt tarafının sunucu (SSH daemon veya RDP sunucu programlarını çalıştıran) olarak çalıştığı SSH ve RDP gibi istemci/sunucu protokolleri için çalışır.
+Yerel proxy örneği, var olan bir uygulamanın, bir istemci ile sunucu programı arasındaki iletişimi içeren trafiğinin tünellenmesini olanaklı hale getirmenin bir yolunu gösterir. Bu kurulum, hizmet tarafının bir istemci olarak (SSH veya RDP istemci programları çalıştıran) ve cihaz tarafında sunucu gibi davranan (ssh daemon veya RDP sunucu programlarını çalıştıran) SSH ve RDP gibi istemci/sunucu protokolleri için geçerlidir.
 
-Bu bölümde, kullanıcının aygıt akışları üzerinden bir aygıta SSH'ye olmasını sağlamak için aygıt akışlarının kullanımı açıklanmaktadır (RDP veya diğer istemci/sunucu uygulamaları için durum protokolün ilgili bağlantı noktasını kullanarak benzerdir).
+Bu bölümde, kullanıcının cihaz akışları üzerinden bir cihaza SSH kullanmasını sağlamak için cihaz akışlarının kullanımı açıklanmaktadır (RDP veya diğer istemci/sunucu uygulaması için protokolün karşılık gelen bağlantı noktası kullanılarak benzerdir).
 
-Kurulum, aşağıdaki şekilde gösterilen iki *yerel proxy* programından yararlanır, yani *aygıt-yerel proxy* ve *hizmet-yerel proxy.* Yerel proxy programları, IoT Hub ile [cihaz akışı başlatma el sıkışmasını](#device-stream-creation-flow) gerçekleştirmekten ve normal istemci/sunucu soketlerini kullanarak SSH istemcisi ve SSH daemon ile etkileşimkurmakla yükümlüdür.
+Kurulum, aşağıdaki şekilde gösterilen iki *yerel proxy* programını kullanır; bu şekilde *cihaz yerel proxy* ve *hizmet yerel ara sunucu*. Yerel proxy programları, IoT Hub ile [cihaz akışı başlatma el sıkışması](#device-stream-creation-flow) gerçekleştirmekten ve normal istemci/sunucu YUVALARıNı kullanarak SSH ISTEMCISI ve ssh daemon ile etkileşimde bulunmaktan sorumludur.
 
 !["SSH/RDP için cihaz akışı proxy kurulumu"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 
-1. Kullanıcı, aygıta bir aygıt akışı başlatmak için hizmet yerel proxy'yi çalıştırZ.
+1. Kullanıcı, cihaza bir cihaz akışı başlatmak için hizmet yerel ara sunucusunu çalıştırır.
 
-2. Aygıt yerel proxy akışı başlatma isteğini kabul eder ve tünel IoT Hub'ın akış bitiş noktasına (yukarıda belirtildiği gibi) kurulur.
+2. Cihaz yerel proxy, akış başlatma isteğini kabul eder ve tünel IoT Hub akış uç noktası (yukarıda anlatıldığı gibi) için oluşturulur.
 
-3. Aygıt yerel proxy, aygıttaki 22.
+3. Cihaz yerel proxy, cihazda 22 numaralı bağlantı noktasında dinleme yapan SSH Daemon uç noktasına bağlanır.
 
-4. Hizmet yerel proxy kullanıcıdan yeni SSH bağlantıları bekliyor belirlenmiş bir bağlantı noktasında dinler (örnekte kullanılan bağlantı noktası 2222, ancak bu başka bir kullanılabilir bağlantı noktasına yapılandırılabilir). Kullanıcı, SSH istemcisini localhost'taki hizmet yerel proxy bağlantı noktasına işaret eder.
+4. Hizmet yerel proxy, kullanıcıdan yeni SSH bağlantıları bekleyen belirlenmiş bir bağlantı noktasını dinler (örnekte kullanılan bağlantı noktası 2222), ancak bu, kullanılabilir başka bir bağlantı noktasına yapılandırılabilir. Kullanıcı, SSH istemcisini localhost üzerinde hizmet yerel ara sunucu bağlantı noktasına yönlendirir.
 
 ### <a name="notes"></a>Notlar
 
-* Yukarıdaki adımlar, SSH istemcisi (sağda) ile SSH daemon (solda) arasındaki uçlardan uca tüneli tamamlar. Bu uçtan uca bağlantının bir parçası, bir aygıt akışı üzerinden trafiği IoT Hub'ına göndermeyi içerir.
+* Yukarıdaki adımlarda SSH istemcisi (sağdaki) ile SSH Daemon (solda) arasında uçtan uca bir tünel tamamlanmıştır. Bu uçtan uca bağlantının bir parçası, IoT Hub için bir cihaz akışı üzerinden trafik gönderilmesini içerir.
 
-* Şekildeki oklar uç noktalar arasında bağlantıların kurulduğu yönü gösterir. Özellikle, aygıta giden gelen bağlantı olmadığını unutmayın (bu genellikle bir güvenlik duvarı tarafından engellenir).
+* Şekildeki oklar, uç noktalar arasında bağlantıların kurulduğu yönü belirtir. Özellikle, cihaza giden bir gelen bağlantı olmadığını unutmayın (Bu genellikle bir güvenlik duvarı tarafından engellenir).
 
-* Hizmet yerel proxy port 2222 kullanarak seçim keyfi bir seçimdir. Proxy, kullanılabilir başka bir bağlantı noktasını kullanacak şekilde yapılandırılabilir.
+* Hizmet yerel proxy üzerinde 2222 bağlantı noktasını kullanma seçeneği, rastgele bir seçimdir. Ara sunucu, kullanılabilir başka herhangi bir bağlantı noktasını kullanacak şekilde yapılandırılabilir.
 
-* Bağlantı noktası 22'nin seçimi protokole bağlıdır ve bu durumda SSH'ye özgüdür. RDP durumunda, bağlantı noktası 3389 kullanılmalıdır. Bu, sağlanan örnek programlarda yapılandırılabilir.
+* 22 numaralı bağlantı noktası seçeneği, bu durumda protokole bağımlıdır ve SSH 'ye özgüdür. RDP söz konusu olduğunda, 3389 numaralı bağlantı noktası kullanılmalıdır. Bu, belirtilen örnek programlarda yapılandırılabilir.
 
-Yerel proxy programlarını seçtiğiniz dilde nasıl çalıştıracağınıza ilişkin talimatlar için aşağıdaki bağlantıları kullanın. [Yankı örneğine](#echo-sample)benzer şekilde, aygıt ve hizmet yerel proxy programlarını farklı dillerde çalıştırabilirsiniz, çünkü bunlar tamamen birlikte çalışabilir.
+Yerel ara sunucu programlarının tercih ettiğiniz dilde nasıl çalıştırılacağı hakkında yönergeler için aşağıdaki bağlantıları kullanın. [Yankı örneğine](#echo-sample)benzer şekilde, cihaz ve hizmet yerel ara sunucu programlarını tamamen birlikte çalışabilen farklı dillerde çalıştırabilirsiniz.
 
-* [C# servis ve servis programı](quickstart-device-streams-proxy-csharp.md)
+* [C# hizmeti ve hizmet programı](quickstart-device-streams-proxy-csharp.md)
 
-* [Düğüm.js servis programı](quickstart-device-streams-proxy-nodejs.md)
+* [Node. js hizmet programı](quickstart-device-streams-proxy-nodejs.md)
 
 * [C cihaz programı](quickstart-device-streams-proxy-c.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aygıt akışları hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları kullanın.
+Cihaz akışları hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları kullanın.
 
 > [!div class="nextstepaction"]
-> [IoT show'daki aygıt akışları (Kanal 9)](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fchannel9.msdn.com%2FShows%2FInternet-of-Things-Show%2FAzure-IoT-Hub-Device-Streams&data=02%7C01%7Crezas%40microsoft.com%7Cc3486254a89a43edea7c08d67a88bcea%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636831125031268909&sdata=S6u9qiehBN4tmgII637uJeVubUll0IZ4p2ddtG5pDBc%3D&reserved=0)
+> [IoT Show 'da cihaz akışları (Channel 9)](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fchannel9.msdn.com%2FShows%2FInternet-of-Things-Show%2FAzure-IoT-Hub-Device-Streams&data=02%7C01%7Crezas%40microsoft.com%7Cc3486254a89a43edea7c08d67a88bcea%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636831125031268909&sdata=S6u9qiehBN4tmgII637uJeVubUll0IZ4p2ddtG5pDBc%3D&reserved=0)

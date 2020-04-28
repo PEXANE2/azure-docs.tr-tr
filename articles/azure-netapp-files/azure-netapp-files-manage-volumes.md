@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Dosyalarını kullanarak birimleri yönetme | Microsoft Dokümanlar
-description: Azure NetApp Dosyaları hizmetini kullanarak birimlerin nasıl yönetilmeye devam edilebildiğini açıklar.
+title: Azure NetApp Files kullanarak birimleri yönetme | Microsoft Docs
+description: Azure NetApp Files hizmetini kullanarak birimlerin nasıl yönetileceğini açıklar.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: c8ac14f11d7f2eeed050997de42da4f512b46bc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60254754"
 ---
-# <a name="manage-volumes-by-using-azure-netapp-files"></a>Azure NetApp Dosyalarını kullanarak birimleri yönetme
-Bir birimi görüntüleyerek, güncelleyerek veya silerek yönetebilirsiniz. 
+# <a name="manage-volumes-by-using-azure-netapp-files"></a>Azure NetApp Files kullanarak birimleri yönetme
+Birimi görüntüleyebilir, güncelleştirerek veya silerek bir birimi yönetebilirsiniz. 
 
-Bir birimi silmek istiyorsanız, önce bir birimin tüm alt nesnelerini silmeniz gerekir. 
+Bir birimi silmek istiyorsanız, öncelikle bir birimin tüm alt nesnelerini silmeniz gerekir. 
 
 1.  Kapasite Havuzlarını Yönet dikey penceresinden **Birimler** dikey penceresine tıklayın. 
-2.  Varolan birimleri görüntülemek, güncellemek veya silmek için **Birimlere Gözat** görünümünü kullanın. 
+2.  Varolan birimleri görüntülemek, güncelleştirmek veya silmek için **birimleri** görüntüle görünümünü kullanın. 
 
 
 
