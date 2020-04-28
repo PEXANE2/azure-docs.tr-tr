@@ -1,7 +1,7 @@
 ---
-title: Bing Entity Search API'yi kullanarak özel beceri örneği
+title: Bing Varlık Arama API'si kullanarak özel beceri örneği
 titleSuffix: Azure Cognitive Search
-description: Bing Varlık Arama hizmetini, Azure Bilişsel Arama'da AI ile zenginleştirilmiş dizin oluşturma boru hattına eşlenmiş özel bir beceride kullanmayı gösterir.
+description: Azure Bilişsel Arama 'de AI zenginlikli bir dizin oluşturma işlem hattına eşlenmiş özel bir beceriyle Bing Varlık Arama hizmetini kullanmayı gösterir.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,47 +9,47 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113809"
 ---
-# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Örnek: Bing Entity Search API'sini kullanarak özel bir beceri oluşturun
+# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Örnek: Bing Varlık Arama API'si kullanarak özel bir yetenek oluşturma
 
-Bu örnekte, web API özel beceri oluşturmak için nasıl öğrenin. Bu beceri konumları, tanınmış kişileri ve kuruluşları kabul eder ve onlar için açıklamaları döndürecektir. Örnek, Bing Varlık Arama [API'sini](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) özel beceri arabirimini uygulayacak şekilde sarmak için bir [Azure İşlevi](https://azure.microsoft.com/services/functions/) kullanır.
+Bu örnekte, bir Web API 'SI özel yeteneği oluşturmayı öğrenin. Bu beceri konumları, genel rakamları ve kuruluşları kabul eder ve bunların açıklamalarını döndürür. Örnek, [Bing varlık arama API'si](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) özel beceri arabirimini uygulayan şekilde kaydırmak Için bir [Azure işlevi](https://azure.microsoft.com/services/functions/) kullanır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-+ Özel [bir becerinin](cognitive-search-custom-skill-interface.md) uygulaması gereken giriş/çıktı arabirimine aşina değilseniz, özel beceri arabirimi makalesi hakkında bilgi edinin.
++ Özel bir yeteneğin uygulaması gereken giriş/çıkış arabirimini bilmiyorsanız [özel beceri arabirimi](cognitive-search-custom-skill-interface.md) makalesi hakkında bilgi edinin.
 
 + [!INCLUDE [cognitive-services-bing-entity-search-signup-requirements](../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-+ Azure geliştirme iş yükü de dahil olmak üzere [Visual Studio 2019](https://www.visualstudio.com/vs/) veya sonraki lerini yükleyin.
++ Azure geliştirme iş yükü dahil olmak üzere [Visual Studio 2019](https://www.visualstudio.com/vs/) veya üstünü yükler.
 
 ## <a name="create-an-azure-function"></a>Azure İşlevi oluşturma
 
-Bu örnek, bir web API'sini barındırmak için bir Azure İşlevi kullansa da, gerekli değildir.  Bilişsel bir beceri [için arayüz gereksinimlerini](cognitive-search-custom-skill-interface.md)karşıladığınız sürece, aldığınız yaklaşım önemsizdir. Ancak Azure İşlevler, özel bir beceri oluşturmayı kolaylaştırır.
+Bu örnek, bir Web API 'sini barındırmak için bir Azure Işlevi kullansa da gerekli değildir.  Bilişsel [bir beceri için arabirim gereksinimlerini](cognitive-search-custom-skill-interface.md)karşıladığınızdan, aldığınız yaklaşım imsel olur. Ancak Azure Işlevleri, özel bir beceri oluşturmayı kolaylaştırır.
 
 ### <a name="create-a-function-app"></a>İşlev uygulaması oluşturma
 
-1. Visual Studio'da Dosya menüsünden **Yeni** > **Proje'yi** seçin.
+1. Visual Studio 'da Dosya menüsünden **Yeni** > **Proje** ' yi seçin.
 
-1. Yeni Proje iletişim **kutusunda, Yüklenilen'** i seçin , **Visual C#** > **Cloud'u**genişletin, Azure **İşlevlerini**seçin, projeniz için bir Ad yazın ve **Tamam'ı**seçin. İşlev uygulaması adı C# ad alanı olarak geçerli olmalıdır, bu nedenle alt çizgi, tire veya diğer alfanümerik olmayan karakterleri kullanmayın.
+1. Yeni proje iletişim kutusunda, **yüklü**' i seçin, **Visual C#** > **bulutu**' nı genişletin, **Azure işlevleri**' ni seçin, projeniz için bir ad yazın ve **Tamam**' ı seçin. İşlev uygulaması adının bir C# ad alanı olarak geçerli olması gerekir, bu nedenle alt çizgi, kısa çizgi veya alfasayısal olmayan herhangi bir karakter kullanmayın.
 
-1. **Azure Fonksiyonları v2 (.NET Core) seçeneğini**belirleyin. Ayrıca sürüm 1 ile de yapabilirsiniz, ancak aşağıda yazılan kod v2 şablonuna dayanmaktadır.
+1. **Azure işlevleri v2 (.NET Core)** seçeneğini belirleyin. Bunu sürüm 1 ile de yapabilirsiniz, ancak aşağıda yazılan kod v2 şablonunu temel alır.
 
-1. **HTTP Tetikleyici** olacak türü seçin
+1. **Http tetikleyicisi** olacak tür seçin
 
-1. Depolama Hesabı için, bu işlev için herhangi bir depolama alanına ihtiyacınız olmayacağından **Yok'u**seçebilirsiniz.
+1. Depolama hesabı için, bu işlev için herhangi bir depolamaya ihtiyaç duymayabilmeniz için **hiçbiri**' ni seçebilirsiniz.
 
-1. İşlev projesini ve HTTP tetiklenen işlevi oluşturmak için **Tamam'ı** seçin.
+1. İşlev projesi ve HTTP ile tetiklenen işlev oluşturmak için **Tamam** ' ı seçin.
 
-### <a name="modify-the-code-to-call-the-bing-entity-search-service"></a>Bing Varlık Arama Hizmeti'ni aramak için kodu değiştirme
+### <a name="modify-the-code-to-call-the-bing-entity-search-service"></a>Bing Varlık Arama hizmetini çağırmak için kodu değiştirin
 
 Visual Studio bir proje oluşturur ve bu projenin içinde seçili işlev türü için ortak kod içeren bir sınıf bulunur. Metottaki *FunctionName* özniteliği işlevin adını ayarlar. *HttpTrigger* özniteliği, işlevin bir HTTP isteği tarafından tetiklenip tetiklenmediğini belirtir.
 
-Şimdi, dosyanın tüm içeriğini *Function1.cs* aşağıdaki kodla değiştirin:
+Şimdi, *function1.cs* dosyasının tüm içeriğini aşağıdaki kodla değiştirin:
 
 ```csharp
 using System;
@@ -311,15 +311,15 @@ namespace SampleSkills
 }
 ```
 
-Bing varlık arama *key* API'sine `key` kaydolurken aldığınız anahtara göre sabitte kendi anahtar değerinizi girdiğinizden emin olun.
+Bing varlık arama API 'sine kaydolurken *key* aldığınız anahtara bağlı olarak `key` , kendi anahtar değerini sabit değere girdiğinizden emin olun.
 
-Bu örnek, kolaylık sağlamak için tek bir dosyada gerekli tüm kodu içerir. Güç [becerileri deposunda](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)aynı becerinin biraz daha yapılandırılmış bir sürümünü bulabilirsiniz.
+Bu örnek, kolay bir şekilde tek bir dosyadaki tüm gerekli kodu içerir. [Power becerileri deposunda](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)aynı becerinin biraz daha yapısal bir sürümünü bulabilirsiniz.
 
-Tabii ki, dosyayı ' `Function1.cs` dan `BingEntitySearch.cs`' a yeniden adlandırabilirsiniz.
+Kuşkusuz, dosyasını `Function1.cs` olarak olarak `BingEntitySearch.cs`yeniden adlandırabilirsiniz.
 
-## <a name="test-the-function-from-visual-studio"></a>Visual Studio'dan işlevi test edin
+## <a name="test-the-function-from-visual-studio"></a>İşlevi Visual Studio 'dan test etme
 
-Programı çalıştırmak ve işlev davranışlarını test etmek için **F5** tuşuna basın. Bu durumda, iki varlığı aramak için aşağıdaki işlevi kullanacağız. Aşağıda gösterildiği gibi bir çağrı yayınlamak için Postacı veya Fiddler'ı kullanın:
+Program ve test işlevi davranışlarını çalıştırmak için **F5** tuşuna basın. Bu durumda, iki varlık aramak için aşağıdaki işlevi kullanacağız. Aşağıda gösterildiği gibi bir çağrı vermek için Postman veya Fiddler kullanın:
 
 ```http
 POST https://localhost:7071/api/EntitySearch
@@ -373,21 +373,21 @@ Aşağıdaki örneğe benzer bir yanıt görmeniz gerekir:
 
 ## <a name="publish-the-function-to-azure"></a>İşlevi Azure’a yayımlama
 
-İşlev davranışından memnun olduğunuzda, yayımlayabilirsiniz.
+İşlev davranışından memnun kaldığınızda, bunu yayımlayabilirsiniz.
 
-1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin.  >  **Yeni Yayımla'yı Seçin.****Publish**
+1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin. **Yeni** > **Yayımlama**oluştur öğesini seçin.
 
-1. Visual Studio'yı Azure hesabınıza zaten bağlamadıysanız, **hesap ekle'yi seçin....**
+1. Zaten Visual Studio 'Yu Azure hesabınıza bağladıysanız **Hesap Ekle...** seçeneğini belirleyin.
 
-1. Ekrandaki istemleri izleyin. Uygulama hizmetiniz, Azure aboneliğiniz, kaynak grubu, barındırma planı ve kullanmak istediğiniz depolama hesabı için benzersiz bir ad belirtmeniz istenir. Bunlara zaten sahip değilseniz yeni bir kaynak grubu, yeni bir barındırma planı ve depolama hesabı oluşturabilirsiniz. Tamamlandığında, **Oluştur'u** seçin
+1. Ekrandaki istemleri izleyin. App Service, Azure aboneliği, kaynak grubu, barındırma planı ve kullanmak istediğiniz depolama hesabı için benzersiz bir ad belirtmeniz istenir. Henüz yoksa, yeni bir kaynak grubu, yeni bir barındırma planı ve bir depolama hesabı oluşturabilirsiniz. İşiniz bittiğinde **Oluştur** ' u seçin.
 
-1. Dağıtım tamamlandıktan sonra Site URL'sini not edin. Azure'daki işlev uygulamanızın adresidir. 
+1. Dağıtım tamamlandıktan sonra, site URL 'sine dikkat edin. Bu, Azure 'daki işlev uygulamanızın adresidir. 
 
-1. Azure [portalında](https://portal.azure.com)Kaynak Grubu'na gidin ve `EntitySearch` yayınladığınız İşlev'i arayın. **Yönet** bölümünün altında Ana Bilgisayar Anahtarlarını görmeniz gerekir. *Varsayılan* ana bilgisayar anahtarı için **Kopyala** simgesini seçin.  
+1. [Azure Portal](https://portal.azure.com), kaynak grubuna gidin ve yayımladığınız `EntitySearch` işlevi arayın. **Yönet** bölümünün altında ana bilgisayar anahtarlarını görmeniz gerekir. *Varsayılan* ana bilgisayar anahtarı için **Kopyala** simgesini seçin.  
 
-## <a name="test-the-function-in-azure"></a>Azure'da işlevi test edin
+## <a name="test-the-function-in-azure"></a>İşlevi Azure 'da test etme
 
-Varsayılan ana bilgisayar anahtarına sahip olduğunuza göre, işlevinizi aşağıdaki gibi sınayın:
+Artık varsayılan ana bilgisayar anahtarına sahip olduğunuza göre, işlevinizi şu şekilde test edin:
 
 ```http
 POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?code=[enter default host key here]
@@ -415,10 +415,10 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 }
 ```
 
-Bu örnek, yerel ortamda işlevi çalıştırırken daha önce gördüğünüz aynı sonucu üretmelidir.
+Bu örnek, işlevi yerel ortamda çalıştırırken daha önce gördüğünüz sonucu üretmelidir.
 
-## <a name="connect-to-your-pipeline"></a>Ardınıza bağlanın
-Şimdi yeni bir özel beceri var, sizin skillset ekleyebilirsiniz. Aşağıdaki örnekte, belgedeki kuruluşlara açıklamalar eklemek için beceriyi nasıl çağırabileceğinizi gösterir (bu, konumlar ve kişiler üzerinde çalışmak üzere de genişletilebilir). Uygulamanızın adıyla değiştirin. `[your-entity-search-app-name]`
+## <a name="connect-to-your-pipeline"></a>İşlem hattınızla bağlantı kurmak
+Artık yeni bir özel beceriye sahip olduğunuza göre, Beceri 'e ekleyebilirsiniz. Aşağıdaki örnekte, belgedeki kuruluşlara açıklama ekleme beceriye nasıl çağrılacağını gösterilmektedir (Bu, konumlar ve kişiler üzerinde de çalışacak şekilde genişletilebilir). Uygulamanızın `[your-entity-search-app-name]` adıyla değiştirin.
 
 ```json
 {
@@ -446,7 +446,7 @@ Bu örnek, yerel ortamda işlevi çalıştırırken daha önce gördüğünüz a
 }
 ```
 
-Burada, yerleşik [varlık tanıma becerisinin](cognitive-search-skill-entity-recognition.md) becerilerde mevcut olacağına ve belgeyi organizasyon listesiyle zenginleştirmelerine güveniyoruz. Başvuru için, ihtiyacımız olan verileri oluşturmada yeterli olacak bir varlık çıkarma beceri yapılandırması aşağıda veda edebilirsiniz:
+Burada, yerleşik [varlık tanıma beceriye](cognitive-search-skill-entity-recognition.md) beceri içinde mevcut olacak ve bu belgeyi kuruluşların listesiyle zenginleştirmemiz için sayılıyız. Başvuru için, ihtiyaç duyduğumuz verileri oluştururken yeterli olabilecek bir varlık ayıklama yeteneği yapılandırması aşağıda verilmiştir:
 
 ```json
 {
@@ -476,10 +476,10 @@ Burada, yerleşik [varlık tanıma becerisinin](cognitive-search-skill-entity-re
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Tebrikler! İlk özel yeteneğini yarattın. Artık kendi özel işlevselliğinizi eklemek için aynı deseni takip edebilirsiniz. Daha fazla bilgi için aşağıdaki bağlantıları tıklatın.
+Tebrikler! İlk özel becerinizi oluşturdunuz. Artık kendi özel işlevselliklerinizi eklemek için aynı kalıbı izleyebilirsiniz. Daha fazla bilgi edinmek için aşağıdaki bağlantılara tıklayın.
 
-+ [Güç Becerileri: özel becerilerin deposu](https://github.com/Azure-Samples/azure-search-power-skills)
-+ [AI zenginleştirme hattına özel bir beceri ekleme](cognitive-search-custom-skill-interface.md)
-+ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)
-+ [Skillset (REST) oluşturun](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Zenginleştirilmiş alanların haritası nasıl eşlenir?](cognitive-search-output-field-mapping.md)
++ [Güç becerileri: özel yeteneklerin bir deposu](https://github.com/Azure-Samples/azure-search-power-skills)
++ [Bir AI zenginleştirme ardışık düzenine özel yetenek ekleme](cognitive-search-custom-skill-interface.md)
++ [Beceri tanımlama](cognitive-search-defining-skillset.md)
++ [Beceri oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Zenginleştirilmiş alanları eşleme](cognitive-search-output-field-mapping.md)

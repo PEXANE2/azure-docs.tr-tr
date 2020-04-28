@@ -1,6 +1,6 @@
 ---
-title: Azure Application Gateway'de WebSocket desteği
-description: Application Gateway, tüm ağ geçidi boyutlarında WebSocket için yerel destek sağlar. Kullanıcı tarafından yapılandırılabilir ayar yok.
+title: Azure Application Gateway WebSocket desteği
+description: Application Gateway, tüm ağ geçidi boyutlarında WebSocket için yerel destek sağlar. Kullanıcı tarafından yapılandırılabilir ayarlar yoktur.
 author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
@@ -8,31 +8,31 @@ services: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74130340"
 ---
-# <a name="overview-of-websocket-support-in-application-gateway"></a>Uygulama Ağ Geçidi'nde WebSocket desteğine genel bakış
+# <a name="overview-of-websocket-support-in-application-gateway"></a>Application Gateway 'de WebSocket desteğine genel bakış
 
 Application Gateway, tüm ağ geçidi boyutlarında WebSocket için yerel destek sağlar. WebSocket desteğini isteğe bağlı olarak etkinleştirmek veya devre dışı bırakmak için kullanıcı tarafından yapılandırılabilen bir ayar yoktur. 
 
-[RFC6455'te](https://tools.ietf.org/html/rfc6455) standartlaştırılmış WebSocket protokolü, uzun süren bir TCP bağlantısı üzerinden sunucu ve istemci arasında tam çift yönlü iletişim sağlar. Bu özellik, http tabanlı uygulamalarda gerektiği gibi yoklama gerek kalmadan çift yönlü olabilir web sunucusu ve istemci arasında daha etkileşimli bir iletişim sağlar. WebSocket'in http'den farklı olarak düşük yükü vardır ve aynı TCP bağlantısını birden çok istek/yanıt için yeniden kullanabilir ve bu da kaynakların daha verimli kullanılmasıyla sonuçlanır. WebSocket protokolleri 80 ve 443 geleneksel HTTP bağlantı noktaları üzerinde çalışmak üzere tasarlanmıştır.
+[RFC6455](https://tools.ietf.org/html/rfc6455) ' de standartlaştırılmış WebSocket protokolü, uzun süre çalışan bir TCP bağlantısı üzerinden sunucu ile istemci arasında tam çift yönlü iletişim olanağı sunar. Bu özellik, HTTP tabanlı uygulamalarda gerektiği şekilde yoklamaya gerek kalmadan çift yönlü olabilecek Web sunucusu ve istemcisi arasında daha etkileşimli bir iletişim sağlar. WebSocket 'in HTTP 'den farklı olarak düşük yükü vardır ve birden çok istek/yanıt için aynı TCP bağlantısını yeniden kullanabilir ve kaynakların daha verimli bir şekilde kullanılmasına neden olur. WebSocket protokolleri, 80 ve 443 geleneksel HTTP bağlantı noktalarında çalışmak üzere tasarlanmıştır.
 
-WebSocket trafiğini almak için bağlantı noktası 80 veya 443'te standart bir HTTP dinleyicisi kullanmaya devam edebilirsiniz. WebSocket trafiği daha sonra uygulama ağ geçidi kurallarında belirtildiği gibi uygun arka uç havuzunu kullanarak WebSocket etkin arka uç sunucusuna yönlendirilir. Arka uç sunucusu, [sistem durumu sondasına genel bakış](application-gateway-probe-overview.md) bölümünde açıklanan uygulama ağ geçidi sondalarına yanıt vermelidir. Uygulama ağ geçidi sistem sondaları yalnızca HTTP/HTTPS'dir. Her arka uç sunucusu, WebSocket trafiğini sunucuya yönlendirmek için uygulama ağ geçidi için HTTP sondalarına yanıt vermelidir.
+WebSocket trafiğini almak için 80 veya 443 numaralı bağlantı noktasında standart HTTP dinleyicisini kullanmaya devam edebilirsiniz. WebSocket trafiği daha sonra uygulama ağ geçidi kurallarında belirtilen uygun arka uç havuzu kullanılarak WebSocket etkinleştirilmiş arka uç sunucusuna yönlendirilir. Arka uç sunucusu, [sistem durumu araştırması genel bakış](application-gateway-probe-overview.md) bölümünde açıklanan Application Gateway araştırmasına yanıt vermelidir. Application Gateway durum araştırmaları yalnızca HTTP/HTTPS. Her arka uç sunucusu, WebSocket trafiğini sunucuya yönlendirmek üzere uygulama ağ geçidi için HTTP araştırmasına yanıt vermelidir.
 
-Sohbet, pano ve oyun uygulamaları gibi hızlı ve gerçek zamanlı iletişimden yararlanan uygulamalarda kullanılır.
+Bu, sohbet, pano ve oyun uygulamaları gibi hızlı, gerçek zamanlı iletişimden faydalanabilir uygulamalarda kullanılır.
 
 ## <a name="how-does-websocket-work"></a>WebSocket nasıl çalışır?
 
-Bir WebSocket bağlantısı kurmak için, istemci ve sunucu arasında belirli bir HTTP tabanlı el sıkışma sıcağına bağlanır. Başarılı olursa, uygulama katmanı iletişim kuralı önceden kurulmuş TCP bağlantısı kullanılarak HTTP'den WebSockets'e "yükseltilir". Bu gerçekleştiğinde, HTTP tamamen resmin dışındadır; veriler, WebSocket bağlantısı kapanana kadar her iki uç nokta yla WebSocket protokolü kullanılarak gönderilebilir veya alınabilir. 
+WebSocket bağlantısı kurmak için, istemci ve sunucu arasında belirli bir HTTP tabanlı el sıkışma alışverişi yapılır. Başarılı olursa, önceden oluşturulmuş TCP bağlantısı kullanılarak uygulama katmanı Protokolü HTTP 'den WebSockets 'e "yükseltilir". Bu gerçekleştiğinde, HTTP tamamen resmi değildir; WebSocket bağlantısı kapatılana kadar, veriler WebSocket protokolü ile her iki uç nokta tarafından gönderilebilir veya alınabilir. 
 
-![Websocket](./media/application-gateway-websocket/websocket.png)
+![WebSocket](./media/application-gateway-websocket/websocket.png)
 
 ### <a name="listener-configuration-element"></a>Dinleyici yapılandırma öğesi
 
-Varolan bir HTTP dinleyicisi WebSocket trafiğini desteklemek için kullanılabilir. Aşağıda, örnek bir şablon dosyasından bir httpListeners öğesinin bir kesiti verilmiştir. WebSocket'i desteklemek ve WebSocket trafiğini güvence altına almak için hem HTTP hem de HTTPS dinleyicilerine ihtiyacınız olacaktır. Benzer şekilde, WebSocket trafiğini desteklemek için 80/443 bağlantı noktasındaki dinleyicilerle bir uygulama ağ geçidi oluşturmak için portalı veya Azure PowerShell'i kullanabilirsiniz.
+Mevcut bir HTTP dinleyicisi, WebSocket trafiğini desteklemek için kullanılabilir. Örnek şablon dosyasından bir httpListeners öğesinin kod parçacığı aşağıda verilmiştir. WebSocket ve güvenli WebSocket trafiğini desteklemek için hem HTTP hem de HTTPS dinleyicilerine ihtiyacınız vardır. Benzer şekilde, WebSocket trafiğini desteklemek için bağlantı noktası 80/443 üzerinde dinleyicilerine sahip bir uygulama ağ geçidi oluşturmak için portalını veya Azure PowerShell kullanabilirsiniz.
 
 ```json
 "httpListeners": [
@@ -66,9 +66,9 @@ Varolan bir HTTP dinleyicisi WebSocket trafiğini desteklemek için kullanılabi
     ],
 ```
 
-## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>BackendAddressPool, BackendHttpSetting ve Yönlendirme kuralı yapılandırma
+## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>Backendadddresspool, BackendHttpSetting ve yönlendirme kuralı yapılandırması
 
-BackendAddressPool, WebSocket etkin sunucularına sahip bir arka uç havuzu tanımlamak için kullanılır. BackendHttpSetting bir arka uç bağlantı noktası 80 ve 443 ile tanımlanır. HTTP Ayarları'ndaki istek zaman sonu değeri WebSocket oturumu için de geçerlidir. Uygun dinleyiciyi ilgili arka uç adresi havuzuna bağlamak için kullanılan yönlendirme kuralında değişiklik gerekmez. 
+Bir Backendadddresspool, WebSocket etkin sunucularla bir arka uç havuzu tanımlamak için kullanılır. BackendHttpSetting, arka uç bağlantı noktası 80 ve 443 ile tanımlanmıştır. HTTP ayarlarındaki istek zaman aşımı değeri, WebSocket oturumu için de geçerlidir. Yönlendirme kuralında, ilgili dinleyiciyi ilgili arka uç adres havuzuna bağlamak için kullanılan bir değişiklik yoktur. 
 
 ```json
 "requestRoutingRules": [{
@@ -106,7 +106,7 @@ BackendAddressPool, WebSocket etkin sunucularına sahip bir arka uç havuzu tan�
 
 ## <a name="websocket-enabled-backend"></a>WebSocket etkin arka uç
 
-WebSocket'in çalışması için arka uçunuzda yapılandırılan bağlantı noktasında (genellikle 80/443) çalışan bir HTTP/HTTPS web sunucusu olmalıdır. Bu gereksinim, WebSocket protokolünün, websocket protokolüne üstbilgi alanı olarak yükseltilirken ilk el sıkışmanın HTTP olmasını gerektirmesidir. Aşağıdaki bir üstbilgi örneğidir:
+Arka ucunuzun, WebSocket 'in çalışması için yapılandırılmış bağlantı noktasında (genellikle 80/443) çalışan bir HTTP/HTTPS Web sunucusuna sahip olması gerekir. Bu gereksinim, WebSocket protokolünün bir başlık alanı olarak WebSocket protokolüne yükseltme ile ilk el sıkışma 'nın HTTP olmasını gerektirmesidir. Aşağıda bir üst bilgi örneği verilmiştir:
 
 ```
     GET /chat HTTP/1.1
@@ -119,8 +119,8 @@ WebSocket'in çalışması için arka uçunuzda yapılandırılan bağlantı nok
     Sec-WebSocket-Version: 13
 ```
 
-Bunun bir diğer nedeni de uygulama ağ geçidi arka uç sağlık sondası yalnızca HTTP ve HTTPS protokollerini destekler. Arka uç sunucusu HTTP veya HTTPS sondalarına yanıt vermiyorsa, arka uç havuzundan çıkarılır.
+Bunun başka bir nedeni de uygulama ağ geçidi arka uç durumu araştırmasının yalnızca HTTP ve HTTPS protokollerini desteklemeleridir. Arka uç sunucusu HTTP veya HTTPS araştırmalara yanıt vermezse, arka uç havuzu kullanıma alınır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-WebSocket desteğini öğrendikten sonra, WebSocket etkinleştirilmiş bir web uygulamasıyla başlamak için [bir uygulama ağ geçidi oluşturmaya](quick-create-powershell.md) gidin.
+WebSocket desteği hakkında bilgi aldıktan sonra, WebSocket özellikli bir Web uygulamasını kullanmaya başlamak için [uygulama ağ geçidi oluşturma](quick-create-powershell.md) bölümüne gidin.

@@ -1,7 +1,7 @@
 ---
-title: OData toplama operatörü başvurusu
+title: OData koleksiyon işleci başvurusu
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama sorgularında filtre ifadeleri oluştururken, filtre bir koleksiyon veya karmaşık toplama alanındayken lambda ifadelerinde "any" ve "all" işleçlerini kullanın.
+description: Azure Bilişsel Arama sorgularında filtre ifadeleri oluştururken, filtre bir koleksiyon veya karmaşık koleksiyon alanı üzerinde olduğunda Lambda ifadelerinde "Any" ve "All" işleçlerini kullanın.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,19 +20,19 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113242"
 ---
-# <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure Bilişsel Arama'da OData toplama operatörleri - `any` ve`all`
+# <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure Bilişsel Arama OData toplama işleçleri `any` ve`all`
 
-Azure Bilişsel Arama'da kullanmak üzere [bir OData filtre ifadesi](query-odata-filter-orderby-syntax.md) yazarken, toplama alanlarında filtre uygulama genellikle yararlıdır. Bunu operatörler ve `any` `all` operatörler kullanarak elde edebilirsiniz.
+Azure Bilişsel Arama ile kullanmak üzere bir [OData filtresi ifadesi](query-odata-filter-orderby-syntax.md) yazarken, genellikle koleksiyon alanlarını filtrelemek yararlı olur. `any` Ve `all` işleçlerini kullanarak bunu elde edebilirsiniz.
 
 ## <a name="syntax"></a>Sözdizimi
 
-Aşağıdaki EBNF ([Genişletilmiş Backus-Naur Formu)](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)kullanan `any` veya `all`kullanan bir OData ifadesinin dilbilgisini tanımlar.
+Aşağıdaki EBNF ([Genişletilmiş Backus-Naur formu](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)), veya `any` `all`kullanan bir OData ifadesinin dilbilgisini tanımlar.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -45,56 +45,56 @@ collection_filter_expression ::=
 lambda_expression ::= identifier ':' boolean_expression
 ```
 
-Etkileşimli sözdizimi diyagramı da kullanılabilir:
+Etkileşimli bir sözdizimi diyagramı da kullanılabilir:
 
 > [!div class="nextstepaction"]
 > [Azure Bilişsel Arama için OData sözdizimi diyagramı](https://azuresearch.github.io/odata-syntax-diagram/#collection_filter_expression)
 
 > [!NOTE]
-> EBNF'nin tamamı [için Azure Bilişsel Arama için OData ifade sözdizimi başvurusuna](search-query-odata-syntax-reference.md) bakın.
+> Tüm EBNF için bkz. [Azure bilişsel arama Için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md) .
 
-Koleksiyonları filtreleyen üç ifade biçimi vardır.
+Koleksiyonları filtreleyerek üç ifade biçimi vardır.
 
-- İlk iki toplama alanı üzerinde, koleksiyonun her öğesi için bir lambda ifadesi şeklinde verilen bir yüklem uygulayarak.
-  - Yüklem `all` koleksiyonun her öğesi için doğruysa, döndürür `true` kullanan bir ifade.
-  - Yüklem `any` koleksiyonun en az bir öğesi için doğruysa, döndürür `true` kullanan bir ifade.
-- Toplama filtresinin üçüncü `any` biçimi, bir toplama alanının boş olup olmadığını test etmek için lambda ifadesi olmadan kullanır. Koleksiyonda herhangi bir öğe `true`varsa, döndürür. Koleksiyon boşsa, döndürür. `false`
+- Koleksiyon alanı üzerinde ilk iki yineleme, bir lambda ifadesi biçiminde verilen bir koşulu koleksiyonun her öğesine uygulayarak.
+  - ' İ kullanan `all` bir `true` ifade, koşulun her öğe için true olması halinde döndürür.
+  - Deyimi, koleksiyonun `any` en `true` az bir öğesi için true ise, döndüren bir ifade döndürür.
+- Koleksiyon filtresinin üçüncü biçimi, bir koleksiyon `any` alanının boş olup olmadığını test etmek için lambda ifadesi olmadan kullanılır. Koleksiyonda herhangi bir öğe varsa, döndürür `true`. Koleksiyon boşsa, döndürür `false`.
 
-Toplama filtresindeki **lambda ifadesi,** programlama dilindeki bir döngünün gövdesi gibidir. Yineleme sırasında koleksiyonun geçerli öğesini tutan **aralık değişkeni**olarak adlandırılan bir değişken tanımlar. Ayrıca, koleksiyonun her öğesi için aralık değişkenine uygulanacak filtre ölçütleri olan başka bir boolean ifadesini tanımlar.
+Bir koleksiyon filtresindeki **lambda ifadesi** , bir programlama dilindeki Döngünün gövdesi gibidir. Yineleme sırasında koleksiyonun geçerli öğesini tutan **Aralık değişkeni**olarak adlandırılan bir değişkeni tanımlar. Ayrıca, koleksiyondaki her öğe için Aralık değişkenine uygulanacak filtre ölçütü olan başka bir Boolean ifadesi tanımlar.
 
 ## <a name="examples"></a>Örnekler
 
-`tags` Alanı tam olarak "wifi" dizesini içeren belgeleri eşleştirin:
+`tags` Alanı tam olarak "WiFi" dizesini içeren belgeleri eşleştir:
 
     tags/any(t: t eq 'wifi')
 
-Alanın her elemanının `ratings` 3 ile 5 arasında düştüğü, dahil olduğu belgeleri eşleştirin:
+`ratings` Alandaki her öğenin 3 ila 5 (dahil) arasında olduğu belgeleri eşleştirin:
 
     ratings/all(r: r ge 3 and r le 5)
 
-Alandaki herhangi bir jeo koordinatın `locations` verilen çokgen içinde olduğu belgeleri eşleştirin:
+`locations` Alandaki coğrafi koordinatların herhangi birinin verilen çokgen içinde olduğu belgeleri eşleştirin:
 
     locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
 
-Alanın boş `rooms` olduğu belgeleri eşleştirin:
+`rooms` Alanın boş olduğu belgeleri eşleştir:
 
     not rooms/any()
 
-Tüm odalar için `rooms/amenities` alanın "tv" içerdiği `rooms/baseRate` ve 100'den az olduğu belgeleri eşleştirin:
+Tüm odaların bulunduğu belgelerde, `rooms/amenities` alan "TV" ve `rooms/baseRate` 100 ' den küçük olan belgeleri eşleştirin:
 
     rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Filtre ifadelerinin her özelliği lambda ifadesinin gövdesiiçinde bulunmaz. Sınırlamalar, filtrelemek istediğiniz toplama alanının veri türüne bağlı olarak farklılık gösterir. Aşağıdaki tablo sınırlamaları özetleyin.
+Her filtre ifadesi özelliği bir lambda ifadesinin gövdesi içinde kullanılamaz. Sınırlamalar, filtrelemek istediğiniz koleksiyon alanının veri türüne bağlı olarak farklılık gösterir. Aşağıdaki tabloda sınırlamalar özetlenmektedir.
 
 [!INCLUDE [Limitations on OData lambda expressions in Azure Cognitive Search](../../includes/search-query-odata-lambda-limitations.md)]
 
-Bu sınırlamalar ve örnekler hakkında daha fazla bilgi için [Azure Bilişsel Arama'da Sorun Giderme toplama filtrelerine](search-query-troubleshoot-collection-filters.md)bakın. Bu sınırlamaların neden var olduğu hakkında daha ayrıntılı bilgi için Azure [Bilişsel Arama'da koleksiyon filtrelerini anlama 'ya](search-query-understand-collection-filters.md)bakın.
+Bu sınırlamalar ve örnekler hakkında daha fazla bilgi için bkz. [Azure bilişsel arama 'da koleksiyon filtrelerinde sorun giderme](search-query-troubleshoot-collection-filters.md). Bu sınırlamaların neden olduğu hakkında daha ayrıntılı bilgi için bkz. [Azure bilişsel arama 'da koleksiyon filtrelerini anlama](search-query-understand-collection-filters.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-- [Azure Bilişsel Arama'daki Filtreler](search-filters.md)
-- [Azure Bilişsel Arama için OData ifade dili genel bakış](query-odata-filter-orderby-syntax.md)
-- [Azure Bilişsel Arama için OData ifade sözdizimi başvurusu](search-query-odata-syntax-reference.md)
-- [Arama Belgeleri &#40;Azure Bilişsel Arama REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Bilişsel Arama filtreler](search-filters.md)
+- [Azure Bilişsel Arama için OData ifade diline genel bakış](query-odata-filter-orderby-syntax.md)
+- [Azure Bilişsel Arama için OData ifadesi söz dizimi başvurusu](search-query-odata-syntax-reference.md)
+- [Azure Bilişsel Arama REST API &#40;belgelerde arama yapın&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

@@ -1,6 +1,6 @@
 ---
-title: Apache Storm örnek Java topolojisi - Azure HDInsight
-description: Örnek bir kelime sayısı topolojisi oluşturarak Java'da Apache Storm topolojilerini nasıl oluşturacağınızı öğrenin.
+title: Apache Storm örnek Java topolojisi-Azure HDInsight
+description: Örnek bir sözcük sayısı topolojisi oluşturarak Java 'da Apache Storm topolojileri oluşturmayı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,41 +9,41 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.openlocfilehash: 75100b47ddf8f36ed9a22ff3073c439f8ad9040b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74083290"
 ---
-# <a name="create-an-apache-storm-topology-in-java"></a>Java'da Apache Storm topolojisi oluşturun
+# <a name="create-an-apache-storm-topology-in-java"></a>Java 'da Apache Storm topolojisi oluşturma
 
-[Apache Storm](https://storm.apache.org/)için Java tabanlı bir topoloji yi nasıl oluşturacağınızı öğrenin. Burada, sözcük sayısı uygulaması uygulayan bir Fırtına topolojisi oluşturursunuz. Projeyi oluşturmak ve paketlemek için [Apache Maven'i](https://maven.apache.org/) kullanıyorsunuz. Daha sonra, [Apache Storm Flux](https://storm.apache.org/releases/2.0.0/flux.html) çerçevesini kullanarak topolojiyi nasıl tanımlayabileceğinizi öğrenirsiniz.
+[Apache Storm](https://storm.apache.org/)için Java tabanlı topoloji oluşturmayı öğrenin. Burada, bir sözcük sayısı uygulaması uygulayan bir fırtınası topolojisi oluşturursunuz. Projeyi derlemek ve paketlemek için [Apache Maven](https://maven.apache.org/) 'yi kullanırsınız. Daha sonra, [Apache Storm Flox](https://storm.apache.org/releases/2.0.0/flux.html) çerçevesini kullanarak topolojiyi nasıl tanımlayacağınızı öğreneceksiniz.
 
-Bu belgedeki adımları tamamladıktan sonra, topolojiyi HDInsight'ta Apache Storm'a dağıtabilirsiniz.
+Bu belgedeki adımları tamamladıktan sonra, HDInsight üzerinde Apache Storm için topolojiyi dağıtabilirsiniz.
 
 > [!NOTE]  
-> Bu belgede oluşturulan Fırtına topoloji örneklerinin tamamlanmış [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount)bir sürümü ne kadar dır:
+> Bu belgede oluşturulan fırtınası topolojisi örneklerinin tamamlanmış bir sürümü adresinde [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount)bulunabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Java Geliştirici Kiti (JDK) sürüm 8](https://aka.ms/azure-jdks)
+* [Java geliştirici seti (JDK) sürüm 8](https://aka.ms/azure-jdks)
 
-* [Apache Maven](https://maven.apache.org/download.cgi) düzgün Apache göre [yüklü.](https://maven.apache.org/install.html)  Maven Java projeleri için bir proje inşa sistemidir.
+* Apache [Maven](https://maven.apache.org/download.cgi) , Apache 'e göre düzgün şekilde [yüklendi](https://maven.apache.org/install.html) .  Maven, Java projeleri için bir proje derleme sistemidir.
 
 ## <a name="test-environment"></a>Test ortamı
 
-Bu makale için kullanılan ortam, Windows 10 çalıştıran bir bilgisayardı.  Komutlar bir komut istemiyle yürütüldü ve çeşitli dosyalar Not Defteri ile düzenlendi.
+Bu makale için kullanılan ortam, Windows 10 çalıştıran bir bilgisayardır.  Komutlar bir komut isteminde yürütülürler ve çeşitli dosyalar Notepad ile düzenlendi.
 
-Komut isteminden, çalışma ortamı oluşturmak için aşağıdaki komutları girin:
+Bir komut isteminden, çalışan bir ortam oluşturmak için aşağıdaki komutları girin:
 
 ```cmd
 mkdir C:\HDI
 cd C:\HDI
 ```
 
-## <a name="create-a-maven-project"></a>Bir Maven projesi oluşturma
+## <a name="create-a-maven-project"></a>Maven projesi oluşturma
 
-**WordCount**adında bir Maven projesi oluşturmak için aşağıdaki komutu girin:
+**WORDCOUNT**adlı bir Maven projesi oluşturmak için aşağıdaki komutu girin:
 
 ```cmd
 mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
@@ -52,24 +52,24 @@ cd WordCount
 mkdir resources
 ```
 
-Bu komut, temel bir `WordCount` Maven projesi içeren geçerli konumda adlı bir dizin oluşturur. İkinci komut, şimdiki çalışma dizinini '' olarak `WordCount`değiştirir. Üçüncü komut, `resources`daha sonra kullanılacak yeni bir dizin oluşturur.  Dizin `WordCount` aşağıdaki öğeleri içerir:
+Bu komut, temel bir Maven projesi içeren geçerli konumda adlı `WordCount` bir dizin oluşturur. İkinci komut, mevcut çalışma dizinini olarak `WordCount`değiştirir. Üçüncü komut daha sonra kullanılacak yeni bir dizin `resources`oluşturur.  `WordCount` Dizin aşağıdaki öğeleri içerir:
 
 * `pom.xml`: Maven projesinin ayarlarını içerir.
 * `src\main\java\com\microsoft\example`: Uygulama kodunuzu içerir.
 * `src\test\java\com\microsoft\example`: Uygulamanız için testler içerir.  
 
-### <a name="remove-the-generated-example-code"></a>Oluşturulan örnek kodu kaldırma
+### <a name="remove-the-generated-example-code"></a>Oluşturulan örnek kodu kaldırın
 
-Oluşturulan test ve uygulama `AppTest.java`dosyalarını silin ve `App.java` aşağıdaki komutları girerek:
+Oluşturulan test ve uygulama dosyalarını `AppTest.java`silin ve `App.java` aşağıdaki komutları girerek:
 
 ```cmd
 DEL src\main\java\com\microsoft\example\App.java
 DEL src\test\java\com\microsoft\example\AppTest.java
 ```
 
-## <a name="add-maven-repositories"></a>Maven depoları ekle
+## <a name="add-maven-repositories"></a>Maven depoları ekleme
 
-HDInsight Hortonworks Veri Platformu 'na (HDP) dayanmaktadır, bu nedenle Apache Storm projelerinizin bağımlılıklarını indirmek için Hortonworks deposunu kullanmanızı öneririz.  
+HDInsight, Hortonçalışmalar veri platformunu (HDP) temel alır, bu nedenle Apache Storm projeleriniz için bağımlılıkları indirmek üzere Hortonlıs deposunu kullanmanızı öneririz.  
 
 Aşağıdaki `pom.xml` komutu girerek açın:
 
@@ -77,7 +77,7 @@ Aşağıdaki `pom.xml` komutu girerek açın:
 notepad pom.xml
 ```
 
-Ardından satırdan sonra aşağıdaki `<url>https://maven.apache.org</url>` XML'yi ekleyin:
+Sonra aşağıdaki XML `<url>https://maven.apache.org</url>` satırını satırdan sonra ekleyin:
 
 ```xml
 <repositories>
@@ -118,7 +118,7 @@ Ardından satırdan sonra aşağıdaki `<url>https://maven.apache.org</url>` XML
 
 ## <a name="add-properties"></a>Özellik ekleme
 
-Maven özellikleri olarak adlandırılan proje düzeyi değerlerini tanımlamanızı sağlar. In `pom.xml`, satırdan `</repositories>` sonra aşağıdaki metni ekleyin:
+Maven, özellikler olarak adlandırılan proje düzeyi değerlerini tanımlamanızı sağlar. İçinde `pom.xml`, `</repositories>` satırdan sonra aşağıdaki metni ekleyin:
 
 ```xml
 <properties>
@@ -130,11 +130,11 @@ Maven özellikleri olarak adlandırılan proje düzeyi değerlerini tanımlaman�
 </properties>
 ```
 
-Artık bu değeri diğer bölümlerde `pom.xml`kullanabilirsiniz. Örneğin, Storm bileşenlerinin sürümünü belirtirken, bir `${storm.version}` değeri kodlamak yerine kullanabilirsiniz.
+Artık bu değeri öğesinin diğer bölümlerinde kullanabilirsiniz `pom.xml`. Örneğin, fırtınası bileşenleri sürümünü belirtirken, bir değeri sabit bir şekilde kodlamak yerine `${storm.version}` kullanabilirsiniz.
 
-## <a name="add-dependencies"></a>Bağımlılıkekleme
+## <a name="add-dependencies"></a>Bağımlılık Ekle
 
-Storm bileşenleri için bağımlılık ekleyin. In `pom.xml`, `<dependencies>` bölüme aşağıdaki metni ekleyin:
+Fırtınası bileşenleri için bir bağımlılık ekleyin. İçinde `pom.xml`, `<dependencies>` bölümüne aşağıdaki metni ekleyin:
 
 ```xml
 <dependency>
@@ -146,14 +146,14 @@ Storm bileşenleri için bağımlılık ekleyin. In `pom.xml`, `<dependencies>` 
 </dependency>
 ```
 
-Derleme zamanında, Maven bu bilgileri Maven `storm-core` deposunda aramak için kullanır. İlk olarak yerel bilgisayarınızdaki depoya bakar. Dosyalar yoksa, Maven bunları halka açık Maven deposundan indirir ve yerel depoda saklar.
+Derleme zamanında, Maven bu bilgileri Maven deposunda aramak `storm-core` için kullanır. İlk olarak yerel bilgisayarınızdaki depoya bakar. Dosyalar orada yoksa Maven bunları ortak Maven deposundan indirir ve bunları yerel depoda depolar.
 
 > [!NOTE]  
-> Bu `<scope>provided</scope>` bölümdeki satıra dikkat edin. Bu ayar, Sistem tarafından sağlandığı için Maven'e oluşturulan tüm JAR dosyalarından **fırtına çekirdeğini** hariç tutmasını söyler.
+> Bu bölümdeki `<scope>provided</scope>` satıra dikkat edin. Bu ayar, Maven 'yi, sistem tarafından sağlandığı için oluşturulan tüm JAR dosyalarından **fırtınası çekirdeğini** hariç tutmasını söyler.
 
 ## <a name="build-configuration"></a>Yapı yapılandırması
 
-Maven eklentileri, projenin yapı aşamalarını özelleştirmenize olanak sağlar. Örneğin, projenin nasıl derleniş olduğu veya jar dosyasına nasıl paketlenilecek. In `pom.xml`, satırının hemen `</project>` üstüne aşağıdaki metni ekleyin.
+Maven eklentileri projenin derleme aşamalarını özelleştirmenizi sağlar. Örneğin, projenin nasıl derlendiğini veya bir JAR dosyasına nasıl paketleneceğini öğrenin. İçinde `pom.xml`, aşağıdaki metni doğrudan `</project>` satırın üstüne ekleyin.
 
 ```xml
 <build>
@@ -164,13 +164,13 @@ Maven eklentileri, projenin yapı aşamalarını özelleştirmenize olanak sağl
 </build>
 ```
 
-Bu bölüm eklentileri, kaynakları ve diğer yapı yapılandırma seçenekleri eklemek için kullanılır. Dosyanın `pom.xml` tam başvurusu için [https://maven.apache.org/pom.html](https://maven.apache.org/pom.html)bkz.
+Bu bölüm eklenti, kaynak ve diğer derleme yapılandırma seçeneklerini eklemek için kullanılır. `pom.xml` Dosyanın tam bir başvurusu için bkz [https://maven.apache.org/pom.html](https://maven.apache.org/pom.html)..
 
-### <a name="add-plug-ins"></a>Eklentiekleme
+### <a name="add-plug-ins"></a>Eklentiler ekleme
 
-* **Exec Maven Eklentisi**
+* **Exec Maven eklentisi**
 
-    Java'da uygulanan Apache Storm topolojileri için [Exec Maven Plugin,](https://www.mojohaus.org/exec-maven-plugin/) geliştirme ortamınızda topolojiyi yerel olarak kolayca çalıştırmanızı sağladığı için kullanışlıdır. Exec Maven eklentisini eklemek için `<plugins>` `pom.xml` dosyanın bölümüne aşağıdakileri ekleyin:
+    Java 'da uygulanan Apache Storm topolojileri için, geliştirme ortamınızda yerel olarak topolojiyi kolayca çalıştırmanıza olanak sağladığından, [Exec Maven eklentisi](https://www.mojohaus.org/exec-maven-plugin/) faydalıdır. Exec Maven eklentisini dahil `<plugins>` etmek için `pom.xml` dosyanın bölümüne aşağıdakileri ekleyin:
 
     ```xml
     <plugin>
@@ -195,15 +195,15 @@ Bu bölüm eklentileri, kaynakları ve diğer yapı yapılandırma seçenekleri 
     </plugin>
     ```
 
-* **Apache Maven Derleyici Eklentisi**
+* **Apache Maven derleyicisi eklentisi**
 
-    Başka bir yararlı eklenti [Apache Maven Derleyici Eklentisi](https://maven.apache.org/plugins/maven-compiler-plugin/), derleme seçenekleri değiştirmek için kullanılır. Maven'in uygulamanız için kaynak ve hedef için kullandığı Java sürümünü değiştirin.
+    Diğer bir faydalı eklenti, derleme seçeneklerini değiştirmek için kullanılan [Apache Maven derleyicisi](https://maven.apache.org/plugins/maven-compiler-plugin/)eklentisidir. Maven 'nin uygulamanızın kaynağı ve hedefi için kullandığı Java sürümünü değiştirin.
 
-  * HDInsight __3.4 veya daha önce__için kaynak ve hedef Java sürümünü __1,7__olarak ayarlayın.
+  * HDInsight __3,4 veya önceki sürümlerde__, kaynak ve hedef Java sürümünü __1,7__olarak ayarlayın.
 
-  * HDInsight __3.5__için, kaynak ve hedef Java sürümünü __1.8__olarak ayarlayın.
+  * HDInsight __3,5__için, kaynak ve hedef Java sürümünü __1,8__olarak ayarlayın.
 
-  Apache Maven Derleyici eklentisini eklemek için `<plugins>` `pom.xml` dosyanın bölümüne aşağıdaki metni ekleyin. Bu örnekte 1.8 belirtilir, bu nedenle hedef HDInsight sürümü 3.5'tir.
+  Apache Maven derleyicisi eklentisini dahil `<plugins>` etmek için `pom.xml` dosyanın bölümüne aşağıdaki metni ekleyin. Bu örnek 1,8 belirtir, bu nedenle hedef HDInsight sürümü 3,5 ' dir.
 
   ```xml
   <plugin>
@@ -219,7 +219,7 @@ Bu bölüm eklentileri, kaynakları ve diğer yapı yapılandırma seçenekleri 
 
 ### <a name="configure-resources"></a>Kaynakları yapılandırma
 
-Kaynaklar bölümü, bileşenlerin ihtiyaç duyduğu yapılandırma dosyaları gibi kod dışı kaynakları topolojiye eklemenize olanak tanır. Bu örnekte, `<resources>` `pom.xml` dosyanın bölümüne aşağıdaki metni ekleyin. Sonra dosyayı kaydedin ve kapatın.
+Kaynaklar bölümü, topolojideki bileşenlere gereken yapılandırma dosyaları gibi kod olmayan kaynakları dahil etmenize olanak tanır. Bu örnekte, `<resources>` `pom.xml` dosyanın bölümüne aşağıdaki metni ekleyin. Sonra dosyayı kaydedin ve kapatın.
 
 ```xml
 <resource>
@@ -231,29 +231,29 @@ Kaynaklar bölümü, bileşenlerin ihtiyaç duyduğu yapılandırma dosyaları g
 </resource>
 ```
 
-Bu örnek, kaynak içeren bir konum olarak`${basedir}`projenin kökünde ( ) kaynak dizinini ekler ve adlı `log4j2.xml`dosyayı içerir. Bu dosya, topoloji tarafından hangi bilgilerin günlüğe kaydedildiğini yapılandırmak için kullanılır.
+Bu örnek, proje (`${basedir}`) köküne kaynaklar içeren bir konum olarak kaynak dizinini ekler ve adlı `log4j2.xml`dosyayı içerir. Bu dosya, topoloji tarafından hangi bilgilerin günlüğe kaydedileceğini yapılandırmak için kullanılır.
 
-## <a name="create-the-topology"></a>Topolojiyi oluşturun
+## <a name="create-the-topology"></a>Topolojiyi oluşturma
 
-Java tabanlı Apache Storm topolojisi, bağımlılık olarak yazmanız (veya referans) gereken üç bileşenden oluşur.
+Java tabanlı Apache Storm topolojisi, bir bağımlılık olarak yazmak (veya başvuru yapmanız gereken üç bileşenden oluşur).
 
-* **Spouts**: Dış kaynaklardan gelen verileri okur ve topolojiye veri akışı yalar.
+* **Spout**: dış kaynaklardaki verileri okur ve veri akışlarını topolojiye yayar.
 
-* **Cıvatalar**: Emzilen veya diğer cıvatalardan yayılan akışlarda işleme yapar ve bir veya daha fazla akış yalar.
+* **Cıvatalar**: spolar veya diğer cıvatları tarafından yayılan akışlar üzerinde işleme gerçekleştirir ve bir veya daha fazla akış yayar.
 
-* **Topoloji**: Emzitlerin ve cıvataların nasıl düzenlendiğini tanımlar ve topolojinin giriş noktasını sağlar.
+* **Topoloji**: Spout ve cıvatların nasıl düzenlendiğini tanımlar ve topoloji için giriş noktası sağlar.
 
-### <a name="create-the-spout"></a>Emziyi oluşturma
+### <a name="create-the-spout"></a>Spout oluşturma
 
-Dış veri kaynakları nın ayarlanması için gereksinimleri azaltmak için, aşağıdaki spout yalnızca rasgele cümleler yayır. [Storm-Starter örnekleriile](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)sağlanan bir emzit değiştirilmiş bir sürümüdür.  Bu topoloji de yalnızca bir emzme kullansa da, diğerleri farklı kaynaklardan gelen verileri topolojiye aktaran birkaç tane olabilir.
+Dış veri kaynaklarını ayarlamaya yönelik gereksinimleri azaltmak için aşağıdaki Spout rastgele cümleler yayar. Bu, [fırtınası-Starter örnekleri](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)ile birlikte sunulan bir Spout 'ın değiştirilmiş sürümüdür.  Bu topoloji yalnızca bir Spout kullanıyor olsa da, diğerleri farklı kaynaklardan alınan çeşitli akış verilerine topolojiye sahip olabilir.
 
-Yeni bir dosya oluşturmak ve açmak `RandomSentenceSpout.java`için aşağıdaki komutu girin:
+Yeni bir dosya `RandomSentenceSpout.java`oluşturmak ve açmak için aşağıdaki komutu girin:
 
 ```cmd
 notepad src\main\java\com\microsoft\example\RandomSentenceSpout.java
 ```
 
-Ardından aşağıdaki java kodunu kopyalayıp yeni dosyaya yapıştırın.  O zaman dosyayı kapat.
+Ardından aşağıdaki Java kodunu kopyalayıp yeni dosyaya yapıştırın.  Sonra dosyayı kapatın.
 
 ```java
 package com.microsoft.example;
@@ -318,28 +318,28 @@ public class RandomSentenceSpout extends BaseRichSpout {
 ```
 
 > [!NOTE]  
-> Harici bir veri kaynağından okuyan bir emzme örneği için aşağıdaki örneklerden birine bakın:
+> Dış veri kaynağından okuyan bir Spout örneği için aşağıdaki örneklerden birine bakın:
 >
-> * [TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): Twitter'dan okuyan bir örnek.
-> * [Fırtına-Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): Kafka'dan okunan bir zıdd.
+> * [Dallı örnek Spout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): Twitter 'dan okuyan bir örnek Spout.
+> * [Fırtınası-Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): Kafka 'dan okuyan bir Spout.
 
-### <a name="create-the-bolts"></a>Cıvataları oluşturma
+### <a name="create-the-bolts"></a>Cıvatları oluşturma
 
-Cıvatalar veri işleme yi yönetir. Cıvatalar, örneğin hesaplama, kalıcılık veya dış bileşenlerle konuşma gibi her şeyi yapabilir. Bu topoloji iki cıvata kullanır:
+Cıvatalar, veri işlemeyi işler. Cıvatalar, örneğin hesaplama, kalıcılık veya dış bileşenlere konuşuyor gibi her şeyi gerçekleştirebilir. Bu topoloji iki cıvatları kullanır:
 
-* **SplitSentence**: **RandomSentenceSpout** tarafından yayılan cümleleri tek tek sözcüklere böler.
+* **Splitcümlesini**: **Rasgelesentencespout** tarafından tek tek sözcüklere yayılan cümleler böler.
 
-* **Sözcük Sayısı**: Her sözcüğün kaç kez oluştuğunu sayar.
+* **WORDCOUNT**: her bir sözcüğün kaç kez oluştuğunu sayar.
 
-#### <a name="splitsentence"></a>Bölünmüş Tümce
+#### <a name="splitsentence"></a>Splitcümlesi
 
-Yeni bir dosya oluşturmak ve açmak `SplitSentence.java`için aşağıdaki komutu girin:
+Yeni bir dosya `SplitSentence.java`oluşturmak ve açmak için aşağıdaki komutu girin:
 
 ```cmd
 notepad src\main\java\com\microsoft\example\SplitSentence.java
 ```
 
-Ardından aşağıdaki java kodunu kopyalayıp yeni dosyaya yapıştırın.  O zaman dosyayı kapat.
+Ardından aşağıdaki Java kodunu kopyalayıp yeni dosyaya yapıştırın.  Sonra dosyayı kapatın.
 
 ```java
 package com.microsoft.example;
@@ -388,15 +388,15 @@ public class SplitSentence extends BaseBasicBolt {
 }
 ```
 
-#### <a name="wordcount"></a>Sözcük Sayısı
+#### <a name="wordcount"></a>WordCount
 
-Yeni bir dosya oluşturmak ve açmak `WordCount.java`için aşağıdaki komutu girin:
+Yeni bir dosya `WordCount.java`oluşturmak ve açmak için aşağıdaki komutu girin:
 
 ```cmd
 notepad src\main\java\com\microsoft\example\WordCount.java
 ```
 
-Ardından aşağıdaki java kodunu kopyalayıp yeni dosyaya yapıştırın.  O zaman dosyayı kapat.
+Ardından aşağıdaki Java kodunu kopyalayıp yeni dosyaya yapıştırın.  Sonra dosyayı kapatın.
 
 ```java
 package com.microsoft.example;
@@ -479,21 +479,21 @@ public class WordCount extends BaseBasicBolt {
 }
 ```
 
-### <a name="define-the-topology"></a>Topolojiyi tanımlayın
+### <a name="define-the-topology"></a>Topolojiyi tanımlama
 
-Topoloji, emzme leri ve cıvataları bir araya getirerek, bileşenler arasında verilerin nasıl aktığını tanımlayan bir grafiğe bağlar. Ayrıca, Storm'un küme içindeki bileşenlerin örneklerini oluştururken kullandığı paralellik ipuçları da sağlar.
+Topoloji, biriktirmelerin ve cıvatları, verilerin bileşenler arasında nasıl akacağını tanımlayan bir grafikte birleştirir. Ayrıca, bir küme içindeki bileşenlerin örneklerini oluştururken, fırtınası tarafından kullanılan paralellik ipuçları da sağlar.
 
-Aşağıdaki resim, bu topoloji için bileşenlerin grafiğinin temel bir diyagramıdır.
+Aşağıdaki görüntü, bu topolojinin bileşen grafiğinin temel bir diyagramıdır.
 
-![emzme ve cıvata düzenini gösteren diyagram](./media/apache-storm-develop-java-topology/word-count-topology1.png)
+![Spout ve cıvatları düzenlemeyi gösteren diyagram](./media/apache-storm-develop-java-topology/word-count-topology1.png)
 
-Topolojiyi uygulamak için, yeni bir dosya `WordCountTopology.java`oluşturmak ve açmak için aşağıdaki komutu girin:
+Topolojiyi uygulamak için, aşağıdaki komutu girerek yeni bir dosya `WordCountTopology.java`oluşturun ve açın:
 
 ```cmd
 notepad src\main\java\com\microsoft\example\WordCountTopology.java
 ```
 
-Ardından aşağıdaki java kodunu kopyalayıp yeni dosyaya yapıştırın.  O zaman dosyayı kapat.
+Ardından aşağıdaki Java kodunu kopyalayıp yeni dosyaya yapıştırın.  Sonra dosyayı kapatın.
 
 ```java
 package com.microsoft.example;
@@ -557,15 +557,15 @@ public class WordCountTopology {
 }
 ```
 
-### <a name="configure-logging"></a>Günlük işlemlerini yapılandırma
+### <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma
 
-Fırtına bilgileri günlüğe kaydetmek için [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) kullanır. Günlüğe kaydetmeyi yapılandırmazsanız, topoloji tanılama bilgilerini yayar. Günlüğe kaydedilenleri denetlemek için aşağıdaki `log4j2.xml` komutu girerek dizinde `resources` adı geçen bir dosya oluşturun:
+Fırtınası, bilgileri günlüğe kaydetmek için [Apache Log4J 2](https://logging.apache.org/log4j/2.x/) kullanır. Günlüğe kaydetmeyi yapılandırmazsanız, topoloji tanılama bilgilerini yayar. Günlüğe kaydedilen öğeleri denetlemek için aşağıdaki komutu girerek `log4j2.xml` `resources` dizinde adında bir dosya oluşturun:
 
 ```cmd
 notepad resources\log4j2.xml
 ```
 
-Ardından aşağıdaki XML metnini kopyalayıp yeni dosyaya yapıştırın.  O zaman dosyayı kapat.
+Sonra aşağıdaki XML metnini kopyalayıp yeni dosyaya yapıştırın.  Sonra dosyayı kapatın.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -586,16 +586,16 @@ Ardından aşağıdaki XML metnini kopyalayıp yeni dosyaya yapıştırın.  O z
 </Configuration>
 ```
 
-Bu XML, bu örnek topolojideki bileşenleri içeren `com.microsoft.example` sınıf için yeni bir logger yapılandırır. Düzey, bu topolojideki bileşenler tarafından yayılan günlük bilgilerini yakalayan bu kaydediciiçin izlenebilir şekilde ayarlanmıştır.
+Bu XML, bu örnek topolojideki bileşenleri `com.microsoft.example` içeren sınıfı için yeni bir günlükçü yapılandırır. Bu, bu topolojideki bileşenler tarafından yayılan günlüğe kaydetme bilgilerini yakalayan bu günlükçü için izleme olarak ayarlanır.
 
-Bölüm, `<Root level="error">` günlük günlüğünün kök düzeyini (her şey içinde `com.microsoft.example`olmayan) yalnızca günlük hata bilgilerine göre yapılandırır.
+Bu `<Root level="error">` bölüm, günlüğe kaydetme (her şey `com.microsoft.example`) için kök düzeyini yalnızca hata bilgilerini günlüğe kaydetmek üzere yapılandırır.
 
-Log4j 2 için günlük yapılandırma hakkında [https://logging.apache.org/log4j/2.x/manual/configuration.html](https://logging.apache.org/log4j/2.x/manual/configuration.html)daha fazla bilgi için bkz.
+Log4J 2 için günlüğü yapılandırma hakkında daha fazla bilgi için bkz [https://logging.apache.org/log4j/2.x/manual/configuration.html](https://logging.apache.org/log4j/2.x/manual/configuration.html)..
 
 > [!NOTE]  
-> Fırtına sürümü 0.10.0 ve daha yüksek kullanım Log4j 2.x. Storm'un eski sürümlerinde log yapılandırması için farklı bir biçim kullanan Log4j 1.x kullanılmıştır. Eski yapılandırma hakkında bilgi [https://wiki.apache.org/logging-log4j/Log4jXmlFormat](https://wiki.apache.org/logging-log4j/Log4jXmlFormat)için bkz.
+> Fırtınası sürümü 0.10.0 ve üzeri Log4J 2. x kullanır. Daha eski fırtınası sürümleri, günlük yapılandırması için farklı bir biçim kullanan 1. x Log4J kullandı. Eski yapılandırma hakkında daha fazla bilgi için bkz [https://wiki.apache.org/logging-log4j/Log4jXmlFormat](https://wiki.apache.org/logging-log4j/Log4jXmlFormat)..
 
-## <a name="test-the-topology-locally"></a>Topolojiyi yerel olarak test edin
+## <a name="test-the-topology-locally"></a>Topolojiyi yerel olarak test etme
 
 Dosyaları kaydettikten sonra, topolojiyi yerel olarak test etmek için aşağıdaki komutu kullanın.
 
@@ -603,7 +603,7 @@ Dosyaları kaydettikten sonra, topolojiyi yerel olarak test etmek için aşağı
 mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
 ```
 
-Çalışırken, topoloji başlangıç bilgilerini görüntüler. Aşağıdaki metin sözcük sayısı çıktısı bir örnektir:
+Çalıştırıldığında, topoloji başlangıç bilgilerini görüntüler. Aşağıdaki metin, sözcük sayısı çıkışının bir örneğidir:
 
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
@@ -613,34 +613,34 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
 
-Bu örnek günlük, 've' sözcüğünün 113 kez yayıldığını gösterir. Topoloji devam ettiği sürece sayım artmaya devam eder çünkü emzsürekli olarak aynı cümleler ilerler.
+Bu örnek günlük, ' ve ' kelimesinin 113 katı olduğunu gösterir. Spout sürekli aynı cümleleri yaydığı için, sayı topoloji çalıştığı sürece çalışmaya devam eder.
 
-Kelimelerin ve sayıların salınımı arasında 5 saniyelik bir zaman aralığı vardır. **WordCount** bileşeni yalnızca bir kene tuple geldiğinde bilgi yonamak için yapılandırılır. Bu kene tuples sadece her beş saniyede teslim edilmesini ister.
+Sözcükler ve sayımlar arasında 5 saniyelik bir Aralık vardır. **WORDCOUNT** bileşeni yalnızca bir değer tanımlama grubu geldiğinde bilgileri göstermek üzere yapılandırılmıştır. Değer tanımlama gruplarının yalnızca beş saniyede bir teslim edildiğini ister.
 
-## <a name="convert-the-topology-to-flux"></a>Topolojiyi Flux'a dönüştürün
+## <a name="convert-the-topology-to-flux"></a>Topolojiyi Flox 'e Dönüştür
 
-[Flux,](https://storm.apache.org/releases/2.0.0/flux.html) yapılandırmayı uygulamadan ayırmanızı sağlayan Storm 0.10.0 ve üzeri ile kullanılabilen yeni bir çerçevedir. Bileşenleriniz hala Java'da tanımlanmıştır, ancak topoloji bir YAML dosyası kullanılarak tanımlanır. Varsayılan topoloji tanımını projenizle paketleyebilir veya topolojigönderirken bağımsız bir dosya kullanabilirsiniz. Topolojiyi Fırtına'ya gönderirken, YAML topoloji sayılma değerlerinin doldurulması için ortam değişkenlerini veya yapılandırma dosyalarını kullanabilirsiniz.
+[Flox](https://storm.apache.org/releases/2.0.0/flux.html) , 0.10.0 ve üzeri bir sürümü kullanarak, yapılandırmayı uygulamadan ayırmanızı sağlayan yeni bir çerçevedir. Bileşenleriniz hala Java 'da tanımlanmıştır, ancak topoloji bir YAML dosyası kullanılarak tanımlanır. Projeniz ile varsayılan bir topoloji tanımını paketleyebilir veya topolojiyi gönderirken tek başına bir dosya kullanabilirsiniz. Topolojiyi fırtınası 'ya gönderirken, YAML topolojisi tanımındaki değerleri doldurmak için ortam değişkenlerini veya yapılandırma dosyalarını kullanabilirsiniz.
 
-YAML dosyası, topoloji ve aralarındaki veri akışı için kullanılacak bileşenleri tanımlar. Kavanoz dosyasının bir parçası olarak bir YAML dosyası ekleyebilirsiniz veya harici bir YAML dosyası kullanabilirsiniz.
+YAML dosyası, topoloji ve aralarında veri akışı için kullanılacak bileşenleri tanımlar. Jar dosyasının bir parçası olarak bir YAML dosyası ekleyebilirsiniz veya bir dış YAML dosyası kullanabilirsiniz.
 
-Flux hakkında daha fazla bilgi için [Flux çerçevesinehttps://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html)bakın ( .
+Flox hakkında daha fazla bilgi için bkz. [Flox Frameworkhttps://storm.apache.org/releases/current/flux.html)(](https://storm.apache.org/releases/current/flux.html).
 
 > [!WARNING]  
-> Bir hata nedeniyle [(Stormhttps://issues.apache.org/jira/browse/STORM-2055) ](https://issues.apache.org/jira/browse/STORM-2055) 1.0.1 ile, Flux topologları yerel çalıştırmak için bir [Fırtına geliştirme ortamı](https://storm.apache.org/releases/current/Setting-up-development-environment.html) yüklemeniz gerekebilir.
+> Bir hata nedeniyle [(https://issues.apache.org/jira/browse/STORM-2055) ](https://issues.apache.org/jira/browse/STORM-2055) fırtınası 1.0.1 ile Flox topolojileri yerel olarak çalıştırmak için bir [fırtınası geliştirme ortamı](https://storm.apache.org/releases/current/Setting-up-development-environment.html) yüklemeniz gerekebilir.
 
-1. Daha önce, `WordCountTopology.java` topoloji tanımlanan, ancak Flux ile gerekli değildir. Aşağıdaki komutla dosyayı silin:
+1. Daha önce `WordCountTopology.java` topoloji tanımlanmıştır, ancak Flox ile gerekli değildir. Aşağıdaki komutla dosyayı silin:
 
     ```cmd
     DEL src\main\java\com\microsoft\example\WordCountTopology.java
     ```
 
-1. Yeni bir dosya oluşturmak ve açmak `topology.yaml`için aşağıdaki komutu girin:
+1. Yeni bir dosya `topology.yaml`oluşturmak ve açmak için aşağıdaki komutu girin:
 
     ```cmd
     notepad resources\topology.yaml
     ```
 
-    Ardından aşağıdaki metni kopyalayıp yeni dosyaya yapıştırın.  O zaman dosyayı kapat.
+    Ardından aşağıdaki metni kopyalayıp yeni dosyaya yapıştırın.  Sonra dosyayı kapatın.
 
     ```yaml
     name: "wordcount"       # friendly name for the topology
@@ -679,13 +679,13 @@ Flux hakkında daha fazla bilgi için [Flux çerçevesinehttps://storm.apache.or
              args: ["word"]           # field(s) to group on
     ```
 
-1. Aşağıda açıklanan düzeltmeleri `pom.xml` yapmak için açmak için aşağıdaki komutu girin:
+1. Aşağıdaki açıklanan düzeltmeleri yapmak için açmak `pom.xml` üzere aşağıdaki komutu girin:
 
     ```cmd
     notepad pom.xml
     ```
 
-   1. Bölüme aşağıdaki yeni bağımlılık `<dependencies>` ekleyin:
+   1. Aşağıdaki yeni bağımlılığı `<dependencies>` bölümüne ekleyin:
 
         ```xml
         <!-- Add a dependency on the Flux framework -->
@@ -696,7 +696,7 @@ Flux hakkında daha fazla bilgi için [Flux çerçevesinehttps://storm.apache.or
         </dependency>
         ```
 
-   1. Bölüme aşağıdaki eklentiyi `<plugins>` ekleyin. Bu eklenti, proje için bir paket (kavanoz dosyası) oluşturulmasını işler ve paketi oluştururken Akı'ya özgü bazı dönüşümler uygular.
+   1. Aşağıdaki eklentiyi `<plugins>` bölümüne ekleyin. Bu eklenti, proje için bir paket (jar dosyası) oluşturmayı işler ve paketi oluştururken Flox 'e özgü bazı dönüştürmeleri uygular.
 
         ```xml
         <!-- build an uber jar -->
@@ -737,35 +737,35 @@ Flux hakkında daha fazla bilgi için [Flux çerçevesinehttps://storm.apache.or
         </plugin>
         ```
 
-   1. Exec Maven Eklentisi bölümü `<configuration>`  >  `<mainClass>` için, `${storm.topology}` `org.apache.storm.flux.Flux`gidin ve değiştirin. Bu ayar, Flux'un topolojiyi geliştirme aşamasında yerel olarak çalıştırmayı işlemesini sağlar.
+   1. Exec `<configuration>`  >  `<mainClass>` Maven eklentisi bölümünde öğesine gidin ve ' `${storm.topology}` ye `org.apache.storm.flux.Flux`geçin. Bu ayar, akıcı x 'in, geliştirme sırasında topolojiyi yerel olarak işlemesini sağlar.
 
-   1. Bölüme `<resources>` aşağıdakileri `<includes>`ekleyin. Bu XML, topolojiyi projenin bir parçası olarak tanımlayan YAML dosyasını içerir.
+   1. `<resources>` Bölümünde, aşağıdakileri öğesine `<includes>`ekleyin. Bu XML, projenin bir parçası olarak topolojiyi tanımlayan YAML dosyasını içerir.
 
         ```xml
         <include>topology.yaml</include>
         ```
 
-## <a name="test-the-flux-topology-locally"></a>Akı topolojisini yerel olarak test edin
+## <a name="test-the-flux-topology-locally"></a>Flox topolojisini yerel olarak test etme
 
-1. Akı topolojisini Maven kullanarak derlemek ve yürütmek için aşağıdaki komutu girin:
+1. Maven kullanarak Flox topolojisini derlemek ve yürütmek için aşağıdaki komutu girin:
 
     ```cmd
     mvn compile exec:java -Dexec.args="--local -R /topology.yaml"
     ```
 
     > [!WARNING]  
-    > Topolojiniz Storm 1.0.1 bitlerini kullanıyorsa, bu komut başarısız olur. Bu hata, [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055).'den kaynaklanır. Bunun yerine, [Geliştirme ortamınıza Storm'u yükleyin](https://storm.apache.org/releases/current/Setting-up-development-environment.html) ve aşağıdaki adımları kullanın:
+    > Topolojiniz fırtınası 1.0.1 bitleri kullanıyorsa, bu komut başarısız olur. Bu hata nedeniyle oluşur [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055). Bunun yerine, [geliştirme ortamınıza fırtınası 'yı yükledikten](https://storm.apache.org/releases/current/Setting-up-development-environment.html) sonra aşağıdaki adımları kullanın:
     >
-    > [Geliştirme ortamınıza Storm yüklediyseniz,](https://storm.apache.org/releases/current/Setting-up-development-environment.html)bunun yerine aşağıdaki komutları kullanabilirsiniz:
+    > [Geliştirme ortamınıza fırtınası yüklediyseniz](https://storm.apache.org/releases/current/Setting-up-development-environment.html), bunun yerine aşağıdaki komutları kullanabilirsiniz:
     >
     > ```cmd
     > mvn compile package
     > storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /topology.yaml
     > ```
 
-    Parametre, `--local` geliştirme ortamınızdaki yerel modda topolojiyi çalıştırır. `-R /topology.yaml` Parametre, topolojiyi `topology.yaml` tanımlamak için kavanoz dosyasındaki dosya kaynağını kullanır.
+    `--local` Parametresi, topolojiyi geliştirme ortamınızda yerel modda çalıştırır. `-R /topology.yaml` Parametresi, topolojiyi tanımlamak `topology.yaml` için jar dosyasındaki dosya kaynağını kullanır.
 
-    Çalışırken, topoloji başlangıç bilgilerini görüntüler. Aşağıdaki metin çıktının bir örneğidir:
+    Çalıştırıldığında, topoloji başlangıç bilgilerini görüntüler. Aşağıdaki metin, çıktının bir örneğidir:
 
     ```
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
@@ -776,9 +776,9 @@ Flux hakkında daha fazla bilgi için [Flux çerçevesinehttps://storm.apache.or
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     ```
 
-    Günlüğe kaydedilmiş bilgi toplu arasında 10 saniyelik bir gecikme var.
+    Günlüğe kaydedilen bilgilerin toplu işleri arasında 10 saniyelik bir gecikme vardır.
 
-2. Projeden yeni bir topoloji yaml oluşturun.
+2. Projeden yeni bir topoloji YAML oluşturun.
 
     1. Açmak `topology.xml`için aşağıdaki komutu girin:
 
@@ -786,7 +786,7 @@ Flux hakkında daha fazla bilgi için [Flux çerçevesinehttps://storm.apache.or
     notepad resources\topology.yaml
     ```
 
-    1. Aşağıdaki bölümü bulun ve değerini `10` `5`değiştirin. Bu değişiklik, sözcük sayılarını yayan gruplar arasındaki aralığı 10 saniyeden 5 saniyeye değiştirir.  
+    1. Aşağıdaki bölümü bulun ve değerini `10` olarak `5`değiştirin. Bu değişiklik, sözcük sayısı, 10 saniyeden 5 ' e kadar olan yayma toplu işleri arasındaki aralığı değiştirir.  
 
     ```yaml
     - id: "counter-bolt"
@@ -796,7 +796,7 @@ Flux hakkında daha fazla bilgi için [Flux çerçevesinehttps://storm.apache.or
            parallelism: 1  
     ```
 
-    1. Dosyayı `newtopology.yaml`' olarak kaydet
+    1. Dosyayı farklı `newtopology.yaml`kaydedin.
 
 3. Topolojiyi çalıştırmak için aşağıdaki komutu girin:
 
@@ -804,32 +804,32 @@ Flux hakkında daha fazla bilgi için [Flux çerçevesinehttps://storm.apache.or
     mvn exec:java -Dexec.args="--local resources/newtopology.yaml"
     ```
 
-    Veya geliştirme ortamınızda Storm varsa:
+    Ya da, geliştirme ortamınızda bir fırtınası varsa:
 
     ```cmd
     storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local resources/newtopology.yaml
     ```
 
-    Bu komut `newtopology.yaml` topoloji tanımı olarak kullanır. Parametreyi eklemediğimiz `compile` için, Maven önceki adımlarda oluşturulmuş projenin sürümünü kullanır.
+    Bu komut, `newtopology.yaml` topoloji tanımı olarak öğesini kullanır. `compile` Parametresi dahil etmedik, Maven önceki adımlarda oluşturulan projenin sürümünü kullanıyor.
 
-    Topoloji başladıktan sonra, yayılan toplu işarasındaki sürenin `newtopology.yaml`değeri yansıtacak şekilde değiştiğini fark etmelisiniz. Böylece, topolojiyi yeniden derlemek zorunda kalmadan yapılandırmanızı bir YAML dosyası üzerinden değiştirebileceğinizi görebilirsiniz.
+    Topoloji başladıktan sonra, oluşturulan toplu işler arasındaki sürenin içindeki `newtopology.yaml`değeri yansıtacak şekilde değiştiğini fark etmelisiniz. Bu nedenle, topolojiyi yeniden derlemek zorunda kalmadan bir YAML dosyası aracılığıyla yapılandırmanızı değiştirebilmenizi sağlayabilirsiniz.
 
-Flux çerçevesinin bu ve diğer özellikleri hakkında daha fazla bilgi için [Flux (.https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html)
+Bu ve akışkan x çerçevesinin diğer özellikleri hakkında daha fazla bilgi için bkz. [Flox (https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html).
 
-## <a name="trident"></a>Trident
+## <a name="trident"></a>Çatal
 
-[Trident,](https://storm.apache.org/releases/current/Trident-API-Overview.html) Storm tarafından sağlanan üst düzey bir soyutlamadır. Bu durum lu işleme destekler. Trident'in en önemli avantajı, topolojiye giren her mesajın yalnızca bir kez işlenmesini garanti edebildiğidir. Trident kullanmadan, topolojiniz iletilerin en az bir kez işlenmeyi garanti edebilir. Cıvata oluşturmak yerine kullanılabilecek yerleşik bileşenler gibi başka farklılıklar da vardır. Aslında, cıvatalar filtreler, projeksiyonlar ve işlevler gibi daha az genel bileşenlerle değiştirilir.
+[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) , fırtınası tarafından sunulan üst düzey bir soyutlamadır. Durum bilgisi olan işlemeyi destekler. Trident 'nin birincil avantajı, topolojiye giren her iletinin yalnızca bir kez işlendiğini garanti edebileceğinizin güvencesidir. Trident kullanılmadan, topolojiniz yalnızca iletilerin en az bir kez işlenmesini garanti edebilir. Ayrıca, cıvatları oluşturmak yerine kullanılabilecek yerleşik bileşenler gibi başka farklılıklar da vardır. Aslında, cıvatalar, filtreler, tahminler ve işlevler gibi daha az genel bileşenlerle değiştirilmiştir.
 
-Trident uygulamaları Maven projeleri kullanılarak oluşturulabilir. Bu makalede daha önce sunulan aynı temel adımları kullanırsınız—yalnızca kod farklıdır. Trident de (şu anda) Flux çerçeve ile kullanılamaz.
+Trident uygulamaları Maven projeleri kullanılarak oluşturulabilir. Bu makalede daha önce sunulan temel adımların aynısını kullanırsınız; yalnızca kod farklıdır. Trident, Flox çerçevesiyle de (Şu anda) kullanılamaz.
 
-Trident hakkında daha fazla bilgi için [Trident API Genel Bakış'a](https://storm.apache.org/releases/current/Trident-API-Overview.html)bakın.
+Trident hakkında daha fazla bilgi için bkz. [Trident API 'Sine genel bakış](https://storm.apache.org/releases/current/Trident-API-Overview.html).
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Java'yı kullanarak Apache Storm topolojisi oluşturmayı öğrendiniz. Şimdi nasıl yapılacağını öğrenin:
+Java kullanarak Apache Storm topolojisi oluşturmayı öğrendiniz. Şimdi şunları yapmayı öğrenirsiniz:
 
-* [HDInsight'ta Apache Storm topolojilerini dağıtın ve yönetin](apache-storm-deploy-monitor-topology-linux.md)
+* [HDInsight 'ta Apache Storm topolojileri dağıtma ve yönetme](apache-storm-deploy-monitor-topology-linux.md)
 
-* [Visual Studio'yu kullanarak HDInsight'ta Apache Storm için C# topolojileri geliştirin](apache-storm-develop-csharp-visual-studio-topology.md)
+* [Visual Studio kullanarak HDInsight üzerinde Apache Storm için C# topolojileri geliştirme](apache-storm-develop-csharp-visual-studio-topology.md)
 
-Daha fazla örnek Apache Storm topolojileri [HDInsight apache Storm için Örnek topologies](apache-storm-example-topology.md)ziyaret ederek bulabilirsiniz.
+[HDInsight üzerinde Apache Storm Için örnek topolojilerini](apache-storm-example-topology.md)ziyaret ederek daha fazla örnek Apache Storm topolojiden ulaşabilirsiniz.

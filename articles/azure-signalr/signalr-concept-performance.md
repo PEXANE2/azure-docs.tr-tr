@@ -1,88 +1,88 @@
 ---
 title: Azure SignalR Hizmeti için performans kılavuzu
-description: Azure SignalR Hizmeti'nin performansına ve kıyaslama sine genel bakış. Kapasite planlarken göz önünde bulundurulması gereken temel ölçümler.
+description: Azure SignalR hizmeti performansına ve kıyaslamaya genel bakış. Kapasiteyi planlarken dikkate alınması gereken önemli ölçümler.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74157674"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Azure SignalR Hizmeti için performans kılavuzu
 
-Azure SinyalR Hizmetini kullanmanın en önemli avantajlarından biri, SignalR uygulamalarını ölçeklemenin kolaylığıdır. Büyük ölçekli bir senaryoda, performans önemli bir faktördür. 
+Azure SignalR hizmetini kullanmanın önemli avantajlarından biri, SignalR uygulamalarının ölçeklendirilmesine yönelik kolaylıklar. Büyük ölçekli bir senaryoda performans önemli bir faktördür. 
 
-Bu kılavuzda, SignalR uygulama performansını etkileyen faktörleri tanıtacağız. Tipik performansı farklı kullanım durumu senaryolarında açıklarız. Sonunda, bir performans raporu oluşturmak için kullanabileceğiniz ortamı ve araçları tanıtacağız.
+Bu kılavuzda, SignalR uygulama performansını etkileyen faktörler tanıtılmaktadır. Farklı kullanım örneği senaryolarında tipik performansı açıklayacağız. Sonunda, bir performans raporu oluşturmak için kullanabileceğiniz ortam ve araçlar tanıtılcağız.
 
 ## <a name="term-definitions"></a>Terim tanımları
 
-*Gelen*: Azure SignalR Hizmeti'ne gelen ileti.
+*Gelen*: Azure SignalR hizmetine gelen ileti.
 
-*Giden*: Azure SignalR Hizmeti'nden giden ileti.
+*Giden*: Azure SignalR hizmetinden giden ileti.
 
-*Bant Genişliği*: 1 saniyedeki tüm iletilerin toplam boyutu.
+*Bant genişliği*: 1 saniye içinde tüm iletilerin toplam boyutu.
 
-*Varsayılan mod*: Azure Sinyal Hizmeti örneği oluşturulduğunda varsayılan çalışma modu. Azure SignalR Hizmeti, uygulama sunucusunun istemci bağlantılarını kabul etmeden önce onunla bağlantı kurmasını bekler.
+*Varsayılan mod*: bir Azure SignalR hizmeti örneği oluşturulduğunda varsayılan çalışma modu. Azure SignalR hizmeti, uygulama sunucusunun herhangi bir istemci bağlantısını kabul etmeden önce onunla bağlantı kurmasını bekliyor.
 
-*Sunucusuz mod*: Azure SignalR Hizmetinin yalnızca istemci bağlantılarını kabul ettiği mod. Sunucu bağlantısına izin verilmez.
+*Sunucusuz mod*: Azure SignalR hizmetinin yalnızca istemci bağlantılarını kabul ettiği bir mod. Sunucu bağlantısına izin verilmez.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure SignalR Hizmeti, farklı performans kapasiteleri için yedi Standart katman tanımlar. Bu kılavuz aşağıdaki soruları yanıtlar:
+Azure SignalR hizmeti, farklı performans kapasiteleri için yedi Standart katman tanımlar. Bu kılavuzda aşağıdaki sorulara yanıt verilmiştir:
 
--   Her katman için tipik Azure Sinyal Hizmeti performansı nedir?
+-   Her katman için tipik Azure SignalR hizmeti performansı nedir?
 
--   Azure SignalR Hizmeti ileti iş bilgimi (örneğin, saniyede 100.000 ileti gönderme) gereksinimlerimi karşılıyor mu?
+-   Azure SignalR hizmeti, ileti işleme için gereksinimlerimi karşılar (örneğin, saniye başına 100.000 ileti gönderiliyor)?
 
--   Benim özel senaryom için, hangi katman benim için uygundur? Ya da uygun katmanı nasıl seçebilirim?
+-   Özel senaryoum için hangi katman benim için uygun? Ya da uygun katmanı nasıl seçirim?
 
--   Ne tür bir uygulama sunucusu (VM boyutu) benim için uygundur? Kaç tane sini konuşlandırmalıyım?
+-   Ne tür bir App Server (VM boyutu) bana uygun? Kaç tane dağıtmalıyım?
 
-Bu soruları yanıtlamak için, bu kılavuz ilk performansı etkileyen faktörlerin üst düzey bir açıklama verir. Daha sonra, tipik kullanım durumları için her katman için gelen ve giden maksimum iletileri gösterir: **yankı,** **yayın,** **gruba gönderme**ve **bağlantıya gönderme** (eşler arası sohbet).
+Bu soruları yanıtlamak için, bu kılavuz ilk olarak, performansı etkileyen faktörlerin üst düzey bir açıklamasını verir. Daha sonra, her katmanın genel kullanım örnekleri için gelen ve giden en fazla ileti sayısını gösterir: **echo**, **Yayınla**, **gruba gönder**ve **bağlantıya gönder** (eşler arası sohbet).
 
-Bu kılavuz tüm senaryoları (ve farklı kullanım durumlarını, ileti boyutlarını, ileti gönderme modellerini vb.) kapsayamaz. Ancak size yardımcı olacak bazı yöntemler sağlar:
+Bu kılavuzda tüm senaryolar (ve farklı kullanım durumları, ileti boyutları, ileti gönderme düzenleri vb.) ele alınamaz. Ancak size yardımcı olmak için bazı yöntemler sağlar:
 
 - Gelen veya giden iletiler için yaklaşık gereksiniminizi değerlendirin.
-- Performans tablosunu kontrol ederek uygun katmanları bulun.
+- Performans tablosunu denetleyerek uygun katmanları bulun.
 
-## <a name="performance-insight"></a>Performans içgörüsü
+## <a name="performance-insight"></a>Performans öngörüleri
 
-Bu bölümde performans değerlendirme metodolojileri açıklanır ve sonra performansı etkileyen tüm faktörleri listeler. Sonunda, performans gereksinimlerini değerlendirmenize yardımcı olacak yöntemler sağlar.
+Bu bölüm performans değerlendirme yöntemlerini açıklar ve ardından performansı etkileyen tüm faktörleri listeler. Sonunda, performans gereksinimlerini değerlendirmenize yardımcı olmak için yöntemler sağlar.
 
 ### <a name="methodology"></a>Yöntem
 
-*İş sonu* ve *gecikme,* performans denetiminin iki tipik yönü. Azure Sinyal R Hizmeti için her SKU katmanının kendi iş yapma azaltma ilkesi vardır. İlke, iletilerin yüzde 99'u 1 saniyeden kısa gecikme ye sahip *olduğunda, izin verilen maksimum iş çıkış (gelen ve giden bant genişliği)* en fazla elde edilen iş parçası olarak tanımlar.
+*Aktarım hızı* ve *gecikme süresi* , performans denetiminin iki tipik yönlerdir. Azure SignalR hizmeti için, her SKU katmanının kendi verimlilik Azaltma ilkesi vardır. İlke, *izin verilen en yüksek aktarım hızını (gelen ve giden bant genişliği),* iletilerin yüzde 99 ' luk bir gecikme süresi olduğunda maksimum elde edilen aktarım hızı olarak tanımlar.
 
-Gecikme süresi, iletigönderen bağlantıdan Azure SinyalR Hizmeti'nden yanıt iletisi almaya kadar geçen süredir. **Yankıyı** örnek alalım. Her istemci bağlantısı iletiye bir zaman damgası ekler. Uygulama sunucusunun merkezi özgün iletiyi istemciye geri gönderir. Yani yayılma gecikmesi her istemci bağlantısı tarafından kolayca hesaplanır. **Yayındaki**her ileti için zaman damgası eklenir, **gruba gönderin**ve **bağlantıya gönderin.**
+Gecikme süresi, Azure SignalR hizmetinden yanıt iletisini almaya yönelik iletiyi gönderen bağlantıdan geçen süredir. Örnek olarak **yankı** alalım. Her istemci bağlantısı, iletiye bir zaman damgası ekler. Uygulama sunucusunun hub 'ı, özgün iletiyi istemciye geri gönderir. Bu nedenle, yayma gecikmesi her istemci bağlantısıyla kolayca hesaplanır. Zaman damgası, **yayın**içindeki her ileti için iliştirilir, **gruba gönder**ve **bağlantıya gönder**.
 
-Binlerce eşzamanlı istemci bağlantısını simüle etmek için Azure'daki sanal özel ağda birden çok Sanal Sanal Sanal Ağ oluşturulur. Tüm bu VM'ler aynı Azure SinyalR Hizmeti örneğine bağlanır.
+Binlerce eşzamanlı istemci bağlantısının benzetimini yapmak için Azure 'da bir sanal özel ağda birden fazla VM oluşturulur. Bu VM 'lerin tümü aynı Azure SignalR hizmeti örneğine bağlanır.
 
-Azure SinyalR Hizmeti'nin varsayılan modunda, uygulama sunucusu VM'leri istemci VM'ler ile aynı sanal özel ağda dağıtılır. Tüm istemci VM'leri ve uygulama sunucusu VM'leri, bölgeler arası gecikmeyi önlemek için aynı bölgenin aynı ağında dağıtılır.
+Azure SignalR hizmeti 'nin varsayılan modunda, App Server VM 'Leri istemci VM 'leriyle aynı sanal özel ağa dağıtılır. Tüm istemci VM 'Leri ve App Server VM 'Leri, bölgeler arası gecikme süresini önlemek için aynı bölgedeki aynı ağda dağıtılır.
 
 ### <a name="performance-factors"></a>Performans faktörleri
 
-Teorik olarak, Azure SignalR Hizmeti kapasitesi hesaplama kaynaklarıyla sınırlıdır: CPU, bellek ve ağ. Örneğin, Azure Sinyal RHizmeti'ne daha fazla bağlantı, hizmetin daha fazla bellek kullanmasına neden olur. Daha büyük ileti trafiği için (örneğin, her ileti 2.048 bayttan büyüktür), Azure SinyalR Hizmetinin trafiği işlemek için daha fazla CPU döngüsü harcaması gerekir. Bu arada, Azure ağ bant genişliği de maksimum trafik için bir sınır uygular.
+Teorik olarak, Azure SignalR hizmet kapasitesi hesaplama kaynaklarıyla sınırlıdır: CPU, bellek ve ağ. Örneğin, Azure SignalR hizmetine yönelik daha fazla bağlantı, hizmetin daha fazla bellek kullanmasına neden olur. Daha büyük ileti trafiği için (örneğin, her ileti 2.048 bayttan büyükse), Azure SignalR hizmeti trafiği işlemek için daha fazla CPU döngüsü harcaması gerekir. Bu arada, Azure ağ bant genişliği, en yüksek trafik için de bir sınır uygular.
 
-Aktarım türü performansı etkileyen başka bir faktördür. Üç tür [WebSocket,](https://en.wikipedia.org/wiki/WebSocket) [Sunucu-Gönderildi-Olay](https://en.wikipedia.org/wiki/Server-sent_events)ve [Uzun Yoklama](https://en.wikipedia.org/wiki/Push_technology)vardır. 
+Aktarım türü, performansı etkileyen başka bir faktördür. [WebSocket](https://en.wikipedia.org/wiki/WebSocket), [sunucu tarafından gönderilen olay](https://en.wikipedia.org/wiki/Server-sent_events)ve [uzun yoklama](https://en.wikipedia.org/wiki/Push_technology)olmak üzere üç tür vardır. 
 
-WebSocket, tek bir TCP bağlantısı üzerinden çift yönlü ve tam çift yönlü iletişim protokolüdür. Sunucu-Gönderilen Olay, iletileri sunucudan istemciye itmek için tek yönlü bir iletişim kuralıdır. Uzun Yoklama, istemcilerin bir HTTP isteği aracılığıyla sunucudan düzenli olarak bilgi yoklaması gerektirir. Aynı koşullar altında aynı API için, WebSocket en iyi performansa sahiptir, Sunucu-Gönderilen Olay daha yavaştır ve Uzun Yoklama en yavaşıdır. Azure SignalR Hizmeti varsayılan olarak WebSocket önerir.
+WebSocket, tek bir TCP bağlantısı üzerinden çift yönlü ve tam çift yönlü iletişim protokolüdür. Sunucu tarafından gönderilen olay, iletileri sunucudan istemciye göndermek için bir tek yönlü protokoldür. Uzun yoklama, istemcilerin bir HTTP isteği aracılığıyla sunucudan düzenli olarak bilgi yoklamasını gerektirir. Aynı koşullarda aynı API için, WebSocket en iyi performansa sahiptir, sunucu tarafından gönderilen olay daha yavaştır ve uzun yoklamaya en yavaş olur. Azure SignalR hizmeti, varsayılan olarak WebSocket önerir.
 
-İleti yönlendirme maliyeti de performansı sınırlar. Azure SinyalR Hizmeti, iletiyi bir dizi istemci veya sunucudan diğer istemcilere veya sunuculara yönlendiren ileti yönlendiricisi olarak rol oynar. Farklı bir senaryo veya API farklı bir yönlendirme ilkesi gerektirir. 
+İleti yönlendirme maliyeti de performansı kısıtlar. Azure SignalR hizmeti bir rolü bir istemci veya sunucu kümesinden diğer istemcilere veya sunuculara yönlendiren bir ileti yönlendiricisi olarak yürütür. Farklı bir senaryo veya API farklı bir yönlendirme ilkesi gerektirir. 
 
-**Yankı**için, istemci kendisine bir ileti gönderir ve yönlendirme hedefi de kendisidir. Bu desen en düşük yönlendirme maliyetine sahiptir. Ancak **yayın**için, **gruba göndermek**ve **bağlantıya göndermek için**Azure SinyalR Hizmeti'nin hedef bağlantıları dahili dağıtılmış veri yapısı üzerinden araması gerekir. Bu ekstra işlem daha fazla CPU, bellek ve ağ bant genişliği kullanır. Sonuç olarak, performans daha yavaştır.
+**Yankı**için, istemci kendine bir ileti gönderir ve yönlendirme hedefi de kendisi olur. Bu düzenin en düşük yönlendirme maliyeti vardır. Ancak **yayın**için, **gruba gönder**ve **bağlantıya gönder**için Azure SignalR hizmeti 'nin, iç dağıtılmış veri yapısı aracılığıyla hedef bağlantıları araması gerekir. Bu ek işlem, daha fazla CPU, bellek ve ağ bant genişliği kullanır. Sonuç olarak, performans daha yavaştır.
 
-Varsayılan modda, uygulama sunucusu belirli senaryolar için bir darboğaz alabilirsiniz. Azure SinyalR SDK hub'ı çağırmak zorunda kalırken, sinyal sinyalleri aracılığıyla her istemciyle canlı bağlantı sağlıyor.
+Varsayılan modda, uygulama sunucusu belirli senaryolar için de performans sorunlarına yol açabilir. Azure SignalR SDK 'Sı, her istemciyle sinyal sinyalleri aracılığıyla canlı bağlantı sağlarken hub 'ı çağırmalıdır.
 
-Sunucusuz modda, istemci HTTP gönderisi tarafından WebSocket kadar verimli olmayan bir ileti gönderir.
+Sunucusuz modda istemci, WebSocket olarak verimli olmayan HTTP Post ile bir ileti gönderir.
 
-Başka bir faktör protokol: JSON ve [MessagePack](https://msgpack.org/index.html). MessagePack boyutu daha küçük türdedir ve JSON'dan daha hızlı teslim edilir. MessagePack performansı artırmayabilir. Azure SinyalR Hizmeti'nin performansı protokollere duyarlı değildir, çünkü istemcilerden sunuculara ileti iletilmesi sırasında ileti yükünü çözemez veya bunun tersi deşifre edilmez.
+Başka bir faktör protokol: JSON ve [MessagePack](https://msgpack.org/index.html). MessagePack boyut olarak küçüktür ve JSON 'dan daha hızlı dağıtılır. MessagePack, performansı iyileştirmeyebilir, ancak. Azure SignalR hizmeti 'nin performansı, istemcilerden sunuculara ileti iletme sırasında ileti yükünün kodunu çözmediğinden veya tam tersi olmadığından protokollerle hassas değildir.
 
-Özetle, aşağıdaki faktörler gelen ve giden kapasiteyi etkiler:
+Özet bölümünde, aşağıdaki etmenler gelen ve giden kapasiteyi etkiler:
 
 -   SKU katmanı (CPU/bellek)
 
@@ -90,134 +90,134 @@ Başka bir faktör protokol: JSON ve [MessagePack](https://msgpack.org/index.htm
 
 -   İleti boyutu
 
--   İleti gönderme oranı
+-   İleti gönderme hızı
 
--   Aktarım türü (WebSocket, Sunucu-Gönderildi-Olay veya Uzun Yoklama)
+-   Aktarım türü (WebSocket, sunucu tarafından gönderilen-olay veya uzun yoklama)
 
 -   Kullanım örneği senaryosu (yönlendirme maliyeti)
 
--   Uygulama sunucusu ve hizmet bağlantıları (sunucu modunda)
+-   App Server ve hizmet bağlantıları (sunucu modunda)
 
 
-### <a name="finding-a-proper-sku"></a>Uygun bir SKU bulma
+### <a name="finding-a-proper-sku"></a>Uygun SKU 'YU bulma
 
-Gelen/giden kapasiteyi nasıl değerlendirebilirsiniz veya belirli bir kullanım örneği için hangi katmanın uygun olduğunu bulabilirsiniz?
+Gelen/giden kapasiteyi nasıl değerlendirebilir veya belirli bir kullanım durumu için hangi katmanın uygun olduğunu nasıl bulabilirim?
 
-Uygulama sunucusunun yeterince güçlü olduğunu ve performans darboğazı olmadığını varsayalım. Ardından, her katman için gelen ve giden maksimum bant genişliğini kontrol edin.
+Uygulama sunucusunun yeterince güçlü olduğunu ve performans sorunu olmadığını varsayın. Ardından, her katman için en yüksek gelen ve giden bant genişliğini denetleyin.
 
 #### <a name="quick-evaluation"></a>Hızlı değerlendirme
 
-Önce bazı varsayılan ayarları varsayarak değerlendirmeyi basitleştirelim: 
+Öncelikle bazı varsayılan ayarları kabul ederek değerlendirmeyi basitleştirelim: 
 
-- Aktarım türü WebSocket'tir.
-- İleti boyutu 2048 bayt.
+- Aktarım türü WebSocket 'dir.
+- İleti boyutu 2.048 bayttır.
 - Her 1 saniyede bir ileti gönderilir.
-- Azure SignalR Hizmeti varsayılan moddadır.
+- Azure SignalR hizmeti varsayılan modda.
 
-Her katmanın kendi maksimum gelen bant genişliği ve giden bant genişliği vardır. Gelen veya giden bağlantı sınırı aştıktan sonra sorunsuz bir kullanıcı deneyimi garanti edilmez.
+Her katmanın en yüksek gelen bant genişliği ve giden bant genişliği vardır. Gelen veya giden bağlantı sınırı aşdıktan sonra sorunsuz bir kullanıcı deneyimi garanti edilmez.
 
-En düşük yönlendirme maliyetine sahip **olduğundan, Yankı** maksimum gelen bant genişliğini verir. **Yayın,** en yüksek giden ileti bant genişliğini tanımlar.
+**Echo** en düşük yönlendirme maliyetine sahip olduğu Için, yankı en fazla gelen bant genişliğine sahip olur. **Yayın** , en fazla giden ileti bant genişliğini tanımlar.
 
-Aşağıdaki iki tabloda vurgulanan değerleri *aşmayın.*
+Aşağıdaki iki tabloda vurgulanan değerleri *aşmayın* .
 
-|       Yankı                        | Birim1 | Ünite2 | Ünite5 | Ünite10 | Ünite20 | Ünite50 | Ünite100 |
+|       Girdilerinizi                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
 | Bağlantılar                       | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50.000 | 100.000 |
 | **Gelen bant genişliği** | **2 Mb/sn**    | **4 Mb/sn**    | **10 Mb/sn**   | **20 MBps**    | **40 MBps**    | **100 MBps**   | **200 MBps**    |
 | Giden bant genişliği | 2 Mb/sn   | 4 Mb/sn   | 10 Mb/sn  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
 
-|     Yayınla             | Birim1 | Ünite2 | Ünite5  | Ünite10 | Ünite20 | Ünite50  | Ünite100 |
+|     Yayınla             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
 | Bağlantılar               | 1000 | 2.000 | 5.000  | 10,000 | 20.000 | 50.000  | 100.000 |
 | Gelen bant genişliği  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps    |
 | **Giden bant genişliği** | **4 Mb/sn**    | **8 Mb/sn**    | **20 MBps**    | **40 MBps**    | **80 MBps**    | **200 MBps**    | **400 MBps**   |
 
-*Gelen bant genişliği* ve *giden bant genişliği* saniyede toplam ileti boyutudur.  İşte onlar için formüller şunlardır:
+*Gelen bant genişliği* ve *giden bant genişliği* , saniye başına toplam ileti boyutudur.  Bunlar için formüller aşağıda verilmiştir:
 ```
   inboundBandwidth = inboundConnections * messageSize / sendInterval
   outboundBandwidth = outboundConnections * messageSize / sendInterval
 ```
 
-- *gelen Bağlantılar*: İletiyi gönderen bağlantı sayısı.
+- *InboundConnections*: iletiyi gönderen bağlantı sayısı.
 
-- *giden Bağlantılar*: İletiyi alan bağlantı sayısı.
+- *OutboundConnections*: iletiyi alan bağlantı sayısı.
 
-- *messageSize*: Tek bir iletinin boyutu (ortalama değer). 1.024 bayttan daha az olan küçük bir iletinin performans etkisi 1.024 baytlık iletiye benzer.
+- *messageSize*: tek bir iletinin boyutu (ortalama değer). 1.024 bayttan küçük bir ileti, 1.024 baytlık bir iletiye benzer bir performans etkisine sahiptir.
 
-- *sendInterval*: Bir ileti gönderme zamanı. Genellikle ileti başına 1 saniyedir, bu da saniyede bir ileti göndermek anlamına gelir. Daha küçük bir aralık, bir zaman diliminde daha fazla ileti göndermek anlamına gelir. Örneğin, ileti başına 0,5 saniye, saniyede iki ileti göndermek anlamına gelir.
+- *Sendınterval*: bir ileti gönderme zamanı. Genellikle ileti başına 1 saniyedir, bu da her saniye bir ileti gönderir. Daha küçük bir Aralık, zaman diliminde daha fazla ileti gönderilmesini anlamına gelir. Örneğin, ileti başına 0,5 saniye her saniyede iki ileti gönderilmesini anlamına gelir.
 
-- *Bağlantılar*: Her katman için Azure Sinyal RHizmeti için taahhüt edilen maksimum eşik. Bağlantı numarası daha da artırılırsa, bağlantı azaltma muzdarip olacaktır.
+- *Bağlantılar*: her katman Için Azure SignalR hizmeti için taahhüt edilen en büyük eşik. Bağlantı numarası daha fazla arttırılırsa bağlantı azaltmasından de devam edilir.
 
-#### <a name="evaluation-for-complex-use-cases"></a>Karmaşık kullanım durumları için değerlendirme
+#### <a name="evaluation-for-complex-use-cases"></a>Karmaşık kullanım örnekleri için değerlendirme
 
 ##### <a name="bigger-message-size-or-different-sending-rate"></a>Daha büyük ileti boyutu veya farklı gönderme hızı
 
-Gerçek kullanım örneği daha karmaşıktır. 2.048 bayttan daha büyük bir ileti gönderebilir veya ileti gönderme hızı saniyede bir ileti değildir. Unit100'ün yayınını nasıl değerlendireceklerini bulmak için örnek olarak alalım.
+Gerçek kullanım durumu daha karmaşıktır. 2.048 bayttan daha büyük bir ileti gönderebilir veya gönderme iletisi hızı saniyede bir ileti değildir. Unit100's yayını bir örnek olarak ele alalım. bu şekilde, performansını değerlendirme hakkında bilgi edinebilirsiniz.
 
-Aşağıdaki tabloda gerçek bir **yayın**kullanım örneği gösterilmektedir. Ancak ileti boyutu, bağlantı sayısı ve ileti gönderme oranı önceki bölümde varsaydığımızdan farklıdır. Soru, bu öğelerden herhangi birini (ileti boyutu, bağlantı sayısı veya ileti gönderme oranı) yalnızca iki sini tanıyorsak nasıl anladığımızdır.
+Aşağıdaki tabloda, **yayının**gerçek kullanım durumu gösterilmektedir. Ancak ileti boyutu, bağlantı sayısı ve mesaj gönderme hızı, önceki bölümde kabul ettiğimiz verilerden farklıdır. Bu, yalnızca iki tane olduğunu bildiğimiz takdirde bu öğelerden herhangi birini (ileti boyutu, bağlantı sayısı veya ileti gönderme hızı) nasıl vereceğimiz bir sorudır.
 
-| Yayınla  | İleti boyutu | Saniyede gelen iletiler | Bağlantılar | Aralıkları gönder |
+| Yayınla  | İleti boyutu | Saniye başına gelen ileti | Bağlantılar | Gönderme aralıkları |
 |---|---------------------|--------------------------|-------------|-------------------------|
 | 1 | 20 KB                | 1                        | 100.000     | 5 sn                      |
 | 2 | 256 KB               | 1                        | 8,000       | 5 sn                      |
 
-Aşağıdaki formülü önceki formüle göre çıkarmak kolaydır:
+Aşağıdaki formül, önceki formüle göre kolayca çıkarsılır:
 
 ```
 outboundConnections = outboundBandwidth * sendInterval / messageSize
 ```
 
-Unit100 için, en yüksek giden bant genişliği önceki tablodan 400 MB'dır. 20-KB ileti boyutu için, maksimum giden bağlantılar 400 \* MB 5 / 20 KB = 100.000 olmalıdır, hangi gerçek değeri eşleşir.
+Unit100 için, en fazla giden bant genişliği önceki tablodan 400 MB 'tır. 20 KB 'lik bir ileti boyutu için, en fazla giden bağlantı sayısı, gerçek değerle \* eşleşen 400 MB 5/20 KB = 100.000 olmalıdır.
 
-##### <a name="mixed-use-cases"></a>Karma kullanım örnekleri
+##### <a name="mixed-use-cases"></a>Karışık kullanım örnekleri
 
-Gerçek kullanım örneği genellikle birlikte dört temel kullanım durumlarda karıştırır: **yankı**, **yayın**, **gruba göndermek**, ve **bağlantıya gönderin.** Kapasiteyi değerlendirmek için kullandığınız metodoloji aşağıdakileri yapmaktır:
+Gerçek kullanım durumu genellikle dört temel kullanım örneğini birlikte karıştırır: **echo**, **Yayınla**, **gruba gönder**ve **bağlantıya gönder**. Kapasiteyi değerlendirmek için kullandığınız metodolojiyi:
 
-1. Karma kullanım servis taleplerini dört temel kullanım örneğine bölün.
-1. Önceki formülleri ayrı ayrı kullanarak en fazla gelen ve giden ileti bant genişliğini hesaplayın.
-1. Toplam maksimum gelen/giden bant genişliğini elde etmek için bant genişliği hesaplamalarını özetleyin. 
+1. Karışık kullanım örneklerini dört temel kullanım durumuna bölün.
+1. Yukarıdaki formülleri ayrı olarak kullanarak, en yüksek gelen ve giden ileti bant genişliğini hesaplayın.
+1. Toplam gelen/giden bant genişliğini almak için bant genişliği hesaplamalarını toplayın. 
 
-Ardından, maksimum gelen/giden bant genişliği tablolarından uygun katmanı seçin.
+Ardından, en yüksek gelen/giden bant genişliği tablolarından uygun katmanı seçin.
 
 > [!NOTE]
-> Yüzlerce veya binlerce küçük gruba veya birbirine ileti gönderen binlerce istemciye ileti göndermek için yönlendirme maliyeti baskın hale gelecektir. Bu etkiyi göz önünde bulundur.
+> Yüzlerce veya binlerce küçük gruba bir ileti göndermek veya birbirlerine ileti gönderen binlerce istemci için yönlendirme maliyeti baskın hale gelir. Bu etkiyi hesaba götürün.
 
-İstemcilere ileti gönderme nin kullanım durumu için, uygulama sunucusunun darboğaz *olmadığından* emin olun. Aşağıdaki "Örnek Olay İncelemesi" bölümü, kaç uygulama sunucusuna ihtiyacınız olduğu ve kaç sunucu bağlantısı yapılandırmanız gerektiği hakkında yönergeler verir.
+İstemcilere ileti göndermenin kullanım durumu için, uygulama sunucusunun performans sorunu *olmadığından* emin olun. Aşağıdaki "olay incelemesi" bölümünde, kaç tane uygulama sunucusuna ihtiyacınız olduğunu ve kaç tane sunucu bağlantısı yapılandırılacağını gösteren yönergeler verilmektedir.
 
 ## <a name="case-study"></a>Örnek olay incelemesi
 
-Aşağıdaki bölümler WebSocket taşıma için dört tipik kullanım durumda geçmesi: **yankı**, **yayın**, **gruba göndermek**, ve **bağlantıya gönderin.** Her senaryo için bölüm, Azure SinyalR Hizmeti için geçerli gelen ve giden kapasiteyi listeler. Ayrıca performansı etkileyen ana faktörleri açıklar.
+Aşağıdaki bölümler WebSocket taşıması için dört genel kullanım durumuna geçer: **echo**, **Yayınla**, **gruba gönder**ve **bağlantıya gönder**. Her senaryo için, Bölüm Azure SignalR hizmeti için geçerli gelen ve giden kapasiteyi listeler. Ayrıca, performansı etkileyen ana faktörleri de açıklar.
 
-Varsayılan modda, uygulama sunucusu Azure SignalR Hizmeti ile beş sunucu bağlantısı oluşturur. Uygulama sunucusu varsayılan olarak Azure SignalR Hizmeti SDK'sını kullanır. Aşağıdaki performans testi sonuçlarında, sunucu bağlantıları 15'e yükseltilir (veya büyük bir gruba ileti yayınlamak ve göndermek için daha fazla).
+Varsayılan modda, App Server Azure SignalR hizmeti ile beş sunucu bağlantısı oluşturur. App Server, varsayılan olarak Azure SignalR hizmeti SDK 'sını kullanır. Aşağıdaki performans testi sonuçlarında, sunucu bağlantıları 15 ' e yükseltilir (veya büyük bir gruba yayın yapmak ve ileti göndermek için daha fazla).
 
-Farklı kullanım örneklerinin uygulama sunucuları için farklı gereksinimleri vardır. **Yayının** az sayıda uygulama sunucusuna ihtiyacı vardır. **Echo** veya **bağlantı göndermek** birçok uygulama sunucusu gerekir.
+Farklı kullanım örneklerinin, uygulama sunucuları için farklı gereksinimleri vardır. **Yayın** , az sayıda uygulama sunucusuna ihtiyaç duyuyor. **Yankı** veya **gönderme bağlantısı** birçok uygulama sunucusuna ihtiyaç duyuyor.
 
-Tüm kullanım durumlarında varsayılan ileti boyutu 2.048 bayt ve ileti gönderme aralığı 1 saniyedir.
+Tüm kullanım durumlarında varsayılan ileti boyutu 2.048 bayttır ve ileti gönderme aralığı 1 saniyedir.
 
 ### <a name="default-mode"></a>Varsayılan mod
 
-İstemciler, web uygulaması sunucuları ve Azure SinyalR Hizmeti varsayılan modda yer alır. Her müşteri tek bir bağlantı anlamına gelir.
+İstemciler, Web App Servers ve Azure SignalR hizmeti varsayılan modda yer alır. Her istemci tek bir bağlantı için temsil eder.
 
-#### <a name="echo"></a>Yankı
+#### <a name="echo"></a>Girdilerinizi
 
-İlk olarak, bir web uygulaması Azure SignalR Hizmeti'ne bağlanır. İkinci olarak, birçok istemci web uygulamasına bağlanır ve bu uygulama, erişim belirteci ve bitiş noktasıyla istemcileri Azure SignalR Hizmeti'ne yönlendirir. Ardından, istemciler Azure SignalR Hizmeti ile WebSocket bağlantıları kurar.
+İlk olarak, bir Web uygulaması Azure SignalR hizmetine bağlanır. İkinci olarak, birçok istemci Web uygulamasına bağlanır ve bu da istemcileri, erişim belirteci ve uç noktası ile Azure SignalR hizmetine yeniden yönlendirir. Ardından, istemciler Azure SignalR hizmeti ile WebSocket bağlantıları kurar.
 
-Tüm istemciler bağlantılar kurduktan sonra, her saniye belirli hub'a zaman damgası içeren bir ileti göndermeye başlarlar. Hub, iletiyi özgün istemcisine geri döndürer. Her istemci yankı iletisini geri aldığında gecikme yi hesaplar.
+Tüm istemciler bağlantı kurduktan sonra, belirli bir hub 'a her saniye bir zaman damgası içeren bir ileti göndermeye başlarlar. Hub, iletiyi özgün istemcisine geri bildirir. Her istemci, yankı iletisini geri aldığında gecikme süresini hesaplar.
 
-Aşağıdaki diyagramda, 5 ile 8 (kırmızı vurgulu trafik) bir döngü içindedir. Döngü varsayılan bir süre (5 dakika) çalışır ve tüm ileti gecikmesinin istatistiklerini alır.
+Aşağıdaki diyagramda, 5 ile 8 arasında (kırmızı vurgulanmış trafik) bir döngüdür. Döngü, varsayılan süre (5 dakika) boyunca çalışır ve tüm ileti gecikmesinin istatistiğini alır.
 
 ![Yankı kullanım örneği için trafik](./media/signalr-concept-performance/echo.png)
 
-**Yankı** davranışı, en fazla gelen bant genişliğinin en yüksek giden bant genişliğine eşit olduğunu belirler. Ayrıntılar için aşağıdaki tabloya bakın.
+**Echo** davranışı, en fazla gelen bant genişliğinin en fazla giden bant genişliğine eşit olduğunu belirler. Ayrıntılar için aşağıdaki tabloya bakın.
 
-|       Yankı                        | Birim1 | Ünite2 | Ünite5 | Ünite10 | Ünite20 | Ünite50 | Ünite100 |
+|       Girdilerinizi                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
 | Bağlantılar                       | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50.000 | 100.000 |
-| Saniyede gelen/giden iletiler | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50.000 | 100.000 |
+| Saniye başına gelen/giden ileti | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50.000 | 100.000 |
 | Gelen/giden bant genişliği | 2 Mb/sn   | 4 Mb/sn   | 10 Mb/sn  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
-Bu kullanım durumunda, her istemci uygulama sunucusunda tanımlanan hub'ı çağırır. Hub yalnızca özgün istemci tarafında tanımlanan yöntemi çağırır. Bu hub **yankı**için en hafif hub'dır.
+Bu kullanım durumunda, her istemci, uygulama sunucusunda tanımlanan hub 'ı çağırır. Hub yalnızca özgün istemci tarafında tanımlanan yöntemi çağırır. Bu Merkez, **yankı**için en hafif merkezdir.
 
 ```
         public void Echo(IDictionary<string, object> data)
@@ -226,213 +226,213 @@ Bu kullanım durumunda, her istemci uygulama sunucusunda tanımlanan hub'ı ça�
         }
 ```
 
-Bu basit hub için bile, **yankı** gelen ileti yükü arttıkça uygulama sunucusundaki trafik basıncı belirgindir. Bu trafik basıncı, büyük SKU katmanları için birçok uygulama sunucusu gerektirir. Aşağıdaki tabloda her katman için uygulama sunucusu sayısı listelenir.
+Bu basit Hub için bile, uygulama sunucusuna uygulanan trafik, **yankı** gelen ileti yükü arttıkça belirgin olur. Bu trafik baskısı, büyük SKU katmanları için birçok uygulama sunucusu gerektirir. Aşağıdaki tabloda her katman için uygulama sunucusu sayısı listelenmektedir.
 
 
-|    Yankı          | Birim1 | Ünite2 | Ünite5 | Ünite10 | Ünite20 | Ünite50 | Ünite100 |
+|    Girdilerinizi          | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> İstemci bağlantı numarası, ileti boyutu, ileti gönderme hızı, SKU katmanı ve uygulama sunucusunun CPU/bellek **yankı**genel performansını etkiler.
+> İstemci bağlantı numarası, ileti boyutu, ileti gönderme hızı, SKU katmanı ve App Server 'ın CPU/belleği, **echo**genel performansını etkiler.
 
 #### <a name="broadcast"></a>Yayınla
 
-**Yayın**için, web uygulaması iletiyi aldığında, tüm istemcilere yayın eder. Yayın yapmak için ne kadar çok istemci varsa, tüm istemcilere o kadar çok ileti trafiği verilir. Aşağıdaki diyagrama bakın.
+**Yayın**için, Web uygulaması iletiyi aldığında tüm istemcilere yayınlar. Daha fazla istemci yayınlamak durumunda tüm istemciler için daha fazla ileti trafiği vardır. Aşağıdaki diyagrama bakın.
 
-![Yayın kullanım örneği için trafik](./media/signalr-concept-performance/broadcast.png)
+![Yayın kullanım durumu için trafik](./media/signalr-concept-performance/broadcast.png)
 
-Az sayıda istemci yayın yapıyor. Gelen ileti bant genişliği küçüktür, ancak giden bant genişliği çok büyüktür. İstemci bağlantısı veya yayın hızı arttıkça giden ileti bant genişliği artar.
+Az sayıda istemci yayınlıyorsunuz. Gelen ileti bant genişliği küçüktür, ancak giden bant genişliği çok büyük. İstemci bağlantısı veya yayın hızı arttıkça giden ileti bant genişliği artar.
 
-Aşağıdaki tabloda maksimum istemci bağlantıları, gelen/giden ileti sayısı ve bant genişliği özetlenmiştir.
+Aşağıdaki tabloda, en fazla istemci bağlantısı, gelen/giden ileti sayısı ve bant genişliği özetlenmektedir.
 
-|     Yayınla             | Birim1 | Ünite2 | Ünite5  | Ünite10 | Ünite20 | Ünite50  | Ünite100 |
+|     Yayınla             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
 | Bağlantılar               | 1000 | 2.000 | 5.000  | 10,000 | 20.000 | 50.000  | 100.000 |
-| Saniyede gelen iletiler  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Saniyede giden iletiler | 2.000 | 4.000 | 10,000 | 20.000 | 40,000 | 100.000 | 200,000 |
+| Saniye başına gelen ileti  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
+| Saniye başına giden ileti | 2.000 | 4.000 | 10,000 | 20.000 | 40,000 | 100.000 | 200,000 |
 | Gelen bant genişliği  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     |
 | Giden bant genişliği | 4 Mb/sn   | 8 Mb/sn   | 20 MBps   | 40 MBps   | 80 MBps   | 200 MBps   | 400 MBps   |
 
-İleti gönderen yayın istemcileri en fazla dörttür. Gelen ileti miktarı küçük **olduğundan, yankı** ile karşılaştırıldığında daha az uygulama sunucusuna ihtiyaç duyarlar. Hem SLA hem de performans konuları için iki uygulama sunucusu yeterlidir. Ancak, özellikle Unit50 ve Unit100 için dengesizliği önlemek için varsayılan sunucu bağlantılarını artırmalısınız.
+İleti gönderenden yayın istemcileri dörtten fazla değil. Gelen ileti miktarı küçük olduğundan, **echo** ile karşılaştırıldığında daha az uygulama sunucusu gerekir. İki uygulama sunucusu hem SLA hem de performans konuları için yeterlidir. Ancak, özellikle Unit50 ve Unit100 için, dengesizliği önlemek üzere varsayılan sunucu bağlantılarını artırmanız gerekir.
 
-|   Yayınla      | Birim1 | Ünite2 | Ünite5 | Ünite10 | Ünite20 | Ünite50 | Ünite100 |
+|   Yayınla      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
-> Azure SignalR Hizmeti'ne olası dengesiz sunucu bağlantılarından kaçınmak için varsayılan sunucu bağlantılarını her uygulama sunucusunda 5'ten 40'a çıkarın.
+> Azure SignalR hizmetine yönelik olası dengesiz sunucu bağlantılarını önlemek için, her uygulama sunucusunda 5 ' ten 40 ' a kadar varsayılan sunucu bağlantılarını yükseltin.
 >
-> İstemci bağlantı numarası, ileti boyutu, ileti gönderme hızı ve SKU katmanı **yayının**genel performansını etkiler.
+> İstemci bağlantı numarası, ileti boyutu, ileti gönderme hızı ve SKU katmanı, **yayının**genel performansını etkiler.
 
 #### <a name="send-to-group"></a>Gruba gönder
 
-Grup kullanım **örneğine gönder'in** **yayınlanması**için benzer bir trafik deseni vardır. Aradaki fark, istemcilerin Azure SinyalR Hizmeti ile WebSocket bağlantıları kurduktan sonra, belirli bir gruba ileti gönderebilmeleri için gruplara katılmaları gerektiğidir. Aşağıdaki diyagram trafik akışını göstermektedir.
+**Gruba gönder** kullanım durumunun **yayınlanması**için benzer bir trafik deseninin olması vardır. Aradaki fark, istemciler Azure SignalR hizmeti ile WebSocket bağlantıları kurduktan sonra, belirli bir gruba ileti gönderebilmeleri için gruplara katılması gerekir. Aşağıdaki diyagramda trafik akışı gösterilmektedir.
 
-![Gruba gönderme kullanım örneği için trafik](./media/signalr-concept-performance/sendtogroup.png)
+![Send-Group kullanım örneği için trafik](./media/signalr-concept-performance/sendtogroup.png)
 
-Grup üyesi ve grup sayısı performansı etkileyen iki faktörvardır. Çözümlemesi basitleştirmek için iki tür grup tanımlarız:
+Grup üyesi ve grup sayısı, performansı etkileyen iki faktördir. Çözümlemeyi basitleştirmek için iki grup türü tanımlayacağız:
 
-- **Küçük grup**: Her grubun 10 bağlantısı vardır. Grup numarası (maksimum bağlantı sayısı) / 10 eşittir. Örneğin, Birim1 için, 1.000 bağlantı sayısı varsa, o zaman 1000 / 10 = 100 grubu muz vardır.
+- **Küçük grup**: her grubun 10 bağlantısı vardır. Grup numarası eşittir (en fazla bağlantı sayısı)/10. Örneğin, Unit1 için 1.000 bağlantı sayısı varsa, 1000/10 = 100 gruplarıdır.
 
-- **Büyük grup**: Grup numarası her zaman 10'dur. Grup üye sayısı (maksimum bağlantı sayısı) / 10 eşittir. Örneğin, Birim1 için, 1.000 bağlantı sayısı varsa, her grubun 1000 / 10 = 100 üyesi vardır.
+- **Büyük grup**: Grup numarası her zaman 10 ' dur. Grup üye sayısı eşittir (en fazla bağlantı sayısı)/10. Örneğin, Unit1 için 1.000 bağlantı sayısı varsa, her grubun 1000/10 = 100 üyesi vardır.
 
-**Gruba gönder,** dağıtılmış bir veri yapısı aracılığıyla hedef bağlantıları bulması nedeniyle Azure Sinyal Hizmeti'ne yönlendirme maliyeti getirir. Gönderme bağlantıları arttıkça maliyet artar.
+**Send to Group** , hedeflenen bağlantıları dağıtılmış bir veri yapısı aracılığıyla bulması gerektiğinden Azure SignalR hizmetine bir yönlendirme maliyeti getirir. Gönderim bağlantıları arttıkça maliyet artar.
 
 ##### <a name="small-group"></a>Küçük grup
 
-Yönlendirme maliyeti, birçok küçük gruba ileti göndermek için önemlidir. Şu anda, Azure Sinyal Hizmeti uygulaması Unit50'deki yönlendirme maliyet sınırına uymaktadır. Daha fazla CPU ve bellek eklemek yardımcı olmuyor, bu nedenle Unit100 tasarım la daha da geliştiremez. Daha fazla gelen bant genişliğine ihtiyacınız varsa, müşteri desteğine başvurun.
+Yönlendirme maliyeti birçok küçük gruba ileti göndermek için önemlidir. Şu anda Azure SignalR Hizmeti uygulamasının, Unit50 adresindeki yönlendirme maliyeti sınırını okuması gerekir. Daha fazla CPU ve bellek eklemek yardım etmez, bu nedenle Unit100 daha fazla tasarıma sahiptir. Daha fazla gelen bant genişliğine ihtiyacınız varsa müşteri desteğine başvurun.
 
-|   Küçük gruba gönder     | Birim1 | Ünite2 | Ünite5  | Ünite10 | Ünite20 | Ünite50 | Ünite100 |
+|   Küçük gruba gönder     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50 | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|--------|---------|
 | Bağlantılar               | 1000 | 2.000 | 5.000  | 10,000 | 20.000 | 50.000 | 100.000
 | Grup üye sayısı        | 10    | 10    | 10     | 10     | 10     | 10     | 10 
 | Grup sayısı               | 100   | 200   | 500    | 1000  | 2.000  | 5.000  | 10,000 
-| Saniyede gelen iletiler  | 200   | 400   | 1000  | 2,500  | 4.000  | 7,000  | 7,000   |
+| Saniye başına gelen ileti  | 200   | 400   | 1000  | 2,500  | 4.000  | 7.000  | 7.000   |
 | Gelen bant genişliği  | 400 KBps  | 800 KBps  | 2 Mb/sn     | 5 Mb/sn     | 8 Mb/sn     | 14 MBps    | 14 MBps     |
-| Saniyede giden iletiler | 2.000 | 4.000 | 10,000 | 25,000 | 40,000 | 70,000 | 70,000  |
+| Saniye başına giden ileti | 2.000 | 4.000 | 10,000 | 25,000 | 40,000 | 70.000 | 70.000  |
 | Giden bant genişliği | 4 Mb/sn    | 8 Mb/sn    | 20 MBps    | 50 MBps     | 80 MBps    | 140 MBps   | 140 MBps    |
 
-Birçok istemci bağlantısı hub'ı aradığından, uygulama sunucusu numarası da performans için önemlidir. Aşağıdaki tabloda önerilen uygulama sunucusu sayımları listeleilmektedir.
+Birçok istemci bağlantısı hub 'ı çağırıyor, bu nedenle uygulama sunucu numarası performans için de önemlidir. Aşağıdaki tabloda, önerilen uygulama sunucusu sayıları listelenmektedir.
 
-|  Küçük gruba gönder   | Birim1 | Ünite2 | Ünite5 | Ünite10 | Ünite20 | Ünite50 | Ünite100 |
+|  Küçük gruba gönder   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> İstemci bağlantı numarası, ileti boyutu, ileti gönderme hızı, yönlendirme maliyeti, SKU katmanı ve uygulama sunucusunun CPU/belleği **küçük gruba göndermenin**genel performansını etkiler.
+> İstemci bağlantı numarası, ileti boyutu, ileti gönderme hızı, yönlendirme maliyeti, SKU katmanı ve App Server 'ın CPU/belleği, **küçük gruplara gönder**'in genel performansını etkiler.
 
 ##### <a name="big-group"></a>Büyük grup
 
-**Büyük gruba göndermek için,** giden bant genişliği yönlendirme maliyet sınırına çarpmadan önce darboğaz haline gelir. Aşağıdaki tabloda, **yayın**için neredeyse aynı olan maksimum giden bant genişliği listelenir.
+**Büyük gruba gönder**için, giden bant genişliği, yönlendirme maliyeti sınırına geçmeden önce performans sorunu haline gelir. Aşağıdaki tabloda, **yayında**neredeyse aynı olan en fazla giden bant genişliği listelenmektedir.
 
-|    Büyük gruba gönder      | Birim1 | Ünite2 | Ünite5  | Ünite10 | Ünite20 | Ünite50  | Ünite100 |
+|    Büyük gruba gönder      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
 | Bağlantılar               | 1000 | 2.000 | 5.000  | 10,000 | 20.000 | 50.000  | 100.000
 | Grup üye sayısı        | 100   | 200   | 500    | 1000  | 2.000  | 5.000   | 10,000 
 | Grup sayısı               | 10    | 10    | 10     | 10     | 10     | 10      | 10
-| Saniyede gelen iletiler  | 20    | 20    | 20     | 20     | 20     | 20      | 20      |
+| Saniye başına gelen ileti  | 20    | 20    | 20     | 20     | 20     | 20      | 20      |
 | Gelen bant genişliği  | 80 KBps   | 40 KBps   | 40 KBps    | 20 KBps    | 40 KBps    | 40 KBps     | 40 KBps     |
-| Saniyede giden iletiler | 2.000 | 4.000 | 10,000 | 20.000 | 40,000 | 100.000 | 200,000 |
+| Saniye başına giden ileti | 2.000 | 4.000 | 10,000 | 20.000 | 40,000 | 100.000 | 200,000 |
 | Giden bant genişliği | 8 Mb/sn    | 8 Mb/sn    | 20 MBps    | 40 MBps    | 80 MBps    | 200 MBps    | 400 MBps    |
 
-Gönderme bağlantı sayısı en fazla 40'tır. Uygulama sunucusuüzerindeki yük küçük olduğundan, önerilen web uygulamaları sayısı küçüktür.
+Gönderme bağlantı sayısı 40 ' den fazla değil. Uygulama sunucusundaki yük küçüktür, bu nedenle önerilen Web uygulaması sayısı küçük.
 
-|  Büyük gruba gönder  | Birim1 | Ünite2 | Ünite5 | Ünite10 | Ünite20 | Ünite50 | Ünite100 |
+|  Büyük gruba gönder  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
-> Azure SignalR Hizmeti'ne olası dengesiz sunucu bağlantılarından kaçınmak için varsayılan sunucu bağlantılarını her uygulama sunucusunda 5'ten 40'a çıkarın.
+> Azure SignalR hizmetine yönelik olası dengesiz sunucu bağlantılarını önlemek için, her uygulama sunucusunda 5 ' ten 40 ' a kadar varsayılan sunucu bağlantılarını yükseltin.
 > 
-> İstemci bağlantı numarası, ileti boyutu, ileti gönderme hızı, yönlendirme maliyeti ve SKU katmanı **büyük gruba göndermenin**genel performansını etkiler.
+> İstemci bağlantı numarası, ileti boyutu, ileti gönderme hızı, yönlendirme maliyeti ve SKU katmanı, **büyük grubun**genel performansını etkiler.
 
 #### <a name="send-to-connection"></a>Bağlantıya gönder
 
-Bağlantı **ya gönderme** kullanım örneğinde, istemciler Azure Sinyal Hizmeti'ne bağlantılar kurduğunda, her istemci kendi bağlantı kimliklerini almak için özel bir hub çağırır. Performans ölçütü tüm bağlantı bağlantı bağlantılarını toplar, karıştırır ve gönderen hedef olarak tüm istemcilere yeniden atar. İstemciler, performans testi bitene kadar iletiyi hedef bağlantıya göndermeye devam eder.
+**Bağlantı gönder** kullanım durumunda, Istemciler Azure SignalR hizmeti bağlantılarını kurıyorsa, her istemci kendı bağlantı kimliklerini almak için özel bir hub çağırır. Performans kıyaslaması tüm bağlantı kimliklerini toplar, bunları karıştırın ve bir gönderme hedefi olarak tüm istemcilere yeniden atar. İstemciler, performans testi bitene kadar iletiyi hedef bağlantıya göndermeyi tutar.
 
-![İstemci gönderme kullanım örneği için trafik](./media/signalr-concept-performance/sendtoclient.png)
+![İstemciye gönder kullanım örneği için trafik](./media/signalr-concept-performance/sendtoclient.png)
 
-**Bağlantıya gönderme** yönlendirme maliyeti, **küçük gruba gönderme maliyetine**benzer.
+**Bağlantı gönder** için yönlendirme maliyeti, **küçük gruba gönder**maliyetine benzer.
 
-Bağlantı sayısı arttıkça, yönlendirme maliyeti genel performansı sınırlar. Birim50 sınırına ulaştı. Sonuç olarak, Unit100 daha fazla geliştiremez.
+Bağlantı sayısı arttıkça, yönlendirme maliyeti genel performansı sınırlar. Unit50 sınıra ulaştı. Sonuç olarak, Unit100 daha fazla iyileştiremez.
 
-Aşağıdaki tablo, bağlantı kıyaslama **gönder** çalıştıran birçok tur sonra istatistiksel bir özettir.
+Aşağıdaki tablo, **bağlantı gönderme** kıyaslaması çalıştırmanın birçok yuvarladıktan sonra istatistiksel bir özettir.
 
-|   Bağlantıya gönder   | Birim1 | Ünite2 | Ünite5 | Ünite10 | Ünite20 | Ünite50          | Ünite100         |
+|   Bağlantıya gönder   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50          | Unit100         |
 |------------------------------------|-------|-------|-------|--------|--------|-----------------|-----------------|
 | Bağlantılar                        | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50.000          | 100.000         |
-| Saniyede gelen/giden iletiler | 1000 | 2.000 | 5.000 | 8,000  | 9,000  | 20.000 | 20.000 |
+| Saniye başına gelen/giden ileti | 1000 | 2.000 | 5.000 | 8,000  | 9,000  | 20.000 | 20.000 |
 | Gelen/giden bant genişliği | 2 Mb/sn    | 4 Mb/sn    | 10 Mb/sn   | 16 MBps    | 18 MBps    | 40 MBps       | 40 MBps       |
 
-Bu kullanım örneği, uygulama sunucusu tarafında yüksek yük gerektirir. Aşağıdaki tabloda önerilen uygulama sunucusu sayısına bakın.
+Bu kullanım örneği, uygulama sunucusu tarafında yüksek yük gerektirir. Aşağıdaki tabloda önerilen App Server sayısına bakın.
 
-|  Bağlantıya gönder  | Birim1 | Ünite2 | Ünite5 | Ünite10 | Ünite20 | Ünite50 | Ünite100 |
+|  Bağlantıya gönder  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> İstemci bağlantı numarası, ileti boyutu, ileti gönderme hızı, yönlendirme maliyeti, SKU katmanı ve uygulama sunucusu için CPU/bellek **bağlantıya göndermenin**genel performansını etkiler.
+> İstemci bağlantı numarası, ileti boyutu, ileti gönderme hızı, yönlendirme maliyeti, SKU katmanı ve App Server için CPU/bellek, **bağlantı gönder bağlantısının**genel performansını etkiler.
 
-#### <a name="aspnet-signalr-echo-broadcast-and-send-to-small-group"></a>ASP.NET SignalR yankı, yayın ve küçük gruba göndermek
+#### <a name="aspnet-signalr-echo-broadcast-and-send-to-small-group"></a>ASP.NET SignalR Echo, Yayınla ve küçük gruba gönder
 
-Azure SignalR Hizmeti, ASP.NET SignalR için aynı performans kapasitesini sağlar. 
+Azure SignalR hizmeti, ASP.NET SignalR için aynı performans kapasitesini sağlar. 
 
-Performans testi, ASP.NET SignalR için [Standart Hizmet Planı S3'teki](https://azure.microsoft.com/pricing/details/app-service/windows/) Azure Web Uygulamalarını kullanır.
+Performans testi, ASP.NET SignalR için [Standart hizmet planı S3](https://azure.microsoft.com/pricing/details/app-service/windows/) ' dan Azure Web Apps kullanır.
 
-Aşağıdaki tablo, SignalR **yankısı**için önerilen web uygulaması ASP.NET sayısını verir.
+Aşağıdaki tabloda, ASP.NET SignalR **echo**için önerilen Web uygulaması sayısı verilmiştir.
 
-|   Yankı           | Birim1 | Ünite2 | Ünite5 | Ünite10 | Ünite20 | Ünite50 | Ünite100 |
+|   Girdilerinizi           | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
-Aşağıdaki tablo, ASP.NET SignalR **yayını**için önerilen web uygulaması sayısını verir.
+Aşağıdaki tabloda, ASP.NET SignalR **yayını**için önerilen Web uygulaması sayısı verilmiştir.
 
-|  Yayınla       | Birim1 | Ünite2 | Ünite5 | Ünite10 | Ünite20 | Ünite50 | Ünite100 |
+|  Yayınla       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
-Aşağıdaki tablo, SignalR'in **küçük bir gruba gönderdiği**ASP.NET için önerilen web uygulaması sayısını verir.
+Aşağıdaki tabloda, ASP.NET SignalR **için küçük gruba gönder**önerilen Web uygulaması sayısı verilmiştir.
 
-|  Küçük gruba gönder     | Birim1 | Ünite2 | Ünite5 | Ünite10 | Ünite20 | Ünite50 | Ünite100 |
+|  Küçük gruba gönder     | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Bağlantılar      | 1000 | 2.000 | 5.000 | 10,000 | 20.000 | 50.000 | 100.000 |
 | Uygulama sunucusu sayısı | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 ### <a name="serverless-mode"></a>Sunucusuz mod
 
-İstemciler ve Azure SinyalR Hizmeti sunucusuz modda yer almaktadır. Her müşteri tek bir bağlantı anlamına gelir. İstemci, REST API aracılığıyla başka bir istemciye ileti gönderir veya herkese ileti yayınlar.
+İstemciler ve Azure SignalR hizmeti sunucusuz moda dahil edilir. Her istemci tek bir bağlantı için temsil eder. İstemci iletileri REST API aracılığıyla başka bir istemciye gönderir veya tüm iletileri yayınlar.
 
-REST API üzerinden yüksek yoğunluklu iletiler göndermek WebSocket kullanmak kadar verimli değildir. Her seferinde yeni bir HTTP bağlantısı oluşturmanızı gerektirir ve bu sunucusuz modda ekstra bir maliyettir.
+REST API üzerinden yüksek yoğunluklu iletiler gönderilmesi, WebSocket kullanımı kadar verimli değildir. Her seferinde yeni bir HTTP bağlantısı oluşturmanızı gerektirir ve bu, sunucusuz modda ek bir maliyettir.
 
-#### <a name="broadcast-through-rest-api"></a>REST API üzerinden yayın
-Tüm istemciler Azure SignalR Hizmeti ile WebSocket bağlantıları kurar. Sonra bazı istemciler REST API üzerinden yayın başlar. İleti gönderme (gelen) WebSocket ile karşılaştırıldığında verimli değildir HTTP Post, tüm geçer.
+#### <a name="broadcast-through-rest-api"></a>REST API üzerinden yayınla
+Tüm istemciler Azure SignalR hizmeti ile WebSocket bağlantısı kurar. Daha sonra bazı istemciler REST API aracılığıyla yayını başlatır. İleti gönderme (gelen), WebSocket ile karşılaştırıldığında etkin olmayan HTTP POST aracılığıyla yapılır.
 
-|   REST API üzerinden yayın     | Birim1 | Ünite2 | Ünite5  | Ünite10 | Ünite20 | Ünite50  | Ünite100 |
+|   REST API üzerinden yayınla     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
 | Bağlantılar               | 1000 | 2.000 | 5.000  | 10,000 | 20.000 | 50.000  | 100.000 |
-| Saniyede gelen iletiler  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Saniyede giden iletiler | 2.000 | 4.000 | 10,000 | 20.000 | 40,000 | 100.000 | 200,000 |
+| Saniye başına gelen ileti  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
+| Saniye başına giden ileti | 2.000 | 4.000 | 10,000 | 20.000 | 40,000 | 100.000 | 200,000 |
 | Gelen bant genişliği  | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     | 4 KBps     | 4 KBps      | 4 KBps      |
 | Giden bant genişliği | 4 Mb/sn    | 8 Mb/sn    | 20 MBps    | 40 MBps    | 80 MBps    | 200 MBps    | 400 MBps    |
 
 #### <a name="send-to-user-through-rest-api"></a>REST API aracılığıyla kullanıcıya gönder
-Kıyaslama, Azure SinyalR Hizmeti'ne bağlanmaya başlamadan önce tüm istemcilere kullanıcı adları atar. İstemciler Azure SinyalR Hizmeti ile WebSocket bağlantıları kurduktan sonra HTTP Post aracılığıyla başkalarına ileti göndermeye başlarlar.
+Kıyaslama, Azure SignalR hizmetine bağlanmaya başlamadan önce tüm istemcilere Kullanıcı adları atar. İstemciler Azure SignalR hizmeti ile WebSocket bağlantıları kurduktan sonra, HTTP POST aracılığıyla diğerlerine ileti göndermeye başlarlar.
 
-|   REST API aracılığıyla kullanıcıya gönder | Birim1 | Ünite2 | Ünite5  | Ünite10 | Ünite20 | Ünite50  | Ünite100 |
+|   REST API aracılığıyla kullanıcıya gönder | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
 | Bağlantılar               | 1000 | 2.000 | 5.000  | 10,000 | 20.000 | 50.000  | 100.000 |
-| Saniyede gelen iletiler  | 300   | 600   | 900    | 1,300  | 2.000  | 10,000  | 18.000  |
-| Saniyede giden iletiler | 300   | 600   | 900    | 1,300  | 2.000  | 10,000  | 18.000 |
-| Gelen bant genişliği  | 600 KBps  | 1.2 MBps  | 1.8 MBps   | 2.6 MBps   | 4 Mb/sn     | 10 Mb/sn     | 36 MBps    |
-| Giden bant genişliği | 600 KBps  | 1.2 MBps  | 1.8 MBps   | 2.6 MBps   | 4 Mb/sn     | 10 Mb/sn     | 36 MBps    |
+| Saniye başına gelen ileti  | 300   | 600   | 900    | 1.300  | 2.000  | 10,000  | 18.000  |
+| Saniye başına giden ileti | 300   | 600   | 900    | 1.300  | 2.000  | 10,000  | 18.000 |
+| Gelen bant genişliği  | 600 KBps  | 1,2 MBps  | 1,8 MBps   | 2,6 MBps   | 4 Mb/sn     | 10 Mb/sn     | 36 MBps    |
+| Giden bant genişliği | 600 KBps  | 1,2 MBps  | 1,8 MBps   | 2,6 MBps   | 4 Mb/sn     | 10 Mb/sn     | 36 MBps    |
 
 ## <a name="performance-test-environments"></a>Performans testi ortamları
 
-Daha önce listelenen tüm kullanım örnekleri için performans testlerini bir Azure ortamında gerçekleştirdik. En fazla 50 istemci VM ve 20 uygulama sunucusu VM kullandık. Aşağıda bazı ayrıntılar ve ayrıntılar veayrıntılar ve
+Daha önce listelenen tüm kullanım örnekleri için, performans testlerini bir Azure ortamında sağlıyoruz. En çok 50 istemci VM 'Leri ve 20 App Server VM kullandık. Bazı ayrıntılar aşağıda verilmiştir:
 
-- İstemci VM boyutu: StandardDS2V2 (2 vCPU, 7G bellek)
+- İstemci VM boyutu: StandardDS2V2 (2 vCPU, 7G belleği)
 
-- Uygulama sunucusu VM boyutu: StandardF4sV2 (4 vCPU, 8G bellek)
+- App Server VM boyutu: StandardF4sV2 (4 vCPU, 8G belleği)
 
 - Azure SignalR SDK sunucu bağlantıları: 15
 
 ## <a name="performance-tools"></a>Performans araçları
 
-Azure SinyalR Hizmeti için performans araçlarını [GitHub'da](https://github.com/Azure/azure-signalr-bench/)bulabilirsiniz.
+[GitHub](https://github.com/Azure/azure-signalr-bench/)'Da Azure SignalR hizmeti için performans araçları ' nı bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, tipik kullanım durumu senaryolarında Azure Sinyal Hizmeti performansına genel bir bakış elde elabilirsiniz.
+Bu makalede, tipik kullanım örneği senaryolarında Azure SignalR hizmeti performansına genel bir bakış aldınız.
 
-Hizmetin dahili ve ölçekleme hakkında ayrıntılı bilgi almak için aşağıdaki kılavuzları okuyun:
+Hizmetin iç işlevleri ve ölçeklendirilmesi hakkında ayrıntılı bilgi almak için aşağıdaki kılavuzlarını okuyun:
 
 * [Azure SignalR Hizmeti iç işlevleri](signalr-concept-internals.md)
-* [Azure SignalR Hizmeti ölçekleme](signalr-howto-scale-multi-instances.md)
+* [Azure SignalR hizmeti ölçeklendirme](signalr-howto-scale-multi-instances.md)

@@ -1,6 +1,6 @@
 ---
-title: Bir veri diskini Linux VM'den ayırma - Azure
-description: Azure CLI veya Azure portalını kullanarak bir veri diskini Azure'daki sanal bir makineden ayırmayı öğrenin.
+title: Linux VM 'den bir veri diskini ayırma-Azure
+description: Azure CLı veya Azure portal kullanarak Azure 'daki bir sanal makineden bir veri diskini kullanımdan çıkarmayı öğrenin.
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
@@ -8,33 +8,33 @@ ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74036380"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Bir Linux sanal makinesindeki veri diskini ayırma
 
-Sanal makineye bağlı bir veri diskine ihtiyacınız olmadığında bunu kolayca ayırabilirsiniz. Bu, diski sanal makineden kaldırır, ancak depolama dan kaldırmaz. Bu makalede, bir Ubuntu LTS 16.04 dağılımı ile çalışıyoruz. Farklı bir dağıtım kullanıyorsanız, diski sökme yönergeleri farklı olabilir.
+Sanal makineye bağlı bir veri diskine ihtiyacınız olmadığında bunu kolayca ayırabilirsiniz. Bu, diski sanal makineden kaldırır, ancak depolama alanından kaldırmaz. Bu makalede Ubuntu LTS 16,04 dağıtımı ile çalışıyoruz. Farklı bir dağıtım kullanıyorsanız, diskin takılmasını kaldırmak için yönergeler farklı olabilir.
 
 > [!WARNING]
-> Bir diski ayırın, otomatik olarak silinmez. Premium depolama alanına abone olduysanız, disk için depolama ücreti ödemeye devam erecektir. Daha fazla bilgi [için, Premium Depolama'yı kullanırken Fiyatlandırma ve Faturalandırma'ya](https://azure.microsoft.com/pricing/details/storage/page-blobs/)bakın.
+> Bir diski ayırdıysanız otomatik olarak silinmez. Premium depolamaya abone olduysa, disk için depolama ücretleri uygulanmaya devam edersiniz. Daha fazla bilgi için [Premium Depolama kullanılırken fiyatlandırma ve faturalandırma](https://azure.microsoft.com/pricing/details/storage/page-blobs/)bölümüne bakın.
 
 Disk üzerinde var olan verileri yeniden kullanmak isterseniz bu verileri aynı sanal makineye veya başka birine yeniden ekleyebilirsiniz.  
 
 
-## <a name="connect-to-the-vm-to-unmount-the-disk"></a>Diski sökmek için VM'ye bağlanın
+## <a name="connect-to-the-vm-to-unmount-the-disk"></a>Diski çıkarmak için VM 'ye bağlanın
 
-CLI veya portalı kullanarak diski ayırmadan önce diski sökmeniz ve fstab dosyanızdan varsa için başvuruları kaldırmanız gerekir.
+CLı veya Portal kullanarak diski ayırabilmeniz için önce fstab dosyanızdaki disk bağlantısını çıkarmanız ve başvuruları kaldıralmanız gerekir.
 
-VM’ye bağlanın. Bu örnekte, VM'nin ortak IP adresi *azureuser*kullanıcı adı ile *10.0.1.4'tür:* 
+VM’ye bağlanın. Bu örnekte, VM 'nin genel IP adresi Kullanıcı adı *azureuser*ile *10.0.1.4* olur: 
 
 ```bash
 ssh azureuser@10.0.1.4
 ```
 
-İlk olarak, ayırmak istediğiniz veri diskini bulun. Aşağıdaki örnek, SCSI disklerine filtre sağlamak için dmesg kullanır:
+İlk olarak, ayırmak istediğiniz veri diskini bulun. Aşağıdaki örnek, SCSI disklerinde filtrelemek için dmesg kullanır:
 
 ```bash
 dmesg | grep SCSI
@@ -50,13 +50,13 @@ dmesg | grep SCSI
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Burada, *sdc* ayırmak istediğimiz disktir. Ayrıca diskin UUID kapmak gerekir.
+Burada, *SDC* ayırmak istediğimiz disktir. Ayrıca, diskin UUID 'sini de almalısınız.
 
 ```bash
 sudo -i blkid
 ```
 
-Çıktı aşağıdaki örneğe benzer:
+Çıktı aşağıdaki örneğe benzer şekilde görünür:
 
 ```bash
 /dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
@@ -65,12 +65,12 @@ sudo -i blkid
 ```
 
 
-Diske yapılan başvuruları kaldırmak için */etc/fstab* dosyasını edin. 
+*/Etc/fstab* dosyasını düzenleyerek diske başvuruları kaldırın. 
 
 > [!NOTE]
-> **/etc/fstab** dosyasının yanlış düzenlenmesi başlatılamaz bir sisteme neden olabilir. Emin değilseniz, bu dosyayı doğru düzenleme hakkındaki bilgiler için dağıtımın belgelerine bakın. Düzenlemeden önce /etc/fstab dosyasının bir yedeklemesinin oluşturulması da önerilir.
+> **/Etc/fstab** dosyasının yanlış düzenlenmesiyle, önyüklenemeyen bir sistemle sonuçlanabilir. Emin değilseniz, bu dosyayı doğru düzenleme hakkındaki bilgiler için dağıtımın belgelerine bakın. Ayrıca,/etc/fstab dosyasının bir yedeğinin düzenlenmeden önce oluşturulması önerilir.
 
-*/etc/fstab* dosyasını bir metin düzenleyicisinde aşağıdaki gibi açın:
+*/Etc/fstab* dosyasını bir metin düzenleyicisinde şu şekilde açın:
 
 ```bash
 sudo vi /etc/fstab
@@ -82,16 +82,16 @@ Bu örnekte, */etc/fstab* dosyasından aşağıdaki satırın silinmesi gerekir:
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
-Diski sökmek için kullanın. `umount` Aşağıdaki örnek , */datadrive* montaj noktasından */dev/sdc1* tümcesini ayırır:
+Diski `umount` çıkarmak için kullanın. Aşağıdaki örnek */datadrive* bağlama noktasından */dev/sdc1* bölümünü çıkarır:
 
 ```bash
 sudo umount /dev/sdc1 /datadrive
 ```
 
 
-## <a name="detach-a-data-disk-using-azure-cli"></a>Azure CLI'yi kullanarak veri diskini ayırma 
+## <a name="detach-a-data-disk-using-azure-cli"></a>Azure CLı kullanarak veri diskini ayırma 
 
-Bu örnek, *myResourceGroup'taki* *MyVM* adlı MyDataDisk diskini VM'den ayırır. *myDataDisk*
+Bu örnek, *Myresourcegroup*Içindeki *MYVM* adlı VM 'den *mydatadisk* diskini ayırır.
 
 ```azurecli
 az vm disk detach \
@@ -100,23 +100,23 @@ az vm disk detach \
     -n myDataDisk
 ```
 
-Disk depolamada kalır, ancak artık sanal bir makineye bağlı değildir.
+Disk depolamada kalır, ancak artık bir sanal makineye bağlı değildir.
 
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>Portalı kullanarak veri diski çıkarma
 
-1. Sol menüde **Sanal Makineler'i**seçin.
-2. Ayırmak istediğiniz veri diskine sahip sanal makineyi seçin ve VM'yi bulmak için **Durdur'u** tıklatın.
-3. Sanal makine bölmesinde **Diskler'i**seçin.
-4. **Diskler** bölmesinin üst **kısmında, Edit'i**seçin.
-5. **Diskler** bölmesinde, ayırmak istediğiniz veri diskinin en sağında, ayır düğmesi ![görüntü](./media/detach-disk/detach.png) ayırma düğmesini tıklatın.
-5. Disk kaldırıldıktan sonra bölmenin üst kısmında Kaydet'i tıklatın.
-6. Sanal makine bölmesinde **Genel Bakış'ı** tıklatın ve ardından VM'yi yeniden başlatmak için bölmenin üst kısmındaki **Başlat** düğmesini tıklatın.
+1. Sol taraftaki menüden **sanal makineler**' i seçin.
+2. Ayırmak istediğiniz veri diskine sahip sanal makineyi seçin ve VM 'yi serbest bırakmak için **Durdur** ' a tıklayın.
+3. Sanal makine bölmesinde, **diskler**' i seçin.
+4. **Diskler** bölmesinin üst kısmında **Düzenle**' yi seçin.
+5. **Diskler** bölmesinde, ayırmak istediğiniz veri diskinin en sağına doğru ![ayır düğmesine tıklayın resmi](./media/detach-disk/detach.png) ayır düğmesine tıklayın.
+5. Disk kaldırıldıktan sonra bölmenin en üstünde yer alan Kaydet ' e tıklayın.
+6. Sanal makine bölmesinde **genel bakış** ' a tıklayın ve ardından sanal makineyi yeniden başlatmak için bölmenin üst kısmındaki **Başlat** düğmesine tıklayın.
 
-Disk depolamada kalır, ancak artık sanal bir makineye bağlı değildir.
+Disk depolamada kalır, ancak artık bir sanal makineye bağlı değildir.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Veri diskini yeniden kullanmak istiyorsanız, [başka bir VM'ye ekleyebilirsiniz.](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Veri diskini yeniden kullanmak istiyorsanız, yalnızca [başka BIR sanal](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)makineye ekleyebilirsiniz.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure ExpressRoute Direct Hakkında
-description: Bu sayfa ExpressRoute Direct'e genel bir bakış sağlar
+title: Azure ExpressRoute Direct hakkında
+description: Bu sayfada ExpressRoute Direct 'e genel bakış sunulmaktadır
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,80 +8,80 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
 ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74083598"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct hakkında
 
-ExpressRoute Direct, dünya çapında stratejik olarak dağıtılan konumlarda Microsoft'un küresel ağına doğrudan bağlanma olanağı sağlar. ExpressRoute Direct, ölçekte Active/Active bağlantısını destekleyen çift 100 Gbps veya 10 Gbps bağlantı sağlar.
+ExpressRoute Direct, doğrudan Microsoft 'un Dünya genelinde dağıtılmış olan eşleme konumlarında doğrudan Microsoft 'un küresel ağına bağlanmasına olanak sağlar. ExpressRoute Direct, ölçek sırasında etkin/etkin bağlantıyı destekleyen çift 100 Gbps veya 10 Gbps bağlantı sağlar.
 
-ExpressRoute Direct'in sağladığı temel özellikler şunlardır, ancak bunlarla sınırlı değildir:
+ExpressRoute Direct 'in sağladığı temel özellikler dahil, ancak bunlarla sınırlı değildir:
 
 * Depolama ve Cosmos DB gibi hizmetler için Büyük Veri Alımı özelliği
-* Düzenlenmiş ve özel ve izole bağlantı gerektiren endüstriler için fiziksel izolasyon: Bankacılık, Devlet ve Perakende
+* Düzenlenmiş ve şunun gibi adanmış ve yalıtılmış bağlantı gerektiren sektörler için fiziksel yalıtım: bankacılık, kamu ve perakende
 * Bağlantı hattı dağıtımının iş birimine dayalı detaylı denetimi
 
-## <a name="onboard-to-expressroute-direct"></a>ExpressRoute Direct için Onboard
+## <a name="onboard-to-expressroute-direct"></a>ExpressRoute Direct 'e ekleme
 
-ExpressRoute Direct'i kullanmadan önce aboneliğinizi kaydedebilirsiniz. Kaydolmak için, <ExpressRouteDirect@microsoft.com> aşağıdaki ayrıntılar da dahil olmak üzere abonelik kimliğinizle birlikte bir E-posta gönderin:
+ExpressRoute Direct kullanmadan önce aboneliğinizi kaydetmeniz gerekir. Kaydolmak için aşağıdaki ayrıntılar dahil olmak üzere <ExpressRouteDirect@microsoft.com> abonelik Kimliğinizle bir e-posta gönderin:
 
-* **ExpressRoute Direct** ile gerçekleştirmek istediğiniz senaryolar
-* Konum tercihleri - Tüm konumların tam listesi için [Ortaklar ve bakan konumlarına](expressroute-locations-providers.md) bakın
+* **ExpressRoute Direct** ile başarmak için kullandığınız senaryolar
+* Konum tercihleri-tüm konumların tam listesi için [Iş ortakları ve eşleme konumları](expressroute-locations-providers.md) bölümüne bakın
 * Uygulama için zaman çizelgesi
-* Diğer sorularınız
+* Diğer sorular
 
-## <a name="expressroute-using-a-service-provider-and-expressroute-direct"></a>Bir servis sağlayıcısı ve ExpressRoute Direct kullanarak ExpressRoute
+## <a name="expressroute-using-a-service-provider-and-expressroute-direct"></a>Bir hizmet sağlayıcısı ve ExpressRoute Direct kullanarak ExpressRoute
 
-| **Servis sağlayıcı kullanarak ExpressRoute** | **ExpressRoute Direct** | 
+| **Bir hizmet sağlayıcısı kullanarak ExpressRoute** | **ExpressRoute Direct** | 
 | --- | --- |
-| Mevcut altyapıya hızlı biniş ve bağlantı sağlamak için hizmet sağlayıcılardan yararlanıyor | 100 Gbps/10 Gbps altyapı ve tüm katmanların tam yönetimi gerektirir
-| Ethernet ve MPLS dahil olmak üzere yüzlerce sağlayıcıyla tümleşir | Düzenlenmiş endüstriler ve büyük veri alımı için doğrudan/Özel kapasite |
-| 50 Mbps'den 10 Gbps'ye Kadar Devresi SUs'ları | Müşteri 100 Gbps ExpressRoute Direct'te aşağıdaki devre SUS'larının bir kombinasyonunu seçebilir: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gb/sn</li></ul> Müşteri 10 Gbps ExpressRoute Direct'te aşağıdaki devre SUS'larının bir kombinasyonunu seçebilir:<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
-| Tek kiracı için optimize edilsin | Birden fazla iş birimi ve birden fazla çalışma ortamı na sahip tek kiracı için optimize edilmiştir
+| Mevcut altyapıya hızlı ekleme ve bağlantı sağlamak için hizmet sağlayıcılarını kullanır | 100 Gbps/10 Gbps altyapısı ve tüm katmanların tam yönetimi gerekir
+| Ethernet ve MPLS dahil yüzlerce sağlayıcı ile tümleşir | Düzenlenen sektörler ve çok büyük veri alımı için doğrudan/ayrılmış kapasite |
+| 50 Mbps 'den 10 Gbps 'ye devre SKU 'Ları | Müşteri, 100 Gbps ExpressRoute Direct üzerinde aşağıdaki devre SKU 'Larının birleşimini seçebilir: <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gb/sn</li></ul> Müşteri, 10 Gbps ExpressRoute Direct üzerinde aşağıdaki devre SKU 'Larının birleşimini seçebilir:<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
+| Tek kiracı için iyileştirildi | Birden çok iş birimi ve birden çok iş ortamı ile tek bir kiracı için iyileştirildi
 
-## <a name="expressroute-direct-circuits"></a>ExpressRoute Doğrudan devreleri
+## <a name="expressroute-direct-circuits"></a>ExpressRoute doğrudan devreleri
 
-Microsoft Azure ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Microsoft Azure ve Office 365 gibi Microsoft bulut hizmetlerine bağlantılar kurabilirsiniz.
+Microsoft Azure ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Microsoft Azure ve Office 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.
 
-Her bir bakan konumu Microsoft'un küresel ağına erişebilir ve varsayılan olarak jeopolitik bölgedeki herhangi bir bölgeye erişebilir ve premium devreyle tüm küresel bölgelere erişebilir.  
+Her bir eşleme konumu Microsoft 'un küresel ağına erişebilir ve varsayılan olarak, coğrafi olmayan bir bölgedeki herhangi bir bölgeye erişebilir ve Premium bir devrenle tüm genel bölgelere erişebilir.  
 
-Çoğu senaryodaki işlevsellik, çalışması için expressroute servis sağlayıcısı kullanan devrelere eşdeğerdir. ExpressRoute Direct kullanılarak sunulan daha ayrıntılı lığı ve yeni yetenekleri desteklemek için, ExpressRoute Direct Circuits'de belirli temel özellikler vardır.
+Çoğu senaryonun işlevselliği, bir ExpressRoute hizmet sağlayıcısı 'nı çalıştırmak için kullanılan devrelere eşdeğerdir. ExpressRoute Direct kullanılarak sunulan daha fazla ayrıntı düzeyi ve yeni özellikleri desteklemek için, ExpressRoute doğrudan devrelerde mevcut olan bazı önemli yetenekler vardır.
 
-## <a name="circuit-skus"></a>Devre SKUs
+## <a name="circuit-skus"></a>Devre SKU 'Ları
 
-ExpressRoute Direct, Azure depolama ve diğer büyük veri hizmetlerine yönelik büyük veri alma senaryolarını destekler. 100 Gbps ExpressRoute Direct'teki ExpressRoute devreleri artık **40 Gbps** ve **100 Gbps** devre SUs'u da destekliyor. Fiziksel bağlantı noktası çiftleri yalnızca **100 veya 10 Gbps'dir** ve birden çok sanal devreye sahip olabilir. Devre boyutları:
+ExpressRoute Direct, Azure depolama ve diğer büyük veri Hizmetleri için geniş kapsamlı veri alma senaryolarını destekler. 100 Gbps ExpressRoute doğrudan 'daki ExpressRoute devreleri, **40 Gbps** ve **100 Gbps** devre SKU 'larını da desteklemektedir. Fiziksel bağlantı noktası çiftleri yalnızca **100 veya 10 GB/sn** olabilir ve birden çok sanal Devreme sahip olabilir. Devre boyutları:
 
-| **100 Gbps ExpressRoute Doğrudan** | **10 Gbps ExpressRoute Doğrudan** | 
+| **100 Gbps ExpressRoute Direct** | **10 Gbps ExpressRoute Direct** | 
 | --- | --- |
-| **Abone Bant Genişliği**: 200 Gbps | **Abone Bant Genişliği**: 20 Gbps |
+| **Abone olunan bant genişliği**: 200 Gbps | **Abone olunan bant genişliği**: 20 Gbps |
 | <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gb/sn</li></ul> | <ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 
-## <a name="technical-requirements"></a>Teknik Gereksinimler
+## <a name="technical-requirements"></a>Teknik gereksinimler
 
-* Microsoft Enterprise Edge Router (MSEE) Arabirimleri:
-    * Çift 10 veya 100 Gigabit Ethernet bağlantı noktası yalnızca yönlendirici çifti arasında
-    * Tek ModlR Fiber bağlantı
+* Microsoft Kurumsal kenar yönlendirici (MSEE) arabirimleri:
+    * Yalnızca yönlendirici çiftinde çift 10 veya 100 Gigabit Ethernet bağlantı noktası
+    * Tek modlu LR fiber bağlantı
     * IPv4 ve IPv6
     * IP MTU 1500 bayt
 
-* Anahtar/Yönlendirici Katmanı 2/Katman 3 Bağlantı:
-    * 1 802.1Q (Dot1Q) etiketini veya iki Tag 802.1Q (QinQ) etiket kapsüllemasını desteklemelidir
-    * Etertype = 0x8100
-    * Microsoft tarafından belirtilen VLAN KIMLIĞIne dayalı dış VLAN etiketini (STAG) eklemeniz gerekir - *yalnızca QinQ'da geçerlidir*
-    * Bağlantı noktası ve cihaz başına birden fazla BGP oturumlarını (VLAN) desteklemeli
-    * IPv4 ve IPv6 bağlantısı. *IPv6 için ek alt arabirim oluşturulmaz. IPv6 adresi varolan alt arabirime eklenecektir.* 
-    * İsteğe bağlı: ExpressRoute devrelerinde varsayılan olarak yapılandırılan [Çift Yönlü Yönlendirme Algılama (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) desteği
+* Anahtar/yönlendirici katman 2/katman 3 bağlantısı:
+    * 1 802.1 Q (Dot1Q) etiketi veya iki etiket 802.1 Q (QinQ) etiketi kapsüllemeyi desteklemelidir
+    * EtherType = 0x8100
+    * Microsoft tarafından belirtilen VLAN KIMLIğINE bağlı olarak dış VLAN etiketi (STAG) eklenmelidir ve *yalnızca QinQ üzerinde geçerlidir*
+    * Bağlantı noktası ve cihaz başına birden çok BGP oturumu (VLAN) desteklemelidir
+    * IPv4 ve IPv6 bağlantısı. *IPv6 için ek bir alt arabirim oluşturulmaz. IPv6 adresi var olan alt arabirime eklenecektir*. 
+    * İsteğe bağlı: ExpressRoute devrelerinde tüm özel eşlemelerde varsayılan olarak yapılandırılan [çift yönlü Iletme algılaması (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) desteği
 
-## <a name="vlan-tagging"></a>VLAN Etiketleme
+## <a name="vlan-tagging"></a>VLAN etiketleme
 
-ExpressRoute Direct hem QinQ hem de Dot1Q VLAN etiketlemesini destekler.
+ExpressRoute Direct, Qınq ve Dot1Q VLAN etiketlemesini destekler.
 
-* **QinQ VLAN Etiketleme,** ExpressRoute devresi bazında yalıtılmış yönlendirme etki alanlarını sağlar. Azure devre oluşturmada dinamik olarak bir S-Tag ayırır ve değiştirilemez. Devre (Özel ve Microsoft) üzerinde her bakan VLAN olarak benzersiz bir C-Tag kullanır. C-Tag ExpressRoute Direct bağlantı noktalarındadevreler arasında benzersiz olması gerekmez.
+* **Qınq VLAN etiketleme** , ExpressRoute bağlantı hattı başına yalıtılmış yönlendirme etki alanlarına izin verir. Azure, devre oluşturma sırasında dinamik olarak S-Tag ayırır ve değiştirilemez. Devre üzerindeki her eşleme (özel ve Microsoft) VLAN olarak benzersiz bir C-Tag kullanır. C etiketinin, ExpressRoute doğrudan bağlantı noktalarında devreler arasında benzersiz olması gerekmez.
 
-* **Dot1Q VLAN Etiketleme,** ExpressRoute Direct bağlantı noktası çifti bazında tek bir etiketli VLAN'a izin verir. Bir eşlemede kullanılan C-Tag, ExpressRoute Direct bağlantı noktası çiftindeki tüm devreler ve görünümler arasında benzersiz olmalıdır.
+* **DOT1Q VLAN etiketleme** , ExpressRoute doğrudan bağlantı noktası çiftliğine göre tek etiketli VLAN için izin verir. Eşleme üzerinde kullanılan bir C etiketi, ExpressRoute doğrudan bağlantı noktası çiftinin tüm devrelerde ve eşleştirmelerinde benzersiz olmalıdır.
 
 ## <a name="workflow"></a>İş akışı
 
@@ -89,7 +89,7 @@ ExpressRoute Direct hem QinQ hem de Dot1Q VLAN etiketlemesini destekler.
 
 ## <a name="sla"></a>SLA
 
-ExpressRoute Direct, Microsoft Global Network'e Etkin/Etkin yedek bağlantıları yla aynı kurumsal sınıf SLA'yı sağlar. ExpressRoute altyapısı gereksizdir ve Microsoft Global Network'e bağlantı gereksizdir ve çeşitlidir ve müşteri gereksinimlerine göre ölçeklenir. 
+ExpressRoute Direct, Microsoft Global Network 'e etkin/etkin yedekli bağlantılarla aynı kurumsal düzeyde SLA sağlar. ExpressRoute altyapısı gereksizdir ve Microsoft küresel ağı ile bağlantı, müşteri gereksinimleriyle ilgili olarak yedekli ve farklı bir şekilde ölçeklendirilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

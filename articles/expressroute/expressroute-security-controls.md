@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Güvenlik denetimleri'
-description: Azure ExpressRoute'u değerlendirmek için güvenlik denetimleri listesi
+title: 'Azure ExpressRoute: güvenlik denetimleri'
+description: Azure ExpressRoute değerlendirme için güvenlik denetimlerinin denetim listesi
 services: expressroute
 ms.service: expressroute
 author: msmbaldwin
@@ -8,59 +8,59 @@ ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a288b44c07bc2df8529f07264dcee648f3af379a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74079923"
 ---
 # <a name="security-controls-for-azure-expressroute"></a>Azure ExpressRoute için güvenlik denetimleri
 
-Bu makalede, Azure ExpressRoute'da yerleşik güvenlik denetimleri belgeleilmiştir.
+Bu makale, Azure ExpressRoute 'da yerleşik olarak bulunan güvenlik denetimlerini belgeler.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Ağ
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar |
+| Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
-| Hizmet bitiş noktası desteği| Yok |  |
-| VNet enjeksiyon desteği| Yok | |
-| Ağ yalıtımı ve güvenlik duvarı desteği| Evet | Her müşteri kendi yönlendirme etki alanında bulunur ve kendi VNet tünel |
-| Zorunlu tünel desteği| Yok | Sınır Ağ Geçidi Protokolü (BGP) üzerinden. |
+| Hizmet uç noktası desteği| Yok |  |
+| VNet ekleme desteği| Yok | |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Yes | Her müşteri kendi yönlendirme etki alanında bulunur ve kendi VNet 'ine tünel |
+| Zorlamalı tünel desteği| Yok | Sınır Ağ Geçidi Protokolü (BGP) üzerinden. |
 
-## <a name="monitoring--logging"></a>İzleme & günlüğe kaydetme
+## <a name="monitoring--logging"></a>& günlüğü izleme
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar|
+| Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log analitiği, Uygulama öngörüleri, vb.)| Evet | Bkz. [ExpressRoute izleme, ölçümler ve uyarılar.](expressroute-monitoring-metrics-alerts.md)|
-| Kontrol ve yönetim düzlemi günlüğü ve denetimi| Evet |  |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Yes | Bkz. [ExpressRoute izleme, ölçümler ve uyarılar](expressroute-monitoring-metrics-alerts.md).|
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Yes |  |
 | Veri düzlemi günlüğü ve denetimi| Hayır |   |
 
 ## <a name="identity"></a>Kimlik
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar|
+| Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik doğrulaması| Evet | Microsoft için Ağ Geçidi (GWM) (denetleyici) için hizmet hesabı; Dev ve OP için Tam Zamanında (JIT) erişim. |
-| Yetkilendirme|  Evet |Microsoft için Ağ Geçidi (GWM) (denetleyici) için hizmet hesabı; Dev ve OP için Tam Zamanında (JIT) erişim. |
+| Kimlik Doğrulaması| Yes | Microsoft için ağ geçidi için hizmet hesabı (GWM) (denetleyici); Geliştirme ve OP için tam zamanında (JıT) erişim. |
+| Yetkilendirme|  Yes |Microsoft için ağ geçidi için hizmet hesabı (GWM) (denetleyici); Geliştirme ve OP için tam zamanında (JıT) erişim. |
 
 ## <a name="data-protection"></a>Veri koruma
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar |
+| Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
-| Sunucu tarafında şifreleme istirahat: Microsoft tarafından yönetilen anahtarlar |  Yok | ExpressRoute müşteri verilerini depolamaz. |
-| Sunucu tarafında şifreleme istirahat: müşteri tarafından yönetilen anahtarlar (BYOK) | Yok |  |
-| Sütun düzeyi şifreleme (Azure Veri Hizmetleri)| Yok | |
-| Aktarım sırasında şifreleme (ExpressRoute şifreleme, VNet şifreleme ve VNet-VNet şifreleme gibi)| Hayır | |
-| API şifreli aramalar| Evet | [Azure Kaynak Yöneticisi](../azure-resource-manager/index.yml) ve HTTPS üzerinden. |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar |  Yok | ExpressRoute müşteri verilerini depolamaz. |
+| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Yok |  |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Hayır | |
+| Şifrelenmiş API çağrıları| Yes | [Azure Resource Manager](../azure-resource-manager/index.yml) ve https üzerinden. |
 
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar|
+| Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (yapılandırmanın sürümü, vb.)| Evet | Ağ Kaynak Sağlayıcısı (NRP) üzerinden. |
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Yes | Ağ kaynak sağlayıcısı (NRP) aracılığıyla. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure hizmetlerinde yerleşik güvenlik denetimleri](../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.
+- [Azure hizmetleri genelinde yerleşik güvenlik denetimleri](../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.

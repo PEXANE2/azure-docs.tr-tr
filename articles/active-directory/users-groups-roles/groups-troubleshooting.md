@@ -1,6 +1,6 @@
 ---
-title: Dinamik grup üyelikleriyle ilgili sorunları giderin - Azure AD | Microsoft Dokümanlar
-description: Azure Active Directory'de dinamik grup üyeliği için sorun giderme ipuçları
+title: Dinamik grup üyelikleriyle ilgili sorunları giderin-Azure AD | Microsoft Docs
+description: Azure Active Directory dinamik grup üyeliği için sorun giderme ipuçları
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,20 +14,20 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f685ac63e3b4a8cf466be4eb4561472fb084d49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74026554"
 ---
-# <a name="troubleshoot-and-resolve-groups-issues"></a>Grup sorunlarını giderme ve çözme
+# <a name="troubleshoot-and-resolve-groups-issues"></a>Sorun giderme ve grup sorunlarını çözme
 
-## <a name="troubleshooting-group-creation-issues"></a>Sorun giderme grubu oluşturma sorunları
+## <a name="troubleshooting-group-creation-issues"></a>Grup oluşturma sorunlarını giderme
 
-**Azure portalında güvenlik grubu oluşturmayı devre dışı bıraktım, ancak gruplar Powershell aracılığıyla oluşturulabilir** Kullanıcı, Azure portalında ayar lı **Azure portallarında güvenlik grupları oluşturabilir** ve yönetici olmayan kullanıcıların Access panelinde veya Azure portalında güvenlik grupları oluşturup oluşturamayacağını denetler. Powershell üzerinden güvenlik grubu oluşturmayı denetlemez.
+**Azure Portal güvenlik grubu oluşturmayı devre dışı ediyorum, ancak gruplar hala PowerShell aracılığıyla oluşturulabilir** Kullanıcı, yönetici olmayan kullanıcıların erişim panelinde veya Azure portal güvenlik grupları oluşturup oluşturamayacağını kontrol Azure portal denetimlerinde **Azure portalları ayarında güvenlik grupları oluşturabilir** . PowerShell aracılığıyla güvenlik grubu oluşturmayı denetlemez.
 
-Powershell'de yönetici olmayan kullanıcılar için grup oluşturmayı devre dışı kalım:
-1. Yönetici olmayan kullanıcıların grup oluşturmasına izin verildiğini doğrulayın:
+PowerShell 'de yönetici olmayan kullanıcılar için Grup oluşturmayı devre dışı bırakmak için:
+1. Yönetici olmayan kullanıcıların grup oluşturmalarına izin verildiğini doğrulayın:
    
 
    ```powershell
@@ -35,40 +35,40 @@ Powershell'de yönetici olmayan kullanıcılar için grup oluşturmayı devre d�
    ```
 
   
-2. Dönerse, `UsersPermissionToCreateGroupsEnabled : True`yönetici olmayan kullanıcılar gruplar oluşturabilir. Bu özelliği devre dışı kalmak için:
+2. Döndürürse `UsersPermissionToCreateGroupsEnabled : True`yönetici olmayan kullanıcılar grupları oluşturabilir. Bu özelliği devre dışı bırakmak için:
   
 
    ``` 
    Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
    ```
 
-<br/>**Powershell'de Dinamik Grup oluşturmaya çalışırken izin verilen maksimum gruplar aldı**<br/>
-Powershell'de, izin verilen _gruplar sayısının en yüksek_olduğunu belirten dinamik grup ilkelerini belirten bir ileti alırsanız, bu, kiracınızdaki Dinamik gruplar için maksimum sınıra ulaştığınız anlamına gelir. Kiracı başına en fazla Dinamik grup sayısı 5.000'dir.
+<br/>**PowerShell 'de dinamik bir grup oluşturmaya çalışırken izin verilen en fazla grup hatasını aldım**<br/>
+PowerShell 'de, _dinamik grup ilkelerinin izin verilen en fazla grup sayısına ulaşıldığını_belirten bir ileti alırsanız, bu, kiracınızdaki dinamik gruplar için en yüksek sınıra ulaştığınız anlamına gelir. Her kiracı için en fazla dinamik grup sayısı 5.000 ' dir.
 
-Yeni Dinamik gruplar oluşturmak için öncelikle varolan bazı Dinamik grupları silmeniz gerekir. Sınırı arttırmak için bir yol yok.
+Yeni dinamik gruplar oluşturmak için önce var olan bazı dinamik grupları silmeniz gerekir. Sınırı artırmanın bir yolu yoktur.
 
 ## <a name="troubleshooting-dynamic-memberships-for-groups"></a>Gruplar için dinamik üyelik sorunlarını giderme
 
-**Bir grup la ilgili bir kural yapılandırıldım ancak grupta hiçbir üyelik güncelleştirilemiş**<br/>
-1. Kuraldaki kullanıcı veya aygıt özniteliklerinin değerlerini doğrulayın. Kuralı karşılayan kullanıcılar olduğundan emin olun. Aygıtlar için, eşitlenen özniteliklerin beklenen değerleri içerdiğinden emin olmak için aygıt özelliklerini denetleyin.<br/>
-2. Tamam olup olmadığını doğrulamak için üyelik işleme durumunu kontrol edin. Grup için **Genel Bakış** sayfasında [üyelik işleme durumunu](groups-create-rule.md#check-processing-status-for-a-rule) ve son güncellenen tarihi kontrol edebilirsiniz.
+**Grupta bir kural yapılandırdım, ancak grupta hiçbir üyelik güncelleştirilmedi**<br/>
+1. Kuraldaki Kullanıcı veya cihaz özniteliklerinin değerlerini doğrulayın. Kuralı karşılayan kullanıcılar olduğundan emin olun. Cihazlar için, eşitlenen özniteliklerin beklenen değerleri içerdiğinden emin olmak için cihaz özelliklerini denetleyin.<br/>
+2. Tamamlanmamış olduğunu onaylamak için üyelik işleme durumunu kontrol edin. Grubun **genel bakış** sayfasında [Üyelik işleme durumunu](groups-create-rule.md#check-processing-status-for-a-rule) ve son güncelleştirilme tarihini kontrol edebilirsiniz.
 
-Her şey yolunda görünüyorsa, lütfen grubun doldurması için biraz zaman verin. Kiracınızın boyutuna bağlı olarak, ilk seferinde veya kural değişikliğinden sonra grubun doldurulması 24 saat kadar sürebilir.
+Her şey iyi görünüyorsa, lütfen grubun doldurulması için bir süre bekleyin. Kiracınızın boyutuna bağlı olarak, ilk seferinde veya kural değişikliğinden sonra grubun doldurulması 24 saat kadar sürebilir.
 
-**Bir kural yapılandırıldım, ancak şimdi kuralın varolan üyeleri kaldırıldı**<br/>Bu beklenen bir davranıştır. Bir kural etkinleştirildiğinde veya değiştirildiğinde grubun varolan üyeleri kaldırılır. Kuralın değerlendirilmesinden döndürülen kullanıcılar gruba üye olarak eklenir.
+**Bir kural yapılandırdım, ancak artık kuralın var olan üyeleri kaldırılıyor**<br/>Bu beklenen bir davranıştır. Bir kural etkinleştirildiğinde veya değiştirildiğinde grubun mevcut üyeleri kaldırılır. Kural değerlendirmesinden döndürülen kullanıcılar gruba üye olarak eklenir.
 
-**Bir kural eklediğimde veya değiştirdiğimde üyelik değişikliklerini anında görmüyorum, neden olmasın?**<br/>Özel üyelik değerlendirmesi periyodik olarak eşzamanlı bir arka plan sürecinde yapılır. İşlemin ne kadar süreceği, dizininizdeki kullanıcı sayısına ve kuralın sonucu olarak oluşturulan grubun boyutuna göre belirlenir. Genellikle, az sayıda kullanıcıya sahip dizinler grup üyeliğinin birkaç dakikadan kısa bir sürede değiştiğini görür. Çok sayıda kullanıcıya sahip dizinlerin doldurulması 30 dakika veya daha uzun sürebilir.
+**Bir kural eklerken veya değiştirdiğimde, üyelik değişikliklerini anında görmem, neden değil?**<br/>Adanmış üyelik değerlendirmesi zaman uyumsuz bir arka plan işleminde düzenli aralıklarla yapılır. İşlemin ne kadar süreceği, dizininizdeki kullanıcı sayısına ve kuralın sonucu olarak oluşturulan grubun boyutuna göre belirlenir. Genellikle, az sayıda kullanıcısı olan dizinler grup üyeliği değişikliğini birkaç dakikadan kısa bir süre içinde görür. Çok sayıda kullanıcısı olan dizinler, doldurulması 30 dakika veya daha uzun sürebilir.
 
-**Grubu şimdi işleme almaya nasıl zorlayabilirim?**<br/>
-Şu anda, isteğe bağlı olarak işlenecek grubu otomatik olarak tetiklemenin bir yolu yoktur. Ancak, sonunda bir boşluk eklemek için üyelik kuralını güncelleştirerek yeniden işlemeyi el ile tetikleyebilirsiniz.  
+**Grubu şimdi işleme nasıl zorlayabilir?**<br/>
+Şu anda, grubun talep üzerine işlenmek üzere otomatik olarak tetiklenmesi için bir yol yoktur. Ancak, üyelik kuralını, sonunda boşluk eklemek üzere güncelleştirerek yeniden işlemeyi el ile tetikleyebilirsiniz.  
 
-**Bir kural işleme hatasıyla karşılaştım**<br/>Aşağıdaki tabloda ortak dinamik üyelik kuralı hataları ve bunların nasıl düzeltilen listelenilir.
+**Bir kural işleme hatasıyla karşılaştım**<br/>Aşağıdaki tabloda, yaygın dinamik üyelik kuralı hataları ve nasıl düzelticekleri listelenmektedir.
 
-| Kural ayrıştırıcı hatası | Hata kullanımı | Düzeltilmiş kullanım |
+| Kural ayrıştırıcı hatası | Hata kullanımı | Düzeltilen kullanım |
 | --- | --- | --- |
-| Hata: Öznitelik desteklenmez. |(user.invalidProperty -eq "Değer") |(user.department -eq "değer")<br/><br/>Özniteliğin desteklenen özellikler [listesinde](groups-dynamic-membership.md#supported-properties)olduğundan emin olun. |
-| Hata: İşleç öznitelik olarak desteklenmez. |(user.accountEnabled -true içerir) |(user.accountEtkin -eq true)<br/><br/>Kullanılan işleç özellik türü için desteklenmez (bu örnekte, -içeren tip boolean kullanılamaz). Özellik türü için doğru işleçleri kullanın. |
-| Hata: Sorgu derleme hatası. | 1. (user.department -eq "Satış") (user.department -eq "Marketing")<br>2. (user.userPrincipalName -match@domain.ext"* ") | 1. Eksik operatör. -ve -veya -veya iki birleştirme yüklemlerini kullanma<br>(user.department -eq "Satış") -veya (user.department -eq "Marketing")<br>2. -match ile kullanılan normal ifadehata<br>(user.userPrincipalName -match ".*@domain.ext")<br>veya alternatif olarak: (user.userPrincipalName@domain.ext-match " $") |
+| Hata: öznitelik desteklenmiyor. |(User. ınvalidproperty-EQ "Value") |(User. Department-EQ "değer")<br/><br/>Özniteliğin [desteklenen özellikler listesinde](groups-dynamic-membership.md#supported-properties)olduğundan emin olun. |
+| Hata: Işleç öznitelik üzerinde desteklenmiyor. |(User. accountEnabled-true içerir) |(User. accountEnabled-EQ true)<br/><br/>Kullanılan işleç Özellik türü için desteklenmiyor (Bu örnekte-Contains, Boolean türü üzerinde kullanılamaz). Özellik türü için doğru işleçleri kullanın. |
+| Hata: sorgu derleme hatası. | 1. (User. Department-EQ "Sales") (User. Department-EQ "pazarlama")<br>2. (User. userPrincipalName-Match "*@domain.ext") | 1. işleç eksik. Ve veya ya da iki JOIN yüklemleri kullanın<br>(User. Department-EQ "Sales")-veya (User. Department-EQ "pazarlama")<br>2.-Match ile kullanılan normal ifadede hata<br>(User. userPrincipalName-Match ". *@domain.ext")<br>ya da alternatif olarak: (User. userPrincipalName-@domain.extMatch "$") |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -76,5 +76,5 @@ Bu makalelerde Azure Active Directory ile ilgili ek bilgi sağlanmıştır.
 
 * [Azure Active Directory grupları ile kaynaklara erişimi yönetme](../fundamentals/active-directory-manage-groups.md)
 * [Azure Active Directory’de Uygulama Yönetimi](../manage-apps/what-is-application-management.md)
-* [Azure Etkin Dizin nedir?](../fundamentals/active-directory-whatis.md)
+* [Azure Active Directory nedir?](../fundamentals/active-directory-whatis.md)
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](../hybrid/whatis-hybrid-identity.md)

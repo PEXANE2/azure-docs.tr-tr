@@ -1,6 +1,6 @@
 ---
-title: azcopy giriş | Microsoft Dokümanlar
-description: Bu makalede, azcopy giriş komutu için referans bilgileri sağlar.
+title: AzCopy Logout | Microsoft Docs
+description: Bu makale, AzCopy Logout komutu için başvuru bilgileri sağlar.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,19 +9,19 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 538c54c338540059baa17b9818d444cc863b7309
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74034066"
 ---
 # <a name="azcopy-logout"></a>azcopy oturumu kapatma
 
-Kullanıcıyı oturumu açar ve Azure Depolama kaynaklarına erişimi sonlandırır.
+Kullanıcıyı günlüğe kaydeder ve Azure depolama kaynaklarına erişimi sonlandırır.
 
-## <a name="synopsis"></a>Özet
+## <a name="synopsis"></a>Özeti
 
-Bu komut, geçerli kullanıcı için önbelleğe alınmış tüm oturum açma bilgilerini kaldırır.
+Bu komut, geçerli kullanıcı için tüm önbelleğe alınmış oturum açma bilgilerini kaldırır.
 
 ```azcopy
 azcopy logout [flags]
@@ -30,22 +30,22 @@ azcopy logout [flags]
 ## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
 
 - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
-- [AzCopy ve Blob depolama ile veri aktarımı](storage-use-azcopy-blobs.md)
-- [AzCopy ve dosya depolama ile veri aktarımı](storage-use-azcopy-files.md)
-- [AzCopy'i yapılandırma, en iyi duruma getirme ve sorun giderme](storage-use-azcopy-configure.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Seçenekler
 
 |Seçenek|Açıklama|
 |--|--|
-|-h, --yardım|Oturum açma komutu için yardım içeriğini göster.|
+|-h,--yardım|Logout komutu için yardım içeriğini göster.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
 
 |Seçenek|Açıklama|
 |---|---|
-|--kap-mbps uint32|Transfer hızını saniyede megabit olarak kaplar. Anlık iş artışı kapaktan biraz farklı olabilir. Bu seçenek sıfıra ayarlanmışsa veya atlanırsa, iş elde etme kapaklı değildir.|
-|--çıkış türü dize|Komutçıktısının biçimi. Seçenekler şunlardır: metin, json. Varsayılan değer "metin"dir.|
+|--Cap-Mbps uint32|Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.|
+|--çıkış türü dize|Komutun çıktısının biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer "Text" değeridir.|
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

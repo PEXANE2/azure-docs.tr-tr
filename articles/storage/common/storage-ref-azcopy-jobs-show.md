@@ -1,6 +1,6 @@
 ---
-title: azcopy işleri göstermek | Microsoft Dokümanlar
-description: Bu makalede, azcopy işleri için referans bilgileri komutu gösterir.
+title: AzCopy işleri göster | Microsoft Docs
+description: Bu makale, AzCopy işleri göster komutu için başvuru bilgileri sağlar.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,23 +9,23 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 7b5f566757dd77a61f252b123d0c9c1b74303fbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74034129"
 ---
 # <a name="azcopy-jobs-show"></a>azcopy işleri gösterme
 
-Verilen iş kimliği için ayrıntılı bilgileri gösterir.
+Verilen iş KIMLIĞI için ayrıntılı bilgileri gösterir.
 
-## <a name="synopsis"></a>Özet
+## <a name="synopsis"></a>Özeti
 
-Yalnızca iş kimliği bayrak olmadan sağlanırsa, işin ilerleme özeti döndürülür.
+Yalnızca iş KIMLIĞI bayrak olmadan sağlanırsa, işin ilerleme Özeti döndürülür.
 
-Bu komutu çalıştırdığınızda görünen bayt sayısı ve yüzde tam, yalnızca iş yerinde tamamlanan dosyaları yansıtır. Kısmen tamamlanmış dosyaları yansıtmaz.
+Bu komutu çalıştırdığınızda görüntülenen bayt sayısı ve tamamlanma yüzdesi, yalnızca işte tamamlanan dosyaları yansıtır. Kısmen tamamlanmış dosyaları yansıtmaz.
 
-`with-status` Bayrak ayarlanırsa, verilen değeri olan işteki aktarımlistesi gösterilir.
+`with-status` Bayrak ayarlandıysa, söz konusu değere sahip iş içindeki aktarımların listesi görüntülenir.
 
 ```azcopy
 azcopy jobs show [jobID] [flags]
@@ -34,23 +34,23 @@ azcopy jobs show [jobID] [flags]
 ## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
 
 - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
-- [AzCopy ve Blob depolama ile veri aktarımı](storage-use-azcopy-blobs.md)
-- [AzCopy ve dosya depolama ile veri aktarımı](storage-use-azcopy-files.md)
-- [AzCopy'i yapılandırma, en iyi duruma getirme ve sorun giderme](storage-use-azcopy-configure.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Seçenekler
 
 |Seçenek|Açıklama|
 |--|--|
-|-h, --yardım|Gösteri komutu için yardım içeriğini gösterir.|
-|--durum dizesi ile|Yalnızca bu durumla iş aktarımlarını listele, kullanılabilir değerleri: Başlangıç, Başarı, Başarısız|
+|-h,--yardım|Göster komutu için yardım içeriğini gösterir.|
+|--durum dizesi|Yalnızca bu duruma sahip iş aktarımlarını Listele, kullanılabilir değerler: başlatıldı, başarılı, başarısız oldu|
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
 
 |Seçenek|Açıklama|
 |---|---|
-|--kap-mbps uint32|Transfer hızını saniyede megabit olarak kaplar. Anlık iş artışı kapaktan biraz farklı olabilir. Bu seçenek sıfıra ayarlanmışsa veya atlanırsa, iş elde etme kapaklı değildir.|
-|--çıkış türü dize|Komutçıktısının biçimi. Seçenekler şunlardır: metin, json. Varsayılan değer "metin"dir.|
+|--Cap-Mbps uint32|Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.|
+|--çıkış türü dize|Komutun çıktısının biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer "Text" değeridir.|
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

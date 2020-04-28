@@ -1,6 +1,6 @@
 ---
-title: CLI kullanarak kuralları özelleştirme - Azure Web Uygulaması Güvenlik Duvarı
-description: Bu makalede, Azure CLI ile Uygulama Ağ Geçidi'nde Web Uygulaması Güvenlik Duvarı kurallarının nasıl özelleştirilene ilişkin bilgiler verilmektedir.
+title: CLı kullanarak kuralları özelleştirme-Azure Web uygulaması güvenlik duvarı
+description: Bu makalede, Azure CLı ile Application Gateway 'de Web uygulaması Güvenlik Duvarı kurallarının nasıl özelleştirileceği hakkında bilgi verilmektedir.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,29 +8,29 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: 8e8aaa9458619bc937c5bb11c450f3197b92f451
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74048524"
 ---
-# <a name="customize-web-application-firewall-rules-using-the-azure-cli"></a>Azure CLI'yi kullanarak Web Uygulaması Güvenlik Duvarı kurallarını özelleştirin
+# <a name="customize-web-application-firewall-rules-using-the-azure-cli"></a>Azure CLı kullanarak Web uygulaması güvenlik duvarı kurallarını özelleştirme
 
-Azure Uygulama Ağ Geçidi Web Uygulaması Güvenlik Duvarı (WAF), web uygulamaları için koruma sağlar. Bu korumalar Açık Web Uygulama Güvenlik Projesi (OWASP) Temel Kural Kümesi (CRS) tarafından sağlanır. Bazı kurallar yanlış pozitif neden olabilir ve gerçek trafiği engellemek. Bu nedenle, Uygulama Ağ Geçidi kural gruplarını ve kuralları özelleştirme olanağı sağlar. Belirli kural grupları ve kuralları hakkında daha fazla bilgi için [bkz.](application-gateway-crs-rulegroups-rules.md)
+Azure Application Gateway Web uygulaması güvenlik duvarı (WAF), Web uygulamaları için koruma sağlar. Bu korumalar, Open Web Application Security Project (OWASP) çekirdek kural kümesi (CCR) tarafından sağlanır. Bazı kurallar yanlış pozitif sonuçlar oluşmasına neden olabilir ve gerçek trafiği engelleyebilir. Bu nedenle, Application Gateway kural gruplarını ve kuralları özelleştirme yeteneği sağlar. Belirli kural grupları ve kuralları hakkında daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı liste grupları ve kuralları listesi](application-gateway-crs-rulegroups-rules.md).
 
-## <a name="view-rule-groups-and-rules"></a>Kural gruplarını ve kuralları görüntüleme
+## <a name="view-rule-groups-and-rules"></a>Kural gruplarını ve kuralları görüntüle
 
-Aşağıdaki kod örnekleri, yapılandırılabilir kurallar ve kural gruplarının nasıl görüntülenebildiğini gösterir.
+Aşağıdaki kod örnekleri, yapılandırılabilir kuralların ve kural gruplarının nasıl görüntüleneceğini gösterir.
 
-### <a name="view-rule-groups"></a>Kural gruplarını görüntüleme
+### <a name="view-rule-groups"></a>Kural gruplarını görüntüle
 
-Aşağıdaki örnekte kural gruplarının nasıl görüntülenenegösterilmektedir:
+Aşağıdaki örnek, kural gruplarının nasıl görüntüleneceğini göstermektedir:
 
 ```azurecli-interactive
 az network application-gateway waf-config list-rule-sets --type OWASP
 ```
 
-Aşağıdaki çıktı, önceki örnekten kesilen bir yanıttır:
+Aşağıdaki çıktı, yukarıdaki örnekten kesilen bir yanıt örneğidir:
 
 ```json
 [
@@ -75,15 +75,15 @@ Aşağıdaki çıktı, önceki örnekten kesilen bir yanıttır:
 ]
 ```
 
-### <a name="view-rules-in-a-rule-group"></a>Kural grubunda kuralları görüntüleme
+### <a name="view-rules-in-a-rule-group"></a>Kuralları bir kural grubunda görüntüleme
 
-Aşağıdaki örnek, belirli bir kural grubunda kuralların nasıl görüntülenebildiğini gösterir:
+Aşağıdaki örnek, kuralların belirtilen bir kural grubunda nasıl görüntüleneceğini göstermektedir:
 
 ```azurecli-interactive
 az network application-gateway waf-config list-rule-sets --group "REQUEST-910-IP-REPUTATION"
 ```
 
-Aşağıdaki çıktı, önceki örnekten kesilen bir yanıttır:
+Aşağıdaki çıktı, yukarıdaki örnekten kesilen bir yanıt örneğidir:
 
 ```json
 [
@@ -114,9 +114,9 @@ Aşağıdaki çıktı, önceki örnekten kesilen bir yanıttır:
 ]
 ```
 
-## <a name="disable-rules"></a>Kuralları devre dışı
+## <a name="disable-rules"></a>Kuralları devre dışı bırak
 
-Aşağıdaki örnek kuralları `910018` devre dışı `910017` kılabilir ve bir uygulama ağ geçidinde:
+Aşağıdaki örnek, kuralları `910018` ve `910017` bir uygulama ağ geçidi üzerinde devre dışı bırakır:
 
 ```azurecli-interactive
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
@@ -124,20 +124,20 @@ az network application-gateway waf-config set --resource-group AdatumAppGatewayR
 
 ## <a name="mandatory-rules"></a>Zorunlu kurallar
 
-Aşağıdaki liste, WAF'ın Önleme Modundayken isteği engellemesine neden olan koşulları içerir (Algılama Modunda özel durum olarak kaydedilirler). Bunlar yapılandırılamaz veya devre dışı tutulamaz:
+Aşağıdaki liste, WAF 'nin önleme modundayken isteği engellemesini sağlayan koşullar içerir (algılama modunda özel durumlar olarak günlüğe kaydedilir). Bunlar yapılandırılamaz veya devre dışı bırakılamaz:
 
-* Vücut denetimi kapalı olmadığı sürece istek gövdesinin ayrıştırılmaması, isteğin engellenmesine neden olur (XML, JSON, form verileri)
-* İstek gövdesi (dosya olmadan) veri uzunluğu yapılandırılan sınırdan daha büyüktür
-* İstek gövdesi (dosyalar dahil) sınırdan daha büyüktür
-* WAF motorunda bir iç hata oluştu
+* Gövde incelemesi devre dışı bırakılmadığı takdirde istek gövdesi ayrıştırılamadı, istek engellenmiyor (XML, JSON, form verileri)
+* İstek gövdesi (dosya olmadan) veri uzunluğu yapılandırılan sınırdan daha büyük
+* İstek gövdesi (dosyalar dahil) sınırdan daha büyük
+* WAF altyapısında bir iç hata oluştu
 
-CRS 3.x özel:
+X + x 'e özgü:
 
-* Gelen anomali puanı eşik aşıldı
+* Gelen anomali puanı eşiği aştı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Devre dışı bırakılmış kurallarınızı yapılandırıldıktan sonra WAF günlüklerinizi nasıl görüntülediğinizi öğrenebilirsiniz. Daha fazla bilgi için [Uygulama Ağ Geçidi tanılama](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)bakın.
+Devre dışı kurallarınızı yapılandırdıktan sonra, WAF günlüklerinizi görüntülemeyi öğrenebilirsiniz. Daha fazla bilgi için bkz. [tanılama Application Gateway](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png

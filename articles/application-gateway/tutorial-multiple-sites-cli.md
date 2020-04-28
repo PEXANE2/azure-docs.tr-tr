@@ -1,5 +1,5 @@
 ---
-title: CLI kullanarak birden çok web sitesi barındırma
+title: CLı kullanarak birden çok Web sitesi barındırma
 titleSuffix: Azure Application Gateway
 description: Azure CLI kullanarak, birden çok web sitesi barındıran bir uygulama ağ geçidi oluşturmayı öğrenin.
 services: application-gateway
@@ -10,15 +10,15 @@ ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 0a92d0f7d17f6bb83efbe94434c25072975dbe57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74047350"
 ---
-# <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Azure CLI'yi kullanarak birden çok web sitesine ev sahipliği yapan bir uygulama ağ geçidi oluşturma
+# <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Azure CLı kullanarak birden çok Web sitesini barındıran bir uygulama ağ geçidi oluşturma
 
-Bir [uygulama ağ geçidi](overview.md) oluştururken Azure CLI’sini [birden çok web sitesi barındırmayı yapılandırmak](multiple-site-overview.md) için kullanabilirsiniz. Bu makalede, sanal makine ölçek kümelerini kullanarak arka uç adres havuzlarını tanımlarsınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu makalede, birden çok etki alanı kendi varsayar ve *www\.contoso.com* ve *www\.fabrikam.com*örnekleri kullanır.
+Bir [uygulama ağ geçidi](overview.md) oluştururken Azure CLI’sini [birden çok web sitesi barındırmayı yapılandırmak](multiple-site-overview.md) için kullanabilirsiniz. Bu makalede, sanal makine ölçek kümelerini kullanarak arka uç adres havuzları tanımlarsınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www\.contoso.com* ve *www\.fabrikam.com*örneklerini kullanan varsayılmaktadır.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -34,11 +34,11 @@ Bu makalede şunları öğreneceksiniz:
 
 İsterseniz, [Azure PowerShell](tutorial-multiple-sites-powershell.md)kullanarak bu yordamı tamamlayabilirsiniz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure CLI sürümü 2.0.4 veya sonraki sürümlerini çalıştırdığınız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.4 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -106,7 +106,7 @@ Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Uygulama ağ 
 
 ### <a name="add-the-backend-pools"></a>Arka uç havuzlarını ekleme
 
-[Az network application-gateway adresi-havuzu oluşturmayı](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create) kullanarak arka uç sunucularını içermek için gereken arka uç havuzları ekleme
+[Az Network Application-Gateway Address-Pool Create](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create) kullanılarak arka uç sunucularını içermesi için gereken arka uç havuzlarını ekleyin
 ```azurecli-interactive
 az network application-gateway address-pool create \
   --gateway-name myAppGateway \
@@ -143,9 +143,9 @@ az network application-gateway http-listener create \
 
 ### <a name="add-routing-rules"></a>Yönlendirme kuralları ekleme
 
-Kurallar listelendikleri sırayla işlenir. Trafik, özgüllüğü ne olursa olsun eşleşen ilk kural kullanılarak yönlendirilir. Örneğin, aynı bağlantı noktasında temel bir dinleyici kullanan bir kuralınız ve çok siteli dinleyici kullanan bir kuralınız varsa çok siteli kuralın beklendiği gibi çalışması için çok siteli dinleyicinin kuralı temel dinleyici kuralından önce listelenmelidir. 
+Kurallar listelendikleri sırada işlenir. Trafik, özellikten bağımsız olarak eşleşen ilk kural kullanılarak yönlendirilir. Örneğin, aynı bağlantı noktasında temel bir dinleyici kullanan bir kuralınız ve çok siteli dinleyici kullanan bir kuralınız varsa çok siteli kuralın beklendiği gibi çalışması için çok siteli dinleyicinin kuralı temel dinleyici kuralından önce listelenmelidir. 
 
-Bu örnekte, iki yeni kural oluşturur ve uygulama ağ geçidini dağıttığınızda oluşturulan varsayılan kuralı silersiniz. Kuralı [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) komutunu kullanarak ekleyebilirsiniz.
+Bu örnekte, iki yeni kural oluşturur ve uygulama ağ geçidini dağıtırken oluşturulan varsayılan kuralı silebilirsiniz. Kuralı [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) komutunu kullanarak ekleyebilirsiniz.
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -232,11 +232,11 @@ az network public-ip show \
   --output tsv
 ```
 
-Uygulama ağ geçidi yeniden başlatıldığında VIP değişebileceğinden A kayıtlarının kullanılması önerilmez.
+Uygulama ağ geçidi yeniden başlatıldığında VIP değiştirebileceğinden, A kayıtlarının kullanılması önerilmez.
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Tarayıcınızın adres çubuğuna, etki alanı adınızı girin. Mesela, http:\//www.contoso.com.
+Tarayıcınızın adres çubuğuna, etki alanı adınızı girin. Örneğin, http:\//www.contoso.com.
 
 ![Uygulama ağ geçidinde contoso test etme](./media/tutorial-multiple-sites-cli/application-gateway-nginxtest1.png)
 

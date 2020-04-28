@@ -1,6 +1,6 @@
 ---
-title: Streç Veritabanı için Saydam Veri Şifrelemesini Etkinleştir
-description: Azure'daki SQL Server Stretch Veritabanı için Saydam Veri Şifrelemesini (TDE) etkinleştirme
+title: Stretch Database için Saydam Veri Şifrelemesi etkinleştir
+description: Azure 'da SQL Server Stretch Database için Saydam Veri Şifrelemesi (TDE) etkinleştirme
 services: sql-server-stretch-database
 documentationcenter: ''
 ms.assetid: a44ed8f5-b416-4c41-9b1e-b7271f10bdc3
@@ -15,39 +15,39 @@ ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 465338bb793ad7b4fc406e9d1c073b9dc0dc06c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74034006"
 ---
-# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Azure'da Streç Veritabanı için Saydam Veri Şifrelemesini (TDE) etkinleştirme
+# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Azure 'da Stretch Database için Saydam Veri Şifrelemesi (TDE) etkinleştir
 > [!div class="op_single_selector"]
-> * [Azure portalında](sql-server-stretch-database-encryption-tde.md)
-> * [Tsql](sql-server-stretch-database-tde-tsql.md)
+> * [Azure portal](sql-server-stretch-database-encryption-tde.md)
+> * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
 
-Saydam Veri Şifreleme (TDE), uygulamada değişiklik gerektirmeden veritabanının, ilişkili yedeklemelerin ve işlem günlüğü dosyalarının gerçek zamanlı şifreleme ve şifre çözme işlemlerini gerçekleştirerek kötü amaçlı etkinlik tehdidine karşı korumaya yardımcı olur.
+Saydam Veri Şifrelemesi (TDE), uygulamada değişiklik yapılmasına gerek kalmadan veritabanı, ilişkili yedeklemeler ve bekleyen işlem günlüğü dosyalarının gerçek zamanlı şifrelemesini ve şifre çözmeyi gerçekleştirerek kötü amaçlı etkinlik tehditlerine karşı korunmaya yardımcı olur.
 
-TDE, veritabanı şifreleme anahtarı olarak adlandırılan bir simetrik anahtarı kullanarak veritabanı depolama alanının tamamını şifreler. Veritabanı şifreleme anahtarı yerleşik bir sunucu sertifikası tarafından korunur. Yerleşik sunucu sertifikası her Azure sunucusu için benzersizdir. Microsoft bu sertifikaları en az 90 günde bir otomatik olarak döndürür. TDE'nin genel açıklaması için [bkz.]
+TDE, veritabanı şifreleme anahtarı olarak adlandırılan bir simetrik anahtarı kullanarak veritabanı depolama alanının tamamını şifreler. Veritabanı şifreleme anahtarı yerleşik bir sunucu sertifikası tarafından korunur. Yerleşik sunucu sertifikası her bir Azure sunucusu için benzersizdir. Microsoft bu sertifikaları en az 90 günde bir otomatik olarak döndürür. TDE genel bir açıklaması için, bkz. [Saydam veri şifrelemesi (tde)].
 
-## <a name="enabling-encryption"></a>Şifrelemeyi Etkinleştirme
-Esneme etkin leştirilmiş bir SQL Server veritabanından geçirilen verileri depolayan bir Azure veritabanı için TDE'yi etkinleştirmek için aşağıdaki leri yapın:
+## <a name="enabling-encryption"></a>Şifrelemeyi etkinleştirme
+Esnetme özellikli bir SQL Server veritabanından geçirilen verileri depolayan bir Azure veritabanı için TDE 'yı etkinleştirmek üzere aşağıdaki işlemleri yapın:
 
-1. [Azure portalında](https://portal.azure.com) veritabanını açma
-2. Veritabanı bıçak, **Ayarlar** düğmesini tıklatın
-3. Saydam **veri şifreleme** seçeneğini seçin![][1]
-4. **Ayarı'nı** seçin ve sonra **Kaydet'i** seçin
+1. Veritabanını [Azure Portal](https://portal.azure.com) açın
+2. Veritabanı dikey penceresinde **Ayarlar** düğmesine tıklayın.
+3. **Saydam veri şifreleme** seçeneğini belirleyin![][1]
+4. **Açık** ayarını seçin ve ardından **Kaydet** ' i seçin.
    ![][2]
 
-## <a name="disabling-encryption"></a>Şifrelemeyi Devre Dışı Bırakma
-Esneme etkin leştirilmiş bir SQL Server veritabanından geçirilen verileri depolayan bir Azure veritabanı için TDE'yi devre dışı kılabilir, aşağıdaki leri yapın:
+## <a name="disabling-encryption"></a>Şifrelemeyi devre dışı bırakma
+Esnetme özellikli bir SQL Server veritabanından geçirilen verileri depolayan bir Azure veritabanı için TDE ' ı devre dışı bırakmak için aşağıdaki işlemleri yapın:
 
-1. [Azure portalında](https://portal.azure.com) veritabanını açma
-2. Veritabanı bıçak, **Ayarlar** düğmesini tıklatın
-3. Saydam **veri şifreleme** seçeneğini seçin
-4. **Kapalı** ayarını seçin ve sonra **Kaydet'i** seçin
+1. Veritabanını [Azure Portal](https://portal.azure.com) açın
+2. Veritabanı dikey penceresinde **Ayarlar** düğmesine tıklayın.
+3. **Saydam veri şifreleme** seçeneğini belirleyin
+4. **Kapalı** ayarını seçin ve ardından **Kaydet** ' i seçin.
 
 <!--Anchors-->
 [Saydam Veri Şifrelemesi (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx

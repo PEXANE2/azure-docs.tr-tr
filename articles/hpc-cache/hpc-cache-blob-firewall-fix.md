@@ -1,34 +1,34 @@
 ---
-title: Depolama güvenlik duvarı ayarlarını aşma
-description: Azure HPC Önbelleğinde Bir Azure Blob depolama hedefi oluştururken depolama hesabı ağı güvenlik duvarı ayarı başarısızlığa neden olabilir. Bu makalede, bir yazılım düzeltmesi yerine gelene kadar sınırlama için geçici çözüm sağlar.
+title: Depolama güvenlik duvarı ayarlarını çözmek
+description: Azure HPC önbelleğinde bir Azure Blob depolama hedefi oluştururken bir depolama hesabı ağ güvenlik duvarı ayarı hata oluşmasına neden olabilir. Bu makale, bir yazılım düzeltmesinin gerçekleşene kadar sınırlama için geçici bir çözüm sunar.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.author: rohogue
 ms.openlocfilehash: 6643662d498db8cbcffcb120a9ceabc46cfc04cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74174414"
 ---
 # <a name="work-around-blob-storage-account-firewall-settings"></a>Blob depolama hesabı güvenlik duvarı ayarları geçici çözümü
 
-Depolama hesabı güvenlik duvarlarında kullanılan belirli bir ayar Blob depolama hedef oluşturma başarısız neden olabilir. Azure HPC Önbellek ekibi bu sorun için bir yazılım düzeltmesi üzerinde çalışıyor, ancak bu makaledeki yönergeleri izleyerek bu sorunu çözebilirsiniz.
+Depolama hesabı güvenlik duvarları içinde kullanılan belirli bir ayar, BLOB depolama hedefi oluşturmanın başarısız olmasına neden olabilir. Azure HPC önbellek ekibi, bu soruna yönelik bir yazılım düzeltmesinin üzerinde çalışıyor, ancak bu makaledeki yönergeleri izleyerek bu sorunu geçici olarak çözebilirsiniz.
 
-Yalnızca "seçili ağlardan" erişime izin veren güvenlik duvarı ayarı, önbelleğin Blob depolama hedefi oluşturmasını engelleyebilir. Bu yapılandırma, depolama hesabının **Güvenlik Duvarları ve sanal ağlar** ayarları sayfasındadır.
+Yalnızca "seçili ağlardan" erişime izin veren güvenlik duvarı ayarı önbelleğin bir BLOB depolama hedefi oluşturmasını engelleyebilir. Bu yapılandırma, depolama hesabının **güvenlik duvarları ve sanal ağlar** ayarları sayfalarnda bulunur.
 
-Sorun, önbellek hizmetinin müşteri ortamlarından ayrı bir gizli hizmet sanal ağı kullanmasıdır. Bu ağa depolama hesabınıza erişme yetkisi vermek mümkün değildir.
+Bu sorun, önbellek hizmetinin müşteri ortamlarından ayrı bir gizli hizmet sanal ağı kullanmadır. Bu ağa, depolama hesabınıza erişmek için açıkça yetki vermek mümkün değildir.
 
-Blob depolama hedefi oluşturduğunuzda, önbellek hizmeti kapsayıcının boş olup olmadığını denetlemek için bu ağı kullanır. Güvenlik duvarı gizli ağdan erişime izin vermiyorsa, denetim başarısız olur ve depolama hedefi oluşturma başarısız olur.
+BLOB depolama hedefi oluşturduğunuzda, önbellek hizmeti kapsayıcının boş olup olmadığını denetlemek için bu ağı kullanır. Güvenlik Duvarı gizli ağdan erişime izin vermediği takdirde denetim başarısız olur ve depolama hedefi oluşturma işlemi başarısız olur.
 
-Sorunu aşmak için, depolama hedefini oluştururken güvenlik duvarı ayarlarınızı geçici olarak değiştirin:
+Sorunu geçici olarak çözmek için depolama hedefini oluştururken güvenlik duvarı ayarlarınızı geçici olarak değiştirin:
 
-1. Depolama hesabı **Güvenlik Duvarları ve sanal ağlar** sayfasına gidin ve "Erişime izin ver" ayarını Tüm **ağlarla**değiştirin.
-1. Azure HPC Önbelleğinizde Blob depolama hedefini oluşturun.
-1. Depolama hedefi başarıyla oluşturulduktan sonra, hesabın güvenlik duvarı ayarını **Seçili ağlara**geri değiştirin.
+1. Depolama hesabı **güvenlik duvarları ve sanal ağlar** sayfasına gidin ve "erişime izin ver" ayarını **tüm ağlara**değiştirin.
+1. Azure HPC önbelleğinizin BLOB depolama hedefini oluşturun.
+1. Depolama hedefi başarıyla oluşturulduktan sonra, hesabın güvenlik duvarı ayarını **Seçili ağlara**geri çevirin.
 
-Azure HPC Önbelleği, tamamlanan depolama hedefine erişmek için hizmet sanal ağını kullanmaz.
+Azure HPC Cache, tamamlanmış depolama hedefine erişmek için hizmet sanal ağını kullanmaz.
 
-Bu geçici çözümle ilgili yardım için [Microsoft Service and Support'a başvurun.](hpc-cache-support-ticket.md)
+Bu geçici çözümle ilgili yardım için [Microsoft hizmet ve destek 'e başvurun](hpc-cache-support-ticket.md).

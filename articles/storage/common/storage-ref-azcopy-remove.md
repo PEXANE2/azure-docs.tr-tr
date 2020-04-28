@@ -1,6 +1,6 @@
 ---
-title: azcopy kaldırmak | Microsoft Dokümanlar
-description: Bu makalede, azcopy remove komutu için referans bilgileri sağlar.
+title: AzCopy kaldır | Microsoft Docs
+description: Bu makale AzCopy Remove komutu için başvuru bilgileri sağlar.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,17 +9,17 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: abce1acb88e920c0de7bbb6447ec9d838f10486c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74033993"
 ---
 # <a name="azcopy-remove"></a>azcopy kaldırma
 
-Bir Azure depolama hesabından lekeleri veya dosyaları silin.
+Blob 'ları veya dosyaları bir Azure Storage hesabından silin.
 
-## <a name="synopsis"></a>Özet
+## <a name="synopsis"></a>Özeti
 
 ```azcopy
 azcopy remove [resourceURL] [flags]
@@ -28,43 +28,43 @@ azcopy remove [resourceURL] [flags]
 ## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
 
 - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
-- [AzCopy ve Blob depolama ile veri aktarımı](storage-use-azcopy-blobs.md)
-- [AzCopy ve dosya depolama ile veri aktarımı](storage-use-azcopy-files.md)
-- [AzCopy'i yapılandırma, en iyi duruma getirme ve sorun giderme](storage-use-azcopy-configure.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Örnekler
 
-SAS ile tek bir lekeyi kaldırın:
+SAS içeren tek bir blobu kaldırma:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
-SAS ile tüm sanal dizini kaldırın:
+Bir sanal dizinin tamamını SAS ile kaldırın:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
 ```
 
-Sanal dizin içindeki yalnızca üst teki lekeleri kaldırın, ancak alt dizinlerini kaldırın:
+Yalnızca bir sanal dizin içindeki en üstteki Blobları Kaldır ancak alt dizinlerini kaldırın:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-Sanal dizindeki lekelerin bir alt kümesini kaldırın (Örneğin: yalnızca jpg ve pdf dosyaları veya blob adı "exactName" ise):
+Bir sanal dizindeki Blobların bir alt kümesini kaldırın (örneğin: yalnızca jpg ve PDF dosyaları ya da blob adı "exactName" ise):
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --include="*.jpg;*.pdf;exactName"
 ```
 
-Sanal dizinin tamamını kaldırın, ancak belirli lekeleri kapsamdan hariç tutar (Örneğin: foo ile başlayan veya çubukla biten her blob):
+Sanal bir dizinin tamamını kaldırın, ancak belirli Blobları kapsamdan hariç tutun (örneğin: her blob, Foo ile başlayan veya çubukla bitiyor):
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --exclude="foo*;*bar"
 ```
 
-Bir dosyaya göreli yollarını (NOT URL kodlu) koyarak belirli lekeleri ve sanal dizinleri kaldırın:
+Belirli blob 'ları ve sanal dizinleri, göreli yollarını (URL kodlamalı DEĞIL) bir dosyaya koyarak kaldırın:
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/dir]" --recursive=true --list-of-files=/usr/bar/list.txt
@@ -75,13 +75,13 @@ file content:
 
 ```
 
-Hiyerarşik ad alanı olan blob depolama hesabından tek bir dosyayı kaldırın (desteklenmeyen dahil/hariç tut).
+Hiyerarşik ad alanı olan bir BLOB depolama hesabından tek bir dosyayı kaldırın (dahil etme/hariç tutma desteklenmiyor).
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/file]?[SAS]"
 ```
 
-Hiyerarşik ad alanı olan tek bir dizin blob depolama hesabı kaldırın (desteklenmeyen dahil/hariç):
+Hiyerarşik ad alanı olan bir BLOB depolama hesabı olan tek bir dizini kaldırma (dahil etme/hariç tutma desteklenmez):
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory]?[SAS]"
@@ -89,28 +89,28 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>Seçenekler
 
-**--exclude-yol dizesi**      Kaldırırken bu yolları hariç tinler. Bu seçenek joker karakter (*) desteklemez. Göreli yol önekini denetler. Örneğin: myFolder;myFolder/subDirName/file.pdf.
+**--exclude-Path dizesi**      Bu yolları kaldırırken hariç tutun. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler. Örneğin: myFolder; myFolder/subDirName/File. PDF.
 
-**--desen dizesini dışla,** adın desen listesiyle eşleştiği dosyaları hariç tut. Örneğin: *.jpg;*. pdf;exactName
+**--exclude-model** dize, adın model listesiyle eşleştiği dosyaları hariç tutar. Örneğin: *. jpg;*. PDF; exactName
 
-**-h, --kaldırmak** için yardım
+**-h,--** kaldırma için yardım yardımı
 
-**--include-path** string Kaldırırken yalnızca bu yolları ekleyin. Bu seçenek joker karakter (*) desteklemez. Göreli yol önekini denetler. Örneğin: myFolder;myFolder/subDirName/file.pdf
+**--Include-Path** dize yalnızca kaldırılırken Bu yolları içerir. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler. Örneğin: myFolder; myFolder/subDirName/File. PDF
 
-**--include-desen dizesi** Yalnızca adın desen listesiyle eşleştiği dosyaları ekleyin. Örneğin: *.jpg;*. pdf;exactName
+**--Include-model** dize yalnızca adı, model listesiyle eşleşen dosyaları içerir. Örneğin: *. jpg;*. PDF; exactName
 
-**--dosya listesi** dizesi Silinecek dosya ve dizinlistesini içeren bir dosyanın konumunu tanımlar. Göreli yollar satır sonları ile sınırlandırılmalı ve yollar URL kodlanmamalıdır.
+**--dosya listesi** dizesi, silinecek dosya ve dizinlerin listesini içeren bir dosyanın konumunu tanımlar. Göreli yollar satır sonları ile sınırlandırılmalıdır ve yolların URL kodlamalı olmaması gerekir.
 
-**--log-level** string Günlük dosyasının günlük ayrıntılılığını tanımlayın. Kullanılabilir düzeyler şunlardır: INFO(tüm istek/yanıtlar), WARNING(yavaş yanıtlar), ERROR(yalnızca başarısız istekler) ve NONE (çıkış günlüğü yok). (varsayılan 'BİlGİ') (varsayılan "BİlGİ")
+**--günlük düzeyi** dize günlük dosyası için günlük ayrıntı düzeyini tanımlar. Kullanılabilir düzeyler şunlardır: BILGI (tüm istekler/yanıtlar), uyarı (yavaş yanıtlar), hata (yalnızca başarısız istekler) ve HIÇBIRI (çıktı günlüğü yok). (varsayılan ' BILGI ') (varsayılan "BILGI")
 
-**--özyinelemeli**                Dizinler arasında eşitleme yaparken alt dizinlere özyinelemeli olarak bakın.
+**--özyinelemeli**                Dizinler arasında eşitleme yaparken alt dizinlere yinelemeli olarak bakın.
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
 
 |Seçenek|Açıklama|
 |---|---|
-|--kap-mbps uint32|Transfer hızını saniyede megabit olarak kaplar. Anlık iş artışı kapaktan biraz farklı olabilir. Bu seçenek sıfıra ayarlanmışsa veya atlanırsa, iş elde etme kapaklı değildir.|
-|--çıkış türü dize|Komutçıktısının biçimi. Seçenekler şunlardır: metin, json. Varsayılan değer "metin"dir.|
+|--Cap-Mbps uint32|Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.|
+|--çıkış türü dize|Komutun çıktısının biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer "Text" değeridir.|
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

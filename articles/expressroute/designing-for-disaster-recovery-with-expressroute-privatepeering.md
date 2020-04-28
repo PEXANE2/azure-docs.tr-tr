@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Olağanüstü durum kurtarma için tasarım'
-description: Bu sayfa, Azure ExpressRoute kullanırken olağanüstü durum kurtarma için mimari öneriler sağlar.
+title: 'Azure ExpressRoute: olağanüstü durum kurtarma için tasarlama'
+description: Bu sayfa, Azure ExpressRoute kullanılırken olağanüstü durum kurtarma için mimari öneriler sağlar.
 services: expressroute
 author: rambk
 ms.service: expressroute
@@ -8,143 +8,143 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
 ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74076696"
 ---
-# <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>ExpressRoute özel bakışile olağanüstü durum kurtarma için tasarım
+# <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>ExpressRoute özel eşlemesi ile olağanüstü durum kurtarma için tasarlama
 
-ExpressRoute, Microsoft kaynaklarına operatör sınıfı özel ağ bağlantısı sağlamak için yüksek kullanılabilirlik için tasarlanmıştır. Başka bir deyişle, Microsoft ağındaki ExpressRoute yolunda tek bir hata noktası yoktur. ExpressRoute devresinin kullanılabilirliğini en üst düzeye çıkarmak için tasarım konuları için [ExpressRoute ile yüksek kullanılabilirlik için Tasarım][HA]bölümüne bakın.
+ExpressRoute, Microsoft kaynaklarına yönelik taşıyıcı sınıfı özel ağ bağlantısı sağlamak için yüksek kullanılabilirlik için tasarlanmıştır. Diğer bir deyişle, Microsoft ağı içindeki ExpressRoute yolunda tek bir hata noktası yoktur. ExpressRoute devresinin kullanılabilirliğini en üst düzeye çıkarmak için tasarım konuları için bkz. [ExpressRoute ile yüksek kullanılabilirlik Için tasarlama][HA].
 
-Ancak, Murphy'nin popüler atasözü ele alarak -*eğer bir şey yanlış gidebilir, bu*dikkate - bu makalede, bize tek bir ExpressRoute devresi kullanılarak ele alınabilir hataları ötesinde çözümler üzerinde durulalım. Başka bir deyişle, bu makalede, coğrafi yedekli ExpressRoute devrelerini kullanarak olağanüstü durum kurtarma için sağlam arka uç ağ bağlantısı oluşturmak için ağ mimarisinin göz önünde bulundurulması gereken hususlara bakalım.
+Bununla birlikte, Murphy 'in popüler AdAge 'yi almak*için bir şey yanlış gidecekse*, bu makalede tek bir ExpressRoute bağlantı hattı kullanılarak ele alınan hatalardan çok daha fazla geçen çözümlere odaklanalım. Bu makalede, diğer bir deyişle, coğrafi olarak yedekli ExpressRoute devreleri kullanarak olağanüstü durum kurtarma için sağlam arka uç ağ bağlantısı oluşturmaya yönelik ağ mimarisi konularına bakmamıza izin verir.
 
-## <a name="need-for-redundant-connectivity-solution"></a>Gereksiz bağlantı çözümüne ihtiyaç
+## <a name="need-for-redundant-connectivity-solution"></a>Yedekli bağlantı çözümü gerekiyor
 
-Tüm bölgesel hizmetin (Microsoft, ağ hizmeti sağlayıcıları, müşteri veya diğer bulut hizmeti sağlayıcılarının ki gibi) bozulduğu olanaklar ve durumlar vardır. Bu tür bölgesel geniş hizmet etkisiiçin temel nedeni doğal felaket içerir. Bu nedenle, iş sürekliliği ve görev kritik uygulamalar için olağanüstü durum kurtarma için planlamak önemlidir.   
+Bölgesel bir hizmetin tamamının (Microsoft, ağ hizmeti sağlayıcıları, müşteri veya diğer bulut hizmeti sağlayıcılarının) düştüğü durumlar ve örnekler vardır. Bu bölgesel çapta hizmet etkisinin temel nedeni, doğal Calamity içerir. Bu nedenle, iş sürekliliği ve görev açısından kritik uygulamalar için olağanüstü durum kurtarma planlamanız önemlidir.   
 
-Görev açısından kritik uygulamalarınızı bir Azure bölgesinde veya şirket içinde veya başka bir yerde çalıştırSanız çalıştırın, başarısız siteniz olarak başka bir Azure bölgesini kullanabilirsiniz. Aşağıdaki makaleler, uygulamalardan ve ön uç erişim perspektiflerinden olağanüstü durum kurtarma adreslerini:
+Görev açısından kritik uygulamalarınızı bir Azure bölgesinde veya şirket içinde ya da başka herhangi bir yerde çalıştırıp çalıştırmadığına bakılmaksızın, yük devretme siteniz olarak başka bir Azure bölgesi de kullanabilirsiniz. Aşağıdaki makalelerde uygulamalardan ve ön uç erişim perspektiflerinden olağanüstü durum kurtarma ele alınmaktadır:
 
 - [Kurumsal ölçekte olağanüstü durum kurtarma][Enterprise DR]
 - [Azure Site Recovery ile SMB olağanüstü durum kurtarma][SMB DR]
 
-Görev açısından kritik işlemler için şirket içi ağınız ile Microsoft arasındaki ExpressRoute bağlantısına güveniyorsanız, olağanüstü durum kurtarma planınız coğrafi yedekli ağ bağlantısını da içermelidir. 
+Şirket içi ağınız ile Microsoft iş açısından kritik işlemler için ExpressRoute bağlantısına sahipseniz, olağanüstü durum kurtarma planınız de coğrafi olarak yedekli ağ bağlantısı içermelidir. 
 
-## <a name="challenges-of-using-multiple-expressroute-circuits"></a>Birden fazla ExpressRoute devresi kullanmanın zorlukları
+## <a name="challenges-of-using-multiple-expressroute-circuits"></a>Birden çok ExpressRoute devreleri kullanma sorunları
 
-Aynı ağ kümesini birden fazla bağlantı kullanarak bağladığınızda, ağlar arasında paralel yollar kurarsınız. Paralel yollar, düzgün bir şekilde tasarlanmadığında, asimetrik yönlendirmeye yol açabilir. Yolda durum sallayan varlıklar (örneğin, NAT, güvenlik duvarı) varsa, asimetrik yönlendirme trafik akışını engelleyebilir.  Genellikle, ExpressRoute özel bakış yolu üzerinde NAT veya Güvenlik Duvarları gibi devlet sel varlıklarla karşılaşmazsınız. Bu nedenle, ExpressRoute özel bakış üzerinden asimetrik yönlendirme mutlaka trafik akışını engellemez.
+Birden fazla bağlantı kullanarak aynı ağ kümesini birbirine gönderdiğinizde, ağlar arasında paralel yollar ortaya çıkarabilir. Paralel yollar düzgün şekilde uygun olmadığında, asymmetrik yönlendirmeye yol açabilir. Yolda durum bilgisi olan varlıklara (örneğin NAT, güvenlik duvarı) sahipseniz, asymmetrik yönlendirme trafik akışını engelleyebilir.  Genellikle, ExpressRoute özel eşleme yolu üzerinden NAT veya güvenlik duvarları gibi durum bilgisi olan varlıkların üzerinden gelmezsiniz. Bu nedenle, ExpressRoute özel eşlemesi üzerinden asymmetrik yönlendirme trafik akışını engellemez.
  
-Ancak, bakiye trafiğini, durum durumu olan varlıklara sahip olup olmadığınız anına bakılmaksızın, coğrafi olarak yedekli paralel yollara yüklerseniz, tutarsız ağ performansı yla karşılaşırsınız. Bu makalede, bu zorlukların nasıl ele alınış süreceğini tartışalım.
+Bununla birlikte, coğrafi olarak yedekli paralel yollar arasında trafiği dengeleyebiliyorsanız, durum bilgisi olan varlıklara sahip olup olmadıklarına bakılmaksızın tutarsız ağ performansı yaşayabilirsiniz. Bu makalede, bu zorluk sorunlarını nasıl ele vertiğimizden bahsedelim.
 
 ## <a name="small-to-medium-on-premises-network-considerations"></a>Küçük ve orta ölçekli şirket içi ağ konuları
 
-Aşağıdaki diyagramda gösterilen örnek ağı ele alalım. Örnekte, bir Contoso'nun şirket içi konumu ile Bir Azure bölgesinde Contoso'nun VNet'i arasında coğrafi yedekli ExpressRoute bağlantısı oluşturulur. Diyagramda, düz yeşil çizgi tercih edilen yolu (ExpressRoute 1 üzerinden) gösterir ve noktalı olan stand-by yolunu (ExpressRoute 2 üzerinden) temsil eder.
+Aşağıdaki diyagramda gösterilen örnek ağı ele alalım. Örnekte, bir Azure bölgesindeki contoso şirket içi konumu ve contoso VNet arasında coğrafi olarak yedekli ExpressRoute bağlantısı oluşturulur. Diyagramda, düz yeşil çizgi tercih edilen yolu (ExpressRoute 1 aracılığıyla) gösterir ve noktalı bir tek yolu (ExpressRoute 2 aracılığıyla) temsil eder.
 
 [![1]][1]
 
 Olağanüstü durum kurtarma için ExpressRoute bağlantısı tasarlarken şunları göz önünde bulundurmanız gerekir:
 
-- coğrafi yedekli ExpressRoute devrelerini kullanarak
-- farklı ExpressRoute devresi için farklı servis sağlayıcı ağı(lar) kullanma
-- [yüksek kullanılabilirlik][HA] için ExpressRoute devresinin her birini tasarlama
-- müşteri ağında farklı bir konumda farklı ExpressRoute devresini sonlandırma
+- coğrafi olarak yedekli ExpressRoute devreleri kullanma
+- farklı ExpressRoute devresi için farklı hizmet sağlayıcı ağı kullanma
+- [yüksek kullanılabilirlik][HA] Için ExpressRoute devresinin her birini tasarlama
+- farklı ExpressRoute devresini müşteri ağında farklı bir yerde sonlandırma
 
-Varsayılan olarak, tüm ExpressRoute yollarında aynı şekilde rotaların reklamını yaparsa, Azure Eşit maliyetli çok (ECMP) yönlendirmesini kullanarak tüm ExpressRoute yollarında şirket içi bağlı trafiği yükler.
+Varsayılan olarak, yolları tüm ExpressRoute yollarında aynı şekilde tanıdıysanız, Azure, eşit maliyetli çoklu yol (ECMP) yönlendirmesi kullanarak tüm ExpressRoute yollarında şirket içi bağlı trafiği yük dengelemeye çalışır.
 
-Ancak, coğrafi yedekli ExpressRoute devreleri ile farklı ağ yolları (özellikle ağ gecikmesi için) ile farklı ağ performanslarını dikkate almamız gerekir. Normal çalışma sırasında daha tutarlı ağ performansı elde etmek için minimum gecikme süresi sunan ExpressRoute devresini tercih etmek isteyebilirsiniz.
+Ancak, coğrafi olarak yedekli ExpressRoute devreleri, farklı ağ yollarına sahip farklı ağ performanslarını (özellikle ağ gecikmesi için) dikkate almamız gerekir. Normal işlem sırasında daha tutarlı ağ performansı almak için, en düşük gecikme süresini sunan ExpressRoute devresini tercih etmek isteyebilirsiniz.
 
-Azure'u aşağıdaki tekniklerden birini kullanarak bir ExpressRoute devresini diğerine tercih etmesi için etkileyebilirsiniz (etkinlik sırasına göre listelenebilir):
+Aşağıdaki tekniklerden birini kullanarak bir ExpressRoute devresini tercih etmek üzere Azure 'u etkileyebilir (verimlilik sırasıyla listelenmiştir):
 
-- diğer ExpressRoute devresi(ler) ile karşılaştırıldığında tercih edilen ExpressRoute devresi üzerinden daha spesifik bir rota reklam
-- sanal ağı tercih edilen ExpressRoute devresine bağlayan bağlantıda daha yüksek Bağlantı Ağırlığını yapılandırma
-- daha uzun AS Yolu (AS Path prepend) ile daha az tercih edilen ExpressRoute devresi üzerinden güzergahreklam
+- diğer ExpressRoute bağlantı hatlarına kıyasla tercih edilen ExpressRoute bağlantı hattı üzerinden daha fazla özel yol duyuruyor
+- sanal ağı tercih edilen ExpressRoute devresine bağlayan bağlantıda daha yüksek bağlantı ağırlığı yapılandırma
+- Yol olarak daha uzun tercih edilen ExpressRoute bağlantı hattı üzerinden yolları bildirme (yol Prepend olarak)
 
-### <a name="more-specific-route"></a>Daha spesifik rota
+### <a name="more-specific-route"></a>Daha belirgin yol
 
-Aşağıdaki diyagram, daha spesifik rota reklamını kullanarak ExpressRoute yol seçimini etkilemeyi göstermektedir. Resimli örnekte, Contoso şirket içi /24 IP aralığı tercih edilen yol (ExpressRoute 1) üzerinden iki /25 adres aralığı ve stand-by yolu (ExpressRoute 2) üzerinden /24 olarak duyurulur.
+Aşağıdaki diyagramda, daha belirgin yol tanıtımı kullanılarak ExpressRoute yol seçiminin etkili bir şekilde kullanılması gösterilmektedir. Gösterilen örnekte, contoso şirket içi/24 IP aralığı, tercih edilen yol (ExpressRoute 1) aracılığıyla iki/25 adres aralığı ve tek yönlü yol (ExpressRoute 2) aracılığıyla/24 olarak tanıtıldığında.
 
-[![2]][2]
+[![iki]][2]
 
-/25,/24'e kıyasla daha spesifik olduğundan, Azure trafiği normal durumda ExpressRoute 1 üzerinden 10.1.11.0/24'e gönderir. ExpressRoute 1'in her iki bağlantısı da aşağı inerse, VNet 10.1.11.0/24 rota reklamını yalnızca ExpressRoute 2 üzerinden görür; ve bu nedenle bekleme devresi bu arıza durumunda kullanılır.
+/25,/24 ile karşılaştırıldığında daha belirgin olduğundan, Azure, 10.1.11.0/24 ' e gidecek trafiği normal durumda ExpressRoute 1 üzerinden gönderir. ExpressRoute 1 bağlantılarının her ikisi de kapalıysa, VNet 10.1.11.0/24 yol tanıtımını yalnızca ExpressRoute 2 aracılığıyla görebilir; Bu nedenle, bu hata durumunda bekleme devresi kullanılır.
 
 ### <a name="connection-weight"></a>Bağlantı ağırlığı
 
-Aşağıdaki ekran görüntüsü, ExpressRoute bağlantısının ağırlığını Azure portalı üzerinden yapılandırılmayı göstermektedir.
+Aşağıdaki ekran görüntüsünde, Azure portal aracılığıyla bir ExpressRoute bağlantısının ağırlığını yapılandırma gösterilmektedir.
 
-[![3]][3]
+[![03]][3]
 
-Aşağıdaki diyagram, bağlantı ağırlığını kullanarak ExpressRoute yol seçimini etkilemeyi göstermektedir. Varsayılan bağlantı ağırlığı 0'dır. Aşağıdaki örnekte, ExpressRoute 1 bağlantısının ağırlığı 100 olarak yapılandırılmıştır. Bir VNet birden fazla ExpressRoute devresi üzerinden reklamı yapılan bir rota öneki aldığında, VNet en yüksek ağırlıktaki bağlantıyı tercih edecektir.
+Aşağıdaki diyagramda bağlantı ağırlığı kullanılarak ExpressRoute yol seçiminin etkili bir şekilde kullanılması gösterilmektedir. Varsayılan bağlantı ağırlığı 0 ' dır. Aşağıdaki örnekte, ExpressRoute 1 bağlantısının ağırlığı 100 olarak yapılandırılır. VNet birden fazla ExpressRoute bağlantı hattı üzerinden tanıtılan bir rota önekini aldığında, VNet en yüksek ağırlığa sahip bağlantıyı tercih eder.
 
 [![4]][4]
 
-ExpressRoute 1'in her iki bağlantısı da aşağı inerse, VNet 10.1.11.0/24 rota reklamını yalnızca ExpressRoute 2 üzerinden görür; ve bu nedenle bekleme devresi bu arıza durumunda kullanılır.
+ExpressRoute 1 bağlantılarının her ikisi de kapalıysa, VNet 10.1.11.0/24 yol tanıtımını yalnızca ExpressRoute 2 aracılığıyla görebilir; Bu nedenle, bu hata durumunda bekleme devresi kullanılır.
 
-### <a name="as-path-prepend"></a>AS yol prepend
+### <a name="as-path-prepend"></a>AS yolu önüne
 
-Aşağıdaki diyagram, AS yol prepend kullanarak ExpressRoute yol seçimini etkileyen gösteriş. Diyagramda, ExpressRoute 1 üzerindeki rota reklamı eBGP'nin varsayılan davranışını gösterir. ExpressRoute 2 üzerindeki rota reklamında, şirket içi ağın ASN'si ayrıca rotanın AS yoluna hazırlanır. Aynı rota, eBGP rota seçim sürecine göre birden çok ExpressRoute devresi üzerinden alındığı zaman, VNet en kısa AS yoluna sahip rotayı tercih eder. 
+Aşağıdaki diyagramda yol Prepend 'i kullanarak ExpressRoute yol seçiminin etkili bir şekılde kullanılması gösterilmektedir. Diyagramda, ExpressRoute 1 üzerinden yönlendirme tanıtımı, eBGP 'nin varsayılan davranışını gösterir. ExpressRoute 2 üzerinden rota tanıtımına, şirket içi ağın ASN 'si de yolun AS yolunda ek olarak sona erer. Aynı yol birden çok ExpressRoute bağlantı hattı aracılığıyla alındığında, eBGP yol seçimi işlemi başına, VNet en kısa AS yolunu içeren yolu tercih eder. 
 
-[![5]][5]
+[![e]][5]
 
-ExpressRoute 1'in her iki bağlantısı da aşağı inerse, VNet 10.1.11.0/24 rota reklamını yalnızca ExpressRoute 2 üzerinden görür. Sonuç olarak, uzun AS yolu alakasız hale gelecekti. Bu nedenle, bekleme devresi bu hata durumunda kullanılır.
+ExpressRoute 1 bağlantılarının her ikisi de kapalıysa, VNet 10.1.11.0/24 yol tanıtımını yalnızca ExpressRoute 2 aracılığıyla görebilir. Yani, daha uzun olan yol, ilgisiz hale gelir. Bu nedenle, bekleme devresi bu hata durumunda kullanılır.
 
-Bu tekniklerden herhangi birini kullanarak, Azure'un ExpressRoute'unuzdan birini diğerlerine tercih etmesini etkilerseniz, asimetrik akışlardan kaçınmak için şirket içi ağın Azure'a bağlı trafiği için aynı ExpressRoute yolunu da tercih etmesini sağlamanız gerekir. Genellikle, yerel tercih değeri diğerlerine göre bir ExpressRoute devresi tercih şirket içi ağı etkilemek için kullanılır. Yerel tercih, dahili bir BGP (iBGP) ölçüsüdür. En yüksek yerel tercih değerine sahip BGP rotası tercih edilir.
+Azure 'u başka bir şekilde kullanarak ExpressRoute 'tan birini tercih edebilirsiniz. Ayrıca, asimetrik akışlardan kaçınmak için şirket içi ağın aynı ExpressRoute yolunu da tercih etmeniz gerekir. Genellikle, yerel tercih değeri, şirket içi ağı diğer bir ExpressRoute devresini tercih etmek üzere etkilemek için kullanılır. Yerel tercih bir iç BGP (iBGP) ölçümdür. En yüksek yerel tercih değerine sahip BGP rotası tercih edilir.
 
 > [!IMPORTANT]
-> Belirli ExpressRoute devrelerini bekleme olarak kullandığınızda, bunları etkin bir şekilde yönetmeniz ve başarısız olan işlemi periyodik olarak test etmeniz gerekir. 
+> Belirli ExpressRoute devrelerini tek başına kullandığınızda, bunları etkin bir şekilde yönetmeniz ve düzenli aralıklarla yük devretme işlemini test etmeniz gerekir. 
 > 
 
 ## <a name="large-distributed-enterprise-network"></a>Büyük dağıtılmış kurumsal ağ
 
-Büyük dağıtılmış bir kuruluş ağınız olduğunda, birden çok ExpressRoute devreniz olması olasıdır. Bu bölümde, ek stand-by devrelerine gerek kalmadan etkin-etkin ExpressRoute devrelerini kullanarak olağanüstü durum kurtarmanın nasıl tasarlanabildiğini görelim. 
+Büyük bir dağıtılmış kurumsal ağınız olduğunda, muhtemelen birden fazla ExpressRoute devreniz vardır. Bu bölümde, etkin-etkin ExpressRoute devreleri kullanarak olağanüstü durum kurtarmanın nasıl tasarlanacağını, ek tek başına devrelere gerek duymadan görelim. 
 
-Aşağıdaki diyagramda gösterilen örneği ele alalım. Örnekte, Contoso'nun iki farklı bakış noktasındaki ExpressRoute devreleri aracılığıyla iki farklı Azure bölgesinde iki Contoso IaaS dağıtımına bağlı iki şirket içi konumu vardır. 
+Aşağıdaki diyagramda gösterilen örneği ele alalım. Örnekte, contoso iki farklı eşleme konumunda ExpressRoute devreleri aracılığıyla iki farklı Azure bölgesinde iki adet contoso IaaS dağıtımına bağlı iki şirket içi konum vardır. 
 
-[![6]][6]
+[![inç]][6]
 
-Olağanüstü durum kurtarma yı nasıl tasarladığımız, coğrafi kavşağın konum (region1/region2 to location2/location1) trafiğinin nasıl yönlendirildiğini nasıl etkilediğiüzerinde bir etkiye sahiptir. Bölge trafiğini farklı şekilde sorgulayan iki farklı felaket mimarisini ele alalım.
+Olağanüstü durum kurtarmanın nasıl mimarilerimiz, çapraz konuma çapraz konum (region1/Region2 to Location2/location1) trafiğinin nasıl yönlendirildiğini etkiler. Çapraz bölge konumu trafiğini farklı yollarla yönlendiren iki farklı olağanüstü durum mimarilerine göz atalım.
 
 ### <a name="scenario-1"></a>Senaryo 1
 
-İlk senaryoda, bir Azure bölgesi ile şirket içi ağ arasındaki tüm trafiğin sabit durumda yerel ExpressRoute devresi üzerinden akması gibi olağanüstü durum kurtarma tasarlayalım. Yerel ExpressRoute devresi başarısız olursa, uzak ExpressRoute devresi Azure ve şirket içi ağ arasındaki tüm trafik akışları için kullanılır.
+İlk senaryoda, bir Azure bölgesi ve şirket içi ağ arasındaki tüm trafiğin, sabit durumdaki yerel ExpressRoute bağlantı hattı üzerinden akışı gibi olağanüstü durum kurtarma tasarlayalim. Yerel ExpressRoute bağlantı hattı başarısız olursa, Azure ile şirket içi ağ arasındaki tüm trafik akışları için uzak ExpressRoute devresi kullanılır.
 
-Senaryo 1 aşağıdaki diyagramda gösterilmiştir. Diyagramda, yeşil çizgiler VNet1 ve şirket içi ağlar arasındaki trafik akışı yollarını gösterir. Mavi çizgiler, VNet2 ile şirket içi ağlar arasındaki trafik akışı yollarını gösterir. Düz çizgiler sabit durumda istenen yolu gösterir ve kesik çizgiler sabit durum trafik akışı taşıyan ilgili ExpressRoute devresinin arızası trafik yolunu gösterir. 
+Aşağıdaki diyagramda Senaryo 1 gösterilmektedir. Diyagramda yeşil çizgiler, VNet1 ve şirket içi ağlar arasındaki trafik akışı için yolları gösterir. Mavi çizgiler, VNet2 ve şirket içi ağlar arasındaki trafik akışı için yolları gösterir. Kesintisiz satırlarda, istenen yol kararlı durumda ve kesik çizgili satırlarda, sabit durum trafik akışını taşıyan ilgili ExpressRoute bağlantı hattının başarısız olduğu trafik yolunu gösterir. 
 
-[![7]][7]
+[![7@@]][7]
 
-Yerel gözleyen konum ExpressRoute bağlantısını şirket içi ağ bağlantısı trafiği için tercih etmek için VNet'leri etkilemek için bağlantı ağırlığını kullanarak senaryoyu tasarlayabilirsiniz. Çözümü tamamlamak için, simetrik ters trafik akışını sağlamanız gerekir. Bir ExpressRoute devresini tercih etmek için BGP yönlendiricileriniz arasındaki (ExpressRoute devrelerinin şirket içinde sonlandırıldığının) iBGP oturumunda yerel tercihi kullanabilirsiniz. Çözüm aşağıdaki diyagramda gösterilmiştir. 
+Şirket içi ağa bağlı trafik için yerel eşleme konumu ExpressRoute 'a bağlantıyı tercih etmek üzere sanal ağları etkilemek için bağlantı ağırlığı kullanarak senaryoyu mimARDA dağıtabilirsiniz. Çözümü tamamlayabilmeniz için, simetrik trafik akışının tersine çevrilmiş olduğundan emin olmanız gerekir. Bir ExpressRoute devresini tercih etmek için BGP yönlendiricileriniz (Şirket içi tarafında ExpressRoute devrelerinin sonlandırıldığı) arasında IGP oturumunda yerel tercihi kullanabilirsiniz. Çözüm aşağıdaki diyagramda gösterilmiştir. 
 
-[![8]][8]
+[![240]][8]
 
 ### <a name="scenario-2"></a>Senaryo 2
 
-Senaryo 2 aşağıdaki diyagramda gösterilmiştir. Diyagramda, yeşil çizgiler VNet1 ve şirket içi ağlar arasındaki trafik akışı yollarını gösterir. Mavi çizgiler, VNet2 ile şirket içi ağlar arasındaki trafik akışı yollarını gösterir. Sabit durumda (diyagramdaki düz çizgilerde), VNet'ler ve şirket içi konumlar arasındaki tüm trafik çoğunlukla Microsoft omurgası üzerinden akar ve yalnızca arıza durumundaki şirket içi konumlar arasındaki ara bağlantıdan akar (noktalı çizgiler diyagramı) bir ExpressRoute.
+Senaryo 2 aşağıdaki diyagramda gösterilmiştir. Diyagramda yeşil çizgiler, VNet1 ve şirket içi ağlar arasındaki trafik akışı için yolları gösterir. Mavi çizgiler, VNet2 ve şirket içi ağlar arasındaki trafik akışı için yolları gösterir. Düzenli durumda (diyagramdaki düz satırlarda), sanal ağlar ve şirket içi konumlar arasındaki tüm trafik, en bölüm için Microsoft omurga aracılığıyla akar ve şirket içi konumlar arasındaki bağlantı, yalnızca hata durumunda (diyagramdaki noktalı çizgiler) bir ExpressRoute üzerinden akar.
 
 [![9]][9]
 
-Çözüm aşağıdaki diyagramda gösterilmiştir. Gösterildiği gibi, VNet yol seçimini etkilemek için senaryoyu daha spesifik bir rota (Seçenek 1) veya AS-path prepend (Seçenek 2) kullanarak tasarlayabilirsiniz. Azure'a bağlı trafik için şirket içi ağ rotası seçimini etkilemek için, şirket içi konum arasındaki bağlantıyı daha az tercih edilebilir şekilde yapılandırmanız gerekir. Tercih edilen şekilde interconnection bağlantısını nasıl yapılandırdığınız, şirket içi ağ içinde kullanılan yönlendirme protokolüne bağlıdır. IGP (OSPF veya IS-IS) ile iBGP veya metrik ile yerel tercihk tesniye kullanabilirsiniz.
+Çözüm aşağıdaki diyagramda gösterilmiştir. Gösterildiği gibi, VNET yol seçimini etkilemek için, daha belirgin yol (seçenek 1) veya as-Path önüne (seçenek 2) kullanarak senaryoyu mimARDA dağıtabilirsiniz. Azure bağlı trafiği için şirket içi ağ yolu seçimini etkilemek için, şirket içi konum arasındaki iç yönü daha az tercih edilen şekilde yapılandırmanız gerekir. Bağlı olan bağlantıyı, şirket içi ağ içinde kullanılan yönlendirme protokolüne bağlı olarak tercih ettiğiniz şekilde yapılandırırsınız. Yerel tercihi IOP veya ölçümle (OSPF veya SIS) ile birlikte kullanabilirsiniz.
 
-[![10]][10]
+[![(]][10]
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir ExpressRoute devresi özel eşleme bağlantısının olağanüstü durum kurtarma için nasıl tasarlanabileceğimizi tartıştık. Aşağıdaki makaleler, uygulamalardan ve ön uç erişim perspektiflerinden olağanüstü durum kurtarma adreslerini:
+Bu makalede, bir ExpressRoute devresi özel eşleme bağlantısının olağanüstü durum kurtarma için nasıl tasarlanacağını tartıştık. Aşağıdaki makalelerde uygulamalardan ve ön uç erişim perspektiflerinden olağanüstü durum kurtarma ele alınmaktadır:
 
 - [Kurumsal ölçekte olağanüstü durum kurtarma][Enterprise DR]
 - [Azure Site Recovery ile SMB olağanüstü durum kurtarma][SMB DR]
 
 <!--Image References-->
-[1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png "küçük ve orta ölçekli şirket içi ağ hususları"
-[Daha]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "özel rotalar kullanarak" 2 etkili yol seçimi
-Azure portalı üzerinden [3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.png "bağlantı ağırlığı yapılandırma"
-Bağlantı ağırlığını kullanarak [4]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "etkili yol seçimi"
-[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "AS yol prepend kullanarak" 5 etkileyen yol seçimi
-[6]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region.png "büyük dağıtılmış şirket içi ağ hususları"
-[7]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch1.png "senaryo 1"
-[8]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol1.png "aktif ExpressRoute devresi çözümü 1"
-[9]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch2.png "senaryo 2"
-[10]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol2.png "aktif ExpressRoute devresi çözümü 2"
+[1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png "küçük ila orta büyüklükteki şirket içi ağ konuları"
+[2]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "daha belirgin yollar kullanarak yol seçimini etkili" bir şekilde seçme
+[3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.png "Azure Portal aracılığıyla bağlantı ağırlığını yapılandırma"
+[4]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "bağlantı ağırlığı kullanarak yol seçimini" seçme
+[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "yol sonuna kadar kullanılan yol seçimini" seçme
+[6]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region.png "büyük dağıtılan şirket içi ağ konuları"
+[7]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch1.png "Senaryo 1"
+[8]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol1.png "etkin-etkin ExpressRoute bağlantı hattı çözümü 1"
+[9]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch2.png "Senaryo 2"
+[10]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol2.png "etkin-etkin ExpressRoute devre çözümü 2"
 
 <!--Link References-->
 [HA]: https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute

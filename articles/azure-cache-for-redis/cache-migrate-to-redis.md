@@ -1,84 +1,84 @@
 ---
-title: Yönetilen Önbellek Hizmeti uygulamalarını Redis'e geçir - Azure
-description: Yönetilen Önbellek Hizmeti ve Rol İçi Önbellek uygulamalarını Redis için Azure Önbelleğine nasıl geçireceğinizi öğrenin
+title: Yönetilen Önbellek Hizmeti uygulamalarını redin-Azure 'a geçirme
+description: Yönetilen Önbellek hizmetini ve Rol İçi Önbellek uygulamalarını Redsıs için Azure önbelleğine geçirmeyi öğrenin
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
 ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74122692"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Yönetilen Önbellek Hizmeti’nden Redis için Azure Cache’ye Geçiş
-Önbelleğe alma uygulamanız tarafından kullanılan Yönetilen Önbellek Hizmeti özelliklerine bağlı olarak, Azure Yönetilen Önbellek Hizmetini kullanan uygulamalarınızı Redis için Azure Önbelleğine geçirmek, uygulamanızda en az değişiklikle gerçekleştirilebilir. API'ler tam olarak aynı olmasa da benzerler ve önbelleğe erişmek için Yönetilen Önbellek Hizmeti'ni kullanan varolan kodunuzuzun çoğu en az değişiklikle yeniden kullanılabilir. Bu makalede, Redis için Azure Önbelleği kullanmak için Yönetilen Önbellek Hizmeti uygulamalarınızı geçirmek için gerekli yapılandırma ve uygulama değişikliklerinin nasıl yapılacağı ve Redis için Azure Önbelleğinin bazı özelliklerinin kullanımının kullanılabilir Yönetilen Önbellek Hizmeti önbelleği.
+Azure Yönetilen Önbellek Hizmeti kullanan uygulamalarınızın redin için Azure önbelleğine geçirilmesi, önbelleğe alma uygulamanız tarafından kullanılan yönetilen önbellek hizmeti özelliklerine bağlı olarak uygulamanızda en az değişiklikle gerçekleştirilebilir. API 'Ler tamamen benzer değildir ve bir önbelleğe erişmek için Yönetilen Önbellek hizmetini kullanan mevcut kodunuzun çoğu, en az değişiklikle yeniden kullanılabilir. Bu makalede, yönetilen önbellek hizmeti uygulamalarınızı Redsıs için Azure önbelleği 'ni kullanmak üzere geçirmek için gerekli yapılandırma ve uygulama değişikliklerinin nasıl yapılacağı gösterilmektedir ve Yönetilen Önbellek Hizmeti önbelleğinin işlevlerini uygulamak için redin Azure Cache 'in bazı özelliklerinin nasıl kullanılabileceği gösterilmektedir.
 
 >[!NOTE]
->Yönetilen Önbellek Hizmeti ve Rol İçi Önbellek 30 Kasım 2016'da [kullanımdan kaldırıldı.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/) Redis için Azure Önbelleğine geçirmek istediğiniz rol içi önbellek dağıtımlarınız varsa, bu makaledeki adımları izleyebilirsiniz.
+>Yönetilen Önbellek Hizmeti ve Rol İçi Önbellek 30 Kasım 2016 ' de [kullanımdan](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/) kaldırıldı. Redu için Azure önbelleğine geçirmek istediğiniz Rol İçi Önbellek dağıtımlarınız varsa, bu makaledeki adımları izleyebilirsiniz.
 
-## <a name="migration-steps"></a>Geçiş Adımları
-Redis için Azure Önbelleğini kullanmak için yönetilen önbellek hizmeti uygulamasını geçirmek için aşağıdaki adımlar gereklidir.
+## <a name="migration-steps"></a>Geçiş adımları
+Yönetilen Önbellek Hizmeti uygulamasını Redsıs için Azure önbelleği kullanmak üzere geçirmek için aşağıdaki adımlar gereklidir.
 
-* Redis için Azure Önbelleği'ne Harita Yönetilen Önbellek Hizmeti özellikleri
-* Önbellek Teklifi Seçin
-* Önbellek Oluşturma
-* Önbellek İstemlerini Yapılandırma
-  * Yönetilen Önbellek Hizmeti Yapılandırmasını Kaldırma
-  * StackExchange.Redis NuGet Paketini kullanarak önbellek istemcisini yapılandırın
+* Redsıs için Yönetilen Önbellek Hizmeti özelliklerini Azure önbelleğine eşleme
+* Bir önbellek teklifi seçin
+* Önbellek oluşturma
+* Önbellek Istemcilerini yapılandırma
+  * Yönetilen Önbellek hizmeti yapılandırmasını kaldırma
+  * StackExchange. Redsıs NuGet paketini kullanarak bir önbellek istemcisi yapılandırma
 * Yönetilen Önbellek Hizmeti kodunu geçir
-  * ConnectionMultiplexer sınıfını kullanarak önbelleğe bağlanma
-  * Önbellekte ilkel veri türlerine erişin
+  * Connectionçoğullayıcı sınıfını kullanarak önbelleğe bağlanma
+  * Önbellekteki temel veri türlerine erişin
   * Önbellekte .NET nesneleriyle çalışma
-* ASP.NET Oturum Durumu ve Çıktı önbelleğe alma 
+* Redsıs için ASP.NET oturum durumunu ve çıktı önbelleğini Azure önbelleğine geçirme 
 
-## <a name="map-managed-cache-service-features-to-azure-cache-for-redis"></a>Redis için Azure Önbelleği'ne Harita Yönetilen Önbellek Hizmeti özellikleri
-Azure Yönetilen Önbellek Hizmeti ve Redis için Azure Önbelleği benzerdir, ancak bazı özelliklerini farklı şekillerde uygular. Bu bölümde bazı farklılıklar açıklanır ve Redis için Azure Önbelleğinde Yönetilen Önbellek Hizmetinin özelliklerini uygulama konusunda kılavuz sağlar.
+## <a name="map-managed-cache-service-features-to-azure-cache-for-redis"></a>Redsıs için Yönetilen Önbellek Hizmeti özelliklerini Azure önbelleğine eşleme
+Azure Yönetilen Önbellek Hizmeti ve Redsıs için Azure önbelleği benzerdir ancak bazı özelliklerini farklı yollarla uygular. Bu bölümde bazı farklılıklar açıklanmakta ve Reda için Azure önbelleğinde Yönetilen Önbellek hizmeti özelliklerinin uygulanması için yönergeler sağlanmaktadır.
 
-| Yönetilen Önbellek Hizmeti özelliği | Yönetilen Önbellek Hizmeti desteği | Redis desteği için Azure Önbelleği |
+| Yönetilen Önbellek Hizmeti özelliği | Yönetilen Önbellek hizmeti desteği | Redsıs desteği için Azure önbelleği |
 | --- | --- | --- |
-| Adlandırılmış önbellekler |Varsayılan önbellek yapılandırılır ve Standart ve Premium önbellek tekliflerinde, istenirse en fazla dokuz ek adlandırılmış önbellek yapılandırılabilir. |Redis için Azure Önbelleği, adlandırılmış önbelleklere benzer bir işlevselliği uygulamak için kullanılabilecek yapılandırılabilir sayıda veritabanına (varsayılan 16) sahiptir. Daha fazla bilgi için bkz. [Redis veritabanı nedir?](cache-faq.md#what-are-redis-databases) ve [Varsayılan Redis sunucu yapılandırması](cache-configure.md#default-redis-server-configuration). |
-| Yüksek Kullanılabilirlik |Standart ve Premium önbellek tekliflerindeki önbellekteki öğeler için yüksek kullanılabilirlik sağlar. Öğeler bir hata nedeniyle kaybolursa, önbellekteki öğelerin yedek kopyaları hala kullanılabilir. İkincil önbelleğe yazılar eşzamanlı olarak yapılır. |Yüksek kullanılabilirlik, iki düğüm Birincil/Çoğaltma yapılandırması olan Standart ve Premium önbellek tekliflerinde kullanılabilir (Premium önbellekteki her parçanın birincil/çoğaltma çifti vardır). Çoğaltma için yazar eşzamanlı yapılır. Daha fazla bilgi [için Redis fiyatlandırması için Azure Önbelleği'ne](https://azure.microsoft.com/pricing/details/cache/)bakın. |
-| Bildirimler |Adlandırılmış bir önbellekte çeşitli önbellek işlemleri gerçekleştiğinde istemcilerin eşzamanlı bildirimler almasını sağlar. |İstemci uygulamaları, bildirimlere benzer bir işlevsellik elde etmek için Redis pub/alt veya [Keyspace bildirimlerini](cache-configure.md#keyspace-notifications-advanced-settings) kullanabilir. |
-| Yerel önbellek |Önbelleğe alınmış nesnelerin bir kopyasını yerel olarak istemcide depolar ve ekstra hızlı erişim için. |İstemci uygulamaları bir sözlük veya benzer veri yapısı kullanarak bu işlevselliği uygulamak gerekir. |
-| Tahliye Politikası |Yok ya da LRU. Varsayılan ilke LRU'dur. |Redis için Azure Önbelleği aşağıdaki tahliye ilkelerini destekler: uçucu-lru, allkeys-lru, uçucu-rasgele, allkeys-random, volatile-ttl, noeviction. Varsayılan ilke geçici-lru'dur. Daha fazla bilgi için Varsayılan [Redis sunucu](cache-configure.md#default-redis-server-configuration)yapılandırması'na bakın. |
-| Sona Erme Politikası |Varsayılan son kullanma ilkesi Mutlak'tır ve varsayılan son kullanma aralığı 10 dakikadır. Sürgülü ve Asla ilkeleri de mevcuttur. |Önbellekteki varsayılan öğelerin süresi dolmaz, ancak önbellek kümesi aşırı yüklenmeleri kullanılarak son kullanma tarihi her yazma bazında yapılandırılabilir. |
-| Bölgeler ve Etiketleme |Bölgeler önbelleğe alınmış öğeler için alt gruplardır. Bölgeler ayrıca önbelleğe alınmış öğelerin ek açıklamalarını etiketler olarak adlandırılan ek açıklayıcı dizeleri destekler. Bölgeler, o bölgedeki etiketli öğelerde arama işlemleri gerçekleştirme yeteneğini destekler. Bir bölgedeki tüm öğeler önbellek kümesinin tek bir düğümü içinde bulunur. |Redis için bir Azure Önbelleği tek bir düğümden oluşur (Redis kümesi etkinleştirilmediği sürece) yönetilen Önbellek Hizmeti bölgeleri kavramı geçerli değildir. Redis, anahtar adlarının içine gömülü ve daha sonra öğeleri almak için kullanılabilen açıklayıcı etiketlerin anahtarları alırken arama ve joker karakter işlemlerini destekler. Redis kullanarak etiketleme çözümünün uygulanmasına örnek [olarak,](https://stackify.com/implementing-cache-tagging-redis/)bkz. |
-| Serileştirme |Yönetilen Önbellek NetDataContractSerializer, BinaryFormatter ve özel serializers kullanımını destekler. Varsayılan netdatacontractserializer olduğunu. |.NET nesnelerini önbelleğe yerleştirmeden önce seri hale getirmek, istemci uygulama geliştiricisine kadar serileştirici seçimi ile .NET nesnelerini seri hale getirmek istemci uygulamasının sorumluluğundadır. Daha fazla bilgi ve örnek kod için [önbellekteki .NET nesneleriile çalışma](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)konusuna bakın. |
-| Önbellek emülatörü |Yönetilen Önbellek yerel bir önbellek emülatörü sağlar. |Redis için Azure Önbelleği'nde emülatör yoktur, ancak emülatör deneyimi sağlamak için [MSOpenTech redis-server.exe'nin oluşturulmasını yerel olarak çalıştırabilirsiniz.](cache-faq.md#cache-emulator) |
+| Adlandırılmış önbellekler |Varsayılan bir önbellek yapılandırılır ve standart ve Premium önbellek tekliflerinde, isterseniz en fazla dokuz ek adlandırılmış önbellek yapılandırılabilir. |Redsıs için Azure önbelleğinde, adlandırılmış önbelleklere benzer bir işlevsellik uygulamak için kullanılabilecek yapılandırılabilir sayıda veritabanı (varsayılan değer 16) vardır. Daha fazla bilgi için bkz. [Redis veritabanı nedir?](cache-faq.md#what-are-redis-databases) ve [Varsayılan Redis sunucu yapılandırması](cache-configure.md#default-redis-server-configuration). |
+| Yüksek Kullanılabilirlik |Standart ve Premium önbellek tekliflerindeki Önbellekteki öğeler için yüksek kullanılabilirlik sağlar. Bir hata nedeniyle öğeler kaybolursa, önbellekteki öğelerin yedek kopyaları hala kullanılabilir. İkincil önbelleğe yazma işlemleri zaman uyumlu olarak yapılır. |Yüksek kullanılabilirlik, iki düğümlü birincil/çoğaltma yapılandırmasına (bir Premium önbellekteki her parça birincil/çoğaltma çiftine sahiptir) sahip olan standart ve Premium önbellek teklifleriyle kullanılabilir. Çoğaltmaya yazma işlemleri zaman uyumsuz olarak yapılır. Daha fazla bilgi için bkz. [redsıs fiyatlandırması Için Azure önbelleği](https://azure.microsoft.com/pricing/details/cache/). |
+| Bildirimler |Adlandırılmış bir önbellekte çeşitli önbellek işlemleri gerçekleşince istemcilerin zaman uyumsuz bildirimler almasına izin verir. |İstemci uygulamaları, bildirimlere benzer bir işlevsellik elde etmek için Redsıs pub/Sub veya [keyspace bildirimlerini](cache-configure.md#keyspace-notifications-advanced-settings) kullanabilir. |
+| Yerel önbellek |Daha hızlı erişim için, önbelleğe alınmış nesnelerin bir kopyasını istemcide yerel olarak depolar. |İstemci uygulamalarının bu işlevselliği bir sözlük veya benzer bir veri yapısı kullanarak uygulaması gerekir. |
+| Çıkarma Ilkesi |Hiçbiri veya LRU. Varsayılan ilke LRU ' dır. |Redsıs için Azure Cache şu çıkarma ilkelerini destekler: geçici-LRU, AllKeys-LRU, volatile-Random, AllKeys-Random, volatile-TTL, noçıkarma. Varsayılan ilke geçici-LRU ' dır. Daha fazla bilgi için bkz. [varsayılan redsıs sunucu yapılandırması](cache-configure.md#default-redis-server-configuration). |
+| Süre sonu Ilkesi |Varsayılan süre sonu ilkesi mutlak ve varsayılan süre sonu aralığı 10 dakikadır. Kaydırma ve hiçbir zaman ilke de kullanılabilir değildir. |Varsayılan olarak önbellekteki öğelerin süresi dolmaz, ancak önbellek kümesi aşırı yüklemeleri kullanılarak yazma esasına göre bir süre sonu yapılandırılabilir. |
+| Bölgeler ve etiketleme |Bölgeler, önbelleğe alınmış öğeler için alt gruplar. Bölgeler Ayrıca, Etiketler adlı ek tanımlayıcı dizelerle önbelleğe alınmış öğelerin ek açıklamasını destekler. Bölgeler, bu bölgedeki herhangi bir etiketli öğe üzerinde arama işlemleri gerçekleştirme yeteneğini destekler. Bir bölgedeki tüm öğeler önbellek kümesinin tek bir düğümü içinde bulunur. |Redin için bir Azure önbelleği, tek bir düğümden oluşur (Redsıs kümesi etkin değilse), Yönetilen Önbellek Hizmeti bölgeleri kavramı uygulanmaz. Redsıs anahtarları alırken arama ve joker karakter işlemlerini destekler, böylece açıklayıcı Etiketler anahtar adlarına katıştırılabildiğinden ve öğeleri daha sonra almak için kullanılabilir. Red, kullanarak etiketleme çözümü uygulama örneği için bkz. [redsıs ile önbellek etiketleme uygulama](https://stackify.com/implementing-cache-tagging-redis/). |
+| Serileştirme |Yönetilen Önbellek NetDataContractSerializer, BinaryFormatter ve özel serileştiricilerin kullanımını destekler. Varsayılan değer NetDataContractSerializer ' dir. |Bu, istemci uygulamanın, seri hale getirme seçeneği ile istemci uygulama geliştiricisine kadar olan, önbelleğe alınmadan önce .NET nesnelerini seri hale getirme sorumluluğundadır. Daha fazla bilgi ve örnek kod için bkz. [önbellekte .NET nesneleriyle çalışma](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache). |
+| Önbellek öykünücüsü |Yönetilen Önbellek, yerel bir önbellek öykünücüsü sağlar. |Redin için Azure önbelleğinde öykünücü yoktur, ancak öykünücü deneyimi sağlamak için [Redis-Server. exe ' nin MSOpenTech derlemesini yerel olarak çalıştırabilirsiniz](cache-faq.md#cache-emulator) . |
 
-## <a name="choose-a-cache-offering"></a>Önbellek Teklifi Seçin
-Redis için Microsoft Azure Önbelleği aşağıdaki katmanlarda kullanılabilir:
+## <a name="choose-a-cache-offering"></a>Bir önbellek teklifi seçin
+Redo için Microsoft Azure Cache aşağıdaki katmanlarda kullanılabilir:
 
 * **Temel** – Tek düğümlü. 53 GB'a kadar birden çok boyut.
 * **Standart** – İki düğümlü Birincil/Çoğaltma. 53 GB'a kadar birden çok boyut. %99,9 SLA.
-* **Premium** – İki düğümlü Birincil/Çoğaltma, En fazla 10 parça. 6 GB'dan 1,2 TB'ye kadar birden fazla boyut. [Redis kümesi](cache-how-to-premium-clustering.md), [Redis kalıcılığı](cache-how-to-premium-persistence.md), and [Azure Virtual Network](cache-how-to-premium-vnet.md) dahil tüm Standart katman özellikleri ve fazlası. %99,9 SLA.
+* **Premium** – İki düğümlü Birincil/Çoğaltma, En fazla 10 parça. 6 GB ila 1,2 TB arasında birden çok boyut. [Redis kümesi](cache-how-to-premium-clustering.md), [Redis kalıcılığı](cache-how-to-premium-persistence.md), and [Azure Virtual Network](cache-how-to-premium-vnet.md) dahil tüm Standart katman özellikleri ve fazlası. %99,9 SLA.
 
-Her katman özellikler ve fiyatlandırma açısından farklıdır. Özellikler daha sonra bu kılavuzda ele alınmıştır ve fiyatlandırma hakkında daha fazla bilgi için [Önbellek Fiyatlandırma Ayrıntıları'na](https://azure.microsoft.com/pricing/details/cache/)bakın.
+Her katman özellikler ve fiyatlandırma açısından farklıdır. Özellikler bu kılavuzun ilerleyen kısımlarında ele alınmıştır ve fiyatlandırma hakkında daha fazla bilgi için bkz. [önbellek fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cache/).
 
-Geçiş için bir başlangıç noktası, önceki Yönetilen Önbellek Hizmeti önbelleğinin boyutuyla eşleşen boyutu seçmek ve uygulamanızın gereksinimlerine bağlı olarak ölçeklendirmek veya küçültmektir. Redis için doğru Azure Önbelleğini seçme hakkında daha fazla bilgi için, [Redis için hangi Azure Önbelleğini ve boyutunu kullanmam gerektiğini](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)görün.
+Geçiş için bir başlangıç noktası, önceki Yönetilen Önbellek Hizmeti önbelleğinizin boyutuyla eşleşen boyutu seçip uygulamanızın gereksinimlerine bağlı olarak ölçeği büyütme veya küçültme olur. Redin teklifi için doğru Azure önbelleğini seçme hakkında daha fazla bilgi için bkz. [redne Için Azure önbelleği ve boyutu kullanmalıyım](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
 
-## <a name="create-a-cache"></a>Önbellek Oluşturma
+## <a name="create-a-cache"></a>Önbellek oluşturma
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="configure-the-cache-clients"></a>Önbellek İstemlerini Yapılandırma
-Önbellek oluşturulduktan ve yapılandırıldıktan sonra, bir sonraki adım Yönetilen Önbellek Hizmeti yapılandırmasını kaldırmak ve önbellek istemcilerinin önbelleğe erişebilmeleri için Redis yapılandırması ve başvuruları için Azure Önbelleği eklemektir.
+## <a name="configure-the-cache-clients"></a>Önbellek Istemcilerini yapılandırma
+Önbellek oluşturulup yapılandırıldıktan sonra, bir sonraki adım Yönetilen Önbellek hizmeti yapılandırmasını kaldırmak ve önbellek istemcilerinin önbelleğe erişebilmesi için Redsıs yapılandırması ve başvuruları için Azure önbelleğini eklemektir.
 
-* Yönetilen Önbellek Hizmeti Yapılandırmasını Kaldırma
-* StackExchange.Redis NuGet Paketini kullanarak önbellek istemcisini yapılandırın
+* Yönetilen Önbellek hizmeti yapılandırmasını kaldırma
+* StackExchange. Redsıs NuGet paketini kullanarak bir önbellek istemcisi yapılandırma
 
-### <a name="remove-the-managed-cache-service-configuration"></a>Yönetilen Önbellek Hizmeti Yapılandırmasını Kaldırma
-İstemci uygulamaları Redis için Azure Önbellek için yapılandırılmadan önce, yönetilen Önbellek Hizmeti NuGet paketini kaldırarak varolan Yönetilen Önbellek Hizmeti yapılandırması ve derleme başvurularıkaldırılmalıdır.
+### <a name="remove-the-managed-cache-service-configuration"></a>Yönetilen Önbellek hizmeti yapılandırmasını kaldırma
+İstemci uygulamaları Redsıs için Azure önbelleği için yapılandırılabilmesi için, Yönetilen Önbellek Hizmeti NuGet paketi kaldırılarak var olan Yönetilen Önbellek Hizmeti Yapılandırması ve derleme başvurularının kaldırılması gerekir.
 
-Yönetilen Önbellek Hizmeti NuGet paketini kaldırmak için Solution **Explorer'daki** istemci projesini sağ tıklatın ve **NuGet Paketlerini Yönet'i**seçin. Yüklü **paketler** düğümünü seçin ve Arama yüklü paketler kutusuna W**indowsAzure.Caching** yazın. **Windows** **Azure Önbelleği'ni** (veya NuGet paketinin sürümüne bağlı olarak **Windows** **Azure Önbelleğe Alma'yı)** seçin), **Kaldır'ı**tıklatın ve ardından **Kapat'ı**tıklatın.
+Yönetilen Önbellek Hizmeti NuGet paketini kaldırmak için **Çözüm Gezgini** ' de istemci projesine sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **Yüklü paketler** düğümünü seçin ve W**ındowsazure. Caching** yazarak yüklü paketleri ara kutusuna yazın. **Windows** **Azure önbelleğini** (veya NuGet paketinin sürümüne bağlı olarak **Windows** **Azure** önbelleği) seçin, **Kaldır**' a ve ardından **Kapat**' a tıklayın.
 
 ![Azure Yönetilen Önbellek Hizmeti NuGet Paketi'ni Kaldır](./media/cache-migrate-to-redis/IC757666.jpg)
 
-Yönetilen Önbellek Hizmeti NuGet paketinin kaldırılması, yönetilen Önbellek Hizmeti derlemelerini ve istemci uygulamasının app.config veya web.config'indeki Yönetilen Önbellek Hizmeti girişlerini kaldırır. NuGet paketini yüklerken bazı özelleştirilmiş ayarlar kaldırılmayabileceğinden, web.config veya app.config'i açın ve aşağıdaki öğelerin kaldırıldığından emin olun.
+Yönetilen Önbellek Hizmeti NuGet paketini kaldırmak, Yönetilen Önbellek Hizmeti derlemelerini ve Yönetilen Önbellek Hizmeti girdilerini, istemci uygulamasının App. config veya Web. config dosyasında kaldırır. NuGet paketi kaldırılırken bazı özelleştirilmiş ayarlar kaldırılabileceğinden, Web. config veya App. config dosyasını açın ve aşağıdaki öğelerin kaldırıldığından emin olun.
 
-Girişin `dataCacheClients` öğeden kaldırıldığından `configSections` emin olun. Öğenin tamamını `configSections` kaldırmayın; varsa girişi `dataCacheClients` kaldırman.
+`dataCacheClients` Girişin `configSections` öğeden kaldırıldığından emin olun. Tüm `configSections` öğeyi kaldırmayın; varsa, `dataCacheClients` girdiyi kaldırmanız yeterlidir.
 
 ```xml
 <configSections>
@@ -87,7 +87,7 @@ Girişin `dataCacheClients` öğeden kaldırıldığından `configSections` emin
 </configSections>
 ```
 
-Bölümün kaldırıldığından `dataCacheClients` emin olun. Bölüm `dataCacheClients` aşağıdaki örneğe benzer olacaktır.
+`dataCacheClients` Bölümünün kaldırıldığından emin olun. Bu `dataCacheClients` bölüm aşağıdaki örneğe benzer olacaktır.
 
 ```xml
 <dataCacheClients>
@@ -105,31 +105,31 @@ Bölümün kaldırıldığından `dataCacheClients` emin olun. Bölüm `dataCach
 </dataCacheClients>
 ```
 
-Yönetilen Önbellek Hizmeti yapılandırması kaldırıldıktan sonra, önbellek istemcisini aşağıdaki bölümde açıklandığı şekilde yapılandırabilirsiniz.
+Yönetilen Önbellek Hizmeti Yapılandırması kaldırıldıktan sonra, aşağıdaki bölümde açıklandığı gibi Önbellek istemcisini yapılandırabilirsiniz.
 
-### <a name="configure-a-cache-client-using-the-stackexchangeredis-nuget-package"></a>StackExchange.Redis NuGet Paketini kullanarak önbellek istemcisini yapılandırın
+### <a name="configure-a-cache-client-using-the-stackexchangeredis-nuget-package"></a>StackExchange. Redsıs NuGet paketini kullanarak bir önbellek istemcisi yapılandırma
 [!INCLUDE [redis-cache-configure](../../includes/redis-cache-configure-stackexchange-redis-nuget.md)]
 
 ## <a name="migrate-managed-cache-service-code"></a>Yönetilen Önbellek Hizmeti kodunu geçir
-Redis istemcisi için StackExchange.Azure Önbelleği'nin API'si Yönetilen Önbellek Hizmeti'ne benzer. Bu bölümde farklılıklara genel bir bakış sağlar.
+Redsıs istemcisi için StackExchange. Azure önbelleği için API, yönetilen önbellek hizmetine benzerdir. Bu bölüm, farklılıklara genel bakış sunar.
 
-### <a name="connect-to-the-cache-using-the-connectionmultiplexer-class"></a>ConnectionMultiplexer sınıfını kullanarak önbelleğe bağlanma
-Yönetilen Önbellek Hizmeti'nde, önbelleğe yapılan `DataCacheFactory` bağlantılar `DataCache` ve sınıflar tarafından işlenir. Redis için Azure Önbelleğinde, bu bağlantılar `ConnectionMultiplexer` sınıf tarafından yönetilir.
+### <a name="connect-to-the-cache-using-the-connectionmultiplexer-class"></a>Connectionçoğullayıcı sınıfını kullanarak önbelleğe bağlanma
+Yönetilen Önbellek hizmetinde, önbellek bağlantıları `DataCacheFactory` ve `DataCache` sınıfları tarafından işlenir. Redsıs için Azure önbelleğinde bu bağlantılar `ConnectionMultiplexer` sınıfı tarafından yönetilir.
 
-Önbelleğe erişmek istediğiniz herhangi bir dosyanın üstüne aşağıdaki ifadesini kullanarak ifadesini ekleyin.
+Aşağıdaki using ifadesini, önbelleğe erişmek istediğiniz herhangi bir dosyanın en üstüne ekleyin.
 
 ```csharp
 using StackExchange.Redis
 ```
 
-Bu ad alanı çözülmezse, Quickstart'ta açıklandığı gibi StackExchange.Redis NuGet paketini eklediğinizden emin [olun: Redis için Azure Önbelleğini bir .NET uygulamasıyla kullanın.](cache-dotnet-how-to-use-azure-redis-cache.md)
+Bu ad alanı çözümlenmezse, StackExchange. Redsıs NuGet paketini [hızlı başlangıç: redsıs için bir .NET uygulaması ile birlikte kullanın](cache-dotnet-how-to-use-azure-redis-cache.md).
 
 > [!NOTE]
-> StackExchange.Redis istemcisinin .NET Framework 4 veya daha yüksek gerektirmesini unutmayın.
+> StackExchange. Redsıs istemcisinin .NET Framework 4 veya üzeri bir değer gerektirdiğini unutmayın.
 > 
 > 
 
-Redis örneği için bir Azure Önbelleğine `ConnectionMultiplexer.Connect` bağlanmak için statik yöntemi arayın ve bitiş noktası ve anahtardan geçirin. Uygulamanızda bir `ConnectionMultiplexer` örneği paylaşmaya ilişkin bir yaklaşım, aşağıdaki örneğe benzer bir bağlı örnek döndüren statik özelliğe sahip olmaktır. Bu yaklaşım, bağlı `ConnectionMultiplexer` tek bir örneği başlatmanın iş parçacığı güvenli bir yolunu sağlar. Bu örnekte `abortConnect` yanlış olarak ayarlanır, bu da önbelleğe bağlantı kurulmasa bile aramanın başarılı olacağı anlamına gelir. `ConnectionMultiplexer` temel özelliklerinden biri ağ sorunu ya da diğer nedenler çözümlendiğinde önbellek bağlantısını otomatik olarak geri yüklemesidir.
+Redsıs örneği için bir Azure önbelleğine bağlanmak üzere statik `ConnectionMultiplexer.Connect` yöntemi çağırın ve bitiş noktasını ve anahtarı geçirin. Uygulamanızda bir `ConnectionMultiplexer` örneği paylaşmaya ilişkin bir yaklaşım, aşağıdaki örneğe benzer bir bağlı örnek döndüren statik özelliğe sahip olmaktır. Bu yaklaşım, tek bir bağlı `ConnectionMultiplexer` örneği başlatmak için iş parçacığı güvenli bir yol sağlar. Bu örnekte `abortConnect` false olarak ayarlanır; bu da, önbellek bağlantısı kurulamazsa bile çağrının başarılı olacağı anlamına gelir. `ConnectionMultiplexer` temel özelliklerinden biri ağ sorunu ya da diğer nedenler çözümlendiğinde önbellek bağlantısını otomatik olarak geri yüklemesidir.
 
 ```csharp
 private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -146,9 +146,9 @@ public static ConnectionMultiplexer Connection
 }
 ```
 
-Önbellek bitiş noktası, anahtarlar ve bağlantı noktaları önbellek örneğiniz için Redis için **Azure Önbelleği'nden** elde edilebilir. Daha fazla bilgi [için Redis özellikleri için Azure Önbelleği'ne](cache-configure.md#properties)bakın.
+Önbellek örneğiniz için önbellek uç noktası, anahtarlar ve bağlantı noktaları, **redsıs** dikey penceresinde elde edilebilir. Daha fazla bilgi için bkz. [redsıs özellikleri Için Azure önbelleği](cache-configure.md#properties).
 
-Bağlantı kurulduktan sonra, yöntemi çağırarak Redis için Azure Önbelleği veritabanına bir başvuru döndürün. `ConnectionMultiplexer.GetDatabase` `GetDatabase` yönteminden döndürülen nesne küçük, geçişli bir nesnedir ve depolanması gerekmez.
+Bağlantı kurulduktan sonra, `ConnectionMultiplexer.GetDatabase` yöntemini çağırarak redsıs veritabanı Için Azure önbelleğine bir başvuru döndürün. `GetDatabase` yönteminden döndürülen nesne küçük, geçişli bir nesnedir ve depolanması gerekmez.
 
 ```csharp
 IDatabase cache = Connection.GetDatabase();
@@ -163,11 +163,11 @@ string key1 = cache.StringGet("key1");
 int key2 = (int)cache.StringGet("key2");
 ```
 
-StackExchange.Redis istemcisi, önbellekteki öğelere erişmek ve depolamak için ve `RedisKey` `RedisValue` türleri kullanır. Bu tür, dize de dahil olmak üzere en ilkel dil türlerine eşlenir ve genellikle doğrudan kullanılmaz. Redis Strings Redis değerinin en temel türüdür ve serileştirilmiş ikili akışlar da dahil olmak üzere birçok veri türü içerebilir ve türü `String` doğrudan kullanmasanız da, adında içeren yöntemleri kullanırsınız. Çoğu ilkel veri türü için, önbellekte koleksiyonları `StringSet` veya `StringGet` diğer Redis veri türlerini depolamadığınız sürece, öğeleri önbellekten ve yöntemleri kullanarak depolar ve alırsınız. 
+StackExchange. Redthe Client, önbellekteki öğeleri `RedisKey` erişmek `RedisValue` ve depolamak için ve türlerini kullanır. Bu türler, dize dahil olmak üzere en temel dil türlerine eşlenir ve genellikle doğrudan kullanılmaz. Redsıs dizeleri en temel redin değeri türüdür ve serileştirilmiş ikili akışlar dahil olmak üzere birçok tür veri içerebilir ve türü doğrudan kullanmıyorsanız, adında bulunan yöntemleri `String` kullanacaksınız. Çoğu temel veri türü için, koleksiyonları veya diğer redo veri türlerini önbellekte saklamadığınız `StringSet` müddetçe `StringGet` ve yöntemlerini kullanarak önbellekten öğeleri depolar ve alır. 
 
-`StringSet`ve `StringGet` Yönetilen Önbellek Hizmeti `Put` ve `Get` yöntemlerine benzer, önemli bir fark, bir .NET nesnesini ayarlamadan önce ve önbelleğe girmeden önce onu seri hale getirmelisiniz. 
+`StringSet`Ayrıca `StringGet` , Yönetilen Önbellek Hizmeti `Put` ve `Get` yöntemlerine benzer ve bir .net nesnesini, önbelleğe almadan önce onu serileştirmelisiniz. 
 
-Çağrı `StringGet`yaparken , nesne varsa, döndürülür ve değilse, null döndürülür. Bu durumda, değeri istenilen veri kaynağından alabilir ve sonraki kullanım için önbellekte depolayabilirsiniz. Bu desen önbellek kenara desen olarak bilinir.
+Çağrılırken `StringGet`, nesne varsa, döndürülür ve, null döndürülür. Bu durumda, istenen veri kaynağından değeri alabilir ve sonraki kullanım için önbellekte saklayabilirsiniz. Bu model, önbellek stili olarak bilinir.
 
 Bir öğenin önbellekte sona erme tarihini belirtmek için, `StringSet` dizesine ait `TimeSpan` parametresini kullanın.
 
@@ -175,11 +175,11 @@ Bir öğenin önbellekte sona erme tarihini belirtmek için, `StringSet` dizesin
 cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
 ```
 
-Redis için Azure Önbelleği ,NET nesnelerinin yanı sıra ilkel veri türleri ile de çalışabilir, ancak bir .NET nesnesi önbelleğe alınamadan önce seri hale getirilmelidir. Bu serileştirme uygulama geliştiricisinin sorumluluğundadır ve geliştiriciye serileştirici seçiminde esneklik sağlar. Daha fazla bilgi ve örnek kod için [önbellekteki .NET nesneleriile çalışma](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)konusuna bakın.
+Redsıs için Azure Cache, .NET nesneleriyle ve ilkel veri türleriyle birlikte çalışabilir, ancak bir .NET nesnesi önbelleğe alınmadan önce serileştirilmelidir. Bu seri hale getirme, uygulama geliştiricisinin sorumluluğundadır ve bu sayede, serileştirici seçimi için geliştirici esnekliği sağlar. Daha fazla bilgi ve örnek kod için bkz. [önbellekte .NET nesneleriyle çalışma](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache).
 
-## <a name="migrate-aspnet-session-state-and-output-caching-to-azure-cache-for-redis"></a>ASP.NET Oturum Durumu ve Çıktı önbelleğe alma
-Redis için Azure Önbelleği'nde hem ASP.NET oturum durumu hem de Sayfa Çıktısı önbelleğe alma sağlayıcıları vardır. Bu sağlayıcıların Yönetilen Önbellek Hizmeti sürümlerini kullanan uygulamanızı geçirmek için önce web.config'inizden varolan bölümleri kaldırın ve ardından sağlayıcıların Redis sürümleri için Azure Önbelleği'ni yapılandırın. Redis ASP.NET sağlayıcıları için Azure Önbelleğini kullanma yla ilgili talimatlar [için, Redis için Azure Önbelleği için ASP.NET Oturum Durumu Sağlayıcısı](cache-aspnet-session-state-provider.md) ve [Redis için Azure Önbelleği için ASP.NET Çıktı Önbelleği Sağlayıcısı'na](cache-aspnet-output-cache-provider.md)bakın.
+## <a name="migrate-aspnet-session-state-and-output-caching-to-azure-cache-for-redis"></a>Redsıs için ASP.NET oturum durumunu ve çıktı önbelleğini Azure önbelleğine geçirme
+Redin için Azure önbelleğinde hem ASP.NET oturum durumu hem de sayfa çıktısı önbelleği için sağlayıcılar vardır. Uygulamanızı bu sağlayıcıların Yönetilen Önbellek Hizmeti sürümlerini kullanarak geçirmek için, önce mevcut bölümleri Web. config 'nizden kaldırın ve ardından sağlayıcıların Redl sürümleri için Azure önbelleğini yapılandırın. Redsıs ASP.NET sağlayıcıları için Azure önbelleğini kullanma hakkında yönergeler için bkz. [ASP.NET oturum durumu sağlayıcısı](cache-aspnet-session-state-provider.md) Redsıs için Azure önbelleği ve [Redsıs için azure önbelleği Için ASP.net çıkış önbelleği sağlayıcısı](cache-aspnet-output-cache-provider.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Öğreticiler, örnekler, videolar ve daha fazlası [için Redis belgeleri için Azure Önbelleğini](https://azure.microsoft.com/documentation/services/cache/) keşfedin.
+Öğreticiler, örnekler, videolar ve daha fazlası için [redsıs belgelerinin Azure önbelleğini](https://azure.microsoft.com/documentation/services/cache/) inceleyin.
 

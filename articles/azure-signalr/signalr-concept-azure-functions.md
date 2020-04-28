@@ -1,28 +1,28 @@
 ---
-title: Gerçek zamanlı uygulama oluşturun - Azure Fonksiyonları & Azure SignalR Hizmeti
-description: Aşağıdaki örneği vererek Azure SignalR Hizmeti ile gerçek zamanlı sunucusuz web uygulamasını nasıl geliştireceklerini öğrenin.
+title: Azure SignalR hizmeti & gerçek zamanlı uygulama oluşturma-Azure Işlevleri
+description: Aşağıdaki örneği kullanarak Azure SignalR hizmeti ile gerçek zamanlı sunucusuz Web uygulaması geliştirmeyi öğrenin.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74157612"
 ---
-# <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Azure İşlevleri ve Azure SinyalR Hizmeti ile gerçek zamanlı Uygulamalar oluşturun
+# <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Azure Işlevleri ve Azure SignalR hizmeti ile gerçek zamanlı uygulamalar oluşturun
 
-Azure Sinyal RHizmeti ve Azure Fonksiyonları, altyapıyı yönetmek yerine uygulama oluşturmaya odaklanmanızı sağlayan tam olarak yönetilen, yüksek ölçeklenebilir hizmetler olduğundan, [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir ortamda gerçek zamanlı iletişim sağlamak için iki hizmeti birlikte kullanmak yaygındır.
+Azure SignalR hizmeti ve Azure Işlevleri, altyapı yönetimi yerine uygulama oluşturmaya odaklanmanız için hem tam olarak yönetilen, hem de yüksek düzeyde ölçeklenebilir hizmetler olduğundan, [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir ortamda gerçek zamanlı iletişimler sağlamak için iki hizmetin birlikte kullanılması yaygındır.
 
 > [!NOTE]
-> Etkileşimli öğreticide SignalR ve Azure Fonksiyonlarını birlikte kullanmayı öğrenin [Azure İşlevlerini ve SignalR Hizmetini kullanarak bir web uygulamasında otomatik güncelleştirmeleri etkinleştirin.](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
+> [Azure işlevleri ve SignalR hizmetini kullanarak bir Web uygulamasındaki otomatik güncelleştirmeleri etkinleştirmek](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)için bkz. SignalR ve Azure işlevlerini etkileşimli öğreticide birlikte kullanmayı öğrenin.
 
 ## <a name="integrate-real-time-communications-with-azure-services"></a>Gerçek zamanlı iletişimleri Azure hizmetleriyle tümleştirme
 
-Azure İşlevleri, bulutta olaylar oluştuğunda tetikleyen JavaScript, Python, C#ve Java gibi [çeşitli dillerde](../azure-functions/supported-languages.md)kod yazmanıza olanak tanır. Bu olayların örnekleri arasında şunlar yer alır:
+Azure Işlevleri JavaScript, Python, C# ve Java dahil olmak üzere [çeşitli dillerde](../azure-functions/supported-languages.md)kod yazmanıza olanak tanır. Bu, her olay bulutta gerçekleştiğinde tetiklenir. Bu olayların örnekleri arasında şunlar yer alır:
 
 * HTTP ve web kancası istekleri
 * Periyodik zamanlayıcılar
@@ -66,9 +66,9 @@ SignalR Service iletilerin tüm istemcilere veya tek bir kullanıcıya ait olanl
 
 Bu makalede, geniş yelpazedeki gerçek zamanlı mesajlaşma senaryolarını etkinleştirmek üzere Azure İşlevlerini SignalR Service ile birlikte kullanmaya yönelik bir genel bakış edinirsiniz.
 
-Azure İşlevlerini ve SignalR Hizmetinin birlikte nasıl kullanılacağı hakkında ayrıntılı bilgi için aşağıdaki kaynakları ziyaret edin:
+Azure Işlevleri 'ni ve SignalR hizmetini birlikte kullanma hakkında tam Ayrıntılar için aşağıdaki kaynakları ziyaret edin:
 
-* [SignalR Hizmeti ile Azure Fonksiyonları geliştirme ve yapılandırma](signalr-concept-serverless-development-config.md)
+* [SignalR hizmeti ile Azure Işlevleri geliştirme ve yapılandırma](signalr-concept-serverless-development-config.md)
 * [Azure İşlevleri ve SignalR Hizmeti’ni kullanarak bir web uygulamasında otomatik güncelleştirmeleri etkinleştirme](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
 
 Daha fazla bilgi edinmek için bu hızlı başlangıçlardan birini izleyin.

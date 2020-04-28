@@ -1,5 +1,5 @@
 ---
-title: 'Azure ExpressRoute: Yönlendirmeyi optimize etme'
+title: 'Azure ExpressRoute: yönlendirmeyi Iyileştirme'
 description: Bu sayfa, Microsoft ve şirket ağınız arasında bağlanan birden fazla ExpressRoute devresine sahip olduğunda yönlendirmenin nasıl iyileştirileceği hakkında ayrıntılı bilgi sağlar.
 services: expressroute
 author: charwen
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: charwen
 ms.openlocfilehash: dcbae103933167c583bf0f73dc2fa09178c38bd5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74080129"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute Yönlendirmeyi En iyi Duruma Getirme
 Birden çok ExpressRoute bağlantı hattına sahip olduğunuzda, Microsoft'a bağlanmak için birden fazla yolunuz vardır. Sonuç olarak, yetersiz yönlendirme olabilir, diğer bir deyişle, trafiğinizin Microsoft’a ulaşması ve Microsoft’un ağınıza ulaşması daha uzun bir yol alabilir. Ne kadar uzun ağ yolu, o kadar yüksek gecikme. Gecikmenin uygulama performansı ve kullanıcı deneyimi üzerinde doğrudan etkisi vardır. Bu makale, bu sorunu gösterir ve standart yönlendirme teknolojilerini kullanarak yönlendirmenin nasıl iyileştirileceğini açıklar.
 
-## <a name="path-selection-on-microsoft-and-public-peerings"></a>Microsoft ve Genel bakışlarda Yol Seçimi
-Microsoft'u veya Genel bakışlarını kullanırken, bir veya daha fazla ExpressRoute devreniz varsa, trafiğin istenilen yol üzerinden aktığından ve internet alışverişi (IX) veya Internet Servis Sağlayıcısı (ISS) üzerinden Internet'e giden yolları olduğundan emin olmak önemlidir. BGP, en uzun öneki eşleşmesi (LPM) dahil olmak üzere bir dizi etkeni temel alan en iyi yol seçim algoritmasını kullanır. Microsoft veya Genel bakış yoluyla Azure'a giden trafiğin ExpressRoute yolundan geçiş etmesini sağlamak için, müşterilerin yolun ExpressRoute'da her zaman tercih edilmesini sağlamak için *Yerel Tercih* özniteliğini uygulaması gerekir. 
+## <a name="path-selection-on-microsoft-and-public-peerings"></a>Microsoft ve genel eşlerde yol seçimi
+Bir ya da daha fazla ExpressRoute devreniz varsa ve Internet 'e bir Internet Exchange (x) veya Internet servis sağlayıcısı (ISS) aracılığıyla Internet 'e giden yollar varsa, trafiğin istenen yolun üzerine akmasını sağlamak önemlidir. BGP, en uzun ön ek eşleşmesi (LPM) dahil olmak üzere bir dizi etkene dayanarak en iyi yol seçim algoritmasını kullanır. Microsoft veya genel eşleme aracılığıyla Azure 'a yönelik trafiğin ExpressRoute yolundan geçiş yapıldığından emin olmak için, müşterilerin ExpressRoute üzerinde her zaman tercih edildiğini sağlamak üzere *yerel tercih* özniteliğini uygulaması gerekir. 
 
 > [!NOTE]
-> Varsayılan yerel tercih genellikle 100'dür. Daha yüksek yerel tercihler daha çok tercih edilir. 
+> Varsayılan yerel tercih genellikle 100 ' dir. Daha yüksek yerel Tercihler daha tercih edilir. 
 >
 >
 
@@ -29,7 +29,7 @@ Aşağıdaki örnek senaryoyu göz önünde bulundurun:
 
 ![ExpressRoute Vaka 1 sorunu: Müşteriden Microsoft’a yetersiz yönlendirme](./media/expressroute-optimize-routing/expressroute-localPreference.png)
 
-Yukarıdaki örnekte, ExpressRoute yollarını tercih etmek için Yerel Tercihi aşağıdaki gibi yapılandırın. 
+Yukarıdaki örnekte, ExpressRoute yollarını tercih etmek için aşağıdaki gibi yerel tercihi yapılandırın. 
 
 **R1 perspektifinden Cisco IOS-XE yapılandırması:**
 
@@ -41,7 +41,7 @@ Yukarıdaki örnekte, ExpressRoute yollarını tercih etmek için Yerel Tercihi 
     R1(config-router)#neighbor 1.1.1.2 activate
     R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
 
-**R1 perspektifinden Junos yapılandırma:**
+**R1 perspektifinden Junos yapılandırması:**
 
     user@R1# set protocols bgp group ibgp type internal
     user@R1# set protocols bgp group ibgp local-preference 150
@@ -54,7 +54,7 @@ Bir örnekle yönlendirme problemine daha yakından bir bakalım. Biri Los Angel
 ![ExpressRoute Vaka 1 sorunu: Müşteriden Microsoft’a yetersiz yönlendirme](./media/expressroute-optimize-routing/expressroute-case1-problem.png)
 
 ### <a name="solution-use-bgp-communities"></a>Çözüm: BGP Toplulukları’nı kullanın
-Her iki ofis kullanıcıları için yönlendirmeyi en iyi hale getirmek için, hangi önekin Azure ABD Batı ve Azure ABD Doğu olduğunu bilmeniz gerekir. Bu bilgileri [BGP Topluluğu değerlerini](expressroute-routing.md) kullanarak kodlarız. Her Azure bölgesine benzersiz bir BGP Topluluk değeri atadık, örneğin ABD Doğu'su için "12076:51004", US West için "12076:51006". Artık hangi önekin hangi Azure bölgesinden olduğunu bildiğinize göre, tercih edilmesi gereken ExpressRoute bağlantı hattını yapılandırabilirsiniz. Yönlendirme bilgilerinin değişimi için BGP kullandığımızdan, yönlendirmeyi etkilemek için BGP'nin Yerel Tercihini kullanabilirsiniz. Bizim örneğimizde, ABD Batı’daki 13.100.0.0/16 için ABD Doğu’dan daha yüksek bir yerel tercih değeri atayabilir ve benzer şekilde, ABD Doğu’daki 23.100.0.0/16 için ABD Batı’dan daha yüksek bir yerel tercih değeri atayabilirsiniz. Bu yapılandırma her iki Microsoft yolunun da kullanılabilir olduğunda, New York’taki kullanıcılarınız ABD Doğu’dan Azure ABD Doğu’ya ExpressRoute bağlantı hattını kullanırken Los Angeles’taki kullanıcılarınızın Azure ABD Batı’ya bağlanması için ABD Batı’daki ExpressRoute bağlantı hattının kullanıldığından emin olacaktır. Her iki tarafta da yönlendirme en iyi duruma getirilmiştir. 
+Her iki ofis kullanıcıları için yönlendirmeyi en iyi hale getirmek için, hangi önekin Azure ABD Batı ve Azure ABD Doğu olduğunu bilmeniz gerekir. Bu bilgileri [BGP Topluluğu değerlerini](expressroute-routing.md) kullanarak kodlarız. Her bir Azure bölgesine benzersiz bir BGP topluluk değeri atadık. Örneğin, ABD Batı için "12076:51004", "12076:51006" ABD Doğu. Artık hangi önekin hangi Azure bölgesinden olduğunu bildiğinize göre, tercih edilmesi gereken ExpressRoute bağlantı hattını yapılandırabilirsiniz. Yönlendirme bilgilerinin değişimi için BGP kullandığımızdan, yönlendirmeyi etkilemek için BGP'nin Yerel Tercihini kullanabilirsiniz. Bizim örneğimizde, ABD Batı’daki 13.100.0.0/16 için ABD Doğu’dan daha yüksek bir yerel tercih değeri atayabilir ve benzer şekilde, ABD Doğu’daki 23.100.0.0/16 için ABD Batı’dan daha yüksek bir yerel tercih değeri atayabilirsiniz. Bu yapılandırma her iki Microsoft yolunun da kullanılabilir olduğunda, New York’taki kullanıcılarınız ABD Doğu’dan Azure ABD Doğu’ya ExpressRoute bağlantı hattını kullanırken Los Angeles’taki kullanıcılarınızın Azure ABD Batı’ya bağlanması için ABD Batı’daki ExpressRoute bağlantı hattının kullanıldığından emin olacaktır. Her iki tarafta da yönlendirme en iyi duruma getirilmiştir. 
 
 ![ExpressRoute Vaka 1 çözümü: BGP Toplulukları’nı kullanın](./media/expressroute-optimize-routing/expressroute-case1-solution.png)
 
@@ -74,7 +74,7 @@ Bu sorunun iki çözümü vardır. Birinci yol Los Angeles ofisiniz için ABD Ba
 İkinci çözüm, her iki ExpressRoute bağlantı hattında iki öneki de tanıtmaya devam etmeniz ve buna ek olarak, hangi önekin hangi ofisinize daha yakın olduğu ile ilgili bize ipucu vermenizdir. BGP AS Yolu eklenmesini desteklediğimizden, yönlendirmeyi etkilemek için önekiniz için AS Yolu’nu yapılandırabilirsiniz. Bu örnekte, bu önek (ağımız bu önek yolunun batıdan daha kısa olacağını düşüneceğinden) için hedeflenen trafikte ABD Batı’daki ExpressRoute bağlantı hattını tercih edeceğimizden, ABD Doğu’daki 172.2.0.0/31 AS YOLU’nu uzatabilirsiniz. Benzer şekilde, ABD Doğu ExpressRoute bağlantı hattını tercih edeceğimiz için, ABD Batı’daki 172.2.0.2/31 için AS YOLU’nu uzatabilirsiniz. Her iki ofis için de yönlendirme en iyi duruma getirilmiştir. Bu tasarımla, bir ExpressRoute bağlantı hattı bozuk ise, Exchange Online başka bir ExpressRoute bağlantı hattı ve WAN’ınız aracılığıyla yine de size ulaşabilir. 
 
 > [!IMPORTANT]
-> Özel bir AS numarası kullanarak bakarken Microsoft Peering'de alınan önekler için AS PATH'deki özel AS numaralarını kaldırırız. Microsoft Peering yönlendirmesini etkilemek için ortak bir AS ile eşlemeniz ve AS PATH'deki ortak AS numaralarını eklemeniz gerekir.
+> Özel bir AS numarası kullanarak eşleme yaparken Microsoft eşlemelerinde alınan öneklerin AS YOLUNDAKI özel AS numaralarını kaldırdık. Microsoft eşlemesi için yönlendirmeyi etkilemek üzere AS yolunda ortak bir AS ile eş ve genel AS numaraları eklemeniz gerekir.
 > 
 > 
 

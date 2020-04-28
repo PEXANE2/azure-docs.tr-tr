@@ -1,6 +1,6 @@
 ---
-title: Azure Site Kurtarma ile Citrix XenDesktop/XenApp olağanüstü kurtarma yı ayarlama
-description: Bu makalede, Azure Site Kurtarma kullanarak Citrix XenDesktop ve XenApp dağıtımlarının nasıl ayarlanış yapılacağı açıklanmaktadır.
+title: Azure Site Recovery ile Citrix XenDesktop/XenApp olağanüstü durum kurtarmayı ayarlama
+description: Bu makalede, Azure Site Recovery kullanarak Citrix XenDesktop ve XenApp dağıtımlarını olağanüstü durum kurtarma 'nın nasıl ayarlanacağı açıklanır.
 author: ponatara
 manager: abhemraj
 ms.service: site-recovery
@@ -8,109 +8,109 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74084549"
 ---
-# <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>çok katmanlı Citrix XenApp ve XenDesktop dağıtımı için olağanüstü durum kurtarma ayarlama
+# <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>çok katmanlı Citrix XenApp ve XenDesktop dağıtımı için olağanüstü durum kurtarmayı ayarlama
 
 
 
-Citrix XenDesktop, masaüstü bilgisayarları ve uygulamaları her yerde, her yerde isteğe bağlı hizmet olarak sunan bir masaüstü sanallaştırma çözümüdür. FlexCast dağıtım teknolojisi ile XenDesktop, kullanıcılara uygulamaları ve masaüstü bilgisayarları hızlı ve güvenli bir şekilde sunabilir.
-Bugün, Citrix XenApp herhangi bir felaket kurtarma yetenekleri sağlamaz.
+Citrix XenDesktop, masaüstü ve uygulamaları herhangi bir kullanıcıya, her yerden bir ondemandservice olarak sunan bir masaüstü sanallaştırma çözümüdür. Esnek atama teknolojisine sahip XenDesktop, uygulamaları ve masaüstlerini kullanıcılara hızlı ve güvenli bir şekilde teslim edebilir.
+Günümüzde Citrix XenApp herhangi bir olağanüstü durum kurtarma özelliği sağlamıyor.
 
-İyi bir olağanüstü durum kurtarma çözümü, yukarıdaki karmaşık uygulama mimarileri etrafında kurtarma planları modelleme izin vermeli ve aynı zamanda çeşitli katmanlar arasında uygulama eşlemeleri işlemek için özelleştirilmiş adımlar eklemek için yeteneği dolayısıyla tek bir tıklama sağlayan daha düşük bir RTO giden bir felaket durumunda emin atış çözüm.
+İyi bir olağanüstü durum kurtarma çözümü, yukarıdaki karmaşık uygulama mimarilerinin çevresinde kurtarma planlarının modellenmesi ve ayrıca çeşitli katmanlar arasında uygulama eşlemelerini işlemek için özelleştirilmiş adımlar ekleyebilme olanağı sağlar. bu nedenle, bir olağanüstü durum lideri durumunda daha düşük bir RTO 'ya tek tıklamayla bir tek tıklama çözümü sağlar.
 
-Bu belge, Hyper-V ve VMware vSphere platformlarında şirket içi Citrix XenApp dağıtımlarınız için bir olağanüstü durum kurtarma çözümü oluşturmak için adım adım kılavuzluk sağlar. Bu belge, kurtarma planlarını, desteklenen yapılandırmaları ve ön koşulları kullanarak bir test başarısızlığı (olağanüstü durum kurtarma meddi) ve planlanmamış bir başarısızlığı azure'da nasıl gerçekleştirilemeyeceğinizi de açıklar.
+Bu belge, Hyper-V ve VMware vSphere platformlarındaki şirket içi Citrix XenApp dağıtımlarınız için bir olağanüstü durum kurtarma çözümü oluşturmaya yönelik adım adım yönergeler sağlar. Bu belge Ayrıca, kurtarma planlarını, desteklenen yapılandırma ve önkoşulları kullanarak Azure 'a yük devretme testi (olağanüstü durum kurtarma detayları) ve planlanmamış yük devretme gerçekleştirmeyi açıklar.
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce aşağıdakileri anladığınızdan emin olun:
+Başlamadan önce, aşağıdakileri anladığınızdan emin olun:
 
-1. [Sanal makineyi Azure'a çoğaltma](site-recovery-vmware-to-azure.md)
-1. Kurtarma [ağı](site-recovery-network-design.md) nasıl tasarlar?
-1. [Azure'da test başarısız olması](site-recovery-test-failover-to-azure.md)
-1. [Azure'da başarısız olmak](site-recovery-failover.md)
-1. Etki [alanı denetleyicisi nasıl çoğaltılır?](site-recovery-active-directory.md)
-1. SQL Server nasıl [çoğaltılır](site-recovery-sql.md)
+1. [Bir sanal makineyi Azure 'a çoğaltma](site-recovery-vmware-to-azure.md)
+1. [Kurtarma ağını tasarlama](site-recovery-network-design.md)
+1. [Azure 'a yük devretme testi yapma](site-recovery-test-failover-to-azure.md)
+1. [Azure 'a yük devretme işlemi yapma](site-recovery-failover.md)
+1. [Bir etki alanı denetleyicisini çoğaltma](site-recovery-active-directory.md)
+1. [SQL Server çoğaltma](site-recovery-sql.md)
 
 ## <a name="deployment-patterns"></a>Dağıtım desenleri
 
-Bir Citrix XenApp ve XenDesktop çiftliğinde genellikle aşağıdaki dağıtım deseni vardır:
+Citrix XenApp ve XenDesktop grubu genellikle aşağıdaki dağıtım düzenine sahiptir:
 
-**Dağıtım deseni**
+**Dağıtım kalıbı**
 
-AD DNS sunucusu, SQL veritabanı sunucusu, Citrix Dağıtım Denetleyicisi, StoreFront sunucusu, XenApp Master (VDA), Citrix XenApp Lisans Sunucusu ile Citrix XenApp ve XenDesktop dağıtımı
+AD DNS sunucusu, SQL veritabanı sunucusu, Citrix Delivery Controller, StoreFront Server, XenApp Master (VDA), Citrix XenApp lisans sunucusu ile Citrix XenApp ve XenDesktop dağıtımı
 
-![Dağıtım Deseni 1](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-deployment.png)
+![Dağıtım kalıbı 1](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-deployment.png)
 
 
 ## <a name="site-recovery-support"></a>Site Recovery desteği
 
-Bu makalenin amacı için, VSphere 6.0 tarafından yönetilen VMware sanal makinelerde Citrix dağıtımları / System Center VMM 2012 R2 DR kurulumu için kullanılmıştır.
+Bu makalenin amacı doğrultusunda, DR 'yi kurmak için vSphere 6,0/System Center VMM 2012 R2 tarafından yönetilen VMware sanal makinelerinde Citrix dağıtımları kullanılmıştır.
 
 ### <a name="source-and-target"></a>Kaynak ve hedef
 
-**Senaryo** | **İkincil siteye** | **Azure'a**
+**Senaryo** | **İkincil siteye** | **Azure 'a**
 --- | --- | ---
-**Hyper-V** | Kapsam içinde değil | Evet
-**VMware** | Kapsam içinde değil | Evet
-**Fiziksel sunucu** | Kapsam içinde değil | Evet
+**Hyper-V** | Kapsamda değil | Yes
+**VMware** | Kapsamda değil | Yes
+**Fiziksel sunucu** | Kapsamda değil | Yes
 
 ### <a name="versions"></a>Sürümler
-Müşteriler XenApp bileşenlerini Hyper-V veya VMware'de çalışan Sanal Makineler veya Fiziksel Sunucular olarak dağıtabilirler. Azure Site Kurtarma, Azure'a hem fiziksel hem de sanal dağıtımları koruyabilir.
-XenApp 7.7 veya sonraki sürümler Azure'da desteklendirildiğinden, yalnızca bu sürümlere sahip dağıtımlar Olağanüstü Durum Kurtarma veya geçiş için Azure'da başarısız olabilir.
+Müşteriler, XenApp bileşenlerini Hyper-V veya VMware üzerinde çalışan sanal makineler olarak veya fiziksel sunucu olarak dağıtabilir. Azure Site Recovery, hem fiziksel hem de sanal dağıtımları Azure ile koruyabilir.
+XenApp 7,7 veya üzeri Azure 'da desteklendiğinden, olağanüstü durum kurtarma veya geçiş için yalnızca bu sürümlere sahip dağıtımlar Azure 'a devredilecek.
 
 ### <a name="things-to-keep-in-mind"></a>Akılda tutulması gereken noktalar
 
-1. XenApp tarafından yayınlanan uygulamaları ve XenApp yayınlanan masaüstü bilgisayarları sunmak için Server OS makinelerini kullanarak şirket içi dağıtımların korunması ve kurtarılması desteklenir.
+1. XenApp yayımlanmış uygulamalar ve XenApp yayınlanan masaüstleri sunmak için sunucu işletim sistemi makinelerini kullanan şirket içi dağıtımları koruma ve kurtarma desteklenir.
 
-2. Windows 10 da dahil olmak üzere istemci sanal masaüstü bilgisayarlar için Masaüstü VDI sunmak için masaüstü işletim sistemi makineleri kullanarak şirket içi dağıtımların korunması ve kurtarılması desteklenmez. Bunun nedeni, Site Kurtarma masaüstü işletim sistemi ile makinelerin kurtarma desteklemez olmasıdır.  Ayrıca, bazı istemci sanal masaüstü işletim sistemleri (örneğin. Windows 7) azure'da lisanslama için henüz desteklenmez. Azure’da istemci/sunucu masaüstlerini lisanslama hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/licensing-faq/).
+2. Windows 10 dahil olmak üzere istemci sanal masaüstleri için masaüstü VDı 'yı sunmak üzere masaüstü işletim sistemleri kullanan şirket içi dağıtımları koruma ve kurtarma desteklenmez. Bunun nedeni, Site Recovery masaüstü Osları olan makinelerin kurtarılmasını desteklemez.  Ayrıca, bazı istemci sanal masaüstü işletim sistemleri (örn. Windows 7), Azure 'da lisanslama için henüz desteklenmiyor. Azure’da istemci/sunucu masaüstlerini lisanslama hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/licensing-faq/).
 
-3.  Azure Site Kurtarma, varolan şirket içi MCS veya PVS klonlarını çoğaltabilir ve koruyamaz.
-Bu klonları, Teslim denetleyicisinden Azure RM sağlamasını kullanarak yeniden oluşturmanız gerekir.
+3.  Azure Site Recovery, mevcut şirket içi MCS veya PVS klonlarını çoğaltamaz ve koruyamaz.
+Bu kopyaları teslim denetleyicisinden Azure RM sağlama kullanarak yeniden oluşturmanız gerekiyor.
 
-4. NetScaler FreeBSD'yi temel alsa da, Azure Site Kurtarma FreeBSD işletim sistemi korumayı desteklemediği için NetScaler Azure Site Kurtarma kullanılarak korunamaz. Azure'a geçemeden Azure Market'ten yeni bir NetScaler cihazı dağıtmanız ve yapılandırmanız gerekir.
+4. NetScaler, FreeBSD tabanlı olduğundan ve Azure Site Recovery FreeBSD OS korumasını desteklemediğinden, NetScaler Azure Site Recovery kullanılarak korunamaz. Azure 'a yük devretmeden sonra Azure Market 'ten yeni bir NetScaler gereci dağıtmanız ve yapılandırmanız gerekir.
 
 
 ## <a name="replicating-virtual-machines"></a>Sanal makineleri çoğaltma
 
-Citrix XenApp dağıtımının aşağıdaki bileşenlerinin çoğaltılması ve geri kazanılmasını sağlamak için korunması gerekir.
+Citrix XenApp dağıtımının aşağıdaki bileşenlerinin çoğaltmayı ve kurtarmayı etkinleştirmek için korunması gerekir.
 
 * AD DNS sunucusunun korunması
 * SQL veritabanı sunucusunun korunması
-* Citrix Teslimat Denetleyicisinin Korunması
-* StoreFront sunucusunun korunması.
+* Citrix Delivery Controller 'ın korunması
+* StoreFront sunucusu koruması.
 * XenApp Master (VDA) koruması
-* Citrix XenApp Lisans Sunucusunun Korunması
+* Citrix XenApp lisans sunucusu koruması
 
 
-**AD DNS sunucu çoğaltma**
+**AD DNS sunucusu çoğaltması**
 
-Azure'da bir etki alanı denetleyicisini çoğaltma ve yapılandırma kılavuzunda [Azure Site Kurtarma ile Etkin Dizin ve DNS'yi koruyun'a](site-recovery-active-directory.md) bakın.
+Lütfen Azure 'da bir etki alanı denetleyicisini çoğaltmak ve yapılandırmak için [Azure Site Recovery ile Active Directory ve DNS 'Yi koruyun](site-recovery-active-directory.md) bölümüne bakın.
 
-**SQL veritabanı Server çoğaltma**
+**SQL veritabanı sunucusu çoğaltması**
 
-SQL sunucularını korumak için önerilen seçenekler hakkında ayrıntılı teknik kılavuz için lütfen [SQL Server'ı SQL Server'ı Koruyun olağanüstü kurtarma ve Azure Site Kurtarma'ya](site-recovery-sql.md) bakın.
+Lütfen SQL Server korumasına yönelik önerilen seçeneklerle ilgili ayrıntılı teknik yönergeler için [SQL Server olağanüstü durum kurtarma ve Azure Site Recovery SQL Server koruyun '](site-recovery-sql.md) e bakın.
 
-Diğer bileşen sanal makinelerini Azure'da çoğaltmaya başlamak için [bu kılavuzu](site-recovery-vmware-to-azure.md) izleyin.
+Diğer bileşen sanal makinelerini Azure 'a Çoğaltmaya başlamak için [Bu yönergeleri](site-recovery-vmware-to-azure.md) izleyin.
 
-![XenApp Bileşenlerinin Korunması](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
+![XenApp bileşenlerinin korunması](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
 
-**Bilgi İşlem ve Ağ Ayarları**
+**İşlem ve ağ ayarları**
 
-Makineler korunduktan sonra (durum Çoğaltılan Öğeler altında "Korumalı" olarak gösterir), İşlem ve Ağ ayarlarının yapılandırılması gerekir.
-Bilgi İşlem ve Ağ > Bilgi İşlem özelliklerinde, Azure VM adını ve hedef boyutunu belirtebilirsiniz.
-Gerekirse Azure gereksinimleri ile uyum sağlamak için adı değiştirin. Ayrıca, Azure VM'ye atanacak hedef ağ, alt ağ ve IP adresi hakkında bilgi görüntüleyebilir ve ekleyebilirsiniz.
+Makineler korunduktan sonra (durum çoğaltılan öğeler altında "korumalı" olarak gösterilir), Işlem ve ağ ayarlarının yapılandırılması gerekir.
+Işlem ve ağ > Işlem özellikleri ' nde, Azure VM adını ve hedef boyutunu belirtebilirsiniz.
+Gerekirse Azure gereksinimleri ile uyum sağlamak için adı değiştirin. Ayrıca, Azure VM 'ye atanacak hedef ağ, alt ağ ve IP adresi hakkındaki bilgileri görüntüleyebilir ve ekleyebilirsiniz.
 
 Şunlara dikkat edin:
 
-* Hedef IP adresini ayarlayabilirsiniz. Bir IP adresi sağlamazsanız yük devredilen makine DHCP kullanır. Başarısız bir adreste kullanılamayan bir adres ayarlarsanız, başarısız lık çalışmaz. Hedef IP adresi, yük devretme ağı testinde kullanılabilirse aynı IP adresi yük devretme sınamasında da kullanılabilir.
+* Hedef IP adresini ayarlayabilirsiniz. Bir IP adresi sağlamazsanız yük devredilen makine DHCP kullanır. Yük devretmede kullanılamayan bir adres ayarlarsanız, yük devretme işlemi çalışmaz. Hedef IP adresi, yük devretme ağı testinde kullanılabilirse aynı IP adresi yük devretme sınamasında da kullanılabilir.
 
-* AD/DNS sunucusu için şirket içi adresi korumak, Azure Sanal ağı için DNS sunucusuyla aynı adresi belirtmenize olanak tanır.
+* AD/DNS sunucusu için, şirket içi adresin elinizde olması, Azure sanal ağı için DNS sunucusuyla aynı adresi belirtmenizi sağlar.
 
 Ağ bağdaştırıcılarının sayısı, hedef sanal makine için sizin belirlediğiniz boyuta göre aşağıdaki gibi belirlenmiştir:
 
@@ -118,78 +118,78 @@ Ağ bağdaştırıcılarının sayısı, hedef sanal makine için sizin belirled
 *   Kaynak sanal makinenin bağdaştırıcı sayısı, hedef boyut için izin verilen sayıyı aşarsa maksimum hedef boyutu kullanılır.
 * Örneğin, kaynak makinenin iki bağdaştırıcısı varsa ve hedef makine boyutu dört adet bağdaştırıcıyı destekliyorsa hedef makinenin iki bağdaştırıcısı olur. Kaynak makinenin iki bağdaştırıcısı varken hedef boyut yalnızca bir bağdaştırıcıyı destekliyorsa hedef makinenin bir bağdaştırıcısı olur.
 *   Sanal makinede birden çok ağ bağdaştırıcısı varsa, hepsi aynı ağa bağlanır.
-*   Sanal makinede birden çok ağ bağdaştırıcısı varsa, listede gösterilen ilk makine Azure sanal makinesinde Varsayılan ağ bağdaştırıcısı olur.
+*   Sanal makinede birden çok ağ bağdaştırıcısı varsa, listede gösterilen ilk, Azure sanal makinesindeki varsayılan ağ bağdaştırıcısı olur.
 
 
 ## <a name="creating-a-recovery-plan"></a>Kurtarma planı oluşturma
 
-XenApp bileşeni VM'ler için çoğaltma etkinleştirildikten sonra, bir sonraki adım bir kurtarma planı oluşturmaktır.
-Kurtarma planı, başarısız olmak ve kurtarma için benzer gereksinimlere sahip sanal makineleri bir araya getirir.  
+XenApp bileşeni VM 'Leri için çoğaltma etkinleştirildikten sonra, bir sonraki adım bir kurtarma planı oluşturmaktır.
+Kurtarma planı, yük devretme ve kurtarma için benzer gereksinimlere sahip sanal makineleri birlikte gruplandırır.  
 
 **Kurtarma planı oluşturma adımları**
 
-1. Kurtarma Planı'na XenApp bileşeni sanal makineleri ekleyin.
-2. Kurtarma Planları -> + Kurtarma Planı'nı tıklatın. Kurtarma planı için sezgisel bir ad sağlayın.
-3. VMware sanal makineleri için: Kaynağı VMware işlem sunucusu olarak seçin, Microsoft Azure olarak hedefleyin ve Kaynak Yöneticisi olarak dağıtım modelini seçin ve Öğeleri Seç'e tıklayın.
-4. Hyper-V sanal makineler için: Kaynağı VMM sunucusu olarak seçin, Microsoft Azure olarak hedefleyin ve Kaynak Yöneticisi olarak dağıtım modelini seçin ve Öğeleri Seç'e tıklayın ve ardından XenApp dağıtım Sanal M'lerini seçin.
+1. Kurtarma planına XenApp bileşeni sanal makinelerini ekleyin.
+2. Kurtarma planları-> + kurtarma planı ' na tıklayın. Kurtarma planı için sezgisel bir ad sağlayın.
+3. VMware sanal makineleri için: kaynak olarak VMware işlem sunucusu, hedef Microsoft Azure ve dağıtım Kaynak Yöneticisi modeli olarak seçin ve öğeleri seç ' e tıklayın.
+4. Hyper-V sanal makineleri için: VMM sunucusu olarak kaynak ' ı seçin, Microsoft Azure olarak hedefleyin ve dağıtım modeli ' ni Kaynak Yöneticisi ve ardından öğeleri seç ' e tıklayın ve ardından XenApp dağıtım VM 'lerini seçin.
 
-### <a name="adding-virtual-machines-to-failover-groups"></a>Başarısız gruplara sanal makineler ekleme
+### <a name="adding-virtual-machines-to-failover-groups"></a>Yük devretme gruplarına sanal makineler ekleme
 
-Kurtarma planları, belirli başlangıç sırası, komut dosyaları veya el ile eylemler için başarısız gruplar eklemek üzere özelleştirilebilir. Aşağıdaki grupların kurtarma planına eklenmesi gerekir.
+Kurtarma planları, belirli başlangıç siparişi, komut dosyaları veya el ile gerçekleştirilen eylemler için yük devretme grupları eklemek üzere özelleştirilebilir. Aşağıdaki grupların kurtarma planına eklenmesi gerekir.
 
-1. Failover Group1: AD DNS
-2. Failover Group2: SQL Server VMs
-2. Failover Group3: VDA Master Image VM
-3. Failover Group4: Teslim Denetleyicisi ve StoreFront sunucu VMs
+1. Yük devretme Group1: AD DNS
+2. Yük devretme grup2: SQL Server VM 'Ler
+2. Yük devretme Grup3: VDA ana görüntü VM 'si
+3. Yük devretme group4: teslim denetleyicisi ve StoreFront sunucusu VM 'Leri
 
 
-### <a name="adding-scripts-to-the-recovery-plan"></a>Kurtarma planına komut dosyaları ekleme
+### <a name="adding-scripts-to-the-recovery-plan"></a>Kurtarma planına betikler ekleme
 
-Komut dosyaları, kurtarma planında belirli bir gruptan önce veya sonra çalıştırılabilir. El ile eylemler de dahil edilebilir ve failover sırasında gerçekleştirilir.
+Betikler, kurtarma planındaki belirli bir gruptan önce veya sonra çalıştırılabilir. El ile gerçekleştirilen eylemler Ayrıca yük devretme sırasında dahil edilebilir ve gerçekleştirilebilir.
 
 Özelleştirilmiş kurtarma planı aşağıdaki gibi görünür:
 
-1. Failover Group1: AD DNS
-2. Failover Group2: SQL Server VMs
-3. Failover Group3: VDA Master Image VM
+1. Yük devretme Group1: AD DNS
+2. Yük devretme grup2: SQL Server VM 'Ler
+3. Yük devretme Grup3: VDA ana görüntü VM 'si
 
    >[!NOTE]     
-   >Manuel veya komut dosyası eylemleri içeren 4, 6 ve 7 adımları yalnızca MCS/PVS kataloglarına sahip şirket içi XenApp >ortamları için geçerlidir.
+   >4, 6 ve el ile veya betik eylemlerini içeren 7 adımları yalnızca, MCS/PVS kataloglarıyla birlikte yalnızca şirket içi XenApp >ortamı için geçerlidir.
 
-4. Grup 3 El kitabı veya komut dosyası eylemi: Ana VDA VM'yi kapatın.
-Master VDA VM, Azure'da başarısız olduğunda çalışan bir durumda olacaktır. Azure barındırma yı kullanarak yeni MCS katalogları oluşturmak için ana VDA VM'nin Durduruldu (de allocated) durumunda olması gerekir. Azure portalından VM'yi kapatın.
+4. Grup 3 El Ile veya betik eylemi: Ana VDA VM 'yi kapatın.
+Azure 'a yük devredildiği sırada ana VDA VM çalışır durumda olur. Azure barındırma kullanarak yeni bir MCS kataloğu oluşturmak için, ana VDA VM 'sinin durdurulmuş (ayrılmış) durumda olması gerekir. Azure portal 'ten sanal makineyi kapatır.
 
-5. Failover Group4: Teslim Denetleyicisi ve StoreFront sunucu VMs
-6. Grup3 el kitabı veya komut dosyası eylemi 1:
+5. Yük devretme group4: teslim denetleyicisi ve StoreFront sunucusu VM 'Leri
+6. Grup3 el ile veya betik eylemi 1:
 
-    ***Azure RM ana bilgisayar bağlantısı ekleme***
+    ***Azure RM konak bağlantısı ekle***
 
-    Azure'da yeni MCS katalogları sağlamak için Teslim Denetleyicisi makinesinde Azure ana bilgisayar bağlantısı oluşturun. Bu [makalede](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/)açıklandığı gibi adımları izleyin.
+    Azure 'da yeni MCS katalogları sağlamak için teslim denetleyicisi makinesinde Azure ana bilgisayar bağlantısı oluşturun. Bu [makalede](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/)açıklanan adımları izleyin.
 
-7. Grup3 el kitabı veya komut dosyası eylemi 2:
+7. Grup3 el ile veya betik eylemi 2:
 
-    ***Azure'da MCS Kataloglarını yeniden oluşturun***
+    ***Azure 'da MCS kataloglarını yeniden oluşturma***
 
-    Birincil sitedeki varolan MCS veya PVS klonları Azure'a çoğaltılamaz. Bu klonları, Teslim denetleyicisinden çoğaltılan ana VDA ve Azure sağlamasını kullanarak yeniden oluşturmanız gerekir. Azure'da MCS katalogları oluşturmak için bu [makalede](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) açıklanan adımları izleyin.
+    Birincil sitedeki mevcut MCS veya PVS kopyaları Azure 'a çoğaltılmaz. Bu kopyaları, çoğaltılan ana VDA ve Azure sağlama 'yı teslim denetleyicisinden kullanarak yeniden oluşturmanız gerekir. Azure 'da MCS katalogları oluşturmak için bu [makalede](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) açıklanan adımları izleyin.
 
-![XenApp Bileşenleri için kurtarma planı](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-recoveryplan.png)
+![XenApp bileşenleri için kurtarma planı](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-recoveryplan.png)
 
 
    >[!NOTE]
-   >DNS'yi >sanal makineler üzerinden başarısız olan yeni IP'lerle güncelleştirmek veya gerekirse sanal makine üzerinden başarısız olan asıma üzerinde bir yük dengeleyicisi takmak için komut dosyalarını [yerinde](https://github.com/Azure/azure-quickstart-templates/tree/master/asr-automation-recovery/scripts) kullanabilirsiniz.
+   >DNS 'yi, yük devredilen >sanal makinelerin yeni IP 'Leri ile güncelleştirmek ya da gerekirse yükü devredilen sanal makineye yük dengeleyici eklemek için [konumundaki](https://github.com/Azure/azure-quickstart-templates/tree/master/asr-automation-recovery/scripts) betikleri kullanabilirsiniz.
 
 
-## <a name="doing-a-test-failover"></a>Bir test başarısız yapma
+## <a name="doing-a-test-failover"></a>Yük devretme testi yapma
 
-Bir test başarısız yapmak için [bu kılavuzu](site-recovery-test-failover-to-azure.md) izleyin.
+Yük devretme testi yapmak için [Bu kılavuzu](site-recovery-test-failover-to-azure.md) izleyin.
 
-![Kurtarma Planı](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-tfo.png)
+![Kurtarma planı](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-tfo.png)
 
 
-## <a name="doing-a-failover"></a>Bir failover yapma
+## <a name="doing-a-failover"></a>Yük devretme yapma
 
-Bir failover yaparken [bu kılavuzu](site-recovery-failover.md) izleyin.
+Yük devretme yaparken [Bu kılavuzu](site-recovery-failover.md) izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu teknik incelemede Citrix XenApp ve XenDesktop dağıtımlarını çoğaltma hakkında [daha fazla bilgi edinebilirsiniz.](https://aka.ms/citrix-xenapp-xendesktop-with-asr) Site Kurtarma'yı kullanarak [diğer uygulamaları çoğaltmakılavuzuna](site-recovery-workload.md) bakın.
+Citrix XenApp ve XenDesktop dağıtımlarını bu teknik incelemeye çoğaltma hakkında [daha fazla bilgi](https://aka.ms/citrix-xenapp-xendesktop-with-asr) edinebilirsiniz. Site Recovery kullanarak [diğer uygulamaları çoğaltmak](site-recovery-workload.md) için rehbere bakın.

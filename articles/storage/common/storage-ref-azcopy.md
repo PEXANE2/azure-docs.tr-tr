@@ -1,6 +1,6 @@
 ---
-title: azcopy | Microsoft Dokümanlar
-description: Bu makalede, azcopy komutu için referans bilgileri sağlar.
+title: AzCopy | Microsoft Docs
+description: Bu makale AzCopy komutu için başvuru bilgileri sağlar.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,36 +9,36 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 5da3a2e5d003a191bff66af6599cae4d34ab60c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74038081"
 ---
 # <a name="azcopy"></a>azcopy
 
-AzCopy, verileri Azure Depolama'ya giren ve çıkan bir komut satırı aracıdır.
+AzCopy, Azure depolama 'ya ve dışına veri taşınan bir komut satırı aracıdır.
 
-## <a name="synopsis"></a>Özet
+## <a name="synopsis"></a>Özeti
 
 Komutların genel biçimi: `azcopy [command] [arguments] --[flag-name]=[flag-value]`.
 
-Sorunları bildirmek veya araç hakkında daha [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy)fazla bilgi edinmek için bkz.
+Sorunları bildirmek veya araç hakkında daha fazla bilgi edinmek için bkz [https://github.com/Azure/azure-storage-azcopy](https://github.com/Azure/azure-storage-azcopy)..
 
 ## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
 
 - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
-- [AzCopy ve Blob depolama ile veri aktarımı](storage-use-azcopy-blobs.md)
-- [AzCopy ve dosya depolama ile veri aktarımı](storage-use-azcopy-files.md)
-- [AzCopy'i yapılandırma, en iyi duruma getirme ve sorun giderme](storage-use-azcopy-configure.md)
+- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
+- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Seçenekler
 
-**--kap-mbps uint32**   Transfer hızını saniyede megabit olarak kaplar. Anlık iş artışı kapaktan biraz farklı olabilir. Bu seçenek sıfıra ayarlanmışsa veya atlanırsa, iş elde etme kapaklı değildir.
+**--Cap-Mbps uint32**   Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.
 
-**-h, --yardım** Azcopy için yardım
+**-h,--yardım** AzCopy için yardım
       
-**--çıkış türü**  Komutçıktısının biçimi. Seçenekler şunlardır: metin, json. Varsayılan değer 'metin'dir. (varsayılan "metin")
+**--Çıkış türü**  Komutun çıktısının biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer ' text ' değeridir. (varsayılan "metin")
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

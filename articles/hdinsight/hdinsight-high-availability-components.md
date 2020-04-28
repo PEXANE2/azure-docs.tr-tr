@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight'ta yüksek kullanılabilirlik bileşenleri
+title: Azure HDInsight 'ta yüksek kullanılabilirlik bileşenleri
 description: HDInsight kümeleri tarafından kullanılan çeşitli yüksek kullanılabilirlik bileşenlerine genel bakış.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,130 +8,130 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74069620"
 ---
-# <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight tarafından desteklenen yüksek kullanılabilirlik hizmetleri
+# <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight tarafından desteklenen yüksek kullanılabilirlik Hizmetleri
 
- HdInsight, analitik bileşenleriniz için en uygun düzeyde kullanılabilirlik sağlamak amacıyla, kritik hizmetlerin yüksek kullanılabilirliğini (HA) sağlamak için benzersiz bir mimariyle geliştirilmiştir. Bu mimarinin bazı bileşenleri Microsoft tarafından otomatik hata sağlamak için geliştirilmiştir. Diğer bileşenler, belirli hizmetleri desteklemek için dağıtılan standart Apache bileşenleridir. Bu makalede, HDInsight'taki HA hizmet modelinin mimarisi, HDInsight'ın HA hizmetleri için başarısızlığı nasıl desteklediği ve diğer hizmet kesintilerinden kurtarılabilmek için en iyi uygulamalar açıklanmaktadır.
+ Analiz bileşenleriniz için en uygun düzeylerde kullanılabilirlik sağlamak amacıyla, HDInsight, önemli hizmetlerin yüksek kullanılabilirliğini sağlamak için benzersiz bir mimariye geliştirilmiştir. Bu mimarinin bazı bileşenleri, Microsoft tarafından otomatik yük devretme sağlamak üzere geliştirilmiştir. Diğer bileşenler, belirli hizmetleri desteklemek için dağıtılan standart Apache bileşenleridir. Bu makalede, HDInsight 'ta HA hizmeti modelinin mimarisi, HDInsight 'ın HA Hizmetleri için yük devretmeyi nasıl desteklediği ve diğer hizmet kesintilerinden kurtarmak için en iyi uygulamalar açıklanmaktadır.
 
 ## <a name="high-availability-infrastructure"></a>Yüksek kullanılabilirlik altyapısı
 
-HDInsight, otomatik arıza özellikleriyle dört ana hizmetin yüksek kullanılabilirlik olmasını sağlamak için özelleştirilmiş altyapı sağlar:
+HDInsight, dört birincil hizmetin otomatik yük devretme özellikleri ile yüksek kullanılabilirliğe sahip olduğundan emin olmak için özelleştirilmiş altyapı sağlar:
 
-- Apache Ambari sunucusu
-- Apache YARN için Uygulama Zaman Çizelgesi Sunucusu
-- Hadoop MapReduce için İş Geçmişi Sunucusu
-- Apaçi Livy
+- Apache ambarı sunucusu
+- Apache YARN için Uygulama Zaman Çizelgesi sunucusu
+- Hadoop MapReduce için iş geçmişi sunucusu
+- Apache Livy
 
-Bu altyapı, bazıları Microsoft tarafından tasarlanan bir dizi hizmet ve yazılım bileşeninden oluşur. Aşağıdaki bileşenler HDInsight platformuna özgüdür:
+Bu altyapı, bazıları Microsoft tarafından tasarlanan bir dizi hizmet ve yazılım bileşeninden oluşur. Aşağıdaki bileşenler HDInsight platformu için benzersizdir:
 
-- Slave failover denetleyicisi
-- Ana failover denetleyicisi
-- Slave yüksek kullanılabilirlik hizmeti
-- Master yüksek kullanılabilirlik hizmeti
+- Bağımlı yük devretme denetleyicisi
+- Ana yük devretme denetleyicisi
+- Bağımlı yüksek kullanılabilirlik hizmeti
+- Ana yüksek kullanılabilirlik hizmeti
 
 ![yüksek kullanılabilirlik altyapısı](./media/hdinsight-high-availability-components/high-availability-architecture.png)
 
-Açık kaynak Apache güvenilirlik bileşenleri tarafından desteklenen diğer yüksek kullanılabilirlik hizmetleri de vardır. Bu bileşenler HDInsight kümelerinde de bulunur:
+Açık kaynaklı Apache güvenilirlik bileşenleri tarafından desteklenen diğer yüksek kullanılabilirlik hizmetleri de vardır. Bu bileşenler HDInsight kümelerinde da mevcuttur:
 
-- Hadoop Dosya Sistemi (HDFS) NameNode
-- İplik Kaynak Yöneticisi
-- HBase Ustası
+- Hadoop dosya sistemi (bir) süs Yot
+- YARN ResourceManager
+- HBase Master
 
-Aşağıdaki bölümlerde bu hizmetlerin birlikte nasıl çalıştığı hakkında daha fazla ayrıntı verecektir.
+Aşağıdaki bölümler, bu hizmetlerin birlikte nasıl çalıştığı hakkında daha fazla ayrıntı sağlayacaktır.
 
-## <a name="hdinsight-high-availability-services"></a>HDInsight yüksek kullanılabilirlik hizmetleri
+## <a name="hdinsight-high-availability-services"></a>HDInsight yüksek kullanılabilirlik Hizmetleri
 
-Microsoft, HDInsight kümelerinde aşağıdaki tabloda dört Apache hizmeti için destek sağlar. Apache bileşenleri tarafından desteklenen yüksek kullanılabilirlik hizmetleri onları ayırt etmek için, *hdInsight HA hizmetleri*denir.
+Microsoft, HDInsight kümelerinde aşağıdaki tabloda bulunan dört Apache hizmeti için destek sağlar. Bileşenlere Apache tarafından desteklenen yüksek kullanılabilirlik hizmetlerinden ayırt etmek için, *HDıNSIGHT ha Hizmetleri*olarak adlandırılırlar.
 
 | Hizmet | Küme düğümleri | Küme türleri | Amaç |
 |---|---|---|---|
-| Apache Ambari sunucusu| Aktif kafa düğümü | Tümü | Kümeyi izler ve yönetir.|
-| Apache YARN için Uygulama Zaman Çizelgesi Sunucusu | Aktif kafa düğümü | Kafka hariç hepsi | Kümeüzerinde çalışan İplik işleri hakkında hata ayıklama bilgilerini tutar.|
-| Hadoop MapReduce için İş Geçmişi Sunucusu | Aktif kafa düğümü | Kafka hariç hepsi | MapReduce işleri için hata ayıklama verilerini korur.|
-| Apaçi Livy | Aktif kafa düğümü | Spark | REST arabirimi üzerinden bir Spark kümesiyle kolay etkileşim sağlar |
+| Apache ambarı sunucusu| Etkin baş düğümüne | Tümü | Kümeyi izler ve yönetir.|
+| Apache YARN için Uygulama Zaman Çizelgesi sunucusu | Etkin baş düğümüne | Kafka dışında tümü | Kümede çalışan YARN işleri hakkında hata ayıklama bilgilerini tutar.|
+| Hadoop MapReduce için iş geçmişi sunucusu | Etkin baş düğümüne | Kafka dışında tümü | MapReduce işleri için hata ayıklama verilerini tutar.|
+| Apache Livy | Etkin baş düğümüne | Spark | REST arabirimi üzerinde Spark kümesiyle kolay etkileşim imkanı sunar |
 
 >[!Note]
-> HDInsight Kurumsal Güvenlik Paketi (ESP) kümeleri şu anda yalnızca Ambari sunucusuna yüksek kullanılabilirlik sağlar.
+> HDInsight Kurumsal Güvenlik Paketi (ESP) kümeleri Şu anda yalnızca bir ambarı sunucusu yüksek kullanılabilirliği sağlar.
 
 ### <a name="architecture"></a>Mimari
 
-Her HDInsight kümesinin sırasıyla etkin ve bekleme modunda iki headnode'si vardır. HDInsight HA hizmetleri yalnızca kafa düğümlerinde çalışır. Bu hizmetler her zaman etkin headnode çalışıyor olmalı ve durdu ve bekleme headnode bakım modu koymak.
+Her HDInsight kümesinin sırasıyla etkin ve bekleme modlarında iki yayın düğümü vardır. HDInsight ha Hizmetleri yalnızca baş üzerinde çalışır. Bu hizmetler her zaman etkin headnode üzerinde çalışmalıdır ve bekleme konumuna durdurulup bakım moduna konur.
 
-HDInsight, HA hizmetlerinin doğru durumlarını korumak ve hızlı bir başarısızlık sağlamak için, dağıtılmış uygulamalar için bir koordinasyon hizmeti olan Apache ZooKeeper'ı etkin headnode seçimi yapmak için kullanır. HDInsight ayrıca, HDInsight HA hizmetleri için başarısız prosedürü koordine eden birkaç arka plan Java işlemini de uygular. Bu hizmetler şunlardır: ana failover denetleyicisi, köle failover denetleyicisi, *master-ha-service*, ve *slave-ha-service*.
+HA hizmetlerinin doğru durumlarını korumak ve hızlı yük devretme sağlamak için HDInsight, dağıtılmış uygulamalar için bir düzenleme hizmeti olan Apache ZooKeeper kullanır ve bu da etkin baş düğüm seçimi yürütmek için kullanılır. HDInsight, HDInsight HA Hizmetleri için yük devretme yordamını koordine eden bazı arka plan Java işlemleri de sağlar. Bu hizmetler şunlardır: Ana yük devretme denetleyicisi, bağımlı yük devretme denetleyicisi, *Master-ha-Service*ve *bağımlı-ha-Service*.
 
-### <a name="apache-zookeeper"></a>Apaçi ZooKeeper
+### <a name="apache-zookeeper"></a>Apache ZooKeeper
 
-Apache ZooKeeper dağıtılmış uygulamalar için yüksek performanslı bir koordinasyon hizmetidir. Üretimde, ZooKeeper genellikle zookeeper sunucularının çoğaltılmış bir grup bir çoğunluk oluşturmak çoğaltılmış modunda çalışır. Her HDInsight kümesi, üç ZooKeeper sunucusunun bir çoğunluk oluşturmasına izin veren üç ZooKeeper düğümüne sahiptir. HDInsight'ın birbirine paralel çalışan iki ZooKeeper çoğunluğu vardır. Bir çoğunluk, HDInsight HA hizmetlerinin çalışması gereken bir kümedeki etkin headnode karar verir. Apache tarafından sağlanan HA hizmetlerini daha sonraki bölümlerde ayrıntılı olarak koordine etmek için başka bir çoğunluk kullanılır.
+Apache ZooKeeper, dağıtılmış uygulamalar için yüksek performanslı bir koordinasyon hizmetidir. Üretimde, ZooKeeper genellikle çoğaltılan modda çalışır ve bu da çoğaltılmış bir ZooKeeper sunucuları grubunun bir çekirdek oluşturur. Her HDInsight kümesinde, üç ZooKeeper sunucusuna çekirdek oluşturma izni veren üç ZooKeeper düğümü vardır. HDInsight ile paralel olarak çalışan iki ZooKeeper çekirdeklerine vardır. Bir çekirdek, HDInsight HA hizmetlerinin çalışması gereken bir kümede etkin olan yayın düğümüne karar verir. Başka bir çekirdek, daha sonraki bölümlerde açıklandığı gibi Apache tarafından sunulan HA hizmetlerini koordine etmek için kullanılır.
 
-### <a name="slave-failover-controller"></a>Slave failover denetleyicisi
+### <a name="slave-failover-controller"></a>Bağımlı yük devretme denetleyicisi
 
-Slave failover denetleyicisi bir HDInsight kümesindeki her düğümüzerinde çalışır. Bu denetleyici, ambari ajanını ve her düğümde *köle-ha-hizmetini* başlatmaktan sorumludur. Aktif başlık hakkında ilk ZooKeeper çoğunluklarını düzenli olarak sorgular. Etkin ve bekleme headnodes değiştiğinde, köle failover denetleyiciaşağıdakileri gerçekleştirir:
+Bağımlı yük devretme denetleyicisi, HDInsight kümesindeki her düğümde çalışır. Bu denetleyici, her düğümde ambarı Aracısı ve *bağımlı-ha hizmeti* başlatmaktan sorumludur. Etkin yayın düğümü hakkında düzenli olarak ilk ZooKeeper çekirdeğini sorgular. Etkin ve hazır olan yayın düğümleri değiştiğinde, bağımlı yük devretme denetleyicisi şunları gerçekleştirir:
 
 1. Ana bilgisayar yapılandırma dosyasını güncelleştirir.
-1. Ambari ajanını yeniden başlatın.
+1. Ambarı Aracısı 'nı yeniden başlatır.
 
-*Slave-ha-service,* bekleme başlığındaki HDInsight HA hizmetlerini (Ambari sunucusu hariç) durdurmakla yükümlüdür.
+*Bağımlı-ha-Service* , bekleyen headnode 'DA HDInsight ha Hizmetleri 'ni (örneğin, ambarı sunucusu hariç) durdurmaktan sorumludur.
 
-### <a name="master-failover-controller"></a>Ana failover denetleyicisi
+### <a name="master-failover-controller"></a>Ana yük devretme denetleyicisi
 
-Ana bir arıza denetleyicisi her iki headnode çalışır. Her iki ana failover denetleyicileri aktif headnode olarak çalışan headnode aday çıkarmak için ilk ZooKeeper çoğunluk ile iletişim.
+Ana yük devretme denetleyicisi her iki yayın düğümünde çalışır. Her iki ana yük devretme denetleyicisi, etkin yayın düğümü olarak üzerinde çalıştıkları baş düğümüne 'u aday şekilde ilk ZooKeeper çekirdekle iletişim kurar.
 
-Örneğin, headnode 0'daki ana başarısız denetleyici seçimi kazanırsa, aşağıdaki değişiklikler gerçekleşir:
+Örneğin, ana düğüm 0 üzerinde ana yük devretme denetleyicisi seçimi WINS ise, aşağıdaki değişiklikler gerçekleşir:
 
-1. Headnode 0 etkin hale gelir.
-1. Ana failover denetleyicisi Ambari sunucusunu ve headnode 0'daki *master-ha-servisi* ni başlatır.
-1. Diğer ana failover denetleyicisi Ambari sunucusunu ve *ana-ha-servisi* headnode 1'de durdurur.
+1. 0. headnode etkin hale gelir.
+1. Ana yük devretme denetleyicisi, ana düğüm 0 ' da ambarı sunucusunu ve *Master-ha-Service* ' i başlatır.
+1. Diğer ana yük devretme denetleyicisi, ana düğüm 1 ' de ambarı sunucusunu ve *Master-ha-Service* ' i durduruyor.
 
-Master-ha-service yalnızca etkin headnode çalışır, hdinsight HA hizmetlerini (Ambari sunucusu hariç) bekleme başlığında durdurur ve bunları etkin başlıkla başlatır.
+Master-ha-Service yalnızca etkin baş düğümüne üzerinde çalışır, bekleyen baş düğümüne 'da HDInsight ha hizmetlerini (hizmet ambarı sunucusu hariç) durdurup etkin bir yayın düğümünde başlatır.
 
-### <a name="the-failover-process"></a>Başarısız süreci
+### <a name="the-failover-process"></a>Yük devretme işlemi
 
-![başarısız süreci](./media/hdinsight-high-availability-components/failover-steps.png)
+![Yük devretme işlemi](./media/hdinsight-high-availability-components/failover-steps.png)
 
-Zookeeper çoğunluk için hearbeat bildirimler göndermek için ana failover denetleyicisi ile birlikte her headnode üzerinde çalışan bir sağlık monitörü çalışır. Headnode bu senaryoda bir HA hizmeti olarak kabul edilir. Sağlık monitörü, her yüksek kullanılabilirlik hizmetinin sağlıklı olup olmadığını ve liderlik seçimlerine katılmaya hazır olup olmadığını kontrol eder. Eğer evet sayılsa, bu kafa düğümü seçimlerde yarışacak. Yoksa, tekrar hazır olana kadar seçimden çıkacak.
+Bir sistem durumu İzleyicisi, Zookeeper çekirdeğe sinyal bildirimleri göndermek için ana yük devretme denetleyicisiyle birlikte her bir baş düğümüne üzerinde çalışır. Bu senaryoda, baş düğümüne bir ha hizmeti olarak kabul edilir. Sistem durumu İzleyicisi, her bir yüksek kullanılabilirlik hizmetinin sağlıklı olup olmadığını ve liderlik seçimi 'ne katılmayı hazır olup olmadığını denetler. Yanıt Evet ise, bu baş düğümüne seçim içinde rekabet eder. Aksi takdirde, tekrar hazır olana kadar seçimi çıkar.
 
-Bekleme başlığı hiç liderlik elde ve aktif hale gelirse (önceki etkin düğüm ile bir başarısızlık durumunda gibi), onun ana failover denetleyicisi tüm HDInsight HA hizmetleri başlatacaktır. Ana failover denetleyicisi de diğer headnode bu hizmetleri durdurur.
+Bekleyen yayın düğümü liderlik devreder ve etkin hale gelirse (önceki etkin düğüm ile ilgili bir başarısızlık durumunda olduğu gibi), ana yük devretme denetleyicisi tüm HDInsight HA Hizmetleri üzerinde başlatılır. Ana yük devretme denetleyicisi aynı zamanda diğer headnode üzerinde bu hizmetleri de durdurur.
 
-Bir hizmetin kötü veya sağlıksız olması gibi HDInsight HA hizmet hataları için, ana arıza denetleyicisi headnode durumuna göre hizmetleri otomatik olarak yeniden başlatmalı veya durdurmalıdır. Kullanıcılar hdinsight HA hizmetlerini her iki kafa düğümünde de el ile başlatmamalıdır. Bunun yerine, hizmetin kurtarılmasına yardımcı olmak için otomatik veya el ile başarısız olun.
+Bir hizmetin düşük veya kötü durumda olduğu gibi HDInsight ha hizmeti hatalarında, ana yük devretme denetleyicisinin otomatik olarak yeniden başlatılması veya hizmeti, baş düğümüne durumuna göre durdurması gerekir. Kullanıcılar, her iki baş düğümde de HDInsight HA hizmetlerini el ile başlatmamalıdır. Bunun yerine, hizmetin kurtarılmasını sağlamak için otomatik veya el ile yük devretmeye izin verin.
 
-### <a name="inadvertent-manual-intervention"></a>Yanlışlıkla manuel müdahale
+### <a name="inadvertent-manual-intervention"></a>Yanlışlıkla el ile müdahale
 
-HDInsight HA hizmetleri yalnızca etkin başlık üzerinde çalışmalıdır ve gerektiğinde otomatik olarak yeniden başlatılır. Bireysel HA hizmetlerinin kendi sağlık monitörü olmadığından, failover bireysel hizmet düzeyinde tetiklenemez. Failover, hizmet düzeyinde değil, düğüm düzeyinde sağlanır.
+HDInsight HA Hizmetleri yalnızca etkin headnode üzerinde çalışmalıdır ve gerektiğinde otomatik olarak yeniden başlatılır. Bireysel HA hizmetleri kendi sistem durumu izleyicisine sahip olmadığından, yük devretme tek tek hizmet düzeyinde tetiklenemez. Yük devretme, düğüm düzeyinde değildir ve hizmet düzeyinde değildir.
 
-### <a name="some-known-issues"></a>Bilinen bazı sorunlar
+### <a name="some-known-issues"></a>Bazı bilinen sorunlar
 
-- Bekleme başlığında bir HA hizmetini el ile başlatırken, bir sonraki başarısız olana kadar durmaz. HA hizmetleri her iki headnodes üzerinde çalışan zaman, bazı potansiyel sorunlar şunlardır: Ambari UI erişilemez, Ambari hataları atar, İplik, Kıvılcım, ve Oozie işleri sıkışmış alabilirsiniz.
+- Bekleme konumuna el ile bir HA hizmeti başlattığınızda, bir sonraki yük devretme gerçekleşene kadar durmayacaktır. Her iki yayın düğümünde de HA hizmetleri çalışırken, bazı olası sorunlar şunlardır: ambarı Kullanıcı arabirimine erişilemez, ambarı hatalar, YARN, Spark ve Oozie işleri takılmış olabilir.
 
-- Etkin headnode bir HA hizmeti durduğunda, bir sonraki failover gerçekleşene veya ana failover denetleyicisi/master-ha-service yeniden başlatAna gelene kadar yeniden başlatılamayacak. Bir veya daha fazla HA hizmeti aktif başlıkta durduğunda, özellikle Ambari sunucusu durduğunda Ambari UI'ye erişilemez, diğer olası sorunlar arasında İplik, Kıvılcım ve Oozie iş hataları yer alır.
+- Etkin baş düğümüne üzerinde bir ha hizmeti durdurulduğunda, bir sonraki yük devretme gerçekleşene veya ana yük devretme denetleyicisi/Master-ha-Service yeniden başlatmaları tamamlanana kadar yeniden başlatmaz. Etkin yayın düğümünde bir veya daha fazla HA hizmeti durdurulduğunda, özellikle de ambarı sunucusu durdurulduğunda, ambarı Kullanıcı arabirimine erişilemez, diğer olası sorunlar YARN, Spark ve Oozie işleri hataları içerir.
 
-## <a name="apache-high-availability-services"></a>Apache yüksek kullanılabilirlik hizmetleri
+## <a name="apache-high-availability-services"></a>Apache yüksek kullanılabilirlik Hizmetleri
 
-Apache, HDInsight kümelerinde de bulunan HDFS NameNode, YARN ResourceManager ve HBase Master için yüksek kullanılabilirlik sağlar. HDInsight HA hizmetlerinin aksine, ESP kümelerinde desteklenirler. Apache HA hizmetleri aktif/bekleme durumlarını seçmek ve otomatik arıza yapmak için ikinci ZooKeeper çoğunluğuyla (yukarıdaki bölümde açıklanan) iletişim kurar. Aşağıdaki bölümlerde bu hizmetlerin nasıl çalıştığı ayrıntılı olarak açıklanmıştır.
+Apache, Ayrıca, HDInsight kümelerinde de kullanılabilen,, rBu Code, YARN ResourceManager ve HBase Master için yüksek kullanılabilirlik sağlar. HDInsight HA hizmetlerinden farklı olarak, bunlar ESP kümelerinde desteklenirler. Apache HA Hizmetleri, etkin/bekleme durumlarını seçip otomatik yük devretmeyi yürütmek için ikinci ZooKeeper çekirdekle (yukarıdaki bölümde açıklanmıştır) iletişim kurar. Aşağıdaki bölümlerde bu hizmetlerin nasıl çalıştığı ayrıntılı bilgiler verilmektedir.
 
-### <a name="hadoop-distributed-file-system-hdfs-namenode"></a>Hadoop Dağıtılmış Dosya Sistemi (HDFS) NameNode
+### <a name="hadoop-distributed-file-system-hdfs-namenode"></a>Hadoop Dağıtılmış Dosya Sistemi (bir) süs Yot
 
-Apache Hadoop 2.0 veya üzeri tabanlı HDInsight kümeleri NameNode'de yüksek kullanılabilirlik sağlar. Headnodes üzerinde çalışan iki NameNodes vardır, otomatik failover için yapılandırılmıştır. NameNodes aktif / bekleme durumu seçmek için Zookeeper ile iletişim kurmak için *ZKFailoverController* kullanın. *ZKFailoverController* her iki headnode üzerinde çalışır ve yukarıdaki ana failover denetleyicisi ile aynı şekilde çalışır.
+Apache Hadoop 2,0 veya üzeri bir sürüme göre HDInsight kümeleri, süs Yot yüksek kullanılabilirlik sağlar. Otomatik yük devretme için yapılandırılmış olan, headnodes üzerinde çalışan iki süs odes vardır. Süs 'ler, Zookeeper ile iletişim kurmak için *Zkfailovercontroller* kullanarak etkin/bekleme durumunu seçin. *Zkfailovercontroller* her iki yayın düğümünde çalışır ve yukarıdaki ana yük devretme denetleyicisiyle aynı şekilde çalışır.
 
-İkinci Zookeeper çoğunluk ilk çoğunluk bağımsızdır, bu nedenle etkin NameNode etkin headnode üzerinde çalışmayabilir. Etkin NameNode ölü veya sağlıksız olduğunda, bekleme namenode seçimi kazanır ve etkin hale gelir.
+İkinci Zookeeper çekirdeği ilk çekirdekden bağımsızdır, bu nedenle etkin bir süs kodu etkin headnode üzerinde çalışmayabilir. Etkin bir süs kodu ölü veya sağlıksız olduğunda, bekleyen süs kodu, seçimi kazanır ve etkin hale gelir.
 
-### <a name="yarn-resourcemanager"></a>İplik Kaynak Yöneticisi
+### <a name="yarn-resourcemanager"></a>YARN ResourceManager
 
-Apache Hadoop 2.4 veya üzeri tabanlı HDInsight kümeleri, IPN ResourceManager'ın yüksek kullanılabilirliğini destekler. Sırasıyla headnode 0 ve headnode 1 üzerinde çalışan iki ResourceManagers, rm1 ve rm2 vardır. NameNode gibi, YARN ResourceManager da otomatik failover için yapılandırılmıştır. Geçerli etkin Kaynak Yöneticisi küçüldüğünde veya yanıt vermediğinde başka bir Kaynak Yöneticisi otomatik olarak etkin olarak seçilir.
+Apache Hadoop 2,4 veya üzeri bir sürüme göre HDInsight kümeleri, YARN ResourceManager yüksek kullanılabilirliğini destekler. RM1 ve RM2, sırasıyla, 1. ve 1. baş düğümüne üzerinde çalışan iki ResourceManager vardır. Ayrıca, süs Yot gibi YARN ResourceManager otomatik yük devretme için de yapılandırılır. Geçerli etkin ResourceManager kaldığında veya yanıt vermediğinde, başka bir ResourceManager otomatik olarak etkin olacak şekilde seçilir.
 
-YARN ResourceManager bir hata dedektörü ve lider elektörü olarak gömülü *ActiveStandbyElector* kullanır. HDFS NameNode aksine, YARN ResourceManager ayrı bir ZKFC daemon gerekmez. Etkin ResourceManager durumlarını Apache Zookeeper'a yazar.
+YARN ResourceManager, kendi katıştırılmış *ActiveStandbyElector* bir hata algılayıcısı ve öncü Elector olarak kullanır. Bu, YARN ResourceManager 'un aksine, ayrı bir ZKFC cini gerekmez. Etkin ResourceManager, durumlarını Apache Zookeeper 'a yazar.
 
-İPLik Kaynak Yöneticisi'nin yüksek kullanılabilirliği NameNode ve diğer HDInsight HA hizmetlerinden bağımsızdır. Etkin ResourceManager etkin headnode veya etkin NameNode çalışan headnode üzerinde çalışmayabilir. YARN ResourceManager yüksek kullanılabilirliği hakkında daha fazla bilgi için Kaynak [Yöneticisi Yüksek Kullanılabilirlik'e](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/ResourceManagerHA.html)bakın.
+YARN ResourceManager 'nun yüksek kullanılabilirliği, süs Yot ve diğer HDInsight HA hizmetlerinden bağımsızdır. Etkin ResourceManager, etkin bir başlık düğümünde veya etkin bir süs ODE 'ın çalıştığı headdüğümünde çalışmayabilir. YARN ResourceManager yüksek kullanılabilirliği hakkında daha fazla bilgi için bkz. [ResourceManager yüksek kullanılabilirlik](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/ResourceManagerHA.html).
 
-### <a name="hbase-master"></a>HBase Ustası
+### <a name="hbase-master"></a>HBase Master
 
-HDInsight HBase kümeleri HBase Master yüksek kullanılabilirliğini destekler. Headnodes üzerinde çalışan diğer HA hizmetlerinin aksine, HBase Masters üç Zookeeper düğümleri üzerinde çalıştırın, bunlardan biri aktif ana ve diğer iki bekleme vardır. NameNode gibi, HBase Master lider seçimi için Apache Zookeeper ile koordine ve mevcut aktif master sorunları olduğunda otomatik failover yok. Herhangi bir zamanda yalnızca bir etkin HBase Master vardır.
+HDInsight HBase kümeleri, yüksek kullanılabilirlik HBase Master destekler. Headnodes üzerinde çalışan diğer HA hizmetlerinden farklı olarak, HBase yöneticileri üç Zookeeper düğümünde çalışır ve bunlardan biri etkin ana, diğeri ise bekleme olur. Süs Yot gibi HBase Master, öncü seçimi için Apache Zookeeper ile eşgüdümünü sağlar ve geçerli etkin yöneticisinde sorun olduğunda otomatik yük devretme yapar. Dilediğiniz zaman yalnızca bir etkin HBase Master vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [HDInsight'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği](hdinsight-high-availability-linux.md)
+- [HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği](hdinsight-high-availability-linux.md)
 - [Azure HDInsight sanal ağ mimarisi](hdinsight-virtual-network-architecture.md)

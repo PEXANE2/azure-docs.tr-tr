@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Asimetrik yönlendirme'
-description: Bu makalede, bir hedefe birden çok bağlantısı olan bir ağda asimetrik yönlendirme ile karşılaşabileceğiniz sorunlar size yol kat ediyor.
+title: 'Azure ExpressRoute: asimetrik yönlendirme'
+description: Bu makalede, hedefe birden çok bağlantısı olan bir ağda asimetrik yönlendirmeye sahip olabileceğiniz sorunlar anlatılmaktadır.
 services: expressroute
 author: osamazia
 ms.service: expressroute
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: osamam
 ms.openlocfilehash: 8adfcc6559e3e2d48aabd3cfeec4fe20541917c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74072150"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Birden çok ağ yoluyla Asimetrik yönlendirme
@@ -48,7 +48,7 @@ Bu iki değişikliğin bir ağ üzerindeki etkisini anlamak için bazı senaryol
 
 Ardından, ExpressRoute hizmetini açıyorsunuz ve Microsoft tarafından ExpressRoute üzerinden sunulan hizmetleri tüketiyorsunuz. Microsoft tarafından sunulan diğer tüm hizmetler İnternet üzerinden tüketiliyor diyelim. ExpressRoute’a bağlanan ucunuzda ayrı bir güvenlik duvarı kullanıyorsunuz. Microsoft, belirli hizmetler için ExpressRoute üzerinden ağınıza daha belirli ön ekler tanıtır. Yönlendirme altyapınız bu ön ekler için tercih edilen yol olarak ExpressRoute’u seçer. Genel IP adreslerinizi ExpressRoute üzerinden Microsoft’a tanıtmıyorsanız Microsoft, genel IP adreslerinizle İnternet üzerinden iletişim kurar. Ağınızdan Microsoft’a giden trafik ExpressRoute’u kullanırken, Microsoft’tan dönen trafik İnternet’i kullanır. Uçtaki güvenlik duvarı, durum tablosunda bulamadığı bir akışa ilişkin bir yanıt paketi gördüğünde dönüş trafiğini bırakır.
 
-ExpressRoute ve Internet için aynı ağ adresi çevirisi (NAT) havuzunun reklamını yapmayı seçerseniz, özel IP adreslerinde ağınızdaki istemcilerle benzer sorunlar görürsünüz. Windows Update gibi hizmetlerin IP adresleri ExpressRoute aracılığıyla tanıtılmadığından, bu hizmetlere yönelik istekler İnternet üzerinden gider. Ancak, dönüş trafiği ExpressRoute üzerinden geri gelir. Microsoft, İnternet ve ExpressRoute’tan aynı alt ağ maskesine sahip bir IP adresi alırsa ExpressRoute’u İnternet’e tercih eder. ExpressRoute’a yönelik ağ ucunuzdaki bir güvenlik duvarının ya da durum bilgisi olan başka bir cihazın akışla ilgili daha önceden bilgisi yoksa, söz konusu akışa ait olan paketler bırakılır.
+ExpressRoute ve Internet için aynı ağ adresi çevirisi (NAT) havuzunu tanıtmayı seçerseniz, ağınızdaki istemcilerle özel IP adresleri hakkında benzer sorunlar görürsünüz. Windows Update gibi hizmetlerin IP adresleri ExpressRoute aracılığıyla tanıtılmadığından, bu hizmetlere yönelik istekler İnternet üzerinden gider. Ancak, dönüş trafiği ExpressRoute üzerinden geri gelir. Microsoft, İnternet ve ExpressRoute’tan aynı alt ağ maskesine sahip bir IP adresi alırsa ExpressRoute’u İnternet’e tercih eder. ExpressRoute’a yönelik ağ ucunuzdaki bir güvenlik duvarının ya da durum bilgisi olan başka bir cihazın akışla ilgili daha önceden bilgisi yoksa, söz konusu akışa ait olan paketler bırakılır.
 
 ## <a name="asymmetric-routing-solutions"></a>Asimetrik yönlendirme çözümleri
 Asimetrik yönlendirme sorununu çözmek için iki ana seçeneğiniz vardır. Sorunu yönlendirme aracılığıyla ya da kaynak tabanlı NAT (SNAT) kullanarak çözebilirsiniz.

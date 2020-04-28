@@ -1,5 +1,5 @@
 ---
-title: PowerShell kullanarak Uygulama Hizmetini Yapılandır
+title: PowerShell kullanarak App Service yapılandırma
 titleSuffix: Azure Application Gateway
 description: Bu makalede, mevcut veya yeni bir application gateway üzerinde web uygulamalarını arka uç ana bilgisayarları olarak yapılandırmaya ilişkin yönergeler verilmektedir.
 services: application-gateway
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 4198c83a167ad8f2d52f4393c39625948e18e6e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74089506"
 ---
-# <a name="configure-app-service-with-application-gateway-using-powershell"></a>PowerShell kullanarak Uygulama Ağ Geçidi ile Uygulama Hizmetini Yapılandır
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>PowerShell kullanarak Application Gateway App Service yapılandırma
 
-Uygulama ağ geçidi, bir Uygulama Hizmeti uygulamasına veya diğer çok kiracılı hizmete arka uç havuzu üyesi olarak sahip olabilirsiniz. Bu makalede, Uygulama Ağ Geçidi ile bir Uygulama Hizmeti uygulamasını yapılandırmayı öğrenirsiniz. İlk örnekte, arka uç havuzu üyesi olarak web uygulamasını kullanmak için mevcut bir application gateway’i nasıl yapılandıracağınız gösterilmektedir. İkinci örnekte, arka uç havuzu üyesi olarak web uygulaması ile yeni bir application gateway’i nasıl oluşturacağınız gösterilmektedir.
+Application Gateway, arka uç havuzu üyesi olarak bir App Service uygulamasına veya diğer çok kiracılı bir hizmete sahip etmenize olanak tanır. Bu makalede, Application Gateway bir App Service uygulaması yapılandırmayı öğreneceksiniz. İlk örnekte, arka uç havuzu üyesi olarak web uygulamasını kullanmak için mevcut bir application gateway’i nasıl yapılandıracağınız gösterilmektedir. İkinci örnekte, arka uç havuzu üyesi olarak web uygulaması ile yeni bir application gateway’i nasıl oluşturacağınız gösterilmektedir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -160,9 +160,9 @@ DnsSettings              : {
 
 ## <a name="restrict-access"></a>Erişimi kısıtlama
 
-Bu örneklerde dağıtılan web uygulamaları, doğrudan Internet'ten erişilebilen genel IP adreslerini kullanır. Bu, yeni bir özellik öğrenirken ve yeni şeyler denerken sorun gidermede yardımcı olur. Ancak bir özelliği üretime dağıtmak istiyorsanız, daha fazla kısıtlama eklemek isteyebilirsiniz.
+Bu örneklerde dağıtılan Web uygulamaları, doğrudan Internet 'ten erişilebilen genel IP adreslerini kullanır. Bu, yeni bir özellik öğrenirken ve yeni şeyler gerçekleştirmeye çalışırken sorun gidermeye yardımcı olur. Ancak bir özelliği üretime dağıtmayı planlıyorsanız, daha fazla kısıtlama eklemek isteyeceksiniz.
 
-Web uygulamalarınıza erişimi kısıtlamanın bir yolu, [Azure Uygulama Hizmeti statik IP kısıtlamalarını](../app-service/app-service-ip-restrictions.md)kullanmaktır. Örneğin, web uygulamasını yalnızca uygulama ağ geçidinden trafik alması için kısıtlayabilirsiniz. Uygulama hizmetip kısıtlama özelliğini kullanarak uygulama ağ geçidi VIP'yi erişimi olan tek adres olarak listele.
+Web uygulamalarınıza erişimi kısıtlayabilmeniz için bir yol [STATIK IP kısıtlamaları Azure App Service](../app-service/app-service-ip-restrictions.md)kullanmaktır. Örneğin, Web uygulamasını yalnızca uygulama ağ geçidinden trafik alacak şekilde kısıtlayabilirsiniz. Uygulama ağ geçidi VIP 'sini erişimi olan tek adres olarak listelemek için App Service IP kısıtlaması özelliğini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

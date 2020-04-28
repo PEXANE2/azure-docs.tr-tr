@@ -1,7 +1,7 @@
 ---
-title: Azure SQL verileri üzerinden arama yapın
+title: Azure SQL verileri üzerinde arama
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama'da tam metin arama sı için dizin leyicileri kullanarak Azure SQL Veritabanından veri aktarın. Bu makalede bağlantılar, dizin oluşturma yapılandırması ve veri alımı ele ait.
+description: Azure Bilişsel Arama 'de tam metin araması için Dizin oluşturucuları kullanarak Azure SQL veritabanı 'ndan veri aktarın. Bu makalede bağlantılar, Dizin Oluşturucu yapılandırması ve veri alımı ele alınmaktadır.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -10,54 +10,54 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113313"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Azure Bilişsel Arama dizinleyicisini kullanarak Azure SQL Veritabanı içeriğine bağlanma ve dizine dizin oluşturma
+# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Azure Bilişsel Arama Dizin oluşturucuyu kullanarak Azure SQL veritabanı içeriğine bağlanma ve dizin oluşturma
 
-[Bir Azure Bilişsel Arama dizinini](search-what-is-an-index.md)sorgulayamadan önce, verilerinizle doldurmanız gerekir. Veriler bir Azure SQL veritabanında yaşıyorsa, Azure SQL Veritabanı için bir **Azure Bilişsel Arama dizinleyicisi** (veya kısaca **Azure SQL dizinleyicisi)** dizin oluşturma işlemini otomatikleştirebilir, bu da yazmak için daha az kod ve daha az dikkat edilebilen altyapı anlamına gelir.
+[Azure bilişsel arama dizinini](search-what-is-an-index.md)sorgulayabilmeniz için önce bu verileri verilerinize göre doldurmanız gerekir. Veriler bir Azure SQL veritabanında yer alıyorsa, Azure **SQL veritabanı için bir azure bilişsel arama Dizin Oluşturucu** (veya kısa IÇIN **Azure SQL Indexer** ), dizin oluşturma işlemini otomatikleştirebilir. Bu, daha az kod yazmak için daha az kod ve ilgilendiğiniz altyapıyı daha az olabilir.
 
-Bu makale, [dizin oluşturma](search-indexer-overview.md)mekaniğini kapsar, ancak yalnızca Azure SQL veritabanlarında kullanılabilen özellikleri (örneğin, tümleşik değişiklik izleme) açıklar. 
+Bu makalede, [Dizin oluşturucular](search-indexer-overview.md)kullanmanın mekanizması ele alınmaktadır, ancak Azure SQL veritabanlarında (örneğin, tümleşik değişiklik izleme) kullanılabilen özellikler de açıklanmaktadır. 
 
-Azure SQL veritabanlarına ek olarak, Azure Bilişsel Arama, [Azure Cosmos DB,](search-howto-index-cosmosdb.md) [Azure Blob depolama](search-howto-indexing-azure-blob-storage.md)ve Azure tablo [depolama](search-howto-indexing-azure-tables.md)için dizin oluşturma bilgileri sağlar. Diğer veri kaynakları için destek istemek için Azure [Bilişsel Arama geri bildirimi forumu](https://feedback.azure.com/forums/263029-azure-search/)hakkında görüşlerinizi bildirin.
+Azure Bilişsel Arama, Azure SQL veritabanlarına ek olarak, [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Blob depolama](search-howto-indexing-azure-blob-storage.md)ve [Azure Tablo depolama](search-howto-indexing-azure-tables.md)için Dizin oluşturucular sağlar. Diğer veri kaynaklarına yönelik destek istemek için [Azure bilişsel arama geri bildirim forumuna](https://feedback.azure.com/forums/263029-azure-search/)geri bildirimde bulunun.
 
-## <a name="indexers-and-data-sources"></a>Dizinleyiciler ve veri kaynakları
+## <a name="indexers-and-data-sources"></a>Dizin oluşturucular ve veri kaynakları
 
-Bir **veri kaynağı,** hangi verilerin dizinlendirilecek, veri erişimi için kimlik bilgilerini ve verilerdeki değişiklikleri (yeni, değiştirilmiş veya silinmiş satırlar) verimli bir şekilde tanımlayan ilkeleri belirtir. Birden çok dizinleyici tarafından kullanılabilen bağımsız bir kaynak olarak tanımlanır.
+Veri **kaynağı** , hangi verilerin dizine alınacağı, veri erişiminin kimlik bilgilerinin ve verilerdeki değişiklikleri etkili bir şekilde tanımlayan ilkelere (yeni, değiştirilen veya silinen satırlarda) göre belirler. Bu, birden çok Dizin Oluşturucu tarafından kullanılabilmesi için bağımsız bir kaynak olarak tanımlanır.
 
-**Dizinleyici,** hedeflenen bir arama dizinine tek bir veri kaynağını bağlayan bir kaynaktır. Bir dizinleyici aşağıdaki şekillerde kullanılır:
+**Dizin Oluşturucu** , hedeflenen bir arama diziniyle tek bir veri kaynağını bağlayan bir kaynaktır. Bir Dizin Oluşturucu aşağıdaki yollarla kullanılır:
 
-* Dizin doldurmak için verilerin bir defalık kopyasını gerçekleştirin.
-* Bir zamanlamada veri kaynağındaki değişikliklerle bir dizini güncelleştirin.
-* Bir dizini gerektiği gibi güncelleştirmek için isteğe bağlı çalıştırın.
+* Bir dizini doldurmak için verilerin tek seferlik bir kopyasını gerçekleştirin.
+* Bir dizini bir zamanlamaya göre veri kaynağındaki değişikliklerle güncelleştirin.
+* Gerektiğinde bir dizini güncelleştirmek için isteğe bağlı olarak çalıştırın.
 
-Tek bir dizin oluşturucu yalnızca bir tablo veya görünüm tüketebilir, ancak birden çok arama dizinleri doldurmak istiyorsanız birden çok dizin oluşturabilirsiniz. Kavramlar hakkında daha fazla bilgi için [bkz: Dizin Oluşturma İşlemi: Tipik iş akışı.](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow)
+Tek bir Dizin Oluşturucu yalnızca bir tablo veya görünüm kullanabilir, ancak birden çok arama dizinini doldurmak istiyorsanız birden çok Dizin Oluşturucu oluşturabilirsiniz. Kavramlar hakkında daha fazla bilgi için bkz. [Dizin Oluşturucu işlemleri: tipik iş akışı](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow).
 
-Şunları kullanarak bir Azure SQL dizinleyicisi ayarlayabilir ve yapılandırabilirsiniz:
+Aşağıdakileri kullanarak bir Azure SQL Indexer ayarlayabilir ve yapılandırabilirsiniz:
 
-* [Azure portalında](https://portal.azure.com) Veri Alma sihirbazı
+* [Azure Portal](https://portal.azure.com) veri alma Sihirbazı
 * Azure Bilişsel Arama [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 * Azure Bilişsel Arama [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
 
-Bu makalede, **dizin oluşturup** **veri kaynakları**oluşturmak için REST API'sını kullanacağız.
+Bu makalede, **Dizin oluşturucular** ve **veri kaynakları**oluşturmak için REST API kullanacağız.
 
 ## <a name="when-to-use-azure-sql-indexer"></a>Azure SQL Indexer ne zaman kullanılır?
-Verilerinizle ilgili çeşitli etkenlere bağlı olarak, Azure SQL dizinleyicisinin kullanımı uygun olabilir veya olmayabilir. Verileriniz aşağıdaki gereksinimlere uyuyorsa, Azure SQL dizinleyicisini kullanabilirsiniz.
+Verilerinize ilişkin çeşitli faktörlere bağlı olarak, Azure SQL Indexer kullanımı uygun olabilir veya olmayabilir. Verileriniz aşağıdaki gereksinimlere sığıyorsa Azure SQL Indexer 'ı kullanabilirsiniz.
 
 | Ölçütler | Ayrıntılar |
 |----------|---------|
-| Veriler tek bir tablo veya görünümden kaynaklanır | Veriler birden çok tabloya dağılmışsa, verilerin tek bir görünümünü oluşturabilirsiniz. Ancak, bir görünüm kullanırsanız, bir dizini artımlı değişikliklerle yenilemek için SQL Server tümleşik değişiklik algılamasını kullanamazsınız. Daha fazla bilgi için aşağıdaki [Değiştirilen ve Silinen Satırları Yakalama'ya](#CaptureChangedRows) bakın. |
-| Veri türleri uyumludur | Tüm SQL türleri Azure Bilişsel Arama dizininde desteklenir, ancak bunlar desteklenmez. Liste için [bkz.](#TypeMapping) |
-| Gerçek zamanlı veri eşitlemesi gerekli değildir | Bir dizin leyici tablonuzu en fazla her beş dakikada bir yeniden dizine ekleyebilir. Verileriniz sık sık değişirse ve değişikliklerin saniye veya tek dakika içinde dizine yansıtılması gerekiyorsa, güncelleştirilmiş satırları doğrudan itmek için [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) veya [.NET SDK'yı](search-import-data-dotnet.md) kullanmanızı öneririz. |
-| Artımlı dizin oluşturma mümkündür | Büyük bir veri kümeniz varsa ve dizin leyiciyi bir zamanlamada çalıştırmayı planlıyorsanız, Azure Bilişsel Arama'nın yeni, değiştirilen veya silinmiş satırları verimli bir şekilde tanımlayabilmesi gerekir. Artımlı olmayan dizin oluşturma yalnızca isteğe bağlı dizine (zamanında değil) veya 100.000 satırdan az dizine izin verir. Daha fazla bilgi için aşağıdaki [Değiştirilen ve Silinen Satırları Yakalama'ya](#CaptureChangedRows) bakın. |
+| Veriler tek bir tablo veya görünümden gelmektedir | Veriler birden çok tabloya dağılmış ise, verilerin tek bir görünümünü oluşturabilirsiniz. Ancak, bir görünüm kullanıyorsanız, artımlı değişiklikler içeren bir dizini yenilemek için SQL Server tümleşik değişiklik algılama kullanamazsınız. Daha fazla bilgi için bkz. [değiştirilen ve silinen satırları yakalama](#CaptureChangedRows) . |
+| Veri türleri uyumlu | Azure Bilişsel Arama dizininde en fazla SQL türü desteklenmez. Bir liste için bkz. [eşleme veri türleri](#TypeMapping). |
+| Gerçek zamanlı veri eşitleme gerekli değildir | Bir Dizin Oluşturucu, tablonuzu en fazla beş dakikada bir yeniden dizin oluşturabilir. Verileriniz sıklıkla değişirse ve değişikliklerin dizinde saniye veya tek dakika içinde yansıtılması gerekiyorsa, güncelleştirilmiş satırları doğrudan göndermek için [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) veya [.NET SDK 'sını](search-import-data-dotnet.md) kullanmanızı öneririz. |
+| Artımlı dizin oluşturma mümkündür | Büyük bir veri ayarladıysanız ve Dizin Oluşturucuyu bir zamanlamaya göre çalıştırmayı planlıyorsanız, Azure Bilişsel Arama yeni, değiştirilen veya silinen satırları verimli bir şekilde tanımlayabilmelidir. Artımlı olmayan dizin oluşturma için yalnızca isteğe bağlı (zamanlamada değil) veya 100.000 satırdan daha az satır dizin oluşturma yapıyorsanız izin verilir. Daha fazla bilgi için bkz. [değiştirilen ve silinen satırları yakalama](#CaptureChangedRows) . |
 
 > [!NOTE] 
-> Azure Bilişsel Arama yalnızca SQL Server kimlik doğrulamasını destekler. Azure Active Directory Password kimlik doğrulaması için destek istiyorsanız, lütfen bu [UserVoice önerisine](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica)oy verin.
+> Azure Bilişsel Arama yalnızca SQL Server kimlik doğrulamasını destekler. Azure Active Directory parola kimlik doğrulaması için desteğe ihtiyacınız varsa lütfen bu [UserVoice önerisi](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica)için oy verin.
 
-## <a name="create-an-azure-sql-indexer"></a>Azure SQL Dizin Oluştur
+## <a name="create-an-azure-sql-indexer"></a>Azure SQL Indexer oluşturma
 
 1. Veri kaynağını oluşturun:
 
@@ -74,11 +74,11 @@ Verilerinizle ilgili çeşitli etkenlere bağlı olarak, Azure SQL dizinleyicisi
     }
    ```
 
-   Bağlantı dizesini Azure [portalından](https://portal.azure.com)alabilirsiniz; `ADO.NET connection string` seçeneğini kullanın.
+   Bağlantı dizesini [Azure Portal](https://portal.azure.com)alabilir; `ADO.NET connection string` seçeneğini kullanın.
 
-2. Zaten bir hedefiniz yoksa hedef Azure Bilişsel Arama dizinini oluşturun. [Portalı](https://portal.azure.com) veya [Create Index API'yi](https://docs.microsoft.com/rest/api/searchservice/Create-Index)kullanarak bir dizin oluşturabilirsiniz. Hedef dizininizin şemasının kaynak tablonun şemasıyla uyumlu olduğundan emin olun - [SQL ve Azure Bilişsel arama veri türleri arasındaki eşleme](#TypeMapping)bölümüne bakın.
+2. Henüz bir tane yoksa hedef Azure Bilişsel Arama dizinini oluşturun. [Portalı](https://portal.azure.com) veya [create INDEX API 'yi](https://docs.microsoft.com/rest/api/searchservice/Create-Index)kullanarak bir dizin oluşturabilirsiniz. Hedef dizininizin şemasının kaynak tablonun şemasıyla uyumlu olduğundan emin olun- [SQL ve Azure bilişsel arama veri türleri arasındaki eşlemeyi](#TypeMapping)inceleyin.
 
-3. Bir ad vererek ve veri kaynağı ve hedef dizini başvurarak dizin oluştur:
+3. Dizin Oluşturucuyu bir ad vererek ve veri kaynağına ve hedef dizine başvurarak oluşturun:
 
     ```
     POST https://myservice.search.windows.net/indexers?api-version=2019-05-06
@@ -92,21 +92,21 @@ Verilerinizle ilgili çeşitli etkenlere bağlı olarak, Azure SQL dizinleyicisi
     }
     ```
 
-Bu şekilde oluşturulan bir dizin oluşturucunun bir zamanlaması yoktur. Oluşturulduğunda otomatik olarak bir kez çalışır. **Çalıştır dizinleyici** isteğini kullanarak istediğiniz zaman yeniden çalıştırabilirsiniz:
+Bu şekilde oluşturulan bir dizin oluşturucunun zamanlaması yoktur. Oluşturulduğunda otomatik olarak çalışır. Bir **çalıştırma Dizin Oluşturucu** isteği kullanarak istediğiniz zaman yeniden çalıştırabilirsiniz:
 
     POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2019-05-06
     api-key: admin-key
 
-Işiçin oluşturma boyutu ve dizin leyici yürütme başarısız olmadan önce kaç belge atlanabileceği gibi dizinleyici davranışının çeşitli yönlerini özelleştirebilirsiniz. Daha fazla bilgi için [bkz.](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)
+Dizin Oluşturucu davranışının, toplu iş boyutu ve dizin oluşturucunun yürütülmesi başarısız olmadan önce kaç tane belge atlanacak gibi çeşitli yönlerini özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Dizin Oluşturucu API 'Si oluşturma](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
 
-Azure hizmetlerinin veritabanınıza bağlanmasına izin verebilirsiniz. Bunun nasıl yapılacağını anlatan yönergeler için [Azure'dan Bağlanma'ya](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) bakın.
+Azure hizmetlerinin veritabanınıza bağlanmasına izin vermeniz gerekebilir. Bunu nasıl yapacağınız hakkında yönergeler için bkz. [Azure 'Dan bağlanma](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) .
 
-Dizinleyici durumunu ve yürütme geçmişini (dizine bindirilen öğe sayısı, hatalar vb.) izlemek için **dizinleyici durum** isteğini kullanın:
+Dizin Oluşturucu durumunu ve yürütme geçmişini (dizin oluşturulan öğe sayısı, başarısızlık vb.) izlemek için bir **Dizin Oluşturucu durum** isteği kullanın:
 
     GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2019-05-06
     api-key: admin-key
 
-Yanıt aşağıdakilere benzer olmalıdır:
+Yanıt aşağıdakine benzer görünmelidir:
 
     {
         "\@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
@@ -139,11 +139,11 @@ Yanıt aşağıdakilere benzer olmalıdır:
         ]
     }
 
-Yürütme geçmişi, ters kronolojik sırada sıralanmış en son tamamlanan yürütmelerden en fazla 50'sini içerir (böylece en son yürütme yanıtta önce gelir).
-Yanıt hakkında ek bilgiler [Al Dizinleyici Durumu'nda](https://go.microsoft.com/fwlink/p/?LinkId=528198) bulunabilir
+Yürütme geçmişi, geriye doğru kronolojik düzende sıralanan en son tamamlanan yürütmelerin 50 ' i içerir (yani en son yürütmenin yanıtta ilk olarak olması gerekir).
+Yanıtla ilgili ek bilgiler, [Dizin Oluşturucu durumunu Al](https://go.microsoft.com/fwlink/p/?LinkId=528198) bölümünde bulunabilir
 
-## <a name="run-indexers-on-a-schedule"></a>Dizin işaretlerini zamanlamada çalıştırma
-Dizinleyiciyi, programda düzenli olarak çalışacak şekilde de ayarlayabilirsiniz. Bunu yapmak için, dizin oluşturup güncellerken **zamanlama** özelliğini ekleyin. Aşağıdaki örnek, dizinleyiciyi güncelleştirmek için bir PUT isteği gösterir:
+## <a name="run-indexers-on-a-schedule"></a>Dizin Oluşturucuyu bir zamanlamaya göre Çalıştır
+Dizin Oluşturucuyu bir zamanlamaya göre düzenli aralıklarla çalışacak şekilde de düzenleyebilirsiniz. Bunu yapmak için, Dizin oluşturucuyu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin. Aşağıdaki örnekte, Dizin oluşturucuyu güncellemek için bir PUT isteği gösterilmektedir:
 
     PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
     Content-Type: application/json
@@ -155,26 +155,26 @@ Dizinleyiciyi, programda düzenli olarak çalışacak şekilde de ayarlayabilirs
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-**Aralık** parametresi gereklidir. Aralık, iki ardışık dizinleyici yürütmenin başlangıcı arasındaki süreyi ifade eder. İzin verilen en küçük aralık 5 dakikadır; en uzunu bir gündür. XSD "dayTimeDuration" değeri [(ISO 8601 süre](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin sınırlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için desen: `P(nD)(T(nH)(nM))`. Örnekler: `PT15M` her 15 `PT2H` dakikada bir, her 2 saat için.
+**Interval** parametresi gereklidir. Aralık, arka arkaya iki Dizin Oluşturucu yürütmelerinin başlangıcı arasındaki süreyi ifade eder. İzin verilen en küçük Aralık 5 dakikadır; en uzun değer bir gündür. XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için olan model: `P(nD)(T(nH)(nM))`. Örnekler: `PT15M` her 2 saat `PT2H` için 15 dakikada bir.
 
-Dizin oluşturma zamanlamaları hakkında daha fazla bilgi için Azure Bilişsel Arama için dizin oluşturma yı [nasıl zamanlayınız'](search-howto-schedule-indexers.md)a bakın.
+Dizin Oluşturucu zamanlamalarını tanımlama hakkında daha fazla bilgi için bkz. [Azure bilişsel arama için Dizin Oluşturucu zamanlama](search-howto-schedule-indexers.md).
 
 <a name="CaptureChangedRows"></a>
 
-## <a name="capture-new-changed-and-deleted-rows"></a>Yeni, değiştirilmiş ve silinmiş satırları yakalama
+## <a name="capture-new-changed-and-deleted-rows"></a>Yeni, değiştirilmiş ve silinen satırları yakala
 
-Azure Bilişsel Arama, tüm tabloyu yeniden dizine ekolarak dizine ekolarak veya bir dizin leyici çalıştırınher görüntülemek zorunda kalmamak için **artımlı dizin oluşturma** kullanır. Azure Bilişsel Arama, artımlı dizin oluşturmayı desteklemek için iki değişiklik algılama ilkeleri sağlar. 
+Azure Bilişsel Arama, bir dizin oluşturucunun her çalıştırılışında tüm tabloyu veya görünümü yeniden eklemek zorunda kalmamak için **artımlı dizin oluşturma** kullanır. Azure Bilişsel Arama, artımlı Dizin oluşturmayı desteklemek için iki değişiklik algılama ilkesi sağlar. 
 
-### <a name="sql-integrated-change-tracking-policy"></a>SQL Entegre Değişim İzleme İlkesi
-SQL veritabanınız [değişiklik izlemeyi](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)destekliyorsa, **SQL Tümleşik Değişim İzleme İlkesi'ni**kullanmanızı öneririz. Bu en verimli ilkedir. Ayrıca, Azure Bilişsel Arama'nın tablonuza açık bir "yumuşak silme" sütunu eklemenize gerek kalmadan silinen satırları tanımlamasına olanak tanır.
+### <a name="sql-integrated-change-tracking-policy"></a>SQL tümleşik Değişiklik İzleme Ilkesi
+SQL veritabanınız [değişiklik izlemeyi](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)destekliyorsa, **SQL tümleşik değişiklik izleme ilkesi**kullanmanızı öneririz. Bu en etkili ilkedir. Ayrıca, tablonuza açık bir "geçici silme" sütunu eklemenize gerek kalmadan, Azure Bilişsel Arama silinen satırları tanımlamasına olanak tanır.
 
 #### <a name="requirements"></a>Gereksinimler 
 
-+ Veritabanı sürüm gereksinimleri:
-  * SQL Server 2012 SP3 ve sonrası, Sql Server'ı Azure VM'lerde kullanıyorsanız.
-  * Azure SQL Veritabanı kullanıyorsanız Azure SQL Veritabanı V12.
++ Veritabanı sürümü gereksinimleri:
+  * Azure VM 'lerinde SQL Server kullanıyorsanız SQL Server 2012 SP3 ve üzeri.
+  * Azure SQL veritabanı kullanıyorsanız, Azure SQL Veritabanı V12.
 + Yalnızca tablolar (görünüm yok). 
-+ Veritabanında, tablo için [değişiklik izlemeyi etkinleştirin.](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) 
++ Veritabanında, tablo için [değişiklik izlemeyi etkinleştirin](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) . 
 + Tabloda bileşik birincil anahtar (birden fazla sütun içeren birincil anahtar) yok.  
 
 #### <a name="usage"></a>Kullanım
@@ -191,30 +191,30 @@ Bu ilkeyi kullanmak için veri kaynağınızı şu şekilde oluşturun veya gün
       }
     }
 
-SQL tümleşik değişiklik izleme ilkesini kullanırken, ayrı bir veri silme algılama ilkesi belirtmeyin - bu ilke silinen satırları tanımlamak için yerleşik desteke sahiptir. Ancak, silmelerin "otomatik olarak" algılanabilmesi için, arama dizininizdeki belge anahtarının SQL tablosundaki birincil anahtarla aynı olması gerekir. 
+SQL tümleşik değişiklik izleme ilkesini kullanırken, ayrı bir veri silme algılama ilkesi belirtmeyin-Bu ilke, silinen satırları tanımlamaya yönelik yerleşik desteğe sahiptir. Ancak, silmeler "otomatikgara" olarak algılanabilmesi için, arama dizininizdeki belge anahtarı SQL tablosundaki birincil anahtarla aynı olmalıdır. 
 
 > [!NOTE]  
-> Bir SQL tablosundan çok sayıda satır kaldırmak için [TRUNCATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql) kullanırken, satır silme almak için değişiklik izleme durumunu sıfırlamak için dizinleyicinin [sıfırlanması](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) gerekir.
+> Bir SQL tablosundan çok sayıda satırı kaldırmak için [truncate table](https://docs.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql) kullanırken, değişiklik izleme durumunu satır silme işlemlerini çekmek üzere sıfırlamak için dizin oluşturucunun [sıfırlanması](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) gerekir.
 
 <a name="HighWaterMarkPolicy"></a>
 
-### <a name="high-water-mark-change-detection-policy"></a>Yüksek Su İşareti Değişimi Algılama ilkesi
+### <a name="high-water-mark-change-detection-policy"></a>Yüksek su Işareti değişiklik algılama ilkesi
 
-Bu değişiklik algılama ilkesi, bir satırın en son güncelleştirildiğinde sürümü veya zamanı yakalayan "yüksek su işareti" sütununa dayanır. Bir görünüm kullanıyorsanız, yüksek su işareti ilkesi kullanmanız gerekir. Yüksek su işareti sütunu aşağıdaki gereksinimleri karşılamalıdır.
+Bu değişiklik algılama ilkesi, bir satırın en son güncelleştirildiği sürümü veya zamanı yakalayan "yüksek su işareti" sütununu kullanır. Bir görünüm kullanıyorsanız, yüksek bir su işareti ilkesi kullanmanız gerekir. Yüksek su işareti sütununun aşağıdaki gereksinimleri karşılaması gerekir.
 
 #### <a name="requirements"></a>Gereksinimler 
 
 * Tüm ekler sütun için bir değer belirtir.
-* Bir öğedeki tüm güncelleştirmeler sütunun değerini de değiştirir.
-* Bu sütunun değeri her ekleme veya güncelleştirme yle artar.
-* Aşağıdaki WHERE ve ORDER BY yan tümcelerini içeren sorgular verimli bir şekilde yürütülebilir:`WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
+* Bir öğeye yapılan tüm güncelleştirmeler sütunun değerini de değiştirir.
+* Bu sütunun değeri, her ekleme veya güncelleştirmeyle birlikte artar.
+* Aşağıdaki WHERE ve ORDER BY yan tümceleri içeren sorgular verimli bir şekilde yürütülebilir:`WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
 
 > [!IMPORTANT] 
-> Yüksek su işareti sütunu için [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) veri türünü kullanmanızı şiddetle öneririz. Başka bir veri türü kullanılırsa, bir dizinleyici sorgusuyla aynı anda yürüten hareketlerin varlığındaki tüm değişiklikleri yakalamak için değişiklik izleme garantisi vermez. Salt okunur yinelemeleri olan bir yapılandırmada **satır çevirme** kullanırken, dizinleyiciyi birincil yinelemeye doğrultmalısınız. Veri eşitleme senaryoları için yalnızca birincil yineleme kullanılabilir.
+> Yüksek su işareti sütunu için [ROWVERSION](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) veri türünün kullanılması önemle önerilir. Başka herhangi bir veri türü kullanılırsa, bir Dizin Oluşturucu sorgusuyla eşzamanlı olarak çalıştırılan işlemlerin bulunduğu tüm değişiklikleri yakalamak için değişiklik izleme garantisi garanti edilmez. Salt okuma çoğaltmalarıyla bir yapılandırmada **rowversion** kullanılırken, Dizin oluşturucuyu birincil çoğaltmaya işaret etmeniz gerekir. Yalnızca birincil çoğaltma, veri eşitleme senaryoları için kullanılabilir.
 
 #### <a name="usage"></a>Kullanım
 
-Yüksek su işareti ilkesini kullanmak için veri kaynağınızı şu şekilde oluşturun veya güncelleştirin:
+Yüksek bir su işareti İlkesi kullanmak için veri kaynağınızı şu şekilde oluşturun veya güncelleştirin:
 
     {
         "name" : "myazuresqldatasource",
@@ -228,11 +228,11 @@ Yüksek su işareti ilkesini kullanmak için veri kaynağınızı şu şekilde o
     }
 
 > [!WARNING]
-> Kaynak tablonun yüksek su işareti sütununda bir dizin yoksa, SQL dizinleyici tarafından kullanılan sorgular zaman dışarı çıkabilir. Özellikle, `ORDER BY [High Water Mark Column]` yan tümce, tablo çok satır içerdiğinde verimli çalışması için bir dizin gerektirir.
+> Kaynak tabloda yüksek su işareti sütununda bir dizin yoksa, SQL Indexer tarafından kullanılan sorgular zaman aşımına uğrar. Özellikle, `ORDER BY [High Water Mark Column]` yan tümce tablo çok sayıda satır içerdiğinde bir dizinin verimli bir şekilde çalışmasını gerektirir.
 >
 >
 
-Zaman ayarı hatalarıyla karşılaşırsanız, `queryTimeout` sorgu zaman ayarı varsayılan 5 dakikalık zaman ayarından daha yüksek bir değere ayarlamak için dizin oluşturma ayarını kullanabilirsiniz. Örneğin, zaman aşmasını 10 dakikaolarak ayarlamak için dizin oluşturveya aşağıdaki yapılandırmayla güncelleştirin:
+Zaman aşımı hatalarıyla karşılaşırsanız, sorgu zaman aşımını varsayılan 5 `queryTimeout` dakikalık zaman aşımından daha yüksek bir değere ayarlamak için Dizin Oluşturucu yapılandırma ayarını kullanabilirsiniz. Örneğin, zaman aşımını 10 dakika olarak ayarlamak için aşağıdaki yapılandırmayla Dizin oluşturucuyu oluşturun veya güncelleştirin:
 
     {
       ... other indexer definition properties
@@ -240,7 +240,7 @@ Zaman ayarı hatalarıyla karşılaşırsanız, `queryTimeout` sorgu zaman ayar�
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-Yan tümceyi `ORDER BY [High Water Mark Column]` de devre dışı kullanabilirsiniz. Ancak, dizinleyici yürütme bir hata tarafından kesilirse, dizinleyici daha sonra çalışırsa tüm satırları yeniden işlemek zorunda olduğu için bu önerilmez - dizinleyici zaten kesildi zaman hemen hemen tüm satırları işlenmiş olsa bile. Yan tümceyi `ORDER BY` devre dışı `disableOrderByHighWaterMarkColumn` kalmak için dizinleyici tanımındaki ayarı kullanın:  
+`ORDER BY [High Water Mark Column]` Yan tümcesini de devre dışı bırakabilirsiniz. Ancak, Dizin Oluşturucu yürütmesi bir hata tarafından kesintiye uğrarsa, dizin oluşturucunun daha sonra çalıştırıldığında tüm satırları yeniden işlemesi gerekir, çünkü Dizin Oluşturucu, neredeyse tüm satırları yarıda kesilen zamana göre zaten işledi. `ORDER BY` Yan tümcesini devre dışı bırakmak için Dizin `disableOrderByHighWaterMarkColumn` Oluşturucu tanımındaki ayarı kullanın:  
 
     {
      ... other indexer definition properties
@@ -248,12 +248,12 @@ Yan tümceyi `ORDER BY [High Water Mark Column]` de devre dışı kullanabilirsi
             "configuration" : { "disableOrderByHighWaterMarkColumn" : true } }
     }
 
-### <a name="soft-delete-column-deletion-detection-policy"></a>Yumuşak Silme Sütun Silme Algılama ilkesi
-Satırlar kaynak tablodan silindiğinde, büyük olasılıkla bu satırları arama dizininden de silmek istersiniz. SQL tümleşik değişim izleme ilkesini kullanırsanız, bu sizin için halledilir. Ancak, yüksek su işareti değişikliği izleme ilkesi silinen satırlar size yardımcı olmaz. Ne yapmalı?
+### <a name="soft-delete-column-deletion-detection-policy"></a>Geçici silme sütunu silme algılama ilkesi
+Satırlar kaynak tablodan silindiğinde, muhtemelen bu satırları arama dizininden da silmek isteyebilirsiniz. SQL tümleşik değişiklik izleme ilkesini kullanıyorsanız, bu sizin için bu şekilde yapılır. Ancak, yüksek su işareti değişiklik izleme ilkesi, silinen satırlarda size yardımcı olmaz. Ne yapmalı?
 
-Satırlar fiziksel olarak tablodan kaldırılırsa, Azure Bilişsel Arama'nın artık var olmayan kayıtların varlığını ortaya çıkarmanın bir yolu yoktur.  Ancak, satırları tablodan çıkarmadan mantıksal olarak silmek için "yumuşak silme" tekniğini kullanabilirsiniz. Tablonuza bir sütun ekleyin veya görüntüleyin ve satırları bu sütunu kullanarak silinmiş olarak işaretleyin.
+Satırlar tablodan fiziksel olarak kaldırılırsa Azure Bilişsel Arama, artık mevcut olmayan kayıtların varlığını çıkarsanın bir yolu yoktur.  Bununla birlikte, satırları tablodan kaldırmadan mantıksal olarak silmek için "geçici silme" tekniğini kullanabilirsiniz. Tablonuza bir sütun ekleyin veya satırları bu sütun kullanılarak silinmiş olarak görüntüleyin ve işaretleyin.
 
-Yumuşak silme tekniğini kullanırken, veri kaynağını oluştururken veya güncellerken yumuşak silme ilkesini aşağıdaki gibi belirtebilirsiniz:
+Geçici silme tekniği kullanılırken, veri kaynağını oluştururken veya güncelleştirirken geçici silme ilkesini aşağıdaki gibi belirtebilirsiniz:
 
     {
         …,
@@ -264,34 +264,34 @@ Yumuşak silme tekniğini kullanırken, veri kaynağını oluştururken veya gü
         }
     }
 
-**softDeleteMarkerValue** bir dize olmalıdır – gerçek değerinizin dize temsilini kullanın. Örneğin, silinen satırların 1 değeriyle işaretlendiği bir bir sonda `"1"`sütununuz varsa, bunu kullanın. Silinen satırların Boolean gerçek değeriyle işaretlendiği bir BIT sütununuz `True` `true`varsa, dizeyi literal veya kullanım örneğini kullanın.
+**SoftDeleteMarkerValue** bir dize olmalıdır: gerçek değer ' in dize gösterimini kullanın. Örneğin, silinen satırları 1 değeri ile işaretlenmiş bir tamsayı sütununuz varsa kullanın `"1"`. Silinen satırların, Boolean true değeri ile işaretlenmiş bir BIT sütununuz varsa, değişmez değer `True` veya `true`dize kullanın, büyük/küçük harf kullanmayın.
 
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>SQL ve Azure Bilişsel Arama veri türleri arasında eşleme
 | SQL veri türü | İzin verilen hedef dizin alanı türleri | Notlar |
 | --- | --- | --- |
-| bit |Edm.Boolean, Edm.String | |
-| int, küçük, minicik |Edm.Int32, Edm.Int64, Edm.String | |
-| bigint |Edm.Int64, Edm.String | |
-| gerçek, float |Edm.Double, Edm.String | |
-| küçük para, para ondalık sayısal |Edm.String |Azure Bilişsel Arama, ondalık türlerin Edm.Double'a dönüştürülmesini desteklemez, çünkü bu kesinlik kaybeder |
-| char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Bir SQL dizesi, string bir JSON dize dizisini temsil ediyorsa, Bir Koleksiyon(Edm.String) alanını doldurmak için kullanılabilir:`["red", "white", "blue"]` |
-| smalldatetime, datetime, datetime2, tarih, datetimeoffset |Edm.DateTimeOffset, Edm.String | |
-| uniqueidentifer |Edm.String | |
-| Coğrafya |Edm.GeographyPoint |Yalnızca SRID 4326 (varsayılan olan) ile POINT türündeki coğrafya örnekleri desteklenir |
-| Rowversion |Yok |Satır sürüm sütunları arama dizininde depolanamaz, ancak değişiklik izleme için kullanılabilir |
-| zaman, zaman dilimi, ikili, varbinary, görüntü, xml, geometri, CLR türleri |Yok |Desteklenmiyor |
+| bit |EDM. Boolean, Edm. String | |
+| int, smallint, tinyint |EDM. Int32, Edm. Int64, Edm. String | |
+| bigint |EDM. Int64, Edm. String | |
+| gerçek, float |EDM. Double, Edm. dize | |
+| küçük para, para ondalık sayısal |Edm.String |Azure Bilişsel Arama, kesinliği kaybedebileceğinden, Decimal türlerinin Edm. Double 'a dönüştürülmesini desteklemez |
+| Char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Dize bir JSON dizisini temsil ediyorsa bir koleksiyon (EDM. String) alanını doldurmak için bir SQL dizesi kullanılabilir:`["red", "white", "blue"]` |
+| smalldatetime, DateTime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, Edm. String | |
+| uniqueıdentıer |Edm.String | |
+| Coğrafya |Edm.GeographyPoint |Yalnızca SRID 4326 (varsayılan) ile tür noktası olan Coğrafya örnekleri desteklenir |
+| rowversion |Yok |Satır sürümü sütunları arama dizininde depolanamaz, ancak değişiklik izleme için kullanılabilirler |
+| Time, TimeSpan, BINARY, varbinary, Image, XML, geometry, CLR türleri |Yok |Desteklenmiyor |
 
-## <a name="configuration-settings"></a>Yapılandırma Ayarları
-SQL dizinleyici sayar:
+## <a name="configuration-settings"></a>Yapılandırma ayarları
+SQL Indexer çeşitli yapılandırma ayarları sunar:
 
 | Ayar | Veri türü | Amaç | Varsayılan değer |
 | --- | --- | --- | --- |
-| Querytimeout |string |SQL sorgu yürütmesi için zaman arasını ayarlar |5 dakika ("00:05:00") |
-| devre dışı, OrderByHighWaterMarkColumn |bool |ORDER BY yan tümcesini atlamak için yüksek su işareti ilkesi tarafından kullanılan SQL sorgusuna neden olur. [Yüksek Su İşareti politikasına](#HighWaterMarkPolicy) bakın |yanlış |
+| queryTimeout |string |SQL sorgu yürütmesi için zaman aşımını ayarlar |5 dakika ("00:05:00") |
+| disableOrderByHighWaterMarkColumn |bool |Yüksek su işareti ilkesi tarafından kullanılan SQL sorgusunun ORDER BY yan tümcesini yok saymasına neden olur. Bkz. [yüksek su işareti ilkesi](#HighWaterMarkPolicy) |yanlış |
 
-Bu ayarlar dizinleyici tanımındaki `parameters.configuration` nesnede kullanılır. Örneğin, sorgu zaman aşmasını 10 dakikaolarak ayarlamak için dizin oluşturveya aşağıdaki yapılandırmayla dizin oluşturun veya güncelleştirin:
+Bu ayarlar, Dizin Oluşturucu tanımındaki `parameters.configuration` nesnesinde kullanılır. Örneğin, sorgu zaman aşımını 10 dakika olarak ayarlamak için, aşağıdaki yapılandırmayla Dizin oluşturucuyu oluşturun veya güncelleştirin:
 
     {
       ... other indexer definition properties
@@ -301,44 +301,44 @@ Bu ayarlar dizinleyici tanımındaki `parameters.configuration` nesnede kullanı
 
 ## <a name="faq"></a>SSS
 
-**S: Azure'da IaaS VM'lerde çalışan SQL veritabanlarıyla Azure SQL dizinleyicisini kullanabilir miyim?**
+**S: Azure 'da IaaS VM 'lerinde çalışan SQL veritabanları ile Azure SQL dizin oluşturucuyu kullanabilir miyim?**
 
-Evet. Ancak, arama hizmetinizin veritabanınıza bağlanmasına izin vermeniz gerekir. Daha fazla bilgi için bkz. Azure [Bilişsel Arama dizinleyicisinden SQL Server'a bir Azure VM'de bağlantı yapılandırma](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
+Evet. Ancak, arama hizmetinizin veritabanınıza bağlanmasına izin vermeniz gerekir. Daha fazla bilgi için bkz. Azure [bilişsel arama Dizin oluşturucudan Azure sanal makinesinde SQL Server bağlantı yapılandırma](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
 
-**S: Şirket içinde çalışan SQL veritabanları ile Azure SQL dizinleyici kullanabilir miyim?**
+**S: şirket içinde çalışan SQL veritabanlarıyla Azure SQL dizin oluşturucuyu kullanabilir miyim?**
 
-Doğrudan değil. Veritabanlarınızı Internet trafiğine açmanızı gerektirdiği için doğrudan bir bağlantı önermiyoruz veya destekliyoruz. Müşteriler, Azure Veri Fabrikası gibi köprü teknolojilerini kullanarak bu senaryoda başarılı oldu. Daha fazla bilgi için, [Azure Veri Fabrikası'nı kullanarak verileri Azure Bilişsel Arama dizinine İdet'e](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector)bakın.
+Doğrudan değil. Doğrudan bir bağlantı önermiyor veya desteklemiyoruz, bu sayede veritabanlarınızı Internet trafiğine açmanızı gerektirir. Müşteriler, Azure Data Factory gibi köprü teknolojilerini kullanarak bu senaryoya başarılı olmuştur. Daha fazla bilgi için bkz. [Azure Data Factory kullanarak Azure bilişsel arama dizinine veri gönderme](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
 
-**S: Azure'da IaaS'da çalışan SQL Server dışındaki veritabanlarıyla Azure SQL dizinleyicisini kullanabilir miyim?**
+**S: Azure SQL dizin oluşturucuyu, Azure 'da IaaS 'de çalışan SQL Server dışındaki veritabanlarıyla kullanabilir miyim?**
 
-Hayır. Dizinleyiciyi SQL Server dışında herhangi bir veritabanıyla test etmediğimiz için bu senaryoyu desteklemeyiz.  
+Hayır. Dizin oluşturucuyu SQL Server dışındaki veritabanlarıyla test etmemiş olduğundan, bu senaryoyu desteklemiyoruz.  
 
-**S: Bir zamanlamada çalışan birden çok dizin oluşturabilirsiniz?**
+**S: bir zamanlamaya göre çalışan birden çok dizin oluşturma yapabilir miyim?**
 
-Evet. Ancak, aynı anda tek bir düğüm üzerinde yalnızca bir dizinleyici çalışıyor olabilir. Aynı anda çalışan birden çok dizin leyiciye ihtiyacınız varsa, arama hizmetinizi birden fazla arama birimine ölçeklemeyi düşünün.
+Evet. Ancak, tek seferde yalnızca bir Dizin Oluşturucu çalıştırılabilir. Aynı anda birden çok Dizin Oluşturucu gerekiyorsa, arama hizmetinizi birden fazla arama birimine ölçeklendirin.
 
-**S: Dizin oluşturma sorgu iş yükümü etkiler mi?**
+**S: bir dizin oluşturucuyu çalıştırmak sorgu iş yükmi etkiler mi?**
 
-Evet. Dizinleyici, arama hizmetinizdeki düğümlerden birinde çalışır ve düğümün kaynaklarıdizin oluşturma ve sorgu trafiği ile diğer API istekleri arasında paylaşılır. Yoğun dizin oluşturma ve sorgu iş yükleri çalıştırırsanız ve 503 hata veya artan yanıt süreleri yüksek bir oranda karşılaşırsanız, [arama hizmeti ölçekleme](search-capacity-planning.md)düşünün.
+Evet. Dizin Oluşturucu, arama hizmetinizdeki düğümlerden birinde çalışır ve düğüm kaynakları dizin oluşturma ile sorgu trafiği ve diğer API istekleri aracılığıyla paylaşılır. Yoğun dizin oluşturma ve sorgu iş yüklerini çalıştırır ve yüksek oranda 503 hatayla karşılaşır veya yanıt sürelerini artırdıysanız, [arama hizmetinizi ölçeklendirin](search-capacity-planning.md).
 
-**S: Bir veri kaynağı olarak [bir failover kümesinde](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) ikincil bir yineleme kullanabilir miyim?**
+**S: bir [Yük devretme kümesinde](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) bir ikincil çoğaltmayı veri kaynağı olarak kullanabilir miyim?**
 
-Duruma göre değişir. Bir tablo veya görünümün tam dizinoluşturma için ikincil bir yineleme kullanabilirsiniz. 
+Duruma göre değişir. Bir tablonun veya görünümün tam dizini oluşturmak için, ikincil bir çoğaltma kullanabilirsiniz. 
 
-Artımlı dizin oluşturma için Azure Bilişsel Arama iki değişiklik algılama ilkesini destekler: SQL tümleşik değişiklik izleme ve Yüksek Su İşareti.
+Artımlı dizin oluşturma için Azure Bilişsel Arama iki değişiklik algılama ilkesini destekler: SQL tümleşik değişiklik izleme ve yüksek su Işareti.
 
-Salt okunur yinelemelerde, SQL veritabanı tümleşik değişiklik izlemeyi desteklemez. Bu nedenle, Yüksek Su İşareti ilkesi kullanmanız gerekir. 
+Salt okuma çoğaltmalarda SQL veritabanı tümleşik değişiklik izlemeyi desteklemez. Bu nedenle, yüksek su Işareti ilkesi kullanmanız gerekir. 
 
-Standart tavsiyemiz, yüksek su işareti sütunu için rowversion veri türünü kullanmaktır. Ancak, rowversion kullanarak SQL Veritabanı `MIN_ACTIVE_ROWVERSION` işlevi, hangi okunur yinelemeler üzerinde desteklenmeyen dayanır. Bu nedenle, rowversion kullanıyorsanız bir birincil yineleme için dizinleyici işaret gerekir.
+Standart önerimiz, yüksek su işareti sütunu için ROWVERSION veri türünü kullanmaktır. Ancak, rowversion 'ın `MIN_ACTIVE_ROWVERSION` kullanılması SQL veritabanının işlevini kullanır ve bu, salt okunurdur çoğaltmalar üzerinde desteklenmez. Bu nedenle, rowversion kullanıyorsanız Dizin oluşturucuyu birincil çoğaltmaya işaret etmeniz gerekir.
 
-Salt okunur yinelemede rowversion'u kullanmaya çalışırsanız, aşağıdaki hatayı görürsünüz: 
+Bir salt okuma çoğaltmasında ROWVERSION kullanmaya çalışırsanız aşağıdaki hatayı görürsünüz: 
 
     "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
 
-**S: Yüksek su işareti değişikliği izleme için alternatif, satır dışı bir sürüm sütunu kullanabilir miyim?**
+**S: yüksek su işareti değişiklik izleme için alternatif, rowversion olmayan bir sütun kullanabilir miyim?**
 
-Tavsiye edilmez. Yalnızca **rowversion** güvenilir veri eşitleme sağlar. Ancak, uygulama mantığınıza bağlı olarak, aşağıdakiler varsa güvenli olabilir:
+Önerilmez. Yalnızca **rowversion** , güvenilir veri eşitlemeye izin verir. Ancak, uygulama mantığınıza bağlı olarak, şu durumlarda güvenli olabilir:
 
-+ Dizin leyici çalıştığında, tabloda dizine eklenmiş bekleyen hareketler olmadığından emin olabilirsiniz (örneğin, tüm tablo güncelleştirmeleri bir zamanlamada toplu iş olarak gerçekleşir ve Azure Bilişsel Arama dizin leyici zamanlaması tabloyla çakışmasını önlemek için ayarlanmıştır zamanlamayı güncelleştirin).  
++ Dizin Oluşturucu çalıştığında, dizin oluşturulan tabloda bekleyen işlem olmadığından emin olabilirsiniz (örneğin, tüm tablo güncelleştirmeleri bir zamanlamaya göre bir toplu iş olarak gerçekleşir ve Azure Bilişsel Arama Indexer zamanlaması tablo güncelleştirme zamanlamasıyla örtüşmeden kaçınmak üzere ayarlanır).  
 
-+ Kaçırılan satırları almak için düzenli olarak tam bir reindex yaparsınız. 
++ Tüm eksik satırları seçmek için düzenli aralıklarla tam yeniden dizin kullanırsınız. 

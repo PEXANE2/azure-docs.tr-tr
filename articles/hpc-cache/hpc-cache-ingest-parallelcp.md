@@ -1,27 +1,27 @@
 ---
-title: Azure HPC Önbellek veri yutma - paralel kopyalama komut dosyası
-description: Azure HPC Önbelleğinde verileri Blob depolama hedefine taşımak için paralel kopyalama komut dosyası nasıl kullanılır?
+title: Azure HPC önbelleği veri alma-paralel kopya betiği
+description: Azure HPC önbelleğinde bir BLOB depolama hedefine veri taşımak için paralel kopyalama betiği kullanma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 90e05ad3d42b1009b631630fe476669a9f418d33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74166888"
 ---
-# <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Azure HPC Önbellek veri yutma - paralel kopyalama komut dosyası yöntemi
+# <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Azure HPC önbellek verileri alma-paralel kopyalama betiği yöntemi
 
-Bu makalede, ``parallelcp`` komut dosyası oluşturmak ve verileri Azure HPC Önbelleği ile kullanılmak üzere bir Blob depolama kapsayıcısına taşımak için kullanmak için yönergeler verir.
+Bu makalede, ``parallelcp`` betiği oluşturma ve Azure HPC önbelleğiyle kullanılmak üzere verileri bir BLOB depolama kapsayıcısına taşımak için kullanılan yönergeler sunulmaktadır.
 
-Azure HPC Önbelleğiniz için verileri Blob depolama alanına taşıma hakkında daha fazla bilgi edinmek için [verileri Azure Blob depolama alanına taşı'nı](hpc-cache-ingest.md)okuyun.
+Azure HPC önbelleğiniz için verileri blob depolamaya taşıma hakkında daha fazla bilgi edinmek için [Azure Blob depolama 'ya veri taşıma](hpc-cache-ingest.md)makalesini okuyun.
 
-## <a name="create-the-parallelcp-script"></a>Paralelcp komut dosyası oluşturma
+## <a name="create-the-parallelcp-script"></a>Parallelcp betiği oluşturma
 
-Aşağıdaki komut dosyası yürütülebilir `parallelcp`ekler. (Bu komut dosyası Ubuntu için tasarlanmıştır; başka ``parallel`` bir dağıtım kullanıyorsanız, ayrı olarak yüklemeniz gerekir.)
+Aşağıdaki komut dosyası yürütülebilir dosyayı `parallelcp`ekleyecek. (Bu betik Ubuntu için tasarlanmıştır; başka bir dağıtım kullanılıyorsa ayrı olarak ' yi yüklemelisiniz ``parallel`` .)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM
@@ -75,11 +75,11 @@ EOM
 
 ## <a name="parallel-copy-example"></a>Paralel kopya örneği
 
-Bu örnek, Azure HPC ``glibc`` Önbelleğinde kaynak dosyaları kullanarak derlemek için paralel kopya komut dosyasını kullanır.
+Bu örnekte, Azure HPC önbelleğinde kaynak dosyaları kullanarak ``glibc`` derlemek için paralel kopyalama betiği kullanılmaktadır.
 
-Kaynak dosyalar Azure HPC Önbellek montaj noktasında önbelleğe alınır ve nesne dosyaları yerel sabit diskte depolanır.
+Kaynak dosyalar Azure HPC önbellek bağlama noktasında önbelleğe alınır ve nesne dosyaları yerel sabit sürücüde depolanır.
 
-Bu örnek, paralelleştirme kazanmak ``-j`` için ``make`` seçenekle paralel kopya komut dosyasını kullanır.
+Bu örnek, paralel kopyalama betiğini seçeneğiyle ``-j`` ve ``make`` paralelleştirme sağlamak için kullanır.
 
 ```bash
 sudo apt-get update

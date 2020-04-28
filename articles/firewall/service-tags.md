@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Duvarı hizmet etiketlerini genel bakış
+title: Azure Güvenlik Duvarı hizmet etiketlerine genel bakış
 description: Hizmet etiketi, güvenlik kuralı oluşturma sırasındaki karmaşıklığı en aza indirmeye yardımcı olmak için bir IP adresi ön eki grubunu temsil eder.
 services: firewall
 author: vhorne
@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: ec9fb3c9b27d21ac65888379f59d51ecc8042eb0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74168682"
 ---
-# <a name="azure-firewall-service-tags"></a>Azure Güvenlik Duvarı hizmet etiketleri
+# <a name="azure-firewall-service-tags"></a>Azure Güvenlik Duvarı hizmeti etiketleri
 
 Hizmet etiketi, güvenlik kuralı oluşturma sırasındaki karmaşıklığı en aza indirmeye yardımcı olmak için bir IP adresi ön eki grubunu temsil eder. Kendi hizmet etiketinizi oluşturamaz veya bir etiket içinde yer alacak IP adreslerini belirleyemezsiniz. Hizmet etiketine dahil olan adres ön ekleri Microsoft tarafından yönetilir ve hizmet etiketi adresler değiştikçe otomatik olarak güncelleştirilir.
 
@@ -22,8 +22,8 @@ Azure Güvenlik Duvarı hizmet etiketleri ağ kuralları hedef alanında kullan�
 
 ## <a name="supported-service-tags"></a>Desteklenen hizmet etiketleri
 
-Azure güvenlik duvarı ağ kurallarında kullanılabilecek hizmet etiketleri listesi için [Güvenlik gruplarına](../virtual-network/security-overview.md#service-tags) bakın.
+Azure Güvenlik Duvarı ağ kurallarında kullanılabilecek hizmet etiketlerinin listesi için bkz. [güvenlik grupları](../virtual-network/security-overview.md#service-tags) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Güvenlik Duvarı kuralları hakkında daha fazla bilgi edinmek için [bkz.](rule-processing.md)
+Azure Güvenlik duvarı kuralları hakkında daha fazla bilgi edinmek için bkz. [Azure Güvenlik Duvarı kural işleme mantığı](rule-processing.md).

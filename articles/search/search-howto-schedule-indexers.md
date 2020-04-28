@@ -1,7 +1,7 @@
 ---
-title: Dizinleyici yürütmeyi zamanlama
+title: Dizin Oluşturucu yürütmeyi zamanla
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama dizinleyicilerini içeriği düzenli aralıklarla veya belirli zamanlarda dizine ekecek şekilde zamanlayın.
+description: Azure Bilişsel Arama dizin oluşturucularının içeriği düzenli aralıklarla veya belirli zamanlarda dizine almak için zamanlayın.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,64 +9,64 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 72326413d463d449d339b1f3fd241ba2c27b4b6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74112953"
 ---
-# <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da dizin oluşturma zamanlama
+# <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Azure Bilişsel Arama Dizinleyicileri zamanlama
 
-Bir dizin oluşturucu normalde oluşturulduktan hemen sonra bir kez çalışır. Portal, REST API veya .NET SDK'yı kullanarak isteğe bağlı olarak yeniden çalıştırabilirsiniz. Ayrıca, bir dizin leyiciyi zamanlamada düzenli aralıklarla çalışacak şekilde yapılandırabilirsiniz.
+Dizin Oluşturucu normalde, oluşturulduktan hemen sonra bir kez çalışır. Portalı, REST API veya .NET SDK kullanarak isteğe bağlı olarak yeniden çalıştırabilirsiniz. Bir dizin Oluşturucuyu bir zamanlamaya göre düzenli aralıklarla çalışacak şekilde de yapılandırabilirsiniz.
 
-Dizinleyici zamanlamasının yararlı olduğu bazı durumlar:
+Dizin Oluşturucu çizelgelemenin yararlı olduğu bazı durumlar:
 
-* Kaynak veriler zaman içinde değişecektir ve Azure Bilişsel Arama dizinleyicilerin değiştirilen verileri otomatik olarak işlemesini istiyorsunuz.
-* Dizin birden çok veri kaynağından doldurulur ve dizin leyicilerin çakışmaları azaltmak için farklı zamanlarda çalışmasını sağlamak istersiniz.
-* Kaynak veriler çok büyük tür ve dizin leyici işlemeyi zamana yaymak istiyorsunuz. Büyük hacimli verileri dizine alma hakkında daha fazla bilgi için Azure [Bilişsel Arama'da büyük veri kümelerini nasıl dizine ekleyeceklerine](search-howto-large-index.md)bakın.
+* Kaynak veriler zamanla değişecektir ve Azure Bilişsel Arama dizin oluşturucularının değiştirilen verileri otomatik olarak işlemesini istiyorsunuz.
+* Dizin birden çok veri kaynağından doldurulacak ve oluşturucuların çakışmaları azaltmak için farklı zamanlarda çalıştığından emin olmak istiyorsunuz.
+* Kaynak veriler çok büyükse ve Dizin Oluşturucu işlemesini zaman içinde yaymak istiyorsunuz. Büyük hacimteki verileri dizinleme hakkında daha fazla bilgi için bkz. [Azure bilişsel arama büyük veri kümelerini Dizin](search-howto-large-index.md)oluşturma.
 
-Zamanlayıcı, Azure Bilişsel Arama'nın yerleşik bir özelliğidir. Arama dizinleyicilerini denetlemek için harici bir zamanlayıcı kullanamazsınız.
+Zamanlayıcı, Azure Bilişsel Arama 'ın yerleşik bir özelliğidir. Arama dizin oluşturucularının denetlemek için bir dış Zamanlayıcı kullanamazsınız.
 
-## <a name="define-schedule-properties"></a>Zamanlama özelliklerini tanımlama
+## <a name="define-schedule-properties"></a>Zamanlama özelliklerini tanımla
 
-Dizinleyici zamanlamasının iki özelliği vardır:
-* **Zamanlanan**dizinleyici yürütmeler arasındaki zaman miktarını tanımlayan aralık. İzin verilen en küçük aralık 5 dakika, en büyüğü ise 24 saattir.
-* Dizinleyicinin ilk kez çalıştırılması gerektiğini gösteren **Başlangıç Saati (UTC)**
+Dizin Oluşturucu zamanlamasının iki özelliği vardır:
+* Zaman **aralığı**, zamanlanan Dizin Oluşturucu yürütmelerinin arasındaki süreyi tanımlar. İzin verilen en küçük Aralık 5 dakikadır ve en büyük değer 24 saattir.
+* **Başlangıç saati (UTC)**, dizin oluşturucunun ilk kez çalıştırılması gereken zamanı gösterir.
 
-Dizin oluşturucuyu ilk oluştururken veya dizin oluşturucunun özelliklerini daha sonra güncelleştirerek bir zamanlama belirtebilirsiniz. Dizin leyici zamanlamaları [portal](#portal), [REST API](#restApi)veya [.NET SDK](#dotNetSdk)kullanılarak ayarlanabilir.
+İlk dizin oluşturucuyu oluştururken veya dizin oluşturucunun özelliklerini daha sonra güncelleştirerek bir zamanlama belirtebilirsiniz. Dizin Oluşturucu zamanlamaları, [Portal](#portal), [REST API](#restApi)veya [.NET SDK](#dotNetSdk)kullanılarak ayarlanabilir.
 
-Bir dizin dizininin yalnızca bir yürütülmesi aynı anda çalıştırılabilir. Bir sonraki yürütme zamanlandığında bir dizin leyici zaten çalışıyorsa, bu yürütme bir sonraki zamanlanan saate ertelenir.
+Bir dizin oluşturucunun tek seferde yalnızca bir yürütmesi çalıştırılabilir. Bir Dizin Oluşturucu bir sonraki yürütmesi zamanlandığında zaten çalışıyorsa, bu yürütme zamanlanan bir sonraki saate kadar ertelenir.
 
-Bunu daha somut hale getirmek için bir örnek düşünelim. Dizin oluşturma takvimini saatlik **aralık** ve 1 Haziran 2019 **başlangıç saati** ile 8:00:00 UTC olarak yapılandırdığımızı varsayalım. Dizin leyici çalıştırın bir saatten uzun sürdüğünde neler olabileceği aşağıda açıklanabilir:
+Daha somut hale getirmek için bir örnek ele alalım. Bir Dizin Oluşturucu zamanlamasını saat **aralığı** ve 1 Haziran 2019 ' in 8:00:00: UTC ' de **Başlangıç saati** ile yapılandırdığımızda varsayın. Bir Dizin Oluşturucu çalıştırıldığında bir saatten uzun sürme durumunda bu durum oluşabilir:
 
-* İlk dizinleyici uygulaması 1 Haziran 2019 civarında 08:00'de UTC'de başlar. Bu yürütmenin 20 dakika (veya 1 saatten az bir süre) sürdüğünü varsayalım.
-* İkinci infaz 1 Haziran 2019 civarında 09:00 UTC'de başlayacaktır. Bu yürütmenin 70 dakika sürdüğünü ve UTC saat 10:10'a kadar tamamlanmayacağını varsayalım.
-* Üçüncü yürütme 10:00 UTC'de başlayacak, ancak o zaman önceki yürütme hala çalışıyor. Bu zamanlanmış yürütme sonra atlanır. Dizinleyicinin bir sonraki yürütmesi UTC saat 11:00'e kadar başlamaz.
+* İlk Dizin Oluşturucu yürütmesi 1 Haziran 2019 ' de 8:00: UTC 'de başlar. Bu yürütmenin 20 dakika (veya 1 saatten kısa bir süre) aldığını varsayın.
+* İkinci yürütme 1 Haziran 2019 9:00, UTC 'de veya sonrasında başlar. Bu yürütmenin 70 dakika boyunca (bir saatten fazla) aldığını ve 10:10: UTC tarihine kadar tamamlanmadığını varsayın.
+* Üçüncü yürütme 10:00: UTC olarak başlayacak şekilde zamanlanır, ancak bu süre içinde önceki yürütme çalışmaya devam etmektedir. Bu zamanlanmış yürütme daha sonra atlanır. Dizin oluşturucunun sonraki yürütülmesi 11:00. UTC tarihine kadar başlamaz.
 
 > [!NOTE]
-> Bir dizin leyici belirli bir zamanlamaya ayarlanır, ancak her çalıştığında aynı belgede tekrar tekrar başarısız olursa, dizinleyici başarılı bir şekilde ilerleme kaydedene kadar daha az sıklıkta (en az 24 saatte bir en fazla) çalışmaya başlar Tekrar.  Dizinleyicinin belirli bir noktada sıkışıp kalmasına neden olan sorunu düzelttettiğinizi düşünüyorsanız, dizinleyicinin isteğe bağlı çalışmasını gerçekleştirebilirsiniz ve bu başarıyla ilerleme kaydederse, dizinleyici yine ayarlanan zamanlama aralığına geri döner.
+> Bir Dizin Oluşturucu belirli bir zamanlamaya göre ayarlanırsa ancak her çalıştırıldığında aynı belgede tekrar tekrar bir kez başarısız olursa, Dizin Oluşturucu, yeniden ilerleme yapana kadar daha az sıklıkta (en fazla 24 saatte bir) çalışmaya başlar.  Dizin oluşturucunun belirli bir noktada takılmasına neden olan sorunu düzelttiğini düşünüyorsanız, dizin oluşturucunun isteğe bağlı olarak çalıştırılmasını gerçekleştirebilir ve başarıyla ilerleme yapıyorsa, Dizin Oluşturucu ayarlanan zamanlama aralığına yeniden döner.
 
 <a name="portal"></a>
 
-## <a name="schedule-in-the-portal"></a>Portalda zamanlama
+## <a name="schedule-in-the-portal"></a>Portalda zamanla
 
-Portaldaki Veri Alma sihirbazı, oluşturma zamanında bir dizinleyicinin zamanlamasını tanımlamanızı sağlar. Varsayılan Zamanlama ayarı **Saatliktir,** bu da dizin oluşturucunun oluşturulduktan sonra bir kez çalıştığı ve daha sonra her saat tekrar çalıştığı anlamına gelir.
+Portalda veri Içeri aktarma Sihirbazı, oluşturma zamanında bir dizin oluşturucunun zamanlamasını tanımlamanızı sağlar. Varsayılan zamanlama ayarı **her saat ' tir.** bu, dizin oluşturucunun oluşturulduktan sonra bir kez çalıştırıldığı ve sonrasında her saat sonra yeniden çalıştırıldığı anlamına gelir.
 
-Dizinleyicinin otomatik olarak yeniden çalışmasını istemiyorsanız Zamanlama ayarını **Bir Kez** veya günde bir kez çalışacak **Günlük** olarak değiştirebilirsiniz. Farklı bir aralık veya belirli bir gelecekteki Başlangıç Saati belirtmek istiyorsanız özel **olarak** ayarlayın.
+Dizin oluşturucunun yeniden otomatik olarak çalışmasını istemiyorsanız **veya günde bir** kez çalıştırmak Istemiyorsanız, zamanlama ayarını **bir kez** daha değiştirebilirsiniz. Farklı bir Aralık veya belirli bir başlangıç saati belirtmek istiyorsanız, bunu **özel** olarak ayarlayın.
 
-Zamanlamayı **Özel**olarak ayarladığınızda, alanlar **Aralığı** ve Başlangıç **Saatini (UTC)** belirtmenize izin vermek için görünür. İzin verilen en kısa zaman aralığı 5 dakika, en uzun süre 1440 dakikadır (24 saat).
+Zamanlamayı **özel**olarak ayarladığınızda, alanlar, **aralığı** ve **başlangıç saatini (UTC)** belirtmenize izin verecek şekilde görünür. İzin verilen en kısa zaman aralığı 5 dakikadır ve en uzun süre 1440 dakikadır (24 saat).
 
-   ![İçe Aktarma Verisi sihirbazında dizin oluşturma çizelgesi ni ayarlama](media/search-howto-schedule-indexers/schedule-import-data.png "İçe Aktarma Verisi sihirbazında dizin oluşturma çizelgesi ni ayarlama")
+   ![Veri alma Sihirbazı 'nda Dizin Oluşturucu zamanlamasını ayarlama](media/search-howto-schedule-indexers/schedule-import-data.png "Veri alma Sihirbazı 'nda Dizin Oluşturucu zamanlamasını ayarlama")
 
-Dizin oluşturucu oluşturulduktan sonra, dizin oluşturucunun Edit panelini kullanarak zamanlama ayarlarını değiştirebilirsiniz. Zamanlama alanları, Veri Alma sihirbazıyla aynıdır.
+Bir Dizin Oluşturucu oluşturulduktan sonra, dizin oluşturucunun düzenleme panelini kullanarak zamanlama ayarlarını değiştirebilirsiniz. Zamanlama alanları, verileri Içeri aktarma Sihirbazı ile aynıdır.
 
-   ![Dizinleyici Edit panelinde zamanlamayı ayarlama](media/search-howto-schedule-indexers/schedule-edit.png "Dizinleyici Edit panelinde zamanlamayı ayarlama")
+   ![Dizin Oluşturucu düzenleme panelinde zamanlamayı ayarlama](media/search-howto-schedule-indexers/schedule-edit.png "Dizin Oluşturucu düzenleme panelinde zamanlamayı ayarlama")
 
 <a name="restApi"></a>
 
-## <a name="schedule-using-rest-apis"></a>REST API'lerini kullanarak zamanlama
+## <a name="schedule-using-rest-apis"></a>REST API 'Lerini kullanmayı zamanla
 
-REST API'sini kullanarak bir dizinleyicinin zamanlamasını tanımlayabilirsiniz. Bunu yapmak için, dizin oluşturup güncellerken **zamanlama** özelliğini ekleyin. Aşağıdaki örnek, varolan bir dizinleyiciyi güncelleştirmek için put isteğini gösterir:
+REST API kullanarak bir dizin oluşturucunun zamanlamasını tanımlayabilirsiniz. Bunu yapmak için, Dizin oluşturucuyu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin. Aşağıdaki örnekte, var olan bir dizin oluşturucuyu güncelleştirmek için bir PUT isteği gösterilmektedir:
 
     PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
     Content-Type: application/json
@@ -78,19 +78,19 @@ REST API'sini kullanarak bir dizinleyicinin zamanlamasını tanımlayabilirsiniz
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-**Aralık** parametresi gereklidir. Aralık, iki ardışık dizinleyici yürütmenin başlangıcı arasındaki süreyi ifade eder. İzin verilen en küçük aralık 5 dakikadır; en uzunu bir gündür. XSD "dayTimeDuration" değeri [(ISO 8601 süre](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin sınırlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için desen: `P(nD)(T(nH)(nM))`. Örnekler: `PT15M` her 15 `PT2H` dakikada bir, her 2 saat için.
+**Interval** parametresi gereklidir. Aralık, arka arkaya iki Dizin Oluşturucu yürütmelerinin başlangıcı arasındaki süreyi ifade eder. İzin verilen en küçük Aralık 5 dakikadır; en uzun değer bir gündür. XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Bunun için olan model: `P(nD)(T(nH)(nM))`. Örnekler: `PT15M` her 2 saat `PT2H` için 15 dakikada bir.
 
-İsteğe bağlı **başlangıç Zamanı,** zamanlanmış yürütmelerin ne zaman başlaması gerektiğini gösterir. Atlanırsa, geçerli UTC saati kullanılır. Bu süre geçmişte olabilir, bu durumda ilk yürütme dizinleyici özgün **başlangıç Zamanından**beri sürekli çalışıyormuş gibi zamanlanır.
+İsteğe bağlı **StartTime** , zamanlanan yürütmelerin ne zaman başlaması gerektiğini gösterir. Atlanırsa, geçerli UTC saati kullanılır. Bu süre geçmişte olabilir, bu durumda ilk yürütme, dizin oluşturucunun özgün **başlangıçzamanından**bu yana sürekli olarak çalışıp çalışmadığını olarak zamanlanır.
 
-Ayrıca, Run Indexer çağrısını kullanarak istediğiniz zaman isteğe bağlı bir dizinleyici çalıştırabilirsiniz. Dizin leyicileri çalıştırma ve dizin oluşturma zamanlamaları hakkında daha fazla bilgi için, REST API Başvurusu'nda [Run Indexer,](https://docs.microsoft.com/rest/api/searchservice/run-indexer) [Get Indexer](https://docs.microsoft.com/rest/api/searchservice/get-indexer)ve [Update Indexer'a](https://docs.microsoft.com/rest/api/searchservice/update-indexer) bakın.
+Ayrıca, Dizin oluşturucuyu Çalıştır çağrısını kullanarak istediğiniz zaman bir Dizin Oluşturucu çalıştırabilirsiniz. Dizin oluşturucular çalıştırma ve Dizin Oluşturucu zamanlamalarını ayarlama hakkında daha fazla bilgi için, REST API başvurusunda [Dizin oluşturucuyu çalıştırma](https://docs.microsoft.com/rest/api/searchservice/run-indexer), [Dizin](https://docs.microsoft.com/rest/api/searchservice/get-indexer)Oluşturucu ve [güncelleştirme dizin oluşturucuyu](https://docs.microsoft.com/rest/api/searchservice/update-indexer) inceleyin.
 
 <a name="dotNetSdk"></a>
 
-## <a name="schedule-using-the-net-sdk"></a>.NET SDK'yı kullanarak zamanlama
+## <a name="schedule-using-the-net-sdk"></a>.NET SDK kullanarak zamanlama
 
-Azure Bilişsel Arama .NET SDK'yı kullanarak bir dizin leyicinin zamanlamasını tanımlayabilirsiniz. Bunu yapmak için, bir Dizin Oluşturup güncellerken **zamanlama** özelliğini ekleyin.
+Bir dizin oluşturucunun zamanlamasını Azure Bilişsel Arama .NET SDK kullanarak tanımlayabilirsiniz. Bunu yapmak için, bir Dizin Oluşturucu oluştururken veya güncelleştirirken **Schedule** özelliğini ekleyin.
 
-Aşağıdaki C# örneği, önceden tanımlanmış bir veri kaynağı ve dizin kullanarak bir dizin oluşturup, 30 dakika dan itibaren her gün bir kez çalışacak şekilde zamanlamasını ayarlar:
+Aşağıdaki C# örneği, önceden tanımlanmış bir veri kaynağı ve dizini kullanarak bir dizin oluşturucu oluşturur ve zamanlamasını 30 dakika sonra her gün çalışacak şekilde ayarlar.
 
 ```
     Indexer indexer = new Indexer(
@@ -104,14 +104,14 @@ Aşağıdaki C# örneği, önceden tanımlanmış bir veri kaynağı ve dizin ku
         );
     await searchService.Indexers.CreateOrUpdateAsync(indexer);
 ```
-**Zamanlama** parametresi atlanırsa, dizin oluşturucu oluşturulduktan hemen sonra yalnızca bir kez çalışır.
+**Schedule** parametresi atlanırsa, Dizin Oluşturucu, oluşturulduktan sonra yalnızca bir kez çalışır.
 
-**Başlangıç Zamanı** parametresi geçmişte bir zaman olarak ayarlanabilir. Bu durumda, ilk yürütme dizinleyici verilen **başlangıç Zamanından**beri sürekli çalışıyormuş gibi zamanlanır.
+**StartTime** parametresi geçmişteki bir zamana ayarlanabilir. Bu durumda, ilk yürütme, dizin oluşturucunun verilen **StartTime**bu yana sürekli olarak çalışıyor olması halinde zamanlanır.
 
-Zamanlama, [IndexingSchedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) sınıfı kullanılarak tanımlanır. **IndexingSchedule** oluşturucu, **TimeSpan** nesnesi kullanılarak belirtilen bir **aralık** parametresi gerektirir. İzin verilen en küçük aralık değeri 5 dakika, en büyüğü 24 saattir. **DateTimeOffset** nesnesi olarak belirtilen ikinci **başlangıç Zamanı** parametresi isteğe bağlıdır.
+Zamanlama, [ındexingschedule](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingschedule?view=azure-dotnet) sınıfı kullanılarak tanımlanır. **Indexingschedule** Oluşturucusu, **TimeSpan** nesnesi kullanılarak belirtilen bir **Interval** parametresi gerektiriyor. İzin verilen en küçük Aralık değeri 5 dakikadır ve en büyük değer 24 saattir. **DateTimeOffset** nesnesi olarak belirtilen ikinci **StartTime** parametresi isteğe bağlıdır.
 
-.NET SDK, [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) sınıfını ve **IIndexersOperations** arabiriminden yöntemler uygulayan [Indexers](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) özelliğini kullanarak dizin oluşturmayı denetlemenize olanak tanır. 
+.NET SDK, [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) sınıfını ve **IIndexersOperations** arabiriminden Yöntemler uygulayan [Indexers](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) özelliğini kullanarak Dizin Oluşturucu işlemlerini denetlemenizi sağlar. 
 
-[Run](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)veya [RunWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) yöntemlerinden birini kullanarak istediğiniz zaman isteğe bağlı bir dizinleyici çalıştırabilirsiniz.
+Bir dizin oluşturucuyu, [Run](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)veya [Runwithhttpmessagesasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) yöntemlerinden birini kullanarak dilediğiniz zaman isteğe bağlı olarak çalıştırabilirsiniz.
 
-Dizin oluşturma, güncelleştirme ve çalıştırma hakkında daha fazla bilgi için [IIindexersOperations'a](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet)bakın.
+Dizin oluşturucular oluşturma, güncelleştirme ve çalıştırma hakkında daha fazla bilgi için bkz. [IIindexersOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations?view=azure-dotnet).

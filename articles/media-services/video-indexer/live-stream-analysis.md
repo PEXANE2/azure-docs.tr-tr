@@ -1,7 +1,7 @@
 ---
 title: Video Indexer kullanarak canlı akış analizi
 titleSuffix: Azure Media Services
-description: Bu makalede, Video Indexer kullanarak canlı akış çözümlemesi nasıl yapılacağını gösterir.
+description: Bu makalede, Video Indexer kullanarak canlı akış analizinin nasıl gerçekleştirileceği gösterilmektedir.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,35 +11,35 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.openlocfilehash: 89d0254fc758834c437f347e6ecb7bcafc1fe467
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74185988"
 ---
 # <a name="live-stream-analysis-with-video-indexer"></a>Video Indexer ile canlı akış analizi
 
-Azure Media Services Video Indexer, video ve ses dosyalarından çevrimdışı derin bilgiler elde etmek üzere tasarlanmış bir Azure hizmetidir. Bu, önceden oluşturulmuş belirli bir ortam dosyasını çözümlemek içindir. Ancak, bazı kullanım durumlarında, operasyonel ve diğer kullanım durumlarını zamanında açmak için canlı yayından medya istatistiklerini mümkün olduğunca çabuk almak önemlidir. Örneğin, canlı akıştaki bu tür zengin meta veriler içerik üreticileri tarafından TV üretimini otomatikleştirmek için kullanılabilir.
+Azure Media Services Video Indexer, video ve ses dosyalarından daha derin Öngörüler çıkarmak için tasarlanan bir Azure hizmetidir. Bu, önceden oluşturulmuş olan belirli bir medya dosyasını analiz etmek için kullanılır. Öte yandan, bazı kullanım durumları için medya öngörülerini canlı bir akıştan, işletimsel ve diğer kullanım durumlarının kilidini açmak için mümkün olduğunca hızlı bir şekilde almanız önemlidir. Örneğin, canlı bir akışta bulunan zengin meta veriler, Content üreticileri tarafından TV üretimini otomatikleştirmek için kullanılabilir.
 
-Bu makalede açıklanan bir çözüm, müşterilerin canlı akışlarda neredeyse gerçek zamanlı çözünürlüklerde Video Indexer'ı kullanmasına olanak tanır. Dizin oluşturmadaki gecikme, dizine alınan veri yığınlarına, giriş çözünürlüğüne, içerik türüne ve bu işlem için kullanılan işlem destekli işlem ekibe bağlı olarak bu çözümü kullanarak dört dakikakadar düşük olabilir.
+Bu makalede açıklanan bir çözüm, müşterilerin canlı akışlar üzerinde neredeyse gerçek zamanlı çözünürlükler Video Indexer kullanmasına izin verir. Dizin oluşturma işleminin gecikmesi, bu çözümü, dizin oluşturulan verilerin parçalara, giriş çözümlemesine, içerik türüne ve bu işlem için kullanılan işlem gücü 'ne bağlı olarak dört dakika içinde en az olabilir.
 
-![Canlı akıştaki Video Dizinleyici meta verileri](./media/live-stream-analysis/live-stream-analysis01.png)
+![Canlı akıştaki Video Indexer meta veriler](./media/live-stream-analysis/live-stream-analysis01.png)
 
-*Şekil 1 - Video Dizinleyici meta verilerini canlı akışta görüntüleyen örnek oynatıcı*
+*Şekil 1 – Canlı akışta Video Indexer meta verileri görüntüleyen örnek yürütücü*
 
-Eldeki [akış analizi çözümü,](https://aka.ms/livestreamanalysis) Video Dizinleyici ile Azure Medya Hizmetleri'ndeki canlı bir kanaldan canlı bir programı işlemek için Azure İşlevlerini ve iki Mantık Uygulaması kullanır ve sonucu Azure Media Player'ın neredeyse gerçek zamanlı sonuçlanan akışı göstermesiyle görüntüler.
+[Akış analizi çözümü](https://aka.ms/livestreamanalysis) , Azure işlevlerini ve iki Logic Apps kullanır ve canlı bir programı, Azure Media Services video Indexer ile gerçek zamanlı olarak gösteren canlı bir kanaldan işleyecek şekilde Azure Media Player görüntüler.
 
-Yüksek düzeyde, iki ana adımdan oluşur. İlk adım her 60 saniyede bir çalışır ve oynanan son 60 saniyenin bir alt klibini alır, ondan bir varlık oluşturur ve Video Indexer aracılığıyla dizine dizine eklenir. Dizin oluşturma tamamlandıktan sonra ikinci adım çağrılır. Yakalanan bilgiler işlenir, Azure Cosmos DB'ye gönderilir ve dizine eklenmiş alt klip silinir.
+Yüksek düzeyde, bu iki ana adımdan oluşur. İlk adım her 60 saniyede bir çalışır ve son 60 saniyelik bir alt klip alır, bundan bir varlık oluşturur ve Video Indexer aracılığıyla dizinler. İkinci adım, dizin oluşturma işlemi tamamlandıktan sonra çağrılır. Yakalanan Öngörüler işlenir, Azure Cosmos DB gönderilir ve dizin oluşturulan alt klip silinir.
 
-Örnek oynatıcı canlı akışı çalar ve özel bir Azure İşlevi kullanarak Azure Cosmos DB'den öngörüler alır. Meta verileri ve küçük resimleri canlı videoyla senkronize olarak görüntüler.
+Örnek oynatıcı canlı akışı yürütür ve adanmış bir Azure Işlevi kullanarak Azure Cosmos DB öngörüleri alır. Canlı video ile eşitlenmiş meta verileri ve küçük resimleri görüntüler.
 
-![Bulutta her dakika canlı akışı işleyen iki mantık uygulaması](./media/live-stream-analysis/live-stream-analysis02.png)
+![Bulutta her dakikada canlı akışı işleyen iki mantıksal uygulama](./media/live-stream-analysis/live-stream-analysis02.png)
 
-*Şekil 2 – Bulutta her dakika canlı akışı işleyen iki mantık uygulaması.*
+*Şekil 2: bulutta her dakikada canlı akışı işleyen iki mantıksal uygulama.*
 
 ## <a name="step-by-step-guide"></a>Adım adım kılavuz 
 
-Tam kod ve sonuçları dağıtmak için bir adım adım kılavuz [Video Indexer ile Canlı medya analitiği için GitHub proje](https://aka.ms/livestreamanalysis)bulunabilir. 
+Sonuçları dağıtmaya yönelik tam kod ve adım adım kılavuz, [video Indexer Ile canlı Medya Analizi Için GitHub projesinde](https://aka.ms/livestreamanalysis)bulunabilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

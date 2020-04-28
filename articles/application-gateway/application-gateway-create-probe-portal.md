@@ -1,7 +1,7 @@
 ---
-title: Portalı kullanarak özel bir sonda oluşturma
+title: Portalı kullanarak özel bir araştırma oluşturma
 titleSuffix: Azure Application Gateway
-description: Portalı kullanarak Uygulama Ağ Geçidi için özel bir sonda oluşturmayı öğrenin
+description: Portalı kullanarak Application Gateway için özel bir araştırma oluşturmayı öğrenin
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,119 +9,119 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 15daf47a1cb44635932311e60b3690af9ff58677
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74074601"
 ---
-# <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Portalı kullanarak Uygulama Ağ Geçidi için özel bir sonda oluşturma
+# <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Portalı kullanarak Application Gateway için özel bir araştırma oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalında](application-gateway-create-probe-portal.md)
+> * [Azure portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Klasik PowerShell](application-gateway-create-probe-classic-ps.md)
 
-Bu makalede, Azure portalı üzerinden varolan bir uygulama ağ geçidine özel bir sistem durumu sondası eklersiniz. Azure Application Gateway, sistem durumu sondalarını kullanarak arka uç havuzundaki kaynakların durumunu izler.
+Bu makalede, mevcut bir uygulama ağ geçidine Azure portal aracılığıyla özel bir sistem durumu araştırması eklersiniz. Azure Application Gateway, sistem durumu araştırmalarını kullanarak arka uç havuzundaki kaynakların sistem durumunu izler.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Zaten bir uygulama ağ geçidiniz yoksa, çalışmak için bir uygulama ağ geçidi oluşturmak için [Bir Uygulama Ağ Geçidi Oluştur'u](application-gateway-create-gateway-portal.md) ziyaret edin.
+Henüz bir uygulama ağ geçidiniz yoksa, birlikte çalışmak üzere bir uygulama ağ geçidi oluşturmak için [Application Gateway oluştur](application-gateway-create-gateway-portal.md) ' u ziyaret edin.
 
-## <a name="create-probe-for-application-gateway-v2-sku"></a>Uygulama Ağ Geçidi v2 SKU için sonda oluşturma
+## <a name="create-probe-for-application-gateway-v2-sku"></a>Application Gateway v2 SKU 'SU için araştırma oluşturma
 
-Sondalar portal üzerinden iki aşamalı bir süreç içinde yapılandırılır. İlk adım, sonda yapılandırması için gereken değerleri girmektir. İkinci adımda, bu sonda yapılandırmasını kullanarak arka uç durumunu test edin ve sondayı kaydedin. 
+Yoklamalar, Portal üzerinden iki adımlı bir işlemde yapılandırılır. İlk adım, araştırma yapılandırması için gereken değerleri girdir. İkinci adımda, bu araştırma yapılandırmasını kullanarak arka uç durumunu test edersiniz ve araştırmayı kaydedersiniz. 
 
-### <a name="enter-probe-properties"></a><a name="createprobe"></a>Sonda özelliklerini girin
+### <a name="enter-probe-properties"></a><a name="createprobe"></a>Araştırma özelliklerini girin
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. Zaten bir hesabınız yoksa, [bir aylık ücretsiz deneme sürümüne](https://azure.microsoft.com/free) kaydolabilirsiniz
+1. [Azure Portal](https://portal.azure.com) oturum açın. Henüz bir hesabınız yoksa, [bir aylık ücretsiz deneme sürümü](https://azure.microsoft.com/free) için kaydolabilirsiniz
 
-2. Azure Portal Sık Kullanılanlar bölmesinde, Tüm kaynaklar’a tıklayın. Tüm kaynaklar bıçak uygulama ağ geçidi ni tıklatın. Seçili abonelikte zaten çeşitli kaynaklar varsa, DNS bölgesine kolaylıkla erişmek için Ada göre filtrele... kutusuna partners.contoso.net girebilirsiniz.
+2. Azure Portal Sık Kullanılanlar bölmesinde, Tüm kaynaklar’a tıklayın. Tüm kaynaklar dikey penceresinde uygulama ağ geçidine tıklayın. Seçili abonelikte zaten çeşitli kaynaklar varsa, DNS bölgesine kolaylıkla erişmek için Ada göre filtrele... kutusuna partners.contoso.net girebilirsiniz.
 
-3. **Sistem Durumu sondalarını** seçin ve ardından yeni bir sistem durumu sondası eklemek için **Ekle'yi** seçin.
+3. **Durum araştırmaları** ' nı seçin ve yeni bir sistem durumu araştırması eklemek için **Ekle** ' yi seçin.
 
-   ![Yeni sonda ekleme][4]
+   ![Yeni araştırma ekle][4]
 
-4. Sistem **durumu sondası** ekle sayfasında, sonda için gerekli bilgileri doldurun ve tamamlandığında **Tamam'ı**seçin.
+4. **Durum araştırması Ekle** sayfasında, araştırma için gerekli bilgileri doldurun ve tamamlandığında **Tamam**' ı seçin.
 
-   |**Ayar** | **Değer** | **Şey**|
+   |**Ayar** | **Deeri** | **Bilgileri**|
    |---|---|---|
-   |**Adı**|customProbe|Bu değer, portalda erişilebilen sondaya verilen dostça bir addır.|
-   |**Protokolü**|HTTP veya HTTPS | Sağlık sondasının kullandığı protokol. |
-   |**Konak**|Yani contoso.com|Bu değer, uygulama sunucusunda çalışan sanal ana bilgisayar (VM ana bilgisayar adından farklı) adıdır. Sonda (protocol)://(ana bilgisayar adı):(port from httpsetting)/urlPath'e gönderilir.  Bu, Uygulama Ağ Geçidi'nde çok siteli yapılandırıldığınızda geçerlidir. Uygulama Ağ Geçidi tek bir site için yapılandırıldıysa, '127.0.0.1' girin.|
-   |**Arka uç HTTP ayarlarından ana bilgisayar adını seçme**|Evet veya Hayır|Sondadaki *ana bilgi nakış,* bu sondanın ilişkili olduğu HTTP Ayarı ile ilişkili arka uç havuzundaki arka uç kaynağının ana bilgisayar adına ayarlar. Azure uygulama hizmeti gibi çok kiracılı arka uçlar için özel olarak gereklidir. [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**Yol**|/ veya başka bir yol|Özel sonda için tam url geri kalanı. Geçerli bir yol '/' ile başlar. http varsayılan yolu için:\//contoso.com sadece '/' kullanın |
-   |**Aralık (saniye)**|30|Sonda sağlık kontrolü için ne sıklıkta çalıştırılır. 30 saniyeden daha düşük ayarlamak için tavsiye edilmez.|
-   |**Zaman arası (saniye)**|30|Sondanın zamanlamadan önce bekleme süresi. Bu zaman dışında geçen süre içinde geçerli bir yanıt alınmazsa, sonda başarısız olarak işaretlenir. Zaman aralığı, arka uç sistem durumu sayfasının kullanılabilir olduğundan emin olmak için bir http aramasının yapılabildiği kadar yüksek olmalıdır. Zaman aralığı değerinin bu sonda ayarında kullanılan 'Interval' değerinden veya bu sondayla ilişkilendirilecek HTTP ayarındaki 'İstek zaman aşımı' değerinden fazla olmaması gerektiğini unutmayın.|
-|**Sağlıksız durum eşiği**|3|Art arda başarısız olan girişimlerin sayısı sağlıksız olarak kabul edilecek. Eşik 1 veya daha fazla ayarlanabilir.|
-   |**Sonda eşleştirme koşullarını kullanma**|Evet veya Hayır|Varsayılan olarak, 200 ve 399 arasında durum kodu ile bir HTTP(S) yanıtı sağlıklı olarak kabul edilir. Kabul edilebilir arka uç yanıt kodu veya arka uç yanıt gövdesi aralığını değiştirebilirsiniz. [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
-   |**HTTP Ayarları**|açılır dan seçim|Sonda burada seçilen HTTP ayarı(lar) ile ilişkili alırsınız ve bu nedenle, seçilen HTTP ayarı ile ilişkili olan bu arka uç havuzunun durumunu izler. Sonda isteği için seçilen HTTP ayarında kullanılan bağlantı noktası yla aynı bağlantı noktasını kullanır. Yalnızca başka bir özel sondayla ilişkili olmayan HTTP ayarını(lar) seçebilirsiniz. <br>Yalnızca bu HTTP ayarı(lar) bu sonda yapılandırmasında seçilen protokolile aynı protokole sahip olan ve *Arka Uç http ayar anahtarından Ana Bilgisayar Adı Seç* için aynı duruma sahip ilişkilendirme için kullanılabilir olduğunu unutmayın.|
+   |**Adı**|Customaraştırması|Bu değer, portalda erişilebilen araştırmayı verilen kolay bir addır.|
+   |**Protocol**|HTTP veya HTTPS | Sistem durumu araştırmasının kullandığı protokol. |
+   |**Konak**|Yani contoso.com|Bu değer, uygulama sunucusunda çalışan sanal ana bilgisayarın (VM ana bilgisayar adından farklı) adıdır. Araştırma, (protokol)://(ana bilgisayar adı):(bağlantı noktası httpsetting)/Urlpath' e gönderilir.  Bu, Application Gateway üzerinde birden çok site yapılandırıldığında geçerlidir. Application Gateway tek bir site için yapılandırıldıysa, ' 127.0.0.1 ' girin.|
+   |**Arka uç HTTP ayarlarından konak adı Seç**|Evet veya Hayır|Araştırmanın *konak* üstbilgisini, bu ARAŞTıRMANıN Ilişkilendirildiği http ayarıyla ilişkili arka uç havuzundaki arka uç kaynağının ana bilgisayar adına ayarlar. Azure App Service gibi çok kiracılı arka uçlar söz konusu olduğunda özel olarak gereklidir. [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
+   |**Yol**|/veya başka bir yol|Özel araştırma için tam URL 'nin geri kalanı. Geçerli bir yol '/' ile başlar. Http:\//contoso.com ' nin varsayılan yolu için yalnızca '/' kullanın |
+   |**Aralık (saniye)**|30|Araştırmanın sistem durumunu denetlemek için ne sıklıkta çalıştırıldığı. 30 saniyeden daha düşük bir değer ayarlamanız önerilmez.|
+   |**Zaman aşımı (saniye)**|30|Araştırmanın zaman aşımından önce bekleyeceği süre. Bu zaman aşımı süresi içinde geçerli bir yanıt alınmıyorsa, araştırma başarısız olarak işaretlenir. Zaman aşımı aralığı, arka uç sistem durumu sayfasının kullanılabilir olduğundan emin olmak için bir http çağrısının yüksek olması gerekir. Zaman aşımı değeri bu araştırma ayarında kullanılan ' Interval ' değerinden daha fazla olmamalıdır veya HTTP ayarındaki ' Istek zaman aşımı ' değeri bu yoklamasıyla ilişkilendirilecek.|
+|**Sağlıksız durum eşiği**|3|Hatalı olarak kabul edilecek ardışık başarısız deneme sayısı. Eşik 1 veya daha fazlasına ayarlanabilir.|
+   |**Araştırma eşleştirme koşullarını kullanma**|Evet veya Hayır|Varsayılan olarak, 200 ve 399 arasındaki durum koduna sahip HTTP (S) yanıtı sağlıklı olarak değerlendirilir. Kabul edilebilir arka uç yanıt kodu aralığını veya arka uç yanıtı gövdesini değiştirebilirsiniz. [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
+   |**HTTP Ayarları**|açılan menüden seçim|Araştırma, burada seçilen HTTP ayarları ile ilişkilendirilir ve bu nedenle, seçilen HTTP ayarıyla ilişkili olan arka uç havuzunun sistem durumunu izler. Seçilen HTTP ayarında kullanılmakta olan araştırma isteği için aynı bağlantı noktasını kullanacaktır. Yalnızca diğer özel yoklamalar ile ilişkilendirilmemiş olan bu HTTP ayarlarını seçebilirsiniz. <br>Bu araştırma yapılandırmasında seçilen protokolle aynı protokolüne sahip ve yalnızca *arka uç http ayar anahtarından konak adı seçin* için aynı duruma sahip olan Association için yalnızca bu http ayarlarının kullanılabilir olduğunu unutmayın.|
    
    > [!IMPORTANT]
-   > Sonda, yalnızca bir veya daha fazla HTTP Ayarı(lar) ile ilişkilendirildiğinde arka uç takiben in sağlığını izler. Bu sonda ile ilişkili HTTP ayarı(lar) ile ilişkili bu arka uç havuzları nın arka uç kaynaklarını izler. Sonda isteği http://(ana bilgisayar adı):(port from httpsetting)/urlPath adresine gönderilecektir.
+   > Araştırma, arka ucun durumunu yalnızca bir veya daha fazla HTTP ayarıyla ilişkilendirildiğinde izler. Bu, bu araştırmanın ilişkilendirildiği HTTP ayarları ile ilişkili olan arka uç havuzlarının arka uç kaynaklarını izler. Araştırma isteği, http://(ana bilgisayar adı) bağlantı noktasına:(/Urlpathkaynağından gönderilir.
 
-### <a name="test-backend-health-with-the-probe"></a>Sonda ile arka uç sağlığını test edin
+### <a name="test-backend-health-with-the-probe"></a>Araştırma ile arka uç durumunu test etme
 
-Sonda özelliklerini girdikten sonra, sonda yapılandırmasının doğru olduğunu ve arka uç kaynaklarının beklendiği gibi çalıştığını doğrulamak için arka uç kaynaklarının sistem durumunu sınayabilirsiniz.
+Araştırma özelliklerini girdikten sonra, araştırma yapılandırmasının doğru olduğunu ve arka uç kaynaklarının beklendiği gibi çalıştığını doğrulamak için arka uç kaynaklarının sistem durumunu test edebilirsiniz.
 
-1. **Test'i** seçin ve sondanın sonucunu not edin. Uygulama ağ geçidi, bu sonda için kullanılan HTTP Ayarı(lar) ile ilişkili arka uç havuzlarında tüm arka uç kaynaklarının durumunu sınar. 
+1. **Test** ' i seçin ve araştırmanın sonucunu aklınızda edin. Application Gateway, bu araştırma için kullanılan HTTP ayarları (ler) ile ilişkili arka uç havuzlarındaki tüm arka uç kaynaklarının sistem durumunu sınar. 
 
-   ![Arka uç sağlığını test edin][5]
+   ![Test arka uç durumu][5]
 
-2. Sağlıksız arka uç kaynakları varsa, kaynağın sağlıksız durumunu anlamak için **Ayrıntılar** sütununa bakın. Kaynak yanlış bir sonda yapılandırması nedeniyle sağlıksız işaretlenmişse, **sonda bağlantısına geri dön'ünü** seçin ve sonda yapılandırmasını düzeltin. Aksi takdirde, kaynak arka uçla ilgili bir sorun nedeniyle sağlıksız olarak işaretlenmişse, arka uç kaynağıyla ilgili sorunları giderin ve ardından **sonda bağlantısına geri dön** bağlantısını seçerek arka uçla tekrar test edin ve **Test'i**seçin.
+2. Sağlıksız bir arka uç kaynağı varsa, kaynağın sağlıksız durumunun nedenini anlamak için **Ayrıntılar** sütununu kontrol edin. Kaynak yanlış bir araştırma yapılandırması nedeniyle sağlıksız olarak işaretlenmişse, **araştırma bağlantısına geri dön** ' ü seçin ve araştırma yapılandırmasını düzenleyin. Aksi takdirde, arka uç ile ilgili bir sorun nedeniyle kaynak sağlıksız olarak işaretlenmişse, arka uç kaynağıyla ilgili sorunları çözün ve sonra arka ucunu tekrar inceleyerek **araştırma bağlantısına geri dönün** ve **Test**' i seçin.
 
    > [!NOTE]
-   > Sondayı sağlıksız arka uç kaynaklarıyla bile kaydetmeyi seçebilirsiniz, ancak bu önerilmez. Bunun nedeni, Uygulama Ağ Geçidi'nin sonda tarafından sağlıksız olduğu belirlenen arka uç kaynaklarını arka uç havuzundan kaldırmasıdır. Arka uç havuzunda sağlıklı kaynak yoksa, başvurunuza erişemeseniz de 502 hatası alırsınız.
+   > Araştırmayı sağlıklı olmayan arka uç kaynaklarıyla bile kaydetmeyi seçebilirsiniz, ancak önerilmez. Bunun nedeni Application Gateway, arka uç kaynaklarını yoklamanın sağlıksız olduğu belirlenen arka uç havuzundan kaldırmalıdır. Arka uç havuzunda sağlıklı kaynak olmaması durumunda uygulamanıza erişemeyeceksiniz ve 502 hatası alırsınız.
 
-   ![Sonda sonucunu görüntüleme][6]
+   ![Araştırma sonucunu görüntüle][6]
 
-3. Sondayı kaydetmek için **Ekle'yi** seçin. 
+3. Araştırmayı kaydetmek için **Ekle** ' yi seçin. 
 
-## <a name="create-probe-for-application-gateway-v1-sku"></a>Uygulama Ağ Geçidi v1 SKU için sonda oluşturma
+## <a name="create-probe-for-application-gateway-v1-sku"></a>Application Gateway v1 SKU 'SU için araştırma oluşturma
 
-Sondalar portal üzerinden iki aşamalı bir süreç içinde yapılandırılır. İlk adım sonda oluşturmaktır. İkinci adımda, sondayı uygulama ağ geçidinin arka uç http ayarlarına eklersiniz.
+Yoklamalar, Portal üzerinden iki adımlı bir işlemde yapılandırılır. İlk adım araştırmanın oluşturulması. İkinci adımda, uygulama ağ geçidinin arka uç http ayarlarına araştırma eklersiniz.
 
-### <a name="create-the-probe"></a><a name="createprobe"></a>Sondayı oluşturma
+### <a name="create-the-probe"></a><a name="createprobe"></a>Araştırma oluşturma
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. Zaten bir hesabınız yoksa, [bir aylık ücretsiz deneme sürümüne](https://azure.microsoft.com/free) kaydolabilirsiniz
+1. [Azure Portal](https://portal.azure.com) oturum açın. Henüz bir hesabınız yoksa, [bir aylık ücretsiz deneme sürümü](https://azure.microsoft.com/free) için kaydolabilirsiniz
 
-2. Azure Portal Sık Kullanılanlar bölmesinde, **Tüm kaynaklar**’ı seçin. **Tüm kaynaklar** sayfasındaki uygulama ağ geçidini seçin. Seçili abonelikte zaten çeşitli kaynaklar varsa, DNS bölgesine kolaylıkla erişmek için Ada göre filtrele... kutusuna partners.contoso.net girebilirsiniz.
+2. Azure Portal Sık Kullanılanlar bölmesinde, **Tüm kaynaklar**’ı seçin. **Tüm kaynaklar** sayfasında uygulama ağ geçidini seçin. Seçili abonelikte zaten çeşitli kaynaklar varsa, DNS bölgesine kolaylıkla erişmek için Ada göre filtrele... kutusuna partners.contoso.net girebilirsiniz.
 
-3. **Problar'ı** seçin ve ardından sonda eklemek için **Ekle'yi** seçin.
+3. **Yoklamalar** ' ı seçin ve ardından araştırma eklemek için **Ekle** ' yi seçin.
 
-   ![Doldurulan bilgilerle Sonda bıçağı ekle][1]
+   ![Doldurulmuş bilgiler içeren araştırma dikey penceresi ekleme][1]
 
-4. Sağlık **sondası ekle** bıçağında, sonda için gerekli bilgileri doldurun ve tamamlandığında **Tamam'ı**seçin.
+4. **Sistem durumu araştırması Ekle** dikey penceresinde, araştırma için gerekli bilgileri doldurun ve tamamlandığında **Tamam**' ı seçin.
 
-   |**Ayar** | **Değer** | **Şey**|
+   |**Ayar** | **Deeri** | **Bilgileri**|
    |---|---|---|
-   |**Adı**|customProbe|Bu değer, portalda erişilebilen sondaya verilen dostça bir addır.|
-   |**Protokolü**|HTTP veya HTTPS | Sağlık sondasının kullandığı protokol. |
-   |**Konak**|Yani contoso.com|Bu değer, uygulama sunucusunda çalışan sanal ana bilgisayar (VM ana bilgisayar adından farklı) adıdır. Sonda (protocol)://(ana bilgisayar adı):(port from httpsetting)/urlPath'e gönderilir.  Bu, Uygulama Ağ Geçidi'nde çok siteli yapılandırıldığınızda geçerlidir. Uygulama Ağ Geçidi tek bir site için yapılandırıldıysa, '127.0.0.1' girin.|
-   |**Arka uç HTTP ayarlarından ana bilgisayar adını seçme**|Evet veya Hayır|Sondadaki *ana bilgi nakış,* bu sondanın ilişkili olduğu HTTP Ayarı ile ilişkili arka uç havuzundaki arka uç kaynağının ana bilgisayar adına ayarlar. Azure uygulama hizmeti gibi çok kiracılı arka uçlar için özel olarak gereklidir. [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**Yol**|/ veya başka bir yol|Özel sonda için tam url geri kalanı. Geçerli bir yol '/' ile başlar. http varsayılan yolu için:\//contoso.com sadece '/' kullanın |
-   |**Aralık (saniye)**|30|Sonda sağlık kontrolü için ne sıklıkta çalıştırılır. 30 saniyeden daha düşük ayarlamak için tavsiye edilmez.|
-   |**Zaman arası (saniye)**|30|Sondanın zamanlamadan önce bekleme süresi. Bu zaman dışında geçen süre içinde geçerli bir yanıt alınmazsa, sonda başarısız olarak işaretlenir. Zaman aralığı, arka uç sistem durumu sayfasının kullanılabilir olduğundan emin olmak için bir http aramasının yapılabildiği kadar yüksek olmalıdır. Zaman aralığı değerinin bu sonda ayarında kullanılan 'Interval' değerinden veya bu sondayla ilişkilendirilecek HTTP ayarındaki 'İstek zaman aşımı' değerinden fazla olmaması gerektiğini unutmayın.|
-|**Sağlıksız durum eşiği**|3|Art arda başarısız olan girişimlerin sayısı sağlıksız olarak kabul edilecek. Eşik 1 veya daha fazla ayarlanabilir.|
-   |**Sonda eşleştirme koşullarını kullanma**|Evet veya Hayır|Varsayılan olarak, 200 ve 399 arasında durum kodu ile bir HTTP(S) yanıtı sağlıklı olarak kabul edilir. Kabul edilebilir arka uç yanıt kodu veya arka uç yanıt gövdesi aralığını değiştirebilirsiniz. [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
+   |**Adı**|Customaraştırması|Bu değer, portalda erişilebilen araştırmayı verilen kolay bir addır.|
+   |**Protocol**|HTTP veya HTTPS | Sistem durumu araştırmasının kullandığı protokol. |
+   |**Konak**|Yani contoso.com|Bu değer, uygulama sunucusunda çalışan sanal ana bilgisayarın (VM ana bilgisayar adından farklı) adıdır. Araştırma, (protokol)://(ana bilgisayar adı):(bağlantı noktası httpsetting)/Urlpath' e gönderilir.  Bu, Application Gateway üzerinde birden çok site yapılandırıldığında geçerlidir. Application Gateway tek bir site için yapılandırıldıysa, ' 127.0.0.1 ' girin.|
+   |**Arka uç HTTP ayarlarından konak adı Seç**|Evet veya Hayır|Araştırmanın *konak* üstbilgisini, bu ARAŞTıRMANıN Ilişkilendirildiği http ayarıyla ilişkili arka uç havuzundaki arka uç kaynağının ana bilgisayar adına ayarlar. Azure App Service gibi çok kiracılı arka uçlar söz konusu olduğunda özel olarak gereklidir. [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
+   |**Yol**|/veya başka bir yol|Özel araştırma için tam URL 'nin geri kalanı. Geçerli bir yol '/' ile başlar. Http:\//contoso.com ' nin varsayılan yolu için yalnızca '/' kullanın |
+   |**Aralık (saniye)**|30|Araştırmanın sistem durumunu denetlemek için ne sıklıkta çalıştırıldığı. 30 saniyeden daha düşük bir değer ayarlamanız önerilmez.|
+   |**Zaman aşımı (saniye)**|30|Araştırmanın zaman aşımından önce bekleyeceği süre. Bu zaman aşımı süresi içinde geçerli bir yanıt alınmıyorsa, araştırma başarısız olarak işaretlenir. Zaman aşımı aralığı, arka uç sistem durumu sayfasının kullanılabilir olduğundan emin olmak için bir http çağrısının yüksek olması gerekir. Zaman aşımı değeri bu araştırma ayarında kullanılan ' Interval ' değerinden daha fazla olmamalıdır veya HTTP ayarındaki ' Istek zaman aşımı ' değeri bu yoklamasıyla ilişkilendirilecek.|
+|**Sağlıksız durum eşiği**|3|Hatalı olarak kabul edilecek ardışık başarısız deneme sayısı. Eşik 1 veya daha fazlasına ayarlanabilir.|
+   |**Araştırma eşleştirme koşullarını kullanma**|Evet veya Hayır|Varsayılan olarak, 200 ve 399 arasındaki durum koduna sahip HTTP (S) yanıtı sağlıklı olarak değerlendirilir. Kabul edilebilir arka uç yanıt kodu aralığını veya arka uç yanıtı gövdesini değiştirebilirsiniz. [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
 
    > [!IMPORTANT]
-   > Ana bilgisayar adı sunucu adı ile aynı değildir. Bu değer, uygulama sunucusunda çalışan sanal ana bilgisayarın adıdır. Sonda http://(ana bilgisayar adı):(port için httpsetting)/urlPath gönderilir
+   > Ana bilgisayar adı sunucu adı ile aynı değil. Bu değer, uygulama sunucusunda çalışan sanal konağın adıdır. Araştırma http://(ana bilgisayar adı):(bağlantı noktasına httpsetting)/urlPath 'e gönderilir
 
-### <a name="add-probe-to-the-gateway"></a>Ağ geçidine sonda ekleme
+### <a name="add-probe-to-the-gateway"></a>Ağ geçidine araştırma ekleme
 
-Sonda oluşturulduğuna göre, onu ağ geçidine ekleme nin zamanı geldi. Sonda ayarları uygulama ağ geçidinin arka uç http ayarlarında ayarlanır.
+Artık araştırma oluşturuldığına göre, ağ geçidine eklemek zaman alabilir. Araştırma ayarları, uygulama ağ geçidinin arka uç http ayarları üzerinde ayarlanır.
 
-1. Yapılandırma bıçak getirmek için uygulama ağ geçidinde **HTTP ayarlarını** tıklatın pencerede listelenen geçerli arka uç http ayarları tıklayın.
+1. Uygulama ağ geçidinde **http ayarları** ' na tıklayın, yapılandırma dikey penceresini açmak için pencerede listelenen geçerli arka uç http ayarları ' na tıklayın.
 
-   ![https ayarlar penceresi][2]
+   ![https ayarları penceresi][2]
 
-2. **AppGatewayBackEndHttpSettings** ayarları sayfasında, **Özel sonda** yı keskit kutusunu kullanın ve Özel **sonda** açılır durumda [sonda](#createprobe) yı oluştur bölümünde oluşturulan sondayı seçin.
-   Tamamlandığında **Kaydet'i** tıklatın ve ayarlar uygulanır.
+2. **Appgatewaybackendhttpsettings** ayarları sayfasında, **özel araştırma kullan** onay kutusunu işaretleyin ve **özel araştırma** açılır penceresinde [araştırma oluştur](#createprobe) bölümünde oluşturulan araştırmayı seçin.
+   Tamamlandığında **Kaydet** ' e tıklayın ve ayarlar uygulanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Arka uç sistem durumu görünümünü kullanarak sonda tarafından belirlenen arka uç kaynaklarının [durumunu görüntüleyin.](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)
+Arka uç kaynaklarının sistem durumunu, [arka uç sistem durumu görünümü](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)kullanılarak araştırarak belirlendiği şekilde görüntüleyin.
 
 [1]: ./media/application-gateway-create-probe-portal/figure1.png
 [2]: ./media/application-gateway-create-probe-portal/figure2.png

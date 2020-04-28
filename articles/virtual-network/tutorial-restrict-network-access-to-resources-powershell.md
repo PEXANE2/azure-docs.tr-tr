@@ -1,6 +1,6 @@
 ---
-title: PaaS kaynaklarına ağ erişimini kısıtlama - Azure PowerShell
-description: Bu makalede, Azure PowerShell'i kullanan sanal ağ hizmeti bitiş noktalarıyla Azure Depolama ve Azure SQL Veritabanı gibi Azure kaynaklarına ağ erişimini nasıl sınırlandırabileceğinizi ve kısıtlamayı öğreneceksiniz.
+title: PaaS kaynaklarına ağ erişimini kısıtlama-Azure PowerShell
+description: Bu makalede, Azure depolama ve Azure SQL veritabanı gibi Azure kaynaklarına ağ erişimini, Azure PowerShell kullanan sanal ağ hizmeti uç noktaları ile sınırlama ve kısıtlama hakkında bilgi edineceksiniz.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -18,13 +18,13 @@ ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 1d0cf65bb39dbda2b7451c50629ff8949c5507cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74185532"
 ---
-# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>PowerShell'i kullanarak sanal ağ hizmeti uç noktalarıyla PaaS kaynaklarına ağ erişimini kısıtlama
+# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>PowerShell kullanarak sanal ağ hizmet uç noktaları ile PaaS kaynaklarına ağ erişimini kısıtlama
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -37,21 +37,21 @@ Sanal ağ hizmet uç noktaları bazı Azure hizmet uç noktalarına ağ erişimi
 * Bir alt ağdan kaynağa erişimi onaylama
 * Bir alt ağdan ve internetten kaynağa erişimin reddedildiğini onaylama
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure PowerShell modülü sürümü 1.0.0 veya daha sonra gerekir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azure PowerShell modülü sürümü 1.0.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-Sanal ağ oluşturmadan önce, sanal ağ ve bu makalede oluşturulan diğer tüm kaynaklar için bir kaynak grubu oluşturmanız gerekir. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturun. Aşağıdaki örnek, *myResourceGroup*adlı bir kaynak grubu oluşturur: 
+Bir sanal ağ oluşturmadan önce, sanal ağ ve bu makalede oluşturulan tüm diğer kaynaklar için bir kaynak grubu oluşturmanız gerekir. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturun. Aşağıdaki örnek, *Myresourcegroup*adlı bir kaynak grubu oluşturur: 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile sanal ağ oluşturun. Aşağıdaki örnek, adres öneki *10.0.0.0/16*ile *myVirtualNetwork* adlı bir sanal ağ oluşturur.
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun. Aşağıdaki örnek, *10.0.0.0/16*adres ön ekine sahip *myVirtualNetwork* adlı bir sanal ağ oluşturur.
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -61,7 +61,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)ile bir alt net yapılandırması oluşturun. Aşağıdaki örnek, *Genel*adlı bir alt ağ için bir alt ağ yapılandırması oluşturur:
+[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)ile bir alt ağ yapılandırması oluşturun. Aşağıdaki örnek, *genel*adlı bir alt ağ için bir alt ağ yapılandırması oluşturur:
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
@@ -70,7 +70,7 @@ $subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-[Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork)ile sanal ağa subnet yapılandırması yazarak sanal ağda alt net oluşturun:
+Alt ağ yapılandırmasını [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork)ile sanal ağa yazarak sanal ağda alt ağ oluşturun:
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzVirtualNetwork
@@ -78,13 +78,13 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="enable-a-service-endpoint"></a>Hizmet uç noktasını girin
 
-Yalnızca hizmet bitiş noktalarını destekleyen hizmetler için hizmet bitiş noktalarını etkinleştirebilirsiniz. [Get-AzVirtualNetworkAvailableEndpointService](/powershell/module/az.network/get-azvirtualnetworkavailableendpointservice)ile Azure'da kullanılabilen hizmet bitiş noktası etkinleştirilmiş hizmetleri görüntüleyin. Aşağıdaki örnek, *eastus* bölgesinde kullanılabilen hizmet sonu etkinleştirilmiş hizmetlerin listesini döndürür. Daha fazla Azure hizmeti hizmet bitiş noktası etkinleştirildikçe, döndürülen hizmetlerin listesi zaman içinde büyür.
+Hizmet uç noktalarını yalnızca hizmet uç noktalarını destekleyen hizmetler için etkinleştirebilirsiniz. [Get-AzVirtualNetworkAvailableEndpointService](/powershell/module/az.network/get-azvirtualnetworkavailableendpointservice)Ile bir Azure konumunda bulunan hizmet uç noktası etkin hizmetlerini görüntüleyin. Aşağıdaki örnek, *eastus* bölgesinde kullanılabilir olan hizmet uç noktası etkin hizmetleri listesini döndürür. Daha fazla Azure hizmeti uç noktası etkinleştirildiğinden, döndürülen hizmetlerin listesi zaman içinde büyüyecektir.
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkAvailableEndpointService -Location eastus | Select Name
 ```
 
-Sanal ağda ek bir alt ağ oluşturun. Bu örnekte, *Microsoft.Storage*için bir hizmet bitiş noktası ile *Özel* adlı bir alt ağ oluşturulur: 
+Sanal ağda ek bir alt ağ oluşturun. Bu örnekte, *özel* adlı bir alt ağ, *Microsoft. Storage*için bir hizmet uç noktası ile oluşturulur: 
 
 ```azurepowershell-interactive
 $subnetConfigPrivate = Add-AzVirtualNetworkSubnetConfig `
@@ -98,7 +98,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="restrict-network-access-for-a-subnet"></a>Bir kaynak için ağ erişimini kısıtlama
 
-[New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)ile ağ güvenlik grubu güvenlik kuralları oluşturun. Aşağıdaki kural, Azure Depolama hizmetine atanan genel IP adreslerine giden erişime izin verir: 
+[New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)ile ağ güvenlik grubu güvenlik kuralları oluşturun. Aşağıdaki kural, Azure depolama hizmetine atanan genel IP adreslerine giden erişime izin verir: 
 
 ```azurepowershell-interactive
 $rule1 = New-AzNetworkSecurityRuleConfig `
@@ -113,7 +113,7 @@ $rule1 = New-AzNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-Aşağıdaki kural, tüm genel IP adreslerine erişimi reddeder. Önceki kural, Azure Depolama'nın genel IP adreslerine erişime izin veren daha yüksek önceliği nedeniyle bu kuralı geçersiz kılar.
+Aşağıdaki kural tüm genel IP adreslerine erişimi reddeder. Önceki kural, Azure depolama 'nın genel IP adreslerine erişim sağlayan daha yüksek öncelikli bir nedenle bu kuralı geçersiz kılar.
 
 ```azurepowershell-interactive
 $rule2 = New-AzNetworkSecurityRuleConfig `
@@ -128,7 +128,7 @@ $rule2 = New-AzNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-Aşağıdaki kural, uzak masaüstü protokolü (RDP) trafiğinin her yerden alt ağa bağlanmasına izin verir. Uzak masaüstü bağlantılarına alt ağa izin verilir, böylece daha sonraki bir adımda bir kaynağa ağ erişimini onaylayabilirsiniz.
+Aşağıdaki kural, alt ağa gelen Uzak Masaüstü Protokolü (RDP) trafiğinin her yerden çalışmasına izin verir. Daha sonraki bir adımda bir kaynağa ağ erişimini doğrulayabilmeniz için, Uzak Masaüstü bağlantılarına alt ağ ile izin verilir.
 
 ```azurepowershell-interactive
 $rule3 = New-AzNetworkSecurityRuleConfig `
@@ -143,7 +143,7 @@ $rule3 = New-AzNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-[New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)ile bir ağ güvenlik grubu oluşturun. Aşağıdaki örnek, *myNsgPrivate*adlı bir ağ güvenlik grubu oluşturur.
+[New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)ile bir ağ güvenlik grubu oluşturun. Aşağıdaki örnek, *Mynsgprivate*adlı bir ağ güvenlik grubu oluşturur.
 
 ```azurepowershell-interactive
 $nsg = New-AzNetworkSecurityGroup `
@@ -153,7 +153,7 @@ $nsg = New-AzNetworkSecurityGroup `
   -SecurityRules $rule1,$rule2,$rule3
 ```
 
-Ağ güvenlik grubunu [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) ile *Özel* alt ağla ilişkilendirin ve alt ağ yapılandırmasını sanal ağa yazın. Aşağıdaki örnek, *myNsgPrivate* ağ güvenlik grubunu *Özel* alt ağla ilişkilendirer:
+Ağ güvenlik grubunu [set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) ile *özel* alt ağ ile ilişkilendirin ve sonra alt ağ yapılandırmasını sanal ağa yazın. Aşağıdaki örnek, *Mynsgprivate* ağ güvenlik grubunu *özel* alt ağla ilişkilendirir:
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkSubnetConfig `
@@ -168,11 +168,11 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="restrict-network-access-to-a-resource"></a>Bir kaynağa ağ erişimini kısıtlama
 
-Hizmet uç noktaları için etkinleştirilmiş Azure hizmetleri aracılığıyla oluşturulan kaynaklara ağ erişimini kısıtlamak için gereken adımlar, hizmetler arasında farklılık gösterir. Bir hizmete yönelik belirli adımlar için ilgili hizmetin belgelerine bakın. Bu makalenin geri kalanı, örnek olarak bir Azure Depolama hesabının ağ erişimini kısıtlamaya yönelik adımları içerir.
+Hizmet uç noktaları için etkinleştirilmiş Azure hizmetleri aracılığıyla oluşturulan kaynaklara ağ erişimini kısıtlamak için gereken adımlar, hizmetler arasında farklılık gösterir. Bir hizmete yönelik belirli adımlar için ilgili hizmetin belgelerine bakın. Bu makalenin geri kalanında bir Azure depolama hesabı için ağ erişimini bir örnek olarak kısıtlama adımları yer alır.
 
 ### <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)ile bir Azure depolama hesabı oluşturun. Yalnızca `<replace-with-your-unique-storage-account-name>` sayılar ve küçük harfler kullanarak, 3-24 karakter arasında, tüm Azure konumlarında benzersiz bir adla değiştirin.
+[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)Ile bir Azure depolama hesabı oluşturun. Yalnızca `<replace-with-your-unique-storage-account-name>` rakamlar ve küçük harfler kullanarak, 3-24 karakter uzunluğunda tüm Azure konumlarında benzersiz olan bir adla değiştirin.
 
 ```azurepowershell-interactive
 $storageAcctName = '<replace-with-your-unique-storage-account-name>'
@@ -185,7 +185,7 @@ New-AzStorageAccount `
   -Kind StorageV2
 ```
 
-Depolama hesabı oluşturulduktan sonra, depolama hesabı nın anahtarını [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey)ile bir değişkene alın:
+Depolama hesabı oluşturulduktan sonra, [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey)ile depolama hesabı anahtarını bir değişkene alın:
 
 ```azurepowershell-interactive
 $storageAcctKey = (Get-AzStorageAccountKey `
@@ -193,23 +193,23 @@ $storageAcctKey = (Get-AzStorageAccountKey `
   -AccountName $storageAcctName).Value[0]
 ```
 
-Anahtar, daha sonraki bir adımda bir dosya paylaşımı oluşturmak için kullanılır. Dosya `$storageAcctKey` paylaşımını VM'deki bir sürücüyle eşlediğinizde daha sonraki bir adımda el ile girmeniz gerektiğinden, değeri girin ve not edin.
+Anahtar, sonraki bir adımda dosya paylaşma oluşturmak için kullanılır. Dosya `$storageAcctKey` paylaşma 'Yı bir VM 'deki sürücüyle eşlediğinizde daha sonra da el ile girmeniz gerekeceğinden, değeri girin ve aklınızda bir adım girin.
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Depolama hesabında dosya paylaşımı oluşturma
 
-[New-AzStorageContext](/powershell/module/az.storage/new-AzStoragecontext)ile depolama hesabınız için bir bağlam ve anahtar oluşturun. Bağlam, depolama hesabı adı ve hesap anahtarını saklar:
+[New-AzStorageContext](/powershell/module/az.storage/new-AzStoragecontext)ile depolama hesabınız ve anahtarınız için bir bağlam oluşturun. Bağlam, depolama hesabı adını ve hesap anahtarını kapsüller:
 
 ```azurepowershell-interactive
 $storageContext = New-AzStorageContext $storageAcctName $storageAcctKey
 ```
 
-[New-AzStorageShare](/powershell/module/az.storage/new-azstorageshare)ile dosya paylaşımı oluşturun:
+[New-Azstoragesshare](/powershell/module/az.storage/new-azstorageshare)ile bir dosya paylaşımı oluşturun:
 
-$share = Yeni-AzStorageShare my-file-share -Bağlam $storageContext
+$share = New-Azstoragespaymy-File-Share-Context $storageContext
 
-### <a name="deny-all-network-access-to-a-storage-account"></a>Depolama hesabına tüm ağ erişimini reddetme
+### <a name="deny-all-network-access-to-a-storage-account"></a>Bir depolama hesabına tüm ağ erişimini reddet
 
-Varsayılan olarak, depolama hesapları herhangi bir ağdaki istemcilerden gelen ağ bağlantılarını kabul eder. Seçili ağlara erişimi sınırlamak için varsayılan eylemi [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)ile *Reddet* olarak değiştirin. Ağ erişimi reddedildiğinde depolama hesabı hiçbir ağdan erişilebilir olmaz.
+Varsayılan olarak, depolama hesapları herhangi bir ağdaki istemcilerden gelen ağ bağlantılarını kabul eder. Seçilen ağlara erişimi sınırlandırmak için varsayılan eylemi [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)ile *Reddet* olarak değiştirin. Ağ erişimi reddedildiğinde depolama hesabı hiçbir ağdan erişilebilir olmaz.
 
 ```azurepowershell-interactive
 Update-AzStorageAccountNetworkRuleSet  `
@@ -220,7 +220,7 @@ Update-AzStorageAccountNetworkRuleSet  `
 
 ### <a name="enable-network-access-from-a-subnet"></a>Bir alt ağdan ağ erişimini etkinleştirme
 
-[Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) ile oluşturulan sanal ağı alın ve sonra [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig)ile bir değişken içine özel subnet nesnealmak:
+[Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) ile oluşturulan sanal ağı alın ve sonra özel alt ağ nesnesini [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig)ile bir değişkene alın:
 
 ```azurepowershell-interactive
 $privateSubnet = Get-AzVirtualNetwork `
@@ -230,7 +230,7 @@ $privateSubnet = Get-AzVirtualNetwork `
   -Name "Private"
 ```
 
-[Add-AzStorageAccountNetworkRule](/powershell/module/az.network/add-aznetworksecurityruleconfig)ile *Özel* alt ağdan depolama hesabına ağ erişimine izin verin.
+[Add-AzStorageAccountNetworkRule](/powershell/module/az.network/add-aznetworksecurityruleconfig)ile *özel* alt ağdan depolama hesabına ağ erişimine izin verin.
 
 ```azurepowershell-interactive
 Add-AzStorageAccountNetworkRule `
@@ -245,7 +245,7 @@ Bir depolama hesabına ağ erişimini test etmek için her alt ağa bir VM dağ�
 
 ### <a name="create-the-first-virtual-machine"></a>İlk sanal makineyi oluşturma
 
-[New-AzVM](/powershell/module/az.compute/new-azvm)ile *Ortak* alt ağda sanal bir makine oluşturun. Sonraki komutu çalıştırırken kimlik bilgileri istenir. Girdiğiniz değerler, sanal makinenin kullanıcı adı ve parolası olarak yapılandırılır. `-AsJob` seçeneği, sonraki adıma devam edebilmeniz için arka planda sanal makineyi oluşturur.
+[New-AzVM](/powershell/module/az.compute/new-azvm)ile *ortak* alt ağda bir sanal makine oluşturun. Sonraki komutu çalıştırırken kimlik bilgileri istenir. Girdiğiniz değerler, sanal makinenin kullanıcı adı ve parolası olarak yapılandırılır. `-AsJob` seçeneği, sonraki adıma devam edebilmeniz için arka planda sanal makineyi oluşturur.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -257,7 +257,7 @@ New-AzVm `
     -AsJob
 ```
 
-Aşağıdaki örnek çıktıya benzer çıktı döndürülür:
+Aşağıdaki örnek çıktıya benzer bir çıktı döndürülür:
 
 ```powershell
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command                  
@@ -267,7 +267,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 
 ### <a name="create-the-second-virtual-machine"></a>İkinci sanal makineyi oluşturma
 
-*Özel* alt ağda sanal bir makine oluşturun:
+*Özel* alt ağda bir sanal makine oluşturun:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -278,11 +278,11 @@ New-AzVm `
     -Name "myVmPrivate"
 ```
 
-Azure'un VM'yi oluşturması birkaç dakika sürer. Azure VM'yi oluşturmayı bitirip çıktıyı PowerShell'e döndürene kadar bir sonraki adıma devam etmeyin.
+Azure 'un VM 'yi oluşturması birkaç dakika sürer. Azure VM 'yi oluşturmayı bitirene ve çıktıyı PowerShell 'e döndürünceye kadar sonraki adıma devam etmez.
 
 ## <a name="confirm-access-to-storage-account"></a>Depolama hesabına erişimi onaylama
 
-Bir VM'nin genel IP adresini döndürmek için [Get-AzPublicIpAddress'i](/powershell/module/az.network/get-azpublicipaddress) kullanın. Aşağıdaki örnek, *myVmPrivate* VM'nin genel IP adresini döndürür:
+Bir sanal makinenin genel IP adresini döndürmek için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) komutunu kullanın. Aşağıdaki örnek *myVmPrivate* VM 'nın genel IP adresini döndürür:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -297,9 +297,9 @@ Aşağıdaki komuttaki `<publicIpAddress>` öğesini, önceki komuttan döndür�
 mstsc /v:<publicIpAddress>
 ```
 
-Uzak Masaüstü Protokolü (.rdp) dosyası oluşturulur ve bilgisayarınıza indirilir. İndirilen rdp dosyasını açın. İstendiğinde **Bağlan**’ı seçin. Sanal makine oluştururken belirttiğiniz kullanıcı adını ve parolayı girin. Sanal makineyi oluştururken girdiğiniz kimlik bilgilerini belirtmek için **Diğer seçenekler**’i ve sonra **Farklı bir hesap kullan** seçeneğini belirlemeniz gerekebilir. **Tamam'ı**seçin. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Uyarıyı alırsanız, bağlantıya devam etmek için **Evet** veya **Devam**et'i seçin.
+Uzak Masaüstü Protokolü (.rdp) dosyası oluşturulur ve bilgisayarınıza indirilir. İndirilen rdp dosyasını açın. İstendiğinde **Bağlan**’ı seçin. Sanal makine oluştururken belirttiğiniz kullanıcı adını ve parolayı girin. Sanal makineyi oluştururken girdiğiniz kimlik bilgilerini belirtmek için **Diğer seçenekler**’i ve sonra **Farklı bir hesap kullan** seçeneğini belirlemeniz gerekebilir. **Tamam**’ı seçin. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Uyarıyı alırsanız, bağlantıya devam etmek için **Evet** ' i veya **devam et**' i seçin.
 
-*myVmPrivate* VM üzerinde PowerShell kullanarak Azure dosya paylaşımını Z sürücüsüne eşleyin. Takip eden komutları çalıştırmadan `<storage-account-key>` `<storage-account-name>` önce, bir [depolama hesabı oluştur'da](#create-a-storage-account)size verilen veya alınan değerlerle değiştirin.
+*myVmPrivate* VM üzerinde PowerShell kullanarak Azure dosya paylaşımını Z sürücüsüne eşleyin. İzleyen komutları çalıştırmadan önce, ve `<storage-account-key>` `<storage-account-name>` [depolama hesabı oluşturma](#create-a-storage-account)bölümünde sağladığınız veya aldığınız değerlerle değiştirin.
 
 ```powershell
 $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
@@ -317,7 +317,7 @@ Z                                      FileSystem    \\vnt.file.core.windows.net
 
 Z sürücüsüne başarıyla eşlenen Azure dosya paylaşımı.
 
-VM'nin diğer genel IP adreslerine giden bağlantısı olmadığını doğrulayın:
+VM 'nin herhangi bir genel IP adresine giden bağlantısı olmadığını doğrulayın:
 
 ```powershell
 ping bing.com
@@ -329,7 +329,7 @@ ping bing.com
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>Depolama hesabına erişimin reddedildiğini onaylama
 
-*myVmPublic* VM'nin genel IP adresini alın:
+*MyVmPublic* VM 'nın genel IP adresini alın:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -344,7 +344,7 @@ Aşağıdaki komuttaki `<publicIpAddress>` öğesini, önceki komuttan döndür�
 mstsc /v:<publicIpAddress>
 ```
 
-*myVmPublic* VM'de, Z'yi sürmek için Azure dosya paylaşımını eşlemeye çalışır. Takip eden komutları çalıştırmadan `<storage-account-key>` `<storage-account-name>` önce, bir [depolama hesabı oluştur'da](#create-a-storage-account)size verilen veya alınan değerlerle değiştirin.
+*MyVmPublic* VM 'de, Azure dosya paylaşımından Z sürücüsüyle eşlemeyi deneyin. İzleyen komutları çalıştırmadan önce, ve `<storage-account-key>` `<storage-account-name>` [depolama hesabı oluşturma](#create-a-storage-account)bölümünde sağladığınız veya aldığınız değerlerle değiştirin.
 
 ```powershell
 $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
@@ -352,11 +352,11 @@ $credential = New-Object System.Management.Automation.PSCredential -ArgumentList
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
 ```
 
-Paylaşıma erişim reddedilir ve bir `New-PSDrive : Access is denied` hata alırsınız. *myVmPublic* VM *Genel* alt ağa dağıtıldığı için erişim reddedilir. *Genel* alt ağında Azure Depolama için etkinleştirilmiş bir hizmet uç noktası bulunmaz ve depolama hesabı *Genel* alt ağından değil, yalnızca *Özel* alt ağından ağ erişimine izin verir.
+Paylaşıma erişim reddedildi ve bir `New-PSDrive : Access is denied` hata alıyorsunuz. *myVmPublic* VM *Genel* alt ağa dağıtıldığı için erişim reddedilir. *Genel* alt ağında Azure Depolama için etkinleştirilmiş bir hizmet uç noktası bulunmaz ve depolama hesabı *Genel* alt ağından değil, yalnızca *Özel* alt ağından ağ erişimine izin verir.
 
 *myVmPublic* VM ile uzak masaüstü oturumunu kapatın.
 
-Bilgisayarınızdan, aşağıdaki komutla depolama hesabındaki dosya paylaşımlarını görüntülemeye çalışır:
+Aşağıdaki komutla, bilgisayarınızdan depolama hesabındaki dosya paylaşımlarını görüntülemeyi deneyin:
 
 ```powershell-interactive
 Get-AzStorageFile `
@@ -364,11 +364,11 @@ Get-AzStorageFile `
   -Context $storageContext
 ```
 
-Erişim reddedildi ve bir *Get-AzStorageFile alırsınız : Uzak sunucu bir hata döndü: (403) Yasak. HTTP Durum Kodu: 403 - HTTP Hata İletisi: Bilgisayarınız* *MyVirtualNetwork* sanal ağının *Özel* alt ağında olmadığından, bu istek bu işlem hatasını gerçekleştirme yetkisine sahip değildir.
+Erişim reddedildi ve bir *Get-AzStorageFile alıyorsunuz: uzak sunucu bir hata döndürdü: (403) yasak. HTTP durum kodu: 403-HTTP hata Iletisi: Bu istek* , bilgisayarınız *MyVirtualNetwork* sanal ağının *özel* alt ağında olmadığından bu işlemi gerçekleştirmek için yetkilendirilmemiş.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık ihtiyaç duyulmadığında, kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için [Kaldır-AzResourceGroup'u](/powershell/module/az.resources/remove-azresourcegroup) kullanabilirsiniz:
+Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz:
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroup -Force
@@ -376,6 +376,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, sanal ağ alt ağı için bir hizmet bitiş noktası etkinleştirdin. Hizmet uç noktalarının birden fazla Azure hizmeti ile dağıtılmış kaynaklar için etkinleştirilebildiğini öğrendiniz. Bir Azure Depolama hesabı oluşturdunuz ve depolama hesabına ağ erişimini yalnızca bir sanal ağ alt ağındaki kaynaklarla sınırladınız. Hizmet uç noktaları hakkında daha fazla bilgi için bkz. [Hizmet uç noktalarına genel bakış](virtual-network-service-endpoints-overview.md) ve [Alt ağları yönetme](virtual-network-manage-subnet.md).
+Bu makalede, bir sanal ağ alt ağı için bir hizmet uç noktası etkinleştirdiniz. Hizmet uç noktalarının birden fazla Azure hizmeti ile dağıtılmış kaynaklar için etkinleştirilebildiğini öğrendiniz. Bir Azure Depolama hesabı oluşturdunuz ve depolama hesabına ağ erişimini yalnızca bir sanal ağ alt ağındaki kaynaklarla sınırladınız. Hizmet uç noktaları hakkında daha fazla bilgi için bkz. [Hizmet uç noktalarına genel bakış](virtual-network-service-endpoints-overview.md) ve [Alt ağları yönetme](virtual-network-manage-subnet.md).
 
-Hesabınızda birden fazla sanal ağ varsa, her bir sanal ağın içindeki kaynakların birbiriyle iletişim kurabilmesi iki sanal ağı birbirine bağlamak isteyebilirsiniz. Nasıl yapılacağını öğrenmek için [sanal ağları bağla'ya](tutorial-connect-virtual-networks-powershell.md)bakın.
+Hesabınızda birden fazla sanal ağ varsa, her bir sanal ağın içindeki kaynakların birbiriyle iletişim kurabilmesi iki sanal ağı birbirine bağlamak isteyebilirsiniz. Nasıl yapılacağını öğrenmek için bkz. [sanal ağları bağlama](tutorial-connect-virtual-networks-powershell.md).

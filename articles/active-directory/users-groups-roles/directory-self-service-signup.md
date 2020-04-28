@@ -1,6 +1,6 @@
 ---
-title: E-posta yla doğrulanmış kullanıcılar için self servis kayıt - Azure AD | Microsoft Dokümanlar
-description: Azure Etkin Dizin (Azure AD) kiracısında self servis kaydolma kullanma
+title: E-posta doğrulanan kullanıcılar için self servis kaydolma-Azure AD | Microsoft Docs
+description: Azure Active Directory (Azure AD) kiracısında self servis kaydolma kullanma
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,70 +16,70 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 953837e22cdd3ba8a54d702eac61461739db82d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74027629"
 ---
-# <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory için self servis kayıt nedir?
+# <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory için self servis kaydolma nedir?
 
-Bu makalede, bir kuruluşu Azure Etkin Dizini'nde (Azure AD) doldurmak için self servis kaydolma nasıl kullanılacağı açıklanmaktadır. Bir etki alanı adını yönetilmeyen bir Azure REKLAM kuruluşundan devralmak istiyorsanız, [yönetilmeyen bir dizinin yönetici olarak devralmasını](domains-admin-takeover.md)'na bakın.
+Bu makalede, Azure Active Directory (Azure AD) ' de bir kuruluşu doldurmak için self servis kaydolma 'nın nasıl kullanılacağı açıklanmaktadır. Yönetilmeyen bir Azure AD kuruluştan bir etki alanı adı almak istiyorsanız, bkz. [yönetilmeyen bir dizini yönetici olarak alma](domains-admin-takeover.md).
 
-## <a name="why-use-self-service-sign-up"></a>Neden self servis kayıt kullanıyorsun?
-* Müşterileri istedikleri hizmetlere daha hızlı gettola
+## <a name="why-use-self-service-sign-up"></a>Neden self servis kaydolma kullanmalıyım?
+* Müşterileri daha hızlı istedikleri hizmetlere alın
 * Hizmet için e-posta tabanlı teklifler oluşturma
-* Kullanıcıların hatırlanması kolay iş e-posta takma adlarını kullanarak kimlik oluşturmalarına olanak tanıyan e-posta tabanlı kayıt akışları oluşturun
-* Self servis tarafından oluşturulan Azure REKLAM dizini, diğer hizmetler için kullanılabilecek yönetilen bir dizine dönüştürülebilir
+* Kullanıcıların kolay anımsanacak iş e-posta diğer adlarını kullanarak kimlik oluşturmalarına hızlı bir şekilde izin veren e-posta tabanlı kaydolma akışları oluşturma
+* Self servis tarafından oluşturulan bir Azure AD dizini, diğer hizmetler için kullanılabilecek bir yönetilen dizine açılabilir
 
 ## <a name="terms-and-definitions"></a>Terimler ve tanımlar
-* **Self servis kayıt**: Bu yöntem, bir kullanıcının bir bulut hizmetine kaydolması ve e-posta etki alanına bağlı olarak Azure AD'de kendileri için otomatik olarak oluşturulan bir kimliğe sahip olduğu yöntemidir.
-* **Yönetilmeyen Azure REKLAM dizini**: Bu, bu kimliğin oluşturulduğu dizinidir. Yönetilmeyen dizin, genel yöneticisi olmayan bir dizindir.
-* **E-posta yla doğrulanmış kullanıcı**: Azure AD'deki bir kullanıcı hesabı türüdür. Self servis teklifine kaydolduktan sonra otomatik olarak oluşturulan bir kimliğe sahip olan bir kullanıcı, e-posta yla doğrulanmış kullanıcı olarak bilinir. E-posta yla doğrulanmış bir kullanıcı, creationmethod=EmailVerified ile etiketlenmiş bir dizinin düzenli üyesidir.
+* **Self servis kaydolma**: Bu, bir kullanıcının bir bulut hizmetine kaydolup kendi e-posta etki alanına göre Azure AD 'de otomatik olarak oluşturulan bir kimliğe sahip olduğu yöntemdir.
+* **Yönetilmeyen Azure ad dizini**: Bu, kimliğin oluşturulduğu dizindir. Yönetilmeyen Dizin, genel yöneticisi olmayan bir dizindir.
+* **E-posta doğrulanan kullanıcı**: Bu, Azure AD 'de bir kullanıcı hesabı türüdür. Self servis teklifine kaydolduktan sonra otomatik olarak oluşturulan bir kimliğe sahip bir Kullanıcı, e-posta doğrulanan kullanıcı olarak bilinir. E-posta doğrulanan kullanıcı, creationmethod = Emaildoğrulandı ile etiketlenmiş bir dizinin normal üyesidir.
 
-## <a name="how-do-i-control-self-service-settings"></a>Self servis ayarlarını nasıl kontrol edebilirim?
-Yöneticilerin bugün iki self servis denetimi vardır. Şunları olup olmadığını kontrol edebilirler:
+## <a name="how-do-i-control-self-service-settings"></a>Self Servis ayarlarını denetlemek Nasıl yaparım??
+Yöneticiler bugün iki self servis denetimine sahiptir. Şunları kontrol edebilirler:
 
-* Kullanıcılar e-posta yoluyla dizine katılabilir
-* Kullanıcılar uygulamalar ve hizmetler için kendilerini lisanslayabilir
+* Kullanıcılar, bir e-posta ile dizine katılabilir
+* Kullanıcılar uygulamalar ve hizmetler için kendilerini lisanslayabilirler
 
-### <a name="how-can-i-control-these-capabilities"></a>Bu yetenekleri nasıl kontrol edebilirim?
-Yönetici, aşağıdaki Azure AD cmdlet Set-MsolCompanySettings parametrelerini kullanarak bu özellikleri yapılandırabilir:
+### <a name="how-can-i-control-these-capabilities"></a>Bu özellikleri nasıl denetleyebilirim?
+Bir yönetici, aşağıdaki Azure AD cmdlet Set-MsolCompanySettings parametrelerini kullanarak bu özellikleri yapılandırabilir:
 
-* **AllowEmailVerifiedUsers,** bir kullanıcının bir dizin oluşturup oluşturamayacağını veya dizine katılıp katılamadığını denetler. Bu parametreyi $false olarak ayarlarsanız, e-posta yla doğrulanmış hiçbir kullanıcı dizine katılamaz.
-* **AllowAdHocSubscriptions,** kullanıcıların self servis kayıt yapma yeteneğini denetler. Bu parametreyi $false olarak ayarlarsanız, hiçbir kullanıcı self servis kayıt yapamaz.
+* **AllowEmailVerifiedUsers** bir kullanıcının dizin oluşturup oluşturamayacağını veya katılamayacağını denetler. Bu parametreyi $false olarak ayarlarsanız, hiçbir e-posta doğrulanan kullanıcı dizine katılabilir.
+* **Allowadhocabonelikleri** , kullanıcıların Self Servis kaydolma işlemini gerçekleştirmesine olanak sağlar. Bu parametreyi $false olarak ayarlarsanız, Kullanıcı self servis kaydolma işlemini gerçekleştiremez.
   
-AllowEmailVerifiedUsers ve AllowAdHocSubscriptions yönetilen veya yönetilmeyen bir dizine uygulanabilen dizin genelinde ayarlardır. Aşağıda bir örnek verilmiştir:
+AllowEmailVerifiedUsers ve Allowadhocabonelikleri, yönetilen veya yönetilmeyen bir dizine uygulanabilecek Dizin genelinde ayarlar. İşte şöyle bir örnek:
 
-* Bir dizin, contoso.com gibi doğrulanmış bir etki alanıyla yönetirsiniz
-* Contoso.com ev dizininde zaten var olmayan bir kullanıcıyı davet etmekuserdoesnotexist@contoso.comiçin farklı bir dizinden B2B işbirliği kullanıyorsunuzcontoso.com
-* Ev dizini AllowEmailVerifiedUsers açık
+* Contoso.com gibi doğrulanmış bir etki alanı ile bir dizin yönetebilirsiniz.
+* Contoso.com giriş dizininde zaten mevcut olmayan (userdoesnotexist@contoso.com) bir kullanıcıyı davet etmek için farklı bır dizinden B2B işbirliği kullanıyorsunuz
+* Ana dizinde AllowEmailVerifiedUsers açıktır
 
-Önceki koşullar doğruysa, ev dizininde bir üye kullanıcı oluşturulur ve davet eden dizinde bir B2B konuk kullanıcı oluşturulur.
+Yukarıdaki koşullar doğru ise, ana dizinde bir üye Kullanıcı oluşturulur ve davet edilen dizinde bir B2B Konuk Kullanıcı oluşturulur.
 
-Akış ve PowerApps deneme kayıtları **AllowAdHocSubscriptions** ayarı tarafından denetlenir. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Flow ve PowerApps deneme oturum açma işlemleri, **Allowadhocabonelikler** ayarı tarafından denetlenmez. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Mevcut kullanıcılarımın Power BI'ı kullanmaya başlamasını nasıl önleyebilirim?](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
 * [Kuruluşunuzda Flow ile ilgili soru-cevap](https://docs.microsoft.com/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>Denetimler birlikte nasıl çalışır?
-Bu iki parametre self-servis kayıt üzerinde daha kesin kontrol tanımlamak için birlikte kullanılabilir. Örneğin, aşağıdaki komut kullanıcıların self servis kaydolma işlemleri yapmasına izin verir, ancak yalnızca bu kullanıcıların Azure AD'de zaten bir hesabı varsa (diğer bir deyişle, ilk oluşturulacak e-posta yla doğrulanmış bir hesaba ihtiyaç duyan kullanıcılar self servis kayıt yapamaz):
+Bu iki parametre, self servis kaydolma üzerinde daha kesin denetim tanımlamak için birlikte kullanılabilir. Örneğin, aşağıdaki komut, kullanıcıların Self Servis kaydolma gerçekleştirmesine izin verir, ancak yalnızca bu kullanıcıların Azure AD 'de zaten bir hesabı varsa (diğer bir deyişle, bir e-posta doğrulanan hesabı olması gereken kullanıcılar self servis kaydolma işlemini gerçekleştiremez):
 
 ```powershell
     Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
 ```
 
-Aşağıdaki akış şeması, bu parametreler için farklı kombinasyonları ve dizin ve self servis kayıt için ortaya çıkan koşulları açıklar.
+Aşağıdaki akış çizelgesi, bu parametrelerin farklı birleşimlerini ve dizin ve self servis kaydolma koşullarını açıklamaktadır.
 
-![self servis kayıt kontrollerinin akış şeması](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
+![Self Servis kaydolma denetimlerinin akış çizelgesi](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
-Daha fazla bilgi ve bu parametrelerin nasıl kullanılacağına ilgili örnekler için [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)bölümüne bakın.
+Bu parametrelerin nasıl kullanılacağına ilişkin daha fazla bilgi ve örnekler için bkz. [set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure AD'ye özel bir etki alanı adı ekleme](../fundamentals/add-custom-domain.md)
+* [Azure AD 'ye özel etki alanı adı ekleme](../fundamentals/add-custom-domain.md)
 * [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure Cmdlet Başvurusu](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
-* [İş inizi veya okul hesabınızı yönetilmeyen bir dizinde kapatın](users-close-account.md)
+* [İş veya okul hesabınızı yönetilmeyen bir dizinde kapatma](users-close-account.md)
