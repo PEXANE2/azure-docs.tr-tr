@@ -1,6 +1,6 @@
 ---
-title: Sorun giderme Linux VM dağıtımı| Microsoft Dokümanlar
-description: Azure'da yeni bir Linux sanal makinesi oluşturduğunuzda Kaynak Yöneticisi dağıtım sorunlarını giderin
+title: Linux VM dağıtımı sorunlarını giderme | Microsoft Docs
+description: Azure 'da yeni bir Linux sanal makinesi oluştururken Kaynak Yöneticisi dağıtım sorunlarını giderme
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: ''
 author: JiangChen79
@@ -15,13 +15,13 @@ ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
 ms.openlocfilehash: 98c3a6b14230e30ccbb103be741595696a20c236
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75981414"
 ---
-# <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Azure'da yeni bir Linux sanal makinesi oluşturmayla ilgili Kaynak Yöneticisi dağıtımı sorunlarını giderme
+# <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Azure 'da yeni bir Linux sanal makinesi oluşturma konusunda Kaynak Yöneticisi dağıtım sorunlarını giderme
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
@@ -31,8 +31,8 @@ ms.locfileid: "75981414"
 
 Diğer VM dağıtım sorunları ve soruları için bkz. [Azure'da Linux sanal makine dağıtma sorunlarını giderme](troubleshoot-deploy-vm-linux.md).
 
-## <a name="collect-activity-logs"></a>Etkinlik günlüklerini toplama
-Sorun giderme başlatmak için, sorunla ilişkili hatayı tanımlamak için etkinlik günlüklerini toplayın. Aşağıdaki bağlantılar, izlenme süreci hakkında ayrıntılı bilgi içerir.
+## <a name="collect-activity-logs"></a>Etkinlik günlüklerini topla
+Sorun gidermeye başlamak için, sorunla ilişkili hatayı belirlemek üzere etkinlik günlüklerini toplayın. Aşağıdaki bağlantılar, izlenecek işlemle ilgili ayrıntılı bilgiler içerir.
 
 [Dağıtım işlemlerini görüntüleme](../../azure-resource-manager/templates/deployment-history.md)
 
@@ -42,51 +42,51 @@ Sorun giderme başlatmak için, sorunla ilişkili hatayı tanımlamak için etki
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**Y:** Os Linux genelleştirilmiş ise ve yüklenir ve / veya genelleştirilmiş ayarı ile yakalanan, o zaman herhangi bir hata olmayacaktır. Benzer şekilde, işletim sistemi Linux konusunda uzmanlaşmışsa ve özel ayarla yüklenir ve/veya yakalanırsa, herhangi bir hata olmayacaktır.
+**Y:** İşletim sistemi Linux genelleştirilir ve yüklenmiş ve/veya Genelleştirilmiş ayarıyla yakalandıysa, herhangi bir hata olmayacaktır. Benzer şekilde, işletim sistemi Linux özelleşmiş ise ve yüklenmiş ve/veya özel ayarıyla yakalandıysa, herhangi bir hata olmayacaktır.
 
-**Yükleme Hataları:**
+**Karşıya yükleme hataları:**
 
-**N<sup>1</sup>:** İşletim sistemi Linux genelleştirilmişse ve özel olarak yüklenmişse, VM sağlama aşamasında sıkışıp kaldığı için bir zaman alameti hatası alırsınız.
+**N<sup>1</sup>:** İşletim sistemi Linux genelleştirilir ve özelleştirilmiş olarak karşıya yüklenirse, VM sağlama aşamasında takılı olduğundan bir sağlama zaman aşımı hatası alırsınız.
 
-**N<sup>2</sup>:** Os Linux özel ve genelleştirilmiş olarak yüklenir, yeni VM orijinal bilgisayar adı, kullanıcı adı ve şifre ile çalışıyor, çünkü bir sağlama hatası hatası alırsınız.
+**N<sup>2</sup>:** İşletim sistemi Linux özelleşmiş ise ve genelleştirilmiş olarak yüklenirse, yeni VM özgün bilgisayar adı, Kullanıcı adı ve parola ile çalıştığı için bir sağlama hatası hatası alırsınız.
 
-**Çözünürlük:**
+**Çözünürlüğüne**
 
-Bu hataların her ikisini de gidermek için, işletim sistemi (genelleştirilmiş/özelleştirilmiş) için aynı ayara sahip, şirket içinde bulunan orijinal VHD'yi yükleyin. Genelleştirilmiş olarak yüklemek için önce -deprovision'ı çalıştırmayı unutmayın.
+Bu hataları gidermek için, şirket içinde bulunan özgün VHD 'yi, işletim sistemi (Genelleştirilmiş/özelleştirilmiş) ile aynı ayarla birlikte karşıya yükleyin. Genelleştirilmiş olarak karşıya yüklemek için önce çalıştırmayı unutmayın.
 
-**Yakalama Hataları:**
+**Yakalama hataları:**
 
-**N<sup>3</sup>:** İşletim sistemi Linux genelleştirilmişse ve özel olarak yakalanırsa, genelleştirilmiş olarak işaretlendiği için orijinal VM kullanılabilir olmadığından bir zaman alabilme hatası alırsınız.
+**N<sup>3</sup>:** İşletim sistemi Linux genelleştirilir ve özel olarak yakalandıysa, orijinal VM Genelleştirilmiş olarak işaretlendiğinden kullanılabilir olmadığı için bir sağlama zaman aşımı hatası alırsınız.
 
-**N<sup>4</sup>:** Os Linux özel ve genelleştirilmiş olarak yakalanırsa, yeni VM orijinal bilgisayar adı, kullanıcı adı ve şifre ile çalışıyor, çünkü bir sağlama hatası hatası alırsınız. Ayrıca, özel olarak işaretlenmiştir, çünkü orijinal VM kullanılabilir değildir.
+**N<sup>4</sup>:** İşletim sistemi Linux özelleşmiş ise ve genelleştirilmiş olarak yakalandıysa, yeni VM özgün bilgisayar adı, Kullanıcı adı ve parolasıyla çalıştığı için bir sağlama hatası hatası alırsınız. Ayrıca, özgün VM özelleştirilmiş olarak işaretlendiğinden kullanılabilir değildir.
 
-**Çözünürlük:**
+**Çözünürlüğüne**
 
-Bu hataların her ikisini de gidermek için, geçerli görüntüyü portaldan silin ve işletim sistemi (genelleştirilmiş/özelleştirilmiş) ile aynı ayarda [geçerli VHD'lerden yeniden yakalayın.](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Bu hataları gidermek için, portaldan geçerli görüntüyü silin ve [geçerli VHD 'lerden](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , işletim sistemi (Genelleştirilmiş/özelleştirilmiş) ile aynı ayarı kullanarak yeniden yakalayın.
 
-## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Sorun: Özel / galeri / pazar görüntüsü; ayırma hatası
-Bu hata, yeni VM isteğinin istenen VM boyutunu destekleyemeyen veya isteği karşılamak için boş alana sahip olmayan bir kümeye sabitlendiğinde ortaya çıkar.
+## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Sorun: özel/galeri/Market görüntüsü; ayırma hatası
+Bu hata, yeni VM isteği istenen VM boyutunu destekleyebilen bir kümeye sabitlendiğinde veya isteğe uygun boş alana sahip olmadığında ortaya çıkar.
 
-**Neden 1:** Küme istenen VM boyutunu destekleyemez.
+**Neden 1:** Küme, istenen VM boyutunu desteklemez.
 
 **1. Çözüm:**
 
 * Daha küçük bir VM boyutu kullanarak isteği yeniden deneyin.
-* İstenen VM'nin boyutu değiştirilemiyorsa:
-  * Kullanılabilirlik kümesindeki tüm VM'leri durdurun.
-    **Kaynak gruplarını** > tıklatın*Kaynak grubu* > **Kaynakları** > *kullanılabilirlik ayarsanal* > **makine** > *sanal makine* > **Durdur**.
-  * Tüm VM'ler durduktan sonra, yeni VM'yi istenilen boyutta oluşturun.
-  * Önce yeni VM'yi başlatın ve ardından durdurulan VM'lerin her birini seçin ve **Başlat'ı**tıklatın.
+* İstenen VM 'nin boyutu değiştirilenemez:
+  * Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun.
+    Kaynak **grupları** > ' na tıklayın**Resources** > *kullanılabilirlik kümesi* > **makinelerinizi** > *sanal makinenizin* > **durulacağı**kaynak*grubu* > 
+  * Tüm VM 'Ler durduktan sonra, istenen boyutta yeni VM 'yi oluşturun.
+  * Önce yeni VM 'yi başlatın ve sonra durdurulan sanal makinelerin her birini seçip **Başlat**' a tıklayın.
 
-**Neden 2:** Kümenin boş kaynakları yok.
+**Neden 2:** Kümede boş kaynak yok.
 
 **2. Çözüm:**
 
-* İsteğini daha sonra yeniden deneyin.
-* Yeni VM farklı bir kullanılabilirlik kümesinin parçası olabilirse
+* İsteği daha sonra yeniden deneyin.
+* Yeni VM farklı bir kullanılabilirlik kümesinin parçası olabilir
   * Farklı bir kullanılabilirlik kümesinde (aynı bölgede) yeni bir VM oluşturun.
-  * Yeni VM'yi aynı sanal ağa ekleyin.
+  * Yeni VM 'yi aynı sanal ağa ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Durmuş bir Linux VM'yi başlattığınızda veya Azure'da varolan bir Linux VM'yi yeniden boyutlandırdığınızda sorunlarla karşılaşırsanız, [Azure'da varolan bir Linux Sanal Makineyi yeniden başlatma veya yeniden boyutlandırma ile ilgili Sorun Gideri Kaynak Yöneticisi dağıtım sorunları](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)yla ilgili bkz.
+Durdurulmuş bir Linux VM başlattığınızda veya Azure 'da var olan bir Linux sanal makinesini yeniden boyutlandırdığınızda sorunlarla karşılaşırsanız bkz. [Azure 'da var olan bir Linux sanal makinesini yeniden başlatma veya yeniden boyutlandırma ile ilgili dağıtım sorunlarını giderme Kaynak Yöneticisi](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

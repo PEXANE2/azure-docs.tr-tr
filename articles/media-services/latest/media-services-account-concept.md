@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri v3 hesaplarını yönetme | Microsoft Dokümanlar
-description: Azure'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, analiz etmeye ve akışa başlamak için bir Medya Hizmetleri hesabı oluşturmanız gerekir. Bu makalede, Azure Media Services v3 hesaplarının nasıl yönetilenbir şekilde yönetileni açıklanmaktadır.
+title: Azure Media Services v3 hesaplarını yönetme | Microsoft Docs
+description: Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız gerekir. Bu makalede Azure Media Services v3 hesaplarının nasıl yönetileceği açıklanmaktadır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,34 +12,34 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: 08579f7ba952bb4ebcba1595508612affb852528
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75980373"
 ---
-# <a name="manage-azure-media-services-v3-accounts"></a>Azure Medya Hizmetleri v3 hesaplarını yönetme
+# <a name="manage-azure-media-services-v3-accounts"></a>Azure Media Services v3 hesaplarını yönetme
 
-Azure'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, analiz etmeye ve akışa başlamak için bir Medya Hizmetleri hesabı oluşturmanız gerekir. Media Services hesabı oluştururken, bir Azure Depolama hesabı kaynağının adını sağlamanız gerekir. Belirtilen depolama hesabı, Media Services hesabınıza eklenir. Media Services hesabı ve onunla ilişkili tüm depolama hesaplarının aynı Azure aboneliğinde olması gerekir. Daha fazla bilgi için [Depolama hesapları'na](storage-account-concept.md)bakın.
+Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız gerekir. Media Services hesabı oluştururken, bir Azure Depolama hesabı kaynağının adını sağlamanız gerekir. Belirtilen depolama hesabı, Media Services hesabınıza eklenir. Media Services hesabı ve onunla ilişkili tüm depolama hesaplarının aynı Azure aboneliğinde olması gerekir. Daha fazla bilgi için bkz. [depolama hesapları](storage-account-concept.md).
 
-## <a name="moving-a-media-services-account-between-subscriptions"></a>Medya Hizmetleri hesabını abonelikler arasında taşıma 
+## <a name="moving-a-media-services-account-between-subscriptions"></a>Media Services bir hesabı abonelikler arasında taşıma 
 
-Bir Medya Hizmetleri hesabını yeni bir aboneliğe taşımanız gerekiyorsa, önce Medya Hizmetleri hesabını içeren tüm kaynak grubunu yeni aboneliğe taşımanız gerekir. Ekli tüm kaynakları taşımalısınız: Azure Depolama hesapları, Azure CDN profilleri vb. Daha fazla bilgi için [bkz.](../../azure-resource-manager/management/move-resource-group-and-subscription.md) Azure'daki tüm kaynaklarda olduğu gibi, kaynak grubu hareketlerinin tamamlanması biraz zaman alabilir.
+Bir Media Services hesabını yeni bir aboneliğe taşımanız gerekiyorsa, önce Media Services hesabını içeren kaynak grubunun tamamını yeni aboneliğe taşımanız gerekir. Tüm bağlı kaynakları taşımanız gerekir: Azure depolama hesapları, Azure CDN profilleri vb. Daha fazla bilgi için bkz. [kaynakları yeni kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md). Azure 'daki tüm kaynaklarda olduğu gibi, kaynak grubu hareketlerinin tamamlanması biraz zaman alabilir.
 
 > [!NOTE]
-> Media Services v3 çoklu kira modelini destekler.
+> Media Services v3, çok kiracılı modeli destekler.
 
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* Farklı bir aboneye geçmeden önce hesabınızdaki tüm verilerin yedeklerini oluşturun.
-* Tüm Akış Uç Noktalarını ve canlı akış kaynaklarını durdurmanız gerekir. Kullanıcılarınız, kaynak grubu taşıması süresince içeriğinize erişemez. 
+* Farklı bir aboneliğe geçmeden önce hesabınızdaki tüm verilerin yedeklerini oluşturun.
+* Tüm akış uç noktalarını ve canlı akış kaynaklarını durdurmanız gerekir. Kullanıcılarınız, kaynak grubu taşıma süresi boyunca içeriğinize erişemez. 
 
 > [!IMPORTANT]
-> Hareket başarıyla tamamlanana kadar Akış Bitiş Noktası'nı başlatmayın.
+> Taşıma başarılı bir şekilde tamamlanana kadar akış uç noktasını başlatmayın.
 
 ### <a name="troubleshoot"></a>Sorun giderme 
 
-Bir Medya Hizmetleri hesabı veya ilişkili bir Azure Depolama hesabı kaynak grubu hareketinden sonra "bağlantısı kesilirse" Depolama Hesabı anahtarlarını döndürmeyi deneyin. Depolama Hesabı anahtarlarını döndürmek Medya Hizmetleri hesabının "bağlantısı kesilmiş" durumunu çözmezse, Medya Hizmetleri hesabındaki "Destek + sorun giderme" menüsünden yeni bir destek isteği gönderin.  
+Kaynak grubu taşıma sonrasında bir Media Services hesabı ya da ilişkili bir Azure depolama hesabı "bağlantısı kesildi" ise, depolama hesabı anahtarlarını döndürmeyi deneyin. Depolama hesabı anahtarlarını döndürmek, Media Services hesabının "bağlantısı kesildi" durumunu çözümlemezse, Media Services hesabındaki "destek + sorun giderme" menüsünden Yeni bir destek isteği ister.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

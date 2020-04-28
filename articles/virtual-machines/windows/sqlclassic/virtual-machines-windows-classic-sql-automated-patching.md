@@ -1,6 +1,6 @@
 ---
-title: SQL Server VM'ler için Otomatik Yama (Klasik) | Microsoft Dokümanlar
-description: Klasik dağıtım modunu kullanarak Azure'da çalışan SQL Server Sanal Makineler için Otomatik Yama özelliğini açıklar.
+title: SQL Server VM 'Ler için otomatik düzeltme eki uygulama (klasik) | Microsoft Docs
+description: Klasik dağıtım modunu kullanarak Azure 'da çalışan SQL Server sanal makinelere yönelik otomatik düzeltme eki uygulama özelliğini açıklar.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -16,20 +16,20 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: efc6d0c25c5186b391deb08ee0e41dcb8ae6edf0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75978078"
 ---
-# <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Azure Sanal Makinelerde SQL Server için Otomatik Yama (Klasik)
+# <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Azure sanal makinelerinde SQL Server için otomatik düzeltme eki uygulama (klasik)
 > [!div class="op_single_selector"]
-> * [Kaynak Yöneticisi](../sql/virtual-machines-windows-sql-automated-patching.md)
+> * [Resource Manager](../sql/virtual-machines-windows-sql-automated-patching.md)
 > * [Klasik](../classic/sql-automated-patching.md)
 > 
 > 
 
-Otomatik Yama Uygulama, SQL Server çalıştıran Azure Sanal Makinesinde bir bakım penceresi oluşturur. Otomatik Güncelleştirmeler yalnızca bu bakım penceresi sırasında yüklenebilir. SQL Server için bu, sistem güncelleştirmelerinin ve ilişkili yeniden başlatmaların veritabanı için mümkün olan en iyi zamanda gerçekleşmesini sağlar. 
+Otomatik Yama Uygulama, SQL Server çalıştıran Azure Sanal Makinesinde bir bakım penceresi oluşturur. Otomatik Güncelleştirmeler yalnızca bu bakım penceresi sırasında yüklenebilir. SQL Server için, bu, sistem güncelleştirmelerinin ve ilişkili tüm yeniden başlatmalarının veritabanı için mümkün olan en iyi zamanda gerçekleşmesini sağlar. 
 
 > [!IMPORTANT]
 > Yalnızca **Önemli** olarak işaretlenmiş Windows güncelleştirmeleri yüklenir. Toplu Güncelleştirmeler gibi diğer SQL Server güncelleştirmelerinin el ile yüklenmesi gerekir. 
@@ -37,12 +37,12 @@ Otomatik Yama Uygulama, SQL Server çalıştıran Azure Sanal Makinesinde bir ba
 Otomatik Yama Uygulama [SQL Server IaaS Aracı Uzantısı](../classic/sql-server-agent-extension.md)'na bağımlıdır.
 
 > [!IMPORTANT] 
-> Azure'un kaynakları oluşturmak ve onlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve Klasik.](../../../azure-resource-manager/management/deployment-models.md) Bu makalede, Klasik dağıtım modeli kullanılarak kapsar. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. Bu makalenin Kaynak Yöneticisi sürümünü görüntülemek [için Azure Sanal Makineler Kaynak Yöneticisi'nde SQL Server için Otomatik Yama bölümüne](../sql/virtual-machines-windows-sql-automated-patching.md)bakın.
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. Bu makalenin Kaynak Yöneticisi sürümünü görüntülemek için bkz. [Azure sanal makineler 'de SQL Server Için otomatik düzeltme eki uygulama kaynak yöneticisi](../sql/virtual-machines-windows-sql-automated-patching.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
-Otomatik Yama kullanmak için aşağıdaki ön koşulları göz önünde bulundurun:
+Otomatik düzeltme eki kullanmak için aşağıdaki önkoşulları göz önünde bulundurun:
 
-**İşletim Sistemi**:
+**Işletim sistemi**:
 
 * Windows Server 2012
 * Windows Server 2012 R2
@@ -56,45 +56,45 @@ Otomatik Yama kullanmak için aşağıdaki ön koşulları göz önünde bulundu
 
 **Azure PowerShell**:
 
-* [En son Azure PowerShell komutlarını yükleyin.](/powershell/azure/overview)
+* [En son Azure PowerShell komutlarını yükler](/powershell/azure/overview).
 
-**SQL Server IaaS Uzantısı**:
+**IaaS uzantısını SQL Server**:
 
-* [SQL Server IaaS Uzantısı'nı yükleyin.](../classic/sql-server-agent-extension.md)
+* [SQL Server IaaS uzantısını yükler](../classic/sql-server-agent-extension.md).
 
 ## <a name="settings"></a>Ayarlar
-Aşağıdaki tabloda Otomatik Yama için yapılandırılabilen seçenekler açıklanmaktadır. Klasik VM'ler için bu ayarları yapılandırmak için PowerShell'i kullanmanız gerekir.
+Aşağıdaki tabloda otomatik düzeltme eki uygulama için yapılandırılabilecek seçenekler açıklanmaktadır. Klasik VM 'Lerde bu ayarları yapılandırmak için PowerShell kullanmanız gerekir.
 
 | Ayar | Olası değerler | Açıklama |
 | --- | --- | --- |
-| **Otomatik Yama** |Etkinleştirme/Devre Dışı Bırakma (Devre Dışı) |Azure sanal makinesi için Otomatik Yama etkinleştirilir veya devre dışı kılabilir. |
-| **Bakım zamanlaması** |Her gün, Pazartesi, Salı, Çarşamba, Perşembe, Cuma, Cumartesi, Pazar |Sanal makineniz için Windows, SQL Server ve Microsoft güncelleştirmelerini indirme ve yükleme çizelgesi. |
-| **Bakım başlangıç saati** |0-24 |Sanal makineyi güncelleştirmek için yerel başlangıç zamanı. |
-| **Bakım penceresi süresi** |30-180 |Güncelleştirmelerin karşıdan yüklenmesi ve yüklenmesi için izin verilen dakika sayısı. |
-| **Yama Kategorisi** |Önemli |İndirmek ve yüklemek için güncelleştirmekategorisi. |
+| **Otomatik düzeltme eki uygulama** |Etkinleştir/devre dışı bırak (devre dışı) |Bir Azure sanal makinesi için otomatik düzeltme eki uygulamayı etkinleştirilir veya devre dışı bırakır. |
+| **Bakım zamanlaması** |Günlük, Pazartesi, Salı, Çarşamba, Perşembe, Cuma, Cumartesi, Pazar |Sanal makineniz için Windows, SQL Server ve Microsoft güncelleştirmelerini indirme ve yükleme zamanlaması. |
+| **Bakım başlangıç saati** |0-24 |Sanal makineyi güncelleştirmek için yerel başlangıç saati. |
+| **Bakım penceresi süresi** |30-180 |Güncelleştirmelerin indirilmesini ve yüklenmesini tamamlamaya izin verilen dakika sayısı. |
+| **Düzeltme Eki kategorisi** |Önemli |İndirilecek ve yüklenecek güncelleştirmeler kategorisi. |
 
-## <a name="configuration-with-powershell"></a>PowerShell ile Yapılandırma
-Aşağıdaki örnekte, PowerShell varolan bir SQL Server VM üzerinde Otomatik Yama yapılandırmak için kullanılır. **Yeni-AzureVMSqlSqlAutoPatchingConfig** komutu otomatik güncelleştirmeler için yeni bir bakım penceresi yapılandırır.
+## <a name="configuration-with-powershell"></a>PowerShell ile yapılandırma
+Aşağıdaki örnekte, PowerShell, mevcut bir SQL Server VM otomatik düzeltme eki yapılandırmak için kullanılır. **New-AzureVMSqlServerAutoPatchingConfig** komutu otomatik güncelleştirmeler için yeni bir bakım penceresi yapılandırır.
 
     $aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
 
     Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoPatchingSettings $aps | Update-AzureVM
 
-Bu örneğe dayanarak, aşağıdaki tabloda hedef Azure VM üzerindeki pratik etkisi açıklanmaktadır:
+Bu örneğe bağlı olarak, aşağıdaki tabloda hedef Azure VM üzerinde pratik etki açıklanmaktadır:
 
 | Parametre | Etki |
 | --- | --- |
-| **Dayofweek** |Yamalar her Perşembe yüklenir. |
-| **MaintenanceWindowStartingHour** |Güncellemeler saat 11:00'de başlayın. |
-| **BakımPenceresiSüresi** |Yamalar 120 dakika içinde kurulmalıdır. Başlangıç saatine göre saat 13:00'e kadar tamamlanması gerekmektedir. |
-| **Yama Kategorisi** |Bu parametre için mümkün olan tek ayar "Önemli"dir. |
+| **DayOfWeek** |Her Perşembe için düzeltme eki yüklendi. |
+| **MaintenanceWindowStartingHour** |Güncelleştirmeler 11:00:00:00 ile başlatılır. |
+| **MaintenanceWindowDuration** |Düzeltme eklerinin 120 dakika içinde yüklü olması gerekir. Başlangıç zamanına bağlı olarak, 1:00pm ile tamamlanmaları gerekir. |
+| **PatchCategory** |Bu parametre için olası tek ayar "önemli" dır. |
 
-SQL Server IaaS Aracısını yüklemek ve yapılandırmak birkaç dakika sürebilir.
+SQL Server IaaS aracısının yüklenmesi ve yapılandırılması birkaç dakika sürebilir.
 
-Otomatik Yama'yı devre dışı kılmış için, Yeni AzureVMSqlSqlAutoPatchingConfig'e -Etkinleştir parametresi olmadan aynı komut dosyasını çalıştırın. Yüklemede olduğu gibi, Otomatik Yama'yı devre dışı bırakın birkaç dakika sürebilir.
+Otomatik Düzeltme Eki uygulamayı devre dışı bırakmak için,-enable parametresi olmadan aynı betiği New-AzureVMSqlServerAutoPatchingConfig ' a çalıştırın. Yükleme sırasında olduğu gibi, otomatik düzeltme eki uygulamayı devre dışı bırakmak birkaç dakika sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Mevcut diğer otomasyon görevleri hakkında daha fazla bilgi için [SQL Server IaaS Agent Extension'a](../classic/sql-server-agent-extension.md)bakın.
+Diğer kullanılabilir otomasyon görevleri hakkında daha fazla bilgi için bkz. [IaaS Aracısı uzantısı SQL Server](../classic/sql-server-agent-extension.md).
 
-Azure VM'lerde SQL Server'ı çalıştırma hakkında daha fazla bilgi için [Azure Sanal Makinelere genel bakışta SQL Server'a](../sql/virtual-machines-windows-sql-server-iaas-overview.md)bakın.
+Azure VM 'lerinde SQL Server çalıştırma hakkında daha fazla bilgi için bkz. [Azure sanal makinelerine genel bakış SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
 

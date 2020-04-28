@@ -1,82 +1,82 @@
 ---
 title: Uygulama senaryoları ve tasarımı
-description: Service Fabric'teki bulut uygulama kategorilerine genel bakış. Durum lu ve durumsuz hizmetleri kullanan uygulama tasarımını tartışır.
+description: Service Fabric içindeki bulut uygulamalarının kategorilerine genel bakış. Durum bilgisiz ve durum bilgisi olmayan hizmetler kullanan uygulama tasarımını açıklar.
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
 ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76024747"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric uygulama senaryoları
 
-Azure Hizmet Kumaşı, birçok iş uygulaması ve hizmeti yazabileceğiniz ve çalıştırabileceğiniz güvenilir ve esnek bir platform sunar. Bu uygulamalar ve mikro hizmetler durum suz veya durumlu olabilir ve verimliliği en üst düzeye çıkarmak için sanal makineler arasında kaynak dengelidir.
+Azure Service Fabric, birçok iş uygulaması ve hizmeti türünü yazıp çalıştırabileceğiniz güvenilir ve esnek bir platform sunar. Bu uygulamalar ve mikro hizmetler durum bilgisiz veya durum bilgisi olabilir ve verimliliği en üst düzeye çıkarmak için sanal makineler arasında kaynak dengelenebilir.
 
-Service Fabric'in benzersiz mimarisi, uygulamalarınızda neredeyse gerçek zamanlı veri analizi, bellek içi hesaplama, paralel işlemler ve olay işleme işlemlerini gerçekleştirmenize olanak tanır. Değişen kaynak gereksinimlerinize bağlı olarak uygulamalarınızı kolayca ölçeklendirebilir veya dışarıda yapabilirsiniz.
+Service Fabric benzersiz mimarisi, uygulamalarınızda neredeyse gerçek zamanlı veri analizi, bellek içi hesaplama, paralel işlemler ve olay işleme işlemlerini gerçekleştirmenize olanak sağlar. Değişen kaynak gereksinimlerinize bağlı olarak uygulamalarınızı kolayca ölçeklendirebilir veya dışarı aktarabilirsiniz.
 
-Bina uygulamaları yla ilgili tasarım kılavuzu için, [Azure Hizmet Kumaşı'nda Microservices mimarisini](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric) ve [Hizmet Kumaşı'nı kullanarak uygulama tasarımı için en iyi uygulamaları](service-fabric-best-practices-applications.md)okuyun.
+Uygulamalar oluşturmaya yönelik tasarım kılavuzu için [Azure Service Fabric mikro hizmet mimarisini](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric) ve [Service Fabric kullanarak uygulama tasarımı için en iyi yöntemleri](service-fabric-best-practices-applications.md)okuyun.
 
-Aşağıdaki uygulama türleri için Service Fabric platform'u kullanmayı düşünün:
+Aşağıdaki uygulama türleri için Service Fabric platformunu kullanmayı göz önünde bulundurun:
 
-* **Veri toplama, işleme ve IoT**: Service Fabric büyük ölçekli işler ve devlet hizmetleri ile düşük gecikme vardır. Aygıt ve hesaplama verilerinin bir araya geldiği milyonlarca cihazdaki verilerin işlenmesine yardımcı olabilir.
+* **Veri toplama, işleme ve IoT**: Service Fabric büyük ölçeği işler ve durum bilgisi olan hizmetler aracılığıyla düşük gecikme süresine sahiptir. Cihaz ve hesaplama verilerinin birlikte bulunduğu milyonlarca cihazda verileri işlemeye yardımcı olabilir.
 
-    Servis Kumaş ı kullanarak IoT hizmetleri inşa etmiş müşteriler [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure)dahil , [PCL İnşaat](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure), [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), [Schneider Electric](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric), ve [Örgü Sistemleri](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions).
+    Service Fabric kullanarak IoT Hizmetleri oluşturan müşteriler, [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), [PCL yapımı](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure), [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), [Schneider Elektrik](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)ve [kafes sistemleri](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions)içerir.
 
-* **Oyun ve oturum tabanlı etkileşimli uygulamalar**: Uygulamanız çevrimiçi oyun veya anlık mesajlaşma gibi düşük gecikme süresi okuma ve yazma gerektiriyorsa Service Fabric kullanışlıdır. Service Fabric, ayrı bir mağaza veya önbellek oluşturmak zorunda kalmadan bu etkileşimli ve durumlu uygulamaları oluşturmanıza olanak tanır. Hizmet Kumaşı'nı [oyun hizmetlerinde kullanma](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf)yla ilgili tasarım kılavuzu için Azure oyun [çözümlerini](https://azure.microsoft.com/solutions/gaming/) ziyaret edin.
+* **Oyun ve oturum tabanlı etkileşimli uygulamalar**: Service Fabric, uygulamanızın çevrimiçi oyun veya anlık mesajlaşma gibi düşük gecikmeli okuma ve yazma işlemleri gerektirmesi durumunda yararlıdır. Service Fabric, ayrı bir mağaza veya önbellek oluşturmak zorunda kalmadan bu etkileşimli ve durum bilgisi olan uygulamalar oluşturmanıza olanak sağlar. [Oyun hizmetlerinde Service Fabric kullanma](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf)hakkında tasarım kılavuzu için [Azure oyun çözümlerini](https://azure.microsoft.com/solutions/gaming/) ziyaret edin.
 
-    Oyun hizmetleri inşa etmiş müşteriler [Next Games](https://customers.microsoft.com/story/next-games-media-telecommunications-azure) ve [Digamore](https://customers.microsoft.com/story/digamore-entertainment-scores-with-a-new-gaming-platform-based-on-azure-service-fabric/)içerir. Etkileşimli oturumlar inşa etmiş müşteriler [hololens ile Honeywell](https://customers.microsoft.com/story/honeywell-manufacturing-hololens)içerir.
+    Oyun Hizmetleri olan müşteriler [sonraki oyunları](https://customers.microsoft.com/story/next-games-media-telecommunications-azure) ve [daha fazlasını](https://customers.microsoft.com/story/digamore-entertainment-scores-with-a-new-gaming-platform-based-on-azure-service-fabric/)içerir. Etkileşimli oturumları olan müşteriler [, Hololens ile birlikte](https://customers.microsoft.com/story/honeywell-manufacturing-hololens)yer alır.
 
-* **Veri analizi ve iş akışı işleme**: Olayları veya veri akışlarını güvenilir bir şekilde işlemesi gereken uygulamalar, Service Fabric'te en iyi duruma getirilmiş okuma ve yazmalardan yararlanır. Service Fabric ayrıca, sonuçların güvenilir olması ve herhangi bir kayıp olmadan bir sonraki işlem aşamasına geçirilmesi gereken uygulama işleme boru hatlarını da destekler. Bu boru hatları, veri tutarlılığı ve hesaplama garantilerinin gerekli olduğu işlemsel ve finansal sistemleri içerir.
+* **Veri analizi ve iş akışı işleme**: Service Fabric ' de iyileştirilmiş okuma ve yazma işlemleri için olayları veya veri akışını güvenilir bir şekilde işlemesi gereken uygulamalar. Service Fabric Ayrıca, sonuçların güvenilir olması ve bir sonraki işleme aşamasına hiçbir kayıp olmadan geçirilmesi gereken uygulama işleme işlem hatlarını destekler. Bu işlem hatları, veri tutarlılığı ve hesaplama garantisi açısından önemli olan işlem ve finansal sistemleri içerir.
 
-    İş akışı hizmetleri kuran müşteriler arasında [Zeiss Group,](https://customers.microsoft.com/story/zeiss-group-focuses-on-azure-service-fabric-for-key-integration-platform) [Quorum Business Solutions](https://customers.microsoft.com/en-us/story/quorum-business-solutions-expand-energy-managemant-solutions-using-azure-service-fabric)ve [Société General](https://customers.microsoft.com/en-us/story/societe-generale-speeds-real-time-market-quotes-using-azure-service-fabric)sayılabilir.
+    İş akışı hizmetleri oluşturan müşteriler [Zeiss grubunu](https://customers.microsoft.com/story/zeiss-group-focuses-on-azure-service-fabric-for-key-integration-platform), [çekirdek Iş çözümlerini](https://customers.microsoft.com/en-us/story/quorum-business-solutions-expand-energy-managemant-solutions-using-azure-service-fabric)ve [Société genel](https://customers.microsoft.com/en-us/story/societe-generale-speeds-real-time-market-quotes-using-azure-service-fabric)' i içerir.
 
-* **Veriler üzerinde hesaplama**: Service Fabric, yoğun veri hesaplaması yapan durumlu uygulamalar oluşturmanıza olanak tanır. Service Fabric, işlemlerin (hesaplama) ve verilerin uygulamalarda bir araya taşınmasına olanak tanır. 
+* **Verileri hesaplama**: Service Fabric yoğun veri hesaplamasını gerçekleştiren durum bilgisi olan uygulamalar oluşturmanıza olanak sağlar. Service Fabric, uygulamalarda işleme (hesaplama) ve verilerin birlikte kullanılmasına izin verir. 
 
-   Normalde, uygulamanız verilere erişim gerektirdiğinde, harici bir veri önbelleği veya depolama katmanıyla ilişkili ağ gecikmesi hesaplama süresini sınırlar. Stateful Service Fabric hizmetleri, daha optimize edilmiş okuma ve yazma sağlayarak bu gecikmeyi ortadan kaldırır.
+   Normalde, uygulamanız verilere erişim gerektirdiğinde, bir dış veri önbelleği veya depolama katmanı ile ilişkili ağ gecikme süresi hesaplama süresini sınırlandırır. Durum bilgisi olan Service Fabric Hizmetleri, daha iyileştirilmiş okuma ve yazma işlemlerini etkinleştirerek gecikmeyi ortadan kaldırır.
 
-   Örneğin, 100 milisaniyeden daha az bir gidiş-dönüş süresi gereksinimi olan, müşteriler için gerçek zamanlı öneri seçimlerinin yakınında performans gösteren bir uygulama düşünün. Service Fabric hizmetlerinin gecikme ve performans özellikleri, gerekli verileri uzak depolamadan almak zorunda olan standart uygulama modeliyle karşılaştırıldığında kullanıcıya duyarlı bir deneyim sağlar. Öneri seçiminin hesaplanması veriler ve kurallarla birlikte bulunduğundan sistem daha duyarlıdır.
+   Örneğin, müşteriler için neredeyse gerçek zamanlı öneri seçimlerini gerçekleştiren bir uygulama düşünün. Bu, 100 milisaniyeden daha kısa bir gidiş dönüş süresi gereksinimidir. Service Fabric hizmetlerinin gecikme ve performans özellikleri, kullanıcıya, uzak depolama alanından gerekli verileri getirmek zorunda kalmadan standart uygulama modeliyle karşılaştırıldığında, yanıt veren bir deneyim sağlar. Öneri seçimi hesaplaması, veri ve kurallarla birlikte bulunduğundan sistem daha hızlı yanıt veriyor.
 
-    Hesaplama hizmetleri oluşturmuş müşteriler [solidsoft yanıt](https://customers.microsoft.com/story/solidsoft-reply-platform-powers-e-verification-of-pharmaceuticals) ve [Infosupport](https://customers.microsoft.com/story/service-fabric-customer-profile-info-support-and-fudura)içerir.
+    Hesaplama Hizmetleri oluşturan müşteriler, [Solidsoft Reply](https://customers.microsoft.com/story/solidsoft-reply-platform-powers-e-verification-of-pharmaceuticals) ve [ınfosupport](https://customers.microsoft.com/story/service-fabric-customer-profile-info-support-and-fudura)' i içerir.
 
-* **Yüksek kullanılabilir hizmetler**: Service Fabric, birden çok ikincil hizmet yinelemesi oluşturarak hızlı bir şekilde başarısız olur. Donanım veya başka bir hata nedeniyle bir düğüm, işlem veya tek tek hizmet düşerse, ikincil yinelemelerden biri en az hizmet kaybıyla birincil yinelemeye yükseltilir.
+* **Yüksek oranda kullanılabilir hizmetler**: Service Fabric birden çok ikincil hizmet çoğaltması oluşturarak hızlı yük devretme sağlar. Bir düğüm, işlem veya tek hizmet donanım ya da başka bir hata nedeniyle kapalıysa, ikincil çoğaltmalardan biri minimum hizmet kaybı olan birincil çoğaltmaya yükseltilir.
 
-* **Ölçeklenebilir hizmetler**: Tek tek hizmetler, durum küme boyunca ölçeklendirilebilir izin bölümlenebilir. Bireysel hizmetler de oluşturulabilir ve anında kaldırılabilir. Hizmetleri birkaç düğümdeki birkaç örnekten, birçok düğümdeki binlerce örneğe ölçeklendirebilir ve gerektiğinde yeniden ölçeklendirebilirsiniz. Service Fabric'i bu hizmetleri oluşturmak ve tüm yaşam döngülerini yönetmek için kullanabilirsiniz.
+* **Ölçeklenebilir hizmetler**: tek tek hizmetler bölümlenebilir ve bu da durum küme genelinde ölçeklenmeye olanak tanır. Tek tek hizmetler de oluşturulabilir ve anında kaldırılabilir. Birkaç düğüm üzerindeki birkaç örnek için hizmeti, birçok düğümdeki binlerce örneğe ölçeklendirebilir ve gerektiğinde bunları yeniden ölçeklendirdirebilirsiniz. Bu hizmetleri derlemek ve bunların tüm yaşam döngülerini yönetmek için Service Fabric kullanabilirsiniz.
 
-## <a name="application-design-case-studies"></a>Uygulama tasarımı vaka çalışmaları
+## <a name="application-design-case-studies"></a>Uygulama tasarımı örnek olay incelemeleri
 
-Hizmet Kumaşı'nın uygulamaları tasarlamak için nasıl kullanıldığını gösteren örnek çalışmalar, Azure sitelerindeki [Müşteri hikayelerinde](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=2&so=story_publish_date%20desc) ve [Mikro hizmetlerde](https://azure.microsoft.com/solutions/microservice-applications/) yayınlanır.
+Uygulama tasarlamak için Service Fabric nasıl kullanıldığını gösteren örnek olay incelemeleri, Azure sitelerindeki [müşteri hikayeleri](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=2&so=story_publish_date%20desc) ve [mikro hizmetlerde](https://azure.microsoft.com/solutions/microservice-applications/) yayımlanır.
 
-## <a name="designing-applications-composed-of-stateless-and-stateful-microservices"></a>Stateless ve stateful microservices oluşan uygulamalar tasarımı
+## <a name="designing-applications-composed-of-stateless-and-stateful-microservices"></a>Durum bilgisiz ve durum bilgisi olan mikro hizmetlerden oluşan uygulamalar tasarlama
 
-Azure Bulut Hizmetleri çalışanı rolleriyle uygulama oluşturma, devletsiz bir hizmetörneğidir. Buna karşılık, devlet eki mikro hizmetler, yetkili durumlarını istek ve yanıtın ötesinde korurlar. Bu işlevsellik, çoğaltma tarafından desteklenen işlem garantileri sağlayan basit API'ler aracılığıyla yüksek kullanılabilirlik ve durum tutarlılığı sağlar.
+Azure Cloud Services çalışan rolleri ile uygulama oluşturmak, durum bilgisi olmayan bir hizmete örnektir. Bunun aksine, durum bilgisi olan mikro hizmetler, yetkili durumlarını isteğin ötesinde ve yanıtı olarak korur. Bu işlevsellik, çoğaltma tarafından desteklenen işlem garantisi sağlayan basit API 'Ler aracılığıyla yüksek kullanılabilirlik ve tutarlılık sağlar.
 
-Service Fabric'teki devlet hizmetleri, yalnızca veritabanları ve diğer veri depolarına değil, tüm uygulama türlerine yüksek kullanılabilirlik sağlar. Bu doğal bir ilerlemedir. Uygulamalar zaten NoSQL veritabanları için yüksek kullanılabilirlik için tamamen ilişkisel veritabanları kullanarak taşınmış. Artık uygulamaların kendileri güvenilirlik, tutarlılık veya kullanılabilirlikten ödün vermeden ek performans kazançları için kendi "sıcak" durumlarını ve verilerini içlerinde yönetilebilir.
+Service Fabric ' de durum bilgisi olan hizmetler, yalnızca veritabanları ve diğer veri depolarından değil, tüm uygulama türleri için yüksek kullanılabilirlik sağlar. Bu, doğal bir ilerleme. Uygulamalar, NoSQL veritabanlarına yönelik yüksek kullanılabilirlik için tamamen ilişkisel veritabanlarını kullanarak zaten taşınmıştır. Artık uygulamaların kendileri, güvenilirlik, tutarlılık veya kullanılabilirlikten ödün vermeden, ek performans kazançları için kendilerine ait "etkin" durum ve veri içerebilir.
 
-Mikro hizmetlerden oluşan uygulamalar oluştururken, genellikle durum dışı web uygulamalarının (ASP.NET ve Node.js gibi) durum dışı ve stateful iş orta katman hizmetlerini çağıran bir birleşimine sahip olursunuz. Uygulamalar ve hizmetler, Service Fabric dağıtım komutları aracılığıyla aynı Hizmet Kumaşı kümesinde dağıtılır. Bu hizmetlerin her biri ölçek, güvenilirlik ve kaynak kullanımı açısından bağımsızdır. Bu bağımsızlık, gelişim ve yaşam döngüsü yönetiminde çevikliği ve esnekliği artırır.
+Mikro hizmetlerden oluşan uygulamalar oluştururken, genellikle durum bilgisiz olmayan ve durum bilgisi olan iş orta katman hizmetlerini çağıran durum bilgisiz Web Apps (ASP.NET ve Node. js gibi) birleşimine sahip olursunuz. Uygulamalar ve hizmetler, Service Fabric dağıtım komutları aracılığıyla aynı Service Fabric kümesine dağıtılır. Bu hizmetlerin her biri, ölçek, güvenilirlik ve kaynak kullanımıyla ilgili olarak bağımsızdır. Bu bağımsızlık geliştirme ve yaşam döngüsü yönetiminde çeviklik ve esneklik artar.
 
-Devlete uygun mikro hizmetler, tamamen durum suz uygulamaların kullanılabilirlik ve gecikme gereksinimlerini gidermek için geleneksel olarak gerekli olan ek kuyruklar ve önbelleklere olan gereksinimi ortadan kaldırdığından uygulama tasarımlarını basitleştirir. Devlet hizmetlerinin yüksek kullanılabilirlik ve düşük gecikme süresi olduğundan, uygulamanızda yönetilen daha az ayrıntı vardır.
+Durum bilgisi olan mikro hizmetler, yalnızca durum bilgisiz uygulamaların kullanılabilirlik ve gecikme süresi gereksinimlerini karşılamak için geleneksel olarak gerekli olan ek kuyruklar ve önbellekler gereksinimini kaldırdıklarından uygulama tasarımlarını basitleştirir. Durum bilgisi olan hizmetler yüksek kullanılabilirlik ve düşük gecikme süresine sahip olduğundan uygulamanızda yönetmek için daha az ayrıntı vardır.
 
-Aşağıdaki diyagramlar, durum dilsiz bir uygulama tasarlamak ile durum dolu bir uygulama tasarlamak arasındaki farkları göstermektedir. [Güvenilir Hizmetler](service-fabric-reliable-services-introduction.md) ve Güvenilir [Aktörler](service-fabric-reliable-actors-introduction.md) programlama modellerinden yararlanarak, devlet hizmetleri yüksek iş ortası ve düşük gecikme süresi elde ederken uygulama karmaşıklığını azaltır.
+Aşağıdaki diyagramlarda, durum bilgisiz ve durum bilgisi olan bir uygulama tasarlama arasındaki farklar gösterilmektedir. [Reliable Services](service-fabric-reliable-services-introduction.md) ve [Reliable Actors](service-fabric-reliable-actors-introduction.md) programlama modellerinden yararlanarak, durum bilgisi olan hizmetler yüksek aktarım hızı ve düşük gecikme süresi sağlarken uygulama karmaşıklığını azaltır.
 
-Aşağıda, devletsiz hizmetleri kullanan örnek ![bir uygulama verilmiştir: Devletsiz hizmetleri kullanan uygulama][Image1]
+Durum bilgisi olmayan hizmetler kullanan uygulama aşağıda verilmiştir: ![][Image1]
 
-Aşağıda, devlet tarafından sunulan hizmetleri kullanan ![bir örnek uygulama verilmiştir: Devlet tarafından sunulan hizmetleri kullanan uygulama][Image2]
+Durum bilgisi olmayan hizmetler kullanan uygulama aşağıda verilmiştir: ![][Image2]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) ve [Reliable Actors](service-fabric-reliable-actors-get-started.md) programlama modelleri ile stateless ve stateful hizmetler oluşturmaya başlayın.
-* Azure'da mikro hizmetler oluşturma konusunda rehberlik etmek için Azure Mimari [Merkezi'ni ziyaret edin.](https://docs.microsoft.com/azure/architecture/microservices/)
-* Azure [Hizmet Kumaşı uygulamasına](service-fabric-best-practices-overview.md) gidin ve uygulama tasarımı kılavuzu için en iyi uygulamaları kümeleyin.
+* Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) ve [Reliable Actors](service-fabric-reliable-actors-get-started.md) programlama modelleriyle durum bilgisiz ve durum bilgisi olmayan hizmetler oluşturmaya başlayın.
+* [Azure 'da mikro hizmetler oluşturma](https://docs.microsoft.com/azure/architecture/microservices/)konusunda rehberlik için Azure mimari Merkezi ziyaret edin.
+* Uygulama tasarım kılavuzu için [Azure Service Fabric uygulama ve küme en iyi uygulamalarına](service-fabric-best-practices-overview.md) gidin.
 
 * Ayrıca bkz:
   * [Mikro hizmetleri anlama](service-fabric-overview-microservices.md)
   * [Hizmet durumunu tanımlama ve yönetme](service-fabric-concepts-state.md)
   * [Hizmetlerin kullanılabilirliği](service-fabric-availability-services.md)
-  * [Ölçek hizmetleri](service-fabric-concepts-scalability.md)
-  * [Bölümhizmetleri](service-fabric-concepts-partitioning.md)
+  * [Ölçek Hizmetleri](service-fabric-concepts-scalability.md)
+  * [Bölüm Hizmetleri](service-fabric-concepts-partitioning.md)
 
 [Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.png
 [Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.png

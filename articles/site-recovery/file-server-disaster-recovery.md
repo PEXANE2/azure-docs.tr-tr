@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
 ms.openlocfilehash: c9f10815f2fbc8a17b8b712b6e5f8391fc7d541e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75980293"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Azure Site Recovery kullanarak bir dosya sunucusunu koruma 
@@ -45,7 +45,7 @@ Yukarıdaki diyagramda üye olarak adlandırılan birden fazla dosya sunucusu, d
 
     * VM'leriniz, Site Recovery tarafından desteklenmeyen bir yapılandırmaya sahipse bu yaklaşımdan faydalanabilirsiniz. Bir diğer örnek de dosya sunucusu ortamlarında sıklıkla kullanılan paylaşılan küme diskidir. DFSR, düşük bant genişliğine sahip ortamlarda da orta düzey veri değişim sıklığı ile iyi bir performans sergiler. Sürekli çalışacak olan bir Azure VM'nin getireceği ek maliyeti dikkate almanız gerekir. 
 
-* **Dosyalarınızı çoğaltmak için Azure Dosya Eşitlemeyi'ni kullanın**: Bulutu kullanmayı planlıyorsanız veya zaten bir Azure VM kullanıyorsanız, Azure Dosya Eşitlemeyi'ni kullanabilirsiniz. Azure Dosya Eşitlemi, bulutta endüstri standardı [Sunucu İleti Bloğu](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (SMB) protokolü aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımlarının eşitlemi sunar. Ardından Azure dosya paylaşımları Windows, Linux ve macOS bulut ve şirket içi dağıtımları tarafından aynı anda bağlanabilir. 
+* **Dosyalarınızı çoğaltmak için Azure dosya eşitleme kullanın**: bulutu kullanmayı veya zaten BIR Azure VM 'yi kullanmayı planlıyorsanız, Azure dosya eşitleme kullanabilirsiniz. Azure Dosya Eşitleme, sektör standardı [sunucu Ileti bloğu](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (SMB) protokolü aracılığıyla erişilebilen, bulutta tam olarak yönetilen dosya paylaşımlarının eşitlenmesini sağlar. Ardından Azure dosya paylaşımları Windows, Linux ve macOS bulut ve şirket içi dağıtımları tarafından aynı anda bağlanabilir. 
 
 Aşağıdaki diyagram, dosya sunucusu ortamınız için kullanmanız gereken stratejiyi belirleme konusunda yardımcı olmayı amaçlamaktadır.
 
@@ -56,7 +56,7 @@ Aşağıdaki diyagram, dosya sunucusu ortamınız için kullanmanız gereken str
 
 |Ortam  |Öneri  |Dikkat edilmesi gereken noktalar |
 |---------|---------|---------|
-|DFSR'yi kullanan veya kullanmayan dosya sunucusu ortamı|   [Çoğaltma için Site Recovery'yi kullanın](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery, paylaşılan disk kümelerini veya ağa bağlı depolama alanını (NAS) desteklemez. Ortamınızda bu yapılandırmalar varsa diğer yaklaşımlardan birini tercih edebilirsiniz. <br> Site Recovery, SMB 3.0 desteği sunmaz. Çoğaltılan VM yalnızca değişiklik yapılan dosyaların özgün konumda güncelleştirilmesi durumunda değişiklikleri uygular.<br>  Site Kurtarma yakın eşzamanlı veri çoğaltma işlemi sunar ve bu nedenle planlanmamış bir hata senaryosu durumunda, olası veri kaybı olabilir ve USN uyumsuzluğu sorunları oluşturabilir.
+|DFSR'yi kullanan veya kullanmayan dosya sunucusu ortamı|   [Çoğaltma için Site Recovery'yi kullanın](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery, paylaşılan disk kümelerini veya ağa bağlı depolama alanını (NAS) desteklemez. Ortamınızda bu yapılandırmalar varsa diğer yaklaşımlardan birini tercih edebilirsiniz. <br> Site Recovery, SMB 3.0 desteği sunmaz. Çoğaltılan VM yalnızca değişiklik yapılan dosyaların özgün konumda güncelleştirilmesi durumunda değişiklikleri uygular.<br>  Site Recovery, neredeyse zaman uyumlu bir veri çoğaltma işlemi sunar ve bu nedenle planlanmamış bir yük devretme senaryosu durumunda olası veri kaybı olabilir ve USN uyuşmazlığı sorunları oluşturabilir.
 |DFSR'yi kullanan dosya sunucusu ortamı     |  [DFSR'yi bir Azure IaaS sanal makinesi ile genişletin](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      DFSR, bant genişliğinin oldukça düşük olduğu ortamlarda iyi performans sergiler. Bu yaklaşım için bir Azure VM'nin sürekli çalışır durumda olması gerekir. Planlamalarınıza VM'nin maliyetini de eklemeniz gerekir.         |
 |Azure IaaS VM     |     Dosya Eşitleme    |     Olağanüstü durum kurtarma senaryosunda Dosya Eşitleme hizmetini kullanmanız durumunda yük devretme sırasında dosya paylaşımlarının istemci makineler tarafından fark edilmeden erişilebilir duruma gelmesini sağlamak için el ile yapmanız gereken eylemler vardır. Dosya Eşitleme için istemci makinenizde 445 numaralı bağlantı noktasının açık olması gerekir.     |
 
@@ -66,10 +66,10 @@ Site Recovery çoğaltma işlem uygulamadan bağımsız olduğu için bu öneril
 
 | Kaynak    |İkincil siteye    |Azure’a
 |---------|---------|---------|
-|Azure| -|Evet|
-|Hyper-V|   Evet |Evet
-|VMware |Evet|   Evet
-|Fiziksel sunucu|   Evet |Evet
+|Azure| -|Yes|
+|Hyper-V|   Yes |Yes
+|VMware |Yes|   Yes
+|Fiziksel sunucu|   Yes |Yes
  
 
 > [!IMPORTANT]
@@ -97,8 +97,8 @@ Azure Dosyaları geleneksel şirket içi dosya sunucularını veya NAS cihazlar�
 
 Aşağıdaki adımlar, Dosya Eşitleme özelliğinin kullanımıyla ilgili özet bilgiler sunmaktadır:
 
-1. [Azure'da bir depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Depolama hesaplarınız için okuma erişimli coğrafi olarak yedekli depolama seçeneğini kullanırsanız olağanüstü durum gerçekleştiğinde ikincil bölgedeki verilerinize okuma erişimine sahip olursunuz. Daha fazla bilgi için Azure [Depolama'da Olağanüstü Durum kurtarma ve zorunlu başarısız (önizleme)](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)bilgisine bakın.
-2. [Dosya paylaşımı oluşturun.](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)
+1. [Azure'da bir depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Depolama hesaplarınız için okuma erişimli coğrafi olarak yedekli depolama seçeneğini kullanırsanız olağanüstü durum gerçekleştiğinde ikincil bölgedeki verilerinize okuma erişimine sahip olursunuz. Daha fazla bilgi için bkz. [Azure Storage 'Da olağanüstü durum kurtarma ve zorlamalı yük devretme (Önizleme)](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
+2. [Dosya paylaşma oluşturun](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 3. Azure dosya sunucunuzda [Dosya Eşitleme'yi başlatın](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide).
 4. Eşitleme grubu oluşturun. Bir eşitleme grubu içindeki uç noktalar, birbiriyle eşitlenmiş durumda tutulur. Eşitleme grubu, bir Azure dosya paylaşımını temsil eden bir bulut uç noktası içermelidir. Eşitleme grubu ayrıca bir Windows sunucusu üzerindeki yolu temsil eden bir sunucu uç noktası içermelidir.
 5. Dosyalarınız artık Azure dosya paylaşımında ve şirket içi sunucunuzda eşitlenmiş durumdadır.
@@ -120,7 +120,7 @@ IaaS dosya sunucusu sanal makinesine erişen şirket içi istemcileriniz varsa a
 
 Aşağıdaki adımlar VMware VM'ye çoğaltmayı göstermektedir. Hyper-V VM'ye çoğaltma adımları için [bu öğreticiye](tutorial-hyper-v-to-azure.md) bakın.
 
-1. Azure kaynaklarını şirket içi makinelerin çoğaltılması için [hazırlayın.](tutorial-prepare-azure.md)
+1. Şirket içi makinelerin çoğaltması için [Azure kaynaklarını hazırlayın](tutorial-prepare-azure.md) .
 2. Şirket içi ağınız ile Azure ağı arasında siteler arası VPN bağlantısı kurun. 
 3. Şirket içi Active Directory ortamını genişletin.
 4. [Şirket içi VMware sunucuları hazırlayın](tutorial-prepare-on-premises-vmware.md).
@@ -146,8 +146,8 @@ Dosya Eşitleme'yi Site Recovery ile tümleştirmek için:
 
 Dosya Eşitleme'yi kullanmak için şu adımları izleyin:
 
-1. [Azure'da bir depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Depolama hesaplarınız için okuma erişimli coğrafi olarak yedekli depolama seçeneğini kullanırsanız (önerilir) olağanüstü durum gerçekleştiğinde ikincil bölgedeki verilerinize okuma erişimine sahip olursunuz. Daha fazla bilgi için Azure [Depolama'da Olağanüstü Durum kurtarma ve zorunlu başarısız (önizleme) (önizleme)](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)bilgisine bakın.
-2. [Dosya paylaşımı oluşturun.](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)
+1. [Azure'da bir depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Depolama hesaplarınız için okuma erişimli coğrafi olarak yedekli depolama seçeneğini kullanırsanız (önerilir) olağanüstü durum gerçekleştiğinde ikincil bölgedeki verilerinize okuma erişimine sahip olursunuz. Daha fazla bilgi için bkz. [Azure Storage 'Da olağanüstü durum kurtarma ve zorlamalı yük devretme (Önizleme)](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
+2. [Dosya paylaşma oluşturun](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 3. [Dosya Eşitleme'yi](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide) şirket içi dosya sunucunuza dağıtın.
 4. Eşitleme grubu oluşturun. Bir eşitleme grubu içindeki uç noktalar, birbiriyle eşitlenmiş durumda tutulur. Eşitleme grubu, bir Azure dosya paylaşımını temsil eden bir bulut uç noktası içermelidir. Eşitleme grubu ayrıca şirket içi Windows sunucusu üzerindeki yolu temsil eden bir sunucu uç noktası içermelidir.
 5. Dosyalarınız artık Azure dosya paylaşımında ve şirket içi sunucunuzda eşitlenmiş durumdadır.

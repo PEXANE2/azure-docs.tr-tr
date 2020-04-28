@@ -1,6 +1,6 @@
 ---
-title: Kullanılabilirlik grupları için bir ILB dinleyicisi yapılandırın (Klasik)
-description: Bu öğretici, klasik dağıtım modeliyle oluşturulan kaynakları kullanır ve Azure'da dahili yük dengeleyicisi kullanan bir SQL Server VM için her zaman kullanılabilirlik grubu dinleyicisi oluşturur.
+title: Kullanılabilirlik grupları için bir ıLB dinleyicisi yapılandırma (klasik)
+description: Bu öğretici, klasik dağıtım modeliyle oluşturulan kaynakları kullanır ve Azure 'da iç yük dengeleyici kullanan bir SQL Server VM için her zaman açık kullanılabilirlik grubu dinleyicisi oluşturur.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -16,78 +16,78 @@ ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: f26c5a6c6fc2774d19beaa021015357a1991f0ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75978164"
 ---
-# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Azure SQL Server VM'lerde kullanılabilirlik grupları için bir ILB dinleyicisi yapılandırma
+# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Azure SQL Server VM 'lerinde kullanılabilirlik grupları için bir ıLB dinleyicisi yapılandırma
 > [!div class="op_single_selector"]
-> * [Dahili dinleyici](../classic/ps-sql-int-listener.md)
-> * [Harici dinleyici](../classic/ps-sql-ext-listener.md)
+> * [İç dinleyici](../classic/ps-sql-int-listener.md)
+> * [Dış dinleyici](../classic/ps-sql-ext-listener.md)
 >
 >
 
 ## <a name="overview"></a>Genel Bakış
 
 > [!IMPORTANT]
-> Azure'un kaynakları oluşturmak ve onlarla çalışmak için iki farklı dağıtım modeli vardır: [Azure Kaynak Yöneticisi ve klasik.](../../../azure-resource-manager/management/deployment-models.md) Bu makalede, klasik dağıtım modelinin kullanımı kapsA. Yeni dağıtımların çoğunun Kaynak Yöneticisi modelini kullanmasını öneririz.
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Azure Resource Manager ve klasik](../../../azure-resource-manager/management/deployment-models.md). Bu makalede klasik dağıtım modelinin kullanımı ele alınmaktadır. En yeni dağıtımların Kaynak Yöneticisi modelini kullanmasını öneririz.
 
-Kaynak Yöneticisi modelinde Her Zaman Açık kullanılabilirlik grubu için bir dinleyiciyi yapılandırmak [için, Azure'daki Her Zaman kullanılabilirlik grubu için bir yük dengeleyicisini yapılandır'](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)ı 'ya bakın.
+Kaynak Yöneticisi modelinde her zaman açık kullanılabilirlik grubu için bir dinleyici yapılandırmak üzere bkz. [Azure 'Da Always on kullanılabilirlik grubu için yük dengeleyici yapılandırma](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
 
-Kullanılabilirlik grubunuz, yalnızca şirket içi veya yalnızca Azure'da veya karma yapılandırmalar için hem şirket içi hem de Azure'a yayılan yinelemeler içerebilir. Azure yinelemeleri aynı bölgede veya birden çok sanal ağ kullanan birden çok bölgede bulunabilir. Bu makaledeki yordamlar, bir [kullanılabilirlik grubunu](../classic/portal-sql-alwayson-availability-groups.md) zaten yapılandırdığınızı, ancak henüz bir dinleyiciyi yapılandırmadığınızı varsayar.
+Kullanılabilirlik grubunuz yalnızca şirket içinde veya yalnızca Azure 'da olan veya hem şirket içi hem de karma Yapılandırma için Azure 'a yayılan çoğaltmalar içerebilir. Azure çoğaltmaları aynı bölgede veya birden çok sanal ağ kullanan birden çok bölgede bulunabilir. Bu makaledeki yordamlarda, bir [kullanılabilirlik grubunu zaten yapılandırdığınız](../classic/portal-sql-alwayson-availability-groups.md) ancak henüz bir dinleyici yapılandırdığınızı varsayalım.
 
 ## <a name="guidelines-and-limitations-for-internal-listeners"></a>İç dinleyiciler için yönergeler ve sınırlamalar
-Azure'da kullanılabilirlik grubu dinleyicisi olan bir dahili yük dengeleyicisinin (ILB) kullanımı aşağıdaki yönergelere tabidir:
+Azure 'da bir kullanılabilirlik grubu dinleyicisi ile iç yük dengeleyici (ıLB) kullanımı aşağıdaki yönergelere tabidir:
 
-* Kullanılabilirlik grubu dinleyicisi Windows Server 2008 R2, Windows Server 2012 ve Windows Server 2012 R2'de desteklenir.
-* Dinleyici ILB'ye göre yapılandırıldığından ve her bulut hizmeti için yalnızca bir ILB olduğundan, her bulut hizmeti için yalnızca bir dahili kullanılabilirlik grubu dinleyicisi desteklenir. Ancak, birden çok dış dinleyici oluşturmak mümkündür. Daha fazla bilgi için, [Azure'daki Her Zaman Kullanılabilirlik Grupları için harici dinleyici yi yapılandırma'ya](../classic/ps-sql-ext-listener.md)bakın.
+* Kullanılabilirlik grubu dinleyicisi Windows Server 2008 R2, Windows Server 2012 ve Windows Server 2012 R2 üzerinde desteklenir.
+* Her bulut hizmeti için yalnızca bir iç kullanılabilirlik grubu dinleyicisi desteklenir, çünkü dinleyici ıLB 'ye yapılandırılmıştır ve her bir bulut hizmeti için yalnızca bir ıLB vardır. Ancak, birden çok dış dinleyici oluşturmak mümkündür. Daha fazla bilgi için bkz. [Azure 'Da Always on kullanılabilirlik grupları için dış dinleyici yapılandırma](../classic/ps-sql-ext-listener.md).
 
 ## <a name="determine-the-accessibility-of-the-listener"></a>Dinleyicinin erişilebilirliğini belirleme
 [!INCLUDE [ag-listener-accessibility](../../../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
 
-Bu makalede, Bir ILB kullanan bir dinleyici oluşturmaya odaklanır. Ortak veya harici bir dinleyiciye ihtiyacınız varsa, bu makalenin harici bir [dinleyici](../classic/ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)ayarlamayı anlatan sürümüne bakın.
+Bu makale, ıLB kullanan bir dinleyici oluşturmaya odaklanır. Ortak veya dış dinleyiciye ihtiyacınız varsa, bu makalenin bir [dış dinleyiciyi](../classic/ps-sql-ext-listener.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)ayarlamayı ele alan sürümüne bakın.
 
-## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>Doğrudan sunucu iadesi ile yük dengeli VM uç noktaları oluşturma
-Önce bu bölümde daha sonra komut dosyası çalıştırarak bir ILB oluşturun.
+## <a name="create-load-balanced-vm-endpoints-with-direct-server-return"></a>Doğrudan sunucu dönüşü ile yük dengeli VM uç noktaları oluşturma
+İlk olarak bu bölümün ilerleyen kısımlarında betiği çalıştırarak bir ıLB oluşturursunuz.
 
-Azure yinelemesi barındıran her VM için yük dengeli bir bitiş noktası oluşturun. Birden çok bölgede yinelemeler varsa, bu bölge için her yineleme aynı Azure sanal ağında aynı bulut hizmetinde olmalıdır. Birden çok Azure bölgesine yayılan kullanılabilirlik grubu yinelemeleri oluşturmak için birden çok sanal ağ yapılandırmak gerekiyor. Çapraz sanal ağ bağlantısını yapılandırma hakkında daha fazla bilgi [için](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)bkz.
+Azure çoğaltması barındıran her VM için yük dengeli bir uç nokta oluşturun. Birden çok bölgede çoğaltmalar varsa, söz konusu bölgeye yönelik her çoğaltma aynı Azure sanal ağındaki aynı bulut hizmetinde olmalıdır. Birden çok Azure bölgesini kapsayan kullanılabilirlik grubu çoğaltmaları oluşturmak için birden çok sanal ağ yapılandırmanız gerekir. Çapraz sanal ağ bağlantısını yapılandırma hakkında daha fazla bilgi için bkz. [sanal ağı sanal ağ bağlantısı Ile yapılandırma](../../../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md).
 
-1. Azure portalında, ayrıntıları görüntülemek için bir yineleme barındıran her VM'ye gidin.
+1. Azure portal, ayrıntıları görüntülemek için bir çoğaltma barındıran her VM 'ye gidin.
 
-2. Her VM için **Uç Noktaları** sekmesini tıklatın.
+2. Her VM için **uç noktalar** sekmesine tıklayın.
 
-3. Kullanmak istediğiniz dinleyici bitiş noktasının **Adı** ve **Ortak Bağlantı Noktası'nın** zaten kullanılmadığını doğrulayın. Bu bölümdeki örnekte, adı *MyEndpoint*ve bağlantı noktası *1433*olduğunu.
+3. Kullanmak istediğiniz dinleyici uç noktasının **adının** ve **genel bağlantı noktasının** zaten kullanımda olmadığından emin olun. Bu bölümdeki örnekte, ad *myEndpoint*, bağlantı noktası *1433*' dir.
 
-4. Yerel istemcinizde, en son [PowerShell modüllerini](https://azure.microsoft.com/downloads/)indirin ve kurun.
+4. Yerel istemcinizdeki en son [PowerShell modülünü](https://azure.microsoft.com/downloads/)indirip yükleyin.
 
-5. Azure PowerShell'i başlatın.  
-    Azure yönetim modülleri yüklendi.
+5. Azure PowerShell başlatın.  
+    Yeni bir PowerShell oturumu açılarak Azure yönetim modülleri yüklendi.
 
-6. `Get-AzurePublishSettingsFile` öğesini çalıştırın. Bu cmdlet, yayımlama ayarları dosyasını yerel bir dizine indirmek için sizi bir tarayıcıya yönlendirir. Azure aboneliğiniz için oturum açma kimlik bilgileriniz istenebilir.
+6. `Get-AzurePublishSettingsFile` öğesini çalıştırın. Bu cmdlet, bir yayımlama ayarları dosyasını yerel bir dizine indirmek için sizi bir tarayıcıya yönlendirir. Azure aboneliğiniz için oturum açma kimlik bilgileriniz istenebilir.
 
-7. İndirdiğiniz `Import-AzurePublishSettingsFile` yayımlama ayarları dosyasının yolu ile aşağıdaki komutu çalıştırın:
+7. İndirdiğiniz yayımlama ayarları `Import-AzurePublishSettingsFile` dosyasının yoluyla aşağıdaki komutu çalıştırın:
 
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
 
     Yayımlama ayarları dosyası alındıktan sonra, Azure aboneliğinizi PowerShell oturumunda yönetebilirsiniz.
 
-8. *ILB*için statik bir IP adresi atayın. Aşağıdaki komutu çalıştırarak geçerli sanal ağ yapılandırmasını inceleyin:
+8. *ILB*için BIR statik IP adresi atayın. Şu komutu çalıştırarak geçerli sanal ağ yapılandırmasını inceleyin:
 
         (Get-AzureVNetConfig).XMLConfiguration
-9. Yinelemeleri barındıran VM'leri içeren alt ağ için *Alt net* adını not edin. Bu ad, komut dosyasındaki $SubnetName parametresinde kullanılır.
+9. Çoğaltmaları barındıran VM 'Leri içeren alt ağın *alt ağ* adını unutmayın. Bu ad, betikteki $SubnetName parametresinde kullanılır.
 
-10. Çoğaltmaları barındıran VM'leri içeren alt ağ için *VirtualNetworkSite* adını ve başlangıç *AdresÖnek'ini* not edin. Her iki değeri `Test-AzureStaticVNetIP` de komuta geçirerek ve Kullanılabilir *Adresler'i*inceleyerek kullanılabilir bir IP adresi arayın. Örneğin, sanal ağın adı *MyVNet* ise ve *172.16.0.128'de*başlayan bir alt net adresi aralığı varsa, aşağıdaki komut kullanılabilir adresleri listeler:
+10. Çoğaltmaları barındıran VM 'Leri içeren alt ağ için *Virtualnetworksite* adı ve başlangıç *adresispredüzeltmesini* unutmayın. Her iki değeri de `Test-AzureStaticVNetIP` komuta geçirerek ve *availableaddresses*inceleyerek kullanılabilir bir IP adresi arayın. Örneğin, sanal ağın adı *Myvnet* ise ve *172.16.0.128*adresinde başlayan bir alt ağ adres aralığı varsa, aşağıdaki komut kullanılabilir adresleri listeler:
 
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
-11. Kullanılabilir adreslerden birini seçin ve bir sonraki adımda komut dosyasının $ILBStaticIP parametresinde kullanın.
+11. Kullanılabilir adreslerden birini seçin ve sonraki adımda betiğin $ILBStaticIP parametresinde kullanın.
 
-12. Aşağıdaki PowerShell komut dosyasını bir metin düzenleyicisine kopyalayın ve değişken değerlerini ortamınıza uyacak şekilde ayarlayın. Varsayılanlar bazı parametreler için sağlanmıştır.  
+12. Aşağıdaki PowerShell betiğini bir metin düzenleyicisine kopyalayın ve değişken değerlerini ortamınıza uyacak şekilde ayarlayın. Bazı parametreler için varsayılanlar sağlanmış.  
 
-    Yakınlık gruplarını kullanan varolan dağıtımlar Bir ILB ekleyemez. ILB gereksinimleri hakkında daha fazla bilgi için [İç yük dengeleyicisi genel görünümüne](../../../load-balancer/load-balancer-internal-overview.md)bakın.
+    Benzeşim grupları kullanan mevcut dağıtımlar ıLB ekleyemez. ILB gereksinimleri hakkında daha fazla bilgi için bkz. [İç Yük Dengeleyiciye genel bakış](../../../load-balancer/load-balancer-internal-overview.md).
 
-    Ayrıca, kullanılabilirlik grubunuz Azure bölgelerine yayılıyorsa, bulut hizmeti ve bu veri merkezinde bulunan düğümler için komut dosyasını her veri merkezinde bir kez çalıştırmanız gerekir.
+    Ayrıca, kullanılabilirlik grubunuz Azure bölgelerini yaydığı takdirde, bu veri merkezinde bulunan bulut hizmeti ve düğümleri için her bir veri merkezinde betiği bir kez çalıştırmanız gerekir.
 
         # Define variables
         $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
@@ -105,9 +105,9 @@ Azure yinelemesi barındıran her VM için yük dengeli bir bitiş noktası olu�
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. Değişkenleri ayarladıktan sonra, çalıştırmak için komut dosyasını metin düzenleyicisinden PowerShell oturumunuza kopyalayın. Komut istemi hala **>>** gösteriliyorsa, komut dosyasının çalışmaya başladığından emin olmak için Enter'a yeniden basın.
+13. Değişkenleri ayarladıktan sonra dosyayı çalıştırmak için metin düzenleyicisinden betiği PowerShell oturumunuza kopyalayın. İstem hala gösteriyorsa **>>**, betiğin çalışmaya başlamasını sağlamak Için yeniden ENTER tuşuna basın.
 
-## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Gerekirse KB2854082 yüklü olduğunu doğrulayın
+## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>Gerekirse KB2854082 yüklendiğini doğrulayın
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
 
 ## <a name="open-the-firewall-ports-in-availability-group-nodes"></a>Kullanılabilirlik grubu düğümlerinde güvenlik duvarı bağlantı noktalarını açma
@@ -115,21 +115,21 @@ Azure yinelemesi barındıran her VM için yük dengeli bir bitiş noktası olu�
 
 ## <a name="create-the-availability-group-listener"></a>Kullanılabilirlik grubu dinleyicisini oluşturma
 
-Kullanılabilirlik grubu dinleyicisini iki adımda oluşturun. İlk olarak, istemci erişim noktası küme kaynağı oluşturmak ve bağımlılıkları yapılandırmak. İkinci olarak, PowerShell'deki küme kaynaklarını yapılandırın.
+Kullanılabilirlik grubu dinleyicisini iki adımda oluşturun. İlk olarak, istemci erişim noktası kümesi kaynağını oluşturun ve bağımlılıkları yapılandırın. İkincisi, PowerShell 'de küme kaynaklarını yapılandırın.
 
-### <a name="create-the-client-access-point-and-configure-the-cluster-dependencies"></a>İstemci erişim noktasını oluşturun ve küme bağımlılıklarını yapılandırın
+### <a name="create-the-client-access-point-and-configure-the-cluster-dependencies"></a>İstemci erişim noktasını oluşturma ve küme bağımlılıklarını yapılandırma
 [!INCLUDE [firewall](../../../../includes/virtual-machines-ag-listener-create-listener.md)]
 
-### <a name="configure-the-cluster-resources-in-powershell"></a>PowerShell'deki küme kaynaklarını yapılandırma
-1. ILB için, daha önce oluşturulan ILB IP adresini kullanmanız gerekir. PowerShell'de bu IP adresini elde etmek için aşağıdaki komut dosyasını kullanın:
+### <a name="configure-the-cluster-resources-in-powershell"></a>PowerShell 'de küme kaynaklarını yapılandırma
+1. ILB için, daha önce oluşturulmuş ıLB 'nin IP adresini kullanmanız gerekir. PowerShell 'de bu IP adresini almak için aşağıdaki betiği kullanın:
 
         # Define variables
         $ServiceName="<MyServiceName>" # the name of the cloud service that contains the AG nodes
         (Get-AzureInternalLoadBalancer -ServiceName $ServiceName).IPAddress
 
-2. VM'lerden birinde, işletim sisteminizin PowerShell komut dosyasını bir metin düzenleyicisine kopyalayın ve değişkenleri daha önce belirttiğiniz değerlere ayarlayın.
+2. VM 'lerden birinde, işletim sisteminizin PowerShell betiğini bir metin düzenleyicisine kopyalayın ve ardından değişkenleri daha önce not ettiğiniz değerlere ayarlayın.
 
-    Windows Server 2012 veya sonraki için aşağıdaki komut dosyasını kullanın:
+    Windows Server 2012 veya üzeri için aşağıdaki betiği kullanın:
 
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -140,7 +140,7 @@ Kullanılabilirlik grubu dinleyicisini iki adımda oluşturun. İlk olarak, iste
 
         Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
 
-    Windows Server 2008 R2 için aşağıdaki komut dosyasını kullanın:
+    Windows Server 2008 R2 için aşağıdaki betiği kullanın:
 
         # Define variables
         $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -151,10 +151,10 @@ Kullanılabilirlik grubu dinleyicisini iki adımda oluşturun. İlk olarak, iste
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. Değişkenleri ayarladıktan sonra, yükseltilmiş bir Windows PowerShell penceresi açın, metni metin düzenleyicisinden PowerShell oturumunuza yapıştırın. Komut istemi hala **>>** gösteriliyorsa, komut dosyasının çalışmaya başladığından emin olmak için Enter tuşuna basın.
+3. Değişkenleri ayarladıktan sonra, yükseltilmiş bir Windows PowerShell penceresi açın ve betiği çalıştırmak için metin düzenleyicisinden komut dosyasını PowerShell oturumunuza yapıştırın. İstem hala gösteriyorsa **>>**, betiğin çalışmaya devam ettiğinden emin olmak için ENTER tuşuna basın.
 
-4. Her VM için önceki adımları yineleyin.  
-    Bu komut dosyası, IP adresi kaynağını bulut hizmetinin IP adresiyle yapılandırır ve sonda bağlantı noktası gibi diğer parametreleri ayarlar. IP adresi kaynağı çevrimiçi duruma getirildiğinde, sonda bağlantı noktasındaki yoklamalara daha önce oluşturduğunuz yük dengeli bitiş noktasından yanıt verebilir.
+4. Her VM için önceki adımları tekrarlayın.  
+    Bu betik, IP adresi kaynağını bulut hizmetinin IP adresiyle yapılandırır ve araştırma bağlantı noktası gibi diğer parametreleri ayarlar. IP adresi kaynağı çevrimiçi duruma getirildiğinde, daha önce oluşturduğunuz yük dengeli uç noktadan yoklama bağlantı noktasındaki yoklamaya yanıt verebilir.
 
 ## <a name="bring-the-listener-online"></a>Dinleyiciyi çevrimiçi duruma getirin
 [!INCLUDE [Bring-Listener-Online](../../../../includes/virtual-machines-ag-listener-bring-online.md)]
@@ -162,7 +162,7 @@ Kullanılabilirlik grubu dinleyicisini iki adımda oluşturun. İlk olarak, iste
 ## <a name="follow-up-items"></a>İzleme öğeleri
 [!INCLUDE [Follow-up](../../../../includes/virtual-machines-ag-listener-follow-up.md)]
 
-## <a name="test-the-availability-group-listener-within-the-same-virtual-network"></a>Kullanılabilirlik grubu dinleyicisini test edin (aynı sanal ağ içinde)
+## <a name="test-the-availability-group-listener-within-the-same-virtual-network"></a>Kullanılabilirlik grubu dinleyicisini test etme (aynı sanal ağ içinde)
 [!INCLUDE [Test-Listener-Within-VNET](../../../../includes/virtual-machines-ag-listener-test.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
