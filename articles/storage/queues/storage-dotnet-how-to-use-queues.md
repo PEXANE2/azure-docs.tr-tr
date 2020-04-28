@@ -1,5 +1,5 @@
 ---
-title: .NET - Azure Depolama'yı kullanarak Azure Kuyruk depolamasına başlayın
+title: .NET-Azure Storage kullanarak Azure kuyruk depolama ile çalışmaya başlama
 description: Azure Queues, uygulama bileşenleri arasında güvenilir ve zaman uyumsuz mesajlaşma sağlar. Bulut mesajlaşma özelliği uygulama bileşenlerinizin bağımsız olarak ölçeklendirilmesini sağlar.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.openlocfilehash: 0806c1101c0bc93a1b917cb2d18709721ff0c6d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75968289"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>.NET kullanarak Azure Kuyruk Depolamaya başlayın
@@ -34,10 +34,10 @@ Bu öğreti, Azure kuyruk depolama kullanarak bazı genel senaryolar için .NET 
 ### <a name="prerequisites"></a>Ön koşullar
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [.NET için Azure Depolama ortak istemci kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-* [.NET için Azure Depolama Sırası istemci kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
+* [.NET için Azure Storage ortak istemci kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+* [.NET için Azure depolama kuyruğu istemci kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
 * [.NET için Azure Yapılandırma Yöneticisi](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
-* Azure [depolama hesabı](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+* Bir [Azure depolama hesabı](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -49,61 +49,61 @@ Ardından, geliştirme ortamınızı Visual Studio’da ayarlayın; böylece bu 
 
 ### <a name="create-a-windows-console-application-project"></a>Windows konsol uygulaması projesi oluşturma
 
-Visual Studio'da yeni bir Windows konsol uygulaması oluşturun. Aşağıdaki adımlar Visual Studio 2019'da nasıl bir konsol uygulaması oluşturabileceğinizi gösterir. Adımlar Visual Studio’nun diğer sürümlerinde de benzerdir.
+Visual Studio'da yeni bir Windows konsol uygulaması oluşturun. Aşağıdaki adımlarda, Visual Studio 2019 ' de bir konsol uygulamasının nasıl oluşturulacağı gösterilmektedir. Adımlar Visual Studio’nun diğer sürümlerinde de benzerdir.
 
-1. **Dosya** > **Yeni** > **Proje** seçin
-2. **Platform** > **Pencerelerini** Seçin
+1. **Dosya** > **New**yeni > **Proje** ' yi seçin
+2. **Platform** > **pencerelerini** seçin
 3. **Konsol Uygulaması (.NET Framework)** öğesini seçin
-4. **Sonraki'ni** Seçin
-5. Proje **adı** alanına, başvurunuz için bir ad girin
-6. **Oluştur**’u seçin
+4. **İleri** Seç
+5. **Proje adı** alanına uygulamanız için bir ad girin
+6. **Oluştur** ' u seçin
 
-Bu öğreticideki tüm kod örnekleri konsol uygulamanızın **Program.cs** dosyasının **Main()** yöntemine eklenebilir.
+Bu öğreticideki tüm kod örnekleri konsol uygulamanızın **program.cs** dosyasının **Main ()** yöntemine eklenebilir.
 
-Azure Depolama istemci kitaplıklarını, Azure bulut hizmeti veya web uygulaması ve masaüstü ve mobil uygulamalar da dahil olmak üzere her türlü .NET uygulamasında kullanabilirsiniz. Bu kılavuzda, sadeleştirmek için konsol uygulaması kullanmaktayız.
+Azure depolama istemci kitaplıklarını, Azure bulut hizmeti veya Web uygulaması, masaüstü ve mobil uygulamalar dahil olmak üzere herhangi bir türde .NET uygulamasında kullanabilirsiniz. Bu kılavuzda, sadeleştirmek için konsol uygulaması kullanmaktayız.
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>Gereken paketleri yüklemek için NuGet kullanma
 
-Bu öğreticiyi tamamlamak için projenizdeki aşağıdaki üç pakete başvurmanız gerekir:
+Bu öğreticiyi tamamlayabilmeniz için projenizde aşağıdaki üç pakete başvurmanız gerekir:
 
-* [.NET için Microsoft Azure Depolama Ortak İstemci Kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Bu paket, depolama hesabınızdaki veri kaynaklarına programlı erişim sağlar.
-* [.NET için Microsoft Azure Depolama Sırası Kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Bu istemci kitaplığı, istemci tarafından erişilebilen iletileri depolamak için Microsoft Azure Depolama Kuyruğu hizmetiyle çalışmayı sağlar.
+* [.Net Için ortak Istemci kitaplığı Microsoft Azure depolama](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/): Bu paket Depolama hesabınızdaki veri kaynaklarına programlı erişim sağlar.
+* [.NET için Microsoft Azure depolama kuyruk kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Bu istemci kitaplığı, bir istemci tarafından erişilebilecek iletileri depolamak için Microsoft Azure depolama kuyruk hizmeti birlikte çalışmaya izin verebilir.
 * [.NET için Microsoft Azure Configuration Manager Kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/): Bu paket, uygulamanızın nerede çalıştığına bakmaksızın yapılandırma dosyasından bağlantı dizesini ayrıştırmak için bir sınıf sağlar.
 
-Bu paketleri elde etmek için NuGet'i kullanabilirsiniz. Şu adımları uygulayın:
+Bu paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları uygulayın:
 
-1. **Solution Explorer'da**projenize sağ tıklayın ve **NuGet Paketlerini Yönet'i**seçin.
-2. **Gözat'ı** seçin
-3. "Microsoft.Azure.Storage.Queue" için çevrimiçi arama yapın ve Depolama istemcikitaplığını ve bağımlılıklarını yüklemek için **Yükle'yi** seçin. Bu, sıra kitaplığı bağımlılığı olan Microsoft.Azure.Storage.Common kitaplığını da yükler.
-4. "Microsoft.Azure.ConfigurationManager" için çevrimiçi arama yapın ve Azure Configuration Manager'ı yüklemek için **Yükle'yi** seçin.
+1. **Çözüm Gezgini**' de projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin.
+2. **Gözatmayı** Seç
+3. Çevrimiçi olarak "Microsoft. Azure. Storage. Queue" araması yapın ve depolama istemci kitaplığı 'nı ve bağımlılıklarını yüklemek için **yüklemeyi** seçin. Bu, kuyruk kitaplığının bağımlılığı olan Microsoft. Azure. Storage. Common kitaplığını da yükler.
+4. Çevrimiçi olarak "Microsoft. Azure. ConfigurationManager" ifadesini arayın ve Azure Configuration Manager yüklemek için **yüklemeyi** seçin.
 
 > [!NOTE]
-> Depolama istemci kitaplıkları paketleri de [.NET için Azure SDK'ya](https://azure.microsoft.com/downloads/)dahildir. Ancak, her zaman en son sürümlere sahip olduğundan emin olmak için NuGet'deki Depolama istemci kitaplıklarını da yüklemenizi öneririz.
+> Depolama istemci kitaplıkları paketleri de [.net Için Azure SDK 'sına](https://azure.microsoft.com/downloads/)dahildir. Ancak, her zaman en son sürümlere sahip olduğunuzdan emin olmak için depolama istemci kitaplıklarını NuGet 'ten de yüklemenizi öneririz.
 >
-> .NET için Depolama istemci kitaplıklarında oDataLib bağımlılıkları, WCF Veri Hizmetleri'nden değil, NuGet'de bulunan ODataLib paketleri tarafından çözülür. ODataLib kitaplıkları NuGet aracılığıyla doğrudan indirilebilir veya kod projenizle başvurulabilir. Depolama istemcikitaplıkları tarafından kullanılan belirli ODataLib paketleri [OData](https://nuget.org/packages/Microsoft.Data.OData/), [Edm](https://nuget.org/packages/Microsoft.Data.Edm/)ve [Uzamsal](https://nuget.org/packages/System.Spatial/). Bu kitaplıklar Azure Tablo depolama sınıfları tarafından kullanılırken, Depolama istemci kitaplıklarıyla programlama için gereken bağımlılıklardır.
+> .NET için depolama istemci kitaplıklarında ODataLib bağımlılıkları, WCF Veri Hizmetleri değil, NuGet 'de bulunan ODataLib paketleri tarafından çözümlenir. ODataLib kitaplıkları NuGet aracılığıyla doğrudan indirilebilir veya kod projenizle başvurulabilir. Depolama istemci kitaplıkları tarafından kullanılan belirli ODataLib paketleri [OData](https://nuget.org/packages/Microsoft.Data.OData/), [EDM](https://nuget.org/packages/Microsoft.Data.Edm/)ve [uzamsal](https://nuget.org/packages/System.Spatial/). Bu kitaplıklar Azure Tablo Depolama sınıfları tarafından kullanıldığından, depolama istemci kitaplıklarıyla programlama için gerekli bağımlılıklardır.
 
 ### <a name="determine-your-target-environment"></a>Hedef ortamınızı saptama
 
 Bu kılavuzdaki örnekleri çalıştırmak için iki ortam seçeneğiniz vardır:
 
 * Kodunuzu buluttaki bir Azure Storage hesabına karşı çalıştırabilirsiniz.
-* Kodunuzu Azure Storage öykünücüsüne karşı çalıştırabilirsiniz. Depolama öykünücüsü, buluttaki Azure Storage hesabına öykünen bir yerel ortamdır. Öykünücü, uygulamanız geliştirildiği sırada kodunuzu test etmek ve hatalarını ayıklamak için bağımsız bir seçenektir. Öykünücü iyi bilinen hesabı ve anahtarı kullanır. Daha fazla bilgi için bkz. Geliştirme [ve sınama için Azure depolama emülatörü kullanın.](../common/storage-use-emulator.md)
+* Kodunuzu Azure Storage öykünücüsüne karşı çalıştırabilirsiniz. Depolama öykünücüsü, buluttaki Azure Storage hesabına öykünen bir yerel ortamdır. Öykünücü, uygulamanız geliştirildiği sırada kodunuzu test etmek ve hatalarını ayıklamak için bağımsız bir seçenektir. Öykünücü iyi bilinen hesabı ve anahtarı kullanır. Daha fazla bilgi için bkz. [geliştirme ve test Için Azure depolama öykünücüsünü kullanma](../common/storage-use-emulator.md).
 
-Buluttaki bir depolama hesabını hedefliyorsanız, depolama hesabınız için birincil erişim anahtarını Azure portalından kopyalayın. Daha fazla bilgi için [bkz.](../common/storage-account-keys-manage.md)
+Buluttaki bir depolama hesabını hedefliyorsanız, depolama hesabınız için birincil erişim anahtarını Azure portalından kopyalayın. Daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../common/storage-account-keys-manage.md).
 
 > [!NOTE]
 > Azure Storage ile ilişkili maliyetlerin oluşmasını önlemek için depolama öykünücüsünü hedefleyebilirsiniz. Ancak, buluttaki bir Azure Storage hesabını hedeflemeyi seçerseniz, bu öğreticiyi gerçekleştirme maliyetleri göz ardı edilecektir.
 
 ### <a name="configure-your-storage-connection-string"></a>Depolama bağlantı dizelerinizi yapılandırma
 
-Depolama hizmetlerine erişmek için uç noktaları ve kimlik bilgilerini yapılandırmak için bir depolama bağlantı dizesi kullanarak .NET desteği için Azure Depolama istemcikitaplıkları. Depolama bağlantı dizenizi korumanın en iyi yolu bir yapılandırma dosyasında tutmaktır.
+Depolama hizmetlerine erişim için uç noktaları ve kimlik bilgilerini yapılandırmak üzere bir depolama bağlantı dizesi kullanarak .NET için Azure depolama istemci kitaplıkları desteği. Depolama bağlantı dizenizi korumanın en iyi yolu bir yapılandırma dosyasında tutmaktır.
 
-Bağlantı dizeleri hakkında daha fazla bilgi için [bkz.](../common/storage-configure-connection-string.md)
+Bağlantı dizeleri hakkında daha fazla bilgi için bkz. [Azure depolama için bağlantı dizesi yapılandırma](../common/storage-configure-connection-string.md).
 
 > [!NOTE]
 > Depolama hesabı anahtarınız depolama hesabınızın kök parolasına benzer. Depolama hesabı anahtarınızı korumak için her zaman özen gösterin. Diğer kullanıcılara dağıtmaktan, sabit kodlamaktan ve başkalarının erişebileceği düz metin dosyasına kaydetmekten kaçının. Anahtarınızın tehlikede olduğunu düşünüyorsanız, Azure portalını kullanarak hesap anahtarınızı yeniden oluşturun.
 
-Bağlantı dizenizi yapılandırmak için Visual Studio'daki Solution Explorer'ın **app.config** dosyasını açın. Aşağıda gösterilen ** \<appSettings\> ** öğesinin içeriğini ekleyin. *Hesap adını* depolama hesabınızın adıyla ve *hesap anahtarınızı* hesap erişim anahtarınızla değiştirin:
+Bağlantı dizenizi yapılandırmak için, Visual Studio 'daki Çözüm Gezgini **app. config** dosyasını açın. Aşağıda gösterilen ** \<appSettings\> ** öğesinin içeriğini ekleyin. *Hesap adını* , depolama hesabınızın adıyla ve hesap *anahtarı* ile hesap erişim anahtarınızla değiştirin:
 
 ```xml
 <configuration>
@@ -374,7 +374,7 @@ queue.Delete();
 Kuyruk depolamanın temellerini öğrendiğinize göre, daha karmaşık depolama görevleri hakkında daha fazla bilgi edinmek için bu bağlantıları takip edin:
 
 * Kullanılabilir API’ler ile ilgili eksiksiz bilgiler için Kuyruk hizmeti başvuru belgelerini görüntüleyin:
-  * [.NET başvurusu için Depolama İstemci Kitaplığı](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+  * [.NET için depolama Istemci kitaplığı başvurusu](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
   * [REST API başvurusu](https://msdn.microsoft.com/library/azure/dd179355)
 * [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) kullanarak Azure Storage ile birlikte çalışmak üzere yazdığınız kodları nasıl sadeleştireceğinizi öğrenin.
 * Azure’da veri depolama ile ilgili ek seçenekler hakkında daha fazla bilgi edinmek için daha fazla özellik kılavuzu görüntüleyin.

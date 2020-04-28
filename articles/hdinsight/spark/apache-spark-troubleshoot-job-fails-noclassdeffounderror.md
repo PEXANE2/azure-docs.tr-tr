@@ -1,6 +1,6 @@
 ---
-title: NoClassDefFoundError - Azure HDInsight'ta Apache Kafka verileriyle Apache Spark
-description: Apache Kafka kümesinden veri okuyan Apache Spark akış işi Azure HDInsight'taki NoClassDefFoundError ile başarısız olur
+title: Azure HDInsight 'ta Apache Kafka verilerle Noclassdeffounbir Apache Spark
+description: Bir Apache Kafka kümesinden verileri okuyan Apache Spark akış işi, Azure HDInsight 'ta Noclassdeffounbir hata ile başarısız oluyor
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 4659274110add96613ca88560edfb459b20a99cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75894341"
 ---
-# <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>Apache Kafka verilerini okuyan Apache Spark akış işi HDInsight'taki NoClassDefFoundError ile başarısız oldu
+# <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>Apache Kafka verileri okuyan Apache Spark akış işi HDInsight 'ta Noclassdeffounbir hata ile başarısız oluyor
 
-Bu makalede, Azure HDInsight kümelerinde Apache Spark bileşenleri kullanılırken sorun giderme adımları ve sorunların olası çözümleri açıklanmaktadır.
+Bu makalede, Azure HDInsight kümelerinde Apache Spark bileşenleri kullanılırken sorunlar için sorun giderme adımları ve olası çözümleri açıklanmaktadır.
 
 ## <a name="issue"></a>Sorun
 
-Apache Spark kümesi, apache Kafka kümesinden gelen verileri okuyan bir Kıvılcım akış işi çalıştırıyor. Kafka akışı sıkıştırması açıkolursa Kıvılcım akış işi başarısız olur. Bu durumda, Spark akış İplik uygulaması application_1525986016285_0193, hata nedeniyle başarısız oldu:
+Apache Spark kümesi, bir Apache Kafka kümesinden verileri okuyan bir Spark akış işi çalıştırır. Kafka akış sıkıştırması açıksa Spark akış işi başarısız olur. Bu durumda, Spark streaming Yarn uygulaması application_1525986016285_0193 hata nedeniyle başarısız oldu:
 
 ```
 18/05/17 20:01:33 WARN YarnAllocator: Container marked as failed: container_e25_1525986016285_0193_01_000032 on host: wn87-Scaled.2ajnsmlgqdsutaqydyzfzii3le.cx.internal.cloudapp.net. Exit status: 50. Diagnostics: Exception from container-launch.
@@ -32,9 +32,9 @@ Stack trace: ExitCodeException exitCode=50:
 
 ## <a name="cause"></a>Nedeni
 
-Bu hata, kavanoz dosyasının `spark-streaming-kafka` çalıştırdığınız Kafka kümesinin sürümünden farklı bir sürümünün belirtilmesiyle oluşabilir.
+Bu hata, çalıştırmakta olduğunuz Kafka kümesinin sürümünden farklı bir `spark-streaming-kafka` jar dosyası sürümü belirtilerek oluşabilir.
 
-Örneğin, Kafka küme sürümü 0.10.1 çalıştırıyorsanız, aşağıdaki komut bir hataya neden olur:
+Örneğin, bir Kafka Cluster sürüm 0.10.1 çalıştırıyorsanız, aşağıdaki komut bir hataya neden olur:
 
 ```
 spark-submit \
@@ -46,14 +46,14 @@ spark-submit \
 
 ## <a name="resolution"></a>Çözüm
 
-`–packages` Spark-gönder komutunu seçeneğiyle kullanın ve kıvılcım-streaming-kafka kavanoz dosyasının sürümünün çalıştırdığınız Kafka kümesinin sürümüyle aynı olduğundan emin olun.
+Spark-Gönder komutunu `–packages` seçeneğiyle kullanın ve Spark-streaming-Kafka jar dosyasının sürümünün çalıştırdığınız Kafka kümesinin sürümüyle aynı olduğundan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmediyseniz veya sorununuzu çözemiyorsanız, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-* [Azure Topluluk Desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıtlar alın.
+* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) Azure topluluğunu doğru kaynaklara bağlayarak müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın: yanıtlar, destek ve uzmanlar.
+* Azure Community [@AzureSupport](https://twitter.com/azuresupport) 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa, [Azure portalından](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **Destek'i** seçin veya **Yardım + destek** merkezini açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği nin nasıl oluşturulabildiğini](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)gözden geçirin. Abonelik Yönetimi'ne erişim ve faturalandırma desteği Microsoft Azure aboneliğinize dahildir ve Teknik Destek Azure [Destek Planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

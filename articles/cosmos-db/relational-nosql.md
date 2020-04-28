@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB NoSQL ve ilişkisel veritabanları arasındaki farkları anlama
-description: Bu makalede, NoSQL ve ilişkisel veritabanları arasındaki farkları sıralar
+description: Bu makalede NoSQL ve ilişkisel veritabanları arasındaki farklar numaralandırılır
 author: TheovanKraay
 ms.author: thvankra
 ms.service: cosmos-db
@@ -9,94 +9,94 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 1cd80fee51565f2a2c1afa38ed883c10f51a5ee3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75896629"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>NoSQL ve ilişkisel veritabanları arasındaki farkları anlama
 
-Bu makalede, ilişkisel veritabanları üzerinden NoSQL veritabanlarının bazı önemli yararları sıralanacaktır. NoSQL ile çalışırken karşılaşılan bazı zorlukları da tartışacağız. Var olan farklı veri depolarını derinlemesine bir şekilde inceleyin, [doğru veri deposunu seçme](https://docs.microsoft.com/azure/architecture/guide/technology-choices/data-store-overview)makalemize göz atın.
+Bu makalede, NoSQL veritabanlarının ilişkisel veritabanları üzerinde bazı önemli avantajlarından bazıları numaralandıralınacaktır. NoSQL ile çalışma konusundaki bazı güçlükleri de tartışacağız. Mevcut olan farklı veri depolarına derinlemesine bir bakış için [doğru veri deposunu seçme](https://docs.microsoft.com/azure/architecture/guide/technology-choices/data-store-overview)makalesindeki makaleye göz atın.
 
 ## <a name="high-throughput"></a>Yüksek verimlilik
 
-Bir ilişkisel veritabanı sistemi korurken en belirgin zorluklardan biri en ilişkisel motorlar sıkı [ACID semantics](https://en.wikipedia.org/wiki/ACID)uygulamak için kilitler ve mandallar uygulamak olduğunu. Bu yaklaşım, veritabanı içinde tutarlı bir veri durumu sağlama açısından yararları vardır. Ancak, eşzamanlılık, gecikme ve kullanılabilirlik açısından ağır trade-off vardır. Bu temel mimari kısıtlamalar nedeniyle, yüksek işlem hacimleri verileri el ile parçalama gereksinimine neden olabilir. Manuel parçalama uygulanması zaman alıcı ve ağrılı bir egzersiz olabilir.
+İlişkisel bir veritabanı sisteminin korunmasında en belirgin güçlüklerden biri, en ilişkisel altyapıların katı [ACID semantiğini](https://en.wikipedia.org/wiki/ACID)zorlayabilmesi için kilit ve kilitleme uygulamalarından biridir. Bu yaklaşım, veritabanı içinde tutarlı bir veri durumu sağlama açısından avantajlara sahiptir. Bununla birlikte, eşzamanlılık, gecikme süresi ve kullanılabilirliğine göre ağır bir denge vardır. Bu temel mimari kısıtlamalarından dolayı, yüksek işlem hacmi, verileri el ile parçalamayı ihtiyacını ortaya kaydedebilir. El ile parçalama uygulaması, zaman alan ve sorunsuz bir alıştırma olabilir.
 
-Bu senaryolarda, [dağıtılmış veritabanları](https://en.wikipedia.org/wiki/Distributed_database) daha ölçeklenebilir bir çözüm sunabilir. Ancak, bakım hala pahalı ve zaman alıcı bir egzersiz olabilir. Yöneticilerin, sistemin dağıtılmış yapısının saydam olduğundan emin olmak için ek iş yapmaları gerekebilir. Ayrıca veritabanının "bağlantısız" doğası için hesap gerekebilir.
+Bu senaryolarda, [Dağıtılmış veritabanları](https://en.wikipedia.org/wiki/Distributed_database) daha ölçeklenebilir bir çözüm sunabilir. Ancak, bakım hala maliyetli ve zaman alıcı bir alıştırma olabilir. Yöneticiler, sistemin dağıtılmış doğasını saydam olmasını sağlamak için ek çalışma yapmak zorunda kalabilir. Ayrıca, veritabanının "bağlantısı kesik" yapısına yönelik olarak da hesap gerektirebilir.
 
-[Azure Cosmos DB,](https://docs.microsoft.com/azure/cosmos-db/introduction) tüm Azure bölgelerinde dünya çapında dağıtılarak bu zorlukları basitleştirir. Bölüm aralıkları, veritabanını uygulamayla aynı anda aynı anda yüksek kullanılabilirlik korurken sorunsuz bir şekilde büyütecek şekilde dinamik olarak alt bölümlere ayrılabilir. İnce taneli çoklu kira ve sıkı bir şekilde kontrol edilen bulut-yerel kaynak [yönetimi, şaşırtıcı gecikme garantilerini](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-tradeoffs#consistency-levels-and-latency) ve öngörülebilir performansı kolaylaştırır. Bölümleme tam olarak yönetilir, bu nedenle yöneticilerin kod yazması veya bölümleri yönetmesi gerekmez.
+[Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction) , dünyanın tüm Azure bölgelerinde dağıtılarak bu zorlukları basitleştirir. Bölüm aralıklarının, uygulamayı uygulamayla birlikte sorunsuzca büyütmek için dinamik olarak alt ayrılabilir, ancak yüksek kullanılabilirliği eşzamanlı olarak sürdürmektedir. Ayrıntılı çok kiracılı ve sıkı bir şekilde denetlenen, bulutta yerel kaynak yönetimi, [astonçılık gecikmesi](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-tradeoffs#consistency-levels-and-latency) ve öngörülebilir performansı kolaylaştırır. Bölümlendirme tamamen yönetiliyor, bu nedenle yöneticilerin kod yazmak veya bölümleri yönetmesi gerekmez.
 
-İşlem birimleriniz saniyede binlerce işlem gibi aşırı düzeylere ulaşıyorsa, dağıtılmış bir NoSQL veritabanı nı göz önünde bulundurmalısınız. Maksimum verimlilik, bakım kolaylığı ve azaltılmış toplam sahip olma maliyeti için Azure Cosmos DB'yi düşünün.
+İşlem birimleriniz, saniyede binlerce işlem gibi çok büyük düzeylere ulaşıyorsanız, dağıtılmış bir NoSQL veritabanını göz önünde bulundurmanız gerekir. En yüksek verimlilik, bakım kolaylığı ve toplam sahip olma maliyetini azaltmak için Azure Cosmos DB göz önünde bulundurun.
 
 ![Arka uç](./media/relational-or-nosql/backend-scaled.png)
 
 ## <a name="hierarchical-data"></a>Hiyerarşik veriler
 
-Veritabanındaki hareketlerin birçok üst-alt ilişkisi içerebileceği önemli sayıda kullanım örnekleri vardır. Bu ilişkiler zaman içinde önemli ölçüde büyüyebilir ve yönetilmesi zor olabilir. [Hiyerarşik veritabanları](https://en.wikipedia.org/wiki/Hierarchical_database_model) formları 1980'lerde ortaya çıktı, ancak depolama verimsizliği nedeniyle popüler değildi. [Ted Codd'un ilişkisel modelinin](https://en.wikipedia.org/wiki/Relational_model) hemen hemen tüm ana veritabanı yönetim sistemleri tarafından kullanılan fiili standart haline geldikçe çekiş gücünü de kaybettiler.
+Veritabanındaki işlemlerin birçok üst-alt ilişki içerebildiği önemli sayıda kullanım durumu vardır. Bu ilişkiler zaman içinde önemli ölçüde büyüyebilir ve yönetimi zor olabilir. [Hiyerarşik veritabanlarının](https://en.wikipedia.org/wiki/Hierarchical_database_model) formları 1980s sırasında ortaya çıktı, ancak depolamada inefficiency nedeniyle popüler değildi. Ayrıca, aynı zamanda, yaygın olarak kullanılan tüm temel veritabanı yönetim sistemleri tarafından kullanılan standart bir standart haline geldiğinden, [düzenlenmiş Codd 'nin ilişkisel modeli](https://en.wikipedia.org/wiki/Relational_model) de de kaybedilir.
 
-Ancak, bugün belge tarzı veritabanlarının popülaritesi önemli ölçüde artmıştır. Bu veritabanları hiyerarşik veritabanı paradigmasının yeniden keşfedilmesi olarak kabul edilebilir, şimdi diskte veri depolama maliyeti ile ilgili endişeler tarafından sınırdışı. Sonuç olarak, ilişkisel bir veritabanında birçok karmaşık üst-alt varlık ilişkileri bakımı artık modern belge yönelimli yaklaşımlarile karşılaştırıldığında bir anti-desen olarak kabul edilebilir.
+Ancak, bugün belge stili veritabanlarının popülerliği önemli ölçüde artmıştır. Bu veritabanları hiyerarşik veritabanı paradigmasının yeniden oluşturulması, artık diskte veri depolama maliyetiyle ilgili sorunları ortadan kaldırmak olabilir. Sonuç olarak, bir ilişkisel veritabanında çok karmaşık üst-alt varlık ilişkilerinin sürdürülmesi artık modern belge odaklı yaklaşımlarla karşılaştırıldığında bir kenar yumuşatma olarak düşünülebilir.
 
-[Nesne yönelimli tasarımın](https://en.wikipedia.org/wiki/Object-oriented_design)ortaya çıkışı ve ilişkisel modellerle birleştirildiğinde ortaya çıkan [empedans uyumsuzluğu,](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch) belirli kullanım örnekleri için ilişkisel veritabanlarında bir anti-desen vurgulamaktadır. Gizli ama genellikle önemli bakım maliyetleri bir sonucu olarak ortaya çıkabilir. [ORM yaklaşımları](https://en.wikipedia.org/wiki/Object-relational_mapping) bunu kısmen hafifletmek için evrimleşmiş olsa da, belge yönelimli veritabanları yine de nesne yönelimli yaklaşımlarla çok daha iyi birleşir. Bu yaklaşımla, geliştiriciler ORM sürücüleri veya ısmarlama dil özel [OO Veritabanı motorları](https://en.wikipedia.org/wiki/Object_database)taahhüt olmak zorunda değildir. Verileriniz çok sayıda üst-alt ilişkisi ve derin hiyerarşi düzeyleri içeriyorsa, [Azure Cosmos DB SQL API](https://docs.microsoft.com/azure/cosmos-db/introduction)gibi bir NoSQL belge veritabanı kullanmayı düşünebilirsiniz.
+[Nesne yönelimli tasarımın](https://en.wikipedia.org/wiki/Object-oriented_design)ortaya çıkması ve ilişkisel modellerle birleştirilirken ortaya çıkan [Impedance uyuşmazlığının](https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch) yanı sıra, belirli kullanım durumları için ilişkisel veritabanlarında de bir kenar yumuşatma vurgulanıyor. Gizli ancak genellikle önemli bakım maliyetleri sonuç olarak ortaya çıkabilir. Bu, [ORM yaklaşımlarının](https://en.wikipedia.org/wiki/Object-relational_mapping) büyük ölçüde hafifletmek için geliştirilmiştir, ancak nesne odaklı yaklaşımlar sayesinde belge odaklı veritabanları Nonetheless. Bu yaklaşımda, geliştiriciler ORM sürücülerine veya Bespoke dile özgü Oo 'e özgü bir özel [veritabanı altyapısına](https://en.wikipedia.org/wiki/Object_database)kaydedilmesine zorlanmaz. Verileriniz çok sayıda üst-alt ilişkisi ve derinlemesine hiyerarşi düzeyleri içeriyorsa, [SQL API 'si](https://docs.microsoft.com/azure/cosmos-db/introduction)gibi bir NoSQL belge Azure Cosmos DB veritabanı kullanmayı düşünmek isteyebilirsiniz.
 
-![Orderdetails](./media/relational-or-nosql/order-orderdetails.jpg)
+![OrderDetails](./media/relational-or-nosql/order-orderdetails.jpg)
 
 ## <a name="complex-networks-and-relationships"></a>Karmaşık ağlar ve ilişkiler
 
-İronik olarak, adlarına verilen ilişkisel veritabanları, derin ve karmaşık ilişkileri modellemek için en uygun çözümden daha az bir çözüm sunar. Bunun nedeni, varlıklar arasındaki ilişkilerin ilişkisel bir veritabanında gerçekten bulunmamasıdır. Sorguları kullanarak eşleme sağlamak için kartezyen birleştirmegerektiren karmaşık ilişkiler le, çalışma zamanında hesaplanması gerekir. Sonuç olarak, ilişkiler arttıkça işlemler hesaplama açısından katlanarak daha pahalı hale gelir. Bazı durumlarda, bu tür varlıkları yönetmeye çalışan ilişkisel bir veritabanı kullanılamaz hale gelir.
+Kendi adı verildiğinde ilişkisel veritabanları, ayrıntılı ve karmaşık ilişkilerin modellenmesi için en iyi çözümü sunar. Bunun nedeni, varlıklar arasındaki ilişkilerin gerçekten ilişkisel bir veritabanında bulunmalarıdır. Sorguları kullanarak eşlemeye izin vermek için, Kartezyen birleşimler gerektiren karmaşık ilişkilerle çalışma zamanında hesaplanmaları gerekir. Sonuç olarak, ilişkiler artdıkça, işlemler hesaplama bakımından katlanarak daha pahalıdır hale gelir. Bazı durumlarda, söz konusu varlıkları yönetmeye çalışan ilişkisel bir veritabanı kullanılamaz hale gelir.
 
-"Ağ" veritabanlarının çeşitli biçimleri ilişkisel veritabanlarının ortaya çıktığı dönemde ortaya çıkmıştır, ancak hiyerarşik veritabanlarında olduğu gibi, bu sistemler popülerlik kazanmak için mücadele etti. Yavaş benimsenmesi, o dönemde ki kullanım durumlarının eksikliği ve depolama verimsizliklerinden kaynaklanıyordu. Bugün, grafik veritabanı motorları ağ veritabanı paradigmasının yeniden ortaya çıkması olarak kabul edilebilir. Bu sistemlerin en önemli yararı, ilişkilerin veritabanında "birinci sınıf vatandaşlar" olarak depolanmış olmasıdır. Böylece, geçiş ilişkileri her yeni birleştirme veya çapraz ürün ile zaman karmaşıklığı artan yerine, sabit bir süre içinde yapılabilir.
+"Ağ" veritabanlarının çeşitli biçimleri, ilişkisel veritabanlarının meydana getirme zamanı sırasında ortaya çıktı, ancak hiyerarşik veritabanlarında olduğu gibi, bu sistemler de popülerliği kazanmaya uğramıştır. Yavaş benimseme, zaman içinde kullanım örneklerinin olmamasından ve depolama verimsizlikleri kaynaklanıyor. Bugün grafik veritabanı motorları, ağ veritabanı paradigmasının bir yeniden ortaya çıkmasına kabul edilebilir. Bu sistemlerle ilgili önemli yarar, ilişkilerin veritabanı içinde "First Class vatandaşları" olarak depolanmasıdır. Bu nedenle, çapraz geçiş ilişkileri, her yeni JOIN veya Cross ürünüyle zaman karmaşıklığını artırmak yerine sabit zamanlı olarak yapılabilir.
 
-Veritabanınızda karmaşık bir ilişki ağı sürdürüyorsanız, bu verileri yönetmek için Azure [Cosmos DB Gremlin API](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) gibi bir grafik veritabanını göz önünde bulundurmak isteyebilirsiniz.
+Veritabanınızda karmaşık bir ilişki ağı bulundururken, bu verileri yönetmek için [Azure Cosmos DB Gremlin API 'si](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) gibi bir grafik veritabanını göz önünde bulundurmanız gerekebilir.
 
 ![Graf](./media/relational-or-nosql/graph.png)
 
-Azure Cosmos DB, tüm büyük NoSQL model türleri için API projeksiyonu sunan çok modelli bir veritabanı hizmetidir; Sütun-aile, Belge, Grafik ve Anahtar Değeri. [Gremlin (grafik)](https://docs.microsoft.com/azure/cosmos-db/gremlin-support) ve SQL (Core) Belge API katmanları tamamen birlikte çalışabilir. Bu, programlanabilirlik düzeyinde farklı modeller arasında geçiş yapmak için yararları vardır. Grafik depoları, hem karmaşık ağ geçişleri hem de aynı mağazada belge kayıtları olarak modellenen hareketler açısından sorgulanabilir.
+Azure Cosmos DB, tüm ana NoSQL model türleri için bir API projeksiyonu sunan çok modelli bir veritabanı hizmetidir; Sütun ailesi, belge, grafik ve anahtar değeri. [Gremlin (grafik)](https://docs.microsoft.com/azure/cosmos-db/gremlin-support) ve SQL (çekirdek) belge API 'si katmanları tamamen birlikte kullanılabilir. Bu, programlama düzeyinde farklı modeller arasında geçiş avantajlarına sahiptir. Grafik depoları hem karmaşık ağ traversals hem de aynı depodaki belge kayıtları olarak modellenen işlemler bakımından sorgulanabilir.
 
-## <a name="fluid-schema"></a>Sıvı şeması
+## <a name="fluid-schema"></a>Akışkan şeması
 
-İlişkisel veritabanlarının bir diğer özel özelliği de şemaların tasarım zamanında tanımlanması gerektiğidir. Bu, referans bütünlüğü ve verilerin uygunluğu açısından yararları vardır. Ancak, uygulama büyüdükçe de kısıtlayıcı olabilir. Aynı tabloyu veya veritabanı tanımını paylaşan mantıksal olarak ayrı modellerdeki şemadaki değişikliklere yanıt vermek zaman içinde karmaşık hale gelebilir. Bu tür kullanım örnekleri genellikle şema uygulama için kayıt bazında yönetmek için devolved olan yarar. Bu, veritabanının "şema agnostik" olmasını ve kayıtların içlerinde bulunan veriler açısından "kendi kendini tanımlamasına" olanak sağlar.
+İlişkisel veritabanlarının özel bir özelliği, şemaların tasarım zamanında tanımlanması gerekir. Bu, bilgi tutarlılığı ve verilerin uygunluk açısından avantajlara sahiptir. Ancak, uygulama büyüdükçe da kısıtlayıcı olabilir. Aynı tabloyu veya veritabanı tanımını paylaşan mantıksal olarak ayrı modeller genelinde şemadaki değişikliklere yanıt verme zaman içinde karmaşık olabilir. Bu tür kullanım örnekleri genellikle uygulama için bir kayıt esasına göre yönetilmesi gereken şemadan faydalanır. Bu, veritabanının "şema belirsiz" olmasını gerektirir ve kayıtların içerdikleri veriler bakımından "kendi kendine açıklama" olmasını sağlar.
 
-Yapıları sürekli olarak yüksek oranda değişen verileri yönetiyorsanız, özellikle de işlemler veritabanında uygunluğu zorlamanın zor olduğu dış kaynaklardan geliyorsa, daha şema-agnostik bir yaklaşım göz önünde bulundurmak isteyebilirsiniz Azure Cosmos DB gibi yönetilen bir NoSQL veritabanı hizmetini kullanarak.
+Yapıları sürekli olarak yüksek bir hızda değişen verileri yönetiyorsanız, özellikle işlemler veritabanı genelinde uygunluk özelliğinin zorlanmasını zorlaştırıyorsa dış kaynaklardan geliyorsa, Azure Cosmos DB gibi yönetilen bir NoSQL veritabanı hizmetini kullanarak daha şemaya dayalı bir yaklaşım düşünmek isteyebilirsiniz.
 
 ## <a name="microservices"></a>Mikro hizmetler
 
-[Mikrohizmetler](https://en.wikipedia.org/wiki/Microservices) modeli son yıllarda önemli ölçüde büyüdü. Bu örüntün, [Hizmet Yönelimli Mimari'ye](https://en.wikipedia.org/wiki/Service-oriented_architecture)dayanır. Bu modern mikrohizmetler mimarilerinde veri iletimi için de-facto standart [JSON](https://en.wikipedia.org/wiki/JSON), aynı zamanda belge odaklı NoSQL Veritabanları büyük çoğunluğu için depolama aracı olur. Bu, NoSQL belgesinin karmaşık Microservice uygulamaları arasında hem kalıcılık hem de senkronizasyon [(olay kaynak desenleri](https://en.wikipedia.org/wiki/Event-driven_architecture)kullanarak) için çok daha sorunsuz bir uyum sağlar. Daha geleneksel ilişkisel veritabanları bu mimarilerde korumak için çok daha karmaşık olabilir. Bunun nedeni, API'ler arasında hem durum hem de eşitleme için gereken dönüşüm miktarının artmasıdır. Özellikle Azure Cosmos DB, JSON tabanlı Microservices Architectures için birçok NoSQL veritabanından daha sorunsuz bir uyum sağlayan bir dizi özelliğe sahiptir:
+[Mikro hizmetler](https://en.wikipedia.org/wiki/Microservices) stili, son yıllarda önemli ölçüde artmıştır. Bu düzenin, [hizmet yönelimli mimaride](https://en.wikipedia.org/wiki/Service-oriented_architecture)kökleri vardır. Bu modern mikro hizmet mimarilerinde veri iletimi için de standart olarak, belge odaklı NoSQL veritabanlarının büyük çoğunluğunun depolama ortamı olarak da gerçekleşen [JSON](https://en.wikipedia.org/wiki/JSON)' dır. Bu, NoSQL belge mağazalarını karmaşık mikro hizmet uygulamalarında hem kalıcılık hem de eşitleme (olay kaynağını belirleme [düzenlerini](https://en.wikipedia.org/wiki/Event-driven_architecture)kullanarak) için çok daha sorunsuz bir şekilde sığdırmasını sağlar. Daha geleneksel ilişkisel veritabanları, bu mimarilerde sürdürmek için çok daha karmaşık olabilir. Bunun nedeni, API 'lerde hem durum hem de eşitleme için gereken daha büyük dönüştürme miktarıdır. Özellikle Azure Cosmos DB, çok sayıda NoSQL veritabanından JSON tabanlı mikro hizmet mimarileri için daha sorunsuz bir şekilde uyum sağlayan çeşitli özelliklere sahiptir:
 
 * saf JSON veri türleri seçimi
-* veritabanında yerleşik bir JavaScript altyapısı ve [sorgu API'si.](https://docs.microsoft.com/azure/cosmos-db/javascript-query-api)
-* bir kapsayıcıda yapılan değişikliklerden haberdar olmak için istemcilerin abone olabileceği son teknoloji [değişiklik akışı.](https://docs.microsoft.com/azure/cosmos-db/change-feed)
+* veritabanına yerleşik bir JavaScript altyapısı ve [sorgu API 'si](https://docs.microsoft.com/azure/cosmos-db/javascript-query-api) .
+* bir kapsayıcıda yapılan değişiklikler hakkında bildirim almak için istemcilerin abone olabileceği bir grafik durumu [değişikliği akışı](https://docs.microsoft.com/azure/cosmos-db/change-feed) .
 
-## <a name="some-challenges-with-nosql-databases"></a>NoSQL veritabanları ile bazı zorluklar
+## <a name="some-challenges-with-nosql-databases"></a>NoSQL veritabanlarıyla ilgili bazı sorunlar
 
-NoSQL veritabanlarını uygularken bazı net avantajlar olsa da, dikkate almak isteyebileceğin bazı zorluklar da vardır. Bunlar ilişkisel modelle çalışırken aynı derecede mevcut olmayabilir:
+NoSQL veritabanlarını uygularken bazı avantajlar olsa da, dikkate almanız isteyebileceğiniz bazı sorunlar da vardır. Bu, ilişkisel modelle çalışırken aynı ölçüde bulunmayabilir:
 
-* aynı varlığa işaret eden birçok ilişki ile işlemler.
-* tüm veri kümesi nde güçlü tutarlılık gerektiren hareketler.
+* aynı varlığa işaret eden çok sayıda ilişki içeren işlemler.
+* Tüm veri kümesi genelinde güçlü tutarlılık gerektiren işlemler.
 
-İlk soruna bakıldığında, NoSQL veritabanlarındaki kural kuralı genellikle daha önce ifade edildiği gibi dağıtılmış bir sistemde daha verimli okumalar üreten normalleştirmedir. Ancak, bu yaklaşım ile devreye giren bazı tasarım zorlukları vardır. Bir kategori ve birden çok etiketle ilgili bir ürün ebakalım:
+İlk sınamayı inceledikten sonra, NoSQL veritabanlarındaki parmak izi, daha önce bahsedilen ve dağıtılmış bir sistemde daha verimli okumalar üreten bir şekilde genel kullanıma sunulmuştur. Ancak, bu yaklaşımla birlikte oynatacak bazı tasarım zorlukları vardır. Tek bir kategori ve birden çok etiketle ilgili bir ürüne örnek alalım:
 
 ![Birleştirme](./media/relational-or-nosql/many-joins.png)
 
-NoSQL belge veritabanındaki en iyi uygulama yaklaşımı, kategori adını ve etiket adlarını doğrudan bir "ürün belgesinde" normalden çıkarmaktır. Ancak, kategorileri, etiketleri ve ürünleri eşit tutmak için, verileri "bir-çok" basit bir güncelleştirme olmak yerine üründeki birden çok kayıt arasında çoğaltıldığından, bunu kolaylaştıracak tasarım seçenekleri bakım karmaşıklığı nı ekledi. ve verileri almak için birleşim. 
+NoSQL belge veritabanında en iyi yöntem yaklaşımı, kategori adı ve etiket adlarını doğrudan bir "ürün belgesi" içinde kabul etmek olacaktır. Ancak, kategorileri, etiketleri ve ürünleri eşitlenmiş halde tutmak için, verilerin bir "bire çok" ilişkisinde basit bir güncelleştirme olması yerine ürün içindeki birden çok kayıtta yinelendiği ve verileri almak için bir JOIN olduğundan, bu işlemi kolaylaştırmak için tasarım seçenekleri, bakım karmaşıklığı ekledi. 
 
-Dengeleme, okumaların normale dönüşen kayıtta daha verimli olması ve kavramsal olarak birleştirilmiş varlıkların sayısı arttıkça giderek daha verimli hale gelmesidir. Ancak, normalileştirme kaydında birleştirilmiş varlıkların sayısı arttıkça, okuma verimliliği de artarsa, varlıkları eşit tutmanın bakım karmaşıklığı da artar. Bu trade-off azaltmanın bir [yolu, karma](https://docs.microsoft.com/azure/cosmos-db/modeling-data#hybrid-data-models)bir veri modeli oluşturmaktır.
+Bir denge, yoğun olarak kullanılan kayıt sırasında okumaların daha verimlidir ve kavramsal olarak katılmış varlıkların sayısı arttıkça giderek daha verimli hale gelir. Ancak, artan bir kayıttaki birleştirilmiş varlıkların sayısını artırarak okuma verimliliği arttıkça, varlıkların eşitlenmiş durumda tutulması için de bakım karmaşıklığı da artar. Bu ticareti azaltıcı bir yol, [karma veri modeli](https://docs.microsoft.com/azure/cosmos-db/modeling-data#hybrid-data-models)oluşturmaktır.
 
-NoSQL veritabanlarında bu dengelerle başa çıkmak için daha fazla esneklik olsa da, artan esneklik daha fazla tasarım kararı da üretebilir. [Azure Cosmos DB'deki verileri,](https://docs.microsoft.com/azure/cosmos-db/how-to-model-partition-example)kullanıcıların yalnızca farklı bölümlerde değil, farklı kapsayıcılarda da aynı [anda eşitlenmiş](https://docs.microsoft.com/azure/cosmos-db/how-to-model-partition-example#denormalizing-usernames) olarak senkronize tutma yaklaşımını içeren gerçek dünya örneğini kullanarak verileri nasıl modelleyip bölümlere ayıracağınız makalemize başvurun.
+NoSQL veritabanlarında bu ticaretle başa çıkmak için daha fazla esneklik olsa da, artan esneklik daha fazla tasarım kararı verebilir. [Bir gerçek dünya örneği kullanarak Azure Cosmos DB verileri modelleyerek ve bölümleyerek](https://docs.microsoft.com/azure/cosmos-db/how-to-model-partition-example), kullanıcıların yalnızca farklı bölümlerde, ancak farklı kapsayıcılarda yer aldıkları yerde, [eşitlenmiş Kullanıcı verilerinin eşzamanlı](https://docs.microsoft.com/azure/cosmos-db/how-to-model-partition-example#denormalizing-usernames) tutulması için bir yaklaşım içeren, bu makaleye bakın.
 
-Güçlü tutarlılık açısından, bu tüm veri kümesi boyunca gerekli olacaktır nadirdir. Ancak, bunun gerekli olduğu durumlarda, dağıtılmış veritabanlarında bir sorun olabilir. Güçlü tutarlılık sağlamak için, istemcilerin okumasına izin vermeden önce verilerin tüm yinelemeler ve bölgeler arasında eşitlemesi gerekir. Bu, okumaların gecikmesini artırabilir.
+Güçlü tutarlılığa göre, bunun tüm veri kümesi için gerekli olacağı nadir bir durumdur. Ancak, bunun gerekli olduğu durumlarda, dağıtılmış veritabanlarında bir zorluk olabilir. Güçlü tutarlılık sağlamak için, istemcilerin bu verileri okumasına izin vermeden önce tüm çoğaltmalarda ve bölgelerde eşitlenmesi gerekir. Bu, okuma gecikmesini artırabilir.
 
-Yine, Azure Cosmos DB burada ilgili çeşitli dengeler için ilişkisel veritabanlarıdaha fazla esneklik sunar, ancak küçük ölçekli uygulamalar için bu yaklaşım daha fazla tasarım konuları ekleyebilirsiniz. Bu konuda daha fazla ayrıntı için [Tutarlılık, kullanılabilirlik ve performans dengeleri](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-tradeoffs) hakkındaki makalemize başvurun.
+Azure Cosmos DB, burada alakalı olan çeşitli olanaklar için ilişkisel veritabanlarından daha fazla esneklik sunar, ancak küçük ölçekli uygulamalar için bu yaklaşım daha fazla tasarım konusunda dikkat edebilir. Bu konuda daha fazla ayrıntı için [tutarlılık, kullanılabilirlik ve performans avantajları](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-tradeoffs) hakkında makalemize bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Cosmos hesabınızı ve diğer kavramları nasıl yöneteceklerini öğrenin:
+Azure Cosmos hesabınızı ve diğer kavramları yönetmeyi öğrenin:
 
 * [Azure Cosmos hesabınızı yönetme](how-to-manage-database-account.md)
-* [Küresel dağıtım](distribute-data-globally.md)
+* [Genel dağıtım](distribute-data-globally.md)
 * [Tutarlılık düzeyleri](consistency-levels.md)
 * [Azure Cosmos kapsayıcıları ve öğeleriyle çalışma](databases-containers-items.md)
-* [Azure Cosmos hesabınız için VNET hizmet bitiş noktası](vnet-service-endpoint.md)
-* [Azure Cosmos hesabınız için IP güvenlik duvarı](firewall-support.md)
-* [Azure Cosmos hesabınıza Azure bölgeleri ekleme ve kaldırma](how-to-manage-database-account.md)
-* [Azure Cosmos DB SLA'lar](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+* [Azure Cosmos hesabınız için VNET hizmeti uç noktası](vnet-service-endpoint.md)
+* [Azure Cosmos hesabınız için IP-güvenlik duvarı](firewall-support.md)
+* [Azure Cosmos hesabınıza Azure bölgelerini ekleme ve kaldırma](how-to-manage-database-account.md)
+* [Azure Cosmos DB SLA 'Lar](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

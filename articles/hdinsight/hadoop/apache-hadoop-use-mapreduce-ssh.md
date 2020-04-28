@@ -1,6 +1,6 @@
 ---
-title: Apache Hadoop ile MapReduce ve SSH bağlantısı - Azure HDInsight
-description: HDInsight'ta Apache Hadoop kullanarak MapReduce işlerini çalıştırmak için SSH'yi nasıl kullanacağınızı öğrenin.
+title: Apache Hadoop-Azure HDInsight ile MapReduce ve SSH bağlantısı
+description: HDInsight üzerinde Apache Hadoop kullanarak MapReduce işlerini çalıştırmak için SSH 'yi nasıl kullanacağınızı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,45 +9,45 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
 ms.openlocfilehash: 543bc29adc85bd767de9479607d067fadf7b0078
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75934710"
 ---
-# <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>SSH ile HDInsight'ta Apache Hadoop ile MapReduce'ı kullanın
+# <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>HDInsight üzerinde Apache Hadoop MapReduce 'yi SSH ile kullanma
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Secure Shell (SSH) bağlantısından HDInsight'a MapReduce işlerini nasıl göndereceğinizi öğrenin.
+MapReduce işlerinin bir Secure Shell (SSH) bağlantısından HDInsight 'a nasıl göndereceğini öğrenin.
 
 > [!NOTE]
-> Linux tabanlı Apache Hadoop sunucularını kullanmaya zaten aşinaysanız, ancak HDInsight'ta yeniyseniz, [Linux tabanlı HDInsight ipuçlarına](../hdinsight-hadoop-linux-information.md)bakın.
+> Linux tabanlı Apache Hadoop sunucuları kullanmayı zaten biliyorsanız, ancak HDInsight 'a yeni bir adım daha sahipseniz bkz. [Linux tabanlı HDInsight ipuçları](../hdinsight-hadoop-linux-information.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-HDInsight'ta bir Apache Hadoop kümesi. Bkz. [Azure portalını kullanarak Apache Hadoop kümeleri oluşturun.](../hdinsight-hadoop-create-linux-clusters-portal.md)
+HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="use-hadoop-commands"></a>Hadoop komutlarını kullanma
 
-1. Kümenize bağlanmak için [ssh komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME'yi kümenizin adıyla değiştirerek aşağıdaki komutu düzenleme ve ardından komutu girin:
+1. Kümenize bağlanmak için [SSH komutunu](../hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. HDInsight kümesine bağlandıktan sonra, MapReduce işini başlatmak için aşağıdaki komutu kullanın:
+1. HDInsight kümesine bağlandıktan sonra, bir MapReduce işi başlatmak için aşağıdaki komutu kullanın:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    Bu komut, `wordcount` `hadoop-mapreduce-examples.jar` dosyada bulunan sınıfı başlatır. Belgeyi `/example/data/gutenberg/davinci.txt` giriş olarak kullanır ve çıktı `/example/data/WordCountOutput`.
+    Bu komut, `hadoop-mapreduce-examples.jar` dosyasında `wordcount` bulunan sınıfını başlatır. `/example/data/gutenberg/davinci.txt` Belgeyi girdi olarak kullanır ve çıkış konumunda `/example/data/WordCountOutput`depolanır.
 
     > [!NOTE]
-    > Bu MapReduce işi ve örnek veriler hakkında daha fazla bilgi için, [HDInsight'ta Apache Hadoop'ta MapReduce'i kullanın.](hdinsight-use-mapreduce.md)
+    > Bu MapReduce işi ve örnek veriler hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop MapReduce kullanma](hdinsight-use-mapreduce.md).
 
-    İş, işlerken ayrıntıları yayar ve iş tamamlandığında aşağıdaki metne benzer bilgileri döndürür:
+    İş, işleme yaptığı sırada ayrıntıları yayar ve iş tamamlandığında aşağıdaki metne benzer bilgiler döndürür:
 
     ```output
     File Input Format Counters
@@ -62,10 +62,10 @@ HDInsight'ta bir Apache Hadoop kümesi. Bkz. [Azure portalını kullanarak Apach
     hdfs dfs -ls /example/data/WordCountOutput
     ```
 
-    Bu komut iki `_SUCCESS` dosya `part-r-00000`görüntüler ve . Dosya, `part-r-00000` bu işin çıktısını içerir.
+    Bu komut, ve `_SUCCESS` `part-r-00000`olarak iki dosya görüntüler. `part-r-00000` Dosya bu iş için çıktıyı içerir.
 
     > [!NOTE]  
-    > Bazı MapReduce işleri sonuçları birden çok **part-r-#######** dosyasına bölebilir. Bu durumda, dosyaların sırasını belirtmek için ##### soneki kullanın.
+    > Bazı MapReduce işleri, sonuçları birden çok **Part-r-#** # # # # dosyasında bölebilir. Bu durumda, dosyaların sırasını göstermek için # # # # # sonekini kullanın.
 
 1. Çıktıyı görüntülemek için aşağıdaki komutu kullanın:
 
@@ -73,7 +73,7 @@ HDInsight'ta bir Apache Hadoop kümesi. Bkz. [Azure portalını kullanarak Apach
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    Bu komut, **wasbs://example/data/gutenberg/davinci.txt** dosyasında bulunan sözcüklerin listesini ve her sözcüğün kaç kez oluştuğunu görüntüler. Aşağıdaki metin, dosyada bulunan verilere bir örnektir:
+    Bu komut, **wasbs://example/Data/Gutenberg/DaVinci.txt** dosyasında yer alan sözcüklerin listesini ve her sözcüğün kaç kez oluştuğunu görüntüler. Aşağıdaki metin, dosyasında yer alan verilerin bir örneğidir:
 
     ```output
     wreathed        3
@@ -87,7 +87,7 @@ HDInsight'ta bir Apache Hadoop kümesi. Bkz. [Azure portalını kullanarak Apach
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Gördüğünüz gibi, Hadoop komutları MapReduce işlerini bir HDInsight kümesinde çalıştırmak ve ardından iş çıktısını görüntülemek için kolay bir yol sağlar. HDInsight'ta Hadoop ile çalışabileceğiniz diğer yollar hakkında bilgi için:
+Görebileceğiniz gibi, Hadoop komutları bir HDInsight kümesinde MapReduce işlerini çalıştırmanın kolay bir yolunu sağlar ve sonra iş çıktısını görüntüler. HDInsight 'ta Hadoop ile birlikte çalışmak için kullanabileceğiniz diğer yollar hakkında daha fazla bilgi için:
 
-* [HDInsight Hadoop'ta MapReduce'i kullanın](hdinsight-use-mapreduce.md)
-* [HDInsight'ta Apache Hadoop ile Apache Hive kullanın](hdinsight-use-hive.md)
+* [HDInsight Hadoop üzerinde MapReduce kullanma](hdinsight-use-mapreduce.md)
+* [HDInsight üzerinde Apache Hadoop ile Apache Hive kullanma](hdinsight-use-hive.md)

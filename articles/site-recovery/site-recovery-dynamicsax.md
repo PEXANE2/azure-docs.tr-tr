@@ -1,185 +1,185 @@
 ---
-title: Azure Site Kurtarma ile Dynamics AX'in olağanüstü kurtarma
-description: Azure Site Kurtarma ile Dynamics AX için olağanüstü durum kurtarma yı nasıl ayarlayamanızı öğrenin
+title: Azure Site Recovery ile Dynamics AX olağanüstü durum kurtarma
+description: Azure Site Recovery ile Dynamics AX için olağanüstü durum kurtarmayı ayarlamayı öğrenin
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75941584"
 ---
-# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Çok katmanlı Dynamics AX uygulaması için olağanüstü durum kurtarma yı ayarlama   
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Çok katmanlı Dynamics AX uygulaması için olağanüstü durum kurtarmayı ayarlama   
 
 
 
 
- Dynamics AX, işletmeler tarafından konumlar daki süreçleri standartlaştırmak, kaynakları yönetmek ve uyumluluğu basitleştirmek için kullanılan en popüler ERP çözümlerinden biridir. Uygulama bir kuruluş için çok önemli olduğundan, bir felaket durumunda uygulamanın en az süre içinde çalışır durumda olması gerekir.
+ Dynamics AX, kuruluşlar tarafından konumlar arasında işlem standartlaştırmak, kaynakları yönetmek ve uyumluluğu basitleştirmek için kullanılan en popüler ERP çözümlerinin biridir. Uygulama bir kuruluş için kritik olduğundan, bir olağanüstü durum durumunda uygulamanın en kısa sürede çalışıyor ve çalışır durumda olması gerekir.
 
-Bugün, Dynamics AX herhangi bir out-of-the-box olağanüstü durum kurtarma yetenekleri sağlamaz. Dynamics AX, Windows Application Object Server, Azure Active Directory, Azure SQL Database, SharePoint Server ve Reporting Services gibi birçok sunucu bileşeninden oluşur. Bu bileşenlerin her birinin olağanüstü durum kurtarma yönetmek için el ile sadece pahalı değil, aynı zamanda hata eğilimli.
+Günümüzde Dynamics AX, kullanıma hazır bir olağanüstü durum kurtarma özelliği sağlamıyor. Dynamics AX, Windows uygulama nesne sunucusu, Azure Active Directory, Azure SQL veritabanı, SharePoint Server ve Raporlama Hizmetleri gibi birçok sunucu bileşeninden oluşur. Bu bileşenlerin her birinin olağanüstü durum kurtarmayı yönetmek için yalnızca pahalı değildir, ayrıca hataya açıktır.
 
-Bu makalede, [Azure Site Kurtarma'yı](site-recovery-overview.md)kullanarak Dynamics AX uygulamanız için nasıl olağanüstü durum kurtarma çözümü oluşturabileceğiniz açıklanmaktadır. Ayrıca, tek tıklamayla kurtarma planı, desteklenen yapılandırmalar ve ön koşullar kullanarak planlanmış/planlanmamış test hatalarını da kapsar.
+Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak Dynamics AX uygulamanız için nasıl olağanüstü durum kurtarma çözümü oluşturabileceğiniz açıklanmaktadır. Ayrıca tek tıklamayla kurtarma planı, desteklenen konfigürasyonlar ve Önkoşullar kullanılarak planlı/planlanmamış test yük devretmeleri de ele alınmaktadır.
 
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Site Kurtarma'yı kullanarak Dynamics AX uygulaması için olağanüstü durum kurtarma uygulaması aşağıdaki ön koşulları gerektirir:
+Site Recovery kullanarak Dynamics AX uygulaması için olağanüstü durum kurtarmayı uygulamak aşağıdaki önkoşulları gerektirir:
 
-• Şirket içi Dynamics AX dağıtımını ayarlayın.
+• Şirket içi Dynamics AX dağıtımı kurun.
 
-• Azure aboneliğinde Site Kurtarma kasası oluşturun.
+• Azure aboneliğinde bir Site Recovery Kasası oluşturun.
 
-• Azure kurtarma sitenizse, Sanal Makinelere Hazırlık Değerlendirme aracını SANAL M'lerde çalıştırın. Azure Sanal Makineleri ve Site Kurtarma hizmetleriyle uyumlu olmalıdır.
+• Azure kurtarma siteniz ise VM 'lerde Azure sanal makine hazır olma durumu değerlendirmesi aracını çalıştırın. Azure sanal makineler ve Site Recovery hizmetleriyle uyumlu olmaları gerekir.
 
 ## <a name="site-recovery-support"></a>Site Recovery desteği
 
-Bu makaleyi oluşturmak amacıyla, Windows Server 2012 R2 Enterprise dynamics AX 2012 R3 ile VMware sanal makineleri kullandık. Site Kurtarma çoğaltma uygulama agnostik olduğundan, burada sağlanan önerilerin aşağıdaki senaryolar için tutunmasını bekliyoruz.
+Bu makaleyi oluşturmak amacıyla, Windows Server 2012 R2 Enterprise üzerinde Dynamics AX 2012 R3 ile VMware sanal makinelerini kullandık. Site Recovery çoğaltma uygulama belirsiz olduğundan, aşağıdaki senaryolar için aşağıda belirtilen önerileri bekletireceğiz.
 
 ### <a name="source-and-target"></a>Kaynak ve hedef
 
-**Senaryo** | **İkincil siteye** | **Azure'a**
+**Senaryo** | **İkincil siteye** | **Azure 'a**
 --- | --- | ---
-**Hyper-V** | Evet | Evet
-**VMware** | Evet | Evet
-**Fiziksel sunucu** | Evet | Evet
+**Hyper-V** | Yes | Yes
+**VMware** | Yes | Yes
+**Fiziksel sunucu** | Yes | Yes
 
-## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Site Kurtarma'yı kullanarak Dynamics AX uygulamasının olağanüstü durum kurtarmasını etkinleştirin
+## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Site Recovery kullanarak Dynamics AX uygulamasının olağanüstü durum kurtarma özelliğini etkinleştirme
 ### <a name="protect-your-dynamics-ax-application"></a>Dynamics AX uygulamanızı koruyun
-Uygulama çoğaltma ve kurtarmanın tamamını etkinleştirmek için Dynamics AX'ın her bileşeninin korunması gerekir.
+Tüm uygulama çoğaltmasını ve kurtarmayı etkinleştirmek için, Dynamics AX 'in her bir bileşeni korunmalıdır.
 
-### <a name="1-set-up-active-directory-and-dns-replication"></a>1. Active Directory ve DNS çoğaltma sını ayarlama
+### <a name="1-set-up-active-directory-and-dns-replication"></a>1. Active Directory ve DNS çoğaltmasını ayarlama
 
-Dynamics AX uygulamasının çalışması için olağanüstü durum kurtarma alanında Etkin Dizin gereklidir. Müşterinin şirket içi ortamının karmaşıklığına bağlı olarak aşağıdaki iki seçeneği öneririz.
+Dynamics AX uygulamasının çalışması için olağanüstü durum kurtarma sitesinde Active Directory gereklidir. Müşterinin Şirket içi ortamının karmaşıklığına göre aşağıdaki iki seçeneği öneririz.
 
 **Seçenek 1**
 
-Müşteri, tüm şirket içi site için az sayıda uygulamaya ve tek bir etki alanı denetleyicisine sahiptir ve tüm site boyunca birlikte başarısız olmayı planlamaktadır. Etki alanı denetleyici makinesini ikincil bir siteye çoğaltmak için Site Kurtarma çoğaltmaişlemini kullanmanızı öneririz (hem siteden siteye hem de siteden Azure'a senaryolar için geçerlidir).
+Müşterinin, tüm şirket içi site için az sayıda uygulama ve tek bir etki alanı denetleyicisi vardır ve tüm siteyi birlikte devretmek için plan yapın. Etki alanı denetleyicisi makinesini ikincil bir siteye çoğaltmak için Site Recovery çoğaltma kullanmanızı öneririz (hem siteden siteye ve siteden Azure senaryolarına yönelik senaryolar için geçerlidir).
 
 **Seçenek 2**
 
-Müşteri çok sayıda uygulamaya sahiptir ve bir Active Directory ormanı çalıştırıyor ve aynı anda birkaç uygulama üzerinde başarısız olmayı planlıyor. Olağanüstü durum kurtarma sitesinde (ikincil bir site veya Azure'da) ek bir etki alanı denetleyicisi ayarlamanızı öneririz.
+Müşterinin çok sayıda uygulaması vardır ve bir Active Directory ormanı çalıştırıyor ve aynı anda birkaç uygulamanın yük devredebildiğini planlıyor. Olağanüstü durum kurtarma sitesinde (ikincil bir site veya Azure 'da) ek bir etki alanı denetleyicisi ayarlamanızı öneririz.
 
- Daha fazla bilgi için [bkz.](site-recovery-active-directory.md) Bu belgenin geri kalanı için, olağanüstü durum kurtarma sitesinde bir etki alanı denetleyicisi olduğunu varsayıyoruz.
+ Daha fazla bilgi için bkz. bir [etki alanı denetleyicisini olağanüstü durum kurtarma sitesinde kullanılabilir hale getirme](site-recovery-active-directory.md). Bu belgenin geri kalanında, bir etki alanı denetleyicisinin olağanüstü durum kurtarma sitesinde kullanılabilir olduğunu varsaytık.
 
-### <a name="2-set-up-sql-server-replication"></a>2. SQL Server çoğaltma sını ayarlama
-SQL katmanını korumak için önerilen seçenek hakkında teknik kılavuz için [bkz.](site-recovery-sql.md)
+### <a name="2-set-up-sql-server-replication"></a>2. SQL Server çoğaltma ayarla
+SQL katmanını korumaya yönelik önerilen seçenek hakkında teknik yönergeler için bkz. [SQL Server ve Azure Site Recovery ile uygulamaları çoğaltma](site-recovery-sql.md).
 
-### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. Dynamics AX istemcisi ve Uygulama Nesnesi Sunucusu VM'leri için koruma yı etkinleştirin
-VM'lerin [Hyper-V](site-recovery-hyper-v-site-to-azure.md) veya [VMware'de](site-recovery-vmware-to-azure.md)dağıtılıp dağıtılmadığına bağlı olarak ilgili Site Kurtarma yapılandırmasını gerçekleştirin.
+### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. Dynamics AX İstemcisi ve uygulama nesne sunucusu VM 'Leri için korumayı etkinleştirme
+Sanal makinelerin [Hyper-V](site-recovery-hyper-v-site-to-azure.md) veya [VMware](site-recovery-vmware-to-azure.md)üzerinde dağıtılmış olup olmadığına bağlı olarak ilgili Site Recovery yapılandırmasını gerçekleştirin.
 
 > [!TIP]
-> Kilitlenme tutarlıfrekansını 15 dakikaolarak yapılandırmanızı öneririz.
+> Kilitlenme tutarlılığı sıklığını 15 dakika olarak yapılandırmanızı öneririz.
 >
 
-Aşağıdaki anlık görüntü, Bir VMware siteden Azure'a koruma senaryosunda Dinamikbileşeni VM'lerin koruma durumunu gösterir.
+Aşağıdaki anlık görüntüde, bir VMware siteden Azure koruma senaryosunda Dynamics-Component VM 'lerinin koruma durumu gösterilmektedir.
 
 ![Korumalı öğeler](./media/site-recovery-dynamics-ax/protecteditems.png)
 
-### <a name="4-configure-networking"></a>4. Ağ yapılandırma
-**VM bilgi işlem ve ağ ayarlarını yapılandırma**
+### <a name="4-configure-networking"></a>4. ağı yapılandırma
+**VM işlem ve ağ ayarlarını yapılandırma**
 
-Dynamics AX istemcisi ve Application Object Server VM'ler için, Site Kurtarma'daki ağ ayarlarını yapılandırın, böylece VM ağları başarısız olduktan sonra doğru olağanüstü durum kurtarma ağına iliştirilir. Bu katmanlar için olağanüstü durum kurtarma ağının SQL katmanına uygun olduğundan emin olun.
+Dynamics AX istemci ve uygulama nesne sunucusu VM 'Leri için Site Recovery ağ ayarlarını yapılandırarak VM ağlarının yük devretme sonrasında doğru olağanüstü durum kurtarma ağına eklenmesini sağlayın. Bu katmanlara yönelik olağanüstü durum kurtarma ağının SQL katmanına yönlendirilebilir olduğundan emin olun.
 
-Aşağıdaki anlık görüntüde gösterildiği gibi, ağ ayarlarını yapılandırmak için çoğaltılan öğelerde VM'yi seçebilirsiniz:
+Aşağıdaki anlık görüntüde gösterildiği gibi, ağ ayarlarını yapılandırmak için çoğaltılan öğelerde sanal makineyi seçebilirsiniz:
 
-* Application Object Server sunucuları için doğru kullanılabilirlik kümesini seçin.
+* Uygulama nesne sunucusu sunucuları için doğru kullanılabilirlik kümesini seçin.
 
-* Statik bir IP kullanıyorsanız, VM'nin **Hedef IP** metin kutusuna almasını istediğiniz IP'yi belirtin.
+* Statik IP kullanıyorsanız, VM 'nin **hedef IP** metin kutusunda kullanmasını istediğiniz IP 'yi belirtin.
 
     ![Ağ ayarları](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
-### <a name="5-create-a-recovery-plan"></a>5. Kurtarma planı oluşturma
+### <a name="5-create-a-recovery-plan"></a>5. bir kurtarma planı oluşturun
 
-Başarısız lık işlemini otomatikleştirmek için Site Kurtarma'da bir kurtarma planı oluşturabilirsiniz. Kurtarma planına bir uygulama katmanı ve web katmanı ekleyin. Ön uç uygulama katmanından önce kapanacak şekilde farklı gruplar halinde sipariş edin.
+Yük devretme işlemini otomatikleştirmek için Site Recovery ' de bir kurtarma planı oluşturabilirsiniz. Kurtarma planına bir uygulama katmanı ve bir Web katmanı ekleyin. Ön ucun uygulama katmanından önce kapanması için bunları farklı gruplar halinde sıralayın.
 
-1. Aboneliğinizdeki Site Kurtarma kasasını ve **Kurtarma Planları** döşemesini seçin.
+1. Aboneliğinizde Site Recovery kasasını seçin ve **kurtarma planları** kutucuğunu seçin.
 
-2. **+ Kurtarma planını**seçin ve bir ad belirtin.
+2. **+ Kurtarma planı**' nı seçin ve bir ad belirtin.
 
-3. **Kaynak** ve **Hedef'i**seçin. Hedef Azure veya ikincil bir site olabilir. Azure'u seçerseniz, dağıtım modelini belirtmeniz gerekir.
+3. **Kaynağı** ve **hedefi**seçin. Hedef Azure veya ikincil bir site olabilir. Azure ' u seçerseniz, dağıtım modelini belirtmeniz gerekir.
 
     ![Kurtarma planı oluşturma](./media/site-recovery-dynamics-ax/recoveryplancreation1.png)
 
-4. Kurtarma planı için Uygulama Nesnesi Sunucusu'nu ve istemci VM'lerini seçin ve ✓'yi seçin.
+4. Kurtarma planı için uygulama nesne sunucusunu ve istemci VM 'lerini seçin ve ✓ seçin.
 
-    ![Öğeleri seçin](./media/site-recovery-dynamics-ax/selectvms.png)
+    ![Öğeleri seç](./media/site-recovery-dynamics-ax/selectvms.png)
 
     Kurtarma planı örneği:
 
     ![Kurtarma planı ayrıntıları](./media/site-recovery-dynamics-ax/recoveryplan.png)
 
-Dynamics AX uygulaması için kurtarma planını aşağıdaki adımları ekleyerek özelleştirebilirsiniz. Önceki anlık görüntü, tüm adımları ekledikten sonra tam kurtarma planını gösterir.
+Aşağıdaki adımları ekleyerek Dynamics AX uygulaması için kurtarma planını özelleştirebilirsiniz. Önceki anlık görüntü, tüm adımları ekledikten sonra kurtarma planının tamamını gösterir.
 
 
-* **SQL Server failover adımları**: SQL sunucusuna özgü kurtarma adımları hakkında bilgi için [SQL Server ve Azure Site Kurtarma ile Çoğaltma uygulamalarına](site-recovery-sql.md)bakın.
+* **SQL Server yük devretme adımları**: SQL Server 'a özgü kurtarma adımları hakkında daha fazla bilgi için, bkz. [SQL Server ve Azure Site Recovery ile çoğaltma uygulamaları](site-recovery-sql.md).
 
-* **Failover Grup 1**: Uygulama Nesnesi Sunucusu VM'leri üzerinde başarısız olur.
-Seçilen kurtarma noktasının veritabanı PIT'e mümkün olduğunca yakın olduğundan, ancak bunun öncesinde olmadığından emin olun.
+* **Yük devretme grubu 1**: uygulama nesne sunucusu VM 'lerinin yükünü devreder.
+Seçilen kurtarma noktasının veritabanının PIT için mümkün olduğunca yakın olduğundan emin olun, ancak bunun önüne geçin.
 
-* **Komut Dosyası**: Yük dengeleyici (sadece E-A) ekleyin.
-Uygulama Nesnesi Sunucusu VM grubu ortaya çıktıktan sonra bir komut dosyası (Azure Otomasyonu üzerinden) ekleyin ve buna bir yük dengeleyici ekleyin. Bu görevi yapmak için bir komut dosyası kullanabilirsiniz. Daha fazla bilgi için, [çok katmanlı uygulama felaket kurtarma için bir yük dengeleyici eklemek için nasıl](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/)bakın.
+* **Betik**: yük dengeleyici ekleyin (yalnızca E-A).
+Uygulama nesne sunucusu VM grubu, kendisine yük dengeleyici eklemek üzere olduktan sonra bir betik (Azure Otomasyonu aracılığıyla) ekleyin. Bu görevi yapmak için bir komut dosyası kullanabilirsiniz. Daha fazla bilgi için bkz. [çok katmanlı uygulama olağanüstü durum kurtarma için yük dengeleyici ekleme](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/).
 
-* **Failover Group 2**: Dynamics AX istemcisi VM'leri üzerinde başarısız. Kurtarma planının bir parçası olarak web katmanı VM'ler üzerinde başarısız.
+* **Yük devretme grubu 2**: Dynamics AX istemci VM 'lerinin yükünü devreder. Kurtarma planının bir parçası olarak Web katmanı VM 'lerini devreder.
 
 
-### <a name="perform-a-test-failover"></a>Bir test başarısız yapma
+### <a name="perform-a-test-failover"></a>Yük devretme testi gerçekleştirme
 
-Test başarısız olması sırasında Active Directory'ye özgü daha fazla bilgi için "Active Directory olağanüstü durum kurtarma çözümü" yardımcı kılavuzuna bakın.
+Yük devretme testi sırasında Active Directory özgü daha fazla bilgi için, Active Directory "olağanüstü durum kurtarma çözümü" yardımcı kılavuzuna bakın.
 
-Test başarısızolması sırasında SQL sunucusuna özgü daha fazla bilgi için [bkz.](site-recovery-sql.md)
+Yük devretme testi sırasında SQL Server 'a özgü daha fazla bilgi için bkz. [SQL Server ve Azure Site Recovery ile uygulamaları çoğaltma](site-recovery-sql.md).
 
-1. Azure portalına gidin ve Site Kurtarma kasanızı seçin.
+1. Azure portal gidin ve Site Recovery kasanızı seçin.
 
 2. Dynamics AX için oluşturulan kurtarma planını seçin.
 
 3. **Yük Devretme Testi**'ni seçin.
 
-4. Test başarısız etme işlemini başlatmak için sanal ağı seçin.
+4. Yük devretme testi işlemini başlatmak için sanal ağı seçin.
 
-5. İkincil ortam dolduktan sonra, doğrulamalarınızı gerçekleştirebilirsiniz.
+5. İkincil ortam açıldıktan sonra, doğrulamaları gerçekleştirebilirsiniz.
 
-6. Doğrulamalar tamamlandıktan **sonra, Doğrulamalar tamamlandı** ve test başarısız ortamı temizlenir' seçeneğini belirleyin.
+6. Doğrulamalar tamamlandıktan sonra, **doğrulamaları Tamam** ' ı seçin ve yük devretme testi ortamı temizlenir.
 
-Bir test başarısızlığına ilişkin daha fazla bilgi için, [Site Kurtarma'da Azure'a test başarısızlığına](site-recovery-test-failover-to-azure.md)bakın.
+Yük devretme testi gerçekleştirme hakkında daha fazla bilgi için bkz. [Azure 'a yük devretmeyi test etme Site Recovery](site-recovery-test-failover-to-azure.md).
 
-### <a name="perform-a-failover"></a>Bir failover gerçekleştirin
+### <a name="perform-a-failover"></a>Yük devretme gerçekleştirme
 
-1. Azure portalına gidin ve Site Kurtarma kasanızı seçin.
+1. Azure portal gidin ve Site Recovery kasanızı seçin.
 
 2. Dynamics AX için oluşturulan kurtarma planını seçin.
 
-3. **Failover'ı**seçin ve **Failover'ı**seçin.
+3. **Yük devretmeyi**seçin ve **Yük devretme**' yı seçin.
 
-4. Hedef ağı seçin ve başarısız lık işlemini başlatmak için **✓'yi** seçin.
+4. Hedef ağı seçin ve yük devretme işlemini başlatmak için **✓** ' ı seçin.
 
-Bir failover yapma hakkında daha fazla bilgi için, [Site Kurtarma Failover](site-recovery-failover.md)bakın.
+Yük devretme yapma hakkında daha fazla bilgi için bkz. [Site Recovery 'de yük devretme](site-recovery-failover.md).
 
 ### <a name="perform-a-failback"></a>Yeniden çalışma gerçekleştirme
 
-Failback sırasında SQL Server'a özgü hususlar [için](site-recovery-sql.md)bkz.
+Yeniden çalışma sırasında SQL Server özgü konular için bkz. [uygulamaları SQL Server ve Azure Site Recovery çoğaltma](site-recovery-sql.md).
 
-1. Azure portalına gidin ve Site Kurtarma kasanızı seçin.
+1. Azure portal gidin ve Site Recovery kasanızı seçin.
 
 2. Dynamics AX için oluşturulan kurtarma planını seçin.
 
-3. **Failover'ı**seçin ve **Failover'ı**seçin.
+3. **Yük devretmeyi**seçin ve **Yük devretme**' yı seçin.
 
-4. **Yönü Değiştir'i**seçin.
+4. **Yönü Değiştir**' i seçin.
 
 5. Uygun seçenekleri seçin: veri eşitleme ve VM oluşturma.
 
-6. **Failback** işlemini başlatmak için ✓'yi seçin.
+6. Yeniden çalışma işlemini başlatmak için **✓** öğesini seçin.
 
 
-Bir geri ödeme yapma hakkında daha fazla bilgi için [Azure'dan şirket içi failback VMware VM'lere](site-recovery-failback-azure-to-vmware.md)bakın.
+Yeniden çalışma yapma hakkında daha fazla bilgi için bkz. [Azure 'dan şirket içine yeniden çalışma VMware VM 'leri](site-recovery-failback-azure-to-vmware.md).
 
 ## <a name="summary"></a>Özet
-Site Kurtarma'yı kullanarak Dynamics AX uygulamanız için tam bir otomatik olağanüstü durum kurtarma planı oluşturabilirsiniz. Bir aksaklık durumunda, herhangi bir yerden saniyeler içinde arıza işlemini başlatabilir ve uygulamayı dakikalar içinde çalıştırabilirsiniz.
+Site Recovery kullanarak, Dynamics AX uygulamanız için tamamen bir otomatik olağanüstü durum kurtarma planı oluşturabilirsiniz. Kesinti durumunda, yük devretmeyi her yerden Saniyeler içinde başlatabilir ve birkaç dakika içinde uygulamayı çalışır duruma getirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Site Kurtarma ile kurumsal iş yüklerini koruma hakkında daha fazla bilgi edinmek için [bkz.](site-recovery-workload.md)
+Site Recovery ile kurumsal iş yüklerini koruma hakkında daha fazla bilgi için bkz. [hangi iş yüklerini koruyabilirim?](site-recovery-workload.md).

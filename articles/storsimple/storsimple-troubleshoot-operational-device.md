@@ -1,6 +1,6 @@
 ---
-title: Dağıtılan StorSimple aygıtının sorun giderme sorunu | Microsoft Dokümanlar
-description: Şu anda dağıtılan ve çalışır durumda olan bir StorSimple aygıtında oluşan hataların nasıl tanılanıp düzeltileni açıklar.
+title: Dağıtılan bir StorSimple cihazında sorun giderme | Microsoft Docs
+description: Şu anda dağıtılmış ve çalışır durumda olan bir StorSimple cihazında oluşan hataların nasıl tanılandığını ve çözüleceğini açıklar.
 services: storsimple
 documentationcenter: NA
 author: twooley
@@ -15,56 +15,56 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: twooley
 ms.openlocfilehash: ca79e4240c1a82e46bea44a9d018a3c681920480
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75933287"
 ---
-# <a name="troubleshoot-an-operational-storsimple-device"></a>Operasyonel bir StorSimple aygıtının sorun giderme
+# <a name="troubleshoot-an-operational-storsimple-device"></a>İşletimsel StorSimple cihazında sorun giderme
 > [!NOTE]
 > StorSimple için klasik portal kullanım dışıdır. StorSimple Cihaz Yöneticileriniz, yeni Azure portalına kullanımdan kaldırma zamanlamasına göre otomatik olarak taşınacaktır. Bu taşımayla ilgili bir e-posta ve portal bildirimi alacaksınız. Bu belge de yakında kullanımdan kaldırılacaktır. Taşıma hakkında tüm sorularınız için bkz. [SSS: Azure portalına taşıma](storsimple-8000-move-azure-portal-faq.md).
 
 ## <a name="overview"></a>Genel Bakış
-Bu makalede, StorSimple aygıtınız dağıtıldıktan ve kullanıma çıktıktan sonra karşılaşabileceğiniz yapılandırma sorunlarını çözmek için yararlı sorun giderme kılavuzu sağlar. Microsoft Azure StorSimple'ı çalıştırDığınızda karşılaşabileceğiniz sorunları çözmenize yardımcı olacak sık karşılaşılan sorunları, olası nedenleri ve önerilen adımları açıklar. Bu bilgiler hem StorSimple şirket içi fiziksel aygıt hem de StorSimple sanal aygıtı için geçerlidir.
+Bu makalede, StorSimple cihazınız dağıtıldıktan ve çalışır duruma geçtikten sonra karşılaşabileceğiniz yapılandırma sorunlarını çözmek için yararlı sorun giderme kılavuzu sağlanmıştır. Microsoft Azure StorSimple çalıştırdığınızda karşılaşabileceğiniz sorunları çözmenize yardımcı olmak için sık karşılaşılan sorunları, olası nedenleri ve önerilen adımları açıklar. Bu bilgiler hem StorSimple şirket içi fiziksel cihaz hem de StorSimple Sanal cihazı için geçerlidir.
 
-Bu makalenin sonunda, Microsoft Azure StorSimple işlemi sırasında karşılaşabileceğiniz hata kodlarının bir listesini ve hataları gidermek için atabileceğiniz adımları bulabilirsiniz. 
+Bu makalenin sonunda, Microsoft Azure StorSimple işlem sırasında karşılaşabileceğiniz hata kodlarının bir listesini ve hataları çözmek için uygulayabileceğiniz adımları bulabilirsiniz. 
 
-## <a name="setup-wizard-process-for-operational-devices"></a>Operasyonel aygıtlar için kurulum sihirbazı işlemi
-Aygıt yapılandırmasını denetlemek ve gerekirse düzeltici eylemde bulunmanız için kurulum sihirbazını[(Invoke-HcsSetupWizard)][1]kullanırsınız.
+## <a name="setup-wizard-process-for-operational-devices"></a>İşletimsel cihazlar için Kurulum Sihirbazı işlemi
+Cihaz yapılandırmasını denetlemek ve gerekirse düzeltici eylemi gerçekleştirmek için Kurulum Sihirbazı 'nı ([Invoke-HcsSetupWizard][1]) kullanabilirsiniz.
 
-Kurulum sihirbazını önceden yapılandırılmış ve operasyonel bir aygıtta çalıştırdığınızda, işlem akışı farklıdır. Yalnızca aşağıdaki girişleri değiştirebilirsiniz:
+Daha önce yapılandırılmış ve işlemsel bir cihazda Kurulum Sihirbazı 'nı çalıştırdığınızda, işlem akışı farklıdır. Yalnızca aşağıdaki girdileri değiştirebilirsiniz:
 
 * IP adresi, alt ağ maskesi ve ağ geçidi
 * Birincil DNS sunucusu
 * Birincil NTP sunucusu
-* İsteğe bağlı web proxy yapılandırması
+* İsteğe bağlı Web proxy yapılandırması
 
-Kurulum sihirbazı parola toplama ve aygıt kaydıyla ilgili işlemleri gerçekleştirmez.
+Kurulum Sihirbazı, parola toplama ve cihaz kaydı ile ilgili işlemleri gerçekleştirmez.
 
 ## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>Kurulum sihirbazının sonraki çalıştırmaları sırasında oluşan hatalar
-Aşağıdaki tabloda, bir operasyonel aygıtta kurulum sihirbazını çalıştırdığınızda karşılaşabileceğiniz hatalar, hataların olası nedenleri ve bunları gidermek için önerilen eylemler açıklanmaktadır. 
+Aşağıdaki tabloda, işletimsel bir cihazda Kurulum Sihirbazı 'nı çalıştırdığınızda karşılaşabileceğiniz hatalar, hataların olası nedenleri ve bunları çözmek için önerilen işlemler açıklanmaktadır. 
 
-| Hayır. | Hata iletisi veya koşul | Olası nedenler | Önerilen eylem |
+| Hayır. | Hata iletisi veya koşulu | Olası nedenler | Önerilen eylem |
 |:--- |:--- |:--- |:--- |
-| 1 |Hata 350032: Bu aygıt zaten devre dışı bırakıldı. |Devre dışı bırakılan bir aygıtta kurulum sihirbazını çalıştırdığınızda bu hatayı görürsünüz. |Sonraki adımlar için [Microsoft Destek'e başvurun.](storsimple-contact-microsoft-support.md) Devre dışı bırakılmış bir aygıt hizmete konulamıyor. Aygıtın yeniden etkinleştirilen önce bir fabrika sıfırlaması gerekebilir. |
-| 2 |Invoke-HcsSetupWizard : ERROR_INVALID_FUNCTION(HRESULT'dan İstisna: 0x80070001) |DNS sunucu güncelleştirmesi başarısız oluyor. DNS ayarları genel ayarlardır ve etkin ağ arabirimleriboyunca uygulanır. |Arabirimi etkinleştirin ve DNS ayarlarını yeniden uygulayın. Bu ayarlar genel olduğundan, diğer etkin arabirimler için ağ bozabilir. |
-| 3 |Aygıt StorSimple Manager hizmet portalında çevrimiçi gibi görünür, ancak minimum kurulumu tamamlamaya ve yapılandırmayı kaydetmeye çalıştığınızda işlem başarısız olur. |İlk kurulum sırasında, web proxy yerinde gerçek bir proxy sunucusu olmasına rağmen, yapılandırılmamada. |Hatayı bulmak için [Test-HcsmConnection cmdlet'i][2] kullanın. Sorunu düzeltemiyorsanız [Microsoft Destek'e başvurun.](storsimple-contact-microsoft-support.md) |
-| 4 |Invoke-HcsSetupWizard: Değer beklenen aralıkta düşmez. |Yanlış bir alt ağ maskesi bu hatayı üretir. Olası nedenler şunlardır: <ul><li> Alt ağ maskesi eksik veya boş.</li><li>Ipv6 öneki biçimi yanlış.</li><li>Arabirim bulut etkin, ancak ağ geçidi eksik veya yanlış.</li></ul>Kurulum sihirbazı aracılığıyla yapılandırılırsa DATA 0'ın otomatik olarak bulut etkin olduğunu unutmayın. |Sorunu belirlemek için 0.0.0.0 veya 256.256.256.256 alt ağı kullanın ve çıktıya bakın. Gerektiğinde alt ağ maskesi, ağ geçidi ve Ipv6 öneki için doğru değerleri girin. |
+| 1 |Hata 350032: Bu cihaz zaten devre dışı bırakıldı. |Kurulum sihirbazını devre dışı bırakılmış bir cihazda çalıştırırsanız, bu hatayı görürsünüz. |Sonraki adımlar için [Microsoft desteği başvurun](storsimple-contact-microsoft-support.md) . Devre dışı bırakılmış bir cihaz hizmete geçirilemez. Cihazın yeniden etkinleştirilmesi için önce bir fabrika sıfırlaması gerekebilir. |
+| 2 |Invoke-HcsSetupWizard: ERROR_INVALID_FUNCTION (HRESULT özel durumu: 0x80070001) |DNS sunucusu güncelleştirmesi başarısız oldu. DNS ayarları genel ayarlardır ve etkinleştirilmiş tüm ağ arabirimlerine uygulanır. |Arabirimi etkinleştirin ve DNS ayarlarını yeniden uygulayın. Bu ayarlar genel olduğundan, bu durum ağı etkin arabirimler için kesintiye uğratabilir. |
+| 3 |Bu cihaz StorSimple Yöneticisi hizmet portalında çevrimiçi görünüyor, ancak en düşük kurulumu tamamlayıp yapılandırmayı kaydetmek istediğinizde işlem başarısız olur. |İlk kurulum sırasında, gerçek bir ara sunucu gerçekleşse bile Web proxy yapılandırılmadı. |Hatayı bulmak için [Test-HcsmConnection cmdlet 'ini][2] kullanın. Sorunu düzeltemezsiniz [Microsoft desteği başvurun](storsimple-contact-microsoft-support.md) . |
+| 4 |Invoke-HcsSetupWizard: değer beklenen Aralık içinde değil. |Yanlış bir alt ağ maskesi bu hatayı üretir. Olası nedenler şunlardır: <ul><li> Alt ağ maskesi eksik veya boş.</li><li>IPv6 önek biçimi yanlış.</li><li>Arabirim bulutu etkinleştirdi, ancak ağ geçidi eksik ya da yanlış.</li></ul>VERI 0 ' ın, Kurulum Sihirbazı aracılığıyla yapılandırıldıysa otomatik olarak bulut etkin olduğunu unutmayın. |Sorunu anlamak için 0.0.0.0 veya 256.256.256.256 alt ağını kullanın ve ardından çıkışa bakın. Gerektiğinde alt ağ maskesi, ağ geçidi ve IPv6 öneki için doğru değerleri girin. |
 
 ## <a name="error-codes"></a>Hata kodları
 Hatalar sayısal sırada listelenir.
 
-| Hata Numarası | Hata metni veya açıklaması | Önerilen kullanıcı eylemi |
+| Hata numarası | Hata metni veya açıklaması | Önerilen kullanıcı eylemi |
 |:--- |:--- |:--- |
-| 10502 |Depolama hesabınıza erişirken bir hatayla karşılaşıldı. |Birkaç dakika bekleyin ve sonra tekrar deneyin. Hata devam ederse, sonraki adımlar için lütfen Microsoft Destek'e başvurun. |
-| 40017 |Yedekleme ilkesinde belirtilen bir birim aygıtta bulunamadıkça yedekleme işlemi başarısız oldu. |Hata devam ederse yedekleme işlemini yeniden deneyin, Microsoft Destek'e başvurun. sonraki adımlar için. |
-| 40018 |Yedekleme ilkesinde belirtilen birimlerin hiçbiri aygıtta bulunmadığından yedekleme işlemi başarısız oldu. |Hata devam ederse yedekleme işlemini yeniden deneyin, Microsoft Destek'e başvurun. sonraki adımlar için. |
-| 390061 |Sistem meşgul veya kullanılamıyor. |Birkaç dakika bekleyin ve sonra tekrar deneyin. Hata devam ederse, sonraki adımlar için lütfen Microsoft Destek'e başvurun. |
-| 390143 |390143 hata kodunda bir hata oluştu. (Bilinmeyen hata.) |Hata devam ederse, lütfen sonraki adımlar için Microsoft Destek'e başvurun. |
+| 10502 |Depolama hesabınıza erişilirken bir hatayla karşılaşıldı. |Birkaç dakika bekleyip yeniden deneyin. Hata devam ederse, sonraki adımlar için lütfen Microsoft Desteği başvurun. |
+| 40017 |Yedekleme ilkesinde belirtilen bir birim cihazda bulunamadığı için yedekleme işlemi başarısız oldu. |Yedekleme işlemini yeniden deneyin, hata devam ederse Microsoft Desteği başvurun. Sonraki adımlar için. |
+| 40018 |Yedekleme ilkesinde belirtilen birimlerden hiçbiri cihazda bulunamadığı için yedekleme işlemi başarısız oldu. |Yedekleme işlemini yeniden deneyin, hata devam ederse Microsoft Desteği başvurun. Sonraki adımlar için. |
+| 390061 |Sistem meşgul veya kullanılamıyor. |Birkaç dakika bekleyip yeniden deneyin. Hata devam ederse, sonraki adımlar için lütfen Microsoft Desteği başvurun. |
+| 390143 |390143 hata koduyla bir hata oluştu. (Bilinmeyen hata.) |Hata devam ederse, sonraki adımlar için lütfen Microsoft Desteği başvurun. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Sorunu çözemiyorsanız, yardım için [Microsoft Destek'e başvurun.](storsimple-contact-microsoft-support.md) 
+Sorunu çözemezse yardım için [Microsoft desteği başvurun](storsimple-contact-microsoft-support.md) . 
 
 [1]: https://technet.microsoft.com/%5Clibrary/Dn688135(v=WPS.630).aspx
 [2]: https://technet.microsoft.com/%5Clibrary/Dn715782(v=WPS.630).aspx

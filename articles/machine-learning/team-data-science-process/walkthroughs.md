@@ -1,6 +1,6 @@
 ---
-title: Azure'da Ekip Veri Bilimi İşlemini yürüten walkthroughs
-description: Akıllı bir uygulama oluşturmak için bulut ve şirket içi araçları ve hizmetleri iş akışı veya ardışık yollarla nasıl birleştirebilirsiniz?
+title: Azure 'da ekip veri bilimi Işlemini yürüten izlenecek yollar
+description: Akıllı bir uygulama oluşturmak için bulut ve şirket içi araçları ve Hizmetleri bir iş akışı veya işlem hattı içinde birleştirme.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,35 +12,35 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8fa21cc690742a71100c53b4e5b6ce122d1a6147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864086"
 ---
-# <a name="walkthroughs-executing-the-team-data-science-process"></a>Ekip Veri Bilimi İşlemini yürüten walkthroughs
+# <a name="walkthroughs-executing-the-team-data-science-process"></a>Ekip veri bilimi Işlemini yürüten izlenecek yollar
 
-Bu **kapsamlı gözden geçirmeler,** belirli senaryolar için Ekip Veri Bilimi Süreci'ndeki adımları gösterir. Bulutu, şirket içi araçları ve hizmetleri akıllı bir **uygulama**için iş akışında nasıl birleştirebileceklerini gösterirler. Gözden geçirmeler, kullandıkları **platforma** göre gruplandırılır.
-
-
-## <a name="walkthrough-descriptions"></a>Walkthrough açıklamaları
-
-Aşağıda, bu gözden geçirme örneklerinin kendi platformlarında neler sağladığına ilişkin kısa açıklamalar verilmiştir:
+Bu **kapsamlı izlenecek yollar** , belirli senaryolar Için ekip veri bilimi işlemindeki adımları gösterir. Bulut, şirket içi araçları ve Hizmetleri **akıllı bir uygulama**için bir iş akışında nasıl birleştirebileceğinizi gösterir. İzlenecek yollar, kullandıkları **platforma** göre gruplandırılır.
 
 
-- [PySpark ve Scala kullanarak HDInsight Spark walkthroughs](walkthroughs-spark.md) Bu gözden geçirme ler, tahmine dayalı analizler yapmak için Bir Azure Kıvılcım kümesinde PySpark ve Scala'yı kullanır.
-- [Hive kullanarak HDInsight Hadoop walkthroughs](walkthroughs-hdinsight-hadoop.md) Bu geçiş ler, tahmine dayalı analizler yapmak için Bir HDInsight Hadoop kümesiyle Hive'ı kullanır.
-- [U-SQL kullanarak Azure Veri Gölü walkthroughs](walkthroughs-azure-data-lake.md) Bu gözden geçirme ler, tahmine dayalı analizler yapmak için Azure Data Lake ile U-SQL'i kullanır.
-- [SQL Sunucu](walkthroughs-sql-server.md) Bu izbonlar, tahmine dayalı analizler yapmak için SQL Server, SQL Server R Services ve SQL Server Python Services'ı kullanır.
-- [SQL Veri Ambarı](walkthroughs-sql-data-warehouse.md) Bu gözden geçirmeler, tahmine dayalı analizler yapmak için SQL Veri Ambarı'nı kullanır. 
+## <a name="walkthrough-descriptions"></a>İzlenecek yol açıklamaları
+
+Bu izlenecek yol örneklerinin ilgili platformlarda sağladığı kısa açıklamalar aşağıda verilmiştir:
+
+
+- [Pyspark ve Scala kullanarak HDInsight Spark izlenecek yolları](walkthroughs-spark.md) Bu izlenecek yollar, tahmine dayalı analiz yapmak için bir Azure Spark kümesinde PySpark ve Scala kullanır.
+- [Hive kullanarak HDInsight Hadoop izlenecek yolları](walkthroughs-hdinsight-hadoop.md) Bu izlenecek yollar, tahmine dayalı analiz yapmak için bir HDInsight Hadoop kümesiyle Hive kullanır.
+- [U-SQL kullanarak izlenecek yollar Azure Data Lake](walkthroughs-azure-data-lake.md) Bu izlenecek yollar, tahmine dayalı analiz yapmak için Azure Data Lake ile U-SQL kullanır.
+- [SQL Server](walkthroughs-sql-server.md) Bu izlenecek yollar, tahmine dayalı analiz yapmak için SQL Server, SQL Server R Services ve SQL Server Python hizmetlerini kullanır.
+- [SQL veri ambarı](walkthroughs-sql-data-warehouse.md) Bu izlenecek yollar, tahmine dayalı analiz yapmak için SQL veri ambarını kullanır. 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ekip Veri Bilimi Süreci'ni oluşturan temel bileşenlerin tartışılması [için, Takım Veri Bilimi Süreci'ne genel bakış](overview.md)bölümüne bakın.
+Ekip veri bilimi sürecini oluşturan anahtar bileşenleriyle ilgili bir tartışma için bkz. [Team Data Science işlemine genel bakış](overview.md).
 
-Ekip Veri Bilimi Süreci yaşam döngüsünü tartışmak [için, Bkz. Takım Veri Bilimi Süreci yaşam döngüsü.](lifecycle.md) Bu yaşam döngüsü, projelerin genellikle yürütüldüğünde takip ettiği adımları, başından sonuna kadar özetler. 
+Team Data Science Işlem yaşam döngüsü hakkında bir tartışma için bkz. [Team Data Science işlem yaşam döngüsü](lifecycle.md). Bu yaşam döngüsü, başlangıçtan sonuna kadar olan adımları özetler ve bu da projeler genellikle yürütüldüğünde izler. 
 
-Genel bakış için [bkz.](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 
+Genel bakış için bkz. [veri bilimi işlemi](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
 

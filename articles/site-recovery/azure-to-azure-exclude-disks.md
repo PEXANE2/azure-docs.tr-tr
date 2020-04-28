@@ -1,20 +1,20 @@
 ---
-title: Azure Site Kurtarma ve Azure PowerShell ile Azure VM disklerini çoğaltmadan hariç tutma
-description: Azure PowerShell'i kullanarak Azure Site Kurtarma sırasında Azure sanal makinelerindisklerini nasıl dışlayacağınızı öğrenin.
+title: Azure Site Recovery ve Azure PowerShell ile Azure VM disklerini çoğaltmadan dışlama
+description: Azure PowerShell kullanarak Azure Site Recovery sırasında Azure sanal makinelerinin disklerini dışarıda bırakmayı öğrenin.
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 02/18/2019
 ms.openlocfilehash: 7355233bb7241571e3f3820aafac6952af245654
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75973669"
 ---
-# <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Azure VM'lerin PowerShell çoğaltmasından diskleri hariç tutma
+# <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Azure VM 'lerinin PowerShell çoğaltmasıyla diskleri dışlama
 
-Bu makalede, Azure VM'leri çoğalttırken disklerin nasıl dışlanır olduğu açıklanmaktadır. Tüketilen çoğaltma bant genişliğini veya bu disklerin kullandığı hedef tarafındaki kaynakları en iyi duruma getirmek için diskleri hariç tutabilirsiniz. Şu anda bu özellik yalnızca Azure PowerShell üzerinden kullanılabilir.
+Bu makalede, Azure sanal makinelerini çoğalttığınızda disklerin nasıl hariç tutulacağı açıklanır. Kullanılan çoğaltma bant genişliğini veya bu disklerin kullandığı hedef tarafı kaynakları iyileştirmek için diskleri dışlayabilirsiniz. Şu anda bu özellik yalnızca Azure PowerShell ile kullanılabilir.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -23,26 +23,26 @@ Bu makalede, Azure VM'leri çoğalttırken disklerin nasıl dışlanır olduğu 
 
 Başlamadan önce:
 
-- Olağanüstü durum kurtarma [mimarisini ve bileşenlerini](azure-to-azure-architecture.md)anladığınızdan emin olun.
+- [Olağanüstü durum kurtarma mimarisini ve bileşenlerini](azure-to-azure-architecture.md)anladığınızdan emin olun.
 - Tüm bileşenler için [destek gereksinimlerini](azure-to-azure-support-matrix.md) gözden geçirin.
-- AzureRm PowerShell "Az" modülüne sahip olduğundan emin olun. PowerShell'i yüklemek veya güncelleştirmek için Azure [PowerShell modüllerini yükleyin'e](https://docs.microsoft.com/powershell/azure/install-az-ps)bakın.
-- Kurtarma hizmetleri kasası oluşturduğunuzdan ve sanal makineleri en az bir kez koruduğunuzdan emin olun. Bunları yapmadıysanız, [Azure PowerShell'i kullanarak Azure sanal makineleri için olağanüstü durum kurtarma ayarlama](azure-to-azure-powershell.md)işlemini izleyin.
-- Çoğaltma için etkin leştirilmiş bir Azure VM'sine disk ekleme hakkında bilgi arıyorsanız, [bu makaleyi inceleyin.](azure-to-azure-enable-replication-added-disk.md)
+- Azurerd PowerShell "az" modülüne sahip olduğunuzdan emin olun. PowerShell 'i yüklemek veya güncelleştirmek için bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Bir kurtarma hizmetleri kasası ve korunan sanal makineleri en az bir kez oluşturmuş olduğunuzdan emin olun. Bu işlemleri yapmadıysanız, [Azure PowerShell kullanarak Azure sanal makineleri için olağanüstü durum kurtarmayı ayarlama](azure-to-azure-powershell.md)sürecini izleyin.
+- Çoğaltma için etkin bir Azure VM 'ye disk ekleme hakkında bilgi arıyorsanız, [Bu makaleyi gözden geçirin](azure-to-azure-enable-replication-added-disk.md).
 
-## <a name="why-exclude-disks-from-replication"></a>Diskleri çoğaltmadan neden dışla
-Diskleri çoğaltmadan çıkarmanız gerekebilir, çünkü:
+## <a name="why-exclude-disks-from-replication"></a>Disklerin neden çoğaltmanın dışında tutulması
+Diskleri çoğaltmanın dışında bırakmanız gerekebilir çünkü:
 
-- Sanal [makineniz, veri değiştirme oranlarını çoğaltmak için Azure Site Kurtarma sınırlarına](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)ulaştı.
+- Sanal makineniz [veri değişikliği hızlarını çoğaltmak için sınırlara Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)ulaştı.
 
-- Dışlanan diskte çalkalanan veriler önemli değildir veya çoğaltılması gerekmez.
+- Dışlanan diske eklenen veriler önemli değildir veya çoğaltılmaması gerekmez.
 
-- Verileri çoğaltmayarak depolama ve ağ kaynaklarını kaydetmek istiyorsunuz.
+- Verileri çoğaltmayana depolama ve ağ kaynaklarını kaydetmek istiyorsunuz.
 
-## <a name="how-to-exclude-disks-from-replication"></a>Diskleri çoğaltmadan dışlama
+## <a name="how-to-exclude-disks-from-replication"></a>Diskleri çoğaltmanın dışında bırakma
 
-Örneğimizde, Doğu ABD bölgesinde bulunan bir işletim sistemi ve üç veri diski olan sanal bir makineyi Batı ABD 2 bölgesine kopyalıyoruz. Sanal makinenin adı *AzureDemoVM'dir.* Disk 1'i hariç tutuyoruz ve disk2 ve 3'te tutuyoruz.
+Örneğimizde, bir işletim sistemi ve Doğu ABD bölgesindeki üç veri diskine sahip bir sanal makineyi Batı ABD 2 bölgesine çoğalttık. Sanal makinenin adı *AzureDemoVM*' dir. Disk 1 ' i dışarıda bırakır ve 2. ve 3. diskleri saklar.
 
-## <a name="get-details-of-the-virtual-machines-to-replicate"></a>Çoğaltmak için sanal makinelerin ayrıntılarını alın
+## <a name="get-details-of-the-virtual-machines-to-replicate"></a>Çoğaltılacak sanal makinelerin ayrıntılarını alın
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -67,18 +67,18 @@ ProvisioningState  : Succeeded
 StorageProfile     : {ImageReference, OsDisk, DataDisks}
 ```
 
-Sanal makinenin diskleri hakkında ayrıntılı bilgi alın. Bu bilgiler daha sonra VM çoğaltma başlattığınızda kullanılacaktır.
+Sanal makinenin diskleri hakkında ayrıntılı bilgi alın. Bu bilgiler daha sonra VM çoğaltmasını başlattığınızda kullanılacaktır.
 
 ```azurepowershell
 $OSDiskVhdURI = $VM.StorageProfile.OsDisk.Vhd
 $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 ```
 
-## <a name="replicate-an-azure-virtual-machine"></a>Azure sanal makineyi çoğaltma
+## <a name="replicate-an-azure-virtual-machine"></a>Azure sanal makinesini çoğaltma
 
-Aşağıdaki örnekiçin, zaten bir önbellek depolama hesabınız, çoğaltma ilkeniz ve eşlemeniz olduğunu varsayıyoruz. Bunlara sahip değilseniz, [Azure PowerShell'i kullanarak Azure sanal makineleri için olağanüstü durum kurtarma ayarlama](azure-to-azure-powershell.md)işlemini izleyin.
+Aşağıdaki örnekte, zaten bir önbellek depolama hesabınız, çoğaltma ilkeniz ve eşlemeler olduğunu varsaytık. Bu şeylere sahip değilseniz, [Azure PowerShell kullanarak Azure sanal makineleri için olağanüstü durum kurtarmayı ayarlama](azure-to-azure-powershell.md)sürecini izleyin.
 
-*Yönetilen disklerle*bir Azure sanal makinesini çoğaltma.
+*Yönetilen disklerle*bir Azure sanal makinesini çoğaltın.
 
 ```azurepowershell
 
@@ -126,14 +126,14 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk2ReplicationConfig, $DataDisk
 $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
 ```
 
-Başlangıç çoğaltma işlemi başarılı olduğunda, VM verileri kurtarma bölgesine çoğaltılır.
+Çoğaltma başlatma işlemi başarılı olduğunda, VM verileri kurtarma bölgesine çoğaltılır.
 
-Azure portalına gidebilir ve çoğaltılan VM'leri "çoğaltılan öğeler" altında görebilirsiniz.
+Azure portal giderek çoğaltılan VM 'Leri "çoğaltılan öğeler" altında görebilirsiniz.
 
-Çoğaltma işlemi, kurtarma bölgesindeki sanal makinenin çoğaltma disklerinin bir kopyasını tohumlayarak başlar. Bu aşama, ilk çoğaltma aşaması olarak adlandırılır.
+Çoğaltma işlemi, kurtarma bölgesindeki sanal makinenin çoğaltılan disklerinin bir kopyasının dengeli şekilde başlatılır. Bu aşamaya ilk çoğaltma aşaması denir.
 
-İlk çoğaltma bittikten sonra, çoğaltma diferansiyel eşitleme aşamasına geçer. Bu noktada, sanal makine korunur. Disklerin dışlanmış olup olmadığını görmek için korumalı sanal makineyi seçin.
+İlk çoğaltma tamamlandıktan sonra çoğaltma, fark eşitleme aşamasına gider. Bu noktada, sanal makine korunur. Korunan sanal makineyi seçerek herhangi bir diskin dışlandığından bkz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir [test başarısızlığını çalıştırma](site-recovery-test-failover-to-azure.md)hakkında bilgi edinin.
+[Yük devretme testi çalıştırma](site-recovery-test-failover-to-azure.md)hakkında bilgi edinin.

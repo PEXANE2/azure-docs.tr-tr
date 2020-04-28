@@ -1,6 +1,6 @@
 ---
-title: Ekip Veri Bilimi Süreci projelerinin ilerlemesini izleme
-description: Veri bilimi grup yöneticilerinin, ekip yöneticilerinin ve proje yöneticilerinin bir veri bilimi projesinin ilerlemesini nasıl izleyebilirsiniz?
+title: Team Data Science Işlem projelerinin ilerlemesini izleyin
+description: Veri bilimi Grup yöneticileri, ekip liderleri ve proje müşteri adayları, bir veri bilimi projesinin ilerlemesini takip edebilir.
 author: marktab
 manager: marktab
 editor: marktab
@@ -11,43 +11,43 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8cf1e5a4d97b882e7a8d0c81041bbcde709760d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864205"
 ---
 # <a name="track-the-progress-of-data-science-projects"></a>Veri bilimi projelerinin ilerlemesini izleme
 
-Veri bilimi grup yöneticileri, ekip adayları ve proje müşteri adayları projelerinin ilerlemesini izleyebilir.  Yöneticiler ne işin yapıldığını, kimin yaptığını ve hangi işin kaldığını bilmek isterler.   Beklentileri yönetmek başarının önemli bir unsurudur.
+Veri bilimi Grup yöneticileri, ekip liderleri ve proje liderleri, projelerinin ilerlemesini izleyebilir.  Yöneticiler, ne işe yaradığını, kimin işi yaptığını ve ne kadar iş kaldığını bilmesini ister.   Beklentileri yönetmek, başarı açısından önemli bir öğedir.
 
 ## <a name="azure-devops-dashboards"></a>Azure DevOps panoları
 
-Azure DevOps kullanıyorsanız, belirli bir Çevik projeyle ilişkili etkinlikleri ve iş öğelerini izlemek için panolar oluşturabilirsiniz. Panolar hakkında daha fazla bilgi için [Panolar, raporlar ve widget'lara](/azure/devops/report/dashboards/)bakın.
+Azure DevOps kullanıyorsanız, belirli bir çevik projeyle ilişkili etkinlikleri ve iş öğelerini izlemek için panolar oluşturabilirsiniz. Panolar hakkında daha fazla bilgi için bkz. [panolar, raporlar ve pencere öğeleri](/azure/devops/report/dashboards/).
 
-Azure DevOps'lerde panolar ve widget'lar oluşturma ve özelleştirme hakkında talimatlar için aşağıdaki hızlı başlangıçlara bakın:
+Azure DevOps 'da panolar ve pencere öğeleri oluşturma ve özelleştirme yönergeleri için aşağıdaki hızlı başlangıçlara bakın:
 
-- [Pano ekleme ve yönetme](/azure/devops/report/dashboards/dashboards)
-- [Panoya widget ekleme](/azure/devops/report/dashboards/add-widget-to-dashboard)
+- [Panoları ekleme ve yönetme](/azure/devops/report/dashboards/dashboards)
+- [Panoya pencere öğesi ekleme](/azure/devops/report/dashboards/add-widget-to-dashboard)
 
 ## <a name="example-dashboard"></a>Örnek pano
 
-Aşağıda, ilişkili depolara taahhüt edilenlerin sayısı da dahil olmak üzere Çevik veri bilimi projesinin sprint etkinliklerini izleyen basit bir örnek pano verilmiştir. 
+İşte, ilişkili depolardaki işleme sayısı dahil olmak üzere çevik bir veri bilimi projesinin Sprint etkinliklerini izleyen basit bir örnek Pano. 
 
-- **Geri sayım döşemesi,** geçerli sprintte kalan gün sayısını gösterir. 
+- **Geri sayım** kutucuğu, geçerli sprint 'te kalan gün sayısını gösterir. 
 
-- İki **kod** döşemesi, son yedi gün için iki proje deposundaki taahhüt sayısını gösterir. 
+- İki **kod kutucuğu** , son yedi günün iki proje depolarındaki işlemeler sayısını gösterir. 
 
-- **TDSP Müşteri Projesi'nin çalışma öğeleri,** tüm iş öğeleri ve durumları için bir sorgunun sonuçlarını gösterir. 
+- **TDSP müşteri projesi Için iş öğeleri** , tüm iş öğeleri ve bunların durumları için bir sorgunun sonuçlarını gösterir. 
 
-- **Kümülatif akış diyagramı** (CFD) Kapalı ve Etkin iş öğelerinin sayısını gösterir.
+- **Birikmeli akış diyagramı** (CFD) kapatılan ve etkin iş öğelerinin sayısını gösterir.
 
-- **Burndown grafiği,** sprint'te kalan süreye karşı hala tamamlanması gereken çalışmayı gösterir.
+- **Burndown grafiği** , Sprint 'teki kalan süre içinde hala tamamlanacak işi gösterir.
 
-- **Yazma grafiği,** sprintteki toplam çalışma miktarıyla karşılaştırıldığında tamamlanan çalışmayı gösterir.
+- **Tamamlanma grafiği** , Sprint 'teki toplam çalışma miktarı ile karşılaştırıldığında tamamlanan işi gösterir.
 
 ![Pano](./media/track-progress/dashboard.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Ekip Veri Bilimi İşlemi'ni yürüten walkthroughs,](walkthroughs.md) tüm işlem adımlarını gösteren gözden geçirmeleri listeler. Bağlantılı senaryolar, bulutun ve şirket içi kaynakların akıllı uygulamalara nasıl yönetilenini gösterir. 
+[Takım veri bilimi işlemini yürüten Izlenecek yollar](walkthroughs.md) , tüm işlem adımlarını gösteren izlenecek yolları listeler. Bağlantılı senaryolar, bulut ve şirket içi kaynakların akıllı uygulamalar halinde nasıl yönetileceğini gösterir. 

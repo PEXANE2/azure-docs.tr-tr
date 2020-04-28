@@ -1,5 +1,5 @@
 ---
-title: (AmortismanA Uğradı) Azure Kapsayıcı Hizmeti - SSS
+title: Kullanım DıŞı Azure Container Service-SSS
 description: Docker kapsayıcı uygulamalarını çalıştıran bir sanal makine kümesi oluşturma, yapılandırma ve yönetme işlemini kolaylaştıran Azure Container Service hizmeti hakkında sık sorulan soruları yanıtlar.
 services: container-service
 author: mlearned
@@ -10,13 +10,13 @@ ms.date: 03/28/2017
 ms.author: mlearned
 ms.custom: H1Hack27Feb201
 ms.openlocfilehash: 317862b694b93de44422ac3c28575c732ffc5be5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75887929"
 ---
-# <a name="deprecated-container-service-frequently-asked-questions"></a>(AmortismanA Uğradı) Konteyner Servisi sık sorulan sorular
+# <a name="deprecated-container-service-frequently-asked-questions"></a>Kullanım DıŞı Kapsayıcı hizmeti sık sorulan sorular
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -104,7 +104,7 @@ Bağlantı dizesini Azure portalında veya Azure komut satırı araçlarını ku
 
 4. **Özet** sayfasındaki **Çıktılar** altında çeşitli küme bağlantıları sağlanır. **SSHMaster0**, kapsayıcı hizmeti kümenizdeki birinci ana sunucuya bir SSH bağlantı dizesi sağlar. 
 
-Daha önce belirtildiği gibi, ana sunucunun FQDN'sini bulmak için Azure araçlarını da kullanabilirsiniz. Ana sunucunun FQDN’sini ve kümeyi oluştururken belirttiğiniz kullanıcı adını kullanarak ana sunucuyla SSH bağlantısı oluşturun. Örnek:
+Daha önce belirtildiği gibi, ana sunucunun FQDN'sini bulmak için Azure araçlarını da kullanabilirsiniz. Ana sunucunun FQDN’sini ve kümeyi oluştururken belirttiğiniz kullanıcı adını kullanarak ana sunucuyla SSH bağlantısı oluşturun. Örneğin:
 
 ```bash
 ssh userName@masterFQDN –A –p 22 
@@ -114,7 +114,7 @@ Daha fazla bilgi için bkz. [Azure Container Service kümesine bağlanma](../../
 
 ### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>DNS ad çözümlemem Windows’da çalışmıyor. Ne yapmalıyım?
 
-Windows'da bilinen bazı DNS sorunları vardır ve düzeltmeleri hala etkin olarak aşamalı olarak devre dışı sürülmektedir. Ortamınızın bundan yararlanabilmesi için lütfen en güncel acs-engine ve Windows sürümünü [(KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) ve [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) yüklü) kullandığınızdan emin olun. Aksi takdirde lütfen azaltma adımları için aşağıdaki tabloya bakın:
+Düzeltmeler hala etkin bir şekilde kullanıma hazır olan Windows üzerinde bazı bilinen DNS sorunları vardır. Ortamınızın bundan faydalanabilir olması için lütfen en güncel ACS-Engine ve Windows sürümünü ( [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) ve [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848) yüklü) kullandığınızdan emin olun. Aksi takdirde lütfen azaltma adımları için aşağıdaki tabloya bakın:
 
 | DNS Belirtisi | Geçici çözüm  |
 |-------------|-------------|

@@ -9,305 +9,305 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 88b19257a6a7d335e6a928a9eaf7526fbfd5b02e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75942819"
 ---
-## <a name="application-performance-indicators"></a>Uygulama performans göstergeleri
+## <a name="application-performance-indicators"></a>Uygulama performansı göstergeleri
 
-Bir uygulamanın iyi çalışıp çalışmadığını, bir uygulamanın kullanıcı isteğini ne kadar hızlı işlediğini, bir uygulamanın istek başına ne kadar veri işlediğini, belirli bir uygulamada kaç isteğin bir uygulama işlemesi olduğunu değerlendiririz süresi, bir kullanıcının isteğini gönderdikten sonra yanıt almak için ne kadar beklemesi gerektiğini. Bu performans göstergeleri için teknik terimler, IOPS, İş Sonu veya Bant Genişliği ve Gecikme Alanı'dır.
+Bir uygulamanın bir Kullanıcı isteğini ne kadar hızlı bir şekilde işlediğine veya kullanmadığını, bir uygulamanın istek başına ne kadar veri işleme olduğunu, belirli bir dönemde kaç tane isteğin bir uygulama işleme olduğunu, bir kullanıcının isteklerini gönderdikten sonra bir yanıt almak için ne kadar beklemeleri gerektiğini değerlendiriyoruz. Bu performans göstergeleriyle ilgili teknik koşullar, ıOPS, verimlilik veya bant genişliği ve gecikmedir.
 
-Bu bölümde, Premium Depolama bağlamında ortak performans göstergelerini tartışacağız. Aşağıdaki bölümde, Uygulama Gereksinimlerini Toplama, uygulamanız için bu performans göstergelerini nasıl ölçeceğinizi öğreneceksiniz. Uygulama Performansını Optimize Etmede daha sonra, bu performans göstergelerini etkileyen faktörler ve bunları optimize etmek için öneriler hakkında bilgi edineceksiniz.
+Bu bölümde, genel performans göstergelerini Premium Depolama bağlamında tartışacağız. Aşağıdaki bölümde, uygulama gereksinimlerini toplarken, uygulamanız için bu performans göstergelerini nasıl ölçeceğinizi öğreneceksiniz. Daha sonra uygulama performansını En Iyi duruma getirmek için, bu performans göstergelerini etkileyen faktörleri ve bunları en iyi duruma getirmeyi sağlayacak önerileri öğreneceksiniz.
 
 ## <a name="iops"></a>IOPS
 
-IOPS veya Saniyebaşına Giriş/Çıkış İşlemleri, uygulamanızın depolama disklerine bir saniyede gönderdiği istek sayısıdır. Bir giriş/çıktı işlemi okunabilir veya yazılabilir, sıralı veya rasgele. Çevrimiçi Bir perakende web sitesi gibi online Işlem İşlemi (OLTP) uygulamaları hemen birçok eşzamanlı kullanıcı isteklerini işlemek gerekir. Kullanıcı istekleri, uygulamanın hızlı bir şekilde işlemesi gereken yoğun veritabanı hareketlerini ekler ve günceller. Bu nedenle, OLTP uygulamaları çok yüksek IOPS gerektirir. Bu tür uygulamalar milyonlarca küçük ve rasgele IO isteği işler. Böyle bir uygulamanız varsa, Uygulama altyapısını IOPS için optimize etmek için tasarlamanız gerekir. Daha sonraki bölümde, *Uygulama Performansını Optimize Etme,* yüksek IOPS almak için göz önünde bulundurmanız gereken tüm faktörleri ayrıntılı olarak tartışıyoruz.
+IOPS veya saniye başına giriş/çıkış Işlemi, uygulamanızın bir saniye içinde depolama disklerine gönderdiği isteklerin sayısıdır. Bir giriş/çıkış işlemi okunabilir veya yazılabilir, sıralı veya rastgele olabilir. Çevrimiçi bir perakende Web sitesi gibi çevrimiçi Işlem Işleme (OLTP) uygulamalarının pek çok eşzamanlı kullanıcı isteğini hemen işlemesi gerekir. Kullanıcı istekleri, uygulamanın hızla işlemesi gereken yoğun veritabanı işlemlerini ekleme ve güncelleştirme işlemidir. Bu nedenle, OLTP uygulamaları çok yüksek ıOPS gerektirir. Bu tür uygulamalar milyonlarca küçük ve rastgele GÇ isteğini işler. Böyle bir uygulamanız varsa, ıOPS 'yi iyileştirmek için uygulama altyapısını tasarlamanız gerekir. Sonraki bölümde, *uygulama performansını En Iyi duruma getirmek*için, yüksek IOPS 'yi almak için göz önünde bulundurmanız gereken tüm faktörlerin ayrıntısıyla tartışıyoruz.
 
-Yüksek ölçekli VM'nize bir premium depolama diski eklediğinizde, Azure disk belirtimlerine göre size bir IOPS sayısı garantisi sağlar. Örneğin, bir P50 diski 7500 IOPS sağlar. Yüksek ölçekli her VM boyutunun sürdürebileceği belirli bir IOPS sınırı da vardır. Örneğin, Standart GS5 VM 80.000 IOPS sınırı vardır.
+Yüksek ölçekli VM'nize bir premium depolama diski eklediğinizde, Azure disk belirtimlerine göre size bir IOPS sayısı garantisi sağlar. Örneğin, bir P50 diski 7500 IOPS sağlar. Yüksek ölçekli her VM boyutunun sürdürebileceği belirli bir IOPS sınırı da vardır. Örneğin, standart bir GS5 VM 80.000 ıOPS sınırına sahiptir.
 
 ## <a name="throughput"></a>Aktarım hızı
 
-Elde etme veya bant genişliği, uygulamanızın depolama disklerine belirli bir aralıkta gönderdiği veri miktarıdır. Uygulamanız büyük IO birim boyutlarıyla giriş/çıkış işlemleri gerçekleştiriyorsa, yüksek verim gerektirir. Veri ambarı uygulamaları, aynı anda büyük miktarda veriye erişen ve genellikle toplu işlemler gerçekleştiren yoğun tazyik li işlemleri düzenleme eğilimindedir. Başka bir deyişle, bu tür uygulamalar daha yüksek iş elde gerektirir. Böyle bir uygulamanız varsa, altyapısını iş için en iyi duruma getirmek üzere tasarlamanız gerekir. Bir sonraki bölümde, bunu başarmak için ayarlamanız gereken faktörleri ayrıntılı olarak tartışırız.
+Aktarım hızı veya bant genişliği, uygulamanızın belirtilen bir aralıktaki depolama disklerine gönderdiği veri miktarıdır. Uygulamanız büyük GÇ birimi boyutlarıyla giriş/çıkış işlemleri yapıyorsa, yüksek verimlilik gerektirir. Veri ambarı uygulamaları, verilerin büyük kısımlarına tek seferde erişen ve genellikle toplu işlemler yapan tarama yoğun işlemleri yapmaya eğilimlidir. Diğer bir deyişle bu uygulamalar daha yüksek aktarım hızı gerektirir. Böyle bir uygulamanız varsa, üretilen işi iyileştirmek için altyapısını tasarlamanız gerekir. Sonraki bölümde, bunu başarmak için ayarlamanız gereken faktörleri ayrıntılı olarak ele aldık.
 
-Yüksek ölçekli bir VM'ye premium depolama diski iliştirdiğinizde, Azure, bu disk belirtimine göre iş elde etmeyi sağlar. Örneğin, bir P50 diski saniyede 250 MB disk aktarım hızı sağlar. Yüksek ölçekli her VM boyutunun sürdürebileceği belirli bir aktarım hızı sınırı da vardır. Örneğin, Standard GS5 VM'sinin aktarım hızı üst sınırı saniyede 2.000 MB'tır.
+Yüksek ölçekli bir VM 'ye Premium Depolama diski iliştirirseniz, Azure bu disk belirtimine göre aktarım hızı sağlar. Örneğin, bir P50 diski saniyede 250 MB disk aktarım hızı sağlar. Yüksek ölçekli her VM boyutunun sürdürebileceği belirli bir aktarım hızı sınırı da vardır. Örneğin, Standard GS5 VM'sinin aktarım hızı üst sınırı saniyede 2.000 MB'tır.
 
-Aşağıdaki formülde gösterildiği gibi, iş ve IOPS arasında bir ilişki vardır.
+Aşağıdaki formülde gösterildiği gibi, üretilen iş ve ıOPS arasında bir ilişki vardır.
 
-![IOPS ve iş artışı ilişkisi](../articles/virtual-machines/linux/media/premium-storage-performance/image1.png)
+![IOPS ve aktarım hızı ilişkisi](../articles/virtual-machines/linux/media/premium-storage-performance/image1.png)
 
-Bu nedenle, uygulamanızın gerektirdiği en iyi iş ve IOPS değerlerini belirlemek önemlidir. Birini optimize etmeye çalıştıkça, diğeri de etkilenir. Daha sonraki bir bölümde, *Uygulama Performansını Optimize*Etme, IOPS ve İş İsti'yi optimize etme hakkında daha fazla ayrıntı da ele alacağız.
+Bu nedenle, uygulamanızın gerektirdiği en iyi aktarım hızı ve ıOPS değerlerini belirlenmesi önemlidir. Bir diğerini iyileştirmenize çalıştığınızda, diğeri de etkilenir. Daha sonraki bir bölümde, *uygulama performansını en*iyi duruma GETIRMEK için IOPS ve aktarım hızını iyileştirme hakkında daha fazla ayrıntı inceleyeceğiz.
 
 ## <a name="latency"></a>Gecikme süresi
 
-Gecikme süresi, bir uygulamanın tek bir isteği almak, depolama disklerine göndermek ve yanıtı istemciye göndermek için gereken süredir. Bu, IOPS ve İş Verme'ye ek olarak bir uygulamanın performansının kritik bir ölçüsüdür. Premium depolama diskinin Gecikme süresi, bir istek için bilgileri almak ve uygulamanıza geri iletmek için gereken süredir. Premium Depolama tutarlı düşük gecikmeler sağlar. Premium Diskler, çoğu IO işlemi için tek basamaklı milisaniye gecikmeleri sağlamak üzere tasarlanmıştır. Premium depolama disklerinde ReadOnly ana bilgisayar önbelleğe almayı etkinleştiriseniz, çok daha düşük okuma gecikmesi elde edebilirsiniz. Disk Önbelleğe Alma'yı *uygulama performansını optimize etme*konulu daha sonraki bölümde daha ayrıntılı olarak tartışacağız.
+Gecikme süresi, bir uygulamanın tek bir istek alması, depolama disklerine gönderilmesi ve yanıtı istemciye gönderilmesi için gereken süredir. Bu, ıOPS ve aktarım hızına ek olarak uygulamanın performansına yönelik kritik bir ölçüdür. Premium Depolama diskinin gecikmesi, bir istek için bilgilerin alınması ve uygulamanıza geri iletişim kurması için gereken süredir. Premium Depolama, düşük gecikme süreleri sağlar. Premium diskler, çoğu GÇ işlemi için tek basamaklı milisaniyelik gecikme süreleri sağlamak üzere tasarlanmıştır. Premium Depolama disklerinde ReadOnly ana bilgisayar önbelleğe almayı etkinleştirirseniz çok daha düşük okuma gecikmesi sağlayabilirsiniz. Daha sonra *uygulama performansını En Iyi duruma getirme*bölümünde daha ayrıntılı bilgi Için disk önbelleğe alma ele alınacaktır.
 
-Daha yüksek IOPS ve İş İlerletme almak için başvurunuzu optimize ettiğinizde, uygulamanızın gecikmesini etkiler. Uygulama performansını aladıktan sonra, beklenmeyen yüksek gecikme davranışından kaçınmak için her zaman uygulamanın gecikmesini değerlendirin.
+Uygulamanızı daha yüksek ıOPS ve aktarım hızı almak üzere iyileştirirken uygulamanızın gecikme süresini etkiler. Uygulama performansını ayarladıktan sonra, beklenmedik yüksek gecikme süresine engel olmak için her zaman uygulamanın gecikmesini değerlendirin.
 
-Yönetilen Diskler'deki aşağıdaki denetim düzlemi işlemleri, Diskin bir Depolama konumundan diğerine hareketini içerebilir. Bu, disklerde veri miktarına bağlı olarak genellikle 24 saatten az, tamamlanması birkaç saat sürebilir verilerin arka plan kopyası ile düzenlenir. Bu süre zarfında uygulamanız normalden daha yüksek okuma gecikmesi yaşayabilir, çünkü bazı okumalar orijinal konuma yönlendirilebilir ve tamamlanması daha uzun sürebilir. Bu dönemde yazma gecikmesi üzerinde hiçbir etkisi yoktur.
+Yönetilen disklerde aşağıdaki denetim düzlemi işlemleri, diskin bir depolama konumundan diğerine taşınmasını içerebilir. Bu, tamamlanması birkaç saat sürebileceği verilerin arka plan kopyası aracılığıyla düzenlenir ve genellikle, disklerdeki veri miktarına bağlı olarak 24 saatten daha az olur. Bu süre boyunca, bazı okumalar özgün konuma yeniden yönlendiriliyorsa ve tamamlanması daha uzun sürebileceğinden, uygulamanız olağan okuma gecikmesinden daha yüksek bir deneyim yaşayabilir. Bu süre boyunca yazma gecikmesi üzerinde hiçbir etkisi yoktur.
 
 - Depolama türünü güncelleştirin.
-- Bir VM'den diğerine bir diski ayırın ve takın.
-- VHD'den yönetilen bir disk oluşturun.
-- Anlık görüntüden yönetilen bir disk oluşturun.
+- Bir diski bir VM 'den diğerine ayırın ve bağlayın.
+- Bir VHD 'den yönetilen disk oluşturun.
+- Bir anlık görüntüden yönetilen disk oluşturun.
 - Yönetilmeyen diskleri yönetilen disklere dönüştürün.
 
-## <a name="performance-application-checklist-for-disks"></a>Diskler için Performans Uygulama Kontrol Listesi
+## <a name="performance-application-checklist-for-disks"></a>Diskler için performans uygulaması denetim listesi
 
-Azure Premium Depolama'da çalışan yüksek performanslı uygulamalar tasarlamanın ilk adımı, uygulamanızın performans gereksinimlerini anlamaktır. Performans gereksinimlerini topladıktan sonra, en iyi performansı elde etmek için uygulamanızı optimize edebilirsiniz.
+Azure Premium depolamada çalışan yüksek performanslı uygulamalar tasarlamanın ilk adımı, uygulamanızın performans gereksinimlerini öğrenmiş olur. Performans gereksinimlerini topladıktan sonra en iyi performansı elde etmek için uygulamanızı en iyi hale getirebilirsiniz.
 
-Önceki bölümde, ortak performans göstergeleri, IOPS, İş Sonu ve Gecikme Durumu'nu açıkladık. İstenilen kullanıcı deneyimini sunmak için bu performans göstergelerinden hangisinin uygulamanız için kritik öneme sahip olduğunu belirlemeniz gerekir. Örneğin, yüksek IOPS en önemli OLTP uygulamaları saniyede milyonlarca işlem işleme. Oysa, yüksek İş İlerletme, veri ambarı uygulamaları için saniyede büyük miktarda veri işleme sayılsa için önemlidir. Son derece düşük Gecikme süresi, canlı video akış lı web siteleri gibi gerçek zamanlı uygulamalar için çok önemlidir.
+Önceki bölümde, genel performans göstergeleri, ıOPS, verimlilik ve gecikme süresi açıklandık. İstenen kullanıcı deneyimini sunmak için, uygulamanız için hangi performans göstergelerinin önemli olduğunu belirlemeniz gerekir. Örneğin, yüksek ıOPS çok büyük bir saniyede milyonlarca işlemi işleyen OLTP uygulamalarının önemli bir kısmını. Öte yandan, büyük miktarlarda verileri saniye içinde işleyen veri ambarı uygulamaları için yüksek aktarım hızı önemlidir. Canlı video akışı Web siteleri gibi gerçek zamanlı uygulamalarda son derece düşük gecikme süresi önemlidir.
 
-Ardından, uygulamanızın ömrü boyunca maksimum performans gereksinimlerini ölçün. Başlangıç olarak aşağıdaki örnek denetim listesini kullanın. Normal, en yüksek ve mesai dışı iş yükü dönemlerinde maksimum performans gereksinimlerini kaydedin. Tüm iş yükleri düzeyleri için gereksinimleri tanımlayarak, uygulamanızın genel performans gereksinimini belirleyebilirsiniz. Örneğin, bir e-ticaret web sitesinin normal iş yükü, bir yıl içinde çoğu gün hizmet verdiği işlemler olacaktır. Web sitesinin en yüksek iş yükü, tatil sezonunda veya özel satış etkinliklerinde hizmet verdiği işlemler olacaktır. En yüksek iş yükü genellikle sınırlı bir süre için yaşanır, ancak uygulamanızın normal çalışmasının iki veya daha fazla katını ölçeklendirmesini gerektirebilir. Yüzde 50, yüzde 90 ve yüzde 99'luk gereksinimleri öğrenin. Bu, performans gereksinimlerindeki aykırı ları filtrelemenize yardımcı olur ve çabalarınızı doğru değerleri optimize etme üzerine odaklayabilirsiniz.
+Daha sonra, uygulamanızın ömrü boyunca en fazla performans gereksinimlerini ölçün. Başlangıç olarak aşağıdaki örnek denetim listesini kullanın. Normal, yoğun ve kapalı iş yükü dönemlerinde en yüksek performans gereksinimlerini kaydeder. Tüm iş yükü düzeyleri için gereksinimleri tanımlayarak Uygulamanızın genel performans gereksinimini belirleyebileceksiniz. Örneğin, bir e-ticaret Web sitesinin normal iş yükü, bir yılda en fazla gün içinde hizmet verdiği işlemler olacaktır. Web sitesinin en yoğun iş yükü, tatil sezonu veya özel satış olayları sırasında hizmet verdiği işlemler olacaktır. Yoğun iş yükü genellikle sınırlı bir süre için yaşanır, ancak uygulamanızın normal işlemini iki veya daha fazla kez ölçeklendirmesini gerektirebilir. 50 yüzdebirlik, 90 yüzdebirlik ve 99 yüzdebirlik gereksinimlerini bulun. Bu, performans gereksinimleriyle ilgili herhangi bir şeyi filtrelemeye yardımcı olur ve doğru değerler için en iyi duruma getirme çabalarınıza odaklanabilir.
 
-## <a name="application-performance-requirements-checklist"></a>Uygulama performans gereksinimleri kontrol listesi
+## <a name="application-performance-requirements-checklist"></a>Uygulama performansı gereksinimleri denetim listesi
 
-| **Performans gereksinimleri** | **50 Yüzdelik** | **90 Yüzdelik** | **99 Yüzdelik** |
+| **Performans gereksinimleri** | **50 yüzdebirlik** | **90 yüzdebirlik** | **99 yüzdebirlik** |
 | --- | --- | --- | --- |
-| En çok, Saniyedeki işlemler | | | |
-| % İşlemleri okuyun | | | |
+| En çok, Saniye başına işlem | | | |
+| Okuma işlemleri yüzdesi | | | |
 | % Yazma işlemleri | | | |
 | % Rastgele işlemler | | | |
-| % Ardışık işlemler | | | |
-| IO istek boyutu | | | |
-| Ortalama Iş Throughput | | | |
+| % Sıralı işlemler | | | |
+| GÇ istek boyutu | | | |
+| Ortalama üretilen Iş | | | |
 | En çok, Aktarım hızı | | | |
-| Dk. Gecikme süresi | | | |
-| Ortalama Gecikme | | | |
+| Min. Gecikme süresi | | | |
+| Ortalama gecikme süresi | | | |
 | En çok, CPU | | | |
 | Ortalama CPU | | | |
 | En çok, Bellek | | | |
-| Ortalama Bellek | | | |
-| Sıra Derinliği | | | |
+| Ortalama bellek | | | |
+| Sıra derinliği | | | |
 
 > [!NOTE]
-> Bu sayıları, uygulamanızın gelecekteki beklenen büyümesine göre ölçeklemeyi düşünmelisiniz. Büyümeyi önceden planlamak iyi bir fikirdir, çünkü daha sonra performansı artırmak için altyapıyı değiştirmek daha zor olabilir.
+> Bu sayıları, uygulamanızın gelecekteki büyüme artışına göre ölçeklendirmelisiniz. Daha sonra performansı iyileştirmek için altyapıyı değiştirmek daha zor olabileceğinden, büyümenin önceden planlanacağı iyi bir fikirdir.
 
-Varolan bir uygulamanız varsa ve Premium Depolama'ya geçmek istiyorsanız, öncelikle varolan uygulama için yukarıdaki denetim listesini oluşturun. Ardından, Premium Depolama'da uygulamanızın bir prototipini oluşturun ve uygulamayı bu belgenin sonraki bir bölümünde *Uygulama Performansını Optimize Etmede* açıklanan yönergelere göre tasarlayın. Sonraki makalede, performans ölçümlerini toplamak için kullanabileceğiniz araçlar açıklanmaktadır.
+Mevcut bir uygulamanız varsa ve Premium depolamaya geçmek istiyorsanız, önce mevcut uygulama için yukarıdaki denetim listesini derleyin. Daha sonra, Premium depolamada uygulamanızın bir örneğini oluşturun ve uygulamayı bu belgenin sonraki bölümlerinde *uygulama performansını En Iyi duruma getirme* bölümünde açıklanan yönergelere göre tasarlayın. Sonraki makalede, performans ölçümlerini toplamak için kullanabileceğiniz araçlar açıklanmaktadır.
 
-### <a name="counters-to-measure-application-performance-requirements"></a>Uygulama performans gereksinimlerini ölçmek için sayaçlar
+### <a name="counters-to-measure-application-performance-requirements"></a>Uygulama performansı gereksinimlerini ölçmeye yönelik sayaçlar
 
-Uygulamanızın performans gereksinimlerini ölçmenin en iyi yolu, sunucunun işletim sistemi tarafından sağlanan performans izleme araçlarını kullanmaktır. Windows için PerfMon'u ve Linux için iostat'ı kullanabilirsiniz. Bu araçlar, yukarıdaki bölümde açıklanan her ölçüye karşılık gelen sayaçları yakalar. Uygulamanız normal, en yüksek ve mesai dışı iş yüklerini çalıştırırken bu sayaçların değerlerini yakalamanız gerekir.
+Uygulamanızın performans gereksinimlerini ölçmenin en iyi yolu, sunucusunun işletim sistemi tarafından sunulan performans izleme araçlarını kullanmaktır. Windows için PerfMon ve Linux için Iostat kullanabilirsiniz. Bu araçlar yukarıdaki bölümde açıklanan her ölçüye karşılık gelen sayaçları yakalar. Uygulamanız normal, yoğun ve saat dışı iş yüklerini çalıştırıyorsa, bu sayaçların değerlerini yakalamalısınız.
 
-PerfMon sayaçları, sunucunuzun işlemci, bellek ve her mantıksal diski ve fiziksel diski için kullanılabilir. VM'li birinci sınıf depolama diskleri kullandığınızda, fiziksel disk sayaçları her premium depolama diski içindir ve mantıksal disk sayaçları premium depolama disklerinde oluşturulan her birim içindir. Uygulama iş yükünüzü barındıran disklerin değerlerini yakalamanız gerekir. Mantıksal ve fiziksel diskler arasında bire bir eşleme varsa, fiziksel disk sayaçlarına başvurabilirsiniz; aksi takdirde mantıksal disk sayaçları bakın. Linux'ta, iostat komutu bir CPU ve disk kullanım raporu oluşturur. Disk kullanım raporu, fiziksel aygıt veya bölüm başına istatistikler sağlar. Verilerini ve ayrı disklerde günlüklerini içeren bir veritabanı sunucunuz varsa, bu verileri her iki disk için de toplayın. Aşağıdaki tabloda diskler, işlemciler ve bellek sayaçları açıklanmaktadır:
+PerfMon sayaçları işlemci, bellek ve sunucunuzdaki her mantıksal disk ve fiziksel disk için kullanılabilir. Premium Depolama disklerini bir VM ile kullandığınızda, her bir Premium Depolama diski için fiziksel disk sayaçları ve Premium Depolama disklerinde oluşturulan her birim için mantıksal disk sayaçları bulunur. Uygulama iş yükünüzü barındıran disklerin değerlerini yakalamalısınız. Mantıksal ve fiziksel diskler arasında bire bir eşleme varsa, fiziksel disk sayaçlarına başvurabilirsiniz; Aksi takdirde mantıksal disk sayaçlarına bakın. Linux 'ta, Iostat komutu bir CPU ve disk kullanımı raporu oluşturur. Disk kullanımı raporu, fiziksel cihaz veya bölüm başına istatistikler sağlar. Verileri ve günlükleri ayrı disklerde içeren bir veritabanı sunucusuna sahipseniz, bu verileri her iki disk için de toplayın. Aşağıdaki tabloda diskler, işlemciler ve Bellek sayaçlarını açıklanmaktadır:
 
-| Sayaç | Açıklama | Perfmon | Iostat |
+| Sayaç | Açıklama | Sin | Iostat |
 | --- | --- | --- | --- |
-| **Saniyede IOPS veya İşlemler** |Depolama diskine saniyede verilen G/Ç isteklerinin sayısı. |Disk Okuma/sn <br> Disk Yazma/sn |Tps <br> r/s <br> w/s |
-| **Disk Okur ve Yazar** |Diskte gerçekleştirilen Okuma ve Yazma işlemlerinin %'si. |% Disk Okuma Süresi <br> % Disk Yazma Süresi |r/s <br> w/s |
-| **Aktarım hızı** |Saniyede diskten okunan veya diske yazılan veri miktarı. |Disk Okuma Bayt/sn <br> Disk Bayt/sn Yazma |kB_read/s <br> kB_wrtn/s |
-| **Gecikme süresi** |Bir disk IO isteğini tamamlamak için toplam süre. |Ortalama Disk sn/Oku <br> Ortalama disk sn/Yaz |bekleme <br> svctm |
-| **IO boyutu** |G/Ç'nin boyutu depolama disklerine sorun isteklerini sağlar. |Ortalama Disk Baytları/Okuma <br> Ortalama Disk Bayt/Yazma |avgrq-sz |
-| **Sıra Derinliği** |Depolama diskinden okunmayı veya depodiskine yazılmayı bekleyen bekleyen G/Ç isteklerinin sayısı. |Geçerli Disk Sıra Uzunluğu |avgqu-sz |
-| **Max. Bellek** |Uygulamayı sorunsuz çalıştırmak için gereken bellek miktarı |Kullanımda Taahhüt Edilen Baytlar |vmstat kullanın |
-| **Max. Cpu** |Uygulamayı sorunsuz çalıştırmak için gereken CPU miktarı |% İşlemci süresi |%util |
+| **IOPS veya saniye başına Işlem** |Depolama diskine saniye başına verilen g/ç isteği sayısı. |Disk Okuma/sn <br> Disk yazma/sn |TPS <br> r/s <br> w/s |
+| **Disk okuma ve yazma Işlemleri** |disk üzerinde gerçekleştirilen okuma ve yazma işlemlerinin yüzdesi. |% Disk okuma zamanı <br> % Disk yazma zamanı |r/s <br> w/s |
+| **Aktarım hızı** |Saniye başına diskten okunan veya diske yazılan veri miktarı. |Disk okuma bayt/sn <br> Disk yazma bayt/sn |kB_read/s <br> kB_wrtn/s |
+| **Gecikme süresi** |Bir disk GÇ isteğini tamamlayacak toplam süre. |Ortalama Disk sn/okuma <br> Ortalama Disk sn/yazma |bekleme <br> svctd |
+| **GÇ boyutu** |G/ç isteklerinin boyutu depolama disklerinde sorun verir. |Ortalama disk bayt/okuma <br> Ortalama disk bayt/yazma |avgrq-SZ |
+| **Sıra derinliği** |Depolama diskine okunmayı bekleyen bekleyen g/ç isteklerinin sayısı. |Geçerli disk sırası uzunluğu |avgqu-SZ |
+| **Biçimlendir. Bellek** |Uygulamayı sorunsuz bir şekilde çalıştırmak için gereken bellek miktarı |Kullanılan kaydedilmiş bayt yüzdesi |Vmstat kullanma |
+| **Biçimlendir. 'SUNA** |Uygulamayı sorunsuz şekilde çalıştırmak için CPU miktarı gereklidir |% İşlemci zamanı |% Util |
 
-[iostat](https://linux.die.net/man/1/iostat) ve [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx)hakkında daha fazla bilgi edinin.
+[Iostat](https://linux.die.net/man/1/iostat) ve [Perfmon](https://msdn.microsoft.com/library/aa645516.aspx)hakkında daha fazla bilgi edinin.
 
 
 
-## <a name="optimize-application-performance"></a>Uygulama performansını optimize edin
+## <a name="optimize-application-performance"></a>Uygulama performansını iyileştirme
 
-Premium Depolama'da çalışan bir uygulamanın performansını etkileyen başlıca faktörler IO isteklerinin doğası, VM boyutu, Disk boyutu, disk sayısı, disk önbelleğe alma, çok iş parçacığı ve sıra derinliğidir. Bu faktörlerden bazılarını sistem tarafından sağlanan düğümlerle kontrol edebilirsiniz. Çoğu uygulama size IO boyutunu ve Sıra Derinliğini doğrudan değiştirme seçeneği vermeyebilir. Örneğin, SQL Server kullanıyorsanız, IO boyutunu ve sıra derinliğini seçemezsiniz. SQL Server en iyi performansı elde etmek için en iyi IO boyutunu ve sıra derinliği değerlerini seçer. Performans gereksinimlerini karşılamak için uygun kaynakları sağlamak için her iki etken türünün de uygulama performansınız üzerindeki etkilerini anlamak önemlidir.
+Premium depolamada çalışan bir uygulamanın performansını etkileyen ana faktörler, GÇ isteklerinin, VM boyutunun, disk boyutunun, disk sayısının, disk önbelleği, çoklu iş parçacığı ve sıra derinliği unsurlardır. Bu faktörlerden bazılarını sistem tarafından sunulan KBS ile kontrol edebilirsiniz. Çoğu uygulama, GÇ boyutunu ve sıra derinliğini doğrudan değiştirme seçeneği sunmayabilir. Örneğin, SQL Server kullanıyorsanız, GÇ boyutunu ve sıra derinliğini seçemezsiniz. SQL Server en iyi GÇ boyutunu ve sıra derinliği değerlerini en iyi performansı elde etmek için seçer. Performans ihtiyaçlarını karşılamak üzere uygun kaynakları sağlayabilmeniz için, uygulama performansındaki her iki tür faktörün etkilerini anlamak önemlidir.
 
-Bu bölüm boyunca, uygulama performansınızı en iyi duruma getirmek için ne kadar ihtiyacınız olduğunu belirlemek için oluşturduğunuz uygulama gereksinimleri denetim listesine bakın. Buna dayanarak, bu bölümden hangi faktörleri ayarlamanız gerekeceğini belirleyebileceksiniz. Her faktörün uygulama performansınız üzerindeki etkilerine tanık olmak için, karşılaştırma araçlarını uygulama kurulumunuzda çalıştırın. Windows ve Linux VM'lerde ortak kıyaslama araçlarını çalıştırma adımları için, sonunda bağlantılı Kıyaslama makalesine bakın.
+Bu bölümde, uygulama performansınızı iyileştirmek için ne kadar ihtiyacınız olduğunu belirlemek için oluşturduğunuz uygulama gereksinimleri denetim listesine bakın. Buna bağlı olarak, bu bölümden hangi faktörleri ayarlamanız gerektiğini belirleyebileceksiniz. Uygulama performansındaki her bir faktörün etkilerini bir şekilde uygulamak için, uygulama kurulumunda benchişaretleme araçları 'nı çalıştırın. Windows ve Linux VM 'lerinde ortak bir değerlendirme aracı çalıştırma adımları için, sonda bağlı olan Benchişaretleme makalesine başvurun.
 
-### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>Bir bakışta IOPS'yi, iş akışını ve gecikmeyi optimize edin
+### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>IOPS 'yi, aktarım hızını ve gecikme süresini bir bakışta iyileştirin
 
-Aşağıdaki tabloda performans faktörleri ve IOPS, iş sonu ve gecikme en iyi duruma getirmek için gerekli adımları özetler. Bu özeti izleyen bölümlerher faktörü çok daha derinlemesine açıklar.
+Aşağıdaki tabloda, performans faktörleri ve ıOPS 'yi, aktarım hızını ve gecikmeyi iyileştirmek için gereken adımlar özetlenmektedir. Bu Özetteki bölümlerde her bir faktör daha ayrıntılı olarak açıklanır.
 
-VM boyutları ve IOPS, iş sonu ve her VM türü için kullanılabilir gecikme hakkında daha fazla bilgi için [Linux VM boyutları](../articles/virtual-machines/linux/sizes.md) veya Windows [VM boyutlarına](../articles/virtual-machines/windows/sizes.md)bakın.
+VM boyutları hakkında daha fazla bilgi ve her bir sanal makine türü için ıOPS, aktarım hızı ve gecikme süresi hakkında daha fazla bilgi için bkz. [LINUX VM boyutları](../articles/virtual-machines/linux/sizes.md) veya [Windows VM boyutları](../articles/virtual-machines/windows/sizes.md).
 
 | &nbsp; | **IOPS** | **Aktarım hızı** | **Gecikme süresi** |
 | --- | --- | --- | --- |
-| **Örnek Senaryo** |Kurumsal OLTP uygulaması saniyede çok yüksek işlemler gerektiren. |Kurumsal Veri depolama uygulaması büyük miktarda veri işleme. |Çevrimiçi oyun gibi kullanıcı isteklerine anında yanıt gerektiren gerçek zamanlı uygulamaların yakınında. |
+| **Örnek senaryo** |Saniye başına çok yüksek işlem gerektiren kurumsal OLTP uygulaması. |Büyük miktarlarda veriyi işleyen kurumsal veri ambarı uygulaması. |Çevrimiçi oyun gibi Kullanıcı isteklerine anında yanıt gerektiren neredeyse gerçek zamanlı uygulamalar. |
 | Performans faktörleri | &nbsp; | &nbsp; | &nbsp; |
-| **IO boyutu** |Daha küçük IO boyutu daha yüksek IOPS verir. |Daha yüksek Verim elde etmek için daha büyük IO boyutu. | &nbsp;|
-| **VM boyutu** |Uygulama gereksiniminizden daha büyük IOPS sunan bir VM boyutu kullanın. |Uygulama gereksiniminizden daha büyük iş fazlası olan bir VM boyutu kullanın. |Uygulama gereksiniminizden daha büyük ölçek sınırları sunan bir VM boyutu kullanın. |
-| **Disk boyutu** |IOPS'yi uygulama gereksiniminizden daha büyük sunan bir disk boyutu kullanın. |İş Ortası sınırı uygulama gereksiniminizden daha büyük bir disk boyutu kullanın. |Uygulama gereksiniminizden daha büyük ölçek sınırları sunan bir disk boyutu kullanın. |
-| **VM ve Disk Ölçeği Sınırları** |Seçilen VM boyutunun IOPS sınırı, bağlı depolama diskleri tarafından yönlendirilen toplam IOPS'den daha büyük olmalıdır. |Seçilen VM boyutunun iş verme sınırı, bağlı premium depolama diskleri tarafından yönlendirilen toplam İş İbzül'den daha büyük olmalıdır. |Seçilen VM boyutunun ölçek sınırları, ekli premium depolama disklerinin toplam ölçek sınırlarından daha büyük olmalıdır. |
-| **Disk Önbelleğe Alma** |Read ağır işlemleri ile premium depolama disklerinde ReadOnly Önbelleğini etkinleştirin ve daha yüksek Okuma IOPS'u elde edin. | &nbsp; |Çok düşük Okuma gecikmeleri elde etmek için Hazır ağır işlemleri ile premium depolama disklerinde ReadOnly Önbelleğini etkinleştirin. |
-| **Disk Şeritleme** |Birden çok disk kullanın ve daha yüksek Bir IOPS ve İş Verme sınırı elde etmek için onları bir araya getirin. VM başına birleştirilmiş sınır, bağlı premium disklerin birleşik sınırlarından daha yüksek olmalıdır. | &nbsp; | &nbsp; |
-| **Şerit Boyutu** |OLTP uygulamalarında görülen rastgele küçük IO deseni için daha küçük şerit boyutu. Örneğin, SQL Server OLTP uygulaması için 64 KB şerit boyutunu kullanın. |Veri Ambarı uygulamalarında görülen sıralı büyük IO deseni için daha büyük şerit boyutu. Örneğin, SQL Server Data ambarı uygulaması için 256 KB şerit boyutu kullanın. | &nbsp; |
-| **Çoklu iş parçacığı kullanımı** |Daha yüksek IOPS ve İş Elde Etme işlemine yol açacak daha fazla sayıda talebi Premium Depolama'ya itmek için çoklu iş parçacığı kullanın. Örneğin, SQL Server'da, SQL Server'a daha fazla CPU ayırmak için yüksek bir MAXDOP değeri ayarlayın. | &nbsp; | &nbsp; |
-| **Sıra Derinliği** |Daha büyük Kuyruk Derinliği daha yüksek IOPS verir. |Daha Büyük Sıra Derinliği daha yüksek Verim verir. |Daha küçük Sıra Derinliği daha düşük gecikmeler verir. |
+| **GÇ boyutu** |Daha küçük GÇ boyutu, ıOPS 'yi verir. |Daha yüksek performans elde etmek için daha büyük GÇ boyutu. | &nbsp;|
+| **VM boyutu** |Uygulama gereksiniminden daha büyük ıOPS sağlayan bir VM boyutu kullanın. |Uygulama gereksiniminden daha büyük aktarım hızı sınırı ile bir VM boyutu kullanın. |Uygulama gereksiniminden daha büyük ölçek sınırları sunan bir VM boyutu kullanın. |
+| **Disk boyutu** |Uygulama gereksiniminden daha büyük ıOPS sağlayan bir disk boyutu kullanın. |Uygulama gereksiniminden daha büyük aktarım hızı sınırı ile disk boyutu kullanın. |Uygulama gereksiniminden daha büyük ölçek sınırları sunan bir disk boyutu kullanın. |
+| **VM ve disk ölçek sınırları** |Seçilen VM boyutunun ıOPS sınırı, kendisine bağlı depolama disklerinin yönettiği toplam ıOPS 'den büyük olmalıdır. |Seçilen VM boyutunun aktarım hızı sınırı, kendisine bağlı olan Premium Depolama disklerinin toplam aktarım hızına eşit olmalıdır. |Seçilen VM boyutunun ölçek sınırları, ekli Premium Depolama disklerinin toplam ölçek limitinden büyük olmalıdır. |
+| **Disk önbelleğe alma** |Daha yüksek okuma ıOPS sağlamak için Premium Depolama disklerinde, okuma ağır işlemleri olan salt okunur önbelleği etkinleştirin. | &nbsp; |Çok düşük okuma gecikmeleri sağlamak için, Premium Depolama disklerinde, Premium Depolama disklerinde salt okunur önbelleği etkinleştirin. |
+| **Disk şeridi** |Daha yüksek bir ıOPS ve aktarım hızı sınırı almak için birden çok disk kullanın ve bunları birlikte toplayın. VM başına Birleşik Sınır, ekli Premium disklerin birleştirilmiş limitlerinden daha yüksek olmalıdır. | &nbsp; | &nbsp; |
+| **Şerit boyutu** |OLTP uygulamalarında görülen rastgele küçük GÇ deseninin daha küçük şerit boyutu. Örneğin, SQL Server OLTP uygulaması için 64 KB 'lık Stripe boyutunu kullanın. |Veri ambarı uygulamalarında görülen sıralı büyük GÇ deseninin daha büyük şerit boyutu. Örneğin, SQL Server veri ambarı uygulaması için 256 KB 'lık dizili boyut kullanın. | &nbsp; |
+| **Çoklu iş parçacığı kullanımı** |Daha yüksek ıOPS ve aktarım hızına yol açacak Premium depolamaya daha yüksek sayıda istek göndermek için çoklu iş parçacığı kullanımı kullanın. Örneğin, SQL Server üzerinde SQL Server daha fazla CPU ayırmak için yüksek bir MAXDOP değeri ayarlayın. | &nbsp; | &nbsp; |
+| **Sıra derinliği** |Daha büyük sıra derinliği, ıOPS 'yi verir. |Daha büyük sıra derinliği daha yüksek aktarım hızı verir. |Daha küçük sıra derinliği daha düşük gecikme süreleri verir. |
 
-## <a name="nature-of-io-requests"></a>IO isteklerinin doğası
+## <a name="nature-of-io-requests"></a>GÇ isteklerinin doğası
 
-IO isteği, uygulamanızın gerçekleştireceği bir giriş/çıkış işlemi birimidir. Küçük veya büyük, rasgele veya sıralı, okuma veya yazma iIO isteklerinin niteliğini belirlemek, uygulamanızın performans gereksinimlerini belirlemenize yardımcı olur. IO isteklerinin doğasını anlamak, uygulama altyapınızı tasarlarken doğru kararlar almak önemlidir. Mümkün olan en iyi performansı elde etmek için IOs eşit olarak dağıtılmalıdır.
+GÇ isteği, uygulamanızın gerçekleştirmesi için bir giriş/çıkış işlemi birimidir. GÇ isteklerinin yapısını, rastgele veya sıralı, okuma veya yazma, küçük veya büyük olarak tanımlamak, uygulamanızın performans gereksinimlerini belirlemenize yardımcı olur. Uygulama altyapınızı tasarlarken doğru kararları vermek için GÇ isteklerinin doğasını anlamak önemlidir. Mümkün olan en iyi performansı elde etmek için IOs 'un eşit olarak dağıtılması gerekir.
 
-IO boyutu en önemli faktörlerden biridir. IO boyutu, uygulamanız tarafından oluşturulan giriş/çıkış işlemi isteğinin boyutudur. IO boyutu, özellikle uygulamanın elde edilebildiği IOPS ve Bant Genişliği üzerinde performans üzerinde önemli bir etkiye sahiptir. Aşağıdaki formül, IOPS, IO boyutu ve Bant Genişliği/İş-İş-İş  
+GÇ boyutu, daha önemli faktörlerden biridir. GÇ boyutu, uygulamanız tarafından oluşturulan giriş/çıkış işlemi isteğinin boyutudur. GÇ boyutunun, özellikle de uygulamanın elde edebildii ıOPS ve bant genişliği üzerinde performans üzerinde önemli bir etkisi vardır. Aşağıdaki formül ıOPS, GÇ boyutu ve bant genişliği/aktarım hızı arasındaki ilişkiyi gösterir.  
     ![](media/premium-storage-performance/image1.png)
 
-Bazı uygulamalar IO boyutlarını değiştirmenize izin verirken, bazı uygulamalar değiştirmez. Örneğin, SQL Server en iyi IO boyutunu kendisi belirler ve kullanıcılara bunu değiştirmek için herhangi bir düğüm sağlamaz. Öte yandan Oracle, veritabanının G/Ç istek boyutunu yapılandırabileceğiniz [DB\_BLOCK\_SIZE](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) adlı bir parametre sağlar.
+Bazı uygulamalar, bazı uygulamalar olmasa da bunun GÇ boyutunu değiştirmelerini sağlar. Örneğin, SQL Server en iyi GÇ boyutunu belirler ve bunu değiştirmek için kullanıcılara herhangi bir KBS sağlamaz. Diğer yandan, Oracle, veritabanı [\_blok\_boyutu](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) adlı bir parametre sağlar ve bu, veritabanının g/ç istek boyutunu yapılandırabilirsiniz.
 
-IO boyutunu değiştirmenize izin vermeyen bir uygulama kullanıyorsanız, uygulamanızla en alakalı performans KPI'sını optimize etmek için bu makaledeki yönergeleri kullanın. Örneğin,
+GÇ boyutunu değiştirmenize izin verilmeyen bir uygulama kullanıyorsanız, uygulamanızla en uygun performans KPI 'sini iyileştirmek için bu makaledeki yönergeleri kullanın. Örneğin,
 
-* Bir OLTP uygulaması milyonlarca küçük ve rasgele IO isteği oluşturur. Bu tür IO isteklerini işlemek için, uygulama altyapınızı daha yüksek IOPS almak için tasarlamanız gerekir.  
-* Veri depolama uygulaması büyük ve sıralı IO istekleri oluşturur. Bu tür IO isteklerini işlemek için, daha yüksek Bant genişliği veya İş İş İlerletmek için uygulama altyapınızı tasarlamanız gerekir.
+* OLTP uygulaması milyonlarca küçük ve rastgele GÇ isteği oluşturur. Bu GÇ isteği türlerini işlemek için, uygulama altyapınızı daha yüksek ıOPS 'yi almak üzere tasarlamanız gerekir.  
+* Veri ambarı uygulaması büyük ve sıralı GÇ istekleri üretir. Bu GÇ isteği türlerini işlemek için, uygulama altyapınızı daha yüksek bant genişliği veya aktarım hızı sağlamak üzere tasarlamanız gerekir.
 
-IO boyutunu değiştirmenize olanak tanıyan bir uygulama kullanıyorsanız, diğer performans yönergelerine ek olarak IO boyutu için bu başparmak kuralını kullanın,
+GÇ boyutunu değiştirmenize olanak sağlayan bir uygulama kullanıyorsanız, diğer performans yönergelerine ek olarak GÇ boyutu için bu Thumb kuralını kullanın.
 
-* Daha yüksek IOPS almak için daha küçük IO boyutu. Örneğin, bir OLTP uygulaması için 8 KB.  
-* Daha yüksek Bant genişliği/İş Verme elde etmek için daha büyük IO boyutu. Örneğin, bir veri ambarı uygulaması için 1024 KB.
+* Daha yüksek ıOPS 'yi almak için daha küçük GÇ boyutu. Örneğin, OLTP uygulaması için 8 KB.  
+* Daha yüksek bant genişliği/aktarım hızı sağlamak için büyük GÇ boyutu. Örneğin, bir veri ambarı uygulaması için 1024 KB.
 
-Uygulamanız için IOPS ve İş İsp/Bant Genişliğini nasıl hesaplayabildiğinize ilişkin bir örnek aşağıda verilmiştir. P30 diskkullanarak bir uygulama düşünün. Bir P30 diskin elde edebileceği maksimum IOPS ve Throughput/Bant genişliği sırasıyla saniyede 5000 IOPS ve 200 MB'dır. Şimdi, uygulamanız P30 diskten maksimum IOPS gerektiriyorsa ve 8 KB gibi daha küçük bir IO boyutu kullanıyorsanız, elde edeceğiniz Bant genişliği saniyede 40 MB'dır. Ancak, uygulamanız P30 diskten maksimum ThroughPut/Bant genişliği gerektiriyorsa ve 1024 KB gibi daha büyük bir IO boyutu kullanıyorsanız, ortaya çıkan IOPS daha az, 200 IOPS olacaktır. Bu nedenle, Uygulamanızın IOPS ve İş-İş/Bant Genişliği gereksinimini karşılar şekilde IO boyutunu ayarlayın. Aşağıdaki tablo, bir P30 disk için farklı IO boyutlarını ve bunların karşılık gelen IOPS ve İş İbılasını özetler.
+Uygulamanızın ıOPS ve aktarım hızını ve bant genişliğini nasıl hesaplayabileceğiniz hakkında bir örnek aşağıda verilmiştir. Bir P30 diski kullanarak bir uygulamayı düşünün. P30 diskinin alabileceği maksimum ıOPS ve aktarım hızı/bant genişliği, sırasıyla 5000 ıOPS ve 200 MB 'tır. Artık, uygulamanız P30 diskinden maksimum ıOPS gerektiriyorsa ve 8 KB gibi daha küçük bir GÇ boyutu kullanırsanız, elde edilen bant genişliği saniyede 40 MB 'lık bir değer elde edersiniz. Ancak, uygulamanız P30 diskinden maksimum üretilen Iş/bant genişliği gerektiriyorsa ve 1024 KB gibi daha büyük bir GÇ boyutu kullanırsanız, sonuçta elde edilen ıOPS daha az, 200 ıOPS olur. Bu nedenle, GÇ boyutunu uygulamanızın ıOPS ve aktarım hızı/bant genişliği gereksinimini karşılayacak şekilde ayarlayın. Aşağıdaki tabloda, bir P30 diski için farklı GÇ boyutları ve bunlara karşılık gelen ıOPS ve aktarım hızı özetlenmektedir.
 
-| Uygulama Gereksinimi | G/Ç boyutu | IOPS | İş-İş- Bant Genişliği |
+| Uygulama gereksinimi | G/ç boyutu | IOPS | Aktarım hızı/bant genişliği |
 | --- | --- | --- | --- |
-| Maks. IOPS |8 KB |5.000 |Saniyede 40 MB |
-| Max Throughput |1024 KB |200 |Saniyede 200 MB |
-| Maksimum Throughput + yüksek IOPS |64 KB |3,200 |Saniyede 200 MB |
-| Max IOPS + yüksek Throughput |32 KB |5.000 |Saniyede 160 MB |
+| Maks. IOPS |8 KB |5.000 |saniyede 40 MB |
+| En fazla aktarım hızı |1024 KB |200 |saniyede 200 MB |
+| Maksimum üretilen Iş + yüksek ıOPS |64 KB |3.200 |saniyede 200 MB |
+| Maksimum ıOPS + yüksek aktarım hızı |32 KB |5.000 |saniyede 160 MB |
 
-IOPS ve Bant genişliğini tek bir premium depolama diskinin maksimum değerinden daha yüksek almak için, birlikte çizgili birden çok premium disk kullanın. Örneğin, 10.000 IOPS'nin birleşik IOPS'si veya saniyede 400 MB'lık birleşik Bir İş Verme İşlemi elde etmek için iki P30 diski şerit altına alın. Bir sonraki bölümde açıklandığı gibi, birleştirilmiş disk IOPS ve İş Verme destekleyen bir VM boyutu kullanmanız gerekir.
+IOPS 'yi ve bant genişliğini tek bir Premium Depolama diskinin en büyük değerinden daha yüksek bir değere almak için birlikte şeritli birden fazla Premium disk kullanın. Örneğin, 10.000 ıOPS 'nin Birleşik bir ıOPS 'sini veya saniyede 400 MB Birleşik aktarım hızını almak için iki P30 diski Stripe. Sonraki bölümde açıklandığı gibi, Birleşik disk ıOPS ve aktarım hızını destekleyen bir VM boyutu kullanmanız gerekir.
 
 > [!NOTE]
-> IOPS veya Throughput diğer de artar arttıkça, disk veya VM iş üretimi veya IOPS sınırları isabet olmadığından emin olun.
+> IOPS 'yi veya üretilen Iş üretimini artırdıkça, diğerini artırarak diskin veya VM 'nin aktarım hızı veya ıOPS limitlerinin isabet aldığınızdan emin olun.
 
-IO boyutunun uygulama performansı üzerindeki etkilerine tanık olmak için, VM ve disklerinizde kıyaslama araçları çalıştırabilirsiniz. Etkisini görmek için birden çok test çalışması oluşturun ve her çalıştırma için farklı IO boyutu kullanın. Daha fazla bilgi için, sonunda bağlantılı Kıyaslama makalesine bakın.
+Uygulama performansı üzerinde GÇ boyutunun etkilerini sağlamak için, VM 'niz ve disklerinizde benchişaretleme araçları çalıştırabilirsiniz. Birden çok test çalıştırması oluşturun ve etkiyi görmek için her çalıştırma için farklı GÇ boyutu kullanın. Daha fazla ayrıntı için, sonda bağlı olan Benchişaretleme makalesine başvurun.
 
 ## <a name="high-scale-vm-sizes"></a>Yüksek ölçekli VM boyutları
 
-Bir uygulama tasarlamaya başladığınızda, yapmanız gereken ilk şeylerden biri, uygulamanızı barındıracak bir VM seçmektir. Premium Depolama, daha yüksek bilgi işlem gücü ve yüksek yerel disk G/Ç performansı gerektiren uygulamaları çalıştırabilen Yüksek Ölçekli VM boyutlarıyla birlikte gelir. Bu VM'ler daha hızlı işlemciler, daha yüksek bellek-çekirdek oranı ve yerel disk için Katı Hal Sürücüsü (SSD) sağlar. Premium Depolamayı destekleyen yüksek ölçekli VM'lere örnek olarak DS ve GS serisi VM'ler verilebilir.
+Bir uygulamayı tasarlamaya başladığınızda, ilk yapmanız gereken tek şey, uygulamanızı barındırmak için bir VM seçin. Premium Depolama, daha yüksek bilgi işlem gücü ve yüksek bir yerel disk g/ç performansı gerektiren uygulamalar çalıştırabilen yüksek ölçekli VM boyutlarına sahiptir. Bu VM 'Ler, daha hızlı işlemciler, daha yüksek bellek-çekirdek oranı ve yerel disk için katı hal sürücüsü (SSD) sağlar. Premium depolamayı destekleyen yüksek ölçekli sanal makinelerin örnekleri DS ve GS serisi VM 'lardır.
 
-Yüksek Ölçekli VM'ler farklı sayıda CPU çekirdeği, bellek, işletim sistemi ve geçici disk boyutuyla farklı boyutlarda kullanılabilir. Her VM boyutunda, VM'ye ekebileceğiniz maksimum veri diski sayısı da vardır. Bu nedenle, seçilen VM boyutu uygulamanız için ne kadar işlem, bellek ve depolama kapasitesinin kullanılabilir olduğunu etkiler. İşlem ve Depolama maliyetini de etkiler. Örneğin, aşağıda bir DS serisi ve GS serisinin en büyük VM boyutunun özellikleri ve rilmiştir:
+Yüksek ölçekli VM 'Ler, farklı boyutlarda CPU çekirdekleri, bellek, işletim sistemi ve geçici disk boyutuyla farklı boyutlarda kullanılabilir. Her VM boyutunun Ayrıca sanal makineye iliştirebilmeniz için maksimum veri diski sayısı vardır. Bu nedenle, seçilen VM boyutu, uygulamanız için ne kadar işlem, bellek ve depolama kapasitesi olduğunu etkiler. Ayrıca Işlem ve depolama maliyetini de etkiler. Örneğin, bir DS serisi ve GS serisi içindeki en büyük VM boyutunun belirtimleri aşağıda verilmiştir:
 
-| VM boyutu | CPU çekirdekleri | Bellek | VM disk boyutları | En çok, veri diskleri | Önbellek boyutu | IOPS | Bant genişliği Önbellek IO sınırları |
+| VM boyutu | CPU çekirdekleri | Bellek | VM diski boyutları | En çok, veri diskleri | Önbellek boyutu | IOPS | Bant genişliği önbellek GÇ sınırları |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS14 |16 |112 GB |İşletim Sistemi = 1023 GB <br> Yerel SSD = 224 GB |32 |576 GB |50.000 IOPS <br> Saniyede 512 MB |4.000 IOPS ve saniyede 33 MB |
-| Standard_GS5 |32 |448 GB |İşletim Sistemi = 1023 GB <br> Yerel SSD = 896 GB |64 |4224 GB |80.000 IOPS <br> Saniyede 2.000 MB |Saniyede 5.000 IOPS ve 50 MB |
+| Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Yerel SSD = 224 GB |32 |576 GB |50.000 ıOPS <br> saniyede 512 MB |4.000 ıOPS ve 33 MB/saniye |
+| Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Yerel SSD = 896 GB |64 |4224 GB |80.000 ıOPS <br> saniyede 2.000 MB |5.000 ıOPS ve 50 MB/saniye |
 
-Kullanılabilir tüm Azure VM boyutlarının tam listesini görüntülemek için [Windows VM boyutlarına](../articles/virtual-machines/windows/sizes.md) veya Linux [VM boyutlarına](../articles/virtual-machines/linux/sizes.md)bakın. İstediğiniz uygulama performansı gereksinimlerini karşılayıp ölçeklendirebilen bir VM boyutu seçin. Buna ek olarak, VM boyutları seçerken önemli hususları göz önünde bulundurun.
+Tüm kullanılabilir Azure VM boyutlarının tüm listesini görüntülemek için [WINDOWS VM boyutları](../articles/virtual-machines/windows/sizes.md) veya [Linux VM boyutları](../articles/virtual-machines/linux/sizes.md)' na bakın. İstenen uygulama performansı gereksinimlerinize uyan ve ölçeklendirebilen bir VM boyutu seçin. Buna ek olarak, VM boyutlarını seçerken önemli noktalara göz atın.
 
-*Ölçek Sınırları*  
-VM ve disk başına maksimum IOPS sınırları birbirinden farklıdır ve birbirinden bağımsızdır. Uygulamanın IOPS'yi VM sınırları içinde ve ona bağlı premium diskler içinde kullandığından emin olun. Aksi takdirde, uygulama performansı azaltma yaşayacaktır.
+*Ölçek sınırları*  
+VM başına en fazla ıOPS sınırı ve disk başına her ikisi birbirinden farklıdır. Uygulamanın ıOPS 'yi VM sınırları içinde ve ona bağlı olan Premium disklere yönlendirdiğinden emin olun. Aksi takdirde, uygulama performansı azaltma deneyimidir.
 
-Örnek olarak, bir uygulama gereksiniminin en fazla 4.000 IOPS olduğunu varsayalım. Bunu başarmak için, DS1 VM'de bir P30 diski sağlamanız gerekir. P30 disk5.000 IOPS'ye kadar teslim edebilir. Ancak, DS1 VM 3.200 IOPS ile sınırlıdır. Sonuç olarak, uygulama performansı VM limiti ile 3.200 IOPS'de sınırlandırılacak ve performans düşürülecektir. Bu durumu önlemek için, her ikisi de uygulama gereksinimlerini karşılayacak bir VM ve disk boyutu seçin.
+Örnek olarak, bir uygulama gereksiniminin en fazla 4.000 ıOPS olduğunu varsayalım. Bunu başarmak için, bir DS1 sanal makinesine P30 diski sağlayacaksınız. P30 diski en fazla 5.000 ıOPS sağlayabilir. Ancak, DS1 VM 3.200 ıOPS ile sınırlıdır. Sonuç olarak, uygulama performansı 3.200 ıOPS 'de VM sınırı ile sınırlandırılır ve performans düzeyi düşecek. Bu durumu engellemek için, uygulama gereksinimlerini karşılayacak bir VM ve disk boyutu seçin.
 
-*İşletme Maliyeti*  
-Çoğu durumda, Premium Depolama'yı kullanmanızın toplam kullanım maliyetinin Standart Depolama'yı kullanmaktan daha düşük olması mümkündür.
+*Işlem maliyeti*  
+Çoğu durumda, Premium depolama kullanan genel işlem maliyetiniz standart depolamayı kullanmaktan daha düşüktür.
 
-Örneğin, 16.000 IOPS gerektiren bir uygulama düşünün. Bu performansı elde etmek için,\_32 standart depolama 1 TB disk kullanarak maksimum 16.000 IOPS verebilecek bir Standart D14 Azure IaaS VM'ye ihtiyacınız olacaktır. Her 1-TB standart depolama diski maksimum 500 IOPS elde edebilirsiniz. Bu VM'nin aylık tahmini maliyeti 1.570 ABD doları olacaktır. 32 standart depolama disklerinin aylık maliyeti 1.638 TL olacaktır. Tahmini toplam aylık maliyet 3.208 $ olacaktır.
+Örneğin, 16.000 ıOPS gerektiren bir uygulamayı düşünün. Bu performansı elde etmek için standart\_bir D14 Azure ıAAS sanal makinesi gerekir ve bu, 32 standart depolama 1 TB disklerini kullanarak en fazla 16.000 IOPS sağlayabilir. Her 1 TB standart depolama diski en fazla 500 ıOPS elde edebilir. Bu VM 'nin aylık tahmini maliyeti $1.570 olacaktır. 32 standart depolama disklerinin aylık maliyeti $1.638 olacaktır. Tahmini toplam aylık maliyet $3.208 olacaktır.
 
-Ancak, Premium Depolama'da aynı uygulamayı barındırıyorsanız, daha küçük bir VM boyutuna ve daha az premium depolama diskine ihtiyacınız olur ve böylece toplam maliyeti düşürür. Standart\_DS13 VM dört P30 disk kullanarak 16.000 IOPS gereksinimini karşılayabilir. DS13 VM 25.600 maksimum IOPS ve her P30 disk 5.000 maksimum IOPS vardır. Genel olarak, bu yapılandırma 5.000 x 4 = 20.000 IOPS elde edebilirsiniz. Bu VM'nin aylık tahmini maliyeti 1.003 TL olacaktır. Dört P30 premium depolama disklerinin aylık maliyeti 544,34 $ olacaktır. Tahmini toplam aylık maliyet 1.544 $ olacaktır.
+Ancak, Premium depolamada aynı uygulamayı barındırdıysanız, daha küçük bir VM boyutu ve daha az Premium Depolama diski gerekir ve bu sayede genel maliyeti azaltabilirsiniz. Standart\_BIR DS13 VM, dört P30 diski kullanarak 16.000 IOPS gereksinimini karşılayabilir. DS13 VM en fazla 25.600 ıOPS 'ye sahiptir ve her P30 diskte en fazla 5.000 ıOPS vardır. Genel olarak, bu yapılandırma 5.000 x 4 = 20.000 ıOPS elde edebilir. Bu VM 'nin aylık tahmini maliyeti $1.003 olacaktır. Dört P30 Premium Depolama diskinin aylık maliyeti $544,34 olacaktır. Tahmini toplam aylık maliyet $1.544 olacaktır.
 
-Aşağıdaki tablo, Standart ve Premium Depolama için bu senaryonun maliyet dökümünü özetleyilmektedir.
+Aşağıdaki tablo, standart ve Premium Depolama için bu senaryonun maliyet dökümünü özetler.
 
 | &nbsp; | **Standart** | **Premium** |
 | --- | --- | --- |
-| **Aylık VM maliyeti** |$1,570.58 (Standart\_D14) |$1,003.66 (Standart\_DS13) |
-| **Disklerin aylık maliyeti** |$1,638.40 (32 x 1-TB diskler) |$544.34 (4 x P30 diskler) |
-| **Aylık Toplam Maliyet** |3.208,98 $ |1.544,34 $ |
+| **Aylık VM maliyeti** |$1.570,58 (Standart\_D14) |$1.003,66 (Standart\_DS13) |
+| **Aylık disk maliyeti** |$1.638,40 (32 x 1-TB disk) |$544,34 (4 x P30 disk) |
+| **Aylık genel maliyet** |$3.208,98 |$1.544,34 |
 
-*Linux Distros*  
+*Linux distros*  
 
-Azure Premium Depolama ile, Windows ve Linux çalıştıran VM'ler için aynı performans düzeyine sahip olursunuz. Biz Linux distros birçok tatlar destek ve [burada](../articles/virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)tam listesini görebilirsiniz. Farklı dağıtımların farklı iş yükleri için daha uygun olduğunu unutmayın. İş yükünüzün üzerinde çalışmaya devam eden dağıtıma bağlı olarak farklı performans düzeyleri görürsünüz. Uygulamanızla Linux dağıtımını test edin ve en iyi çalışanı seçin.
+Azure Premium Depolama ile Windows ve Linux çalıştıran VM 'Ler için aynı performans düzeyine sahip olursunuz. Linux kaldırmalarının pek çok türünü destekliyoruz ve listenin tamamını [burada](../articles/virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)görebilirsiniz. Farklı iş yüklerinin farklı türleri için daha uygun olduğunu unutmamak önemlidir. İş yükünüzün üzerinde çalıştığı bir değere göre farklı düzeylerde performans göreceksiniz. Linux Distro 'lara 'yi uygulamanızla test edin ve en iyi şekilde çalışacak olanı seçin.
 
-Premium Depolama ile Linux çalıştırırken, yüksek performans sağlamak için gerekli sürücüler le ilgili en son güncellemeleri kontrol edin.
+Linux 'u Premium Depolama ile çalıştırırken, yüksek performans sağlamak için gerekli sürücülerle ilgili en son güncelleştirmeleri denetleyin.
 
-## <a name="premium-storage-disk-sizes"></a>Üstün depolama disk boyutları
+## <a name="premium-storage-disk-sizes"></a>Premium Depolama diski boyutları
 
-Azure Premium Depolama, ihtiyaçlarınıza en uygun olanı seçebilmeniz için çeşitli boyutlar sunar. Her disk boyutunun IOPS, bant genişliği ve depolama için farklı bir ölçek sınırı vardır. Uygulama gereksinimlerine ve yüksek ölçekli VM boyutuna bağlı olarak doğru Premium Depolama Diskboyutunu seçin. Aşağıdaki tabloda disklerin boyutları ve yetenekleri gösterilmektedir. P4, P6, P15, P60, P70 ve P80 boyutları şu anda yalnızca Yönetilen Diskler için desteklenir.
+Azure Premium Depolama, gereksinimlerinize en uygun olanı seçebilmeniz için çeşitli boyutlarda bir boyut sunar. Her disk boyutunun ıOPS, bant genişliği ve depolama için farklı ölçek sınırı vardır. Uygulama gereksinimlerine ve yüksek ölçekli VM boyutuna bağlı olarak doğru Premium Depolama diski boyutunu seçin. Aşağıdaki tabloda, disklerin boyutları ve özellikleri gösterilmektedir. P4, P6, P15, P60, P70 ve P80 boyutları şu anda yalnızca yönetilen diskler için desteklenmektedir.
 
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-Seçtiğiniz disk kaç seçilen disk boyutuna bağlıdır. Uygulama gereksiniminizi karşılamak için tek bir P50 disk veya birden çok P10 disk kullanabilirsiniz. Seçim yaparken aşağıda listelenen hususları göz önünde bulundurun.
+Kaç disk seçtiğiniz disk boyutuna bağlıdır. Uygulamanızın gereksinimini karşılamak için tek bir P50 disk veya birden çok P10 diski kullanabilirsiniz. Seçim yaparken aşağıda listelenen hesaba göz atın.
 
-*Ölçek Sınırları (IOPS ve İş İbadet)*  
-Her Premium disk boyutunun IOPS ve İş İbazalt sınırları, VM ölçek sınırlarından farklıdır ve bağımsızdır. Disklerden gelen toplam IOPS ve Throughput'un seçilen VM boyutunun ölçek sınırları içinde olduğundan emin olun.
+*Ölçek sınırları (ıOPS ve aktarım hızı)*  
+Her Premium disk boyutunun ıOPS ve aktarım hızı sınırları farklı ve VM Ölçek limitinden bağımsızdır. Disklerden toplam ıOPS ve üretilen Iş üretiminin, seçilen VM boyutunun ölçek sınırları içinde olduğundan emin olun.
 
-Örneğin, bir uygulama gereksinimi maksimum 250 MB/sn Verim ise ve tek bir P30 diske sahip bir DS4 VM kullanıyorsanız. DS4 VM 256 MB/sn'ye kadar Throughput verebilir. Ancak, tek bir P30 disk200 MB/sn İş İş Parçacığı sınırına sahiptir. Sonuç olarak, uygulama disk sınırı nedeniyle 200 MB/sn olarak sınırlandırılacaktır. Bu sınırı aşmak için VM'ye birden fazla veri diski verin veya disklerinizi P40 veya P50'ye yeniden boyutlandırın.
+Örneğin, bir uygulama gereksinimi en fazla 250 MB/sn aktarım hızı ise ve tek bir P30 diski ile bir DS4 VM kullanıyorsanız. DS4 VM, en fazla 256 MB/sn aktarım hızı verebilir. Ancak, tek bir P30 diskinde 200 MB/sn aktarım hızı sınırı vardır. Sonuç olarak, uygulama, disk sınırı nedeniyle 200 MB/sn ile kısıtlanır. Bu sınırı aşmak için, VM 'de birden fazla veri diski sağlayın veya disklerinizi P40 veya P50 olarak yeniden boyutlandırın.
 
 > [!NOTE]
-> Önbellek tarafından sunulan okumalar disk IOPS ve İş Verme'ye dahil edilmez, bu nedenle disk sınırlarına tabi değildir. Önbellek, VM başına ayrı IOPS ve İş İş İbzül sınırına sahiptir.
+> Önbellek tarafından sunulan okumalar disk ıOPS ve aktarım hızına dahil değildir, bu nedenle disk sınırlarına tabi değildir. Önbelleğin VM başına ayrı ıOPS ve aktarım hızı sınırı vardır.
 >
-> Örneğin, başlangıçta okuma ve yazma sırasıyla 60MB/sn ve 40MB/sn vardır. Zaman içinde, önbellek ısınır ve önbellekten okumadaha fazla hizmet vermektedir. Daha sonra diskten daha yüksek yazı Misli ile alabilirsiniz.
+> Örneğin, başlangıçta okuma ve yazma işlemleri sırasıyla 60MB/sn ve 40MB/sn 'DIR. Zaman içinde önbellek, önbellekten daha fazla ve daha fazla okuma yapar. Daha sonra, diskten daha yüksek yazma aktarım hızı edinebilirsiniz.
 
 *Disk sayısı*  
-Uygulama gereksinimlerini değerlendirerek gereksinim duyacağınız disk sayısını belirleyin. Her VM boyutu, VM'ye ekebileceğiniz disk sayısında da bir sınıra sahiptir. Genellikle, bu çekirdek sayısının iki katıdır. Seçtiğiniz VM boyutunun gerekli disk sayısını desteklediğinden emin olun.
+Uygulama gereksinimlerini değerlendirerek gereken disk sayısını belirleme. Her VM boyutunun Ayrıca VM 'ye iliştirebilmeniz için disk sayısıyla ilgili bir sınırı vardır. Genellikle, bu çekirdek sayısı iki katına kaydedilir. Seçtiğiniz VM boyutunun, gereken disk sayısını destekleyediğinden emin olun.
 
-Premium Depolama disklerinin Standart Depolama disklerine kıyasla daha yüksek performans özelliklerine sahip olduğunu unutmayın. Bu nedenle, Standart Depolama'yı Kullanarak Uygulamanızı Azure IaaS VM'den Premium Depolama'ya geçiriyorsanız, uygulamanız için aynı veya daha yüksek performansı elde etmek için büyük olasılıkla daha az premium diske ihtiyacınız olacaktır.
+Premium Depolama disklerinin standart depolama disklerine kıyasla daha yüksek performans özelliklerine sahip olduğunu unutmayın. Bu nedenle, uygulamanızı standart depolama kullanarak Azure IaaS VM 'den Premium depolamaya geçiriyorsanız, uygulamanız için aynı veya daha yüksek performans elde etmek için büyük olasılıkla daha az Premium disk gerekecektir.
 
 ## <a name="disk-caching"></a>Disk önbelleği
 
-Azure Premium Depolama'dan yararlanan yüksek ölçekli VM'ler, BlobCache adı verilen çok katmanlı bir önbelleğe alma teknolojisine sahiptir. BlobCache önbelleğe alma için Sanal Makine RAM ve yerel SSD bir arada kullanır. Bu önbellek, Premium Depolama kalıcı diskleri ve VM yerel diskleri için kullanılabilir. Varsayılan olarak, bu önbellek ayarı, İşletim Sistemi diskleri için Oku/Yaz ve Premium Depolama'da barındırılan veri diskleri için ReadOnly olarak ayarlanır. Premium Depolama disklerinde disk önbelleğe alma özelliği etkinleştirildiğinde, yüksek ölçekli VM'ler temel disk performansını aşan son derece yüksek performans düzeyleri elde edebilir.
+Azure Premium Depolamalarından yararlanan yüksek ölçekli VM 'Ler BlobCache adlı çok katmanlı bir önbelleğe alma teknolojisine sahiptir. BlobCache, önbelleğe alma için sanal makine RAM ve yerel SSD 'nin bir birleşimini kullanır. Bu önbellek, Premium Depolama kalıcı disklerinde ve VM yerel disklerinde kullanılabilir. Varsayılan olarak, bu önbellek ayarı, Premium depolamada barındırılan veri diskleri için işletim sistemi diskleri ve salt okunur için okuma/yazma olarak ayarlanır. Premium Depolama disklerinde etkinleştirilmiş disk önbelleği sayesinde, yüksek ölçekli VM 'Ler temel disk performansını aşan son derece yüksek performans düzeyine sahip olabilir.
 
 > [!WARNING]
-> Disk Önbelleğe Alma diskler 4 TiB ve daha büyük için desteklenmez. VM'nize birden fazla disk bağlıysa, 4 TiB'den küçük her disk önbelleğe alma desteği verecektir.
+> Disk önbelleği 4 TiB ve daha büyük diskler için desteklenmez. Sanal makinenize birden çok disk iliştirilmişse, 4 TiB 'den küçük olan her bir disk önbelleğe almayı destekleyecektir.
 >
-> Bir Azure diskinin önbellek ayarını değiştirmek diski ayırıp yeniden ekler. İşletim sistemi diskiyse, VM yeniden başlatılır. Disk önbellek ayarını değiştirmeden önce bu kesintiden etkilenebilecek tüm uygulamaları/hizmetleri durdurun.
+> Bir Azure diskinin önbellek ayarını değiştirmek diski ayırıp yeniden ekler. İşletim sistemi diski ise, VM yeniden başlatılır. Disk önbellek ayarını değiştirmeden önce bu kesintiden etkilenebilecek tüm uygulamaları/hizmetleri durdurun.
 
-BlobCache'nin nasıl çalıştığı hakkında daha fazla bilgi edinmek için, Inside [Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) blog gönderisine bakın.
+BlobCache 'in nasıl çalıştığı hakkında daha fazla bilgi edinmek için [Azure Premium Depolama](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) blog gönderisine bakın.
 
-Sağ disk kümesinde önbelleği etkinleştirmek önemlidir. Premium diskte disk önbelleğe alınmasını etkinleştirip etkinleştirmemeniz, diskin iş yükünün işleme sayılacağına bağlıdır. Aşağıdaki tabloda işletim sistemi ve veri diskleri için varsayılan önbellek ayarları gösterilmektedir.
+Doğru disk kümesinde önbelleğin etkinleştirilmesi önemlidir. Bir Premium diskte disk önbelleğe almayı etkinleştirmeniz gerekip gerekmediğini belirten bir işlem, diskin işleme alınacak iş yükü düzenine bağlıdır. Aşağıdaki tabloda, işletim sistemi ve veri diskleri için varsayılan önbellek ayarları gösterilmektedir.
 
 | **Disk türü** | **Varsayılan önbellek ayarı** |
 | --- | --- |
 | İşletim sistemi diski |ReadWrite |
 | Veri diski |ReadOnly |
 
-Aşağıda veri diskleri için önerilen disk önbelleği ayarları,
+Veri diskleri için önerilen disk önbelleği ayarları aşağıda verilmiştir.
 
-| **Disk önbelleğe alma ayarı** | **bu ayarı ne zaman kullanacağına ilişkin öneri** |
+| **Disk önbelleğe alma ayarı** | **Bu ayarın ne zaman kullanılacağı önerisi** |
 | --- | --- |
-| None |Yalnızca yazma ve yazma ağır diskleri için ana bilgisayar önbelleğini Yok olarak yapılandırın. |
-| ReadOnly |Yalnızca okuma ve okuma-yazma diskleri için ana bilgisayar önbelleğini ReadOnly olarak yapılandırın. |
-| ReadWrite |Ana bilgisayar önbelleğini ReadWrite olarak yapılandırın, ancak uygulamanız önbelleğe alınmış verileri gerektiğinde kalıcı disklere yazmayı düzgün bir şekilde işlerse. |
+| Hiçbiri |Ana bilgisayar ön belleğini salt yazılır ve yazma ağır diskler için hiçbiri olarak yapılandırın. |
+| ReadOnly |Salt okunur ve okuma/yazma diskleri için konak önbelleğini ReadOnly olarak yapılandırın. |
+| ReadWrite |Konak ön belleğini yalnızca, uygulamanız gerektiğinde kalıcı disklere önbelleğe alınmış verileri yazmayı doğru şekilde işlediğinde, salt yazılır olarak yapılandırın. |
 
-*Readonly*  
-Premium Depolama veri disklerinde ReadOnly önbelleğe alma nızı yapılandırarak, düşük Okuma gecikmesi elde edebilir ve uygulamanız için çok yüksek Okuma IOPS ve İş Kaynağı elde edebilirsiniz. Bunun iki nedeni var.
+*Özelliğinin*  
+Premium depolama veri disklerinde ReadOnly önbelleğe alma yapılandırarak, düşük okuma gecikmesi elde edebilir ve uygulamanız için çok fazla okuma ıOPS ve aktarım hızı elde edebilirsiniz. Bunun nedeni iki nedenden dolayı
 
-1. VM belleğinde ve yerel SSD'de bulunan önbellekten gerçekleştirilen okumalar, Azure blob depolama alanı üzerindeki veri diskinden okumalardan çok daha hızlıdır.  
-1. Premium Depolama, önbellekten disk IOPS ve İş İlerletme'ye doğru sunulan Okumaları saymaz. Bu nedenle, uygulamanız daha yüksek toplam IOPS ve ThroughPut elde etmek mümkün.
+1. VM belleği ve yerel SSD üzerinde olan önbellekten gerçekleştirilen okumalar, Azure Blob depolamada bulunan veri diskinden okumalarından çok daha hızlıdır.  
+1. Premium Depolama, önbellekten sunulan okuma sayısını, disk ıOPS ve aktarım hızına doğru saymaz. Bu nedenle, uygulamanız toplam ıOPS ve aktarım hızı elde edebilir.
 
-*Readwrite*  
-Varsayılan olarak, işletim sistemi diskleri ReadWrite önbelleğe alma etkin. Yakın zamanda veri disklerinde ReadWrite önbelleğe alma desteği de ekledik. ReadWrite önbelleğe alma kullanıyorsanız, önbellekten kalıcı disklere veri yazmak için uygun bir yolunuz olmalıdır. Örneğin, SQL Server önbelleğe alınmış verileri kalıcı depolama disklerine tek başına yazmayı işler. VM çöküyorsa, gerekli verileri kalıcı olarak işlemeyen bir uygulamayla ReadWrite önbelleğini kullanmak veri kaybına yol açabilir.
+*ReadWrite*  
+Varsayılan olarak, işletim sistemi disklerinin ReadWrite önbelleği etkindir. Kısa süre önce veri disklerinde de ReadWrite önbelleği desteği ekledik. Okuma önbelleği kullanıyorsanız, verileri önbellekten kalıcı disklere yazmak için uygun bir yola sahip olmanız gerekir. Örneğin, SQL Server önbelleğe alınan verileri kendi kendine kalıcı depolama disklerine yazmayı işler. Gerekli verileri kalıcı olarak işlemeyen bir uygulamayla ReadWrite önbelleği kullanmak, VM kilitlenirse veri kaybına yol açabilir.
 
 *Yok*  
-Şu **anda, Yok** yalnızca veri disklerinde desteklenir. İşletim sistemi disklerinde desteklenmez. Bir işletim sistemi diskinde **None** ayarlarsanız, bunu içten olarak geçersiz kılar ve **ReadOnly**olarak ayarlar.
+Şu anda **hiçbiri** yalnızca veri disklerinde desteklenir. İşletim sistemi disklerinde desteklenmez. Bir işletim sistemi diskinde **hiçbiri** ayarlarsanız, bunu dahili olarak geçersiz kılar ve **salt okunur**olarak ayarlar.
 
-Örnek olarak, aşağıdakileri yaparak Premium Depolama'da çalışan SQL Server'a bu yönergeleri uygulayabilirsiniz,
+Örnek olarak, aşağıdaki işlemleri yaparak Premium depolamada çalışan SQL Server için bu yönergeleri uygulayabilirsiniz.
 
-1. Veri dosyalarını barındıran birinci sınıf depolama disklerinde "ReadOnly" önbelleğini yapılandırın.  
-   a.  Önbellekten hızlı okumalar, veri sayfaları doğrudan veri disklerinden göre önbellekten çok daha hızlı alındığı için SQL Server sorgu süresini düşürür.  
-   b.  Önbellekten okumaların sunulması, premium veri disklerinden ek Iş Aktarış olduğu anlamına gelir. SQL Server, yedekleme/geri yükleme, toplu iş yükleri ve dizin yeniden oluşturma gibi daha fazla veri sayfası ve diğer işlemleri almak için bu ek İş Metot'u kullanabilir.  
-1. Günlük dosyalarını barındıran premium depolama disklerinde "Yok" önbelleğini yapılandırın.  
-   a.  Günlük dosyaları öncelikle yazma ağır işlemleri var. Bu nedenle, ReadOnly önbelleğinden yararlanamaz.
+1. Veri dosyalarını barındıran Premium Depolama disklerinde "ReadOnly" önbelleğini yapılandırın.  
+   a.  Veri sayfalarının önbellekten doğrudan veri disklerinden kıyasla daha hızlı bir şekilde alınmasından sonra önbellekten hızlı okuma SQL Server sorgu süresini azaltır.  
+   b.  Önbellekten okuma hizmeti sunma, Premium veri disklerinden daha fazla verimlilik olduğu anlamına gelir. SQL Server, daha fazla veri sayfası ve yedekleme/geri yükleme, toplu iş yükleri ve dizin yeniden oluştur gibi diğer işlemleri almak için bu ek aktarım hızını kullanabilir.  
+1. Günlük dosyalarını barındıran Premium Depolama disklerinde "none" önbelleğini yapılandırın.  
+   a.  Günlük dosyalarında öncelikle yazma ağır işlemler vardır. Bu nedenle, salt okunur önbellekten faydalanır.
 
-## <a name="optimize-performance-on-linux-vms"></a>Linux VM'lerde performansı optimize edin
+## <a name="optimize-performance-on-linux-vms"></a>Linux VM 'lerde performansı iyileştirme
 
-**ReadOnly** veya **None**olarak ayarlanmış önbelleği olan tüm premium SSD'ler veya ultra diskler için, dosya sistemini monte ederken "engelleri" devre dışı bırakmalısınız. Bu senaryoda engellere gerek yoktur, çünkü premium depolama disklerine yazmabu önbellek ayarları için dayanıklıdır. Yazma isteği başarıyla tamamlandığında, veriler kalıcı depoya yazılır. "Engelleri" devre dışı kaldırmak için aşağıdaki yöntemlerden birini kullanın. Dosya sisteminiz için birini seçin:
+Önbelleği **ReadOnly** veya **none**olarak ayarlanmış tüm Premium SSD 'ler veya ultra diskler için, dosya sistemini bağladığınızda "engelleri" devre dışı bırakmanız gerekir. Premium Depolama disklerine yazma işlemleri bu önbellek ayarları için dayanıklı olduğundan, bu senaryoda engellere ihtiyacınız yoktur. Yazma isteği başarıyla tamamlandığında, veriler kalıcı depoya yazıldı. "Engelleri" devre dışı bırakmak için aşağıdaki yöntemlerden birini kullanın. Dosya sisteminiz için bir tane seçin:
   
-* **ReiserFS**için, engelleri devre dışı `barrier=none` kullanabilirsiniz, montaj seçeneğini kullanın. (Engelleri etkinleştirmek `barrier=flush`için kullanın.)
-* **Ext3/ext4**için, engelleri devre dışı `barrier=0` kullanabilirsiniz, montaj seçeneğini kullanın. (Engelleri etkinleştirmek `barrier=1`için kullanın.)
-* **XFS**için, engelleri devre dışı `nobarrier` kullanabilirsiniz, montaj seçeneğini kullanın. (Engelleri etkinleştirmek `barrier`için kullanın.)
-* **Önbelleği ReadWrite**olarak ayarlanmış birinci sınıf depolama diskleri için yazma dayanıklılığı için engelleri etkinleştirin.
-* VM'yi yeniden başlattıktan sonra ses etiketlerinin devam edeabilmesi için, disklere yapılan evrensel benzersiz tanımlayıcı (UUID) başvurularını güncellemeniz gerekir. Daha fazla bilgi için [bkz.](../articles/virtual-machines/linux/add-disk.md)
+* **Reıfs**için, engelleri devre dışı bırakmak için `barrier=none` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için kullanın `barrier=flush`.)
+* **Ext3/ext4**için, engelleri devre dışı bırakmak için `barrier=0` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için kullanın `barrier=1`.)
+* **XFS**için, engelleri devre dışı bırakmak için `nobarrier` bağlama seçeneğini kullanın. (Engelleri etkinleştirmek için kullanın `barrier`.)
+* Önbellek **okuma**olarak ayarlanan Premium Depolama disklerinde, yazma dayanıklılığı için engelleri etkinleştirin.
+* VM 'yi yeniden başlattıktan sonra birim etiketlerinin devam etmesi için,/etc/fstab ' ı disklere evrensel benzersiz tanımlayıcı (UUID) başvuruları ile güncelleştirmeniz gerekir. Daha fazla bilgi için bkz. [LINUX VM 'ye yönetilen disk ekleme](../articles/virtual-machines/linux/add-disk.md).
 
-Aşağıdaki Linux dağıtımları premium SSD'ler için doğrulanmıştır. Premium SSD'lerle daha iyi performans ve kararlılık için, VM'lerinizi bu sürümlerden birine veya daha yeni sürümlere yükseltmenizi öneririz. 
+Aşağıdaki Linux dağıtımları Premium SSD 'Ler için onaylanmıştır. Premium SSD 'Ler ile daha iyi performans ve kararlılık için, sanal makinelerinizi bu sürümlerden birine veya daha yeni bir sürüme yükseltmenizi öneririz. 
 
-Bazı sürümler, Azure için en son Linux Tümleştirme Hizmetleri (LIS), v4.0'ı gerektirir. Bir dağıtımı indirmek ve yüklemek için aşağıdaki tabloda listelenen bağlantıyı izleyin. Doğrulamayı tamamlarken listeye resim ekliyoruz. Doğrulamalarımız, performansın her görüntü için değiştiğini gösterir. Performans iş yükü özelliklerine ve görüntü ayarlarınıza bağlıdır. Farklı görüntüler, farklı iş yükleri için ayarlanır.
+Sürümlerden bazıları Azure için en son Linux Integration Services (LIS), v 4.0 gerektirir. Bir dağıtımı indirmek ve yüklemek için aşağıdaki tabloda listelenen bağlantıyı izleyin. Doğrulama tamamlandığımızda listeye görüntüler ekleyeceğiz. Doğrulamalarımız performansı her bir görüntü için farklılık gösterir. Performans, iş yükü özelliklerine ve görüntü ayarlarınıza bağlıdır. Farklı iş yükü türleri için farklı görüntüler ayarlanır.
 
 | Dağıtım | Sürüm | Desteklenen çekirdek | Ayrıntılar |
 | --- | --- | --- | --- |
-| Ubuntu | 12.04 veya daha yeni| 3.2.0-75.110+ | &nbsp; |
-| Ubuntu | 14.04 veya daha yeni| 3.13.0-44.73+  | &nbsp; |
-| Debian | 7.x, 8.x veya daha yeni| 3.16.7-ckt4-1+ | &nbsp; |
-| SUSE | SLES 12 veya daha yeni| 3.12.36-38.1+ | &nbsp; |
-| SUSE | SLES 11 SP4 veya daha yeni| 3.0.101-0.63.1+ | &nbsp; |
-| CoreOS | 584.0.0+ veya daha yeni| 3.18.4+ | &nbsp; |
-| CentOS | 6.5, 6.6, 6.7, 7.0 veya daha yeni| &nbsp; | [LIS4 gerekli](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Sonraki bölümdeki nota bakın* |
-| CentOS | 7.1+ veya daha yeni| 3.10.0-229.1.2.el7+ | [LIS4 tavsiye edilir](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Sonraki bölümdeki nota bakın* |
-| Red Hat Enterprise Linux (RHEL) | 6.8+, 7.2+veya daha yeni | &nbsp; | &nbsp; |
-| Oracle | 6.0+, 7.2+veya daha yeni | &nbsp; | UEK4 veya RHCK |
-| Oracle | 7.0-7.1 veya daha yeni | &nbsp; | UEK4 veya RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-| Oracle | 6.4-6.7 veya daha yeni | &nbsp; | UEK4 veya RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
+| Ubuntu | 12,04 veya üzeri| 3.2.0-75.110 + | &nbsp; |
+| Ubuntu | 14,04 veya üzeri| 3.13.0-44.73 +  | &nbsp; |
+| Debian | 7. x, 8. x veya daha yeni| 3.16.7-ckt4-1 + | &nbsp; |
+| SUSE | SLES 12 veya üzeri| 3.12.36-38.1 + | &nbsp; |
+| SUSE | SLES 11 SP4 veya daha yeni| 3.0.101-0.63.1 + | &nbsp; |
+| CoreOS | 584.0.0 + veya üzeri| 3.18.4 + | &nbsp; |
+| CentOS | 6,5, 6,6, 6,7, 7,0 veya daha yeni| &nbsp; | [LIS4 gerekli](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Sonraki bölümde nota bakın* |
+| CentOS | 7.1 + veya üzeri| 3.10.0-229.1.2. EL7 + | [LIS4 önerilir](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Sonraki bölümde nota bakın* |
+| Red Hat Enterprise Linux (RHEL) | 6.8 +, 7.2 + ya da daha yeni | &nbsp; | &nbsp; |
+| Oracle | 6.0 +, 7.2 + veya daha yeni | &nbsp; | UEK4 veya RHCK |
+| Oracle | 7.0-7.1 veya üzeri | &nbsp; | UEK4 veya RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
+| Oracle | 6.4-6.7 veya üzeri | &nbsp; | UEK4 veya RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS için LIS sürücüleri
 
-OpenLogic CentOS VM'leri çalıştırıyorsanız, en son sürücüleri yüklemek için aşağıdaki komutu çalıştırın:
+OpenLogic CentOS sanal makinelerini çalıştırıyorsanız, en son sürücüleri yüklemek için aşağıdaki komutu çalıştırın:
 
 ```
 sudo yum remove hypervkvpd  ## (Might return an error if not installed. That's OK.)
@@ -315,72 +315,72 @@ sudo yum install microsoft-hyper-v
 sudo reboot
 ```
 
-Bazı durumlarda yukarıdaki komut çekirdeği de yükseltecektir. Çekirdek güncelleştirmesi gerekiyorsa, microsoft-hyper-v paketini tam olarak yüklemek için yeniden başlatıldıktan sonra yukarıdaki komutları yeniden çalıştırmanız gerekebilir.
+Bazı durumlarda yukarıdaki komutu çekirdeği de yükseltecektir. Bir çekirdek güncelleştirmesi gerekliyse, Microsoft-Hyper-v paketini tam olarak yüklemek için yeniden başlattıktan sonra yukarıdaki komutları yeniden çalıştırmanız gerekebilir.
 
 
-## <a name="disk-striping"></a>Disk şeritleme
+## <a name="disk-striping"></a>Disk şeridi
 
-Yüksek ölçekli bir VM birkaç premium depolama kalıcı diskleri ile bağlı olduğunda, diskler iOS' larını, bant genişliklerini ve depolama kapasitelerini toplamak için birlikte şeritlenebilir.
+Yüksek ölçekli bir VM birkaç Premium Depolama kalıcı diskle birlikte eklendiğinde, diskler IOPS, bant genişliği ve depolama kapasitesini toplamak için birlikte birleştirilebilir.
 
-Windows'da, diskleri birlikte şeritlemek için Depolama Alanları'nı kullanabilirsiniz. Havuzdaki her disk için bir sütun yapılandırmanız gerekir. Aksi takdirde, diskler arasında trafiğin düzensiz dağılımı nedeniyle çizgili birimin genel performansı beklenenden düşük olabilir.
+Windows 'ta, diskleri birleştirmek için depolama alanlarını kullanabilirsiniz. Havuzdaki her disk için bir sütun yapılandırmanız gerekir. Aksi takdirde, disklerin disk genelindeki düzensiz dağıtımı nedeniyle, Şeritli birimin genel performansı beklenenden daha düşük olabilir.
 
-Önemli: Server Manager UI'yi kullanarak, çizgili bir birim için toplam sütun sayısını 8'e ayarlayabilirsiniz. Sekizden fazla disk takarken, ses düzeyini oluşturmak için PowerShell'i kullanın. PowerShell'i kullanarak, sütun sayısını disk sayısına eşit olarak ayarlayabilirsiniz. Örneğin, tek bir şerit kümesinde 16 disk varsa; *New-VirtualDisk* PowerShell cmdlet'in *NumberOfColumns* parametresinde 16 sütun belirtin.
+Önemli: Sunucu Yöneticisi Kullanıcı arabirimini kullanarak, şeritli bir birim için toplam sütun sayısını 8 ' e kadar ayarlayabilirsiniz. Sekiz ' dan fazla disk iliştirirken, birimi oluşturmak için PowerShell kullanın. PowerShell 'i kullanarak, sütun sayısını disk sayısına eşit olarak ayarlayabilirsiniz. Örneğin, tek bir Stripe kümesinde 16 disk varsa; *New-VirtualDisk* PowerShell cmdlet 'Inin *numberofcolumns* parametresinde 16 sütun belirtin.
 
-Linux'ta, diskleri birlikte şeritlemek için MDADM yardımcı programını kullanın. Linux'ta diskleri şeritleme ile ilgili ayrıntılı adımlar [için, Linux'ta Yazılım RAID'i Yapılandır'a](../articles/virtual-machines/linux/configure-raid.md)bakın.
+Linux 'ta, disk birleştirmek için MDADDM yardımcı programını kullanın. Linux 'ta diskleri şeritleme hakkında ayrıntılı adımlar için [bkz. Linux 'Ta yazılım RAID yapılandırma](../articles/virtual-machines/linux/configure-raid.md).
 
-*Şerit Boyutu*  
-Disk şeritlemede önemli bir yapılandırma şerit boyutudur. Şerit boyutu veya blok boyutu, uygulamanın çizgili bir birimde ele alabileceğiniz en küçük veri yığınıdır. Yapılandırdığınız şerit boyutu, uygulamanın türüne ve istek desenine bağlıdır. Yanlış şerit boyutunu seçerseniz, IO yanlış hizalanmasına neden olabilir ve bu da uygulamanızın performansında bozulmaya yol açabilir.
+*Şerit boyutu*  
+Disk şeridi oluşturma bölümünde önemli bir yapılandırma, şerit boyutudur. Şerit boyutu veya blok boyutu, uygulamanın dizili bir birimde adresebilen en küçük veri öbektir. Yapılandırdığınız Stripe boyutu, uygulamanın türüne ve istek düzenine bağlıdır. Yanlış Stripe boyutunu seçerseniz, GÇ hizalanmasına neden olabilir ve bu da uygulamanızın performansının düşmesine yol açar.
 
-Örneğin, uygulamanız tarafından oluşturulan bir IO isteği disk şerit boyutundan daha büyükse, depolama sistemi bunu birden fazla diskte şerit birim sınırları boyunca yazar. Bu verilere erişim zamanı geldiğinde, isteği tamamlamak için birden fazla şerit birimi arasında aramak gerekir. Bu davranışın kümülatif etkisi önemli performans düşüşüne yol açabilir. Öte yandan, IO istek boyutu şerit boyutundan daha küçükse ve doğada rasgeleyse, IO istekleri aynı diskte bir soruna neden olabilir ve sonuçta IO performansını düşürebilir.
+Örneğin, uygulamanız tarafından oluşturulan bir GÇ isteği disk Stripe boyutundan büyükse, depolama sistemi bu dosyayı birden fazla diskte dizili birim sınırlarına yazar. Bu verilere erişmek için zaman olduğunda, isteği tamamlaması için birden fazla Stripe biriminde arama yapmak gerekir. Bu davranışın birikimli etkisi önemli performans düşüşüne neden olabilir. Öte yandan, GÇ istek boyutu Stripe boyutundan küçükse ve doğası halinde rastgele ise, GÇ istekleri aynı disk üzerinde bir performans sorununa neden olabilir ve sonuç olarak GÇ performansını düşürür.
 
-Uygulamanızın çalıştıran iş yükü türüne bağlı olarak, uygun bir şerit boyutu seçin. Rasgele küçük IO istekleri için daha küçük bir şerit boyutu kullanın. Büyük sıralı IO istekleri için ise daha büyük bir şerit boyutu kullanın. Premium Depolama'da çalıştıracağınız uygulama için şerit boyutu önerilerini öğrenin. SQL Server için, OLTP iş yükleri için 64 KB şerit boyutunu ve veri depolama iş yükleri için 256 KB'yi yapılandırın. Daha fazla bilgi edinmek [için Azure VM'lerde SQL Server için en iyi performans uygulamalarını](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md#disks-guidance) görün.
+Uygulamanızın çalıştırıldığı iş yükünün türüne bağlı olarak uygun bir şerit boyutu seçin. Rastgele küçük GÇ istekleri için daha küçük bir şerit boyutu kullanın. Öte yandan, büyük sıralı GÇ istekleri için daha büyük bir şerit boyutu kullanır. Premium depolama alanında çalıştırdığınız uygulamanın Stripe boyut önerilerini bulun. SQL Server için, OLTP iş yükleri için 64 KB 'lık şeritli boyut ve veri ambarı iş yükleri için 256 KB yapılandırın. Daha fazla bilgi için bkz. [Azure VM 'lerinde SQL Server için En Iyi performans uygulamaları](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md#disks-guidance) .
 
 > [!NOTE]
-> Bir DS serisi VM'de en fazla 32 premium depolama diskini ve GS serisi VM'de 64 premium depolama diskini bir araya getirebilirsiniz.
+> Bir DS serisi VM 'de en fazla 32 Premium Depolama diski ve bir GS serisi VM 'de 64 Premium Depolama diski ekleyebilirsiniz.
 
 ## <a name="multi-threading"></a>Çoklu iş parçacığı
 
-Azure, Premium Depolama platformlarını büyük ölçüde paralel olacak şekilde tasarlamıştır. Bu nedenle, çok iş parçacığı uygulaması tek iş parçacığı uygulama çok daha yüksek performans elde eder. Çok iş parçacığı uygulaması görevlerini birden çok iş parçacığına böler ve VM ve disk kaynaklarını maksimuma kadar kullanarak yürütme verimliliğini artırır.
+Azure, Premium Depolama platformunu çok büyük bir paralel olacak şekilde tasarlamış. Bu nedenle, çok iş parçacıklı bir uygulama tek iş parçacıklı bir uygulamadan çok daha yüksek performansa sahip olur. Çok iş parçacıklı bir uygulama, birden çok iş parçacığı üzerinde görevlerini böler ve VM ve disk kaynaklarından maksimum sınıra kadar kendi yürütme verimliliğini artırır.
 
-Örneğin, uygulamanız iki iş parçacığı kullanarak tek bir çekirdekVM üzerinde çalışıyorsa, CPU verimlilik elde etmek için iki iş parçacığı arasında geçiş yapabilir. Bir iş parçacığı nın tamamlanması için bir disk IO'su beklerken, CPU diğer iş parçacığına geçebilir. Bu şekilde, iki iş parçacığı tek bir iş parçacığı daha fazla gerçekleştirebilirsiniz. VM'de birden fazla çekirdek varsa, her çekirdek görevleri paralel olarak yürütebildiği için çalışma süresini daha da azaltır.
+Örneğin, uygulamanız iki iş parçacığı kullanan tek çekirdekli bir VM üzerinde çalışıyorsa, verimlilik elde etmek için CPU iki iş parçacığı arasında geçiş yapabilir. Bir iş parçacığı bir disk GÇ işleminin tamamlanmasını beklerken, CPU diğer iş parçacığına geçebilir. Bu şekilde, iki iş parçacığı tek bir iş parçacığından fazlasını gerçekleştirebilir. VM 'nin birden fazla çekirdeği varsa, her bir çekirdek görevleri paralel olarak yürütebileceğinden çalışma süresini daha fazla azaltır.
 
-Hazır bir uygulamanın tek iş parçacığı veya çoklu iş parçacığı uygulama şeklini değiştiremeyebilirsiniz. Örneğin, SQL Server çok IŞLEMCIli ve çok çekirdekli işleme yeteneğine sahiptir. Ancak, SQL Server bir sorguişlemek için bir veya daha fazla iş parçacığı kaldıraç hangi koşullar altında karar verir. Sorguları çalıştırabilir ve çoklu iş parçacığı kullanarak dizinler oluşturabilir. Kullanıcıya dönmeden önce büyük tabloları birleştirmeyi ve verileri sıralamayı içeren bir sorgu için, SQL Server büyük olasılıkla birden çok iş parçacığı kullanır. Ancak, kullanıcı SQL Server'ın tek bir iş parçacığı mı yoksa birden çok iş parçacığı kullanarak sorgu kullanıp kullanmadığını denetleyemez.
+Raf dışı bir uygulamanın tek iş parçacığı veya çoklu iş parçacığı uygulama biçimini değiştiremeyebilirsiniz. Örneğin, SQL Server Çoklu CPU ve çok çekirdekli işleme yeteneğine sahiptir. Ancak, bir sorguyu işlemek için bir veya daha fazla iş parçacığından hangi koşullarda yararlanılacağı SQL Server karar verir. Birden çok iş parçacığı kullanarak sorguları çalıştırabilir ve dizinleri oluşturabilir. Büyük tablolara katılmayı ve verileri kullanıcıya döndürmeden önce sıralamayı içeren bir sorgu için SQL Server, büyük olasılıkla birden çok iş parçacığı kullanacaktır. Ancak, bir kullanıcı SQL Server tek bir iş parçacığı veya birden çok iş parçacığı kullanarak bir sorgu yürüttüğünü denetleyebilir.
 
-Bir uygulamanın bu çok iş parçacığı veya paralel işleme etkilemek için değiştirebilirsiniz yapılandırma ayarları vardır. Örneğin, SQL Server durumunda paralellik yapılandırmasının en yüksek derecesidir. MAXDOP adı verilen bu ayar, PARALEL İşlem yaparken SQL Server'ın kullanabileceği maksimum işlemci sayısını yapılandırmanızı sağlar. MaxDOP'u tek tek sorgular veya dizin işlemleri için yapılandırabilirsiniz. Bu, performans açısından kritik bir uygulama için sisteminizin kaynaklarını dengelemek istediğinizde yararlıdır.
+Bu çoklu iş parçacığı oluşturmayı veya bir uygulamanın paralel işlemesini etkilemek için, değişiklik yaptığınız yapılandırma ayarları vardır. Örneğin, SQL Server olması durumunda paralellik yapılandırmanın en yüksek derecesi olur. MAXDOP adlı bu ayar, paralel işleme sırasında kullanabileceği en fazla SQL Server işlemci sayısını yapılandırmanıza olanak tanır. MAXDOP 'yi tekil sorgular veya dizin işlemleri için yapılandırabilirsiniz. Bu, performans açısından kritik bir uygulama için sisteminizin kaynaklarını dengelemek istediğinizde faydalıdır.
 
-Örneğin, SQL Server'ı kullanan uygulamanızın aynı anda büyük bir sorgu ve dizin işlemi yürüttüğünüzün aynı zamanda olduğunu varsayın. Dizin çalışmasının büyük sorguya göre daha performant olmasını istediğinizi varsayalım. Böyle bir durumda, dizin işleminin MAXDOP değerini sorguiçin MAXDOP değerinden daha yüksek olarak ayarlayabilirsiniz. Bu şekilde, SQL Server büyük sorgu için adamak işlemci sayısı ile karşılaştırıldığında dizin işlemi için kaldıraç olabilir işlemcilerin daha fazla sayıda vardır. Unutmayın, SQL Server'ın her işlem için kullanacağı iş parçacığı sayısını denetlemezsiniz. Çoklu iş parçacığı için ayrılan maksimum işlemci sayısını kontrol edebilirsiniz.
+Örneğin, SQL Server kullanarak uygulamanızın aynı anda büyük bir sorgu ve dizin işlemi yürüttüğünü varsayalım. Dizin işleminin büyük sorguyla karşılaştırıldığında daha fazla performansa sahip olduğunu varsayalım. Böyle bir durumda, Dizin işleminin MAXDOP değerini sorgu için MAXDOP değerinden daha yüksek olacak şekilde ayarlayabilirsiniz. Bu şekilde SQL Server, dizin işlemi için, büyük sorguya ayırabildiğinden işlemci sayısıyla karşılaştırıldığında daha fazla sayıda işlemciye sahiptir. Her işlem için kullanılacak SQL Server iş parçacığı sayısını kontrol etmeyi unutmayın. Çoklu iş parçacığı için ayrılan en fazla işlemci sayısını kontrol edebilirsiniz.
 
-SQL Server'da [Paralellik Dereceleri](https://technet.microsoft.com/library/ms188611.aspx) hakkında daha fazla bilgi edinin. Performansı optimize etmek için uygulamanızda ve yapılandırmalarında çoklu iş parçacığı etkileyen bu ayarları öğrenin.
+SQL Server [paralellik dereceleri](https://technet.microsoft.com/library/ms188611.aspx) hakkında daha fazla bilgi edinin. Uygulamanızda çoklu iş parçacığı ve bunların yapılandırmasını etkileyen bu ayarları, performansı iyileştirmek için öğrenin.
 
 ## <a name="queue-depth"></a>Sıra derinliği
 
-Sıra derinliği veya sıra uzunluğu veya sıra boyutu, sistemde bekleyen IO isteklerinin sayısıdır. Sıra derinliğinin değeri, uygulamanızın kaç IO işlemi düzenlenebildiğini ve depolama disklerinin hangisini işleteceğini belirler. Bu makalede ele aldığımız üç uygulama performans göstergesini de etkiler., IOPS, iş gücü ve gecikme süresi.
+Sıra derinliği veya sıra uzunluğu veya sıra boyutu, sistemdeki bekleyen GÇ isteklerinin sayısıdır. Sıra derinliği değeri, uygulamanızın ne kadar GÇ işlemi olacağını, depolama disklerinin işleneceğini belirler. Bu makalede görselleştirme., ıOPS, aktarım hızı ve gecikme süresi açıklandığımız üç uygulama performansı göstergelerini etkiler.
 
-Sıra Derinliği ve çoklu iş parçacığı yakından ilişkilidir. Sıra Derinliği değeri, uygulama tarafından ne kadar çoklu iş parçacığı elde edilebildiğini gösterir. Sıra Derinliği büyükse, uygulama aynı anda daha fazla işlem yürütebilir, başka bir deyişle, daha çok iş parçacığı. Sıra Derinliği küçükse, uygulama çok iş parçacığı olsa bile, eşzamanlı yürütme için sıraya dizilmiş yeterli istek olmaz.
+Sıra derinliği ve çoklu iş parçacığı yakından ilgilidir. Sıra derinliği değeri, uygulama tarafından ne kadar çok iş parçacığına ulaşıldığını gösterir. Sıra derinliği büyükse, uygulama başka bir deyişle, daha fazla çoklu iş parçacığı gibi daha fazla işlemi eşzamanlı olarak yürütebilir. Sıra derinliği küçükse, uygulamanın çok iş parçacıklı olmasına rağmen, eşzamanlı yürütme için yeterli sayıda istek sıralanmaz.
 
-Genellikle, raf dışı uygulamalar sıra derinliğini değiştirmenize izin vermez, çünkü yanlış ayarlanırsa yarardan çok zarar verir. Uygulamalar, en iyi performansı elde etmek için sıra derinliğinin doğru değerini ayarlar. Ancak, uygulamanızla ilgili performans sorunlarını gidermeniz için bu kavramı anlamanız önemlidir. Ayrıca sisteminizde kıyaslama araçları çalıştırarak sıra derinliğinin etkilerini de gözlemleyebilirsiniz.
+Genellikle raf uygulamalarının devre dışı bırakıldığı sıra derinliğini değiştirmenize izin vermez, çünkü yanlış ayarlanmış bir şekilde ayarlandıysa daha fazla zarar verir. Uygulamalar en iyi performansı elde etmek için sıra derinliğinin doğru değerini ayarlayacaktır. Ancak, uygulamanızla ilgili performans sorunlarını giderebilmeniz için bu kavramın anlaşılması önemlidir. Ayrıca, sisteminizde benchişaretleme araçlarını çalıştırarak sıra derinliğinin etkilerini gözlemleyebilirsiniz.
 
-Bazı uygulamalar, Sıra Derinliğini etkileyecek ayarlar sağlar. Örneğin, SQL Server'daki MAXDOP (maksimum paralellik derecesi) ayarı önceki bölümde açıklanmıştır. MAXDOP, SQL Server'ın Sıra Derinliği değerini doğrudan değiştirmese de, Sıra Derinliği ni ve çoklu iş parçacığı nı etkilemenin bir yoludur.
+Bazı uygulamalar sıra derinliğini etkilemek için ayarlar sağlar. Örneğin, önceki bölümde açıklanan SQL Server için MAXDOP (en fazla paralellik derecesi) ayarı. MAXDOP, SQL Server sıra derinliği değerini doğrudan değiştirmese de, sıra derinliğini ve çoklu iş parçacığı oluşturmayı etkileyen bir yoldur.
 
 *Yüksek sıra derinliği*  
-Yüksek sıra derinliği diskte daha fazla işlemi sıralar. Disk, sıradaki bir sonraki isteği önceden bilir. Sonuç olarak, disk işlemleri önceden zamanlayabilir ve bunları en uygun sırada işleyebilir. Uygulama diske daha fazla istek gönderdiğinden, disk daha fazla paralel IOs işleyebilir. Sonuçta, uygulama daha yüksek IOPS elde etmek mümkün olacak. Uygulama daha fazla istek işlediğinden, uygulamanın toplam İşme Mesuliyeni de artar.
+Yüksek bir sıra derinliği diskte daha fazla işlem daha yüksektir. Disk, sırasındaki Sıradaki isteği zaman önünde bilir. Sonuç olarak, disk, işlemleri zaman içinde zamanlayabilir ve bunları en uygun sırayla işleyebilir. Uygulama diske daha fazla istek gönderdiğinden, disk daha paralel IOs işleyebilir. Sonuç olarak, uygulama daha yüksek ıOPS elde edebilir. Uygulama daha fazla istek yaptığından, uygulamanın toplam verimi da artar.
 
-Genellikle, bir uygulama ekli disk başına 8-16 + olağanüstü IOs ile maksimum Throughput elde edebilirsiniz. Bir sıra derinliği bir ise, uygulama sisteme yeterli IOs iterek değildir ve belirli bir dönemde daha az miktarda işlenir. Başka bir deyişle, daha az Throughput.
+Genellikle, bir uygulama, bağlı disk başına 8-16 + bekleyen IOs ile maksimum Işleme elde edebilir. Sıra derinliği bir ise, uygulama sisteme yeterli sayıda IOs itimez ve belirli bir dönemde daha az miktarda işlem görür. Diğer bir deyişle, daha az üretilen Iş.
 
-Örneğin, SQL Server'da, bir sorguiçin MAXDOP değerini "4" olarak ayarlamak, SQL Server'a sorguyu yürütmek için en fazla dört çekirdek kullanabileceğini bildirir. SQL Server, en iyi sıra derinliği değerinin ve sorgu yürütmesinin çekirdek sayısını belirler.
+Örneğin, SQL Server, bir sorgu için MAXDOP değerinin "4" olarak ayarlanması, sorguyu yürütmek için en fazla dört çekirdekli SQL Server bildirir. SQL Server en iyi sıra derinliği değerini ve sorgu yürütme için çekirdek sayısını belirlemektir.
 
-*Optimum sıra derinliği*  
-Çok yüksek sıra derinliği değeri de dezavantajları vardır. Sıra derinliği değeri çok yüksekse, uygulama çok yüksek IOPS sürmeye çalışır. Uygulamayeterli sağlanan IOPS ile kalıcı diskler yoksa, bu uygulama gecikmelerini olumsuz etkileyebilir. Aşağıdaki formül IOPS, gecikme ve sıra derinliği arasındaki ilişkiyi gösterir.  
+*En iyi sıra derinliği*  
+Çok yüksek sıra derinliği değerinin de dezavantajları vardır. Sıra derinliği değeri çok yüksekse, uygulama çok yüksek ıOPS 'yi yeniden dener. Uygulamanın yeterli sağlanan ıOPS 'ye sahip kalıcı diskleri yoksa, bu uygulama gecikmeleri olumsuz etkileyebilir. Aşağıdaki formül ıOPS, gecikme süresi ve sıra derinliği arasındaki ilişkiyi gösterir.  
     ![](media/premium-storage-performance/image6.png)
 
-Kuyruk Derinliğini herhangi bir yüksek değere değil, gecikme gevelmelerini etkilemeden uygulama için yeterli IOPS sağlayabilen en uygun değere yapılandırmanız gerekir. Örneğin, uygulama gecikme süresinin 1 milisaniye olması gerekiyorsa, 5.000 IOPS elde etmek için gereken Sıra Derinliği, QD = 5000 x 0,001 = 5'tir.
+Sıra derinliğini herhangi bir yüksek değere, ancak en uygun değere göre yapılandırmamalısınız. Bu, gecikme sürelerini etkilemeden uygulama için yeterli ıOPS sunabilmelidir. Örneğin, uygulama gecikmesi 1 milisaniyeye ihtiyaç duyuyorsa, 5.000 ıOPS elde etmek için gereken sıra derinliği, QD = 5000 x 0,001 = 5 olur.
 
-*Çizgili Hacim için Sıra Derinliği*  
-Çizgili bir birim için, her diskin tek tek en yüksek sıra derinliğine sahip olacak kadar yüksek bir sıra derinliğini koruyun. Örneğin, 2 sıra derinliği iten ve şeritte dört disk olan bir uygulama düşünün. İki IO isteği iki diske gider ve kalan iki disk boşta kalır. Bu nedenle, tüm disklerin meşgul olabileceği sıra derinliğini yapılandırın. Aşağıdaki formül, çizgili birimlerin sıra derinliğini nasıl belirleyirgösterin.  
+*Şeritli birim için sıra derinliği*  
+Şeritli bir birim için, her diskin ayrı ayrı sıra derinliğine sahip olduğu için yüksek miktarda sıra derinliği saklayın. Örneğin, 2. sıra derinliğini veren bir uygulamayı düşünün ve Stripe içinde dört disk vardır. İki GÇ isteği iki diske gider ve kalan iki disk boşalacak. Bu nedenle, tüm disklerin meşgul olması için sıra derinliğini yapılandırın. Aşağıdaki formülde, şeritli birimlerin sıra derinliğini belirleme gösterilmektedir.  
     ![](media/premium-storage-performance/image7.png)
 
 ## <a name="throttling"></a>Azaltma
 
-Azure Premium Depolama hükümleri, seçtiğiniz VM boyutlarına ve disk boyutlarına bağlı olarak belirtilen sayıda IOPS ve İş Mesuliyonu belirtir. Uygulamanız IOPS veya İş İlerletiyi VM veya diskin işleyebileceği bu sınırların üzerinde artırmaya çalıştığında, Premium Depolama bunu daraltacaktır. Bu, uygulamanızda bozulmuş performans şeklinde tezahür eder. Bu, daha yüksek gecikme, daha düşük İş Sonu veya daha düşük IOPS anlamına gelebilir. Premium Depolama azaltmazsa, kaynaklarının elde edebileceği miktarı aşarak uygulamanız tamamen başarısız olabilir. Bu nedenle, azaltma nedeniyle performans sorunları önlemek için, her zaman uygulamanız için yeterli kaynakları sağlamak. Yukarıdaki VM boyutları ve Disk boyutları bölümlerinde neler konuştuğumuzu göz önünde bulundurun. Karşılaştırma, uygulamanızı barındırmak için hangi kaynaklara ihtiyacınız olacağını belirlemenin en iyi yoludur.
+Azure Premium Depolama, seçtiğiniz VM boyutlarına ve disk boyutlarına göre belirtilen ıOPS ve aktarım hızı sayısını sağlar. Uygulamanız her zaman VM 'nin veya diskin işleyebileceği Bu limitlerin üzerinde ıOPS veya aktarım hızını sorgulamaya çalıştığında, Premium depolama alanı kısıtlayıp azalmasını sağlar. Bu bildirimler uygulamanızdaki performans düşüklüğü biçiminde. Bu, daha yüksek gecikme süresi, düşük aktarım hızı veya düşük ıOPS anlamına gelebilir. Premium Depolama kısıtlama uygulamamılamaz, uygulamanız kaynakları elde edebilen bir süreyi aşarak tamamen başarısız olabilir. Bu nedenle, azaltma nedeniyle performans sorunlarından kaçınmak için her zaman uygulamanız için yeterli kaynak sağlayın. Yukarıdaki VM boyutları ve disk boyutları bölümünde açıklandığımız şeyleri dikkate alın. Sınama, uygulamanızı barındırmak için hangi kaynakların gerekli olacağını belirlemenin en iyi yoludur.
 
 ## <a name="next-steps"></a>Sonraki adımlar

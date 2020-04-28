@@ -1,6 +1,6 @@
 ---
-title: Azure Haritalar Android SDK'da özellik bilgilerini görüntüleyin | Microsoft Azure Haritaları
-description: Bu makalede, Özellik bilgilerinin bir haritada Microsoft Azure Haritalar Android SDK'sını kullanarak nasıl görüntüleneceksiniz öğrenebilirsiniz.
+title: Özellik bilgilerini Azure Maps Android SDK görüntüleyin | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak bir haritada Özellik bilgilerini görüntülemeyi öğreneceksiniz.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 26f41a7fd88a3c2018592e89ae95e3b962c1a9e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75911686"
 ---
 # <a name="display-feature-information"></a>Özellik bilgilerini görüntüleme
 
-Uzamsal veriler genellikle noktalar, çizgiler ve çokgenler kullanılarak temsil edilir. Bu veriler genellikle onunla ilişkili meta veri bilgilerine sahiptir. Örneğin, bir nokta bir mağazanın konumunu temsil edebilir ve o restoranla ilgili meta veriler hizmet verdiği yemeğin adı, adresi ve türü olabilir. Bu meta veriler, bu özelliklerin özellikleri `JsonObject`olarak eklenebilir. Aşağıdaki kod , "Hello World!" `title` değerine sahip bir özellik ile basit bir nokta özelliği oluşturur.
+Uzamsal veriler genellikle noktaları, çizgileri ve çokgenler kullanılarak temsil edilir. Bu verilere genellikle ilişkili meta veri bilgileri sahip olur. Örneğin, bir nokta bir deponun konumunu ve bu restoran hakkındaki meta verileri temsil eden ad, adres ve hizmet verdiği yiyecek türü olabilir. Bu meta veriler, kullanılarak bu özelliklerin özellikleri olarak eklenebilir `JsonObject`. Aşağıdaki kod, "Merhaba Dünya!" değerine sahip bir `title` özelliği olan basit bir nokta özelliği oluşturur
 
 ```java
 //Create a data source and add it to the map.
@@ -32,7 +32,7 @@ properties.addProperty("title", "Hello World!");
 dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64), properties));
 ```
 
-Bir kullanıcı haritadaki bir özellik ile etkileşimde olduğunda, olaylar bu eylemlere tepki vermek için kullanılabilir. Yaygın bir senaryo, kullanıcının etkileşimde olduğu bir özelliğin meta veri özelliklerinden oluşan bir iletiyi görüntülemektir. Olay, `OnFeatureClick` kullanıcının haritadaki bir özelliği ne zaman kullandığını algılamak için kullanılan ana olaydır. Bir de `OnLongFeatureClick` olay var. `OnFeatureClick` Olayı eşmeye eklerken, sınırlamak için bir katmanın kimliğini geçirerek tek bir katmanla sınırlandırılabilir. Katman kimliği geçirilirse, haritadaki herhangi bir özelliğe dokunmak, hangi katmanda olursa olsun, bu olayı ateşler. Aşağıdaki kod, haritadaki nokta verilerini işlemek için bir sembol `OnFeatureClick` katmanı oluşturur, ardından bir olay ekler ve bu sembol katmanıyla sınırlar.
+Kullanıcı haritada bir özellik ile etkileşime geçtiğinde, olaylar bu eylemlere tepki vermek için kullanılabilir. Yaygın bir senaryo, Kullanıcı tarafından etkileşim kurulan bir özelliğin meta veri özelliklerinden oluşan bir ileti görüntülemektir. `OnFeatureClick` Olay, kullanıcının haritadaki bir özelliği dokunduğunda tespit etmek için kullanılan ana olaydır. Ayrıca bir `OnLongFeatureClick` olay da vardır. `OnFeatureClick` Olayı haritaya eklerken, bir katmanın kimliğini ile sınırlamak için bir katman kimliğine geçerek tek bir katmanla sınırlı olabilir. Katman KIMLIĞI geçirilmemişse, hangi katmanda olduğuna bakılmaksızın haritadaki herhangi bir özelliğe dokunarak bu olayı tetiklersiniz. Aşağıdaki kod, haritada nokta verisi işlemek için bir sembol katmanı oluşturur, sonra bir `OnFeatureClick` olay ekler ve bu sembol katmanına kısıtlar.
 
 ```java
 //Create a symbol and add it to the map.
@@ -48,9 +48,9 @@ map.events.add((OnFeatureClick) (features) -> {
 }, symbolLayer.getId());    //Limit this event to the symbol layer.
 ```
 
-## <a name="display-a-toast-message"></a>Tost iletisi görüntüleme
+## <a name="display-a-toast-message"></a>Bildirim iletisi görüntüle
 
-Tost mesajı, bilgileri kullanıcıya görüntülemenin en kolay yollarından biridir ve Android'in tüm sürümlerinde mevcuttur. Herhangi bir kullanıcı girişi türünü desteklemez ve yalnızca kısa bir süre için görüntülenir. Kullanıcıya ne leri dinledikleri hakkında hızlı bir şekilde bilgi vermek istiyorsanız, tost iletisi iyi bir seçenek olabilir. Aşağıdaki kod, bir tost iletisinin `OnFeatureClick` olayla nasıl kullanılabileceğini gösterir.
+Bildirim iletisi, kullanıcıya bilgi görüntülemenin en kolay yollarından biridir ve Android 'in tüm sürümlerinde kullanılabilir. Her tür Kullanıcı girişini desteklemez ve yalnızca kısa bir süre için görüntülenir. Kullanıcının ne dokundukları hakkında bir şey bilmesini hızlıca sağlamak istiyorsanız, bir bildirim iletisi iyi bir seçenek olabilir. Aşağıdaki kod, bir bildirim iletisinin `OnFeatureClick` olayla nasıl kullanılabileceğini gösterir.
 
 ```java
 //Add a feature click event to the map.
@@ -65,18 +65,18 @@ map.events.add((OnFeatureClick) (features) -> {
 
 <center>
 
-![Dinlenen bir özelliğin animasyonu ve tost iletisi görüntüleniyor](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)</center>
+![Dokunulmakta olan bir özelliğin animasyonu ve bir bildirim iletisi görüntüleniyor](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)</center>
 
-Tost iletilerine ek olarak, bir özelliğin meta veri özelliklerini sunmanın başka yolları da vardır:
+Mesajların yanı sıra, bir özelliğin meta veri özelliklerini sunmak için birçok farklı yol vardır:
 
-- [Snakbar widget](https://developer.android.com/training/snackbar/showing.html) - Snackbars bir işlem hakkında hafif geribildirim sağlar. Bunlar, ekranın alt kısmında mobil ve daha büyük cihazlarda sol alt kısmında kısa bir mesaj gösterir. Snackbars ekranda tüm diğer öğelerin üzerinde görünür ve sadece bir seferde görüntülenebilir.
-- [İletişim Bilgileri](https://developer.android.com/guide/topics/ui/dialogs) - İletişim kutusu, kullanıcıdan karar vermesini veya ek bilgi girmesini gerektiren küçük bir penceredir. Bir iletişim ekranı doldurmaz ve normalde kullanıcıların devam etmeden önce bir eylemde bulunmalarını gerektiren modal olaylar için kullanılır.
-- Geçerli faaliyete bir [Parça](https://developer.android.com/guide/components/fragments) ekleyin.
-- Başka bir etkinlik veya görünüme gidin.
+- [Snakbar pencere öğesi](https://developer.android.com/training/snackbar/showing.html) -snackçubuklar bir işlem hakkında hafif geri bildirim sağlar. Bu kişiler, ekranın alt kısmında mobil ve daha büyük cihazlarda sol alt kısımdaki kısa bir ileti gösterir. Snackçubuklar, ekrandaki diğer tüm öğelerin üstünde görünür ve tek seferde yalnızca bir gösterilebilir.
+- İletişim [kutuları](https://developer.android.com/guide/topics/ui/dialogs) -bir iletişim kutusu, kullanıcıdan karar vermesini veya ek bilgiler girmesini isteyen küçük bir penceredir. Bir iletişim kutusu, ekranı doldurmaz ve normalde, kullanıcıların devam etmeden önce bir eylemde bulunması gereken kalıcı olaylar için kullanılır.
+- Geçerli etkinliğe bir [parça](https://developer.android.com/guide/components/fragments) ekleyin.
+- Başka bir etkinliğe veya görünüme gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Haritanıza daha fazla veri eklemek için:
+Haritanızda daha fazla veri eklemek için:
 
 > [!div class="nextstepaction"]
 > [Sembol katmanı ekleme](how-to-add-symbol-to-android-map.md)

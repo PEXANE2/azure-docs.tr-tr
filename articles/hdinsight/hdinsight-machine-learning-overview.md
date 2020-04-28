@@ -1,6 +1,6 @@
 ---
-title: Makine öğrenimine genel bakış - Azure HDInsight
-description: Azure HDInsight'ta kümeler için büyük veri makinesi öğrenme seçeneklerine genel bakış.
+title: Machine Learning genel bakış-Azure HDInsight
+description: Azure HDInsight 'ta kümeler için büyük veri makine öğrenimi seçeneklerine genel bakış.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,58 +9,58 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 6c7f50e4ba3803b5cb929b75f5ad1127f7f063d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75931676"
 ---
-# <a name="machine-learning-on-hdinsight"></a>HDInsight'ta makine öğrenimi
+# <a name="machine-learning-on-hdinsight"></a>HDInsight 'ta makine öğrenimi
 
-HDInsight, büyük miktarlarda (petabaytlar, hatta eksabaytlar) yapılandırılmış, yapılandırılmamış ve hızlı hareket eden verilerden değerli bilgiler elde etme olanağı sağlayarak büyük verilerle makine öğrenimini sağlar. HDInsight'ta çeşitli makine öğrenimi seçenekleri vardır: SparkML ve Apache Spark MLlib, R, Apache Hive ve Microsoft Cognitive Toolkit.
+HDInsight, büyük miktarlarda makine öğrenimini, yapılandırılmış, yapılandırılmamış ve hızlı hareketli verilerin büyük miktarlarından (petabaytlarca veya hatta eksabaytlarca) değerli Öngörüler elde etmenizi sağlar. HDInsight 'ta birkaç makine öğrenimi seçeneği vardır: mini ml ve Apache Spark MLlib, R, Apache Hive ve Microsoft Cognitive Toolkit.
 
-## <a name="sparkml-and-mllib"></a>SparkML ve MLlib
+## <a name="sparkml-and-mllib"></a>Mini ml ve MLlib
 
-[HDInsight Spark,](spark/apache-spark-overview.md) büyük veri analitiğini artırmak için bellek içi işlemeyi destekleyen birleşik, açık kaynak kodlu, paralel veri işleme çerçevesi [olan Apache Spark'ın](https://spark.apache.org/)Azure tarafından barındırılan bir teklifidir. Spark işleme motoru hız, kullanım kolaylığı ve gelişmiş analizler için üretilmiştir. Spark'ın bellek içi dağıtılmış hesaplama yetenekleri, makine öğrenimi ve grafik hesaplamalarında kullanılan yinelemeli algoritmalar için iyi bir seçim dir. Bu dağıtılmış ortama algoritmik modelleme yetenekleri getiren iki ölçeklenebilir makine öğrenme kitaplığı vardır: MLlib ve SparkML. MLlib RDD'lerin üzerine inşa edilmiş orijinal API içerir. SparkML, ML boru hatları oluşturmak için DataFrames'in üzerine inşa edilmiş daha üst düzey bir API sağlayan yeni bir pakettir. SparkML henüz MLlib'in tüm özelliklerini desteklemez, ancak Spark'ın standart makine öğrenimi kütüphanesi olarak MLlib'in yerini almaktadır.
+[HDInsight Spark](spark/apache-spark-overview.md) , büyük veri analizlerini artırmak üzere bellek içi işlemeyi destekleyen, Birleşik, açık kaynaklı ve paralel veri Işleme çerçevesinin Azure tarafından barındırılan [Apache Spark](https://spark.apache.org/)bir sunumudur. Spark işleme altyapısı hız, kullanım kolaylığı ve gelişmiş analiz için oluşturulmuştur. Spark 'ın bellek içi dağıtılmış hesaplama özellikleri, makine öğrenimi ve grafik hesaplamaları 'nda kullanılan yinelemeli algoritmalar için iyi bir seçenek yapar. Algoritmik modelleme yeteneklerini bu dağıtılmış ortama getiren iki ölçeklenebilir makine öğrenimi kitaplığı vardır: MLlib ve mini-ml. MLlib, RDD 'lerin üstünde oluşturulmuş özgün API 'yi içerir. Parlak ml, ML işlem hatları oluşturmak için veri çerçevelerinin üzerine inşa edilen daha yüksek düzeyde bir API sağlayan daha yeni bir pakettir. Parlak ml, MLlib özelliklerinin tümünü henüz desteklemez, ancak MLlib 'i Spark 'ın Standart makine öğrenimi kitaplığı olarak değiştiriyor.
 
-Apache Spark için Microsoft Machine Learning kitaplığı [MMLSpark'tır.](https://github.com/Azure/mmlspark) Bu kütüphane, veri bilimcileri Spark'ta daha üretken hale getirmek, deney oranını artırmak ve çok büyük veri kümelerinde derin öğrenme de dahil olmak üzere en ileri makine öğrenimi tekniklerinden yararlanmak için tasarlanmıştır. MMLSpark, dizeleri dizine ekleyerek, verileri makine öğrenme algoritmaları tarafından beklenen bir düzene zorlama ve özellik vektörlerini birleştirme gibi ölçeklenebilir ML modellerini yaparken SparkML'in düşük düzeyli API'lerinin üstünde bir katman sağlar. MMLSpark kitaplığı, PySpark'ta modeller oluşturmak için bu ve diğer yaygın görevleri basitleştirir.
+Apache Spark için Microsoft Machine Learning kitaplığı, [Mmlspark](https://github.com/Azure/mmlspark). Bu kitaplık, veri bilimcilerinin Spark üzerinde daha üretken olmasını, deneme oranını artırmayı ve çok büyük veri kümelerinde derin öğrenme dahil olmak üzere son teknoloji makine öğrenimi tekniklerinden yararlanmasını sağlamak için tasarlanmıştır. MMLSpark, dizin oluşturma dizeleri, makine öğrenimi algoritmaları tarafından beklenen bir düzene zorlama verileri ve özellik vektörlerini montaj gibi ölçeklenebilir ML modelleri derlerken, modern ml 'nin alt düzey API 'Lerinin üzerine bir katman sağlar. MMLSpark kitaplığı, PySpark 'da model oluşturmaya yönelik bu ve diğer yaygın görevleri basitleştirir.
 
 ## <a name="r"></a>R
 
-[R](https://www.r-project.org/) şu anda dünyanın en popüler istatistiksel programlama dilidir. 2,5 milyondan fazla kullanıcıdan oluşan ve büyüyen bir topluluğu olan açık kaynak kodlu bir veri görselleştirme aracıdır. Gelişen kullanıcı tabanı ve 8.000'den fazla katkıda bulunan paketleri ile R, makine öğrenimine ihtiyaç duyan birçok şirket için olası bir seçimdir. Büyük veri kümeleri ve modelleri ile kullanıma hazır ML Hizmetleri ile bir HDInsight kümesi oluşturabilirsiniz. Bu özellik, veri bilimcileri ve istatistikçiler, küme kurulumu ve bakımı nın yükü olmadan, hdinsight aracılığıyla isteğe bağlı ölçeklendirilebilen tanıdık bir R arabirimi sağlar.
+[R](https://www.r-project.org/) , şu anda dünyanın en popüler istatistiksel programlama dilidir. Bu, 2.500.000 ' den fazla kullanıcı topluluğu olan ve büyümekte olan bir açık kaynaklı veri görselleştirme aracıdır. Kullanıcı tabanıyla ve 8.000 katkıda bulunan paketlerle, R, makine öğrenimine ihtiyaç duyan birçok şirket için büyük olasılıkla tercih edilir. ML Hizmetleri, çok büyük veri kümeleri ve modellerle kullanılmak üzere hazırlanmaya yönelik bir HDInsight kümesi oluşturabilirsiniz. Bu özellik, veri bilimcileri ve İstatistikçilerin ' yi, küme kurulumu ve bakım ek yükü olmadan HDInsight aracılığıyla isteğe bağlı olarak ölçeklendirilebilen tanıdık bir R arabirimiyle sağlar.
 
-![R sunucusu ile tahmin için eğitim](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
+![R Server ile tahmin için eğitim](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
 
-Bir kümenin kenar düğümü kümeye bağlanmak ve R komut dosyalarınızı çalıştırmak için uygun bir yer sağlar.  ScaleR'ın Hadoop Harita Azaltma veya Kıvılcım bilgi işlem bağlamlarını kullanarak kümenin düğümlerinde R komut dosyalarını da çalıştırabilirsiniz.
+Bir kümenin kenar düğümü, kümeye bağlanmak ve R betiklerinizi çalıştırmak için uygun bir yer sağlar.  Ayrıca, ScaleR 'nın Hadoop Map 'i azaltma veya Spark işlem bağlamlarını kullanarak R betiklerini küme düğümleri üzerinde de çalıştırabilirsiniz.
 
-Spark ile HDInsight'taki ML Hizmetleri ile, Bir Spark bilgi işlem bağlamını kullanarak bir kümenin düğümleri arasında eğitim paralelleştirebilirsiniz. R komut dosyalarını, kullanılabilir tüm çekirdekleri gerektiği gibi paralel olarak kullanarak doğrudan kenar düğümünde çalıştırabilirsiniz. Alternatif olarak, kümedeki tüm düğümlere dağıtılan işleme başlamak için kodunuzu kenar düğümünden çalıştırabilirsiniz. Spark ile HDInsight'taki ML Hizmetleri, istenirse açık kaynak R paketlerinden paralelleme işlevleri de sağlar.
+Spark ile HDInsight 'ta ML Hizmetleri ile Spark işlem bağlamı kullanarak bir kümenin düğümleri arasında eğitim paralel hale getirmek sağlayabilirsiniz. Tüm kullanılabilir çekirdekleri gerektiği gibi paralel olarak kullanarak R betiklerini doğrudan Edge düğümünde çalıştırabilirsiniz. Alternatif olarak, kümedeki tüm düğümlerde dağıtılan işlemeyi kapatmak için kodunuzu kenar düğümünden çalıştırabilirsiniz. Spark ile HDInsight üzerinde ML Hizmetleri, isterseniz açık kaynaklı R paketlerinden paralelleştirme işlevleri de sunar.
 
-## <a name="azure-machine-learning-and-apache-hive"></a>Azure Makine Öğrenimi ve Apache Hive
+## <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning ve Apache Hive
 
-Azure Machine Learning, tahmine dayalı analitiği modellemek için araçlar ve tahmine dayalı modellerinizi kullanıma hazır web hizmetleri olarak dağıtmak için kullanabileceğiniz tam olarak yönetilen bir hizmet sağlar. Azure Machine Learning, tahmine dayalı modeller oluşturmak, test etmek, operasyonel hale getirmek ve yönetmek için bulutta kullanabileceğiniz tam bir tahmine dayalı analitik çözümdür. Büyük bir algoritma kitaplığından seçim yapın, modeller oluşturmak için web tabanlı bir stüdyo kullanın ve modelinizi web hizmeti olarak kolayca dağıtın.
+Azure Machine Learning, tahmine dayalı analiz modellerini modelleyen araçlar sağlar ve tahmine dayalı modellerinizi kullanıma hazırlama Web Hizmetleri olarak dağıtmak için kullanabileceğiniz tam olarak yönetilen bir hizmettir. Azure Machine Learning, bulutta, tahmine dayalı modeller oluşturmak, test etmek, işlemleri gerçekleştirmek ve yönetmek için kullanabileceğiniz, tahmine dayalı bir analiz çözümüdür. Büyük bir algoritma kitaplığından seçim yapın, model oluşturmak için Web tabanlı bir Studio kullanın ve modelinizi bir Web hizmeti olarak kolayca dağıtın.
 
-![Microsoft Azure makine öğrenimine genel bakış](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
+![Microsoft Azure Machine Learning 'e genel bakış](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
-[Hive sorgularını](../machine-learning/team-data-science-process/create-features-hive.md)kullanarak HDInsight Hadoop kümesindeki veriler için özellikler oluşturun. *Özellik mühendisliği,* öğrenme sürecini kolaylaştıran ham verilerden özellikler oluşturarak öğrenme algoritmalarının tahmin gücünü artırmaya çalışır. Azure Machine Learning Studio'dan (klasik) HiveQL sorgularını çalıştırabilir ve [İçe İşlem Veri modülasyonlarını](../machine-learning/studio/import-data.md)kullanarak Hive'da işlenen ve blob depolamada depolanan verilere erişebilirsiniz.
+[Hive sorguları](../machine-learning/team-data-science-process/create-features-hive.md)kullanarak bir HDInsight Hadoop kümesindeki veriler için özellikler oluşturun. *Özellik Mühendisliği* , öğrenme sürecini kolaylaştıran ham verilerden Özellikler oluşturarak öğrenme algoritmalarının tahmine dayalı gücünü artırmaya çalışır. Azure Machine Learning Studio (klasik) ' den HiveQL sorgularını çalıştırabilir ve [veri Içeri aktarma modülünü](../machine-learning/studio/import-data.md)kullanarak Hive içinde işlenen ve BLOB depolama alanında depolanan verilere erişim sağlayabilirsiniz.
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Bilişsel Araç Seti
 
-[Derin öğrenme,](https://www.microsoft.com/en-us/research/group/dltc/) insan beyninin biyolojik süreçlerinden esinlenerek sinir ağları kullanan bir makine öğrenimi dalıdır. Birçok araştırmacı yapay zeka geliştirmek için umut verici bir yaklaşım olarak derin öğrenme bakın. Derin öğrenme örnekleri konuşulan dil çevirmenleri, görüntü tanıma sistemleri ve makine muhakemesidir.
+[Derin öğrenme](https://www.microsoft.com/en-us/research/group/dltc/) , insan Beyininin biik süreçleriyle ilham olan sinir ağlarını kullanan Machine Learning 'in bir daldır. Birçok araştırmacıcılar yapay zeka geliştirmek için taahhüt yaklaşımı olarak ayrıntılı öğrenme konusuna sahiptir. Derinlemesine öğrenme örnekleri, dil çeviricileri, görüntü tanıma sistemleri ve makine nedenleridir.
 
-Microsoft, derin öğrenme de kendi çalışmalarını ilerletmeye yardımcı olmak için ücretsiz, kullanımı kolay, açık kaynak [Microsoft Cognitive Toolkit'i](https://www.microsoft.com/en-us/cognitive-toolkit/)geliştirdi. Bu araç seti, çok çeşitli Microsoft ürünleri, dünya çapında ki şirketler tarafından, ölçekte derin öğrenmeyi dağıtma ihtiyacı olan şirketler ve en son algoritma lar ve tekniklerle ilgilenen öğrenciler tarafından kullanılmaktadır.
+Microsoft, derin öğreniminde kendi çalışmasını kolaylaştırmaya yardımcı olmak için ücretsiz, kullanımı kolay ve açık kaynaklı [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/)geliştirmiştir. Bu araç seti, dünyanın dört bir yanındaki ve en son algoritmalarda ve tekniklerle ilgilenen öğrencilerle dünya çapındaki birçok Microsoft ürünü tarafından kullanılmaktadır.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 ### <a name="scenarios"></a>Senaryolar
 
-* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak bina sıcaklığını analiz etmek için HDInsight'ta Kıvılcım'ı kullanın](spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Machine Learning ile Apache Spark: Gıda denetimi sonuçlarını tahmin etmek için HDInsight'ta Kıvılcım'ı kullanın](spark/apache-spark-machine-learning-mllib-ipython.md)
-* [Apache Mahout ile film önerileri oluşturun](hadoop/apache-hadoop-mahout-linux-mac.md)
-* [Apache Hive ve Azure Makine Öğrenimi](../machine-learning/team-data-science-process/create-features-hive.md)
-* [Apache Hive ve Azure Machine Learning uçuca](../machine-learning/team-data-science-process/hive-walkthrough.md)
-* [HDInsight'ta Apache Spark ile makine öğrenimi](../machine-learning/team-data-science-process/spark-overview.md)
+* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Machine Learning Apache Spark: yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Mahout ile film önerileri oluşturma](hadoop/apache-hadoop-mahout-linux-mac.md)
+* [Apache Hive ve Azure Machine Learning](../machine-learning/team-data-science-process/create-features-hive.md)
+* [Uçtan uca Apache Hive ve Azure Machine Learning](../machine-learning/team-data-science-process/hive-walkthrough.md)
+* [HDInsight üzerinde Apache Spark makine öğrenimi](../machine-learning/team-data-science-process/spark-overview.md)
 
 ### <a name="deep-learning-resources"></a>Derin öğrenme kaynakları
 
-* [Azure HDInsight Spark kümesi ile Microsoft Cognitive Toolkit derin öğrenme modelini kullanın](spark/apache-spark-microsoft-cognitive-toolkit.md)
-* [Derin Öğrenme ve Veri Bilimi Sanal Makine (DSVM) üzerinde Yapay Bilgi çerçeveleri](../machine-learning/data-science-virtual-machine/dsvm-tools-deep-learning-frameworks.md)
+* [Microsoft Cognitive Toolkit derin öğrenme modelini Azure HDInsight Spark kümesiyle kullanma](spark/apache-spark-microsoft-cognitive-toolkit.md)
+* [Veri Bilimi Sanal Makinesi (DSVM) üzerinde derin öğrenme ve AI çerçeveleri](../machine-learning/data-science-virtual-machine/dsvm-tools-deep-learning-frameworks.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Devre eşlemi sıfırlama'
-description: ExpressRoute devre si izlemelerini devre dışı bırakıp etkinleştirme.
+title: 'Azure ExpressRoute: devre eşlemesini sıfırlama'
+description: ExpressRoute devre eşayarlarını devre dışı bırakma ve etkinleştirme.
 services: expressroute
 author: charwen
 ms.service: expressroute
@@ -8,29 +8,29 @@ ms.topic: conceptual
 ms.date: 01/13/2018
 ms.author: charwen
 ms.openlocfilehash: 9f32eb439872de9e4687d046745c03bafd86b2fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75941749"
 ---
-# <a name="reset-expressroute-circuit-peerings"></a>ExpressRoute devre eşlemelerini sıfırla
+# <a name="reset-expressroute-circuit-peerings"></a>ExpressRoute devre eşayarlarını sıfırlama
 
-Bu makalede, PowerShell kullanarak bir ExpressRoute devresinin eşlemelerinin nasıl devre dışı sürülebileceği ve etkinleştirilen anlatılmaktadır. Bir eşlemi devre dışı kaldığınız zaman, ExpressRoute devrenizin hem birincil bağlantısı hem de ikincil bağlantısındaki BGP oturumu kapatılır. Microsoft'a bu bakış la bağlantı kaybedersiniz. Bir eşlemi etkinleştirdiğinizde, ExpressRoute devrenizin hem birincil bağlantısı hem de ikincil bağlantısı ndaki BGP oturumu açılır. Microsoft'a bu bakışla bağlantıyı yeniden kazanırsınız. Bir ExpressRoute devresi üzerinde Microsoft Peering ve Azure Özel Eşleme'yi bağımsız olarak etkinleştirebilir ve devre dışı kullanabilirsiniz. ExpressRoute devrenizdeki eşlemeleri ilk yapılandırırken, eşlemeler varsayılan olarak etkinleştirilir.
+Bu makalede, PowerShell kullanarak bir ExpressRoute bağlantı hattının eşayarlarını devre dışı bırakma ve etkinleştirme açıklanmaktadır. Bir eşlemeyi devre dışı bıraktığınızda, hem birincil bağlantıda BGP oturumu hem de ExpressRoute devreniz için ikincil bağlantı kapatılır. Bu eşleme ile Microsoft 'a bağlantıyı kaybedeceksiniz. Bir eşlemeyi etkinleştirdiğinizde, hem birincil bağlantıda BGP oturumu hem de ExpressRoute devrenizin ikincil bağlantısı oluşturulur. Bağlantıyı bu eşleme ile Microsoft 'a geri kazanacaksınız. ExpressRoute bağlantı hattındaki Microsoft eşlemesini ve Azure özel eşlemesini bağımsız olarak etkinleştirebilir ve devre dışı bırakabilirsiniz. ExpressRoute bağlantı hattınızı ilk kez yapılandırdığınızda, eşlemeler varsayılan olarak etkindir.
 
-ExpressRoute bakışlarınızı sıfırlamayı yararlı bulabileceğiniz birkaç senaryo vardır.
-* Olağanüstü durum kurtarma tasarımınızı ve uygulamanızı test edin. Örneğin, iki ExpressRoute devreniz vardır. Bir devrenin eşlemelerini devre dışı bırakıp ağ trafiğinizi diğer devreüzerinde başarısız olmaya zorlayabilirsiniz.
-* Azure Özel Bakışveya ExpressRoute devrenizin Microsoft Peering'inde Çift Yönlü Yönlendirme Algılamasını (BFD) etkinleştirin. ExpressRoute devreniz 1 Ağustos 2018'den sonra oluşturulursa Azure Özel Eşleme'de ve ExpressRoute devreniz 10 Ocak 2020'den sonra oluşturulacaksa Microsoft Peering'de VARSAYıLAN olarak BFD etkinleştirilir. Devreniz bundan önce oluşturulduysa, BFD etkinleştirilememişti. BFD'yi, eşlemesini devre dışı bırakarak ve yeniden etkinleştirerek etkinleştirebilirsiniz. 
+ExpressRoute eşlerinizi sıfırlamanızı yararlı bulabileceğiniz birkaç senaryo vardır.
+* Olağanüstü durum kurtarma tasarımınızı ve uygulamanızı test edin. Örneğin, iki ExpressRoute devreniz vardır. Bir devrenin eşayarlarını devre dışı bırakabilir ve ağ trafiğinizi diğer devreye devretmek için zorlayabilirsiniz.
+* Azure özel eşleme veya ExpressRoute devrenizin Microsoft eşlemesi üzerinde çift yönlü Iletme algılamasını (BFD) etkinleştirin. ExpressRoute bağlantı hattı 10 2020 ' den sonra, ExpressRoute bağlantı hattı 1 2018 Ağustos 'Tan sonra oluşturulduysa, BFD varsayılan olarak Azure özel eşleme 'de etkinleştirilir. Devreniz daha önce oluşturulduysa BFD etkin değildi. Eşlemeyi devre dışı bırakarak ve yeniden etkinleştirerek BFD 'yi etkinleştirebilirsiniz. 
 
-### <a name="working-with-azure-powershell"></a>Azure PowerShell ile çalışma
+### <a name="working-with-azure-powershell"></a>Azure PowerShell çalışma
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="reset-a-peering"></a>Bir eşleme sıfırlama
+## <a name="reset-a-peering"></a>Eşlemeyi sıfırlama
 
-1. PowerShell'i yerel olarak çalıştırıyorsanız, PowerShell konsolunuzu yüksek ayrıcalıklarla açın ve hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
+1. PowerShell 'i yerel olarak çalıştırıyorsanız, PowerShell konsolunuzu yükseltilmiş ayrıcalıklarla açın ve hesabınıza bağlanın. Bağlanmanıza yardımcı olması için aşağıdaki örneği kullanın:
 
    ```azurepowershell
    Connect-AzAccount
@@ -50,7 +50,7 @@ ExpressRoute bakışlarınızı sıfırlamayı yararlı bulabileceğiniz birkaç
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
-5. Devre dışı kalmak veya etkinleştirmek istediğiniz eşlemi tanımlayın. *Peerings* bir dizidir. Aşağıdaki örnekte, Peerings[0] Azure Özel Eşleme ve Peerings[1] Microsoft Peering olduğunu.
+5. Devre dışı bırakmak veya etkinleştirmek istediğiniz eşlemeyi belirler. *Peerings* Eşlemeler bir dizidir. Aşağıdaki örnekte, [0] eşlemeleri Azure özel eşleme ve eşleme [1] Microsoft eşlemesi.
 
    ```azurepowershell-interactive
    Name                             : ExpressRouteARMCircuit
@@ -133,15 +133,15 @@ ExpressRoute bakışlarınızı sıfırlamayı yararlı bulabileceğiniz birkaç
    AllowClassicOperations           : False
    GatewayManagerEtag               :
    ```
-6. Bakanların durumunu değiştirmek için aşağıdaki komutları çalıştırın.
+6. Eşleme durumunu değiştirmek için aşağıdaki komutları çalıştırın.
 
    ```azurepowershell-interactive
    $ckt.Peerings[0].State = "Disabled"
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
-   Bakış, belirlediğiniz bir durumda olmalıdır. 
+   Eşleme, ayarladığınız bir durumda olmalıdır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bir ExpressRoute sorununu gidermek için yardıma ihtiyacınız varsa, aşağıdaki makalelere göz atın:
+ExpressRoute sorununu gidermeye yönelik yardıma ihtiyacınız varsa aşağıdaki makalelere göz atın:
 * [ExpressRoute bağlantısını doğrulama](expressroute-troubleshooting-expressroute-overview.md)
 * [Ağ performansı sorunlarını giderme](expressroute-troubleshooting-network-performance.md)

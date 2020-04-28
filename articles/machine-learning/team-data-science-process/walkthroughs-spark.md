@@ -1,6 +1,6 @@
 ---
-title: PySpark, Scala ile HDInsight Spark'ta Analytics - Ekip Veri Bilimi Süreci
-description: Bir Azure HDInsight Kıvılcımı'nda PySpark ve Scala'nın kullanımından geçen Ekip Veri Bilimi Süreci'ne örnekler.
+title: PySpark, Scala-Team Data Science Işlemi ile HDInsight Spark üzerinde analiz
+description: Bir Azure HDInsight Spark PySpark ve Scala kullanımını adım adım sunan ekip veri bilimi sürecinin örnekleri.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,40 +12,40 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 91aac279a264d64ace5988d147c4caf8c52e9656
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864154"
 ---
-# <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>HDInsight Spark veri bilimi walkthroughs Azure PySpark ve Scala kullanarak
+# <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>Azure 'da PySpark ve Scala kullanarak HDInsight Spark veri bilimi talimatları
 
-Bu gözden geçirme ler, tahmine dayalı analizler yapmak için Bir Azure Kıvılcım kümesinde PySpark ve Scala'yı kullanır. Ekip Veri Bilimi Sürecinde belirtilen adımları izlerler. Ekip Veri Bilimi Sürecine genel bir bakış için [bkz.](overview.md) HDInsight'ta Kıvılcım'a genel bir bakış için, [HDInsight'ta Kıvılcıma Giriş](../../hdinsight/spark/apache-spark-overview.md)bölümüne bakın.
+Bu izlenecek yollar, tahmine dayalı analiz yapmak için bir Azure Spark kümesinde PySpark ve Scala kullanır. Bunlar, Team Data Science Işleminde özetlenen adımları izler. Ekip veri bilimi sürecine genel bir bakış için bkz. [veri bilimi işlemi](overview.md). HDInsight 'ta Spark 'a genel bakış için bkz. [HDInsight 'Ta Spark 'A giriş](../../hdinsight/spark/apache-spark-overview.md).
 
-Ekip Veri Bilimi İşlemi'ni yürüten ek veri bilimi gözden geçirmeleri, kullandıkları **platforma** göre gruplandırılır. Bu örneklerin bir öğeleştirme için [Takım Veri Bilimi İşlemi'ni yürüten Walkthroughs'a](walkthroughs.md) bakın.
+Ekip veri bilimi sürecini yürütecek olan ek veri bilimi talimatları, kullandıkları **platforma** göre gruplandırılır. Bu örneklerin bir öğesi için [ekip veri bilimi sürecini yürüten Izlenecek yollara](walkthroughs.md) bakın.
 
-## <a name="predict-taxi-tips-using-pyspark-on-azure-spark"></a>Azure Kıvılcımı'nda PySpark'ı kullanarak taksi ipuçlarını tahmin etme
+## <a name="predict-taxi-tips-using-pyspark-on-azure-spark"></a>Azure Spark 'ta PySpark kullanarak TAXI ipuçlarını tahmin etme
 
-[Azure HDInsight'taki Spark'ı kullanma,](spark-overview.md) New York taksi verilerini kullanarak bir bahşişin ödenip ödenmediğini ve beklenen tutarların aralığını tahmin eder. Bu örnek, kamuya açık NYC taksi yolculuğu ve ücret veri kümesindeki mühendis verilerini depolamak, keşfetmek ve özellik sağlamak için [bir Azure HDInsight Spark kümesini](https://azure.microsoft.com/services/hdinsight/) kullanarak Bir senaryoda Ekip Veri Bilimi İşlemi'ni kullanır. Bu genel bakış konusu bir HDInsight Spark kümesi ve Jupyter PySpark dizüstü bilgisayarları kullanır. Bu not defterleri, verilerinizi nasıl keşfedersiniz ve ardından modelleri nasıl oluşturup tükettiğinizi gösterir. Gelişmiş veri arama ve modelleme not defteri çapraz doğrulama, hiper-parametre süpürme ve model değerlendirme nasıl dahil gösterir.
+New York TAXI verilerini kullanarak, [Azure HDInsight 'Ta Spark kullanma](spark-overview.md) Kılavuzu, bir ipucunun ödenip ödenmediğini ve beklenen tutarların aralığını tahmin eder. Bu örnek, genel olarak kullanılabilir NYC TAXI yolculuğuna ve tarifeli havayolu veri kümesinden verileri depolamak, araştırmak ve özellik mühendislerinden veri eklemek için bir [Azure HDInsight Spark kümesi](https://azure.microsoft.com/services/hdinsight/) kullanan bir senaryoda Team Data Science işlemini kullanır. Bu genel bakış konusu, HDInsight Spark kümesi ve Jupyıter PySpark not defterlerini kullanır. Bu not defterleri, verilerinizi nasıl keşfedebileceğiniz ve ardından modeller oluşturma ve kullanma işlemlerinin nasıl yapılacağını gösterir. Gelişmiş veri araştırması ve modelleme not defteri, çapraz doğrulama, hiper parametre kullanımı ve model değerlendirmesinin nasıl ekleneceğini gösterir.
 
-### <a name="data-exploration-and-modeling-with-spark"></a>Spark ile Veri Arama ve Modelleme 
-Veri kümesini keşfedin ve [Spark MLlib araç seti konusuyla veri için ikili sınıflandırma ve regresyon modelleri oluştur](spark-data-exploration-modeling.md) üzerinden çalışarak makine öğrenimi modellerini oluşturun, puanlandırın ve değerlendirin.
+### <a name="data-exploration-and-modeling-with-spark"></a>Spark ile veri araştırması ve modelleme 
+[Spark MLlib araç seti ile veri için ikili sınıflandırma ve regresyon modelleri oluşturma](spark-data-exploration-modeling.md) konusunun veri kümesini İnceleme ve makine öğrenimi modelleri oluşturma, Puanlama ve değerlendirme.
 
 ### <a name="model-consumption"></a>Model tüketimi
-Bu konuda oluşturulan sınıflandırma ve regresyon modellerini nasıl puanlandırıp değerlendireceklerini öğrenmek için [Puan'a bakın ve Kıvılcım yapımı makine öğrenimi modellerini değerlendirin.](spark-model-consumption.md)
+Bu konuda oluşturulan sınıflandırma ve regresyon modellerinin nasıl puan alabileceğinizi öğrenmek için bkz. [Spark ile oluşturulmuş makine öğrenimi modellerini Puanlama ve değerlendirme](spark-model-consumption.md).
 
-### <a name="cross-validation-and-hyperparameter-sweeping"></a>Çapraz doğrulama ve hiperparametre süpürme
-Spark ile modellerin çapraz doğrulama ve hiper parametre süpürme kullanılarak nasıl eğitilebileceğine ilişkin Gelişmiş veri arama ve [modellemeye](spark-advanced-data-exploration-modeling.md) bakın.
+### <a name="cross-validation-and-hyperparameter-sweeping"></a>Çapraz doğrulama ve hiper parametre SWE
+Modellerin çapraz doğrulama ve hiper parametre tatkileri kullanılarak eğitilme hakkında [Spark Ile gelişmiş veri araştırması ve modelleme](spark-advanced-data-exploration-modeling.md) hakkında bilgi alabilirsiniz.
 
 
-## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Azure Kıvılcımı'nda Scala'yı kullanarak taksi ipuçlarını tahmin etme
+## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Azure Spark 'ta Scala 'yı kullanarak TAXI ipuçlarını tahmin etme
 
-[Azure'da Spark ile Scala Kullanımı,](scala-walkthrough.md) bir bahşişin ödenip ödenmediğini ve ödenmesi beklenen tutarların aralığını tahmin eder. Azure HDInsight Spark kümesindeki Spark makine öğrenimi kitaplığı (MLlib) ve SparkML paketleriyle denetlenen makine öğrenimi görevleri için Scala'nın nasıl kullanılacağını gösterir. [Veri Bilimi Süreci'ni](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)oluşturan görevlerde size yol açar: veri alma ve araştırma, görselleştirme, özellik mühendisliği, modelleme ve model tüketimi. Üretilen modeller arasında lojistik ve doğrusal regresyon, rastgele ormanlar ve degrade artırılmış ağaçlar yer almaktadır.
+[Azure 'Da Spark Ile Scala 'Yı kullanma](scala-walkthrough.md) Kılavuzu, bir ipucunun ödenip ödenmediğini tahmin eder ve ücretlendirildiği tutarların aralığını tahmin eder. Bir Azure HDInsight Spark kümesinde Spark Machine Learning kitaplığı (MLlib) ve mini ml paketleri ile denetimli makine öğrenimi görevleri için Scala 'ın nasıl kullanılacağını gösterir. [Veri bilimi işlemini](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)ve araştırma, görselleştirme, özellik Mühendisliği, modelleme ve model tüketimini oluşturan görevlerde size kılavuzluk eder. Oluşturulan modeller lojistik ve doğrusal regresyon, rastgele ormanlar ve gradyan artırılmış ağaçlar içerir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ekip Veri Bilimi Sürecine genel bakış [için, Takım Veri Bilimi Sürecine genel bakış](overview.md)bölümüne bakın.
+Ekip veri bilimi Işlemine genel bakış için bkz. [Team Data Science işlemine genel bakış](overview.md).
 
-Ekip Veri Bilimi Süreci yaşam döngüsünü tartışmak [için, Bkz. Takım Veri Bilimi Süreci yaşam döngüsü.](lifecycle.md) Bu yaşam döngüsü, projelerin genellikle yürütüldüğünde takip ettiği adımları, başından sonuna kadar özetler. 
+Team Data Science Işlem yaşam döngüsü hakkında bir tartışma için bkz. [Team Data Science işlem yaşam döngüsü](lifecycle.md). Bu yaşam döngüsü, başlangıçtan sonuna kadar olan adımları özetler ve bu da projeler genellikle yürütüldüğünde izler. 
 

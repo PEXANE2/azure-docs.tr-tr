@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight kümesinden Watchdog BUG yumuşak kilitleme CPU hatası
-description: Watchdog BUG yumuşak kilitleme CPU Azure HDInsight kümesinden çekirdek syslogs görünür
+title: İzleme hatası Azure HDInsight kümesinden hata durumunda yumuşak kilit hatası
+description: İzleme hatası Soft kilitleniyor CPU, Azure HDInsight kümesi 'ndeki çekirdek Syslog 'lar 'da görünür
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,58 +8,58 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: 701e314ad2a3762b1e8ca022ce18d9435ce2db37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75894116"
 ---
-# <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Senaryo: "watchdog: BUG: yumuşak kilitleme - CPU" hatası bir Azure HDInsight kümesinden
+# <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Senaryo: "izleme: hata: bir Azure HDInsight kümesinden yazılım kilitleme-CPU" hatası
 
-Bu makalede, Azure HDInsight kümeleriyle etkileşimde olurken sorun giderme adımları ve sorunlarla ilgili olası çözümler açıklanmaktadır.
+Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri açıklanmaktadır.
 
 ## <a name="issue"></a>Sorun
 
-Çekirdek syslogs hata iletisi `watchdog: BUG: soft lockup - CPU`içerir: .
+Çekirdek Syslog 'lar hata iletisini içerir: `watchdog: BUG: soft lockup - CPU`.
 
 ## <a name="cause"></a>Nedeni
 
-Linux Kernel bir [hata](https://bugzilla.kernel.org/show_bug.cgi?id=199437) CPU yumuşak kilitleme neden oluyor.
+Linux çekirdeğindeki bir [hata](https://bugzilla.kernel.org/show_bug.cgi?id=199437) , CPU yumuşak lockups sorunlarına neden oluyor.
 
 ## <a name="resolution"></a>Çözüm
 
-Çekirdek yama uygulayın. Aşağıdaki komut dosyası linux çekirdeğini yükseltir ve makineleri 24 saat içinde farklı zamanlarda yeniden başlatacaktır. Komut dosyası eylemini iki toplu olarak yürütün. İlk parti baş düğümü hariç tüm düğümler üzerindedir. İkinci parti baş düğümünde. Kafa düğümü ve diğer düğümleri aynı anda çalıştırmayın.
+Çekirdek Düzeltme Eki uygulayın. Aşağıdaki betik, Linux çekirdeğini yükseltir ve makineleri 24 saat üzerinden farklı zamanlarda yeniden başlatır. Betik eylemini iki toplu işlem halinde yürütün. İlk Batch, baş düğüm hariç tüm düğümlerde bulunur. İkinci toplu işlem baş düğümüdür. Baş düğüm ve diğer düğümleri aynı anda çalıştırmayın.
 
-1. Azure portalından HDInsight kümenize gidin.
+1. Azure portal HDInsight kümenize gidin.
 
-1. Komut dosyası eylemlerine gidin.
+1. Betik eylemlerine gidin.
 
-1. **Yeni Gönder'i** seçin ve girişi aşağıdaki gibi girin
+1. **Yeni Gönder** ' i seçin ve girişi aşağıdaki gibi girin
 
     | Özellik | Değer |
     | --- | --- |
-    | Komut dosyası türü | -Özel |
-    | Adı |Çekirdek yumuşak kilit sorunu için düzeltme |
-    | Bash script URI |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
-    | Düğüm türü(ler) |İşçi, Hayvan bakıcısı |
+    | Betik türü | -Özel |
+    | Adı |Çekirdek geçici kilit sorunu için çözüm |
+    | Bash betiği URI 'SI |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
+    | Düğüm türleri |Çalışan, Zookeeper |
     | Parametreler |Yok |
 
-    **Bu komut dosyası eylemini devam la...** yeni düğümler eklendiğinde komut dosyasının yürütülmesini istiyorsanız devam edin'i seçin.
+    Yeni düğümler eklendiğinde betiği yürütmek istiyorsanız **bu betiği kalıcı yap...** öğesini seçin.
 
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 
 1. Yürütmenin başarılı olmasını bekleyin.
 
-1. Baş düğüm üzerinde komut dosyası eylemini adım 3 ile aynı adımları izleyerek uygulayın, ancak bu kez Düğüm türleri: Head ile.
+1. Adım 3 ile aynı adımları izleyerek (Bu kez düğüm türleri: Head) betik eylemini baş düğümde yürütün.
 
 1. Yürütmenin başarılı olmasını bekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmediyseniz veya sorununuzu çözemiyorsanız, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-* [Azure Topluluk Desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıtlar alın.
+* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) Azure topluluğunu doğru kaynaklara bağlayarak müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın: yanıtlar, destek ve uzmanlar.
+* Azure Community [@AzureSupport](https://twitter.com/azuresupport) 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa, [Azure portalından](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **Destek'i** seçin veya **Yardım + destek** merkezini açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği nin nasıl oluşturulabildiğini](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)gözden geçirin. Abonelik Yönetimi'ne erişim ve faturalandırma desteği Microsoft Azure aboneliğinize dahildir ve Teknik Destek Azure [Destek Planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

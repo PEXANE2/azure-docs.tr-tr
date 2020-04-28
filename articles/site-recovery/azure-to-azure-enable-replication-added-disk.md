@@ -1,29 +1,29 @@
 ---
-title: Azure Site Kurtarma'da eklenen bir Azure VM diski için çoğaltmayı etkinleştirme
-description: Bu makalede, Azure Site Kurtarma ile olağanüstü durum kurtarma için etkinleştirilen bir Azure VM'ye eklenen bir disk için çoğaltmanın nasıl etkinleştirilen
+title: Azure Site Recovery eklenen bir Azure VM diski için çoğaltmayı etkinleştirme
+description: Bu makalede, Azure Site Recovery ile olağanüstü durum kurtarma için etkinleştirilen bir Azure VM 'sine eklenen bir disk için çoğaltmanın nasıl etkinleştirileceği açıklanır.
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2019
 ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75973806"
 ---
-# <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Azure VM'ye eklenen bir disk için çoğaltmayı etkinleştirme
+# <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Azure VM 'ye eklenen bir disk için çoğaltmayı etkinleştirme
 
 
-Bu makalede, [Azure Site Kurtarma](site-recovery-overview.md)kullanarak başka bir Azure bölgesine olağanüstü durum kurtarma için zaten etkin leştirilmiş bir Azure VM'sine eklenen veri diskleri için çoğaltmanın nasıl etkinleştirilen açıklanmaktadır.
+Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak başka bir Azure bölgesine olağanüstü durum kurtarma için zaten etkinleştirilmiş BIR Azure VM 'sine eklenen veri diskleri için çoğaltmanın nasıl etkinleştirileceği açıklanır.
 
-VM'ye eklediğiniz bir disk için çoğaltmayı etkinleştirme, yönetilen disklerle Azure VM'leri için desteklenir.
+VM 'ye eklediğiniz bir disk için çoğaltmanın etkinleştirilmesi, yönetilen disklere sahip Azure VM 'Leri için desteklenir.
 
-Başka bir Azure bölgesine çoğalan bir Azure VM'sine yeni bir disk eklediğinizde aşağıdakiler oluşur:
+Başka bir Azure bölgesine çoğaltılan bir Azure VM 'ye yeni bir disk eklediğinizde, aşağıdakiler gerçekleşir:
 
--   VM için çoğaltma durumu bir uyarı gösterir ve portaldaki bir not, bir veya daha fazla diskin korunmak için kullanılabildiğini bildirir.
--   Eklenen diskler için koruma yı etkinleştiriseniz, uyarı diskin ilk çoğaltıldıktan sonra kaybolur.
--   Disk için çoğaltmayı etkinleştirmemeyi seçerseniz, uyarıyı reddetmeyi seçebilirsiniz.
+-   VM için çoğaltma durumu bir uyarı gösterir ve portalda bir notun bir veya daha fazla diskin koruma için kullanılabilir olduğunu bildirir.
+-   Eklenen diskler için korumayı etkinleştirirseniz, diskin ilk çoğaltmadan sonra uyarı kaybolur.
+-   Disk için çoğaltmayı etkinleştiremeyebilir ' i seçerseniz, uyarıyı kapatmak için seçeneğini belirleyebilirsiniz.
 
 ![Yeni disk eklendi](./media/azure-to-azure-enable-replication-added-disk/newdisk.png)
 
@@ -31,22 +31,22 @@ Başka bir Azure bölgesine çoğalan bir Azure VM'sine yeni bir disk eklediğin
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Bu makalede, diskeklediğiniz VM için olağanüstü durum kurtarma zaten ayarladığınızı varsayar. Yapmadıysanız, [Azure'dan Azure'a](azure-to-azure-tutorial-enable-replication.md)olağanüstü durum kurtarma öğreticisini izleyin.
+Bu makalede, diski eklediğiniz VM için zaten olağanüstü durum kurtarmayı ayarlamış olduğunuz varsayılmaktadır. Yapmadıysanız, Azure 'dan [Azure 'a olağanüstü durum kurtarma öğreticisini](azure-to-azure-tutorial-enable-replication.md)takip edin.
 
 ## <a name="enable-replication-for-an-added-disk"></a>Eklenen disk için çoğaltmayı etkinleştirme
 
-Eklenen bir disk için çoğaltmayı etkinleştirmek için aşağıdakileri yapın:
+Eklenen bir disk için çoğaltmayı etkinleştirmek üzere aşağıdakileri yapın:
 
-1. **Çoğaltılan Öğeler**> kasasında, diski eklediğiniz VM'yi tıklatın.
-2. **Diskler'i**tıklatın ve ardından çoğaltmayı etkinleştirmek istediğiniz veri diskini seçin (bu disklerin **korumalı olmayan** bir durumu vardır).
-3.  **Disk Ayrıntıları'nda**, **çoğaltmayı etkinleştir'i**tıklatın.
+1. Kasaya **çoğaltılan öğeleri**>, DISKI eklediğiniz VM 'ye tıklayın.
+2. **Diskler**' e tıklayın ve ardından çoğaltmayı etkinleştirmek istediğiniz veri diskini seçin (bu disklerde **korumalı olmayan** bir durum vardır).
+3.  **Disk ayrıntıları**' nda **çoğaltmayı etkinleştir**' e tıklayın.
 
-    ![Eklenen disk için çoğaltmayı etkinleştirme](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
+    ![Eklenen disk için çoğaltmayı etkinleştir](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
 
-Etkinleştirçoğaltma işi çalışır ve ilk çoğaltma bittikten sonra, disk sorunu için çoğaltma sistem durumu uyarısı kaldırılır.
+Çoğaltmayı etkinleştirme işi çalıştıktan ve ilk çoğaltma tamamlandıktan sonra, disk sorunu için çoğaltma sistem durumu uyarısı kaldırılır.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir test başarısızlığını çalıştırma hakkında [daha fazla bilgi edinin.](site-recovery-test-failover-to-azure.md)
+Yük devretme testi çalıştırma hakkında [daha fazla bilgi edinin](site-recovery-test-failover-to-azure.md) .

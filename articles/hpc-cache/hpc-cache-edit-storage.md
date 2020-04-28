@@ -1,71 +1,71 @@
 ---
-title: Azure HPC Önbellek depolama hedeflerini güncelleştirme
-description: Azure HPC Önbellek depolama hedefleri nasıl edinilir?
+title: Azure HPC önbellek depolama hedeflerini güncelleştirme
+description: Azure HPC önbellek depolama hedeflerini düzenleme
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 1/08/2020
 ms.author: rohogue
 ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75866998"
 ---
 # <a name="edit-storage-targets"></a>Depolama hedeflerini düzenleme
 
-Önbelleğin **Depolama hedefleri** sayfasından bir depolama hedefini kaldırabilir veya değiştirebilirsiniz.
+Bir depolama hedefini önbelleğin **depolama hedefleri** sayfasından kaldırabilir veya değiştirebilirsiniz.
 
 ## <a name="remove-a-storage-target"></a>Depolama hedefini kaldırma
 
-Depolama hedefini kaldırmak için, listede seçin ve **Sil** düğmesini tıklatın.
+Bir depolama hedefini kaldırmak için listeden seçin ve **Sil** düğmesine tıklayın.
 
-Bu eylem, bu Azure HPC Önbellek sistemiyle depolama hedef ilişkisini kaldırır, ancak arka uç depolama sistemini değiştirmez. Örneğin, bir Azure Blob depolama kapsayıcısı kullandıysanız, önbellekten sildikten sonra kapsayıcı ve içeriği hala kullanılabilir. Kapsayıcıyı farklı bir Azure HPC Önbelleğine ekleyebilir, bu önbelleğe yeniden ekleyebilir veya Azure portalıyla silebilirsiniz.
+Bu eylem, bu Azure HPC önbellek sistemiyle depolama hedefi ilişkilendirmesini kaldırır, ancak arka uç depolama sistemini değiştirmez. Örneğin, bir Azure Blob depolama kapsayıcısı kullandıysanız, kapsayıcı ve içeriği önbellekten silindikten sonra hala mevcut olur. Kapsayıcıyı farklı bir Azure HPC önbelleğine ekleyebilir, bu önbelleğe yeniden ekleyebilir veya Azure portal ile silebilirsiniz.
 
-Önbellekte depolanan tüm dosya değişiklikleri, depolama hedefi kaldırılmadan önce arka uç depolama sistemine yazılır. Çok fazla değiştirilen veri önbellekteyse, bu işlem bir saat veya daha uzun sürebilir.
+Önbellekte depolanan tüm dosya değişiklikleri, depolama hedefi kaldırılmadan önce arka uç depolama sistemine yazılır. Bu işlem bir saat veya daha fazla değişiklik zaman alabilir ve çok sayıda değiştirilen veri önbellekte bulunur.
 
 ## <a name="update-storage-targets"></a>Depolama hedeflerini güncelleştirme
 
-Bazı özelliklerini değiştirmek için depolama hedeflerini değiştirebilirsiniz. Farklı depolama türleri için farklı özellikler değiştirilebilir:
+Bazı özelliklerini değiştirmek için depolama hedeflerini düzenleyebilirsiniz. Farklı depolama türleri için farklı özellikler düzenlenebilir:
 
-* Blob depolama hedefleri için ad alanı yolunu değiştirebilirsiniz.
+* BLOB depolama hedefleri için ad alanı yolunu değiştirebilirsiniz.
 
 * NFS depolama hedefleri için şu özellikleri değiştirebilirsiniz:
 
   * Ad alanı yolu
   * Kullanım modeli
   * Dışarı Aktarma
-  * Dış dizini dışdizini dışa aktarma
+  * Alt dizini dışarı aktar
 
-Depolama hedefinin adını, türünü veya arka uç depolama sistemini (Blob kapsayıcısı veya NFS ana bilgisayar/IP adresi) düzenleyemezsiniz. Bu özellikleri değiştirmeniz gerekiyorsa, depolama hedefini silin ve yeni değerle bir değiştirme oluşturun.
+Depolama hedefinin adını, türünü veya arka uç depolama sistemini (blob kapsayıcısı veya NFS ana bilgisayar adı/IP adresi) düzenleyemezsiniz. Bu özellikleri değiştirmeniz gerekiyorsa, depolama hedefini silin ve yeni değerle bir değiştirme oluşturun.
 
-Depolama hedefini değiştirmek için, ayrıntılar sayfasını açmak için depolama hedef adını tıklatın. Sayfadaki bazı alanlar değiştirilebilir.
+Bir depolama hedefini değiştirmek için depolama hedefi adına tıklayarak Ayrıntılar sayfasını açın. Sayfadaki bazı alanlar düzenlenebilir.
 
-![Bir NFS depolama hedefi için edit sayfasının ekran görüntüsü](media/hpc-cache-edit-storage-nfs.png)
+![NFS depolama hedefi için düzenleme sayfasının ekran görüntüsü](media/hpc-cache-edit-storage-nfs.png)
 
 ## <a name="update-an-nfs-storage-target"></a>NFS depolama hedefini güncelleştirme
 
-Bir NFS depolama hedefi için birkaç özelliği güncelleştirebilirsiniz. (Örnek bir edit sayfası için yukarıdaki ekran görüntüsüne bakın.)
+NFS depolama hedefi için, birkaç özelliği güncelleştirebilirsiniz. (Örnek düzenleme sayfası için yukarıdaki ekran görüntüsüne bakın.)
 
-* **Kullanım modeli** - Kullanım modeli önbelleğin verileri nasıl saklar etkilemesini sağlar. Read Daha fazla bilgi için [bir kullanım modeli seçin.](hpc-cache-add-storage.md#choose-a-usage-model)
-* **Sanal ad alanı yolu** - İstemcilerin bu depolama hedefini monte etmek için kullandıkları yol. Ayrıntılar için [toplu ad alanını planla'yı](hpc-cache-namespace.md) okuyun.
-* **NFS dışa aktarma yolu** - Depolama sistemi dışa aktarma bu ad alanı yolu için kullanılır.
-* **Alt dizin yolu** - Bu ad alanı yolu ile ilişkilendirmek için alt dizin (dışa aktarma altında). Bir alt dizini belirtmeniz gerekmiyorsa bu alanı boş bırakın.
+* **Kullanım modeli** -kullanım modeli, önbelleğin verileri nasıl koruduğunu etkiler. Daha fazla bilgi edinmek için [bir kullanım modeli seçin](hpc-cache-add-storage.md#choose-a-usage-model) .
+* **Sanal ad alanı yolu** -istemcilerin bu depolama hedefini bağlamak için kullandığı yol. Ayrıntılar için [toplanan ad alanı planını](hpc-cache-namespace.md) okuyun.
+* **NFS dışa aktarma yolu** -bu ad alanı yolu için kullanılacak depolama sistemi dışa aktarma.
+* **Alt dizin yolu** -bu ad alanı yoluyla ilişkilendirilecek alt dizin (dışarı aktarma altında). Bir alt dizin belirtmeniz gerekmiyorsa bu alanı boş bırakın.
 
-Her ad alanı yolunun dışa aktarma ve alt dizinin benzersiz bir birleşimi gerekir. Diğer bir zamanda, arka uç depolama sisteminde aynı dizin için iki farklı istemci bakan yol yapamazsınız.
+Her ad alanı yolu, bir dışarı aktarma ve alt dizinin benzersiz bir birleşimini gerektirir. Diğer bir deyişle, arka uç depolama sisteminde tam olarak aynı dizine sahip iki farklı istemciye yönelik yol yapamazsınız.
 
-Değişiklik yaptıktan sonra, depolama hedefini güncelleştirmek için **Tamam'ı** tıklatın veya değişiklikleri atmak için **İptal'i** tıklatın.
+Değişiklik yaptıktan sonra, depolama hedefini güncelleştirmek için **Tamam** ' ı tıklatın veya değişiklikleri atmak için **iptal** ' i tıklatın.
 
 ## <a name="update-an-azure-blob-storage-target"></a>Azure Blob depolama hedefini güncelleştirme
 
-Blob depolama hedefinin ayrıntılar sayfası, sanal ad alanı yolunu değiştirmenize olanak tanır.
+BLOB depolama hedefinin Ayrıntılar sayfası, sanal ad alanı yolunu değiştirmenize olanak sağlar.
 
-![blob depolama hedefi için edit sayfasının ekran görüntüsü](media/hpc-cache-edit-storage-blob.png)
+![BLOB depolama hedefi için düzenleme sayfasının ekran görüntüsü](media/hpc-cache-edit-storage-blob.png)
 
-Tamamlandığında, depolama hedefini güncelleştirmek için **Tamam'ı** tıklatın veya değişiklikleri atmak için **İptal'i** tıklatın.
+İşiniz bittiğinde, depolama hedefini güncelleştirmek için **Tamam** ' ı tıklatın veya değişiklikleri atmak için **iptal** ' i tıklatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bu seçenekler hakkında daha fazla bilgi edinmek için [depolama hedefleri ekle'yi](hpc-cache-add-storage.md) okuyun.
-* Sanal yolları kullanma yla ilgili daha fazla ipucu için [toplu ad alanını planla'yı](hpc-cache-namespace.md) okuyun.
+* Bu seçenekler hakkında daha fazla bilgi edinmek için [depolama hedefleri ekleme](hpc-cache-add-storage.md) bölümünü okuyun.
+* Sanal yolları kullanma hakkında daha fazla ipucu için [toplanan ad alanı planını](hpc-cache-namespace.md) okuyun.

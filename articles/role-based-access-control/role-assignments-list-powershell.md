@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC ve Azure PowerShell'i kullanarak rol atamalarını listele
-description: Kullanıcıların, grupların, hizmet ilkelerinin veya yönetilen kimliklerin Azure rol tabanlı erişim denetimi (RBAC) ve Azure PowerShell'i kullanarak hangi kaynaklara erişebildiğini nasıl belirleyebilirsiniz.
+title: Azure RBAC ve Azure PowerShell kullanarak rol atamalarını listeleme
+description: Kullanıcıların, grupların, hizmet sorumlularının veya yönetilen kimliklerin Azure rol tabanlı erişim denetimi (RBAC) ve Azure PowerShell kullanarak hangi kaynakların erişimi olduğunu nasıl belirleyebileceğinizi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,28 +15,28 @@ ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 0ec3153e5b1bfbe04a079d1cfc44e8e8709784d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75931145"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>Azure RBAC ve Azure PowerShell'i kullanarak rol atamalarını listele
+# <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>Azure RBAC ve Azure PowerShell kullanarak rol atamalarını listeleme
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Bu makalede, Azure PowerShell kullanarak rol atamalarının nasıl listelenebildiğini açıklanmaktadır.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Bu makalede, Azure PowerShell kullanarak rol atamalarının nasıl listeleneceğini açıklanmaktadır.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> Kuruluşunuz, [Azure temsilcili kaynak yönetimini](../lighthouse/concepts/azure-delegated-resource-management.md)kullanan bir hizmet sağlayıcısına dış kaynak yönetim işlevleri veriyorsa, bu hizmet sağlayıcısı tarafından yetkilendirilen rol atamaları burada gösterilmez.
+> Kuruluşunuzun, [Azure tarafından yetkilendirilen kaynak yönetimi](../lighthouse/concepts/azure-delegated-resource-management.md)kullanan bir hizmet sağlayıcısına dış kaynaklı yönetim işlevleri varsa, bu hizmet sağlayıcısı tarafından yetkilendirilen rol atamaları burada gösterilmez.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure Bulut Shell veya [Azure PowerShell'de](/azure/cloud-shell/overview) [PowerShell](/powershell/azure/install-az-ps)
+- [Azure Cloud Shell](/azure/cloud-shell/overview) veya [Azure PowerShell](/powershell/azure/install-az-ps) PowerShell
 
-## <a name="list-role-assignments-for-the-current-subscription"></a>Geçerli abonelik için rol atamalarını listele
+## <a name="list-role-assignments-for-the-current-subscription"></a>Geçerli abonelik için rol atamalarını listeleyin
 
-Geçerli abonelikteki tüm rol atamalarının (kök ve yönetim gruplarından devralınan rol atamaları dahil) listesini almanın en kolay yolu, herhangi bir parametre olmadan [Get-AzRoleAssignment'ı](/powershell/module/az.resources/get-azroleassignment) kullanmaktır.
+Geçerli abonelikteki tüm rol atamalarının bir listesini almanın en kolay yolu (kök ve yönetim gruplarından devralınan rol atamaları dahil), herhangi bir parametre olmadan [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment) kullanmaktır.
 
 ```azurepowershell
 Get-AzRoleAssignment
@@ -70,7 +70,7 @@ CanDelegate        : False
 
 ## <a name="list-role-assignments-for-a-subscription"></a>Bir aboneliğin rol atamalarını listeleme
 
-Abonelik kapsamındaki tüm rol atamalarını listelemek için [Get-AzRoleAssignment'ı](/powershell/module/az.resources/get-azroleassignment)kullanın. Abonelik kimliğini almak için Azure portalındaki **Abonelikler** bıyığa veya [Get-AzSubscription'ı](/powershell/module/Az.Accounts/Get-AzSubscription)kullanabilirsiniz.
+Tüm rol atamalarını bir abonelik kapsamında listelemek için [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment)' yı kullanın. Abonelik KIMLIĞINI almak için Azure portal **abonelikler** dikey penceresinde bulabilir veya [Get-azsubscription](/powershell/module/Az.Accounts/Get-AzSubscription)' u kullanabilirsiniz.
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope /subscriptions/<subscription_id>
@@ -82,7 +82,7 @@ PS C:\> Get-AzRoleAssignment -Scope /subscriptions/00000000-0000-0000-0000-00000
 
 ## <a name="list-role-assignments-for-a-user"></a>Bir kullanıcının rol atamalarını listeleme
 
-Belirli bir kullanıcıya atanan tüm rolleri listelemek için [Get-AzRoleAssignment'ı](/powershell/module/az.resources/get-azroleassignment)kullanın.
+Belirtilen bir kullanıcıya atanan tüm rolleri listelemek için [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment)kullanın.
 
 ```azurepowershell
 Get-AzRoleAssignment -SignInName <email_or_userprincipalname>
@@ -96,7 +96,7 @@ RoleDefinitionName : BizTalk Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
 ```
 
-Belirli bir kullanıcıya atanan tüm rolleri ve kullanıcının ait olduğu gruplara atanan rolleri listelemek için [Get-AzRoleAssignment'ı](/powershell/module/az.resources/get-azroleassignment)kullanın.
+Belirtilen bir kullanıcıya atanan tüm rolleri ve kullanıcının ait olduğu gruplara atanan rolleri listelemek için [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment)kullanın.
 
 ```azurepowershell
 Get-AzRoleAssignment -SignInName <email_or_userprincipalname> -ExpandPrincipalGroups
@@ -108,7 +108,7 @@ Get-AzRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroups | F
 
 ## <a name="list-role-assignments-for-a-resource-group"></a>Bir kaynak grubunun rol atamalarını listeleme
 
-Kaynak grubu kapsamındaki tüm rol atamalarını listelemek için [Get-AzRoleAssignment'ı](/powershell/module/az.resources/get-azroleassignment)kullanın.
+Bir kaynak grubu kapsamındaki tüm rol atamalarını listelemek için [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment)' yı kullanın.
 
 ```azurepowershell
 Get-AzRoleAssignment -ResourceGroupName <resource_group_name>
@@ -130,9 +130,9 @@ RoleDefinitionName : Virtual Machine Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
 ```
 
-## <a name="list-role-assignments-for-a-management-group"></a>Yönetim grubu için rol atamalarını listele
+## <a name="list-role-assignments-for-a-management-group"></a>Bir yönetim grubu için rol atamalarını listeleyin
 
-Yönetim grubu kapsamındaki tüm rol atamalarını listelemek için [Get-AzRoleAssignment'ı](/powershell/module/az.resources/get-azroleassignment)kullanın. Yönetim grubu kimliğini almak için, Azure portalındaki **Yönetim grupları** bıçağında bulabilir veya [Get-AzManagementGroup'u](/powershell/module/az.resources/get-azmanagementgroup)kullanabilirsiniz.
+Bir yönetim grubu kapsamındaki tüm rol atamalarını listelemek için [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment)' yı kullanın. Yönetim grubu KIMLIĞINI almak için Azure portal **Yönetim grupları** dikey penceresinde bulabilir veya [Get-azmanagementgroup](/powershell/module/az.resources/get-azmanagementgroup)' yi kullanabilirsiniz.
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -142,25 +142,25 @@ Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<gr
 PS C:\> Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/marketing-group
 ```
 
-## <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Klasik hizmet yöneticisi ve yardımcı yöneticiler için rol atamalarını listele
+## <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Klasik hizmet yöneticisi ve ortak yöneticiler için rol atamalarını listeleyin
 
-Klasik abonelik yöneticisi ve yardımcı yöneticilerin rol atamalarını listelemek için [Get-AzRoleAssignment'ı](/powershell/module/az.resources/get-azroleassignment)kullanın.
+Klasik abonelik Yöneticisi ve ortak yöneticiler için rol atamalarını listelemek için [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment)' yı kullanın.
 
 ```azurepowershell
 Get-AzRoleAssignment -IncludeClassicAdministrators
 ```
 
-## <a name="list-role-assignments-for-a-managed-identity"></a>Yönetilen bir kimlik için rol atamalarını listele
+## <a name="list-role-assignments-for-a-managed-identity"></a>Yönetilen bir kimlik için rol atamalarını listeleyin
 
-1. Sistem tarafından atanan veya kullanıcı tarafından atanan yönetilen kimliğin nesne kimliğini alın. 
+1. Sistem tarafından atanan veya Kullanıcı tarafından atanan yönetilen kimliğin nesne KIMLIĞINI alın. 
 
-    Kullanıcı tarafından atanan yönetilen bir kimliğin nesne kimliğini almak için [Get-AzADServicePrincipal'ı](/powershell/module/az.resources/get-azadserviceprincipal)kullanabilirsiniz.
+    Kullanıcı tarafından atanan yönetilen kimliğin nesne KIMLIĞINI almak için [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)komutunu kullanabilirsiniz.
 
     ```azurepowershell
     Get-AzADServicePrincipal -DisplayNameBeginsWith "<name> or <vmname>"
     ```
 
-1. Rol atamalarını listelemek için [Get-AzRoleAssignment'ı](/powershell/module/az.resources/get-azroleassignment)kullanın.
+1. Rol atamalarını listelemek için [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment)' yı kullanın.
 
     ```azurepowershell
     Get-AzRoleAssignment -ObjectId <objectid>
@@ -168,4 +168,4 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure RBAC ve Azure PowerShell'i kullanarak rol atamaları ekleme veya kaldırma](role-assignments-powershell.md)
+- [Azure RBAC ve Azure PowerShell kullanarak rol atamaları ekleme veya kaldırma](role-assignments-powershell.md)
