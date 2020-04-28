@@ -1,40 +1,40 @@
 ---
-title: Miğfer ile Azure Kubernetes Hizmetinde (AKS) geliştirin
-description: Bir kümedeki uygulama kapsayıcılarını paketlemek ve çalıştırmak için AKS ve Azure Kapsayıcı Kayıt Defteri ile Miğfer'i kullanın.
+title: Held ile Azure Kubernetes hizmeti (AKS) üzerinde geliştirme
+description: Uygulama kapsayıcılarını bir kümede paketlemek ve çalıştırmak için AKS ile Held 'yi kullanın ve Azure Container Registry.
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: zarhoads
-ms.openlocfilehash: 77627ab846999ea5ba42fde7a9c49b9cc7559fba
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81873439"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82169577"
 ---
-# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Quickstart: Helm ile Azure Kubernetes Hizmetinde (AKS) geliştirin
+# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Hızlı başlangıç: Held ile Azure Kubernetes hizmeti (AKS) üzerinde geliştirme
 
-[Helm,][helm] Kubernetes uygulamalarının yaşam döngüsünü yüklemenize ve yönetmenize yardımcı olan bir açık kaynak paketleme aracıdır. *APT* ve *Yum*gibi Linux paket yöneticilerine benzer şekilde Helm, önceden yapılandırılmış Kubernetes kaynaklarının paketleri olan Kubernetes grafiklerini yönetmek için kullanılır.
+[Helk][helm] , Kubernetes uygulamalarının yaşam döngüsünü yüklemenize ve yönetmenize yardımcı olan bir açık kaynaklı paketleme aracıdır. *Apt* ve *yum*gibi Linux paket yöneticilerine benzer şekilde, Helm, önceden yapılandırılmış Kubernetes kaynakları paketleri olan Kubernetes grafiklerini yönetmek için kullanılır.
 
-Bu makalede, AKS'de bir uygulamayı paketlemek ve çalıştırmak için Helm'i nasıl kullanacağınızı gösterilmektedir. Helm kullanarak varolan bir uygulamayı yükleme hakkında daha fazla bilgi için, [aks'ta Helm ile varolan uygulamaları yükleyin'e][helm-existing]bakın.
+Bu makalede, AKS üzerinde bir uygulamayı paketlemek ve çalıştırmak için helk 'ın nasıl kullanılacağı gösterilmektedir. Held kullanarak mevcut bir uygulamayı yükleme hakkında daha fazla bilgi için bkz. [AKS 'de Held ile mevcut uygulamaları yükleme][helm-existing].
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 * [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Docker yüklendi ve yapılandırıldı. Docker [Mac][docker-for-mac], [Windows][docker-for-windows] veya [Linux][docker-for-linux] sisteminde Docker'ı kolayca yapılandırmanızı sağlayan paketler sağlar.
-* [Helm v3 yüklü][helm-install].
+* [Held v3 yüklendi][helm-install].
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry oluşturma
-Uygulamanızı AKS kümenizde çalıştırmak için Miğfer'i kullanmak için kapsayıcı resimlerinizi depolamak için bir Azure Kapsayıcı Kayıt Defteri gerekir. Aşağıdaki örnekte, *Temel* SKU ile *MyResourceGroup* kaynak grubunda *MyHelmACR* adlı bir ACR oluşturmak için [az acr oluşturma][az-acr-create] kullanır. Kendi benzersiz kayıt defteri adınızı sağlamanız gerekir. Kaynak defteri adı Azure’da benzersiz olmalı ve 5-50 arası alfasayısal karakter içermelidir. *Temel* SKU, geliştirme amaçlı dağıtımlar için uygun maliyetli, depolama ve aktarım hızı açısından dengeli bir giriş noktasıdır.
+Uygulamanızı AKS kümenizde çalıştırmak için Held 'yi kullanmak için, kapsayıcı görüntülerinizi depolamak için bir Azure Container Registry gerekir. Aşağıdaki örnek, *Myresourcegroup* kaynak grubunda *temel* SKU 'Su Ile *myhelmacr* adlı bir ACR oluşturmak için [az ACR Create][az-acr-create] komutunu kullanır. Kendi benzersiz kayıt defteriniz adını sağlamalısınız. Kaynak defteri adı Azure’da benzersiz olmalı ve 5-50 arası alfasayısal karakter içermelidir. *Temel* SKU, geliştirme amaçlı dağıtımlar için uygun maliyetli, depolama ve aktarım hızı açısından dengeli bir giriş noktasıdır.
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
 az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 ```
 
-Çıktı aşağıdaki örneğe benzerdir. Daha sonraki bir adımda kullanılacağı için ACR'niz için *girişServer* değerine dikkat edin. Aşağıdaki örnekte, *myhelmacr.azurecr.io* *MyHelmACR*için *loginServer* olduğunu.
+Çıktı aşağıdaki örneğe benzerdir. Daha sonraki bir adımda kullanılabileceğinizden, ACR 'niz için *Loginserver* değerini bir yere göz önünde koyun. Aşağıdaki örnekte, *Myhelmacr.azurecr.io* *Myhelmacr*için *loginserver* ' dır.
 
 ```console
 {
@@ -58,25 +58,25 @@ az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 }
 ```
 
-ACR örneğini kullanmak için önce oturum açmanız gerekir. Oturum açmak için [az acr giriş][az-acr-login] komutunu kullanın. Aşağıdaki örnek, *MyHelmACR*adlı bir ACR'de oturum açacaktır.
+ACR örneğini kullanmak için önce oturum açmalısınız. Oturum açmak için [az ACR Login][az-acr-login] komutunu kullanın. Aşağıdaki örnek, *Myhelmacr*adlı bir ACR 'de oturum açacaktır.
 
 ```azurecli
 az acr login --name MyHelmACR
 ```
 
-Komut tamamlandıktan sonra *Oturum Açma Başarılı* iletisini döndürür.
+Komut tamamlandığında bir *oturum açma başarılı* iletisi döndürür.
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Hizmet kümesi oluşturma
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma
 
-Bir AKS kümesi oluşturun. Aşağıdaki komut MyAKS adında bir AKS kümesi oluşturur ve MyHelmACR'ı bağlar.
+AKS kümesi oluşturma. Aşağıdaki komut, MyAKS adlı bir AKS kümesi oluşturur ve MyHelmACR öğesini ekler.
 
 ```azurecli
 az aks create -g MyResourceGroup -n MyAKS --location eastus  --attach-acr MyHelmACR --generate-ssh-keys
 ```
 
-AKS kümenizin kapsayıcı görüntülerini çekmek ve çalıştırmak için ACR'nize erişmesi gerekir. Yukarıdaki komut ayrıca *MyHelmACR ACR'nize* *MyAKS* küme erişimi verir.
+AKS kümenizin, kapsayıcı görüntülerini çekmek ve çalıştırmak için ACR 'nize erişmesi gerekir. Yukarıdaki komut ayrıca *Myhelmacr* ACR 'Nize *myaks* kümesi erişimi verir.
 
-## <a name="connect-to-your-aks-cluster"></a>AKS kümenize bağlanın
+## <a name="connect-to-your-aks-cluster"></a>AKS kümenize bağlanma
 
 Yerel bilgisayarınızdan Kubernetes kümesine bağlanmak için Kubernetes’in komut satırı istemcisini ([kubectl][kubectl]) kullanmanız gerekir.
 
@@ -86,7 +86,7 @@ Azure Cloud Shell'i kullanıyorsanız `kubectl` zaten yüklüdür. [az aks insta
 az aks install-cli
 ```
 
-`kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials][] komutunu kullanın. Aşağıdaki örnek, *MyResourceGroup'ta* *MyAKS* adlı AKS kümesi için kimlik bilgilerini alır:
+`kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials][] komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup*Içinde *myaks* adlı aks kümesi için kimlik bilgilerini alır:
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
@@ -94,16 +94,16 @@ az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
 
-Bu hızlı başlatma, [Azure Dev Spaces örnek deposundan örnek bir Düğüm.js uygulaması][example-nodejs]kullanır. Uygulamayı GitHub'dan klonla ve `dev-spaces/samples/nodejs/getting-started/webfrontend` dizine gidin.
+Bu hızlı başlangıçta [Azure dev Spaces örnek deposundan örnek bir Node. js uygulaması][example-nodejs]kullanılmaktadır. Uygulamayı GitHub 'dan kopyalayın ve `dev-spaces/samples/nodejs/getting-started/webfrontend` dizine gidin.
 
 ```console
 git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/nodejs/getting-started/webfrontend
 ```
 
-## <a name="create-a-dockerfile"></a>Dockerfile Oluşturma
+## <a name="create-a-dockerfile"></a>Dockerfile oluşturma
 
-Aşağıdakileri kullanarak yeni bir *Dockerfile dosyası* oluşturun:
+Aşağıdakileri kullanarak yeni bir *Dockerfile* dosyası oluşturun:
 
 ```dockerfile
 FROM node:latest
@@ -120,15 +120,15 @@ EXPOSE 80
 CMD ["node","server.js"]
 ```
 
-## <a name="build-and-push-the-sample-application-to-the-acr"></a>Örnek uygulamayı Oluşturun ve ACR'ye itin
+## <a name="build-and-push-the-sample-application-to-the-acr"></a>Örnek uygulamayı derleyin ve ACR 'ye gönderin
 
-[Az acr listesi][az-acr-list] komutunu kullanarak ve *giriş Sunucusu*için sorgulama kullanarak giriş sunucusu adresini alın:
+[Az ACR List][az-acr-list] komutunu kullanarak oturum açma sunucusu adresini alın ve *loginserver*için sorgulama yapın:
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Örnek uygulama kapsayıcınızı Oluşturmak, etiketlemek ve ACR'ye itmek için Docker'ı kullanın:
+Örnek uygulama kapsayıcınızı oluşturmak, etiketlemek ve ACR 'ye göndermek için Docker 'ı kullanın:
 
 ```console
 docker build -t webfrontend:latest .
@@ -136,15 +136,15 @@ docker tag webfrontend <acrLoginServer>/webfrontend:v1
 docker push <acrLoginServer>/webfrontend:v1
 ```
 
-## <a name="create-your-helm-chart"></a>Miğfer grafiğinizi oluşturun
+## <a name="create-your-helm-chart"></a>Held grafiğinizi oluşturma
 
-Komutu kullanarak Miğfer grafiğinizi `helm create` oluşturun.
+`helm create` Komutunu kullanarak Held grafiğinizi oluşturun.
 
 ```console
 helm create webfrontend
 ```
 
-*webfrontend/values.yaml*için aşağıdaki güncellemeleri yapın:
+*Web ön ucu/değerleri. YAML*için aşağıdaki güncelleştirmeleri yapın:
 
 * Değiştir `image.repository``<acrLoginServer>/webfrontend`
 * Değiştir `service.type``LoadBalancer`
@@ -168,7 +168,7 @@ service:
 ...
 ```
 
-`appVersion` `v1` *Webfrontend/Chart.yaml'de*güncelleştirin. Örneğin:
+Web `appVersion` ön `v1` ucu */grafik. YAML*'de olarak güncelleştirin. Örneğin:
 
 ```yml
 apiVersion: v2
@@ -179,15 +179,15 @@ name: webfrontend
 appVersion: v1
 ```
 
-## <a name="run-your-helm-chart"></a>Miğfer grafiğinizi çalıştırın
+## <a name="run-your-helm-chart"></a>Held grafiğinizi çalıştırma
 
-Miğfer `helm create` grafiğinizi kullanarak uygulamanızı yüklemek için komutu kullanın.
+Hele `helm install` grafiğinizi kullanarak uygulamanızı yüklemek için komutunu kullanın.
 
 ```console
 helm install webfrontend webfrontend/
 ```
 
-Hizmetin genel bir IP adresini döndürmesi birkaç dakika sürer. İlerlemeyi izlemek için `kubectl get service` *saat* parametresi ile komutu kullanın:
+Hizmetin genel bir IP adresi döndürmesi birkaç dakika sürer. İlerlemeyi izlemek için, `kubectl get service` *Gözcü* parametresiyle komutunu kullanın:
 
 ```console
 $ kubectl get service --watch
@@ -198,25 +198,25 @@ webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
 ```
 
-Örnek uygulamayı görmek `<EXTERNAL-IP>` için bir tarayıcıda uygulamanızın yük dengeleyicisine gidin.
+Örnek uygulamayı görmek `<EXTERNAL-IP>` için kullanarak bir tarayıcıda uygulamanızın yük dengeleyicisine gidin.
 
 ## <a name="delete-the-cluster"></a>Küme silme
 
-Kümeye artık gerek kalmadığında, kaynak grubunu, AKS kümesini, kapsayıcı kayıt defterini, orada depolanan kapsayıcı görüntülerini ve ilgili tüm kaynakları kaldırmak için [az grubu silme][az-group-delete] komutunu kullanın.
+Küme artık gerekli olmadığında, [az Group Delete][az-group-delete] komutunu kullanarak kaynak grubunu, aks kümesini, kapsayıcı kayıt defterini, orada depolanan kapsayıcı görüntülerini ve tüm ilgili kaynakları kaldırın.
 
 ```azurecli-interactive
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Kümeyi sildiğinizde, AKS kümesi tarafından kullanılan Azure Active Directory hizmet sorumlusu kaldırılmaz. Hizmet sorumlusunu kaldırma adımları için bkz. [AKS hizmet sorumlusuyla ilgili önemli noktalar ve silme][sp-delete]. Yönetilen bir kimlik kullandıysanız, kimlik platform tarafından yönetilir ve kaldırılmasını gerektirmez.
+> Kümeyi sildiğinizde, AKS kümesi tarafından kullanılan Azure Active Directory hizmet sorumlusu kaldırılmaz. Hizmet sorumlusunu kaldırma adımları için bkz. [AKS hizmet sorumlusuyla ilgili önemli noktalar ve silme][sp-delete]. Yönetilen bir kimlik kullandıysanız, kimlik platform tarafından yönetilir ve kaldırma gerektirmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Helm kullanma hakkında daha fazla bilgi için Helm belgelerine bakın.
+Held kullanma hakkında daha fazla bilgi için HELI belgelerine bakın.
 
 > [!div class="nextstepaction"]
-> [Miğfer belgeleri][helm-documentation]
+> [Hela belgeleri][helm-documentation]
 
 [az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-create]: /cli/azure/acr#az-acr-create

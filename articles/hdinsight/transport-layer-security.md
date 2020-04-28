@@ -1,30 +1,31 @@
 ---
-title: Azure HDInsight'ta katman güvenliğini taşıma
-description: Aktarım katmanı güvenliği (TLS) ve güvenli soket katmanı (SSL), bilgisayar ağı üzerinden iletişim güvenliği sağlayan şifreleme protokolleridir.
+title: Azure HDInsight 'ta Aktarım Katmanı Güvenliği
+description: Aktarım Katmanı Güvenliği (TLS) ve Güvenli Yuva Katmanı (SSL), bir bilgisayar ağı üzerinden iletişim güvenliği sağlayan şifreleme protokolleridir.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: fbe602581ebcea6385fb9cc9953d8e48272ce429
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: b74ca75b26d4d98c79091683f428eb39e5827665
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81771969"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183509"
 ---
-# <a name="transport-layer-security-in-azure-hdinsight"></a>Azure HDInsight'ta katman güvenliğini taşıma
+# <a name="transport-layer-security-in-azure-hdinsight"></a>Azure HDInsight 'ta Aktarım Katmanı Güvenliği
 
-Genel küme bitiş noktası `https://CLUSTERNAME.azurehdinsight.net` üzerinden HDInsight kümesine bağlantılar küme ağ geçidi düğümleri aracılığıyla yakınsadır. Bu bağlantılar TLS adı verilen bir protokol kullanılarak sabitlenir. TLS'nin ağ geçitlerinde daha yüksek sürümlerinin uygulanması, bu bağlantıların güvenliğini artırır. TLS'nin yeni sürümlerini neden kullanmanız gerektiği hakkında daha fazla bilgi için [TLS 1.0 Sorununu Çözme](https://docs.microsoft.com/security/solving-tls1-problem)bölümüne bakın.
+Ortak küme uç noktası `https://CLUSTERNAME.azurehdinsight.net` aracılığıyla HDInsight kümesine yapılan bağlantılar, küme ağ geçidi düğümleri aracılığıyla proxy olarak kullanılır. Bu bağlantılar, TLS adlı bir protokol kullanılarak güvenli hale getirilir. Ağ geçitlerinde TLS 'in daha yüksek sürümlerini uygulamak, bu bağlantılar için güvenliği iyileştirir. TLS 'nin daha yeni sürümlerini kullanmanız gerektiği hakkında daha fazla bilgi için bkz. [tls 1,0 sorunu çözme](https://docs.microsoft.com/security/solving-tls1-problem).
 
-Varsayılan olarak, Azure HDInsight kümeleri, genel HTTPS uç noktalarında TLS 1.2 bağlantılarını ve geriye dönük uyumluluk için eski sürümleri kabul eder. Azure portalı veya Kaynak Yöneticisi şablonu kullanarak küme oluşturma sırasında ağ geçidi düğümlerinde desteklenen minimum TLS sürümünü denetleyebilirsiniz. Portal için, küme oluşturma sırasında **Güvenlik + ağ** sekmesinden TLS sürümünü seçin. Dağıtım zamanında bir Kaynak Yöneticisi şablonu için **minSupportedTlsVersion** özelliğini kullanın. Örnek bir şablon için [HDInsight minimum TLS 1.2 Quickstart şablonuna](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)bakın. Bu özellik üç değeri destekler: sırasıyla TLS 1.0+, TLS 1.1+ ve TLS 1.2+ karşılık gelen "1.0", "1.1" ve "1.2".
+Varsayılan olarak, Azure HDInsight kümeleri genel HTTPS uç noktalarında TLS 1,2 bağlantılarını ve geriye dönük uyumluluk için eski sürümleri kabul eder. Küme oluşturma sırasında, Azure portal veya Kaynak Yöneticisi şablonunu kullanarak ağ geçidi düğümlerinde desteklenen en düşük TLS sürümünü denetleyebilirsiniz. Portal için, küme oluşturma sırasında **güvenlik + ağ** sekmesinden TLS sürümünü seçin. Dağıtım zamanında bir Kaynak Yöneticisi şablonu için **Minsupportedtlsversion** özelliğini kullanın. Örnek bir şablon için bkz. [HDInsight en düşük TLS 1,2 hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Bu özellik üç değeri destekler: TLS 1.0 +, TLS 1.1 + ve TLS 1.2 + ' ya karşılık gelen "1,0", "1,1" ve "1,2".
 
 > [!IMPORTANT]
-> Azure HDInsight, 30 Haziran 2020'den itibaren tüm HTTPS bağlantıları için TLS 1.2 veya sonraki sürümlerini uygular. Tüm müşterilerinizin TLS 1.2 veya sonraki sürümlerini işlemeye hazır olduğundan emin olmamızı öneririz. Daha fazla bilgi için Azure [HDInsight TLS 1.2 Uygulama](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/)'ya bakın.
+> 30 Haziran 2020 ' den itibaren Azure HDInsight, tüm HTTPS bağlantıları için TLS 1,2 veya sonraki sürümlerini zorlar. Tüm istemcilerinizin TLS 1,2 veya sonraki sürümlerini işlemeye hazırlanmasını öneririz. Daha fazla bilgi için bkz. [Azure HDıNSIGHT TLS 1,2 zorlama](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure HDInsight için sanal ağ planlama](./hdinsight-plan-virtual-network-deployment.md)
-* [Azure HDInsight kümeleri için sanal ağlar oluşturun.](hdinsight-create-virtual-network.md)
-* [Ağ güvenlik grupları.](../virtual-network/security-overview.md)
+* [Azure HDInsight için bir sanal ağ planlayın](./hdinsight-plan-virtual-network-deployment.md)
+* [Azure HDInsight kümeleri için sanal ağlar oluşturun](hdinsight-create-virtual-network.md).
+* [Ağ güvenlik grupları](../virtual-network/security-overview.md).

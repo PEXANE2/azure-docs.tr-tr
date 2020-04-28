@@ -1,49 +1,49 @@
 ---
-title: Azure HDInsight'ta ML Hizmetlerine Giriş
-description: Büyük veri analizi için uygulamalar oluşturmak için HDInsight'ta ML Hizmetlerini nasıl kullanacağınızı öğrenin.
+title: Azure HDInsight 'ta ML hizmetlerine giriş
+description: Büyük veri analizi için uygulamalar oluşturmak üzere HDInsight 'ta ML hizmetlerini nasıl kullanacağınızı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 76fcdb52df88be2c4033140f4bc71b28424d7f38
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 1dd716a279f7a09e7d9152ee34ff5c7bdac201dc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687787"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188251"
 ---
-# <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight'ta ML Hizmetleri Nedir
+# <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight 'ta ML Hizmetleri nedir?
 
-Microsoft Machine Learning Server, Azure'da HDInsight kümeleri oluşturduğunuzda dağıtım seçeneği olarak kullanılabilir. Bu seçeneği sağlayan küme **türüNE ML Hizmetleri**denir. Bu özellik, HDInsight'ta uyarlanabilir, dağıtılmış analiz yöntemlerine isteğe bağlı erişim sağlar.
+Microsoft Machine Learning Server, Azure 'da HDInsight kümeleri oluştururken dağıtım seçeneği olarak kullanılabilir. Bu seçeneği sağlayan küme türü **ml Hizmetleri**olarak adlandırılır. Bu özellik, HDInsight 'ta uyarlanmayan analiz yöntemlerine yönelik isteğe bağlı erişim sağlar.
 
-HDInsight'taki ML Services, neredeyse her boyuttaki veri kümelerinde R tabanlı analitik için en son özellikleri sağlar. Veri kümeleri Azure Blob veya Veri Gölü depolama alanına yüklenebilir. R tabanlı uygulamalarınız 8000+ açık kaynak R paketini kullanabilir. Microsoft'un büyük veri analizi paketi ScaleR'daki rutinler de mevcuttur.
+HDInsight üzerinde ML Hizmetleri, neredeyse her boyuttaki veri kümelerinde R tabanlı analizler için en son özellikleri sağlar. Veri kümeleri, Azure Blob veya Data Lake Storage 'a yüklenebilir. R tabanlı uygulamalarınızın 8000 + açık kaynaklı R paketleri kullanılabilir. ScaleR 'daki yordamlar, Microsoft 'un büyük veri analizi paketi de mevcuttur.
 
-Kenar düğümü kümeye bağlanmak ve R komut dosyalarınızı çalıştırmak için kullanışlı bir yer sağlar. Kenar düğümü, ScaleR paralelleştirilmiş dağıtılmış işlevlerisunucunın çekirdekleri arasında çalıştırmayı sağlar. ScaleR'ın Hadoop Harita Azalt'ını kullanarak kümenin düğümleri üzerinde de çalıştırabilirsiniz. Apache Spark bilgi işlem bağlamlarını da kullanabilirsiniz.
+Edge düğümü, kümeye bağlanmak ve R betiklerinizi çalıştırmak için uygun bir yer sağlar. Edge düğümü, sunucunun çekirdekleri genelinde ScaleR paralelleştirilmiş dağıtılan işlevlerin çalıştırılmasına izin verir. Ayrıca, ScaleR 'nın Hadoop Haritası ' nı kullanarak bunları kümenin düğümleri arasında çalıştırabilirsiniz. Apache Spark işlem bağlamlarını da kullanabilirsiniz.
 
-Çözümlemeden kaynaklanan modeller veya öngörüler şirket içi kullanım için indirilebilir. Azure'un `operationalized` başka bir yerinde de olabilirler. Özellikle, [Azure Machine Learning Studio (klasik)](https://studio.azureml.net)ve web [hizmeti](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)ile .
+Analizden kaynaklanan modeller veya tahminler, şirket içi kullanım için indirilebilirler. Azure 'da `operationalized` başka bir yerde de olabilirler. Özellikle, [Azure Machine Learning Studio (klasik)](https://studio.azureml.net)ve [Web hizmeti](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)aracılığıyla.
 
-## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight'ta ML Hizmetleri ile başlayın
+## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight 'ta ML hizmetlerini kullanmaya başlama
 
-HDInsight'ta bir ML Hizmetleri kümesi oluşturmak için **ML Hizmetleri** küme türünü seçin. ML Hizmetleri küme türü, veri düğümlerinde ML Server ve kenar düğümlerini içerir. Kenar düğümü ML Hizmetleri tabanlı analiziçin bir iniş bölgesi olarak hizmet vermektedir. Bkz. Kümenin nasıl oluşturulacağını öğrenmek için [Azure portalını kullanarak Apache Hadoop kümeleri](../hdinsight-hadoop-create-linux-clusters-portal.md) oluşturun.
+HDInsight 'ta bir ML Hizmetleri kümesi oluşturmak için **ml Hizmetleri** küme türünü seçin. ML Hizmetleri küme türü, veri düğümleri ve kenar düğümüne ML Server içerir. Edge düğümü, ML Hizmetleri tabanlı analizler için bir giriş bölgesi görevi görür. Kümenin nasıl oluşturulacağı hakkında yönergeler için [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) konusuna bakın.
 
-## <a name="why-choose-ml-services-in-hdinsight"></a>NEDEN HDInsight'ta ML Hizmetleri'ni seçmelisiniz?
+## <a name="why-choose-ml-services-in-hdinsight"></a>HDInsight 'ta neden ML Hizmetleri seçmeliyim?
 
-HDInsight'taki ML Hizmetleri aşağıdaki avantajları sağlar:
+HDInsight 'ta ML Hizmetleri aşağıdaki avantajları sağlar:
 
-### <a name="ai-innovation-from-microsoft-and-open-source"></a>Microsoft ve açık kaynak tan ai yenilik
+### <a name="ai-innovation-from-microsoft-and-open-source"></a>Microsoft ve açık kaynaklı AI yeniliği
 
-  ML [Hizmetleri, RevoscaleR,](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler) [revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)ve [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package)gibi yüksek uyarlanabilir, dağıtılmış algoritmalar kümesi içerir. Bu algoritmalar, fiziksel bellek boyutundan daha büyük veri boyutları üzerinde çalışabilir. Ayrıca dağıtılmış bir şekilde çok çeşitli platformlarda çalışırlar. Microsoft'un ürünle birlikte verilen özel [R paketleri](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) ve Python [paketlerinin](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) koleksiyonu hakkında daha fazla bilgi edinin.
+  ML Hizmetleri, geri [alınamaz](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), geri [alınamaz, Iptal edilebilir](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)ve [microsoftml](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package)gibi dağıtılmış algoritmaların bir kümesini içerir. Bu algoritmalar, fiziksel belleğin boyutundan daha büyük olan veri boyutları üzerinde çalışabilir. Bunlar, dağıtılmış bir şekilde çok çeşitli platformlar üzerinde de çalışır. Microsoft 'un özel [R paketleri](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) ve ürünle birlikte bulunan [Python paketlerinin](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) koleksiyonu hakkında daha fazla bilgi edinin.
   
-  ML Services, bu Microsoft yeniliklerini ve açık kaynak topluluğundan (R, Python ve AI araç kitleri) gelen katkıları köprüler. Hepsi tek bir kurumsal sınıf platformun üstünde. Herhangi bir R veya Python açık kaynak makine öğrenme paketi, Microsoft'un herhangi bir özel yeniliğiyle yan yana çalışabilir.
+  ML Hizmetleri, bu Microsoft yeniliklerini ve katkılarını açık kaynaklı topluluktan (R, Python ve AI araç takımları) köprüler. Tümü tek bir kurumsal sınıf platformun üzerine. Tüm R veya Python açık kaynaklı makine öğrenimi paketleri, Microsoft 'un herhangi bir özel yeniliği ile yan yana çalışabilir.
 
-### <a name="simple-secure-and-high-scale-operationalization-and-administration"></a>Basit, güvenli ve yüksek ölçekli operasyonelleştirme ve yönetim
+### <a name="simple-secure-and-high-scale-operationalization-and-administration"></a>Basit, güvenli ve yüksek ölçekli işlemleştirme ve yönetim
 
-  Geleneksel paradigmalara ve ortamlara güvenen işletmeler operasyonelleşme için çok fazla zaman ve çaba harvetmektedir. Bu eylem, çeviri süresi de dahil olmak üzere şişirilmiş maliyetlere ve gecikmelere neden olur: modeller, bunları geçerli ve güncel tutmak için yinelemeler, düzenleyici onay ve izinleri yönetme.
+  Geleneksel paradigmalarına ve ortamlara bağlı olan kuruluşlar, işlem için çok zaman ve çaba harcamaya yatırım sağlar. Bu eylem, aşağıdakiler için çeviri süresi dahil olmak üzere önceden yapılan maliyetlere ve gecikmelere neden olur: modeller, yineleme ve geçerli tutmak için yinelemeler, mevzuat onayı ve izinleri yönetme.
 
-  ML Services kurumsal sınıf [operasyonelleştirme](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)sunmaktadır. Bir makine öğrenme modeli tamamlandıktan sonra, web hizmetleri API'leri oluşturmak için sadece birkaç tıklama alır. Bu [web hizmetleri](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) buluttaki bir sunucu ızgarasında barındırılır ve iş yeri uygulamalarıyla tümleştirilebilir. Elastik bir ızgaraya dağıtma yeteneği, hem toplu hem de gerçek zamanlı puanlama için işletmenizin gereksinimleriyle sorunsuz bir şekilde ölçeklendirmenize olanak tanır. Talimatlar için [HDInsight'ta ML Hizmetlerini Operasyonelleştir'e](r-server-operationalize.md)bakın.
+  ML hizmetleri kurumsal düzeyde [kullanım](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)sağlar. Machine Learning modeli tamamlandıktan sonra, Web Hizmetleri API 'Leri oluşturmak için yalnızca birkaç tıklama sürer. Bu [Web Hizmetleri](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) , buluttaki bir sunucu kılavuzunda barındırılır ve iş kolu uygulamalarıyla tümleştirilebilir. Elastik bir kılavuza dağıtım özelliği, hem Batch hem de gerçek zamanlı Puanlama için işletmenizin ihtiyaçlarına sorunsuz şekilde ölçeklendirmenize olanak tanır. Yönergeler için bkz. [HDInsight ÜZERINDE ml Hizmetleri](r-server-operationalize.md)'ni kullanma.
 
 <!---
 * **Deep ecosystem engagements to deliver customer success with optimal total cost of ownership**
@@ -52,96 +52,96 @@ HDInsight'taki ML Hizmetleri aşağıdaki avantajları sağlar:
 --->
 
 > [!NOTE]  
-> HDInsight'taki ML Hizmetleri küme türü yalnızca HDInsight 3.6'da desteklenir. HDInsight 3.6'nın 31 Aralık 2020'de emekli olması planlanıyor.
+> HDInsight üzerinde ML Hizmetleri küme türü yalnızca HDInsight 3,6 ' de desteklenir. HDInsight 3,6, 31 Aralık 2020 tarihinde devre dışı bırakılacak şekilde zamanlandı.
 
-## <a name="key-features-of-ml-services-on-hdinsight"></a>HDInsight'ta ML Hizmetlerinin temel özellikleri
+## <a name="key-features-of-ml-services-on-hdinsight"></a>HDInsight üzerinde ML Hizmetleri 'nin temel özellikleri
 
-Aşağıdaki özellikler HDInsight'taki ML Services'a dahildir.
+Aşağıdaki özellikler, HDInsight üzerinde ML hizmetlerine eklenmiştir.
 
 | Özellik kategorisi | Açıklama |
 |------------------|-------------|
-| R özellikli | R ile yazılmış çözümler için [R paketleri,](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) R'nin açık kaynak dağıtımı ve komut dosyası yürütme için çalışma zamanı altyapısı. |
-| Python özellikli | Python'da yazılan çözümler için [Python modülleri,](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) Python'un açık kaynak dağılımı ve komut dosyası yürütme için çalışma zamanı altyapısı.
-| [Önceden eğitilmiş modeller](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Görsel analiz ve metin duyarlılığı analizi için, sağladığınız verileri puana hazır. |
-| [Dağıtma ve tüket](r-server-operationalize.md) | `Operationalize`sunucunuz ve çözümleri bir web hizmeti olarak dağıtın. |
-| [Uzaktan yürütme](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | İstemci iş istasyonunuzdan ağınızdaki ML Hizmetleri kümesinde uzak oturumları başlatın. |
+| R-etkin | R 'de yazılmış çözümler için r ve betik yürütme için çalışma zamanı altyapısını içeren r için [r paketleri](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) . |
+| Python etkin | Python 'da yazılmış çözümler için Python [modülleri](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) , Python 'un açık kaynaklı bir dağıtımı ve betik yürütme için çalışma zamanı altyapısı.
+| [Önceden eğitilen modeller](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Görsel analiz ve metin yaklaşımı analizi için sağladığınız verileri puanlamaya hazırlanın. |
+| [Dağıtma ve kullanma](r-server-operationalize.md) | `Operationalize`sunucunuz ve Web hizmeti olarak çözüm dağıtın. |
+| [Uzaktan yürütme](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | İstemci iş istasyonunuzdan ağınızdaki ML Hizmetleri kümesinde uzak oturumlar başlatın. |
 
-## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>HDInsight'ta ML Hizmetleri için veri depolama seçenekleri
+## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>HDInsight üzerinde ML Hizmetleri için veri depolama seçenekleri
 
-HDFS dosya sistemi için varsayılan depolama bir Azure Depolama hesabı veya Azure Veri Gölü Depolama olabilir. Analiz sırasında küme depolamasına yüklenen veriler kalıcı hale getirilir. Veriler küme silindikten sonra bile kullanılabilir. Çeşitli araçlar depolamaya veri aktarımını işleyebilir. Araçlar depolama hesabının portal tabanlı yükleme tesisini ve AzCopy yardımcı programını içerir.
+Bir Azure depolama hesabı veya Azure Data Lake Storage, bu dosya sistemi için varsayılan depolama alanı olabilir. Analiz sırasında küme depolamaya karşıya yüklenen veriler kalıcı hale getirilir. Veriler, küme silindikten sonra bile kullanılabilir. Çeşitli araçlar, depolama alanına veri aktarımını işleyebilir. Araçlar, depolama hesabı ve AzCopy yardımcı programının portal tabanlı karşıya yükleme özelliğini içerir.
 
-Küme oluşturma sırasında ek Blob ve Veri göl depolarına erişimi etkinleştirebilirsiniz. Kullanımdaki birincil depolama seçeneği ile sınırlı değilsiniz.  Birden çok depolama hesabı kullanma hakkında daha fazla bilgi edinmek [için HDInsight makalesinde ML Hizmetleri için Azure Depolama seçeneklerine](./r-server-storage.md) bakın.
+Küme oluşturma sırasında ek blob ve Data Lake mağazalarına erişimi etkinleştirebilirsiniz. Kullanılan birincil depolama seçeneğiyle sınırlı değilsiniz.  Birden çok depolama hesabı kullanma hakkında daha fazla bilgi edinmek için bkz. [HDInsight 'TA ml Hizmetleri Için Azure depolama seçenekleri](./r-server-storage.md) makalesi.
 
-Kenar düğümünde kullanılmak üzere bir depolama seçeneği olarak Azure Dosyaları'nı da kullanabilirsiniz. Azure Files, Azure Depolama'da oluşturulan dosya paylaşımlarının Linux dosya sistemine kaydedilmesini sağlar. Daha fazla bilgi için [HDInsight'ta ML Hizmetleri için Azure Depolama seçeneklerine](r-server-storage.md)bakın.
+Azure dosyalarını, kenar düğümünde kullanmak üzere bir depolama seçeneği olarak da kullanabilirsiniz. Azure dosyaları, Azure depolama 'da oluşturulan dosya paylaşımlarının Linux dosya sistemine olanak sağlar. Daha fazla bilgi için bkz. [HDInsight 'TA ml Hizmetleri Için Azure depolama seçenekleri](r-server-storage.md).
 
-## <a name="access-ml-services-edge-node"></a>Erişim ML Hizmetleri kenar düğümü
+## <a name="access-ml-services-edge-node"></a>ML Hizmetleri kenar düğümüne erişin
 
-Microsoft ML Server'a kenar düğümünde bir tarayıcı veya SSH/PuTTY kullanarak bağlanabilirsiniz. Küme oluşturma sırasında Varsayılan olarak R konsolu yüklenir.  
+Bir tarayıcı veya SSH/PuTTY kullanarak kenar düğümündeki Microsoft ML Server 'a bağlanabilirsiniz. R konsolu, küme oluşturma sırasında varsayılan olarak yüklenir.  
 
-## <a name="develop-and-run-r-scripts"></a>R komut dosyaları geliştirme ve çalıştırma
+## <a name="develop-and-run-r-scripts"></a>R betikleri geliştirme ve çalıştırma
 
-R komut dosyalarınız 8000' den fazla açık kaynak R paketinden herhangi birini kullanabilir. ScaleR kitaplığından paralelleştirilmiş ve dağıtılmış yordamları da kullanabilirsiniz. Komut dosyaları kenar düğümünde çalıştırın r yorumlayıcısı içinde bu düğüm üzerinde çalıştırın. Map Reduce (RxHadoopMR) veya Spark (RxSpark) bilgi işlem bağlamı yla ScaleR işlevlerini arayan adımlar dışında. İşlevler, verilerle ilişkili veri düğümleri arasında dağıtılmış bir şekilde çalıştırılır. Bağlam seçenekleri hakkında daha fazla bilgi [için, HDInsight'ta ML Hizmetleri için Bilgi İşlem bağlamı seçeneklerine](r-server-compute-contexts.md)bakın.
+R betikleriniz 8000 + açık kaynaklı R paketlerinden herhangi birini kullanabilir. Ayrıca, ScaleR kitaplığından paralelleştirilmiş ve dağıtılmış yordamları da kullanabilirsiniz. Edge düğümünde çalıştırılan betikler, söz konusu düğümdeki R yorumlayıcısı içinde çalışır. ScaleR işlevlerini eşleme ile çağıran adımlar dışında (RxHadoopMR) veya Spark (RxSpark) işlem bağlamını azaltır. İşlevler, verilerle ilişkili veri düğümleri arasında dağıtılmış bir biçimde çalışır. Bağlam seçenekleri hakkında daha fazla bilgi için bkz. [HDInsight 'TA ml Hizmetleri Için işlem bağlamı seçenekleri](r-server-compute-contexts.md).
 
-## <a name="operationalize-a-model"></a>`Operationalize`bir model
+## <a name="operationalize-a-model"></a>`Operationalize`Model
 
-Veri modellemeniz tamamlandığında, `operationalize` Azure'dan veya şirket içinde yeni veriler için öngörülerde bulunmak için model. Bu işlem puanlama olarak bilinir. Puanlama HDInsight, Azure Machine Learning veya şirket içinde yapılabilir.
+Veri modellemesi tamamlandığında, `operationalize` Azure 'dan veya şirket içinde yeni veriler için tahmine dayalı hale getirmek üzere bir modeldir. Bu işlem Puanlama olarak bilinir. Puanlama, HDInsight, Azure Machine Learning veya şirket içinde yapılabilir.
 
-### <a name="score-in-hdinsight"></a>HDInsight'ta puan
+### <a name="score-in-hdinsight"></a>HDInsight 'ta puan
 
-HDInsight'ta puan almak için bir R fonksiyonu yazın. İşlev, depolama hesabınıza yüklediğiniz yeni bir veri dosyası için öngörülerde bulunmak için modelinizi çağırır. Ardından, tahminleri depolama hesabına geri kaydedin. Bu yordamı isteğe bağlı olarak kümenizin kenar düğümünde veya zamanlanmış bir iş kullanarak çalıştırabilirsiniz.
+HDInsight 'ta puan vermek için bir R işlevi yazın. İşlevi, depolama hesabınıza yüklediğiniz yeni bir veri dosyası için tahminleri yapmak üzere modelinizi çağırır. Ardından, tahminleri depolama hesabına geri kaydedin. Bu yordamı, kümenizin kenar düğümünde veya zamanlanan bir iş ile isteğe bağlı olarak çalıştırabilirsiniz.
 
-### <a name="score-in-azure-machine-learning-aml"></a>Azure Machine Learning'de Puan (AML)
+### <a name="score-in-azure-machine-learning-aml"></a>Azure Machine Learning puan (AML)
 
-Azure Machine Learning'i kullanarak puan almak için, modelinizi Azure web hizmeti olarak yayımlamak için [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) olarak bilinen açık kaynak Azure Machine Learning R paketini kullanın. Kolaylık sağlamak için, bu paket kenar düğümüne önceden yüklenir. Ardından, web hizmeti için bir kullanıcı arabirimi oluşturmak için Azure Machine Learning'deki tesisleri kullanın ve ardından puanlama için gerektiğinde web hizmetini arayın. Ardından ScaleR model nesnelerini web hizmetinde kullanılmak üzere eşdeğer açık kaynak model nesnelerine dönüştürün. Bu dönüştürme için topluluk tabanlı modeller `as.randomForest()` gibi ScaleR zorlama işlevlerini kullanın.
+Azure Machine Learning kullanarak puan almak için, modelinizi bir Azure Web hizmeti olarak yayımlamak üzere [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) olarak bilinen açık kaynaklı Azure Machine Learning R paketini kullanın. Kolaylık olması için, bu paket kenar düğümüne önceden yüklenmiştir. Daha sonra, Web hizmeti için bir kullanıcı arabirimi oluşturmak üzere Azure Machine Learning ' deki olanakları kullanın ve ardından Web hizmetini Puanlama için gereken şekilde çağırın. Ardından, Web hizmeti ile kullanmak üzere ScaleR model nesnelerini eşdeğer açık kaynaklı Model nesnelerine dönüştürün. Bu dönüştürme için ensesıya tabanlı modeller `as.randomForest()` gibi ScaleR zorlama işlevlerini kullanın.
 
-### <a name="score-on-premises"></a>Şirket içinde puan
+### <a name="score-on-premises"></a>Şirket içi puan
 
-Modelinizi oluşturduktan sonra şirket içinde puan elde etmek için: Modeli R'de seri hale getirmek, indirin, seri hale getirmek ten, sonra yeni veri puanlamak için kullanın. HDInsight'ta Daha önce Score'da açıklanan yaklaşımı kullanarak veya [web hizmetlerini](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)kullanarak yeni veriler elde edebilirsiniz.
+Modelinizi oluşturduktan sonra şirket içinde puan almak için: modeli R 'de serileştirme, indirme, serbest bırakma, seri hale getirme ve ardından yeni veri Puanlama için kullanma. Daha önce HDInsight 'ta veya [Web Hizmetleri](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)'ni kullanarak, daha önce açıklanan yaklaşımı kullanarak yeni verileri puanlandırın.
 
-## <a name="maintain-the-cluster"></a>Kümeyi koruyun
+## <a name="maintain-the-cluster"></a>Kümeyi koruma
 
-### <a name="install-and-maintain-r-packages"></a>R paketlerini yükleme ve bakımını
+### <a name="install-and-maintain-r-packages"></a>R paketlerini yükleyip bakımını yapma
 
-R komut dosyalarınızın çoğu adımları burada çalıştırdığından, kullandığınız R paketlerinin çoğu kenar düğümünde gereklidir. Kenar düğümüne ek R paketleri yüklemek için, `install.packages()` Yöntemi R'de kullanabilirsiniz.
+R betiklerinizin birçok adımı üzerinde çalıştığı için, kullandığınız R paketlerinin çoğu Edge düğümünde gereklidir. Edge düğümüne ek R paketleri yüklemek için, bu `install.packages()` yöntemi R 'de kullanabilirsiniz.
 
-ScaleR kitaplık yordamlarını kullanıyorsanız, genellikle ek R paketlerine ihtiyacınız yoktur. Veri düğümlerinde **rxExec** veya **RxDataStep** yürütme için ek paketler gerekebilir.
+Yalnızca ScaleR kitaplık yordamlarını kullanıyorsanız, genellikle ek R paketlerine gerek kalmaz. Veri düğümlerinde **Rxexec** veya **Rxdatastep** yürütmesi için ek paketlere ihtiyacınız bulunabilir.
 
-Ek paketler, kümeyi oluşturduktan sonra komut dosyası eylemiyle yüklenebilir. Daha fazla bilgi için [HDInsight kümesinde ML Hizmetlerini Yönet'e](r-server-hdinsight-manage.md)bakın.
+Kümeyi oluşturduktan sonra ek paketler bir betik eylemiyle yüklenebilir. Daha fazla bilgi için bkz. [HDInsight KÜMESINDE ml hizmetlerini yönetme](r-server-hdinsight-manage.md).
 
-### <a name="change-apache-hadoop-mapreduce-memory-settings"></a>Apache Hadoop Haritasını DeğiştirBellek ayarlarını azaltın
+### <a name="change-apache-hadoop-mapreduce-memory-settings"></a>MapReduce bellek ayarlarını Apache Hadoop değiştirme
 
-ML Hizmetleri için kullanılabilir bellek, MapReduce işini çalıştırırken değiştirilebilir. Bir kümeyi değiştirmek için kümeniz için Apache Ambari UI'yi kullanın. For Ambari UI instructions, see [Manage HDInsight clusters using the Ambari Web UI](../hdinsight-hadoop-manage-ambari.md).
+ML Hizmetleri için kullanılabilir bellek, bir MapReduce işi çalıştırıldığında değiştirilebilir. Bir kümeyi değiştirmek için kümeniz için Apache ambarı Kullanıcı arabirimini kullanın. Ambarı Kullanıcı arabirimi yönergeleri için bkz. [ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme](../hdinsight-hadoop-manage-ambari.md).
 
-**RxHadoopMR'a**yapılan çağrıda Hadoop anahtarları kullanılarak ML Hizmetleri'ne sunulan bellek değiştirilebilir:
+ML Hizmetleri için kullanılabilir bellek, **RxHadoopMR**çağrısında bulunan Hadoop anahtarları kullanılarak değiştirilebilir:
 
     hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
 
 ### <a name="scale-your-cluster"></a>Kümenizi ölçeklendirin
 
-HDInsight'taki mevcut bir ML Hizmetleri kümesi portal üzerinden yukarı veya aşağı ölçeklendirilebilir. Ölçekleme yaparak, daha büyük işleme görevleri için ek kapasite kazanırsınız. Bir küme boşta yken küçültebilirsiniz. Kümeyi nasıl ölçeklendirin [etüt](../hdinsight-administer-use-portal-linux.md)edin, bkz.
+HDInsight 'ta mevcut bir ML Hizmetleri kümesi, Portal üzerinden yukarı veya aşağı ölçeklendirilebilir. Ölçeği yukarı ölçeklendirerek daha büyük işleme görevleri için ek kapasite elde edersiniz. Boşta kaldığında, bir kümeyi geri ölçeklendirebilirsiniz. Bir kümenin ölçeklendirilmesi hakkında yönergeler için bkz. [HDInsight kümelerini yönetme](../hdinsight-administer-use-portal-linux.md).
 
-### <a name="maintain-the-system"></a>Sistemi koruyun
+### <a name="maintain-the-system"></a>Sistemi koruma
 
-İşletim Sistemi Bakımı, mesai saatleri dışında bir HDInsight kümesinde temel linux VM'lerinde yapılır. Genellikle bakım her Pazartesi ve Perşembe günü 03:30'da (VM'nin yerel saati) yapılır. Güncelleştirmeler, kümenin dörtte birinden fazlasını aynı anda etkilemez.
+İşletim sistemi bakımı, bir HDInsight kümesinde çalışan Linux VM 'lerinde, çalışma saatleri dışında yapılır. Genellikle, bakım her Pazartesi ve Perşembe 3:30 (VM 'nin yerel saati) ile yapılır. Güncelleştirmeler, kümenin bir çeyreğinin her seferinde fazlasını etkilemez.
 
-İşleri çalıştırmak bakım sırasında yavaşlayabilir. Ancak, yine de tamamlanması için çalışması gerekir. Bir küme yeniden oluşturma gerektiren bir felaket hatası oluşmadığı sürece, sahip olduğunuz özel yazılımlar veya yerel veriler bu bakım olayları arasında korunur.
+Çalışan işler bakım sırasında yavaşlayabilir. Ancak, hala tamamlanmayı çalıştırmaları gerekir. Bir küme yeniden oluşturma gerektiren çok zararlı bir hata oluşmadığı takdirde, bu bakım olayları genelinde korunan özel yazılım veya yerel veriler.
 
-## <a name="ide-options-for-ml-services-on-hdinsight"></a>HDInsight'ta ML Hizmetleri için IDE seçenekleri
+## <a name="ide-options-for-ml-services-on-hdinsight"></a>HDInsight üzerinde ML Hizmetleri için IDE seçenekleri
 
-BIR HDInsight kümesinin Linux kenar düğümü, R tabanlı analiz için iniş bölgesidir. HDInsight'ın son sürümleri, kenar düğümünde RStudio Server'ın tarayıcı tabanlı bir IDE'sini sağlar. RStudio Server geliştirme ve yürütme için R konsolundan daha üretkendir.
+HDInsight kümesinin Linux Edge düğümü, R tabanlı analize yönelik giriş bölgesidir. HDInsight 'ın son sürümleri Edge düğümünde RStudio Server 'ın tarayıcı tabanlı bir IDE 'si sağlar. RStudio Server, geliştirme ve yürütme için R konsolundan daha üretken.
 
-Masaüstü IDE, kümeye uzak bir MapReduce veya Spark bilgi işlem bağlamında erişebilir. Seçenekler şunlardır: Visual Studio (RTVS), RStudio ve Walware's Eclipse tabanlı StatET için Microsoft'un [R Tools.](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019)
+Masaüstü IDE, kümeye uzak MapReduce veya Spark işlem bağlamı aracılığıyla erişebilir. Seçenekler şunlardır: Microsoft 'un [Visual Studio için R araçları](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (rtvs), rstudio ve walware 'in tutulma tabanlı stateT.
 
-Komut istemine **R** yazarak kenar düğümündeki R konsoluna erişin. Konsol arabirimini kullanırken, metin düzenleyicisinde R komut dosyası geliştirmek uygundur. Daha sonra komut dosyanızın bölümlerini gerektiği gibi R konsoluna kesip yapıştırın.
+Komut istemine **r** yazarak kenar düğümündeki r konsoluna erişin. Konsol arabirimini kullanırken, bir metin düzenleyicisinde R betiği geliştirmek kullanışlı olur. Ardından, gerekli olduğu gibi betiğinizin bölümlerini R konsoluna kesip yapıştırın.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-ML Services HDInsight kümesiyle ilişkili fiyatlar diğer HDInsight küme türlerine benzer şekilde yapılandırılmıştır. Bunlar, ad, veri ve kenar düğümleri arasında temel VM'lerin boyutlandırılmasına dayanır. Çekirdek saati yükselmesi de. Daha fazla bilgi için [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight/)için bkz.
+Bir ML Hizmetleri HDInsight kümesiyle ilişkili fiyatlar, diğer HDInsight küme türlerine benzer şekilde yapılandırılmıştır. Bunlar, temel alınan VM 'lerin ad, veri ve kenar düğümleri genelinde boyutlandırılmasına dayalıdır. Çekirdek saat ön ek. Daha fazla bilgi için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HDInsight kümelerinde ML Hizmetlerini nasıl kullanacağınız hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+HDInsight kümelerinde ML Hizmetleri kullanma hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-* [RStudio Server'ı kullanarak Azure HDInsight'ta ML Hizmetleri kümesinde Bir R komut dosyası çalıştırma](machine-learning-services-quickstart-job-rstudio.md)
+* [RStudio Server kullanarak Azure HDInsight 'ta bir ML Hizmetleri kümesinde R betiği yürütme](machine-learning-services-quickstart-job-rstudio.md)
 * [HDInsight üzerinde ML Services kümesi için işlem bağlamı seçenekleri](r-server-compute-contexts.md)
-* [HDInsight'ta ML Hizmetleri kümesi için depolama seçenekleri](r-server-storage.md)
+* [HDInsight üzerinde ML Hizmetleri kümesi için depolama seçenekleri](r-server-storage.md)

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: a03ace1553bd845d8a221e458fd47f3d8aa3d611
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: de680e7cb542e7606b80ad46934f4ad7256bfb92
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146532"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186076"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Genel IP adresi oluşturma, değiştirme veya silme
 
@@ -118,4 +118,4 @@ Genel IP adreslerinde görevler gerçekleştirmek için, hesabınız [ağ katıl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [PowerShell](powershell-samples.md) veya [Azure CLI](cli-samples.md) örnek betikleri kullanarak veya Azure [Kaynak Yöneticisi şablonlarını](template-samples.md) kullanarak genel IP adresi oluşturma
-- Genel IP adresleri için [Azure ilkesi](policy-samples.md) oluşturma ve uygulama
+- Genel IP adresleri için [Azure ilke tanımları](policy-samples.md) oluşturma ve atama

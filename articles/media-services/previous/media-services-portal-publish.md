@@ -1,6 +1,6 @@
 ---
-title: Azure portalında içerik yayınlama | Microsoft Dokümanlar
-description: Bu öğretici, içeriğinizi Azure portalında yayınlama adımlarında size yol açar.
+title: Azure portal içerik yayımlama | Microsoft Docs
+description: Bu öğretici, Azure portal içeriğinizi yayımlama adımlarında size yol gösterir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 5f242018abfb15cea1b76cbcaad00942ec25d78d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abdb926825abcac4485cb11b71bdc82597391727
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69015071"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176830"
 ---
-# <a name="publish-content-in-the-azure-portal"></a>Azure portalında içerik yayımlama  
+# <a name="publish-content-in-the-azure-portal"></a>Azure portal içerik yayımlama  
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
-> * [Geri kalanı](media-services-rest-deliver-streaming-content.md)
+> * [REST](media-services-rest-deliver-streaming-content.md)
 > 
 > 
 
 ## <a name="overview"></a>Genel Bakış
 > [!NOTE]
-> Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılar için [Azure ücretsiz deneme sürümüne](https://azure.microsoft.com/pricing/free-trial/)bakın. 
+> Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılar için bkz. [Azure Ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
-Kullanıcınıza içeriğinizin akışını sağlamak veya indirmek için kullanılabilecek bir URL sağlamak üzere, önce bulucu oluşturarak varlığınızı “yayımlamanız” gerekir. Yer bulucular varlık dosyalarına erişim sağlar. Azure Media Services iki tür bulucuyu destekler: 
+Kullanıcınıza içeriğinizin akışını sağlamak veya indirmek için kullanılabilecek bir URL sağlamak üzere, önce bulucu oluşturarak varlığınızı “yayımlamanız” gerekir. Konumlandırıcı varlık dosyalarına erişim sağlar. Azure Media Services iki tür bulucuyu destekler: 
 
-* **Akış (OnDemandOrigin) bulucuları**. Akış bulucuları, uyarlamalı akış için kullanılır. Uyarlanabilir akışa örnek olarak Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming ve HTTP üzerinden Dinamik Uyarlamalı Akış (DASH, MPEG-DASH olarak da adlandırılır) verilebilir. Akış bulucusu oluşturmak için varlığınız bir .ism dosyası içermelidir. Örneğin, http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest.
+* **Akış (OnDemandOrigin) bulucuları**. Akış bulucuları, uyarlamalı akış için kullanılır. Uyarlamalı akışa örnek olarak, Apple HTTP Canlı Akışı (HLS), Microsoft Kesintisiz Akış ve HTTP üzerinden dinamik uyarlamalı akış (MPEG-DASH olarak da adlandırılır) verilebilir. Akış bulucusu oluşturmak için varlığınız bir .ism dosyası içermelidir. Örneğin, `http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest`.
 * **Aşamalı (paylaşılan erişim imzası) bulucuları**. Aşamalı bulucular, videoları aşamalı indirme aracılığıyla sunmak için kullanılır.
 
-HLS akış URL'si oluşturmak için URL'ye *(format=m3u8-aapl)* ekin:
+HLS akış URL 'SI oluşturmak için, URL 'ye *(format = M3U8-AAPL)* ekleyin:
 
     {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
@@ -56,30 +56,30 @@ Paylaşılan erişim imzası URL'si aşağıdaki biçime sahiptir:
 
     {blob container name}/{asset name}/{file name}/{shared access signature}
 
-Daha fazla bilgi için, [sunan içeriğe genel bakışa](media-services-deliver-content-overview.md)bakın.
+Daha fazla bilgi için bkz. [içerik sunma genel bakış](media-services-deliver-content-overview.md).
 
 > [!NOTE]
 > Azure portalında Mart 2015 öncesinde oluşturulmuş olan bulucuların iki yıllık sona erme tarihi vardır.  
 > 
 > 
 
-Bir bulucudaki son kullanma tarihini güncelleştirmek için [REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) veya [.NET API'yi](https://go.microsoft.com/fwlink/?LinkID=533259)kullanabiliriz. 
+Bir bulucunun sona erme tarihini güncelleştirmek için, kullanımı bir [REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) veya [.NET API 'si](https://go.microsoft.com/fwlink/?LinkID=533259)kullanabilir. 
 
 > [!NOTE]
 > Paylaşılan erişim imzası bulucunun sona erme tarihini güncelleştirdiğinizde URL değişir.
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>Bir varlık yayımlamak için portal kullanmak üzere
 1. [Azure portalında](https://portal.azure.com/) Azure Media Services hesabınızı seçin.
-2. **Ayarlar** > **Varlıkları'nı**seçin. Yayımlamak istediğiniz varlığı seçin.
+2. **Ayar** > **varlıkları**' nı seçin. Yayımlamak istediğiniz varlığı seçin.
 3. **Yayımla** düğmesini seçin.
 4. Bulucu türünü seçin.
-5. **Ekle'yi**seçin.
+5. **Add (Ekle)** seçeneğini belirleyin.
    
     ![Videoyu yayımlama](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 
 URL **Yayımlanan URL’ler** listesine eklenir.
 
-## <a name="play-content-in-the-portal"></a>Portalda içerik oynatma
+## <a name="play-content-in-the-portal"></a>Portalda içerik yürütme
 Videonuzu Azure portalında bir içerik oynatıcıda test edebilirsiniz.
 
 Videoyu seçin ve ardından **Oynat** düğmesini seçin.
@@ -90,7 +90,7 @@ Bazı dikkate alınması gereken noktalar vardır:
 
 * Videonun yayımlandığından emin olun.
 * Azure portal medya oynatıcı varsayılan akış uç noktasından oynatılır. Varsayılan olmayan bir akış uç noktasından oynatmak istiyorsanız, URL'yi seçip kopyalayın ve başka bir oynatıcıya yapıştırın. Örneğin [Azure Media Player](https://aka.ms/azuremediaplayer) üzerinde videonuzu test edebilirsiniz.
-* Akış yaptığınız akış bitiş noktası çalışıyor olmalıdır.  
+* Akış olduğunuz akış uç noktasının çalışıyor olması gerekir.  
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

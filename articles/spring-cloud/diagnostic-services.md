@@ -1,144 +1,144 @@
 ---
-title: Azure Bulutu'ndaki günlükleri ve ölçümleri analiz edin | Microsoft Dokümanlar
-description: Azure Bahar Bulutu'nda tanılama verilerini nasıl analiz edebilirsiniz öğrenin
+title: Azure yay bulutu 'nda günlükleri ve ölçümleri çözümleme | Microsoft Docs
+description: Azure Spring Cloud 'da tanılama verilerini çözümlemeyi öğrenin
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: adbcf28cfbbe2ea3b7cc9c7fd0d1c76246938344
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 83b223ab2195516492d55ac85be6e7db0dffbd98
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81870401"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176796"
 ---
-# <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Günlükleri ve ölçümleri tanılama ayarlarıyla analiz edin
+# <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Tanılama ayarlarıyla günlükleri ve ölçümleri çözümleme
 
-Azure Bahar Bulutu'nun tanılama işlevini kullanarak günlükleri ve ölçümleri aşağıdaki hizmetlerden herhangi biriyle analiz edebilirsiniz:
+Azure Spring Cloud 'ın tanılama işlevini kullanarak, aşağıdaki hizmetlerden herhangi biriyle günlükleri ve ölçümleri çözümleyebilirsiniz:
 
-* Verilerin Azure Depolama'ya yazıldığı Azure Günlük Analizi'ni kullanın. Günlükleri Log Analytics'e dışa aktarırken bir gecikme vardır.
-* Denetim veya el ile denetim için günlükleri bir depolama hesabına kaydedin. Bekletme süresini (gün içinde) belirtebilirsiniz.
-* Üçüncü taraf bir hizmet veya özel analiz çözümü tarafından yutulmak için etkinlik merkezinize günlük akışı akışı.
+* Verilerin Azure Storage 'a yazıldığı Azure Log Analytics kullanın. Log Analytics Günlükler dışarı aktarılırken bir gecikme olur.
+* Denetim veya el ile inceleme için günlükleri bir depolama hesabına kaydedin. Saklama süresini (gün cinsinden) belirtebilirsiniz.
+* Bir üçüncü taraf hizmeti veya özel analiz çözümünün alımı için Olay Hub 'ınıza Günlükler akışını yapın.
 
-İzlemek istediğiniz günlük kategorisini ve metrik kategorisini seçin.
+İzlemek istediğiniz günlük kategorisini ve ölçüm kategorisini seçin.
 
 > [!TIP]
-> Sadece günlüklerinizi akış istiyorum? Bu [Azure CLI komutuna](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)göz atın!
+> Günlüklerinizi akışa almak mı istiyorsunuz? Bu [Azure CLI komutuna](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)göz atın!
 
 ## <a name="logs"></a>Günlükler
 
 |Günlük | Açıklama |
 |----|----|
-| **Uygulama Konsolu** | Tüm müşteri uygulamalarının konsol günlüğü. | 
-| **SystemLogs** | Şu anda, bu kategoride yalnızca [Spring Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) günlükleri. |
+| **ApplicationConsole** | Tüm müşteri uygulamalarının konsol günlüğü. |
+| **Sistem günlükleri** | Şu anda, bu kategoride yalnızca [Spring Cloud config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) kaydedilir. |
 
 ## <a name="metrics"></a>Ölçümler
 
-Ölçümlerin tam listesi için [Bkz. Bahar Bulut Uyrcusu Ölçümleri.](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options)
+Ölçümlerin tüm listesi için bkz. [yay bulut ölçümleri](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options).
 
-Başlamak için, bu hizmetlerden birinin verileri almasını etkinleştirin. Günlük Analitiği'ni yapılandırma hakkında bilgi edinmek için Azure [Monitor'da Log Analytics ile başlayın](../azure-monitor/log-query/get-started-portal.md)bölümüne bakın. 
+Başlamak için, bu hizmetlerden birini verileri alacak şekilde etkinleştirin. Log Analytics yapılandırma hakkında bilgi edinmek için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/get-started-portal.md).
 
 ## <a name="configure-diagnostics-settings"></a>Tanılama ayarlarını yapılandırma
 
-1. Azure portalında Azure İlkbahar Bulutu örneğinize gidin.
-1. **Tanılama ayarları** seçeneğini seçin ve ardından **Tanılama Ayarını Ekle'yi**seçin.
-1. Ayar için bir ad girin ve ardından günlükleri göndermek istediğiniz yeri seçin. Aşağıdaki üç seçeneğin herhangi bir birleşimini seçebilirsiniz:
-    * **Depolama hesabına arşivleme**
-    * **Olay merkezine akış**
+1. Azure portal Azure Spring Cloud örneğinize gidin.
+1. **Tanılama ayarları** seçeneğini belirleyin ve ardından **Tanılama ayarı Ekle**' yi seçin.
+1. Ayar için bir ad girin ve ardından günlükleri nereye göndermek istediğinizi seçin. Aşağıdaki üç seçenekten herhangi bir birleşimini seçebilirsiniz:
+    * **Bir depolama hesabına Arşivle**
+    * **Bir olay hub 'ına akış**
     * **Log Analytics’e gönderme**
 
-1. İzlemek istediğiniz günlük kategorisini ve metrik kategorisini seçin ve ardından bekletme süresini (gün içinde) belirtin. Bekletme süresi yalnızca depolama hesabı için geçerlidir.
+1. İzlemek istediğiniz günlük kategorisini ve ölçüm kategorisini seçin ve ardından saklama süresini (gün cinsinden) belirtin. Saklama süresi yalnızca depolama hesabı için geçerlidir.
 1. **Kaydet**’i seçin.
 
 > [!NOTE]
-> Günlüklerin veya ölçümlerin yayıldığında ve depolama hesabınızda, etkinlik merkezinizde veya Log Analytics'te göründükleri zaman arasında 15 dakikaya kadar bir boşluk olabilir.
+> 1. Günlüklerin veya ölçümlerin ne zaman yayıldığını ve depolama hesabınızda, Olay Hub 'ında veya Log Analytics göründükleri zaman arasında 15 dakikalık bir boşluk olabilir.
+> 1. Azure yay bulutu örneği silinmişse veya taşınırsa, işlem, **Tanılama ayarları** kaynaklarıyla basamaklanmaz. **Tanılama ayarlarının** kaynakları, üst öğesiyle (Azure yay bulutu örneği) karşı işlem öncesinde el ile silinmelidir. Aksi takdirde, silinen tek kaynak KIMLIĞIYLE yeni bir Azure yay bulutu örneği sağlandıysa veya Azure Spring Cloud Instance geri taşınırsa, önceki **Tanılama ayarları** kaynakları genişlemeye devam eder.
 
 ## <a name="view-the-logs-and-metrics"></a>Günlükleri ve ölçümleri görüntüleme
-Aşağıdaki başlıklar altında açıklandığı gibi günlükleri ve ölçümleri görüntülemek için çeşitli yöntemler vardır.
+Günlükleri ve ölçümleri aşağıdaki başlıklar altında açıklandığı gibi görüntülemek için çeşitli yöntemler vardır.
 
-### <a name="use-logs-blade"></a>Günlükleri blade kullanın
+### <a name="use-the-logs-blade"></a>Günlükler dikey penceresini kullanma
 
-1. Azure portalında Azure İlkbahar Bulutu örneğinize gidin.
-1. **Günlük Arama** bölmesini açmak için **Günlükler'i**seçin.
-1. **Günlük** arama kutusunda
-   * Günlükleri görüntülemek için, şu gibi basit bir sorgu girin:
+1. Azure portal Azure Spring Cloud örneğinize gidin.
+1. **Günlük araması** bölmesini açmak için **Günlükler**' i seçin.
+1. **Tablolar** arama kutusunda
+   * Günlükleri görüntülemek için, şöyle bir basit sorgu girin:
 
     ```sql
     AppPlatformLogsforSpring
     | limit 50
     ```
-   * Ölçümleri görüntülemek için, şu gibi basit bir sorgu girin:
+   * Ölçümleri görüntülemek için, şöyle bir basit sorgu girin:
 
     ```sql
     AzureMetrics
     | limit 50
     ```
-1. Arama sonucunu görüntülemek için **Çalıştır'ı**seçin.
+1. Arama sonucunu görüntülemek için **Çalıştır**' ı seçin.
 
 ### <a name="use-log-analytics"></a>Log Analytics kullanma
 
-1. Azure portalında, sol bölmede **Günlük Analizi'ni**seçin.
+1. Azure portal sol bölmedeki **Log Analytics**' ı seçin.
 1. Tanılama ayarlarınızı eklediğinizde seçtiğiniz Log Analytics çalışma alanını seçin.
-1. **Günlük Arama** bölmesini açmak için **Günlükler'i**seçin.
-1. **Günlük** arama kutusunda,
-   * günlükleri görüntülemek için, gibi basit bir sorgu girin:
+1. **Günlük araması** bölmesini açmak için **Günlükler**' i seçin.
+1. **Tablolar** arama kutusunda,
+   * günlükleri görüntülemek için, şöyle bir basit sorgu girin:
 
     ```sql
     AppPlatformLogsforSpring
     | limit 50
     ```
-    * ölçümleri görüntülemek için, gibi basit bir sorgu girin:
+    * ölçümleri görüntülemek için, şöyle bir basit sorgu girin:
 
     ```sql
     AzureMetrics
     | limit 50
     ```
 
-1. Arama sonucunu görüntülemek için **Çalıştır'ı**seçin.
-1. Bir filtre koşulu ayarlayarak belirli bir uygulama nın veya örneğin günlüklerinde arama yapabilirsiniz:
+1. Arama sonucunu görüntülemek için **Çalıştır**' ı seçin.
+1. Filtre koşulunu ayarlayarak belirli bir uygulamanın veya örneğin günlüklerinde arama yapabilirsiniz:
 
     ```sql
     AppPlatformLogsforSpring
     | where ServiceName == "YourServiceName" and AppName == "YourAppName" and InstanceName == "YourInstanceName"
     | limit 50
     ```
-> [!NOTE]  
-> `==`büyük/küçük harf `=~` duyarlıdır, ancak değildir.
+> [!NOTE]
+> `==`büyük/küçük harfe duyarlıdır `=~` , ancak değildir.
 
-Log Analytics'te kullanılan sorgu dili hakkında daha fazla bilgi edinmek için [Azure Monitor günlük sorgularına](../azure-monitor/log-query/query-language.md)bakın.
+Log Analytics 'de kullanılan sorgu dili hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlük sorguları](../azure-monitor/log-query/query-language.md).
 
-### <a name="use-your-storage-account"></a>Depolama hesabınızı kullanma 
+### <a name="use-your-storage-account"></a>Depolama hesabınızı kullanın
 
-1. Azure portalında, sol bölmede **Depolama hesapları'nı**seçin.
-
+1. Azure portal, sol gezinti panelinde veya arama kutusunda **depolama hesapları** bulun.
 1. Tanılama ayarlarınızı eklediğinizde seçtiğiniz depolama hesabını seçin.
-1. **Blob Container** bölmesini açmak için **Blobs'u**seçin.
-1. Uygulama günlüklerini incelemek **için, insights-logs-applicationconsole**adı verilen bir kapsayıcı arayın.
-1. Uygulama ölçümlerini gözden geçirmek **için, öngörüler-ölçümler-pt1m**adı verilen bir kapsayıcı arayın.
+1. **BLOB kapsayıcısı** bölmesini açmak için **Bloblar**' ı seçin.
+1. Uygulama günlüklerini gözden geçirmek için, **Öngörüler-logs-applicationconsole**adlı bir kapsayıcı arayın.
+1. Uygulama ölçümlerini gözden geçirmek için, **Öngörüler-ölçümler-pt1m**adlı bir kapsayıcı arayın.
 
-Tanılama bilgilerini bir depolama hesabına gönderme hakkında daha fazla bilgi edinmek için Azure [Depolama'da depolama ve tanılama verilerini görüntüleyin.](../storage/common/storage-introduction.md)
+Bir depolama hesabına tanılama bilgileri gönderme hakkında daha fazla bilgi edinmek için bkz. [Azure depolama 'da tanılama verilerini depolama ve görüntüleme](../storage/common/storage-introduction.md).
 
-### <a name="use-your-event-hub"></a>Etkinlik merkezinizi kullanma
+### <a name="use-your-event-hub"></a>Olay Hub 'ınızı kullanın
 
-1. Azure portalında, sol bölmede **Olay Hub'ları'nı**seçin.
+1. Azure portal sol gezinti panelinde veya arama kutusunda **Event Hubs** bulun.
 
-1. Tanılama ayarlarınızı eklediğinizde seçtiğiniz etkinlik merkezini arayın ve seçin.
-1. **Olay Hub Listesi** bölmesini açmak için Olay **Hub'ları'nı**seçin.
-1. Uygulama günlüklerini incelemek **için, insights-logs-applicationconsole**adlı bir olay hub'ı arayın.
-1. Uygulama ölçümlerini gözden geçirmek **için, öngörüler-ölçümler-pt1m**adı verilen bir olay hub'ı arayın.
+1. Tanılama ayarlarınızı eklediğinizde seçtiğiniz Olay Hub 'ını arayıp seçin.
+1. **Olay Hub 'ı liste** bölmesini açmak için **Event Hubs**' yi seçin.
+1. Uygulama günlüklerini gözden geçirmek için, **Öngörüler-logs-applicationconsole**adlı bir olay hub 'ı arayın.
+1. Uygulama ölçümlerini gözden geçirmek için, **Öngörüler-ölçümler-pt1m**adlı bir olay hub 'ı arayın.
 
-Bir olay hub'ına tanılama bilgileri gönderme hakkında daha fazla bilgi edinmek [için, Olay Hub'larını kullanarak Azure Tanılama verilerini sıcak yolda akışı](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs)konusuna bakın.
+Tanılama bilgilerini bir olay hub 'ına gönderme hakkında daha fazla bilgi için, bkz. [Event Hubs kullanarak etkin yoldaki Azure Tanılama verileri akışı](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs).
 
-## <a name="analyze-the-logs"></a>Günlükleri analiz edin
+## <a name="analyze-the-logs"></a>Günlükleri çözümleyin
 
-Azure Log Analytics, analiz için günlüklerinizi sorgulayabilmeniz için bir Kusto motoruyla çalışıyor. Kusto'yu kullanarak günlükleri sorgulamaya hızlı bir giriş için [Log Analytics öğreticisini](../azure-monitor/log-query/get-started-portal.md)inceleyin.
+Azure Log Analytics, bir kusto altyapısıyla çalışıyor, böylece günlüklerinizi analiz için sorgulayabilirsiniz. Kusto kullanarak günlükleri sorgulamaya hızlı bir giriş için [Log Analytics öğreticisini](../azure-monitor/log-query/get-started-portal.md)gözden geçirin.
 
-Uygulama günlükleri, uygulamanızın durumu, performansı ve daha fazlası hakkında kritik bilgiler ve ayrıntılı günlükler sağlar. Sonraki bölümlerde, uygulamanızın geçerli ve geçmiş durumlarını anlamanıza yardımcı olacak bazı basit sorgular verilmiştir.
+Uygulama günlükleri, uygulamanızın sistem durumu, performansı ve daha fazlası hakkında önemli bilgiler ve ayrıntılı Günlükler sağlar. Sonraki bölümlerde, uygulamanızın geçerli ve geçmiş durumlarını anlamanıza yardımcı olacak bazı basit sorgular bulunur.
 
-### <a name="show-application-logs-from-azure-spring-cloud"></a>Azure Bahar Bulutu'ndan uygulama günlüklerini göster
+### <a name="show-application-logs-from-azure-spring-cloud"></a>Azure Spring Cloud 'dan uygulama günlüklerini göster
 
-Azure Bahar Bulutu'ndan gelen ve önce gösterilen en son günlüklerle zamana göre sıralanmış uygulama günlüklerinin listesini gözden geçirmek için aşağıdaki sorguyu çalıştırın:
+Azure Spring Cloud 'dan uygulama günlüklerinin listesini gözden geçirmek için ilk olarak gösterilen en son günlüklere göre sıralanmış olarak sıralanmış aşağıdaki sorguyu çalıştırın:
 
 ```sql
 AppPlatformLogsforSpring
@@ -146,9 +146,9 @@ AppPlatformLogsforSpring
 | sort by TimeGenerated desc
 ```
 
-### <a name="show-logs-entries-containing-errors-or-exceptions"></a>Hata veya özel durum içeren günlükgirişlerini göster
+### <a name="show-logs-entries-containing-errors-or-exceptions"></a>Hata veya özel durum içeren günlük girişlerini göster
 
-Bir hata veya özel durum söz sıralanmamış günlük girişleri gözden geçirmek için aşağıdaki sorguyu çalıştırın:
+Bir hata veya özel durumdan bahseden sıralanmamış günlük girişlerini gözden geçirmek için aşağıdaki sorguyu çalıştırın:
 
 ```sql
 AppPlatformLogsforSpring
@@ -156,11 +156,11 @@ AppPlatformLogsforSpring
 | where Log contains "error" or Log contains "exception"
 ```
 
-Hataları bulmak veya belirli hata kodlarını veya özel durumları bulmak için sorgu terimlerini değiştirmek için bu sorguyu kullanın. 
+Hataları bulmak için bu sorguyu kullanın veya belirli hata kodlarını veya özel durumları bulmak için sorgu terimlerini değiştirin.
 
-### <a name="show-the-number-of-errors-and-exceptions-reported-by-your-application-over-the-last-hour"></a>Son saat içinde uygulamanız tarafından bildirilen hata ve özel durum sayısını göster
+### <a name="show-the-number-of-errors-and-exceptions-reported-by-your-application-over-the-last-hour"></a>Son bir saat içinde uygulamanız tarafından bildirilen hata ve özel durum sayısını göster
 
-Son bir saat içinde uygulamanız tarafından günlüğe kaydedilen hata ve özel durum sayısını görüntüleyen bir pasta grafiği oluşturmak için aşağıdaki sorguyu çalıştırın:
+Son bir saat içinde uygulamanız tarafından günlüğe kaydedilen hata ve özel durumların sayısını görüntüleyen bir pasta grafiği oluşturmak için aşağıdaki sorguyu çalıştırın:
 
 ```sql
 AppPlatformLogsforSpring
@@ -173,4 +173,4 @@ AppPlatformLogsforSpring
 
 ### <a name="learn-more-about-querying-application-logs"></a>Uygulama günlüklerini sorgulama hakkında daha fazla bilgi edinin
 
-Azure Monitor, Log Analytics'i kullanarak uygulama günlüklerini sorgulamak için kapsamlı destek sağlar. Bu hizmet hakkında daha fazla bilgi edinmek için Azure [Monitor'daki günlük sorgularına başlayın' a](../azure-monitor/log-query/get-started-queries.md)bakın. Uygulama günlüklerinizi analiz etmek için sorgu oluşturma hakkında daha fazla bilgi için Azure [Monitor'daki günlük sorgularına genel bakış](../azure-monitor/log-query/log-query-overview.md)bölümüne bakın.
+Azure Izleyici, Log Analytics kullanarak uygulama günlüklerini sorgulamak için kapsamlı destek sağlar. Bu hizmet hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de günlük sorgularıyla çalışmaya başlama](../azure-monitor/log-query/get-started-queries.md). Uygulama günlüklerinizi çözümlemek üzere sorgu oluşturma hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../azure-monitor/log-query/log-query-overview.md).

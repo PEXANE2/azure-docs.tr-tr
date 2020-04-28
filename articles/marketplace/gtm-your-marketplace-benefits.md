@@ -5,20 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 2249dde8578dcd5cc3444aeef6b51c8afb2f31fa
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: abc71d644b44b432d0ebf2a8c849554fe8db0256
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160605"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190342"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari Market avantajlarınız
 
 Market 'te yayımladınız, şimdi teklifinizin başarılı olduğunu görmek istiyorsunuz. Size satış, teknik ve pazarlama avantajları sunuyoruz; teklifinizin büyümesini hızlandırmanız gerekir.
 
-Teklifinizle canlı olduğunuzda, Market Remaronları ekibi, uygun avantajlarınız üzerinde sizinle çalışmaya başlamak için kullanıma sunulacaktır. Market 'in sağladığı avantajlar, ticari Market katılımınız ve satışlarınıza göre tahakkuk eder. Daha fazla ne kadar çok geri döndüğünüzde, geri dönebilirsiniz.
+Teklifiniz Azure Market veya AppSource 'ta canlı olduktan sonra uygun pazarlama, satış ve teknik avantajlarınıza erişmek ve bunları etkinleştirmek için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace) ' ne gidin. Market 'in sağladığı avantajlar, ticari Market katılımınız ve satışlarınıza göre tahakkuk eder. Daha fazla ne kadar çok geri döndüğünüzde, geri dönebilirsiniz.
 
 ## <a name="marketplace-rewards"></a>Market 'teki ödüller
 
@@ -41,7 +41,19 @@ Tüm program avantajlarının ayrıntılı açıklamaları [Market 'Teki ödüll
 Kullanmaya başlamak için adımlarınız kolaydır:
 
 1. Microsoft AppSource veya Azure Marketi 'nde teklif yayımlayın.
-2. Ekip, Market teklifi başına "sahip" veya "birincil iletişim" na ulaşır. Düzenli olarak kontrol ettiğiniz bir bireyi ya da diğer adı girmek en iyi uygulamadır: info@company.com genellikle kayıp gibi diğer adlara gönderilen mesajlar.
+2. Avantajlarınızın listesini görmek için Iş Ortağı Merkezi [panosuna](https://partner.microsoft.com/dashboard/directory)gidin, Market 'teki **Satış ve pazarlama avantajları** sekmesini seçin.
+3. Satış ve pazarlama avantajını etkinleştirmek için önce bir şirket pazarlama kişisi atamanız gerekir. Bu kişi, Market depolarınızla ilgili olarak izleme iletişimleri alacak.
+4. Pazarlama iletişim bilgilerinizi eklemek veya güncelleştirmek için Market depoları sayfasında satış ve pazarlama avantajları sekmesinin en üstüne gidin ve **Ekle, Güncelleştir veya Değiştir**' i seçin.  Sonra, şunları yapın:
+
+    1. Listeden bir kullanıcı seçin. Atamak istediğiniz Kullanıcı listede yoksa, **Hesap ayarlarına**yeni kullanıcı ekleyebilirsiniz.
+    1. Kullanıcı için şirketinizin Iş Ortağı Merkezi hesabıyla ilişkili e-posta adresinden farklı bir e-posta adresi sağlayın. Market 'nizin, sizin belirlediğiniz pazarlama Kişinizin e-posta adresine yönelik avantajlarından faydalanmaya yönelik yönergeler göndereceğiz.
+    1. Bu pazarlama kişisi için ilgili kişi telefonunu ve tercih edilen dili sağlayın. Bu bilgileri girmeyi tamamladıktan sonra **Kullanıcı ata**' yı seçin.
+    1. Pazarlama ilgili kişisini güncelleştirdikten sonra, kullanmaya başlamak istediğiniz avantaj için **Etkinleştir** ' i seçin. Bir avantajı etkinleştirdikten sonra, pazarlama kişinizdeki bir hafta içindeki Reofüme ekibinin bir üyesi tarafından iletişim kurulacaktır.
+
+**Teknik avantajlar**
+
+1. Bulut ve karma çözümlerinizin ön satışları, tasarımı, dağıtımı ve uygulama geliştirme aşamaları sırasında teknik yardım istemek için teknik avantajınızı kullanabilirsiniz. Yardım istemek için istek formunu doldurup **Isteği gönder**' i seçin.
+2. Azure Sponsorluk avantajlarının kullanımı, bu avantajlardan yararlanılması sırasında bir e-posta aracılığıyla paylaşılır.
 
 >[!Note]
 >Teklifiniz dört haftadan uzun bir süredir yaşlanmışsa ve bir ileti almadıysanız, Iş Ortağı Merkezi ' ne bakarak, söz konusu teklifin sahibi olan kuruluşunuz dahilinde lütfen kontrol edin. İletişim ve sonraki adımlara sahip olmaları gerekir. <br> <br> Sahibi belirleyemezse veya sahibi şirketiniz ile ayrıldıysa [Yardım ve destek](https://partner.microsoft.com/support/v2/?stage=1)' e bir destek bileti yükseltebilirsiniz.

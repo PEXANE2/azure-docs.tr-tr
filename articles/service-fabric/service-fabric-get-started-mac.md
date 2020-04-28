@@ -1,16 +1,16 @@
 ---
-title: macOS'ta geliştirme ortamınızı ayarlama
-description: Çalışma zamanını, SDK'yı ve araçları yükleyip yerel bir geliştirme kümesi oluşturun. Bu kurulumu tamamladıktan sonra macOS'ta uygulama oluşturmaya hazır olacaksınız.
+title: MacOS 'ta geliştirme ortamınızı ayarlama
+description: Çalışma zamanını, SDK'yı ve araçları yükleyip yerel bir geliştirme kümesi oluşturun. Bu kurulumu tamamladıktan sonra, macOS 'ta uygulama oluşturmaya hazırlanın.
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: e278bcedc48226a59f258ad7d7064fa224737496
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: c7e2d556c4fb8bebc0b75bdf9d4c209c27f86971
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81308976"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193403"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X’te geliştirme ortamınızı ayarlama
 > [!div class="op_single_selector"]
@@ -44,11 +44,11 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    Bu ayarları doğrudan Docker yükleme yolunuzdaki daemon.json dosyasında güncelleştirebilirsiniz. Docker'daki daemon yapılandırma ayarlarını doğrudan değiştirebilirsiniz. **Docker simgesi**’ni ve ardından **Tercihler** > **Daemon** > **Gelişmiş**’i seçin.
+    Bu ayarları doğrudan Docker yükleme yolunuzdaki daemon.json dosyasında güncelleştirebilirsiniz. Docker 'da Daemon yapılandırma ayarlarını doğrudan değiştirebilirsiniz. **Docker simgesi**’ni ve ardından **Tercihler** > **Daemon** > **Gelişmiş**’i seçin.
     
     >[!NOTE]
     >
-    >Daemon.json dosyasının konumu makineden makineye değişebildiği için daemon'un doğrudan Docker'da değiştirilmesi önerilir. Örneğin, ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
+    >Daemon. json dosyasının konumu makineden makineye değişebildiğinden, arka plan programının doğrudan Docker 'da değiştirilmesi önerilir. Örneğin, ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
     >
 
     >[!TIP]
@@ -101,7 +101,7 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. Kümenin başlaması biraz zaman alacaktır. Çalışırken, aşağıdaki komutu kullanarak günlükleri görüntüleyebilir veya kümeler durumunu [http://localhost:19080](http://localhost:19080)görüntülemek için panoya atlayabilirsiniz:
+5. Kümenin başlaması biraz zaman alır. Çalışırken, aşağıdaki komutu kullanarak günlükleri görüntüleyebilir veya kümelerin sistem durumunu `http://localhost:19080`görüntülemek için panoya atlayabilirsiniz:
 
     ```bash 
     docker logs sftestcluster
@@ -109,7 +109,7 @@ Yerel bir Docker kapsayıcısı ayarlamak ve üzerinde bir Service Fabric kümes
 
 
 
-6. Kapsayıcıyı durdurmak ve temizlemek için aşağıdaki komutu kullanın. Ancak, bir sonraki adımda bu kapsayıcıyı kullanarak olacaktır.
+6. Kapsayıcıyı durdurmak ve temizlemek için aşağıdaki komutu kullanın. Ancak, bu kapsayıcıyı bir sonraki adımda kullanacağız.
 
     ```bash 
     docker rm -f sftestcluster
@@ -166,8 +166,8 @@ Service Fabric, Yeoman şablon oluşturucu kullanarak terminalden Service Fabric
     ```
 
     > [!IMPORTANT]
-    > Geçerli sürümleri `brew cask install java` JDK daha yeni bir sürümünü yükleyebilirsiniz.
-    > JDK 8'i yüklediğinizden emin olun.
+    > Geçerli sürümleri `brew cask install java` , JDK 'nin daha yeni bir sürümünü kurabilir.
+    > JDK 8 ' i yüklediğinizden emin olun.
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Uygulamanızı terminalden Mac’inize dağıtma
 
@@ -214,7 +214,7 @@ docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:
 ## <a name="next-steps"></a>Sonraki adımlar
 <!-- Links -->
 * [Linux üzerinde Yeoman kullanarak ilk Service Fabric Java uygulamanızı oluşturma ve dağıtma](service-fabric-create-your-first-linux-application-with-java.md)
-* [Eclipse için Service Fabric eklentisi kullanarak Linux'ta ilk Service Fabric Java uygulamanızı oluşturun ve dağıtın](service-fabric-get-started-eclipse.md)
+* [Service Fabric tutulma için Service Fabric eklentisini kullanarak Linux 'ta ilk Java uygulamanızı oluşturma ve dağıtma](service-fabric-get-started-eclipse.md)
 * [Azure portalında bir Service Fabric kümesi oluşturma](service-fabric-cluster-creation-via-portal.md)
 * [Azure Resource Manager’ı kullanarak bir Service Fabric kümesi oluşturma](service-fabric-cluster-creation-via-arm.md)
 * [Service Fabric uygulama modelini anlama](service-fabric-application-model.md)

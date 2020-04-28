@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: a80079574dc29c54de89f5275c65637b205742d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbfd0e36307210851070c22e74acb0a858446ce1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74227410"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866712"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure İşlerinde OpenAPI 2.0 meta veri desteği (önizleme)
 Azure İşlevleri'ndeki OpenAPI 2.0 (eski adıyla Swagger) meta veri desteği, bir işlev uygulamasının içine OpenAPI 2.0 tanımı yazmak için kullanabileceğiniz bir önizleme özelliğidir. Daha sonra işlev uygulamasını kullanarak bu dosyayı barındırabilirsiniz.
@@ -60,7 +60,7 @@ Aşağıdaki tablo, oluşturulan Swagger iskeletine eşlenen Azure portal ayarla
 > [!NOTE]
 > X-ms-özet uzantısı Logic Apps, PowerApps ve Flow'da bir görüntü adı sağlar.
 >
-> Daha fazla bilgi için [PowerApps için Swagger tanımınızı özelleştir'e](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/)bakın.
+> Daha fazla bilgi için [PowerApps için Swagger tanımınızı özelleştir'e](https://docs.microsoft.com/connectors/custom-connectors/openapi-extensions)bakın.
 
 ## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>API tanımı nı ayarlamak için CI/CD'yi kullanma
 

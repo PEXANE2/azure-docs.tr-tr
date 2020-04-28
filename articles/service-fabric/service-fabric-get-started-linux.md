@@ -3,12 +3,12 @@ title: Linux üzerinde geliştirme ortamınızı ayarlama
 description: Linux üzerinde çalışma zamanını ve SDK'yı yükleyip yerel bir geliştirme kümesi oluşturun. Bu kurulumu tamamladıktan sonra uygulama derlemek için hazır hale gelirsiniz.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 6cedd97144a3fd32d9af8582e24ad5c12914e575
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 000d615d779ed14eb1698cf297075480a07c71ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682616"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193420"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux üzerinde geliştirme ortamınızı hazırlama
 > [!div class="op_single_selector"]
@@ -92,7 +92,7 @@ SDK ve ilişkili çalışma zamanı paketini apt-get komut satırı aracıyla y�
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. APT anahtarlığınıza Azul JDK Anahtarı ekleyin ve deposunu düzene sin.
+7. APT kimlik anahtarlığı 'e Azul JDK anahtarını ekleyin ve deposunu ayarlayın.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
@@ -167,7 +167,7 @@ SDK yüklemesiyle birlikte gelen Service Fabric çalışma zamanı, aşağıdaki
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | Npm’de örtük | en son |
+Ubuntu | 2.0.0 | AzulJDK 1,8 | Npm’de örtük | en son |
 RHEL | - | OpenJDK 1.8 | Npm’de örtük | en son |
 
 ## <a name="set-up-a-local-cluster"></a>Yerel küme oluşturma
@@ -179,7 +179,7 @@ Yükleme tamamlandıktan sonra yerel bir küme başlatın.
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Bir web tarayıcısı açın ve`http://localhost:19080/Explorer`Service Fabric [Explorer](http://localhost:19080/Explorer) 'a gidin ( ). Küme başlatıldığında, Service Fabric Explorer panosunu görürsünüz. Kümenin tamamen ayarlanması birkaç dakika sürebilir. Tarayıcınız URL’yi açamazsa veya Service Fabric Explorer sistemin hazır olduğunu göstermezse, birkaç dakika bekleyip tekrar deneyin.
+2. Bir Web tarayıcısı açın ve **Service Fabric Explorer** (`http://localhost:19080/Explorer`) sayfasına gidin. Küme başlatıldığında, Service Fabric Explorer panosunu görürsünüz. Kümenin tamamen ayarlanması birkaç dakika sürebilir. Tarayıcınız URL’yi açamazsa veya Service Fabric Explorer sistemin hazır olduğunu göstermezse, birkaç dakika bekleyip tekrar deneyin.
 
     ![Linux üzerinde Service Fabric Explorer][sfx-linux]
 
@@ -228,7 +228,7 @@ Oluşturucuları yükledikten sonra, sırasıyla `yo azuresfguest` ve `yo azures
 
 ## <a name="set-up-java-development"></a>Java ile geliştirmeyi ayarlama
 
-Java'yı kullanarak Service Fabric hizmetleri oluşturmak için, yapı görevlerini çalıştırmak için Gradle'yi yükleyin. Gradle'yi yüklemek için aşağıdaki komutu çalıştırın. Service Fabric Java kitaplıkları Maven’dan alınır.
+Java kullanarak Service Fabric Hizmetleri derlemek için, derleme görevlerini çalıştırmak için Gradle ' yi kullanın. Gradle yüklemek için aşağıdaki komutu çalıştırın. Service Fabric Java kitaplıkları Maven’dan alınır.
 
 
 * Ubuntu
@@ -261,11 +261,11 @@ Service Fabric için Eclipse eklentisini Java EE Geliştiricileri veya Java Geli
 > 
 > Ubuntu üzerinde, paket yükleyici (`apt` veya `apt-get`) kullanmak yerine doğrudan Eclipse sitesinden yükleme yapılmasını öneririz. Böylece, Eclipse’in en güncel sürümünü elde etmeniz sağlanır. Java EE Geliştiricileri için veya Java Geliştiricileri için Eclipse IDE’yi yükleyebilirsiniz.
 
-1. Eclipse’te, Eclipse Neon veya sonraki bir sürümünün ve Buildship 2.2.1 veya sonraki bir sürümünün yüklü olduğundan emin olun. Eclipse > **Kurulum Ayrıntıları****Hakkında** **Yardım'ı** > seçerek yüklü bileşenlerin sürümlerini kontrol edin. [Eclipse Buildship: Gradle için Eclipse eklentileri][buildship-update] bölümünde sağlanan yönergelerden yararlanarak Buildship’i güncelleştirebilirsiniz.
+1. Eclipse’te, Eclipse Neon veya sonraki bir sürümünün ve Buildship 2.2.1 veya sonraki bir sürümünün yüklü olduğundan emin olun.  > **Çakışan**küreler > **Yükleme ayrıntıları**hakkında **Yardım**' i seçerek yüklü bileşenlerin sürümlerini denetleyin. [Eclipse Buildship: Gradle için Eclipse eklentileri][buildship-update] bölümünde sağlanan yönergelerden yararlanarak Buildship’i güncelleştirebilirsiniz.
 
-2. Service Fabric eklentisini yüklemek için**Yeni Yazılım Yüklemeye** **Yardım'ı** > seçin.
+2. Service Fabric eklentisini yüklemek için **Yardım** > **yeni yazılım yüklemesi**' ni seçin.
 
-3. **Kutuyla Çalışma'ya** **https\/girin: /dl.microsoft.com/eclipse**.
+3. **Birlikte çalış** kutusuna **https\/:/dl.Microsoft.com/Eclipse**girin.
 
 4. **Add (Ekle)** seçeneğini belirleyin.
 
@@ -275,7 +275,7 @@ Service Fabric için Eclipse eklentisini Java EE Geliştiricileri veya Java Geli
 
 6. Yükleme adımlarını gerçekleştirin. Ardından son kullanıcı lisans sözleşmesini kabul edin.
 
-Service Fabric Eclipse eklentisi zaten yüklüyse, en yeni sürümü kullandığınızdan emin olun. Eclipse > **Kurulum Ayrıntıları****Hakkında** **Yardım'ı** > seçerek kontrol edin. Ardından, yüklenen eklentiler listesinde Hizmet Kumaşı'nı arayın. Yeni bir sürüm varsa **Güncelleştirme'yi** seçin.
+Service Fabric Eclipse eklentisi zaten yüklüyse, en yeni sürümü kullandığınızdan emin olun.  > **Çakışan**küreler > **Yükleme ayrıntıları**hakkında **Yardım**seçerek denetleyin. Ardından, yüklü eklentiler listesinde Service Fabric arayın. daha yeni bir sürüm varsa **Güncelleştir** ' i seçin.
 
 Daha fazla bilgi için bkz. [Eclipse Java uygulama geliştirmesi için Service Fabric eklentisi](service-fabric-get-started-eclipse.md).
 

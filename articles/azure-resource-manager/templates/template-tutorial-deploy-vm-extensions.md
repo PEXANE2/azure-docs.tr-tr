@@ -1,20 +1,20 @@
 ---
-title: VM uzantılarını şablonla dağıtma
+title: Şablon ile VM uzantıları dağıtma
 description: Azure Resource Manager şablonlarıyla sanal makine uzantılarını dağıtmayı öğrenin
 author: mumian
-ms.date: 04/16/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 280b4a9775346c719e82d1fef4162fa6ea666798
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 06d948b44064f029e00a2ef089077e9b55246545
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81616884"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184971"
 ---
-# <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Öğretici: ARM şablonlarıyla sanal makine uzantılarını dağıtma
+# <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Öğretici: ARM şablonlarıyla sanal makine uzantıları dağıtma
 
-Azure VM'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri gerçekleştirme amacıyla [Azure sanal makine uzantılarını](../../virtual-machines/extensions/features-windows.md) kullanmayı öğrenin. Azure VM'leri ile kullanabileceğiniz birçok farklı VM uzantısı vardır. Bu eğitimde, Windows VM'de PowerShell komut dosyası çalıştırmak için Azure Kaynak Yöneticisi (ARM) şablonundan özel komut dosyası uzantısı dağıtılır.  Bu betik, VM'ye Web Sunucusu yükler.
+Azure VM'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri gerçekleştirme amacıyla [Azure sanal makine uzantılarını](../../virtual-machines/extensions/features-windows.md) kullanmayı öğrenin. Azure VM'leri ile kullanabileceğiniz birçok farklı VM uzantısı vardır. Bu öğreticide, bir Windows sanal makinesinde PowerShell betiğini çalıştırmak için bir Azure Resource Manager (ARM) şablonundan özel bir betik uzantısı dağıtırsınız.  Bu betik, VM'ye Web Sunucusu yükler.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -24,55 +24,55 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Şablonu düzenleme
 > * Şablonu dağıtma
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [ARM şablonları oluşturmak için Görsel Stüdyo Kodunu Kullan.](use-vs-code-to-create-template.md)
+* Visual Studio Code ve Resource Manager Araçları uzantısı. [ARM şablonları oluşturmak için Visual Studio Code kullanma](use-vs-code-to-create-template.md)konusuna bakın.
 * Güvenliği artırmak istiyorsanız sanal makine yönetici hesabı için oluşturulmuş bir parola kullanın. Parola oluşturma örneği aşağıda verilmiştir:
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault şifreleme anahtarları ve diğer gizli dizileri korumak üzere tasarlanmıştır. Daha fazla bilgi için [Bkz. Öğretici: Azure Anahtar Kasası'nı ARM şablon dağıtımına entegre edin.](./template-tutorial-use-key-vault.md) Ayrıca parolanızı her üç ayda bir güncellemenizi öneririz.
+    Azure Key Vault şifreleme anahtarları ve diğer gizli dizileri korumak üzere tasarlanmıştır. Daha fazla bilgi için bkz. [öğretici: ARM şablon dağıtımında Azure Key Vault tümleştirme](./template-tutorial-use-key-vault.md). Parolanızı her üç ayda bir de güncelleştirmenizi öneririz.
 
 ## <a name="prepare-a-powershell-script"></a>PowerShell betiğini hazırlama
 
-Sıralı PowerShell komut dosyası veya komut dosyası dosyası kullanabilirsiniz.  Bu öğretici, komut dosyası dosyasının nasıl kullanılacağını gösterir. Aşağıdaki içeriğe sahip bir PowerShell komut dosyası [GitHub'dan](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)paylaşılır:
+Satır içi PowerShell betiği veya bir betik dosyası kullanabilirsiniz.  Bu öğreticide, bir betik dosyasının nasıl kullanılacağı gösterilmektedir. [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)'dan paylaşılan aşağıdaki içeriğe sahip bir PowerShell betiği:
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Dosyayı kendi konumunuza yayımlamayı seçerseniz, şablondaki öğeyi `fileUri` daha sonra öğreticide güncelleştirin.
+Dosyayı kendi konumunuzda yayımlamayı seçerseniz, daha sonra öğreticide bulunan `fileUri` öğeyi güncelleştirin.
 
 ## <a name="open-a-quickstart-template"></a>Hızlı başlangıç şablonunu açma
 
-Azure Quickstart Şablonları, ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu öğreticide kullanılan şablonun adı: [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Basit bir Windows sanal makinesi dağıtma).
+Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu öğreticide kullanılan şablonun adı: [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Basit bir Windows sanal makinesi dağıtma).
 
-1. Visual Studio Code'da **Dosya** > **Aç Dosya'yı**seçin.
-1. Dosya **adı** kutusuna aşağıdaki URL'yi yapıştırın:
+1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
+1. **Dosya adı** kutusuna aşağıdaki URL 'yi yapıştırın:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. Dosyayı açmak için **Aç'ı**seçin.
-    Şablon beş kaynak tanımlar:
+1. Dosyayı açmak için **Aç**' ı seçin.
+    Şablon beş kaynağı tanımlar:
 
-   * [**Microsoft.Storage/storageHesapları**](/azure/templates/Microsoft.Storage/storageAccounts).
-   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
-   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
-   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
-   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
-   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft. Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft. Network/Publicıpaddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
-     Şablonu özelleştirmeden önce şablonhakkında temel bir anlayış elde etmek yararlı dır.
+     Özelleştirebilmeniz için önce şablon hakkında bazı temel bilgileri almanız yararlı olur.
 
-1. Dosyayı**Kaydet'i**seçerek *azuredeploy.json* adıyla yerel bilgisayarınıza **kaydedin.** > 
+1. Dosya > **farklı kaydet**' **i seçerek dosyanın**bir kopyasını *azuredeploy. JSON* adlı yerel bilgisayarınıza kaydedin.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 
@@ -104,23 +104,23 @@ Aşağıdaki içeriği kullanarak var olan şablona bir sanal makine uzantısı 
 
 Bu kaynak tanımı hakkında daha fazla bilgi için [uzantı başvurusuna](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions)bakın. Önemli öğeler şunlardır:
 
-* **name**: Uzantı kaynağı, sanal makine nesnesinin alt kaynağı olduğundan ad alanında sanal makine adı ön ek olarak kullanılmalıdır. Bkz. [Alt kaynaklar için ad ve yazı yı ayarla.](child-resource-name-type.md)
-* **dependsOn**: Sanal makineyi oluşturduktan sonra uzantı kaynağını oluşturun.
-* **fileUris**: Komut dosyası dosyalarının depolandığı konumlar. Sağlanan konumu kullanmamayı seçerseniz, değerleri güncelleştirmeniz gerekir.
-* **commandToExecute**: Bu komut komut dosyasını çağırır.
+* **name**: Uzantı kaynağı, sanal makine nesnesinin alt kaynağı olduğundan ad alanında sanal makine adı ön ek olarak kullanılmalıdır. Bkz. [alt kaynaklar için ad ve tür ayarlama](child-resource-name-type.md).
+* **Bağımlıdson**: sanal makineyi oluşturduktan sonra uzantı kaynağını oluşturun.
+* **Fileuris**: betik dosyalarının depolandığı konumlar. Belirtilen konumu kullanmayı tercih ederseniz, değerleri güncelleştirmeniz gerekir.
+* **Commandtoexecute**: Bu komut betiği çağırır.
 
-Satır satırkomutunu kullanmak için **fileUris'i**kaldırın ve **ToExecute komutunu** şu şekilde güncelleştirin:
+Satır içi betiği kullanmak için **Fileuris**'i kaldırın ve **commandtoexecute** öğesini şu şekilde güncelleştirin:
 
 ```powershell
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
 ```
 
-Bu satır satırlı komut dosyası da iisstart.html içeriğini güncelleştirin.
+Bu satır içi betik, iisstart. html içeriğini de güncelleştirir.
 
-Web sunucusuna erişebilmeniz için HTTP bağlantı noktasını da açmanız gerekir.
+Web sunucusuna erişebilmek için HTTP bağlantı noktasını da açmanız gerekir.
 
-1. Şablonda **güvenlik Kuralları'nı** bulun.
-1. **Varsayılan izin-3389**yanına aşağıdaki kuralı ekleyin.
+1. Şablonda **SecurityRules** bulun.
+1. **Varsayılan-Allow-3389**' ın yanına aşağıdaki kuralı ekleyin.
 
     ```json
     {
@@ -140,31 +140,31 @@ Web sunucusuna erişebilmeniz için HTTP bağlantı noktasını da açmanız ger
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Dağıtım yordamı için, Öğretici'nin "Şablonu dağıt" bölümüne [bakın: Bağımlı kaynaklara sahip ARM şablonları oluşturun.](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) Sanal makine yöneticisi hesabı için oluşturulan bir parola kullanmanızı tavsiye ettik. Bu makalenin [Önkoşullar](#prerequisites) bölümüne bakın.
+Dağıtım yordamı için öğreticinin "şablonu dağıtma" bölümüne bakın [: bağımlı kaynaklarla ARM şablonları oluşturma](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Sanal makine yöneticisi hesabı için oluşturulmuş bir parola kullanmanızı öneririz. Bu makalenin [Önkoşullar](#prerequisites) bölümüne bakın.
 
-Bulut Kabuğundan, VM'nin genel IP adresini almak için aşağıdaki komutu çalıştırın:
+Cloud Shell, VM 'nin genel IP adresini almak için aşağıdaki komutu çalıştırın:
 
 ```azurepowershell
 (Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName).IpAddress
 ```
 
-IP adresini bir Web tarayıcısına yapıştırın. Varsayılan Internet Bilgi Hizmetleri (IIS) karşılama sayfası açılır:
+IP adresini bir Web tarayıcısına yapıştırın. Varsayılan Internet Information Services (IIS) karşılama sayfası açılır:
 
-![İnternet Bilgi Hizmetleri karşılama sayfası](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
+![Internet Information Services hoş geldiniz sayfası](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Dağıttığınız Azure kaynaklarına artık ihtiyacınız olmadığında, kaynak grubunu silerek bunları temizleyin.
+Dağıttığınız Azure kaynaklarına artık ihtiyacınız kalmadığında, kaynak grubunu silerek bunları temizleyin.
 
-1. Azure portalında, sol bölmede **Kaynak grubunu**seçin.
-2. Ad kutusuna **göre Filtre'ye** kaynak grubu adını girin.
+1. Azure portal sol bölmedeki **kaynak grubu**' nu seçin.
+2. **Ada göre filtrele** kutusuna kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
     Kaynak grubunda altı kaynak görüntülenir.
-4. Üst menüde **kaynak grubunu sil'i**seçin.
+4. Üstteki menüden **kaynak grubunu sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide bir sanal makine ve bir sanal makine uzantısı dağıttınız. Uzantı, sanal makineye IIS web sunucusunu yükledi. BIR BACPAC dosyasını almak için Azure SQL Veritabanı uzantısını nasıl kullanacağınızı öğrenmek için bkz:
+Bu öğreticide bir sanal makine ve bir sanal makine uzantısı dağıttınız. Uzantı, sanal makineye IIS web sunucusunu yükledi. Azure SQL veritabanı uzantısının BACPAC dosyasını içeri aktarmak için nasıl kullanılacağını öğrenmek için bkz.:
 
 > [!div class="nextstepaction"]
 > [SQL uzantılarını dağıtma](./template-tutorial-deploy-sql-extensions-bacpac.md)

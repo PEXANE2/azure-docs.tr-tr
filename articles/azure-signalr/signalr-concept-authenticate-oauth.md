@@ -1,19 +1,19 @@
 ---
-title: Azure Sinyal RHizmeti istemcilerinin kimlik doğrulama kılavuzu
-description: E2e örneğini izleyerek kendi kimlik doğrulamanızı nasıl uygulayacağınızı ve Azure SinyalR Hizmeti ile nasıl entegre acağınızı öğrenin.
+title: Azure SignalR hizmeti istemcilerinin kimlik doğrulamasına yönelik kılavuz
+description: E2e örneğini izleyerek kendi kimlik doğrulamasını nasıl uygulayacağınızı ve Azure SignalR hizmeti ile tümleştirmeyi öğrenin.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: cc955adffbe7df5809f9c4c860877ad22df3e99b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5608d71c4a91c9b46b8ed7de13c9d4c06a3f195f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74158286"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194610"
 ---
-# <a name="azure-signalr-service-authentication"></a>Azure SignalR Hizmeti kimlik doğrulaması
+# <a name="azure-signalr-service-authentication"></a>Azure SignalR hizmeti kimlik doğrulaması
 
 Bu öğretici, hızlı başlangıçta tanıtılan sohbet odası uygulamasını temel alır. [SignalR Hizmeti ile sohbet odası oluşturma](signalr-quickstart-dotnet-core.md) alıştırmasını tamamlamadıysanız, önce o alıştırmayı tamamlayın.
 
@@ -31,7 +31,7 @@ Bu öğreticinin kodu [AzureSignalR-samples GitHub deposundan](https://github.co
 
 ![Azure'da barındırılan OAuth](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * GitHub hesabınızla yeni bir OAuth uygulaması kaydetme
@@ -46,23 +46,23 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olmanız gere
 
 * [GitHub](https://github.com/)'da oluşturulan bir hesap
 * [Git](https://git-scm.com/)
-* [.NET Çekirdek SDK](https://www.microsoft.com/net/download/windows)
+* [.NET Core SDK](https://www.microsoft.com/net/download/windows)
 * [Yapılandırılmış Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
-* [AzureSignalR örnekli](https://github.com/aspnet/AzureSignalR-samples) GitHub deposunu indirin veya klonla.
+* [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) GitHub deposunu indirin veya kopyalayın.
 
 ## <a name="create-an-oauth-app"></a>OAuth uygulaması oluşturma
 
 1. Web tarayıcısını açın, `https://github.com` adresine gidin ve hesabınızda oturum açın.
 
-2. Hesabınız için **Ayarlar** > **Geliştiricisi ayarlarına** gidin ve *OAuth Apps*altında yeni bir uygulama veya **Yeni OAuth Uygulaması** **kaydet'i**tıklatın.
+2. Hesabınız için **Ayarlar** > **Geliştirici ayarları** ' na gidin ve **Yeni bir uygulama kaydet**' e veya *OAuth uygulamaları*altında **Yeni OAuth uygulaması** ' na tıklayın.
 
 3. Yeni OAuth Uygulaması için aşağıdaki ayarları kullanın ve ardından **Uygulamayı kaydet**'e tıklayın:
 
     | Ayar Adı | Önerilen Değer | Açıklama |
     | ------------ | --------------- | ----------- |
-    | Uygulama adı | *Azure SignalR Sohbeti* | GitHub kullanıcısı, kimlik doğrulaması yaptıkları uygulamayı tanıyabilmeli ve güvenebilmeli.   |
+    | Uygulama adı | *Azure SignalR Sohbeti* | GitHub kullanıcısı, kimlik doğrulama yaptıkları uygulamayı tanıyabilmelidir ve güvenmelidir.   |
     | Giriş sayfası URL'si | `http://localhost:5000/home` | |
-    | Uygulama açıklaması | *GitHub kimlik doğrulaması içeren Azure SinyalR Hizmetini kullanan bir sohbet odası örneği* | Uygulama kullanıcılarınızın kullanılan kimlik doğrulamanın bağlamını anlayabilmesine yardımcı olacak, yararlı bir uygulama açıklaması. |
+    | Uygulama açıklaması | *GitHub kimlik doğrulamasıyla Azure SignalR hizmetini kullanan bir sohbet odası örneği* | Uygulama kullanıcılarınızın kullanılan kimlik doğrulamanın bağlamını anlayabilmesine yardımcı olacak, yararlı bir uygulama açıklaması. |
     | Yetkilendirme geri çağırma URL'si | `http://localhost:5000/signin-github` | Bu ayar, OAuth uygulamanız için en önemli ayardır. Bu, başarılı bir kimlik doğrulamasının ardından GitHub'ın kullanıcıyı döndürdüğü geri çağırma URL'sidir. Bu öğreticide, *AspNet.Security.OAuth.GitHub* paketi için varsayılan geri çağırma URL'sini (*/signin-github*) kullanmalısınız.  |
 
 4. Yeni OAuth uygulama kaydı tamamlandıktan sonra, aşağıdaki komutları kullanarak *İstemci Kimliği* ve *İstemci Parolası*'nı Parola Yöneticisi'ne ekleyin. *Your_GitHub_Client_Id* ve *Your_GitHub_Client_Secret* değerlerini OAuth uygulamanızın değerleriyle değiştirin.
@@ -377,7 +377,7 @@ Bu bölümde, hub sınıfına `Authorize` özniteliğini ekleyerek ve hub yönte
 
 ## <a name="deploy-the-app-to-azure"></a>Uygulamayı Azure’da dağıtma
 
-Bu bölümde, Azure Bulut Bulut Uyp'Taki Azure komut satırı arabirimini (CLI) kullanarak [Azure Uygulama Hizmeti'nde](https://docs.microsoft.com/azure/app-service/) ASP.NET uygulamanızı Azure'da barındıracak yeni bir web uygulaması oluşturacaksınız. Web uygulaması, yerel Git dağıtımını kullanacak şekilde yapılandırılacak. Web uygulaması ayrıca SignalR bağlantı dizenizle, GitHub OAuth uygulaması parolalarıyla ve dağıtım kullanıcısıyla da yapılandırılacak.
+Bu bölümde, Azure 'da ASP.NET uygulamanızı barındırmak üzere [Azure App Service](https://docs.microsoft.com/azure/app-service/) yeni bir Web uygulaması oluşturmak Için Azure Cloud Shell Azure komut satırı arabirimi 'NI (CLI) kullanacaksınız. Web uygulaması, yerel Git dağıtımını kullanacak şekilde yapılandırılacak. Web uygulaması ayrıca SignalR bağlantı dizenizle, GitHub OAuth uygulaması parolalarıyla ve dağıtım kullanıcısıyla da yapılandırılacak.
 
 Bu bölümdeki adımlarda Azure CLI için *signalr* uzantısı kullanılır. Aşağıdaki komutu yürüterek Azure CLI için *signalr* uzantısını yükleyin:
 
@@ -539,14 +539,14 @@ Kodunuzu dağıtmak için, Git kabuğunda aşağıdaki komutları yürütün.
 
 Yapmanız gereken son işlem GitHub OAuth uygulamasının **Giriş sayfası URL'si** ve **Yetkilendirme geri çağırma URL'si** değerlerini yeni barındırılan uygulamaya işaret edecek şekilde güncelleştirmektir.
 
-1. Bir [https://github.com](https://github.com) tarayıcıda açın ve hesabınızın **Ayarlar** > **Geliştirici ayarları** > **Oauth Apps**gidin.
+1. Bir [https://github.com](https://github.com) tarayıcıda açın ve hesabınızın **Ayarlar** > **Geliştirici ayarları** > **OAuth Apps**' e gidin.
 
 2. Kimlik doğrulama uygulamanıza tıklayın ve **Giriş sayfası URL'si** ve **Yetkilendirme geri çağırma URL'si** değerlerini aşağıda gösterildiği gibi güncelleştirin:
 
     | Ayar | Örnek |
     | ------- | ------- |
-    | Giriş sayfası URL'si | https://signalrtestwebapp22665120.azurewebsites.net/home |
-    | Yetkilendirme geri çağırma URL'si | https://signalrtestwebapp22665120.azurewebsites.net/signin-github |
+    | Giriş sayfası URL'si | `https://signalrtestwebapp22665120.azurewebsites.net/home` |
+    | Yetkilendirme geri çağırma URL'si | `https://signalrtestwebapp22665120.azurewebsites.net/signin-github` |
 
 3. Web uygulamanızın URL'sine gidin ve uygulamayı test edin.
 

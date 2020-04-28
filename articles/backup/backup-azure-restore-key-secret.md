@@ -1,36 +1,36 @@
 ---
-title: Şifreli VM için & gizli Anahtar Vault anahtarını geri yükleme
-description: PowerShell'i kullanarak Azure Yedekleme'de Key Vault anahtarını ve gizliyi nasıl geri yükleyebilirsiniz öğrenin
+title: Şifrelenmiş VM için Key Vault anahtarı & gizliliğini geri yükleme
+description: PowerShell kullanarak Azure Backup Key Vault anahtarı ve gizli anahtarı geri yüklemeyi öğrenin
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.openlocfilehash: 35bcb919cadd46c603b1f2ad49742c5435f873d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 826b3917fda820ed02cde425ca5a394bffec0df1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75450061"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186830"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Azure Backup kullanarak şifreli VM’ler için Key Vault anahtarını ve parolasını geri yükleme
 
-Bu makalede, anahtarınız ve sırrınız anahtar kasasında yoksa, şifreli Azure VM'lerinin geri yükyükülmesi gerçekleştirmek için Azure VM Yedekleme'yi kullanma hakkında bahsedilir. Bu adımlar, geri yüklenen VM için anahtar (Anahtar Şifreleme Anahtarı) ve gizli (BitLocker Şifreleme Anahtarı) ayrı bir kopyasını korumak istiyorsanız da kullanılabilir.
+Bu makalede, anahtar ve gizli anahtarı anahtar kasasında yoksa, şifrelenmiş Azure VM 'lerini geri yükleme işlemini gerçekleştirmek için Azure VM yedeklemesini kullanma hakkında bilgi sağlar. Bu adımlar, geri yüklenen VM için anahtarın ayrı bir kopyasını (anahtar şifreleme anahtarı) ve gizli dizi (BitLocker şifreleme anahtarı) korumak istiyorsanız da kullanılabilir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Yedek şifreli VM'ler** - Şifreli Azure VM'ler Azure Yedekleme kullanılarak yedeklenmiştir. Şifreli Azure VM'leri yedekleme hakkında ayrıntılar için [PowerShell kullanarak Azure VM'lerinin yedeklenme sini ve geri yükle'sini](backup-azure-vms-automation.md) yönet makalesine bakın.
-* **Azure Anahtar Kasası'nı Yapılandırın** - Anahtarların ve sırların geri yüklendiği anahtar kasanın zaten mevcut olduğundan emin olun. Anahtar kasa yönetimi hakkında ayrıntılı bilgi için [Azure Key Vault ile Başlayın](../key-vault/key-vault-get-started.md) makalesine bakın.
-* **Diski geri yükleme** - [PowerShell adımlarını](backup-azure-vms-automation.md#restore-an-azure-vm)kullanarak şifreli VM disklerini geri yüklemek için geri yükleme işini tetiklediğinden emin olun. Bunun nedeni, bu işin depolama hesabınızda şifrelenmiş VM'nin geri yüklenmesini içeren anahtarları ve sırları içeren bir JSON dosyası oluşturmasıdır.
+* **Yedekleme şifreli VM 'ler** -şifrelenmiş Azure vm 'ler Azure Backup kullanılarak yedeklendi. Şifrelenmiş Azure sanal makinelerini yedekleme hakkında ayrıntılı bilgi için [PowerShell 'i kullanarak Azure VM 'lerini yedekleme ve geri yükleme makalesini yönetme](backup-azure-vms-automation.md) makalesine bakın.
+* **Azure Key Vault yapılandırma** – anahtarların ve parolaların geri yüklenmesi gereken anahtar kasasının zaten mevcut olduğundan emin olun. Anahtar Kasası yönetimi hakkında ayrıntılı bilgi [edinmek için Azure Key Vault kullanmaya başlama](../key-vault/key-vault-get-started.md) makalesine başvurun.
+* **Diski geri yükleme** - [PowerShell ADıMLARıNı](backup-azure-vms-automation.md#restore-an-azure-vm)kullanarak şifrelenmiş VM için diskleri geri yüklemek üzere geri yükleme işini tetiklemiş olduğunuzdan emin olun. Bunun nedeni, bu işin depolama hesabınızda şifreli VM 'nin geri yüklenecek anahtarlar ve gizli dizileri içeren bir JSON dosyası oluşturması.
 
-## <a name="get-key-and-secret-from-azure-backup"></a>Azure Yedekleme'den anahtar ve gizli alın
+## <a name="get-key-and-secret-from-azure-backup"></a>Azure Backup anahtar ve gizli dizi alın
 
 > [!NOTE]
-> Şifreli VM için disk geri yüklendikten sonra şunları emin olun:
+> Şifrelenmiş VM için disk geri yüklendikten sonra aşağıdakileri doğrulayın:
 >
-> * $details, [Diskleri Geri Yükleme bölümünde PowerShell adımlarında](backup-azure-vms-automation.md#restore-an-azure-vm) belirtildiği gibi geri yükleme diski iş ayrıntılarıyla doldurulur
-> * VM, yalnızca **anahtar ve gizli anahtar kasasına geri yüklendikten sonra**geri yüklenen disklerden oluşturulmalıdır.
+> * $details, [diskleri geri yükleme bölümündeki PowerShell adımlarında](backup-azure-vms-automation.md#restore-an-azure-vm) bahsedildiği gibi, disk geri yükleme ayrıntıları ile doldurulur.
+> * VM, geri yüklenen disklerden yalnızca **anahtar ve gizli Anahtar Kasası 'na geri yüklendikten sonra**oluşturulmalıdır.
 
-İş ayrıntıları için geri yüklenen disk özelliklerini sorgula.
+İş ayrıntıları için geri yüklenen disk özelliklerini sorgulayın.
 
 ```powershell
 $properties = $details.properties
@@ -39,7 +39,7 @@ $containerName = $properties["Config Blob Container Name"]
 $encryptedBlobName = $properties["Encryption Info Blob Name"]
 ```
 
-Azure depolama bağlamını ayarlayın ve şifreli VM için anahtar ve gizli ayrıntıları içeren JSON yapılandırma dosyasını geri yükleyin.
+Azure Storage bağlamını ayarlayın ve şifreli VM için anahtar ve gizli dizi ayrıntılarını içeren JSON yapılandırma dosyasını geri yükleyin.
 
 ```powershell
 Set-AzCurrentStorageAccount -Name $storageaccountname -ResourceGroupName '<rg-name>'
@@ -48,9 +48,9 @@ Get-AzStorageBlobContent -Blob $encryptedBlobName -Container $containerName -Des
 $encryptionObject = Get-Content -Path $destination_path  | ConvertFrom-Json
 ```
 
-## <a name="restore-key"></a>Anahtarı geri yükleme
+## <a name="restore-key"></a>Anahtarı geri yükle
 
-JSON dosyası yukarıda belirtilen hedef yolda oluşturulduktan sonra, JSON'dan anahtar blob dosyası oluşturun ve anahtarı (KEK) anahtar kasasına geri koymak için anahtar cmdlet'i geri yüklemek için besleyin.
+JSON dosyası yukarıda belirtilen hedef yolda oluşturulduktan sonra, JSON 'dan anahtar BLOB dosyası oluşturun ve anahtarı (KEK) anahtar kasasına geri yerleştirmek için anahtar cmdlet 'ini geri yüklemek üzere onu akışa alın.
 
 ```powershell
 $keyDestination = 'C:\keyDetails.blob'
@@ -58,11 +58,11 @@ $keyDestination = 'C:\keyDetails.blob'
 Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile $keyDestination
 ```
 
-## <a name="restore-secret"></a>Sırrı geri yükleme
+## <a name="restore-secret"></a>Gizli anahtarı geri yükleme
 
-Gizli ad ve değer almak ve gizli cmdlet ayarlamak için beslemek için yukarıda oluşturulan JSON dosyasını kullanın (BEK) anahtar kasasına geri koymak için.**VM'iniz BEK ve KEK kullanılarak şifrelenmişse**bu cmdletleri kullanın.
+Gizli dizi adı ve değeri almak için yukarıda oluşturulan JSON dosyasını kullanın ve gizli anahtarı (BEK) anahtar kasasında geri yerleştirmek için gizli cmdlet 'i ayarlayın.**VM 'NIZ bek ve kek kullanılarak şifrelendiyse**bu cmdlet 'leri kullanın.
 
-**Windows VM'iniz BEK ve KEK kullanılarak şifrelenmişse bu cmdletleri kullanın.**
+**Windows VM 'niz BEK ve KEK kullanılarak şifrelendiyse bu cmdlet 'leri kullanın.**
 
 ```powershell
 $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
@@ -72,7 +72,7 @@ $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKey
 Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-**Linux VM'iniz BEK ve KEK kullanılarak şifrelenmişse bu cmdletleri kullanın.**
+**Linux VM 'niz BEK ve KEK kullanılarak şifrelendiyse bu cmdlet 'leri kullanın.**
 
 ```powershell
 $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
@@ -82,7 +82,7 @@ $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKey
 Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-Gizli ad ve değer almak ve gizli cmdlet ayarlamak için beslemek için yukarıda oluşturulan JSON dosyasını kullanın (BEK) anahtar kasasına geri koymak için.VM'iniz yalnızca **BEK kullanılarak şifrelenmişse** bu cmdletleri kullanın.
+Gizli dizi adı ve değeri almak için yukarıda oluşturulan JSON dosyasını kullanın ve gizli anahtarı (BEK) anahtar kasasında geri yerleştirmek için gizli cmdlet 'i ayarlayın.VM 'niz yalnızca **bek kullanılarak şifrelendiyse** bu cmdlet 'leri kullanın.
 
 ```powershell
 $secretDestination = 'C:\secret.blob'
@@ -92,31 +92,31 @@ Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $sec
 
 > [!NOTE]
 >
-> * $secretname değeri $encryptionObject.OsDiskKeyAndSecretDetails.SecretUrl çıktısına atıfta bulunarak ve sırlar sonra metin kullanarak elde edilebilir https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 / örneğin çıkış gizli URL ve gizli adı B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
-> * DiskEncryptionKeyFileName etiketinin değeri gizli adla aynıdır.
+> * $Secretname değeri, $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl çıktısına başvurarak ve gizli dizileri/örn. çıktı gizli URL 'SI `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` ve gizli ad ise B3284AAA-daaa-4AAA-B393-60CAA848AAAA
+> * DiskEncryptionKeyFileName etiketinin değeri, gizli adıyla aynıdır.
 >
 >
 
-## <a name="create-virtual-machine-from-restored-disk"></a>Geri yüklenen diskten sanal makine oluşturma
+## <a name="create-virtual-machine-from-restored-disk"></a>Geri yüklenen diskten sanal makine oluştur
 
-Azure VM Yedekleme'yi kullanarak şifreli VM'yi yedeklediyseniz, yukarıda belirtilen PowerShell cmdlets'leri anahtar ve gizli anahtarı kasasına geri yüklemenize yardımcı olur. Bunları geri yükledikten sonra, geri yüklenen disk, anahtar ve gizliden şifreli VM'ler oluşturmak için [PowerShell kullanarak Azure VM'lerinin yedeklemesini ve geri yüklenmesini sağlayan](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) makaleye bakın.
+Azure VM yedeklemesi kullanarak şifrelenmiş VM 'yi yedeklediyseniz, yukarıda bahsedilen PowerShell cmdlet 'leri anahtar kasasına geri ve gizli anahtarı geri yüklemenize yardımcı olur. Geri yükledikten sonra, geri yüklenen disk, anahtar ve gizli dizi ile şifrelenmiş VM 'Ler oluşturmak için [PowerShell kullanarak Azure VM 'lerinin yedeklenmesini ve geri yüklenmesini yönetme](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) makalesine bakın.
 
 ## <a name="legacy-approach"></a>Eski yaklaşım
 
-Yukarıda belirtilen yaklaşım tüm kurtarma noktaları için çalışacak. Ancak, kurtarma noktasından anahtar ve gizli bilgi alma nın eski yaklaşımı, BEK ve KEK kullanılarak şifrelenmiş VM'ler için 11 Temmuz 2017'den daha eski kurtarma noktaları için geçerli olacaktır. [PowerShell adımlarını](backup-azure-vms-automation.md#restore-an-azure-vm)kullanarak şifreli VM için disk igörevini geri yükledikten sonra, $rp geçerli bir değerle dolduruldığından emin olun.
+Yukarıda bahsedilen yaklaşım tüm kurtarma noktaları için çalışır. Ancak, kurtarma noktasından anahtar ve gizli bilgilerin alınması için eski yaklaşım, BEK ve KEK kullanılarak şifrelenmiş VM 'Ler için 11 Temmuz 2017 ' den eski kurtarma noktaları için geçerlidir. [PowerShell adımları](backup-azure-vms-automation.md#restore-an-azure-vm)KULLANıLARAK şifrelenmiş VM için disk geri yükleme işlemi tamamlandıktan sonra $RP geçerli bir değerle doldurulduğundan emin olun.
 
-### <a name="restore-key"></a>Anahtarı geri yükleme
+### <a name="restore-key"></a>Anahtarı geri yükle
 
-Kurtarma noktasından anahtar (KEK) bilgilerini almak ve anahtar tonoza geri koymak için anahtar cmdlet geri yüklemek için beslemek için aşağıdaki cmdlets kullanın.
+Kurtarma noktasından anahtar (KEK) bilgileri almak için aşağıdaki cmdlet 'leri kullanın ve anahtarı anahtar kasasına geri döndürmek için anahtar cmdlet 'ini geri yüklemek üzere akışa alın.
 
 ```powershell
 $rp1 = Get-AzRecoveryServicesBackupRecoveryPoint -RecoveryPointId $rp[0].RecoveryPointId -Item $backupItem -KeyFileDownloadLocation 'C:\Users\downloads'
 Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile 'C:\Users\downloads'
 ```
 
-### <a name="restore-secret"></a>Sırrı geri yükleme
+### <a name="restore-secret"></a>Gizli anahtarı geri yükleme
 
-Kurtarma noktasından gizli (BEK) bilgileri almak ve anahtar tonoza geri koymak için gizli cmdlet ayarlamak için beslemek için aşağıdaki cmdlets kullanın.
+Kurtarma noktasından gizli (BEK) bilgileri almak için aşağıdaki cmdlet 'leri kullanın ve anahtar kasasında geri dönmek için gizli cmdlet 'i ayarlayın.
 
 ```powershell
 $secretname = 'B3284AAA-DAAA-4AAA-B393-60CAA848AAAA'
@@ -128,12 +128,12 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 
 > [!NOTE]
 >
-> * $secretname değeri $rp1 çıktısına atıfta bulunularak elde edilebilir. KeyAndSecretDetails.SecretUrl ve sırlar sonra metin kullanarak / https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 örneğin çıkış gizli URL ve gizli adı B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
-> * DiskEncryptionKeyFileName etiketinin değeri gizli adla aynıdır.
-> * DiskEncryptionKeyEncryptionKeyURL için değer anahtarları geri ve [Get-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) cmdlet kullanarak geri sonra anahtar kasasından elde edilebilir
+> * $Secretname değeri, $rp 1 ' in çıktısına başvurarak elde edilebilir. KeyAndSecretDetails. SecretUrl ve gizli dizileri/örn. çıktı gizli URL 'SI `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` ve gizli ad B3284AAA-daaa-4AAA-B393-60CAA848AAAA
+> * DiskEncryptionKeyFileName etiketinin değeri gizli adı ile aynı.
+> * Node Encryptionkeyencryptionkeyurl değeri, anahtarları geri yükledikten ve [Get-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) cmdlet 'i kullanılarak anahtar kasasından elde edilebilir
 >
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Anahtar ve gizli anahtarı tonoza geri yükledikten sonra, geri yüklenen disk, anahtar ve gizliden şifreli VM'ler oluşturmak için [PowerShell'i kullanarak Azure VM'lerinin yedeklemesini ve geri yüklemesini yönet](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) makalesine bakın.
+Anahtar ve gizli anahtarı anahtar kasasına geri yükledikten sonra, geri yüklenen disk, anahtar ve gizli bilgisayarlardan şifrelenmiş VM 'Ler oluşturmak için [PowerShell kullanarak Azure VM 'lerinin yedeklenmesini ve geri yüklenmesini yönetme](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) makalesine bakın.

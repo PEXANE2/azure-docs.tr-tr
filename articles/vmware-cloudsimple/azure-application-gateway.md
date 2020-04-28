@@ -1,6 +1,6 @@
 ---
-title: VMware sanal makineleriyle Azure Uygulama Ağ Geçidi'ni kullanma
-description: VMware sanal makinelerinde çalışan web sunucuları için gelen web trafiğini yönetmek için Azure uygulama ağ geçidinin nasıl kullanılacağını açıklar CloudSimple Private Cloud ortamını kazanır
+title: Azure Application Gateway ile VMware sanal makinelerini kullanma
+description: VMware sanal makinelerinde çalışan Web sunucuları için gelen Web trafiğini yönetmek üzere Azure Application Gateway 'in nasıl kullanılacağını açıklar CloudSimple özel bulut ortamını Win
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,72 +8,72 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2cbfdd358fdfd5403c677c067376142169cdc6bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7dce0181987b7e61b243a7eb0e13b7ed687eb08
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77015465"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185702"
 ---
-# <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>CloudSimple Private Cloud ortamında VMware sanal makineleriyle Azure Uygulama Ağ Geçidi'ni kullanın
+# <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>CloudSimple özel bulut ortamındaki VMware sanal makineleri ile Azure Application Gateway kullanma
 
-CloudSimple Private Cloud ortamınızdaki VMware sanal makinelerinde çalışan web sunucularınızın gelen web trafiğini yönetmek için Azure Uygulama Ağ Geçidi'ni kullanabilirsiniz.
+CloudSimple özel bulut ortamınızdaki VMware sanal makinelerinde çalışan web sunucularınız için gelen Web trafiğini yönetmek üzere Azure Application Gateway kullanabilirsiniz.
 
-Azure Uygulama Ağ Geçidi'ni genel-özel karma dağıtımda yararlanarak, uygulamalarınız için web trafiğini yönetebilir, güvenli bir ön uç sağlayabilir ve VMware ortamında çalışan hizmetleri için SSL işlemeyi boşaltabilirsiniz. Azure Application Gateway, vmware ortamlarında bulunan arka uç havuz örneklerini yapılandırılmış kurallara ve sistem durumu sondalarına göre arka plana alan web trafiğini yönlendirir.
+Azure Application Gateway 'yi ortak özel karma dağıtımda kullanarak, uygulamalarınıza Web trafiğini yönetebilir, VMware ortamında çalışan hizmetleri için güvenli bir ön uç ve yük devretme TLS işlemi sağlayabilirsiniz. Azure Application Gateway, gelen Web trafiğini, yapılandırılmış kurallara ve sistem durumu araştırmalara göre VMware ortamlarında bulunan arka uç havuzu örneklerine yönlendirir.
 
-Bu Azure Uygulama Ağ Geçidi çözümü şunları şunları nızı gerektirir:
+Bu Azure Application Gateway çözümü şunları yapmanızı gerektirir:
 
 * Bir Azure aboneliğine sahip olmanız.
 * Bir Azure sanal ağı ve sanal ağ içinde bir alt ağ oluşturun ve yapılandırın.
-* ExpressRoute'u kullanarak NSG kurallarını oluşturun ve yapılandırdıve vNet'inize göre CloudSimple Private Cloud'unuza yönlendirin.
-* Özel Bulutunuzu Yapılandırma& oluşturun.
-* Azure Uygulama Ağ Geçidinizi Yapılandırma& Oluşturun.
+* CloudSimple özel bulutunuzun ExpressRoute kullanarak NSG kuralları ve vNet 'iniz oluşturun ve yapılandırın.
+* Özel bulutunuzu oluşturun & yapılandırın.
+* Azure Application Gateway oluşturun & yapılandırın.
 
-## <a name="azure-application-gateway-deployment-scenario"></a>Azure Uygulama Ağ Geçidi dağıtım senaryosu
+## <a name="azure-application-gateway-deployment-scenario"></a>Azure Application Gateway dağıtım senaryosu
 
-Bu senaryoda, Azure Uygulama Ağ Geçidi Azure sanal ağınızda çalışır. Sanal ağ, Bir ExpressRoute devresi üzerinden Özel Bulut'unuza bağlanır. Özel Bulut'taki tüm alt ağlarsanal ağ alt ağlarından IP'ye erişilebiliyor.
+Bu senaryoda Azure Application Gateway, Azure sanal ağınızda çalışır. Sanal ağ, bir ExpressRoute bağlantı hattı üzerinden özel buluta bağlanır. Özel buluttaki tüm alt ağların sanal ağ alt ağlarından erişilebilen IP 'si vardır.
 
-![Azure sanal ağında Azure yük dengeleyicisi](media/load-balancer-use-case.png)
+![Azure sanal ağ 'da Azure yük dengeleyici](media/load-balancer-use-case.png)
 
-## <a name="how-to-deploy-the-solution"></a>Çözüm nasıl dağıtılır?
+## <a name="how-to-deploy-the-solution"></a>Çözümü dağıtma
 
 Dağıtım işlemi aşağıdaki görevlerden oluşur:
 
-1. [Ön koşulların karşılandığını doğrulayın](#1-verify-prerequisites)
-2. [Azure sanal bağlantınızı Özel Bulut'a bağlayın](#2-connect-your-azure-virtual-network-to-your-private-cloud)
-3. [Azure uygulama ağ geçidi dağıtma](#3-deploy-an-azure-application-gateway)
-4. [Özel Bulutunuzda Web Sunucusu VM havuzu oluşturma ve yapılandırma](#4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud)
+1. [Önkoşulların karşılandığından emin olun](#1-verify-prerequisites)
+2. [Azure sanal bağlantınızı özel buluta bağlama](#2-connect-your-azure-virtual-network-to-your-private-cloud)
+3. [Azure Application Gateway dağıtma](#3-deploy-an-azure-application-gateway)
+4. [Özel bulutunuzda Web sunucusu VM havuzu oluşturma ve yapılandırma](#4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud)
 
-## <a name="1-verify-prerequisites"></a>1. Ön koşulları doğrulayın
+## <a name="1-verify-prerequisites"></a>1. önkoşulları doğrulama
 
-Bu ön koşulların karşılandığını doğrulayın:
+Bu önkoşulların karşılandığından emin olun:
 
-* Azure Kaynak Yöneticisi ve sanal ağ zaten oluşturuldu.
-* Azure sanal ağınızda özel bir alt ağ (Uygulama Ağ Geçidi için) zaten oluşturulmuştur.
-* CloudSimple Private Cloud zaten oluşturuldu.
-* Sanal ağdaki IP alt ağları ile Özel Bulut'taki alt ağlar arasında IP çakışması yoktur.
+* Bir Azure Resource Manager ve sanal ağ zaten oluşturulmuş.
+* Azure sanal ağınız içindeki adanmış bir alt ağ (Application Gateway için) zaten oluşturuldu.
+* CloudSimple özel bulutu zaten oluşturulmuş.
+* Sanal ağ ve alt ağlar arasında özel buluttaki IP alt ağları arasında bir IP çakışması yoktur.
 
-## <a name="2-connect-your-azure-virtual-network-to-your-private-cloud"></a>2. Azure sanal ağınızı Özel Bulut'unuza bağlayın
+## <a name="2-connect-your-azure-virtual-network-to-your-private-cloud"></a>2. Azure Sanal ağınızı özel buluta bağlayın
 
-Azure sanal ağınızı Özel Bulut'unuza bağlamak için bu işlemi izleyin.
+Azure Sanal ağınızı özel buluta bağlamak için bu işlemi izleyin.
 
-1. [CloudSimple portalında, ExpressRoute bakan bilgilerini kopyalayın.](virtual-network-connection.md)
+1. [CloudSimple portalında ExpressRoute eşleme bilgilerini kopyalayın](virtual-network-connection.md).
 
-2. [Azure sanal ağınız için bir sanal ağ ağ geçidi yapılandırın.](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)
+2. [Azure sanal ağınız için bir sanal ağ geçidi yapılandırın](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md).
 
-3. [Sanal ağınızı CloudSimple ExpressRoute devresine bağla.](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
+3. [Sanal ağınızı CloudSimple ExpressRoute devresine bağlayın](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription).
 
-4. [Sanal ağınızı ExpressRoute devresine bağlamak için kopyaladığınız eş bilgilerini kullanın.](virtual-network-connection.md)
+4. [Sanal ağınızı ExpressRoute devresine bağlamak için kopyaladığınız eşleme bilgilerini kullanın](virtual-network-connection.md).
 
-## <a name="3-deploy-an-azure-application-gateway"></a>3. Azure uygulama ağ geçidi dağıtma
+## <a name="3-deploy-an-azure-application-gateway"></a>3. bir Azure Application Gateway dağıtma
 
-Bunun ayrıntılı yönergeleri, [Azure portalını kullanarak yol tabanlı yönlendirme kuralları içeren bir uygulama ağ geçidi oluştur'da](../application-gateway/create-url-route-portal.md)kullanılabilir. Gerekli adımların bir özeti aşağıda veda edebilirsiniz:
+Bu için ayrıntılı yönergeler, [Azure Portal kullanarak yol tabanlı yönlendirme kurallarına sahip bir uygulama ağ geçidi oluşturma](../application-gateway/create-url-route-portal.md)bölümünde bulunur. Gerekli adımların özeti aşağıda verilmiştir:
 
-1. Abonelik ve kaynak grubunuzda sanal ağ oluşturun.
-2. Sanal ağınızda bir alt ağ (özel alt ağ olarak kullanılmak üzere) oluşturun.
-3. Standart bir Uygulama Ağ Geçidi oluşturun (isteğe bağlı olarak WAF'ı etkinleştirin: Azure portal ana sayfasından, sayfanın sol üst tarafından **Kaynak** > **Ağı** > **Uygulama Ağ Geçidi'ni** tıklatın. Standart SKU'yu ve boyutunu seçin ve Azure aboneliği, kaynak grubu ve konum bilgilerini sağlayın. Gerekirse, bu uygulama ağ geçidi için yeni bir genel IP oluşturun ve sanal ağ ve uygulama ağ geçidi için özel alt ağ hakkında ayrıntılar sağlayın.
-4. Sanal makinelerle bir arka uç havuzu ekleyin ve uygulama ağ geçidinize ekleyin.
+1. Aboneliğinizde ve kaynak grubunuzda bir sanal ağ oluşturun.
+2. Sanal ağınızda (adanmış alt ağ olarak kullanılmak üzere) bir alt ağ oluşturun.
+3. Standart Application Gateway oluştur (isteğe bağlı olarak WAF 'yi etkinleştir): Azure Portal giriş sayfasından, sayfanın sol üst tarafındaki **kaynak** > **ağı** > **Application Gateway** ' na tıklayın. Standart SKU 'YU ve boyutu seçin ve Azure aboneliği, kaynak grubu ve konum bilgilerini sağlayın. Gerekirse, bu uygulama ağ geçidi için yeni bir genel IP oluşturun ve sanal ağ ile uygulama ağ geçidi için ayrılmış alt ağ hakkında ayrıntılı bilgi sağlayın.
+4. Sanal makineler içeren bir arka uç havuzu ekleyin ve uygulama ağ geçidinize ekleyin.
 
-## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. Özel Bulut'unuzda bir web sunucusu VM havuzu oluşturun ve yapılandırır
+## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. özel bulutunuzda bir Web sunucusu VM havuzu oluşturun ve yapılandırın
 
-vCenter'da, seçtiğiniz işletim sistemi ve web sunucusuyla (Windows/IIS veya Linux/Apache gibi) VM'ler oluşturun. Özel Bulut'unuzdaki web katmanı için belirlenmiş bir alt ağ/VLAN seçin. Web sunucusu VM'lerin en az bir vNIC'sinin web katmanı alt netinde olduğunu doğrulayın.
+VCenter 'da, tercih ettiğiniz işletim sistemi ve Web sunucusu (Windows/IIS veya Linux/Apache gibi) ile VM 'Ler oluşturun. Özel bulutunuzda Web katmanı için belirtilen bir alt ağ/VLAN seçin. Web sunucusu VM 'lerinin en az bir vNIC 'in Web katmanı alt ağında olduğunu doğrulayın.

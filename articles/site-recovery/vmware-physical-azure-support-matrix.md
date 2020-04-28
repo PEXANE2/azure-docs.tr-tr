@@ -1,289 +1,291 @@
 ---
-title: Azure Site Kurtarma'da VMware/fiziksel olağanüstü durum kurtarma için destek matrisi
-description: Azure Site Kurtarma'yı kullanarak VMware VM'lerinin ve fiziksel sunucunun Azure'a olağanüstü durum kurtarma desteğini özetler.
+title: Azure Site Recovery 'de VMware/fiziksel olağanüstü durum kurtarma için destek matrisi
+description: Azure Site Recovery kullanarak, VMware VM 'Leri ve fiziksel sunucu ile Azure arasında olağanüstü durum kurtarma desteğini özetler.
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: 02448754abd92eab9e095a5eaff10861f8b5e5e4
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: eb78f6073d2bcb7289f13d5c994cff8c13f9a6e0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606043"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185804"
 ---
-# <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM'lerinin ve fiziksel sunucuların Azure'a olağanüstü durum kurtarması için destek matrisi
+# <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için destek matrisi
 
-Bu makalede, VMware VM'lerinin ve fiziksel sunucuların [Azure Site Kurtarma'yı](site-recovery-overview.md)kullanarak Azure'a olağanüstü durum kurtarması için desteklenen bileşenler ve ayarlar özetlenmiştir.
+Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak VMware VM 'leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarmaya yönelik desteklenen bileşenler ve ayarlar özetlenmektedir.
 
-- VMware VM/fiziksel sunucu olağanüstü durum kurtarma mimarisi hakkında [daha fazla bilgi edinin.](vmware-azure-architecture.md)
-- Felaket kurtarma denemek için [bizim öğreticiler](tutorial-prepare-azure.md) izleyin.
+- VMware VM/fiziksel sunucu olağanüstü durum kurtarma mimarisi hakkında [daha fazla bilgi edinin](vmware-azure-architecture.md) .
+- Olağanüstü durum kurtarmayı denemek için [öğreticilerimizi](tutorial-prepare-azure.md) izleyin.
 
 ## <a name="deployment-scenarios"></a>Dağıtım senaryoları
 
-**Senaryo** | **Şey**
+**Senaryo** | **Bilgileri**
 --- | ---
-VMware VM'lerin olağanüstü kurtarma | Şirket içi VMware VM'lerin Azure'a çoğaltılması. Bu senaryoyu Azure portalında veya [PowerShell'i](vmware-azure-disaster-recovery-powershell.md)kullanarak dağıtabilirsiniz.
-Fiziksel sunucuların olağanüstü durum kurtarma | Şirket içi Windows/Linux fiziksel sunucularının Azure'a çoğaltılması. Bu senaryoyu Azure portalında dağıtabilirsiniz.
+VMware VM 'lerinin olağanüstü durum kurtarması | Şirket içi VMware VM 'lerinin Azure 'a çoğaltılması. Bu senaryoyu Azure portal veya [PowerShell](vmware-azure-disaster-recovery-powershell.md)kullanarak dağıtabilirsiniz.
+Fiziksel sunucuların olağanüstü durum kurtarması | Şirket içi Windows/Linux fiziksel sunucularını Azure 'a çoğaltma. Bu senaryoyu Azure portal dağıtabilirsiniz.
 
 ## <a name="on-premises-virtualization-servers"></a>Şirket içi sanallaştırma sunucuları
 
-**Sunucu** | **Gereksinimler** | **Şey**
+**Sunucu** | **Gereksinimler** | **Bilgileri**
 --- | --- | ---
-vCenter Server | Sürüm 6.7, 6.5, 6.0 veya 5.5 | Olağanüstü durum kurtarma dağıtımınızda bir vCenter sunucusu kullanmanızı öneririz.
-vSphere ev sahipliği | Sürüm 6.7, 6.5, 6.0 veya 5.5 | vSphere ana bilgisayarlarının ve vCenter sunucularının işlem sunucusuyla aynı ağda bulunmasını öneririz. Varsayılan olarak işlem sunucusu yapılandırma sunucusunda çalışır. [Daha fazla bilgi edinin](vmware-physical-azure-config-process-server-overview.md).
+vCenter Server | Sürüm 6,7, 6,5, 6,0 veya 5,5 | Olağanüstü durum kurtarma dağıtımınızda bir vCenter sunucusu kullanmanızı öneririz.
+vSphere Konakları | Sürüm 6,7, 6,5, 6,0 veya 5,5 | VSphere konaklarının ve vCenter sunucularının, işlem sunucusuyla aynı ağda bulunmasını öneririz. Varsayılan olarak, işlem sunucusu yapılandırma sunucusunda çalışır. [Daha fazla bilgi edinin](vmware-physical-azure-config-process-server-overview.md).
 
 
-## <a name="site-recovery-configuration-server"></a>Site Kurtarma yapılandırma sunucusu
+## <a name="site-recovery-configuration-server"></a>Site Recovery yapılandırma sunucusu
 
-Yapılandırma sunucusu, yapılandırma sunucusu, işlem sunucusu ve ana hedef sunucu dahil olmak üzere Site Kurtarma bileşenlerini çalıştıran şirket içi bir makinedir.
+Yapılandırma sunucusu, yapılandırma sunucusu, işlem sunucusu ve ana hedef sunucu dahil olmak üzere Site Recovery bileşenleri çalıştıran bir şirket içi makinedir.
 
-- VMware VM'ler için, vmware VM oluşturmak için bir OVF şablonu indirerek yapılandırma sunucusunu ayarlarsınız.
+- VMware VM 'Leri için bir VMware VM oluşturmak üzere bir OVF şablonu indirerek yapılandırma sunucusunu ayarlarsınız.
 - Fiziksel sunucular için yapılandırma sunucusu makinesini el ile ayarlarsınız.
 
 **Bileşen** | **Gereksinimler**
 --- |---
 CPU çekirdekleri | 8
 RAM | 16 GB
-Disk sayısı | 3 disk<br/><br/> Diskler işletim sistemi diski, işlem sunucusu önbellek diski ve failback için bekletme sürücüsü içerir.
-Disk boş alanı | İşlem sunucusu önbelleği için 600 GB alan.
-Disk boş alanı | Bekletme sürücüsü için 600 GB alan.
-İşletim sistemi  | Masaüstü deneyimiyle Windows Server 2012 R2 veya Windows Server 2016 <br/><br> Bu cihazın dahili Master Target'ını geri tepme için kullanmayı planlıyorsanız, işletim sistemi sürümünün çoğaltılan öğelerle aynı veya daha yüksek olduğundan emin olun.|
+Disk sayısı | 3 disk<br/><br/> Diskler işletim sistemi diski, işlem sunucusu önbellek diski ve yeniden çalışma için bekletme sürücüsü içerir.
+Boş disk alanı | işlem sunucusu önbelleği için 600 GB alan.
+Boş disk alanı | bekletme sürücüsü için 600 GB alan.
+İşletim sistemi  | Windows Server 2012 R2 veya masaüstü deneyimi ile Windows Server 2016 <br/><br> Bu gerecin yerleşik ana hedefini yeniden çalışma için kullanmayı planlıyorsanız, işletim sistemi sürümünün çoğaltılan öğelerden aynı veya daha yüksek olduğundan emin olun.|
 İşletim sistemi yerel ayarı | İngilizce (en-us)
-[PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Yapılandırma sunucusu sürümü [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) veya sonrası için gerekli değildir.
-Windows Server rolleri | Active Directory Domain Services'ı etkinleştirme; İnternet Bilgi Hizmetleri (IIS) veya Hyper-V.
-Grup ilkeleri| - Komut istemine erişimi engelleyin. <br/> - Kayıt defteri düzenleme araçlarına erişimi engelleyin. <br/> - Dosya ekleri için güven mantığı. <br/> - Komut Dosyası Yürütme'yi açın. <br/> - [Daha fazla bilgi](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | Şunları yaptığınızdan emin olun:<br/><br/> - Önceden varolan bir varsayılan web siteniz yok <br/> - [Anonim kimlik doğrulamayı etkinleştirme](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştirin  <br/> - 443 sayılı bağlantı noktasında önceden web sitesi/uygulama dinleme yok<br/>
-NIC türü | VMXNET3 (VMware VM olarak dağıtıldığında)
+[PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Yapılandırma sunucusu sürüm [9,14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) veya üzeri için gerekli değildir.
+Windows Server rolleri | Active Directory Domain Services etkinleştirmeyin; Internet Information Services (IIS) veya Hyper-V.
+Grup ilkeleri| -Komut istemine erişimi engelleyin. <br/> -Kayıt defteri düzenlemesi araçlarına erişimi engelleyin. <br/> -Dosya ekleri için güven mantığı. <br/> -Betik yürütmeyi açın. <br/> - [Daha fazla bilgi](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+IIS | Şunları yaptığınızdan emin olun:<br/><br/> -Önceden var olan varsayılan Web siteniz yok <br/> - [Anonim kimlik doğrulamasını](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) etkinleştir <br/> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştir  <br/> -443 numaralı bağlantı noktasında önceden bir Web sitesine/uygulamaya dinleme yapmayın<br/>
+NIC türü | VMXNET3 (bir VMware sanal makinesi olarak dağıtıldığında)
 IP adresi türü | Statik
-Bağlantı Noktaları | Kontrol kanalı orkestrasyonu için kullanılan 443<br/>Veri taşıma için 9443
+Bağlantı noktaları | denetim kanalı düzenleme için kullanılan 443<br/>veri aktarımı için 9443
 
 ## <a name="replicated-machines"></a>Çoğaltılan makineler
 
-Site Kurtarma, desteklenen bir makinede çalışan tüm iş yükünün çoğaltılması işlemini destekler.
+Site Recovery, desteklenen bir makinede çalışan herhangi bir iş yükünün çoğaltılmasını destekler.
 
 > [!Note]
-> Aşağıdaki tabloda BIOS önyüklemeli makineler için destek listelenir. UEFI tabanlı makinelerde destek için lütfen [Depolama](#storage) bölümüne bakın.
+> Aşağıdaki tabloda, BIOS önyüklemesi olan makineler için destek listelenmiştir. UEFı tabanlı makinelerde destek için lütfen [depolama](#storage) bölümüne bakın.
 
-**Bileşen** | **Şey**
+**Bileşen** | **Bilgileri**
 --- | ---
-Makine ayarları | Azure'da çoğalan makineler [Azure gereksinimlerini](#azure-vm-requirements)karşılamalıdır.
-Makine iş yükü | Site Kurtarma, desteklenen bir makinede çalışan tüm iş yükünün çoğaltılması işlemini destekler. [Daha fazla bilgi edinin](https://aka.ms/asr_workload).
-Makine adı | Makinenin görüntü adının Azure ayrılmış [kaynak adlarına](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-reserved-resource-name) düşmediğinden emin olun<br/><br/> Mantıksal birim adları büyük/küçük harf duyarlı değildir. Aygıttaki iki birimin aynı ada sahip olmadığından emin olun. Ör: "voLUME1", "volume1" adlarını içeren birimler Azure Site Kurtarma yoluyla korunamaz.
-Windows Server 2019 | [Update rollup 34](https://support.microsoft.com/help/4490016) 'den (Mobilite hizmetinin 9.22 sürümü) itibaren desteklenir.
-Windows Server 2016 64 bit | Server Core, Desktop Experience ile Server için desteklenir.
-Windows Server 2012 R2 / Windows Server 2012 | Destekleniyor.
-Windows Server 2008 R2 SP1 ile itibaren. | Destekleniyor.<br/><br/> Mobilite servis aracısının [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) sürümünden, Windows 2008 R2 çalıştıran makinelerde SP1 veya daha yeni olan servis [yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesinin](https://support.microsoft.com/help/4474419) yüklü olarak yüklenmesi gerekir. SHA-1 Eylül 2019'dan itibaren desteklenmez ve SHA-2 kod imzalama etkin değilse aracı uzantısı beklendiği gibi yüklenmez/yükseltmeyapmaz. [SHA-2 yükseltmesi ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
-Windows Server 2008 SP2 veya daha sonra (64-bit/32-bit) ile |  Yalnızca geçiş için desteklenir. [Daha fazla bilgi edinin](migrate-tutorial-windows-server-2008.md).<br/><br/> Mobilite servis aracısının [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) sürümünden, Windows 2008 SP2 makinelerinde hizmet [yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4493730) ve [SHA-2 güncelleştirmesinin](https://support.microsoft.com/help/4474419) yüklü olarak yüklenmesi gerekir. ISHA-1 Eylül 2019'dan itibaren desteklenmez ve SHA-2 kod imzalama etkin değilse aracı uzantısı beklendiği gibi yüklenmez/yükseltmez. [SHA-2 yükseltmesi ve gereksinimleri](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)hakkında daha fazla bilgi edinin.
+Makine ayarları | Azure 'a çoğaltılan makinelerin [Azure gereksinimlerini](#azure-vm-requirements)karşılaması gerekir.
+Makine iş yükü | Site Recovery, desteklenen bir makinede çalışan herhangi bir iş yükünün çoğaltılmasını destekler. [Daha fazla bilgi edinin](https://aka.ms/asr_workload).
+Makine adı | Makinenin görünen adının [Azure ayrılmış kaynak adlarına](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-reserved-resource-name) sahip olmadığından emin olun<br/><br/> Mantıksal birim adları büyük/küçük harfe duyarlı değildir. Cihazdaki iki birimin aynı ada sahip olmadığından emin olun. Ex: "voLUME1", "voLUME1" adlı birimler Azure Site Recovery aracılığıyla korunamaz.
+Windows Server 2019 | [Güncelleştirme paketi 34](https://support.microsoft.com/help/4490016) (Mobility hizmetinin sürüm 9,22) ve sonraki sürümlerde desteklenir.
+Windows Server 2016 64-bit | Sunucu çekirdeği için desteklenir, masaüstü deneyimi olan sunucu.
+Windows Server 2012 R2/Windows Server 2012 | Destekleniyor.
+Windows Server 2008 R2 SP1 ve sonraki sürümler. | Destekleniyor.<br/><br/> Mobility hizmeti aracısının [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) sürümünden, SP1 veya sonraki sürümleriyle Windows 2008 R2 çalıştıran makinelerde [hizmet yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) gerekir. SHA-1 Eylül 2019 ' den desteklenmez ve SHA-2 kod imzalama etkinleştirilmemişse, aracı uzantısı beklendiği gibi yüklenmez/yükseltilmez. [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
+Windows Server 2008 SP2 veya üzeri (64 bit/32 bit) |  Yalnızca geçiş için desteklenir. [Daha fazla bilgi edinin](migrate-tutorial-windows-server-2008.md).<br/><br/> Mobility hizmeti aracısının [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) . sürümünden WINDOWS 2008 SP2 makinelerinde [hizmet yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4493730) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) yüklü olmalıdır. ISHA-1 Eylül 2019 ' den desteklenmez ve SHA-2 kod imzalama etkinleştirilmemişse, aracı uzantısı beklendiği gibi yüklenmez/yükseltilmez. [SHA-2 yükseltme ve gereksinimleri](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)hakkında daha fazla bilgi edinin.
 10, Windows 8.1, Windows 8 | Destekleniyor.
-Windows 7 SP1 64-bit ile | [Update rollup 36'dan](https://support.microsoft.com/help/4503156) (Mobilite hizmetinin 9.22 sürümü) itibaren desteklenir. </br></br> Mobility servis aracısının [9.30'undan](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) itibaren, Windows 7 SP1 makinelerinde hizmet [yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesinin](https://support.microsoft.com/help/4474419) yüklü olarak yüklenmesi gerekir.  SHA-1 Eylül 2019'dan itibaren desteklenmez ve SHA-2 kod imzalama etkin değilse aracı uzantısı beklendiği gibi yüklenmez/yükseltmeyapmaz. [SHA-2 yükseltmesi ve gereksinimleri](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)hakkında daha fazla bilgi edinin.
-Linux | Yalnızca 64 bit sistem desteklenir. 32 bit sistem desteklenmiyor.<br/><br/>Her Linux sunucusunda [Linux Entegrasyon Hizmetleri (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklü olmalıdır. Test başarısız olduktan/başarısız olduktan sonra sunucuyu Azure'da önyükleme yapmak gerekir. LIS bileşenleri eksikse, makinelerin Azure'da önyükleme yapmasını etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun. <br/><br/> Site Kurtarma, Azure'da Linux sunucularını çalıştırmak için başarısız olur. Ancak Linux satıcıları desteği yalnızca yaşam sonuna ulaşmamış dağıtım sürümleriyle sınırlandırabilir.<br/><br/> Linux dağıtımlarında, yalnızca dağıtım küçük sürüm sürümü/güncelleştirmesinin bir parçası olan stok çekirdekleri desteklenir.<br/><br/> Korumalı makinelerin büyük Linux dağıtım sürümlerinde yükseltilmesi desteklenmez. Çoğaltmayı yükseltmek için çoğaltmayı devre dışı, işletim sistemini yükseltin ve ardından çoğaltmayı yeniden etkinleştirin.<br/><br/> Azure'da Linux ve açık kaynak teknolojisi desteği hakkında [daha fazla bilgi edinin.](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)
-Linux Red Hat Enterprise | 5.2 ile 5.11 arasında</b><br/> 6.1 ile 6.10 arasında</b> </br> 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7,](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8.1 <br/> Red Hat Enterprise Linux 5.2-5.11 çalıştıran sunucular & 6.1-6.10 [Linux Entegrasyon Hizmetleri (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) önceden yüklenmiş değil. Makinelerin Azure'da önyükleme yapmasını etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun.
-Linux: CentOS | 5.2 ile 5.11 arasında</b><br/> 6.1 ile 6.10 arasında</b><br/> 7.0 ile 7.6 arasında<br/> <br/> 8.0 ile 8.1 arasında<br/><br/> CentOS 5.2-5.11 & 6.1-6.10 çalıştıran sunucularda [Linux Tümleştirme Hizmetleri (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) önceden yüklenmemiştir. Makinelerin Azure'da önyükleme yapmasını etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun.
-Ubuntu | Ubuntu 14.04 LTS sunucusu [(çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS sunucusu [(çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS sunucusu [(çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions)
-Debian | Debian 7/Debian 8 [(inceleme desteklenen çekirdek sürümleri)](#debian-kernel-versions)
-SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(çekirdek sürümlerini gözden geçirin)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(çekirdek sürümlerini gözden geçirin)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Çoğaltılan makinelerin SUSE Linux Enterprise Server 11 SP3'ten SP4'e yükseltilmesi desteklenmez. Yükseltmek için çoğaltmayı devre dışı bırakıp yükseltmeden sonra yeniden etkinleştirin.
-Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Red Hat uyumlu çekirdek veya Kırılmaz Enterprise Çekirdek Yayın 3, 4 & 5 (UEK3, UEK4, UEK5)
+Windows 7 SP1 64-bit | [Güncelleştirme paketi 36](https://support.microsoft.com/help/4503156) (Mobility hizmetinin sürüm 9,22) ve sonraki sürümlerde desteklenir. </br></br> Mobility hizmeti aracısının [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) ' den Itibaren, WINDOWS 7 SP1 makinelerinde yüklü [hizmet yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) gerekir.  SHA-1 Eylül 2019 ' den desteklenmez ve SHA-2 kod imzalama etkinleştirilmemişse, aracı uzantısı beklendiği gibi yüklenmez/yükseltilmez. [SHA-2 yükseltme ve gereksinimleri](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)hakkında daha fazla bilgi edinin.
+Linux | Yalnızca 64 bit sistem desteklenir. 32 bit sistem desteklenmez.<br/><br/>Her Linux sunucusunda [Linux Integration Services (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklü olmalıdır. Yük devretme/yük devretme testi sonrasında Azure 'da sunucuyu önyüklemek gerekir. Yerleşik LIS bileşenleri eksikse, makinelerin Azure 'da önyüklenebilmesi için çoğaltmayı etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun. <br/><br/> Azure 'da Linux sunucularını çalıştırmak için yük devretmeyi Site Recovery. Ancak, Linux satıcıları, desteği yalnızca yaşam sonuna ulaşmamış olan dağıtım sürümleriyle sınırlayabilir.<br/><br/> Linux dağıtımları üzerinde yalnızca dağıtım alt sürüm sürümü/güncelleştirmesi 'nin bir parçası olan hisse senedi çekirdekleri desteklenir.<br/><br/> Korunan makinelerin birincil Linux dağıtım sürümleri arasında yükseltilmesi desteklenmez. Yükseltmek için çoğaltmayı devre dışı bırakın, işletim sistemini yükseltin ve sonra çoğaltmayı yeniden etkinleştirin.<br/><br/> Azure 'da Linux ve açık kaynaklı teknoloji desteği hakkında [daha fazla bilgi edinin](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) .
+Linux Red Hat Enterprise | 5,2 5,11</b><br/> 6,1 6,10</b> </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1 <br/> Red Hat Enterprise Linux 5.2-5.11 & 6.1-6.Server çalıştıran sunucularda daha eski çekirdekler, [Linux Integration Services (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) önceden yüklenmiş değildir. Yerleşik LIS bileşenleri eksikse, makinelerin Azure 'da önyüklenebilmesi için çoğaltmayı etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun.
+Linux: CentOS | 5,2 5,11</b><br/> 6,1 6,10</b><br/> 7,0 7,6<br/> <br/> 8,0 8,1<br/><br/> CentOS 5.2-5.11 & 6.1-6.Server çalıştıran sunucularda daha eski çekirdekler, [Linux Integration Services (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) önceden yüklenmiş değildir. Yerleşik LIS bileşenleri eksikse, makinelerin Azure 'da önyüklenebilmesi için çoğaltmayı etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun.
+Ubuntu | Ubuntu 14,04 LTS sunucusu [(desteklenen çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16,04 LTS sunucusu [(desteklenen çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions) </br> Ubuntu 18,04 LTS sunucusu [(desteklenen çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions)
+Debian | 7. ve 8. [(desteklenen çekirdek sürümlerini gözden geçirin)](#debian-kernel-versions)
+SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(desteklenen çekirdek sürümlerini gözden geçirin)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(desteklenen çekirdek sürümlerini gözden geçirin)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> SUSE Linux Enterprise Server 11 SP3 'den SP4 'e çoğaltılan makinelerin yükseltilmesi desteklenmez. Yükseltmek için çoğaltmayı devre dışı bırakıp yükseltmeden sonra yeniden etkinleştirin.
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Red Hat uyumlu çekirdek veya ayırıcı kurumsal çekirdek sürümü 3, 4 & 5 (UEK3, UEK4, UEK5) çalıştırılıyor
 
 > [!Note]
-> Azure Site Kurtarma, Windows sürümlerinin her biri için yalnızca [Uzun Vadeli Servis Kanalı (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) yapılarını destekler.  [Altı Aylık Kanal](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) sürümleri şu anda desteklenmiş.
+> Windows sürümlerinin her biri için Azure Site Recovery yalnızca [uzun süreli bakım kanalı (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) derlemelerini destekler.  [Yarı yıllık kanal](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) yayınları Şu anda şu anda desteklenmiyor.
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu çekirdek sürümleri
 
-**Desteklenen sürüm** | **Mobilite hizmeti sürümü** | **Çekirdek sürümü** |
+**Desteklenen yayın** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
-14.04 LTS | [9.32][9.32 UR] | 3.13.0-24-jenerik için 3.13.0-170-jenerik,<br/>3.16.0-25-jenerik için 3.16.0-77-jenerik,<br/>3.19.0-18-jenerik için 3.19.0-80-jenerik,<br/>4.2.0-18-jenerik için 4.2.0-42-jenerik,<br/>4.4.0-21-jenerik için 4.4.0-148-jenerik,<br/>4.15.0-1023-azure için 4.15.0-1045-azure |
-14.04 LTS | [9.31][9.31 UR] | 3.13.0-24-jenerik için 3.13.0-170-jenerik,<br/>3.16.0-25-jenerik için 3.16.0-77-jenerik,<br/>3.19.0-18-jenerik için 3.19.0-80-jenerik,<br/>4.2.0-18-jenerik için 4.2.0-42-jenerik,<br/>4.4.0-21-jenerik için 4.4.0-148-jenerik,<br/>4.15.0-1023-azure için 4.15.0-1045-azure |
-14.04 LTS | [9.30][9.30 UR] | 3.13.0-24-jenerik için 3.13.0-170-jenerik,<br/>3.16.0-25-jenerik için 3.16.0-77-jenerik,<br/>3.19.0-18-jenerik için 3.19.0-80-jenerik,<br/>4.2.0-18-jenerik için 4.2.0-42-jenerik,<br/>4.4.0-21-jenerik için 4.4.0-148-jenerik,<br/>4.15.0-1023-azure için 4.15.0-1045-azure |
-14.04 LTS | [9.29][9.29 UR]| 3.13.0-24-jenerik için 3.13.0-170-jenerik,<br/>3.16.0-25-jenerik için 3.16.0-77-jenerik,<br/>3.19.0-18-jenerik için 3.19.0-80-jenerik,<br/>4.2.0-18-jenerik için 4.2.0-42-jenerik,<br/>4.4.0-21-jenerik için 4.4.0-148-jenerik,<br/>4.15.0-1023-azure için 4.15.0-1045-azure |
+14,04 LTS | [9,32][9.32 UR] | 3.13.0-24-genel-3.13.0-170-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-148-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1045-Azure |
+14,04 LTS | [9,31][9.31 UR] | 3.13.0-24-genel-3.13.0-170-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-148-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1045-Azure |
+14,04 LTS | [9,30][9.30 UR] | 3.13.0-24-genel-3.13.0-170-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-148-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1045-Azure |
+14,04 LTS | [9,29][9.29 UR]| 3.13.0-24-genel-3.13.0-170-Generic,<br/>3.16.0-25-Genel-3.16.0-77-Generic,<br/>3.19.0-18-Generic ila 3.19.0-80-Generic,<br/>4.2.0-18-Generic ila 4.2.0-42-Generic,<br/>4.4.0-21-Generic-4.4.0-148-Generic,<br/>4.15.0-1023-Azure to 4.15.0-1045-Azure |
 |||
-16.04 LTS | [9.32][9.32 UR] | 4.4.0-21-jenerik için 4.4.0-171-jenerik,<br/>4.8.0-34-jenerik için 4.8.0-58-jenerik,<br/>4.10.0-14-jenerik için 4.10.0-42-jenerik,<br/>4.11.0-13-jenerik için 4.11.0-14-jenerik,<br/>4.13.0-16-jenerik için 4.13.0-45-jenerik,<br/>4.15.0-13-jenerik için 4.15.0-74-jenerik<br/>4.11.0-1009-azure için 4.11.0-1016-azure,<br/>4.13.0-1005-azure için 4.13.0-1018-azure <br/>4.15.0-1012-azure için 4.15.0-1066-azure|
-16.04 LTS | [9.31][9.31 UR] | 4.4.0-21-jenerik için 4.4.0-170-jenerik,<br/>4.8.0-34-jenerik için 4.8.0-58-jenerik,<br/>4.10.0-14-jenerik için 4.10.0-42-jenerik,<br/>4.11.0-13-jenerik için 4.11.0-14-jenerik,<br/>4.13.0-16-jenerik için 4.13.0-45-jenerik,<br/>4.15.0-13-jenerik için 4.15.0-72-jenerik<br/>4.11.0-1009-azure için 4.11.0-1016-azure,<br/>4.13.0-1005-azure için 4.13.0-1018-azure <br/>4.15.0-1012-azure için 4.15.0-1063-azure|
-16.04 LTS | [9.30][9.30 UR] | 4.4.0-21-jenerik için 4.4.0-166-jenerik,<br/>4.8.0-34-jenerik için 4.8.0-58-jenerik,<br/>4.10.0-14-jenerik için 4.10.0-42-jenerik,<br/>4.11.0-13-jenerik için 4.11.0-14-jenerik,<br/>4.13.0-16-jenerik için 4.13.0-45-jenerik,<br/>4.15.0-13-jenerik için 4.15.0-66-jenerik<br/>4.11.0-1009-azure için 4.11.0-1016-azure,<br/>4.13.0-1005-azure için 4.13.0-1018-azure <br/>4.15.0-1012-azure için 4.15.0-1061-azure|
-16.04 LTS | [9.29][9.29 UR] | 4.4.0-21-jenerik için 4.4.0-164-jenerik,<br/>4.8.0-34-jenerik için 4.8.0-58-jenerik,<br/>4.10.0-14-jenerik için 4.10.0-42-jenerik,<br/>4.11.0-13-jenerik için 4.11.0-14-jenerik,<br/>4.13.0-16-jenerik için 4.13.0-45-jenerik,<br/>4.15.0-13-jenerik için 4.15.0-64-jenerik<br/>4.11.0-1009-azure için 4.11.0-1016-azure,<br/>4.13.0-1005-azure için 4.13.0-1018-azure <br/>4.15.0-1012-azure için 4.15.0-1059-azure|
+16,04 LTS | [9,32][9.32 UR] | 4.4.0-21-Generic-4.4.0-171-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-74-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1066-Azure|
+16,04 LTS | [9,31][9.31 UR] | 4.4.0-21-Generic-4.4.0-170-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-72-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1063-Azure|
+16,04 LTS | [9,30][9.30 UR] | 4.4.0-21-Generic ile 4.4.0-166-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Genel-4.15.0-66-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1061-Azure|
+16,04 LTS | [9,29][9.29 UR] | 4.4.0-21-Generic-4.4.0-164-Generic,<br/>4.8.0-34-Generic ile 4.8.0-58-Generic,<br/>4.10.0-14-generic-4.10.0-42-Generic,<br/>4.11.0-13-Genel-4.11.0-14-generic,<br/>4.13.0-16-Generic to 4.13.0-45-Generic,<br/>4.15.0-13-Generic-4.15.0-64-Generic<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1059-Azure|
 |||
-18.04 LTS | [9.32][9.32 UR]| 4.15.0-20-jenerik için 4.15.0-74-jenerik </br> 4.18.0-13-jenerik için 4.18.0-25-jenerik </br> 5.0.0-15-jenerik için 5.0.0-37-jenerik </br> 5.3.0-19-jenerik için 5.3.0-24-jenerik </br> 4.15.0-1009-azure için 4.15.0-1037-azure </br> 4.18.0-1006-azure için 4.18.0-1025-azure </br> 5.0.0-1012-azure için 5.0.0-1028-azure </br> 5.3.0-1007-azure için 5.3.0-1009-azure|
-18.04 LTS | [9.31][9.31 UR]| 4.15.0-20-jenerik için 4.15.0-72-jenerik </br> 4.18.0-13-jenerik için 4.18.0-25-jenerik </br> 5.0.0-15-jenerik için 5.0.0-37-jenerik </br> 5.3.0-19-jenerik için 5.3.0-24-jenerik </br> 4.15.0-1009-azure için 4.15.0-1037-azure </br> 4.18.0-1006-azure için 4.18.0-1025-azure </br> 5.0.0-1012-azure için 5.0.0-1025-azure </br> 5.3.0-1007-azure|
-18.04 LTS | [9.30][9.30 UR] | 4.15.0-20-jenerik için 4.15.0-66-jenerik </br> 4.18.0-13-jenerik için 4.18.0-25-jenerik </br> 5.0.0-15-genel 5.0.0-32-jenerik </br> 4.15.0-1009-azure için 4.15.0-1037-azure </br> 4.18.0-1006-azure için 4.18.0-1025-azure </br> 5.0.0-1012-azure için 5.0.0-1023-azure|
-18.04 LTS | [9.29][9.29 UR] | 4.15.0-20-jenerik için 4.15.0-62-jenerik </br> 4.18.0-13-jenerik için 4.18.0-25-jenerik </br> 5.0.0-15-genel için 5.0.0-27-jenerik </br> 4.15.0-1009-azure için 4.15.0-1037-azure </br> 4.18.0-1006-azure için 4.18.0-1025-azure </br> 5.0.0-1012-azure için 5.0.0-1018-azure|
+18,04 LTS | [9,32][9.32 UR]| 4.15.0-20-Genel-4.15.0-74-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-37-Generic </br> 5.3.0-19-Generic-5.3.0-24-genel </br> 4.15.0-1009-Azure-4.15.0-1037-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1028-Azure </br> 5.3.0-1007-Azure-5.3.0-1009-Azure|
+18,04 LTS | [9,31][9.31 UR]| 4.15.0-20-Genel-4.15.0-72-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-37-Generic </br> 5.3.0-19-Generic-5.3.0-24-genel </br> 4.15.0-1009-Azure-4.15.0-1037-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1025-Azure </br> 5.3.0-1007-Azure|
+18,04 LTS | [9,30][9.30 UR] | 4.15.0-20-Genel-4.15.0-66-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-32-Generic </br> 4.15.0-1009-Azure-4.15.0-1037-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1023-Azure|
+18,04 LTS | [9,29][9.29 UR] | 4.15.0-20-Genel-4.15.0-62-Generic </br> 4.18.0-13-Genel-4.18.0-25-genel </br> 5.0.0-15-genel-5.0.0-27-Generic </br> 4.15.0-1009-Azure-4.15.0-1037-Azure </br> 4.18.0-1006-Azure to 4.18.0-1025-Azure </br> 5.0.0-1012-Azure-5.0.0-1018-Azure|
 
-### <a name="debian-kernel-versions"></a>Debian çekirdek sürümleri
+### <a name="debian-kernel-versions"></a>Çekirdek sürümlerini kaldırma
 
 
-**Desteklenen sürüm** | **Mobilite hizmeti sürümü** | **Çekirdek sürümü** |
+**Desteklenen yayın** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
-Debian 7 | [9.29][9.29 UR], [9.30][9.30 UR], [9.31][9.31 UR], [9.32][9.32 UR]| 3.2.0-4-amd64 için 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Deyi 7 | [9,29][9.29 UR], [9,30][9.30 UR], [9,31][9.31 UR], [9,32][9.32 UR]| 3.2.0-4-AMD64-3.2.0-6-AMD64, 3.16.0 -0. BPO. 4-AMD64 |
 |||
-Debian 8 | [9.30][9.30 UR], [9.31][9.31 UR], [9.32][9.32 UR] | 3.16.0-4-amd64 ila 3.16.0-10-amd64, 4.9.0-0.bpo.4-amd64 ila 4.9.0-0.bpo.11-amd64 |
-Debian 8 | [9.29][9.29 UR] | 3.16.0-4-amd64 ila 3.16.0-10-amd64, 4.9.0-0.bpo.4-amd64 ila 4.9.0-0.bpo.9-amd64 |
+Debian 8 | [9,30][9.30 UR], [9,31][9.31 UR], [9,32][9.32 UR] | 3.16.0-4-AMD64-3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0. BPO. 11-AMD64 |
+Debian 8 | [9,29][9.29 UR] | 3.16.0-4-AMD64-3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0. BPO. 9-AMD64 |
 
-### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 desteklenen çekirdek sürümleri
+### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 desteklenen çekirdek sürümü
 
-**Yayınla** | **Mobilite hizmeti sürümü** | **Çekirdek sürümü** |
+**Yayınla** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.28][9.28 UR] | SP1 3.12.49-11-varsayılan 3.12.74-60.64.40-varsayılan</br></br> SP1(LTSS) 3.12.74-60.64.45-varsayılan 3.12.74-60.64.118-varsayılan</br></br> SP2 4.4.21-69-varsayılan 4.4.120-92.70-varsayılan</br></br>SP2(LTSS) 4.4.121-92.73-varsayılan 4.4.121-92.117-varsayılan</br></br>SP3 4.4.73-5-varsayılan 4.4.180-94.100-varsayılan</br></br>SP3 4.4.138-4.7-azure için 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-varsayılan 4.12.14-95.29-varsayılan</br>SP4 4.12.14-6.3-azure için 4.12.14-6.23-azure |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.27][9.27 UR] | SP1 3.12.49-11-varsayılan 3.12.74-60.64.40-varsayılan</br></br> SP1(LTSS) 3.12.74-60.64.45-varsayılan 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69-varsayılan 4.4.120-92.70-varsayılan</br></br>SP2(LTSS) 4.4.121-92.73-varsayılan 4.4.121-92.114-varsayılan</br></br>SP3 4.4.73-5-varsayılan 4.4.180-94.97-varsayılan</br></br>SP3 4.4.138-4.7-azure için 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-varsayılan 4.12.14-95.19-varsayılan</br>SP4 4.12.14-6.3-azure için 4.12.14-6.15-azure |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.26][9.26 UR] | SP1 3.12.49-11-varsayılan 3.12.74-60.64.40-varsayılan</br></br> SP1(LTSS) 3.12.74-60.64.45-varsayılan 3.12.74-60.64.110-varsayılan</br></br> SP2 4.4.21-69-varsayılan 4.4.120-92.70-varsayılan</br></br>SP2(LTSS) 4.4.121-92.73-varsayılan 4.4.121-92.109-varsayılan</br></br>SP3 4.4.73-5-default için 4.4.178-94.91-varsayılan</br></br>SP3 4.4.138-4.7-azure için 4.4.178-4.28-azure</br></br>SP4 4.12.14-94.41-varsayılan 4.12.14-95.16-varsayılan</br>SP4 4.12.14-6.3-azure için 4.12.14-6.9-azure |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.25][9.25 UR] | SP1 3.12.49-11-varsayılan 3.12.74-60.64.40-varsayılan</br></br> SP1(LTSS) 3.12.74-60.64.45-varsayılan 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-varsayılan 4.4.120-92.70-varsayılan</br></br>SP2(LTSS) 4.4.121-92.73-varsayılan 4.4.121-92.104-varsayılan</br></br>SP3 4.4.73-5-default için 4.4.176-94.88-varsayılan</br></br>SP3 4.4.138-4.7-azure için 4.4.176-4.25-azure</br></br>SP4 4.12.14-94.41-varsayılan 4.12.14-95.13-varsayılan</br>SP4 4.12.14-6.3-azure için 4.12.14-6.9-azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,28][9.28 UR] | SP1 3.12.49-11-varsayılan olarak 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-varsayılan olarak 3.12.74-60.64.118-default</br></br> SP2 4.4.21-69-varsayılan olarak 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-varsayılan olarak 4.4.121-92.117-default</br></br>SP3 4.4.73-5-varsayılan olarak 4.4.180-94.100-default</br></br>SP3 4.4.138-4.7-Azure to 4.4.180-4.31-Azure</br></br>SP4 4.12.14-94.41-varsayılan olarak 4.12.14-95.29-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6.23-Azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,27][9.27 UR] | SP1 3.12.49-11-varsayılan olarak 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-varsayılan olarak 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69-varsayılan olarak 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-varsayılan olarak 4.4.121-92.114-default</br></br>SP3 4.4.73-5-varsayılan olarak 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-Azure to 4.4.180-4.31-Azure</br></br>SP4 4.12.14-94.41-varsayılan olarak 4.12.14-95.19-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6.15-Azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,26][9.26 UR] | SP1 3.12.49-11-varsayılan olarak 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-varsayılan olarak 3.12.74-60.64.110-default</br></br> SP2 4.4.21-69-varsayılan olarak 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-varsayılan olarak 4.4.121-92.109-default</br></br>SP3 4.4.73-5-varsayılan olarak 4.4.178-94.91-default</br></br>SP3 4.4.138-4.7-Azure to 4.4.178-toplam 4,28 olacaktır-Azure</br></br>SP4 4.12.14-94.41-varsayılan olarak 4.12.14-95.16-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6.9-Azure |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,25][9.25 UR] | SP1 3.12.49-11-varsayılan olarak 3.12.74-60.64.40-default</br></br> SP1 (LTSS) 3.12.74-60.64.45-varsayılan olarak 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-varsayılan olarak 4.4.120-92.70-default</br></br>SP2 (LTSS) 4.4.121-92.73-varsayılan olarak 4.4.121-92.104-default</br></br>SP3 4.4.73-5-varsayılan olarak 4.4.176-94.88-default</br></br>SP3 4.4.138-4.7-Azure to 4.4.176-4.25-Azure</br></br>SP4 4.12.14-94.41-varsayılan olarak 4.12.14-95.13-default</br>SP4 4.12.14-6.3-Azure to 4.12.14-6.9-Azure |
 
-### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux Enterprise Server 15 desteklenen çekirdek sürümleri
+### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux Enterprise Server 15 desteklenen çekirdek sürümü
 
-**Yayınla** | **Mobilite hizmeti sürümü** | **Çekirdek sürümü** |
+**Yayınla** | **Mobility hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 ve 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | Tüm stok SUSE 15 ve 15 çekirdekleri desteklenir. </br></br> 4.12.14-5.5-azure için 4.12.14-8.22-azure
+SUSE Linux Enterprise Server 15 ve 15 SP1 | [9,32](https://support.microsoft.com/help/4550047/) | Tüm hisse senedi SUSE 15 ve 15 çekirdekler desteklenir. </br></br> 4.12.14-5,5-Azure to 4.12.14-8.22-Azure
 
-## <a name="linux-file-systemsguest-storage"></a>Linux dosya sistemleri/konuk depolama
+## <a name="linux-file-systemsguest-storage"></a>Linux dosya sistemleri/Konuk depolama
 
-**Bileşen** | **Desteklenen**
+**Bileşen** | **Destek**
 --- | ---
-Dosya sistemleri | ext3, ext4, XFS, BTRFS (bu tabloya göre geçerli koşullar)
-Birim yöneticisi | - LVM desteklenir.<br/> - /boot ON LVM, [Update Rollup 31'den](https://support.microsoft.com/help/4478871/) (Mobilite hizmetinin 9.20 sürümü) itibaren desteklenir. Önceki Mobilite hizmet sürümlerinde desteklenmez.<br/> - Birden çok işletim sistemi diski desteklenmez.
-Paravirtualized depolama cihazları | Parasanallaştırılmış sürücüler tarafından dışarı aktarılan cihazlar desteklenmez.
-Çok sıralı blok IO aygıtları | Desteklenmiyor.
-HP CCISS depolama denetleyicisi olan fiziksel sunucular | Desteklenmiyor.
-Aygıt/Montaj noktası adlandırma kuralı | Aygıt adı veya montaj noktası adı benzersiz olmalıdır.<br/> İki aygıtın/montaj noktasının büyük/küçük harf duyarlı adlar olmadığından emin olun. Örneğin, *aygıt1* ve *Device1* ile aynı VM aygıtlarını adlandırma desteklenmez.
-Dizinler | Mobilite hizmetinin bir sürümünü sürüm 9.20'den [(Güncelleştirme Rollup 31'de](https://support.microsoft.com/help/4478871/)yayımlandı) daha önce çalıştırıyorsanız, bu kısıtlamalar geçerlidir:<br/><br/> - Bu dizinler (ayrı bölümler/dosya sistemleri olarak ayarlanmışsa) kaynak sunucuda aynı işletim sistemi diskinde olmalıdır: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - /boot dizini bir disk bölümü üzerinde olmalı ve bir LVM hacmi olmamalıdır.<br/><br/> Sürüm 9.20'den itibaren bu kısıtlamalar geçerli değildir. 
-Önyükleme dizini | - Önyükleme diskleri GPT bölüm biçiminde olmamalıdır. Bu bir Azure mimarisi sınırlamasıdır. GPT diskleri veri diski olarak desteklenir.<br/><br/> VM'deki birden çok önyükleme diski desteklenmiyor<br/><br/> - Birden fazla diskteki LVM biriminde /boot desteklenmez.<br/> - Önyükleme diski olmayan bir makine çoğaltılamaz.
-Boş alan gereksinimleri| /kök bölmede 2 GB <br/><br/> Yükleme klasöründe 250 MB
-XFSv5 | Meta data checksum gibi XFS dosya sistemlerindeki XFSv5 özellikleri desteklenir (Mobilite hizmeti sürümü 9.10'dan itibaren).<br/> Bölüm için XFS süper bloğunu denetlemek için xfs_info yardımcı programını kullanın. 1 `ftype` olarak ayarlanmışsa, XFSv5 özellikleri kullanılır.
-BTRFS | BTRFS, Update [Rollup 34'ten](https://support.microsoft.com/help/4490016) (Mobilite hizmetinin 9.22 sürümü) itibaren desteklenir. BTRFS şu larsa desteklenmez:<br/><br/> - BTRFS dosya sistemi alt hacmi, koruma sağladıktan sonra değiştirilir.</br> - BTRFS dosya sistemi birden fazla diske yayılır.</br> - BTRFS dosya sistemi RAID'i destekler.
+Dosya sistemleri | ext3, ext4, XFS, BTRFS (bu tabloya göre geçerli olan koşullar)
+Mantıksal birim yönetimi (LVM) sağlama| Kalın sağlama-Evet <br></br> Ölçülü kaynak sağlama-Hayır
+Birim Yöneticisi | -LVM destekleniyor.<br/> -LVM üzerinde-/Boot [güncelleştirme paketi 31](https://support.microsoft.com/help/4478871/) ' den (Mobility hizmeti sürüm 9,20) ve sonraki sürümlerde desteklenir. Önceki Mobility hizmeti sürümlerinde desteklenmez.<br/> -Birden çok işletim sistemi diski desteklenmez.
+Parasanallaştırılmış depolama cihazları | Parasanallaştırılmış sürücüler tarafından dışarı aktarılan cihazlar desteklenmez.
+Çok kuyruğundaki blok GÇ cihazları | Desteklenmiyor.
+HP CCıS depolama denetleyicisi ile fiziksel sunucular | Desteklenmiyor.
+Cihaz/bağlama noktası adlandırma kuralı | Cihaz adı veya bağlama noktası adı benzersiz olmalıdır.<br/> İki cihazda/bağlama noktasında büyük/küçük harf duyarlı adlara sahip olmadığından emin olun. Örneğin, *Device1* ve *DEVICE1* ile aynı VM 'nin cihazlarını adlandırma desteklenmez.
+Dizinler | Mobility hizmetinin sürüm 9,20 ' den önceki bir sürümünü çalıştırıyorsanız ( [güncelleştirme paketi 31](https://support.microsoft.com/help/4478871/)' de yayımlanmıştır), bu kısıtlamalar uygulanır:<br/><br/> -Bu dizinler (ayrı bölümler/dosya sistemleri olarak ayarlandıysa) kaynak sunucudaki aynı işletim sistemi diskinde olmalıdır:/(kök),/Boot,/usr,/usr/local,/var,/etc.</br> -/Boot dizini bir disk bölümünde olmalı ve bir LVM birimi olmamalıdır.<br/><br/> Sürüm 9,20 ' den itibaren bu kısıtlamalar uygulanmaz. 
+Önyükleme dizini | -Önyükleme diskleri, GPT bölüm biçiminde olmamalıdır. Bu bir Azure mimarisi kısıtlamasıdır. GPT diskleri, veri diskleri olarak desteklenir.<br/><br/> Bir VM 'de birden çok önyükleme diski desteklenmez<br/><br/> -bir LVM biriminde birden fazla disk arasında-/Boot desteklenmez.<br/> -Önyükleme diski olmayan bir makine çoğaltılamıyor.
+Boş alan gereksinimleri| /root bölümünde 2 GB <br/><br/> yükleme klasöründe 250 MB
+XFSv5 | Meta veri sağlama toplamı gibi XFS dosya sistemlerindeki XFSv5 özellikleri desteklenir (Mobility hizmeti sürüm 9,10 ve üzeri).<br/> Bölüm için XFS süper bloğunu denetlemek üzere xfs_info yardımcı programını kullanın. `ftype` 1 olarak ayarlanırsa, XFSv5 özellikleri kullanımda olur.
+BTRFS | BTRFS, [güncelleştirme paketi 34](https://support.microsoft.com/help/4490016) (Mobility hizmetinin sürüm 9,22) ve sonraki sürümlerde desteklenir. Şu durumlarda BTRFS desteklenmez:<br/><br/> -BTRFS dosya sistemi alt birimi, koruma etkinleştirildikten sonra değiştirilir.</br> -BTRFS dosya sistemi birden çok diske yayılır.</br> -BTRFS dosya sistemi RAID 'i destekler.
 
-## <a name="vmdisk-management"></a>VM/Disk yönetimi
+## <a name="vmdisk-management"></a>VM/disk yönetimi
 
-**Eylem** | **Şey**
+**Eylem** | **Bilgileri**
 --- | ---
-Çoğaltılan VM'deki diski yeniden boyutlandırma | Başarısız olmadan önce kaynak VM'de, doğrudan VM özelliklerinde desteklenir. Çoğaltmayı devre dışı kaldırmaya/yeniden etkinleştirmeye gerek yok.<br/><br/> Başarısız olduktan sonra kaynak VM'yi değiştirirseniz, değişiklikler yakalamaz.<br/><br/> Başarısız olduktan sonra Azure VM'deki disk boyutunu değiştirirseniz, başarısız olduğunuzda, Site Kurtarma güncelleştirmelerle birlikte yeni bir VM oluşturur.
-Çoğaltılan VM'ye disk ekleme | Desteklenmiyor.<br/> VM için çoğaltmayı devre dışı bırakıp diski ekleyin ve çoğaltmayı yeniden etkinleştirin.
+Çoğaltılan VM 'de diski yeniden boyutlandır | Yük devretmeden önce kaynak VM 'de, doğrudan VM özelliklerinde desteklenir. Çoğaltmayı devre dışı bırakıp yeniden etkinleştirmeye gerek yoktur.<br/><br/> Yük devretmeden sonra kaynak VM 'yi değiştirirseniz, değişiklikler yakalanmazlar.<br/><br/> Yük devretmeden sonra Azure VM 'de disk boyutunu değiştirirseniz, geri döndüğünüzde Site Recovery güncelleştirmeler ile yeni bir VM oluşturur.
+Çoğaltılan VM 'ye disk ekleme | Desteklenmiyor.<br/> VM için çoğaltmayı devre dışı bırakın, diski ekleyin ve ardından çoğaltmayı yeniden etkinleştirin.
 
 ## <a name="network"></a>Ağ
 
-**Bileşen** | **Desteklenen**
+**Bileşen** | **Destek**
 --- | ---
-Ana ağ NIC Takım | VMware VM'ler için desteklenir. <br/><br/>Fiziksel makine çoğaltma için desteklenmez.
-Ana ağ VLAN | Evet.
-Ana ağ IPv4 | Evet.
-Ana ağ IPv6 | Hayır.
-Konuk/sunucu ağı NIC Ekip | Hayır.
+Konak ağı NIC Grubu oluşturma | VMware VM 'Leri için desteklenir. <br/><br/>Fiziksel makine çoğaltması için desteklenmez.
+Konak ağ VLAN 'ı | Evet.
+Konak ağı IPv4 | Evet.
+Konak ağı IPv6 | Hayır.
+Konuk/sunucu ağı NIC Grubu oluşturma | Hayır.
 Konuk/sunucu ağı IPv4 | Evet.
 Konuk/sunucu ağı IPv6 | Hayır.
-Konuk/sunucu ağı statik IP (Windows) | Evet.
-Konuk/sunucu ağı statik IP (Linux) | Evet. <br/><br/>VM'ler, başarısız geri dönüşte DHCP kullanacak şekilde yapılandırılmıştır.
+Konuk/sunucu ağı statik IP 'si (Windows) | Evet.
+Konuk/sunucu ağı statik IP (Linux) | Evet. <br/><br/>VM 'Ler, yeniden çalışma sırasında DHCP kullanacak şekilde yapılandırılmıştır.
 Konuk/sunucu ağı birden çok NIC | Evet.
 
 
-## <a name="azure-vm-network-after-failover"></a>Azure VM ağı (başarısız olduktan sonra)
+## <a name="azure-vm-network-after-failover"></a>Azure VM ağı (yük devretmeden sonra)
 
-**Bileşen** | **Desteklenen**
+**Bileşen** | **Destek**
 --- | ---
-Azure ExpressRoute | Evet
-ILB | Evet
-Elb | Evet
-Azure Traffic Manager | Evet
-Çoklu Nİş | Evet
-Ayrılmış IP adresi | Evet
-IPv4 | Evet
-Kaynak IP adresini koruyun | Evet
-Azure sanal ağ hizmeti bitiş noktaları<br/> | Evet
+Azure ExpressRoute | Yes
+ILB | Yes
+ELB | Yes
+Azure Traffic Manager | Yes
+Çoklu NIC | Yes
+Ayrılmış IP adresi | Yes
+IPv4 | Yes
+Kaynak IP adresini sakla | Yes
+Azure sanal ağ hizmet uç noktaları<br/> | Yes
 Hızlandırılmış ağ iletişimi | Hayır
 
 ## <a name="storage"></a>Depolama
-**Bileşen** | **Desteklenen**
+**Bileşen** | **Destek**
 --- | ---
-Dinamik disk | İşletim sistemi diski temel bir disk olmalıdır. <br/><br/>Veri diskleri dinamik diskler olabilir
+Dinamik disk | İşletim sistemi diski, temel bir disk olmalıdır. <br/><br/>Veri diskleri dinamik diskler olabilir
 Docker disk yapılandırması | Hayır
-Ana Bilgisayar NFS | VMware için evet<br/><br/> Fiziksel sunucular için hayır
-Ana bilgisayar SAN (iSCSI/FC) | Evet
-Ev Sahibi vSAN | VMware için evet<br/><br/> Fiziksel sunucular için N/A
-Ana bilgisayar çok (MPIO) | Evet, CLARiiON için Microsoft DSM, EMC PowerPath 5.7 SP4, EMC PowerPath DSM ile test edilmiştir
-Ana Bilgisayar Sanal Hacimleri (VVols) | VMware için evet<br/><br/> Fiziksel sunucular için N/A
-Konuk/sunucu VMDK | Evet
+Konak NFS | VMware için Evet<br/><br/> Fiziksel sunucular için Hayır
+Ana bilgisayar SAN (Iscsı/FC) | Yes
+Ana bilgisayar vSAN | VMware için Evet<br/><br/> Fiziksel sunucular için yok
+Ana bilgisayar çok yollu (MPIO) | Evet, Microsoft DSM ile test edildi, EMC PowerPath 5,7 SP4, Clariiyon için EMC PowerPath DSM
+Konak sanal birimleri (Vvir) | VMware için Evet<br/><br/> Fiziksel sunucular için yok
+Konuk/sunucu VMDK | Yes
 Konuk/sunucu paylaşılan küme diski | Hayır
-Konuk/sunucu şifreli disk | Hayır
+Konuk/sunucu tarafından şifrelenen disk | Hayır
 Konuk/sunucu NFS | Hayır
-Konuk/sunucu iSCSI | Geçiş İçin - Evet<br/>Olağanüstü Durum Kurtarma için - Hayır, iSCSI VM'ye bağlı bir disk olarak geri
-Konuk/sunucu Kobİ 3.0 | Hayır
-Konuk/sunucu RDM | Evet<br/><br/> Fiziksel sunucular için N/A
-Konuk/sunucu diski > 1 TB | Evet, disk 1024 MB'dan büyük olmalıdır<br/><br/>Yönetilen disklere çoğaltırken 8.192 GB'a kadar (9,26 sürümü<br></br> Depolama hesaplarına çoğalırken 4.095 GB'a kadar
+Konuk/sunucu Iscsı | Geçiş için-Evet<br/>Olağanüstü durum kurtarma için-Hayır, Iscsı sanal makineye bağlı bir disk olarak yeniden çalışır
+Konuk/sunucu SMB 3,0 | Hayır
+Konuk/sunucu RDM | Yes<br/><br/> Fiziksel sunucular için yok
+Konuk/sunucu diski > 1 TB | Evet, disk 1024 MB 'tan büyük olmalıdır<br/><br/>Yönetilen disklere çoğaltma yaparken 8.192 GB 'a kadar (9,26 sürüm ve sonraki sürümler)<br></br> Depolama hesaplarına çoğaltma yaparken 4.095 GB 'a kadar
 4K mantıksal ve 4k fiziksel sektör boyutuna sahip konuk/sunucu diski | Hayır
-4K mantıksal ve 512 bayt lık fiziksel sektör boyutuna sahip konuk/sunucu diski | Hayır
-Çizgili diskli konuk/sunucu hacmi >4 TB <br/><br/>Mantıksal hacim yönetimi (LVM)| Evet
-Konuk/sunucu - Depolama Alanları | Hayır
-Konuk/sunucu sıcak ekle/kaldır diski | Hayır
-Konuk/sunucu - disk hariç | Evet
-Konuk/sunucu çok (MPIO) | Hayır
-Konuk/sunucu GPT bölümleri | [Güncelleme Rollup 37'den](https://support.microsoft.com/help/4508614/) (Mobilite hizmetinin 9.25 sürümü) itibaren beş bölüm desteklenir. Daha önce dört desteklendi.
-ReFS | Esnek Dosya Sistemi Mobilite hizmet sürümü 9.23 veya daha yüksek ile desteklenir
-Konuk/sunucu EFI/UEFI önyükleme | - Windows Server 2012 veya sonrası için desteklenen, SLES 12 SP4 ve RHEL 8.0 mobilite aracısı sürümü 9.30'dan itibaren<br/> - Güvenli UEFI önyükleme türü desteklenmez.
+4K mantıksal ve 512 bayt fiziksel kesim boyutuna sahip konuk/sunucu diski | Hayır
+Şeritli disk >4 TB olan konuk/sunucu birimi | Yes
+Mantıksal birim yönetimi (LVM)| Kalın sağlama-Evet <br></br> Ölçülü kaynak sağlama-Hayır
+Konuk/sunucu-depolama alanları | Hayır
+Konuk/sunucu Hot Add/Remove disk | Hayır
+Konuk/sunucu-diski hariç tut | Yes
+Konuk/sunucu çok yollu (MPIO) | Hayır
+Konuk/sunucu GPT bölümleri | Beş bölüm [güncelleştirme paketi 37](https://support.microsoft.com/help/4508614/) (Mobility hizmetinin sürüm 9,25) ve sonraki sürümlerde desteklenir. Daha önce dört destekleniyordu.
+ReFS | Dayanıklı dosya sistemi, Mobility hizmeti sürüm 9,23 veya üzeri sürümlerde desteklenir
+Konuk/sunucu EFı/UEFı önyüklemesi | -Windows Server 2012 veya üzeri için desteklenir, Mobility Aracısı sürüm 9,30 ve sonraki sürümleri içeren SLES 12 SP4 ve RHEL 8,0<br/> -Secure UEFı önyükleme türü desteklenmez.
 
 ## <a name="replication-channels"></a>Çoğaltma kanalları
 
-|**Çoğaltma türü**   |**Desteklenen**  |
+|**Çoğaltma türü**   |**Destek**  |
 |---------|---------|
-|Boşaltılmış Veri Aktarımları (ODX)    |       Hayır  |
-|Çevrimdışı Tohumlama        |   Hayır      |
+|Boşaltılan veri aktarımları (ODX)    |       Hayır  |
+|Çevrimdışı dengeli dağıtım        |   Hayır      |
 | Azure Data Box | Hayır
 
 ## <a name="azure-storage"></a>Azure Storage
 
-**Bileşen** | **Desteklenen**
+**Bileşen** | **Destek**
 --- | ---
-Yerel olarak yedekli depolama | Evet
-Coğrafi olarak yedekli depolama | Evet
-Okuma erişimli coğrafi olarak yedekli depolama | Evet
-Serin depolama | Hayır
-Sıcak depolama| Hayır
+Yerel olarak yedekli depolama | Yes
+Coğrafi olarak yedekli depolama | Yes
+Okuma erişimli coğrafi olarak yedekli depolama | Yes
+Seyrek Erişimli Depolama | Hayır
+Sık erişimli depolama| Hayır
 Blok blobları | Hayır
-Şifreleme-at-rest (SSE)| Evet
-Şifreleme-at-rest (CMK)| Evet (PowerShell Az 3.3.0 modülü üzerinden itibaren)
-Premium depolama | Evet
-İthalat/ihracat hizmeti | Hayır
-VNets için Azure Depolama güvenlik duvarları | Evet.<br/> Hedef depolama/önbellek depolama hesabında (çoğaltma verilerini depolamak için kullanılır) yapılandırılır.
-Genel amaçlı v2 depolama hesapları (sıcak ve serin katmanlar) | Evet (İşlem maliyetleri V1 ile karşılaştırıldığında V2 için önemli ölçüde daha yüksektir)
+Bekleyen şifreleme (SSE)| Yes
+Bekleyen şifreleme (CMK)| Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller)
+Premium depolama | Yes
+İçeri/dışarı aktarma hizmeti | Hayır
+Sanal ağlar için Azure Storage güvenlik duvarları | Evet.<br/> Hedef depolama/önbellek depolama hesabında yapılandırıldı (çoğaltma verilerini depolamak için kullanılır).
+Genel amaçlı v2 depolama hesapları (sık erişimli ve seyrek erişimli Katmanlar) | Evet (v1 ile karşılaştırıldığında v2 için Işlem maliyetleri önemli ölçüde yüksektir)
 
 ## <a name="azure-compute"></a>Azure işlem
 
-**Özellik** | **Desteklenen**
+**Özellik** | **Destek**
 --- | ---
-Kullanılabilirlik kümeleri | Evet
+Kullanılabilirlik kümeleri | Yes
 Kullanılabilirlik alanları | Hayır
-Hub | Evet
-Yönetilen diskler | Evet
+HUB | Yes
+Yönetilen diskler | Yes
 
 ## <a name="azure-vm-requirements"></a>Azure VM gereksinimleri
 
-Azure'da çoğaltılan şirket içi VM'ler, bu tabloda özetlenen Azure VM gereksinimlerini karşılamalıdır. Site Kurtarma çoğaltma için önkoşullar denetimi çalıştırdığında, bazı gereksinimler karşılanmazsa denetim başarısız olur.
+Azure 'a çoğaltılan şirket içi VM 'Ler, bu tabloda özetlenen Azure VM gereksinimlerini karşılamalıdır. Site Recovery, çoğaltma için bir önkoşul denetimi çalıştırdığında, bazı gereksinimler karşılanmazsa denetim başarısız olur.
 
-**Bileşen** | **Gereksinimler** | **Şey**
+**Bileşen** | **Gereksinimler** | **Bilgileri**
 --- | --- | ---
-Konuk işletim sistemi | Çoğaltılan makineler için [desteklenen işletim sistemlerini](#replicated-machines) doğrulayın. | Desteklenmezse denetim başarısız olur.
-Konuk işletim sistemi mimarisi | 64 bit. | Desteklenmezse denetim başarısız olur.
-İşletim sistemi disk boyutu | 2.048 GB'a kadar. | Desteklenmezse denetim başarısız olur.
-İşletim sistemi disk sayısı | 1 | Desteklenmezse denetim başarısız olur.
-Veri diski sayısı | 64 ya da daha az. | Desteklenmezse denetim başarısız olur.
-Veri diskboyutu | Yönetilen diske çoğalırken 8.192 GB'a kadar (9,26 sürüm itibaren)<br></br>Depolama hesabına çoğaltma yaparken 4.095 GB'a kadar| Desteklenmezse denetim başarısız olur.
+Konuk işletim sistemi | Çoğaltılan makineler için [desteklenen işletim sistemlerini](#replicated-machines) doğrulayın. | Desteklenmiyorsa denetim başarısız olur.
+Konuk işletim sistemi mimarisi | 64 bit. | Desteklenmiyorsa denetim başarısız olur.
+İşletim sistemi disk boyutu | 2.048 GB 'a kadar. | Desteklenmiyorsa denetim başarısız olur.
+İşletim sistemi disk sayısı | 1 | Desteklenmiyorsa denetim başarısız olur.
+Veri diski sayısı | 64 veya daha az. | Desteklenmiyorsa denetim başarısız olur.
+Veri diski boyutu | Yönetilen diske çoğaltma sırasında 8.192 GB 'a kadar (9,26 sürüm ve sonraki sürümler)<br></br>Depolama hesabına çoğaltılırken 4.095 GB 'a kadar| Desteklenmiyorsa denetim başarısız olur.
 Ağ bağdaştırıcıları | Birden çok bağdaştırıcı desteklenir. |
-Paylaşılan VHD | Desteklenmiyor. | Desteklenmezse denetim başarısız olur.
-FC diski | Desteklenmiyor. | Desteklenmezse denetim başarısız olur.
-BitLocker | Desteklenmiyor. | Bir makineiçin çoğaltmayı etkinleştirmeden önce BitLocker devre dışı edilmelidir. |
-VM adı | 1 ile 63 arasında karakter.<br/><br/> Harfler, sayılar ve kısa çizgilerden oluşabilir.<br/><br/> Makine adı bir harf veya sayı ile başlayıp bitmelidir. |  Site Kurtarma'daki makine özelliklerindeki değeri güncelleştirin.
+Paylaşılan VHD | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
+FC diski | Desteklenmiyor. | Desteklenmiyorsa denetim başarısız olur.
+BitLocker | Desteklenmiyor. | Bir makine için çoğaltmayı etkinleştirmeden önce BitLocker devre dışı bırakılmalıdır. |
+VM adı | 1 ile 63 karakter arasında.<br/><br/> Harfler, sayılar ve kısa çizgilerden oluşabilir.<br/><br/> Makine adı bir harf veya sayıyla başlamalı ve bitmelidir. |  Site Recovery makine özelliklerindeki değeri güncelleştirin.
 
 ## <a name="resource-group-limits"></a>Kaynak grubu sınırları
 
-Tek bir kaynak grubu altında korunabilen sanal makinelerin sayısını anlamak için [abonelik sınırları ve kotalarla](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)ilgili makaleye bakın.
+Tek bir kaynak grubu altında korunabilecek sanal makinelerin sayısını anlamak için [abonelik limitleri ve kotaları](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)hakkındaki makaleye bakın.
 
-## <a name="churn-limits"></a>Çalkalama sınırları
+## <a name="churn-limits"></a>Karmaşıklık limitleri
 
 Aşağıdaki tablo, Azure Site Recovery sınırlarını sağlar.
-- Bu sınırlar testlerimize dayanmaktadır, ancak olası tüm uygulama G/Ç kombinasyonlarını kapsamaz.
+- Bu sınırlar, testlerimize dayalıdır, ancak olası tüm uygulama g/ç birleşimlerini kapsamamaktadır.
 - Gerçek sonuçlar, uygulamanızın G/Ç karışımına göre değişebilir.
-- En iyi sonuçlar için, [Dağıtım Planlayıcısı aracını](site-recovery-deployment-planner.md)çalıştırmanızı ve uygulamanız için gerçek performans resmini elde etmek için test hatalarını kullanarak kapsamlı uygulama testi yapmanızı şiddetle öneririz.
+- En iyi sonuçlar için [dağıtım planlayıcısı aracını](site-recovery-deployment-planner.md)çalıştırmanızı ve uygulamanız için doğru performans resmini elde etmek üzere yük devretme testi kullanarak kapsamlı uygulama testleri gerçekleştirmenizi önemle öneririz.
 
-**Çoğaltma hedefi** | **Ortalama kaynak disk G/Ç boyutu** |**Ortalama kaynak disk veri değişim sıklığı** | **Günde toplam kaynak disk veri karmaşası**
+**Çoğaltma hedefi** | **Ortalama kaynak disk G/Ç boyutu** |**Ortalama kaynak disk veri değişim sıklığı** | **Gün başına toplam kaynak disk veri değişim sıklığı**
 ---|---|---|---
 Standart depolama | 8 KB    | 2 MB/sn | Disk başına 168 GB
 Premium P10 veya P15 disk | 8 KB    | 2 MB/sn | Disk başına 168 GB
 Premium P10 veya P15 disk | 16 KB | 4 MB/sn |    Disk başına 336 GB
 Premium P10 veya P15 disk | 32 KB veya daha büyük | 8 MB/sn | Disk başına 672 GB
 Premium P20 veya P30 veya P40 veya P50 disk | 8 KB    | 5 MB/sn | Disk başına 421 GB
-Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük |20 MB/sN | Disk başına 1684 GB
+Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük |20 MB/sn | disk başına 1684 GB
 
 
 **Kaynak veri değişim sıklığı** | **Üst Sınır**
@@ -293,30 +295,30 @@ VM üzerindeki tüm disklerde en yüksek veri değişim sıklığı | 54 MB/sn
 
 - Bunlar yüzde 30 G/Ç çakışmasını varsayan ortalama sayılardır.
 - Site Recovery; çakışma oranı, büyük yazma boyutları ve gerçek iş yükü G/Ç davranışına göre daha yüksek aktarım hızını işleyebilir.
-- Bu sayılar, yaklaşık beş dakikalık tipik bir biriktirme listesi varsayar. Diğer bir deyişle, veriler karşıya yüklendikten sonra işlenir ve beş dakika içinde kurtarma noktası oluşturulur.
+- Bu numaralar yaklaşık beş dakikalık tipik bir biriktirme listesini varsayar. Diğer bir deyişle, veriler karşıya yüklendikten sonra işlenir ve beş dakika içinde kurtarma noktası oluşturulur.
 
 ## <a name="vault-tasks"></a>Kasa görevleri
 
-**Eylem** | **Desteklenen**
+**Eylem** | **Destek**
 --- | ---
-Kaynak grupları arasında kasa taşıma | Hayır
-Vault'u abonelikler içinde ve genelinde taşıma | Hayır
-Depolama, ağ, Azure VM'lerini kaynak gruplarına taşıma | Hayır
-Depolama, ağ, Azure VM'leri abonelikler içinde ve arasında taşıyın. | Hayır
+Kasayı kaynak grupları arasında taşıma | Hayır
+Kasayı abonelik içinde ve abonelikler arasında taşıma | Hayır
+Depolama, ağ ve Azure VM 'lerini kaynak grupları arasında taşıma | Hayır
+Depolama, ağ, Azure VM 'Leri ve abonelikler arasında taşıma. | Hayır
 
 
 ## <a name="obtain-latest-components"></a>En son bileşenleri edinin
 
-**Adı** | **Açıklama** | **Şey**
+**Adı** | **Açıklama** | **Bilgileri**
 --- | --- | ---
-Yapılandırma Sunucusu | Şirket içinde yüklenmiş.<br/> Şirket içi VMware sunucuları veya fiziksel makineler ile Azure arasındaki iletişimi koordine eder. | - Yapılandırma sunucusu [hakkında bilgi edinin.](vmware-physical-azure-config-process-server-overview.md)<br/> - En son sürüme yükseltme [hakkında bilgi edinin.](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)<br/> - Yapılandırma sunucusu ayarlama [hakkında bilgi edinin.](vmware-azure-deploy-configuration-server.md)
-İşlem sunucusu | Varsayılan olarak yapılandırma sunucusuna yüklenir.<br/> Çoğaltma verilerini alır, önbelleğe alma, sıkıştırma ve şifreleme ile en iyi duruma getirin ve Azure'a gönderir.<br/> Dağıtımınız büyüdükçe, daha büyük birim çoğaltma trafiğini işlemek için ek işlem sunucuları ekleyebilirsiniz. | - İşlem sunucusu [hakkında bilgi edinin.](vmware-physical-azure-config-process-server-overview.md)<br/> - En son sürüme yükseltme [hakkında bilgi edinin.](vmware-azure-manage-process-server.md#upgrade-a-process-server)<br/> - Ölçeklendirme işlem sunucuları ayarlama [hakkında bilgi edinin.](vmware-physical-large-deployment.md#set-up-a-process-server)
-Ulaşım Hizmeti | Çoğaltmak istediğiniz VMware VM veya fiziksel sunucularda yüklenir.<br/> Şirket içi VMware sunucuları/fiziksel sunucular ve Azure arasındaki çoğaltmayı koordine eder.| - Mobilite hizmeti [hakkında bilgi edinin.](vmware-physical-mobility-service-overview.md)<br/> - En son sürüme yükseltme [hakkında bilgi edinin.](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal)<br/>
+Yapılandırma Sunucusu | Şirket içi yüklendi.<br/> Şirket içi VMware sunucuları veya fiziksel makineler ile Azure arasındaki iletişimleri koordine eder. | - Yapılandırma sunucusu [hakkında bilgi edinin](vmware-physical-azure-config-process-server-overview.md) .<br/> - En son sürüme yükseltme [hakkında bilgi edinin](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) .<br/> - Yapılandırma sunucusunu ayarlama [hakkında bilgi edinin](vmware-azure-deploy-configuration-server.md) .
+İşlem sunucusu | Varsayılan olarak yapılandırma sunucusuna yüklenir.<br/> Çoğaltma verilerini alır, önbelleğe alma, sıkıştırma ve şifreleme ile iyileştirir ve Azure 'a gönderir.<br/> Dağıtımınız büyüdükçe, daha büyük hacimde çoğaltma trafiğini işlemek için ek işlem sunucuları ekleyebilirsiniz. | - İşlem sunucusu [hakkında bilgi edinin](vmware-physical-azure-config-process-server-overview.md) .<br/> - En son sürüme yükseltme [hakkında bilgi edinin](vmware-azure-manage-process-server.md#upgrade-a-process-server) .<br/> - Genişleme işlem sunucularını ayarlama [hakkında bilgi edinin](vmware-physical-large-deployment.md#set-up-a-process-server) .
+Ulaşım Hizmeti | Çoğaltmak istediğiniz VMware VM veya fiziksel sunucularda yüklü.<br/> Şirket içi VMware sunucuları/fiziksel sunucular ile Azure arasında çoğaltmayı koordine eder.| - Mobility hizmeti [hakkında bilgi edinin](vmware-physical-mobility-service-overview.md) .<br/> - En son sürüme yükseltme [hakkında bilgi edinin](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal) .<br/>
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure'u VMware VM'lerin olağanüstü kurtarma sına nasıl hazırlayacağınızı [öğrenin.](tutorial-prepare-azure.md)
+VMware VM 'lerinin olağanüstü durum kurtarması için Azure 'u [nasıl hazırlayacağınızı öğrenin](tutorial-prepare-azure.md) .
 
 [9.32 UR]: https://support.microsoft.com/en-in/help/4538187/update-rollup-44-for-azure-site-recovery
 [9.31 UR]: https://support.microsoft.com/en-in/help/4537047/update-rollup-43-for-azure-site-recovery

@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/17/2020
-ms.openlocfilehash: bd4dabe1d5fbc4722d03f31492d2118802292df2
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 6cf89790ee125d8d09d9bdead2f6e34dcb73e8f8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82111998"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188132"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Bu makalede, *Gelişmiş güvenlik ayarları*, temel veya Deneysel kullanım dur
 > [!WARNING]
 > Microsoft, temeldeki depolamanın sanal ağı etkinse otomatik ML, veri kümeleri, veri etiketleme, tasarımcı ve Not defterleri gibi Azure Machine Learning Studio özelliklerinin kullanılmasını desteklemez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + Azure Machine Learning [çalışma alanı](how-to-manage-workspace.md).
 
@@ -508,19 +508,7 @@ Azure Container Instances, bir model dağıtıldığında dinamik olarak oluştu
 
 ## <a name="use-azure-firewall"></a>Azure Güvenlik duvarını kullanma
 
-Azure Güvenlik Duvarı 'nı kullanırken aşağıdaki adreslere gelen ve giden trafiğe izin vermek için bir ağ kuralı yapılandırmanız gerekir:
-
-- `*.batchai.core.windows.net`
-- `ml.azure.com`
-- `*.azureml.ms`
-- `*.experiments.azureml.net`
-- `*.modelmanagement.azureml.net`
-- `mlworkspace.azure.ai`
-- `*.aether.ms`
-
-Kural eklenirken, __Protokolü__ herhangi bir ve bağlantı noktası olarak ayarlayın `*`.
-
-Ağ kuralını yapılandırma hakkında daha fazla bilgi için bkz. [Azure Güvenlik duvarını dağıtma ve yapılandırma](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule).
+Azure Güvenlik Duvarı ile Azure Machine Learning kullanma hakkında bilgi için bkz. [Azure Güvenlik duvarının arkasında Azure Machine Learning çalışma alanı kullanma](how-to-access-azureml-behind-firewall.md).
 
 ## <a name="use-azure-container-registry"></a>Azure Container Registry’yi kullanma
 
