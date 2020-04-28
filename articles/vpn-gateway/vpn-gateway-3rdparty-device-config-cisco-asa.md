@@ -1,6 +1,6 @@
 ---
-title: Cisco ASA aygıtlarını Azure VPN ağ geçitlerine bağlamak için örnek yapılandırma
-description: Bu makalede, Cisco ASA aygıtlarını Azure VPN ağ geçitlerine bağlamak için örnek bir yapılandırma sağlanmaktadır.
+title: Cisco ASA cihazlarını Azure VPN ağ geçitlerine bağlamak için örnek yapılandırma
+description: Bu makalede, Cisco ASA cihazlarını Azure VPN ağ geçitlerine bağlamak için örnek bir yapılandırma sağlanmaktadır.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
@@ -8,116 +8,116 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
 ms.openlocfilehash: 96e5c26ea7b5f1baa33fd8830491ee3aa1e60221
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75778091"
 ---
-# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Örnek yapılandırma: Cisco ASA cihazı (IKEv2/no BGP)
-Bu makalede, Cisco Adaptive Security Appliance (ASA) aygıtlarını Azure VPN ağ geçitlerine bağlamak için örnek yapılandırmalar sağlanmaktadır. Bu örnek, Border Gateway Protocol (BGP) olmadan IKEv2 çalıştıran Cisco ASA aygıtları için geçerlidir. 
+# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Örnek yapılandırma: Cisco ASA cihazı (Ikev2/BGP yok)
+Bu makalede Cisco Uyarlamalı güvenlik gereci (ASA) cihazlarını Azure VPN ağ geçitlerine bağlamak için örnek yapılandırma sağlanmaktadır. Örnek, Sınır Ağ Geçidi Protokolü (BGP) olmadan Ikev2 çalıştıran Cisco ASA cihazları için geçerlidir. 
 
-## <a name="device-at-a-glance"></a>Bir bakışta cihaz
+## <a name="device-at-a-glance"></a>Tek bakışta cihaz
 
 |                        |                                   |
 | ---                    | ---                               |
 | Cihaz satıcısı          | Cisco                             |
 | Cihaz modeli           | ASA                               |
-| Hedef sürüm         | 8.4 ve sonrası                     |
-| Test edilmiş model           | ASA 5505                          |
-| Test edilmiş sürüm         | 9.2                               |
+| Hedef sürüm         | 8,4 ve üzeri                     |
+| Test edilen model           | ASA 5505                          |
+| Test edilen sürüm         | 9,2                               |
 | IKE sürümü            | IKEv2                             |
 | BGP                    | Hayır                                |
-| Azure VPN ağ geçidi türü | Rota tabanlı VPN ağ geçidi           |
+| Azure VPN ağ geçidi türü | Rota temelli VPN ağ geçidi           |
 |                        |                                   |
 
 > [!NOTE]
-> Örnek yapılandırma, Cisco ASA aygıtını Azure **rota tabanlı** bir VPN ağ geçidine bağlar. Bağlantı, [bu makalede](vpn-gateway-connect-multiple-policybased-rm-ps.md)açıklandığı gibi **UsePolicyBasedTrafficSelectors** seçeneği ile özel bir IPsec/IKE ilkesi kullanır.
+> Örnek yapılandırma, bir Cisco ASA cihazını Azure **Rota tabanlı** bir VPN ağ geçidine bağlar. Bağlantı, [Bu makalede](vpn-gateway-connect-multiple-policybased-rm-ps.md)açıklandığı gibi **UsePolicyBasedTrafficSelectors** seçeneğiyle özel bir IPSec/IKE ilkesi kullanır.
 >
-> Örnek, ASA aygıtlarının **IKEv2** ilkesini VTI tabanlı değil, erişim listesi tabanlı yapılandırmalarla kullanmasını gerektirir. IKEv2 ilkesinin şirket içi VPN aygıtlarınızda desteklendiğini doğrulamak için VPN cihaz satıcınızın belirtimlerine başvurun.
+> Örnek **, asa cihazlarının VNET ilkesini** VTI tabanlı değil erişim-liste tabanlı yapılandırmalara kullanmasını gerektirir. Ikev2 ilkesinin şirket içi VPN cihazlarınızda desteklendiğinden emin olmak için VPN cihaz satıcınızın belirtimlerine başvurun.
 
 
-## <a name="vpn-device-requirements"></a>VPN cihaz gereksinimleri
-Azure VPN ağ geçitleri, Siteden Siteye (S2S) VPN tünelleri oluşturmak için standart IPsec/IKE protokol paketlerini kullanır. Azure VPN ağ geçitleri için ayrıntılı IPsec/IKE protokol parametreleri ve varsayılan şifreleme algoritmaları için [VPN aygıtları hakkında](vpn-gateway-about-vpn-devices.md)bilgi edinin.
+## <a name="vpn-device-requirements"></a>VPN cihazı gereksinimleri
+Azure VPN ağ geçitleri, siteden siteye (S2S) VPN tünelleri oluşturmak için standart IPSec/ıKE protokol paketlerini kullanır. Ayrıntılı IPSec/ıKE protokol parametreleri ve Azure VPN ağ geçitleri için varsayılan şifreleme algoritmaları için bkz. [VPN cihazları hakkında](vpn-gateway-about-vpn-devices.md).
 
 > [!NOTE]
-> İsteğe bağlı olarak, [şifreleme gereksinimleri hakkında'da](vpn-gateway-about-compliance-crypto.md)açıklandığı gibi, belirli bir bağlantı için şifreleme algoritmaları ve anahtar güçlü yönlerinin tam bir birleşimini belirtebilirsiniz. Algoritmalar ve anahtar güçlü yangüçlerinin tam bir birleşimini belirtirseniz, VPN aygıtlarınızda ilgili özellikleri kullandığınızdan emin olun.
+> İsteğe bağlı olarak, belirli bir bağlantı için şifreleme algoritmaları ve anahtar güçlerinin tam birleşimini, [Şifreleme gereksinimleri hakkında](vpn-gateway-about-compliance-crypto.md)bölümünde açıklandığı gibi belirtebilirsiniz. Algoritmaların ve anahtar güçlerinin tam bir birleşimini belirtirseniz, VPN cihazlarınızda ilgili belirtimleri kullandığınızdan emin olun.
 
 ## <a name="single-vpn-tunnel"></a>Tek VPN tüneli
-Bu yapılandırma, Azure VPN ağ geçidi ile şirket içi VPN aygıtı arasında tek bir S2S VPN tünelinden oluşur. BGP'yi isteğe bağlı olarak VPN tüneli üzerinden yapılandırabilirsiniz.
+Bu yapılandırma, bir Azure VPN ağ geçidi ve şirket içi VPN cihazı arasındaki tek bir S2S VPN tünelinden oluşur. BGP 'yi VPN tüneli genelinde isteğe bağlı olarak yapılandırabilirsiniz.
 
 ![Tek S2S VPN tüneli](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
 
-Azure yapılandırmalarını oluşturmak için adım adım talimatlar için [Tek VPN tünel kurulumuna](vpn-gateway-3rdparty-device-config-overview.md#singletunnel)bakın.
+Azure yapılandırmalarının derlenmesi için adım adım yönergeler için bkz. [tek VPN tüneli kurulumu](vpn-gateway-3rdparty-device-config-overview.md#singletunnel).
 
 ### <a name="virtual-network-and-vpn-gateway-information"></a>Sanal ağ ve VPN ağ geçidi bilgileri
-Bu bölümde örnek parametreleri listelenir.
+Bu bölümde örnek için parametreler listelenir.
 
-| **Parametre**                | **Değer**                    |
+| **Parametre**                | **Deeri**                    |
 | ---                          | ---                          |
 | Sanal ağ adresi önekleri        | 10.11.0.0/16<br>10.12.0.0/16 |
-| Azure VPN ağ geçidi IP         | Azure_Gateway_Public_IP      |
-| Şirket içi adres önekleri | 10.51.0.0/16<br>10.52.0.0/16 |
-| Şirket içi VPN cihazı IP    | OnPrem_Device_Public_IP     |
+| Azure VPN ağ geçidi IP 'si         | Azure_Gateway_Public_IP      |
+| Şirket içi adres ön ekleri | 10.51.0.0/16<br>10.52.0.0/16 |
+| Şirket içi VPN cihaz IP 'si    | OnPrem_Device_Public_IP     |
 | * Sanal ağ BGP ASN                | 65010                        |
-| * Azure BGP eş IP           | 10.12.255.30                 |
+| * Azure BGP eş IP 'si           | 10.12.255.30                 |
 | * Şirket içi BGP ASN         | 65050                        |
-| * Şirket içi BGP eş IP     | 10.52.255.254                |
+| * Şirket içi BGP eşi IP 'si     | 10.52.255.254                |
 |                              |                              |
 
 \*Yalnızca BGP için isteğe bağlı parametre.
 
-### <a name="ipsecike-policy-and-parameters"></a>IPsec/IKE politikası ve parametreleri
-Aşağıdaki tabloda iPsec/IKE algoritmaları ve örnekte kullanılan parametreler listelenir. VPN cihaz modelleri ve firmware sürümleri için desteklenen algoritmaları doğrulamak için VPN cihaz özelliklerine başvurun.
+### <a name="ipsecike-policy-and-parameters"></a>IPSec/ıKE ilkesi ve parametreleri
+Aşağıdaki tabloda, örnekte kullanılan IPSec/ıKE algoritmaları ve parametreleri listelenmektedir. VPN cihaz modelleriniz ve bellenim sürümleriniz için desteklenen algoritmaların doğrulanması için VPN cihazı belirtimlerine başvurun.
 
-| **IPsec/IKEv2**  | **Değer**                            |
+| **IPsec/IKEv2**  | **Deeri**                            |
 | ---              | ---                                  |
 | IKEv2 Şifrelemesi | AES256                               |
 | IKEv2 Bütünlüğü  | SHA384                               |
 | DH Grubu         | DHGroup24                            |
-| * IPsec Şifreleme | AES256                               |
-| * IPsec Bütünlüğü  | SHA1                                 |
+| * IPSec şifrelemesi | AES256                               |
+| * IPSec bütünlüğü  | SHA1                                 |
 | PFS Grubu        | PFS24                                |
 | QM SA Yaşam Süresi   | 7.200 saniye                         |
 | Trafik Seçicisi | UsePolicyBasedTrafficSelectors $True |
-| Önceden Paylaşılan Anahtar   | Önceden Paylaşılan Anahtar                         |
+| Önceden Paylaşılan Anahtar   | PreSharedKey                         |
 |                  |                                      |
 
-\*Bazı cihazlarda, IPsec Şifreleme algoritması AES-GCM olduğunda IPsec Bütünlüğü boş bir değer olmalıdır.
+\*IPSec şifreleme algoritması AES-GCM olduğunda, bazı cihazlarda IPSec bütünlüğü null bir değer olmalıdır.
 
 ### <a name="asa-device-support"></a>ASA cihaz desteği
 
-* IKEv2 desteği ASA sürüm 8.4 ve sonrası gerektirir.
+* Ikev2 desteği, ASA sürüm 8,4 ve üstünü gerektirir.
 
-* GRUP 5'in ötesindeKI DH Grubu ve PFS Grubu desteği ASA 9.x gerektirir.
+* Grup 5 ' in ötesinde DH grubu ve PFS Grubu desteği, ASA sürüm 9. x gerektirir.
 
-* SHA-256, SHA-384 veya SHA-512 ile AES-GCM ve IPsec Bütünlüğü ile IPsec Şifreleme desteği, ASA sürüm 9.x gerektirir. Bu destek gereksinimi yeni ASA aygıtları için geçerlidir. Yayın sırasında, ASA modelleri 5505, 5510, 5520, 5540, 5550 ve 5580 bu algoritmaları desteklemez. VPN cihaz modelleri ve firmware sürümleri için desteklenen algoritmaları doğrulamak için VPN cihaz özelliklerine başvurun.
+* AES-GCM ve IP bütünlüğü ile SHA-256, SHA-384 veya SHA-512 ile IPSec şifrelemesi için destek, ASA sürüm 9. x gerektirir. Bu destek gereksinimi, daha yeni ASA cihazları için geçerlidir. Yayın sırasında, ASA modelleri 5505, 5510, 5520, 5540, 5550 ve 5580 bu algoritmaları desteklemez. VPN cihaz modelleriniz ve bellenim sürümleriniz için desteklenen algoritmaların doğrulanması için VPN cihazı belirtimlerine başvurun.
 
 
-### <a name="sample-device-configuration"></a>Örnek aygıt yapılandırması
-Komut dosyası, önceki bölümlerde açıklanan yapılandırma ve parametreleri temel alan bir örnek sağlar. S2S VPN tünel yapılandırması aşağıdaki parçalardan oluşur:
+### <a name="sample-device-configuration"></a>Örnek cihaz yapılandırması
+Betiği, önceki bölümlerde açıklanan yapılandırma ve parametrelere dayalı bir örnek sağlar. S2S VPN tüneli yapılandırması aşağıdaki bölümlerden oluşur:
 
-1. Arayüzler ve rotalar
+1. Arabirimler ve rotalar
 2. Erişim listeleri
-3. IKE ilkesi ve parametreleri (faz 1 veya ana mod)
-4. IPsec politikası ve parametreleri (faz 2 veya hızlı mod)
-5. TCP MSS bağlama gibi diğer parametreler
+3. IKE ilkesi ve parametreleri (Aşama 1 veya ana mod)
+4. IPSec ilkesi ve parametreleri (Aşama 2 veya hızlı mod)
+5. TCP gibi diğer parametreler
 
 > [!IMPORTANT]
-> Örnek komut dosyasını kullanmadan önce aşağıdaki adımları tamamlayın. Komut dosyasındaki yer tutucu değerlerini yapılandırmanız için aygıt ayarlarıyla değiştirin.
+> Örnek betiği kullanmadan önce aşağıdaki adımları izleyin. Betikteki yer tutucu değerlerini yapılandırmanızın cihaz ayarlarıyla değiştirin.
 
 * Hem iç hem de dış arabirimler için arabirim yapılandırmasını belirtin.
-* İç/özel ve dış/genel ağlarınızın güzergahlarını belirleyin.
+* İç/özel ve dış/ortak ağlarının yollarını belirler.
 * Tüm adların ve ilke numaralarının cihazınızda benzersiz olduğundan emin olun.
-* Şifreleme algoritmalarının cihazınızda desteklendirilmesini sağlayın.
-* Yapılandırmanız için aşağıdaki **yer tutucu değerlerini** gerçek değerlerle değiştirin:
-  - Dış arayüz adı: **dış**
+* Şifreleme algoritmalarının cihazınızda desteklendiğinden emin olun.
+* Aşağıdaki **yer tutucu değerlerini** yapılandırmanızın gerçek değerleriyle değiştirin:
+  - Dış arabirim adı: **dışında**
   - **Azure_Gateway_Public_IP**
   - **OnPrem_Device_Public_IP**
   - IKE: **Pre_Shared_Key**
-  - Sanal ağ ve yerel ağ ağ geçidi adları: **VNetName** ve **LNGName**
+  - Sanal ağ ve yerel ağ geçidi adları: **vgateway** ve **lngname**
   - Sanal ağ ve şirket içi ağ adresi **önekleri**
-  - Uygun **ağ maskeleri**
+  - Doğru **netmaskeleri**
 
 #### <a name="sample-script"></a>Örnek betik
 
@@ -276,24 +276,24 @@ sysopt connection tcpmss 1350
 
 Hata ayıklama amacıyla aşağıdaki ASA komutlarını kullanın:
 
-* IPsec veya IKE güvenlik ilişkisini (SA) göster:
+* IPSec veya ıKE güvenlik ilişkilendirmesini (SA) göster:
     ```
     show crypto ipsec sa
     show crypto ikev2 sa
     ```
 
-* Hata ayıklama modunu girin:
+* Hata ayıklama moduna gir:
     ```
     debug crypto ikev2 platform <level>
     debug crypto ikev2 protocol <level>
     ```
-    Komutlar `debug` konsolda önemli çıktı oluşturabilir.
+    `debug` Komutlar konsolda önemli bir çıktı oluşturabilir.
 
-* Aygıttaki geçerli yapılandırmaları göster:
+* Cihazdaki geçerli konfigürasyonları göster:
     ```
     show run
     ```
-    Aygıt `show` yapılandırmasının belirli bölümlerini listelemek için alt komutları kullanın( örneğin:
+    Cihaz `show` yapılandırmasının belirli kısımlarını listelemek için alt komutları kullanın, örneğin:
     ```
     show run crypto
     show run access-list
@@ -301,4 +301,4 @@ Hata ayıklama amacıyla aşağıdaki ASA komutlarını kullanın:
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Etkin-etkin binalar arası ve VNet'e vnet bağlantılarını yapılandırmak için [bkz.](vpn-gateway-activeactive-rm-powershell.md)
+Etkin-etkin şirketler arası ve VNet-VNet bağlantılarını yapılandırmak için bkz. [Active-ACTIVE VPN ağ geçitlerini yapılandırma](vpn-gateway-activeactive-rm-powershell.md).

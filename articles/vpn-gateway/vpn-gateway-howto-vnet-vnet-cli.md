@@ -1,5 +1,5 @@
 ---
-title: "VNet'e VNet bağlantısını kullanarak Bir VNet'i VNet'e bağlayın: Azure CLI"
+title: "VNET 'ten VNet 'e bağlantı kullanarak VNET 'e VNET bağlama: Azure CLı"
 description: Sanal ağlar arası bağlantı ve Azure CLI kullanarak sanal ağları birbirine bağlayın.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75834567"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI kullanarak sanal ağlar arası VPN ağ geçidi bağlantısı yapılandırma
@@ -22,8 +22,8 @@ Bu makale, sanal ağlar arası bağlantı türünü kullanarak sanal ağları ba
 Bu makaledeki adımlar Resource Manager dağıtım modeli için geçerlidir ve Azure CLI kullanılır. Ayrıca aşağıdaki listeden farklı bir seçenek belirtip farklı bir dağıtım aracı veya dağıtım modeli kullanarak da bu yapılandırmayı oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure portalında](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [Powershell](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Farklı dağıtım modellerini bağlama - Azure portalı](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -292,7 +292,7 @@ Ek bağlantılar oluşturulduğu sırada, yeni sanal ağın IP adresi alanının
 
 ### <a name="step-7---create-and-configure-testvnet5"></a><a name="TestVNet5"></a>7. Adım - TestVNet5'i oluşturma ve yapılandırma
 
-Bu adım, yeni abonelik (5. Abonelik) bağlamında tamamlanmalıdır. Bu kısım, aboneliğin sahibi olan farklı bir kuruluşun yöneticisi tarafından tamamlanabilir. Abonelikler arasında geçiş `az account list --all` yapmak için hesabınızda bulunan abonelikleri `az account set --subscription <subscriptionID>` listelemek için kullanın, ardından kullanmak istediğiniz aboneye geçmek için kullanın.
+Bu adım, yeni abonelik (5. Abonelik) bağlamında tamamlanmalıdır. Bu kısım, aboneliğin sahibi olan farklı bir kuruluşun yöneticisi tarafından tamamlanabilir. Abonelikler `az account list --all` arasında geçiş yapmak için, hesabınız için kullanılabilen abonelikleri listelemek üzere kullanın ve ardından kullanmak `az account set --subscription <subscriptionID>` istediğiniz aboneliğe geçiş yapmak için kullanın.
 
 1. 5. Aboneliğe bağlı olduğunuzdan emin olun ve bir kaynak grubu oluşturun.
 
@@ -331,7 +331,7 @@ Bu adım, yeni abonelik (5. Abonelik) bağlamında tamamlanmalıdır. Bu kısım
 
 ### <a name="step-8---create-the-connections"></a><a name="connections5"></a>8. Adım - Bağlantıları oluşturma
 
-Bu örnekteki ağ geçitleri farklı aboneliklerde olduğundan, bu adım **[1. Abonelik]** ve **[5. Abonelik]** olarak işaretlenen iki CLI oturumuna ayrılır. Abonelikler arasında geçiş `az account list --all` yapmak için hesabınızda bulunan abonelikleri `az account set --subscription <subscriptionID>` listelemek için kullanın, ardından kullanmak istediğiniz aboneye geçmek için kullanın.
+Bu örnekteki ağ geçitleri farklı aboneliklerde olduğundan, bu adım **[1. Abonelik]** ve **[5. Abonelik]** olarak işaretlenen iki CLI oturumuna ayrılır. Abonelikler `az account list --all` arasında geçiş yapmak için, hesabınız için kullanılabilen abonelikleri listelemek üzere kullanın ve ardından kullanmak `az account set --subscription <subscriptionID>` istediğiniz aboneliğe geçiş yapmak için kullanın.
 
 1. **[1. Abonelik]** Oturum açın ve 1. Aboneliğe bağlanın. Çıktıdan Ağ Geçidinin adını ve kimliğini almak için şu komutu çalıştırın:
 

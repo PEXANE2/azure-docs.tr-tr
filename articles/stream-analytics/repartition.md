@@ -1,6 +1,6 @@
 ---
-title: Azure Akış Analizi işlerini optimize etmek için yeniden bölümleme'yi kullanma
-description: Bu makalede, paralelleştirilemeyen Azure Akış Analizi işlerini optimize etmek için yeniden bölümlemenin nasıl kullanılacağı açıklanmaktadır.
+title: Azure Stream Analytics işleri iyileştirmek için yeniden bölümleme kullanma
+description: Bu makalede, paralelleştirilmedi Azure Stream Analytics işleri iyileştirmek için yeniden bölümlemeden nasıl kullanılacağı açıklanır.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,26 +8,26 @@ ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: c70cfb6c1626908a2ba4e707a890f6dc7481c51a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75732391"
 ---
-# <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Azure Akış Analitiği ile işlemeen iyi duruma getirmek için yeniden bölümleme'yi kullanma
+# <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Azure Stream Analytics ile işlemeyi iyileştirmek için yeniden bölümleme kullanın
 
-Bu makalede, tam olarak paralelleştirilmeyen senaryolar için Azure Akış Analizi sorgunuzu ölçeklendirmek için yeniden bölümleme nin nasıl kullanılacağı [gösterilmektedir.](stream-analytics-scale-jobs.md)
+Bu makalede, tam olarak [Paralelleştirilmesi](stream-analytics-scale-jobs.md)gereken senaryolara yönelik Azure Stream Analytics sorgunuzu ölçeklendirmek için yeniden bölümlemeden nasıl kullanılacağı gösterilmektedir.
 
-Şu anda [paralelleştirme](stream-analytics-parallelization.md) kullanamayabilirsiniz:
+Şunu yaparsanız [paralelleştirme](stream-analytics-parallelization.md) kullanmeyebilirsiniz:
 
-* Giriş akışınızın bölüm anahtarını denetlememezsiniz.
-* Kaynak "spreyler" girişi daha sonra birleştirilmesi gereken birden çok bölüm arasında.
+* Giriş akışınız için bölüm anahtarını denetlememeniz gerekir.
+* Kaynak "sprtikleriniz", daha sonra birleştirilmek zorunda olan birden çok bölüm genelinde giriş.
 
-Olay Hub'ları için **PartitionId** gibi doğal bir giriş düzenine göre bölünmeyen bir akıştaki verileri işlediğizde yeniden bölümleme veya yeniden karıştırma gerekir. Yeniden bölümlediğinizde, her parça bağımsız olarak işlenebilir ve bu da akış ardınızı doğrusal olarak ölçeklendirmenize olanak tanır.
+Event Hubs için **PartitionID** gibi bir doğal giriş şemasına göre parçalı olmayan bir akışta verileri işleçalıştığınızda yeniden bölümlendirip veya reshuffling gereklidir. Yeniden bölümlerseniz, her parça bağımsız olarak işlenebilir ve bu da akış işlem hattınızı daha erken ölçeklendirmenize olanak tanır.
 
-## <a name="how-to-repartition"></a>Yeniden bölünme nasıl
+## <a name="how-to-repartition"></a>Yeniden bölümleme
 
-Yeniden bölümleme için, sorgunuzdaki **PARTITION BY** deyiminden sonra **INTO** anahtar sözcüklerini kullanın. Aşağıdaki örnek, **DeviceID'ye** göre verileri 10'luk bir bölüm sayısına bölümler. **DeviceID'nin** karması, hangi bölümün hangi alt akışı kabul edecektir belirlemek için kullanılır. Veri, her bölümlenmiş akış için bağımsız olarak temizlenir, çıktının bölümlenmiş yazmaları desteklediğini varsayarak ve 10 bölüme sahiptir.
+Yeniden bölümlemek için, sorginizdeki bir **bölüm by** ifadesinden **sonra anahtar sözcüğünü** kullanın. Aşağıdaki örnek, verileri **DeviceID** 'yi 10 bölüm sayısına göre bölümlendirir. **DeviceID** 'nin karması, hangi bölümün hangi alt akışı kabul edeceğini tespit etmek için kullanılır. Veriler bölümlenmiş her akış için bağımsız olarak temizlenir ve çıktının bölümlenmiş yazmaları desteklediği kabul edilir ve 10 bölüm vardır.
 
 ```sql
 SELECT * 
@@ -37,7 +37,7 @@ PARTITION BY DeviceID
 INTO 10
 ```
 
-Aşağıdaki örnek sorgu, yeniden bölümlenen iki veri akışını birleştirir. Yeniden bölümlenen iki veri akışını birleştiriyorken, akışlar aynı bölüm anahtarına ve sayısına sahip olmalıdır. Sonuç, aynı bölüm düzenine sahip bir akıştır.
+Aşağıdaki örnek sorgu, yeniden bölümlenmiş verilerin iki akışını birleştirir. Yeniden bölümlenmiş verilerin iki akışı birleştirilirken akışlar aynı bölüm anahtarına ve sayıya sahip olmalıdır. Sonuç, aynı bölüm düzenine sahip bir akıştır.
 
 ```sql
 WITH step1 AS (SELECT * FROM input1 PARTITION BY DeviceID INTO 10),
@@ -46,28 +46,28 @@ step2 AS (SELECT * FROM input2 PARTITION BY DeviceID INTO 10)
 SELECT * INTO output FROM step1 PARTITION BY DeviceID UNION step2 PARTITION BY DeviceID
 ```
 
-Çıktı düzeni akış düzeni anahtarıyla eşleşmeli ve her alt akış bağımsız olarak temizlenebilsin diye saymalıdır. Akış, yıkamadan önce farklı bir şema ile birleştirilebilir ve yeniden bölümlenebilir, ancak işlemenin genel gecikmesine katkıda bulunduğundan ve kaynak kullanımını artırdığından bu yöntemden kaçınmalısınız.
+Çıkış şeması, her alt akışın bağımsız olarak temizleneceği şekilde akış şeması anahtarıyla ve sayısıyla eşleşmelidir. Akış, temizlenmeden önce farklı bir düzen tarafından birleştirilebilir ve yeniden bölümlenebilir, ancak işlemin genel gecikme süresine eklediğinden ve kaynak kullanımını arttığı için bu yöntemden kaçının.
 
-## <a name="streaming-units-for-repartitions"></a>Yeniden bölümler için Akış Birimleri
+## <a name="streaming-units-for-repartitions"></a>Yeniden bölümler için akış birimleri
 
-İhtiyacınız olan bölümlerin tam sayısını belirlemek için işinizin kaynak kullanımını deneyin ve gözlemleyin. Akış birimi sayısı [(SU)](stream-analytics-streaming-unit-consumption.md) her bölüm için gereken fiziksel kaynaklara göre ayarlanmalıdır. Genel olarak, her bölüm için altı SUs gereklidir. İşe atanan yeterli kaynak yoksa, sistem yalnızca işe yararsa yeniden bölümü uygular.
+İhtiyacınız olan bölümlerin tam sayısını öğrenmek için işinizin kaynak kullanımını deneyin ve gözlemleyin. [Akış birimlerinin sayısı (su)](stream-analytics-streaming-unit-consumption.md) , her bölüm için gereken fiziksel kaynaklara göre ayarlanmalıdır. Genel olarak, her bölüm için altı SUs gerekir. İşe atanan yeterli kaynak yoksa, sistem yalnızca işi yararlılığı durumunda yeniden bölümlendirmesi uygular.
 
-## <a name="repartitions-for-sql-output"></a>SQL çıktısı için yeniden bölümler
+## <a name="repartitions-for-sql-output"></a>SQL çıkışı için yeniden bölümler
 
-İşiniz çıktı için SQL veritabanını kullandığında, iş verisini en üst düzeye çıkarmak için en iyi bölüm sayısını eşleştirmek için açık yeniden bölümleme kullanın. SQL en iyi sekiz yazarla çalıştığından, akışı floş yapmadan önce sekize veya daha yukarı bir yere yeniden bölmek iş performansından yararlanabilir. 
+İşiniz çıktı için SQL veritabanı kullandığında, üretilen iş miktarını en üst düzeye çıkarmak için en iyi bölüm sayısını eşleştirmek üzere açık yeniden bölümleme kullanın. SQL sekiz yazıcı ile en iyi şekilde çalıştığından, temizlemeye başlamadan önce akışı sekiz olarak yeniden bölümlendirip veya daha fazla yukarı akış, iş performansına yarar sağlayabilir. 
 
-8'den fazla giriş bölümü olduğunda, giriş bölümleme düzenini devralmak uygun bir seçim olmayabilir. Çıktı yazarlarının sayısını açıkça belirtmek için sorgunuzda [INTO'yu](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) kullanmayı düşünün. 
+8 ' den fazla giriş bölümü olduğunda, giriş bölümleme düzenini devralma uygun bir seçenek olmayabilir. Çıktı yazıcılarının sayısını açıkça belirtmek için [sorgunuzda ' i kullanmayı göz](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) önünde bulundurun. 
 
-Aşağıdaki örnek, doğal olarak bölümlenmiş olmasına bakılmaksızın girişten okur ve deviceID boyutuna göre akışı on kat yeniden bölümlere ayırır ve verileri çıktıya boşaltır. 
+Aşağıdaki örnek, doğal olarak bölümlenmeden bağımsız olarak girdiden ve veri kümesini DeviceID boyutuna göre yeniden bölümleyip akışa alarak çıktıyı temizler. 
 
 ```sql
 SELECT * INTO [output] FROM [input] PARTITION BY DeviceID INTO 10
 ```
 
-Daha fazla bilgi için Azure [Akış Analizi çıktısı için Azure SQL Veritabanı'na](stream-analytics-sql-output-perf.md)bakın.
+Daha fazla bilgi için bkz. [Azure SQL veritabanı 'na Azure Stream Analytics çıktısı](stream-analytics-sql-output-perf.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Akış Analizi'ni başlatma](stream-analytics-introduction.md)
-* [Azure Akış Analitiği'nde sorgu paralellemi'ni kinle](stream-analytics-parallelization.md)
+* [Azure Stream Analytics kullanmaya başlayın](stream-analytics-introduction.md)
+* [Azure Stream Analytics sorgu paralelleştirme özelliğinden yararlanın](stream-analytics-parallelization.md)

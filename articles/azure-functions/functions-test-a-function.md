@@ -1,55 +1,55 @@
 ---
 title: Azure İşlevlerini test etme
-description: Visual Studio'da C# Fonksiyonu ve VS Kodu'nda JavaScript Fonksiyonu için otomatik testler oluşturma
+description: Visual Studio 'da C# işlevi ve VS Code içindeki JavaScript Işlevinde otomatik testler oluşturma
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
 ms.openlocfilehash: a37fd886e1bc70226b2e54750540dfcb79ee5973
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75768886"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure İşlevleri'nde kodunuzu test etmeye yönelik stratejiler
 
-Bu makalede, Azure İşlevler için otomatik testlerin nasıl oluşturulacak gösteriş. 
+Bu makalede, Azure Işlevleri için otomatikleştirilmiş testlerin nasıl oluşturulacağı gösterilmektedir. 
 
-Tüm kodu niçin sınamanız önerilir, ancak bir İşlev'in mantığını paketleyerek ve İşlev dışında testler oluşturarak en iyi sonuçları elde edebilirsiniz. Mantığın soyutlanması, Bir İşlevin kod satırlarını sınırlar ve Işlevin diğer sınıfları veya modülleri çağırmaktan yalnızca sorumlu olmasını sağlar. Ancak bu makalede, http ve zamanlayıcı tarafından tetiklenen işlevlere karşı otomatik testlerin nasıl oluşturulacak gösteriş olduğu gösterilmiştir.
+Tüm kodun test edilmesi önerilir, ancak işlevin mantığını sarmalayarak ve Işlev dışında testler oluşturarak en iyi sonuçları elde edebilirsiniz. Soyutlama mantığı, Işlevin kod satırlarını kısıtlar ve Işlevin yalnızca diğer sınıfları veya modülleri çağırarak sorumlu olmasını sağlar. Ancak, bu makalede, HTTP ve Zamanlayıcı tarafından tetiklenen işlevlerde otomatikleştirilmiş testlerin nasıl oluşturulacağı gösterilmektedir.
 
-Aşağıdaki içerik, farklı dilleri ve ortamları hedeflemek için iki farklı bölüme ayrılmıştır. Testler oluşturmayı öğrenebilirsiniz:
+Aşağıdaki içerik, farklı dilleri ve ortamları hedeflemek üzere iki farklı bölüme ayrılır. ' De test oluşturmayı öğrenebilirsiniz:
 
-- [C# xUnit ile Visual Studio'da](#c-in-visual-studio)
-- [JavaScript Jest ile VS Kodu](#javascript-in-vs-code)
+- [XUnit ile Visual Studio 'da C#](#c-in-visual-studio)
+- [Jest ile VS Code JavaScript](#javascript-in-vs-code)
 
-Örnek deposu [GitHub'da](https://github.com/Azure-Samples/azure-functions-tests)mevcuttur.
+Örnek depo [GitHub](https://github.com/Azure-Samples/azure-functions-tests)' da kullanılabilir.
 
 ## <a name="c-in-visual-studio"></a>Visual Studio’da C#
-Aşağıdaki örnek, Visual Studio'da c# fonksiyonu uygulamasının nasıl oluşturulup [xUnit](https://xunit.github.io)ile nasıl çalıştırılıp test edilebildiğini açıklar.
+Aşağıdaki örnek, Visual Studio 'da C# işlev uygulamasının nasıl oluşturulduğunu ve [xUnit](https://xunit.github.io)ile nasıl çalıştırılacağını ve test edileceğini açıklar.
 
-![Visual Studio'da Azure Fonksiyonlarını C# ile Test Etme](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
+![Visual Studio 'Da C# ile Azure Işlevlerini test etme](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="setup"></a>Kurulum
 
-Ortamınızı ayarlamak için bir Fonksiyon ve test uygulaması oluşturun. Aşağıdaki adımlar, testleri desteklemek için gereken uygulamaları ve işlevleri oluşturmanıza yardımcı olur:
+Ortamınızı ayarlamak için bir Işlev ve test uygulaması oluşturun. Aşağıdaki adımlar, testleri desteklemek için gereken uygulamaları ve işlevleri oluşturmanıza yardımcı olur:
 
-1. [Yeni bir Fonksiyonlar uygulaması oluşturun](./functions-create-first-azure-function.md) ve *işlevlerini* adlandırın
-2. [Şablondan bir HTTP işlevi oluşturun](./functions-create-first-azure-function.md) ve *httptrigger*adını.
-3. [Şablondan bir zamanlayıcı işlevi oluşturun](./functions-create-scheduled-function.md) ve *timerTrigger*adını.
-4. > Visual Studio'da **Visual Studio'> Visual C# > .NET Core > visual c# >** >'na tıklayarak [bir xUnit Test uygulaması oluşturun](https://xunit.github.io/docs/getting-started-dotnet-core) ve *fonksiyonlar.Test*adını alın. 
-5. Test uygulamasından [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) adresine referans eklemek için NuGet'i kullanın
-6. [Functions.Test uygulamasından *Fonksiyonlar* uygulamasına başvurun.](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) *Functions.Test*
+1. [Yeni bir işlevler uygulaması oluşturun](./functions-create-first-azure-function.md) ve *işlevleri* adlandırın
+2. [Şablondan BIR http Işlevi oluşturun](./functions-create-first-azure-function.md) ve *httptrigger*olarak adlandırın.
+3. [Şablondan bir Zamanlayıcı Işlevi oluşturun](./functions-create-scheduled-function.md) ve *timertrigger*olarak adlandırın.
+4. Visual Studio 'da **dosya > yeni > projesi > visual C# > .NET Core > xUnit test projesi** ve adı *Functions. test*aracılığıyla [bir xUnit test uygulaması oluşturun](https://xunit.github.io/docs/getting-started-dotnet-core) . 
+5. Test uygulamasından [Microsoft. AspNetCore. Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 'ye bir başvuru eklemek için NuGet kullanın
+6. [*Functions* ](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) Functions *. test* uygulamasındaki işlevler uygulamasına başvurun.
 
 ### <a name="create-test-classes"></a>Test sınıfları oluşturma
 
-Artık uygulamalar oluşturulduğuna göre, otomatik testleri çalıştırmak için kullanılan sınıfları oluşturabilirsiniz.
+Uygulamalar oluşturuldığına göre otomatik testleri çalıştırmak için kullanılan sınıfları oluşturabilirsiniz.
 
-Her işlev, ileti günlüğe kaydetmeyi işlemek için [ILogger'ın](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) bir örneğini alır. Bazı testler iletileri günlüğe kaydetmez veya günlüğe kaydetmenin nasıl uygulandığıyla ilgili bir sorunu yoktur. Diğer testlerin, bir testin geçip geçmediğini belirlemek için günlüğe kaydedilen iletileri değerlendirmesi gerekir.
+Her işlev, ileti günlüğünü işlemek için bir [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) örneğini alır. Bazı sınamalar iletileri günlüğe kaydetme veya günlük kaydı ile ilgili hiçbir sorun yoktur. Diğer testlerin, bir testin geçirilip geçirilmediğini belirlemede günlüğe kaydedilen iletileri değerlendirmesi gerekir.
 
-Sınıf `ListLogger` `ILogger` arabirimi uygular ve bir test sırasında değerlendirilmek için iletilerin dahili bir listesini tutar.
+`ListLogger` Sınıfı, `ILogger` arabirimini uygular ve test sırasında değerlendirme için bir iç ileti listesini tutar.
 
-*Functions.Test* uygulamasına **sağ tıklayın** ve > **Sınıfı Ekle'yi**seçin, **NullScope.cs** ve aşağıdaki kodu girin:
+*İşlevler. test* uygulaması **' na sağ tıklayın** ve **> sınıfı ekle**' yi seçin, **NullScope.cs** olarak adlandırın ve aşağıdaki kodu girin:
 
 ```csharp
 using System;
@@ -67,7 +67,7 @@ namespace Functions.Tests
 }
 ```
 
-Ardından, *Functions.Test* uygulamasına **sağ tıklayın** ve **> Sınıf Ekle'yi**seçin, **ListLogger.cs** ve aşağıdaki kodu girin:
+Ardından, *işlevler. test* uygulaması **' na sağ tıklayın** ve **> sınıfı ekle**' yi seçin, **ListLogger.cs** olarak adlandırın ve aşağıdaki kodu girin:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -103,17 +103,17 @@ namespace Functions.Tests
 }
 ```
 
-Sınıf, `ListLogger` `ILogger` arabirim tarafından sözleşme ile aşağıdaki üyeleri uygular:
+`ListLogger` Sınıfı, `ILogger` arabirimi tarafından anlaşmalı olarak aşağıdaki üyeleri uygular:
 
-- **BeginScope**: Kapsamlar günlüğe bağlam ekler. Bu durumda, test sadece `NullScope` test çalışmasına izin vermek için sınıftastatik örnek işaret eder.
+- **BeginScope**: kapsamlar günlüğe kaydetme uygulamanıza bağlam ekler. Bu durumda, test, test işlevine izin vermek için yalnızca `NullScope` sınıftaki statik örneği işaret eder.
 
-- **IsEnabled**: Varsayılan `false` değeri sağlanır.
+- **IsEnabled**: varsayılan değeri `false` sağlanır.
 
-- **Günlük**: Bu yöntem, iletiyi biçimlendirmek için sağlanan `formatter` `Logs` işlevi kullanır ve ardından ortaya çıkan metni koleksiyona ekler.
+- **GNLK**: Bu yöntem, iletiyi biçimlendirmek `formatter` için sağlanan işlevi kullanır ve sonra elde edilen metni `Logs` koleksiyona ekler.
 
-Koleksiyon `Logs` bir örneğidir `List<string>` ve oluşturucuda baş harfe biştir.
+`Logs` Koleksiyonu bir örneğidir `List<string>` ve oluşturucuda başlatılır.
 
-Ardından, *Functions.Test* uygulamasına **sağ tıklayın** ve **> Sınıf Ekle'yi**seçin, **LoggerTypes.cs** ve aşağıdaki kodu girin:
+Ardından, *işlevler. test* uygulaması **' na sağ tıklayın** ve **> sınıfı ekle**' yi seçin, **LoggerTypes.cs** olarak adlandırın ve aşağıdaki kodu girin:
 
 ```csharp
 namespace Functions.Tests
@@ -125,9 +125,9 @@ namespace Functions.Tests
     }
 }
 ```
-Bu numaralandırma, testler tarafından kullanılan logger türünü belirtir. 
+Bu numaralandırma, testler tarafından kullanılan günlükçü türünü belirtir. 
 
-Ardından, *Functions.Test* uygulamasına **sağ tıklayın** ve **> Sınıf Ekle'yi**seçin, **TestFactory.cs** ve aşağıdaki kodu girin:
+Ardından, *işlevler. test* uygulaması **' na sağ tıklayın** ve **> sınıfı ekle**' yi seçin, **TestFactory.cs** olarak adlandırın ve aşağıdaki kodu girin:
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -188,17 +188,17 @@ namespace Functions.Tests
     }
 }
 ```
-Sınıf `TestFactory` aşağıdaki üyeleri uygular:
+`TestFactory` Sınıfı aşağıdaki üyeleri uygular:
 
-- **Veri**: Bu özellik, örnek verilerin ayrılmaz bir koleksiyonunu [döndürür.](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) Anahtar değer çiftleri sorgu dizesine geçirilen değerleri temsil eder.
+- **Veri**: Bu özellik, örnek verilerin bir [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) koleksiyonunu döndürür. Anahtar değer çiftleri bir sorgu dizesine geçirilen değerleri temsil eder.
 
-- **CreateDictionary**: Bu yöntem, bir anahtar/değer çiftini `Dictionary` bağımsız `QueryCollection` değişken olarak kabul eder ve sorgu dize değerlerini temsil etmek için kullanılan yeni bir değeri döndürür.
+- **CreateDictionary**: Bu yöntem, anahtar/değer çiftini bağımsız değişken olarak kabul eder ve sorgu `Dictionary` dizesi değerlerini temsil `QueryCollection` etmek için oluşturmak üzere yeni bir değer döndürür.
 
-- **CreateHttpRequest**: Bu yöntem, verilen sorgu dize parametreleri ile başlaltımı ile başlaltımı bir HTTP isteği oluşturur.
+- **Createhttprequest**: Bu yöntem, belirtilen sorgu dizesi parametreleriyle BAŞLATıLAN bir http isteği oluşturur.
 
-- **CreateLogger**: Logger türüne bağlı olarak, bu yöntem test için kullanılan bir logger sınıfDöndürür. Günlüğe `ListLogger` kaydedilmiş iletilerin testleri değerlendirmeye hazır olduğunu izler.
+- **Creategünlükçü**: günlükçü türü temelinde, bu yöntem test için kullanılan bir günlükçü sınıfı döndürür. , `ListLogger` Testlerin değerlendirmesi için kullanılabilen günlüğe kaydedilen iletileri izler.
 
-Ardından, *Functions.Test* uygulamasına **sağ tıklayın** ve **> Sınıf Ekle'yi**seçin, **FunctionsTests.cs** adlandırın ve aşağıdaki kodu girin:
+Ardından, *işlevler. test* uygulaması **' na sağ tıklayın** ve **> sınıfı ekle**' yi seçin, **FunctionsTests.cs** olarak adlandırın ve aşağıdaki kodu girin:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -239,45 +239,45 @@ namespace Functions.Tests
     }
 }
 ```
-Bu sınıfta uygulanan üyeler şunlardır:
+Bu sınıfta uygulanan Üyeler şunlardır:
 
-- **Http_trigger_should_return_known_string**: Bu test, bir HTTP `name=Bill` işlevine sorgu dize değerleri ile bir istek oluşturur ve beklenen yanıt Döndürülür denetler.
+- **Http_trigger_should_return_known_string**: Bu test bir http işlevine sorgu dizesi değerleriyle `name=Bill` bir istek oluşturur ve beklenen yanıtın döndürülüp döndürülmediğini denetler.
 
-- **Http_trigger_should_return_string_from_member_data**: Bu test, HTTP işlevine örnek veri sağlamak için xUnit özniteliklerini kullanır.
+- **Http_trigger_should_return_string_from_member_data**: Bu test, http işlevine örnek veriler sağlamak Için xUnit özniteliklerini kullanır.
 
-- **Timer_should_log_message**: Bu test bir `ListLogger` örnek oluşturur ve bir zamanlayıcı işlevleri geçer. İşlev çalıştırıldıktan sonra, beklenen iletinin bulunduğundan emin olmak için günlük işaretlenir.
+- **Timer_should_log_message**: Bu test bir örneği oluşturur `ListLogger` ve bunu bir Zamanlayıcı işlevlerine geçirir. İşlev çalıştırıldığında, beklenen iletinin mevcut olduğundan emin olmak için günlük denetlenir.
 
-Testlerinizde uygulama ayarlarına erişmek istiyorsanız [System.Environment.GetEnvironmentVariable'i](./functions-dotnet-class-library.md#environment-variables)kullanabilirsiniz.
+Testlerinizde uygulama ayarlarına erişmek istiyorsanız [System. Environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)kullanabilirsiniz.
 
 ### <a name="run-tests"></a>Testleri çalıştırma
 
-Testleri çalıştırmak için Test **Gezgini'ne** gidin ve **Tümlerini Çalıştır'ı**tıklatın.
+Testleri çalıştırmak için **Test Gezgini** ' ne gidin ve **Tümünü Çalıştır**' a tıklayın.
 
-![Visual Studio'da Azure Fonksiyonlarını C# ile Test Etme](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
+![Visual Studio 'Da C# ile Azure Işlevlerini test etme](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="debug-tests"></a>Hata ayıklama testleri
 
-Testleri hata ayıklamak için, testte bir kesme noktası ayarlayın, **Test Gezgini'ne** gidin ve **Hata Ayıklama Son Çalıştırmayı Çalıştır >'ı**tıklatın.
+Testlerde hata ayıklamak için bir test üzerine bir kesme noktası ayarlayın, **Test Gezgini** 'ne gidin ve **son çalıştırma > hata ayıkla Çalıştır**' a tıklayın.
 
-## <a name="javascript-in-vs-code"></a>VS Kodunda JavaScript
+## <a name="javascript-in-vs-code"></a>VS Code JavaScript
 
-Aşağıdaki örnek, VS Kodu'nda bir JavaScript İşlevi uygulamasının nasıl oluşturulup [Jest](https://jestjs.io)ile nasıl çalıştırılıp test edilebildiğini açıklar. Bu yordam, Azure İşlevleri oluşturmak için [VS Kodu İşlevleri uzantısını](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) kullanır.
+Aşağıdaki örnek, VS Code ' de bir JavaScript Işlev uygulamasının nasıl oluşturulduğunu ve [jest](https://jestjs.io)ile nasıl çalıştırılacağını ve test edileceğini açıklar. Bu yordam, Azure Işlevleri oluşturmak için [vs Code işlevleri uzantısını](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) kullanır.
 
-![Azure Fonksiyonlarını VS Kodunda JavaScript ile Test Etme](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
+![VS Code 'de JavaScript ile Azure Işlevlerini test etme](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
 ### <a name="setup"></a>Kurulum
 
-Ortamınızı ayarlamak için, boş bir klasörde yeni bir Düğüm.js uygulamasını çalıştırarak başlangıç olarak yayın. `npm init`
+Ortamınızı ayarlamak için, çalıştırarak `npm init`boş bir klasörde yeni bir Node. js uygulaması başlatın.
 
 ```bash
 npm init -y
 ```
-Ardından, aşağıdaki komutu çalıştırarak Jest yükleyin:
+Sonra, aşağıdaki komutu çalıştırarak jest 'yi çalıştırın:
 
 ```bash
 npm i jest
 ```
-Şimdi aşağıdaki komutile mevcut test komutu değiştirmek için _package.json_ güncelleyin:
+Şimdi var olan test komutunu aşağıdaki komutla değiştirmek için _Package. JSON_ ' i güncelleştirin:
 
 ```bash
 "scripts": {
@@ -285,19 +285,19 @@ npm i jest
 }
 ```
 
-### <a name="create-test-modules"></a>Test modülleri oluşturma
-Proje başharfle değiştirilirken, otomatik testleri çalıştırmak için kullanılan modülleri oluşturabilirsiniz. Destek modüllerini tutmak için *sınama* adlı yeni bir klasör oluşturarak başlayın.
+### <a name="create-test-modules"></a>Test modülleri oluştur
+Proje başlatıldıktan sonra otomatikleştirilmiş testleri çalıştırmak için kullanılan modülleri oluşturabilirsiniz. Destek modüllerini tutmak için *Test* adlı yeni bir klasör oluşturarak başlayın.
 
-*Test* klasöründe yeni bir dosya ekleyin, **varsayılan Context.js**adını ve aşağıdaki kodu ekleyin:
+*Test* klasöründe yeni bir dosya ekleyin, **DefaultContext. js**olarak adlandırın ve aşağıdaki kodu ekleyin:
 
 ```javascript
 module.exports = {
     log: jest.fn()
 };
 ```
-Bu modül, varsayılan yürütme bağlamını temsil etmek için *günlük* işleviyle alay eder.
+Bu modül, varsayılan yürütme bağlamını göstermek için *günlük* işlevini gizler.
 
-Ardından, yeni bir dosya ekleyin, **varsayılan Timer.js**adını ve aşağıdaki kodu ekleyin:
+Sonra, yeni bir dosya ekleyin, **Defaulttimer. js**olarak adlandırın ve aşağıdaki kodu ekleyin:
 
 ```javascript
 module.exports = {
@@ -305,9 +305,9 @@ module.exports = {
 };
 ```
 
-Bu modül standı `IsPastDue` özelliği uygular sahte bir zamanlayıcı örneği olarak. Test koşumu yalnızca sonucu test etmek için işlevi doğrudan aradığından, NCRONTAB ifadeleri gibi zamanlayıcı yapılandırmaları burada gerekli değildir.
+Bu modül, `IsPastDue` özelliği tek başına sahte bir zamanlayıcı örneği olarak uygular. Test bandı yalnızca sonucu test etmek için işlevi çağırarak, NCRONTAB ifadeleri gibi Zamanlayıcı konfigürasyonları burada gerekli değildir.
 
-Ardından, [yeni bir JavaScript HTTP Fonksiyonu oluşturmak](/azure/javascript/tutorial-vscode-serverless-node-01) ve *httptrigger*adını VS Kodu Fonksiyonları uzantısı kullanın. İşlev oluşturulduktan sonra, **index.test.js**adlı klasöre yeni bir dosya ekleyin ve aşağıdaki kodu ekleyin:
+Ardından, [Yeni bir JAVASCRIPT http işlevi oluşturmak](/azure/javascript/tutorial-vscode-serverless-node-01) ve *httptrigger*olarak adlandırmak için vs Code işlevleri uzantısını kullanın. İşlev oluşturulduktan sonra **index. test. js**adlı aynı klasöre yeni bir dosya ekleyin ve aşağıdaki kodu ekleyin:
 
 ```javascript
 const httpFunction = require('./index');
@@ -325,9 +325,9 @@ test('Http trigger should return known text', async () => {
     expect(context.res.body).toEqual('Hello Bill');
 });
 ```
-Şablondaki HTTP işlevi, sorgu dizesinde sağlanan adla birleştirilmiş bir "Merhaba" dizesini döndürür. Bu test, bir isteğin sahte bir örneğini oluşturur ve http işlevine geçirir. Test, *günlük* yönteminin bir kez çağrıldığını ve döndürülen metnin "Merhaba Fatura" ile eşit olduğunu denetler.
+Şablondaki HTTP işlevi, sorgu dizesinde belirtilen adla birleştirilmiş bir "Hello" dizesi döndürüyor. Bu test bir isteğin sahte bir örneğini oluşturur ve bunu HTTP işlevine geçirir. Test, *günlük* yönteminin bir kez çağrıldığını ve döndürülen metnin "Hello Bill" değerine eşit olduğunu denetler.
 
-Ardından, yeni bir JavaScript Zamanlayıcı Fonksiyonu oluşturmak ve *TimerTrigger*adını almak için VS Kodu İşlevleri uzantısını kullanın. İşlev oluşturulduktan sonra, **index.test.js**adlı klasöre yeni bir dosya ekleyin ve aşağıdaki kodu ekleyin:
+Ardından, yeni bir JavaScript Zamanlayıcı Işlevi oluşturmak ve bunu *Timertrigger*olarak adlandırmak Için vs Code işlevleri uzantısını kullanın. İşlev oluşturulduktan sonra **index. test. js**adlı aynı klasöre yeni bir dosya ekleyin ve aşağıdaki kodu ekleyin:
 
 ```javascript
 const timerFunction = require('./index');
@@ -339,20 +339,20 @@ test('Timer trigger should log message', () => {
     expect(context.log.mock.calls.length).toBe(1);
 });
 ```
-Şablondaki zamanlayıcı işlevi, işlevin gövdesinin sonundabir ileti kaydeder. Bu *test, günlük* işlevinin bir kez çağrılmasını sağlar.
+Şablondaki süreölçer işlevi, işlevin gövdesinin sonunda bir ileti kaydeder. Bu test, *günlük* işlevinin bir kez çağrıldığından emin olmanızı sağlar.
 
 ### <a name="run-tests"></a>Testleri çalıştırma
-Testleri çalıştırmak için komut penceresini açmak için **CTRL** `npm test`+ ~ tuşuna basın ve çalıştırın:
+Testleri çalıştırmak için **CTRL + ~** tuşlarına basarak komut penceresini açın ve şunu çalıştırın `npm test`:
 
 ```bash
 npm test
 ```
 
-![Azure Fonksiyonlarını VS Kodunda JavaScript ile Test Etme](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
+![VS Code 'de JavaScript ile Azure Işlevlerini test etme](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
 ### <a name="debug-tests"></a>Hata ayıklama testleri
 
-Testlerinizi hata ayıklamak için *launch.json* dosyanıza aşağıdaki yapılandırmayı ekleyin:
+Testlerinizde hata ayıklamak için, aşağıdaki yapılandırmayı *Launch. JSON* dosyanıza ekleyin:
 
 ```json
 {
@@ -368,11 +368,11 @@ Testlerinizi hata ayıklamak için *launch.json* dosyanıza aşağıdaki yapıla
 }
 ```
 
-Ardından, testinizde bir kesme noktası ayarlayın ve **F5 tuşuna**basın.
+Sonra, testinizde bir kesme noktası ayarlayın ve **F5**tuşuna basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık işlevleriniz için otomatik testler yazmayı öğrendiğinize göre, şu kaynaklarla devam edin:
+İşlevleriniz için otomatikleştirilmiş testlerin nasıl yazılacağını öğrendiğinize göre şu kaynaklarla devam edin:
 - [HTTP ile tetiklenmeyen bir işlevi el ile çalıştırma](./functions-manually-run-non-http.md)
-- [Azure Fonksiyonları hata işleme](./functions-bindings-error-pages.md)
-- [Azure İşlevi Olay Izgara yerel hata ayıklama tetikleme](./functions-debug-event-grid-trigger-local.md)
+- [Azure Işlevleri hata işleme](./functions-bindings-error-pages.md)
+- [Azure Işlevi Event Grid yerel hata ayıklamayı Tetikle](./functions-debug-event-grid-trigger-local.md)

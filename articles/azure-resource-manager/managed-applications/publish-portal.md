@@ -1,61 +1,61 @@
 ---
-title: Yönetilen uygulamaları portal üzerinden yayımlama
-description: Kuruluşunuzun üyelerine yönelik bir Azure yönetilen uygulama oluşturmak için Azure portalını nasıl kullanacağınızı gösterir.
+title: Yönetilen uygulamaları Portal üzerinden yayımlama
+description: Kuruluşunuzun üyeleri için tasarlanan bir Azure yönetilen uygulaması oluşturmak için Azure portal nasıl kullanacağınızı gösterir.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: tomfitz
 ms.openlocfilehash: 05302d92f2304be35a7b88fac6fabfc17b13c63e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651728"
 ---
-# <a name="publish-a-service-catalog-application-through-azure-portal"></a>Azure portalı üzerinden hizmet kataloğu uygulaması yayınlama
+# <a name="publish-a-service-catalog-application-through-azure-portal"></a>Azure portal aracılığıyla bir hizmet kataloğu uygulaması yayımlama
 
-Azure portalını, kuruluşunuzun üyelerine yönelik [yönetilen uygulamaları](overview.md) yayımlamak için kullanabilirsiniz. Örneğin, BT departmanı kurumsal standartlara uyumu sağlamak için yönetilen uygulamalar yayımlayabilir. Bu yönetilen uygulamalara Azure marketten değil, hizmet kataloğu üzerinden erişilebilir.
+Kuruluşunuzun üyeleri için tasarlanan [yönetilen uygulamaları](overview.md) yayımlamak için Azure Portal kullanabilirsiniz. Örneğin, BT departmanı kurumsal standartlara uyumu sağlamak için yönetilen uygulamalar yayımlayabilir. Bu yönetilen uygulamalara Azure marketten değil, hizmet kataloğu üzerinden erişilebilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Yönetilen bir uygulama yayımlarken, kaynakları yönetmek için bir kimlik belirtirsiniz. Bir Azure Active Directory kullanıcı grubu belirtmenizi öneririz. Bir Azure Etkin Dizin kullanıcı grubu oluşturmak için [bkz.](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) 
+Yönetilen bir uygulamayı yayımlarken, kaynakları yönetmek için bir kimlik belirtirsiniz. Bir Azure Active Directory Kullanıcı grubu belirtmenizi öneririz. Azure Active Directory bir Kullanıcı grubu oluşturmak için, bkz. [Grup oluşturma ve Azure Active Directory üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). 
 
-Yönetilen uygulama tanımını içeren .zip dosyası bir URI aracılığıyla kullanılabilir olmalıdır. .zip dosyanızı bir depolama blob'una yüklemenizi öneririz. 
+Yönetilen uygulama tanımını içeren. zip dosyası bir URI üzerinden kullanılabilir olmalıdır. . Zip dosyanızı bir depolama blobuna yüklemenizi öneririz. 
 
 ## <a name="create-managed-application-with-portal"></a>Portal ile yönetilen uygulama oluşturma
 
-1. Sol üst köşede **+ Yeni'yi**seçin.
+1. Sol üst köşedeki **+ Yeni**' yi seçin.
 
    ![Yeni hizmet](./media/publish-portal/new.png)
 
-1. Hizmet **kataloğunu**arayın.
+1. **Hizmet kataloğunu**arayın.
 
-1. Sonuçlarda, Hizmet Kataloğu Yönetilen Uygulama Tanımı'nı bulana kadar **kaydırın.** Kalem simgesini seçin.
+1. Sonuçlarda, **Hizmet kataloğu yönetilen uygulama tanımını**bulana kadar ilerleyin. Kalem simgesini seçin.
 
-   ![Yönetilen uygulama tanımlarını arama](./media/publish-portal/select-managed-apps-definition.png)
+   ![Yönetilen uygulama tanımlarını arayın](./media/publish-portal/select-managed-apps-definition.png)
 
-1. Yönetilen uygulama tanımıoluşturma işlemini başlatmak için **Oluştur'u** seçin.
+1. Yönetilen uygulama tanımını oluşturma işlemini başlatmak için **Oluştur** ' u seçin.
 
-   ![Yönetilen uygulama tanımı oluşturma](./media/publish-portal/create-definition.png)
+   ![Yönetilen uygulama tanımı oluştur](./media/publish-portal/create-definition.png)
 
-1. Ad, görüntü adı, açıklama, konum, abonelik ve kaynak grubu için değerler sağlayın. Paket dosyası URI için, oluşturduğunuz zip dosyasına giden yolu sağlayın.
+1. Ad, görünen ad, açıklama, konum, abonelik ve kaynak grubu için değerler sağlayın. Paket dosyası URI 'SI için, oluşturduğunuz zip dosyasının yolunu belirtin.
 
-   ![Değerler sağlama](./media/publish-portal/fill-application-values.png)
+   ![Değer sağla](./media/publish-portal/fill-application-values.png)
 
-1. Kimlik Doğrulama ve Kilit Düzeyi bölümüne ulaştığınızda, **Yetki Ekle'yi**seçin.
+1. Kimlik doğrulama ve kilit düzeyi bölümüne geldiğinizde, **Yetkilendirme Ekle**' yi seçin.
 
-   ![Yetkilendirme ekleme](./media/publish-portal/add-authorization.png)
+   ![Yetkilendirme Ekle](./media/publish-portal/add-authorization.png)
 
-1. Kaynakları yönetmek için bir Azure Etkin Dizin grubu seçin ve **Tamam'ı**seçin.
+1. Kaynakları yönetmek için bir Azure Active Directory grubu seçin ve **Tamam**' ı seçin.
 
-   ![Yetkilendirme grubu ekleme](./media/publish-portal/add-auth-group.png)
+   ![Yetkilendirme grubu Ekle](./media/publish-portal/add-auth-group.png)
 
-1. Tüm değerleri sağladığınızda **Oluştur'u**seçin.
+1. Tüm değerleri sağladıysanız **Oluştur**' u seçin.
 
    ![Yönetilen uygulama oluşturma](./media/publish-portal/create-app.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Yönetilen uygulamalara giriş için [Yönetilen uygulamalara genel bakış](overview.md) konusunu inceleyin.
-* Yönetilen uygulama örnekleri [için, Azure yönetilen uygulamalar için Örnek projelere](sample-projects.md)bakın.
+* Yönetilen uygulama örnekleri için bkz. [Azure yönetilen uygulamalar Için örnek projeler](sample-projects.md).
 * Yönetilen bir uygulamaya ait bir kullanıcı arabirimi tanım dosyası oluşturma hakkında bilgi için [CreateUiDefinition ile çalışmaya başlama](create-uidefinition-overview.md) konusunu inceleyin.

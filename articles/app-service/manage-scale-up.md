@@ -1,84 +1,84 @@
 ---
 title: Özellikleri ve kapasiteleri ölçeklendirin
-description: Azure Uygulama Hizmeti'nde bir uygulamayı nasıl ölçeklendireceklerini öğrenin. Daha fazla CPU, bellek, disk alanı ve ekstra özellik elde edin.
+description: Azure App Service içinde bir uygulamayı nasıl ölçeklendireceğinizi öğrenin. Daha fazla CPU, bellek, disk alanı ve ek özellik sağlayın.
 ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
 ms.openlocfilehash: dfd9297e80836978b8a185df3fc4659676383802
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75659908"
 ---
-# <a name="scale-up-an-app-in-azure-app-service"></a>Azure Uygulama Hizmeti'nde bir uygulamayı ölçeklendirin
+# <a name="scale-up-an-app-in-azure-app-service"></a>Azure App Service bir uygulamayı büyütme
 
-Bu makalede, Azure Uygulama Hizmeti'nde uygulamanızı nasıl ölçeklendirdiğinizi gösterilmektedir. Ölçeklendirme için iki iş akışı vardır, ölçeklendirin ve ölçeklendirin ve bu makalede ölçeklendirme iş akışını açıklar.
+Bu makalede uygulamanızın Azure App Service nasıl ölçeklenmesi gösterilmektedir. Ölçeklendirme, ölçek artırma ve genişleme için iki iş akışı bulunur ve bu makalede ölçeği artırma iş akışı açıklanmaktadır.
 
-* [Ölçeklendirme](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Daha fazla CPU, bellek, disk alanı ve özel sanal makineler (VM'ler), özel etki alanları ve sertifikalar, evreleme yuvaları, otomatik ölçeklendirme ve daha fazlası gibi ekstra özellikler alın. Uygulamanızın ait olduğu Uygulama Hizmeti planının fiyatlandırma katmanını değiştirerek ölçeklendirirsiniz.
-* [Ölçeklendir](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Uygulamanızı çalıştıran VM örneklerinin sayısını artırın.
-  Fiyatlandırma katmanınıza bağlı olarak 30 örneğe kadar ölçeklendirebilirsiniz. **Yalıtılmış** katmandaki [Uygulama Hizmet Ortamları,](environment/intro.md) ölçeklendirme sayınızı 100 örneğe daha da artırır. Ölçeklendirme hakkında daha fazla bilgi için, [bkz.](../monitoring-and-diagnostics/insights-how-to-scale.md) Burada, önceden tanımlanmış kurallara ve zamanlamalara göre örnek sayısını otomatik olarak ölçeklendirmek için otomatik ölçeklendirmenin nasıl kullanılacağını öğrenirsiniz.
+* [Ölçeği artırma](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): daha fazla CPU, bellek, disk alanı ve adanmış sanal makineler (VM), özel etki alanları ve sertifikalar, hazırlama yuvaları, otomatik ölçeklendirme ve daha fazlası gibi ek özellikler alın. Uygulamanızın ait olduğu App Service planının fiyatlandırma katmanını değiştirerek ölçeği değiştirmiş olursunuz.
+* [Ölçeği genişletme](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): UYGULAMANıZı çalıştıran VM örneği sayısını artırın.
+  Fiyatlandırma katmanınıza bağlı olarak 30 örneğe kadar ölçeği değiştirebilirsiniz. **Yalıtılmış** katmandaki [App Service ortamlar](environment/intro.md) , ölçek genişletme sayınızı 100 örneğe daha da artırır. Ölçeği genişletme hakkında daha fazla bilgi için bkz. [örnek sayısını el ile veya otomatik olarak ölçeklendirme](../monitoring-and-diagnostics/insights-how-to-scale.md). Burada, otomatik ölçeklendirmeyi kullanarak, önceden tanımlanmış kurallara ve zamanlamalara göre örnek sayısını otomatik olarak ölçeklendirmeye yönelik bir bilgi edinebilirsiniz.
 
-Ölçek ayarlarının uygulanması yalnızca saniyeler sürer ve [Uygulama Hizmeti planınızdaki](../app-service/overview-hosting-plans.md)tüm uygulamaları etkiler.
-Kodunuzu değiştirmenizi veya uygulamanızı yeniden dağıtmanızı gerektirmezler.
+Ölçek ayarları, [App Service planınızdaki](../app-service/overview-hosting-plans.md)tüm uygulamaları uygulamak ve etkilemek için yalnızca saniyeler sürer.
+Kodunuzun değiştirilmesini veya uygulamanızı yeniden dağıtmanıza gerek kalmaz.
 
-Bireysel Uygulama Hizmeti planlarının fiyatlandırması ve özellikleri hakkında bilgi için [Uygulama Hizmeti Fiyatlandırma Ayrıntıları'na](https://azure.microsoft.com/pricing/details/web-sites/)bakın.  
+Bireysel App Service planlarının fiyatlandırma ve özellikleri hakkında bilgi için bkz. [App Service fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/web-sites/).  
 
 > [!NOTE]
-> **Ücretsiz** katmandan bir Uygulama Hizmeti planını değiştirmeden önce, Azure aboneliğiniz için [öncelikle harcama sınırlarını](https://azure.microsoft.com/pricing/spending-limits/) kaldırmanız gerekir. Microsoft Azure Uygulama Hizmeti aboneliğiniz için seçenekleri görüntülemek veya değiştirmek için [Bkz. Microsoft Azure Abonelikleri.][azuresubscriptions]
+> **Ücretsiz** katmandan bir App Service planını değiştirmeden önce, Azure aboneliğiniz için yerine [harcama limitlerini](https://azure.microsoft.com/pricing/spending-limits/) kaldırmanız gerekir. Microsoft Azure App Service aboneliğinizin seçeneklerini görüntülemek veya değiştirmek için, bkz. [Microsoft Azure abonelikleri][azuresubscriptions].
 > 
 > 
 
 <a name="scalingsharedorbasic"></a>
 <a name="scalingstandard"></a>
 
-## <a name="scale-up-your-pricing-tier"></a>Fiyatlandırma katmanınızı ölçeklendirin
+## <a name="scale-up-your-pricing-tier"></a>Fiyatlandırma katmanınızı büyütme
 
 > [!NOTE]
-> **PremiumV2** katmanına kadar ölçeklendirmek [için, Uygulama Hizmeti için PremiumV2 katmanını Yapılandır'a](app-service-configure-premium-tier.md)bakın.
+> **PremiumV2** katmanına kadar ölçeklendirmek için bkz. [App Service Için PremiumV2 katmanını yapılandırma](app-service-configure-premium-tier.md).
 >
 
 1. Tarayıcınızda [Azure portalı][portal]’nı açın.
 
-1. Uygulama Hizmeti uygulama sayfanızda, sol menüden **Yukarı Ölçekle (App Service planı)** seçeneğini belirleyin.
+1. App Service uygulama sayfanızda, sol menüden **Ölçek yukarı (App Service planı)** öğesini seçin.
    
-3. Katmanınızı seçin ve sonra **Uygula'yı**seçin. Farklı kategorileri seçin (örneğin, **Üretim)** ve ayrıca daha fazla katman göstermek için **ek seçenekleri görün.**
+3. Katmanınızı seçin ve ardından **Uygula**' yı seçin. Farklı kategorileri (örneğin, **Üretim**) seçin ve ayrıca daha fazla katman göstermek için **ek seçeneklere bakın** .
    
-    ![Azure uygulamanızı büyütmek için gidin.][ChooseWHP]
+    ![Azure uygulamanızı ölçeklendirmek için gidin.][ChooseWHP]
 
-    İşlem tamamlandığında, yeşil başarı onay işareti ne reli bir bildirim açılır penceresi görürsünüz.
+    İşlem tamamlandığında yeşil başarı onay işaretiyle bir bildirim açılır penceresi görürsünüz.
 
 <a name="ScalingSQLServer"></a>
 
-## <a name="scale-related-resources"></a>İlgili kaynakları ölçeklendir
-Uygulamanız Azure SQL Veritabanı veya Azure Depolama gibi diğer hizmetlere bağlıysa, bu kaynakları ayrı ayrı ölçeklendirebilirsiniz. Bu kaynaklar App Service planı tarafından yönetilmez.
+## <a name="scale-related-resources"></a>İlgili kaynakları ölçeklendirin
+Uygulamanız Azure SQL veritabanı veya Azure depolama gibi diğer hizmetlere bağımlıysa, bu kaynakları ayrı olarak ölçeklendirebilirsiniz. Bu kaynaklar App Service planı tarafından yönetilmez.
 
-1. Uygulamanız için **Genel Bakış** sayfasında **Kaynak grubu** bağlantısını seçin.
+1. Uygulamanızın **genel bakış** sayfasında **kaynak grubu** bağlantısını seçin.
    
     ![Azure uygulamanızın ilgili kaynaklarını ölçeklendirin](./media/web-sites-scale/RGEssentialsLink.png)
 
-2. **Kaynak grubu** sayfasının **Özet** bölümünde, ölçeklendirmek istediğiniz bir kaynak seçin. Aşağıdaki ekran görüntüsü bir SQL Veritabanı kaynağını gösterir.
+2. **Kaynak grubu** sayfasının **Özet** bölümünde, ölçeklendirmek istediğiniz kaynağı seçin. Aşağıdaki ekran görüntüsünde bir SQL veritabanı kaynağı gösterilmektedir.
    
     ![Azure uygulamanızı ölçeklendirmek için kaynak grubu sayfasına gidin](./media/web-sites-scale/ResourceGroup.png)
 
-    İlgili kaynağı ölçeklendirmek için, belirli kaynak türüiçin belgelere bakın. Örneğin, tek bir SQL Veritabanını ölçeklendirmek için [Azure SQL Veritabanı'ndaki tek veritabanı kaynaklarını ölçeklendir'e](../sql-database/sql-database-single-database-scale.md)bakın. MySQL kaynağı için bir Azure Veritabanı nı ölçeklendirmek için [MySQL kaynaklarını ölçeklendir'e](../mysql/concepts-pricing-tiers.md#scale-resources)bakın.
+    İlgili kaynağı ölçeklendirmek için, belirli kaynak türüne yönelik belgelere bakın. Örneğin, tek bir SQL veritabanının ölçeğini ölçeklendirmek için bkz. [Azure SQL veritabanı 'nda tek veritabanı kaynaklarını ölçeklendirme](../sql-database/sql-database-single-database-scale.md). MySQL için Azure veritabanı kaynağını ölçeklendirmek için bkz. [MySQL kaynaklarını ölçeklendirme](../mysql/concepts-pricing-tiers.md#scale-resources).
 
 <a name="OtherFeatures"></a>
 <a name="devfeatures"></a>
 
 ## <a name="compare-pricing-tiers"></a>Fiyatlandırma katmanlarını karşılaştırın
 
-Her fiyatlandırma katmanı için VM boyutları gibi ayrıntılı bilgi için [Uygulama Hizmeti Fiyatlandırma Ayrıntıları'na](https://azure.microsoft.com/pricing/details/app-service)bakın.
+Her fiyatlandırma katmanının VM boyutları gibi ayrıntılı bilgiler için bkz. [App Service fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/app-service).
 
-Hizmet sınırları, kotalar ve kısıtlamalar tablosu ve her katmandaki desteklenen özellikler için [Uygulama Hizmeti sınırlarına](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)bakın.
+Hizmet sınırları, Kotalar ve kısıtlamalar tablosu ve her katmandaki desteklenen özellikler için bkz. [App Service sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
 
 <a name="Next Steps"></a>
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 
 [Örnek sayısını el ile veya otomatik olarak ölçeklendirme](../monitoring-and-diagnostics/insights-how-to-scale.md)  
-[App Service için PremiumV2 katmanını yapılandırın](app-service-configure-premium-tier.md)
+[App Service için PremiumV2 katmanını yapılandırma](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->
 [vmsizes]:https://azure.microsoft.com/pricing/details/app-service/

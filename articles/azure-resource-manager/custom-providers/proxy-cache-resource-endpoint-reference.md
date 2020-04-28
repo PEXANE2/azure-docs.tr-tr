@@ -1,24 +1,24 @@
 ---
 title: Özel kaynak önbellek başvurusu
-description: Azure Özel Kaynak Sağlayıcıları için özel kaynak önbelleği başvurusu. Bu makalede, önbellek özel kaynakları uygulayan uç noktalar için gereksinimleri üzerinden gidecek.
+description: Azure özel kaynak sağlayıcıları için özel kaynak önbelleği başvurusu. Bu makale, önbellek özel kaynaklarını uygulayan uç noktalar için gereksinimlere geçer.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: e1b8c44f020d18066423eed236018308fe88b607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75650389"
 ---
-# <a name="custom-resource-cache-reference"></a>Özel Kaynak Önbellek Başvurusu
+# <a name="custom-resource-cache-reference"></a>Özel kaynak önbelleği başvurusu
 
-Bu makalede, önbellek özel kaynakları uygulayan uç noktalar için gereksinimleri üzerinden gidecek. Azure Özel Kaynak Sağlayıcıları'nı bilmiyorsanız, [özel kaynak sağlayıcılarına genel bakışa](overview.md)bakın.
+Bu makale, önbellek özel kaynaklarını uygulayan uç noktalar için gereksinimlere geçer. Azure özel kaynak sağlayıcıları hakkında bilginiz yoksa bkz. [özel kaynak sağlayıcılarına genel bakış](overview.md).
 
-## <a name="how-to-define-a-cache-resource-endpoint"></a>Önbellek kaynağı bitiş noktası nasıl tanımlanır?
+## <a name="how-to-define-a-cache-resource-endpoint"></a>Önbellek kaynağı uç noktası tanımlama
 
-"Proxy, Önbellek" için **yönlendirme Türü** belirterek bir proxy kaynağı oluşturulabilir.
+**Yönlendirme türü** "proxy, önbellek" olarak belirtilerek bir proxy kaynağı oluşturulabilir.
 
 Örnek özel kaynak sağlayıcısı:
 
@@ -40,17 +40,17 @@ Bu makalede, önbellek özel kaynakları uygulayan uç noktalar için gereksinim
 }
 ```
 
-## <a name="building-proxy-resource-endpoint"></a>Proxy kaynak bitiş noktası oluşturma
+## <a name="building-proxy-resource-endpoint"></a>Proxy kaynak uç noktası derleniyor
 
-"Proxy, Önbellek" kaynak **bitiş noktası** nı uygulayan bir bitiş **noktası,** Azure'daki yeni API isteği ve yanıtı işlemelidir. Bu durumda, **kaynak Türü,** tek `GET`bir kaynakta `PUT` `GET` CRUD `DELETE` gerçekleştirmek ve varolan tüm kaynakları almak için yeni bir Azure kaynak API'si oluşturur:
+Bir "proxy, önbellek" kaynak **uç noktası** uygulayan bir **uç nokta** , Azure 'daki yeni API için isteği ve yanıtı işlemelidir. Bu durumda, **ResourceType** , `PUT`, ve için `GET`yeni bir Azure Kaynak API 'si oluşturur ve tek `DELETE` bir kaynakta `GET` CRUD 'yi gerçekleştirir ve tüm mevcut kaynakları almak için:
 
 > [!NOTE]
-> Azure API istek yöntemlerini `PUT` `GET`, `DELETE`ve , , ancak önbellek `PUT` bitiş `DELETE` **noktası** yalnızca işlemek ve .
-> **Bitiş noktasının** da uygulanmasını `GET`tavsiye ettik.
+> Azure API 'si, ve `PUT` `GET` `DELETE`istek yöntemlerini oluşturur, ancak önbellek **uç noktasının** yalnızca ve `PUT` `DELETE`işlemesi gerekir.
+> **Uç noktanın** de kullanılması önerilir `GET`.
 
-### <a name="create-a-custom-resource"></a>Özel kaynak oluşturma
+### <a name="create-a-custom-resource"></a>Özel bir kaynak oluşturun
 
-Azure API Gelen İstek:
+Azure API gelen Istek:
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -67,7 +67,7 @@ Content-Type: application/json
 }
 ```
 
-Bu istek daha sonra formdaki **bitiş noktasına** iletilir:
+Bu istek daha sonra şu biçimdeki **uç noktaya** iletilir:
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -84,14 +84,14 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-Benzer şekilde, bitiş **noktasından** gelen yanıt daha sonra müşteriye geri iletilir. Bitiş noktasından gelen yanıt döndürülmelidir:
+Benzer şekilde, **uç noktadan** gelen yanıt daha sonra müşteriye iletilir. Uç noktadan gelen yanıt şunu döndürmelidir:
 
-- Geçerli bir JSON nesne belgesi. Tüm diziler ve dizeleri bir üst nesnenin altında iç içe olmalıdır.
-- Üstbilgi `Content-Type` "uygulama/json; charset=utf-8".
-- Özel kaynak sağlayıcısı, istek `name` `type`için `id` , ve alanları n üzerine yazar.
-- Özel kaynak sağlayıcısı yalnızca önbellek `properties` bitiş noktası için nesnenin altındaki alanları döndürecek.
+- Geçerli bir JSON nesne belgesi. Tüm diziler ve dizeler üst nesne altında iç içe olmalıdır.
+- Üst `Content-Type` bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
+- Özel kaynak sağlayıcısı, istek için, `name`ve `type` `id` alanlarını geçersiz kılacaktır.
+- Özel kaynak sağlayıcısı yalnızca bir önbellek uç noktası için `properties` nesne altındaki alanları döndürür.
 
-**Bitiş Noktası** Yanıt:
+**Uç nokta** Yanıtıyla
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -107,9 +107,9 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-, `name` `id`, `type` ve alanlar otomatik olarak özel kaynak sağlayıcısı tarafından özel kaynak için oluşturulur.
+Özel `name`kaynak `id`sağlayıcısı tarafından `type` özel kaynak için,, ve alanları otomatik olarak oluşturulacaktır.
 
-Azure Özel Kaynak Sağlayıcısı Yanıtı:
+Azure özel kaynak sağlayıcısı yanıtı:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -130,7 +130,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="remove-a-custom-resource"></a>Özel bir kaynağı kaldırma
 
-Azure API Gelen İstek:
+Azure API gelen Istek:
 
 ``` HTTP
 Delete https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -138,7 +138,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-Bu istek daha sonra formdaki **bitiş noktasına** iletilir:
+Bu istek daha sonra şu biçimdeki **uç noktaya** iletilir:
 
 ``` HTTP
 Delete https://{endpointURL}/?api-version=2018-09-01-preview
@@ -146,20 +146,20 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-Benzer şekilde, bitiş **noktasından** gelen yanıt daha sonra müşteriye geri iletilir. Bitiş noktasından gelen yanıt döndürülmelidir:
+Benzer şekilde, **uç noktadan** gelen yanıt daha sonra müşteriye iletilir. Uç noktadan gelen yanıt şunu döndürmelidir:
 
-- Geçerli bir JSON nesne belgesi. Tüm diziler ve dizeleri bir üst nesnenin altında iç içe olmalıdır.
-- Üstbilgi `Content-Type` "uygulama/json; charset=utf-8".
-- Azure Özel Kaynak Sağlayıcısı, öğeyi yalnızca 200 düzeyli bir yanıt döndürülürse önbelleğinden kaldırır. Kaynak yoksa, **bitiş noktası** 204 döndürmelidir.
+- Geçerli bir JSON nesne belgesi. Tüm diziler ve dizeler üst nesne altında iç içe olmalıdır.
+- Üst `Content-Type` bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
+- Azure özel kaynak sağlayıcısı, 200 düzeyinde bir yanıt döndürülürse öğeyi yalnızca kendi önbelleğinden kaldırır. Kaynak mevcut olmasa bile, **uç nokta** 204 döndürmelidir.
 
-**Bitiş Noktası** Yanıt:
+**Uç nokta** Yanıtıyla
 
 ``` HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ```
 
-Azure Özel Kaynak Sağlayıcısı Yanıtı:
+Azure özel kaynak sağlayıcısı yanıtı:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -168,7 +168,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="retrieve-a-custom-resource"></a>Özel bir kaynak alma
 
-Azure API Gelen İstek:
+Azure API gelen Istek:
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -176,9 +176,9 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-İstek **bitiş noktasına**iletilmeyecek. **not**
+İstek **uç noktaya** **iletilmeyecektir.**
 
-Azure Özel Kaynak Sağlayıcısı Yanıtı:
+Azure özel kaynak sağlayıcısı yanıtı:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -197,9 +197,9 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="enumerate-all-custom-resources"></a>Tüm özel kaynakları sayısallandırma
+### <a name="enumerate-all-custom-resources"></a>Tüm özel kaynakları listeleme
 
-Azure API Gelen İstek:
+Azure API gelen Istek:
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources?api-version=2018-09-01-preview
@@ -207,9 +207,9 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-Bu istek **bitiş noktasına**iletilmeyecek. **not**
+Bu istek **uç noktaya** **iletilmeyecektir.**
 
-Azure Özel Kaynak Sağlayıcısı Yanıtı:
+Azure özel kaynak sağlayıcısı yanıtı:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -234,8 +234,8 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Özel Kaynak Sağlayıcılarına Genel Bakış](overview.md)
-- [Hızlı başlangıç: Azure Özel Kaynak Sağlayıcısı oluşturun ve özel kaynakları dağıtın](./create-custom-provider.md)
-- [Öğretici: Azure'da özel eylemler ve kaynaklar oluşturun](./tutorial-get-started-with-custom-providers.md)
-- [Nasıl Olunması: Azure REST API'sine Özel Eylemler Ekleme](./custom-providers-action-endpoint-how-to.md)
-- [Başvuru: Özel Kaynak Proxy Başvurusu](proxy-resource-endpoint-reference.md)
+- [Azure özel kaynak sağlayıcılarına genel bakış](overview.md)
+- [Hızlı başlangıç: Azure özel kaynak sağlayıcısı oluşturma ve özel kaynaklar dağıtma](./create-custom-provider.md)
+- [Öğretici: Azure 'da özel eylemler ve kaynaklar oluşturma](./tutorial-get-started-with-custom-providers.md)
+- [Nasıl yapılır: Azure REST API özel eylemler ekleme](./custom-providers-action-endpoint-how-to.md)
+- [Başvuru: özel kaynak proxy başvurusu](proxy-resource-endpoint-reference.md)

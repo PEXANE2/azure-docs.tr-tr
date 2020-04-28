@@ -1,40 +1,40 @@
 ---
-title: Azure Hizmet Kumaşı ortam değişkenleri
-description: Azure Hizmet Kumaşı'ndaki ortam değişkenleri hakkında bilgi edinin. Değişkenlerin ve bunların kullanımlarının tam listesinin referansını içerir.
+title: Azure Service Fabric ortam değişkenleri
+description: Azure Service Fabric 'de ortam değişkenleri hakkında bilgi edinin. Değişkenlerin tam listesi ve kullanımları içeren bir başvuru içerir.
 author: mikkelhegn
 ms.topic: reference
 ms.date: 12/07/2017
 ms.author: mikhegn
 ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645693"
 ---
-# <a name="service-fabric-environment-variables"></a>Servis Kumaş ı ortam değişkenleri
+# <a name="service-fabric-environment-variables"></a>Service Fabric ortam değişkenleri
 
-Service Fabric, her hizmet örneği için ayarlanmış yerleşik ortam değişkenlerine sahiptir. Ortam değişkenlerinin tam listesi aşağıdadır:
+Service Fabric her bir hizmet örneği için yerleşik ortam değişkenleri ayarlanmış. Ortam değişkenlerinin tam listesi aşağıda verilmiştir:
 
-| Çevre Değişkeni                         | Açıklama                                                            | Örnek                                                              |
+| Ortam değişkeni                         | Açıklama                                                            | Örnek                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
-| Fabric_ApplicationName                       | Uygulamanın kumaş uri adı                                 | kumaş:/MyApplication                                                |
+| Fabric_ApplicationName                       | Uygulamanın yapı URI 'si adı                                 | Yapı:/MyApplication                                                |
 | Fabric_CodePackageName                       | İşlemin ait olduğu kod paketinin adı              | Kod                                                                 |
-| Fabric_Endpoint\_IPOrFQDN\_*ServiceEndpointName*     | Bitiş noktasının ip adresi veya FQDN                                 | 10.0.0.1                                                     |
-| Kumaş\_Endpoint\_*ServiceEndpointName*              | Bitiş noktası için bağlantı noktası numarası                                  | 8234                                                                 |
-| Fabric_Folder_App_Log                        | Günlük klasörü                                                             | C:\\\\\\\\Veri\\\\\\\\_App\\\\_Node_0 MyApplicationType_App12 günlüğü      |
-| Fabric_Folder_App_Temp                       | Geçici klasör                                                            | C:\\\\\\\\_Node_0\\\\\\MyApplicationType_App12\\MyApplicationType_App12 MyApplicationType_App12 _App veri\\\\     |
-| Fabric_Folder_App_Work                       | Çalışma klasörü                                                            | C:\\\\\\\\Veri\\\\\\\\_App\\\\_Node_0 MyApplicationType_App12 çalışması     |
-| Fabric_Folder_Application                    | Uygulamalar ev klasörü                                           | C:\\\\\\\\Veri\\\\\\\\_App _Node_0 MyApplicationType_App12             |
+| Fabric_Endpoint\_ıporfqdn\_*serviceendpointname*     | Uç noktanın IP adresi veya FQDN 'SI                                 | 10.0.0.1                                                     |
+| Yapı\_uç\_noktası*serviceendpointname*              | Uç nokta için bağlantı noktası numarası                                  | 8234                                                                 |
+| Fabric_Folder_App_Log                        | Günlük klasörü                                                             | C:\\\\veri\\\\_App\\\\_Node_0\\MyApplicationType_App12\\Kaydet\\\\      |
+| Fabric_Folder_App_Temp                       | Geçici klasör                                                            | C:\\\\veri\\\\_App\\\\_Node_0 MyApplicationType_App12\\geçici\\\\\\     |
+| Fabric_Folder_App_Work                       | Çalışma klasörü                                                            | C:\\\\veri\\\\_App\\\\_Node_0 MyApplicationType_App12\\iş\\\\\\     |
+| Fabric_Folder_Application                    | Uygulamalar giriş klasörü                                           | C:\\\\veri\\\\\\_App\\_Node_0\\MyApplicationType_App12\\             |
 | Fabric_IsContainerHost                       | İşlemin bir kapsayıcı olup olmadığını belirten bir bool                   | yanlış                                                                |
-| Fabric_NodeId                                | İşlemi çalıştıran düğümün düğüm kimliği                            | bf865279ba27deb864a976fbf4c200e                                     |
-| Fabric_NodeIPOrFQDN                          | Küme bildirimi dosyasında belirtildiği gibi düğümün IP veya FQDN'si. | localhost veya 10.0.0.1                                                |
+| Fabric_NodeId                                | İşlemi çalıştıran düğümün düğüm KIMLIĞI                            | bf865279ba277deb864a976fbf4c200e                                     |
+| Fabric_NodeIPOrFQDN                          | Küme bildirim dosyasında belirtildiği gibi, düğümün IP veya FQDN 'SI. | localhost veya 10.0.0.1                                                |
 | Fabric_NodeName                              | İşlemi çalıştıran düğümün düğüm adı                          | _Node_0                                                              |
-| Fabric_ServiceName                           | Hizmet ExclusiveProcess modunda barındırılırsa, hizmetin kumaş uri adı. Bu değişken değer yalnızca ServicePackageActivationMode ExclusiveProcess ile hizmet oluşturursanız kullanılabilir.  | kumaş:/MyApplication/MyService                                               |
-| Fabric_ServicePackageActivationId            | The ServicePackageActivationId                                         | Bİr REHBER                                                               |
-| Fabric_ServicePackageName                    | Hizmet paketinin adı işlemin bir parçasıdır                     | Web1Pkg                                                              |
+| Fabric_ServiceName                           | Hizmet ExclusiveProcess modunda barındırılıyorsa hizmetin yapı URI 'si adı. Bu değişken değeri yalnızca hizmeti ServicePackageActivationMode ExclusiveProcess ile oluşturursanız kullanılabilir.  | Fabric:/MyApplication/hizmetim                                               |
+| Fabric_ServicePackageActivationId            | Servicepackageactivationıd                                         | BIR GUıD                                                               |
+| Fabric_ServicePackageName                    | İşlemin bir parçası olduğu hizmet paketinin adı                     | Web1Pkg                                                              |
 
-Servis KumaşÇalışma Zamanı Tarafından Kullanılan İç Ortam Değişkenleri:
+Service Fabric çalışma zamanı tarafından kullanılan iç ortam değişkenleri:
 
 - Fabric_ApplicationHostId
 - Fabric_ApplicationHostType

@@ -1,6 +1,6 @@
 ---
-title: Genel Bakış - Bulut tabanlı uygulamalar ve çözümler için Azure Sunucusuz
-description: Azure Logic Apps ve Azure İşlevlerini kullanarak altyapı konusunda endişelenmeden bulut tabanlı uygulamalar ve çözümler oluşturmayı öğrenin
+title: Genel bakış-bulut tabanlı uygulamalar ve çözümler için Azure sunucusuz
+description: Azure Logic Apps ve Azure Işlevleri 'ni kullanarak altyapı hakkında endişelenmeden bulut tabanlı uygulamalar ve çözümler oluşturmayı öğrenin
 services: logic-apps
 ms.suite: integration
 author: jeffhollan
@@ -9,40 +9,40 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
 ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75666559"
 ---
-# <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure Sunucusuz: Azure Logic Apps ve Azure Fonksiyonları ile bulut tabanlı uygulamalar ve çözümler oluşturmaya genel bakış
+# <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure sunucusuz: Azure Logic Apps ve Azure Işlevleri ile bulut tabanlı uygulamalar ve çözümler oluşturmaya genel bakış
 
-[Sunucusuz](https://azure.microsoft.com/solutions/serverless/) uygulamalar, artırılmış geliştirme hızı, azaltılmış kod, basitlik ve ölçek gibi avantajlar sunar. Bu makale, sunucusuz çözümlerin ve Azure sunucusuz tekliflerin farklı özelliklerini kapsar.
+[Sunucusuz](https://azure.microsoft.com/solutions/serverless/) uygulamalar, daha fazla geliştirme hızı, azaltılmış kod, basitlik ve ölçek gibi avantajlar sunar. Bu makalede sunucusuz çözümlerin ve Azure sunucusuz tekliflerin farklı öznitelikleri ele alınmaktadır.
 
 ## <a name="what-is-serverless"></a>Sunucusuz nedir?
 
-Sunucusuz hiçbir sunucu olduğu anlamına gelmez, ama daha ziyade geliştiriciler sunucular hakkında endişelenmenize gerek yok. Geleneksel uygulama geliştirmenin büyük bir kısmı, uygulamanın taleplerini karşılamak için ölçekleme, barındırma ve izleme çözümleri yle ilgili soruları yanıtlamaktır. Sunucusuz ile, bu sorular çözümün bir parçası olarak halledilir. Ayrıca, sunucusuz uygulamalar tüketim tabanlı bir planda faturalandırılır. Uygulama hiç kullanılmamışsa, herhangi bir ücret alınmaz. Bu özellikler, geliştiricilerin yalnızca çözümün iş mantığına odaklanmalarına yardımcı olur.
+Sunucusuz hiçbir sunucu olmadığı anlamına gelir, ancak bunun yerine geliştiricilerin sunucular hakkında endişelenmek zorunda kalmaz. Geleneksel uygulama geliştirmenin büyük bir bölümü, uygulamanın taleplerini karşılamak üzere ölçeklendirme, barındırma ve izleme çözümlerini izleyen sorulara yanıt verebilir. Sunucusuz ile, bu sorular çözümün parçası olarak ele alınmıştır. Ayrıca, sunucusuz uygulamalar tüketim tabanlı bir planda faturalandırılır. Uygulama hiç kullanılmıyorsa, hiçbir ücret alınmaz. Bu özellikler, geliştiricilerin yalnızca bir çözümün iş mantığına odaklanmalarına yardımcı olur.
 
-Sunucusuzlar için temel Azure hizmetleri [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) ve Azure [İşlevleri'dir.](https://azure.microsoft.com/services/functions/) Her iki çözüm de daha önce açıklanan ilkelere uyar ve geliştiricilerin en az kodla sağlam bulut uygulamaları oluşturmasına yardımcı olur.
+Sunucusuz için çekirdek Azure Hizmetleri [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) ve [Azure işlevleridir](https://azure.microsoft.com/services/functions/). Her iki çözüm de daha önce açıklanan ilkeleri izler ve geliştiricilerin en az kodla güçlü bulut uygulamaları oluşturmalarına yardımcı olur.
 
 ## <a name="what-is-azure-logic-apps"></a>Azure Logic Apps nedir?
 
-[Azure Logic Apps,](logic-apps-overview.md) buluttaki ölçeklenebilir tümleştirmeleri ve iş akışlarını basitleştirmenin ve uygulamanın bir yolunu sağlar. Bu hizmet, iş akışı adı verilen bir dizi adım olarak işleminizi modellemek ve otomatikleştirmek için görsel bir tasarımcı sağlar. Bulut hizmetlerinde ve şirket içi sistemlerde sunucusuz bir uygulamayı diğer API'lere hızla bağlayan birçok [bağlayıcı](../connectors/apis-list.md) vardır. Her mantık uygulaması "Dynamics CRM'ye bir hesap eklendiğinde" gibi bir tetikleyiciyle başlar. Tetikleyici yangınlardan sonra, iş akışı eylem, dönüşüm ve koşullu mantık birleşimlerini çalıştırabilir. Logic Apps, bir işlemde farklı Azure Işlevlerini yönetirken, özellikle de işlem harici bir sistem veya API ile etkileşim gerektirdiğinde mükemmel bir seçimdir.
+[Azure Logic Apps](logic-apps-overview.md) , bulutta ölçeklenebilir tümleştirmelerin ve iş akışlarının basitleştirilmesi ve uygulanması için bir yol sağlar. Bu hizmet, işleminizi iş akışı olarak adlandırılan bir dizi adım olarak modelleyebilir ve otomatikleştirebileceğiniz bir görsel tasarımcı sağlar. Bulut hizmetlerinde ve şirket içi sistemlerde, sunucusuz bir uygulamayı diğer API 'lere hızlıca bağlayan çok sayıda [bağlayıcı](../connectors/apis-list.md) vardır. Her mantıksal uygulama, "Dynamics CRM 'ye bir hesap eklendiğinde" gibi bir tetikleyici ile başlar. Tetikleyici etkinleştirildikten sonra, iş akışı eylem, dönüşüm ve koşullu mantık birleşimlerini çalıştırabilir. Logic Apps, özellikle işlem bir dış sistemle veya API ile etkileşimde bulunmayı gerektirdiğinde, bir işlemdeki farklı Azure Işlevlerini düzenleyen harika bir seçimdir.
 
-Logic Apps'a başlamak için [ilk mantık uygulamanızı oluşturmaya](quickstart-create-first-logic-app-workflow.md)başlayın. Logic Apps hakkında daha fazla teknik bilgi için [geliştirici referansına](logic-apps-workflow-definition-language.md)bakın.
+Logic Apps kullanmaya başlamak için [ilk mantıksal uygulamanızı oluşturmaya](quickstart-create-first-logic-app-workflow.md)başlayın. Logic Apps hakkında daha fazla teknik bilgi için bkz. [Geliştirici başvurusu](logic-apps-workflow-definition-language.md).
 
 ## <a name="what-is-azure-functions"></a>Azure İşlevleri nedir?
 
-Azure İşlevler, bulutta kod parçalarını veya "işlevleri" kolayca çalıştırmak için bir hizmettir. Tüm uygulama veya gerekli altyapı hakkında endişelenmeden yalnızca geçerli sorun için gerekli kodu yazabilirsiniz. Işlevler geliştirmeyi daha verimli hale getirebilir ve C#, F#, Node.js, Python veya PHP gibi seçtiğiniz geliştirme dilini kullanabilirsiniz. Yalnızca kodunuzu çalıştırdığınız süre için ödeme yaparsınız ve Azure ölçeklendirmeleri gerektiği gibi.
+Azure Işlevleri, bulutta kod parçalarını veya "işlevleri" kolayca çalıştırmaya yönelik bir hizmettir. Tüm uygulama veya gerekli altyapı hakkında endişelenmeden yalnızca geçerli sorun için gerekli olan kodu yazabilirsiniz. İşlevler, geliştirmeyi daha da üretken hale getirir ve tercih ettiğiniz geliştirme dilini (C#, F #, Node. js, Python veya PHP gibi) kullanabilirsiniz. Yalnızca kodunuzun çalıştırıldığı süre için ödeme yaparsınız ve gerektiğinde Azure ölçeklendiriyor olursunuz.
 
-Azure İşlevlerini başlatmak için [ilk Azure İşlevinizi Oluştur](../azure-functions/functions-create-first-azure-function.md)ile başlayın. Fonksiyonlar hakkında daha fazla teknik bilgi için [geliştirici başvurusuna](../azure-functions/functions-reference.md)bakın.
+Azure Işlevleri 'ni kullanmaya başlamak için [Ilk Azure işlevinizi oluşturma](../azure-functions/functions-create-first-azure-function.md)ile başlayın. Işlevler hakkında daha fazla teknik bilgi için bkz. [Geliştirici başvurusu](../azure-functions/functions-reference.md).
 
-## <a name="how-can-i-build-and-deploy-serverless-apps-in-azure"></a>Azure'da sunucusuz uygulamaları nasıl oluşturabilir ve dağıtabilirim?
+## <a name="how-can-i-build-and-deploy-serverless-apps-in-azure"></a>Azure 'da sunucusuz uygulamalar oluşturup nasıl dağıtabilirim?
 
-Azure, sunucusuz uygulamalar geliştirmek, dağıtmak ve yönetmek için zengin araçlar sağlar. Visual Studio veya [Visual Studio Code'daki araçlarla](logic-apps-serverless-get-started-vs.md) [Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)doğrudan Azure portalında uygulama oluşturabilirsiniz. Uygulamanızı oluştursanız, [Azure Kaynak Yöneticisi şablonları ile bu uygulamayı hızlı bir şekilde dağıtabilirsiniz.](logic-apps-deploy-azure-resource-manager-templates.md) Azure ayrıca, Azure portalı üzerinden, API veya SDK'lar aracılığıyla veya Azure Monitor günlükleri ve Uygulama Öngörüleri için tümleşik araç la erişebileceğiniz izleme sağlar.
+Azure, sunucusuz uygulamalar geliştirmek, dağıtmak ve yönetmek için zengin araçlar sağlar. Uygulamaları doğrudan Azure portal, [Visual Studio 'daki araçlarla](logic-apps-serverless-get-started-vs.md)veya [Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)oluşturabilirsiniz. Uygulamanızı derledikten sonra, [Azure Resource Manager şablonlarıyla bu uygulamayı hızlıca dağıtabilirsiniz](logic-apps-deploy-azure-resource-manager-templates.md). Azure ayrıca Azure portal, API veya SDK 'lar aracılığıyla ya da Azure Izleyici günlükleri ve Application Insights tümleşik araçları aracılığıyla erişebileceğiniz izleme sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Visual Studio'da sunucusuz bir uygulama oluşturun](logic-apps-serverless-get-started-vs.md)
-* [Sunucusuz bir müşteri öngörüleri panosu oluşturma](logic-apps-scenario-social-serverless.md)
+* [Visual Studio 'da sunucusuz uygulama oluşturma](logic-apps-serverless-get-started-vs.md)
+* [Sunucusuz ile bir müşteri öngörüleri panosu oluşturma](logic-apps-scenario-social-serverless.md)
 * [Mantıksal uygulama dağıtımı otomatikleştirme](logic-apps-azure-resource-manager-templates-overview.md)

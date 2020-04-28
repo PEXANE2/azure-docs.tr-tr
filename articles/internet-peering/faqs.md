@@ -1,7 +1,7 @@
 ---
-title: İnternet ekibe bakma - SSS
+title: Internet eşlemesi-SSS
 titleSuffix: Azure
-description: İnternet ekibe bakma - SSS
+description: Internet eşlemesi-SSS
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,28 +9,28 @@ ms.topic: reference
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 9b0b2b08e01c99fc918c4bc5649197c9caa4978a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75775504"
 ---
-# <a name="internet-peering---faqs"></a>İnternet ekibe bakma - SSS
+# <a name="internet-peering---faqs"></a>Internet eşlemesi-SSS
 
-Genel sorular için aşağıdaki bilgileri inceleyebilirsiniz.
+Genel sorular için aşağıdaki bilgileri gözden geçirebilirsiniz.
 
-**Internet peering ve Peering Service arasındaki fark nedir?**
+**Internet eşlemesi ve eşleme hizmeti arasındaki fark nedir?**
 
-Peering Service, kurumsal müşterileri için Microsoft'a kurumsal sınıf genel IP bağlantısı sağlamayı amaçlayan bir hizmettir. Kurumsal sınıf Internet, Microsoft'a yüksek iş verimi bağlantısı na sahip ISS'ler aracılığıyla bağlantı ve HA bağlantısı için artıklık içerir. Ayrıca, kullanıcı trafiği en yakın Microsoft Edge'in gecikmesi için en iyi duruma getirilmiştir. Peering Service, iş ortağı taşıyıcısıyla karşılabağlantı yada bir bağlantı oluşturur. Ortakla karşıt bağlantı Exchange'in aksine Doğrudan bakan olmalıdır. Doğrudan bakma yerel ve coğrafi artıklık olmalıdır.
+Eşleme hizmeti, kurumsal müşterileri için Microsoft 'a kurumsal düzeyde genel IP bağlantısı sağlamayı amaçlayan bir hizmettir. Kurumsal sınıf Internet, bir HA bağlantısı için Microsoft ve yedeklilik ile yüksek aktarım hızı bağlantısı olan ISS 'Ler aracılığıyla bağlantı içerir. Ayrıca, Kullanıcı trafiği en yakın Microsoft Edge gecikmesi için en iyi duruma getirilmiştir. Eşleme hizmeti, iş ortağı taşıyıcısı ile eşleme bağlantısı oluşturur. İş ortağı ile eşleme bağlantısı, Exchange eşleme aksine doğrudan eşleme olmalıdır. Doğrudan eşleme yerel ve coğrafi yedeklilik içermelidir.
 
-**Miras alabakan nedir?**
+**Eski eşleme nedir?**
 
-Azure PowerShell kullanılarak kurulan peering bağlantısı, Azure kaynağı olarak yönetilir. Geçmişte ayarlanan bakan bağlantıları sistemimizde, Azure kaynağı olarak yönetmek için dönüştürmeyi seçebileceğiniz eski bir bakış olarak depolanır.
+Azure PowerShell kullanılarak ayarlanan eşleme bağlantısı, bir Azure kaynağı olarak yönetilir. Geçmişte ayarlanan eşleme bağlantıları sistemimizde, Azure kaynağı olarak yönetmeye dönüştürmek üzere, eski eşleme olarak depolanır.
 
-**New-AzPeeringDirectConnectionObject çağrıldığında, Microsoft ve Peer aygıtlarına hangi IP adresleri verilir?**
+**New-AzPeeringDirectConnectionObject çağrıldığında, Microsoft ve eş cihazlara hangi IP adresleri verilir?**
 
-New-AzPeeringDirectConnectionObject cmdlet'i ararken bir /31 adresi (a.b.c.d/31) veya /30 adresi (a.b.c.d/30) girilir. İlk IP adresi (a.b.c.d+0) Peer'in cihazına, ikinci IP adresi (a.b.c.d.d+1) Microsoft cihazına verilir.
+New-AzPeeringDirectConnectionObject cmdlet 'i çağrılırken bir/31 adresi (a. b. c. d/31) veya/30 adresi (a. b. c. d/30) girilmiştir. İlk IP adresi (a. b. c. d + 0), eşin cihazına ve ikinci IP adresine (a. b. c. d + 1) Microsoft cihaza verilir.
 
-**Yeni-AzPeeringDirectConnectionObject cmdlet MaxPrefixesAdvertisedIPv4 ve MaxPrefixesAdvertisedIPv6 parametreleri nedir?**
+**New-AzPeeringDirectConnectionObject cmdlet 'inde MaxPrefixesAdvertisedIPv4 ve MaxPrefixesAdvertisedIPv6 parametreleri nedir?**
 
-MaxPrefixesAdvertisedIPv4 ve MaxPrefixesAdvertisedIPv6 parametreleri, bir Eşin Microsoft'un kabul etmesini istediği maksimum IPv4 ve IPv6 önekleri sayısını temsil eder. Bu parametreler her zaman değiştirilebilir.
+MaxPrefixesAdvertisedIPv4 ve MaxPrefixesAdvertisedIPv6 parametreleri, bir eşin Microsoft 'un kabul etmesini istediğini en fazla IPv4 ve IPv6 öneki sayısını temsil eder. Bu parametreler dilediğiniz zaman değiştirilebilir.

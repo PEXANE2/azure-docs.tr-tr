@@ -1,7 +1,7 @@
 ---
-title: PeerIng Service - SSS
+title: Eşleme hizmeti-SSS
 titleSuffix: Azure
-description: PeerIng Service - SSS
+description: Eşleme hizmeti-SSS
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,37 +9,37 @@ ms.topic: reference
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 507e503b881df123ffc6694c53b0e9cc9b6a8872
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75775478"
 ---
-# <a name="peering-service---faqs"></a>Bakma Hizmeti - SSS
+# <a name="peering-service---faqs"></a>Eşleme hizmeti-SSS
 
-Genel sorular için aşağıdaki bilgileri inceleyebilirsiniz.
+Genel sorular için aşağıdaki bilgileri gözden geçirebilirsiniz.
 
-**Bir operatör, Eşleme Hizmetini desteklemek için microsoft ile varolan Doğrudan bakışlarını kullanabilir mi?**
+**Eşleme hizmetini desteklemek için mevcut olan doğrudan eşlemesini kullanarak bir taşıyıcı olabilir mi?**
 
-Evet, bir taşıyıcı, Peering Service'i desteklemek için mevcut PNI'sini kullanabilir. Bir Peering Service PNI HA desteklemek için çeşitlilik gerektirir. Mevcut PNI zaten çeşitlilik varsa, o zaman yeni bir altyapı gereklidir. Mevcut PNI çeşitliliğe ihtiyaç varsa, o zaman artırılabilir.
+Evet, bir taşıyıcı, eşleme hizmetini desteklemek için mevcut PNı 'den yararlanabilir. Bir eşleme hizmeti PNı, HA desteği için bir çeşitliliğe sahiptir. Mevcut PNı 'lar zaten ayrımlılık içeriyorsa, yeni bir altyapı gerekmez. Mevcut PNı 'lar için ayrımlılık gerekiyorsa, genişletilebilir.
 
-**Bir operatör, Peering Service'i desteklemek için Microsoft ile yeni Doğrudan bakışlama kullanabilir mi?**
+**Bir taşıyıcı, eşleme hizmetini desteklemek için Microsoft ile yeni bir doğrudan eşleme kullanabilir mi?**
 
-Evet, bu da mümkün. Microsoft, Karşılama Hizmetini desteklemek için yeni Direct peering oluşturmak için Carrier ile birlikte çalışacaktır.  
+Evet, bu da mümkündür. Microsoft, eşleme hizmetini desteklemek için yeni bir doğrudan eşleme oluşturmak üzere taşıyıcısı ile birlikte çalışır.  
 
-**Doğrudan bakma, Bakma Hizmetini desteklemek için neden bir gerekliliktir?**
+**Eşleme hizmetini desteklemek için neden doğrudan eşleme gereksinimi var?**
 
-Peering Service'in arkasındaki birincil sürücülerden biri, iyi bağlanmış bir SP aracılığıyla Microsoft çevrimiçi hizmetlerine bağlantı sağlamaktır. PNI her zaman Gbps aralığında ve dolayısıyla taşıyıcı ve Microsoft arasında yüksek verim bağlantısı için temel bir yapı taşı bulunmaktadır.
+Eşleme hizmeti 'nin arkasındaki birincil sürücülerden biri, iyi bağlanmış bir SP aracılığıyla Microsoft çevrimiçi hizmetler bağlantı sağlamaktır. PNı, her zaman Gbps aralığında ve bu nedenle, taşıyıcı ve Microsoft arasında yüksek aktarım hızı bağlantısı için temel bir bina bloğudur.
 
-**Doğrudan Bakma Hizmetini desteklemenin çeşitlilik gereksinimleri nelerdir?**
+**Eşleme hizmetini desteklemek için bir doğrudan eşleme üzerinde ayrımlılık gereksinimleri nelerdir?**
 
-Bir PNI yerel artıklık ve coğrafi artıklık desteklemelidir. Yerel artıklık, belirli bir izleme sitesinde iki farklı yol kümesi olarak tanımlanır. Coğrafi artıklık, birincil sitenin başarısız olması durumunda Taşıyıcı'nın farklı bir Microsoft kenar sitesinde ek bağlantıya sahip olması gerekir. Kısa arıza süresi için taşıyıcı yedekleme sitesi üzerinden trafik yönlendirebilirsiniz.
+Bir PNı, yerel artıklığı ve coğrafi yedekliliği desteklemelidir. Yerel artıklık, belirli bir eşleme sitesinde iki farklı yol kümesi olarak tanımlanır. Coğrafi yedeklilik, taşıyıcının birincil sitenin başarısız olması durumunda farklı bir Microsoft Edge sitesinde ek bağlantıya sahip olmasını gerektirir. Kısa başarısızlık süresi taşıyıcısı, trafiği yedekleme sitesi üzerinden yönlendirebilir.
 
-**Taşıyıcı zaten SLA ve kurumsal sınıf Internet sunuyor, nasıl bu teklif farklı?**
+**Taşıyıcı zaten SLA ve kurumsal sınıf Internet 'i sunuyor, bu teklif nasıl farklı?**
 
-Bazı operatörler ağın kendi tarafında SLA ve kurumsal sınıf Internet sunuyoruz. Peering Service'de Microsoft, SLA'ya ağın Microsoft bölümünde teklif trafiği sunacaktır. Peering Service müşteri seçerek uçlardan uca SLA alırsınız. IsS ağındaki Microsoft kenarına kendi sitesinden SLA ISS tarafından karşılanabilir. Microsoft Global Network'teki SLA'da Microsoft edge'den son kullanıcılara uygulama artık Microsoft tarafından karşılanıyor.
+Bazı taşıyıcılar, ağın parçaları üzerinde SLA ve kurumsal sınıf Internet 'i sunmaktadır. Eşleme hizmeti ' nde, Microsoft, ağın Microsoft bölümünde SLA teklif trafiği sunmaktadır. Eşleme hizmeti müşteriyi seçerek uçtan uca SLA 'Sı alınır. Şirket içinden ISS ağı üzerinde Microsoft Edge 'e SLA 'lar ISS 'nin kapsamına eklenebilir. Microsoft Edge 'den son kullanıcılara Microsoft küresel ağı 'ndan SLA artık Microsoft tarafından kapsanıyor.
 
-**Bir hizmet sağlayıcısı PNI kullanarak Microsoft ile zaten eşeşse, Peering Service'i desteklemek için ne tür değişiklikler gerekir?**
+**Bir hizmet sağlayıcı zaten PNı kullanarak Microsoft ile eş alıyorsa, eşleme hizmetini desteklemek için ne tür değişiklikler gerekir?**
 
-* Bir Peering Service kullanıcısını ve trafiğini tanımlamak için yazılım değişiklikleri. Gözetmen Hizmet bağlantısı aracılığıyla bir kullanıcının trafiğini en yakın Microsoft kenarında değiştirmek için yönlendirme ilkesi değişiklikleri gerektirebilir.
-* Bağlantının yerel artıklığa ve coğrafi artıklığa sahip olduğundan emin olun.
+* Bir eşleme hizmeti kullanıcısını ve bunun trafiğini belirlemek için yazılım değişiklikleri. Eşleme hizmeti bağlantısı aracılığıyla kullanıcı trafiğinin en yakın Microsoft Edge üzerinden Exchange 'e yönlendirilmesi için yönlendirme ilkesi değişiklikleri gerekebilir.
+* Bağlantının yerel artıklık ve coğrafi yedeklilik içerdiğinden emin olun.

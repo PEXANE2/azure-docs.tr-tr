@@ -1,6 +1,6 @@
 ---
-title: Risk ilkeleri - Azure Active Directory Identity Protection
-description: Azure Active Directory Identity Protection'da risk ilkelerini etkinleştirme ve yapılandırma
+title: Risk ilkeleri-Azure Active Directory Kimlik Koruması
+description: Azure Active Directory Kimlik Koruması risk ilkelerini etkinleştirme ve yapılandırma
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,74 +12,74 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ffa08f7ebf013d42d6da0589ce0f1ccc97289de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75707014"
 ---
-# <a name="how-to-configure-and-enable-risk-policies"></a>Nasıl Yapilir: Risk ilkelerini yapılandırma ve etkinleştirme
+# <a name="how-to-configure-and-enable-risk-policies"></a>Nasıl yapılır: risk ilkelerini yapılandırma ve etkinleştirme
 
-Bir önceki makalede öğrendiğimiz gibi, [Kimlik Koruma politikaları](concept-identity-protection-policies.md) dizinimizde etkinleştirebileceğimiz iki risk politikamız vardır. 
+Önceki makalede öğrendiğimiz gibi, [kimlik koruma ilkeleri](concept-identity-protection-policies.md) dizinimizde etkinleştirediğimiz iki risk ilkemiz var. 
 
 - Oturum açma risk ilkesi
 - Kullanıcı risk ilkesi
 
-![Kullanıcı ve oturum açma risk ilkelerini etkinleştirmek için güvenliğe genel bakış sayfası](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
+![Kullanıcı ve oturum açma risk ilkelerini etkinleştirmek için güvenlik genel bakış sayfası](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
 
-Her iki ilke de ortamınızdaki risk algılamalarına verilen yanıtı otomatikleştirmek ve risk algılandığında kullanıcıların kendi kendini düzeltmelerine olanak sağlamak için çalışır. 
+Her iki ilke de ortamınızda risk algılamalarını otomatik hale getirmek ve risk algılandığında kullanıcıların kendiliğinden düzelmesini sağlamak için çalışır. 
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 ## <a name="prerequisites"></a>Ön koşullar 
 
-Kuruluşunuz, riskler algılandığında kullanıcıların kendi kendini düzeltmesine izin vermek istiyorsa, kullanıcıların hem self servis parola sıfırlama hem de Azure Çok Faktörlü Kimlik Doğrulaması için kaydedilmesi gerekir. En iyi deneyimi yaşamak için [birleştirilmiş güvenlik bilgi kaydı deneyimini etkinleştirmenizi](../authentication/howto-registration-mfa-sspr-combined.md) öneririz. Kullanıcıların kendi kendilerini düzeltmelerine izin vermek, yönetici müdahalesine gerek kalmadan onları daha hızlı üretken bir duruma geri getirir. Yöneticiler bu olayları görmeye devam edebilir ve olaydan sonra bunları araştırabilirler. 
+Kuruluşunuz, risk algılandığında kullanıcıların kendi kendini düzeltmesine izin vermek isterse, kullanıcıların hem self servis parola sıfırlama hem de Azure Multi-Factor Authentication için kayıtlı olmaları gerekir. En iyi deneyim için [Birleşik güvenlik bilgileri kayıt deneyiminin etkinleştirilmesini](../authentication/howto-registration-mfa-sspr-combined.md) öneririz. Kullanıcıların kendi kendini düzeltmesine izin vermek, yönetici müdahalesine gerek kalmadan onları daha hızlı bir şekilde daha hızlı bir şekilde geri alır. Yöneticiler bu olayları görmeye devam edebilir ve bunu bulduktan sonra araştırabilir. 
 
 ## <a name="choosing-acceptable-risk-levels"></a>Kabul edilebilir risk düzeylerini seçme
 
-Kuruluşlar, kullanıcı deneyimini ve güvenlik duruşunu dengelemeyi kabul etmeye istekli oldukları risk düzeyine karar vermelidir. 
+Kuruluşlar, Kullanıcı deneyimini ve güvenlik duruşunu kabul etmek isteyen risk düzeyine karar vermelidir. 
 
-Microsoft'un önerisi, kullanıcı risk ilkesi eşiğini **Yüksek** ve oturum açma risk ilkesini **Orta ve üstü**olarak ayarlamaktır.
+Microsoft 'un önerisi, Kullanıcı risk ilkesi eşiğini **yüksek** olarak ve oturum açma riski ilkesini **Orta ve üst düzeyde**ayarlamak.
 
-**Yüksek** eşik seçmek, bir ilkenin tetiklenme sayısını azaltır ve kullanıcılar üzerindeki etkisini en aza indirir. Ancak, bir saldırganın gizliliği ihlal edilen bir kimlikten yararlanabını engellemeyebilir, **düşük** ve **orta** riskli algılamaları ilkenin dışında tutar. **Düşük** eşleği seçmek ek kullanıcı kesintileri sunar, ancak güvenlik duruşunu artırır.
+**Yüksek** bir eşik seçilmesi, bir ilkenin tetiklenme sayısını azaltır ve kullanıcılara etkiyi en aza indirir. Ancak, ilkeden **düşük** ve **Orta ölçekli** risk algılamalarını dışarıda bırakır, bu da bir saldırganın güvenliği aşılmış bir kimlik kötüye yararlanmasıyla engelleyemeyebilir. **Düşük** eşiğin seçilmesi ek Kullanıcı kesintileri tanıtır, ancak güvenlik sonrası artar.
 
 ## <a name="exclusions"></a>Dışlamalar
 
-Tüm [ilkeler, acil durum erişiminiz veya kesme cam yöneticisi hesaplarınız](../users-groups-roles/directory-emergency-access.md)gibi kullanıcıları hariç taramaya olanak sağlar. Kuruluşlar, hesapların kullanılma şekline bağlı olarak diğer hesapları belirli ilkelerden hariç tutmaları gerektiğini belirleyebilir. Tüm dışlamalar hala geçerli olup olmadığını görmek için düzenli olarak gözden geçirilmelidir.
+Tüm ilkeler, [acil erişim veya kesme camı yönetici hesaplarınız](../users-groups-roles/directory-emergency-access.md)gibi kullanıcıların dışlanmasını sağlar. Kuruluşlar, hesapların kullanıldığı yönteme göre diğer hesapları belirli ilkelerden hariç tutmaları gerektiğini tespit edebilir. Hala geçerli olup olmadığını görmek için tüm dışlamaları düzenli olarak incelenmelidir.
 
-Yapılandırılmış güvenilir [ağ konumları,](../conditional-access/location-condition.md) yanlış pozitif leri azaltmak için bazı risk algılamalarında Kimlik Koruması tarafından kullanılır.
+Yapılandırılan güvenilir [ağ konumları](../conditional-access/location-condition.md) , bazı risk algılamalarındaki kimlik koruması tarafından hatalı pozitif sonuçları azaltmak için kullanılır.
 
-## <a name="enable-policies"></a>İlkeleri etkinleştirme
+## <a name="enable-policies"></a>İlkeleri etkinleştir
 
-Kullanıcı riski ve oturum açma risk ilkelerinin aşağıdaki adımları tamamlamasını sağlamak için.
+Kullanıcı riskini ve oturum açma risk ilkelerini etkinleştirmek için aşağıdaki adımları izleyin.
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-1. **Azure Etkin Dizin** > **Güvenlik** > **Kimlik Koruması** > **Genel Bakış'a**göz atın.
-1. **Kullanıcı risk ilkesini yapılandır'ı**seçin.
-   1. **Atamalar** Altında
-      1. **Kullanıcılar** - Ürününüzü sınırlandırıyorsa **Tüm kullanıcıları** seçin veya kişileri ve **grupları seçin.**
-         1. İsteğe bağlı olarak, kullanıcıları ilkeden hariç tutmayı seçebilirsiniz.
-      1. **Koşullar** - **Kullanıcı riski** Microsoft'un önerisi yüksek bu seçeneği ayarlamaktır. **High**
-   1. **Denetimler** Altında
-      1. **Access** - Microsoft'un önerisi **erişime izin** vermek ve **parola değişikliği ni gerektirmektir.**
-   1. **Politikayı** - **Uygula**
-   1. **Kaydet** - Bu eylem sizi **Genel Bakış** sayfasına döndürecektir.
-1. **Oturum açma risk ilkesini yapılandır'ı**seçin.
-   1. **Atamalar** Altında
-      1. **Kullanıcılar** - Ürününüzü sınırlandırıyorsa **Tüm kullanıcıları** seçin veya kişileri ve **grupları seçin.**
-         1. İsteğe bağlı olarak, kullanıcıları ilkeden hariç tutmayı seçebilirsiniz.
-      1. **Koşullar** - **Oturum Açma riski** Microsoft'un önerisi bu seçeneği Orta ve **üzeri**olarak ayarlamaktır.
-   1. **Denetimler** Altında
-      1. **Access** - Microsoft'un önerisi **erişime izin** vermek ve **çok faktörlü kimlik doğrulamayı**gerektirmektir.
-   1. **Politikayı** - **Uygula**
+1. **Azure Active Directory** > **Security**güvenlik > **kimlik**korumasına > **genel bakış konusuna**göz atın.
+1. **Kullanıcı risk Ilkesini Yapılandır**' ı seçin.
+   1. **Atamalar** altında
+      1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
+         1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
+      1. **Koşullar** - **Kullanıcı riski** Microsoft 'un önerisi, bu seçeneğin **yüksek**olarak ayarlanmalarıdır.
+   1. **Denetimler** altında
+      1. **Erişim** -Microsoft 'un önerisi **erişime izin vermek** ve **parola değişikliğine gerek duyar**.
+   1. **İlkeyi zorla** - **On**
+   1. **Kaydet** -bu eylem sizi **genel bakış** sayfasına verecektir.
+1. **Oturum açma risk Ilkesini Yapılandır**' ı seçin.
+   1. **Atamalar** altında
+      1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
+         1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
+      1. **Koşulların** - **oturum açma riski** Microsoft 'un önerisi, bu seçeneği **Orta ve üzeri**olarak ayarlamanıza olanak sağlar.
+   1. **Denetimler** altında
+      1. **Erişim** -Microsoft 'un önerisi, **erişime izin vermek** ve **Multi-Factor Authentication gerektirir**.
+   1. **İlkeyi zorla** - **On**
    1. **Kaydet**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Çok Faktörlü Kimlik Doğrulama kayıt ilkesini etkinleştirme](howto-identity-protection-configure-mfa-policy.md)
+- [Azure Multi-Factor Authentication kayıt ilkesini etkinleştirme](howto-identity-protection-configure-mfa-policy.md)
 
-- [Risk nedir](concept-identity-protection-risks.md)
+- [Risk nedir?](concept-identity-protection-risks.md)
 
 - [Risk algılamalarını araştırma](howto-identity-protection-investigate-risk.md)
 
-- [Risk algılamalarını simüle edin](howto-identity-protection-simulate-risk.md)
+- [Risk algılamalarını benzet](howto-identity-protection-simulate-risk.md)

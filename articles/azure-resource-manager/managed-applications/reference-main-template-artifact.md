@@ -1,24 +1,24 @@
 ---
-title: Şablon artefakt başvurusu
-description: Azure Yönetilen Uygulamalar için dağıtım şablonu yapının bir örneğini sağlar.
+title: Şablon yapıt başvurusu
+description: Azure yönetilen uygulamalar için dağıtım şablonu yapıtına bir örnek sağlar.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 2bc0017d71e159ac490041494bcf37db035ef421
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651468"
 ---
-# <a name="reference-deployment-template-artifact"></a>Başvuru: Dağıtım şablonu artefakt
+# <a name="reference-deployment-template-artifact"></a>Başvuru: dağıtım şablonu yapıtı
 
-Bu makale, Azure Yönetilen Uygulamalar'da *mainTemplate.json* artifakı için bir başvurudur. Dağıtım şablonu yazma hakkında daha fazla bilgi için Azure [Kaynak Yöneticisi şablonlarına](../templates/template-syntax.md)bakın.
+Bu makale, Azure yönetilen uygulamalarında *Maintemplate. JSON* yapıtı için bir başvurudur. Dağıtım şablonu yazma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları](../templates/template-syntax.md).
 
 ## <a name="deployment-template"></a>Dağıtım şablonu
 
-Aşağıdaki JSON, Azure Yönetilen Uygulamalar için *mainTemplate.json* dosyasının bir örneğini gösterir:
+Aşağıdaki JSON, Azure yönetilen uygulamalar için *Maintemplate. JSON* dosyası örneğini gösterir:
 
 ```json
 {
@@ -189,6 +189,6 @@ Aşağıdaki JSON, Azure Yönetilen Uygulamalar için *mainTemplate.json* dosyas
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Özel eylemler ve kaynaklarla yönetilen uygulama oluşturma](tutorial-create-managed-app-with-custom-provider.md)
-- [Başvuru: Kullanıcı arabirimi elemanları artifakı](reference-createuidefinition-artifact.md)
-- [Başvuru: Tanım artifakı görüntüle](reference-view-definition-artifact.md)
+- [Öğretici: özel eylemler ve kaynaklarla yönetilen uygulama oluşturma](tutorial-create-managed-app-with-custom-provider.md)
+- [Başvuru: Kullanıcı arabirimi öğeleri yapıtı](reference-createuidefinition-artifact.md)
+- [Başvuru: tanım yapıtı görüntüle](reference-view-definition-artifact.md)

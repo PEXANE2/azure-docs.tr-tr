@@ -1,161 +1,161 @@
 ---
-title: Azure otomatik ölçekle sorun giderme
-description: Service Fabric, Virtual Machines, Web Apps ve bulut hizmetlerinde kullanılan Azure otomatik ölçekleme yle ilgili sorunları izleme.
+title: Azure otomatik ölçeklendirme sorunlarını giderme
+description: Service Fabric, sanal makineler, Web Apps ve bulut hizmetlerinde kullanılan Azure otomatik ölçeklendirmeyle ilgili sorunları izleme.
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
 ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75751342"
 ---
-# <a name="troubleshooting-azure-autoscale"></a>Azure otomatik ölçekle sorun giderme
+# <a name="troubleshooting-azure-autoscale"></a>Azure otomatik ölçeklendirme sorunlarını giderme
  
-Azure Monitor otomatik ölçeklendirme, uygulamanızdaki yükü işlemek için doğru miktarda kaynağın çalışmanıza yardımcı olur. Yük artışlarını işlemek için kaynak eklemenize ve boşta oturan kaynakları kaldırarak paradan tasarruf etmenizi sağlar. Seçtiğiniz bir zamanlamaya, sabit tarih saatine veya kaynak ölçümüne göre ölçeklendirebilirsiniz. Daha fazla bilgi için Bkz. [Otomatik Ölçekle reisi genel bakış.](autoscale-overview.md)
+Azure Izleyici otomatik ölçeklendirme, uygulamanızdaki yükü işlemek için çalışan doğru kaynak miktarına sahip olmanıza yardımcı olur. Yük arttıkça işlemek için kaynaklar eklemenize ve ayrıca boştaki kaynakları kaldırarak para tasarrufu sağlamanıza olanak sağlar. Seçtiğiniz zamanlamaya göre, sabit tarih-saat veya kaynak ölçüsüne göre ölçeklendirebilirsiniz. Daha fazla bilgi için bkz. [Otomatik ölçeklendirme genel bakış](autoscale-overview.md).
 
-Otomatik ölçeklendirme hizmeti, ölçek eylemlerinin neler oluştuğunu ve bu eylemlere yol açan koşulların değerlendirilmesi için ölçümler ve günlükler sağlar. Gibi soruların yanıtlarını bulabilirsiniz:
+Otomatik Ölçeklendirme hizmeti, hangi ölçeklendirme eylemlerinin oluştuğunu ve bu eylemlere yol açan koşulların değerlendirilmesini anlamak için ölçüm ve Günlükler sağlar. Şu soruların yanıtlarını bulabilirsiniz:
 
-- Hizmet imneden ölçeklendirildi veya içeri mi?
-- Hizmetim neden ölçeklendirilemedi?
+- Neden hizmetten mi ölçeklendirmeliyim?
+- Hizmetiniz neden ölçeklendirmedi?
 - Otomatik ölçeklendirme eylemi neden başarısız oldu?
-- Otomatik ölçeklendirme eylemi neden ölçeklendirmek için zaman alıyor?
+- Otomatik ölçeklendirme eylemi neden ölçeklendirmek için zaman alıyorsunuz?
   
 ## <a name="autoscale-metrics"></a>Otomatik ölçeklendirme ölçümleri
 
-Otomatik ölçek, işlemini anlamak için [dört ölçüm](metrics-supported.md#microsoftinsightsautoscalesettings) sağlar. 
+Otomatik ölçeklendirme, işlemini anlamak için size [dört ölçüm](metrics-supported.md#microsoftinsightsautoscalesettings) sağlar. 
 
-- **Gözlenen Metrik Değer** - Otomatik ölçek motoru tarafından görüldüğü veya hesaplanan ölçek eylemini yapmak için seçtiğiniz ölçümün değeri. Tek bir otomatik ölçek ayarı birden çok kurala ve dolayısıyla birden çok metrik kaynağa sahip olabileceğinden, boyut olarak "metrik kaynak" kullanarak filtre uygulayabilirsiniz.
-- **Metrik Eşik** - Ölçek eylemini yapmak için ayarladığınız eşik. Tek bir otomatik ölçek ayarı birden çok kurala ve dolayısıyla birden çok metrik kaynağa sahip olabileceğinden, boyut olarak "metrik kural" kullanarak filtre uygulayabilirsiniz.
-- **Gözlenen Kapasite** - Otomatik Ölçek motorutarafından görülen hedef kaynağın etkin sayısı.
-- **Başlatılan Ölçeklendirme Eylemleri**: Otomatik ölçeklendirme altyapısı tarafından başlatılan ölçeği genişletme ve ölçeği daraltma eylemlerinin sayısıdır. Eylemlerde ölçeklendirme ve ölçek lere göre filtre uygulayabilirsiniz.
+- **Gözlemlenen ölçüm değeri** -otomatik ölçeklendirme altyapısı tarafından görüldüğü veya hesaplanarak ölçekleme eylemini gerçekleştirmek için seçtiğiniz ölçümün değeri. Tek bir otomatik ölçeklendirme ayarı birden çok kurala ve bu nedenle birden çok ölçüm kaynağına sahip olabileceğinden, bir boyut olarak "ölçüm kaynağı" kullanarak filtre uygulayabilirsiniz.
+- **Ölçüm eşiği** -ölçekleme eylemini gerçekleştirmek için ayarladığınız eşik. Tek bir otomatik ölçeklendirme ayarı birden çok kurala ve bu nedenle birden çok ölçüm kaynağına sahip olabileceğinden, bir boyut olarak "ölçüm kuralı" kullanarak filtre uygulayabilirsiniz.
+- **Gözlemlenen kapasite** -otomatik ölçeklendirme motoru tarafından görülen hedef kaynağın etkin örnek sayısı.
+- **Başlatılan Ölçeklendirme Eylemleri**: Otomatik ölçeklendirme altyapısı tarafından başlatılan ölçeği genişletme ve ölçeği daraltma eylemlerinin sayısıdır. Ölçek Genişletme ile, eylemlerde ölçeğe göre filtreleyebilirsiniz.
 
-Yukarıdaki ölçümleri tek bir yerde grafiklemek için [Metrics Explorer'ı](metrics-getting-started.md) kullanabilirsiniz. Grafik göstermelidir:
+Yukarıdaki ölçümleri tek bir yerde grafik olarak eklemek için [Ölçüm Gezgini](metrics-getting-started.md) kullanabilirsiniz. Grafik şunları göstermelidir:
 
-  - gerçek metrik
-  - otomatik ölçek motoru tarafından görülen/hesaplanan metrik
-  - bir ölçek eylemi için eşik
-  - kapasite değişikliği 
+  - gerçek ölçüm
+  - Otomatik ölçeklendirme motoru tarafından görülen/hesaplanan ölçüm
+  - ölçek eyleminin eşiği
+  - kapasitede değişiklik 
 
-## <a name="example-1---analyzing-a-simple-autoscale-rule"></a>Örnek 1 - Basit bir otomatik ölçek kuralını çözümleme 
+## <a name="example-1---analyzing-a-simple-autoscale-rule"></a>Örnek 1-basit bir otomatik ölçeklendirme kuralını çözümleme 
 
-Sanal makine ölçeği seti için basit bir otomatik ölçek ayarımız var:
+Bir sanal makine ölçek kümesi için şu şekilde basit bir otomatik ölçeklendirme ayarı sunuyoruz:
 
-- bir kümenin ortalama CPU yüzdesi 10 dakika boyunca %70'ten büyük olduğunda ölçeklenir 
-- kümesinin CPU yüzdesinin 10 dakikadan fazla bir süre için %5'ten az olduğu ölçeklenir. 
+- bir küme ortalama CPU yüzdesi 10 dakika boyunca %70 ' den büyükse ölçeği ölçeklendirir 
+- küme CPU yüzdesi 10 dakikadan uzun süre boyunca %5 ' ten az olduğunda ölçeklendirme yapar. 
 
-Otomatik ölçeklendirme hizmetinden ölçümleri gözden geçirelim.
+Otomatik ölçeklendirme hizmetindeki ölçümleri gözden geçirelim.
  
-![Sanal makine ölçeği set yüzdesi CPU örneği](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
+![Sanal makine ölçek kümesi yüzde CPU örneği](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
 
-![Sanal makine ölçeği set yüzdesi CPU örneği](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
+![Sanal makine ölçek kümesi yüzde CPU örneği](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
-***Şekil 1a - Sanal makine ölçek kümesi için yüzde CPU ölçümü ve otomatik ölçek ayarı için Gözlenen Metrik Değer ölçümü***
+***Şekil 1a-sanal makine ölçek kümesi için CPU Ölçümü yüzdesi ve otomatik ölçeklendirme ayarı için gözlemlenen ölçüm değeri ölçümü***
 
-![Metrik Eşik ve Gözlemlenen Kapasite](media/autoscale-troubleshoot/autoscale-metric-threshold-capacity-ex-full.png)
+![Ölçüm eşiği ve gözlemlenen kapasite](media/autoscale-troubleshoot/autoscale-metric-threshold-capacity-ex-full.png)
 
-***Şekil 1b - Metrik Eşik ve Gözlemlenen Kapasite***
+***Şekil 1B-metrik eşiği ve gözlemlenen kapasite***
 
-Şekil 1b'de, ölçeklendirme kuralı için **Metrik Eşik** (açık mavi çizgi) 70'tir.  **Gözlenen Kapasite** (koyu mavi çizgi), şu anda 3 olan etkin örneklerin sayısını gösterir. 
+Şekil 1B, ölçek genişletme kuralı için **ölçüm eşiği** (açık mavi çizgi) 70 ' dir.  **Gözlenen kapasite** (koyu mavi çizgi), şu anda 3 olan etkin örnek sayısını gösterir. 
 
 > [!NOTE]
-> Ölçeklendirme eşiğini ve kural (azalış) ölçeğini görmek için metrik tetik kuralı boyutu ölçeği (artır) kuralına göre **Metrik Eşiği** filtrelemeniz gerekir. 
+> Ölçek Genişletme eşiğini ve kural içindeki ölçeği (azalmayı) görmek için ölçüm tetikleme kuralı boyut ölçeği genişletme (artış) kuralına göre **ölçüm eşiğini** filtrelemeniz gerekir. 
 
-## <a name="example-2---advanced-autoscaling-for-a-virtual-machine-scale-set"></a>Örnek 2 - Sanal makine ölçek kümesi için gelişmiş otomatik ölçeklendirme
+## <a name="example-2---advanced-autoscaling-for-a-virtual-machine-scale-set"></a>Örnek 2-bir sanal makine ölçek kümesi için gelişmiş otomatik ölçeklendirme
 
-Sanal makine ölçeği ayarlı kaynağın kendi metrik **Giden Akışları'na**göre ölçeklemesine olanak tanıyan otomatik ölçeklendirme ayarımız var. Metrik eşik için **örnek sayısı seçeneğine bölme metriğinin** denetlenmiş olduğuna dikkat edin. 
+Bir sanal makine ölçek kümesi kaynağının kendi ölçüm **giden akışlarına**göre ölçeklendirilmesine izin veren bir otomatik ölçeklendirme ayarı vardır. Ölçüm eşiğinin **örnek sayısına göre ölçüyü Böl** seçeneğinin işaretli olduğuna dikkat edin. 
 
-Ölçek eylem kuralı: 
+Ölçek eylemi kuralı: 
 
-**Çıkış Akışı'nın örnek başına** değeri 10'dan büyükse, otomatik ölçeklendirme hizmeti 1 örneğine göre ölçeklendirilmelidir. 
+**Örnek başına giden akış** değeri 10 ' dan büyükse otomatik ölçeklendirme hizmeti 1 örneğe göre ölçeklendirmelidir. 
 
-Bu durumda, otomatik ölçeklendirme motorunun gözlenen metrik değeri, örnek sayısına bölünen gerçek metrik değer olarak hesaplanır. Gözlenen metrik değer eşikten küçükse, ölçeklendirme eylemi başlatılmadı. 
+Bu durumda, otomatik ölçeklendirme motorunun gözlemlenen ölçüm değeri, gerçek ölçüm değeri olarak örnek sayısına bölünür. Gözlemlenen ölçüm değeri eşikten küçükse, ölçek genişletme eylemi başlatılmaz. 
  
-![Sanal makine ölçeği kümesi otomatik ölçek ölçümleri grafikleri örnek](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
+![Sanal makine ölçek kümesi otomatik ölçeklendirme ölçümleri grafikleri örneği](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
 
-![Sanal makine ölçeği kümesi otomatik ölçek ölçümleri grafikleri örnek](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
+![Sanal makine ölçek kümesi otomatik ölçeklendirme ölçümleri grafikleri örneği](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 
-***Şekil 2 - Sanal makine ölçeği otomatik ölçek ölçüm grafikleri örnek ayarlamak***
+***Şekil 2-sanal makine ölçek kümesi otomatik ölçeklendirme ölçümleri grafikleri örneği***
 
-Şekil 2'de iki metrik grafik görebilirsiniz. 
+Şekil 2 ' de iki ölçüm grafiği görebilirsiniz. 
 
-Üstteki **grafik, Giden Akışlar** ölçümünün gerçek değerini gösterir. Gerçek değer 6'dır. 
+Üstteki grafik, **giden akışlar** ölçüsünün gerçek değerini gösterir. Gerçek değer 6 ' dır. 
 
-Alttaki grafik birkaç değer gösterir. 
- - **Gözlenen Metrik değeri** (açık mavi) 3'tür, çünkü 2 etkin örnek vardır ve 6 2'ye bölünür 3'tür. 
- - **Gözlenen Kapasite** (mor), otomatik ölçeklendirme motoru tarafından görülen örnek sayısını gösterir. 
- - **Metrik Eşik** (açık yeşil) 10 olarak ayarlanır. 
+En alttaki grafik birkaç değeri gösterir. 
+ - **Gözlenen ölçüm değeri** (açık mavi) 3 ' tür ve 2 etkin örnek ve 6 ' a bölünmüş 2 3 ' tür. 
+ - **Gözlenen kapasite** (mor), otomatik ölçeklendirme motoru tarafından görülen örnek sayısını gösterir. 
+ - **Ölçüm eşiği** (açık yeşil) 10 olarak ayarlanır. 
 
-Birden çok ölçek eylem kuralı varsa, ölçümlere belirli bir kaynak veya kurala göre bakmak için Ölçümler gezgini grafiğinde bölme veya **filtre ekleme** seçeneğini kullanabilirsiniz. Metrik grafiği bölme hakkında daha fazla bilgi için [metrik grafiklerin gelişmiş özelliklerine](metrics-charts.md#apply-splitting-to-a-chart) bakın - bölme
+Birden fazla ölçeklendirme eylemi kuralı varsa, belirli bir kaynak veya kurala göre ölçüm bölümüne bakmak için ölçüm Gezgini grafiğinde bölme veya **Filtre Ekle** seçeneğini kullanabilirsiniz. Ölçüm grafiğinin bölünmesi hakkında daha fazla bilgi için bkz. [ölçüm grafiklerinin gelişmiş özellikleri-bölme](metrics-charts.md#apply-splitting-to-a-chart)
 
-## <a name="example-3---understanding-autoscale-events"></a>Örnek 3 - Otomatik ölçek olaylarını anlama
+## <a name="example-3---understanding-autoscale-events"></a>Örnek 3-otomatik ölçeklendirme olaylarını anlama
 
-Otomatik ölçek ayar ekranında, en son ölçek eylemlerini görmek için **Geçmiş Çalıştır** sekmesine gidin. Sekme, zaman içinde **Gözlenen Kapasitedeki** değişikliği de gösterir. Otomatik ölçek ayarlarını güncelleştirme/silme gibi işlemler de dahil olmak üzere tüm otomatik ölçeklendirme eylemleri hakkında daha fazla bilgi edinmek için, otomatik ölçeklendirme işlemlerine göre etkinlik günlüğünü ve filtreyi görüntüleyin.
+Otomatik ölçeklendirme ayarı ekranında, en son ölçeklendirme eylemlerini görmek için **çalışma geçmişi** sekmesine gidin. Bu sekmede zaman içinde **gözlenen kapasite** değişikliği de gösterilmektedir. Otomatik ölçeklendirme ayarlarını güncelleştirme/silme gibi işlemler de dahil olmak üzere tüm otomatik ölçeklendirme eylemleri hakkında daha fazla ayrıntı bulmak için etkinlik günlüğünü görüntüleyin ve otomatik ölçeklendirme işlemlerine göre filtreleyin.
 
-![Otomatik ölçeklendirme ayarları geçmişi çalıştırın](media/autoscale-troubleshoot/autoscale-setting-run-history-smaller.png)
+![Otomatik ölçeklendirme ayarları çalıştırma geçmişi](media/autoscale-troubleshoot/autoscale-setting-run-history-smaller.png)
 
-## <a name="autoscale-resource-logs"></a>Otomatik Ölçekkaynak Günlükleri
+## <a name="autoscale-resource-logs"></a>Kaynak günlüklerini otomatik ölçeklendirme
 
-Diğer Azure kaynakları yla aynı olan otomatik ölçeklendirme hizmeti [de kaynak günlükleri](platform-logs-overview.md)sağlar. Günlüklerin iki kategorisi vardır.
+Otomatik Ölçeklendirme hizmeti, diğer Azure kaynakları ile aynı şekilde [kaynak günlükleri](platform-logs-overview.md)sağlar. İki günlük kategorisi vardır.
 
-- **Otomatik Ölçeklendirme Değerlendirmeleri** - Otomatik ölçeklendirme motoru, her denetim yaptığında her koşul değerlendirmesi için günlük girişlerini kaydeder.  Giriş, ölçümlerin gözlenen değerleri, değerlendirilen kurallar ve değerlendirmenin bir ölçek eylemiyle sonuçlanıp sonuçlanmadığı ile ilgili ayrıntıları içerir.
+- **Otomatik ölçeklendirme değerlendirmeleri** -otomatik ölçeklendirme altyapısı her bir denetim her seferinde her bir koşul değerlendirmesi için günlük girişlerini kaydeder.  Giriş, ölçümlerin gözlemlenen değerleriyle ilgili ayrıntıları, değerlendirilen kuralları ve değerlendirme bir ölçeklendirme eylemiyle sonuçlanmış olduğunu içerir.
 
-- **Otomatik Ölçeklendirme Eylemleri** - Motor, otomatik ölçeklendirme hizmeti tarafından başlatılan eylem olaylarını ve bu ölçeklendirme eylemlerinin sonuçlarını (başarı, başarısızlık ve otomatik ölçeklendirme hizmetinde görüldüğü gibi ne kadar ölçeklendirme oluştuğunu) kaydeder.
+- **Otomatik ölçeklendirme ölçeklendirme eylemleri** -motor, otomatik ölçeklendirme hizmeti tarafından başlatılan ölçeklendirme eylemi olaylarını ve bu ölçeklendirme eylemlerinin sonuçlarını (başarılı, başarısız ve otomatik ölçeklendirme hizmeti tarafından görüldüğü için ne kadar ölçeklendirme oluştuğunu) kaydeder.
 
-Azure Monitor desteklenen herhangi bir hizmette olduğu gibi, bu günlükleri yönlendirmek için [Tanılama Ayarlarını](diagnostic-settings.md) kullanabilirsiniz:
+Azure Izleyici desteklenen herhangi bir hizmette olduğu gibi, bu günlükleri yönlendirmek için [tanılama ayarlarını](diagnostic-settings.md) kullanabilirsiniz:
 
 - ayrıntılı analiz için Log Analytics çalışma alanınıza
-- Olay Hub'larına ve ardından Azure olmayan araçlara
-- arşivleme için Azure depolama hesabınıza  
+- Azure dışı araçlara Event Hubs ve ardından
+- Azure depolama hesabınıza arşivleme için  
 
-![Otomatik Ölçeklendirme Tanı ayarları](media/autoscale-troubleshoot/diagnostic-settings.png)
+![Otomatik ölçeklendirme Tanılama ayarları](media/autoscale-troubleshoot/diagnostic-settings.png)
 
-Önceki resimde Azure portalı otomatik ölçeklendirme tanılama ayarları gösterilmektedir. Burada Tanılama/Kaynak Günlükleri sekmesini seçebilir ve günlük toplama ve yönlendirmeyi etkinleştirebilirsiniz. Ayrıca, *microsoft.Insights/AutoscaleSettings*olarak kaynak türünü seçerek, Tanılama Ayarları için REST API, CLI, PowerShell, Resource Manager şablonlarını kullanarak aynı eylemi gerçekleştirebilirsiniz. 
+Önceki resimde Azure portal otomatik ölçeklendirme Tanılama ayarları gösterilmektedir. Tanılama/kaynak günlükleri sekmesini seçebilir ve günlük toplamayı ve yönlendirmeyi etkinleştirebilirsiniz. Ayrıca, *Microsoft. Insights/oto scalesettings*olarak kaynak türünü seçerek Tanılama ayarları için REST API, CLI, PowerShell ve Kaynak Yöneticisi şablonlarını kullanarak aynı eylemi gerçekleştirebilirsiniz. 
 
-## <a name="troubleshooting-using-autoscale-logs"></a>Otomatik ölçekgünlüklerini kullanarak sorun giderme 
+## <a name="troubleshooting-using-autoscale-logs"></a>Otomatik ölçeklendirme günlüklerini kullanarak sorun giderme 
 
-En iyi sorun giderme deneyimi için, otomatik ölçek ayarını oluştururken günlüklerinizi bir çalışma alanı üzerinden Azure Monitör Günlükleri'ne (Log Analytics) yönlendirmenizi öneririz. Bu işlem önceki bölümde resimde gösterilir. Log Analytics'i kullanarak değerlendirmeleri ve ölçeklendirme eylemlerini daha iyi doğrulayabilirsiniz.
+En iyi sorun giderme deneyimi için, otomatik ölçeklendirme ayarını oluşturduğunuzda bir çalışma alanı aracılığıyla günlüklerinizi Azure Izleyici günlüklerine (Log Analytics) yönlendirmenizi öneririz. Bu işlem, önceki bölümde bulunan resimde gösterilir. Log Analytics kullanarak değerlendirmeleri doğrulayabilir ve eylemleri daha iyi ölçeklendirebilirsiniz.
 
-Oto ölçekli günlüklerinizi Log Analytics çalışma alanına gönderilecek şekilde yapılandırdıktan sonra, günlükleri denetlemek için aşağıdaki sorguları gerçekleştirebilirsiniz. 
+Otomatik ölçeklendirme günlüklerinizi Log Analytics çalışma alanına gönderilmek üzere yapılandırdıktan sonra, günlükleri denetlemek için aşağıdaki sorguları çalıştırabilirsiniz. 
 
-Başlamak için, en son otomatik ölçek değerlendirme günlüklerini görüntülemek için bu sorguyu deneyin:
+Başlamak için, en son otomatik ölçeklendirme değerlendirme günlüklerini görüntülemek üzere bu sorguyu deneyin:
 
 ```Kusto
 AutoscaleEvaluationsLog
 | limit 50
 ```
 
-Veya en son ölçek eylem günlüklerini görüntülemek için aşağıdaki sorguyu deneyin:
+Veya en son ölçeklendirme eylemi günlüklerini görüntülemek için aşağıdaki sorguyu deneyin:
 
 ```Kusto
 AutoscaleScaleActionsLog
 | limit 50
 ```
 
-Bu sorular için aşağıdaki bölümleri kullanın. 
+Bu sorulara aşağıdaki bölümleri kullanın. 
 
-## <a name="a-scale-action-occurred-that-i-didnt-expect"></a>Beklemediğim bir ölçek eylemi oluştu.
+## <a name="a-scale-action-occurred-that-i-didnt-expect"></a>Beklemediğim bir ölçeklendirme eylemi oluştu
 
-Önce ilgilendiğiniz ölçek eylemini bulmak için ölçek eylemi sorgusunu yürütün. En son ölçek eylemiyse, aşağıdaki sorguyu kullanın:
+İlk olarak, ilgilendiğiniz ölçek eylemini bulmak için, ölçek eylemini sorgu olarak yürütün. En son ölçeklendirme eylemli ise, aşağıdaki sorguyu kullanın:
 
 ```Kusto
 AutoscaleScaleActionsLog
 | take 1
 ```
 
-Ölçek eylemleri günlüğünden Korelasyon Alanı'nı seçin. Doğru Değerlendirme günlüğünü bulmak için KorelasyonId'i kullanın. Aşağıdaki sorguyu yürütmek, bu ölçek eylemine yol açan değerlendirilen tüm kural ve koşulları görüntüler.
+Ölçek eylemleri günlüğünden CorrelationId alanını seçin. Doğru değerlendirme günlüğünü bulmak için Bağıntıkimliği 'ı kullanın. Aşağıdaki sorgunun yürütülmesi, bu ölçeklendirme eylemine göre değerlendirilen tüm kuralları ve koşulları görüntüler.
 
 ```Kusto
 AutoscaleEvaluationsLog
 | where CorrelationId = "<correliationId>"
 ```
 
-## <a name="what-profile-caused-a-scale-action"></a>Hangi profil ölçek eylemine neden oldu?
+## <a name="what-profile-caused-a-scale-action"></a>Hangi profil bir ölçeklendirme eylemine neden oldu?
 
-Ölçeklenmiş bir eylem oluştu, ancak çakışan kurallarınız ve profilleriniz var ve eyleme neden olan bu eylemi izlemeniz gerekiyor. 
+Ölçeklenen bir eylem oluştu, ancak çakışan kurallar ve profilleriniz var ve bu eyleme neden olan bir izleme yapmanız gerekiyor. 
 
-Ölçek eyleminin korelasyonid'ini bulun (örnek 1'de açıklandığı gibi) ve ardından profil hakkında daha fazla bilgi edinmek için değerlendirme günlüklerinde sorguyu yürütün.
+Ölçek eyleminin (örnek 1 ' de açıklandığı gibi) CorrelationId 'sini bulun ve ardından profil hakkında daha fazla bilgi edinmek için değerlendirme günlüklerinde sorguyu yürütün.
 
 ```Kusto
 AutoscaleEvaluationsLog
@@ -164,7 +164,7 @@ AutoscaleEvaluationsLog
 | project ProfileEvaluationTime, Profile, ProfileSelected, EvaluationResult
 ```
 
-Profil değerlendirmesinin tamamı aşağıdaki sorgu kullanılarak daha iyi anlaşılabilir
+Tüm profil değerlendirmesi, aşağıdaki sorgu kullanılarak da daha iyi anlaşılabilirler
 
 ```Kusto
 AutoscaleEvaluationsLog
@@ -173,13 +173,13 @@ AutoscaleEvaluationsLog
 | project OperationName, Profile, ProfileEvaluationTime, ProfileSelected, EvaluationResult
 ```
 
-## <a name="a-scale-action-did-not-occur"></a>Bir ölçek eylemi gerçekleşmedi
+## <a name="a-scale-action-did-not-occur"></a>Bir ölçeklendirme eylemi gerçekleşmedi
 
-Ben bir ölçek eylem bekleniyor ve olmadı. Ölçekeylem olayları veya günlükleri olmayabilir.
+Bir ölçeklendirme eylemi bekledim ve gerçekleşmedi. Hiçbir ölçeklendirme eylemi olayı veya günlüğü olmayabilir.
 
-Metrik tabanlı ölçek kuralı kullanıyorsanız otomatik ölçek ölçümlerini gözden geçirin. **Gözlenen metrik değer** in veya **Gözlenen Kapasite'nin** beklediğiniz gibi olmaması ve bu nedenle ölçek kuralının ateşlenmemesi mümkündür. Yine de değerlendirmeler görürdün, ama ölçeklendirme kuralı değil. Ayrıca, soğuma süresinin bir ölçek eyleminin oluşmasını engellenebilmektedir. 
+Ölçüm tabanlı ölçek kuralı kullanıyorsanız otomatik ölçeklendirme ölçümlerini gözden geçirin. **Gözlemlenen ölçüm değeri** veya **gözlemlenen kapasite** , bunların sizin beklediğiniz şekilde olmaması ve bu nedenle ölçek kuralının tetiklenmesi mümkündür. Bir ölçek genişletme kuralı değil, değerlendirmeleri görmeye devam edersiniz. Sık erişimli sürenin bir ölçeklendirme eylemi meydana geldiğini de mümkün hale gelir. 
 
- Ölçek eyleminin gerçekleşmesini beklediğiniz süre boyunca otomatik ölçek değerlendirme günlüklerini gözden geçirin. Yaptığı tüm değerlendirmeleri ve neden bir ölçek eylemini tetiklememeye karar verdi.
+ Ölçek eyleminin gerçekleşmesini beklediğiniz süre boyunca otomatik ölçeklendirme değerlendirme günlüklerini gözden geçirin. Yaptığı tüm değerlendirmeleri ve neden bir ölçeklendirme eylemi tetikleyemediğini gözden geçirin.
 
 
 ```Kusto
@@ -189,9 +189,9 @@ AutoscaleEvaluationsLog
 | project OperationName, MetricData, ObservedValue, Threshold, EstimateScaleResult
 ```
 
-## <a name="scale-action-failed"></a>Ölçek eylemi başarısız oldu
+## <a name="scale-action-failed"></a>Ölçeklendirme eylemi başarısız oldu
 
-Otomatik ölçeklendirme hizmetinin ölçeklendirme eylemini üstlendiği bir durum olabilir, ancak sistem ölçeklendirmemeye karar verdi veya ölçek eylemini tamamlamadı. Başarısız ölçek eylemlerini bulmak için bu sorguyu kullanın.
+Otomatik Ölçeklendirme hizmeti 'nin ölçeklendirme eylemini aldığı, ancak sistemin ölçeklenmeye karar verdiği veya ölçek eyleminin tamamlanmadığında veya başarısız olduğu bir durum olabilir. Başarısız ölçeklendirme eylemlerini bulmak için bu sorguyu kullanın.
 
 ```Kusto
 AutoscaleScaleActionsLog
@@ -199,11 +199,11 @@ AutoscaleScaleActionsLog
 | project ResultDescription
 ```
 
-Otomatik ölçeklendirme eylemleri veya hataları hakkında bilgi almak için uyarı kuralları oluşturun. Otomatik ölçek olayları hakkında bilgilendirilmek için uyarı kuralları da oluşturabilirsiniz.
+Otomatik ölçeklendirme eylemleri veya arızaları hakkında bildirim almak için uyarı kuralları oluşturun. Otomatik ölçeklendirme olayları hakkında bildirim almak için uyarı kuralları da oluşturabilirsiniz.
 
-## <a name="schema-of-autoscale-resource-logs"></a>Otomatik ölçek kaynak günlüklerinin şeması
+## <a name="schema-of-autoscale-resource-logs"></a>Otomatik ölçeklendirme kaynak günlüklerinin şeması
 
-Daha fazla bilgi için [otomatik ölçeklendirme kaynak günlüklerine](autoscale-resource-log-schema.md) bakın
+Daha fazla bilgi için bkz. [Otomatik ölçeklendirme kaynak günlükleri](autoscale-resource-log-schema.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Otomatik ölçekle en iyi uygulamalar](autoscale-best-practices.md)hakkında bilgi okuyun. 
+[Otomatik ölçeklendirme en iyi yöntemleri](autoscale-best-practices.md)hakkında bilgi edinin. 

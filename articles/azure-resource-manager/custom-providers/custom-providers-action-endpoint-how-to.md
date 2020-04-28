@@ -1,26 +1,26 @@
 ---
-title: Azure REST API'sine özel eylemler ekleme
-description: Azure REST API'sine nasıl özel eylemler ekleyeceğinizi öğrenin. Bu makalede, özel eylemleri uygulamak isteyen uç noktalar için gereksinimler ve en iyi uygulamalar üzerinden yürüyeceğiz.
+title: Azure REST API özel eylemler ekleme
+description: Azure REST API özel eylemlerin nasıl ekleneceğini öğrenin. Bu makale, özel eylemler uygulamak isteyen uç noktalar için gereksinimler ve en iyi uygulamalar hakkında yol gösterir.
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75650402"
 ---
-# <a name="adding-custom-actions-to-azure-rest-api"></a>Azure REST API'sine Özel Eylemler Ekleme
+# <a name="adding-custom-actions-to-azure-rest-api"></a>Azure REST API özel eylemler ekleme
 
-Bu makale, özel eylemler uygulayan Azure Özel Kaynak Sağlayıcısı uç noktalarını oluşturmak için gereken gereksinimleri ve en iyi uygulamaları gözden geçirir. Azure Özel Kaynak Sağlayıcıları'nı bilmiyorsanız, [özel kaynak sağlayıcılarına genel bakışa](overview.md)bakın.
+Bu makalede, özel eylemleri uygulayan Azure özel kaynak sağlayıcısı uç noktaları oluşturmak için gereksinimler ve en iyi yöntemler sunulacaktır. Azure özel kaynak sağlayıcıları hakkında bilginiz yoksa bkz. [özel kaynak sağlayıcılarına genel bakış](overview.md).
 
-## <a name="how-to-define-an-action-endpoint"></a>Eylem Bitiş Noktası nasıl tanımlanır?
+## <a name="how-to-define-an-action-endpoint"></a>Eylem uç noktası tanımlama
 
-**Bitiş noktası,** bir hizmete işaret eden ve azure ile arasındaki temel sözleşmeyi uygulayan bir URL'dir. Bitiş noktası özel kaynak sağlayıcısında tanımlanır ve herkese açık herhangi bir URL olabilir. Aşağıdaki `myCustomAction` örnekte . **action** `endpointURL`
+**Uç nokta** , BT ile Azure arasında temel alınan sözleşmeyi uygulayan bir hizmete işaret eden bir URL 'dir. Uç nokta özel kaynak sağlayıcısında tanımlanmıştır ve herkese açık olarak erişilebilen herhangi bir URL olabilir. Aşağıdaki örnekte, tarafından `myCustomAction` `endpointURL`uygulanan adlı bir **eylem** vardır.
 
-Örnek **Kaynak Sağlayıcı:**
+Örnek **ResourceProvider**:
 
 ```JSON
 {
@@ -40,15 +40,15 @@ Bu makale, özel eylemler uygulayan Azure Özel Kaynak Sağlayıcısı uç nokta
 }
 ```
 
-## <a name="building-an-action-endpoint"></a>Eylem bitiş noktası oluşturma
+## <a name="building-an-action-endpoint"></a>Eylem uç noktası oluşturma
 
-Bir **eylemi** uygulayan bir **bitiş noktası,** Azure'daki yeni API isteği ve yanıtı işlemelidir. **Eylemi** olan özel bir kaynak sağlayıcısı oluşturulduğunda, Azure'da yeni bir API kümesi oluşturur. Bu durumda, eylem aramalar için `POST` yeni bir Azure eylem API'si oluşturur:
+Bir **eylemi** uygulayan bir **uç noktanın** , Azure 'daki yeni API için isteği ve yanıtı işlemesi gerekir. Bir **eylem** içeren özel bir kaynak sağlayıcısı oluşturulduğunda, Azure 'da yeni bir API kümesi oluşturur. Bu durumda, eylem çağrılar için `POST` yeni bir Azure eylem API 'si oluşturacaktır:
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomAction
 ```
 
-Azure API Gelen İstek:
+Azure API gelen Istek:
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomAction?api-version=2018-09-01-preview
@@ -63,7 +63,7 @@ Content-Type: application/json
 }
 ```
 
-Bu istek daha sonra formdaki **bitiş noktasına** iletilir:
+Bu istek daha sonra şu biçimdeki **uç noktaya** iletilir:
 
 ``` HTTP
 POST https://{endpointURL}/?api-version=2018-09-01-preview
@@ -78,24 +78,10 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-Benzer şekilde, bitiş **noktasından** gelen yanıt daha sonra müşteriye geri iletilir. Bitiş noktasından gelen yanıt döndürülmelidir:
+Benzer şekilde, **uç noktadan** gelen yanıt daha sonra müşteriye iletilir. Uç noktadan gelen yanıt şunu döndürmelidir:
 
-- Geçerli bir JSON nesne belgesi. Tüm diziler ve dizeleri bir üst nesnenin altında iç içe olmalıdır.
-- Üstbilgi `Content-Type` "uygulama/json; charset=utf-8".
-
-``` HTTP
-HTTP/1.1 200 OK
-Content-Type: application/json; charset=utf-8
-
-{
-    "myProperty1": "myPropertyValue1",
-    "myProperty2": {
-        "myProperty3" : "myPropertyValue3"
-    }
-}
-```
-
-Azure Özel Kaynak Sağlayıcısı Yanıtı:
+- Geçerli bir JSON nesne belgesi. Tüm diziler ve dizeler üst nesne altında iç içe olmalıdır.
+- Üst `Content-Type` bilgi, "Application/JSON; olarak ayarlanmalıdır charset = UTF-8 ".
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -109,12 +95,26 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-## <a name="calling-a-custom-action"></a>Özel Eylem Arama
+Azure özel kaynak sağlayıcısı yanıtı:
 
-Özel bir kaynak sağlayıcısının özel eylemini çağırmanın iki ana yolu vardır:
+``` HTTP
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+    "myProperty1": "myPropertyValue1",
+    "myProperty2": {
+        "myProperty3" : "myPropertyValue3"
+    }
+}
+```
+
+## <a name="calling-a-custom-action"></a>Özel bir eylem çağırma
+
+Özel bir eylemi özel bir kaynak sağlayıcısında çağırmanın iki ana yöntemi vardır:
 
 - Azure CLI
-- Azure Kaynak Yöneticisi Şablonları
+- Azure Resource Manager şablonları
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -132,16 +132,16 @@ az resource invoke-action --action {actionName} \
 
 Parametre | Gerekli | Açıklama
 ---|---|---
-action | *Evet* | **Kaynak Sağlayıcısı'nda**tanımlanan eylemin adı.
-Kimlik | *Evet* | **Kaynak Sağlayıcısı'nın**kaynak kimliği.
-istek-gövde | *hayır* | **Bitiş noktasına**gönderilecek istek gövdesi.
+action | *Yes* | **ResourceProvider**'da tanımlanan eylemin adı.
+ayrılacak | *Yes* | **ResourceProvider**'ıN kaynak kimliği.
+İstek gövdesi | *eşleşen* | **Uç noktaya**gönderilecek istek gövdesi.
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager Şablonu
 
 > [!NOTE]
-> Eylemler, Azure Kaynak Yöneticisi Şablonları'nda sınırlı destek gösterir. Eylemin bir şablon içinde çağrılabilmesi için, kendi [`list`](../templates/template-functions-resource.md#list) adında önek içermesi gerekir.
+> Eylemlerin Azure Resource Manager şablonlarda sınırlı desteği vardır. Eylemin bir şablon içinde çağrılması için, adının [`list`](../templates/template-functions-resource.md#list) öneki içermesi gerekir.
 
-Liste Eylemi ile Örnek **Kaynak Sağlayıcı:**
+Liste eylemiyle örnek **ResourceProvider** :
 
 ```JSON
 {
@@ -158,7 +158,7 @@ Liste Eylemi ile Örnek **Kaynak Sağlayıcı:**
 }
 ```
 
-Örnek Azure Kaynak Yöneticisi Şablonu:
+Örnek Azure Resource Manager şablonu:
 
 ``` JSON
 {
@@ -186,13 +186,13 @@ Liste Eylemi ile Örnek **Kaynak Sağlayıcı:**
 
 Parametre | Gerekli | Açıklama
 ---|---|---
-resourceIdentifier | *Evet* | **Kaynak Sağlayıcısı'nın**kaynak kimliği.
-apiVersion | *Evet* | Kaynak çalışma zamanının API sürümü. Bu her zaman "2018-09-01-önizleme" olmalıdır.
-fonksiyonDeğerleri | *hayır* | **Bitiş noktasına**gönderilecek istek gövdesi.
+ResourceIdentifier kimlikli | *Yes* | **ResourceProvider**'ıN kaynak kimliği.
+apiVersion | *Yes* | Kaynak çalışma zamanının API sürümü. Bu her zaman "2018-09-01-Önizleme" olmalıdır.
+functionValues | *eşleşen* | **Uç noktaya**gönderilecek istek gövdesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Özel Kaynak Sağlayıcılarına Genel Bakış](overview.md)
-- [Hızlı başlangıç: Azure Özel Kaynak Sağlayıcısı oluşturun ve özel kaynakları dağıtın](./create-custom-provider.md)
-- [Öğretici: Azure'da özel eylemler ve kaynaklar oluşturun](./tutorial-get-started-with-custom-providers.md)
-- [Nasıl Yapilir: Azure REST API'sine Özel Kaynak Ekleme](./custom-providers-resources-endpoint-how-to.md)
+- [Azure özel kaynak sağlayıcılarına genel bakış](overview.md)
+- [Hızlı başlangıç: Azure özel kaynak sağlayıcısı oluşturma ve özel kaynaklar dağıtma](./create-custom-provider.md)
+- [Öğretici: Azure 'da özel eylemler ve kaynaklar oluşturma](./tutorial-get-started-with-custom-providers.md)
+- [Nasıl yapılır: Azure REST API özel kaynak ekleme](./custom-providers-resources-endpoint-how-to.md)

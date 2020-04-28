@@ -1,20 +1,20 @@
 ---
-title: MultiStorageAccountCombo Kullanıcı Yanı elemanı
-description: Azure portalı için Microsoft.Storage.MultiStorageAccountCombo UI öğesini açıklar.
+title: MultiStorageAccountCombo UI öğesi
+description: Azure portal için Microsoft. Storage. MultiStorageAccountCombo UI öğesini açıklar.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 06412a1f08f1f242a3f3bd9be17b795ee09fcf9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651884"
 ---
-# <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo Kullanıcı Yanı öğesi
+# <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft. Storage. MultiStorageAccountCombo UI öğesi
 
-Ortak bir önek ile başlayan adlarla birkaç depolama hesabı oluşturmak için bir denetim grubu.
+Ortak bir ön ekiyle başlayan adlara sahip birkaç depolama hesabı oluşturmaya yönelik bir denetim grubu.
 
 ## <a name="ui-sample"></a>UI örneği
 
@@ -60,13 +60,13 @@ Ortak bir önek ile başlayan adlarla birkaç depolama hesabı oluşturmak için
 
 ## <a name="remarks"></a>Açıklamalar
 
-- Değer, `defaultValue.prefix` depolama hesabı adlarının sırasını oluşturmak için bir veya daha fazla arayıcı yla birleştirilmiştir. Örneğin, `defaultValue.prefix` **sa** ise `count` ve **2**ise, depolama hesabı adları **sa1** ve **sa2** oluşturulur. Oluşturulan depolama hesabı adları benzersizlik için otomatik olarak doğrulanır.
-- Depolama hesabı adları lexicographically dayalı `count`oluşturulur. Örneğin, 10 `count` ise, depolama hesabı adları iki basamaklı tümselerle sona erer (01, 02, 03).
-- Varsayılan değer `defaultValue.prefix` **null**ve for `defaultValue.type` **Premium_LRS.**
-- Belirtilmeyen `constraints.allowedTypes` herhangi bir tür gizlidir ve `constraints.excludedTypes` belirtilmeyen herhangi bir tür gösterilir. `constraints.allowedTypes`ve `constraints.excludedTypes` her ikisi de isteğe bağlıdır, ancak aynı anda kullanılamaz.
-- Depolama hesabı adları oluşturmaya ek `count` olarak, öğe için uygun çarpanı ayarlamak için kullanılır. **2**gibi statik bir değeri veya başka bir öğeden `[steps('step1').storageAccountCount]`dinamik bir değeri destekler. Varsayılan değer **1'dir.**
+- İçin `defaultValue.prefix` değeri, depolama hesabı adları dizisini oluşturmak için bir veya daha fazla tamsayı ile birleştirilir. Örneğin, `defaultValue.prefix` **sa** ve `count` **2**ise, **SA1** ve **SA2** depolama hesabı adları oluşturulur. Oluşturulan depolama hesabı adları otomatik olarak benzersizlik için onaylanır.
+- Depolama hesabı adları, ile sözcüıgrafik tabanlı olarak `count`oluşturulur. Örneğin, `count` 10 ise, depolama hesabı adları iki basamaklı tamsayılarla biter (01, 02, 03).
+- İçin `defaultValue.prefix` varsayılan değer **null**ve için `defaultValue.type` **Premium_LRS**.
+- İçinde `constraints.allowedTypes` belirtilmeyen herhangi bir tür gizlidir ve içinde `constraints.excludedTypes` belirtilmeyen herhangi bir tür gösterilir. `constraints.allowedTypes`ve `constraints.excludedTypes` her ikisi de isteğe bağlıdır, ancak aynı anda kullanılamaz.
+- Depolama hesabı adları `count` oluşturmanın yanı sıra, öğesi için uygun çarpanı ayarlamak için kullanılır. **2**gibi bir statik değeri ya da gibi `[steps('step1').storageAccountCount]`başka bir öğeden dinamik bir değeri destekler. Varsayılan değer **1**' dir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* UI tanımlarını oluşturmaya giriş için create [UiDefinition 'a](create-uidefinition-overview.md)bakın.
-* UI öğelerindeki ortak özelliklerin açıklaması için [createUiDefinition öğelerine](create-uidefinition-elements.md)bakın.
+* UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
+* UI öğelerindeki ortak özelliklerin açıklaması için bkz. [Createuıdefinition Elements](create-uidefinition-elements.md).

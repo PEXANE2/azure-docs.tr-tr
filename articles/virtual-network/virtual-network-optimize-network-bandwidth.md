@@ -1,6 +1,6 @@
 ---
-title: VM ağ işbçisi | Microsoft Dokümanlar
-description: Azure sanal makine ağı masını nasıl optimize edebilirsiniz öğrenin.
+title: VM ağ aktarım hızını iyileştirme | Microsoft Docs
+description: Azure sanal makine ağ aktarım hızını iyileştirme hakkında bilgi edinin.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -15,34 +15,34 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
 ms.openlocfilehash: be5f38bdeaf51dbe23006ecf30b4deb66aa7402a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75690898"
 ---
-# <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure sanal makineleri için ağ bilginizi optimize edin
+# <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure sanal makineleri için ağ aktarım hızını iyileştirme
 
-Azure sanal makineleri (VM), ağ işbirliği için daha da optimize edilebilen varsayılan ağ ayarlarına sahiptir. Bu makalede, Ubuntu, CentOS ve Red Hat gibi büyük dağıtımlar da dahil olmak üzere Microsoft Azure Windows ve Linux VM'ler için ağ iş akışının nasıl optimize edilebildiğini açıklanmaktadır.
+Azure sanal makineleri (VM), ağ işleme için daha iyi iyileştirilen varsayılan ağ ayarlarına sahiptir. Bu makalede Ubuntu, CentOS ve Red hat gibi başlıca dağıtımlar dahil olmak üzere Microsoft Azure Windows ve Linux VM 'Leri için ağ aktarım hızını en iyi duruma getirmeyi açıklamaktadır.
 
 ## <a name="windows-vm"></a>Windows VM
 
-Windows VM'niz [Hızlandırılmış Ağ'ı](create-vm-accelerated-networking-powershell.md)destekliyorsa, bu özelliği etkinleştirmek iş için en uygun yapılandırma olacaktır. Diğer tüm Windows VM'leri için, Yan Ölçekleme Al (RSS) kullanmak, RSS'siz bir VM'den daha yüksek maksimal iş elde edilebilir. RSS varsayılan olarak bir Windows VM'de devre dışı bırakılmış olabilir. RSS'nin etkin olup olmadığını belirlemek ve şu anda devre dışı bırakılmışsa etkinleştirmek için aşağıdaki adımları tamamlayın:
+Windows VM 'niz [hızlandırılmış ağı](create-vm-accelerated-networking-powershell.md)destekliyorsa, bu özelliği etkinleştirmek üretilen iş için en uygun yapılandırma olacaktır. Diğer tüm Windows VM 'Leri için, Alma Tarafı Ölçeklendirmesi (RSS) kullanımı, RSS olmayan bir VM 'den daha yüksek olan en fazla verimlilik elde edebilir. RSS, bir Windows VM 'de varsayılan olarak devre dışı bırakılabilir. RSS 'nin etkinleştirilip etkinleştirilmediğini ve şu anda devre dışı bırakılmışsa bu seçeneği etkinleştirip etkinleştirmediğini anlamak için aşağıdaki adımları izleyin:
 
-1. `Get-NetAdapterRss` PowerShell komutuna sahip bir ağ bağdaştırıcısı için RSS etkin olup olmadığını görün. Aşağıdaki `Get-NetAdapterRss`örnekte, RSS'den döndürülen çıktı etkin değildir.
+1. `Get-NetAdapterRss` PowerShell komutuyla bir ağ BAĞDAŞTıRıCıSı için RSS 'nin etkinleştirilip etkinleştirilmediğini inceleyin. `Get-NetAdapterRss`' Dan döndürülen aşağıdaki örnek çıktıda RSS etkin değildir.
 
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
     Enabled                 : False
     ```
-2. RSS'yi etkinleştirmek için aşağıdaki komutu girin:
+2. RSS 'yi etkinleştirmek için aşağıdaki komutu girin:
 
     ```powershell
     Get-NetAdapter | % {Enable-NetAdapterRss -Name $_.Name}
     ```
-    Önceki komutun bir çıktısı yok. Komut NIC ayarlarını değiştirip yaklaşık bir dakika geçici bağlantı kaybına neden oldu. Bağlantı kaybı sırasında yeniden bağlanma iletişim kutusu görüntülenir. Bağlantı genellikle üçüncü denemeden sonra geri yüklenir.
-3. Komutu yeniden girerek VM'de RSS'nin etkinleştirildiğinden `Get-NetAdapterRss` onaylayın. Başarılı olursa, aşağıdaki örnek çıktı döndürülür:
+    Önceki komutun çıktısı yok. Komut, NIC ayarlarını değiştirdi ve yaklaşık bir dakika boyunca geçici bağlantı kaybına neden olur. Bağlantı kaybı sırasında yeniden bağlama iletişim kutusu görüntülenir. Bağlantı genellikle üçüncü girişimden sonra geri yüklenir.
+3. `Get-NetAdapterRss` Komutu tekrar gırerek, VM 'de RSS 'nin etkinleştirildiğini doğrulayın. Başarılı olursa aşağıdaki örnek çıktı döndürülür:
 
     ```powershell
     Name                    : Ethernet
@@ -52,11 +52,11 @@ Windows VM'niz [Hızlandırılmış Ağ'ı](create-vm-accelerated-networking-pow
 
 ## <a name="linux-vm"></a>Linux VM
 
-RSS varsayılan olarak bir Azure Linux VM'de her zaman etkinleştirilir. Ekim 2017'den bu yana yayımlanan Linux çekirdekleri, bir Linux VM'nin daha yüksek ağ iş tibunu elde etmesini sağlayan yeni ağ optimizasyonları seçeneklerini içerir.
+RSS her zaman bir Azure Linux VM 'de varsayılan olarak etkindir. 2017 Ekim ' den itibaren Yayınlanan Linux çekirdekler, Linux VM 'nin daha yüksek ağ aktarım hızını elde etmelerini sağlayan yeni ağ iyileştirmeleri seçenekleri içerir.
 
 ### <a name="ubuntu-for-new-deployments"></a>Yeni dağıtımlar için Ubuntu
 
-Ubuntu Azure çekirdeği Azure'daki en iyi ağ performansını sağlar ve 21 Eylül 2017'den beri varsayılan çekirdek olmuştur. Bu çekirdeği almak için, ilk aşağıdaki gibi, 16.04-LTS en son desteklenen sürümünü yükleyin:
+Ubuntu Azure çekirdeği, Azure 'da en iyi ağ performansını sağlar ve 21 Eylül 2017 ' den itibaren varsayılan çekirdekdir. Bu çekirdeği almak için, önce desteklenen en son 16,04-LTS sürümünü aşağıdaki şekilde yüklemeniz gerekir:
 
 ```json
 "Publisher": "Canonical",
@@ -65,7 +65,7 @@ Ubuntu Azure çekirdeği Azure'daki en iyi ağ performansını sağlar ve 21 Eyl
 "Version": "latest"
 ```
 
-Oluşturma tamamlandıktan sonra, en son güncelleştirmeleri almak için aşağıdaki komutları girin. Bu adımlar, şu anda Ubuntu Azure çekirdeğini çalıştıran VM'ler için de çalışır.
+Oluşturma işlemi tamamlandıktan sonra, en son güncelleştirmeleri almak için aşağıdaki komutları girin. Bu adımlar, şu anda Ubuntu Azure çekirdeğini çalıştıran VM 'Ler için de çalışır.
 
 ```bash
 #run as root or preface with sudo
@@ -74,7 +74,7 @@ apt-get -y upgrade
 apt-get -y dist-upgrade
 ```
 
-Aşağıdaki isteğe bağlı komut kümesi, Azure çekirdeğine zaten sahip olan ancak hatalarla daha fazla güncelleştirme sağlayamayan mevcut Ubuntu dağıtımları için yararlı olabilir.
+Aşağıdaki isteğe bağlı komut kümesi, zaten Azure çekirdeğine sahip olan ancak hatalarla daha fazla güncelleştirme başarısız olan Ubuntu dağıtımları için yararlı olabilir.
 
 ```bash
 #optional steps may be helpful in existing deployments with the Azure kernel
@@ -87,9 +87,9 @@ apt-get -y upgrade
 apt-get -y dist-upgrade
 ```
 
-#### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>Mevcut VM'ler için Ubuntu Azure çekirdek yükseltmesi
+#### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>Mevcut VM 'Ler için Ubuntu Azure Kernel yükseltmesi
 
-Azure Linux çekirdeğine yükseltilerek önemli bir iş elde etme performansı elde edilebilir. Bu çekirdeğin olup olmadığını doğrulamak için çekirdek sürümünüzü kontrol edin.
+Azure Linux çekirdeğine yükselterek önemli performans elde edilebilir. Bu çekirdeğe sahip olup olmadığınızı doğrulamak için çekirdek sürümünüzü kontrol edin.
 
 ```bash
 #Azure kernel name ends with "-azure"
@@ -99,7 +99,7 @@ uname -r
 #4.13.0-1007-azure
 ```
 
-VM'nizde Azure çekirdeği yoksa, sürüm numarası genellikle "4.4" ile başlar. VM'de Azure çekirdeği yoksa, aşağıdaki komutları kök olarak çalıştırın:
+SANAL makinenizin Azure çekirdeği yoksa, sürüm numarası genellikle "4,4" ile başlar. VM 'nin Azure çekirdeği yoksa kök olarak aşağıdaki komutları çalıştırın:
 
 ```bash
 #run as root or preface with sudo
@@ -112,7 +112,7 @@ reboot
 
 ### <a name="centos"></a>CentOS
 
-En son optimizasyonları almak için, aşağıdaki parametreleri belirterek en son desteklenen sürümü ile bir VM oluşturmak en iyisidir:
+En son iyileştirmeleri almak için, aşağıdaki parametreleri belirterek en son desteklenen sürüme sahip bir VM oluşturmak en iyisidir:
 
 ```json
 "Publisher": "OpenLogic",
@@ -121,7 +121,7 @@ En son optimizasyonları almak için, aşağıdaki parametreleri belirterek en s
 "Version": "latest"
 ```
 
-Yeni ve mevcut VM'ler en son Linux Entegrasyon Hizmetlerini (LIS) yüklemenin avantajını kullanabilir. Daha sonraki sürümlerde daha fazla iyileştirme içermesine rağmen, 4.2.2-2'den başlayan iş geliştirme, LIS'te dir. En son LIS'i yüklemek için aşağıdaki komutları girin:
+Yeni ve mevcut VM 'Ler, en son Linux Tümleştirme Hizmetleri 'ni (LIS) yüklemeye yarar olabilir. Üretilen iş iyileştirmesi 4.2.2-2 ' den başlayarak, sonraki sürümlerde daha fazla geliştirmeler de içerse de bulunur. En son LIS 'yi yüklemek için aşağıdaki komutları girin:
 
 ```bash
 sudo yum update
@@ -131,7 +131,7 @@ sudo yum install microsoft-hyper-v
 
 ### <a name="red-hat"></a>Red Hat
 
-Optimizasyonları almak için, aşağıdaki parametreleri belirterek en son desteklenen sürümü ile bir VM oluşturmak en iyisidir:
+En iyi duruma getirmek için, aşağıdaki parametreleri belirterek en son desteklenen sürüme sahip bir VM oluşturmak en iyisidir:
 
 ```json
 "Publisher": "RedHat"
@@ -140,7 +140,7 @@ Optimizasyonları almak için, aşağıdaki parametreleri belirterek en son dest
 "Version": "latest"
 ```
 
-Yeni ve mevcut VM'ler en son Linux Entegrasyon Hizmetlerini (LIS) yüklemenin avantajını kullanabilir. 4.2'den başlayan şekilde, iş artışı LIS'te dir. LIS'i indirmek ve yüklemek için aşağıdaki komutları girin:
+Yeni ve mevcut VM 'Ler, en son Linux Tümleştirme Hizmetleri 'ni (LIS) yüklemeye yarar olabilir. Üretilen iş iyileştirmesi, 4,2 ' den başlayarak LIS 'de bulunur. LIS indirmek ve yüklemek için aşağıdaki komutları girin:
 
 ```bash
 wget https://aka.ms/lis
@@ -149,9 +149,9 @@ cd LISISO
 sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 ```
 
-Hyper-V için Linux Entegrasyon Hizmetleri Sürüm 4.2 hakkında daha fazla bilgi için [indirme sayfasını](https://www.microsoft.com/download/details.aspx?id=55106)görüntüleyerek daha fazla bilgi edinin.
+[İndirme sayfasını](https://www.microsoft.com/download/details.aspx?id=55106)görüntüleyerek, Hyper-V Için Linux Tümleştirme hizmetleri sürüm 4,2 hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Senaryonuz için [Bant Genişliği/İş-İş Testi Azure VM](virtual-network-bandwidth-testing.md) ile optimize edilmiş sonucu görün.
-* [Bant genişliğinin sanal makinelere](virtual-machine-network-throughput.md) nasıl tahsis edildiğini okuyun
-* Azure Sanal Ağı ile daha fazla bilgi edinin [sık sorulan sorular (SSS)](virtual-networks-faq.md)
+* Senaryolarınız için [Azure VM 'yi kullanarak bant genişliği/aktarım hızı](virtual-network-bandwidth-testing.md) ile iyileştirilmiş sonuca bakın.
+* [Bant genişliğinin sanal makinelere nasıl ayrıldığı](virtual-machine-network-throughput.md) hakkında bilgi edinin
+* [Azure sanal ağ hakkında sık sorulan sorular (SSS)](virtual-networks-faq.md) hakkında daha fazla bilgi edinin

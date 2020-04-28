@@ -1,64 +1,64 @@
 ---
-title: Azure Notebook Önizleme ile kullanım için kullanıcı profili ve kimliği
-description: Paylaşılan not defterlerinin URL'sinin bir parçası haline gelen Azure Notebook'larla kullanıcı profilinizi ve kullanıcı kimliğinizi oluşturma ve yönetme.
+title: Azure Notebooks Preview ile kullanım için Kullanıcı profili ve KIMLIĞI
+description: Azure Notebooks ile Kullanıcı profilinizi ve Kullanıcı KIMLIĞINIZI oluşturma ve yönetme, paylaşılan not defterlerinin URL 'sinin bir parçası haline geliyor.
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.openlocfilehash: d90eebf1b7b463e038bc5e54f51df0eb6ca746c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646288"
 ---
-# <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Azure Dizüstü Bilgisayarlar Önizleme için profiliniz ve kullanıcı kimliğiniz
+# <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Azure Notebooks önizlemesi için profiliniz ve Kullanıcı KIMLIĞINIZ
 
-Azure Not Defterleri'nin güçlü ve işbirlikçi alanı içinde, kullanıcı profiliniz herkese açık imajınızı başkalarına sunar:
+Azure Notebooks güçlü, işbirliğine dayalı alanı içinde Kullanıcı profiliniz, genel görüntünüzü başkalarına sunar:
 
-[![Azure Not Defterleri profil sayfası](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
+[![Azure Notebooks profili sayfası](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
-Kullanıcı kimliğiniz, projeleri ve not defterlerini paylaşmak için kullandığınız URL'lerin bir parçasıdır. Aşağıdaki liste farklı URL desenleri açıklar:
+Kullanıcı KIMLIĞINIZ, projeleri ve not defterlerini paylaşmak için kullandığınız URL 'lerin bir parçasıdır. Aşağıdaki listede farklı URL desenleri açıklanmaktadır:
 
 - `https://notebooks.azure.com/<user_id>`: Profil sayfanız.
-- `https://notebooks.azure.com/<user_id>/projects`: Projeleriniz. Tüm projeleri görüyorsunuz; diğer kullanıcılar yalnızca ortak projelerinizi görür.
+- `https://notebooks.azure.com/<user_id>/projects`: Projeleriniz. Tüm projeleri görürsünüz; diğer kullanıcılar yalnızca genel projelerinizi görür.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Proje dosyaları.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Belirli bir projenin klonları.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: Belirli bir not defterinin veya dosyanın HTML önizlemesi.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: Belirli bir not defteri veya dosyanın HTML önizlemesi.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="your-user-id"></a>Kullanıcı Kimliğiniz
 
-Azure Not Defterleri'nde ilk kez oturum açtığınızda, hesabınıza otomatik olarak "anon-idr3ca" gibi geçici bir kullanıcı kimliği atanır. "Anon-" ile başlayan bir kullanıcı kimliğiniz olduğu sürece, Azure Dizüstü Bilgisayarlar oturum açtığınızda bu kimliği değiştirmenizi ister:
+Azure Notebooks ilk kez oturum açarken, hesabınıza otomatik olarak geçici bir kullanıcı KIMLIĞI atanır (örneğin, "Anon-idr3ca"). "Anon-" ile başlayan bir Kullanıcı KIMLIĞINIZ olduğu sürece, Azure Notebooks her oturum açışınızda bunu değiştirmenizi ister:
 
-![Azure Not Defterleri'nde oturum açarken kullanıcı kimliği oluşturma komut istemi](media/accounts/create-user-id.png)
+![Azure Notebooks oturum açarken kullanıcı KIMLIĞI oluşturmak için istemde bulun](media/accounts/create-user-id.png)
 
-Geçici kullanıcı adının yanında **bir Yapıkullanıcı Kimliği** komutu da görünür:
+**Kullanıcı kimliğini Yapılandır** komutu ayrıca geçici kullanıcı adının yanında görünür:
 
-![Geçici bir kimlik kullanırken görünen Kullanıcı Kimliği komutunu yapılandırın](media/accounts/configure-user-id-command.png)
+![Geçici bir KIMLIK kullanırken görüntülenen kullanıcı KIMLIĞI komutunu yapılandırma](media/accounts/configure-user-id-command.png)
 
-Ayrıca, profil sayfanızda istediğiniz zaman kullanıcı kimliğinizi değiştirebilirsiniz.
+Ayrıca, Kullanıcı KIMLIĞINIZI profil sayfanızda dilediğiniz zaman değiştirebilirsiniz.
 
-Kullanıcı kimliği dört ila on altı harf, sayı ve tire arasında olmalıdır. Başka karaktere izin verilmez ve kullanıcı kimliği tire ile başlayamaz veya sona eremez veya satırda birden çok tire kullanamaz. Kullanıcı kimlikleri tüm Azure Not Defterleri hesaplarında benzersiz olduğundan, "Kullanıcı Kimliği zaten kullanılıyor" iletisini görebilirsiniz. (Bir Microsoft ticari markasını kullanıcı kimliği olarak kullanmaya çalışırsanız ileti de görüntülenir.) Bu gibi durumlarda, farklı bir kullanıcı kimliği seçin.
+Bir kullanıcı KIMLIĞI, dört ve altı harfli, sayı ve kısa çizgi arasında oluşmalıdır. Başka hiçbir karaktere izin verilmez ve Kullanıcı KIMLIĞI kısa çizgi ile başlayamaz veya bitemez ya da bir satırda birden çok tire kullanamaz. Kullanıcı kimlikleri tüm Azure Notebooks hesaplarında benzersiz olduğundan, "Kullanıcı KIMLIĞI zaten kullanımda" iletisini görebilirsiniz. (Bir Microsoft ticari markayı Kullanıcı KIMLIĞI olarak kullanmaya çalıştığınızda ileti de görüntülenir.) Bu durumlarda, farklı bir kullanıcı KIMLIĞI seçin.
 
 > [!Important]
-> Kimliğinizi değiştirmek, önceki kimliğinizi kullanarak paylaştığınız tüm URL'leri geçersiz kılmaktadır. Bağlantıları yeniden geçersiz saymak için kimliğinizi önceki kimliğinize geri değiştirebilirsiniz. Ancak, bu arada başka bir kullanıcının kullanılmayan bir kimlik talep etmesi mümkündür.
+> KIMLIĞINIZI değiştirmek, önceki KIMLIĞINIZI kullanarak paylaştığınız tüm URL 'Leri geçersiz kılar. Bağlantıları yeniden doğrulamak için KIMLIĞINIZI önceki KIMLIĞINIZE geri dönüştürebilirsiniz. Ancak, başka bir Kullanıcı bu sırada kullanılmamış olan KIMLIĞI talep etmek için mümkündür.
 
 ## <a name="your-profile"></a>Profiliniz
 
-Profiliniz URL'de genel olarak görüntülenebilir `https://notebooks.azure.com/<user_id>`bilgilerden oluşur. Profil sayfanız ayrıca en son kullandığınız projeleri ve yıldızlı projeleri de gösterir.
+Profiliniz, URL 'deki genel olarak `https://notebooks.azure.com/<user_id>`görüntülenebilir bilgilerden oluşur. Profil sayfanız Ayrıca son kullanılan projelerinizi ve tüm yıldızlı projelerini gösterir.
 
-Profilinizi yeniden yapmak için profil sayfanızdaki **Profil Bilgilerini Edit** komutunu kullanın. Profilinizin bölümleri aşağıdaki gibidir:
+Profilinizi düzenlemek için profil sayfanızdaki **profil bilgilerini düzenle** komutunu kullanın. Profilinizin bölümleri aşağıdaki gibidir:
 
 | Section | İçindekiler |
 | --- | --- |
-| Profil fotoğrafı | Profil sayfanızda gösterilen bir resim. |
-| Hesap Bilgileri | Görüntülü adınız, kullanıcı kimliğiniz ve herkese açık e-posta hesabınız. Buradaki e-posta hesabı, diğer kullanıcılara sizinle iletişim kurma ortalaması sağlar ve Azure Not Defterleri'nde oturum açmanız için kullandığınız [hesaptan](azure-notebooks-user-account.md) farklı olabilir. |
-| Profil Bilgileri | Konumunuz, şirketiniz, iş unvanınız, web siteniz ve kısa bir açıklamanız. |
-| Sosyal Profiller | GItHub, Twitter ve Facebook teşekküllerini paylaşmak isterseniz. |
-| Gizlilik Ayarları | İki komut sağlar:<ul><li>**Profilimi Dışa Aktar**: Fotoğraf, profil bilgileriniz ve güvenlik günlükleriniz de dahil olmak üzere Azure Notebook'ların profilinizde kaydettiği tüm bilgileri içeren bir *.zip* dosyası oluşturur ve indirir.</li><li>**Hesabımı Sil**: Azure Not Defterlerinde depolanan tüm kişisel bilgilerinizi kalıcı olarak siler.</li></ul> |
-| Site Özelliklerini Etkinleştir | Azure Not Defterlerinin davranışlarının yönlerini denetlemenize olanak tanır:<ul><li>**Dizüstü Bilgisayarlar için Birleşik Frontend**: daha hızlı dizüstü bilgisayar başlatma ve daha iyi kalıcılık sağlar.</li><li>**Varsayılan olarak JupyterLab'da çalıştırın**: Azure Notebook'lar varsayılan olarak çoğu kullanıcı için uygun basit bir kullanıcı arabirimi sağlar. JupyterLab deneyimli kullanıcılar için daha zengin ama daha karmaşık bir arayüz sağlar.</li><li>**VNext Web Sitesi**: bu dokümantasyonda gösterilen modernleştirilmiş web düzenini sağlar.</li></ul> |
+| Profil fotoğrafı | Profil sayfanızda gösterilen bir görüntü. |
+| Hesap Bilgileri | Görünen ad, Kullanıcı KIMLIĞI ve genel e-posta hesabı. Buradaki e-posta hesabı, diğer kullanıcılara sizinle iletişim kurmak için bir anlamı sağlar ve Azure Notebooks oturum açmak için kullandığınız [hesaptan](azure-notebooks-user-account.md) farklı olabilir. |
+| Profil bilgileri | Konumunuz, şirketiniz, iş unvanı, Web siteniz ve kendinize ait kısa bir açıklama. |
+| Sosyal profiller | Bunları paylaşmak istiyorsanız GItHub, Twitter ve Facebook kimlikleriniz. |
+| Gizlilik ayarları | İki komut sağlar:<ul><li>**Profilimi dışarı aktar**: fotoğraflarınızın, profil bilgilerinizin ve güvenlik günlüklerinin dahil Azure Notebooks kaydettiği tüm bilgileri içeren bir *. zip* dosyası oluşturur ve indirir.</li><li>**Hesabımı Sil**: Azure Notebooks depolanan tüm kişisel bilgilerinizi kalıcı olarak siler.</li></ul> |
+| Site özelliklerini etkinleştir | Azure Notebooks davranışının yönlerini denetlemenizi sağlar:<ul><li>**Not defterleri Için Birleşik ön uç**: daha hızlı ve daha iyi kalıcılık sağlar.</li><li>**Varsayılan olarak JupyterLab 'Da Çalıştır**: varsayılan olarak, Azure Notebooks çoğu kullanıcı için uygun olan basit bir kullanıcı arabirimi sağlar. Jupyıterlab, deneyimli kullanıcılar için daha zengin ancak daha karmaşık bir arabirim sağlar.</li><li>**VNext Web sitesi**: Bu belgede gösterilen, modernlanmış Web yerleşimini etkin hale sunar.</li></ul> |
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
 > [!div class="nextstepaction"]
-> [Öğretici: doğrusal regresyon yapmak için bir Jupyter dizüstü çalıştırmak oluşturmak](tutorial-create-run-jupyter-notebook.md)
+> [Öğretici: doğrusal regresyon yapmak için bir Jupyter Not defteri çalıştırma](tutorial-create-run-jupyter-notebook.md)

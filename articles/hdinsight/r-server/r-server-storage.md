@@ -1,6 +1,6 @@
 ---
-title: HDInsight'ta ML Hizmetleri için Azure depolama çözümleri - Azure
-description: HDInsight'ta ML Hizmetleri ile sunulan farklı depolama seçenekleri hakkında bilgi edinin
+title: HDInsight 'ta ML Hizmetleri için Azure depolama çözümleri-Azure
+description: HDInsight 'ta ML Hizmetleri ile kullanılabilen farklı depolama seçenekleri hakkında bilgi edinin
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,46 +9,46 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/02/2020
 ms.openlocfilehash: 1c79d0390a80a1358ddb09707fbabf6a5a2affdc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75660248"
 ---
-# <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight'ta ML Hizmetleri için Azure depolama çözümleri
+# <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight 'ta ML Hizmetleri için Azure depolama çözümleri
 
-HDInsight'taki ML Hizmetleri, analiz sonuçları içeren verileri, kodu veya nesneleri kalıcı olarak sürdürmek için farklı depolama çözümleri kullanabilir. Bu çözümler aşağıdaki seçenekleri içerir:
+HDInsight üzerinde ML Hizmetleri, verileri, kodu veya analiz sonuçlarını içeren nesneleri kalıcı hale getirmek için farklı depolama çözümleri kullanabilir. Bu çözümler aşağıdaki seçenekleri içerir:
 
 - [Azure Blob](https://azure.microsoft.com/services/storage/blobs/)
 - [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)
-- [Azure Dosya depolama](https://azure.microsoft.com/services/storage/files/)
+- [Azure dosya depolama](https://azure.microsoft.com/services/storage/files/)
 
-HDInsight kümenizle birden fazla Azure depolama hesabına veya kapsayıcısına erişme seçeneğiniz de vardır. Azure Dosya depolama, kenar düğümünde kullanmak için kullanışlı bir veri depolama seçeneğidir ve örneğin Linux dosya sistemine Azure depolama dosyası paylaşımı nı monte etmenizi sağlar. Ancak Azure Dosyası paylaşımları, Windows veya Linux gibi desteklenen bir işletim sistemine sahip herhangi bir sistem tarafından monte edilebilir ve kullanılabilir.
+Ayrıca HDInsight kümeniz ile birden çok Azure depolama hesabına veya kapsayıcılarına erişme seçeneğiniz de vardır. Azure dosya depolama, bir Azure depolama dosya paylaşımının bir örneğini, örneğin Linux dosya sistemine takabilmenizi sağlayan Edge düğümünde kullanılmak üzere kullanışlı bir veri depolama seçeneğidir. Ancak Azure dosya paylaşımları, Windows veya Linux gibi desteklenen bir işletim sistemine sahip olan herhangi bir sistem tarafından bağlanabilir ve kullanılabilir.
 
-HDInsight'ta bir Apache Hadoop kümesi oluşturduğunuzda, bir **Azure Depolama** hesabı veya **Veri Gölü Depolama**sı belirtilirsiniz. Bu hesaptan belirli bir depolama kapsayıcısı oluşturduğunuz küme (örneğin, Hadoop Dağıtılmış Dosya Sistemi) için dosya sistemini tutar. Daha fazla bilgi ve rehberlik için bkz:
+HDInsight 'ta bir Apache Hadoop kümesi oluşturduğunuzda, bir **Azure depolama** hesabı ya da **Data Lake Storage**belirtirsiniz. Bu hesaptan belirli bir depolama kapsayıcısı, oluşturduğunuz küme için dosya sistemini tutar (örneğin, Hadoop Dağıtılmış Dosya Sistemi). Daha fazla bilgi ve rehberlik için bkz.
 
-- [HDInsight ile Azure Depolama'yı kullanma](../hdinsight-hadoop-use-blob-storage.md)
-- [Azure HDInsight kümeleriyle Veri Gölü Depolama'yı kullanma](../hdinsight-hadoop-use-data-lake-store.md)
+- [HDInsight ile Azure depolama kullanma](../hdinsight-hadoop-use-blob-storage.md)
+- [Azure HDInsight kümeleri ile Data Lake Storage kullanma](../hdinsight-hadoop-use-data-lake-store.md)
 
-## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>ML Hizmetleri kümesiyle Azure Blob depolama hesaplarını kullanma
+## <a name="use-azure-blob-storage-accounts-with-ml-services-cluster"></a>Azure Blob depolama hesaplarını ML Hizmetleri kümesiyle kullanma
 
-ML Hizmetleri kümenizi oluştururken birden fazla depolama hesabı belirttiyseniz, aşağıdaki yönergeler ml hizmetleri kümesinde veri erişimi ve işlemleri için ikincil bir hesabın nasıl kullanılacağını açıklar. Aşağıdaki depolama hesaplarını ve kapsayıcıyı varsayalım: **depolama1** ve **konteyner1**olarak adlandırılan varsayılan bir kapsayıcı1 ve **kapsayıcı**ile **depolama2** .
+ML Hizmetleri kümenizi oluştururken birden fazla depolama hesabı belirttiyseniz, aşağıdaki yönergelerde bir ML Hizmetleri kümesindeki veri erişimi ve işlemler için ikincil bir hesabın nasıl kullanılacağı açıklanmaktadır. Aşağıdaki depolama hesaplarını ve kapsayıcısını varsayın: **storage1** ve **kapsayıcı1**adlı bir varsayılan kapsayıcı ve **container2**ile **Storage2** .
 
 > [!WARNING]  
-> Performans amacıyla, HDInsight kümesi belirttiğiniz birincil depolama hesabıyla aynı veri merkezinde oluşturulur. HDInsight kümesinden farklı bir konumda bir depolama hesabı nın kullanılması desteklenmez.
+> Performans açısından, HDInsight kümesi belirttiğiniz birincil depolama hesabıyla aynı veri merkezinde oluşturulur. HDInsight kümesinden farklı bir konumda depolama hesabı kullanılması desteklenmez.
 
-### <a name="use-the-default-storage-with-ml-services-on-hdinsight"></a>HDInsight'ta ML Hizmetleri ile varsayılan depolama alanını kullanma
+### <a name="use-the-default-storage-with-ml-services-on-hdinsight"></a>HDInsight üzerinde ML Hizmetleri ile varsayılan depolamayı kullanma
 
-1. Bir SSH istemcisi kullanarak, kümenizin kenar düğümüne bağlanın. HDInsight kümeleriyle SSH kullanımı hakkında daha fazla bilgi için [HDInsight ile SSH'yi kullan'a](../hdinsight-hadoop-linux-use-ssh-unix.md)bakın.
+1. SSH istemcisi kullanarak, kümenizin kenar düğümüne bağlanın. HDInsight kümeleri ile SSH kullanma hakkında bilgi için bkz. [HDInsight Ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
   
-2. Örnek bir dosya, mysamplefile.csv,/share dizinine kopyalayın.
+2. Örnek bir dosya olan mysamplefile. csv dosyasını/Share dizinine kopyalayın.
 
     ```bash
     hadoop fs –mkdir /share
     hadoop fs –copyFromLocal mycsv.scv /share
     ```
 
-3. R Studio veya başka bir R konsoluna geçin ve ad düğümini **varsayılan** olarak ve erişmek istediğiniz dosyanın konumuna ayarlamak için R kodu yazın.  
+3. R Studio veya başka bir R konsoluna geçin ve ad düğümünü **varsayılan** olarak ve erişmek istediğiniz dosyanın konumuna ayarlamak için r kodu yazın.  
 
     ```R
     myNameNode <- "default"
@@ -70,13 +70,13 @@ ML Hizmetleri kümenizi oluştururken birden fazla depolama hesabı belirttiysen
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
     ```
 
-Tüm dizin ve dosya başvuruları depolama `wasbs://container1@storage1.blob.core.windows.net`hesabını işaret ediyor. Bu, HDInsight kümesiyle ilişkili **varsayılan depolama hesabıdır.**
+Tüm dizin ve dosya başvuruları depolama hesabına `wasbs://container1@storage1.blob.core.windows.net`işaret. Bu, HDInsight kümesiyle ilişkili **varsayılan depolama hesabıdır** .
 
-### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>HDInsight'ta ML Services ile ek depolama alanını kullanın
+### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>HDInsight 'ta ML Hizmetleri ile ek depolamayı kullanma
 
-Şimdi, **depolama2 container2** /private dizininde bulunan mysamplefile1.csv adlı bir dosya işlemek istediğinizi varsayalım. **storage2**
+Şimdi, mysamplefile1. csv adlı ve **Storage2**içindeki **container2** öğesinin/Private dizininde bulunan bir dosyayı işlemek istediğinizi varsayalım.
 
-R kodunuzda, ad düğümü başvurularını **storage2** depolama hesabına yönlendirin.
+R kodunuzda, **Storage2** depolama hesabına yönelik ad düğümü başvurusunu işaret edin.
 
 ```R
 myNameNode <- "wasbs://container2@storage2.blob.core.windows.net"
@@ -98,9 +98,9 @@ hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
 ```
 
-Tüm dizin ve dosya başvuruları artık depolama `wasbs://container2@storage2.blob.core.windows.net`hesabını işaret ediyor. Bu belirttiğiniz **Ad Düğümü.**
+Tüm dizin ve dosya başvuruları artık depolama hesabına `wasbs://container2@storage2.blob.core.windows.net`işaret noktasıdır. Bu, belirttiğiniz **ad düğümüdür** .
 
-**Depolama2** `/user/RevoShare/<SSH username>` dizinini aşağıdaki gibi yapılandırın:
+Storage2 üzerindeki `/user/RevoShare/<SSH username>` dizini aşağıdaki **storage2** şekilde yapılandırın:
 
 ```bash
 hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user
@@ -108,27 +108,27 @@ hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShar
 hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 ```
 
-## <a name="use-azure-data-lake-storage-with-ml-services-cluster"></a>ML Hizmetleri kümesiyle Azure Veri Gölü Depolama'yı kullanma
+## <a name="use-azure-data-lake-storage-with-ml-services-cluster"></a>ML Hizmetleri kümesiyle Azure Data Lake Storage kullanma
 
-HDInsight kümenizle Veri Gölü Depolama'yı kullanmak için kümenize kullanmak istediğiniz her Azure Veri Gölü Depolama alanına erişim vermeniz gerekir. Varsayılan depolama alanı olarak veya ek depolama alanı olarak Azure Veri Gölü Depolama hesabı olan bir HDInsight kümesi oluşturmak için Azure portalının nasıl kullanılacağına ilişkin talimatlar için [bkz.](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+HDInsight kümeniz ile Data Lake Storage kullanmak için, kümenize, kullanmak istediğiniz her bir Azure Data Lake Storage için erişim sağlamanız gerekir. Varsayılan depolama alanı veya ek depolama alanı olarak Azure Data Lake Storage hesabıyla bir HDInsight kümesi oluşturmak için Azure portal kullanma hakkında yönergeler için, bkz. [Azure Portal kullanarak Data Lake Storage Ile HDInsight kümesi oluşturma](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
-Daha sonra, önceki yordamda açıklandığı gibi ikincil bir Azure depolama hesabı yaptığınız gibi, R komut dosyanızdaki depolama alanını da kullanırsınız.
+Daha sonra, önceki yordamda açıklandığı gibi ikincil bir Azure depolama hesabı gibi R betiğinizdeki depolamayı kullanırsınız.
 
-### <a name="add-cluster-access-to-your-azure-data-lake-storage"></a>Azure Veri Gölü Depolama'nıza küme erişimi ekleme
+### <a name="add-cluster-access-to-your-azure-data-lake-storage"></a>Azure Data Lake Storage küme erişimi ekleyin
 
-HDInsight kümenizle ilişkili bir Azure Etkin Dizin (Azure AD) Hizmet Sorumlusu kullanarak Veri Gölü Depolama'ya erişebilirsiniz.
+Data Lake Storage, HDInsight kümeniz ile ilişkili bir Azure Active Directory (Azure AD) hizmet sorumlusu kullanarak erişirsiniz.
 
-1. HDInsight kümenizi oluştururken, **Veri Kaynağı** sekmesinden **Cluster AAD Identity'i** seçin.
+1. HDInsight kümenizi oluştururken, **veri kaynağı** SEKMESINDEN **küme AAD kimliği** ' ni seçin.
 
-2. Küme **AAD Kimlik** iletişim kutusunda, **AD Hizmet Anası Seç'in**altında, yeni **oluştur'u**seçin.
+2. **Küme AAD kimliği** ILETIŞIM kutusunda **ad hizmet sorumlusu Seç**altında **Yeni oluştur**' u seçin.
 
-Hizmet Müdürüne bir ad verdikten ve bunun için bir parola oluşturduktan sonra, Hizmet Sorumlusu'nu Veri Gölü Depolamanızla ilişkilendirmek için **ADLS Erişimini Yönet'i** tıklatın.
+Hizmet sorumlusuna bir ad verip bir parola oluşturduktan sonra, hizmet sorumlusunu Data Lake Storage ile ilişkilendirmek için **ADLS erişimini Yönet** ' e tıklayın.
 
-Küme oluşturmayı takiben bir veya daha fazla Veri Gölü depolama hesabına küme erişimi eklemek de mümkündür. Veri Gölü Depolaması için Azure portal girişini açın ve **Veri Gezgini > Access > Ekle'ye**gidin.
+Küme oluşturma sonrasında bir veya daha fazla Data Lake depolama hesabına küme erişimi eklemek de mümkündür. Bir Data Lake Storage Azure portal girişi açın ve **Veri Gezgini > erişim > Ekle**' ye gidin.
 
-### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>HDInsight'ta ML Services'ten Data Lake Storage Gen1'e nasıl erişilir?
+### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>HDInsight 'ta ML hizmetlerinden Data Lake Storage 1. erişme
 
-Data Lake Storage Gen1'e erişim izni verdikten sonra, ML Hizmetleri kümesindeki depolama alanını HDInsight'ta ikincil bir Azure depolama hesabı gibi kullanabilirsiniz. Tek fark, önek **wasbs://** aşağıdaki gibi **adl://** değişiklikler olmasıdır:
+Data Lake Storage 1. erişim izni verildikten sonra, HDInsight 'ta ML Hizmetleri kümesindeki depolamayı ikincil bir Azure depolama hesabı gibi kullanabilirsiniz. Tek fark, ön ek **wasbs://** aşağıdaki gibi **adl://** olarak değişir:
 
 ```R
 # Point to the ADL Storage (e.g. ADLtest)
@@ -151,7 +151,7 @@ hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 ```
 
-Aşağıdaki komutlar, Veri Gölü Depolama Gen1 hesabını RevoShare dizini ile yapılandırmak ve önceki örnekten örnek .csv dosyasını eklemek için kullanılır:
+Aşağıdaki komutlar, Data Lake Storage 1. hesabını Iptal etme diziniyle yapılandırmak ve önceki örnekteki Sample. csv dosyasını eklemek için kullanılır:
 
 ```bash
 hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user
@@ -165,17 +165,17 @@ hadoop fs -copyFromLocal /usr/lib64/R Server-7.4.1/library/RevoScaleR/SampleData
 hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 ```
 
-## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>HDInsight'ta ML Hizmetleri ile Azure Dosya depolamayı kullanma
+## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>HDInsight 'ta ML Hizmetleri ile Azure dosya depolama kullanma
 
-Ayrıca, kenar düğümünde kullanmak için [Azure Dosyaları](https://azure.microsoft.com/services/storage/files/)adı verilen kullanışlı bir veri depolama seçeneği de vardır. Linux dosya sistemine bir Azure Depolama dosya paylaşımı monte etmenizi sağlar. Bu seçenek, özellikle HDFS yerine kenar düğümünde yerel dosya sistemini kullanmak mantıklı olduğunda, veri dosyalarını, R komut dosyalarını ve daha sonra ihtiyaç duyulabilen sonuç nesnelerini depolamak için kullanışlı olabilir.
+Ayrıca, [Azure dosyaları](https://azure.microsoft.com/services/storage/files/)adlı Edge düğümünde kullanılmak üzere uygun bir veri depolama seçeneği de vardır. Bir Azure depolama dosya paylaşımının Linux dosya sistemine takabilmesini sağlar. Bu seçenek, daha sonra gerekli olabilecek veri dosyalarını, R betiklerini ve sonuç nesnelerini depolamak için kullanışlı olabilir, özellikle de yerel dosya sistemini,
 
-Azure Dosyaları'nın en önemli yararı, dosya paylaşımlarının Windows veya Linux gibi desteklenen işletim sistemine sahip herhangi bir sistem tarafından monte edilebiliyor ve kullanılabilmesi. Örneğin, sizin veya ekibinizdeki bir kişinin sahip olduğu başka bir HDInsight kümesi tarafından, bir Azure VM, hatta şirket içi bir sistem tarafından kullanılabilir. Daha fazla bilgi için bkz.
+Azure dosyalarının önemli bir avantajı, dosya paylaşımlarının Windows veya Linux gibi desteklenen bir IŞLETIM sistemine sahip olan herhangi bir sistem tarafından bağlanabileceği ve kullanılabileceği bir avantajdır. Örneğin, sizin veya takımınızda bulunan başka bir HDInsight kümesi tarafından, Azure VM tarafından veya şirket içi bir sistem tarafından kullanılabilir. Daha fazla bilgi için bkz.
 
 - [Azure Dosya depolamayı Linux ile kullanma](../../storage/files/storage-how-to-use-files-linux.md)
-- [Windows'da Azure Dosyası depolama alanı nasıl kullanılır?](../../storage/files/storage-dotnet-how-to-use-files.md)
+- [Windows 'da Azure dosya depolama kullanma](../../storage/files/storage-dotnet-how-to-use-files.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [HDInsight'ta ML Hizmetleri kümesine Genel Bakış](r-server-overview.md)
+- [HDInsight 'ta ML Hizmetleri kümesine genel bakış](r-server-overview.md)
 - [HDInsight üzerinde ML Services kümesi için işlem bağlamı seçenekleri](r-server-compute-contexts.md)
-- [Azure HDInsight kümeleriyle Azure Veri Gölü Depolama Gen2'yi kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+- [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

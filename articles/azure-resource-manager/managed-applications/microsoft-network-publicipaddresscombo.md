@@ -1,28 +1,28 @@
 ---
-title: PublicIpAddressCombo UI öğesi
-description: Azure portalı için Microsoft.Network.PublicIpAddressCombo UI öğesini açıklar.
+title: Publicıpaddresscombo UI öğesi
+description: Azure portal için Microsoft. Network. Publicıpaddresscombo UI öğesini açıklar.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 0393673663df8f3ca580ff34e16bee910b955f8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651923"
 ---
-# <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI öğesi
+# <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft. Network. Publicıpaddresscombo UI öğesi
 
-Yeni veya varolan genel IP adresini seçmek için bir denetim grubu.
+Yeni veya var olan bir genel IP adresini seçmek için bir denetim grubu.
 
 ## <a name="ui-sample"></a>UI örneği
 
 ![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
 
-- Kullanıcı genel IP adresi için 'Yok' seçerse, alan adı etiketi metin kutusu gizlenir.
-- Kullanıcı varolan genel bir IP adresi seçerse, etki alanı adı etiketi metin kutusu devre dışı bırakılır. Değeri, seçili IP adresinin alan adı etiketidir.
-- Etki alanı adı soneki (örneğin, westus.cloudapp.azure.com) seçili konuma göre otomatik olarak güncellenir.
+- Kullanıcı genel IP adresi için ' none ' seçerse, etki alanı adı etiketi metin kutusu gizlidir.
+- Kullanıcı var olan bir genel IP adresini seçerse, etki alanı adı etiketi metin kutusu devre dışı bırakılır. Değeri, seçilen IP adresinin etki alanı adı etikettir.
+- Etki alanı adı soneki (örneğin, westus.cloudapp.azure.com), seçilen konuma göre otomatik olarak güncelleştirilir.
 
 ## <a name="schema"></a>Şema
 
@@ -59,7 +59,7 @@ Yeni veya varolan genel IP adresini seçmek için bir denetim grubu.
 
 ## <a name="sample-output"></a>Örnek çıktı
 
-Kullanıcı ortak IP adresi seçmezse, denetim aşağıdaki çıktıyı döndürür:
+Kullanıcı hiçbir ortak IP adresi seçerse, Denetim aşağıdaki çıktıyı döndürür:
 
 ```json
 {
@@ -67,7 +67,7 @@ Kullanıcı ortak IP adresi seçmezse, denetim aşağıdaki çıktıyı döndür
 }
 ```
 
-Kullanıcı yeni veya varolan bir IP adresi seçerse, denetim aşağıdaki çıktıyı döndürür:
+Kullanıcı yeni veya mevcut bir IP adresi seçerse, Denetim aşağıdaki çıktıyı döndürür:
 
 ```json
 {
@@ -80,18 +80,18 @@ Kullanıcı yeni veya varolan bir IP adresi seçerse, denetim aşağıdaki çık
 }
 ```
 
-- Doğru `options.hideNone` olarak **true** `newOrExistingOrNone` belirtildiğinde, yalnızca **yeni** veya **varolan**bir değere sahip olacaktır.
-- Doğru `options.hideDomainNameLabel` olarak **true**belirtildiğinde, `domainNameLabel` bildirilmemiştir.
+- `options.hideNone` **True**olarak belirtildiğinde, `newOrExistingOrNone` yalnızca **Yeni** veya **varolan**bir değere sahip olur.
+- `options.hideDomainNameLabel` **True**olarak belirtildiğinde, `domainNameLabel` bildirilmemiş olur.
 
 ## <a name="remarks"></a>Açıklamalar
 
-- `constraints.required.domainNameLabel` **Doğru**ayarlanmışsa, kullanıcı yeni bir genel IP adresi oluştururken bir etki alanı adı etiketi sağlamalıdır. Etiketi olmayan varolan genel IP adresleri seçim için kullanılamaz.
-- Doğru `options.hideNone` olarak **true**ayarlanmışsa, genel IP adresi için **Yok** seçeneğini seçme seçeneği gizlenir. Varsayılan değer **false** şeklindedir.
-- Doğru `options.hideDomainNameLabel` olarak **true**ayarlanmışsa, etki alanı adı etiketi için metin kutusu gizlenir. Varsayılan değer **false** şeklindedir.
-- Doğruysa, `options.hideExisting` kullanıcı varolan genel bir IP adresini seçemez. Varsayılan değer **false** şeklindedir.
-- Çünkü, `zone`yalnızca belirtilen bölge veya bölge esnek genel IP adresleri için genel IP adresleri kullanılabilir.
+- `constraints.required.domainNameLabel` **True**olarak ayarlanırsa, yeni bir genel IP adresi oluştururken kullanıcının bir etki alanı adı etiketi sağlaması gerekir. Etiketi olmayan mevcut genel IP adresleri seçim için kullanılamaz.
+- `options.hideNone` **True**olarak ayarlanırsa, genel IP adresi için **hiçbirini** seçme seçeneği gizlenir. Varsayılan değer **false** şeklindedir.
+- `options.hideDomainNameLabel` **True**olarak ayarlanırsa, etki alanı adı etiketinin metin kutusu gizlenir. Varsayılan değer **false** şeklindedir.
+- `options.hideExisting` Doğru ise, Kullanıcı var olan BIR genel IP adresini seçemeyebilir. Varsayılan değer **false** şeklindedir.
+- İçin `zone`, yalnızca belirtilen bölge veya bölge DAYANıKLı genel IP adresleri IÇIN genel IP adresleri kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* UI tanımlarını oluşturmaya giriş için create [UiDefinition 'a](create-uidefinition-overview.md)bakın.
-* UI öğelerindeki ortak özelliklerin açıklaması için [createUiDefinition öğelerine](create-uidefinition-elements.md)bakın.
+* UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
+* UI öğelerindeki ortak özelliklerin açıklaması için bkz. [Createuıdefinition Elements](create-uidefinition-elements.md).

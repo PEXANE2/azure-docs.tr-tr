@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri v3 REST API aramaları için Postacı'yı yapılandır
-description: Bu makalede, Postacı'yı Azure Medya Hizmetleri (AMS) REST API'lerini aramak için kullanılabilecek şekilde nasıl yapılandırabileceğiniz gösterilmektedir.
+title: Azure Media Services v3 REST API çağrıları için Postman yapılandırma
+description: Bu makalede, Postman 'ın Azure Media Services (AMS) REST API 'Lerini çağırmak için kullanılabilmesi üzere nasıl yapılandırılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,28 +14,28 @@ ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
 ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75779646"
 ---
-# <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Medya Hizmetleri v3 REST API aramaları için Postacı yapılandırma
+# <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Media Services v3 REST API çağrıları için Postman yapılandırma
 
-Bu makalede, **Postacı'yı** Azure Medya Hizmetleri (AMS) REST API'lerini aramak için kullanılabilecek şekilde nasıl yapılandırabileceğiniz gösterilmektedir. Makale, **postacıya**ortam ve toplama dosyalarının nasıl aktarılsüreceğini gösterir. Koleksiyon, Azure Medya Hizmetleri (AMS) REST API'leri olarak adlandırdığı HTTP isteklerinin gruplanmış tanımlarını içerir. Ortam dosyası, koleksiyon tarafından kullanılan değişkenleri içerir.
+Bu makalede, **Postman** 'ın Azure Media Services (AMS) REST API 'lerini çağırmak için kullanılabilmesi üzere nasıl yapılandırılacağı gösterilmektedir. Makale, ortam ve koleksiyon dosyalarının **Postman**'a nasıl alınacağını gösterir. Koleksiyon, Azure Media Services (AMS) REST API 'Lerini çağıran HTTP isteklerinin gruplandırılmış tanımlarını içerir. Ortam dosyası, koleksiyon tarafından kullanılan değişkenleri içerir.
 
-Geliştirmeye başlamadan önce, [Medya Hizmetleri v3 API'leri ile Geliştirme'yi gözden geçirin.](media-services-apis-overview.md)
+Geliştirmeye başlamadan önce [Media Services v3 API 'leri Ile geliştirmeyi](media-services-apis-overview.md)inceleyin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md) Kaynak grup adını ve Medya Hizmetleri hesap adını hatırladığından emin olun. 
-- [API'lere erişmek](access-api-cli-how-to.md) için gereken bilgileri alın
+- [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
+- [API 'lere erişmek](access-api-cli-how-to.md) için gereken bilgileri alın
 - AMS REST öğreticilerinden bazılarında gösterilen REST API'lerini yürütmek için [Postman](https://www.getpostman.com/) REST istemcisini yükleyin. 
 
     Biz **Postman**'ı kullanıyoruz, ancak herhangi bir REST aracı da olabilir. Diğer seçenekler şunlardır: REST eklentili **Visual Studio Code** veya **Telerik Fiddler**. 
 
 > [!IMPORTANT]
-> Adlandırma kurallarını gözden [geçirin.](media-services-apis-overview.md#naming-conventions)
+> [Adlandırma kurallarını](media-services-apis-overview.md#naming-conventions)gözden geçirin.
 
 ## <a name="download-postman-files"></a>Postman dosyalarını indirme
 
@@ -49,7 +49,7 @@ Postman koleksiyonunu ve ortam dosyalarını içeren bir GitHub deposunu kopyala
 
 ### <a name="configure-the-environment"></a>Ortamı yapılandırma 
 
-1. **Postacı** uygulamasını açın.
+1. **Postman** uygulamasını açın.
 2. Ekranın sağ tarafında **Ortamı yönet** seçeneğini belirleyin.
 
     ![Ortamı yönetme](./media/develop-with-postman/postman-import-env.png)
@@ -76,9 +76,9 @@ Postman koleksiyonunu ve ortam dosyalarını içeren bir GitHub deposunu kopyala
 
 ## <a name="get-azure-ad-token"></a>Azure AD Belirteci alma 
 
-AMS v3 kaynaklarını manipüle etmeye başlamadan önce Hizmet Müdürü Kimlik Doğrulaması için Azure AD Belirteci'ni almanız ve ayarlamanız gerekir.
+AMS v3 kaynaklarını değiştirmeye başlamadan önce hizmet sorumlusu kimlik doğrulaması için Azure AD belirtecini almanız ve ayarlamanız gerekir.
 
-1. Postacı uygulamasının sol penceresinde "Adım 1: AAD Auth belirteci alın" seçeneğini belirleyin.
+1. Postman uygulamasının sol penceresinde "1. Adım: AAD kimlik doğrulama belirteci al" seçeneğini belirleyin.
 2. Sonra, "Hizmet Sorumlusu Kimlik Doğrulaması için Azure AD Belirteci alma"'yı seçin.
 3. **Gönder**’e basın.
 
@@ -94,16 +94,16 @@ AMS v3 kaynaklarını manipüle etmeye başlamadan önce Hizmet Müdürü Kimlik
 
 ## <a name="troubleshooting"></a>Sorun giderme 
 
-* Uygulamanız "HTTP 504: Gateway Timeout" ile başarısız olursa, konum değişkeninin Medya Hizmetleri hesabının beklenen konumu dışında açıkça ayarlanmadığından emin olun. 
-* Bir "hesap bulunamadı" hatası alırsanız, Body JSON iletisindeki konum özelliğinin Medya Hizmetleri hesabının bulunduğu konuma ayarlı olduğundan emin olmak için de denetleyin. 
+* Uygulamanız "HTTP 504: Gateway timeout" ile başarısız olursa, konum değişkeninin açıkça Media Services hesabının beklenen konumundan farklı bir değere ayarlanmamış olduğundan emin olun. 
+* "Hesap bulunamadı" hatası alırsanız, Body JSON iletisindeki location özelliğinin Media Services hesabının bulunduğu konuma ayarlandığından emin olmak için de denetleyin. 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Medya Hizmetleri hesabına dosya yükleme - REST](upload-files-rest-how-to.md)
-- [Medya Hizmetleri ile filtre oluşturma - REST](filters-dynamic-manifest-rest-howto.md)
+- [Media Services hesaba dosya yükleme-REST](upload-files-rest-how-to.md)
+- [Media Services REST ile filtre oluşturma](filters-dynamic-manifest-rest-howto.md)
 - [Azure Resource Manager tabanlı REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [REST ile dosyaları akış.](stream-files-tutorial-with-rest.md)  
-- [Öğretici: URL'ye dayalı uzak bir dosyayı kodlayın ve videoyu akışı - REST](stream-files-tutorial-with-rest.md)
+- [Rest Ile akış dosyaları](stream-files-tutorial-with-rest.md).  
+- [Öğretici: URL 'ye göre uzak bir dosya kodlama ve video geri kalanı](stream-files-tutorial-with-rest.md)

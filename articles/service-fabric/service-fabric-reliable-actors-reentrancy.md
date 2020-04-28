@@ -1,24 +1,24 @@
 ---
-title: Azure Hizmet Kumaşı aktörlerinde yeniden canlandırma
-description: Hizmet Kumaş Güvenilir Aktörler için reentrancy giriş, mantıksal çağrı bağlamına dayalı engelleme önlemek için bir yol.
+title: Azure Service Fabric aktörleri için yeniden giriş
+description: Çağrı bağlamına göre engellemeyi mantıksal olarak önlemenin bir yolu olan Service Fabric Reliable Actors için yeniden giriş yapın.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645540"
 ---
-# <a name="reliable-actors-reentrancy"></a>Güvenilir Aktörler reentrancy
-Güvenilir Aktörler çalışma süresi, varsayılan olarak, mantıksal arama bağlam tabanlı yeniden canlandırma sağlar. Bu, aktörlerin aynı çağrı bağlamı zincirinde olmaları durumunda yeniden canlandırmalarına olanak tanır. Örneğin, Aktör A, Aktör C'ye ileti gönderen Aktör B'ye bir ileti gönderir. İleti işlemenin bir parçası olarak, Aktör C Aktör A'yı çağırırsa, ileti yeniden işlem yapılır, bu nedenle iletiye izin verilir. Farklı bir çağrı bağlamının parçası olan diğer iletiler, işleme bitene kadar Aktör A'da engellenir.
+# <a name="reliable-actors-reentrancy"></a>Reliable Actors yeniden giriş
+Reliable Actors çalışma zamanı, varsayılan olarak mantıksal çağrı bağlamı tabanlı yeniden giriş yapılmasına izin verir. Bu, aktörlerin aynı çağrı bağlamı zincirinde olmaları durumunda yer almasına izin verir. Örneğin, oyuncu aktör C 'ye bir ileti gönderen aktör B 'ye bir ileti gönderir. İleti işlemenin bir parçası olarak, aktör C aktör A 'yı çağırırsa ileti yeniden alınır, bu nedenle izin verilir. Farklı bir çağrı bağlamının parçası olan diğer tüm iletiler, işleme bitene kadar aktör A 'da engellenir.
 
-`ActorReentrancyMode` Enum'da tanımlanan aktör reentrancy için iki seçenek vardır:
+`ActorReentrancyMode` Sabit listesinde bir aktör yeniden girişi için kullanılabilen iki seçenek vardır:
 
 * `LogicalCallContext`(varsayılan davranış)
-* `Disallowed`- yeniden canlandırma devre dışı
+* `Disallowed`-yeniden girişi devre dışı bırakır
 
 ```csharp
 public enum ActorReentrancyMode
@@ -34,9 +34,9 @@ public enum ActorReentrancyMode
     Disallowed(2)
 }
 ```
-Reentrancy kayıt sırasında bir `ActorService`'ayarları nda yapılandırılabilir. Ayar, aktör hizmetinde oluşturulan tüm aktör örnekleri için geçerlidir.
+Yeniden giriş, kayıt sırasında bir `ActorService`' ın ayarlarından yapılandırılabilir. Ayar, aktör hizmetinde oluşturulan tüm aktör örneklerine uygulanır.
 
-Aşağıdaki örnekte, yeniden canlandırma modunu `ActorReentrancyMode.Disallowed`. Bu durumda, bir aktör başka bir aktöre reentrant iletisi gönderirse, tür `FabricException` bir özel durum atılır.
+Aşağıdaki örnek, yeniden giriş modunu olarak `ActorReentrancyMode.Disallowed`ayarlayan bir aktör hizmetini gösterir. Bu durumda, bir aktör başka bir aktöre bir yeniden gelen iletisi gönderirse, türünde `FabricException` bir özel durum oluşturulur.
 
 ```csharp
 static class Program
@@ -102,4 +102,4 @@ static class Program
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Aktör API başvuru belgelerinde](https://msdn.microsoft.com/library/azure/dn971626.aspx) yeniden entrancy hakkında daha fazla bilgi edinin
+* [Aktör API 'si başvuru belgelerinde](https://msdn.microsoft.com/library/azure/dn971626.aspx) yeniden giriş hakkında daha fazla bilgi edinin

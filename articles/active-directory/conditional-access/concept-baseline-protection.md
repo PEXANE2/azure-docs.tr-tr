@@ -1,6 +1,6 @@
 ---
-title: Koşullu Erişim temel ilkeleri - Azure Etkin Dizini
-description: Kuruluşları sık karşılaşılan saldırılardan korumak için Temel Koşullu Erişim ilkeleri
+title: Koşullu erişim temel ilkeleri-Azure Active Directory
+description: Kuruluşların ortak saldırılara karşı korunması için temel koşullu erişim ilkeleri
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,88 +12,88 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75767577"
 ---
 # <a name="what-are-baseline-policies"></a>Temel ilkeler nelerdir?
 
-Temel ilkeler, kuruluşların birçok yaygın saldırıya karşı korunmasına yardımcı olan önceden tanımlanmış ilkeler kümesidir. Bu yaygın saldırılar parola püskürtme, yeniden oynatma ve kimlik avı içerebilir. Temel ilkeler, Azure AD'nin tüm sürümlerinde kullanılabilir. Kimlik tabanlı saldırılar son birkaç yıldır artmakta olduğundan Microsoft bu temel koruma ilkelerini herkes tarafından kullanılabilir hale getirsin. Bu dört ilkenin amacı, tüm kuruluşların hiçbir ek ücret ödemeden etkin leştirilmiş bir temel güvenlik düzeyine sahip olmasını sağlamaktır.
+Temel ilkeler, kuruluşların pek çok yaygın saldırılara karşı korunmasına yardımcı olan önceden tanımlanmış bir ilke kümesidir. Bu yaygın saldırılar, parola ilaç, yeniden yürütme ve kimlik avı içerebilir. Temel ilkeler Azure AD 'nin tüm sürümlerinde kullanılabilir. Microsoft bu temel koruma ilkelerini herkes tarafından kullanılabilir hale getirtiğinden, kimlik tabanlı saldırılar son birkaç yılda arttığında. Bu dört ilkenin hedefi, tüm kuruluşların ek bir ücret ödemeden etkin bir temel güvenlik düzeyine sahip olmasını sağlamaktır.
 
-Özelleştirilmiş Koşullu Erişim ilkelerini yönetmek için Azure AD Premium lisansı gerektirir.
+Özelleştirilmiş koşullu erişim ilkelerinin yönetilmesi için Azure AD Premium lisansı gerekir.
 
 > [!IMPORTANT]
-> Temel ilkeler küçümsenmektedir. Daha fazla bilgi için [Azure Active Directory'deki yeniliklere bakın?](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults)
+> Temel ilkeler kullanımdan kaldırıldı. Daha fazla bilgi için bkz. [Azure Active Directory yenilikleri nelerdir?](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults)
 
 ## <a name="baseline-policies"></a>Ana hat ilkeleri
 
-![Azure portalında Koşullu Erişim temel ilkeleri](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
+![Azure portal koşullu erişim temel ilkeleri](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
 Dört temel ilke vardır:
 
-* Yöneticiler için MFA gerektirir (önizleme)
-* Son kullanıcı koruması (önizleme)
-* Eski kimlik doğrulamasını engelleme (önizleme)
-* Hizmet yönetimi için MFA gerektirir (önizleme)
+* Yöneticiler için MFA gerektir (Önizleme)
+* Son Kullanıcı koruması (Önizleme)
+* Eski kimlik doğrulamasını engelle (Önizleme)
+* Hizmet yönetimi için MFA gerektir (Önizleme)
 
-Bu ilkelerin dördü de POP, IMAP ve eski Office masaüstü istemcileri gibi eski kimlik doğrulama akışlarını etkiler.
+Bu ilkelerin dördü, POP, IMAP ve eski Office Masaüstü istemcileri gibi eski kimlik doğrulama akışlarını etkiler.
 
 ### <a name="exclusions"></a>Dışlamalar
 
-Temel ilkeler ilk genel önizlemelerine girdiğinde, kullanıcıları ilkelerden dışlama seçeneği vardı. Bu özellik önizleme yoluyla gelişti ve Temmuz 2019'da kaldırıldı. Daha önce dışlamalar oluşturmuş olan kuruluşlar, yeni kullanıcıları tutmaya devam edebildi ve ilkelere dışlama ekleyemedi.
+Temel ilkeler ilk genel önizlemeye geldiğinde, kullanıcıları ilkelerden hariç tutmak için bir seçenek vardı. Bu özellik önizleme boyunca geliştirilmiştir ve 2019 Temmuz 'da kaldırılmıştır. Önceden dışlamaları olan kuruluşlar, yeni kullanıcıların ilkelere dışlamaları ekleyemedik.
 
-### <a name="require-mfa-for-admins-preview"></a>Yöneticiler için MFA gerektirir (önizleme)
+### <a name="require-mfa-for-admins-preview"></a>Yöneticiler için MFA gerektir (Önizleme)
 
-Yönetici hesaplarının sahip olduğu güç ve erişim nedeniyle, bunları özel bir özenle tedavi etmelisiniz. Ayrıcalıklı hesapların korunmasını iyileştirmek için yaygın yöntemlerden biri, oturum açmaiçin kullanıldıklarında daha güçlü bir hesap doğrulama biçimi gerektirmektir. Azure Etkin Dizin'de, yöneticilerin Azure Çok Faktörlü Kimlik Doğrulama'ya kaydolmasını ve bunları kullanmasını isteyerek daha güçlü bir hesap doğrulaması elde edebilirsiniz.
+Yönetici hesaplarının sahip olduğu güç ve erişim nedeniyle, onlara özel bir dikkatli davranmanız gerekir. Ayrıcalıklı hesapların korunmasını artırmanın yaygın bir yöntemi, oturum açmak için kullanıldıkları zaman daha güçlü bir hesap doğrulama biçimi gerektirmaktır. Azure Active Directory, yöneticilerin Azure Multi-Factor Authentication kaydolmasına ve kullanmasına gerek duymadan daha güçlü bir hesap doğrulaması sağlayabilirsiniz.
 
-Yöneticiler için MFA'yı zorunlu kılması (önizleme), en ayrıcalıklı Azure REKLAM rolleri olarak kabul edilen aşağıdaki dizin rolleri için çok faktörlü kimlik doğrulaması (MFA) gerektiren bir temel ilkedir:
+Yöneticiler için MFA gerektir (Önizleme), aşağıdaki dizin rolleri için çok faktörlü kimlik doğrulaması (MFA) gerektiren bir temel ilkedir ve en ayrıcalıklı Azure AD rolleri olarak kabul edilir:
 
 * Genel yönetici
 * SharePoint yöneticisi
 * Exchange yöneticisi
-* Koşullu Erişim yöneticisi
+* Koşullu Erişim Yöneticisi
 * Güvenlik yöneticisi
-* Yardım Masası yöneticisi / Parola yöneticisi
+* Yardım Masası Yönetici/Parola Yöneticisi
 * Faturalama yöneticisi
-* Kullanıcı yöneticisi
+* Kullanıcı Yöneticisi
 
-Kuruluşunuzun bu hesapları komut dosyası veya kodda kullanılıyorsa, [bunları yönetilen kimliklerle](../managed-identities-azure-resources/overview.md)değiştirmeyi düşünün.
+Kuruluşunuzun komut dosyalarında veya kodda kullanımda olan bu hesapları varsa, bunları [yönetilen kimliklerle](../managed-identities-azure-resources/overview.md)değiştirmeyi göz önünde bulundurun.
 
-### <a name="end-user-protection-preview"></a>Son kullanıcı koruması (önizleme)
+### <a name="end-user-protection-preview"></a>Son Kullanıcı koruması (Önizleme)
 
-Saldırılarda hedef lenenler sadece yüksek ayrıcalıklı yöneticiler değildir. Kötü aktörler normal kullanıcıları hedefleme eğilimindedir. Erişim sağladıktan sonra, bu kötü aktörler orijinal hesap sahibi adına ayrıcalıklı bilgilere erişim talebinde bulunabilir veya dizinin tamamını indirebilir ve tüm kuruluşunuza kimlik avı saldırısı gerçekleştirebilir. Tüm kullanıcılar için korumayı geliştirmek için yaygın yöntemlerden biri, riskli bir oturum açma algılandığında daha güçlü bir hesap doğrulama biçimine ihtiyaç duymasıdır.
+Yüksek ayrıcalıklı Yöneticiler yalnızca saldırılara yönelik olan tek alanlardır. Kötü aktörler, normal kullanıcıları hedefleyecek şekilde eğilimlidir. Erişim kazandıktan sonra, bu kötü aktör, özgün hesap sahibi adına ayrıcalıklı bilgilere erişim isteğinde bulunabilir veya tüm kuruluşunuzda bir kimlik avı saldırısı gerçekleştirebilir. Tüm kullanıcıların korumasını geliştirmenin yaygın bir yöntemi, riskli oturum açma algılandığında daha güçlü bir hesap doğrulama biçimi gerektirmaktır.
 
-**Son kullanıcı koruması (önizleme),** bir dizindeki tüm kullanıcıları koruyan temel bir ilkedir. Bu ilkeyi etkinleştirmek için tüm kullanıcıların 14 gün içinde Azure Çok Faktörlü Kimlik Doğrulama'ya kaydolması gerekmektedir. Kayıt olduktan sonra, kullanıcılar ait olan riskli oturum açma girişimleri sırasında MFA'ya istenir. Parola sıfırlanana ve işten çıkarılma riskine kadar tehlikeye atılmış kullanıcı hesapları engellenir. 
+**Son Kullanıcı koruması (Önizleme)** , bir dizindeki tüm kullanıcıları koruyan bir temel ilkedir. Bu ilkenin etkinleştirilmesi, tüm kullanıcıların Azure Multi-Factor Authentication için 14 gün içinde kaydolmanızı gerektirir. Kaydolduktan sonra kullanıcılardan yalnızca riskli oturum açma girişimleri sırasında MFA sorulur. Parola sıfırlama ve risk ortadan kalana kadar güvenliği aşılmış Kullanıcı hesapları engellenir. 
 
 > [!NOTE]
-> Daha önce risk için işaretlenmiş tüm kullanıcılar, parola sıfırlanana ve ilke etkinleştirme üzerine işten çıkarılma riskine kadar engellenir.
+> Daha önce risk işaretli olan tüm kullanıcılar, ilke etkinleştirilmesinde parola sıfırlamasına ve risk ortadan kaldırılana kadar engellenir.
 
-### <a name="block-legacy-authentication-preview"></a>Eski kimlik doğrulamasını engelleme (önizleme)
+### <a name="block-legacy-authentication-preview"></a>Eski kimlik doğrulamasını engelle (Önizleme)
 
-Eski kimlik doğrulama protokolleri (ör. IMAP, SMTP, POP3) normalde eski posta istemcileri tarafından kimlik doğrulaması için kullanılan protokollerdir. Eski protokoller çok faktörlü kimlik doğrulamasını desteklemez. Dizininiz için çok faktörlü kimlik doğrulaması gerektiren bir ilkeniz olsa bile, kötü bir aktör bu eski protokollerden birini kullanarak kimlik doğrulaması yapabilir ve çok faktörlü kimlik doğrulamayı atlayabilir.
+Eski kimlik doğrulama protokolleri (örn: IMAP, SMTP, POP3), daha eski posta istemcileri tarafından kimlik doğrulaması için normalde kullanılan protokollerdir. Eski protokoller Multi-Factor Authentication 'ı desteklemez. Dizininiz için çok faktörlü kimlik doğrulaması gerektiren bir ilkeniz olsa da, hatalı aktör bu eski protokollerden birini kullanarak kimlik doğrulaması yapabilir ve Multi-Factor Authentication 'ı atlayabilir.
 
-Hesabınızı eski protokoller tarafından yapılan kötü amaçlı kimlik doğrulama isteklerine karşı korumanın en iyi yolu, bunları engellemektir.
+Eski protokoller tarafından yapılan kötü amaçlı kimlik doğrulama isteklerinden hesabınızı korumanın en iyi yolu, bunları engellenemez.
 
-**Eski kimlik doğrulamasını (önizlemeyi) engelle** temel ilkesi, eski protokoller kullanılarak yapılan kimlik doğrulama isteklerini engeller. Tüm kullanıcılar için başarılı bir şekilde oturum açabilmek için modern kimlik doğrulaması kullanılmalıdır. Diğer temel ilkelerle birlikte kullanıldığında, eski protokollerden gelen istekler engellenir. Buna ek olarak, tüm kullanıcılar gerektiğinde MFA için gerekli olacaktır. Bu ilke Exchange ActiveSync engellemez.
+**Eski kimlik doğrulaması engelleme (Önizleme)** temel ilkesi, eski protokoller kullanılarak yapılan kimlik doğrulama isteklerini engeller. Tüm kullanıcılar için başarıyla oturum açmak üzere modern kimlik doğrulaması kullanılmalıdır. Diğer ana hat ilkeleriyle birlikte kullanıldığında, eski protokollerden gelen istekler engellenir. Ayrıca, tüm kullanıcıların her gerektiğinde MFA yapması gerekecektir. Bu ilke Exchange ActiveSync 'ı engellemez.
 
-### <a name="require-mfa-for-service-management-preview"></a>Hizmet yönetimi için MFA gerektirir (önizleme)
+### <a name="require-mfa-for-service-management-preview"></a>Hizmet yönetimi için MFA gerektir (Önizleme)
 
-Kuruluşlar çeşitli Azure hizmetleri kullanır ve bunları Azure Kaynak Yöneticisi tabanlı araçlardan yönetir:
+Kuruluşlar çeşitli Azure hizmetlerini kullanır ve bunları şu şekilde Azure Resource Manager tabanlı araçlarla yönetebilir:
 
-* Azure portalında
+* Azure portal
 * Azure PowerShell
 * Azure CLI
 
-Kaynak yönetimini gerçekleştirmek için bu araçlardan herhangi birini kullanmak son derece ayrıcalıklı bir eylemdir. Bu araçlar, hizmet ayarları ve abonelik faturalandırması gibi abonelik genelindeki yapılandırmaları değiştirebilir.
+Kaynak yönetimini gerçekleştirmek için bu araçlardan herhangi birini kullanmak, yüksek ayrıcalıklı bir işlemdir. Bu araçlar, hizmet ayarları ve abonelik faturalaması gibi abonelik genelinde yapılandırmaların tümünü değiştirebilir.
 
-Ayrıcalıklı eylemleri korumak **için, bu Hizmet yönetimi (önizleme) için MFA Gerektirir** ilkesi, Azure portalına, Azure PowerShell'e veya Azure CLI'ye erişen tüm kullanıcı için çok faktörlü kimlik doğrulama gerektirir.
+Ayrıcalıklı eylemleri korumak için, bu **hizmet yönetimi IÇIN MFA gerektir (Önizleme)** ilkesi, Azure portal, Azure PowerShell veya Azure CLI 'ye erişen herhangi bir kullanıcı için çok faktörlü kimlik doğrulaması gerektirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için bkz.
 
 * [Güvenlik varsayılanlarını etkinleştirme](../fundamentals/concept-fundamentals-security-defaults.md)
-* [Sık kullanılan Koşullu Erişim İlkeleri](concept-conditional-access-policy-common.md)
-* [Kimlik altyapınızı güvence altına almak için beş adım](../../security/fundamentals/steps-secure-identity.md)
+* [Ortak koşullu erişim ilkeleri](concept-conditional-access-policy-common.md)
+* [Kimlik altyapınızı güvenli hale getirmenin beş adımı](../../security/fundamentals/steps-secure-identity.md)

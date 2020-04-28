@@ -9,27 +9,27 @@ ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75752119"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
-### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>Sertifika kimlik doğrulaması kullanarak bağlanırken sertifika uyuşmazlığı alıyorsam ne yapmalıyım?
+### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>Sertifika kimlik doğrulamasını kullanarak bağlanırken bir sertifika uyumsuzluğu alıyorsanız ne yapmam gerekir?
 
-**"Sertifikayı doğrulayarak sunucunun kimliğini doğrulayın"** veya el ile profil oluştururken **sunucu FQDN'yi sertifikayla birlikte ekleyin.** Bunu, bir komut isteminden **rasphone** çalıştırarak ve açılan listeden profili seçerek yapabilirsiniz.
+**"Sertifikayı doğrulayarak sunucu kimliğini doğrula"** işaretini kaldırın veya el ile profil oluştururken **SERTIFIKAYLA birlikte sunucu FQDN 'sini ekleyin** . Bunu komut isteminden **RASPHONE** çalıştırarak ve açılan listeden profili seçerek yapabilirsiniz.
 
-Sunucu kimlik doğrulamasını atlayarak genel olarak önerilmez, ancak Azure sertifikası kimlik doğrulaması ile aynı sertifika VPN tünelleme protokolünde (IKEv2/SSTP) ve EAP protokolünde sunucu doğrulaması için kullanılır. Sunucu sertifikası ve FQDN vpn tünelleme protokolü tarafından zaten doğrulandığı için, EAP'de aynı şeyi yeniden doğrulamak gereksizdir.
+Sunucu kimlik doğrulamasını atlama, genel olarak önerilmez, ancak Azure sertifika kimlik doğrulaması ile, VPN Tünel Protokolü (Ikev2/SSTP) ve EAP protokolünde sunucu doğrulaması için aynı sertifika kullanılır. Sunucu sertifikası ve FQDN, VPN tünel oluşturma protokolü tarafından zaten doğrulandığından, EAP 'de yeniden doğrulanması gereksizdir.
 
-![noktadan siteye](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Sunucu Sertifikası")
+![Noktadan siteye](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Sunucu sertifikası")
 
-### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Site'ye Nokta bağlantısı için sertifikalar oluşturmak için kendi dahili PKI kök CA'mı kullanabilir miyim?
+### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Noktadan siteye bağlantı için sertifika oluşturmak üzere kendi iç PKI kök sertifika yetkilimi kullanabilir miyim?
 
 Evet. Önceden, yalnızca otomatik olarak imzalanan kök sertifikalar kullanılabiliyordu. 20 kök sertifika yükleyebilirsiniz.
 
-### <a name="can-i-use-certificates-from-azure-key-vault"></a>Azure Key Vault'un sertifikalarını kullanabilir miyim?
+### <a name="can-i-use-certificates-from-azure-key-vault"></a>Azure Key Vault sertifikaları kullanabilir miyim?
 
 Hayır.
 
@@ -45,7 +45,7 @@ Kurumsal PKI çözümünüzü (dahili PKI'nizi), Azure PowerShell'i, MakeCert'i 
 
 * **MakeCert:** Adımlar için [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) makalesine bakın.
 
-* **Openssl:** 
+* **OpenSSL** 
 
     * Sertifikaları dışarı aktarırken kök sertifikayı Base64'e dönüştürdüğünüzden emin olun.
 

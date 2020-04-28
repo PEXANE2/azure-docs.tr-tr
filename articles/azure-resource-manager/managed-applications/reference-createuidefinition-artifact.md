@@ -1,24 +1,24 @@
 ---
-title: CreateUiDefinition artifakı
-description: Azure Yönetilen Uygulama için createUiDefinition artifakı nasıl oluşturulur' u gösterir. Dosya createUiDefinition.json olarak adlandırılır.
+title: Createuıdefinition yapıtı
+description: Azure yönetilen uygulaması için Createuıdefinition yapay öğesinin nasıl oluşturulacağını gösterir. Dosya Createuıdefinition. JSON olarak adlandırılır.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 9be1cb02c419314a33b9487bf183ef3659b2b549
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651494"
 ---
-# <a name="reference-user-interface-elements-artifact"></a>Başvuru: Kullanıcı arabirimi elemanları artifakı
+# <a name="reference-user-interface-elements-artifact"></a>Başvuru: Kullanıcı arabirimi öğeleri yapıtı
 
-Bu makale, Azure Yönetilen Uygulamalar'daki *createUiDefinition.json* artifakı için bir başvurudur. Kullanıcı arabirimi öğeleriyazma hakkında daha fazla bilgi için [bkz.](create-uidefinition-elements.md)
+Bu makale, Azure yönetilen uygulamalarında *Createuıdefinition. JSON* yapıtı için bir başvurudur. Kullanıcı arabirimi öğeleri yazma hakkında daha fazla bilgi için bkz. [Kullanıcı arabirimi öğeleri oluşturma](create-uidefinition-elements.md).
 
 ## <a name="user-interface-elements"></a>Kullanıcı arabirimi öğeleri
 
-Aşağıdaki JSON, Azure Yönetilen Uygulamalar için *createUiDefinition.json* dosyasının bir örneğini gösterir:
+Aşağıdaki JSON, Azure yönetilen uygulamalar için *Createuıdefinition. JSON* dosyasının bir örneğini göstermektedir:
 
 ```json
 {
@@ -81,6 +81,6 @@ Aşağıdaki JSON, Azure Yönetilen Uygulamalar için *createUiDefinition.json* 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Özel eylemler ve kaynaklarla yönetilen uygulama oluşturma](tutorial-create-managed-app-with-custom-provider.md)
-- [Başvuru: Dağıtım şablonu artefakt](reference-main-template-artifact.md)
-- [Başvuru: Tanım artifakı görüntüle](reference-view-definition-artifact.md)
+- [Öğretici: özel eylemler ve kaynaklarla yönetilen uygulama oluşturma](tutorial-create-managed-app-with-custom-provider.md)
+- [Başvuru: dağıtım şablonu yapıtı](reference-main-template-artifact.md)
+- [Başvuru: tanım yapıtı görüntüle](reference-view-definition-artifact.md)

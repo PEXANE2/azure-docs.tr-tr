@@ -1,33 +1,33 @@
 ---
-title: Güvenilir Toplama nesneserileştirme
-description: Varsayılan strateji ve özel serileştirmenin nasıl tanımlanılması da dahil olmak üzere Azure Hizmet Kumaşı Güvenilir Koleksiyonlar nesneserileştirme hakkında bilgi edinin.'
+title: Güvenilir koleksiyon nesnesi serileştirme
+description: Varsayılan strateji ve özel serileştirme tanımlama dahil olmak üzere Azure Service Fabric güvenilir koleksiyonlar nesne serileştirme hakkında bilgi edinin. '
 ms.topic: conceptual
 ms.date: 5/8/2017
 ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75639556"
 ---
-# <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Hizmet Kumaşında Güvenilir Toplama nesneserileştirmesi
-Güvenilir Koleksiyonlar, makine arızaları ve elektrik kesintileri arasında dayanıklı olduğundan emin olmak için öğelerini çoğaltır ve devam ettir.
-Öğeleri çoğaltmak ve kalıcı hale getirmek için Güvenilir Koleksiyonlar'ın bunları seri hale getirebilmeleri gerekir.
+# <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric güvenilir koleksiyon nesnesi serileştirmesi
+Güvenilir koleksiyonlar, makine hatalarından ve güç kesintilerine dayanıklı olduklarından emin olmak için öğelerini çoğaltın ve kalıcı hale getirir.
+Hem çoğaltmak hem de kalıcı hale getirmek için, güvenilir koleksiyonlar ' ı serileştirmeleri gerekir.
 
-Güvenilir Koleksiyonlar' Güvenilir Devlet Yöneticisi belirli bir tür için uygun serializer olsun.
-Güvenilir Durum Yöneticisi yerleşik serializers içerir ve özel serializers belirli bir tür için kayıtlı olmasını sağlar.
+Güvenilir koleksiyonlar ' güvenilir durum yöneticisinden belirli bir tür için uygun serileştiriciyi al.
+Güvenilir durum Yöneticisi yerleşik serileştiriciler içerir ve belirli bir tür için özel serileştiricilerin kaydedilmesini sağlar.
 
-## <a name="built-in-serializers"></a>Dahili Serializers
+## <a name="built-in-serializers"></a>Yerleşik serileştiriciler
 
-Güvenilir Durum Yöneticisi, varsayılan olarak verimli bir şekilde seri hale getirilebilmeleri için bazı yaygın türler için yerleşik serileştirici içerir. Diğer türler için, Güvenilir Durum Yöneticisi [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx)kullanmak için geri düşüyor.
-Yerleşik serileştiriciler, türlerinin değiştirilemeyeceğini bildiklerinden ve türü gibi türü hakkında bilgi eklemelerine gerek olmadığından daha verimlidir.
+Güvenilir durum Yöneticisi bazı yaygın türler için yerleşik serileştirici içerir, böylece varsayılan olarak etkin hale getirilebilir. Diğer türler için güvenilir durum Yöneticisi [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx)'ı kullanmaya geri döner.
+Yerleşik serileştiriciler, türlerinin değişmediğini biledikleri ve tür adı gibi tür hakkındaki bilgileri içermesi gerekmediğinden daha etkilidir.
 
-Güvenilir Durum Yöneticisi, aşağıdaki türler için yerleşik serializer'e sahiptir: 
+Güvenilir durum Yöneticisi aşağıdaki türler için yerleşik serileştiriciye sahiptir: 
 - Guid
 - bool
 - byte
 - sbyte
-- bayt[]
+- Byte []
 - char
 - string
 - decimal
@@ -42,9 +42,9 @@ Güvenilir Durum Yöneticisi, aşağıdaki türler için yerleşik serializer'e 
 
 ## <a name="custom-serialization"></a>Özel Serileştirme
 
-Özel serializers genellikle performansı artırmak veya tel ve disk üzerinden verileri şifrelemek için kullanılır. Diğer nedenlerin yanı sıra, özel serializers genellikle genel serializer daha verimli dir, çünkü türü hakkında bilgi serileştirmek gerekmez. 
+Özel serileştiriciler, performansı artırmak veya verileri tel ve diskte şifrelemek için yaygın olarak kullanılır. Diğer nedenlerden dolayı, özel serileştiriciler, tür hakkındaki bilgileri serileştirmek zorunda olmadığından genel serileştiriciye göre daha etkilidir. 
 
-[IReliableStateManager.TryAddStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) verilen t türü için özel bir serializer kaydetmek için kullanılır. Bu kayıt, kurtarma başlamadan önce tüm Güvenilir Koleksiyonlar'ın kalıcı verilerini okumak için ilgili serileştiriciye erişebilmesini sağlamak için StatefulServiceBase'in yapımında gerçekleşmelidir.
+[Ireliablestatemanager. TryAddStateSerializer\<t>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) , verilen tür T için özel bir serileştirici kaydetmek üzere kullanılır. Kurtarma başlamadan önce, tüm güvenilir koleksiyonların kalıcı verileri okumak için ilgili seri hale getirici 'e erişimi olduğundan, bu kayıt, StatefulServiceBase 'in yapımını gerçekleşmelidir.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -58,16 +58,16 @@ public StatefulBackendService(StatefulServiceContext context)
 ```
 
 > [!NOTE]
-> Özel serializers yerleşik serializers üzerinde öncelik verilir. Örneğin, int için özel bir serileştirici kaydedildiğinde, yerleşik int serileştirici yerine tamsayıları serihale getirmek için kullanılır.
+> Özel serileştiricilerle yerleşik serileştiriciler üzerinden öncelik verilir. Örneğin, int için özel bir seri hale getirici kaydedildiğinde, int için yerleşik serileştirici yerine tamsayıları seri hale getirmek için kullanılır.
 
-### <a name="how-to-implement-a-custom-serializer"></a>Özel bir serializer nasıl uygulanır
+### <a name="how-to-implement-a-custom-serializer"></a>Özel seri hale getirici uygulama
 
-Özel bir serializer [\<IStateSerializer T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) arabirimini uygulamak gerekir.
+Özel serileştirici, [Istateserializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) arabirimini uygulamalıdır.
 
 > [!NOTE]
-> IStateSerializer\<T>, Temel değer adı verilen ek bir T alan Yazma ve Okuma için aşırı yükleme içerir. Bu API diferansiyel serileştirme içindir. Şu anda diferansiyel serileştirme özelliği açıkdeğil. Bu nedenle, diferansiyel serileştirme maruz ve etkinleştirilene kadar bu iki aşırı yükleme çağrılmaz.
+> IStateSerializer\<T>, temel değer olarak adlandırılan ek bir T 'Yi alan yazma ve okuma için bir aşırı yükleme içerir. Bu API, değişiklik serileştirme içindir. Şu anda değişiklik serileştirme özelliği kullanıma sunulmamaktadır. Bu nedenle, bu iki aşırı yükleme, fark serileştirme gösterilene ve etkinleştirilene kadar çağrılmaz.
 
-Aşağıda dört özellik içeren OrderKey adlı örnek bir özel türü
+Aşağıda dört özellik içeren OrderKey adlı örnek bir özel tür verilmiştir
 
 ```csharp
 public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
@@ -85,8 +85,8 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 }
 ```
 
-Aşağıda IStateSerializer\<OrderKey> bir örnek uygulamasıdır.
-BaseValue'ı alan Okuma ve Yazma aşırı yüklemelerinin, iletme uyumluluğu için ilgili aşırı yüklemeleri çağırdığını unutmayın.
+Aşağıda, IStateSerializer\<orderkey> örnek bir uygulamasıdır.
+BaseValue içinde olan okuma ve yazma aşırı yüklemelerinin, ileten uyumluluk için ilgili aşırı yüklerini çağırdığına göz atın.
 
 ```csharp
 public class OrderKeySerializer : IStateSerializer<OrderKey>
@@ -124,24 +124,24 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 }
 ```
 
-## <a name="upgradability"></a>Yükseltilebilirlik
-[Yuvarlanan uygulama yükseltmesinde](service-fabric-application-upgrade.md)yükseltme, düğümlerin bir alt kümesine, bir defada bir yükseltme etki alanına uygulanır. Bu işlem sırasında, bazı yükseltme etki alanları uygulamanızın yeni sürümünde ve bazı yükseltme etki alanları uygulamanızın eski sürümünde olacaktır. Kullanıma alma sırasında, uygulamanızın yeni sürümü verilerinizin eski sürümünü okuyabilmeli ve uygulamanızın eski sürümü verilerinizin yeni sürümünü okuyabilmeli. Veri biçimi ileri ve geri uyumlu değilse, yükseltme başarısız olabilir veya daha kötüsü, veriler kaybolabilir veya bozulabilir.
+## <a name="upgradability"></a>Yükseltilebilir maliyet
+Bir sıralı [uygulama yükseltmesinde](service-fabric-application-upgrade.md), yükseltme bir tek seferde bir yükseltme etki alanı olmak üzere düğümlerin bir alt kümesine uygulanır. Bu işlem sırasında, bazı yükseltme etki alanları uygulamanızın daha yeni bir sürümünde olur ve bazı yükseltme etki alanları uygulamanızın eski sürümünde olur. Dağıtım sırasında, uygulamanızın yeni sürümü verilerinizin eski sürümünü okuyabilmelidir ve uygulamanızın eski sürümü verilerinizin yeni sürümünü okuyabilmelidir olması gerekir. Veri biçimi ileri ve geri uyumlu değilse, yükseltme başarısız olabilir veya daha kötü, veriler kaybolabilir veya bozulabilir.
 
-Yerleşik serializer kullanıyorsanız, uyumluluk konusunda endişelenmenize gerek yoktur.
-Ancak, özel bir serializer veya DataContractSerializer kullanıyorsanız, veri sonsuz geri ve ileriye uyumlu olmalıdır.
-Başka bir deyişle, serializer her sürümü seriize ve tür herhangi bir sürümünü de-serialize gerekir.
+Yerleşik serileştirici kullanıyorsanız, uyumluluk konusunda endişelenmeniz gerekmez.
+Ancak, özel bir serileştirici veya DataContractSerializer kullanıyorsanız, verilerin sonsuza kadar geriye doğru ve uyumlu olması gerekir.
+Diğer bir deyişle, serileştirici sürümlerinin her sürümü, türün herhangi bir sürümünü seri hale getirmek ve seri hale getirmek için gereklidir.
 
-Veri Sözleşmesi kullanıcıları, alan ekleme, kaldırma ve değiştirme için iyi tanımlanmış sürüm kurallarına uymalıdır. Veri Sözleşmesi ayrıca bilinmeyen alanlarla başa çıkmak, serileştirme ve deserialization işlemine bağlanma ve sınıf kalıtımı ile başa çıkmak için de destek vardır. Daha fazla bilgi için [bkz.](https://msdn.microsoft.com/library/ms733127.aspx)
+Veri sözleşmesi kullanıcıları, alanları eklemek, kaldırmak ve değiştirmek için iyi tanımlanmış sürüm oluşturma kurallarını izlemelidir. Veri anlaşması Ayrıca bilinmeyen alanlarla işleme, serileştirme ve seri durumdan çıkarma işlemine bağlama ve sınıf devralma ile ilgilenme desteği de içerir. Daha fazla bilgi için bkz. [veri sözleşmesini kullanma](https://msdn.microsoft.com/library/ms733127.aspx).
 
-Özel serializer kullanıcıları, geriye ve ileriye uyumlu olduğundan emin olmak için kullandıkları serileştiricinin yönergelerine uymalıdır.
-Tüm sürümleri desteklemenin yaygın bir yolu, başlangıçta boyut bilgileri eklemek ve yalnızca isteğe bağlı özellikler eklemektir.
-Bu şekilde her sürüm olabildiğince okuyabilir ve akışın kalan bölümünün üzerinden atlayabilir.
+Özel seri hale getirici kullanıcıları, geriye doğru olduğundan ve uyumlu olduğundan emin olmak için kullandıkları seri hale getiricinin yönergelerine bağlı olmalıdır.
+Tüm sürümleri desteklemeye ilişkin yaygın bir yöntem, başlangıçta boyut bilgilerini eklemektir ve yalnızca isteğe bağlı özellikler eklemektir.
+Bu şekilde, her sürüm, akışın kalan kısmına göre okuyabileceği kadar okuyabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
   * [Serileştirme ve yükseltme](service-fabric-application-upgrade-data-serialization.md)
-  * [Güvenilir Koleksiyonlar için geliştirici başvurusu](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-  * [Visual Studio kullanarak Uygulama yükseltme](service-fabric-application-upgrade-tutorial.md) Visual Studio kullanarak bir uygulama yükseltme ile size yol.
-  * [Powershell kullanarak Uygulamayükseltme PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) kullanarak bir uygulama yükseltme ile size yol.
-  * [Yükseltme](service-fabric-application-upgrade-parameters.md)Parametreleri'ni kullanarak uygulamanızın nasıl yükselttikini kontrol edin.
-  * [Gelişmiş Konular'a](service-fabric-application-upgrade-advanced.md)atıfta bulunarak uygulamanızı yükseltirken gelişmiş işlevselliği nasıl kullanacağınızı öğrenin.
-  * [Sorun Giderme Uygulama Yükseltmeleri'ndeki](service-fabric-application-upgrade-troubleshooting.md)adımlara atıfta bulunarak uygulama yükseltmelerinde sık karşılaşılan sorunları giderin.
+  * [Güvenilir koleksiyonlar için geliştirici başvurusu](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Visual Studio 'Yu kullanarak uygulamanızı yükseltmek](service-fabric-application-upgrade-tutorial.md) , Visual Studio kullanarak bir uygulama yükseltme işleminde size yol gösterir.
+  * [PowerShell kullanarak uygulamanızı yükseltmek](service-fabric-application-upgrade-tutorial-powershell.md) , PowerShell kullanarak bir uygulama yükseltme işleminde size yol gösterir.
+  * Uygulamanızın [yükseltme parametrelerini](service-fabric-application-upgrade-parameters.md)kullanarak nasıl yükseltileceğini denetleyin.
+  * [Gelişmiş konulara](service-fabric-application-upgrade-advanced.md)başvurarak uygulamanızı yükseltirken gelişmiş işlevselliği nasıl kullanacağınızı öğrenin.
+  * Uygulama [yükseltmelerinde sorun giderme](service-fabric-application-upgrade-troubleshooting.md)adımlarını izleyerek uygulama yükseltmelerinde karşılaşılan yaygın sorunları giderin.

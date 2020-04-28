@@ -1,6 +1,6 @@
 ---
-title: Azure API Yönetimi için güvenlik denetimleri
-description: API Yönetimini değerlendirmek için güvenlik denetimleri denetim listesi
+title: Azure API Management için güvenlik denetimleri
+description: API Management değerlendirmek için güvenlik denetimlerinin denetim listesi
 services: api-management
 author: vladvino
 ms.service: api-management
@@ -8,68 +8,68 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
 ms.openlocfilehash: 670050efe01fb658fab52a43914f193e9798b828
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75751131"
 ---
-# <a name="security-controls-for-api-management"></a>API Yönetimi için güvenlik denetimleri
+# <a name="security-controls-for-api-management"></a>API Management için güvenlik denetimleri
 
-Bu makalede, API Yönetimi yerleşik güvenlik denetimleri belgeler.
+Bu makalede, API Management yerleşik olarak bulunan güvenlik denetimleri Belgelenebilir.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Ağ
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar | Belgeler |
+| Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler |
 |---|---|--|--|
-| Hizmet bitiş noktası desteği| Hayır | |  |
-| VNet enjeksiyon desteği| Evet | |  |
-| Ağ yalıtımı ve güvenlik duvarı desteği| Evet | Ağ güvenlik gruplarını (NSG) ve Azure Application Gateway 'i (veya diğer yazılım cihazlarını) sırasıyla kullanma. |  |
-| Zorunlu tünel desteği| Evet | Azure ağ zorunlu tünel sağlar. |  |
+| Hizmet uç noktası desteği| Hayır | |  |
+| VNet ekleme desteği| Yes | |  |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Yes | Sırasıyla ağ güvenlik grupları (NSG) ve Azure Application Gateway (veya diğer yazılım gereci) kullanma. |  |
+| Zorlamalı tünel desteği| Yes | Azure ağı Zorlamalı tünel sağlar. |  |
 
-## <a name="monitoring--logging"></a>İzleme & günlüğe kaydetme
+## <a name="monitoring--logging"></a>& günlüğü izleme
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar| Belgeler |
+| Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler |
 |---|---|--|--|
-| Azure izleme desteği (Log analitiği, Uygulama öngörüleri, vb.)| Evet | | |
-| Kontrol ve yönetim düzlemi günlüğü ve denetimi| Evet | [Azure Monitör etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md) | |
-| Veri düzlemi günlüğü ve denetimi| Evet | [Azure Tanı günlüklerini](../azure-monitor/platform/platform-logs-overview.md) ve (isteğe bağlı olarak) [Azure Uygulama Öngörülerini](../azure-monitor/app/app-insights-overview.md)izleyin.  | |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Yes | | |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Yes | [Azure Izleyici etkinlik günlükleri](../azure-monitor/platform/platform-logs-overview.md) | |
+| Veri düzlemi günlüğü ve denetimi| Yes | [Azure izleyici tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md) ve (isteğe bağlı olarak) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md).  | |
 
 
 ## <a name="identity"></a>Kimlik
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar| Belgeler |
+| Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler |
 |---|---|--|--|
-| Kimlik doğrulaması| Evet | |  |
-| Yetkilendirme| Evet | |  |
+| Kimlik Doğrulaması| Yes | |  |
+| Yetkilendirme| Yes | |  |
 
 ## <a name="data-protection"></a>Veri koruma
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar | Belgeler |
+| Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler |
 |---|---|--|--|
-| Sunucu tarafında şifreleme istirahat: Microsoft tarafından yönetilen anahtarlar | Evet | Sertifikalar, anahtarlar ve gizli adlandırılmış değerler gibi hassas veriler, hizmet örneği anahtarları başına hizmet yönetimiyle şifrelenir. |  |
-| Sunucu tarafında şifreleme istirahat: müşteri tarafından yönetilen anahtarlar (BYOK) | Hayır | Tüm şifreleme anahtarları hizmet örneği başınadır ve hizmet tarafından yönetilir. |  |
-| Sütun düzeyi şifreleme (Azure Veri Hizmetleri)| Yok | |  |
-| Aktarım sırasında şifreleme (ExpressRoute şifreleme, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | [Express Route](../expressroute/index.yml) ve VNet şifrelemesi [Azure ağı](../virtual-network/index.yml)tarafından sağlanır. |  |
-| API şifreli aramalar| Evet | Yönetim düzlemi aramaları TLS üzerinden [Azure Kaynak Yöneticisi](../azure-resource-manager/index.yml) üzerinden yapılır. Geçerli bir JSON web belirteci (JWT) gereklidir.  Veri düzlemi aramaları TLS ve desteklenen kimlik doğrulama mekanizmalarından biri (örneğin, istemci sertifikası veya JWT) ile güvence altına alınabilir. |   |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Yes | Sertifikalar, anahtarlar ve gizli-adlandırılmış değerler gibi hassas veriler hizmet tarafından yönetilen hizmet örneği anahtarları ile şifrelenir. |  |
+| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Hayır | Tüm şifreleme anahtarları hizmet örneği başına alınır ve hizmet yönetilir. |  |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |  |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Yes | [Express Route](../expressroute/index.yml) ve VNET şifrelemesi, [Azure ağı](../virtual-network/index.yml)tarafından sağlanır. |  |
+| Şifrelenmiş API çağrıları| Yes | Yönetim düzlemi çağrıları TLS üzerinden [Azure Resource Manager](../azure-resource-manager/index.yml) üzerinden yapılır. Geçerli bir JSON Web belirteci (JWT) gerekiyor.  Veri düzlemi çağrıları TLS ve desteklenen kimlik doğrulama mekanizmalarından biri (örneğin, istemci sertifikası veya JWT) ile güvenli hale getirilmiş olabilir. |   |
  |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar| Belgeler |
+| Güvenlik denetimi | Evet/Hayır | Notlar| Belgeler |
 |---|---|--|--|
-| Yapılandırma yönetimi desteği (yapılandırmanın sürümü, vb.)| Evet | Azure [API Yönetimi DevOps Kaynak Kitini](https://aka.ms/apimdevops) Kullanma |  |
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Yes | [Azure API Management DevOps kaynak setini](https://aka.ms/apimdevops) kullanma |  |
 
-## <a name="vulnerability-scans-false-positives"></a>Güvenlik açığı yanlış pozitif leri tarar
+## <a name="vulnerability-scans-false-positives"></a>Güvenlik açığı yanlış pozitifleri tarar
 
-Bu bölümde, Azure API Yönetimi'ni etkilemeyen yaygın güvenlik açıkları belgelenemektedir.
+Bu bölüm, Azure API Management etkilemeyen yaygın güvenlik açıklarını belgelemektedir.
 
 | Güvenlik açığı               | Açıklama                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Biletli (CVE-2016-9244) | Ticketbleed, bazı F5 ürünlerinde bulunan TLS SessionTicket uzantısının uygulanmasında güvenlik açığıdır. Başlamayan bellekten 31 bayta kadar veri sızıntısına ("kanama") izin verir. Bunun nedeni, istemciden geçirilen ve 32 bit uzunluğunda veri içeren BIR Oturum Kimliği doldurma TLS yığınından kaynaklanır. |
+| Bilet taşma payı (CVE-2016-9244) | Bilet taşma payı, bazı F5 ürünlerinde bulunan TLS Sessionbilet uzantısının uygulanmasında güvenlik açığıdır. Başlatılmamış bellekten 31 baytlık verilerin sızıntısını ("bleden") sağlar. Bunun nedeni, istemciden geçirilen bir oturum kimliği olan bir oturum kimliğini doldurmasından kaynaklanır ve bu da BT 32 bit uzunluğunda hale gelir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure hizmetlerinde yerleşik güvenlik denetimleri](../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.
+- [Azure hizmetleri genelinde yerleşik güvenlik denetimleri](../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.

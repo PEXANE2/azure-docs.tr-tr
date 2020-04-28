@@ -1,6 +1,6 @@
 ---
-title: Apache Hadoop ile MapReduce ve PowerShell'i kullanma - Azure HDInsight
-description: HDInsight'ta Apache Hadoop ile MapReduce işlerini uzaktan çalıştırmak için PowerShell'i nasıl kullanacağınızı öğrenin.
+title: Apache Hadoop-Azure HDInsight ile MapReduce ve PowerShell kullanma
+description: HDInsight üzerinde Apache Hadoop MapReduce işlerini uzaktan çalıştırmak için PowerShell 'in nasıl kullanılacağını öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
 ms.openlocfilehash: b3c1abb7bff54e3e2d294b073b867c6c0e06f482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75830080"
 ---
-# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>PowerShell'i kullanarak HDInsight'ta Apache Hadoop ile MapReduce işlerini çalıştırın
+# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>PowerShell kullanarak MapReduce işlerini HDInsight üzerinde Apache Hadoop çalıştırma
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Bu belge, HDInsight kümesindeki bir Hadoop'ta MapReduce işini çalıştırmak için Azure PowerShell'i kullanmanın bir örneğini sağlar.
+Bu belge, HDInsight kümesinde Hadoop 'ta MapReduce işini çalıştırmak için Azure PowerShell kullanılmasına bir örnek sağlar.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* HDInsight'ta bir Apache Hadoop kümesi. Bkz. [Azure portalını kullanarak Apache Hadoop kümeleri oluşturun.](../hdinsight-hadoop-create-linux-clusters-portal.md)
+* HDInsight üzerinde bir Apache Hadoop kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-* PowerShell [Az Modülü](https://docs.microsoft.com/powershell/azure/overview) kuruldu.
+* PowerShell [az Module](https://docs.microsoft.com/powershell/azure/overview) yüklendi.
 
-## <a name="run-a-mapreduce-job"></a>MapReduce işini çalıştırın
+## <a name="run-a-mapreduce-job"></a>MapReduce işi çalıştırma
 
-Azure PowerShell, HDInsight'ta MapReduce işlerini uzaktan çalıştırmanızı sağlayan *cmdletsağlar.* Dahili olarak PowerShell, HDInsight kümesinde çalışan [WebHCat'e](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (eski adıyla Templeton) REST aramaları yapar.
+Azure PowerShell HDInsight 'ta MapReduce işlerini uzaktan çalıştırmanıza olanak tanıyan *cmdlet 'ler* sağlar. Dahili olarak PowerShell, HDInsight kümesinde çalışan [Webhcat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (eski adı Templeton) için REST çağrıları yapar.
 
-Aşağıdaki cmdlets uzak bir HDInsight kümesinde MapReduce işleri çalıştırırken kullanılır.
+Aşağıdaki cmdlet 'ler, MapReduce işlerini uzak bir HDInsight kümesinde çalıştırırken kullanılır.
 
 |Cmdlet | Açıklama |
 |---|---|
-|Bağlan-AzHesap|Azure aboneliğinizde Azure PowerShell'in kimliğini doğrular.|
-|Yeni-AzHDInsightMapReduceJobDefinition|Belirtilen MapReduce bilgilerini kullanarak yeni bir *iş tanımı* oluşturur.|
-|Başlangıç-AzHDInsightJob|İş tanımını HDInsight'a gönderir ve işi başlatır. Bir *iş* nesnesi döndürülür.|
-|Bekleyin-AzHDInsightJob|İş durumunu denetlemek için iş nesnesini kullanır. İş tamamlanana veya bekleme süresi aşılana kadar bekler.|
-|Get-AzHDInsightJobOutput|İşin çıktısını almak için kullanılır.|
+|Connect-AzAccount|Azure aboneliğinize Azure PowerShell kimliğini doğrular.|
+|New-AzHDInsightMapReduceJobDefinition|Belirtilen MapReduce bilgilerini kullanarak yeni bir *iş tanımı* oluşturur.|
+|Start-AzHDInsightJob|İş tanımını HDInsight 'a gönderir ve işi başlatır. Bir *iş* nesnesi döndürülür.|
+|Wait-AzHDInsightJob|İşin durumunu denetlemek için iş nesnesini kullanır. İş tamamlanana kadar bekler veya bekleme süresi aşana kadar bekler.|
+|Get-AzHDInsightJobOutput|İşin çıkışını almak için kullanılır.|
 
-Aşağıdaki adımlar, HDInsight kümenizde bir işi çalıştırmak için bu cmdletlerin nasıl kullanılacağını gösterir.
+Aşağıdaki adımlarda, HDInsight kümenizdeki bir işi çalıştırmak için bu cmdlet 'lerin nasıl kullanılacağı gösterilmektedir.
 
-1. Bir düzenleyici kullanarak, **mapreducejob.ps1**olarak aşağıdaki kodu kaydedin.
+1. Bir düzenleyici kullanarak, aşağıdaki kodu **mapreducejob. ps1**olarak kaydedin.
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
-2. Yeni bir **Azure PowerShell** komut istemi açın. Dizinleri **mapreducejob.ps1** dosyasının konumuyla değiştirin ve komut dosyasını çalıştırmak için aşağıdaki komutu kullanın:
+2. Yeni bir **Azure PowerShell** komut istemi açın. Dizinleri **mapreducejob. ps1** dosyasının konumuyla değiştirin, ardından betiği çalıştırmak için aşağıdaki komutu kullanın:
 
         .\mapreducejob.ps1
 
-    Komut dosyasını çalıştırdığınızda, HDInsight kümesinin adı ve küme girişi için istenirsiniz. Azure aboneliğinizde kimlik doğrulamanız da istenebilir.
+    Betiği çalıştırdığınızda, HDInsight kümesinin adı ve küme oturumu açmanız istenir. Ayrıca Azure aboneliğinizde kimlik doğrulaması yapmanız da istenebilir.
 
-3. İş tamamlandığında, aşağıdaki metne benzer çıktı alırsınız:
+3. İş tamamlandığında, aşağıdaki metne benzer bir çıktı alırsınız:
 
         Cluster         : CLUSTERNAME
         ExitCode        : 0
@@ -68,20 +68,20 @@ Aşağıdaki adımlar, HDInsight kümenizde bir işi çalıştırmak için bu cm
     Bu çıktı, işin başarıyla tamamlandığını gösterir.
 
     > [!NOTE]  
-    > **ExitCode** 0'dan başka bir değerse, [sorun giderme'ye](#troubleshooting)bakın.
+    > **ExitCode** 0 dışında bir değer ise bkz. [sorun giderme](#troubleshooting).
 
-    Bu örnek, indirdiğiniz dosyaları komut dosyasını çalıştırdığınız dizinde **bir output.txt** dosyasına da depolar.
+    Bu örnek ayrıca indirilen dosyaları, komut dosyasını çalıştırdığınız dizindeki bir **output. txt** dosyasına depolar.
 
-### <a name="view-output"></a>Çıktıyı görüntüleme
+### <a name="view-output"></a>Çıktıyı görüntüle
 
-İş tarafından üretilen sözcükleri ve sayıları görmek için, bir metin düzenleyicisinde **output.txt** dosyasını açın.
+İş tarafından üretilen kelimeleri ve sayıları görmek için, **çıktı. txt** dosyasını bir metin düzenleyicisinde açın.
 
 > [!NOTE]  
-> MapReduce işinin çıktı dosyaları değişmez. Bu nedenle, bu örneği yeniden çalıştıracaksanız, çıktı dosyasının adını değiştirmeniz gerekir.
+> MapReduce işinin çıkış dosyaları sabittir. Bu nedenle, bu örneği yeniden çalıştırırsanız, çıkış dosyasının adını değiştirmeniz gerekir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-İş tamamlandığında hiçbir bilgi döndürülmezse, iş için hataları görüntüleyin. Bu işin hata bilgilerini görüntülemek için **mapreducejob.ps1** dosyasının sonuna aşağıdaki komutu ekleyin. Sonra dosyayı kaydedin ve komut dosyasını yeniden çalıştırın.
+İş tamamlandığında hiçbir bilgi döndürülmezse, iş için hataları görüntüleyin. Bu işin hata bilgilerini görüntülemek için, **mapreducejob. ps1** dosyasının sonuna aşağıdaki komutu ekleyin. Ardından dosyayı kaydedin ve betiği yeniden çalıştırın.
 
 ```powershell
 # Print the output of the WordCount job.
@@ -93,11 +93,11 @@ Get-AzHDInsightJobOutput `
         -DisplayOutputType StandardError
 ```
 
-Bu cmdlet, iş çalışırken STDERR'ye yazılan bilgileri döndürür.
+Bu cmdlet, iş çalıştığı için STDERR 'e yazılan bilgileri döndürür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Gördüğünüz gibi Azure PowerShell, MapReduce işlerini bir HDInsight kümesinde çalıştırmak, iş durumunu izlemek ve çıktıyı almak için kolay bir yol sağlar. HDInsight'ta Hadoop ile çalışabileceğiniz diğer yollar hakkında bilgi için:
+Gördüğünüz gibi Azure PowerShell, MapReduce işlerini HDInsight kümesinde çalıştırmanın kolay bir yolunu sağlar, iş durumunu izleyebilir ve çıktıyı alabilir. HDInsight 'ta Hadoop ile birlikte çalışmak için kullanabileceğiniz diğer yollar hakkında daha fazla bilgi için:
 
-* [HDInsight Hadoop'ta MapReduce'i kullanın](hdinsight-use-mapreduce.md)
-* [HDInsight'ta Apache Hadoop ile Apache Hive kullanın](hdinsight-use-hive.md)
+* [HDInsight Hadoop üzerinde MapReduce kullanma](hdinsight-use-mapreduce.md)
+* [HDInsight üzerinde Apache Hadoop ile Apache Hive kullanma](hdinsight-use-hive.md)

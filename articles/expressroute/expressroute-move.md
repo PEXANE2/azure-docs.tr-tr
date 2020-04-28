@@ -1,6 +1,6 @@
 ---
-title: "ExpressRoute: Devreleri klasikten Azure Kaynak Yöneticisi'ne taşıyın"
-description: Klasik ve Kaynak Yöneticisi dağıtım modellerini köprülemeye genel bakış.
+title: "ExpressRoute: devreleri klasik 'dan Azure Resource Manager taşıyın"
+description: Klasik ve Kaynak Yöneticisi dağıtım modellerinin köprülemesi için genel bakış.
 services: expressroute
 author: ganesr
 ms.service: expressroute
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
 ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645914"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute bağlantı hatlarını klasikten Resource Manager dağıtım modeline taşıma
@@ -57,7 +57,7 @@ ExpressRoute bağlantı hattının **allowClassicOperations** parametresini ayar
 * Klasik sanal ağlara sanal ağ bağlantıları oluşturma/güncelleştirme/alma/silme
 * çapraz abonelik bağlantısı için sanal ağ bağlantı yetkilerini oluşturma/güncelleştirme/alma/silme
 
-Ancak, **allowClassicOperations** TRUE olarak ayarlandığında, aşağıdaki klasik işlemleri gerçekleştiremezsiniz:
+Ancak, **Allowclassicoperations** değeri true olarak ayarlandığında, aşağıdaki klasik işlemleri gerçekleştiremezsiniz:
 
 * Azure özel, Azure genel ve Microsoft eşlemeleri için Sınır Ağ Geçidi Protokolü (BGP) eşlemeleri oluşturma/güncelleştirme/alma/silme
 * ExpressRoute bağlantı hatlarını silme

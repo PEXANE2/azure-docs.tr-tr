@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75708364"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Azure API Management performansını artırmak için önbelleğe alma ekleme
@@ -37,7 +37,7 @@ API Management işlemleri yanıt önbelleğe alma için yapılandırılabilir. Y
 ## <a name="availability"></a>Kullanılabilirlik
 
 > [!NOTE]
-> Dahili önbellek, Azure API Yönetimi'nin **Tüketim** katmanında kullanılamaz. Bunun yerine [Redis için harici bir Azure Önbelleği kullanabilirsiniz.](api-management-howto-cache-external.md)
+> İç önbellek, Azure API Management **Tüketim** katmanında kullanılamıyor. Bunun yerine [redin için bir dış Azure önbelleği kullanabilirsiniz](api-management-howto-cache-external.md) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -50,7 +50,7 @@ Bu öğreticiyi tamamlamak için:
 
 Bu örnekte önbelleğe alma ilkeleri kullanılarak, **GetSpeakers** işlemine yapılan ilk istek işlemi arka uç hizmetinden bir yanıt döndürür. Bu yanıt, belirtilen üst bilgiler ve sorgu dizesi parametreleri tarafından önbelleğe alınır ve anahtarlanır. Eşleşen parametrelerle, işleme yapılan sonraki çağrılar, önbelleğe alma süresi aralığı sona erinceye kadar, önbelleğe alınan yanıtın döndürülmesini sağlar.
 
-1. Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 2. APIM örneğinize göz atın.
 3. **API** sekmesini seçin.
 4. API listenizden **Tanıtım Konferansı API’sine** tıklayın.
@@ -75,13 +75,13 @@ Bu örnekte önbelleğe alma ilkeleri kullanılarak, **GetSpeakers** işlemine y
     **Süre** önbelleğe alınan yanıtların sona erme aralığını belirtir. Bu örnekte, aralık **20** saniyedir.
 
 > [!TIP]
-> [Azure API Yönetimi'nde Redis için harici bir Azure Önbelleği Kullan'da](api-management-howto-cache-external.md)açıklandığı gibi harici `caching-type` bir önbellek kullanıyorsanız, önbelleğe alma ilkelerinin özniteliğini belirtmek isteyebilirsiniz. Daha fazla ayrıntı için [API Yönetimi önbelleğe alma ilkelerine](api-management-caching-policies.md) bakın.
+> [Azure API Management redsıs için dış Azure önbelleği kullanma](api-management-howto-cache-external.md)bölümünde açıklandığı gibi dış önbellek kullanıyorsanız, önbelleğe alma ilkelerinin `caching-type` özniteliğini belirtmek isteyebilirsiniz. Daha fazla ayrıntı için bkz. [API Management önbelleğe alma ilkeleri](api-management-caching-policies.md) .
 
 ## <a name="call-an-operation-and-test-the-caching"></a><a name="test-operation"> </a>İşlem çağırma ve önbelleğe almayı test etme
 Önbelleğe alma eylemini görmek için, işlemi geliştirici portalından çağırın.
 
 1. Azure portalında APIM örneğinize göz atın.
-2. **API'ler** sekmesini seçin.
+2. **API 'ler** sekmesini seçin.
 3. Önbelleğe alma ilkelerini eklediğiniz API’leri seçin.
 4. **GetSpeakers** işlemini seçin.
 5. Sağ üst menüdeki **Test** sekmesine tıklayın.
@@ -90,7 +90,7 @@ Bu örnekte önbelleğe alma ilkeleri kullanılarak, **GetSpeakers** işlemine y
 ## <a name="next-steps"></a><a name="next-steps"> </a>Sonraki adımlar
 * Önbelleğe alma ilkeleri hakkında daha fazla bilgi için bkz. [API Management ilke başvurusu][API Management policy reference]’nda [Önbelleğe alma ilkeleri][Caching policies].
 * Anahtar kullanım ilkesi ifadeleri hakkında daha fazla bilgi için bkz. [Azure API Management’te özel önbelleğe alma](api-management-sample-cache-by-key.md).
-* Redis için harici Azure Önbelleği kullanma hakkında daha fazla bilgi için [bkz.](api-management-howto-cache-external.md)
+* Redin için dış Azure önbelleğini kullanma hakkında daha fazla bilgi için bkz. [Azure 'Da redin için dış Azure önbelleği kullanma API Management](api-management-howto-cache-external.md).
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
 [api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png

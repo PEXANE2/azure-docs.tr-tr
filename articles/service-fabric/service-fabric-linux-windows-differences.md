@@ -1,27 +1,27 @@
 ---
-title: Azure Hizmet Kumaşı Linux ve Windows arasındaki farklar
+title: Linux ve Windows arasındaki Azure Service Fabric farklılıkları
 description: Linux üzerindeki Azure Service Fabric ile Windows üzerindeki Azure Service Fabric arasındaki farklar.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: sfrev
 ms.openlocfilehash: c064291491110b17c172a561afbd1e65d6c08d06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75748536"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Linux ve Windows üzerindeki Service Fabric arasındaki farklar
 
-Windows'da desteklenip Linux'ta henüz desteklenmeyen bazı özellikler mevcuttur. Bu nedenle özellik kümeleri birbirinden farklı olacak ve bu fark yeni sürümlerle azalacaktır. Aşağıdaki farklar, kullanılabilir en son sürümler arasında vardır.
+Windows'da desteklenip Linux'ta henüz desteklenmeyen bazı özellikler mevcuttur. Bu nedenle özellik kümeleri birbirinden farklı olacak ve bu fark yeni sürümlerle azalacaktır. Kullanılabilir en son sürümler arasında aşağıdaki farklar vardır.
 
-* Elçi (Ters Proxy) Linux önizleme olduğunu
+* Envoy (ters proxy) Linux 'ta önizlemededir
 * Linux için tek başına yükleyici, Linux üzerinde kullanılamaz
 * Konsol yönlendirmesi (Linux veya Windows üretim kümelerinde desteklenmez)
 * Linux'ta Hata Analizi Hizmeti (FAS)
 * Service Fabric hizmetleri için DNS hizmeti (DNS hizmeti Linux üzerindeki kapsayıcılar için desteklenir)
 * Belirli Powershell komutlarının CLI komutu eşdeğerleri (liste aşağıda verilmiştir, komutların çoğu yalnızca tek başına kümeler için geçerlidir)
-* [Ölçeklenebilirliği etkileyebilecek günlük uygulamasındaki farklar](service-fabric-concepts-scalability.md#choosing-a-platform)
+* [Günlük uygulamasındaki ölçeklenebilirliği etkileyebilecek farklılıklar](service-fabric-concepts-scalability.md#choosing-a-platform)
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>Linux Service Fabric kümesinde çalışmayan PowerShell cmdlet'leri
 

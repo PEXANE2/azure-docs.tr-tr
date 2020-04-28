@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri v3 .NET SDK ile filtre oluşturma
-description: Bu konu, istemcinizin bir akışın belirli bölümlerini akışı için bunları kullanabilmesi için filtrelerin nasıl oluşturulabileceğini açıklar. Medya Hizmetleri, bu seçici akışı elde etmek için dinamik bildirimler oluşturur.
+title: Azure Media Services v3 .NET SDK ile Filtreler oluşturma
+description: Bu konuda, istemcinizin bir akışın belirli bölümlerini akışa almak için bunları kullanabilmesi için filtrelerin nasıl oluşturulacağı açıklanmaktadır. Media Services, bu seçmeli akışa ulaşmak için dinamik bildirimler oluşturuyor.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,35 +14,35 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: juliako
 ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75779255"
 ---
-# <a name="create-filters-with-media-services-net-sdk"></a>Medya Hizmetleri .NET SDK ile filtre oluşturma
+# <a name="create-filters-with-media-services-net-sdk"></a>Media Services .NET SDK ile filtre oluşturma
 
-İçeriğinizi müşterilere teslim ederken (Canlı etkinlikler veya Talep Üzerine Video akışı) müşterinizin varsayılan varlığın bildirim dosyasında açıklanandan daha fazla esnekliğe ihtiyacı olabilir. Azure Medya Hizmetleri, içeriğiniz için hesap filtreleri ve varlık filtreleri tanımlamanıza olanak tanır. 
+İçeriğinizi müşterilere sunarken (canlı etkinlikler veya Isteğe bağlı video akışı), istemciniz varsayılan varlığın bildirim dosyasında açıklananlardan daha fazla esneklik gerektirebilir. Azure Media Services, içeriğiniz için hesap filtrelerini ve varlık filtrelerini tanımlamanızı sağlar. 
 
-Bu özelliğin ayrıntılı açıklaması ve kullanıldığı [senaryolar](filters-concept.md)için [Dinamik Bildirimler](filters-dynamic-manifest-overview.md) ve Filtreler bölümüne bakın.
+Bu özelliğin ve kullanılan senaryoların ayrıntılı açıklaması için bkz. [dinamik bildirimler](filters-dynamic-manifest-overview.md) ve [Filtreler](filters-concept.md).
 
-Bu konu, Talep üzerine Video kıymeti için bir filtre tanımlamak ve [Hesap Filtreleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) ve [Varlık Filtreleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)oluşturmak için Medya Hizmetleri .NET SDK'nın nasıl kullanılacağını gösterir. 
+Bu konu başlığı altında, Isteğe bağlı bir video için filtre tanımlamak ve [hesap filtreleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) ve [varlık filtreleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)oluşturmak için Media Services .NET SDK 'nın nasıl kullanılacağı gösterilmektedir. 
 
 > [!NOTE]
-> Sunuyu gözden geçirdiğinden emin [olunTimeRange](filters-concept.md#presentationtimerange).
+> [Presentationtimerange](filters-concept.md#presentationtimerange)öğesini gözden geçirdiğinizden emin olun.
 
 ## <a name="prerequisites"></a>Ön koşullar 
 
-- [Filtreleri ve dinamik bildirimleri gözden geçirin.](filters-dynamic-manifest-overview.md)
-- [Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md) Kaynak grup adını ve Medya Hizmetleri hesap adını hatırladığından emin olun. 
-- [API'lere erişmek](access-api-cli-how-to.md) için gereken bilgileri alın
-- [.NET SDK'yı kullanmaya](stream-files-tutorial-with-api.md#start_using_dotnet) nasıl başlayacağımı görmek için [Azure Medya Hizmetlerini kullanarak Upload'u, kodlamayı ve akışı](stream-files-tutorial-with-api.md) gözden geçirin
+- [Filtreleri ve dinamik bildirimleri](filters-dynamic-manifest-overview.md)gözden geçirin.
+- [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
+- [API 'lere erişmek](access-api-cli-how-to.md) için gereken bilgileri alın
+- [.NET SDK 'yı kullanmaya başlama](stream-files-tutorial-with-api.md#start_using_dotnet) hakkında bilgi için [Azure Media Services kullanarak karşıya yükleme, kodlama ve akışı](stream-files-tutorial-with-api.md) gözden geçirin
 
 ## <a name="define-a-filter"></a>Filtre tanımlama  
 
-.NET'te, izleme seçimlerini [FilterTrackSelection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) ve [FilterTrackPropertyCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) sınıfları ile yapılandırabilirsiniz. 
+.NET ' te, izleme seçimlerini [Filtertrackselection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) ve [Filtertrackpropertycondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) sınıflarıyla birlikte yapılandırırsınız. 
 
-Aşağıdaki kod, EC-3 olan ses parçalarını ve 0-1000000 aralığında bit hızıolan video parçalarını içeren bir filtre tanımlar.
+Aşağıdaki kod, EC-3 olan herhangi bir ses parçasını ve 0-1000000 aralığında bit hızına sahip herhangi bir video parçasını içeren bir filtre tanımlar.
 
 ```csharp
 var audioConditions = new List<FilterTrackPropertyCondition>()
@@ -66,7 +66,7 @@ List<FilterTrackSelection> includedTracks = new List<FilterTrackSelection>()
 
 ## <a name="create-account-filters"></a>Hesap filtreleri oluşturma
 
-Aşağıdaki kod, yukarıda tanımlanan tüm parça seçimlerini içeren bir hesap filtresi oluşturmak için .NET'in nasıl [kullanılacağını](#define-a-filter)gösterir. 
+Aşağıdaki kod, [yukarıda tanımlanan](#define-a-filter)tüm izleme seçimlerini içeren bir hesap filtresi oluşturmak için .net 'in nasıl kullanılacağını gösterir. 
 
 ```csharp
 AccountFilter accountFilterParams = new AccountFilter(tracks: includedTracks);
@@ -75,18 +75,18 @@ client.AccountFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, "
 
 ## <a name="create-asset-filters"></a>Varlık filtreleri oluşturma
 
-Aşağıdaki kod, yukarıda tanımlanan tüm parça seçimlerini içeren bir varlık filtresi oluşturmak için .NET'in nasıl [kullanılacağını](#define-a-filter)gösterir. 
+Aşağıdaki kod, [yukarıda tanımlanan](#define-a-filter)tüm izleme seçimlerini içeren bir varlık filtresi oluşturmak için .net 'in nasıl kullanılacağını gösterir. 
 
 ```csharp
 AssetFilter assetFilterParams = new AssetFilter(tracks: includedTracks);
 client.AssetFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, encodedOutputAsset.Name, "assetFilterName1", assetFilterParams);
 ```
 
-## <a name="associate-filters-with-streaming-locator"></a>Filtreleri Akış Bulucu ile ilişkilendirin
+## <a name="associate-filters-with-streaming-locator"></a>Filtreleri akış bulucu ile ilişkilendir
 
-Akış Lı'nız için geçerli olacak varlık veya hesap filtrelerinin listesini belirtebilirsiniz. [Dinamik Paketleyici (Streaming Endpoint),](dynamic-packaging-overview.md) bu filtre listesini istemcinizin URL'de belirttiği filtrelerle birlikte uygular. Bu kombinasyon, Akış Lı Buluc'ta belirttiğiniz URL + filtrelerdeki filtrelere dayanan [dinamik bir bildirim](filters-dynamic-manifest-overview.md)oluşturur. Filtre uygulamak istiyorsanız ancak URL'deki filtre adlarını ortaya çıkarmak istemiyorsanız bu özelliği kullanmanızı öneririz.
+Akış Konumlayıcı için uygulanabilecek varlık veya hesap filtrelerinin bir listesini belirtebilirsiniz. [Dinamik Paketleyici (akış uç noktası)](dynamic-packaging-overview.md) , bu filtre listesini ISTEMCINIZDEKI URL 'de belirttiği değişikliklerle birlikte uygular. Bu bileşim, akış Bulucu üzerinde belirlediğiniz URL + filtrelerdeki filtreleri temel alan [dinamik bir bildirim](filters-dynamic-manifest-overview.md)oluşturur. Filtre uygulamak, ancak URL 'de filtre adlarını göstermek istemiyorsanız bu özelliği kullanmanızı öneririz.
 
-Aşağıdaki C# kodu, Akış Bulucu'nun nasıl `StreamingLocator.Filters`oluşturulup belirtilen. Bu, filtre adlarından `IList<string>` oluşan isteğe bağlı bir özelliktir.
+Aşağıdaki C# kodu, bir akış Bulucu oluşturmayı ve belirtmeyi `StreamingLocator.Filters`gösterir. Bu, filtre adlarından `IList<string>` birini alan isteğe bağlı bir özelliktir.
 
 ```csharp
 IList<string> filters = new List<string>();
@@ -106,9 +106,9 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
       
 ## <a name="stream-using-filters"></a>Filtreleri kullanarak akış
 
-Filtreleri tanımladıktan sonra, istemcileriniz bunları akış URL'sinde kullanabilir. Filtreler uyarlanabilir bitrate akış protokollerine uygulanabilir: Apple HTTP Live Streaming (HLS), MPEG-DASH ve Smooth Streaming.
+Filtreleri tanımladıktan sonra, istemcileriniz bunları akış URL 'sinde kullanabilir. Filtreler, uyarlamalı bit hızı akış protokollerine uygulanabilir: Apple HTTP Canlı Akışı (HLS), MPEG-DASH ve Kesintisiz Akış.
 
-Aşağıdaki tablo, filtreli URL'lerin bazı örneklerini gösterir:
+Aşağıdaki tabloda, filtre içeren URL 'lerin bazı örnekleri gösterilmektedir:
 
 |Protokol|Örnek|
 |---|---|
@@ -118,6 +118,6 @@ Aşağıdaki tablo, filtreli URL'lerin bazı örneklerini gösterir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Videoları akış](stream-files-tutorial-with-api.md) 
+[Video akışı](stream-files-tutorial-with-api.md) 
 
 

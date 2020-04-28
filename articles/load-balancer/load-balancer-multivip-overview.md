@@ -1,6 +1,6 @@
 ---
-title: Birden çok frontends - Azure Yük Dengeleyicisi
-description: Bu öğrenme yolu ile Azure Yük Dengeleyicisi'ndeki birden fazla ön uça genel bakışla başlayın
+title: Birden çok ön uçlar-Azure Load Balancer
+description: Bu öğrenme yoluyla, Azure Load Balancer çoklu ön uçlara genel bakış ile çalışmaya başlayın
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
 ms.openlocfilehash: 0a54416a70a8561edfad5915944100e0ce686bbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75771266"
 ---
-# <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Yük Dengeleyicisi için birden çok ön uç
+# <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer için birden çok ön uç
 
-Azure Yük Dengeleyici, bakiye hizmetlerini birden çok bağlantı noktası, birden çok IP adresi veya her ikisine yüklemenize olanak tanır. Bir dizi VM üzerinden bakiye akışlarını yüklemek için genel ve dahili yük dengeleyici tanımlarını kullanabilirsiniz.
+Azure Load Balancer, birden fazla bağlantı noktası, birden çok IP adresi veya her ikisine birden Yük Dengeleme hizmeti sağlar. Ortak ve iç yük dengeleyici tanımlarını, bir VM kümesinde Yük Dengeleme akışları için kullanabilirsiniz.
 
-Bu makalede, bu yeteneğin temelleri, önemli kavramlar ve kısıtlamalar açıklanmaktadır. Hizmetleri yalnızca tek bir IP adresinde ifşa etmek istiyorsanız, [genel](load-balancer-get-started-internet-portal.md) veya [dahili](load-balancer-get-started-ilb-arm-portal.md) yük dengeleyici yapılandırmaları için basitleştirilmiş yönergeler bulabilirsiniz. Birden çok ön uç eklemek, tek bir frontend yapılandırmasına artımlıdır. Bu makaledeki kavramları kullanarak, istediğiniz zaman basitleştirilmiş bir yapılandırmayı genişletebilirsiniz.
+Bu makalede, bu özellik, önemli kavramlar ve kısıtlamaların temelleri açıklanmaktadır. Yalnızca hizmetleri tek bir IP adresinde açığa çıkarmak istiyorsanız, [genel](load-balancer-get-started-internet-portal.md) veya [iç](load-balancer-get-started-ilb-arm-portal.md) yük dengeleyici yapılandırmalarına yönelik Basitleştirilmiş yönergeler bulabilirsiniz. Birden çok ön uçların eklenmesi tek bir ön uç yapılandırmasına artımlı yapılır. Bu makaledeki kavramları kullanarak, Basitleştirilmiş bir yapılandırmayı dilediğiniz zaman genişletebilirsiniz.
 
-Bir Azure Yük Dengeleyicisi tanımladığınızda, bir ön uç ve arka uç havuzu yapılandırması kurallara bağlanır. Kural tarafından başvurulan sistem durumu sondası, arka uç havuzundaki bir düğüme nasıl yeni akışlar gönderildiğini belirlemek için kullanılır. Ön uç (aka VIP), bir IP adresi (genel veya dahili), bir aktarım protokolü (UDP veya TCP) ve yük dengeleme kuralından bir bağlantı noktası numarasından oluşan 3-tuple ile tanımlanır. Arka uç havuzu, Yük Dengeleyici arka uç havuzuna başvuran Sanal Makine IP yapılandırmaları (NIC kaynağının bir parçası) koleksiyonudur.
+Bir Azure Load Balancer tanımladığınızda, ön uç ve arka uç havuzu yapılandırması kurallarla bağlanır. Kural tarafından başvurulan sistem durumu araştırması, yeni akışların arka uç havuzundaki bir düğüme nasıl gönderileceğini belirlemekte kullanılır. Ön uç (diğer adıyla VIP), bir IP adresi (genel veya iç), bir Aktarım Protokolü (UDP veya TCP) ve yük dengeleme kuralındaki bir bağlantı noktası numarasından oluşan 3 tanımlama grubu tarafından tanımlanır. Arka uç havuzu, Load Balancer arka uç havuzuna başvuran sanal makine IP yapılandırmalarının (NIC kaynağının bir parçası) koleksiyonudur.
 
-Aşağıdaki tablo bazı örnek ön uç yapılandırmaları içerir:
+Aşağıdaki tabloda bazı örnek ön uç yapılandırması yer almaktadır:
 
 | Ön uç | IP adresi | protokol | port |
 | --- | --- | --- | --- |
@@ -36,125 +36,125 @@ Aşağıdaki tablo bazı örnek ön uç yapılandırmaları içerir:
 | 3 |65.52.0.1 |*UDP* |80 |
 | 4 |*65.52.0.2* |TCP |80 |
 
-Tablo dört farklı frontends gösterir. Frontends #1, #2 ve #3 birden fazla kural ile tek bir ön uç vardır. Aynı IP adresi kullanılır, ancak bağlantı noktası veya protokol her ön uç için farklıdır. Frontends #1 ve #4 birden çok frontends, aynı ön uç protokolü ve bağlantı noktası birden çok frontends arasında yeniden kullanılan bir örnektir.
+Tabloda dört farklı ön uçlar gösterilmektedir. Ön uç #1, #2 ve #3 birden çok kurala sahip tek bir ön uçlardır. Aynı IP adresi kullanılır, ancak bağlantı noktası ya da protokol her ön uç için farklıdır. Ön uç protokolünün ve bağlantı noktasının birden çok ön uçlarda yeniden kullanıldığı, ön uçlar #1 ve #4 birden çok ön uçlara bir örnektir.
 
-Azure Yük Dengeleyici, yük dengeleme kurallarını tanımlamada esneklik sağlar. Kural, ön uçtaki bir adresin ve bağlantı noktasının arka uçtaki hedef adrese ve bağlantı noktasına nasıl eşlendirilebildiğini bildirir. Arka uç bağlantı noktalarının kurallar arasında yeniden kullanılıp kullanılmadığı kuralın türüne bağlıdır. Her kural türü, ana bilgisayar yapılandırması ve sonda tasarımını etkileyebilecek özel gereksinimlere sahiptir. İki tür kural vardır:
+Azure Load Balancer Yük Dengeleme kurallarını tanımlama konusunda esneklik sağlar. Bir kural, Ön uçtaki bir adresin ve bağlantı noktasının arka uçtaki hedef adresle ve bağlantı noktasıyla nasıl eşleştirildiğini bildirir. Arka uç bağlantı noktalarının kurallar arasında tekrar kullanılıp kullanılmayacağını, kuralın türüne bağlıdır. Her kural türü, ana bilgisayar yapılandırma ve araştırma tasarımını etkileyebilecek özel gereksinimlere sahiptir. İki tür kural vardır:
 
-1. Arka uç bağlantı noktası yeniden kullanılmadan varsayılan kural
-2. Arka uç bağlantı noktalarının yeniden kullanıldığı Kayan IP kuralı
+1. Arka uç bağlantı noktası yeniden kullanımı olmayan varsayılan kural
+2. Arka uç bağlantı noktalarının tekrar kullanıldığı kayan IP kuralı
 
-Azure Yük Dengeleyici, her iki kural türünü de aynı yük dengeleyici yapılandırması üzerinde karıştırmanıza olanak tanır. Kural kısıtlamalarına uydunuzkça, yük dengeleyicisi bunları belirli bir VM veya herhangi bir kombinasyon için aynı anda kullanabilir. Seçtiğiniz kural türü, uygulamanızın gereksinimlerine ve bu yapılandırmayı desteklemenin karmaşıklığına bağlıdır. Senaryonuz için hangi kural türlerinin en iyi olduğunu değerlendirmelisiniz.
+Azure Load Balancer, her iki kural türünü de aynı yük dengeleyici yapılandırmasında karıştırabilmeniz için izin verir. Yük dengeleyici, kural kısıtlamalarına göre IDE olarak kullandığınız sürece, belirli bir VM veya herhangi bir bileşim için aynı anda kullanılabilir. Seçtiğiniz kural türü, uygulamanızın gereksinimlerine ve bu yapılandırmayı destekleme karmaşıklığına bağlıdır. Senaryonuza en uygun olan kural türlerini değerlendirmelisiniz.
 
-Varsayılan davranışla başlayarak bu senaryoları daha da inceleriz.
+Varsayılan davranışla başlayarak bu senaryoları daha ayrıntılı bir şekilde araştırıyoruz.
 
-## <a name="rule-type-1-no-backend-port-reuse"></a>Kural türü #1: Arka uç bağlantı noktası yeniden kullanımı yok
+## <a name="rule-type-1-no-backend-port-reuse"></a>Kural türü #1: arka uç bağlantı noktası yeniden kullanım yok
 
-![Yeşil ve mor ön uç ile birden fazla ön uç illüstrasyon](./media/load-balancer-multivip-overview/load-balancer-multivip.png)
+![Yeşil ve mor ön uçta birden çok ön uç çizimi](./media/load-balancer-multivip-overview/load-balancer-multivip.png)
 
-Bu senaryoda, ön uçlar aşağıdaki gibi yapılandırılır:
+Bu senaryoda ön uçlar aşağıdaki gibi yapılandırılır:
 
 | Ön uç | IP adresi | protokol | port |
 | --- | --- | --- | --- |
 | ![yeşil ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
-| ![mor ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
+| ![Mor ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
-DIP, gelen akışın varış noktasıdır. Arka uç havuzunda, her VM bir DIP üzerinde benzersiz bir bağlantı noktasında istenen hizmeti ortaya çıkarır. Bu hizmet, bir kural tanımı ile ön uç ile ilişkilidir.
+DIP, gelen akışın hedefi. Arka uç havuzunda, her VM istenen hizmeti bir DIP üzerindeki benzersiz bir bağlantı noktasında kullanıma sunar. Bu hizmet, ön uçta bir kural tanımıyla ilişkilendirilir.
 
-İki kural tanımlıyoruz:
+İki kural tanımlanıyoruz:
 
-| Kural | Harita ön uç | Arka uç havuzuiçin |
+| Kural | Ön uç eşleme | Arka uç havuzuna |
 | --- | --- | --- |
-| 1 |![yeşil ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
-| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
+| 1 |![yeşil ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP1:80, ![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) DIP2:80 |
+| 2 |![VIP](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Önuç2:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP1:81, ![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) DIP2:81 |
 
-Azure Yük Dengeleyicisi'ndeki tam eşleme şu şekildedir:
+Azure Load Balancer ' deki tüm eşleme artık şu şekildedir:
 
 | Kural | Ön uç IP adresi | protokol | port | Hedef | port |
 | --- | --- | --- | --- | --- | --- |
-| ![yeşil kural](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP IP Adresi |80 |
-| ![mor kural](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP IP Adresi |81 |
+| ![yeşil kural](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP IP adresi |80 |
+| ![Mor kural](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP IP adresi |81 |
 
-Her kural, hedef IP adresi ve hedef bağlantı noktasının benzersiz bir birleşimi ile bir akış oluşturmalıdır. Akışın hedef bağlantı noktasını değiştirerek, birden çok kural farklı bağlantı noktalarında aynı DIP'e akışlar sağlayabilir.
+Her kural, hedef IP adresi ve hedef bağlantı noktasının benzersiz bir birleşimini içeren bir akış üretmelidir. Akışın hedef bağlantı noktasını değiştirerek birden çok kural, farklı bağlantı noktalarında aynı DIP 'e akış sunabilir.
 
-Sağlık sondaları her zaman bir VM'nin DIP'sine yönlendirilir. Sondanızın VM'nin sağlığını yansıttığından emin olmalısınız.
+Sistem durumu araştırmaları her zaman bir VM 'nin DIP 'sine yönlendirilir. Araştırmanın VM 'nin sistem durumunu yansıttığından emin olmanız gerekir.
 
-## <a name="rule-type-2-backend-port-reuse-by-using-floating-ip"></a>Kural türü #2: Kayan IP kullanarak arka uç bağlantı noktası yeniden
+## <a name="rule-type-2-backend-port-reuse-by-using-floating-ip"></a>Kural türü #2: kayan IP kullanarak arka uç bağlantı noktası yeniden kullanımı
 
-Azure Yük Dengeleyici, kullanılan kural türünden bağımsız olarak ön uç bağlantı noktasını birden çok ön uçta yeniden kullanma esnekliği sağlar. Ayrıca, bazı uygulama senaryoları tercih veya arka uç havuzunda tek bir VM üzerinde birden çok uygulama örnekleri tarafından kullanılmak üzere aynı bağlantı noktası gerektirir. Bağlantı noktası yeniden kullanımına sık sık örnek olarak yüksek kullanılabilirlik için kümeleme, ağ sanal cihazları ve yeniden şifreleme olmadan birden çok TLS uç noktasını açığa çıkarmak sayılabilir.
+Azure Load Balancer, kullanılan kural türünden bağımsız olarak birden çok ön uç bağlantı noktasını yeniden kullanma esnekliği sağlar. Ayrıca, bazı uygulama senaryoları, arka uç havuzundaki tek bir VM 'de birden çok uygulama örneği tarafından kullanılacak bağlantı noktasını tercih eder veya gerektirir. Bağlantı noktası yeniden kullanımının yaygın örnekleri, yüksek kullanılabilirlik, ağ sanal cihazları için kümeleme ve yeniden şifrelemeden birden çok TLS uç noktası kullanıma sunma içerir.
 
-Arka uç bağlantı noktasını birden çok kural arasında yeniden kullanmak istiyorsanız, kural tanımında Kayan IP'yi etkinleştirmeniz gerekir.
+Arka uç bağlantı noktasını birden çok kural genelinde yeniden kullanmak istiyorsanız, kural tanımında kayan IP 'yi etkinleştirmeniz gerekir.
 
-"Kayan IP", Doğrudan Sunucu İadesi (DSR) olarak bilinen şeyin bir kısmı için Azure'un terminolojisidir. DSR iki bölümden oluşur: akış topolojisi ve IP adresi eşleme şeması. Platform düzeyinde, Azure Yük Dengeleyici, Kayan IP'nin etkin olup olmadığına bakılmaksızın her zaman bir DSR akış topolojisinde çalışır. Bu, bir akışın giden kısmının her zaman doğrudan menşeine akmak üzere doğru şekilde yeniden yazıldığı anlamına gelir.
+"Kayan IP", Azure 'un doğrudan sunucu dönüşü (DSR) olarak bilinen bir bölümü için kullanılan terminolojmedir. DSR iki bölümden oluşur: bir akış topolojisi ve bir IP adresi eşleme şeması. Bir platform düzeyinde Azure Load Balancer, kayan IP 'nin etkin olup olmamasına bakılmaksızın her zaman DSR akış topolojisinde çalışır. Bu, akışın giden bölümünün her zaman doğrudan başlangıca akışa doğru şekilde yeniden yazılması anlamına gelir.
 
-Varsayılan kural türüyle Azure, kullanım kolaylığı için geleneksel bir yük dengeleme IP adresi eşleme düzenini ortaya çıkarır. Kayan IP'yi etkinleştirmek, ip adresi eşleme düzenini değiştirerek aşağıda açıklandığı gibi ek esneklik sağlar.
+Varsayılan kural türüyle Azure, kullanım kolaylığı için geleneksel bir yük dengeleme IP adresi eşleme düzeni sunar. Kayan IP 'nin etkinleştirilmesi, IP adresi eşleme şemasını aşağıda açıklandığı gibi ek esneklik sağlayacak şekilde değiştirir.
 
-Aşağıdaki diyagram bu yapılandırmayı göstermektedir:
+Aşağıdaki diyagramda bu yapılandırma gösterilmektedir:
 
-![DSR ile yeşil ve mor ön uç ile birden fazla ön uç illüstrasyon](./media/load-balancer-multivip-overview/load-balancer-multivip-dsr.png)
+![DSR ile yeşil ve mor ön uç içeren birden çok ön uç çizimi](./media/load-balancer-multivip-overview/load-balancer-multivip-dsr.png)
 
-Bu senaryo için, arka uç havuzundaki her VM'nin üç ağ arabirimi vardır:
+Bu senaryo için, arka uç havuzundaki her sanal makinenin üç ağ arabirimi vardır:
 
-* DIP: VM ile ilişkili bir Sanal NIC (Azure'un NIC kaynağının IP yapılandırması)
-* Frontend 1: Konuk işletim sistemi içinde Frontend 1 IP adresi ile yapılandırılan bir döngü arabirimi
-* Frontend 2: Frontend 2 IP adresi ile yapılandırılan konuk işletim sistemi içinde bir loopback arabirimi
+* DIP: VM ile ilişkili bir sanal NIC (Azure 'un NIC kaynağı için IP yapılandırması)
+* Ön uç 1: Konuk işletim sisteminde, ön uç 1 IP adresiyle yapılandırılan bir geri döngü arabirimi
+* Ön uç 2: Konuk işletim sisteminde, ön uç 2 IP adresiyle yapılandırılmış bir geri döngü arabirimi
 
-Arka uç havuzundaki her VM için aşağıdaki komutları bir Windows Komut Komut Komut Ustem'de çalıştırın.
+Arka uç havuzundaki her VM için bir Windows komut Isteminde aşağıdaki komutları çalıştırın.
 
-VM'nizde sahip olduğunuz arabirim adlarının listesini almak için şu komutu yazın:
+VM 'niz üzerinde sahip olduğunuz arabirim adlarının listesini almak için şu komutu yazın:
 
     netsh interface show interface 
 
-VM NIC (Azure yönetilen) için şu komutu yazın:
+VM NIC (Azure tarafından yönetilen) için şu komutu yazın:
 
     netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled
-   (arayüz adını bu arabirimin adı ile değiştirin)
+   (InterfaceName değerini bu arabirimin adıyla değiştirin)
 
-Eklediğiniz her loopback arabirimi için şu komutları yineleyin:
+Eklediğiniz her geri döngü arabirimi için şu komutları tekrarlayın:
 
     netsh interface ipv4 set interface “interfacename” weakhostreceive=enabled 
-   (arabirim adını bu geri dönüş arabiriminin adı ile değiştirin)
+   (InterfaceName değerini bu geri döngü arabiriminin adıyla değiştirin)
      
     netsh interface ipv4 set interface “interfacename” weakhostsend=enabled 
-   (arabirim adını bu geri dönüş arabiriminin adı ile değiştirin)
+   (InterfaceName değerini bu geri döngü arabiriminin adıyla değiştirin)
 
 > [!IMPORTANT]
-> Loopback arabirimlerinin yapılandırması konuk işletim sistemi içinde gerçekleştirilir. Bu yapılandırma Azure tarafından gerçekleştirilmez veya yönetilmez. Bu yapılandırma olmadan, kurallar çalışmaz. Sistem durumu sondası tanımları, DSR Frontend'i temsil eden geri dönüş arabirimi yerine VM'nin DIP'ini kullanır. Bu nedenle, hizmetinizin DSR Frontend'i temsil eden geri dönüş arabiriminde sunulan hizmetin durumunu yansıtan bir DIP bağlantı noktasında sonda yanıtları sağlaması gerekir.
+> Geri döngü arabirimlerinin yapılandırması, Konuk işletim sistemi içinde gerçekleştirilir. Bu yapılandırma, Azure tarafından gerçekleştirilmez veya yönetilmez. Bu yapılandırma olmadan kurallar çalışmayacaktır. Durum araştırma tanımları, DSR ön ucu temsil eden geri döngü arabirimi yerine VM 'nin DIP 'sini kullanır. Bu nedenle, hizmetiniz DSR ön noktasını temsil eden geri döngü arabiriminde sunulan hizmetin durumunu yansıtan bir DIP bağlantı noktası üzerinde araştırma yanıtları sağlamalıdır.
 
 
-Önceki senaryodakiyle aynı ön yüz yapılandırmasını varsayalım:
+Önceki senaryodaki ile aynı ön uç yapılandırmasını varsayalım:
 
 | Ön uç | IP adresi | protokol | port |
 | --- | --- | --- | --- |
 | ![yeşil ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
-| ![mor ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
+| ![Mor ön uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
 
-İki kural tanımlıyoruz:
+İki kural tanımlanıyoruz:
 
-| Kural | Ön uç | Arka uç havuzuna harita |
+| Kural | Ön uç | Arka uç havuzuna eşle |
 | --- | --- | --- |
-| 1 |![Kural](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Frontend1:80 (VM1 ve VM2'de) |
-| 2 |![Kural](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Frontend2:80 (VM1 ve VM2'de) |
+| 1 |![kurallar](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) Önuç1:80 (VM1 ve VM2) |
+| 2 |![kurallar](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Önuç2:80 |![arka uç](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) Önuç2:80 (VM1 ve VM2) |
 
-Aşağıdaki tablo, yük dengeleyicisindeki tam eşlemeyi gösterir:
+Aşağıdaki tabloda yük dengeleyicideki bütün eşleme gösterilmektedir:
 
 | Kural | Ön uç IP adresi | protokol | port | Hedef | port |
 | --- | --- | --- | --- | --- | --- |
-| ![yeşil kural](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |ön uçla aynı (65.52.0.1) |frontend (80) ile aynı |
-| ![mor kural](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |ön uçla aynı (65.52.0.2) |frontend (80) ile aynı |
+| ![yeşil kural](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |ön uç ile aynı (65.52.0.1) |ön uç ile aynı (80) |
+| ![Mor kural](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |ön uç ile aynı (65.52.0.2) |ön uç ile aynı (80) |
 
-Gelen akışın hedefi, VM'deki geri dönüş arabirimindeki ön uç IP adresidir. Her kural, hedef IP adresi ve hedef bağlantı noktasının benzersiz bir birleşimi ile bir akış oluşturmalıdır. Akışın hedef IP adresini değiştirerek, aynı VM'de bağlantı noktası yeniden kullanımı mümkündür. Hizmetiniz, ilgili geri dönüş arabiriminin ön uç IP adresine ve bağlantı noktasına bağlanarak yük dengeleyicisine maruz kalır.
+Gelen akışın hedefi, VM 'deki geri döngü arabirimindeki ön uç IP adresidir. Her kural, hedef IP adresi ve hedef bağlantı noktasının benzersiz bir birleşimini içeren bir akış üretmelidir. Akışın hedef IP adresini değiştirerek, aynı VM 'de bağlantı noktası yeniden kullanımı mümkündür. Hizmetiniz, ilgili geri döngü arabiriminin ön uç IP adresine ve bağlantı noktasına bağlayarak yük dengeleyiciye açıktır.
 
-Bu örneğin hedef bağlantı noktasını değiştirmediğini unutmayın. Bu kayan bir IP senaryosu olsa da, Azure Yük Dengeleyicisi arka uç hedef bağlantı noktasını yeniden yazmak ve ön uç hedef bağlantı noktasından farklı hale getirmek için bir kural tanımlamayı da destekler.
+Bu örnekte hedef bağlantı noktasını değiştirmediğine dikkat edin. Bu kayan bir IP senaryosu olsa da Azure Load Balancer, arka uç hedef bağlantı noktasını yeniden yazmak ve ön uç hedef bağlantı noktasından farklı hale getirmek için bir kural tanımlamayı da destekler.
 
-Kayan IP kural türü, birkaç yük dengeleyici yapılandırma düzeninin temelini oluşturur. Şu anda kullanılabilen bir örnek, [Birden Çok Dinleyici yapılandırması olan SQL AlwaysOn'dur.](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) Zamanla, bu senaryoların daha fazlasını belgeleeceğiz.
+Kayan IP kuralı türü, çeşitli yük dengeleyici yapılandırma desenlerinin temelidir. Şu anda kullanılabilen bir örnek, [birden çok dinleyici yapılandırması olan SQL AlwaysOn](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) ' dır. Zaman içinde, bu senaryoların daha fazlasını belgeliyoruz.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Birden çok ön uç yapılandırması yalnızca IaaS VM'lerle desteklenir.
-* Kayan IP kuralı ile, uygulamanız giden SNAT akışları için birincil IP yapılandırmasını kullanmalıdır. Uygulamanız konuk işletim sistemi içinde döngü arabiriminde yapılandırılan ön uç IP adresine bağlanırsa, Azure'un giden SNAT'ı giden akışı yeniden yazmak için kullanılamaz ve akış başarısız olur.  Giden senaryoları gözden [geçirin.](load-balancer-outbound-connections.md)
-* Genel IP adreslerinin faturalandırma üzerinde etkisi vardır. Daha fazla bilgi için [IP Adresi fiyatlandırması](https://azure.microsoft.com/pricing/details/ip-addresses/)
-* Abonelik sınırları geçerlidir. Daha fazla bilgi için ayrıntılar için [Hizmet sınırlarına](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) bakın.
+* Birden çok ön uç yapılandırması yalnızca IaaS sanal makinelerinde desteklenir.
+* Kayan IP kuralıyla, uygulamanızın giden SNAT akışları için birincil IP yapılandırmasını kullanması gerekir. Uygulamanız Konuk işletim sistemindeki geri döngü arabiriminde yapılandırılmış ön uç IP adresine bağlandığında, giden akışı yeniden yazmak için Azure 'un giden SNAT 'si kullanılabilir değildir ve akış başarısız olur.  [Giden senaryoları](load-balancer-outbound-connections.md)gözden geçirin.
+* Genel IP adreslerinin faturalandırma üzerinde bir etkisi vardır. Daha fazla bilgi için bkz. [IP adresi fiyatlandırması](https://azure.microsoft.com/pricing/details/ip-addresses/)
+* Abonelik sınırları geçerlidir. Daha fazla bilgi için bkz. Ayrıntılar için [hizmet limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Birden çok ön uçların giden bağlantı davranışı üzerindeki etkisini anlamak için [Giden bağlantıları](load-balancer-outbound-connections.md) gözden geçirin.
+- Giden bağlantı davranışında birden çok ön uçların etkisini anlamak için [giden bağlantıları](load-balancer-outbound-connections.md) gözden geçirin.

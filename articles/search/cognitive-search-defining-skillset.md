@@ -1,7 +1,7 @@
 ---
 title: Beceri kümesi oluşturma
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama'da kullanılmak üzere verilerinizdeki yapılandırılmış bilgileri zenginleştirmek ve ayıklamak için veri ayıklama, doğal dil işleme veya görüntü analizi adımlarını tanımlayın.
+description: Azure Bilişsel Arama 'da kullanmak üzere verilerinize veri ayıklama, doğal dil işleme veya görüntü analizi adımlarını tanımlayarak verileri zenginleştirin ve verilerinizi ayıklayın.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,50 +9,50 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75754554"
 ---
-# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da bir AI zenginleştirme boru hattında beceri oluşturma 
+# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir AI zenginleştirme ardışık düzeninde beceri oluşturma 
 
-AI zenginleştirme, Azure Bilişsel Arama'da aranabilir hale getirmek için verileri ayıklar ve zenginleştirir. Biz çıkarma ve zenginleştirme adımları *bilişsel becerileri,* indeksleme sırasında başvurulan bir *beceri* içine kombine diyoruz. Bir skillset [yerleşik becerileri](cognitive-search-predefined-skills.md) veya özel becerileri kullanabilir (bkz. Örnek: Daha fazla bilgi için [bir AI zenginleştirme ardışık bölgesinde özel bir beceri oluşturma).](cognitive-search-create-custom-skill-example.md)
+AI zenginleştirme, Azure Bilişsel Arama 'te aranabilir hale getirmek için verileri ayıklar ve zenginleştirir. Ayıklama ve zenginleştirme adımları bilişsel *becerileri*, dizin oluşturma sırasında başvurulan bir *beceri* birleştirilir. Beceri, [yerleşik becerileri](cognitive-search-predefined-skills.md) veya özel becerileri kullanabilir (daha fazla bilgi için bkz. [bir AI zenginleştirme ardışık düzeninde özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md) ).
 
-Bu makalede, kullanmak istediğiniz beceriler için bir zenginleştirme ardışık alanı oluşturmayı öğrenirsiniz. Bir skillset, Azure Bilişsel Arama [dizinine](search-indexer-overview.md)eklenir. Bu makalede ele alınan boru hattı tasarımının bir parçası, skillset kendisi inşa etmektir. 
+Bu makalede, kullanmak istediğiniz yetenekler için bir zenginleştirme ardışık düzeni oluşturmayı öğreneceksiniz. Bir Azure Bilişsel Arama [dizin oluşturucusuna](search-indexer-overview.md)bir beceri eklenir. Bu makalede ele alınan işlem hattı tasarımının bir parçası, Beceri kendisini tasarlayabilmektedir. 
 
 > [!NOTE]
-> Boru hattı tasarımının bir diğer parçası, [bir sonraki adımda](#next-step)kapsanan bir dizin leyici belirtilmesidir. Dizinleyici tanımı, skillset'e bir başvuru nun yanı sıra girişleri hedef dizindeki çıktılara bağlamak için kullanılan alan eşlemelerini içerir.
+> Ardışık düzen tasarımının başka bir bölümü, bir Dizin Oluşturucu belirleyerek bir [sonraki adımda](#next-step)ele alınmıştır. Dizin Oluşturucu tanımı, hedef dizindeki çıkışlara girdileri bağlamak için kullanılan beceri ve alan eşlemelerine yönelik bir başvuru içerir.
 
-Hatırlanması gereken önemli noktalar:
+Anımsanması gereken önemli noktaları:
 
-+ Dizin leyici başına yalnızca bir beceriye sahip olabilirsiniz.
-+ Bir beceri en az bir beceri olmalıdır.
-+ Aynı türde birden çok beceri oluşturabilirsiniz (örneğin, görüntü analizi becerisinin türevleri).
++ Dizin Oluşturucu başına yalnızca bir beceri olabilir.
++ Bir beceri en az bir yeteneğe sahip olmalıdır.
++ Aynı türde (örneğin, bir görüntü analizi becerilerinin türevleri) birden çok yetenek oluşturabilirsiniz.
 
-## <a name="begin-with-the-end-in-mind"></a>Akılda sonu ile başlayın
+## <a name="begin-with-the-end-in-mind"></a>Son göz önünde bulundurularak başlayın
 
-Önerilen ilk adım, ham verilerinizden hangi verileri ayıklamaya ve bu verileri bir arama çözümünde nasıl kullanmak istediğinize karar vermektir. Tüm zenginleştirme ardışık bir illüstrasyon oluşturma gerekli adımları belirlemenize yardımcı olabilir.
+Önerilen ilk adım, ham verilerinize hangi verilerin ayıklanacağını ve bu verileri bir arama çözümünde nasıl kullanmak istediğinizi saptarken. Tüm zenginleştirme işlem hattının bir resmini oluşturmak, gerekli adımları belirlemenize yardımcı olabilir.
 
-Bir dizi finansal analist yorumunu işlemekle ilgilendiğinizi varsayalım. Her dosya için, şirket adlarını ve yorumların genel duyarlılığını ayıklamak istiyorsunuz. Ayrıca, şirket hakkında şirket hakkında ne tür bir iş yaptığı gibi ek bilgiler bulmak için Bing Varlık Arama hizmetini kullanan özel bir zenginleştirici de yazmak isteyebilirsiniz. Esasen, her belge için dizine eklenen aşağıdaki gibi bilgileri ayıklamak istiyorsunuz:
+Bir dizi finansal analist açıklamasını işlemek istediğinizi varsayalım. Her dosya için, yorumların şirket adlarını ve genel yaklaşımını ayıklamak istersiniz. Ayrıca şirket hakkında şirket hakkında ek bilgiler bulmak için Bing Varlık Arama hizmetini kullanan özel bir zenginte yazmak isteyebilirsiniz. Temelde, her belge için dizine alınmış aşağıdaki gibi bilgileri ayıklamak istersiniz:
 
-| kayıt metni | Şirket | Duyguları | şirket açıklamaları |
+| Kaydet-metin | firması | yaklaşım | Şirket açıklamaları |
 |--------|-----|-----|-----|
-|örnek kayıt| ["Microsoft", "LinkedIn"] | 0.99 | ["Microsoft Corporation bir Amerikan çokuluslu teknoloji şirketi ..." , "LinkedIn bir iş ve istihdam odaklı sosyal ağ ..."]
+|örnek kayıt| ["Microsoft", "LinkedIn"] | 0.99 | ["Microsoft Corporation, çok uluslu bir teknoloji şirketidir...", "LinkedIn iş ve işe yönelik olarak çalışan bir sosyal ağ..."]
 
-Aşağıdaki diyagram varsayımsal bir zenginleştirme ardışık gösteriş:
+Aşağıdaki diyagramda bir kuramsal zenginleştirme işlem hattı gösterilmektedir:
 
-![Varsayımsal bir zenginleştirme boru hattı](media/cognitive-search-defining-skillset/sample-skillset.png "Varsayımsal bir zenginleştirme boru hattı")
-
-
-Boru hattında ne istediğinizhakkında adil bir fikre sahip olduktan sonra, bu adımları sağlayan becerileri ifade edebilirsiniz. İşlevsel olarak, dizin leyici tanımınızı Azure Bilişsel Arama'ya yüklediğinizde beceri ifade edilir. Dizin leyicinizi nasıl yükleyin hakkında daha fazla bilgi edinmek için [dizinleyici belgelerine](https://docs.microsoft.com/rest/api/searchservice/create-indexer)bakın.
+![Kuramsal bir zenginleştirme işlem hattı](media/cognitive-search-defining-skillset/sample-skillset.png "Kuramsal bir zenginleştirme işlem hattı")
 
 
-Diyagramda, *belge çözme* adımı otomatik olarak gerçekleşir. Azure Bilişsel Arama, tanınmış dosyaların nasıl açılacağını bilir ve her belgeden çıkarılan metni içeren bir *içerik* alanı oluşturur. Beyaz kutular yerleşik zenginleştiricilerdir ve noktalı "Bing Varlık Arama" kutusu oluşturduğunuz özel bir zenginleştiriciyi temsil eder. Gösterildiği gibi, skillset üç beceri içerir.
+İşlem hattında istediğiniz kadar fikir sahibi olduktan sonra, bu adımları sağlayan beceri ifade edebilirsiniz. İşlev, Dizin Oluşturucu tanımınızı Azure Bilişsel Arama yüklediğinizde beceri ifade edilir. Dizin oluşturucuyu karşıya yükleme hakkında daha fazla bilgi edinmek için bkz. [Dizin Oluşturucu-belgeler](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-## <a name="skillset-definition-in-rest"></a>REST'te Skillset tanımı
 
-Bir skillset becerileri bir dizi olarak tanımlanır. Her beceri, girdilerinin kaynağını ve üretilen çıktıların adını tanımlar. Create [Skillset REST API'yi](https://docs.microsoft.com/rest/api/searchservice/create-skillset)kullanarak, önceki diyagrama karşılık gelen bir skillset tanımlayabilirsiniz: 
+Diyagramda *belge çözme* adımı otomatik olarak gerçekleşir. Esas olarak, Azure Bilişsel Arama iyi bilinen dosyaların nasıl açılacağını bilir ve her belgeden ayıklanan metni içeren bir *içerik* alanı oluşturur. Beyaz kutular yerleşik zenginler ve noktalı "Bing Varlık Arama" kutusu oluşturmakta olduğunuz özel bir zengini temsil eder. Gösterildiği gibi, beceri üç yetenek içerir.
+
+## <a name="skillset-definition-in-rest"></a>Beceri tanımı REST
+
+Bir beceri bir yetenek dizisi olarak tanımlanır. Her beceri, girişlerinin kaynağını ve üretilen çıktıların adını tanımlar. [Create beceri REST API](https://docs.microsoft.com/rest/api/searchservice/create-skillset)kullanarak, önceki diyagrama karşılık gelen bir beceri tanımlayabilirsiniz: 
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
@@ -126,7 +126,7 @@ Content-Type: application/json
 
 ## <a name="create-a-skillset"></a>Beceri kümesi oluşturma
 
-Bir skillset oluştururken, skillset kendini belgeleme yapmak için bir açıklama sağlayabilir. Açıklama isteğe bağlıdır, ancak bir skillset'in ne yaptığını izlemek için yararlıdır. Skillset yoruma izin vermeyen bir JSON belgesi olduğundan, `description` bunun için bir öğe kullanmanız gerekir.
+Bir beceri oluştururken, Beceri kendi kendine belgelerinizi yapmak için bir açıklama sağlayabilirsiniz. Bir açıklama isteğe bağlıdır, ancak beceri ne yaptığını izlemek için yararlıdır. Beceri, açıklamalara izin vermediği bir JSON belgesi olduğundan, bunun için bir `description` öğe kullanmanız gerekir.
 
 ```json
 {
@@ -136,11 +136,11 @@ Bir skillset oluştururken, skillset kendini belgeleme yapmak için bir açıkla
 }
 ```
 
-Skillset sonraki parça becerileri bir dizi. Her beceriyi ilkel bir zenginleştirme olarak düşünebilirsiniz. Her beceri bu zenginleştirme boru hattı küçük bir görev gerçekleştirir. Her biri bir giriş (veya bir dizi girdi) alır ve bazı çıktıları döndürür. Sonraki birkaç bölümde yerleşik ve özel becerilerin nasıl belirtilen, giriş ve çıktı referansları aracılığıyla becerileri birbirine zincirleme üzerinde duruluyor. Girişler kaynak verilerden veya başka bir beceriden gelebilir. Çıktılar bir arama dizinindeki bir alana eşlenebilir veya akış aşağı sına giriş olarak kullanılabilir.
+Beceri sonraki parçası bir yetenek dizisidir. Her bir beceriye, zenginleştirme için bir temel olarak düşünebilirsiniz. Her beceri, bu zenginleştirme ardışık düzeninde küçük bir görev gerçekleştirir. Her biri bir giriş (veya bir giriş kümesi) alır ve bazı çıktılar döndürür. Sonraki birkaç bölüm yerleşik ve özel yeteneklerin nasıl belirtildiğiyle ilgili olarak, becerileri giriş ve çıkış başvurularıyla birlikte zincirlemeye odaklanacaktır. Girişler, kaynak verilerden veya başka bir becerilerden gelebilir. Çıktılar, bir arama dizinindeki alanla eşleştirilebilir veya bir aşağı akış beceriye giriş olarak kullanılabilir.
 
-## <a name="add-built-in-skills"></a>Yerleşik beceriler ekleme
+## <a name="add-built-in-skills"></a>Yerleşik yetenekler ekleme
 
-Dahili [varlık tanıma becerisi](cognitive-search-skill-entity-recognition.md)olan ilk beceriye bakalım:
+Yerleşik [varlık tanıma becerisi](cognitive-search-skill-entity-recognition.md)olan ilk beceriye bakalım:
 
 ```json
     {
@@ -163,23 +163,23 @@ Dahili [varlık tanıma becerisi](cognitive-search-skill-entity-recognition.md)o
     }
 ```
 
-* Her yerleşik beceri `odata.type`, `input`ve `output` özellikleri vardır. Beceriye özel özellikler, bu beceri için geçerli olan ek bilgiler sağlar. Varlık tanıma `categories` için, önceden eğitilmiş modelin tanıyabileceği sabit bir varlık türleri kümesi arasındaki bir varlıktır.
+* Her yerleşik beceri `odata.type`, `input`, ve `output` özelliklerdir. Beceriye özgü özellikler, bu beceriye uygun ek bilgiler sağlar. Varlık tanıma için, `categories` önceden eğitilen modelin tanıyabileceği sabit bir varlık türleri kümesi arasında bir varlıktır.
 
-* Her beceri nin ```"context"```bir . Bağlam, işlemlerin gerçekleştiği düzeyi temsil eder. Yukarıdaki beceride, bağlam belgenin tamamıdır, yani varlık tanıma becerisi belge başına bir kez çağrılır. Çıktılar da bu düzeyde üretilmektedir. Daha spesifik ```"organizations"``` olarak, bir ```"/document"```üyesi olarak oluşturulur. Downstream becerilerinde, bu yeni oluşturulan bilgilere ```"/document/organizations"```.  ```"context"``` Alan açıkça ayarlanmazsa, varsayılan bağlam belgedir.
+* Her yeteneğin bir ```"context"```olması gerekir. Bağlam, işlemlerin gerçekleştiği düzeyi temsil eder. Yukarıdaki becerideki bağlam tüm belgedir, yani varlık tanıma becerisi her belge için bir kez çağrılır. Çıkışlar da bu düzeyde oluşturulur. Daha özel olarak ```"organizations"``` , üyesi olarak üretilir ```"/document"```. Aşağı akış becerileri bölümünde bu yeni oluşturulan bilgilere olarak ```"/document/organizations"```başvurabilirsiniz.  ```"context"``` Alan açıkça ayarlanmamışsa, varsayılan bağlam belgedir.
 
-* Becerinin "metin" adı verilen bir girişi vardır ve ```"/document/content"```kaynak girişi .' olarak ayarlanır. Beceri (varlık tanıma), Azure blob dizinleyicisi tarafından oluşturulan standart bir alan olan her belgenin *içerik* alanında çalışır. 
+* Yeteneğin, kaynak girişi olarak ```"/document/content"```ayarlanmış "metin" adlı bir giriş vardır. Yetenek (varlık tanıma), Azure Blob Indexer tarafından oluşturulan standart bir alan olan her belgenin *içerik* alanı üzerinde çalışır. 
 
-* Beceri denilen ```"organizations"```bir çıktı vardır. Çıktılar yalnızca işleme sırasında bulunur. Bu çıktıyı bir alt akım becerisinin girişine zincirlemek için çıktıyı ```"/document/organizations"```.
+* Yeteneğin adlı ```"organizations"```bir çıkış vardır. Çıkışlar yalnızca işlem sırasında mevcuttur. Bu çıktıyı bir aşağı akış becerisi girişine zincirlemek için, çıktıyı olarak ```"/document/organizations"```başvuru yapın.
 
-* Belirli bir belge için, ```"/document/organizations"``` değeri metinden ayıklanan bir dizi kuruluştür. Örnek:
+* Belirli bir belge için değeri ```"/document/organizations"``` , metinden ayıklanan kuruluşların bir dizisidir. Örneğin:
 
   ```json
   ["Microsoft", "LinkedIn"]
   ```
 
-Bazı durumlarda, bir dizinin her öğesine ayrı ayrı başvurmayı gerektirir. Örneğin, her öğeyi ```"/document/organizations"``` ayrı ayrı başka bir beceriye (özel Bing varlık arama zenginleştirici si gibi) aktarmak istediğinizi varsayalım. Yola bir yıldız işareti ekleyerek dizinin her öğesine başvurabilirsiniz:```"/document/organizations/*"``` 
+Bazı durumlar, bir dizinin her öğesine ayrı olarak başvurmak için çağrı yapılır. Örneğin, her öğesini ```"/document/organizations"``` ayrı olarak başka bir beceriye (özel Bing varlık arama daha zengin gibi) geçirmek istediğinizi varsayalım. Yola bir yıldız işareti ekleyerek dizinin her öğesine başvurabilirsiniz:```"/document/organizations/*"``` 
 
-Duygu çıkarma için ikinci beceri ilk zenginleştirici olarak aynı desen izler. Bu ```"/document/content"``` giriş olarak alır ve her içerik örneği için bir duyarlılık puanı döndürür. Alanı açıkça ayarlamadığınız ```"context"``` için, çıktı (mySentiment) artık ```"/document"```bir çocuk.
+Yaklaşım ayıklama için ikinci yetenek, ilk zenginleştirme ile aynı kalıbı izler. Giriş olarak ```"/document/content"``` alır ve her içerik örneği için bir yaklaşım puanı döndürür. ```"context"``` Alanı açıkça ayarlamazsanız, çıkış (mySentiment) artık bir alt öğesidir ```"/document"```.
 
 ```json
     {
@@ -199,9 +199,9 @@ Duygu çıkarma için ikinci beceri ilk zenginleştirici olarak aynı desen izle
     },
 ```
 
-## <a name="add-a-custom-skill"></a>Özel bir beceri ekleme
+## <a name="add-a-custom-skill"></a>Özel bir yetenek ekleyin
 
-Özel Bing varlık arama zenginleştiriciyapısını hatırlayın:
+Özel Bing varlık arama 'nın yapısını daha zengin bir şekilde geri çekin:
 
 ```json
     {
@@ -227,29 +227,29 @@ Duygu çıkarma için ikinci beceri ilk zenginleştirici olarak aynı desen izle
     }
 ```
 
-Bu tanım, zenginleştirme işleminin bir parçası olarak web API çağıran özel bir [beceridir.](cognitive-search-custom-skill-web-api.md) Varlık tanıma tarafından tanımlanan her kuruluş için, bu beceri, bu kuruluşun açıklamasını bulmak için bir web API çağırır. Web API'sinin ne zaman çağrılması ve alınan bilgilerin nasıl akıştırılacaya kadar adlandırılabilmek için yapılan orkestrasyon, zenginleştirme motoru tarafından dahili olarak ele alınır. Ancak, bu özel API'yi aramak için gerekli başlatma JSON'da sağlanmalıdır (uri, httpHeaders ve beklenen girişler gibi). Zenginleştirme ardışık birimi için özel bir web API oluşturma kılavuzu için, [özel bir arabirim nasıl tanımlanağa](cognitive-search-custom-skill-interface.md)bakın.
+Bu tanım, zenginleştirme sürecinin bir parçası olarak bir Web API 'SI çağıran [özel bir yetentandır](cognitive-search-custom-skill-web-api.md) . Bu yetenek, varlık tanıma tarafından tanımlanan her kuruluş için, bu kuruluşun açıklamasını bulmak için bir Web API 'SI çağırır. Web API 'sinin ne zaman çağrılacağını ve alınan bilgilerin nasıl Flow, enzenginleştirme altyapısı tarafından dahili olarak işlenir. Ancak, bu özel API 'yi çağırmak için gereken başlatma işlemi JSON 'da (URI, httpHeaders ve beklenen girişler gibi) sağlanmalıdır. Zenginleştirme işlem hattı için özel Web API 'SI oluşturma konusunda rehberlik için bkz. [özel bir arabirim tanımlama](cognitive-search-custom-skill-interface.md).
 
-"Bağlam" alanının bir yıldız ```"/document/organizations/*"``` işaretiyle ayarlı olduğuna dikkat edin, yani ```"/document/organizations"```zenginleştirme adımı altındaki her kuruluş *için* çağrılır. 
+"Bağlam" alanının, altındaki ```"/document/organizations/*"``` ```"/document/organizations"``` *her kuruluş için* de zenginleştirme adımının çağrıldığı bir yıldız işaretiyle ayarlandığını unutmayın. 
 
-Çıktı, bu durumda tanımlanan her kuruluş için bir şirket açıklaması oluşturulur. Bir akış adımında açıklamaya atıfta bulunduktan sonra (örneğin, anahtar tümcecik ```"/document/organizations/*/description"``` çıkarmada), bunu yapmak için yolu kullanırsınız. 
+Bu durumda, belirtilen her bir kuruluş için bir şirket açıklaması olan çıktı. Bir aşağı akış adımında (örneğin, anahtar tümceciği ayıklama içinde) açıklamaya başvururken, bunu yapmak için yolunu ```"/document/organizations/*/description"``` kullanırsınız. 
 
-## <a name="add-structure"></a>Yapı ekleme
+## <a name="add-structure"></a>Yapı Ekle
 
-Skillset, yapılandırılmamış verilerden yapılandırılmış bilgiler üretir. Aşağıdaki örneği inceleyin:
+Beceri yapılandırılmamış verilerden yapılandırılmış bilgiler üretir. Aşağıdaki örneği inceleyin:
 
-*"Dördüncü çeyreğinde Microsoft, geçen yıl satın aldığı sosyal ağ şirketi LinkedIn'den 1,1 milyar dolar gelir elde etti. Satın alma, Microsoft'un LinkedIn yeteneklerini CRM ve Office özellikleriyle birleştirmesine olanak tanır. Hissedarlar bugüne kadar kaydedilen ilerlemeden heyecan duyuyoruz."*
+*"Dördüncü çeyrekte, Microsoft, geçen yıl satın aldığı sosyal ağ şirketi olan LinkedIn 'ten gelir üzerinden $1.100.000.000 'e kaydedildi. Alım, Microsoft 'un LinkedIn yeteneklerini kendi CRM ve Office özellikleri ile birleştirmesine olanak sağlar. Stockholders şu ana kadar ilerleme durumuyla heyecanlanır. "*
 
-Olası bir sonuç, aşağıdaki çizime benzer oluşturulmuş bir yapı olacaktır:
+Olası bir sonuç, aşağıdaki çizime benzer şekilde oluşturulmuş bir yapıdır:
 
-![Örnek çıktı yapısı](media/cognitive-search-defining-skillset/enriched-doc.png "Örnek çıktı yapısı")
+![Örnek çıkış yapısı](media/cognitive-search-defining-skillset/enriched-doc.png "Örnek çıkış yapısı")
 
-Şimdiye kadar, bu yapı yalnızca dahili, yalnızca bellekte olmuştur ve yalnızca Azure Bilişsel Arama dizinlerinde kullanılmıştır. Bir bilgi deposunun eklenmesi, arama dışında kullanım için şekilli zenginleştirmeleri kaydetmeniz için bir yol sağlar.
+Şu anda bu yapı yalnızca iç, yalnızca bellek ve Azure Bilişsel Arama dizinlerinde kullanılır. Bilgi deposunun eklenmesi, arama dışında kullanmak üzere şekillendirilmiş zenginleştirme tasarrufu için bir yol sağlar.
 
 ## <a name="add-a-knowledge-store"></a>Bilgi deposu ekleme
 
-[Bilgi deposu,](knowledge-store-concept-intro.md) zenginleştirilmiş belgenizi kaydetmek için Azure Bilişsel Arama'da bir önizleme özelliğidir. Azure depolama hesabı tarafından desteklenen bir bilgi deposu, zenginleştirilmiş verilerinizin bulunduğu depodur. 
+[Bilgi deposu](knowledge-store-concept-intro.md) , zenginleştirilmiş belgeyi kaydetmek için Azure bilişsel arama bir önizleme özelliğidir. Azure depolama hesabı tarafından desteklenen, oluşturduğunuz bir bilgi deposu, verileri zenginleştirdiği depodur. 
 
-Bir bilgi deposu tanımı bir skillset eklenir. Tüm sürecin bir walkthrough için REST [bir bilgi deposu oluştur](knowledge-store-create-rest.md)'a bakın.
+Bir beceri öğesine bilgi deposu tanımı eklenir. İşlemin tamamına yönelik bir anlatım için bkz. [rest 'te bilgi deposu oluşturma](knowledge-store-create-rest.md).
 
 ```json
 "knowledgeStore": {
@@ -271,10 +271,10 @@ Bir bilgi deposu tanımı bir skillset eklenir. Tüm sürecin bir walkthrough i�
 }
 ```
 
-Zenginleştirilmiş belgeleri hiyerarşik ilişkileri korunmuş tablolar olarak veya blob depolamada JSON belgeleri olarak kaydetmeyi seçebilirsiniz. Beceri becerisindeki becerilerden herhangi birinden elde edilen çıktı, projeksiyon için girdi olarak elde edilebilir. Verileri belirli bir şekle yansıtmak istiyorsanız, güncelleştirilmiş [şekillendirici becerisi](cognitive-search-skill-shaper.md) artık kullanmanız için karmaşık türleri modelleyebilir. 
+Zenginleştirilmiş belgeleri, hiyerarşik ilişkileri korunan tablolar olarak veya blob depolamada JSON belgeleri olarak kaydetmeyi seçebilirsiniz. Beceri içindeki yeteneklerin herhangi birinden çıkış, projeksiyonun için giriş olarak kaynak olarak oluşturulabilir. Verileri belirli bir şekle göre projeye eklemek istiyorsanız, [her yetenek](cognitive-search-skill-shaper.md) için güncelleştirilmiş mil, artık kullanmanız için karmaşık türleri modelleyebilir. 
 
 <a name="next-step"></a>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şimdi zenginleştirme boru hattı ve beceri aşina, [nasıl bir skillset veya](cognitive-search-concept-annotations-syntax.md) nasıl [bir dizin alanları çıkışları eşleme](cognitive-search-output-field-mapping.md)ek açıklamaları başvuru ile devam edin. 
+Artık enzenginleştirme işlem hattı ve becerileri hakkında bilgi sahibi olduğunuza göre, [bir beceri içindeki ek açıklamaların nasıl başvurulacağını](cognitive-search-concept-annotations-syntax.md) veya [bir dizindeki alanlara çıktıların nasıl eşlenilmeye](cognitive-search-output-field-mapping.md)devam edin. 

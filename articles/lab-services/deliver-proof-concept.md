@@ -1,6 +1,6 @@
 ---
-title: Konsept kanıtı sunun - Azure DevTest Labs | Microsoft Dokümanlar
-description: Azure DevTest Laboratuvarlarının kurumsal bir ortama başarıyla dahil edilebilmeleri için kavram kanıtı nasıl sunabileceğinizi öğrenin.
+title: Kavram kanıtı sunma-Azure DevTest Labs | Microsoft Docs
+description: Azure DevTest Labs bir kurumsal ortama başarıyla dahil edilmesi için bir kavram kanıtı sunma hakkında bilgi edinin.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: tanmayeekamath
@@ -14,128 +14,128 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: takamath
 ms.openlocfilehash: ca843213760cee60799568a6f33059c2bd91c835
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75643296"
 ---
-# <a name="deliver-a-proof-of-concept"></a>Konsept inkanıtı sunun 
+# <a name="deliver-a-proof-of-concept"></a>Kavram kanıtı sunun 
 
-Azure DevTest Labs için önemli senaryolardan biri, bulutta geliştirme ve test ortamlarını etkinleştirmektir. Örneklere şunlar dahildir:
+Azure DevTest Labs yönelik temel senaryolarından biri, bulutta geliştirme ve test ortamlarını etkinleştirir. Örneklere şunlar dahildir:
 
-* Bulutta geliştirici masaüstü oluşturma.
-* Sınama için ortamları yapılandırma.
+* Bulutta geliştirici masaüstleri oluşturma.
+* Ortamları test için yapılandırma.
 * Sanal makinelere ve diğer Azure kaynaklarına erişimi etkinleştirme.
-* Geliştiricilerin öğrenmesi ve denemesi için bir kum havuzu alanı ayarlama.
+* Geliştiricilerin öğrenmek ve denemek için bir korumalı alan alanı ayarlama.
 
-DevTest Labs ayrıca, kurumsal güvenlik, mevzuat ve uyumluluk ilkelerine uygun geliştiricilere "self-servis Azure" sağlaması için işletmeyi güçlendirmek için ilke korkulukları ve maliyet denetimleri de sağlar. 
+DevTest Labs Ayrıca, kuruluşun kurumsal güvenlik, mevzuata ve uyumluluk ilkelerine bağlı olan geliştiricilere "self servis Azure" sağlamasına olanak tanıyan ilke ve maliyet denetimleri sağlar. 
 
-Her kuruluş, Azure DevTest Laboratuvarlarının ortamlarına başarıyla dahil edilebildiği için farklı gereksinimlere sahiptir. Bu makalede, işletmelerin kavram başarılı bir kanıt sağlamak için tamamlaması gereken en yaygın adımları açıklanır. Kavramın kanıtı, başarılı bir uçtan uca dağıtıma doğru atılmış ilk adımdır. 
+Her kuruluşun, Azure DevTest Labs başarıyla ortamlarına nasıl dahil edilebilir olması için farklı gereksinimleri vardır. Bu makalede, kuruluşların başarılı bir kavram kanıtı sağlamak için tamamlaması gereken en yaygın adımlar açıklanmaktadır. Kavram kanıtı, başarılı bir uçtan uca dağıtıma yönelik ilk adımdır. 
 
 ## <a name="getting-started"></a>Başlarken 
 
-Konseptin kanıtını sunmaya başlamak için. Azure ve DevTest Labs hakkında bilgi edinmek için biraz zaman harcamak önemlidir.  Bazı başlangıç kaynakları şunlardır: 
+Kavram kanıtı sunmaya başlamak için. Azure ve DevTest Labs hakkında bilgi edinmek için biraz zaman harcamanız önemlidir.  Kaynak başlangıç kaynakları aşağıda verilmiştir: 
 
-* [Azure portalını anlama](https://azure.microsoft.com/features/azure-portal/)
-* [DevTest Laboratuvarlarının Temelleri](devtest-lab-overview.md)
+* [Azure portal anlama](https://azure.microsoft.com/features/azure-portal/)
+* [DevTest Labs ile ilgili temel bilgiler](devtest-lab-overview.md)
 * [DevTest Labs desteklenen senaryolar](devtest-lab-guidance-get-started.md)
-* [DevTest Labs kurumsal dokümantasyon](devtest-lab-guidance-prescriptive-adoption.md)
-* [Azure ağına giriş](../virtual-network/virtual-networks-overview.md)
+* [DevTest Labs kurumsal belgeleri](devtest-lab-guidance-prescriptive-adoption.md)
+* [Azure ağa giriş](../virtual-network/virtual-networks-overview.md)
 
 ## <a name="prerequisites"></a>Ön koşullar 
 
-DevTest Labs ile bir pilotu veya konsept ini başarıyla tamamlamak için birkaç ön koşul vardır: 
+DevTest Labs ile pilot veya kavram kanıtı 'nı başarılı bir şekilde tamamlamaya yönelik birkaç önkoşul vardır: 
 
-* **Azure aboneliği**: Kuruluşların azure erişimine olanak tanıyan mevcut bir [Kurumsal Sözleşme'ye](https://azure.microsoft.com/pricing/purchase-options/enterprise-agreement/) sahiptir ve DevTest Labs için varolan veya yeni bir aboneliği kullanabilirler. Alternatif olarak, işletmeler pilot uygulama sırasında [Visual Studio aboneliği](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/) kullanabilir (ücretsiz Azure kredilerinden yararlanır). Bu seçeneklerden hiçbiri yoksa, bir kuruluş ücretsiz bir [Azure hesabı](https://azure.microsoft.com/free/search/?&OCID=AID719825_SEM_g4lyBqgB&lnkd=Bing_Azure_Brand&msclkid=ecc4275a31b61375749e7a5322c20de8&dclid=CMGW5-m78-ICFaLt4QodmUwGtQ)oluşturabilir ve kullanabilir. Bir Kurumsal Sözleşme varsa, Enterprise [Dev/Test aboneliği](https://azure.microsoft.com/offers/ms-azr-0148p/) kullanmak, Windows 10/Windows 8.1 istemci işletim sistemlerine ve geliştirme ve test iş yüklerine yönelik indirimli fiyatlara erişmek için harika bir seçenektir. 
-* **Azure Etkin Dizin kiracı**: Kullanıcıları yönetmeyi etkinleştirmek için (örneğin, kullanıcı ekleme veya laboratuvar sahipleri ekleme), bu kullanıcıların pilot için Azure aboneliğinde kullanılan [Azure Etkin Dizin kiracısının](https://azure.microsoft.com/services/active-directory/) bir parçası olması gerekir. Genellikle işletmeler, kullanıcıların şirket içi kimliklerini bulutta kullanmalarını sağlamak için [hibrit kimlik](../active-directory/hybrid/whatis-hybrid-identity.md) ayarlar, ancak bu DevTest Labs pilotu için gerekli değildir. 
+* **Azure aboneliği**: kuruluşlar, genellikle Azure 'a erişim sağlayan mevcut bir [Kurumsal Anlaşma](https://azure.microsoft.com/pricing/purchase-options/enterprise-agreement/) sahiptir ve DevTest Labs için mevcut veya yeni bir abonelik kullanabilir. Alternatif olarak, kuruluşlar pilot süresince bir [Visual Studio aboneliği](https://azure.microsoft.com/pricing/member-offers/visual-studio-subscriptions/) kullanabilir (ücretsiz Azure kredilerinden faydalanabilirsiniz). Bu seçeneklerden hiçbiri yoksa, bir kuruluş, [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/search/?&OCID=AID719825_SEM_g4lyBqgB&lnkd=Bing_Azure_Brand&msclkid=ecc4275a31b61375749e7a5322c20de8&dclid=CMGW5-m78-ICFaLt4QodmUwGtQ)oluşturabilir ve kullanabilir. Kurumsal Anlaşma bir [Kurumsal Geliştirme ve test aboneliği](https://azure.microsoft.com/offers/ms-azr-0148p/) kullanmak, Windows 10/Windows 8.1 istemci işletim sistemlerine erişim sağlamak ve geliştirme ve test iş yükleri için indirimli ücretler için harika bir seçenektir. 
+* **Azure Active Directory kiracı**: kullanıcıları yönetmeyi etkinleştirmek için (örneğin, Kullanıcı ekleme veya laboratuvar sahipleri ekleme), bu kullanıcılar pilot için Azure aboneliğinde kullanılan [Azure Active Directory kiracının](https://azure.microsoft.com/services/active-directory/) bir parçası olmalıdır. Genellikle kuruluşlar, kullanıcıların bulutta şirket içi kimliklerini kullanmasını sağlamak için [karma kimlik](../active-directory/hybrid/whatis-hybrid-identity.md) ayarlayacaktır, ancak bu, DevTest Labs pilot için gerekli değildir. 
 
-## <a name="scoping-of-the-pilot"></a>Pilotun kapsam alamı 
+## <a name="scoping-of-the-pilot"></a>Pilot kapsamı 
 
-Uygulamaya başlamadan önce bir pilot planlamak önemlidir. Kaynakların süresiz olarak kalmayacağını önceden bilmek, pilot kullanıcı için uygun beklentileri belirler. 
+Uygulamayı başlatmak için önce bir pilot planlaması önemlidir. Kaynakların sonsuza kadar sürekli kalmayacağından, pilot kullanıcıları için uygun beklentileri doğru şekilde ayarlamayacağımızı unutmayın. 
 
 > [!IMPORTANT]
-> Pilotu net bir şekilde kapsama ve beklentileri ön plana çıkarabilmenin önemini yeterince vurgulayamayız.
+> Pilot ve ayar beklentilerini kapsayan en fazla önem derecesini vurgulamıyoruz.
 
-Pilot yola başlamadan önce bu anahtar soruları cevaplayın: 
+Pilot uygulamayı başlatmanıza başlamadan önce bu önemli soruları yanıtlayın: 
 
-* Ne öğrenmek istiyorsunuz ve pilot için başarı nasıl görünüyor? 
-* Pilotta hangi iş yükleri veya senaryolar ele alınacak? Pilotun hızla incelenebilmesini ve tamamlanabilmesini sağlamak için yalnızca küçük bir küme tanımlamak önemlidir. 
-* Laboratuvarda hangi kaynaklar mevcut olmalıdır? Örneğin: özel görüntüler, pazar görüntüleri, ilkeler, ağ topolojisi. 
-* Deneyimi doğrulamak için pilot uygulamada yer alacak kullanıcılar ve takımlar kimlerdir?  
-* Pilotun süresi nedir? İki hafta veya bir ay gibi planlanan kapsama iyi hizalanmış bir zaman dilimi seçin. 
-* Pilot tamamlandıktan sonra, pilot sırasında kullanılan ayrılan kaynaklarne ne olacak? Pilot kaynaklarını atmayı planlıyor musunuz? Şöyle düşünebilirsiniz:
+* Ne öğrenmek istiyorsunuz ve pilot için başarı ne şekilde görünüyor? 
+* Pilot 'da hangi iş yükleri veya senaryolar ele alınacaktır? Pilot 'nın kapsama ve hızla tamamlanmasını sağlamak için yalnızca küçük bir küme tanımlamanız önemlidir. 
+* Laboratuvarda hangi kaynakların kullanılabilir olması gerekir? Örneğin: özel görüntüler, Market görüntüleri, ilkeler, ağ topolojisi. 
+* Deneyimi doğrulamak üzere pilot kullanıcıya dahil edilecek kullanıcılar ve takımlar kim?  
+* Pilot 'un süresi nedir? İki hafta veya bir ay gibi planlı kapsama göre iyi bir şekilde hizalanan bir zaman dilimi seçin. 
+* Pilot tamamlandıktan sonra, pilot sırasında kullanılan ayrılmış kaynaklarla ne olur? Pilot Kaynakları atmayı planlıyor musunuz? Şunu düşünebilirsiniz:
    
-   "Pilot un sonundaki sanal makineleri ve laboratuvarları çöpe atmayı planlayabilirsek, pilot için tek bir abonelik kurabilir ve ölçek lendirme sorularını paralel olarak çözerken tüm çalışmalarımızı orada yapabiliriz." 
+   "Pilot 'ın sonunda sanal makineleri ve laboratuvarları oluşturma konusunda planlayabilmemiz için, pilot için tek bir abonelik ayarlayabiliriz ve tüm çalışmalarımızı paralel olarak ölçeklendirirken tüm çalışmalarınızı yapabiliriz." 
 
-Pilot "mükemmel" yapmak için genel bir eğilim var, bu yüzden aynı şekilde hizmet şirkette dışarı haddelenmiş sonra son durum ne olacağını temsil eder. Bu yanlış bir varsayım. "Mükemmel"e ne kadar yaklaşırsanız, pilot avede başlamadan *önce* o kadar çok tamamlamanız gerekir. Pilotun amacı, ölçekleme ve son hizmeti verme konusunda doğru kararları vermektir. 
+Pilot "kusursuz" hale getirmek, bu sayede, şirket sırasında hizmet alındıktan sonra nihai durumun ne olacağını da temsil eden genel bir uygulamadır. Bu bir yanlış varsayım. Pilot uygulamayı kullanmaya *başlamadan önce* "mükemmel" ne kadar yaklaşıyoruz. Pilot 'ın amacı, son hizmeti ölçeklendirmek ve kullanıma sunmak için doğru kararları almaktır. 
 
-Pilot uygulamanın odak noktası, Azure DevTest Labs'ın işletmeniz için doğru hizmet olup olmadığı sorusunu yanıtlamak için gerekli en az iş yükünü ve bağımlılıkları seçmek olmalıdır. Hızlı ve temiz bir başarı elde etmeye yardımcı olmak için en az bağımlılıkla en basit iş yükünü seçmenizi öneririz. Bu mümkün değilse, pilot aşamadaki başarının ölçeklendirme aşamasında çoğaltılabilmesi için olası karmaşıklıkları ortaya çıkaran en temsili iş yükünü seçin. 
+Pilot 'ın odaklanmasına, Azure DevTest Labs kuruluşunuza doğru hizmet olup olmadığı konusunda yanıt vermek için gereken en düşük iş yüklerini ve bağımlılıklarını çekmeye yönelik olması gerekir. Hızlı ve temiz bir başarı sağlamaya yardımcı olmak için en az bağımlılıklara sahip en basit iş yükünü seçmenizi öneririz. Bu mümkün değilse, pilot aşamadaki başarı 'nın ölçek genişletme aşamasında çoğaltılabilmesi için olası karmaşıklıkları ortaya çıkaran en fazla temsili bir iş yükü seçin. 
 
-Aşağıdaki örnek, kavramın iyi kapsamlı bir kanıt göstermektedir. 
+Aşağıdaki örnek, kavram kapsamlı bir kavram kanıtı göstermektedir. 
 
 ## <a name="example-proof-of-concept-plan"></a>Örnek: kavram kanıtı planı 
 
-Bu bölümde, DevTest Labs için pilot kavramının bir kanıtı nın belgesini kapsama almak için kullanılacak bir örnek gösterilmektedir. 
+Bu bölümde, bir pilot for DevTest Labs kavramının kapsamını belirlemek için kullanılacak bir örnek gösterilmektedir. 
 
 > [!TIP]
-> Projenizi başarısızlığa göre ayarlama olasılığını en aza indirmek için, bu bölümde açıklanan örneği atlamamanızı öneririz. 
+> Projenizi hata için ayarlama olasılığını en aza indirmek için, bu bölümde açıklanan örneği atlamanızı kesinlikle öneririz. 
 
 ### <a name="overview"></a>Genel Bakış 
 
-Satıcıların şirket ağından izole bir ortam olarak kullanmaları için DevTest Labs'ı temel alan Azure'da yeni bir ortam geliştirmeyi planlıyoruz. Çözümün gereksinimleri karşılayıp karşılamadığını belirlemek için, uçtan uca çözümü doğrulamak için bir kavram kanıtı geliştireceğiz. Deneyimi denemek ve doğrulamak için birkaç satıcı dahil ettik. 
+Şirket ağından yalıtılmış bir ortam olarak kullanılacak satıcıların DevTest Labs 'e dayalı olarak Azure 'da yeni bir ortam geliştirmeyi planlıyoruz. Çözümün gereksinimleri karşılayıp karşılamadığını öğrenmek için, uçtan uca çözümü doğrulamaya yönelik bir kavram kanıtı geliştiriyoruz. Deneyiminizi denemek ve doğrulamak için birkaç satıcı ekledik. 
 
-### <a name="outcomes"></a>Sonuç -ları 
+### <a name="outcomes"></a>Sonucunu 
 
-Bir kavram kanıtı inşa ederken, biz ilk sonuçlar (ne elde etmeye çalışıyoruz) odaklanmak. Kavramın kanıtı sonunda, bekliyoruz: 
+Kavram kanıtı oluştururken öncelikle sonuçlar üzerine odaklanıyoruz (elde edilmeye çalışıyoruz). Kavram kanıtı 'nın sonuna kadar şunu bekliyoruz: 
 
-* Azure'da yalıtılmış bir ortama erişmek için satıcıların Azure Etkin Dizini'ndeki (Azure AD) konuk hesaplarını kullanmaları için uçtan uca çalışan bir çözüm. Çevre, üretken olmaları için gerekli kaynaklara sahiptir. 
-* Daha geniş ölçekli kullanımı ve benimsenmesini etkileyen olası engelleme sorunları numaralandırılır ve anlaşılır.
-* Kavram kanıtı geliştirme katılan bireyler tüm kod iyi bir anlayışa sahip. Onlar da ilgili teminat anlamak ve daha geniş benimsenmesi eminiz.
+* Satıcıların Azure 'daki yalıtılmış bir ortama erişmesi için Azure Active Directory (Azure AD) ' deki Konuk hesaplarını kullanması için bir uçtan uca çözüm. Ortamın üretken olmaları için gereken kaynakları vardır. 
+* Daha geniş ölçekli kullanımı ve benimsemeyi etkileyen olası engelleme sorunları numaralandırılır ve anlaşılır.
+* Kavram kanıtı geliştirmede yer alan kişiler tüm kodun iyi bir şekilde anlaşılmasıdır. Ayrıca, dahil edilen ve daha fazla benimseme konusunda emin olan yardımcı
 
-### <a name="open-questions-and-prerequisites"></a>Açık sorular ve ön koşullar 
+### <a name="open-questions-and-prerequisites"></a>Açık soru ve önkoşulları 
 
-* Bu proje için kullanabileceğimiz bir abonelik oluşturduk mu? 
-* Azure AD kiracımız ve Azure AD ile ilgili sorular için kimler inyardımı ve rehberliği sağlayabileceğini tanımlayan bir Azure AD yöneticisimiz var mı? 
-* Projede çalışan bireyler için işbirliği yapacak bir yerimiz var mı? 
+* Bu proje için kullanabilmemiz için bir abonelik oluşturuldu mu? 
+* Azure AD kiracımız var ve Azure AD Genel Yöneticisi, Azure AD ile ilgili sorulara yönelik yardım ve rehberlik sağlayabilen kişiyi tanımladı mı? 
+* Projede çalışan bireyler için işbirliği yapmak üzere bir yer var mı? 
 
-   * Kaynak kodu ve komut dosyaları (Azure Deposu gibi) 
-   * Belgeler (Microsoft Teams veya SharePoint gibi)  
-   * Konuşmalar (Microsoft Teams gibi) 
-   * Çalışma öğeleri (Azure Panoları gibi) 
-* Satıcılar için gerekli kaynaklar nelerdir? Bu, hem sanal makinelerde hem de gerekli diğer sunucularda ağda kullanılabilen uygulamaları içerir. 
-* Sanal makineler Azure'daki bir etki alanına katılacak mı? Öyleyse, bu Azure Active Directory Etki Alanı Hizmetleri (Azure AD DS) veya başka bir şey olacak mı? 
-* Konseptkanıtının hedefi olacak ekibi veya satıcıları belirledik mi? Çevrenin müşterileri kim olacak?
-* Konseptin kanıtı için hangi Azure bölgesini kullanacağız? 
-* IaaS (VMs) dışında devTest Labs aracılığıyla satıcıların kullanmasına izin verilen hizmetlerin bir listesi var mı? 
-* Laboratuvarkullanarak satıcıları/kullanıcıları nasıl eğitmeyi planlıyoruz? 
+   * Kaynak kodu ve betikler (Azure Repos gibi) 
+   * Belgeler (Microsoft ekipleri veya SharePoint gibi)  
+   * Konuşmalar (Microsoft ekipleri gibi) 
+   * İş öğeleri (Azure Boards gibi) 
+* Satıcılar için gereken kaynaklar nelerdir? Bu, yerel olarak sanal makinelerde ve diğer gerekli sunucularda bulunan, ağda bulunan uygulamaları içerir. 
+* Sanal makineler, Azure 'daki bir etki alanına katılmalıdır mi? Bu durumda, Azure Active Directory Domain Services (Azure AD DS) veya başka bir şey olacaktır. 
+* Kavram kanıtı 'nın hedefi olan ekip veya satıcıları tanımladık mı? Ortamın müşterileri kim olacak?
+* Kavram kanıtı için hangi Azure bölgesini kullanacağız? 
+* Satıcıların IaaS (VM 'Ler) yanı sıra DevTest Labs aracılığıyla kullanmasına izin verilen bir hizmet listesi var mı? 
+* Laboratuvarı kullanarak satıcıları/Kullanıcıları eğitme hakkında nasıl planlıyoruz? 
 
 ### <a name="components-of-the-proof-of-concept-solution"></a>Kavram kanıtı çözümünün bileşenleri 
 
-Çözümün aşağıdaki bileşenlere sahip olmasını bekliyoruz: 
+Çözümün aşağıdaki bileşenlere sahip olmasını bekliyor: 
 
-* Çeşitli satıcı ekipleri Azure'da bir dizi laboratuvar kullanır.
-* Laboratuarlar gereksinimleri destekleyen bir ağ altyapısına bağlıdır.
-* Satıcılar, Azure AD ve rol atamaları aracılığıyla laboratuvarlara erişebilir.
-* Satıcıların kaynaklarına başarıyla bağlanmanın bir yolu var. Özellikle, siteden siteye VPN, ortak IP adresleri olmadan sanal makinelere doğrudan erişmesini sağlar.
-* Bir dizi yapı, satıcıların sanal makinelerde ihtiyaç duyduğu gerekli yazılımı kapsar.
+* Çeşitli satıcı takımları Azure 'da bir laboratuvar kümesi kullanacaktır.
+* Laboratuvarlar, gereksinimleri destekleyen bir ağ altyapısına bağlıdır.
+* Satıcıların Azure AD ve rol atamaları aracılığıyla laboratuvarlara erişimi vardır.
+* Satıcıların kaynaklarına başarıyla bağlanması için bir yol vardır. Özellikle, siteden siteye VPN, genel IP adresleri olmadan sanal makinelere doğrudan erişim sağlar.
+* Bir yapı kümesi, satıcıların sanal makinelerde ihtiyacı olan gerekli yazılımları ele alır.
 
 ## <a name="additional-planning-and-design-decisions"></a>Ek planlama ve tasarım kararları 
 
-Tam bir DevTest Labs çözümü yayınlamadan önce, bazı önemli planlama ve tasarım kararları vermek zorunda. Kavram kanıtı üzerinde çalışma deneyimi bu kararları almanıza yardımcı olabilir. Daha fazla göz içerir: 
+Bir tam DevTest Labs çözümünü bırakmadan önce bazı önemli planlama ve tasarım kararları almanız gerekir. Kavram kanıtı üzerinde çalışma deneyimi, bu kararları almanıza yardımcı olabilir. Daha ayrıntılı bilgiler şunlardır: 
 
-* **Abonelik topolojisi**: Azure'daki kaynaklar için kurumsal düzeydeki [gereksinimler, tek bir abonelikteki kullanılabilir kotaların](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)ötesine uzanabilir. Bu, ilk abonelik sınırlarını artırmak için birden çok Azure aboneliği ve/veya hizmet isteği gerektirir. Kaynakların abonelikler arasında nasıl dağıtılacayacaklarına önceden karar vermek önemlidir. Kaynakları daha sonra başka bir aboneye taşımak zor olduğundan, değerli kaynaklardan biri [abonelik karar kılavuzudur.](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/) Örneğin, bir laboratuvar oluşturulduktan sonra başka bir aboneye taşınamaz.  
-* **Ağ topolojisi**: DevTest Labs'ın otomatik olarak oluşturduğu [varsayılan ağ altyapısı,](../app-service/networking-features.md) kurumsal kullanıcılar için gereksinimleri ve kısıtlamaları karşılamak için yeterli olmayabilir. [Azure ExpressRoute'a bağlı sanal ağları](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/), abonelikler arasında bağlantı için hub ve [spoke'yi](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) ve hatta yalnızca şirket içi bağlantı sağlamak için [zorunlu yönlendirmeyi](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) görmek yaygındır. DevTest Labs, laboratuvarda yeni sanal makineler oluştururken bunların kullanımını etkinleştirmek için mevcut sanal ağların laboratuvara bağlanmasına olanak tanır. 
-* **Sanal makinelerin uzaktan erişimi**: DevTest Labs'da bulunan sanal makinelere uzaktan erişmek için birçok seçenek vardır. En kolayı, ortak IP'leri veya paylaşılan genel IP'leri kullanmaktır. Bunlar [laboratuarda bulunan ayarlardır.](devtest-lab-shared-ip.md) Bu seçenekler yeterli değilse, uzaktan erişim ağ geçidi kullanmak da bir seçenektir. Bu seçenek [DevTest Labs kurumsal başvuru mimarisinde](devtest-lab-reference-architecture.md) gösterilir ve [DevTest Labs uzak masaüstü ağ geçidi belgelerinde](configure-lab-remote-desktop-gateway.md)daha ayrıntılı olarak açıklanmıştır. İşletmeler, laboratuvarlarını şirket içi ağlarına bağlamak için ExpressRoute veya siteden siteye VPN de kullanabilir. Bu seçenek, internete maruz kalmadan özel IP adreslerine göre sanal makinelere doğrudan uzak masaüstü veya SSH bağlantıları sağlar. 
-* **İşleme izinleri**: DevTest Labs'da yaygın olarak kullanılan iki temel izin [Sahibi ve Laboratuvar Kullanıcısıdır.](devtest-lab-add-devtest-user.md) DevTest Labs'ı geniş bir şekilde kullanıma almadan önce laboratuvardaki her erişim düzeyine kimin emanet olacağına karar vermek önemlidir. Ortak bir model, laboratuvar sahibi ve laboratuvar kullanıcıları olarak ekip üyeleri olarak bütçe sahibidir (örneğin, takım lideri). Bu model, bütçeden sorumlu kişinin (takım müşteri adayının) ilke ayarlarını ayarlamasını ve ekibi bütçe içinde tutmasını sağlar.  
+* **Abonelik topolojisi**: Azure 'daki kaynaklara yönelik kurumsal düzeyde gereksinimler, [tek bir abonelik içindeki kullanılabilir kotaların](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)ötesine daha fazla genişletebilir. Bu, ilk abonelik limitlerini artırmak için birden çok Azure aboneliğine ve/veya hizmet isteğine sahiptir. Kaynakları abonelikler arasında nasıl dağıtacağınıza karar vermeniz önemlidir. Bir değerli kaynak, daha sonra kaynakları başka bir aboneliğe taşımak zor olduğundan, [abonelik karar kılavuzudur](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/) . Örneğin, bir laboratuvar oluşturulduktan sonra başka bir aboneliğe taşınamaz.  
+* **Ağ topolojisi**: DevTest Labs tarafından otomatik olarak oluşturulan [varsayılan ağ altyapısı](../app-service/networking-features.md) , kurumsal kullanıcıların gereksinimlerini ve kısıtlamalarını karşılamak için yeterli olmayabilir. [Azure ExpressRoute 'a bağlı sanal ağlar](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/), abonelikler arasında bağlantı için [hub ve bağlı bileşen](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) , hatta yalnızca şirket içi bağlantıyı sağlamak için de [zorlanacak yönlendirme](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) hakkında bilgi almak yaygındır. DevTest Labs, laboratuvarda yeni sanal makineler oluştururken kullanımını etkinleştirmek için mevcut sanal ağların laboratuvara bağlanmasını sağlar. 
+* **Sanal makinelere uzaktan erişim**: DevTest Labs 'de bulunan sanal makinelere uzaktan erişim için birçok seçenek vardır. En kolay genel IP 'Leri veya paylaşılan genel IP 'Leri kullanmaktır. Bunlar [, laboratuvarda kullanılabilir olan ayarlardır](devtest-lab-shared-ip.md). Bu seçenekler yeterli değilse, uzaktan erişim ağ geçidi kullanmak da bir seçenektir. Bu seçenek [DevTest Labs Enterprise Reference mimarisinde](devtest-lab-reference-architecture.md) gösterilir ve [DevTest Labs Uzak Masaüstü Ağ geçidi belgelerinde](configure-lab-remote-desktop-gateway.md)daha ayrıntılı olarak açıklanmıştır. Kuruluşlar, laboratuvarlarını şirket içi ağına bağlamak için ExpressRoute veya siteden siteye VPN de kullanabilir. Bu seçenek, internet 'te hiçbir etkilenmesiz özel IP adreslerini temel alarak sanal makinelere doğrudan uzak masaüstü veya SSH bağlantıları sağlar. 
+* **Izinleri işleme**: DevTest Labs 'de yaygın olarak kullanılan iki anahtar izinleri [Owner ve Lab User](devtest-lab-add-devtest-user.md). Laboratuvardaki her erişim düzeyiyle güvenilir olacak şekilde, DevTest Labs 'nin genel kullanıma sunulmadan önce karar vermeniz önemlidir. Ortak bir model, laboratuvar sahibi olarak (örneğin, ekip lideri) laboratuvar sahibi ve takım üyeleri olarak laboratuar kullanıcıları olarak bütçe sahibidir. Bu model, bütçesinden sorumlu olan kişinin (ekip lideri) ilke ayarlarını ayarlamasını ve ekibi bütçe içinde tutmasını sağlar.  
 
-## <a name="completing-the-proof-of-concept"></a>Kavramın kanıtını tamamlama 
+## <a name="completing-the-proof-of-concept"></a>Kavram kanıtı Tamamlanıyor 
 
-Beklenen öğrenmeler tamamlandıktan sonra, pilot tamamlamak için zamanı. Bu, kullanıcılardan geri bildirim toplama, pilotun başarılı olup olmadığını belirleme ve kuruluşun kuruluştaki DevTest Labs'ın ölçekli bir lansmanında ilerleyip ilerleyeceğine karar verme zamanıdır. Ayrıca, ölçek dağıtımı boyunca tutarlılık sağlamak için DevTest Labs ve ilişkili kaynakların dağıtım otomatikleştirilmesi ni de göz önünde bulundurmak için harika bir zaman. 
+Beklenen dersleri ele alındıktan sonra pilot uygulamanın tamamlanışında. Bu, kullanıcılardan geri bildirim toplamak, Pilot uygulamanın başarılı olup olmadığını belirlemek ve kuruluşun kurumsal bir DevTest Labs 'in bir ölçek dağıtımı üzerine ilerleyeceğini belirlemek için zaman alır. Ayrıca, ölçek dağıtımı genelinde tutarlılık sağlamak için DevTest Labs ve ilişkili kaynakların dağıtımını otomatik hale getirmek için harika bir süredir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-* [DevTest Labs kurumsal dokümantasyon](devtest-lab-guidance-prescriptive-adoption.md)
-* [Bir kuruluş için referans mimarisi](devtest-lab-reference-architecture.md)
-* [DevTest Labs dağıtımınızı ölçekleme](devtest-lab-guidance-orchestrate-implementation.md)
-* [Azure DevTest Labs'ın uygulanmasını düzenleme](devtest-lab-guidance-orchestrate-implementation.md)
+* [DevTest Labs kurumsal belgeleri](devtest-lab-guidance-prescriptive-adoption.md)
+* [Bir kuruluş için başvuru mimarisi](devtest-lab-reference-architecture.md)
+* [DevTest Labs dağıtımınızı ölçeklendirme](devtest-lab-guidance-orchestrate-implementation.md)
+* [Azure DevTest Labs uygulanmasını düzenleme](devtest-lab-guidance-orchestrate-implementation.md)

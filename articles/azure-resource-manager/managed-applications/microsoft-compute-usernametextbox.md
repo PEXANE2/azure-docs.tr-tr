@@ -1,20 +1,20 @@
 ---
-title: UserNameTextBox Kullanıcı Arabirimi öğesi
-description: Azure portalı için Microsoft.Compute.UserNameTextBox UI öğesini açıklar. Kullanıcıların Windows veya Linux kullanıcı adları sağlamasını sağlar.
+title: UserNameTextBox Kullanıcı arabirimi öğesi
+description: Azure portal için Microsoft. COMPUTE. UserNameTextBox Kullanıcı arabirimi öğesini açıklar. Kullanıcıların Windows veya Linux kullanıcı adlarını sağlamasına olanak sağlar.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: c7544ae7d872a64547cb6c57ce8af9a09fc6c3d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651910"
 ---
-# <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft.Compute.UserNameTextBox Kullanıcı Arabirimi öğesi
+# <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft. COMPUTE. UserNameTextBox UI öğesi
 
-Windows ve Linux kullanıcı adları için yerleşik doğrulama içeren bir metin kutusu denetimi.
+Windows ve Linux Kullanıcı adları için yerleşik doğrulamaya sahip bir metin kutusu denetimi.
 
 ## <a name="ui-sample"></a>UI örneği
 
@@ -47,13 +47,13 @@ Windows ve Linux kullanıcı adları için yerleşik doğrulama içeren bir meti
 
 ## <a name="remarks"></a>Açıklamalar
 
-- Doğru `constraints.required` olarak **true**ayarlanmışsa, metin kutusunun başarıyla doğrulamak için bir değeri olmalıdır. Varsayılan değer **doğrudur.**
-- `osPlatform`belirtilmelidir ve **Windows** veya **Linux**olabilir.
-- `constraints.regex`JavaScript normal ifade desenidir. Belirtilirse, metin kutusunun değeri başarılı bir şekilde doğrulamak için desen le eşleşmelidir. Varsayılan değer **null'** dur.
-- `constraints.validationMessage`metin kutusunun değeri tarafından `constraints.regex`belirtilen doğrulama başarısız olduğunda görüntülemek için bir dizedir. Belirtilmemişse, metin kutusunun yerleşik doğrulama iletileri kullanılır. Varsayılan değer **null'** dur.
-- Bu öğe için `osPlatform`belirtilen değeri temel alan yerleşik doğrulama vardır. Yerleşik doğrulama, özel bir normal ifadeyle birlikte kullanılabilir. Bir `constraints.regex` değer belirtilirse, hem yerleşik hem de özel doğrulamalar tetiklenir.
+- `constraints.required` **True**olarak ayarlanırsa, metin kutusunun başarıyla doğrulanacak bir değere sahip olması gerekir. Varsayılan değer **true**'dur.
+- `osPlatform`belirtilmelidir ve **Windows** ya da **Linux**olabilir.
+- `constraints.regex`, JavaScript normal ifade deseninin. Belirtilmişse, metin kutusunun değeri, başarıyla doğrulanacak şekilde Düzenle eşleşmelidir. Varsayılan değer **null**.
+- `constraints.validationMessage`, metin kutusunun değeri tarafından `constraints.regex`belirtilen doğrulama başarısız olduğunda görüntülenecek bir dizedir. Belirtilmezse, metin kutusunun yerleşik doğrulama iletileri kullanılır. Varsayılan değer **null**.
+- Bu öğe için `osPlatform`belirtilen değeri temel alan yerleşik doğrulamaya sahiptir. Yerleşik doğrulama, özel bir normal ifadeyle birlikte kullanılabilir. İçin `constraints.regex` bir değer belirtilmişse, hem yerleşik hem de özel doğrulamalar tetiklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* UI tanımlarını oluşturmaya giriş için create [UiDefinition 'a](create-uidefinition-overview.md)bakın.
-* UI öğelerindeki ortak özelliklerin açıklaması için [createUiDefinition öğelerine](create-uidefinition-elements.md)bakın.
+* UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
+* UI öğelerindeki ortak özelliklerin açıklaması için bkz. [Createuıdefinition Elements](create-uidefinition-elements.md).

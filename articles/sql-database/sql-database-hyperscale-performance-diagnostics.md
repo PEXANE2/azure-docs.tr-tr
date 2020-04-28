@@ -1,6 +1,6 @@
 ---
-title: Hiperölçekte performans tanılama
-description: Bu makalede, Azure SQL Veritabanı'ndaki Hiper ölçek performans sorunlarının nasıl giderilen olduğu açıklanmaktadır.
+title: Hiper ölçekte Performans Tanılama
+description: Bu makalede, Azure SQL veritabanı 'nda hiper ölçekli performans sorunlarının nasıl giderileceği açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -11,44 +11,44 @@ ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
 ms.openlocfilehash: 26bd6ddb9d8255b8e2510133fc4b6aa645f89f68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75615056"
 ---
-# <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL Hiper ölçekli performans sorun giderme tanılama
+# <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL hiper ölçek performans sorunlarını giderme tanılaması
 
-Bir Hyperscale veritabanındaki performans sorunlarını gidermek için, Azure SQL veritabanı işlem düğümündeki [genel performans alaş metodolojileri](sql-database-monitor-tune-overview.md) performans araştırmasının başlangıç noktasıdır. Ancak, [Hyperscale'in dağıtılmış mimarisi](sql-database-service-tier-hyperscale.md#distributed-functions-architecture) göz önüne alındığında, yardımcı olmak için ek tanılama lar eklenmiştir. Bu makalede, Hiper ölçek özgü tanı verileri açıklanmaktadır.
+Hiper ölçekli bir veritabanında performans sorunlarını gidermek için, Azure SQL veritabanı işlem düğümündeki [genel performans ayarlama yöntemleri](sql-database-monitor-tune-overview.md) , performans araştırmasının başlangıç noktasıdır. Ancak, Hyperscale 'nin [Dağıtılmış mimarisi](sql-database-service-tier-hyperscale.md#distributed-functions-architecture) verildiğinde yardım 'a ek Tanılamalar eklenmiştir. Bu makalede, hiper ölçeğe özgü Tanılama verileri açıklanmaktadır.
 
-## <a name="log-rate-throttling-waits"></a>Günlük hızı azaltma beklemeleri
+## <a name="log-rate-throttling-waits"></a>Günlük hızı azaltma bekler
 
-Her Azure SQL Veritabanı hizmet düzeyi, [günlük oranı yönetimi](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)aracılığıyla uygulanan günlük oluşturma oranı sınırlarına sahiptir. Hyperscale'de, günlük oluşturma sınırı şu anda hizmet düzeyine bakılmaksızın 100 MB/sn olarak ayarlanır. Ancak, birincil işlem yinelemesinde günlük oluşturma hızının kurtarılabilirlik SLA'larını korumak için daraltılması gereken zamanlar vardır. Bu azaltma, bir sayfa sunucusu veya başka bir [bilgi işlem yinelemesi](sql-database-service-tier-hyperscale.md#distributed-functions-architecture) Log hizmetinden yeni günlük kayıtlarının uygulanmasının önemli ölçüde arkasında olduğunda gerçekleşir.
+Her Azure SQL veritabanı hizmet düzeyinde günlük oluşturma oranı sınırlamaları, [günlük hızı](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)yönetimi aracılığıyla uygulanır. Hiper ölçekte, günlük oluşturma sınırı hizmet düzeyinden bağımsız olarak şu anda 100 MB/sn olarak ayarlanmıştır. Ancak, birincil işlem çoğaltmasındaki günlük oluşturma hızının, kurtarılabilirlik sağlamak için kısıtlandığı durumlar vardır. Bu kısıtlama, bir [sayfa sunucusu veya başka bir işlem çoğaltması](sql-database-service-tier-hyperscale.md#distributed-functions-architecture) , günlük hizmetinden yeni günlük kayıtlarının uygulanması önemli ölçüde geride olduğunda gerçekleşir.
 
-Aşağıdaki bekleme türleri [(sys.dm_os_wait_stats'](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)de) günlük oranının birincil bilgi işlem yinelemesinde neden azaltılabilir nedenini açıklar:
+Aşağıdaki bekleme türleri ( [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)' de), günlük hızının birincil işlem çoğaltmasında nasıl kısıtlanamadığına ilişkin nedenleri anlatmaktadır:
 
-|Bekleme Türü    |Açıklama                         |
+|Bekleme türü    |Açıklama                         |
 |-------------          |------------------------------------|
-|RBIO_RG_STORAGE        | Bir Hyperscale veritabanı birincil bilgi işlem düğümü günlük oluşturma oranı sayfa sunucusunda gecikmiş günlük tüketimi nedeniyle daraltılmış olduğunda oluşur.         |
-|RBIO_RG_DESTAGE        | Hyperscale veritabanı hesaplama düğümü günlük oluşturma hızı, uzun süreli günlük depolaması tarafından gecikmiş günlük tüketimi nedeniyle daraltıldığında oluşur.         |
-|RBIO_RG_REPLICA        | Bir Hyperscale veritabanı bilgi işlem düğümü günlük oluşturma oranı okunabilir ikincil çoğaltma (lar) tarafından gecikmiş günlük tüketimi nedeniyle daraltılır oluşur.         |
-|RBIO_RG_LOCALDESTAGE   | Hyperscale veritabanı hesaplama düğümü günlük oluşturma hızı, günlük hizmeti tarafından gecikmiş günlük tüketimi nedeniyle daraltıldığında oluşur.         |
+|RBIO_RG_STORAGE        | Bir hiper ölçek veritabanı birincil işlem düğümü günlük oluşturma hızı, sayfa sunucusunda gecikmeli günlük kullanımı nedeniyle kısıtlanmakta olduğunda gerçekleşir.         |
+|RBIO_RG_DESTAGE        | Bir hiper ölçek veritabanı işlem düğüm günlüğü oluşturma hızı, uzun süreli günlük depolama tarafından Gecikmeli günlük tüketimine karşı kısıtlanmakta olduğunda gerçekleşir.         |
+|RBIO_RG_REPLICA        | Bir hiper ölçek veritabanı işlem düğüm günlüğü oluşturma hızı, okunabilir ikincil çoğaltmalar tarafından Gecikmeli günlük tüketimine karşı kısıtlanmakta olduğunda gerçekleşir.         |
+|RBIO_RG_LOCALDESTAGE   | Bir hiper ölçek veritabanı işlem düğüm günlüğü oluşturma hızı, günlük hizmeti tarafından Gecikmeli günlük tüketimine karşı kısıtlanmakta olduğunda gerçekleşir.         |
 
-## <a name="page-server-reads"></a>Sayfa sunucusu okur
+## <a name="page-server-reads"></a>Sayfa sunucusu okuma
 
-İşlem yinelemeleri veritabanının tam bir kopyasını yerel olarak önbelleğe vermez. Bilgi işlem yinelemesine yerel olan veriler Arabellek Havuzunda (bellekte) ve veri sayfalarının kısmi (kaplamasız) önbelleğinde depolanır. Bu yerel RBPEX önbelleği, işlem boyutuyla orantılı olarak boyutlandırılır ve işlem katmanının üç katı bellektir. RBPEX, en sık erişilen verilere sahip olması nedeniyle Buffer Pool'a benzer. Diğer taraftan, her sayfa sunucusu, veritabanının koruduğu bölümü için bir kaplama RBPEX önbelleğine sahiptir.
+İşlem çoğaltmaları veritabanının tam bir kopyasını yerel olarak önbelleğe vermez. İşlem çoğaltmasındaki yerel veriler, arabellek havuzunda (bellekte) ve veri sayfalarının kısmi (kapsayan olmayan) önbelleği olan yerel dayanıklı arabellek havuzu uzantısı (RBPEX) önbelleğinde depolanır. Bu yerel RBPEX önbelleği, işlem boyutuna orantılı bir şekilde boyutlandırılır ve işlem katmanının üç katı olur. RBPEX, en sık erişilen verileri içeren arabellek havuzuna benzerdir. Diğer taraftaki her sayfa sunucusunda, tuttuğu veritabanının bölümü için kapsayan bir RBPEX önbelleği vardır.
  
-Bir işlem yinelemesinde okuma yayımlandığında, veri Arabellek Havuzu'nda veya yerel RBPEX önbelleğinde yoksa, getPage (pageId, LSN) işlev çağrısı verilir ve sayfa ilgili sayfa sunucusundan alınır. Sayfa sunucularından gelen okumalar uzaktan okunur ve böylece yerel RBPEX'ten alınan okumalardan daha yavaşdır. IO ile ilgili performans sorunlarını giderirken, nispeten daha yavaş uzak sayfa sunucusu okumaları aracılığıyla kaç iOs yapıldığını söyleyebilmemiz gerekir.
+Bir işlem çoğaltmasında okuma yapıldığında, veriler arabellek havuzunda veya yerel RBPEX önbelleğinde yoksa bir getPage (PageId, LSN) işlev çağrısı verilir ve sayfa ilgili sayfa sunucusundan getirilir. Sayfa sunucularından gelen okumalar uzaktan okumalardır ve bu nedenle yerel RBPEX 'dan okumalarından daha yavaştır. GÇ ile ilgili performans sorunları giderirken, görece yavaş uzak sayfa sunucusu okumaları ile kaç tane IOs yapıldığını anladık.
 
-Birkaç DMV ve genişletilmiş olaylar, bir sayfa sunucusundan gelen uzak okuma sayısını belirten sütunlara ve alanlara sahiptir ve bu da toplam okumasayısıyla karşılaştırılabilir. Sorgu deposu da sorgu çalıştırma süresi istatistiklerinin bir parçası olarak uzaktan okuma yakalar.
+Birçok DMVs ve genişletilmiş olay, bir sayfa sunucusundan uzaktan okuma sayısını belirten sütunlara ve alanlara sahiptir ve bu, toplam okumaların karşılaştırılabileceği anlamına gelir. Sorgu deposu Ayrıca sorgu çalışma zamanı istatistiklerinin bir parçası olarak uzaktan okumaları de yakalar.
 
-- Sayfa sunucusu okumalarını rapor etmek için sütunlar yürütme DMV'leri ve katalog görünümleri gibi mevcuttur:
-    - [_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
-    - [_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
-    - [sys.dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
-    - [sys.dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
-    - [sys.query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
-- Sayfa sunucusu okumaları aşağıdaki genişletilmiş olaylara eklenir:
+- Sayfa sunucusu okumaları raporlamak için sütunlar, yürütme DMVs ve katalog görünümlerinde mevcuttur, örneğin:
+    - [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
+    - [sys. dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
+    - [sys. dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
+    - [sys. dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+    - [sys. query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
+- Sayfa sunucusu okuma aşağıdaki genişletilmiş olaylara eklenir:
     - sql_statement_completed
     - sp_statement_completed
     - sql_batch_completed
@@ -56,55 +56,55 @@ Birkaç DMV ve genişletilmiş olaylar, bir sayfa sunucusundan gelen uzak okuma 
     - scan_stopped
     - query_store_begin_persist_runtime_stat
     - sorgu-store_execution_runtime_info
-- ActualPageServerReads/ActualPageServerReadAheads gerçek planlar için XML sorgu planına eklenir. Örnek:
+- Gerçek planlar için sorgu planı XML 'e Actualpageserverokumaları/ActualPageServerReadAheads eklenir. Örneğin:
 
 `<RunTimeCountersPerThread Thread="8" ActualRows="90466461" ActualRowsRead="90466461" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="133645" ActualCPUms="85105" ActualScans="1" ActualLogicalReads="6032256" ActualPhysicalReads="0" ActualPageServerReads="0" ActualReadAheads="6027814" ActualPageServerReadAheads="5687297" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobPageServerReads="0" ActualLobReadAheads="0" ActualLobPageServerReadAheads="0" />`
 
 > [!NOTE]
-> Sorgu planı özellikleri penceresinde bu öznitelikleri görüntülemek için SSMS 18.3 veya daha sonra gereklidir.
+> Bu öznitelikleri sorgu planı özellikleri penceresinde görüntülemek için SSMS 18,3 veya üzeri gereklidir.
 
-## <a name="virtual-file-stats-and-io-accounting"></a>Sanal dosya istatistikleri ve IO muhasebesi
+## <a name="virtual-file-stats-and-io-accounting"></a>Sanal dosya istatistikleri ve GÇ hesabı
 
-Azure SQL Veritabanı'nda, [sys.dm_io_virtual_file_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF, SQL Server IO'yu izlemenin birincil yoludur. Hiperölçekte IO özellikleri [dağıtılmış mimarisi](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)nedeniyle farklıdır. Bu bölümde, bu DMF'de görüldüğü gibi veri dosyalarına IO (okuma ve yazma) üzerinde odaklanıyoruz. Hyperscale'de, bu DMF'de görünen her veri dosyası uzak bir sayfa sunucusuna karşılık gelir. Burada bahsedilen RBPEX önbelleği, işlem yinelemesi üzerinde kaplamaolmayan bir önbellek olan yerel bir SSD tabanlı önbellektir.
+Azure SQL veritabanı 'nda, [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) dmf, SQL Server GÇ izlemenin birincil yoludur. Hyperscale içindeki GÇ özellikleri, [Dağıtılmış mimarisi](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)nedeniyle farklıdır. Bu bölümde, bu DMF 'de görüldüğü gibi veri dosyalarına GÇ 'ye (okuma ve yazma) odaklanıyoruz. Hiper ölçekte, bu DMF 'de görünür olan her veri dosyası uzak bir sayfa sunucusuna karşılık gelir. Burada bahsedilen RBPEX önbelleği, işlem çoğaltmasındaki kapsayan olmayan bir önbellek olan yerel bir SSD tabanlı önbelleğidir.
 
-### <a name="local-rbpex-cache-usage"></a>Yerel RBPEX önbellek kullanımı
+### <a name="local-rbpex-cache-usage"></a>Yerel RBPEX önbelleği kullanımı
 
-Yerel RBPEX önbelleği, işlem yinelemesi üzerinde, yerel SSD depolamada bulunur. Böylece, bu önbelleğe karşı IO uzak sayfa sunucularına karşı IO daha hızlıdır. Şu anda, bir Hyperscale veritabanında [sys.dm_io_virtual_file_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) işlem yinelemesi üzerinde yerel RBPEX önbelleğine karşı IO raporlama özel bir satır vardır. Bu satır, hem de `database_id` `file_id` sütunlar için 0 değerine sahiptir. Örneğin, aşağıdaki sorgu veritabanı başlangıcından beri RBPEX kullanım istatistiklerini döndürür.
+Yerel bir SSD depolamada, işlem çoğaltmasında yerel RBPEX önbelleği var. Bu nedenle, bu önbellekteki GÇ, uzak sayfa sunucularında GÇ 'den daha hızlıdır. Şu anda, bir hiper ölçek veritabanında bulunan [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) , işlem çoğaltmasındaki yerel RBPEX ÖNBELLEĞINE karşı GÇ 'yi bildiren özel bir satıra sahiptir. Bu satırda hem hem de `database_id` `file_id` sütunları için 0 değeri bulunur. Örneğin, aşağıdaki sorgu, veritabanının başlamasından itibaren RBPEX kullanım istatistikleri döndürüyor.
 
 `select * from sys.dm_io_virtual_file_stats(0,NULL);`
 
-RBPEX'te yapılan okumaoranı, diğer tüm veri dosyalarında yapılan toplu okumaoranı RBPEX önbellek isabet oranı sağlar.
+Tüm diğer veri dosyalarında yapılan toplanmış okumaların, RBPEX üzerinde yapılan okumaların oranı, RBPEX isabetli önbellek okuması oranı sağlar.
 
 ### <a name="data-reads"></a>Veri okuma
 
-- Okumalar, SQL Server altyapısı tarafından bir bilgi işlem yinelemesi üzerinde verildiğinde, bunlara yerel RBPEX önbelleği veya uzak sayfa sunucuları veya birden çok sayfa yı okurken ikisinin birleşimi tarafından sunulabilir.
-- Bilgi işlem yinelemesi belirli bir dosyadan bazı sayfaları okuduğunda ( örneğin 1 file_id, bu veriler yalnızca yerel RBPEX önbelleğinde yer alıyorsa, bu okumaiçin tüm IO file_id 0 (RBPEX) ile birlikte muhasebeleştirilmiştir. Bu verilerin bir kısmı yerel RBPEX önbelleğindeyse ve bir kısmı uzak bir sayfa sunucusundaysa, IO RBPEX'ten sunulan parça için file_id 0'a doğru muhasebeleştirilir ve uzak sayfa sunucusundan sunulan parça file_id 1'e doğru muhasebeleştirilir. 
-- Bir işlem çoğaltma, bir sayfa sunucusundan belirli bir [LSN'de](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) bir sayfa istediğinde, sayfa sunucusu istenen LSN'yi yakalayamadıysa, sayfa sunucusu sayfa nın bilgi işlem yinelemesine döndürülmeden önce sayfa sunucusu nun yakalamasını bekler. Bilgi işlem yinelemesindeki bir sayfa sunucusundan okunan herhangi bir okuma için, bu IO'yu bekliyorsa PAGEIOLATCH_* bekleme türünü görürsünüz. Hyperscale'de bu bekleme süresi, hem sayfa sunucusunda istenen sayfayı lsn'ye yetişmek için gereken süreyi hem de sayfayı sayfa sunucusundan bilgi işlem yinelemesine aktarmak için gereken süreyi içerir.
-- Okuma-ileri gibi büyük okumalar genellikle ["Scatter-Gather" Reads](/sql/relational-databases/reading-pages/)kullanılarak yapılır. Bu, SQL Server altyapısında tek bir okuma olarak kabul edilen, aynı anda en fazla 4 MB sayfa okuma olanağı sağlar. Ancak, okunan veriler RBPEX olduğunda, bu okumalar birden fazla tek tek 8 KB okur olarak muhasebeleştirilir, çünkü arabellek havuzu ve RBPEX her zaman 8 KB sayfa kullanır. Sonuç olarak, RBPEX'e karşı görülen okuma iOs sayısı, motor tarafından gerçekleştirilen gerçek IOs sayısından daha büyük olabilir.
+- Okuma SQL Server altyapısı tarafından bir işlem çoğaltması üzerinde verildiğinde, bunlar yerel RBPEX önbelleği veya uzak sayfa sunucuları tarafından ya da birden çok sayfa okunıyorsa ikisinin bir birleşimi tarafından sunulabilir.
+- İşlem çoğaltması belirli bir dosyadaki bazı sayfaları okuduğunda, örneğin file_id 1, bu veriler yalnızca yerel RBPEX önbelleğinde bulunuyorsa, bu okuma için tüm GÇ 'ler file_id 0 (RBPEX) ile hesaba katılmaz. Bu verilerin bir bölümü yerel RBPEX önbelleğinde ise ve bazı bölümleri uzak sayfa sunucusunda ise, bu durumda, RBPEX 'tan sunulan bölüm için GÇ file_id ve uzak sayfa sunucusundan sunulan Bölüm file_id 1 ' e doğru bir şekilde hesaba katılmaz. 
+- Bir işlem çoğaltması bir sayfa sunucusundan belirli bir [LSN](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) 'nin bir sayfasını istediğinde, sayfa sunucusu istenen LSN 'ye bakmadığında, işlem çoğaltmasındaki okuma işlemi sayfa sunucusu işlem çoğaltmasına döndürülmeden önce yakalanana kadar bekler. İşlem çoğaltmasında bir sayfa sunucusundan okunan her türlü, bu GÇ üzerinde bekliyorsa, PAGEIOLATCH_ * bekleme türünü görürsünüz. Hiper ölçekte bu bekleme süresi, sayfa sunucusundaki istenen sayfayı gereken LSN 'ye ve sayfa sunucusundan bilgi işlem çoğaltmasına aktarmak için gereken süreyi de içerir.
+- Okuma sonrası gibi büyük okumalar genellikle ["dağılım-toplama" okumaları](/sql/relational-databases/reading-pages/)kullanılarak yapılır. Bu, SQL Server altyapısında tek bir okuma olarak kabul edilen, her seferinde 4 MB 'a kadar sayfa okumalarını sağlar. Ancak, okunan veriler RBPEX ise, bu okumalar birden çok ayrı 8 KB okuma olarak hesaba katılmaz ve bu, arabellek havuzu ve RBPEX her zaman 8 KB sayfa kullanır. Sonuç olarak, RBPEX 'ye karşı görülen okuma IOs sayısı, altyapı tarafından gerçekleştirilen gerçek IOs sayısından daha büyük olabilir.
 
 ### <a name="data-writes"></a>Veri yazma
 
-- Birincil işlem yinelemesi doğrudan sayfa sunucularına yazmıyor. Bunun yerine, Log hizmetinin günlük kayıtları ilgili sayfa sunucularında yeniden oynatılır. 
-- Hesaplama çoğaltma olur yazıyor ağırlıklı olarak yerel RBPEX (file_id 0) yazıyor. 8 KB'den daha büyük mantıksal dosyalarüzerinde yazmak için, başka bir deyişle bu [Topla-yazma](/sql/relational-databases/writing-pages/)kullanılarak yapılan , her yazma işlemi birden fazla 8 KB bireysel rbpex için tampon havuzu ve RBPEX her zaman 8 KB sayfaları kullanmak beri yazar tercüme edilir. Sonuç olarak, RBPEX'e karşı görülen yazma iOs sayısı, motor tarafından gerçekleştirilen gerçek IOs sayısından daha büyük olabilir.
-- RBPEX olmayan dosyalar veya sayfa sunucularına karşılık gelen file_id 0 dışındaki veri dosyaları da yazılarını gösterir. Hiper ölçek hizmet katmanında, bu yazılar benzetilir, çünkü işlem yinelemeleri hiçbir zaman doğrudan sayfa sunucularına yazmaz. IOPS ve iş bölümü, bilgi işlem yinelemesi üzerinde oluştukları gibi muhasebeleştirilir, ancak file_id 0 dışındaki veri dosyalarının gecikmesi, sayfa sunucusunun yazdığı gerçek gecikme süresini yansıtmaz.
+- Birincil işlem çoğaltması doğrudan sayfa sunucularına yazmaz. Bunun yerine, günlük hizmetindeki günlük kayıtları ilgili sayfa sunucularında yeniden yürütülür. 
+- İşlem çoğaltmasında gerçekleşen yazma işlemleri, yerel RBPEX (file_id 0) ağırlıklı. 8 KB 'den büyük mantıksal dosyalardaki yazma işlemleri için, [toplama-yazma](/sql/relational-databases/writing-pages/)kullanılarak gerçekleştirilen diğer bir deyişle, her yazma işlemi, bellek havuzu ve rbpex her zaman 8 KB sayfa kullandığından, her yazma işlemi rbpex 'e birden fazla 8 KB 'a çevrilir. Sonuç olarak, RBPEX 'ye karşı görülen yazma IOs sayısı, altyapı tarafından gerçekleştirilen gerçek IOs sayısından daha büyük olabilir.
+- RBPEX dosyaları veya sayfa sunucularına karşılık gelen file_id 0 dışında bir veri dosyası, aynı zamanda yazma işlemlerini gösterir. Hiper ölçek hizmet katmanında, işlem çoğaltmaları hiçbir şekilde doğrudan sayfa sunucularına yazmadığından bu yazma 'lar benzetilir. Yazma ıOPS ve aktarım hızı, işlem çoğaltmasında gerçekleştikleri şekilde hesaba katılmaz, ancak file_id 0 dışında bir veri dosyası gecikmesi sayfa sunucusu yazma işleminin gerçek gecikmesini yansıtmaz.
 
-### <a name="log-writes"></a>Günlük yazıyor
+### <a name="log-writes"></a>Günlük yazma işlemleri
 
-- Birincil işlemde, bir günlük yazma sys.dm_io_virtual_file_stats file_id 2 olarak muhasebelenir. Birincil işlem de bir günlük yazma günlük İniş Bölgesi için bir yazıdır.
-- Günlük kayıtları, bir commit'daki ikincil yinelemede sertleşmez. Hyperscale'de günlük, Log hizmeti tarafından ikincil yinelemelere eşit olarak uygulanır. Günlük yazmaları aslında ikincil yinelemelerde oluşmadığından, ikincil yinelemelerde Log IOs'ların herhangi bir muhasebesi yalnızca izleme amaçlıdır.
+- Birincil işlem sırasında, file_id 2 ' nin sys. dm_io_virtual_file_stats ' de bir günlük yazma işlemi hesaba katılmaz. Birincil işlem üzerine bir günlük yazma, günlük giriş bölgesine bir yazma işlemi olur.
+- Günlük kayıtları, bir işlemede ikincil çoğaltmada sağlamlaştırılmış değildir. Hiper ölçekte günlük hizmeti, günlük hizmeti tarafından zaman uyumsuz olarak uygulanır. Günlük yazma işlemleri ikincil çoğaltmalarda gerçekten gerçekleşmediğinden, ikincil çoğaltmalarda herhangi bir günlük IOs hesabı yalnızca izleme amaçlıdır.
 
-## <a name="data-io-in-resource-utilization-statistics"></a>Kaynak kullanım istatistiklerinde Veri IO
+## <a name="data-io-in-resource-utilization-statistics"></a>Kaynak Kullanım istatistiklerinde veri GÇ
 
-Hiperölçekli olmayan bir veritabanında, [kaynak yönetişim](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) veri IOPS sınırına göre veri dosyalarına karşı IOPS'yi birleştirilmiş okuma ve yazma, `avg_data_io_percent` sütunda [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ve [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) görünümlerinde bildirilir. Aynı değer portalda Veri _IO Yüzdesi_olarak raporlanır. 
+Hiper olmayan ölçekli bir veritabanında, [kaynak idare](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) verileri IOPS sınırına göre veri dosyalarına yönelik Birleşik okuma ve Yazma IOPS 'si `avg_data_io_percent` , sütununda [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ve [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) görünümlerinde raporlanır. Portalda _VERI GÇ yüzdesi_olarak aynı değer raporlanır. 
 
-Bir Hyperscale veritabanında, bu sütun veri IOPS kullanımı sadece bilgi işlem çoğaltma yerel depolama için sınırı nazaran raporlar, RBPEX karşı özellikle IO ve `tempdb`. Bu sütundaki %100 değer, kaynak yönetiminin yerel depolama IOPS'yi sınırladığını gösterir. Bu bir performans sorunu yla ilişkiliyse, daha az IO oluşturmak için iş yükünü ayarlayın veya kaynak yönetimi _Max Data IOPS_ [sınırını](sql-database-vcore-resource-limits-single-databases.md)artırmak için veritabanı hizmet hedefini artırın. RBPEX okur ve yazma kaynak yönetimi için, sistem sql server motoru tarafından verilebilir büyük IOs yerine tek tek 8 KB IOs sayar. 
+Hiper ölçekli bir veritabanında, bu sütun yalnızca işlem çoğaltmasındaki yerel depolama alanı için olan sınıra göre veri ıOPS kullanımını bildirir ve özellikle RBPEX ve ile `tempdb`karşı GÇ. Bu sütundaki %100 değeri, kaynak yönetimi 'nin yerel depolama ıOPS 'yi sınırlandırdığını gösterir. Bu bir performans sorunuyla bağıntılı ise, daha az GÇ oluşturmak için iş yükünü ayarlayın veya kaynak yönetimi _en yüksek VERI IOPS_ [sınırını](sql-database-vcore-resource-limits-single-databases.md)artırmak için veritabanı hizmeti hedefini artırın. RBPEX okuma ve yazma kaynak idaresi için sistem, SQL Server altyapısı tarafından verilebilen daha büyük IOs yerine ayrı 8 KB IOs sayısını sayar. 
 
-Uzak sayfa sunucularına karşı veri IO kaynak kullanımı görünümleri veya portalda rapor edilmez, ancak daha önce belirtildiği gibi [sys.dm_io_virtual_file_stats()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF'de bildirilir.
+Kaynak Kullanımı görünümlerinde veya portalda, uzak sayfa sunucularındaki veri GÇ 'leri raporlanır, ancak daha önce belirtildiği gibi [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) Dmf içinde raporlanır.
 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- Bir Hyperscale tek veritabanı için vCore kaynak sınırları için [Bkz. Hyperscale hizmet katmanı vCore Limitleri](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5)
-- Azure SQL Veritabanı performans atonlama için Azure [SQL Veritabanı'nda Sorgu performansı](sql-database-performance-guidance.md)
-- Sorgu Deposu'nun performansı nın alamı için [Sorgu deposu'nun kullanımıyla Performans izleme](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store/)
-- DMV izleme komut dosyaları için [dinamik yönetim görünümlerini kullanarak performans](sql-database-monitoring-with-dmvs.md) Azure SQL Veritabanı'nı izleme
+- Tek bir hiper ölçekli tek bir veritabanı için vCore kaynak sınırları için bkz. [hyperscale Service Tier vCore limitleri](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5)
+- Azure SQL veritabanı performans ayarlaması için bkz. [Azure SQL veritabanı 'Nda sorgu performansı](sql-database-performance-guidance.md)
+- Sorgu deposu kullanarak performans ayarlaması için bkz. [sorgu deposu kullanarak performans izleme](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store/)
+- DMV İzleme betikleri için bkz. [dinamik yönetim görünümlerini kullanarak performansı Izleme Azure SQL veritabanı](sql-database-monitoring-with-dmvs.md)

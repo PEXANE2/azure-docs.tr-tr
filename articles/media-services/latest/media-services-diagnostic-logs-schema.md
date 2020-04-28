@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri tanılama şemaları - Azure
-description: Bu makalede, Azure Medya Hizmetleri tanılama şemaları gösteriş.
+title: Tanılama günlükleri şemaları Azure Media Services-Azure
+description: Bu makalede Azure Media Services tanılama günlüğü şemaları gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,41 +14,41 @@ ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
 ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75750881"
 ---
 # <a name="diagnostic-logs-schemas"></a>Tanılama günlükleri şemaları
 
-[Azure Monitor,](../../azure-monitor/overview.md) uygulamalarınızın nasıl performans gösterdiğini anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izlemenize olanak tanır. Medya Hizmetleri tanı günlüklerini izleyebilir ve toplanan ölçümler ve günlükler için uyarılar ve bildirimler oluşturabilirsiniz. Günlükleri [Azure Depolama'ya](https://azure.microsoft.com/services/storage/)gönderebilir, [Azure Etkinlik Hub'larına](https://azure.microsoft.com/services/event-hubs/)aktarabilir ve [Günlük Analitiği'ne](https://azure.microsoft.com/services/log-analytics/)aktarabilir veya üçüncü taraf hizmetlerini kullanabilirsiniz.
+[Azure izleyici](../../azure-monitor/overview.md) , uygulamalarınızın nasıl çalıştığını anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izlemenize olanak sağlar. Media Services tanılama günlüklerini izleyebilir, toplanan ölçümler ve Günlükler için uyarılar ve bildirimler oluşturabilirsiniz. [Azure depolama](https://azure.microsoft.com/services/storage/)'ya Günlükler gönderebilir, bunları [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)akışa alabilir ve [Log Analytics](https://azure.microsoft.com/services/log-analytics/)ya da üçüncü taraf hizmetleri kullanabilirsiniz.
 
-Ayrıntılı bilgi için Azure [Monitör Ölçümleri](../../azure-monitor/platform/data-platform.md) ve [Azure Monitör Tanılama günlüklerine](../../azure-monitor/platform/platform-logs-overview.md)bakın.
+Ayrıntılı bilgi için bkz. [Azure Izleyici ölçümleri](../../azure-monitor/platform/data-platform.md) ve [Azure izleyici tanılama günlükleri](../../azure-monitor/platform/platform-logs-overview.md).
 
-Bu makalede, Medya Hizmetleri tanılama şemaları açıklanmaktadır.
+Bu makalede tanılama günlükleri şemaları Media Services açıklanmaktadır.
 
-## <a name="top-level-diagnostic-logs-schema"></a>Üst düzey tanı günlükleri şeması
+## <a name="top-level-diagnostic-logs-schema"></a>Üst düzey tanılama günlükleri şeması
 
-Üst düzey tanılama günlükleri şemasının ayrıntılı açıklaması [için, Azure Tanı Günlükleri için Desteklenen hizmetler, şemalar ve kategorilere](../../azure-monitor/platform/tutorial-dashboards.md)bakın.
+Üst düzey tanılama günlükleri şemasının ayrıntılı açıklaması için bkz. [Azure tanılama günlükleri Için desteklenen hizmetler, şemalar ve Kategoriler](../../azure-monitor/platform/tutorial-dashboards.md).
 
 ## <a name="key-delivery-log-schema"></a>Anahtar teslim günlüğü şeması
 
 ### <a name="properties"></a>Özellikler
 
-Bu özellikler, anahtar teslim günlüğü şemasına özgüdir.
+Bu özellikler, anahtar teslim günlüğü şemasına özeldir.
 
 |Adı|Açıklama|
 |---|---|
-|keyId|İstenen anahtarın kimliği.|
-|Keytype|Aşağıdaki değerlerden biri olabilir: "Clear" (şifreleme yok), "FairPlay", "PlayReady" veya "Widevine".|
-|politikaAd|İlkenin Azure Kaynak Yöneticisi adı.|
-|Tokentype|Belirteç türü.|
-|Statusmessage|Durum iletisi.|
+|keyId|İstenen anahtarın KIMLIĞI.|
+|Anahtar|Şu değerlerden biri olabilir: "Clear" (şifreleme yok), "FairPlay", "PlayReady" veya "Widevine".|
+|policyName|İlkenin Azure Resource Manager adı.|
+|Belirteç|Belirteç türü.|
+|statusMessage|Durum iletisi.|
 
 ### <a name="examples"></a>Örnekler
 
-Anahtar teslimin özellikleri şema istekleri.
+Anahtar teslim istekleri şemasının özellikleri.
 
 ```json
 {
@@ -110,8 +110,8 @@ Anahtar teslimin özellikleri şema istekleri.
 
 ## <a name="additional-notes"></a>Ek notlar
 
-* Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Medya Hizmetleri ölçümlerini ve tanılama günlüklerini izleyin](media-services-metrics-diagnostic-logs.md)
+[Media Services ölçümleri ve tanılama günlüklerini izleme](media-services-metrics-diagnostic-logs.md)
