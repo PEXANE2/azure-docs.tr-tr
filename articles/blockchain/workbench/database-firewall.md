@@ -1,14 +1,14 @@
 ---
-title: Azure Blockchain Workbench veritabanı güvenlik duvarLarını yapılandırma
-description: Azure Blockchain Workbench Preview veritabanı güvenlik duvarını harici istemcilerin ve uygulamaların bağlanmasına izin verecek şekilde nasıl yapılandırabileceğinizi öğrenin.
+title: Azure blok zincirini yapılandırma çalışma ekranı veritabanı güvenlik duvarı
+description: Dış istemcilerin ve uygulamaların bağlanmasına izin vermek için Azure blok zinciri çalışma ekranı önizleme veritabanı güvenlik duvarını yapılandırma hakkında bilgi edinin.
 ms.date: 09/09/2019
 ms.topic: article
 ms.reviewer: mmercuri
 ms.openlocfilehash: e6739b7ead9299f020465d3c50ed01826334ca76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74325995"
 ---
 # <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>Azure Blockchain Workbench veritabanı güvenlik duvarını yapılandırma
@@ -19,7 +19,7 @@ Bu makalede Azure portalını kullanarak güvenlik duvarı kuralı yapılandırm
 
 Bir kural yapılandırmak istediğiniz veritabanına bağlanmak için:
 
-1. Azure Blockchain Workbench kaynakları için **Sahip** izinlerine sahip bir hesapla Azure portalında oturum açın.
+1. Azure blok zinciri çalışma ekranı kaynakları için **sahip** izinlerine sahip bir hesapla Azure Portal oturum açın.
 2. Sol gezinti bölmesinden **Kaynak Grupları**'nı seçin.
 3. Blockchain Workbench dağıtımınıza yönelik kaynak grubunun adını seçin.
 4. Kaynakları sıralamak için **Tür**’ü, sonra da **SQL sunucunuzu** seçin.

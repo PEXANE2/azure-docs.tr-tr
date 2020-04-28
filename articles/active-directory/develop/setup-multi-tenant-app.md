@@ -1,6 +1,6 @@
 ---
-title: Yeni bir çok kiracılı uygulamayı yapılandırma
-description: Bir uygulamayı çok kiracılı olarak nasıl yapılandırılabildiğinizi ve çok kiracılı uygulamaların nasıl çalıştığını öğrenin
+title: Yeni bir çok kiracılı uygulama yapılandırma
+description: Bir uygulamayı çok kiracılı olarak yapılandırma ve çok kiracılı uygulamaların nasıl çalıştığı hakkında bilgi edinin
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: a27524f860f17642dcd0640bcb740fc04c187407
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881392"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Yeni bir çok kiracılı uygulama yapılandırma
 
-Burada çok kiracı uygulamaları hakkında daha fazla bilgi edinmek için önerilen konuların bir listesi:
+Çok kiracılı uygulamalar hakkında daha fazla bilgi edinmek için önerilen konuların listesi aşağıda verilmiştir:
 
-- [Çok kiracılı bir uygulama olmanın ne anlama geldiğini](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#multi-tenant-application) genel olarak anlayın
-- [Bir uygulamanın çok kiracılı olması için nasıl yapılandırılabildiğini](https://docs.microsoft.com/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant) genel olarak anlayın
-- Çok kiracılı uygulamalar için gerekli olan [onay formunu uygulamak için Azure AD onay çerçevesinin nasıl kullanıldığına](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)adım adım genel bir bakış alın
-- Daha fazla derinlik için, [çok kiracılı bir uygulamanın nasıl yapılandırıldığı ve uçtan uca nasıl kodlanacağı,](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)"ortak" bitiş noktasının nasıl kullanılacağı, "kullanıcı" ve "yönetici" onayı uygulanması, daha gelişmiş çok katmanlı senaryoların nasıl uygulanacağı da dahil olmak üzere,
+- [Çok kiracılı bir uygulama olma anlamını](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#multi-tenant-application) genel olarak öğrenin
+- [Bir uygulamayı çok kiracılı olarak yapılandırma hakkında](https://docs.microsoft.com/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant) genel bilgiler alın
+- Azure AD onay çerçevesinin, çok kiracılı uygulamalar için gerekli olan [onayı uygulamak için nasıl kullanıldığına](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)ilişkin adım adım bir genel bakış alın
+- Daha ayrıntılı bilgi için, [çok kiracılı bir uygulamanın nasıl yapılandırıldığını ve](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)nasıl kullanılacağını, "ortak" uç noktasını nasıl kullanacağınızı, "Kullanıcı" ve "Yönetici" onayını nasıl uygulayacağınızı ve daha gelişmiş çok katmanlı senaryolar uygulamayı öğrenin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

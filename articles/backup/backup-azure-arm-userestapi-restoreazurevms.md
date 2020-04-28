@@ -1,33 +1,33 @@
 ---
-title: REST API'sini kullanarak Azure VM'lerini geri yükleme
-description: Bu makalede, REST API'yi kullanarak Azure Sanal Makine Yedekleme'nin geri yükleme işlemlerini nasıl yöneteceğimiz öğrenin.
+title: REST API kullanarak Azure VM 'lerini geri yükleme
+description: Bu makalede, REST API kullanarak Azure sanal makine yedekleme 'nin geri yükleme işlemlerini yönetmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
 ms.openlocfilehash: 4990d815721ddbdde8e6eb6ebf8d6d3b49adc700
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74173377"
 ---
-# <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API'yi kullanarak Azure Sanal makineleri geri yükleme
+# <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API kullanarak Azure sanal makinelerini geri yükleme
 
-Azure Yedekleme'yi kullanan bir Azure sanal makinenin yedeklemesi tamamlandıktan sonra, aynı yedekleme kopyasından tüm Azure Sanal makineleri veya diskleri veya dosyaları geri yüklenebilir. Bu makalede, REST API kullanarak bir Azure VM veya diskler nasıl geri yükleyin açıklar.
+Azure Backup kullanarak bir Azure sanal makinesini yedekleme işlemi tamamlandıktan sonra, biri tüm Azure sanal makinelerini veya diskleri veya dosyalarını aynı yedek kopyadan geri yükleyebilir. Bu makalede REST API kullanarak bir Azure VM veya disklerinin nasıl geri yükleneceği açıklanmaktadır.
 
-Herhangi bir geri yükleme işlemi için, önce ilgili kurtarma noktasını tanımlamak gerekiyor.
+Herhangi bir geri yükleme işlemi için, bunlardan önce ilgili kurtarma noktasını tanımlaması gerekir.
 
-## <a name="select-recovery-point"></a>Kurtarma noktasını seçin
+## <a name="select-recovery-point"></a>Kurtarma noktası seçin
 
-Yedek öğenin kullanılabilir kurtarma noktaları liste [kurtarma noktası REST API](https://docs.microsoft.com/rest/api/backup/recoverypoints/list)kullanılarak listelenebilir. Tüm ilgili değerlere sahip basit bir *GET* işlemidir.
+Bir yedekleme öğesinin kullanılabilir kurtarma noktaları, [Liste kurtarma noktası REST API](https://docs.microsoft.com/rest/api/backup/recoverypoints/list)kullanılarak listelenebilir. Tüm ilgili değerleri olan basit bir *Get* işlemidir.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
 ```
 
-ve burada inşa edilmiş gibi . [here](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1) `{containerName}` `{protectedItemName}` `{fabricName}`"Azure" ise.
+`{containerName}` Ve `{protectedItemName}` [burada](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)oluşturulur. `{fabricName}`"Azure" dır.
 
-*GET* URI gerekli tüm parametrelere sahiptir. Ek bir istek gövdesine gerek yoktur
+*Get* URI 'sinin tüm gerekli parametreleri vardır. Ek bir istek gövdesi gerekmez
 
 ### <a name="responses"></a>Yanıtlar
 
@@ -37,7 +37,7 @@ ve burada inşa edilmiş gibi . [here](backup-azure-arm-userestapi-backupazurevm
 
 #### <a name="example-response"></a>Örnek yanıt
 
-*GET* URI gönderildikten sonra 200 (Tamam) yanıtı döndürülür.
+*Get* URI 'si gönderildikten sonra bir 200 (Tamam) yanıtı döndürülür.
 
 ```http
 HTTP/1.1 200 OK
@@ -113,33 +113,33 @@ X-Powered-By: ASP.NET
 ......
 ```
 
-Kurtarma noktası yukarıdaki yanıtta `{name}` alanla tanımlanır.
+Kurtarma noktası yukarıdaki yanıttaki `{name}` alanla tanımlanır.
 
 ## <a name="restore-disks"></a>Diskleri geri yükleme
 
-Yedekleme verilerinden bir VM oluşturulmasını özelleştirmek gerekirse, diskleri seçilen bir depolama hesabına geri yükleyebilir ve gereksinimlerine göre bu disklerden bir VM oluşturabilirsiniz. Depolama hesabı kurtarma hizmetleri kasası ile aynı bölgede olmalıdır ve bölge gereksiz olmamalıdır. Diskler ve yedeklenmiş VM yapılandırması ("vmconfig.json") verilen depolama hesabında depolanır.
+Bir VM 'nin yedekleme verilerinden oluşturulmasını özelleştirmeniz gerekiyorsa, biri yalnızca seçili depolama hesabına ait diskleri geri yükleyebilir ve bu disklerden gereksinimlere göre bir VM oluşturabilir. Depolama hesabının, kurtarma hizmetleri kasasıyla aynı bölgede olması ve bölge yedekli olmaması gerekir. Diskler ve yedeklenen VM ("VMConfig. JSON") yapılandırması, belirtilen depolama hesabında depolanır.
 
-Geri yükleme disklerini tetiklemek bir *POST* isteğidir. Geri Yükleme diskleri işlemi hakkında daha fazla bilgi için ["tetikleyici geri yükleme" REST API'ye](https://docs.microsoft.com/rest/api/backup/restores/trigger)bakın.
+Geri yükleme disklerinin tetiklenmesi bir *Post* isteğidir. Diskleri geri yükleme işlemi hakkında daha fazla bilgi edinmek için, ["geri yüklemeyi Tetikle" REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger)bakın.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-ve burada inşa edilmiş gibi . [here](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1) `{containerName}` `{protectedItemName}` `{fabricName}`"Azure" `{recoveryPointId}` ve [yukarıda](#example-response) `{name}` belirtilen kurtarma noktasının alanıdır.
+`{containerName}` Ve `{protectedItemName}` [burada](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)oluşturulur. `{fabricName}`, [yukarıda](#example-response)belirtilen kurtarma noktasının `{name}` alanı `{recoveryPointId}` olan "Azure" dır.
 
-### <a name="create-request-body"></a>İstek gövdesi oluşturma
+### <a name="create-request-body"></a>İstek gövdesi oluştur
 
-Azure VM yedeklemesinden disk geri yüklemesini tetiklemek için istek gövdesinin bileşenleri şunlardır.
+Azure VM yedeğinden bir disk geri yükleme tetiklenmesi için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
 |Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
-|properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    Geri Yüklemeİstek Kaynak Özellikleri     |
+|properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
-İstek gövdesinin tanımlarının tam listesi ve diğer ayrıntılar için REST [API belgesini geri yükleme'yi tetiklemeye](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)bakın.
+İstek gövdesinin ve diğer ayrıntıların tanımlarının tamamı listesi için [tetikleyici geri yükleme REST API belgesine](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)bakın.
 
 #### <a name="example-request"></a>Örnek istek
 
-Aşağıdaki istek gövdesi, disk geri yüklemesini tetiklemek için gereken özellikleri tanımlar.
+Aşağıdaki istek gövdesi, disk geri yükleme tetiklenmesi için gereken özellikleri tanımlar.
 
 ```json
 {
@@ -161,17 +161,17 @@ Aşağıdaki istek gövdesi, disk geri yüklemesini tetiklemek için gereken öz
 
 ### <a name="response"></a>Yanıt
 
-Geri yükleme diskinin tetikleme [bir eşzamanlı işlemdir.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) Bu işlem, ayrı olarak izlenmesi gereken başka bir işlem oluşturur anlamına gelir.
+Geri yükleme diskini tetikleme [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
-İki yanıt verir: başka bir işlem oluşturulduğunda 202 (Kabul) ve bu işlem tamamlandığında 200 (Tamam).
+Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
 |Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
-|202 Kabul Edildi     |         |     Accepted    |
+|202 kabul edildi     |         |     Accepted    |
 
 #### <a name="example-responses"></a>Örnek yanıtlar
 
-Geri yükleme disklerini tetiklemek için *POST* URI'yi gönderdikten sonra, ilk yanıt 202 (Kabul) ve konum üstbilgisini veya Azure-async-üstbilgisini gösterir.
+Geri yükleme disklerini tetiklemek için *Post* URI 'sini gönderdikten sonra, ilk yanıt bir konum üst bilgisi veya Azure-Async-header ile 202 (kabul edilir) olur.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -191,13 +191,13 @@ Location: https://management.azure.com/subscriptions//subscriptions/00000000-000
 X-Powered-By: ASP.NET
 ```
 
-Ardından, basit bir *GET* komutuyla konum üstbilgisini veya Azure-AsyncOperation üstbilgisini kullanarak ortaya çıkan işlemi izleyin.
+Ardından, bir basit *Get* komutuyla konum üstbilgisini veya Azure-AsyncOperation üst bilgisini kullanarak elde edilen işlemi izleyin.
 
 ```http
 GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 ```
 
-İşlem tamamlandıktan sonra, yanıt gövdesinde ortaya çıkan geri yükleme işinin kimliğiyle birlikte 200 (Tamam) döndürür.
+İşlem tamamlandıktan sonra, yanıt gövdesinde elde edilen geri yükleme işinin KIMLIĞI ile 200 (Tamam) döndürür.
 
 ```http
 HTTP/1.1 200 OK
@@ -227,15 +227,15 @@ X-Powered-By: ASP.NET
 }
 ```
 
-Yedekleme işi uzun süren bir işlem olduğundan, [REST API belgesini kullanarak monitör işlerinde](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)açıklandığı gibi izlenmelidir.
+Yedekleme işi uzun süredir çalışan bir işlem olduğundan, [REST API belge kullanan izleme işlerinde](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)açıklandığı şekilde izlenmelidir.
 
-Uzun süren iş tamamlandıktan sonra, diskler ve yedeklenen sanal makinenin yapılandırması ("VMConfig.json") verilen depolama hesabında bulunur.
+Uzun süre çalışan iş tamamlandıktan sonra, yedeklenen sanal makinenin diskleri ve yapılandırması ("VMConfig. JSON") belirtilen depolama hesabında mevcut olacaktır.
 
-## <a name="restore-as-another-virtual-machine"></a>Başka bir sanal makine olarak geri yükleme
+## <a name="restore-as-another-virtual-machine"></a>Başka bir sanal makine olarak geri yükle
 
-[Kurtarma noktasını seçin](#select-recovery-point) ve kurtarma noktasından gelen verileri içeren başka bir Azure Sanal makinesi oluşturmak için aşağıda belirtildiği gibi istek gövdesioluşturun.
+Kurtarma noktasını [seçin](#select-recovery-point) ve kurtarma noktasındaki verilerle başka bir Azure sanal makinesi oluşturmak için aşağıda belirtildiği gibi istek gövdesini oluşturun.
 
-Aşağıdaki istek gövdesi, sanal makine geri yüklemesini tetiklemek için gereken özellikleri tanımlar.
+Aşağıdaki istek gövdesi, bir sanal makine geri yüklemesi tetiklemek için gereken özellikleri tanımlar.
 
 ```json
 {
@@ -271,11 +271,11 @@ Aşağıdaki istek gövdesi, sanal makine geri yüklemesini tetiklemek için ger
 }
 ```
 
-Yanıt, [diskleri geri için yukarıda açıklandığı](#response)şekilde ele alınmalıdır.
+Yanıt, [diskleri geri yüklemek için yukarıda açıklanacak](#response)şekilde işlenmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Yedekleme REST API'leri hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
+Azure Backup REST API 'Leri hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 
-- [Azure Kurtarma Hizmetleri sağlayıcısı REST API](/rest/api/recoveryservices/)
+- [Azure kurtarma hizmetleri sağlayıcısı REST API](/rest/api/recoveryservices/)
 - [Azure REST API’yi kullanmaya başlayın](/rest/api/azure/)

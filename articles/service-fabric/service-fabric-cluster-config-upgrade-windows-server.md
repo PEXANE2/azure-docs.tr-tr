@@ -1,27 +1,27 @@
 ---
-title: Bağımsız bir kümenin yapılandırmasını yükseltme
-description: Bağımsız hizmet kumaş kümesini çalıştıran yapılandırmayı nasıl yükselteceklerini öğrenin.
+title: Tek başına kümenin yapılandırmasını yükseltme
+description: Tek başına Service Fabric kümesi çalıştıran yapılandırmayı nasıl yükselteceğinizi öğrenin.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 8e7e01dac29cb9ba91c83270dac4e46c73b2089e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75610140"
 ---
-# <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Bağımsız bir kümenin yapılandırmasını yükseltme 
+# <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Tek başına kümenin yapılandırmasını yükseltme 
 
-Herhangi bir modern sistem için, yükseltme yeteneği ürününüzün uzun vadeli başarısının anahtarıdır. Azure Hizmet Kumaşı kümesi, sahip olduğunuz bir kaynaktır. Bu makalede, bağımsız Hizmet Kumaş kümenizin yapılandırma ayarlarını nasıl yükseltiler.
+Modern bir sistem için yükseltme özelliği, ürününüzün uzun süreli başarısına yönelik bir anahtardır. Azure Service Fabric kümesi, sahip olduğunuz bir kaynaktır. Bu makalede, tek başına Service Fabric kümenizin yapılandırma ayarlarının nasıl yükseltileceği açıklanır.
 
-## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>ClusterConfig.json dosyasındaki küme ayarlarını özelleştirme
-Bağımsız kümeler *ClusterConfig.json* dosyası aracılığıyla yapılandırılır. Farklı ayarlar hakkında daha fazla bilgi edinmek [için bağımsız bir Windows kümesi için Yapılandırma ayarlarına](service-fabric-cluster-manifest.md)bakın.
+## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>ClusterConfig. JSON dosyasındaki küme ayarlarını özelleştirme
+Tek başına kümeler *clusterConfig. JSON* dosyası aracılığıyla yapılandırılır. Farklı ayarlar hakkında daha fazla bilgi edinmek için bkz. [tek başına Windows kümesi Için yapılandırma ayarları](service-fabric-cluster-manifest.md).
 
-*ClusterConfig.json'daki*Cluster `fabricSettings` [özellikleri](./service-fabric-cluster-manifest.md#cluster-properties) bölümünün altındaki bölüme ayarlar ekleyebilir, güncelleyebilir veya kaldırabilirsiniz. 
+`fabricSettings` *ClusterConfig. JSON*içindeki [küme özellikleri](./service-fabric-cluster-manifest.md#cluster-properties) bölümünde bulunan bölümünde ayarları ekleyebilir, güncelleştirebilir veya kaldırabilirsiniz. 
 
-Örneğin, aşağıdaki JSON altındaki `fabricSettings` *Tanılama* bölümüne yeni bir ayar *MaxDiskQuotaInMB* ekler:
+Örneğin, aşağıdaki JSON, altındaki `fabricSettings` *Tanılama* bölümüne *maxdiskquocontainer MB* yeni bir ayar ekler:
 
 ```json
       {
@@ -35,48 +35,48 @@ Bağımsız kümeler *ClusterConfig.json* dosyası aracılığıyla yapılandır
       }
 ```
 
-ClusterConfig.json dosyanızdaki ayarları değiştirdikten sonra küme [yapılandırmasını test edin](#test-the-cluster-configuration) ve ayarları kümenize uygulamak için [küme yapılandırmasını yükseltin.](#upgrade-the-cluster-configuration) 
+ClusterConfig. JSON dosyanızdaki ayarları değiştirdikten sonra, [küme yapılandırmasını test](#test-the-cluster-configuration) edin ve ardından ayarları kümenize uygulamak için [küme yapılandırmasını yükseltin](#upgrade-the-cluster-configuration) . 
 
-## <a name="test-the-cluster-configuration"></a>Küme yapılandırmasını test edin
-Yapılandırma yükseltmesini başlatmadan önce, bağımsız pakette aşağıdaki PowerShell komut dosyasını çalıştırarak yeni küme yapılandırmajınızı Test edebilirsiniz:
+## <a name="test-the-cluster-configuration"></a>Küme yapılandırmasını test etme
+Yapılandırma yükseltmesini başlatmadan önce, tek başına pakette aşağıdaki PowerShell betiğini çalıştırarak yeni küme yapılandırma JSON 'nizi test edebilirsiniz:
 
 ```powershell
 TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File>
 ```
 
-Veya bu komut dosyalarını kullanın:
+Veya şu betiği kullanın:
 
 ```powershell
 TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File> -FabricRuntimePackagePath <Path to the .cab file which you want to test the configuration against>
 ```
 
-Uç noktalar, küme adı, düğüm IP, vb. gibi bazı yapılandırmalar yükseltilememektedir. Yeni küme yapılandırması JSON eskisi karşı sınanır ve bir sorun varsa PowerShell penceresinde hatalar atar.
+Uç noktalar, küme adı, düğüm IP vb. gibi bazı konfigürasyonlar yükseltilemez. Yeni küme yapılandırması JSON, eskileri göre test edilir ve bir sorun varsa PowerShell penceresinde hata oluşturur.
 
 ## <a name="upgrade-the-cluster-configuration"></a>Küme yapılandırmasını yükseltme
-Küme yapılandırma yükseltmesini yükseltmek için [Başlat-ServiceFabricClusterConfigurationUpgrade'i](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)çalıştırın. Yapılandırma yükseltmesi yükseltme etki alanına göre yükseltilerek işlenir.
+Küme yapılandırma yükseltmesini yükseltmek için [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)komutunu çalıştırın. Yapılandırma yükseltme etki alanı yükseltme etki alanına göre işlenir.
 
 ```powershell
 Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
 ```
 
-## <a name="upgrade-cluster-certificate-configuration"></a>Yükseltme küme sertifikası yapılandırması
-Küme düğümleri arasında kimlik doğrulama için bir küme sertifikası kullanılır. Hata küme düğümleri arasındaki iletişimi engellediği için sertifika devri ekstra dikkatli bir şekilde yapılmalıdır.
+## <a name="upgrade-cluster-certificate-configuration"></a>Küme sertifikası yapılandırmasını yükselt
+Küme düğümleri arasında kimlik doğrulaması için bir küme sertifikası kullanılır. Hata, küme düğümleri arasındaki iletişimi engellediğinden, sertifika geçişi çok dikkatli bir şekilde gerçekleştirilmelidir.
 
 Dört seçenek desteklenir:  
 
-* Tek sertifika yükseltmesi: Yükseltme yolu A (Birincil) -> Sertifikası B (Birincil) -> Sertifikası C (Birincil) ->....
+* Tek sertifika yükseltme: yükseltme yolu sertifika A (birincil)-> sertifika B (birincil)-> sertifika C (birincil)->....
 
-* Çift sertifika yükseltmesi: Yükseltme yolu A (Birincil) -> Sertifikası A (Birincil) ve B (İkincil) -> Sertifikası B (Birincil) -> Sertifikası B (Birincil) ve C (İkincil) -> Sertifikası C (Birincil) ->....
+* Çift sertifika yükseltme: yükseltme yolu sertifika A (birincil)-> sertifika A (birincil) ve B (Ikincil)-> sertifika B (birincil)-> sertifika B (birincil) ve C (Ikincil)-> sertifikası C (birincil)->....
 
-* Sertifika türü yükseltmesi: Thumbprint tabanlı sertifika yapılandırması < > CommonName tabanlı sertifika yapılandırması. Örneğin, Sertifika Thumbprint A (Birincil) ve Thumbprint B (İkincil) -> Sertifika CommonName C.
+* Sertifika türü yükseltme: Parmak Izi tabanlı sertifika yapılandırma < > CommonName tabanlı sertifika yapılandırması. Örneğin, sertifika parmak Izi A (birincil) ve Parmak Izi B (Ikincil)-> sertifika CommonName C.
 
-* Sertifika veren thumbprint yükseltme: Yükseltme yolu Sertifika CN=A,IssuerThumbprint=IT1 (Birincil) -> Sertifikası CN=A,IssuerThumbprint=IT1,IT2 (Birincil) -> Sertifikası CN=A,IssuerThumbprint=IT2 (Birincil).
+* Sertifika verenin parmak izi yükseltmesi: sertifika CN = A, ıssuerparmak Izi = IT1 (birincil)-> sertifikası CN = A, ıssuerparmak izi = IT1, IT2 (birincil)-> Certificate CN = A, ıssuerparmak Izi = IT2 (birincil).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bazı Service Fabric [küme ayarlarını](service-fabric-cluster-fabric-settings.md)nasıl özelleştirin için çıktığını öğrenin.
-* [Kümenizi nasıl ölçeklendirecek ve dışarı çıkar' ı](service-fabric-cluster-scale-up-down.md)öğrenin.
-* Uygulama [yükseltmeleri](service-fabric-application-upgrade.md)hakkında bilgi edinin.
+* Bazı [Service Fabric kümesi ayarlarını](service-fabric-cluster-fabric-settings.md)özelleştirmeyi öğrenin.
+* [Kümenizin ölçeğini ve ölçeğini nasıl ölçeklendireceğinizi](service-fabric-cluster-scale-up-down.md)öğrenin.
+* [Uygulama yükseltmeleri](service-fabric-application-upgrade.md)hakkında bilgi edinin.
 
 <!--Image references-->
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG

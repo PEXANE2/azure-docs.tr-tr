@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps'tan Wunderlist'e bağlanın
-description: Azure Mantık Uygulamaları'nı kullanarak Wunderlist hesabınızda listeleri, görevleri, anımsatıcıları ve daha fazlasını izleyen ve yöneten görevleri ve iş akışlarını otomatikleştirin
+title: Azure Logic Apps 'ten Wunderlist 'e bağlanma
+description: Azure Logic Apps kullanarak Wunderlist hesabınızda listeleri, görevleri, anımsatıcıları ve daha fazlasını izleyen ve yöneten görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,69 +8,69 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 5ac13595bd77238aaede5fa3bdc3a35ef69e8504
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789129"
 ---
-# <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Azure Mantık Uygulamalarını kullanarak Wunderlist'i izleyin ve yönetin
+# <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Wunderlist 'i izleyin ve yönetin
 
-Azure Logic Apps ve Wunderlist bağlayıcısı ile, wunderlist hesabınızda liste, görev, anımsatıcı ve daha fazlasını izleyen ve yöneten otomatik görevler ve iş akışları oluşturabilir ve örneğin diğer eylemlerle birlikte:
+Azure Logic Apps ve Wunderlist bağlayıcısıyla, Wunderlist hesabınızda, diğer eylemlerle birlikte yapılacaklar listelerini, görevleri, anımsatıcıları ve daha fazlasını izleyen ve yöneten otomatik görevler ve iş akışları oluşturabilirsiniz, örneğin:
 
-* Yeni görevler oluşturulduğunda, görevlerin zamanı geldiğinde veya anımsatıcılar olduğunda izleyin.
+* Yeni görevler oluşturulduğunda, görevler ne zaman olduğunda veya anımsatıcılar gerçekleştiğinde izleyin.
 * Listeler, notlar, görevler, alt görevler ve daha fazlasını oluşturun ve yönetin.
-* Anımsatıcılar ayarlayın.
-* Listeleri, görevleri, alt görevleri, anımsatıcıları, dosyaları, notları, yorumları ve daha fazlasını alın.
+* Anımsatıcıları ayarlayın.
+* Listeler, görevler, alt görevler, anımsatıcılar, dosyalar, notlar, açıklamalar ve daha fazlasını alın.
 
-[Wunderlist,](https://www.wunderlist.com/) projelerinizi, yapılacaklar listelerinizi ve görevlerinizi herhangi bir cihazda, her yerde planlamanıza, yönetmenize ve bitirmenize yardımcı olan bir hizmettir. Wunderlist hesabınızdan yanıt alan ve çıktıyı diğer eylemleriçin kullanılabilir hale getiren tetikleyiciler kullanabilirsiniz. Wunderlist hesabınızla görevleri gerçekleştiren eylemleri kullanabilirsiniz. Wunderlist eylemlerinden çıktıyı başka eylemlerin kullanmasını da sağlayabilirsiniz. Örneğin, yeni görevlerin vadesi geldiğinde, Slack bağlayıcısıyla ileti gönderebilirsiniz. Mantıksal uygulamalarda yeniyseniz, [Azure Mantık Uygulamaları nedir'yi inceleyin?](../logic-apps/logic-apps-overview.md)
+[Wunderlist](https://www.wunderlist.com/) , projelerinizi, yapılacaklar listelerinizi ve görevlerinizi dilediğiniz cihazda, her yerde planlayıp, yönetmenize ve bitirebilmenizi sağlayan bir hizmettir. Wunderlist hesabınızdan yanıt alan Tetikleyicileri kullanabilir ve çıktıyı diğer eylemler için kullanılabilir hale getirebilirsiniz. Wunderlist hesabınızla görev gerçekleştiren eylemleri kullanabilirsiniz. Ayrıca, başka eylemlere Wunderlist eylemlerinin çıkışını kullanmasını sağlayabilirsiniz. Örneğin, yeni görevlerin süresi geldiğinde, bolluk bağlayıcısıyla iletiler gönderebilirsiniz. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md) olduğunu gözden geçirin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
-* Wunderlist hesabınız ve kullanıcı kimlik bilgileriniz
+* Wunderlist hesabınız ve Kullanıcı kimlik bilgileriniz
 
-   Kimlik bilgileriniz, bir bağlantı oluşturmak ve Wunderlist hesabınıza erişmek için mantık uygulamanıza yetki vetir.
+   Kimlik bilgileriniz, bir bağlantı oluşturmak ve Wunderlist hesabınıza erişmek için mantıksal uygulamanızı yetkilendiremez.
 
-* [Mantık uygulamaları oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgiler
+* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
 
-* Yammer hesabınıza erişmek istediğiniz mantık uygulaması. Wunderlist tetikleyicisiyle başlamak için [boş bir mantık uygulaması oluşturun.](../logic-apps/quickstart-create-first-logic-app-workflow.md) Wunderlist eylemi kullanmak için, mantık uygulamanızı başka bir tetikleyiciyle başlatın, **örneğin, Yineleme** tetikleyicisi.
+* Yammer hesabınıza erişmek istediğiniz mantıksal uygulama. Wunderlist tetikleyicisiyle başlamak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). Wunderlist eylemi kullanmak için, mantıksal uygulamanızı başka bir tetikleyici ile başlatın, örneğin **yineleme** tetikleyicisi.
 
-## <a name="connect-to-wunderlist"></a>Wunderlist'e bağlan
+## <a name="connect-to-wunderlist"></a>Wunderlist 'e bağlanma
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure portalında](https://portal.azure.com)oturum açın ve mantık uygulamanızı zaten açık değilse Mantık Uygulama Tasarımcısı'nda açın.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
 
 1. Bir yol seçin: 
 
-   * Boş mantık uygulamaları için, arama kutusuna filtreniz olarak "wunderlist" girin. 
-   Tetikleyiciler listesinin altında, istediğiniz tetikleyiciyi seçin. 
+   * Boş Logic Apps için, arama kutusuna filtreniz olarak "Wunderlist" yazın. 
+   Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin. 
 
      -veya-
 
-   * Mevcut mantık uygulamaları için: 
+   * Mevcut mantıksal uygulamalar için: 
    
-     * Eylem eklemek istediğiniz son adımaltında Yeni **adımı**seçin. 
+     * Eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. 
 
        -veya-
 
-     * Eylem eklemek istediğiniz adımlar arasında, işaretçinizin üzerine adımların arasında ilerleyin. 
-     Görünen artı işaretini (**+**) seçin ve ardından eylem **ekle'yi**seçin.
+     * Eylem eklemek istediğiniz adımlar arasında, işaretçinizi adımlar arasındaki oka taşıyın. 
+     Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
      
-       Arama kutusuna filtreniz olarak "wunderlist" girin. 
-       Eylemler listesinin altında, istediğiniz eylemi seçin.
+       Arama kutusuna filtreniz olarak "Wunderlist" yazın. 
+       Eylemler listesi altında istediğiniz eylemi seçin.
 
-1. Wunderlist'te oturum açmanız istenirse, erişime izin verebilmek için hemen oturum açın.
+1. Wunderlist 'te oturum açmanız istenirse, erişime izin vermek için şimdi oturum açın.
 
-1. Seçtiğiniz tetikleyici veya eylem için gerekli ayrıntıları sağlayın ve mantık uygulamanızın iş akışını oluşturmaya devam edin.
+1. Seçtiğiniz tetikleyici veya eyleminiz için gerekli ayrıntıları sağlayın ve mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının OpenAPI (eski adıyla Swagger) açıklamasıyla açıklanan tetikleyiciler, eylemler ve sınırlar hakkındaki teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/wunderlist/)inceleyin.
+Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/wunderlist/)gözden geçirin.
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 * Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.

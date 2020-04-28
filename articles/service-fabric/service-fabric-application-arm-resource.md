@@ -1,27 +1,27 @@
 ---
-title: Azure Kaynak Yöneticisi ile dağıtma ve yükseltme
-description: Azure Kaynak Yöneticisi şablonu kullanarak uygulamaları ve hizmetleri Hizmet Dokusu kümesine nasıl dağıtabileceğinizi öğrenin.
+title: Azure Resource Manager dağıtma ve yükseltme
+description: Azure Resource Manager şablonu kullanarak bir Service Fabric kümesine uygulamalar ve hizmetler dağıtmayı öğrenin.
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75610259"
 ---
-# <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Azure Kaynak Yöneticisi kaynakları olarak uygulamaları ve hizmetleri yönetme
+# <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Uygulamaları ve Hizmetleri Azure Resource Manager kaynak olarak yönetme
 
-Azure Kaynak Yöneticisi aracılığıyla uygulamaları ve hizmetleri Hizmet Kumaşı kümenize dağıtabilirsiniz. Bu, kümenin hazır olmasını bekledikten sonra PowerShell veya CLI üzerinden uygulamaları dağıtmak ve yönetmek yerine, artık JSON'daki uygulamaları ve hizmetleri ifade edebilir ve bunları kümenizle aynı Kaynak Yöneticisi şablonunda dağıtabilirsiniz. Uygulama kaydı, sağlama ve dağıtım işlemi tek bir adımda gerçekleşir.
+Uygulamaları ve Hizmetleri, Service Fabric kümenize Azure Resource Manager aracılığıyla dağıtabilirsiniz. Bu, kümenin hazır olmasını beklemek zorunda kalmadan PowerShell veya CLı aracılığıyla uygulama dağıtmak ve yönetmek yerine, artık JSON 'daki uygulama ve Hizmetleri ifade edebilir ve bunları kümeniz ile aynı Kaynak Yöneticisi şablonunda dağıtabilirsiniz. Uygulama kaydı, sağlama ve dağıtım işlemleri tek bir adımda gerçekleşir.
 
-Bu, kümenizde gereksinim duyduğunuz herhangi bir kurulum, yönetim veya küme yönetimi uygulamalarını dağıtmanız için önerilen yoldur. Buna, Diğer uygulamalar veya hizmetler dağıtılmadan önce kümenizde çalışması gereken [Yama Düzenleme Uygulaması,](service-fabric-patch-orchestration-application.md)İzleme Örgütleri veya uygulamaları içerir. 
+Bu, kümenizde gerekli olan kurulum, idare veya küme yönetimi uygulamalarını dağıtmanız için önerilen yoldur. Bu, diğer uygulama veya hizmetler dağıtılmadan önce kümenizde çalıştırılması gereken [Düzeltme Eki düzenleme uygulamasını](service-fabric-patch-orchestration-application.md), Watchdogs veya herhangi bir uygulamayı içerir. 
 
-Uygulanabilir olduğunda, uygulamalarınızı geliştirmek için Kaynak Yöneticisi kaynakları olarak yönetin:
-* Denetim izi: Kaynak Yöneticisi her işlemi denetler ve bu uygulamalarda ve kümenizde yapılan değişiklikleri izlemenize yardımcı olabilecek ayrıntılı bir *Etkinlik Günlüğü* tutar.
-* Rol tabanlı erişim denetimi (RBAC): Kümelere ve kümeye dağıtılan uygulamalara erişimi yönetme aynı Kaynak Yöneticisi şablonu üzerinden yapılabilir.
-* Azure Kaynak Yöneticisi (Azure portalı üzerinden), küme ve kritik uygulama dağıtımlarınızı yönetmek için tek durak haline gelir.
+Uygun olduğunda, uygulamalarınızı geliştirmek için Kaynak Yöneticisi kaynak olarak yönetin:
+* Denetim izi: Kaynak Yöneticisi her işlemi denetler ve bu uygulamalarda ve kümeniz üzerinde yapılan değişiklikleri izlemenize yardımcı olabilecek ayrıntılı bir *etkinlik günlüğü* tutar.
+* Rol tabanlı erişim denetimi (RBAC): kümelere erişimin yanı sıra kümede dağıtılan uygulamaların de aynı Kaynak Yöneticisi şablonu aracılığıyla yapılması yapılabilir.
+* Azure Resource Manager (Azure portal aracılığıyla), kümenizin ve kritik uygulama dağıtımlarınızın yönetilmesi için tek bir durdurulmalı bir mağaza haline gelir.
 
-Aşağıdaki parçacık, şablon aracılığıyla yönetilebilen farklı kaynak türlerini gösterir:
+Aşağıdaki kod parçacığında, bir şablon aracılığıyla yönetilebilen farklı kaynak türleri gösterilmektedir:
 
 ```json
 {
@@ -53,10 +53,10 @@ Aşağıdaki parçacık, şablon aracılığıyla yönetilebilen farklı kaynak 
 
 ## <a name="add-a-new-application-to-your-resource-manager-template"></a>Kaynak Yöneticisi şablonunuza yeni bir uygulama ekleme
 
-1. Kümenizin Kaynak Yöneticisi şablonunu dağıtımiçin hazırlayın. Bu konuda daha fazla bilgi için [Azure Kaynak Yöneticisi'ni kullanarak Hizmet Dokusu Oluştur kümesine](service-fabric-cluster-creation-via-arm.md) bakın.
-2. Kümede dağıtmayı planladığınız bazı uygulamaları düşünün. Her zaman diğer uygulamalar üzerinde bağımlılıklar alabilir çalışan olacak herhangi bir var mı? Herhangi bir küme yönetim veya kurulum uygulaması dağıtmayı planlıyor musunuz? Bu tür uygulamalar, yukarıda belirtildiği gibi, en iyi Kaynak Yöneticisi şablonu aracılığıyla yönetilir. 
-3. Bu şekilde hangi uygulamaların dağıtılmasını istediğinizi anladıktan sonra, uygulamaların paketlenmeli, sıkıştırılmalı ve dosya paylaşımına konmalıdır. Azure Kaynak Yöneticisi'nin dağıtım sırasında tüketmesi için paylaşımın BIR REST bitiş noktası üzerinden erişilmesi gerekir.
-4. Kaynak Yöneticisi şablonunuzda, küme bildirgenizin altında her uygulamanın özelliklerini açıklayın. Bu özellikler çoğaltma veya örnek sayısı ve kaynaklar (diğer uygulamalar veya hizmetler) arasındaki bağımlılık zincirlerini içerir. Kapsamlı özelliklerin bir listesi [için, REST API Swagger Spec](https://aka.ms/sfrpswaggerspec)bakın. Bunun Uygulama veya Hizmet bildirimlerinin yerini alamadığını, kümenin Kaynak Yöneticisi şablonunun bir parçası olarak içinde bulunanların bazılarını açıkladığını unutmayın. Aşağıda, *uygulama1'in* bir parçası olarak bir durum hizmeti Service1 ve *Application1*bir stateful *serviceService2* dağıtmayı içeren bir örnek şablon uymaktadır:
+1. Kümenizin Kaynak Yöneticisi şablonunu dağıtım için hazırlayın. Hakkında daha fazla bilgi için bkz. [Azure Resource Manager kullanarak Service Fabric kümesi oluşturma](service-fabric-cluster-creation-via-arm.md) .
+2. Kümede dağıtımı planladığınız bazı uygulamaları düşünün. Diğer uygulamaların bağımlılığı olabilecek her zaman çalışacak mı? Tüm küme idare veya kurulum uygulamalarını dağıtmaya mi planlıyorsunuz? Bu tür uygulamalar yukarıda anlatıldığı gibi Kaynak Yöneticisi şablonu aracılığıyla en iyi şekilde yönetilir. 
+3. Bu şekilde hangi uygulamaları dağıtacağınızı iletişime, uygulamaların paketlenmesi, sıkıştırılması ve bir dosya paylaşımında bulunması gerekir. Dağıtım sırasında kullanmak üzere Azure Resource Manager için bir REST uç noktası aracılığıyla paylaşıma erişilebilir olması gerekir.
+4. Kaynak Yöneticisi şablonunuzda, küme bildirimenizle, her uygulamanın özelliklerini betimleyen. Bu özellikler, çoğaltma veya örnek sayısını ve kaynaklar (diğer uygulamalar veya hizmetler) arasında herhangi bir bağımlılık zincirlerini içerir. Kapsamlı özelliklerin listesi için bkz. [Swagger Spec REST API](https://aka.ms/sfrpswaggerspec). Bunun uygulama veya hizmet bildirimlerinin yerini almaz, ancak bunun yerine, kümenin Kaynak Yöneticisi şablonunun bir parçası olarak bunların bazı özellikleri açıklanmıştır. Aşağıda, Service1 bir parçası olarak durum bilgisi olmayan bir Service *Service1* ve durum bilgisi olan bir Service *Service2* dağıtmanın bir örnek şablonu *verilmiştir:*
 
    ```json
    {
@@ -244,30 +244,30 @@ Aşağıdaki parçacık, şablon aracılığıyla yönetilebilen farklı kaynak 
    ```
 
    > [!NOTE] 
-   > *ApiVersion'un* `"2019-03-01"`. Bu şablon, küme zaten dağıtılmış olduğu sürece kümeden bağımsız olarak da dağıtılabilir.
+   > *Apiversion* , olarak `"2019-03-01"`ayarlanmalıdır. Bu şablon, küme zaten dağıtıldığı sürece kümeden bağımsız olarak da dağıtılabilir.
 
-5. Dağıtmak! 
+5. Dağıtımı! 
 
-## <a name="remove-service-fabric-resource-provider-application-resource"></a>Hizmet Kumaş Kaynak Sağlayıcı Uygulama kaynağını kaldırma
-Aşağıdakiler uygulama paketinin kümeden un-provisioned olmasını tetikler ve bu kullanılan disk alanını temizler:
+## <a name="remove-service-fabric-resource-provider-application-resource"></a>Service Fabric kaynak sağlayıcısı uygulama kaynağını kaldır
+Aşağıdakiler, uygulama paketinin kümeden sağlanması için tetiklenecek ve bu, kullanılan disk alanını temizleyecektir:
 ```powershell
 Get-AzureRmResource -ResourceId /subscriptions/{sid}/resourceGroups/{rg}/providers/Microsoft.ServiceFabric/clusters/{cluster}/applicationTypes/{apptType}/versions/{version} -ApiVersion "2019-03-01" | Remove-AzureRmResource -Force -ApiVersion "2017-07-01-preview"
 ```
-Microsoft.ServiceFabric/clusters/application'ı ARM şablonunuzdan kaldırmanız, Uygulamayı
+ARM şablonunuzun Microsoft. ServiceFabric/kümeleri/uygulamasını kaldırmak, uygulamanın sağlamasını kaldıramayacak
 
 >[!NOTE]
-> Kaldırma işlemi tamamlandıktan sonra artık SFX veya ARM'da paket sürümünü görmemelisiniz. Uygulamanın birlikte yürüttüğü uygulama türü sürüm kaynağını silemezsiniz; ARM/SFRP bunu önleyecektir. Çalışan paketi unprovision çalışırsanız, SF çalışma süresi bunu engeller.
+> Kaldırma işlemi tamamlandıktan sonra, paket sürümünü SFX veya ARM 'de görmemelisiniz. Uygulamanın çalıştığı uygulama türü sürüm kaynağını silemezsiniz; ARM/SFRP bunu engelleyecek. Çalışan paketin sağlamasını kaldırmayı denerseniz, SF çalışma zamanı bunu engelleyecek.
 
 
-## <a name="manage-an-existing-application-via-resource-manager"></a>Kaynak Yöneticisi aracılığıyla varolan bir uygulamayı yönetme
+## <a name="manage-an-existing-application-via-resource-manager"></a>Mevcut bir uygulamayı Kaynak Yöneticisi aracılığıyla yönetme
 
-Kümeniz zaten hazırsa ve Kaynak Yöneticisi kaynakları olarak yönetmek istediğiniz bazı uygulamalar uygulamaları kaldırmak ve yeniden dağıtmak yerine zaten dağıtılmışsa, uygulamaların alınması için aynı API'leri kullanarak bir PUT çağrısı kullanabilirsiniz Kaynak Yöneticisi kaynakları olarak kabul edilebistır. Daha fazla bilgi için [Service Fabric uygulama kaynak modeli nedir?](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)
+Kümeniz zaten çalışır durumda ve Kaynak Yöneticisi Kaynakları olarak yönetmek istediğiniz bazı uygulamalar üzerinde zaten dağıtılmışsa, uygulamaları kaldırmak ve yeniden dağıtmak yerine, uygulamaların Kaynak Yöneticisi kaynakları kabul etmek için aynı API 'Leri kullanarak bir PUT çağrısı kullanabilirsiniz. Daha fazla bilgi için [Service Fabric uygulama kaynak modeli nedir?](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model) bölümüne bakın.
 
 > [!NOTE]
-> Bir küme yükseltmesinin sağlıksız uygulamaları yok sayması için müşteri "yükseltmeAçıklaması/healthPolicy" bölümünde "maxPercentUnhealthyApplications: 100" belirtebilir; tüm ayarları için ayrıntılı açıklamalar [Hizmet Kumaşlar REST API Küme Yükseltme İlkesi dokümantasyon](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)bulunmaktadır.
+> Bir küme yükseltmesinin sağlıksız uygulamaları yok saymasına izin vermek için, "upgradeDescription/healthPolicy" bölümünde "Maxyüztunhealthyapplications: 100" belirtebilir; tüm ayarların ayrıntılı açıklamaları, [Service yapılar REST API küme yükseltme ilkesi belgelerinde](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)bulunur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Diğer uygulamaları kümenize dağıtmak için [Service Fabric CLI](service-fabric-cli.md) veya [PowerShell'i](service-fabric-deploy-remove-applications.md) kullanın. 
-* [Hizmet Kumaşı kümenizi yükseltin](service-fabric-cluster-upgrade.md)
+* Diğer uygulamaları kümenize dağıtmak için [SERVICE fabrıc CLI](service-fabric-cli.md) veya [PowerShell](service-fabric-deploy-remove-applications.md) kullanın. 
+* [Service Fabric kümenizi yükseltme](service-fabric-cluster-upgrade.md)
 

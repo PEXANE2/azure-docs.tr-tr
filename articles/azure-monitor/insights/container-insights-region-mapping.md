@@ -1,73 +1,73 @@
 ---
-title: Kapsayıcılar bölge eşlemeleri için Azure Monitörü
-description: Bu makalede, kapsayıcılar için Azure Monitor arasında desteklenen bölge eşlemeleri, Günlük Analizi Çalışma Alanı ve özel ölçümler açıklanmaktadır.
+title: Kapsayıcılar için Azure Izleyici bölge eşlemeleri
+description: Bu makalede kapsayıcılar için Azure Izleyici, Log Analytics çalışma alanı ve özel ölçümler arasında desteklenen bölge eşlemeleri açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.openlocfilehash: a058f9cac987bb5c7130019f50370c6a176b09ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75403416"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Monitor tarafından desteklenen bölge eşlemeleri
+# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici tarafından desteklenen bölge eşlemeleri
 
- Kapsayıcılar için Azure Monitor'u etkinleştirirken, bir Log Analytics çalışma alanı ve AKS kümesini bağlamak ve Azure Monitor'a gönderilen özel ölçümleri toplamak için yalnızca belirli bölgeler desteklenir.
+ Kapsayıcılar için Azure Izleyicisini etkinleştirirken, Log Analytics çalışma alanını ve AKS kümesini bağlamak ve Azure Izleyici 'ye gönderilen özel ölçümleri toplamak için yalnızca belirli bölgeler desteklenir.
 
 ## <a name="log-analytics-workspace-supported-mappings"></a>Log Analytics çalışma alanı desteklenen eşlemeler
 
-AKS küme kaynakları veya Log Analytics çalışma alanı diğer bölgelerde bulunabilir ve aşağıdaki tablo eşlemelerimizi gösterir.
+AKS kümesi kaynakları veya Log Analytics çalışma alanı diğer bölgelerde bulunabilir ve eşlemelerimiz aşağıdaki tabloda gösterilmiştir.
 
-|**AKS Küme bölgesi** | **Günlük Analitik Çalışma Alanı bölgesi** |
+|**AKS küme bölgesi** | **Log Analytics çalışma alanı bölgesi** |
 |-----------------------|------------------------------------|
 |**Afrika** | |
-|GüneyAfrikaKuzey |WestEurope |
-|GüneyAfrikaBatı |WestEurope |
+|SouthAfricaNorth |WestEurope |
+|SouthAfricaWest |WestEurope |
 |**Avustralya** | |
-|AvustralyaDoğu |AvustralyaDoğu |
-|AvustralyaMerkez |AvustralyaMerkez |
-|AvustralyaMerkez2 |AvustralyaMerkez |
-|AvustralyaDoğu |AvustralyaDoğu |
+|AustraliaEast |AustraliaEast |
+|AustraliaCentral |AustraliaCentral |
+|AustraliaCentral2 |AustraliaCentral |
+|AustraliaEast |AustraliaEast |
 |**Asya Pasifik** | |
-|Doğuasya |Doğuasya |
-|Güneydoğu Asya |Güneydoğu Asya |
+|Eastaya |Eastaya |
+|Güneydoğu |Güneydoğu |
 |**Brezilya** | |
-|BrazilSouth | GüneyCentralUS |
+|BrazilSouth | Güneydoğu ABD |
 |**Kanada** ||
-|KanadaMerkez |KanadaMerkez |
-|KanadaDoğu |KanadaMerkez |
+|Canadaorta |Canadaorta |
+|Canadadoğu |Canadaorta |
 |**Avrupa** | |
-|FransaMerkez |FransaMerkez |
-|FransaGüney |FransaMerkez |
-|Kuzey Avrupa |Kuzey Avrupa |
-|UkSouth |UkSouth |
-|UkWest |UkSouth |
+|Francecna al |Francecna al |
+|FranceSouth |Francecna al |
+|NorthEurope |NorthEurope |
+|UKSouth |UKSouth |
+|Ukbatı |UKSouth |
 |WestEurope |WestEurope |
 |**Hindistan** | |
-|Orta Hindistan |Orta Hindistan |
-|Güney Hindistan |Orta Hindistan |
-|Batı Hindistan |Orta Hindistan |
+|Merkezileştirme Hindistan |Merkezileştirme Hindistan |
+|Güneydoğu |Merkezileştirme Hindistan |
+|WestIndia |Merkezileştirme Hindistan |
 |**Japonya** | |
-|JapanDoğu |JapanDoğu |
-|JapanWest |JapanDoğu |
+|JapanEast |JapanEast |
+|JapanWest |JapanEast |
 |**Güney Kore** | |
-|KoreMerkez |KoreMerkez |
-|KoreaSouth |KoreMerkez |
+|KoreaCentral |KoreaCentral |
+|Koreagüney |KoreaCentral |
 |**ABD** | |
 |CentralUS |CentralUS|
-|DoğuUS |DoğuUS |
-|DoğuUS2 |DoğuUS2 |
+|EastUS |EastUS |
+|EastUS2 |EastUS2 |
 |WestUS |WestUS |
-|BatıUS2 |BatıUS2 |
-|WestCentralUS<sup>1</sup>|DoğuUS<sup>1</sup>|
+|WestUS2 |WestUS2 |
+|WestCentralUS<sup>1</sup>|EastUS<sup>1</sup>|
 |US Gov Virginia |US Gov Virginia |
 
-<sup>1</sup> Kapasite kısıtlamaları nedeniyle, yeni kaynaklar oluşturulurken bölge kullanılamaz. Buna Bir Log Analytics çalışma alanı dahildir. Ancak, bölgede önceden var olan bağlantılı kaynaklar çalışmaya devam etmelidir.
+<sup>1</sup> kapasite depoları nedeniyle, yeni kaynaklar oluşturulurken bölge kullanılamıyor. Buna bir Log Analytics çalışma alanı dahildir. Ancak, bölgede önceden var olan bağlı kaynakların çalışmaya devam etmesi gerekir.
 
-## <a name="custom-metrics-supported-regions"></a>Özel ölçümler desteklenen bölgeler
+## <a name="custom-metrics-supported-regions"></a>Özel Ölçüm desteklenen bölgeler
 
-Azure Kubernetes Services (AKS) kümeleri düğümleri ve bölmelerinden ölçümler toplama, yalnızca aşağıdaki [Azure bölgelerinde](../platform/metrics-custom-overview.md#supported-regions)özel ölçümler olarak yayımlanması için desteklenir.
+Azure Kubernetes Services (AKS) kümeleri düğümlerinden ve yığınlarından ölçümlerin toplanması yalnızca aşağıdaki [Azure bölgelerinde](../platform/metrics-custom-overview.md#supported-regions)özel ölçümler olarak yayımlama için desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-AKS kümenizi izlemeye başlamak için, denetimi etkinleştirmek için gereksinimleri ve kullanılabilir yöntemleri anlamak [için kapsayıcılar için Azure Monitörünü nasıl etkinleştirin](container-insights-onboard.md) irdeleyin.  
+AKS kümenizi izlemeye başlamak için, izlemeyi etkinleştirmek üzere gereksinimleri ve kullanılabilir yöntemleri anlamak üzere [kapsayıcılar Için Azure Izleyicisini nasıl etkinleştireceğinizi](container-insights-onboard.md) gözden geçirin.  

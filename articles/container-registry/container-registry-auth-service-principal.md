@@ -1,105 +1,105 @@
 ---
 title: Hizmet sorumlusuyla kimlik doğrulama
-description: Azure Active Directory hizmet ilkesini kullanarak özel konteyner kayıt defterinizdeki resimlere erişim sağlayın.
+description: Azure Active Directory hizmet sorumlusu kullanarak özel kapsayıcı kayıt defterinizde görüntülere erişim sağlayın.
 ms.topic: article
 ms.date: 10/04/2019
 ms.openlocfilehash: 37da784c8e95a5f5b924532e4a019552924a1a3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74455414"
 ---
-# <a name="azure-container-registry-authentication-with-service-principals"></a>Hizmet ilkeleriyle Azure Kapsayıcı Kayıt Defteri kimlik doğrulaması
+# <a name="azure-container-registry-authentication-with-service-principals"></a>Hizmet sorumluları ile kimlik doğrulamasını Azure Container Registry
 
-Kapsayıcı görüntüsü `docker push` ve `pull` konteyner kayıt defterinize erişim sağlamak için bir Azure Etkin Dizin (Azure AD) hizmet ilkesi kullanabilirsiniz. Bir hizmet ilkesi kullanarak, "başsız" hizmetlere ve uygulamalara erişim sağlayabilirsiniz.
+Kapsayıcı görüntü `docker push` ve `pull` kapsayıcı Kayıt defterinize erişim sağlamak Için BIR Azure Active Directory (Azure AD) hizmet sorumlusu kullanabilirsiniz. Hizmet sorumlusu kullanarak, "gözetimsiz" hizmetlere ve uygulamalarına erişim sağlayabilirsiniz.
 
 ## <a name="what-is-a-service-principal"></a>Hizmet sorumlusu nedir?
 
-Azure AD *hizmet ilkeleri,* aboneliğiniz dahilinde Azure kaynaklarına erişim sağlar. Bir hizmet ilkesini, "hizmet"in kaynaklara erişmesi gereken herhangi bir uygulama, hizmet veya platform olduğu bir hizmetin kullanıcı kimliği olarak düşünebilirsiniz. Yalnızca belirttiğiniz kaynaklara göre kapsamlı erişim hakları içeren bir hizmet ilkesini yapılandırabilirsiniz. Ardından, uygulamanızı veya hizmetinizi bu kaynaklara erişmek için hizmet sorumlusunun kimlik bilgilerini kullanacak şekilde yapılandırın.
+Azure AD *hizmet sorumluları* , aboneliğinizdeki Azure kaynaklarına erişim sağlar. Hizmet sorumlusunu bir hizmet için Kullanıcı kimliği olarak düşünebilirsiniz; burada "hizmet", kaynaklara erişmesi gereken herhangi bir uygulama, hizmet veya platformdur. Erişim haklarına sahip bir hizmet sorumlusunu, yalnızca belirttiğiniz kaynaklarla kapsamlı bir şekilde yapılandırabilirsiniz. Ardından, uygulamanızı veya hizmetinizi bu kaynaklara erişmek için hizmet sorumlusunun kimlik bilgilerini kullanacak şekilde yapılandırın.
 
-Azure Kapsayıcı Kayıt Defteri bağlamında, Azure'daki özel kayıt defterinize çekme, itme ve çekme veya diğer izinleri içeren bir Azure REKLAM hizmeti ilkesi oluşturabilirsiniz. Tam liste için [Azure Kapsayıcı Kayıt Defteri rolleri ve izinlerine](container-registry-roles.md)bakın.
+Azure Container Registry bağlamında Azure 'da özel kayıt defteriniz için çekme, gönderme ve çekme veya diğer izinlerle bir Azure AD hizmet sorumlusu oluşturabilirsiniz. Tüm liste için, bkz. [Azure Container Registry roller ve izinler](container-registry-roles.md).
 
-## <a name="why-use-a-service-principal"></a>Neden bir hizmet müdürü kullanıyorsun?
+## <a name="why-use-a-service-principal"></a>Neden hizmet sorumlusu kullanmalıyım?
 
-Azure AD hizmet ilkesini kullanarak, özel konteyner kayıt defterinize kapsamlı erişim sağlayabilirsiniz. Her biri kayıt defterinize özel erişim haklarına sahip, her bir uygulama veya hizmet için farklı hizmet ilkeleri oluşturun. Ayrıca, hizmetler ve uygulamalar arasında kimlik bilgilerini paylaşmaktan kaçınabileceğinizden, kimlik bilgilerini döndürebilir veya yalnızca seçtiğiniz hizmet sorumlusu (ve dolayısıyla uygulama) için erişimi iptal edebilirsiniz.
+Bir Azure AD hizmet sorumlusu kullanarak özel kapsayıcı Kayıt defterinize kapsamlı erişim sağlayabilirsiniz. Her biri için Kayıt defterinize özel erişim hakları olan her bir uygulama veya hizmetlerinizin farklı hizmet sorumluları oluşturun. Ve, hizmetler ve uygulamalar arasında kimlik bilgilerinin paylaşılmasını önleyebileceğiniz için kimlik bilgilerini döndürebilir veya yalnızca hizmet sorumlusu (ve dolayısıyla uygulama) için erişimi iptal edebilirsiniz.
 
-Örneğin, web uygulamanızı yalnızca görüntü `pull` erişimi sağlayan bir hizmet ilkesi kullanacak şekilde yapılandırın, yapı sisteminiz `push` `pull` ise hem hem de erişim sağlayan bir hizmet ilkesi kullanır. Uygulamanızın gelişimi el değiştirirse, yapı sistemini etkilemeden hizmet temel kimlik bilgilerini döndürebilirsiniz.
+Örneğin, Web uygulamanızı yalnızca görüntü `pull` erişimi ile birlikte sağlayan bir hizmet sorumlusu kullanacak şekilde yapılandırın. Yapı sisteminiz, hem hem de `push` `pull` erişimiyle birlikte sağlayan bir hizmet sorumlusu kullanır. Uygulamanızın geliştirilmesi uygulamalı şekilde değişirse, derleme sistemini etkilemeden hizmet sorumlusu kimlik bilgilerini döndürebilirsiniz.
 
 ## <a name="when-to-use-a-service-principal"></a>Hizmet sorumlusu ne zaman kullanılır?
 
-**Başsız senaryolarda**kayıt defterine erişim sağlamak için bir hizmet sorumlusu kullanmanız gerekir. Diğer bir deyişle, kapsayıcı görüntülerini otomatik veya gözetimsiz bir şekilde itmesi veya çekmesi gereken herhangi bir uygulama, hizmet veya komut dosyası. Örnek:
+**Gözetimsiz senaryolarda**kayıt defteri erişimi sağlamak için bir hizmet sorumlusu kullanmanız gerekir. Diğer bir deyişle, kapsayıcı görüntülerini otomatik olarak veya başka bir şekilde katılımsız bir şekilde iletme veya çekme gerektiren herhangi bir uygulama, hizmet veya komut dosyası. Örneğin:
 
-  * *Çekme*: Konteynerleri kayıt defterinden Kubernetes, DC/OS ve Docker Swarm gibi orkestrasyon sistemlerine dağıtın. Ayrıca, konteyner kayıt kayıtlarından [Azure Kubernetes Hizmeti (AKS)](../aks/cluster-container-registry-integration.md), [Azure Konteyner Örnekleri,](container-registry-auth-aci.md) [Uygulama Hizmeti,](../app-service/index.yml) [Toplu İşlem](../batch/index.yml), [Hizmet Kumaşı](/azure/service-fabric/)ve diğerleri gibi ilgili Azure hizmetlerine de çekebilirsiniz.
+  * *Çekme*: bir kayıt defterinden Kubernetes, DC/OS ve Docker sısınma dahil olmak üzere düzenleme sistemlerine kapsayıcı dağıtın. Ayrıca, kapsayıcı kayıt defterlerinden [Azure Kubernetes hizmeti (AKS)](../aks/cluster-container-registry-integration.md), [Azure Container Instances](container-registry-auth-aci.md), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/)ve diğerleri gibi ilgili Azure hizmetlerine de çekebilirsiniz.
 
-  * *Push*: Azure Pipelines veya Jenkins gibi sürekli tümleştirme ve dağıtım çözümlerini kullanarak kapsayıcı görüntüleri oluşturun ve bunları bir kayıt defterine taşıyın.
+  * *Gönderme*: kapsayıcı görüntüleri oluşturun ve Azure Pipelines veya Jenkins gibi sürekli tümleştirme ve dağıtım çözümlerini kullanarak bunları bir kayıt defterine gönderin.
 
-Bir kayıt defterine tek tek erişim için (örneğin, geliştirme iş istasyonunuza bir kapsayıcı görüntüsünü el ile çektiğinizde), kayıt defteri erişimi yerine kendi [Azure AD kimliğinizi](container-registry-authentication.md#individual-login-with-azure-ad) kullanmanızı öneririz (örneğin, [az acr girişi).][az-acr-login]
+Bir kayıt defterine bireysel erişim için, örneğin, bir kapsayıcı görüntüsünü geliştirme iş istasyonunuza el ile çektiğinizde, kayıt defteri erişimi (örneğin, [az ACR oturum açma][az-acr-login]ile) yerine kendı [Azure AD kimliğinizi](container-registry-authentication.md#individual-login-with-azure-ad) kullanmanızı öneririz.
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
-### <a name="sample-scripts"></a>Örnek komut dosyaları
+### <a name="sample-scripts"></a>Örnek betikler
 
-Azure CLI için önceki örnek komut dosyalarını GitHub'da ve Azure PowerShell sürümlerinde bulabilirsiniz:
+Azure CLı için yukarıdaki örnek betikleri GitHub ' da ve Azure PowerShell sürümlerinin yanı sıra bulabilirsiniz:
 
 * [Azure CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
-## <a name="authenticate-with-the-service-principal"></a>Hizmet ilkesiyle kimlik doğrulaması
+## <a name="authenticate-with-the-service-principal"></a>Hizmet sorumlusu ile kimlik doğrulama
 
-Konteyner kayıt defterinize erişim izni vermiş olduğunuz bir hizmet müdürünüz olduktan sonra, "başsız" hizmetlere ve uygulamalara erişmek `docker login` için kimlik bilgilerini yapılandırabilir veya komutu kullanarak girebilirsiniz. Aşağıdaki değerleri kullanın:
+Kapsayıcı Kayıt defterinize erişim verdiğiniz bir hizmet sorumlusu olduktan sonra, "gözetimsiz" hizmetlere ve uygulamalarına erişim için kimlik bilgilerini yapılandırabilir veya `docker login` komutunu kullanarak bunları girebilirsiniz. Aşağıdaki değerleri kullanın:
 
-* **Kullanıcı adı** - hizmet ana başvuru kimliği *(istemci kimliği*olarak da adlandırılır)
-* **Parola** - servis ana şifresi *(istemci sırrı*olarak da adlandırılır)
+* **Kullanıcı adı** -hizmet sorumlusu uygulama kimliği ( *istemci kimliği*olarak da bilinir)
+* **Parola** -hizmet sorumlusu parolası ( *istemci gizli anahtarı*da denir)
 
-Her değer formun `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`bir GUID'sidir. 
+Her değer, formun `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`BIR GUID 'sidir. 
 
 > [!TIP]
-> [Az reklam sp sıfırlama kimlik bilgileri](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) komutunu çalıştırarak bir hizmet sorumlusunun parolasını yeniden oluşturabilirsiniz.
+> [Az ad SP Reset-Credentials](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) komutunu çalıştırarak bir hizmet sorumlusunun parolasını yeniden oluşturabilirsiniz.
 >
 
 ### <a name="use-credentials-with-azure-services"></a>Azure hizmetleriyle kimlik bilgilerini kullanma
 
-Azure kapsayıcı kayıt defteriyle kimlik doğrulaması yapan herhangi bir Azure hizmetinin hizmet temel kimlik bilgilerini kullanabilirsiniz.  Çeşitli senaryolar için kayıt defterinin yönetici kimlik bilgileri yerine hizmet temel kimlik bilgilerini kullanın.
+Azure Container Registry ile kimlik doğrulaması yapan herhangi bir Azure hizmetinden hizmet sorumlusu kimlik bilgilerini kullanabilirsiniz.  Çeşitli senaryolar için kayıt defterinin yönetici kimlik bilgileri yerine hizmet sorumlusu kimlik bilgilerini kullanın.
 
-Örneğin, bir Azure kapsayıcı kayıt defterinden [Azure Kapsayıcı Örnekleri'ne](container-registry-auth-aci.md)görüntü çekmek için kimlik bilgilerini kullanın.
+Örneğin, [Azure Container Instances](container-registry-auth-aci.md)Için bir Azure Container Registry 'den görüntü çekmek üzere kimlik bilgilerini kullanın.
 
-### <a name="use-with-docker-login"></a>Docker girişi ile kullanın
+### <a name="use-with-docker-login"></a>Docker oturum açma ile kullanma
 
-Bir hizmet `docker login` ilkesi ni kullanarak çalıştırabilirsiniz. Aşağıdaki örnekte, hizmet temel uygulama kimliği ortam `$SP_APP_ID`değişkenine ve parola `$SP_PASSWD`değişkeninde geçirilir. Docker kimlik bilgilerini yönetmek için en iyi uygulamalar için [docker giriş](https://docs.docker.com/engine/reference/commandline/login/) komutu başvurusuna bakın.
+Hizmet sorumlusu kullanarak `docker login` çalıştırabilirsiniz. Aşağıdaki örnekte, hizmet sorumlusu uygulama KIMLIĞI, ortam değişkenine `$SP_APP_ID`ve değişkendeki `$SP_PASSWD`parolaya geçirilir. Docker kimlik bilgilerini yönetmek için en iyi uygulamalar için [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) komut başvurusuna bakın.
 
 ```bash
 # Log in to Docker with service principal credentials
 docker login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
 ```
 
-Oturum açtıktan sonra Docker kimlik bilgilerini önbelleğe alıyor.
+Oturum açıldıktan sonra Docker kimlik bilgilerini önbelleğe alır.
 
-### <a name="use-with-certificate"></a>Sertifika ile kullanma
+### <a name="use-with-certificate"></a>Sertifikayla kullanma
 
-Hizmet müdürünüze bir sertifika eklediyseniz, sertifika tabanlı kimlik doğrulamayla Azure CLI'de oturum açabilir ve bir kayıt defterine erişmek için [az acr giriş][az-acr-login] komutunu kullanabilirsiniz. CLI'yi kullandığınızda sertifikayı parola yerine gizli kullanmak ek güvenlik sağlar. 
+Hizmet sorumlusuna bir sertifika eklediyseniz, Azure CLı 'de sertifika tabanlı kimlik doğrulamasıyla oturum açabilir ve ardından bir kayıt defterine erişmek için [az ACR Login][az-acr-login] komutunu kullanabilirsiniz. Parola yerine gizli bir sertifika kullanılması, CLı kullandığınızda ek güvenlik sağlar. 
 
-Bir [hizmet ilkesi oluşturduğunuzda](/cli/azure/create-an-azure-service-principal-azure-cli)kendi imzalı bir sertifika oluşturulabilir. Veya varolan bir hizmet ilkesine bir veya daha fazla sertifika ekleyin. Örneğin, bu makaledeki komut dosyalarından birini, bir kayıt defterinden görüntüleri çekme veya itme haklarına sahip bir hizmet sorumlusu oluşturmak veya güncelleştirmek için kullanıyorsanız, [az reklam sp kimlik bilgilerini sıfırlama][az-ad-sp-credential-reset] komutunu kullanarak bir sertifika ekleyin.
+[Bir hizmet sorumlusu oluşturduğunuzda](/cli/azure/create-an-azure-service-principal-azure-cli)otomatik olarak imzalanan bir sertifika oluşturulabilir. Veya var olan bir hizmet sorumlusuna bir veya daha fazla sertifika ekleyebilirsiniz. Örneğin, bir kayıt defterinden görüntü çekme veya gönderme haklarıyla bir hizmet sorumlusu oluşturmak veya güncelleştirmek için bu makaledeki betiklerden birini kullanırsanız, [az ad SP kimlik bilgisi sıfırlama][az-ad-sp-credential-reset] komutunu kullanarak bir sertifika ekleyin.
 
-[Azure CLI'de oturum açma](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal)sertifikası olan hizmet ilkesini kullanmak için sertifikanın PEM biçiminde olması ve özel anahtarı içermesi gerekir. Sertifikanız gerekli biçimde değilse, dönüştürmek `openssl` için bir araç kullanın. Hizmet ilkesini kullanarak CLI'de oturum açmak için [az oturum][az-login] açtığınızda, hizmet sorumlusunun başvuru kimliğini ve Active Directory kiracı kimliğini de sağlayın. Aşağıdaki örnekte bu değerler ortam değişkenleri olarak gösterilmektedir:
+[Azure CLI 'da oturum açmak](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal)için hizmet sorumlusu 'nı sertifikayla birlikte kullanmak için, sertifika pek biçiminde olmalı ve özel anahtarı içermelidir. Sertifikanız gerekli biçimde değilse, dönüştürmek için gibi `openssl` bir araç kullanın. Hizmet sorumlusunu kullanarak CLı 'de oturum açmak için [az Login][az-login] çalıştırdığınızda, hizmet SORUMLUSUNUN uygulama kimliği ve ACTIVE DIRECTORY Kiracı kimliği de sağlar. Aşağıdaki örnek bu değerleri ortam değişkenleri olarak göstermektedir:
 
 ```azurecli
 az login --service-principal --username $SP_APP_ID --tenant $SP_TENANT_ID  --password /path/to/cert/pem/file
 ```
 
-Ardından, kayıt defteriyle kimlik doğrulaması yapmak için [az acr girişi][az-acr-login] çalıştırın:
+Ardından, kayıt defteri ile kimlik doğrulaması yapmak için [az ACR Login][az-acr-login] çalıştırın:
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-CLI, oturumunuzu kayıt defteriyle `az login` doğrulamak için koştunuzunuzda oluşturulan belirteci kullanır.
+CLı, kayıt defteri ile oturumunuzun kimliğini doğrulamak için `az login` çalıştırdığınızda oluşturulan belirteci kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure kapsayıcı kayıt defteriyle kimlik doğrulaması yapmak için diğer senaryolar için [kimlik doğrulama genel görünümünü](container-registry-authentication.md) görün.
+* Azure Container Registry ile kimlik doğrulaması yapmak için diğer senaryolar için [kimlik doğrulamaya genel bakış](container-registry-authentication.md) bölümüne bakın.
 
-* Kapsayıcı kayıt defteri için hizmet temel kimlik bilgilerini depolamak ve almak için Azure anahtar kasası kullanma örneği için, [ACR Görevleri'ni kullanarak kapsayıcı görüntüsü oluşturmak ve dağıtmak](container-registry-tutorial-quick-task.md)için öğreticiye bakın.
+* Bir kapsayıcı kayıt defteri için hizmet sorumlusu kimlik bilgilerini depolamak ve almak üzere bir Azure Anahtar Kasası kullanmanın bir örneği için [ACR görevlerini kullanarak bir kapsayıcı görüntüsü oluşturma ve dağıtma](container-registry-tutorial-quick-task.md)öğreticisine bakın.
 
 <!-- LINKS - External -->
 [acr-scripts-cli]: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/container-registry

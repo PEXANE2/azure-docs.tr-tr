@@ -1,7 +1,7 @@
 ---
-title: Azure AD'de tek ve çok kiracılı uygulamalar
+title: Azure AD 'de tek ve çok kiracılı uygulamalar
 titleSuffix: Microsoft identity platform
-description: Azure AD'deki tek kiracılı ve çok kiracılı uygulamalar arasındaki özellikler ve farklar hakkında bilgi edinin.
+description: Azure AD 'de tek kiracılı ve çok kiracılı uygulamalar arasındaki özellikler ve farklılıklar hakkında bilgi edinin.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,38 +14,38 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.openlocfilehash: ec59383f9ca2b71ec9f4b6df3ab2e24c6b52473b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881375"
 ---
-# <a name="tenancy-in-azure-active-directory"></a>Azure Etkin Dizinde Kiralama
+# <a name="tenancy-in-azure-active-directory"></a>Azure Active Directory kiracı
 
-Azure Etkin Dizin (Azure AD), kullanıcılar ve uygulamalar gibi nesneleri *kiracı*adı verilen gruplar halinde düzenler. Kiracılar, bir yöneticinin güvenlik ve operasyonel ilkelerini karşılamak için kuruluş içindeki kullanıcılar ve kuruluşun sahip olduğu uygulamalar üzerinde ilkeler belirlemesine izin verir. 
+Azure Active Directory (Azure AD), kullanıcılar ve uygulamalar gibi nesneleri *kiracılar*adlı gruplar halinde düzenler. Kiracılar, yöneticinin kuruluş içindeki kullanıcılar ve kuruluşun güvenlik ve işletimsel ilkelerini karşılamak için sahip olduğu uygulamalar üzerinde ilkeler ayarlamanıza olanak sağlar. 
 
 ## <a name="who-can-sign-in-to-your-app"></a>Uygulamanızda kimler oturum açabilir?
 
-Uygulama geliştirme söz konusu olduğunda, geliştiriciler uygulamalarını [Azure portalında](https://portal.azure.com)uygulama kaydı sırasında tek kiracı veya çok kiracı olacak şekilde yapılandırmayı seçebilirler.
-* Tek kiracılı uygulamalar yalnızca kayıtlı oldukları kiracıda kullanılabilir, ev kiracı olarak da bilinir.
-* Çok kiracılı uygulamalar, hem ev kiracılarında hem de diğer kiracılarda kullanıcılar tarafından kullanılabilir.
+Uygulamalar geliştirilirken, geliştiriciler [Azure Portal](https://portal.azure.com)uygulama kaydı sırasında uygulamayı tek kiracılı veya çok kiracılı olacak şekilde yapılandırmayı seçebilirler.
+* Tek kiracılı uygulamalar, yalnızca kayıtlı oldukları kiracıda kullanılabilir ve kendi ev kiracının olarak da bilinir.
+* Çok kiracılı uygulamalar, hem ev kiracılarında hem de diğer kiracılarda bulunan kullanıcılar tarafından kullanılabilir.
 
-Azure portalında, hedef kitleyi aşağıdaki gibi ayarlayarak uygulamanızı tek kiracı veya çok kiracı olacak şekilde yapılandırabilirsiniz.
+Azure portal, hedef kitleyi aşağıdaki gibi ayarlayarak uygulamanızı tek kiracılı veya çok kiracılı olacak şekilde yapılandırabilirsiniz.
 
 | Hedef kitle | Tek/çok kiracılı | Kimler oturum açabilir | 
 |----------|--------| ---------|
-| Yalnızca bu dizindeki hesaplar | Tek kiracılı | Dizininizdeki tüm kullanıcı ve konuk hesapları uygulamanızı veya API'nizi kullanabilir.<br>*Hedef kitleniz kuruluşunuz için dahiliyse bu seçeneği kullanın.* |
-| Herhangi bir Azure REKLAM dizinindeki hesaplar | Çok Kiracılı | Microsoft'tan iş veya okul hesabı olan tüm kullanıcılar ve konuklar uygulamanızı veya API'nizi kullanabilir. Buna Office 365 kullanan okullar ve işletmeler dahildir.<br>*Hedef kitleniz iş veya eğitim amaçlı müşterilerse bu seçeneği kullanın.* |
-| Tüm Azure AD dizinindeki ve kişisel Microsoft hesaplarındaki hesaplar (Skype, Xbox, Outlook.com gibi) | Çok Kiracılı | Bir işi veya okulu veya kişisel Microsoft hesabı olan tüm kullanıcılar uygulamanızı veya API'nizi kullanabilir. Office 365'i kullanan okullar ve işletmelerin yanı sıra Xbox ve Skype gibi hizmetlerde oturum açmada kullanılan kişisel hesapları da içerir.<br>*En geniş Microsoft hesabı kümesini hedeflemek için bu seçeneği kullanın.* | 
+| Yalnızca bu dizindeki hesaplar | Tek kiracılı | Dizininizdeki tüm kullanıcılar ve Konuk hesapları, uygulamanızı veya API 'nizi kullanabilir.<br>*Hedef hedef kitlesi kuruluşunuzda dahili ise bu seçeneği kullanın.* |
+| Herhangi bir Azure AD dizinindeki hesaplar | Çok Kiracılı | Microsoft 'un iş veya okul hesabına sahip tüm kullanıcılar ve konukları, uygulamanızı veya API 'nizi kullanabilir. Bu, Office 365 kullanan okullar ve işletmeler içerir.<br>*Hedef kitleniz iş veya Eğitim müşterileri ise bu seçeneği kullanın.* |
+| Herhangi bir Azure AD dizinindeki hesaplar ve kişisel Microsoft hesapları (Skype, Xbox, Outlook.com gibi) | Çok Kiracılı | İş veya okul veya kişisel Microsoft hesabı olan tüm kullanıcılar uygulamanızı veya API 'nizi kullanabilir. Bu, Xbox ve Skype gibi hizmetlerde oturum açmak için kullanılan kişisel hesapların yanı sıra Office 365 ' i kullanan okullar ve işletmeler içerir.<br>*En geniş Microsoft hesabı kümesini hedeflemek için bu seçeneği kullanın.* | 
 
 ## <a name="best-practices-for-multi-tenant-apps"></a>Çok kiracılı uygulamalar için en iyi uygulamalar
 
-BT yöneticilerinin kiracılarında belirleyebileceği farklı ilkelerin sayısı nedeniyle harika çok kiracılı uygulamalar oluşturmak zor olabilir. Çok kiracılı bir uygulama oluşturmayı seçerseniz, aşağıdaki en iyi uygulamaları izleyin:
+Harika çok kiracılı uygulamalar oluşturmak, BT yöneticilerinin kiracılarında ayarlayabildiğinden farklı ilkelerin sayısı nedeniyle zor olabilir. Çok kiracılı bir uygulama oluşturmayı seçerseniz, bu en iyi yöntemleri izleyin:
 
-* [Uygulamanızı Koşullu Erişim ilkelerini](../azuread-dev/conditional-access-dev-guide.md)yapılandırılan bir kiracıda test edin.
-* Uygulamanızın yalnızca gerçekten ihtiyaç duyduğu izinleri istediğinden emin olmak için en az kullanıcı erişimi ilkesine uyun. Bazı kuruluşlarda kullanıcıların uygulamanızı satın alabEtmesini engelleyebileceğinden, yönetici onayı gerektiren izinleri istemekten kaçının. 
-* Uygulamanızın bir parçası olarak ortaya çıkardığınız izinler için uygun adlar ve açıklamalar sağlayın. Bu, kullanıcıların ve yöneticilerin uygulamanızın API'lerini kullanmaya çalıştıklarında neyi kabul ettiklerini bilmelerine yardımcı olur. Daha fazla bilgi [için, izinler kılavuzundaki](v2-permissions-and-consent.md)en iyi uygulamalar bölümüne bakın.
+* Uygulamanızı [koşullu erişim ilkelerini](../azuread-dev/conditional-access-dev-guide.md)yapılandıran bir kiracıda test edin.
+* Uygulamanızın yalnızca gerçekten gereken izinleri istediğinden emin olmak için en az Kullanıcı erişimi ilkesini izleyin. Yönetici onayı gerektiren izinler istememeye özen gösterin. Bu, kullanıcıların uygulamanızı bazı kuruluşlarda almasını önleyebilmesine engel olabilir. 
+* Uygulamanızın bir parçası olarak kullanıma sunabileceğiniz tüm izinler için uygun adlar ve açıklamalar sağlayın. Bu, kullanıcıların ve yöneticilerin uygulamanızın API 'Lerini kullanmaya çalıştıklarında ne kabul etmiş olduklarını bilmesini sağlar. Daha fazla bilgi için, [izinler kılavuzundaki](v2-permissions-and-consent.md)en iyi uygulamalar bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir uygulamayı çok kiracı lı olarak dönüştürme](howto-convert-app-to-be-multi-tenant.md)
+* [Bir uygulamayı çok kiracılı olarak dönüştürme](howto-convert-app-to-be-multi-tenant.md)

@@ -1,49 +1,49 @@
 ---
-title: Kayıt defteri nin durumunu kontrol edin
-description: Yerel Docker yapılandırması ve kayıt defterine bağlantı da dahil olmak üzere bir Azure kapsayıcı kayıt defteri kullanırken sık karşılaşılan sorunları belirlemek için nasıl hızlı bir tanılama komutu çalıştırılamayı öğrenin
+title: Kayıt defteri sistem durumunu denetle
+description: Yerel Docker yapılandırması ve kayıt defteri bağlantısı dahil olmak üzere bir Azure Container Registry kullanırken sık karşılaşılan sorunları belirlemek için hızlı tanılama komutunu çalıştırmayı öğrenin
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74456429"
 ---
-# <a name="check-the-health-of-an-azure-container-registry"></a>Azure kapsayıcı kayıt defterinin sistem durumunu denetleme
+# <a name="check-the-health-of-an-azure-container-registry"></a>Azure Container Registry 'nin sistem durumunu denetleme
 
-Azure kapsayıcı kayıt defteri kullanırken, zaman zaman sorunlarla karşılaşabilirsiniz. Örneğin, yerel ortamınızda Docker ile ilgili bir sorun nedeniyle kapsayıcı görüntüsü çekemeyebilirsiniz. Veya, bir ağ sorunu kayıt defterine bağlanmanızı engelleyebilir. 
+Azure Container Registry kullanırken, zaman zaman sorunlarla karşılaşabilirsiniz. Örneğin, yerel ortamınızda Docker ile ilgili bir sorun nedeniyle bir kapsayıcı görüntüsünü çekmeyebilirsiniz. Ya da bir ağ sorunu, kayıt defterine bağlanmanızı engelleyebilir. 
 
-İlk tanılama adımı olarak, ortamın durumu hakkında bilgi almak ve isteğe bağlı olarak hedef kayıt defterine erişmek için [az acr onay durumu][az-acr-check-health] komutunu çalıştırın. Bu komut Azure CLI sürüm 2.0.67 veya sonraki sürümlerde kullanılabilir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli].
+İlk tanılama adımı olarak, ortamın sistem durumu ve isteğe bağlı olarak bir hedef kayıt defterine erişim hakkında bilgi almak için [az ACR Check-Health][az-acr-check-health] komutunu çalıştırın. Bu komut, Azure CLı sürüm 2.0.67 veya sonraki sürümlerinde kullanılabilir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli].
 
-## <a name="run-az-acr-check-health"></a>Çalıştır az acr check-health
+## <a name="run-az-acr-check-health"></a>Çalıştır az ACR Check-Health
 
-Aşağıdaki örnekler, komutu çalıştırmanın `az acr check-health` farklı yollarını gösterir.
+Takip örnekleri, `az acr check-health` komutunu çalıştırmanın farklı yollarını gösterir.
 
 > [!NOTE]
-> Komutu Azure Bulut Su şurama'da çalıştırArsanız, yerel ortam denetlenmez. Ancak, hedef kayıt defterine erişimi denetleyebilirsiniz.
+> Komutu Azure Cloud Shell ' de çalıştırırsanız, yerel ortam denetlenmez. Ancak, bir hedef kayıt defterine erişimi denetleyebilirsiniz.
 
-### <a name="check-the-environment-only"></a>Yalnızca ortamı kontrol edin
+### <a name="check-the-environment-only"></a>Yalnızca ortamı denetle
 
-Yerel Docker daemon, CLI sürümü ve Helm istemci yapılandırmasını denetlemek için komutu ek parametreler olmadan çalıştırın:
+Yerel Docker Daemon, CLı sürümü ve Held istemci yapılandırmasını denetlemek için, ek parametre olmadan komutunu çalıştırın:
 
 ```azurecli
 az acr check-health
 ```
 
-### <a name="check-the-environment-and-a-target-registry"></a>Ortamı ve hedef kayıt defterini kontrol edin
+### <a name="check-the-environment-and-a-target-registry"></a>Ortamı ve hedef kayıt defterini denetleme
 
-Bir kayıt defterine erişimi denetlemek ve yerel ortam denetimleri gerçekleştirmek için hedef kayıt defterinin adını geçirin. Örnek:
+Bir kayıt defterine erişimi denetlemek ve yerel ortam denetimleri gerçekleştirmek için bir hedef kayıt defteri adı geçirin. Örneğin:
 
 ```azurecli
 az acr check-health --name myregistry
 ```
 
-## <a name="error-reporting"></a>Hata raporlama
+## <a name="error-reporting"></a>Hata bildirimi
 
-Komut bilgileri standart çıktıya kaydeder. Bir sorun algılanırsa, bir hata kodu ve açıklama sağlar. Kodlar ve olası çözümler hakkında daha fazla bilgi için [hata başvurusuna](container-registry-health-error-reference.md)bakın.
+Komut, bilgileri standart çıktıya kaydeder. Bir sorun algılanırsa, bir hata kodu ve açıklaması sağlar. Kodlar ve olası çözümler hakkında daha fazla bilgi için bkz. [hata başvurusu](container-registry-health-error-reference.md).
 
-Varsayılan olarak, bir hata bulduğunda komut durur. Hata lar bulunsa bile tüm sistem durumu denetimleri için çıktı sağlayacak şekilde komutu da çalıştırabilirsiniz. Aşağıdaki `--ignore-errors` örneklerde gösterildiği gibi parametre ekleyin:
+Varsayılan olarak, komut her bir hata bulduğunda yanıt vermez. Ayrıca, hatalar bulunsa bile, tüm sistem durumu denetimleri için çıkış sağlamak üzere komutunu çalıştırabilirsiniz. Aşağıdaki örneklerde `--ignore-errors` gösterildiği gibi parametresini ekleyin:
 
 ```azurecli
 # Check environment only
@@ -74,9 +74,9 @@ Fetch access token for registry 'myregistry.azurecr.io' : OK
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[az acr onay durumu][az-acr-check-health] komutu tarafından döndürülen hata kodları hakkında ayrıntılı bilgi [için, Sistem Durumu denetimi hata başvurusuna](container-registry-health-error-reference.md)bakın.
+[Az ACR Check-Health][az-acr-check-health] komutu tarafından döndürülen hata kodları hakkındaki ayrıntılar için bkz. [sistem durumu denetimi hata başvurusu](container-registry-health-error-reference.md).
 
-Azure Kapsayıcı Kayıt Defteri hakkında sık sorulan sorular ve bilinen diğer sorunlar için [SSS](container-registry-faq.md) bölümüne bakın.
+Sık sorulan sorular ve Azure Container Registry ilgili diğer bilinen sorunlar için [SSS](container-registry-faq.md) bölümüne bakın.
 
 
 

@@ -1,14 +1,14 @@
 ---
 title: Azure Blockchain Workbench verilerini Microsoft Excel’de kullanma
-description: Microsoft Excel'de Azure Blockchain Workbench Preview SQL DB verilerini nasıl yükleyip görüntüleyebilirsiniz öğrenin.
+description: Microsoft Excel 'de Azure blok zinciri çalışma ekranı önizleme SQL DB verilerini yükleme ve görüntüleme hakkında bilgi edinin.
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
 ms.openlocfilehash: a84858ead83782cc9b6ef1b1d7f905172600fb8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74326059"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>Azure Blockchain Workbench verilerini Microsoft Excel ile görüntüleme

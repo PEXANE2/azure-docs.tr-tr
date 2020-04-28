@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps'tan SharePoint'e bağlanma
-description: Azure Logic Apps'ı kullanarak SharePoint Online veya SharePoint Server'daki kaynakları şirket içinde izleyen ve yöneten görevleri ve iş akışlarını otomatikleştirin
+title: Azure Logic Apps SharePoint 'e bağlanma
+description: Azure Logic Apps kullanarak SharePoint Online veya SharePoint Server 'daki kaynakları izleyen ve yöneten görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,75 +8,75 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: bb82ef2d6fb83c2e1b0fa81aa9504c9bb7d8234b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789265"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Azure Logic Apps ile SharePoint kaynaklarını izleme ve yönetme
 
-Azure Logic Apps ve SharePoint bağlayıcısı ile, örneğin SharePoint Online'da veya şirket içinde SharePoint Server'da dosyalar, klasörler, listeler, öğeler, kişiler gibi kaynakları izleyen ve yöneten otomatik görevler ve iş akışları oluşturabilirsiniz:
+Azure Logic Apps ve SharePoint bağlayıcısıyla, SharePoint Online veya şirket içi SharePoint Server 'daki dosya, klasör, liste, öğe, kişi vb. kaynakları izleyen ve yöneten otomatik görevler ve iş akışları oluşturabilirsiniz, örneğin:
 
-* Dosyalar veya öğeler oluşturulduğunda, değiştirildiğinde veya silindiğinde izleyin.
-* Öğeleri oluşturun, alın, güncelleyin veya silin.
-* Ekler ekleme, alma veya silme. İçeriği ekleri alın.
-* Dosyaları oluşturun, kopyalayın, güncelleyin veya silin. 
-* Dosya özelliklerini güncelleştirin. Bir dosyanın içeriğini, meta verilerini veya özelliklerini alın.
+* Dosya veya öğe oluşturma, değiştirme veya silme sırasında izleyin.
+* Öğeleri oluşturun, alın, güncelleştirin veya silin.
+* Ekleri ekleyin, alın veya silin. Eklerin içeriğini alın.
+* Dosyaları oluşturun, kopyalayın, güncelleştirin veya silin. 
+* Dosya özelliklerini güncelleştirin. Bir dosya için içerik, meta veri veya özellik alın.
 * Klasörleri listeleyin veya ayıklayın.
-* Liste veya liste görünümleri alın.
+* Listeler veya liste görünümleri alın.
 * İçerik onay durumunu ayarlayın.
-* Kişileri çözün.
-* HTTP isteklerini SharePoint'e gönderin.
-* Varlık değerlerini alın.
+* Kişileri çözümleyin.
+* HTTP isteklerini SharePoint 'e gönderme.
+* Varlık değerlerini al.
 
-SharePoint'ten yanıt alan ve çıktıyı diğer eylemler için kullanılabilir hale getiren tetikleyiciler kullanabilirsiniz. SharePoint'te görevleri gerçekleştirmek için mantık uygulamalarınızdaki eylemleri kullanabilirsiniz. SharePoint eylemlerinden çıktıyı başka eylemlerin de kullanmasını sağlayabilirsiniz. Örneğin, SharePoint'ten düzenli olarak dosya getiriyorsanız, Slack bağlayıcısını kullanarak ekibinize ileti gönderebilirsiniz.
-Mantıksal uygulamalarda yeniyseniz, [Azure Mantık Uygulamaları nedir'yi inceleyin?](../logic-apps/logic-apps-overview.md)
+SharePoint 'ten yanıt alan Tetikleyicileri kullanabilir ve çıktıyı diğer eylemler için kullanılabilir hale getirebilirsiniz. SharePoint 'te görevler gerçekleştirmek için mantıksal uygulamalarınızdaki eylemleri kullanabilirsiniz. Ayrıca, diğer eylemlerdeki çıktıyı SharePoint eylemleriyle kullanmasını sağlayabilirsiniz. Örneğin, SharePoint 'ten düzenli olarak dosya getirilerseniz, bolluk bağlayıcısını kullanarak ekibinize ileti gönderebilirsiniz.
+Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md) olduğunu gözden geçirin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
-* SharePoint site adresiniz ve kullanıcı kimlik bilgileriniz
+* SharePoint site adresiniz ve Kullanıcı kimlik bilgileriniz
 
-  Kimlik bilgileriniz, bir bağlantı oluşturmak ve SharePoint hesabınıza erişmek için mantık uygulamanıza yetki vetir. 
+  Kimlik bilgileriniz, mantıksal uygulamanızı bir bağlantı oluşturmak ve SharePoint hesabınıza erişmek için yetkilendirirsiniz. 
 
-* Mantık uygulamalarını SharePoint Server gibi şirket içi sistemlere bağlamadan önce [şirket içi bir veri ağ geçidi yüklemeniz ve kurmanız](../logic-apps/logic-apps-gateway-install.md)gerekir. Bu şekilde, mantık uygulamanız için SharePoint Server bağlantısını oluştururken ağ geçidi yüklemenizi kullanacağınızı belirtebilirsiniz.
+* Mantıksal uygulamaları SharePoint Server gibi şirket içi sistemlere bağlayabilmeniz için önce şirket [içi veri ağ geçidini yüklemeniz ve ayarlamanız](../logic-apps/logic-apps-gateway-install.md)gerekir. Bu şekilde, mantıksal uygulamanız için SharePoint sunucu bağlantısı oluştururken ağ geçidi yüklemenizi kullanmayı belirtebilirsiniz.
 
-* [Mantık uygulamaları oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgiler
+* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
 
-* SharePoint hesabınıza erişmek istediğiniz mantık uygulaması. SharePoint tetikleyicisiyle başlamak için [boş bir mantık uygulaması oluşturun.](../logic-apps/quickstart-create-first-logic-app-workflow.md) SharePoint eylemini kullanmak için, bir Salesforce hesabınız varsa, mantık uygulamanızı Salesforce tetikleyicisi gibi bir tetikleyiciyle başlatın.
+* SharePoint hesabınıza erişmek istediğiniz mantıksal uygulama. Bir SharePoint tetikleyicisiyle başlamak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). Bir SharePoint eylemi kullanmak için, bir Salesforce hesabınız varsa, bir Salesforce tetikleyicisi gibi bir tetikleyici ile mantıksal uygulamanızı başlatın.
 
-  Örneğin, mantık uygulamanızı **Salesforce** tetikleyicisi ne zaman bir kayıt oluşturulursa ile başlatabilirsiniz. 
-  Bu tetikleyici, Salesforce'ta müşteri adayı gibi yeni bir kaydın oluşturulduğu her seferde devreye sayılsa. 
-  Daha sonra SharePoint **Oluştur dosya** eylemi ile bu tetikleyiciyi izleyebilirsiniz. Bu şekilde, yeni kayıt oluşturulduğunda, mantık uygulamanız SharePoint'te yeni kayıt la ilgili bilgileri içeren bir dosya oluşturur.
+  Örneğin, **bir kayıt** Salesforce tetikleyicisi oluşturulduğunda mantıksal uygulamanızı ile başlatabilirsiniz. 
+  Bu tetikleyici, Salesforce 'ta bir müşteri adayı gibi yeni bir kaydın oluşturulduğu her seferinde ateşlenir. 
+  Daha sonra bu tetikleyiciyi SharePoint **dosya oluştur** eylemiyle takip edebilirsiniz. Bu şekilde, yeni kayıt oluşturulduğunda mantıksal uygulamanız SharePoint 'te bu yeni kayıtla ilgili bilgileri içeren bir dosya oluşturur.
 
 ## <a name="connect-to-sharepoint"></a>SharePoint’e bağlanma
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure portalında](https://portal.azure.com)oturum açın ve mantık uygulamanızı zaten açık değilse Mantık Uygulama Tasarımcısı'nda açın.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
 
-1. Boş mantık uygulamaları için, arama kutusuna filtreniz olarak "sharepoint"i girin. Tetikleyiciler listesinin altında, istediğiniz tetikleyiciyi seçin. 
+1. Boş Logic Apps için, arama kutusuna filtreniz olarak "SharePoint" yazın. Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin. 
 
    -veya-
 
-   Varolan mantık uygulamaları için, SharePoint eylemi eklemek istediğiniz son adımaltında **Yeni adım'ı**seçin. 
-   Arama kutusuna filtreniz olarak "sharepoint" girin. 
-   Eylemler listesinin altında, istediğiniz eylemi seçin.
+   Mevcut Logic Apps için, SharePoint eylemi eklemek istediğiniz son adım altında **yeni adım**' ı seçin. 
+   Arama kutusuna filtreniz olarak "SharePoint" yazın. 
+   Eylemler listesi altında istediğiniz eylemi seçin.
 
-   Adımlar arasında eylem eklemek için işaretçinizin üzerine adımların arasında ilerleyin. 
-   Görünen artı işaretini (**+**) seçin ve ardından eylem **ekle'yi**seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. 
+   Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Oturum açmanız istendiğinde, gerekli bağlantı bilgilerini sağlayın. SharePoint Server kullanıyorsanız, şirket içi **veri ağ geçidi üzerinden Bağlan'ı**seçtiğinizden emin olun. İşiniz bittiğinde **Oluştur**’u seçin.
+1. Oturum açmanız istendiğinde, gerekli bağlantı bilgilerini sağlayın. SharePoint Server kullanıyorsanız, Şirket **içi veri ağ geçidi üzerinden Bağlan**' ı seçtiğinizden emin olun. İşiniz bittiğinde **Oluştur**’u seçin.
 
-1. Seçtiğiniz tetikleyici veya eylem için gerekli ayrıntıları sağlayın ve mantık uygulamanızın iş akışını oluşturmaya devam edin.
+1. Seçtiğiniz tetikleyici veya eyleminiz için gerekli ayrıntıları sağlayın ve mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının OpenAPI (eski adıyla Swagger) açıklamasıyla açıklanan tetikleyiciler, eylemler ve sınırlar hakkındaki teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/sharepoint/)inceleyin.
+Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/sharepoint/)gözden geçirin.
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 * Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.

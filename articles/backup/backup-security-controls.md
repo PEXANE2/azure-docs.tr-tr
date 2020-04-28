@@ -1,61 +1,61 @@
 ---
 title: Güvenlik denetimleri
-description: Azure Yedekleme hizmetinde kullanılan güvenlik denetimleri hakkında bilgi edinin. Bu denetimler, hizmetin güvenlik açıklarını önlemesine, algılamasına ve yanıtlatanlarına yardımcı olur.
+description: Azure Backup hizmetinde kullanılan güvenlik denetimleri hakkında bilgi edinin. Bu denetimler hizmetin güvenlik açıklarını engellemesine, algılamasına ve yanıt vermesine yardımcı olur.
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.openlocfilehash: 0e3f5ce942ea8aef9bf5eb98883ae1e72a7ab239
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74172131"
 ---
-# <a name="security-controls-for-azure-backup"></a>Azure Yedekleme için güvenlik denetimleri
+# <a name="security-controls-for-azure-backup"></a>Azure Backup için güvenlik denetimleri
 
-Bu makalede, Azure Yedekleme'de yerleşik güvenlik denetimleri belgeleilmiştir.
+Bu makalede, Azure Backup yerleşik olarak bulunan güvenlik denetimleri Belgelenebilir.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Ağ
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar | Belgeler
+| Güvenlik denetimi | Evet/Hayır | Notlar | Belgeler
 |---|---|--|
-| Hizmet bitiş noktası desteği| Hayır |  |  |
-| VNet enjeksiyon desteği| Hayır |  |  |
-| Ağ yalıtımı ve güvenlik duvarı desteği| Evet | VM yedeklemesi için zorunlu tünelleme desteklenir. Zorunlu tünelleme, VM'lerin içinde çalışan iş yükleri için desteklenmez. |  |
-| Zorunlu tünel desteği| Hayır |  |  |
+| Hizmet uç noktası desteği| Hayır |  |  |
+| VNet ekleme desteği| Hayır |  |  |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Yes | Zorlamalı tünel VM yedeklemesi için desteklenir. Zorlamalı tünel, VM 'Ler içinde çalışan iş yükleri için desteklenmez. |  |
+| Zorlamalı tünel desteği| Hayır |  |  |
 
-## <a name="monitoring--logging"></a>İzleme & günlüğe kaydetme
+## <a name="monitoring--logging"></a>& günlüğü izleme
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar| | Belgeler
+| Güvenlik denetimi | Evet/Hayır | Notlar| | Belgeler
 |---|---|--|
-| Azure izleme desteği (Log analitiği, Uygulama öngörüleri, vb.)| Evet | Log Analytics kaynak günlükleri aracılığıyla desteklenir. Daha fazla bilgi için Bkz. [Log Analytics'i kullanarak Azure Yedekleme korumalı iş yüklerini izleyin.](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) |  |
-| Kontrol ve yönetim düzlemi günlüğü ve denetimi| Evet | Azure portalından müşteri tarafından tetiklenen tüm eylemler etkinlik günlüklerine kaydedilir. |  |
-| Veri düzlemi günlüğü ve denetimi| Hayır | Azure Yedekleme veri düzlemine doğrudan erişimez.  |  |
+| Azure izleme desteği (Log Analytics, App Insights vb.)| Yes | Log Analytics, kaynak günlükleri aracılığıyla desteklenir. Daha fazla bilgi için bkz. [Log Analytics kullanarak Azure Backup korunan iş yüklerini izleme](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/). |  |
+| Denetim ve yönetim düzlemi günlüğü ve denetimi| Yes | Azure portal müşterinin tetiklediği tüm eylemler etkinlik günlüklerine kaydedilir. |  |
+| Veri düzlemi günlüğü ve denetimi| Hayır | Azure Backup veri düzlemine doğrudan ulaşılamıyor.  |  |
 
 ## <a name="identity"></a>Kimlik
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar| | Belgeler
+| Güvenlik denetimi | Evet/Hayır | Notlar| | Belgeler
 |---|---|--|
-| Kimlik doğrulaması| Evet | Kimlik doğrulama, Azure Etkin Dizini aracılığıyla yapılır. |  |
-| Yetkilendirme| Evet | Müşteri oluşturulan ve yerleşik RBAC rolleri kullanılır. Daha fazla bilgi için Azure [Yedekleme kurtarma noktalarını yönetmek için Rol Tabanlı Erişim Denetimini Kullan'a](/azure/backup/backup-rbac-rs-vault)bakın. |  |
+| Kimlik Doğrulaması| Yes | Kimlik doğrulaması Azure Active Directory. |  |
+| Yetkilendirme| Yes | Oluşturulan müşteri ve yerleşik RBAC rolleri kullanılır. Daha fazla bilgi için bkz. [Azure Backup kurtarma noktalarını yönetmek Için rol tabanlı Access Control kullanma](/azure/backup/backup-rbac-rs-vault). |  |
 
 ## <a name="data-protection"></a>Veri koruma
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar | | Belgeler
+| Güvenlik denetimi | Evet/Hayır | Notlar | | Belgeler
 |---|---|--|
-| Sunucu tarafında şifreleme istirahat: Microsoft tarafından yönetilen anahtarlar | Evet | Depolama hesapları için depolama hizmeti şifrelemesi kullanma. |  |
-| Sunucu tarafında şifreleme istirahat: müşteri tarafından yönetilen anahtarlar (BYOK) | Hayır |  |  |
-| Sütun düzeyi şifreleme (Azure Veri Hizmetleri)| Hayır |  |  |
-| Aktarım sırasında şifreleme (ExpressRoute şifreleme, VNet şifreleme ve VNet-VNet şifreleme gibi)| Hayır | HTTPS'yi kullanma. |  |
-| API şifreli aramalar| Evet |  |  |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Yes | Depolama hesapları için depolama hizmeti şifrelemesini kullanma. |  |
+| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Hayır |  |  |
+| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Hayır |  |  |
+| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Hayır | HTTPS kullanma. |  |
+| Şifrelenmiş API çağrıları| Yes |  |  |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar| | Belgeler
+| Güvenlik denetimi | Evet/Hayır | Notlar| | Belgeler
 |---|---|--|
-| Yapılandırma yönetimi desteği (yapılandırmanın sürümü, vb.)| Evet|  |  |
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Yes|  |  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure hizmetlerinde yerleşik güvenlik denetimleri](../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.
+- [Azure hizmetleri genelinde yerleşik güvenlik denetimleri](../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.

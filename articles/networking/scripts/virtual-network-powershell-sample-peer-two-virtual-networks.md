@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell Script Örneği - Eş iki sanal ağ | Microsoft Dokümanlar
-description: Azure PowerShell Komut Dosyası Örneği - Eş iki sanal ağ
+title: Azure PowerShell betik örneği-eşler arası iki sanal ağ | Microsoft Docs
+description: Azure PowerShell betiği örneği-eşler arası iki sanal ağ
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: kumud
 ms.openlocfilehash: 53af283813500fc93d3e5fb9d4b00a9c3034af2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73890197"
 ---
 # <a name="peer-two-virtual-networks"></a>İki sanal ağı eşleme
 
-Bu komut dosyası, Azure ağı üzerinden aynı bölgedeki iki sanal ağ oluşturur ve bağlanır. Betiği çalıştırdıktan sonra iki sanal ağ arasında eşleme oluşturmuş olursunuz.
+Bu betik, Azure ağı aracılığıyla aynı bölgedeki iki sanal ağı oluşturur ve bağlar. Betiği çalıştırdıktan sonra iki sanal ağ arasında eşleme oluşturmuş olursunuz.
 
-Gerekirse, [Azure PowerShell kılavuzunda](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)bulunan yönergeyi kullanarak Azure PowerShell'i yükleyin ve ardından Azure ile bağlantı oluşturmak için çalıştırın. `Connect-AzAccount`
+Gerekirse, [Azure PowerShell kılavuzunda](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)bulunan yönergeyi kullanarak Azure PowerShell yükleyip Azure ile bağlantı oluşturmak için öğesini çalıştırın `Connect-AzAccount` .
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -48,8 +48,8 @@ Bu betik, bir kaynak grubu, sanal makine ve tüm ilgili kaynakları oluşturmak 
 | Komut | Notlar |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. | 
-| [Yeni-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)| Bir Azure sanal ağı ve alt ağ oluşturur. |
-| [Ekle-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering) | İki sanal ağ arasında eşleme oluşturur.  |
+| [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)| Bir Azure sanal ağı ve alt ağ oluşturur. |
+| [Add-Azvirtualnetworkeşleme](/powershell/module/az.network/add-azvirtualnetworkpeering) | İki sanal ağ arasında eşleme oluşturur.  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar

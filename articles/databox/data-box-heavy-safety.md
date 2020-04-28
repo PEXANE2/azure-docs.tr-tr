@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Kutunuz Için Güvenlik Ağır | Microsoft Dokümanlar
-description: Güvenlik kurallarını, yönergeleri ve dikkatleri açıklar ve Azure Veri Kutusu Heavy'nizi güvenli bir şekilde nasıl yükleyip çalıştırılacakaçıklar.
+title: Azure Data Box Heavy için güvenlik | Microsoft Docs
+description: Güvenlik kurallarını, yönergeleri ve konuları açıklar ve Azure Data Box Heavy güvenle yükleyip çalıştırabileceğinizi açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,175 +9,175 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
 ms.openlocfilehash: b7562ab6c7ec9c6234ed3fbb867361307b80a638
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67673125"
 ---
-# <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Azure Veri Kutusu Ağır'ınızı güvenli bir şekilde yükleyin ve çalıştırın
+# <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Azure Data Box Heavy güvenle yükleyip çalıştırın
 
-Bu makale, Azure Veri Kutusu Heavy'nizin güvenlik bilgilerini içerir.
+Bu makale Azure Data Box Heavy için güvenlik bilgilerini içerir.
 
-![Uyarı](./media/data-box-heavy-safety/warning-icon.png)
-![simgesi Güvenlik](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) bildirimi simgesini oku **Önce tüm talimatları okuyun**
+![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png)
+![okuma güvenlik bildirimi simgesi](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) **önce tüm yönergeleri oku**
 
-Azure Veri Kutusu Ağır'ınızı kullanmadan önce bu makaledeki tüm güvenlik bilgilerini okuyun. Talimatlara uyulmaması yangına, elektrik çarpmasına veya diğer yaralanmalara veya mülklerinizde hasara neden olabilir.
+Azure Data Box Heavy kullanmadan önce bu makaledeki tüm güvenlik bilgilerini okuyun. Yönergeleri izlemeden hata, yangın, elektrik sarsıntı veya diğer sakatlama ya da özelliklerine zarar verebilir.
 
 ## <a name="safety-icon-conventions"></a>Güvenlik simgesi kuralları
-Veri Kutunuzu kurarken ve çalıştırırken uyulması gereken güvenlik önlemlerini gözden geçirirken bulacağınız simgeler aşağıda verecektir.
+Data Box kurarken ve çalıştırırken gözlenecek güvenlik önlemleri gözden geçirdikten sonra bulacağınız simgeler aşağıda verilmiştir.
 
 | Simge | Açıklama |
 |:--- |:--- |
-| ![Tehlike](./media/data-box-heavy-safety/warning-icon.png) simgesi **DANGER!** |Kaçınılmaması halinde ölümle veya ciddi yaralanmalara yol açabilecek tehlikeli bir durumu gösterir. Bu sinyal kelimesi en uç durumlarla sınırlı olacaktır. |
-| ![Uyarı](./media/data-box-heavy-safety/warning-icon.png) simgesi **UYARI!** |Kaçınılmaması halinde ölüm veya ciddi yaralanmalara yol açabilecek tehlikeli bir durumu gösterir. |
-| ![Uyarı](./media/data-box-heavy-safety/warning-icon.png) simgesi **DİkKAT!** |Kaçınılmaması halinde küçük veya orta derecede yaralanmaya neden olabilecek tehlikeli bir durumu gösterir. |
-| ![Bildirim](./media/data-box-heavy-safety/notice-icon.png) simgesi **DİkKAT:** |Önemli kabul edilen, ancak tehlikeyle ilgili olmayan bilgileri gösterir. |
-| ![Elektrik şoku simgesi](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) Elektrik çarpması **tehlikesi** |Yüksek voltaj. |
-| ![Ağır ikon](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **Ağır ağırlık** | |
-| ![Kullanıcıya hizmet edilebilen parça simgesi](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) Yok **Kullanıcıya hizmet edilebilen parçalar yok** |Düzgün bir şekilde eğitilmedikçe erişmeyin. |
-| ![Güvenlik bildirimi](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) simgesini okuyun **Önce tüm talimatları okuyun** | |
-| ![İpucu tehlike](./media/data-box-heavy-safety/tip-hazard-icon.png) simgesi **İpucu tehlikesi** | |
-| ![Aşırı yük ucu](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) tehlike simgesi **Aşırı yük ucu tehlikesi** | |
-| ![Birden çok](./media/data-box-heavy-safety/multiple-power-sources-icon.png) güç kaynağı simgesi **Birden çok güç kaynağı** | |
+| ![Danger simgesi](./media/data-box-heavy-safety/warning-icon.png) **tehlike!** |Önedilmediği durumlarda, ölüm veya ciddi bir yaralama oluşmasına neden olan tehlikeli bir durum belirtir. Bu sinyal sözcüğü, en Extreme durumlarla sınırlı olacaktır. |
+| ![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) **uyarısı!** |Önedilmediği durumlarda, ölüm veya ciddi bir yaralama oluşmasına neden olabilecek tehlikeli bir durum belirtir. |
+| ![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) **dikkatli!** |Önedilmediği durumlarda küçük veya orta bir yaralanmaya neden olabilecek tehlikeli bir durum belirtir. |
+| ![Bildirim simgesi](./media/data-box-heavy-safety/notice-icon.png) **bildirimi:** |Önemli kabul edilen, ancak tehlike ile ilgili olmayan bilgileri gösterir. |
+| ![Elektrik sarsıntısı simgesi](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **elektrik şok hasar** |Yüksek voltaj. |
+| ![Ağır kalınlık simgesi](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **ağır ağırlık** | |
+| ![Kullanıcı tarafından](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **hizmet içermeyen parçalar simgesi yok** |Uygun şekilde Eğitilmediğiniz müddetçe bu erişimi kullanmayın. |
+| ![Güvenlik bildirimi okuma simgesi](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) **ilk olarak tüm yönergeleri oku** | |
+| ![İpucu hasar simgesi](./media/data-box-heavy-safety/tip-hazard-icon.png) **İpucu rastlantı** | |
+| ![Aşırı yükleme ipucu hasar](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) simgesi **aşırı yükleme ipucu hasar** | |
+| ![Birden çok güç kaynağı](./media/data-box-heavy-safety/multiple-power-sources-icon.png) simgesi **birden çok güç kaynağı** | |
 
-## <a name="handling-precautions"></a>Taşıma önlemleri
+## <a name="handling-precautions"></a>Önlemleri işleme
 
-![Uyarı](./media/data-box-heavy-safety/warning-icon.png) Simgesi **UYARI!**
+![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) **uyarısı!**
 
-* Kasanın taşınması ve taşınması nda uygun ekipman (örneğin palet jakı) ve Kişisel Koruyucu Ekipmanlar (örneğin eldivenler) kullanılmalıdır.
-* Rampa, yaralanmaları veya maddi hasarları önlemek için cihazı çıkarmadan önce sağlanan cıvatalarla kasaya sabitlenmelidir.
+* Crate 'i taşırken ve işlerken uygun ekipman (örneğin, palet jakı) ve kişisel koruyucu ekipman (örneğin, gloya) kullanılmalıdır.
+* Sakatlama veya özellik hasarından kaçınmak üzere cihazı kaldırmadan önce, rampa, sağlanan cıvatlarla birlikte erişebilmeniz ile güvenli hale getirilmesi gerekir.
 
-![Uyarı](./media/data-box-heavy-safety/warning-icon.png) ![Simgesi İpucu](./media/data-box-heavy-safety/tip-hazard-icon.png) Tehlike Simgesi **İpucu tehlike**
+![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) ![ipucu hasar simgesi](./media/data-box-heavy-safety/tip-hazard-icon.png) **İpucu hasar**
 
-* Olası bir uç veya kırma tehlikesini önlemek için ekipmanı düz, sert ve kararlı bir yüzeye yerleştirin.
-* Ekipmanı incelemeden, açmadan ve çalıştırmadan önce tekerleklerin kilitli olduğunu doğrulayın.
+* Potansiyel bir ipucunu veya kırıltı bir hasar oluşmasını önlemek için donatımı düz, sabit ve kararlı bir yüzeye yerleştirin.
+* Ekipmanları İnceleme, açma ve çalıştırma öncesinde, kasaların kilitli olduğunu doğrulayın.
 
-![Uyarı](./media/data-box-heavy-safety/warning-icon.png) ![simgesi Elektrik](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png)![şok ukonu](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) Kullanıcı yada servis edilebilir parçalar simgesi **DİkKAT yok!** 
+![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) ![elektrik sarsıntı](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png)![simgesi hiçbir Kullanıcı hizmet verebilir bölümü](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) yok simgesi **Uyarı!** 
 
-* *Alınan* cihazı hasarlar için inceleyin. Aygıt muhafazası zarar görmüşse, değiştirme almak için [Microsoft Destek'e](data-box-disk-contact-microsoft-support.md) başvurun. Cihazı çalıştırmaya çalışmayın. 
-* Cihaz kurcalamaya dayanıklı vidalarla donatılmıştır. Aygıtın arızalı olduğundan şüpheleniyorsanız, microsoft [destek](data-box-disk-contact-microsoft-support.md) yerine birini almak için. Aygıta hizmet vermeye çalışmayın. 
-* Cihaz, kullanıcı tarafından hizmet e-reayi olmayan parçalar içermez. Tehlikeli voltaj, akım ve enerji seviyeleri içeride bulunmaktadır. Açmayın. Servis için aygıtı Microsoft'a iade edin.
+* Zararlar için *alınan as* cihazını inceleyin. Cihaz kasası hasar görmüşse, yerini almak için [Microsoft desteği](data-box-disk-contact-microsoft-support.md) başvurun. Cihazı çalıştırmayı denemeyin. 
+* Cihaz, yetkisiz kanıtlama dayanıklı bir şekilde donatılmış. Cihazın arızalı olduğunu kuşkulanıyorsanız, bir değiştirme işlemi almak için [Microsoft desteği](data-box-disk-contact-microsoft-support.md) . Cihaza bakım yapmayı denemeyin. 
+* Cihaz, hiçbir Kullanıcı-serviceable Bölümü içermiyor. Tehlikeli voltaj, geçerli ve enerji düzeyleri içinde mevcuttur. ' İ açmayın. Cihaza bakım için Microsoft 'a döndürün.
 
-![Uyarı](./media/data-box-heavy-safety/warning-icon.png) ![simgesi Ağır](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) ağırlık simgesi **UYARI!** 
+![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) ![ağır ağırlık simgesi](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **uyarısı!** 
 
-* Tamamen yapılandırılmış bir muhafaza 326 kg'a (719 lbs) kadar ağırolabilir; tek başınıza kaldırmaya çalışmayın.
-* Uygun mekanik yardım olmadan ekipmanı kaldırmaya çalışmayın. Bu ağırlığı kaldırmak için herhangi bir girişim ciddi yaralanmalara neden olabilir unutmayın.
-* Bu ekipmanı hareket ettirirken ve kaldırırken yerel iş sağlığı ve güvenliği gerekliliklerine uygun.
-* Taşıma ve kaldırma ekipmanı nda mekanik yardım veya diğer uygun yardım kullanın.
-
-
-![Uyarı](./media/data-box-heavy-safety/warning-icon.png) ![simgesi Aşırı yük](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) ![ucu](./media/data-box-heavy-safety/tip-hazard-icon.png)![tehlike simgesi](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) İpucu tehlike simgesi Ağır ağırlık simgesi **UYARI!**
-* Veri Kutusu Ağır tablo veya çalışma alanı olarak kullanılmamalıdır. Herhangi bir yük türü eklemek, yaralanmaya veya maddi hasara yol açabilecek potansiyel bir tehlike oluşturabilir.
-* Rafa monte edilmiş ekipmanlar raf veya çalışma alanı olarak kullanılmamalıdır. Data Box Heavy'yi rafa monte edilmiş ekipmanların üzerine yerleştirmeyin. Rafa monte edilmiş uzun bir üniteye herhangi bir yük eklemek yaralanmaya, ölüme veya ürün hasarına yol açabilecek potansiyel bir uç tehlikesi oluşturabilir.
-
-![Uyarı](./media/data-box-heavy-safety/warning-icon.png) simgesi **UYARI!**
-
-* Sistem tipik bir ofis ortamında çalışacak şekilde tasarlanmıştır. Şu siteyi seçin:
-
-    - İyi havalandırılan ve doğrudan güneş ışığı ve radyatörler de dahil olmak üzere ısı kaynaklarından uzak.
-    - Titreşim veya fiziksel şok kaynaklarından uzakta.
-    - Elektrikli cihazlar tarafından üretilen güçlü elektromanyetik alanlardan izole edilmiştir.
-    - Düzgün topraklanmış duvar çıkışları ile sağlanır.
-    - Onlar ürünün ana güç bağlantısı olarak hizmet çünkü güç kaynağı kablosu (lar) erişmek için yeterli alan ile sağlanır.
-
-* Cihazı, cihazın etrafında yeterli hava sirkülasyonuna izin veren bir çalışma alanına kurun.
-* Cihazı iletken kirletici maddeler içermeyen sıcaklık kontrollü bir kapalı alana takın ve cihazın etrafında yeterli hava sirkülasyonuna izin verin.
-* Cihazı sıvı ve aşırı nemli ortamlardan uzak tutun.
+* Tam olarak yapılandırılmış bir kutu 326 kg 'a (719 lbs) ağırlık verebilir; kendiniz de kaldırma denemeyin.
+* Doğru mekanik yardım olmadan donatımı kaldırma girişiminde bulunuldu. Bu ağırlığı kaldırma girişimlerinin ciddi sakatlama neden olabileceği farkında olun.
+* Bu donatımı taşırken ve kaldırdığınızda, yerel meslek sistem durumu ve güvenlik gereksinimlerine uyum sağlar.
+* Ekipman taşıma ve kaldırma sırasında mekanik yardım veya diğer uygun yardımı kullanın.
 
 
-## <a name="electrical-precautions"></a>Elektriksel önlemler
+![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) ![aşırı yükleme ipucu hasar](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) ![simgesi ipucu hasar](./media/data-box-heavy-safety/tip-hazard-icon.png)![simgesi ağır ağırlık](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) simgesi **uyarısı!**
+* Data Box Heavy tablo veya çalışma alanı olarak kullanılamaz. Herhangi bir türdeki yükü eklemek, ortaya çıkabilecek veya özelliğin hasar görmesine neden olabilecek potansiyel bir hasar oluşturabilir.
+* Rafa takılan ekipman, raflar veya çalışma alanı olarak kullanılamaz. Data Box Heavy rafa takılan ekipmanın üzerine yerleştirmeyin. Genişletilmiş rafa takılan bir birime herhangi bir yük türü eklemek, yaralanma, ölüm veya ürün hasarını ortaya çıkabilecek olası bir tıp hasar oluşturabilir.
 
-![Uyarı](./media/data-box-heavy-safety/warning-icon.png) ![simgesi Elektrik](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) şok simgesi **UYARI!**
+![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) **uyarısı!**
 
-* Güç kaynağı kablosuna güvenli bir elektrik dünya bağlantısı sağlayın. AC kablosuüç telli topraklama fişi (topraklama pimi olan bir fiş) vardır. Bu fiş sadece topraklanmış ac prizine uyar. Topraklama piminin amacını yenme.
-* Güç besleme kablosunun fişinin ana bağlantı kesme cihazı olduğu göz önüne alındığında, soket prizlerinin cihazın yakınında olduğundan ve kolayca erişilebilir olduğundan emin olun.
-* Güç kablosunu çıkarın (fişi çekerek, kabloyu değil) ve aşağıdaki koşullardan herhangi biri varsa tüm kabloları çıkarın:
+* Sistem tipik bir ofis ortamında çalışacak şekilde tasarlanmıştır. Şu şekilde bir site seçin:
 
-    - Güç kablosu veya fiş yıpranmış veya başka bir şekilde hasar görür.
-    - Cihaz kasasına bir şey döküyorsun.
-    - Cihaz yağmura veya aşırı neme maruz kalır.
-    - Cihaz düşürüldü ve cihazın gövdesi hasar gördü.
-    - Cihazın servise veya onarıma ihtiyacı olduğundan şüpheleniyorsunuz.
-* Taşımadan önce veya herhangi bir şekilde hasar gördüğünü düşünüyorsanız, ünitenin fişini kalıcı olarak çıkarın.
-* Aşağıdaki güç özelliklerini karşılamak için elektrik aşırı yük koruması ile uygun bir güç kaynağı sağlayın:
+    - Doğrudan güneş ve radiators da dahil olmak üzere ısı kaynaklarından iyi bir şekilde.
+    - Titreşimi veya fiziksel sarsıntı kaynaklarından uzakta.
+    - Elektrik cihazları tarafından üretilen güçlü elektromanyetik alanlardan yalıtılmıştır.
+    - Doğru şekilde topraklanmış duvarlarla birlikte sunulur.
+    - Power tedarik kablosunu, ürünün ana güç bağlantısı kesildiğinde sundukları için yeterli alan olarak sunulur.
 
-    - Gerilim: 100 V AC - 240 V AC
-    - Akım: 6 A ila 10 A, güç kablosu başına maksimum. Dört güç kablosu sağlanmaktadır.
-    - Frekans: 50 Hz - 60 Hz
-* AC güç kablosunu ekipmanla birlikte sağlananlar dışında değiştirmeye veya kullanmaya çalışmayın. Güç kablosu(lar) aşağıdaki ölçütleri karşılamalıdır:
-    - Güç kablosu, üründe işaretlenen elektrik akımı derecelendirmesinden daha büyük bir elektrik derecesine sahip olmalıdır.
-    - Güç kablosu, elektrik prizine uygun emniyet yer pimine veya kontağından olmalıdır.
+* Cihazı, cihaz etrafında yeterli hava dolaşımını sağlayan bir iş alanında ayarlayın.
+* Cihazı, sıcaklığın boşaltinden muaf olan sıcaklık denetimli bir ınkapılı alana yükler ve cihaz etrafında yeterli hava dolaşıma izin verin.
+* Cihazı, sıvı ve aşırı insanlar ortamlarının kaynaklarından koruyun.
 
-![Uyarı](./media/data-box-heavy-safety/warning-icon.png)![simgesi Elektrik](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) ![şok simgesi](./media/data-box-heavy-safety/multiple-power-sources-icon.png) Çoklu güç kaynakları simgesi **UYARI!**  
 
-* AC gücünü ekipmandan tamamen çıkarmak için tüm AC güç kablosunun(lar) fişini çekin.
+## <a name="electrical-precautions"></a>Elektrik önlemleri
 
-![Uyarı](./media/data-box-heavy-safety/warning-icon.png) simgesi **DİkKAT!**
+![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) ![elektrik sarsıntı](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) simgesi **uyarısı!**
 
-* Bu cihaz sikke hücresi pilleri içerir. Aygıta hizmet vermeye çalışmayın. Bu cihazdaki piller kullanıcı tarafından servis edilemez. 
-* **Yalnızca servis personeli için**: Pil yanlış bir türle değiştirilirse patlama riski. Kullanılmış pilleri talimatlara göre atın.
-* Lazer çevre birimleri veya cihazlar mevcuttur. Risk veya radyasyona maruz kalma ve/veya kişisel yaralanmaları önlemek için herhangi bir lazer çevre veya cihazın kasasını açmayın. Lazer çevre birimleri veya cihazlar servis edeğildir. Optik alıcı-verici ürünü için yalnızca sertifikalı ve derecelendirilmiş Laser Class I kullanın.
+* Güç kaynağı kablosu ile güvenli bir elektrik dünya bağlantısı sağlayın. AC kablosu üç telli bir grounding eklentisine sahiptir (bir grounding PIN 'i olan bir tak). Bu eklenti yalnızca bir topraklanmış AC prizine uyar. Grounding PIN 'inin amacını ertelemeyin.
+* Güç kaynağı kablosu ana bağlantı kesme aygıtı olduğu için, dış cihazların cihazın yakınında bulunduğundan ve kolayca erişilebilir olduğundan emin olun.
+* Aşağıdaki koşullardan herhangi biri mevcutsa, güç kablosunu çıkarın (kablosunu çekerek, yani, her türlü kablonun bağlantısını kesin):
 
-![Bildirim](./media/data-box-heavy-safety/notice-icon.png) simgesi **DİkKAT:**
+    - Güç kablosu veya plug, Frayed veya hasarlı olur.
+    - Bir şeyi cihazın büyük küçük harflere taşırın.
+    - Cihaz, yağmur veya daha fazla Moisture 'e açıktır.
+    - Cihaz bırakılmış ve cihazın büyük küçük harfleri hasarlı.
+    - Cihazın hizmet veya onarım ihtiyacı olduğunu şüpheli.
+* Birimi Taşımadan önce kalıcı olarak çıkarın veya herhangi bir şekilde hasar gördüğünü düşünün.
+* Aşağıdaki güç belirtimlerini karşılamak için elektrik aşırı yüklemesi koruması ile uygun bir güç kaynağı sağlayın:
 
-Cihazınızın düzgün çalışması ve ürün hasarının önlenmesi için:
+    - Voltaj: 100 V AC-240 V AC
+    - Geçerli: 6 A ila 10 A, güç kablosu başına en fazla. Dört güç kablosu sağlanır.
+    - Sıklık: 50 Hz ila 60 Hz
+* Ekipman ile sağlandıklardan farklı AC güç kablosu (ler) i değiştirmeyi veya kullanmayı denemeyin. Güç kablosu aşağıdaki ölçütlere uymalıdır:
+    - Güç kablosu, üründe işaretlenmiş olan elektrik akım derecelendirmesinin sayısından daha büyük bir elektrik derecelendirmesine sahip olmalıdır.
+    - Güç kablosu, elektrik prizine uygun olan güvenlik zemin PIN 'ini veya ilgili kişiye sahip olmalıdır.
+
+![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png)![elektrik şok simgesi](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) ![birden çok güç kaynağı](./media/data-box-heavy-safety/multiple-power-sources-icon.png) simgesi **uyarısı!**  
+
+* Tüm AC güç kablosunu, cihazınızdan AC gücünü tamamen kaldırmak için çıkarın.
+
+![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) **dikkatli!**
+
+* Bu cihaz pille bir pil hücresi içeriyor. Cihaza bakım yapmayı denemeyin. Bu Cihazdaki piller Kullanıcı serviceable değildir. 
+* **Yalnızca hizmet personeli için**: pil yanlış bir türle değiştirilirse açılım riski. Yönergelere göre kullanılan piller atılamadı.
+* Lazer çevre birimleri veya cihazlar mevcuttur. Risk veya aydınlık pozlamayı ve/veya kişisel yaralamayı önlemek için herhangi bir lazer çevre birimi ya da cihazın bir düzeyini açmayın. Lazer çevre birimleri veya cihazlar serviceable değildir. Optik alıcı verici ürünü için yalnızca sertifikalı ve dereceli lazer sınıfı ı kullanın.
+
+![Bildirim simgesi](./media/data-box-heavy-safety/notice-icon.png) **bildirimi:**
+
+Cihazınızın doğru çalışması için ve ürün hasarı oluşmasını engellemek için:
 
 * Cihaz çalışırken ön ve arka kapıların tamamen açık olduğundan emin olun.
 
 ## <a name="regulatory-information"></a>Mevzuat bilgileri
 
-Bu bölüm, DB020 düzenleyici model numarası Azure Data Box Heavy için düzenleyici bilgiler içerir.
+Bu bölüm Azure Data Box Heavy, mevzuat model numarası DB020 için yasal bilgiler içerir.
 
 Bu cihaz:
 
-- Tipik bir veri odası ortamında çalışmak üzere tasarlanmış Bilgi Teknolojisi Ekipmanları (ITE) olarak değerlendirilir. Bu ürünün diğer ortamlar için uygunluğu daha fazla değerlendirme gerektirebilir.
-- NRTL Listelenen (UL, CSA, ETL, vb)ve IEC/EN 60950-1 veya IEC/EN 62368-1 uyumlu (CE işaretli) Bilgi Teknolojisi ekipmanları ile kullanılmak üzere tasarlanmıştır.
-- Aşağıdaki ortamda çalışacak şekilde tasarlanmıştır. 
-    - Çalışma sıcaklığı: 41° ila 95° F (5° ila 35° C)
-    - Saklama sıcaklığı: -40° ila 149° F (-40° ila 65° C)
-    - Bağıl nem: %20 ila %85 (yoğuşmasız) 
-    - Çalışma yüksekliği: 6.560 feet'e (2000 metreye kadar) kadar test edilmiştir
+- Tipik bir veri odası ortamında çalışacak şekilde tasarlanan bilgi teknolojisi donanımı (ITE) olarak değerlendirilir. Bu ürünün diğer ortamlar için uygunluğu daha fazla değerlendirme gerektirebilir.
+- NRTL listelenen (UL, CSA, ETL, vb.) ve ıEC/EN 60950-1 ya da ıEC/EN 62368-1 uyumlu (CE işaretli) Information Technology donatısı ile kullanılmak üzere tasarlanmıştır.
+- Aşağıdaki ortamda çalışmak üzere tasarlanmıştır. 
+    - İşletim sıcaklığı: 41 °-95 ° F (5 °-35 ° C)
+    - Depolama sıcaklığı:-40 °-149 ° F (-40 °-65 ° C)
+    - Bağıl nem: %20 ila %85 (yoğunlaşmayan) 
+    - İşletim yüksekliği: 6.560 fit 'e kadar (2000 metreye kadar) test edilmiştir
 
-Elektrik besleme derecelendirmeleri için birimle birlikte sağlanan aygıt derecelendirme etiketine bakın. 
+Elektrik tedarik derecelendirmeleri için, birimiyle birlikte sunulan cihaz derecelendirme etiketine bakın. 
 
-![Bildirim](./media/data-box-heavy-safety/notice-icon.png) simgesi **DİkKAT:** 
+![Bildirim simgesi](./media/data-box-heavy-safety/notice-icon.png) **bildirimi:** 
 
-Microsoft tarafından açıkça onaylanmayan aygıtta yapılan değişiklikler veya değişiklikler, kullanıcının cihazı çalıştırma yetkisini geçersiz kılabilir.
+Cihazda yapılan değişiklikler veya değişiklikler Microsoft tarafından açıkça onaylanmamış olarak, kullanıcının cihazı çalıştırma yetkisi yok edebilir.
 
 **Kanada ve ABD:**
 
-![Bildirim](./media/data-box-heavy-safety/notice-icon.png) simgesi **DİkKAT:** 
+![Bildirim simgesi](./media/data-box-heavy-safety/notice-icon.png) **bildirimi:** 
 
-Bu ekipman test edilmiş ve FCC Kuralları bölüm 15 uyarınca, Bir Sınıf A dijital cihaz için sınırları uygun olduğu tespit edilmiştir. Bu sınırlar, ekipman ticari bir ortamda çalıştırıldığında zararlı müdahalelere karşı makul koruma sağlamak üzere tasarlanmıştır. Bu ekipman radyo frekansı enerjisi üretir, kullanır ve yayabilir ve kullanım kılavuzuna uygun olarak kurulup kullanılmadığı takdirde radyo iletişimine zararlı parazitlere neden olabilir. Bu ekipmanın bir yerleşim bölgesinde çalışması zararlı parazitlere neden olabilir ve bu durumda kullanıcının kendi pahasına paraziti düzeltmesi gerekecektir.
+Bu ekipman test edilmiştir ve bir sınıftaki dijital bir cihaz için sınırlara uyum sağlamak üzere, FCC kuralların 15. bölümünde yer almışlardır. Bu sınırlar, ekipman ticari bir ortamda çalıştırıldığında zararlı girişim için makul bir koruma sağlamak üzere tasarlanmıştır. Bu ekipman radyo sıklığı enerjisi oluşturur ve kullanır ve yönerge kılavuzuna uygun şekilde yüklenip kullanılmayacaksa radyo iletişimine zararlı girişim yapılmasına neden olabilir. Bu ekipmanın bir yöresel alanındaki işlemi, zararlı bir girişim oluşmasına neden olur ve bu durumda kullanıcının, girişim kendi masrafına göre düzeltilmesi gerekecektir.
 
-Bu cihaz, FCC Kuralları ve Endüstri Kanada lisanstan muaf RSS standardının (lar) 15. İşlem aşağıdaki iki koşula tabidir: 
+Bu cihaz, FCC kuralları ve sektör Kanada lisans muafiyeti RSS standardının 15. bölümüne uyar. İşlem aşağıdaki iki koşula tabidir: 
 
-- Bu cihaz zararlı parazite neden olmayabilir.
-- Bu cihaz, cihazın istenmeyen çalışmasına neden olabilecek parazit ler de dahil olmak üzere alınan tüm parazitleri kabul etmelidir.
+- Bu cihaz zararlı bir girişim olmasına neden olabilir.
+- Bu cihaz, cihazın istenmeyen çalışmasına neden olabilecek girişim de dahil olmak üzere, alınan bir girişimi kabul etmelidir.
 
 ![Kanada](./media/data-box-heavy-safety/canada.png)
 
-CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, ABD.
-Amerika Birleşik Devletleri: (800) 426-9400 Kanada: (800) 933-4750
+ICES-3 (A)/NMB-3 (A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
+Birleşik Devletler: (800) 426-9400 Kanada: (800) 933-4750
 
 **Avrupa Birliği:**
 
-AB Uygunluk Beyanı'nın bir kopyasını [isteyin.](mailto:CSI_Compliance@microsoft.com)
+Conformity 'in AB bildiriminin bir kopyasını [isteyin](mailto:CSI_Compliance@microsoft.com) .
 
-![Uyarı](./media/data-box-heavy-safety/warning-icon.png) simgesi **UYARI!** 
+![Uyarı simgesi](./media/data-box-heavy-safety/warning-icon.png) **uyarısı!** 
 
-Bu a sınıfı bir ürün. Bir ev ortamında, bu ürün radyo parazitine neden olabilir ve bu durumda kullanıcının yeterli önlemleri alması gerekebilir.
+Bu bir ürün sınıfındır. Yurtiçi bir ortamda, bu ürün radyo girişimine neden olabilir ve bu durumda kullanıcının yeterli ölçüler yapması gerekebilir.
 
-**Atık pillerin ve elektrikli ve elektronik ekipmanların bertaraf edilmesi:**
+**Çöp pillerinin ve elektrik ve elektronik ekipmanın elden çıkarılması:**
 
-![Pil imha simgesi](./media/data-box-heavy-safety/battery-disposal-icon.png)
+![Pil çıkarma simgesi](./media/data-box-heavy-safety/battery-disposal-icon.png)
 
-Üründeki veya pilleri veya ambalajı üzerindeki bu sembol, bu ürünün ve içerdiği pillerin evsel atıklarınızla birlikte atılmaması gerektiği anlamına gelir. Bunun yerine, pillerin ve elektrikli ve elektronik ekipmanların geri dönüşümü için bunu geçerli bir toplama noktasına teslim etmek sizin sorumluluğunuzdadır. Bu ayrı toplama ve geri dönüşüm, doğal kaynakların korunmasına ve pillerde ve elektrik ve elektronik ortamda tehlikeli maddelerin bulunması nedeniyle insan sağlığı ve çevre için olası olumsuz sonuçları önlemeye yardımcı olacaktır. uygun olmayan bertaraf neden olabilir ekipman. Pillerinizi ve elektrikli ve elektronik atıklarınızı nereye bırakacağınız hakkında daha fazla bilgi için lütfen yerel şehir/belediye ofisine, evsel atık bertaraf hizmetine veya bu ürünü satın aldığınız mağazaya başvurun. WEEE hakkında daha fazla bilgi için *erecycle\@microsoft.com* ile iletişime geçin.
+Üründe veya pillerinde bulunan bu sembol, bu ürünün ve içerdiği tüm pillerin, ev isverünüzle birlikte atılmayacağı anlamına gelir. Bunun yerine, pil ve elektrik ve elektronik ekipmanın geri dönüştürülmesi için bunu ilgili bir koleksiyon noktasına ele almak sizin sorumluluğunuzdadır. Bu ayrı koleksiyon ve geri dönüşüm, doğal kaynakların korunmasına yardımcı olur ve pillerde ve elektrik ve elektronik ekipmanda olası tehlikeli bir etkinlik olması nedeniyle, uygun olmayan bir elden çıkarılmasından kaynaklanabilir. Pillerinizi ve elektrik ve elektronik alımlarınızı nereden kapatabileceğiniz hakkında daha fazla bilgi için lütfen yerel şehriniz/municiplik ofisiniz, ev atık servisi hizmeti veya bu ürünü satın aldığınız mağaza ekibine başvurun. WEEE hakkında daha fazla bilgi için *erecycle\@Microsoft.com* başvurun.
 
-Bu ürün sikke hücre pil (ies) içerir.
+Bu ürün, para hücresi pili (lar) içerir.
 
-Microsoft Ireland Sandyford Ind Est Dublin D18 KX32 IRL Telefon numarası: +353 1 295 3826 Faks numarası: +353 1 706 4110 
+Microsoft Irlanda Sandyford IND EST Dublin D18 KX32 Gu telefon numarası: + 353 1 295 3826 Faks numarası: + 353 1 706 4110 
 
 <!--**Japan**
 
@@ -189,10 +189,10 @@ Microsoft Ireland Sandyford Ind Est Dublin D18 KX32 IRL Telefon numarası: +353 
 
 -->
 
-Bu güvenlik bildirimlerini inceledikten sonra cihazınızı kurabilir ve kabloyla kablosuz atabilirsiniz.
+Bu güvenlik bildirimlerini inceledikten sonra cihazınızı ayarlayabilir ve dağıtabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Veri Kutunuzu Ağır'ı kablolayın ve bağlayın](data-box-heavy-deploy-set-up.md)
+* [Kablo ve Data Box Heavy bağlama](data-box-heavy-deploy-set-up.md)
 
 

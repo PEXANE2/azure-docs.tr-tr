@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services geliştirme ortamınızı ayarlama | Microsoft Docs
-description: Bu makalede, Azure Medya Hizmetleri ile geliştirme ortamınızı nasıl ayarlayabileceğiniz açıklanmaktadır.
+description: Bu makalede, Azure Media Services ile geliştirme için ortamınızın nasıl ayarlanacağı açıklanır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 5ef9b3d6f13de70cdf2fff87d9aed0a8efc2b782
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74895796"
 ---
 # <a name="set-up-your-media-services-development-environment"></a>Media Services geliştirme ortamınızı ayarlama  
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Aşağıdaki adımlar, Azure Media Services ile geliştirmek için gerekli olan önkoşulları açıklar.
 

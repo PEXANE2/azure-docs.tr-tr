@@ -1,6 +1,6 @@
 ---
-title: Hyper-V VM'lerin Azure'a olağanüstü kurtarma durumu için Azure Site Kurtarma Dağıtım Planlayıcısı maliyet tahmin raporunu gözden geçirin| Microsoft Dokümanlar
-description: Bu makalede, Azure'da Hyper-V olağanüstü durum kurtarma için Azure Site Kurtarma Dağıtım Planlayıcısı oluşturulan maliyet tahmini raporunun nasıl gözden geçirilen açıklanmaktadır.
+title: Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için Azure Site Recovery Dağıtım Planlayıcısı maliyet tahmini raporunu gözden geçirin | Microsoft Docs
+description: Bu makalede, Azure 'da Hyper-V olağanüstü durum kurtarma için Azure Site Recovery Dağıtım Planlayıcısı üretilen maliyet tahmini raporunun nasıl gözden geçirkullanılacağı açıklanmaktadır.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60947239"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Dağıtım Planlayıcısı maliyet tahmini raporu 
@@ -56,7 +56,7 @@ Raporun tamamında, gri renkle işaretlenmiş hücreler salt okunurdur. Beyaz h�
 
 **Ağ**: DR gereksinimleri için ExpressRoute ve siteden siteye VPN maliyeti. 
 
-**Azure Site Kurtarma lisansı**: Tüm uyumlu VM'ler için Site Kurtarma lisans maliyeti. Ayrıntılı maliyet analizi tablosuna bir sanal makineyi el ile girdiyseniz, o sanal makine için de Site Recovery lisans maliyeti eklenir.
+**Azure Site Recovery lisansı**: tüm uyumlu sanal makineler için Site Recovery lisans maliyeti. Ayrıntılı maliyet analizi tablosuna bir sanal makineyi el ile girdiyseniz, o sanal makine için de Site Recovery lisans maliyeti eklenir.
 
 ### <a name="overall-dr-costs-by-states"></a>Durumlara göre genel DR maliyetleri
 Toplam DR maliyetleri, iki farklı duruma göre kategorilere ayrılır: Çoğaltma ve DR tatbikatı.
@@ -157,7 +157,7 @@ Sanal makineleri el ile eklemek için:
 
 **Toplam DR Tatbikatı maliyeti (ortalama)**: DR tatbikatlarının işlem ve depolama maliyeti.
 
-**Azure Site Kurtarma lisans maliyeti**: Site Kurtarma lisans maliyeti.
+**Azure Site Recovery lisans maliyeti**: Site Recovery lisans maliyeti.
 
 ## <a name="supported-target-regions"></a>Desteklenen hedef bölgeler
 Site Recovery Dağıtım Planlayıcısı aşağıdaki Azure bölgeleri için maliyet tahmini sağlar. Bölgeniz burada listelenmiyorsa, fiyatlandırması sizin bölgenize yakın olan aşağıdaki bölgelerden birini kullanabilirsiniz:
@@ -172,9 +172,9 @@ Site Recovery Dağıtım Planlayıcısı aşağıdaki para birimlerinin tümünd
 |ARS|Arjantin pesosu ($)||AUD|Avustralya doları ($)||BRL|Brezilya reali (R$)|
 |CAD|Kanada doları ($)||CHF|İsviçre frangı (chf)||DKK|Danimarka kronu (kr)|
 |EUR|Euro (€)||GBP|İngiliz Sterlini (£)||HKD|Hong Kong doları (HK$)|
-|IDR|Endonezya Rupisi (Rp)||INR|Hint rupisi (』)||JPY|Japon yeni (¥)|
-|KRW|Kore wonu (())||MXN|Meksika pesosu (MX$)||MYR|Malezya ringgiti (RM$)|
-|NOK|Norveç kronu (kr)||NZD|Yeni Zelanda doları ($)||RUB|Rus rublesi (руб)|
+|IDR|Endonezya Rupisi (Rp)||INR|Hint Rupisi (₹)||JPY|Japon yen (¥)|
+|KRW|Kore Wonu (₩)||MXN|Meksika pesosu (MX$)||MYR|Malezya ringgiti (RM$)|
+|NOK|Norveç kronu (kr)||NZD|Yeni Zelanda doları ($)||RUB|Rusça Rublesi (руб)|
 |SAR|Suudi riyali (SR)||SEK|İsveç kronu (kr)||TWD|Tayvan doları (NT$)|
 |TRY|Türk lirası (TL)||USD| ABD doları ($)||ZAR|Güney Afrika randı (R)|
 

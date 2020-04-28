@@ -1,118 +1,118 @@
 ---
-title: Azure'da otomatik ölçeklendirmeye başlayın
-description: Azure'da ayarlanan kaynak Web Uygulamanızı, Bulut Hizmetinizi, Sanal Makinenizi veya Sanal Makine Ölçeğinizi nasıl ölçeklendireceklerini öğrenin.
+title: Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
+description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makineyi veya sanal makine ölçek kümesini ölçeklendirmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 0a40496e4d496d0062c6ee7a6ab935c1ad9b35a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75396343"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure'da otomatik ölçeklendirmeyi kullanmaya başlama
-Bu makalede, Microsoft Azure portalında kaynağınız için Otomatik Ölçek ayarlarınızı nasıl ayarlayabilirsiniz.
+Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
 
-Azure Monitör otomatik ölçeklendirmesi yalnızca [Sanal Makine Ölçeği Kümeleri,](https://azure.microsoft.com/services/virtual-machine-scale-sets/) [Bulut Hizmetleri,](https://azure.microsoft.com/services/cloud-services/) [Uygulama Hizmeti - Web Uygulamaları](https://azure.microsoft.com/services/app-service/web/)ve [API Yönetimi hizmetleri](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)için geçerlidir.
+Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)için geçerlidir.
 
-## <a name="discover-the-autoscale-settings-in-your-subscription"></a>Aboneliğinizdeki Otomatik Ölçek ayarlarını keşfedin
-Azure Monitörü'nde Otomatik Ölçek'in geçerli olduğu tüm kaynakları keşfedebilirsiniz. Adım adım gözden geçirme için aşağıdaki adımları kullanın:
+## <a name="discover-the-autoscale-settings-in-your-subscription"></a>Aboneliğinizdeki otomatik ölçeklendirme ayarlarını bulma
+Azure Izleyici 'de otomatik ölçeklendirme için geçerli olan tüm kaynakları bulabilirsiniz. Adım adım yönergeler için aşağıdaki adımları kullanın:
 
-1. Azure [portalını açın.][1]
-1. Sol bölmedeki Azure Monitör simgesini tıklatın.
-  ![Azure Monitörünü Aç][2]
-1. Otomatik Ölçeklendirme'nin geçerli olduğu tüm kaynakları ve geçerli Otomatik Ölçek durumuyla birlikte görüntülemek için **Otomatik** Ölçek'i tıklatın.
-  ![Azure Monitör'de Otomatik Ölçeklendirmeyi Keşfedin][3]
+1. Azure portal açın [.][1]
+1. Sol bölmedeki Azure Izleyici simgesine tıklayın.
+  ![Azure Izleyici 'yi açın][2]
+1. Otomatik ölçeklendirme için geçerli olan tüm kaynakları görüntülemek için otomatik **ölçeklendirme** ' a tıklayın.
+  ![Azure Izleyici 'de otomatik ölçeklendirmeyi bulma][3]
 
-Belirli bir kaynak grubundaki kaynakları, belirli kaynak türlerini veya belirli bir kaynağı seçmek için listenin kapsamını genişletmek için en üstteki filtre bölmesini kullanabilirsiniz.
+Belirli bir kaynak grubundaki kaynakları, belirli kaynak türlerini veya belirli bir kaynağı seçmek için listenin üst kısmındaki Filtre bölmesini kullanabilirsiniz.
 
-Her kaynak için geçerli örnek sayısını ve Otomatik Ölçek durumunu bulacaksınız. Otomatik ölçek durumu şu olabilir:
+Her kaynak için geçerli örnek sayısını ve otomatik ölçeklendirme durumunu bulacaksınız. Otomatik ölçeklendirme durumu şu olabilir:
 
-- **Yapılandırılmamış**: Bu kaynak için henüz Otomatik Ölçeklendirme'yi etkinleştirmiş değil.
-- **Etkin**: Bu kaynak için Otomatik Ölçeklendirme'yi etkinleştirdin.
-- **Devre Dışı :** Bu kaynak için Otomatik Ölçek'i devre dışı bıraktınız.
+- **Yapılandırılmadı**: Bu kaynak Için otomatik ölçeklendirmeyi henüz etkinleştirmediyseniz.
+- **Etkin**: Bu kaynak Için otomatik ölçeklendirmeyi etkinleştirdiniz.
+- **Devre dışı**: Bu kaynak Için otomatik ölçeklendirmeyi devre dışı bırakmış olabilirsiniz.
 
-## <a name="create-your-first-autoscale-setting"></a>İlk Otomatik Ölçek ayarınızı oluşturun
+## <a name="create-your-first-autoscale-setting"></a>İlk otomatik ölçeklendirme ayarınızı oluşturma
 
-Şimdi ilk Otomatik Ölçek ayarınızı oluşturmak için adım adım basit bir gözden geçirme den geçelim.
+Şimdi ilk otomatik ölçeklendirme ayarınızı oluşturmak için basit bir adım adım izlenecek yol ile başlayalım.
 
-1. Azure Monitor'da **Otomatik Ölçeklendirme** bıçağını açın ve ölçeklendirmek istediğiniz bir kaynak seçin. (Aşağıdaki adımlar, bir web uygulamasıyla ilişkili bir Uygulama Hizmeti planı kullanır. [Azure'da ilk ASP.NET web uygulamanızı 5 dakikada oluşturabilirsiniz.][4])
-1. Geçerli örnek sayısının 1 olduğunu unutmayın. **Otomatik ölçeklendir'i etkinleştir'i**tıklatın.
-  ![Yeni web uygulaması için ölçek ayarı][5]
-1. Ölçek ayarı için bir ad sağlayın ve ardından **kural ekle'yi**tıklatın. Sağ tarafta bağlam bölmesi olarak açılan ölçek kuralı seçeneklerine dikkat edin. Varsayılan olarak, kaynağın CPU yüzdesi yüzde 70'i aşarsa, örnek sayınızı 1 ölçeklendirme seçeneği belirler. Varsayılan değerlerinde bırakın ve **Ekle'yi**tıklatın.
-  ![Bir web uygulaması için ölçek ayarı oluşturma][6]
-1. Şimdi ilk ölçek kuralınızı oluşturdunuz. UX'nin en iyi uygulamaları önerdiğini ve "En az bir ölçeğin kural altında olması önerilir" dediğini unutmayın. Bunu yapmak için:
+1. Azure Izleyici 'de **Otomatik ölçeklendirme** dikey penceresini açın ve ölçeklendirmek istediğiniz kaynağı seçin. (Aşağıdaki adımlarda bir Web uygulamasıyla ilişkili bir App Service planı kullanılır. [İlk ASP.NET Web uygulamanızı, 5 dakikada Azure 'da oluşturabilirsiniz.][4])
+1. Geçerli örnek sayısının 1 olduğunu unutmayın. **Otomatik ölçeklendirmeyi etkinleştir**' e tıklayın.
+  ![Yeni Web uygulaması için ölçek ayarı][5]
+1. Ölçek ayarı için bir ad girin ve ardından **Kural Ekle**' ye tıklayın. Sağ tarafta bağlam bölmesi olarak açan ölçek kuralı seçeneklerine dikkat edin. Bu, varsayılan olarak, kaynağın CPU yüzdesi yüzde 70 ' ü aşarsa, örnek sayınız 1 ' i ölçeklendirmeye yönelik seçeneği ayarlar. Varsayılan değerlerinde bırakın ve **Ekle**' ye tıklayın.
+  ![Web uygulaması için ölçek ayarı oluşturma][6]
+1. Şimdi ilk ölçek kuralınızı oluşturdunuz. UX en iyi uygulamaları önerdiğine ve "kuralda en az bir ölçeğe sahip olmanız önerilir." Bunu yapmak için:
 
     a. **Kural ekle**'ye tıklayın.
 
-    b. **Operatör'ün** **'den az'** olarak ayarla
+    b. **İşleci** **küçüktür olarak ayarlayın**.
 
-    c. **Eşik** **20'ye**ayarlayın.
+    c. **Eşiği** **20**olarak ayarlayın.
 
-    d. **İşlemi** **Sayısı'nı Azaltacak**şekilde ayarlayın
+    d. **Sayıyı sayısını azaltmak**için **işlemi** ayarlayın.
 
-   Cpu kullanımına göre ölçeklendirilebilen/ölçeklendirilebilen bir ölçek ayarını şimdi almalısınız.
-   ![CPU'ya dayalı ölçek][8]
-1. **Kaydet**'e tıklayın.
+   Artık CPU kullanımına göre ölçeklendirilmesi/ölçeklendirmeye yönelik bir ölçek ayarınız olmalıdır.
+   ![CPU 'ya göre ölçeklendirin][8]
+1. **Kaydet**’e tıklayın.
 
-Tebrikler! Şimdi, web uygulamanızı CPU kullanımına göre otomatik ölçeklendirmek için ilk ölçek ayarınızı başarıyla oluşturdunuz.
+Tebrikler! Artık, Web uygulamanızı CPU kullanımına göre otomatik olarak ölçeklendirmek için ilk ölçek ayarınızı başarıyla oluşturdunuz.
 
 > [!NOTE]
-> Sanal makine ölçeği kümesi veya bulut hizmeti rolüyle başlamak için aynı adımlar geçerlidir.
+> Aynı adımlar, bir sanal makine ölçek kümesi veya bulut hizmeti rolü ile çalışmaya başlamak için geçerlidir.
 
 ## <a name="other-considerations"></a>Diğer konular
-### <a name="scale-based-on-a-schedule"></a>Zamanlamaya dayalı ölçeklendirme
-CPU'ya dayalı ölçekle ek olarak, ölçeğinizi haftanın belirli günlerinde farklı ayarlayabilirsiniz.
+### <a name="scale-based-on-a-schedule"></a>Zamanlamaya göre ölçeklendirin
+CPU 'ya göre Ölçeklendirmeye ek olarak, ölçeklendirmenizi haftanın belirli günlerinde farklı şekilde ayarlayabilirsiniz.
 
-1. **Ölçek koşulu ekle'yi**tıklatın.
-1. Ölçek modunu ve kuralları ayarlama varsayılan koşulla aynıdır.
-1. Zamanlama için **belirli günleri yinele'yi** seçin.
+1. **Ölçek koşulu Ekle**' ye tıklayın.
+1. Ölçek modunu ve kuralları ayarlamak, varsayılan koşulla aynıdır.
+1. Zamanlama için **belirli günleri Yinele** ' yi seçin.
 1. Ölçek koşulunun uygulanması gereken günleri ve başlangıç/bitiş saatini seçin.
 
-![Zamanlamaya göre ölçek koşulu][9]
-### <a name="scale-differently-on-specific-dates"></a>Belirli tarihlerde farklı ölçeklendirme
-CPU'ya dayalı ölçekle ek olarak, ölçeğinizi belirli tarihler için farklı şekilde ayarlayabilirsiniz.
+![Zamanlamayı zamanlamaya göre ölçeklendirin][9]
+### <a name="scale-differently-on-specific-dates"></a>Belirli tarihlerde farklı ölçeklendirin
+CPU 'ya göre Ölçeklendirmeye ek olarak, ölçeklendirmenizi belirli tarihler için farklı şekilde ayarlayabilirsiniz.
 
-1. **Ölçek koşulu ekle'yi**tıklatın.
-1. Ölçek modunu ve kuralları ayarlama varsayılan koşulla aynıdır.
-1. Zamanlamanın **başlangıç/bitiş tarihlerini belirt'i** seçin.
-1. Ölçek koşulunun ne zaman uygulanması gerektiğini başlangıç/bitiş tarihlerini ve başlangıç/bitiş saatini seçin.
+1. **Ölçek koşulu Ekle**' ye tıklayın.
+1. Ölçek modunu ve kuralları ayarlamak, varsayılan koşulla aynıdır.
+1. Zamanlama için **Başlangıç/bitiş tarihlerini belirt** ' i seçin.
+1. Ölçek koşulunun uygulanması gereken başlangıç/bitiş tarihlerini ve başlangıç/bitiş saatini seçin.
 
-![Tarihleri temel alan ölçek koşulu][10]
+![Tarihlere göre ölçeği Ölçeklendir][10]
 
-### <a name="view-the-scale-history-of-your-resource"></a>Kaynağınızın ölçek geçmişini görüntüleme
-Kaynağınız yukarı veya aşağı ölçeklendirildiğinde, etkinlik günlüğünde bir olay günlüğe kaydedilir. **Run geçmişi** sekmesine geçerek kaynağınızın son 24 saatteki ölçek geçmişini görüntüleyebilirsiniz.
+### <a name="view-the-scale-history-of-your-resource"></a>Kaynağınızın ölçek geçmişini görüntüleyin
+Kaynağınız yukarı veya aşağı ölçeklendirildiğinde, etkinlik günlüğüne bir olay kaydedilir. **Çalışma geçmişi** sekmesine geçerek, son 24 saat için kaynağınızın ölçek geçmişini görüntüleyebilirsiniz.
 
 ![Çalıştırma geçmişi][11]
 
-Ölçek geçmişini (90 güne kadar) görüntülemek istiyorsanız, **daha fazla ayrıntıyı görmek için burayı tıklatın'ı**seçin. Etkinlik günlüğü açılır ve kaynağınız ve kategoriniz için otomatik ölçek önceden seçilir.
+Tüm ölçek geçmişini (90 güne kadar) görüntülemek istiyorsanız, **daha fazla ayrıntı görmek için buraya tıklayın ' ı**seçin. Etkinlik günlüğü açılır ve kaynak ve kategorim için otomatik ölçeklendirme önceden seçilir.
 
-### <a name="view-the-scale-definition-of-your-resource"></a>Kaynağınızın ölçek tanımını görüntüleme
-Otomatik ölçek bir Azure Kaynak Yöneticisi kaynağıdır. **JSON** sekmesine geçerek JSON'daki ölçek tanımını görüntüleyebilirsiniz.
+### <a name="view-the-scale-definition-of-your-resource"></a>Kaynağınızın ölçek tanımını görüntüleyin
+Otomatik ölçeklendirme bir Azure Resource Manager kaynağıdır. **JSON sekmesine geçerek** , JSON 'da ölçek tanımını görüntüleyebilirsiniz.
 
 ![Ölçek tanımı][12]
 
-Gerekirse JSON'da doğrudan değişiklik yapabilirsiniz. Bu değişiklikler, siz kaydedildikten sonra yansıtılır.
+Gerekirse JSON 'da doğrudan değişiklik yapabilirsiniz. Bu değişiklikler, kaydettikten sonra yansıtılır.
 
-### <a name="disable-autoscale-and-manually-scale-your-instances"></a>Otomatik ölçeklendirmeyi devre dışı bırakıp örneklerinizi el ile ölçeklendirin
-Geçerli ölçek ayarınızı devre dışı bırakıp kaynağınızı el ile ölçeklendirmek istediğiniz zamanlar olabilir.
+### <a name="disable-autoscale-and-manually-scale-your-instances"></a>Otomatik ölçeklendirmeyi devre dışı bırakma ve örneklerinizi el ile ölçeklendirme
+Geçerli ölçek ayarınızı devre dışı bırakmak ve kaynağınızı el ile ölçeklendirmek istediğiniz zamanlar olabilir.
 
-Üstteki **otomatik ölçeklendirmeyi devre dışı** aç düğmesini tıklatın.
-![Otomatik Ölçeği Devre Dışı][13]
+Üstteki **Otomatik ölçeklendirmeyi devre dışı bırak** düğmesine tıklayın.
+![Otomatik ölçeklendirmeyi devre dışı bırak][13]
 
 > [!NOTE]
-> Bu seçenek yapılandırmanızı devre dışı katıyor. Ancak, Otomatik Ölçeklendirme'yi yeniden etkinleştirdikten sonra geri alabilirsiniz.
+> Bu seçenek yapılandırmanızı devre dışı bırakır. Ancak otomatik ölçeklendirmeyi yeniden etkinleştirdikten sonra geri dönebilirsiniz.
 
-Artık ölçeklendirmek istediğiniz örnek sayısını el ile ayarlayabilirsiniz.
+Artık ölçeklendirmek istediğiniz örneklerin sayısını el ile ayarlayabilirsiniz.
 
-![Manuel ölçek ayarlama][14]
+![El ile ölçek ayarla][14]
 
-Otomatik **Ölçeklendir'i Etkinleştir'i** ve ardından **Kaydet'i**tıklatarak her zaman Otomatik Ölçeklendirme'ye dönebilirsiniz.
+**Otomatik ölçeklendirmeyi etkinleştir** ' i ve sonra **Kaydet**' e tıklayarak her zaman otomatik ölçeklendirmeyi geri dönebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Aboneliğinizdeki tüm Otomatik Ölçeklendirme motor işlemlerini izlemek için Etkinlik Günlüğü Uyarısı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [Aboneliğinizdeki tüm başarısız Otomatik Ölçeklendirme ölçeklendirme/ölçeklendirme işlemlerini izlemek için Etkinlik Günlüğü Uyarısı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [Aboneliğinizdeki tüm otomatik ölçeklendirme motoru işlemlerini izlemek için bir etkinlik günlüğü uyarısı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [Aboneliğinizde başarısız olan tüm otomatik ölçeklendirme ölçeği Ölçeklendirmesi/genişleme işlemlerini izlemek için bir etkinlik günlüğü uyarısı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 
 <!--Reference-->
 [1]:https://portal.azure.com

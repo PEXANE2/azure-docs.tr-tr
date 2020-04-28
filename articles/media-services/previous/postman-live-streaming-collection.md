@@ -1,6 +1,6 @@
 ---
-title: Azure Live Streaming REST aramaları için Postacı koleksiyonunu alma
-description: Bu makalede, Azure Media Services REST aramaları için Postacı koleksiyonunun tanımı nı sağlar.
+title: Azure canlı akış REST çağrıları için Postman koleksiyonunu içeri aktarın
+description: Bu makale, Azure Media Services REST çağrıları için Postman koleksiyonunun bir tanımını sağlar.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 897513abcc9f829f1cbdc315208e4451ae4dbc41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60637599"
 ---
-# <a name="import-a-postman-collection-with-live-streaming-operations"></a>Canlı Akış işlemleri yle postacı toplama alma 
+# <a name="import-a-postman-collection-with-live-streaming-operations"></a>Canlı akış işlemleri ile bir Postman koleksiyonunu içeri aktarın 
 
-Bu makalede, **Canlı Akış** Azure Medya Hizmetleri REST API'leri olarak adlandırdığı gruplanmış HTTP isteklerini içeren **Postacı** koleksiyonunun bir tanımı nı içerir. **Postacı'nın** Medya Hizmetleri REST API'lerini aramak için nasıl yapılandırılabildiği hakkında bilgi için, [Bkz. Medya Hizmetleri REST API çağrıları için Postacı'yı Yapılandır.](media-rest-apis-with-postman.md)
+Bu makale, **canlı akış** Azure Media Services REST API 'leri ÇAĞıRAN gruplandırılmış http Isteklerini Içeren **Postman** koleksiyonunun bir tanımını içerir. **Postman** 'ıN Media Services REST API 'leri çağırmak için kullanılabilmesi üzere nasıl yapılandırılacağı hakkında bilgi için, bkz. [Media Services Için postman yapılandırma REST API çağrıları](media-rest-apis-with-postman.md) öğreticisi.
 
 ```
 {

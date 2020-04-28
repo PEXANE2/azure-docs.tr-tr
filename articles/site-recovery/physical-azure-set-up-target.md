@@ -1,6 +1,6 @@
 ---
-title: Azure Site Kurtarma'da fiziksel sunucular için hedef ortamı ayarlama
-description: Bu makalede, Azure Site Kurtarma kullanarak fiziksel sunucuların olağanüstü durum kurtarma için hedef Azure ortamının nasıl ayarlanır.
+title: Azure Site Recovery ' deki fiziksel sunucular için hedef ortamı ayarlama
+description: Bu makalede, Azure Site Recovery kullanarak fiziksel sunucuların olağanüstü durum kurtarması için hedef Azure ortamının nasıl ayarlanacağı açıklanır.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
@@ -8,36 +8,36 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 685f04b27cd315b04ef5c45e155e825eebe2747b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73953893"
 ---
-# <a name="prepare-target-vmware-to-azure"></a>Hedef hazırlama (VMware to Azure)
+# <a name="prepare-target-vmware-to-azure"></a>Hedefi hazırla (VMware 'den Azure 'a)
 
-Bu makalede, Windows veya Linux çalıştıran fiziksel sunucuları (x64) Azure'da çoğaltmaya başlamak için Azure ortamınızı nasıl hazırlayacağınızı açıklanmaktadır.
+Bu makalede, Azure ortamınızı Windows veya Linux çalıştıran fiziksel sunucuları (x64) Azure 'a Çoğaltmaya başlamak üzere nasıl hazırlayacağınız açıklanır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Makale varsayar:
-- Fiziksel sunucularınızı korumak için bir Kurtarma Hizmetleri Kasası oluşturdunuz. [Azure portalından](https://portal.azure.com "Azure portalında")Bir Kurtarma Hizmetleri Kasası oluşturabilirsiniz.
-- Fiziksel [sunucuları](physical-azure-disaster-recovery.md) Azure'a çoğaltmak için şirket içi ortamınızı kurabilirsiniz.
+Makalede şunları varsayılmaktadır:
+- Fiziksel sunucularınızı korumak için bir kurtarma hizmetleri Kasası oluşturdunuz. [Azure Portal](https://portal.azure.com "Azure portal")bir kurtarma hizmetleri Kasası oluşturabilirsiniz.
+- [Şirket içi ortamınızı](physical-azure-disaster-recovery.md) fiziksel sunucuları Azure 'a çoğaltmak için ayarlayın.
 
-## <a name="prepare-target"></a>Hedefi hazırlama
+## <a name="prepare-target"></a>Hedefi hazırla
 
-**Adım 1 tamamladıktan sonra:Koruma hedef seçin** ve Adım **2:Kaynak hazırlayın,** **Adım 3 alınır: Hedef**
+**1. adımı tamamladıktan sonra koruma hedefini seçin** ve **Adım 2: kaynağı hazırla**, adım **3: hedef** ' e yönlendirilirsiniz
 
-![Hedefi hazırlama](./media/physical-azure-set-up-target/prepare-target-physical-to-azure.png)
+![Hedefi hazırla](./media/physical-azure-set-up-target/prepare-target-physical-to-azure.png)
 
-1. **Abonelik:** Açılan menüden, fiziksel sunucularınızı çoğaltmak istediğiniz Abonelik'i seçin.
-2. **Dağıtım Modeli:** Dağıtım modelini seçin (Klasik veya Kaynak Yöneticisi)
+1. **Abonelik:** Aşağı açılan menüden, fiziksel sunucularınızı çoğaltmak istediğiniz aboneliği seçin.
+2. **Dağıtım modeli:** Dağıtım modelini (klasik veya Kaynak Yöneticisi) seçin
 
-Seçilen dağıtım modeline göre, fiziksel sunucularınızı çoğaltmak ve başarısız olmak için hedef abonelikte en az bir uyumlu depolama hesabınız ve sanal ağınız olduğundan emin olmak için bir doğrulama çalıştırılır.
+Seçilen dağıtım modeline bağlı olarak, fiziksel sunucularınızın çoğaltılmasını ve yük devretmesini sağlamak için hedef abonelikte en az bir uyumlu depolama hesabınız ve sanal ağınızın olduğundan emin olmak üzere bir doğrulama çalıştırılır.
 
-Doğrulamalar başarıyla tamamlandıktan sonra, bir sonraki adıma geçmek için Tamam'ı tıklatın.
+Doğrulamalar başarıyla tamamlandıktan sonra, sonraki adıma geçmek için Tamam ' a tıklayın.
 
-Uyumlu bir Kaynak Yöneticisi depolama hesabınız veya sanal ağınız yoksa, sayfanın üst kısmındaki **+ Depolama Hesabı** veya + **Ağ** düğmelerini tıklatarak bir hesap oluşturabilirsiniz.
+Uyumlu bir Kaynak Yöneticisi depolama hesabınız veya sanal ağınız yoksa, sayfanın üst kısmındaki **+ depolama hesabı** veya **+ ağ** düğmelerine tıklayarak bir tane oluşturabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Çoğaltma ayarlarını yapılandırın.](vmware-azure-set-up-replication.md)
+[Çoğaltma ayarlarını yapılandırın](vmware-azure-set-up-replication.md).

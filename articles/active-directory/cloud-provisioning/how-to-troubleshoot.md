@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect bulut sağlama sorun giderme
-description: Bu makalede, bulut sağlama aracısıyla ortaya çıkabilecek sorunları nasıl giderikarşılayacakaçık.
+title: Azure AD Connect bulut sağlama sorunlarını giderme
+description: Bu makalede, bulut sağlama aracısında ortaya çıkabilecek sorunları nasıl giderebileceğiniz açıklanır.
 author: billmath
 ms.author: billmath
 manager: daveba
@@ -9,100 +9,100 @@ ms.topic: article
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
 ms.openlocfilehash: e41be4b76245f2567015eb0ede317830120ee61a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75549494"
 ---
-# <a name="cloud-provisioning-troubleshooting"></a>Bulut sağlama sorun giderme
+# <a name="cloud-provisioning-troubleshooting"></a>Bulut sağlama sorunlarını giderme
 
-Bulut sağlama birçok farklı şeye dokunur ve birçok farklı bağımlılıkları vardır. Bu geniş kapsam çeşitli sorunlara yol açabilir. Bu makale, bu sorunları gidermenize yardımcı olur. Odaklanmanız gereken tipik alanları, ek bilgileri nasıl toplayacaklarını ve sorunları izlemek için kullanabileceğiniz çeşitli teknikleri tanıtır.
+Bulut sağlama birçok farklı şeyi dokunduğunda birçok farklı bağımlılığı vardır. Bu geniş kapsamlı kapsam, çeşitli sorunlara göre daha fazla sorun verebilir. Bu makale, bu sorunları gidermenize yardımcı olur. Üzerinde odaklanmanız, ek bilgilerin toplanması ve sorunları izlemek için kullanabileceğiniz çeşitli teknikler için tipik alanlara odaklanırsınız.
 
 
-## <a name="common-troubleshooting-areas"></a>Sık karşılaşılan sorun giderme alanları
+## <a name="common-troubleshooting-areas"></a>Ortak sorun giderme alanı
 
 |Adı|Açıklama|
 |-----|-----|
-|[Aracı sorunları](#agent-problems)|Aracının doğru yüklendiğinden ve Azure Etkin Dizini (Azure AD) ile iletişim kurduğunu doğrulayın.|
+|[Aracı sorunları](#agent-problems)|Aracının doğru şekilde yüklendiğini ve Azure Active Directory (Azure AD) ile iletişim kuracağını doğrulayın.|
 |[Nesne eşitleme sorunları](#object-synchronization-problems)|Nesne eşitleme sorunlarını gidermek için sağlama günlüklerini kullanın.|
-|[Karantinaya alınmış sorunların sağlanması](#provisioning-quarantined-problems)|Karantina sorunlarını ve bunları nasıl düzelteceklerini anlayın.|
+|[Karantinaya alınan sorunları sağlama](#provisioning-quarantined-problems)|Karantina sorunlarını sağlamayı ve bunları nasıl düzelteceğinizi anlayın.|
 
 
 ## <a name="agent-problems"></a>Aracı sorunları
-Aracıyla doğrulamak istediğiniz ilk şeylerden bazıları şunlardır:
+Aracıda doğrulamak istediğiniz ilk şey şunlardır:
 
--  Yüklü mü?
--  Ajan yerel olarak çalışıyor mu?
--  Ajan geçitte mi?
--  Ajan sağlıklı olarak işaretlenmiş mi?
+-  Mi yüklendi?
+-  Aracı yerel olarak çalışıyor mu?
+-  Aracı portalda mı?
+-  Aracı sağlıklı olarak işaretlendi mi?
 
-Bu öğeler Azure portalında ve aracıyı çalıştıran yerel sunucuda doğrulanabilir.
+Bu öğeler Azure portal ve aracıyı çalıştıran yerel sunucu üzerinde doğrulanabilir.
 
-### <a name="azure-portal-agent-verification"></a>Azure portal aracısı doğrulaması
+### <a name="azure-portal-agent-verification"></a>Aracı doğrulama Azure portal
 
-Aracının Azure tarafından görüldüğünü ve sağlıklı olduğunu doğrulamak için aşağıdaki adımları izleyin.
+Aracının Azure tarafından görüleceği ve sağlıklı olduğundan emin olmak için aşağıdaki adımları izleyin.
 
 1. Azure Portal’da oturum açın.
-1. Solda Azure **Active Directory** > Azure**AD Connect'i**seçin. Merkezde, **hükmü yönet (önizleme) seçeneğini**belirleyin.
-1. Azure **AD Sağlama (önizleme)** ekranında **tüm aracıları gözden geçir'i**seçin.
+1. Sol tarafta **Azure Active Directory** > **Azure AD Connect**' yı seçin. Merkezinde **Yönet sağlama (Önizleme)** öğesini seçin.
+1. **Azure AD sağlama (Önizleme)** ekranında **tüm aracıları gözden geçir**' i seçin.
 
-   ![Tüm aracıları inceleyin](media/how-to-install/install7.png)</br>
+   ![Tüm aracıları gözden geçir](media/how-to-install/install7.png)</br>
  
-1. Şirket **içi sağlama aracıları** ekranında, yüklediğiniz aracıları görürsünüz. Söz konusu aracının orada olduğunu ve *Sağlıklı*olarak işaretlendiğini doğrulayın.
+1. **Şirket içi sağlama aracıları** ekranında, yüklediğiniz aracıları görürsünüz. Söz konusu aracının orada olduğunu ve *sağlıklı*olarak işaretlendiğinden emin olun.
 
    ![Şirket içi sağlama aracıları ekranı](media/how-to-install/install8.png)</br>
 
 ### <a name="verify-the-port"></a>Bağlantı noktasını doğrulama
 
-Azure'un port 443'te dinlediğini ve aracınızın bu bağlantı noktasıyla iletişim kurabileceğini doğrulamak için aşağıdaki aracı kullanın:
+Azure 'un 443 numaralı bağlantı noktasını dinlediğini ve aracınızın onunla iletişim kurabildiğini doğrulamak için aşağıdaki aracı kullanın:
 
 https://aadap-portcheck.connectorporttest.msappproxy.net/ 
 
-Bu test, aracılarınızın 443 portu üzerinden Azure ile iletişim kurabileceğini doğrular. Bir tarayıcı açın ve aracının yüklü olduğu sunucudan önceki URL'ye gidin.
+Bu test, aracılarınızın 443 numaralı bağlantı noktası üzerinden Azure ile iletişim kurabildiğini doğrular. Bir tarayıcı açın ve aracının yüklendiği sunucudan önceki URL 'ye gidin.
 
-![Port ulaşılabilirliğinin doğrulanması](media/how-to-install/verify2.png)
+![Bağlantı noktası erişilebilirliği doğrulaması](media/how-to-install/verify2.png)
 
 ### <a name="on-the-local-server"></a>Yerel sunucuda
 
 Aracının çalıştığını doğrulamak için aşağıdaki adımları izleyin.
 
-1. Aracı yüklü sunucuda, hizmetleri açarak ya ona yönlendirerek ya da **Start** > **Run** > **Services.msc'ye**giderek **.**
-1. **Hizmetler**altında, **Microsoft Azure AD Connect Agent Updater** ve **Microsoft Azure AD Connect Provisioning Agent'ın** orada olduğundan ve durumlarının *çalışmadığından*emin olun.
+1. Aracının yüklü olduğu sunucuda, bu hizmete giderek veya Hizmetleri**Çalıştır** > **. msc**' yi **Başlat** > ' a giderek **Hizmetler** ' i açın.
+1. **Hizmetler**' in altında **Microsoft Azure AD aracı güncelleştiricisi bağlama** ve **Microsoft Azure AD Connect sağlama aracısının** aynı olduğundan ve durumlarının *çalıştığından*emin olun.
 
    ![Hizmetler ekranı](media/how-to-troubleshoot/troubleshoot1.png)
 
 ### <a name="common-agent-installation-problems"></a>Ortak aracı yükleme sorunları
 
-Aşağıdaki bölümlerde bazı ortak aracı yükleme sorunları ve tipik çözümler açıklayınız.
+Aşağıdaki bölümlerde bazı yaygın aracı yükleme sorunları ve tipik çözümler açıklanır.
 
-#### <a name="agent-failed-to-start"></a>Aracı başlatılamamış
+#### <a name="agent-failed-to-start"></a>Aracı başlatılamadı
 
-Şu durumları belirten bir hata iletisi alabilirsiniz:
+Aşağıdakileri belirten bir hata iletisi alabilirsiniz:
 
-**'Microsoft Azure AD Connect Provisioning Aracısı' hizmeti başlatılamamış. Sistem hizmetlerini başlatmak için yeterli ayrıcalıklara sahip olduğunuzu doğrulayın.** 
+**' Microsoft Azure AD Connect sağlama Aracısı ' hizmeti başlatılamadı. Sistem hizmetlerini başlatmak için yeterli ayrıcalıklara sahip olduğunuzu doğrulayın.** 
 
-Bu sorun genellikle, yüklemeci (NT SERVICE\AADConnectProvisioningAgent) tarafından oluşturulan yerel NT Hizmeti oturum açma hesabına uygulanmasını engelleyen bir grup ilkesinden kaynaklanır. Bu izinlerin hizmeti başlatmak için gerekli olması gerekir.
+Bu sorun genellikle izinlerin yükleyicinin (NT SERVICE\AADConnectProvisioningAgent) tarafından oluşturulan yerel NT hizmeti oturum açma hesabına uygulanmasını önleyen bir grup ilkesi nedeniyle oluşur. Hizmeti başlatmak için bu izinler gereklidir.
 
-Bu sorunu gidermek için aşağıdaki adımları izleyin.
+Bu sorunu çözmek için aşağıdaki adımları izleyin.
 
-1. Yönetici hesabıyla sunucuda oturum açın.
-1. **Hizmetleri** aç, ona yönlendirerek veya **Başlat** > **Hizmetleri.msc'ye****Run** > giderek.
-1. **Hizmetler**altında, **Microsoft Azure AD Connect Provisioning**Aracısı'nı çift tıklatın.
-1. Oturum **Açma** sekmesinde, **bu hesabı** bir etki alanı yöneticisi olarak değiştirin. Ardından hizmeti yeniden başlatın. 
+1. Sunucuda yönetici hesabıyla oturum açın.
+1. Hizmetlere giderek veya Hizmetleri**Çalıştır** > **. msc** **' ye** > giderek **Hizmetleri** açın.
+1. **Hizmetler**' in altında, **Microsoft Azure AD sağlama Aracısı**' na çift tıklayın.
+1. **Oturum aç** sekmesinde **Bu hesabı** bir etki alanı yöneticisi olarak değiştirin. Ardından hizmeti yeniden başlatın. 
 
-   ![Giriş Sekmesi](media/how-to-troubleshoot/troubleshoot3.png)
+   ![Oturum açma sekmesi](media/how-to-troubleshoot/troubleshoot3.png)
 
-#### <a name="agent-times-out-or-certificate-is-invalid"></a>Aracı nın süreleri veya sertifikası geçersiz
+#### <a name="agent-times-out-or-certificate-is-invalid"></a>Aracı zaman aşımı veya sertifika geçersiz
 
 Aracıyı kaydetmeye çalıştığınızda aşağıdaki hata iletisini alabilirsiniz.
 
-![Zaman-out hata iletisi](media/how-to-troubleshoot/troubleshoot4.png)
+![Zaman aşımı hata iletisi](media/how-to-troubleshoot/troubleshoot4.png)
 
-Bu sorun genellikle aracının Karma Kimlik Hizmeti'ne bağlanamamasından kaynaklanır ve bir HTTP proxy'sini yapılandırmanızı gerektirir. Bu sorunu gidermek için giden proxy'yi yapılandırın. 
+Bu sorun genellikle aracının karma kimlik hizmetine bağlanamamasından kaynaklanır ve bir HTTP proxy 'si yapılandırmanızı gerektirir. Bu sorunu çözmek için bir giden proxy yapılandırın. 
 
-Geçici aracı giden bir proxy kullanımını destekler. Aracı config dosyasını düzenleyerek yapılandırabilirsiniz *C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe.config*. Kapanış `</configuration>` etiketinden hemen önce dosyanın sonuna doğru aşağıdaki satırları ekleyin.
-Değişkenleri `[proxy-server]` ve `[proxy-port]` proxy sunucu adınız ve bağlantı noktası değerlerinizle değiştirin.
+Sağlama Aracısı bir giden proxy 'nin kullanımını destekler. Bunu, *C:\Program Files\Microsoft Azure AD Connect sağlama Agent\AADConnectProvisioningAgent.exe.config*aracı yapılandırma dosyasını düzenleyerek yapılandırabilirsiniz. Aşağıdaki satırları, kapanış `</configuration>` etiketinden hemen öncesine dosyanın sonuna doğru ekleyin.
+Değişkenleri `[proxy-server]` ve `[proxy-port]` proxy sunucu adı ve bağlantı noktası değerlerinizle değiştirin.
 
 ```xml
     <system.net>
@@ -116,23 +116,23 @@ Değişkenleri `[proxy-server]` ve `[proxy-port]` proxy sunucu adınız ve bağl
     </system.net>
 ```
 
-#### <a name="agent-registration-fails-with-security-error"></a>Aracı kaydı güvenlik hatasıyla başarısız oldu
+#### <a name="agent-registration-fails-with-security-error"></a>Aracı kaydı güvenlik hatasıyla başarısız oluyor
 
-Bulut sağlama aracısını yüklediğinizde bir hata iletisi alabilirsiniz.
+Bulut sağlama aracısını yüklerken bir hata iletisi alabilirsiniz.
 
-Bu sorun genellikle aracının yerel PowerShell yürütme ilkeleri nedeniyle PowerShell kayıt komut dosyalarını çalıştıramamasını neden olur.
+Bu sorun genellikle aracının yerel PowerShell yürütme ilkeleri nedeniyle PowerShell kayıt betikleri yürütmesine neden olur.
 
-Bu sorunu gidermek için sunucudaki PowerShell yürütme ilkelerini değiştirin. Makine ve Kullanıcı ilkelerinin *Tanımsız* veya *Uzaktan İmzalı*olarak ayarlanmış olması gerekir. *Sınırsız*olarak ayarlanırlarsa, bu hatayı görürsünüz. Daha fazla bilgi için [PowerShell yürütme politikalarına](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)bakın. 
+Bu sorunu çözmek için sunucudaki PowerShell yürütme ilkelerini değiştirin. Makine ve kullanıcı ilkelerinin *tanımsız* veya *RemoteSigned*olarak ayarlanmış olması gerekir. *Kısıtlamasız*olarak ayarlandıklarında bu hatayı görürsünüz. Daha fazla bilgi için bkz. [PowerShell yürütme ilkeleri](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
 
 ### <a name="log-files"></a>Günlük dosyaları
 
-Varsayılan olarak, aracı en az hata iletileri yayar ve izleme bilgilerini yığını. Bu izleme günlüklerini *C:\ProgramData\Microsoft\Azure AD Connect Provisioning Agent\Trace*klasöründe bulabilirsiniz.
+Varsayılan olarak, aracı en az hata iletisi ve yığın izleme bilgilerini yayar. Bu izleme günlüklerini *C:\programdata\microsoft\azure AD Connect sağlama programı \ Trace*klasöründe bulabilirsiniz.
 
-Sorun giderme aracısı ile ilgili sorunlar için ek ayrıntılar toplamak için aşağıdaki adımları izleyin.
+Aracıyla ilgili sorunları gidermeye yönelik ek ayrıntılar toplamak için aşağıdaki adımları izleyin.
 
-1. Hizmeti durdurun **Microsoft Azure AD Connect Provisioning Aracısı.**
-1. Özgün config dosyasının bir kopyasını oluşturun: *C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe.config*.
-1. Varolan `<system.diagnostics>` bölümü aşağıdakilerle değiştirin ve tüm izleme iletileri *ProvAgentTrace.log*dosyasına gider.
+1. Hizmeti durdurma **Microsoft Azure AD sağlama aracısını bağlama**.
+1. Özgün yapılandırma dosyasının bir kopyasını oluşturun: *C:\Program Files\Microsoft Azure AD Connect sağlama Agent\AADConnectProvisioningAgent.exe.config*.
+1. Var olan `<system.diagnostics>` bölümü aşağıdaki ile değiştirin ve tüm Izleme iletileri *ProvAgentTrace. log*dosyasına gider.
 
    ```xml
      <system.diagnostics>
@@ -155,52 +155,52 @@ Sorun giderme aracısı ile ilgili sorunlar için ek ayrıntılar toplamak için
      </system.diagnostics>
     
    ```
-1. Hizmeti **başlatın Microsoft Azure AD Connect Provisioning Agent.**
-1. Dosyayı takip etmek ve sorunları hata ayıklamak için aşağıdaki komutu kullanın. 
+1. Hizmeti başlatın **Microsoft Azure AD sağlama aracısına bağlanın**.
+1. Dosya ve hata ayıklama sorunlarını ayıklamak için aşağıdaki komutu kullanın. 
     ```
     Get-Content “C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log” -Wait
     ```
 ## <a name="object-synchronization-problems"></a>Nesne eşitleme sorunları
 
-Aşağıdaki bölümde sorun giderme nesnesi eşitleme hakkında bilgi içerir.
+Aşağıdaki bölümde, nesne eşitlemeyle ilgili sorun giderme hakkında bilgiler yer almaktadır.
 
 ### <a name="provisioning-logs"></a>Sağlama günlükleri
 
-Azure portalında, madde eşitleme sorunlarını izleme ve sorun giderme de yardımcı olmak için günlükleri sağlama kullanılabilir. Günlükleri görüntülemek için **Günlükler'i**seçin.
+Azure portal, sağlama günlükleri, nesne eşitleme sorunlarını izlemeye ve sorun gidermenize yardımcı olmak için kullanılabilir. Günlükleri görüntülemek için **Günlükler**' i seçin.
 
 ![Günlükler düğmesi](media/how-to-troubleshoot/log1.png)
 
-Günlükleri sağlama, şirket içi Active Directory ortamınız ile Azure arasında eşitlenen nesnelerin durumu hakkında zengin bir bilgi sağlar.
+Sağlama günlükleri, şirket içi Active Directory ortamınız ile Azure arasında eşitlenen nesnelerin durumu hakkında çok fazla bilgi sağlar.
 
-![Günlükleri sağlama ekranı](media/how-to-troubleshoot/log2.png)
+![Sağlama günlükleri ekranı](media/how-to-troubleshoot/log2.png)
 
-Sayfanın üst kısmındaki açılır kutuları kullanarak görünümü tarihler gibi belirli sorunlarda sıfıra filtreleyebilirsiniz. Ek bilgileri görmek için tek bir olayı çift tıklatın.
+Sayfanın en üstündeki açılan kutuları, tarihler gibi belirli sorunlarda görünümü sıfıra filtrelemek için kullanabilirsiniz. Ek bilgi görmek için tek bir olaya çift tıklayın.
 
-![Günlükleri açılır kutu bilgilerini sağlama](media/how-to-troubleshoot/log3.png)
+![Sağlama günlükleri açılan kutusu bilgileri](media/how-to-troubleshoot/log3.png)
 
-Bu bilgiler ayrıntılı adımlar sağlar ve eşitleme sorununun nerede oluştuğunu. Bu şekilde, sorunun tam yerini belirleyebilirsiniz.
+Bu bilgiler, ayrıntılı adımlar ve eşitleme sorununun nerede oluştuğunu sağlar. Bu şekilde, sorunun tam olarak bulunduğu noktayı bir arada kullanabilirsiniz.
 
 
-## <a name="provisioning-quarantined-problems"></a>Karantinaya alınmış sorunların sağlanması
+## <a name="provisioning-quarantined-problems"></a>Karantinaya alınan sorunları sağlama
 
-Bulut sağlama yapılandırmanızın durumunu izler ve sağlıksız nesneleri karantina durumuna yerleştirir. Hedef sisteme karşı yapılan çağrıların çoğu veya tümü bir hata nedeniyle sürekli olarak başarısız olursa, örneğin geçersiz yönetici kimlik bilgileri, sağlama işi karantinaolarak işaretlenir.
+Bulut sağlama, yapılandırmanızın sistem durumunu izler ve sağlıksız nesneleri karantina durumuna koyar. Hedef sisteme karşı yapılan çağrıların çoğu veya hepsi sürekli olarak hata nedeniyle başarısız olursa, örneğin, geçersiz yönetici kimlik bilgileri, sağlama işi karantinaya alındı olarak işaretlenir.
 
 ![Karantina durumu](media/how-to-troubleshoot/quarantine1.png)
 
-Durumu seçerek, karantina hakkında ek bilgiler görebilirsiniz. Hata kodunu ve iletiyi de edinebilirsiniz.
+Durumu seçerek, karantinaya alma hakkında daha fazla bilgi görebilirsiniz. Hata kodunu ve iletiyi de elde edebilirsiniz.
 
-![Karantina durum bilgileri](media/how-to-troubleshoot/quarantine2.png)
+![Karantina durumu bilgileri](media/how-to-troubleshoot/quarantine2.png)
 
-### <a name="resolve-a-quarantine"></a>Karantinayı çözme
+### <a name="resolve-a-quarantine"></a>Karantinayı çözümle
 
-- Sağlama işini yeniden başlatmak için Azure portalını kullanın. Aracı yapılandırma sayfasında, **yeniden başlat'ı'nı**seçin.
+- Sağlama işini yeniden başlatmak için Azure portal kullanın. Aracı yapılandırması sayfasında, **sağlamayı yeniden Başlat**' ı seçin.
 
-  ![Sağlamayı yeniden başlatma](media/how-to-troubleshoot/quarantine3.png)
+  ![Sağlamayı yeniden Başlat](media/how-to-troubleshoot/quarantine3.png)
 
-- Sağlama işini yeniden başlatmak için Microsoft [Graph'ı](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)kullanın. Yeniden başlatacağınız şey üzerinde tam kontrole sahip olacaksınız. Temizlemeyi seçebilirsiniz:
-  - Escrow, karantina durumuna doğru tahakkuk eden emanet sayacını yeniden başlatmak için.
-  - Karantina, uygulamayı karantinadan çıkarmak için.
-  - Filigran. 
+- [Sağlama işini yeniden başlatmak](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)için Microsoft Graph kullanın. Yeniden başlatdıklarınız üzerinde tam denetime sahip olacaksınız. Şunları temizleyebilirsiniz:
+  - Et, karantina durumuna doğru tahakkuk eden Emanet sayacını yeniden başlatacak.
+  - Karantina, uygulamayı karantinadan kaldırma.
+  - Fli. 
   
   Aşağıdaki isteği kullanın:
  

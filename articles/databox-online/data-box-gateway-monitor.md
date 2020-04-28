@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Kutusu Ağ Geçidi cihazınızı izleyin | Microsoft Dokümanlar
-description: Azure Veri Kutusu Ağ Geçidinizi izlemek için Azure portalının ve yerel web Kullanıcı Arabirimi'nin nasıl kullanılacağını açıklar.
+title: Azure Data Box Gateway cihazınızı izleme | Microsoft Docs
+description: Azure Data Box Gateway izlemek için Azure portal ve yerel Web Kullanıcı arabiriminin nasıl kullanılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,24 +9,24 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 61da2454d6a72d43a7b4600d7ea85e6a3f82958f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60755086"
 ---
-# <a name="monitor-your-azure-data-box-gateway"></a>Azure Veri Kutusu Ağ Geçidinizi Izleyin
+# <a name="monitor-your-azure-data-box-gateway"></a>Azure Data Box Gateway izleyin
 
-Bu makalede, Azure Veri Kutusu Ağ Geçidiniznasıl izlenir. Cihazınızı izlemek için Azure portalını veya yerel web kullanıcı arabirimi'ni kullanabilirsiniz. Aygıt olaylarını görüntülemek, uyarıları yapılandırmak ve yönetmek ve ölçümleri görüntülemek için Azure portalını kullanın.
+Bu makalede Azure Data Box Gateway nasıl izleneceği açıklanır. Cihazınızı izlemek için Azure portal veya yerel Web Kullanıcı arabirimi ' ni kullanabilirsiniz. Cihaz olaylarını görüntülemek, uyarıları yapılandırmak ve yönetmek ve ölçümleri görüntülemek için Azure portal kullanın.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Aygıt olaylarını ve ilgili uyarıları görüntüleme
-> * Cihazınızın kapasite ve işlem ölçümlerini görüntüleme
+> * Cihaz olaylarını ve ilgili uyarıları görüntüleme
+> * Cihazınız için kapasite ve işlem ölçümlerini görüntüleme
 > * Uyarıları yapılandırma ve yönetme
 
-## <a name="view-device-events"></a>Cihaz olaylarını görüntüleme
+## <a name="view-device-events"></a>Cihaz olaylarını görüntüle
 
 [!INCLUDE [Supported OS for clients connected to device](../../includes/data-box-edge-gateway-view-device-events.md)]
 

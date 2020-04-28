@@ -1,6 +1,6 @@
 ---
-title: Azure portalını kullanarak medya işlemeyi ölçeklendirin | Microsoft Dokümanlar
-description: Bu öğretici, Azure portalını kullanarak ortam işlemeyi ölçekleme adımlarında size yol açar.
+title: Azure portal kullanarak medya işlemeyi ölçeklendirin | Microsoft Docs
+description: Bu öğretici, Azure portal kullanarak medya işlemeyi ölçeklendirme adımlarında size yol gösterir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: c840764dc978a8dacb3450c0aca5e5d93284b8a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61127558"
 ---
 # <a name="change-the-reserved-unit-type"></a>Ayrılmış birim türünü değiştirme
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
 > * [Portal](media-services-portal-scale-media-processing.md)
-> * [Geri kalanı](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
@@ -33,31 +33,31 @@ ms.locfileid: "61127558"
 
 ## <a name="overview"></a>Genel Bakış
 
-Media Services hesabı bir Ayrılmış Birim Türüyle ilişkilendirilir ve bu da medya işleme görevlerinizin ne hızda işleneceğini belirler. Aşağıdaki ayrılmış birim türleri arasından seçim yapabilirsiniz: **S1**, **S2**, veya **S3**. Örneğin, aynı kodlama işi **S2** ayrılmış birim türünü kullandığınızda **S1** türüne göre daha hızlı çalışır.
+Media Services hesabı bir Ayrılmış Birim Türüyle ilişkilendirilir ve bu da medya işleme görevlerinizin ne hızda işleneceğini belirler. Şu ayrılmış birim türleri arasından seçim yapabilirsiniz: **S1**, **S2**veya **S3**. Örneğin, aynı kodlama işi **S2** ayrılmış birim türünü kullandığınızda **S1** türüne göre daha hızlı çalışır.
 
-Ayrılmış birim türünü belirtmenin yanı sıra, hesabınızı Ayrılmış **Birimler** (RUS) ile birlikte sağlamanızı belirtebilirsiniz. Sağlanan RU sayısı, verili bir hesapta eşzamanlı olarak işlenebilecek medya görevlerinin sayısını belirler.
+Ayrılmış birim türünü belirtmenin yanı sıra, hesabınızı **ayrılmış birimler** (ru) ile sağlamayı belirtebilirsiniz. Sağlanan RU sayısı, verili bir hesapta eşzamanlı olarak işlenebilecek medya görevlerinin sayısını belirler.
 
 >[!NOTE]
 >RU, tüm medya işlemesini paralel hale getirmek için çalışır ve Azure Media Indexer’ın kullanıldığı dizin oluşturma işleri de buna dahildir. Bununla birlikte kodlamadan farklı olarak, dizin oluşturma işleri daha hızlı ayrılmış birimlerde daha hızlı işlenmez.
 
 > [!IMPORTANT]
-> Medya işleme konusunu ölçekleme hakkında daha fazla bilgi almak için [genel bakış](media-services-scale-media-processing-overview.md) konusunu gözden geçirin.
+> Medya işleme konusunu ölçeklendirme hakkında daha fazla bilgi edinmek için [genel bakış](media-services-scale-media-processing-overview.md) konusunu gözden geçirdiğinizden emin olun.
 > 
 > 
 
-## <a name="scale-media-processing"></a>Medya işlemeyi ölçeklendirin
+## <a name="scale-media-processing"></a>Medya işlemeyi ölçeklendirme
 Ayrılmış birim türünü ve ayrılmış birim sayısını değiştirmek için aşağıdakileri yapın:
 
 1. [Azure portalında](https://portal.azure.com/) Azure Media Services hesabınızı seçin.
-2. **Ayarlar** penceresinde, **Ortam ayrılmış birimleri**seçin.
+2. **Ayarlar** penceresinde, **medya ayrılmış birimleri**' ni seçin.
    
-    Seçili ayrılmış birim türü için ayrılmış birim sayısını değiştirmek için ekranın üst kısmındaki **Ortam Hizmet Birimleri** kaydırıcısını kullanın.
+    Seçilen ayrılmış birim türü için ayrılan birim sayısını değiştirmek için, ekranın üst kısmındaki **medyaya sunulan birimler** kaydırıcısını kullanın.
    
-    **AYRıLMıŞ Bİrİm TÜRÜNÜ**değiştirmek **için, ayrılmış işleme birimlerinin hızı** çubuğuna tıklayın. Ardından, ihtiyacınız olan fiyatlandırma katmanını seçin: S1, S2 veya S3.
+    **Ayrılmış bırım türünü**değiştirmek için **ayrılan Işleme birimleri çubuğunun hızına** tıklayın. Ardından, ihtiyacınız olan fiyatlandırma katmanını seçin: S1, S2 veya S3.
    
 3. Yaptığınız değişiklikleri kaydetmek için KAYDET düğmesine basın.
    
-    SAVE tuşuna bastığınızda yeni ayrılmış birimler ayrılır.
+    Kaydet 'e bastığınızda yeni ayrılmış birimler ayrılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Media Services öğrenme yollarını gözden geçirin.

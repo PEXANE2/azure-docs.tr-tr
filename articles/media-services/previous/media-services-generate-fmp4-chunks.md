@@ -1,6 +1,6 @@
 ---
-title: FMP4 öbeklerini oluşturan bir Azure Medya Hizmetleri kodlama görevi oluşturma | Microsoft Dokümanlar
-description: Bu konu, fMP4 öbeklerini oluşturan bir kodlama görevinin nasıl oluşturulacağını gösterir. Bu görev Media Encoder Standard veya Media Encoder Premium İş Akışı kodlayıcısı ile kullanıldığında, çıktı varlığı ISO MP4 dosyaları yerine fMP4 parçaları içerir.
+title: FMP4 öbekleri üreten Azure Media Services Encoding görevi oluşturma | Microsoft Docs
+description: Bu konuda, fMP4 öbekleri oluşturan bir kodlama görevinin nasıl oluşturulacağı gösterilmektedir. Bu görev Media Encoder Standard veya Media Encoder Premium Workflow kodlayıcı ile kullanıldığında, çıkış varlığı ISO MP4 dosyaları yerine fMP4 öbekleri içerecektir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 48c09a6100586c0c99f3d54f9708c770488c681f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463876"
 ---
-#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>fMP4 parçaları oluşturan bir kodlama görevi oluşturma
+#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>FMP4 öbekleri oluşturan bir kodlama görevi oluşturma
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, ISO MP4 dosyaları yerine parçalanmış MP4 (fMP4) parçaları oluşturan bir kodlama görevinasıl oluşturulacağı gösterilmektedir. fMP4 parçaları oluşturmak için, bir kodlama görevi oluşturmak ve ayrıca bu kod snippet gösterildiği gibi **AssetFormatOption.AdaptiveStreaming** seçeneğini belirtmek için **Media Encoder Standard** veya Media **Encoder Premium İş Akışı** kodlayıcısını kullanın:  
+Bu makalede ISO MP4 dosyaları yerine parçalanmış MP4 (fMP4) öbekleri oluşturan bir kodlama görevinin nasıl oluşturulacağı gösterilmektedir. FMP4 öbekleri oluşturmak için, bir kodlama görevi oluşturmak ve ayrıca bu kod parçacığında gösterildiği gibi **Assetformatoption. Uyarlantivestreaming** seçeneğini belirtmek için **Media Encoder Standard** veya **Media Encoder Premium Workflow** Kodlayıcısı kullanın:  
     
 ```csharp
     task.OutputAssets.AddNew(@"Output Asset containing fMP4 chunks", 
@@ -32,16 +32,16 @@ Bu makalede, ISO MP4 dosyaları yerine parçalanmış MP4 (fMP4) parçaları olu
             formatOption: AssetFormatOption.AdaptiveStreaming);
 ```
 
-## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Medya Hizmetleri ile Kodlama .NET SDK
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Media Services .NET SDK ile kodlama
 
-Aşağıdaki kod örneği, aşağıdaki görevleri gerçekleştirmek için Medya Hizmetleri .NET SDK'yı kullanır:
+Aşağıdaki kod örneği aşağıdaki görevleri gerçekleştirmek için Media Services .NET SDK kullanır:
 
-- Kodlama işi oluşturun.
-- **Media Encoder Standart kodlayıcısına** başvurun.
-- İşe bir kodlama görevi ekleyin ve **Uyarlanabilir Akış** hazır kümesini kullanmayı belirtin. 
-- FMP4 parçaları ve bir .ism dosyası içeren bir çıktı kıymeti oluşturun.
-- İş ilerlemesini denetlemek için bir olay işleyicisi ekleyin.
-- İşi gönderin.
+- Bir kodlama işi oluşturun.
+- **Media Encoder Standard** Kodlayıcısı için bir başvuru alın.
+- İşe bir kodlama görevi ekleyin ve **uyarlamalı akış** ön ayarını kullanmayı belirtin. 
+- FMP4 öbekleri ve. ISM dosyasını içerecek bir çıkış varlığı oluşturun.
+- İşin ilerlemesini denetlemek için bir olay işleyicisi ekleyin.
+- İşi gönder.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio projesi oluşturup yapılandırma
 
@@ -177,5 +177,5 @@ namespace AdaptiveStreaming
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-[Medya Hizmetleri Kodlama Genel Bakış](media-services-encode-asset.md)
+[Media Services kodlamaya genel bakış](media-services-encode-asset.md)
 

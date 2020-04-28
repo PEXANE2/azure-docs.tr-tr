@@ -1,34 +1,34 @@
 ---
-title: Azure İşlevi'nden gelen geri dönüş değerini kullanma
-description: Azure İşlevleri için iade değerlerini yönetmeyi öğrenin
+title: Azure Işlevinden dönüş değeri kullanma
+description: Azure Işlevleri için dönüş değerlerini yönetmeyi öğrenin
 author: craigshoemaker
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74480582"
 ---
-# <a name="using-the-azure-function-return-value"></a>Azure İşlevi return değerini kullanma
+# <a name="using-the-azure-function-return-value"></a>Azure Işlevi dönüş değerini kullanma
 
-Bu makalede, bir işlev içinde iade değerlerinin nasıl çalıştığı açıklanmaktadır.
+Bu makalede, dönüş değerlerinin bir işlev içinde nasıl çalıştığı açıklanmaktadır.
 
-İade değeri olan dillerde, bir işlev [çıktısını](./functions-triggers-bindings.md#binding-direction) return value'a bağlayabilirsiniz:
+Dönüş değerine sahip dillerde bir işlev [Çıkış bağlamasını](./functions-triggers-bindings.md#binding-direction) bir dönüş değerine bağlayabilirsiniz:
 
-* C# sınıfı kitaplığında, çıktı bağlama özniteliğini yöntem döndürme değerine uygulayın.
-* Java'da, çıktı bağlama ek açıklamasını işlev yöntemine uygulayın.
-* Diğer dillerde, `name` *işlevi.json* özelliği `$return`ni ayarlayın.
+* C# sınıf kitaplığında, çıkış bağlama özniteliğini yöntem dönüş değerine uygulayın.
+* Java 'da, çıkış bağlama ek açıklamasını Function yöntemine uygulayın.
+* Diğer dillerde, `name` *function. JSON* içindeki özelliğini olarak `$return`ayarlayın.
 
-Birden çok çıktı bağlaması varsa, bunlardan yalnızca biri için iade değerini kullanın.
+Birden çok çıkış bağlaması varsa, bunlardan yalnızca biri için dönüş değerini kullanın.
 
-C# ve C# komut dosyasında, çıktı bağlamasına `out` veri göndermenin alternatif yolları parametreler ve [toplayıcı nesnelerdir.](functions-reference-csharp.md#writing-multiple-output-values)
+C# ve C# komut dosyasında, çıkış bağlamalarına veri göndermenin alternatif yolları `out` parametreler ve [toplayıcı nesneleridir](functions-reference-csharp.md#writing-multiple-output-values).
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
-İşte bir çıktı bağlama için geri dönüş değerini kullanan C# kodu ve ardından bir async örneği:
+Aşağıda, bir çıkış bağlaması için dönüş değerini kullanan ve ardından zaman uyumsuz bir örnek olan C# kodu verilmiştir:
 
 ```cs
 [FunctionName("QueueTrigger")]
@@ -52,9 +52,9 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
+# <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-*Function.json* dosyasındaki çıktı bağlama:
+Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
 
 ```json
 {
@@ -65,7 +65,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-İşte C# komut dosyası kodu, ardından bir async örneği:
+Aşağıda, bir zaman uyumsuz örnek tarafından izlenen C# betik kodu verilmiştir:
 
 ```cs
 public static string Run(WorkItem input, ILogger log)
@@ -87,7 +87,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 
 # <a name="f"></a>[F#](#tab/fsharp)
 
-*Function.json* dosyasındaki çıktı bağlama:
+Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
 
 ```json
 {
@@ -98,7 +98,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-İşte F# kodu:
+F # kodu aşağıda verilmiştir:
 
 ```fsharp
 let Run(input: WorkItem, log: ILogger) =
@@ -107,9 +107,9 @@ let Run(input: WorkItem, log: ILogger) =
     json
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-*Function.json* dosyasındaki çıktı bağlama:
+Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
 
 ```json
 {
@@ -120,7 +120,7 @@ let Run(input: WorkItem, log: ILogger) =
 }
 ```
 
-JavaScript'te iade değeri aşağıdakiler için `context.done`ikinci parametrede geçer:
+JavaScript 'te, dönüş değeri için `context.done`ikinci parametreye gider:
 
 ```javascript
 module.exports = function (context, input) {
@@ -132,7 +132,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-*Function.json* dosyasındaki çıktı bağlama:
+Bu, *function. JSON* dosyasında çıkış bağlaması şöyledir:
 
 ```json
 {
@@ -142,7 +142,7 @@ module.exports = function (context, input) {
     "path": "output-container/{id}"
 }
 ```
-Python kodu aşağıdavelvere vermiştir:
+Python kodu aşağıda verilmiştir:
 
 ```python
 def main(input: azure.functions.InputStream) -> str:
@@ -155,7 +155,7 @@ def main(input: azure.functions.InputStream) -> str:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Çıktı bağlama için iade değerini kullanan Java kodu aşağıda veda eder:
+Aşağıda, bir çıkış bağlaması için dönüş değerini kullanan Java kodu verilmiştir:
 
 ```java
 @FunctionName("QueueTrigger")
@@ -176,4 +176,4 @@ public static String run(
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure İşlevlerini bağlama hatalarını işleme](./functions-bindings-errors.md)
+> [Azure Işlevleri bağlama hatalarını işleme](./functions-bindings-errors.md)

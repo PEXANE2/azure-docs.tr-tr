@@ -1,6 +1,6 @@
 ---
-title: Azure Sitesi Kurtarma Dağıtım Planlayıcısı'ndaki maliyet tahminlerini gözden geçirin
-description: Bu makalede, VMware olağanüstü durum kurtarma için Azure Site Kurtarma Dağıtım Planlayıcısı'ndaki maliyet tahminlerinin nasıl gözden geçirilen anlatılmaktadır.
+title: Azure Site Recovery Dağıtım Planlayıcısı maliyet tahminleri gözden geçirin
+description: Bu makalelerde, VMware olağanüstü durum kurtarma için Azure Site Recovery Dağıtım Planlayıcısı maliyet tahminleri gözden geçirilmesi açıklanmaktadır.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
 ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73953337"
 ---
-# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>VMware Dağıtım Planlayıcısındaki maliyet tahminlerini gözden geçirme 
+# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>VMware Dağıtım Planlayıcısı maliyet tahminleri gözden geçirin 
 
 Dağıtım planlayıcısı raporu, [Öneriler](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) sayfalarında maliyet tahmini özeti ve Maliyet Tahmini sayfasında da ayrıntılı maliyet analizi sağlar. Sanal makine başına ayrıntılı maliyet analizi içerir. 
 
 >[!Note]
->Dağıtım planlayıcısı aracı v2.5'in geçerli sürümü, Yönetilen Disklere çoğaltma sağlayan VM'ler için maliyet tahmini sağlar.
+>Dağıtım planlayıcısı aracı v 2.5 ' nin geçerli sürümü, yönetilen disklere çoğaltılan VM 'Ler için maliyet tahmini sağlar.
 
 ### <a name="cost-estimation-summary"></a>Maliyet tahmini özeti 
 Grafta, seçtiğiniz hedef bölgede ve rapor oluşturma için belirttiğiniz para biriminde Azure'a tahmini toplam olağanüstü durum kurtarma (DR) maliyeti gösterilir.
@@ -77,7 +77,7 @@ Gereksinimlerinize göre uygun ayarı seçin.
 
 **VPN Ağ Geçidi**: Ortamınızda varsa, VPN Ağ Geçidi'ni seçin. Varsayılan olarak, Yok değeri gösterilir.
 
-**Hedef Bölge**: DR için belirtilen Azure bölgesi. Raporda işlem, depolama, ağ ve lisans için kullanılan fiyat, söz konusu bölgeye ilişkin Azure fiyatına bağlıdır. 
+**Hedef bölge**: Dr Için belirtilen Azure bölgesi. Raporda işlem, depolama, ağ ve lisans için kullanılan fiyat, söz konusu bölgeye ilişkin Azure fiyatına bağlıdır. 
 
 ### <a name="vm-running-on-azure"></a>Azure üzerinde çalıştırılan sanal makine
 DR için Azure üzerinde çalıştırılan etki alanı denetleyiciniz, DNS sanal makineniz veya Always On Kullanılabilirlik Grupları içeren SQL Server sanal makineniz varsa, toplam DR maliyetinde işlem maliyetlerinin dikkate alınması için sanal makinelerin sayısını sağlayabilirsiniz. 
@@ -122,7 +122,7 @@ Sanal makineleri el ile eklemek için:
 
 **Depolama türü**: Sanal makine tarafından kullanılan depolamanın türü. Bu, standart veya premium depolamadır.
 
-**VM toplam depolama boyutu (GB)**: Kaynak VM'nin toplam depolama alanıdır.
+**VM toplam depolama alanı boyutu (GB)**: kaynak VM 'nin toplam depolaması.
 
 **Yıllık DR Tatbikatları sayısı**: Bir yılda gerçekleştirdiğiniz DR Tatbikatlarının sayısı. Varsayılan olarak, yılda 4 kez gerçekleştirilir. Belirli sanal makineler için süreyi değiştirebilir veya en üst satıra yeni bir değer girip 'Tümüne uygula' düğmesine tıklayarak yeni değerin tüm sanal makinelere uygulanmasını sağlayabilirsiniz. Yıllık DR Tatbikatları sayısı ve her DR Tatbikatının süresi temelinde, toplam DR Tatbikatı maliyeti hesaplanır.  
 

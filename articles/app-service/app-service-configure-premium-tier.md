@@ -1,33 +1,33 @@
 ---
 title: PremiumV2 katmanını yapılandırma
-description: Yeni PremiumV2 fiyatlandırma katmanına ölçekleyerek Azure Uygulama Hizmeti'ndeki web, mobil ve API uygulamanız için nasıl daha iyi performans sergileyip daha iyi performans sergileyerek nasıl daha iyi performans sergileyip daha iyi performans sergileyerek öğrenin.
+description: Yeni PremiumV2 fiyatlandırma katmanına ölçeklenerek Azure App Service Web, mobil ve API uygulamanız için daha iyi performans hakkında bilgi edinin.
 keywords: app service, azure app service, ölçek, ölçeklenebilir, app service planı, app service maliyeti
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
 ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74672221"
 ---
-# <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure Uygulama Hizmeti için PremiumV2 katmanını yapılandırın
+# <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service için PremiumV2 katmanını yapılandırma
 
-Yeni **PremiumV2** fiyatlandırma katmanı size daha hızlı işlemciler, SSD depolama sağlar ve mevcut fiyatlandırma katmanlarının bellekten çekirdek oranına iki katına çıkar. Performans avantajı yla, uygulamalarınızı daha az örnekte çalıştırarak paradan tasarruf edebilirsiniz. Bu makalede, **PremiumV2** katmanında bir uygulama oluşturmayı veya bir uygulamayı **PremiumV2** katmanına nasıl ölçeklendirdiğinizi öğreneceksiniz.
+Yeni **PremiumV2** fiyatlandırma katmanı, daha hızlı IŞLEMCILER, SSD depolaması sağlar ve mevcut fiyatlandırma katmanlarının bellek-çekirdek oranını iki katına çıkarır. Performans avantajı sayesinde uygulamalarınızı daha az örnek üzerinde çalıştırarak tasarruf edebilirsiniz. Bu makalede, **PremiumV2** katmanında bir uygulama oluşturmayı veya bir uygulamayı **PremiumV2** katmanına ölçeklendirmeyi öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bir uygulamayı **PremiumV2**olarak ölçeklendirmek için, **PremiumV2'den**daha düşük bir fiyatlandırma katmanında çalışan bir Azure Uygulama Hizmeti uygulamasına sahip olmanız ve uygulamanın PremiumV2'yi destekleyen bir Uygulama Hizmeti dağıtımında çalışıyor olması gerekir.
+Bir uygulamayı **PremiumV2**'e ölçeklendirmek Için, **PremiumV2**'den daha düşük bir fiyatlandırma katmanında çalışan bir Azure App Service uygulamasına sahip olmanız ve uygulamanın PremiumV2 'yi destekleyen bir App Service dağıtımında çalışıyor olması gerekir.
 
 <a name="availability"></a>
 
 ## <a name="premiumv2-availability"></a>PremiumV2 kullanılabilirliği
 
-**PremiumV2** katmanı, Hem _Windows'da_ hem de _Linux'ta_App Service için kullanılabilir.
+**PremiumV2** katmanı, hem _Windows_ hem de _Linux_'ta App Service kullanılabilir.
 
-**PremiumV2** çoğu Azure bölgesinde kullanılabilir. Bölgenizde kullanılabilir olup olmadığını görmek için [Azure Bulut BulutU'nda](../cloud-shell/overview.md)aşağıdaki Azure CLI komutunu çalıştırın:
+**PremiumV2** , çoğu Azure bölgesinde kullanılabilir. Bölgenizde mevcut olup olmadığını görmek için [Azure Cloud Shell](../cloud-shell/overview.md)şu Azure CLI komutunu çalıştırın:
 
 ```azurecli-interactive
 az appservice list-locations --sku P1V2
@@ -37,61 +37,61 @@ az appservice list-locations --sku P1V2
 
 ## <a name="create-an-app-in-premiumv2-tier"></a>PremiumV2 katmanında uygulama oluşturma
 
-Bir Uygulama Hizmeti uygulamasının fiyatlandırma katmanı, çalıştığı [Uygulama Hizmeti planında](overview-hosting-plans.md) tanımlanır. Tek başına veya uygulama oluşturmanın bir parçası olarak bir Uygulama Hizmeti planı oluşturabilirsiniz.
+Bir App Service uygulamasının fiyatlandırma katmanı, üzerinde çalıştığı [App Service planında](overview-hosting-plans.md) tanımlanmıştır. App Service bir planı kendisi veya uygulama oluşturma kapsamında oluşturabilirsiniz.
 
-<a href="https://portal.azure.com" target="_blank">Azure portalında</a>Uygulama Hizmeti planını yapılandırırken **Fiyatlandırma katmanını**seçin. 
+<a href="https://portal.azure.com" target="_blank">Azure portal</a>App Service planını yapılandırırken **fiyatlandırma katmanı**' nı seçin. 
 
-**Üretim'i**seçin, ardından **P1V2**, **P2V2**veya **P3V2'yi**seçin, ardından **Uygula'yı**tıklatın.
+**Üretim**' ı seçin, ardından **P1V2**, **P2V2**veya **P3V2**öğesini seçin ve **Uygula**' ya tıklayın.
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> **P1V2**, **P2V2**ve **P3V2'yi** seçenek olarak görmüyorsanız veya seçenekler soluksa, **PremiumV2** büyük olasılıkla Uygulama Hizmeti planını içeren temel Uygulama Hizmeti dağıtımında kullanılamaz. Bkz. Daha fazla ayrıntı için [desteklenmeyen bir kaynak grubundan ve bölge birleşiminden](#unsupported) ölçeklendirin.
+> **P1V2**, **P2V2**ve **P3V2** as seçeneklerini görmüyorsanız veya seçenekler gri ise, **PremiumV2** büyük olasılıkla App Service planını içeren temel App Service dağıtımında kullanılabilir değildir. Daha fazla ayrıntı için bkz. [Desteklenmeyen bir kaynak grubu ve bölge kombinasyonuna ölçeği artırma](#unsupported) .
 
-## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>Mevcut bir uygulamayı PremiumV2 katmanına ölçeklendirin
+## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>Mevcut bir uygulamayı PremiumV2 katmanına ölçeklendirme
 
-Mevcut bir uygulamayı **PremiumV2** katmanına ölçeklemeden önce **PremiumV2'nin** kullanılabilir olduğundan emin olun. Daha fazla bilgi için [PremiumV2 kullanılabilirliğine](#availability)bakın. Kullanılamıyorsa, [desteklenmeyen bir kaynak grubundan ve bölge birleşiminden ölçeklendir'e](#unsupported)bakın.
+Mevcut bir uygulamayı **PremiumV2** katmanına ölçeklendirmeden önce **PremiumV2** 'nin kullanılabilir olduğundan emin olun. Bilgi için bkz. [PremiumV2 kullanılabilirliği](#availability). Kullanılabilir değilse, bkz. [Desteklenmeyen bir kaynak grubu ve bölge birleşiminden ölçeği artırma](#unsupported).
 
-Barındırma ortamınıza bağlı olarak, ölçekleme için ekstra adımlar gerekebilir. 
+Barındırma ortamınıza bağlı olarak, ölçeklendirme için ek adımlar gerekebilir. 
 
-Azure <a href="https://portal.azure.com" target="_blank">portalında</a>Uygulama Hizmeti uygulama sayfanızı açın.
+<a href="https://portal.azure.com" target="_blank">Azure Portal</a>, App Service uygulama sayfanızı açın.
 
-Uygulama Hizmeti uygulama sayfanızın sol navigasyonunda, **Ölçeklendir (Uygulama Hizmeti planı)** seçeneğini belirleyin.
+App Service uygulaması sayfanızın sol gezinti bölmesinde **Ölçek yukarı (App Service planı)** öğesini seçin.
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-**Üretim'i**seçin, ardından **P1V2**, **P2V2**veya **P3V2'yi**seçin, ardından **Uygula'yı**tıklatın.
+**Üretim**' ı seçin, ardından **P1V2**, **P2V2**veya **P3V2**öğesini seçin ve **Uygula**' ya tıklayın.
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
-İşleminiz başarıyla biterse, uygulamanızın genel bakış sayfası artık bir **PremiumV2** katmanında olduğunu gösterir.
+İşlem başarılı bir şekilde tamamlanerdiğinde, uygulamanızın genel bakış sayfası bir **PremiumV2** katmanında olduğunu gösterir.
 
 ![](media/app-service-configure-premium-tier/finished.png)
 
 ### <a name="if-you-get-an-error"></a>Bir hata alırsanız
 
-Bazı Uygulama Hizmeti planları, temel Uygulama Hizmeti dağıtımı PremiumV2'yi desteklemiyorsa PremiumV2 katmanına kadar ölçeklendiremez.  Bkz. Daha fazla ayrıntı için [desteklenmeyen bir kaynak grubundan ve bölge birleşiminden](#unsupported) ölçeklendirin.
+Temel App Service dağıtımı PremiumV2 ' i desteklemiyorsa bazı App Service planları PremiumV2 katmanına kadar ölçeklendiremez.  Daha fazla ayrıntı için bkz. [Desteklenmeyen bir kaynak grubu ve bölge kombinasyonuna ölçeği artırma](#unsupported) .
 
 <a name="unsupported"></a>
 
-## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>Desteklenmeyen kaynak grubundan ve bölge birleşiminden ölçeklendirme
+## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>Desteklenmeyen bir kaynak grubu ve bölge birleşiminden ölçeği büyütme
 
-Uygulamanız **PremiumV2'nin** kullanılamadığı bir Uygulama Hizmeti dağıtımında çalışıyorsa veya uygulamanız şu anda **PremiumV2'yi**desteklemeyen bir bölgede çalışıyorsa, **PremiumV2'den**yararlanmak için uygulamanızı yeniden dağıtmanız gerekir.  İki seçeneğiniz vardır:
+Uygulamanız **PremiumV2** ' nin kullanılamadığı bir App Service dağıtımında çalışıyorsa veya uygulamanız Şu anda **PremiumV2**' yi desteklemeyen bir bölgede çalışıyorsa, **PremiumV2**'in avantajlarından yararlanmak için uygulamanızı yeniden dağıtmanız gerekir.  İki seçeneğiniz vardır:
 
-- **Yeni** bir kaynak grubu oluşturun ve ardından oluşturma işlemi sırasında istediğiniz Azure bölgesini seçerek **yeni** kaynak grubunda **yeni** bir uygulama ve Uygulama Hizmeti planı oluşturun.  Yeni uygulama hizmet planının oluşturulduğu anda **PremiumV2** planını **seçmeniz gerekir.**  Bu, kaynak grubu, Uygulama Hizmeti planı ve Azure bölgesinin **birleşiminin, PremiumV2'yi**destekleyen bir Uygulama Hizmeti dağıtımında App Service planının oluşturulmasıyla sonuçlanmasını sağlar.  Ardından, uygulama kodunuzu yeni oluşturulan uygulama ve uygulama hizmet planına yeniden dağıtın. İstenirseniz, daha sonra maliyetten tasarruf etmek için App Service planını **PremiumV2'den** küçültebilirsiniz ve gelecekte **PremiumV2'yi**kullanarak tekrar başarıyla ölçeklendirebilirsiniz.
-- Uygulamanız zaten mevcut bir **Premium** katmanda çalışıyorsa, uygulamanızı tüm uygulama ayarları, bağlantı dizeleri ve dağıtım yapılandırmasıyla **PremiumV2**kullanan yeni bir uygulama hizmet planına kopyalayabilirsiniz.
+- **Yeni bir kaynak grubu** oluşturun **ve yeni bir uygulama oluşturun** ve **Yeni** kaynak grubunda planı App Service, oluşturma işlemi sırasında istediğiniz Azure bölgenizi seçin.  Yeni App Service planının oluşturulduğu sırada **PremiumV2** **planını seçmelisiniz.**  Bu, kaynak grubu, App Service planı ve Azure bölgesinin birleşimini, **PremiumV2**destekleyen bir App Service dağıtımında oluşturulan App Service planının oluşmasına neden olur.  Ardından uygulama kodunuzu yeni oluşturulan uygulama ve App Service planına yeniden dağıtın. İsterseniz, maliyetleri kaydetmek için App Service planını daha sonra **PremiumV2** ' dan ölçeklendirebilirsiniz ve yine de **PremiumV2**kullanarak yeniden daha sonra tekrar tekrar ölçeklendirirsiniz.
+- Uygulamanız zaten mevcut bir **Premium** katmanda çalıştırılıyorsa, uygulamanızı tüm uygulama ayarları, bağlantı dizeleri ve dağıtım yapılandırmasıyla **PremiumV2**kullanan yeni bir App Service planına kopyalayabilirsiniz.
 
     ![](media/app-service-configure-premium-tier/clone-app.png)
 
-    Klon **uygulaması** sayfasında, istediğiniz bölgede **PremiumV2'yi** kullanarak bir Uygulama Hizmeti planı oluşturabilir ve klonlamak istediğiniz uygulama ayarlarını ve yapılandırmayı belirtebilirsiniz.
+    **Uygulamayı Kopyala** sayfasında, Istediğiniz bölgede **PremiumV2** kullanarak bir App Service planı oluşturabilir ve kopyalamak istediğiniz uygulama ayarlarını ve yapılandırmayı belirtebilirsiniz.
 
 ## <a name="automate-with-scripts"></a>Betiklerle otomatikleştirme
 
-[Azure CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell'i](/powershell/azure/overview)kullanarak **PremiumV2** katmanında uygulama oluşturmayı komut dosyalarıyla otomatikleştirebilirsiniz.
+[Azure CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell](/powershell/azure/overview)kullanarak **PremiumV2** katmanında uygulama oluşturmayı otomatik hale getirebilirsiniz.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Aşağıdaki komut _P1V2'de_bir Uygulama Hizmeti planı oluşturur. Cloud Shell'de çalıştırabilirsiniz. Seçenekler `--sku` Için P1V2, _P2V2_, ve _P3V2_.
+Aşağıdaki komut _P1V2_içinde bir App Service planı oluşturur. Bunu Cloud Shell çalıştırabilirsiniz. Seçenekleri P1V2, `--sku` _P2V2_ve _P3V2_' dir.
 
 ```azurecli-interactive
 az appservice plan create \
@@ -104,7 +104,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Aşağıdaki komut _P1V2'de_bir Uygulama Hizmeti planı oluşturur. Seçenekler için `-WorkerSize` _Small_küçük, _orta_ve _büyük._
+Aşağıdaki komut _P1V2_içinde bir App Service planı oluşturur. Seçenekleri `-WorkerSize` _küçük_, _Orta_ve _büyük_.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `

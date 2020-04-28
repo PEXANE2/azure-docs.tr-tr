@@ -1,33 +1,33 @@
 ---
-title: Azure Monitor günlük sorgularında dizeleri ile çalışma | Microsoft Dokümanlar
-description: Azure Monitor günlük sorgularında dizeleri nasıl disetleyiş, karşılaştırma, arama ve diğer çeşitli işlemler gerçekleştireceklerini açıklar.
+title: Azure Izleyici günlük sorgularındaki dizelerle çalışma | Microsoft Docs
+description: Azure Izleyici günlük sorgularındaki dizeler üzerinde nasıl düzenleme, karşılaştırma, arama ve çeşitli işlemler gerçekleştirme işlemlerini açıklar.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75397463"
 ---
-# <a name="work-with-strings-in-azure-monitor-log-queries"></a>Azure Monitor günlük sorgularında dizeleri ile çalışma
+# <a name="work-with-strings-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularındaki dizelerle çalışma
 
 
 > [!NOTE]
-> Bu öğreticiyi tamamlamadan önce [Azure Monitor Log Analytics](get-started-portal.md) ve Azure Monitor günlük [sorgularıyla başlarken](get-started-queries.md) Başlat'ı tamamlamanız gerekir.
+> Bu öğreticiyi tamamlamadan önce [Azure izleyici Log Analytics kullanmaya başlama](get-started-portal.md) ve [Azure izleyici günlük sorgularını](get-started-queries.md) kullanmaya başlama işlemini tamamlamanız gerekir.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Bu makalede, dizeleri üzerinde çeşitli işlemlerin nasıl dare, karşılaştırma, arama ve gerçekleştirilmesi açıklanmaktadır.
+Bu makalede, dizeler üzerinde nasıl düzenleme, karşılaştırma, arama yapmak ve çeşitli işlemler gerçekleştirme işlemleri açıklanmaktadır.
 
-Bir dizedeki her karakterin konumuna göre bir dizin numarası vardır. İlk karakter dizin 0'da, sonraki karakter 1 ve benzeridir. Farklı dize işlevleri aşağıdaki bölümlerde gösterildiği gibi dizin numaralarını kullanır. Aşağıdaki örneklerin çoğu, belirli bir veri kaynağı kullanmadan dize işlemegöstermek için **yazdırma** komutunu kullanır.
+Bir dizedeki her karakterin konumuna göre bir dizin numarası vardır. İlk karakter dizin 0 ' dır, sonraki karakter 1 ' dir ve bu şekilde devam eder. Farklı dize işlevleri, aşağıdaki bölümlerde gösterildiği gibi dizin numaralarını kullanır. Aşağıdaki örneklerden birçoğu, belirli bir veri kaynağı kullanmadan dize işlemeyi göstermek için **Print** komutunu kullanır.
 
 
-## <a name="strings-and-escaping-them"></a>Dizeleri ve onlardan kaçan
-Dize değerleri tek veya çift tırnak karakterleri ile sarılır. Backslash\\( ) sekmesi için \t, newline için \n ve \" teklif karakterinin kendisi gibi karakterleri izleyen karaktere kaçmak için kullanılır.
+## <a name="strings-and-escaping-them"></a>Dizeler ve kaçış
+Dize değerleri, tek veya çift tırnak karakterleriyle paketlenir. Ters eğik\\çizgi (), bu karakteri izleyen karaktere, örneğin \t, yeni satır için \n, ve \" tırnak karakterinin kendisine ait karakter kaçış için kullanılır.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -37,7 +37,7 @@ print "this is a 'string' literal in double \" quotes"
 print 'this is a "string" literal in single \' quotes'
 ```
 
-" "\\" un kaçış karakteri gibi\@davranmasını önlemek için, dizeye bir önek olarak " ekle:
+"\\" In kaçış karakteri olarak davranmasını engellemek için, dizeye önek\@olarak "" ekleyin:
 
 ```Kusto
 print @"C:\backslash\not\escaped\with @ prefix"
@@ -46,58 +46,58 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>Dize karşılaştırmaları
 
-İşleç       |Açıklama                         |Duyarlı|Örnek (verimler) `true`
+İşleç       |Açıklama                         |Büyük/küçük harfe duyarlı|Örnek (verir `true`)
 ---------------|------------------------------------|--------------|-----------------------
-`==`           |Eşittir                              |Evet           |`"aBc" == "aBc"`
-`!=`           |Eşit değil                          |Evet           |`"abc" != "ABC"`
+`==`           |Eşittir                              |Yes           |`"aBc" == "aBc"`
+`!=`           |Eşit değildir                          |Yes           |`"abc" != "ABC"`
 `=~`           |Eşittir                              |Hayır            |`"abc" =~ "ABC"`
-`!~`           |Eşit değil                          |Hayır            |`"aBc" !~ "xyz"`
-`has`          |Sağ taraf sol tarafta tam bir terimdir. |Hayır|`"North America" has "america"`
-`!has`         |Sağ taraf sol tarafta tam bir terim değildir.       |Hayır            |`"North America" !has "amer"` 
-`has_cs`       |Sağ taraf sol tarafta tam bir terimdir. |Evet|`"North America" has_cs "America"`
-`!has_cs`      |Sağ taraf sol tarafta tam bir terim değildir.       |Evet            |`"North America" !has_cs "amer"` 
-`hasprefix`    |Sağ taraf sol tarafta bir terim önekidir         |Hayır            |`"North America" hasprefix "ame"`
-`!hasprefix`   |Sağ taraf sol tarafta bir terim öneki değildir     |Hayır            |`"North America" !hasprefix "mer"` 
-`hasprefix_cs`    |Sağ taraf sol tarafta bir terim önekidir         |Evet            |`"North America" hasprefix_cs "Ame"`
-`!hasprefix_cs`   |Sağ taraf sol tarafta bir terim öneki değildir     |Evet            |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`    |Sağ taraf sol tarafta bir terim sonekidir         |Hayır            |`"North America" hassuffix "ica"`
-`!hassuffix`   |Sağ taraf sol tarafta bir terim sonek değildir     |Hayır            |`"North America" !hassuffix "americ"`
-`hassuffix_cs`    |Sağ taraf sol tarafta bir terim sonekidir         |Evet            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |Sağ taraf sol tarafta bir terim sonek değildir     |Evet            |`"North America" !hassuffix_cs "icA"`
-`contains`     |Sağ taraf, sol tarafın bir alt dizisi olarak ortaya çıkar  |Hayır            |`"FabriKam" contains "BRik"`
-`!contains`    |Sağ taraf sol tarafta oluşmaz           |Hayır            |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |Sağ taraf, sol tarafın bir alt dizisi olarak ortaya çıkar  |Evet           |`"FabriKam" contains_cs "Kam"`
-`!contains_cs`  |Sağ taraf sol tarafta oluşmaz           |Evet           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`   |Sağ taraf, sol tarafın ilk alt dizisidir.|Hayır            |`"Fabrikam" startswith "fab"`
-`!startswith`  |Sağ taraf, sol tarafın ilk alt dizisi değildir.|Hayır        |`"Fabrikam" !startswith "kam"`
-`startswith_cs`   |Sağ taraf, sol tarafın ilk alt dizisidir.|Evet            |`"Fabrikam" startswith_cs "Fab"`
-`!startswith_cs`  |Sağ taraf, sol tarafın ilk alt dizisi değildir.|Evet        |`"Fabrikam" !startswith_cs "fab"`
-`endswith`     |Sağ taraf, sol tarafın kapanış alt dizisidir|Hayır             |`"Fabrikam" endswith "Kam"`
-`!endswith`    |Sağ taraf, sol tarafın kapanış alt sırası değildir.|Hayır         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |Sağ taraf, sol tarafın kapanış alt dizisidir|Evet             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |Sağ taraf, sol tarafın kapanış alt sırası değildir.|Evet         |`"Fabrikam" !endswith "brik"`
-`matches regex`|sol tarafta sağ taraf için bir eşleşme içerir        |Evet           |`"Fabrikam" matches regex "b.*k"`
-`in`           |Öğelerden birine eşittir       |Evet           |`"abc" in ("123", "345", "abc")`
-`!in`          |Öğelerin hiçbirine eşit değildir   |Evet           |`"bca" !in ("123", "345", "abc")`
+`!~`           |Eşit değildir                          |Hayır            |`"aBc" !~ "xyz"`
+`has`          |Sağ taraftaki bir bütün terim, sol taraftaki bir terimdir |Hayır|`"North America" has "america"`
+`!has`         |Sağ taraftaki, sol taraftaki bir tam terim değildir       |Hayır            |`"North America" !has "amer"` 
+`has_cs`       |Sağ taraftaki bir bütün terim, sol taraftaki bir terimdir |Yes|`"North America" has_cs "America"`
+`!has_cs`      |Sağ taraftaki, sol taraftaki bir tam terim değildir       |Yes            |`"North America" !has_cs "amer"` 
+`hasprefix`    |Sağ taraftaki, sol taraftaki bir terim ön eki         |Hayır            |`"North America" hasprefix "ame"`
+`!hasprefix`   |Sağ taraftaki bir terim, sol taraftaki bir terim ön eki değildir     |Hayır            |`"North America" !hasprefix "mer"` 
+`hasprefix_cs`    |Sağ taraftaki, sol taraftaki bir terim ön eki         |Yes            |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs`   |Sağ taraftaki bir terim, sol taraftaki bir terim ön eki değildir     |Yes            |`"North America" !hasprefix_cs "CA"` 
+`hassuffix`    |Sağ taraftaki, sol taraftaki bir dönem sonekidir         |Hayır            |`"North America" hassuffix "ica"`
+`!hassuffix`   |Sağ taraftaki, sol taraftaki bir terim son eki değildir     |Hayır            |`"North America" !hassuffix "americ"`
+`hassuffix_cs`    |Sağ taraftaki, sol taraftaki bir dönem sonekidir         |Yes            |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs`   |Sağ taraftaki, sol taraftaki bir terim son eki değildir     |Yes            |`"North America" !hassuffix_cs "icA"`
+`contains`     |Sağ taraftaki bir sol taraftaki alt dizi olarak gerçekleşir  |Hayır            |`"FabriKam" contains "BRik"`
+`!contains`    |Sol tarafta sağ taraftaki bir durum oluşmaz           |Hayır            |`"Fabrikam" !contains "xyz"`
+`contains_cs`   |Sağ taraftaki bir sol taraftaki alt dizi olarak gerçekleşir  |Yes           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |Sol tarafta sağ taraftaki bir durum oluşmaz           |Yes           |`"Fabrikam" !contains_cs "Kam"`
+`startswith`   |Sağ taraftaki, sol taraftaki bir ilk alt dizidir|Hayır            |`"Fabrikam" startswith "fab"`
+`!startswith`  |Sağ taraftaki, sol taraftaki bir başlangıç alt dizisi değildir|Hayır        |`"Fabrikam" !startswith "kam"`
+`startswith_cs`   |Sağ taraftaki, sol taraftaki bir ilk alt dizidir|Yes            |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`  |Sağ taraftaki, sol taraftaki bir başlangıç alt dizisi değildir|Yes        |`"Fabrikam" !startswith_cs "fab"`
+`endswith`     |Sağ taraftaki sol taraftaki bir kapanış alt dizisi|Hayır             |`"Fabrikam" endswith "Kam"`
+`!endswith`    |Sağ taraftaki, sol taraftaki bir kapanış alt dizisi değildir|Hayır         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |Sağ taraftaki sol taraftaki bir kapanış alt dizisi|Yes             |`"Fabrikam" endswith "Kam"`
+`!endswith_cs`    |Sağ taraftaki, sol taraftaki bir kapanış alt dizisi değildir|Yes         |`"Fabrikam" !endswith "brik"`
+`matches regex`|Sol taraftaki, sağ taraftaki bir eşleşme içeriyor        |Yes           |`"Fabrikam" matches regex "b.*k"`
+`in`           |Öğelerin birine eşittir       |Yes           |`"abc" in ("123", "345", "abc")`
+`!in`          |Öğelerin hiçbirine eşit değildir   |Yes           |`"bca" !in ("123", "345", "abc")`
 
 
-## <a name="countof"></a>sayımı
+## <a name="countof"></a>CountOf
 
-Bir dizedeki bir alt dizenin oluşumlarını sayar. Düz dizeleri maç veya regex kullanabilirsiniz. Regex eşleşmeleri örtüşmezken düz dize eşleşmeleri çakışabilir.
+Dizedeki alt dizenin tekrarlamalarını sayar. Düz dizeler ile eşleştirebilir veya normal ifade kullanabilir. Regex eşleştirirken düz dize eşleşmeleri çakışmayabilir.
 
 ### <a name="syntax"></a>Sözdizimi
 ```
 countof(text, search [, kind])
 ```
 
-### <a name="arguments"></a>Bağımsız değişken:
-- `text`- Giriş dizesi 
-- `search`- Metin içinde eşleşen düz dize veya normal ifade.
-- `kind` - _normal_ | _regex_ (varsayılan: normal).
+### <a name="arguments"></a>Değişkenlerinden
+- `text`-Giriş dizesi 
+- `search`-Düz dize veya metin içinde eşleştirilecek normal ifade.
+- `kind` - _normal_ | _Regex_ (varsayılan: normal).
 
 ### <a name="returns"></a>Döndürür
 
-Arama dizesinin kapsayıcıda eşleşebileceği sayı. Regex eşleşmeleri örtüşmezken düz dize eşleşmeleri çakışabilir.
+Arama dizesinin kapsayıcıda eşleştirileme sayısı. Regex eşleştirirken düz dize eşleşmeleri çakışmayabilir.
 
 ### <a name="examples"></a>Örnekler
 
@@ -111,7 +111,7 @@ print countof("ababa", "ab", "normal");  //result: 2
 print countof("ababa", "aba");  //result: 2
 ```
 
-#### <a name="regex-matches"></a>Regex maçları
+#### <a name="regex-matches"></a>Regex eşleşiyor
 
 ```Kusto
 print countof("The cat sat on the mat", @"\b.at\b", "regex");  //result: 3
@@ -120,9 +120,9 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 ```
 
 
-## <a name="extract"></a>Ayıklamak
+## <a name="extract"></a>süzmek
 
-Belirli bir dizeden normal bir ifade için bir eşleşme alır. İsteğe bağlı olarak, ayıklanan alt dizeyi belirtilen türe dönüştürür.
+Belirli bir dizeden normal ifade için bir eşleşme alır. İsteğe bağlı olarak, ayıklanan alt dizeyi belirtilen türe dönüştürür.
 
 ### <a name="syntax"></a>Sözdizimi
 
@@ -132,18 +132,18 @@ extract(regex, captureGroup, text [, typeLiteral])
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
-- `regex`- Düzenli bir ifade.
-- `captureGroup`- Ayıklamak için yakalama grubu gösteren pozitif bir tamsayı sabiti. Tüm maç için 0, normal ifadedeki ilk '('parantez')' değeri için 1, sonraki parantezler için 2 veya daha fazla değer.
-- `text`- Aramak için bir dize.
-- `typeLiteral`- İsteğe bağlı bir tür literal (örneğin, typeof(uzun)). Sağılırsa, ayıklanan alt dize bu türe dönüştürülür.
+- `regex`-Normal ifade.
+- `captureGroup`-Ayıklanacak yakalama grubunu gösteren pozitif bir tamsayı sabiti. Tüm eşleşme için 0, normal ifadede ilk ' (' parantez ') ' ile eşleştirilen değer için 1, sonraki parantezler için 2 veya daha fazla.
+- `text`-Aranacak dize.
+- `typeLiteral`-İsteğe bağlı bir tür değişmez değeri (örneğin, typeof (Long)). Sağlanmışsa ayıklanan alt dize bu türe dönüştürülür.
 
 ### <a name="returns"></a>Döndürür
-Substring belirtilen yakalama grubu yakalama Grubu ile eşleşti, isteğe bağlı olarak typeLiteral dönüştürülür.
-Eşleşme yoksa veya tür dönüştürme başarısız olursa, null döndürün.
+Belirtilen yakalama grubu captureGroup ile eşleşen alt dize, isteğe bağlı olarak typeLiteral 'a dönüştürüldü.
+Eşleşme yoksa veya tür dönüştürme başarısız olursa, null değeri döndürün.
 
 ### <a name="examples"></a>Örnekler
 
-Aşağıdaki örnek, *ComputerIP'in* son sekizlisini bir sinyal kaydından ayıklar:
+Aşağıdaki örnek, *bilgisayar IP* 'nin son sekizlinin bir sinyal kaydından ayıklar:
 ```Kusto
 Heartbeat
 | where ComputerIP != "" 
@@ -151,7 +151,7 @@ Heartbeat
 | project ComputerIP, last_octet=extract("([0-9]*$)", 1, ComputerIP) 
 ```
 
-Aşağıdaki örnek, son sekizliyi ayıklar, *gerçek* bir türe (sayı) atar ve bir sonraki IP değerini hesaplar
+Aşağıdaki örnek, son sekizlinin ayıklar ve *gerçek* bir türe (sayı) çevirir ve sonraki IP değerini hesaplar
 ```Kusto
 Heartbeat
 | where ComputerIP != "" 
@@ -161,7 +161,7 @@ Heartbeat
 | project ComputerIP, last_octet, next_ip
 ```
 
-Aşağıdaki örnekte, *Trace* dizesi "Süre" tanımı aranır. Maç *gerçek* döküm ve bir zaman sabiti ile çarpılır (1 s) *hangi zaman dilimi yazmak için Süre dökümleri*.
+Aşağıdaki örnekte, dize *izlemesi* "Duration" tanımı için aranır. Eşleşme, *gerçek* olarak ayarlanır ve zaman *aralığı için süreyi veren*bir zaman sabiti (1 s) ile çarpılır.
 ```Kusto
 let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
@@ -169,10 +169,10 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 ```
 
 
-## <a name="isempty-isnotempty-notempty"></a>boş, boş değil, boş değil
+## <a name="isempty-isnotempty-notempty"></a>IsEmpty, isnotempty, notEmpty
 
-- *isempty* boş döndürür bağımsız değişken boş bir dize veya null ise (ayrıca *isnull*bakınız).
-- *isnotempty* bağımsız değişken boş bir dize veya null değilse doğru döndürür (ayrıca *isnotnull*bakınız). takma ad: *boş değil*.
+- *IsEmpty* , bağımsız değişken boş bir dize veya null ise true döndürür (Ayrıca bkz. *IsNull*).
+- bağımsız değişken boş bir dize veya null değilse (Ayrıca bkz. *IsNotNull*), *IsNotEmpty* doğru döndürür. diğer ad: *notEmpty*.
 
 ### <a name="syntax"></a>Sözdizimi
 
@@ -196,9 +196,9 @@ Heartbeat | where isnotempty(ComputerIP) | take 1  // return 1 Heartbeat record 
 ```
 
 
-## <a name="parseurl"></a>ayrışdırıcı
+## <a name="parseurl"></a>parseURL
 
-URL'yi parçalarına (iletişim kuralı, ana bilgisayar, bağlantı noktası, vb.) böler ve parçaları dizeleri içeren bir sözlük nesnesi döndürür.
+Bir URL 'YI bölümlerine böler (protokol, ana bilgisayar, bağlantı noktası, vb.) ve dizeler olarak bölümleri içeren bir sözlük nesnesi döndürür.
 
 ### <a name="syntax"></a>Sözdizimi
 
@@ -227,9 +227,9 @@ Sonuç şu şekilde olacaktır:
 ```
 
 
-## <a name="replace"></a>Değiştirmek
+## <a name="replace"></a>değiştirin
 
-Tüm regex eşleşmelerini başka bir dize ile değiştirir. 
+Tüm Regex eşleşmelerini başka bir dizeyle değiştirir. 
 
 ### <a name="syntax"></a>Sözdizimi
 
@@ -239,12 +239,12 @@ replace(regex, rewrite, input_text)
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
-- `regex`- Tarafından maç için düzenli ifade. '('parantez')'deki yakalama gruplarını içerebilir.
-- `rewrite`- Regex eşleşen tarafından yapılan herhangi bir maç için yedek regex. Tüm eşleşmeye, ilk yakalama grubu için \1'e, sonraki yakalama grupları için \2'ye ve benzeri ne ifade etmek için \0'ı kullanın.
-- `input_text`- Giriş dizesi aramak için.
+- `regex`-Eşleştirilecek normal ifade. ' (' Parantezler ') ' içinde yakalama grupları içerebilir.
+- `rewrite`-Eşleşen Regex ile yapılan eşleştirenlerin yerini değiştirme. Tüm eşleştirmeye başvurmak için \ 0, sonraki yakalama grupları için \ 2 vb. ilk yakalama grubu için \ 1 kullanın.
+- `input_text`-Aranacak giriş dizesi.
 
 ### <a name="returns"></a>Döndürür
-Regex'in tüm eşleşmelerini yeniden yazma değerlendirmeleri ile değiştirdikten sonra metin. Kibritler çakışmaz.
+Yeniden yazma değerlendirmelerinde Regex tüm eşleşmelerini değiştirdikten sonraki metin. Eşleşmeler çakışmıyor.
 
 ### <a name="examples"></a>Örnekler
 
@@ -255,27 +255,27 @@ SecurityEvent
 | extend replaced = replace(@"(\d+) -", @"Activity ID \1: ", Activity) 
 ```
 
-Aşağıdaki sonuçları elde edebilirsiniz:
+Aşağıdaki sonuçlara sahip olabilir:
 
-Etkinlik                                        |Değiştirilir
+Etkinlik                                        |silinmeyecek
 ------------------------------------------------|----------------------------------------------------------
-4663 - Bir nesneye erişim girişiminde bulunuldu  |Etkinlik Kimliği 4663: Bir nesneye erişmeye çalışıldı.
+4663-bir nesneye erişme girişiminde bulunuldu  |Etkinlik KIMLIĞI 4663: bir nesneye erişme girişiminde bulunuldu.
 
 
 ## <a name="split"></a>split
 
-Belirli bir dizeyi belirtilen bir sınır layıcıya göre böler ve elde edilen alt dizeleri bir dizi döndürür.
+Verilen bir dizeyi belirtilen sınırlayıcıya göre böler ve sonuçta elde edilen alt dizelerin dizisini döndürür.
 
 ### <a name="syntax"></a>Sözdizimi
 ```
 split(source, delimiter [, requestedIndex])
 ```
 
-### <a name="arguments"></a>Bağımsız değişken:
+### <a name="arguments"></a>Değişkenlerinden
 
-- `source`- Belirtilen sınır dışı ya göre bölünecek dize.
-- `delimiter`- Kaynak dizesini bölmek için kullanılacak delimiter.
-- `requestedIndex`- İsteğe bağlı sıfır tabanlı dizin. Sağılırsa, döndürülen dize dizisi yalnızca bu öğeyi tutar (varsa).
+- `source`-Belirtilen sınırlayıcıya göre bölünecek dize.
+- `delimiter`-Kaynak dizenin bölünebilmesi için kullanılacak sınırlayıcı.
+- `requestedIndex`-İsteğe bağlı sıfır tabanlı dizin. Sağlanmışsa, döndürülen dize dizisi yalnızca o öğeyi (varsa) tutar.
 
 
 ### <a name="examples"></a>Örnekler
@@ -291,7 +291,7 @@ print split("aabbcc", "bb");        // result: ["aa","cc"]
 
 ## <a name="strcat"></a>strcat
 
-Dize bağımsız değişkenlerini birleştirir (1-16 bağımsız değişkeni destekler).
+Dize bağımsız değişkenlerini art arda ekler (1-16 bağımsız değişkenlerini destekler).
 
 ### <a name="syntax"></a>Sözdizimi
 ```
@@ -304,9 +304,9 @@ print strcat("hello", " ", "world") // result: "hello world"
 ```
 
 
-## <a name="strlen"></a>Strlen
+## <a name="strlen"></a>strlen
 
-Dize uzunluğunu döndürür.
+Bir dizenin uzunluğunu döndürür.
 
 ### <a name="syntax"></a>Sözdizimi
 ```
@@ -319,20 +319,20 @@ print strlen("hello")   // result: 5
 ```
 
 
-## <a name="substring"></a>Dize
+## <a name="substring"></a>dizeden
 
-Belirtilen dizinden başlayarak belirli bir kaynak dizesinden bir alt dize ayıklar. İsteğe bağlı olarak, istenen alt dize uzunluğu belirtilebilir.
+Belirtilen dizinden başlayarak, belirli bir kaynak dizeden bir alt dize ayıklar. İsteğe bağlı olarak, istenen alt dizenin uzunluğu belirtilebilir.
 
 ### <a name="syntax"></a>Sözdizimi
 ```
 substring(source, startingIndex [, length])
 ```
 
-### <a name="arguments"></a>Bağımsız değişken:
+### <a name="arguments"></a>Değişkenlerinden
 
-- `source`- Alt dizenin alınacağı kaynak dize.
-- `startingIndex`- İstenen alt dizenin sıfır tabanlı başlangıç karakteri konumu.
-- `length`- Döndürülen alt dizeğin istenen uzunluğunu belirtmek için kullanılabilecek isteğe bağlı bir parametre.
+- `source`-Alt dizenin alınacağı kaynak dize.
+- `startingIndex`-İstenen alt dizenin sıfır tabanlı başlangıç karakter konumu.
+- `length`-Döndürülen alt dizenin istenen uzunluğunu belirtmek için kullanılabilen isteğe bağlı bir parametre.
 
 ### <a name="examples"></a>Örnekler
 ```Kusto
@@ -343,9 +343,9 @@ print substring("ABCD", 0, 2);  // result: "AB"
 ```
 
 
-## <a name="tolower-toupper"></a>tolower, toupper
+## <a name="tolower-toupper"></a>ToLower, ToUpper
 
-Belirli bir dizeyi tüm alt veya büyük harfe dönüştürür.
+Verilen bir dizeyi tüm küçük veya büyük harflere dönüştürür.
 
 ### <a name="syntax"></a>Sözdizimi
 ```
@@ -362,10 +362,10 @@ print toupper("hello"); // result: "HELLO"
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Gelişmiş öğreticiler ile devam edin:
+Gelişmiş öğreticilerle devam edin:
 * [Toplama işlevleri](aggregations.md)
 * [Gelişmiş toplamalar](advanced-aggregations.md)
 * [Grafikler ve diyagramlar](charts.md)
 * [JSON ve veri yapıları ile çalışma](json-data-structures.md)
 * [Gelişmiş sorgu yazma](advanced-query-writing.md)
-* [Birleştirmeler - çapraz analiz](joins.md)
+* [Birleşimler çapraz analiz](joins.md)

@@ -1,72 +1,72 @@
 ---
-title: Dayanıklı Işlevler için sıfır kapatma süresi dağıtımı
-description: Sıfır kapalı kalma süresi dağıtımları için Dayanıklı Fonksiyonlar düzenlemenizi nasıl etkinleştirin öğrenin.
+title: Dayanıklı İşlevler için sıfır kesinti süresi dağıtımı
+description: Sıfır kesinti süresi için Dayanıklı İşlevler düzenleme özelliğini nasıl etkinleştireceğinizi öğrenin.
 author: tsushi
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74231267"
 ---
-# <a name="zero-downtime-deployment-for-durable-functions"></a>Dayanıklı Işlevler için sıfır kapatma süresi dağıtımı
+# <a name="zero-downtime-deployment-for-durable-functions"></a>Dayanıklı İşlevler için sıfır kesinti süresi dağıtımı
 
-Dayanıklı [İşlevler'in güvenilir yürütme modeli,](durable-functions-checkpointing-and-replay.md) orkestrasyonların deterministic olmasını gerektirir ve bu da güncelleştirmeleri dağıtırken göz önünde bulundurulması gereken ek bir sorun oluşturur. Bir dağıtım etkinlik işlevi imzalarında veya orkestratör mantığında değişiklikler içeriyorsa, uçuş içi orkestrasyon örnekleri başarısız olur. Bu durum, özellikle çalışma saatlerini veya günlerini temsil edebilecek uzun süreli orkestrasyon örnekleri için bir sorundur.
+Dayanıklı İşlevler [güvenilir yürütme modeli](durable-functions-checkpointing-and-replay.md) , güncelleştirmeleri dağıtırken göz önünde bulundurmanız gereken ek bir sınama oluşturan, düzenleme belirleyici olmasını gerektirir. Bir dağıtım, etkinlik işlevi imzalarında veya Orchestrator mantığındaki değişiklikler içerdiğinde uçuş düzenleme örnekleri başarısız olur. Bu durum özellikle uzun süre çalışan düzenleyiciler örneklerine yönelik bir sorundur ve bu da saatleri veya iş günlerini temsil edebilir.
 
-Bu hataların oluşmasını önlemek için iki seçeneğiniz vardır: 
-- Tüm çalışan orkestrasyon örnekleri tamamlanana kadar dağıtımınızı geciktirin.
-- Çalışan orkestrasyon örneklerinin işlevlerinizin varolan sürümlerini kullandığından emin olun. 
+Bu hataların oluşmasını engellemek için iki seçeneğiniz vardır: 
+- Çalışan tüm düzenleme örnekleri tamamlanana kadar dağıtımınızı geciktirebilirsiniz.
+- Çalışan tüm düzenleme örneklerinin işlevlerinizin mevcut sürümlerini kullanmasını sağlayın. 
 
 > [!NOTE]
-> Bu makalede, Dayanıklı Fonksiyonlar 1.x hedefleyen işlevler uygulamaları için kılavuz sağlar. Dayanıklı Fonksiyonlar 2.x'te tanıtılan değişiklikleri hesaba katmak için güncelleştirilmemiştir. Uzantı sürümleri arasındaki farklar hakkında daha fazla bilgi için [Bkz. Dayanıklı Fonksiyonlar sürümleri.](durable-functions-versions.md)
+> Bu makalede, Dayanıklı İşlevler 1. x ' i hedefleyen işlevler uygulamalarına yönelik rehberlik sunulmaktadır. Dayanıklı İşlevler 2. x içinde tanıtılan değişiklikler için hesaba güncelleştirilmedi. Uzantı sürümleri arasındaki farklar hakkında daha fazla bilgi için bkz. [dayanıklı işlevler sürümleri](durable-functions-versions.md).
 
-Aşağıdaki grafik, Dayanıklı İşlevler için sıfır kesintili dağıtım elde etmek için üç ana stratejiyi karşılaştırır: 
+Aşağıdaki grafik, Dayanıklı İşlevler için sıfır kesinti temelli bir dağıtım elde etmek üzere üç ana stratejileri karşılaştırır: 
 
 | Strateji |  Kullanılması gereken durumlar | Artıları | Simgeler |
 | -------- | ------------ | ---- | ---- |
-| [Sürüm Oluşturma](#versioning) |  Sık sık kırılma yla karşılaşan [uygulamalar.](durable-functions-versioning.md) | Uygulaması kolay. |  Bellekte artırılmış işlev uygulaması boyutu ve işlev sayısı.<br/>Kod çoğaltma. |
-| [Yuva yla durum denetimi](#status-check-with-slot) | 24 saatten uzun süren veya sık sık üst üste gelen orkestrasyonlara sahip olmayan bir sistem. | Basit kod tabanı.<br/>Ek işlev uygulaması yönetimi gerektirmez. | Ek depolama hesabı veya görev merkezi yönetimi gerektirir.<br/>Hiçbir orkestrasyon çalışan zaman süreleri gerektirir. |
-| [Uygulama yönlendirme](#application-routing) | 24 saatten fazla süren orkestrasyonlu veya sık sık örtüşen orkestrasyonların olduğu dönemler gibi, orkestrasyonlarçalışmadığı dönemlere sahip olmayan bir sistem. | Sürekli çalışan ve çığır açan değişikliklere sahip olan sistemlerin yeni sürümlerini işler. | Akıllı bir uygulama yönlendiricisi gerektirir.<br/>Aboneliğinizin izin verdiği işlev uygulamalarının sayısını en üst düzeye çıkarabilir. Varsayılan değer 100'dür. |
+| [Sürüm Oluşturma](#versioning) |  Sık karşılaşılan değişiklikler hakkında daha fazla karşılaşmeyen uygulamalar [.](durable-functions-versioning.md) | Basit uygulama. |  Bellekte ve işlev sayısında daha fazla işlev uygulaması boyutu.<br/>Kod çoğaltma. |
+| [Yuva ile durum denetimi](#status-check-with-slot) | 24 veya daha fazla çakışan düzenleme için uzun süre çalışan bir düzenleme gerçekleştirmeyen bir sistem. | Basit kod tabanı.<br/>Ek işlev uygulama yönetimi gerektirmez. | Ek depolama hesabı veya görev merkezi yönetimi gerektirir.<br/>Hiçbir düzenleme çalışmadığı zaman dönem gerektirir. |
+| [Uygulama yönlendirme](#application-routing) | En son 24 saatten uzun veya sık sık çakışan düzenleyicilerle bu dönemler gibi, düzenleme çalışmadığı zaman süreleri olmayan bir sistem. | Sürekli değişiklikler içeren düzenlemeleri çalıştıran sistemlerin yeni sürümlerini işler. | Akıllı uygulama yönlendiricisi gerektirir.<br/>Aboneliğiniz tarafından izin verilen işlev uygulamalarının sayısı en fazla olabilir. Varsayılan değer 100'dür. |
 
 ## <a name="versioning"></a>Sürüm Oluşturma
 
-İşlevlerinizin yeni sürümlerini tanımlayın ve işlev uygulamanızda eski sürümleri bırakın. Diyagramda görebileceğiniz gibi, bir işlevin sürümü adının bir parçası olur. Fonksiyonların önceki sürümleri korunduğundan, uçuş içi orkestrasyon örnekleri bunlara başvurmaya devam edebilir. Bu arada, yeni düzenleme örnekleri için istekler, orkestrasyon istemci işlevinizin bir uygulama ayarından başvurulabileceği en son sürümü çağırır.
+İşlevlerinizin yeni sürümlerini tanımlayın ve işlev uygulamanızda eski sürümleri bırakın. Diyagramda görebileceğiniz gibi, bir işlevin sürümü adının bir parçası haline gelir. İşlevlerin önceki sürümleri korunduğundan, uçuş sırasında düzenleme örnekleri bunlara başvurmasına devam edebilir. Bu sırada, Orchestration Client işlevinizin bir uygulama ayarından başvurmasına yönelik yeni düzenleme örnekleri istekleri en son sürüm için çağrı yapılır.
 
-![Sürüm stratejisi](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
+![Sürüm oluşturma stratejisi](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
 
-Bu stratejide, her işlev kopyalanmalıdır ve diğer işlevlere başvuruları güncelleştirilmelidir. Bir komut dosyası yazarak daha kolay yapabilirsiniz. Burada geçiş komut dosyası içeren örnek bir [proje](https://github.com/TsuyoshiUshio/DurableVersioning) vereyim.
+Bu stratejide, her işlev kopyalanmalıdır ve diğer işlevlere olan başvuruların güncellenmesi gerekir. Bir komut dosyası yazarak daha kolay hale getirebilirsiniz. Geçiş betiği içeren [örnek bir proje](https://github.com/TsuyoshiUshio/DurableVersioning) aşağıda verilmiştir.
 
 >[!NOTE]
->Bu strateji, dağıtım sırasında kapalı kalma süresini önlemek için dağıtım yuvalarını kullanır. Yeni dağıtım yuvalarının nasıl oluşturulup kullanılacağı hakkında daha ayrıntılı bilgi için [Azure İşlevleri dağıtım yuvalarına](../functions-deployment-slots.md)bakın.
+>Bu strateji dağıtım sırasında kapalı kalma süresini önlemek için dağıtım yuvalarını kullanır. Yeni dağıtım yuvaları oluşturma ve kullanma hakkında daha ayrıntılı bilgi için bkz. [Azure işlevleri dağıtım yuvaları](../functions-deployment-slots.md).
 
-## <a name="status-check-with-slot"></a>Yuva yla durum denetimi
+## <a name="status-check-with-slot"></a>Yuva ile durum denetimi
 
-İşlev uygulamanızın geçerli sürümü üretim yuvanızda çalışırken, işlev uygulamanızın yeni sürümünü evreleme yuvanıza dağıtın. Üretim ve evreleme yuvalarınızı değiştirmeden önce, çalışan orkestrasyon örnekleri olup olmadığını kontrol edin. Tüm orkestrasyon örnekleri tamamlandıktan sonra, takas yapabilirsiniz. Bu strateji, hiçbir orkestrasyon örneğinin uçuşta olmadığı öngörülebilir dönemler olduğunda çalışır. Bu, orkestrasyonlarInizin uzun süre çalışmadığında ve orkestrasyon yürütmeleriniz sık sık çakışmıyorsa en iyi yaklaşımdır.
+İşlev uygulamanızın geçerli sürümü üretim yuvasıyla çalışırken, işlev uygulamanızın yeni sürümünü hazırlama yuvasıyla dağıtın. Üretim ve hazırlama yuvalarınızı değiştirmeden önce, çalışan herhangi bir düzenleme örneği olup olmadığını kontrol edin. Tüm düzenleme örnekleri tamamlandıktan sonra, değiştirmeyi yapabilirsiniz. Bu strateji, hiçbir düzenleme örneği kol olmadığında tahmin edilebilir Dönemleriniz olduğunda işe yarar. Bu, düzenleyiclarınız uzun süre çalışmadığı ve düzenleme yürütmeleri sıklıkla çakışmazsa en iyi yaklaşımdır.
 
-### <a name="function-app-configuration"></a>Fonksiyon uygulaması yapılandırması
+### <a name="function-app-configuration"></a>İşlev uygulaması yapılandırması
 
 Bu senaryoyu ayarlamak için aşağıdaki yordamı kullanın.
 
-1. Hazırlama ve üretim için işlev uygulamanıza [dağıtım yuvaları ekleyin.](../functions-deployment-slots.md#add-a-slot)
+1. Hazırlama ve üretim için işlev uygulamanıza [dağıtım yuvaları ekleyin](../functions-deployment-slots.md#add-a-slot) .
 
-1. Her yuva için [AzureWebJobsStorage uygulama ayarını](../functions-app-settings.md#azurewebjobsstorage) paylaşılan bir depolama hesabının bağlantı dizesine ayarlayın. Bu depolama hesabı bağlantı dizesi Azure İşlevleri çalışma zamanı tarafından kullanılır. Bu hesap Azure İşlevleri çalışma zamanı tarafından kullanılır ve işlevin anahtarlarını yönetir.
+1. Her yuva için, [AzureWebJobsStorage uygulama ayarını](../functions-app-settings.md#azurewebjobsstorage) paylaşılan bir depolama hesabının bağlantı dizesine ayarlayın. Bu depolama hesabı bağlantı dizesi, Azure Işlevleri çalışma zamanı tarafından kullanılır. Bu hesap, Azure Işlevleri çalışma zamanı tarafından kullanılır ve işlevin anahtarlarını yönetir.
 
-1. Her yuva için, örneğin yeni bir uygulama `DurableManagementStorage`ayarı oluşturun. Değerini farklı depolama hesaplarının bağlantı dizesine ayarlayın. Bu depolama [hesapları, güvenilir yürütme](durable-functions-checkpointing-and-replay.md)için Dayanıklı İşlevler uzantısı tarafından kullanılır. Her yuva için ayrı bir depolama hesabı kullanın. Bu ayarı dağıtım yuvası ayarı olarak işaretlemeyin.
+1. Her yuva için, örneğin, `DurableManagementStorage`yeni bir uygulama ayarı oluşturun. Değerini farklı depolama hesaplarının bağlantı dizesine ayarlayın. Bu depolama hesapları, [güvenilir yürütme](durable-functions-checkpointing-and-replay.md)için dayanıklı işlevler uzantısı tarafından kullanılır. Her yuva için ayrı bir depolama hesabı kullanın. Bu ayarı bir dağıtım yuvası ayarı olarak işaretlemeyin.
 
-1. İşlev uygulamanızın [host.json dosyasının dayanıklıGörev bölümünde,](durable-functions-bindings.md#hostjson-settings)adım 3'te oluşturduğunuz uygulama ayarının adı olarak belirtin. `azureStorageConnectionStringName`
+1. İşlev uygulamanızın [Host. json dosyasının durableTask bölümünde](durable-functions-bindings.md#hostjson-settings), adım 3 ' te oluşturduğunuz `azureStorageConnectionStringName` uygulama ayarının adı olarak belirtin.
 
-Aşağıdaki diyagram, dağıtım yuvalarının ve depolama hesaplarının açıklanan yapılandırmasını gösterir. Bu olası dağıtım öncesi senaryoda, bir işlev uygulamasının sürüm 2'si üretim yuvasında çalışırken, sürüm 1 evreleme yuvasında kalır.
+Aşağıdaki diyagramda, dağıtım yuvaları ve depolama hesaplarının açıklanan yapılandırması gösterilmektedir. Bu potansiyel dağıtım senaryosunda, bir işlev uygulamasının 2. sürümü üretim yuvasında çalışmaktadır, 1. sürüm hazırlama yuvasında kalır.
 
 ![Dağıtım yuvaları ve depolama hesapları](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>host.json örnekleri
+### <a name="hostjson-examples"></a>Host. JSON örnekleri
 
-Aşağıdaki JSON *parçaları, anabilgisayar.json* dosyasındaki bağlantı dizeasının örnekleridir.
+Aşağıdaki JSON parçaları, *Host. JSON* dosyasındaki bağlantı dizesi ayarına örnektir.
 
-#### <a name="functions-20"></a>Fonksiyonlar 2.0
+#### <a name="functions-20"></a>İşlevler 2,0
 
 ```json
 {
@@ -89,9 +89,9 @@ Aşağıdaki JSON *parçaları, anabilgisayar.json* dosyasındaki bağlantı diz
 }
 ```
 
-### <a name="cicd-pipeline-configuration"></a>CI/CD boru hattı yapılandırması
+### <a name="cicd-pipeline-configuration"></a>CI/CD işlem hattı yapılandırması
 
-CI/CD ardışık sisteminizi yalnızca işlev uygulamanızın bekleyen veya çalışan orkestrasyon örnekleri olmadığında dağıtacak şekilde yapılandırın. Azure Denetim Hatları'nı kullanırken, aşağıdaki örnekte olduğu gibi bu koşulları denetleyen bir işlev oluşturabilirsiniz:
+CI/CD işlem hattınızı yalnızca işlev uygulamanızda bekleyen veya çalışan düzenleme örnekleri olmadığında dağıtılacak şekilde yapılandırın. Azure Pipelines kullanırken, aşağıdaki örnekte olduğu gibi, bu koşulları denetleyen bir işlev oluşturabilirsiniz:
 
 ```csharp
 [FunctionName("StatusCheck")]
@@ -110,68 +110,68 @@ public static async Task<IActionResult> StatusCheck(
 }
 ```
 
-Ardından, sahneleme kapısını hiçbir düzenleme çalışmayana kadar bekleyecek şekilde yapılandırın. Daha fazla bilgi için [bkz: Gates'i kullanarak dağıtım denetimi](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
+Ardından, hazırlama geçidini, hiçbir düzenleme çalışmadığı sürece bekleyecek şekilde yapılandırın. Daha fazla bilgi için bkz. [kapıları kullanarak yayın dağıtım denetimi](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
 
 ![Dağıtım geçidi](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
 
-Azure Pipelines, dağıtım Başlamadan önce düzenleme örneklerini çalıştırmak için işlev uygulamanızı denetler.
+Azure Pipelines, dağıtımınız başlamadan önce düzenleme örneklerini çalıştırmaya yönelik işlev uygulamanızı denetler.
 
-![Dağıtım kapısı (çalışıyor)](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
+![Dağıtım Kapısı (çalışıyor)](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
 
 Artık işlev uygulamanızın yeni sürümü hazırlama yuvasına dağıtılmalıdır.
 
-![Evreleme yuvası](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
+![Hazırlama yuvası](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
 
-Son olarak, yuvaları değiştirin. 
+Son olarak, takas yuvaları. 
 
-Dağıtım yuvası ayarları olarak işaretlenmemiş uygulama ayarları da değiştirilmiştir, bu nedenle sürüm 2 uygulaması depolama hesabı A'ya göndermetutar. Düzenleme durumu depolama hesabında izlenir olduğundan, sürüm 2 uygulamasında çalışan tüm orkestrasyonlar yeni yuvada kesintisiz olarak çalışmaya devam eder.
+Dağıtım yuvası ayarları olarak işaretlenmemiş uygulama ayarları da takas edilir, bu nedenle sürüm 2 uygulaması, depolama hesabına A başvurusunu tutar. Düzenleme durumu depolama hesabında izlendiğinden, sürüm 2 uygulamasında çalışan her türlü düzenleme kesintiye uğramadan yeni yuvada çalışmaya devam eder.
 
 ![Dağıtım yuvası](media/durable-functions-zero-downtime-deployment/deployment-slot-3.png)
 
-Her iki yuva için de aynı depolama hesabını kullanmak için görev hub'larınızın adlarını değiştirebilirsiniz. Bu durumda, yuvalarınızın durumunu ve uygulamanızın HubName ayarlarını yönetmeniz gerekir. Daha fazla bilgi edinmek [için, Dayanıklı Işlevler'deki Görev hub'larına](durable-functions-task-hubs.md)bakın.
+Her iki yuva için aynı depolama hesabını kullanmak için, görev hub 'larınızın adlarını değiştirebilirsiniz. Bu durumda, yuvalarınızın durumunu ve uygulamanızın HubName ayarlarını yönetmeniz gerekir. Daha fazla bilgi için bkz. [dayanıklı işlevler görev hub 'ları](durable-functions-task-hubs.md).
 
 ## <a name="application-routing"></a>Uygulama yönlendirme
 
-Bu strateji en karmaşık olanı. Ancak, çalışan orkestrasyonlar arasında zaman yok işlev uygulamaları için kullanılabilir.
+Bu strateji en karmaşıktır. Ancak, çalışma düzenlemeleri arasında zaman olmayan işlev uygulamaları için kullanılabilir.
 
-Bu strateji için, Dayanıklı İşlevlerinizin önünde bir *uygulama yönlendiricisi* oluşturmanız gerekir. Bu yönlendirici Dayanıklı Fonksiyonlar ile uygulanabilir. Yönlendiricinin sorumluluğu:
+Bu strateji için Dayanıklı İşlevler önünde bir *uygulama yönlendirici* oluşturmanız gerekir. Bu yönlendirici Dayanıklı İşlevler ile uygulanabilir. Yönlendirici şu şekilde sorumluluğa sahiptir:
 
 * İşlev uygulamasını dağıtın.
-* Dayanıklı Fonksiyonlar sürümünü yönetin. 
+* Dayanıklı İşlevler sürümünü yönetin. 
 * Düzenleme isteklerini işlev uygulamalarına yönlendirin.
 
-Bir düzenleme isteği ilk kez alındığında, yönlendirici aşağıdaki görevleri yapar:
+Bir Orchestration isteği ilk kez alındığında yönlendirici aşağıdaki görevleri yapar:
 
-1. Azure'da yeni bir işlev uygulaması oluşturur.
-2. İşlev uygulamanızın kodunu Azure'daki yeni işlev uygulamasına dağıtir.
-3. Orkestrasyon isteğini yeni uygulamaya iletin.
+1. Azure 'da yeni bir işlev uygulaması oluşturur.
+2. İşlev uygulamanızın kodunu Azure 'daki yeni işlev uygulamasına dağıtır.
+3. Düzenleme isteğini yeni uygulamaya iletir.
 
-Yönlendirici, uygulamanızın kodunun hangi sürümünün Azure'daki hangi işlev uygulamasına dağıtıldığı durumunu yönetir.
+Yönlendirici, uygulama kodunuzun hangi sürümünün Azure 'daki işlev uygulamasına dağıtıldığını yönetir.
 
 ![Uygulama yönlendirme (ilk kez)](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-Yönlendirici, istekle birlikte gönderilen sürüme göre dağıtım ve düzenleme isteklerini uygun işlev uygulamasına yönlendirir. Yama sürümünü yok sayar.
+Yönlendirici dağıtım ve düzenleme isteklerini istekle birlikte gönderilen sürüme bağlı olarak uygun işlev uygulamasına yönlendirir. Düzeltme Eki sürümünü yoksayar.
 
-Uygulamanızın yeni bir sürümünü bozuk bir değişiklik olmadan dağıttığınızda, yama sürümünü artımlaşabilirsiniz. Yönlendirici, mevcut işlev uygulamanıza dağılar ve kodun aynı işlev uygulamasına yönlendirilen eski ve yeni sürümleri için istekler gönderir.
+Uygulamanızın yeni bir sürümünü bir değişiklik yapmadan dağıttığınızda, düzeltme eki sürümünü artırabilirsiniz. Yönlendirici mevcut işlev uygulamanıza dağıtılır ve aynı işlev uygulamasına yönlendirilen kodun eski ve yeni sürümlerine yönelik istekler gönderir.
 
-![Uygulama yönlendirmesi (kırılma yok)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
+![Uygulama yönlendirme (hiçbir bölme değişikliği yok)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
 
-Uygulamanızın yeni bir sürümünü bozuk bir değişiklikle dağıttığınızda, ana veya küçük sürümü niçin artımlaşabilirsiniz. Ardından uygulama yönlendiricisi Azure'da yeni bir işlev uygulaması oluşturur, uygulamanın yeni sürümüne yönelik istekleri ona yönlendirir. Aşağıdaki diyagramda, uygulamanın 1.0.1 sürümünde çalışan orkestrasyonlar çalışmaya devam eder, ancak 1.1.0 sürümü için istekler yeni işlev uygulamasına yönlendirilir.
+Uygulamanızın yeni bir sürümünü Son değişiklik ile dağıttığınızda, büyük veya küçük sürümü artırabilirsiniz. Ardından, uygulama yönlendiricisi Azure 'da yeni bir işlev uygulaması oluşturur, buna dağıtır ve uygulamanızın yeni sürümü için istekleri yönlendirir. Aşağıdaki diyagramda uygulamanın 1.0.1 sürümünde düzenlemeler çalıştırılıyor, ancak 1.1.0 sürümü istekleri yeni işlev uygulamasına yönlendirilir.
 
-![Uygulama yönlendirme (kesme değişikliği)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
+![Uygulama yönlendirme (Son değişiklik)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
 
-Yönlendirici, 1.0.1 sürümündeki orkestrasyonlarin durumunu izler ve tüm orkestrasyonlar tamamlandıktan sonra uygulamaları kaldırır. 
+Yönlendirici 1.0.1 sürümündeki düzenlemeleri izler ve tüm düzenlemeler bittikten sonra uygulamaları kaldırır. 
 
-### <a name="tracking-store-settings"></a>Mağaza ayarlarını izleme
+### <a name="tracking-store-settings"></a>İzleme deposu ayarları
 
-Her işlev uygulaması, büyük olasılıkla ayrı depolama hesaplarında ayrı zamanlama kuyrukları kullanmalıdır. Uygulamanızın tüm sürümlerinde tüm düzenleme örneklerini sorgulamak istiyorsanız, örnek ve geçmiş tablolarını işlev uygulamalarınızda paylaşabilirsiniz. [Ana bilgisayar.json ayarları](durable-functions-bindings.md#host-json) `trackingStoreNamePrefix` dosyasındaki `trackingStoreConnectionStringName` ve ayarları yapılandırırak tabloları paylaşabilirsiniz, böylece hepsi aynı değerleri kullanır.
+Her işlev uygulaması, muhtemelen ayrı depolama hesaplarında ayrı zamanlama kuyrukları kullanmalıdır. Uygulamanızın tüm sürümlerindeki tüm organize edilecek örnekleri sorgulamak istiyorsanız, işlev uygulamalarınız genelinde örnek ve geçmiş tabloları paylaşabilirsiniz. [Ana bilgisayar. JSON ayarları](durable-functions-bindings.md#host-json) dosyasındaki ve `trackingStoreConnectionStringName` `trackingStoreNamePrefix` ayarlarını, hepsi aynı değerleri kullanacak şekilde yapılandırarak tabloları paylaşabilirsiniz.
 
-Daha fazla bilgi için [Azure'da Dayanıklı İşlevler'deki örnekleri yönet'e](durable-functions-instance-management.md)bakın.
+Daha fazla bilgi için bkz. [Azure 'da dayanıklı işlevler örnekleri yönetme](durable-functions-instance-management.md).
 
-![Mağaza ayarlarını izleme](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
+![İzleme deposu ayarları](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Dayanıklı FonksiyonlarıN Sürümü](durable-functions-versioning.md)
+> [Sürüm oluşturma Dayanıklı İşlevler](durable-functions-versioning.md)
 

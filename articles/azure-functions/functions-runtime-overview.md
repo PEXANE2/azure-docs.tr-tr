@@ -1,51 +1,51 @@
 ---
-title: Azure İşlevler Çalışma Süresine Genel Bakış
-description: Azure İşlerinden Çalışma Zamanı Önizlemesi'ne Genel Bakış
+title: Azure İşlevleri Çalışma Zamanı genel bakış
+description: Azure İşlevleri Çalışma Zamanı önizlemeye genel bakış
 author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: ab04aa4ca7f54e8de120d078a313c3096a350aa5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74226622"
 ---
-# <a name="azure-functions-runtime-overview-preview"></a>Azure İşlevler Çalışma Süresine Genel Bakış (önizleme)
+# <a name="azure-functions-runtime-overview-preview"></a>Azure İşlevleri Çalışma Zamanı genel bakış (Önizleme)
 
 [!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
-Azure İşlevleri Çalışma Süresi (önizleme), Azure İşlevleri programlama modelinin şirket içi basitliğinden ve esnekliğinden yararlanmanız için yeni bir yol sağlar. Azure İşlevler ile aynı açık kaynak kökleri üzerine inşa edilen Azure İşlevler Çalışma Süresi, bulut hizmetiyle neredeyse aynı geliştirme deneyimini sağlamak için şirket içinde dağıtılır.
+Azure İşlevleri Çalışma Zamanı (Önizleme), şirket içi Azure Işlevleri programlama modelinin basitliğini ve esnekliğini avantajlarından yararlanmanıza yönelik yeni bir yol sağlar. Azure Işlevleri ile aynı açık kaynaklı köklere göre geliştirilen Azure İşlevleri Çalışma Zamanı, bulut hizmeti olarak neredeyse özdeş bir geliştirme deneyimi sağlamak için şirket içinde dağıtılır.
 
-![Azure İşlevler Çalışma Zamanı Önizleme Portalı][1]
+![Azure İşlevleri Çalışma Zamanı Preview Portal][1]
 
-Azure İşlevler Çalışma Süresi, buluta bağlanmadan önce Azure Işlevlerini deneyimlemeniz için bir yol sağlar. Bu şekilde, oluşturduğunuz kod varlıkları, geçiş yaptığınızda buluta götürebilir.  Çalışma süresi, şirket içi bilgisayarlarınızın toplu işlemleri bir gecede çalıştırmak için yedek işlem gücünü kullanmak gibi yeni seçenekler de açar. Kuruluşunuzdaki aygıtları, hem şirket içinde hem de buluttaki diğer sistemlere koşullu olarak veri göndermek için de kullanabilirsiniz.
+Azure İşlevleri Çalışma Zamanı, buluta işlemeden önce Azure Işlevleri ile karşılaşmanız için bir yol sağlar. Bu şekilde, oluşturduğunuz kod varlıkları, geçiş yaparken bulut ile birlikte alınabilir.  Çalışma zamanı, toplu işlemleri fazla gece çalıştırmak için şirket içi bilgisayarlarınızın yedek işlem gücünü kullanma gibi yeni seçenekleri de açar. Ayrıca kuruluşunuzdaki cihazları, hem şirket içinde hem de bulutta diğer sistemlere koşullu olarak göndermek için de kullanabilirsiniz.
 
-Azure İşlevler Çalışma Süresi iki parçadan oluşur:
+Azure İşlevleri Çalışma Zamanı iki parçadan oluşur:
 
-* Azure İşlevler Runtime Yönetim Rolü
-* Azure İşlevler Çalışma Zamanı Çalışan Rolü
+* Azure İşlevleri Çalışma Zamanı yönetim rolü
+* Azure İşlevleri Çalışma Zamanı çalışan rolü
 
-## <a name="azure-functions-management-role"></a>Azure İşlevyönetimi Rolü
+## <a name="azure-functions-management-role"></a>Azure Işlevleri yönetim rolü
 
-Azure İşlev yönetimi rolü, İşlevlerinizin şirket içinde yönetimi için bir ana bilgisayar sağlar. Bu rol aşağıdaki görevleri gerçekleştirir:
+Azure Işlevleri yönetim rolü, şirket içi işlevlerinizin yönetimi için bir konak sağlar. Bu rol aşağıdaki görevleri gerçekleştirir:
 
-* [Azure Portalı'nda](https://portal.azure.com)gördüğünüz Azure İşlevler Yönetimi Portalı'nın barındırılı ev sahipliği. Portal, işlevlerinizi Azure portalında olduğu gibi geliştirmenize olanak tanıyan tutarlı bir deneyim sağlar.
-* İşlevleri birden çok Fonksiyon işçisi arasında dağıtma.
-* Yayımlama profilini indirip içe aktararak işlevlerinizi doğrudan Microsoft Visual Studio'dan yayımlayabilmeniz için bir yayımlama bitiş noktası sağlamak.
+* Azure Işlevleri Yönetim Portalı barındırırken, [Azure Portal](https://portal.azure.com)gördüğünüz aynı bir değer vardır. Portal, işlevlerinizi Azure portal benzer şekilde geliştirmenize olanak tanıyan tutarlı bir deneyim sunar.
+* İşlevleri birden çok Işlev çalışanı arasında dağıtma.
+* Yayımlama profilini indirerek ve içeri aktararak işlevlerinizi doğrudan Microsoft Visual Studio yayımlayabilmeniz için bir yayımlama uç noktası sağlama.
 
-## <a name="azure-functions-worker-role"></a>Azure Fonksiyonları İşçi Rolü
+## <a name="azure-functions-worker-role"></a>Azure Işlevleri çalışan rolü
 
-Azure İşlevler İşçi Rolleri Windows Kapsayıcılarında dağıtılır ve işlev kodunuz yürütüldüğü yerdir.  Kuruluşunuz genelinde birden çok İşçi Rolü dağıtabilirsiniz ve bu seçenek, müşterilerin yedek işlem gücünden yararlanabildiği önemli bir yoldur.  Birçok kuruluşta yedek işlem in bulunduğu yerlere bir örnek, sürekli olarak çalışan ancak uzun süre kullanılmayan makinelerdir.
+Azure Işlevleri çalışan rolleri Windows kapsayıcılarında dağıtılır ve işlev kodunuzun çalıştırıldığı yerdir.  Kuruluşunuz genelinde birden fazla çalışan rolü dağıtabilirsiniz ve bu seçenek müşterilerin yedek işlem gücünü kullanabileceği bir anahtar yoludur.  Birçok kuruluşta yedek bilgi işlemin mevcut olduğu bir örnek, makineler sürekli olarak desteklenmektedir ancak büyük süreler boyunca kullanılmaz.
 
-## <a name="minimum-requirements"></a>Minimum Gereksinimler
+## <a name="minimum-requirements"></a>Minimum gereksinimler
 
-Azure İşlevler Çalışma Zamanı'na başlamak için, Windows Server 2016 veya Windows 10 Creators Update'e sahip ve bir SQL Server örneğine erişen bir makineniz olması gerekir.
+Azure İşlevleri Çalışma Zamanı kullanmaya başlamak için, bir SQL Server örneğine erişimi olan Windows Server 2016 veya Windows 10 Creators Update içeren bir makineniz olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Azure [İşlevleri Çalışma Zamanı önizlemesini](https://aka.ms/azafrdoc) yükleme
+[Azure işlevleri çalışma zamanı önizlemeyi](https://aka.ms/azafrdoc) yükler
 
 <!--Image references-->
 [1]: ./media/functions-runtime-overview/AzureFunctionsRuntime_Portal.png

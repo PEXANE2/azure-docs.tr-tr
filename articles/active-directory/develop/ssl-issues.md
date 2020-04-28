@@ -1,7 +1,7 @@
 ---
-title: TLS/SSL sorunlarını giderme (MSAL iOS/macOS) | Azure
+title: TLS/SSL sorunlarını giderme (MSAL iOS/macOS) | Mavisi
 titleSuffix: Microsoft identity platform
-description: MSAL ile TLS/SSL sertifikalarını kullanarak çeşitli sorunlar hakkında ne yapmanız gerektiğini öğrenin. Objective-C kütüphanesi.
+description: MSAL ile TLS/SSL sertifikalarını kullanarak çeşitli sorunlar hakkında ne yapacağınızı öğrenin. Amaç-C Kitaplığı.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,36 +13,36 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: 1507231c3ab395319d5ce95ec06dbb592c324aa6
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881086"
 ---
-# <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>Nasıl yapilir: iOS ve macOS TLS/SSL sorunları için Sorun Giderme
+# <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>Nasıl yapılır: iOS ve macOS TLS/SSL sorunları için MSAL sorunlarını giderme
 
-Bu makale, [iOS ve macOS için Microsoft Kimlik Doğrulama Kitaplığı'nı (MSAL)](reference-v2-libraries.md) kullanırken karşılaşabileceğiniz sorunları gidermenize yardımcı olacak bilgiler sağlar
+Bu makalede, [iOS ve macOS Için Microsoft kimlik doğrulama kitaplığı 'nı (msal)](reference-v2-libraries.md) kullanırken, içinde karşılaşabileceğiniz sorunları gidermenize yardımcı olacak bilgiler sağlanmaktadır
 
 ## <a name="network-issues"></a>Ağ sorunları
 
-**Hata -1200**: "Bir SSL hatası oluştu ve sunucuya güvenli bir bağlantı yapılamaz."
+**Hata-1200**: "bir SSL hatası oluştu ve sunucuyla güvenli bir bağlantı kurulamıyor."
 
-Bu hata, bağlantının güvenli olmadığı anlamına gelir. Sertifika geçersiz olduğunda oluşur. TLS denetiminde hangi sunucunun başarısız olduğu da `NSURLErrorFailingURLErrorKey` dahil `userInfo` olmak üzere daha fazla bilgi için hata nesnesinin sözlüğüne bakın.
+Bu hata bağlantının güvenli olmadığı anlamına gelir. Bir sertifika geçersiz olduğunda meydana gelir. Hangi sunucunun TLS denetimi başarısız olduğu dahil olmak üzere daha fazla bilgi için, bkz `NSURLErrorFailingURLErrorKey` . Error `userInfo` nesnesinin sözlüğü.
 
-Bu hata Apple'ın ağ kitaplığından. NSURL hata kodlarının tam listesi macOS ve iOS SDK'larda NSURLError.h'de bulunur. Bu hata hakkında daha fazla bilgi [için, URL Yükleme Sistemi Hata Kodları'na](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes?language=objc)bakın.
+Bu hata, Apple 'ın ağ kitaplığından yapılır. NSURL hata kodlarının tam listesi, macOS ve iOS SDK 'lerinde NSURLError. h içinde bulunur. Bu hatayla ilgili daha fazla bilgi için bkz. [URL yükleme sistem hata kodları](https://developer.apple.com/documentation/foundation/1508628-url_loading_system_error_codes?language=objc).
 
 ## <a name="certificate-issues"></a>Sertifika sorunları
 
-Geçersiz bir sertifika sağlayan URL kimlik doğrulama akışının bir parçası olarak kullanmak istediğiniz sunucuya bağlanırsa, sorunu tanılamak için iyi bir başlangıç, URL'yi [SSL Server Testi](https://www.ssllabs.com/ssltest/analyze.html)gibi bir SSL doğrulama hizmetiyle test etmektir. Sunucuyu çok çeşitli senaryolara ve tarayıcılara karşı sınar ve bilinen birçok güvenlik açığını denetler.
+Geçersiz bir sertifika sağlayan URL, kimlik doğrulama akışının bir parçası olarak kullanmayı düşündüğünüz sunucuya bağlanırsa, sorunu tanılamaya yönelik iyi bir başlangıç, URL 'YI [SSL sunucusu testi](https://www.ssllabs.com/ssltest/analyze.html)gıbı bir SSL doğrulama hizmeti ile test etmek olur. Sunucuyu geniş bir senaryo ve tarayıcı dizisine karşı sınar ve bilinen birçok güvenlik açığını denetler.
 
-Varsayılan olarak, Apple'ın yeni [App Transport Security (ATS)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) özelliği TLS/SSL sertifikaları kullanan uygulamalariçin daha sıkı güvenlik ilkeleri uygular. Bazı işletim sistemleri ve web tarayıcıları varsayılan olarak bu ilkelerin bazılarını uygulamaya başlamıştır. Güvenlik nedeniyle, ATS'yi devre dışı etmemenizi öneririz.
+Varsayılan olarak, Apple 'ın yeni [uygulama taşıma güvenliği (ATS)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) ÖZELLIĞI, TLS/SSL sertifikalarını kullanan uygulamalara daha sıkı güvenlik ilkeleri uygular. Bazı işletim sistemleri ve Web tarayıcıları, bu ilkelerin bazılarını varsayılan olarak zorlamayı kullanmaya başlamıştır. Güvenlik nedenleriyle, ATS devre dışı bırakmanızı öneririz.
 
-SHA-1 hashes kullanan sertifikalar bilinen güvenlik açıkları var. Çoğu modern web tarayıcısı SHA-1 hashes sertifikaları izin vermez.
+SHA-1 karmaları kullanan sertifikaların bilinen güvenlik açıkları vardır. Modern Web tarayıcıları çoğu, SHA-1 karmaları olan sertifikalara izin vermez.
 
-## <a name="captive-portals"></a>Tutsak portallar
+## <a name="captive-portals"></a>Kıltıcı portallar
 
-Tutsak bir portal, bir Wi-Fi ağına ilk erişiğinde ve bu ağa henüz erişim izni verilmediğinde kullanıcıya bir web sayfası sunar. Kullanıcı portalın gereksinimlerini karşılayana kadar internet trafiğini keser. Kullanıcı portal üzerinden bağlanana kadar ağ kaynaklarına bağlanamadığı için ağ hataları beklenir.
+Açıklamalı Portal, bir Wi-Fi ağına ilk kez erişirken ve henüz bu ağa erişim verilmemişse bir kullanıcıya Web sayfası sunar. Kullanıcı portalın gereksinimlerini karşılaana kadar internet trafiğini karşılar. Kullanıcı Portal üzerinden bağlanana kadar ağ kaynaklarına bağlanamadığı için ağ hataları beklenmektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Tutsak portallar](https://en.wikipedia.org/wiki/Captive_portal) ve Apple'ın yeni [App Transport Security (ATS)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) özelliği hakkında bilgi edinin.
+[Açıklamalı portallar](https://en.wikipedia.org/wiki/Captive_portal) ve Apple 'ın yeni [uygulama TAŞıMA güvenliği (ATS)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) özelliği hakkında bilgi edinin.

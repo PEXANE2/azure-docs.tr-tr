@@ -1,85 +1,85 @@
 ---
-title: İş akışlarına anahtar ifadeleri ekleme
-description: Azure Logic Apps'taki belirli değerlere dayalı iş akışı eylemlerini kontrol eden anahtar bildirimleri oluşturma
+title: İş akışlarına Switch deyimleri ekleme
+description: Azure Logic Apps içindeki belirli değerlere göre iş akışı eylemlerini denetleyen Switch deyimleri oluşturma
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 5c40feec2dca65e4bc9617a71a6d0a8e4c872a3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74793243"
 ---
-# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Azure Logic Apps'taki belirli değerlere göre iş akışı eylemleri çalıştıran anahtar bildirimleri oluşturma
+# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Azure Logic Apps içindeki belirli değerlere göre iş akışı eylemlerini çalıştıran Switch deyimleri oluşturma
 
-Nesnelerin, ifadelerin veya belirteçlerin değerlerini temel alan belirli eylemleri çalıştırmak için bir *anahtar* deyimi ekleyin. Bu yapı nesneyi, ifadeyi veya belirteci değerlendirir, sonuçla eşleşen büyük/küçük harf seçer ve yalnızca bu servis talebi için belirli eylemleri çalıştırRın. Anahtar deyimi çalıştığında, yalnızca bir servis talebi sonucu eşleştirmelidir.
+Nesnelerin, ifadelerin veya belirteçlerin değerlerine göre belirli eylemleri çalıştırmak için bir *Switch* deyimi ekleyin. Bu yapı, nesne, ifade veya belirteci değerlendirir, sonuçla eşleşen durumu seçer ve yalnızca o durumda belirli eylemleri çalıştırır. Switch deyimleri çalıştırıldığında, yalnızca bir örnek sonuçla eşleşmelidir.
 
-Örneğin, e-postada seçilen bir seçeneğe göre farklı adımlar atlayan bir mantık uygulaması istediğinizi varsayalım. Bu örnekte, mantık uygulaması yeni içerik için bir web sitesinin RSS akışını denetler. RSS akışında yeni bir öğe göründüğünde, mantık uygulaması onaylayana e-posta gönderir. Onaylayanın "Onayla" veya "Reddet" seçeneğini seçip seçmediğine bağlı olarak, mantık uygulaması farklı adımları izler.
+Örneğin, e-postada seçilen bir seçeneğe göre farklı adımlar alan bir mantıksal uygulama istediğinizi varsayalım. Bu örnekte, mantıksal uygulama yeni içerik için bir Web sitesinin RSS akışını denetler. RSS akışında yeni bir öğe göründüğünde, mantıksal uygulama bir onaylayana e-posta gönderir. Onaylayanın "Onayla" veya "Reddet" seçeneğini seçip seçmeksizin mantıksal uygulamanın farklı adımları takip etmemesine göre.
 
 > [!TIP]
-> Tüm programlama dilleri gibi, geçiş deyimleri yalnızca eşitlik işleçlerini destekler. "Büyük"ten daha büyük gibi başka ilişkisel işleçler gerekiyorsa, [koşullu](../logic-apps/logic-apps-control-flow-conditional-statement.md)bir deyim kullanın.
-> Deterministik yürütme davranışı sağlamak için, servis talepleri dinamik belirteçleri veya ifadeler yerine benzersiz ve statik bir değer içermelidir.
+> Tüm programlama dilleri gibi, Switch deyimleri yalnızca eşitlik işleçlerini destekler. "Büyüktür" gibi diğer ilişkisel işleçlere ihtiyacınız varsa, [koşullu bir ifade](../logic-apps/logic-apps-control-flow-conditional-statement.md)kullanın.
+> Belirleyici yürütme davranışının güvence altına almak için, durumların dinamik belirteçler veya ifadeler yerine benzersiz ve statik bir değer içermesi gerekir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Bu makaledeki örneği izlemek için, Outlook.com veya Office 365 Outlook hesabı içeren [bu örnek mantık uygulamasını oluşturun.](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Bu makaledeki örneği izlemek için, Outlook.com veya Office 365 Outlook hesabıyla [Bu örnek mantıksal uygulamayı oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md) .
 
-  1. E-posta göndermek için eylemi eklediğinizde, bunun yerine bu eylemi bulun ve seçin: **Onay e-postası gönderin**
+  1. E-posta gönder eylemini eklediğinizde bunun yerine bu eylemi bulun ve seçin: **onay e-postası gönder**
 
-     !["Onay e-postası gönder" seçeneğini belirleyin](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
+     !["Onay e-postası gönder" i seçin](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
-  1. Onay e-postasını alan kişi için e-posta adresi gibi gerekli alanları sağlayın. 
-  **Kullanıcı Seçenekleri**altında "Onayla, Reddet" girin.
+  1. Onay e-postasını alan kişinin e-posta adresi gibi gerekli alanları sağlayın. 
+  **Kullanıcı seçenekleri**altında "Onayla, Reddet" yazın.
 
      ![E-posta ayrıntılarını girin](./media/logic-apps-control-flow-switch-statement/send-approval-email-details.png)
 
-## <a name="add-switch-statement"></a>Anahtar ekstresi ekleme
+## <a name="add-switch-statement"></a>Switch açıklaması ekle
 
-1. Bu örnek için, örnek iş akışınızın sonuna bir anahtar bildirimi ekleyin. Son adımdan sonra **Yeni adımı**seçin.
+1. Bu örnek için, örnek iş akışınızı sonuna bir switch açıklaması ekleyin. Son adımdan sonra **yeni adım**' ı seçin.
 
-   Adımlar arasına bir geçiş deyimi eklemek istediğinizde, işaretçiyi anahtar deyimini eklemek istediğiniz okun üzerine taşıyın. Görünen **artı işaretini** (**+**) seçin, ardından **eylem ekle'yi**seçin.
+   Adımlar arasında bir switch açıklaması eklemek istediğinizde, işaretçiyi switch ifadesini eklemek istediğiniz okun üzerine taşıyın. Görüntülenen **artı işaretini** (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Arama kutusuna filtreniz olarak "switch" girin. Bu eylemi seçin: **Geçiş - Denetim**
+1. Arama kutusuna filtreniz olarak "Switch" yazın. Şu eylemi seçin: **Switch-Control**
 
-   ![Anahtar ekle](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
+   ![Anahtar Ekle](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
 
-   Bir anahtar deyimi, bir büyük/küçük harf ve varsayılan bir servis talebiyle görüntülenir. 
-   Varsayılan olarak, bir anahtar deyimi en az bir büyük/küçük harf artı varsayılan durum gerektirir. 
+   Bir switch ifadesi, bir Case ve bir varsayılan durum ile görüntülenir. 
+   Varsayılan olarak, switch ifadesinin en az bir Case ve varsayılan Case olması gerekir. 
 
-   ![Boş varsayılan anahtar deyimi](./media/logic-apps-control-flow-switch-statement/empty-switch.png)
+   ![Boş varsayılan anahtar ekstresi](./media/logic-apps-control-flow-switch-statement/empty-switch.png)
 
-1. Dinamik içerik listesinin görünmesi için **A'daki** kutusunun içini tıklatın. Bu listeden, çıktısı gerçekleştirilecek eylemi belirleyen **SelectedOption** alanını seçin. 
+1. Dinamik içerik listesinin görünmesi için **on** kutusunun içine tıklayın. Bu listeden, çıktısı gerçekleştirilecek eylemi belirleyen **SelectedOption** alanını seçin. 
 
-   !["SelectedOption" seçeneğini belirleyin](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
+   !["SelectedOption" öğesini seçin](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
 
-1. Onaylayanın seçtiği `Approve` servis taleplerini işlemek `Reject`için veya **Büyük/Küçük Harf** ile **Varsayılan**arasına başka bir servis talebi ekleyin. 
+1. `Approve` Onaylayanın veya `Reject`seçtiği durumları Işlemek Için, **büyük/küçük harf** ve **varsayılan**arasında başka bir durum ekleyin. 
 
-   ![Başka bir servis talebi ekleme](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
+   ![Başka bir durum ekleyin](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
 
 1. Bu eylemleri ilgili servis taleplerine ekleyin:
 
-   | Durumda # | **SelectedOption** | Eylem |
+   | Harflerini # | **SelectedOption** | Eylem |
    |--------|--------------------|--------|
-   | Örnek Olay 1 | **Onaylama** | Outlook'u ekle RSS öğesi hakkında ayrıntılı bilgi göndermek için **Approve**yalnızca onaylayan Onayla'yı seçtiğinde **bir e-posta** eylemi gönderin. |
-   | Büyük/Küçük Harf 2 | **Reddet** | Outlook RSS öğesinin reddedildiğini diğer onaylayanlara bildirmek için **bir e-posta** eylemi gönder'i ekleyin. |
-   | Varsayılan | None | Herhangi bir işlem gerekli değil. Bu örnekte, **SelectedOption** yalnızca iki seçeneği olduğundan **Varsayılan** servis talebi boştur. |
+   | Durum 1 | **Onaylama** | Outlook 'U, RSS öğesiyle ilgili ayrıntıları göndermek için yalnızca **onaylayan seçili olduğunda** **bir e-posta gönder** eylemi ekleyin. |
+   | Durum 2 | **Reddet** | Outlook 'un RSS öğesinin reddedildiğini diğer onaylayanlara bildirmek için **e-posta gönder** eylemini ekleyin. |
+   | Varsayılan | Hiçbiri | Herhangi bir işlem gerekli değil. Bu örnekte, **SelectedOption** yalnızca iki seçeneğe sahip olduğundan, **varsayılan** durum boştur. |
    |||
 
-   ![Bitmiş anahtar deyimi](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
+   ![Tamamlanan Switch ekstresi](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
 
 1. Mantıksal uygulamanızı kaydedin. 
 
-   Bu örneği el ile sınamak için, mantık uygulaması yeni bir RSS öğesi bulana ve onay e-postası gönderene kadar **Çalıştır'ı** seçin. 
-   Sonuçları gözlemlemek için **Onayla'yı** seçin.
+   Bu örneği el ile test etmek için Logic App yeni bir RSS öğesi bulana ve bir onay e-postası gönderene kadar **Çalıştır** ' ı seçin. 
+   Sonuçları gözlemlemek için **Onayla** ' yı seçin.
 
 ## <a name="json-definition"></a>JSON tanımı
 
-Artık bir anahtar deyimi kullanarak bir mantık uygulaması oluşturduğunuza göre, anahtar deyiminin arkasındaki üst düzey kod tanımına bakalım.
+Artık bir switch ifadesini kullanarak bir mantıksal uygulama oluşturduğunuza göre, switch ifadesinin arkasındaki üst düzey kod tanımına bakalım.
 
 ``` json
 "Switch": {
@@ -112,21 +112,21 @@ Artık bir anahtar deyimi kullanarak bir mantık uygulaması oluşturduğunuza g
 
 | Etiketle | Açıklama |
 |-------|-------------|
-| `"Switch"`         | Okunabilirlik için yeniden adlandırabileceğiniz anahtar deyiminin adı |
-| `"type": "Switch"` | Eylemin bir geçiş deyimi olduğunu belirtir |
-| `"expression"`     | Bu örnekte, her davaya karşı değerlendirilen onaylayanın seçili seçeneğini, tanımda daha sonra beyan edildiği şekilde belirtir |
-| `"cases"` | Herhangi bir sayıda servis etme vakası tanımlar. Her servis `"Case_*"` talebi için, okunabilirlik için yeniden adlandırabileceğiniz bu servis talebinin varsayılan adıdır |
-| `"case"` | Anahtar deyiminin karşılaştırma için kullandığı sabit ve benzersiz bir değer olması gereken servis talebinin değerini belirtir. Geçiş ifadesi sonucuyla eşleşmezse, `"default"` bölümdeki eylemler çalıştırılır. | 
+| `"Switch"`         | Okunabilirlik için yeniden adlandırabileceği switch ifadesinin adı |
+| `"type": "Switch"` | Eylemin bir switch ifadesinin olduğunu belirtir |
+| `"expression"`     | Bu örnekte, daha sonra tanımda bildirildiği gibi her bir durumda değerlendirilen onaylayanın seçili seçeneğini belirtir |
+| `"cases"` | Herhangi bir sayıda durumu tanımlar. Her durumda, `"Case_*"` bu durumda okunabilirlik için yeniden adlandırılabileceği varsayılan addır. |
+| `"case"` | Anahtar ifadesinin karşılaştırma için kullandığı sabit ve benzersiz bir değer olması gereken Case değerini belirtir. Anahtar ifadesi sonucuyla eşleşen hiçbir durum yoksa, `"default"` bölümündeki eylemler çalıştırılır. | 
 | | | 
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 * Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
-* Özellikler veya öneriler göndermek veya oy kullanmak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.
+* Özellikleri veya önerileri göndermek veya Oylamak için [Azure Logic Apps kullanıcı geri bildirim sitesini](https://aka.ms/logicapps-wish)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Koşula dayalı adımları çalıştırma (koşullu ifadeler)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [Adımları çalıştırma ve yineleme (döngüler)](../logic-apps/logic-apps-control-flow-loops.md)
+* [Bir koşula göre adımları çalıştırın (koşullu deyimler)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [Çalıştır ve Yinele adımları (döngüler)](../logic-apps/logic-apps-control-flow-loops.md)
 * [Paralel adımları çalıştırma veya birleştirme (dallar)](../logic-apps/logic-apps-control-flow-branches.md)
-* [Gruplanmış eylem durumuna (kapsamlara) göre adımları çalıştırma](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [Gruplanmış eylem durumu (kapsamlar) temelinde adımları Çalıştır](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

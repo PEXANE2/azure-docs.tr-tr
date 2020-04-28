@@ -1,24 +1,24 @@
 ---
-title: Azure Fonksiyonları tetikleyici ve bağlama örneği
-description: Azure İşlev bağlamalarını yapılandırmayı öğrenin
+title: Azure Işlevleri tetikleme ve bağlama örneği
+description: Azure Işlev bağlamalarını yapılandırmayı öğrenin
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74227237"
 ---
-# <a name="azure-functions-trigger-and-binding-example"></a>Azure Fonksiyonları tetikleyici ve bağlama örneği
+# <a name="azure-functions-trigger-and-binding-example"></a>Azure Işlevleri tetikleme ve bağlama örneği
 
-Bu makalede, bir Azure İşlevi'nde [tetikleyici ve bağlamaların](./functions-triggers-bindings.md) nasıl yapılandırılabildiğini gösterin.
+Bu makalede bir Azure Işlevinde [tetikleyici ve bağlamaların](./functions-triggers-bindings.md) nasıl yapılandırılacağı gösterilir.
 
-Azure Sıra depolama alanında yeni bir ileti göründüğünde Azure Tablo depolama alanına yeni bir satır yazmak istediğinizi varsayalım. Bu senaryo bir Azure Kuyruk depolaması tetikleyicisi ve bir de Azure Tablo depolamasıçıkış bağlayıcısı kullanılarak gerçekleştirilir. 
+Azure kuyruk depolamada yeni bir ileti göründüğünde Azure Tablo depolama alanına yeni bir satır yazmak istediğinizi varsayalım. Bu senaryo bir Azure Kuyruk depolaması tetikleyicisi ve bir de Azure Tablo depolamasıçıkış bağlayıcısı kullanılarak gerçekleştirilir. 
 
-Bu senaryo için bir *function.json* dosyası aşağıda verilmiştir. 
+Bu senaryo için bir *function. JSON* dosyası aşağıda verilmiştir. 
 
 ```json
 {
@@ -41,18 +41,18 @@ Bu senaryo için bir *function.json* dosyası aşağıda verilmiştir.
 }
 ```
 
-Dizideki `bindings` ilk öğe Sıra depolama tetikleyicisidir. Ve `type` `direction` özellikleri tetikleyiciyi tanımlar. Özellik, `name` sıra iletisi içeriğini alan işlev parametresini tanımlar. İzlenecek sıranın adı içinde `queueName`ve bağlantı dizesi tarafından `connection`tanımlanan uygulama ayarında.
+`bindings` Dizideki Ilk öğe kuyruk depolama tetikleyicisinin bir öğesidir. `type` Ve `direction` özellikleri tetikleyiciyi belirler. `name` Özelliği, kuyruk iletisi içeriğini alan işlev parametresini tanımlar. İzlenecek kuyruğun adı ' nda `queueName`, bağlantı dizesi tarafından `connection`tanımlanan uygulama ayarıdır.
 
-Dizideki `bindings` ikinci öğe Azure Tablo Depolama çıktısı bağlayıcısidır. Ve `type` `direction` özellikleri bağlama yı tanımlar. Özellik, `name` işlev inanın değerini kullanarak bu durumda işlevin yeni tablo satırını nasıl sağladığını belirtir. Tablonun adı içinde `tableName`ve bağlantı dizesi tarafından `connection`tanımlanan uygulama ayarında.
+`bindings` Dizideki ikinci öğe, Azure Tablo depolama çıkış bağlamadır. `type` Ve `direction` özellikleri bağlamayı belirler. `name` Özelliği, işlevin yeni tablo satırını nasıl sağladığını belirtir, bu durumda işlev dönüş değeri ' ni kullanarak. Tablonun `tableName`adı ve bağlantı dizesi tarafından `connection`tanımlanan uygulama ayarıdır.
 
-Azure portalında *function.json* içeriğini görüntülemek ve görüntülemek için, işlevinizin **Tümleştir** sekmesinde **Gelişmiş düzenleyici** seçeneğini tıklatın.
+Azure portal *function. JSON* içeriğini görüntülemek ve düzenlemek için Işlevinizin **tümleştirin** sekmesinde **Gelişmiş Düzenleyici** seçeneğine tıklayın.
 
 > [!NOTE]
-> `connection` Değeri, bağlantı dizesini içeren bir uygulama ayarının adıdır, bağlantı dizesinin kendisini değil. *Bağlamalar, function.json'Un* hizmet sırlarını içermediği en iyi uygulamayı uygulamak için uygulama ayarlarında depolanan bağlantı dizelerini kullanır.
+> Değeri `connection` bağlantı dizesinin kendisini değil bağlantı dizesini içeren bir uygulama ayarının adıdır. Bağlamalar, *function. JSON* ' ın hizmet gizli dizileri içermediğinden en iyi uygulamayı zorlamak için uygulama ayarlarında depolanan bağlantı dizelerini kullanır.
 
-## <a name="c-script-example"></a>C# komut dosyası örneği
+## <a name="c-script-example"></a>C# betiği örneği
 
-İşte bu tetikleyici ve bağlama ile çalışan C# komut dosyası kodu. Sıra iletisi içeriğini sağlayan parametrenin adının; `order` bu ad, `name` *function.json'daki* özellik değeri`order` 
+Bu tetikleyici ve bağlama ile birlikte çalışarak C# betik kodu aşağıda verilmiştir. Kuyruk iletisi içeriğini sağlayan parametresinin adı `order`; `name` *function. JSON* içindeki Özellik değeri şu olduğundan, bu ad gereklidir`order` 
 
 ```cs
 #r "Newtonsoft.Json"
@@ -82,7 +82,7 @@ public class Person
 
 ## <a name="javascript-example"></a>JavaScript örneği
 
-Aynı *function.json* dosyası JavaScript işlevi ile kullanılabilir:
+Aynı *function. JSON* dosyası bir JavaScript işleviyle birlikte kullanılabilir:
 
 ```javascript
 // From an incoming queue message that is a JSON object, add fields and write to Table Storage
@@ -102,7 +102,7 @@ function generateRandomId() {
 
 ## <a name="class-library-example"></a>Sınıf kitaplığı örneği
 
-Sınıf kitaplığında, aynı tetikleyici &mdash; ve bağlama bilgi sırası ve tablo adları, &mdash; depolama hesapları, giriş ve çıktı için işlev parametreleri, bir function.json dosyası yerine öznitelikler tarafından sağlanır. Bir örneği aşağıda verilmiştir:
+Bir sınıf kitaplığında, aynı tetikleyici ve bağlama bilgileri &mdash; kuyruğu ve tablo adları, depolama hesapları, giriş ve çıkış &mdash; için işlev parametreleri, bir Function. JSON dosyası yerine öznitelikler tarafından sağlanır. Bir örneği aşağıda verilmiştir:
 
 ```csharp
 public static class QueueTriggerTableOutput
@@ -130,9 +130,9 @@ public class Person
 }
 ```
 
-Artık bir Azure Kuyruğu tarafından tetiklenen ve verileri Azure Tablo depolamasına aktaran bir çalışma işleviniz var.
+Artık bir Azure kuyruğu tarafından tetiklenen ve Azure Tablo depolama alanına veri çıktısı veren bir çalışma işleviniz var.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure İşlevler bağlama ifade desenleri](./functions-bindings-expressions-patterns.md)
+> [Azure Işlevleri bağlama ifadesi desenleri](./functions-bindings-expressions-patterns.md)

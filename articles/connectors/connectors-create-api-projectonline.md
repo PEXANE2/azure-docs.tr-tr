@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps'tan Project Online'a bağlanın
-description: Azure Mantık Uygulamaları'nı kullanarak Project Online projelerini, görevlerini ve kaynaklarını izleyen, oluşturan ve yöneten iş akışlarını otomatikleştirin
+title: Azure Logic Apps 'tan Project Online 'a bağlanma
+description: Azure Logic Apps kullanarak proje çevrimiçi projelerini, görevleri ve kaynakları izleyen, oluşturan ve yöneten iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,59 +8,59 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 116922e018410f260b33f4dfd76e5983fbbcc0a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789333"
 ---
-# <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>Azure Logic Apps'ı kullanarak Project Online projelerini, görevlerini ve kaynaklarını yönetme
+# <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Project Online projelerini, görevlerini ve kaynaklarını yönetme
 
-Azure Logic Apps ve Project Online bağlayıcısı ile Project Online'da Projeleriniz, görevleriniz ve kaynaklarınız için Office 365 aracılığıyla otomatik görevler ve iş akışları oluşturabilirsiniz. İş akışlarınız bu eylemleri ve diğer eylemleri gerçekleştirebilir, örneğin:
+Azure Logic Apps ve Project Online Bağlayıcısı sayesinde, Office 365 aracılığıyla Project Online 'daki projeleriniz, görevleriniz ve kaynaklarınız için otomatikleştirilmiş görevler ve iş akışları oluşturabilirsiniz. İş akışlarınız bu eylemleri ve diğerlerini gerçekleştirebilir, örneğin:
 
-* Yeni projeler, görevler veya kaynaklar oluşturulduğunda izleyin. Veya yeni projeler yayımlandığında izleyin.
+* Yeni proje, görev veya kaynak oluşturulduğunda izleyin. Ya da yeni projeler yayımlandığında izleyin.
 * Yeni projeler, görevler veya kaynaklar oluşturun.
-* Varolan projeleri veya görevleri listele.
-* Projeleri kontrol edin, iade edin veya yayımlayın.
+* Mevcut projeleri veya görevleri listeleyin.
+* Projeleri kullanıma alma, iade etme veya yayımlama.
 
-Project Online, güçlü proje yönetimi yetenekleri sağlayarak hemen hemen her cihazda proje ve proje portföy yatırımlarını planlamanıza, önceliklendirmenize ve yönetmenize yardımcı olur. Project Online'dan yanıt alan ve çıktıyı diğer eylemleriçin kullanılabilir hale getiren Project Online tetikleyicilerini kullanabilirsiniz. Project Online'da çeşitli görevleri gerçekleştirmek için mantık uygulamalarınızdaki eylemleri kullanabilirsiniz. Mantıksal uygulamalarda yeniyseniz, [Azure Mantık Uygulamaları nedir'yi inceleyin?](../logic-apps/logic-apps-overview.md)
+Project Online, güçlü proje yönetimi özellikleri sağlayarak neredeyse tüm cihazlarda projeler ve proje portföyü yatırımlarını planlamanızı, önceliklendirmenize ve yönetmenize yardımcı olur. Projeden çevrimiçi olarak yanıt alan Project Online tetikleyicilerini kullanabilir ve çıktıyı diğer eylemler için kullanılabilir hale getirebilirsiniz. Project Online 'da çeşitli görevleri gerçekleştirmek için Logic Apps 'teki işlemleri kullanabilirsiniz. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md) olduğunu gözden geçirin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
-* Project Online, Office [365 hesabı](https://www.office.com/)üzerinden kullanılabilir , 
+* [Office 365 hesabıyla](https://www.office.com/)sunulan Project Online, 
 
-* [Mantık uygulamaları oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgiler
+* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
 
-* Project Online verilerinize erişmek istediğiniz mantık uygulaması. Project Online tetikleyicisiyle başlamak için [boş bir mantık uygulaması oluşturun.](../logic-apps/quickstart-create-first-logic-app-workflow.md) Project Online eylemlerini kullanmak için, mantık uygulamanızı başka bir tetikleyiciyle başlatın, **örneğin, Yineleme** tetikleyicisi.
+* Project Online verilerinize erişmek istediğiniz mantıksal uygulama. Bir Project Online tetikleyicisiyle başlamak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). Project Online eylemlerini kullanmak için, mantıksal uygulamanızı başka bir tetikleyici ile başlatın, örneğin **yineleme** tetikleyicisi.
 
-## <a name="connect-to-project-online"></a>Project Online'a bağlanın
+## <a name="connect-to-project-online"></a>Project Online 'a bağlanma
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure portalında](https://portal.azure.com)oturum açın ve mantık uygulamanızı zaten açık değilse Mantık Uygulama Tasarımcısı'nda açın.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
 
 1. Bir yol seçin: 
 
-   * Boş mantık uygulamaları için, arama kutusuna filtreniz olarak "Project Online"ı girin. 
-   Tetikleyiciler listesinin altında, istediğiniz tetikleyiciyi seçin. 
+   * Boş Logic Apps için, arama kutusuna filtreniz olarak "Project Online" yazın. 
+   Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin. 
 
      -veya-
 
-   * Varolan mantık uygulamaları için, eylem eklemek istediğiniz adımAltında **Yeni adımı**seçin. Arama kutusuna filtreniz olarak "Project Online"ı girin. Eylemler listesinin altında, istediğiniz eylemi seçin.
+   * Mevcut Logic Apps için, eylem eklemek istediğiniz adım altında **yeni adım**' ı seçin. Arama kutusuna filtreniz olarak "Project Online" yazın. Eylemler listesi altında istediğiniz eylemi seçin.
 
-1. Project Online'da oturum açmanız istenirse, hemen oturum açın.
+1. Project Online 'da oturum açmanız istenirse, şimdi oturum açın.
 
-   Kimlik bilgileriniz, Project Online'a bağlantı oluşturmak ve verilerinize erişmek için mantık uygulamanıza yetki vetir.
+   Kimlik bilgileriniz, mantıksal uygulamanızı Project Online 'a bir bağlantı oluşturmak ve verilerinize erişmek için yetkilendirin.
 
-1. Seçtiğiniz tetikleyici veya eylem için gerekli ayrıntıları sağlayın ve mantık uygulamanızın iş akışını oluşturmaya devam edin.
+1. Seçtiğiniz tetikleyici veya eyleminiz için gerekli ayrıntıları sağlayın ve mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının OpenAPI (eski adıyla Swagger) açıklamasıyla açıklanan tetikleyiciler, eylemler ve sınırlar hakkındaki teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/projectonline/)inceleyin.
+Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/projectonline/)gözden geçirin.
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 * Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.

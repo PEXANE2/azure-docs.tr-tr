@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps'tan Trello'ya bağlanın
-description: Azure Mantık Uygulamaları'nı kullanarak Trello projelerinizdeki listeleri, panoları ve kartları izleyen ve yöneten görevleri ve iş akışlarını otomatikleştirin
+title: Azure Logic Apps Trello 'a bağlanma
+description: Azure Logic Apps kullanarak Trello projelerinizde listeleri, panoları ve kartları izleyen ve yöneten görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,62 +8,62 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 5c4fcb9b4fea1a4d982b5cf665564599d371b7cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789146"
 ---
-# <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Azure Logic Apps ile Trello'u izleyin ve yönetin
+# <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Azure Logic Apps Trello 'yi izleme ve yönetme
 
-Azure Logic Apps ve Trello konektörü ile Trello listelerinizi, kartlarınızı, panolarınızı, ekip üyelerinizi ve benzeri kişileri izleyen ve yöneten otomatik görevler ve iş akışları oluşturabilirsiniz:
+Azure Logic Apps ve Trello Bağlayıcısı sayesinde Trello listelerinizi, kartlarınızı, panoları, ekip üyelerini ve benzeri işlemleri izleyen ve yöneten otomatik görevler ve iş akışları oluşturabilirsiniz, örneğin:
 
-* Panolara ve listelere yeni kartlar eklendiğinde izleyin. 
-* Panoları, kartları ve listeleri oluşturun, alın ve yönetin.
+* Panolar ve listelere yeni kartlar eklendiğinde izleyin. 
+* Panolar, kartlar ve listeler oluşturun, alın ve yönetin.
 * Kartlara yorum ve üye ekleyin.
-* Liste panoları, pano etiketleri, panodaki kartlar, kart yorumları, kart üyeleri, ekip üyeleri ve üye olduğunuz takımlar. 
-* Takımlar getirin.
+* Bir üye olduğunuz yerde panoları, pano etiketlerini, panoları, kart açıklamalarını, kart üyelerini, ekip üyelerini ve ekiplerini listeleyin. 
+* Takımları al.
 
-Trello hesabınızdan yanıt alan ve çıktıyı diğer eylemleriçin kullanılabilir hale getiren tetikleyiciler kullanabilirsiniz. Trello hesabınızla görevleri gerçekleştiren eylemleri kullanabilirsiniz. Ayrıca diğer eylemler Trello eylemleri çıktı kullanmak olabilir. Örneğin, karta veya listeye yeni bir kart eklendiğinde, Slack bağlayıcısıyla ileti gönderebilirsiniz. Mantıksal uygulamalarda yeniyseniz, [Azure Mantık Uygulamaları nedir'yi inceleyin?](../logic-apps/logic-apps-overview.md)
+Trello hesabınızdan yanıt alan Tetikleyicileri kullanabilir ve çıktıyı diğer eylemler için kullanılabilir hale getirebilirsiniz. Trello hesabınızla görev gerçekleştiren eylemleri kullanabilirsiniz. Ayrıca, Trello eylemlerdeki çıktıyı kullanan başka eylemlere de sahip olabilirsiniz. Örneğin, pano veya listeye yeni bir kart eklendiğinde, bolluk bağlayıcısıyla iletiler gönderebilirsiniz. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md) olduğunu gözden geçirin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
-* Trello hesabınız ve kullanıcı kimlik bilgileriniz
+* Trello hesabınız ve Kullanıcı kimlik bilgileriniz
 
-  Kimlik bilgileriniz, bir bağlantı oluşturmak ve Trello hesabınıza erişmek için mantık uygulamanıza yetki verebilgilidir.
+  Kimlik bilgileriniz, mantıksal uygulamanızı bir bağlantı oluşturmak ve Trello hesabınıza erişmek için yetkilendirirsiniz.
 
-* [Mantık uygulamaları oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgiler
+* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
 
-* Trello hesabınıza erişmek istediğiniz mantık uygulaması. Trello tetikleyicisi ile başlamak için [boş bir mantık uygulaması oluşturun.](../logic-apps/quickstart-create-first-logic-app-workflow.md) Trello eylemini kullanmak için mantık uygulamanızı örneğin **Yineleme** tetikleyicisi gibi bir tetikleyiciyle başlatın.
+* Trello hesabınıza erişmek istediğiniz mantıksal uygulama. Trello tetikleyicisiyle başlamak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). Trello eylemini kullanmak için, mantıksal uygulamanızı bir tetikleyici ile başlatın, örneğin **yineleme** tetikleyicisi.
 
-## <a name="connect-to-trello"></a>Trello'ya bağlanın
+## <a name="connect-to-trello"></a>Trello 'a bağlanma
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure portalında](https://portal.azure.com)oturum açın ve mantık uygulamanızı zaten açık değilse Mantık Uygulama Tasarımcısı'nda açın.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
 
-1. Boş mantık uygulamaları için, arama kutusuna filtreniz olarak "trello" girin. Tetikleyiciler listesinin altında, istediğiniz tetikleyiciyi seçin. 
+1. Boş Logic Apps için, arama kutusuna filtreniz olarak "Trello" yazın. Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin. 
 
    -veya-
 
-   Varolan mantık uygulamaları için, eylem eklemek istediğiniz son adım altında **Yeni adımı**seçin. 
-   Arama kutusuna filtreniz olarak "trello" girin. 
-   Eylemler listesinin altında, istediğiniz eylemi seçin.
+   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. 
+   Arama kutusuna filtreniz olarak "Trello" yazın. 
+   Eylemler listesi altında istediğiniz eylemi seçin.
 
-   Adımlar arasında eylem eklemek için işaretçinizin üzerine adımların arasında ilerleyin. 
-   Görünen artı işaretini (**+**) seçin ve ardından eylem **ekle'yi**seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. 
+   Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Trello'da oturum açmanız istenirse, mantık uygulamanız için erişim yetkisi ve oturum açın.
+1. Trello 'da oturum açmanız istenirse, mantıksal uygulamanız için erişimi yetkilendirin ve oturum açın.
 
-1. Seçtiğiniz tetikleyici veya eylem için gerekli ayrıntıları sağlayın ve mantık uygulamanızın iş akışını oluşturmaya devam edin.
+1. Seçtiğiniz tetikleyici veya eyleminiz için gerekli ayrıntıları sağlayın ve mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının OpenAPI (eski adıyla Swagger) açıklamasıyla açıklanan tetikleyiciler, eylemler ve sınırlar hakkındaki teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/trello/)inceleyin.
+Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/trello/)gözden geçirin.
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 * Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.

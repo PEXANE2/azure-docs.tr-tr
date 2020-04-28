@@ -1,6 +1,6 @@
 ---
-title: Azure Site Kurtarma ile ikincil bir siteye Mimari-VMware/fiziksel olağanüstü durum kurtarma
-description: Bu makalede, şirket içi VMware VM'lerin veya fiziksel Windows/Linux sunucularının Azure Site Kurtarma içeren ikincil bir VMware sitesine olağanüstü kurtarma sırasında kullanılan bileşenlere ve mimariye genel bir bakış sağlanmaktadır.
+title: Mimari-Azure Site Recovery ile ikincil bir siteye VMware/fiziksel olağanüstü durum kurtarma
+description: Bu makalede, şirket içi VMware VM 'lerinin veya fiziksel Windows/Linux sunucularının, Azure Site Recovery ile ikincil bir VMware sitesine olağanüstü durum kurtarması sırasında kullanılan bileşenlere ve mimariye ilişkin genel bir bakış sunulmaktadır.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: b0a46dcf8fe298494a53713f122b1bda8ce07e5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73954586"
 ---
-# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>İkincil bir şirket içi siteye VMware/fiziksel sunucu çoğaltma için mimari
+# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>İkincil şirket içi siteye VMware/fiziksel sunucu çoğaltması için mimari
 
-Bu makalede, olağanüstü durum kurtarma çoğaltma, başarısız ve şirket içi VMware sanal makineleri (VM) veya fiziksel Windows/ Linux sunucularının Azure [Site Kurtarma](site-recovery-overview.md)kullanarak ikincil bir VMware sitesine kurtarılması ayarlandığında kullanılan mimari ve işlemler açıklanmaktadır.
+Bu makalede, şirket içi VMware sanal makinelerinin (VM 'Ler) veya fiziksel Windows/Linux sunucularının [Azure Site Recovery](site-recovery-overview.md)kullanarak Ikincil bir VMware sitesine olağanüstü durum kurtarma çoğaltması, yük devretme ve kurtarma kurulumu sırasında kullanılan mimari ve süreçler açıklanmaktadır.
 
 
 ## <a name="architectural-components"></a>Mimari bileşenler
 
-**Alan** | **Bileşen** | **Şey**
+**Alan** | **Bileşen** | **Bilgileri**
 --- | --- | ---
 **Azure** | Bu senaryoyu, InMage Scout kullanarak dağıtırsınız. | InMage Scout elde etmek için bir Azure aboneliğine sahip olmanız gerekir.<br/><br/> Bir Kurtarma Hizmetleri kasası oluşturduktan sonra InMage Scout hizmetini indirip dağıtımı ayarlamak üzere en son güncelleştirmeleri yüklersiniz.
 **İşlem sunucusu** | Birincil sitede bulunur | Önbelleğe alma, sıkıştırma ve veri iyileştirme işlemlerini yürütmek için işlem sunucusunu dağıtırsınız.<br/><br/> Ayrıca bu sunucu, Birleşik Aracı'nın korumak istediğiniz makinelere göndermeli yükleme işlemini yürütür.
@@ -45,4 +45,4 @@ Bu makalede, olağanüstü durum kurtarma çoğaltma, başarısız ve şirket i�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VMware VM'lerin ve fiziksel sunucuların olağanüstü durum kurtarmasını ikincil bir siteye [ayarlayın.](vmware-physical-secondary-disaster-recovery.md)
+VMware VM 'Leri ve fiziksel sunucuları ikincil bir siteye olağanüstü durum kurtarmayı [ayarlayın](vmware-physical-secondary-disaster-recovery.md) .

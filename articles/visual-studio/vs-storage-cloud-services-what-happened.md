@@ -1,6 +1,6 @@
 ---
-title: Bulut hizmeti projeme ne oldu?
-description: Visual Studio'ya bağlı hizmetleri kullanarak bir Azure depolama hesabına bağlandıktan sonra bulut hizmetleri projesinde neler olduğunu açıklar
+title: Bulut hizmeti projem 'e ne oldu?
+description: Visual Studio bağlı hizmetleri kullanarak bir Azure depolama hesabına bağlandıktan sonra bir bulut hizmetleri projesinde ne olacağını açıklar.
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,30 +14,30 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ac5a635b687e51ddd34899717497548296c2fc23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72298770"
 ---
 # <a name="what-happened-to-my-cloud-services-project-visual-studio-azure-storage-connected-service"></a>Bulut hizmetleri projeme ne oldu (Visual Studio Azure Depolama’ya bağlı hizmet)?
-## <a name="references-added"></a>Eklenen referanslar
-Azure Depolama NuGet paketi Visual Studio projenize eklendi.  
-Bu paket aşağıdaki .NET referansları ekler:
+## <a name="references-added"></a>Başvurular eklendi
+Azure depolama NuGet paketi Visual Studio projenize eklendi.  
+Bu paket, aşağıdaki .NET başvurularını ekler:
 
-* **Microsoft.Data.Edm**
-* **Microsoft.Data.OData**
-* **Microsoft.Data.Services.Client**
-* **Microsoft.WindowsAzure.Configuration**
+* **Microsoft. Data. Edm**
+* **Microsoft. Data. OData**
+* **Microsoft. Data. Services. Client**
+* **Microsoft. WindowsAzure. Configuration**
 * **Microsoft.WindowsAzure.Storage**
 * **Newtonsoft.Json**
 * **System.Data**
-* **System.Spatial**
+* **System. uzamsal**
 
-## <a name="connection-string-for-azure-storage-added"></a>Azure Depolama için bağlantı dizesi eklendi
-Öğeler, seçili depolama hesabının bağlantı dizesi ve anahtarıyla oluşturulmuştur. Aşağıdaki dosyalarda değişiklikler yapıldı:
+## <a name="connection-string-for-azure-storage-added"></a>Azure depolama için bağlantı dizesi eklendi
+Öğeler seçili depolama hesabının bağlantı dizesi ve anahtarıyla oluşturuldu. Aşağıdaki dosyalarda değişiklikler yapılmıştır:
 
-* **ServiceDefinition.csdef**
-* **ServiceConfiguration.Cloud.cscfg**
-* **ServiceConfiguration.Local.cscfg**
+* **ServiceDefinition. csdef**
+* **ServiceConfiguration. Cloud. cscfg**
+* **ServiceConfiguration. Local. cscfg**
 

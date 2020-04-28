@@ -1,29 +1,29 @@
 ---
-title: Java ile güvenli hizmet remoting iletişim
-description: Azure Service Fabric kümesinde çalışan Java güvenilir hizmetleri için hizmet remoting tabanlı iletişimi nasıl güvenli hale erdireceklerini öğrenin.
+title: Java ile güvenli hizmet uzaktan iletişim iletişimleri
+description: Azure Service Fabric kümesinde çalışan Java güvenilir Hizmetleri için hizmet uzaktan iletişim tabanlı iletişimin güvenliğini nasıl sağlayacağınızı öğrenin.
 author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
 ms.openlocfilehash: adefeadf939d398268624343d82c18cbf5ec87cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609647"
 ---
-# <a name="secure-service-remoting-communications-in-a-java-service"></a>Java hizmetinde güvenli hizmet remoting iletişimi
+# <a name="secure-service-remoting-communications-in-a-java-service"></a>Java hizmetinde güvenli hizmet uzaktan iletişim iletişimleri
 > [!div class="op_single_selector"]
 > * [Windows üzerinde C#](service-fabric-reliable-services-secure-communication.md)
 > * [Linux üzerinde Java](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-Güvenlik iletişimin en önemli yönlerinden biridir. Güvenilir Hizmetler uygulama çerçevesi, güvenliği artırmak için kullanabileceğiniz birkaç önceden oluşturulmuş iletişim yığını ve aracı sağlar. Bu makalede, bir Java hizmetinde hizmet remoting kullanırken güvenliği artırmak için nasıl açıklanmıştır. Java'da yazılmış güvenilir hizmetler için remoting'in nasıl ayarlanolacağını açıklayan varolan bir [örnek](service-fabric-reliable-services-communication-remoting-java.md) üzerine inşa edin. 
+Güvenlik, iletişimin en önemli yönlerinden biridir. Reliable Services uygulama çerçevesi, güvenliği artırmak için kullanabileceğiniz, önceden oluşturulmuş birkaç iletişim yığını ve aracı sağlar. Bu makalede, bir Java hizmetinde hizmet uzaktan iletişimini kullanırken güvenliğin nasıl artırılabileceği açıklanır. Java 'da yazılmış güvenilir hizmetler için uzaktan iletişimin nasıl ayarlanacağını anlatan mevcut bir [örnek](service-fabric-reliable-services-communication-remoting-java.md) üzerinde oluşturulur. 
 
-Java hizmetleriyle hizmet remoting'i kullanırken bir hizmetin güvenliğini sağlamak için aşağıdaki adımları izleyin:
+Java hizmetleri ile hizmet uzaktan iletişimini kullanırken bir hizmetin güvenliğinin sağlanmasına yardımcı olmak için şu adımları izleyin:
 
-1. Hizmetinizde uzaktan `HelloWorldStateless`yordam çağrısı için kullanılabilecek yöntemleri tanımlayan bir arabirim oluşturun. Hizmetiniz, pakette beyan edilen, kullanacaktır. `FabricTransportServiceRemotingListener` `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` Bu, `CommunicationListener` remoting yetenekleri sağlayan bir uygulamadır.
+1. Hizmetinize bir uzak yordam `HelloWorldStateless`çağrısı için kullanılabilecek yöntemleri tanımlayan bir arabirim oluşturun. Hizmetiniz, `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` pakette belirtilen `FabricTransportServiceRemotingListener`kullanacaktır. Bu, uzaktan `CommunicationListener` iletişim özellikleri sağlayan bir uygulamasıdır.
 
     ```java
     public interface HelloWorldStateless extends Service {
@@ -45,15 +45,15 @@ Java hizmetleriyle hizmet remoting'i kullanırken bir hizmetin güvenliğini sa�
         }
     }
     ```
-2. Dinleyici ayarları ve güvenlik kimlik bilgileri ekleyin.
+2. Dinleyici ayarlarını ve güvenlik kimlik bilgilerini ekleyin.
 
-    Hizmet iletişiminizin güvenliğini sağlamak için kullanmak istediğiniz sertifikanın kümedeki tüm düğümlere yüklü olduğundan emin olun. Linux'ta çalışan hizmetler için sertifikanın PEM biçimli bir dosya olarak kullanılabilmesi gerekir; sertifika `.pem` ve özel anahtar içeren bir `.crt` dosya veya sertifika ve `.key` özel anahtar içeren bir dosya. Daha fazla bilgi için, [Linux düğümlerinde X.509 sertifikalarının konumu ve biçimine](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes)bakın.
+    Hizmet iletişiminizin güvenli hale getirilmesine yardımcı olmak için kullanmak istediğiniz sertifikanın kümedeki tüm düğümlerde yüklü olduğundan emin olun. Linux üzerinde çalışan hizmetler için, sertifika pek-formmasıor dosyası olarak kullanılabilir olmalıdır; `.pem` sertifikayı ve özel anahtarı içeren bir dosya ya `.crt` da sertifikayı içeren bir dosya ve `.key` özel anahtarı içeren bir dosya. Daha fazla bilgi edinmek için bkz. [Linux düğümlerinde X. 509.440 sertifikalarının konumu ve biçimi](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes).
     
-    Dinleyici ayarlarını ve güvenlik kimlik bilgilerini sağlamanın iki yolu vardır:
+    Dinleyici ayarlarını ve güvenlik kimlik bilgilerini sağlayabilmeniz için iki yol vardır:
 
-   1. Bir [config paketi](service-fabric-application-and-service-manifests.md)kullanarak bunları sağlayın:
+   1. Bunları bir [yapılandırma paketi](service-fabric-application-and-service-manifests.md)kullanarak sağlayın:
 
-       settings.xml dosyasına adlandırılmış `TransportSettings` bir bölüm ekleyin.
+       Settings. xml `TransportSettings` dosyasına bir adlandırılmış bölüm ekleyin.
 
        ```xml
        <!--Section name should always end with "TransportSettings".-->
@@ -68,7 +68,7 @@ Java hizmetleriyle hizmet remoting'i kullanırken bir hizmetin güvenliğini sa�
 
        ```
 
-       Bu durumda, `createServiceInstanceListeners` yöntem aşağıdaki gibi görünecektir:
+       Bu durumda `createServiceInstanceListeners` Yöntem şöyle görünür:
 
        ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
@@ -80,7 +80,7 @@ Java hizmetleriyle hizmet remoting'i kullanırken bir hizmetin güvenliğini sa�
         }
        ```
 
-        Settings.xml `TransportSettings` dosyasına herhangi bir önek olmadan `FabricTransportListenerSettings` bir bölüm eklerseniz, varsayılan olarak bu bölümdeki tüm ayarları yüklersiniz.
+        Herhangi bir önek olmadan `TransportSettings` Settings. xml dosyasına bir bölüm eklerseniz, `FabricTransportListenerSettings` bu bölümdeki tüm ayarları varsayılan olarak yükler.
 
         ```xml
         <!--"TransportSettings" section without any prefix.-->
@@ -88,7 +88,7 @@ Java hizmetleriyle hizmet remoting'i kullanırken bir hizmetin güvenliğini sa�
             ...
         </Section>
         ```
-        Bu durumda, `CreateServiceInstanceListeners` yöntem aşağıdaki gibi görünecektir:
+        Bu durumda `CreateServiceInstanceListeners` Yöntem şöyle görünür:
 
         ```java
         protected List<ServiceInstanceListener> createServiceInstanceListeners() {
@@ -99,9 +99,9 @@ Java hizmetleriyle hizmet remoting'i kullanırken bir hizmetin güvenliğini sa�
             return listeners;
         }
        ```
-3. Bir hizmet proxy oluşturmak için `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` sınıfı kullanmak yerine, remoting yığını nı kullanarak güvenli `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`bir hizmetteki yöntemleri çağırırsanız, kullanın.
+3. Güvenli bir hizmette yöntemleri, bir hizmet proxy 'si oluşturmak için `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` sınıfını kullanmak yerine, uzak bir hizmet proxy 'si kullanarak çağırdığınızda, kullanın. `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`
 
-    İstemci kodu bir hizmetin parçası olarak `FabricTransportSettings` çalışıyorsa, settings.xml dosyasından yükleyebilirsiniz. Daha önce gösterildiği gibi hizmet koduna benzer bir TransportSettings bölümü oluşturun. İstemci kodunda aşağıdaki değişiklikleri yapın:
+    İstemci kodu bir hizmetin parçası olarak çalışıyorsa, `FabricTransportSettings` Settings. xml dosyasından yükleyebilirsiniz. Daha önce gösterildiği gibi, hizmet koduna benzer bir TransportSettings bölümü oluşturun. İstemci kodunda aşağıdaki değişiklikleri yapın:
 
     ```java
 

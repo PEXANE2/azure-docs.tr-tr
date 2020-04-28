@@ -1,48 +1,48 @@
 ---
 title: Kaynak değişikliklerini alma
-description: Kaynağın ne zaman değiştirildiğini nasıl bulacağımı anlayın, değiştirilen özelliklerin listesini alın ve diffs'i değerlendirin.
+description: Bir kaynağın ne zaman değiştiğini öğrenin, değiştirilen özelliklerin bir listesini alın ve diffs 'yi değerlendirin.
 ms.date: 10/09/2019
 ms.topic: how-to
 ms.openlocfilehash: 9504ac77fc4a3b03434912cc65284e2001df6e03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74873038"
 ---
 # <a name="get-resource-changes"></a>Kaynak değişikliklerini alma
 
-Kaynaklar, günlük kullanım, yeniden yapılandırma ve hatta yeniden dağıtım sırasında değiştirilir.
-Değişiklik bir bireyden veya otomatik bir işlemle gelebilir. Çoğu değişiklik tasarım gereğidir, ama bazen değildir. Azure Kaynak Grafiği, değişiklik geçmişinin son 14 gününde şunları yapmanızı sağlar:
+Kaynaklar günlük kullanım, yeniden yapılandırma ve hatta yeniden dağıtım kursu aracılığıyla değiştirilir.
+Değişiklik, bir bireden veya otomatikleştirilmiş bir işlemden gelebilir. Çoğu değişiklik tasarıma göre yapılır, ancak bazen değildir. Değişiklik geçmişinin son 14 günü ile Azure Kaynak Grafiği şunları yapmanızı sağlar:
 
-- Azure Kaynak Yöneticisi özelliğinde değişikliklerin ne zaman algılandığını bulma
-- Her kaynak değişikliği için özellik değişikliği ayrıntılarına bakın
-- Algılanan değişiklikten önce ve sonra kaynağın tam karşılaştırmasını görün
+- Azure Resource Manager özelliğinde değişikliklerin ne zaman algılandığını bulma
+- Her kaynak değişikliği için bkz. özellik değişiklik ayrıntıları
+- Algılanan değişiklikten önce ve sonra kaynağın tam karşılaştırmasına bakın
 
-Değişiklik algılama ve ayrıntılar aşağıdaki örnek senaryolar için değerlidir:
+Değişiklik algılama ve Ayrıntılar aşağıdaki örnek senaryolar için değerlidir:
 
-- Olay yönetimi sırasında _potansiyel olarak_ ilgili değişiklikleri anlamak için. Belirli bir zaman penceresinde olayları değiştirme sorgusu ve değişiklik ayrıntılarını değerlendirin.
-- CMDB olarak bilinen Yapılandırma Yönetimi Veritabanını güncel tutmak. Tüm kaynakları ve tüm mülk kümelerini zamanlanmış bir frekansta yenilemek yerine, yalnızca değişenleri alın.
-- Kaynak uyumluluk durumunu değiştirdiğinde diğer özelliklerin değiştirilmiş olabileceğini anlama. Bu ek özelliklerin değerlendirilmesi, Azure İlkesi tanımı yla yönetilmesi gereken diğer özelliklere ilişkin öngörüler sağlayabilir.
+- Olay yönetimi sırasında, _potansiyel_ olarak ilgili değişiklikleri anlayın. Belirli bir zaman penceresi sırasında değişiklik olayları için sorgulama yapın ve değişiklik ayrıntılarını değerlendirin.
+- CMDB olarak bilinen bir yapılandırma yönetimi veritabanının tutulması, güncel. Tüm kaynakları ve bunların tam özellik kümelerini zamanlanan bir sıklıkta yenilemek yerine yalnızca nelerin değiştiğini alın.
+- Bir kaynağın uyumluluk durumu değiştiğinde başka hangi özelliklerin değiştirildiğini anlama. Bu ek özelliklerin değerlendirilmesi, bir Azure Ilke tanımıyla yönetilmesi gerekebilecek diğer özelliklerle ilgili öngörüler sağlayabilir.
 
-Bu makalede, kaynak grafiğiSDK aracılığıyla bu bilgilerin nasıl toplandığı gösterilmektedir. Bu bilgileri Azure portalında görmek için Azure İlkesi'nin [Değişiklik geçmişi](../../policy/how-to/determine-non-compliance.md#change-history-preview) veya Azure Etkinlik Günlüğü [Değişikliği geçmişi'ne](../../../azure-monitor/platform/activity-log-view.md#azure-portal)bakın.
-Altyapı katmanından uygulama dağıtımına kadar uygulamalarınızda yapılan değişikliklerle ilgili ayrıntılar için Azure Monitor'da [Uygulama Değişikliği Çözümlemesi (önizleme) kullanın'](../../../azure-monitor/app/change-analysis.md) a bakın.
+Bu makalede, kaynak grafiğinin SDK 'Sı aracılığıyla bu bilgilerin nasıl toplanacağı gösterilmektedir. Bu bilgileri Azure portal görmek için bkz. Azure Ilkesinin [değişiklik geçmişi](../../policy/how-to/determine-non-compliance.md#change-history-preview) veya Azure etkinlik günlüğü [değişiklik geçmişi](../../../azure-monitor/platform/activity-log-view.md#azure-portal).
+Altyapı katmanından uygulama dağıtımına kadar olan uygulamalardaki değişiklikler hakkında ayrıntılı bilgi için bkz. Azure Izleyici 'de [uygulama değişiklik analizini (Önizleme) kullanma](../../../azure-monitor/app/change-analysis.md) .
 
 > [!NOTE]
-> Kaynak Grafiği'ndeki değişiklik ayrıntıları Kaynak Yöneticisi özellikleri içindir. Sanal bir makinedeki değişiklikleri izlemek için Azure Automation'ın [Değişiklik izleme](../../../automation/automation-change-tracking.md) veya Azure İlkesi'nin [VM'ler için Konuk](../../policy/concepts/guest-configuration.md)Yapılandırması'na bakın.
+> Kaynak grafiğinde değişiklik ayrıntıları Kaynak Yöneticisi özellikleri içindir. Bir sanal makine içindeki değişiklikleri izlemek için bkz. Azure Otomasyonu 'nun [VM 'ler Için](../../policy/concepts/guest-configuration.md) [değişiklik Izleme](../../../automation/automation-change-tracking.md) veya Azure ilkesinin Konuk yapılandırması.
 
 > [!IMPORTANT]
-> Azure Kaynak Grafiği'ndeki değişiklik geçmişi Genel Önizleme'dedir.
+> Azure Kaynak grafiğindeki değişiklik geçmişi genel önizlemede.
 
-## <a name="find-detected-change-events-and-view-change-details"></a>Algılanan değişiklik olaylarını bulma ve değişiklik ayrıntılarını görüntüleme
+## <a name="find-detected-change-events-and-view-change-details"></a>Algılanan değişiklik olaylarını bul ve değişiklik ayrıntılarını görüntüle
 
-Bir kaynakta neyin değiştiğini görmenin ilk adımı, zaman içinde o kaynakla ilgili değişiklik olaylarını bulmaktır. Her değişiklik olayı, kaynakta nelerin değiştiğine ilişkin ayrıntıları da içerir. Bu adım kaynak **Changes** REST bitiş noktası üzerinden yapılır.
+Bir kaynakta nelerin değiştiğini görmekte olan ilk adım, bu kaynakla ilgili değişiklik olaylarını bir zaman penceresi içinde bulmadır. Her değişiklik olayı, kaynakta nelerin değiştirildiklerin ayrıntılarını da içerir. Bu adım, **Resourcechanges** REST uç noktası aracılığıyla yapılır.
 
-**kaynak Changes** bitiş noktası istek gövdesinde aşağıdaki parametreleri kabul eder:
+**Resourcechanges** uç noktası, istek gövdesinde aşağıdaki parametreleri kabul eder:
 
-- **sourceId** \[\]gerekli : Azure kaynağı üzerinde değişiklik aramak için.
-- **interval** \[gerekli\]aralık : **Zulu Saat Dilimini (Z)** kullanarak bir değişiklik olayının ne zaman denetlenecek lerine göre _başlangıç_ ve _bitiş_ tarihleri olan bir özellik.
-- **fetchPropertyChanges** (isteğe bağlı): Yanıt nesnesi özellik değişiklikleri içeriyorsa ayarlayan bir boolean özelliği.
+- **RESOURCEID** \[gerekli\]: üzerinde değişiklik aranacak Azure kaynağı.
+- **Aralık** \[gerekli\]: **Zulu saat dilimi (Z)** kullanarak bir değişiklik olayının ne zaman denetleneceği için _Başlangıç_ ve _bitiş_ tarihleri içeren bir özellik.
+- **Fetchpropertychanges** (isteğe bağlı): Response nesnesi özellik değişikliklerini içeriyorsa ayarlayan Boolean özellik.
 
 Örnek istek gövdesi:
 
@@ -57,13 +57,13 @@ Bir kaynakta neyin değiştiğini görmenin ilk adımı, zaman içinde o kaynakl
 }
 ```
 
-Yukarıdaki istek gövdesi ile, **kaynak Değişiklikleri** için REST API URI:
+Yukarıdaki istek gövdesiyle, **Resourcechanges** için REST API URI 'si şu şekilde olur:
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChanges?api-version=2018-09-01-preview
 ```
 
-Yanıt bu örneğe benzer:
+Yanıt aşağıdaki örneğe benzer şekilde görünür:
 
 ```json
 {
@@ -140,28 +140,28 @@ Yanıt bu örneğe benzer:
 }
 ```
 
-**resourceId** için algılanan her değişiklik olayı aşağıdaki özelliklere sahiptir:
+**RESOURCEID** için algılanan her değişiklik olayı aşağıdaki özelliklere sahiptir:
 
-- **changeId** - Bu değer bu kaynağa özgüdür. **ChangeId** dizesi bazen başka özellikler içerebilir, ancak yalnızca benzersiz olacağı garanti edilir.
-- **beforeSnapshot** - Değişiklik algılandıktan önce alınan kaynak anlık görüntüsünün **anlık** görüntüsünü ve **zaman damgasını** içerir.
-- **afterSnapshot** - Bir değişiklik algılandıktan sonra alınan kaynak anlık görüntüsünün **anlık** görüntüsünü ve **zaman damgasını** içerir.
-- **changeType** - Önceki Snapshot ve **afterSnapshot** arasındaki tüm değişiklik **afterSnapshot**kaydı için algılanan değişiklik türünü açıklar. Değerler şunlardır: _Oluştur,_ _Güncelleştir_ve _Sil_. **özellikDeğişiklikleri** özellik dizisi yalnızca **changeType** _Güncelleştirildiğinde_eklenir.
-- **özelliklerDeğişiklikler** - Bu özellik **dizisi, önceki Snapshot** ve **afterSnapshot**arasında güncelleştirilen tüm kaynak özelliklerinin ayrıntılarını verir:
-  - **propertyName** - Değiştirilen kaynak özelliğinin adı.
-  - **changeCategory** - Değişikliği neyin yaptığını açıklar. Değerler şunlardır: _Sistem_ ve _Kullanıcı_.
-  - **changeType** - Tek tek kaynak özelliği için algılanan değişiklik türünü açıklar.
-    Değerler şunlardır: _Ekle_, _Güncelleştir_, _Kaldır_.
-  - **beforeValue** - **öncekiSnapshot'taki**kaynak özelliğinin değeri. **changeType** _Insert_olduğunda görüntülenmez.
-  - **afterValue** - **AfterSnapshot'taki**kaynak özelliğinin değeri. **ChangeType** _Kaldır_olduğunda görüntülenmez.
+- **Changeıd** -bu değer bu kaynak için benzersizdir. **Changeıd** dizesi bazen başka özellikler de içerebilirken, yalnızca benzersiz olması garanti edilir.
+- **Beforesnapshot** -bir değişiklik algılanmadan önce alınan kaynak anlık görüntüsünün **anlık görüntü kimliğini** ve **zaman damgasını** içerir.
+- **Aftersnapshot** -bir değişiklik algılandıktan sonra gerçekleştirilen kaynak anlık görüntüsünün **anlık görüntü kimliğini** ve **zaman damgasını** içerir.
+- **ChangeType** - **Beforesnapshot** ve **aftersnapshot**arasındaki değişiklik kaydının tamamı için algılanan değişikliğin türünü açıklar. Değerler şunlardır: _Oluştur_, _Güncelleştir_ve _Sil_. **PropertyChanges** Özellik dizisi yalnızca **ChangeType** _güncelleştirme_olduğunda dahil edilir.
+- **PropertyChanges** -bu özellik dizisi, **Beforesnapshot** ve **aftersnapshot**arasında güncelleştirilmiş kaynak özelliklerinin tümünü ayrıntılardır:
+  - **PropertyName** -değiştirilen kaynak özelliğinin adı.
+  - **Changecategory** -değişikliğin ne yaptığını açıklar. Değerler şunlardır: _sistem_ ve _Kullanıcı_.
+  - **ChangeType** -tek kaynak özelliği için algılanan değişikliğin türünü açıklar.
+    Değerler şunlardır: _Insert_, _Update_, _Remove_.
+  - **Beforevalue** - **Beforesnapshot**içindeki Resource özelliğinin değeri. **ChangeType** _eklendiğinde gösterilmez._
+  - **aftervalue** - **aftersnapshot**içindeki Resource özelliğinin değeri. **ChangeType** 'ı _kaldırırken_gösterilmez.
 
-## <a name="compare-resource-changes"></a>Kaynak değişikliklerini karşılaştırma
+## <a name="compare-resource-changes"></a>Kaynak değişikliklerini karşılaştırın
 
-**Kaynak Changes** **endpoint'teki changeId** **ile, kaynak ChangeDetails** REST bitiş noktası, değiştirilen kaynağın önceki ve sonraki anlık görüntülerini almak için kullanılır.
+**Resourcechanges** uç noktasındaki **Changeıd** Ile, **resourcechangedetails** REST uç noktası daha sonra değiştirilen kaynağın önceki ve sonraki anlık görüntülerini almak için kullanılır.
 
-**kaynakChangeDetails** bitiş noktası istek gövdesinde iki parametre gerektirir:
+**Resourcechangedetails** uç noktası, istek gövdesinde iki parametre gerektirir:
 
-- **resourceId**: Değişiklikleri karşılaştırmak için Azure kaynağı.
-- **changeId**: **Kaynak Değişiklikleri'nden**toplanan **kaynakId** için benzersiz değişiklik olayı.
+- **RESOURCEID**: değişiklikleri karşılaştırmak için Azure kaynağı.
+- **Changeıd**: **resourcechanges**'ten toplanan **RESOURCEID** için benzersiz değişiklik olayı.
 
 Örnek istek gövdesi:
 
@@ -172,13 +172,13 @@ Yanıt bu örneğe benzer:
 }
 ```
 
-Yukarıdaki istek gövdesi ile, **kaynak ChangeDetails** için REST API URI:
+Yukarıdaki istek gövdesiyle, **Resourcechangedetails** için REST API URI 'si:
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChangeDetails?api-version=2018-09-01-preview
 ```
 
-Yanıt bu örneğe benzer:
+Yanıt aşağıdaki örneğe benzer şekilde görünür:
 
 ```json
 {
@@ -280,12 +280,12 @@ Yanıt bu örneğe benzer:
 }
 ```
 
-**önceki Snapshot** ve **afterSnapshot** her anlık görüntü ve o zaman özellikleri alınmıştır zaman verir. Değişiklik, bu anlık görüntüler arasında bir noktada gerçekleşti. Yukarıdaki örneğe baktığımızda, değişen özelliğin **httpsTrafficOnly'u desteklediğini**görebiliriz.
+**Beforesnapshot** ve **aftersnapshot** her biri anlık görüntünün alındığı zamanı ve o anda özellikleri sağlar. Değişiklik, bu anlık görüntüler arasındaki bir noktada gerçekleşti. Yukarıdaki örneğe bakarak, değiştirilen özelliğin **supportsHttpsTrafficOnly**olduğunu görebiliriz.
 
-Sonuçları karşılaştırmak için, **kaynak Değişiklikleri'ndeki** **değişiklik** özelliğini kullanın veya farkı belirlemek için **kaynakChangeDetails'daki** her anlık görüntünün **içerik** bölümünü değerlendirin. Anlık görüntüleri karşılaştırırsanız, **zaman damgası** beklenen olmasına rağmen her zaman bir fark olarak gösterir.
+Sonuçları karşılaştırmak için, **Resourcechanges** içindeki **Changes** özelliğini kullanın veya her bir anlık görüntünün **içerik** bölümünü, bu farkı öğrenmek için **resourcechangedetails** ' de değerlendirin. Anlık görüntüleri karşılaştırırsanız, zaman **damgası** beklenmesine rağmen her zaman fark olarak gösterilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Başlangıç sorgularında](../samples/starter.md)kullanılan dile bakın.
-- [Gelişmiş sorgularda](../samples/advanced.md)gelişmiş kullanımlara bakın.
-- Kaynakları nasıl [keşfedebilirsiniz](../concepts/explore-resources.md)hakkında daha fazla bilgi edinin.
+- Bkz. [Başlangıç sorgularında](../samples/starter.md)kullanılan dil.
+- Gelişmiş [sorgularda](../samples/advanced.md)gelişmiş kullanımlar bölümüne bakın.
+- [Kaynakları araştırma](../concepts/explore-resources.md)hakkında daha fazla bilgi edinin.

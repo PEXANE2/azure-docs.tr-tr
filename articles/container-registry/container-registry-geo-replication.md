@@ -1,20 +1,20 @@
 ---
 title: Kayıt defterini coğrafi olarak çoğaltma
-description: Kayıt defterinin çok büyük bölgesel yinelemelerle birden çok bölgeye hizmet etmesini sağlayan coğrafi olarak çoğaltılmış bir Azure kapsayıcı kayıt defteri oluşturmaya ve yönetmeye başlayın.
+description: Kayıt defterinin çoklu ana bölge çoğaltmalarıyla birden çok bölgeye erişmesini sağlayan coğrafi olarak çoğaltılan bir Azure Container Registry oluşturmaya ve yönetmeye başlayın.
 author: stevelas
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
 ms.openlocfilehash: d238de30e458261a11c941c03ac127c732ca8d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74456450"
 ---
-# <a name="geo-replication-in-azure-container-registry"></a>Azure Kapsayıcı Kayıt Defteri'nde coğrafi çoğaltma
+# <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry coğrafi çoğaltma
 
-Yerel bir varlık veya sıcak yedekleme isteyen şirketler, birden çok Azure bölgesinden hizmetleri çalıştırmayı seçer. En iyi yöntem olarak görüntülerin çalıştığı her bölgeye bir kapsayıcı kayıt defteri yerleştirmek, hızlı ve güvenilir görüntü katmanı aktarımları sağlayan ağa yakın işlemlere olanak tanır. Azure kapsayıcı kayıt defterinin, çoklu ana kaynağa sahip bölgesel kayıt defterleri ile birden çok bölgeyi sunan tek bir kayıt defteri olarak işlev görmesini sağlar. 
+Yerel bir varlık ya da etkin bir yedekleme isteyen şirketler, birden çok Azure bölgesinden Hizmetleri çalıştırmayı seçin. En iyi yöntem olarak görüntülerin çalıştığı her bölgeye bir kapsayıcı kayıt defteri yerleştirmek, hızlı ve güvenilir görüntü katmanı aktarımları sağlayan ağa yakın işlemlere olanak tanır. Azure kapsayıcı kayıt defterinin, çoklu ana kaynağa sahip bölgesel kayıt defterleri ile birden çok bölgeyi sunan tek bir kayıt defteri olarak işlev görmesini sağlar. 
 
 Coğrafi olarak çoğaltılmış bir kayıt defteri aşağıdaki avantajları sağlar:
 
@@ -24,107 +24,107 @@ Coğrafi olarak çoğaltılmış bir kayıt defteri aşağıdaki avantajları sa
 * Kayıt defterinin birden çok bölgede tek yönetimi
 
 > [!NOTE]
-> Birden fazla Azure kapsayıcı kayıt defterinde kapsayıcı görüntülerinin kopyalarını korumanız gerekiyorsa, Azure Kapsayıcı Kayıt Defteri [görüntü alma'yı](container-registry-import-images.md)da destekler. Örneğin, DevOps iş akışında, Docker komutlarını kullanmanıza gerek kalmadan bir resmi geliştirme kayıt defterinden üretim kayıt defterine aktarabilirsiniz.
+> Birden fazla Azure Container Registry 'de kapsayıcı görüntülerinin kopyalarını korumanız gerekiyorsa Azure Container Registry de [görüntü içeri aktarmayı](container-registry-import-images.md)destekler. Örneğin, bir DevOps iş akışında, Docker komutlarını kullanmaya gerek kalmadan bir geliştirme kayıt defterindeki bir görüntüyü üretim kayıt defterine aktarabilirsiniz.
 >
 
 ## <a name="example-use-case"></a>Örnek kullanım örneği
-Contoso, ABD, Kanada ve Avrupa genelinde bulunan bir kamu varlığı web sitesi çalışır. Contoso, bu pazarlara yerel ve ağ yakın içeriğiyle hizmet vermek için Batı ABD, Doğu ABD, Kanada Orta ve Batı Avrupa'da [Azure Kubernetes Service](/azure/aks/) (AKS) kümeleri çalıştırır. Docker görüntüsü olarak dağıtılan web sitesi uygulaması, tüm bölgelerde aynı kodu ve görüntüyü kullanır. Bu bölgeye yerel olan içerik, her bölgede benzersiz olarak sağlanan bir veritabanından alınır. Her bölgesel dağıtım, yerel veritabanı gibi kaynaklar için benzersiz bir yapılandırmaya sahiptir.
+Contoso, ABD, Kanada ve Avrupa 'Da bulunan bir genel varlık Web sitesi çalıştırır. Contoso, yerel ve ağ-kapatma içeriğiyle bu pazarlara hizmet vermek için Batı ABD, Doğu ABD, Kanada Orta ve Batı Avrupa [Azure Kubernetes hizmeti](/azure/aks/) (aks) kümelerini çalıştırır. Docker görüntüsü olarak dağıtılan Web sitesi uygulaması, tüm bölgelerde aynı kod ve görüntüyü kullanır. Bu bölgeye yerel olan içerik, her bölgede benzersiz olarak sağlanan bir veritabanından alınır. Her bölgesel dağıtımın, yerel veritabanı gibi kaynaklar için benzersiz yapılandırması vardır.
 
-Geliştirme ekibi Seattle WA' da, Batı ABD veri merkezini kullanmaktadır.
+Geliştirme ekibi, Batı ABD veri merkezini kullanarak Seattle WA 'da bulunur.
 
-![Birden çok kayıt defterine bastırma](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Birden çok kayıt defterine bastırma*
+![Birden çok kayıt defterlerine iletme](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Birden çok kayıt defterlerine iletme*
 
-Jeo-çoğaltma özelliklerini kullanmadan önce, Contoso'nun Batı Abd'de ABD merkezli bir kayıt defteri ve Batı Avrupa'da ek bir kayıt defteri vardı. Geliştirme ekibi, bu farklı bölgelere hizmet vermek için görüntüleri iki farklı kayıt defterine taşıdı.
+Contoso, coğrafi çoğaltma özelliklerini kullanmadan önce Batı Avrupa ek bir kayıt defteriyle Batı ABD içinde ABD tabanlı kayıt defterine sahipti. Bu farklı bölgelere hizmeti sağlamak için, geliştirme ekibi görüntüleri iki farklı kayıt defterine gönderdi.
 
 ```bash
 docker push contoso.azurecr.io/public/products/web:1.2
 docker push contosowesteu.azurecr.io/public/products/web:1.2
 ```
-![Birden çok kayıt defterinden çekme](media/container-registry-geo-replication/before-geo-replicate-pull.png)<br />*Birden çok kayıt defterinden çekme*
+![Birden çok kayıt defterlerinden çekme](media/container-registry-geo-replication/before-geo-replicate-pull.png)<br />*Birden çok kayıt defterlerinden çekme*
 
-Birden çok kayıt defterinin tipik zorlukları şunlardır:
+Birden çok kayıt defterlerinin tipik sorunları şunlardır:
 
-* Doğu ABD, Batı ABD ve Kanada Merkez kümeleri, bu uzak konteyner ana bilgisayarların her biri Batı ABD veri merkezlerinden görüntüleri çekmek gibi çıkış ücretleri tahakkuk, Batı ABD kayıt tüm çekin.
-* Geliştirme ekibi görüntüleri Batı ABD ve Batı Avrupa kayıtlarına itmelidir.
-* Geliştirme ekibi, her bölgesel dağıtımı yerel kayıt defterine atıfta bulunan görüntü adlarıyla yapılandırmalı ve sürdürmelidir.
-* Kayıt defteri erişimi her bölge için yapılandırılmalıdır.
+* Doğu ABD, Batı ABD ve Kanada Orta kümeleri, bu uzak kapsayıcının her biri için çıkış ücretlerini, Batı ABD veri merkezlerinden çekme görüntüleri barındırarak, tüm Batı ABD kayıt defterinden çeker.
+* Geliştirme ekibinin görüntüleri Batı ABD ve Batı Avrupa kayıt defterlerine itmesi gerekir.
+* Geliştirme ekibinin her bölgesel dağıtımı, yerel kayıt defterine başvuran görüntü adlarıyla yapılandırması ve koruması gerekir.
+* Her bölge için kayıt defteri erişiminin yapılandırılması gerekir.
 
-## <a name="benefits-of-geo-replication"></a>Coğrafi çoğaltmanın faydaları
+## <a name="benefits-of-geo-replication"></a>Coğrafi çoğaltmanın avantajları
 
-![Coğrafi olarak çoğaltılmış bir kayıt defterinden çekme](media/container-registry-geo-replication/after-geo-replicate-pull.png)
+![Coğrafi olarak çoğaltılan bir kayıt defterinden çekme](media/container-registry-geo-replication/after-geo-replicate-pull.png)
 
-Azure Kapsayıcı Kayıt Defteri'nin coğrafi çoğaltma özelliği kullanılarak aşağıdaki avantajlar gerçekleştirilir:
+Azure Container Registry coğrafi çoğaltma özelliğini kullanarak bu avantajlar gerçekleştirilir:
 
-* Tüm bölgelerde tek bir kayıt defterini yönetin:`contoso.azurecr.io`
-* Tüm bölgeler aynı görüntü URL'sini kullandığından, görüntü dağıtımlarının tek bir yapılandırmasını yönetin:`contoso.azurecr.io/public/products/web:1.2`
-* ACR coğrafi çoğaltmayı yönetirken tek bir kayıt defterine itin. Belirli yinelemelerde olayları size bildirmek için bölgesel [webhooks](container-registry-webhook.md) yapılandırabilirsiniz.
+* Tüm bölgelerde tek bir kayıt defterini yönetme:`contoso.azurecr.io`
+* Tüm bölgeler aynı görüntü URL 'sini kullandığı için tek bir görüntü dağıtımı yapılandırmasını yönetin:`contoso.azurecr.io/public/products/web:1.2`
+* Tek bir kayıt defterine göndererek ACR, Coğrafi çoğaltmayı yönetir. Bölgesel [Web kancalarını](container-registry-webhook.md) belirli çoğaltmalarda olayları bilgilendirmek üzere yapılandırabilirsiniz.
 
 ## <a name="configure-geo-replication"></a>Coğrafi çoğaltmayı yapılandırma
 
-Coğrafi çoğaltmayı yapılandırmak, bir haritadaki bölgeleri tıklatmak kadar kolaydır. Ayrıca Azure CLI'deki [az acr çoğaltma](/cli/azure/acr/replication) komutları da dahil olmak üzere araçları kullanarak coğrafi çoğaltmayı yönetebilir veya Azure [Kaynak Yöneticisi şablonuyla](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)coğrafi çoğaltma için etkin leştirilmiş bir kayıt defteri dağıtabilirsiniz.
+Coğrafi çoğaltmanın yapılandırılması, bir haritadaki bölgelere tıklanması kadar kolaydır. Azure CLı 'de [az ACR çoğaltma](/cli/azure/acr/replication) komutları dahil olmak üzere Coğrafi çoğaltmayı yönetebilir veya bir [Azure Resource Manager şablonuyla](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)coğrafi çoğaltma için etkinleştirilmiş bir kayıt defteri dağıtabilirsiniz.
 
-Coğrafi çoğaltma yalnızca Premium [kayıt defterlerinin](container-registry-skus.md) bir özelliğidir. Kayıt defteriniz henüz Premium değilse, [Azure portalında](https://portal.azure.com)Temel ve Standart'tan Premium'a geçiş yapabilirsiniz:
+Coğrafi çoğaltma yalnızca [Premium kayıt defterlerinin](container-registry-skus.md) bir özelliğidir. Kayıt defteriniz henüz Premium değilse, [Azure Portal](https://portal.azure.com)temel ve standart 'den Premium 'a geçiş yapabilirsiniz:
 
-![Azure portalında SK'leri değiştirme](media/container-registry-skus/update-registry-sku.png)
+![Azure portal SKU 'Ları değiştirme](media/container-registry-skus/update-registry-sku.png)
 
-Premium kayıt defteriniz için coğrafi çoğaltmayı yapılandırmak için Azure https://portal.azure.comportalına 'da giriş yapın.
+Premium kayıt defteriniz için Coğrafi çoğaltmayı yapılandırmak üzere, konumundaki https://portal.azure.comAzure Portal oturum açın.
 
-Azure Kapsayıcı Kayıt Defterinize gidin ve **Çoğaltmaları**seçin:
+Azure Container Registry gidin ve **çoğaltmalar**' ı seçin:
 
 ![Azure portalı kapsayıcı kayıt defteri kullanıcı arabirimindeki Çoğaltmalar](media/container-registry-geo-replication/registry-services.png)
 
-Tüm geçerli Azure Bölgelerini gösteren bir harita görüntülenir:
+Geçerli tüm Azure bölgelerini gösteren bir harita görüntülenir:
 
  ![Azure portalındaki bölge haritası](media/container-registry-geo-replication/registry-geo-map.png)
 
-* Mavi altıgenler geçerli yinelemeleri temsil eder
+* Mavi altıgenler geçerli çoğaltmaları temsil eder
 * Yeşil altıgenler olası çoğaltma bölgelerini temsil eder
-* Gri altıgenler, çoğaltma için henüz kullanılamayan Azure bölgelerini temsil eder
+* Gri altıgenler, henüz çoğaltma için kullanılamayan Azure bölgelerini temsil eder
 
-Yinelemeyi yapılandırmak için yeşil altıgen seçin ve ardından **Oluştur'u**seçin:
+Bir çoğaltma yapılandırmak için yeşil bir altıon seçin, sonra **Oluştur**' u seçin.
 
  ![Azure portalında çoğaltma oluşturmaya yönelik kullanıcı arabirimi](media/container-registry-geo-replication/create-replication.png)
 
-Ek yinelemeleri yapılandırmak için, diğer bölgeler için yeşil altıgenleri seçin ve ardından **Oluştur'u**tıklatın.
+Ek çoğaltmalar yapılandırmak için, diğer bölgelerin yeşil altılarını seçin ve ardından **Oluştur**' a tıklayın.
 
-ACR, görselleri yapılandırılan yinelemeler arasında eşitlemeye başlar. Tamamlandıktan sonra, portal *Hazır*yansıtır. Portaldaki yineleme durumu otomatik olarak güncellenmez. Güncelleştirilmiş durumu görmek için yenileme düğmesini kullanın.
+ACR, yapılandırılmış çoğaltmalar genelinde görüntüleri eşitlemeye başlar. Tamamlandıktan sonra Portal, *Ready*olarak yansıtır. Portaldaki çoğaltma durumu otomatik olarak güncelleştirmez. Güncelleştirilmiş durumu görmek için Yenile düğmesini kullanın.
 
-## <a name="considerations-for-using-a-geo-replicated-registry"></a>Coğrafi olarak çoğaltılmış bir kayıt defteri kullanmak için dikkat edilmesi gerekenler
+## <a name="considerations-for-using-a-geo-replicated-registry"></a>Coğrafi olarak çoğaltılan kayıt defteri kullanma konuları
 
-* Coğrafi olarak çoğaltılmış bir kayıt defterindeki her bölge kurulduktan sonra bağımsızdır. Azure Konteyner Kayıt Defteri SLA'ları, coğrafi olarak çoğaltılan her bölge için geçerlidir.
-* Coğrafi olarak çoğaltılan bir kayıt defterinden görüntüleri itdiğinizde veya çektiğinde, arka plandaki Azure Trafik Yöneticisi isteği size en yakın bölgede bulunan kayıt defterine gönderir.
-* Bir resmi veya etiket güncelleştirmesini en yakın bölgeye ittikten sonra, Azure Kapsayıcı Kayıt Defteri'nin bildirimleri ve katmanları tercih ettiğiniz kalan bölgelere çoğaltması biraz zaman alır. Daha büyük görüntülerin çoğaltılması daha küçük görüntülere göre daha uzun sürer. Görüntüler ve etiketler, çoğaltma bölgeleri arasında nihai tutarlılık modeliyle eşitlenir.
-* Coğrafi olarak çoğaltılan push güncellemelerine bağlı iş akışlarını yönetmek için, itme olaylarına yanıt verecek [şekilde web hooks'ları](container-registry-webhook.md) yapılandırmanızı öneririz. Coğrafi olarak çoğaltılan bölgelerde tamamlanan itme olaylarını izlemek için coğrafi olarak çoğaltılan bir kayıt defteri içinde bölgesel web hook'lar ayarlayabilirsiniz.
+* Coğrafi olarak çoğaltılan bir kayıt defterindeki her bölge, ayarlandıktan sonra bağımsızdır. Azure Container Registry SLA 'Lar, coğrafi olarak çoğaltılan her bölge için geçerlidir.
+* Coğrafi olarak çoğaltılan bir kayıt defterinden görüntü gönderdiğinizde veya çektiğinizde, arka planda Azure Traffic Manager, isteği size en yakın bölgede bulunan kayıt defterine gönderir.
+* En yakın bölgeye bir görüntü veya etiket güncelleştirmesi gönderdikten sonra, Azure Container Registry bildirimlerin ve katmanların seçtiğiniz kalan bölgelere çoğaltılması biraz zaman alır. Daha büyük resimler daha küçük olanlara çoğaltılmak için daha uzun sürer. Görüntüler ve Etiketler, son tutarlılık modeliyle çoğaltma bölgeleri arasında eşitlenir.
+* Coğrafi olarak çoğaltılan bir çekme güncelleştirmelerine bağlı olan iş akışlarını yönetmek için, [Web kancalarını](container-registry-webhook.md) anında iletme olaylarına yanıt verecek şekilde yapılandırmanızı öneririz. Coğrafi olarak çoğaltılan bölgelerde gerçekleştirilen anında iletme olaylarını izlemek için coğrafi olarak çoğaltılan bir kayıt defteri içinde bölgesel Web kancaları oluşturabilirsiniz.
 
 ## <a name="delete-a-replica"></a>Bir çoğaltmayı sil
 
-Kayıt defteriniz için bir yineleme yapılandırıldıktan sonra, artık ihtiyaç duyulmamışsa istediğiniz zaman silebilirsiniz. Azure portalını veya Azure CLI'deki [az acr çoğaltma silme](/cli/azure/acr/replication#az-acr-replication-delete) komutunu kullanarak bir yinelemeyi silin.
+Kayıt defteriniz için bir çoğaltma yapılandırdıktan sonra, artık gerekmiyorsa, istediğiniz zaman silebilirsiniz. Azure CLı 'deki [az ACR çoğaltma Delete](/cli/azure/acr/replication#az-acr-replication-delete) komutu gibi Azure Portal veya diğer araçları kullanarak bir çoğaltmayı silin.
 
-Azure portalında bir yinelemeyi silmek için:
+Azure portal bir çoğaltmayı silmek için:
 
-1. Azure Kapsayıcı Kayıt Defteri'nize gidin ve **Çoğaltmaları**seçin.
-1. Yinelemenin adını seçin ve **Sil'i**seçin. Yinelemeyi silmek istediğinizi onaylayın.
+1. Azure Container Registry gidin ve **çoğaltmalar**' ı seçin.
+1. Bir çoğaltmanın adını seçin ve **Sil**' i seçin. Çoğaltmayı silmek istediğinizi onaylayın.
 
 > [!NOTE]
-> Kayıt defteri yinelemesini, yani kayıt *home region* defterini oluşturduğunuz konumu silemezsiniz. Yalnızca kayıt defterinin kendisini silerek ev yinelemesini silebilirsiniz.
+> Kayıt defterinin *giriş bölgesindeki* kayıt defteri çoğaltmasını silemezsiniz, yani kayıt defterini oluşturduğunuz konum. Yalnızca kayıt defterinin kendisini silerek giriş çoğaltmasını silebilirsiniz.
 
 ## <a name="geo-replication-pricing"></a>Coğrafi çoğaltma fiyatlandırması
 
-Coğrafi çoğaltma, Azure Konteyner Kayıt Defteri'nin [Premium SKU](container-registry-skus.md) özelliğidir. Bir kayıt defterini istediğiniz bölgelere çoğalttırken, her bölge için Premium kayıt ücreti alırsınız.
+Coğrafi çoğaltma, Azure Container Registry [PREMIUM SKU](container-registry-skus.md) 'sunun bir özelliğidir. İstediğiniz bölgelere bir kayıt defteri çoğalttığınızda, her bölge için Premium kayıt defteri ücretlerine tabi olursunuz.
 
-Önceki örnekte, Contoso doğu ABD, Kanada Orta ve Batı Avrupa'ya kopyaları ekleyerek iki kayıt defterini bire kadar birleştirmiştir. Contoso, ek yapılandırma veya yönetim olmadan ayda dört kat Premium ödeyecekti. Her bölge artık görüntülerini yerel olarak çekerek, Batı ABD'den Kanada'ya ve Doğu ABD'ye ağ çıkış ücretleri olmadan performansı ve güvenilirliği artırıyor.
+Yukarıdaki örnekte, contoso iki kayıt, Doğu ABD, Kanada Orta ve Batı Avrupa çoğaltmaları ekleyerek bir yukarı Birleşik olarak birleştirilmiş. Contoso, ek yapılandırma veya yönetim olmadan ayda dört kat Premium ödemenizi ister. Her bölge artık görüntülerini yerel olarak çeker, performansı, Batı ABD ağ çıkış ücretleri olmadan Kanada ve Doğu ABD artırır.
 
-## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>Coğrafi olarak çoğaltılan kayıt defterleriyle sorun giderme itme işlemleri
+## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>Coğrafi olarak çoğaltılan kayıt defterlerine gönderim işlemleri sorunlarını giderme
  
-Görüntüyü coğrafi olarak çoğaltılan bir kayıt defterine iten bir Docker istemcisi, tüm görüntü katmanlarını ve manifestounu tek bir yinelenen bölgeye itmeyebilir. Azure Trafik Yöneticisi kayıt defteri isteklerini ağa en yakın yinelenen kayıt defterine yönlendirir, bu durum oluşabilir. Kayıt defterinde *yakındaki* iki çoğaltma bölgesi varsa, görüntü katmanları ve bildirim iki siteye dağıtılabilir ve bildirim doğrulandığında itme işlemi başarısız olur. Bu sorun, kayıt defterinin DNS adının bazı Linux ana bilgisayarlarında çözülme şeklinden oluşur. Bu sorun, istemci tarafı DNS önbelleği sağlayan Windows'da oluşmaz.
+Bir görüntüyü coğrafi olarak çoğaltılan bir kayıt defterine ileten bir Docker istemcisi, tüm görüntü katmanlarını ve bildirimini tek bir çoğaltılan bölgeye gönderemeyebilir. Azure Traffic Manager kayıt defteri isteklerini ağa en yakın çoğaltılan kayıt defterine yönlendirtiğinden bu durum oluşabilir. Kayıt defterinde *yakın* iki çoğaltma bölgesi varsa, görüntü katmanları ve bildirim iki siteye dağıtılabilir ve bildirim doğrulandığında gönderme işlemi başarısız olur. Bu sorun, bazı Linux konaklarındaki kayıt defteri DNS adının çözümlenme yöntemi nedeniyle oluşur. Bu sorun, istemci tarafı DNS önbelleği sağlayan Windows üzerinde oluşmaz.
  
-Bu sorun oluşursa, bir çözüm Linux ana bilgisayar gibi `dnsmasq` istemci tarafı DNS önbelleği uygulamaktır. Bu, kayıt defterinin adının tutarlı bir şekilde çözülmesini sağlamaya yardımcı olur. Bir kayıt defterine gitmek için Azure'da bir Linux VM kullanıyorsanız, [Azure'daki Linux sanal makineleri için DNS Ad Çözümü seçeneklerindeki seçeneklere](../virtual-machines/linux/azure-dns.md)bakın.
+Bu sorun oluşursa, bir çözüm, Linux ana bilgisayarına gibi `dnsmasq` bir ISTEMCI tarafı DNS önbelleğinin uygulanmasından biridir. Bu, kayıt defteri adının tutarlı bir şekilde çözümlendiğinden emin olmanıza yardımcı olur. Azure 'da bir kayıt defterine göndermek için bir Linux VM kullanıyorsanız, bkz. [Azure 'Da Linux sanal makineleri Için DNS ad çözümleme seçenekleri](../virtual-machines/linux/azure-dns.md)seçenekleri.
 
-Görüntüleri iterken DNS çözünürlüğünü en yakın yinelemeye en iyi duruma getirmek için, itme işlemlerinin kaynağıyla aynı Azure bölgelerinde veya Azure dışında çalışırken en yakın bölgede coğrafi olarak çoğaltılan bir kayıt defterini yapılandırın.
+Görüntüleri gönderirken en yakın çoğaltma ile DNS çözümlemesini iyileştirmek için, çekme işlemlerinin kaynağıyla aynı Azure bölgelerinde coğrafi olarak çoğaltılan bir kayıt defteri veya Azure dışında çalışırken en yakın bölgeyi yapılandırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Konteyner Kayıt Defteri'nde üç](container-registry-tutorial-prepare-registry.md)bölümlük öğretici serisine, Coğrafi çoğaltmaya göz atın. Coğrafi olarak çoğaltılmış bir kayıt defteri oluşturma, bir kapsayıcı oluşturma ve `docker push` ardından tek bir komutla konteynerler için birden çok bölgesel Web Apps örneğine dağıtma konusunda yürüyün.
+[Azure Container Registry coğrafi çoğaltma](container-registry-tutorial-prepare-registry.md)olmak üzere üç parçalı öğretici serisine göz atın. Coğrafi olarak çoğaltılan bir kayıt defteri oluşturma, kapsayıcı oluşturma ve daha sonra kapsayıcı örnekleri için birden çok bölgesel Web Apps `docker push` tek bir komutla dağıtma adımları.
 
 > [!div class="nextstepaction"]
-> [Azure Kapsayıcı Kayıt Defteri'nde coğrafi çoğaltma](container-registry-tutorial-prepare-registry.md)
+> [Azure Container Registry coğrafi çoğaltma](container-registry-tutorial-prepare-registry.md)

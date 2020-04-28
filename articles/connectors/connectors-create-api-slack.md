@@ -1,6 +1,6 @@
 ---
-title: Azure Mantık Uygulamalarından Bolluğu'na bağlanın
-description: Azure Mantık Uygulamaları'nı kullanarak Slack hesabınızdaki dosyaları ve kanalları, grupları ve iletileri izleyen görevleri ve iş akışlarını otomatikleştirin
+title: Azure Logic Apps bolluk 'e bağlanma
+description: Azure Logic Apps kullanarak,, dosyaları izleyen ve bolluk hesabınızdaki kanalları, grupları ve iletileri yöneten görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,67 +8,67 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 5f61009ee7b43be618e37acb4a783a54dbf11e55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789180"
 ---
-# <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Azure Logic Apps ile Slack'i izleyin ve yönetin
+# <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Azure Logic Apps ile bolluğu izleyin ve yönetin
 
-Azure Logic Apps ve Slack konektörü ile, Slack dosyalarınızı izleyen ve Örneğin Slack kanallarınızı, iletilerinizi, gruplarınızı ve benzeri kişileri yöneten otomatik görevler ve iş akışları oluşturabilirsiniz:
+Azure Logic Apps ve bolluk Bağlayıcısı sayesinde, bolluk dosyalarınızı izleyen ve bolluk kanallarınızı, iletilerinizi, gruplarınızı ve benzerlerini yönettiğiniz otomatikleştirilmiş görevler ve iş akışları oluşturabilirsiniz. Örneğin:
 
 * Yeni dosyalar oluşturulduğunda izleyin.
-* Kanallar oluşturma, listele ve birleştirme 
-* Mesaj gönderin.
-* Gruplar oluşturun ve ayarlayın rahatsız etmeyin.
+* Kanalları oluşturun, listeleyin ve birleştirin 
+* İleti gönderin.
+* Grupları oluşturun ve rahatsız mayın olarak ayarlayın.
 
-Slack hesabınızdan yanıt alan ve çıktıyı diğer eylemler için kullanılabilir hale getiren tetikleyiciler kullanabilirsiniz. Slack hesabınızla görevleri gerçekleştiren eylemleri kullanabilirsiniz. Diğer eylemlerin Slack eylemlerinden çıktı kullanmasını da sağlayabilirsiniz. Örneğin, yeni bir dosya oluşturulduğunda, Office 365 Outlook bağlayıcısı ile e-posta gönderebilirsiniz. Mantıksal uygulamalarda yeniyseniz, [Azure Mantık Uygulamaları nedir'yi inceleyin?](../logic-apps/logic-apps-overview.md)
+Bolluk hesabınızdan yanıt alan Tetikleyicileri kullanabilir ve çıktıyı diğer eylemler için kullanılabilir hale getirebilirsiniz. Bolluk hesabınızla görevleri gerçekleştiren eylemleri kullanabilirsiniz. Ayrıca, başka eylemlere de bolluk eylemlerinin çıktısını kullanabilirsiniz. Örneğin, yeni bir dosya oluşturulduğunda Office 365 Outlook Bağlayıcısı ile e-posta gönderebilirsiniz. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md) olduğunu gözden geçirin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
-* [Slack](https://slack.com/) hesabınız ve kullanıcı kimlik bilgileriniz
+* [Bolluk](https://slack.com/) hesabınız ve Kullanıcı kimlik bilgileriniz
 
-  Kimlik bilgileriniz, bir bağlantı oluşturmak ve Slack hesabınıza erişmek için mantık uygulamanıza yetki vetir.
+  Kimlik bilgileriniz, mantıksal uygulamanızı bir bağlantı oluşturmak ve bolluk hesabınıza erişmek için yetkilendirin.
 
-* [Mantık uygulamaları oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgiler
+* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
 
-* Slack hesabınıza erişmek istediğiniz mantık uygulaması. Bir Slack tetikleyicisi ile başlamak için [boş bir mantık uygulaması oluşturun.](../logic-apps/quickstart-create-first-logic-app-workflow.md) Bir Slack eylemi kullanmak için, mantık uygulamanızı Slack tetikleyicisi veya **Yineleme** tetikleyicisi gibi başka bir tetikleyici yle başlatın.
+* Bolluk hesabınıza erişmek istediğiniz mantıksal uygulama. Bir bolluk tetikleyicisi ile başlamak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). Bir bolluk eylemi kullanmak için, mantıksal uygulamanızı bolluk tetikleyicisi veya **yineleme** tetikleyicisi gibi başka bir tetikleyici gibi bir tetikleyici ile başlatın.
 
-## <a name="connect-to-slack"></a>Bolluk'a bağlanın
+## <a name="connect-to-slack"></a>Bolluk 'e Bağlan
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure portalında](https://portal.azure.com)oturum açın ve mantık uygulamanızı zaten açık değilse Mantık Uygulama Tasarımcısı'nda açın.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
 
-1. Boş mantık uygulamaları için, arama kutusuna filtreniz olarak "bolluk" girin. Tetikleyiciler listesinin altında, istediğiniz tetikleyiciyi seçin. 
+1. Boş Logic Apps için, arama kutusuna filtreniz olarak "bolluk" yazın. Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin. 
 
    -veya-
 
-   Varolan mantık uygulamaları için, eylem eklemek istediğiniz son adım altında **Yeni adımı**seçin. 
-   Arama kutusuna filtreniz olarak "bolluk" girin. 
-   Eylemler listesinin altında, istediğiniz eylemi seçin.
+   Mevcut Logic Apps için, eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. 
+   Arama kutusuna filtreniz olarak "bolluk" yazın. 
+   Eylemler listesi altında istediğiniz eylemi seçin.
 
-   Adımlar arasında eylem eklemek için işaretçinizin üzerine adımların arasında ilerleyin. 
-   Görünen artı işaretini (**+**) seçin ve ardından eylem **ekle'yi**seçin.
+   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. 
+   Görüntülenen artı işaretini (**+**) seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Slack'te oturum açmanız istenirse, Slack çalışma alanınızda oturum açın. 
+1. Bolluk ' te oturum açmanız istenirse, bolluk çalışma alanınızda oturum açın. 
 
-   ![Slack çalışma alanında oturum açın](./media/connectors-create-api-slack/slack-sign-in-workspace.png)
+   ![Bolluk çalışma alanında oturum aç](./media/connectors-create-api-slack/slack-sign-in-workspace.png)
 
-1. Mantık uygulamanız için erişim yetkisi.
+1. Mantıksal uygulamanız için erişim yetkisi verin.
 
-   ![Slack'e erişimi yetkilendirme](./media/connectors-create-api-slack/slack-authorize-access.png)
+   ![Bolluk 'e erişim yetkisi verme](./media/connectors-create-api-slack/slack-authorize-access.png)
 
-1. Seçtiğiniz tetikleyici veya eylem için gerekli ayrıntıları sağlayın. Mantık uygulamanızın iş akışını oluşturmaya devam etmek için daha fazla eylem ekleyin.
+1. Seçtiğiniz tetikleyici veya eyleminiz için gerekli ayrıntıları sağlayın. Mantıksal uygulamanızın iş akışını oluşturmaya devam etmek için daha fazla eylem ekleyin.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının OpenAPI (eski adıyla Swagger) açıklamasıyla açıklanan tetikleyiciler, eylemler ve sınırlar hakkındaki teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/slack/)inceleyin.
+Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/slack/)gözden geçirin.
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
 * Sorularınız için [Azure Logic Apps forumunu](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) ziyaret edin.
 * Özelliklerle ilgili fikirlerinizi göndermek veya gönderilmiş olanları oylamak için [Logic Apps kullanıcı geri bildirimi sitesini](https://aka.ms/logicapps-wish) ziyaret edin.

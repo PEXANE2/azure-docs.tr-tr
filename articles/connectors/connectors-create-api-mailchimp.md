@@ -1,6 +1,6 @@
 ---
-title: MailChimp'e bağlan
-description: MailChimp REST API'leri ve Azure Logic Apps ile pazarlama e-postaları oluşturma ve yönetme
+title: MailChimp 'e Bağlan
+description: MailChimp REST API 'Leri ve Azure Logic Apps pazarlama e-postalarını oluşturun ve yönetin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,32 +8,32 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: a440f702058abc25bb360111418c451d59c3ab1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789642"
 ---
-# <a name="get-started-with-the-mailchimp-connector"></a>MailChimp konektörü ile başlayın
+# <a name="get-started-with-the-mailchimp-connector"></a>MailChimp bağlayıcısını kullanmaya başlama
 
-MailChimp, işletmelerin pazarlama e-postaları, otomatik mesajlar ve hedefli kampanyalar gönderme de dahil olmak üzere e-posta pazarlama faaliyetlerini yönetmesine ve otomatikleştirmesine olanak tanıyan bir SaaS hizmetidir.
+MailChimp, işletmelerin pazarlama e-postaları, otomatik iletileri ve hedeflenen kampanyaları gönderme dahil e-posta pazarlama etkinliklerini yönetmesini ve otomatikleştirmesini sağlayan bir SaaS hizmetidir.
 
-Şimdi bir Mantık uygulaması oluşturarak işe başlayabilirsiniz, [bkz.](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+Şimdi bir mantıksal uygulama oluşturarak çalışmaya başlamak için bkz. [mantıksal uygulama oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="create-a-connection-to-mailchimp"></a>MailChimp bağlantısı oluşturma
 
-MailChimp ile Mantık uygulamaları oluşturmak için önce bir **bağlantı** oluşturmanız ve ardından aşağıdaki özelliklerin ayrıntılarını sağlamanız gerekir:
+MailChimp ile mantıksal uygulamalar oluşturmak için, önce bir **bağlantı** oluşturmanız ve ardından aşağıdaki özelliklerin ayrıntılarını sağlamanız gerekir:
 
 | Özellik | Gerekli | Açıklama |
 | --- | --- | --- |
-| Belirteç |Evet |MailChimp Kimlik Bilgileri sağlayın |
+| Belirteç |Yes |MailChimp kimlik bilgilerini belirtin |
 
 > [!INCLUDE [Steps to create a connection to MailChimp](../../includes/connectors-create-api-mailchimp.md)]
 
-## <a name="connector-specific-details"></a>Bağlayıcıya özel ayrıntılar
+## <a name="connector-specific-details"></a>Bağlayıcıya özgü ayrıntılar
 
-Swagger'da tanımlanan tetikleyicileri ve eylemleri görüntüleyin ve [bağlayıcı ayrıntılarında](/connectors/mailchimp/)da herhangi bir sınır görün.
+Swagger 'da tanımlanan Tetikleyicileri ve eylemleri görüntüleyin ve ayrıca [bağlayıcı ayrıntılarında](/connectors/mailchimp/)tüm limitleri inceleyin.
 
-## <a name="more-connectors"></a>Daha fazla konektör
+## <a name="more-connectors"></a>Daha fazla bağlayıcı
 
-[API listesine](apis-list.md)geri dön.
+[API listesine](apis-list.md)geri dönün.

@@ -1,6 +1,6 @@
 ---
-title: Azure portalı ile kodlama iş ilerlemesini izleme
-description: Bu öğretici, Azure portalını kullanarak iş ilerlemenizi izleme adımlarını size iletiyor.
+title: Azure portal kodlama işi ilerlemesini izleme
+description: Bu öğretici, Azure portal kullanarak iş ilerleme durumunu izleme adımlarında size yol gösterir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,31 +15,31 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 86c91582256261d701dc3c73b1bdfdcb6002f6e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "64867212"
 ---
-# <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Azure portalı ile kodlama iş ilerlemesini izleme
+# <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Azure portal kodlama işi ilerlemesini izleme
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 ## <a name="overview"></a>Genel Bakış
 
-İşleri çalıştırdığınızda, genellikle iş ilerlemesini izlemek için bir yol gerekir. 
+İşleri çalıştırdığınızda, genellikle işin ilerlemesini izlemek için bir yol gerekir. 
 
 Kodlama işinin ilerleme durumunu izlemek için, **Ayarlar** (sayfanın üst kısmında) ve ardından **İşler**’e tıklayın.
 
 ![İşler](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
-Daha fazla ayrıntı görmek için işi tıklatabilirsiniz.
+Daha fazla ayrıntı görmek için işe tıklayabilirsiniz.
 
 ![İşler](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kodlama işiniz bir olduktan sonra, [burada](media-services-portal-publish.md)açıklandığı gibi varlıklarınızı yayımlayabilir ve oynatabilirsiniz.
+Kodlama işiniz bir tane olduktan sonra, [burada](media-services-portal-publish.md)açıklandığı gibi varlıklarınızı yayımlayabilir ve oynatabilirsiniz.
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

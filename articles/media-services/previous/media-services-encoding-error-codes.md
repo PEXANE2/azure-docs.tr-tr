@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri kodlama hata kodları | Microsoft Dokümanlar
-description: Bu konu, kodlama görevi yürütme sırasında bir hata yla karşılaşılması durumunda döndürülebilecek hata kodlarını listeler...
+title: Azure Media Services kodlama hatası kodları | Microsoft Docs
+description: Bu konuda, kodlama görevi yürütülürken bir hatayla karşılaşılması durumunda döndürülebilecek hata kodları listelenmektedir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,30 +15,30 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "64709517"
 ---
 # <a name="encoding-error-codes"></a>Kodlama hata kodları
 
-Aşağıdaki tabloda, kodlama görevi yürütme sırasında bir hata yla karşılaşılması durumunda döndürülebilecek hata kodları listelenir.  .NET kodunuzda hata ayrıntıları almak için [Hata Ayrıntıları](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) sınıfını kullanın. REST kodunuzda hata ayrıntıları almak için [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST API'sını kullanın.
+Aşağıdaki tabloda, kodlama görevi yürütülürken bir hatayla karşılaşılması durumunda döndürülebilecek hata kodları listelenmektedir.  .NET kodunuzda hata ayrıntılarını almak için [ErrorDetails](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) sınıfını kullanın. REST kodunuzda hata ayrıntılarını almak için [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) REST API kullanın.
 
-| HataDetay.Kod | Olası hata nedenleri |
+| ErrorDetail. Code | Hatanın olası nedenleri |
 | --- | --- |
-| Bilinmiyor |Görevi yürüterken bilinmeyen hata |
-| ErrorDownloadingInputAssetMalformedContent |Hatalı dosya adları, sıfır uzunluktaki dosyalar, yanlış biçimler ve benzeri giriş varlık larını indirmedeki hataları kapsayan hatalar kategorisi. |
-| ErrorDownloadingInputAssetServiceFailure |Hizmet tarafındaki sorunları kapsayan hatalar kategorisi (örneğin, indirme sırasında ağ veya depolama hataları). |
-| ErrorParsingConfiguration |Görevin \<cref="MediaTask.PrivateData"/> (yapılandırma) geçerli olmadığı, örneğin yapılandırmanın geçerli bir sistem önceden ayarlanmadığı veya geçersiz XML içerdiği hatalar kategorisi. |
-| ErrorExecutingTaskMalformedContent |Giriş ortamı dosyalarının içindeki sorunların hataya neden olduğu görevin yürütülmesi sırasındaki hatalar kategorisi. |
-| ErrorExecutingTaskUnsupportedFormat |Ortam işlemcisinin sağlanan dosyaları işleyemediği hatalar kategorisi - ortam biçimi desteklenmez veya Yapılandırma ile eşleşmez. Örneğin, yalnızca video su olan bir varlıktan yalnızca ses çıktısı oluşturmaya çalışmak |
-| Hata İşleme Görevi |Ortam işlemcisinin içerikle ilgisi olmayan görevin işlenmesi sırasında karşılaştığı diğer hatalar kategorisi. |
-| ErrorUploadingOutputAsset |Çıktı kıymetini yüklerken hata kategorisi |
-| HataİptalGörevi |Görevi iptal etmeye çalışırken hataları kapsayacak hatalar kategorisi |
-| Geçici Hata |Geçici sorunları kapsayacak hata kategorisi (örn. Azure Depolama ile geçici ağ sorunları) |
+| Bilinmiyor |Görev yürütülürken bilinmeyen hata oluştu |
+| Errordownloadingınputassetmalformedcontent |Hatalı dosya adları, sıfır uzunluklu dosyalar, yanlış biçimler vb. gibi giriş varlığı indirmede oluşan hataları ele alan hata kategorisi. |
+| Errordownloadingınputassetservicefailure |Hizmet tarafında sorunları ele alan hata kategorisi; Örneğin, indirme sırasında ağ veya depolama hataları. |
+| ErrorParsingConfiguration |Görevin \<göreceği hata kategorisi: cref = "mediatask. privatedata"/> (yapılandırma) geçerli değil, örneğin yapılandırma geçerli bir sistem önayarı değil veya geçersiz XML içeriyor. |
+| ErrorExecutingTaskMalformedContent |Görevin, giriş medya dosyaları içindeki sorunların başarısız olmasına neden olan hata kategorisi. |
+| ErrorExecutingTaskUnsupportedFormat |Medya işlemcisinin belirtilen dosyaları işleyemediğinden oluşan hata kategorisi-medya biçimi desteklenmiyor veya yapılandırmayla eşleşmiyor. Örneğin, yalnızca video içeren bir varlıktan yalnızca ses çıkışı üretme girişimi |
+| ErrorProcessingTask |Medya işlemcisinin içerikle ilgisi olmayan görevin işlenmesi sırasında karşılaştığı diğer hataların kategorisi. |
+| ErrorUploadingOutputAsset |Çıkış varlığı karşıya yüklenirken hata kategorisi |
+| ErrorCancelingTask |Görevi iptal edilmeye çalışılırken oluşan hataları kapsayan hata kategorisi |
+| Geçişli Enterror |Geçici sorunları kapsayan hata kategorisi (örn. Azure depolama ile geçici ağ sorunları) |
 
-**Medya Hizmetleri** ekibinden yardım almak için bir [destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)açın.
+**Media Services** takımdan yardım almak için bir [destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)açın.
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -47,8 +47,8 @@ Aşağıdaki tabloda, kodlama görevi yürütme sırasında bir hata yla karşı
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>İlgili makaleler:
-* [Media Encoder Standart ön ayarlarını özelleştirerek gelişmiş kodlama görevleri gerçekleştirin](media-services-custom-mes-presets-with-dotnet.md)
-* [Kotalar ve Sınırlamalar](media-services-quotas-and-limitations.md)
+* [Media Encoder Standard ön ayarlarını özelleştirerek gelişmiş kodlama görevleri gerçekleştirin](media-services-custom-mes-presets-with-dotnet.md)
+* [Kotalar ve sınırlamalar](media-services-quotas-and-limitations.md)
 
 <!--Reference links in article-->
 [1]: https://azure.microsoft.com/pricing/details/media-services/

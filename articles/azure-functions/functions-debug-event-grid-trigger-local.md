@@ -1,111 +1,111 @@
 ---
-title: Azure İşlevler Olay Izgara yerel hata ayıklama
-description: Olay Ağı olayı tarafından tetiklenen Azure işlevlerini yerel olarak hata ayıklamayı öğrenin
+title: Yerel hata ayıklama Event Grid Azure Işlevleri
+description: Event Grid bir olay tarafından tetiklenen Azure işlevlerini yerel olarak hata ayıklamanın nasıl yapılacağını öğrenin
 author: craigshoemaker
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
 ms.openlocfilehash: 97509001aa66c2c1bf0c91b6b2a5ab25f9d6ec88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74227078"
 ---
-# <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure İşlevi Olay Izgara yerel hata ayıklama tetikleme
+# <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Işlevi Event Grid yerel hata ayıklamayı Tetikle
 
-Bu makalede, bir depolama hesabı tarafından yükseltilen bir Azure Olay Ağı olayı işleyen yerel bir işlevin nasıl hata ayıklanılacağını gösterin. 
+Bu makalede, bir depolama hesabı tarafından oluşturulan Azure Event Grid olayını işleyen yerel bir işlevde hata ayıklama işlemi gösterilmektedir. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Varolan bir işlev uygulaması oluşturma veya kullanma
-- Varolan bir depolama hesabı oluşturma veya kullanma
-- Azure'un yerel işlevinizi aramasına izin vermek için [ngrok'u](https://ngrok.com/) indirin
+- Mevcut bir işlev uygulaması oluşturma veya kullanma
+- Var olan bir depolama hesabı oluşturun veya kullanın
+- Azure 'un yerel işlevinizi aramasını sağlamak için [ngrok](https://ngrok.com/) indirin
 
 ## <a name="create-a-new-function"></a>Yeni bir işlev oluşturma
 
-İşlev uygulamanızı Visual Studio'da açın ve Çözüm Gezgini'ndeki proje adına sağ tıklayın ve **Yeni Azure İşi > ekle'ye**tıklayın.
+İşlev uygulamanızı Visual Studio 'da açın ve Çözüm Gezgini proje adına sağ tıklayın ve **> yeni Azure Işlevi Ekle**' ye tıklayın.
 
-Yeni *Azure İşlevi* penceresinde **Olay Izgara tetikleyicisini** seçin ve **Tamam'ı**tıklatın.
+*Yeni Azure işlevi* penceresinde, **Event Grid tetikleyicisi** ' ni seçin ve **Tamam**' ı tıklatın.
 
 ![Yeni işlev oluşturma](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-function.png)
 
-İşlev oluşturulduktan sonra, kod dosyasını açın ve dosyanın üst kısmında yorumlanan URL'yi kopyalayın. Bu konum Olay Izgara tetikleyicisi yapılandırılırken kullanılır.
+İşlev oluşturulduktan sonra, kod dosyasını açın ve dosyanın en üstünde açıklamalı URL 'YI kopyalayın. Event Grid tetikleyicisi yapılandırılırken bu konum kullanılır.
 
-![Yeri kopyalama](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-copy-location.png)
+![Konumu Kopyala](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-copy-location.png)
 
-Daha sonra, ile başlayan satırda `log.LogInformation`bir kesme noktası ayarlayın.
+Sonra, ile `log.LogInformation`başlayan satırda bir kesme noktası ayarlayın.
 
-![Kesme noktasını ayarlama](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-set-breakpoint.png)
+![Kesme noktası ayarla](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-set-breakpoint.png)
 
 
-Ardından, hata ayıklama oturumu başlatmak için **F5 tuşuna basın.**
+Sonra, bir hata ayıklama oturumu başlatmak için **F5 tuşuna basın** .
 
-## <a name="allow-azure-to-call-your-local-function"></a>Azure'un yerel işlevinizi aramasına izin ver
+## <a name="allow-azure-to-call-your-local-function"></a>Azure 'un yerel işlevinizi aramasını sağlar
 
-Makinenizde debubasyona sahip bir işleve girmek için, Azure'un yerel işlevinizle buluttan iletişim kurmasını sağlamanın bir yolunu etkinleştirmeniz gerekir.
+Makinenizde hata ayıklamakta olan bir işleve bölmek için, Azure 'un buluttan yerel işleviniz ile iletişim kurması için bir yol etkinleştirmeniz gerekir.
 
-[ngrok](https://ngrok.com/) yardımcı programı, Azure'un makinenizde çalışan işlevi araması için bir yol sağlar. Aşağıdaki komutu kullanarak *ngrok* başlatın:
+[Ngrok](https://ngrok.com/) yardımcı programı, Azure 'un makinenizde çalışan işlevi çağırması için bir yol sağlar. Aşağıdaki komutu kullanarak *ngrok* öğesini başlatın:
 
 ```bash
 ngrok http -host-header=localhost 7071
 ```
-Yardımcı program ayarlandıkça, komut penceresi aşağıdaki ekran görüntüsüne benzer olmalıdır:
+Yardımcı program ayarlandığı için komut penceresi aşağıdaki ekran görüntüsüne benzer görünmelidir:
 
-![Ngrok başlat](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
+![Ngrok 'yi Başlat](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
 
-*ngrok* çalıştırıldığında oluşturulan **HTTPS** URL'sini kopyalayın. Bu değer, olay ızgarası bitiş noktasını yapılandırırken kullanılır.
+*Ngrok* çalıştırıldığında oluşturulan **https** URL 'sini kopyalayın. Bu değer, Event Grid olay uç noktası yapılandırılırken kullanılır.
 
 ## <a name="add-a-storage-event"></a>Depolama olayı ekleme
 
-Azure portalını açın ve bir depolama hesabına gidin ve **Etkinlikler** seçeneğini tıklayın.
+Azure portal açın ve bir depolama hesabına gidin ve **Olaylar** seçeneğine tıklayın.
 
-![Depolama hesabı olayı ekleme](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
+![Depolama hesabı ekleme olayı](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-*Etkinlikler* penceresinde, **Etkinlik Aboneliği** düğmesini tıklatın. Çift *Abonelik* penceresinde, Bitiş *Noktası Türü* açılır penceresine tıklayın ve **Web Hook'u**seçin.
+*Olaylar* penceresinde **olay aboneliği** düğmesine tıklayın. *Çift abonelik* penceresinde, *uç nokta türü* açılan listesine tıklayın ve **Web kancası**' yi seçin.
 
 ![Abonelik türünü seçin](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 
-Bitiş noktası türü yapılandırıldıktan sonra, bitiş noktası değerini yapılandırmak için **bitiş noktası seç'e** tıklayın.
+Uç nokta türü yapılandırıldıktan sonra uç nokta değerini yapılandırmak için **uç nokta seç** ' e tıklayın.
 
 ![Uç nokta türünü seçin](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
 
-*Abone Bitiş Noktası* değeri üç farklı değerden oluşur. Önek *ngrok*tarafından oluşturulan HTTPS URL'sidir. URL'nin geri kalanı işlev kodu dosyasında bulunan URL'den gelir ve sonunda işlev adı eklenir. Işlev kodu dosyasından URL ile başlayarak, *ngrok* URL değiştirir `http://localhost:7071` `{functionname}`ve işlev adı değiştirir.
+*Abone uç noktası* değeri üç farklı değerden oluşur. Ön ek, *ngrok*tarafından oluşturulan https URL 'sidir. URL 'nin geri kalanı işlev kodu dosyasında bulunan URL 'den gelir ve işlev adı sona eklenir. İşlev kodu dosyasındaki URL 'den başlayarak, *ngrok* URL 'sinin yerini `http://localhost:7071` alır ve işlev adı değiştirilir `{functionname}`.
 
-Aşağıdaki ekran görüntüsü, son URL'nin nasıl görünmesi gerektiğini gösterir:
+Aşağıdaki ekran görüntüsünde, son URL 'nin nasıl aranacağı gösterilmektedir:
 
-![Bitiş noktası seçimi](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint-selection.png)
+![Uç nokta seçimi](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint-selection.png)
 
-Uygun değeri girdikten sonra **Seçimi Onayla'yı**tıklatın.
+Uygun değeri girdikten sonra **Seçimi Onayla**' ya tıklayın.
 
 > [!IMPORTANT]
-> *Ngrok'a*her başladığınızda, HTTPS URL'si yenilenir ve değer değişir. Bu nedenle, işlevinizi *ngrok*aracılığıyla Azure'a her kez maruz kaldığınızda yeni bir Etkinlik Aboneliği oluşturmanız gerekir.
+> *Ngrok*'yi her BAŞLATTıĞıNıZDA, https URL 'si yeniden oluşturulur ve değer değişir. Bu nedenle, *ngrok*aracılığıyla Işlevinizi Azure 'a her kullanıma sunışınızda yeni bir olay aboneliği oluşturmanız gerekir.
 
 ## <a name="upload-a-file"></a>Dosyayı karşıya yükleme
 
-Artık, yerel işlevinizin işlemesi için bir Olay Izgara olayını tetiklemek için depolama hesabınıza bir dosya yükleyebilirsiniz. 
+Şimdi, yerel işlevinizin işlemesi için bir Event Grid olayı tetiklemek üzere depolama hesabınıza bir dosya yükleyebilirsiniz. 
 
-[Depolama Gezgini'ni](https://azure.microsoft.com/features/storage-explorer/) açın ve depolama hesabınıza bağlanın. 
+[Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) açın ve depolama hesabınıza bağlanın. 
 
-- **Blob Kapları** Genişlet 
-- Sağ tıklayın ve **Blob Konteyner oluştur'u**seçin.
+- **BLOB kapsayıcılarını** Genişlet 
+- Sağ tıklayıp **BLOB kapsayıcısı oluştur**' u seçin.
 - Kapsayıcı **testini** adlandırın
 - *Test* kapsayıcısını seçin
-- **Yükle** düğmesini tıklatın
-- **Dosyaları Yükle'yi** tıklatın
-- Bir dosya seçin ve blob kapsayıcısına yükleyin
+- **Karşıya yükle** düğmesine tıklayın
+- **Dosyaları karşıya yükle** 'ye tıklayın
+- Bir dosya seçin ve BLOB kapsayıcısına yükleyin
 
-## <a name="debug-the-function"></a>İşlevhataayıklama
+## <a name="debug-the-function"></a>İşlevde hata ayıkla
 
-Olay Izgarası yeni bir dosyanın depolama kapsayıcısına yüklendiğini fark ettikten sonra, kesme noktası yerel işlevinizde vurulur.
+Event Grid, depolama kapsayıcısına yeni bir dosya yükledikten sonra, yerel işlevinizde kesme noktası isabet edilir.
 
-![Ngrok başlat](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-breakpoint.png)
+![Ngrok 'yi Başlat](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-breakpoint.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu makalede oluşturulan kaynakları temizlemek için depolama hesabınızdaki **test** kapsayıcısını silin.
+Bu makalede oluşturulan kaynakları temizlemek için Depolama hesabınızdaki **Test** kapsayıcısını silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Karşıya yüklenen görüntüleri yeniden boyutlandırmayı Event Grid kullanarak otomatikleştirme](../event-grid/resize-images-on-storage-blob-upload-event.md)
-- [Azure İşlevler için Olay Izgara tetikleyicisi](./functions-bindings-event-grid.md)
+- [Azure Işlevleri için Event Grid tetikleyicisi](./functions-bindings-event-grid.md)

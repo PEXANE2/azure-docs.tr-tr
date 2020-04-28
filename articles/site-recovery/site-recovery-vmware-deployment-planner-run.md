@@ -1,6 +1,6 @@
 ---
-title: Azure Site Kurtarma ile VMware olağanüstü durum kurtarma için Dağıtım Planlayıcısı çalıştırın
-description: Bu makalede, VMware olağanüstü durum kurtarma için Azure Site Kurtarma Dağıtım Planlayıcısı'nın Azure'da nasıl çalıştırılacak olduğu açıklanmaktadır.
+title: VMware olağanüstü durum kurtarma için Dağıtım Planlayıcısı Azure Site Recovery çalıştırın
+description: Bu makalede, Azure 'da VMware olağanüstü durum kurtarma için Azure Site Recovery Dağıtım Planlayıcısı nasıl çalıştırılacağı açıklanır.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73953293"
 ---
-# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>VMware olağanüstü durum kurtarma için Dağıtım Planlayıcısını çalıştırın
+# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>VMware olağanüstü durum kurtarma için Dağıtım Planlayıcısı çalıştırma
 Bu makale, VMware’den Azure’a üretim dağıtımları için Azure Site Recovery Dağıtım Planlayıcısı kullanım kılavuzudur.
 
 
@@ -42,7 +42,7 @@ Profil oluşturma modunda dağıtım planlayıcısı aracı, sanal makineye ili�
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
-4. Connect-VIServer cmdlet adı olarak tanınmıyorsa, isteğe bağlı olarak aşağıdaki komutu çalıştırmanız gerekebilir.
+4. Cmdlet 'in adı olarak Connect-VIServer tanınmazsa, isteğe bağlı olarak aşağıdaki komutu çalıştırmanız gerekebilir.
 
             Add-PSSnapin VMware.VimAutomation.Core
 
@@ -81,7 +81,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Protokol| (İsteğe bağlı) vCenter’a bağlanmak için protokol 'http' veya 'https' olarak belirtildi. Varsayılan protokol https’dir.|
 | -StorageAccountName | (İsteğe bağlı) Şirket içinden Azure’a veri çoğaltma için ulaşılabilir aktarım hızını bulmak için depolama hesabı adı. Araç, aktarım hızını hesaplamak için test verilerini bu depolama hesabına yükler. Depolama hesabı Genel amaçlı v1 (GPv1) türünde olmalıdır. |
 | -StorageAccountKey | (İsteğe bağlı) Depolama hesabına erişmek için kullanılan depolama hesabı anahtarı. Azure portalı > Depolama hesapları > <*Depolama hesabı adı*> > Ayarlar > Erişim Anahtarları > Anahtar1 adımlarını izleyin. |
-| -Ortam | (isteğe bağlı) Bu, hedef Azure depolama hesabı ortamınızdır. Şu üç değerden herhangi birini alabilir: AzureCloud,AzureUSGovernment, AzureChinaCloud. Varsayılan seçenek AzureCloud değeridir. Hedef Azure bölgeniz Azure ABD Hükümeti veya Azure China 21Vianet olduğunda parametreyi kullanın. |
+| -Ortam | (isteğe bağlı) Bu, hedef Azure depolama hesabı ortamınızdır. Şu üç değerden herhangi birini alabilir: AzureCloud,AzureUSGovernment, AzureChinaCloud. Varsayılan seçenek AzureCloud değeridir. Hedef Azure bölgeniz Azure ABD kamu veya Azure Çin 21Vianet olduğunda bu parametreyi kullanın. |
 
 
 VM’lerinizin en az 7 günlük profilinin oluşturulması önerilir. Değişim sıklığı bir ay içinde değişiklik gösteriyorsa, bu sıklığın en yüksek seviyeye ulaştığı hafta sırasında profil oluşturmanız önerilir. En iyi yöntem, daha iyi öneriler almak için 31 günlük profil oluşturmaktır. Profil oluşturma süresi boyunca ASRDeploymentPlanner.exe çalışmaya devam eder. Araç, profil oluşturma süre girdisini gün cinsinden alır. Aracı hızla sınamak veya kavram kanıtı için, birkaç saatlik veya birkaç dakikalık profil oluşturabilirsiniz. İzin verilen en kısa profil oluşturma süresi 30 dakikadır.
@@ -90,12 +90,12 @@ Profil oluşturma sırasında, Site Recovery’nin çoğaltma sırasında yapıl
 
 Çeşitli sanal makine kümeleri için aracın birden çok örneğini çalıştırabilirsiniz. Sanal makine adlarının, profil kümelerinin hiçbirinde yinelenmediğinden emin olun. Örneğin, on sanal makine (VM1 - VM10) profili oluşturdunuz ve birkaç gün sonra beş sanal makine (VM11 - VM15) profili daha oluşturmak istiyorsunuz; bu durumda, ikinci sanal makine kümesi (VM11 - VM15) için başka bir komut satırı konsolundan aracı çalıştırabilirsiniz. Ancak, ikinci sanal makine kümesinde birinci profil oluşturma örneğinden herhangi bir sanal makine adı olmadığından veya ikinci çalıştırma için farklı bir çıktı dizini kullandığınızdan emin olun. Aracın iki örneği aynı sanal makinelerin profilini oluşturmak için kullanılır ve aynı çıktı dizinini kullanırsa, oluşturulan rapor hatalı olacaktır.
 
-Varsayılan olarak, araç profil ve 1000 VMs'e kadar rapor oluşturmak için yapılandırılır. *ASRDeploymentPlanner.exe.config* dosyasındaki MaxVMsSupported anahtar değerini değiştirerek sınırı değiştirebilirsiniz.
+Araç, varsayılan olarak 1000 VM 'ye kadar rapor oluşturacak ve rapor oluşturacak şekilde yapılandırılmıştır. *ASRDeploymentPlanner.exe.config* dosyasındaki MaxVMsSupported anahtar değerini değiştirerek sınırı değiştirebilirsiniz.
 ```
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-Varsayılan ayarlarla, örneğin 1500 VM profili oluşturmak için iki VMList.txt dosyası oluşturun. Biri 1000 VM, diğeri 500 VM ile listelenir. Biri VMList1.txt, diğeri VMList2.txt ile olmak üzere Azure Site Kurtarma Dağıtım Planlayıcısı'nın iki örneğini çalıştırın. Her iki VMList VM’lerin profil verilerini depolamak için aynı dizin yolunu kullanabilirsiniz.
+Varsayılan ayarlarla, örneğin 1500 VM profili oluşturmak için iki VMList.txt dosyası oluşturun. Biri 1000 VM, diğeri 500 VM ile listelenir. Azure Site Recovery Dağıtım Planlayıcısı iki örneğini çalıştırın, biri VMList1. txt ile diğeri VMList2. txt ile diğeri. Her iki VMList VM’lerin profil verilerini depolamak için aynı dizin yolunu kullanabilirsiniz.
 
 Başta aracın raporu oluşturmak üzere çalıştırıldığı sunucunun RAM boyutu olmak üzere donanım yapılandırmasına göre, işlem yetersiz bellek nedeniyle başarısız olabilir. Donanımınız iyiyse, MaxVMsSupported değerini daha yüksek bir değerle değiştirebilirsiniz.  
 
@@ -136,10 +136,10 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 
 ## <a name="generate-report"></a>Rapor oluşturma
-Araç, rapor çıktısı olarak tüm dağıtım önerilerini özetleyen makro özellikli bir Microsoft Excel dosyası (XLSM dosyası) oluşturur. Rapor adlandırılmış `DeploymentPlannerReport_<unique numeric identifier>.xlsm` ve belirtilen dizine yerleştirilir.
+Araç, rapor çıktısı olarak tüm dağıtım önerilerini özetleyen makro özellikli bir Microsoft Excel dosyası (XLSM dosyası) oluşturur. Rapor adlandırılmış `DeploymentPlannerReport_<unique numeric identifier>.xlsm` ve belirtilen dizine yerleştirilmiş.
 
 >[!NOTE]
->Rapor oluşturma, Excel 2013 veya sonraki bir Windows PC veya Windows Server gerektirir. Bu makinedeki ondalık simge, maliyet tahminlerini oluşturmak için "." olarak yapılandırılmalıdır. Ondalık sembol olarak "" kurulumunuz varsa, lütfen Denetim Masası'ndaki "Tarih, saat veya sayı biçimlerini değiştir" bölümüne gidin ve ondalık sembolü "" olarak değiştirmek için "Ek Ayarlar"a gidin.
+>Rapor oluşturma, Excel 2013 veya üzeri bir Windows BILGISAYARı veya Windows Server gerektirir. Bu makinedeki ondalık sembol, maliyet tahminleri üretmek için "." olarak yapılandırılmalıdır. "," Öğesini ondalık sembol olarak ayarlamış olmanız durumunda, lütfen Denetim Masası 'nda "Tarih, saat veya sayı biçimlerini Değiştir" e gidin ve ondalık sembolünü "." olarak değiştirmek için "ek ayarlar" a gidin.
 
 Profil oluşturma tamamlandıktan sonra, aracı rapor oluşturma modunda çalıştırabilirsiniz. Aşağıdaki tabloda, rapor oluşturma modunda çalışmaya yönelik zorunlu ve isteğe bağlı parametreler listelenmiştir.
 
@@ -159,16 +159,16 @@ Profil oluşturma tamamlandıktan sonra, aracı rapor oluşturma modunda çalı�
 |-Protokol|(İsteğe bağlı) vCenter’a bağlanmak için protokol 'http' veya 'https' olarak belirtildi. Varsayılan protokol https’dir.|
 | -DesiredRPO | (İsteğe bağlı) Dakika cinsinden istenen kurtarma noktası hedefi. Varsayılan değer 15 dakikadır.|
 | -Bandwidth | MB/sn cinsinden bant genişliği. Belirtilen bant genişliği için ulaşılabilecek RPO’yu hesaplamak için kullanılan parametre. |
-| -StartDate | (İsteğe bağlı) AA-GG-YYYY:SS:DD (24 saat biçiminde) cinsinden başlangıç tarihi ve saati. *Başlangıç Tarihi* *EndDate*ile birlikte belirtilmelidir. StartDate belirtildiğinde, StartDate ile EndDate arasında toplanan profili oluşturulmuş veriler için rapor oluşturulur. |
-| -EndDate | (İsteğe bağlı) AA-GG-YYYY:SS:DD (24 saat biçiminde) cinsinden bitiş tarihi ve saati. *Bitiş Tarihi* *Başlangıç Tarihi*ile birlikte belirtilmelidir. EndDate belirtildiğinde, StartDate ile EndDate arasında toplanan profili oluşturulmuş veriler için rapor oluşturulur. |
+| -StartDate | (İsteğe bağlı) AA-GG-YYYY:SS:DD (24 saat biçiminde) cinsinden başlangıç tarihi ve saati. *StartDate* , *EndDate*birlikte belirtilmelidir. StartDate belirtildiğinde, StartDate ile EndDate arasında toplanan profili oluşturulmuş veriler için rapor oluşturulur. |
+| -EndDate | (İsteğe bağlı) AA-GG-YYYY:SS:DD (24 saat biçiminde) cinsinden bitiş tarihi ve saati. *EndDate* , *StartDate*ile birlikte belirtilmelidir. EndDate belirtildiğinde, StartDate ile EndDate arasında toplanan profili oluşturulmuş veriler için rapor oluşturulur. |
 | -GrowthFactor | (İsteğe bağlı) Yüzde olarak ifade edilen büyüme faktörü. Varsayılan değer yüzde 30'dur. |
 | -UseManagedDisks | (Optional) UseManagedDisks - Evet/Hayır. Varsayılan değer Evet’tir. Tek bir depolama hesabında bulunabilecek sanal makine sayısı, sanal makinelerin Yük devretme işleminin/Yük devretme testinin yönetilmeyen disk yerine yönetilen disk üzerinde yapılıp yapılmadığına bağlı olarak hesaplanır. |
-|-SubscriptionId |(İsteğe bağlı) Abonelik GUID’si. Aboneliğinize, aboneliğinize ve **belirtilen para birimindeki**belirli hedef Azure bölgesine dayalı en son fiyatla maliyet tahmin raporu oluşturmanız gerektiğinde bu parametrenin gerekli olduğunu unutmayın.|
+|-SubscriptionId |(İsteğe bağlı) Abonelik GUID’si. Abonelik için en son fiyattan maliyet tahmini raporunu oluşturmanız gerektiğinde bu parametrenin gerekli olduğunu, aboneliğinizle ilişkili teklifi, **belirtilen para birimindeki**belirli hedef Azure bölgeniz için de kullanabilirsiniz.|
 |-TargetRegion|(İsteğe bağlı) Çoğaltmanın hedeflendiği Azure bölgesi. Azure maliyetleri bölgelere göre değiştiğinden, belirli bir Azure bölgesini hedef alan bir rapor oluşturmak için bu parametreyi kullanın.<br>Varsayılan olarak WestUS2 veya en son kullanılan hedef bölge kullanılır.<br>[Desteklenen hedef bölgeler](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions) listesine başvurun.|
 |-OfferId|(İsteğe bağlı) Belirtilen abonelikle ilişkili teklif. Varsayılan olarak MS-AZR-0003P (Kullandıkça Öde) kullanılır.|
 |-Currency|(İsteğe bağlı) Oluşturulan raporda maliyetin gösterileceği para birimi. Varsayılan olarak ABD doları ($) veya en son kullanılan para birimi kullanılır.<br>[Desteklenen para birimleri](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies) listesine başvurun.|
 
-Varsayılan olarak, araç profil ve 1000 VMs'e kadar rapor oluşturmak için yapılandırılır. *ASRDeploymentPlanner.exe.config* dosyasındaki MaxVMsSupported anahtar değerini değiştirerek sınırı değiştirebilirsiniz.
+Araç, varsayılan olarak 1000 VM 'ye kadar rapor oluşturacak ve rapor oluşturacak şekilde yapılandırılmıştır. *ASRDeploymentPlanner.exe.config* dosyasındaki MaxVMsSupported anahtar değerini değiştirerek sınırı değiştirebilirsiniz.
 ```xml
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
@@ -208,7 +208,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Serve
 
 #### <a name="example-7-generate-a-report-for-south-india-azure-region-with-indian-rupee-and-specific-offer-id"></a>Örnek 7: Güney Hindistan Azure bölgesi için Hindistan Rupisi ve belirli teklif kimliğini içeren rapor oluşturma
 
-Abonelik kimliğinin belirli bir para biriminde maliyet raporu oluşturmak için gerekli olduğunu unutmayın.
+Belirli bir para biriminde maliyet raporu oluşturmak için abonelik KIMLIĞININ gerekli olduğunu unutmayın.
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -SubscriptionID 4d19f16b-3e00-4b89-a2ba-8645edf42fe5 -OfferID MS-AZR-0148P -TargetRegion southindia -Currency INR
 ```
@@ -240,12 +240,12 @@ Büyümeyi dağıtım planlaması sırasında ve varsayılan değer yüzde 30 ik
 
 Oluşturulan Microsoft Excel raporu aşağıdaki bilgileri içerir:
 
-* [Şirket Içi Özet](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
+* [Şirket içi Özet](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
 * [Öneriler](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
-* [VM<->Depolama Yerleştirme](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
+* [VM<->depolama yerleşimi](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
 * [Uyumlu VM’ler](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms)
 * [Uyumsuz VM’ler](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
-* [Maliyet Tahmini](site-recovery-vmware-deployment-planner-cost-estimation.md)
+* [Maliyet tahmini](site-recovery-vmware-deployment-planner-cost-estimation.md)
 
 ![Dağıtım planlayıcısı](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
 
@@ -265,7 +265,7 @@ Bir komut satırı konsolu açın ve Site Recovery dağıtım planlama aracını
 | -StorageAccountName | Şirket içinden Azure’a veri çoğaltma için kullanılan bant genişliğini bulmak için depolama hesabı adı. Araç, kullanılan bant genişliğini bulmak için test verilerini bu depolama hesabına yükler. Depolama hesabı Genel amaçlı v1 (GPv1) türünde olmalıdır.|
 | -StorageAccountKey | Depolama hesabına erişmek için kullanılan depolama hesabı anahtarı. Azure portalı > Depolama hesapları > <*Depolama hesabı adı*> > Ayarlar > Erişim Anahtarları > Anahtar1 (veya klasik depolama hesabı için birincil erişim anahtarı) öğesine gidin. |
 | -VMListFile | Kullanılan bant genişliğini hesaplamak için profili oluşturulacak sanal makinelerin listesini içeren dosya. Dosya yolu mutlak veya göreli olabilir. Bu dosya her satırda bir VM adı/IP adresi içermelidir. Dosyada belirtilen sanal makine adı, vCenter sunucusu/vSphere ESXi ana bilgisayarındaki VM adıyla aynı olmalıdır.<br>Örneğin, VMList.txt dosyası aşağıdaki sanal makineleri içerir:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
-| -Ortam | (isteğe bağlı) Bu, hedef Azure depolama hesabı ortamınızdır. Şu üç değerden herhangi birini alabilir: AzureCloud,AzureUSGovernment, AzureChinaCloud. Varsayılan seçenek AzureCloud değeridir. Hedef Azure bölgeniz Azure ABD Hükümeti veya Azure China 21Vianet olduğunda parametreyi kullanın. |
+| -Ortam | (isteğe bağlı) Bu, hedef Azure depolama hesabı ortamınızdır. Şu üç değerden herhangi birini alabilir: AzureCloud,AzureUSGovernment, AzureChinaCloud. Varsayılan seçenek AzureCloud değeridir. Hedef Azure bölgeniz Azure ABD kamu veya Azure Çin 21Vianet olduğunda bu parametreyi kullanın. |
 
 Araç, belirtilen dizinde 64 MB’lık birkaç asrvhdfile<#>.vhd (“#” sayıdır) dosyası oluşturur. Araç, aktarım hızını bulmak için dosyaları depolama hesabına yükler. Aktarım hızı ölçüldükten sonra araç tüm dosyaları depolama hesabından ve yerel sunucudan siler. Araç aktarım hızını hesaplarken herhangi bir nedenle sonlandırılırsa, dosyaları depolama alanından veya yerel sunucudan silmez. Bunları el ile silmeniz gerekir.
 
@@ -291,4 +291,4 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 >  4. [Çoğaltma için kullanılan ağ bant genişliği miktarını artırmak](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth) üzere işlem sunucusundaki Site Recovery ayarlarını değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Oluşturulan raporu analiz etme](site-recovery-vmware-deployment-planner-analyze-report.md).
+* [Oluşturulan raporu analiz edin](site-recovery-vmware-deployment-planner-analyze-report.md).

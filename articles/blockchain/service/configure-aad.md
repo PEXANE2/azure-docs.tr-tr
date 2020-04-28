@@ -1,87 +1,87 @@
 ---
-title: Azure Active Directory erişimini yapılandırma - Azure Blockchain Hizmeti
-description: Azure Etkin Dizin erişimi yle Azure Blockchain Hizmeti nasıl yapılandırılabilirsin?
+title: Azure Active Directory erişimini Yapılandırma-Azure blok zinciri hizmeti
+description: Azure blok zinciri hizmetini Azure Active Directory erişimi ile yapılandırma
 ms.date: 11/22/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 682ab282036fcd592e66942d08a84cdce46d8915
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74455854"
 ---
-# <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Azure Blockchain Hizmeti için Azure Active Directory erişimi nasıl yapılandırılabilen
+# <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Azure blok zinciri hizmeti için Azure Active Directory erişimi yapılandırma
 
-Bu makalede, Azure Active Directory (Azure AD) kullanıcı, grup veya uygulama adlarını kullanarak Azure Blockchain Hizmet düğümlerine nasıl erişim ve bağlanma izni verilip bağlanabileceğinizi öğreneceksiniz.
+Bu makalede, Azure Active Directory (Azure AD) Kullanıcı, Grup veya uygulama kimliklerini kullanarak Azure blok zinciri hizmeti düğümlerine nasıl erişim ve bağlantı sağlayacağınızı öğreneceksiniz.
 
-Azure AD bulut tabanlı kimlik yönetimi sağlar ve tüm kuruluş genelinde tek bir kimlik kullanmanıza ve Azure'daki uygulamalara erişmenize olanak tanır. Azure Blockchain Hizmeti Azure AD ile entegre edilmiştir ve kimlik federasyonu, tek oturum açma ve çok faktörlü kimlik doğrulama gibi avantajlar sunar.
+Azure AD, bulut tabanlı kimlik yönetimi sağlar ve Azure 'daki tüm kurumsal ve erişim uygulamaları genelinde tek bir kimlik kullanmanıza olanak sağlar. Azure blok zinciri hizmeti, Azure AD ile tümleşiktir ve KIMLIK Federasyonu, çoklu oturum açma ve çok faktörlü kimlik doğrulaması gibi avantajlar sağlar.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Azure portalını kullanarak blockchain üyesi oluşturma](create-member.md)
+* [Azure portal kullanarak bir blok zinciri üyesi oluşturma](create-member.md)
 
 ## <a name="grant-access"></a>Erişim verme
 
-Hem üye düzeyinde hem de düğüm düzeyinde erişim izni verebilirsiniz. Üye düzeyinde erişim hakkı verilmesi de üye altındaki tüm düğümlere erişim sağlayacaktır.
+Hem üye düzeyinde hem de düğüm düzeyinde erişim verebilirsiniz. Üye düzeyinde erişim hakları verilmesi, üyenin altındaki tüm düğümlere erişim hakkı verir.
 
-### <a name="grant-member-level-access"></a>Üye düzeyinde erişim izni
+### <a name="grant-member-level-access"></a>Üye düzeyinde erişim verme
 
 Üye düzeyinde erişim izni vermek için.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-1. Access **denetimine (IAM) gidin > rol ataması > ekle.**
-1. **Blockchain Üye Düğümü Erişimi (Önizleme)** rolünü seçin ve erişim izni vermek istediğiniz Azure AD Kimliği nesnesini ekleyin. Azure AD KIMLIĞI nesnesi şu olabilir:
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Erişim denetimi (IAM) > > rol ataması Ekle**' ye gidin.
+1. **Blok zinciri üye düğümü erişimi (Önizleme)** rolünü seçin ve erişim vermek ISTEDIĞINIZ Azure AD kimlik nesnesini ekleyin. Azure AD KIMLIK nesnesi şu olabilir:
 
     | Azure AD nesnesi | Örnek |
     |-----------------|---------|
     | Azure AD kullanıcısı   | `kim@contoso.onmicrosoft.com` |
-    | Azure REKLAM grubu  | `sales@contoso.onmicrosoft.com` |
+    | Azure AD grubu  | `sales@contoso.onmicrosoft.com` |
     | Uygulama Kimliği  | `13925ab1-4161-4534-8d18-812f5ca1ab1e` |
 
     ![Rol ataması ekle](./media/configure-aad/add-role-assignment.png)
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
-### <a name="grant-node-level-access"></a>Düğüm düzeyi erişimini hibe
+### <a name="grant-node-level-access"></a>Düğüm düzeyinde erişim verme
 
-Düğüm güvenliğine gidip erişim vermek istediğiniz düğüm adını tıklatarak düğüm düzeyinde erişim sağlayabilirsiniz.
+Düğüm güvenliği ' ne giderek, erişim vermek istediğiniz düğüm adına tıklayarak düğüm düzeyinde erişim izni verebilirsiniz.
 
-Blockchain Üye Düğümü Erişimi (Önizleme) rolünü seçin ve erişim izni vermek istediğiniz Azure AD Kimliği nesnesini ekleyin.
+Blok zinciri üye düğümü erişimi (Önizleme) rolünü seçin ve erişim vermek istediğiniz Azure AD KIMLIK nesnesini ekleyin.
 
-Daha fazla bilgi için bkz. [Azure Blockchain Hizmeti işlem düğümlerini yapılandır.](configure-transaction-nodes.md#azure-active-directory-access-control)
+Daha fazla bilgi için bkz. [Azure blok zinciri hizmeti işlem düğümlerini yapılandırma](configure-transaction-nodes.md#azure-active-directory-access-control).
 
-## <a name="connect-using-azure-blockchain-connector"></a>Azure Blockchain Konektörü kullanarak bağlanma
+## <a name="connect-using-azure-blockchain-connector"></a>Azure blok zinciri bağlayıcısını kullanarak bağlanma
 
-[Azure Blockchain Bağlayıcısını GitHub'dan](https://github.com/Microsoft/azure-blockchain-connector/)indirin veya klonlayın.
+[Azure blok zinciri bağlayıcısını GitHub 'dan](https://github.com/Microsoft/azure-blockchain-connector/)indirin veya kopyalayın.
 
 ```bash
 git clone https://github.com/Microsoft/azure-blockchain-connector.git
 ```
 
-Kaynak kodundan bağlayıcıyı oluşturmak için **okuma me'deki** hızlı başlangıç bölümünü izleyin.
+Kaynak kodundan bağlayıcıyı derlemek için **Benioku** dosyasındaki hızlı başlangıç bölümünü izleyin.
 
-### <a name="connect-using-an-azure-ad-user-account"></a>Azure AD kullanıcı hesabı kullanarak bağlanma
+### <a name="connect-using-an-azure-ad-user-account"></a>Azure AD Kullanıcı hesabı kullanarak bağlanma
 
-1. Azure AD kullanıcı hesabı kullanarak kimlik doğrulaması yapmak için aşağıdaki komutu çalıştırın. myAADDirectory'yi azure AD etki alanıyla değiştirin. \<\> Örneğin, `yourdomain.onmicrosoft.com`.
+1. Azure AD Kullanıcı hesabı kullanarak kimlik doğrulamak için aşağıdaki komutu çalıştırın. Myaaddirectory \<\> 'yi bir Azure AD etki alanı ile değiştirin. Örneğin, `yourdomain.onmicrosoft.com`.
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
     ```
 
-1. Azure AD kimlik bilgileri için istemleri.
-1. Kullanıcı adınız ve şifrenizle oturum açın.
-1. Başarılı bir kimlik doğrulaması üzerine, yerel proxy'niz blockchain düğümünüze bağlanır. Artık Geth istemcinizi yerel bitiş noktasına ekleyebilirsiniz.
+1. Azure AD kimlik bilgileri ister.
+1. Kullanıcı adınız ve parolanızla oturum açın.
+1. Kimlik doğrulaması başarılı olduğunda, yerel ara sunucunuz blok zinciri düğümünüz ile bağlantı kurar. Şimdi geth istemcinizi Yerel uç noktaya ekleyebilirsiniz.
 
     ```bash
     geth attach http://127.0.0.1:3100
     ```
 
-### <a name="connect-using-an-application-id"></a>Uygulama kimliğini kullanarak bağlanma
+### <a name="connect-using-an-application-id"></a>Uygulama KIMLIĞI kullanarak bağlan
 
-Birçok uygulama, Azure AD kullanıcı hesabı yerine bir uygulama kimliği kullanarak Azure AD ile kimlik doğrulaması sağlar.
+Birçok uygulama, Azure AD Kullanıcı hesabı yerine bir uygulama KIMLIĞI kullanarak Azure AD ile kimlik doğrular.
 
-Bir uygulama kimliği kullanarak düğümünüze bağlanmak için **aadauthcode'u** **aadclient ile değiştirin.**
+Bir uygulama KIMLIĞI kullanarak düğümünüz ile bağlantı kurmak için **aadauthcode** 'u **aadclient**ile değiştirin.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myClientID> -client-secret "<myClientSecret>" -tenant-id <myAADDirectory>
@@ -89,17 +89,17 @@ connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myCl
 
 | Parametre | Açıklama |
 |-----------|-------------|
-| kiracı kimliği | Azure AD etki alanı, Örneğin,`yourdomain.onmicrosoft.com`
-| istemci kimliği | Azure AD'de kayıtlı uygulamanın istemci kimliği
-| istemci-gizli | Azure AD'de kayıtlı uygulamanın istemci sırrı
+| Kiracı kimliği | Örneğin, Azure AD etki alanı`yourdomain.onmicrosoft.com`
+| istemci kimliği | Azure AD 'de kayıtlı uygulamanın istemci KIMLIĞI
+| istemci parolası | Azure AD 'de kayıtlı uygulamanın istemci gizli anahtarı
 
-Azure AD'de bir uygulamanın nasıl kaydedilebildiği hakkında daha fazla bilgi için [bkz: Kaynaklara erişebilen bir Azure REKLAM uygulaması ve hizmet ilkesi oluşturmak için portalı kullanın](../../active-directory/develop/howto-create-service-principal-portal.md)
+Bir uygulamayı Azure AD 'ye kaydetme hakkında daha fazla bilgi için bkz [. nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](../../active-directory/develop/howto-create-service-principal-portal.md)
 
-### <a name="connect-a-mobile-device-or-text-browser"></a>Mobil cihaz veya metin tarayıcısı bağlama
+### <a name="connect-a-mobile-device-or-text-browser"></a>Mobil cihaz veya metin tarayıcısını bağlama
 
-Azure AD kimlik doğrulama açılır ekranının mümkün olmadığı bir mobil aygıt veya metin tabanlı tarayıcı için Azure AD tek seferlik bir parola oluşturur. Parolayı kopyalayabilir ve Azure AD kimlik doğrulaması yla başka bir ortamda devam edebilirsiniz.
+Azure AD kimlik doğrulaması açılır ekran 'nin mümkün olmadığı bir mobil cihaz veya metin tabanlı tarayıcı için, Azure AD bir kerelik geçiş kodu oluşturur. Geçiş kodunu kopyalayabilir ve başka bir ortamda Azure AD kimlik doğrulaması ile devam edebilirsiniz.
 
-Parolayı oluşturmak için **aadauthcode'u** **aaddevice**ile değiştirin. myAADDirectory'yi azure AD etki alanıyla değiştirin. \<\> Örneğin, `yourdomain.onmicrosoft.com`.
+Geçiş kodunu oluşturmak için **aadauthcode** değerini **aaddevice**ile değiştirin. Myaaddirectory \<\> 'yi bir Azure AD etki alanı ile değiştirin. Örneğin, `yourdomain.onmicrosoft.com`.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>
@@ -107,4 +107,4 @@ connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAA
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Blockchain Hizmeti'nde veri güvenliği hakkında daha fazla bilgi için [Azure Blockchain Service güvenliği'ne](data-security.md)bakın.
+Azure blok zinciri hizmeti 'nde veri güvenliği hakkında daha fazla bilgi için bkz. [Azure blok zinciri hizmeti güvenliği](data-security.md).
