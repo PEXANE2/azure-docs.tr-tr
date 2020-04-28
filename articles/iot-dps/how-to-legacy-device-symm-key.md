@@ -1,6 +1,6 @@
 ---
-title: Simetrik tuşları kullanarak eski aygıtları sağlama - Azure IoT Hub Aygıt Sağlama Hizmeti
-description: Aygıt Sağlama Hizmeti (DPS) örneğinizle eski aygıtları sağlamak için simetrik tuşlar nasıl kullanılır?
+title: Simetrik anahtarlar kullanarak eski cihazları Sağlama-Azure IoT Hub cihaz sağlama hizmeti
+description: Cihaz sağlama hizmeti (DPS) örneğiniz ile eski cihazları sağlamak için simetrik anahtarlar kullanma
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -9,45 +9,45 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 4d1a92f3ebf32d2270eb77ec9c79fe860ba090e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75434709"
 ---
-# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Simetrik tuşlar kullanarak eski aygıtlar nasıl sağlar?
+# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Simetrik anahtarlar kullanarak eski cihazları sağlama
 
-Birçok eski aygıtta sık karşılaşılan bir sorun, genellikle tek bir bilgi parçasından oluşan bir kimliğe sahip olmalarıdır. Bu kimlik bilgileri genellikle bir MAC adresi veya seri numarasıdır. Eski aygıtların sertifikası, TPM'si veya aygıtı güvenli bir şekilde tanımlamak için kullanılabilecek başka bir güvenlik özelliği olmayabilir. IoT hub'ı için Cihaz Sağlama Hizmeti, simetrik anahtar attestation içerir. Simetrik anahtar attestation MAC adresi veya seri numarası gibi bilgileri kapalı dayalı bir cihaz tanımlamak için kullanılabilir.
+Birçok eski cihazda yaygın bir sorun, genellikle tek bir bilgi parçasına sahip olan bir kimliğe sahip olmalarıdır. Bu kimlik bilgileri genellikle bir MAC adresi veya seri numarasıdır. Eski cihazlarda, cihazı güvenli bir şekilde tanımlamak için kullanılabilecek bir sertifika, TPM veya başka bir güvenlik özelliği bulunmayabilir. IoT Hub için cihaz sağlama hizmeti simetrik anahtar kanıtlama içerir. Simetrik anahtar kanıtlama, MAC adresi veya seri numarası gibi bilgileri temel alarak bir cihazı belirlemek için kullanılabilir.
 
-Kolayca bir donanım [güvenlik modülü (HSM)](concepts-security.md#hardware-security-module) ve bir sertifika yükleyebilirsiniz, o zaman tanımlamak ve aygıtları sağlama için daha iyi bir yaklaşım olabilir. Bu yaklaşım, tüm aygıtlarınıza dağıtılan kodu güncelleştirmeyi atlamanızı sağlayabilir ve aygıt resminize gömülü gizli bir anahtarınız olmayacaktır.
+Bir [donanım güvenlik modülünü (HSM)](concepts-security.md#hardware-security-module) ve bir sertifikayı kolayca yükleyebiliyorsanız, cihazlarınızı tanımlamaya ve sağlamaya yönelik daha iyi bir yaklaşım olabilir. Bu yaklaşım, tüm cihazlarınıza dağıtılan kodu güncelleştirme işlemini atlamanıza izin verebilir ve cihaz yansımanıza gömülü bir gizli anahtar yoktur.
 
-Bu makalede, ne bir HSM ne de bir sertifika uygun bir seçenek olduğunu varsayar. Ancak, bu aygıtları sağlamak için Aygıt Sağlama Hizmetini kullanmak için aygıt kodunu güncelleştirmek için bir yönteminiz olduğu varsayılır. 
+Bu makalede, ne bir HSM veya bir sertifikanın uygun bir seçenek olduğu varsayılır. Ancak, bu cihazları sağlamak için cihaz kodu güncelleştirme bir yöntem, cihaz sağlama hizmetini kullanmak üzere bir yöntem olduğunu varsayın. 
 
-Bu makalede, aygıt güncelleştirmesinin ana grup anahtarına veya türetilen aygıt anahtarına yetkisiz erişimi önlemek için güvenli bir ortamda gerçekleştiği de varsayar.
+Bu makalede ayrıca, ana grup anahtarına veya türetilmiş cihaz anahtarına yetkisiz erişimi engellemek için cihaz güncelleştirmesinin güvenli bir ortamda gerçekleştiği varsayılmaktadır.
 
 Bu makale Windows tabanlı bir iş istasyonuna yöneliktir. Ancak yordamları Linux üzerinde gerçekleştirebilirsiniz. Bir Linux örneği için, bkz. [Çoklu kiracı için sağlama](how-to-provision-multitenant.md).
 
 > [!NOTE]
-> Bu makalede kullanılan örnek C ile yazılmıştır. [Ayrıca simetrik anahtar örneği sağlayan](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) bir C# cihazı da mevcuttur. Bu örneği kullanmak için [azure-iot-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) deposunu indirin veya klonlayın ve örnek koddaki satır içi yönergeleri izleyin. Portalı kullanarak simetrik bir anahtar kayıt grubu oluşturmak ve örneği çalıştırmak için gereken Kimlik Kapsamı ve kayıt grubu birincil ve ikincil anahtarlarını bulmak için bu makaledeki yönergeleri izleyebilirsiniz. Ayrıca, örneği kullanarak tek tek kayıtlar oluşturabilirsiniz.
+> Bu makalede kullanılan örnek C dilinde yazılmıştır. Ayrıca bir [C# cihaz sağlama simetrik anahtar örneği](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) de mevcuttur. Bu örneği kullanmak için, [Azure-IoT-Samples-CSharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) deposunu indirin veya kopyalayın ve örnek kodda satır içi yönergeleri izleyin. Bu makaledeki yönergeleri izleyerek, portalı kullanarak bir simetrik anahtar kayıt grubu oluşturabilir ve örneği çalıştırmak için gereken KIMLIK kapsamını ve kayıt grubu birincil ve ikincil anahtarlarını bulabilirsiniz. Ayrıca, örneği kullanarak ayrı kayıtlar da oluşturabilirsiniz.
 
 ## <a name="overview"></a>Genel Bakış
 
-Her aygıt için, o aygıtı tanımlayan bilgilere dayalı olarak benzersiz bir kayıt kimliği tanımlanır. Örneğin, MAC adresi veya seri numarası.
+Her bir cihaz için, cihazı tanımlayan bilgileri temel alan benzersiz bir kayıt KIMLIĞI tanımlanır. Örneğin, MAC adresi veya seri numarası.
 
-Aygıt Sağlama Hizmeti ile [simetrik anahtar attestation](concepts-symmetric-key-attestation.md) kullanan bir kayıt grubu oluşturulur. Kayıt grubunda bir grup ana anahtarı yer alır. Bu ana anahtar, her aygıt için benzersiz bir aygıt anahtarı üretmek için her benzersiz kayıt kimliğini karmalamak için kullanılır. Aygıt, aygıt sağlama hizmetiyle ilgili benzersiz kayıt kimliğiyle türetilmiş aygıt anahtarını kullanır ve bir IoT hub'ına atanır.
+[Simetrik anahtar kanıtlama](concepts-symmetric-key-attestation.md) kullanan bir kayıt grubu, cihaz sağlama hizmeti ile oluşturulur. Kayıt grubu, bir grup ana anahtarı içerir. Bu ana anahtar, her bir cihaz için benzersiz bir cihaz anahtarı oluşturmak üzere her benzersiz kayıt KIMLIĞINI karma hale almak için kullanılacaktır. Cihaz, cihaz sağlama hizmeti ile test etmek için bu türetilmiş Cihaz anahtarını benzersiz kayıt KIMLIĞIYLE kullanır ve bir IoT Hub 'ına atanır.
 
-Bu makalede gösterilen aygıt kodu Quickstart ile aynı deseni [izleyecek: Simetrik tuşlara sahip simüle edilmiş bir aygıt.](quick-create-simulated-device-symm-key.md) Kod, [Azure IoT C SDK'dan](https://github.com/Azure/azure-iot-sdk-c)alınan bir örneği kullanarak bir aygıtı simüle eder. Benzetimli aygıt, hızlı başlatmada gösterildiği gibi tek bir kayıt yerine bir kayıt grubuyla doğrulayacaktır.
+Bu makalede gösterilen cihaz kodu, [hızlı başlangıç: simetrik anahtarlarla bir sanal cihaz sağlama ile](quick-create-simulated-device-symm-key.md)aynı kalıbı izler. Kod, [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)' dan bir örnek kullanarak bir cihazın benzetimini yapar. Sanal cihaz, hızlı başlangıçta gösterildiği gibi tek bir kayıt yerine kayıt grubuyla test eder.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Azure portalı ile IoT Hub Aygıt Sağlama Hizmeti Ayarlama'nın](./quick-setup-auto-provision.md) tamamlanması.
+* [IoT Hub cihazı sağlama hizmetini Azure Portal](./quick-setup-auto-provision.md) hızlı başlangıç ile tamamlama.
 
-Aşağıdaki ön koşullar Windows geliştirme ortamı içindir. Linux veya macOS için, SDK belgelerinde [geliştirme ortamınızı hazırlayın'daki](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) uygun bölüme bakın.
+Aşağıdaki Önkoşullar bir Windows geliştirme ortamı içindir. Linux veya macOS için SDK belgelerinde [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) konusunun ilgili bölümüne bakın.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 ile ['C++'](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) iş yükü ile masaüstü geliştirme özelliğine sahip. Visual Studio 2015 ve Visual Studio 2017 de desteklendi.
+* [' C++ Ile masaüstü geliştirme '](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) iş yükünün etkin olduğu [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019. Visual Studio 2015 ve Visual Studio 2017 de desteklenir.
 
 * [Git](https://git-scm.com/download/)'in en son sürümünün yüklemesi.
 
@@ -55,15 +55,15 @@ Aşağıdaki ön koşullar Windows geliştirme ortamı içindir. Linux veya macO
 
 Bu bölümde, [Azure IoT C SDK'sını](https://github.com/Azure/azure-iot-sdk-c) oluşturmak için kullanılan geliştirme ortamını hazırlayacaksınız. 
 
-SDK, benzetilen aygıtın örnek kodunu içerir. Simülasyon cihazı, cihazın önyükleme dizisi sırasında sağlamayı dener.
+SDK, sanal cihaz için örnek kodu içerir. Simülasyon cihazı, cihazın önyükleme dizisi sırasında sağlamayı dener.
 
-1. [CMake yapı sistemini](https://cmake.org/download/)indirin.
+1. [CMake derleme sistemini](https://cmake.org/download/)indirin.
 
     `CMake` yüklemesine başlamadan **önce** makinenizde Visual Studio önkoşullarının (Visual Studio ve "C++ ile masaüstü geliştirme" iş yükü) yüklenmiş olması önemlidir. Önkoşullar sağlandıktan ve indirme doğrulandıktan sonra, CMake derleme sistemini yükleyin.
 
-2. SDK'nın [en son sürümü](https://github.com/Azure/azure-iot-sdk-c/releases/latest) için etiket adını bulun.
+2. SDK 'nın [en son sürümü](https://github.com/Azure/azure-iot-sdk-c/releases/latest) için etiket adını bulun.
 
-3. Komut istemini veya Git Bash kabuğunu açın. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunun en son sürümünde klonlamak için aşağıdaki komutları çalıştırın. Önceki adımda bulduğunuz etiketi `-b` parametre nin değeri olarak kullanın:
+3. Komut istemini veya Git Bash kabuğunu açın. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunun en son sürümünü kopyalamak için aşağıdaki komutları çalıştırın. Önceki adımda bulunan etiketini `-b` parametre değeri olarak kullanın:
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -73,7 +73,7 @@ SDK, benzetilen aygıtın örnek kodunu içerir. Simülasyon cihazı, cihazın �
 
     Bu işlemin tamamlanması için birkaç dakika beklemeniz gerekebilir.
 
-4. Git deposunun kök dizininde bir `cmake` alt dizini oluşturun ve o klasöre gidin. Dizinden aşağıdaki komutları `azure-iot-sdk-c` çalıştırın:
+4. Git deposunun kök dizininde bir `cmake` alt dizini oluşturun ve o klasöre gidin. `azure-iot-sdk-c` Dizininden aşağıdaki komutları çalıştırın:
 
     ```cmd/sh
     mkdir cmake
@@ -107,56 +107,56 @@ SDK, benzetilen aygıtın örnek kodunu içerir. Simülasyon cihazı, cihazın �
 
 ## <a name="create-a-symmetric-key-enrollment-group"></a>Simetrik anahtar kayıt grubu oluşturma
 
-1. [Azure portalında](https://portal.azure.com)oturum açın ve Cihaz Sağlama Hizmeti örneğini açın.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve cihaz sağlama hizmeti örneğinizi açın.
 
-2. Kayıtları **Yönet** sekmesini seçin ve ardından sayfanın üst kısmındaki **Kayıt Grubu Ekle** düğmesini tıklatın. 
+2. Kayıtları **Yönet** sekmesini seçin ve ardından sayfanın en üstündeki **kayıt grubu Ekle** düğmesine tıklayın. 
 
-3. **Kayıt Ekle Grubu'nda**aşağıdaki bilgileri girin ve **Kaydet** düğmesini tıklatın.
+3. **Kayıt grubu Ekle**sayfasında, aşağıdaki bilgileri girin ve **Kaydet** düğmesine tıklayın.
 
-   - **Grup adı**: **Mylegacydevices**girin .
+   - **Grup adı**: **mylegçevrimcihazları**girin.
 
-   - **Attestation Türü**: **Simetrik Tuşu**seçin.
+   - **Kanıtlama türü**: **simetrik anahtar**seçin.
 
    - **Anahtarları Otomatik Olarak Oluştur**: Bu kutuyu işaretleyin.
 
-   - **Aygıtları hub'lara nasıl atadığınızı seçin**: Belirli bir hub'a atamak için **Statik yapılandırmayı** seçin.
+   - **Cihazlara cihazları nasıl atamak Istediğinizi seçin**: belirli bir hub 'a atayabilmeniz için **statik yapılandırma** ' yı seçin.
 
-   - **Bu grubun atanabileceği IoT hub'larını seçin**: Hub'larınızdan birini seçin.
+   - **Bu grubun atanabileceği IoT Hub 'Larını seçin**: hub 'larınızın birini seçin.
 
-     ![Simetrik anahtar attestation için kayıt grubu ekleme](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
+     ![Simetrik anahtar kanıtlama için kayıt grubu ekleme](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
-4. Ortamınızı kaydettikten sonra, **Birincil Anahtar** ve **İkincil Anahtar** oluşturularak kayıt girişine eklenir. Simetrik anahtar kayıt grubunuzun *kayıt* grupları sekmesinde *Grup Adı* sütunu altında **mylegacydevices** olarak görünür. 
+4. Ortamınızı kaydettikten sonra, **Birincil Anahtar** ve **İkincil Anahtar** oluşturularak kayıt girişine eklenir. Simetrik anahtar kayıt grubunuz, *kayıt grupları* sekmesindeki *Grup adı* sütununun altında **mylegçevrimcihazları** olarak görünür. 
 
-    Kaydı açın ve oluşturduğunuz **Birincil Anahtar** değerini kopyalayın. Bu anahtar ana grup anahtarınızdır.
+    Kaydı açın ve oluşturduğunuz **Birincil Anahtar** değerini kopyalayın. Bu anahtar, ana grup anahtarınıza ait.
 
 
-## <a name="choose-a-unique-registration-id-for-the-device"></a>Aygıt için benzersiz bir kayıt kimliği seçin
+## <a name="choose-a-unique-registration-id-for-the-device"></a>Cihaz için benzersiz bir kayıt KIMLIĞI seçin
 
-Her aygıtı tanımlamak için benzersiz bir kayıt kimliği tanımlanmalıdır. MAC adresini, seri numarasını veya aygıttaki benzersiz bilgileri kullanabilirsiniz. 
+Her bir cihazı tanımlamak için benzersiz bir kayıt KIMLIĞI tanımlanmalıdır. MAC adresi, seri numarası veya cihazdan herhangi bir benzersiz bilgi kullanabilirsiniz. 
 
-Bu örnekte, bir kayıt kimliği için aşağıdaki dizeyi oluşturan bir MAC adresi ve seri numarasının birleşimini kullanırız.
+Bu örnekte, bir kayıt KIMLIĞI için aşağıdaki dizeyi oluşturan bir MAC adresi ve seri numarası birleşimini kullanırız.
 
 ```
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-Cihazınız için benzersiz bir kayıt kimliği oluşturun. Geçerli karakterler küçük alfasayısal ve tire ('-') vardır.
+Cihazınız için benzersiz bir kayıt KIMLIĞI oluşturun. Geçerli karakterler küçük harfli alfasayısal ve tire ('-').
 
 
-## <a name="derive-a-device-key"></a>Aygıt anahtarını türetin 
+## <a name="derive-a-device-key"></a>Bir cihaz anahtarı türet 
 
-Aygıt anahtarını oluşturmak için, aygıt için benzersiz kayıt kimliğinden bir [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) hesaplamak ve sonucu Base64 biçimine dönüştürmek için grup ana anahtarını kullanın.
+Cihaz anahtarı oluşturmak için, cihaz için benzersiz kayıt KIMLIĞI için [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) hesaplamak ve sonucu base64 biçimine dönüştürmek için Grup ana anahtarını kullanın.
 
-Grup ana anahtarınızı aygıt kodunuza eklemeyin.
+Grup ana anahtarınızı cihaz kodunuza eklemeyin.
 
 
 #### <a name="linux-workstations"></a>Linux iş istasyonları
 
-Bir Linux iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi türemiş aygıt anahtarınızı oluşturmak için openssl'yi kullanabilirsiniz.
+Bir Linux iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi, türetilen cihaz anahtarınızı oluşturmak için OpenSSL kullanabilirsiniz.
 
-**KEY** değerini daha önce belirttiğiniz **Birincil Anahtar** la değiştirin.
+**Anahtarın** değerini, daha önce not ettiğiniz **birincil anahtarla** değiştirin.
 
-**REG_ID** değerini kayıt kimliğinizle değiştirin.
+**REG_ID** DEĞERINI kayıt Kimliğinizle değiştirin.
 
 ```bash
 KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
@@ -173,11 +173,11 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 #### <a name="windows-based-workstations"></a>Windows tabanlı iş istasyonları
 
-Windows tabanlı bir iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi türemiş aygıt anahtarınızı oluşturmak için PowerShell'i kullanabilirsiniz.
+Windows tabanlı bir iş istasyonu kullanıyorsanız, aşağıdaki örnekte gösterildiği gibi, türetilmiş cihaz anahtarınızı oluşturmak için PowerShell kullanabilirsiniz.
 
-**KEY** değerini daha önce belirttiğiniz **Birincil Anahtar** la değiştirin.
+**Anahtarın** değerini, daha önce not ettiğiniz **birincil anahtarla** değiştirin.
 
-**REG_ID** değerini kayıt kimliğinizle değiştirin.
+**REG_ID** DEĞERINI kayıt Kimliğinizle değiştirin.
 
 ```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
@@ -195,21 +195,21 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
 
-Cihazınız, sağlama sırasında kayıt grubuyla simetrik anahtar attestation gerçekleştirmek için benzersiz kayıt kimliğinizle birlikte türetilmiş aygıt anahtarını kullanır.
+Cihazınız, sağlama sırasında kayıt grubuyla simetrik anahtar kanıtlama gerçekleştirmek için, benzersiz kayıt KIMLIĞINIZLE türetilmiş Cihaz anahtarını kullanır.
 
 
 
-## <a name="create-a-device-image-to-provision"></a>Sağlamak için bir aygıt görüntüsü oluşturma
+## <a name="create-a-device-image-to-provision"></a>Sağlamak için bir cihaz görüntüsü oluşturma
 
-Bu bölümde, daha önce ayarladığınız Azure IoT C SDK'da bulunan **prov\_dev\_istemci\_örneğini** güncelleştirebilirsiniz. 
+Bu bölümde, daha önce ayarladığınız Azure IoT C SDK 'sında **bulunan\_prov\_dev\_Client Sample** adlı bir sağlama örneğini güncelleşolursunuz. 
 
-Bu örnek kod, aygıt sağlama isteği örneğinize gönderen bir aygıt önyükleme dizisini simüle eder. Önyükleme sırası, aygıtın tanınmasına ve kayıt grubunda yapılandırdığınız IoT hub'ına atanmasına neden olur.
+Bu örnek kod, cihaz sağlama hizmeti örneğinize sağlama isteği gönderen bir cihaz önyükleme sırasının benzetimini yapar. Önyükleme sırası, cihazın tanınmasına ve kayıt grubunda yapılandırdığınız IoT Hub 'ına atanmasına neden olur.
 
 1. Azure Portal'da Cihaz Sağlama hizmetiniz için **Genel Bakış** sekmesini seçin ve **_Kimlik Kapsamı_** değerini not alın.
 
     ![Portal dikey penceresinden Cihaz Sağlama Hizmeti uç noktası bilgilerini ayıklama](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. Visual Studio'da, CMake'i daha önce çalıştırarak oluşturulan **azure_iot_sdks.sln** çözüm dosyasını açın. Çözüm dosyası şu konumda olmalıdır:
+2. Visual Studio 'da, daha önce CMake çalıştırılarak oluşturulan **azure_iot_sdks. sln** çözüm dosyasını açın. Çözüm dosyası şu konumda olmalıdır:
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -232,14 +232,14 @@ Bu örnek kod, aygıt sağlama isteği örneğinize gönderen bir aygıt önyük
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. **Prov\_dev\_istemci\_sample.c** hangi yorumlanır çağrı `prov_dev_set_symmetric_key_info()` bulun.
+6. `prov_dev_set_symmetric_key_info()` **Prov\_dev\_Client\_Sample. c** ' de, açıklama eklenen çağrısını bulun.
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    İşlev çağrısının yorumunu bırakın ve yer tutucu değerlerini (açı braketleri dahil) aygıtınız için benzersiz kayıt kimliği ve oluşturduğunuz türemiş aygıt anahtarıyla değiştirin.
+    İşlev çağrısının açıklamasını kaldırın ve yer tutucu değerlerini (açılı ayraçlar dahil), cihazınızın benzersiz kayıt KIMLIĞI ve oluşturduğunuz türetilmiş cihaz anahtarı ile değiştirin.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -250,7 +250,7 @@ Bu örnek kod, aygıt sağlama isteği örneğinize gönderen bir aygıt önyük
 
 7. **prov\_dev\_client\_sample** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin. 
 
-8. Visual Studio menüsünde, çözümü çalıştırmak için hata ayıklama yapmadan **Hata Ayıklama** > **Başlat'ı** seçin. Projeyi yeniden derleme isteminde **Evet**'e tıklayarak, çalıştırmadan önce projeyi yeniden derleyin.
+8. Çözümü çalıştırmak için Visual Studio menüsünde Hata **ayıklama** > **olmadan Başlat** ' ı seçin. Projeyi yeniden derleme isteminde **Evet**'e tıklayarak, çalıştırmadan önce projeyi yeniden derleyin.
 
     Aşağıdaki çıkış, bir simülasyon cihazının başarıyla önyüklemesini yapma ve bir IoT hub’ına atanmak üzere sağlama Hizmeti örneğine bağlanma işlemlerinin bir örneğidir:
 
@@ -269,15 +269,15 @@ Bu örnek kod, aygıt sağlama isteği örneğinize gönderen bir aygıt önyük
     Press enter key to exit:
     ```
 
-9. Portalda, simüle edilmiş aygıtınızın atandığı IoT hub'ına gidin ve **IoT Aygıtları** sekmesine tıklayın. Simüle edilen hub'a başarılı bir şekilde sağlanması üzerine, aygıt kimliği **IoT Aygıtları** bıçağında görünür ve *STATUS* **etkindir.** En üstteki **Yenile** düğmesine tıklamanız gerekebilir. 
+9. Portalda, sanal cihazınızın atandığı IoT Hub 'ına gidin ve **IoT cihazları** sekmesine tıklayın. Hub 'ın simülasyonu başarıyla sağlanmasından sonra cihaz KIMLIĞI **IoT cihazları** dikey penceresinde, *durumu* **etkin**olarak görünür. En üstteki **Yenile** düğmesine tıklamanız gerekebilir. 
 
     ![Cihaz IOT hub'da kayıtlı](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 
 
 
-## <a name="security-concerns"></a>Güvenlik endişeleri
+## <a name="security-concerns"></a>Güvenlik sorunları
 
-Bunun, önerilen bir güvenlik en iyi uygulaması olmayan görüntünün bir parçası olarak yer alan türemiş aygıt anahtarını bıraktığını unutmayın. Güvenlik ve kullanım kolaylığı nın dengeolmasının nedenlerinden biri de budur. 
+Bunun, önerilen bir en iyi güvenlik uygulaması olmayan, görüntünün bir parçası olarak bulunan türetilmiş Cihaz anahtarını bırakdığının farkında olun. Bu, güvenliğin ve kullanım kolaylığının neden olmasının bir nedenidir. 
 
 
 
@@ -285,9 +285,9 @@ Bunun, önerilen bir güvenlik en iyi uygulaması olmayan görüntünün bir par
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Daha fazla Yeniden sağlama öğrenmek için [IoT Hub Aygıt yeniden sağlama kavramlarına](concepts-device-reprovision.md) bakın 
+* Daha fazla yeniden sağlama hakkında daha fazla bilgi için bkz. [cihaz yeniden sağlama kavramlarını IoT Hub](concepts-device-reprovision.md) 
 * [Hızlı Başlangıç: Simetrik anahtarlar ile bir simülasyon cihazı sağlama](quick-create-simulated-device-symm-key.md)
-* Daha fazla Sağlama hakkında bilgi edinmek [için, daha önce otomatik olarak sağlanan aygıtların nasıl yok edilir](how-to-unprovision-devices.md) hale geldiğini öğrenin 
+* Daha fazla sağlama sağlamayı öğrenmek için bkz. [daha önce otomatik olarak sağlanan cihazların sağlamasını kaldırma](how-to-unprovision-devices.md) 
 
 
 

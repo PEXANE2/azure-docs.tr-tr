@@ -1,5 +1,5 @@
 ---
-title: Azure Akış Analizi ile gerçek zamanlı IoT veri akışlarını işleme
+title: Azure Stream Analytics ile gerçek zamanlı IoT veri akışlarını işleme
 description: Akış analizi ve gerçek zamanlı veri işleme ile birlikte IoT algılayıcı etiketleri ve veri akışları
 author: mamccrea
 ms.author: mamccrea
@@ -8,26 +8,26 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.openlocfilehash: 0755131f7d8071e37eadc1339ebc5e122725fa71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426239"
 ---
-# <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Azure Akış Analizi ile gerçek zamanlı IoT veri akışlarını işleme
+# <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Azure Stream Analytics ile gerçek zamanlı IoT veri akışlarını işleme
 
-Bu makalede, Nesnelerin İnterneti (IoT) aygıtlarından veri toplamak için akış işleme mantığının nasıl oluşturulabileceğinizi öğrenirsiniz. Çözümünüzü hızlı ve ekonomik bir şekilde nasıl oluşturabileceğinizi göstermek için gerçek bir Nesnelerin İnterneti (IoT) kullanım örneğini kullanırsınız.
+Bu makalede, Nesnelerin İnterneti (IoT) cihazlarından veri toplamak üzere akış işleme mantığı oluşturmayı öğreneceksiniz. Çözümünüzü hızlı ve ekonomik bir şekilde nasıl oluşturacağınızı göstermek için gerçek dünyada Nesnelerin İnterneti (IoT) kullanım örneği kullanırsınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Ücretsiz bir [Azure aboneliği](https://azure.microsoft.com/pricing/free-trial/)oluşturun.
-* Örnek sorguyu ve veri dosyalarını [GitHub'dan indirin.](https://aka.ms/azure-stream-analytics-get-started-iot)
+* [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)'dan örnek sorgu ve veri dosyalarını indirin.
 
 ## <a name="scenario"></a>Senaryo
 
-Endüstriyel otomasyon alanında faaliyet gösteren Contoso şirketi, üretim süreçlerini tamamen otomatik hale getirmiştir. Bu fabrikada bulunan makineler, gerçek zamanlı olarak veri akışları yayabilen algılayıcılara sahiptir. Bu senaryoda bir üretim katı yöneticisi, algılayıcı verilerinden gerçek zamanlı bilgiler alarak belirli kalıpları aramak ve bunlara yönelik işlemler yapmak istiyor. Gelen veri akışından ilginç desenler bulmak için sensör verileri üzerinden Akış Analizi Sorgu Dili'ni (SAQL) kullanabilirsiniz.
+Endüstriyel otomasyon alanında faaliyet gösteren Contoso şirketi, üretim süreçlerini tamamen otomatik hale getirmiştir. Bu fabrikada bulunan makineler, gerçek zamanlı olarak veri akışları yayabilen algılayıcılara sahiptir. Bu senaryoda bir üretim katı yöneticisi, algılayıcı verilerinden gerçek zamanlı bilgiler alarak belirli kalıpları aramak ve bunlara yönelik işlemler yapmak istiyor. Gelen veri akışından ilgi çekici desenler bulmak için algılayıcı verileri üzerinde Stream Analytics sorgu dili (SAQL) kullanabilirsiniz.
 
-Bu örnekte, veriler Texas Instruments sensör etiketi aygıtından oluşturulur. Verilerin yükü JSON biçimindedir ve aşağıdaki gibi görünür:
+Bu örnekte, veriler bir Texas Instruments algılayıcı etiketi aygıtından oluşturulmuştur. Verilerin yükü JSON biçimindedir ve aşağıdaki gibi görünür:
 
 ```json
 {
@@ -44,33 +44,33 @@ Kullanım kolaylığı için, bu başlangıç kılavuzunda gerçek algılayıcı
 
 ## <a name="create-a-stream-analytics-job"></a>Akış Analizi işi oluşturma
 
-1. Azure [portalında](https://portal.azure.com), + Soldaki gezinme menüsünden **kaynak oluşturun'** seçeneğini belirleyin. Ardından, **Analytics'ten** **Stream Analytics işini** seçin.
+1. [Azure Portal](https://portal.azure.com)sol gezinti menüsünden **+ kaynak oluştur** ' u seçin. Ardından analizden **Stream Analytics iş** öğesini **seçin.**
    
     ![Yeni bir Akış Analizi işi oluşturma](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
-1. Benzersiz bir iş adı girin ve aboneliğin işiniz için doğru olduğundan emin olun. Yeni bir kaynak grubu oluşturun veya aboneliğinizden varolan bir tane seçin.
+1. Benzersiz bir iş adı girin ve aboneliğin işiniz için doğru olduğundan emin olun. Yeni bir kaynak grubu oluşturun veya aboneliğinizden mevcut bir kaynağı seçin.
 
-1. İşiniz için bir konum seçin. Daha fazla işlem hızı ve maliyetleri azaltmak için kaynak grubunuz ve tüm kaynaklarınız için aynı konumu kullanın. Yapılandırmaları yaptıktan sonra **Oluştur'u**seçin.
+1. İşiniz için bir konum seçin. İşlem hızını artırmak ve maliyetlerin düşürülmesi için kaynak grubunuz ve tüm kaynaklar için aynı konumu kullanın. Yapılandırma yaptıktan sonra **Oluştur**' u seçin.
    
     ![Yeni bir Akış Analizi işi oluşturma ayrıntıları](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
 
 ## <a name="create-an-azure-stream-analytics-query"></a>Azure Akış Analizi sorgusu oluşturma
-İşiniz oluşturulduktan sonra bir sonraki adım bir sorgu yazmaktır. Bir giriş veya çıktıyı işinize bağlamadan sorguları örnek verilere karşı sınayabilirsiniz.
+İşiniz oluşturulduktan sonraki adım bir sorgu yazmaktır. Bir giriş veya çıktıyı işinize bağlamadan örnek verilere karşı sorgular test edebilirsiniz.
 
-GitHub'dan [HelloWorldASA-InputStream.json'u](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
-) indirin. Ardından, Azure portalındaki Azure Akış Analizi işinize gidin.
+GitHub ' dan [Helloworldasa-InputStream. JSON](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
+) ' i indirin. Sonra, Azure portal Azure Stream Analytics işinize gidin.
 
-Sol menüden **İş topolojisi** altında **Sorgula'yı** seçin. Ardından **Yükle örnek girişi**seçin. Dosyayı `HelloWorldASA-InputStream.json` yükleyin ve **Tamam'ı**seçin.
+Sol menüden **iş topolojisi** altında **sorgu** ' yı seçin. Ardından **örnek girişi yükle**' yi seçin. `HelloWorldASA-InputStream.json` Dosyayı karşıya yükleyin ve **Tamam**' ı seçin.
 
-![Akış Analizi pano sorgu döşemesi](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+![Pano sorgu kutucuğunu Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
-**Giriş önizleme** tablosunda verilerin önizlemesinin otomatik olarak doldurulanana dikkat edin.
+Verilerin önizlemesinin, **giriş önizleme** tablosunda otomatik olarak doldurulduğuna dikkat edin.
 
 ![Örnek giriş verilerinin önizlemesi](./media/stream-analytics-get-started-with-iot-devices/input-preview.png)
 
 ### <a name="query-archive-your-raw-data"></a>Sorgu: Ham verilerinizi arşivleme
 
-En basit sorgu biçimi, tüm giriş verilerini belirlenmiş çıkışlarına arşivleyen bir doğrudan sorgudur. Bu sorgu, yeni bir Azure Akışı Analizi işinde doldurulan varsayılan sorgudur.
+En basit sorgu biçimi, tüm giriş verilerini belirlenmiş çıkışlarına arşivleyen bir doğrudan sorgudur. Bu sorgu, yeni bir Azure Stream Analytics işinde doldurulan varsayılan sorgudur.
 
 ```sql
 SELECT 
@@ -81,13 +81,13 @@ FROM
     InputStream
 ```
 
-**Test sorgusunu** seçin ve **sonuçları Test sonuçları** tablosunda görüntüleyin.
+**Test sorgusu** ' nu seçin ve sonuçları **test sonuçları** tablosunda görüntüleyin.
 
-![Stream Analytics sorgusu için test sonuçları](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+![Stream Analytics sorgusunun test sonuçları](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
 ### <a name="query-filter-the-data-based-on-a-condition"></a>Sorgu: Verileri bir koşula göre filtreleme
 
-Bir koşula göre sonuçları filtrelemeye çalışalım. Sadece "sensorA"dan gelen olayların sonuçlarını göstermek istiyoruz.
+Bir koşula göre sonuçları filtrelemeye deneyelim. Yalnızca "sensorA" dan gelen olaylar için sonuçları göstermek istiyoruz.
 
 ```sql
 SELECT 
@@ -102,7 +102,7 @@ FROM
 WHERE dspl='sensorA'
 ```
 
-Sorguyu düzenleyiciye yapıştırın ve sonuçları gözden geçirmek için **Test sorgusunu** seçin.
+Sorguyu düzenleyiciye yapıştırın ve sonuçları gözden geçirmek için **Test sorgusu** ' nu seçin.
 
 ![Bir veri akışını filtreleme](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 
@@ -125,11 +125,11 @@ HAVING Avg(temp)>100
 
 ![30 saniyelik filtre sorgusu](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-Ortalama ılıman 100'den büyük olan sensörlerin yalnızca 245 satır ve adlarını içeren sonuçlar görmeniz gerekir. Bu sorguda olay akışı, 30 saniyelik bir **Atlayan Pencere** üzerinden algılayıcı adı olan **dspl**'ye göre gruplanır. Zamansal sorgular, zamanın nasıl ilerlemesini istediğinizi belirtmelidir. **TIMESTAMP BY** yan tümcesini kullanarak, zamanları tüm zamansal hesaplamalarla ilişkilendirmek için **OUTPUTTIME** sütununa belirttiniz. Ayrıntılı bilgi için [Zaman Yönetimi](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) ve [Pencereleme işlevleri](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)hakkında bilgi edinin.
+Ortalama geçicinin 100 ' den büyük olduğu yalnızca 245 satır ve algılayıcı adı içeren sonuçları görmeniz gerekir. Bu sorguda olay akışı, 30 saniyelik bir **Atlayan Pencere** üzerinden algılayıcı adı olan **dspl**'ye göre gruplanır. Zamana bağlı sorgular, saatin nasıl ilerlemesini istediğinizi belirtmelidir. **Zaman DAMGASı by** yan tümcesini kullanarak, saatleri tüm zamana bağlı hesaplamalarla Ilişkilendirmek Için **outputtime** sütununu belirttiniz. Ayrıntılı bilgi için [zaman yönetimi](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) ve [Pencereleme işlevleri](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)hakkında bilgi edinin.
 
 ### <a name="query-detect-absence-of-events"></a>Sorgu: Var olmayan olayları algılama
 
-Eksik giriş olaylarını bulmak için nasıl sorgu yazabiliriz? Bir sensör veri gönderdi ve daha sonra sonraki 5 saniye için olayları göndermedi son kez bulalım.
+Eksik giriş olaylarını bulmak için nasıl sorgu yazabiliriz? Bir sensörin verileri gönderdiği son zamanı bulalım ve sonraki 5 saniye boyunca olay göndermediği.
 
 ```sql
 SELECT 
@@ -148,9 +148,9 @@ WHERE t2.dspl IS NULL
 
 ![Var olmayan olayları algılama](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-Burada, **LEFT OUTER** deyimini aynı veri akışı üzerinde kullanırız (kendi kendine birleşme). Bir **INNER** birleşimde, yalnızca bir eşleşme bulunduğu zaman bir sonuç döndürülür.  Bir **LEFT OUTER** birleşimde, birleştirmenin sol tarafındaki bir olay eşleşmemişse sağ taraftaki tüm sütunlar için NULL değerine sahip bir satır döndürülür. Bu teknik, var olmayan olayların bulunması için oldukça kullanışlıdır. Daha fazla bilgi için [JOIN'e](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics)bakın.
+Burada, **LEFT OUTER** deyimini aynı veri akışı üzerinde kullanırız (kendi kendine birleşme). Bir **INNER** birleşimde, yalnızca bir eşleşme bulunduğu zaman bir sonuç döndürülür.  Bir **LEFT OUTER** birleşimde, birleştirmenin sol tarafındaki bir olay eşleşmemişse sağ taraftaki tüm sütunlar için NULL değerine sahip bir satır döndürülür. Bu teknik, var olmayan olayların bulunması için oldukça kullanışlıdır. Daha fazla bilgi için bkz. [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics).
 
 ## <a name="conclusion"></a>Sonuç
 
-Bu makalenin amacı, farklı Akış Analizi Sorgu Dili sorgularının nasıl yazılabildiğini ve sonuçları tarayıcıda nasıl göreceğini göstermektir. Ancak, bu sadece başlamak için. Akış Analizi birçok giriş ve çıkışı desteklemenin yanı sıra Azure Machine Learning'deki işlevlerden de faydalanır. Bu da onu veri akışlarının analizi için sağlam bir araç haline getirir. Sorgu yazma hakkında daha fazla bilgi için [ortak sorgu desenleri](stream-analytics-stream-analytics-query-patterns.md) hakkındaki makaleyi okuyun.
+Bu makalenin amacı, farklı Stream Analytics sorgu dili sorgularının nasıl yazılacağını ve sonuçları tarayıcıda görmektir. Ancak, bu yalnızca başlamanıza olanak sağlamak için kullanılır. Akış Analizi birçok giriş ve çıkışı desteklemenin yanı sıra Azure Machine Learning'deki işlevlerden de faydalanır. Bu da onu veri akışlarının analizi için sağlam bir araç haline getirir. Sorgu yazma hakkında daha fazla bilgi için [ortak sorgu desenleri](stream-analytics-stream-analytics-query-patterns.md) hakkındaki makaleyi okuyun.
 

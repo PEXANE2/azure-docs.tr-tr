@@ -1,6 +1,6 @@
 ---
-title: Son silinen kullanıcıyı geri yükleme veya kalıcı olarak kaldırma - Azure AD
-description: Geri yüklenebilir kullanıcıları görüntüleme, silinmiş bir kullanıcıyı geri yükleme veya Azure Etkin Dizini ile bir kullanıcıyı kalıcı olarak silme.
+title: Son silinen kullanıcıyı geri yükleme veya kalıcı olarak kaldırma-Azure AD
+description: Yeniden yüklenebilen kullanıcıları görüntüleme, silinen bir kullanıcıyı geri yükleme veya Azure Active Directory olan bir kullanıcıyı kalıcı olarak silme.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,80 +14,80 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 573269da1ca6b9ee09b493f4e758e78121d6c2f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75422854"
 ---
-# <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Azure Etkin Dizinini kullanarak yakın zamanda silinen bir kullanıcıyı geri yükleme veya kaldırma
-Bir kullanıcıyı sildikten sonra, hesap 30 gün boyunca askıya alınmış durumda kalır. Bu 30 günlük süre boyunca, kullanıcı hesabı tüm özellikleriyle birlikte geri yüklenebilir. Bu 30 günlük süre geçtikten sonra, kullanıcı otomatik olarak ve kalıcı olarak silinir.
+# <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Azure Active Directory kullanarak yakın zamanda silinen bir kullanıcıyı geri yükleme veya kaldırma
+Bir kullanıcıyı sildikten sonra, hesap 30 gün boyunca askıya alınmış durumda kalır. Bu 30 günlük pencerede, Kullanıcı hesabı tüm özellikleriyle birlikte geri yüklenebilir. 30 günlük pencere geçtikten sonra, Kullanıcı otomatik olarak ve kalıcı olarak silinir.
 
-Azure portalında geri yüklenen kullanıcılarınızı görüntüleyebilir, silinmiş bir kullanıcıyı geri yükleyebilir veya Azure Active Directory (Azure AD) kullanarak bir kullanıcıyı kalıcı olarak silebilirsiniz.
+Yeniden yüklenebilen kullanıcılarınızı görüntüleyebilir, silinen bir kullanıcıyı geri yükleyebilir veya Azure portal Azure Active Directory (Azure AD) kullanarak bir kullanıcıyı kalıcı olarak silebilirsiniz.
 
 >[!Important]
->Ne siz ne de Microsoft müşteri desteği kalıcı olarak silinen bir kullanıcıyı geri yükleyebilir.
+>Kalıcı olarak silinen bir kullanıcıyı ne de Microsoft müşteri desteği geri yükleyebilir.
 
 ## <a name="required-permissions"></a>Gerekli izinler
-Kullanıcıları geri yüklemek ve kalıcı olarak silmek için aşağıdaki rollerden birine sahip olmalısınız.
+Kullanıcıları geri yüklemek ve kalıcı olarak silmek için aşağıdaki rollerden birine sahip olmanız gerekir.
 
 - Genel yönetici
 
-- Ortak Tier1 Desteği
+- Partner Katman1 desteği
 
-- Ortak Tier2 Desteği
+- Partner Katman2 desteği
 
-- Kullanıcı yöneticisi
+- Kullanıcı Yöneticisi
 
-## <a name="view-your-restorable-users"></a>Geri leştirilebilir kullanıcılarınızı görüntüleyin
-30 günden daha kısa bir süre önce silinen tüm kullanıcıları görebilirsiniz. Bu kullanıcılar geri yüklenebilir.
+## <a name="view-your-restorable-users"></a>Geri yüklenebilen kullanıcılarınızı görüntüleme
+30 günden daha önce silinen tüm kullanıcıları görebilirsiniz. Bu kullanıcılar geri yüklenebilir.
 
-### <a name="to-view-your-restorable-users"></a>Geri toyabilir kullanıcılarınızı görüntülemek için
-1. Kuruluşun Global yönetici hesabını kullanarak [Azure portalında](https://portal.azure.com/) oturum açın.
+### <a name="to-view-your-restorable-users"></a>Geri yüklenebilen kullanıcılarınızı görüntülemek için
+1. Kuruluşun genel yönetici hesabını kullanarak [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Silinen kullanıcıları**seçin.
+2. **Azure Active Directory**seçin, **Kullanıcılar**' ı seçin ve ardından **silinen kullanıcılar**' ı seçin.
 
-    Geri yüklemeye hazır kullanıcıların listesini gözden geçirin.
+    Geri yükleme için kullanılabilen kullanıcıların listesini gözden geçirin.
 
-    ![Kullanıcılar - Silinmiş kullanıcılar sayfası, hala geri yüklenebilir kullanıcılar ile](media/active-directory-users-restore/users-deleted-users-view-restorable.png)
+    ![Kullanıcılar tarafından silinen kullanıcılar sayfası, hala geri yüklenebilecek kullanıcılar](media/active-directory-users-restore/users-deleted-users-view-restorable.png)
 
-## <a name="restore-a-recently-deleted-user"></a>Yakın zamanda silinen bir kullanıcıyı geri yükleme
+## <a name="restore-a-recently-deleted-user"></a>Son silinen bir kullanıcıyı geri yükleme
 
-Bir kullanıcı hesabı kuruluştan silindiğinde, hesap askıya alınmış durumdadır ve ilgili tüm kuruluş bilgileri korunur. Bir kullanıcıyı geri yüklediğinizde, bu kuruluş bilgileri de geri yüklenir.
+Bir kullanıcı hesabı kuruluştan silindiğinde, hesap askıya alınma durumundadır ve ilgili tüm kuruluş bilgileri korunur. Bir kullanıcıyı geri yüklediğinizde, bu kuruluş bilgileri de geri yüklenir.
 
 > [!Note]
-> Bir kullanıcı geri yüklendikten sonra, silme sırasında kullanıcıya atanan lisanslar, bu lisanslar için boş koltuk olmasa bile geri yüklenir. Daha sonra satın aldığınızdan daha fazla lisans tüketiyorsanız, kuruluşunuz lisans kullanımı için geçici olarak uyumsuz olabilir.
+> Kullanıcı geri yüklendikten sonra, silme sırasında kullanıcıya atanan lisanslar da bu lisanslar için kullanılabilir bir bilgisayar olmasa bile geri yüklenir. Satın aldığınızdan daha fazla lisans kullanıyorsanız, kuruluşunuz lisans kullanımı için geçici olarak uyumsuz olabilir.
 
 ### <a name="to-restore-a-user"></a>Bir kullanıcıyı geri yüklemek için
-1. Kullanıcılar **- Silinmiş kullanıcılar** sayfasında, kullanılabilir kullanıcılardan birini arayın ve seçin. Örneğin, _Mary Parker._
+1. **Kullanıcılar tarafından silinen kullanıcılar** sayfasında, kullanılabilir kullanıcılardan birini arayıp seçin. Örneğin, _Mary Parker_.
 
-2. **Kullanıcıyı Geri Yükle'yi**seçin.
+2. **Kullanıcıyı geri yükle**' yi seçin.
 
-    ![Kullanıcılar - Silinmiş kullanıcılar sayfası, Kullanıcıyı Geri Yükleme seçeneği vurgulanmış](media/active-directory-users-restore/users-deleted-users-restore-user.png)
+    ![Kullanıcılar tarafından silinen kullanıcılar sayfası, restore user seçeneği vurgulanmış](media/active-directory-users-restore/users-deleted-users-restore-user.png)
 
 ## <a name="permanently-delete-a-user"></a>Bir kullanıcıyı kalıcı olarak silme
-Otomatik silme için 30 gün beklemeden bir kullanıcıyı kuruluşunuzdan kalıcı olarak silebilirsiniz. Kalıcı olarak silinen bir kullanıcı, sizin, başka bir yöneticinin veya Microsoft müşteri desteğinin geri yüklenmez.
+Otomatik silme işlemi için 30 gün beklemeden bir kullanıcıyı kuruluşunuzdan kalıcı olarak silebilirsiniz. Kalıcı olarak silinen bir Kullanıcı siz, başka bir yönetici veya Microsoft müşteri desteği tarafından geri yüklenemez.
 
 >[!Note]
->Yanlışlıkla bir kullanıcıyı kalıcı olarak silerseniz, yeni bir kullanıcı oluşturmanız ve önceki tüm bilgileri el ile girmeniz gerekir. Yeni bir kullanıcı oluşturma hakkında daha fazla bilgi için [bkz.](add-users-azure-active-directory.md)
+>Bir kullanıcıyı yanlışlıkla kalıcı olarak silerseniz, yeni bir kullanıcı oluşturmanız ve önceki tüm bilgileri el ile girmeniz gerekir. Yeni bir Kullanıcı oluşturma hakkında daha fazla bilgi için bkz. [Kullanıcı ekleme veya silme](add-users-azure-active-directory.md).
 
 ### <a name="to-permanently-delete-a-user"></a>Bir kullanıcıyı kalıcı olarak silmek için
 
-1. Kullanıcılar **- Silinmiş kullanıcılar** sayfasında, kullanılabilir kullanıcılardan birini arayın ve seçin. Örneğin, _Rae Huff._
+1. **Kullanıcılar tarafından silinen kullanıcılar** sayfasında, kullanılabilir kullanıcılardan birini arayıp seçin. Örneğin, _Oye Huff_.
 
-2. **Kalıcı Olarak Sil'i**seçin.
+2. **Kalıcı olarak sil**' i seçin.
 
-    ![Kullanıcılar - Silinmiş kullanıcılar sayfası, Kullanıcıyı Geri Yükleme seçeneği vurgulanmış](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
+    ![Kullanıcılar tarafından silinen kullanıcılar sayfası, restore user seçeneği vurgulanmış](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kullanıcılarınızı geri yükledikten veya sildikten sonra aşağıdaki temel işlemleri gerçekleştirebilirsiniz:
+Kullanıcılarınızı geri yükledikten veya sildikten sonra, aşağıdaki temel işlemleri gerçekleştirebilirsiniz:
 
 - [Kullanıcı ekleme veya silme](add-users-azure-active-directory.md)
 
 - [Kullanıcılara rol atama](active-directory-users-assign-role-azure-portal.md)
 
-- [Profil bilgileri ekleme veya değiştirme](active-directory-users-profile-azure-portal.md)
+- [Profil bilgilerini ekleme veya değiştirme](active-directory-users-profile-azure-portal.md)
 
-- [Başka bir kuruluştan konuk kullanıcı ekleme](../b2b/what-is-b2b.md)
+- [Başka bir kuruluştan Konuk kullanıcılar ekleme](../b2b/what-is-b2b.md)
 
-Kullanılabilir diğer kullanıcı yönetimi görevleri hakkında daha fazla bilgi için [Azure AD kullanıcı yönetimi belgeleri.](../users-groups-roles/index.yml)
+Diğer mevcut kullanıcı yönetim görevleri hakkında daha fazla bilgi için, [Azure AD Kullanıcı yönetimi belgeleri](../users-groups-roles/index.yml).

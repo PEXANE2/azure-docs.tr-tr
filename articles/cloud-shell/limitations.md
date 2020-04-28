@@ -1,6 +1,6 @@
 ---
-title: Azure Bulut Kabuğu sınırlamaları | Microsoft Dokümanlar
-description: Azure Bulut Uyp'ının sınırlamasınırlamaları için genel bakış
+title: Azure Cloud Shell sınırlamaları | Microsoft Docs
+description: Azure Cloud Shell kısıtlamalarına genel bakış
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -15,29 +15,29 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
 ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74951488"
 ---
-# <a name="limitations-of-azure-cloud-shell"></a>Azure Bulut Kabuğu sınırlamaları
+# <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell sınırlamaları
 
-Azure Bulut Kabuğu'nun bilinen sınırlamaları şunlardır:
+Azure Cloud Shell aşağıdaki bilinen sınırlamalara sahiptir:
 
 ## <a name="general-limitations"></a>Genel sınırlamalar
 
 ### <a name="system-state-and-persistence"></a>Sistem durumu ve kalıcılık
 
-Bulut Kabuğu oturumunuzu sağlayan makine geçicidir ve oturumunuz 20 dakika etkin değildikten sonra geri dönüştürülür. Cloud Shell'in monte edilmesi için bir Azure dosya paylaşımı gerekir. Sonuç olarak, aboneliğinizin Cloud Shell'e erişmek için depolama kaynakları ayarlayabilmesi gerekir. Diğer hususlar şunlardır:
+Cloud Shell oturumunuzu sağlayan makine geçicidir ve oturumunuz 20 dakika etkin kaldıktan sonra geri dönüştürülür. Cloud Shell, bir Azure dosya paylaşımının bağlanmasını gerektirir. Sonuç olarak, aboneliğiniz Cloud Shell erişmek için depolama kaynaklarını ayarlayabilmelidir. Diğer konular şunlardır:
 
-* Monte edilmiş depolama ile yalnızca `$Home` dizin içindeki değişiklikler devam eder.
-* Azure dosya paylaşımları yalnızca [atanan bölgenizden](persisting-shell-storage.md#mount-a-new-clouddrive)monte edilebilir.
-  * Bash'te, `env` bölgenizi ' `ACC_LOCATION`olarak ayarlanmış olarak bulmak için çalıştırın.
+* Bağlı depolama ile, yalnızca `$Home` Dizin içerisindeki değişiklikler kalıcı hale getirilir.
+* Azure dosya paylaşımları yalnızca [atanan bölgeniz](persisting-shell-storage.md#mount-a-new-clouddrive)içinden bağlanabilir.
+  * Bash içinde, bölge `env` kümesini olarak `ACC_LOCATION`bulmak için öğesini çalıştırın.
 
 ### <a name="browser-support"></a>Tarayıcı desteği
 
-Cloud Shell, Microsoft Edge, Microsoft Internet Explorer, Google Chrome, Mozilla Firefox ve Apple Safari'nin en son sürümlerini destekler. Özel modda Safari desteklenmez.
+Cloud Shell, Microsoft Edge, Microsoft Internet Explorer, Google Chrome, Mozilla Firefox ve Apple Safari 'nin en son sürümlerini destekler. Özel modda Safari desteklenmez.
 
 ### <a name="copy-and-paste"></a>Kopyala ve yapıştır
 
@@ -45,46 +45,46 @@ Cloud Shell, Microsoft Edge, Microsoft Internet Explorer, Google Chrome, Mozilla
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Belirli bir kullanıcı için yalnızca bir kabuk etkin olabilir
 
-Kullanıcılar bir seferde yalnızca bir tür kabuk başlatabilir, **Bash** veya **PowerShell.** Ancak, aynı anda birden çok Bash veya PowerShell örneği çalışıyor olabilir. Menüyü kullanarak Bash veya PowerShell arasında takas yapmak Cloud Shell'in yeniden başlatılmasına neden olur ve bu da varolan oturumları sonlandırır. Alternatif olarak, yazarak `bash`PowerShell içinde bash çalıştırabilirsiniz , ve yazarak `pwsh`bash içinde PowerShell çalıştırabilirsiniz.
+Kullanıcılar her seferinde bir tür kabuğu başlatabilir, **Bash** veya **PowerShell**. Ancak, aynı anda çalışan birkaç bash veya PowerShell örneğine sahip olabilirsiniz. Menüyü kullanarak bash veya PowerShell arasında değiştirme, var olan oturumları sonlandıran Cloud Shell yeniden başlatılmasına neden olur. Alternatif olarak, yazarak `bash`PowerShell 'in içinde Bash 'i çalıştırabilir ve yazarak `pwsh`PowerShell 'i Bash içinde çalıştırabilirsiniz.
 
 ### <a name="usage-limits"></a>Kullanım sınırları
 
-Cloud Shell, etkileşimli kullanım örnekleri için tasarlanmıştır. Sonuç olarak, uzun süren etkileşimli olmayan oturumlar uyarı yapılmadan sona erdirilir.
+Cloud Shell, etkileşimli kullanım örneklerine yöneliktir. Sonuç olarak, uzun süre çalışan etkileşimli olmayan oturumlar uyarı vermeden sonlandırılır.
 
 ## <a name="bash-limitations"></a>Bash sınırlamaları
 
 ### <a name="user-permissions"></a>Kullanıcı izinleri
 
-İzinler sudo erişimi olmayan normal kullanıcılar olarak ayarlanır. Dizininizin `$Home` dışındaki yüklemeler kalıcı değildir.
+İzinler, sudo erişimi olmayan normal kullanıcılar olarak ayarlanır. `$Home` Dizininizin dışındaki tüm yüklemeler kalıcı olmaz.
 
-### <a name="editing-bashrc-or-profile"></a>Düzenleme .bashrc veya $PROFILE
+### <a name="editing-bashrc-or-profile"></a>. Bashrc veya $PROFILE düzenleniyor
 
-.bashrc veya PowerShell'in $PROFILE dosyasını düzenlerken dikkatli olun, bunu yapmak Cloud Shell'de beklenmeyen hatalara neden olabilir.
+. Bashrc veya PowerShell $PROFILE dosyasını düzenlediğinizde dikkatli olun, bunun yapılması Cloud Shell beklenmeyen hatalara neden olabilir.
 
 ## <a name="powershell-limitations"></a>PowerShell sınırlamaları
 
-### <a name="azuread-module-name"></a>`AzureAD`modül adı
+### <a name="azuread-module-name"></a>`AzureAD`Modül adı
 
-Modül `AzureAD` adı şu `AzureAD.Standard.Preview`anda, modül aynı işlevselliği sağlar.
+`AzureAD` Modül adı şu anda `AzureAD.Standard.Preview`, modül aynı işlevselliği sağlar.
 
-### <a name="sqlserver-module-functionality"></a>`SqlServer`modül işlevselliği
+### <a name="sqlserver-module-functionality"></a>`SqlServer`Modül işlevselliği
 
-Cloud `SqlServer` Shell'de yer alan modül, PowerShell Core için yalnızca ön sürüm desteğine sahiptir. Özellikle, `Invoke-SqlCmd` henüz mevcut değildir.
+Cloud Shell `SqlServer` eklenen modül yalnızca PowerShell Core için ön sürüm desteğine sahiptir. Özellikle, `Invoke-SqlCmd` henüz kullanılamaz.
 
-### <a name="default-file-location-when-created-from-azure-drive"></a>Azure sürücüsünden oluşturulduğunda varsayılan dosya konumu:
+### <a name="default-file-location-when-created-from-azure-drive"></a>Azure sürücüsünden oluşturulan varsayılan dosya konumu:
 
-PowerShell cmdlets kullanarak, kullanıcılar Azure altında dosya oluşturamaz: sürücü. Kullanıcılar vim veya nano gibi diğer araçları kullanarak yeni dosyalar oluşturduklarında, dosyalar varsayılan olarak dosyalara `$HOME` kaydedilir. 
+Kullanıcılar, PowerShell cmdlet 'lerini kullanarak Azure: Drive altında dosya oluşturamaz. Kullanıcılar, VIM veya nano gibi diğer araçları kullanarak yeni dosyalar oluştururken, dosyalar varsayılan `$HOME` olarak ' a kaydedilir. 
 
-### <a name="gui-applications-are-not-supported"></a>GUI uygulamaları desteklenmiyor
+### <a name="gui-applications-are-not-supported"></a>GUI uygulamaları desteklenmez
 
-Kullanıcı, Windows iletişim kutusu oluşturacak bir komut çalıştırıyorsa, aşağıdaki `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`gibi bir hata iletisi görür.
+Kullanıcı bir Windows iletişim kutusu oluşturacak bir komut çalıştırıyorsa, birisi şöyle bir hata iletisi görür: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
-### <a name="large-gap-after-displaying-progress-bar"></a>İlerleme çubuğugörüntülendikten sonra Büyük Boşluk
+### <a name="large-gap-after-displaying-progress-bar"></a>İlerleme çubuğunu görüntülemeden sonra büyük boşluk
 
-`Azure:` Kullanıcı, sürücüdeyken tamamlanan bir sekme gibi bir ilerleme çubuğu görüntüleyen bir eylem gerçekleştirirse, imleç düzgün ayarlanmaz ve ilerleme çubuğunun daha önce bulunduğu yerde bir boşluk belirir.
+Kullanıcı, `Azure:` sürücüdeki bir sekme gibi bir ilerleme çubuğu görüntüleyen bir eylem gerçekleştirirse, imleç düzgün şekilde ayarlanmamış ve ilerleme çubuğunun daha önce olduğu bir boşluk görünüyor olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Sorun Giderme Bulut Kabuğu](troubleshooting.md) <br>
+[Sorun giderme Cloud Shell](troubleshooting.md) <br>
 [Bash için hızlı başlangıç](quickstart.md) <br>
 [PowerShell için hızlı başlangıç](quickstart-powershell.md)

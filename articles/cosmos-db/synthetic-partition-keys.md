@@ -1,25 +1,25 @@
 ---
-title: Azure Cosmos DB'de sentetik bölme anahtarı oluşturma
-description: Verileri ve iş yükünü bölüm tuşlarına eşit olarak dağıtmak için Azure Cosmos kaplarınızda sentetik bölüm tuşlarını nasıl kullanacağınızı öğrenin
+title: Azure Cosmos DB yapay bir bölüm anahtarı oluşturma
+description: Verileri ve iş yükünü bölüm anahtarları arasında eşit bir şekilde dağıtmak için Azure Cosmos kapsayıcılarınızdaki yapay bölüm anahtarlarını nasıl kullanacağınızı öğrenin
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
 ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75441213"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Yapay bölüm anahtarı oluşturma
 
-Yüzlerce veya binlerce farklı değere sahip bir bölüm anahtarına sahip olmak en iyi yöntemdir. Amaç, verilerinizi ve iş yükünüzü bu bölüm anahtar değerleriyle ilişkili öğeler arasında eşit olarak dağıtmaktır. Verilerinizde böyle bir özellik yoksa, sentetik bir *bölme anahtarı*oluşturabilirsiniz. Bu belge, Cosmos kapsayıcınız için sentetik bir bölme anahtarı oluşturmak için çeşitli temel teknikleri açıklar.
+Yüzlerce veya binlerce gibi birçok farklı değere sahip bir bölüm anahtarına sahip olmak en iyi uygulamadır. Amaç, bu bölüm anahtarı değerleriyle ilişkili öğeler arasında verilerinizi ve iş yükünüzü eşit olarak dağıtmaktır. Bu tür bir özellik verilerinizde yoksa *yapay bir bölüm anahtarı*oluşturabilirsiniz. Bu belgede, Cosmos Kapsayıcınız için yapay bir bölüm anahtarı oluşturmaya yönelik çeşitli temel teknikler açıklanmaktadır.
 
-## <a name="concatenate-multiple-properties-of-an-item"></a>Bir öğenin birden çok özelliğini birleştirmeye
+## <a name="concatenate-multiple-properties-of-an-item"></a>Bir öğenin birden çok özelliğini birleştirme
 
-Birden çok özellik değerlerini tek bir yapay `partitionKey` özellik temalı bir araya getirerek bir bölüm anahtarı oluşturabilirsiniz. Bu anahtarlar sentetik anahtarlar olarak adlandırılır. Örneğin, aşağıdaki örnek belgeyi göz önünde bulundurun:
+Birden çok özellik değerini tek bir yapay `partitionKey` özellikte birleştirerek bölüm anahtarı oluşturabilirsiniz. Bu anahtarlara yapay anahtarlar denir. Örneğin, aşağıdaki örnek belgeyi göz önünde bulundurun:
 
 ```JavaScript
 {
@@ -28,7 +28,7 @@ Birden çok özellik değerlerini tek bir yapay `partitionKey` özellik temalı 
 }
 ```
 
-Önceki belge için bir seçenek , /deviceId veya /date'i bölüm anahtarı olarak ayarlamaktır. Kapsayıcınızı aygıt kimliğine veya tarihe göre bölmek istiyorsanız bu seçeneği kullanın. Başka bir seçenek, bu iki değeri `partitionKey` bölüm anahtarı olarak kullanılan sentetik bir özelliğe dönüştürmektir.
+Önceki belge için bir seçenek, bölüm anahtarı olarak/DeviceID veya/Date olarak ayarlanmıştır. Kapsayıcınızı cihaz KIMLIĞI veya tarih temelinde bölümlemek istiyorsanız bu seçeneği kullanın. Diğer bir seçenek de bu iki değeri, bölüm anahtarı olarak `partitionKey` kullanılan yapay bir özellikte birleştirme.
 
 ```JavaScript
 {
@@ -38,27 +38,27 @@ Birden çok özellik değerlerini tek bir yapay `partitionKey` özellik temalı 
 }
 ```
 
-Gerçek zamanlı senaryolarda, veritabanında binlerce öğe olabilir. Sentetik anahtarı el ile eklemek yerine, değerleri birleştirmek için istemci tarafı mantığını tanımlayın ve sentetik anahtarı Cosmos kaplarınızdaki öğelere takın.
+Gerçek zamanlı senaryolarda, veritabanında binlerce öğe olabilir. Yapay anahtarı el ile eklemek yerine, değerleri birleştirmek ve yapay nesneleri Cosmos kapsayıcılarınızdaki öğelere eklemek için istemci tarafı mantığını tanımlayın.
 
-## <a name="use-a-partition-key-with-a-random-suffix"></a>Rasgele sonek içeren bir bölme anahtarı kullanma
+## <a name="use-a-partition-key-with-a-random-suffix"></a>Rastgele bir sonek ile bölüm anahtarı kullanma
 
-İş yükünü daha eşit dağıtmak için başka bir olası strateji, bölüm anahtar değerinin sonunda rasgele bir sayı eklemektir. Öğeleri bu şekilde dağıttığınızda, bölümler arasında paralel yazma işlemleri gerçekleştirebilirsiniz.
+İş yükünü daha eşit bir şekilde dağıtmak için bir başka olası strateji, bölüm anahtarı değerinin sonuna rastgele bir sayı eklemedir. Öğeleri bu şekilde dağıttığınızda, bölümler arasında paralel yazma işlemleri gerçekleştirebilirsiniz.
 
-Bir bölüm anahtarı nın bir tarihi temsil ediyorolması bir örnektir. 1 ile 400 arasında rasgele bir sayı seçebilir ve tarihe sonek olarak yapıştırabilirsiniz. Bu yöntem, , , `2018-08-09.1``2018-08-09.2`ve benzeri gibi `2018-08-09.400`bölüm anahtar değerleri ile sonuçlanır. Bölüm anahtarını rasgele yaptığınızdan, her gün kapsayıcıdaki yazma işlemleri birden çok bölüme eşit olarak yayılır. Bu yöntem daha iyi paralellik ve genel olarak daha yüksek iş elde etmek le sonuçlanır.
+Bir bölüm anahtarı bir tarihi temsil ediyorsa, örnek bir örnektir. 1 ile 400 arasında rastgele bir sayı seçebilir ve bu dosyayı Tarih soneki olarak birleştirebilirsiniz. Bu yöntem,,, vb. gibi `2018-08-09.1`bölüm`2018-08-09.2`anahtarı değerleri ile `2018-08-09.400`sonuçlanır. Bölüm anahtarını rastgele kullanıma aldığınız için, her gün kapsayıcı üzerindeki yazma işlemleri birden çok bölüme eşit olarak yayılır. Bu yöntem, daha iyi paralellik ve genel daha yüksek verimlilik elde ediyor.
 
-## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Önceden hesaplanmış sonekler içeren bir bölme anahtarı kullanma 
+## <a name="use-a-partition-key-with-pre-calculated-suffixes"></a>Önceden hesaplanmış soneklerle bölüm anahtarı kullanma 
 
-Rasgele sonek stratejisi yazma iş bilgisini büyük ölçüde artırabilir, ancak belirli bir öğeyi okumak zordur. Öğeyi yazarken kullanılan sonek değerini bilmiyorsun. Tek tek öğeleri okumayı kolaylaştırmak için önceden hesaplanmış sonekler stratejisini kullanın. Öğeleri bölümler arasında dağıtmak için rasgele bir sayı kullanmak yerine, sorgulamak istediğiniz bir şeye göre hesaplanan bir sayı kullanın.
+Rastgele sonek stratejisi, yazma verimini büyük ölçüde iyileştirebilirler, ancak belirli bir öğeyi okumak zordur. Öğeyi yazdığınızda kullanılan sonek değerini bilemezsiniz. Tek tek öğeleri okumayı kolaylaştırmak için önceden hesaplanmış son ekler stratejisini kullanın. Öğeleri bölümler arasında dağıtmak için rastgele bir sayı kullanmak yerine, sorgulamak istediğiniz bir şeye göre hesaplanmış bir sayı kullanın.
 
-Kapsayıcının bir tarihi bölüm anahtarı olarak kullandığı önceki örneği göz önünde bulundurun. Şimdi, her öğenin `Vehicle-Identification-Number` `VIN`erişmek istediğimiz bir ) özelliği olduğunu varsayalım. Ayrıca, bugüne ek olarak öğeleri `VIN`bulmak için sık sık sorguları çalıştırdığınızı varsayalım. Uygulamanız öğeyi kapsayıcıya yazmadan önce, VIN'i temel alan bir karma sonek hesaplayabilir ve bölüm anahtar tarihine ekleyebilir. Hesaplama, eşit olarak dağıtılan 1 ile 400 arasında bir sayı oluşturabilir. Bu sonuç, rasgele sonek stratejisi yöntemi tarafından üretilen sonuçlara benzer. Bölüm anahtar değeri, hesaplanan sonuçla kaplanmış tarihtir.
+Bir kapsayıcının bölüm anahtarı olarak bir tarih kullandığı önceki örneği göz önünde bulundurun. Şimdi, her bir öğenin erişmek istediğimiz `Vehicle-Identification-Number` bir`VIN`() özniteliği olduğunu varsayalım. Ayrıca, tarihe göre `VIN`öğeleri bulmak için genellikle sorguları çalıştırdığınızı varsayalım. Uygulamanız öğeyi kapsayıcıya yazmadan önce, can 'ı temel alan bir karma sonek hesaplayabilir ve bölüm anahtarı tarihine ekleyebilirsiniz. Hesaplama, eşit olarak dağıtılan 1 ile 400 arasında bir sayı oluşturabilir. Bu sonuç, rastgele sonek strateji yöntemi tarafından üretilen sonuçlara benzerdir. Bölüm anahtarı değeri, hesaplanan sonuçla birleştirilmiş bir tarihtir.
 
-Bu strateji ile, yazmaeşit bölüm anahtar değerleri arasında ve bölümler arasında yayılır. Belirli bir `Vehicle-Identification-Number`öğenin bölüm anahtar değerini hesaplayabildiğinizden, belirli bir öğeyi ve tarihi kolayca okuyabilirsiniz. Bu yöntemin yararı, tek bir sıcak bölüm anahtarı, yani, tüm iş yükünü alan bir bölüm anahtarı oluşturmaktan kaçınabilirsiniz. 
+Bu stratejiyle, yazma işlemleri bölüm anahtarı değerleri ve bölümler arasında eşit olarak yayılır. Belirli bir öğeyi ve tarihi kolayca okuyabilir, çünkü belirli `Vehicle-Identification-Number`bir için bölüm anahtarı değerini hesaplayabilirsiniz. Bu yöntemin avantajı, tek bir sıcak bölüm anahtarı (yani, tüm iş yükünü alan bir bölüm anahtarı) oluşturmaktan kaçınmanızı sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makalelerde bölümleme kavramı hakkında daha fazla bilgi edinebilirsiniz:
+Aşağıdaki makalelerde bölümlendirme kavramı hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Mantıksal bölümler](partition-data.md)hakkında daha fazla bilgi edinin.
-* [Azure Cosmos kapsayıcıları ve veritabanlarında iş ortası sağlama](set-throughput.md)hakkında daha fazla bilgi edinin.
-* [Azure Cosmos kapsayıcısına nasıl iş veriş sağlamayı](how-to-provision-container-throughput.md)öğrenin.
-* [Azure Cosmos veritabanında iş ortası sağlama](how-to-provision-database-throughput.md)yı öğrenin.
+* [Azure Cosmos kapsayıcılarında ve veritabanlarında işleme sağlama](set-throughput.md)hakkında daha fazla bilgi edinin.
+* [Azure Cosmos kapsayıcısında üretilen iş sağlama](how-to-provision-container-throughput.md)hakkında bilgi edinin.
+* [Azure Cosmos veritabanında üretilen iş sağlama](how-to-provision-database-throughput.md)hakkında bilgi edinin.

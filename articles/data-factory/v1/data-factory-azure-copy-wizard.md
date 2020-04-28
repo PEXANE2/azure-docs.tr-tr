@@ -1,6 +1,6 @@
 ---
-title: Veri Fabrikası Azure Kopyalama Sihirbazı
-description: Desteklenen veri kaynaklarından lavabolara verileri kopyalamak için Veri Fabrikası Azure Kopyalama Sihirbazı'nı nasıl kullanacağınız hakkında bilgi edinin.
+title: Azure kopyalama Sihirbazı Data Factory
+description: Desteklenen veri kaynaklarından verileri havuza kopyalamak için Data Factory Azure kopyalama Sihirbazı 'nı kullanma hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -14,80 +14,80 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fef9059700e2bd94029c40bb819870a7174e0812
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74930126"
 ---
-# <a name="azure-data-factory-copy-wizard"></a>Azure Veri Fabrikası Kopyalama Sihirbazı
+# <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory kopyalama Sihirbazı
 > [!NOTE]
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. 
 
-Azure Veri Fabrikası Kopyalama Sihirbazı, genellikle uçtan uca veri tümleştirme senaryosunun ilk adımı olan verileri sindirme işlemini kolaylaştırır. Azure Veri Fabrikası Kopyalama Sihirbazı'ndan geçerken, bağlantılı hizmetler, veri kümeleri ve ardışık hatlar için json tanımlarını anlamanız gerekmez. Sihirbaz, seçili veri kaynağından seçili hedefe verileri kopyalamak için otomatik olarak bir ardışık kaynak hattı oluşturur. Ayrıca, Kopyalama Sihirbazı, yazarlık sırasında yutulan verileri doğrulamanıza yardımcı olur. Bu, özellikle veri kaynağından ilk kez veri sindiriyorsanız zaman kazandırır. Kopyalama Sihirbazı'nı başlatmak için, veri fabrikanızın ana sayfasındaki **Veri** döşemesini kopyala'yı tıklatın.
+Azure Data Factory kopyalama Sihirbazı, verileri almak için bir uçtan uca veri tümleştirme senaryosunda ilk bir adımdır. Azure Data Factory kopyalama Sihirbazı ' nı kullanırken, bağlı hizmetler, veri kümeleri ve işlem hatları için herhangi bir JSON tanımını anlamanız gerekmez. Sihirbaz, verileri seçilen veri kaynağından seçilen hedefe kopyalamak için otomatik olarak bir işlem hattı oluşturur. Ayrıca, kopyalama Sihirbazı, yazma sırasında alınan verileri doğrulamanıza yardımcı olur. Bu, özellikle veri kaynağından ilk kez veri alırken zaman kazandırır. Kopyalama Sihirbazı 'nı başlatmak için veri fabrikanızın giriş sayfasındaki **veri Kopyala** kutucuğuna tıklayın.
 
 ![Kopyalama Sihirbazı](./media/data-factory-copy-wizard/copy-data-wizard.png)
 
-## <a name="designed-for-big-data"></a>Büyük veriler için tasarlanmıştır
-Bu sihirbaz, çok çeşitli kaynaklardan gelen verileri dakikalar içinde kolayca hedefe taşımanızı sağlar. Sihirbazdan geçtikten sonra, bağımlı Veri Fabrikası varlıkları (bağlantılı hizmetler ve veri kümeleri) ile birlikte sizin için otomatik olarak kopyalama etkinliği içeren bir ardışık ardışık alan oluşturulur. Ardışık hatlar oluşturmak için ek adım gerekmez.   
+## <a name="designed-for-big-data"></a>Büyük veriler için tasarlandı
+Bu sihirbaz, çok çeşitli kaynaklardan gelen verileri dakikalar içinde kolayca hedeflere taşımanızı sağlar. Sihirbaza geçtikten sonra, sizin için bir kopyalama etkinliğine sahip bir işlem hattı, bağımlı Data Factory varlıkları (bağlı hizmetler ve veri kümeleri) ile birlikte sizin için otomatik olarak oluşturulur. İşlem hattını oluşturmak için ek adım gerekmez.   
 
 ![Veri kaynağı seçme](./media/data-factory-copy-wizard/select-data-source-page.png)
 
 > [!NOTE]
-> Azure blob'undaki verileri Azure SQL Veritabanı tablosuna kopyalamak için örnek bir ardışık kaynak oluşturmak için adım adım yönergeleri için [Kopya Sihirbazı öğreticisine](data-factory-copy-data-wizard-tutorial.md)bakın.
+> Verileri bir Azure blobundan Azure SQL veritabanı tablosuna kopyalamak üzere örnek bir işlem hattı oluşturmaya yönelik adım adım yönergeler için, [Kopyalama Sihirbazı öğreticisine](data-factory-copy-data-wizard-tutorial.md)bakın.
 >
 >
 
-Sihirbaz, farklı veri ve nesne türleri için destek ile, başından beri göz önünde bulundurularak büyük veri ile tasarlanmıştır. Yüzlerce klasör, dosya veya tablo hareket ettiren Veri Fabrikası ardışık hatlar yazabilirsiniz. Sihirbaz otomatik veri önizlemesini, şema yakalamayı ve eşlemesini ve veri filtrelemi destekler.
+Sihirbaz, farklı veri ve nesne türleri desteğiyle, başlangıçtan itibaren göz önünde bulundurularak büyük verilerle tasarlanmıştır. Yüzlerce klasör, dosya veya tablo taşıyarak Data Factory işlem hatlarını yazabilirsiniz. Sihirbaz otomatik veri önizlemeyi, şema yakalamayı ve eşlemeyi ve veri filtrelemeyi destekler.
 
 ## <a name="automatic-data-preview"></a>Otomatik veri önizleme
-Verilerin kopyalamak istediğiniz şey olup olmadığını doğrulamak için verilerin bir kısmını seçili veri kaynağından önizleyebilirsiniz. Ayrıca, kaynak veriler bir metin dosyasındaysa, Kopya Sihirbazı satır ve sütun sınırlayıcıları ve şemayı otomatik olarak öğrenmek için metin dosyasını ayrıştırır.
+Verilerin kopyalamak istediğiniz gibi olup olmadığını doğrulamak için seçili veri kaynağından verilerin bir bölümünü önizleyebilirsiniz. Ayrıca, kaynak verileri bir metin dosyası ise kopyalama Sihirbazı, satır ve sütun sınırlayıcılarını ve şemayı otomatik olarak öğrenmek için metin dosyasını ayrıştırır.
 
 ![Dosya biçimi ayarları](./media/data-factory-copy-wizard/file-format-settings.png)
 
-## <a name="schema-capture-and-mapping"></a>Şema yakalama ve haritalama
-Giriş verilerinin şeması, bazı durumlarda çıktı verilerinin şema ile eşleşmeyebilir. Bu senaryoda, sütunları kaynak şemadaki sütunları hedef şemadaki sütunlara eşlemeniz gerekir.
+## <a name="schema-capture-and-mapping"></a>Şema yakalama ve eşleme
+Giriş verilerinin şeması, bazı durumlarda çıkış verileri şemasıyla eşleşmeyebilir. Bu senaryoda, kaynak şemadan sütunları hedef şemadaki sütunlara eşlemeniz gerekir.
 
 > [!TIP]
-> SQL Server veya Azure SQL Veritabanı'ndan Verileri Azure SQL Veri Ambarı'na kopyalarken, tablo hedef deposunda yoksa, Veri Fabrikası kaynak şemasını kullanarak otomatik tablo oluşturmayı destekler. [Azure Veri Fabrikası'nı kullanarak Verileri Azure SQL Veri Ambarı'na taşıyıp diğer inden](./data-factory-azure-sql-data-warehouse-connector.md)daha fazla bilgi edinin.
+> SQL Server veya Azure SQL veritabanından Azure SQL veri ambarı 'na veri kopyalarken, tablo hedef depoda yoksa, kaynak şemasını kullanarak otomatik tablo oluşturmayı destekler Data Factory. [Azure Data Factory kullanarak Azure SQL veri ambarı 'na veri taşıma](./data-factory-azure-sql-data-warehouse-connector.md)hakkında daha fazla bilgi edinin.
 >
 
-Hedef şemadaki bir sütuna eşlemek için kaynak şemadan bir sütun seçmek için açılır liste kullanın. Kopya Sihirbazı, sütun eşleme için deseninizi anlamaya çalışır. Şema eşleciliğini tamamlamak için sütunların her birini tek tek seçmeniz gerekmeden, sütunların geri kalanına aynı deseni uygular. İsterseniz, sütunları tek tek eşlemek için açılır listeleri kullanarak bu eşlemeleri geçersiz kılabilirsiniz. Daha fazla sütunharitasını açtıkça desen daha doğru hale gelir. Kopya Sihirbazı deseni sürekli olarak güncelleştirir ve sonuçta ulaşmak istediğiniz sütun eşlemi için doğru desene ulaşır.     
+Hedef şemadaki bir sütunla eşlenecek kaynak şemadan bir sütun seçmek için açılan listeyi kullanın. Kopyalama Sihirbazı, sütun eşleme örüntüsünün anlaşılmasına çalışır. Bu, sütunların geri kalanına aynı düzeni uygular, böylece şema eşlemesini tamamlamaya yönelik her bir sütunu tek tek seçmeniz gerekmez. İsterseniz, sütunları tek tek eşlemek için açılan listeleri kullanarak bu eşlemeleri geçersiz kılabilirsiniz. Daha fazla sütun eşleştirirken, bu kalıp daha doğru hale gelir. Kopyalama Sihirbazı, her bir düzende güncellenir ve sonunda elde etmek istediğiniz sütun eşlemesi için doğru düzene ulaşır.     
 
-![Şema haritalama](./media/data-factory-copy-wizard/schema-mapping.png)
+![Şema eşleme](./media/data-factory-copy-wizard/schema-mapping.png)
 
 ## <a name="filtering-data"></a>Verileri filtreleme
-Yalnızca lavabo veri deposuna kopyalanması gereken verileri seçmek için kaynak verilerine filtre uygulayabilirsiniz. Filtreleme, lavabo veri deposuna kopyalanacak verilerin hacmini azaltır ve bu nedenle kopyalama işleminin veri hacmini artırır. SQL sorgu dilini kullanarak ilişkisel bir veritabanındaki verileri filtrelemek için esnek bir yol sağlar veya [Veri Fabrikası işlevlerini ve değişkenlerini](data-factory-functions-variables.md)kullanarak Azure blob klasöründeki dosyaları.   
+Yalnızca havuz veri deposuna kopyalanması gereken verileri seçmek için kaynak verilerini filtreleyebilirsiniz. Filtreleme, havuz veri deposuna kopyalanacak verilerin hacmini azaltır ve bu nedenle kopyalama işleminin aktarım hızını geliştirir. Bir ilişkisel veritabanındaki verileri, SQL sorgu dilini veya [Data Factory işlevleri ve değişkenleri](data-factory-functions-variables.md)kullanarak bir Azure Blob klasöründeki dosyaları kullanarak filtrelemek için esnek bir yol sağlar.   
 
-### <a name="filtering-of-data-in-a-database"></a>Veritabanındaki verilerin filtrelemi
-Aşağıdaki ekran görüntüsü, işlev `Text.Format` ve `WindowStart` değişkeni kullanarak bir SQL sorgusu nu gösterir.
+### <a name="filtering-of-data-in-a-database"></a>Veritabanındaki verilerin filtrelenmesi
+Aşağıdaki ekran görüntüsünde, `Text.Format` işlevi ve `WindowStart` değişkenini kullanan bir SQL sorgusu gösterilmektedir.
 
-![İfadeleri doğrulama](./media/data-factory-copy-wizard/validate-expressions.png)
+![İfadeleri doğrula](./media/data-factory-copy-wizard/validate-expressions.png)
 
-### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Azure blob klasöründeki verilerin filtrelemi
-[Sistem değişkenlerine](data-factory-functions-variables.md#data-factory-system-variables)dayalı olarak çalışma zamanında belirlenen bir klasörden verileri kopyalamak için klasör yolundaki değişkenleri kullanabilirsiniz. Desteklenen değişkenler şunlardır: **{year}**, **{ay}**, **{gün}**, **{hour}**, **{dakika}** ve **{özel}**. Örneğin: inputfolder/{year}/{month}/{day}.
+### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Azure Blob klasöründeki verilerin filtrelenmesi
+Çalışma zamanında belirlenen klasörden verileri [sistem değişkenlerine](data-factory-functions-variables.md#data-factory-system-variables)göre kopyalamak için klasör yolundaki değişkenleri kullanabilirsiniz. Desteklenen değişkenler şunlardır: **{Year}**, **{Month}**, **{Day}**, **{Hour}**, **{Minute}** ve **{Custom}**. Örneğin: ınputfolder/{year}/{month}/{Day}.
 
-Aşağıdaki biçimde giriş klasörleri olduğunu varsayalım:
+Giriş klasörlerinizi aşağıdaki biçimde kullandığınızı varsayalım:
 
     2016/03/01/01
     2016/03/01/02
     2016/03/01/03
     ...
 
-**Dosya veya klasör**için **Gözat** düğmesini tıklatın, bu klasörlerden birine göz atın (örneğin, 2016->03->01->02) ve **Seç'i**tıklatın. Metin kutusunda `2016/03/01/02` görmelisin. Şimdi, **2016'yı** **{year}**, **03** ile **{month}**, **01'i** **{day}** ve **02'yi** **{hour}** ile değiştirin ve **Sekme** tuşuna basın. Bu dört değişkenin biçimini seçmek için açılır listeler görmelisiniz:
+**Dosya veya klasör**için **Araştır** düğmesine tıklayın, bu klasörlerden birine gidin (örneğin, 2016->03->01->02) ve **Seç**' e tıklayın. Metin kutusunda görmeniz `2016/03/01/02` gerekir. Şimdi, **2016** öğesini { **Year}**, **03** ile { **Month**}, **01** ile { **Day**} ve **02** ile **{Hour}** ile değiştirin ve **sekme** tuşuna basın. Bu dört değişkenin biçimini seçmek için açılan listeleri görmeniz gerekir:
 
 ![Sistem değişkenlerini kullanma](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Aşağıdaki ekran görüntüsünde gösterildiği gibi, **özel** bir değişken ve [desteklenen biçim dizeleri](https://msdn.microsoft.com/library/8kb3ddd4.aspx)de kullanabilirsiniz. Bu yapıya sahip bir klasör seçmek için önce **Gözat** düğmesini kullanın. Ardından bir değeri **{custom}** ile değiştirin ve biçim dizesini yazabileceğiniz metin kutusunu görmek için **Sekme** tuşuna basın.     
+Aşağıdaki ekran görüntüsünde gösterildiği gibi, **özel** bir değişken ve [desteklenen biçim dizelerini](https://msdn.microsoft.com/library/8kb3ddd4.aspx)de kullanabilirsiniz. Bu yapıya sahip bir klasör seçmek için, önce **Araştır** düğmesini kullanın. Sonra bir değeri **{Custom}** ile değiştirin ve biçim dizesini girebileceğiniz metin kutusunu görmek için **Tab** tuşuna basın.     
 
 ![Özel değişken kullanma](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
 ## <a name="scheduling-options"></a>Zamanlama seçenekleri
-Kopyalama işlemini bir kez veya bir zamanlamada (saatlik, günlük vb.) çalıştırabilirsiniz. Bu seçeneklerin her ikisi de, şirket içi, bulut ve yerel masaüstü kopyası da dahil olmak üzere ortamlar arasında konektörlerin genişliği için kullanılabilir.
+Kopyalama işlemini bir kez veya bir zamanlamaya göre (saatlik, günlük, vb.) çalıştırabilirsiniz. Bu seçeneklerin her ikisi de şirket içi, bulut ve yerel masaüstü kopyası dahil olmak üzere ortamlarda bağlayıcılar genelinde kullanılabilir.
 
-Tek seferlik kopyalama işlemi, veri hareketinin bir kaynaktan hedefe yalnızca bir kez taşınmasını sağlar. Herhangi bir boyuttave desteklenen biçimdeki veriler için geçerlidir. Zamanlanan kopya, verileri öngörülen yinelemede kopyalamanıza olanak tanır. Zamanlanan kopyayı yapılandırmak için zengin ayarları (yeniden deneme, zaman sonu ve uyarılar gibi) kullanabilirsiniz.
+Tek seferlik kopyalama işlemi, veri hareketini bir kaynaktan hedefe yalnızca bir kez sağlar. Her boyuttaki ve desteklenen biçimdeki veriler için geçerlidir. Zamanlanan kopya, verileri önceden belirlenmiş bir tekrarda kopyalamanızı sağlar. Zamanlanmış kopyayı yapılandırmak için zengin ayarları (yeniden deneme, zaman aşımı ve uyarılar gibi) kullanabilirsiniz.
 
 ![Zamanlama özellikleri](./media/data-factory-copy-wizard/scheduling-properties.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kopya Etkinliği ile bir ardışık hatlar oluşturmak için Veri Fabrikası Kopyalama Sihirbazı'nı kullanmanın hızlı bir şekilde gözden geçmesi için [Bkz. Öğretici: Kopya Sihirbazı'nı kullanarak bir ardışık kaynak oluşturun.](data-factory-copy-data-wizard-tutorial.md)
+Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için Data Factory kopyalama Sihirbazı 'Nı kullanmaya yönelik hızlı bir anlatım için bkz. [öğretici: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md).

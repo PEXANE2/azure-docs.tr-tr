@@ -1,6 +1,6 @@
 ---
-title: Azure Akış Analizi işinizi temizleyin
-description: Bu makalede, Azure Akış Analizi işlerinizi silemeniz için farklı yöntemler gösterilmektedir.
+title: Azure Stream Analytics işinizi Temizleme
+description: Bu makalede Azure Stream Analytics işlerinizi silmeye yönelik farklı yöntemler gösterilmektedir.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,33 +9,33 @@ ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: d99920417f20034da1001a821c02376ac19274d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426480"
 ---
-# <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Azure Akış Analizi işinizi durdurun veya silin
+# <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Azure Stream Analytics işinizi durdurma veya silme
 
-Azure Akışı Analizi işleri, Azure portalı, Azure PowerShell, .Net için Azure SDK veya REST API üzerinden kolayca durdurulabilir veya silinebilir. Bir Stream Analytics işi silindikten sonra kurtarılamaz.
+Azure Stream Analytics işleri Azure portal, Azure PowerShell, .NET için Azure SDK veya REST API aracılığıyla kolayca durdurulabilir veya silinebilir. Bir Stream Analytics işi silindikten sonra kurtarılamaz.
 
 >[!NOTE] 
->Akış Analizi işinizi durdurduğunuzda, veriler yalnızca Olay Hub'ları veya Azure SQL Veritabanı gibi giriş ve çıktı depolamasında kalır. Azure'dan veri kaldırmanız gerekiyorsa, Akış Analizi işinizin giriş ve çıktı kaynakları için kaldırma işlemini izlediğinizden emin olun.
+>Stream Analytics işinizi durdurduğunuzda, veriler yalnızca giriş ve çıkış depolamada (örneğin, Event Hubs veya Azure SQL veritabanı) devam ediyor. Verileri Azure 'dan kaldırmanız gerekiyorsa, Stream Analytics işinizin giriş ve çıkış kaynakları için kaldırma işlemini izlediğinizden emin olun.
 
-## <a name="stop-a-job-in-azure-portal"></a>Azure portalındaki bir işi durdurma
+## <a name="stop-a-job-in-azure-portal"></a>Azure portal bir işi durdurma
 
-Bir işi durdurduğınızda, kaynaklar deprovisioned ve olayları işleme durur. Bu işle ilgili ücretler de durdurulur. Ancak tüm yapılandırma tutulur ve daha sonra işi yeniden başlatabilirsiniz 
+Bir işi durdurduğunuzda, kaynakların sağlanması kaldırılır ve olayları işlemeyi durdurur. Bu işle ilgili ücretler de durdurulur. Ancak tüm yapılandırmanız korunur ve işi daha sonra yeniden başlatabilirsiniz 
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 
 2. Çalışan Stream Analytics işinizi bulun ve seçin.
 
-3. Akış Analizi iş sayfasında, işi durdurmak için **Durdur'u** seçin. 
+3. İşi durdurmak için Stream Analytics işi sayfasında **Durdur** ' u seçin. 
 
-   ![Azure Akışı Analizi işini durdurun](./media/stream-analytics-clean-up-your-job/stop-stream-analytics-job.png)
+   ![Azure Stream Analytics işini durdur](./media/stream-analytics-clean-up-your-job/stop-stream-analytics-job.png)
 
 
-## <a name="delete-a-job-in-azure-portal"></a>Azure portalındaki bir işi silme
+## <a name="delete-a-job-in-azure-portal"></a>Azure portal bir işi silme
 
 >[!WARNING] 
 >Bir Stream Analytics işi silindikten sonra kurtarılamaz.
@@ -44,21 +44,21 @@ Bir işi durdurduğınızda, kaynaklar deprovisioned ve olayları işleme durur.
 
 2. Mevcut Stream Analytics işinizi bulun ve seçin.
 
-3. Akış Analizi iş sayfasında, işi silmek için **Sil'i** seçin. 
+3. İşi silmek için Stream Analytics işi sayfasında **Sil** ' i seçin. 
 
-   ![Azure Akışı Analizi İşini Sil](./media/stream-analytics-clean-up-your-job/delete-stream-analytics-job.png)
+   ![Azure Stream Analytics Işini Sil](./media/stream-analytics-clean-up-your-job/delete-stream-analytics-job.png)
 
 
-## <a name="stop-or-delete-a-job-using-powershell"></a>PowerShell'i kullanarak bir işi durdurma veya silme
+## <a name="stop-or-delete-a-job-using-powershell"></a>PowerShell 'i kullanarak bir işi durdurma veya silme
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell'i kullanarak bir işi durdurmak için [Stop-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) cmdlet'i kullanın. PowerShell kullanarak bir işi silmek için [Remove-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) cmdlet'ini kullanın.
+PowerShell 'i kullanarak bir işi durdurmak için [stop-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) cmdlet 'ini kullanın. PowerShell 'i kullanarak bir işi silmek için [Remove-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) cmdlet 'ini kullanın.
 
-## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>.NET için Azure SDK kullanarak bir işi durdurma veya silme
+## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>.NET için Azure SDK 'Yı kullanarak bir işi durdurma veya silme
 
-.NET için Azure SDK'yı kullanan bir işi durdurmak için [StreamingJobsOperationsExtensions.BeginStop](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop?view=azure-dotnet) yöntemini kullanın. .NET için Azure SDK kullanarak bir işi silmek [için, StreamingJobsOperationsExtensions.BeginDelete](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete?view=azure-dotnet) yöntemi.
+.NET için Azure SDK 'yı kullanarak bir işi durdurmak için [Streamingjobsoperationsextensions. BeginStop](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop?view=azure-dotnet) metodunu kullanın. .NET için Azure SDK, [Streamingjobsoperationsextensions. BeginDelete](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete?view=azure-dotnet) yöntemi kullanarak bir işi silmek için.
 
-## <a name="stop-or-delete-a-job-using-rest-api"></a>REST API'yi kullanarak bir işi durdurma veya silme
+## <a name="stop-or-delete-a-job-using-rest-api"></a>REST API kullanarak bir işi durdurma veya silme
 
-REST API'yi kullanarak bir işi durdurmak için [Durdur](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job#stop) metoduna bakın. REST API kullanarak bir işi silmek için [Sil](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job#delete) yöntemine bakın.
+REST API kullanarak bir işi durdurmak için [stop](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job#stop) yöntemine bakın. REST API kullanarak bir işi silmek için, [Delete](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job#delete) yöntemine bakın.

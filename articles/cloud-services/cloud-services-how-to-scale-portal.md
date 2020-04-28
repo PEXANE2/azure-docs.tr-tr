@@ -1,6 +1,6 @@
 ---
-title: Portalda otomatik ölçeklendirme bir bulut hizmeti | Microsoft Dokümanlar
-description: Azure'daki bulut hizmeti web rolü veya çalışan rolü için otomatik ölçek kurallarını yapılandırmak için portalı nasıl kullanacağınızı öğrenin.
+title: Portalda bir bulut hizmetini otomatik ölçeklendirme | Microsoft Docs
+description: Azure 'da bir bulut hizmeti Web rolü veya çalışan rolü için otomatik ölçek kurallarını yapılandırmak üzere portalını nasıl kullanacağınızı öğrenin.
 services: cloud-services
 author: tgore03
 ms.service: cloud-services
@@ -8,103 +8,103 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
 ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75360846"
 ---
-# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Portaldaki Bulut Hizmeti için otomatik ölçekleme nasıl yapılandırılabilen
+# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Portalda bir bulut hizmeti için otomatik ölçeklendirmeyi yapılandırma
 
-Çalışma içinde veya dışında bir ölçek tetikleyen bir bulut hizmeti çalışanı rolü için koşullar ayarlanabilir. Rol için koşullar, rolün CPU, disk veya ağ yükünü temel alabilir. İleti kuyruğuna veya aboneliğinizle ilişkili başka bir Azure kaynağının ölçüsüne dayalı bir koşul da ayarlayabilirsiniz.
+Koşullar, bir ölçek genişletme veya genişletme işlemini tetikleyen bir bulut hizmeti çalışan rolü için ayarlanabilir. Rolün koşulları, rolün CPU, disk veya ağ yüküne bağlı olabilir. Ayrıca, bir ileti kuyruğuna veya aboneliğinizle ilişkili başka bir Azure kaynağının ölçüsüne göre bir koşul da ayarlayabilirsiniz.
 
 > [!NOTE]
-> Bu makalede Bulut Hizmeti web ve çalışan rolleri üzerinde duruluyor. Doğrudan sanal bir makine (klasik) oluşturduğunuzda, bir bulut hizmetinde barındırılır. Standart bir sanal makineyi [kullanılabilirlik kümesiyle](../virtual-machines/windows/classic/configure-availability-classic.md) ilişkilendirerek ölçeklendirebilir ve el ile açabilir veya kapatabilirsiniz.
+> Bu makale, bulut hizmeti Web ve çalışan rollerine odaklanır. Doğrudan bir sanal makine (klasik) oluşturduğunuzda bir bulut hizmetinde barındırılır. Standart bir sanal makineyi bir [kullanılabilirlik kümesiyle](../virtual-machines/windows/classic/configure-availability-classic.md) ilişkilendirerek ölçeklendirebilir ve el ile açıp kapatabilirsiniz.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
-Uygulamanız için ölçekleme yapılandırmadan önce aşağıdaki bilgileri göz önünde bulundurmanız gerekir:
+Uygulamanız için ölçeklendirmeyi yapılandırmadan önce aşağıdaki bilgileri göz önünde bulundurmanız gerekir:
 
-* Ölçekleme çekirdek kullanımından etkilenir.
+* Ölçeklendirme, temel kullanımdan etkilenir.
 
-    Daha büyük rol örnekleri daha fazla çekirdek kullanır. Bir uygulamayı yalnızca aboneliğiniz için çekirdek sınırı içinde ölçeklendirebilirsiniz. Örneğin, aboneliğinizin 20 çekirdek sınırı olduğunu varsayın. İki orta ölçekli bulut hizmeti (toplam 4 çekirdek) içeren bir uygulama çalıştırırsanız, aboneliğinizdeki diğer bulut hizmeti dağıtımlarını yalnızca kalan 16 çekirdekle ölçeklendirebilirsiniz. Boyutlar hakkında daha fazla bilgi için [Bulut Hizmet Boyutları'na](cloud-services-sizes-specs.md)bakın.
+    Daha büyük rol örnekleri daha fazla çekirdek kullanır. Bir uygulamayı yalnızca aboneliğinizin çekirdek limiti dahilinde ölçeklendirebilirsiniz. Örneğin, aboneliğinizin 20 çekirdek sınırına sahip olduğunu varsayalım. İki orta ölçekli bulut hizmeti (Toplam 4 çekirdek) ile bir uygulama çalıştırırsanız, diğer bulut hizmeti dağıtımlarını yalnızca diğer 16 çekirdeklerle ölçeklendirebilirsiniz. Boyutlar hakkında daha fazla bilgi için bkz. [bulut hizmeti boyutları](cloud-services-sizes-specs.md).
 
-* Sıra iletisi eşiğine göre ölçeklendirebilirsiniz. Kuyrukların nasıl kullanılacağı hakkında daha fazla bilgi için [Sıra Depolama Hizmeti'ni nasıl kullanacağına](../storage/queues/storage-dotnet-how-to-use-queues.md)bakın.
+* Sıra ileti eşiğine göre ölçeklendirebilirsiniz. Kuyrukları kullanma hakkında daha fazla bilgi için bkz. [kuyruk depolama hizmetini kullanma](../storage/queues/storage-dotnet-how-to-use-queues.md).
 
-* Aboneliğinizle ilişkili diğer kaynakları da ölçeklendirebilirsiniz.
+* Ayrıca, aboneliğinizle ilişkili diğer kaynakları da ölçeklendirebilirsiniz.
 
-* Uygulamanızın yüksek kullanılabilirliğini sağlamak için, uygulamanın iki veya daha fazla rol örneğiyle dağıtıldığından emin olmalısınız. Daha fazla bilgi için [Hizmet Düzeyi Sözleşmeleri'ne](https://azure.microsoft.com/support/legal/sla/)bakın.
+* Uygulamanızın yüksek oranda kullanılabilir olmasını sağlamak için, bunun iki veya daha fazla rol örneğiyle dağıtıldığından emin olmanız gerekir. Daha fazla bilgi için bkz. [hizmet düzeyi sözleşmeleri](https://azure.microsoft.com/support/legal/sla/).
 
-* Otomatik Ölçek yalnızca tüm roller **Hazır** durumunda olduğunda olur.  
+* Otomatik ölçeklendirme, yalnızca tüm roller **hazırlanıyor** durumunda gerçekleşir.  
 
 
-## <a name="where-scale-is-located"></a>Ölçeğin bulunduğu yer
-Bulut hizmetinizi seçtikten sonra bulut servis bıçağının görünür olması gerekir.
+## <a name="where-scale-is-located"></a>Ölçek bulunduğu yer
+Bulut hizmetinizi seçtikten sonra, bulut hizmeti dikey penceresinin görünür olması gerekir.
 
-1. Bulut servis bıçağında, **Roller ve Örnekler** döşemesinde bulut hizmetinin adını seçin.   
-   **ÖNEMLİ**: Rolün altındaki rol örneğini değil, bulut hizmeti rolünü tıklattığınızdan emin olun.
+1. Bulut hizmeti dikey penceresinde, **Roller ve örnekler** kutucuğunda, bulut hizmetinin adını seçin.   
+   **Önemli**: rolün altındaki rol örneğine değil, bulut hizmeti rolüne tıkladığınızdan emin olun.
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
-2. **Ölçek** döşemesini seçin.
+2. **Ölçek** kutucuğunu seçin.
 
     ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
-## <a name="automatic-scale"></a>Otomatik ölçek
-Bir rol için ölçek ayarlarını iki mod **manuel** veya **otomatik**olarak yapılandırabilirsiniz. Manuel beklediğiniz gibi, örnekleri mutlak sayısını ayarlayın. Otomatik ancak nasıl ve ne kadar ölçeklendirmeniz gerektiğini yöneten kurallar belirlemenize olanak sağlar.
+## <a name="automatic-scale"></a>Otomatik ölçeklendirme
+Bir rol için ölçek ayarlarını, iki moddan **el ile** veya **Otomatik**olarak yapılandırabilirsiniz. El ile beklenen, örneklerin mutlak sayısını ayarlarsınız. Otomatik olarak, ne kadar ölçeklendirmeniz gerektiğini belirleyen kurallar ayarlamanıza olanak sağlar.
 
-Zamanlama ve performans **kuralları**için ölçeği seçeneğine **göre** ayarlayın.
+**Ölçek ölçütü** seçeneğini, **zamanlama ve performans kuralları**olarak ayarlayın.
 
-![Bulut hizmetleri, profil ve kuralla ayarları ölçeklendir](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
+![Profil ve kuralla bulut hizmetleri ölçek ayarları](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
-1. Varolan bir profil.
+1. Var olan bir profil.
 2. Üst profil için bir kural ekleyin.
 3. Başka bir profil ekleyin.
 
-**Profil Ekle'yi**seçin. Profil, ölçek için hangi modu kullanmak istediğinizi belirler: **her zaman,** **yineleme,** **sabit tarih**.
+**Profil ekle**' yi seçin. Profil, ölçek için hangi modu kullanmak istediğinizi belirler: **her zaman**, **yinelenme**, **sabit tarih**.
 
-Profili ve kuralları yapılandırıldıktan sonra üstteki **Kaydet** simgesini seçin.
+Profili ve kuralları yapılandırdıktan sonra üstteki **Kaydet** simgesini seçin.
 
 #### <a name="profile"></a>Profil
-Profil, ölçek için ve ayrıca bu ölçek aralığı etkin olduğunda en küçük ve maksimum örnekleri ayarlar.
+Profil, ölçek için minimum ve maksimum örnekleri, Ayrıca bu ölçek aralığı etkin olduğunda da ayarlar.
 
 * **Her zaman**
 
-    Bu örnek aralığını her zaman kullanılabilir tutun.  
+    Bu örnek aralığını her zaman kullanılabilir durumda tutun.  
 
     ![Her zaman ölçeklendirilen bulut hizmeti](./media/cloud-services-how-to-scale-portal/select-always.png)
 * **Yineleme**
 
-    Ölçeklendirmek için haftanın gün kümesini seçin.
+    Haftanın ölçeklenmesi için bir gün kümesi seçin.
 
-    ![Yineleme zamanlaması olan bulut hizmet ölçeği](./media/cloud-services-how-to-scale-portal/select-recurrence.png)
+    ![Yineleme zamanlaması ile bulut hizmeti ölçeği](./media/cloud-services-how-to-scale-portal/select-recurrence.png)
 * **Sabit Tarih**
 
     Rolü ölçeklendirmek için sabit bir tarih aralığı.
 
-    ![Sabit bir tarihe sahip CLoud hizmet ölçeği](./media/cloud-services-how-to-scale-portal/select-fixed.png)
+    ![Sabit bir tarihle bulut hizmeti ölçeği](./media/cloud-services-how-to-scale-portal/select-fixed.png)
 
-Profili yapılandırıldıktan sonra, profil bıçağının altındaki **Tamam** düğmesini seçin.
+Profili yapılandırdıktan sonra, profil dikey penceresinin altındaki **Tamam** düğmesini seçin.
 
 #### <a name="rule"></a>Kural
 Kurallar bir profile eklenir ve ölçeği tetikleyen bir koşulu temsil eder.
 
-Kural tetikleyicisi, koşullu değer ekleyebileceğiniz bulut hizmetinin (CPU kullanımı, disk etkinliği veya ağ etkinliği) bir ölçüsüne dayanır. Ayrıca, bir ileti kuyruğunu veya aboneliğinizle ilişkili başka bir Azure kaynağının ölçüsüne dayalı tetikleyiciye sahip olabilirsiniz.
+Kural tetikleyicisi, koşullu bir değer ekleyebileceğiniz bulut hizmeti ölçüsünü (CPU kullanımı, disk etkinliği veya ağ etkinliği) temel alır. Ayrıca, tetikleyicinin bir ileti kuyruğuna veya aboneliğinizle ilişkili başka bir Azure kaynağının ölçüsüne göre tetiklemesine sahip olabilirsiniz.
 
 ![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
-Kuralı yapılandırıldıktan sonra, kural bıçağının altındaki **Tamam** düğmesini seçin.
+Kuralı yapılandırdıktan sonra, kural dikey penceresinin altındaki **Tamam** düğmesini seçin.
 
-## <a name="back-to-manual-scale"></a>Manuel ölçeğe geri dön
-[Ölçek ayarlarına](#where-scale-is-located) gidin ve **Ölçeği** el **ile girdiğim bir örnek sayısına**göre ayarlayın.
+## <a name="back-to-manual-scale"></a>El ile ölçeğe geri dön
+[Ölçek ayarlarına](#where-scale-is-located) gidin ve **Ölçek ölçütü** seçeneğini, **el ile girdiğim bir örnek sayısı**olarak ayarlayın.
 
-![Bulut hizmetleri, profil ve kuralla ayarları ölçeklendir](./media/cloud-services-how-to-scale-portal/manual-basics.png)
+![Profil ve kuralla bulut hizmetleri ölçek ayarları](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 
-Bu ayar, otomatik ölçekleme giderimi rolünden kaldırır ve ardından örnek sayısını doğrudan ayarlayabilirsiniz.
+Bu ayar, rolden otomatik ölçeklendirmeyi kaldırır ve ardından örnek sayısını doğrudan ayarlayabilirsiniz.
 
-1. Ölçek (manuel veya otomatik) seçeneği.
-2. Örneklerini ölçeklendirecek şekilde ayarlamak için bir rol örneği kaydırıcısı.
-3. Ölçeklendirilen rolün örnekleri.
+1. Ölçek (el ile veya otomatik) seçeneği.
+2. Ölçeklendirilen örnekleri ayarlamak için bir rol örneği kaydırıcı.
+3. Ölçeklendirilecek rolün örnekleri.
 
-Ölçek ayarlarını yapılandırıldıktan sonra üstteki **Kaydet** simgesini seçin.
+Ölçek ayarlarını yapılandırdıktan sonra üstteki **Kaydet** simgesini seçin.
 
 
 

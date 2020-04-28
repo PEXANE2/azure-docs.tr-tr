@@ -1,33 +1,33 @@
 ---
-title: Azure Cosmos DB'de SQL sabitleri
-description: Azure Cosmos DB'deki SQL sorgu sabitlerinin belirli bir veri değerini temsil etmek için nasıl kullanıldığı hakkında bilgi edinin
+title: Azure Cosmos DB SQL sabitleri
+description: Azure Cosmos DB içindeki SQL sorgu sabitlerinin belirli bir veri değerini göstermek için nasıl kullanıldığı hakkında bilgi edinin
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74873429"
 ---
-# <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL sorgu sabitleri  
+# <a name="azure-cosmos-db-sql-query-constants"></a>SQL sorgu sabitlerini Azure Cosmos DB  
 
- Gerçek veya skaler değer olarak da bilinen sabit, belirli bir veri değerini temsil eden bir simgedir. Bir kıymetin biçimi temsil eder değerin veri türüne bağlıdır.  
+ Sabit, sabit değer veya skaler değer olarak da bilinen, belirli bir veri değerini temsil eden bir simgedir. Bir sabit biçim, temsil ettiği değerin veri türüne bağlıdır.  
   
  **Desteklenen skaler veri türleri:**  
   
 |**Tür**|**Değerler sırası**|  
 |-|-|  
-|**Tanımsız**|Tek değer: **tanımlanmamış**|  
-|**Null**|Tek değer: **null**|  
+|**Tanımlayan**|Tek değer: **tanımsız**|  
+|**Değer**|Tek değer: **null**|  
 |**Boole**|Değerler: **false**, **true**.|  
-|**Numarası**|Çift duyarlıklı kayan nokta sayısı, IEEE 754 standardı.|  
-|**Dize**|Sıfır veya daha fazla Unicode karakter dizisi. Dizeleri tek veya çift tırnak içinde eklenmelidir.|  
-|**Dizi**|Sıfır veya daha fazla öğeden oluşan bir dizi. **Tanımsız**dışında her öğe, herhangi bir skaler veri türünün bir değeri olabilir.|  
-|**Nesne**|Sıralanmamış sıfır veya daha fazla ad/değer çifti kümesi. Adı unicode dize, değer **tanımsız**dışında, herhangi bir skaler veri türü olabilir.|  
+|**Sayısından**|Bir çift duyarlıklı kayan noktalı sayı, IEEE 754 standardı.|  
+|**Dize**|Sıfır veya daha fazla Unicode karakterden oluşan bir dizi. Dizeler tek veya çift tırnak içine alınmalıdır.|  
+|**Dizi**|Sıfır veya daha fazla öğe dizisi. Her öğe, **tanımsız**bir değer hariç herhangi bir skaler veri türü değeri olabilir.|  
+|**Nesne**|Sırasız bir sıfır veya daha fazla ad/değer çifti kümesi. Ad bir Unicode dizesidir, değer **tanımsız**olmayan herhangi bir skaler veri türünde olabilir.|  
   
 ## <a name="syntax"></a><a name="bk_syntax"></a>Sözdizimi
   
@@ -59,39 +59,39 @@ ms.locfileid: "74873429"
   
 ```  
   
-##  <a name="arguments"></a><a name="bk_arguments"></a>Bağımsız değişken
+##  <a name="arguments"></a><a name="bk_arguments"></a>Değişkenlerinden
   
 * `<undefined_constant>; Undefined`  
   
-  Tanımsız türün tanımlanmamış değerini temsil eder.  
+  Tanımsız tür tanımsız değeri temsil eder.  
   
 * `<null_constant>; null`  
   
-  **Null**türünün **null** değerini temsil eder.  
+  **Null**türünde **null** değeri temsil eder.  
   
 * `<boolean_constant>`  
   
-  Boolean tipisabit temsil eder.  
+  Boolean türünde sabiti temsil eder.  
   
 * `false`  
   
-  Boolean tipinin **yanlış** değerini temsil eder.  
+  Boolean türündeki **yanlış** değeri temsil eder.  
   
 * `true`  
   
-  Boolean türünün **gerçek** değerini temsil eder.  
+  Boolean türünün **true** değerini temsil eder.  
   
 * `<number_constant>`  
   
-  Sabiti temsil eder.  
+  Bir sabiti temsil eder.  
   
 * `decimal_literal`  
   
-  Ondalık literalsayılar, ondalık gösterim veya bilimsel gösterim kullanılarak temsil edilen sayılardır.  
+  Ondalık sabit değerleri, ondalık Gösterim ya da bilimsel gösterim kullanılarak temsil edilen sayılardır.  
   
 * `hexadecimal_literal`  
   
-  Hexadecimal literals bir veya daha fazla hexadecimal basamak takip öneki '0x' kullanılarak temsil numaralarıdır.  
+  Onaltılık sabit değerler, ' 0x ' öneki kullanılarak ve ardından bir veya daha fazla onaltılık basamak tarafından temsil edilen sayılardır.  
   
 * `<string_constant>`  
   
@@ -99,22 +99,22 @@ ms.locfileid: "74873429"
   
 * `string _literal`  
   
-  String literals, sıfır veya daha fazla Unicode karakter veya kaçış dizileri dizisi yle temsil edilen Unicode dizeleridir. Dize literals tek tırnak (apostrophe: ' ) veya çift tırnak (tırnak işareti: ") kapalıdır.  
+  Dize sabit değerleri, sıfır veya daha fazla Unicode karakter ya da kaçış dizileri tarafından temsil edilen Unicode dizeleridir. Dize sabit değerleri tek tırnak içine alınır (kesme işareti: ') veya çift tırnak işaretleri (tırnak işareti: ").  
   
-  Aşağıdaki kaçış sıralarına izin verilir:  
+  Aşağıdaki kaçış sıralarında izin verilir:  
   
 |**Kaçış sırası**|**Açıklama**|**Unicode karakter**|  
 |-|-|-|  
-|\\'|keseli sıçan (')|U+0027|  
-|\\"|tırnak işareti (")|U+0022|  
-|\\\ |ters solidus\\( )|U+005C|  
-|\\/|solidus (/)|U+002F|  
-|\b|Backspace|U+0008|  
-|\f|form beslemesi|U+000C|  
-|\n|satır beslemesi|U+000A|  
-|\r|satır başı|U+000D|  
-|\t|Sekme|U+0009|  
-|\uXXXX|4 hexadecimal basamakla tanımlanan Bir Unicode karakteri.|U+XXXX|  
+|\\'|kesme işareti (')|U + 0027|  
+|\\"|tırnak işareti (")|U + 0022|  
+|\\\ |ters eğik çizgi\\()|U + 005C|  
+|\\/|eğik çizgi (/)|U + 002F|  
+|\b|geri al|U + 0008|  
+|\f|Form akışı|U + 000C|  
+|\n|satır besleme|U + 000A|  
+|\r|satır başı|U + 000D|  
+|\t|sekmesinde|U + 0009|  
+|\Uxxxx içinde|4 onaltılık basamakla tanımlanan bir Unicode karakteri.|U + XXXX|  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

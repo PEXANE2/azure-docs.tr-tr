@@ -1,6 +1,6 @@
 ---
-title: .NET - Azure Depolama ile Blob depolamasına yapılan istekte müşteri tarafından sağlanan bir anahtar belirtin
-description: .NET'i kullanarak Blob depolamasına yapılan bir istekte müşteri tarafından sağlanan anahtarı nasıl belirteceklerini öğrenin.
+title: .NET-Azure depolama ile BLOB depolama için istekte bir müşteri tarafından sağlanmış anahtar belirtin
+description: .NET kullanarak BLOB depolama için bir istekte müşteri tarafından sağlanmış anahtar belirtmeyi öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,25 +10,25 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: ea8254f108aed9d40e6970a27409035b1e10ab41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74807009"
 ---
-# <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>.NET ile Blob depolama sına istek te müşteri tarafından sağlanan bir anahtar belirtin
+# <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>.NET ile BLOB depolama için istekte müşteri tarafından sağlanmış bir anahtar belirtin
 
-Azure Blob depolamasına karşı istekte bulunduran istemciler, tek bir istekte şifreleme anahtarı sağlama seçeneğine sahiptir. İstekteki şifreleme anahtarının eklenmesi, Blob depolama işlemleri için şifreleme ayarları üzerinde parçalı denetim sağlar. Müşteri tarafından sağlanan anahtarlar (önizleme) Azure Key Vault'ta veya başka bir anahtar deposunda depolanabilir.
+Azure Blob depolamada istek yapan istemcilerin, tek bir istekte şifreleme anahtarı sağlama seçeneği vardır. İstek üzerine şifreleme anahtarı dahil olmak üzere, BLOB depolama işlemleri için şifreleme ayarları üzerinde ayrıntılı denetim sağlar. Müşteri tarafından sunulan anahtarlar (Önizleme), Azure Key Vault veya başka bir anahtar deposunda depolanabilir.
 
-Bu makalede, .NET ile bir istek te müşteri tarafından sağlanan anahtarın nasıl belirtilen gösterir.
+Bu makalede, .NET ile bir istekte müşteri tarafından sağlanmış bir anahtarın nasıl kullanılacağı gösterilmektedir.
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-Azure Depolama'dan Azure Identity istemci kitaplığıyla kimlik doğrulama hakkında daha fazla bilgi edinmek [için, Azure Etkin Dizini ve Azure Kaynakları için yönetilen kimliklerle blob'lara ve kuyruklara erişimi Yetkilendirme'de](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library) **Azure Kimlik kitaplığıyla Kimlik Doğrulama** başlıklı bölüme bakın.
+Azure depolama 'dan Azure kimlik istemci kitaplığı ile kimlik doğrulama hakkında daha fazla bilgi edinmek için bkz. Azure **kimlik kitaplığıyla kimlik doğrulama** başlıklı Bölüm [Azure Active Directory ve Azure kaynakları için Yönetilen kimlikler ile blob 'lara ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library).
 
-## <a name="example-use-a-customer-provided-key-to-upload-a-blob"></a>Örnek: Bir blob yüklemek için müşteri tarafından sağlanan bir anahtar kullanın
+## <a name="example-use-a-customer-provided-key-to-upload-a-blob"></a>Örnek: bir blobu karşıya yüklemek için müşteri tarafından sağlanmış bir anahtar kullanın
 
-Aşağıdaki örnek, müşteri tarafından sağlanan bir anahtar oluşturur ve bir blob yüklemek için bu anahtarı kullanır. Kod bir blok yükler, ardından blob'u Azure Depolama'ya yazmak için blok listesini işler.
+Aşağıdaki örnek, bir müşteri tarafından sağlanmış anahtar oluşturur ve bir blobu karşıya yüklemek için bu anahtarı kullanır. Kod bir blok yükler ve ardından blok listesini kaydeder ve BLOB 'u Azure depolama 'ya yazar.
 
 ```csharp
 async static Task UploadBlobWithClientKey(string accountName, string containerName,
@@ -74,5 +74,5 @@ async static Task UploadBlobWithClientKey(string accountName, string containerNa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Veriler için Azure Depolama şifrelemesi](../common/storage-service-encryption.md)
-- [Azure Etkin Dizini ve Yönetilen kimliklerle Azure Kaynakları için blob'lara ve kuyruklara erişimi yetkilendirme](../common/storage-auth-aad-msi.md)
+- [Bekleyen veriler için Azure depolama şifrelemesi](../common/storage-service-encryption.md)
+- [Azure kaynakları için Azure Active Directory ve yönetilen kimlikler ile bloblara ve kuyruklara erişim yetkisi verme](../common/storage-auth-aad-msi.md)

@@ -1,6 +1,6 @@
 ---
-title: Kullanıcı profili bilgileri ekleme veya güncelleme - Azure AD
-description: Resim ve iş ayrıntıları da dahil olmak üzere Azure Active Directory'de bir kullanıcının profiline nasıl bilgi eklenacağına ilişkin talimatlar.
+title: Kullanıcı profili bilgilerini ekleme veya güncelleştirme-Azure AD
+description: Bir resim ve iş ayrıntıları dahil olmak üzere Azure Active Directory kullanıcının profiline bilgi ekleme hakkında yönergeler.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -13,52 +13,52 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ba51b0ad7f314058f34092dff4e26411020086a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75422873"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Azure Active Directory kullanarak kullanıcının profil bilgilerini ekleme veya güncelleştirme
-Azure Etkin Dizini (Azure AD) kullanarak profil resmi, işe özel bilgiler ve bazı ayarlar dahil olmak üzere kullanıcı profili bilgileri ekleyin. Yeni kullanıcı ekleme hakkında daha fazla bilgi için [Azure Etkin Dizini'nde kullanıcıların nasıl ekleyeceğiniz veya silindiğini](add-users-azure-active-directory.md)öğrenin.
+Profil resmi, işe özel bilgiler ve Azure Active Directory (Azure AD) kullanarak bazı ayarlar dahil olmak üzere Kullanıcı profili bilgilerini ekleyin. Yeni Kullanıcı ekleme hakkında daha fazla bilgi için bkz. [Azure Active Directory Kullanıcı ekleme veya silme](add-users-azure-active-directory.md).
 
-## <a name="add-or-change-profile-information"></a>Profil bilgileri ekleme veya değiştirme
-Göreceğiniz gibi, bir kullanıcının profilinde, kullanıcının oluşturulması sırasında ekleyebileceğinden daha fazla bilgi vardır. Tüm bu ek bilgiler isteğe bağlıdır ve kuruluşunuz tarafından gerektiği gibi eklenebilir.
+## <a name="add-or-change-profile-information"></a>Profil bilgilerini ekleme veya değiştirme
+Gördüğünüz gibi, kullanıcının profilinde kullanıcı oluşturma sırasında ekleyebilecekler bölümünde daha fazla bilgi bulabilirsiniz. Bu ek bilgilerin tümü isteğe bağlıdır ve kuruluşunuzun gerektirdiği şekilde eklenebilir.
 
 ## <a name="to-add-or-change-profile-information"></a>Profil bilgilerini eklemek veya değiştirmek için
-1. Kuruluş için Kullanıcı yöneticisi olarak [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) , kuruluş için Kullanıcı Yöneticisi olarak oturum açın.
 
-2. **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından bir kullanıcı seçin. Örneğin, _Alain Charon._
+2. **Azure Active Directory**' yi seçin, **Kullanıcılar**' ı seçin ve ardından bir kullanıcı seçin. Örneğin, _Charon_.
 
-    **Alain Charon - Profil** sayfası görüntülenir.
+    **Alain Charon profili** sayfası görüntülenir.
 
-    ![Değiştirilebilir bilgiler de dahil olmak üzere kullanıcının profil sayfası](media/active-directory-users-profile-azure-portal/user-profile-all-blade.png)
+    ![Düzenlenebilir bilgiler de dahil olmak üzere kullanıcının profil sayfası](media/active-directory-users-profile-azure-portal/user-profile-all-blade.png)
 
-3. Kullanılabilir bölümlerin her birinde yer alan bilgileri isteğe bağlı olarak eklemek veya güncellemek için **Edit'i** seçin.
+3. İsteğe bağlı olarak, kullanılabilir bölümlerin her birine dahil edilen bilgileri eklemek veya güncelleştirmek için **Düzenle** ' yi seçin.
 
-    ![Kullanıcının profil sayfası, değiştirilebilir alanları gösteren](media/active-directory-users-profile-azure-portal/user-profile-edit.png)
+    ![Düzenlenebilir alanların gösterildiği kullanıcının profil sayfası](media/active-directory-users-profile-azure-portal/user-profile-edit.png)
 
-    - **Profil resmi.** Kullanıcının hesabı için küçük resim resmi seçin. Bu resim Azure Etkin Dizin'de ve kullanıcının myapps.microsoft.com sayfası gibi kişisel sayfalarında görünür.
+    - **Profil resmi.** Kullanıcı hesabı için bir küçük resim seçin. Bu resim, Azure Active Directory ve kullanıcının kişisel sayfalarında, myapps.microsoft.com sayfası gibi görünür.
 
-    - **Kimlik.** Kullanıcı için evli bir soyadı gibi ek bir kimlik değeri ekleyin veya güncelleştirin. Bu adı Ad ve Soyad değerlerinden bağımsız olarak ayarlayabilirsiniz. Örneğin, baş harfleri, şirket adını eklemek veya gösterilen ad sırasını değiştirmek için kullanabilirsiniz. Başka bir örnekte, adları 'Chris Green' olan iki kullanıcı için adlarını 'Chris B. Green' 'Chris R. Green (Contoso) olarak ayarlamak için Kimlik dizesini kullanabilirsiniz.
+    - **IDENTITY.** Kullanıcı için evli soyadı gibi ek bir kimlik değeri ekleyin veya güncelleştirin. Bu adı, adı ve soyadı değerlerini bağımsız olarak ayarlayabilirsiniz. Örneğin, bunu, harfleri, bir şirket adını veya gösterilen adların sırasını değiştirmek için kullanabilirsiniz. Başka bir örnekte, adları ' Chris Green ' olan iki kullanıcı için kimlik dizesini kullanarak adlarını ' Chris B. yeşil ' ' Chris R. Green (contoso) olarak ayarlayabilirsiniz.
 
-    - **İş bilgisi.** Kullanıcının iş unvanı, departman veya yöneticisi gibi işle ilgili bilgileri ekleyin.
+    - **İş bilgileri.** Kullanıcının iş unvanı, departmanı veya Yöneticisi gibi işle ilgili herhangi bir bilgi ekleyin.
 
-    - **Ayarlar.** Kullanıcının Azure Etkin Dizin kiracısında oturum açıp açmayacağına karar verin. Ayrıca, kullanıcının genel konumunu da belirtebilirsiniz.
+    - **Ayarlar.** Kullanıcının Azure Active Directory kiracıya oturum açıp yükleyemeyeceğine karar verin. Kullanıcının genel konumunu da belirtebilirsiniz.
 
-    - **İletişim bilgileri.** Bazı kullanıcının telefon veya mobil kişi bilgileri dışında kullanıcı için ilgili iletişim bilgilerini ekleyin (yalnızca genel bir yönetici yönetici rollerindeki kullanıcılar için güncellenebilir).
+    - **İletişim bilgileri.** Bazı kullanıcıların telefonu veya mobil iletişim bilgileri dışında, kullanıcının ilgili iletişim bilgilerini ekleyin (yalnızca bir genel yönetici Yönetici rollerindeki kullanıcılar için güncelleştirebilir).
 
-    - **Kimlik doğrulama iletişim bilgileri.** Kullanıcı için etkin bir telefon numarası ve e-posta adresi olduğundan emin olmak için bu bilgileri doğrulayın. Bu bilgiler, oturum açma sırasında kullanıcının gerçekten kullanıcı olduğundan emin olmak için Azure Active Directory tarafından kullanılır. Kimlik doğrulama kişi bilgileri yalnızca genel bir yönetici tarafından güncellenebilir.
+    - **Kimlik doğrulaması iletişim bilgileri.** Kullanıcı için etkin bir telefon numarası ve e-posta adresi olduğundan emin olmak için bu bilgileri doğrulayın. Bu bilgiler, kullanıcının oturum açma işlemi sırasında gerçekten Kullanıcı olduğundan emin olmak için Azure Active Directory tarafından kullanılır. Kimlik doğrulama iletişim bilgileri yalnızca genel bir yönetici tarafından güncelleştirilebilen olabilir.
 
-4. **Kaydet'i**seçin.
+4. **Kaydet**’i seçin.
 
-    Tüm değişiklikleriniz kullanıcı için kaydedilir.
+    Tüm değişiklikleriniz Kullanıcı için kaydedilir.
 
     >[!Note]
-    >Yetki kaynağı Windows Server Active Directory olan kullanıcıların kimliğini, iletişim bilgilerini veya iş bilgilerini güncelleştirmek için Windows Server Active Directory'yi kullanmanız gerekir. Güncelleştirmenizi tamamladıktan sonra, değişiklikleri görmeden önce bir sonraki eşitleme döngüsünün tamamlanmasını beklemeniz gerekir.
+    >Yetkili kaynağı Windows Server Active Directory olan kullanıcılar için kimliği, iletişim bilgilerini veya iş bilgilerini güncelleştirmek üzere Windows Server Active Directory kullanmanız gerekir. Güncelleştirmenizi tamamladıktan sonra, değişiklikleri görebilmeniz için bir sonraki eşitleme döngüsünün tamamlanmasını beklemeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kullanıcılarınızın profillerini güncelledikten sonra aşağıdaki temel işlemleri gerçekleştirebilirsiniz:
+Kullanıcılarınızın profillerini güncelleştirdikten sonra, aşağıdaki temel işlemleri gerçekleştirebilirsiniz:
 
 - [Kullanıcı ekleme veya silme](add-users-azure-active-directory.md)
 
@@ -66,4 +66,4 @@ Kullanıcılarınızın profillerini güncelledikten sonra aşağıdaki temel i�
 
 - [Temel bir grup oluşturma ve üye ekleme](active-directory-groups-create-azure-portal.md)
 
-Veya temsilci atama, ilkeleri kullanma ve kullanıcı hesaplarını paylaşma gibi diğer kullanıcı yönetimi görevlerini gerçekleştirebilirsiniz. Diğer kullanılabilir eylemler hakkında daha fazla bilgi için [Azure Etkin Dizin kullanıcı yönetimi belgelerine](../users-groups-roles/index.yml)bakın.
+Ya da temsilciler atama, ilkeleri kullanma ve Kullanıcı hesaplarını paylaşma gibi diğer kullanıcı yönetim görevlerini de gerçekleştirebilirsiniz. Diğer kullanılabilir eylemler hakkında daha fazla bilgi için bkz. [Kullanıcı yönetimi belgelerini Azure Active Directory](../users-groups-roles/index.yml).

@@ -9,13 +9,13 @@ ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: c4225ab2505fc072f705f8126fc8a04581e0f80c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75440351"
 ---
-| Kategori | Veri deposu | Kaynak olarak desteklenen | Havuz olarak desteklenen | [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) tarafından desteklenen | [Kendi kendine barındırılan IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) tarafından desteklenmektedir |
+| Kategori | Veri deposu | Kaynak olarak desteklenen | Havuz olarak desteklenen | [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) tarafından desteklenen | Şirket içinde [BARıNDıRıLAN IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) tarafından desteklenir |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **Azure** |[Azure Blob depolama](../articles/data-factory/connector-azure-blob-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Bilişsel Arama dizini](../articles/data-factory/connector-azure-search.md) | |✓ |✓ |✓  |
@@ -23,7 +23,7 @@ ms.locfileid: "75440351"
 | &nbsp; |[MongoDB için Azure Cosmos DB API'si](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Veri Gezgini](../articles/data-factory/connector-azure-data-explorer.md) |✓ |✓ |✓ |✓ |
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Azure Data Lake Storage 2. Nesil](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[MariaDB için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  |
 | &nbsp; |[MySQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-mysql.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[PostgreSQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ |✓ |✓ |✓  |
@@ -32,7 +32,7 @@ ms.locfileid: "75440351"
 | &nbsp; |[Azure SQL Veritabanı Yönetilen Örneği](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Synapse Analytics (eski adı SQL Veri Ambarı)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Tablo depolama](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  |
-| **Database** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |✓ | |✓ |✓  |
+| **Veritabanınızı** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |✓ | |✓ |✓  |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |✓ | |✓ |✓  |
 | &nbsp; |[Drill](../articles/data-factory/connector-drill.md) |✓ | |✓ |✓  |
 | &nbsp; |[Google BigQuery](../articles/data-factory/connector-google-bigquery.md) |✓ | |✓ |✓  |
@@ -43,14 +43,14 @@ ms.locfileid: "75440351"
 | &nbsp; |[Informix](../articles/data-factory/connector-informix.md) |✓ | | |✓  |
 | &nbsp; |[MariaDB](../articles/data-factory/connector-mariadb.md) |✓ | |✓ |✓  |
 | &nbsp; |[Microsoft Access](../articles/data-factory/connector-microsoft-access.md) |✓ | | |✓  |
-| &nbsp; |[Mysql](../articles/data-factory/connector-mysql.md) |✓ | |✓ |✓  |
+| &nbsp; |[MySQL](../articles/data-factory/connector-mysql.md) |✓ | |✓ |✓  |
 | &nbsp; |[Netezza](../articles/data-factory/connector-netezza.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle](../articles/data-factory/connector-oracle.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |✓ | |✓ |✓  |
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) |✓ | |✓ |✓  |
 | &nbsp; |[Presto (Önizleme)](../articles/data-factory/connector-presto.md) |✓ | |✓ |✓  |
-| &nbsp; |[Open Hub üzerinden SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
-| &nbsp; |[MDX ile SAP İş Ambarı](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  |
+| &nbsp; |[Açık hub aracılığıyla SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |✓ | | |✓  |
+| &nbsp; |[MDX aracılığıyla SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |✓ | | |✓  |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |✓ |✓ | |✓  |
 | &nbsp; |[SAP tablosu](../articles/data-factory/connector-sap-table.md) |✓ | | |✓  |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |✓ | |✓ |✓  |
@@ -82,10 +82,10 @@ ms.locfileid: "75440351"
 | &nbsp; |[Jira](../articles/data-factory/connector-jira.md) |✓ | |✓ |✓  |
 | &nbsp; |[Magento (Önizleme)](../articles/data-factory/connector-magento.md) |✓ | |✓ |✓  |
 | &nbsp; |[Marketo (Önizleme)](../articles/data-factory/connector-marketo.md) |✓ | |✓ |✓  |
-| &nbsp; |[Ofis 365](../articles/data-factory/connector-office-365.md) |✓ | |✓ |✓  |
+| &nbsp; |[Office 365](../articles/data-factory/connector-office-365.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Eloqua (Önizleme)](../articles/data-factory/connector-oracle-eloqua.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Responsys (Önizleme)](../articles/data-factory/connector-oracle-responsys.md) |✓ | |✓ |✓  |
-| &nbsp; |[Oracle Service Cloud (Önizleme)](../articles/data-factory/connector-oracle-service-cloud.md) |✓ | |✓ |✓  |
+| &nbsp; |[Oracle hizmet bulutu (Önizleme)](../articles/data-factory/connector-oracle-service-cloud.md) |✓ | |✓ |✓  |
 | &nbsp; |[PayPal (Önizleme)](../articles/data-factory/connector-paypal.md) |✓ | |✓ |✓  |
 | &nbsp; |[QuickBooks (Önizleme)](../articles/data-factory/connector-quickbooks.md) |✓ | |✓ |✓  |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |✓ |✓ |✓ |✓  |
@@ -101,4 +101,4 @@ ms.locfileid: "75440351"
 | &nbsp; |[Zoho (Önizleme)](../articles/data-factory/connector-zoho.md) |✓ | |✓ |✓  |
 
 > [!NOTE]
-> Bir bağlayıcı *Önizleme*olarak işaretlenmişse, bunu deneyebilir ve bize geri bildirimde olabilirsiniz. Çözümünüzde önizleme bağlayıcılarına bağımlılık yapmak istiyorsanız, Azure [desteğine](https://azure.microsoft.com/support/)başvurun.
+> Bir bağlayıcı *Önizleme*olarak işaretlenmişse, bunu deneyebilir ve geri bildirimde bulunun. Çözümünüzde önizleme bağlayıcılarına bir bağımlılık almak istiyorsanız [Azure desteği](https://azure.microsoft.com/support/)'ne başvurun.

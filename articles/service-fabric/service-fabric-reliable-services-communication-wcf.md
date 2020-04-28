@@ -1,24 +1,24 @@
 ---
-title: Güvenilir Hizmetler WCF iletişim yığını
-description: Service Fabric'deki yerleşik WCF iletişim yığını, Güvenilir Hizmetler için istemci hizmeti WCF iletişimi sağlar.
+title: Reliable Services WCF iletişim yığını
+description: Service Fabric 'daki yerleşik WCF iletişim yığını, Reliable Services için istemci hizmeti WCF iletişimi sağlar.
 author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: bharatn
 ms.openlocfilehash: 7f3b3974893316a488270f755b8f8822080658d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75433857"
 ---
-# <a name="wcf-based-communication-stack-for-reliable-services"></a>Güvenilir Hizmetler için WCF tabanlı iletişim yığını
-Güvenilir Hizmetler çerçevesi, hizmet yazarlarının hizmetleri için kullanmak istedikleri iletişim yığınını seçmelerine olanak tanır. [CreateServiceReplicaListeners veya CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) yöntemlerinden döndürülen **ICommunicationListener** aracılığıyla istedikleri iletişim yığınını takabilirler. Çerçeve, WCF tabanlı iletişimi kullanmak isteyen hizmet yazarları için Windows Communication Foundation (WCF) tabanlı iletişim yığınının uygulanmasını sağlar.
+# <a name="wcf-based-communication-stack-for-reliable-services"></a>Reliable Services için WCF tabanlı iletişim yığını
+Reliable Services Framework, hizmet yazarlarının kendi hizmetleri için kullanmak istedikleri iletişim yığınını seçmesine olanak sağlar. [CreateServiceReplicaListeners veya Createserviceınstancelisteners](service-fabric-reliable-services-communication.md) metotlarından döndürülen **ıcommunicationlistener** aracılığıyla seçtikleri iletişim yığınını yükleyebilir. Framework, WCF tabanlı iletişim kullanmak isteyen hizmet yazarları için Windows Communication Foundation (WCF) temelinde iletişim yığınının bir uygulamasını sağlar.
 
-## <a name="wcf-communication-listener"></a>WCF İletişim Dinleyicisi
-**ICommunicationListener'ın** WCF'ye özel uygulaması **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** sınıfı tarafından sağlanmaktadır.
+## <a name="wcf-communication-listener"></a>WCF Iletişim dinleyicisi
+**Idimmunicationlistener** 'ın WCF 'e özgü uygulanması **Microsoft. Servicefabric. Services. Communication. WCF. Runtime. wcfcommunicationlistener** sınıfı tarafından sağlanır.
 
-Diyelim ki bir hizmet sözleşmemiz var.`ICalculator`
+En uzun bir hizmet sözleşmemiz türü`ICalculator`
 
 ```csharp
 [ServiceContract]
@@ -29,7 +29,7 @@ public interface ICalculator
 }
 ```
 
-Hizmette aşağıdaki şekilde bir WCF iletişim dinleyicisi oluşturabiliriz.
+Hizmette aşağıdaki şekilde bir WCF iletişim dinleyicisi oluşturarız.
 
 ```csharp
 
@@ -55,8 +55,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 ```
 
-## <a name="writing-clients-for-the-wcf-communication-stack"></a>WCF iletişim yığını için istemci yazma
-WCF kullanarak hizmetleri ile iletişim kurmak için istemciler yazma için, çerçeve **WcfClientCommunicationFactory**sağlar , [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md)WCF özel uygulamasıdır.
+## <a name="writing-clients-for-the-wcf-communication-stack"></a>WCF iletişim yığını için istemciler yazma
+İstemcileri WCF kullanarak hizmetlerle iletişim kuracak şekilde yazmak için **Framework,** [Clientcommunicationfactorybase](service-fabric-reliable-services-communication.md)'in WCF 'e özgü uygulamasıdır.
 
 ```csharp
 
@@ -68,7 +68,7 @@ public WcfCommunicationClientFactory(
     object callback = null);
 ```
 
-WCF iletişim kanalına **WcfCommunicationClient Tarafından**oluşturulan **WcfCommunicationClient'dan** erişilebilir.
+WCF iletişim kanalına **Wcfcommunicationclientfactory**tarafından oluşturulan **Wcfcommunicationclient** üzerinden erişilebilir.
 
 ```csharp
 
@@ -82,7 +82,7 @@ public class WcfCommunicationClient : ServicePartitionClient<WcfCommunicationCli
 
 ```
 
-İstemci kodu, hizmet bitiş noktasını belirlemek ve hizmetle iletişim kurmak için **ServicePartitionClient'ı** uygulayan **WcfCommunicationClient** ile birlikte **WcfCommunicationClient'ı** kullanabilir.
+İstemci kodu, hizmet uç noktasını belirleyebilmek ve hizmetle iletişim kurmak için **Servicepartitionclient** uygulayan **Wcfcommunicationclient** Ile **Wcfcommunicationclientfactory** ' i kullanabilir.
 
 ```csharp
 // Create binding
@@ -110,12 +110,12 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 
 ```
 > [!NOTE]
-> Varsayılan ServicePartitionResolver istemci hizmet olarak aynı kümede çalıştığını varsayar. Bu durumda değilse, bir ServicePartitionResolver nesnesi oluşturun ve küme bağlantısı uç noktalarında geçirin.
+> Varsayılan ServicePartitionResolver, istemcinin hizmet olarak aynı kümede çalıştığını varsayar. Böyle bir durum söz konusu değilse, bir ServicePartitionResolver nesnesi oluşturun ve küme bağlantı uç noktalarında geçiş yapın.
 > 
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Güvenilir Hizmetler remoting ile uzaktan yordam çağrısı](service-fabric-reliable-services-communication-remoting.md)
-* [Güvenilir Hizmetlerde OWIN ile Web API](service-fabric-reliable-services-communication-webapi.md)
-* [Güvenilir Hizmetler için iletişimin sağlanması](service-fabric-reliable-services-secure-communication-wcf.md)
+* [Reliable Services uzaktan iletişim ile uzak yordam çağrısı](service-fabric-reliable-services-communication-remoting.md)
+* [Reliable Services 'de OWIN ile Web API 'SI](service-fabric-reliable-services-communication-webapi.md)
+* [Reliable Services için iletişimin güvenliğini sağlama](service-fabric-reliable-services-secure-communication-wcf.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri hata kodları | Microsoft Dokümanlar
-description: Medya Hizmetlerinde desteklenmeyen eylemlere zaman aşımına uğrarsa kimlik doğrulama belirteçleri gibi sorunlara bağlı olarak hizmetten HTTP hata kodları alabilirsiniz. Bu makalede, Azure Medya Hizmetleri v2 API hata kodlarına genel bir bakış sunulur.
+title: Azure Media Services hata kodları | Microsoft Docs
+description: Media Services ' de desteklenmeyen eylemlere yönelik kimlik doğrulama belirteçleri süresi dolan sorunlara bağlı olarak hizmetten HTTP hata kodları alabilirsiniz. Bu makale, Azure Media Services V2 API hata kodlarına genel bir bakış sunar.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,109 +15,109 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74887097"
 ---
-# <a name="azure-media-services-error-codes"></a>Azure Medya Hizmetleri hata kodları
-Microsoft Azure Medya Hizmetleri'ni kullanırken, Medya Hizmetleri'nde desteklenmeyen eylemlere zaman aşımı veren kimlik doğrulama belirteçleri gibi sorunlara bağlı olarak hizmetten HTTP hata kodları alabilirsiniz. Aşağıda, Medya Hizmetleri tarafından döndürülebilecek **HTTP hata kodlarının** listesi ve bunların olası nedenleri yer almaktadır.  
+# <a name="azure-media-services-error-codes"></a>Azure Media Services hata kodları
+Microsoft Azure Media Services kullanırken, hizmetten Media Services desteklenmeyen eylemlere yönelik kimlik doğrulama belirteçleri süresi dolan işlemlere bağlı olarak hizmetten HTTP hata kodları alabilirsiniz. Aşağıda, Media Services tarafından döndürülebilecek **http hata kodlarının** listesi ve olası nedenleri verilmiştir.  
 
-## <a name="400-bad-request"></a>400 Kötü İstek
-İstek geçersiz bilgiler içerir ve aşağıdaki nedenlerden biri nedeniyle reddedilir:
+## <a name="400-bad-request"></a>400 Hatalı Istek
+İstek geçersiz bilgiler içeriyor ve aşağıdaki nedenlerden biri nedeniyle reddedildi:
 
-* Desteklenmeyen bir API sürümü belirtilir. En güncel sürüm [için, Medya Hizmetleri REST API Geliştirme için Kurulum'a](media-services-rest-how-to-use.md)bakın.
-* Medya Hizmetleri'nin API sürümü belirtilmemiştir. API sürümünü nasıl belirteceğimiz hakkında bilgi için [Medya Hizmetleri İşlemleri REST API Başvurusu'na](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)bakın.
+* Desteklenmeyen bir API sürümü belirtildi. En güncel sürüm için bkz. [Media Services REST API Geliştirme Için kurulum](media-services-rest-how-to-use.md).
+* Media Services API sürümü belirtilmedi. API sürümünü belirtme hakkında daha fazla bilgi için bkz. [Media Services Operations REST API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
   
   > [!NOTE]
-  > Medya Hizmetlerine bağlanmak için .NET veya Java SDK'larını kullanıyorsanız, Medya Hizmetleri'ne karşı bazı eylemler gerçekleştirmeye çalıştığınızda API sürümü sizin için belirtilir.
+  > Media Services bağlanmak için .NET veya Java SDK 'larını kullanıyorsanız, Media Services bir işlem gerçekleştirmeye çalıştığınızda API sürümü sizin için belirtilir.
   > 
   > 
-* Tanımlanmamış bir özellik belirtilmiş. Özellik adı hata iletisindedir. Yalnızca belirli bir varlığın üyesi olan özellikler belirtilebilir. Varlıkların ve özelliklerinin listesi için [Azure Media Services REST API Başvurusu'na](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) bakın.
-* Geçersiz bir özellik değeri belirtildi. Özellik adı hata iletisindedir. Geçerli özellik türleri ve değerleri için önceki bağlantıya bakın.
+* Tanımlanmamış bir özellik belirtildi. Özellik adı hata iletisidir. Yalnızca belirli bir varlığın üyesi olan özellikler belirtilebilir. Varlıkların listesi ve özellikleri için bkz. [Azure Media Services REST API'si Başvurusu](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) .
+* Geçersiz bir özellik değeri belirtildi. Özellik adı hata iletisidir. Geçerli özellik türleri ve değerleri için önceki bağlantıyı inceleyin.
 * Özellik değeri eksik ve gereklidir.
-* Belirtilen URL'nin bir bölümü kötü bir değer içerir.
-* Bir WriteOnce özelliğini güncelleştirmegirişiminde bulunuldu.
-* Birincil Varlık Dosyası belirtilmeyen veya belirlenemeyen bir giriş Kıymeti olan bir İş oluşturma girişiminde bulunuldu.
-* Bir SAS Yer Bulucu'su güncelleştirmegirişiminde bulunuldu. SAS bulucuları yalnızca oluşturulabilir veya silinebilir. Akış bulucuları güncellenebilir. Daha fazla bilgi için [Bkz.](https://docs.microsoft.com/rest/api/media/operations/locator)
+* Belirtilen URL 'nin bir parçası bozuk bir değer içeriyor.
+* Bir WriteOnce özelliği güncelleştirilmeye çalışıldı.
+* Belirtilmemiş veya belirlenemediği birincil Assetdosyası olan bir giriş varlığına sahip bir Iş oluşturulmaya çalışıldı.
+* SAS Konumlandırıcı 'yı güncelleştirme girişiminde bulunuldu. SAS Konumlandırıcı yalnızca oluşturulabilir veya silinebilir. Akış Konumlandırıcı güncelleştirilemeyebilir. Daha fazla bilgi için bkz. [Konum Belirleyicisi](https://docs.microsoft.com/rest/api/media/operations/locator).
 * Desteklenmeyen bir işlem veya sorgu gönderildi.
 
 ## <a name="401-unauthorized"></a>401 Yetkisiz
-İstek aşağıdaki nedenlerden biri nedeniyle (yetkilendirilmeden önce) doğrulanamadı:
+Aşağıdaki nedenlerden biri nedeniyle isteğin kimliği doğrulanamadı (yetkilendirilebilmesi için):
 
-* Eksik kimlik doğrulama üstbilgisi.
-* Kötü kimlik doğrulama üstbilgi değeri.
-  * Belirteç süresi doldu. 
-  * Belirteç geçersiz bir imza içerir.
+* Kimlik doğrulama üst bilgisi eksik.
+* Hatalı kimlik doğrulama üst bilgisi değeri.
+  * Belirtecin süresi doldu. 
+  * Belirteç geçersiz bir imza içeriyor.
 
 ## <a name="403-forbidden"></a>403 Yasak
-Aşağıdaki nedenlerden biri nedeniyle istek kabul edilmez:
+Aşağıdaki nedenlerden biri nedeniyle isteğe izin verilmiyor:
 
-* Medya Hizmetleri hesabı bulunamıyor veya silinemiyor.
-* Medya Hizmetleri hesabı devre dışı bırakılır ve istek türü HTTP GET değildir. Hizmet işlemleri de 403 yanıtı döndürecektir.
-* Kimlik doğrulama belirteci, kullanıcının kimlik bilgilerini içermez: AccountName ve/veya SubscriptionId. Bu bilgileri, Medya Hizmetleri hesabınıziçin Medya Hizmetleri Kullanıcı Arabirimi uzantısında Azure Yönetim Portalı'nda bulabilirsiniz.
+* Media Services hesabı bulunamadı veya silinmiş.
+* Media Services hesabı devre dışı bırakıldı ve istek türü HTTP GET değil. Hizmet işlemleri de 403 yanıtını döndürür.
+* Kimlik doğrulama belirteci kullanıcının kimlik bilgisi bilgilerini içermiyor: AccountName ve/veya SubscriptionID. Bu bilgileri Azure Yönetim Portalı Media Services hesabınız için Media Services kullanıcı arabirimi uzantısında bulabilirsiniz.
 * Kaynağa erişilemiyor.
   
-  * Medya Hizmetleri hesabınıziçin kullanılamayan bir MediaProcessor kullanmaya çalışıldı.
-  * Medya Hizmetleri tarafından tanımlanan bir İş Şablonu güncelleştirme girişiminde bulunuldu.
-  * Başka bir Medya Hizmetleri hesabının Yer Bulucu'su üzerine yazma girişiminde bulunuldu.
-  * Başka bir Medya Hizmetleri hesabının ContentKey'inin üzerine yazma girişiminde bulunuldu.
-* Kaynak, Medya Hizmetleri hesabı için ulaşılan bir hizmet kotası nedeniyle oluşturulamadı. Hizmet kotaları hakkında daha fazla bilgi için [Kotalar ve Sınırlamalar](media-services-quotas-and-limitations.md)bölümüne bakın.
+  * Media Services hesabınızda kullanılamayan bir MediaProcessor kullanılmaya çalışıldı.
+  * Media Services tarafından tanımlanan bir JobTemplate güncelleştirme girişiminde bulunuldu.
+  * Diğer Media Services hesabının Konumlandırıcı 'nın üzerine yazma girişiminde bulunuldu.
+  * Başka bir Media Services hesabının ContentKey öğesinin üzerine yazılması denendi.
+* Media Services hesabı için ulaşılan bir hizmet kotası nedeniyle kaynak oluşturulamadı. Hizmet kotaları hakkında daha fazla bilgi için bkz. [Kotalar ve sınırlamalar](media-services-quotas-and-limitations.md).
 
 ## <a name="404-not-found"></a>404 Bulunamadı
-Aşağıdaki nedenlerden biri nedeniyle kaynakta isteke izin verilmez:
+Aşağıdaki nedenlerden biri nedeniyle bir kaynakta isteğe izin verilmiyor:
 
-* Var olmayan bir varlığı güncelleştirmek için bir girişimde bulunuldu.
-* Var olmayan bir varlığı silme girişiminde bulunuldu.
-* Var olmayan bir varlığa bağlantı veren bir varlık oluşturma girişiminde bulunuldu.
-* Var olmayan bir varlığı ALMAK için bir girişimde bulunuldu.
-* Medya Hizmetleri hesabıyla ilişkili olmayan bir depolama hesabı belirtme girişiminde bulunuldu.  
+* Mevcut olmayan bir varlığı güncelleştirmek için bir girişimde bulunuldu.
+* Mevcut olmayan bir varlığı silme girişiminde bulunuldu.
+* Varolmayan bir varlığa bağlanan bir varlık oluşturmak için bir girişimde bulunuldu.
+* Mevcut olmayan bir varlık ALıNMAYA çalışıldı.
+* Media Services hesabıyla ilişkilendirilmemiş bir depolama hesabı belirtilmesi denendi.  
 
-## <a name="409-conflict"></a>409 Çatışma
-Aşağıdaki nedenlerden biri nedeniyle istek kabul edilmez:
+## <a name="409-conflict"></a>409 çakışması
+Aşağıdaki nedenlerden biri nedeniyle isteğe izin verilmiyor:
 
-* Birden fazla Varlık Dosyası, Varlık içinde belirtilen ada sahiptir.
-* Varlık içinde ikinci bir birincil Varlık Dosyası oluşturma girişiminde bulunuldu.
-* Zaten kullanılan belirtilen Kimlik ile bir ContentKey oluşturmak için bir girişimde bulunuldu.
-* Önceden kullanılan belirtilen Kimlik ile bir Konum belirleyici oluşturmak için bir girişimde bulunuldu.
-* Birden fazla IngestManifestFile IngestManifest içinde belirtilen ada sahiptir.
-* İkinci bir depolama şifrelemesi ContentKey'i depolama şifrelenmiş Kıymete bağlama girişiminde bulunuldu.
-* Aynı ContentKey'i Varlık'a bağlamak için bir girişimde bulunuldu.
-* Depolama kapsayıcısı eksik olan veya artık Varlıkla ilişkilendirilmeyen bir Kıymetin yer bulucusu oluşturma girişiminde bulunuldu.
-* Halihazırda kullanımda olan 5 yer bulucusu olan bir Varlığın yer bulucusu oluşturma girişiminde bulunuldu. (Azure Depolama, bir depolama kapsayıcısı üzerinde beş paylaşılan erişim ilkesi sınırını zorlar.)
-* Bir Varlığın depolama hesabını bir IngestManifestAsset'e bağlamak, üst IngestManifest tarafından kullanılan depolama hesabıyla aynı değildir.  
+* Birden fazla AssetFile, varlık içinde belirtilen ada sahip.
+* Varlık içinde ikinci bir birincil Assetdosyası oluşturma girişiminde bulunuldu.
+* Belirtilen kimlikle zaten kullanılan bir ContentKey oluşturulmaya çalışıldı.
+* Belirtilen kimliğe sahip bir bulucu oluşturulmaya çalışıldı, zaten kullanıldı.
+* IngestManifest içinde, birden fazla IngestManifestFile belirtilen ada sahip.
+* İkinci bir depolama şifrelemesi Içerik anahtarını depolama ile şifrelenen varlığa bağlama girişiminde bulunuldu.
+* Aynı ContentKey 'i varlığa bağlamak için bir girişimde bulunuldu.
+* Depolama kapsayıcısı eksik olan veya artık varlıkla ilişkili olmayan bir varlık için bulucu oluşturma girişiminde bulunuldu.
+* Zaten 5 Konumlandırıcı kullanan bir varlık için bulucu oluşturulmaya çalışıldı. (Azure depolama, bir depolama kapsayıcısında beş paylaşılan erişim ilkesi sınırını uygular.)
+* Bir varlığın depolama hesabını bir IngestManifestAsset 'ye bağlama, üst IngestManifest tarafından kullanılan depolama hesabı ile aynı değildir.  
 
 ## <a name="500-internal-server-error"></a>500 İç Sunucu Hatası
-İsteğin işlenmesi sırasında, Medya Hizmetleri işlemin devam etmesini engelleyen bir hatayla karşılaşır. Bunun nedeni, aşağıdakilerden biri olabilir:
+İsteğin işlenmesi sırasında, Media Services işlemin devam etmesini önleyen bir hata oluştu. Bunun nedeni, aşağıdakilerden biri olabilir:
 
-* Medya Hizmetleri hesabının hizmet kotası bilgileri geçici olarak kullanılamadığından Varlık veya İş oluşturmak başarısız olur.
-* Hesabın depolama hesabı bilgileri geçici olarak kullanılamadığından, Varlık veya IngestManifest blob depolama kapsayıcısı oluşturmak başarısız olur.
+* Media Services hesabının hizmet kotası bilgileri geçici olarak kullanılamadığından varlık veya Iş oluşturma başarısız olur.
+* Hesabın depolama hesabı bilgileri geçici olarak kullanılamadığından, bir varlık veya IngestManifest BLOB depolama kapsayıcısı oluşturma başarısız olur.
 * Diğer beklenmeyen hata.
 
 ## <a name="503-service-unavailable"></a>503 Hizmet Kullanılamıyor
-Sunucu şu anda istek alamıyor. Bu hata, hizmete yapılan aşırı isteklerden kaynaklanabilir. Ortam Hizmetleri azaltma mekanizması, hizmete aşırı istekte bulunduran uygulamalar için kaynak kullanımını kısıtlar.
+Sunucu şu anda istekleri alamıyor. Bu hata, hizmete aşırı istek oluşmasına neden olabilir. Media Services azaltma mekanizması, hizmette aşırı istek yapan uygulamalar için kaynak kullanımını kısıtlar.
 
 > [!NOTE]
-> 503 hatasını alma nedeniniz hakkında daha ayrıntılı bilgi almak için hata iletisini ve hata kodu dizesini denetleyin. Bu hata her zaman azaltma anlamına gelmez.
+> 503 hatası aldığınız neden hakkında daha ayrıntılı bilgi edinmek için hata iletisini ve hata kodu dizesini kontrol edin. Bu hata her zaman daraltma anlamına gelmez.
 > 
 > 
 
 Olası durum açıklamaları şunlardır:
 
-* "Sunucu meşgul. Bu tür bir isteğin önceki {0} çalıştırmaları saniyeden fazla sürdü."
-* "Sunucu meşgul. Saniyedeki {0} isteklerden fazlası azaltılabilir."
-* "Sunucu meşgul. Saniyeler {0} içinde {1} isteklerden fazlası azaltılabilir."
+* "Sunucu meşgul. Bu istek türünün önceki çalıştırmaları saniyeden uzun {0} sürdü. "
+* "Sunucu meşgul. Saniye başına {0} istek sayısı daraltıldı. "
+* "Sunucu meşgul. Saniyeler içinde {0} {1} isteklerin daha fazlası kısıtlanacaktır. "
 
-Bu hatayı işlemek için üstel geri tefekbaşa yeniden deneme mantığını kullanmanızı öneririz. Bu, ardışık hata yanıtları için yeniden denemeler arasında giderek daha uzun beklemeler kullanmak anlamına gelir.  Daha fazla bilgi için [Geçici Hata İşleme Uygulama Bloğu'na](https://msdn.microsoft.com/library/hh680905.aspx)bakın.
+Bu hatayı işlemek için üstel geri deneme mantığını kullanmanızı öneririz. Yani, ardışık hata yanıtları için yeniden denemeler arasında giderek daha uzun süre bekler.  Daha fazla bilgi için bkz. [geçici hata Işleme uygulama bloğu](https://msdn.microsoft.com/library/hh680905.aspx).
 
 > [!NOTE]
-> [.Net için Azure Medya Hizmetleri SDK](https://github.com/Azure/azure-sdk-for-media-services/tree/master)kullanıyorsanız, 503 hatasının yeniden deneme mantığı SDK tarafından uygulanmıştır.  
+> [.NET için Azure MEDIA SERVICES SDK](https://github.com/Azure/azure-sdk-for-media-services/tree/master)kullanıyorsanız, 503 hatası için yeniden deneme mantığı SDK tarafından uygulanmıştır.  
 > 
 > 
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-[Medya Hizmetleri Yönetimi Hata Kodları](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
+[Media Services yönetimi hata kodları](https://msdn.microsoft.com/library/windowsazure/dn167016.aspx)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

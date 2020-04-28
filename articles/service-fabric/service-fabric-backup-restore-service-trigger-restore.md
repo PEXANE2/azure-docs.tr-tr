@@ -1,40 +1,40 @@
 ---
-title: Azure Hizmet Kumaşında yedeklemeyi geri alma
-description: Uygulama verilerinizin yedeklerinden gelen verileri geri yüklemek için Hizmet Kumaşı'ndaki periyodik yedekleme ve geri yükleme özelliğini kullanın.
+title: Azure Service Fabric yedeklemeyi geri yükleme
+description: Uygulama verilerinizin bir yedeklemesinden verileri geri yüklemek için Service Fabric içindeki düzenli yedekleme ve geri yükleme özelliğini kullanın.
 author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75377914"
 ---
-# <a name="restoring-backup-in-azure-service-fabric"></a>Azure Hizmet Kumaşında yedeklemeyi geri alma
+# <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric yedeklemeyi geri yükleme
 
-Azure Hizmet Kumaşı'nda, Güvenilir Durum hizmetleri ve Güvenilir Aktörler, istek ve yanıt hareketi tamamlandıktan sonra mutable, yetkili bir durumu koruyabilir. Devlet hizmeti uzun bir süre için aşağı gidebilir veya bir felaket nedeniyle bilgi kaybedebilir. Bu durumda, hizmetin çalışmaya devam edebilmesi için en son kabul edilebilir yedeklemeden geri yüklenmeleri gerekir.
+Azure Service Fabric 'de, güvenilir durum bilgisi olan güvenilir hizmetler ve Reliable Actors bir istek ve yanıt işlemi tamamlandıktan sonra kesilebilir, yetkili bir durum tutabilir. Durum bilgisi olan bir hizmet uzun bir süre geçebilir veya bir olağanüstü durum nedeniyle bilgi kaybı verebilir. Bu durumda, hizmetin çalışmaya devam edebilmesi için kabul edilebilir en son yedekten geri yüklenmesi gerekir.
 
-Örneğin, bir hizmeti, aşağıdaki senaryolara karşı korumak için verilerini yedeklemek üzere yapılandırabilirsiniz:
+Örneğin, aşağıdaki senaryolara karşı korunmak üzere bir hizmeti, verilerini yedekleyecek şekilde yapılandırabilirsiniz:
 
-- **Olağanüstü durum kurtarma durumu**: Tüm Service Fabric kümesinin kalıcı kaybı.
-- **Veri kaybı örneği**: Bir hizmet bölümünün yinelemelerinin çoğunluğunun kalıcı kaybı.
-- **Veri kaybı durumu**: Hizmetin yanlışlıkla silinmesi veya bozulması. Örneğin, bir yönetici hizmeti yanlışlıkla siler.
-- **Veri bozulması örneği**: Hizmetteki hatalar veri bozulmasına neden olur. Örneğin, bir hizmet kodu yükseltmesi hatalı verileri Güvenilir Bir Koleksiyona yazdığında veri bozulması oluşabilir. Böyle bir durumda, hem kodu hem de verileri önceki bir duruma geri yüklemeniz gerekebilir.
+- **Olağanüstü durum kurtarma durumu**: Service Fabric kümesinin tamamının kalıcı kaybolması.
+- **Veri kaybı durumu**: bir hizmet bölümünün çoğaltmalarının çoğunluğunun kalıcı kaybedilmesi.
+- **Veri kaybı durumu**: yanlışlıkla silme veya hizmetin bozulması. Örneğin, bir yönetici hizmeti yanlışlıkla siler.
+- **Veri bozulması durumunda**: hizmette hatalar veri bozulmasına neden olur. Örneğin, bir hizmet kodu yükseltmesi hatalı verileri güvenilir bir koleksiyona yazdığında veri bozulması meydana gelebilir. Böyle bir durumda, hem kodu hem de verileri önceki bir duruma geri yüklemeniz gerekebilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Geri yüklemeyi tetiklemek için küme için _Hata Çözümleme Hizmeti 'nin (FAS)_ etkinleştirilmesi gerekir.
-- _Yedekleme Geri Yükleme Hizmeti (BRS)_ yedeklemeyi oluşturdu.
+- Bir geri yüklemeyi tetiklemek için, küme için _hata analiz hizmeti 'nin (Fas)_ etkinleştirilmesi gerekir.
+- Yedekleme _geri yükleme hizmeti (BRS)_ yedeklemeyi oluşturdu.
 - Geri yükleme yalnızca bir bölümde tetiklenebilir.
-- Yapılandırma aramaları yapmak için Microsoft.ServiceFabric.Powershell.Http Modülü [Önizlemede] yükleyin.
+- Yapılandırma çağrıları yapmak için Microsoft. ServiceFabric. PowerShell. http modülünü [önizlemede] yüklersiniz.
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- Microsoft.ServiceFabric.Powershell.Http Module kullanarak herhangi bir yapılandırma isteği yapmadan önce Cluster'ın `Connect-SFCluster` komutu kullanarak bağlı olduğundan emin olun.
+- Microsoft. ServiceFabric. PowerShell. http `Connect-SFCluster` modülünü kullanarak herhangi bir yapılandırma isteği yapmadan önce, kümenin komutunu kullanarak bağlı olduğundan emin olun.
 
 ```powershell
 
@@ -43,29 +43,29 @@ Azure Hizmet Kumaşı'nda, Güvenilir Durum hizmetleri ve Güvenilir Aktörler, 
 ```
 
 
-## <a name="triggered-restore"></a>Tetiklenen geri yükleme
+## <a name="triggered-restore"></a>Geri yükleme tetiklendi
 
-Aşağıdaki senaryolardan herhangi biri için geri yükleme tetiklenebilir:
+Aşağıdaki senaryolardan herhangi biri için bir geri yükleme tetiklenebilir:
 
-- Olağanüstü durum kurtarma için veri geri _yükleme._
-- _Veri bozulması/veri kaybı_için veri geri yükleme.
+- _Olağanüstü durum kurtarma_için veri geri yükleme.
+- Veri _bozulması/veri kaybı_için veri geri yükleme.
 
 ### <a name="data-restore-in-the-case-of-disaster-recovery"></a>Olağanüstü durum kurtarma durumunda veri geri yükleme
 
-Tüm Service Fabric kümesi kaybolursa, Güvenilir Durum hizmeti ve Güvenilir Aktörler bölümleri için verileri kurtarabilirsiniz. Yedek [depolama ayrıntılarıyla GetBackupAPI'yi](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation)kullandığınızda istenen yedekleme listeden seçilebilir. Yedekleme numaralandırması bir uygulama, hizmet veya bölüm için olabilir.
+Service Fabric kümesinin tamamı kaybedilmişse, güvenilir durum bilgisi olan hizmet ve Reliable Actors bölümlerinin verilerini kurtarabilirsiniz. [Yedekleme depolama ayrıntıları Ile Getbackupapı](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation)kullandığınızda, istenen yedekleme listeden seçilebilir. Yedekleme numaralandırması bir uygulama, hizmet veya bölüm için olabilir.
 
-Aşağıdaki örnekte, kayıp kümenin [Güvenilir Durum hizmeti ve Güvenilir Aktörler için periyodik yedeklemeyi etkinleştirmede](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)atıfta bulunulan küme olduğunu varsayalım. Bu durumda, `SampleApp` yedekleme ilkesi etkinleştirilmiş olarak dağıtılır ve yedeklemeler Azure Depolama'ya yapılandırılır.
+Aşağıdaki örnek için kayıp kümenin, [güvenilir durum bilgisi olan ve Reliable Actors düzenli aralıklarla yedeklemeyi etkinleştirme](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)bölümünde başvurulan kümeyle aynı olduğunu varsayalım. Bu durumda, `SampleApp` yedekleme ilkesi etkinken dağıtılır ve yedeklemeler Azure Storage olarak yapılandırılır.
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Powershell Microsoft.ServiceFabric.Powershell.Http Modülü kullanarak
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft. ServiceFabric. PowerShell. http modülünü kullanan PowerShell
 
 ```powershell
 Get-SFBackupsFromBackupLocation -Application -ApplicationName 'fabric:/SampleApp' -AzureBlobStore -ConnectionString 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container'
 
 ```
 
-#### <a name="rest-call-using-powershell"></a>Powershell kullanarak Dinlenme Çağrısı
+#### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
-Uygulama içindeki tüm bölümler için oluşturulan yedeklerin listesini döndürmek için REST API'sını kullanmak için bir PowerShell komut dosyası çalıştırın. `SampleApp` API, kullanılabilir yedeklemeleri listelemek için yedek depolama bilgilerini gerektirir.
+`SampleApp` Uygulamanın içindeki tüm bölümler için oluşturulan yedeklemelerin listesini döndürmek üzere REST API kullanmak Için bir PowerShell betiği yürütün. API, kullanılabilir yedeklemeleri listelemek için yedekleme depolama bilgileri gerektirir.
 
 ```powershell
 $StorageInfo = @{
@@ -132,7 +132,7 @@ CreationTimeUtc         : 2018-04-06T21:25:36Z
 FailureError            :
 ```
 
-Geri yüklemeyi tetiklemek için yedeklerden birini seçin. Örneğin, olağanüstü durum kurtarma için geçerli yedekleme aşağıdaki yedekleme olabilir:
+Geri yüklemeyi tetiklemek için Yedeklerden birini seçin. Örneğin, olağanüstü durum kurtarma için geçerli yedekleme aşağıdaki yedekleme olabilir:
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4
@@ -148,15 +148,15 @@ CreationTimeUtc         : 2018-04-06T21:10:27Z
 FailureError            :
 ```
 
-Geri yükleme API'si için _BackupId_ ve _BackupLocation_ ayrıntılarını sağlamanız gerekir.
+Restore API 'SI için _BackupID_ ve _BackupLocation_ ayrıntılarını sağlamanız gerekir.
 
-Ayrıca, [bölüm düzeninde](service-fabric-concepts-partitioning.md#get-started-with-partitioning)ayrıntılı olarak alternatif kümede bir hedef bölüm seçmeniz gerekir. Alternatif küme yedeklemesi, özgün kayıp kümeden bölüm düzeninde belirtilen bölüme geri yüklenir.
+Ayrıca, [bölüm düzeninde](service-fabric-concepts-partitioning.md#get-started-with-partitioning)açıklandığı şekilde alternatif kümede bir hedef bölüm seçmeniz gerekir. Alternatif küme yedeklemesi, özgün kayıp kümeden bölüm düzeninde belirtilen bölüme geri yüklendi.
 
-Alternatif kümedeki bölümleme `1c42c47f-439e-4e09-98b9-88b8f60800c6`kimliği ise, `974bd92a-b395-4631-8a7f-53bd4ae9cf22` _Aralıklı Bölümleme (UniformInt64Partition)_ için yüksek anahtar ve düşük tuşu karşılaştırarak orijinal küme bölümleme kimliğiyle eşleyebilirsiniz.
+Alternatif kümedeki bölüm KIMLIĞI ise `1c42c47f-439e-4e09-98b9-88b8f60800c6`, _sıralaştırılmış bölümlendirme (UniformInt64Partition)_ için yüksek anahtar ve düşük anahtarı KARŞıLAŞTıRARAK `974bd92a-b395-4631-8a7f-53bd4ae9cf22` özgün küme bölümü kimliğiyle eşleyebilirsiniz.
 
-_Adlandırılmış Bölümleme_için ad değeri, alternatif kümedeki hedef bölümü tanımlamak için karşılaştırılır.
+_Adlandırılmış bölümlendirme_için ad değeri, alternatif kümede hedef bölümü tanımlamak üzere karşılaştırılır.
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Powershell Microsoft.ServiceFabric.Powershell.Http Modülü kullanarak
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft. ServiceFabric. PowerShell. http modülünü kullanan PowerShell
 
 ```powershell
 
@@ -164,9 +164,9 @@ Restore-SFPartition  -PartitionId '1c42c47f-439e-4e09-98b9-88b8f60800c6' -Backup
 
 ```
 
-#### <a name="rest-call-using-powershell"></a>Powershell kullanarak Dinlenme Çağrısı
+#### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
-Aşağıdaki [Geri Yükleme API'sini](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)kullanarak yedekleme küme bölümüne karşı geri yükleme isteğinde bulunun:
+Aşağıdaki [restore API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)'sini kullanarak yedekleme kümesi bölümüne karşı geri yüklemeyi isteyebilirsiniz:
 
 ```powershell
 
@@ -188,28 +188,28 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/1
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-TrackRestoreProgress ile geri yüklemenin ilerlemesini izleyebilirsiniz.
+Geri yüklemenin ilerlemesini TrackRestoreProgress ile izleyebilirsiniz.
 
-### <a name="using-service-fabric-explorer"></a>Servis Kumaş Explorer kullanma
-Service Fabric Explorer'dan geri yüklemeyi tetikleyebilirsiniz. Gelişmiş Modu'nun Service Fabric Explorer ayarlarında etkinleştirildiğinden emin olun.
-1. İstenilen bölümleri seçin ve Eylemler'e tıklayın. 
-2. Tetikleyici Bölüm Geri Yükleme'yi seçin ve Azure için bilgileri doldurun:
+### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer kullanma
+Service Fabric Explorer bir geri yükleme tetikleyebilirsiniz. Service Fabric Explorer ayarlarında gelişmiş modun etkinleştirildiğinden emin olun.
+1. İstediğiniz bölümleri seçin ve Eylemler ' e tıklayın. 
+2. Bölüm geri yüklemeyi tetikleme ve Azure için bilgi doldur ' u seçin:
 
-    ![Tetik Bölümü Geri Yükleme][2]
+    ![Bölüm geri yüklemeyi Tetikle][2]
 
     veya FileShare:
 
-    ![Tetikleyici Bölüm Geri Yükleme Fileshare][3]
+    ![Bölüm geri yükleme dosya yüklemesini tetikleme][3]
 
-### <a name="data-restore-for-_data-corruption__data-loss_"></a>_Veri bozulması_/_veri kaybı_ için veri geri yükleme
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>Veri _bozulması_/veri_kaybı_ için veri geri yükleme
 
-_Veri kaybı_ veya _veri bozulması_için, Güvenilir Stateful hizmeti ve Güvenilir Aktörler bölümleri için yedeklenmiş bölümler seçilen yedeklerden herhangi biri geri yüklenebilir.
+_Veri kaybı_ veya _veri bozulması_Için, güvenilir durum bilgisi olan hizmet ve Reliable Actors bölümlerinin yedeklenen bölümleri seçilen yedeklemelerin hiçbirine geri yüklenebilir.
 
-Aşağıdaki örnek, Güvenilir [Stateful hizmeti ve Güvenilir Aktörler için periyodik yedeklemeyi etkinleştirmenin](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)bir devamıdır. Bu örnekte, bölüm için bir yedekleme ilkesi etkinleştirilir ve hizmet Azure Depolama'da istenilen sıklıkta yedekleme yapıyor.
+Aşağıdaki örnek, [güvenilir durum bilgisi olan hizmet ve Reliable Actors için düzenli yedeklemeyi etkinleştirmenin bir devamıdır](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). Bu örnekte, bölüm için bir yedekleme ilkesi etkinleştirilir ve hizmet Azure Storage 'da istenen bir sıklıkta yedeklemeler yapıyor.
 
-[GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups)çıktısından bir yedekleme seçin. Bu senaryoda, yedekleme öncekiyle aynı kümeden oluşturulur.
+[Getbackupapı](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups)çıktısından bir yedekleme seçin. Bu senaryoda, yedekleme daha önceki ile aynı kümeden oluşturulur.
 
-Geri yüklemeyi tetiklemek için listeden bir yedek seçin. Geçerli _veri kaybı_/_veri bozulması_için aşağıdaki yedeklemeyi seçin:
+Geri yüklemeyi tetiklemek için listeden bir yedekleme seçin. Geçerli _veri kaybı_/_verileri bozulması_için aşağıdaki yedeklemeyi seçin:
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4
@@ -225,17 +225,17 @@ CreationTimeUtc         : 2018-04-06T21:10:27Z
 FailureError            :
 ```
 
-Geri yükleme API'si için _BackupId_ ve _BackupLocation_ ayrıntılarını sağlayın. Hizmet Dokusu _Yedekleme Geri Yükleme Hizmeti (BRS)_ ilişkili yedekleme ilkesinden doğru depolama konumunu tanımladığı için küme yedekleme özelliğine sahiptir.
+Restore API 'SI için _BackupID_ ve _BackupLocation_ ayrıntılarını sağlayın. Küme, Service Fabric _yedekleme geri yükleme hizmeti 'nin (BRS)_ ilişkili yedekleme ilkesinden doğru depolama konumunu tanımladığı şekilde yedekleme 'yi etkinleştirdi.
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Powershell Microsoft.ServiceFabric.Powershell.Http Modülü kullanarak
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft. ServiceFabric. PowerShell. http modülünü kullanan PowerShell
 
 ```powershell
 Restore-SFPartition  -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -BackupId 'b0035075-b327-41a5-a58f-3ea94b68faa4' -BackupLocation 'SampleApp\MyStatefulService\974bd92a-b395-4631-8a7f-53bd4ae9cf22\2018-04-06 21.10.27.zip'
 
 ```
 
-#### <a name="rest-call-using-powershell"></a>Powershell kullanarak Dinlenme Çağrısı
+#### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
 ```powershell
 $RestorePartitionReference = @{
@@ -249,19 +249,19 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-TrackRestoreProgress'i kullanarak geri yükleme ilerlemesini izleyebilirsiniz.
+Geri yükleme ilerlemesini TrackRestoreProgress kullanarak izleyebilirsiniz.
 
 ## <a name="track-restore-progress"></a>Geri yükleme ilerlemesini izleme
 
-Güvenilir Durum lu hizmetin veya Güvenilir Aktör'ün bir bölümü, aynı anda yalnızca bir geri yükleme isteğini kabul eder. Bir bölüm yalnızca geçerli geri yükleme isteği tamamlandıktan sonra başka bir isteği kabul eder. Aynı anda farklı bölümlerde birden çok geri yükleme isteği tetiklenebilir.
+Güvenilir bir durum bilgisi olan hizmetin veya güvenilir aktörün bir bölümü aynı anda yalnızca bir geri yükleme isteğini kabul eder. Bir bölüm, geçerli geri yükleme isteği tamamlandıktan sonra yalnızca başka bir isteği kabul eder. Birden fazla geri yükleme isteği aynı anda farklı bölümlerde tetiklenebilir.
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Powershell Microsoft.ServiceFabric.Powershell.Http Modülü kullanarak
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft. ServiceFabric. PowerShell. http modülünü kullanan PowerShell
 
 ```powershell
     Get-SFPartitionRestoreProgress -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
 ```
 
-#### <a name="rest-call-using-powershell"></a>Powershell kullanarak Dinlenme Çağrısı
+#### <a name="rest-call-using-powershell"></a>PowerShell kullanarak Rest çağrısı
 
 ```powershell
 $url = "https://mysfcluster-backup.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/GetRestoreProgress?api-version=6.4"
@@ -274,14 +274,14 @@ $restoreResponse | Format-List
 
 Geri yükleme isteği aşağıdaki sırada ilerler:
 
-1. **Kabul :** _Kabul Edilen_ geri yükleme durumu, istenen bölümün doğru istek parametreleri ile tetiklendiğini gösterir.
+1. **Kabul edildi**: _kabul edilen_ geri yükleme durumu, istenen bölümün doğru istek parametreleriyle tetiklendiğini gösterir.
     ```
     RestoreState  : Accepted
     TimeStampUtc  : 0001-01-01T00:00:00Z
     RestoredEpoch : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
     RestoredLsn   : 3552
     ```
-2. **Devam Etme**: _Devam Etme_ durumu, istekte belirtilen yedeklemeyle birlikte bölmede bir geri yükleme oluştuğunu gösterir. Bölüm, _veri kaybı_ durumunu bildirir.
+2. **Sürüyor**: bir _sürüyor_ geri yükleme durumu, bölümde belirtilen yedeklemenin bulunduğu bölümde geri yükleme gerçekleştiğini gösterir. Bölüm, _DataLoss_ durumunu raporlar.
     ```
     RestoreState  : RestoreInProgress
     TimeStampUtc  : 0001-01-01T00:00:00Z
@@ -289,8 +289,8 @@ Geri yükleme isteği aşağıdaki sırada ilerler:
     RestoredLsn   : 3552
     ```
     
-3. **Başarı**, **Hata**, veya **Zaman Adabı**: İstenen geri yükleme aşağıdaki durumlardan herhangi birinde tamamlanabilir. Her devlet aşağıdaki önem ve yanıt ayrıntıları vardır:
-    - **Başarı**: _Başarı_ geri yükleme durumu yeniden bir bölüm durumunu gösterir. Bölüm utc zaman ile birlikte _Geri Yükleme Epoch_ ve _RestoredLSN_ durumları raporlar.
+3. **Başarı**, **hata**veya **zaman aşımı**: istenen geri yükleme aşağıdaki durumların hiçbirinde tamamlanabilir. Her durum aşağıdaki anlam ve yanıt ayrıntılarına sahiptir:
+    - **Başarılı**: _başarılı_ geri yükleme durumu, bir bölüm durumunun durumunu gösterir. Bölüm, UTC 'deki zamanla birlikte _RestoredEpoch_ ve _restoredlsn_ durumlarını raporlar.
 
         ```
         RestoreState  : Success
@@ -298,7 +298,7 @@ Geri yükleme isteği aşağıdaki sırada ilerler:
         RestoredEpoch : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
         RestoredLsn   : 3552
         ```        
-    - **Hata**: _Hata_ geri yükleme durumu geri yükleme isteğinin başarısızlığını gösterir. Hatanın nedeni bildirilir.
+    - **Hata**: _hata_ geri yükleme durumu geri yükleme isteğinin başarısızlığını gösterir. Hatanın nedeni raporlanır.
 
         ```
         RestoreState  : Failure
@@ -306,7 +306,7 @@ Geri yükleme isteği aşağıdaki sırada ilerler:
         RestoredEpoch : 
         RestoredLsn   : 0
         ```
-    - **Zaman Ara :** _Zaman A'lık_ geri yükleme durumu, isteğin zaman anına sahip olduğunu gösterir. Daha fazla [RestoreTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout)ile yeni bir geri yükleme isteği oluşturun. Varsayılan zaman dilimi 10 dakikadır. Yeniden geri yükleme isteğinde bulunmadan önce bölümün veri kaybı durumunda olmadığından emin olun.
+    - **Zaman aşımı**: _zaman_ aşımı geri yükleme durumu, isteğin zaman aşımına uğradığını gösterir. Daha fazla [Restoretimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout)ile yeni bir geri yükleme isteği oluşturun. Varsayılan zaman aşımı 10 dakikadır. Yeniden geri yükleme istenmeden önce bölümün bir veri kaybı durumunda olmadığından emin olun.
      
         ```
         RestoreState  : Timeout
@@ -317,11 +317,11 @@ Geri yükleme isteği aşağıdaki sırada ilerler:
 
 ## <a name="automatic-restore"></a>Otomatik geri yükleme
 
-Otomatik _geri yükleme_için Servis Kumaşı kümesinde Güvenilir Durum lu hizmeti ve Güvenilir Aktörler bölümlerini yapılandırabilirsiniz. _Yedekleme ilkesinde_ `AutoRestore` doğru olarak ayarlanır. Otomatik _geri yüklemeyi_ etkinleştirmek, veri kaybı raporlandığında en son bölüm yedeklemesinden verileri otomatik olarak geri yükler. Daha fazla bilgi için bkz.
+_Otomatik geri yükleme_için Service Fabric kümesinde güvenilir durum bilgisi olan hizmet ve Reliable Actors bölümleri yapılandırabilirsiniz. Yedekleme İlkesi ' nde, `AutoRestore` _doğru_olarak ayarlayın. _Otomatik geri yüklemeyi_ etkinleştirmek, veri kaybı bildirildiğinde en son bölüm yedeklemesinden verileri otomatik olarak geri yükler. Daha fazla bilgi için bkz.
 
-- [Yedekleme İlkesinde Otomatik Geri Yükleme Etkinleştirme](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
-- [Geri Yükleme Bölümü API başvurusu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)
-- [GetPartitionRestoreProgress API başvuru](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
+- [Yedekleme Ilkesinde etkinleştirme otomatik geri yükleme](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
+- [Restobölümlemek API başvurusu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)
+- [GetPartitionRestoreProgress API başvurusu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Düzenli aralıklarla yedekleme yapılandırmasını anlama](./service-fabric-backuprestoreservice-configure-periodic-backup.md)

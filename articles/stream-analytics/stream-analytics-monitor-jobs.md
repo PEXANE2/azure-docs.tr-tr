@@ -1,6 +1,6 @@
 ---
-title: Azure Akış Analizi işlerini programlı olarak izleyin ve yönetin
-description: Bu makalede, REST API'leri, Azure SDK veya PowerShell aracılığıyla oluşturulan Akış Analizi işlerinin nasıl programlanabilir bir şekilde izlendiği açıklanmaktadır.
+title: Program aracılığıyla Azure Stream Analytics işlerini izleme ve yönetme
+description: Bu makalede REST API 'Leri, Azure SDK veya PowerShell aracılığıyla oluşturulan Stream Analytics işlerin programlı bir şekilde nasıl izleneceği açıklanır.
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
@@ -8,35 +8,35 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75431663"
 ---
-# <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programlı bir Akış Analizi iş monitörü oluşturun
+# <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Program aracılığıyla Stream Analytics iş İzleyicisi oluşturma
 
-Bu makalede, Bir Stream Analytics işi için izlemenin nasıl etkinleştirilen gösteriş. REST API'leri, Azure SDK veya PowerShell aracılığıyla oluşturulan Akış Analizi işleri varsayılan olarak izlemeyi etkinleştirmez. İşi Izleyenler sayfasına giderek ve Etkinleştir düğmesini tıklatarak Azure portalında el ile etkinleştirebilir veya bu makaledeki adımları izleyerek bu işlemi otomatikleştirebilirsiniz. İzleme verileri, Akış Analizi işiniz için Azure portalının Ölçümler alanında gösterecektir.
+Bu makalede bir Stream Analytics işi için izlemenin nasıl etkinleştirileceği gösterilmektedir. REST API 'Leri, Azure SDK veya PowerShell aracılığıyla oluşturulan Stream Analytics işlerin varsayılan olarak etkin izleme özelliği yoktur. İşin Izleyici sayfasına gidip Etkinleştir düğmesine tıklayarak ve bu makaledeki adımları izleyerek bu işlemi otomatikleştirebileceğiniz Azure portal el ile etkinleştirebilirsiniz. İzleme verileri, Stream Analytics işiniz için Azure portal ölçüm alanında görünür.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu işleme başlamadan önce aşağıdaki ön koşullara sahip olmalısınız:
+Bu işleme başlamadan önce, aşağıdaki önkoşullara sahip olmanız gerekir:
 
 * Visual Studio 2019 veya 2015
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/) indirildi ve yüklendi
-* İzlemenin etkinleştirilmesi gereken varolan bir Stream Analytics işi
+* İzlemenin etkinleştirilmesi gereken mevcut bir Stream Analytics işi
 
 ## <a name="create-a-project"></a>Proje oluşturma
 
 1. Visual Studio C# .NET konsol uygulaması oluşturun.
-2. Paket Yöneticisi Konsolunda, NuGet paketlerini yüklemek için aşağıdaki komutları çalıştırın. Bunlardan ilki Azure Akış Analizi Yönetimi .NET SDK'dır. İkincisi, izlemeyi etkinleştirmek için kullanılacak Azure Monitor SDK'dır. Sonuncusu, kimlik doğrulaması için kullanılacak Azure Etkin Dizin istemcisidir.
+2. Paket Yöneticisi konsolunda, NuGet paketlerini yüklemek için aşağıdaki komutları çalıştırın. Birincisi Azure Stream Analytics Management .NET SDK 'dır. İkinci bir tane, izlemeyi etkinleştirmek için kullanılacak Azure Izleyici SDK 'sına sahiptir. Son bir kimlik doğrulaması için kullanılacak Azure Active Directory istemcsahiptir.
    
    ```powershell
    Install-Package Microsoft.Azure.Management.StreamAnalytics
    Install-Package Microsoft.Azure.Insights -Pre
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    ```
-3. App.config dosyasına aşağıdaki appAyarlar bölümünü ekleyin.
+3. Aşağıdaki appSettings bölümünü App. config dosyasına ekleyin.
    
    ```csharp
    <appSettings>
@@ -53,7 +53,7 @@ Bu işleme başlamadan önce aşağıdaki ön koşullara sahip olmalısınız:
      <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
    </appSettings>
    ```
-   *SubscriptionId* ve *ActiveDirectoryTenantId* değerlerini Azure aboneliğiniz ve kiracı kimlikleriniz ile değiştirin. Aşağıdaki PowerShell cmdlet çalıştırarak bu değerleri elde edebilirsiniz:
+   *SubscriptionID* ve *activedirectorytenantıd* değerlerini Azure aboneliğiniz ve kiracı kimlikleri ile değiştirin. Aşağıdaki PowerShell cmdlet 'ini çalıştırarak bu değerleri alabilirsiniz:
    
    ```powershell
    Get-AzureAccount
@@ -71,7 +71,7 @@ Bu işleme başlamadan önce aşağıdaki ön koşullara sahip olmalısınız:
      using Microsoft.Azure.Management.StreamAnalytics.Models;
      using Microsoft.IdentityModel.Clients.ActiveDirectory;
    ```
-5. Kimlik doğrulama yardımcı yöntemi ekleyin.
+5. Kimlik doğrulama Yardımcısı yöntemi ekleyin.
 
    ```csharp   
    public static string GetAuthorizationHeader()
@@ -111,7 +111,7 @@ Bu işleme başlamadan önce aşağıdaki ön koşullara sahip olmalısınız:
 
 ## <a name="create-management-clients"></a>Yönetim istemcileri oluşturma
 
-Aşağıdaki kod gerekli değişkenleri ve yönetim istemcilerini ayarlar.
+Aşağıdaki kod, gerekli değişkenleri ve yönetim istemcilerini ayarlar.
 
    ```csharp
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
@@ -133,18 +133,18 @@ Aşağıdaki kod gerekli değişkenleri ve yönetim istemcilerini ayarlar.
     InsightsManagementClient(aadTokenCredentials, resourceManagerUri);
    ```
 
-## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Varolan bir Stream Analytics işi için izlemeyi etkinleştirin
+## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Mevcut bir Stream Analytics işi için izlemeyi etkinleştir
 
-Aşağıdaki kod, **varolan** bir Akış Analizi işinin izlenmesini sağlar. Kodun ilk bölümü, belirli Stream Analytics işi hakkında bilgi almak için Stream Analytics hizmetine karşı bir GET isteği gerçekleştirir. Kodun ikinci yarısında Put yöntemi için bir parametre olarak *kimlik* özelliğini (GET isteğinden alınan) kullanır ve Bu da Akış Analizi işinin izlenmesini etkinleştirmek için Insights hizmetine bir PUT isteği gönderir.
+Aşağıdaki kod, **mevcut** bir Stream Analytics işi için izlemeyi mümkün bir şekilde sunar. Kodun ilk bölümü, belirli bir Stream Analytics iş hakkında bilgi almak için Stream Analytics hizmetine karşı bir GET isteği gerçekleştirir. Stream Analytics işi için izlemeyi etkinleştirmek üzere öngörülere bir PUT isteği gönderen ve kodun ikinci yarısında bulunan *ID* ÖZELLIĞINI (Get isteğinden alınan) bir parametre olarak kullanır.
 
 > [!WARNING]
-> Azure portalı üzerinden veya aşağıdaki kod aracılığıyla farklı bir Akış Analizi işi için izlemeyi daha **önce etkinleştirdiyseniz, daha önce izlemeyi etkinleştirdiğinizde kullandığınız depolama hesabı adını sağlamanızı öneririz.**
+> Daha önce Azure portal veya aşağıdaki kodla program aracılığıyla farklı bir Stream Analytics işi için izlemeyi etkinleştirdiyseniz, **izlemeyi daha önce etkinleştirdiğiniz sırada kullandığınız depolama hesabı adını sağlamanızı öneririz.**
 > 
-> Depolama hesabı, Akış Analizi işinizi oluşturduğunuz bölgeye bağlıdır, özellikle işin kendisine değil.
+> Depolama hesabı, içinde Stream Analytics işinizi oluşturduğunuz bölgeye bağlanır, özellikle işin kendisi için değil.
 > 
-> Aynı bölgedeki tüm Akış Analizi işleri (ve diğer tüm Azure kaynakları) izleme verilerini depolamak için bu depolama hesabını paylaşır. Farklı bir depolama hesabı sağlarsanız, diğer Akış Analizi işlerinizi veya diğer Azure kaynaklarının izlenmesinde istenmeyen yan etkilere neden olabilir.
+> Aynı bölgedeki tüm Stream Analytics işleri (ve diğer tüm Azure kaynakları), izleme verilerini depolamak için bu depolama hesabını paylaşır. Farklı bir depolama hesabı sağlarsanız, diğer Stream Analytics işleriniz veya diğer Azure kaynaklarınızın izlenmesinde istenmeyen yan etkilere neden olabilir.
 > 
-> Aşağıdaki kodda değiştirmek `<YOUR STORAGE ACCOUNT NAME>` için kullandığınız depolama hesabı adı, izlemeyi etkinleştirdiğiniz Akış Analizi işiyle aynı abonelikte bulunan bir depolama hesabı olmalıdır.
+> Aşağıdaki kodda değiştirmek `<YOUR STORAGE ACCOUNT NAME>` için kullandığınız depolama hesabı adı, izlemeyi etkinleştirirken Stream Analytics işle aynı abonelikte olan bir depolama hesabı olmalıdır.
 > 
 > 
 >    ```csharp
@@ -167,13 +167,13 @@ Aşağıdaki kod, **varolan** bir Akış Analizi işinin izlenmesini sağlar. Ko
 >   ```
 
 
-## <a name="get-support"></a>Destek alın
+## <a name="get-support"></a>Destek alma
 
-Daha fazla yardım için [Azure Akışı Analizi forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
+Daha fazla yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Akış Analizine Giriş](stream-analytics-introduction.md)
+* [Azure Stream Analytics giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi işlerini ölçeklendirme](stream-analytics-scale-jobs.md)
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

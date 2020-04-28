@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde EXP
-description: Belirtilen sayısal ifadenin üstel değerini döndürmek için Azure Cosmos DB'deki Üst (EXP) SQL sistem işlevi hakkında bilgi edinin
+description: Belirtilen sayısal ifadenin üstel değerini döndürmek için Azure Cosmos DB üs (EXP) SQL sistem işlevi hakkında bilgi edinin
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 76d614264124e1ce4138663b702ff6d899b3aa4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74873327"
 ---
 # <a name="exp-azure-cosmos-db"></a>EXP (Azure Cosmos DB)
- Belirtilen sayısal ifadenin üstel değerini verir.  
+ Belirtilen sayısal ifadenin üstel değerini döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -28,17 +28,17 @@ EXP (<numeric_expr>)
 *numeric_expr*  
    Sayısal bir ifadedir.  
   
-## <a name="return-types"></a>İade türleri
+## <a name="return-types"></a>Dönüş türleri
   
-  Sayısal bir ifade verir.  
+  Sayısal bir ifade döndürür.  
   
 ## <a name="remarks"></a>Açıklamalar
   
-  Sabit **e** (2.718281...), doğal logaritmaların tesniyesidir.  
+  **E** (2,718281...) sabiti doğal logaritmalar temelinden oluşur.  
   
-  Bir sayının üs, sayının **e** gücüne yükseltilen sabit e'dir. Örneğin, EXP(1.0) = e^1.0 = 2.71828182845905 ve EXP(10) = e^10 = 22026.4657948067.  
+  Bir sayının üs değeri, sayının **gücünden kaynaklanan sabit** bir sayıdır. Örneğin, EXP (1.0) = e ^ 1.0 = 2.71828182845905 ve EXP (10) = e ^ 10 = 22026.4657948067.  
   
-  Bir sayının doğal logaritma üstel sayısının kendisidir: EXP (LOG (n)) = n. Ve bir sayının üstel doğal logaritma sayısının kendisidir: LOG (EXP (n)) = n.  
+  Bir sayının doğal logaritmanın üstel değeri, sayının kendisidir: EXP (günlük (n)) = n. Ve bir sayının üstel değerinin doğal logaritması, sayının kendisidir: LOG (EXP (n)) = n.  
   
 ## <a name="examples"></a>Örnekler
   
@@ -54,7 +54,7 @@ SELECT EXP(10) AS exp
 [{exp: 22026.465794806718}]  
 ```  
   
- Aşağıdaki örnek, 20 doğal logaritmanın üstel değerini ve 20'nin doğal logaritma değerini döndürür. Bu işlevler birbirinin ters işlevleri olduğundan, her iki durumda da kayan nokta matematiği için yuvarlama ile dönüş değeri 20'dir.  
+ Aşağıdaki örnek, 20 ' nin doğal logaritmasına ait üstel değeri ve 20 üstel değerinin doğal logaritmasını döndürür. Bu işlevler bir diğerinin ters işlevleri olduğundan, her iki durumda da kayan nokta matematik için yuvarlama olan dönüş değeri 20 ' dir.  
   
 ```sql
 SELECT EXP(LOG(20)) AS exp1, LOG(EXP(20)) AS exp2  
@@ -68,6 +68,6 @@ SELECT EXP(LOG(20)) AS exp1, LOG(EXP(20)) AS exp2
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Matematiksel fonksiyonlar Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Matematik işlevleri Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB giriş](introduction.md)

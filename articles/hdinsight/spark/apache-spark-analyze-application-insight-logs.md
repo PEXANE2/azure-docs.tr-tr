@@ -1,6 +1,6 @@
 ---
-title: Spark ile Uygulama Öngörügünlüklerini Analiz Et - Azure HDInsight
-description: Application Insight günlüklerini blob depolamasına nasıl dışa aktarır ve ardından HDInsight'ta Spark ile günlükleri nasıl analiz edebilirsiniz.
+title: Spark-Azure HDInsight ile uygulama Insight günlüklerini çözümleme
+description: Application Insight günlüklerini blob depolamaya aktarmayı öğrenin ve ardından HDInsight 'ta Spark ile günlükleri çözümleyin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,80 +9,80 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 6fd7682f56fbe446904a4acdb39e78525f2523a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75435237"
 ---
-# <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>HDInsight'ta Apache Spark ile Uygulama Öngörülerini telemetri günlüklerini analiz edin
+# <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>HDInsight üzerinde Apache Spark Application Insights telemetri günlüklerini çözümleme
 
-Application Insight telemetri verilerini analiz etmek için HDInsight'ta [Apache Spark'ı](https://spark.apache.org/) nasıl kullanacağınızı öğrenin.
+HDInsight üzerinde [Apache Spark](https://spark.apache.org/) kullanarak Application Insight telemetri verilerini analiz edin.
 
-[Visual Studio Application Insights,](../../azure-monitor/app/app-insights-overview.md) web uygulamalarınızı izleyen bir analiz hizmetidir. Application Insights tarafından oluşturulan telemetri verileri Azure Depolama'ya aktarılabilir. Veriler Azure Depolama alanına girdiğinde, HDInsight verileri analiz etmek için kullanılabilir.
+[Visual Studio Application Insights](../../azure-monitor/app/app-insights-overview.md) , Web uygulamalarınızı izleyen bir analiz hizmetidir. Application Insights tarafından oluşturulan telemetri verileri, Azure depolama 'ya aktarılabilir. Veriler Azure Storage 'da olduktan sonra, HDInsight analiz etmek için kullanılabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Uygulama Öngörüleri'ni kullanmak üzere yapılandırılan bir uygulama.
+* Application Insights kullanacak şekilde yapılandırılmış bir uygulama.
 
-* Linux tabanlı bir HDInsight kümesi oluşturma konusunda aşinalık. Daha fazla bilgi için [HDInsight'ta Apache Spark Oluştur'a](apache-spark-jupyter-spark-sql.md)bakın.
+* Linux tabanlı HDInsight kümesi oluşturma hakkında benzerlik. Daha fazla bilgi için bkz. [HDInsight üzerinde Apache Spark oluşturma](apache-spark-jupyter-spark-sql.md).
 
-* Bir web tarayıcısı.
+* Bir Web tarayıcısı.
 
-Bu belgenin geliştirilmesi nde ve test edilmesinde aşağıdaki kaynaklar kullanılmıştır:
+Bu belgeyi geliştirmek ve test etmek için aşağıdaki kaynaklar kullanılmıştır:
 
-* Application Insights telemetri [verileri, Application Insights'ı kullanmak üzere yapılandırılan bir Düğüm.js web uygulaması](../../azure-monitor/app/nodejs.md)kullanılarak oluşturuldu.
+* Application Insights telemetri verileri, [Application Insights kullanmak üzere yapılandırılmış bir Node. js web uygulaması](../../azure-monitor/app/nodejs.md)kullanılarak oluşturulmuştur.
 
-* Verileri analiz etmek için HDInsight küme sürümü 3.5'te Linux tabanlı bir Kıvılcım kullanıldı.
+* HDInsight kümesi sürüm 3,5 ' de Linux tabanlı bir Spark, verileri çözümlemek için kullanıldı.
 
-## <a name="architecture-and-planning"></a>Mimarlık ve planlama
+## <a name="architecture-and-planning"></a>Mimari ve planlama
 
-Aşağıdaki diyagram, bu örneğin hizmet mimarisini göstermektedir:
+Aşağıdaki diyagramda bu örneğin hizmet mimarisi gösterilmektedir:
 
-![Uygulama Öngörüleri'nden blob depolamasına akan veriler, ardından Spark](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
+![Application Insights blob depolamaya ve Spark 'a kadar veri akışı](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Uygulama Öngörüleri, telemetri bilgilerini sürekli olarak blobs'a dışa aktaracak şekilde yapılandırılabilir. HDInsight daha sonra lekelerde depolanan verileri okuyabilir. Ancak, izlemeniz gereken bazı gereksinimler vardır:
+Application Insights, telemetri bilgilerini sürekli olarak bloblara aktarmak üzere yapılandırılabilir. HDInsight daha sonra bloblarda depolanan verileri okuyabilir. Ancak izlemeniz gereken bazı gereksinimler vardır:
 
-* **Konum**: Depolama Hesabı ve HDInsight farklı konumlardaysa gecikme yi artırabilir. Bölgeler arasında hareket eden verilere çıkış ücretleri uygulandığından, maliyeti de artırır.
+* **Konum**: depolama hesabı ve HDInsight farklı konumlarda ise gecikme süresini artırabilir. Ayrıca, bölgeler arasında taşınan verilere giden çıkış ücretleri uygulandıkça maliyeti de artırır.
 
     > [!WARNING]  
-    > HDInsight'tan farklı bir konumda depolama hesabı kullanmak desteklenmez.
+    > HDInsight 'tan farklı bir konumda depolama hesabı kullanılması desteklenmez.
 
-* **Blob türü**: HDInsight yalnızca blok blobları destekler. Application Insights varsayılan olarak blok blobs kullanmakiçin, bu nedenle varsayılan olarak HDInsight ile çalışması gerekir.
+* **BLOB türü**: HDInsight yalnızca blok bloblarını destekler. Varsayılan olarak blok bloblarını kullanmak Application Insights, bu nedenle HDInsight ile varsayılan olarak çalışmalıdır.
 
-Varolan bir kümeye depolama alanı ekleme hakkında bilgi için [ek depolama hesapları](../hdinsight-hadoop-add-storage.md) ekle belgesine bakın.
+Mevcut bir kümeye depolama ekleme hakkında daha fazla bilgi için bkz. [ek depolama hesapları ekleme](../hdinsight-hadoop-add-storage.md) belgesi.
 
 ### <a name="data-schema"></a>Veri şeması
 
-Application Insights, blobs'a dışa aktarılan telemetri veri biçimi için [dışa](../../azure-monitor/app/export-data-model.md) aktarma veri modeli bilgileri sağlar. Bu belgedeki adımlar, verilerle çalışmak için Spark SQL'i kullanır. Spark SQL, Application Insights tarafından günlüğe kaydedilen JSON veri yapısı için otomatik olarak bir şema oluşturabilir.
+Application Insights, bloblara dışarı aktarılmış telemetri veri biçimi için [veri modeli bilgilerini dışarı aktarma](../../azure-monitor/app/export-data-model.md) sağlar. Bu belgedeki adımlarda, verilerle çalışmak için Spark SQL kullanılır. Spark SQL, Application Insights tarafından günlüğe kaydedilen JSON veri yapısı için otomatik olarak bir şema üretebilir.
 
-## <a name="export-telemetry-data"></a>Telemetri verilerini dışa aktarma
+## <a name="export-telemetry-data"></a>Telemetri verilerini dışarı aktar
 
-Uygulama Öngörülerinizi azure depolama blob'una telemetri bilgilerini dışa aktarmak için yapılandırmak için [Sürekli Dışaklığı Yapılandırma](../../azure-monitor/app/export-telemetry.md) adımlarını izleyin.
+Telemetri bilgilerini bir Azure Storage blobuna aktarmak üzere Application Insights yapılandırmak için [sürekli dışarı aktarmayı yapılandırma](../../azure-monitor/app/export-telemetry.md) bölümündeki adımları izleyin.
 
-## <a name="configure-hdinsight-to-access-the-data"></a>Verilere erişmek için HDInsight'ı yapılandırın
+## <a name="configure-hdinsight-to-access-the-data"></a>HDInsight 'ı verilere erişecek şekilde yapılandırma
 
-Bir HDInsight kümesi oluşturuyorsanız, küme oluşturma sırasında depolama hesabını ekleyin.
+HDInsight kümesi oluşturuyorsanız, küme oluşturma sırasında depolama hesabını ekleyin.
 
-Azure Depolama Hesabı'nı varolan bir kümeye eklemek için [ek Depolama Hesapları Ekle](../hdinsight-hadoop-add-storage.md) belgesindeki bilgileri kullanın.
+Azure Depolama hesabını mevcut bir kümeye eklemek için, [ek depolama hesapları ekleme](../hdinsight-hadoop-add-storage.md) belgesi içindeki bilgileri kullanın.
 
-## <a name="analyze-the-data-pyspark"></a>Verileri analiz edin: PySpark
+## <a name="analyze-the-data-pyspark"></a>Verileri analiz etme: PySpark
 
-1. Bir web tarayıcısından `https://CLUSTERNAME.azurehdinsight.net/jupyter` CLUSTERNAME'nin kümenizin adı olduğu yere gidin.
+1. Bir Web tarayıcısından CLUSTERNAME öğesinin Kümenizin adı `https://CLUSTERNAME.azurehdinsight.net/jupyter` olduğu yere gidin.
 
-2. Jupyter sayfasının sağ üst köşesinde, **Yeni**ve ardından **PySpark'ı**seçin. Python tabanlı Jupyter Notebook içeren yeni bir tarayıcı sekmesi açılır.
+2. Jupi sayfasının sağ üst köşesinde, **Yeni**ve ardından **pyspark**' ı seçin. Python tabanlı Jupyter Notebook içeren yeni bir tarayıcı sekmesi açılır.
 
-3. Sayfadaki ilk alana **(hücre**olarak adlandırılır) aşağıdaki metni girin:
+3. Sayfada ilk alanda ( **hücre**olarak adlandırılır) aşağıdaki metni girin:
 
    ```python
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
    ```
 
-    Bu kod, giriş verilerinin dizin yapısına özyinelemeli olarak erişmek üzere Spark'ı yapılandırır. Uygulama Öngörüleri telemetrisi benzer bir dizin `/{telemetry type}/YYYY-MM-DD/{##}/`yapısına kaydedilir.
+    Bu kod Spark 'ı, giriş verileri için dizin yapısına yinelemeli olarak erişecek şekilde yapılandırır. Application Insights telemetri, `/{telemetry type}/YYYY-MM-DD/{##}/`öğesine benzer bir dizin yapısına kaydedilir.
 
-4. Kodu çalıştırmak için **SHIFT+ENTER'ı** kullanın. Hücrenin sol tarafında, bu\*hücredeki kodun yürütülmekte olduğunu belirtmek için parantez arasında bir ' ' ' görünür. Tamamlandıktan sonra ,\*' ' ' bir sayıya dönüşür ve aşağıdaki metne benzer çıktı hücrenin altında görüntülenir:
+4. Kodu çalıştırmak için **SHIFT + enter** tuşlarını kullanın. Hücrenin sol tarafında, bu hücredeki kodun yürütüldüğü belirten köşeli\*ayraçlar arasında bir ' ' görünür. İşlem tamamlandıktan sonra '\*' bir sayıya değişir ve aşağıdaki metne benzer bir çıkış hücrenin altında görüntülenir:
 
         Creating SparkContext as 'sc'
 
@@ -92,38 +92,38 @@ Azure Depolama Hesabı'nı varolan bir kümeye eklemek için [ek Depolama Hesapl
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
 
-5. İlkinin altında yeni bir hücre oluşturulur. Yeni hücreye aşağıdaki metni girin. Uygulama Öngörüleri verilerini içeren Azure Depolama hesap adı ve blob kapsayıcı adı ile değiştirin. `CONTAINER` `STORAGEACCOUNT`
+5. Birinci bir hücre aşağıda oluşturulur. Yeni hücreye aşağıdaki metni girin. İle `CONTAINER` ve `STORAGEACCOUNT` Application Insights verileri içeren blob kapsayıcısı adı ile değiştirin.
 
    ```python
    %%bash
    hdfs dfs -ls wasbs://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
-    Bu hücreyi çalıştırmak için **SHIFT+ENTER'ı** kullanın. Aşağıdaki metne benzer bir sonuç görürsünüz:
+    Bu hücreyi yürütmek için **SHIFT + enter** tuşlarını kullanın. Aşağıdaki metne benzer bir sonuç görürsünüz:
 
         Found 1 items
         drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    Döndürülen wasbs yolu, Application Insights telemetri verilerinin konumudur. Döndürülen `hdfs dfs -ls` wasbs yolunu kullanmak için hücredeki satırı değiştirin ve hücreyi yeniden çalıştırmak için **SHIFT+ENTER'ı** kullanın. Bu kez, sonuçlar telemetri verileri içeren dizinleri görüntülemelidir.
+    Döndürülen IBS yolu, Application Insights Telemetri verilerinin konumudur. Döndürülen IBS yolunu kullanmak için hücredeki `hdfs dfs -ls` çizgiyi değiştirin ve sonra hücreyi yeniden çalıştırmak için **SHIFT + enter** tuşlarını kullanın. Bu kez, sonuçlar telemetri verilerini içeren dizinleri görüntülemelidir.
 
    > [!NOTE]  
-   > Bu bölümdeki adımların geri kalanı `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` için dizin kullanılmıştır. Dizin yapınız farklı olabilir.
+   > Bu bölümdeki adımların geri kalanı için `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` Dizin kullanılmıştır. Dizin yapınız farklı olabilir.
 
-6. Sonraki hücrede, aşağıdaki kodu girin: Önceki adımdan yol ile değiştirin. `WASB_PATH`
+6. Sonraki hücrede şu kodu girin: önceki adımdaki yol ile değiştirin `WASB_PATH` .
 
    ```python
    jsonFiles = sc.textFile('WASB_PATH')
    jsonData = sqlContext.read.json(jsonFiles)
    ```
 
-    Bu kod, sürekli dışa aktarma işlemi tarafından dışa aktarılan JSON dosyalarından bir veri çerçevesi oluşturur. Bu hücreyi çalıştırmak için **SHIFT+ENTER'ı** kullanın.
-7. Sonraki hücrede, Spark'ın JSON dosyaları için oluşturduğu şemayı görüntülemek için aşağıdakileri girin ve çalıştırın:
+    Bu kod, sürekli dışarı aktarma işlemi tarafından dışarı aktarılmış JSON dosyalarından bir dataframe oluşturur. Bu hücreyi çalıştırmak için **SHIFT + enter** tuşlarını kullanın.
+7. Bir sonraki hücrede, Spark 'ın JSON dosyaları için oluşturduğu şemayı görüntülemek için aşağıdakileri girin ve aşağıdakini çalıştırın:
 
    ```python
    jsonData.printSchema()
    ```
 
-    Her telemetri türü için şema farklıdır. Aşağıdaki örnek, web istekleri `Requests` (alt dizinde depolanan veriler) için oluşturulan şemadır:
+    Her telemetri türünün şeması farklıdır. Aşağıdaki örnek, Web istekleri için oluşturulan şemadır ( `Requests` alt dizinde depolanan veriler):
 
         root
         |-- context: struct (nullable = true)
@@ -186,7 +186,7 @@ Azure Depolama Hesabı'nı varolan bir kümeye eklemek için [ek Depolama Hesapl
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
 
-8. Veri çerçevesini geçici bir tablo olarak kaydetmek ve verileri karşı bir sorgu çalıştırmak için aşağıdakileri kullanın:
+8. Veri çerçevesini geçici bir tablo olarak kaydetmek ve verilere karşı bir sorgu çalıştırmak için aşağıdakileri kullanın:
 
    ```python
    jsonData.registerTempTable("requests")
@@ -194,12 +194,12 @@ Azure Depolama Hesabı'nı varolan bir kümeye eklemek için [ek Depolama Hesapl
    df.show()
    ```
 
-    Bu sorgu, context.location.city'nin geçersiz olmadığı en iyi 20 kaydın şehir bilgilerini döndürür.
+    Bu sorgu, Context. Location. City null olmayan ilk 20 kayıt için şehir bilgilerini döndürür.
 
    > [!NOTE]  
-   > Bağlam yapısı, Application Insights tarafından günlüğe kaydedilen tüm telemetrilerde bulunur. Şehir öğesi günlüklerinizde doldurulmayabilir. Günlükleriniz için veri içerebilecek sorgulayabileceğiniz diğer öğeleri tanımlamak için şemayı kullanın.
+   > Bağlam yapısı, Application Insights tarafından günlüğe kaydedilen tüm telemetride mevcuttur. City öğesi günlüklerinizi doldurmayabilir. Günlüklerinizin verilerini içerebilen Sorgulayabileceğiniz diğer öğeleri belirlemek için şemayı kullanın.
 
-    Bu sorgu, aşağıdaki metne benzer bilgileri döndürür:
+    Bu sorgu, aşağıdaki metne benzer bilgiler döndürür:
 
         +---------+
         |     city|
@@ -211,21 +211,21 @@ Azure Depolama Hesabı'nı varolan bir kümeye eklemek için [ek Depolama Hesapl
         ...
         +---------+
 
-## <a name="analyze-the-data-scala"></a>Verileri analiz edin: Scala
+## <a name="analyze-the-data-scala"></a>Verileri analiz etme: Scala
 
-1. Bir web tarayıcısından `https://CLUSTERNAME.azurehdinsight.net/jupyter` CLUSTERNAME'nin kümenizin adı olduğu yere gidin.
+1. Bir Web tarayıcısından CLUSTERNAME öğesinin Kümenizin adı `https://CLUSTERNAME.azurehdinsight.net/jupyter` olduğu yere gidin.
 
-2. Jupyter sayfasının sağ üst köşesinde, **Yeni**seçin ve sonra **Scala**. Scala tabanlı Jupyter Notebook içeren yeni bir tarayıcı sekmesi görüntülenir.
+2. Jupi sayfasının sağ üst köşesinde, **Yeni**' yi ve ardından **Scala**' yı seçin. Scala tabanlı Jupyter Notebook içeren yeni bir tarayıcı sekmesi görüntülenir.
 
-3. Sayfadaki ilk alana **(hücre**olarak adlandırılır) aşağıdaki metni girin:
+3. Sayfada ilk alanda ( **hücre**olarak adlandırılır) aşağıdaki metni girin:
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
    ```
 
-    Bu kod, giriş verilerinin dizin yapısına özyinelemeli olarak erişmek üzere Spark'ı yapılandırır. Application Insights telemetrisi benzer bir dizin yapısına `/{telemetry type}/YYYY-MM-DD/{##}/`kaydedilir.
+    Bu kod Spark 'ı, giriş verileri için dizin yapısına yinelemeli olarak erişecek şekilde yapılandırır. Application Insights telemetri, öğesine `/{telemetry type}/YYYY-MM-DD/{##}/`benzer bir dizin yapısına kaydedilir.
 
-4. Kodu çalıştırmak için **SHIFT+ENTER'ı** kullanın. Hücrenin sol tarafında, bu\*hücredeki kodun yürütülmekte olduğunu belirtmek için parantez arasında bir ' ' ' görünür. Tamamlandıktan sonra ,\*' ' ' bir sayıya dönüşür ve aşağıdaki metne benzer çıktı hücrenin altında görüntülenir:
+4. Kodu çalıştırmak için **SHIFT + enter** tuşlarını kullanın. Hücrenin sol tarafında, bu hücredeki kodun yürütüldüğü belirten köşeli\*ayraçlar arasında bir ' ' görünür. İşlem tamamlandıktan sonra '\*' bir sayıya değişir ve aşağıdaki metne benzer bir çıkış hücrenin altında görüntülenir:
 
         Creating SparkContext as 'sc'
 
@@ -235,24 +235,24 @@ Azure Depolama Hesabı'nı varolan bir kümeye eklemek için [ek Depolama Hesapl
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
 
-5. İlkinin altında yeni bir hücre oluşturulur. Yeni hücreye aşağıdaki metni girin. Uygulama Öngörüleri günlüklerini içeren Azure Depolama hesap adı ve blob kapsayıcı adı ile değiştirin. `CONTAINER` `STORAGEACCOUNT`
+5. Birinci bir hücre aşağıda oluşturulur. Yeni hücreye aşağıdaki metni girin. Ve `CONTAINER` `STORAGEACCOUNT` , Application Insights günlükleri içeren blob kapsayıcısı adı ve Azure depolama hesabı adı ile değiştirin.
 
    ```scala
    %%bash
    hdfs dfs -ls wasbs://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
-    Bu hücreyi çalıştırmak için **SHIFT+ENTER'ı** kullanın. Aşağıdaki metne benzer bir sonuç görürsünüz:
+    Bu hücreyi yürütmek için **SHIFT + enter** tuşlarını kullanın. Aşağıdaki metne benzer bir sonuç görürsünüz:
 
         Found 1 items
         drwxrwxrwx   -          0 1970-01-01 00:00 wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    Döndürülen wasbs yolu, Application Insights telemetri verilerinin konumudur. Döndürülen `hdfs dfs -ls` wasbs yolunu kullanmak için hücredeki satırı değiştirin ve hücreyi yeniden çalıştırmak için **SHIFT+ENTER'ı** kullanın. Bu kez, sonuçlar telemetri verileri içeren dizinleri görüntülemelidir.
+    Döndürülen IBS yolu, Application Insights Telemetri verilerinin konumudur. Döndürülen IBS yolunu kullanmak için hücredeki `hdfs dfs -ls` çizgiyi değiştirin ve sonra hücreyi yeniden çalıştırmak için **SHIFT + enter** tuşlarını kullanın. Bu kez, sonuçlar telemetri verilerini içeren dizinleri görüntülemelidir.
 
    > [!NOTE]  
-   > Bu bölümdeki adımların geri kalanı `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` için dizin kullanılmıştır. Telemetri verileriniz bir web uygulaması için olmadığı sürece bu dizin mevcut olmayabilir.
+   > Bu bölümdeki adımların geri kalanı için `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` Dizin kullanılmıştır. Telemetri verileriniz bir Web uygulaması için değilse, bu dizin mevcut olmayabilir.
 
-6. Sonraki hücrede, aşağıdaki kodu girin: Önceki adımdan yol ile değiştirin. `WASB\_PATH`
+6. Sonraki hücrede şu kodu girin: önceki adımdaki yol ile değiştirin `WASB\_PATH` .
 
    ```scala
    var jsonFiles = sc.textFile('WASB_PATH')
@@ -260,15 +260,15 @@ Azure Depolama Hesabı'nı varolan bir kümeye eklemek için [ek Depolama Hesapl
    var jsonData = sqlContext.read.json(jsonFiles)
    ```
 
-    Bu kod, sürekli dışa aktarma işlemi tarafından dışa aktarılan JSON dosyalarından bir veri çerçevesi oluşturur. Bu hücreyi çalıştırmak için **SHIFT+ENTER'ı** kullanın.
+    Bu kod, sürekli dışarı aktarma işlemi tarafından dışarı aktarılmış JSON dosyalarından bir dataframe oluşturur. Bu hücreyi çalıştırmak için **SHIFT + enter** tuşlarını kullanın.
 
-7. Sonraki hücrede, Spark'ın JSON dosyaları için oluşturduğu şemayı görüntülemek için aşağıdakileri girin ve çalıştırın:
+7. Bir sonraki hücrede, Spark 'ın JSON dosyaları için oluşturduğu şemayı görüntülemek için aşağıdakileri girin ve aşağıdakini çalıştırın:
 
    ```scala
    jsonData.printSchema
    ```
 
-    Her telemetri türü için şema farklıdır. Aşağıdaki örnek, web istekleri `Requests` (alt dizinde depolanan veriler) için oluşturulan şemadır:
+    Her telemetri türünün şeması farklıdır. Aşağıdaki örnek, Web istekleri için oluşturulan şemadır ( `Requests` alt dizinde depolanan veriler):
 
         root
         |-- context: struct (nullable = true)
@@ -331,19 +331,19 @@ Azure Depolama Hesabı'nı varolan bir kümeye eklemek için [ek Depolama Hesapl
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
 
-8. Veri çerçevesini geçici bir tablo olarak kaydetmek ve verileri karşı bir sorgu çalıştırmak için aşağıdakileri kullanın:
+8. Veri çerçevesini geçici bir tablo olarak kaydetmek ve verilere karşı bir sorgu çalıştırmak için aşağıdakileri kullanın:
 
    ```scala
    jsonData.registerTempTable("requests")
    var city = sqlContext.sql("select context.location.city from requests where context.location.city isn't null limit 10").show()
    ```
 
-    Bu sorgu, context.location.city'nin geçersiz olmadığı en iyi 20 kaydın şehir bilgilerini döndürür.
+    Bu sorgu, Context. Location. City null olmayan ilk 20 kayıt için şehir bilgilerini döndürür.
 
    > [!NOTE]  
-   > Bağlam yapısı, Application Insights tarafından günlüğe kaydedilen tüm telemetrilerde bulunur. Şehir öğesi günlüklerinizde doldurulmayabilir. Günlükleriniz için veri içerebilecek sorgulayabileceğiniz diğer öğeleri tanımlamak için şemayı kullanın.
+   > Bağlam yapısı, Application Insights tarafından günlüğe kaydedilen tüm telemetride mevcuttur. City öğesi günlüklerinizi doldurmayabilir. Günlüklerinizin verilerini içerebilen Sorgulayabileceğiniz diğer öğeleri belirlemek için şemayı kullanın.
 
-    Bu sorgu, aşağıdaki metne benzer bilgileri döndürür:
+    Bu sorgu, aşağıdaki metne benzer bilgiler döndürür:
 
         +---------+
         |     city|
@@ -357,14 +357,14 @@ Azure Depolama Hesabı'nı varolan bir kümeye eklemek için [ek Depolama Hesapl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure'daki veri ve hizmetlerle çalışmak için Apache Spark'ı kullanmaya daha fazla örnek için aşağıdaki belgelere bakın:
+Azure 'daki veri ve hizmetlerle çalışmak üzere Apache Spark kullanmaya yönelik daha fazla örnek için aşağıdaki belgelere bakın:
 
-* [BI ile Apache Spark: HDInsight'ta Spark'ı BI araçlarıyla kullanarak etkileşimli veri analizi yapın](apache-spark-use-bi-tools.md)
-* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak bina sıcaklığını analiz etmek için HDInsight'ta Kıvılcım'ı kullanın](apache-spark-ipython-notebook-machine-learning.md)
-* [Machine Learning ile Apache Spark: Gıda denetimi sonuçlarını tahmin etmek için HDInsight'ta Kıvılcım'ı kullanın](apache-spark-machine-learning-mllib-ipython.md)
-* [HDInsight'ta Apache Spark kullanarak web sitesi günlük analizi](apache-spark-custom-library-website-log-analysis.md)
+* [BI ile Apache Spark: bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
+* [Machine Learning ile Apache Spark: HVAC verilerini kullanarak oluşturma sıcaklığını çözümlemek için HDInsight 'ta Spark kullanma](apache-spark-ipython-notebook-machine-learning.md)
+* [Machine Learning Apache Spark: yemek İnceleme sonuçlarını tahmin etmek için HDInsight 'ta Spark kullanma](apache-spark-machine-learning-mllib-ipython.md)
+* [HDInsight 'ta Apache Spark kullanarak Web sitesi günlüğü Analizi](apache-spark-custom-library-website-log-analysis.md)
 
-Spark uygulamaları oluşturma ve çalıştırma hakkında bilgi için aşağıdaki belgelere bakın:
+Spark uygulamaları oluşturma ve çalıştırma hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 
 * [Scala kullanarak tek başına uygulama oluşturma](apache-spark-create-standalone-application.md)
-* [Livy'yi kullanarak apache Spark kümesinde işleri uzaktan çalıştırın](apache-spark-livy-rest-interface.md)
+* [Livy kullanarak Apache Spark kümesinde işleri uzaktan çalıştırma](apache-spark-livy-rest-interface.md)

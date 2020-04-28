@@ -1,6 +1,6 @@
 ---
-title: Azure Akış Analizi işleri için .NET Standart işlevleri geliştirme (Önizleme)
-description: Stream Analytics işleri için c# kullanıcı tanımlı işlevleri nasıl yazacaklarınızı öğrenin.
+title: Azure Stream Analytics işleri için .NET Standard işlevleri geliştirme (Önizleme)
+description: Stream Analytics işleri için c# Kullanıcı tanımlı işlevleri yazmayı öğrenin.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
 ms.openlocfilehash: f07c02df1b8e0032c9e1b4ef9a24c345fee20a40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426308"
 ---
-# <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Azure Akış Analizi işleri için .NET Standart kullanıcı tanımlı işlevler geliştirme (Önizleme)
+# <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Azure Stream Analytics işleri için .NET Standard Kullanıcı tanımlı işlevler geliştirme (Önizleme)
 
-Azure Akış Analizi, olay veri akışları üzerinden dönüşümler ve hesaplamalar gerçekleştirmek için SQL benzeri bir sorgu dili sunar. Birçok yerleşik işlev vardır, ancak bazı karmaşık senaryolar ek esneklik gerektirir. .NET Standart kullanıcı tanımlı işlevlerle (UDF) Akış Analizi sorgu dilini genişletmek için herhangi bir .NET standart dilde (C#, F#, vb.) yazılmış kendi işlevlerinizi çağırabilirsiniz. UDF'ler karmaşık matematik hesaplamaları gerçekleştirmenize, ML.NET kullanarak özel ML modellerini içe aktarmanıza ve eksik veriler için özel imputasyon mantığı kullanmanıza olanak sağlar. Stream Analytics işleri için UDF özelliği şu anda önizlemededir ve üretim iş yüklerinde kullanılmamalıdır.
+Azure Stream Analytics, olay verilerinin akışları üzerinde dönüşümler ve hesaplamalar gerçekleştirmek için SQL benzeri bir sorgu dili sunar. Birçok yerleşik işlev vardır ancak bazı karmaşık senaryolar ek esneklik gerektirir. Kullanıcı tanımlı işlevler (UDF) .NET Standard sayesinde, Stream Analytics sorgu dilini genişletmek için herhangi bir .NET standart dilinde (C#, F #, vb.) yazılmış kendi işlevlerinizi çağırabilirsiniz. UDF 'ler, karmaşık matematik hesaplamaları gerçekleştirmenizi, ML.NET kullanarak özel ML modellerini içeri aktarmanızı ve eksik veriler için özel imputation mantığı kullanmanıza imkan tanır. Stream Analytics işleri için UDF özelliği şu anda önizlemededir ve üretim iş yükleri içinde kullanılmamalıdır.
 
-.NET bulut işleri için kullanıcı tanımlı işlev:
+Bulut işlerinin .NET Kullanıcı tanımlı işlevi, ' de kullanılabilir:
 * Orta Batı ABD
 * Kuzey Avrupa
 * Doğu ABD
@@ -26,28 +26,28 @@ Azure Akış Analizi, olay veri akışları üzerinden dönüşümler ve hesapla
 * Doğu ABD 2
 * Batı Avrupa
 
-Bu özelliği başka bir bölgede kullanmak istiyorsanız, [erişim isteğinde](https://aka.ms/ccodereqregion)bulunabilirsiniz.
+Bu özelliği başka bir bölgede kullanmaya ilgileniyorsanız, [erişim isteyebilirsiniz](https://aka.ms/ccodereqregion).
 
 ## <a name="overview"></a>Genel Bakış
-Azure Akış Analizi için Visual Studio araçları, UDF yazmanızı, işinizi yerel olarak (hatta çevrimdışı) test etmenizi ve Stream Analytics işinizi Azure'da yayınlamanızı kolaylaştırır. Azure'da yayımlandıktan sonra, IoT Hub'ını kullanarak işinizi IoT aygıtlarına dağıtabilirsiniz.
+Azure Stream Analytics için Visual Studio Araçları, UDF 'Leri yazmanızı, işlerinizi yerel olarak test yapmayı ve Stream Analytics işinizi Azure 'da yayımlamayı kolaylaştırır. Azure 'da yayımlandıktan sonra, IoT Hub kullanarak işinizi IoT cihazlarına dağıtabilirsiniz.
 
-UDF'leri uygulamanın üç yolu vardır:
+UDF 'Leri uygulamak için üç yol vardır:
 
-* Bir ASA projesinde CodeBehind dosyaları
-* Yerel bir projeden UDF
-* Azure depolama hesabından varolan bir paket
+* Bir ASA projesindeki CodeBehind dosyaları
+* Yerel projeden UDF
+* Azure Storage hesabından mevcut bir paket
 
 ## <a name="package-path"></a>Paket yolu
 
-Herhangi bir UDF paketinin `/UserCustomCode/CLR/*`biçimi yolu vardır. Dinamik Bağlantı Kitaplıkları (DL'ler) ve `/UserCustomCode/CLR/*` kaynaklar klasörün altında kopyalanır ve bu da kullanıcı DL'lerini sistemden ve Azure Akış Analizi DL'lerinden yalıtmanıza yardımcı olur. Bu paket yolu, bunları kullanmak için kullanılan yöntemden bağımsız olarak tüm işlevler için kullanılır.
+Herhangi bir UDF paketinin biçimi yolu `/UserCustomCode/CLR/*`vardır. Dinamik bağlantı kitaplıkları (dll 'Ler) ve kaynakları `/UserCustomCode/CLR/*` klasörü altına kopyalanır ve bu, Kullanıcı dll 'lerinin sistem ve Azure Stream Analytics dll 'lerden yalıtılmasına yardımcı olur. Bu paket yolu, bunları kullanmak için kullanılan yöntemden bağımsız olarak tüm işlevler için kullanılır.
 
-## <a name="supported-types-and-mapping"></a>Desteklenen türleri ve haritalama
+## <a name="supported-types-and-mapping"></a>Desteklenen türler ve eşleme
 
-|**UDF tipi (C#)**  |**Azure Akışı Analizi türü**  |
+|**UDF türü (C#)**  |**Azure Stream Analytics türü**  |
 |---------|---------|
 |long  |  bigint   |
 |double  |  double   |
-|string  |  nvarchar(maks)   |
+|string  |  nvarchar (max)   |
 |tarih saat  |  tarih saat   |
 |struct   |  IRecord   |
 |object  |  IRecord   |
@@ -55,91 +55,91 @@ Herhangi bir UDF paketinin `/UserCustomCode/CLR/*`biçimi yolu vardır. Dinamik 
 |sözlük<dize, nesne>  |  IRecord   |
 
 ## <a name="codebehind"></a>CodeBehind
-Kullanıcı tanımlı işlevleri **Script.asql** CodeBehind'a yazabilirsiniz. Visual Studio araçları CodeBehind dosyasını otomatik olarak bir derleme dosyasına derler. Derlemeler zip dosyası olarak paketlenir ve işinizi Azure'a gönderdiğinizde depolama hesabınıza yüklenir. Stream Analytics Edge işleri öğreticisi [için C# UDF'yi](stream-analytics-edge-csharp-udf.md) izleyerek CodeBehind kullanarak C# UDF yazmayı öğrenebilirsiniz. 
+Kullanıcı tanımlı işlevleri **Script. ASQL** codebehind içinde yazabilirsiniz. Visual Studio Araçları otomatik olarak CodeBehind dosyasını derleme dosyasına derler. Derlemeler bir zip dosyası olarak paketlenir ve işinizi Azure 'a gönderdiğinizde depolama hesabınıza yüklenir. [Stream Analytics Edge işleri öğreticisi Için C# UDF](stream-analytics-edge-csharp-udf.md) 'Yi izleyerek codebehind kullanarak c# UDF yazma hakkında bilgi edinebilirsiniz. 
 
 ## <a name="local-project"></a>Yerel proje
-Kullanıcı tanımlı işlevler, daha sonra bir Azure Akışı Analizi sorgusunda başvurulan bir derlemeye yazılabilir. Bu, bir .NET Standart dilinin ifade dilinin ötesinde yordam mantığı veya özyineleme gibi tam güç gerektiren karmaşık işlevler için önerilen seçenektir. İşlev mantığını birkaç Azure Akışı Analizi sorgusunda paylaşmanız gerektiğinde yerel bir projeden gelen UDF'ler de kullanılabilir. Yerel projenize UDF'ler eklemek, Visual Studio'dan işlevlerinizi ayıklama ve test etme olanağı sağlar.
+Kullanıcı tanımlı işlevler, daha sonra bir Azure Stream Analytics sorgusunda başvurulan bir derlemede yazılabilir. Bu, .NET Standard dilinin, yordamsal mantık veya özyineleme gibi ifade dilinin ötesinde tam gücünü gerektiren karmaşık işlevler için önerilen seçenektir. Yerel bir projeden gelen UDF 'ler, birkaç Azure Stream Analytics sorgu arasında işlev mantığını paylaşmanız gerektiğinde de kullanılabilir. Yerel projenize UDF 'ler eklemek, işlevlerinizi Visual Studio 'dan yerel olarak hata ayıklama ve test etme olanağı sunar.
 
 Yerel bir projeye başvurmak için:
 
 1. Çözümünüzde yeni bir sınıf kitaplığı oluşturun.
-2. Kodu sınıfınıza yazın. Sınıfların *ortak,* nesnelerin *statik ortak*olarak tanımlanması gerektiğini unutmayın. 
-3. Projenizi yapılandırın. Araçlar, çöp kutusu klasöründeki tüm yapıları bir zip dosyasına paketleyecek ve zip dosyasını depolama hesabına yükler. Dış başvurular için NuGet paketi yerine montaj başvurusu kullanın.
-4. Azure Akış Analizi projenizde yeni sınıfa başvurun.
-5. Azure Akış Analizi projenizde yeni bir işlev ekleyin.
-6. İş yapılandırma dosyasındaki montaj yolunu `JobConfig.json`yapılandırın, . Montaj Yolunu **Yerel Proje Başvurusu veya CodeBehind'a**ayarlayın.
-7. Hem işlev projesini hem de Azure Akışı Analizi projesini yeniden oluştur.  
+2. Kodunuzu sınıfınıza yazın. Sınıfların *ortak* olarak tanımlanması gerektiğini ve nesnelerin *statik ortak*olarak tanımlanması gerektiğini unutmayın. 
+3. Projenizi yapılandırın. Araçlar bin klasöründeki tüm yapıtları bir ZIP dosyasına paketler ve ZIP dosyasını depolama hesabına yükler. Dış başvurular için NuGet paketi yerine derleme başvurusunu kullanın.
+4. Azure Stream Analytics projenizdeki yeni sınıfa başvurun.
+5. Azure Stream Analytics projenize yeni bir işlev ekleyin.
+6. Derleme yolunu iş yapılandırma dosyasında yapılandırın `JobConfig.json`. Derleme yolunu **Yerel proje başvurusu veya codebehind**olarak ayarlayın.
+7. Hem işlev projesini hem de Azure Stream Analytics projeyi yeniden derleyin.  
 
 ### <a name="example"></a>Örnek
 
-Bu **örnekte, UDFTest** bir C# sınıfı kitaplık projesidir ve **ASAUDFDemo,** **UDFTest'e**başvurulacak olan Azure Akışı Analytics projesidir.
+Bu örnekte, **udftest** bir C# sınıf kitaplığı projem ve **Asaudfdemo** , **udftest**'e başvuracaktır Azure Stream Analytics projem.
 
-![Visual Studio'da Azure Stream Analytics IoT Edge projesi](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png)
+![Visual Studio 'da IoT Edge Azure Stream Analytics projesi](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png)
 
-1. Azure Akış Analizi sorgusundan C# UDF'nize referans eklemenize olanak sağlayacak C# projenizi oluşturun.
+1. C# projenizi oluşturun, bu, Azure Stream Analytics sorgusundan C# UDF 'nize bir başvuru eklemenize olanak sağlar.
     
-   ![Visual Studio'da Azure Akışı Analytics IoT Edge projesi oluşturun](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png)
+   ![Visual Studio 'da Azure Stream Analytics IoT Edge projesi oluşturma](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png)
 
-2. ASA projesindeki C# projesine başvuruyu ekleyin. Başvurular düğümüne sağ tıklayın ve Başvuru Ekle'yi seçin.
+2. Başvuruyu ASA projesindeki C# projesine ekleyin. Başvurular düğümüne sağ tıklayın ve başvuru Ekle ' yi seçin.
 
-   ![Visual Studio'daki C# projesine başvuru ekleme](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png)
+   ![Visual Studio 'da C# projesine başvuru ekleme](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png)
 
 3. Listeden C# proje adını seçin. 
     
    ![Başvuru listesinden C# proje adınızı seçin](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-choose-project-name.png)
 
-4. **Çözüm Gezgini'nde** **Başvurular** altında listelenen **UDFTest'i** görmeniz gerekir.
+4. **Çözüm Gezgini** **Başvurular** altında listelenen **udftest** ' i görmeniz gerekir.
 
-   ![Çözüm gezgininde kullanıcı tanımlı işlev referansını görüntüleme](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png)
+   ![Çözüm Gezgini 'nde Kullanıcı tanımlı işlev başvurusunu görüntüleme](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png)
 
-5. **Fonksiyonlar** klasörüne sağ tıklayın ve **Yeni Öğe'yi**seçin.
+5. **İşlevler** klasörüne sağ tıklayın ve **Yeni öğe**' yi seçin.
 
-   ![Azure Akış Analizi Edge çözümünde Fonksiyonlara yeni öğe ekleme](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png)
+   ![Azure Stream Analytics Edge çözümünde IŞLEVLERE yeni öğe ekleme](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png)
 
-6. Azure Akış Analizi projenize C# fonksiyonu **SquareFunction.json** ekleyin.
+6. Azure Stream Analytics projenize bir C# işlevi **squarefunction. JSON** ekleyin.
 
-   ![Visual Studio'daki Stream Analytics Edge öğelerinden CSharp işlevini seçin](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png)
+   ![Visual Studio 'da Stream Analytics Edge öğelerinden CSharp işlevi seçme](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png)
 
-7. Yapılandırma iletişim kutusunu açmak için **Solution Explorer'daki** işlevi çift tıklatın.
+7. Yapılandırma iletişim kutusunu açmak için **Çözüm Gezgini** işlevine çift tıklayın.
 
-   ![Visual Studio'da C keskin fonksiyon yapılandırması](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png)
+   ![Visual Studio 'da C Sharp işlev yapılandırması](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png)
 
-8. C# işlevi yapılandırmasında, **ASA Project Reference'dan Yükle'yi** ve açılan listeden ilgili derleme, sınıf ve yöntem adlarını seçin. Akış Analizi sorgusundaki yöntemlere, türlere ve işlevlere başvurmak için sınıflar *ortak* olarak tanımlanmalı ve nesneler *statik ortak*olarak tanımlanmalıdır.
+8. C# işlev yapılandırmasında, **asa proje başvurusundan yükle** ' yi ve açılan listeden ilgili derleme, sınıf ve yöntem adlarını seçin. Stream Analytics sorgusundaki yöntemlere, türlere ve işlevlere başvurmak için sınıfların *ortak* olarak tanımlanması ve nesnelerin *statik ortak*olarak tanımlanması gerekir.
 
-   ![Stream Analytics C keskin fonksiyon yapılandırması](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png)
+   ![Stream Analytics C Sharp işlev yapılandırması](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png)
 
 ## <a name="existing-packages"></a>Mevcut paketler
 
-.NET Standart UDF'leri seçtiğiniz herhangi bir IDE'de yazar ve Azure Akış Analizi sorgunuzdan çağırabilirsiniz. Önce kodunuzu derve tüm DL'leri paketle. Paketin biçimi yolu `/UserCustomCode/CLR/*`vardır. Ardından, `UserCustomCode.zip` Azure depolama hesabınızdaki kapsayıcının köküne yükleyin.
+.NET Standard UDF 'Leri dilediğiniz IDE 'de yazabilir ve Azure Stream Analytics sorgınızdan çağırabilirsiniz. İlk olarak kodunuzu derleyin ve tüm dll 'Leri paketleyin. Paketin biçimi yolu `/UserCustomCode/CLR/*`vardır. Ardından, Azure `UserCustomCode.zip` Depolama hesabınızdaki kapsayıcının köküne yükleyin.
 
-Azure depolama hesabınıza montaj zip paketleri yüklendikten sonra, Azure Akış Analizi sorgularında işlevleri kullanabilirsiniz. Tek yapmanız gereken, Akış Analizi iş yapılandırmasına depolama bilgilerini eklemektir. Visual Studio araçları paketinizi indirmeyeceği için işlevi bu seçenekle yerel olarak test edemezsiniz. Paket yolu doğrudan hizmete ayrıştırılır. 
+Azure depolama hesabınıza derleme ZIP paketleri yüklendikten sonra, Azure Stream Analytics sorgulardaki işlevleri kullanabilirsiniz. Tüm yapmanız gereken Stream Analytics iş yapılandırmasındaki depolama bilgilerini içerir. Visual Studio Araçları paketinizi indirmediği için işlevi bu seçenekle yerel olarak test edebilirsiniz. Paket yolu doğrudan hizmete ayrıştırılır. 
 
-İş yapılandırma dosyasındaki montaj yolunu yapılandırmak için: `JobConfig.json`
+İş yapılandırma dosyasında derleme yolunu yapılandırmak için `JobConfig.json`:
 
 **Kullanıcı Tanımlı Kod Yapılandırması** bölümünü genişletin ve yapılandırmaya aşağıdaki önerilen değerleri ekleyin:
 
-   |**Ayar**|**Önerilen Değer**|
+   |**Ayar**|**Önerilen değer**|
    |-------|---------------|
-   |Genel Depolama Ayarları Kaynak|Geçerli hesaptaki veri kaynağını seçin|
-   |Genel Depolama Ayarları Aboneliği| Aboneliğinizi < >|
-   |Genel Depolama Ayarları Depolama Hesabı| depolama hesabınızı < >|
-   |Özel Kod Depolama Ayarları Kaynak|Geçerli hesaptaki veri kaynağını seçin|
-   |Özel Kod Depolama Ayarları Depolama Hesabı|depolama hesabınızı < >|
-   |Özel Kod Depolama Ayarları Kapsayıcısı|Depolama kapsayıcınızı < >|
-   |Özel Kod Derleme Kaynağı|Buluttan mevcut montaj paketleri|
-   |Özel Kod Derleme Kaynağı|KullanıcıCustomCode.zip|
+   |Genel depolama ayarları kaynağı|Geçerli hesaptaki veri kaynağını seçin|
+   |Genel depolama ayarları aboneliği| Aboneliğinizi < >|
+   |Genel depolama ayarları depolama hesabı| Depolama hesabınızı < >|
+   |Özel kod depolama ayarları kaynağı|Geçerli hesaptaki veri kaynağını seçin|
+   |Özel kod depolama ayarları depolama hesabı|Depolama hesabınızı < >|
+   |Özel kod depolama ayarları kapsayıcısı|Depolama kapsayıcınızı < >|
+   |Özel kod derleme kaynağı|Buluttan mevcut derleme paketleri|
+   |Özel kod derleme kaynağı|UserCustomCode. zip|
 
 ## <a name="limitations"></a>Sınırlamalar
-UDF önizlemeşu anda aşağıdaki sınırlamalar vardır:
+UDF önizlemesi Şu anda aşağıdaki sınırlamalara sahiptir:
 
-* .NET Standart UDF'leri yalnızca Visual Studio'da yazılabilir ve Azure'da yayınlanabilir. .NET Standart UDF'lerinin salt okunur sürümleri Azure portalındaki **Işlevler** altında görüntülenebilir. .NET Standart işlevlerinin yazlanması Azure portalında desteklenmez.
+* .NET Standard UDF 'ler yalnızca Visual Studio 'da yazılabilir ve Azure 'da yayımlanabilir. .NET Standard UDF 'Leri salt okuma sürümleri Azure portal **işlevler** altında görüntülenebilir. .NET Standard işlevlerinin yazılması Azure portal desteklenmez.
 
-* Azure portal sorgu düzenleyicisi, portalda .NET Standart UDF kullanırken bir hata gösterir. 
+* Azure portal sorgu Düzenleyicisi portalda .NET Standard UDF kullanırken bir hata gösterir. 
 
-* Özel kod bağlamı Azure Akış Analizi altyapısıyla paylaştığından, özel kod Azure Akış Analizi koduyla çakışan ad alanı/dll_name olan hiçbir şeye başvuru yapamaz. Örneğin, *Newtonsoft Json'a*başvuru yapamazsınız.
+* Özel kod Azure Stream Analytics altyapısı ile bağlam paylaştığından, özel kod Azure Stream Analytics kodla çakışan bir ad alanı/dll_name olan herhangi bir şeye başvuramaz. Örneğin, *Newtonsoft JSON*öğesine başvurulamıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Öğretici: Azure Akışı Analizi işi için C# kullanıcı tanımlı bir işlev yazın (Önizleme)](stream-analytics-edge-csharp-udf.md)
+* [Öğretici: Azure Stream Analytics işi için C# Kullanıcı tanımlı bir işlev yazma (Önizleme)](stream-analytics-edge-csharp-udf.md)
 * [Öğretici: Azure Stream Analytics JavaScript kullanıcı tanımlı işlevleri](stream-analytics-javascript-user-defined-functions.md)
-* [Azure Akış Analizi işlerini görüntülemek için Visual Studio'yı kullanın](stream-analytics-vs-tools.md)
+* [Azure Stream Analytics işleri görüntülemek için Visual Studio 'Yu kullanma](stream-analytics-vs-tools.md)

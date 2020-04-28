@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası sorunlarını giderme
-description: Azure Veri Fabrikası'nı kullanmayla ilgili sorunları nasıl gidereceklerini öğrenin.
+title: Azure Data Factory sorunlarını giderme
+description: Azure Data Factory kullanmayla ilgili sorunları nasıl giderebileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
@@ -14,17 +14,17 @@ ms.reviewer: maghan
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 81ae5c3c702108d854e4dfde93001d5c99875666
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74931575"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory'de sorun giderme
 > [!NOTE]
 > Bu makale, Azure Data Factory’nin 1. sürümü için geçerlidir. 
 
-Bu makalede, Azure Veri Fabrikası'nı kullanırken sorunlar için sorun giderme ipuçları verilmektedir. Bu makalede, hizmeti kullanırken tüm olası sorunları listelemiyor, ancak bazı sorunları ve genel sorun giderme ipuçlarını kapsar.   
+Bu makalede Azure Data Factory kullanırken sorunlar için sorun giderme ipuçları sunulmaktadır. Bu makale, hizmeti kullanırken olası tüm sorunları listelemez, ancak bazı sorunlar ve genel sorun giderme ipuçları ele alınmaktadır.   
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -38,36 +38,36 @@ Bu hatayı aldıysanız Azure Data Factory kaynak sağlayıcısı makinenizde ka
     ```powershell
     Connect-AzAccount
     ```
-3. Azure Veri Fabrikası sağlayıcısını kaydetmek için aşağıdaki komutu çalıştırın.
+3. Azure Data Factory sağlayıcısı 'nı kaydetmek için aşağıdaki komutu çalıştırın.
 
     ```powershell        
     Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
-### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Sorun: Veri Fabrikası cmdlet çalıştırırken yetkisiz hata
+### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Sorun: Data Factory cmdlet 'i çalıştırılırken yetkisiz hata
 Azure PowerShell ile doğru Azure hesabını veya aboneliğini kullanmıyor olabilirsiniz. Azure PowerShell ile kullanılacak doğru Azure hesabını ve aboneliğini seçmek için aşağıdaki cmdlet’leri kullanın.
 
-1. Connect-AzAccount - Doğru kullanıcı kimliğini ve parolayı kullanın
-2. Get-AzSubscription - Hesabın tüm aboneliklerini görüntüleyin.
-3. Select-AzSubscription &lt;abonelik&gt; adı - Doğru aboneliği seçin. Azure portalında bir veri fabrikası oluşturmak için kullandığınızın aynısını kullanın.
+1. Connect-AzAccount-doğru kullanıcı KIMLIĞINI ve parolayı kullanın
+2. Get-AzSubscription-hesaba ait tüm abonelikleri görüntüleyin.
+3. Select-AzSubscription &lt;abonelik adı&gt; -doğru aboneliği seçin. Azure portal bir veri fabrikası oluşturmak için kullandığınız aynısını kullanın.
 
-### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Sorun: Azure portalından Veri Yönetimi Ağ Geçidi Express Kurulum'u başlatamamak
+### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Sorun: Azure portal Veri Yönetimi ağ geçidi hızlı kurulumu başlatılamadı
 Veri Yönetimi Ağ Geçidi Hızlı Kurulumu için Internet Explorer veya Microsoft ClickOnce uyumlu bir web tarayıcısı gerekir. Hızlı Kurulum başlatılamıyorsa, aşağıdakilerden birini yapın:
 
-* Internet Explorer veya Microsoft ClickOnce uyumlu bir web tarayıcısı kullanın.
+* Internet Explorer veya Microsoft ClickOnce uyumlu bir Web tarayıcısı kullanın.
 
     Chrome kullanıyorsanız, [Chrome web mağazasına](https://chrome.google.com/webstore/) gidin, “ClickOnce” araması yapın, ClickOnce uzantılarından birini seçin ve yükleyin.
 
-    Firefox için de aynısını yapın (eklentiyi yükleyin). Araç çubuğundaki Menüyü Aç düğmesine tıklayın (sağ üst köşede yer alan üç yatay çizgi), Eklentiler’e tıklayın, “ClickOnce” araması yapın, ClickOnce uzantılarından birini seçin ve yükleyin.
-* Portaldaki aynı bıçakta gösterilen **Manuel Kurulum** bağlantısını kullanın. Yükleme dosyasını karşıdan yüklemek ve el ile çalıştırmak için bu yaklaşımı kullanırsınız. Yükleme başarılı olduktan sonra, Veri Yönetimi Ağ Geçidi Yapılandırma iletişim kutusunu görürsünüz. Portal ekranındaki **anahtarı** kopyalayın ve ağ geçidini hizmete elle kaydetmek için yapılandırma yöneticisi içinde kullanın.  
+    Firefox için aynısını yapın (eklenti yüklemesi). Araç çubuğundaki Menüyü Aç düğmesine tıklayın (sağ üst köşede yer alan üç yatay çizgi), Eklentiler’e tıklayın, “ClickOnce” araması yapın, ClickOnce uzantılarından birini seçin ve yükleyin.
+* Portalda aynı dikey pencerede gösterilen **El Ile kurulum** bağlantısını kullanın. Yükleme dosyasını indirmek ve el ile çalıştırmak için bu yaklaşımı kullanın. Yükleme başarılı olduktan sonra Veri Yönetimi ağ geçidi yapılandırması iletişim kutusunu görürsünüz. Portal ekranındaki **anahtarı** kopyalayın ve ağ geçidini hizmete elle kaydetmek için yapılandırma yöneticisi içinde kullanın.  
 
-### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Sorun: Şirket içi SQL Server'a bağlanamaması
-Ağ geçidi makinesinde **Veri Yönetimi Ağ Geçidi Configuration Manager'ı** başlatın ve ağ geçidi makinesinden SQL Server bağlantısını test etmek için Sorun **Giderme** sekmesini kullanın. Sorun giderme bağlantısı/ağ geçidi yle ilgili sorunlarla ilgili ipuçları için [sorun giderme ağ geçidi sorunlarına](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) bakın.   
+### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Sorun: şirket içi SQL Server bağlanılamadı
+Ağ Geçidi makinesinde **veri yönetimi ağ geçidi Configuration Manager** başlatın ve ağ geçidi makinesinden SQL Server bağlantısını test etmek Için **sorun giderme** sekmesini kullanın. Bağlantı/ağ geçidi ile ilgili sorunları gidermeye yönelik ipuçları için bkz. [ağ geçidi sorunlarını giderme](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .   
 
-### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Sorun: Giriş dilimleri sonsuza kadar bekleme durumunda
-Dilimler çeşitli nedenlerden dolayı **Bekleme** durumunda olabilir. Ortak nedenlerden biri, **dış** özelliğin **doğru**olarak ayarlanmamasıdır. Azure Veri Fabrikası kapsamı dışında üretilen tüm veri kümeleri **dış** özellik ile işaretlenmiş olmalıdır. Bu özellik, verilerin dışsal olduğunu ve veri fabrikası içindeki herhangi bir ardışık işlem tarafından yedeklenmediğini gösterir. İlgili depoda veriler kullanılabilir duruma geldiğinde veri dilimleri **Hazır** olarak işaretlenir.
+### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Sorun: giriş dilimleri her zaman bekleme durumunda
+Dilimler çeşitli nedenlerden dolayı **bekleme** durumunda olabilir. Yaygın nedenlerinden biri, **External** özelliğinin **true**olarak ayarlanmamalıdır. Azure Data Factory kapsamı dışında üretilen tüm veri kümeleri **External** özelliği ile işaretlenmelidir. Bu özellik, verilerin dış olduğunu ve Veri Fabrikası içindeki herhangi bir işlem hattı tarafından yedeklenmedi olduğunu gösterir. İlgili depoda veriler kullanılabilir duruma geldiğinde veri dilimleri **Hazır** olarak işaretlenir.
 
-**External** özelliğinin kullanımı ile ilgili olarak aşağıdaki örneğe bakın. Harici **verileri*** doğru olarak harici olarak ayarladığınızda isteğe bağlı olarak belirtebilirsiniz.
+**External** özelliğinin kullanımı ile ilgili olarak aşağıdaki örneğe bakın. External ' i true olarak belirlediğinizde, isteğe bağlı olarak **Externaldata*** belirtebilirsiniz.
 
 Bu özellikle ilgili daha ayrıntılı bilgiler için [Veri kümeleri](data-factory-create-datasets.md) makalesine bakın.
 
@@ -99,33 +99,33 @@ Bu özellikle ilgili daha ayrıntılı bilgiler için [Veri kümeleri](data-fact
 
 Hatayı gidermek için girdi tablosunun JSON tanımına **external** özelliğini ve isteğe bağlı **externalData** bölümünü ekleyin ve tabloyu yeniden oluşturun.
 
-### <a name="problem-hybrid-copy-operation-fails"></a>Sorun: Karma kopyalama işlemi başarısız oldu
-Veri Yönetimi Ağ Geçidi'ni kullanarak şirket içi veri deposuna kopyalama/kullanma yla ilgili sorunları gidermek için sorunlara yönelik sorunlar için Sorun Giderme ağ [geçidi sorunlarına](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) bakın.
+### <a name="problem-hybrid-copy-operation-fails"></a>Sorun: karma kopyalama işlemi başarısız oluyor
+Veri Yönetimi ağ geçidini kullanarak şirket içi veri deposuna/üzerinden kopyalama ile ilgili sorunları gidermeye yönelik adımlar için bkz. [ağ geçidi sorunlarını giderme](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) adımları.
 
-### <a name="problem-on-demand-hdinsight-provisioning-fails"></a>Sorun: İsteğe bağlı HDInsight sağlama başarısız olur
+### <a name="problem-on-demand-hdinsight-provisioning-fails"></a>Sorun: isteğe bağlı HDInsight sağlama başarısız oluyor
 HDInsightOnDemand türünde bağlantılı bir hizmet kullanırken bir Azure Blob Depolama’ya işaret eden linkedServiceName belirlemeniz gerekir. Data Factory hizmeti isteğe bağlı HDInsight kümeniz için günlükleri ve destekleyici dosyaları depolamak için bu depoyu kullanır.  Bazen aşağıdaki hatayla isteğe bağlı bir HDInsight kümesinin sağlanması başarısız olur:
 
 ```
 Failed to create cluster. Exception: Unable to complete the cluster create operation. Operation failed with code '400'. Cluster left behind state: 'Error'. Message: 'StorageAccountNotColocated'.
 ```
 
-Bu hata genellikle linkedServiceName içinde belirtilen depolama hesabı konumunun HDInsight sağlama işleminin gerçekleştiği veri merkezi konumu ile aynı olmadığını gösterir. Örnek: Veri fabrikanız Batı ABD'deyse ve Azure depolama alanı Doğu ABD'deyse, isteğe bağlı sağlama Batı ABD'de başarısız olur.
+Bu hata genellikle linkedServiceName içinde belirtilen depolama hesabı konumunun HDInsight sağlama işleminin gerçekleştiği veri merkezi konumu ile aynı olmadığını gösterir. Örnek: veri fabrikanızın Batı ABD ve Azure depolama Doğu ABD ise, isteğe bağlı sağlama Batı ABD başarısız olur.
 
-Buna ek olarak, isteğe bağlı HDInsight içinde ek depolama hesaplarının belirlenebileceği ikinci bir JSON özelliği (additionalLinkedServiceNames) bulunmaktadır. Bu ek bağlantılı depolama hesapları HDInsight kümesiyle aynı konumda olmalıdır veya aynı hatayla başarısız olur.
+Buna ek olarak, isteğe bağlı HDInsight içinde ek depolama hesaplarının belirlenebileceği ikinci bir JSON özelliği (additionalLinkedServiceNames) bulunmaktadır. Bu ek bağlı depolama hesapları, HDInsight kümesiyle aynı konumda olmalıdır veya aynı hata ile başarısız olur.
 
-### <a name="problem-custom-net-activity-fails"></a>Sorun: Özel .NET etkinliği başarısız olur
-Bkz. Ayrıntılı adımlar için [özel etkinlik içeren bir ardışık sözcük](data-factory-use-custom-activities.md#troubleshoot-failures) hata ayıklama.
+### <a name="problem-custom-net-activity-fails"></a>Sorun: özel .NET etkinliği başarısız oluyor
+Ayrıntılı adımlar için bkz. [özel etkinlikle bir işlem hattının hatalarını ayıklama](data-factory-use-custom-activities.md#troubleshoot-failures) .
 
-## <a name="use-azure-portal-to-troubleshoot"></a>Sorun giderme için Azure portalını kullanma
-### <a name="using-portal-blades"></a>Portal bıçakları kullanma
-Adımlar için [Monitör ardışık hattına](data-factory-monitor-manage-pipelines.md) bakın.
+## <a name="use-azure-portal-to-troubleshoot"></a>Sorun gidermek için Azure portal kullanın
+### <a name="using-portal-blades"></a>Portal Blade kullanma
+Adımlar için bkz. [izleme işlem hattı](data-factory-monitor-manage-pipelines.md) .
 
 ### <a name="using-monitor-and-manage-app"></a>İzleme ve Yönetme Uygulamasını kullanma
-Ayrıntılar [için Monitor ve Manage App'i kullanarak veri fabrikası boru hatlarını izleyin ve yönetin.](data-factory-monitor-manage-app.md)
+Ayrıntılar için bkz. [izleme ve yönetme uygulamasını kullanarak Data Factory işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-app.md) .
 
-## <a name="use-azure-powershell-to-troubleshoot"></a>Sorun giderme için Azure PowerShell'i kullanın
-### <a name="use-azure-powershell-to-troubleshoot-an-error"></a>Bir hatayı gidermek için Azure PowerShell'i kullanma
-Ayrıntılar için [Azure PowerShell'i kullanarak Veri Fabrikası'nı İzle](data-factory-monitor-manage-pipelines.md) neşrlerine bakın.
+## <a name="use-azure-powershell-to-troubleshoot"></a>Sorun gidermek için Azure PowerShell kullanın
+### <a name="use-azure-powershell-to-troubleshoot-an-error"></a>Hata gidermek için Azure PowerShell kullanma
+Ayrıntılar için [Azure PowerShell kullanarak izleme Data Factory işlem hatlarını](data-factory-monitor-manage-pipelines.md) inceleyin.
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md

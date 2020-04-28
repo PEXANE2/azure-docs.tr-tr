@@ -1,7 +1,7 @@
 ---
-title: Örnek API yönetim ilkesi - JWT taleplerine göre erişimi yetkilendirme
+title: Örnek API yönetimi ilkesi-JWT taleplerine göre erişimi yetkilendir
 titleSuffix: Azure API Management
-description: Azure API yönetim ilkesi örneği - JWT taleplerine dayalı bir API'de belirli HTTP yöntemlerine erişimin nasıl yetkiveriz olduğunu gösterir.
+description: Azure API Management ilkesi örneği-JWT taleplerini temel alan bir API 'de belirli HTTP yöntemlerine erişim yetkisi verme işlemlerini gösterir.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 1b84854688fbdcc017b16698dfebfe54a7210110
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75422174"
 ---
 # <a name="authorize-access-based-on-jwt-claims"></a>JWT talepleri temelinde erişim yetkisi verme
 
-Bu makalede, JWT iddialarına dayalı bir API'de belirli HTTP yöntemlerine erişimin nasıl yetki verilebildiğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. İlke kodunu ayarlamak veya ayarlamak için, Ayarla'da açıklanan adımları izleyin [veya bir ilkeyi ayarlayın.](../set-edit-policies.md) Diğer örnekleri görmek için [ilke örneklerine](../policy-samples.md)bakın.
+Bu makalede, JWT taleplerini temel alan bir API üzerinde belirli HTTP yöntemlerine erişimin nasıl yetkilendirdiğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
 
 ## <a name="policy"></a>İlke
 
-Kodu **gelen** bloğa yapıştır.
+Kodu **gelen** bloğa yapıştırın.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Pre-authorize requests based on HTTP method with validate-jwt.policy.xml)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-APIM politikaları hakkında daha fazla bilgi edinin:
+APıM ilkeleri hakkında daha fazla bilgi edinin:
 
 + [Dönüştürme ilkeleri](../api-management-transformation-policies.md)
 + [İlke örnekleri](../policy-samples.md)

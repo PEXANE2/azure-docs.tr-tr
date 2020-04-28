@@ -1,51 +1,51 @@
 ---
-title: Azure İşlevlerinde desteklenen diller
-description: Hangi dillerin desteklenilen (GA) ve hangilerinin deneysel veya önizleme de olduğunu öğrenin.
+title: Azure Işlevlerinde desteklenen diller
+description: Hangi dillerin desteklendiğini (GA) ve hangilerinin önizlemede olduğunu öğrenin.
 ms.topic: conceptual
 ms.date: 11/27/2019
 ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74942265"
 ---
-# <a name="supported-languages-in-azure-functions"></a>Azure İşlevlerinde desteklenen diller
+# <a name="supported-languages-in-azure-functions"></a>Azure Işlevlerinde desteklenen diller
 
-Bu makalede, Azure İşlevler ile kullanabileceğiniz diller için sunulan destek düzeyleri açıklanmaktadır.
+Bu makalede, Azure Işlevleri ile kullanabileceğiniz diller için sunulan destek düzeyleri açıklanmaktadır.
 
 ## <a name="levels-of-support"></a>Destek düzeyleri
 
 Üç destek düzeyi vardır:
 
-* **Genel olarak kullanılabilir (GA)** - Tam olarak desteklenen ve üretim kullanımı için onaylanmıştır.
-* **Önizleme** - Henüz desteklenmedi ancak gelecekte GA durumuna ulaşması bekleniyor.
-* **Deneysel** - Desteklenmeyen ve gelecekte terk edilebilir; nihai önizleme veya GA durumunun garantisi yoktur.
+* **Genel olarak kullanılabilir (GA)** -üretim kullanımı için tam olarak desteklenir ve onaylanır.
+* **Önizleme** -henüz desteklenmiyor, ancak gelecekte GA durumuna ulaşması bekleniyor.
+* **Deneysel** -desteklenmez ve gelecekte bırakılmış olabilir; Son önizleme veya GA durumu garantisi yoktur.
 
 ## <a name="languages-by-runtime-version"></a>Çalışma zamanı sürümüne göre diller 
 
-[Azure İşlevler çalışma zamanının üç sürümü](functions-versions.md) kullanılabilir. Aşağıdaki tablo, her çalışma zamanı sürümünde hangi dillerin destekleniyi gösterir.
+[Azure işlevleri çalışma zamanının üç sürümü](functions-versions.md) kullanılabilir. Aşağıdaki tabloda, her çalışma zamanı sürümünde hangi dillerin desteklendiği gösterilmektedir.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
 ### <a name="experimental-languages"></a>Deneysel diller
 
-Sürüm 1.x'teki deneysel diller iyi ölçeklenmez ve tüm bağlamaları desteklemez.
+1. x sürümündeki deneysel diller iyi ölçeklendirmez ve tüm bağlamaları desteklemez.
 
-Onlar için resmi bir destek olmadığı için, güvendiğiniz hiçbir şey için deneysel özellikler kullanmayın. Destek durumları deneysel dillerle ilgili sorunlar için açılmamalıdır. 
+Sizin için herhangi bir resmi destek bulunmadığından, sizin kullandığınız her şey için deneysel özellikleri kullanmayın. Deneysel dillerle ilgili sorunlar için destek durumları açılmamalıdır. 
 
-Daha sonraki çalışma zamanı sürümleri deneysel dilleri desteklemez. Yeni diller için destek, yalnızca dil üretimde desteklenebilirse eklenir. 
+Sonraki çalışma zamanı sürümleri deneysel dilleri desteklemez. Yeni diller için destek yalnızca dilin üretimde desteklenme sırasında eklenir. 
 
 ### <a name="language-extensibility"></a>Dil genişletilebilirliği
 
-Sürüm 2.x ile başlayarak, çalışma süresi [dil genişletilebilirlik](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)sunmak için tasarlanmıştır. 2.x çalışma zamanındaki JavaScript ve Java dilleri bu genişletilebilirlikle oluşturulmuştur.
+Sürüm 2. x ile başlayarak, çalışma zamanı [dil genişletilebilirliği](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)sunacak şekilde tasarlanmıştır. 2. x çalışma zamanının JavaScript ve Java dilleri, bu genişletilebilirlik ile oluşturulmuştur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Desteklenen dillerde işlevlerin nasıl geliştirileceği hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
+Desteklenen dillerde işlevleri geliştirme hakkında daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
-+ [C# sınıfı kitaplık geliştirici başvurusu](functions-dotnet-class-library.md)
-+ [C# komut dosyası geliştirici stoyonu](functions-reference-csharp.md)
++ [C# sınıf kitaplığı Geliştirici Başvurusu](functions-dotnet-class-library.md)
++ [C# betik geliştirici başvurusu](functions-reference-csharp.md)
 + [Java geliştirici başvurusu](functions-reference-java.md)
 + [JavaScript geliştirici başvurusu](functions-reference-node.md)
 + [PowerShell geliştirici başvurusu](functions-reference-powershell.md)

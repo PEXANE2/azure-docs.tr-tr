@@ -1,6 +1,6 @@
 ---
-title: Create an Azure Private Endpoint using Azure PowerShell| Microsoft Dokümanlar
-description: Azure Özel Bağlantısı hakkında bilgi edinin
+title: Azure PowerShell kullanarak bir Azure özel uç noktası oluşturma | Microsoft Docs
+description: Azure özel bağlantısı hakkında bilgi edinin
 services: private-link
 author: malopMSFT
 ms.service: private-link
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75430334"
 ---
-# <a name="create-a-private-endpoint-using-azure-powershell"></a>Azure PowerShell'i kullanarak özel bir bitiş noktası oluşturma
-Özel Bitiş Noktası, Azure'daki özel bağlantının temel yapı taşıdır. Sanal Makineler (VM' ler) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasını sağlar. 
+# <a name="create-a-private-endpoint-using-azure-powershell"></a>Azure PowerShell kullanarak özel uç nokta oluşturma
+Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. 
 
-Bu Quickstart'ta, Azure PowerShell'i kullanarak Azure özel bitiş noktasına sahip bir SQL Veritabanı Sunucusu olan Azure Sanal Ağı'nda VM nasıl oluşturulacağı öğrenilir. Ardından, VM'den SQL Database Server'a güvenli bir şekilde erişebilirsiniz.
+Bu hızlı başlangıçta, Azure PowerShell kullanarak Azure özel uç noktası olan bir SQL veritabanı sunucusu olan bir Azure sanal ağında bir VM oluşturmayı öğreneceksiniz. Ardından, VM 'den SQL veritabanı sunucusuna güvenle erişebilirsiniz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Kaynaklarınızı oluşturmadan önce, Sanal Ağı ve Özel bitiş noktasını [Yeni-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile barındıran bir kaynak grubu oluşturmanız gerekir. Aşağıdaki örnek, *WestUS* konumunda *myResourceGroup* adında bir kaynak grubu oluşturur:
+Kaynaklarınızı oluşturabilmeniz için önce, [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)Ile sanal ağı ve özel uç noktayı barındıran bir kaynak grubu oluşturmanız gerekir. Aşağıdaki örnek *WestUS* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurepowershell
 
@@ -33,11 +33,11 @@ New-AzResourceGroup `
 ```
 
 ## <a name="create-a-virtual-network"></a>Sanal Ağ Oluşturma
-Bu bölümde, bir sanal ağ ve bir alt ağ oluşturursunuz. Ardından, alt ağı Sanal Ağınızla ilişkilendirin.
+Bu bölümde, bir sanal ağ ve bir alt ağ oluşturacaksınız. Sonra, alt ağı sanal ağınızla ilişkilendirirsiniz.
 
 ### <a name="create-a-virtual-network"></a>Sanal Ağ Oluşturma
 
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile özel bitiş noktanız için sanal ağ oluşturun. Aşağıdaki örnek *MyVirtualNetwork*adlı bir Sanal Ağ oluşturur:
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile özel uç noktanız Için bir sanal ağ oluşturun. Aşağıdaki örnek, *MyVirtualNetwork*adlı bir sanal ağ oluşturur:
  
 ```azurepowershell
 
@@ -50,7 +50,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>Alt ağ ekleme
 
-Azure kaynakları Sanal Ağ içindeki bir alt ağa dağıtır, bu nedenle bir alt ağ oluşturmanız gerekir. [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)ile *mySubnet* adlı bir alt net yapılandırması oluşturun. Aşağıdaki örnek, **devre dışı bırakılmış**özel uç nokta ağ ilkesi bayrağı ayarlanmış *mySubnet* adlı bir alt ağ oluşturur.
+Azure, kaynakları bir sanal ağ içindeki bir alt ağa dağıtır, bu nedenle bir alt ağ oluşturmanız gerekir. [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)Ile *mysubnet* adlı bir alt ağ yapılandırması oluşturun. Aşağıdaki örnek, Özel uç nokta ağ ilkesi bayrağı **devre dışı**olarak ayarlanan *mysubnet* adlı bir alt ağ oluşturur.
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -61,19 +61,19 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 ```
 
 > [!CAUTION]
-> Parametreyi `PrivateEndpointNetworkPoliciesFlag` kullanılabilir başka bir bayrakla karıştırmak kolaydır, `PrivateLinkServiceNetworkPoliciesFlag`çünkü her ikisi de uzun sözcüklerdir ve benzer görünüme sahiptirler.  Doğru olanı kullandığınızdan emin `PrivateEndpointNetworkPoliciesFlag`olun.
+> `PrivateEndpointNetworkPoliciesFlag` Parametreyi hem uzun hem de benzer görünüşler oldukları için, başka `PrivateLinkServiceNetworkPoliciesFlag`bir kullanılabilir bayrağıyla karıştırmayı kolay hale gelir.  Doğru olanı kullandığınızdan emin olun `PrivateEndpointNetworkPoliciesFlag`.
 
-### <a name="associate-the-subnet-to-the-virtual-network"></a>Subnet'i Sanal Ağla Ilişkilendir
+### <a name="associate-the-subnet-to-the-virtual-network"></a>Alt ağı sanal ağla ilişkilendir
 
-[Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork)ile Sanal Ağa alt ağ yapılandırması yazabilirsiniz. Bu komut alt ağı oluşturur:
+Alt ağ yapılandırmasını [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork)Ile sanal ağa yazabilirsiniz. Bu komut alt ağ oluşturur:
 
 ```azurepowershell
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="create-a-virtual-machine"></a>Sanal Makine Oluşturma
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-[New-AzVM](/powershell/module/az.compute/new-azvm)ile Sanal Ağ'da VM oluşturun. Bir sonraki komutu çalıştırdığınızda, kimlik bilgileri için istenirsiniz. VM için bir kullanıcı adı ve parola girin:
+[New-azvm](/powershell/module/az.compute/new-azvm)Ile sanal ağda bir VM oluşturun. Sonraki komutu çalıştırdığınızda kimlik bilgileri istenir. VM için bir Kullanıcı adı ve parola girin:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -88,9 +88,9 @@ New-AzVm `
     -AsJob  
 ```
 
-Seçenek `-AsJob` arka planda VM oluşturur. Bir sonraki adıma devam edebilirsiniz.
+`-AsJob` Seçeneği, sanal makineyi arka planda oluşturur. Sonraki adıma devam edebilirsiniz.
 
-Azure arka planda VM oluşturmaya başladığında, böyle bir şeyi geri alırsınız:
+Azure, arka planda VM oluşturmaya başladığında, bu geri doğru bir şey alacaksınız:
 
 ```powershell
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
@@ -98,9 +98,9 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
 ```
 
-## <a name="create-a-sql-database-server"></a>SQL Veritabanı Sunucusu Oluşturma 
+## <a name="create-a-sql-database-server"></a>SQL veritabanı sunucusu oluşturma 
 
-New-AzSqlServer komutunu kullanarak bir SQL Veritabanı Sunucusu oluşturun. SQL Veritabanı sunucunuzun adının Azure'da benzersiz olması gerektiğini unutmayın, bu nedenle parantez içinde yer tutucu değerini kendi benzersiz değerinizle değiştirin:
+New-AzSqlServer komutunu kullanarak bir SQL veritabanı sunucusu oluşturun. SQL veritabanı sunucunuzun adının Azure genelinde benzersiz olması gerektiğini unutmayın. bu nedenle, yer tutucu değerini köşeli ayraç içinde kendi benzersiz bir değer ile değiştirin:
 
 ```azurepowershell-interactive
 $adminSqlLogin = "SqlAdmin"
@@ -120,7 +120,7 @@ New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
 
 ## <a name="create-a-private-endpoint"></a>Özel Uç Nokta oluşturma
 
-[Yeni-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)ile Sanal Ağınızda SQL Veritabanı Sunucusu için Özel Bitiş Noktası: 
+[New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)Ile sanal ağınızdaki SQL veritabanı sunucusu Için özel uç nokta: 
 
 ```azurepowershell
 
@@ -141,8 +141,8 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
   -PrivateLinkServiceConnection $privateEndpointConnection
 ``` 
 
-## <a name="configure-the-private-dns-zone"></a>Özel DNS Bölgesini Yapılandırma 
-SQL Database Server etki alanı için özel bir DNS bölgesi oluşturun ve sanal ağla bir ilişkilendirme bağlantısı oluşturun: 
+## <a name="configure-the-private-dns-zone"></a>Özel DNS bölgesini yapılandırma 
+SQL veritabanı sunucusu etki alanı için özel bir DNS bölgesi oluşturun ve sanal ağla bir ilişki bağlantısı oluşturun: 
 
 ```azurepowershell
 
@@ -170,7 +170,7 @@ New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>İnternet'ten bir sanal makineye bağlanma
 
-Bir VM'nin genel IP adresini döndürmek için [Get-AzPublicIpAddress'i](/powershell/module/az.network/Get-AzPublicIpAddress) kullanın. Bu *örnek, myVM VM'nin* genel IP adresini döndürür:
+Bir sanal makinenin genel IP adresini döndürmek için [Get-Azpublicıpaddress](/powershell/module/az.network/Get-AzPublicIpAddress) komutunu kullanın. Bu örnek, *Myvm* VM 'nın genel IP adresini döndürür:
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -178,11 +178,11 @@ Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress 
 ```  
-Yerel bilgisayarınızda bir komut istemi açın. MSTSC komutunu çalıştırın. Son <publicIpAddress> adımdan döndürülen genel IP adresiyle değiştirin: 
+Yerel bilgisayarınızda bir komut istemi açın. Mstsc komutunu çalıştırın. Son <publicIpAddress> adımdan döndürülen genel IP adresiyle değiştirin: 
 
 
 > [!NOTE]
-> Bu komutları yerel bilgisayarınızdaki bir PowerShell komut isteminden çalıştırıyorsanız ve Az PowerShell modül sürüm 1.0 veya daha sonrakullanıyorsanız, bu arabirimde devam edebilirsiniz.
+> Bu komutları yerel bilgisayarınızdaki bir PowerShell isteminden çalıştırıyorsanız ve az PowerShell modülü 1,0 veya sonraki bir sürümü kullanıyorsanız, bu arabirime devam edebilirsiniz.
 ```
 mstsc /v:<publicIpAddress>
 ```
@@ -190,17 +190,17 @@ mstsc /v:<publicIpAddress>
 1. İstendiğinde **Bağlan**’ı seçin. 
 2. Sanal makine oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
   > [!NOTE]
-  > VM'yi oluşturduğunuzda girdiğiniz kimlik bilgilerini belirtmek için farklı bir hesap > daha fazla seçenek seçmeniz gerekebilir. 
+  > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için farklı bir hesap kullanmak > daha fazla seçenek belirlemeniz gerekebilir. 
   
-3. **Tamam'ı**seçin. 
-4. Bir sertifika uyarısı alabilirsiniz. Bunu **yaparsanız, Evet** veya **Devam'ı**seçin. 
+3. **Tamam**’ı seçin. 
+4. Bir sertifika uyarısı alabilirsiniz. Bunu yaparsanız **Evet** ' i veya **devam et**' i seçin. 
 
-## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL Database Server'a VM'den özel olarak erişin
+## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL veritabanı sunucusuna VM 'den özel olarak erişme
 
-1. myVM'in Uzak Masaüstü'nde PowerShell'i açın.
+1. MyVM uzak masaüstünde PowerShell ' i açın.
 2. `nslookup myserver.database.windows.net` yazın. 
 
-    Buna benzer bir ileti alırsınız:
+    Şuna benzer bir ileti alacaksınız:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -209,22 +209,22 @@ mstsc /v:<publicIpAddress>
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
     ```
-3. SQL Server Management Studio'yı yükleyin
-4. Sunucuya Bağlan'da şu bilgileri girin veya seçin: Değer Sunucusu türünü Ayarla Veritabanı Altyapısını Seçin.
-      Sunucu adı Select myserver.database.windows.net Kullanıcı Adı Oluşturma sırasında sağlanan bir kullanıcı adı girin.
-      Parola Oluşturma sırasında sağlanan bir parola girin.
-      Parolayı hatırla Evet Seç.
+3. SQL Server Management Studio yüklensin
+4. Sunucuya Bağlan ' da bu bilgileri girin veya seçin: ayar değeri sunucu türü veritabanı altyapısı seçin.
+      Sunucu adı myserver.database.windows.net Kullanıcı adı Seç oluşturma sırasında sağlanmış bir Kullanıcı adı girin.
+      Parola oluşturma sırasında sağlanmış bir parola girin.
+      Parolayı anımsa Evet ' i seçin.
 5. Bağlan’ı seçin.
-6. Sol menüden Veritabanlarına göz atın. 
-7. (İsteğe bağlı olarak) Veritabanımdan bilgi oluşturma veya sorgulama
-8. Uzak masaüstü bağlantısını *myVM'e*kapatın. 
+6. Sol menüden veritabanlarına gözatamazsınız. 
+7. I MyDatabase 'teki bilgileri oluşturma veya sorgulama
+8. *Myvm*ile uzak masaüstü bağlantısını kapatın. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
-Özel bitiş noktası, SQL Veritabanı sunucusu ve VM'yi kullandığınızda, kaynak grubunu ve sahip olduğu tüm kaynakları kaldırmak için [Kaldır-AzResourceGroup'u](/powershell/module/az.resources/remove-azresourcegroup) kullanın:
+Özel uç nokta, SQL veritabanı sunucusu ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanın:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure Özel Bağlantı](private-link-overview.md) hakkında daha fazla bilgi edinin
+- [Azure özel bağlantısı](private-link-overview.md) hakkında daha fazla bilgi edinin

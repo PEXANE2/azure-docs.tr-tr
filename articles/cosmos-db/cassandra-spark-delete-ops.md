@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Cassandra API'deki işlemleri Spark'tan silme
-description: Bu makalede, Azure Cosmos DB Cassandra API'deki tablolardaki verilerin Spark'tan nasıl silinir
+title: Spark 'dan Azure Cosmos DB Cassandra API silme işlemleri
+description: Bu makalede Spark 'tan Azure Cosmos DB Cassandra API tablolardaki verileri silme ayrıntıları anlatılmaktadır
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,15 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 0317fab158b2ea73b365bedc272721816da22c4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75442082"
 ---
-# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Azure Cosmos DB Cassandra API tablolarında bulunan verileri Spark'tan silme
+# <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Spark 'tan Azure Cosmos DB Cassandra API tablolarındaki verileri silme
 
-Bu makalede, Azure Cosmos DB Cassandra API tablolarında Spark'tan verilerin nasıl silinir.
+Bu makalede Spark 'tan Azure Cosmos DB Cassandra API tablolarında verilerin nasıl silineceği açıklanır.
 
 ## <a name="cassandra-api-configuration"></a>Cassandra API yapılandırması
 
@@ -46,7 +46,7 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="sample-data-generator"></a>Örnek veri üreteci
+## <a name="sample-data-generator"></a>Örnek veri Oluşturucu
 Örnek veri oluşturmak için bu kod parçasını kullanacağız:
 
 ```scala
@@ -67,7 +67,7 @@ booksDF.write
   .save()
 ```
 
-## <a name="dataframe-api"></a>Veri çerçevesi API'si
+## <a name="dataframe-api"></a>Dataframe API 'SI
 
 ### <a name="delete-rows-that-match-a-condition"></a>Bir koşulla eşleşen satırları silme
 
@@ -116,7 +116,7 @@ spark
   .show
 ```
 
-**Çıkış:**
+**Çıktıların**
 
 ```
 == Physical Plan ==
@@ -153,7 +153,7 @@ deleteBooksDF: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] = [book_id
 cdbConnector: com.datastax.spark.connector.cql.CassandraConnector = com.datastax.spark.connector.cql.CassandraConnector@187deb43
 ```
 
-### <a name="delete-all-the-rows-in-the-table"></a>Tablodaki tüm satırları silme
+### <a name="delete-all-the-rows-in-the-table"></a>Tablodaki tüm satırları sil
 
 ```scala
 //1) Create dataframe
@@ -199,7 +199,7 @@ spark
   .show
 ```
 
-**Çıkış:**
+**Çıktıların**
 
 ```
 == Physical Plan ==
@@ -231,9 +231,9 @@ ReadSchema: struct<book_id:string,book_author:string,book_name:string,book_price
 +-------+-----------+---------+----------+-------------+
 ```
 
-## <a name="rdd-api"></a>RDD API
+## <a name="rdd-api"></a>RDD APı 'SI
 
-### <a name="delete-all-the-rows-in-the-table"></a>Tablodaki tüm satırları silme
+### <a name="delete-all-the-rows-in-the-table"></a>Tablodaki tüm satırları sil
 ```scala
 //1) Create RDD with all rows
 val deleteBooksRDD = 
@@ -278,7 +278,7 @@ println("==================")
 println("3) After")
 sc.cassandraTable("books_ks", "books").collect.foreach(println)
 ```
-**Çıkış:**
+**Çıktıların**
 
 ```
 ==================
@@ -300,7 +300,7 @@ deleteBooksRDD: com.datastax.spark.connector.rdd.CassandraTableScanRDD[com.datas
 cdbConnector: com.datastax.spark.connector.cql.CassandraConnector = com.datastax.spark.connector.cql.CassandraConnector@317927
 ```
 
-### <a name="delete-specific-columns"></a>Belirli sütunları silme
+### <a name="delete-specific-columns"></a>Belirli sütunları Sil
 
 ```scala
 //1) Create RDD 
@@ -331,7 +331,7 @@ println("3) After")
 sc.cassandraTable("books_ks", "books").take(4).foreach(println)
 ```
 
-**Çıkış:**
+**Çıktıların**
 
 ```
 ==================

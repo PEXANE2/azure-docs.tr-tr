@@ -1,6 +1,6 @@
 ---
-title: Verileri şirket içi HDFS'den taşıma
-description: Azure Veri Fabrikası'nı kullanarak şirket içi HDFS'den verileri nasıl taşıyabildiğini öğrenin.
+title: Şirket içinden veri taşıma
+description: Azure Data Factory kullanarak verileri Şirket içinden nasıl taşıyacağınız hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,68 +13,68 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 7652ab72fb972230d98913c2d7e2601737982532
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74924341"
 ---
-# <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri şirket içi HDFS'den taşıma
-> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
+# <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Şirket içinden taşıma
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](data-factory-hdfs-connector.md)
 > * [Sürüm 2 (geçerli sürüm)](../connector-hdfs.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [V2'deki HDFS konektörüne](../connector-hdfs.md)bakın.
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, [v2 'de](../connector-hdfs.md), bkz..
 
-Bu makalede, verileri şirket içi bir HDFS'den taşımak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopya etkinliğiyle birlikte veri hareketine genel bir genel bakış sunan [Veri Hareketi Etkinlikleri](data-factory-data-movement-activities.md) makalesine dayanmaktadır.
+Bu makalede, verileri Şirket içinden bir sunucudan taşımak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğiyle veri hareketine genel bir bakış sunan [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde oluşturulur.
 
-HDFS'deki verileri desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Veri fabrikası şu anda yalnızca şirket içi HDFS'den diğer veri depolarına veri taşımayı destekler, ancak verileri diğer veri depolarından şirket içi HDFS'ye taşımak için değildir.
+Her türlü desteklenen havuz veri deposuna verileri bir sunucudan kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Data Factory Şu anda yalnızca şirket içi bir sunucudan diğer veri depolarına veri taşımayı destekler, ancak verileri diğer veri depolarından şirket içi bir e-posta ile taşımak için kullanmaz.
 
 > [!NOTE]
-> Copy Activity, hedefe başarıyla kopyalandıktan sonra kaynak dosyayı silmez. Başarılı bir kopyadan sonra kaynak dosyayı silmeniz gerekiyorsa, dosyayı silmek ve ardışık düzendeki etkinliği kullanmak için özel bir etkinlik oluşturun. 
+> Kopyalama etkinliği, kaynak dosyayı başarıyla hedefe kopyalandıktan sonra silmez. Başarılı bir kopyadan sonra kaynak dosyayı silmeniz gerekiyorsa, dosyayı silmek ve işlem hattındaki etkinliği kullanmak için özel bir etkinlik oluşturun. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="enabling-connectivity"></a>Bağlantı sağlama
-Veri Fabrikası hizmeti, Veri Yönetimi Ağ Geçidi'ni kullanarak şirket içi HDFS'ye bağlanmayı destekler. Veri Yönetimi Ağ Geçidi ve ağ geçidini ayarlama yla ilgili adım adım talimatlar hakkında bilgi edinmek için [şirket içi konumlar ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasında taşınan verileri görün. Bir Azure IaaS VM'de barındırılan olsa bile HDFS'ye bağlanmak için ağ geçidini kullanın.
+## <a name="enabling-connectivity"></a>Bağlantı etkinleştiriliyor
+Data Factory hizmeti, Veri Yönetimi ağ geçidini kullanarak şirket içi bir sunucuya bağlanmayı destekler. Veri Yönetimi ağ geçidini ayarlama hakkında bilgi edinmek ve ağ geçidini ayarlamaya yönelik adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut makaleleri arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) . Azure IaaS VM 'de barındırıldığında, bu ağ geçidini kullanarak bağlantı kurmak için ağ geçidini kullanın.
 
 > [!NOTE]
-> Veri Yönetimi Ağ Geçidi'nin Hadoop kümesinin **ALL** [ad düğümü sunucusu]:[ad düğümü bağlantı noktası] ve [veri düğümü sunucuları]:[veri düğümü bağlantı noktası]'na erişebileceğinden emin olun. Varsayılan [ad düğümü bağlantı noktası] 50070 ve varsayılan [veri düğümü bağlantı noktası] 50075'tir.
+> Veri Yönetimi ağ geçidinin **Tüm** [name node Server]: [ad node port] ve [veri düğüm sunucuları]: [veri düğümü bağlantı noktası] için Hadoop kümesinin tamamına erişebildiğinizden emin olun. Varsayılan [ad düğümü bağlantı noktası] 50070, varsayılan [veri düğümü bağlantı noktası] 50075 ' dir.
 
-Ağ geçidini şirket içi makineye veya Azure VM'ye HDFS olarak yükleyebilirsiniz, ancak ağ geçidini ayrı bir makineye/Azure IaaS VM'ye yüklemenizi öneririz. Ayrı bir makinede ağ geçidi olması kaynak çekişmelerini azaltır ve performansı artırır. Ağ geçidini ayrı bir makineye yüklediğinizde, makine nin MAKINEye HDFS ile erişebilmesi gerekir.
+Ağ geçidini, aynı şirket içi makineye veya Azure VM 'ye bir bilgisayar adına yükleyebilir, ağ geçidini ayrı bir makineye/Azure IaaS VM 'sine yüklemenizi öneririz. Ağ geçidinin ayrı bir makinede bulunması, kaynak çekişmesini azaltır ve performansı geliştirir. Ağ geçidini ayrı bir makineye yüklediğinizde, makinenin makineye bilgisayar adına erişebilmesi gerekir.
 
 ## <a name="getting-started"></a>Başlarken
-Farklı araçlar/API'ler kullanarak verileri bir HDFS kaynağından hareket ettiren bir kopyalama etkinliği içeren bir ardışık hatlar oluşturabilirsiniz.
+Farklı araçları/API 'Leri kullanarak bir, bir, bir
 
-Bir ardışık yol oluşturmanın en kolay yolu **Kopyalama Sihirbazı'nı**kullanmaktır. Bkz. Öğretici: Veri kopyala sihirbazını kullanarak bir ardışık yol oluşturma konusunda hızlı bir geçiş için Kopya Sihirbazı kullanarak bir [ardışık kaynak oluşturun.](data-factory-copy-data-wizard-tutorial.md)
+İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-Bir ardışık kaynak oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Azure portalı,** **Visual Studio,** **Azure PowerShell,** **Azure Kaynak Yöneticisi şablonu**, **.NET API**ve **REST API.** Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeleri için [etkinlik öğreticisini](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyala'ya bakın.
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Azure Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
-Araçları veya API'leri kullanın, verileri kaynak veri deposundan bir lavabo veri deposuna aktaran bir ardışık işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
+Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Giriş ve çıktı veri depolarını veri fabrikanıza bağlamak için **bağlantılı hizmetler** oluşturun.
-2. Kopyalama işlemi için giriş ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun.
-3. Giriş olarak veri kümesi ve çıktı olarak veri kümesi alan bir kopyalama etkinliği içeren bir **ardışık işlem oluşturma.**
+1. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun.
+2. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun.
+3. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun.
 
-Sihirbazı kullandığınızda, bu Veri Fabrikası varlıkları (bağlantılı hizmetler, veri kümeleri ve ardışık kuruluş) için JSON tanımları sizin için otomatik olarak oluşturulur. Araçları/API'leri (.NET API hariç) kullandığınızda, Bu Veri Fabrikası varlıklarını JSON biçimini kullanarak tanımlarsınız.  BIR HDFS veri deposundan veri kopyalamak için kullanılan Veri Fabrikası varlıkları için JSON tanımlı bir örnek [için Bkz. JSON örneği: Verileri şirket içi HDFS'den Azure Blob bölümüne kopyalayın.](#json-example-copy-data-from-on-premises-hdfs-to-azure-blob)
+Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçlar/API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız.  Bir bir bir bir bir, bir bir bir bir bir. veri deposundan veri kopyalamak için kullanılan Data Factory varlıkları için JSON tanımlarına sahip bir örnek için, bkz. [JSON örneği: Bu makaledeki verileri şirket Içinden Azure Blob 'A kopyalama](#json-example-copy-data-from-on-premises-hdfs-to-azure-blob) .
 
-Aşağıdaki bölümler, HDFS'ye özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
+Aşağıdaki bölümlerde, Data Factory 'e özgü varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılar sağlanmaktadır:
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
-Bağlantılı bir hizmet, bir veri deposuna veri fabrikasına bağlanır. Şirket içi bir HDFS'yi veri fabrikanıza bağlamak için **Hdfs** türünden bağlantılı bir hizmet oluşturursunuz. Aşağıdaki tablo, HDFS bağlantılı hizmete özgü JSON öğeleri için açıklama sağlar.
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
+Bağlı hizmet bir veri deposunu veri fabrikasına bağlar. Bir şirket içi bir e-posta **ile veri** fabrikanıza bağlamak için, bir bağlantı türü olarak bir bağlı hizmet oluşturursunuz. Aşağıdaki tabloda,,,,
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Tür özelliği ayarlanmalıdır: **Hdfs** |Evet |
-| url |HDFS'nin URL'si |Evet |
-| authenticationType |Anonim veya Windows. <br><br> HDFS bağlayıcısı için **Kerberos kimlik doğrulamasını** kullanmak için, şirket içi ortamınızı buna göre ayarlamak için [bu bölüme](#use-kerberos-authentication-for-hdfs-connector) bakın. |Evet |
-| userName |Windows kimlik doğrulaması için kullanıcı adı. Kerberos kimlik doğrulaması `<username>@<domain>.com`için . |Evet (Windows Kimlik Doğrulama için) |
-| password |Windows kimlik doğrulama için parola. |Evet (Windows Kimlik Doğrulama için) |
-| ağ geçidiAdı |Veri Fabrikası hizmetinin HDFS'ye bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
-| şifreli Credential |[Yeni-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) erişim kimlik bilgisi çıktısı. |Hayır |
+| type |Type **özelliği:,** olarak ayarlanmalıdır |Yes |
+| url |Bu URL 'nin URL 'si |Yes |
+| authenticationType |Anonim veya Windows. <br><br> Bir bağlantı **kimliği Için Kerberos kimlik doğrulaması** kullanmak üzere, şirket içi ortamınızı uygun şekilde ayarlamak için [Bu bölüme](#use-kerberos-authentication-for-hdfs-connector) bakın. |Yes |
+| userName |Windows kimlik doğrulaması için Kullanıcı adı. Kerberos kimlik doğrulaması için, `<username>@<domain>.com`belirtin. |Evet (Windows kimlik doğrulaması için) |
+| password |Windows kimlik doğrulaması için parola. |Evet (Windows kimlik doğrulaması için) |
+| gatewayName |Data Factory hizmetinin, bir hizmetin bir bağlantı kurmak için kullanması gereken ağ geçidinin adı. |Yes |
+| encryptedCredential |Erişim kimlik bilgisinin [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) çıkışı. |Hayır |
 
-### <a name="using-anonymous-authentication"></a>Anonim kimlik doğrulamasını kullanma
+### <a name="using-anonymous-authentication"></a>Anonim kimlik doğrulaması kullanma
 
 ```JSON
 {
@@ -93,7 +93,7 @@ Bağlantılı bir hizmet, bir veri deposuna veri fabrikasına bağlanır. Şirke
 }
 ```
 
-### <a name="using-windows-authentication"></a>Windows kimlik doğrulamayı kullanma
+### <a name="using-windows-authentication"></a>Windows kimlik doğrulamasını kullanma
 
 ```JSON
 {
@@ -113,25 +113,25 @@ Bağlantılı bir hizmet, bir veri deposuna veri fabrikasına bağlanır. Şirke
 }
 ```
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin & özelliklerin tam listesi için [veri kümelerini oluşturma](data-factory-create-datasets.md) makalesine bakın. Bir veri kümesi JSON'un yapısı, kullanılabilirliği ve ilkesi gibi bölümler tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu, vb.) için benzerdir.
+Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
 
-**typeProperties** bölümü her veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **FileShare** türü veri kümesi için typeProperties bölümü (HDFS veri kümesi ni içerir) aşağıdaki özelliklere sahiptir
+**Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. Dosya kümesinin dosya kümesi için typeProperties bölümü **(** IBir IBU veri kümesi de içerir) aşağıdaki özelliklere sahiptir
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| folderPath |Klasöre giden yol. Örnek: `myfolder`<br/><br/>Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örneğin: folder\subfolder için klasör\\\\alt klasörünü belirtin ve d:\samplefolder için d:\\\\samplefolder belirtin.<br/><br/>Bu özelliği **partitionBy** ile birleştirerek dilim başlangıç/bitiş tarih saatlerine göre klasör yollarına sahip olabilirsiniz. |Evet |
-| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız **klasörDeki Dosyanın** adını belirtinPath. Bu özellik için herhangi bir değer belirtmezseniz, tablo klasördeki tüm dosyaları işaret edir.<br/><br/>Bir çıktı veri kümesi için dosya Adı belirtilmediğinde, oluşturulan dosyanın adı aşağıdaki biçimde olacaktır: <br/><br/>`Data.<Guid>.txt`(örneğin: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Hayır |
-| bölümlemeBy |partitionedBy dinamik bir folderPath, zaman serisi verileri için dosya adı belirtmek için kullanılabilir. Örnek: klasörHer saat veri için parametreli yol. |Hayır |
-| biçim | Aşağıdaki biçim türleri desteklenir: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParkeFormat**. Biçim altındaki **tür** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için [Metin Biçimi,](data-factory-supported-file-and-compression-formats.md#text-format) [Json Formatı,](data-factory-supported-file-and-compression-formats.md#json-format) [Avro Biçimi,](data-factory-supported-file-and-compression-formats.md#avro-format) [Ork Biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parke Biçimi](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümlerine bakın. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıktı veri kümesi tanımlarında biçim bölümünü atlayın. |Hayır |
-| sıkıştırma | Verilerin sıkıştırma türünü ve düzeyini belirtin. Desteklenen türleri şunlardır: **GZip**, **Deflate**, **BZip2**, ve **ZipDeflate**. Desteklenen seviyeler şunlardır: **Optimal** ve **En Hızlı.** Daha fazla bilgi için [Azure Veri Fabrikası'ndaki Dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md#compression-support)bakın. |Hayır |
+| folderPath |Klasörün yolu. Örnek: `myfolder`<br/><br/>Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örneğin: folder\alt klasörü\\\\için klasör alt klasörü ve d:\samplefolder için d:\\\\samplefolder belirtin.<br/><br/>Bu özelliği, dilim başlangıç/bitiş tarihi-saati temelinde klasör yolları sağlamak için **Partitionby** ile birleştirebilirsiniz. |Yes |
+| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için dosya adı belirtilmediğinde, oluşturulan dosyanın adı şu biçimde olacaktır: <br/><br/>`Data.<Guid>.txt`(örneğin:: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt |Hayır |
+| partitionedBy |partitionedBy, zaman serisi verilerine yönelik bir dinamik folderPath, filename belirtmek için kullanılabilir. Örnek: her saat veri için folderPath parametreli parametrelenir. |Hayır |
+| biçim | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |Hayır |
+| sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler şunlardır: **gzip**, **söndür**, **bzip2**ve **zipsöndür**. Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı**. Daha fazla bilgi için bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |Hayır |
 
 > [!NOTE]
-> dosya adı ve fileFilter aynı anda kullanılamaz.
+> filename ve fileFilter aynı anda kullanılamaz.
 
-### <a name="using-partionedby-property"></a>PartionedBy özelliğini kullanma
-Önceki bölümde belirtildiği gibi, **bölümlenmişBy** özelliği, [Veri Fabrikası işlevleri ve sistem değişkenleri](data-factory-functions-variables.md)ile zaman serisi verileri için dinamik bir klasörPath ve dosya adı belirtebilirsiniz.
+### <a name="using-partionedby-property"></a>PartionedBy özelliği kullanma
+Önceki bölümde belirtildiği gibi, **Partitionedby** özelliği, [Data Factory işlevleri ve sistem değişkenleri](data-factory-functions-variables.md)ile zaman serisi verileri için dinamik bir FolderPath ve filename belirtebilirsiniz.
 
-Zaman serisi veri kümeleri, zamanlama ve dilimler hakkında daha fazla bilgi edinmek [Creating Pipelines](data-factory-create-pipelines.md) için [&](data-factory-scheduling-and-execution.md) [bkz.](data-factory-create-datasets.md)
+Zaman serisi veri kümeleri, zamanlama ve dilimler hakkında daha fazla bilgi edinmek için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md), [& yürütmeyi zamanlama](data-factory-scheduling-and-execution.md)ve işlem [hattı makaleleri oluşturma](data-factory-create-pipelines.md) .
 
 #### <a name="sample-1"></a>Örnek 1:
 
@@ -142,7 +142,7 @@ Zaman serisi veri kümeleri, zamanlama ve dilimler hakkında daha fazla bilgi ed
     { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
 ],
 ```
-Bu örnekte {Slice} veri fabrikası sistem değişkeni SliceStart değeri ile değiştirilir formatta (YYYYMMDDHH) belirtilir. SliceStart, dilimin başlangıç saatini ifade eder. FolderPath her dilim için farklıdır. Örneğin: wikidatagateway/wikisampledataout/2014100103 veya wikidatagateway/wikisampledataout/2014100104.
+Bu örnekte, {Slice}, belirtilen biçimde (YYYYMMDDHH) Data Factory sistem değişkeni değeri ile değiştirilmiştir. Dilimcstart, dilimin başlangıç zamanına başvurur. FolderPath her bir dilim için farklıdır. Örneğin: wikidatagateway/wisvahili amptadataout/2014100103 veya wikidatagateway/wisvahili amptadataout/2014100104.
 
 #### <a name="sample-2"></a>Örnek 2:
 
@@ -157,40 +157,40 @@ Bu örnekte {Slice} veri fabrikası sistem değişkeni SliceStart değeri ile de
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-Bu örnekte, SliceStart'ın yılı, ayı, günü ve saati folderPath ve fileName özellikleri tarafından kullanılan ayrı değişkenlere ayıklanır.
+Bu örnekte, monthestart 'ın Year, month, Day ve Time, folderPath ve fileName özellikleri tarafından kullanılan ayrı değişkenlere ayıklanır.
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin & özelliklerinin tam listesi [için, Kaynak Hatları Oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıktı tabloları ve ilkeler gibi özellikler tüm etkinlik türleri için kullanılabilir.
+Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları ve ilkeler gibi özellikler, tüm etkinlik türleri için kullanılabilir.
 
-Oysa, etkinliğin typeProperties bölümünde bulunan özellikler her etkinlik türüne göre değişir. Kopyalama etkinliği için, kaynak ve lavabo türlerine bağlı olarak değişir.
+Ancak, etkinliğin typeProperties bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir.
 
-Copy Activity için, kaynak **FileSystemSource** türünde olduğunda typeProperties bölümünde aşağıdaki özellikler mevcuttur:
+Kopyalama etkinliği için kaynak **Filesystemsource** türünde olduğunda, typeproperties bölümünde aşağıdaki özellikler mevcuttur:
 
-**FileSystemSource** aşağıdaki özellikleri destekler:
+**Filesystemsource** aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| Özyinelemeli |Verilerin alt klasörlerden mi yoksa yalnızca belirtilen klasörden mi özyinelemeli olarak okunduğunu gösterir. |True, False (varsayılan) |Hayır |
+| öz |Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. |True, false (varsayılan) |Hayır |
 
 ## <a name="supported-file-and-compression-formats"></a>Desteklenen dosya ve sıkıştırma biçimleri
-Ayrıntılarla ilgili [Azure Veri Fabrikası makalesinde Dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md) bakın.
+Ayrıntılar hakkında [Azure Data Factory makalesinde dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md) bakın.
 
-## <a name="json-example-copy-data-from-on-premises-hdfs-to-azure-blob"></a>JSON örneği: Şirket içi HDFS'den Azure Blob'a veri kopyalama
-Bu örnek, şirket içi bir HDFS'den Azure Blob Depolama'ya verilerin nasıl kopyalanır olduğunu gösterir. Ancak veriler, Azure Veri Fabrikası'ndaki Kopyalama Etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen lavabolardan herhangi biri için **doğrudan** kopyalanabilir.  
+## <a name="json-example-copy-data-from-on-premises-hdfs-to-azure-blob"></a>JSON örneği: şirket içi sunucudan Azure Blob 'a veri kopyalama
+Bu örnek, şirket içi bir sunucudan Azure Blob depolama alanına nasıl veri kopyalanacağını gösterir. Ancak, veriler, burada belirtilen Azure Data Factory kopyalama etkinliği kullanılarak, [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen herhangi bir havuza **doğrudan** kopyalanabilir.  
 
-Örnek, aşağıdaki Veri Fabrikası varlıkları için JSON tanımları sağlar. [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell'i](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak HDFS'den Azure Blob Depolamasına kadar verileri kopyalamak için bir ardışık kaynak oluşturmak için bu tanımları kullanabilirsiniz.
+Örnek, aşağıdaki Data Factory varlıkları için JSON tanımları sağlar. Bu tanımları, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak Azure Blob depolama 'dan veri kopyalamak üzere bir işlem hattı oluşturmak için kullanabilirsiniz.
 
-1. [OnPremisesHdfs](#linked-service-properties)türü ne bağlı bir hizmet.
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)türüne bağlı bir hizmet.
-3. [FileShare](#dataset-properties)türünden bir giriş [veri kümesi.](data-factory-create-datasets.md)
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünden bir çıktı [veri kümesi.](data-factory-create-datasets.md)
-5. [FileSystemSource](#copy-activity-properties) ve [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan Copy Activity ile bir [ardışık düzen.](data-factory-create-pipelines.md)
+1. [OnPremisesHdfs](#linked-service-properties)türünde bağlı bir hizmet.
+2. [Azurestorage](data-factory-azure-blob-connector.md#linked-service-properties)türünde bağlı bir hizmet.
+3. [FileShare](#dataset-properties)türünde bir giriş [veri kümesi](data-factory-create-datasets.md) .
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünde bir çıkış [veri kümesi](data-factory-create-datasets.md) .
+5. [Filesystemsource](#copy-activity-properties) ve [Blobsink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md) .
 
-Örnek, şirket içi bir HDFS'den her saat başı bir Azure blob'una kadar verileri kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri izleyen bölümlerde açıklanmıştır.
+Örnek, verileri her saat için bir şirket içi bir Azure blobuna kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri takip eden bölümlerde açıklanmıştır.
 
-İlk adım olarak, veri yönetimi ağ geçidini ayarlayın. Şirket içi konumlar ve bulut makalesi [arasında taşınan verilerdeki](data-factory-move-data-between-onprem-and-cloud.md) yönergeler.
+İlk adım olarak, veri yönetimi ağ geçidini ayarlayın. Şirket [içi konumlar ve bulut makalesi arasında taşınan verilerdeki](data-factory-move-data-between-onprem-and-cloud.md) yönergeler.
 
-**HDFS bağlantılı hizmet:** Bu örnekte Windows kimlik doğrulaması kullanır. Kullanabileceğiniz farklı kimlik doğrulama türleri için [HDFS bağlantılı hizmet](#linked-service-properties) bölümüne bakın.
+Bu **bağlı hizmet:** Bu örnek, Windows kimlik doğrulamasını kullanır. Kullanabileceğiniz farklı kimlik doğrulama türleri [için bkz.](#linked-service-properties) .
 
 ```JSON
 {
@@ -210,7 +210,7 @@ Bu örnek, şirket içi bir HDFS'den Azure Blob Depolama'ya verilerin nasıl kop
 }
 ```
 
-**Azure Depolama bağlantılı hizmet:**
+**Azure depolama bağlı hizmeti:**
 
 ```JSON
 {
@@ -224,9 +224,9 @@ Bu örnek, şirket içi bir HDFS'den Azure Blob Depolama'ya verilerin nasıl kop
 }
 ```
 
-**HDFS giriş veri seti:** Bu veri kümesi, HDFS klasörü DataTransfer/UnitTest/ anlamına gelir. Ardışık işlem, bu klasördeki tüm dosyaları hedefe kopyalar.
+Bir **giriş veri kümesi:** Bu veri kümesi, Sımfolder DataTransfer/UnitTest/değerini ifade eder. İşlem hattı, bu klasördeki tüm dosyaları hedefe kopyalar.
 
-"Dış"ı ayarlamak: "true" veri kümesinin veri fabrikasının dışında olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini Veri Fabrikası hizmetine bildirir.
+"External": "true" ayarı, veri kümesinin veri fabrikasında dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini Data Factory hizmetine bildirir.
 
 ```JSON
 {
@@ -246,9 +246,9 @@ Bu örnek, şirket içi bir HDFS'den Azure Blob Depolama'ya verilerin nasıl kop
 }
 ```
 
-**Azure Blob çıktı veri seti:**
+**Azure Blob çıktı veri kümesi:**
 
-Veriler her saat yeni bir blob 'a yazılır (sıklık: saat, aralık: 1). Blob için klasör yolu, işlenen dilimin başlangıç saatine göre dinamik olarak değerlendirilir. Klasör yolu, başlangıç zamanının yıl, ay, gün ve saat bölümlerini kullanır.
+Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un klasör yolu, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay, gün ve saat kısımlarını kullanır.
 
 ```JSON
 {
@@ -306,9 +306,9 @@ Veriler her saat yeni bir blob 'a yazılır (sıklık: saat, aralık: 1). Blob i
 }
 ```
 
-**Dosya Sistemi kaynağı ve Blob lavabosu olan bir ardışık düzende kopyalama etkinliği:**
+**Dosya sistemi kaynağına ve BLOB havuzuna sahip bir işlem hattındaki kopyalama etkinliği:**
 
-Ardışık iş, bu giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan ve her saat çalışacak şekilde zamanlanan bir Kopyalama Etkinliği içerir. Boru hattı JSON tanımında, **kaynak** türü **FileSystemSource** olarak ayarlanır ve **lavabo** türü **BlobSink**olarak ayarlanır. **Sorgu** özelliği için belirtilen SQL sorgusu, kopyalanacak son saatteki verileri seçer.
+İşlem hattı, bu giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü, **filesystemsource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
 
 ```JSON
 {
@@ -348,55 +348,55 @@ Ardışık iş, bu giriş ve çıktı veri kümelerini kullanacak şekilde yapı
 }
 ```
 
-## <a name="use-kerberos-authentication-for-hdfs-connector"></a>HDFS konektörü için Kerberos kimlik doğrulamasını kullanma
-HDFS bağlayıcısında Kerberos Kimlik Doğrulaması'nı kullanmak için şirket içi ortamı ayarlamak için iki seçenek vardır. Durumunuza daha uygun olanı seçebilirsiniz.
-* Seçenek 1: [Kerberos diyarında ağ geçidi makinesine katılın](#kerberos-join-realm)
-* Seçenek 2: [Windows etki alanı ile Kerberos diyarı arasında karşılıklı güveni etkinleştirme](#kerberos-mutual-trust)
+## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Bağlantı kimliği için Kerberos kimlik doğrulaması kullan
+Bir şirket içi ortamı ayarlamak için, bu şekilde iki seçenek bulunur. Büyük/küçük harf durumuna göre daha iyi bir seçim yapabilirsiniz.
+* Seçenek 1: [ağ geçidi makinesini Kerberos bölgesi 'Nde birleştirin](#kerberos-join-realm)
+* 2. seçenek: [Windows etki alanı ve Kerberos bölgesi arasında karşılıklı güveni etkinleştirin](#kerberos-mutual-trust)
 
-### <a name="option-1-join-gateway-machine-in-kerberos-realm"></a><a name="kerberos-join-realm"></a>Seçenek 1: Kerberos diyarında ağ geçidi makinesine katılın
+### <a name="option-1-join-gateway-machine-in-kerberos-realm"></a><a name="kerberos-join-realm"></a>Seçenek 1: ağ geçidi makinesini Kerberos bölgesi 'nde birleştirin
 
-#### <a name="requirement"></a>Gereksinim:
+#### <a name="requirement"></a>Malzeme
 
-* Ağ geçidi makinesinin Kerberos diyarına katılması gerekir ve herhangi bir Windows etki alanına katılamaz.
+* Ağ Geçidi makinesinin Kerberos bölgesine katılması ve herhangi bir Windows etki alanına katılamıyor olması gerekir.
 
-#### <a name="how-to-configure"></a>Nasıl yapılandırın:
+#### <a name="how-to-configure"></a>Nasıl yapılandırılır:
 
-**Ağ geçidi makinesinde:**
+**Ağ Geçidi makinesinde:**
 
-1.  Kerberos KDC sunucu ve bölge yapılandırmak için **Ksetup** yardımcı programı çalıştırın.
+1.  Kerberos KDC sunucusunu ve bölgesini yapılandırmak için **Ksetup** yardımcı programını çalıştırın.
 
-    Kerberos alemi Windows etki alanından farklı olduğundan, makine bir çalışma grubunun üyesi olarak yapılandırılmalıdır. Bu, Kerberos aleminin ayarlanması ve aşağıdaki gibi bir KDC sunucusu eklenmesiyle elde edilebilir. *gerektiğinde kendi* bölgenizle REALM.COM değiştirin.
+    Kerberos bölgesi bir Windows etki alanından farklı olduğundan, makinenin bir çalışma grubunun üyesi olarak yapılandırılması gerekir. Bu, Kerberos bölgesi ayarlanarak ve bir KDC sunucusunu aşağıdaki gibi ekleyerek elde edilebilir. *Realm.com* değerini, gereken şekilde kendi ilgili bölge ile değiştirin.
 
             C:> Ksetup /setdomain REALM.COM
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
 
-    Bu 2 komutu çalıştırdıktan sonra makineyi **yeniden başlatın.**
+    Bu 2 komutu yürüttükten sonra makineyi **yeniden başlatın** .
 
-2.  Yapılandırmayı **Ksetup** komutuyla doğrulayın. Çıktı gibi olmalıdır:
+2.  **Ksetup** komutuyla yapılandırmayı doğrulayın. Çıktının şöyle olması gerekir:
 
             C:> Ksetup
             default realm = REALM.COM (external)
             REALM.com:
                 kdc = <your_kdc_server_address>
 
-**Azure Veri Fabrikası'nda:**
+**Azure Data Factory:**
 
-* HDFS veri kaynağına bağlanmak için **Windows kimlik doğrulamasını** kullanarak HDFS bağlayıcısını Kerberos ana adınız ve parolanızla birlikte yapılandırın. Yapılandırma ayrıntılarıyla ilgili [HDFS Bağlantılı Hizmet özellikleri](#linked-service-properties) bölümünü kontrol edin.
+* Bir **Windows kimlik doğrulamasını** kullanarak, bu TBU veri kaynağına bağlanmak Için, Kerberos asıl adınız ve parolanızla birlikte, Yapılandırma ayrıntıları sayfasında, bu [bağlantı hizmeti özellikleri](#linked-service-properties) bölümüne bakın.
 
-### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>Seçenek 2: Windows etki alanı ile Kerberos diyarı arasında karşılıklı güveni etkinleştirme
+### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>2. seçenek: Windows etki alanı ve Kerberos bölgesi arasında karşılıklı güveni etkinleştirin
 
-#### <a name="requirement"></a>Gereksinim:
-*   Ağ geçidi makinesinin bir Windows etki alanına katılması gerekir.
-*   Etki alanı denetleyicisinin ayarlarını güncelleştirmek için izne ihtiyacınız vardır.
+#### <a name="requirement"></a>Malzeme
+*   Ağ Geçidi makinesi bir Windows etki alanına katılması gerekir.
+*   Etki alanı denetleyicisinin ayarlarını güncelleştirmek için izninizin olması gerekir.
 
-#### <a name="how-to-configure"></a>Nasıl yapılandırın:
+#### <a name="how-to-configure"></a>Nasıl yapılandırılır:
 
 > [!NOTE]
-> Aşağıdaki öğreticide REALM.COM ve AD.COM gerektiğinde kendi bölgeniz ve etki alanı denetleyiciniz ile değiştirin.
+> Aşağıdaki öğreticide, REALM.COM ve AD.COM ' i kendi ilgili bölge ve etki alanı denetleyiciyle gerektiği şekilde değiştirin.
 
 **KDC sunucusunda:**
 
-1. KDC'nin aşağıdaki yapılandırma şablonuna atıfta bulunarak Windows Etki Alanı'na güveneizin vermek için **Krb5.conf** dosyasındaki KDC yapılandırmasını düzenleme. Varsayılan olarak, yapılandırma **/etc/krb5.conf**adresinde bulunur.
+1. KDC güveni Windows etki alanının aşağıdaki yapılandırma şablonuna başvurmasına izin vermek için **krb5. conf** dosyasındaki KDC yapılandırmasını düzenleyin. Varsayılan olarak, yapılandırma **/etc/kronb5,conf**konumunda bulunur.
 
            [logging]
             default = FILE:/var/log/krb5libs.log
@@ -432,65 +432,65 @@ HDFS bağlayıcısında Kerberos Kimlik Doğrulaması'nı kullanmak için şirke
              REALM.COM = .
             }
 
-   Yapılandırmadan sonra KDC hizmetini **yeniden başlatın.**
+   Yapılandırmadan sonra KDC hizmetini **yeniden başlatın** .
 
-2. KDC sunucusunda **krbtgt/REALM.COM\@** AD.COM adlı bir müdür hazırlayın:
+2. Aşağıdaki komutla, KDC sunucusunda **krbtgt/Realm.\@com ad.com** adlı bir sorumlu hazırlayın:
 
            Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3. **hadoop.security.auth_to_local** HDFS hizmet yapılandırma `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`dosyasında, ekleyin.
+3. **Hadoop. Security. auth_to_local** bir hizmet yapılandırma dosyasında, ekleyin `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`.
 
-**Etki alanı denetleyicisi:**
+**Etki alanı denetleyicisinde:**
 
 1.  Bir bölge girişi eklemek için aşağıdaki **Ksetup** komutlarını çalıştırın:
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Windows Etki Alanı'ndan Kerberos Diyarı'na güven kurun. [şifre] AD.COM ana **krbtgt/REALM.COM\@** için şifredir.
+2.  Windows etki alanından Kerberos bölgesine güven oluşturun. [password] sorumlu **krbtgt/Realm.\@com ad.com**için paroladır.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
-3.  Kerberos'ta kullanılan şifreleme algoritması'nı seçin.
+3.  Kerberos 'da kullanılan şifreleme algoritmasını seçin.
 
-    1. Varsayılan veya Etkin Etki Alanı İlkesi > Grup İlkesi Nesneleri > Etki Alanı > Grup İlkesi > Yönetimi'ne gidin ve Düzenleme.
+    1. Sunucu Yöneticisi > grup ilkesi yönetim > etki alanı > Grup İlkesi nesneleri > varsayılan veya etkin etki alanı Ilkesi ' ne gidin ve düzenleyin.
 
-    2. Grup **İlkesi Yönetimi Düzenleyicisi** açılır penceresinde, Windows Ayarları > Güvenlik Ayarları > Yerel İlkeler > Güvenlik Seçenekleri > Bilgisayar Yapılandırma > İlkeleri'ne gidin ve **Ağ güvenliğini yapılandırma: Kerberos için izin verilen Şifreleme türlerini yapılandırın.**
+    2. **Grup İlkesi Yönetimi Düzenleyicisi** açılır penceresinde, bilgisayar yapılandırması > Ilkeler > Windows ayarları > güvenlik ayarları > yerel Ilkeler > güvenlik seçenekleri ' ne gidin ve **ağ güvenliğini yapılandırın: Kerberos Için izin verilen şifreleme türlerini yapılandırın**.
 
-    3. KDC'ye bağlanırken kullanmak istediğiniz şifreleme algoritmasını seçin. Genellikle, sadece tüm seçenekleri seçebilirsiniz.
+    3. KDC 'ye bağlanırken kullanmak istediğiniz şifreleme algoritmasını seçin. Genellikle, tüm seçenekleri seçmeniz yeterlidir.
 
-        ![Kerberos için Config Şifreleme Türleri](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
+        ![Kerberos için yapılandırma şifreleme türleri](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
 
-    4. Belirli REALM'de kullanılacak şifreleme algoritmasını belirtmek için **Ksetup** komutunu kullanın.
+    4. Belirli bir bölgede kullanılacak şifreleme algoritmasını belirtmek için **Ksetup** komutunu kullanın.
 
                 C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
 
-4.  Windows Etki Alanı'nda Kerberos müdürünü kullanmak için etki alanı hesabı ile Kerberos müdürü arasındaki eşlemi oluşturun.
+4.  Windows etki alanında Kerberos sorumlusu kullanmak için etki alanı hesabı ve Kerberos sorumlusu arasındaki eşlemeyi oluşturun.
 
-    1. **Etkin Dizin Kullanıcıları ve Bilgisayarları**> Yönetim araçlarını başlatın.
+    1. **Kullanıcı ve bilgisayar Active Directory**yönetim araçlarını > başlatın.
 
-    2. **Gelişmiş Özellikleri** **Görüntüle'yi** > tıklatarak gelişmiş özellikleri yapılandırın.
+    2. Gelişmiş özellikleri **görüntüle** > **Gelişmiş**özellikleri ' ne tıklayarak yapılandırın.
 
-    3. Eşlemeler oluşturmak istediğiniz hesabı bulun ve **Ad Eşlemeleri'ni** görüntülemek için sağ tıklatın > **Kerberos Adları** sekmesini tıklatın.
+    3. Eşleme oluşturmak istediğiniz hesabı bulun ve **ad eşlemelerini** görüntülemek için sağ tıklayın > **Kerberos adları** sekmesi ' ne tıklayın.
 
-    4. Diyardan bir müdür ekle.
+    4. Realm 'tan bir sorumlu ekleyin.
 
-        ![Harita Güvenlik Kimliği](media/data-factory-hdfs-connector/map-security-identity.png)
+        ![Eşleme güvenlik kimliği](media/data-factory-hdfs-connector/map-security-identity.png)
 
-**Ağ geçidi makinesinde:**
+**Ağ Geçidi makinesinde:**
 
 * Bir bölge girişi eklemek için aşağıdaki **Ksetup** komutlarını çalıştırın.
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-**Azure Veri Fabrikası'nda:**
+**Azure Data Factory:**
 
-* HDFS veri kaynağına bağlanmak için **Windows kimlik doğrulamasını** kullanarak HDFS bağlayıcısını Etki Alanı Hesabınız veya Kerberos Sorumlusuile birlikte yapılandırın. Yapılandırma ayrıntılarıyla ilgili [HDFS Bağlantılı Hizmet özellikleri](#linked-service-properties) bölümünü kontrol edin.
+* **Windows kimlik doğrulamasını** kullanarak, TBU veri kaynağına bağlanmak Için etki alanı hesabınızla veya Kerberos sorumlusuyla birlikte,, Yapılandırma ayrıntıları sayfasında, bu [bağlantı hizmeti özellikleri](#linked-service-properties) bölümüne bakın.
 
 > [!NOTE]
-> Kaynak veri kümesinden sütunlara kadar sütunları haritalamak için Azure [Veri Fabrikası'nda veri kümesi sütunlarını eşleme](data-factory-map-columns.md)konusuna bakın.
+> Kaynak veri kümesindeki sütunları havuz veri kümesinden sütunlara eşlemek için, bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
 
 
-## <a name="performance-and-tuning"></a>Performans ve Tuning
-Azure Veri Fabrikası'ndaki veri hareketinin performansını etkileyen önemli faktörler (Kopyalama Etkinliği) ve bunu optimize etmenin çeşitli yolları hakkında bilgi edinmek için [Etkinlik performansını & Tuning Kılavuzu'na](data-factory-copy-activity-performance.md) bakın.
+## <a name="performance-and-tuning"></a>Performans ve ayarlama
+Veri taşıma (kopyalama etkinliği) performansını Azure Data Factory ve en iyileştirmek için çeşitli yollarla etkileyen temel faktörlerle ilgili bilgi edinmek için bkz. [etkinlik performansını kopyalama & ayarlama Kılavuzu](data-factory-copy-activity-performance.md) .

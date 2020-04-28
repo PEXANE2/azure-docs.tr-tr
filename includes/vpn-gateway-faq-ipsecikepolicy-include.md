@@ -9,14 +9,14 @@ ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 80c961c1aa4da199fa87b97bc8e0a37e60c2235f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74903105"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Özel IPsec/IKE ilkesi tüm Azure VPN Gateway SKU’larında desteklenir mi?
-Özel IPsec/IKE ilkesi, Temel SKU dışındaki tüm Azure SKU'larında desteklenir.
+Özel IPSec/ıKE ilkesi, temel SKU dışında tüm Azure SKU 'Larında desteklenir.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Bir bağlantıda kaç tane ilke belirtebilirim?
 Belirli bir bağlantı için yalnızca ***bir*** ilke birleşimi belirtebilirsiniz.
@@ -42,7 +42,7 @@ Aşağıdaki tabloda, müşteriler tarafından yapılandırılabilecek şifrelem
 > [!IMPORTANT]
 > 1. DHGroup2048 ve PFS2048, IKE ve IPsec PFS’de Diffie-Hellman Grubu **14** ile aynıdır. Eşlemelerin tamamı için [Diffie-Hellman Grupları](#DH) konusuna bakın.
 > 2. GCMAES algoritmalarında, hem IPsec Şifrelemesi hem de Bütünlüğü için aynı GCMAES algoritmasını belirtmelisiniz.
-> 3. IKEv2 Ana Mod SA ömrü Azure VPN ağ geçitlerinde 28.800 saniye olarak sabitlenir.
+> 3. Ikev2 ana mod SA yaşam süresi, Azure VPN ağ geçitlerinde 28.800 saniye içinde düzeltilir.
 > 4. QM SA Yaşam Süreleri isteğe bağlı parametrelerdir. Hiçbiri belirtilmemişse, varsayılan 27.000 saniye (7,5 saat) ve 102400000 kilobayt (102 GB) değerleri kullanılır.
 > 5. UsePolicyBasedTrafficSelector, bağlantıda bir seçenek parametresidir. "UsePolicyBasedTrafficSelectors" için bir sonraki SSS maddesine bakın.
 
@@ -103,17 +103,17 @@ Evet. VNet-VNet tüneli, her iki yön için birer tane olmak üzere Azure’daki
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Özel IPsec/IKE ilkesi ExpressRoute bağlantısında çalışır mı?
 Hayır. IPsec/IKE ilkesi yalnızca Azure VPN ağ geçitleri aracılığıyla kurulan S2S VPN ve VNet-VNet bağlantılarında çalışır.
 
-### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>IKEv1 veya IKEv2 protokol türüyle nasıl bağlantı kuracağım?
-IKEv1 bağlantıları Temel SKU hariç tüm RouteBased VPN türü SKU'larda oluşturulabilir. Bağlantı oluştururken IKEv1 veya IKEv2 bağlantı protokolü türünü belirtebilirsiniz. Bir bağlantı protokolü türü belirtmezseniz, IKEv2 uygun olduğunda varsayılan seçenek olarak kullanılır. Daha fazla bilgi için [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) belgelerine bakın. SKU türleri ve IKEv1/IKEv2 desteği için, [politika tabanlı VPN aygıtlarına bağlan ağ geçitlerine](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)bakın.
+### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Nasıl yaparım? IKEv1 veya Ikev2 protokol türüyle bağlantı oluşturulsun mu?
+IKEv1 bağlantısı, temel SKU dışında tüm RouteBased VPN türü SKU 'Larında oluşturulabilir. Bağlantılar oluştururken, IKEv1 veya Ikev2 bağlantı protokolü türünü belirtebilirsiniz. Bağlantı protokolü türü belirtmezseniz, Ikev2 varsayılan seçenek olarak kullanılır. Daha fazla bilgi için bkz. [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) belgeleri. SKU türleri ve IKEv1/Ikev2 desteği için bkz. [ağ geçitlerini ilke tabanlı VPN cihazlarına bağlama](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
-### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>İkEv1 ve IkEv2 bağlantıları arasında geçiş enebedilir mi?
-Evet. IKEv1 ve IKEv2 bağlantıları arasındaki geçiş desteklenir.
+### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>IKEv1 ve IKEv2 bağlantıları arasında aktarım yapılmasına izin veriliyor mu?
+Evet. IKEv1 ve IKEv2 bağlantıları arasındaki aktarım desteklenir.
 
-### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>RouteBased VPN tipinin Temel SK'leri üzerinde IKEv1 siteden siteye bağlantılara sahip olabilir miyim?
-Hayır. Temel SKU bunu desteklemiyor.
+### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>RouteBased VPN türünün temel SKU 'Larında siteden siteye bağlantıları IKEv1 olabilir mi?
+Hayır. Temel SKU bunu desteklemez.
 
-### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Bağlantı oluşturulduktan sonra bağlantı protokolü türünü değiştirebilir miyim (IKEv1'den IKEv2'ye veya tam tersi)?
-Hayır. Bağlantı oluşturulduktan sonra IKEv1/IKEv2 protokolleri değiştirilemez. İstenilen protokol türüyle yeni bir bağlantıyı silmeniz ve yeniden oluşturmanız gerekir.
+### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Bağlantı oluşturulduktan sonra bağlantı protokolü türünü değiştirebilir miyim (Ikev2 'e IKEv1 ve tam tersi)?
+Hayır. Bağlantı oluşturulduktan sonra, IKEv1/Ikev2 protokolleri değiştirilemez. İstenen protokol türüyle yeni bir bağlantı silip yeniden oluşturmanız gerekir.
 
-### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>IPsec için daha fazla yapılandırma bilginini nerede bulabilirim?
-[Bkz. S2S veya VNet-to-VNet bağlantıları için IPsec/IKE ilkesini yapılandırın](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)
+### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>IPSec için daha fazla yapılandırma bilgilerini nerede bulabilirim?
+Bkz. [S2S veya VNET-VNET bağlantıları Için IPSec/IKE Ilkesini yapılandırma](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)

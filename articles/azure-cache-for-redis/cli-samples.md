@@ -1,6 +1,6 @@
 ---
-title: Redis örnekleri için Azure CLI Azure Önbelleği
-description: 'Redis için Azure Önbelleği için Azure CLI örnekleri: Önbellek oluşturun, önbellek silen, önbellek ayrıntılarını, ana bilgisayar adını, bağlantı noktalarını ve anahtarlarını alın, bir web uygulamasını bağlayın.'
+title: Redsıs örnekleri için Azure CLı Azure önbelleği
+description: 'Redsıs için Azure önbelleği için Azure CLı örnekleri: önbellek oluşturma, önbelleği silme, önbellek ayrıntılarını alma, ana bilgisayar, bağlantı noktaları ve anahtarlar, bir Web uygulamasını bağlama.'
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
@@ -8,27 +8,27 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/14/2017
 ms.openlocfilehash: c43e23b4bf46258cc91b06a0912d03e85a5c7a14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75411351"
 ---
-# <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Redis için Azure Önbelleği için Azure CLI Örnekleri
+# <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Redin için Azure önbelleği için Azure CLı örnekleri
 
 Aşağıdaki tablo, Azure CLI’si kullanılarak oluşturulan bash komut dosyalarına yönelik bağlantılar içerir.
 
 | | |
 |---|---|
 |**Önbellek oluşturma**||
-| [Bir önbellek oluşturma](./scripts/create-cache.md) | Redis için bir kaynak grubu ve temel bir Katman Azure Önbelleği oluşturur. |
-| [Kümeleme ile premium önbellek oluşturma](./scripts/create-premium-cache-cluster.md) | Kümeleme etkin bir kaynak grubu ve bir premium katman önbelleği oluşturur.|
-| [Önbellek ayrıntılarını alın](./scripts/show-cache.md) | Redis için bir Azure Önbelleği'nin ayrıntılarını, sağlama durumu da dahil olmak üzere alır. |
-| [Ana bilgisayar adını, bağlantı noktalarını ve anahtarları alın](./scripts/cache-keys-ports.md) | Redis örneği için bir Azure Önbelleği için ana bilgisayar adını, bağlantı noktalarını ve anahtarlarını alır. |
-|**Web uygulaması artı önbellek**||
-| [Redis için bir Web uygulamasını Azure Önbelleğine bağlama](./../app-service/scripts/cli-connect-to-redis.md) | Bir Azure web uygulaması ve Redis için bir Azure Önbelleği oluşturur, ardından uygulama ayarlarına redis bağlantı ayrıntılarını ekler. |
-|**Önbelleği silme**||
-| [Önbelleği silme](./scripts/delete-cache.md) | Redis örneği için bir Azure Önbelleği siler  |
+| [Bir önbellek oluşturma](./scripts/create-cache.md) | Redsıs için bir kaynak grubu ve temel katman Azure önbelleği oluşturur. |
+| [Kümeleme ile Premium önbellek oluşturma](./scripts/create-premium-cache-cluster.md) | Kümelendirmeyi etkin bir kaynak grubu ve Premium katman önbelleği oluşturur.|
+| [Önbellek ayrıntılarını al](./scripts/show-cache.md) | Sağlama durumu da dahil olmak üzere Redsıs örneği için Azure önbelleğinin ayrıntılarını alır. |
+| [Ana bilgisayar adı, bağlantı noktaları ve anahtarlar alın](./scripts/cache-keys-ports.md) | Redsıs örneği için bir Azure önbelleği için ana bilgisayar adı, bağlantı noktaları ve anahtarlar alır. |
+|**Web uygulaması artı önbelleği**||
+| [Redsıs için bir Web uygulamasını Azure önbelleğine bağlama](./../app-service/scripts/cli-connect-to-redis.md) | Redsıs için bir Azure Web uygulaması ve Azure önbelleği oluşturur, ardından uygulama ayarlarına redsıs bağlantı ayrıntılarını ekler. |
+|**Önbelleği sil**||
+| [Önbellek silme](./scripts/delete-cache.md) | Redsıs örneği için bir Azure önbelleğini siler  |
 | | |
 
-Azure CLI hakkında daha fazla bilgi için Azure [CLI'yi yükleyin](https://docs.microsoft.com/cli/azure/install-azure-cli) ve [Azure CLI ile başlayın'a](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)bakın.
+Azure CLı hakkında daha fazla bilgi için bkz. [Azure CLI 'Yı yükleyip](https://docs.microsoft.com/cli/azure/install-azure-cli) [Azure CLI kullanmaya başlama](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).

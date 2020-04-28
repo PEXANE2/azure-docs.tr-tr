@@ -1,6 +1,6 @@
 ---
-title: "Azure ExpressRoute: S2S VPN'i Microsoft'un bakışlarına göre yapılandırın"
-description: Siteden siteye VPN ağ geçidi kullanarak ExpressRoute Microsoft eşleme devresi üzerinden Azure'a IPsec/IKE bağlantısını yapılandırın.
+title: "Azure ExpressRoute: Microsoft eşlemesi üzerinden S2S VPN 'i yapılandırma"
+description: Siteden siteye VPN ağ geçidi kullanarak bir ExpressRoute Microsoft eşlemesi devresi üzerinden Azure 'a IPSec/ıKE bağlantısı yapılandırın.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -9,18 +9,18 @@ ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75436805"
 ---
-# <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>ExpressRoute Microsoft eşleme üzerinde siteden siteye VPN yapılandırma
+# <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>ExpressRoute Microsoft eşlemesi üzerinden siteden siteye VPN yapılandırma
 
-Bu makale, bir ExpressRoute özel bağlantısı üzerinden şirket içi ağınızla Azure sanal ağlarınız (VNet) arasında güvenli şifreli bağlantı yapılandırmanıza yardımcı olur. Seçtiğiniz şirket içi ağlar la Azure VNet'leri arasında siteden siteye IPsec/IKE VPN tüneli oluşturmak için Microsoft eşlemasını kullanabilirsiniz. ExpressRoute üzerinde güvenli bir tünel yapılandırma gizlilik, anti-tekrar, özgünlük ve bütünlük ile veri alışverişi için izin verir.
+Bu makale, bir ExpressRoute özel bağlantısı üzerinden şirket içi ağınız ile Azure sanal ağlarınız (sanal ağlar) arasında güvenli şifreli bağlantı yapılandırmanıza yardımcı olur. Seçtiğiniz şirket içi ağlar ve Azure sanal ağları arasında siteden siteye IPSec/ıKE VPN tüneli oluşturmak için Microsoft eşlemesini kullanabilirsiniz. ExpressRoute üzerinden güvenli bir tünel yapılandırmak, gizlilik, yeniden yürütme, özgünlük ve bütünlük ile veri değişimine izin verir.
 
 >[!NOTE]
->Microsoft'un bakışları üzerinden siteden siteye VPN ayarladığınızda, VPN ağ geçidi ve VPN çıkış için ücretlendirilirsiniz. Daha fazla bilgi için [VPN Ağ Geçidi fiyatlandırması](https://azure.microsoft.com/pricing/details/vpn-gateway)için bkz.
+>Microsoft eşlemesi üzerinden siteden siteye VPN 'yi ayarlarken VPN ağ geçidi ve VPN çıkışı için ücretlendirilirsiniz. Daha fazla bilgi için bkz. [VPN Gateway fiyatlandırması](https://azure.microsoft.com/pricing/details/vpn-gateway).
 >
 >
 
@@ -32,66 +32,66 @@ Bu makale, bir ExpressRoute özel bağlantısı üzerinden şirket içi ağını
   ![bağlantıya genel bakış](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
 
 
-Yüksek kullanılabilirlik ve artıklık için, expressroute devresinin iki MSEE-PE çifti üzerinde birden çok tüneli yapılandırabilir ve tüneller arasında yük dengelemesini etkinleştirebilirsiniz.
+Yüksek kullanılabilirlik ve artıklık için, bir ExpressRoute bağlantı hattının iki MSEE-PE çifti üzerinde birden fazla tünel yapılandırabilir ve tüneller arasında yük dengelemeyi etkinleştirebilirsiniz.
 
   ![yüksek kullanılabilirlik seçenekleri](./media/site-to-site-vpn-over-microsoft-peering/HighAvailability.png)
 
-Microsoft'un eşleçliği üzerindeki VPN tünelleri, VPN ağ geçidi kullanılarak veya Azure Marketi üzerinden kullanılabilen uygun bir Ağ Sanal Cihazı (NVA) kullanılarak sonlandırılabilir. Rota değişimini temel Microsoft bakışlarına maruz bırakmadan, şifreli tüneller üzerinde statik veya dinamik olarak rota değiştirebilirsiniz. Bu makaledeki örneklerde, BGP (Microsoft eşlemi oluşturmak için kullanılan BGP oturumundan farklı) şifrelenmiş tüneller üzerinde önekleri dinamik olarak değiştirmek için kullanılır.
+Microsoft eşlemesi üzerinden VPN tünelleri, VPN Gateway ya da Azure Marketi aracılığıyla kullanılabilen uygun bir ağ sanal gereci (NVA) kullanılarak sonlandırılabilir. Route Exchange 'i temel alınan Microsoft eşlemesine yönlendirmeksizin, şifrelenmiş tünellere statik veya dinamik olarak yollar gönderebilirsiniz. Bu makaledeki örneklerde, BGP (Microsoft eşlemesi oluşturmak için kullanılan BGP oturumundan farklı), şifreli tüneller üzerinden dinamik olarak ön ekleri değiş tokuş etmek için kullanılır.
 
 >[!IMPORTANT]
->Şirket içi tarafta, genellikle Microsoft'un eşlemi DMZ'de sonlandırılır ve çekirdek ağ bölgesinde özel eşleme sonlandırılır. İki bölge güvenlik duvarları kullanılarak ayrı ştı. Yalnızca ExpressRoute üzerinden güvenli tünel leme sağlamak için Microsoft'a bakan ları yapılandırıyorsanız, yalnızca Microsoft'un bakışları aracılığıyla reklamı yapılan genel IP'lere filtre uygulama yapmayı unutmayın.
+>Şirket içi tarafında, genellikle Microsoft eşlemesi DMZ tarihinde sonlandırılır ve özel eşleme çekirdek ağ bölgesinde sonlandırılır. İki bölge güvenlik duvarları kullanılarak dilimlenebilir. ExpressRoute üzerinden güvenli tünel oluşturmayı etkinleştirmek için özel olarak Microsoft eşlemesini yapılandırıyorsanız, yalnızca Microsoft eşlemesi aracılığıyla tanıtılan genel IP 'Lerin yalnızca genel IP 'Leri ile filtreleneceğini unutmayın.
 >
 >
 
-## <a name="workflow"></a><a name="workflow"></a>Iş akışı
+## <a name="workflow"></a><a name="workflow"></a>Akışıyla
 
-1. ExpressRoute devreniz için Microsoft'u yeniden yapılandırma.
-2. Microsoft'un bakışları aracılığıyla şirket içi ağınıza seçili Azure bölgesel genel öneklerinin reklamını yapmak.
-3. VPN ağ geçidini yapılandırma ve IPsec tünelleri oluşturma
-4. Şirket içi VPN aygıtını yapılandırın.
-5. Siteden siteye IPsec/IKE bağlantısını oluşturun.
-6. (İsteğe bağlı) Şirket içi VPN aygıtında güvenlik duvarlarını/filtrelemeyi yapılandırın.
-7. ExpressRoute devresi üzerinden IPsec iletişimini test edin ve doğrulayın.
+1. ExpressRoute devreniz için Microsoft eşlemesini yapılandırın.
+2. Seçili Azure bölgesel ortak öneklerini, Microsoft eşlemesi aracılığıyla şirket içi ağınıza duyurur.
+3. VPN ağ geçidi yapılandırma ve IPSec tünelleri oluşturma
+4. Şirket içi VPN cihazını yapılandırın.
+5. Siteden siteye IPSec/ıKE bağlantısı oluşturun.
+6. Seçim Şirket içi VPN cihazında güvenlik duvarlarını/filtrelemeyi yapılandırın.
+7. ExpressRoute bağlantı hattı üzerinden IPSec iletişimini test edin ve doğrulayın.
 
-## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1. Microsoft'un eşleneme yapılandırma
+## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1. Microsoft eşlemesini yapılandırma
 
-ExpressRoute üzerinden siteden siteye VPN bağlantısını yapılandırmak için ExpressRoute Microsoft'un eşlemesi üzerinde yararlanmanız gerekir.
+ExpressRoute üzerinden siteden siteye VPN bağlantısı yapılandırmak için ExpressRoute Microsoft eşlemesi ' ne sahip olmanız gerekir.
 
-* Yeni bir ExpressRoute devresini yapılandırmak için [ExpressRoute önkoşul](expressroute-prerequisites.md) makalesiyle başlayın ve ardından [bir ExpressRoute devresi oluşturun ve değiştirin.](expressroute-howto-circuit-arm.md)
+* Yeni bir ExpressRoute devresini yapılandırmak için [ExpressRoute önkoşulları](expressroute-prerequisites.md) makalesiyle başlayın ve ardından [bir ExpressRoute bağlantı hattı oluşturup değiştirin](expressroute-howto-circuit-arm.md).
 
-* Zaten bir ExpressRoute devreniz varsa, ancak Microsoft'un eşlemesi yapılandırılmamışsa, Create'i kullanarak Microsoft'un eşlemesi yapılandırın ve ExpressRoute devresi makalesi [için eşlemi değiştirin.](expressroute-howto-routing-arm.md#msft)
+* Zaten bir ExpressRoute devreniz varsa, ancak Microsoft eşlemesi yapılandırılmadıysa, [bir ExpressRoute bağlantı hattı Için oluşturma ve değiştirme eşlemesini](expressroute-howto-routing-arm.md#msft) kullanarak Microsoft eşlemesini yapılandırın.
 
-Devrenizi ve Microsoft bakışınızı yapılandırdıktan sonra, Azure portalındaki **Genel Bakış** sayfasını kullanarak bu devreyi kolayca görüntüleyebilirsiniz.
+Devre ve Microsoft eşlemeyi yapılandırdıktan sonra, Azure portal **genel bakış** sayfasını kullanarak kolayca görüntüleyebilirsiniz.
 
-![Devre](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
+![bilgisayarına](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
 
-## <a name="2-configure-route-filters"></a><a name="routefilter"></a>2. Rota filtrelerini yapılandırma
+## <a name="2-configure-route-filters"></a><a name="routefilter"></a>2. yol filtrelerini yapılandırma
 
-Rota filtresi, ExpressRoute bağlantı hattınızın Microsoft eşlemesi üzerinden kullanmak istediğiniz hizmetleri tanımlamanızı sağlar. Aslında tüm BGP topluluk değerlerinin izin listesidir. 
+Rota filtresi, ExpressRoute bağlantı hattınızın Microsoft eşlemesi üzerinden kullanmak istediğiniz hizmetleri tanımlamanızı sağlar. Bu aslında tüm BGP topluluk değerlerinin izin verilenler listesidir. 
 
-![rota filtresi](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
+![yol filtresi](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
 
-Bu örnekte, dağıtım yalnızca *Azure Batı ABD 2* bölgesindedir. BGP topluluk değeri *12076:51026*olan Azure West US 2 bölgesel öneklerinin yalnızca reklamına izin vermek için bir rota filtresi kuralı eklenir. **Yönet kuralını**seçerek izin vermek istediğiniz bölgesel önekleri belirtirsiniz.
+Bu örnekte, dağıtım yalnızca *Azure Batı ABD 2* bölgesidir. Yalnızca Azure Batı ABD 2 bölgesel ön eklerin tanıtımına izin vermek için bir yol filtresi kuralı eklenmiştir. Bu, BGP topluluk değeri *12076:51026*' dir. **Kural Yönet**' i seçerek izin vermek istediğiniz bölgesel önekleri belirtirsiniz.
 
-Rota filtresi içinde, rota filtresinin uygulandığı ExpressRoute devrelerini de seçmeniz gerekir. **Add circuit'i**seçerek ExpressRoute devrelerini seçebilirsiniz. Önceki şekilde, rota filtresi örnek ExpressRoute devresi ile ilişkilidir.
+Yol filtresi içinde, yol filtresinin uygulandığı ExpressRoute devrelerini de seçmeniz gerekir. **Devre Ekle**' yi seçerek ExpressRoute devreleri ' nı seçebilirsiniz. Önceki şekilde, yol filtresi örnek ExpressRoute bağlantı hattı ile ilişkilendirilir.
 
-### <a name="21-configure-the-route-filter"></a><a name="configfilter"></a>2.1 Rota filtresini yapılandırma
+### <a name="21-configure-the-route-filter"></a><a name="configfilter"></a>2,1 yol filtresini yapılandırma
 
-Rota filtresini yapılandırın. Adımlar için, [Microsoft eşleme için rota filtrelerini yapılandır'a](how-to-routefilter-portal.md)bakın.
+Bir rota filtresi yapılandırın. Adımlar için bkz. [Microsoft eşlemesi için yol filtrelerini yapılandırma](how-to-routefilter-portal.md).
 
-### <a name="22-verify-bgp-routes"></a><a name="verifybgp"></a>2.2 BGP rotalarını doğrulayın
+### <a name="22-verify-bgp-routes"></a><a name="verifybgp"></a>2,2 BGP yollarını doğrulama
 
-ExpressRoute devreniz üzerinden Microsoft'u başarıyla oluşturduktan ve devreyle bir rota filtresi ilişkilendirdikten sonra, MSEE'lerle bakan PE aygıtlarında MSEE'lerden alınan BGP rotalarını doğrulayabilirsiniz. Doğrulama komutu, PE cihazlarınızın işletim sistemine bağlı olarak değişir.
+ExpressRoute bağlantı hattı üzerinden Microsoft eşlemesini başarıyla oluşturduktan ve devre ile bir yol filtresi ilişkilendirdikten sonra, MSEE ile eşleme olan PE cihazlarında MSEE 'tan alınan BGP yollarını doğrulayabilirsiniz. Doğrulama komutu, PE cihazlarınızın işletim sistemine bağlı olarak değişir.
 
 #### <a name="cisco-examples"></a>Cisco örnekleri
 
-Bu örnekte bir Cisco IOS-XE komutu kullanabilirsiniz. Örnekte, sanal yönlendirme ve iletme (VRF) örneği, bakan trafiği yalıtmak için kullanılır.
+Bu örnek, Cisco IOS-XE komutunu kullanır. Örnekte, eşleme trafiğini yalıtmak için bir sanal Yönlendirme ve iletme (VRF) örneği kullanılır.
 
 ```
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-Aşağıdaki kısmi çıktı, komşudan \*68 önek alındığını göstermektedir .243.229.34 ASN 12076 (MSEE):
+Aşağıdaki kısmi çıktı, 68 ön eklerin komşuyla \*alındığını gösterir. 243.229.34, ASN 12076 (MSEE):
 
 ```
 ...
@@ -100,50 +100,50 @@ Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State
 X.243.229.34    4        12076   17671   17650    25228    0    0 1w4d           68
 ```
 
-Komşudan alınan öneklistesini görmek için aşağıdaki örneği kullanın:
+Komşudan alınan ön eklerin listesini görmek için aşağıdaki örneği kullanın:
 
 ```
 sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 ```
 
-Doğru önek kümesini aldığınızı doğrulamak için çapraz doğrulama yapabilirsiniz. Aşağıdaki Azure PowerShell komut çıktısı, hizmetlerin her biri ve Azure bölgesi nin her biri için Microsoft tarafından bakan tarafından reklamı yapılan önekleri listeler:
+Doğru önek kümesini aldığınızı onaylamak için çapraz doğrulama yapabilirsiniz. Aşağıdaki Azure PowerShell komut çıktısı, her bir hizmet ve Azure bölgesinin her biri için Microsoft eşlemesi aracılığıyla tanıtılan ön ekleri listeler:
 
 ```azurepowershell-interactive
 Get-AzBgpServiceCommunity
 ```
 
-## <a name="3-configure-the-vpn-gateway-and-ipsec-tunnels"></a><a name="vpngateway"></a>3. VPN ağ geçidini ve IPsec tünellerini yapılandırın
+## <a name="3-configure-the-vpn-gateway-and-ipsec-tunnels"></a><a name="vpngateway"></a>3. VPN ağ geçidini ve IPSec tünellerini yapılandırma
 
-Bu bölümde, Azure VPN ağ geçidi ile şirket içi VPN aygıtı arasında IPsec VPN tünelleri oluşturulur. Örneklerde Cisco Cloud Service Router (CSR1000) VPN cihazları kullanılmaktadır.
+Bu bölümde, Azure VPN ağ geçidi ve şirket içi VPN cihazı arasında IPSec VPN tünelleri oluşturulur. Örnekler Cisco Cloud Service yönlendirici (CSR1000) VPN cihazları kullanır.
 
-Aşağıdaki diyagram, şirket içi VPN aygıtı 1 ile Azure VPN ağ geçidi örnek çifti arasında kurulan IPsec VPN tünellerini gösterir. Şirket içi VPN aygıtı 2 ile Azure VPN ağ geçidi örnek çifti arasında kurulan iki IPsec VPN tüneli diyagramda gösteriş yapmaz ve yapılandırma ayrıntıları listelenmez. Ancak, ek VPN tünelleri olması yüksek kullanılabilirliği artırır.
+Aşağıdaki diyagramda, şirket içi VPN cihazı 1 ile Azure VPN ağ geçidi örnek çifti arasında kurulu IPSec VPN tünelleri gösterilmektedir. Şirket içi VPN cihazı 2 ile Azure VPN ağ geçidi örnek çifti arasında oluşturulan iki IPSec VPN tüneli diyagramda gösterilmiyor ve yapılandırma ayrıntıları listelenmez. Ancak, ek VPN tünellerinin olması yüksek kullanılabilirliği artırır.
 
   ![VPN tünelleri](./media/site-to-site-vpn-over-microsoft-peering/EstablishTunnels.png)
 
-IPsec tünel çifti üzerinde, özel ağ yollarını değiştirmek için bir eBGP oturumu oluşturulur. Aşağıdaki diyagram, IPsec tünel çifti üzerinde kurulan eBGP oturumunu gösterir:
+IPSec tünel çiftinin üzerinde, Exchange özel ağ yollarına bir eBGP oturumu oluşturulur. Aşağıdaki diyagramda, IPSec tünel çiftinin üzerinde sağlanan eBGP oturumu gösterilmektedir:
 
-  ![tünel çifti üzerinde eBGP oturumları](./media/site-to-site-vpn-over-microsoft-peering/TunnelBGP.png)
+  ![Tünel çifti üzerinden eBGP oturumları](./media/site-to-site-vpn-over-microsoft-peering/TunnelBGP.png)
 
-Aşağıdaki diyagram, örnek ağın soyutlanmış genel görünümünü gösterir:
+Aşağıdaki diyagramda örnek ağa soyut genel bakış gösterilmektedir:
 
   ![örnek ağ](./media/site-to-site-vpn-over-microsoft-peering/OverviewRef.png)
 
-### <a name="about-the-azure-resource-manager-template-examples"></a>Azure Kaynak Yöneticisi şablon örnekleri hakkında
+### <a name="about-the-azure-resource-manager-template-examples"></a>Azure Resource Manager şablonu örnekleri hakkında
 
-Örneklerde, VPN ağ geçidi ve IPsec tünel sonlandırmaları Azure Kaynak Yöneticisi şablonu kullanılarak yapılandırılır. Kaynak Yöneticisi şablonlarını kullanmakta yeniyseniz veya Kaynak Yöneticisi şablonu temellerini anlamak için [bkz.](../azure-resource-manager/templates/template-syntax.md) Bu bölümdeki şablon, yeşil alan azure ortamı (VNet) oluşturur. Ancak, varolan bir VNet'iniz varsa, şablonda başvuruda bulunabilirsiniz. VPN ağ geçidi IPsec/IKE siteden siteye yapılandırmalarına aşina değilseniz, [bkz.](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+Örneklerde VPN Gateway ve IPSec tünel sonlandırmaları Azure Resource Manager şablonu kullanılarak yapılandırılır. Kaynak Yöneticisi şablonlarını kullanmaya yeni bir veya Kaynak Yöneticisi şablonu temel bilgilerini anlamak için, bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](../azure-resource-manager/templates/template-syntax.md). Bu bölümdeki şablon bir doğa alanı Azure ortamı (VNet) oluşturur. Ancak, mevcut bir VNet 'iniz varsa, bu sanal ağa başvurabilirsiniz. VPN Gateway IPSec/ıKE siteden siteye yapılandırmalarına alışkın değilseniz, bkz. siteden [siteye bağlantı oluşturma](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
 
 >[!NOTE]
->Bu yapılandırmayı oluşturmak için Azure Kaynak Yöneticisi şablonlarını kullanmanız gerekmez. Bu yapılandırmayı Azure portalını veya PowerShell'i kullanarak oluşturabilirsiniz.
+>Bu yapılandırmayı oluşturmak için Azure Resource Manager şablonlarını kullanmanız gerekmez. Bu yapılandırmayı Azure portal veya PowerShell kullanarak oluşturabilirsiniz.
 >
 >
 
-### <a name="31-declare-the-variables"></a><a name="variables3"></a>3.1 Değişkenleri bildirin
+### <a name="31-declare-the-variables"></a><a name="variables3"></a>3,1 değişkenleri bildirin
 
-Bu örnekte, değişken bildirimleri örnek ağa karşılık gelir. Değişkenleri bildirirken, ortamınızı yansıtacak şekilde bu bölümü değiştirin.
+Bu örnekte, değişken bildirimleri örnek ağa karşılık gelir. Değişkenleri bildirirken, bu bölümü ortamınızı yansıtacak şekilde değiştirin.
 
-* Değişken **localAddressPrefix,** IPsec tünellerini sonlandırmak için bir dizi şirket içi IP adresidir.
-* **Ağ geçidiSku** VPN çıkışını belirler. GatewaySku ve vpnType hakkında daha fazla bilgi için [VPN Ağ Geçidi yapılandırma ayarlarına](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)bakın. Fiyatlandırma için [VPN Ağ Geçidi fiyatlandırması'na](https://azure.microsoft.com/pricing/details/vpn-gateway)bakın.
-* **vpnType'ı RouteBased**olarak ayarlayın. **vpnType**
+* **Localaddresspredüzeltmesini** değişkeni, IPSec tünellerini sonlandırmak için ŞIRKET içi IP adreslerinden oluşan bir dizidir.
+* **Gatewaysku** , VPN aktarım hızını belirler. GatewaySku ve vpnType hakkında daha fazla bilgi için bkz. [VPN Gateway Configuration Settings](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku). Fiyatlandırma için bkz. [VPN Gateway fiyatlandırması](https://azure.microsoft.com/pricing/details/vpn-gateway).
+* **Vpntype** 'ı **routebased**olarak ayarlayın.
 
 ```json
 "variables": {
@@ -175,9 +175,9 @@ Bu örnekte, değişken bildirimleri örnek ağa karşılık gelir. Değişkenle
 },
 ```
 
-### <a name="32-create-virtual-network-vnet"></a><a name="vnet"></a>3.2 Sanal ağ oluşturma (VNet)
+### <a name="32-create-virtual-network-vnet"></a><a name="vnet"></a>3,2 sanal ağ oluşturma (VNet)
 
-Varolan bir VNet'i VPN tünelleriyle ilişkilendiriyorsanız, bu adımı atlayabilirsiniz.
+Mevcut bir VNet 'i VPN tünellerinden ilişkilendirirken, bu adımı atlayabilirsiniz.
 
 ```json
 {
@@ -210,9 +210,9 @@ Varolan bir VNet'i VPN tünelleriyle ilişkilendiriyorsanız, bu adımı atlayab
 },
 ```
 
-### <a name="33-assign-public-ip-addresses-to-vpn-gateway-instances"></a><a name="ip"></a>3.3 Genel IP adreslerini VPN ağ geçidi örneklerine atama
+### <a name="33-assign-public-ip-addresses-to-vpn-gateway-instances"></a><a name="ip"></a>3,3 VPN Gateway örneklerine genel IP adresleri atama
  
-VPN ağ geçidinin her örneği için ortak bir IP adresi atayın.
+Bir VPN ağ geçidinin her örneği için genel bir IP adresi atayın.
 
 ```json
 {
@@ -237,9 +237,9 @@ VPN ağ geçidinin her örneği için ortak bir IP adresi atayın.
   },
 ```
 
-### <a name="34-specify-the-on-premises-vpn-tunnel-termination-local-network-gateway"></a><a name="termination"></a>3.4 Şirket içi VPN tünelisonlandırmasını (yerel ağ ağ geçidi) belirtin
+### <a name="34-specify-the-on-premises-vpn-tunnel-termination-local-network-gateway"></a><a name="termination"></a>3,4 Şirket içi VPN tüneli sonlandırmasını belirtin (yerel ağ geçidi)
 
-Şirket içi VPN aygıtları yerel **ağ ağ geçidi**olarak adlandırılır. Aşağıdaki json snippet de uzak BGP eş ayrıntıları belirtir:
+Şirket içi VPN cihazları **yerel ağ geçidi**olarak adlandırılır. Aşağıdaki JSON kod parçacığı uzak BGP eş bilgilerini de belirtir:
 
 ```json
 {
@@ -262,13 +262,13 @@ VPN ağ geçidinin her örneği için ortak bir IP adresi atayın.
 },
 ```
 
-### <a name="35-create-the-vpn-gateway"></a><a name="creategw"></a>3.5 VPN ağ geçidini oluşturma
+### <a name="35-create-the-vpn-gateway"></a><a name="creategw"></a>3,5 VPN Gateway oluşturma
 
-Şablonun bu bölümü, VPN ağ geçidini etkin-etkin yapılandırma için gerekli ayarlarla yapılandırır. Aşağıdaki gereksinimleri göz önünde bulundurun:
+Şablonun bu bölümü, VPN ağ geçidini etkin-etkin bir yapılandırma için gerekli ayarlarla yapılandırır. Aşağıdaki gereksinimleri göz önünde bulundurun:
 
-* **"RouteBased"** VpnType ile VPN ağ geçidi oluşturun. VPN ağ geçidi ile VPN'in şirket içi yönlendirmesini etkinleştirmek istiyorsanız bu ayar zorunludur.
-* VPN ağ geçidinin iki örneği ile etkin etkin modda belirli bir şirket içi aygıt arasında VPN tünelleri oluşturmak için Kaynak Yöneticisi şablonunda **"activeActive"** parametresi **gerçek olarak** ayarlanır. Yüksek kullanılabilir VPN ağ geçitleri hakkında daha fazla şey anlamak için, [yüksek kullanılabilir VPN ağ geçidi bağlantısına](../vpn-gateway/vpn-gateway-highlyavailable.md)bakın.
-* VPN tünelleri arasında eBGP oturumlarını yapılandırmak için, her iki tarafta iki farklı ASN belirtmeniz gerekir. Özel ASN numaraları belirtmek tercih edilir. Daha fazla bilgi için [BGP ve Azure VPN ağ geçitlerine genel bakış](../vpn-gateway/vpn-gateway-bgp-overview.md)bölümüne bakın.
+* VPN ağ geçidini **"Routebased"** vpntype ile oluşturun. VPN ağ geçidi ve şirket içi VPN arasında BGP yönlendirmeyi etkinleştirmek istiyorsanız bu ayar zorunludur.
+* VPN ağ geçidinin iki örneği ve belirli bir şirket içi cihaz arasında etkin-etkin modda VPN tünelleri oluşturmak için, Kaynak Yöneticisi şablonunda **"Activeactive"** parametresi **true** olarak ayarlanır. Yüksek oranda kullanılabilir VPN ağ geçitleri hakkında daha fazla bilgi edinmek için bkz. [yüksek oranda KULLANILABILIR VPN Gateway bağlantısı](../vpn-gateway/vpn-gateway-highlyavailable.md).
+* VPN tünellerini arasında eBGP oturumlarını yapılandırmak için iki tarafta iki farklı ASNs belirtmeniz gerekir. Özel ASN numaralarını belirtmek tercih edilir. Daha fazla bilgi için bkz. [BGP ve Azure VPN ağ geçitlerine genel bakış](../vpn-gateway/vpn-gateway-bgp-overview.md).
 
 ```json
 {
@@ -324,9 +324,9 @@ VPN ağ geçidinin her örneği için ortak bir IP adresi atayın.
   },
 ```
 
-### <a name="36-establish-the-ipsec-tunnels"></a><a name="ipsectunnel"></a>3.6 IPsec tünellerini kurun
+### <a name="36-establish-the-ipsec-tunnels"></a><a name="ipsectunnel"></a>3,6 IPSec tünellerini oluşturma
 
-Komut dosyasının son eylemi, Azure VPN ağ geçidi ile şirket içi VPN aygıtı arasında IPsec tünelleri oluşturur.
+Betiğin son eylemi, Azure VPN ağ geçidi ve şirket içi VPN cihazı arasında IPSec tünelleri oluşturur.
 
 ```json
 {
@@ -354,20 +354,20 @@ Komut dosyasının son eylemi, Azure VPN ağ geçidi ile şirket içi VPN aygıt
   }
 ```
 
-## <a name="4-configure-the-on-premises-vpn-device"></a><a name="device"></a>4. Şirket içi VPN cihazını yapılandırın
+## <a name="4-configure-the-on-premises-vpn-device"></a><a name="device"></a>4. Şirket içi VPN cihazını yapılandırma
 
-Azure VPN ağ geçidi, farklı satıcılardan gelen birçok VPN aygıtıyla uyumludur. VPN ağ geçidiyle çalışmak üzere doğrulanmış yapılandırma bilgileri ve aygıtlar için [VPN aygıtları hakkında](../vpn-gateway/vpn-gateway-about-vpn-devices.md)bilgi bakın.
+Azure VPN Gateway, farklı satıcılardan gelen birçok VPN cihazlarıyla uyumludur. VPN Gateway ile çalışmak üzere doğrulanan yapılandırma bilgileri ve cihazlar için bkz. [VPN cihazları hakkında](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
 
-VPN aygıtınızı yapılandırırken aşağıdaki öğelere ihtiyacınız vardır:
+VPN cihazınızı yapılandırırken aşağıdaki öğeler gereklidir:
 
-* Paylaşılan bir anahtar. Bu, siteden siteye VPN bağlantınızı oluştururken belirttiğiniz paylaşılan anahtardır. Örneklerde temel paylaşılan anahtar kullanılır. Kullanmak için daha karmaşık bir anahtar oluşturmanız önerilir.
-* VPN ağ geçidinizin Genel IP adresi. Azure Portal, PowerShell veya CLI kullanarak genel IP adresini görüntüleyebilirsiniz. Azure portalını kullanarak VPN ağ geçidinizin Genel IP adresini bulmak için Sanal ağ geçitleri’ne gidin ve ağ geçidinizin adına tıklayın.
+* Paylaşılan bir anahtar. Bu, siteden siteye VPN bağlantınızı oluştururken belirttiğiniz aynı paylaşılan anahtardır. Örnekler temel bir paylaşılan anahtar kullanır. Kullanmak için daha karmaşık bir anahtar oluşturmanız önerilir.
+* VPN ağ geçidinizin genel IP adresi. Azure Portal, PowerShell veya CLI kullanarak genel IP adresini görüntüleyebilirsiniz. Azure portalını kullanarak VPN ağ geçidinizin Genel IP adresini bulmak için Sanal ağ geçitleri’ne gidin ve ağ geçidinizin adına tıklayın.
 
-Genellikle eBGP eşler doğrudan bağlanır (genellikle WAN bağlantısı üzerinden). Ancak, ExpressRoute Microsoft peering üzerinden IPsec VPN tünelleri üzerinden eBGP yapılandırırken, eBGP eşler arasında birden çok yönlendirme etki alanı vardır. EBGP komşu ilişkisini doğrudan bağlı olmayan iki eş arasında kurmak için **ebgp-multihop** komutunu kullanın. Ebgp-multihop komutunu izleyen birsonrakibacı BGP paketlerindeki TTL değerini belirtir. Komut **maksimum yollar eibgp 2** iki BGP yolları arasındaki trafiğin yük dengeleme sağlar.
+Genellikle eBGP eşleri doğrudan bağlanır (genellikle WAN bağlantısı üzerinden). Ancak, ExpressRoute Microsoft eşlemesi aracılığıyla IPSec VPN tünelleri üzerinden eBGP yapılandırırken, eBGP eşleri arasında birden çok yönlendirme etki alanı vardır. Doğrudan bağlantılı olmayan iki eş arasında eBGP komşusu ilişkisi oluşturmak için **ebgp-multihop** komutunu kullanın. Ebgp-multihop komutunu izleyen tamsayı BGP paketlerindeki TTL değerini belirtir. **En fazla Path, eibgp 2** , iki BGP yolu arasında trafiğin yük dengelenmesini mümkün bir şekilde sunar.
 
 ### <a name="cisco-csr1000-example"></a><a name="cisco1"></a>Cisco CSR1000 örneği
 
-Aşağıdaki örnek, Cisco CSR1000'ün hyper-v sanal makinedeki yapılandırmasını şirket içi VPN aygıtı olarak gösterir:
+Aşağıdaki örnekte, şirket içi VPN cihazı olarak bir Hyper-V sanal makinesinde Cisco CSR1000 yapılandırması gösterilmektedir:
 
 ```
 !
@@ -475,13 +475,13 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 !
 ```
 
-## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. VPN cihaz filtreleme ve güvenlik duvarları yapılandırma (isteğe bağlı)
+## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. VPN cihaz filtrelemeyi ve güvenlik duvarlarını yapılandırma (isteğe bağlı)
 
-Güvenlik duvarınızı ve filtrelemenizi gereksinimlerinize göre yapılandırın.
+Güvenlik duvarınızı ve filtrelemesini gereksinimlerinize göre yapılandırın.
 
-## <a name="6-test-and-validate-the-ipsec-tunnel"></a><a name="testipsec"></a>6. Test ve IPsec tünel doğrulamak
+## <a name="6-test-and-validate-the-ipsec-tunnel"></a><a name="testipsec"></a>6. IPSec tüneli test edin ve doğrulayın
 
-IPsec tünellerinin durumu Azure VPN ağ geçidinde Powershell komutları tarafından doğrulanabilir:
+IPSec tünellerinin durumu, Azure VPN Gateway 'den PowerShell komutlarına göre doğrulanabilir:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object  ConnectionStatus,EgressBytesTransferred,IngressBytesTransferred | fl
@@ -495,7 +495,7 @@ EgressBytesTransferred  : 17734660
 IngressBytesTransferred : 10538211
 ```
 
-Azure VPN ağ geçidi örneklerindeki tünellerin durumunu bağımsız olarak denetlemek için aşağıdaki örneği kullanın:
+Azure VPN ağ geçidi örneklerinde tünellerin durumunu bağımsız olarak denetlemek için aşağıdaki örneği kullanın:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object -ExpandProperty TunnelConnectionStatus
@@ -517,7 +517,7 @@ EgressBytesTransferred           : 8980589
 LastConnectionEstablishedUtcTime : 11/04/2017 17:03:13
 ```
 
-Şirket içi VPN aygıtınızdaki tünel durumunu da kontrol edebilirsiniz.
+Ayrıca, şirket içi VPN cihazınızda tünel durumunu da denetleyebilirsiniz.
 
 Cisco CSR1000 örneği:
 
@@ -571,7 +571,7 @@ Peer: 52.175.253.112 port 4500 fvrf: (none) ivrf: (none)
         Outbound: #pkts enc'ed 477 drop 0 life (KB/Sec) 4607953/437
 ```
 
-Sanal Tünel Arabirimi (VTI) üzerindeki hat protokolü, IKE aşaması 2 tamamlanana kadar "yukarı" olarak değişmez. Aşağıdaki komut güvenlik ilişkisini doğrular:
+Sanal tünel arabirimindeki (VTı) hat protokolü, ıKE aşama 2 tamamlanana kadar "yukarı" olarak değişmez. Aşağıdaki komut güvenlik ilişkilendirmesini doğrular:
 
 ```
 csr1#show crypto ikev2 sa
@@ -597,9 +597,9 @@ csr1#show crypto ipsec sa | inc encaps|decaps
     #pkts decaps: 746, #pkts decrypt: 746, #pkts verify: 746
 ```
 
-### <a name="verify-end-to-end-connectivity-between-the-inside-network-on-premises-and-the-azure-vnet"></a><a name="verifye2e"></a>Şirket içi ağ ile Azure VNet arasındaki uçuçbağlantıyı doğrulayın
+### <a name="verify-end-to-end-connectivity-between-the-inside-network-on-premises-and-the-azure-vnet"></a><a name="verifye2e"></a>Şirket içi ve Azure sanal ağı arasındaki uçtan uca bağlantıyı doğrulama
 
-IPsec tünelleri dolduysa ve statik yollar doğru ayarlanmışsa, uzak BGP eşin IP adresini pingleme niz gerekir:
+IPSec tünelleri varsa ve statik yollar doğru ayarlandıysa, uzak BGP eşinin IP adresine ping atabiliyor olmanız gerekir:
 
 ```
 csr1#ping 10.2.0.228
@@ -615,9 +615,9 @@ Sending 5, 100-byte ICMP Echos to 10.2.0.229, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 4/5/6 ms
 ```
 
-### <a name="verify-the-bgp-sessions-over-ipsec"></a><a name="verifybgp"></a>IPsec üzerinden BGP oturumlarını doğrulayın
+### <a name="verify-the-bgp-sessions-over-ipsec"></a><a name="verifybgp"></a>IPSec üzerinden BGP oturumlarını doğrulama
 
-Azure VPN ağ geçidinde, BGP eşin durumunu doğrulayın:
+Azure VPN ağ geçidinde, BGP eşinin durumunu doğrulayın:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw -ResourceGroupName SEA-C1-VPN-ER | ft
@@ -633,13 +633,13 @@ Get-AzVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw -Reso
 65000 07:13:51.0109601  10.2.0.228              507          500   10.2.0.229               6 Connected
 ```
 
-EBGP üzerinden vpn konsantratöründen şirket içinde alınan ağ önekleri listesini doğrulamak için "Origin" özelliğine göre filtre uygulayabilirsiniz:
+Şirket içi VPN yoğunlaştırıcısında eBGP aracılığıyla alınan ağ öneklerinin listesini doğrulamak için, özniteliğe "Origin" olarak filtre uygulayabilirsiniz:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayLearnedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG  | Where-Object Origin -eq "EBgp" |ft
 ```
 
-Örnek çıktıda, ASN 65010, VPN'deki BGP otonom sistem numarasıdır.
+Örnek çıktıda ASN 65010, şirket içi VPN 'deki BGP otonom sistem numarasıdır.
 
 ```azurepowershell
 AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
@@ -648,7 +648,7 @@ AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
 65010  10.2.0.228   10.0.0.0/24  172.16.0.10 EBgp   172.16.0.10  32768
 ```
 
-İlan edilen rotaların listesini görmek için:
+Tanıtılan yolların listesini görmek için:
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG -Peer 10.2.0.228 | ft
@@ -667,7 +667,7 @@ AsPath LocalAddress Network        NextHop    Origin SourcePeer Weight
 65010  10.2.0.229   10.0.0.0/24    10.2.0.229 Igp                  0
 ```
 
-Şirket içi Cisco CSR1000 için örnek:
+Şirket içi Cisco CSR1000 örneği:
 
 ```
 csr1#show ip bgp neighbors 10.2.0.228 routes
@@ -688,7 +688,7 @@ RPKI validation codes: V valid, I invalid, N Not found
 Total number of prefixes 4
 ```
 
-Şirket içi Cisco CSR1000'den Azure VPN ağ geçidine reklamı yapılan ağların listesi aşağıdaki komut kullanılarak listelenebilir:
+Şirket içi Cisco CSR1000 'dan Azure VPN Gateway 'e tanıtılan ağların listesi aşağıdaki komut kullanılarak listelenebilir:
 
 ```
 csr1#show ip bgp neighbors 10.2.0.228 advertised-routes
@@ -711,4 +711,4 @@ Total number of prefixes 2
 
 * [ExpressRoute için Ağ Performansı İzleyicisi’ni Yapılandırma](how-to-npm.md)
 
-* [Varolan VPN ağ geçidi bağlantısına sahip bir VNet'e siteden siteye bağlantı ekleme](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+* [Mevcut bir VPN Ağ Geçidi bağlantısı ile bir VNet 'e siteden siteye bağlantı ekleme](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)

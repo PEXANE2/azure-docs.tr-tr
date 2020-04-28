@@ -1,6 +1,6 @@
 ---
-title: IoT Hub Cihaz Sağlama Hizmeti - Otomatik sağlama kavramları
-description: Bu makalede, IoT Aygıt Sağlama Hizmeti (DPS), IoT Hub ve istemci SDK'ları kullanarak aygıt otomatik sağlama aşamalarına kavramsal bir genel bakış sağlanmıştır.
+title: Cihaz sağlama hizmeti IoT Hub-otomatik sağlama kavramları
+description: Bu makalede IoT cihaz sağlama hizmeti (DPS), IoT Hub ve istemci SDK 'Ları kullanılarak cihaz otomatik sağlama aşamalarına kavramsal bir genel bakış sunulmaktadır.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -9,104 +9,104 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74975338"
 ---
 # <a name="auto-provisioning-concepts"></a>Otomatik sağlama kavramları
 
-[Genel Bakış'ta](about-iot-dps.md)açıklandığı gibi, Cihaz Sağlama Hizmeti, cihazların bir IoT hub'ına tam zamanında sağlanmasını sağlayan, insan müdahalesine gerek kalmadan yardımcı bir hizmettir. Başarılı sağlamadan sonra, aygıtlar kendilerine tahsis edilen IoT Hub'ına doğrudan bağlanır. Bu işlem otomatik sağlama olarak adlandırılır ve aygıtlar için kullanıma hazır bir kayıt ve ilk yapılandırma deneyimi sağlar.
+[Genel bakış](about-iot-dps.md)bölümünde açıklandığı gibi, cihaz sağlama hizmeti, bir IoT Hub 'a cihazların tam zamanında sağlanması için insan müdahalesi gerektirmeden bir yardımcı hizmettir. Başarılı bir sağlama işleminden sonra cihazlar, belirlenen IoT Hub doğrudan bağlanır. Bu işlem otomatik sağlama olarak adlandırılır ve cihazlar için kullanıma hazır bir kayıt ve ilk yapılandırma deneyimi sağlar.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure IoT otomatik sağlama üç aşamaya ayrılabilir:
+Azure IoT otomatik sağlama, üç aşamaya ayrılabilir:
 
-1. **Hizmet yapılandırması** - Azure IoT Hub ve IoT Hub Aygıt Sağlama Hizmeti örneklerinin tek seferlik yapılandırması, bunları oluşturma ve aralarında bağlantı oluşturma.
+1. **Hizmet yapılandırma** -Azure IoT Hub 'nin bir kerelik yapılandırması ve cihaz sağlama hizmeti örnekleri IoT Hub, bunları oluşturma ve aralarında bağlantı oluşturma.
 
    > [!NOTE]
-   > IoT çözümünüzün boyutune bakılmaksızın, milyonlarca cihazı desteklemeyi planlasanız bile, bu **tek seferlik**bir yapılandırmadır.
+   > IoT çözümünüzün boyutundan bağımsız olarak, milyonlarca cihazı desteklemeyi planlıyor olsanız bile bu **tek seferlik bir yapılandırmadır**.
 
-2. **Aygıt kaydı** - Aygıt Sağlama Hizmeti örneğini gelecekte kaydolmaya çalışacak aygıtlardan haberdar etme işlemi. [Kayıt,](concepts-service.md#enrollment) tek bir aygıt için "bireysel kayıt" veya birden çok aygıt için "grup kaydı" olarak, sağlama hizmetindeki aygıt kimlik bilgilerini yapılandırarak gerçekleştirilir. Kimlik, cihazın kullanmak üzere tasarlandığı ve sağlama hizmetinin kayıt sırasında cihazın orijinalliğini doğrulamasını sağlayan [attestation mekanizmasına](concepts-security.md#attestation-mechanism) dayanır:
+2. **Cihaz kaydı** -cihaz sağlama hizmeti örneğinin daha sonra kaydolmaya çalışacak cihazların farkında hale getirilmesi işlemidir. [Kayıt](concepts-service.md#enrollment) , sağlama hizmetindeki cihaz kimliği bilgilerini tek bir cihaz için "bireysel kayıt" veya birden çok cihaz için "Grup kaydı" olarak yapılandırarak gerçekleştirilir. Kimlik, cihazın kullanılmak üzere tasarlandığı [kanıtlama mekanizmasına](concepts-security.md#attestation-mechanism) dayalıdır ve bu, sağlama hizmetinin kayıt sırasında cihazın güvenilirliğini onaylamasını sağlar:
 
-   - **TPM**: "bireysel kayıt" olarak yapılandırılan cihaz kimliği, TPM kayıt kimliğive genel onay anahtarına dayanır. TPM'nin bir [belirtim](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)olduğu göz önüne alındığında, hizmet, TPM uygulaması (donanım veya yazılım) ne olursa olsun, yalnızca belirtim başına doğrulayıcı olmasını bekler. Bkz. Aygıt sağlama: TPM tabanlı attestation hakkında ayrıntılar için [TPM ile kimlik attestation.](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) 
+   - **TPM**: "bireysel kayıt" olarak yapılandırıldığında, CIHAZ kimliği TPM kayıt kimliğine ve genel onay anahtarına dayanır. TPM bir [Belirtim](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)olduğu için, hizmet TPM uygulamasından bağımsız olarak yalnızca belirtim başına atmayı bekler (donanım veya yazılım). Bkz. cihaz sağlama: TPM tabanlı kanıtlama hakkında ayrıntılar için [TPM Ile kimlik kanıtlama](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) . 
 
-   - **X509**: "bireysel kayıt" veya "grup kaydı" olarak yapılandırılan cihaz kimliği, kayda .pem veya .cer dosyası olarak yüklenen X.509 dijital sertifikaya dayanır.
+   - **X509**: "bireysel kayıt" veya "Grup kaydı" olarak yapılandırılmış, cihaz kimliği bir. ped veya. cer dosyası olarak kayda yüklenen bir X. 509.952 dijital sertifikasını temel alır.
 
    > [!IMPORTANT]  
-   > Aygıt Sağlama Hizmetlerini kullanmak için bir ön koşul olmasa da, cihazınızın tuşlar ve X.509 sertifikaları gibi hassas aygıt kimlik bilgilerini depolamak için bir Donanım Güvenlik Modülü (HSM) kullanmasını önemle tavsiye ediyoruz.
+   > Cihaz sağlama hizmetlerini kullanmak için bir önkoşul olmamasına karşın, cihazınızın anahtarlar ve X. 509.440 sertifikaları gibi hassas cihaz kimlik bilgilerini depolamak için bir donanım güvenlik modülü (HSM) kullanmasını önemle öneririz.
 
-3. **Cihaz kaydı ve yapılandırması** - cihaz ve attestation mekanizması için uygun bir Cihaz Sağlama Hizmeti istemcisi SDK kullanılarak inşa edilen kayıt yazılımı tarafından önyükleme üzerine başlatılan. Yazılım, aygıtın kimlik doğrulaması ve ardından IoT Hub'ına kaydedilmesi için sağlama hizmetine bir bağlantı kurar. Başarılı bir kayıt üzerine cihaz, ioT Hub'a özgü cihaz kimliği ve bağlantı bilgileriyle birlikte sağlanmış ve ilk yapılandırmasını çekmesine ve telemetri işlemine başlamasına olanak tanır. Üretim ortamlarında, bu aşama önceki iki aşamadan haftalar veya aylar sonra oluşabilir.
+3. **Cihaz kaydı ve yapılandırması** -cihaz sağlama hizmeti istemci SDK 'sı kullanılarak oluşturulan, cihaz ve kanıtlama mekanizması için uygun olan, kayıt yazılımı tarafından önyüklendikten sonra başlatılır. Yazılım, cihazın kimlik doğrulaması ve IoT Hub sonraki kayıt için sağlama hizmetine bir bağlantı kurar. Kayıt başarıyla tamamlandığında, cihaz IoT Hub benzersiz cihaz KIMLIĞI ve bağlantı bilgileri ile birlikte sağlanır ve bu, ilk yapılandırmasını çekmesini ve telemetri sürecini başlatır. Üretim ortamlarında, bu aşama önceki iki aşamadan sonra haftalar veya aylar meydana gelebilir.
 
-## <a name="roles-and-operations"></a>Roller ve operasyonlar
+## <a name="roles-and-operations"></a>Roller ve işlemler
 
-Önceki bölümde tartışılan aşamalar, üretim süresi, nakliye, gümrük süreci, vb. gibi üretim gerçeklerinden dolayı haftalara veya aylara yayılabilir. Buna ek olarak, ilgili çeşitli varlıklar göz önüne alındığında birden çok rol arasında faaliyetleri yayılabilir. Bu bölümde, her aşamayla ilgili çeşitli rollere ve işlemlere daha derin bir bakış bakar, ardından bir sıralı diyagramdaki akışı gösterir. 
+Önceki bölümde ele alınan aşamalar, üretim süresi, Sevkiyat, Gümrük süreci vb. gibi üretimden veya aylarca yayılabilirler. Bunlara ek olarak, dahil edilen çeşitli varlıkları verilen birçok rol arasında etkinliklere yayılabilir. Bu bölüm, her aşamayla ilgili çeşitli rol ve işlemlere daha ayrıntılı bir bakış sağlar ve akışı sıralı diyagramda gösterir. 
 
-Otomatik sağlama, aygıt üreticisine, attestation mekanizmasını etkinleştirmeye özel gereksinimler de yerleştirir. Üretim işlemleri, özellikle otomatik tedarik kurulduktan sonra yeni cihazların temin edildiği durumlarda, otomatik sağlama aşamalarının zamanlamasından bağımsız olarak da gerçekleşebilir.
+Otomatik sağlama, kanıtlama mekanizmasını etkinleştirmeye özgü gereksinimleri cihaz üreticisine da koyar. Üretim işlemleri Ayrıca otomatik sağlama aşamaları zamanlamalarından bağımsız olarak, özellikle de otomatik sağlama yapıldıktan sonra yeni cihazların temin olduğu durumlarda de gerçekleşebilir.
 
-Uygulamalı deneyim yoluyla otomatik sağlamayı açıklamaya yardımcı olmak için, soldaki içerik tablosunda bir dizi Quickstarts sağlanır. Öğrenme sürecini kolaylaştırmak/kolaylaştırmak için yazılım, kayıt ve kayıt için fiziksel bir aygıtı simüle etmek için kullanılır. Bazı Hızlı Başlangıçlar, Quickstarts'ın benzetimli yapısı nedeniyle, var olmayan rollere yönelik işlemler de dahil olmak üzere birden çok rol için işlemleri gerçekleştirmenizi gerektirir.
+Sol taraftaki içindekiler tablosunda, uygulamalı deneyim aracılığıyla otomatik sağlamayı açıklamaya yardımcı olmak üzere bir dizi hızlı başlangıç sağlanır. Öğrenme sürecini kolaylaştırmak/basitleştirmek için, yazılım kayıt ve kayıt için fiziksel bir cihazın benzetimini yapmak üzere kullanılır. Bazı hızlı başlangıçları, hızlı Başlangıçlarının benzetimiyle dolayı, mevcut olmayan roller için işlemler de dahil olmak üzere birden çok rol için işlemleri karşılamanız gerekir.
 
 | Rol | İşlem | Açıklama |
 |------| --------- | ------------|
-| Üretici | Kimlik ve kayıt URL'sini kodlama | Kullanılan attestation mekanizmasına bağlı olarak, üretici aygıt kimlik bilgilerini ve Aygıt Sağlama Hizmeti kayıt URL'sini kodlamaktan sorumludur.<br><br>**Quickstarts**: cihaz simüle olduğundan, üretici rolü yoktur. Örnek kayıt başvurusunun kodlanmasında kullanılan bu bilgileri nasıl aldığınıza ilişkin ayrıntılar için Geliştirici rolüne bakın. |
-| | Cihaz kimliği sağlama | Cihaz kimlik bilgisinin yaratıcısı olarak, üretici bu bilgileri operatöre (veya belirli bir aracıya) iletmek veya API'ler aracılığıyla doğrudan Aygıt Sağlama Hizmetine kaydettirmekten sorumludur.<br><br>**Quickstarts**: cihaz simüle olduğundan, üretici rolü yoktur. Simüle edilmiş bir aygıtı Aygıt Sağlama Hizmeti örneğinize kaydetmek için kullanılan aygıt kimliğini nasıl aldığınızla ilgili ayrıntılar için Operatör rolüne bakın. |
-| İşleç | Otomatik sağlamayı yapılandırma | Bu işlem otomatik sağlamanın ilk aşamasına karşılık gelir.<br><br>**Hızlı Başlatmalar**: Azure aboneliğinizde Aygıt Sağlama Hizmeti ve IoT Hub örneklerini yapılandırarak Operatör rolünü gerçekleştirirsiniz. |
-|  | Aygıt kimliğini kaydetme | Bu işlem otomatik sağlamanın ikinci aşamasına karşılık gelir.<br><br>**Hızlı Başlatmalar**: Operatör rolünü gerçekleştirerek, simüle ettiğiniz aygıtı Aygıt Sağlama Hizmeti örneğinize kaydedebilirsiniz. Cihaz kimliği, Quickstart'ta (TPM veya X.509) simüle edilen attestation yöntemiyle belirlenir. Attestation ayrıntıları için Geliştirici rolüne bakın. |
-| Cihaz Tedarik Hizmeti,<br>IoT Hub | \<tüm işlemler\> | Hem fiziksel aygıtlarla bir üretim uygulaması hem de simüle edilmiş aygıtlarla hızlı başlangıçlar için, bu roller Azure aboneliğinizde yapılandırdığınız IoT hizmetleri aracılığıyla yerine getirilir. IoT hizmetleri fiziksel ve simüle edilmiş aygıtların sağlanmasına kayıtsız kaldığı için roller/işlemler tam olarak aynı işlevi görür. |
-| Geliştirici | Kayıt yazılımı oluşturma/dağıtma | Bu işlem, otomatik sağlamanın üçüncü aşamasına karşılık gelir. Geliştirici, uygun SDK'yı kullanarak kayıt yazılımını aygıta oluşturmak ve dağıtmakla sorumludur.<br><br>**Hızlı Başlatmalar**: Oluşturduğunuz örnek kayıt uygulaması, iş istasyonunuzun üzerinde çalışan platformunuz/diliniz için (fiziksel bir cihaza dağıtmak yerine) gerçek bir aygıtı simüle eder. Kayıt uygulaması, fiziksel bir aygıta dağıtılan işlemle aynı işlemleri gerçekleştirir. Attestation yöntemini (TPM veya X.509 sertifikası) ve Cihaz Sağlama Hizmeti örneğinizin kayıt URL'sini ve "Kimlik Kapsamını" belirtirsiniz. Cihaz kimliği, belirttiğiniz yönteme göre çalışma zamanında SDK attestation mantığı tarafından belirlenir: <ul><li>**TPM attestation** - geliştirme iş istasyonu bir [TPM simülatörü uygulaması](how-to-use-sdk-tools.md#trusted-platform-module-tpm-simulator)çalışır. Çalıştırılan bir uygulama, aygıt kimliğini n için kullanılmak üzere TPM'nin "Onay Anahtarı" ve "Kayıt Kimliği"ni ayıklamak için ayrı bir uygulama kullanılır. SDK attestation mantığı, kimlik doğrulama ve kayıt doğrulaması için imzalı bir SAS belirteci sunmak için kayıt sırasında simülatörü de kullanır.</li><li>**X509 attestation** - bir [sertifika oluşturmak](how-to-use-sdk-tools.md#x509-certificate-generator)için bir araç kullanın. Oluşturulduktan sonra, kayıtta kullanılmak üzere gereken sertifika dosyasını oluşturursunuz. SDK attestation mantığı, kimlik doğrulama ve kayıt doğrulaması için sunmak için sertifikayı da kayıt sırasında kullanır.</li></ul> |
-| Cihaz | Bootup ve kayıt | Bu işlem, Geliştirici tarafından oluşturulmuş aygıt kayıt yazılımı tarafından yerine getirilen otomatik sağlamanın üçüncü aşamasına karşılık gelir. Ayrıntılar için Geliştirici rolüne bakın. İlk önyükleme üzerine: <ol><li>Uygulama, geliştirme sırasında belirtilen genel URL ve hizmet "Kimlik Kapsamı"na göre Aygıt Sağlama Hizmeti örneğine bağlanır.</li><li>Bağlandıktan sonra, cihaz kayıt sırasında belirtilen attestation yöntemi ve kimliğine karşı kimlik doğrulaması yapılır.</li><li>Kimlik doğrulaması alındıktan sonra, aygıt sağlama hizmeti örneği tarafından belirtilen IoT Hub örneğine kaydedilir.</li><li>Başarılı bir kayıt olduktan sonra, benzersiz bir aygıt kimliği ve IoT Hub bitiş noktası, IoT Hub ile iletişim kurmak için kayıt uygulamasına iade edilir.</li><li> Buradan, aygıt yapılandırma için ilk [aygıtının ikiz](~/articles/iot-hub/iot-hub-devguide-device-twins.md) durumunu aşağı çekebilir ve telemetri verilerini raporlama işlemine başlayabilir.</li></ol>**Quickstarts**: cihaz simüle olduğundan, kayıt yazılımı geliştirme iş istasyonuüzerinde çalışır.|
+| Üretici | Kimliği ve kayıt URL 'sini kodla | Kullanılan kanıtlama mekanizmasına bağlı olarak, üretici cihaz kimliği bilgilerini ve cihaz sağlama hizmeti kayıt URL 'sini kodlamadan sorumludur.<br><br>**Hızlı başlangıç**: cihaz benzetildiğinden üretici rolü yoktur. Örnek bir kayıt uygulaması kodlamak için kullanılan bu bilgileri nasıl alacağınız hakkında ayrıntılar için geliştirici rolüne bakın. |
+| | Cihaz kimliği sağlama | Cihaz kimliği bilgisinin kaynağı olarak, üretici onu işleçle (veya belirlenen bir aracı) iletmekten veya API aracılığıyla cihaz sağlama hizmetine doğrudan kaydetmekten sorumludur.<br><br>**Hızlı başlangıç**: cihaz benzetildiğinden üretici rolü yoktur. Cihaz kimliğini nasıl alacağınız hakkındaki ayrıntılar için bkz. operatör rolü, cihaz sağlama hizmeti Örneğinizde sanal bir cihazı kaydetmek için kullanılır. |
+| İşleç | Otomatik sağlamayı yapılandırma | Bu işlem, otomatik sağlama işleminin ilk aşamasına karşılık gelir.<br><br>**Hızlı başlangıç**: Azure aboneliğinizdeki cihaz sağlama hizmetini ve IoT Hub örneklerini yapılandırarak operatör rolünü gerçekleştirirsiniz. |
+|  | Cihaz kimliğini kaydet | Bu işlem, otomatik sağlamanın ikinci aşamasına karşılık gelir.<br><br>**Hızlı başlangıç**: sanal cihazınızı cihaz sağlama hizmeti Örneğinizde kaydederek operatör rolünü gerçekleştirirsiniz. Cihaz kimliği, hızlı başlangıçta (TPM veya X. 509.440) benzetilen kanıtlama yöntemi tarafından belirlenir. Kanıtlama ayrıntıları için geliştirici rolüne bakın. |
+| Cihaz sağlama hizmeti,<br>IoT Hub | \<Tüm işlemler\> | Fiziksel cihazlarla bir üretim uygulamasında ve sanal cihazlarla hızlı başlangıçlarda, bu roller Azure aboneliğinizde yapılandırdığınız IoT Hizmetleri aracılığıyla yerine getirilir. IoT Hizmetleri fiziksel ve sanal cihazların sağlanmasından farklı olduğu için roller/işlemler tamamen aynı şekilde çalışır. |
+| Geliştirici | Kayıt yazılımı oluşturma/dağıtma | Bu işlem, otomatik sağlamanın üçüncü aşamasına karşılık gelir. Geliştirici, uygun SDK 'yı kullanarak, kayıt yazılımını cihaza oluşturmaktan ve dağıtmaktan sorumludur.<br><br>**Hızlı başlangıç**: oluşturduğunuz örnek kayıt uygulaması, iş istasyonunuzda çalışan seçtiğiniz platform/diliniz için gerçek bir cihaza benzetir (fiziksel bir cihaza dağıtmak yerine). Kayıt uygulaması, fiziksel bir cihaza dağıtılan bir işlem ile aynı işlemleri gerçekleştirir. Kanıtlama yöntemini (TPM veya X. 509.440 sertifikası), Ayrıca cihaz sağlama hizmeti örneğinizin kayıt URL 'sini ve "KIMLIK kapsamını" belirtirsiniz. Cihaz kimliği, belirttiğiniz yönteme göre çalışma zamanında SDK kanıtlama mantığı tarafından belirlenir: <ul><li>**TPM kanıtlama** -geliştirme iş istasyonunuz bir [TPM simülatörü uygulaması](how-to-use-sdk-tools.md#trusted-platform-module-tpm-simulator)çalıştırır. Bir kez çalışmaya başladıktan sonra, TPM 'nin "onay anahtarını" ve "kayıt KIMLIĞI" ni kullanarak cihaz kimliğini kaydetme için ayrı bir uygulama kullanılır. SDK kanıtlama mantığı, kimlik doğrulama ve kayıt doğrulama için imzalı bir SAS belirteci sunmak üzere kayıt sırasında simülatörü de kullanır.</li><li>**X509 kanıtlama** - [bir sertifikayı oluşturmak](how-to-use-sdk-tools.md#x509-certificate-generator)için bir araç kullanın. Oluşturulduktan sonra, kayıt sırasında kullanım için gereken sertifika dosyasını oluşturursunuz. SDK kanıtlama mantığı, kayıt sırasında, kimlik doğrulaması ve kayıt doğrulaması için de sertifikayı kullanır.</li></ul> |
+| Cihaz | Önyükleme ve kayıt | Bu işlem, otomatik sağlamanın üçüncü aşamasına karşılık gelir ve geliştirici tarafından oluşturulan cihaz kayıt yazılımı tarafından yerine getirilir. Ayrıntılar için geliştirici rolüne bakın. İlk önyüklemeden sonra: <ol><li>Uygulama, geliştirme sırasında belirtilen genel URL ve "KIMLIK kapsamı" hizmeti başına cihaz sağlama hizmeti örneğiyle bağlanır.</li><li>Bağlandıktan sonra cihaz, kayıt sırasında belirtilen kanıtlama yöntemine ve kimliğe göre doğrulanır.</li><li>Kimlik doğrulandıktan sonra cihaz, sağlama hizmeti örneği tarafından belirtilen IoT Hub örneğine kaydedilir.</li><li>Kayıt başarıyla tamamlandığında, IoT Hub iletişim için kayıt uygulamasına benzersiz bir cihaz KIMLIĞI ve IoT Hub uç noktası döndürülür.</li><li> Bu cihaz buradan, yapılandırma için ilk [cihaz ikizi](~/articles/iot-hub/iot-hub-devguide-device-twins.md) durumunu alabilir ve telemetri verilerini raporlama işlemine başlayabilirsiniz.</li></ol>**Hızlı başlangıç**: cihaz benzetildiğinden, kayıt yazılımı geliştirme iş istasyonunuzda çalışır.|
 
-Aşağıdaki diyagram, aygıt otomatik sağlama sırasında operasyonların rollerini ve sıralamasını özetler:
+Aşağıdaki diyagramda cihaz otomatik sağlama sırasında roller ve işlem sıralaması özetlenmektedir:
 <br><br>
-[![Aygıt için otomatik sağlama sırası](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
+[![Bir cihaz için otomatik sağlama sırası](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
-> İsteğe bağlı olarak, üretici cihaz sağlama hizmeti API'lerini kullanarak (Operatör yerine) "Aygıt kimliğini kaydedin" işlemini de gerçekleştirebilir. Bu sıralama ve daha fazlası hakkında ayrıntılı bir tartışma için [Azure IoT videosuyla Zero touch aygıt kaydına](https://youtu.be/cSbDRNg72cU?t=2460) bakın (işaret41:00'den başlayarak)
+> İsteğe bağlı olarak, üretici cihaz sağlama hizmeti API 'Lerini (Işleci yerine) kullanarak "cihaz kimliğini kaydetme" işlemini de gerçekleştirebilir. Bu sıralama ve daha fazlası hakkında ayrıntılı bir açıklama için bkz. [Azure IoT videosu Ile sıfır Touch cihaz kaydı](https://youtu.be/cSbDRNg72cU?t=2460) (işaret 41:00 ' den başlayarak)
 
 ## <a name="roles-and-azure-accounts"></a>Roller ve Azure hesapları
 
-Her rolün bir Azure hesabına nasıl eşleneceğini senaryoya bağlıdır ve dahil olabilecek pek çok senaryo vardır. Aşağıdaki ortak desenler, rollerin genellikle bir Azure hesabına nasıl eşlendirildigine ilişkin genel bir anlayış sağlamaya yardımcı olmalıdır.
+Her rolün bir Azure hesabıyla nasıl eşlendiğine yönelik senaryo bağımlıdır ve söz konusu olabilecek çok sayıda senaryo vardır. Aşağıdaki yaygın desenler, rollerinin bir Azure hesabına genel olarak nasıl eşlendiğine ilişkin genel bir bakış sağlamaya yardımcı olur.
 
-#### <a name="chip-manufacturer-provides-security-services"></a>Çip üreticisi güvenlik hizmetleri sağlar
+#### <a name="chip-manufacturer-provides-security-services"></a>Yonga üreticisi güvenlik hizmetleri sağlar
 
-Bu senaryoda, üretici düzey bir müşteriler için güvenliği yönetir. Bu senaryo, ayrıntılı güvenliği yönetmek zorunda olmadıklarından, bu düzey bir müşteriler tarafından tercih edilebilir. 
+Bu senaryoda, üretici, düzey bir müşteriler için güvenliği yönetir. Bu senaryo, ayrıntılı güvenliği yönetmesi gerekmiyorsa bu düzey bir müşteri tarafından tercih edilebilir. 
 
-Üretici Donanım Güvenlik Modülleri (HSM) içine güvenlik tanıttı. Bu güvenlik, üreticinin DPS örnekleri ve kayıt grupları kurulumu olan potansiyel müşterilerden anahtarlar, sertifikalar vb. almasını içerebilir. Üretici, bu güvenlik bilgilerini müşterileri için de oluşturabilir.
+Üretici donanım güvenlik modüllerine (HSM 'ler) güvenlik sunar. Bu güvenlik, zaten DPS örnekleri ve kayıt grupları kurulumuna sahip olan potansiyel müşterilerden anahtar, sertifika vb. alan üreticisini içerebilir. Üretici, müşterileri için de bu güvenlik bilgilerini oluşturabilir.
 
 Bu senaryoda, iki Azure hesabı söz konusu olabilir:
 
-- **Hesap #1**: Büyük olasılıkla operatör ve geliştirici rolleri arasında bir dereceye kadar paylaşılır. Bu taraf, HSM yongalarını üreticiden satın alabilir. Bu yongalar, Hesap #1 ile ilişkili DPS örneklerine işaret edilir. DPS kayıtlarıyla bu taraf, DPS'deki aygıt kayıt ayarlarını yeniden yapılandırarak aygıtları birden çok düzey iki müşteriye kiralayabilir. Bu taraf ayrıca cihaz telemetrisi vb erişmek için arabirim için son kullanıcı arka uç sistemleri için ayrılmış IoT hub'ları olabilir. Bu ikinci durumda, ikinci bir hesap gerekli olmayabilir.
+- **Hesap #1**: büyük olasılıkla operatör ve geliştirici rolleri genelinde bir ölçüde paylaşılıyor. Bu taraf, üreticiden HSM yongaları satın alabilir. Bu yongalar, hesap #1 ilişkili olan DPS örneklerine işaret edilir. DPS kayıtları sayesinde, bu taraf, DPS cihaz kayıt ayarlarını yeniden yapılandırarak, cihazları birden çok düzey iki müşteriye kiralayabilir. Bu taraf Ayrıca, Son Kullanıcı arka uç sistemleri için cihaz telemetrisine erişmek üzere ile arabirim sağlamak için ayrılmış IoT Hub 'ları içerebilir. Bu ikinci durumda ikinci bir hesap gerekmeyebilir.
 
-- **Hesap #2**: Son kullanıcılar, düzey iki müşterilerin kendi IoT hub'ları olabilir. Hesap #1 ilişkili taraf, kiralanan aygıtları bu hesaptaki doğru hub'a işaret ediyor. Bu yapılandırma, DPS ve IoT hub'larının Azure hesapları arasında bağlanmasını gerektirir ve bu da Azure Kaynak Yöneticisi şablonlarıyla yapılabilir.
+- **Hesap #2**: son kullanıcılar, düzey iki müşterinin kendi IoT Hub 'ları olabilir. Hesap #1 ilişkili taraf, kiralanan cihazları yalnızca bu hesaptaki doğru hub 'a yönlendirir. Bu yapılandırma, Azure hesapları arasında DPS ve IoT Hub 'larını bağlamayı gerektirir ve bu, Azure Resource Manager şablonlarıyla yapılabilir.
 
-#### <a name="all-in-one-oem"></a>Hepsi bir ayine oem
+#### <a name="all-in-one-oem"></a>Hepsi bir arada OEM
 
-Üretici, yalnızca tek bir üretici hesabının gerekli olacağı bir "Hepsi Bir OEM" olabilir. Üretici, güvenliği ve sağlamayı uçuca işler.
+Üretici, yalnızca tek bir üretici hesabının gerekli olduğu "hepsi bir arada OEM" olabilir. Üretici, güvenlik ve sağlama uçtan uca işleme alır.
 
-Üretici, aygıt satın alan müşterilere bulut tabanlı bir uygulama sağlayabilir. Bu uygulama, üretici tarafından tahsis edilen IoT Hub ile arabirim olur.
+Üretici, cihaz satın alan müşterilere bulut tabanlı bir uygulama sağlayabilir. Bu uygulama, üretici tarafından ayrılan IoT Hub ile arabirim oluşturacak.
 
-Otomatlar veya otomatik kahve makineleri bu senaryoiçin örnekler temsil eder.
+Havalandırma makineleri veya otomatik kahve makineleri bu senaryoya yönelik örnekleri temsil eder.
 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İlgili otomatik sağlama Quickstarts ile yolunuzu çalışırken, referans noktası olarak bu makaleyi yer imi yararlı bulabilirsiniz. 
+İlgili otomatik sağlama hızlı başlangıçlarından yola çalıştığınızda, bu makaleye bir başvuru noktası olarak yer işareti eklemek yararlı olabilir. 
 
-"Hizmet yapılandırması" aşamasında size en uygun olan ve yönetim aracı tercihinize en uygun "Otomatik sağlama yı ayarlama" Quickstart'ı tamamlayarak başlayın:
+"Hizmet yapılandırması" aşamasında size kılavuzluk eden yönetim araç tercihinizi en iyi şekilde karşılayacak "otomatik sağlamayı ayarla" hızlı başlangıcını tamamlayarak başlayın:
 
-- [Azure CLI kullanarak otomatik sağlama ayarlama](quick-setup-auto-provision-cli.md)
-- [Azure portalını kullanarak otomatik sağlama ayarlama](quick-setup-auto-provision.md)
-- [Kaynak Yöneticisi şablonu kullanarak otomatik sağlama ayarlama](quick-setup-auto-provision-rm.md)
+- [Azure CLı kullanarak otomatik sağlamayı ayarlama](quick-setup-auto-provision-cli.md)
+- [Azure portal kullanarak otomatik sağlamayı ayarlama](quick-setup-auto-provision.md)
+- [Kaynak Yöneticisi şablonu kullanarak otomatik sağlamayı ayarlama](quick-setup-auto-provision-rm.md)
 
-Ardından cihazınızın cihaz attestation mekanizmasına ve Cihaz Sağlama Hizmeti SDK/dil tercihine uygun "Otomatik sağlama simüle edilmiş bir cihaz" Quickstart ile devam edin. Bu Quickstart'ta, "Aygıt kaydı" ve "Aygıt kaydı ve yapılandırma" aşamalarında niçin geçersiniz: 
+Ardından cihaz kanıtlama mekanizmanıza ve cihaz sağlama hizmeti SDK/dil tercihine uygun bir "sanal cihazı otomatik sağlama" hızlı başlangıcı ile devam edin. Bu hızlı başlangıçta, "cihaz kaydı" ve "cihaz kaydı ve yapılandırma" aşamaları üzerinden gezintiniz: 
 
-|  | Simüle cihaz attestation mekanizması | Quickstart SDK/Dil |  |
+|  | Sanal cihaz kanıtlama mekanizması | Hızlı başlangıç SDK/dil |  |
 |--|--|--|--|
-|  | Güvenilir Platform Modülü (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C #](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
-|  | X.509 belgesi | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C #](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
+|  | Güvenilir Platform Modülü (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[, #](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
+|  | X. 509.440 sertifikası | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[, #](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
 
 
 

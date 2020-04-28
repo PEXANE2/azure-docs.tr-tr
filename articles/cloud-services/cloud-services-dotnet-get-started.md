@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
 ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75386740"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services ve ASP.NET kullanmaya başlama
@@ -31,8 +31,8 @@ Uygulama bir reklam bülteni panosudur. Kullanıcılar metin girerek ve görünt
 
 Uygulama bir arka uç işleminde küçük resim oluşturmaya yönelik CPU yoğunluklu iş yükünü azaltmak üzere [kuyruk merkezli çalışma deseni](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) kullanır.
 
-## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternatif mimari: Uygulama Hizmeti ve Webİşler
-Bu öğreticide bir Azure bulut hizmetinde hem ön ucun hem de arka ucun nasıl çalıştırılacağı gösterilmektedir. Alternatif [olarak, Azure Uygulama Hizmeti'nde](/azure/app-service/) ön uç çalıştırmak ve arka uç için [Webİşler](https://go.microsoft.com/fwlink/?LinkId=390226) özelliğini kullanmak alternatiftir. WebJobs kullanan bir öğretici için bkz. [Azure WebJobs SDK ile Çalışmaya Başlama](https://github.com/Azure/azure-webjobs-sdk/wiki). Senaryonuza en uygun hizmetleri nasıl seçeceğiniz hakkında bilgi için [Azure Uygulama Hizmeti, Bulut Hizmetleri ve sanal makineler karşılaştırması'na](/azure/architecture/guide/technology-choices/compute-decision-tree)bakın.
+## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternatif mimari: App Service ve Web Işleri
+Bu öğreticide bir Azure bulut hizmetinde hem ön ucun hem de arka ucun nasıl çalıştırılacağı gösterilmektedir. Diğer bir seçenek de ön ucu [Azure App Service](/azure/app-service/) çalıştırmak ve arka uç Için [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) özelliğini kullanmaktır. WebJobs kullanan bir öğretici için bkz. [Azure WebJobs SDK ile Çalışmaya Başlama](https://github.com/Azure/azure-webjobs-sdk/wiki). Senaryonuza en uygun hizmetleri seçme hakkında daha fazla bilgi için bkz. [Azure App Service, Cloud Services ve sanal makineler karşılaştırması](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="what-youll-learn"></a>Öğrenecekleriniz
 * Azure SDK’sını yükleyerek Azure dağıtımı için makinenizi etkinleştirme.
@@ -47,7 +47,7 @@ Bu öğreticide bir Azure bulut hizmetinde hem ön ucun hem de arka ucun nasıl 
 
 Uygulamayı bir Azure aboneliği olmadan yerel olarak çalıştırabilirsiniz, ancak uygulamayı buluta dağıtmak için bir abonelik gerekecektir. Bir hesabınız yoksa, [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) veya [ücretsiz deneme için kaydolabilirsiniz.](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668)
 
-Öğretici talimatlar aşağıdaki ürünlerden herhangi biriyle çalışır:
+Öğretici yönergeleri aşağıdaki ürünlerden biriyle çalışır:
 
 * Visual Studio 2013
 * Visual Studio 2015
@@ -124,7 +124,7 @@ Azure bulut hizmeti, uygulamanın çalıştırılacağı ortamıdır.
 5. Uygulamayı dağıtmak istediğiniz bölgeyi seçin.
 
     Bu alan, bulut hizmetinizin hangi veri merkezinde barındırılacağını belirtir. Bir üretim uygulaması için müşterilerinize en yakın bölgeyi seçmeniz gerekir. Bu öğretici için size en yakın bölgeyi seçin.
-5. **Oluştur'u**tıklatın.
+5. **Oluştur**' a tıklayın.
 
     Aşağıdaki görüntüde bulut hizmeti CSvccontosoads.cloudapp.net URL’si ile oluşturulur.
 
@@ -153,7 +153,7 @@ Uygulama bulutta çalıştırıldığında bulut tabanlı bir veritabanı kullan
 9. Yeni sunucu için **Seçin**’e tıklayın.
 
     ![Yeni SQL Veritabanı sunucusu](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. **Oluştur'u**tıklatın.
+10. **Oluştur**' a tıklayın.
 
 ### <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
 Azure Storage hesabı kuyruk ve blob verilerini buluta depolamaya yönelik kaynaklar sağlar.
@@ -176,7 +176,7 @@ Gerçek bir uygulamada genellikle uygulama verilerine karşı günlük verileri 
     Bulut hizmeti ve depolama hesabı farklı veri merkezlerinde (farklı bölgelerde) olduğunda gecikme artar ve veri merkezinin dışındaki bant genişliği için sizden ücret alınır. Bir veri merkezi içinde bant genişliği ücretsizdir.
 
     Azure benzeşim grupları bir veri merkezinde bulunan kaynaklar arasındaki uzaklığı en aza indirmeye yönelik bir mekanizma sağlar. Bu öğretici benzeşim gruplarını kullanmaz. Daha fazla bilgi için bkz. [Azure’da Benzeşim Grubu Oluşturma](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. **Oluştur'u**tıklatın.
+7. **Oluştur**' a tıklayın.
 
     ![Yeni depolama hesabı](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -229,7 +229,7 @@ Hem web rolü projesinin hem de çalışan rolü projesinin Azure Storage hesab�
 1. **Çözüm Gezgini**’nde **ContosoAdsCloudService** projesindeki **Roller** altında **ContosoAdsWeb**’e sağ tıklayın ve ardından **Özellikler**’e tıklayın.
 
     ![Rol özellikleri](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. **Ayarlar** sekmesini tıklatın. Hizmet **Yapılandırması** açılır kutusunda **Bulut'u**seçin.
+2. **Ayarlar** sekmesine tıklayın. **Hizmet yapılandırması** açılan kutusunda **bulut**' u seçin.
 
     ![Bulut yapılandırması](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. **StorageConnectionString** girdisini seçtiğinizde satırın sağ uç kısmında bir üç nokta (**...**) göreceksiniz. **Depolama Hesabı Bağlantı Dizesi Oluştur** iletişim kutusunu açmak için üç nokta düğmesine tıklayın.
@@ -353,7 +353,7 @@ Contoso Ads uygulamasının oluşturulması aşağıdaki adımları içerir:
 6. *Microsoft.WindowsAzure.ConfigurationManager* NuGet paketini bulun ve çalışan rolü projesine yükleyin.
 
 ### <a name="set-project-references"></a>Proje başvurularını ayarlama
-1. ContosoAdsWeb projesinde ContosoAdsCommon projesine bir başvuru ayarlayın. ContosoAdsWeb projesini sağ tıklatın ve ardından **Referanslar** - **Ekle'yi**tıklatın. **Başvuru Yöneticisi** iletişim kutusunda sol bölmedeki **Çözüm – Projeler** öğesini seçin, **ContosoAdsCommon**’ı seçin ve ardından **Tamam**’a tıklayın.
+1. ContosoAdsWeb projesinde ContosoAdsCommon projesine bir başvuru ayarlayın. Contosoadsweb projesine sağ tıklayın ve ardından **Başvurular** - **Başvuru Ekle**' ye tıklayın. **Başvuru Yöneticisi** iletişim kutusunda sol bölmedeki **Çözüm – Projeler** öğesini seçin, **ContosoAdsCommon**’ı seçin ve ardından **Tamam**’a tıklayın.
 2. ContosoAdsWorker projesinde, ContosoAdsCommon projesine bir başvuru ayarlayın.
 
     ContosoAdsCommon hem ön uç ve arka uç tarafından kullanılacak olan Entity Framework veri modeli ve bağlam sınıfını içerir.
@@ -377,7 +377,7 @@ Bu bölümde, yerel olarak test etmek amacıyla Azure Storage ve SQL bağlantı 
 3. ContosoAdsCloudService projesinde **Roller** altındaki ContosoAdsWeb öğesine sağ tıklayın ve ardından **Özellikler**’e tıklayın.
 
     ![Rol özellikleri](./media/cloud-services-dotnet-get-started/roleproperties.png)
-4. **ContosoAdsWeb [Role]** özellikleri penceresinde **Ayarlar** sekmesini tıklatın ve ardından **Ayar Ekle'yi**tıklatın.
+4. **Contosoadsweb [rol]** özellikleri penceresinde, **Ayarlar** sekmesine tıklayın ve ardından **Ayar ekle**' ye tıklayın.
 
     **Hizmet Yapılandırma** ayarını **Tüm Yapılandırmalar** olarak bırakın.
 5. *StorageConnectionString* adlı bir ayar ekleyin. **Tür** değerini *ConnectionString* olarak, **Değer** seçeneğini *UseDevelopmentStorage=true* olarak ayarlayın.
@@ -398,7 +398,7 @@ Bu bölümde, yerel olarak test etmek amacıyla Azure Storage ve SQL bağlantı 
 ### <a name="add-code-files"></a>Kod dosyaları ekleme
 Bu bölümde, indirilen çözümden yeni çözüme kod dosyaları kopyalarsınız. Aşağıdaki bölümlerde bu kodun temel kısımları gösterilmiş ve açıklanmıştır.
 
-Projeye veya klasöre dosya eklemek için projeyi veya klasörü sağ tıklatın ve**Varolan Öğeyi** **Ekle'yi** - tıklatın. İstediğiniz dosyaları seçin ve ardından **Ekle**’ye tıklayın. Mevcut dosyaları değiştirmek isteyip istemediğiniz sorulursa **Evet**’e tıklayın.
+Bir projeye veya klasöre dosya eklemek için, projeye veya klasöre sağ tıklayın ve**Varolan öğe** **Ekle** - ' ye tıklayın. İstediğiniz dosyaları seçin ve ardından **Ekle**’ye tıklayın. Mevcut dosyaları değiştirmek isteyip istemediğiniz sorulursa **Evet**’e tıklayın.
 
 1. ContosoAdsCommon projesinde *Class1.cs* dosyasını silin ve indirilen projedeki *Ad.cs* ve *ContosoAdscontext.cs* dosyalarını onun yerine ekleyin.
 2. ContosoAdsWeb projesinde indirilen projeden aşağıdaki dosyaları ekleyin.
@@ -528,7 +528,7 @@ imagesQueue.CreateIfNotExists();
 ```
 
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
-*AdController.cs* dosyasında, oluşturucu, `InitializeStorage` blob'lar ve kuyruklarla çalışmak için API sağlayan Azure Depolama İstemci Kitaplığı nesneleri oluşturmak için yöntemi çağırır.
+*AdController.cs* dosyasında, Oluşturucu blob ve kuyruklar ile çalışmak `InitializeStorage` üzere bir API sağlayan Azure Storage istemci Kitaplığı nesneleri oluşturmak için yöntemini çağırır.
 
 Ardından kod daha önce gördüğünüz gibi *görüntüler* blob kapsayıcısı için *Global.asax.cs* içinde bir başvuru edinir. Bunu yaparken bir web uygulaması için uygun bir varsayılan [yeniden deneme ilkesi](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) ayarlar. Varsayılan üstel geri alma yeniden deneme ilkesi, web uygulamasını geçici bir hata için tekrarlanan yeniden denemelerde bir dakikadan uzun süre askıya alabilir. Burada belirtilen yeniden deneme ilkesi üç denemeye kadar her denemeden sonra en fazla üç saniye bekler.
 
@@ -696,7 +696,7 @@ public override void Run()
 }
 ```
 
-Döngünün her yinelemesinden sonra herhangi bir kuyruk iletisi bulunmazsa program bir saniye için uyku moduna geçer. Bunun yapılması çalışan rolünün aşırı CPU süresi ve depolama işlem maliyetleri doğurmasını engeller. Microsoft Müşteri Danışma Ekibi bunu dahil etmeyi unutan, üretime dağıtan ve tatile giden bir geliştiricinin hikayesini anlatır. Geri döndüklerinde, gözetimleri tatilden daha pahalıya mal oluyor.
+Döngünün her yinelemesinden sonra herhangi bir kuyruk iletisi bulunmazsa program bir saniye için uyku moduna geçer. Bunun yapılması çalışan rolünün aşırı CPU süresi ve depolama işlem maliyetleri doğurmasını engeller. Microsoft Müşteri Danışma Ekibi bunu dahil etmeyi unutan, üretime dağıtan ve tatile giden bir geliştiricinin hikayesini anlatır. Geri geldiğinde, daha fazla bakış maliyeti tatilden daha fazla.
 
 Bazı durumlarda bir kuyruk iletisinin içeriği işlemede hataya neden olur. Buna *zehir iletisi* adı verilir ve bir hatayı günlüğe kaydedip döngüyü yeniden başlatırsanız bu iletiyi sonu gelmez bir şekilde işlemeye çalışabilirsiniz.  Bu nedenle, yakalama bloğu uygulamanın geçerli iletiyi işlemeyi kaç kez denediğini denetleyen bir if deyimi içerir ve 5’ten fazla kez denediyse ileti kuyruktan silinir.
 
@@ -774,7 +774,7 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
 * [Azure Cloud Services Bölüm 1: Giriş](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [ Cloud Services nasıl yönetilir](cloud-services-how-to-manage-portal.md)
-* [Azure Depolama](https://docs.microsoft.com/azure/storage/)
+* [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Bulut hizmeti sağlayıcısı seçme](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
 
 

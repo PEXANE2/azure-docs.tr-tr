@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası varlıklarını adlandırma kuralları
-description: Veri Fabrikası varlıkları için adlandırma kurallarını açıklar.
+title: Azure Data Factory varlıkları adlandırma kuralları
+description: Data Factory varlıkların adlandırma kurallarını açıklar.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,21 +13,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 8fa1340b586434bf98d51437d4dc6b08594f0afa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74931882"
 ---
-# <a name="azure-data-factory---naming-rules"></a>Azure Veri Fabrikası - adlandırma kuralları
+# <a name="azure-data-factory---naming-rules"></a>Azure Data Factory adlandırma kuralları
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [Veri Fabrikası'ndaki adlandırma kurallarına](../naming-rules.md)bakın.
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory kuralları adlandırma](../naming-rules.md).
 
-Aşağıdaki tablo, Veri Fabrikası yapıları için adlandırma kuralları sağlar.
+Aşağıdaki tabloda Data Factory yapıtlar için adlandırma kuralları verilmiştir.
 
-| Adı | İsim Tekliği | Doğrulama Denetimleri |
+| Adı | Ad benzersizliği | Doğrulama denetimleri |
 |:--- |:--- |:--- |
-| Data Factory |Microsoft Azure genelinde benzersizdir. Adlar büyük/küçük harf duyarsız, yani `MyDF` ve `mydf` aynı veri fabrikasıbakın. |<ul><li>Her veri fabrikası tam olarak bir Azure aboneliğine bağlıdır.</li><li>Nesne adları bir harf veya sayıyla başlamalıdır ve yalnızca harfler, sayılar ve tire (-) karakterini içerebilir.</li><li>Her tire (-) karakteri hemen önce ve ardından bir harf veya sayı olmalıdır. Kapsayıcı adlarında ardışık tirelere izin verilmez.</li><li>Ad 3-63 karakter uzunluğunda olabilir.</li></ul> |
-| Bağlantılı Hizmetler/Tablolar/Boru Hatları |Bir veri fabrikasında benzersiz. İsimler büyük/küçük harf duyarsızdır. |<ul><li>Tablo adındaki maksimum karakter sayısı: 260.</li><li>Nesne adları bir harf, sayı veya alt alt (_) ile başlamalıdır.</li><li>Aşağıdaki karakterlere izin verilmez: ".", "+", "?", "/", "<", ">","*","%","&",""\\</li></ul> |
-| Kaynak Grubu |Microsoft Azure genelinde benzersizdir. İsimler büyük/küçük harf duyarsızdır. |<ul><li>Maksimum karakter sayısı: 1000.</li><li>Ad harfleri, rakamları ve aşağıdaki karakterleri içerebilir: "-", "_", "" ve "."</li></ul> |
+| Data Factory |Microsoft Azure genelinde benzersiz. Adlar, büyük/küçük harfe duyarlıdır `MyDF` ve `mydf` aynı veri fabrikasına başvurur. |<ul><li>Her veri fabrikası, tam olarak bir Azure aboneliğine bağlanır.</li><li>Nesne adları bir harf veya sayı ile başlamalıdır ve yalnızca harf, rakam ve tire (-) karakterini içerebilir.</li><li>Her tire (-) karakteri hemen önce ve ardından bir harf veya sayı gelmelidir. Kapsayıcı adlarında ardışık kesik çizgilerden izin verilmez.</li><li>Ad 3-63 karakter uzunluğunda olabilir.</li></ul> |
+| Bağlı hizmetler/tablolar/işlem hatları |Bir veri fabrikasında ile benzersizdir. Adlar büyük/küçük harfe duyarlıdır. |<ul><li>Bir tablo adındaki en fazla karakter sayısı: 260.</li><li>Nesne adları bir harf, sayı veya alt çizgi (_) ile başlamalıdır.</li><li>Şu karakterlere izin verilmez: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\\"</li></ul> |
+| Kaynak Grubu |Microsoft Azure genelinde benzersiz. Adlar büyük/küçük harfe duyarlıdır. |<ul><li>En fazla karakter sayısı: 1000.</li><li>Ad harf, rakam ve şu karakterleri içerebilir: "-", "_", "," ve "."</li></ul> |
 

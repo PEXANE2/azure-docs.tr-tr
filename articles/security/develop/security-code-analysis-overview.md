@@ -1,6 +1,6 @@
 ---
-title: Microsoft Güvenlik Kodu Analizi belgelerine genel bakış
-description: Bu makale, Microsoft Güvenlik Kodu Çözümlemesi uzantısına genel bir bakıştır
+title: Microsoft Güvenlik kodu çözümleme belgelerine genel bakış
+description: Bu makale, Microsoft Güvenlik kodu analiz uzantısı 'na genel bakış
 author: vharindra
 manager: sukhans
 ms.author: terrylan
@@ -13,105 +13,105 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 963bc909b69962cded0a50d717e3a653d3d69769
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74851477"
 ---
-# <a name="about-microsoft-security-code-analysis"></a>Microsoft Güvenlik Kodu Analizi Hakkında
+# <a name="about-microsoft-security-code-analysis"></a>Microsoft Güvenlik kodu analizi hakkında
 
-Microsoft Güvenlik Kodu Çözümlemesi uzantısı ile takımlar, Azure DevOps sürekli tümleştirme ve teslim (CI/CD) boru hatlarına güvenlik kodu çözümlemesi ekleyebilir. Bu çözümleme, Microsoft'taki [Güvenli Geliştirme Yaşam Döngüsü (SDL)](https://www.microsoft.com/securityengineering/sdl/practices) uzmanları tarafından önerilir.
+Microsoft Güvenlik kodu analiz Uzantısı ile takımlar, Azure DevOps sürekli tümleştirme ve teslim (CI/CD) işlem hatlarına güvenlik kodu analizi ekleyebilir. Bu analiz, Microsoft 'ta [güvenli geliştirme yaşam döngüsü (SDL)](https://www.microsoft.com/securityengineering/sdl/practices) uzmanları tarafından önerilir.
 
-Tutarlı bir UX, çalışan araçların karmaşıklığını gizleyerek güvenliği kolaylaştırır. Araçların NuGet tabanlı teslimi ile ekiplerin artık takım yüklemesini veya güncellenmesini yönetmesine gerek kalmaz. Yapı görevleri için hem komut satırı hem de temel arabirimler sayesinde, tüm kullanıcılar araçlar üzerinde istedikleri kadar denetime sahip olabilir.
+Tutarlı bir UX, çalışan araçların karmaşıklığını gizleyerek güvenliği basitleştirir. Araçların NuGet tabanlı teslimi sayesinde, takımların yüklemeyi veya güncelleştirme güncelleştirmesini yönetmesi gerekmez. Derleme görevleri için hem komut satırı hem de temel arabirimler sayesinde, tüm kullanıcılar istedikleri gibi araçlar üzerinde daha fazla denetime sahip olabilir.
 
-Takımlar, şu gibi güçlü işlem sonrası yetenekleri de kullanabilir:
+Ekipler ayrıca şunları gibi güçlü bir gönderme işlemi özelliği de kullanabilir:
 
-- Bekletme için günlükleri yayımlama.
-- Eyleme geçirilebilir, geliştirici odaklı raporlar oluşturma.
-- Regresyon testlerinde yapı molalarını yapılandırma.
+- Bekletme için Günlükler yayımlanıyor.
+- Eylem yapılabilir, geliştiriciye odaklanmış raporlar oluşturma.
+- Gerileme testlerinde yapı sonlarını yapılandırma.
 
-## <a name="why-should-i-use-microsoft-security-code-analysis"></a>Microsoft Güvenlik Kodu Çözümlemesi'ni neden kullanmalıyım?
+## <a name="why-should-i-use-microsoft-security-code-analysis"></a>Neden Microsoft Güvenlik kodu analizini kullanmalıyım?
 
-### <a name="security-simplified"></a>Güvenlik basitleştirildi
+### <a name="security-simplified"></a>Basitleştirilmiş güvenlik
 
-Azure DevOps ardınıza Microsoft Güvenlik Kodu Çözümleme araçları eklemek, yeni görevler eklemek kadar kolaydır. Görevleri özelleştirin veya varsayılan davranışlarını kullanın. Görevler Azure DevOps ardışık alanınızın bir parçası olarak çalışır ve birçok sonuç türünde ayrıntı veren günlükler üretir.
+Microsoft Güvenlik kodu çözümleme araçları 'nı Azure DevOps işlem hattınızla eklemek, yeni görevler eklemek kadar basittir. Görevleri özelleştirin veya varsayılan davranışlarını kullanın. Görevler, Azure DevOps işlem hattınızı bir parçası olarak çalışır ve çok sayıda sonuç ayrıntısı sağlayan Günlükler oluşturur.
 
-### <a name="clean-builds"></a>Temiz yapılar
+### <a name="clean-builds"></a>Derlemeleri temizle
 
-Araçlar tarafından bildirilen ilk sorunları ele aldıktan sonra, uzantıyı yeni sorunlarda yapıyı bozacak şekilde yapılandırabilirsiniz.Her çekme isteğine sürekli tümleştirme oluşturma kolaydır.
+Araçların bildirdiği ilk sorunları çözdükten sonra, uzantıyı yeni sorunlarda derlemeleri bölmek için yapılandırabilirsiniz.Her çekme isteğinde sürekli tümleştirme yapıları ayarlamak kolaydır.
 
-### <a name="set-it-and-forget-it"></a>Ayarlayın ve unutun
+### <a name="set-it-and-forget-it"></a>Ayarlayın ve unutmayın
 
-Varsayılan olarak, yapı görevleri ve araçları güncel kalır. Bir aracın güncelleştirilmiş bir sürümü varsa, bunu karşıdan yüklemeniz ve yüklemeniz gerekmez. Uzantı, sizin için güncelleştirme ilgilenir.
+Varsayılan olarak, derleme görevleri ve araçları güncel kalır. Aracın güncelleştirilmiş bir sürümü varsa, bunu indirmeniz ve yüklemeniz gerekmez. Uzantı sizin için güncellemeyi üstlenir.
 
 ### <a name="under-the-hood"></a>Başlık altında
 
-Uzantının yapı görevleri aşağıdakilerin karmaşıklığını gizler:
-  - Güvenlik statik analiz araçlarını çalıştırıyor.
-  - Özet rapor oluşturmak veya yapıyı kırmak için günlük dosyalarından elde edilen sonuçları işleme.
+Uzantının derleme görevleri şu karmaşıklıkları gizler:
+  - Güvenlik statik analiz araçları çalıştırılıyor.
+  - Özet raporu oluşturmak veya derlemeyi bölmek için günlük dosyalarından sonuçları işleme.
 
-## <a name="microsoft-security-code-analysis-tool-set"></a>Microsoft Güvenlik Kodu Çözümleme araç kümesi
+## <a name="microsoft-security-code-analysis-tool-set"></a>Microsoft Güvenlik kodu çözümleme aracı kümesi
 
-Microsoft Güvenlik Kodu Çözümlemesi uzantısı, önemli analiz araçlarının en son sürümlerini kolayca kullanabileceğinizi sağlar. Uzantı, hem Microsoft tarafından yönetilen araçları hem de açık kaynak kodlu araçları içerir.
+Microsoft Güvenlik kodu çözümleme uzantısı, önemli çözümleme araçlarının en son sürümlerini size hazır hale getirir. Uzantı hem Microsoft tarafından yönetilen araçları hem de açık kaynaklı araçları içerir.
 
-Bu araçlar, ardışık yapıyı yapılandırmak ve çalıştırmak için ilgili yapı görevini kullandıktan sonra bulut barındırılan aracıya otomatik olarak indirilir.
+Bu araçlar, işlem hattını yapılandırmak ve çalıştırmak için ilgili derleme görevini kullandıktan sonra otomatik olarak bulutta barındırılan aracıya indirilir.
 
-Bu bölümde, uzantıda şu anda kullanılabilen araçlar kümesi listelenir. Daha fazla araç eklenmesine dikkat edin. Ayrıca, eklememizi istediğiniz araçlar için önerilerinizi bize gönderin.
+Bu bölüm, uzantısında Şu anda kullanılabilir olan araçların kümesini listeler. Daha fazla araç ekleme hakkında bilgi için izleyin. Ayrıca, eklememizi istediğiniz araçlarla ilgili önerilerinizi bize gönderin.
 
-### <a name="anti-malware-scanner"></a>Kötü Amaçlı Yazılımdan Koruma Tarayıcısı
+### <a name="anti-malware-scanner"></a>Kötü amaçlı yazılımdan koruma tarayıcısı
 
-Kötü Amaçlı Yazılımdan Koruma Tarayıcısı oluşturma görevi artık Microsoft Güvenlik Kodu Çözümlemesi uzantısına dahildir. Bu görev, Windows Defender zaten yüklü olan bir yapı aracısı üzerinde çalıştırılmalıdır. Daha fazla bilgi için [Windows Defender web sitesine](https://aka.ms/defender)bakın.
+Kötü amaçlı yazılımdan koruma tarayıcı oluşturma görevi, Microsoft Güvenlik kodu çözümleme uzantısına eklenmiştir. Bu görevin, Windows Defender zaten yüklü olan bir derleme aracısında çalıştırılması gerekir. Daha fazla bilgi için bkz. [Windows Defender web sitesi](https://aka.ms/defender).
 
-### <a name="binskim"></a>BinSkim
+### <a name="binskim"></a>Binskım
 
-BinSkim, derleyici ayarlarını, bağlayıcı ayarlarını ve ikili dosyaların güvenlikle ilgili diğer özelliklerini doğrulayan Taşınabilir Çalıştırılabilir (PE) hafif tarayıcıdır. Bu yapı görevi, binskim.exe konsol uygulamasının etrafında bir komut satırı sarıcı sağlar. BinSkim açık kaynak kodlu bir araçtır. Daha fazla bilgi için [GitHub'daki BinSkim'e](https://github.com/Microsoft/binskim)bakın.
+Binskım, derleyici ayarlarını, bağlayıcı ayarlarını ve ikili dosyaların güvenlikle ilgili diğer özelliklerini doğrulayan bir taşınabilir yürütülebilir (PE) hafif tarayıcıdır. Bu derleme görevi, binskim. exe konsol uygulaması etrafında bir komut satırı sarmalayıcı sağlar. BinSkim, açık kaynaklı bir araçtır. Daha fazla bilgi için bkz. [GitHub 'Da Binskım](https://github.com/Microsoft/binskim).
 
-### <a name="credential-scanner"></a>Kimlik Bilgisi Tarayıcı
+### <a name="credential-scanner"></a>Kimlik bilgisi tarayıcısı
 
-Kaynak kodda depolanan parolalar ve diğer sırlar önemli bir sorundur. Kimlik Bilgisi Tarayıcı, bu sorunu çözmeye yardımcı olan özel bir statik çözümleme aracıdır. Araç, kaynak kodunuzdaki ve yapı çıktınızdaki kimlik bilgilerini, sırları, sertifikaları ve diğer hassas içeriği algılar.
+Kaynak kodda depolanan parolalar ve diğer gizli dizileri önemli bir sorundur. Kimlik bilgisi tarayıcısı, bu sorunu çözmeye yardımcı olan özel bir statik analiz aracıdır. Araç, kaynak kodunuzda ve yapı çıkışındaki kimlik bilgilerini, sırları, sertifikaları ve diğer hassas içeriği algılar.
 
-### <a name="microsoft-security-risk-detection"></a>Microsoft Güvenlik Risk Algılama
+### <a name="microsoft-security-risk-detection"></a>Microsoft güvenlik riski algılama
 
-Microsoft Security Risk Detection (MSRD), bulanıklık testi için bulut tabanlı bir hizmettir. Yazılımdaki kullanılabilir güvenlik hatalarını tanımlar. Bu hizmet ayrı bir abonelik ve etkinleştirme gerektirir. Daha fazla bilgi için [MSRD Geliştirici Merkezi'ne](https://docs.microsoft.com/security-risk-detection/)bakın.
+Microsoft güvenlik riski algılama (MSRD), belirsizlik testi için bulut tabanlı bir hizmettir. Yazılımda açıktan yararlanma güvenlik hatalarını tanımlar. Bu hizmet ayrı bir abonelik ve etkinleştirme gerektirir. Daha fazla bilgi için bkz. [Msrd Geliştirici Merkezi](https://docs.microsoft.com/security-risk-detection/).
 
 ### <a name="roslyn-analyzers"></a>Roslyn Çözümleyicileri
 
-Roslyn Analyzers, yönetilen C# ve Visual Basic kodunu statik olarak analiz etmek için Microsoft'un derleyici yle tümleşik aracıdır. Daha fazla bilgi için [Roslyn tabanlı analizörlere](https://docs.microsoft.com/dotnet/standard/analyzers/)bakın.
+Roslyn Çözümleyicileri, Microsoft 'un yönetilen C# ve Visual Basic kodu statik olarak analiz etmek için derleyici ile tümleşik bir araçtır. Daha fazla bilgi için bkz. [Roslyn tabanlı çözümleyiciler](https://docs.microsoft.com/dotnet/standard/analyzers/).
 
 ### <a name="tslint"></a>TSLint
 
-TSLint, TypeScript kodunu okunabilirlik, skorun ve işlevsellik hataları için denetleyen genişletilebilir bir statik çözümleme aracıdır. Modern editörler ve yapı sistemleri tarafından yaygın olarak desteklenir. Kendi tiftik kuralları, yapılandırmaları ve formatters ile özelleştirebilirsiniz. TSLint açık kaynak kodlu bir araçtır. Daha fazla bilgi için [GitHub'daki TSLint'e](https://github.com/palantir/tslint)bakın.
+TSLint, okunabilir, bakım ve işlevlerde hatalara yönelik TypeScript kodunu denetleyen genişletilebilir bir statik analiz aracıdır. Modern düzenleyiciler ve derleme sistemleri tarafından yaygın olarak desteklenir. Kendi LINT kurallarınızı, yapılandırmalarında ve formatlamalarınızla özelleştirebilirsiniz. TSLint, açık kaynaklı bir araçtır. Daha fazla bilgi için bkz. [GitHub 'Da Tslint](https://github.com/palantir/tslint).
 
-## <a name="analysis-and-post-processing-of-results"></a>Sonuçların analizi ve post-processing
+## <a name="analysis-and-post-processing-of-results"></a>Sonuçları analiz ve sonrası işleme
 
-Microsoft Güvenlik Kodu Çözümlemesi uzantısı da üç postprocessing görevleri vardır. Bu görevler, güvenlik aracı görevleri tarafından bulunan sonuçları çözümlemenize yardımcı olur. Bir ardışık izlemeye eklendiğinde, bu görevler genellikle diğer tüm araç görevlerini izler.
+Microsoft Güvenlik kodu analizi uzantısında Ayrıca üç gönderme işlemi görevi vardır. Bu görevler, güvenlik aracı görevlerinde bulunan sonuçları çözümlemenize yardımcı olur. Bir işlem hattına eklendiğinde, bu görevler genellikle diğer tüm araç görevlerini izler.
 
-### <a name="publish-security-analysis-logs"></a>Güvenlik Analizi Günlüklerini Yayımla
+### <a name="publish-security-analysis-logs"></a>Güvenlik analizi günlüklerini yayımlama
 
-Güvenlik Çözümlemesi Günlükleri oluşturma görevi, yapı sırasında çalıştırılabilen güvenlik araçlarının günlük dosyalarını korur. Soruşturma ve takip için bu günlükleri okuyabilirsiniz.
+Güvenlik analizi günlük oluşturmayı Yayımla görevi, derleme sırasında çalıştırılan güvenlik araçlarının günlük dosyalarını korur. Araştırma ve izleme için bu günlükleri okuyabilirsiniz.
 
-Günlük dosyalarını Azure Yapıları'nda .zip dosyası olarak yayımlayabilirsiniz. Bunları özel yapı aracınızdan erişilebilir bir dosya paylaşımına da kopyalayabilirsiniz.
+Günlük dosyalarını bir. zip dosyası olarak Azure Artifacts yayımlayabilirsiniz. Ayrıca, bunları özel yapı aracıınızdan erişilebilir bir dosya paylaşımında kopyalayabilirsiniz.
 
-### <a name="security-report"></a>Güvenlik Raporu
+### <a name="security-report"></a>Güvenlik raporu
 
-Güvenlik Raporu oluşturma görevi günlük dosyalarını ayrıştirır. Bu dosyalar, yapı sırasında çalışan güvenlik araçları tarafından oluşturulur. Yapı görevi daha sonra tek bir özet rapor dosyası oluşturur. Bu dosya, çözümleme araçları tarafından bulunan tüm sorunları gösterir.
+Güvenlik raporu derleme görevi günlük dosyalarını ayrıştırır. Bu dosyalar, derleme sırasında çalışan güvenlik araçları tarafından oluşturulur. Build görevi sonra tek bir Özet rapor dosyası oluşturur. Bu dosya, çözümleme araçları tarafından bulunan tüm sorunları gösterir.
 
-Bu görevi, belirli araçlar veya tüm araçlar için sonuçları raporlamak için yapılandırabilirsiniz. Yalnızca hatalar veya her iki hata ve uyarı gibi hangi sorun düzeyinin rapor edeceğini de seçebilirsiniz.
+Bu görevi, belirli araçlara veya tüm araçlara yönelik sonuçları bildirmek üzere yapılandırabilirsiniz. Raporlanacak sorun düzeyini, yalnızca hatalar veya hata ve uyarılarla aynı şekilde seçebilirsiniz.
 
-### <a name="post-analysis-build-break"></a>Post-Analysis (yapı sonu)
+### <a name="post-analysis-build-break"></a>Analiz sonrası (derleme kesmesi)
 
-Çözümleme Sonrası oluşturma göreviyle, bir yapının kasıtlı olarak başarısız olması yla ilgili bir yapı sonu enjekte edebilirsiniz. Bir veya daha fazla çözümleme aracı koddaki sorunları rapor ederse, bir yapı sonu enjekte ekarsınız.
+Analiz sonrası derleme görevi sayesinde, bir yapı kesmeyi, özellikle de bir yapılandırmanın başarısız olmasına neden olabilir. Bir veya daha fazla analiz aracı kodda sorun bildir, bir derleme kesmesi eklersiniz.
 
-Belirli araçlar veya tüm araçlar tarafından bulunan sorunlar için yapıyı kırmak için bu görevi yapılandırabilirsiniz. Ayrıca, hatalar veya uyarılar gibi bulunan sorunların önem derecesine göre yapılandırabilirsiniz.
+Bu görevi, belirli araçların veya tüm araçların bulduğu sorunlar için derlemeyi bölmek üzere yapılandırabilirsiniz. Ayrıca, hatalar veya uyarılar gibi bulunan sorunların önem derecesine göre de yapılandırabilirsiniz.
 
 >[!NOTE]
->Tasarım gereği, görev başarıyla biterse, her yapı görevi başarılı olur. Bu, bir aracın sorunları bulup bulmadığı, böylece yapının tüm araçların çalışmasına izin vererek tamamlanabilmesi için geçerlidir.
+>Tasarım yaparak, görev başarıyla tamamlandığında her derleme görevi başarılı olur. Bu, bir aracın sorunları bulup bulmayacağı ve bu sayede, tüm araçların çalışmasına izin vererek oluşturma işleminin tamamlanmasını sağlamak için geçerlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Microsoft Güvenlik Kodu Analizi'nin gemiye nasıl yüklenir ve yüklenir, ilgili talimatları için [Onboarding ve yükleme kılavuzumuza](security-code-analysis-onboard.md)bakın.
+Microsoft Güvenlik kodu analizini ekleme ve yükleme yönergeleri için [ekleme ve yükleme kılavuzumuza](security-code-analysis-onboard.md)bakın.
 
-Yapı görevlerini yapılandırma hakkında daha fazla bilgi için [Yapılandırma kılavuzumuza](security-code-analysis-customize.md) veya [YAML Yapılandırma kılavuzumuza](yaml-configuration.md)bakın.
+Yapı görevlerini yapılandırma hakkında daha fazla bilgi için bkz. [yapılandırma kılavuzumuzu](security-code-analysis-customize.md) veya [YAML yapılandırma kılavuzu](yaml-configuration.md).
 
-Uzantı ve sunulan araçlar la ilgili daha fazla sorunuz varsa, [SSS sayfamıza](security-code-analysis-faq.md)göz atın.
+Uzantı ve sunulan araçlar hakkında başka sorularınız varsa, [SSS sayfamıza](security-code-analysis-faq.md)göz atın.

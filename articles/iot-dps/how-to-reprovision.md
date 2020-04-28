@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Aygıt Sağlama Hizmeti'ndeki aygıtları yeniden sağlama
-description: Aygıt Sağlama Hizmeti (DPS) örneğinizle aygıtları nasıl yeniden sağabileceğinizi ve bunu neden yapmanız gerekebileceğini öğrenin.
+title: Azure IoT Hub cihaz sağlama hizmeti 'nde cihazları yeniden sağlama
+description: Cihaz sağlama hizmeti (DPS) örneğinizle cihazların yeniden nasıl sağlanacağını ve neden bunu yapmanız gerekeceğinizi öğrenin.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,92 +8,92 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 0ded494debab19daa15a953715b1ab7b0b10ad18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74974913"
 ---
-# <a name="how-to-reprovision-devices"></a>Aygıtları yeniden sağlama
+# <a name="how-to-reprovision-devices"></a>Cihazları yeniden sağlama
 
-Bir IoT çözümünün yaşam döngüsü sırasında aygıtları IoT hub'ları arasında taşımak yaygındır. Bu hareketin nedenleri aşağıdaki senaryoları içerebilir:
+IoT çözümünün yaşam döngüsü boyunca Cihazları IoT Hub 'ları arasında taşımak yaygındır. Bu taşımanın nedenleri aşağıdaki senaryolara dahil olabilir:
 
-* **Coğrafi konum**: Aygıt konumlar arasında hareket ettikçe, aygıtın her konuma daha yakın bir IoT hub'ına geçirilmesiyle ağ gecikmesi artar.
+* **Coğrafi konum**: bir cihaz konumlar arasında taşındığında, cihazın her konuma yakın bir IoT Hub 'ına geçirilmesi halinde ağ gecikmesi geliştirilmiştir.
 
-* **Çoklu kiralama**: Bir cihaz aynı IoT çözümü içinde kullanılabilir, ancak yeni bir müşteriye veya müşteri sitesine yeniden atanmış veya kiralanmış olabilir. Bu yeni müşteriye farklı bir IoT hub'ı kullanılarak hizmet verilebilir.
+* **Çoklu kiracı**: bir cihaz aynı IoT çözümünde kullanılabilir, ancak yeni bir müşteri veya müşteri sitesi için yeniden atandı veya kiralanır. Bu yeni müşteri farklı bir IoT Hub 'ı kullanılarak hizmet verebilir.
 
-* **Çözüm değişikliği**: Bir aygıt yeni veya güncelleştirilmiş bir IoT çözümüne taşınabilir. Bu yeniden atama, aygıtın diğer arka uç bileşenlerine bağlı yeni bir IoT hub'ı ile iletişim kurmasını gerektirebilir. 
+* **Çözüm değişikliği**: bir cihaz yeni veya güncelleştirilmiş bir IoT çözümüne taşınabilir. Bu yeniden atama, cihazın diğer arka uç bileşenlerine bağlı yeni bir IoT Hub ile iletişim kurmasını gerektirebilir. 
 
-* **Karantina**: Çözelti değişikliğine benzer. Arızalı, gizliliği ihlal edilen veya güncelliğini yitirmiş bir aygıt, tüm yapabileceği şeyin güncelleştirilip uyumlu hale gelmek olduğu bir IoT hub'ına yeniden atanabilir. Aygıt düzgün çalıştığında, ana hub'ına geri geçirilir.
+* **Karantina**: bir çözüm değişikliğine benzer. Hatalı çalışan, güvenliği aşılmış veya güncel olmayan bir cihaz, hepsi güncelleyebildiği ve uyumluluk için geri alabileceğiniz bir IoT Hub 'ına yeniden atanabilir. Cihaz düzgün şekilde çalıştıktan sonra ana hub 'ına geri geçirilir.
 
-Yeniden sağlamayla ilgili daha ayrıntılı bir genel bakış için, [IoT Hub Aygıt yeniden sağlama kavramlarına](concepts-device-reprovision.md)bakın.
+Yeniden hazırlama hakkında daha ayrıntılı bilgi için bkz. [cihaz yeniden sağlama kavramlarını IoT Hub](concepts-device-reprovision.md).
 
 
-## <a name="configure-the-enrollment-allocation-policy"></a>Kayıt tahsisat ilkesini yapılandırma
+## <a name="configure-the-enrollment-allocation-policy"></a>Kayıt ayırma ilkesini yapılandırma
 
-Ayırma ilkesi, kayıtla ilişkili aygıtların yeniden sağlandıktan sonra bir IoT hub'ına nasıl tahsis edilmeyeceğini veya atanacağını belirler.
+Ayırma ilkesi, kayıt ile İlişkili cihazların yeniden sağlandıktan sonra bir IoT Hub 'ına nasıl ayrılacağını veya atandığını belirler.
 
-Aşağıdaki adımlar, aygıtın kaydı için ayırma ilkesini yapılandırır:
+Aşağıdaki adımlar, bir cihazın kaydı için ayırma ilkesini yapılandırır:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın ve Cihaz Sağlama Hizmeti örneğinize gidin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve cihaz sağlama hizmeti örneğinize gidin.
 
-2. **Kayıtları Yönet'i**tıklatın ve yeniden sağlama için yapılandırmak istediğiniz kayıt grubunu veya tek tek kaydı tıklatın. 
+2. Kayıtları **Yönet**' e tıklayın ve yeniden sağlama için yapılandırmak istediğiniz kayıt grubuna veya bireysel kaydına tıklayın. 
 
-3. **Hub'lara aygıtları nasıl atamak istediğinizi seçin'in**altında, aşağıdaki ayırma ilkelerinden birini seçin:
+3. **Cihazları hub 'lara nasıl atamak Istediğinizi seçin**altında, aşağıdaki ayırma ilkelerinden birini seçin:
 
-    * **En düşük gecikme :** Bu ilke, aygıt ve IoT Hub arasındaki en düşük gecikme gecikmesi iletişimine neden olacak aygıtları bağlantılı IoT Hub'ına atar. Bu seçenek, aygıtın konuma göre en yakın IoT hub'ı ile iletişim kurmasını sağlar. 
+    * **En düşük gecikme**: Bu ilke, cihaz ve IoT Hub arasındaki en düşük gecikme süresine neden olacak şekilde cihazları bağlantılı IoT Hub atar. Bu seçenek, cihazın konuma göre en yakın IoT Hub 'ı ile iletişim kurmasını sağlar. 
     
-    * **Eşit ağırlıklı dağıtım**: Bu ilke, aygıtları bağlantılı her IoT hub'ına atanan ayırma ağırlığına göre bağlantılı IoT Hub'larına dağıtır. Bu ilke, bakiye aygıtlarını bu hub'larda ayarlanan ayırma ağırlıklarına göre bağlantılı hub'lar grubuna yüklemenize olanak tanır. Aygıtları yalnızca bir IoT Hub'ına sayarsanız, bu ayarı öneririz. Bu varsayılan ayardır. 
+    * **Eşit ağırlıklı dağıtım**: Bu ilke, her bağlantılı IoT Hub 'ına atanan ayırma ağırlığına bağlı olarak cihazları bağlantılı IoT Hub 'larına dağıtır. Bu ilke, bu hub 'larda ayarlanan ayırma ağırlıklarını temel alarak cihazları bir bağlı hub grubu genelinde yük dengelemenize olanak tanır. Cihazları yalnızca bir IoT Hub sağladıysanız, bu ayar önerilir. Bu varsayılan ayardır. 
     
-    * **Statik yapılandırma**: Bu ilke, bir aygıtın sağlanması için kayıt girişinde istenilen bir IoT Hub'ın listelenmesini gerektirir. Bu ilke, aygıtları atamak istediğiniz belirli bir IoT hub'ı belirlemenize olanak tanır.
+    * **Statik yapılandırma**: Bu ilke, bir cihazın sağlanması için kayıt girişinde istenen IoT Hub listelenmesini gerektirir. Bu ilke, cihazları atamak istediğiniz tek bir özel IoT Hub 'ı atamanıza olanak tanır.
 
-4. **IoT hub'larını seçin'in altında bu gruba atanabilir,** tahsisat politikanıza dahil olmasını istediğiniz bağlantılı IoT hub'larını seçin. İsteğe bağlı olarak, Yeni Bir **IoT Hub** düğmesini bağla'yı kullanarak yeni bir bağlantılı Iot hub ekleyin.
+4. **Bu grubun atanabileceği IoT Hub 'Larını seçin**altında ayırma ilkenize dahil etmek Istediğiniz bağlantılı IoT Hub 'larını seçin. İsteğe bağlı olarak, **Yeni bir IoT Hub bağlantısını** kullanarak yeni bir bağlı IoT Hub ekleyin.
 
-    En **Düşük gecikme ayırma** ilkesiyle, seçtiğiniz hub'lar aygıt ataması için en yakın hub'ı belirlemek için gecikme sonu değerlendirmesine dahil edilir.
+    **En düşük gecikme süresi** ayırma ilkesiyle, seçtiğiniz hub 'lar cihaz ataması için en yakın hub 'ı belirlemek üzere gecikme süresi değerlendirmesine dahil edilir.
 
-    Eşit **ağırlıklı dağıtım** ayırma ilkesiyle, aygıtlar yapılandırılmış ayırma ağırlıklarına ve geçerli aygıt yüklerine bağlı olarak seçtiğiniz hub'lar arasında yük dengeli hale gelir.
+    **Eşit ağırlıklı dağıtım** ayırma ilkesiyle cihaz, yapılandırılmış ayırma ağırlıklarını ve geçerli cihaz yüküne göre seçtiğiniz hub 'larda yük dengelemesi yapılır.
 
-    Statik **yapılandırma** ayırma ilkesiyle, atanmasını istediğiniz aygıtlar için IoT hub'ını seçin.
+    **Statik yapılandırma** ayırma ilkesiyle, cihazların atanmasını istediğiniz IoT Hub 'ını seçin.
 
-4. **Kaydet'i**tıklatın veya yeniden sağlama ilkesini ayarlamak için bir sonraki bölüme gidin.
+4. Yeniden sağlama ilkesini ayarlamak için **Kaydet**' e tıklayın veya sonraki bölüme geçin.
 
-    ![Kayıt tahsisat ilkesini seçin](./media/how-to-reprovision/enrollment-allocation-policy.png)
+    ![Kayıt ayırma ilkesi seçin](./media/how-to-reprovision/enrollment-allocation-policy.png)
 
 
 
 ## <a name="set-the-reprovisioning-policy"></a>Yeniden sağlama ilkesini ayarlama
 
-1. [Azure portalında](https://portal.azure.com) oturum açın ve Cihaz Sağlama Hizmeti örneğinize gidin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve cihaz sağlama hizmeti örneğinize gidin.
 
-2. **Kayıtları Yönet'i**tıklatın ve yeniden sağlama için yapılandırmak istediğiniz kayıt grubunu veya tek tek kaydı tıklatın.
+2. Kayıtları **Yönet**' e tıklayın ve yeniden sağlama için yapılandırmak istediğiniz kayıt grubuna veya bireysel kaydına tıklayın.
 
-3. **Aygıt verilerinin farklı bir IoT hub'ına yeniden sağlanmasında nasıl işleneceğini seçin,** aşağıdaki yeniden sağlama ilkelerinden birini seçin:
+3. **Farklı bir IoT Hub 'ına yeniden sağlamak üzere cihaz verilerinin nasıl Işleneceğini seçin**altında, aşağıdaki yeniden sağlama ilkelerinden birini seçin:
 
-    * **Verileri yeniden sağlama ve geçirme**: Bu ilke, kayıt girişiyle ilişkili aygıtlar yeni bir sağlama isteği gönderdiğinde harekete geçer. Kayıt girişi yapılandırmasına bağlı olarak, aygıt başka bir IoT hub'ına yeniden atanabilir. Aygıt IoT hub'larını değiştiriyorsa, ilk IoT hub'ına sahip aygıt kaydı kaldırılır. Bu ilk IoT hub'ından gelen tüm aygıt durumu bilgileri yeni IoT hub'ına taşınır. Geçiş sırasında, aygıtın durumu **Atama** olarak bildirilir
+    * **Verileri yeniden sağlayın ve geçirin**: Bu ilke, kayıt girişiyle ilişkili cihazlar yeni bir sağlama isteği gönderdiğinde işlem gerçekleştirir. Kayıt girişi yapılandırmasına bağlı olarak, cihaz başka bir IoT Hub 'ına yeniden atanabilir. Cihaz IoT Hub 'larını değiştirirse, ilk IoT Hub 'ına sahip cihaz kaydı kaldırılır. Bu ilk IoT Hub 'ından tüm cihaz durum bilgileri yeni IoT Hub 'ına geçirilir. Geçiş sırasında cihazın durumu **atama** olarak bildirilir
 
-    * **Yeniden sağlama ve ilk config'e sıfırlama**: Bu ilke, kayıt girişiyle ilişkili aygıtlar yeni bir sağlama isteği gönderdiğinde harekete geçer. Kayıt girişi yapılandırmasına bağlı olarak, aygıt başka bir IoT hub'ına yeniden atanabilir. Aygıt IoT hub'larını değiştiriyorsa, ilk IoT hub'ına sahip aygıt kaydı kaldırılır. Aygıt sağlandığında sağlama hizmeti örneğinin aldığı ilk yapılandırma verileri yeni IoT hub'ına sağlanır. Geçiş sırasında, aygıtın durumu **Atama**olarak bildirilecektir.
+    * **Yeniden sağlama ve ilk yapılandırmaya sıfırlama**: Bu ilke, kayıt girdisiyle ilişkili cihazlar yeni bir sağlama isteği gönderdiğinde işlem gerçekleştirir. Kayıt girişi yapılandırmasına bağlı olarak, cihaz başka bir IoT Hub 'ına yeniden atanabilir. Cihaz IoT Hub 'larını değiştirirse, ilk IoT Hub 'ına sahip cihaz kaydı kaldırılır. Cihaz sağlandığında sağlama hizmeti örneğinin aldığı ilk yapılandırma verileri yeni IoT Hub 'ına sağlanır. Geçiş sırasında cihazın durumu **atama**olarak bildirilir.
 
-4. Değişikliklerinize göre aygıtın yeniden sağlanmasını etkinleştirmek için **Kaydet'i** tıklatın.
+4. Değişikliklerinizi temel alarak cihazın yeniden sağlamasını etkinleştirmek için **Kaydet** ' e tıklayın.
 
-    ![Kayıt tahsisat ilkesini seçin](./media/how-to-reprovision/reprovisioning-policy.png)
+    ![Kayıt ayırma ilkesi seçin](./media/how-to-reprovision/reprovisioning-policy.png)
 
 
 
-## <a name="send-a-provisioning-request-from-the-device"></a>Aygıttan bir sağlama isteği gönderme
+## <a name="send-a-provisioning-request-from-the-device"></a>Cihazdan sağlama isteği gönderme
 
-Aygıtların önceki bölümlerde yapılan yapılandırma değişikliklerine göre yeniden sağlanabilmesi için, bu aygıtların yeniden sağlama talebinde bulunmaları gerekir. 
+Cihazların önceki bölümlerde yapılan yapılandırma değişikliklerine göre yeniden sağlanması için, bu cihazların yeniden sağlamayı istemesi gerekir. 
 
-Bir aygıtın sağlama isteği gönderme sıklığı senaryoya bağlıdır. Ancak, cihazlarınızı yeniden başlatmada bir sağlama hizmeti örneğine sağlama isteği gönderecek şekilde programlamanız ve isteğe bağlı olarak sağlamayı el ile tetikleyen bir [yöntemi](../iot-hub/iot-hub-devguide-direct-methods.md) desteklemeniz önerilir. Sağlama da istenilen bir [özellik](../iot-hub/iot-hub-devguide-device-twins.md#desired-property-example)ayarlayarak tetiklenebilir. 
+Bir cihazın bir sağlama isteği gönderdiği sıklık, senaryoya bağlıdır. Ancak, yeniden başlatma sırasında cihazlarınızı bir sağlama hizmeti örneğine bir sağlama isteği gönderecek şekilde programlamak ve isteğe bağlı olarak sağlamayı el ile tetiklemek için bir [yöntemi](../iot-hub/iot-hub-devguide-direct-methods.md) desteklemek önerilir. Sağlama Ayrıca [istenen bir özellik](../iot-hub/iot-hub-devguide-device-twins.md#desired-property-example)ayarlanarak tetiklenebilir. 
 
-Bir kayıt girişiyle ilgili yeniden sağlama ilkesi, aygıt sağlama hizmeti örneğinin bu sağlama isteklerini nasıl işleyeceğini ve aygıt durumu verilerinin yeniden sağlama sırasında geçirilip geçirilmeyeceğini belirler. Aynı ilkeler tek tek kayıt ve kayıt grupları için kullanılabilir:
+Bir kayıt girişinde yeniden sağlama ilkesi, cihaz sağlama hizmeti örneğinin bu sağlama isteklerini nasıl işlediğini ve yeniden sağlama sırasında cihaz durumu verilerinin geçirilmesi gerekip gerekmediğini belirler. Aynı ilkeler, bireysel kayıtlar ve kayıt grupları için kullanılabilir:
 
-Örneğin önyükleme sırası sırasında bir aygıttan sağlama istekleri gönderme kodu, [bkz.](quick-create-simulated-device.md)
+Bir önyükleme sırası sırasında bir cihazdan sağlama isteği gönderme kodu için, bkz. [sanal cihaz otomatik sağlama](quick-create-simulated-device.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Daha fazla Yeniden sağlama öğrenmek için [IoT Hub Aygıt yeniden sağlama kavramlarına](concepts-device-reprovision.md) bakın 
-- Daha fazla Sağlama hakkında bilgi edinmek [için, daha önce otomatik olarak sağlanan aygıtların nasıl yok edilir](how-to-unprovision-devices.md) hale geldiğini öğrenin 
+- Daha fazla yeniden sağlama hakkında daha fazla bilgi için bkz. [cihaz yeniden sağlama kavramlarını IoT Hub](concepts-device-reprovision.md) 
+- Daha fazla sağlama sağlamayı öğrenmek için bkz. [daha önce otomatik olarak sağlanan cihazların sağlamasını kaldırma](how-to-unprovision-devices.md) 
 
 
 

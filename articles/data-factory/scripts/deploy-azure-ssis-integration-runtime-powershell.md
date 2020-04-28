@@ -1,6 +1,6 @@
 ---
-title: PowerShell'i kullanarak Azure SSIS tümleştirme çalışma süresini dağıtma
-description: Bu PowerShell komut dosyası, Bulutta SSIS paketlerini çalıştırabilen bir Azure-SSIS tümleştirme çalışma süresi oluşturur.
+title: PowerShell kullanarak Azure SSIS tümleştirme çalışma zamanı dağıtma
+description: Bu PowerShell betiği, bulutta SSIS paketlerini çalıştırabilirler bir Azure-SSIS tümleştirme çalışma zamanı oluşturur.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,15 +11,15 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
 ms.openlocfilehash: c6d9a9299fa25013a440ee6ac45f5eae407225b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74929814"
 ---
-# <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShell komut dosyası - Azure-SSIS tümleştirme çalışma süresini dağıtma
+# <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShell betiği-Azure-SSIS tümleştirme çalışma zamanını dağıtma
 
-Bu örnek PowerShell komut dosyası, SSIS paketlerinizi Azure'da çalıştırabilen bir Azure-SSIS tümleştirme çalışma süresi oluşturur.  
+Bu örnek PowerShell betiği, Azure 'da SSIS paketlerinizi çalıştırabilirler bir Azure-SSIS tümleştirme çalışma zamanı oluşturur.  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -31,7 +31,7 @@ Bu örnek PowerShell komut dosyası, SSIS paketlerinizi Azure'da çalıştırabi
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme
 
-Örnek komut dosyasını çalıştırdıktan sonra, kaynak grubunu ve onunla ilişkili tüm kaynakları kaldırmak için aşağıdaki komutu kullanabilirsiniz:
+Örnek betiği çalıştırdıktan sonra, kaynak grubunu ve onunla ilişkili tüm kaynakları kaldırmak için aşağıdaki komutu kullanabilirsiniz:
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
@@ -50,8 +50,8 @@ Bu betik şu komutları kullanır:
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Veri fabrikası oluşturma. |
-| [Set-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) | Bulutta SSIS paketlerini çalıştırabilen bir Azure-SSIS tümleştirme çalışma süresi oluşturur |
-| [Başlangıç-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) | Azure-SSIS tümleştirme çalışma süresini başlatır. |
+| [Set-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) | Bulutta SSIS paketlerini çalıştırabilirler bir Azure-SSIS tümleştirme çalışma zamanı oluşturur |
+| [Start-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) | Azure-SSIS tümleştirme çalışma zamanını başlatır. |
 | [Get-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/get-Azdatafactoryv2integrationruntime) | Azure-SSIS tümleştirme çalışma zamanı hakkında bilgi alır. |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
@@ -60,4 +60,4 @@ Bu betik şu komutları kullanır:
 
 Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
 
-Ek Azure Veri Fabrikası PowerShell komut dosyası örnekleri [Azure Veri Fabrikası PowerShell örneklerinde](../samples-powershell.md)bulunabilir.
+Ek Azure Data Factory PowerShell betiği örnekleri [Azure Data Factory PowerShell örneklerinde](../samples-powershell.md)bulunabilir.

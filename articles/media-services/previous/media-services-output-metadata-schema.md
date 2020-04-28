@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri çıktı meta veri şeması | Microsoft Dokümanlar
-description: Bu makalede, Azure Medya Hizmetleri çıktı meta veri şemasına genel bir bakış sunulur.
+title: Azure Media Services çıktı meta verileri şeması | Microsoft Docs
+description: Bu makale, Azure Media Services çıkış meta verisi şemasına bir genel bakış sunar.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,152 +15,152 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 3f0c6b60e2be625d1f869c3eda4acb9dfd3c6e9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74886821"
 ---
-# <a name="output-metadata"></a>Çıktı Meta verileri
+# <a name="output-metadata"></a>Çıkış meta verileri
 ## <a name="overview"></a>Genel Bakış
-Kodlama işi, bazı kodlama görevlerini gerçekleştirmek istediğiniz bir giriş kıymeti (veya varlıklar) ile ilişkilidir. Örneğin, bir MP4 dosyasını H.264 MP4 uyarlanabilir bithızı kümelerine kodlayın; küçük resim oluşturun; bindirmeler oluşturun. Bir görev tamamlandıktan sonra, bir çıktı varlık üretilir.  Çıkış varlığı video, ses, küçük resimler, vb içerir. Çıktı varlığı, çıktı varlığı yla ilgili meta verileri içeren bir dosya da içerir. Meta data XML dosyasının adı aşağıdaki &lt;biçime sahiptir: source_file_name&gt;_manifest.xml (örneğin, BigBuckBunny_manifest.xml).  
+Bir kodlama işi, üzerinde bazı kodlama görevlerini gerçekleştirmek istediğiniz bir giriş varlığı (veya varlıkları) ile ilişkilendirilir. Örneğin, bir MP4 dosyasını H. küçük resim oluşturma; yer paylaşımları oluştur. Bir görevi tamamladıktan sonra bir çıkış varlığı üretilir.  Çıkış varlığı video, ses, küçük resim vb. içerir. Çıktı varlığı Ayrıca çıkış varlığı hakkında meta veriler içeren bir dosya içerir. Meta veri XML dosyasının adı şu biçimdedir: &lt;source_file_name&gt;_manifest. xml (örneğin, BigBuckBunny_manifest. xml).  
 
-Ortam Hizmetleri, meta veri oluşturmak için giriş Varlıklarını önceden tarayamaz. Giriş meta verileri, yalnızca bir giriş Kıymeti Bir İş'te işlendiğinde yapı olarak oluşturulur. Bu nedenle bu yapı çıkış Varlık yazılır. Giriş Varlıkları ve çıktı Varlıkları için meta veri oluşturmak için farklı araçlar kullanılır. Bu nedenle, giriş meta verileri çıktı meta verilerinden biraz daha farklı şema vardır.
+Media Services meta veri oluşturmak için giriş varlıklarını önceden üretemiyor. Giriş meta verileri yalnızca bir Iş içinde bir giriş varlığı işlendiğinde yapıt olarak üretilir. Bu nedenle, bu yapıt çıkış varlığına yazılır. Farklı araçlar, giriş varlıkları ve çıkış varlıkları için meta veriler oluşturmak için kullanılır. Bu nedenle, giriş meta verilerinin, çıkış meta verileri arasında biraz farklı bir şeması vardır.
 
-Meta veri dosyasını incelemek istiyorsanız, bir **SAS** bulucu oluşturup dosyayı yerel bilgisayarınıza indirebilirsiniz.  
+Meta veri dosyasını incelemek istiyorsanız **SAS** Konumlandırıcı oluşturabilir ve dosyayı yerel bilgisayarınıza indirebilirsiniz.  
 
-Bu makalede, çıkış metadasının (source_file_name&lt;&gt;_manifest.xml) dayandığı XML şemasının öğeleri ve türleri anlatılmaktadır. Giriş kıymeti hakkında meta veriler içeren dosya hakkında bilgi için Giriş Meta verileri'ne bakın.  
+Bu makalede, çıkış metada (&lt;source_file_name&gt;_manifest. XML) temel aldığı XML şemasının öğeleri ve türleri açıklanmaktadır. Giriş varlığı hakkında meta veriler içeren dosya hakkında daha fazla bilgi için bkz. giriş meta verileri.  
 
-Bu makalenin sonunda şema kodunun ve XML örneğinin tamamını bulabilirsiniz.  
+Tüm şema kodunu ve XML örneğini Bu makalenin sonunda bulabilirsiniz.  
 
 ## <a name="assetfiles-root-element"></a><a name="AssetFiles"></a>AssetFiles kök öğesi
-Kodlama işi için AssetFile girişlerinin toplanması.  
+Kodlama işi için Assetdosya girişlerinin toplanması.  
 
 ### <a name="child-elements"></a>Alt öğeleri
 | Adı | Açıklama |
 | --- | --- |
-| **Varlık Dosyası**<br/><br/> minOccurs="0" maxOccurs="1" |Varlık Dosyaları koleksiyonunun bir parçası olan bir AssetFile öğesi. |
+| **AssetFile**<br/><br/> minOccurs = "0" maxOccurs = "1" |AssetFiles koleksiyonunun bir parçası olan bir AssetFile öğesi. |
 
 ## <a name="assetfile-element"></a><a name="AssetFile"></a>AssetFile öğesi
-Bir XML örneği [XML örneği](#xml)bulabilirsiniz.  
+XML örnek [XML örneği](#xml)bulabilirsiniz.  
 
 ### <a name="attributes"></a>Öznitelikler
 | Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Adı**<br/><br/> Gerekli |**xs:string** |Ortam varlık dosya adı. |
-| **Boyut**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:uzun** |Kıymet dosyasının baytboyutu. |
-| **Süre**<br/><br/> Gerekli |**xs:süre** |İçerik oynatma süresi. |
+| **Adı**<br/><br/> Gerekli |**xs: String** |Medya varlık dosya adı. |
+| **Boyut**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: Long** |Varlık dosyasının bayt cinsinden boyutu. |
+| **Süre**<br/><br/> Gerekli |**xs: süre** |İçerik kayıttan yürütme süresi. |
 
 ### <a name="child-elements"></a>Alt öğeleri
 | Adı | Açıklama |
 | --- | --- |
-| **Kaynak** |Bu Varlık Dosyasını üretmek için işlenen giriş/kaynak ortam dosyalarının toplanması. Daha fazla bilgi için Kaynak öğesine bakın. |
-| **Video Parçaları**<br/><br/> minOccurs="0" maxOccurs="1" |Her fiziksel AssetFile içinde sıfır veya daha fazla video parçaları uygun bir kapsayıcı biçimine interleaved içerebilir. Daha fazla bilgi için VideoTracks öğesine bakın. |
-| **Sesli Parçalar**<br/><br/> minOccurs="0" maxOccurs="1" |Her fiziksel AssetFile, uygun bir kapsayıcı biçimine ayrılan sıfır veya daha fazla ses parçası içerebilir. Bu tüm o ses parçalarının koleksiyonu. Daha fazla bilgi için AudioTracks öğesine bakın. |
+| **Ğına** |Bu Assetdosyasını üretmek için işlenen giriş/kaynak medya dosyalarının koleksiyonu. Daha fazla bilgi için bkz. kaynak öğesi. |
+| **Videoizler**<br/><br/> minOccurs = "0" maxOccurs = "1" |Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili bir kapsayıcı biçiminde araya eklenebilir. Daha fazla bilgi için bkz. Videoiz öğesi. |
+| **Ses Izleri**<br/><br/> minOccurs = "0" maxOccurs = "1" |Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla ses parçası ile uygun bir kapsayıcı biçimiyle bulunabilir. Bu, tüm ses izlemelerinin koleksiyonudur. Daha fazla bilgi için bkz. Audioiz öğesi. |
 
-## <a name="sources-element"></a><a name="Sources"></a>Kaynaklar öğesi
-Bu Varlık Dosyasını üretmek için işlenen giriş/kaynak ortam dosyalarının toplanması.  
+## <a name="sources-element"></a><a name="Sources"></a>Sources öğesi
+Bu Assetdosyasını üretmek için işlenen giriş/kaynak medya dosyalarının koleksiyonu.  
 
-Bir XML örneği [XML örneği](#xml)bulabilirsiniz.  
+XML örnek [XML örneği](#xml)bulabilirsiniz.  
 
 ### <a name="child-elements"></a>Alt öğeleri
 | Adı | Açıklama |
 | --- | --- |
-| **Kaynak**<br/><br/> minOccurs="1" maxOccurs="sınırsız" |Bu varlığı oluştururken kullanılan bir giriş/kaynak dosyası. Daha fazla bilgi için Kaynak öğesine bakın. |
+| **Kaynak**<br/><br/> minOccurs = "1" maxOccurs = "sınırsız" |Bu varlık oluşturulurken kullanılan bir giriş/kaynak dosyası. Daha fazla bilgi için bkz. kaynak öğesi. |
 
-## <a name="source-element"></a><a name="Source"></a>Kaynak öğesi
-Bu varlığı oluştururken kullanılan bir giriş/kaynak dosyası.  
+## <a name="source-element"></a><a name="Source"></a>Kaynak öğe
+Bu varlık oluşturulurken kullanılan bir giriş/kaynak dosyası.  
 
-Bir XML örneği [XML örneği](#xml)bulabilirsiniz.  
+XML örnek [XML örneği](#xml)bulabilirsiniz.  
 
 ### <a name="attributes"></a>Öznitelikler
 | Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Adı**<br/><br/> Gerekli |**xs:string** |Giriş kaynak dosya adı. |
+| **Adı**<br/><br/> Gerekli |**xs: String** |Giriş kaynak dosya adı. |
 
-## <a name="videotracks-element"></a><a name="VideoTracks"></a>VideoTracks öğesi
-Her fiziksel AssetFile içinde sıfır veya daha fazla video parçaları uygun bir kapsayıcı biçimine interleaved içerebilir. **VideoTracks** öğesi tüm video parçalarının bir koleksiyonunu temsil eder.  
+## <a name="videotracks-element"></a><a name="VideoTracks"></a>Videoiz öğesi
+Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla video ile ilgili bir kapsayıcı biçiminde araya eklenebilir. **Videoiz** öğesi tüm video izlemelerinin bir koleksiyonunu temsil eder.  
 
-Bir XML örneği [XML örneği](#xml)bulabilirsiniz.  
+XML örnek [XML örneği](#xml)bulabilirsiniz.  
 
 ### <a name="child-elements"></a>Alt öğeleri
 | Adı | Açıklama |
 | --- | --- |
-| **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="sınırsız" |Üst AssetFile'da belirli bir video izleme. Daha fazla bilgi için Bkz. VideoTrack öğesi. |
+| **VideoTrack**<br/><br/> minOccurs = "1" maxOccurs = "sınırsız" |Ana Assetdosyasında belirli bir video parçası. Daha fazla bilgi için bkz. VideoTrack öğesi. |
 
 ## <a name="videotrack-element"></a><a name="VideoTrack"></a>VideoTrack öğesi
-Üst AssetFile'da belirli bir video izleme.  
+Ana Assetdosyasında belirli bir video parçası.  
 
-Bir XML örneği [XML örneği](#xml)bulabilirsiniz.  
+XML örnek [XML örneği](#xml)bulabilirsiniz.  
 
 ### <a name="attributes"></a>Öznitelikler
 | Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Kimlik**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:int** |Bu video parçasının sıfır tabanlı dizini. **Not:**  Bu **Kimlik,** mp4 dosyasında kullanılan TrackID olması gerekmez. |
-| **Fourcc**<br/><br/> Gerekli |**xs:string** |Video codec FourCC kodu. |
-| **Profil** |**xs:string** |H264 profili (sadece H264 codec için geçerlidir). |
-| **Düzey** |**xs:string** |H264 düzeyi (sadece H264 codec için geçerlidir). |
-| **Genişlik**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:int** |Piksellerde kodlanmış video genişliği. |
-| **Height**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:int** |Piksellerde kodlanmış video yüksekliği. |
-| **DisplayAspectRatioNumerator**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:çift** |Video ekran boy oranı rakamı. |
-| **DisplayAspectRatioDenominator**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:çift** |Video ekran en boy oranı payda. |
-| **Framerate**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:ondalık** |0,3f formatında ölçülen video kare hızı. |
-| **TargetFramerate**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:ondalık** |Hedef kare hızını 0,3f formatında önceden ayarlayın. |
-| **Bitrate**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:int** |AssetFile'dan hesaplandığı gibi, saniyede kilobit cinsinden ortalama video bit hızı. Yalnızca temel akış yükünü sayar ve ambalaj yükünü içermez. |
-| **TargetBitrate**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:int** |Bu video parçası için hedef ortalama bit hızı, kodlama ön kümesi aracılığıyla istendiği gibi, saniyede kilobit. |
-| **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |Max GOP bu video parça için ortalama bithızı, saniyede kilobit. |
+| **Kimlik**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Bu video izlemenin sıfır tabanlı dizini. **Note:**  Bu **kimliğin** bir MP4 dosyasında kullanılan TrackID olması gerekmez. |
+| **FourCC**<br/><br/> Gerekli |**xs: String** |Video codec FourCC kodu. |
+| **Profil** |**xs: String** |H264 profili (yalnızca H264 codec için geçerlidir). |
+| **Düzey** |**xs: String** |H264 düzeyi (yalnızca H264 codec için geçerlidir). |
+| **Genişlik**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Piksel cinsinden kodlanmış video genişliği. |
+| **Height**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Piksel cinsinden kodlanmış video yüksekliği. |
+| **DisplayAspectRatioNumerator**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: Double** |Video görüntüleme en boy oranı payı. |
+| **Displayaspectratiopayda**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: Double** |Video görüntüleme en boy oranı paydası. |
+| **Framerate**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: Decimal** |.3F biçiminde ölçülen video kare hızı. |
+| **Targetkare hızı**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: Decimal** |.3F biçimindeki hedef video kare hızını önceden ayarlayın. |
+| **Bit hızı**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Assetdosyasından hesaplanan saniye başına kilobit cinsinden ortalama video bit hızı. Yalnızca öğesel akış yükünü sayar ve paketleme ek yükünü içermez. |
+| **Targetbit hızı**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Kodlama ön ayarı aracılığıyla istenen, saniye başına kilobit olarak bu video izlemenin Ortalama bit hızını hedefleyin. |
+| **MaxGOPBitrate**<br/><br/> minInclusive = "0" |**xs: int** |Bu video izlemesi için saniyedeki maksimum GOP Ortalama bit hızı, saniye başına kilobit cinsinden. |
 
-## <a name="audiotracks-element"></a><a name="AudioTracks"></a>AudioTracks öğesi
-Her fiziksel AssetFile, uygun bir kapsayıcı biçimine ayrılan sıfır veya daha fazla ses parçası içerebilir. **AudioTracks** öğesi tüm bu ses parçalarının bir koleksiyonunu temsil eder.  
+## <a name="audiotracks-element"></a><a name="AudioTracks"></a>Audioiz öğesi
+Her fiziksel Assetdosyası bu dosyada sıfır veya daha fazla ses parçası ile uygun bir kapsayıcı biçimiyle bulunabilir. **Audioizler** öğesi tüm ses izlemelerinin bir koleksiyonunu temsil eder.  
 
-Bir XML örneği [XML örneği](#xml)bulabilirsiniz.  
+XML örnek [XML örneği](#xml)bulabilirsiniz.  
 
 ### <a name="child-elements"></a>Alt öğeleri
 | Adı | Açıklama |
 | --- | --- |
-| **Sesli Parça**<br/><br/> minOccurs="1" maxOccurs="sınırsız" |Üst AssetFile'da belirli bir ses kaydı. Daha fazla bilgi için AudioTrack öğesine bakın. |
+| **Ses Izi**<br/><br/> minOccurs = "1" maxOccurs = "sınırsız" |Ana Assetdosyasında belirli bir ses parçası. Daha fazla bilgi için bkz. AudioTrack öğesi. |
 
 ## <a name="audiotrack-element"></a><a name="AudioTrack"></a>AudioTrack öğesi
-Üst AssetFile'da belirli bir ses kaydı.  
+Ana Assetdosyasında belirli bir ses parçası.  
 
-Bir XML örneği [XML örneği](#xml)bulabilirsiniz.  
+XML örnek [XML örneği](#xml)bulabilirsiniz.  
 
 ### <a name="attributes"></a>Öznitelikler
 | Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **Kimlik**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:int** |Bu ses parçasının sıfır tabanlı dizini. **Not:**  Bu, bir MP4 dosyasında kullanılan TrackID olması gerekmez. |
-| **Codec** |**xs:string** |Ses parça codec dize. |
-| **EncoderVersion** |**xs:string** |EAC3 için gerekli olan isteğe bağlı kodlayıcı sürüm dizesi. |
-| **Kanallar**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:int** |Ses kanallarının sayısı. |
-| **Örnekleme Hızı**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:int** |Örneklerde/sn veya Hz'de ses örnekleme hızı. |
-| **Bitrate**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:int** |AssetFile'dan hesaplanan saniyede bit cinsinden ortalama ses bit hızı. Yalnızca temel akış yükünü sayar ve ambalaj yükünü içermez. |
-| **BitSPerSample**<br/><br/> minInclusive ="0"<br/><br/> Gerekli |**xs:int** |wFormatTag biçim türü için örnek başına bitler. |
+| **Kimlik**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Bu ses parçasının sıfır tabanlı dizini. **Note:**  Bu, bir MP4 dosyasında kullanılan TrackID olması gerekmez. |
+| **Bileşeni** |**xs: String** |Ses izi codec bileşeni dizesi. |
+| **EncoderVersion** |**xs: String** |EAC3 için gerekli olan isteğe bağlı kodlayıcı sürüm dizesi. |
+| **Kanallar**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Ses kanalı sayısı. |
+| **SamplingRate**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Örnek/sn veya Hz 'teki ses örnekleme oranı. |
+| **Bit hızı**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |Assetdosyasından hesaplanan, saniye başına bit cinsinden ortalama ses bit hızı. Yalnızca öğesel akış yükünü sayar ve paketleme ek yükünü içermez. |
+| **BitsPerSample**<br/><br/> minInclusive = "0"<br/><br/> Gerekli |**xs: int** |WFormatTag biçim türü için örnek başına bit sayısı. |
 
 ### <a name="child-elements"></a>Alt öğeleri
 | Adı | Açıklama |
 | --- | --- |
-| **YükseklikÖlçümSonuç Parametreleri**<br/><br/> minOccurs="0" maxOccurs="1" |Yükseklik ölçüm sonuç parametreleri. Daha fazla bilgi için Bkz. LoudnessMeteringResultParameters öğesi. |
+| **Ses Neskokteringresultparameters**<br/><br/> minOccurs = "0" maxOccurs = "1" |Ses kullanımı ölçüm sonucu parametreleri. Daha fazla bilgi için bkz. ses Neskokteringresultparameters öğesi. |
 
-## <a name="loudnessmeteringresultparameters-element"></a><a name="LoudnessMeteringResultParameters"></a>YükseklikÖlçerSonuç Parametreleri elemanı
-Yükseklik ölçüm sonuç parametreleri.  
+## <a name="loudnessmeteringresultparameters-element"></a><a name="LoudnessMeteringResultParameters"></a>Ses Neskokteringresultparameters öğesi
+Ses kullanımı ölçüm sonucu parametreleri.  
 
-Bir XML örneği [XML örneği](#xml)bulabilirsiniz.  
+XML örnek [XML örneği](#xml)bulabilirsiniz.  
 
 ### <a name="attributes"></a>Öznitelikler
 | Adı | Tür | Açıklama |
 | --- | --- | --- |
-| **DPLMVersionInformation** |**xs:string** |**Dolby** profesyonel yükseklik ölçüm geliştirme kiti sürümü. |
-| **İletişimNormalleştirme**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> Gerekli |**xs:int** |DPLM ile oluşturulan DialogNormalization, LoudnessMetering ayarlandığında gerekli |
-| **IntegratedLoudness**<br/><br/> minInclusive="-70" maxInclusive="10"<br/><br/> Gerekli |**xs:float** |Entegre yükseklik |
-| **Entegre YükseklikBirimi**<br/><br/> Gerekli |**xs:string** |Entegre ses birimi. |
-| **EntegreYükseklikGatingYöntemi**<br/><br/> Gerekli |**xs:string** |Gating tanımlayıcısı |
-| **Entegre YükseklikKonuşma Yüzdesi**<br/><br/> minInclusive ="0" maxInclusive="100" |**xs:float** |Yüzde olarak program üzerinden konuşma içeriği. |
-| **Örnek Tepe Noktası**<br/><br/> Gerekli |**xs:float** |Sıfırlamadan veya en son temizlenmeden bu yana kanal başına en yüksek mutlak örneklem değeri.  Birimler dBFS vardır. |
-| **SamplePeakUnit**<br/><br/> sabit="dBFS"<br/><br/> Gerekli |**xs:anySimpleType** |Örnek tepe birimi. |
-| **TruePeak**<br/><br/> Gerekli |**xs:float** |ItU-R BS.1770-2'ye göre, sıfırlandığından veya en son temizlenmeden bu yana kanal başına maksimum gerçek tepe değeri. Birimler dBTP vardır. |
-| **TruePeakUnit**<br/><br/> sabit="dBTP"<br/><br/> Gerekli |**xs:anySimpleType** |Gerçek tepe birimi. |
+| **Dplmversionınformation** |**xs: String** |**Dolby** Professional ses kullanımı ölçüm geliştirme seti sürümü. |
+| **Iletişimnormalleştirme**<br/><br/> minInclusive = "-31" maxInclusive = "-1"<br/><br/> Gerekli |**xs: int** |DPLM aracılığıyla oluşturulan Dialognormalleştirme, Nessmetering ayarlandığında gereklidir |
+| **Tümleştirenlik genişliği**<br/><br/> minInclusive = "-70" maxInclusive = "10"<br/><br/> Gerekli |**xs: float** |Tümleşik ses kullanımı |
+| **Tümleştirenit Nessunit**<br/><br/> Gerekli |**xs: String** |Tümleşik ses kullanımı birimi. |
+| **Integratedstonessgatingmethod**<br/><br/> Gerekli |**xs: String** |Başarı tanıtıcısı |
+| **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive = "0" maxInclusive = "100" |**xs: float** |Bir yüzde olarak program üzerinde konuşma içeriği. |
+| **Sampletepe**<br/><br/> Gerekli |**xs: float** |En yüksek mutlak örnek değeri, sıfırlama veya son temizlenme bu yana kanal başına.  Birimler dBFS. |
+| **SamplePeakUnit**<br/><br/> Fixed = "dBFS"<br/><br/> Gerekli |**xs: anySimpleType** |Örnek tepe birimi. |
+| **Truetepe**<br/><br/> Gerekli |**xs: float** |En yüksek gerçek tepe değeri, ITU-R BS. 1770-2 itibariyle, sıfırlama veya son temizlenme sonrasında, kanal başına. Birimler dBTP. |
+| **TruePeakUnit**<br/><br/> Fixed = "dBTP"<br/><br/> Gerekli |**xs: anySimpleType** |Gerçek tepe birimi. |
 
-## <a name="schema-code"></a>Şema Kodu
+## <a name="schema-code"></a>Şema kodu
     <?xml version="1.0" encoding="utf-8"?>  
     <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.2"  
                xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata"  
@@ -511,7 +511,7 @@ Bir XML örneği [XML örneği](#xml)bulabilirsiniz.
 
 ## <a name="xml-example"></a><a name="xml"></a>XML örneği
 
-Aşağıdaki XML, Çıktı meta veri dosyasının bir örneğidir.  
+Aşağıdaki XML, çıkış meta veri dosyasına bir örnektir.  
 
     <AssetFiles xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema"   
                 xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata">  

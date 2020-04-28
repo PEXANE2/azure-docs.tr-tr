@@ -1,5 +1,5 @@
 ---
-title: Tablo colocation - Hyperscale (Citus) - PostgreSQL için Azure Veritabanı
+title: Tablo birlikte bulundurma-hiper ölçek (Citus)-PostgreSQL için Azure veritabanı
 description: Daha hızlı sorgular için ilgili bilgileri birlikte depolama
 author: jonels-msft
 ms.author: jonels
@@ -8,25 +8,25 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 7e4073ec45f4c21f33d20924a9948e72f961c7f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74967346"
 ---
-# <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure Veritabanında Tablo uyumluhale saplan - Hyperscale (Citus)
+# <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda tablo bulundurma – hiper ölçek (Citus)
 
-Birlikte konumlandırma, ilgili bilgileri aynı düğümlerde birlikte depolamak anlamına gelir. Gerekli tüm veriler herhangi bir ağ trafiği olmadan kullanılabilir olduğunda sorgular hızlı gidebilir. İlgili verilerin farklı düğümlerde kolonyalanması, sorguların her düğümde paralel olarak verimli bir şekilde çalışmasını sağlar.
+Birlikte bulundurma, ilgili bilgileri aynı düğümlerde depoladığını gösterir. Tüm gerekli veriler herhangi bir ağ trafiği olmadan kullanılabilir olduğunda sorgular hızlı bir şekilde geçebilir. Farklı düğümlerde ilgili verileri birlikte bulundurma, sorguların her düğüm üzerinde verimli bir şekilde çalışmasını sağlar.
 
-## <a name="data-colocation-for-hash-distributed-tables"></a>Karma dağıtılmış tablolar için veri colocation
+## <a name="data-colocation-for-hash-distributed-tables"></a>Karma Dağıtılmış tablolar için veri birlikte bulundurma
 
-PostgreSQL - Hyperscale (Citus) için Azure Veritabanı'nda, dağıtım sütunundaki değerin karma kısmı parçanın karma aralığına düşerse, bir satır bir parça da depolanır. Aynı karma aralığına sahip kırıklar her zaman aynı düğümüzerine yerleştirilir. Eşit dağılım sütun değerlerine sahip satırlar, tablolar arasında her zaman aynı düğümüzerindedir.
+PostgreSQL için Azure veritabanı – hiper ölçek (Citus) içinde, dağıtım sütunundaki değerin karması parçanın karma aralığı içinde kalırsa bir satır parça içinde depolanır. Aynı karma aralığa sahip parçalar her zaman aynı düğüme yerleştirilir. Eşit dağıtım sütunu değerleri olan satırlar her zaman tablolar arasında aynı düğüm üzerinde bulunur.
 
-![Kırıklar](media/concepts-hyperscale-colocation/colocation-shards.png)
+![Parçalar](media/concepts-hyperscale-colocation/colocation-shards.png)
 
-## <a name="a-practical-example-of-colocation"></a>Birlikte konumuygulamanın pratik bir örneği
+## <a name="a-practical-example-of-colocation"></a>Kolay bir birlikte bulundurma örneği
 
-Çok kiracılı web analizi SaaS'ın bir parçası olabilecek aşağıdaki tabloları göz önünde bulundurun:
+Çok kiracılı bir Web Analytics SaaS 'nin parçası olabilecek aşağıdaki tabloları göz önünde bulundurun:
 
 ```sql
 CREATE TABLE event (
@@ -45,9 +45,9 @@ CREATE TABLE page (
 );
 ```
 
-Şimdi, müşteriye yönelik bir pano tarafından verilebilen sorguları yanıtlamak istiyoruz. Örnek bir sorgu, "Kiracı altıda '/blog' ile başlayan tüm sayfalar için son haftadaki ziyaret sayısını iade edin."
+Artık müşterilere yönelik bir pano tarafından verilmiş olabilecek sorguları yanıtlamak istiyoruz. Örnek bir sorgu ", altı kiracıda '/blog ' ile başlayan tüm sayfalar için geçen hafta içindeki ziyaretlerin sayısını döndürür."
 
-Verilerimiz Tek Sunucu dağıtım seçeneğindeyse, SQL tarafından sunulan zengin ilişkisel işlemler kümesini kullanarak sorgumuzu kolayca ifade edebiliriz:
+Verilerimizin tek sunuculu dağıtım seçeneğinde olması halinde, SQL tarafından sunulan zengin ilişkisel işlemler kümesini kullanarak sorgumuzu kolayca ifade ediyoruz:
 
 ```sql
 SELECT page_id, count(event_id)
@@ -62,13 +62,13 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-Bu sorgu için [çalışma kümesi](https://en.wikipedia.org/wiki/Working_set) belleğe sığtığı sürece, tek sunuculu tablo uygun bir çözümdür. Hiperölçek (Citus) dağıtım seçeneği yle veri modelini ölçeklendirme fırsatlarını ele alalım.
+Bu sorgunun [çalışma kümesi](https://en.wikipedia.org/wiki/Working_set) belleğe sığdığı sürece, tek sunuculu bir tablo uygun bir çözümdür. Veri modelini Hyperscale (Citus) dağıtım seçeneği ile ölçeklendirmeyle ilgili fırsatları ele alalım.
 
-### <a name="distribute-tables-by-id"></a>Tabloları id'e göre dağıtma
+### <a name="distribute-tables-by-id"></a>Tabloları KIMLIĞE göre dağıt
 
-Kiracı sayısı arttıkça ve her kiracı için depolanan veriler arttıkça tek sunuculu sorgular yavaşlamaya başlar. Çalışma kümesi belleğe uyumu durdurur ve CPU bir darboğaz haline gelir.
+Tek sunuculu sorgular, kiracıların sayısı ve her kiracı için depolanan veriler büyüdükçe yavaşlamadan başlar. Çalışma kümesi, bellek içinde sığdırma işlemini durduruyor ve CPU bir performans sorunu haline geliyor.
 
-Bu durumda, Hyperscale (Citus) kullanarak verileri birçok düğüm üzerinde parçalayabiliriz. Parçaya karar verdiğimizde yapmamız gereken ilk ve en önemli seçim dağıtım sütunudur. Olay tablosu ve `event_id` `page_id` `page` tablo için saf bir kullanma seçeneğiyle başlayalım:
+Bu durumda, Hyperscale (Citus) kullanarak verileri birçok düğüme parçalayabilirsiniz. Dağıtım sütunu, parçalara ayırmaya karar verirken yapmanız gereken ilk ve en önemli seçenektir. Olay tablosu ve `event_id` `page_id` `page` tablo için bir Naïve seçimi ile başlayalım:
 
 ```sql
 -- naively use event_id and page_id as distribution columns
@@ -77,7 +77,7 @@ SELECT create_distributed_table('event', 'event_id');
 SELECT create_distributed_table('page', 'page_id');
 ```
 
-Veriler farklı çalışanlar arasında dağıtıldığında, tek bir PostgreSQL düğümünde yaptığımız gibi bir birleştirme gerçekleştiremeyiz. Bunun yerine, iki sorgu vermemiz gerekir:
+Veriler farklı çalışanlara sallandıklarında, tek bir PostgreSQL düğümüne yaptığımız gibi bir JOIN işlemi gerçekleştiremiyoruz. Bunun yerine, iki sorgu yayınlamamız gerekir:
 
 ```sql
 -- (Q1) get the relevant page_ids
@@ -92,24 +92,24 @@ WHERE page_id IN (/*…page IDs from first query…*/)
 GROUP BY page_id ORDER BY count DESC LIMIT 10;
 ```
 
-Daha sonra, iki adımın sonuçlarının uygulama tarafından birleştirilmesi gerekir.
+Daha sonra, iki adımdan elde edilecek sonuçların uygulama tarafından birleştirilmesi gerekir.
 
-Sorguları çalıştırmak düğümleri dağılmış kırıkları veri danışmalısınız.
+Sorguları çalıştırmak, düğümler arasında dağılmış olan verileri parçalara sağlamalıdır.
 
 ![Verimsiz sorgular](media/concepts-hyperscale-colocation/colocation-inefficient-queries.png)
 
-Bu durumda, veri dağıtımı önemli dezavantajlar oluşturur:
+Bu durumda, veri dağıtımı önemli bir sakıncalar oluşturuyor:
 
--   Her parçayı sorgulayan ve birden çok sorgu çalıştıran genel merkez.
--   Q1'in yükü istemciye birçok satırı döndürerek.
--   Q2 büyük olur.
--   Birden çok adımda sorgu yazma gereksinimi, uygulamada değişiklik gerektirir.
+-   Her parçayı sorgulama ve birden çok sorgu çalıştırma yükü.
+-   Q1 'nin yükü istemciye çok sayıda satır döndürüyor.
+-   S2 büyük olur.
+-   Birden çok adımda sorgu yazma ihtiyacı, uygulamada değişiklik yapılmasını gerektirir.
 
-Veriler dağıtılır, böylece sorgular paralellenebilir. Yalnızca sorgunun yaptığı iş miktarı, çok sayıda parçayı sorgulamanın yükünden önemli ölçüde daha büyükse yararlıdır.
+Veriler dağınık, bu nedenle sorgular paralelleştirilmiş olabilir. Yalnızca sorgunun yaptığı iş miktarı çok sayıda parçaları sorgulama yüküyle önemli ölçüde büyük olduğunda faydalıdır.
 
 ### <a name="distribute-tables-by-tenant"></a>Tabloları kiracıya göre dağıtma
 
-Hyperscale 'de (Citus) aynı dağılım sütun değerine sahip satırların aynı düğümüzerinde olması garanti edilir. Baştan başlayarak, dağıtım sütunu `tenant_id` olarak tablolarımızı oluşturabiliriz.
+Hiper ölçekte (Citus), aynı dağıtım sütunu değerine sahip satırların aynı düğümde olması garanti edilir. Sürümünden itibaren, tabloları dağıtım sütunu `tenant_id` olarak oluşturuyoruz.
 
 ```sql
 -- co-locate tables by using a common distribution column
@@ -117,7 +117,7 @@ SELECT create_distributed_table('event', 'tenant_id');
 SELECT create_distributed_table('page', 'tenant_id', colocate_with => 'event');
 ```
 
-Şimdi Hyperscale (Citus) değişiklik olmadan orijinal tek sunucu sorgusu nu yanıtlayabilir (Q1):
+Artık hiper ölçek (Citus), değişiklik yapılmadan orijinal tek sunuculu sorguyu yanıtlayabilir (S1):
 
 ```sql
 SELECT page_id, count(event_id)
@@ -132,12 +132,12 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-tenant_id filtreleme ve birleştirme nedeniyle, Hyperscale (Citus) tüm sorgunun belirli bir kiracıiçin verileri içeren ortak parça kümesi kullanılarak yanıtlanabileceğini bilir. Tek bir PostgreSQL düğümü sorguyu tek bir adımda yanıtlayabilir.
+Tenant_id FILTER ve JOIN nedeniyle hiper ölçek (Citus), bu belirli bir kiracının verilerini içeren birlikte bulunan parçalı parçalar kümesi kullanılarak tüm sorgunun yanıtlandığını bilir. Tek bir PostgreSQL düğümü, sorguyu tek bir adımda yanıtlayabilir.
 
 ![Daha iyi sorgu](media/concepts-hyperscale-colocation/colocation-better-query.png)
 
-Bazı durumlarda, sorgular ve tablo şemaları, kiracı kimliğini benzersiz kısıtlamalara ve birleştirme koşullarına dahil etmek üzere değiştirilmelidir. Bu değişiklik genellikle basittir.
+Bazı durumlarda, sorgular ve tablo şemaları, kiracı KIMLIĞINI benzersiz kısıtlamalara ve JOIN koşullarına dahil etmek için değiştirilmelidir. Bu değişiklik genellikle basittir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kiracı verilerinin [çok kiracılı öğreticide](tutorial-design-database-hyperscale-multi-tenant.md)nasıl bir konuma bulunduğunu görün.
+- Kiracı verilerinin [çok kiracılı öğreticide](tutorial-design-database-hyperscale-multi-tenant.md)nasıl birlikte yapıldığını görün.

@@ -1,7 +1,7 @@
 ---
-title: Bir kapsayıcı veya blob için kullanıcı delegasyonu SAS oluşturmak için Azure CLI'yi kullanın
+title: Bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturmak için Azure CLı kullanma
 titleSuffix: Azure Storage
-description: Azure CLI'yi kullanarak Azure Active Directory kimlik bilgileriyle bir kullanıcı delegasyonu SAS nasıl oluşturabilirsiniz öğrenin.
+description: Azure CLı kullanarak Azure Active Directory kimlik bilgileriyle Kullanıcı temsili SAS oluşturmayı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,39 +11,39 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
 ms.openlocfilehash: e1a81b25042501a166cee122279d21e3702cd419
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "75371998"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Azure CLI ile bir kapsayıcı veya blob için bir kullanıcı delegasyonu SAS oluşturun
+# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Azure CLı ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Bu makalede, Azure CLI ile bir kapsayıcı veya blob için bir kullanıcı delegasyonu SAS oluşturmak için Azure Active Directory (Azure AD) kimlik bilgilerini nasıl kullanılacağı gösterilmektedir.
+Bu makalede, Azure CLı ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturmak üzere Azure Active Directory (Azure AD) kimlik bilgilerinin nasıl kullanılacağı gösterilmektedir.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
 ## <a name="install-the-latest-version-of-the-azure-cli"></a>Azure CLI’nin en son sürümünü yükleme
 
-Azure AD kimlik bilgilerine sahip bir SAS'ı güvence altına almak için Azure CLI'yi kullanmak için öncelikle Azure CLI'nin en son sürümünü yüklediğinizden emin olun. Azure CLI'yi yükleme hakkında daha fazla bilgi için Azure [CLI'yi yükleyin'](/cli/azure/install-azure-cli)e bakın.
+Azure AD kimlik bilgileriyle SAS güvenliğini sağlamak için Azure CLı 'yı kullanmak için önce Azure CLı 'nin en son sürümünü yüklediğinizden emin olun. Azure CLı yükleme hakkında daha fazla bilgi için bkz. [Azure CLI 'Yı yükleme](/cli/azure/install-azure-cli).
 
-Azure CLI'yi kullanarak bir kullanıcı delegasyonu SAS oluşturmak için sürüm 2.0.78 veya daha sonra yüklediğinizden emin olun. Yüklü sürümünüzü denetlemek için `az --version` komutu kullanın.
+Azure CLı kullanarak bir Kullanıcı temsili SAS oluşturmak için, sürüm 2.0.78 veya üstünü yüklediğinizden emin olun. Yüklü sürümünüzü denetlemek için `az --version` komutunu kullanın.
 
 ## <a name="sign-in-with-azure-ad-credentials"></a>Azure AD kimlik bilgileriyle oturum açın
 
-Azure REKLAM kimlik bilgilerinizle Azure CLI'de oturum açın. Daha fazla bilgi için bkz. [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli).
+Azure AD kimlik bilgilerinizle Azure CLı 'da oturum açın. Daha fazla bilgi için bkz. [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli).
 
 ## <a name="assign-permissions-with-rbac"></a>RBAC ile izin atama
 
-Azure PowerShell'den bir kullanıcı delegasyonu SAS oluşturmak için, Azure CLI'de oturum açmada kullanılan Azure REKLAM hesabına **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini içeren bir rol atanması gerekir. Bu izin, Azure AD hesabının *kullanıcı temsilciliği anahtarını*istemesini sağlar. Kullanıcı delegasyonu anahtarı, kullanıcı delegasyonu SAS'ı imzalamak için kullanılır. **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini sağlayan rol, depolama hesabı, kaynak grubu veya abonelik düzeyinde atanmalıdır.
+Azure PowerShell bir Kullanıcı temsili SAS oluşturmak için Azure CLı 'de oturum açmak üzere kullanılan Azure AD hesabına **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini içeren bir rol atanmalıdır. Bu izin, Azure AD hesabının *Kullanıcı temsili anahtarını*istemesine olanak sağlar. Kullanıcı temsili anahtarı, Kullanıcı temsili SAS imzalamak için kullanılır. Depolama hesabı, kaynak grubu veya abonelik düzeyinde **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini sağlayan rolün atanması gerekir.
 
-Bir Azure REKLAM güvenlik ilkesine RBAC rollerini atamak için yeterli izniniz yoksa, hesap sahibinden veya yöneticisinden gerekli izinleri atamasını istemeniz gerekebilir.
+Azure AD güvenlik sorumlusuna RBAC rolleri atamak için yeterli izniniz yoksa, hesap sahibine veya yöneticiden gerekli izinleri atamasını isteyebilirsiniz.
 
-Aşağıdaki örnek, **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini içeren **Depolama Blob Veri Katılımcısı** rolünü atar. Rol, depolama hesabı düzeyinde kapsamlıdır.
+Aşağıdaki örnek, **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini Içeren **Depolama Blobu veri katılımcısı** rolünü atar. Rol, depolama hesabı düzeyinde kapsamlandırılır.
 
-Açı parantezindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli-interactive
 az role assignment create \
@@ -52,23 +52,23 @@ az role assignment create \
     --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini içeren yerleşik roller hakkında daha fazla bilgi [için Azure kaynakları için Yerleşik rollere](../../role-based-access-control/built-in-roles.md)bakın.
+**Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini içeren yerleşik roller hakkında daha fazla bilgi için bkz. [Azure kaynakları için yerleşik roller](../../role-based-access-control/built-in-roles.md).
 
-## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>SAS'yi korumak için Azure REKLAM kimlik bilgilerini kullanma
+## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>SAS güvenliğini sağlamak için Azure AD kimlik bilgilerini kullanma
 
-Azure CLI ile bir kullanıcı delegasyonu SAS oluşturduğunuzda, SAS'ı imzalamak için kullanılan kullanıcı delegasyonu anahtarı sizin için zımni olarak oluşturulur. SAS için belirttiğiniz başlangıç ve son kullanma süresi, kullanıcı delegasyonu anahtarının başlangıç ve son kullanma süresi olarak da kullanılır.
+Azure CLı ile bir Kullanıcı temsili SAS oluşturduğunuzda, SAS imzalamak için kullanılan Kullanıcı temsili anahtarı sizin için örtülü olarak oluşturulur. SAS için belirttiğiniz başlangıç saati ve bitiş saati, Kullanıcı temsili anahtarı için başlangıç saati ve süre sonu zamanı olarak da kullanılır.
 
-Kullanıcı delegasyonu anahtarının geçerli olduğu maksimum aralık başlangıç tarihinden itibaren 7 gün olduğundan, Başlangıç saatinden itibaren 7 gün içinde SAS için bir son kullanma süresi belirtmeniz gerekir. SAS, kullanıcı delegasyonu anahtarının süresi dolduktan sonra geçersizdir, bu nedenle 7 günden uzun bir süreye sahip bir SAS yalnızca 7 gün boyunca geçerli olacaktır.
+Kullanıcı temsili anahtarının geçerli olduğu maksimum Aralık, başlangıç tarihinden itibaren 7 gün olduğundan, başlangıç zamanının 7 gün içinde olan SAS için bir süre sonu zamanı belirtmeniz gerekir. Kullanıcı temsili anahtarının süresi dolduktan sonra SAS geçersiz, bu nedenle süre sonu 7 günden daha fazla olan bir SAS yalnızca 7 gün için geçerli olacaktır.
 
-Bir kullanıcı delegasyonu Oluştururken SAS, `--auth-mode login` ve `--as-user parameters` gereklidir. Azure *login* Depolama'ya `--auth-mode` yapılan isteklerin Azure REKLAM kimlik bilgilerinizle yetkilendirilemesi için parametre için oturum açma yı belirtin. Döndürülen `--as-user` SAS'ın bir kullanıcı delegasyonu SAS olması gerektiğini belirtmek için parametreyi belirtin.
+Bir Kullanıcı temsili SAS oluşturulurken, `--auth-mode login` ve `--as-user parameters` gereklidir. Azure depolama 'ya yapılan `--auth-mode` ISTEKLERIN Azure AD kimlik bilgilerinizle yetkilendirilmesini sağlamak için parametresi için *oturum açma* belirtin. Döndürülen sa `--as-user` 'ların bir Kullanıcı temsili SAS olması gerektiğini belirten parametreyi belirtin.
 
-### <a name="create-a-user-delegation-sas-for-a-container"></a>Kapsayıcı için kullanıcı delegasyonu SAS oluşturma
+### <a name="create-a-user-delegation-sas-for-a-container"></a>Bir kapsayıcı için Kullanıcı temsili SAS oluşturma
 
-Azure CLI içeren bir kapsayıcı için bir kullanıcı delegasyonu SAS oluşturmak için [az depolama kapsayıcısı oluşturma-sas](/cli/azure/storage/container#az-storage-container-generate-sas) komutunu arayın.
+Azure CLı ile bir kapsayıcı için Kullanıcı temsili SAS oluşturmak için [az Storage Container Generate-SAS](/cli/azure/storage/container#az-storage-container-generate-sas) komutunu çağırın.
 
-Bir kapsayıcıdaki kullanıcı delegasyonu SAS için desteklenen izinler Ekle, Oluştur, Sil, Listele, Oku ve Yaz'ı içerir. İzinler tek tek veya birleştirilmiş olarak belirtilebilir. Bu izinler hakkında daha fazla bilgi için [bkz.](/rest/api/storageservices/create-user-delegation-sas)
+Kapsayıcıda bir Kullanıcı temsili SAS için desteklenen izinler ekleme, oluşturma, silme, listeleme, okuma ve yazma içerir. İzinler, listedir veya Birleşik olarak belirtilebilir. Bu izinler hakkında daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](/rest/api/storageservices/create-user-delegation-sas).
 
-Aşağıdaki örnek, bir kapsayıcı için bir kullanıcı delegasyonu SAS belirteci döndürür. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki örnek bir kapsayıcı için Kullanıcı temsili SAS belirteci döndürür. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli-interactive
 az storage container generate-sas \
@@ -80,19 +80,19 @@ az storage container generate-sas \
     --as-user
 ```
 
-Döndürülen kullanıcı delegasyonu SAS belirteci aşağıdakilere benzer olacaktır:
+Döndürülen Kullanıcı temsili SAS belirteci şuna benzer:
 
 ```
 se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26T18%3A01%3A22Z&ske=2019-07-27T00%3A00%3A00Z&sks=b&skv=2018-11-09&sig=<signature>
 ```
 
-### <a name="create-a-user-delegation-sas-for-a-blob"></a>Bir damla için bir kullanıcı delegasyonu SAS oluşturma
+### <a name="create-a-user-delegation-sas-for-a-blob"></a>Blob için Kullanıcı temsili SAS oluşturma
 
-Azure CLI ile bir blob için bir kullanıcı delegasyonu SAS oluşturmak için [az depolama blob oluşturma-sas](/cli/azure/storage/blob#az-storage-blob-generate-sas) komutunu arayın.
+Azure CLı ile bir blob için Kullanıcı temsili SAS oluşturmak için [az Storage blob Generate-SAS](/cli/azure/storage/blob#az-storage-blob-generate-sas) komutunu çağırın.
 
-Bir blob üzerinde bir kullanıcı delegasyonu SAS için desteklenen izinler Ekle, Oluştur, Sil, Oku ve Yaz içerir. İzinler tek tek veya birleştirilmiş olarak belirtilebilir. Bu izinler hakkında daha fazla bilgi için [bkz.](/rest/api/storageservices/create-user-delegation-sas)
+Blob üzerinde Kullanıcı temsili SAS için desteklenen izinler ekleme, oluşturma, silme, okuma ve yazma içerir. İzinler, listedir veya Birleşik olarak belirtilebilir. Bu izinler hakkında daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS oluşturma](/rest/api/storageservices/create-user-delegation-sas).
 
-Aşağıdaki sözdizimi bir damla için bir kullanıcı delegasyonu SAS döndürür. Örnek, eklenen SAS belirteciyle URI blob'u döndüren `--full-uri` parametreyi belirtir. Parantez içinde yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki sözdizimi bir blob için Kullanıcı temsili SAS döndürür. Örnek, alt SAS `--full-uri` belirtecine eklenen blob URI 'sini döndüren parametresini belirtir. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli-interactive
 az storage blob generate-sas \
@@ -106,7 +106,7 @@ az storage blob generate-sas \
     --full-uri
 ```
 
-SAS URI döndürülen kullanıcı delegasyonu aşağıdakilere benzer olacaktır:
+Döndürülen Kullanıcı temsili SAS URI 'SI şuna benzer olacaktır:
 
 ```
 https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-08-03&sp=rw&sv=2018-11-09&sr=b&skoid=<skoid>&sktid=<sktid>&skt=2019-08-02T2
@@ -114,13 +114,13 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 ```
 
 > [!NOTE]
-> Bir kullanıcı delegasyonu SAS, depolanmış bir erişim ilkesiyle izintanımlamayı desteklemez.
+> Kullanıcı temsili SAS, depolanan erişim ilkesiyle izin tanımlamayı desteklemez.
 
-## <a name="revoke-a-user-delegation-sas"></a>Bir kullanıcı delegasyonu SAS iptal
+## <a name="revoke-a-user-delegation-sas"></a>Kullanıcı temsilciliğini iptal etme SAS
 
-Bir kullanıcı delegasyonu SAS'ı Azure CLI'den iptal etmek için [az depolama hesabını iptal etme-delegasyon anahtarları](/cli/azure/storage/account#az-storage-account-revoke-delegation-keys) komutunu arayın. Bu komut, belirtilen depolama hesabıyla ilişkili tüm kullanıcı delegasyonu anahtarlarını iptal eder. Bu anahtarlarla ilişkili tüm paylaşılan erişim imzaları geçersiz kılınur.
+Azure CLı 'dan bir Kullanıcı temsilciliğini iptal etmek için [az Storage Account revoke-temsilciyi-Keys](/cli/azure/storage/account#az-storage-account-revoke-delegation-keys) komutunu çağırın. Bu komut, belirtilen depolama hesabıyla ilişkili tüm Kullanıcı temsili anahtarlarını iptal eder. Bu anahtarlarla ilişkili tüm paylaşılan erişim imzaları geçersiz kılınır.
 
-Açı parantezindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli-interactive
 az storage account revoke-delegation-keys \
@@ -129,9 +129,9 @@ az storage account revoke-delegation-keys \
 ```
 
 > [!IMPORTANT]
-> Hem kullanıcı delegasyonu anahtarı hem de RBAC rol atamaları Azure Depolama tarafından önbelleğe alınır, bu nedenle iptal işlemini başlattığınız zaman ile varolan bir kullanıcı delegasyonu SAS'ın geçersiz olması arasında bir gecikme olabilir.
+> Hem Kullanıcı temsili anahtarı hem de RBAC rol atamaları Azure Storage tarafından önbelleğe alınır. bu nedenle, iptal işlemini başlattığınızda ve var olan bir Kullanıcı temsili SAS geçersiz hale geldiğinde bir gecikme olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bir kullanıcı delegasyonu SAS (REST API) oluşturma](/rest/api/storageservices/create-user-delegation-sas)
-- [Kullanıcı Delegasyonu Anahtarı işlemi alın](/rest/api/storageservices/get-user-delegation-key)
+- [Kullanıcı temsilciliğini oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas)
+- [Kullanıcı temsilciyi anahtar işlemi al](/rest/api/storageservices/get-user-delegation-key)

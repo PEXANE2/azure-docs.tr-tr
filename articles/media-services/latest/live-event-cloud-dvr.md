@@ -1,7 +1,7 @@
 ---
-title: İsteğe bağlı video oynatma oluşturmak için zaman kaydırma ve Canlı Çıktılar kullanma
+title: İsteğe bağlı video oynatma oluşturmak için zaman değiştirme ve canlı çıktıları kullanma
 titleSuffix: Azure Media Services
-description: Bu makalede, Canlı Akışları kaydetmek ve isteğe bağlı oynatma oluşturmak için zaman kaydırma ve Canlı Çıktılar'ın nasıl kullanılacağı açıklanmaktadır.
+description: Bu makalede, canlı akışları kaydetmek ve isteğe bağlı kayıttan yürütme oluşturmak için zaman değiştirme ve canlı çıkışların nasıl kullanılacağı açıklanır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,45 +15,45 @@ ms.topic: article
 ms.date: 08/27/2019
 ms.author: juliako
 ms.openlocfilehash: 4c7618b60e5fd86a9b8b3f22fb3333c00cfdfa61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74899790"
 ---
-# <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>İsteğe bağlı video oynatma oluşturmak için zaman kaydırma ve Canlı Çıktılar kullanma
+# <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>İsteğe bağlı video oynatma oluşturmak için zaman değiştirme ve canlı çıktıları kullanma
 
-Azure Medya Hizmetleri'nde, [Canlı Çıktı](https://docs.microsoft.com/rest/api/media/liveoutputs) nesnesi, canlı akışınızı Medya Hizmetleri hesabınızdaki bir varlığa yakalayıp kaydedecek dijital video kaydedici gibidir. Kaydedilen [içerik, Varlık](https://docs.microsoft.com/rest/api/media/assets) kaynağı tarafından tanımlanan kapsayıcıda kalıcıdır (kapsayıcı hesabınıza bağlı Azure Depolama hesabındadır). Canlı Çıkış ayrıca, akışın ne kadarının arşiv kaydında tutulduğu (örneğin, bulut DVR'ın kapasitesi) veya görüntüleyenlerin canlı akışı izlemeye ne zaman başlabildiği gibi giden canlı akışın bazı özelliklerini kontrol etmenizi sağlar. Diskteki arşiv, yalnızca Live **Output'un archiveWindowLength** özelliğinde belirtilen içerik miktarını tutan dairesel bir arşiv "penceresi"dir. Bu pencerenin dışına düşen içerik otomatik olarak depolama kabından atılır ve kurtarılamaz. ArchiveWindowLength değeri, DVR'ın kapasitesini belirten bir ISO-8601 zaman dilimi süresini (örneğin, PTHH:MM:SS) temsil eder. Değer en az üç dakikadan en fazla 25 saate ayarlanabilir.
+Azure Media Services, [canlı çıkış](https://docs.microsoft.com/rest/api/media/liveoutputs) nesnesi canlı akışınızı yakalayıp Media Services hesabınızdaki bir varlığa kaydeden dijital video kaydedicisi gibidir. Kaydedilen içerik, [varlık](https://docs.microsoft.com/rest/api/media/assets) kaynağı tarafından tanımlanan kapsayıcıda kalıcı hale getirilir (kapsayıcı, hesabınıza bağlı olan Azure Storage hesabıdır). Canlı çıktı ayrıca giden canlı akışın bazı özelliklerini denetlemenize olanak tanır (örneğin, bulut DVR 'ın kapasitesi gibi) veya görüntüleyiciler canlı akışı izlemeye başlayabileceği zaman. Diskteki arşiv, yalnızca canlı çıktının **archiveWindowLength** özelliğinde belirtilen içerik miktarını tutan bir dairesel arşiv "penceresidir". Bu pencerenin dışında kalan içerikler, depolama kapsayıcısından otomatik olarak atılır ve kurtarılamaz. ArchiveWindowLength değeri, DVR 'ın kapasitesini belirten bir ISO-8601 TimeSpan süresini (örneğin, PTHH: MM: SS) temsil eder. Değer, en az üç dakikadan en fazla 25 saat arasında ayarlanabilir.
 
-Bir Live Event ve Live Outputs arasındaki ilişki geleneksel TV yayınına benzer, çünkü bir kanal (Live Event) sabit bir video akışını temsil eder ve bir kayıt (Canlı Çıkış) belirli bir zaman segmentine (örneğin, akşam haberleri 18:30 ile 19:00 arası). Akışı Live Event'e akttİlke çıkardıktan sonra, bir varlık, Canlı Çıktı ve akış bulucu oluşturarak akış olayına başlayabilirsiniz. Canlı Çıktı akışı arşivleyecek ve [Akış Bitiş Noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints)aracılığıyla görüntüleyenlerin kullanımına sunacak. Farklı arşiv uzunlukları ve ayarlarıyla bir Live Event'de birden çok Live Output (en fazla üç) oluşturabilirsiniz. Canlı akış iş akışı hakkında bilgi için [genel adımlar](live-streaming-overview.md#general-steps) bölümüne bakın.
+Canlı bir olay ve canlı çıkışları arasındaki ilişki geleneksel TV yayınına benzer, bu da bir kanalın (canlı olay) sabit bir video akışını ve bir kaydın (canlı çıktı) belirli bir zaman segmentine (örneğin, 6:12 ila 7:00PM) kapsamı vardır. Akışın canlı olayına akışını tamamladıktan sonra bir varlık, canlı çıkış ve akış Bulucu oluşturarak akış olayını başlatabilirsiniz. Canlı çıktı akışı Arşivle ve [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints)aracılığıyla görüntüleyiciler için kullanılabilir hale getirir. Farklı arşiv uzunlukları ve ayarları ile canlı bir olayda birden fazla canlı çıkış (en fazla üç maksimum) oluşturabilirsiniz. Canlı akış iş akışı hakkında daha fazla bilgi için, [genel adımlar](live-streaming-overview.md#general-steps) bölümüne bakın.
 
-## <a name="using-a-dvr-during-an-event"></a>Etkinlik sırasında DVR kullanma
+## <a name="using-a-dvr-during-an-event"></a>Bir olay sırasında DVR kullanma
 
-Bu bölümde, akışın hangi bölümlerinin 'geri sarma' için kullanılabilen bir olay sırasında Nasıl DVR kullanılacağı açıklanır.
+Bu bölümde, ' geri sarma ' için akışın hangi bölümlerinin kullanılabileceğini denetlemek üzere bir olay sırasında bir DVR 'ın nasıl kullanılacağı açıklanmaktadır.
 
-Değer, `archiveWindowLength` bir görüntüleyenin geçerli canlı konumdan ne kadar geriye gidebileceğini belirler. Değer `archiveWindowLength` ayrıca istemci bildirimlerinin ne kadar büyüyebileceğini de belirler.
+Değer `archiveWindowLength` , bir görüntüleyicinin geçerli canlı konumdan ne kadar geri gidebileceğini belirler. `archiveWindowLength` Değer Ayrıca, istemci bildirimlerinin ne kadar büyüyeceğini de belirler.
 
-Bir futbol oyunu yayın yaptığınızı ve `ArchiveWindowLength` sadece 30 dakikası olduğunu varsayalım. Oyun başladıktan 45 dakika sonra etkinliğinizi izlemeye başlayan bir izleyici en fazla 15 dakikalık hedefe geri dönebilir. Oyun için Canlı Çıktılarınız, Canlı Etkinlik durdurulana kadar devam eder. ArchiveWindowLength'un dışına düşen içerik sürekli olarak depodan atılır ve kurtarılamaz. Bu örnekte, olayın başlangıcı ile 15 dakikalık işaret arasındaki video, DVR'ınızdan ve kıymet için blob depolamasındaki kapsayıcıdan temizlenmiş olacaktır. Arşiv kurtarılamaz ve Azure blob depolama sındaki kapsayıcıdan kaldırılır.
+Bir futbol oyunu akışını ve yalnızca 30 dakikalık bir `ArchiveWindowLength` oyun olduğunu varsayalım. Oyun başladıktan sonra olayınızı 45 dakika izlemeye başlayan bir görüntüleyici, 15 dakikalık bir işaret üzerinden geri arama yapabilir. Canlı olay durduruluncaya kadar oyunun canlı çıktıları devam edecektir. ArchiveWindowLength dışında kalan içerikler sürekli olarak depolamadan atılır ve kurtarılamaz olur. Bu örnekte, olayın başlangıcı ve 15 dakikalık işaret arasındaki video, DVR 'ınızdan ve varlık için BLOB depolama alanındaki kapsayıcıdan temizlenir. Arşiv kurtarılabilir değildir ve Azure Blob depolama alanındaki kapsayıcıdan kaldırılır.
 
-Canlı Etkinlik, aynı anda çalışan en fazla üç Live Output'u destekler (aynı anda bir canlı akıştan en fazla 3 kayıt/arşiv oluşturabilirsiniz). Bu destek, bir olayın farklı bölümlerini gerektiği gibi yayımlamanızı ve arşivlemenizi sağlar. 24x7 canlı doğrusal bir yayın yayınlamanız ve müşterilere izleme için isteğe bağlı içerik olarak sunmak için gün boyunca farklı programların "kayıtlarını" oluşturmanız gerektiğini varsayalım. Bu senaryo için, ilk olarak 1 saat veya daha kısa bir arşiv penceresi olan birincil Canlı Çıktı oluşturursunuz– bu, görüntüleyenlerinizin ayaryapacağı birincil canlı akıştır. Bu Canlı Çıktı için bir Akış Bulucu oluşturur ve "Canlı" akışı olarak uygulamanızda veya web sitenizde yayımlarsınız. Canlı Etkinlik çalışırken, program başlangıcında programlanabilir şekilde ikinci bir eşzamanlı Canlı Çıktı oluşturabilirsiniz (veya daha sonra kırpmak için bazı tutamaçları sağlamak için 5 dakika erken). Bu ikinci Canlı Çıktı, program sona erdikten 5 dakika sonra silinebilir. Bu ikinci varlıkla, bu programı uygulamanızın kataloğunda isteğe bağlı bir varlık olarak yayımlamak için yeni bir Akış Bulucu oluşturabilirsiniz. Bu işlemi, ilk Canlı Çıktı'dan gelen "Canlı" akışı doğrusal akışı yayınlamaya devam ederken, isteğe bağlı videolar olarak paylaşmak istediğiniz diğer program sınırları veya vurgular için birden çok kez yineleyebilirsiniz.
+Canlı bir olay, en fazla üç eşzamanlı çalışan canlı çıkışı destekler (aynı anda bir Canlı akıştan en fazla 3 kayıt/arşiv oluşturabilirsiniz). Bu destek, gerektiğinde bir olayın farklı parçalarını yayımlamanıza ve arşivlemenize olanak tanır. 7/24 canlı bir doğrusal akış yayınlamalı ve müşterilere, yakalama için isteğe bağlı içerik olarak sunmak üzere gün boyunca farklı programların "kayıtlarını" oluşturmanız gerektiğini varsayalım. Bu senaryo için, ilk olarak 1 saat veya daha kısa bir arşiv penceresi ile birincil bir canlı çıktı oluşturursunuz; bu, görüntüleyicilerinizin ayarlayacağından asıl canlı akışdır. Bu canlı çıktı için bir akış Bulucu oluşturur ve bunu uygulamanızda veya Web sitenizde "canlı" akış olarak yayımlayabilirsiniz. Canlı olay çalışırken programın başlangıcında (veya daha sonra kırpmak için bazı tutamaçlar sağlamak için 5 dakika erken), programlı olarak ikinci bir eşzamanlı canlı çıktı oluşturabilirsiniz. Bu ikinci canlı çıktı, program bittikten 5 dakika sonra silinebilir. Bu ikinci varlıkla, bu programı uygulamanızın kataloğunda isteğe bağlı bir varlık olarak yayımlamak üzere yeni bir akış Bulucu oluşturabilirsiniz. Bu işlemi, isteğe bağlı videolar olarak paylaşmak istediğiniz diğer program sınırları veya vurguları için birden çok kez yineleyebilirsiniz, ancak ilk canlı çıktının "canlı" akışı, doğrusal akışın yayınlanmaya devam eder.
 
-## <a name="creating-an-archive-for-on-demand-playback"></a>İsteğe bağlı oynatma için arşiv oluşturma
+## <a name="creating-an-archive-for-on-demand-playback"></a>İsteğe bağlı kayıttan yürütme için Arşiv oluşturma
 
-Canlı Çıktı silindiğinde, Canlı Çıktının otomatik olarak isteğe bağlı bir varlık haline gelmesi için arşivlediği varlık. Canlı Etkinlik durdurulmadan önce tüm Canlı Çıktıları silmeniz gerekir. İsteğe bağlı bir bayrak [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) kullanarak Canlı Çıktıları durdurun.
+Canlı çıktının silindiği varlık, canlı çıktı silindiğinde otomatik olarak isteğe bağlı bir varlık haline gelir. Canlı bir olay durdurulmadan önce tüm canlı çıktıları silmeniz gerekir. Durdurulduğunda canlı çıktıları otomatik olarak kaldırmak için, bir [Removeoutputsonstop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) isteğe bağlı bayrağını kullanabilirsiniz.
 
-Etkinliği durdurup sildikten sonra bile, kullanıcılar arşivlenmiş içeriğinizi, varlığı silmediğiniz sürece isteğe bağlı olarak video olarak aktarabilirler. Bir varlık bir olay tarafından kullanılıyorsa silinmemelidir; olay önce silinmelidir.
+Olayı durdurup sildikten sonra bile, varlık silinmedikçe, kullanıcılar arşivlenmiş içeriğinizi isteğe bağlı bir video olarak akışa alabilir. Bir olay tarafından kullanılıyorsa bir varlık silinmemelidir; önce olayın silinmesi gerekir.
 
-Canlı Çıktınızın kıymetini bir akış bulucusu kullanarak yayımladıysanız, Akış Etkinliği (DVR pencere uzunluğuna kadar) akış bulucusu sona erene veya silinene (hangisi önce gelirse) kadar görüntülenebilir olmaya devam eder.
+Canlı çıkışınızın varlığını bir akış Bulucu kullanarak yayımladıysanız, canlı olay (DVR pencere uzunluğuna kadar), akış bulucunun bitiş tarihi veya silme işlemi, hangisi önce geldiği sürece görüntülenmeye devam eder.
 
 Daha fazla bilgi için bkz.
 
 - [Canlı akışa genel bakış](live-streaming-overview.md)
-- [Canlı akış eğitimi](stream-live-tutorial-with-api.md)
+- [Canlı akış öğreticisi](stream-live-tutorial-with-api.md)
 
 > [!NOTE]
-> Canlı Çıktıyı sildiğinizde, varlıktaki dayanak varlığı ve içeriği silmezsiniz.
+> Canlı çıktıyı sildiğinizde, ilgili varlık ve varlığın içeriğini silmezsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Videolarınızı alt klip.](subclip-video-rest-howto.md)
-* [Varlıklarınız için filtreler tanımlayın.](filters-dynamic-manifest-rest-howto.md)
+* [Videolarınızın alt klibini yapın](subclip-video-rest-howto.md).
+* [Varlıklarınız için filtreleri tanımlayın](filters-dynamic-manifest-rest-howto.md).

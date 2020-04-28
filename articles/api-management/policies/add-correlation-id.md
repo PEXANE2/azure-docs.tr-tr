@@ -1,7 +1,7 @@
 ---
-title: Örnek API yönetim ilkesi - Korelasyon kimliği içeren bir üstbilgi ekleme
+title: Örnek API yönetimi ilkesi-bağıntı kimliği içeren bir üst bilgi ekleyin
 titleSuffix: Azure API Management
-description: Azure API yönetim ilkesi örneği - Gelen istekle korelasyon kimliği içeren bir üstbilginin nasıl ekleyeceğini gösterir.
+description: Azure API Management ilkesi örneği-gelen istek için bağıntı kimliği içeren bir üstbilginin nasıl ekleneceğini gösterir.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 79910aa60602a80cbe79c4ce9899f6ff73fbfde9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75422246"
 ---
 # <a name="add-a-header-containing-a-correlation-id"></a>Bağıntı kimliği içeren bir üst bilgi ekleme
 
-Bu makalede, gelen istek için bir korelasyon kimliği içeren bir üstbilgi nasıl ekleyeceğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. İlke kodunu ayarlamak veya ayarlamak için, Ayarla'da açıklanan adımları izleyin [veya bir ilkeyi ayarlayın.](../set-edit-policies.md) Diğer örnekleri görmek için [ilke örneklerine](../policy-samples.md)bakın.
+Bu makalede, gelen istek için bağıntı kimliği içeren bir üst bilginin nasıl ekleneceğini gösteren bir Azure API yönetim ilkesi örneği gösterilmektedir. Bir ilke kodu ayarlamak veya düzenlemek için, [Ilke ayarlama veya düzenleme](../set-edit-policies.md)bölümünde açıklanan adımları izleyin. Diğer örnekleri görmek için bkz. [ilke örnekleri](../policy-samples.md).
 
 ## <a name="policy"></a>İlke
 
-Kodu **gelen** bloğa yapıştır.
+Kodu **gelen** bloğa yapıştırın.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Add correlation id to inbound request.policy.xml)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-APIM politikaları hakkında daha fazla bilgi edinin:
+APıM ilkeleri hakkında daha fazla bilgi edinin:
 
 + [Dönüştürme ilkeleri](../api-management-transformation-policies.md)
 + [İlke örnekleri](../policy-samples.md)

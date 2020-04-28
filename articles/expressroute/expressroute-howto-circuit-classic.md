@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Bir devreyi değiştirin: PowerShell:klasik'
-description: Bu makale, ExpressRoute klasik dağıtım modeli devrenizi durumunuzu denetlemek, güncelleştirmek veya silmek ve hükmünü yok etmek için size bu adımları yönlendirir.
+title: 'Azure ExpressRoute: bir devreyi değiştirme: PowerShell: klasik'
+description: Bu makalede, ExpressRoute klasik dağıtım modeli devrenizin durumunu denetleme, güncelleştirme veya silme ve sağlamayı kaldırma adımlarında size kılavuzluk eder.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cherylmc
 ms.openlocfilehash: e421a534b04f74d2a2eb0bc06aeffa52684ae17a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74931971"
 ---
-# <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell kullanarak ExpressRoute devresini değiştirme (klasik)
+# <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell kullanarak bir ExpressRoute devresini değiştirme (klasik)
 
 > [!div class="op_single_selector"]
-> * [Azure portalında](expressroute-howto-circuit-portal-resource-manager.md)
-> * [Powershell](expressroute-howto-circuit-arm.md)
+> * [Azure portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager şablonu](expressroute-howto-circuit-resource-manager-template.md)
-> * [Video - Azure portalı](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [Video-Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasik)](expressroute-howto-circuit-classic.md)
 >
 
-Bu makale, ExpressRoute klasik dağıtım modeli devrenizi durumunuzu denetlemek, güncelleştirmek veya silmek ve hükmünü yok etmek için size bu adımları yönlendirir. Bu makale klasik dağıtım modeli için geçerlidir.
+Bu makalede, ExpressRoute klasik dağıtım modeli devrenizin durumunu denetleme, güncelleştirme veya silme ve sağlamayı kaldırma adımlarında size kılavuzluk eder. Bu makale klasik dağıtım modeli için geçerlidir.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -37,9 +37,9 @@ Bu makale, ExpressRoute klasik dağıtım modeli devrenizi durumunuzu denetlemek
 
 [!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
-## <a name="get-the-status-of-a-circuit"></a>Bir devrenin durumunu alın
+## <a name="get-the-status-of-a-circuit"></a>Devrenin durumunu al
 
-Bu bilgileri `Get-AzureCircuit` istediğiniz zaman cmdlet kullanarak alabilirsiniz. Herhangi bir parametre olmadan arama yapma tüm devreleri listeler.
+Bu bilgileri, `Get-AzureCircuit` cmdlet 'ini kullanarak istediğiniz zaman alabilirsiniz. Hiçbir parametre olmadan çağrının yapılması tüm devreleri listeler.
 
 ```powershell
 Get-AzureDedicatedCircuit
@@ -63,7 +63,7 @@ Sku                              : Standard
 Status                           : Enabled
 ```
 
-Belirli bir ExpressRoute devresi hakkında, servis anahtarını çağrıya parametre olarak geçirerek bilgi alabilirsiniz.
+Hizmet anahtarını çağrıya parametre olarak geçirerek belirli bir ExpressRoute devresi hakkında bilgi alabilirsiniz.
 
 ```powershell
 Get-AzureDedicatedCircuit -ServiceKey "*********************************"
@@ -86,20 +86,20 @@ get-help get-azurededicatedcircuit -detailed
 
 ## <a name="modify-a-circuit"></a>Devreyi değiştirme
 
-Bir ExpressRoute devresinin belirli özelliklerini bağlantı etkilemeden değiştirebilirsiniz.
+Bağlantıyı etkilemeden bir ExpressRoute devresine ait belirli özellikleri değiştirebilirsiniz.
 
-Aşağıdaki görevleri kapalı kalma süresi olmadan yapabilirsiniz:
+Kapalı kalma süresi olmadan aşağıdaki görevleri gerçekleştirebilirsiniz:
 
-* ExpressRoute devreniz için ExpressRoute premium eklentisini etkinleştirin veya devre dışı edin.
-* Bağlantı noktasında kapasite olması koşuluyla ExpressRoute devrenizin bant genişliğini artırın. Bir devrenin bant genişliğini düşürme desteklenmez.
-* Ölçüm planını Tarifeli Verilerden Sınırsız Veri'ye değiştirin. Ölçüm planının Sınırsız Verilerden Ölçülü Verilere değiştirilmesi desteklenmez.
-* *Klasik İşlemler'e İzin Ver'i*etkinleştirebilir ve devre dışı kullanabilirsiniz.
+* ExpressRoute devreniz için bir ExpressRoute Premium eklentisini etkinleştirin veya devre dışı bırakın.
+* Bağlantı noktasında kullanılabilir kapasite bulunduğundan ExpressRoute devreniz bant genişliğini artırın. Bağlantı hattının devre dışı olması desteklenmiyor.
+* Ölçüm planını ölçülen verilerden sınırsız veriye değiştirin. Ölçüm planının sınırsız verilerden ölçülen verilerle değiştirilmesi desteklenmez.
+* *Klasik Işlemlere Izin ver*' i etkinleştirebilir ve devre dışı bırakabilirsiniz.
 
-Sınırlar ve sınırlamalar hakkında daha fazla bilgi için [ExpressRoute SSS](expressroute-faqs.md) bölümüne bakın.
+Sınırlar ve sınırlamalar hakkında daha fazla bilgi için bkz. [ExpressRoute SSS](expressroute-faqs.md) .
 
-### <a name="enable-the-expressroute-premium-add-on"></a>ExpressRoute premium eklentisini etkinleştirme
+### <a name="enable-the-expressroute-premium-add-on"></a>ExpressRoute Premium eklentisini etkinleştirin
 
-Aşağıdaki PowerShell cmdlet'i kullanarak mevcut devreniz için ExpressRoute premium eklentisini etkinleştirebilirsiniz:
+Aşağıdaki PowerShell cmdlet 'ini kullanarak mevcut bağlantı hattınızı ExpressRoute Premium eklentisi ' ni etkinleştirebilirsiniz:
 
 ```powershell
 Set-AzureDedicatedCircuitProperties -ServiceKey "*********************************" -Sku Premium
@@ -114,24 +114,24 @@ Sku                              : Premium
 Status                           : Enabled
 ```
 
-Devreniz artık ExpressRoute premium eklenti özelliklerine sahip olacak. Komut başarıyla çalıştırıldığı anda, premium eklenti özelliği için faturalandırma başlar.
+Devreniz artık ExpressRoute Premium eklenti özellikleri etkin olur. Komut başarılı bir şekilde çalıştırıldığında, Premium eklenti özelliği için faturalandırmaya başlanır.
 
-### <a name="disable-the-expressroute-premium-add-on"></a>ExpressRoute premium eklentisini devre dışı
+### <a name="disable-the-expressroute-premium-add-on"></a>ExpressRoute Premium eklentisini devre dışı bırakma
 
 > [!IMPORTANT]
-> Standart devre için izin verilenden daha büyük kaynaklar kullanıyorsanız, bu işlem başarısız olabilir.
+> Standart devre için izin verilen miktardan daha büyük kaynaklar kullanıyorsanız bu işlem başarısız olabilir.
 >
 >
 
 #### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* Devreyle bağlantılı sanal ağ sayısının, premium'dan standarda düşürülmeden önce 10'dan az olduğundan emin olun. Bunu yapmazsanız, güncelleştirme isteğiniz başarısız olur ve prim oranları size faturalandırılır.
-* Diğer jeopolitik bölgelerdeki tüm sanal ağların bağlantısını kalmalıdır. Bunu yapmazsanız, güncelleştirme isteğiniz başarısız olur ve prim oranları size faturalandırılır.
-* Rota tablonuz özel bakış için 4.000'den az rota olmalıdır. Rota tablo boyutunuz 4.000 rotadan büyükse, BGP oturumu düşer ve reklamı yapılan önek sayısı 4.000'in altına inene kadar yeniden etkinleştirilmez.
+* Premium 'dan standart sürümüne düşürme yapmadan önce, bağlantı hattına bağlı sanal ağların sayısının 10 ' dan küçük olduğundan emin olun. Bunu yapmazsanız, güncelleştirme isteğiniz başarısız olur ve Premium ücretler üzerinden faturalandırılırsınız.
+* Diğer geopolitik bölgelerdeki tüm sanal ağların bağlantısını kaldırmanız gerekir. Bunu yapmazsanız, güncelleştirme isteğiniz başarısız olur ve Premium ücretler üzerinden faturalandırılırsınız.
+* Yol tablonuz, özel eşleme için 4.000 rotadan az olmalıdır. Yol tablonuzun boyutu 4.000 rotadan büyükse BGP oturumu, tanıtılan ön eklerin sayısı 4.000 altına çıkana kadar yeniden etkinleştirilmez.
 
-#### <a name="to-disable-the-premium-add-on"></a>Premium eklentiyi devre dışı atmak için
+#### <a name="to-disable-the-premium-add-on"></a>Premium eklentiyi devre dışı bırakmak için
 
-Aşağıdaki PowerShell cmdlet'i kullanarak mevcut devreniz için ExpressRoute premium eklentisini devre dışı bırakabilirsiniz:
+Aşağıdaki PowerShell cmdlet 'ini kullanarak mevcut bağlantı hattınızı ExpressRoute Premium eklentisini devre dışı bırakabilirsiniz:
 
 ```powershell
 
@@ -147,20 +147,20 @@ Sku                              : Standard
 Status                           : Enabled
 ```
 
-### <a name="update-the-expressroute-circuit-bandwidth"></a>ExpressRoute devre bant genişliğini güncelleştirme
+### <a name="update-the-expressroute-circuit-bandwidth"></a>ExpressRoute bağlantı hattı bant genişliğini güncelleştirme
 
-Sağlayıcınız için desteklenen bant genişliği seçenekleri için [ExpressRoute SSS'yi](expressroute-faqs.md) kontrol edin. Fiziksel bağlantı noktası (devrenizin oluşturulduğu) izin verdiği sürece, varolan devrenizin boyutundan daha büyük herhangi bir boyutu seçebilirsiniz.
+Sağlayıcınız için desteklenen bant genişliği seçenekleri için [ExpressRoute SSS bölümüne](expressroute-faqs.md) bakın. Mevcut devrenin boyutundan daha büyük bir boyut seçebilirsiniz ve bu fiziksel bağlantı noktası (bağlantı hattının oluşturulduğu) izin verir.
 
 > [!IMPORTANT]
-> Varolan bağlantı noktasında yetersiz kapasite varsa ExpressRoute devresini yeniden oluşturmanız gerekebilir. O konumda ek kapasite yoksa devreyi yükseltemezsiniz.
+> Mevcut bağlantı noktasında yetersiz kapasite varsa ExpressRoute devresini yeniden oluşturmanız gerekebilir. Bu konumda kullanılabilir ek kapasite yoksa, devreyi yükseltemezsiniz.
 >
-> Bir ExpressRoute devresinin bant genişliğini kesintiye uğramadan azaltamazsınız. Bant genişliğini düşürmek, ExpressRoute devresini kaldırmanızı ve ardından yeni bir ExpressRoute devresini yeniden sağlamanızı gerektirir.
+> Bir ExpressRoute devresinin bant genişliğini kesintiye uğramadan azaltamaz. Bant genişliğini düşürme işlemi, ExpressRoute bağlantı hattının sağlanması ve ardından yeni bir ExpressRoute devresine yeniden sağlanması gerektirir.
 >
 >
 
-#### <a name="resize-a-circuit"></a>Bir devreyi yeniden boyutlandırma
+#### <a name="resize-a-circuit"></a>Devre yeniden boyutlandırma
 
-Hangi boyuta ihtiyacınız olduğuna karar verildikten sonra, devrenizi yeniden boyutlandırmak için aşağıdaki komutu kullanabilirsiniz:
+Hangi boyuta ihtiyacınız olduğuna karar verdikten sonra, devrenizi yeniden boyutlandırmak için aşağıdaki komutu kullanabilirsiniz:
 
 ```powershell
 Set-AzureDedicatedCircuitProperties -ServiceKey ********************************* -Bandwidth 1000
@@ -175,9 +175,9 @@ Sku                              : Standard
 Status                           : Enabled
 ```
 
-Devreniz Microsoft tarafında boyutlandıktan sonra, bu değişikliği eşleştirmek için kendi tarafındaki yapılandırmaları güncelleştirmek için bağlantı sağlayıcınıza başvurmanız gerekir. Bu noktadan itibaren güncelleştirilmiş bant genişliği seçeneği için faturalandırma başlar.
+Devreniz Microsoft tarafında boyutlandırıldıktan sonra, bu değişikliği eşleştirmek için kendi taraflarındaki yapılandırmaların güncelleştirilmesini sağlamak üzere bağlantı sağlayıcınızla iletişim kurmanız gerekir. Faturalandırma, bu noktadan itibaren güncelleştirilmiş bant genişliği seçeneği için başlar.
 
-Devre bant genişliğini artırırken aşağıdaki hatayı görürseniz, varolan devrenizin oluşturulduğu fiziksel bağlantı noktasında yeterli bant genişliği kalmadığını görürsünüz. Bu devreyi silmeli ve ihtiyacınız olan boyutta yeni bir devre oluşturmalısınız.
+Devre bant genişliğini artırdığınızda aşağıdaki hatayı görürseniz, bu, mevcut devrenin oluşturulduğu fiziksel bağlantı noktasında yeterli bant genişliği olmadığı anlamına gelir. Bu devreyi silmeniz ve ihtiyacınız olan boyutta yeni bir bağlantı oluşturmanız gerekir.
 
 ```powershell
 Set-AzureDedicatedCircuitProperties : InvalidOperation : Insufficient bandwidth available to perform this circuit
@@ -189,17 +189,17 @@ At line:1 char:1
   + FullyQualifiedErrorId : Microsoft.WindowsAzure.Commands.ExpressRoute.SetAzureDedicatedCircuitPropertiesCommand
 ```
 
-## <a name="deprovision-and-delete-a-circuit"></a>Bir devreyi deprovision ve silme
+## <a name="deprovision-and-delete-a-circuit"></a>Devre sağlamasını kaldırma ve silme
 
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* Bu işlemin başarılı olması için ExpressRoute devresindeki tüm sanal ağların bağlantısını çıkarmalısınız. Bu işlem başarısız olursa devrebağlı herhangi bir sanal ağları olup olmadığını kontrol edin.
-* ExpressRoute devre servis sağlayıcısı sağlama durumu **Hükmünde** veya **Provisioned** ise, devreyi kendi taraflarında devreyi devreyi devreyi devreden çıkarmak için servis sağlayıcınızla birlikte çalışmanız gerekir. Hizmet sağlayıcı devreyi devreyi devreyi tamamlayıp bizi bize iletene kadar kaynak ayırmaya ve size fatura landırmaya devam ediyoruz.
-* Hizmet sağlayıcısı devreyi devreyi devreyi devreyi iptal ettiyse (servis sağlayıcı sağlama durumu **değil**olarak ayarlanır), daha sonra devreyi silebilirsiniz. Bu durumda bağlantı hattının faturalandırılması durdurulur.
+* Bu işlemin başarılı olması için tüm sanal ağların ExpressRoute bağlantı hattından bağlantısını kaldırmanız gerekir. Bu işlem başarısız olursa, bağlantı hattına bağlı sanal ağlarınızın olup olmadığını denetleyin.
+* ExpressRoute bağlantı hattı hizmeti sağlayıcısı sağlama **durumu sağlandıysa veya** sağlanmışsa **Provisioned** , devre dışı bırakmak için hizmet sağlayıcınızla birlikte çalışmanız gerekir. Hizmet sağlayıcısı, devre sağlamasını kaldırmayı ve bize haber verene kadar, kaynakları ayırmaya ve sizi faturalandırmaya devam ediyoruz.
+* Hizmet sağlayıcı devre sağlamasını kaldırmışsa (hizmet sağlayıcı sağlama durumu **sağlanmadı**olarak ayarlandıysa), ardından devreyi silebilirsiniz. Bu durumda bağlantı hattının faturalandırılması durdurulur.
 
-#### <a name="delete-a-circuit"></a>Bir devreyi silme
+#### <a name="delete-a-circuit"></a>Devre silme
 
-ExpressRoute devrenizi aşağıdaki komutu çalıştırarak silebilirsiniz:
+Aşağıdaki komutu çalıştırarak ExpressRoute devrenizi silebilirsiniz:
 
 ```powershell
 Remove-AzureDedicatedCircuit -ServiceKey "*********************************"

@@ -1,47 +1,47 @@
 ---
-title: Azure Cosmos kapsayıcısı için benzersiz anahtarları tanımlama
-description: Azure portalı, PowerShell, .Net, Java ve diğer çeşitli SDK'ları kullanarak bir Azure Cosmos kapsayıcısı için benzersiz anahtarları nasıl tanımlayacağınızı öğrenin.
+title: Azure Cosmos kapsayıcısı için benzersiz anahtarlar tanımlama
+description: Azure portal, PowerShell, .net, Java ve çeşitli diğer SDK 'Ları kullanarak bir Azure Cosmos kapsayıcısı için nasıl benzersiz anahtarlar tanımlanacağını öğrenin.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.openlocfilehash: fa62495a7b51c9a06a91102299378c15e811eae0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74872120"
 ---
-# <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı için benzersiz anahtarları tanımlama
+# <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı için benzersiz anahtarlar tanımlama
 
-Bu makalede, bir Azure Cosmos kapsayıcı oluştururken [benzersiz anahtarları](unique-keys.md) tanımlamak için farklı yollar sunar. Şu anda bu işlemi Azure portalını kullanarak veya SDK'lardan biri aracılığıyla gerçekleştirmek mümkündür.
+Bu makalede, Azure Cosmos kapsayıcısı oluştururken [benzersiz anahtarları](unique-keys.md) tanımlamanın farklı yolları sunulmaktadır. Azure portal veya SDK 'Lardan birini kullanarak bu işlemi gerçekleştirmek mümkün değildir.
 
 ## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account) veya varolan bir hesabı seçin.
+1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account) veya mevcut olanı seçin.
 
-1. Veri **Gezgini** bölmesini açın ve üzerinde çalışmak istediğiniz kapsayıcıyı seçin.
+1. **Veri Gezgini** bölmesini açın ve üzerinde çalışmak istediğiniz kapsayıcıyı seçin.
 
-1. Yeni **Konteyner**tıklayın.
+1. **Yeni kapsayıcıya**tıklayın.
 
-1. Kapsayıcı **Ekle** iletişim kutusunda, benzersiz bir anahtar girişi eklemek için **+ Benzersiz tuş ekle'yi** tıklatın.
+1. **Kapsayıcı Ekle** iletişim kutusunda, **+** benzersiz anahtar Ekle ' ye tıklayarak benzersiz bir anahtar girişi ekleyin.
 
-1. Benzersiz anahtar kısıtlamasının yolunu(lar) girin
+1. Benzersiz anahtar kısıtlamasının yolunu girin
 
-1. Gerekirse , **+ Ekle benzersiz tuşuna** tıklayarak daha benzersiz anahtar girişleri ekleyin
+1. Gerekirse **+ benzersiz anahtar Ekle** ' ye tıklayarak daha fazla benzersiz anahtar girişi ekleyin
 
-    ![Azure portalında benzersiz anahtar kısıtlama girişinin ekran görüntüsü](./media/how-to-define-unique-keys/unique-keys-portal.png)
+    ![Azure portal 'de benzersiz anahtar kısıtlama girişinin ekran görüntüsü](./media/how-to-define-unique-keys/unique-keys-portal.png)
 
-## <a name="use-powershell"></a>Powershell'i kullanma
+## <a name="use-powershell"></a>PowerShell 'i kullanma
 
-Bkz. benzersiz tuşlara sahip bir kapsayıcı oluşturmak için, [benzersiz anahtar ve TTL ile bir Azure Cosmos kapsayıcı oluşturun](manage-with-powershell.md#create-container-unique-key-ttl)
+Benzersiz anahtarlarla bir kapsayıcı oluşturmak için bkz. [benzersiz anahtar ve TTL Ile Azure Cosmos kapsayıcısı oluşturma](manage-with-powershell.md#create-container-unique-key-ttl)
 
-## <a name="use-the-net-sdk-v2"></a>.NET SDK V2'yi kullanın
+## <a name="use-the-net-sdk-v2"></a>.NET SDK v2 'yi kullanma
 
-[.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)kullanarak yeni bir `UniqueKeyPolicy` kapsayıcı oluştururken, bir nesne benzersiz anahtar kısıtlamaları tanımlamak için kullanılabilir.
+[.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)'yi kullanarak yeni bir kapsayıcı oluştururken, bir `UniqueKeyPolicy` nesne benzersiz anahtar kısıtlamalarını tanımlamak için kullanılabilir.
 
 ```csharp
 client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), new DocumentCollection
@@ -59,9 +59,9 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 });
 ```
 
-## <a name="use-the-net-sdk-v3"></a>.NET SDK V3'ü kullanın
+## <a name="use-the-net-sdk-v3"></a>.NET SDK V3 'i kullanma
 
-[.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)kullanarak yeni bir kapsayıcı oluştururken, benzersiz anahtarları kısa ve okunabilir bir şekilde bildirmek için SDK'nın akıcı API'sini kullanın.
+[.NET SDK V3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)kullanarak yeni bir kapsayıcı oluştururken, benzersiz anahtarları kısa ve okunabilir bir şekilde BILDIRMEK için SDK 'nın Fluent API kullanın.
 
 ```csharp
 await client.GetDatabase("database").DefineContainer(name: "container", partitionKeyPath: "/myPartitionKey")
@@ -76,9 +76,9 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .CreateIfNotExistsAsync();
 ```
 
-## <a name="use-the-java-sdk"></a>Java SDK'yı kullanma
+## <a name="use-the-java-sdk"></a>Java SDK 'sını kullanma
 
-[Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)kullanarak yeni bir kapsayıcı `UniqueKeyPolicy` oluştururken, bir nesne benzersiz anahtar kısıtlamaları tanımlamak için kullanılabilir.
+[Java SDK 'sını](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)kullanarak yeni bir kapsayıcı oluştururken, bir `UniqueKeyPolicy` nesne benzersiz anahtar kısıtlamalarını tanımlamak için kullanılabilir.
 
 ```java
 // create a new DocumentCollection object
@@ -113,9 +113,9 @@ container.setUniqueKeyPolicy(uniqueKeyPolicy);
 client.createCollection(String.format("/dbs/%s", "database"), container, null);
 ```
 
-## <a name="use-the-nodejs-sdk"></a>Düğüm.js SDK kullanın
+## <a name="use-the-nodejs-sdk"></a>Node. js SDK 'sını kullanma
 
-[Düğüm.js SDK](https://www.npmjs.com/package/@azure/cosmos)kullanarak yeni bir kapsayıcı `UniqueKeyPolicy` oluştururken, bir nesne benzersiz anahtar kısıtlamaları tanımlamak için kullanılabilir.
+[Node. js SDK 'sını](https://www.npmjs.com/package/@azure/cosmos)kullanarak yeni bir kapsayıcı oluştururken, bir `UniqueKeyPolicy` nesne benzersiz anahtar kısıtlamalarını tanımlamak için kullanılabilir.
 
 ```javascript
 client.database('database').containers.create({
@@ -129,7 +129,7 @@ client.database('database').containers.create({
 });
 ```
 
-## <a name="use-the-python-sdk"></a>Python SDK'yı kullan
+## <a name="use-the-python-sdk"></a>Python SDK'yı kullanma
 
 [Python SDK](https://pypi.org/project/azure-cosmos/)kullanarak yeni bir kapsayıcı oluştururken, benzersiz anahtar kısıtlamaları parametre olarak geçirilen sözlüğün bir parçası olarak belirtilebilir.
 
@@ -147,5 +147,5 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bölümleme](partition-data.md) hakkında daha fazla bilgi edinin
-- [Dizin oluşturmanın nasıl çalıştığını](index-overview.md) keşfedin
+- [Bölümlendirme](partition-data.md) hakkında daha fazla bilgi edinin
+- [Dizin oluşturmanın nasıl çalıştığını](index-overview.md) keşfet

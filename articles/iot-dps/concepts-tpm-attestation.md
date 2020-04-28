@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Cihaz Sağlama Hizmeti - TPM Attestation
-description: Bu makale, IoT Cihaz Sağlama Hizmeti (DPS) kullanarak TPM attestation akışının kavramsal bir genel görünümünü sağlar.
+title: Azure IoT Hub cihaz sağlama hizmeti-TPM kanıtlama
+description: Bu makalede IoT cihaz sağlama hizmeti (DPS) kullanılarak TPM kanıtlama akışına kavramsal bir genel bakış sunulmaktadır.
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -9,63 +9,63 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 624171ffc10a06ac3089b6dceb1683c63c88dbda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74975287"
 ---
 # <a name="tpm-attestation"></a>TPM kanıtlama
 
-IoT Hub Aygıt Sağlama Hizmeti, ioT Hub için sıfır dokunmatik aygıt sağlama sağlamasını belirli bir IoT hub'ına yapılandırmak için kullandığınız bir yardımcı hizmettir. Cihaz Sağlama Hizmeti ile milyonlarca cihazı güvenli bir şekilde sağlayabilirsiniz.
+IoT Hub cihaz sağlama hizmeti, belirli bir IoT Hub 'ına sıfır Touch cihaz sağlamayı yapılandırmak için kullandığınız IoT Hub yardımcı hizmettir. Cihaz sağlama hizmeti ile milyonlarca cihazı güvenli bir şekilde sağlayabilirsiniz.
 
-Bu makalede, [tpm](./concepts-device.md)kullanırken kimlik attestation işlemi açıklanır. TPM, Güvenilir Platform Modülü anlamına gelir ve bir donanım güvenlik modülü türüdür (HSM). Bu makalede, ayrı bir, firmware veya entegre TPM kullandığınızı varsayar. Yazılım taklit TPM'ler prototip oluşturma veya test etmek için çok uygundur, ancak ayrık, firmware veya entegre TPM'ler ile aynı güvenlik düzeyini sağlamaz. Üretimde yazılım TPM'leri kullanmanızı önermiyoruz. TPM türleri hakkında daha fazla bilgi için [TPM'ye Kısa Bir Giriş bölümüne](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf)bakın.
+Bu makalede [TPM](./concepts-device.md)kullanılırken kimlik kanıtlama süreci açıklanmaktadır. TPM Güvenilir Platform Modülü temsil eder ve bir donanım güvenlik modülü (HSM) türüdür. Bu makalede ayrı, bellenim veya tümleşik TPM kullandığınız varsayılır. Yazılım öykünmesi, prototip oluşturma veya test etme için uygundur, ancak ayrık, bellenim veya tümleşik TPM 'Ler ile aynı güvenlik düzeyini sağlamalardır. Üretimde yazılım TPMs kullanılması önerilmez. TPMs türleri hakkında daha fazla bilgi için bkz. [TPM 'ye giriş](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
 
-Bu makale, yalnızca HMAC anahtar desteği ve onay anahtarları ile TPM 2.0 kullanan aygıtlar için geçerlidir. Kimlik doğrulaması için X.509 sertifikalarını kullanan aygıtlar için değildir. TPM, Trusted Computing Group'un endüstri çapında, ISO standardıdır ve TPM hakkında [tam TPM 2.0 spec](https://trustedcomputinggroup.org/tpm-library-specification/) veya [ISO/IEC 11889 spec](https://www.iso.org/standard/66510.html)adresinden daha fazla bilgi edinebilirsiniz. Bu makalede, ortak ve özel anahtar çiftleri ve şifreleme için nasıl kullanıldığı nı da bildiğinizi varsayar.
+Bu makale yalnızca HMAC anahtar desteği ve bunların onay anahtarlarıyla TPM 2,0 kullanan cihazlar için geçerlidir. Kimlik doğrulaması için X. 509.440 sertifikalarını kullanan cihazlar için değildir. TPM, Trusted Computing Group bir sektör genelinde, ISO standardıdır ve TPM hakkında daha fazla bilgi edinmek için [tam tpm 2,0 belirtiminde](https://trustedcomputinggroup.org/tpm-library-specification/) veya [ıso/IEC 11889 belirtiminde](https://www.iso.org/standard/66510.html)daha fazla bilgi edinebilirsiniz. Bu makalede ayrıca ortak ve özel anahtar çiftleri hakkında bilgi sahibi olduğunuz ve bunların şifreleme için nasıl kullanıldığı varsayılmaktadır.
 
-Aygıt Sağlama Hizmeti aygıtı SDK'lar bu makalede açıklanan her şeyi sizin için işler. Aygıtlarınızda SDK kullanıyorsanız ek bir şey uygulamanız gerekmez. Bu makale, cihazınız ın ne zaman ve neden bu kadar güvenli olduğunu TPM güvenlik çipinizde neler olup bittiğini kavramsal olarak anlamanıza yardımcı olur.
+Cihaz sağlama hizmeti cihaz SDK 'Ları, bu makalede açıklanan her şeyi sizin için işler. Cihazlarınızda SDK 'Ları kullanıyorsanız ek bir şey uygulamanız gerekmez. Bu makale, cihazınızın sağlamasını yaparken TPM güvenlik yongasında neler olduğunu ve neden güvenli olduğunu anlamanıza yardımcı olur.
 
 ## <a name="overview"></a>Genel Bakış
 
-TPM'ler güvenin güvenli kökü olarak onay anahtarı (EK) adı verilen bir şey kullanır. EK TPM'ye özgüdür ve bunu değiştirmek cihazı yeni bir cihaza dönüştürür.
+TPMs, güvenli güven kökü olarak onay anahtarı (EK) olarak adlandırılan bir şeyi kullanır. EK TPM için benzersizdir ve bunun değiştirilmesi aslında cihazı yeni bir tane olarak değiştirir.
 
-TPM'lerin depolama kök anahtarı (SRK) adı verilen başka bir anahtar türü vardır. Bir SRK, TPM'nin sahipliğini aldıktan sonra TPM'nin sahibi tarafından oluşturulabilir. TPM'nin sahipliğini almak, "birisi HSM'de parola ayarlar" demenin TPM'ye özgü yoludur. Bir TPM aygıtı yeni bir sahibine satılırsa, yeni sahibi yeni bir SRK oluşturmak için TPM'nin sahipliğini alabilir. Yeni SRK nesli, önceki sahibinin TPM'yi kullanamamasını sağlar. SRK TPM'nin sahibine özgü olduğundan, SRK bu sahibi için TPM'nin kendisine veri yapıştırmak için kullanılabilir. SRK, sahibinin anahtarlarını depolaması için bir kum havuzu sağlar ve aygıt veya TPM satılırsa erişim intifa edilebilirliği sağlar. Bu yeni bir eve taşınmak gibi: mülkiyet alarak kapılardaki kilitleri değiştiriyor ve önceki sahipleri (SRK) tarafından bırakılan tüm mobilya yok, ama evin adresini değiştiremezsiniz (EK).
+Depolama kök anahtarı (SRK) adlı, TPMs 'nin sahip olduğu başka bir anahtar türü vardır. TPM 'nin sahipliğini aldıktan sonra TPM 'nin sahibi tarafından bir SRK oluşturulabilir. TPM 'nin sahipliğini alma, "bir Kullanıcı HSM 'de bir parola ayarlıyor" diyen, TPM 'ye özgü bir yoldur. TPM cihazı yeni bir sahibe satılıyorsa yeni sahip yeni bir SRK oluşturmak için TPM 'nin sahipliğini alabilir. Yeni SRK oluşturma, önceki sahibin TPM 'YI kullanmamasını sağlar. SRK TPM 'nin sahibine benzersiz olduğundan, bu sahibe ait verileri TPM 'ye mühürlemek için SRK kullanılabilir. SRK, sahibin anahtarlarını depolaması için bir korumalı alan sağlar ve cihaz ya da TPM satılıyorsa erişim geri alınamaz. Yeni bir evye geçme gibi: Sahiplik alma, kapıların kilitlerini değiştiriyor ve önceki sahipler (SRK) tarafından kalan tüm mobilyaları yok etme, ancak evin (EK) adresini değiştiremezsiniz.
 
-Bir aygıt kurulduktan ve kullanıma hazır hale geldikten sonra, hem EK hem de kullanılabilir bir SRK'ya sahip olacaktır.
+Bir cihaz kurulduktan ve kullanıma hazır olduktan sonra, hem EK hem de bir SRK kullanımı kullanılabilir.
 
-![Bir TPM'nin sahipliğini alma](./media/concepts-tpm-attestation/tpm-ownership.png)
+![TPM sahipliğini alma](./media/concepts-tpm-attestation/tpm-ownership.png)
 
-TPM'nin sahipliğini alma yla ilgili bir not: Bir TPM'nin sahipliğini almak, TPM üreticisi, kullanılan TPM araçları kümesi ve aygıt işletim sistemi gibi birçok şeye bağlıdır. Sahiplik almak için sisteminizle ilgili yönergeleri izleyin.
+TPM 'nin sahipliğini alma hakkında bir dikkat: TPM 'nin sahipliğini alma, TPM üreticisi, kullanılan TPM araçları kümesi ve cihaz işletim sistemi gibi birçok şeyi kullanır. Sahiplik almak için sisteminizle ilgili yönergeleri izleyin.
 
-Cihaz Sağlama Hizmeti, cihazları tanımlamak ve kaydetmek için EK'nin (EK_pub) ortak bölümünü kullanır. Aygıt satıcısı üretim veya son test sırasında EK_pub okuyabilir ve EK_pub sağlama hizmetine yükleyebilir, böylece aygıt hükme bağlandığında tanınabilir. Aygıt Sağlama Hizmeti SRK'yı veya sahibini denetlemez, bu nedenle TPM'nin "temizlenmesi" müşteri verilerini siler, ancak EK (ve diğer satıcı verileri) korunur ve cihaz, hükme bağlandığında Aygıt Sağlama Hizmeti tarafından tanınmaya devam eder.
+Cihaz sağlama hizmeti, cihazları tanımlamak ve kaydetmek için EK (EK_pub) ortak bölümünü kullanır. Cihaz satıcısı, üretim veya son test sırasında EK_pub okuyabilir ve EK_pub sağlama hizmetine yükleyerek cihazın sağlama için bağlandığı zaman tanınabilmesi için bu hizmeti sağlama hizmetine yükleyebilirsiniz. Cihaz sağlama hizmeti SRK veya sahibi denetlemez, bu nedenle TPM, müşteri verilerini siler, ancak EK (ve diğer satıcı verileri) korunur ve cihaz sağlama hizmetine bağlanırken cihaz sağlama hizmeti tarafından yine de tanınacaktır.
 
-## <a name="detailed-attestation-process"></a>Ayrıntılı attestation süreci
+## <a name="detailed-attestation-process"></a>Ayrıntılı kanıtlama işlemi
 
-TPM'li bir aygıt ilk olarak Aygıt Sağlama Hizmetine bağlandığında, hizmet ilk olarak sağlanan EK_pub kayıt listesinde depolanan EK_pub karşı denetler. EK_pubs eşleşmiyorsa, aygıtın sağlamasına izin verilmez. EK_pubs eşleşirse, hizmet daha sonra aygıtın ek'in özel bölümünün mülkiyetini kimliği kanıtlamak için kullanılan güvenli bir meydan okuma olan nonce mücadelesi ile kanıtlamasını gerektirir. Aygıt Sağlama Hizmeti bir nonce oluşturur ve sonra srk ve daha sonra EK_pub ile şifreler, her ikisi de ilk kayıt arama sırasında cihaz tarafından sağlanır. TPM her zaman EK'nin özel bölümünü güvenli tutar. Bu, sahteciliği önler ve SAS belirteçlerinin yetkili cihazlara güvenli bir şekilde sağlanmasını sağlar.
+TPM 'ye sahip bir cihaz, cihaz sağlama hizmetine ilk kez bağlanırsa, hizmet önce, kayıt listesinde depolanan EK_pub karşı, belirtilen EK_pub denetler. EK_pubs eşleşmiyorsa, cihazın sağlama izni yoktur. EK_pubs eşleşiyorsa, hizmet daha sonra, kimliği kanıtlamak için kullanılan güvenli bir sınama olan bir kerelik bir sınama aracılığıyla cihazın özel bölümünün sahipliğini kanıtlamasını gerektirir. Cihaz sağlama hizmeti bir kerelik anahtar oluşturur ve sonra, her ikisi de ilk kayıt çağrısı sırasında cihaz tarafından sağlandığı EK_pub SRK ile şifreler. TPM, her zaman EK güvenli ' ın özel bölümünü korur. Bu, sahteciliği önler ve SAS belirteçlerinin yetkili cihazlara güvenli bir şekilde sağlanmasını sağlar.
 
-Attestation işlemini ayrıntılı olarak gözden geçirelim.
+Ayrıntılı bilgi için kanıtlama sürecini inceleyelim.
 
-### <a name="device-requests-an-iot-hub-assignment"></a>Aygıt bir IoT Hub ataması istiyor
+### <a name="device-requests-an-iot-hub-assignment"></a>Cihaz IoT Hub atamasını ister
 
-Önce cihaz Aygıt Sağlama Hizmeti'ne bağlanır ve tedarik talep eder. Bunu yaparken, cihaz hizmete kayıt kimliği, kimlik kapsamı ve TPM'den EK_pub ve SRK_pub sağlar. Hizmet, şifrelenmiş nonce'yi aygıta geri geçirir ve aygıtdan nonce'nin şifresini çözmesini ister ve bunu yeniden bağlanmak ve sağlamayı bitirmek için bir SAS belirteci imzalamak için kullanır.
+İlk olarak cihaz, cihaz sağlama hizmetine ve sağlama isteklerine bağlanır. Bu durumda cihaz, hizmet kayıt KIMLIĞI, KIMLIK kapsamı ve EK_pub ile TPM 'den SRK_pub sağlar. Hizmet, şifreli nonce 'ı cihaza geri geçirir ve cihazın nonce şifresini çözmesini ve bir SAS belirtecini yeniden bağlamak ve sağlamayı tamamlaması için kullanmasını ister.
 
-![Cihaz sağlama istekleri](./media/concepts-tpm-attestation/step-one-request-provisioning.png)
+![Cihaz istekleri sağlama](./media/concepts-tpm-attestation/step-one-request-provisioning.png)
 
-### <a name="nonce-challenge"></a>Nonce meydan okuma
+### <a name="nonce-challenge"></a>Nonce sınaması
 
-Cihaz nonce alır ve TPM içine nonce şifresini çözmek için EK ve SRK özel bölümlerini kullanır; nonce şifreleme temsilcilerinin sırası, değişmez olan EK'ten SRK'ya güvenir ve bu da yeni bir sahibin TPM'nin sahipliğini alması durumunda değişebilir.
+Cihaz, nonce 'YI alıp TPM 'ye nonce şifresini çözmek için EK ve SRK 'nin özel kısımlarını kullanır; nonce şifrelemesi sırası, yeni bir sahibin TPM sahipliğini alırsa, bu, sabit olan EK 'ten, bu, sabit olan ve SRK 'ye güven devreder.
 
 ![Nonce şifresini çözme](./media/concepts-tpm-attestation/step-two-nonce.png)
 
-### <a name="validate-the-nonce-and-receive-credentials"></a>Nonce'yi doğrulayın ve kimlik bilgilerini alın
+### <a name="validate-the-nonce-and-receive-credentials"></a>Nonce 'i doğrulama ve kimlik bilgilerini alma
 
-Aygıt daha sonra şifresi çözülmüş nonce'yi kullanarak bir SAS belirteci imzalayabilir ve imzalı SAS belirteci kullanarak Aygıt Sağlama Hizmetine yeniden bağlantı kurabilir. Nonce mücadelesi tamamlandığında, hizmet aygıtın sağlanmasına olanak tanır.
+Cihaz daha sonra, şifresi çözülmüş nonce kullanarak bir SAS belirtecini imzalayabilir ve imzalı SAS belirtecini kullanarak cihaz sağlama hizmetine bir bağlantı yeniden oluşturabilir. Nonce sınaması tamamlandığında, hizmet cihazın sağlamasını sağlar.
 
-![Cihaz, EK sahipliğini doğrulamak için Aygıt Sağlama Hizmetine olan bağlantıyı yeniden kurar](./media/concepts-tpm-attestation/step-three-validation.png)
+![Cihaz EK sahipliğini doğrulamak için cihaz sağlama hizmeti 'ne yeniden bağlantı kurar](./media/concepts-tpm-attestation/step-three-validation.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık cihaz IoT Hub'a bağlanır ve cihazlarınızın anahtarlarının güvenli bir şekilde depolandığı bilgisi ne kadar güvende olursanız olun. Artık Cihaz Sağlama Hizmeti'nin TPM kullanarak bir aygıtın kimliğini nasıl güvenli bir şekilde doğruladığını bildiğinize göre, daha fazla bilgi edinmek için aşağıdaki makalelere göz atın:
+Artık cihaz IoT Hub bağlanır ve cihazlarınızın anahtarlarının güvenli bir şekilde saklandığı bilgilerden güvende olursunuz. Cihaz sağlama hizmetinin TPM kullanarak bir cihazın kimliğini güvenli bir şekilde doğrulama işlemini öğrenmiş olduğunuza göre, daha fazla bilgi edinmek için aşağıdaki makalelere göz atın:
 
-* [Otomatik sağlamadaki tüm kavramlar hakkında bilgi edinin](./concepts-auto-provisioning.md)
-* Akışı ele almak için SDK'ları kullanarak otomatik sağlama kullanmaya [başlayın.](./quick-setup-auto-provision.md)
+* [Otomatik sağlama ile ilgili tüm kavramlar hakkında bilgi edinin](./concepts-auto-provisioning.md)
+* Akışı gerçekleştirmek için SDK 'Ları kullanarak [otomatik sağlamayı](./quick-setup-auto-provision.md) kullanmaya başlayın.

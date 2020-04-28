@@ -1,6 +1,6 @@
 ---
-title: Azure Akış Analizi'ni kullanarak bir IoT çözümü oluşturun
-description: Gişe senaryosunun Stream Analytics IoT çözümü için eğitime başlama
+title: Azure Stream Analytics kullanarak IoT çözümü oluşturma
+description: Bir tollstand senaryosunun IoT çözümü Stream Analytics için Başlarken öğreticisi
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,150 +9,150 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426452"
 ---
-# <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics'i kullanarak bir IoT çözümü oluşturun
+# <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics kullanarak IoT çözümü oluşturma
 
 ## <a name="introduction"></a>Giriş
-Bu çözümde, verilerinizden gerçek zamanlı öngörüler elde etmek için Azure Akış Analizi'ni nasıl kullanacağınızı öğrenirsiniz. Geliştiriciler, iş öngörüleri elde etmek için geçmiş kayıtları veya başvuru verileriyle tıklama akışları, günlükler ve aygıt tarafından oluşturulan olaylar gibi veri akışlarını kolayca birleştirebilir. Azure Akış Analizi, Microsoft Azure'da barındırılan tam olarak yönetilen, gerçek zamanlı akış hesaplama hizmeti olarak, dakikalar içinde çalışmaya devam edebilmeniz için yerleşik esneklik, düşük gecikme süresi ve ölçeklenebilirlik sağlar.
+Bu çözümde, verilerinizden gerçek zamanlı içgörüler elde etmek için Azure Stream Analytics kullanmayı öğreneceksiniz. Geliştiriciler, iş öngörüleri türetmede geçmiş kayıtları veya başvuru verileriyle birlikte tıklama-akışlar, Günlükler ve cihaz tarafından oluşturulan olaylar gibi veri akışlarını kolayca birleştirebilir. Microsoft Azure içinde barındırılan, tam olarak yönetilen, gerçek zamanlı bir akış hesaplama hizmeti olarak Azure Stream Analytics, dakikalar içinde çalışmaya başlamanızı sağlamak için yerleşik dayanıklılık, düşük gecikme süresi ve ölçeklenebilirlik sağlar.
 
-Bu çözümü tamamladıktan sonra şunları yapabileceksiniz:
+Bu çözümü tamamladıktan sonra şunları yapabilirsiniz:
 
-* Azure Akış Analizi portalı hakkında bilgi edinin.
-* Akış işini yapılandırın ve dağıtın.
-* Gerçek dünyadaki sorunları ifade edin ve Stream Analytics sorgu dilini kullanarak bunları çözün.
-* Stream Analytics'i güvenle kullanarak müşterileriniz için akış çözümleri geliştirin.
+* Azure Stream Analytics portalı hakkında bilgi edinin.
+* Bir akış işini yapılandırın ve dağıtın.
+* Gerçek dünya sorunlarını Stream Analytics ve sorgu dilini kullanarak çözün.
+* Stream Analytics güvenle kullanarak müşterileriniz için akış çözümleri geliştirin.
 * Sorunları gidermek için izleme ve günlüğe kaydetme deneyimini kullanın.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu çözümü tamamlamak için aşağıdaki ön koşullara ihtiyacınız vardır:
-* [Azure aboneliği](https://azure.microsoft.com/pricing/free-trial/)
+Bu çözümü tamamlayabilmeniz için aşağıdaki önkoşulların olması gerekir:
+* Bir [Azure aboneliği](https://azure.microsoft.com/pricing/free-trial/)
 
-## <a name="scenario-introduction-hello-toll"></a>Senaryo giriş: "Merhaba, Toll!"
-Bir gişe yaygın bir fenomendir. Onlarla dünya çapında birçok otoyolda, köprüde ve tünelde karşılaşırsınız. Her gişede birden fazla gişe vardır. Manuel kabinlerde, bir görevliye geçiş ücretini ödemek için durursunuz. Otomatik kabinlerde, her kabinin üstündeki sensör, gişeden geçerken aracınızın ön camına yapıştırılmış bir RFID kartı tarar. Araçların bu gişelerden geçişini, ilginç operasyonların yapıldığı bir olay akışı olarak görselleştirmek kolaydır.
+## <a name="scenario-introduction-hello-toll"></a>Senaryoya giriş: "Merhaba, ücretli!"
+Ücretli istasyon ortak bir Phenomenon olur. Dünyanın dört bir yanında birçok ifade, köprü ve tünelle karşılaşırsınız. Her ücretli istasyonda birden çok ücretsiz olarak bulunur. El ile yapılan bir görevlisi ile ücretsiz olarak ödeme yapmayı durdurursunuz. Otomatik olarak, her bir stand üzerinde yapılan bir algılayıcı, stand 'yi geçirdiğiniz sırada, sizin için tek bir bir RFıD kartını tarar. Bu ücretli istasyonlardan, ilginç işlemlerin gerçekleştirilebileceği bir olay akışı olarak taşıtmayı kolayca görselleştirebilirsiniz.
 
-![Gişelerde araba resmi](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
+![Ücretsiz otomobillerin resmi](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
 
 ## <a name="incoming-data"></a>Gelen veriler
-Bu çözüm, iki veri akışıyla çalışır. Gişelerin giriş ve çıkışına yerleştirilen sensörler ilk akışı üretiyor. İkinci akış, araç kayıt verilerine sahip statik bir arama veri kümesidir.
+Bu çözüm iki veri akışı ile birlikte kullanılabilir. Ücretli istasyonların giriş ve çıkış bölümünde yüklenen sensörler ilk akışı üretir. İkinci akış, araç kayıt verilerine sahip bir statik arama veri kümesidir.
 
 ### <a name="entry-data-stream"></a>Giriş veri akışı
-Giriş veri akışı, otoyol istasyonlarına girerken otomobiller hakkında bilgi içerir. Çıkış veri solayları, örnek uygulamaya dahil olan bir Web Uygulamasından Olay Hub kuyruğuna canlı olarak aktarılır.
+Giriş veri akışı, ücretli istasyonlara girerken otomobiller hakkında bilgiler içerir. Çıkış verileri olayları, örnek uygulamada yer alan bir Web uygulamasından bir olay hub 'ı kuyruğuna canlı olarak kaydedilir.
 
-| TollID | Giriş Zamanı | Ruhsat Plakası | Durum | Marka | Model | Araç Tipi | Araç Ağırlığı | Ücretli | Etiket |
+| Tollıd | EntryTime | Licenselevha | Durum | Marka | Model | VehicleType | VehicleWeight | Numarası | Etiket |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |Crv |1 |0 |7 | |
-| 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
-| 3 |2014-09-10 12:02:00.000 |ABC 1004 |CT |Ford |Toros |1 |0 |5 |456789123 |
+| 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
+| 1 |2014-09-10 12:02:00.000 |YıLXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
+| 3 |2014-09-10 12:02:00.000 |ABC 1004 |CT |Ford |Boğa |1 |0 |5 |456789123 |
 | 2 |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Corolla |1 |0 |4 | |
-| 1 |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |Crv |1 |0 |5 |789123456 |
+| 1 |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |CRV |1 |0 |5 |789123456 |
 | 2 |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |1 |0 |6 |321987654 |
 
-Sütunların kısa bir açıklaması aşağıda veda edilmiştir:
+Aşağıda sütunların kısa bir açıklaması verilmiştir:
 
 | Sütun | Açıklama |
 | --- | --- |
-| TollID |Bir gişeyi benzersiz olarak tanımlayan gişe kimliği |
-| Giriş Zamanı |Aracın UTC'deki gişeye giriş tarihi ve saati |
-| Ruhsat Plakası |Aracın plaka numarası |
-| Durum |Amerika Birleşik Devletleri'nde bir devlet |
+| Tollıd |Bir stand 'yi benzersiz bir şekilde tanımlayan Stand No |
+| EntryTime |Araç için stand 'nın giriş tarihi ve saati (UTC) |
+| Licenselevha |Araç için lisans levha numarası |
+| Durum |Birleşik Devletler bir durum |
 | Marka |Otomobil üreticisi |
-| Model |Otomobilin model numarası |
-| Araç Tipi |Binek araçlar için 1, ticari araçlar için 2 |
-| Ağırlık Türü |Ton araç ağırlığı; Binek araçlar için 0 |
-| Ücretli |USD'deki geçiş ücreti değeri |
-| Etiket |Ödemeyi otomatikleştiren otomobildeki e-Tag; ödemenin el ile yapıldığı boş |
+| Model |Otomobil 'nin model numarası |
+| VehicleType |Yolcular için 1 veya ticari araçlar için 2 |
+| Ağırlıklı TType |Ton cinsinden ton ağırlığı; yolcular taşıtlar için 0 |
+| Numarası |ABD Doları cinsinden ücretli değer |
+| Etiket |Otomatik mobil üzerinde ödemeyi otomatikleştiren e-etiketi; ödemenin el ile yapıldığı yerde boş |
 
-### <a name="exit-data-stream"></a>Veri akışından çıkış
-Çıkış veri akışı, gişeden ayrılan araçlar la ilgili bilgiler içerir. Çıkış veri solayları, örnek uygulamaya dahil olan bir Web Uygulamasından Olay Hub kuyruğuna canlı olarak aktarılır.
+### <a name="exit-data-stream"></a>Çıkış veri akışı
+Çıkış veri akışı, ücretli istasyondan çıkan otomobiller hakkında bilgiler içerir. Çıkış verileri olayları, örnek uygulamada yer alan bir Web uygulamasından bir olay hub 'ı kuyruğuna canlı olarak kaydedilir.
 
-| **Tollid** | **Çıkış Zamanı** | **Ruhsat Plakası** |
+| **Tollıd** | **ExitTime** | **Licenselevha** |
 | --- | --- | --- |
-| 1 |2014-09-10T12:03:00.000000Z |JNB 7001 |
-| 1 |2014-09-10T12:03:00.000000Z |YXZ 1001 |
-| 3 |2014-09-10T12:04:00.000000Z |ABC 1004 |
-| 2 |2014-09-10T12:07:00.000000Z |XYZ 1003 |
-| 1 |2014-09-10T12:08:00.000000Z |BNJ 1007 |
-| 2 |2014-09-10T12:07:00.000000Z |CDE 1007 |
+| 1 |2014-09-10T12:03:00.0000000 Z |JNB 7001 |
+| 1 |2014-09-10T12:03:00.0000000 Z |YıLXZ 1001 |
+| 3 |2014-09-10T12:04:00.0000000 Z |ABC 1004 |
+| 2 |2014-09-10T12:07:00.0000000 Z |XYZ 1003 |
+| 1 |2014-09-10T12:08:00.0000000 Z |BNJ 1007 |
+| 2 |2014-09-10T12:07:00.0000000 Z |CDE 1007 |
 
-Sütunların kısa bir açıklaması aşağıda veda edilmiştir:
+Aşağıda sütunların kısa bir açıklaması verilmiştir:
 
 | Sütun | Açıklama |
 | --- | --- |
-| TollID |Bir gişeyi benzersiz olarak tanımlayan gişe kimliği |
-| Çıkış Zamanı |UTC'deki gişeden aracın çıkış tarihi ve saati |
-| Ruhsat Plakası |Aracın plaka numarası |
+| Tollıd |Bir stand 'yi benzersiz bir şekilde tanımlayan Stand No |
+| ExitTime |Bir araç için ücretli stand 'dan çıkış tarihi ve saati UTC |
+| Licenselevha |Araç için lisans levha numarası |
 
-### <a name="commercial-vehicle-registration-data"></a>Ticari araç tescil verileri
-Çözüm, ticari araç tescil veritabanının statik anlık görüntüsünü kullanır. Bu veriler, örnekte yer alan Azure blob depolama alanına JSON dosyası olarak kaydedilir.
+### <a name="commercial-vehicle-registration-data"></a>Ticari araç kayıt verileri
+Çözüm, ticari bir araç kayıt veritabanının statik bir anlık görüntüsünü kullanır. Bu veriler, Azure Blob depolama alanına bir JSON dosyası olarak kaydedilir ve örneğe dahildir.
 
-| Ruhsat Plakası | RegistrationId | Süresi doldu |
+| Licenselevha | RegistrationId | Süresi doldu |
 | --- | --- | --- |
 | SVT 6023 |285429838 |1 |
 | XLZ 3463 |362715656 |0 |
-| BAC 1005 |876133137 |1 |
+| ARKA ARKAYA 1005 |876133137 |1 |
 | RIV 8632 |992711956 |0 |
 | SNY 7188 |592133890 |0 |
 | ELH 9896 |678427724 |1 |
 
-Sütunların kısa bir açıklaması aşağıda veda edilmiştir:
+Aşağıda sütunların kısa bir açıklaması verilmiştir:
 
 | Sütun | Açıklama |
 | --- | --- |
-| Ruhsat Plakası |Aracın plaka numarası |
-| RegistrationId |Aracın plaka numarası |
-| Süresi doldu |Aracın tescil durumu: 0 araç tescili aktifse, 1 kayıt süresi dolmuşsa |
+| Licenselevha |Araç için lisans levha numarası |
+| RegistrationId |Araç kayıt KIMLIĞI |
+| Süresi doldu |Aracın kayıt durumu: araç kaydı etkinse 0, kaydın geçerliliği dolmuşsa 1 |
 
-## <a name="set-up-the-environment-for-azure-stream-analytics"></a>Azure Akış Analitiği için ortamı ayarlama
-Bu çözümü tamamlamak için bir Microsoft Azure aboneliğine ihtiyacınız var. Azure hesabınız yoksa, ücretsiz deneme [sürümü isteyebilirsiniz.](https://azure.microsoft.com/pricing/free-trial/)
+## <a name="set-up-the-environment-for-azure-stream-analytics"></a>Azure Stream Analytics için ortamı ayarlama
+Bu çözümü tamamlayabilmeniz için bir Microsoft Azure aboneliğine sahip olmanız gerekir. Azure hesabınız yoksa, [ücretsiz bir deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)isteyebilirsiniz.
 
-Azure kredinizi en iyi şekilde kullanabilmek için bu makalenin sonundaki "Azure hesabınızı temizle" bölümündeki adımları izlediğinizden emin olun.
+Azure kredinizi en iyi şekilde kullanabilmeniz için bu makalenin sonundaki "Azure hesabınızı Temizleme" bölümündeki adımları izlediğinizden emin olun.
 
 ## <a name="deploy-the-sample"></a>Örneği dağıtma
-Birkaç tıklamayla birlikte bir kaynak grubunda kolayca dağıtılabilen birkaç kaynak vardır. Çözüm tanımı GitHub deposunda [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)barındırılır.
+Bir kaynak grubunda birkaç tıklamayla kolayca dağıtılabilecek birkaç kaynak vardır. Çözüm tanımı, konumundaki [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)GitHub deposunda barındırılır.
 
-### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>Azure portalında TollApp şablonu dağıtma
-1. TollApp ortamını Azure'a dağıtmak için bu bağlantıyı kullanarak [TollApp Azure Şablonu'nu dağıtın.](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json)
+### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>Azure portal için TollApp şablonunu dağıtın
+1. TollApp ortamını Azure 'a dağıtmak için bu bağlantıyı kullanarak [Tollapp Azure şablonunu dağıtın](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json).
 
-2. İstenirse Azure portalında oturum açın.
+2. İstenirse Azure portal oturum açın.
 
-3. Çeşitli kaynakların faturalandırıldıği aboneliği seçin.
+3. Çeşitli kaynakların faturalandırılabileceği aboneliği seçin.
 
-4. Örneğin, `MyTollBooth`benzersiz bir ada sahip yeni bir kaynak grubu belirtin.
+4. Örneğin `MyTollBooth`, benzersiz bir ada sahip yeni bir kaynak grubu belirtin.
 
 5. Bir Azure konumu seçin.
 
-6. Bir **Aralığı** saniye sayısı olarak belirtin. Bu değer, olay hub'ına ne sıklıkta veri gönderilebilmek için örnek web uygulamasında kullanılır.
+6. Saniye sayısı olarak bir **Aralık** belirtin. Bu değer, örnek Web uygulamasında, Olay Hub 'ına veri gönderme sıklığı için kullanılır.
 
-7. Hüküm ve koşulları kabul etmek için **kontrol edin.**
+7. Hüküm ve koşulları kabul etmek için **işaretleyin** .
 
-8. Kaynakları daha sonra kolayca bulabilmeniz için **panoya** Sabitle'yi seçin.
+8. Kaynakları daha sonra kolayca bulabilmeniz **için panoya sabitle ' yi** seçin.
 
-9. Örnek şablonu dağıtmak için **Satın Alma'yı** seçin.
+9. Örnek şablonu dağıtmak için **satın al** ' ı seçin.
 
-10. Birkaç dakika sonra, **Dağıtım'ın başarılı olduğunu**onaylayan bir bildirim görüntülenir.
+10. Birkaç dakika sonra, **dağıtımın başarılı**olduğunu onaylamak için bir bildirim belirir.
 
-### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Azure Akışı Analytics TollApp kaynaklarını inceleyin
+### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Azure Stream Analytics TollApp kaynaklarını gözden geçirin
 
 1. Azure portalında oturum açın
 
-2. Önceki bölümde adını vermiş olduğunuz Kaynak Grubunu bulun.
+2. Önceki bölümde adlandırdığınız kaynak grubunu bulun.
 
-3. Aşağıdaki kaynakların kaynak grubunda listelenmiş olduğunu doğrulayın:
-   - Bir Cosmos DB Hesabı
-   - Bir Azure Akışı Analizi İşi
-   - Bir Azure Depolama Hesabı
-   - Bir Azure Etkinlik Merkezi
-   - İki Web Uygulaması
+3. Aşağıdaki kaynakların kaynak grubunda listelendiğinden emin olun:
+   - Bir Cosmos DB hesabı
+   - Bir Azure Stream Analytics Işi
+   - Bir Azure depolama hesabı
+   - Bir Azure Olay Hub 'ı
+   - İki Web Apps
 
 ## <a name="examine-the-sample-tollapp-job"></a>Örnek TollApp işini inceleyin
-1. Önceki bölümdeki kaynak grubundan **başlayarak, tollapp** adından başlayarak Akış Analizi akış işini seçin (ad benzersizlik için rasgele karakterler içerir).
+1. Önceki bölümde kaynak grubundan başlayarak, **tollapp** adı ile başlayan Stream Analytics akış işini seçin (ad, benzersizlik için rastgele karakterler içerir).
 
-2. İşin **Genel Bakış** sayfasında, sorgu sözdizimini görüntülemek için **Sorgu** kutusuna dikkat edin.
+2. İşin **genel bakış** sayfasında sorgu söz dizimini görüntülemek için **sorgu** kutusuna dikkat edin.
 
    ```sql
    SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*) AS Count
@@ -161,47 +161,47 @@ Birkaç tıklamayla birlikte bir kaynak grubunda kolayca dağıtılabilen birka�
    GROUP BY TUMBLINGWINDOW(minute, 3), TollId
    ```
 
-   Sorgunun amacını ifade etmek için, gişeye giren araç sayısını saymanız gerektiğini varsayalım. Bir otoyol gişesine sürekli giren araç akışı olduğundan, bunlar giriş olayları hiç durmayan bir dereye benzer. Akışı ölçmek için, üzerinde ölçmek için bir "zaman dilimi" tanımlamanız gerekir. "Her üç dakikada bir gişeye kaç araç girer?" sorusunu daha da inceleyelim. Bu genellikle yuvarlanan sayısı olarak adlandırılır.
+   Sorgunun amacını ifade etmek için, bir stand girerek telefon numarasını saymanız gerektiğini varsayalım. Bir otoyol 'e girerken sürekli bir telefon akışı olduğundan, giriş olayları, hiç durdurulmamış bir akışa benzerdir. Akışı ölçmek için, ölçmek üzere bir "zaman dilimi" tanımlamanız gerekir. Bu soruyu daha da belirginleştirem, "kaç kişinin her üç dakikada bir ücretli bir stand mi girsin?" Bu, yaygın olarak belirtilen sayı olarak adlandırılır.
 
-   Gördüğünüz gibi, Azure Akış Analizi SQL gibi bir sorgu dili kullanır ve sorgunun zamana ilişkin yönlerini belirtmek için birkaç uzantı ekler.  Daha fazla ayrıntı için, sorguda kullanılan [Zaman Yönetimi](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) ve [Pencereoluşturma](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) yapıları hakkında bilgi edinin.
+   Gördüğünüz gibi Azure Stream Analytics, SQL gibi bir sorgu dili kullanır ve sorgunun zaman ilişkili yönlerini belirtmek için birkaç uzantı ekliyor.  Daha fazla ayrıntı için sorguda kullanılan [zaman yönetimi](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) ve [Pencereleme](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) yapıları hakkında bilgi edinin.
 
 3. TollApp örnek işinin girişlerini inceleyin. Geçerli sorguda yalnızca EntryStream girişi kullanılır.
-   - **EntryStream** girişi, otoyolda bir araç gişeye her girdiğinde verileri gösteren verileri sıraya alan bir Olay Hub bağlantısıdır. Örneklerin bir parçası olan bir web uygulaması olayları oluşturuyor ve bu olay hub'ında bu veriler sıraya dizilir. Bu girişin akış sorgusunun FROM yan tümcesinde sorgulanır.
-   - **ExitStream** girişi, otoyolda bir araç gişeden her çıkışında verileri gösteren verileri sıraya alan bir Olay Hub bağlantısıdır. Bu akış girişi sorgu sözdiziminin sonraki varyasyonlarında kullanılır.
-   - **Kayıt** girişi, gerektiğinde aramalar için kullanılan statik bir kayıt.json dosyasına işaret eden bir Azure Blob depolama bağlantısıdır. Bu başvuru veri girişi sorgu sözdiziminin sonraki varyasyonlarında kullanılır.
+   - **Entrystream** girişi, bir araba otoyol üzerine bir tollstand girdiğinde verileri sıraya alan bir olay hub bağlantısıdır. Örneğin bir parçası olan bir Web uygulaması olayları oluşturuyor ve bu veri bu olay hub 'ında sıraya alındı. Bu girişin, akış sorgusunun FROM yan tümcesinde sorgulandığını unutmayın.
+   - **Exitstream** girişi, her bir otomobil otovaya bir tollstand 'tan çıktığında verileri sıraya alan bir olay hub bağlantısıdır. Bu akış girişi, sorgu sözdiziminin sonraki varyasyonları içinde kullanılır.
+   - **Kayıt** girişi, gerektiğinde aramalar için kullanılan bir statik kayıt. json dosyasını işaret eden bir Azure Blob depolama bağlantısıdır. Bu başvuru veri girişi, sorgu sözdiziminin sonraki varyasyonları içinde kullanılır.
 
-4. TollApp örnek işin çıktılarını inceleyin.
-   - **Cosmos DB** çıkışı, çıkış lavabo olaylarını alan bir Cosmos veritabanı kapsayıcısidir. Bu çıktının akış sorgusunun INTO yan tümcesinde kullanıldığını unutmayın.
+4. TollApp örnek işinin çıkışlarını inceleyin.
+   - **Cosmos DB** çıktısı, çıkış havuzu olaylarını alan bir Cosmos veritabanı kapsayıcısıdır. Bu çıkışın, akış sorgusunun INTO yan tümcesinde kullanıldığını unutmayın.
 
-## <a name="start-the-tollapp-streaming-job"></a>TollApp akış işini başlatın
+## <a name="start-the-tollapp-streaming-job"></a>TollApp akış işini başlatma
 Akış işini başlatmak için aşağıdaki adımları izleyin:
 
-1. İşin **Genel Bakış** sayfasında **Başlat'ı**seçin.
+1. İşin **genel bakış** sayfasında **Başlat**' ı seçin.
 
-2. İş **bölmesine Başlat'ta** **Şimdi'yi**seçin.
+2. **Işi Başlat** bölmesinde **Şimdi**' yi seçin.
 
-3. Birkaç dakika sonra, iş çalışmaya başladıktan sonra, akış işinin **Genel Bakış** sayfasında, **İzleme** grafiğini görüntüleyin. Grafik birkaç bin giriş olayları ve çıktı olaylar onlarca göstermelidir.
+3. Birkaç dakika sonra, iş çalışmaya başladıktan sonra, akış işinin **genel bakış** sayfasında **izleme** grafiğini görüntüleyin. Grafik birkaç bin giriş olayı ve onlarca çıkış olayı göstermelidir.
 
-## <a name="review-the-cosmosdb-output-data"></a>CosmosDB çıktı verilerini gözden geçirin
+## <a name="review-the-cosmosdb-output-data"></a>CosmosDB çıkış verilerini gözden geçirme
 1. TollApp kaynaklarını içeren kaynak grubunu bulun.
 
-2. Ad deseni **tollapp\<rastgele\>-cosmos**ile Azure Cosmos DB Hesabı seçin.
+2. **Tollapp\<Random\>-cosmos**ad düzenine sahip Azure Cosmos DB hesabını seçin.
 
-3. Veri **Gezgini** sayfasını açmak için Veri Gezgini başlığını seçin.
+3. Veri Gezgini sayfasını açmak için **Veri Gezgini** başlığını seçin.
 
-4. **TollAppDatabase** > **tollAppCollection** > **Belgelerini**genişletin.
+4. **Tollappdatabase** > **tollappcollection** > **belgelerini**genişletin.
 
-5. Kimlikler listesinde, çıktı kullanılabilir olduğunda birkaç doküman gösterilir.
+5. Kimlik listesinde, çıktı kullanılabilir olduğunda birkaç belge gösterilir.
 
-6. JSON belgesini incelemek için her kimliği seçin. Her tollid, windowend zaman ve bu pencereden araba sayısı dikkat edin.
+6. JSON belgesini gözden geçirmek için her kimliği seçin. Her bir tollıd, windowend saati ve bu penceredeki otomobillerin sayısını fark edin.
 
-7. Ek bir üç dakika sonra, dört belge başka bir dizi, tollid başına bir belge kullanılabilir.
+7. Ek üç dakika sonra, bir dizi dört belge, her tollıd için bir belge vardır.
 
 
-## <a name="report-total-time-for-each-car"></a>Her araç için toplam süreyi bildirme
-Bir arabanın geçiş ücretinden geçmesi için gereken ortalama süre, sürecin verimliliğini ve müşteri deneyimini değerlendirmeye yardımcı olur.
+## <a name="report-total-time-for-each-car"></a>Her araba için toplam süre raporu
+Bir otomobil tarafından ücretsiz olarak geçmesi gereken ortalama süre, işlemin verimliliğini ve müşteri deneyimini değerlendirmenize yardımcı olur.
 
-Toplam zamanı bulmak için, ExitTime akışıyla Giriş Zamanı akışına katılın. Eşit eşleşen TollId ve LicensePlate sütunlarında iki giriş akışına katılın. **JOIN** işleci, birleştirilmiş olaylar arasındaki kabul edilebilir zaman farkını açıklayan zamansal serbestlik belirtmenizi gerektirir. Olayların birbirinden en fazla 15 dakika olması gerektiğini belirtmek için **DATEDIFF** işlevini kullanın. Ayrıca, bir aracın gişede geçirdiği fiili zamanı hesaplamak için çıkış ve giriş sürelerine **DATEDIFF** işlevini uygulayın. **JOIN** koşulu yerine **SELECT** deyiminde kullanıldığında **DATEDIFF'in** kullanımının farkı dikkate ait.
+Toplam süreyi bulmak için, ExitTime akışıyla birlikte EntryTime akışına katın. Eşit eşleşen Tollıd ve Licencelevha sütunlarında iki giriş akışını birleştirin. **JOIN** işleci, birleştirilmiş olaylar arasında kabul edilebilir zaman farkını açıklayan, zamana bağlı Leeway belirtmenizi gerektirir. Olayların birbirinden 15 dakikadan fazla olmaması gerektiğini belirtmek için **DATEDIFF** işlevini kullanın. Ayrıca, bir otomobil 'nin ücretli istasyonda harcadığı gerçek süreyi hesaplamak için, çıkış ve giriş zamanlarında **DATEDIFF** işlevini uygulayın. Bir **JOIN** koşulu yerine **Select** ifadesinde kullanıldığında, **DATEDIFF** 'in kullanımını fark edin.
 
 ```sql
 SELECT EntryStream.TollId, EntryStream.EntryTime, ExitStream.ExitTime, EntryStream.LicensePlate, DATEDIFF (minute, EntryStream.EntryTime, ExitStream.ExitTime) AS DurationInMinutes
@@ -212,26 +212,26 @@ ON (EntryStream.TollId= ExitStream.TollId AND EntryStream.LicensePlate = ExitStr
 AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 ```
 
-### <a name="to-update-the-tollapp-streaming-job-query-syntax"></a>TollApp akış iş sorgusu sözdizimini güncellemek için:
+### <a name="to-update-the-tollapp-streaming-job-query-syntax"></a>TollApp akış işi sorgu söz dizimini güncelleştirmek için:
 
-1. İşin **Genel Bakış** sayfasında **Durdur'u**seçin.
+1. İşin **genel bakış** sayfasında **Durdur**' u seçin.
 
-2. İşin durdurulduğuna dair bildirim için birkaç dakika bekleyin.
+2. İşin durdurulduğu bildirim için birkaç dakika bekleyin.
 
-3. İş TOPOLOJIsi başlığı altında **sorgu< > **
+3. Iş TOPOLOJISI başlığı altında **< > sorgula** ' yı seçin.
 
-4. Ayarlanan akışlı SQL sorgusunu yapıştırın.
+4. Ayarlanmış akış SQL sorgusunu yapıştırın.
 
-5. Sorguyu kaydetmek için **Kaydet'i** seçin. Değişiklikleri kaydetmek için **Evet'i** onaylayın.
+5. Sorguyu kaydetmek için **Kaydet** ' i seçin. Değişiklikleri kaydetmek için **Evet** ' i onaylayın.
 
-6. İşin **Genel Bakış** sayfasında **Başlat'ı**seçin.
+6. İşin **genel bakış** sayfasında **Başlat**' ı seçin.
 
-7. İş **bölmesine Başlat'ta** **Şimdi'yi**seçin.
+7. **Işi Başlat** bölmesinde **Şimdi**' yi seçin.
 
-### <a name="review-the-total-time-in-the-output"></a>Çıktıdaki toplam süreyi gözden geçirme
-Akış işinden CosmosDB çıktı verilerini gözden geçirmek için önceki bölümdeki adımları yineleyin. En son JSON belgelerini gözden geçirin.
+### <a name="review-the-total-time-in-the-output"></a>Çıkışdaki toplam süreyi gözden geçirin
+Akış işinden CosmosDB çıkış verilerini gözden geçirmek için yukarıdaki bölümdeki adımları yineleyin. En son JSON belgelerini gözden geçirin.
 
-Örneğin, bu belge, belirli bir plakaya sahip örnek bir aracı, giriş saatini ve çıkış saatini ve gişe süresini iki dakika olarak gösteren DATEDIFF hesaplanan süreleri gösterir:
+Örneğin, bu belgede, belirli bir lisans kalıbına, entrytime ve çıkış zamanına ve DATESTANDDURATIONINMINUTES alanını iki dakika olarak gösteren bir örnek otomobil gösterilmektedir:
 ```JSON
 {
     "tollid": 4,
@@ -248,10 +248,10 @@ Akış işinden CosmosDB çıktı verilerini gözden geçirmek için önceki bö
 }
 ```
 
-## <a name="report-vehicles-with-expired-registration"></a>Süresi dolmuş kaydı olan araçları bildirme
-Azure Akış Analizi, zamansal veri akışlarıyla birleştirmek için başvuru verilerinin statik anlık görüntülerini kullanabilir. Bu yeteneği göstermek için aşağıdaki örnek soruyu kullanın. Kayıt girişi, lisans etiketlerinin son kullanma gün geçmişlerini listeleyen statik bir blob json dosyasıdır. Referans verileri, plakaya katılarak, geçiş ücretinden geçen her bir araçla karşılaştırılır.
+## <a name="report-vehicles-with-expired-registration"></a>Son kaydedilen kayıt ile rapor Araçlar
+Azure Stream Analytics, zamana bağlı veri akışları ile birleştirmek için başvuru verilerinin statik anlık görüntülerini kullanabilir. Bu özelliği göstermek için aşağıdaki örnek soruyu kullanın. Kayıt girişi, lisans etiketlerinin süre sonlarını listeleyen bir statik blob JSON dosyasıdır. Lisans kalıbına katılarak, başvuru verileri her bir araç ile her iki yönlü olarak geçen her bir araç ile karşılaştırılır.
 
-Ticari bir araç ücretli şirkete kayıtlı ise, muayene için durdurulmadan gişeden geçebilir. Süresi dolmuş tüm ticari araçları tanımlamak için kayıt arama tablosunu kullanın.
+Ticari bir araç ücretli şirkete kayıtlı ise, denetim için durdurulmaksızın ücretli stand aracılığıyla geçiş yapabilir. Son kullanma kayıtları olan tüm ticari araçlar 'ı belirlemek için kayıt arama tablosunu kullanın.
 
 ```sql
 SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId
@@ -262,9 +262,9 @@ ON EntryStream.LicensePlate = Registration.LicensePlate
 WHERE Registration.Expired = '1'
 ```
 
-1. TollApp akış iş sorgusu sözdizimini güncellemek için önceki bölümdeki adımları yineleyin.
+1. TollApp akış işi sorgu söz dizimini güncelleştirmek için yukarıdaki bölümdeki adımları yineleyin.
 
-2. Akış işinden CosmosDB çıktı verilerini gözden geçirmek için önceki bölümdeki adımları yineleyin.
+2. Akış işinden CosmosDB çıkış verilerini gözden geçirmek için yukarıdaki bölümdeki adımları yineleyin.
 
 Örnek çıktı:
 ```json
@@ -282,10 +282,10 @@ WHERE Registration.Expired = '1'
     }
 ```
 
-## <a name="scale-out-the-job"></a>İşi ölçeklendirin
-Azure Akış Analizi, büyük hacimli verileri işleyebilir şekilde elastik ölçeklendirme yapmak üzere tasarlanmıştır. Azure Akışı Analizi sorgusu, sisteme bu adımın ölçeklendirildigini söylemek için **PARTITION BY** yan tümcesini kullanabilir. **PartitionId,** sistemin girişin (olay hub'ı) bölüm kimliğiyle eşleşmek için eklediği özel bir sütundur.
+## <a name="scale-out-the-job"></a>İşi ölçeklendirme
+Azure Stream Analytics, büyük hacimlerinizi işleyebilecek şekilde esnek ölçeklendirmek üzere tasarlanmıştır. Azure Stream Analytics sorgusu, sisteme bu adımın ölçeklendirmiş olduğunu bildirmek için bir **PARTITION by** yan tümcesini kullanabilir. **PartitionID** , sistemin, GIRIŞIN bölüm kimliğini (Event hub) eşleştirmek için eklediği özel bir sütundur.
 
-Sorguyu bölümlere ölçeklendirmek için sorgu sözdizimini aşağıdaki koda göre edin:
+Sorguyu bölümlere ölçeklendirmek için sorgu söz dizimini aşağıdaki kodla düzenleyin:
 ```sql
 SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
 INTO CosmosDB
@@ -297,31 +297,31 @@ GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
 Akış işini daha fazla akış birimine ölçeklendirmek için:
 
-1. Geçerli işi **durdurun.**
+1. Geçerli işi **durdurun** .
 
-2. sorgu sorgusu **sayfasındasorgu** sözdizimini< > ve değişiklikleri kaydedin.
+2. Sorgu söz dizimini **< > sorgu** sayfasında güncelleştirin ve değişiklikleri kaydedin.
 
-3. Akış işinde CONFIGURE başlığı altında **Ölçek'i**seçin.
+3. Akış işindeki yapılandırma başlığı altında **Ölçek**' i seçin.
 
-4. Akış **birimleri** kaydırıcısını 1'den 6'ya kaydırın. Akış birimleri, işin alabileceği işlem gücü miktarını tanımlar. **Kaydet'i**seçin.
+4. **Akış birimleri** kaydırıcısını 1 ' den 6 ' a kaydırın. Akış birimleri, işin alabileceği işlem gücü miktarını tanımlar. **Kaydet**’i seçin.
 
-5. Ek ölçeği göstermek için akış işini **başlatın.** Azure Akış Analizi, işi daha fazla bilgi işlem kaynağına dağıtır ve daha iyi iş elde ederek, BÖLÜMÜ YAN TÜMcesinde belirlenen sütunu kullanarak işi kaynaklar arasında bölümlere ayırır.
+5. Ek ölçeği göstermek için akış işini **başlatın** . Azure Stream Analytics, işleri daha fazla işlem kaynağına dağıtır ve bölüm BY yan tümcesinde belirtilen sütunu kullanarak işleri kaynaklar genelinde bölümleyerek daha iyi işleme elde edin.
 
 ## <a name="monitor-the-job"></a>İş izleme
-**MONITOR** alanı çalışan iş hakkında istatistikler içerir. Depolama hesabını aynı bölgede kullanmak için ilk kez yapılandırma gerekir (bu belgenin geri kalanı gibi ad ücreti).
+**İzleme** alanı çalışan iş hakkında istatistikler içerir. Depolama hesabını aynı bölgede (Bu belgenin geri kalanı gibi) kullanmak için ilk kez yapılandırma gerekir.
 
-![Azure Akış Analizi iş izleme](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
+![Azure Stream Analytics iş izleme](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
 
-İş panosu **Ayarları** alanından **Da Aktivite Günlükleri** erişebilirsiniz.
+**Etkinlik günlüklerine** Iş Pano **ayarları** alanından da erişebilirsiniz.
 
-## <a name="clean-up-the-tollapp-resources"></a>TollApp kaynaklarını temizleme
-1. Azure portalındaki Akış Analizi işini durdurun.
+## <a name="clean-up-the-tollapp-resources"></a>TollApp kaynaklarını Temizleme
+1. Azure portal Stream Analytics işini durdurun.
 
 2. TollApp şablonuyla ilgili sekiz kaynak içeren kaynak grubunu bulun.
 
-3. **Kaynak grubunu sil**'i seçin. Silme işlemini onaylamak için kaynak grubunun adını yazın.
+3. **Kaynak grubunu sil**'i seçin. Silmeyi onaylamak için kaynak grubunun adını yazın.
 
 ## <a name="conclusion"></a>Sonuç
-Bu çözüm sizi Azure Akış Analizi hizmetiyle tanıştırdı. Akış Analizi işi için girdi ve çıktıların nasıl yapılandırılabildiğini gösterdi. Çözüm, Ücretli Veri senaryosunu kullanarak, hareket halindeki veri alanında ortaya çıkan yaygın sorun türlerini ve Bunların Azure Akış Analizi'ndeki basit SQL benzeri sorgularla nasıl çözülebileceğini açıkladı. Zamansal verilerle çalışmak için SQL uzantısı yapılarını açıklanan çözüm. Veri akışlarına nasıl katılacağını, statik başvuru verileriyle veri akışını nasıl zenginleştireceklerini ve daha yüksek iş elde etmek için sorguyu nasıl ölçeklendireceklerini gösterdi.
+Bu çözüm sizi Azure Stream Analytics hizmetine tanıtmaktadır. Stream Analytics işi için girişlerin ve çıktıların nasıl yapılandırılacağı gösterilmiştir. Ücretsiz veri senaryosunu kullanarak çözüm, hareket halindeki verilerin alanında ortaya çıkan ve Azure Stream Analytics içindeki basit SQL benzeri sorgularla nasıl çözülebilecekleri hakkında yaygın olarak karşılaşılan sorun türlerini açıklanmıştı. Geçici verilerle çalışmak için SQL uzantı yapılarını tarif eden çözüm. Veri akışlarına nasıl katılabileceğiniz, veri akışının statik başvuru verileriyle nasıl zenginleştirileceği ve daha yüksek aktarım hızı elde etmek için bir sorgunun nasıl ölçekleneceği gösterildi.
 
-Bu çözüm iyi bir giriş sağlasa da, hiçbir şekilde tamamlanmaz. [Ortak Akış Analizi kullanım desenleri için Sorgu örneklerinde](stream-analytics-stream-analytics-query-patterns.md)SAQL dilini kullanarak daha fazla sorgu deseni bulabilirsiniz.
+Bu çözüm iyi bir giriş sağlasa da, herhangi bir nedenle tamamlanmaz. [Ortak Stream Analytics kullanım desenleri Için sorgu örneklerinde](stream-analytics-stream-analytics-query-patterns.md)saql dilini kullanarak daha fazla sorgu deseni bulabilirsiniz.

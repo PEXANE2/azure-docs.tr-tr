@@ -1,6 +1,6 @@
 ---
-title: "Azure ExpressRoute: Ortak bir bakışla Microsoft'a bakma"
-description: Bu makalede, public peering'inizi ExpressRoute'da Microsoft'a yönlendiren lere taşıma adımları gösterilmektedir.
+title: "Azure ExpressRoute: genel eşlemeyi Microsoft eşlemesi 'ne taşıma"
+description: Bu makalede, ExpressRoute üzerinde genel eşinizi Microsoft eşlemesi 'ne taşıma adımları gösterilmektedir.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,86 +8,86 @@ ms.topic: article
 ms.date: 12/12/2019
 ms.author: cherylmc
 ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75436851"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Genel eşlemeden Microsoft eşlemesine geçiş yapma
 
-Bu makale, genel bir bakış yapılandırmasını, kesinti olmadan Microsoft'a taşımanıza yardımcı olur. ExpressRoute, Azure depolama ve Azure SQL Veritabanı gibi Azure PaaS hizmetleri için rota filtreleriyle Microsoft eşlemesinin kullanılmasını sağlar. Artık Microsoft PaaS ve SaaS hizmetlerine erişmek için tek bir yönlendirme etki alanına ihtiyacınız vardır. Kullanmak istediğiniz Azure bölgeleri için PaaS hizmeti ön eklerini tanıtmak için rota filtreleri kullanabilirsiniz.
+Bu makale, bir genel eşleme yapılandırmasını kapalı kalma süresi olmadan Microsoft eşlemesi 'ne taşımanıza yardımcı olur. ExpressRoute, Azure depolama ve Azure SQL Veritabanı gibi Azure PaaS hizmetleri için rota filtreleriyle Microsoft eşlemesinin kullanılmasını sağlar. Artık Microsoft PaaS ve SaaS hizmetlerine erişmek için tek bir yönlendirme etki alanına ihtiyacınız vardır. Kullanmak istediğiniz Azure bölgeleri için PaaS hizmeti ön eklerini tanıtmak için rota filtreleri kullanabilirsiniz.
 
-Azure genel bakışlarının her BGP oturumuyla ilişkili 1 NAT IP adresi vardır. Microsoft'un bakışları, kendi NAT ayırmalarınızı yapılandırmanıza ve seçici önek reklamlar için rota filtrelerini kullanmanıza olanak tanır. Public Peering, Connectivity'nin WAN'ınızdan Microsoft Azure hizmetlerine her zaman başlatıldığı tek yönlü bir hizmettir. Microsoft Azure hizmetleri, bu yönlendirme etki alanı üzerinden ağınıza bağlantı başlatamaz.
+Azure genel eşleme, her BGP oturumuyla ilişkili 1 NAT IP adresine sahiptir. Microsoft eşleme, kendi NAT ayırmalarınızı yapılandırmanıza ve seçmeli ön ek tanıtımları için yol filtrelerini kullanmanıza olanak sağlar. Genel eşleme, her zaman WAN 'dan Microsoft Azure hizmetlere hangi bağlantının başlatıldığını kullanan tek yönlü bir hizmettir. Microsoft Azure hizmetler, bu yönlendirme etki alanı üzerinden ağınıza bağlantı başlatamaz.
 
-Herkese açık bir şekilde bakma özelliği etkinleştirildikten sonra, tüm Azure hizmetlerine bağlanabilirsiniz. Rotaların reklamını yaptığımız hizmetleri seçici olarak seçmene izin vermiyoruz. Microsoft'un bakışları, WAN'ınızla birlikte Microsoft Azure hizmetinden bağlantı başlatılabilen çift yönlü bir bağlantı olsa da. Etki alanlarını yönlendirme ve bakma hakkında daha fazla bilgi için [ExpressRoute devreleri ve yönlendirme etki alanları](expressroute-circuit-peerings.md)hakkında bilgi.
+Ortak eşleme etkinleştirildikten sonra tüm Azure hizmetlerine bağlanabilirsiniz. Yolların tanıtıldığı Hizmetleri seçmeli olarak seçmenizi vermedik. Microsoft eşlemesi, bağlantının WAN ile birlikte Microsoft Azure hizmetten başlatılabileceği iki yönlü bir bağlantıdır. Yönlendirme etki alanları ve eşleme hakkında daha fazla bilgi için bkz. [ExpressRoute devreleri ve yönlendirme etki alanları](expressroute-circuit-peerings.md).
 
 ## <a name="before-you-begin"></a><a name="before"></a>Başlamadan önce
 
-Microsoft'un bakışlarına bağlanmak için NAT'yi ayarlamanız ve yönetmeniz gerekir. Bağlantı sağlayıcınız NAT'yi yönetilen bir hizmet olarak ayarlayabilir ve yönetebilir. Microsoft'un baktığında Azure PaaS ve Azure SaaS hizmetlerine erişmeyi planlıyorsanız, NAT IP havuzunu doğru boyutlandırmanız önemlidir. ExpressRoute için NAT hakkında daha fazla bilgi için [Microsoft'un bakışları için NAT gereksinimlerine](expressroute-nat.md#nat-requirements-for-microsoft-peering)bakın. Azure ExpressRoute (Microsoft peering) aracılığıyla Microsoft'a bağlandığınızda, Microsoft'a birden çok bağlantınız vardır. Bağlantıların biri, var olan İnternet bağlantınız diğeri de ExpressRoute aracılığıyla olan bağlantı. Microsoft’a yönelik trafiğin bir kısmı İnternet üzerinden gidip ExpressRoute üzerinden dönebilir ya da tam tersi gerçekleşebilir.
+Microsoft eşlemesiyle bağlantı kurmak için NAT ayarlamanız ve yönetmeniz gerekir. Bağlantı sağlayıcınız NAT 'ı yönetilen bir hizmet olarak ayarlayabilir ve yönetebilir. Azure PaaS ve Azure SaaS hizmetlerine Microsoft eşlemesi üzerinde erişmeyi planlıyorsanız, NAT IP havuzunu doğru bir şekilde boyutlandırmamak önemlidir. ExpressRoute için NAT hakkında daha fazla bilgi için bkz. [Microsoft eşlemesi Için NAT gereksinimleri](expressroute-nat.md#nat-requirements-for-microsoft-peering). Azure ExpressRoute (Microsoft eşlemesi) üzerinden Microsoft 'a bağlandığınızda, Microsoft 'a yönelik birden fazla bağlantı vardır. Bağlantıların biri, var olan İnternet bağlantınız diğeri de ExpressRoute aracılığıyla olan bağlantı. Microsoft’a yönelik trafiğin bir kısmı İnternet üzerinden gidip ExpressRoute üzerinden dönebilir ya da tam tersi gerçekleşebilir.
 
 ![Çift yönlü bağlantı](./media/how-to-move-peering/bidirectional-connectivity.jpg)
 
 > [!Warning]
 > Microsoft'a tanıtılan NAT IP havuzu İnternet'e tanıtılmamalıdır. Bu, diğer Microsoft hizmetlerine bağlantıyı keser.
 
-Microsoft'u yapılandırmadan önce asimetrik yönlendirme ihtarları için [birden çok ağ yolu olan Asimetrik yönlendirmeye](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) bakın.
+Microsoft eşlemesini yapılandırmadan önce asimetrik yönlendirme uyarıları için [birden çok ağ yoluyla asimetrik yönlendirmeye](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) bakın.
 
-* Genel bakış kullanıyorsanız ve şu anda [Azure Depolama](../storage/common/storage-network-security.md) veya [Azure SQL Veritabanı'na](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)erişmek için kullanılan genel IP adresleri için IP Ağı kurallarına sahipseniz, Microsoft ile yapılandırılan NAT IP havuzunun Azure depolama hesabı veya Azure SQL hesabı nın ortak IP adresleri listesinde yer aldığından emin olmanız gerekir.<br>
-* Microsoft'a herhangi bir kesinti olmadan bakmak için, bu makaledeki adımları sunulduğu sırada kullanın.
+* Ortak eşleme kullanıyorsanız ve şu anda [Azure depolama](../storage/common/storage-network-security.md) veya [Azure SQL veritabanı](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)'na erışmek için kullanılan genel IP adresleri için IP ağ kurallarına sahipseniz, MICROSOFT EŞLEMESIYLE yapılandırılmış NAT IP havuzunun Azure depolama hesabı veya Azure SQL hesabı için genel IP adresleri listesine eklendiğinden emin olmanız gerekir.<br>
+* Kapalı kalma süresi olmadan Microsoft eşlemesine geçiş yapmak için, bu makaledeki adımları sunuldukları sırada kullanın.
 
-## <a name="1-create-microsoft-peering"></a><a name="create"></a>1. Microsoft'a bakış oluşturma
+## <a name="1-create-microsoft-peering"></a><a name="create"></a>1. Microsoft eşlemesi oluştur
 
-Microsoft'un bakışları oluşturulmamadıysa, Microsoft'un eşlemesi oluşturmak için aşağıdaki makalelerden birini kullanın. Bağlantı sağlayıcınız yönetilen katman 3 hizmetleri sunuyorsa, bağlantı sağlayıcısından devreniz için Microsoft'un eşlemesini etkinleştirmesini isteyebilirsiniz.
+Microsoft eşlemesi oluşturulmadıysa, Microsoft eşlemesi oluşturmak için aşağıdaki makalelerden birini kullanın. Bağlantı sağlayıcınız yönetilen katman 3 hizmetleri sunuyorsa, bağlantı sağlayıcısına bağlantı sağlayıcıya, devrenizin için Microsoft eşlemeyi etkinleştirmesini isteyebilirsiniz.
 
-Katman 3 sizin yeriniz tarafından yönetiliyorsa, devam etmeden önce aşağıdaki bilgiler gereklidir:
+Katman 3 ' ü yönetilmiyorsa, devam etmeden önce aşağıdaki bilgiler gereklidir:
 
-* Birincil bağlantı için bir /30 alt ağı. Bu size ait ve bir RIR / IRR içinde kayıtlı bir geçerli ortak IPv4 ön eki olmalıdır. Microsoft yönlendiricisi için ikinci kullanılabilir IP'yi kullandığından, bu alt ağdan yönlendiricinize ilk kullanılabilir IP adresini atarsınız.<br>
-* İkincil bağlantı için bir /30 alt ağı. Bu size ait ve bir RIR / IRR içinde kayıtlı bir geçerli ortak IPv4 ön eki olmalıdır. Microsoft yönlendiricisi için ikinci kullanılabilir IP'yi kullandığından, bu alt ağdan yönlendiricinize ilk kullanılabilir IP adresini atarsınız.<br>
-* Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun. Hem Birincil hem de İkincil bağlantılar için aynı VLAN Kimliğini kullanmanız gerekir.<br>
+* Birincil bağlantı için bir /30 alt ağı. Bu size ait ve bir RIR / IRR içinde kayıtlı bir geçerli ortak IPv4 ön eki olmalıdır. Bu alt ağdan, Microsoft 'un yönlendiricisi için kullanılan ikinci IP adresini kullandığından, ilk yapılandırılmış IP adresini yönlendiricinize atayacaksınız.<br>
+* İkincil bağlantı için bir /30 alt ağı. Bu size ait ve bir RIR / IRR içinde kayıtlı bir geçerli ortak IPv4 ön eki olmalıdır. Bu alt ağdan, Microsoft 'un yönlendiricisi için kullanılan ikinci IP adresini kullandığından, ilk yapılandırılmış IP adresini yönlendiricinize atayacaksınız.<br>
+* Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun. Birincil ve Ikincil bağlantılar için aynı VLAN KIMLIĞINI kullanmanız gerekir.<br>
 * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz.<br>
-* Tanıtılan önekler: BGP oturumunda tanıtmayı planladığınız tüm öneklerin bir listesini sağlamanız gerekir. Yalnızca ortak IP adresi ön ekleri kabul edilir. Bir önek kümesi göndermeyi planlıyorsanız, virgülle ayrılmış bir liste gönderebilirsiniz. Bu önekler size bir RIR / IRR içinde kaydedilmiş olmalıdır.<br>
+* Tanıtılan önekler: BGP oturumunda tanıtmayı planladığınız tüm öneklerin bir listesini sağlamanız gerekir. Yalnızca ortak IP adresi ön ekleri kabul edilir. Bir önek kümesi gönderilmesini planlıyorsanız, virgülle ayrılmış bir liste gönderebilirsiniz. Bu önekler size bir RIR / IRR içinde kaydedilmiş olmalıdır.<br>
 * Yönlendirme Kayıt Defteri Adı: AS numarası ve öneklerinin kaydedildiği RIR / IRR’yi belirtebilirsiniz.
 
-* **İsteğe Bağlı** - Müşteri ASN: Emsal AS numarasına kayıtlı olmayan önekleri reklamlıyorsanız, kayıtlı oldukları AS numarasını belirtebilirsiniz.<br>
-* **İsteğe bağlı** - Kullanmayı seçerseniz MD5 karma.
+* **Isteğe bağlı** -müşteri ASN: eşleme numarasına kayıtlı olmayan ön ekler varsa, BUNLARıN kaydedildiği as numarasını belirtebilirsiniz.<br>
+* **Isteğe bağlı** -birini kullanmayı SEÇERSENIZ bir MD5 karma değeri.
 
-Microsoft'un eşlemesini sağlamak için ayrıntılı yönergeler aşağıdaki makalelerde bulunabilir:
+Aşağıdaki makalelerde Microsoft eşlemesini etkinleştirmeye yönelik ayrıntılı yönergeler bulabilirsiniz:
 
-* [Azure portalLarını kullanarak Microsoft eşleme oluşturma](expressroute-howto-routing-portal-resource-manager.md#msft)<br>
-* [Azure Powershell'i kullanarak Microsoft eşleme oluşturma](expressroute-howto-routing-arm.md#msft)<br>
-* [Azure CLI'yi kullanarak Microsoft eşleme oluşturma](howto-routing-cli.md#msft)
+* [Azure portal kullanarak Microsoft eşlemesi oluşturma](expressroute-howto-routing-portal-resource-manager.md#msft)<br>
+* [Azure PowerShell kullanarak Microsoft eşlemesi oluşturma](expressroute-howto-routing-arm.md#msft)<br>
+* [Azure CLı kullanarak Microsoft eşlemesi oluşturma](howto-routing-cli.md#msft)
 
-## <a name="2-validate-microsoft-peering-is-enabled"></a><a name="validate"></a>2. Microsoft'un bakışlarını doğrulama etkin
+## <a name="2-validate-microsoft-peering-is-enabled"></a><a name="validate"></a>2. Microsoft eşlemesini doğrulama etkin
 
-Microsoft eşlemenin etkin olduğunu ve reklamı yapılandırılan genel öneklerin yapılandırılan durumda olduğunu doğrulayın.
+Microsoft eşlemesinin etkinleştirildiğini ve tanıtılan genel ön eklerin yapılandırılmış durumda olduğunu doğrulayın.
 
-* [Azure portalında](expressroute-howto-routing-portal-resource-manager.md#getmsft)<br>
+* [Azure portal](expressroute-howto-routing-portal-resource-manager.md#getmsft)<br>
 * [Azure PowerShell](expressroute-howto-routing-arm.md#getmsft)<br>
 * [Azure CLI](howto-routing-cli.md#getmsft)
 
-## <a name="3-configure-and-attach-a-route-filter-to-the-circuit"></a><a name="routefilter"></a>3. Bir rota filtresini yapılandırma ve devreye iliştirme
+## <a name="3-configure-and-attach-a-route-filter-to-the-circuit"></a><a name="routefilter"></a>3. devreye bir yol filtresi yapılandırın ve ekleyin
 
-Varsayılan olarak, yeni Microsoft eşlemeleri, devreye bir rota filtresi iliştirilene kadar öneklerin reklamını yapmaz. Bir rota filtresi kuralı oluşturduğunuzda, Azure PaaS hizmetleri için tüketmek istediğiniz Azure bölgeleri için hizmet toplulukları listesini belirtebilirsiniz. Bu, aşağıdaki ekran görüntüsünde gösterildiği gibi, rotaları gereksiniminize göre filtreleme esnekliği sağlar:
+Varsayılan olarak, yeni Microsoft eşlemesi, bir yol filtresi devresine iliştirilene kadar herhangi bir önek duyurmaz. Bir rota filtresi kuralı oluşturduğunuzda, Azure PaaS hizmetleri için kullanmak istediğiniz Azure bölgelerinin hizmet topluluklarıyla ilgili listeyi belirtebilirsiniz. Bu, aşağıdaki ekran görüntüsünde gösterildiği gibi, bu yolları gereksiniminize göre filtreleme esnekliği sağlar:
 
-![Ortak bakışları birleştirme](./media/how-to-move-peering/routefilter.jpg)
+![Ortak eşlemeyi Birleştir](./media/how-to-move-peering/routefilter.jpg)
 
-Aşağıdaki makalelerden herhangi birini kullanarak rota filtrelerini yapılandırın:
+Aşağıdaki makalelerden birini kullanarak yol filtrelerini yapılandırın:
 
-* [Azure portalLarını kullanarak Microsoft eşleme için rota filtrelerini yapılandırma](how-to-routefilter-portal.md)<br>
-* [Azure PowerShell'i kullanarak Microsoft eşlenetrasyon için rota filtrelerini yapılandırma](how-to-routefilter-powershell.md)<br>
-* [Azure CLI kullanarak Microsoft eşlemesi için rota filtrelerini yapılandırma](how-to-routefilter-cli.md)
+* [Azure portal kullanarak Microsoft eşlemesi için yol filtrelerini yapılandırma](how-to-routefilter-portal.md)<br>
+* [Azure PowerShell kullanarak Microsoft eşlemesi için yol filtrelerini yapılandırma](how-to-routefilter-powershell.md)<br>
+* [Azure CLı kullanarak Microsoft eşlemesi için rota filtrelerini yapılandırma](how-to-routefilter-cli.md)
 
-## <a name="4-delete-the-public-peering"></a><a name="delete"></a>4. Kamu bakan silme
+## <a name="4-delete-the-public-peering"></a><a name="delete"></a>4. genel eşlemeyi silme
 
-Microsoft eşlemenin yapılandırıldığından ve tüketmek istediğiniz öneklerin Microsoft'un eşlemelerinde doğru şekilde reklamı nın yapıldığı doğrulandıktan sonra, ortak bakışları silebilirsiniz. Genel bakışları silmek için aşağıdaki makalelerden birini kullanın:
+Microsoft eşlemesinin yapılandırıldığını doğruladıktan ve kullanmak istediğiniz ön ekler Microsoft eşlemesi üzerinde doğru şekilde tanıtıldıktan sonra, genel eşlemeyi silebilirsiniz. Ortak eşlemeyi silmek için aşağıdaki makalelerden birini kullanın:
 
-* [Azure PowerShell'i kullanarak Azure genel eşlemi silme](about-public-peering.md#powershell)
-* [CLI kullanarak Azure ortak eşlemi silme](about-public-peering.md#cli)
+* [Azure PowerShell kullanarak Azure ortak eşlemesini silme](about-public-peering.md#powershell)
+* [CLı kullanarak Azure ortak eşlemesini silme](about-public-peering.md#cli)
   
-## <a name="5-view-peerings"></a><a name="view"></a>5. Görünümleri görüntüleyin
+## <a name="5-view-peerings"></a><a name="view"></a>5. eşlemeleri görüntüleme
   
-Azure portalında tüm ExpressRoute devrelerinin ve eşlemelerinin listesini görebilirsiniz. Daha fazla bilgi için [bkz.](expressroute-howto-routing-portal-resource-manager.md#getmsft)
+Azure portal tüm ExpressRoute devreleri ve eşlerinin bir listesini görebilirsiniz. Daha fazla bilgi için bkz. [Microsoft eşleme ayrıntılarını görüntüleme](expressroute-howto-routing-portal-resource-manager.md#getmsft).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

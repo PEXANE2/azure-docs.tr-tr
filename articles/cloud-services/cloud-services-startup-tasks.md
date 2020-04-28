@@ -1,6 +1,6 @@
 ---
-title: Azure Bulut Hizmetlerinde Başlangıç Görevlerini Çalıştırma | Microsoft Dokümanlar
-description: Başlangıç görevleri, bulut hizmeti ortamınızı uygulamanız için hazırlamanıza yardımcı olur. Bu, başlangıç görevlerinin nasıl çalıştığını ve bunları nasıl yapacağınızı öğretir
+title: Azure Cloud Services başlangıç görevlerini çalıştırın | Microsoft Docs
+description: Başlangıç görevleri, bulut hizmeti ortamınızı uygulamanız için hazırlamaya yardımcı olur. Bu, başlangıç görevlerinin nasıl çalıştığını ve nasıl yapılacağını öğretir
 services: cloud-services
 author: tgore03
 ms.service: cloud-services
@@ -8,55 +8,55 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75360319"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Bulut hizmeti için başlangıç görevlerini yapılandırma ve çalıştırma
-Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görevlerini kullanabilirsiniz. Gerçekleştirmek isteyebileceğin işlemler arasında bir bileşen yükleme, COM bileşenlerini kaydetme, kayıt defteri anahtarlarını ayarlama veya uzun süren bir işlem başlatma yer almaktadır.
+Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görevleri kullanabilirsiniz. Gerçekleştirmek isteyebileceğiniz işlemler, bir bileşeni yüklemeyi, COM bileşenlerini kaydetmeyi, kayıt defteri anahtarlarını ayarlamayı veya uzun süre çalışan bir işlemi başlatmayı içerir.
 
 > [!NOTE]
-> Başlangıç görevleri Sanal Makineler için geçerli değildir, yalnızca Bulut Hizmeti Web ve Çalışan rolleri için geçerlidir.
+> Başlangıç görevleri, sanal makinelere yalnızca bulut hizmeti Web ve çalışan rolleri için geçerli değildir.
 > 
 > 
 
 ## <a name="how-startup-tasks-work"></a>Başlangıç görevleri nasıl çalışır?
-Başlangıç görevleri, rolleriniz başlamadan önce gerçekleştirilen ve [Başlangıç] öğesi içindeki [Görev] öğesini kullanarak [ServiceDefinition.csdef] dosyasında tanımlanan eylemlerdir. Sık sık başlangıç görevleri toplu iş dosyalarıdır, ancak konsol uygulamaları veya PowerShell komut dosyalarını başlatan toplu dosyalar da olabilir.
+Başlangıç görevleri, rolleriniz başlamadan önce uygulanan ve [Başlangıç] öğesindeki [görev] öğesi kullanılarak [ServiceDefinition. csdef] dosyasında tanımlanan eylemlerdir. Genellikle başlangıç görevleri Batch dosyalarıdır, ancak konsol uygulamaları veya PowerShell betiklerini Başlatan toplu iş dosyaları da olabilirler.
 
-Ortam değişkenleri bilgileri başlangıç görevine aktarıyor ve yerel depolama, bilgileri başlangıç görevinden aktarmak için kullanılabilir. Örneğin, bir ortam değişkeni yüklemek istediğiniz bir programa giden yolu belirtebilir ve dosyalar daha sonra rolleriniz tarafından okunabilecek yerel depolama alanına yazılabilir.
+Ortam değişkenleri bilgileri bir başlangıç görevine iletir ve yerel depolama alanı, bir başlangıç görevinin dışına bilgi geçirmek için kullanılabilir. Örneğin, bir ortam değişkeni yüklemek istediğiniz bir programın yolunu belirtebilir ve dosyalar daha sonra rolleriniz tarafından okunabilebileceği yerel depolamaya yazılabilir.
 
-Başlangıç göreviniz, temp **ortamı** değişkeni tarafından belirtilen dizine bilgileri ve hataları kaydedebilir. Başlangıç görevi sırasında **TEMP** ortamı değişkeni *C:\\\\Kaynaklar\\geçici [guid]'e gider. rolename]\\Bulutta* çalışırken RoleTemp dizini.
+Başlangıç göreviniz, bilgileri ve hataları **Temp** ortam değişkeni tarafından belirtilen dizine kaydedebilir. Başlangıç görevi sırasında, **Temp** ortam değişkeni *C:\\Resources\\temp\\[GUID] olarak çözümlenir. [ roleName]\\bulutta çalışırken roletemp* dizini.
 
-Başlangıç görevleri, yeniden başlatmalar arasında birçok defa da yürütülebilir. Örneğin, her rol döngüsünde başlangıç görevi çalıştırılır ve rol döngüleri her zaman yeniden başlatma içermeyebilir. Başlangıç görevleri, birkaç kez sorunsuz çalışmasını sağlayacak şekilde yazılmalıdır.
+Başlangıç görevleri, yeniden başlatmalar arasında birçok defa da yürütülebilir. Örneğin, her rol döngüsünde başlangıç görevi çalıştırılır ve rol döngüleri her zaman yeniden başlatma içermeyebilir. Başlangıç görevleri, sorunsuz bir şekilde birkaç kez çalışmasına izin verecek şekilde yazılmalıdır.
 
-Başlangıç görevleri, başlangıç işleminin tamamlanması için sıfır **hata düzeyi** (veya çıkış kodu) ile sona ermelidir. Başlangıç görevi sıfır olmayan bir **hata düzeyiyle**biterse, rol başlamaz.
+Başlatma işleminin tamamlanabilmesi için başlangıç görevlerinin bir **ERRORLEVEL** (veya çıkış kodu) ile bitmesi gerekir. Başlangıç görevi sıfır olmayan bir **ERRORLEVEL**ile bitiyorsa, rol başlatılmaz.
 
-## <a name="role-startup-order"></a>Rol başlatma sırası
-Azure'da rol başlatma yordamı aşağıda listeleneme:
+## <a name="role-startup-order"></a>Rol başlangıç sırası
+Aşağıda, Azure 'daki rol başlatma yordamı listelenmektedir:
 
-1. Örnek **Başlangıç** olarak işaretlenir ve trafik almaz.
-2. Tüm başlangıç görevleri görev **Türü** özniteliğine göre yürütülür.
+1. Örnek, **Başlangıç** olarak işaretlendi ve trafik almıyor.
+2. Tüm başlangıç görevleri, **TaskType** özniteliğine göre yürütülür.
    
-   * **Basit** görevler eşzamanlı olarak, birer birer yürütülür.
-   * **Arka plan** ve **ön plan** görevleri, başlangıç görevine paralel olarak eşit olarak başlatılır.  
+   * **Basit** görevler tek seferde birer zaman zaman yürütülür.
+   * **Arka plan** ve **ön plan** görevleri, başlangıç görevine paralel olarak zaman uyumsuz olarak başlatılır.  
      
      > [!WARNING]
-     > Başlangıç işleminde başlangıç görev aşamasında IIS tam olarak yapılandırılamayabilir, bu nedenle role özel veriler kullanılamayabilir. Role özel veri gerektiren başlangıç görevleri [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart'ı](/previous-versions/azure/reference/ee772851(v=azure.100))kullanmalıdır.
+     > IIS başlangıç işlemindeki başlangıç görevi aşamasında tam olarak yapılandırılmamış olabilir, bu nedenle role özgü veriler kullanılamayabilir. Role özgü veriler gerektiren başlangıç görevlerinin [Microsoft. WindowsAzure. ServiceRuntime. RoleEntryPoint. OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))kullanması gerekir.
      > 
      > 
-3. Rol barındırma işlemi başlatılır ve site IIS'de oluşturulur.
-4. [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) yöntemi denir.
-5. Örnek **Hazır** olarak işaretlenir ve trafik örneğe yönlendirilir.
-6. [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.Run](/previous-versions/azure/reference/ee772746(v=azure.100)) yöntemi denir.
+3. Rol ana bilgisayar işlemi başlatılır ve site IIS 'de oluşturulur.
+4. [Microsoft. WindowsAzure. ServiceRuntime. RoleEntryPoint. OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) yöntemi çağırılır.
+5. Örnek, olarak **işaretlendi ve trafik** örneğe yönlendirilir.
+6. [Microsoft. WindowsAzure. ServiceRuntime. RoleEntryPoint. Run](/previous-versions/azure/reference/ee772746(v=azure.100)) yöntemi çağırılır.
 
 ## <a name="example-of-a-startup-task"></a>Başlangıç görevi örneği
-Başlangıç görevleri [ServiceDefinition.csdef] dosyasında **Görev** öğesinde tanımlanır. **commandLine** özniteliği, başlangıç toplu iş dosyasının veya konsol komutunun adını ve parametrelerini, **yürütme Bağlamı** başlangıç görevinin ayrıcalık düzeyini belirtir ve **taskType** özniteliği görevin nasıl yürütüleceğini belirtir.
+Başlangıç görevleri, **görev** öğesinde [ServiceDefinition. csdef] dosyasında tanımlanır. **CommandLine** özniteliği, başlangıç toplu işlem dosyası veya konsol komutunun adını ve parametrelerini belirtir, **ExecutionContext** özniteliği başlangıç görevinin ayrıcalık düzeyini belirtir ve **TaskType** özniteliği, görevin nasıl yürütüleceğini belirtir.
 
-Bu örnekte, başlangıç görevi için **MyVersionNumber**adlı bir ortam değişkeni oluşturulur ve "**1.0.0.0**" değerine ayarlanır.
+Bu örnekte, başlangıç görevi için **Myversionnumber adlı**bir ortam değişkeni oluşturulur ve "**1.0.0.0**" değerine ayarlanır.
 
-**ServiceDefinition.csdef**:
+**ServiceDefinition. csdef**:
 
 ```xml
 <Startup>
@@ -68,7 +68,7 @@ Bu örnekte, başlangıç görevi için **MyVersionNumber**adlı bir ortam deği
 </Startup>
 ```
 
-Aşağıdaki örnekte, **Başlangıç.cmd** toplu iş dosyası TEMP ortamı değişkeni tarafından belirtilen dizinde StartupLog.txt dosyasına "Geçerli sürüm 1.0.0.0"dır" satırını yazar. Satır, `EXIT /B 0` başlangıç görevinin **hata düzeyi** sıfırla bitmesini sağlar.
+Aşağıdaki örnekte, **Startup. cmd** toplu iş dosyası, "geçerli sürüm 1.0.0.0" SATıRıNı, TEMP ortam değişkeni tarafından belirtilen dizindeki startuplog. txt dosyasına yazar. `EXIT /B 0` Satır, başlangıç görevinin sıfır **ERRORLEVEL** ile sona ermesini sağlar.
 
 ```cmd
 ECHO The current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
@@ -76,58 +76,58 @@ EXIT /B 0
 ```
 
 > [!NOTE]
-> Visual Studio'da, başlangıç toplu iş dosyanızın Çıkış **Dizini'ne Kopyalama** özelliği, başlangıç toplu iş dosyanızın Azure'daki projenize (Web rolleri için**ek kök\\kutusu** ve çalışan rolleri için **ekkök)** düzgün şekilde dağıtıldığından emin olmak için **Her Zaman Kopyala** olarak ayarlanmalıdır.
+> Visual Studio 'da, başlangıç toplu iş dosyanızın Azure 'da projenize doğru şekilde dağıtıldığından emin olmak için başlangıç toplu iş dosyanız için **Çıkış Dizinine Kopyala** özelliği **her zaman Kopyala** olarak ayarlanmalıdır. (Web rolleri için**AppRoot\\bin** **ve çalışan rolleri için AppRoot** ).
 > 
 > 
 
 ## <a name="description-of-task-attributes"></a>Görev özniteliklerinin açıklaması
-[ServiceDefinition.csdef] dosyasındaki **Görev** öğesinin öznitelikleri aşağıda açıklanmaktadır:
+Aşağıdaki, [ServiceDefinition. csdef] dosyasındaki **görev** öğesinin özniteliklerini açıklar:
 
-**commandLine** - Başlangıç görevi için komut satırını belirtir:
+**commandLine** -başlangıç görevinin komut satırını belirtir:
 
-* Komut, başlangıç görevi başlar isteğe bağlı komut satırı parametreleri ile.
-* Sık sık bu bir .cmd veya .bat toplu dosyasının dosya adıdır.
-* Görev, dağıtım için AppRoot\\Kutusu klasörüne göredir. Görevin yolunu ve dosyasını belirlerken ortam değişkenleri genişletilmez. Ortam genişletme süreci gerekiyorsa, başlangıç gücünüzü çağrılayan küçük bir .cmd komut dosyası oluşturabilirsiniz.
-* Bir konsol uygulaması veya [PowerShell komut dosyası](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)başlatan bir toplu iş dosyası olabilir.
+* Komutu, başlangıç görevini başlatan isteğe bağlı komut satırı parametreleriyle.
+* Bu, genellikle bir. cmd veya. bat toplu iş dosyasının dosya adıdır.
+* Görev, dağıtım için AppRoot\\bin klasörüne görelidir. Ortam değişkenleri, görevin yolunu ve dosyasını belirlemede genişletilmez. Ortam genişletmesi gerekliyse, başlangıç görevinizi çağıran küçük bir. cmd betiği oluşturabilirsiniz.
+* Bir konsol uygulaması veya [PowerShell betiği](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)Başlatan bir toplu iş dosyası olabilir.
 
-**executionContext** - Başlangıç görevi için ayrıcalık düzeyini belirtir. Ayrıcalık düzeyi sınırlı veya yükseltilebilir:
+**ExecutionContext** -başlangıç görevinin ayrıcalık düzeyini belirtir. Ayrıcalık düzeyi sınırlı olabilir veya yükseltilebilir:
 
-* **Sınırlı**  
-  Başlangıç görevi, rol ile aynı ayrıcalıklarla çalışır. [Runtime] öğesi için **yürütmeBağlam** özniteliği de **sınırlı**olduğunda, kullanıcı ayrıcalıkları kullanılır.
-* **Yükseltilmiş**  
-  Başlangıç görevi yönetici ayrıcalıklarıyla çalışır. Bu, başlangıç görevlerinin, rolün ayrıcalık düzeyini artırmadan programları yüklemesine, IIS yapılandırma değişiklikleri yapmasına, kayıt defteri değişiklikleri gerçekleştirmesine ve diğer yönetici düzeyindeki görevleri gerçekleştirmesine olanak tanır.  
+* **az**  
+  Başlangıç görevi, rolüyle aynı ayrıcalıklarla çalışır. [Çalışma zamanı] öğesi için **ExecutionContext** özniteliği de **sınırlıysa**, kullanıcı ayrıcalıkları kullanılır.
+* **kaynağa**  
+  Başlangıç görevi, yönetici ayrıcalıklarıyla çalışır. Bu, başlangıç görevlerinin programları yüklemesine, IIS yapılandırma değişiklikleri yapmasına, kayıt defteri değişiklikleri yapmasına ve rolün kendisi için ayrıcalık düzeyini arttırmadan diğer yönetici düzeyindeki görevlere izin verir.  
 
 > [!NOTE]
-> Başlangıç görevinin ayrıcalık düzeyinin rolün kendisiyle aynı olması gerekmez.
+> Bir başlangıç görevinin ayrıcalık düzeyinin, rolün kendisi ile aynı olması gerekmez.
 > 
 > 
 
-**taskType** - Başlangıç görevinin yürütülme şeklini belirtir.
+**TaskType** -bir başlangıç görevinin yürütülme şeklini belirtir.
 
-* **Basit**  
-  Görevler, [ServiceDefinition.csdef] dosyasında belirtilen sırada teker teker eş zamanlı olarak yürütülür. **Basit** bir başlangıç görevi sıfır **hata düzeyiyle** sona erdiğinde, bir sonraki **basit** başlangıç görevi yürütülür. Yürütülecek daha **basit** başlangıç görevleri yoksa, rolün kendisi başlatılır.   
+* **MPLE**  
+  Görevler, [ServiceDefinition. csdef] dosyasında belirtilen sırada birer birer zaman uyumlu olarak yürütülür. Bir **basit** başlangıç görevi sıfır **ERRORLEVEL** ile sona erdiğinde, bir sonraki **basit** başlangıç görevi yürütülür. Yürütülecek daha **basit** başlangıç görevi yoksa, rol kendisi başlatılır.   
   
   > [!NOTE]
-  > **Basit** görev sıfır olmayan bir **hata düzeyiyle**biterse, örnek engellenir. Sonraki **basit** başlatma görevleri ve rolün kendisi başlamaz.
+  > **Basit** görev sıfır olmayan bir **ERRORLEVEL**ile bitiyorsa, örnek engellenir. Sonraki **basit** başlangıç görevleri ve rol kendisi başlatılmaz.
   > 
   > 
   
-    Toplu iş dosyanızın hata **düzeyi** sıfırla sona erdiğinden emin olmak için, toplu iş dosya işleminizin sonundaki komutu `EXIT /B 0` çalıştırın.
-* **Arka plan**  
-  Görevler, rolün başlatılmasına paralel olarak eş senkronize olarak yürütülür.
-* **Ön plan**  
-  Görevler, rolün başlatılmasına paralel olarak eş senkronize olarak yürütülür. Ön **plan** ve **arka plan** görevi arasındaki temel fark, **ön plan** görevinin görev sona erene kadar rolün geri dönüşüme girmesini veya kapanmasını engellemesidir. **Arka plan** görevleri bu kısıtlamaya sahip değildir.
+    Toplu iş dosyanızın sıfır **ERRORLEVEL** ile bitdiğinden emin olmak için, Batch dosyası işleminizin sonunda `EXIT /B 0` komutunu yürütün.
+* **arka plan**  
+  Görevler, rolün başlangıcında paralel olarak zaman uyumsuz olarak yürütülür.
+* **ön plan**  
+  Görevler, rolün başlangıcında paralel olarak zaman uyumsuz olarak yürütülür. **Ön** plan ve **arka plan** görevi arasındaki önemli fark, bir ön plan görevinin, görev sonlanana kadar rolün geri dönüşümünü veya kapatılmasını önlediği bir **ön plana** sahip olur. **Arka plan** görevlerinde Bu kısıtlama yoktur.
 
 ## <a name="environment-variables"></a>Ortam değişkenleri
-Ortam değişkenleri, bilgileri başlangıç görevine aktarmanın bir yoludur. Örneğin, yolu, yüklenecek bir program veya rolünüzün kullanacağı bağlantı noktası numaralarını içeren bir blob'a veya başlangıç görevinizin özelliklerini denetlemek için ayarlara koyabilirsiniz.
+Ortam değişkenleri, bir başlangıç görevine bilgi geçirmek için bir yoldur. Örneğin, yüklenecek bir programı içeren bir Blobun yolunu ya da rolünüzün kullanacağı bağlantı noktası numaralarını veya başlangıç görevinin özelliklerini denetlemek için ayarları ekleyebilirsiniz.
 
-Başlangıç görevleri için iki tür ortam değişkeni vardır; static environment değişkenleri ve [RoleEnvironment] sınıfının üyelerine dayalı çevre değişkenleri. Her ikisi de [ServiceDefinition.csdef] dosyasının [Çevre] bölümünde yer almaktadır ve her ikisi de [Değişken] öğesini ve **ad** özniteliğini kullanır.
+Başlangıç görevleri için iki tür ortam değişkeni vardır; [roleenvironment] sınıfının üyelerine dayanan statik ortam değişkenleri ve ortam değişkenleri. Her ikisi de [ServiceDefinition. csdef] dosyasının [ortam] bölümünde bulunur ve her ikisi de [değişken] öğesi ve **ad** özniteliğini kullanır.
 
-Statik ortam değişkenleri [Değişken] öğesinin **değer** özniteliğini kullanır. Yukarıdaki örnekte , "**1.0.0.0**" statik değeri olan **MyVersionNumber** çevre değişkeni oluşturulur. Başka bir örnek, **EvrelemeOrProduction** ortamı değişkeninin değerine göre farklı başlangıç eylemleri gerçekleştirmek için "**evreleme**" veya "**üretim**" değerlerine el ile ayarlayabildiğiniz bir **StagingorÜretim** ortamı değişkeni oluşturmak olacaktır.
+Statik ortam değişkenleri, [değişken] öğesinin **değer** özniteliğini kullanır. Yukarıdaki örnekte, "**1.0.0.0**" statik değeri olan **myversionnumber** ortam değişkeni oluşturulur. Diğer bir örnek, **stagingorproduction** ortam değişkeninin değerine göre farklı başlangıç eylemleri gerçekleştirmek üzere "**hazırlama**" veya "**Üretim**" değerlerine el Ile ayarlayabileceğiniz bir **stagingorproduction** ortam değişkeni oluşturmak olacaktır.
 
-RoleEnvironment sınıfının üyelerini temel alan ortam değişkenleri [Değişken] öğesinin **değer** özniteliğini kullanmaz. Bunun yerine, [roleinstancevalue] alt öğesi, uygun **XPath** öznitelik değeri ile, [RoleEnvironment] sınıfının belirli bir üyesini temel alan bir ortam değişkeni oluşturmak için kullanılır. **XPath** özniteliğinin çeşitli [RoleEnvironment] değerlerine erişmek için değerlerini [burada](cloud-services-role-config-xpath.md)bulabilirsiniz.
+RoleEnvironment sınıfının üyelerini temel alan ortam değişkenleri, [değişken] öğesinin **Value** özniteliğini kullanmaz. Bunun yerine, [Roleınstancevalue] alt öğesi uygun **XPath** özniteliği değeri olan [roleenvironment] sınıfının belirli bir üyesini temel alan bir ortam değişkeni oluşturmak için kullanılır. Çeşitli [Roleenvironment] değerlerine erişim için **XPath** özniteliğinin değerleri [burada](cloud-services-role-config-xpath.md)bulunabilir.
 
-Örneğin, örnek bilgi işlem emülatörde çalışırken "**true**" ve bulutta çalışırken "**false**" olan bir ortam değişkeni oluşturmak için aşağıdaki [Değişken] ve [RoleInstanceValue] öğelerini kullanın:
+Örneğin, örnek işlem öykünücüsünde çalışırken "**true**" ve bulutta çalışırken "**false**" olan bir ortam değişkeni oluşturmak Için aşağıdaki [değişkeni] ve [roleınstancevalue] öğelerini kullanın:
 
 ```xml
 <Startup>
@@ -149,17 +149,17 @@ RoleEnvironment sınıfının üyelerini temel alan ortam değişkenleri [Deği�
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bulut Hizmeti'nizle bazı [yaygın başlangıç görevlerini](cloud-services-startup-tasks-common.md) nasıl gerçekleştireceklerinizi öğrenin.
+Bulut hizmetinizdeki bazı [yaygın başlangıç görevlerini](cloud-services-startup-tasks-common.md) nasıl gerçekleştireceğinizi öğrenin.
 
-Bulut Hizmetinizi [paketle.](cloud-services-model-and-package.md)  
+Bulut hizmetinizi [paketleyin](cloud-services-model-and-package.md) .  
 
-[ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
+[ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
 [Görev]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Başlangıç]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Çalışma Zamanı]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Ortam]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Değişken]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[Roleınstancevalue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 
 

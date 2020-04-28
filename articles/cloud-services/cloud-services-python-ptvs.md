@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: b832831a2483b11a7a3c1942dd79065e8be65bf9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75360727"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Visual Studio için Python web ve çalışan rolleri içeren Python Araçları
@@ -323,7 +323,7 @@ Yapılandırma ayarları bittiğinde **Yayımla**’ya tıklayın.
 Dağıtımın tamamlanması birkaç dakika sürer, ardından web ve/veya çalışan rolleri Azure üzerinde çalışır!
 
 ### <a name="investigate-logs"></a>Günlükleri araştırma
-Bulut hizmeti sanal makinesi başlatılıp Python’u yükledikten sonra herhangi bir hata iletisini bulmak için günlüklere bakabilirsiniz. Bu günlükler **C:\Resources\Directory\\{role}\LogFiles** klasöründe bulunur. Betiğin Python’un yüklü olup olmadığını algılamaya çalışmasından itibaren **PrepPython.err.txt** dosyasında en az bir hata olur ve **PipInstaller.err.txt** eskimiş bir pip sürümünü şikayet edebilir.
+Bulut hizmeti sanal makinesi başlatılıp Python’u yükledikten sonra herhangi bir hata iletisini bulmak için günlüklere bakabilirsiniz. Bu Günlükler **C:\resources\directory\\{role} \LogFiles** klasöründe bulunur. Betiğin Python’un yüklü olup olmadığını algılamaya çalışmasından itibaren **PrepPython.err.txt** dosyasında en az bir hata olur ve **PipInstaller.err.txt** eskimiş bir pip sürümünü şikayet edebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Visual Studio için Python Araçları’ndaki web ve çalışan rolleri ile çalışma hakkında daha ayrıntılı bilgi için PTVS belgelerine bakın:
@@ -335,7 +335,7 @@ Web ve çalışan rollerinizden Azure Storage veya Service Bus gibi Azure hizmet
 * [Blob Hizmeti][Blob Service]
 * [Tablo Hizmeti][Table Service]
 * [Kuyruk Hizmeti][Queue Service]
-* [Servis Veri Otobüsü Kuyrukları][Service Bus Queues]
+* [Service Bus kuyrukları][Service Bus Queues]
 * [Service Bus Konuları][Service Bus Topics]
 
 <!--Link references-->

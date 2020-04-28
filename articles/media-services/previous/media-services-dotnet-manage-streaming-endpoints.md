@@ -1,6 +1,6 @@
 ---
-title: Akış uç noktalarını .NET SDK ile yönetin. | Microsoft Belgeleri
-description: Bu makalede, Azure portalı ile akış uç noktalarının nasıl yönetilen gösterildiği gösterilmektedir.
+title: .NET SDK ile akış uç noktalarını yönetin. | Microsoft Belgeleri
+description: Bu makalede, Azure portal ile akış uç noktalarının nasıl yönetileceği gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,45 +16,45 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b6c6fccd473ae57139c0b46bf32dc9468a4ba1a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74901268"
 ---
-# <a name="manage-streaming-endpoints-with-net-sdk"></a>Akış uç noktalarını .NET SDK ile yönetme  
+# <a name="manage-streaming-endpoints-with-net-sdk"></a>.NET SDK ile akış uç noktalarını yönetme  
 
 >[!NOTE]
->[Genel bakış](media-services-streaming-endpoints-overview.md) makalesini gözden geçirdiğinizden emin olun. Ayrıca, [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)gözden geçirin.
+>[Genel bakış](media-services-streaming-endpoints-overview.md) makalesini gözden geçirdiğinizden emin olun. Ayrıca, [Streamingendpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)' i inceleyin.
 
-Bu makaledeki kod, Azure Medya Hizmetleri .NET SDK'yı kullanarak aşağıdaki görevlerin nasıl yapılacağını gösterir:
+Bu makaledeki kodda, Azure Media Services .NET SDK kullanılarak aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
 
-- Varsayılan akış bitiş noktasını inceleyin.
-- Yeni akış bitiş noktası oluşturma/ekleme.
+- Varsayılan akış uç noktasını inceleyin.
+- Yeni akış uç noktası oluşturun/ekleyin.
 
-    Farklı CDN'lere veya CDN'lere ve doğrudan erişime sahip olmayı planlıyorsanız, birden çok akış uç noktanız olmasını isteyebilirsiniz.
+    Farklı CDNs veya CDN ve doğrudan erişim planlıyorsanız, birden çok akış uç noktası olmasını isteyebilirsiniz.
 
     > [!NOTE]
-    > Yalnızca Akış Bitiş Noktanız çalışırken faturalandırılırsınız.
+    > Yalnızca akış uç noktanız çalışır durumdaysa faturalandırılırsınız.
     
-- Akış bitiş noktasını güncelleştirin.
+- Akış uç noktasını güncelleştirin.
     
-    Update() işlevini aradığından emin olun.
+    Update () işlevini çağırdığınızdan emin olun.
 
-- Akış bitiş noktasını silin.
+- Akış uç noktasını silin.
 
     >[!NOTE]
-    >Varsayılan akış bitiş noktası silinemez.
+    >Varsayılan akış uç noktası silinemiyor.
 
-Akış bitiş noktasının nasıl ölçeklendirilenhakkında bilgi için [bu](media-services-portal-scale-streaming-endpoints.md) makaleye bakın.
+Akış uç noktasını ölçeklendirme hakkında daha fazla bilgi için [Bu](media-services-portal-scale-streaming-endpoints.md) makaleye bakın.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio projesi oluşturup yapılandırma
 
 Geliştirme ortamınızı kurun ve app.config dosyanızı [.NET ile Media Services geliştirme](media-services-dotnet-how-to-use.md) bölümünde açıklandığı gibi bağlantı bilgileriyle doldurun. 
 
-## <a name="add-code-that-manages-streaming-endpoints"></a>Akış uç noktalarını yöneten kod ekleme
+## <a name="add-code-that-manages-streaming-endpoints"></a>Akış uç noktalarını yöneten kodu ekleme
     
-Program.cs kodu aşağıdaki kodla değiştirin:
+Program.cs içindeki kodu aşağıdaki kodla değiştirin:
 
 ```csharp
 using System;

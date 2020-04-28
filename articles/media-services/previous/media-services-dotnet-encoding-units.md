@@ -1,6 +1,6 @@
 ---
-title: Kodlama birimleri ekleyerek ortam işlemeyi ölçeklendirin - Azure |  Microsoft Dokümanlar
-description: Bu makalede, Azure Media Services .NET ile kodlama birimlerinin nasıl ekleyeceğiniz gösteriş vegösterizdir.
+title: Kodlama birimleri ekleyerek Medya işlemeyi ölçeklendirme-Azure |  Microsoft Docs
+description: Bu makalede, .NET Azure Media Services kodlama birimlerinin nasıl ekleneceği gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -16,17 +16,17 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milangada
 ms.openlocfilehash: 86fd923c121b9d46109529f75bc3d0d040f1a7a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74887297"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>.NET SDK ile kodlama ölçeklendirme
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-scale-media-processing.md)
 > * [.NET](media-services-dotnet-encoding-units.md)
-> * [Geri kalanı](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
@@ -34,11 +34,11 @@ ms.locfileid: "74887297"
 
 ## <a name="overview"></a>Genel Bakış
 > [!IMPORTANT]
-> Medya işlemeyi ölçekleme hakkında daha fazla bilgi almak için [Genel Bakış'ı](media-services-scale-media-processing-overview.md) gözden geçirin.
+> Medya işlemeyi ölçeklendirme hakkında daha fazla bilgi edinmek için [genel bakışı](media-services-scale-media-processing-overview.md) gözden geçirdiğinizden emin olun.
 > 
 > 
 
-.NET SDK kullanarak ayrılmış birim türünü ve kodlama sayısını değiştirmek için aşağıdakileri yapın:
+Ayrılmış birim türünü ve kodlama ayrılmış birim sayısını .NET SDK kullanarak değiştirmek için aşağıdakileri yapın:
 
     IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
     encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
@@ -50,9 +50,9 @@ ms.locfileid: "74887297"
 
     Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
 
-## <a name="opening-a-support-ticket"></a>Destek Bileti Açma
+## <a name="opening-a-support-ticket"></a>Destek bileti açma
 
-Varsayılan olarak, her Medya Hizmetleri hesabı 10 S2 veya S3 Media Reserved Birimleri (MRUs) veya 25 S1 MRUs'a ve 5 İsteğe Bağlı Akış Ayrılmış Ünitelere kadar ölçeklenebilir. Destek bileti açarak daha yüksek bir limit talep edebilirsiniz.
+Varsayılan olarak, her Media Services hesabı en fazla 10 S2 veya S3 medya ayrılmış birimi (MRU) veya 25 S1 MRU ve 5 Isteğe bağlı akışa ayrılan birimler kadar ölçeklendirebilir. Bir destek bileti açarak daha yüksek bir sınır talep edebilirsiniz.
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

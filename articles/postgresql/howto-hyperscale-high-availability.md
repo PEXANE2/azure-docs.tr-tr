@@ -1,34 +1,34 @@
 ---
-title: Yüksek kullanılabilirlik yapılandırma - Hyperscale (Citus) - PostgreSQL için Azure Veritabanı
-description: Yüksek kullanılabilirliği etkinleştirme veya devre dışı etme
+title: Yüksek kullanılabilirlik-hiper ölçek yapılandırma (Citus)-PostgreSQL için Azure veritabanı
+description: Yüksek kullanılabilirliği etkinleştirme veya devre dışı bırakma
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: a8d4b5949b34d16191e9ec10a1dd39faff3660dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74977684"
 ---
-# <a name="configure-hyperscale-citus-high-availability"></a>Yapılandırılan Hiperölçek (Citus) yüksek kullanılabilirlik
+# <a name="configure-hyperscale-citus-high-availability"></a>Hiper ölçek (Citus) yüksek kullanılabilirliği yapılandırma
 
-PostgreSQL için Azure Veritabanı - Hyperscale (Citus), veritabanı nın kapalı kalma süresini önlemek için yüksek kullanılabilirlik (HA) sağlar. HA etkinken, sunucu grubundaki her düğüm bekleme de alır. Orijinal düğüm sağlıksız hale gelirse, onun standby yerine yükseltilir.
+PostgreSQL için Azure veritabanı-hiper ölçek (Citus), veritabanı kapalı kalma süresini önlemek için yüksek kullanılabilirlik (HA) sağlar. HA etkinken, bir sunucu grubundaki her düğüm bekleme moduna alınır. Özgün düğüm sağlıksız hale gelirse, bekleme konumu yerine geçecek şekilde yükseltilir.
 
 > [!IMPORTANT]
-> HA, gruptaki sunucu sayısını ikikatına çıkardığından, maliyeti de ikikatına çıkar.
+> HA gruptaki sunucu sayısını çift katına katdığı için aynı zamanda maliyeti de aynı olacaktır.
 
-HA'yı etkinleştirmek sunucu grubu oluşturma sırasında veya daha sonra Azure portalındaki sunucu grubunuz için Yapılandırma sekmesinde **mümkündür.** Kullanıcı arabirimi her iki durumda da benzer görünür. **Yüksek kullanılabilirlik** için kaydırıcıyı EVET'e sürükleyin:
+Sunucu grubu oluşturma sırasında HA 'nin etkinleştirilmesi veya Azure portal sunucu grubunuzun **yapılandırma** sekmesinde daha sonra olması mümkündür. Kullanıcı arabirimi her iki durumda da benzer şekilde görünür. **Yüksek kullanılabilirlik** IÇIN kaydırıcıyı Evet olarak sürükleyin:
 
-![ha sürgü](./media/howto-hyperscale-high-availability/01-ha-slider.png)
+![ha kaydırıcısı](./media/howto-hyperscale-high-availability/01-ha-slider.png)
 
-Seçiminizi uygulamak için **Kaydet** düğmesini tıklatın. Sunucu grubu standby'leri sağladığı ve verileri bunlara aktardEttiği için HA'yı etkinleştirmek biraz zaman alabilir.
+Seçiminizi uygulamak için **Kaydet** düğmesine tıklayın. Sunucu grubu, her zaman bir veri akışı sağlarken ve bunlara veri akışı sağlarken, HA 'yi etkinleştirme biraz zaman alabilir.
 
-Sunucu grubu için **Genel Bakış** sekmesi, tüm düğümleri ve bekleme yerlerini ve her düğüm için HA'nın başarıyla etkinleştirilip etkinleştirilemediğini belirten **yüksek kullanılabilirlik** sütunu listeler.
+Sunucu grubu için **genel bakış** sekmesi, tüm düğümleri ve bunların kendi kendi bu değerlerini, her düğüm için ha 'nın başarılı bir şekilde etkinleştirilip etkinleştirilmediğini belirten **yüksek kullanılabilirlik** sütunuyla birlikte listeler.
 
-![sunucu grubuna genel bakış ha sütun](./media/howto-hyperscale-high-availability/02-ha-column.png)
+![sunucu grubundaki ha sütununa genel bakış](./media/howto-hyperscale-high-availability/02-ha-column.png)
 
 ### <a name="next-steps"></a>Sonraki adımlar
 

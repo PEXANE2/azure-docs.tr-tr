@@ -1,42 +1,42 @@
 ---
-title: Blueprint Operator için ortamınızı düzene sin
-description: Blueprint Operator yerleşik rol tabanlı erişim denetimi (RBAC) rolüyle kullanılmak üzere Azure ortamınızı nasıl yapılandıracaklarınızı öğrenin.
+title: Ortamınızı Blueprint Işleci için ayarlayın
+description: Azure ortamınızı Blueprint Işleci yerleşik rol tabanlı erişim denetimi (RBAC) rolüyle kullanılmak üzere nasıl yapılandıracağınızı öğrenin.
 ms.date: 08/26/2019
 ms.topic: how-to
 ms.openlocfilehash: fba0dd3f2eeb69f768800d1d04640510462d3c86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74873225"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Ortamınızı Blueprint İşleci için yapılandırma
 
-Plan tanımlarınızın ve plan atamalarınızın yönetimi farklı takımlara atanabilir. Bir operasyon ekibi merkezi olarak denetlenir plan tanımlarının atamalarını yönetmekten sorumluyken, bir mimar veya yönetim ekibinin plan tanımlarınızın yaşam döngüsü yönetiminden sorumlu olması yaygındır.
+Şema tanımlarınızın ve şema atamalarının yönetimi farklı takımlara atanabilir. Bir işlem ekibinin, merkezi olarak denetlenen şema tanımlarının atamalarını yönetmekten sorumlu olması halinde, bir mimarın ve idare ekibinin, şema tanımlarınızın yaşam döngüsü yönetiminden sorumlu olması yaygındır.
 
-**Blueprint Operatörü** dahili rol tabanlı erişim denetimi (RBAC), bu tür senaryolarda kullanılmak üzere özel olarak tasarlanmıştır. Rol, operasyon türü ekiplerinin kuruluşların plan tanımlarının atanmasını yönetmesine olanak sağlar, ancak bunları değiştirme yeteneğini değil. Bunu yapmak için Azure ortamınızda bazı yapılandırmalar gerekir ve bu makalede gerekli adımlar açıklanmaktadır.
+Şema **operatörü** yerleşik rol tabanlı erişim denetımı (RBAC), bu tür bir senaryoda kullanılmak üzere özel olarak tasarlanmıştır. Rol, kuruluşların şema tanımlarının atanmasını yönetmesine, ancak bunları değiştirebilme yeteneğine izin vermez. Bunun yapılması, Azure ortamınızda bazı yapılandırmalar gerektirir ve bu makalede gerekli adımlar açıklanmaktadır.
 
-## <a name="grant-permission-to-the-blueprint-operator"></a>Blueprint Operatörüne izin verme
+## <a name="grant-permission-to-the-blueprint-operator"></a>Blueprint Işlecine izin verme
 
-İlk adım, blueprintat atayacak olan hesap veya güvenlik grubuna (önerilen) **Blueprint Operatörü** rolünü vermektir. Bu eylem, yönetim grubu hiyerarşisinde, tüm yönetim gruplarını ve operasyon ekibinin plan atamaerişimine sahip olması gereken abonelikleri kapsayan en üst düzeyde yapılmalıdır. Bu izinleri verirken en az ayrıcalık ilkesine uyman önerilir.
+Birinci adım, şema atamak için şema **operatörü** rolünü hesaba veya güvenlik grubuna (önerilen) vermekle aynıdır. Bu eylem, yönetim grubu hiyerarşisinde, işlemler ekibinin şema atama erişiminin olması gereken tüm yönetim gruplarını ve abonelikleri kapsayan en yüksek düzeyde yapılmalıdır. Bu izinleri verirken en az ayrıcalık ilkesini izlemeniz önerilir.
 
-1. (Tavsiye edilir) [Güvenlik grubu oluşturma ve üye ekleme](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
+1. Önerilen [Güvenlik grubu oluşturma ve üye ekleme](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. Hesap veya güvenlik grubuna **Blueprint Operatörü'nün** [rol atamasını ekleme](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)
+1. Hesap veya güvenlik grubuna bir **Blueprint işlecinin** [rol atamasını ekleyin](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)
 
-## <a name="user-assign-managed-identity"></a>Kullanıcı atama yönetilen kimlik
+## <a name="user-assign-managed-identity"></a>Kullanıcı tarafından yönetilen kimliği atama
 
-Plan tanımı, sistem tarafından atanan veya kullanıcı tarafından atanan yönetilen kimlikleri kullanabilir. Ancak, Blueprint **Operator** rolünü kullanırken, plan tanımının kullanıcı tarafından atanmış yönetilen bir kimlik kullanacak şekilde yapılandırılması gerekir. Ayrıca, **Blueprint Operatörü** rolü verilen hesap veya güvenlik grubuna, kullanıcı tarafından atanan yönetilen kimlikte Yönetilen **Kimlik Operatörü** rolünün verilmesi gerekir. Bu izin olmadan, plan atamaları izin eksikliği nedeniyle başarısız.
+Şema tanımı, sistem tarafından atanan veya Kullanıcı tarafından atanan yönetilen kimlikleri kullanabilir. Ancak, **şema operatörü** rolünü kullanırken, şema tanımının Kullanıcı tarafından atanan yönetilen kimlik kullanacak şekilde yapılandırılması gerekir. Ayrıca, şema **operatörü** rolüne verilen hesap veya güvenlik grubuna kullanıcı tarafından atanan yönetilen kimlik Için **yönetilen kimlik operatörü** rolü verilmelidir. Bu izin olmadan, şema atamaları izin eksikliği nedeniyle başarısız olur.
 
-1. Atanmış bir plan tarafından kullanılmak üzere [kullanıcı tarafından atanmış yönetilen](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) bir kimlik oluşturma
+1. Atanan bir şema tarafından kullanılmak üzere [Kullanıcı tarafından atanan yönetilen kimlik oluşturma](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)
 
-1. **Yönetilen Kimlik İşlemi'nin** [rol atamasını](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) hesaba veya güvenlik grubuna ekleyin. Rol atamasını yeni kullanıcı tarafından atanan yönetilen kimliğe göre dürtün.
+1. Hesap veya güvenlik grubuna **yönetilen kimlik işlecinin** [rol atamasını ekleyin](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) . Rol atamasını Kullanıcı tarafından atanan yeni yönetilen kimliğe kapsam.
 
-1. Blueprint **Operatörü**olarak, yeni kullanıcı tarafından atanan yönetilen kimliği kullanan [bir plan atayın.](../create-blueprint-portal.md#assign-a-blueprint)
+1. **Şema operatörü**olarak, Kullanıcı tarafından atanan yeni yönetilen kimliği kullanan [bir şema atayın](../create-blueprint-portal.md#assign-a-blueprint) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Plan yaşam döngüsü](../concepts/lifecycle.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

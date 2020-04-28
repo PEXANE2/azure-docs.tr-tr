@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri'nde Azure CDN önbelleğe alma ilkesini yönetme | Microsoft Dokümanlar
-description: Bu makalede, Azure Medya Hizmetleri'nde Azure CDN önbelleğe alma ilkesinin nasıl yönetilen olduğu açıklanmaktadır.
+title: Azure Media Services ' de Azure CDN önbelleğe alma ilkesi yönetme | Microsoft Docs
+description: Bu makalede Azure Media Services Azure CDN önbelleğe alma ilkesinin nasıl yönetileceği açıklanmaktadır.
 services: media-services,cdn
 documentationcenter: .NET
 author: juliako
@@ -15,35 +15,35 @@ ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
 ms.openlocfilehash: dc0482fbcbb1c9d1618ec18e1f48b03f686a6573
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74892592"
 ---
-# <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Azure Medya Hizmetleri'nde Azure CDN önbelleğe alma ilkesini yönetme
-Azure Media Services, HTTP tabanlı Uyarlanabilir Akış ve aşamalı indirme sağlar. HTTP tabanlı akış, proxy ve CDN katmanlarında önbelleğe almanın yanı sıra istemci tarafı önbelleğe alma nın avantajlarıyla yüksek oranda ölçeklenebilir. Akış uç noktaları, http önbellek üstbilgisi için genel akış özellikleri ve yapılandırma sağlar. Akış uç noktaları http Önbellek Denetimi ayarlar: maksimum yaş ve Sona Erer üstleri. [W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)http önbellek üstbilgileri için daha fazla bilgi alabilirsiniz.
+# <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Azure Media Services Azure CDN önbelleğe alma ilkesini yönetme
+Azure Media Services HTTP tabanlı uyarlamalı akış ve aşamalı indirme sağlar. HTTP tabanlı akış, proxy ve CDN katmanlarında önbelleğe almanın yanı sıra istemci tarafı önbelleğe alma avantajlarıyla yüksek düzeyde ölçeklenebilir. Akış uç noktaları, HTTP önbellek üstbilgileri için genel akış özellikleri ve ayrıca yapılandırma sağlar. Akış uç noktaları, HTTP Cache-Control: Max-Age ve Expires Headers ayarlar. [W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)adresinden http önbellek üstbilgileri hakkında daha fazla bilgi edinebilirsiniz.
 
-## <a name="default-caching-headers"></a>Varsayılan Önbelleğe Alma üstbilgi
-Varsayılan olarak akış uç noktaları isteğe bağlı akış verileri (gerçek ortam parçaları/parçaları) ve bildirim (çalma listesi) için 3 günlük önbellek üstbilgileri uygular. Canlı akış için akış uç noktaları, veri için 3 günlük önbellek üstbilgileri (gerçek ortam parçaları/parçaları) ve bildirim (çalma listesi) istekleri için 2 saniye önbellek üstbilgisi uygular. Canlı program isteğe bağlı (canlı arşiv) döndüğünde, isteğe bağlı akış önbellek üstbilgilerini uygular.
+## <a name="default-caching-headers"></a>Varsayılan önbelleğe alma üstbilgileri
+Varsayılan olarak, akış uç noktaları isteğe bağlı akış verileri (gerçek medya parçaları/öbekleri) ve bildirim (çalma listesi) için 3 günlük önbellek üst bilgisi uygular. Canlı akış için, akış uç noktaları veriler için 3 günlük önbellek üst bilgisi (gerçek medya parçaları/öbekleri) ve bildirim (çalma listesi) istekleri için 2 saniyelik önbellek üstbilgisi uygular. Canlı program isteğe bağlı (Canlı Arşiv) ' i açtığında, isteğe bağlı akış önbelleği üstbilgileri uygulanır.
 
-## <a name="azure-cdn-integration"></a>Azure CDN tümleştirmesi
-Azure Media Services, akış uç noktaları için [tümleşik CDN](https://azure.microsoft.com/updates/azure-media-services-now-fully-integrated-with-azure-cdn/) sağlar. Önbellek denetimi üstgeçitleri, CDN etkin leştirilmiş akış uç noktalarına akış uç noktaları gibi uygulanır. Azure CDN, dahili önbelleğe alınmış nesnelerin kullanım süresini tanımlamak için akış uç noktası yapılandırılmış önbellek değerlerini kullanır ve ayrıca teslim önbelleği üstbilgilerini ayarlamak için bu değeri kullanır. CDN etkin akış uç noktaları kullanırken küçük önbellek değerleri ayarlamak için önerilmez. Küçük değerler ayarlamak performansı düşürür ve CDN'nin yararını azaltır. CDN etkin akış uç noktaları için 600 saniyeden küçük önbellek üstbilgilerine ayarlanmasına izin verilmez.
+## <a name="azure-cdn-integration"></a>Azure CDN tümleştirme
+Azure Media Services, akış uç noktaları için [TÜMLEŞIK CDN](https://azure.microsoft.com/updates/azure-media-services-now-fully-integrated-with-azure-cdn/) sağlar. Cache-Control üst bilgileri, CDN etkin akış uç noktaları için akış uç noktalarıyla aynı şekilde geçerlidir. Azure CDN, iç önbelleğe alınmış nesnelerin yaşam süresini tanımlamak için akış uç noktası yapılandırılmış önbellek değerlerini kullanır ve ayrıca bu değeri, teslim önbelleği üst bilgilerini ayarlamak için kullanır. CDN etkin akış uç noktaları kullanılırken, küçük önbellek değerlerinin ayarlanması önerilmez. Küçük değerleri ayarlama performansı azaltır ve CDN 'nin avantajını azaltır. CDN etkin akış uç noktaları için 600 saniyeden daha küçük önbellek üstbilgileri ayarlama izni yoktur.
 
 > [!IMPORTANT]
->Azure Medya Hizmetleri, Azure CDN ile tam tümleştirmeye sahiptir. Tek bir tıklamayla, standart ve premium ürünler de dahil olmak üzere tüm kullanılabilir Azure CDN sağlayıcılarını akış bitiş noktanıza entegre edebilirsiniz. Daha fazla bilgi için bu [duyuruya](https://azure.microsoft.com/blog/standardstreamingendpoint/)bakın.
+>Azure Media Services Azure CDN ile tamamen tümleştirme içerir. Tek bir tıklama ile, tüm kullanılabilir Azure CDN sağlayıcılarını standart ve Premium ürünleri dahil olmak üzere akış uç noktanızla tümleştirebilirsiniz. Daha fazla bilgi için bu [duyuruya](https://azure.microsoft.com/blog/standardstreamingendpoint/)bakın.
 > 
-> Son nokta akışından CDN'ye veri yükleri yalnızca CDN son nokta API'leri akışı veya Azure portalının akış uç noktası bölümünü kullanarak etkinleştirildiğinde devre dışı bırakılır. CDN API'lerini veya portal bölümünü kullanarak el ile tümleştirme veya doğrudan CDN bitiş noktası oluşturma, veri ücretlerini devre dışı kılmaz.
+> Akış uç noktasından CDN 'ye veri ücretleri yalnızca CDN, akış uç noktası API 'Leri üzerinden etkinleştirilmişse veya Azure portal akış uç noktası bölümü kullanılırken devre dışı bırakılır. CDN API 'Leri veya Portal bölümünü kullanarak el ile tümleştirme veya doğrudan CDN uç noktası oluşturma, veri ücretlerini devre dışı bırakır.
 
-## <a name="configuring-cache-headers-with-azure-media-services"></a>Önbellek üstbilgilerini Azure Medya Hizmetleri ile yapılandırma
-Önbellek üstbilgi değerlerini yapılandırmak için Azure portalı veya Azure Medya Hizmetleri API'lerini kullanabilirsiniz.
+## <a name="configuring-cache-headers-with-azure-media-services"></a>Azure Media Services ile önbellek üstbilgilerini yapılandırma
+Önbellek üst bilgi değerlerini yapılandırmak için Azure portal veya Azure Media Services API 'Leri kullanabilirsiniz.
 
-1. Azure portalını kullanarak önbellek üstbilgilerini yapılandırmak için, [Akış Bitiş Noktasını](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) Yapılandırma Bölümü'ne bakın.
-2. Azure Medya Hizmetleri REST API, [StreamingEndpoint](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl).
-3. Azure Medya Hizmetleri .NET SDK, [StreamingEndpointCacheControl Özellikleri](https://go.microsoft.com/fwlink/?LinkId=615302).
+1. Azure portal kullanarak önbellek üstbilgilerini yapılandırmak için akış uç noktasını [yapılandırma bölümüne bakın](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) .
+2. Azure Media Services REST API'si, [Streamingendpoint](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl).
+3. Azure Media Services .NET SDK, [Streamingendpointcachecontrol özellikleri](https://go.microsoft.com/fwlink/?LinkId=615302).
 
-## <a name="cache-configuration-precedence-order"></a>Önbellek yapılandırma öncelik sırası
-1. Azure Medya Hizmetleri yapılandırılan önbellek değeri varsayılan değeri geçersiz kılar.
-2. El ile yapılandırma yoksa, varsayılan değerler uygulanır.
-3. Varsayılan olarak 2 saniye önbellek üstbilgileri, Azure Media veya Azure Depolama yapılandırmasına bakılmaksızın canlı akış bildirimi (çalma listesi) için geçerlidir ve bu değerin geçersiz kılınması kullanılamaz.
+## <a name="cache-configuration-precedence-order"></a>Önbellek yapılandırması öncelik sırası
+1. Yapılandırılan Azure Media Services önbellek değeri varsayılan değeri geçersiz kılar.
+2. El ile yapılandırma yoksa, varsayılan değerler geçerlidir.
+3. Varsayılan olarak, 2 saniyelik önbellek üst bilgileri, Azure medyasından veya Azure depolama yapılandırması ne olursa olsun canlı akış bildirimi (çalma listesi) için geçerlidir ve bu değerin üzerine yazmak kullanılabilir değildir.
 

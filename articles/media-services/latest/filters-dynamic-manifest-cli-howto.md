@@ -15,10 +15,10 @@ ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74896067"
 ---
 # <a name="creating-filters-with-cli"></a>CLı ile filtre oluşturma 
@@ -32,7 +32,7 @@ Bu konuda, bir video Isteğe bağlı varlığı için bir filtrenin nasıl yapı
 > [!NOTE]
 > [Presentationtimerange](filters-concept.md#presentationtimerange)öğesini gözden geçirdiğinizden emin olun.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 - [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
 

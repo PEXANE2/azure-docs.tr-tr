@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri v3 API'ye bağlanın - Python
-description: Bu makalede, Python ile Media Services v3 API'ye nasıl bağlanılalışiz gösteriş.
+title: Azure Media Services v3 API 'sine bağlanma-Python
+description: Bu makalede, Python ile Media Services v3 API 'sine nasıl bağlanacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,47 +14,47 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.openlocfilehash: 98a8cdf4120cf56184eb5735249640e3423acdf4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74888470"
 ---
-# <a name="connect-to-media-services-v3-api---python"></a>Medya Hizmetlerine bağlan v3 API - Python
+# <a name="connect-to-media-services-v3-api---python"></a>Media Services v3 API 'sine bağlanma-Python
 
-Bu makalede, hizmet ana oturum açma yöntemini kullanarak Azure Media Services v3 Python SDK'ya nasıl bağlanabileceğinizi gösterilmektedir.
+Bu makalede hizmet sorumlusu oturum açma yöntemi kullanılarak Azure Media Services v3 Python SDK 'sına nasıl bağlanabilmeniz gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Python'u python.org](https://www.python.org/downloads/) indir
-- Ortam değişkenini `PATH` ayarladıklıolun
-- [Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md) Kaynak grup adını ve Medya Hizmetleri hesap adını hatırladığından emin olun.
-- [Access API'leri](access-api-cli-how-to.md) konusundaki adımları izleyin. Abonelik kimliğini, uygulama kimliğini (istemci kimliğini), kimlik doğrulama anahtarını (gizli) ve daha sonraki adımda gereksinim duyduğunuz kiracı kimliğini kaydedin.
+- [Python.org](https://www.python.org/downloads/) 'ten Python indirin
+- `PATH` Ortam değişkenini ayarladığınızdan emin olun
+- [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını unutduğunuzdan emin olun.
+- [Erişim API 'leri](access-api-cli-how-to.md) konusundaki adımları izleyin. Abonelik KIMLIĞI, uygulama KIMLIĞI (istemci KIMLIĞI), kimlik doğrulama anahtarı (gizli) ve sonraki adımda ihtiyacınız olan kiracı KIMLIĞINI kaydedin.
 
 > [!IMPORTANT]
-> Adlandırma kurallarını gözden [geçirin.](media-services-apis-overview.md#naming-conventions)
+> [Adlandırma kurallarını](media-services-apis-overview.md#naming-conventions)gözden geçirin.
 
 ## <a name="install-the-modules"></a>Modülleri yükleme
 
-Python'u kullanarak Azure Medya Hizmetleri ile çalışmak için bu modülleri yüklemeniz gerekir.
+Python kullanarak Azure Media Services çalışmak için bu modülleri yüklemeniz gerekir.
 
-* Active `azure-mgmt-resource` Directory için Azure modüllerini içeren modül.
-* Medya `azure-mgmt-media` Hizmetleri varlıklarını içeren modül.
+* Active Directory `azure-mgmt-resource` için Azure modüllerini içeren modül.
+* Media Services `azure-mgmt-media` varlıklarını içeren modül.
 
-Bir komut satırı aracı nı açın ve modülleri yüklemek için aşağıdaki komutları kullanın.
+Bir komut satırı aracı açın ve modülleri yüklemek için aşağıdaki komutları kullanın.
 
 ```
 pip3 install azure-mgmt-resource
 pip3 install azure-mgmt-media==1.1.1
 ```
 
-## <a name="connect-to-the-python-client"></a>Python istemcisine bağlan
+## <a name="connect-to-the-python-client"></a>Python istemcisine bağlanma
 
-1. Uzantılı dosya `.py` oluşturma
-1. En sevdiğiniz düzenleyicide dosyayı açma
-1. Dosyaya izleyen kodu ekleyin. Kod gerekli modülleri içeri aktar ve Medya Hizmetleri'ne bağlanmak için gereken Active Directory kimlik bilgilerini oluşturur.
+1. `.py` Uzantılı bir dosya oluşturun
+1. Dosyayı en sevdiğiniz düzenleyicide açın
+1. Aşağıdaki kodu dosyaya ekleyin. Kod, gerekli modülleri içeri aktarır ve Media Services bağlanmak için gereken Active Directory kimlik bilgileri nesnesini oluşturur.
 
-      Değişkenlerin değerlerini [Access API'lerinden](access-api-cli-how-to.md) aldığınız değerlere ayarlama
+      Değişkenlerin değerlerini [erişim API 'lerinden](access-api-cli-how-to.md) aldığınız değerlere ayarlayın
 
       ```
       import adal
@@ -103,5 +103,5 @@ pip3 install azure-mgmt-media==1.1.1
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Python SDK](https://aka.ms/ams-v3-python-sdk)kullanın.
-- Medya Hizmetleri [Python ref](https://aka.ms/ams-v3-python-ref) belgelerini gözden geçirin.
+- [Python SDK 'yı](https://aka.ms/ams-v3-python-sdk)kullanın.
+- Media Services [Python başvuru](https://aka.ms/ams-v3-python-ref) belgelerini gözden geçirin.

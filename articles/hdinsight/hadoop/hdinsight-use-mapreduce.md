@@ -1,6 +1,6 @@
 ---
-title: HDInsight'ta Apache Hadoop ile MapReduce
-description: HDInsight kümelerinde Apache Hadoop'taki Apache MapReduce işlerini nasıl çalıştıracağınızhakkında bilgi edinin.
+title: HDInsight üzerinde Apache Hadoop MapReduce
+description: HDInsight kümelerinde Apache Hadoop Apache MapReduce işlerini nasıl çalıştıracağınızı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 238f37cc1e8cbc8d3260693181d6e54ac5f592f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75435716"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>HDInsight üzerinde Apache Hadoop ile MapReduce'u kullanma
 
-HDInsight kümelerinde MapReduce işlerini nasıl çalıştırılayarıştiz öğrenin.
+HDInsight kümelerinde MapReduce işlerinin nasıl çalıştırılacağını öğrenin.
 
 ## <a name="example-data"></a>Örnek veriler
 
-HDInsight, dizinde `/example/data` ve `/HdiSamples` dizinde depolanan çeşitli örnek veri kümeleri sağlar. Bu dizinler kümeniz için varsayılan depolama alanındadır. Bu belgede, dosyayı `/example/data/gutenberg/davinci.txt` kullanırız. Bu dosyada Leonardo da Vinci'nin defterleri var.
+HDInsight, `/example/data` ve `/HdiSamples` dizininde depolanan çeşitli örnek veri kümeleri sağlar. Bu dizinler, kümeniz için varsayılan depolardır. Bu belgede, `/example/data/gutenberg/davinci.txt` dosyasını kullanırız. Bu dosya, Leonardo da Vinci not defterlerini içerir.
 
 ## <a name="example-mapreduce"></a>Örnek MapReduce
 
-Örnek bir MapReduce kelime sayısı uygulaması HDInsight kümenize dahildir. Bu örnek, kümeniz için varsayılan depolama `/example/jars/hadoop-mapreduce-examples.jar` yerinde bulunur.
+HDInsight kümenize örnek bir MapReduce sözcük sayısı uygulaması dahildir. Bu örnek, kümenizin varsayılan `/example/jars/hadoop-mapreduce-examples.jar` depolama alanında bulunur.
 
-Aşağıdaki Java kodu, dosyada bulunan MapReduce `hadoop-mapreduce-examples.jar` uygulamasının kaynağıdır:
+Aşağıdaki Java kodu, `hadoop-mapreduce-examples.jar` dosyasında bulunan MapReduce uygulamasının kaynağıdır:
 
 ```java
 package org.apache.hadoop.examples;
@@ -101,22 +101,22 @@ public class WordCount {
 }
 ```
 
-Kendi MapReduce uygulamalarınızı yazmak için talimatlar [için, HDInsight için Java MapReduce uygulamalarını geliştir'e](apache-hadoop-develop-deploy-java-mapreduce-linux.md)bakın.
+Kendi MapReduce uygulamalarınızı yazma yönergeleri için bkz. [HDInsight Için Java MapReduce uygulamaları geliştirme](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
 
-## <a name="run-the-mapreduce"></a>MapReduce çalıştırın
+## <a name="run-the-mapreduce"></a>MapReduce 'yi çalıştırma
 
-HDInsight çeşitli yöntemler kullanarak HiveQL işleri çalıştırabilirsiniz. Hangi yöntemin sizin için doğru olduğuna karar vermek için aşağıdaki tabloyu kullanın ve ardından bir gözden geçirme için bağlantıyı izleyin.
+HDInsight, çeşitli yöntemler kullanarak HiveQL işleri çalıştırabilir. Size hangi yöntemin doğru olduğuna karar vermek için aşağıdaki tabloyu kullanın, ardından bir izlenecek yol için bağlantıyı izleyin.
 
-| **Bunu kullanın**... | **... bunu yapmak için** |  ... bu **istemci işletim sisteminden** |
+| **Bunu kullan**... | **... Bunu yapmak için** |  ... Bu **istemci işletim sisteminden** |
 |:--- |:--- |:--- |:--- |
-| [Ssh](apache-hadoop-use-mapreduce-ssh.md) |**SSH** üzerinden Hadoop komutunu kullanın |Linux, Unix, Mac OS X veya Windows |
-| [Curl](apache-hadoop-use-mapreduce-curl.md) |**REST'i** kullanarak işi uzaktan gönderme |Linux, Unix, Mac OS X veya Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell'i** kullanarak işi uzaktan gönderme  |Windows |
+| [SSH](apache-hadoop-use-mapreduce-ssh.md) |**SSH** kullanarak Hadoop komutunu kullanma |Linux, Unix, Mac OS X veya Windows |
+| [Kıvr](apache-hadoop-use-mapreduce-curl.md) |**Rest** kullanarak işi uzaktan gönderme |Linux, Unix, Mac OS X veya Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell** kullanarak işi uzaktan gönderme  |Windows |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HDInsight'ta verilerle çalışma hakkında daha fazla bilgi edinmek için aşağıdaki belgelere bakın:
+HDInsight 'ta verilerle çalışma hakkında daha fazla bilgi edinmek için aşağıdaki belgelere bakın:
 
-* [HDInsight için Java MapReduce programları geliştirin](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [HDInsight için Java MapReduce programları geliştirme](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-* [HDInsight ile Apache Hive'ı kullanma](./hdinsight-use-hive.md)
+* [HDInsight ile Apache Hive kullanma](./hdinsight-use-hive.md)

@@ -1,6 +1,6 @@
 ---
-title: Düğümler – Hyperscale (Citus) - PostgreSQL için Azure Veritabanı
-description: PostgreSQL için Azure Veritabanı'ndaki bir sunucu grubunda iki tür düğüm, koordinatör ve işçi hakkında bilgi edinin.
+title: Düğümler – Hyperscale (Citus)-PostgreSQL için Azure veritabanı
+description: PostgreSQL için Azure veritabanı 'ndaki bir sunucu grubunda bulunan iki tür düğüm, düzenleyici ve çalışan hakkında bilgi edinin.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,21 +8,21 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 04ebb4298f8a5398b0aa9921d740e3eaacfd8e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74974011"
 ---
-# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure Veritabanında Düğümler – Hyperscale (Citus)
+# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda düğümler – hiper ölçek (Citus)
 
-Hyperscale (Citus) barındırma türü, PostgreSQL sunucuları için Azure Veritabanı'nın (düğüm olarak adlandırılır) "paylaşılan hiçbir şey" mimarisinde birbirleriyle eşgüdüm kurmasına olanak tanır. Bir sunucu grubundaki düğümler topluca daha fazla veri tutar ve tek bir sunucuda mümkün olandan daha fazla CPU çekirdeği kullanır. Mimari ayrıca, sunucu grubuna daha fazla düğüm ekleyerek veritabanının ölçeklendirmesine de olanak tanır.
+Hiper ölçek (Citus) barındırma türü, PostgreSQL için Azure veritabanı sunucularının (düğümler olarak adlandırılır), "paylaşılan öğe olmayan" mimaride birbiriyle koordine etmesine olanak tanır. Bir sunucu grubundaki düğümler toplu olarak daha fazla veri tutar ve tek bir sunucuda mümkün olduğunca daha fazla CPU çekirdeği kullanır. Mimari Ayrıca, sunucu grubuna daha fazla düğüm ekleyerek veritabanının ölçeklendirilmesine de olanak tanır.
 
 ## <a name="coordinator-and-workers"></a>Koordinatör ve çalışanlar
 
-Her sunucu grubunun bir koordinatör düğümü ve birden çok çalışanı vardır. Başvurular sorgularını koordinatör düğüme gönderir, bu da ilgili çalışanlara iletir ve sonuçlarını birikir. Uygulamalar doğrudan işçilere bağlanabilir.
+Her sunucu grubunda bir düzenleyici düğümü ve birden çok çalışan bulunur. Uygulamalar, sorgularını ilgili çalışanlara aktaran ve sonuçlarını toplayan düzenleyici düğümüne gönderir. Uygulamalar doğrudan çalışanlara bağlanamaz.
 
-Her sorgu için koordinatör, onu tek bir alt düğüme yönlendirir veya gerekli verilerin tek bir düğümde mi yoksa birden çok düğümde mi yaşadığına bağlı olarak birkaç adedi paralelleştirir. Koordinatör, meta veri tablolarına danışarak ne yapacağına karar verir. Bu tablolar, DNS adlarını ve çalışan düğümlerin sistem durumunu ve düğümler arasında veri dağılımını izler.
+Her sorgu için, düzenleyici bunu tek bir çalışan düğümüne yönlendirir ya da gerekli verilerin tek bir düğümde veya birden çok üzerinde olmasına bağlı olarak bir kaç tane üzerinde paralelleştirme yapın. Düzenleyici, meta veri tablolarına danışarak ne yapılacağını belirler. Bu tablolar, çalışan düğümlerinin DNS adlarını ve sistem durumunu ve verilerin düğümler arasında dağıtımını izler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Düğümlerin [dağıtılmış verileri](concepts-hyperscale-distributed-data.md) nasıl depoladığını öğrenin
+- Düğümlerin [Dağıtılmış verileri](concepts-hyperscale-distributed-data.md) nasıl depoleyeceğinizi öğrenin
