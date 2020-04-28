@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: 58deae64bdde27580b85b00a1c87ba115e24478a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 5b04bbbbe5425e65f3ed4ff82d9700dec6dd2c39
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159907"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188336"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Azure AD uygulaması için güvenli uygulama geliştirme
 ## <a name="overview"></a>Genel Bakış
@@ -35,7 +35,7 @@ Bu uygulamayı geliştirirken ve dağıttığınızda, nasıl yapılacağını �
 - Ön uç güvenlik duvarı erişimiyle yalıtılmış olarak ayrılmış olan Azure Web uygulamasını dağıtın. 
 - OWASP Top 10 RuleSet kullanan bir güvenlik duvarı ile Azure Application Gateway örneği oluşturun ve yapılandırın. 
 - Azure hizmetlerini kullanarak geçişte ve bekleyen verilerin şifrelenmesini etkinleştirin. 
-- Karmaşıklıkları değerlendirmek için Azure ilkesi ve Güvenlik Merkezi 'ni ayarlayın. 
+- Uyumluluğu değerlendirmek için Azure Ilkesi ve Güvenlik Merkezi 'ni ayarlayın. 
 
 Bu uygulamayı geliştirip dağıttıktan sonra, açıklanan yapılandırma ve güvenlik ölçüleriyle birlikte aşağıdaki örnek Web uygulamasını ayarlamış olursunuz.
 

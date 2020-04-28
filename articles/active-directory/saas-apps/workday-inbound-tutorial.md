@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 298c99d44328dc79db1722b450ad74c3929d0c12
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
-ms.translationtype: MT
+ms.openlocfilehash: 6a816f2235fa5356f2300255ec9d2fb2b315acf7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114454"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190325"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Workday yapılandırma
 
@@ -87,13 +87,13 @@ Workday tümleştirmeye başlamadan önce aşağıdaki önkoşulları denetleyin
 
 Bu bölüm, planlamanın aşağıdaki yönlerini anlatmaktadır:
 
-* [Önkoşullar](#prerequisites)
+* [Ön koşullar](#prerequisites)
 * [Dağıtılacak bağlayıcı uygulamalarının sağlamasını seçme](#selecting-provisioning-connector-apps-to-deploy)
 * [Azure AD Connect sağlama aracısının dağıtımını planlama](#planning-deployment-of-azure-ad-connect-provisioning-agent)
 * [Birden çok Active Directory etki alanı ile tümleştirme](#integrating-with-multiple-active-directory-domains)
 * [Kullanıcı özniteliği eşleme ve dönüştürmelerini Active Directory için Workday planlama](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
 
@@ -562,7 +562,7 @@ Bu bölümde, Kullanıcı verilerinin Workday 'den Active Directory 'e nasıl ak
 | **Workerıd**  |  EmployeeID | **Evet** | Yalnızca oluşturma sırasında yazılmıştır |
 | **PreferredNameData**    |  ,    |   |   Yalnızca oluşturma sırasında yazılmıştır |
 | **Selectuniquevalue (JOIN ("\@", JOIN (".", \[FirstName\], \[LastName\]), "contoso.com"), JOIN ("\@", JOIN (".", Mid (\[FirstName\], 1, 1), \[LastName\]), "contoso.com"), JOIN (bir\@"", JOIN (".", Mid\[(\]FirstName, 1, 2) \[,\]LastName), "contoso.com"))**   | userPrincipalName     |     | Yalnızca oluşturma sırasında yazılmıştır 
-| **\[Replace (Mid (UserID\],, "(\[\\\\/\\\\\\\\\\:;)\\\[\\\\\\\\\]\\\\\\ \\\|\\\\=\\\\,\\\\+\\\\\*\\\\? \\\\\\) ",," ",,", 1, 20),, "([.) \\ &lt; \\ \\ &gt; \] \*File:///\\ \$.) *$)", , "", , )**      |    sAMAccountName            |     |         Yalnızca oluşturma sırasında yazılmıştır |
+| `Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )`      |    sAMAccountName            |     |         Yalnızca oluşturma sırasında yazılmıştır |
 | **Anahtar (\[etkin\],, "0", "true", "1", "false")** |  accountDisabled      |     | Oluştur + güncelleştir |
 | **FirstName**   | givenName       |     |    Oluştur + güncelleştir |
 | **Soyadı**   |   sn   |     |  Oluştur + güncelleştir |
@@ -1276,7 +1276,7 @@ Bu değişikliği yapmak için, kullanmak istediğiniz öznitelikleri temsil ede
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 
-9. **Tamam ' ı**seçin.
+9. **Tamam**’ı seçin.
 
 10. **İstek** BÖLMESINDE aşağıdaki XML 'e yapıştırın. **Employee_ID** , Workday kiracınızdaki gerçek bir kullanıcının çalışan kimliğine ayarlayın. **WD: Version** öğesini kullanmayı planladığınız WWS sürümüne ayarlayın. Ayıklamak istediğiniz özniteliği olan bir kullanıcı seçin.
 

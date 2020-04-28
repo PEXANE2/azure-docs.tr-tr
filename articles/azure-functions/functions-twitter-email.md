@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6698bcc8125cd00dcb1cd6c86a8d69153242b35
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75768971"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190308"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps ile tümleşen bir işlev oluşturma
 
@@ -22,7 +22,7 @@ Bu öğreticide Twitter gönderilerinden elde edilen duyarlılığın analizini 
 
 ![Logic App Tasarımcısı’nda uygulamanın ilk iki adımını gösteren görüntü](media/functions-twitter-email/00-logic-app-overview.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir Bilişsel Hizmetler API Kaynağı oluşturun.
@@ -36,18 +36,22 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 + Etkin bir [Twitter](https://twitter.com/) hesabı. 
 + Bir [Outlook.com](https://outlook.com/) hesabı (bildirim göndermek için).
-+ Bu makalede, başlangıç noktası olarak [Azure portalında ilk işlevinizi oluşturma](functions-create-first-azure-function.md) bölümünde oluşturulan kaynaklar kullanılmaktadır.  
+
+> [!NOTE]
+> Gmail bağlayıcısını kullanmak istiyorsanız, yalnızca G-Suite iş hesapları bu bağlayıcıyı mantıksal uygulamalarda kısıtlama olmadan kullanabilir. Gmail tüketicisi hesabınız varsa, Gmail bağlayıcısını yalnızca belirli Google-onaylanan uygulamalar ve hizmetlerle kullanabilir ya da [Gmail bağlayıcısında kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
+
++ Bu makalede, başlangıç noktası olarak [Azure portalında ilk işlevinizi oluşturma](functions-create-first-azure-function.md) bölümünde oluşturulan kaynaklar kullanılmaktadır.
 Daha önce yapmadıysanız işlev uygulamanızı oluşturmak için bu adımları uygulayın.
 
 ## <a name="create-a-cognitive-services-resource"></a>Bilişsel Hizmetler kaynağı oluşturma
 
 Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. İzlenmekte olan tweetlerin duyarlılığını algılamak için Metin Analizi API’sini kullanın.
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesine tıklayın.
 
-3. **AI + Makine Öğrenimi** > **Metin Analizi'ni**tıklatın. Sonra, tabloda belirtilen ayarları kullanarak kaynağı oluşturun.
+3. **AI + Machine Learning** > **metin analizi**' ne tıklayın. Sonra, tabloda belirtilen ayarları kullanarak kaynağı oluşturun.
 
     ![Bilişsel kaynak sayfası oluşturma](media/functions-twitter-email/01-create-text-analytics.png)
 
@@ -55,7 +59,7 @@ Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. �
     | --- | --- | --- |
     | **Adı** | MyCognitiveServicesAccnt | Benzersiz bir hesap adı seçin. |
     | **Konum** | Batı ABD | Size en yakın konumu kullanın. |
-    | **Fiyatlandırma katmanı** | F0 | En düşük katman ile başlayın. Çağrılarınız biterse daha yüksek bir katmana ölçeklendirin.|
+    | **Fiyatlandırma Katmanı** | F0 | En düşük katman ile başlayın. Çağrılarınız biterse daha yüksek bir katmana ölçeklendirin.|
     | **Kaynak grubu** | myResourceGroup | Bu öğreticideki tüm hizmetler için aynı kaynak grubunu kullanın.|
 
 4. Kaynağınızı oluşturmak için **Oluştur**'a tıklayın. 
@@ -76,7 +80,7 @@ Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. �
 
 ## <a name="create-an-http-triggered-function"></a>HTTP ile tetiklenen işlev oluşturma  
 
-1. İşlev uygulamanızı genişletin ve **+** **Fonksiyonlar'ın**yanındaki düğmeyi tıklatın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı seçin.
+1. İşlev uygulamanızı genişletin ve **işlevler**' in **+** yanındaki düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı seçin.
 
     ![Azure portalındaki İşlevler hızlı başlangıç sayfası](media/functions-twitter-email/05-function-app-create-portal.png)
 
@@ -121,7 +125,7 @@ Bilişsel Hizmetler API'leri Azure’da tek kaynaklar halinde kullanılabilir. �
     ```
     Bu işlev kodu, istekte alınan duyarlılık puanına göre bir renk kategorisi döndürür. 
 
-4. İşlevi test etmek için, Test sekmesini `0.2` genişletmek için en sağdaki **Test'i** tıklatın. İstek **gövdesi**için bir değer yazın ve ardından **Çalıştır'ı**tıklatın. Yanıtın gövdesinde **RED** değeri döndürülür. 
+4. İşlevi test etmek için en sağdaki **Test** seçeneğine tıklayarak test sekmesini genişletin. `0.2` **Istek gövdesi**Için bir değer yazın ve ardından **Çalıştır**' a tıklayın. Yanıtın gövdesinde **RED** değeri döndürülür. 
 
     ![İşlevi Azure portalında test etme](./media/functions-twitter-email/07-function-test.png)
 
@@ -129,9 +133,9 @@ Artık duyarlılık puanlarını kategorilere ayıran bir işleviniz vardır. bu
 
 ## <a name="create-a-logic-app"></a>Mantıksal uygulama oluşturma   
 
-1. Azure portalında, Azure portalının sol üst köşesinde bulunan **kaynak oluştur** düğmesini tıklatın.
+1. Azure portal, Azure portal sol üst köşesinde bulunan **kaynak oluştur** düğmesine tıklayın.
 
-2. **Web** > **Mantık Uygulaması'na**tıklayın.
+2. **Web** > **mantıksal uygulaması**' na tıklayın.
  
 3. Ardından **Ad** alanına `TweetSentiment` gibi bir değer yazın ve tabloda belirtilen ayarları kullanın.
 
@@ -165,7 +169,7 @@ Artık Logic Apps Tasarımcısı'nı kullanarak uygulamanıza hizmetler ve tetik
     | ----------------- | ------------ | ------------- |
     | **Arama metni** | #Azure | Seçilen aralıkta yeni tweetler oluşturmak için yeterince popüler olan bir diyez etiketi kullanın. Ücretsiz katmanını kullanırken diyez etiketiniz çok popüler olursa, Bilişsel Hizmetler API'nizdeki işlem kotasını hızlı bir şekilde tüketebilirsiniz. |
     | **Interval** | 15 | Sıklık birimleri cinsinden Twitter istekleri arasında geçen süre. |
-    | **Frequency** | Dakika | Twitter’ı yoklamak için kullanılan sıklık birimi.  |
+    | **Sıklık** | Dakika | Twitter’ı yoklamak için kullanılan sıklık birimi.  |
 
 3.  Twitter hesabınıza bağlanmak için **Kaydet**’e tıklayın. 
 
@@ -191,7 +195,7 @@ Duyarlılık algılaması yapılandırıldıktan sonra işlevinize duyarlılık 
 
 ## <a name="connect-sentiment-output-to-your-function"></a>Duyarlılık çıktısını işlevinize bağlama
 
-1. Logic Apps Tasarımcısı'nda **Yeni adım** > **Ekle'yi,** Azure **İşlevlerini** filtrele'yi tıklatın ve **Azure işlevi seçin'i**tıklatın.
+1. Logic Apps tasarımcısında **yeni adım** > **Eylem Ekle**' ye tıklayın, **Azure işlevleri** 'ne filtre uygulayın ve **bir Azure işlevi seçin**' e tıklayın.
 
     ![Duyarlılığı Algıla](media/functions-twitter-email/14-azure-functions.png)
   
@@ -213,7 +217,7 @@ Artık mantıksal uygulamadan bir duyarlılık puanı gönderildiğinde işlevin
 
 İş akışının son parçası, duyarlılık puanı _RED_ olduğunda bir e-postanın tetiklenmesidir. Bu konuda bir Outlook.com bağlayıcısı kullanılır. Gmail veya Office 365 Outlook bağlayıcısını kullanmak için benzer adımlar gerçekleştirebilirsiniz.   
 
-1. Logic Apps Tasarımcısı'nda **Yeni adım** > **ekle koşulunu**tıklatın. 
+1. Logic Apps tasarımcısında **yeni adım** > **Koşul Ekle**' ye tıklayın. 
 
     ![Mantıksal uygulamaya koşul ekleyin.](media/functions-twitter-email/18-add-condition.png)
 
@@ -238,7 +242,7 @@ Artık mantıksal uygulamadan bir duyarlılık puanı gönderildiğinde işlevin
 | **Konu** | Olumsuz tweet duyarlılığı algılandı  | E-posta bildiriminin konu satırı.  |
 | **Gövde** | Tweet metni, Konum | **Tweet metni** ve **Konum** parametrelerine tıklayın. |
 
-1. **Kaydet**'e tıklayın.
+1. **Kaydet**’e tıklayın.
 
 İş akışı tamamlandığına göre mantıksal uygulamayı etkinleştirip işlevin nasıl çalıştığını görebilirsiniz.
 

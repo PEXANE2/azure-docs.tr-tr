@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Formları etiketle, bir modeli eğitin ve örnek etiketleme aracını kullanarak bir formu analiz edin - Form Tanıyın'
+title: 'Hızlı başlangıç: formları etiketleme, model eğitme ve örnek etiketleme araç formu tanıyıcıyı kullanarak form çözümleme'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlatmada, form belgelerini el ile etiketlemek için Form Tanıyıcısı örnek etiketleme aracını kullanırsınız. Ardından, etiketli belgelerle birlikte özel bir model eğitecek ve anahtar/değer çiftlerini ayıklamak için modeli kullanırsınız.
+description: Bu hızlı başlangıçta, form belgelerinin el ile etiketlenmesi için form tanıyıcı örnek etiketleme aracını kullanacaksınız. Ardından, etiketli belgelerle özel bir model eğtireceksiniz ve anahtar/değer çiftlerini çıkarmak için modeli kullanacaksınız.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,207 +9,207 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 790e2a148385f9da54df82f597c2ca52124dc2be
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 6330a77f5971348c3f63fdaa7602ebba9ddf45ec
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81529884"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186348"
 ---
-# <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak etiketlerle form tanıyıcı modelini eğitin
+# <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
-Bu hızlı başlatmada, el ile etiketlenmiş verilere sahip özel bir modeli eğitmek için örnek etiketleme aracıyla Birlikte Form Recognizer REST API'yi kullanırsınız. Bu özellik hakkında daha fazla bilgi edinmek için genel bakışın [etiketleri ile Tren](../overview.md#train-with-labels) bölümüne bakın.
+Bu hızlı başlangıçta, el ile etiketlenmiş verileri içeren özel bir modeli eğitebilmeniz için örnek etiketleme aracı ile REST API tanıyıcı formunu kullanacaksınız. Bu özellik hakkında daha fazla bilgi edinmek için genel bakışın [etiketlerle eğitme](../overview.md#train-with-labels) bölümüne bakın.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı tamamlamak için şunları yapmış olmalısınız:
+Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
-- Aynı türden en az altı formdan oluşan bir küme. Bu verileri modeli eğitmek ve bir formu test etmek için kullanırsınız. Bu hızlı başlatma için örnek bir [veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure Depolama hesabındaki bir blob depolama kapsayıcısının köküne yükleyin.
+- Aynı türde en az altı biçim kümesi. Bu verileri modeli eğitme ve bir formu test etmek için kullanacaksınız. Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure depolama hesabındaki BLOB depolama kapsayıcısının köküne yükleyin.
 
-## <a name="create-a-form-recognizer-resource"></a>Form Tanıyıcı kaynağı oluşturma
+## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Örnek etiketleme aracını ayarlama
 
-Örnek etiketleme aracını çalıştırmak için Docker motorını kullanırsınız. Docker kapsayıcısını ayarlamak için aşağıdaki adımları izleyin. Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.
+Örnek etiketleme aracını çalıştırmak için Docker altyapısını kullanacaksınız. Docker kapsayıcısını ayarlamak için bu adımları izleyin. Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.
 
 > [!TIP]
-> OCR Form Etiketleme Aracı, GitHub'da açık kaynak projesi olarak da kullanılabilir. Araç React + Redux kullanılarak oluşturulmuş bir web uygulamasıdır ve TypeScript ile yazılmıştır. Daha fazla bilgi edinmek veya katkıda bulunmak için [OCR Form Etiketleme Aracı'na](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application)bakın.
+> OCR formu etiketleme Aracı, GitHub 'da açık kaynak proje olarak da kullanılabilir. Araç, yanıt verme + Redux kullanılarak oluşturulan ve TypeScript 'te yazılmış bir Web uygulamasıdır. Daha fazla bilgi edinmek veya katkıda bulunmak için bkz. [OCR formu etiketleme aracı](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application).
 
-1. İlk olarak, Docker'ı ana bilgisayara yükleyin. Bu kılavuz, yerel bilgisayarı ana bilgisayar olarak nasıl kullanacağınızı gösterir. Azure'da bir Docker barındırma hizmeti kullanmak istiyorsanız, [örnek etiketleme aracını](../deploy-label-tool.md) dağıtma kılavuzuna bakın. 
+1. İlk olarak, bir ana bilgisayara Docker 'ı yüklemeniz gerekir. Bu kılavuzda, yerel bilgisayarın bir konak olarak nasıl kullanılacağı gösterilir. Azure 'da bir Docker barındırma hizmeti kullanmak istiyorsanız, [örnek etiketleme aracı](../deploy-label-tool.md) nasıl yapılır Kılavuzu ' na bakın. 
 
    Ana bilgisayar aşağıdaki donanım gereksinimlerini karşılamalıdır:
 
     | Kapsayıcı | Minimum | Önerilen|
     |:--|:--|:--|
-    |Örnek etiketleme aracı|2 çekirdekli, 4 GB bellek|4 çekirdekli, 8 GB bellek|
+    |Örnek etiketleme aracı|2 çekirdek, 4 GB bellek|4 çekirdek, 8 GB bellek|
 
-   İşletim sisteminiz için uygun talimatları izleyerek Docker'ı makinenize yükleyin: 
+   İşletim sisteminiz için uygun talimatları izleyerek makinenize Docker 'yi yüklemeyin: 
    * [Windows](https://docs.docker.com/docker-for-windows/)
    * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
-1. `docker pull` Komutu ile örnek etiketleme aracı konteyner alın.
+1. `docker pull` Komutuyla örnek etiketleme araç kapsayıcısını alın.
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
-1. Şimdi konteyneri `docker run`.
+1. Artık kapsayıcıyı ile `docker run`çalıştırmaya hazırsınız.
     ```
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
 
-   Bu komut, örnek etiketleme aracını bir web tarayıcısı aracılığıyla kullanılabilir hale getirecektir. [http://localhost:3000](http://localhost:3000)Git.
+   Bu komut, örnek etiketleme aracını bir Web tarayıcısı üzerinden kullanılabilir hale getirir. `http://localhost:3000` kısmına gidin.
 
 > [!NOTE]
-> Ayrıca Form Recognizer REST API'yi kullanarak belgeleri ve tren modellerini etiketleyebilirsiniz. REST API'yi eğitmek ve analiz etmek için [REST API ve Python'u kullanarak etiketleri olan Train'e](./python-labeled-data.md)bakın.
+> Ayrıca, REST API form tanıyıcı kullanarak belgeleri etiketleyebilir ve modellerle eğitebilirsiniz. REST API eğitme ve analiz etmek için bkz. [REST API ve Python kullanarak etiketlerle eğitme](./python-labeled-data.md).
 
 ## <a name="set-up-input-data"></a>Giriş verilerini ayarlama
 
-İlk olarak, tüm eğitim belgelerinin aynı biçimde olduğundan emin olun. Birden çok biçimde formlarınız varsa, bunları ortak biçime göre alt klasörler halinde düzenleyin. Eğitim alırken, API'yi bir alt klasöre yönlendirmeniz gerekir.
+İlk olarak, tüm eğitim belgelerinin aynı biçimde olduğundan emin olun. Birden çok biçimdeki formlara sahipseniz, bunları ortak biçime göre alt klasörlerde düzenleyin. Eğitedığınızda, API 'yi bir alt klasöre yönlendirmeniz gerekir.
 
-### <a name="configure-cross-domain-resource-sharing-cors"></a>Etki alanları arası kaynak paylaşımını yapılandırma (CORS)
+### <a name="configure-cross-domain-resource-sharing-cors"></a>Etki alanları arası kaynak paylaşımını (CORS) yapılandırma
 
-Depolama hesabınızda CORS'i etkinleştirin. Azure portalında depolama hesabınızı seçin ve sol bölmedeki **CORS** sekmesini tıklatın. Alt satırda, aşağıdaki değerleri doldurun. Ardından en üstte **Kaydet'i** tıklatın.
+Depolama hesabınızda CORS 'yi etkinleştirin. Azure portal depolama hesabınızı seçin ve sol bölmedeki **CORS** sekmesine tıklayın. Alt satırda aşağıdaki değerleri girin. Ardından en üstteki **Kaydet** ' e tıklayın.
 
-* İzin verilen kökenler = * 
-* İzin verilen \[yöntemler = tümünü seçin\]
-* İzin verilen üstbilgi = *
-* Açıkta kalan üstbilgi = * 
-* Maksimum yaş = 200
+* İzin verilen çıkış noktaları = * 
+* İzin verilen yöntemler \[= Tümünü Seç\]
+* İzin verilen üstbilgiler = *
+* Gösterilen üstbilgiler = * 
+* En fazla yaş = 200
 
 > [!div class="mx-imgBorder"]
-> ![Azure portalında CORS kurulumu](../media/label-tool/cors-setup.png)
+> ![Azure portal CORS kurulumu](../media/label-tool/cors-setup.png)
 
 ## <a name="connect-to-the-sample-labeling-tool"></a>Örnek etiketleme aracına bağlanma
 
-Örnek etiketleme aracı bir kaynağa (özgün formlarınızın bulunduğu yerde) ve bir hedefe (oluşturulan etiketleri ve çıktı verilerini dışa aktardığı) bağlanır.
+Örnek etiketleme aracı bir kaynağa (özgün formlarınızın bulunduğu yer) ve bir hedefe (oluşturulan etiketlerin ve çıkış verilerinin dışarı aktardığı yere) bağlanır.
 
-Bağlantılar kurulabilir ve projeler arasında paylaşılabilir. Genişletilebilir bir sağlayıcı modeli kullanırlar, böylece yeni kaynak/hedef sağlayıcılar kolayca ekleyebilirsiniz.
+Bağlantılar, projeler arasında ayarlanabilir ve paylaşılabilir. Bunlar bir Genişletilebilir sağlayıcı modeli kullandıkları için kolayca yeni kaynak/hedef sağlayıcılar ekleyebilirsiniz.
 
-Yeni bir bağlantı oluşturmak için sol daki gezinti çubuğundaki **Yeni Bağlantılar** (tak) simgesini tıklatın.
+Yeni bir bağlantı oluşturmak için, sol gezinti çubuğundaki **yeni bağlantılar** (Tak) simgesine tıklayın.
 
-Alanları aşağıdaki değerlerle doldurun:
+Alanları aşağıdaki değerlerle girin:
 
-* **Görüntü Adı** - Bağlantı görüntü adı.
-* **Açıklama** - Proje açıklamanız.
-* **SAS URL** - Azure Blob Depolama kapsayıcınızın paylaşılan erişim imzası (SAS) URL'si. SAS URL'sini almak için Microsoft Azure Depolama Gezgini'ni açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim imzasını al'ı**seçin. Hizmeti kullandıktan sonra son kullanma süresini bir süre olarak ayarlayın. **Oku,** **Yaz,** **Sil**ve **Liste** izinlerinin işaretli olduğundan emin olun ve **Oluştur'u**tıklatın. Ardından **URL** bölümündeki değeri kopyalayın. Bu formu olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **Görünen ad** -bağlantı görünen adı.
+* **Açıklama** -proje tanımlarınız.
+* **SAS URL 'si** -Azure Blob depolama kapsayıcının paylaşılan erişim IMZASı (SAS) URL 'si. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. Hizmeti kullandıktan sonra sona erme süresini bir süre olarak ayarlayın. **Okuma**, **yazma**, **silme**ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 ![Örnek etiketleme aracının bağlantı ayarları](../media/label-tool/connections.png)
 
 ## <a name="create-a-new-project"></a>Yeni bir proje oluşturma
 
-Örnek etiketleme aracında, projeler yapılandırmalarınızı ve ayarlarınızı saklar. Yeni bir proje oluşturun ve alanları aşağıdaki değerlerle doldurun:
+Örnek etiketleme aracında, projeler yapılandırma ve ayarlarınızı depolar. Yeni bir proje oluşturun ve alanları aşağıdaki değerlerle girin:
 
-* **Görüntü Adı** - proje görüntü adı
-* **Güvenlik Belirteci** - Bazı proje ayarları API anahtarları veya diğer paylaşılan sırlar gibi hassas değerleri içerebilir. Her proje, hassas proje ayarlarını şifrelemek/çözmek için kullanılabilecek bir güvenlik belirteci oluşturur. Sol gezinti çubuğunun altındaki vites simgesine tıklayarak Uygulama Ayarları'nda güvenlik belirteçlerini bulabilirsiniz.
-* **Kaynak Bağlantısı** - Bu proje için kullanmak istediğiniz önceki adımda oluşturduğunuz Azure Blob Depolama bağlantısı.
-* **Klasör Yolu** - İsteğe Bağlı - Kaynak formlarınız blob kapsayıcısındaki bir klasörde bulunuyorsa, klasör adını buraya belirtin
-* **Form Recognizer Service Uri** - Form Tanıma cılız uç nokta URL'niz.
-* **API Anahtarı** - Form Tanıyıcı abonelik anahtarı.
-* **Açıklama** - İsteğe Bağlı - Proje açıklaması
+* **Görünen ad** -proje görünen adı
+* **Güvenlik belirteci** -bazı proje ayarları, API anahtarları veya diğer paylaşılan gizli diziler gibi hassas değerler içerebilir. Her proje, hassas proje ayarlarını şifrelemek/şifrelerini çözmek için kullanılabilen bir güvenlik belirteci oluşturur. Sol gezinti çubuğunun altındaki dişli simgesine tıklayarak uygulama ayarlarında güvenlik belirteçlerini bulabilirsiniz.
+* **Kaynak bağlantısı** -bu proje için kullanmak istediğiniz önceki adımda oluşturduğunuz Azure Blob depolama bağlantısı.
+* **Klasör yolu** -isteğe bağlı-kaynak formlarınız blob kapsayıcısındaki bir klasörde yer alıyorsa, burada klasör adını belirtin
+* **Form tanıyıcı hizmeti URI 'si** -form tanıyıcı uç nokta URL 'si.
+* **API anahtarı** -form tanıyıcı abonelik anahtarınız.
+* **Açıklama** -isteğe bağlı-proje açıklaması
 
 ![Örnek etiketleme aracında yeni proje sayfası](../media/label-tool/new-project.png)
 
 ## <a name="label-your-forms"></a>Formlarınızı etiketleme
 
-Bir proje oluşturduğunuzda veya açtığınızda, ana etiket düzenleyicipenceresi açılır. Etiket düzenleyicisi üç bölümden oluşur:
+Bir proje oluşturduğunuzda veya açtığınızda, ana Etiket Düzenleyicisi penceresi açılır. Etiket Düzenleyicisi üç bölümden oluşur:
 
-* Kaynak bağlantıdan kaydırılabilir formların listesini içeren yeniden boyutlandırılabilir önizleme bölmesi.
-* Etiketleri uygulamanızı sağlayan ana düzenleyici bölmesi.
-* Kullanıcıların etiketleri değiştirmesine, kilitlemesine, yeniden sipariş etmesine ve silmesine olanak tanıyan etiketler düzenleyici bölmesi. 
+* Kaynak bağlantıdan bir form listesinin kaydırılabilir listesini içeren bir yeniden boyutlandırılabilir Önizleme bölmesi.
+* Etiket uygulamanıza izin veren ana Düzenleyici bölmesi.
+* Kullanıcıların etiketleri değiştirmesine, kilitlemesine, yeniden sıralayabilir ve silmesine izin veren Etiketler Düzenleyicisi bölmesi. 
 
-### <a name="identify-text-elements"></a>Metin öğelerini tanımlama
+### <a name="identify-text-elements"></a>Metin öğelerini tanımla
 
-Her belgenin metin düzeni bilgilerini almak için sol **bölmedeki tüm dosyalarda OCR'yi çalıştır'ı** tıklatın. Etiketleme aracı, her metin öğesinin etrafına sınırlayıcı kutular çizer.
+Her belge için metin düzeni bilgilerini almak için sol bölmedeki **tüm dosyalarda OCR Çalıştır** ' a tıklayın. Etiketleme aracı her metin öğesinin etrafında sınırlayıcı kutular çizer.
 
-### <a name="apply-labels-to-text"></a>Etiketleri metne uygulama
+### <a name="apply-labels-to-text"></a>Metne Etiketler uygulama
 
-Ardından, etiketler (etiketler) oluşturur ve bunları modelin tanımasını istediğiniz metin öğelerine uygularsınız.
+Ardından, Etiketler (Etiketler) oluşturacak ve bunları modelin tanımasını istediğiniz metin öğelerine uygulayacaksınız.
 
-1. İlk olarak, tanımlamak istediğiniz etiketleri oluşturmak için etiketler düzenleyici bölmesini kullanın.
-   1. Yeni **+** bir etiket oluşturmak için tıklatın.
+1. İlk olarak, tanımlamak istediğiniz etiketleri oluşturmak için Etiketler Düzenleyicisi bölmesini kullanın.
+   1. Yeni **+** bir etiket oluşturmak için tıklayın.
    1. Etiket adını girin.
-   1. Etiketi kaydetmek için Enter tuşuna basın.
-1. Ana düzenleyicide, vurgulanan metin öğelerinden bir veya birden çok sözcük seçmek için tıklatın ve sürükleyin.
-1. Uygulamak istediğiniz etikete tıklayın veya ilgili klavye tuşuna basın. Numara tuşları ilk 10 etiket için anahtarlar olarak atanır. Etiket düzenleyicisi bölmesindeki yukarı ve aşağı ok simgelerini kullanarak etiketlerinizi yeniden sipariş edebilirsiniz.
+   1. Etiketi kaydetmek için ENTER tuşuna basın.
+1. Ana düzenleyicide, vurgulanan metin öğelerinden bir veya birden çok sözcük seçmek için tıklayın ve sürükleyin.
+1. Uygulamak istediğiniz etikete tıklayın veya ilgili klavye tuşuna basın. Sayı tuşları ilk 10 etiketi için kısayol tuşu olarak atanır. Etiket Düzenleyicisi bölmesindeki yukarı ve aşağı ok simgelerini kullanarak etiketlerinizi yeniden düzenleyebilirsiniz.
     > [!Tip]
-    > Formlarınızı etiketlerken aşağıdaki ipuçlarını aklınızda bulundurun.
+    > Formlarınızı etiketleyerek aşağıdaki ipuçlarını göz önünde bulundurun.
     > * Seçili her metin öğesine yalnızca bir etiket uygulayabilirsiniz.
-    > * Her etiket sayfa başına yalnızca bir kez uygulanabilir. Bir değer aynı formda birden çok kez görünüyorsa, her örnek için farklı etiketler oluşturun. Örneğin: "fatura# 1", "fatura# 2" ve benzeri.
-    > * Etiketler sayfalar arasında yayılamaz.
-    > * Değerleri formda göründükleri gibi etiketle; bir değeri iki farklı etiketle iki parçaya bölmeye çalışmayın. Örneğin, bir adres alanı, birden çok satıra yayılsa bile tek bir etiketle etiketlenmelidir.
-    > * Etiketlenen alanlara&mdash;anahtarları yalnızca değerleri eklemeyin.
-    > * Tablo verileri otomatik olarak algılanmalıdır ve son çıktı JSON dosyasında kullanılabilir. Ancak, model tablo verilerinizin tümlerini algılayamazsa, bu alanları da el ile etiketleyebilirsiniz. Tablodaki her hücreyi farklı bir etiketle etiketle. Formlarınızın farklı sayıda satıriçeren tabloları varsa, mümkün olan en büyük tabloyla en az bir formu etiketlediğinizden emin olun.
+    > * Her etiket, sayfa başına yalnızca bir kez uygulanabilir. Bir değer aynı formda birden çok kez görünürse, her örnek için farklı etiketler oluşturun. Örneğin: "Invoice # 1", "Invoice # 2" vb.
+    > * Etiketler sayfalara yayılamaz.
+    > * Değerleri formda göründükleri şekilde etiketleyin; iki farklı etikete sahip iki parçaya bir değeri bölmeye çalışmayın. Örneğin, bir adres alanının birden çok satıra yayılsa bile tek bir etiketle etiketlenmesi gerekir.
+    > * Etiketli alanlarınıza&mdash;anahtar eklemeyin yalnızca değerleri.
+    > * Tablo verileri otomatik olarak algılanmalı ve son çıktı JSON dosyasında kullanılabilir olacaktır. Ancak, model tüm tablo verilerinizi algılayamazsa, bu alanları da el ile etiketleyebilirsiniz. Tablodaki her hücreyi farklı bir etiketle etiketleyin. Formlarınızın farklı sayıda satır içeren tabloları varsa, en büyük olası tabloyla en az bir form etiketlediğinizden emin olun.
 
 ![Örnek etiketleme aracının ana düzenleyici penceresi](../media/label-tool/main-editor.png)
 
-Formlarınızın en az beşini etiketlemek için yukarıdaki adımları izleyin.
+Formlarınızın en az beş kısmını etiketlemek için yukarıdaki adımları izleyin.
 
-### <a name="specify-tag-value-types"></a>Etiket değeri türlerini belirtin
+### <a name="specify-tag-value-types"></a>Etiket değer türlerini belirtin
 
-İsteğe bağlı olarak, her etiket için beklenen veri türünü ayarlayabilirsiniz. Etiketin sağındaki bağlam menüsünü açın ve menüden bir tür seçin. Bu özellik, algılama algoritmasının metin algılama doğruluğunu artıracak belirli varsayımlar yapmasına olanak tanır. Ayrıca, algılanan değerlerin son JSON çıkışında standart bir biçimde döndürülmesini de sağlar. 
+İsteğe bağlı olarak, her etiket için beklenen veri türünü ayarlayabilirsiniz. Etiketin sağ tarafındaki bağlam menüsünü açın ve menüden bir tür seçin. Bu özellik, algılama algoritmasının metin algılama doğruluğunu iyileştirecek bazı varsayımlar yapmasına olanak sağlar. Ayrıca, algılanan değerlerin son JSON çıkışında standartlaştırılmış bir biçimde döndürülmesini de sağlar. 
 
 > [!div class="mx-imgBorder"]
-> ![Örnek etiketleme aracı ile değer türü seçimi](../media/whats-new/formre-value-type.png)
+> ![Örnek etiketleme aracıyla değer türü seçimi](../media/whats-new/formre-value-type.png)
 
-Aşağıdaki değer türleri ve varyasyonlar şu anda desteklenir:
+Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
 * `string`
-    * varsayılan, `no-whitespaces``alphanumeric`
+    * Varsayılan, `no-whitespaces`,`alphanumeric`
 * `number`
-    * Varsayılan`currency`
+    * varsayılanını`currency`
 * `date` 
-    * varsayılan, `dmy` `mdy`, ,`ymd`
+    * Varsayılan, `dmy`, `mdy`,`ymd`
 * `time`
 * `integer`
 
 ## <a name="train-a-custom-model"></a>Özel bir modeli eğitme
 
-Eğitim sayfasını açmak için sol bölmedeki Tren simgesine tıklayın. Ardından modeli eğitmeye başlamak için **Tren** düğmesini tıklatın. Eğitim süreci tamamlandıktan sonra aşağıdaki bilgileri görürsünüz:
+Sağ bölmedeki eğit simgesine tıklayarak Eğitim sayfasını açın. Ardından, modele eğitime başlamak için **eğitme** düğmesine tıklayın. Eğitim işlemi tamamlandıktan sonra, aşağıdaki bilgileri görürsünüz:
 
-* **Model Kimliği** - Oluşturulan ve eğitilen modelin kimliği. Her eğitim çağrısı kendi kimliği ile yeni bir model oluşturur. Bu dizeyi güvenli bir konuma kopyalayın; REST API üzerinden tahmin aramaları yapmak istiyorsanız ihtiyacınız olacak.
-* **Ortalama Doğruluk** - Modelin ortalama doğruluğu. Yeni bir model oluşturmak için ek formları etiketleyerek ve yeniden eğitim alarak model doğruluğunu artırabilirsiniz. Beş formu etiketleyerek ve gerektiğinde daha fazla form ekleyerek başlamanızı öneririz.
-* Etiket listesi ve etiket başına tahmini doğruluk.
+* **Model kimliği** -oluşturulan ve EĞITILEN modelin kimliği. Her eğitim çağrısı kendi KIMLIĞINE sahip yeni bir model oluşturur. Bu dizeyi güvenli bir konuma kopyalayın; REST API aracılığıyla tahmin görüşmeleri yapmak istiyorsanız buna ihtiyacınız olur.
+* **Ortalama doğruluk** -modelin ortalama doğruluğu. Yeni bir model oluşturmak için ek formları ve eğitimi yeniden etiketleyerek model doğruluğunu artırabilirsiniz. Beş formu etiketleyerek ve gerektiğinde daha fazla form ekleyerek başlamasını öneririz.
+* Etiketlerin listesi ve etiket başına tahmini doğruluk.
 
-![eğitim görünümü](../media/label-tool/train-screen.png)
+![Eğitim görünümü](../media/label-tool/train-screen.png)
 
-Eğitim bittikten sonra **Ortalama Doğruluk** değerini inceleyin. Düşükse, daha fazla giriş belgesi eklemeli ve yukarıdaki adımları yinelemelisiniz. Önceden etiketlediğiniz belgeler proje dizininde kalır.
-
-> [!TIP]
-> Ayrıca bir REST API çağrısı ile eğitim sürecini çalıştırabilirsiniz. Bunu nasıl yapacağınızı öğrenmek için [Python'u kullanarak etiketleri olan Train'e](./python-labeled-data.md)bakın.
-
-## <a name="analyze-a-form"></a>Formu analiz et
-
-Modelinizi test etmek için soldaki Predict (ampul) simgesine tıklayın. Eğitim sürecinde kullanmadığınız bir form belgesi yükleyin. Ardından form için anahtar/değer tahminleri almak için sağdaki **Tahmin** düğmesini tıklatın. Araç, etiketleri sınırlayıcı kutulara uygular ve her etiketin güvenini bildirir.
+Eğitim bittikten sonra, **Ortalama doğruluk** değerini inceleyin. Düşükse, daha fazla giriş belgesi eklemeli ve yukarıdaki adımları tekrarlamalısınız. Daha önce etiketlediğiniz belgeler proje dizininde kalacak.
 
 > [!TIP]
-> Ayrıca, Bir REST çağrısı ile Analyze API çalıştırabilirsiniz. Bunu nasıl yapacağınızı öğrenmek için [Python'u kullanarak etiketleri olan Train'e](./python-labeled-data.md)bakın.
+> Eğitim sürecini bir REST API çağrısıyla de çalıştırabilirsiniz. Bunun nasıl yapılacağını öğrenmek için bkz. [Python kullanarak etiketlerle eğitme](./python-labeled-data.md).
 
-## <a name="improve-results"></a>Sonuçları iyileştirme
+## <a name="analyze-a-form"></a>Formu analiz etme
 
-Bildirilen doğruluğa bağlı olarak, modeli geliştirmek için daha fazla eğitim yapmak isteyebilirsiniz. Bir tahminde bulunduktan sonra, uygulanan etiketlerin her biri için güven değerlerini inceleyin. Ortalama doğruluk eğitim değeri yüksekse, ancak güven puanları düşükse (veya sonuçlar yanlışsa), tahmin için kullanılan dosyayı eğitim kümesine eklemeniz, etiketlemeniz ve yeniden eğitmelisiniz.
+Modelinizi test etmek için sol taraftaki tahmin (ampul) simgesine tıklayın. Eğitim sürecinde kullanmadığınız bir form belgesini karşıya yükleyin. Ardından, form için anahtar/değer tahminleri elde etmek için sağdaki **tahmin** düğmesine tıklayın. Araç etiketleri sınırlayıcı kutulara uygular ve her bir etiketin güvenirliği rapor eder.
 
-Bildirilen ortalama doğruluk, güven puanları ve gerçek doğruluk, analiz edilen belgeler eğitimde kullanılanlardan farklı olduğunda tutarsız olabilir. Bazı belgelerin insanlar tarafından görüntülendiğinde benzer göründüğünü, ancak AI modeline farklı görünebileceğini unutmayın. Örneğin, eğitim kümesinin %20 varyasyon A ve %80 varyasyon B'den oluştuğu iki varyasyonu olan bir form türüyle eğitim alabilirsiniz. Tahmin sırasında, A varyasyonu belgelerinin güven puanları nın daha düşük olması olasıdır.
+> [!TIP]
+> Çözümle API 'sini bir REST çağrısıyla de çalıştırabilirsiniz. Bunun nasıl yapılacağını öğrenmek için bkz. [Python kullanarak etiketlerle eğitme](./python-labeled-data.md).
 
-## <a name="save-a-project-and-resume-later"></a>Projeyi kaydedin ve daha sonra devam edin
+## <a name="improve-results"></a>Sonuçları geliştirme
 
-Projenize başka bir zamanda veya başka bir tarayıcıda devam etmek için projenizin güvenlik belirteci kaydedip daha sonra yeniden girmeniz gerekir. 
+Bildirilen doğrulukla bağlı olarak, modeli geliştirmek için daha fazla eğitim yapmak isteyebilirsiniz. Tahmin tamamladıktan sonra, uygulanan etiketlerin her biri için güvenirlik değerlerini inceleyin. Ortalama doğruluk eğitim değeri yüksekse, ancak güven puanları düşükse (veya sonuçlar yanlış olursa), tahmin için kullanılan dosyayı eğitim kümesine eklemeli, etiketleyip yeniden eğitmelisiniz.
 
-### <a name="get-project-credentials"></a>Proje kimlik bilgilerini alma
-Proje ayarları sayfanıza (kaydırıcı simgesi) gidin ve güvenlik belirteci adını not alın. Ardından, geçerli tarayıcı örneğinizdeki tüm güvenlik belirteçlerini gösteren uygulama ayarlarınıza (vites simgesi) gidin. Projenizin güvenlik jetonunu bulun ve adını ve anahtar değerini güvenli bir konuma kopyalayın.
+Çözümlenen belgeler eğitiminde kullanılanlardan farklıysa, bildirilen ortalama doğruluk, güvenilirlik ve gerçek doğruluk tutarsız olabilir. Bazı belgelerin kişiler tarafından görüntülendiklerinde benzer olduğunu ancak AI modeline ayrı görünebileceğini aklınızda bulundurun. Örneğin, iki çeşitleme içeren bir form türüyle eğitebilirsiniz; burada eğitim kümesi %20 değişim A ve %80 değişim B ' den oluşur. Tahmin sırasında, A varyasyonuna ait belgelerin güvenilirlik puanları büyük olasılıkla daha düşüktür.
 
-### <a name="restore-project-credentials"></a>Proje kimlik bilgilerini geri yükleme
-Projenize devam etmek istediğinizde, önce aynı blob depolama kapsayıcısına bir bağlantı oluşturmanız gerekir. Bunu yapmak için yukarıdaki adımları tekrarlayın. Ardından, uygulama ayarları sayfasına (vites simgesi) gidin ve projenizin güvenlik belirteci olup olmadığını görün. Değilse, yeni bir güvenlik belirteci ekleyin ve belirteç adınızın ve anahtarınızın üzerinde önceki adımdan kopyalayın. Ardından Ayarları Kaydet'i tıklatın. 
+## <a name="save-a-project-and-resume-later"></a>Projeyi kaydetme ve daha sonra yeniden başlatma
 
-### <a name="resume-a-project"></a>Projeye devam edin
+Projenizi başka bir zamanda veya başka bir tarayıcıda duraklatmak için, projenizin güvenlik belirtecini kaydetmeniz ve daha sonra yeniden girmeniz gerekir. 
 
-Son olarak, ana sayfaya (ev simgesi) gidin ve Bulut Projesi Aç'ı tıklatın. Ardından blob depolama bağlantısını seçin ve projenizin *.vott* dosyasını seçin. Uygulama, güvenlik belirteci olduğundan projenin tüm ayarlarını yükler.
+### <a name="get-project-credentials"></a>Proje kimlik bilgilerini al
+Proje ayarları sayfanıza gidin (kaydırıcı simgesi) ve güvenlik belirteci adını göz önünde alın. Ardından, geçerli tarayıcı örneğinizdeki tüm güvenlik belirteçlerini gösteren uygulama ayarlarınıza (dişli simgesi) gidin. Projenizin güvenlik belirtecini bulun ve adını ve anahtar değerini güvenli bir konuma kopyalayın.
+
+### <a name="restore-project-credentials"></a>Proje kimlik bilgilerini geri yükle
+Projenizi yeniden başlatmak istediğinizde, önce aynı BLOB depolama kapsayıcısına bir bağlantı oluşturmanız gerekir. Bunu yapmak için yukarıdaki adımları tekrarlayın. Ardından, uygulama ayarları sayfasına (dişli simgesi) gidin ve projenizin güvenlik belirtecinin orada olup olmadığını görün. Değilse, yeni bir güvenlik belirteci ekleyin ve önceki adımdan belirteç adınızın ve anahtarınızın üzerine kopyalayın. Sonra Ayarları Kaydet ' e tıklayın. 
+
+### <a name="resume-a-project"></a>Projeyi sürdürür
+
+Son olarak ana sayfaya (kuruluş simgesi) gidin ve bulut projesini aç ' a tıklayın. Sonra blob Storage bağlantısını seçin ve projenizin *. vott* dosyasını seçin. Uygulama, güvenlik belirtecine sahip olduğundan projenin tüm ayarlarını yükler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, el ile etiketlenmiş verilere sahip bir modeli eğitmek için Form Recognizer örnek etiketleme aracını nasıl kullanacağınızı öğrendiniz. Etiketleme aracını kendi uygulamanıza entegre etmek istiyorsanız, etiketli veri eğitimiyle ilgili REST API'lerini kullanın.
+Bu hızlı başlangıçta, el ile etiketlenmiş verilerle bir modeli eğtirecek şekilde form tanıyıcı örnek etiketleme aracının nasıl kullanılacağını öğrendiniz. Etiketleme aracını kendi uygulamanızla tümleştirmek isterseniz etiketli veri eğitimi ile ilgilenen REST API 'Lerini kullanın.
 
 > [!div class="nextstepaction"]
-> [Python kullanarak etiketlerle tren](./python-labeled-data.md)
+> [Python kullanarak etiketlerle eğitme](./python-labeled-data.md)

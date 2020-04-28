@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: c03487b100ddb066416072c6c06773890db86e0a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115321"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188544"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration uzantısı işleyicisine giriş
 
@@ -36,7 +36,7 @@ Sanal makinede yerel olarak bulunmayan sürekli raporlama yok.
 
 Bu makalede her iki senaryo hakkında bilgi verilmektedir: Otomasyon ekleme için DSC uzantısını kullanma ve DSC uzantısını Azure SDK kullanarak VM 'lere yapılandırma atamak için bir araç olarak kullanma.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Yerel makine**: Azure VM uzantısıyla etkileşim kurmak için Azure Portal ya da Azure PowerShell SDK 'sını kullanmanız gerekir.
 - **Konuk Aracısı**: DSC yapılandırması tarafından YAPıLANDıRıLAN Azure VM, Windows Management Framework (WMF) 4,0 veya üstünü destekleyen bir işletim sistemi olmalıdır. Desteklenen işletim sistemi sürümlerinin tam listesi için [DSC Uzantısı Sürüm geçmişine](../../automation/automation-dsc-extension-history.md)bakın.
@@ -188,7 +188,7 @@ Portal aşağıdaki girişi toplar:
 
 - **Yapılandırma bağımsız değişkenleri**: yapılandırma işlevi bağımsız değişkenler alırsa, bunları **argumentName1 = değer1, argumentName2 = değer2**biçiminde girin. Bu biçim, PowerShell cmdlet 'lerinde veya Kaynak Yöneticisi şablonlarda yapılandırma bağımsız değişkenlerinin kabul edildiği farklı bir biçimdir.
 
-- **Yapılandırma VERILERI PSD1 dosyası**: Bu alan isteğe bağlıdır. Yapılandırmanız için. psd1 içinde bir yapılandırma veri dosyası gerekiyorsa, bu alanı kullanarak veri alanını seçin ve Kullanıcı BLOB depolama alanına yükleyin. Yapılandırma veri dosyası, BLOB depolama alanındaki bir SAS belirteci ile korunmuş olur.
+- **Yapılandırma VERILERI PSD1 dosyası**: yapılandırmanız için. PSD1 içinde bir yapılandırma veri dosyası gereklidir, bu alanı kullanarak veri dosyasını seçin ve Kullanıcı BLOB depolama alanına yükleyin. Yapılandırma veri dosyası, BLOB depolama alanındaki bir SAS belirteci ile korunmuş olur.
 
 - **WMF sürümü**: sanal makinenize yüklenmesi gereken Windows Management Framework (WMF) sürümünü belirtir. Bu özelliğin en son olarak ayarlanması WMF 'nin en son sürümünü yüklüyor. Şu anda bu özellik için olası tek değerler 4,0, 5,0, 5,1 ve en son değerlerdir. Bu olası değerler güncelleştirmelere tabidir. Varsayılan değer **en**sonuncusudur.
 

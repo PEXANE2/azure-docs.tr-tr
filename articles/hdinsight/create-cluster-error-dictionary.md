@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight Küme oluşturma - hata sözlüğü
-description: Azure HDInsight kümeleri oluştururken oluşan hataları nasıl gidereceklerini öğrenin
+title: Azure HDInsight küme oluşturma-hata sözlüğü
+description: Azure HDInsight kümeleri oluştururken oluşan hataların nasıl giderileceği hakkında bilgi edinin
 author: karkrish
 ms.author: v-todmc
 ms.reviewer: hrasheed
@@ -8,131 +8,131 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: 803783eddfbffd5c3dbab7353ee00dd7f11a09e5
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 39179c9b6d02d810561485f6a4af0102711ad0ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618896"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186643"
 ---
-# <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Küme oluşturma hataları
+# <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: küme oluşturma hataları
 
-Bu makalede, kümeler oluştururken karşılaşabileceğiniz hataların çözümleri açıklanmaktadır.
+Bu makalede, küme oluştururken karşılaşabileceğiniz hatalara yönelik çözümler açıklanmaktadır.
 
 > [!NOTE]
-> Bu makalede açıklanan ilk üç hata doğrulama hatalarıdır. Bunlar, bir Azure HDInsight ürünü **CsmDocument_2_0** sınıfı kullandığında oluşabilir.
+> Bu makalede açıklanan ilk üç hata doğrulama hatalardır. Bir Azure HDInsight ürünü **CsmDocument_2_0** sınıfını kullandığında bu durum ortaya çıkabilir.
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hata kodu: DeploymentDocument 'CsmDocument_2_0' doğrulama başarısız
+## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hata kodu: ' CsmDocument_2_0 ' DeploymentDocument doğrulaması başarısız oldu
 
 ### <a name="error"></a>Hata
 
-"Script Action konumuna URI:\<SCRIPT\>ACTION URL'si erişilemez "
+"Betik eylemi konumuna erişilemiyor URI:\<betik eylemi URL 'si"\>
 
 #### <a name="error-message"></a>Hata iletisi
 
-"Uzak sunucu bir hata döndürülür: (404) Bulunamadı."
+"Uzak sunucu bir hata döndürdü: (404) bulunamadı."
 
 ### <a name="cause"></a>Nedeni
 
-HDInsight hizmeti, Cluster Oluştur isteğinin bir parçası olarak sağladığınız komut dosyası eylem URL'sine erişemez. Hizmet, komut dosyası eylemine erişmeye çalıştığında önceki hata iletisini alır.
+HDInsight hizmeti, küme oluşturma isteği kapsamında verdiğiniz betik eylemi URL 'sine erişemiyor. Hizmet, betik eylemine erişmeye çalıştığında önceki hata iletisini alır.
 
 ### <a name="resolution"></a>Çözüm
 
-- Bir HTTP veya HTTPS URL'si için gizli bir tarayıcı penceresinden url'ye gitmeye çalışarak URL'yi doğrulayın.
-- WASB URL'si için, komut dosyasının istekte verdiğiniz depolama hesabında bulunduğundan emin olun. Ayrıca, bu depolama hesabının depolama anahtarının doğru olduğundan emin olun.
-- ADLS URL'si için komut dosyasının depolama hesabında bulunduğundan emin olun.
+- HTTP veya HTTPS URL 'SI için, bu URL 'yi bir ınbilito tarayıcı penceresinden gitmeye çalışırken doğrulayın.
+- Bir fgb URL 'SI için, betiğin istekte verdiğiniz depolama hesabında bulunduğundan emin olun. Ayrıca, bu depolama hesabı için depolama anahtarının doğru olduğundan emin olun.
+- Bir ADLS URL 'SI için, betiğin depolama hesabında bulunduğundan emin olun.
 
 ---
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hata kodu: DeploymentDocument 'CsmDocument_2_0' doğrulama başarısız
+## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hata kodu: ' CsmDocument_2_0 ' DeploymentDocument doğrulaması başarısız oldu
 
 ### <a name="error"></a>Hata
 
-"Script Action konumuURI \<erişilemez:\>SCRIPT_ACTION_URL "
+"Betik eylemi konumuna erişilemiyor URI: \<SCRIPT_ACTION_URL"\>
 
 #### <a name="error-message"></a>Hata iletisi
 
-"Verilen komut \<uri\> SCRIPT_URI ADLS, ancak bu küme hiçbir veri gölü depolama ilkesi vardır"
+"Verilen betik URI 'SI \<SCRIPT_URI\> ADLS 'de, ancak bu kümede Data Lake Storage sorumlusu yok"
 
 ### <a name="cause"></a>Nedeni
 
-HDInsight hizmeti, Cluster Oluştur isteğinin bir parçası olarak sağladığınız komut dosyası eylem URL'sine erişemez. Hizmet, komut dosyası eylemine erişmeye çalıştığında önceki hata iletisini alır.
+HDInsight hizmeti, küme oluşturma isteği kapsamında verdiğiniz betik eylemi URL 'sine erişemiyor. Hizmet, betik eylemine erişmeye çalıştığında önceki hata iletisini alır.
 
 ### <a name="resolution"></a>Çözüm
 
-Kümeye ilgili Azure Veri Gölü Depolama Gen 1 hesabını ekleyin. Ayrıca, Veri Gölü Depolama Gen 1 hesabına erişen hizmet ilkesini kümeye ekleyin.
+Karşılık gelen Azure Data Lake Storage Gen 1 hesabını kümeye ekleyin. Ayrıca, Data Lake Storage Gen 1 hesabına erişen hizmet sorumlusunu kümeye ekleyin.
 
 ---
 
-## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hata kodu: DeploymentDocument 'CsmDocument_2_0' doğrulama başarısız
+## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hata kodu: ' CsmDocument_2_0 ' DeploymentDocument doğrulaması başarısız oldu
 
 ### <a name="error"></a>Hata
 
-"VM boyutu\<\>' CUSTOMER_SPECIFIED_VM_SIZE ' isteği nde sağlanan geçersiz veya\<\>rol için desteklenmeyen ' ROL '. Geçerli değerler \<şunlardır: VALID_VM_SIZE_FOR_ROLE."\>
+\<İstekte belirtilen '\>CUSTOMER_SPECIFIED_VM_SIZE ' VM boyutu geçersiz veya '\<role\>' rolü için desteklenmiyor. Geçerli değerler şunlardır: \<VALID_VM_SIZE_FOR_ROLE\>. "
 
 ### <a name="cause"></a>Nedeni
 
-Belirttiğiniz sanal makine boyutu, rol için izin verilmez. VM boyutu değeri beklendiği gibi çalışmadığından veya bilgisayar rolü için uygun olmadığından bu hata oluşabilir.
+Belirttiğiniz sanal makine boyutuna rol için izin verilmiyor. Bu hata, VM boyut değerinin beklendiği gibi çalışmadığı veya bilgisayar rolü için uygun olmadığı için oluşabilir.
 
 ### <a name="resolution"></a>Çözüm
 
-Hata iletisi VM boyutu için geçerli değerleri listeler. Bu değerlerden birini seçin ve Cluster oluştur isteğini yeniden deneyin.
+Hata iletisi, VM boyutu için geçerli değerleri listeler. Bu değerlerden birini seçin ve küme oluştur isteğini yeniden deneyin.
 
 ---
 
-## <a name="error-codeinvalidvirtualnetworkid"></a>Hata kodu: GeçersizVirtualNetworkId  
+## <a name="error-codeinvalidvirtualnetworkid"></a>Hata kodu: ınvalidvirtualnetworkıd  
 
 ### <a name="error"></a>Hata
 
-"VirtualNetworkId geçerli değildir. VirtualNetworkId\<'\>USER_VIRTUALNETWORKID '*"
+"Virtualnetworkıd geçerli değil. Virtualnetworkıd '\<USER_VIRTUALNETWORKID\>' * "
 
 ### <a name="cause"></a>Nedeni
 
-Küme oluşturma sırasında belirttiğiniz **VirtualNetworkId** değeri doğru biçimde değildir.
+Küme oluşturma sırasında belirttiğiniz **Virtualnetworkıd** değeri doğru biçimde değil.
 
 ### <a name="resolution"></a>Çözüm
 
-**VirtualNetworkId** ve alt ağ değerlerinin doğru biçimde olduğundan emin olun. **VirtualNetworkId** değerini almak için:
+**Virtualnetworkıd** ve subnet değerlerinin doğru biçimde olduğundan emin olun. **Virtualnetworkıd** değerini almak için:
 
 1. Azure portalına gidin.
 1. Sanal ağınızı seçin.
-1. **Özellikler** menü öğesini seçin. **ResourceID** özellik değeri **VirtualNetworkId** değeridir.
+1. **Özellikler** menü öğesini seçin. **RESOURCEID** özelliği değeri **virtualnetworkıd** değeridir.
 
-Aşağıda sanal ağ kimliği örneği verilmiştir:
+Bir sanal ağ KIMLIĞI örneği aşağıda verilmiştir:
 
-"/abonelikler/c15fd9b8-e2b8-1d4e-aa85-2e668040233b/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet"
-
----
-
-## <a name="error-code-customizationfailederrorcode"></a>Hata kodu: ÖzelleştirmeFailedErrorCode
-
-### <a name="error"></a>Hata
-
-"Küme dağıtımı, özel komut dosyası eylemindeki bir hata nedeniyle başarısız oldu. Başarısız \<Eylemler:\>SCRIPT_NAME , Lütfen ambari ui daha fazla hata ayıklamak için gidin."
-
-### <a name="cause"></a>Nedeni
-
-Küme Oluştur isteği sırasında sağladığınız özel komut dosyası, küme başarıyla dağıtıldıktan sonra yürütülür. Bu hata kodu, SCRIPT_NAME \<\>adlı özel komut dosyasının yürütülmesi sırasında bir hata ortaya çıktığını gösterir.
-
-### <a name="resolution"></a>Çözüm
-
-Komut dosyası özel komut dosyanız olduğundan, sorunu gidermenizi ve gerekirse komut dosyasını yeniden çalıştırmanızı öneririz. Komut dosyası hatasını gidermek için /var/lib/ambari-agent/* klasöründeki günlükleri inceleyin. Veya Ambari UI'deki **İşlemler** sayfasını açın ve ardından hata ayrıntılarını görüntülemek için **run_customscriptaction** işlemini seçin.
+"/subscriptions/c15fd9b8-e2b8-1d4e-aa85-2e668040233b/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet"
 
 ---
 
-## <a name="error-codeinvaliddocumenterrorcode"></a>Hata kodu: GeçersizDocumentErrorCode
+## <a name="error-code-customizationfailederrorcode"></a>Hata kodu: CustomizationFailedErrorCode
 
 ### <a name="error"></a>Hata
 
-"META_STORE_TYPE \<\> Metastore şema \<sürümü\> \<veritabanında\> METASTORE_MAJOR_VERSION DATABASE_NAME küme \<\>sürümü ile uyumsuz CLUSTER_VERSION "
+"Özel betik eyleminde bir hata nedeniyle küme dağıtımı başarısız oldu. Başarısız eylemler: \<SCRIPT_NAME\>, hata ayıklamak için lütfen ambarı Kullanıcı arabirimine gidin. "
 
 ### <a name="cause"></a>Nedeni
 
-Özel metastore, seçili HDInsight küme sürümüyle uyumsuzdur. Şu anda, HDInsight 4.0 kümeleri yalnızca Metastore sürüm 3.0 ve sonraki sürümlerini desteklerken, HDInsight 3.6 kümeleri Metastore sürüm 3.0 ve sonraki sürümlerini desteklemez.
+Küme oluşturma isteği sırasında verdiğiniz özel betik, küme başarıyla dağıtıldıktan sonra yürütülür. Bu hata kodu, SCRIPT_NAME \<\>adlı özel betiğin yürütülmesi sırasında bir hata olduğunu gösterir.
 
 ### <a name="resolution"></a>Çözüm
 
-Yalnızca HDInsight küme sürümünüzün desteklediği Metastore sürümlerini kullanın. Özel bir metastore belirtmezseniz, HDInsight dahili olarak bir metastore oluşturur ve küme silme işleminden sonra siler.
+Betik özel betiğinizin bulunduğu için, sorunu gidermeniz ve gerekirse betiği yeniden çalıştırmanız önerilir. Betik başarısızlığının sorunlarını gidermek için,/var/lib/Ambari-Agent/* klasöründeki günlükleri inceleyin. Ya da, **işlem sayfasını ambarı** Kullanıcı arabiriminde açın ve ardından hata ayrıntılarını görüntülemek için **run_customscriptaction** işlemini seçin.
+
+---
+
+## <a name="error-codeinvaliddocumenterrorcode"></a>Hata kodu: ınvalidbelgeenterrorcode
+
+### <a name="error"></a>Hata
+
+"Veritabanı \<database_name\> \> META_STORE_TYPE meta \<veri \<deposu şeması \<sürümü\> METASTORE_MAJOR_VERSION, küme sürümü CLUSTER_VERSION\>ile uyumsuz"
+
+### <a name="cause"></a>Nedeni
+
+Özel meta veri deposu, seçili HDInsight kümesi sürümüyle uyumlu değil. Şu anda, HDInsight 4,0 kümeleri yalnızca meta veri sürümü 3,0 ve üstünü destekler, ancak HDInsight 3,6 kümeleri, meta Tasileri sürümü 3,0 ve üstünü desteklemez.
+
+### <a name="resolution"></a>Çözüm
+
+HDInsight kümesi sürümünüzün desteklediği yalnızca meta veri deposu sürümlerini kullanın. Özel bir meta veri deposu belirtmezseniz, HDInsight dahili olarak bir meta veri deposu oluşturur ve ardından küme silme sonrasında onu siler.
 
 ---
 
@@ -140,97 +140,97 @@ Yalnızca HDInsight küme sürümünüzün desteklediği Metastore sürümlerini
 
 ### <a name="error"></a>Hata
 
-"Ölçekleme işlemi gerçekleştirmek için küme yönetimi bitiş noktasına bağlanılamıyor. Ağ güvenliği kurallarının kümeye dış erişimi engellemediğini ve küme yöneticisi (Ambari) UI'ye başarıyla erişilebileni doğrulayın."
+"Ölçeklendirme işlemi gerçekleştirmek için küme yönetimi uç noktasına bağlanılamadı. Ağ güvenlik kurallarının kümeye dış erişimi engellemediğini ve Küme Yöneticisi (ambarı) Kullanıcı arabirimine başarıyla erişildiğini doğrulayın. "
 
 ### <a name="cause"></a>Nedeni
 
-Ağ güvenlik grubunuzdaki (NSG) bir güvenlik duvarı kuralı, kritik Azure sağlık ve yönetim hizmetleriyle küme iletişimini engelliyor.
+Ağ güvenlik grubunuzda (NSG) bulunan bir güvenlik duvarı kuralı, kritik Azure sistem durumu ve yönetim hizmetleriyle küme iletişimini engelliyor.
 
 ### <a name="resolution"></a>Çözüm
 
-Ağ trafiğini denetlemek için ağ güvenlik gruplarını kullanmayı planlıyorsanız, HDInsight'ı yüklemeden önce aşağıdaki işlemleri yapmayı planlayın:
+Ağ trafiğini denetlemek için ağ güvenlik grupları kullanmayı planlıyorsanız, HDInsight 'ı yüklemeden önce aşağıdaki işlemleri gerçekleştirin:
 
-- HDInsight için kullanmayı planladığınız Azure bölgesini tanımlayın.
-- HDInsight tarafından gerekli IP adreslerini tanımlayın. Daha fazla bilgi için bkz. [HDInsight yönetimi IP adresleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
-  - HDInsight'ı yüklemeyi planladığınız alt ağ için ağ güvenlik gruplarını oluşturun veya değiştirin.
-  - Ağ güvenlik grupları için IP adreslerinden bağlantı noktası 443'te gelen trafiğe izin verin. Bu yapılandırma, HDInsight yönetim hizmetlerinin kümeye sanal ağ dışından ulaşmasını sağlar.
+- HDInsight için kullanmayı planladığınız Azure bölgesini belirler.
+- HDInsight için gereken IP adreslerini belirler. Daha fazla bilgi için bkz. [HDInsight yönetimi IP adresleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+  - HDInsight 'ı yüklemeyi planladığınız alt ağ için ağ güvenlik grupları oluşturun veya değiştirin.
+  - Ağ güvenlik grupları için IP adreslerinden 443 numaralı bağlantı noktasında gelen trafiğe izin verin. Bu yapılandırma, HDInsight Yönetim Hizmetleri 'nin kümeye sanal ağ dışından erişmesini sağlar.
 
 ---
 
-## <a name="error-code-storagepermissionsblockedformsi"></a>Hata kodu: StoragePermissionsBlockedForMsi
+## <a name="error-code-storagepermissionsblockedformsi"></a>Hata kodu: Storagepermissionsblockedformsı
 
 ### <a name="error"></a>Hata
 
-"Yönetilen Kimlik depolama hesabında izinleri yok. Lütfen depolama hesabı için Yönetilen Kimlik'e 'Depolama Blob Veri Sahibi' rolünün atandığını doğrulayın. Depolama: \</abonelikler/\> Abonelik Kimliği\< /kaynakGruplar/ Kaynak Grup Adı\> /sağlayıcıları/Microsoft.Storage/storageAccounts/ \<Storage Hesap Adı\>, Yönetilen Kimlik: /abonelikler/ \<Abonelik Kimliği\> /kaynakGrupları/ / Kaynak\< Grup Adı\> /sağlayıcılar/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\>"
+"Yönetilen kimliğin depolama hesabında izinleri yok. Lütfen depolama hesabı için yönetilen kimliğe ' Depolama Blobu veri sahibi ' rolünün atandığını doğrulayın. Depolama:/Subscriptions/ \<abonelik kimliği\> /ResourceGroups/\< kaynak grubu adı\> /Providers/Microsoft.Storage/storageAccounts/ \<depolama hesabı adı\>, yönetilen kimlik:/Subscriptions/ \<abonelik kimliği\> /ResourceGroups//\< kaynak grubu adı\> /Providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<Kullanıcı tarafından yönetilen kimlik\>adı "
 
 ### <a name="cause"></a>Nedeni
 
-Kimliği yönetmek için gereken izinleri sağlamadın. Kullanıcı tarafından atanan yönetilen kimlik, Azure Veri Gölü Depolama Gen2 depolama hesabında Blob Depolama Katılımcısı rolüne sahip değildir.
+Kimliği yönetmek için gerekli izinleri sağlamamadınız. Kullanıcı tarafından atanan yönetilen kimliğin Azure Data Lake Storage 2. depolama hesabında BLOB depolama katılımcısı rolü yok.
 
 ### <a name="resolution"></a>Çözüm
 
 1. Azure portalı açın.
 1. Depolama hesabınıza gidin.
-1. Erişim **Denetimi (IAM)** altına bakın.
-1. Kullanıcının Depolama Blob Veri Katılımcısı rolüne veya kendilerine atanan Depolama Blob Veri Sahibi rolüne sahip olduğundan emin olun.
+1. **Access Control (IAM)** bölümüne bakın.
+1. Kullanıcının Depolama Blobu veri katılımcısı rolüne veya bunlara atanmış Depolama Blobu veri sahibi rolüne sahip olduğundan emin olun.
 
-Daha fazla bilgi için [bkz.](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+Daha fazla bilgi için bkz. [Data Lake Storage 2. hesabındaki yönetilen kimlik için Izinleri ayarlama](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 ---
 
-## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>Hata kodu: GeçersizAğSecurityGroupSecurityRules
+## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>Hata kodu: ınvalidnetworksecuritygroupsecurityrules
 
 ### <a name="error"></a>Hata
 
-"Ağ Güvenlik\<Grubu/abonelikler/ SubscriptionID\>/resourceGroups/<Kaynak Grubu\> adı varsayılan/sağlayıcılar/Microsoft.Network/networkSecurityGroups/\<Ağ Güvenliği Grup Adı\> \<alt\>ağ /abonelikler/ SubscriptionID\</resourceGroups/ Kaynak Grup adı\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name/subnets/\>\<Subnet Name\> gerekli giriş ve/veya dış bağlantıya izin vermez. Daha fazla bilgi için lütfen [Azure HDInsight için sanal ağ planlayın](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)veya desteğe başvurun."
+"Ağ\<güvenlik grubundaki güvenlik kuralları/Subscriptions/SubscriptionID\>/resourcegroups/<kaynak grubu adı\> varsayılan/sağlayıcılar/Microsoft. ağ/networksecuritygroups/\<ağ güvenlik grubu\> adı alt ağ/Subscriptions/\<SubscriptionID\>/ResourceGroups/\<kaynak grubu adı\> RG-westeurope-VNET-TomTom-default/Providers/Microsoft. Network/virtualnetworks/\<sanal ağ adı\>/Subnets/\<alt ağ adı\> , gerekli gelen ve/veya giden bağlantılara izin vermiyor. Daha fazla bilgi için lütfen [Azure HDInsight için bir sanal ağ planlayın](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)veya desteğe başvurun. "
 
 ### <a name="cause"></a>Nedeni
 
-Ağ güvenlik grupları veya kullanıcı tanımlı rotalar (ÜDR) HDInsight kümenize gelen trafiği kontrol ediyorsa, kümenizin kritik Azure sağlık ve yönetim hizmetleriyle iletişim kurabileceğinden emin olun.
+Ağ güvenlik grupları veya Kullanıcı tanımlı yollar (UDRs) HDInsight kümenize gelen trafiği denetyorsa, kümenizin kritik Azure sistem durumu ve yönetim hizmetleriyle iletişim kurabildiğinden emin olun.
 
 ### <a name="resolution"></a>Çözüm
 
-Ağ trafiğini denetlemek için ağ güvenlik gruplarını kullanmayı planlıyorsanız, HDInsight'ı yüklemeden önce aşağıdaki işlemleri yapmayı planlayın:
+Ağ trafiğini denetlemek için ağ güvenlik grupları kullanmayı planlıyorsanız, HDInsight 'ı yüklemeden önce aşağıdaki işlemleri gerçekleştirin:
 
-- HDInsight için kullanmayı planladığınız Azure bölgesini belirleyin ve bölgeniz için IP adreslerinin güvenli bir listesini oluşturun. Daha fazla bilgi için Bkz. [Sağlık ve yönetim hizmetleri: Belirli bölgeler.](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)
-- HDInsight'ın gerektirdiği IP adreslerini tanımlayın. Daha fazla bilgi için [HDInsight yönetimi IP adreslerine](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)bakın.
-- HDInsight'ı yüklemeyi planladığınız alt ağ için ağ güvenlik gruplarını oluşturun veya değiştirin. Ağ güvenlik grupları için IP adreslerinden bağlantı noktası 443'te gelen trafiğe izin verin. Bu yapılandırma, HDInsight yönetim hizmetlerinin kümeye sanal ağ dışından ulaşmasını sağlar.
+- HDInsight için kullanmayı planladığınız Azure bölgesini tanımlayabilir ve bölgeniz için IP adreslerinin güvenli bir listesini oluşturun. Daha fazla bilgi için bkz. [sistem durumu ve Yönetim Hizmetleri: belirli bölgeler](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions).
+- HDInsight 'ın gerektirdiği IP adreslerini belirler. Daha fazla bilgi için bkz. [HDInsight YÖNETIM IP adresleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+- HDInsight 'ı yüklemeyi planladığınız alt ağ için ağ güvenlik grupları oluşturun veya değiştirin. Ağ güvenlik grupları için IP adreslerinden 443 numaralı bağlantı noktasında gelen trafiğe izin verin. Bu yapılandırma, HDInsight Yönetim Hizmetleri 'nin kümeye sanal ağ dışından erişmesini sağlar.
 
 ---
 
-## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>Hata kodu: Küme kurulumu bileşenleri bir veya daha fazla ana bilgisayara yüklemeyi başaramadı
+## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>Hata kodu: küme kurulumu bir veya daha fazla konağa bileşen yükleyemedi
 
 ### <a name="error"></a>Hata
 
-"Küme kurulumu bileşenleri bir veya daha fazla ana bilgisayara yüklemeyi başaramadı. Lütfen isteğinizi yeniden deneyin."
+"Küme kurulumu bir veya daha fazla konağa bileşen yükleyemedi. Lütfen isteğinizi yeniden deneyin. "
 
 ### <a name="cause"></a>Nedeni 
 
-Genellikle, geçici bir sorun veya Azure kesintisi olduğunda bu hata oluşturulur.
+Genellikle bu hata, geçici bir sorun veya bir Azure kesintisi olduğunda oluşturulur.
 
 ### <a name="resolution"></a>Çözüm
 
-Küme dağıtımını etkileyebilecek azure kesintileri için [Azure durum](https://status.azure.com) sayfasını denetleyin. Kesinti yoksa küme dağıtımını yeniden deneyin.
+Küme dağıtımını etkileyebilecek tüm Azure kesintileri için [Azure durum](https://status.azure.com) sayfasına bakın. Kesintiler yoksa, küme dağıtımını yeniden deneyin.
 
 ---
 
-## <a name="error-code-failedtoconnectwithclustererrorcode"></a>Hata Kodu: FailedtoConnectWithclusterErrorcode
+## <a name="error-code-failedtoconnectwithclustererrorcode"></a>Hata kodu: FailedToConnectWithClusterErrorCode
 
 ### <a name="error"></a>Hata
 
-Küme yönetimi bitiş noktasına bağlanamıyor. Lütfen daha sonra tekrar deneyin.
+Küme yönetimi uç noktasına bağlanılamadı. Lütfen daha sonra yeniden deneyin.
 
 ### <a name="cause"></a>Nedeni
 
-HDInsight Hizmeti küme oluşturmaya çalışırken kümenize bağlanamaz
+HDInsight hizmeti, kümeyi oluşturmaya çalışırken kümenize bağlanamaz
 
 ### <a name="resolution"></a>Çözüm
 
-Özel VNet ağ güvenlik grubu (NSG' ler) ve kullanıcı tanımlı rotalar (ÜDS) kullanıyorsanız, kümenizin HDInsight yönetim hizmetleriyle iletişim kurabilmesini sağlayın. Daha fazla bilgi için [HDInsight yönetimi IP adreslerine](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)bakın.
+Özel VNet ağ güvenlik grubu (NSG) ve Kullanıcı tanımlı yollar (UDRs) kullanıyorsanız, kümenizin HDInsight yönetim hizmetleriyle iletişim kurabildiğinden emin olun. Daha fazla bilgi için bkz. [HDInsight YÖNETIM IP adresleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
 
 ---
 
-## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Hata Kodu: İlke ihlali nedeniyle dağıtımlar<Resource URI>başarısız oldu: 'Kaynak' ilkesi tarafından izin verilmedi. İlke tanımlayıcıları: '[{"policyAssignment":{"name":"<Policy Name> ","id":"/providers/Microsoft.Management/managementGroups/<Management Group Name> providers/Microsoft.Authorization/policyAssignments/<Policy Name>"},"policyDefinition":<Policy Definition>
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Hata kodu: bir ilke ihlali nedeniyle dağıtımlar başarısız oldu: ' kaynak<Resource URI>' ' ilke tarafından izin verilmedi. İlke tanımlayıcıları: ' [{"policyAssignment": {"Name": "<Policy Name> ", "ID": "/Providers/Microsoft.Management/managementGroups/<Management Group Name> Providers/Microsoft. Authorization/policyasers/<Policy Name>"}, "policydefinition":<Policy Definition>
 
 ### <a name="cause"></a>Nedeni
 
@@ -238,16 +238,16 @@ Abonelik tabanlı Azure ilkeleri, genel IP adreslerinin oluşturulmasını redde
 
 Aşağıdaki ilkeler genellikle küme oluşturmayı etkiler:
 
-* Abonelik içinde IP Adresleri veya Yük bakiyeleri oluşturulmasını engelleyen ilkeler.
-* Depolama hesapları oluşturmayı engelleyen ilke.
-* IP Adresleri veya Yük Dengeleyicileri gibi ağ kaynaklarının silen ilkesi.
+* Abonelik içinde IP adresleri veya yük dengeleyiciler oluşturulmasını önleyen ilkeler.
+* Depolama hesaplarının oluşturulmasını önleyen ilke.
+* IP adresleri veya yük dengeleyiciler gibi ağ kaynaklarının silinmesini önleyen ilke.
 
 ### <a name="resolution"></a>Çözüm
 
-HDInsight Cluster oluştururken abonelik tabanlı Azure ilkesini silin veya devre dışı kaltın.
+HDInsight kümesi oluştururken abonelik tabanlı Azure Ilke atamasını silin veya devre dışı bırakın.
 
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Küme oluşturmadaki sorun giderme hataları hakkında daha fazla bilgi için [Azure HDInsight ile Sorun Giderme küme oluşturma hatalarına](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails)bakın.
+Küme oluşturma hatalarında sorun giderme hakkında daha fazla bilgi için bkz. [Azure HDInsight ile küme oluşturma hatalarında sorun giderme](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails).

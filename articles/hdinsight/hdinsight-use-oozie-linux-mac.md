@@ -6,13 +6,14 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 3c4f6afe56f592c99a8d8fc4949bdfb9aab3d336
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
-ms.translationtype: MT
+ms.openlocfilehash: 93eddcd8ed0dae6ac6f010dce2e138fc018a06fa
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106670"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190665"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Linux tabanlı Azure HDInsight üzerinde iş akışı tanımlamak ve çalıştırmak için Apache Hadoop ile Apache Oozie'yi kullanma
 
@@ -28,7 +29,7 @@ Ayrıca, Java programları veya kabuk betikleri gibi bir sisteme özgü işleri 
 > [!NOTE]  
 > HDInsight ile iş akışlarını tanımlamaya yönelik başka bir seçenek Azure Data Factory kullanmaktır. Data Factory hakkında daha fazla bilgi edinmek için bkz. [Data Factory Ile Apache Pig ve Apache Hive kullanma](../data-factory/transform-data.md). Kurumsal Güvenlik Paketi kümeleriyle Oozie 'yi kullanmak için lütfen bkz. [HDInsight Hadoop kümelerinde Apache Oozie 'yi kurumsal güvenlik paketi Ile çalıştırma](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **HDInsight üzerinde bir Hadoop kümesi**. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 

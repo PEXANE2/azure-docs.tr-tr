@@ -1,6 +1,6 @@
 ---
-title: Azure Ağ İzleyicisi'ndeki ağ güvenliği grubu akış günlükleri için depolama lekelerini silme | Microsoft Dokümanlar
-description: Bu makalede, Azure Ağ İzleyicisi'nde bekletme ilkesi döneminin dışında olan ağ güvenliği grubu akış günlüğü depolama blobları nasıl silinir.
+title: Azure ağ Izleyicisi 'nde ağ güvenlik grubu akış günlükleri için depolama bloblarını silme | Microsoft Docs
+description: Bu makalede, Azure ağ Izleyicisi 'nde bekletme ilkesi süresi dışında olan ağ güvenlik grubu akış günlüğü depolama bloblarının nasıl silineceği açıklanır.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,20 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 948347f38b4b0fefe1e61cc4560eaa46e1bfd6f0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587218"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187979"
 ---
-# <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Ağ İzleyicisi'ndeki ağ güvenliği grubu akış günlüğü depolama lekelerini silme
+# <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Ağ Izleyicisi 'nde ağ güvenlik grubu akış günlüğü depolama bloblarını silme
 
-Şu anda, Ağ İzleyicisi için [ağ güvenlik grubu (NSG) akış günlüklerinin](network-watcher-nsg-flow-logging-overview.md) bekletme ilkesi ayarlarına bağlı olarak Blob depolamadan otomatik olarak silinmediği bir sorun vardır. Bu makalede açıklandığı gibi depolama hesabınızdaki akış günlüklerini el ile silmek için artık bir PowerShell komut dosyası çalıştırmanız gerekir.
+Akış günlüklerini depolama hesabınızdan el ile silmeniz gerekirse, aşağıdaki PowerShell betiğini kullanabilirsiniz.
+Bu betik yalnızca Kullanıcı tarafından belirtilen mevcut bekletme ilkesinden daha eski olan depolama bloblarını siler.
 
-## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>NSG akış günlüklerini silmek için PowerShell komut dosyasını çalıştırma
+## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>NSG akış günlüklerini silmek için PowerShell betiğini çalıştırma
  
-Aşağıdaki komut dosyasını kopyalayın ve geçerli çalışma dizininiz gibi bir konuma kaydedin. 
+Aşağıdaki betiği kopyalayın ve geçerli çalışma dizininiz gibi bir konuma kaydedin. 
 
 ```powershell
 # This powershell script deletes all NSG flow log blobs that should not be retained anymore as per configured retention policy.
@@ -124,17 +125,17 @@ foreach ($Psflowlog in $FlowLogsList)
 Write-Output ('Retention policy for all NSGs evaluated and completed successfully')
 ```
 
-1. Gerektiğinde komut dosyasına aşağıdaki parametreleri girin:
-   - **SubscriptionId** [Zorunlu]: NSG Akış Günlüğü bloblarını silmek istediğiniz yerdeki abonelik kimliği.
-   - **Konum** [Zorunlu]: NSG'lerin bulunduğu bölgenin _konum dizesi_ ve NSG Akış Günlüğü bloblarını silmek istediğiniz yer dizesi. Bu bilgileri Azure portalında veya [GitHub'da](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)görüntüleyebilirsiniz.
-   - [İsteğe Bağlı] **onaylayın:** Her depolama lekesinin silinmesini el ile onaylamak istiyorsanız onay bayrağını geçirin.
+1. Komut dosyasına gereken şekilde aşağıdaki parametreleri girin:
+   - **SubscriptionID** [zorunlu]: NSG akış günlüğü bloblarını silmek ISTEDIĞINIZ abonelik kimliği.
+   - **Konum** [zorunlu]: NSG akış günlüğü bloblarını silmek Istediğiniz nsgs bölgesinin _konum dizesi_ . Bu bilgileri Azure portal veya [GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)üzerinde görüntüleyebilirsiniz.
+   - **Onayla** [isteğe bağlı]: her bir depolama Blobun silinmesini el ile onaylamak istiyorsanız, Onayla bayrağını geçirin.
 
-1. Komut dosyası dosyası **silme-NsgFlowLogsBlobs.ps1**olarak kaydedildi aşağıdaki örnekte gösterildiği gibi kaydedilen komut dosyası çalıştırın:
+1. Aşağıdaki örnekte gösterildiği gibi kaydedilen betiği çalıştırın, burada betik dosyası **Delete-NsgFlowLogsBlobs. ps1**olarak kaydedilir:
    ```
    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
    ```
     
 ## <a name="next-steps"></a>Sonraki adımlar
-- Müşteriler Azure [Logic Apps](../logic-apps/logic-apps-overview.md) veya [Azure Otomasyonu](https://azure.microsoft.com/services/automation/) kullanarak komut dosyasını çalıştırmayı otomatikleştirebilir
-- NSG günlüğü hakkında daha fazla bilgi edinmek [için ağ güvenlik grupları (NSG'ler) için Azure Monitor günlüklerine](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)bakın.
+- Müşteriler, [Azure Logic Apps](../logic-apps/logic-apps-overview.md) veya [Azure Otomasyonu](https://azure.microsoft.com/services/automation/) kullanarak betiği çalıştırmayı otomatik hale getirebilir
+- NSG günlüğü hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları (NSG 'ler) Için Azure izleyici günlükleri](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 

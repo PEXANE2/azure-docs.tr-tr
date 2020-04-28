@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 8db477f87f344b28e8941e185c70c81d9b860a72
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: e574ac33e5f7da814c4bd813fc1c083c7cb4c2c9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149482"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187894"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure sanal makinelerinde çözümler
 
-Bu makalede, [Intel yazılım uzantısı koruyucusu](https://software.intel.com/sgx) (Intel SGX) tarafından desteklenen Intel Işlemcileri çalıştıran Azure gizli bilgi işlem sanal makinelerini (VM 'ler) dağıtma hakkında bilgiler yer almaktadır. 
+Bu makalede, [Intel Software Guard uzantısı](https://software.intel.com/sgx) (Intel SGX) tarafından desteklenen Intel Işlemcileri çalıştıran Azure gizli bilgi işlem sanal makinelerini (VM 'ler) dağıtma hakkında bilgiler yer almaktadır. 
 
 ## <a name="azure-confidential-computing-vm-sizes"></a>Azure gizli bilgi işlem VM boyutları
 
@@ -148,5 +148,5 @@ Sanal makine kaynağında ARM şablonunuzda aşağıdaki boyutlardan birini beli
 
 Bu makalede, gizli bilgi işlem sanal makinesi oluştururken gereken nitelikleri ve konfigürasyonları öğrenmiş olursunuz. Artık bir DCsv2 serisi VM dağıtmak için Azure Market ' e gidebilirsiniz.
 
-[!div class=”nextstepaction”]
-[Azure Marketi 'nde DCsv2 serisi bir sanal makine dağıtma](quick-create-marketplace.md)
+> [!div class="nextstepaction"]
+> [Azure Marketi 'nde DCsv2 serisi bir sanal makine dağıtma](quick-create-marketplace.md)

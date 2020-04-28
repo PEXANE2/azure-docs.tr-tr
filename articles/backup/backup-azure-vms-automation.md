@@ -3,12 +3,12 @@ title: PowerShell ile Azure VM 'lerini yedekleme ve kurtarma
 description: PowerShell ile Azure Backup kullanarak Azure VM 'lerinin nasıl yedekleneceği ve kurtarılacağı açıklanmaktadır
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: a27b191868230ef9fc0de4378549e13d019ca875
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 44cffa58ea72a8a83edfaee94c616d6689e77e8c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116392"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187928"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -199,7 +199,7 @@ Bir yedekleme koruma ilkesi en az bir bekletme ilkesiyle ilişkilidir. Bir bekle
 Varsayılan olarak, bir başlangıç saati zamanlama Ilkesi nesnesinde tanımlanmıştır. Başlangıç saatini istenen başlangıç saatine dönüştürmek için aşağıdaki örneği kullanın. İstenen başlangıç saati UTC biçiminde de olmalıdır. Aşağıdaki örnek, günlük yedeklemeler için istenen başlangıç zamanının 01:00. UTC olduğunu varsayar.
 
 ```powershell
-$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
+$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
 $UtcTime = Get-Date -Date "2019-03-20 01:00:00Z"
 $UtcTime = $UtcTime.ToUniversalTime()
 $schpol.ScheduleRunTimes[0] = $UtcTime
@@ -211,7 +211,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 Aşağıdaki örnek, zaman çizelgesi ilkesini ve bekletme ilkesini değişkenler halinde depolar. Örnek, bu değişkenleri bir koruma ilkesi oluştururken *newpolicy*parametrelerini tanımlamak için kullanır.
 
 ```powershell
-$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
+$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "AzureVM" -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $targetVault.ID
 ```
 
@@ -548,22 +548,22 @@ Bir müşterinin depolama hesabı ve verilen kapsayıcı altında olduğundan, �
 
 1. Önce templateBlobURI 'den şablon adını ayıklayın. Biçim aşağıda belirtilmiştir. Bu URL 'den son şablon adını ayıklamak için PowerShell 'de Split işlemini kullanabilirsiniz.
 
-```http
-https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
-```
+    ```http
+    https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
+    ```
 
 2. Ardından tam URL [burada](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-powershell#provide-sas-token-during-deployment)açıklandığı gibi oluşturulabilir.
 
-```powershell
-Set-AzCurrentStorageAccount -Name $storageAccountName -ResourceGroupName <StorageAccount RG name>
-$templateBlobFullURI = New-AzStorageBlobSASToken -Container $containerName -Blob <templateName> -Permission r -FullUri
-```
+    ```powershell
+    Set-AzCurrentStorageAccount -Name $storageAccountName -ResourceGroupName <StorageAccount RG name>
+    $templateBlobFullURI = New-AzStorageBlobSASToken -Container $containerName -Blob <templateName> -Permission r -FullUri
+    ```
 
 3. [Burada](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)açıklandığı gibi yenı bir VM oluşturmak için şablonu dağıtın.
 
-```powershell
-New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobFullURI -storageAccountType Standard_GRS
-```
+    ```powershell
+    New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobFullURI -storageAccountType Standard_GRS
+    ```
 
 ### <a name="create-a-vm-using-the-config-file"></a>Yapılandırma dosyasını kullanarak VM oluşturma
 
@@ -598,151 +598,151 @@ Aşağıdaki bölümde, "VMConfig" dosyasını kullanarak bir VM oluşturmak iç
 
 4. İşletim sistemi diskini ve veri disklerini ekleyin. Bu adım, çeşitli yönetilen ve şifreli VM yapılandırmalarına yönelik örnekler sağlar. VM yapılandırmanıza uygun örneği kullanın.
 
-* **Yönetilmeyen ve şifreli olmayan VM 'ler** -yönetilmeyen, şifrelenmemiş VM 'ler için aşağıdaki örneği kullanın.
+    * **Yönetilmeyen ve şifreli olmayan VM 'ler** -yönetilmeyen, şifrelenmemiş VM 'ler için aşağıdaki örneği kullanın.
 
-```powershell
-       Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
-       $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
-       foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
-       {
+    ```powershell
+        Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
+        $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
+        foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
+        {
+            $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+        }
+    ```
+
+    * **Azure AD ile yönetilmeyen ve şifreli VM 'ler (yalnızca bek)** -Azure AD ile yönetilmeyen ve şifrelenmiş VM 'ler için (yalnızca bek kullanılarak şifrelenir), diskleri iliştirebilmeniz için gizli anahtarı anahtar kasasına geri yüklemeniz gerekir. Daha fazla bilgi için [Azure Backup kurtarma noktasından şifrelenmiş bir sanal makineyi geri yükleme](backup-azure-restore-key-secret.md)bölümüne bakın. Aşağıdaki örnek, şifrelenmiş VM 'Ler için işletim sistemi ve veri disklerinin nasıl ekleneceğini gösterir. İşletim sistemi diskini ayarlarken ilgili işletim sistemi türünden bahsetdiğinizden emin olun.
+
+    ```powershell
+        $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+        $dekUrl = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+        Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows/Linux
+        $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
+        foreach($dd in $obj.'properties.storageProfile'.dataDisks)
+        {
         $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
-       }
-```
+        }
+    ```
 
-* **Azure AD ile yönetilmeyen ve şifreli VM 'ler (yalnızca bek)** -Azure AD ile yönetilmeyen ve şifrelenmiş VM 'ler için (yalnızca bek kullanılarak şifrelenir), diskleri iliştirebilmeniz için gizli anahtarı anahtar kasasına geri yüklemeniz gerekir. Daha fazla bilgi için [Azure Backup kurtarma noktasından şifrelenmiş bir sanal makineyi geri yükleme](backup-azure-restore-key-secret.md)bölümüne bakın. Aşağıdaki örnek, şifrelenmiş VM 'Ler için işletim sistemi ve veri disklerinin nasıl ekleneceğini gösterir. İşletim sistemi diskini ayarlarken ilgili işletim sistemi türünden bahsetdiğinizden emin olun.
+    * **Azure AD ile yönetilmeyen ve şifreli VM 'ler (bek ve kek)** -Azure AD ile yönetilmeyen ve şifrelenmiş VM 'ler IÇIN (bek ve kek kullanılarak şifrelenir), diskleri eklemeden önce anahtarı ve gizli anahtarı anahtar kasasına geri yükleyin. Daha fazla bilgi için bkz. [Azure Backup kurtarma noktasından şifrelenmiş bir sanal makineyi geri yükleme](backup-azure-restore-key-secret.md). Aşağıdaki örnek, şifrelenmiş VM 'Ler için işletim sistemi ve veri disklerinin nasıl ekleneceğini gösterir.
 
-```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $dekUrl = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-      Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows/Linux
-      $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
-      foreach($dd in $obj.'properties.storageProfile'.dataDisks)
-      {
-       $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
-      }
-```
+    ```powershell
+        $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+        $kekUrl = "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
+        $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+        Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
+        $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
+        foreach($dd in $obj.'properties.storageProfile'.dataDisks)
+        {
+        $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+        }
+    ```
 
-* **Azure AD ile yönetilmeyen ve şifreli VM 'ler (bek ve kek)** -Azure AD ile yönetilmeyen ve şifrelenmiş VM 'ler IÇIN (bek ve kek kullanılarak şifrelenir), diskleri eklemeden önce anahtarı ve gizli anahtarı anahtar kasasına geri yükleyin. Daha fazla bilgi için bkz. [Azure Backup kurtarma noktasından şifrelenmiş bir sanal makineyi geri yükleme](backup-azure-restore-key-secret.md). Aşağıdaki örnek, şifrelenmiş VM 'Ler için işletim sistemi ve veri disklerinin nasıl ekleneceğini gösterir.
+    * **Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler (yalnızca bek)** -Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler için (yalnızca bek kullanılarak şifrelenir), kaynak **Anahtar Kasası/gizli** anahtarı yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi blobundan şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (Bu adım veri blobu için gerekli değildir). $Dekurl, geri yüklenen Keykasasından getirilebilir.
 
-```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $kekUrl = "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
-      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-      Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
-      $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
-      foreach($dd in $obj.'properties.storageProfile'.dataDisks)
-     {
-     $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
-     }
-```
+    Aşağıdaki betiğin yalnızca kaynak Keykasası/gizli dizi kullanılabilir olmadığında yürütülmesi gerekir.
 
-* **Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler (yalnızca bek)** -Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler için (yalnızca bek kullanılarak şifrelenir), kaynak **Anahtar Kasası/gizli** anahtarı yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi blobundan şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (Bu adım veri blobu için gerekli değildir). $Dekurl, geri yüklenen Keykasasından getirilebilir.
+    ```powershell
+        $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+        $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+        $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""}}]}"
+        $osBlobName = $obj.'properties.StorageProfile'.osDisk.name + ".vhd"
+        $osBlob = Get-AzStorageBlob -Container $containerName -Blob $osBlobName
+        $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
+        $osBlob.ICloudBlob.SetMetadata()
+    ```
 
-Aşağıdaki betiğin yalnızca kaynak Keykasası/gizli dizi kullanılabilir olmadığında yürütülmesi gerekir.
+    Gizli dizileri **kullanılabilir** olduktan ve şifreleme ayrıntıları Işletim sistemi blobu üzerinde de ayarlandıktan sonra, diskleri aşağıda verilen betiği kullanarak ekleyin.
 
-```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-      $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""}}]}"
-      $osBlobName = $obj.'properties.StorageProfile'.osDisk.name + ".vhd"
-      $osBlob = Get-AzStorageBlob -Container $containerName -Blob $osBlobName
-      $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
-      $osBlob.ICloudBlob.SetMetadata()
-```
+    Kaynak Keykasası/gizlilikler zaten kullanılabiliyorsa yukarıdaki betiğin yürütülmesi gerekmez.
 
-Gizli dizileri **kullanılabilir** olduktan ve şifreleme ayrıntıları Işletim sistemi blobu üzerinde de ayarlandıktan sonra, diskleri aşağıda verilen betiği kullanarak ekleyin.
+    ```powershell
+        Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
+        $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
+        foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
+        {
+        $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+        }
+    ```
 
-Kaynak Keykasası/gizlilikler zaten kullanılabiliyorsa yukarıdaki betiğin yürütülmesi gerekmez.
+    * **Azure AD (bek ve kek) olmadan yönetilmeyen ve şifrelenmiş sanal makineler** -Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler IÇIN (bek & kek kullanılarak şifrelenir), kaynak **keykasası/anahtar/gizli** anahtar yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak anahtarı ve gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi blobundan şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (Bu adım veri blobu için gerekli değildir). $Dekurl ve $kekurl, geri yüklenen Keykasasından getirilebilir.
 
-```powershell
-      Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
-      $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
-      foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
-      {
-      $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
-      }
-```
+    Aşağıdaki betiğin yalnızca kaynak Keykasası/Key/Secret kullanılabilir olmadığında yürütülmesi gerekir.
 
-* **Azure AD (bek ve kek) olmadan yönetilmeyen ve şifrelenmiş sanal makineler** -Azure AD olmayan, yönetilmeyen ve şifreli VM 'ler IÇIN (bek & kek kullanılarak şifrelenir), kaynak **keykasası/anahtar/gizli** anahtar yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak anahtarı ve gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi blobundan şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (Bu adım veri blobu için gerekli değildir). $Dekurl ve $kekurl, geri yüklenen Keykasasından getirilebilir.
+    ```powershell
+        $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+        $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
+        $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+        $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""},""keyEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""keyUrl"":""$kekUrl""}}]}"
+        $osBlobName = $obj.'properties.StorageProfile'.osDisk.name + ".vhd"
+        $osBlob = Get-AzStorageBlob -Container $containerName -Blob $osBlobName
+        $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
+        $osBlob.ICloudBlob.SetMetadata()
+    ```
 
-Aşağıdaki betiğin yalnızca kaynak Keykasası/Key/Secret kullanılabilir olmadığında yürütülmesi gerekir.
+    **Anahtar/gizli dizileri kullanılabilir** olduktan ve şifreleme ayrıntıları Işletim sistemi blobu üzerinde ayarlandıktan sonra, aşağıda verilen betiği kullanarak diskleri bağlayın.
 
-```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
-      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-      $encSetting = "{""encryptionEnabled"":true,""encryptionSettings"":[{""diskEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""secretUrl"":""$dekUrl""},""keyEncryptionKey"":{""sourceVault"":{""id"":""$keyVaultId""},""keyUrl"":""$kekUrl""}}]}"
-      $osBlobName = $obj.'properties.StorageProfile'.osDisk.name + ".vhd"
-      $osBlob = Get-AzStorageBlob -Container $containerName -Blob $osBlobName
-      $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
-      $osBlob.ICloudBlob.SetMetadata()
-```
+    Kaynak Keykasası/anahtar/gizli dizileri varsa yukarıdaki betiğin yürütülmesi gerekmez.
 
-**Anahtar/gizli dizileri kullanılabilir** olduktan ve şifreleme ayrıntıları Işletim sistemi blobu üzerinde ayarlandıktan sonra, aşağıda verilen betiği kullanarak diskleri bağlayın.
+    ```powershell
+        Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
+        $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
+        foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
+        {
+        $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
+        }
+    ```
 
-Kaynak Keykasası/anahtar/gizli dizileri varsa yukarıdaki betiğin yürütülmesi gerekmez.
+    * **Yönetilen ve şifreli olmayan VM 'ler** -yönetilen şifreli olmayan VM 'ler için, geri yüklenen yönetilen diskleri iliştirin. Ayrıntılı bilgi için bkz. [PowerShell kullanarak bir WINDOWS VM 'ye veri diski iliştirme](../virtual-machines/windows/attach-disk-ps.md).
 
-```powershell
-      Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
-      $vm.StorageProfile.OsDisk.OsType = $obj.'properties.StorageProfile'.OsDisk.OsType
-      foreach($dd in $obj.'properties.StorageProfile'.DataDisks)
-      {
-      $vm = Add-AzVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
-      }
-```
+    * **Azure AD Ile yönetilen ve şifrelenmiş VM 'ler (yalnızca bek)** -Azure AD ile yönetilen şifrelenmiş VM 'ler için (yalnızca bek kullanılarak şifrelenir), geri yüklenen yönetilen diskleri bağlayın. Ayrıntılı bilgi için bkz. [PowerShell kullanarak bir WINDOWS VM 'ye veri diski iliştirme](../virtual-machines/windows/attach-disk-ps.md).
 
-* **Yönetilen ve şifreli olmayan VM 'ler** -yönetilen şifreli olmayan VM 'ler için, geri yüklenen yönetilen diskleri iliştirin. Ayrıntılı bilgi için bkz. [PowerShell kullanarak bir WINDOWS VM 'ye veri diski iliştirme](../virtual-machines/windows/attach-disk-ps.md).
+    * **Azure AD Ile yönetilen ve şifrelenmiş VM 'ler (bek ve kek)** -Azure AD ile yönetilen şifreli VM 'ler IÇIN (bek ve kek kullanılarak şifrelenir), geri yüklenen yönetilen diskleri iliştirin. Ayrıntılı bilgi için bkz. [PowerShell kullanarak bir WINDOWS VM 'ye veri diski iliştirme](../virtual-machines/windows/attach-disk-ps.md).
 
-* **Azure AD Ile yönetilen ve şifrelenmiş VM 'ler (yalnızca bek)** -Azure AD ile yönetilen şifrelenmiş VM 'ler için (yalnızca bek kullanılarak şifrelenir), geri yüklenen yönetilen diskleri bağlayın. Ayrıntılı bilgi için bkz. [PowerShell kullanarak bir WINDOWS VM 'ye veri diski iliştirme](../virtual-machines/windows/attach-disk-ps.md).
+    * **Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler (yalnızca bek)** -Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler için (yalnızca bek kullanılarak şifrelenir), kaynak **keykasası/gizli** anahtarı yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi diskinde şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (veri diski için bu adım gerekli değildir). $Dekurl, geri yüklenen Keykasasından getirilebilir.
 
-* **Azure AD Ile yönetilen ve şifrelenmiş VM 'ler (bek ve kek)** -Azure AD ile yönetilen şifreli VM 'ler IÇIN (bek ve kek kullanılarak şifrelenir), geri yüklenen yönetilen diskleri iliştirin. Ayrıntılı bilgi için bkz. [PowerShell kullanarak bir WINDOWS VM 'ye veri diski iliştirme](../virtual-machines/windows/attach-disk-ps.md).
+    Aşağıdaki betiğin yalnızca kaynak Keykasası/gizli dizi kullanılabilir olmadığında yürütülmesi gerekir.  
 
-* **Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler (yalnızca bek)** -Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler için (yalnızca bek kullanılarak şifrelenir), kaynak **keykasası/gizli** anahtarı yoksa, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi diskinde şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (veri diski için bu adım gerekli değildir). $Dekurl, geri yüklenen Keykasasından getirilebilir.
+    ```powershell
+    $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+    $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+    $diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
+    $encryptionSettingsElement = New-Object Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement
+    $encryptionSettingsElement.DiskEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
+    $encryptionSettingsElement.DiskEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
+    $encryptionSettingsElement.DiskEncryptionKey.SourceVault.Id = $keyVaultId
+    $encryptionSettingsElement.DiskEncryptionKey.SecretUrl = $dekUrl
+    $diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings = New-Object System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement]
+    $diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings.Add($encryptionSettingsElement)
+    $diskupdateconfig.EncryptionSettingsCollection.EncryptionSettingsVersion = "1.1"
+    Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
+    ```
 
-Aşağıdaki betiğin yalnızca kaynak Keykasası/gizli dizi kullanılabilir olmadığında yürütülmesi gerekir.  
+    Gizli dizileri kullanılabilir olduktan ve şifreleme ayrıntıları işletim sistemi diskinde ayarlandıktan sonra, geri yüklenen yönetilen diskleri eklemek için bkz. [PowerShell kullanarak bir WINDOWS sanal makinesine veri diski iliştirme](../virtual-machines/windows/attach-disk-ps.md).
 
-```powershell
-$dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-$keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-$diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
-$encryptionSettingsElement = New-Object Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement
-$encryptionSettingsElement.DiskEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
-$encryptionSettingsElement.DiskEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
-$encryptionSettingsElement.DiskEncryptionKey.SourceVault.Id = $keyVaultId
-$encryptionSettingsElement.DiskEncryptionKey.SecretUrl = $dekUrl
-$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings = New-Object System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement]
-$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings.Add($encryptionSettingsElement)
-$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettingsVersion = "1.1"
-Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
-```
+    * **Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler (bek ve kek)** -kaynak **Anahtar Kasası/anahtar/gizli** anahtar yoksa, Azure AD olmayan şifreli VM 'ler IÇIN (bek & kek kullanılarak şifrelenir),, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak anahtarı ve gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi diskinde şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (Bu adım veri diskleri için gerekli değildir). $Dekurl ve $kekurl, geri yüklenen Keykasasından getirilebilir.
 
-Gizli dizileri kullanılabilir olduktan ve şifreleme ayrıntıları işletim sistemi diskinde ayarlandıktan sonra, geri yüklenen yönetilen diskleri eklemek için bkz. [PowerShell kullanarak bir WINDOWS sanal makinesine veri diski iliştirme](../virtual-machines/windows/attach-disk-ps.md).
+    Aşağıdaki betiğin yalnızca kaynak Keykasası/anahtar/parola kullanılabilir olmadığında yürütülmesi gerekir.
 
-* **Azure AD olmayan yönetilen ve şifrelenmiş VM 'ler (bek ve kek)** -kaynak **Anahtar Kasası/anahtar/gizli** anahtar yoksa, Azure AD olmayan şifreli VM 'ler IÇIN (bek & kek kullanılarak şifrelenir),, [şifreli olmayan bir sanal makineyi Azure Backup kurtarma noktasından geri yükleme](backup-azure-restore-key-secret.md)bölümündeki yordamı kullanarak anahtarı ve gizli dizileri Anahtar Kasası 'na geri yükleyin. Ardından, geri yüklenen işletim sistemi diskinde şifreleme ayrıntılarını ayarlamak için aşağıdaki komut dosyalarını yürütün (Bu adım veri diskleri için gerekli değildir). $Dekurl ve $kekurl, geri yüklenen Keykasasından getirilebilir.
+    ```powershell
+    $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
+    $kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
+    $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+    $diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
+    $encryptionSettingsElement = New-Object Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement
+    $encryptionSettingsElement.DiskEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
+    $encryptionSettingsElement.DiskEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
+    $encryptionSettingsElement.DiskEncryptionKey.SourceVault.Id = $keyVaultId
+    $encryptionSettingsElement.DiskEncryptionKey.SecretUrl = $dekUrl
+    $encryptionSettingsElement.KeyEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
+    $encryptionSettingsElement.KeyEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
+    $encryptionSettingsElement.KeyEncryptionKey.SourceVault.Id = $keyVaultId
+    $encryptionSettingsElement.KeyEncryptionKey.KeyUrl = $kekUrl
+    $diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings = New-Object System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement]
+    $diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings.Add($encryptionSettingsElement)
+    $diskupdateconfig.EncryptionSettingsCollection.EncryptionSettingsVersion = "1.1"
+    Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
+    ```
 
-Aşağıdaki betiğin yalnızca kaynak Keykasası/Key/Secret kullanılabilir olmadığında yürütülmesi gerekir.
-
-```powershell
-$dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-$kekUrl = "https://ContosoKeyVault.vault.azure.net/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
-$keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-$diskupdateconfig = New-AzDiskUpdateConfig -EncryptionSettingsEnabled $true
-$encryptionSettingsElement = New-Object Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement
-$encryptionSettingsElement.DiskEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
-$encryptionSettingsElement.DiskEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
-$encryptionSettingsElement.DiskEncryptionKey.SourceVault.Id = $keyVaultId
-$encryptionSettingsElement.DiskEncryptionKey.SecretUrl = $dekUrl
-$encryptionSettingsElement.KeyEncryptionKey = New-Object Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
-$encryptionSettingsElement.KeyEncryptionKey.SourceVault = New-Object Microsoft.Azure.Management.Compute.Models.SourceVault
-$encryptionSettingsElement.KeyEncryptionKey.SourceVault.Id = $keyVaultId
-$encryptionSettingsElement.KeyEncryptionKey.KeyUrl = $kekUrl
-$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings = New-Object System.Collections.Generic.List[Microsoft.Azure.Management.Compute.Models.EncryptionSettingsElement]
-$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettings.Add($encryptionSettingsElement)
-$diskupdateconfig.EncryptionSettingsCollection.EncryptionSettingsVersion = "1.1"
-Update-AzDisk -ResourceGroupName "testvault" -DiskName $obj.'properties.StorageProfile'.osDisk.name -DiskUpdate $diskupdateconfig
-```
-
-Anahtar/gizli dizi kullanılabilir olduğunda ve şifreleme ayrıntıları işletim sistemi diskinde ayarlandıktan sonra, geri yüklenen yönetilen diskleri eklemek için bkz. [PowerShell kullanarak bir WINDOWS sanal makinesine veri diski iliştirme](../virtual-machines/windows/attach-disk-ps.md).
+    Anahtar/gizli dizi kullanılabilir olduğunda ve şifreleme ayrıntıları işletim sistemi diskinde ayarlandıktan sonra, geri yüklenen yönetilen diskleri eklemek için bkz. [PowerShell kullanarak bir WINDOWS sanal makinesine veri diski iliştirme](../virtual-machines/windows/attach-disk-ps.md).
 
 5. Ağ ayarlarını ayarlayın.
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Data Studio (önizleme): Synapse SQL'e bağlanma ve sorgula"
-description: Azure Synapse Analytics'te Synapse SQL'e bağlanmak ve bunları sorgulamak için Azure Data Studio'u (önizleme) kullanın.
+title: 'Azure Data Studio (Önizleme): Connect ve Query SYNAPSE SQL'
+description: Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgulamak için Azure Data Studio (Önizleme) kullanın.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,75 +9,75 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: edf5a6a6a0f17c21abb818a0d41d0d0b1c39949c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 561ea1a4f3577e037708c3b090188c59bd3c4aad
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423806"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187554"
 ---
-# <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Azure Data Studio ile Synapse SQL'e bağlanın (önizleme)
+# <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Azure Data Studio ile SYNAPSE SQL 'e bağlanma (Önizleme)
 
 > [!div class="op_single_selector"]
 >
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [Sqlcmd](get-started-connect-sqlcmd.md)
+> * [sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Azure Synapse Analytics'te Synapse SQL'e bağlanmak ve bunları sorgulamak için [Azure Data Studio'u (önizleme)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz. 
+Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgu eklemek için [Azure Data Studio (Önizleme)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz. 
 
 ## <a name="connect"></a>Bağlan
 
-Synapse SQL'e bağlanmak için Azure Veri Stüdyosu'nun açılışına ve **Yeni Bağlantı'yı**seçin.
+SYNAPSE SQL 'e bağlanmak için Azure Data Studio açın ve **Yeni bağlantı**' yı seçin.
 
-![Azure Veri Stüdyosu'ni Aç](./media/get-started-azure-data-studio/1-start.png)
+![Azure Data Studio açın](./media/get-started-azure-data-studio/1-start.png)
 
-Bağlantı türü olarak Microsoft SQL **Server'ı**seçin. **Microsoft SQL Server**
+**Bağlantı türü**olarak **Microsoft SQL Server** seçin.
 
 Bağlantı aşağıdaki parametreleri gerektirir:
 
-* **Sunucu:** Sunucu şeklinde `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net
+* **Sunucu:** Formdaki `<Azure Synapse workspace name>`sunucu-OnDemand.Sql.azuresynapse.net
 * **Veritabanı:** Veritabanı adı
 
 > [!NOTE]
-> İsteğe bağlı SQL kullanmak istiyorsanız **(önizleme)** URL aşağıdaki gibi görünmelidir:
+> **İstek üzerine SQL (Önizleme)** kullanmak istiyorsanız URL şöyle görünmelidir:
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net.
 >
-> **SQL havuzunu** kullanmak istiyorsanız URL aşağıdaki gibi görünmelidir:
+> **SQL havuzu** kullanmak istiyorsanız URL şöyle görünmelidir:
 >
-> - `<Azure Synapse workspace name>`.sql.azuresynapse.net
+> - `<Azure Synapse workspace name>`. sql.azuresynapse.net
 
-Kimlik Doğrulama **Türü**olarak **Windows Kimlik Doğrulamasını,** Azure Etkin **Dizini'ni**veya **SQL Giriş'i** seçin.
+**Kimlik doğrulama türü**olarak **Windows kimlik doğrulaması**, **Azure Active Directory**veya **SQL oturum açma** seçeneklerini belirleyin.
 
-Kimlik doğrulama türü olarak **SQL Giriş'i** kullanmak için kullanıcı adı/parola parametrelerini ekleyin:
+Kimlik doğrulama türü olarak **SQL oturum açma** 'yı kullanmak için, Kullanıcı adı/parola parametrelerini ekleyin:
 
-* **Kullanıcı:** Formda sunucu kullanıcı`<User>`
-* **Şifre:** Kullanıcıyla ilişkili parola
+* **Kullanıcı:** Formdaki sunucu kullanıcısı`<User>`
+* **Parola:** Kullanıcıyla ilişkili parola
 
-Azure Etkin Dizini'ni kullanmak için gerekli kimlik doğrulama türünü seçmeniz gerekir.
+Azure Active Directory kullanmak için, gerekli kimlik doğrulama türünü seçmeniz gerekir.
 
 ![AAD Kimlik Doğrulaması](./media/get-started-azure-data-studio/3-aad-auth.png)
 
-Bu ekran **görüntüsü, Windows Kimlik Doğrulaması**için **Bağlantı Ayrıntılarını** gösterir:
+Aşağıdaki ekran görüntüsünde, **Windows kimlik doğrulaması**Için **Bağlantı ayrıntıları** gösterilmektedir:
 
 ![Windows Kimlik Doğrulaması](./media/get-started-azure-data-studio/3-windows-auth.png)
 
-Bu ekran **görüntüsü, SQL Giriş**kullanarak Bağlantı **Ayrıntılarını** gösterir:
+Aşağıdaki ekran görüntüsünde **SQL oturum açma**kullanılarak **Bağlantı ayrıntıları** gösterilmektedir:
 
 ![SQL Oturum Açma](./media/get-started-azure-data-studio/2-database-details.png)
 
-Başarılı bir girişten sonra, şu gibi ![bir pano görmeniz gerekir: Pano](./media/get-started-azure-data-studio/4-dashboard.png)
+Başarılı oturum açma işleminden sonra şu şekilde bir pano görmeniz gerekir: ![Pano](./media/get-started-azure-data-studio/4-dashboard.png)
 
 ## <a name="query"></a>Sorgu
 
-Bağlandıktan sonra, synapse SQL'i desteklenen [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ifadelerini kullanarak örne karşı sorgulayabilirsiniz. Başlamak için pano görünümünden **Yeni sorgu'yu** seçin.
+Bağlandıktan sonra, örnek olarak desteklenen [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) deyimlerini kullanarak SYNAPSE SQL 'i sorgulama yapabilirsiniz. Başlamak için Pano görünümünden **Yeni sorgu** ' yı seçin.
 
 ![Yeni Sorgu](./media/get-started-azure-data-studio/5-new-query.png)
 
-Örneğin, isteğe bağlı SQL kullanarak [Parke dosyalarını sorgulamak](query-parquet-files.md) için aşağıdaki Transact-SQL deyimini kullanabilirsiniz:
+Örneğin, isteğe bağlı SQL kullanarak [Parquet dosyalarını sorgulamak](query-parquet-files.md) Için aşağıdaki Transact-SQL ifadesini kullanabilirsiniz:
 
 ```sql
 SELECT COUNT(*)
@@ -88,10 +88,10 @@ OPENROWSET(
 )
 ```
 ## <a name="next-steps"></a>Sonraki adımlar 
-Synapse SQL'e bağlanmanın diğer yollarını keşfedin: 
+SYNAPSE SQL 'e bağlanmanın diğer yollarını keşfet: 
 
 - [SSMS](get-started-ssms.md)
 - [Power BI](get-started-power-bi-professional.md)
 - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Sqlcmd](get-started-connect-sqlcmd.md)
+- [sqlcmd](get-started-connect-sqlcmd.md)
  

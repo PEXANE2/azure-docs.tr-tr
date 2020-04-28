@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Yeni Emanet ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Etkin Dizin ve Yeni Emanet arasında tek oturum açma yı nasıl yapılandıracağız öğrenin.
+title: 'Öğretici: hesaba göre yeni relik ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Hesaba göre Azure Active Directory ve yeni yeniden oturum açma arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,234 +11,189 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: dfa5fbcf5df8ee314aab3e4a8228d81e7e14565b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9fdcec5b55f52b7b6b824bf2ba25c14541b2a3c6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74233527"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186575"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>Öğretici: Yeni Emanet ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>Öğretici: hesaba göre yeni relik ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde, Yeni Emanet'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğrenirsiniz.
-Yeni Emanet'i Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, Azure Active Directory (Azure AD) ile yeni bir relik hesabını nasıl tümleştirileceğini öğreneceksiniz. Yeni relik hesabını Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Yeni Emanet'e erişimi olan Azure AD'de denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla Otomatik olarak Yeni Emanet 'te (Tek Oturum Açma) oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de hesaba göre yeni relik erişimine erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla hesaba göre otomatik olarak oturum açmaya olanak sağlar.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Yeni Emanet ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* Yeni Emanet tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Hesap çoklu oturum açma (SSO) etkin abonelik tarafından yeni relik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Yeni Emanet **SP** başlatılan SSO destekler
+* Yeni relik hesabı, **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-new-relic-from-the-gallery"></a>Galeriden Yeni Emanet Ekleme
+* Yeni relik hesabını hesap bazında yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimleri uygulayabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-Yeni Emanet'in Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Yeni Emanet eklemeniz gerekir.
+## <a name="adding-new-relic-by-account-from-the-gallery"></a>Galeriden hesap bazında yeni relik ekleme
 
-**Galeriden Yeni Emanet eklemek için aşağıdaki adımları gerçekleştirin:**
+Yeni relik hesabı ile Azure AD arasında tümleştirmeyi yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize yeni relik hesabı ekleyerek hesap eklemeniz gerekir.
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Yeni bir relik hesabı** yazın.
+1. Sonuçlar panelinden **Hesap bazında yeni relik** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-new-relic-by-account"></a>Yeni hesap için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu yeni relik hesabıyla yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında yeni relik hesabı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+Azure AD SSO 'yu yeni relik hesabıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[Hesap SSO 'su Ile yeni relik ayarlarını yapılandırma](#configure-new-relic-by-account-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    * **[Hesap testi kullanıcısına göre yeni bir relik oluşturun](#create-new-relic-by-account-test-user)** ; bu, kullanıcının Azure AD gösterimine bağlı olan hesaba göre yeni relik 'e göre B. Simon 'ya sahip olacak şekilde
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-4. Arama kutusunda Yeni **Emanet**yazın, sonuç panelinden **Yeni Emanet'i** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-     ![Sonuç listesinde yeni Emanet](common/search-new-app.png)
+1. [Azure Portal](https://portal.azure.com/), **Yeni hesap** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-Bu bölümde, Azure AD tek oturum açma işlemini **Britta Simon**adlı bir test kullanıcısına göre Yeni Emanet ile yapılandırıp test esinizsiniz.
-Tek oturum açmanın işe yaraması için, Bir Azure AD kullanıcısı ile Yeni Emanet'teki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
-Azure AD'yi Yeni Emanet ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+    `https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login`-Hesaba göre yeni relik hesap KIMLIĞINIZ `acc_id` ile değiştirdiğinizden emin olun.
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[Yeni Kalıntı Tek Oturum](#configure-new-relic-single-sign-on)** Açma'yı yapılandırın.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Yeni Emanet testi kullanıcısı oluşturun](#create-new-relic-test-user)** - Yeni Emanet'teki Britta Simon'ın, kullanıcının Azure AD gösterimine bağlı bir muadili olması için.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir URL yazın:`rpm.newrelic.com`
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
-
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
-
-Azure AD oturumlarını Yeni Emanet ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
-
-1. Azure [portalında](https://portal.azure.com/), **Yeni Emanet** uygulama tümleştirme sayfasında, **Tek oturum açma'yı**seçin.
-
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
-
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
-
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
-
-4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
-
-    ![Yeni Emanet Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
-
-    a. URL **metin** kutusunda Oturum Aç'a aşağıdaki deseni `https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login` kullanarak bir URL yazın: - Kendi Yeni Emanet Hesap Kimliğinizi değiştirip yerine mutlaka.
-
-    b. Tanımlayıcı **(Entity ID)** metin kutusuna bir URL yazın:`rpm.newrelic.com`
-
-5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Base64)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. Yeni **Emanet'i Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. **Hesaba göre yeni relik ayarla** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure Reklam Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-new-relic-single-sign-on"></a>Yeni Emanet Tek İşaret-On Yapıla
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-1. Farklı bir web tarayıcısı penceresinde, **Yeni Emanet** şirket sitenizde yönetici olarak oturum açın.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-2. Üstteki menüde Hesap **Ayarları'nı**tıklatın.
-   
-    ![Hesap Ayarları](./media/new-relic-tutorial/ic797036.png "Hesap Ayarları")
-
-3. Güvenlik **ve kimlik doğrulama** sekmesini tıklatın ve sonra sekmedeki **Tek işaret'i** tıklatın.
-   
-    ![Tek Oturum Açma](./media/new-relic-tutorial/ic797037.png "Çoklu Oturum Açma")
-
-4. SAML iletişim sayfasında aşağıdaki adımları gerçekleştirin:
-   
-    ![SAML](./media/new-relic-tutorial/ic797038.png "SAML")
-   
-    a. İndirilen Azure Active Directory sertifikanızı yüklemek için **Dosyayı Seçin'i** tıklatın.
-
-    b. Uzak **oturum açma URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL'sinin**değerini yapıştırın.
-   
-    c. **Logout iniş URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Logout URL**değerini yapıştırın.
-
-    d. **Değişikliklerimi Kaydet'i**tıklatın.
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
-
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
-
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
-
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanında **BrittaSimon**girin.
-  
-    b. Kullanıcı **adı** alanı **türünde\@brittasimon yourcompanydomain.extension**  
-    Örneğin, BrittaSimon@contoso.com
-
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur'u**tıklatın.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Yeni Emanet'e erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, yeni hesaba göre yeni relik erişimine izin vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Yeni Emanet'i**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Hesap bazında yeni relik**' i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-2. Uygulamalar listesinde Yeni **Emanet'i**seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Uygulamalar listesindeki Yeni Emanet bağlantısı](common/all-applications.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+## <a name="configure-new-relic-by-account-sso"></a>Hesap SSO 'SU ile yeni relik yapılandırma
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+1. Farklı bir Web tarayıcısı penceresinde, hesap şirket sitesinde yönetici olarak **Yeni relik** ortamınızda oturum açın.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
-
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
-
-### <a name="create-new-relic-test-user"></a>Yeni Emanet testi kullanıcısı oluşturma
-
-Azure Active Directory kullanıcılarının Yeni Emanet'te oturum açabilmeleri için Yeni Emanet'te yer alması gerekir. Yeni Emanet söz konusu olduğunda, sağlama manuel bir görevdir.
-
-**Yeni Emanet'e bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
-
-1. **Yeni Emanet** şirket sitenizde yönetici olarak oturum açın.
-
-2. Üstteki menüde Hesap **Ayarları'nı**tıklatın.
+2. Üstteki menüde **Hesap ayarları**' na tıklayın.
    
-    ![Hesap Ayarları](./media/new-relic-tutorial/ic797040.png "Hesap Ayarları")
+    ![Hesap ayarları](./media/new-relic-tutorial/ic797036.png "Hesap ayarları")
 
-3. Sol taraftaki **Hesap** bölmesinde **Özet'i**tıklatın ve ardından **kullanıcı ekle'yi**tıklatın.
+3. **Güvenlik ve kimlik doğrulama** sekmesine tıklayın ve ardından **Çoklu oturum açma** sekmesine tıklayın.
    
-    ![Hesap Ayarları](./media/new-relic-tutorial/ic797041.png "Hesap Ayarları")
+    ![Çoklu oturum açma](./media/new-relic-tutorial/ic797037.png "Çoklu Oturum Açma")
 
-4. Etkin **kullanıcılar** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
+4. SAML iletişim sayfasında, aşağıdaki adımları uygulayın:
+   
+    ![SAML](./media/new-relic-tutorial/ic797038.png "SAML")
+   
+    a. İndirilen Azure Active Directory sertifikanızı karşıya yüklemek için **Dosya Seç** ' e tıklayın.
+
+    b. **Uzaktan oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+   
+    c. **Oturum kapatma giriş URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum kapatma URL 'si**değerini yapıştırın.
+
+    d. **Değişikliklerimi kaydet**' e tıklayın.
+
+### <a name="create-new-relic-by-account-test-user"></a>Hesap testi kullanıcısına göre yeni relik oluştur
+
+1. Hesap şirket sitesinde yönetici olarak **Yeni relik** ortamınızda oturum açın.
+
+2. Üstteki menüde **Hesap ayarları**' na tıklayın.
+   
+    ![Hesap ayarları](./media/new-relic-tutorial/ic797040.png "Hesap ayarları")
+
+3. Sol taraftaki **Hesap** bölmesinde, **Özet**' e ve ardından **Kullanıcı Ekle**' ye tıklayın.
+   
+    ![Hesap ayarları](./media/new-relic-tutorial/ic797041.png "Hesap ayarları")
+
+4. **Etkin kullanıcılar** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    
     ![Etkin Kullanıcılar](./media/new-relic-tutorial/ic797042.png "Etkin Kullanıcılar")
    
     a. **E-posta** metin kutusuna, sağlamak istediğiniz geçerli bir Azure Active Directory kullanıcısının e-posta adresini yazın.
 
-    b. **Rol** olarak **Kullanıcı**seçin.
+    b. **Rol** olarak **Kullanıcı**' yı seçin.
 
-    c. **Bu kullanıcıyı ekle'yi**tıklatın.
+    c. **Bu kullanıcıyı Ekle**' ye tıklayın.
 
->[!NOTE]
->Azure AD kullanıcı hesaplarını sağlamak için Yeni Emanet tarafından sağlanan diğer Yeni Emanet kullanıcı hesabı oluşturma araçlarını veya API'lerini kullanabilirsiniz.
-> 
+> [!NOTE]
+> Hesap Kullanıcı hesabı oluşturma araçları veya Azure AD Kullanıcı hesaplarını sağlamak için yeni relik hesabı tarafından sunulan API 'Leri kullanarak başka bir yeni relik kullanmayı kullanabilirsiniz.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki Yeni Emanet karosu tıklattığınızda, SSO'yu kurduğunuz Yeni Emanet'te otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde yeni relik ölçütü hesap kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız hesaba göre otomatik olarak yeni yeniden oturum açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Azure AD ile yeni bir relik hesabı deneyin](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -1,74 +1,74 @@
 ---
-title: Bağımsız bir Azure Hizmet Kumaşı kümesi oluşturma
-description: İster şirket içinde ister herhangi bir bulutta olsun, Windows Server çalıştıran herhangi bir makinede (fiziksel veya sanal) bir Azure Hizmet Kumaşı kümesi oluşturun.
+title: Tek başına Azure Service Fabric kümesi oluşturma
+description: Şirket içinde veya herhangi bir bulutta olsun, Windows Server çalıştıran herhangi bir makinede (fiziksel veya sanal) bir Azure Service Fabric kümesi oluşturun.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 461d6021a201ca1fa5722bb44c427baca2a7728e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9133a7087285aa6e01a2431bf1a65dfa3c6f8857
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258830"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189105"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server üzerinde çalıştırılan bir tek başına küme oluşturma
-Windows Server çalıştıran tüm sanal makinelerde veya bilgisayarlarda Service Fabric kümeleri oluşturmak için Azure Hizmet Kumaşı'nı kullanabilirsiniz. Bu, Service Fabric uygulamalarını şirket içinde veya herhangi bir bulut sağlayıcısıyla bağlantılı windows server bilgisayarları kümesi içeren herhangi bir ortamda dağıtabileceğiniz ve çalıştırabileceğiniz anlamına gelir. Service Fabric, bağımsız Windows Server paketi adı verilen Service Fabric kümeleri oluşturmak için bir kurulum paketi sağlar. Azure'daki Geleneksel Hizmet Kumaş kümeleri yönetilen bir hizmet olarak kullanılabilirken, bağımsız Hizmet Kumaş kümeleri self servistir. Farklar hakkında daha fazla şey için Azure [ve bağımsız Hizmet Kumaş kümelerini karşılaştırma ya](./service-fabric-deploy-anywhere.md)da karşılaştırma 'ya bakın.
+Azure Service Fabric 'yi, Windows Server çalıştıran tüm sanal makinelerde veya bilgisayarlarda Service Fabric kümeler oluşturmak için kullanabilirsiniz. Bu, birbirine bağlı bir Windows Server bilgisayarları kümesi içeren herhangi bir ortamda Service Fabric uygulamaları dağıtabileceğiniz ve çalıştırabileceğiniz anlamına gelir. Bu durumda, şirket içinde veya herhangi bir bulut sağlayıcısıyla olabilirsiniz. Service Fabric, tek başına Windows Server paketi olarak adlandırılan Service Fabric kümeleri oluşturmak için bir kurulum paketi sağlar. Azure 'daki geleneksel Service Fabric kümeleri yönetilen bir hizmet olarak kullanılabilir, tek başına Service Fabric kümeler self servis. Farklar hakkında daha fazla bilgi için bkz. [Azure ve tek başına Service Fabric kümelerini karşılaştırma](./service-fabric-deploy-anywhere.md).
 
-Bu makalede, bir Hizmet Kumaş bağımsız küme oluşturmak için adımlar boyunca size yol.
+Bu makale, Service Fabric tek başına kümesi oluşturma adımlarında size yol gösterir.
 
 > [!NOTE]
-> Bu bağımsız Windows Server paketi ticari olarak hiçbir ücret ödemeden kullanılabilir ve üretim dağıtımları için kullanılabilir. Bu paket, "Önizleme"de bulunan yeni Hizmet Kumaşı özellikleri içerebilir. Aşağı kaydırın "[Bu pakette yer alan önizleme özellikleri."](#previewfeatures_anchor) önizleme özellikleri listesi için bölüm. [EULA'nın bir kopyasını](https://go.microsoft.com/fwlink/?LinkID=733084) şimdi indirebilirsiniz.
+> Bu tek başına Windows Server paketi, ticari olarak ücretsiz olarak kullanılabilir ve üretim dağıtımlarında kullanılabilir. Bu paket, "Önizleme" içinde yeni Service Fabric özellikler içerebilir. Aşağı kaydırarak "[Bu pakette bulunan Önizleme özellikleri](#previewfeatures_anchor)" ne gidin. Önizleme özelliklerinin listesi. [EULA 'nın bir kopyasını şimdi indirebilirsiniz](https://go.microsoft.com/fwlink/?LinkID=733084) .
 > 
 > 
 
 <a id="getsupport"></a>
 
-## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Windows Server paketi için Hizmet Dokusu için destek alın
-* [Azure Hizmet Kumaşı forumunda](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?)Windows Server için Hizmet Kumaşı bağımsız paketi hakkında topluluğa sorun.
-* [Hizmet Kumaşı için Profesyonel Destek için](https://support.microsoft.com/oas/default.aspx?prid=16146)bir bilet açın.  Microsoft'tan Profesyonel Destek hakkında daha fazla bilgi [edinin.](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)
-* Ayrıca, [Microsoft Premier Desteği'nin](https://support.microsoft.com/en-us/premier)bir parçası olarak bu paket için destek de alabilirsiniz.
-* Daha fazla bilgi için lütfen [Azure Hizmet Kumaşı destek seçeneklerine](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)bakın.
-* Destek amacıyla günlükleri toplamak için [Service Fabric Standalone Log toplayıcısını](service-fabric-cluster-standalone-package-contents.md)çalıştırın.
+## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Windows Server paketi Service Fabric için destek alın
+* [Azure Service Fabric forumundaki](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?)Windows Server için Service Fabric tek başına paketi hakkında Topluluğa sorun.
+* [Service Fabric Için profesyonel destek](https://support.microsoft.com/oas/default.aspx?prid=16146)bileti açın.  [Microsoft 'Tan](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)profesyonel destek hakkında daha fazla bilgi edinin.
+* [Microsoft Premier destek](https://support.microsoft.com/en-us/premier)bir parçası olarak bu paket için de destek alabilirsiniz.
+* Daha ayrıntılı bilgi için lütfen bkz. [Azure Service Fabric destek seçenekleri](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
+* Destek amaçlarıyla günlükleri toplamak için [Service Fabric tek başına günlük toplayıcıyı](service-fabric-cluster-standalone-package-contents.md)çalıştırın.
 
 <a id="downloadpackage"></a>
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Windows Server paketi için Service Fabric indirme
-Kümeoluşturmak için, burada bulunan Windows Server paketi (Windows Server 2012 R2 ve daha yeni) için Hizmet Dokusunu kullanın: <br>
-[Download Link - Servis Kumaş Bağımsız Paket - Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690)
+Kümeyi oluşturmak için, burada bulunan Windows Server paketi için Service Fabric (Windows Server 2012 R2 ve daha yeni bir sürümü) kullanın: <br>
+[Bağlantı Service Fabric tek başına paketini indir-Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690)
 
-[Paketin](service-fabric-cluster-standalone-package-contents.md)içeriği hakkında ayrıntılı bilgi bulabilirsiniz.
+Paketin içeriğiyle ilgili ayrıntıları [buradan](service-fabric-cluster-standalone-package-contents.md)bulabilirsiniz.
 
-Hizmet Kumaşı çalışma zamanı paketi küme oluşturma sırasında otomatik olarak indirilir. Internet'e bağlı olmayan bir makineden dağıtım alıyorsanız, lütfen çalışma zamanı paketini banttan indirin: <br>
-[Download Link - Servis Kumaş Çalışma Zamanı - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)
+Service Fabric çalışma zamanı paketi, küme oluşturma sırasında otomatik olarak indirilir. İnternet 'e bağlı olmayan bir makineden dağıtım yapıyorsanız, lütfen çalışma zamanı paketini buradan bant dışı indirin: <br>
+[Bağlantı Service Fabric çalışma zamanını indirin-Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)
 
-Bağımsız Küme Yapılandırma örneklerini şu anda bulun: <br>
-[Bağımsız Küme Yapılandırma Örnekleri](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
+Tek başına küme yapılandırma örneklerini şurada bulabilirsiniz: <br>
+[Tek başına küme yapılandırma örnekleri](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
 <a id="createcluster"></a>
 
 ## <a name="create-the-cluster"></a>Kümeyi oluşturma
 Kurulum paketiyle birlikte birkaç örnek küme yapılandırma dosyası yüklenir. Tek bir bilgisayarda çalışan korumasız ve üç düğümlü bir küme olan *ClusterConfig.Unsecure.DevCluster.json*, en basit küme yapılandırmasıdır.  Diğer yapılandırma dosyalarında X.509 sertifikalarıyla ya da Windows güvenliğiyle korunan tek veya çok makineli kümeler açıklanır.  Bu öğreticide varsayılan yapılandırma ayarlarından herhangi birini değiştirmeniz gerekmez, ancak yapılandırma dosyasını inceleyip ayarları tanıyın.  **Düğümler** bölümünde, kümedeki üç düğüm açıklanmaktadır: ad, IP adresi, [düğüm türü, hata etki alanı ve yükseltme etki alanı](service-fabric-cluster-manifest.md#nodes-on-the-cluster).  **Özellikler** bölümü kümenin [güvenlik, güvenilirlik düzeyi, tanılama koleksiyonu ve düğüm türlerini](service-fabric-cluster-manifest.md#cluster-properties) tanımlar.
 
-Bu makalede oluşturulan küme güvenli değil.  Herkes anonim olarak bağlanıp yönetim işlemleri gerçekleştirebileceğinden, üretim kümeleri her zaman X.509 sertifikaları veya Windows güvenliği kullanılarak güvenli hale getirilmelidir.  Güvenlik yalnızca küme oluşturma sırasında yapılandırılır ve küme oluşturulduktan sonra güvenliği etkinleştirmek mümkün değildir. Config dosyasını güncelleştirme [sertifika güvenliğini](service-fabric-windows-cluster-x509-security.md) veya [Windows güvenliğini](service-fabric-windows-cluster-windows-security.md)etkinleştirin. Service Fabric küme güvenliği hakkında daha fazla bilgi edinmek için [Küme güvenliğini sağlama](service-fabric-cluster-security.md) makalesini okuyun.
+Bu makalede oluşturulan küme güvenli değildir.  Herkes anonim olarak bağlanıp yönetim işlemleri gerçekleştirebileceğinden, üretim kümeleri her zaman X.509 sertifikaları veya Windows güvenliği kullanılarak güvenli hale getirilmelidir.  Güvenlik yalnızca küme oluşturma sırasında yapılandırılır ve küme oluşturulduktan sonra güvenliği etkinleştirmek mümkün değildir. Yapılandırma dosyasını güncelleştirme [sertifika güvenliğini](service-fabric-windows-cluster-x509-security.md) etkinleştirme veya [Windows güvenliği](service-fabric-windows-cluster-windows-security.md). Service Fabric küme güvenliği hakkında daha fazla bilgi edinmek için [Küme güvenliğini sağlama](service-fabric-cluster-security.md) makalesini okuyun.
 
-### <a name="step-1-create-the-cluster"></a>Adım 1: Küme oluşturma
+### <a name="step-1-create-the-cluster"></a>1. Adım: kümeyi oluşturma
 
-#### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>Senaryo A: Güvenli olmayan bir yerel geliştirme kümesi oluşturma
-Service Fabric, [Örnekler'de](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)yer alan *ClusterConfig.Unsecure.DevCluster.json* dosyasını kullanarak tek makineli geliştirme kümesine dağıtılabilir.
+#### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>Senaryo A: güvenli olmayan bir yerel geliştirme kümesi oluşturma
+Service Fabric, [örneklere](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)dahil olan *clusterConfig. güvensiz. devcluster. JSON* dosyası kullanılarak tek makineli bir geliştirme kümesine dağıtılabilir.
 
-Tek başına paketi makinenize açın, örnek config dosyasını yerel makineye kopyalayın ve ardından *createServiceFabricCluster.ps1* komut dosyasını tek başına paket klasöründen bir yönetici PowerShell oturumu aracılığıyla çalıştırın.
+Tek başına paketin makinenize paketini açın, örnek yapılandırma dosyasını yerel makineye kopyalayın, sonra tek başına paket klasöründen bir yönetici PowerShell oturumu aracılığıyla *Createservicefabriccluster. ps1* betiğini çalıştırın.
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
 ```
 
-Plan'daki Çevre Kurulumu bölümüne bakın ve küme dağıtımınızı sorun giderme ayrıntılarına [hazırlayın.](service-fabric-cluster-standalone-deployment-preparation.md)
+Sorun giderme ayrıntıları için [plan ve küme dağıtımınızı hazırlama](service-fabric-cluster-standalone-deployment-preparation.md) konusundaki ortam kurulumu bölümüne bakın.
 
-Geliştirme senaryolarını çalıştırmayı bitirdiyseniz, "[Kümeyi kaldır](#removecluster_anchor)" bölümündeki adımlara atıfta bulunarak Hizmet Kumaşı kümesini makineden kaldırabilirsiniz. 
+Geliştirme senaryolarını çalıştırmayı tamamladıysanız, "[kümeyi kaldırma](#removecluster_anchor)" bölümündeki adımlara başvurarak Service Fabric kümesini makineden kaldırabilirsiniz. 
 
-#### <a name="scenario-b-create-a-multi-machine-cluster"></a>Senaryo B: Çok makineli küme oluşturma
-Plan'da ayrıntılı olarak açıklanan planlama ve hazırlık adımlarını geçtikten [ve küme dağıtımınızı hazırladıktan](service-fabric-cluster-standalone-deployment-preparation.md)sonra, küme yapılandırma dosyanızı kullanarak üretim kümenizi oluşturmaya hazırsınız.
+#### <a name="scenario-b-create-a-multi-machine-cluster"></a>Senaryo B: çok makineli küme oluşturma
+Planlama ve hazırlık adımlarında daha sonra, [küme Dağıtımınızı planlama ve hazırlama](service-fabric-cluster-standalone-deployment-preparation.md)adımlarını tamamladıktan sonra, küme yapılandırma dosyanızı kullanarak üretim kümenizi oluşturmaya hazırlanın.
 
 Kümeyi dağıtan ve yapılandıran küme yöneticisinin bilgisayarda yönetici ayrıcalıklarına sahip olması gerekir. Service Fabric’i bir etki alanı denetleyicisine yükleyemezsiniz.
 
@@ -78,7 +78,7 @@ Kümeyi dağıtan ve yapılandıran küme yöneticisinin bilgisayarda yönetici 
     .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.json
     ```
 
-    Aşağıdakine benzer bir çıktı görmeniz gerekir. Alt takiben "Geçti" alanı "True" olarak döndürülürse, akıl sağlığı denetimleri geçmiştir ve küme giriş yapılandırmasına göre dağıtılabilir gibi görünür.
+    Aşağıdakine benzer bir çıktı görmeniz gerekir. "Geçildi" alt alanı "true" olarak döndürülürse, sağlamlık denetimleri geçildi ve küme, giriş yapılandırmasına göre dağıtılabilir olarak görünür.
 
     ```powershell
     Trace folder already exists. Traces will be written to existing trace folder: C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer\DeploymentTraces
@@ -97,7 +97,7 @@ Kümeyi dağıtan ve yapılandıran küme yöneticisinin bilgisayarda yönetici 
     Passed                     : True
     ```
 
-2. Küme oluşturma: Service Fabric kümesini yapılandırmadaki her makineye dağıtmak için *CreateServiceFabricCluster.ps1* komut dosyasını çalıştırın. 
+2. Küme oluşturma: Service Fabric kümesini yapılandırmadaki her makine arasında dağıtmak için *Createservicefabriccluster. ps1* betiğini çalıştırın. 
     ```powershell
     .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
     ```
@@ -107,18 +107,18 @@ Kümeyi dağıtan ve yapılandıran küme yöneticisinin bilgisayarda yönetici 
 > 
 > 
 
-#### <a name="scenario-c-create-an-offline-internet-disconnected-cluster"></a>Senaryo C: Çevrimdışı (internet bağlantısı kesilmiş) bir küme oluşturma
-Service Fabric çalışma zamanı paketi küme oluşturmada otomatik olarak indirilir. Bir kümeyi internete bağlı olmayan makinelere dağıtırken, Service Fabric çalışma zamanı paketini ayrı olarak indirmeniz ve küme oluşturmada bu küme oluşturma da bu pakete giden yolu sağlamanız gerekir.
-Çalışma süresi paketi, Internet'e bağlı başka bir makineden, [Download Link - Service Fabric Runtime - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)adresinden ayrı olarak indirilebilir. Çalışma zamanı paketini çevrimdışı kümeyi dağıttığınız yere kopyalayın ve `CreateServiceFabricCluster.ps1` bu `-FabricRuntimePackagePath` örnekte gösterildiği gibi parametre yle birlikte çalıştırarak kümeyi oluşturun: 
+#### <a name="scenario-c-create-an-offline-internet-disconnected-cluster"></a>Senaryo C: çevrimdışı (internet bağlantısı kesilen) küme oluşturma
+Service Fabric çalışma zamanı paketi, küme oluşturma sırasında otomatik olarak indirilir. Bir kümeyi Internet 'e bağlı olmayan makinelere dağıttığınızda, Service Fabric çalışma zamanı paketini ayrı olarak indirmeniz ve küme oluşturma sırasında bu yolu sağlamanız gerekir.
+Çalışma zamanı paketi, [Indirme bağlantı Service Fabric çalışma zamanı-Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)' da, internet 'e bağlı başka bir makineden ayrı olarak indirilebilir. Çalışma zamanı paketini çevrimdışı kümeyi dağıttığınız yere kopyalayın ve aşağıdaki örnekte gösterildiği gibi, dahil edilen `CreateServiceFabricCluster.ps1` `-FabricRuntimePackagePath` parametresiyle çalıştırarak kümeyi oluşturun: 
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -FabricRuntimePackagePath .\MicrosoftAzureServiceFabric.cab
 ```
 
-*.\ClusterConfig.json* ve *.\MicrosoftAzureServiceFabric.cab* küme yapılandırmasına giden yollar ve çalışma zamanı .cab dosyası dır.
+. *\Clusterconfig.exe* ve *.\MicrosoftAzureServiceFabric.cab* , sırasıyla küme yapılandırmasının ve Runtime. cab dosyasının yollarıdır.
 
-### <a name="step-2-connect-to-the-cluster"></a>Adım 2: Kümeye bağlan
-Kümenin çalıştığını ve kullanılabilir olduğunu doğrulamak için kümeye bağlanın. ServiceFabric PowerShell modülü çalışma zamanıyla birlikte yüklenir.  Kümedüğümün birinden veya Service Fabric çalışma süresine sahip uzak bir bilgisayardan kümeye bağlanabilirsiniz.  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet’i, kümeyle bir bağlantı kurar.
+### <a name="step-2-connect-to-the-cluster"></a>2. Adım: kümeye bağlanma
+Kümenin çalıştığını ve kullanılabilir olduğunu doğrulamak için kümeye bağlanın. ServiceFabric PowerShell modülü çalışma zamanıyla birlikte yüklenir.  Kümeye küme düğümlerinden birinden veya Service Fabric çalışma zamanına sahip uzak bir bilgisayardan bağlanabilirsiniz.  [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet’i, kümeyle bir bağlantı kurar.
 
 Güvenli olmayan bir kümeye bağlanmak için aşağıdaki PowerShell komutunu çalıştırın:
 
@@ -126,7 +126,7 @@ Güvenli olmayan bir kümeye bağlanmak için aşağıdaki PowerShell komutunu �
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
 ```
 
-Örnek:
+Örneğin:
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
@@ -143,8 +143,8 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
                      vm0      localhost       NodeType0 5.6.220.9494 0                     Up 00:02:43   00:00:00              OK
 ```
 
-### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>Adım 3: Service Fabric explorer'ı kullanarak kümeyi görselleştirin
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), kümenizi görselleştirmek ve uygulamaları yönetmek için iyi bir araçtır.  Service Fabric Explorer, 'de gezinerek [http://localhost:19080/Explorer](http://localhost:19080/Explorer)bir tarayıcı kullanarak erişebildiğiniz kümede çalışan bir hizmettir.
+### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>3. Adım: Service Fabric gezginini kullanarak kümeyi görselleştirme
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), kümenizi görselleştirmek ve uygulamaları yönetmek için iyi bir araçtır.  Service Fabric Explorer, ' a giderek bir tarayıcı kullanarak erişebileceğiniz, kümede çalışan bir hizmettir `http://localhost:19080/Explorer`.
 
 Küme panosu, kümenize uygulama ve düğüm durumunun özetini de içeren bir genel bakış sağlar. Düğüm görünümü, kümenin fiziksel düzenini gösterir. Belirli bir düğümde, hangi uygulamalara kod dağıtıldığını denetleyebilirsiniz.
 
@@ -157,7 +157,7 @@ Küme panosu, kümenize uygulama ve düğüm durumunun özetini de içeren bir g
 ## <a name="remove-a-cluster"></a>Bir kümeyi kaldırma
 Bir kümeyi kaldırmak için paket klasöründen *RemoveServiceFabricCluster.ps1* PowerShell betiğini çalıştırın ve yolu JSON yapılandırma dosyasına geçirin. İsteğe bağlı olarak silme işleminin günlüğü için bir konum belirtebilirsiniz.
 
-Bu komut dosyası, küme yapılandırma dosyasında düğüm olarak listelenen tüm makinelere yönetici erişimi olan herhangi bir makinede çalıştırılabilir. Bu komut dosyasının çalıştırılan makine kümenin bir parçası olmak zorunda değildir.
+Bu betik, küme yapılandırma dosyasında düğüm olarak listelenen tüm makinelere yönetici erişimi olan herhangi bir makinede çalıştırılabilir. Bu betiğin çalıştırıldığı makinenin kümenin bir parçası olması gerekmez.
 
 ```powershell
 # Removes Service Fabric from each machine in the configuration
@@ -171,54 +171,54 @@ Bu komut dosyası, küme yapılandırma dosyasında düğüm olarak listelenen t
 
 <a id="telemetry"></a>
 
-## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Toplanan Telemetri verileri ve nasıl devre dışı bırakmak
-Varsayılan olarak, ürün ürünü geliştirmek için Service Fabric kullanımında telemetri toplar. Kurulumun bir parçası olarak çalışan En İyi Uygulama [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1)Çözümleyicisi' ne bağlantı için denetimler. Erişilemezse, telemetriyi devre dışı bırakmadığınız sürece kurulum başarısız olur.
+## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Toplanan telemetri verileri ve devre dışı bırakma
+Ürün, varsayılan olarak ürünü geliştirmek için Service Fabric kullanımı üzerinde telemetri toplar. Kurulumun bir parçası olarak çalışan En Iyi Yöntem Çözümleyicisi, bağlantısını denetler [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1). Erişilebilir değilse, Telemetri devre dışı bırakılmadığınız takdirde kurulum başarısız olur.
 
-1. Telemetri boru hattı aşağıdaki verileri [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) her gün bir kez yüklemeye çalışır. Bu en iyi çaba yükleme ve küme işlevselliği üzerinde hiçbir etkisi yoktur. Telemetri yalnızca başarısız yönetici birincil çalıştıran düğümgönderilir. Başka düğüm ler telemetri göndermez.
+1. Telemetri ardışık düzeni, her gün [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) bir kez aşağıdaki verileri karşıya yüklemeye çalışır. Bu en iyi çaba yükleme, küme işlevselliğini etkilemez. Telemetri yalnızca yük devretme Yöneticisi birincisini çalıştıran düğümden gönderilir. Başka hiçbir düğüm telemetri göndermedi.
 2. Telemetri aşağıdakilerden oluşur:
 
 * Hizmet sayısı
-* Hizmet Türleri Sayısı
-* Başvuru Sayısı
-* Uygulama SayısıYükseltmeleri
-* FailoverUnits Sayısı
-* InBuildFailoverUnits Sayısı
-* SağlıksızFailoverUnits Sayısı
-* Çoğaltma Sayısı
-* InBuildReplicas sayısı
-* StandByReplicas sayısı
-* ÇevrimdışıÇoğaltma Sayısı
+* ServiceType sayısı
+* Uygulama sayısı
+* Applicationyükseltmelerin sayısı
+* FailoverUnits sayısı
+* Inbuildfailoverunits sayısı
+* Healthunits sayısı
+* Çoğaltma sayısı
+* Inbuildçoğaltmalar sayısı
+* Bir Standya yineleme sayısı
+* OfflineReplicas sayısı
 * CommonQueueLength
 * QueryQueueLength
 * FailoverUnitQueueLength
 * CommitQueueLength
 * Düğüm sayısı
-* IsContextComplete: True/False
-* ClusterId: Bu, her küme için rasgele oluşturulan bir GUID
+* Iscontexttamamlanmıştır: true/false
+* Clusterıd: Bu, her küme için rastgele oluşturulmuş bir GUID 'dir
 * ServiceFabricVersion
-* Telemetrinin yüklendiği sanal makine veya makinenin IP adresi
+* Telemetriyi karşıya yüklediğiniz sanal makinenin veya makinenin IP adresi
 
-Telemetriyi devre dışı atmak için, küme config'inizdeki *özelliklere* aşağıdakileri ekleyin: *enableTelemetry: false*.
+Telemetriyi devre dışı bırakmak için, küme yapılandırması ' na aşağıdaki *özellikleri* ekleyin: *enabletelemetri: false*.
 
 <a id="previewfeatures" name="previewfeatures_anchor"></a>
 
-## <a name="preview-features-included-in-this-package"></a>Bu pakette yer alan önizleme özellikleri
+## <a name="preview-features-included-in-this-package"></a>Bu pakette bulunan Önizleme özellikleri
 Yok.
 
 
 > [!NOTE]
-> Windows Server [için bağımsız kümenin yeni GA sürümünden başlayarak (sürüm 5.3.204.x)](https://azure.microsoft.com/blog/azure-service-fabric-for-windows-server-now-ga/)kümenizi el ile veya otomatik olarak gelecekteki sürümlere yükseltebilirsiniz. Ayrıntılar için bağımsız bir Service Fabric küme sürümü belgesini [yükseltmeye](service-fabric-cluster-upgrade-windows-server.md) bakın.
+> [Windows Server (sürüm 5.3.204. x) için tek başına kümenin yeni GA sürümünden](https://azure.microsoft.com/blog/azure-service-fabric-for-windows-server-now-ga/)başlayarak, kümenizi el ile veya otomatik olarak gelecek sürümlere yükseltebilirsiniz. Ayrıntılar için [tek başına Service Fabric küme sürümü belgelerini yükseltme](service-fabric-cluster-upgrade-windows-server.md) bölümüne bakın.
 > 
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [PowerShell kullanarak uygulamaları dağıtma ve kaldırma](service-fabric-deploy-remove-applications.md)
-* [Bağımsız Windows kümesi için yapılandırma ayarları](service-fabric-cluster-manifest.md)
-* [Bağımsız Hizmet Kumaş ı kümesine düğüm ekleme veya kaldırma](service-fabric-cluster-windows-server-add-remove-nodes.md)
-* [Bağımsız Service Fabric küme sürümünü yükseltme](service-fabric-cluster-upgrade-windows-server.md)
-* [Windows çalıştıran Azure VM'leri ile bağımsız bir Hizmet Kumaşı kümesi oluşturma](service-fabric-cluster-creation-with-windows-azure-vms.md)
-* [Windows güvenliğini kullanarak Windows'da bağımsız bir küme emniyeti](service-fabric-windows-cluster-windows-security.md)
-* [X509 sertifikalarını kullanarak Windows'da bağımsız bir küme emniyeti](service-fabric-windows-cluster-x509-security.md)
+* [PowerShell kullanarak uygulama dağıtma ve kaldırma](service-fabric-deploy-remove-applications.md)
+* [Tek başına Windows kümesi için yapılandırma ayarları](service-fabric-cluster-manifest.md)
+* [Tek başına Service Fabric kümesine düğüm ekleme veya kaldırma](service-fabric-cluster-windows-server-add-remove-nodes.md)
+* [Tek başına Service Fabric küme sürümünü yükseltme](service-fabric-cluster-upgrade-windows-server.md)
+* [Windows çalıştıran Azure VM 'leriyle tek başına Service Fabric kümesi oluşturma](service-fabric-cluster-creation-with-windows-azure-vms.md)
+* [Windows güvenliğini kullanarak Windows 'da tek başına kümeyi güvenli hale getirme](service-fabric-windows-cluster-windows-security.md)
+* [X509 sertifikalarını kullanarak Windows 'da tek başına kümeyi güvenli hale getirme](service-fabric-windows-cluster-x509-security.md)
 
 <!--Image references-->
 [Trusted Zone]: ./media/service-fabric-cluster-creation-for-windows-server/TrustedZone.png

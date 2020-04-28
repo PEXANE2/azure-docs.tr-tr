@@ -1,6 +1,6 @@
 ---
-title: Sqlcmd kullanarak Synapse SQL'e bağlanın
-description: SQL on-demand (önizleme) ve SQL havuzuna bağlanmak ve sorgulamak için sqlcmd komut satırı yardımcı programını kullanın.
+title: Sqlcmd kullanarak SYNAPSE SQL 'e bağlanma
+description: SQL isteğe bağlı (Önizleme) ve SQL havuzuna bağlanmak ve sorgulamak için sqlcmd komut satırı yardımcı programını kullanın.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,38 +9,38 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8ff9034e6c31c8d95e862570e3962990dfec8442
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7ccb30cdd77e511572147a0b0f7287f931a45df2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423757"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186847"
 ---
-# <a name="connect-to-synapse-sql-with-sqlcmd"></a>Sqlcmd ile Synapse SQL'e bağlanın
+# <a name="connect-to-synapse-sql-with-sqlcmd"></a>Sqlcmd ile SYNAPSE SQL 'e bağlanma
 
 > [!div class="op_single_selector"]
 >
-> * [Azure Veri Stüdyosu (önizleme)](get-started-azure-data-studio.md)
+> * [Azure Data Studio (Önizleme)](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Synapse SQL'deki SQL on-demand (önizleme) ve SQL havuzuna bağlanmak ve sorgulamak için [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) komut satırı yardımcı programını kullanabilirsiniz.  
+[Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) komut satırı yardımcı programını kullanarak SQL isteğe bağlı (Önizleme) ve SQL havuzuna SYNAPSE SQL içinde bağlanma ve sorgulama yapabilirsiniz.  
 
 ## <a name="1-connect"></a>1. Bağlan
-[Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)ile başlamak için komut istemini açın ve synapse SQL veritabanınızın bağlantı dizesini takip eden **sqlcmd** girin. Bağlantı dizesi için aşağıdaki parametreler gereklidir:
+[Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kullanmaya başlamak için, komut istemi ' ni açın ve **sqlcmd** yazıp SYNAPSE SQL veritabanınızın bağlantı dizesini girin. Bağlantı dizesi için aşağıdaki parametreler gereklidir:
 
 * **Server (-S):**`<`Sunucu Adı`>`.database.windows.net biçiminde belirtilmiş sunucu
 * **Veritabanı (-d):** Veritabanı adı
-* **Teklif Edilen Tanımlayıcıları Etkinleştir (-I):** Synapse SQL örneğine bağlanmak için teklif edilen tanımlayıcılar etkinleştirilmelidir
+* **Alıntılanmış tanımlayıcıları etkinleştir (-ı):** Bir Synapse SQL örneğine bağlanmak için tırnak işareti tanımlayıcılarının etkinleştirilmesi gerekir
 
-SQL Server Kimlik Doğrulaması'nı kullanmak için kullanıcı adı ve parola parametrelerini eklemeniz gerekir:
+SQL Server kimlik doğrulaması kullanmak için, Kullanıcı adı ve parola parametrelerini eklemeniz gerekir:
 
 * **User (-U):**`<`Kullanıcı`>` biçimindeki sunucu kullanıcısı
-* **Şifre (-P):** Kullanıcıyla ilişkili parola
+* **Parola (-P):** Kullanıcıyla ilişkili parola
 
-Bağlantı dizeniz aşağıdaki örnek gibi görünebilir:
+Bağlantı dizeniz aşağıdaki örnekteki gibi görünebilir:
 
 **İsteğe bağlı SQL**
 
@@ -58,7 +58,7 @@ Azure Active Directory Tümleşik kimlik doğrulamasını kullanmak için Azure 
 
 * **Azure Active Directory Kimlik Doğrulaması (-G):** Kimlik doğrulaması için Azure Active Directory kullanın
 
-Bağlantı dizeniz aşağıdaki örneklerde aşağıdaki gibi görünebilir:
+Bağlantı dizeniz aşağıdaki örneklerde gösterildiği gibi görünebilir:
 
 **İsteğe bağlı SQL**
 
@@ -75,11 +75,11 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > [!NOTE]
 > Active Directory kullanarak kimlik doğrulaması yapmak için [Azure Active Directory Kimlik Doğrulamasını etkinleştirmeniz](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) gerekir.
 
-## <a name="2-query"></a>2. Sorgula
+## <a name="2-query"></a>2. sorgu
 
-### <a name="use-sql-pool"></a>SQL havuzu kullanma
+### <a name="use-sql-pool"></a>SQL havuzu kullan
 
-Bağlantının ardından desteklenen herhangi bir Transact-SQL deyimini örnekte yayımlayabilirsiniz.  Bu örnekte, sorgular etkileşimli modda gönderilir:
+Bağlantıdan sonra, örnek için desteklenen [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (T-SQL) deyimlerini gönderebilirsiniz. Bu örnekte sorgular etkileşimli modda gönderilir:
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -88,7 +88,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 3> QUIT
 ```
 
-SQL havuzu için aşağıdaki örnekler, -Q seçeneğini kullanarak toplu modda sorguları nasıl çalıştırabileceğinizi veya SQL'inizi sqlcmd'ye nasıl çalıştırabileceğinizi gösterir:
+SQL havuzu için aşağıdaki örnekler,-Q seçeneğini kullanarak sorguları Batch modunda nasıl çalıştıracağınızı veya SQL 'nizi sqlcmd öğesine yönelterek gösterir:
 
 ```sql
 sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
@@ -100,7 +100,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ### <a name="use-sql-on-demand"></a>İsteğe bağlı SQL kullanma
 
-Bağlandıktan sonra, desteklenen tüm [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (T-SQL) deyimlerini örneğin karşısına koyabilirsiniz.  Aşağıdaki örnekte, sorgular etkileşimli modda gönderilir:
+Bağlandıktan sonra, örnek için desteklenen [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (T-SQL) deyimlerini gönderebilirsiniz.  Aşağıdaki örnekte sorgular etkileşimli modda gönderilir:
 
 ```sql
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
@@ -109,7 +109,7 @@ C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Her
 3> QUIT
 ```
 
-İsteğe bağlı SQL için, takip eden örnekler -Q seçeneğini kullanarak toplu modda sorguları nasıl çalıştırabileceğinizi veya SQL'inizi sqlcmd'ye nasıl çalıştırabileceğinizi gösterir:
+İsteğe bağlı SQL için aşağıdaki örneklerde,-Q seçeneğini kullanarak sorguların Batch modunda nasıl çalıştırılacağı veya SQL to sqlcmd ile nasıl çalıştırılacağı gösterilmektedir:
 
 ```sql
 sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P 'Enter_Your_Password_Here' -I -Q "SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')"
@@ -121,4 +121,4 @@ sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-sqlcmd seçenekleri hakkında daha fazla bilgi için [sqlcmd dokümantasyona](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)bakın.
+Sqlcmd seçenekleri hakkında daha fazla bilgi için bkz. [sqlcmd belgeleri](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).

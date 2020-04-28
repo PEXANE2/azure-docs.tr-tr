@@ -1,6 +1,6 @@
 ---
-title: Windows Sanal Masaüstünde Microsoft Ekipleri - Azure
-description: Windows Sanal Masaüstünde Microsoft Ekipleri nasıl kullanılır?
+title: Windows sanal masaüstündeki Microsoft ekipleri-Azure
+description: Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,34 +8,34 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 15a4c9b16b102310fd02f8db3a4fb93cff84882b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a860b005457c6e02187423a3ffbbc63fe7c758b1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314060"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187537"
 ---
-# <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual masaüstünde Microsoft Ekipleri'ni kullanma
+# <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Microsoft ekiplerini Windows sanal masaüstü 'nde kullanma
 
-> Şu şekilde uygulanır: Windows 10 ve Windows 10 IoT Enterprise
+> Uygulama hedefi: Windows 10 ve Windows 10 IoT Enterprise
 
-Sanallaştırılmış ortamlar, artan gecikme süresi, yüksek ana bilgisayar CPU kullanımı ve kötü genel ses ve video performansı da dahil olmak üzere Microsoft Teams gibi işbirliği uygulamaları için benzersiz bir dizi zorluk sunar. VDI ortamlarında Microsoft Ekiplerini kullanma hakkında daha fazla bilgi edinmek [için Sanallaştırılmış Masaüstü Altyapısı için Takımlar'a](https://docs.microsoft.com/microsoftteams/teams-for-vdi)göz atın.
+Sanallaştırılmış ortamlar, daha fazla gecikme, yüksek ana bilgisayar CPU kullanımı ve genel ses ve video performansı gibi Microsoft ekipleri gibi işbirliği uygulamalarına yönelik benzersiz bir zorluk kümesi sunar. VDı ortamlarında Microsoft ekiplerini kullanma hakkında daha fazla bilgi edinmek için, [sanallaştırılmış Masaüstü Altyapısı Için ekipler](https://docs.microsoft.com/microsoftteams/teams-for-vdi)' ı inceleyin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Microsoft Ekiplerini Windows Sanal Masaüstünde kullanabilmeniz için önce şunları yapmanız gerekir:
+Windows sanal masaüstü 'nde Microsoft ekipleri kullanabilmeniz için şu işlemleri yapmanız gerekir:
 
-- [Windows Desktop istemcisini](connect-windows-7-and-10.md) Microsoft Teams [donanım gereksinimlerini](https://docs.microsoft.com/microsoftteams/hardware-requirements-for-the-teams-app)karşılayan bir Windows 10 aygıtına yükleyin.
-- Windows 10 Çok oturumlu veya Windows 10 Enterprise sanal makinesine (VM) bağlanın.
-- Ağınızı Microsoft Ekipleri için [hazırlayın.](https://docs.microsoft.com/microsoftteams/prepare-network)
+- [Windows Masaüstü Istemcisini](connect-windows-7-and-10.md) Microsoft ekipleri [donanım gereksinimlerini](https://docs.microsoft.com/microsoftteams/hardware-requirements-for-the-teams-app)karşılayan bir Windows 10 cihazına yükler.
+- Windows 10 çoklu oturum veya Windows 10 Enterprise sanal makinesine (VM) bağlanın.
+- [Ağınızı](https://docs.microsoft.com/microsoftteams/prepare-network) Microsoft ekipleri için hazırlayın.
 
-## <a name="use-unoptimized-microsoft-teams"></a>En iyi duruma getirilmemiş Microsoft Ekiplerini kullanma
+## <a name="use-unoptimized-microsoft-teams"></a>En iyi duruma getirilmiş Microsoft ekiplerini kullanma
 
-Windows Sanal Masaüstü ortamlarınızda optimize edilmemiş Microsoft Ekiplerini, Microsoft Teams'in tam sohbet ve işbirliği özelliklerinin yanı sıra sesli arama dan yararlanmak için kullanabilirsiniz. En iyi duruma getirilmemiş aramalar ana bilgisayar CPU'nuzdan daha fazlasını kullandığından, aramalardaki ses kalitesi ana bilgisayar yapılandırmanıza göre değişir.
+Microsoft ekiplerinizin sohbet ve işbirliği özelliklerinden yararlanmak için Windows sanal masaüstü ortamlarınızdaki Microsoft ekiplerini kullanabilirsiniz. Windows sanal masaüstü, VDı ses/video (AV) iyileştirmeleri üzerinde takımları desteklemez. Çağrılar ve toplantılar desteklenmez. Kuruluşunuzun ilkeleri izin verir, hala ses çağrıları yapabilir ve ses ile toplantılara katılabilir, ancak en iyi duruma getirilmiş ses kalitesi, ana bilgisayar yapılandırmanıza göre farklılık gösterir ve güvenilir olmayabilir. Daha fazla bilgi edinmek için bkz. [VDI performans değerlendirmesi üzerinde takımlar](https://docs.microsoft.com/microsoftteams/teams-for-vdi#teams-on-vdi-performance-considerations).
 
-### <a name="prepare-your-image-for-teams"></a>Resminizi Takımlara hazırlayın
+### <a name="prepare-your-image-for-teams"></a>Görüntünüzü takımlar için hazırlama
 
-Makine başına ekipler yüklemesini etkinleştirmek için, ana bilgisayarda aşağıdaki kayıt defteri anahtarını ayarlayın:
+Ekipte makine başına yüklemeyi etkinleştirmek için konakta aşağıdaki kayıt defteri anahtarını ayarlayın:
 
 ```shell
   [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams\IsWVDEnvironment]
@@ -43,31 +43,31 @@ Makine başına ekipler yüklemesini etkinleştirmek için, ana bilgisayarda aş
   Value: 1
 ```
 
-### <a name="install-microsoft-teams"></a>Microsoft Ekiplerini Yükleme
+### <a name="install-microsoft-teams"></a>Microsoft ekipleri 'nı yükler
 
-Ekipler masaüstü uygulamasını makine başına yükleme yi kullanarak dağıtabilirsiniz. Microsoft Ekiplerini Windows Sanal Masaüstü ortamınıza yüklemek için:
+Ekipler masaüstü uygulamasını makine başına yükleme kullanarak dağıtabilirsiniz. Microsoft ekiplerinizi Windows sanal masaüstü ortamınıza yüklemek için:
 
-1. Ortamınızla eşleşen [Takımlar MSI paketini](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) indirin. 64 bit işletim sisteminde 64 bit yükleyici kullanmanızı öneririz.
-2. MSI'ı ana bilgisayar VM'ye yüklemek için bu komutu çalıştırın.
+1. Ortamınızla eşleşen [TAKıMLAR MSI paketini](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) indirin. 64 bitlik bir yükleyicinin bir 64 bit işletim sisteminde kullanılması önerilir.
+2. MSI 'yi konak VM 'ye yüklemek için bu komutu çalıştırın.
 
       ```shell
       msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSER=1
       ```
 
-      Bu, Takımlar'ı Program Dosyaları'na veya Program Dosyalarına (x86) yükler. Bir sonraki oturum açtığınızda ve Takımlar'ı başlattığınızda, uygulama kimlik bilgilerinizi ister.
+      Bu, takımları program dosyalarına veya program dosyalarına (x86) yükler. Bir sonraki oturum açışınızda ve takımları başlattığınızda, uygulama kimlik bilgilerinizi ister.
 
       > [!NOTE]
-      > Kullanıcılar ve yöneticiler şu anda oturum açma sırasında Takımlar için otomatik başlatmayı devre dışı kalamaz.
+      > Kullanıcılar ve Yöneticiler, oturum açma sırasında şu anda takımlar için otomatik başlatmayı devre dışı bırakamıyorum.
 
-      Ana bilgisayar VM'den MSI'ı kaldırmak için şu komutu çalıştırın:
+      MSI 'yi konak VM 'den kaldırmak için şu komutu çalıştırın:
 
       ```shell
       msiexec /passive /x <msi_name> /l*v <uninstall_logfile_name>
       ```
 
       > [!NOTE]
-      > ALLUSER=1 ayarlı MSI ayarlı Takımlar yüklerseniz, otomatik güncelleştirmeler devre dışı bırakılır. Takımları ayda en az bir kez güncellediğinden emin olmamızı öneririz.
-      
-### <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Ana bilgisayar havuzu için Uzak Masaüstü Protokolü özelliklerini özelleştirme
-Çok monitör deneyimi gibi bir ana bilgisayar havuzunun Uzak Masaüstü Protokolü (RDP) özelliklerini özelleştirmek, Mikrofon ve ses yönlendirmesini etkinleştirmek, kullanıcılarınız için gereksinimlerine göre en iyi deneyimi sunmanıza olanak tanır. **Set-RdsHostPool** cmdlet'teki **-CustomRdpProperty** parametresini kullanarak Windows Sanal Masaüstü'ndeki RDP özelliklerini özelleştirebilirsiniz.
-Desteklenen özelliklerin ve bunların varsayılan değerlerinin tam listesi için [desteklenen RDP dosya ayarlarına](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) bakın.
+      > Ekipleri ALLUSER = 1 MSI ayarı ile yüklerseniz otomatik güncelleştirmeler devre dışı bırakılır. Ekipleri ayda en az bir kez güncelleştirdiğinizden emin olmanızı öneririz. Ekipler masaüstü uygulamasını dağıtma hakkında daha fazla bilgi edinmek için, [takımlar masaüstü UYGULAMASıNı VM 'ye dağıtmayı](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm)inceleyin.
+
+## <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Bir konak havuzu için Uzak Masaüstü Protokolü özelliklerini özelleştirme
+Çoklu izleyici deneyimi gibi bir konak havuzunun Uzak Masaüstü Protokolü (RDP) özelliklerini özelleştirmek, mikrofon ve ses yeniden yönlendirmeyi etkinleştirmek, kullanıcılarınız için gereksinimlerinize göre en iyi deneyimi sunmanızı sağlar. **Set-RdsHostPool** cmdlet 'inde **-customrdpproperty** parametresini kullanarak Windows sanal masaüstündeki RDP özelliklerini özelleştirebilirsiniz.
+Desteklenen özelliklerin tam listesi ve bunların varsayılan değerleri için bkz. [desteklenen RDP dosyası ayarları](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) .

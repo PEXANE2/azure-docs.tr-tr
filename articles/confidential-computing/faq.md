@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 2bd9430fc6f48d72faa2c1850af0bb8432a7c5f5
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: e9cb691ef60f612672078a9ef84db904c79cbc87
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149508"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189454"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure gizli bilgi Işlem için sık sorulan sorular
 
@@ -47,7 +47,7 @@ Azure sorununuz bu makalede giderilmemişse, [MSDN ve Stack Overflow](https://az
 
 1. **DCsv2 serisi ve DC Serisi VM 'Ler arasındaki fark nedir?**
 
-   DC Serisi VM 'Ler, SGX ile daha eski 6 çekirdekli Intel Işlemcilerde çalışır. Bunlar, daha az toplam belleğe sahiptir, daha az EPC (şifreleme sayfası Kamage) belleğine sahiptir ve daha az bölgede kullanılabilir. Bu VM 'Ler yalnızca ABD Doğu kullanılabilir ve Batı Batı, iki boyutta sunulmaktadır: Standard_DC2s ve Standard_DC4s. Bunlar GA 'ye gitmeyecektir ve yalnızca [gizli Işlem DC-SERIES VM [Önizleme]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Market örneğinde dağıtılabilir
+   DC Serisi VM 'Ler, Intel SGX ile daha eski 6 çekirdekli Intel Işlemcilerde çalışır. Bunlar, daha az toplam belleğe sahiptir, daha az EPC (şifreleme sayfası Kamage) belleğine sahiptir ve daha az bölgede kullanılabilir. Bu VM 'Ler yalnızca ABD Doğu kullanılabilir ve Batı Batı, iki boyutta sunulmaktadır: Standard_DC2s ve Standard_DC4s. Bunlar GA 'ye gitmeyecektir ve yalnızca [gizli Işlem DC-SERIES VM [Önizleme]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Market örneğinde dağıtılabilir
 
 1. **DCsv2 sanal makineleri küresel olarak kullanılabilir mi?**
 
