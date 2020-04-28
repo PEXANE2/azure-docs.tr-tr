@@ -1,6 +1,6 @@
 ---
-title: Azure CLI ile DevTest Labs'da sanal makineler oluşturun ve yönetin
-description: Azure CLI ile sanal makineler oluşturmak ve yönetmek için Azure DevTest Laboratuvarlarını nasıl kullanacağınızı öğrenin
+title: Azure CLı ile DevTest Labs 'de sanal makineler oluşturma ve yönetme
+description: Azure CLı ile sanal makineler oluşturmak ve yönetmek için Azure DevTest Labs kullanmayı öğrenin
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,54 +14,54 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: d3cd104e36cb407e9b1b833335869cac2c69d0ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76167065"
 ---
-# <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Azure CLI'yi kullanarak DevTest Labs ile sanal makineler oluşturun ve yönetin
-Bu hızlı başlangıç, laboratuarınızda bir geliştirme makinesi oluşturma, başlatma, bağlama, güncelleme ve temizleme konusunda size yol gösterecektir. 
+# <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Azure CLı kullanarak DevTest Labs ile sanal makineler oluşturma ve yönetme
+Bu hızlı başlangıç, laboratuvarınızda bir geliştirme makinesi oluşturma, başlatma, bağlama, güncelleştirme ve Temizleme sürecinde size kılavuzluk eder. 
 
 Başlamadan önce:
 
-* Bir laboratuvar oluşturulmamadıysa, yönergeler [burada](devtest-lab-create-lab.md)bulunabilir.
+* Bir laboratuvar oluşturulmadıysa, yönergeler [burada](devtest-lab-create-lab.md)bulunabilir.
 
-* [Azure CLI'yi yükleyin.](/cli/azure/install-azure-cli) Başlamak için Azure ile bağlantı oluşturmak için az oturum açın. 
+* [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli). Başlamak için az oturum çalıştırarak Azure ile bir bağlantı oluşturun. 
 
-## <a name="create-and-verify-the-virtual-machine"></a>Sanal makineoluşturma ve doğrulama 
-DevTest Labs ile ilgili komutları yürütmeden önce, `az account set` komutu kullanarak uygun Azure bağlamını ayarlayın:
+## <a name="create-and-verify-the-virtual-machine"></a>Sanal makineyi oluşturma ve doğrulama 
+DevTest Labs ile ilgili komutları yürütmeden önce, `az account set` komutunu kullanarak uygun Azure bağlamını ayarlayın:
 
 ```azurecli
 az account set --subscription 11111111-1111-1111-1111-111111111111
 ```
 
-Sanal bir makine oluşturmak için `az lab vm create`komutu: . Laboratuvar, laboratuvar adı ve sanal makine adı için kaynak grubu gereklidir. Bağımsız değişkenlerin geri kalanı sanal makinenin türüne bağlı olarak değişir.
+Sanal makine oluşturma komutu: `az lab vm create`. Laboratuvar, laboratuvar adı ve sanal makine adı için kaynak grubunun tümü gereklidir. Bağımsız değişkenlerin geri kalanı, sanal makine türüne bağlı olarak değişir.
 
-Aşağıdaki komut Azure Market Yeri'nden Windows tabanlı bir görüntü oluşturur. Görüntünün adı, Azure portalını kullanarak sanal bir makine oluştururken göreceğiniz le aynıdır. 
+Aşağıdaki komut, Azure Pazar yerinde Windows tabanlı bir görüntü oluşturur. Görüntünün adı, Azure portal kullanarak bir sanal makine oluştururken göreceğiniz şekilde aynıdır. 
 
 ```azurecli
 az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "Visual Studio Community 2017 on Windows Server 2016 (x64)" --image-type gallery --size 'Standard_D2s_v3' --admin-username 'AdminUser' --admin-password 'Password1!'
 ```
 
-Aşağıdaki komut, laboratuvarda bulunan özel bir görüntüyü temel alan sanal bir makine oluşturur:
+Aşağıdaki komut, laboratuvarda kullanılabilen özel bir görüntüye dayalı bir sanal makine oluşturur:
 
 ```azurecli
 az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "My Custom Image" --image-type custom --size 'Standard_D2s_v3' --admin-username 'AdminUser' --admin-password 'Password1!'
 ```
 
-**Görüntü türü** bağımsız **değişkeni galeriden** **özele**değiştirildi. Görüntünün adı, Azure portalında sanal makine yi oluştursanız da gördüğünüzle eşleşir.
+**Image-Type** bağımsız değişkeni **Galeriden** **özel**olarak değiştirildi. Azure portal sanal makineyi oluştururken, görüntünün adı, gördüklerinize göre eşleşir.
 
-Aşağıdaki komut, ssh kimlik doğrulaması ile bir pazar görüntüsünden bir VM oluşturur:
+Aşağıdaki komut, bir market görüntüsünden SSH kimlik doğrulaması ile bir VM oluşturur:
 
 ```azurecli
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 
-Ayrıca, **resim türü** parametresini **formüle**ayarlayarak formüllere dayalı sanal makineler de oluşturabilirsiniz. Sanal makineniz için belirli bir sanal ağ seçmeniz gerekiyorsa, **vnet adı** ve **alt ağ** parametrelerini kullanın. Daha fazla bilgi için az [lab vm oluştur'a](/cli/azure/lab/vm#az-lab-vm-create)bakın.
+Ayrıca, **resim türü** parametresini **Formül**olarak ayarlayarak, formülleri temel alan sanal makineler de oluşturabilirsiniz. Sanal makineniz için belirli bir sanal ağ seçmeniz gerekiyorsa, **VNET-adı** ve **alt ağ** parametrelerini kullanın. Daha fazla bilgi için bkz. [az Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
 
-## <a name="verify-that-the-vm-is-available"></a>VM'nin kullanılabilir olduğundan doğrulayın.
-VM'nin `az lab vm show` başlamadan ve bağlanmadan önce kullanılabilir olduğunu doğrulamak için komutu kullanın. 
+## <a name="verify-that-the-vm-is-available"></a>VM 'nin kullanılabilir olduğunu doğrulayın.
+Başlamadan önce `az lab vm show` VM 'nin kullanılabilir olduğunu doğrulamak için komutunu kullanın. 
 
 ```azurecli
 az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand 'properties($expand=ComputeVm,NetworkInterface)' --query '{status: computeVm.statuses[0].displayStatus, fqdn: fqdn, ipAddress: networkInterface.publicIpAddress}'
@@ -74,20 +74,20 @@ az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sam
 }
 ```
 
-## <a name="start-and-connect-to-the-virtual-machine"></a>Sanal makineyi başlatın ve bağlanın
+## <a name="start-and-connect-to-the-virtual-machine"></a>Başlat ve sanal makineyi bağla
 Aşağıdaki örnek komut bir VM başlatır:
 
 ```azurecli
 az lab vm start --lab-name sampleLabName --name sampleVMName --resource-group sampleLabResourceGroup
 ```
 
-VM'ye bağlanın: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) veya [Uzak Masaüstü.](../virtual-machines/windows/connect-logon.md)
+Bir VM 'ye bağlanın: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) veya [Uzak Masaüstü](../virtual-machines/windows/connect-logon.md).
 ```bash
 ssh userName@ipAddressOrfqdn 
 ```
 
-## <a name="update-the-virtual-machine"></a>Sanal makineyi güncelleştirin
-Aşağıdaki örnek komut, bir VM'ye eserler uygular:
+## <a name="update-the-virtual-machine"></a>Sanal makineyi Güncelleştir
+Aşağıdaki örnek komut, yapıları bir VM 'ye uygular:
 
 ```azurecli
 az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resource-group sampleResourceGroup  --artifacts @/artifacts.json
@@ -123,17 +123,17 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 ]
 ```
 
-### <a name="list-artifacts-available-in-the-lab"></a>Laboratuvarda bulunan yapıları listele
+### <a name="list-artifacts-available-in-the-lab"></a>Laboratuvarda bulunan yapıları listeleyin
 
-Bir laboratuvarda VM'de bulunan yapıları listelemek için aşağıdaki komutları çalıştırın.
+Laboratuvardaki bir sanal makinede bulunan yapıtları listelemek için aşağıdaki komutları çalıştırın.
 
-**Cloud Shell - PowerShell**: $expand '$expand)\`içinde $ önce backtick ( ) kullanımı dikkat edin:
+**Cloud Shell-PowerShell**: $ in $Expand önce backtick (\`) kullanımına dikkat edin (örn. ' $Expand):
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(`$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
 ```
 
-**Cloud Shell - Bash**: komutu\\$ önünde eğik çizgi ( ) karakterinin kullanımı dikkat edin. 
+**Cloud Shell-Bash**: komutta $ 'ın önünde eğik çizgi (\\) karakterinin kullanılmasına dikkat edin. 
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(\$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
@@ -150,17 +150,17 @@ az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name 
 ]
 ```
 
-## <a name="stop-and-delete-the-virtual-machine"></a>Sanal makineyi durdurup silme    
-Aşağıdaki örnek komut bir VM'yi durdurur.
+## <a name="stop-and-delete-the-virtual-machine"></a>Sanal Makineyi durdur ve Sil    
+Aşağıdaki örnek komut bir VM 'yi sonlandırır.
 
 ```azurecli
 az lab vm stop --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup
 ```
 
-Bir VM silin.
+VM 'yi silme.
 ```azurecli
 az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Aşağıdaki içeriğe bakın: [Azure DevTest Labs için Azure CLI belgeleri.](/cli/azure/lab?view=azure-cli-latest) 
+Aşağıdaki içeriğe bakın: [Azure DevTest Labs Için Azure CLI belgeleri](/cli/azure/lab?view=azure-cli-latest). 

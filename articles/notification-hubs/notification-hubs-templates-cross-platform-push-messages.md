@@ -1,6 +1,6 @@
 ---
-title: Azure Bildirim Hub'ları şablonları
-description: Azure Bildirim Hub'ları için şablonları kullanma hakkında bilgi edinin.
+title: Azure Notification Hubs şablonları
+description: Azure Notification Hubs için şablonları kullanma hakkında bilgi edinin.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -17,32 +17,32 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76263753"
 ---
 # <a name="templates"></a>Şablonlar
 
-Şablonlar, istemci uygulamasının almak istediği bildirimlerin tam biçimini belirtmesini sağlar. Şablonları kullanarak, bir uygulama aşağıdakiler de dahil olmak üzere birkaç farklı avantaj gerçekleştirebilir:
+Şablonlar, bir istemci uygulamanın almak istediği bildirimlerin tam biçimini belirtmesini sağlar. Bir uygulama, şablonları kullanarak aşağıdakiler de dahil olmak üzere birkaç farklı avantajı fark edebilir:
 
-- Bir platform-agnostik arka uç
+- Platformdan bağımsız arka uç
 - Kişiselleştirilmiş bildirimler
-- İstemci sürümü bağımsızlığı
+- İstemci sürümü bağımsızlık
 - Kolay yerelleştirme
 
-Bu bölümde, platformlar arasında tüm cihazlarınızı hedefleyen platform agnostik bildirimler göndermek ve her cihaza yayın bildirimini kişiselleştirmek için şablonların nasıl kullanılacağına dair iki ayrıntılı örnek verilmektedir.
+Bu bölümde, tüm cihazlarınızı platformlar arasında hedefleyen ve her cihaza yayınlama bildirimini kişiselleştirmek için şablonların nasıl kullanılacağına ilişkin iki derinlemesine örnek verilmiştir.
 
-## <a name="using-templates-cross-platform"></a>Şablonları platform lar arası kullanma
+## <a name="using-templates-cross-platform"></a>Şablonları platformlar arası kullanma
 
-Anında iletme bildirimleri göndermenin standart yolu, gönderilecek her bildirim için platform bildirim hizmetlerine (WNS, APNS) belirli bir yük göndermektir. Örneğin, APNS'ye uyarı göndermek için yük aşağıdaki formun Bir JSON nesnesidir:
+Anında iletme bildirimleri göndermenin standart yolu, gönderilecek her bildirim için, platform bildirim hizmetleri 'ne (WNS, APNS) belirli bir yük göndermek içindir. Örneğin, APNS 'ye bir uyarı göndermek için, yük aşağıdaki biçimdeki bir JSON nesnesidir:
 
 ```json
 {"aps": {"alert" : "Hello!" }}
 ```
 
-Bir Windows Mağazası uygulamasına benzer bir tost iletisi göndermek için XML yükü aşağıdaki gibidir:
+Bir Windows Mağazası uygulamasında benzer bir bildirim iletisi göndermek için, XML yükü aşağıdaki gibidir:
 
 ```xml
 <toast>
@@ -54,23 +54,23 @@ Bir Windows Mağazası uygulamasına benzer bir tost iletisi göndermek için XM
 </toast>
 ```
 
-MPNS (Windows Phone) ve FCM (Android) platformları için benzer yükler oluşturabilirsiniz.
+MPNS (Windows Phone) ve FCM (Android) platformları için benzer yükleri oluşturabilirsiniz.
 
-Bu gereksinim, uygulamanın arka ucunu her platform için farklı yükler üretmeye zorlar ve arka ucu uygulamanın sunu katmanının bir kısmından etkili bir şekilde sorumlu kılar. Bazı endişeler arasında yerelleştirme ve grafik düzenleri (özellikle çeşitli kutucuk türleri için bildirimler içeren Windows Mağazası uygulamaları için) yer almaktadır.
+Bu gereksinim, uygulama arka ucunu her platform için farklı yük oluşturacak şekilde zorlar ve uygulamanın sunum katmanının bir parçası olan arka ucu etkili bir şekilde gerçekleştirir. Bazı kaygılar, yerelleştirme ve grafik düzenlerini (özellikle de çeşitli döşeme türleri için bildirimleri içeren Windows Mağazası uygulamaları için) içerir.
 
-Bildirim Hub'ları şablon özelliği, istemci uygulamasının, etiket kümesine ek olarak şablon kayıtları adı verilen özel kayıtlar oluşturmasını sağlar. Bildirim Hub'ları şablonözelliği, bir istemci uygulamasının, Yüklemeler (tercih edilen) veya Kayıtlarla çalışıp çalışmadığınızı şablonlarla ilişkilendirmesini sağlar. Önceki yük örnekleri göz önüne alındığında, tek platform bağımsız bilgi gerçek uyarı iletisi (Hello!). Şablon, Bildirim Merkezi'nin belirli bir istemci uygulamasının kaydı için platformdan bağımsız bir iletiyi nasıl biçimlendireceklerine ilişkin bir yönerge ler kümesidir. Önceki örnekte, platformdan bağımsız ileti tek bir `message = Hello!`özelliktir: .
+Notification Hubs şablonu özelliği, bir istemci uygulamanın, Etiketler kümesine ek olarak, şablon kayıtları olarak adlandırılan özel kayıtlar oluşturmalarına olanak sağlar. Notification Hubs şablonu özelliği, Yüklemeler (tercih edilen) veya kayıtlarla çalışırken, bir istemci uygulamanın cihazları şablonlar ile ilişkilendirmesine olanak sağlar. Önceki yük örnekleri söz konusu olduğunda, tek platformla bağımsız bilgiler gerçek uyarı iletisidir (Merhaba!). Şablon, ilgili istemci uygulamasının kaydı için platforma bağımsız bir iletiyi biçimlendirme hakkında bildirim hub 'ı için bir yönergeler kümesidir. Yukarıdaki örnekte, platformdan bağımsız ileti tek bir özelliktir: `message = Hello!`.
 
-Aşağıdaki resim işlemi göstermektedir:
+Aşağıdaki resimde işlem gösterilmektedir:
 
 ![](./media/notification-hubs-templates/notification-hubs-hello.png)
 
-iOS istemci uygulaması kaydı için şablon aşağıdaki gibidir:
+İOS istemci uygulaması kaydına yönelik şablon aşağıdaki gibidir:
 
 ```json
 {"aps": {"alert": "$(message)"}}
 ```
 
-Windows Mağazası istemci uygulaması için ilgili şablon:
+Windows Mağazası istemci uygulaması için karşılık gelen şablon:
 
 ```xml
 <toast>
@@ -82,17 +82,17 @@ Windows Mağazası istemci uygulaması için ilgili şablon:
 </toast>
 ```
 
-Gerçek iletinin $(ileti) ifadesinin yerine geçilmesini unutmayın. Bu ifade, Bildirim Hub'ına, bu özel kayda bir ileti gönderdiğinde, onu izleyen ve ortak değerde geçiş yapan bir ileti oluşturması talimatını verir.
+Gerçek iletinin $ (ileti) ifadesinin yerine konduğuna dikkat edin. Bu ifade, Bildirim Hub 'ına, bu belirli kayda bir ileti gönderdiğinde, onu izleyen bir ileti ve ortak değerde anahtarlar oluşturmak üzere bildirir.
 
-Yükleme modeliyle çalışıyorsanız, yükleme "şablonları" anahtarı birden çok şablondan oluşan bir JSON tutar. Kayıt modeliyle çalışıyorsanız, istemci uygulaması birden çok şablon kullanmak için birden çok kayıt oluşturabilir; örneğin, uyarı iletileri için bir şablon ve döşeme güncelleştirmeleri için bir şablon. İstemci uygulamaları, yerel kayıtları (şablonsuz kayıtlar) ve şablon kayıtlarını da karıştırabilir.
+Yükleme modeliyle çalışıyorsanız, yükleme "Şablonlar" anahtarı birden çok şablon içeren bir JSON içerir. Kayıt modeliyle çalışıyorsanız, istemci uygulaması birden çok şablon kullanmak için birden çok kayıt oluşturabilir; Örneğin, uyarı iletileri için bir şablon ve kutucuk güncelleştirmeleri için bir şablon. İstemci uygulamaları, yerel kayıtları da (şablon içermeyen kayıtlar) ve şablon kayıtlarını karıştırabilir.
 
-Bildirim Hub' ı, her şablon için aynı istemci uygulamasına ait olup olmadıklarını düşünmeden bir bildirim gönderir. Bu davranış, platformdan bağımsız bildirimleri daha fazla bildirime çevirmek için kullanılabilir. Örneğin, Bildirim Hub'ına gönderilen aynı platformdan bağımsız ileti, arka ucun bunun farkında olmasını gerektirmeden, tost uyarısı ve döşeme güncelleştirmesi olarak sorunsuz bir şekilde çevrilebilir. Bazı platformlar (örneğin, iOS), kısa bir süre içinde gönderilirse aynı aygıta birden çok bildirimi daraltabilir.
+Bildirim Hub 'ı, aynı istemci uygulamasına ait olup olmadığını düşünmeksizin her bir şablon için bir bildirim gönderir. Bu davranış, platformdan bağımsız bildirimleri daha fazla bildirimlere dönüştürmek için kullanılabilir. Örneğin, Bildirim Hub 'ına platformdan bağımsız aynı ileti, arka ucun farkında olması gerekmeden bir bildirim uyarısıyla ve kutucuk güncelleştirmesine sorunsuz bir şekilde çevrilebilir. Bazı platformlar (örneğin, iOS), kısa bir süre içinde gönderildiklerinde aynı cihaza birden çok bildirimi daraltabilir.
 
 ## <a name="using-templates-for-personalization"></a>Kişiselleştirme için şablonları kullanma
 
-Şablonları kullanmanın bir diğer avantajı da bildirimlerin kayıt başına kişiselleştirmesini gerçekleştirmek için Bildirim Hub'larını kullanabilme özelliğidir. Örneğin, belirli bir konumda hava koşulları ile bir kiremit görüntüleyen bir hava uygulaması düşünün. Bir kullanıcı santigrat veya Fahrenheit dereceve tek veya beş günlük tahmin arasında seçim yapabilirsiniz. Şablonları kullanarak, her istemci uygulama yüklemesi gerekli biçime kaydolabilir (1 günlük Santigrat, 1 günlük Fahrenheit, 5 günlük Santigrat, 5 günlük Fahrenheit) ve arka uç bu şablonları doldurmak için gerekli tüm bilgileri içeren tek bir ileti göndermek zorunda (örneğin, santigrat ve Fahrenhayt dereceile beş günlük bir tahmin).
+Şablon kullanmanın başka bir avantajı da, bildirimlerin kayıt başına kişiselleştirilmesini gerçekleştirmek için Notification Hubs kullanma olanağıdır. Örneğin, belirli bir konumdaki Hava durumu koşullarına sahip bir kutucuk görüntüleyen bir hava durumu uygulaması düşünün. Bir Kullanıcı santigrat veya Fahrenhayt derece, tek veya beş günlük bir tahmin arasında seçim yapabilir. Şablonlar kullanılarak, her bir istemci uygulaması yüklemesi gereken biçime (1 günlük Santi, 1 günlük Fahrenhay, 5 gün santigrat, 5-gün Fahrenhayya) kaydedebilir ve arka uca bu şablonları doldurmakta gerekli tüm bilgileri içeren tek bir ileti gönderebilir (örneğin, santigrat ve Fahrenhayt derece ile beş günlük bir tahmin).
 
-Santigrat sıcaklıkları ile bir günlük tahmin için şablon aşağıdaki gibidir:
+Santigrat sıcaklıklar ile tek günlük tahmine yönelik şablon aşağıdaki gibidir:
 
 ```xml
 <tile>
@@ -106,7 +106,7 @@ Santigrat sıcaklıkları ile bir günlük tahmin için şablon aşağıdaki gib
 </tile>
 ```
 
-Bildirim Hub'ına gönderilen ileti aşağıdaki tüm özellikleri içerir:
+Bildirim Hub 'ına gönderilen ileti aşağıdaki özellikleri içerir:
 
 ```html
 <table border="1">
@@ -119,35 +119,35 @@ Bildirim Hub'ına gönderilen ileti aşağıdaki tüm özellikleri içerir:
 </table><br/>
 ```
 
-Bu deseni kullanarak, arka uç yalnızca uygulama kullanıcıları için belirli kişiselleştirme seçeneklerini depolamak zorunda kalmadan tek bir ileti gönderir. Aşağıdaki resim bu senaryoyu göstermektedir:
+Bu model kullanılarak, arka uç yalnızca uygulama kullanıcıları için belirli kişiselleştirme seçeneklerini depolamak zorunda kalmadan tek bir ileti gönderir. Aşağıdaki resimde bu senaryo gösterilmektedir:
 
 ![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
-## <a name="how-to-register-templates"></a>Şablonlar nasıl kaydedilir?
+## <a name="how-to-register-templates"></a>Şablonları kaydetme
 
-Yükleme modelini (tercih edilen) veya Kayıt modelini kullanarak şablonlara kaydolmak için [Kayıt Yönetimi'ne](notification-hubs-push-notification-registration-management.md)bakın.
+Yükleme modelini (tercih edilen) veya kayıt modelini kullanarak şablonlara kaydolmak için bkz. [kayıt yönetimi](notification-hubs-push-notification-registration-management.md).
 
-## <a name="template-expression-language"></a>Şablon ifade dili
+## <a name="template-expression-language"></a>Şablon ifadesi dili
 
-Şablonlar XML veya JSON belge biçimleriyle sınırlıdır. Ayrıca, ifadeleri yalnızca belirli yerlere yerleştirebilirsiniz; örneğin, XML için düğüm öznitelikleri veya değerleri, JSON için dize özellik değerleri.
+Şablonlar XML veya JSON belge biçimleriyle sınırlıdır. Ayrıca, yalnızca belirli yerlere ifade koyabilirsiniz; Örneğin, düğüm öznitelikleri veya XML için değerler, JSON için dize özelliği değerleri.
 
-Aşağıdaki tablo, şablonlarda izin verilen dili gösterir:
+Aşağıdaki tabloda şablonlarda izin verilen dil gösterilmektedir:
 
 | İfadeler       | Açıklama |
 | ---------------- | --- |
-| $(sahne)          | Verilen ada sahip bir olay özelliğine başvuru. Özellik adları büyük/küçük harf duyarlı değildir. Bu ifade, özellik yoksa özelliğin metin değerine veya boş bir dize ye giderir. |
-| $(sahne, n)       | Yukarıdaki gibi, ancak metin açıkça n karakterleri kırpılmış, örneğin $(başlık, 20) 20 karakter de başlık özelliğinin içeriğini klipler. |
-| . (pervane, n)       | Yukarıdaki gibi, ancak metin kırpılmış olarak üç nokta ile suffixed. Kırpılayan dize ve sonekin toplam boyutu n karakterini geçmez. . (başlık, 20) bir giriş özelliği ile "Bu başlık satırı" sonuçları **Bu başlık ...** |
-| %(pervane)          | Çıktının URI kodlanmış olması dışında $(name) benzer. |
-| #(pervane)          | JSON şablonlarında kullanılır (örneğin, iOS ve Android şablonları için).<br><br>Bu işlev, JSON şablonlarında (örneğin, Apple şablonları) kullanılmadığı sürece, daha önce belirtilen $(prop) ile tam olarak aynı şekilde çalışır. Bu durumda, bu işlev "{','}" (örneğin, 'myJsonProperty' : '#(name)' ile çevrili değilse ve javascript biçiminde bir sayıya göre değerlendirilmiyorsa, örneğin, regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*)(&#91;\. 0-9&#93;+)? ((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)?, sonra çıkış JSON bir sayıdır.<br><br>Örneğin, 'rozet: '#(name)' 'rozet' olur: 40 ('40' değil). |
-| 'metin' veya "metin" | Gerçek bir şey. Literals tek veya çift tırnak içinde kapalı rasgele metin içerir. |
-| expr1 + expr2    | İki ifadeyi tek bir dize halinde birleştiren birleştirme işleci. |
+| $ (Prop)          | Verilen ada sahip bir olay özelliğine başvuru. Özellik adları büyük/küçük harfe duyarlı değildir. Bu ifade özelliğin metin değerine veya özelliği yoksa boş bir dizeye çözümleniyor. |
+| $ (prop, n)       | Yukarıdaki gibi, ancak metin n karakter olarak açıkça kırpıldı, örneğin $ (başlık, 20), title özelliğinin içeriğini 20 karakter olarak kırpar. |
+| . (prop, n)       | Yukarıdaki gibi, ancak metin, kırpıldığı için üç noktayla sondakini sabitlenmiştir. Kırpılan dizenin ve sonekin toplam boyutu n karakteri aşamaz. . (başlık, 20) bir giriş özelliği olan "This başlık çizgisi", **Bu durum başlıktır...** |
+| % (Prop)          | Çıktının URI kodlamalı olması dışında $ (Name) ile benzerdir. |
+| # (Prop)          | JSON şablonlarında kullanılır (örneğin, iOS ve Android şablonları için).<br><br>Bu işlev, JSON şablonlarında kullanılması dışında (örneğin, Apple şablonları), daha önce belirtilen $ (Prop) ile aynı şekilde çalışır. Bu durumda, bu işlev "{', '}" (örneğin, ' myJsonProperty ': ' # (Name) ') ile çevreleniyorsa ve JavaScript biçiminde bir sayı olarak değerlendirilir (örneğin, RegExp: (0&#124; (&#91;1-9&#93;&#91;0-9&#93; *)) (\.&#91;0-9&#93;+)? ((e&#124;E) (+&#124;-)? &#91;0-9&#93;+)?, ardından JSON çıktısı bir sayıdır.<br><br>Örneğin, ' # (Name) ', ' rozet ': 40 (' 40 ' değil) olur. |
+| ' text ' veya "Text" | Değişmez değer. Değişmez değerler, tek veya çift tırnak içine alınmış rastgele metni içerir. |
+| expr1 + expr2    | Birleştirme işleci iki ifadeye tek bir dizeye katılıyor. |
 
-İfadeler önceki formlardan herhangi biri olabilir.
+İfadeler, önceki formlardan herhangi biri olabilir.
 
-Birlikteleştirme kullanırken, tüm ifade `{}`. Örneğin, `{$(prop) + ‘ - ’ + $(prop2)}`.
+Birleştirme kullanılırken, tüm ifadenin birlikte `{}`kullanılması gerekir. Örneğin, `{$(prop) + ‘ - ’ + $(prop2)}`.
 
-Örneğin, aşağıdaki şablon geçerli bir XML şablonu değildir:
+Örneğin, şu şablon geçerli bir XML şablonu değildir:
 
 ```xml
 <tile>
@@ -159,7 +159,7 @@ Birlikteleştirme kullanırken, tüm ifade `{}`. Örneğin, `{$(prop) + ‘ - �
 </tile>
 ```
 
-Daha önce açıklandığı gibi, concatenation kullanırken, ifadeler kıvırcık parantez içinde sarılmış olmalıdır. Örnek:
+Daha önce açıklandığı gibi, birleştirme kullanılırken ifadeler süslü ayraç içine alınmalıdır. Örneğin:
 
 ```xml
 <tile>
@@ -173,4 +173,4 @@ Daha önce açıklandığı gibi, concatenation kullanırken, ifadeler kıvırc�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Bildirim Hub'ları hakkında bilgi edinin](notification-hubs-push-notification-overview.md)
+[Azure Notification Hubs hakkında bilgi edinin](notification-hubs-push-notification-overview.md)

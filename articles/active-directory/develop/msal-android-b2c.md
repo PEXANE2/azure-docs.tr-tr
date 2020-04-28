@@ -1,7 +1,7 @@
 ---
-title: Azure AD B2C (MSAL Android) | Azure
+title: Azure AD B2C (MSAL Android) | Mavisi
 titleSuffix: Microsoft identity platform
-description: Android için Microsoft Kimlik Doğrulama Kitaplığı (MSAL) ile Azure AD B2C kullanırken belirli hususlar hakkında bilgi edinin. Android)
+description: Android için Microsoft kimlik doğrulama kitaplığı (MSAL) ile Azure AD B2C kullanırken belirli hususlar hakkında bilgi edinin. Android
 services: active-directory
 author: brianmel
 manager: CelesteDG
@@ -14,27 +14,27 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 0998bb04b0dfc69db4696f2e390cfe259eba6718
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76696530"
 ---
-# <a name="use-msal-for-android-with-b2c"></a>B2C'li Android için MSAL kullanın
+# <a name="use-msal-for-android-with-b2c"></a>B2C ile Android için MSAL kullanma
 
-Microsoft Kimlik Doğrulama Kitaplığı (MSAL), uygulama geliştiricilerin [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)kullanarak kullanıcıların sosyal ve yerel kimliklerini doğrulamalarını sağlar. Azure AD B2C bir kimlik yönetimi hizmetidir. Müşterilerin uygulamalarınızı kullanırken profillerini nasıl kaydolduklarını, kaydolduklarını ve yöneteceklerini özelleştirmek ve denetlemek için kullanın.
+Microsoft kimlik doğrulama kitaplığı (MSAL), uygulama geliştiricilerinin [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)kullanarak sosyal ve yerel kimliklere sahip kullanıcıların kimliğini doğrulamasını sağlar. Azure AD B2C bir kimlik yönetimi hizmetidir. Müşterilerinizin uygulamalarınızı kullandıklarında, nasıl oturum açıp yönetebileceğini özelleştirmek ve denetlemek için bu uygulamayı kullanın.
 
-## <a name="configure-known-authorities-and-redirect-uri"></a>Bilinen yetkilileri yapılandırın ve URI'yi yeniden yönlendirin
+## <a name="configure-known-authorities-and-redirect-uri"></a>Bilinen yetkilileri ve yeniden yönlendirme URI 'sini Yapılandır
 
-Android için MSAL'da, B2C politikaları (kullanıcı yolculukları) bireysel otoriteler olarak yapılandırılır.
+Android için MSAL ' de, B2C ilkeleri (Kullanıcı, neys) bireysel yetkililer olarak yapılandırılır.
 
-İki ilke olan bir B2C uygulaması göz önüne alındığında:
-- Kayıt / Kayıt
-    * Denilen`B2C_1_SISOPolicy`
+İki ilkeye sahip olan B2C uygulaması verildi:
+- Kaydolma/oturum açma
+    * Çağırılır`B2C_1_SISOPolicy`
 - Profili Düzenle
-    * Denilen`B2C_1_EditProfile`
+    * Çağırılır`B2C_1_EditProfile`
 
-Uygulama için yapılandırma dosyası iki `authorities`bildirir. Her poliçe için bir tane. Her `type` makamın `B2C`özelliği.
+Uygulamanın yapılandırma dosyası iki `authorities`bildirmelidir. Her ilke için bir tane. Her `type` bir yetkilinin özelliği `B2C`.
 
 ### `app/src/main/res/raw/msal_config.json`
 ```json
@@ -54,11 +54,11 @@ Uygulama için yapılandırma dosyası iki `authorities`bildirir. Her poliçe i�
 }
 ```
 
-Uygulama `redirect_uri` yapılandırmasına ve yetkilendirme kodu hibe `AndroidManifest.xml` [akışı](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code)sırasında yeniden yönlendirmeyi desteklemek için kaydedilmesi gerekir.
+, `redirect_uri` Uygulama yapılandırmasında kayıtlı olmalıdır ve [yetkilendirme kodu verme akışı](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code)sırasında yeniden `AndroidManifest.xml` yönlendirmeyi desteklemek için içinde.
 
-## <a name="initialize-ipublicclientapplication"></a>IPublicClientApplication'ı Başlatma
+## <a name="initialize-ipublicclientapplication"></a>Ipublicclientapplication 'ı Başlat
 
-`IPublicClientApplication`uygulama yapılandırmasının eşit olarak ayrıştırılmasına olanak sağlayacak bir fabrika yöntemi yle oluşturulur.
+`IPublicClientApplication`, uygulama yapılandırmasının zaman uyumsuz olarak ayrıştırılabilmesi için bir fabrika yöntemiyle oluşturulur.
 
 ```java
 PublicClientApplication.createMultipleAccountPublicClientApplication(
@@ -79,9 +79,9 @@ PublicClientApplication.createMultipleAccountPublicClientApplication(
 );
 ```
 
-## <a name="interactively-acquire-a-token"></a>Etkileşimli olarak bir belirteç edinin
+## <a name="interactively-acquire-a-token"></a>Etkileşimli olarak belirteç alma
 
-MSAL ile etkileşimli olarak bir belirteç elde etmek için bir `AcquireTokenParameters` örnek oluşturun ve metoduna tedarik edin. `acquireToken` Aşağıdaki belirteç isteği `default` yetkisini kullanır.
+Bir belirteci MSAL ile etkileşimli bir şekilde almak için bir `AcquireTokenParameters` örnek oluşturun ve `acquireToken` yönteme sağlayın. Aşağıdaki belirteç isteği, `default` yetkilisini kullanır.
 
 ```java
 IMultipleAccountPublicClientApplication pca = ...; // Initialization not shown
@@ -112,7 +112,7 @@ pca.acquireToken(parameters);
 
 ## <a name="silently-renew-a-token"></a>Bir belirteci sessizce yenileme
 
-MSAL ile sessizce bir belirteç `AcquireTokenSilentParameters` elde etmek için, bir örnek oluşturun ve yönteme tedarik edin. `acquireTokenSilentAsync` Yöntemin `acquireToken` aksine, `authority` sessizce bir belirteç elde etmek için belirtilmelidir.
+MSAL ile sessizce bir belirteç elde etmek için bir `AcquireTokenSilentParameters` örnek oluşturup `acquireTokenSilentAsync` yönteme sağlayın. `acquireToken` Yönteminden `authority` farklı olarak, belirteci sessizce almak için belirtilmelidir.
 
 ```java
 IMultilpeAccountPublicClientApplication pca = ...; // Initialization not shown
@@ -137,9 +137,9 @@ AcquireTokenSilentParameters parameters = new AcquireTokenSilentParameters.Build
 pca.acquireTokenSilentAsync(parameters);
 ```
 
-## <a name="specify-a-policy"></a>Bir ilke belirtin
+## <a name="specify-a-policy"></a>İlke belirtin
 
-B2C'deki ilkeler ayrı yetkililer olarak temsil edildiğinden, varsayılandan başka bir ilke `fromAuthority` çağırmak, `acquireToken` oluşturma `acquireTokenSilent` veya parametreler de belirtilmek suretiyle bir yan tümce belirtilmek suretiyle elde edilir.  Örnek:
+B2C 'deki ilkeler ayrı yetkililer olarak temsil edildiğinden, `fromAuthority` `acquireToken` veya `acquireTokenSilent` parametreleri oluşturulurken bir yan tümce belirtilerek varsayılan dışında bir ilke çağırma elde edilir.  Örneğin:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
@@ -151,13 +151,13 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
     .build();
 ```
 
-## <a name="handle-password-change-policies"></a>Parola değişikliği ilkelerini işleme
+## <a name="handle-password-change-policies"></a>Parola değiştirme ilkelerini işle
 
-Yerel hesap kayıt veya oturum açma kullanıcı akışı '**Şifremi unuttum?**' Bağlantı. Bu bağlantıyı tıklattığınızda otomatik olarak bir parola sıfırlama kullanıcı akışını tetiklemez.
+Yerel hesap kaydolma veya oturum açma Kullanıcı akışında bir '**parola unuttum?**' görüntülenir bağlantısının. Bu bağlantıya tıkladığınızda parola sıfırlama Kullanıcı akışı otomatik olarak tetiklenemez.
 
-Bunun yerine, `AADB2C90118` hata kodu uygulamanıza döndürülür. Uygulamanız, parolayı sıfırlayan belirli bir kullanıcı akışını çalıştırarak bu hata kodunu işlemelidir.
+Bunun yerine, hata kodu `AADB2C90118` uygulamanıza döndürülür. Uygulamanız, parolayı sıfırlayan belirli bir kullanıcı akışını çalıştırarak bu hata kodunu işlemelidir.
 
-Parola sıfırlama hata kodunu yakalamak için aşağıdaki uygulama aşağıdaki `AuthenticationCallback`uygulama için kullanılabilir:
+Parola sıfırlama hata kodunu yakalamak için aşağıdaki uygulama içinde kullanılabilir `AuthenticationCallback`:
 
 ```java
 new AuthenticationCallback() {
@@ -183,11 +183,11 @@ new AuthenticationCallback() {
 }
 ```
 
-## <a name="use-iauthenticationresult"></a>IAuthenticationResult'ı kullanma
+## <a name="use-iauthenticationresult"></a>Iauthenticationresult kullanın
 
-Başarılı bir belirteç `IAuthenticationResult` edinimi bir nesneyle sonuçlanır. Erişim belirteci, kullanıcı talepleri ve meta verileri içerir.
+Başarılı belirteç alımı bir `IAuthenticationResult` nesne ile sonuçlanır. Erişim belirtecini, Kullanıcı taleplerini ve meta verileri içerir.
 
-### <a name="get-the-access-token-and-related-properties"></a>Erişim jetonu ve ilgili özellikleri alın
+### <a name="get-the-access-token-and-related-properties"></a>Erişim belirtecini ve ilgili özellikleri al
 
 ```java
 // Get the raw bearer token
@@ -203,7 +203,7 @@ Date expiry = authenticationResult.getExpiresOn();
 String tenantId = authenticationResult.getTenantId();
 ```
 
-### <a name="get-the-authorized-account"></a>Yetkili hesabı alın
+### <a name="get-the-authorized-account"></a>Yetkili hesabı al
 
 ```java
 // Get the account from the result
@@ -225,18 +225,18 @@ String username = account.getUsername();
 String tenantId = account.getTenantId();
 ```
 
-### <a name="idtoken-claims"></a>IdToken talepleri
+### <a name="idtoken-claims"></a>Idtoken talepleri
 
-IdToken'da iade edilen talepler MSAL tarafından değil, Güvenlik Belirteci Servisi (STS) tarafından doldurulur. Kullanılan kimlik sağlayıcısına (IdP) bağlı olarak, bazı talepler yok olabilir. Bazı IDP'ler şu `preferred_username` anda hak talebinde bulunmuyor. Çünkü bu talep MSAL tarafından önbelleğe almak `MISSING FROM THE TOKEN RESPONSE`için kullanılır, bir yer tutucu değeri, onun yerine kullanılır. B2C IdToken talepleri hakkında daha fazla bilgi için Azure [Etkin Dizini B2C'deki belirteçlere Genel Bakış](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims)bölümüne bakın.
+Idtoken 'da döndürülen talepler, MSAL tarafından değil güvenlik belirteci hizmeti (STS) tarafından doldurulur. Kullanılan kimlik sağlayıcısına (IDP) bağlı olarak bazı talepler bulunmayabilir. Bazı IDPs `preferred_username` talepleri Şu anda sağlamıyor. Bu talep, önbelleğe alma için MSAL tarafından kullanıldığı için, yerine bir yer `MISSING FROM THE TOKEN RESPONSE`tutucu değeri kullanılır. B2C ıdtoken talepleri hakkında daha fazla bilgi için bkz. [Azure Active Directory B2C belirteçlere genel bakış](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims).
 
 ## <a name="managing-accounts-and-policies"></a>Hesapları ve ilkeleri yönetme
 
-B2C her ilkeyi ayrı bir otorite olarak ele alar. Bu nedenle, her ilkeden döndürülen erişim belirteçleri, yenileme belirteçleri ve kimlik belirteçleri birbirinin yerine çıkarılamaz. Bu, her ilkenin belirteçleri diğer ilkeleri çağırmak için kullanılamayan ayrı `IAccount` bir nesne döndürdİğİ anlamına gelir.
+B2C her bir ilkeyi ayrı bir yetkili olarak değerlendirir. Bu nedenle, her ilkeden döndürülen erişim belirteçleri, belirteçleri Yenile ve KIMLIK belirteçleri birbirini değiştirmez. Bu, her ilkenin belirteçleri diğer ilkeleri `IAccount` çağırmak için kullanılamayan ayrı bir nesne döndürdüğü anlamına gelir.
 
-Her ilke, her kullanıcı için önbelleğe bir ekspertme `IAccount` ekler. Bir kullanıcı bir uygulamayı imzalar ve iki ilke çağırırsa, iki `IAccount`s'leri olur. Bu kullanıcıyı önbellekten kaldırmak için `removeAccount()` her ilke için aramanız gerekir.
+Her ilke, her `IAccount` Kullanıcı için önbelleğe ekler. Bir Kullanıcı bir uygulamada oturum açarsa ve iki ilkeyi çağırlarsa iki `IAccount`s vardır. Bu kullanıcıyı önbellekten kaldırmak için her ilke için çağrı `removeAccount()` yapmanız gerekir.
 
-Bir iipolitikasının belirteçlerini `acquireTokenSilent`yenilediğinizde, ilkenin önceki çağrılarından döndürülen inanca `IAccount` `AcquireTokenSilentParameters`da aynı sıyrık. Başka bir ilke tarafından döndürülen bir hesap sağlamak bir hataya neden olur.
+Bir ilke için belirteçleri yenilediğinizde `acquireTokenSilent`, ilkenin önceki etkinleştirilmelerinde döndürülen aynısını `IAccount` sağlayın. `AcquireTokenSilentParameters` Başka bir ilke tarafından döndürülen bir hesabın sağlanması hataya neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Active Directory B2C (Azure AD B2C) hakkında daha fazla bilgi edinin, [Azure Active Directory B2C nedir?](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
+[Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview) Azure Active Directory B2C (Azure AD B2C) hakkında daha fazla bilgi edinin.

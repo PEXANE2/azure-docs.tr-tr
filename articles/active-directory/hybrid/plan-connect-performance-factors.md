@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect performansını etkileyen faktörler
-description: Bu belge, çeşitli faktörlerin Azure AD Connect sağlama altyapısını nasıl etkilediğini açıklar. Bu etkenler, kuruluşların eşitleme gereksinimlerini karşıladığından emin olmak için Azure AD Connect dağıtımlarını planlamalarına yardımcı olur.
+description: Bu belgede, çeşitli faktörlerin Azure AD Connect sağlama altyapısını nasıl etkilediği açıklanmaktadır. Bu faktörler, kuruluşların eşitleme gereksinimlerini karşıladığından emin olmak için Azure AD Connect dağıtımını planlamalarına yardımcı olur.
 services: active-directory
 author: billmath
 manager: daveba
@@ -14,180 +14,180 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76897063"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Azure AD Connect performansını etkileyen faktörler
 
-Azure AD Connect, Etkin Dizininizi Azure AD ile eşitler. Bu sunucu, kullanıcı kimliklerinizi buluta taşımanın önemli bir bileşenidir. Azure AD Bağlantısının performansını etkileyen başlıca etkenler şunlardır:
+Azure AD Connect Active Directory Azure AD 'ye eşitler. Bu sunucu, kullanıcı kimliklerinizi buluta taşımaya yönelik kritik bir bileşendir. Azure AD Connect performansını etkileyen birincil faktörler şunlardır:
 
 | **Tasarım faktörü**| **Tanım** |
 |:-|-|
-| Topoloji| Azure AD Connect'in ağda yönetilmesi gereken uç noktaların ve bileşenlerin dağıtımı. |
-| Ölçek| Azure AD Connect tarafından yönetilecek kullanıcılar, gruplar ve OSB gibi nesnelerin sayısı. |
-| Donanım| Azure AD Connect'in donanımı (fiziksel veya sanal) ve CPU, bellek, ağ ve sabit disk yapılandırması dahil olmak üzere her donanım bileşeninin bağımlı performans kapasitesi. |
-| Yapılandırma| Azure AD Connect dizinleri ve bilgileri nasıl işler? |
-| Yükleme| Nesne değişikliklerinin sıklığı. Yükler bir saat, gün veya hafta boyunca değişebilir. Bileşene bağlı olarak, en yüksek yük veya ortalama yük için tasarım yapmak zorunda klabilirsiniz. |
+| Topoloji| Uç noktaların ve bileşenlerin dağıtımı Azure AD Connect ağ üzerinde yönetilmesi gerekir. |
+| Ölçek| Azure AD Connect tarafından yönetilecek kullanıcılar, gruplar ve OU 'Lar gibi nesnelerin sayısı. |
+| Donanım| Azure AD Connect için donanım (fiziksel veya sanal) ve CPU, bellek, ağ ve sabit sürücü yapılandırması gibi her bir donanım bileşeninin bağımlı performans kapasitesi. |
+| Yapılandırma| Azure AD Connect dizinleri ve bilgileri nasıl işler. |
+| Yükleme| Nesne değişikliklerinin sıklığı. Yükleme bir saat, gün veya hafta boyunca farklılık gösterebilir. Bileşene bağlı olarak, yoğun yük veya ortalama yük için tasarım yapmanız gerekebilir. |
 
-Bu belgenin amacı, Azure AD Connect sağlama altyapısının performansını etkileyen faktörleri açıklamaktır. Büyük veya karmaşık kuruluşlar (100.000'den fazla nesne sağlayan kuruluşlar) burada özetlenen herhangi bir performans sorunuyla karşılaşırsa, Azure AD Connect uygulamalarını optimize etmek için önerileri kullanabilir. Azure AD Connect'in Azure [AD Connect sistem durumu](how-to-connect-health-agent-install.md) ve aracılar gibi diğer bileşenleri burada kapsam almaz.
+Bu belgenin amacı, Azure AD Connect sağlama altyapısının performansını etkileyen faktörleri anlatmaktadır. Büyük veya karmaşık kuruluşlar (100.000 'den fazla nesne sağlama), burada özetlenen performans sorunlarıyla karşılaşmaları halinde Azure AD Connect uygulamasını iyileştirmek için önerileri kullanabilir. [Azure AD Connect sistem durumu](how-to-connect-health-agent-install.md) ve aracılar gibi diğer Azure AD Connect bileşenleri burada kapsanmaz.
 
 > [!IMPORTANT]
-> Microsoft, Azure AD Connect'in resmi olarak belgelenen eylemlerin dışında değiştirilmesini veya çalıştırını desteklemez. Bu eylemlerden herhangi biri, Azure AD Connect eşitlemesinde tutarsız veya desteklenmeyen bir duruma neden olabilir. Sonuç olarak, Microsoft bu tür dağıtımlar için teknik destek sağlayamaz.
+> Microsoft, resmi olarak belgelenen eylemlerin dışında değiştirme veya çalıştırma Azure AD Connect desteklemez. Bu eylemlerden herhangi biri tutarsız veya Azure AD Connect eşitlemeye neden olabilecek bir durum oluşabilir. Sonuç olarak, Microsoft bu tür dağıtımlar için teknik destek sağlayamaz.
 
 ## <a name="azure-ad-connect-component-factors"></a>Azure AD Connect bileşen faktörleri
 
-Aşağıdaki diyagram, birden çok orman desteklenmiş olsa da, tek bir ormana bağlanan sağlama motorunun üst düzey mimarisini gösterir. Bu mimari, çeşitli bileşenlerin birbiriyle nasıl etkileşimde olduğunu gösterir.
+Aşağıdaki diyagramda, birden çok orman desteklenmesine karşın, tek bir ormana bağlanan bir sağlama altyapısının üst düzey mimarisi gösterilmektedir. Bu mimari çeşitli bileşenlerin birbirleriyle nasıl etkileşime gireceğini gösterir.
 
-![AzureADConnentDahil](media/plan-connect-performance-factors/AzureADConnentInternal.png)
+![Azureadconnentınternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
-Sağlama altyapısı her Active Directory ormanına ve Azure AD'ye bağlanır. Her dizindeki bilgileri okuma işlemine Alma denir. Dışa aktarma, sağlama motorundaki dizinlerin güncelleştirilmesi anlamına gelir. Eşitleme, nesnelerin sağlama motorunun içinde nasıl akacağına ilişkin kuralları değerlendirir. Daha derin bir dalış için [Azure AD Connect eşitlemesine başvurabilirsiniz: Mimariyi anlama.](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
+Sağlama altyapısı her bir Active Directory ormanına ve Azure AD 'ye bağlanır. Her dizinden bilgi okuma işlemi Içeri aktarma olarak adlandırılır. Dışarı aktarma işlemi, dizinleri sağlama altyapısından güncelleştirmek anlamına gelir. Eşitleme, nesnelerin sağlama altyapısının içinde nasıl akacağı kurallarını değerlendirir. Daha ayrıntılı bir bakış için, [Azure AD Connect eşitleme: mimariyi anlama](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)bölümüne başvurabilirsiniz.
 
-Azure AD Connect, Etkin Dizin'den Azure AD'ye eşitleme nin izin vermek için aşağıdaki hazırlama alanlarını, kurallarını ve işlemlerini kullanır:
+Azure AD Connect, Active Directory Azure AD 'ye eşitlemeye izin vermek için aşağıdaki hazırlama bölgelerini, kuralları ve süreçlerini kullanır:
 
-* **Bağlayıcı Alanı (CS)** - Gerçek dizinler olan her bağlı dizindeki (CD) nesneler, sağlama altyapısı tarafından işlenmeden önce burada ilk kez sahnelenir. Azure AD'nin kendi CS'si vardır ve bağlandığınız her ormanın kendi CS'si vardır.
-* **Metaverse (MV)** - Eşitlenmesi gereken nesneler eşitleme kurallarına göre burada oluşturulur. Nesneleri ve öznitelikleri diğer bağlı dizinlere doldurmak için önce MV nesneleri var olmalıdır. Sadece bir MV var.
-* **Eşitleme kuralları** - MV'deki nesnelere hangi nesnelerin oluşturulacağına (yansıtılacağına) veya bağlanacağına (birleşeceğine) karar verirler. Eşitleme kuralları ayrıca hangi öznitelik değerlerinin kopyalanacağına veya dizinlere ve dizinlere dönüştürüleceğine de karar verir.
-* **Profili çalıştır** - Nesneleri ve öznitelik değerlerini ayırma alanları ve bağlı dizinler arasındaki eşitleme kurallarına göre kopyalama işlem adımlarını paketler.
+* **Bağlayıcı alanı (CS)** -her bağlı DIZINDEKI (CD), gerçek dizinlerin nesneleri, sağlama altyapısı tarafından işlenebilmeleri için önce burada hazırlanır. Azure AD 'nin kendi CS ve bağlandığınız her ormanın kendine ait CS vardır.
+* **Meta veri deposu (MV)** -eşitlenmesi gereken nesneler, eşitleme kurallarına göre burada oluşturulur. Nesnelerin, nesneleri ve öznitelikleri diğer bağlı dizinlere doldurmasına izin vermeden önce, nesneler MV içinde bulunmalıdır. Yalnızca bir MV vardır.
+* **Eşitleme kuralları** -hangi nesnelerin (yansıtılmış) veya MV 'daki nesnelere bağlı (birleştirilmiş) olduğuna karar verir. Eşitleme kuralları ayrıca hangi öznitelik değerlerinin dizine ve dizinlerden/veya bu dizinlere dönüştürüleceğini de karar verir.
+* **Çalıştırma profilleri** -, hazırlama alanı ve bağlı dizinler arasındaki eşitleme kurallarına göre nesneleri ve bunların öznitelik değerlerini kopyalamanın işlem adımlarını sağlar.
 
-Sağlama altyapısının performansını optimize etmek için farklı çalışma profilleri vardır. Çoğu kuruluş varsayılan zamanlamaları kullanır ve normal işlemler için profilleri çalıştırın, ancak bazı kuruluşların sık karşılaşılan durumlara hitap etmek için [zamanlamayı değiştirmesi](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler) veya diğer çalışma profillerini tetiklemesi gerekebilir. Aşağıdaki çalışma profilleri kullanılabilir:
+Sağlama altyapısının performansını iyileştirmek için farklı çalıştırma profilleri vardır. Çoğu kuruluş, varsayılan zamanlamaları kullanır ve normal işlemler için profilleri çalıştırır, ancak bazı kuruluşların yaygın olmayan durumlar için [zamanlamayı değiştirmek](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler) veya diğer çalıştırma profillerini kullanmak zorunda olması gerekebilir. Aşağıdaki çalıştırma profilleri kullanılabilir:
 
 ### <a name="initial-sync-profile"></a>İlk eşitleme profili
 
-İlk eşitleme profili, bağlı dizinleri ilk kez Etkin Dizin ormanı gibi okuma işlemidir. Daha sonra eşitleme motoru veritabanında tüm girişleri bir analiz yapar. İlk döngü Azure AD'de yeni nesneler oluşturur ve Active Directory ormanlarınız büyükse tamamlanması ekstra zaman alır. İlk eşitleme aşağıdaki adımları içerir:
+İlk eşitleme profili, Active Directory ormanı gibi bağlı dizinleri ilk kez okuma işlemidir. Ardından, eşitleme altyapısı veritabanındaki tüm girişlerde bir analiz yapar. İlk zaman, Azure AD 'de yeni nesneler oluşturacak ve Active Directory ormanlarınız büyükse daha fazla zaman alacak. İlk eşitleme aşağıdaki adımları içerir:
 
-1. Tüm konektörlerde tam alma
-2. Tüm konektörlerde tam eşitleme
-3. Tüm konektörlere dışa aktarma
+1. Tüm bağlayıcılarda tam içeri aktarma
+2. Tüm bağlayıcılarda tam eşitleme
+3. Tüm bağlayıcılarda dışarı aktar
 
-### <a name="delta-sync-profile"></a>Delta senkronizasyon profili
+### <a name="delta-sync-profile"></a>Delta eşitleme profili
 
-Eşitleme işlemini en iyi duruma getirmek için bu çalıştırma profili yalnızca bağlı dizinlerinizdeki nesnelerin değişikliklerini (oluşturur, siler ve güncelleştirmeler) son eşitleme işleminden bu yana işlemeyi sağlar. Varsayılan olarak, delta eşitleme profili her 30 dakikada bir çalışır. Kuruluşlar, Azure REKLAM'ın güncel olduğundan emin olmak için gereken süreyi 30 dakikanın altında tutmaya çalışmalıdır. Azure AD Connect'in durumunu izlemek için, işlemle ilgili sorunları görmek için [sistem durumu izleme aracısını](how-to-connect-health-sync.md) kullanın. Delta eşitleme profili aşağıdaki adımları içerir:
+Eşitleme işlemini iyileştirmek için bu çalıştırma profili, son eşitleme işleminden bu yana bağlantılı dizinlerinizdeki nesnelerin yalnızca değişikliklerini (oluşturur, siler ve güncelleştirmeler) işler. Varsayılan olarak, Delta eşitleme profili her 30 dakikada bir çalışır. Kuruluşların, Azure AD 'nin güncel olduğundan emin olmak için 30 dakikadan daha kısa sürede sürme süresini üstlenmelidir. Azure AD Connect durumunu izlemek için, işlemle ilgili herhangi bir sorunu görmek için [sistem durumu izleme aracısını](how-to-connect-health-sync.md) kullanın. Delta eşitleme profili aşağıdaki adımları içerir:
 
-1. Tüm konektörlerde Delta alma
-2. Tüm konektörlerde delta senkronizasyonu
-3. Tüm konektörlere dışa aktarma
+1. Tüm bağlayıcılarda Delta içeri aktarma
+2. Tüm bağlayıcılarda Delta eşitleme
+3. Tüm bağlayıcılarda dışarı aktar
 
-Tipik bir kurumsal kuruluş delta eşitleme senaryosu:
+Tipik bir kurumsal kuruluş Delta eşitleme senaryosu şunlardır:
 
-- Nesnelerin ~%1'i silinir
-- ~1% nesnelerin oluşturulur
-- Nesnelerin ~%5'i değiştirildi
+- ~ nesnelerin %1 ' i silindi
+- ~ nesnelerin %1 ' i oluşturuldu
+- ~ nesnelerin %5 ' i değiştirildi
 
-Değişiklik oranınız, kuruluşunuzun Etkin Dizininizdeki kullanıcıları ne sıklıkta güncellebileceğine bağlı olarak değişebilir. Örneğin, işe alma ve iş gücünün azaltılması mevsimsellik ile daha yüksek değişim oranları oluşabilir.
+Değişiklik hızlarınız, kuruluşunuzun Active Directory kullanıcıları ne sıklıkta güncelleştirdiğine bağlı olarak değişebilir. Örneğin, iş zorlamaya ve azaltmaya yönelik mevsimsellik sayesinde daha yüksek bir değişiklik ücretleri meydana gelebilir.
 
 ### <a name="full-sync-profile"></a>Tam eşitleme profili
 
-Aşağıdaki yapılandırma değişikliklerinden herhangi birini yaptıysanız tam eşitleme döngüsü gereklidir:
+Aşağıdaki yapılandırma değişikliklerinden birini yaptıysanız tam bir eşitleme çevrimi gereklidir:
 
 
 
-- Bağlı dizinlerden alınacak nesnelerin veya özniteliklerin kapsamı artırıldı. Örneğin, alma kapsamınıza bir etki alanı veya OU eklediğinizde.
-- Eşitleme kurallarında değişiklik yapıldı. Örneğin, Bir kullanıcının unvanını Azure AD'de Etkin Dizini'ndeki extension_attribute3 doldurmak için yeni bir kural oluşturduğunuzda. Bu güncelleştirme, sağlama altyapısının, ileriye dönük değişikliği uygulamak için başlıklarını güncelleştirmeleri için varolan tüm kullanıcıları yeniden incelemesini gerektirir.
+- Bağlı dizinlerden içeri aktarılacak nesne veya özniteliklerin kapsamı arttırılmıştır. Örneğin, içeri aktarma kapsamınızda bir etki alanı veya OU eklediğinizde.
+- Eşitleme kurallarında değişiklikler yapıldı. Örneğin, Azure AD 'de bir kullanıcının başlığını Active Directory extension_attribute3 olarak doldurmak için yeni bir kural oluşturduğunuzda. Bu güncelleştirme, sağlama altyapısının, tüm mevcut kullanıcıları yeniden inceleyerek, başlıkları öne çıkan değişikliği uygulayacak şekilde güncelleştirir.
 
 Aşağıdaki işlemler tam eşitleme döngüsüne dahildir:
 
-1. Tüm konektörlerde tam alma
-2. Tüm konektörlerde tam/Delta senkronizasyonu
-3. Tüm konektörlere dışa aktarma
+1. Tüm bağlayıcılarda tam içeri aktarma
+2. Tüm bağlayıcılarda tam/Delta eşitlemesi
+3. Tüm bağlayıcılarda dışarı aktar
 
 > [!NOTE]
-> Etkin Dizinveya Azure AD'nizdeki birçok nesneiçin toplu güncelleştirmeler yaparken dikkatli planlama gereklidir. Toplu güncelleştirmeler, çok sayıda nesne değiştiğinden, içe aktarma işlemi nin daha uzun sürmesine neden olur. Toplu güncelleştirme eşitleme işlemini etkilemese bile uzun içe almalar gerçekleşebilir. Örneğin, Azure AD'deki birçok kullanıcıya lisans atamak Azure AD'den uzun bir alma döngüsüne neden olur, ancak Active Directory'de herhangi bir öznitelik değişikliğine neden olmaz.
+> Active Directory veya Azure AD 'de çok sayıda nesneye toplu güncelleştirmeler yaparken dikkatli bir planlama yapmanız gerekir. Çok sayıda nesne değiştiğinden, toplu güncelleştirmeler içeri aktarma sırasında Delta eşitleme işleminin daha uzun sürmesine neden olur. Toplu güncelleştirme eşitleme işlemini etkilemese bile uzun içeri aktarmalar gerçekleşebilir. Örneğin, Azure AD 'de birçok kullanıcıya lisans atamak, Azure AD 'den uzun bir içeri aktarma döngüsüne neden olur, ancak Active Directory hiçbir öznitelik değişikliğine neden olmaz.
 
 ### <a name="synchronization"></a>Eşitleme
 
-Eşitleme işlemi çalışma süresi aşağıdaki performans özelliklerine sahiptir:
+Eşitleme işlemi çalışma zamanı, aşağıdaki performans özelliklerine sahiptir:
 
-* Eşitleme tek iş parçacığı, yani sağlama altyapısı bağlı dizinlerin, nesnelerin veya özniteliklerin çalışma profillerinin paralel bir işlemesini yapmaz.
-* Alma süresi, eşitlenen nesne sayısıyla doğrusal olarak büyür. Örneğin, 10.000 nesnenin içe aktarılaması 10 dakika sürüyorsa, 20.000 nesne aynı sunucuda yaklaşık 20 dakika sürer.
-* Dışa aktarma da doğrusal.
-* Eşitleme, diğer nesnelere başvuruolan nesnelerin sayısına bağlı olarak katlanarak büyür. Üyeleri kullanıcı nesnelerine veya diğer gruplara atıfta bulunduğundan, grup üyelikleri ve iç içe geçen gruplar ana performans etkisine sahiptir. Eşitleme döngüsünü tamamlamak için bu başvurular bulunmalıdır ve MV'deki gerçek nesnelere başvurulmalıdır.
+* Eşitleme tek iş parçacıklı, yani sağlama altyapısı bağlı dizinlerin, nesnelerin veya özniteliklerin çalıştırma profillerinin hiçbir paralel işlemesini yapmaz.
+* İçeri aktarma süresi, eşitlenen nesne sayısıyla doğrusal olarak artar. Örneğin, 10.000 nesnelerinin içeri aktarılması 10 dakika alıyorsa, 20.000 nesne aynı sunucuda yaklaşık 20 dakika sürer.
+* Dışarı aktarma da doğrusal bir şekilde yapılır.
+* Eşitleme, diğer nesnelere başvuru içeren nesne sayısına göre üstel olarak artar. Grup üyelikleri ve iç içe gruplar, üyeleri Kullanıcı nesnelerine veya diğer gruplara başvurduğundan ana performans etkisine sahiptir. Eşitleme döngüsünü tamamlayabilmeniz için bu başvuruların bulunması ve MV içindeki gerçek nesnelere başvurulması gerekir.
 
 ### <a name="filtering"></a>Filtreleme
 
-Almak istediğiniz Active Directory topolojisinin boyutu, sağlama altyapısının iç bileşenlerinin alacağı performansı ve genel süreyi etkileyen bir numaralı faktördür.
+İçeri aktarmak istediğiniz Active Directory topolojisinin boyutu, performansı etkileyen bir faktörün ve sağlama altyapısının iç bileşenlerinin zaman aldığı sayıdır.
 
-[Filtreleme,](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering) nesneleri eşitlenene düşürmek için kullanılmalıdır. Gereksiz nesnelerin işlenmesini ve Azure AD'ye dışa aktarılmasını önler. Tercih sırasına göre, aşağıdaki filtreleme teknikleri mevcuttur:
-
-
-
-- **Etki alanı tabanlı filtreleme** – Azure AD ile eşitlemek için belirli etki alanlarını seçmek için bu seçeneği kullanın. Azure AD Connect eşitlemeyi yükledikten sonra şirket içi altyapınızda değişiklik yaptığınızda eşitleme motoru yapılandırmasından etki alanları eklemeniz ve kaldırmanız gerekir.
-- **Kuruluş Birimi (OU) filtreleme** - Azure AD'ye sağlama için Active Directory etki alanlarındaki belirli nesneleri hedeflemek için OS B'leri kullanır. Ou filtreleme, Active Directory'den daha küçük bir nesne alt kümesini almak için basit LDAP kapsam sorguları kullandığından, önerilen ikinci filtreleme mekanizmasıdır.
-- **Nesne başına öznitelik filtreleme** - Etkin Dizin'deki belirli nesnenin Azure AD'de sağlanıp sağlanmayacağına karar vermek için nesnelerdeki öznitelik değerlerini kullanır. Öznitelik filtreleme, etki alanı ve OU filtreleme nin belirli filtreleme gereksinimlerini karşılamadığı nda, filtrelerinizi hassas ayarlaya kadar mükemmeldir. Öznitelik filtreleme alma süresini azaltmaz, eşitleme ve dışa aktarma sürelerini azaltabilir.
-- **Grup tabanlı filtreleme** - nesnelerin Azure AD'de sağlanıp sağlanmayacağına karar vermek için grup üyeliğini kullanır. Grup tabanlı filtreleme yalnızca test durumları için uygundur ve eşitleme döngüsü sırasında grup üyeliğini denetlemek için gereken ek ek yükü nedeniyle üretim için önerilmez.
-
-Etkin Dizin CS'nizdeki birçok kalıcı [bağlantı kesiği nesnesi](concept-azure-ad-connect-sync-architecture.md#relationships-between-staging-objects-and-metaverse-objects) daha uzun eşitleme sürelerine neden olabilir, çünkü sağlama altyapısı eşitleme döngüsünde olası bağlantı için her bağlantı kesilemesi nesnesini yeniden değerlendirmek zorundadır. Bu sorunun üstesinden gelmek için aşağıdaki önerilerden birini göz önünde bulundurun:
+Nesneleri eşitlenecek şekilde azaltmak için [filtreleme](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering) kullanılmalıdır. Bu, gereksiz nesnelerin işlenmesini ve Azure AD 'ye verilmesini engeller. Tercih sırasına göre, filtreleme için aşağıdaki teknikler kullanılabilir:
 
 
 
-- Bağlantı keseci nesneleri etki alanı veya OU filtreleme kullanarak alma için kapsam dışına yerleştirin.
-- Azure AD CS'de bu nesnelerin sağlanmasını önlemek için nesneleri MV'ye projelendi/katılın ve [bulutFiltreleştirilmiş](how-to-connect-sync-configure-filtering.md#negative-filtering-do-not-sync-these) özniteliği True'ya eşit olarak ayarlayın.
+- **Etki alanı tabanlı filtreleme** – Azure AD ile eşitlenecek belirli etki alanlarını seçmek için bu seçeneği kullanın. Azure AD Connect eşitlemesini yükledikten sonra şirket içi altyapınızda değişiklik yaptığınızda, eşitleme altyapısı yapılandırmasına etki alanı eklemeniz ve çıkarmanız gerekir.
+- **Kuruluş birimi (OU) filtreleme** -Azure AD 'ye sağlamak üzere Active Directory etki alanlarında belirli nesneleri hedeflemek Için kuruluş birimleri kullanır. OU filtrelemesi, en az bir nesne alt kümesini Active Directory içeri aktarmak için basit LDAP kapsam sorguları kullandığından, ikinci önerilen filtreleme mekanizmasıdır.
+- **Nesne başına öznitelik filtreleme** -Active Directory içindeki belirli bir NESNENIN Azure AD 'de sağlanmasının gerekip gerekmediğine karar vermek için nesnelerdeki öznitelik değerlerini kullanır. Etki alanı ve OU filtrelemesi belirli filtreleme gereksinimlerini karşılamadığında, filtrelerinizin ince ayar yapmak için öznitelik filtrelemesi çok uygundur. Öznitelik filtrelemesi içeri aktarma süresini azaltmaz, ancak eşitleme ve dışarı aktarma sürelerini azaltabilir.
+- **Grup tabanlı filtreleme** -NESNELERIN Azure AD 'de sağlanması gerekip gerekmediğine karar vermek için Grup üyeliğini kullanır. Grup tabanlı filtreleme, eşitleme çevrimi sırasında grup üyeliğini denetlemek için gereken ek yük nedeniyle, yalnızca test durumları için uygundur ve üretim için önerilmez.
+
+Active Directory CS 'deki pek çok kalıcı [ayırıcı](concept-azure-ad-connect-sync-architecture.md#relationships-between-staging-objects-and-metaverse-objects) nesne, eşitleme döngüsünün olası bağlantı için her bir ayırıcı nesnesini yeniden değerlendirmesine yol açacağından, eşitleme süreleri daha uzun olabilir. Bu sorunu aşmak için aşağıdaki önerilerden birini göz önünde bulundurun:
+
+
+
+- Etki alanı veya OU filtrelemesini kullanarak içeri aktarma için, ayırıcı nesnelerini kapsam dışına yerleştirin.
+- Azure AD CS 'de bu nesnelerin sağlanmasını engellemek için, nesneleri MV 'a ekleyin ve [Cloudfiltrelenmiş](how-to-connect-sync-configure-filtering.md#negative-filtering-do-not-sync-these) özniteliğini true değerine ayarlayın.
 
 > [!NOTE]
-> Çok fazla nesne filtrelendiğinde, kullanıcıların kafası karışabilir veya uygulama izinleri sorunları oluşabilir. Örneğin, karma Exchange çevrimiçi uygulamasında, şirket içi posta kutuları olan kullanıcılar, global adres listelerinde Exchange çevrimiçi posta kutuları olan kullanıcılardan daha fazla kullanıcı görür. Diğer durumlarda, bir kullanıcı bir bulut uygulamasında filtre uygulanmış nesne kümesinin kapsamının bir parçası olmayan başka bir kullanıcıya erişim izni vermek isteyebilir.
+> Çok fazla nesne filtrelendiğinde, kullanıcılar kafa karışıyor veya uygulama izinleri sorunları ortaya çıkabilir. Örneğin, karma bir Exchange Online uygulamasında, şirket içi posta kutularına sahip kullanıcılar, Exchange Online 'da posta kutusu olan kullanıcılardan, genel adres listesinde daha fazla Kullanıcı görecektir. Diğer durumlarda, bir Kullanıcı, bir bulut uygulamasında filtrelenmiş nesne kümesinin kapsamına dahil olmayan başka bir kullanıcıya erişim izni vermek isteyebilir.
 
 ### <a name="attribute-flows"></a>Öznitelik akışları
 
-Öznitelik akışları, nesnelerin öznitelik değerlerini bir bağlı dizinden başka bir bağlı dizine kopyalama veya dönüştürme işlemidir. Eşitleme kurallarının bir parçası olarak tanımlanırlar. Örneğin, Etkin Dizininizde bir kullanıcının telefon numarası değiştirildiğinde, Azure AD'deki telefon numarası güncelleştirilir. Kuruluşlar [öznitelik akışlarını](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-change-the-configuration) çeşitli gereksinimleri süitlere göre değiştirebilir. Varolan öznitelik akışlarını değiştirmeden önce kopyalamanız önerilir.
+Öznitelik akışları, nesnelerin öznitelik değerlerini bir bağlı dizinden başka bir bağlı dizine kopyalama veya dönüştürme işlemidir. Eşitleme kurallarının bir parçası olarak tanımlanırlar. Örneğin, bir kullanıcının telefon numarası Active Directory değiştirildiğinde, Azure AD 'deki telefon numarası güncelleştirilecektir. Kuruluşlar, çeşitli gereksinimleri paketleyebileceği [öznitelik akışlarını değiştirebilir](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-change-the-configuration) . Mevcut öznitelik akışlarını değiştirmeden önce kopyalamanız önerilir.
 
-Bir öznitelik değerini farklı bir özniteliğe akış gibi basit yönlendirmelerin malzeme performans etkisi yoktur. Yeniden yönlendirmenin bir örneği, Active Directory'deki bir cep telefonu numarasını Azure AD'deki ofis telefon numarasına akmasıdır.
+Bir öznitelik değerinin farklı bir özniteliğe akmasını sağlamak gibi basit yeniden yönlendirmeler, malzeme performansı olumsuz bir etkiye sahip değildir. Azure AD 'de telefon numarası Active Directory bir yeniden yönlendirmeye örnek olarak bir cep telefonu numarası akar.
 
-Öznitelik değerlerini dönüştürmenin eşitleme işlemi üzerinde bir performans etkisi olabilir. Öznitelik değerlerini dönüştürme, özniteliklerin değerlerini değiştirme, yeniden biçimlendirme, birliş bağlama veya çıkarma içerir.
+Öznitelik değerlerinin dönüştürülmesi, eşitleme işlemi üzerinde bir performans etkisine sahip olabilir. Öznitelik değerlerini dönüştürme, özniteliklerin değerlerini değiştirme, yeniden biçimlendirme, bitiştirme veya çıkarma içerir.
 
-Kuruluşlar belirli özniteliklerin Azure AD'ye akmasını engelleyebilir, ancak sağlama altyapısının performansını etkilemez.
+Kuruluşlar bazı özniteliklerin Azure AD 'ye akmasını engelleyebilir, ancak sağlama altyapısının performansını etkilemez.
 
 > [!NOTE]
-> Eşitleme kurallarınızda istenmeyen öznitelik akışlarını silmeyin. Silinen kurallar Azure AD Connect yükseltmeleri sırasında yeniden oluşturulduğundan, bunları devre dışı kaldırmanız önerilir.
+> Eşitleme kurallarınızda istenmeyen öznitelik akışlarını silmeyin. Azure AD Connect yükseltmeleri sırasında silinen kurallar yeniden oluşturulduğundan, bunları devre dışı bırakmanız önerilir.
 
-## <a name="azure-ad-connect-dependency-factors"></a>Azure AD Bağlantı bağımlılık faktörleri
+## <a name="azure-ad-connect-dependency-factors"></a>Azure AD Connect bağımlılık faktörleri
 
-Azure AD Connect'in performansı, içe aktettiği ve dışa aktettiği bağlı dizinlerin performansına bağlıdır. Örneğin, içe aktarması gereken Etkin Dizin boyutu veya Azure AD hizmetine ağ gecikmesi. Sağlama altyapısının kullandığı SQL veritabanı, eşitleme döngüsünün genel performansını da etkiler.
+Azure AD Connect performansı, içeri aktardığı ve dışa aktardığı bağlı dizinlerin performansına bağlıdır. Örneğin, içeri aktarılması gereken Active Directory boyutu veya Azure AD hizmetine ağ gecikmesi. Sağlama altyapısının kullandığı SQL veritabanı, eşitleme döngüsünün genel performansını da etkiler.
 
-### <a name="active-directory-factors"></a>Aktif Dizin faktörleri
+### <a name="active-directory-factors"></a>Active Directory faktörleri
 
-Daha önce de belirtildiği gibi, alınacak nesne sayısı performansı önemli ölçüde etkiler. [Azure AD Connect'in donanımı ve ön koşulları,](how-to-connect-install-prerequisites.md) dağıtımınızın boyutuna bağlı olarak belirli donanım katmanlarını ana hatlar. Azure AD Connect yalnızca Azure AD [Connect için Topolojilerde](plan-connect-topologies.md)belirtildiği gibi belirli topolojileri destekler. Desteklenmeyen topolojiler için performans optimizasyonu ve öneriler yoktur.
+Daha önce belirtildiği gibi, alınacak nesne sayısı performansı önemli ölçüde etkiler. [Azure AD Connect donanım ve önkoşulları](how-to-connect-install-prerequisites.md) , dağıtımınızın boyutuna bağlı olarak belirli donanım katmanlarını özetler. Azure AD Connect, yalnızca [Azure AD Connect topolojilerde](plan-connect-topologies.md)belirtilen topolojileri destekler. Desteklenmeyen topolojiler için performans iyileştirmesi ve öneriler yoktur.
 
-Azure AD Connect sunucunuzun, içe aktarmak istediğiniz Etkin Dizin boyutuna bağlı olarak donanım gereksinimlerini karşıladığından emin olun. Azure AD Connect sunucusu ile Active Directory etki alanı denetleyicileriniz arasındaki kötü veya yavaş ağ bağlantısı alma işleminizi yavaşlatabilir.
+Azure AD Connect sunucunuzun, içeri aktarmak istediğiniz Active Directory boyutuna bağlı olarak donanım gereksinimlerini karşıladığından emin olun. Azure AD Connect sunucusu ile Active Directory etki alanı denetleyicileriniz arasında bozuk veya yavaş ağ bağlantısı, içeri aktarmanızı yavaşlatabilir.
 
-### <a name="azure-ad-factors"></a>Azure REKLAM faktörleri
+### <a name="azure-ad-factors"></a>Azure AD faktörleri
 
-Azure AD, bulut hizmetini hizmet reddi (DoS) saldırılarından korumak için azaltma kullanır. Şu anda Azure AD'nin 5 dakikada 7.000 yazma (saatte 84.000) yazma azaltma sınırı vardır. Örneğin, aşağıdaki işlemler azaltılabilir:
+Azure AD, bulut hizmetini hizmet reddi (DoS) saldırılarına karşı korumak için azaltma kullanır. Şu anda Azure AD 'nin 5 dakika başına 7.000 yazma sınırlaması vardır (saat başına 84.000). Örneğin, aşağıdaki işlemler kısıtlanabilir:
 
 
 
-- Azure AD Connect dışa aktarma sı Azure AD'ye.
-- PowerShell komut dosyaları veya Dinamik grup üyelikleri gibi azure AD'yi arka planda bile doğrudan güncelleyen uygulamalar.
-- Kullanıcılar MFA veya SSPR (self servis şifre sıfırlama) için kayıt gibi kendi kimlik kayıtlarını güncellerler.
-- Grafik kullanıcı arabirimi içindeki işlemler.
+- Azure AD Connect Azure AD 'ye aktarın.
+- Dinamik grup üyelikleri gibi doğrudan arka planda bile Azure AD 'yi güncelleştiren PowerShell betikleri veya uygulamaları.
+- Kullanıcılar MFA veya SSPR 'ye kaydolma (self servis parola sıfırlama) gibi kendi kimlik kayıtlarını güncelliyor.
+- Grafik Kullanıcı arabirimindeki işlemler.
 
-Azure AD Connect eşitleme döngünüzün azaltma sınırlarını etkilemediğinden emin olmak için dağıtım ve bakım görevleri için plan yapın. Örneğin, binlerce kullanıcı kimliği oluşturduğunuz büyük bir işe alma dalganız varsa, dinamik grup üyeliklerinde güncelleştirmelere, lisans atamalarına ve self servis parola sıfırlama kayıtlarına neden olabilir. Bu yazıları birkaç saat veya birkaç gün içinde yaymak daha iyidir.
+Azure AD Connect eşitleme döngünüzün azaltma limitlerinin etkilenmediğinden emin olmak için dağıtım ve bakım görevlerini planlayın. Örneğin, binlerce Kullanıcı kimliği oluşturduğunuz büyük bir işe alma dalgasına sahipseniz, dinamik grup üyelikleri, lisanslama atamaları ve self servis parola sıfırlama kayıtlarında güncelleştirmelere neden olabilir. Bu yazmaları birkaç saat veya birkaç gün içinde yaymak daha iyidir.
 
 ### <a name="sql-database-factors"></a>SQL veritabanı faktörleri
 
-Kaynak Active Directory topolojinizin boyutu SQL veritabanı performansınızı etkiler. SQL sunucu veritabanı için [donanım gereksinimlerini](how-to-connect-install-prerequisites.md) izleyin ve aşağıdaki önerileri göz önünde bulundurun:
+Kaynak Active Directory topolojinizin boyutu SQL veritabanı performansınızı etkiler. SQL Server veritabanı için [donanım gereksinimlerini](how-to-connect-install-prerequisites.md) izleyin ve aşağıdaki önerileri göz önünde bulundurun:
 
 
 
-- 100.000'den fazla kullanıcısı olan kuruluşlar, SQL veritabanını ve sağlama altyapısını aynı sunucuda saklayarak ağ gecikmelerini azaltabilir.
-- Eşitleme işleminin yüksek disk giriş ve çıktı (G/Ç) gereksinimleri nedeniyle, en iyi sonuçlar için sağlama altyapısının SQL veritabanı için Solid State Drives (SSD) kullanın, mümkün değilse RAID 0 veya RAID 1 yapılandırmalarını düşünün.
-- Tam bir senkronizasyon yapmayın önceden boşbir şekilde; gereksiz çalkalama ve daha yavaş yanıt sürelerine neden olur.
+- 100.000 ' den fazla kullanıcısı olan kuruluşlar, SQL veritabanını ve sağlama altyapısını aynı sunucuda birleştirerek ağ gecikmelerinin azaltılmasına yönelik olabilir.
+- Eşitleme işleminin yüksek disk girişi ve çıkış (g/ç) gereksinimleri nedeniyle, en iyi sonuçlar için sağlama altyapısının SQL veritabanı için katı hal sürücüleri (SSD) kullanın, mümkün değilse RAID 0 veya RAID 1 konfigürasyonları değerlendirin.
+- Tam eşitleme ön önleyici yapmayın; gereksiz karmaşıklık ve daha yavaş yanıt sürelerine neden olur.
 
 ## <a name="conclusion"></a>Sonuç
 
-Azure AD Connect uygulamanızın performansını optimize etmek için aşağıdaki önerileri göz önünde bulundurun:
+Azure AD Connect uygulamanızın performansını iyileştirmek için aşağıdaki önerileri göz önünde bulundurun:
 
 
 
-- Azure AD Connect sunucusu için uygulama boyutunuza göre [önerilen donanım yapılandırmasını](how-to-connect-install-prerequisites.md) kullanın.
-- Azure AD Connect'i büyük ölçekli dağıtımlarda yükseltirken, en az kapalı kalma süresine ve en iyi güvenilirliğe sahip olduğunuzdan emin olmak için [salıncak geçiş yöntemini](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration)kullanmayı düşünün. 
-- En iyi yazma performansı için SQL veritabanı için SSD'yi kullanın.
-- Etkin Dizin kapsamını yalnızca etki alanı, OU veya öznitelik filtreleme kullanarak Azure AD'de sağlanması gereken nesneleri içerecek şekilde filtreleyin.
-- Varsayılan öznitelik akışı kurallarını değiştirmeniz gerekiyorsa, önce kuralı kopyalayın, sonra kopyayı değiştirin ve özgün kuralı devre dışı bırakın. Tam eşitlemeyi yeniden çalıştırmayı unutmayın.
-- İlk tam eşitleme çalıştırma profili için yeterli zamanı planlayın.
-- Delta senkronizasyon döngüsünü 30 dakikada tamamlamaya gayret edin. Delta eşitleme profili 30 dakika içinde tamamlanmazsa, varsayılan eşitleme sıklığını tam bir delta eşitleme döngüsü içerecek şekilde değiştirin.
-- Azure [AD Connect eşitleme sistemizini](how-to-connect-health-agent-install.md) Azure AD'de izleyin.
+- Azure AD Connect sunucusu için uygulama boyutunuzu temel alarak [Önerilen donanım yapılandırmasını](how-to-connect-install-prerequisites.md) kullanın.
+- Büyük ölçekli dağıtımlarda Azure AD Connect yükseltirken, en az kapalı kalma süresi ve en iyi güvenilirlik olduğundan emin olmak için [esnek geçiş yöntemini](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration)kullanmayı düşünün. 
+- En iyi yazma performansı için SQL veritabanı için SSD kullanın.
+- Active Directory kapsamını yalnızca Azure AD 'de, etki alanı, OU veya öznitelik filtrelemesi kullanılarak sağlanması gereken nesneleri içerecek şekilde filtreleyin.
+- Varsayılan öznitelik akış kurallarını değiştirmeniz gerekiyorsa, önce kuralı kopyalayın, sonra kopyayı değiştirin ve özgün kuralı devre dışı bırakın. Tam eşitlemeyi yeniden çalıştırmayı unutmayın.
+- İlk tam eşitleme çalıştırma profili için yeterli zaman planlayın.
+- 30 dakika içinde Delta eşitleme döngüsünü tamamlamaya çalışır. Delta eşitleme profili 30 dakika içinde tamamlanmazsa, varsayılan eşitleme sıklığını tam bir Delta eşitleme döngüsünü içerecek şekilde değiştirin.
+- Azure AD 'de [Azure AD Connect eşitleme sistem durumunu](how-to-connect-health-agent-install.md) izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

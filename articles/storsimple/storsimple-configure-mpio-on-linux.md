@@ -1,6 +1,6 @@
 ---
-title: MpIO'yi StorSimple Linux ana bilgisayarda yapılandır
-description: CentOS 6.6 çalıştıran bir Linux ana bilgisayara bağlı StorSimple'da MPIO'yu yapılandırın
+title: StorSimple Linux ana bilgisayarında MPIO yapılandırma
+description: CentOS 6,6 çalıştıran bir Linux ana bilgisayarına bağlı StorSimple üzerinde MPIO yapılandırma
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
@@ -8,67 +8,67 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 5dadd231335e93839e947077168f32dbfe96eb45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76278356"
 ---
-# <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS çalıştıran Bir StorSimple ana bilgisayarda MPIO yapılandırma
-Bu makalede, Centos 6.6 ana bilgisayar sunucunuzda Multipathing IO (MPIO) yapılandırmak için gereken adımlar açıklanmaktadır. Ana bilgisayar sunucusu, iSCSI başlatıcıları aracılığıyla yüksek kullanılabilirlik için Microsoft Azure StorSimple cihazınıza bağlıdır. Çoklu yol aygıtlarının otomatik olarak keşfini ve yalnızca StorSimple birimleri için belirli kurulumu ayrıntılı olarak açıklar.
+# <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS çalıştıran bir StorSimple ana bilgisayarında MPIO yapılandırma
+Bu makalede, CentOS 6,6 ana sunucunuzda çok paiz ıO (MPIO) yapılandırmak için gereken adımlar açıklanmaktadır. Ana bilgisayar sunucusu, Iscsı başlatıcıları aracılığıyla yüksek kullanılabilirlik için Microsoft Azure StorSimple cihazınıza bağlanır. Bu, çok yollu cihazların otomatik olarak keşfedilmesi ve yalnızca StorSimple birimleri için belirli kurulumun ayrıntılarını açıklar.
 
-Bu yordam StorSimple 8000 serisi cihazların tüm modelleri için geçerlidir.
+Bu yordam, StorSimple 8000 serisi cihazların tüm modellerine uygulanabilir.
 
 > [!NOTE]
-> Bu yordam StorSimple Cloud Appliance için kullanılamaz. Daha fazla bilgi için, bulut cihazınız için ana bilgisayar sunucularını nasıl yapılandıracağınızı öğrenin.
+> Bu yordam bir StorSimple Cloud Appliance için kullanılamaz. Daha fazla bilgi için bkz. bulut gereciniz için konak sunucularını yapılandırma.
 
 
-## <a name="about-multipathing"></a>Çok hakkında
-Çok özelliği, ana bilgisayar sunucusu ve depolama aygıtı arasında birden çok G/Ç yolunu yapılandırmanızı sağlar. Bu G/Ç yolları, ayrı kablolar, anahtarlar, ağ arabirimleri ve denetleyiciler içerebilen fiziksel SAN bağlantılarıdır. Çoklu yol, tüm birleştirilmiş yollarla ilişkili yeni bir aygıtı yapılandırmak için G/Ç yollarını toplar.
+## <a name="about-multipathing"></a>Çoklu yol hakkında
+Çoklu yol özelliği, bir konak sunucusu ile depolama cihazı arasında birden fazla g/ç yolunu yapılandırmanıza olanak tanır. Bu g/ç yolları, ayrı kablolar, anahtarlar, ağ arabirimleri ve denetleyiciler içerebilen fiziksel SAN bağlantılarıdır. Çoklu yol, tüm toplanmış yollarla ilişkili yeni bir cihaz yapılandırmak için g/ç yollarını toplar.
 
-Çok amacın iki yönlüdür:
+Çoklu yol 'nın amacı iki katdır:
 
-* **Yüksek kullanılabilirlik**: G/Ç yolunun herhangi bir öğesi (kablo, anahtar, ağ arabirimi veya denetleyici gibi) başarısız olursa alternatif bir yol sağlar.
-* **Yük dengelemesi**: Depolama cihazınızın yapılandırmasına bağlı olarak, G/Ç yollarında yükleri algılayarak ve bu yükleri dinamik olarak yeniden dengeleyerek performansı artırabilir.
+* **Yüksek kullanılabilirlik**: g/ç yolunun herhangi bir öğesi (örneğin, bir kablo, anahtar, ağ arabirimi veya denetleyici) başarısız olursa, alternatif bir yol sağlar.
+* **Yük Dengeleme**: depolama cihazınızın yapılandırmasına bağlı olarak, g/ç yollarındaki yükleri algılayıp ve bu yükleri dinamik olarak yeniden dengeleyerek performansı iyileştirebilirler.
 
-### <a name="about-multipathing-components"></a>Çok yönlü bileşenler hakkında
-Linux'ta çoklu yol, çekirdek bileşenleri ve kullanıcı alanı bileşenlerinden oluşur.
+### <a name="about-multipathing-components"></a>Çoklu yol bileşenleri hakkında
+Linux 'ta çok sayıda çekirdek bileşeni ve Kullanıcı alanı bileşenleri aşağıda tablo olarak verilmiştir.
 
-* **Çekirdek**: Ana bileşen, G/Ç'yi yeniden yönlendirir ve yollar ve yol grupları için başarısızları destekleyen *aygıt-mapper'dır.*
+* **Çekirdek**: Ana bileşen, reroutes g/ç tarafından kullanılan *cihaz Eşleştiricisi* ve yollar ve yol grupları için yük devretmeyi destekler.
 
-* **Kullanıcı alanı**: Cihaz-mapper multipath modülüne ne yapacağını öğreterek çok cihazları yöneten *çok araçlardır.* Araçlar aşağıdakilerden oluşur:
+* **Kullanıcı-alanı**: Bunlar, cihaz Eşleyici çok yollu modülü ne yapılacağını karşılaştırarak çok yollu cihazları yöneten *çok yollu araçlardır* . Araçlar şunlardan oluşur:
    
-   * **Multipath**: çok yönlü aygıtları listeler ve yapılandırır.
-   * **Multipathd**: multipath yürütür ve yolları izler daemon.
-   * **Devmap-name**: devmaps için udev anlamlı bir aygıt adı sağlar.
-   * **Kpartx**: çok haritaları bölümlenebilir hale getirmek için doğrusal devmaps'i aygıt bölümlerine eşler.
-   * **Multipath.conf**: yerleşik yapılandırma tablosunun üzerine yazmak için kullanılan multipath daemon için yapılandırma dosyası.
+   * **Çok yollu**: çok yollu cihazları listeler ve yapılandırır.
+   * **Multipathd**: çok yollu yürüten ve yolları izleyen Daemon.
+   * **Devmap-adı**: devmaps için udev 'e anlamlı bir cihaz adı sağlar.
+   * **Kpartx**: çok yollu haritalar bölümlenebilir hale getirmek için doğrusal devmaps 'ı cihaz bölümlerine eşler.
+   * **Multipath. conf**: yerleşik yapılandırma tablosunun üzerine yazmak için kullanılan çok yollu Daemon için yapılandırma dosyası.
 
-### <a name="about-the-multipathconf-configuration-file"></a>multipath.conf yapılandırma dosyası hakkında
-Yapılandırma dosyası, `/etc/multipath.conf` çok özelliklerin çoğunu kullanıcı tarafından yapılandırılabilir hale getirir. Komut `multipath` ve çekirdek daemon `multipathd` bu dosyada bulunan bilgileri kullanır. Dosyaya yalnızca çok aygıtların yapılandırması sırasında danışılır. Komutu çalıştırmadan önce tüm değişikliklerin `multipath` yapıldığından emin olun. Daha sonra dosyayı değiştirirseniz, değişikliklerin etkili olması için dosyayı durdurmanız ve çok yeniden başlatmanız gerekir.
+### <a name="about-the-multipathconf-configuration-file"></a>Multipath. conf yapılandırma dosyası hakkında
+Yapılandırma dosyası `/etc/multipath.conf` çok sayıda çoklu yol özelliğinin Kullanıcı tarafından yapılandırılabilir olmasını sağlar. `multipath` Komut ve çekirdek Daemon `multipathd` bu dosyada bulunan bilgileri kullanır. Dosya yalnızca çok yollu cihazların yapılandırması sırasında gerçekleştirilir. `multipath` Komutu çalıştırmadan önce tüm değişikliklerin yapıldığından emin olun. Daha sonra dosyayı değiştirirseniz, değişikliklerin etkili olması için multipathd 'yi durdurmanız ve yeniden başlatmanız gerekecektir.
 
-multipath.conf beş bölümden oluşmaktadır:
+Çok yollu. conf beş bölümden oluşur:
 
-- **Sistem düzeyi varsayılanları** *(varsayılanlar)*: Sistem düzeyi varsayılanlarını geçersiz kılabilir.
-- **Kara listeye alınan aygıtlar** *(kara liste)*: Aygıt haritacı tarafından denetlenmemesi gereken aygıtların listesini belirtebilirsiniz.
-- **Kara liste özel durumları** *(blacklist_exceptions)*: Kara listede listelenmiş olsa bile çok aygıt olarak değerlendirilecek belirli aygıtları tanımlayabilirsiniz.
-- **Depolama denetleyicisine özel ayarlar** *(aygıtlar)*: Satıcı ve Ürün bilgilerine sahip aygıtlara uygulanacak yapılandırma ayarlarını belirtebilirsiniz.
-- **Aygıta özel ayarlar** *(multipaths)*: Tek tek LUN'ların yapılandırma ayarlarına ince ayar yapmak için bu bölümü kullanabilirsiniz.
+- **Sistem düzeyi Varsayılanları** *(Varsayılanlar)*: sistem düzeyi varsayılanlarını geçersiz kılabilirsiniz.
+- **Kara listelenen cihazlar** *(kara liste)*: cihaz Eşleyici tarafından denetlenmemelidir cihazların listesini belirtebilirsiniz.
+- **Kara liste özel durumları** *(blacklist_exceptions)*: listede listelense bile, belirli cihazların çok yollu cihazlar olarak kabul edilecek şekilde tanımlayabilirsiniz.
+- **Depolama denetleyicisine özgü ayarlar** *(cihazlar)*: satıcı ve ürün bilgilerine sahip cihazlara uygulanacak yapılandırma ayarlarını belirtebilirsiniz.
+- **Cihaza özgü ayarlar** *(multipaths)*: Bu bölümü, ayrı LUN 'lara yönelik yapılandırma ayarlarını ince ayar yapmak için kullanabilirsiniz.
 
-## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Linux ana bilgisayara bağlı StorSimple'da çoklu yol yapılandırma
-Bir Linux ana bilgisayara bağlı bir StorSimple aygıtı, yüksek kullanılabilirlik ve yük dengeleme için yapılandırılabilir. Örneğin, Linux ana bilgisayarının SAN'a bağlı iki arabirimi varsa ve aygıtın SAN'a bağlı iki arabirimi varsa, bu arabirimler aynı alt ağda dır, o zaman 4 yol kullanılabilir olacaktır. Ancak, aygıt ve ana bilgisayar arabirimi ndeki her VERI arabirimi farklı bir IP alt netindeyse (ve routable'da değilse), yalnızca 2 yol kullanılabilir. Kullanılabilir tüm yolları otomatik olarak keşfetmek, bu yollar için bir yük dengeleme algoritması seçmek, yalnızca StorBasit birimleri için belirli yapılandırma ayarlarını uygulamak ve ardından çoklu yolu etkinleştirmek ve doğrulamak için çoklu yol larla yapılandırma yapabilirsiniz.
+## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Linux ana bilgisayarına bağlı StorSimple üzerinde çoklu paşeyi yapılandırma
+Linux ana bilgisayarına bağlı bir StorSimple cihazı, yüksek kullanılabilirlik ve yük dengeleme için yapılandırılabilir. Örneğin, Linux ana bilgisayarının SAN 'a bağlı iki arabirimi varsa ve cihazın SAN 'a bağlı iki arabirimi varsa, bu arabirimlerin aynı alt ağ üzerinde olması için 4 yol kullanılabilir olacaktır. Ancak, cihazdaki ve ana bilgisayar arabirimindeki her bir VERI arabirimi farklı bir IP alt ağdaysa (ve yönlendirilebilir), yalnızca 2 yol kullanılabilir olur. Çoklu paizleri, tüm kullanılabilir yolları otomatik olarak bulabilir, bu yollar için bir yük dengeleme algoritması seçebilir, StorSimple birimleri için belirli yapılandırma ayarlarını uygulayabilir ve ardından çok sayıda oluşturmayı etkinleştirebilir ve doğrulayacaksınız.
 
-Aşağıdaki yordam, iki ağ arabirimi olan bir StorSimple aygıtı iki ağ arabirimine sahip bir ana bilgisayara bağlandığında çoklu yol oluşturmanın nasıl yapılandırılabildiğini açıklar.
+Aşağıdaki yordamda, iki ağ arabirimi olan bir StorSimple cihazı iki ağ arabirimi içeren bir konağa bağlı olduğunda çoklu pasıların nasıl yapılandırılacağı açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu bölümde CentOS sunucusu ve StorSimple cihazınız için yapılandırma ön koşulları ayrıntılı olarak açıklenir.
+Bu bölümde, CentOS sunucusu ve StorSimple cihazınız için yapılandırma önkoşulları ayrıntılı olarak yapılır.
 
-### <a name="on-centos-host"></a>CentOS ana bilgisayarda
-1. CentOS ana bilgisayarınızın 2 ağ arabiriminin etkin olduğundan emin olun. Şunu yazın:
+### <a name="on-centos-host"></a>CentOS ana bilgisayarında
+1. CentOS ana bilgisayarınızda 2 ağ arabiriminin etkinleştirildiğinden emin olun. Şunu yazın:
    
     `ifconfig`
    
-    Aşağıdaki örnek, ana bilgisayarda iki`eth0` ağ `eth1`arabirimi (ve) bulunduğunda çıktıyı gösterir.
+    Aşağıdaki örnek, konakta iki ağ arabirimi (`eth0` ve `eth1`) varsa çıktıyı gösterir.
    
         [root@centosSS ~]# ifconfig
         eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
@@ -99,21 +99,21 @@ Bu bölümde CentOS sunucusu ve StorSimple cihazınız için yapılandırma ön 
           TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:0
           RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
-1. CentOS sunucunuza *iSCSI başlatıcısı-uygulamaları* yükleyin. *iSCSI-initiator-utils*yüklemek için aşağıdaki adımları gerçekleştirin.
+1. CentOS sunucunuza *iSCSI-INITIATOR-utils* ' i yükler. *İSCSI-INITIATOR-utils*yüklemek için aşağıdaki adımları gerçekleştirin.
    
-   1. CentOS `root` ana bilgisayarınızda oturum açın.
-   1. *iSCSI-başlatıcı-dölleri*yükleyin. Şunu yazın:
+   1. CentOS ana `root` bilgisayarınızda olarak oturum açın.
+   1. *İSCSI başlatıcısı-yardımcı programları*'nı yükler. Şunu yazın:
       
        `yum install iscsi-initiator-utils`
-   1. *iSCSI-Initiator-utils* başarıyla yüklendikten sonra, iSCSI hizmetini başlatın. Şunu yazın:
+   1. *Iscsı Başlatıcısı 'nın yardımcı programları* başarıyla yüklendikten sonra iSCSI hizmetini başlatın. Şunu yazın:
       
        `service iscsid start`
       
-       Vesilelerle, `iscsid` aslında başlamayabilir `--force` ve seçenek gerekli olabilir
-   1. iSCSI başlatıcınızın önyükleme süresi boyunca etkinleştirildiğinden emin olmak için hizmeti etkinleştirmek için komutu `chkconfig` kullanın.
+       Durumlarda, `iscsid` gerçekten başlayamayabilir ve `--force` seçenek gerekli olabilir
+   1. Önyükleme sırasında Iscsı başlatıcılarınızın etkinleştirildiğinden emin olmak için, hizmetini etkinleştirmek üzere `chkconfig` komutunu kullanın.
       
        `chkconfig iscsi on`
-   1. Düzgün bir şekilde düzenese doğru doğrulamak için komutu çalıştırın:
+   1. Doğru şekilde ayarlandığından emin olmak için şu komutu çalıştırın:
       
        `chkconfig --list | grep iscsi`
       
@@ -122,80 +122,80 @@ Bu bölümde CentOS sunucusu ve StorSimple cihazınız için yapılandırma ön 
            iscsi   0:off   1:off   2:on3:on4:on5:on6:off
            iscsid  0:off   1:off   2:on3:on4:on5:on6:off
       
-       Yukarıdaki örnekten, iSCSI ortamınızın 2, 3, 4 ve 5'in çalışma düzeylerinde önyükleme zamanında çalışacağını görebilirsiniz.
-1. *Aygıt-mapper-multipath yükleyin.* Şunu yazın:
+       Yukarıdaki örnekte, Iscsı ortamınızın 2, 3, 4 ve 5 çalıştırma düzeylerinde önyükleme zamanında çalışacağını görebilirsiniz.
+1. *Cihaz-Eşleyici-çok yollu*'yi yükler. Şunu yazın:
    
     `yum install device-mapper-multipath`
    
-    Yükleme başlayacak. Onay istendiğinde devam etmek için **Y** yazın.
+    Yükleme başlatılır. Onay sorulduğunda devam etmek için **Y** yazın.
 
 ### <a name="on-storsimple-device"></a>StorSimple cihazında
-StorSimple cihazınızda şu lar olmalıdır:
+StorSimple cihazınız şunları içermelidir:
 
-* iSCSI için en az iki arabirim etkindir. StorSimple cihazınızda iki arabirimin iSCSI tarafından etkin olduğunu doğrulamak için, StorSimple aygıtınız için Azure klasik portalında aşağıdaki adımları gerçekleştirin:
+* Iscsı için etkinleştirilen en az iki arabirim. StorSimple cihazınızda iki arabirimin Iscsı özellikli olduğunu doğrulamak için, StorSimple cihazınız için klasik Azure portalında aşağıdaki adımları gerçekleştirin:
   
-  1. StorSimple cihazınız için klasik portala giriş yapın.
-  1. StorSimple Manager hizmetinizi seçin, **Cihazlar'ı** tıklatın ve belirli StorSimple aygıtını seçin. Ağ arabirimi ayarlarını **yapılandır'ı** ve doğrula'yı tıklatın. İki iSCSI etkin ağ arabirimine sahip bir ekran görüntüsü aşağıda gösterilmiştir. Burada DATA 2 ve DATA 3, her iki 10 GbE arabirimleri iSCSI için etkindir.
+  1. StorSimple cihazınız için klasik portalda oturum açın.
+  1. StorSimple Manager hizmetinizi seçin, **cihazlar** ' a tıklayın ve belirli StorSimple cihazını seçin. **Yapılandır** ' a tıklayın ve ağ arabirimi ayarlarını doğrulayın. İki Iscsı özellikli ağ arabirimine sahip bir ekran görüntüsü aşağıda gösterilmiştir. Burada DATA 2 ve DATA 3, Iscsı için her iki 10 GbE arabirimi de etkinleştirilir.
      
-      ![MPIO StorsBasit VERİ 2 config](./media/storsimple-configure-mpio-on-linux/IC761347.png)
+      ![MPIO StorsSimple VERI 2 yapılandırması](./media/storsimple-configure-mpio-on-linux/IC761347.png)
      
-      ![MPIO StorBasit VERİ 3 Config](./media/storsimple-configure-mpio-on-linux/IC761348.png)
+      ![MPIO StorSimple VERI 3 yapılandırması](./media/storsimple-configure-mpio-on-linux/IC761348.png)
      
-      **Yapılandırma** sayfasında
+      **Yapılandır** sayfasında
      
-     1. Her iki ağ arabiriminin de iSCSI etkin olduğundan emin olun. **iSCSI etkin alanı** **Evet**olarak ayarlanmalıdır.
+     1. Her iki ağ arabiriminin de Iscsı etkin olduğundan emin olun. **İSCSI etkin** alanı **Evet**olarak ayarlanmalıdır.
      1. Ağ arabirimlerinin aynı hıza sahip olduğundan emin olun, her ikisi de 1 GbE veya 10 GbE olmalıdır.
-     1. iSCSI özellikli arabirimlerin IPv4 adreslerini not edin ve daha sonra ana bilgisayarda kullanmak için kaydedin.
-* StorSimple cihazınızdaki iSCSI arabirimlerine CentOS sunucusundan ulaşılabilir.
-      Bunu doğrulamak için, storsimple iSCSI özellikli ağ arabirimlerinizin IP adreslerini ana sunucunuzda sağlamanız gerekir. Kullanılan komutlar ve DATA2 (10.126.162.25) ve DATA3 (10.126.162.26) ile ilgili çıktı aşağıda gösterilmiştir:
+     1. Iscsı özellikli arabirimlerin IPv4 adreslerini ve daha sonra konakta kullanılmak üzere Kaydet ' i aklınızda saklayın.
+* StorSimple cihazınızdaki Iscsı arabirimlerine CentOS sunucusundan ulaşılabilir olmalıdır.
+      Bunu doğrulamak için, ana sunucunuzda StorSimple Iscsı özellikli ağ arabirimlerinizin IP adreslerini sağlamanız gerekir. Kullanılan komutlar ve VERI2 (10.126.162.25) ve DATA3 (10.126.162.26) ile ilgili çıktı aşağıda gösterilmiştir:
   
         [root@centosSS ~]# iscsiadm -m discovery -t sendtargets -p 10.126.162.25:3260
         10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
         10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
 
 ### <a name="hardware-configuration"></a>Donanım yapılandırması
-İki iSCSI ağ arabirimini fazlalık için ayrı yollara bağlamanızı öneririz. Aşağıdaki şekilde, CentOS sunucunuz ve StorSimple aygıtınız için yüksek kullanılabilirlik ve yük dengeleme çoklu yol oluşturma için önerilen donanım yapılandırması gösterilmektedir.
+İki Iscsı ağ arabirimini yedekliliğe yönelik ayrı yollarda bağlanmanızı öneririz. Aşağıdaki şekilde, CentOS sunucunuz ve StorSimple cihazınız için yüksek kullanılabilirlik ve Yük Dengeleme çok sayıda çoklu yol için önerilen donanım yapılandırması gösterilmektedir.
 
-![StorSimple için MPIO donanım config Linux ana bilgisayara](./media/storsimple-configure-mpio-on-linux/MPIOHardwareConfigurationStorSimpleToLinuxHost2M.png)
+![StorSimple için Linux ana bilgisayarına yönelik MPIO donanım yapılandırması](./media/storsimple-configure-mpio-on-linux/MPIOHardwareConfigurationStorSimpleToLinuxHost2M.png)
 
-Yukarıdaki şekilde gösterildiği gibi:
+Önceki şekilde gösterildiği gibi:
 
-* StorSimple aygıtınız iki denetleyiciyle etkin-pasif bir yapılandırmadadır.
-* Cihaz kumandalarınıza iki SAN anahtarı bağlanır.
-* StorSimple cihazınızda iki iSCSI başlatıcısı etkinleştirilir.
-* CentOS ana bilgisayarınızda iki ağ arabirimi etkinleştirilir.
+* StorSimple cihazınız, iki denetleyiciyle etkin-Pasif bir yapılandırmadır.
+* Cihaz denetleyicilerinize iki SAN anahtarı bağlı.
+* StorSimple cihazınızda iki Iscsı Başlatıcısı etkindir.
+* CentOS ana bilgisayarınızda iki ağ arabirimi etkinleştirilmiştir.
 
-Yukarıdaki yapılandırma, ana bilgisayar ve veri arabirimleri nin routable ise cihazınız ve ana bilgisayar arasında 4 ayrı yol sağlar.
+Yukarıdaki yapılandırma, konak ve veri arabirimleri yönlendirilebilir ise, cihazınız ile ana bilgisayar arasında 4 ayrı yol görür.
 
 > [!IMPORTANT]
-> * Çok bağlantı için 1 GbE ve 10 GbE ağ arabirimlerini karıştırmamanızı öneririz. İki ağ arabirimi kullanırken, her iki arabirim de aynı türde olmalıdır.
-> * StorSimple cihazınızda DATA0, DATA1, DATA4 ve DATA5 1 GbE arabirimi, DATA2 ve DATA3 ise 10 GbE ağ arabirimidir.|
+> * Çoklu yol için 1 GbE ve 10 GbE ağ arabirimleri karıştırabilmeniz önerilir. İki ağ arabirimi kullanılırken, her iki arabirimin de aynı türde olması gerekir.
+> * StorSimple cihazınızda, DATA0, VERI1, DATA4 ve DATA5 1 GbE arabirimlerdir, VERI2 ve DATA3 ise 10 GbE ağ arabirimlerdir. |
 > 
 > 
 
 ## <a name="configuration-steps"></a>Yapılandırma adımları
-Çok yapılandırma adımları, otomatik bulma için kullanılabilir yolları yapılandırmayı, kullanılacak yük dengeleme algoritmasını belirtmeyi, çoklu yolu etkinleştirmeyi ve yapılandırmayı nihayet doğrulamayı içerir. Bu adımların her biri aşağıdaki bölümlerde ayrıntılı olarak ele alınmıştır.
+Çoklu yol için yapılandırma adımları otomatik bulma için kullanılabilir yolları yapılandırmak, kullanılacak yük dengeleme algoritmasını belirlemek, çok paşeyi ve son olarak yapılandırmayı doğrulamak için kullanılır. Bu adımların her biri, aşağıdaki bölümlerde ayrıntılı olarak ele alınmıştır.
 
-### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>Adım 1: Otomatik keşif için çoklu yol yapılandırma
-Çok yol destekli aygıtlar otomatik olarak keşfedilebilir ve yapılandırılabilir.
+### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>1. Adım: otomatik bulma için çoklu paşeyi yapılandırma
+Çok yollu desteklenen cihazlar otomatik olarak keşfedilebilir ve yapılandırılabilir.
 
-1. Dosyayı `/etc/multipath.conf` başlatma. Şunu yazın:
+1. Dosyayı `/etc/multipath.conf` başlatın. Şunu yazın:
    
      `mpathconf --enable`
    
-    Yukarıdaki komut bir `sample/etc/multipath.conf` dosya oluşturur.
-1. Çok hizmeti başlatın. Şunu yazın:
+    Yukarıdaki komut bir `sample/etc/multipath.conf` dosya oluşturacak.
+1. Çok yollu hizmeti başlatın. Şunu yazın:
    
     `service multipathd start`
    
     Şu çıkışı görürsünüz:
    
     `Starting multipathd daemon:`
-1. Çoklu yolların otomatik olarak keşfini etkinleştirin. Şunu yazın:
+1. Çoklu yolların otomatik olarak bulunmasını etkinleştirin. Şunu yazın:
    
     `mpathconf --find_multipaths y`
    
-    Bu, aşağıda gösterildiği `multipath.conf` gibi varsayılan lar bölümünü değiştirir:
+    Bu, aşağıda gösterildiği gibi verilerinizin `multipath.conf` varsayılanlar bölümünü değiştirecek:
    
         defaults {
         find_multipaths yes
@@ -203,13 +203,13 @@ Yukarıdaki yapılandırma, ana bilgisayar ve veri arabirimleri nin routable ise
         path_grouping_policy multibus
         }
 
-### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Adım 2: StorSimple birimleri için çoklu yol yapılandırma
-Varsayılan olarak, tüm aygıtlar multipath.conf dosyasında kara listeye alınır ve atlanır. StorSimple aygıtlarından gelen birimler için çoklu yol oluşturmaya izin vermek için kara liste özel durumları oluşturmanız gerekir.
+### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>2. Adım: StorSimple birimlerine yönelik çoklu paşeyi yapılandırma
+Varsayılan olarak, tüm cihazlar çok yollu. conf dosyasında listelenir ve atlanır. StorSimple cihazlarından birimlerde çok sayıda duruma izin vermek için kara liste özel durumları oluşturmanız gerekir.
 
-1. Dosyayı `/etc/mulitpath.conf` edin. Şunu yazın:
+1. `/etc/mulitpath.conf` Dosyayı düzenleyin. Şunu yazın:
    
     `vi /etc/multipath.conf`
-1. blacklist_exceptions bölümünü multipath.conf dosyasında bulun. StorSimple cihazınızın bu bölümde kara liste özel durumu olarak listelenmiş olması gerekir. Aşağıda gösterildiği gibi değiştirmek için bu dosyadaki ilgili satırları açıklamayı açabilirsiniz (yalnızca kullanmakta olduğunuz aygıtın belirli modelini kullanın):
+1. Çok yollu. conf dosyasındaki blacklist_exceptions bölümünü bulun. StorSimple cihazınızın bu bölümde bir kara liste özel durumu olarak listelenmesi gerekir. Bu dosyadaki ilgili satırların açıklamasını aşağıda gösterildiği gibi değiştirebilirsiniz (yalnızca kullandığınız cihazın özel modelini kullanın):
    
         blacklist_exceptions {
             device {
@@ -222,13 +222,13 @@ Varsayılan olarak, tüm aygıtlar multipath.conf dosyasında kara listeye alın
             }
            }
 
-### <a name="step-3-configure-round-robin-multipathing"></a>Adım 3: Round-robin çok yapılandırma
-Bu yük dengeleme algoritması, etkin denetleyiciye sunulan tüm çoklu yolları dengeli, yuvarlak-robin bir şekilde kullanır.
+### <a name="step-3-configure-round-robin-multipathing"></a>3. Adım: hepsini bir kez deneme çoklu paşeyi yapılandırma
+Bu yük dengeleme algoritması, etkin denetleyiciye yönelik kullanılabilir çoklu yolları dengeli ve hepsini bir kez deneme biçiminde kullanır.
 
-1. Dosyayı `/etc/multipath.conf` edin. Şunu yazın:
+1. `/etc/multipath.conf` Dosyayı düzenleyin. Şunu yazın:
    
     `vi /etc/multipath.conf`
-1. `defaults` Bölümün altında, `path_grouping_policy` `multibus`ayarlayın. Belirtilmeyen `path_grouping_policy` çoklu yollara uygulanacak varsayılan yol gruplandırma ilkesini belirtir. Varsayılanlar bölümü aşağıda gösterildiği gibi görünecektir.
+1. `defaults` Bölümünün altında, öğesini `path_grouping_policy` olarak `multibus`ayarlayın. Belirtilmemiş `path_grouping_policy` multipaths için uygulanacak varsayılan yol gruplama ilkesini belirtir. Varsayılanlar bölümü aşağıda gösterildiği gibi görünecektir.
    
         defaults {
                 user_friendly_names yes
@@ -238,13 +238,13 @@ Bu yük dengeleme algoritması, etkin denetleyiciye sunulan tüm çoklu yolları
 > [!NOTE]
 > En yaygın değerleri `path_grouping_policy` şunlardır:
 > 
-> * failover = öncelik grubu başına 1 yol
+> * Yük devretme = öncelik grubu başına 1 yol
 > * multibus = 1 öncelik grubundaki tüm geçerli yollar
 > 
 > 
 
-### <a name="step-4-enable-multipathing"></a>Adım 4: Çoklu yol izleme yi etkinleştirme
-1. Daemon'u `multipathd` yeniden başlatın. Şunu yazın:
+### <a name="step-4-enable-multipathing"></a>4. Adım: çoklu paşeyi etkinleştirme
+1. `multipathd` Arka plan programını yeniden başlatın. Şunu yazın:
    
     `service multipathd restart`
 1. Çıktı aşağıda gösterildiği gibi olacaktır:
@@ -252,31 +252,31 @@ Bu yük dengeleme algoritması, etkin denetleyiciye sunulan tüm çoklu yolları
         [root@centosSS ~]# service multipathd start
         Starting multipathd daemon:  [OK]
 
-### <a name="step-5-verify-multipathing"></a>Adım 5: Çoklu yol izleme doğrula
-1. Öncelikle StorSimple cihazı ile iSCSI bağlantısının aşağıdaki gibi kurulduğundan emin olun:
+### <a name="step-5-verify-multipathing"></a>5. Adım: multipaşeyi doğrulama
+1. İlk olarak, aşağıdaki şekilde StorSimple cihazından Iscsı bağlantısının kurulu olduğundan emin olun:
    
-   a. StorSimple cihazınızı keşfedin. Şunu yazın:
+   a. StorSimple cihazınızı bulun. Şunu yazın:
       
     ```
     iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>
     ```
     
-    DATA0 için IP adresi 10.126.162.25 ve bağlantı noktası 3260 giden iSCSI trafiği için StorSimple aygıtında açıldığında çıktı aşağıda gösterildiği gibi:
+    DATA0 için IP adresi 10.126.162.25 ve 3260 numaralı bağlantı noktası, giden Iscsı trafiği için StorSimple cihazında aşağıda gösterildiği gibidir:
     
     ```
     10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     ```
 
-    Önceki çıktıdan StorSimple cihazınızın `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`IQN'sini kopyalayın.
+    StorSimple cihazınızın `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`IQN 'sini önceki çıktıdan kopyalayın.
 
-   b. Hedef IQN'yi kullanarak cihaza bağlanın. StorSimple cihazı burada iSCSI hedefidir. Şunu yazın:
+   b. Hedef ıQN 'yi kullanarak cihaza bağlanın. StorSimple cihazı, Iscsı hedefidir. Şunu yazın:
 
     ```
     iscsiadm -m node --login -T <IQN of iSCSI target>
     ```
 
-    Aşağıdaki örnekte, bir hedef IQN ile çıktı gösterir `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`. Çıktı, aygıtınızdaki iSCSI özellikli iki ağ arabirimine başarıyla bağlamış olduğunuzu gösterir.
+    Aşağıdaki örnek, hedef ıQN 'si `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`olan çıktıyı gösterir. Çıktı, cihazınızdaki iki Iscsı özellikli ağ arabirimine başarıyla bağlandığınızı gösterir.
 
     ```
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
@@ -289,9 +289,9 @@ Bu yük dengeleme algoritması, etkin denetleyiciye sunulan tüm çoklu yolları
     Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
     ```
 
-    Burada yalnızca bir ana bilgisayar arabirimi ve iki yol görürseniz, iSCSI için ana bilgisayardaki her iki arabirimi de etkinleştirmeniz gerekir. [Linux belgelerinde ayrıntılı talimatları](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)takip edebilirsiniz.
+    Burada yalnızca bir ana bilgisayar arabirimi ve iki yol görürseniz, her iki arabirimi de Iscsı için konak üzerinde etkinleştirmeniz gerekir. [Linux belgelerindeki ayrıntılı yönergeleri](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)izleyebilirsiniz.
 
-1. Bir ses, StorSimple aygıtından CentOS sunucusuna maruz kalır. Daha fazla bilgi için [bkz: Adım 6:](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) StorSimple cihazınızdaki Azure portalı üzerinden bir birim oluşturun.
+1. Bir birim, StorSimple cihazından CentOS sunucusuna sunulur. Daha fazla bilgi için bkz. [6. Adım:](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) storsimple cihazınızda Azure Portal Ile birim oluşturma.
 
 1. Kullanılabilir yolları doğrulayın. Şunu yazın:
 
@@ -299,7 +299,7 @@ Bu yük dengeleme algoritması, etkin denetleyiciye sunulan tüm çoklu yolları
       multipath -l
       ```
 
-      Aşağıdaki örnek, kullanılabilir iki yolu olan tek bir ana bilgisayar ağ arabirimine bağlı bir StorSimple aygıtındaki iki ağ arabiriminin çıktısını gösterir.
+      Aşağıdaki örnek, iki ağ arabirimi için bir StorSimple cihazında, kullanılabilir iki yol ile tek bir konak ağ arabirimine bağlı olan çıktıyı gösterir.
 
         ```
         mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
@@ -323,28 +323,28 @@ Bu yük dengeleme algoritması, etkin denetleyiciye sunulan tüm çoklu yolları
 
         After the paths are configured, refer to the specific instructions on your host operating system (Centos 6.6) to mount and format this volume.
 
-## <a name="troubleshoot-multipathing"></a>Sorun giderme çok
-Bu bölümde, çok yapılandırma sırasında herhangi bir sorunla karşılaştığınızda bazı yararlı ipuçları sağlar.
+## <a name="troubleshoot-multipathing"></a>Çoklu yol sorunlarını giderme
+Bu bölümde, çok sayıda yapılandırma sırasında herhangi bir sorunla karşılaşırsanız bazı yararlı ipuçları sunulmaktadır.
 
-S. Dosyadaki `multipath.conf` değişikliklerin etkili olduğunu görmüyorum.
+S. Dosya etkin olan `multipath.conf` değişiklikleri görmüyorum.
 
-A. `multipath.conf` Dosyada herhangi bir değişiklik yaptıysanız, çok hizmeti yeniden başlatmanız gerekir. Aşağıdaki komutu yazın:
+A. `multipath.conf` Dosyada herhangi bir değişiklik yaptıysanız, çoklu yol hizmetini yeniden başlatmanız gerekir. Aşağıdaki komutu yazın:
 
     service multipathd restart
 
-S. StorSimple aygıtında iki ağ arabirimi ve ana bilgisayarda iki ağ arabirimi sağladım. Kullanılabilir yolları listelediğimde yalnızca iki yol görüyorum. Dört uygun yol görmeyi bekliyordum.
+S. StorSimple cihazında iki ağ arabirimini ve konaktaki iki ağ arabirimini etkinleştirdim. Kullanılabilir yolları listediğimde yalnızca iki yol görüyorum. Dört kullanılabilir yol görmem bekleniyor.
 
-A. İki yolun aynı alt ağ ve routable üzerinde olduğundan emin olun. Ağ arabirimleri farklı vLANs ve routable değilse, yalnızca iki yol görürsünüz. Bunu doğrulamanın bir yolu, StorSimple aygıtındaki bir ağ arabiriminden her iki ana bilgisayar arabirimine de erişebildiğinizden emin olmaktır. Bu doğrulama yalnızca bir destek oturumu aracılığıyla yapılabilecektir, microsoft [desteğine başvurmanız](storsimple-8000-contact-microsoft-support.md) gerekir.
+A. İki yolun aynı alt ağda olduğundan ve yönlendirilebilir olduğundan emin olun. Ağ arabirimleri farklı VLAN 'larda ve yönlendirilebilir değilse, yalnızca iki yol görürsünüz. Bunu doğrulamak için bir yol, StorSimple cihazında bir ağ arabiriminden her iki konak arabirimine de ulaşabildiğinizden emin olmak. Bu doğrulama yalnızca bir destek oturumu aracılığıyla yapılabileceği için [Microsoft desteği başvurmanız](storsimple-8000-contact-microsoft-support.md) gerekecektir.
 
-S. Kullanılabilir yolları listelediğimde, herhangi bir çıktı görmüyorum.
+S. Kullanılabilir yolları listediğimde hiçbir çıkış görmüyorum.
 
-A. Genellikle, herhangi bir çok yol görmeden çok yönlü daemon ile ilgili bir sorun göstermektedir ve burada `multipath.conf` herhangi bir sorun dosyada yatıyor büyük olasılıkla.
+A. Genellikle, çok yönlü bir yol görmemek, çok pastaya arka plan programı ile ilgili bir sorun önerir ve bu, burada `multipath.conf` dosyanın içinde yer aldığı bir sorun olabilir.
 
-Ayrıca, birden çok listelerden gelen hiçbir yanıt da herhangi bir diskyok anlamına gelebilir gibi, hedefe bağlandıktan sonra aslında bazı diskler görebilirsiniz kontrol değer olacaktır.
+Aynı zamanda, hedefe bağlandıktan sonra bazı diskleri görebileceğinizi de unutmayın. çok yollu listelerden yanıt yoksa herhangi bir diskiniz olmadığı anlamına gelir.
 
-* SCSI veri toslarını yeniden tscan için aşağıdaki komutu kullanın:
+* SCSI veri yolunu yeniden taramak için aşağıdaki komutu kullanın:
   
-    `$ rescan-scsi-bus.sh`(sg3_utils paketin in bir parçası)
+    `$ rescan-scsi-bus.sh`(sg3_utils paketinin parçası)
 * Aşağıdaki komutları yazın:
   
     `$ dmesg | grep sd*`
@@ -354,24 +354,24 @@ Ayrıca, birden çok listelerden gelen hiçbir yanıt da herhangi bir diskyok an
     `$ fdisk -l`
   
     Bunlar, son eklenen disklerin ayrıntılarını döndürür.
-* StorSimple disk olup olmadığını belirlemek için aşağıdaki komutları kullanın:
+* StorSimple diski olup olmadığını anlamak için aşağıdaki komutları kullanın:
   
     `cat /sys/block/<DISK>/device/model`
   
-    Bu, storsimple disk olup olmadığını belirleyecek bir dize döndürür.
+    Bu, bir StorSimple diski olup olmadığını belirleyen bir dize döndürür.
 
-Daha az olası ama olası bir neden de bayat iscsid pid olabilir. iSCSI oturumlarından oturumaçmak için aşağıdaki komutu kullanın:
+Olası bir neden büyük olasılıkla eski bir nedeni de olumsuz SID PID olabilir. Iscsı oturumlarından oturumu kapatmak için aşağıdaki komutu kullanın:
 
     iscsiadm -m node --logout -p <Target_IP>
 
-StorSimple aygıtınız olan iSCSI hedefindeki tüm bağlı ağ arabirimleri için bu komutu yineleyin. Tüm iSCSI oturumlarından oturumunu kapattıktan sonra, iSCSI oturumunu yeniden kurmak için iSCSI hedef IQN'ı kullanın. Aşağıdaki komutu yazın:
+Bu komutu, StorSimple cihazınız olan Iscsı hedefinde bulunan tüm bağlı ağ arabirimleri için tekrarlayın. Tüm Iscsı oturumlarından oturumu kapattıktan sonra iSCSI oturumunu yeniden kurmak için Iscsı hedefi ıQN 'sini kullanın. Aşağıdaki komutu yazın:
 
     iscsiadm -m node --login -T <TARGET_IQN>
 
 
-S. Aygıtım beyaz listeye alındı mı emin değilim.
+S. Cihazımın beyaz listede olup olmadığından emin değilim.
 
-A. Cihazınızın beyaz listeye alıp almadığınızı doğrulamak için aşağıdaki sorun giderme etkileşimli komutunu kullanın:
+A. Cihazınızın beyaz listeye eklenip eklenmeyeceğini doğrulamak için, aşağıdaki sorun giderme etkileşimli komutunu kullanın:
 
     multipathd -k
     multipathd> show devices
@@ -410,33 +410,33 @@ A. Cihazınızın beyaz listeye alıp almadığınızı doğrulamak için aşağ
     dm-3 devnode blacklisted, unmonitored
 
 
-Daha fazla bilgi [için, çok için sorun giderme'ye](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)gidin.
+Daha fazla bilgi için, [çok sayıda sorun giderme](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)bölümüne gidin.
 
-## <a name="list-of-useful-commands"></a>Yararlı komutlar listesi
+## <a name="list-of-useful-commands"></a>Faydalı komutların listesi
 | Tür | Komut | Açıklama |
 | --- | --- | --- |
-| **iSCSI** |`service iscsid start` |iSCSI hizmetini başlatın |
-| &nbsp; |`service iscsid stop` |iSCSI hizmetini durdurun |
-| &nbsp; |`service iscsid restart` |iSCSI hizmetini yeniden başlatın |
-| &nbsp; |`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>` |Belirtilen adreste kullanılabilir hedefleri keşfedin |
-| &nbsp; |`iscsiadm -m node --login -T <TARGET_IQN>` |iSCSI hedefine giriş yapın |
-| &nbsp; |`iscsiadm -m node --logout -p <Target_IP>` |iSCSI hedefinden çıkış |
-| &nbsp; |`cat /etc/iscsi/initiatorname.iscsi` |yazdırma iSCSI başlatıcı adı |
-| &nbsp; |`iscsiadm -m session -s <sessionid> -P 3` |Ev sahibinde bulunan iSCSI oturumunun durumunu ve hacmini kontrol edin |
-| &nbsp; |`iscsi -m session` |Ana bilgisayar ve StorSimple aygıtı arasında kurulan tüm iSCSI oturumlarını gösterir |
+| **iSCSI** |`service iscsid start` |Iscsı hizmetini Başlat |
+| &nbsp; |`service iscsid stop` |Iscsı hizmetini durdur |
+| &nbsp; |`service iscsid restart` |Iscsı hizmetini yeniden Başlat |
+| &nbsp; |`iscsiadm -m discovery -t sendtargets -p <TARGET_IP>` |Belirtilen adresteki kullanılabilir hedefleri bul |
+| &nbsp; |`iscsiadm -m node --login -T <TARGET_IQN>` |Iscsı hedefinde oturum açma |
+| &nbsp; |`iscsiadm -m node --logout -p <Target_IP>` |Iscsı hedefinden oturumu Kapat |
+| &nbsp; |`cat /etc/iscsi/initiatorname.iscsi` |Iscsı Başlatıcısı adını yazdır |
+| &nbsp; |`iscsiadm -m session -s <sessionid> -P 3` |Konakta bulunan Iscsı oturumunun ve birimin durumunu denetleme |
+| &nbsp; |`iscsi -m session` |Ana bilgisayar ve StorSimple cihazı arasında belirlenen tüm Iscsı oturumlarını gösterir |
 |  | | |
-| **Çoklu yol oluşturma** |`service multipathd start` |Multipath daemon başlat |
-| &nbsp; |`service multipathd stop` |Multipath daemon durdurun |
-| &nbsp; |`service multipathd restart` |Multipath daemon'u yeniden başlatın |
-| &nbsp; |`chkconfig multipathd on` </br> OR </br> `mpathconf -with_chkconfig y` |Önyükleme zamanında başlamak için çoklu yol daemon etkinleştirin |
-| &nbsp; |`multipathd -k` |Sorun giderme için etkileşimli konsolu başlatın |
-| &nbsp; |`multipath -l` |Çok bağlantıları ve aygıtları listele |
-| &nbsp; |`mpathconf --enable` |Örnek mulitpath.conf dosyası oluşturma`/etc/mulitpath.conf` |
+| **Çoklu yol oluşturma** |`service multipathd start` |Çok yollu Daemon Başlat |
+| &nbsp; |`service multipathd stop` |Çok yollu cini durdur |
+| &nbsp; |`service multipathd restart` |Çok yollu Daemon 'ı yeniden Başlat |
+| &nbsp; |`chkconfig multipathd on` </br> OR </br> `mpathconf -with_chkconfig y` |Çok yollu arka plan programı 'nı önyükleme sırasında başlatılacak şekilde etkinleştir |
+| &nbsp; |`multipathd -k` |Sorun giderme için etkileşimli konsolu Başlat |
+| &nbsp; |`multipath -l` |Çok yollu bağlantıları ve cihazları listeleme |
+| &nbsp; |`mpathconf --enable` |İçinde örnek mulitpath. conf dosyası oluşturma`/etc/mulitpath.conf` |
 |  | | |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Linux ana bilgisayarda MPIO yapılandırırken, aşağıdaki CentoS 6.6 belgelerine de başvurmanız gerekebilir:
+Linux ana bilgisayarında MPIO yapılandırırken, aşağıdaki CentoS 6,6 belgelerine de başvurmanız gerekebilir:
 
-* [CentOS'ta MPIO kurulumu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
-* [Linux Eğitim Rehberi](http://linux-training.be/linuxsys.pdf)
+* [CentOS 'da MPIO 'YU ayarlama](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/index)
+* [Linux Eğitim Kılavuzu](http://linux-training.be/linuxsys.pdf)
 

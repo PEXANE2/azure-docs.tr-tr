@@ -1,6 +1,6 @@
 ---
-title: Azure AD Application Proxy ile uygulamalarda tek oturum açma | Microsoft Dokümanlar
-description: Azure portalında Azure AD Application Proxy ile yayınlanan şirket içi uygulamalarınız için tek oturum açma'yı açın.
+title: Azure AD Uygulama Ara Sunucusu uygulamalarda çoklu oturum açma | Microsoft Docs
+description: Azure portal Azure AD Uygulama Ara Sunucusu ile yayınlanmış şirket içi uygulamalarınız için çoklu oturum açmayı açın.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,46 +15,46 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0259a8d9fcb4c9c513ab2c31103c9a8488e90ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77025750"
 ---
-# <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Application Proxy ile tek oturum açma için şifre atlama
+# <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Uygulama proxy 'Si ile çoklu oturum açma için parola oluşturma
 
-Azure Active Directory Application Proxy, uzak çalışanların da bunlara güvenli bir şekilde erişebilmeleri için şirket içi uygulamalar yayınlayarak üretkenliği artırmanıza yardımcı olur. Azure portalında, bu uygulamalariçin tek oturum açma (SSO) de ayarlayabilirsiniz. Kullanıcılarınızın yalnızca Azure AD ile kimlik doğrulamaları gerekir ve yeniden oturum açmalarına gerek kalmadan kurumsal uygulamanıza erişebilirler.
+Azure Active Directory Uygulama Ara Sunucusu, uzak çalışanların da güvenli bir şekilde erişebilmesi için şirket içi uygulamaları yayımlayarak üretkenliği artırmanıza yardımcı olur. Azure portal, bu uygulamalar için çoklu oturum açma (SSO) da ayarlayabilirsiniz. Kullanıcılarınızın yalnızca Azure AD ile kimlik doğrulaması yapması gerekir ve bu uygulamalar, yeniden oturum açmak zorunda kalmadan kurumsal uygulamanıza erişebilirler.
 
-Uygulama Proxy birkaç [tek oturum açma modlarını](what-is-single-sign-on.md#choosing-a-single-sign-on-method)destekler. Parola tabanlı oturum açma, kimlik doğrulaması için kullanıcı adı/parola birleşimi kullanan uygulamalar için tasarlanmıştır. Uygulamanız için parola tabanlı oturum açma yı yapılandırdığınızda, kullanıcılarınızın şirket içi uygulamada bir kez oturum açmaları gerekir. Bundan sonra Azure Active Directory oturum açma bilgilerini depolar ve kullanıcılarınız uzaktan eriştildiğinde uygulamaya otomatik olarak sağlar.
+Uygulama proxy 'Si birden çok [Çoklu oturum açma modunu](what-is-single-sign-on.md#choosing-a-single-sign-on-method)destekler. Parola tabanlı oturum açma, kimlik doğrulaması için bir Kullanıcı adı/parola birleşimi kullanan uygulamalara yöneliktir. Uygulamanız için parola tabanlı oturum açmayı yapılandırdığınızda kullanıcılarınızın şirket içi uygulamada bir kez oturum açması gerekir. Bundan sonra, Azure Active Directory oturum açma bilgilerini depolar ve kullanıcılarınız bu uygulamaya uzaktan erişirken uygulamayı otomatik olarak uygulamaya sağlar.
 
-Uygulama Proxy ile uygulamanızı zaten yayımlamış ve test etmiş olmalısınız. Değilse, Azure AD [Application Proxy'yi kullanarak Uygulama Yayımla'daki](application-proxy-add-on-premises-application.md) adımları izleyin ve ardından buraya geri gelin.
+Uygulamanızı zaten uygulama proxy 'Si ile yayımlamış ve test etmeniz gerekir. Aksi takdirde, [Azure kullanarak uygulama yayımlama ad uygulama ara sunucusu](application-proxy-add-on-premises-application.md) adımları izleyin ve sonra buraya geri dönün.
 
-## <a name="set-up-password-vaulting-for-your-application"></a>Başvurunuz için parola atlama ayarlama
+## <a name="set-up-password-vaulting-for-your-application"></a>Uygulamanız için parola ayarlamayı ayarlama
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-1. **Azure Active Directory** > **Enterprise uygulamalarını** > seçin**Tüm uygulamalar.**
-1. Listeden, SSO ile kurmak istediğiniz uygulamayı seçin.  
-1. **Uygulama Proxy'yi**seçin. 
-1. Ön **Kimlik Doğrulama türünü** Passthrough olarak **değiştirin** ve **Kaydet'i**seçin. Daha sonra Azure **Active Directory** türüne tekrar geçebilirsiniz! 
-1. **Tek oturum açma'yı**seçin.
+1. **Azure Active Directory** > **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
+1. Listeden, SSO ile ayarlamak istediğiniz uygulamayı seçin.  
+1. **Uygulama proxy 'si**seçin. 
+1. **Ön kimlik doğrulaması türünü** **PASSTHROUGH** olarak değiştirin ve **Kaydet**' i seçin. Daha sonra yeniden **Azure Active Directory** türüne dönebilirsiniz! 
+1. **Çoklu oturum açma**seçeneğini belirleyin.
 
-   ![Uygulamanın genel bakış sayfasından Tek oturum açma'yı seçin](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
+   ![Uygulamanın genel bakış sayfasından çoklu oturum açma seçeneğini belirleyin](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
 
-1. SSO modu için **Parola tabanlı Oturum Açma'yı**seçin.
-1. Oturum Açma URL'si için, kullanıcıların şirket ağı dışında uygulamanızda oturum açmaları için kullanıcı adlarını ve parolalarını girdikleri sayfanın URL'sini girin. Bu, uygulamayı Uygulama Proxy aracılığıyla yayınladığınızda oluşturduğunuz Harici URL olabilir.
+1. SSO modu için **parola tabanlı oturum açma**' yı seçin.
+1. Oturum açma URL 'SI için, kullanıcıların şirket ağı dışında uygulamanızda oturum açmak için Kullanıcı adını ve parolasını girmesi gereken sayfanın URL 'sini girin. Bu, uygulamayı uygulama proxy 'Si aracılığıyla yayımladığınızda oluşturduğunuz dış URL olabilir.
 
-   ![Parola tabanlı Oturum Açma'yı seçin ve URL'nizi girin](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
+   ![Parola tabanlı oturum açma seçin ve URL 'nizi girin](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
 
-1. **Kaydet'i**seçin.
-1. **Uygulama Proxy'yi**seçin. 
-1. Ön **Kimlik Doğrulama türünü** **Azure Etkin Dizini** olarak değiştirin ve **Kaydet'i**seçin. 
-1. **Kullanıcıları ve Grupları**seçin.
-1. **Kullanıcı Ekle'yi**seçerek kullanıcıları uygulamaya atayın. 
-1. Bir kullanıcı için kimlik bilgilerini önceden tanımlamak istiyorsanız, kullanıcı adının kutusunun ön ünü işaretleyin ve **kimlik bilgilerini güncelleştir'i**seçin.
-1. **Azure Active Directory** > **App kayıtlarını** > seçin**Tüm uygulamalar**.
-1. Listeden, Password SSO ile yapılandırdığınız uygulamayı seçin.
-1. **Markaseçin.** 
-1. Parola SSO sayfasından **URL'de Oturum Aç** ile Giriş sayfası nın **URL'sini** güncelleyin ve **Kaydet'i**seçin.  
+1. **Kaydet**’i seçin.
+1. **Uygulama proxy 'si**seçin. 
+1. **Ön kimlik doğrulama türünü** **Azure Active Directory** olarak değiştirin ve **Kaydet**' i seçin. 
+1. **Kullanıcılar ve gruplar ' ı**seçin.
+1. Kullanıcıları **Kullanıcı Ekle**seçeneğini belirleyerek uygulamaya atayın. 
+1. Bir kullanıcı için kimlik bilgilerini önceden tanımlamak istiyorsanız, Kullanıcı adının önünü işaretleyin ve **kimlik bilgilerini güncelleştir**' i seçin.
+1. **Tüm uygulamalar****uygulama kayıtları** >  **Azure Active Directory** > seçin.
+1. Listeden parola SSO ile yapılandırdığınız uygulamayı seçin.
+1. **Marka**seçin. 
+1. **Giriş sayfası URL 'Sini** parola SSO sayfasında **oturum açma URL 'si** ile güncelleştirin ve **Kaydet**' i seçin.  
 
 
 
@@ -64,9 +64,9 @@ Uygulama Proxy ile uygulamanızı zaten yayımlamış ve test etmiş olmalısın
 
 ## <a name="test-your-app"></a>Uygulamanızı test etme
 
-Uygulamalarım portalına gidin. Kimlik bilgilerinizle (veya erişimle ayarladığınız bir test hesabının kimlik bilgileriyle) oturum açın. Başarılı bir şekilde oturum aştıktan sonra uygulamanın simgesine tıklayın. Bu, Uygulamalarım Güvenli Oturum Açma tarayıcı uzantısının yüklenmesini tetikleyebilir. Kullanıcınızın önceden tanımlanmış kimlik bilgileri varsa, uygulamanın kimlik doğrulaması otomatik olarak gerçekleşmelidir, aksi takdirde ilk kez kullanıcı adını veya parolayı belirtmeniz gerekir. 
+Uygulamalarım portalına gidin. Kimlik bilgilerinizle (veya erişim ile ayarladığınız bir test hesabının kimlik bilgileriyle) oturum açın. Başarıyla oturum açtıktan sonra uygulamanın simgesine tıklayın. Bu, uygulamalarımın güvenli oturum açma tarayıcı uzantısının yüklenmesini tetikleyebilir. Kullanıcılarınızın önceden tanımlanmış kimlik bilgileri varsa, uygulamanın kimlik doğrulaması otomatik olarak gerçekleşmelidir, aksi takdirde Kullanıcı adını veya parolayı ilk kez belirtmeniz gerekir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Tek oturum açma](what-is-single-sign-on.md) yı uygulamanın diğer yolları hakkında bilgi edinin
-- Azure [AD Application Proxy ile uygulamalara uzaktan erişmek için güvenlik le ilgili hususlar](application-proxy-security.md) hakkında bilgi edinin
+- [Çoklu oturum açmayı](what-is-single-sign-on.md) uygulamak için diğer yollar hakkında bilgi edinin
+- [Azure AD uygulama ara sunucusu ile uygulamalara uzaktan erişmenin güvenlik konuları](application-proxy-security.md) hakkında bilgi edinin

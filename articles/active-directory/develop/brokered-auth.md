@@ -1,7 +1,7 @@
 ---
-title: Android'de aracılı kimlik doğrulama | Azure
+title: Android 'de aracılı kimlik doğrulaması | Mavisi
 titlesuffix: Microsoft identity platform
-description: Microsoft kimlik platformunda Android için aracılı kimlik doğrulama & yetkilendirmeye genel bakış
+description: Microsoft Identity platformunda Android için aracılı kimlik doğrulama & yetkilendirmesi 'ne genel bakış
 services: active-directory
 author: shoatman
 manager: CelesteDG
@@ -14,71 +14,71 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76697906"
 ---
-# <a name="brokered-authentication-in-android"></a>Android'de aracılı kimlik doğrulaması
+# <a name="brokered-authentication-in-android"></a>Android 'de aracılı kimlik doğrulaması
 
-Aygıt genelinde Ki Tek Oturum Açma'ya (SSO) katılmak ve kuruluş Koşullu Erişim ilkelerini karşılamak için Microsoft'un kimlik doğrulama aracılarından birini kullanmanız gerekir. Bir komisyoncu ile tümleştirme aşağıdaki avantajları sağlar:
+Cihaz genelinde çoklu oturum açma 'ya (SSO) katılmak ve kuruluş koşullu erişim ilkelerini karşılamak için Microsoft 'un kimlik doğrulama aracılarından birini kullanmanız gerekir. Bir aracı ile tümleştirme aşağıdaki avantajları sağlar:
 
-- Cihaz tek oturum açma
-- Koşullu erişim:
+- Cihaz çoklu oturum açma
+- İçin koşullu erişim:
   - Intune Uygulama Koruması
-  - Cihaz Kaydı (İşyeri Birleştirme)
+  - Cihaz kaydı (Workplace Join)
   - Mobil Cihaz Yönetimi
-- Cihaz çapında Hesap Yönetimi
-  -  Android AccountManager & Hesap Ayarları üzerinden
-  - "İş Hesabı" - özel hesap türü
+- Cihaz genelinde hesap yönetimi
+  -  Android AccountManager & hesap ayarlarını kullanarak
+  - "İş hesabı"-özel hesap türü
 
-Android'de, Microsoft Authentication Broker [Microsoft Authenticator App](https://play.google.com/store/apps/details?id=com.azure.authenticator) ve [Intune Company Portal](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) ile birlikte bir bileşenidir
+Android 'de, Microsoft kimlik doğrulama Aracısı, [Microsoft Authenticator uygulama](https://play.google.com/store/apps/details?id=com.azure.authenticator) ve [Intune şirket portalı](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) birlikte bulunan bir bileşendir.
 
 > [!TIP]
-> Brokeri barındıran tek bir uygulama aynı anda broker olarak etkin olacaktır. Broker olarak hangi uygulamanın aktif olduğu cihazdaki kurulum emri ile belirlenir. İlk yüklenen veya cihazdaki son hediye, etkin broker olur.
+> Tek seferde aracı olarak yalnızca aracıyı barındıran bir uygulama etkin olur. Aracı olarak etkin olan uygulama, cihazdaki yükleme sırasına göre belirlenir. İlk yüklenecek olan veya cihazda bulunan son, etkin aracı olur.
 
-Aşağıdaki diyagram, uygulamanız, Microsoft Kimlik Doğrulama Kitaplığı (MSAL) ve Microsoft'un kimlik doğrulama aracıları arasındaki ilişkiyi göstermektedir.
+Aşağıdaki diyagramda, uygulamanız, Microsoft kimlik doğrulama kitaplığı (MSAL) ve Microsoft 'un kimlik doğrulama aracıları arasındaki ilişki gösterilmektedir.
 
-![Broker Dağıtım Diyagramı](./media/brokered-auth/brokered-deployment-diagram.png)
+![Aracı Dağıtım diyagramı](./media/brokered-auth/brokered-deployment-diagram.png)
 
-## <a name="installing-apps-that-host-a-broker"></a>Broker barındıran uygulamaları yükleme
+## <a name="installing-apps-that-host-a-broker"></a>Aracı barındıran uygulamalar yükleme
 
-Aracı barındırma uygulamaları, cihaz sahibi tarafından herhangi bir zamanda uygulama mağazasından (genellikle Google Play Store) yüklenebilir. Ancak, bazı API'ler (kaynaklar) aygıtların aşağıdakileri olmasını gerektiren Koşullu Erişim İlkeleri tarafından korunur:
+Aracı barındırma uygulamaları, cihaz sahibi tarafından, uygulama mağazalarından (genellikle Google Play Store) herhangi bir zamanda yüklenebilir. Ancak bazı API 'Ler (kaynaklar), cihazların şunları gerektiren koşullu erişim Ilkeleriyle korunmaktadır:
 
-- Kayıtlı (işyeri katıldı) ve/veya
-- Cihaz Yönetimine kaydolması veya
-- Intune Uygulama Koruması'na kaydoldu
+- Kayıtlı (çalışma alanına katılmış) ve/veya
+- Cihaz yönetimine kaydolmuş veya
+- Intune Uygulama Koruması kayıtlı
 
-Bir aygıtın zaten yüklü bir broker uygulaması yoksa, MSAL kullanıcıya uygulama etkileşimli olarak bir belirteç almaya çalışır çalışmaz bir tane yüklemesini bildirir. Uygulamanın daha sonra cihazı gerekli ilkeyle uyumlu hale getirmek için kullanıcıyı bu adımlara yönlendirmesi gerekir.
+Bir cihazda zaten yüklü bir aracı uygulaması yoksa, MSAL, uygulamanın bir belirteci etkileşimli olarak almaya çalıştığı anda kullanıcıyı bir tane yüklemesini ister. Daha sonra uygulamanın, cihazı gerekli ilkeyle uyumlu hale getirmek için kullanıcıyı bu adımları izleyerek yapması gerekir.
 
-## <a name="effects-of-installing-and-uninstalling-a-broker"></a>Bir komisyoncuyükleme nin ve kaldırmanın etkileri
+## <a name="effects-of-installing-and-uninstalling-a-broker"></a>Aracıyı yükleme ve kaldırma etkileri
 
-### <a name="when-a-broker-is-installed"></a>Bir komisyoncu yüklendiğinde
+### <a name="when-a-broker-is-installed"></a>Bir aracı yüklendiğinde
 
-Bir aygıta bir aracı yüklendiğinde, sonraki tüm etkileşimli `acquireToken()`belirteç istekleri (aramalar) MSAL tarafından yerel olarak değil, broker tarafından işlenir. Daha önce MSAL tarafından kullanılabilen herhangi bir SSO durumu komisyoncu tarafından kullanılamaz. Sonuç olarak, kullanıcının yeniden kimlik doğrulaması veya aygıt tarafından bilinen varolan hesaplar listesinden bir hesap seçmesi gerekir.
+Bir aracı bir cihaza yüklendiğinde, sonraki tüm etkileşimli Belirteç istekleri (öğesine `acquireToken()`çağrılar), msal tarafından yerel olarak değil, aracı tarafından işlenir. Daha önce MSAL için kullanılabilir olan tüm SSO durumları, aracıda kullanılamaz. Sonuç olarak, kullanıcının yeniden kimlik doğrulaması yapması veya cihaz tarafından bilinen mevcut hesapların listesinden bir hesap seçmeniz gerekir.
 
-Bir aracıyüklemek, kullanıcının yeniden oturum açmasını gerektirmez. Yalnızca kullanıcının bir `MsalUiRequiredException` isteği çözmesi gerektiğinde bir sonraki istek komisyoncuya gider. `MsalUiRequiredException`birkaç nedenden dolayı atılır ve etkileşimli olarak çözülmesi gerekir. Bu bazı yaygın nedenleri şunlardır:
+Bir aracı yüklemek için kullanıcının yeniden oturum açması gerekmez. Yalnızca kullanıcının bir sorunu çözmesi gerektiğinde, bir `MsalUiRequiredException` sonraki istek aracıya gider. `MsalUiRequiredException`bir dizi nedenden dolayı oluşturulur ve etkileşimli olarak çözülmesi gerekir. Bunlar bazı yaygın nedenlerdir:
 
 - Kullanıcı, hesabıyla ilişkili parolayı değiştirdi.
-- Kullanıcının hesabı artık bir Koşullu Erişim ilkesini karşılamaz.
+- Kullanıcının hesabı artık bir koşullu erişim ilkesini karşılamamaktadır.
 - Kullanıcı, uygulamanın hesabıyla ilişkilendirilmesi için onayını iptal etti.
 
-### <a name="when-a-broker-is-uninstalled"></a>Bir komisyoncu kaldırıldığında
+### <a name="when-a-broker-is-uninstalled"></a>Bir aracı kaldırıldığında
 
-Yalnızca bir broker barındırma uygulaması yüklüyse ve bu uygulama kaldırılırsa, kullanıcının yeniden oturum açması gerekir. Etkin aracının kaldırılması hesabı ve ilişkili belirteçleri aygıttan kaldırır.
+Yalnızca bir aracı barındırma uygulaması yüklüyse ve kaldırılırsa, kullanıcının yeniden oturum açması gerekecektir. Etkin Aracıyı kaldırmak, hesabı ve ilişkili belirteçleri cihazdan kaldırır.
 
-Intune Company Portal yüklüyse ve etkin broker olarak çalışıyorsa ve Microsoft Authenticator da yüklüyse, Intune Company Portal (etkin broker) yüklenirse kullanıcının yeniden oturum açması gerekir. Yeniden oturum açmalarında, Microsoft Authenticator uygulaması etkin aracı olur.
+Intune Şirket Portalı yüklenip etkin aracı olarak çalışıyorsa ve Microsoft Authenticator da yüklüyse, Intune Şirket Portalı (etkin aracı) kaldırılırsa, kullanıcının yeniden oturum açması gerekir. Yeniden oturum açtıklarında, Microsoft Authenticator uygulama etkin aracı olur.
 
-## <a name="integrating-with-a-broker"></a>Komisyoncu ile tümleştirme
+## <a name="integrating-with-a-broker"></a>Bir aracı ile tümleştirme
 
-### <a name="generating-a-redirect-uri-for-a-broker"></a>Bir komisyoncu için yeniden yönlendirme URI oluşturma
+### <a name="generating-a-redirect-uri-for-a-broker"></a>Bir aracı için yeniden yönlendirme URI 'SI oluşturma
 
-Komisyoncu ile uyumlu bir yeniden yönlendirme URI kayıt gerekir. Aracı için URI yönlendirme uygulamanızın paket adının yanı sıra uygulamanızın imzasının base64 kodlanmış temsilini de içermelidir.
+Aracıda uyumlu bir yeniden yönlendirme URI 'SI kaydetmeniz gerekir. Aracının yeniden yönlendirme URI 'sinin uygulamanızın paket adının yanı sıra, uygulamanızın imzasının Base64 kodlamalı gösterimini içermesi gerekir.
 
-URI yönlendirme biçimi:`msauth://<yourpackagename>/<base64urlencodedsignature>`
+Yeniden yönlendirme URI 'sinin biçimi:`msauth://<yourpackagename>/<base64urlencodedsignature>`
 
-Uygulamanızın imza anahtarlarını kullanarak Base64 url kodlanmış imzanızı oluşturun. Hata ayıklama imzalama anahtarlarınızı kullanan bazı örnek komutlar aşağıda verilmiştir:
+Uygulamanızın imzalama anahtarlarını kullanarak Base64 URL kodlamalı imzanızı oluşturun. Hata ayıklama imzalama anahtarlarınızı kullanan bazı örnek komutlar aşağıda verilmiştir:
 
 #### <a name="macos"></a>macOS
 
@@ -92,14 +92,14 @@ keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore |
 keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
 ```
 
-Uygulamanızı imzalama hakkında bilgi için [uygulamanızı imzalayın.](https://developer.android.com/studio/publish/app-signing)
+Uygulamanızı imzalama hakkında [bilgi için bkz. uygulamanızı imzalama](https://developer.android.com/studio/publish/app-signing) .
 
 > [!IMPORTANT]
 > Uygulamanızın üretim sürümü için üretim imzalama anahtarınızı kullanın.
 
-### <a name="configure-msal-to-use-a-broker"></a>MSAL'ı broker kullanacak şekilde yapılandırın
+### <a name="configure-msal-to-use-a-broker"></a>Aracıyı kullanmak için MSAL yapılandırma
 
-Uygulamanızda bir aracı kullanmak için, aracınızı yeniden yönlendirdiğinizi doğrulamalısınız. Örneğin, hem aracınızın etkinleştirilen yeniden yönlendirme URI'yi hem de MSAL yapılandırma dosyanıza aşağıdakileri ekleyerek kaydettiğinizi belirtin:
+Uygulamanızda bir aracı kullanmak için, aracı yeniden yönlendirmeyi yapılandırdığınız için test etmeniz gerekir. Örneğin, hem aracının etkin yeniden yönlendirme URI 'sini, hem de MSAL yapılandırma dosyanıza aşağıdakileri ekleyerek kaydettiğiniz olduğunu belirtin:
 
 ```javascript
 "redirect_uri" : "<yourbrokerredirecturi>",
@@ -107,18 +107,18 @@ Uygulamanızda bir aracı kullanmak için, aracınızı yeniden yönlendirdiğin
 ```
 
 > [!TIP]
-> Yeni Azure portal uygulama kaydı UI, aracının URI'yi yeniden yönlendirmesini oluşturmanıza yardımcı olur. Uygulamanızı eski deneyimi kullanarak kaydettiyseniz veya Bunu Microsoft uygulama kayıt portalını kullanarak kaydettiyseniz, yeniden yönlendirme URI'sini oluşturmanız ve portaldaki yeniden yönlendirme URI'lerinin listesini el ile güncelleştirmeniz gerekebilir.
+> Yeni Azure portal uygulama kaydı kullanıcı arabirimi, aracı yeniden yönlendirme URI 'sini oluşturmanıza yardımcı olur. Uygulamanızı eski deneyimle kaydettiniz veya Microsoft uygulama kayıt portalı 'nı kullanmaya devam ederseniz, yeniden yönlendirme URI 'sini oluşturmanız ve portaldaki yeniden yönlendirme URI 'lerinin listesini el ile güncelleştirmeniz gerekebilir.
 
-### <a name="broker-related-exceptions"></a>Broker ile ilgili özel durumlar
+### <a name="broker-related-exceptions"></a>Aracıda ilgili özel durumlar
 
-MSAL komisyoncu ile iki şekilde iletişim kurar:
+MSAL, aracı ile iki şekilde iletişim kurar:
 
-- Broker bağlı hizmet
-- Android Hesap Yöneticisi
+- Aracı ile bağlantılı hizmet
+- Android AccountManager
 
-MSAL, bu hizmeti aramanın herhangi bir Android izni gerektirmediği için önce broker bağlı hizmetini kullanır. Bağlı hizmete bağlanma başarısız olursa, MSAL Android AccountManager API'sını kullanır. MSAL bunu yalnızca uygulamanız zaten izin `"READ_CONTACTS"` verilmişse yapar.
+MSAL önce bu hizmeti çağırmak herhangi bir Android izni gerektirmediğinden, önce aracı ile ilişkili hizmeti kullanır. Bağlama hizmetine bağlama başarısız olursa, MSAL Android AccountManager API 'sini kullanır. MSAL yalnızca uygulamanız zaten `"READ_CONTACTS"` izin verildiyse bunu yapar.
 
-Hata kodu `"BROKER_BIND_FAILURE"` `MsalClientException` ile alırsanız, iki seçenek vardır:
+Hata kodu `MsalClientException` `"BROKER_BIND_FAILURE"`ile karşılaşırsanız, iki seçenek vardır:
 
-- Kullanıcıdan Microsoft Authenticator uygulaması ve Intune Company Portalı için güç optimizasyonunu devre dışı etmesini isteyin.
+- Kullanıcıdan Microsoft Authenticator uygulaması ve Intune Şirket Portalı için güç iyileştirmesini devre dışı vermesini isteyin.
 - Kullanıcıdan `"READ_CONTACTS"` izin vermesini isteyin

@@ -1,6 +1,6 @@
 ---
-title: Galeri dışı bir uygulama ekleme - Microsoft kimlik platformu | Microsoft Dokümanlar
-description: Azure AD kiracınıza galeri dışı bir uygulama ekleyin.
+title: Galeri dışı bir uygulama ekleme-Microsoft Identity platform | Microsoft Docs
+description: Azure AD kiracınıza Galeri olmayan bir uygulama ekleyin.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,59 +13,59 @@ ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd5a5f100dbe09c3b82f58183a118ee3bf455f70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063620"
 ---
-# <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Azure REKLAM kuruluşunuza listedışı (galeri dışı) bir uygulama ekleme
+# <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Azure AD kuruluşunuza listelenmemiş (Galeri olmayan) bir uygulama ekleme
 
-[Azure AD uygulama galerisindeki](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)seçeneklere ek olarak, galeri **dışı**bir uygulama ekleme seçeneğiniz de vardır. Kuruluşunuzda zaten var olan herhangi bir uygulamayı veya Azure REKLAM galerisinin bir parçası olmayan bir satıcıdan herhangi bir üçüncü taraf uygulama ekleyebilirsiniz. [Lisans sözleşmenize](https://azure.microsoft.com/pricing/details/active-directory/)bağlı olarak, aşağıdaki özellikler kullanılabilir:
+[Azure AD uygulama galerisindeki](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)seçeneklere ek olarak, **Galeri dışı bir uygulama**ekleme seçeneğiniz vardır. Kuruluşunuzda zaten var olan herhangi bir uygulamayı veya Azure AD Galerisi 'nin parçası olmayan bir satıcıdan herhangi bir üçüncü taraf uygulamayı ekleyebilirsiniz. [Lisans sözleşmenize](https://azure.microsoft.com/pricing/details/active-directory/)bağlı olarak aşağıdaki yetenekler mevcuttur:
 
-- [Güvenlik İddiası Biçimlendirme Dili (SAML) 2.0](https://wikipedia.org/wiki/SAML_2.0) kimlik sağlayıcılarını destekleyen herhangi bir uygulamanın self servis entegrasyonu (SP tarafından başlatılan veya IdP tarafından başlatılan)
-- [Parola tabanlı SSO](what-is-single-sign-on.md#password-based-sso) kullanarak HTML tabanlı oturum açma sayfası olan herhangi bir web uygulamasının self servis entegrasyonu
-- Kullanıcı sağlama için Etki Alanı [Arası Kimlik Yönetimi (SCIM) protokolünü](../app-provisioning/use-scim-to-provision-users-and-groups.md) kullanan uygulamaların self servis bağlantısı
-- [Office 365 uygulama başlatıcısındaveya](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) [Azure AD erişim panelindeki](what-is-single-sign-on.md#linked-sign-on) herhangi bir uygulamaya bağlantı ekleme olanağı
+- [Security assertion Markup Language (SAML) 2,0](https://wikipedia.org/wiki/SAML_2.0) kimlik sağlayıcılarını destekleyen tüm uygulamaların self servis TÜMLEŞTIRMESI (SP tarafından başlatılan veya IDP-başlatıldı)
+- [Parola tabanlı SSO](what-is-single-sign-on.md#password-based-sso) kullanarak HTML tabanlı bir oturum açma sayfasına sahip herhangi bir Web uygulamasının self servis tümleştirmesi
+- [Kullanıcı sağlaması Için etki alanları arası kimlik yönetimi (SCıM) protokolü Için sistemi](../app-provisioning/use-scim-to-provision-users-and-groups.md) kullanan uygulamaların Self Servis bağlantısı
+- [Office 365 uygulama başlatıcısı](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) veya [Azure AD erişim paneli](what-is-single-sign-on.md#linked-sign-on) 'nde herhangi bir uygulamaya bağlantı ekleme özelliği
 
-Bu makalede, Azure portalında kod yazmadan **Kurumsal Uygulamalara** galeri dışı bir uygulamanın nasıl ekleyeceğiniz açıklanmaktadır. Bunun yerine, özel uygulamaları Azure AD ile nasıl tümleştirdiğinize ilişkin geliştirici kılavuzu arıyorsanız, [Azure AD için Kimlik Doğrulama Senaryoları'na](../develop/authentication-scenarios.md)bakın. Kullanıcıların kimliğini doğrulamak için [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) gibi modern bir protokol kullanan bir uygulama geliştirdiğiniz zaman, Azure portalındaki [Uygulama kayıtları](../develop/quickstart-register-app.md) deneyimini kullanarak uygulamayı Microsoft kimlik platformuna kaydedebilirsiniz.
+Bu makalede, kod yazmadan Azure portal Galeri olmayan bir uygulamanın **kurumsal uygulamalara** nasıl ekleneceği açıklanmaktadır. Bunun yerine, özel uygulamaları Azure AD ile tümleştirme hakkında Geliştirici Kılavuzu arıyorsanız, bkz. [Azure AD Için kimlik doğrulama senaryoları](../develop/authentication-scenarios.md). Kullanıcıların kimliğini doğrulamak için [OpenID Connect/OAuth](../develop/active-directory-v2-protocols.md) gibi modern bir protokol kullanan bir uygulama geliştirirken, Azure Portal [uygulama kayıtları](../develop/quickstart-register-app.md) deneyimini kullanarak Microsoft Identity platformuna kaydedebilirsiniz.
 
-## <a name="add-a-non-gallery-application"></a>Galeri dışı uygulama ekleme
+## <a name="add-a-non-gallery-application"></a>Galeri dışı bir uygulama ekleme
 
-1. Microsoft kimlik platformu yönetici hesabınızı kullanarak [Azure Active Directory portalında](https://aad.portal.azure.com/) oturum açın.
+1. Microsoft Identity Platform yönetici hesabınızı kullanarak [Azure Active Directory portalında](https://aad.portal.azure.com/) oturum açın.
 
-2. **Kurumsal Uygulamaları** > Seçin**Yeni uygulama**.
+2. **Kurumsal uygulamalar** > **Yeni uygulama**' yı seçin.
 
-3. (İsteğe bağlı ama önerilen) Azure **AD Galerisi'ne Gözat** arama kutusuna uygulamanın ekran adını girin. 
+3. (İsteğe bağlı ancak önerilir) **Azure AD galerisine gözatıp** arama kutusuna uygulamanın görünen adını girin. 
 
-4. **Kendi uygulamanızı oluştur'u**seçin. **Kendi uygulama sayfanızı oluştur** görüntülenir.
+4. **Kendi uygulamanızı oluştur ' u**seçin. **Kendi uygulamanızı oluşturma** sayfası görüntülenir.
 
    ![Uygulama ekleme](media/add-non-gallery-app/create-your-own-application.png)
 
-5. Yeni uygulamanızın görüntü adını yazmaya başlayın. Benzer adlara sahip galeri uygulamaları varsa, bunlar bir arama sonuçları listesinde görünür.
+5. Yeni uygulamanızın görünen adını yazmaya başlayın. Benzer adlara sahip Galeri uygulamaları varsa, bunlar arama sonuçları listesinde görünür.
 
    > [!NOTE]
-   > Uygulamanızın galeri sürümünü mümkün olduğunca kullanmanızı öneririz. Eklemek istediğiniz uygulama arama sonuçlarında görünüyorsa, uygulamayı seçin ve bu yordamın geri kalanını atlayın.
+   > Mümkün olduğunda uygulamanızın Galeri sürümünü kullanmanızı öneririz. Eklemek istediğiniz uygulama arama sonuçlarında görünürse, uygulamayı seçin ve bu yordamın geri kalanını atlayın.
 
-6. **Uygulamanızla ne yapmak istediğinizi göre?** **galeride bulamayacağınız diğer uygulamaları tümleştir'i**seçin. Bu seçenek genellikle SAML ve WS-Fed uygulamaları için kullanılır.
+6. **Uygulamanızla ne yapmak istiyorsunuz? bölümünde,** **galeride bulamadıysanız herhangi bir uygulamayı tümleştirin '** ı seçin. Bu seçenek genellikle SAML ve WS-beslik uygulamalar için kullanılır.
 
    > [!NOTE]
    > Diğer iki seçenek aşağıdaki senaryolarda kullanılır:
-   >* **Şirket içi bir uygulamaya güvenli uzaktan erişim için Uygulama Proxy'sini yapılandırın** Azure AD Application Proxy ve bağlayıcılar için yapılandırma sayfası açılır.
-   >* **Azure AD ile tümleştirmek için üzerinde çalıştığınız bir uygulamayı kaydedin,** **Uygulama kayıtları** sayfasını açar. Bu seçenek genellikle OpenID Connect uygulamaları için kullanılır.
+   >* **Uygulama ara sunucusunu şirket içi bir uygulamaya güvenli uzaktan erişim için** yapılandırma, Azure AD uygulama ara sunucusu ve bağlayıcıları için yapılandırma sayfasını açar.
+   >* **Azure AD ile tümleştirmek üzere çalıştığınız bir uygulamayı kaydedin** **uygulama kayıtları** sayfasını açar. Bu seçenek genellikle OpenID Connect uygulamaları için kullanılır.
 
-7. **Oluştur'u**seçin. Uygulamaya **Genel Bakış** sayfası açılır.
+7. **Oluştur**’u seçin. Uygulamaya **genel bakış** sayfası açılır.
 
 ## <a name="configure-user-sign-in-properties"></a>Kullanıcı oturum açma özelliklerini yapılandırma
 
-1. Düzenleme için özellikler bölmesini açmak için **Özellikler'i** seçin.
+1. Özellikler bölmesini düzenlenmek üzere açmak için **Özellikler** ' i seçin.
 
-    ![Özellikleri ede: Bölme](media/add-non-gallery-app/edit-properties.png)
+    ![Özellikler bölmesini Düzenle](media/add-non-gallery-app/edit-properties.png)
 
-2. Uygulamaya atanan veya atanamayan kullanıcıların uygulamada nasıl oturum açabileceğini ve bir kullanıcının access panelinde uygulamayı görüp göremeyebileceğini belirlemek için aşağıdaki seçenekleri ayarlayın.
+2. Uygulamanın atandığı veya atanmamış olduğu kullanıcıların uygulamada oturum açıp görebilmesine ve bir kullanıcının erişim panelinde uygulamayı görebilmesi için aşağıdaki seçenekleri ayarlayın.
 
     - **Kullanıcıların oturum açması için etkinleştirildi**, uygulamaya atanan kullanıcıların oturum açıp açamayacağını belirler.
-    - **Gerekli kullanıcı ataması,** uygulamaya atanamayan kullanıcıların oturum açıp açamayacağını belirler.
+    - **Gerekli Kullanıcı Ataması** , uygulamaya atanmamış kullanıcıların oturum açıp açamayacağını belirler.
     - **Kullanıcıya görünür**, uygulamaya atanan kullanıcıların uygulamayı erişim panelinde ve O365 başlatıcısında görüp göremeyeceğini belirler.
 
       **Atanan** kullanıcılar için davranış:
@@ -86,7 +86,7 @@ Bu makalede, Azure portalında kod yazmadan **Kurumsal Uygulamalara** galeri dı
 
        | Uygulama özelliği ayarları | | | Atanmayan kullanıcı deneyimi | |
        |---|---|---|---|---|
-       | Kullanıcıların oturum açabilmesi için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanmayan kullanıcılar oturum açabilir mi? | Atanmayan kullanıcılar uygulamayı görebilir mi?* |
+       | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanmayan kullanıcılar oturum açabilir mi? | Atanmayan kullanıcılar uygulamayı görebilir mi?* |
        | evet | evet | evet | hayır  | hayır   |
        | evet | evet | hayır  | hayır  | hayır   |
        | evet | hayır  | evet | evet | hayır   |
@@ -98,16 +98,16 @@ Bu makalede, Azure portalında kod yazmadan **Kurumsal Uygulamalara** galeri dı
 
      *Kullanıcı uygulamayı erişim panelinde ve Office 365 uygulama başlatıcıda görebilir mi?
 
-3. Özel bir logo kullanmak için 215'e 215 piksel lik bir logo oluşturun ve PNG biçiminde kaydedin. Ardından logonuza göz atın ve yükleyin.
+3. Özel bir logo kullanmak için 215 piksel 215 ile arasında bir logo oluşturun ve bunu PNG biçiminde kaydedin. Ardından logonuzu inceleyin ve karşıya yükleyin.
 
     ![Logoyu değiştirme](media/add-non-gallery-app/change-logo.png)
 
-4. Bitirdikten sonra **Kaydet'i**seçin.
+4. İşiniz bittiğinde **Kaydet**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamayı Azure REKLAM kuruluşunuza eklediğinize göre, kullanmak istediğiniz [tek bir oturum açma yöntemini seçin](what-is-single-sign-on.md#choosing-a-single-sign-on-method) ve aşağıdaki uygun makaleye bakın:
+Artık uygulamayı Azure AD kuruluşunuza eklemişseniz, kullanmak istediğiniz [tek bir oturum açma yöntemi seçin](what-is-single-sign-on.md#choosing-a-single-sign-on-method) ve aşağıdaki ilgili makaleye başvurun:
 
 - [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md)
-- [Parolayı tek oturum açma yapılandırma](configure-password-single-sign-on-non-gallery-applications.md)
+- [Parola çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md)
 - [Bağlantılı oturum açmayı yapılandırma](configure-linked-sign-on.md)

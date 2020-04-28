@@ -1,6 +1,6 @@
 ---
-title: Azure Bildirim Hub'ları Örnekleri
-description: Kullanılabilir Azure Bildirim Hub'ları örneklerinin listesi.
+title: Azure Notification Hubs örnekleri
+description: Kullanılabilir Azure Notification Hubs örneklerinin listesi.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -14,15 +14,15 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/28/2019
 ms.openlocfilehash: eb382a66ac901853d28b4d63d31a30ed2f65b96c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76263940"
 ---
-# <a name="azure-notification-hubs-samples"></a>Azure Bildirim Hub'ları Örnekleri
+# <a name="azure-notification-hubs-samples"></a>Azure Notification Hubs örnekleri
 
-Bu makalede, Azure Bildirim Hub'larında temel özellikleri gösteren örneklere bağlantılar sağlanmaktadır.
+Bu makalede, Azure Notification Hubs 'da önemli özellikleri gösteren örneklere bağlantılar sağlanmaktadır.
 
 ## <a name="samples"></a>Örnekler
 
@@ -34,4 +34,4 @@ Bu makalede, Azure Bildirim Hub'larında temel özellikleri gösteren örneklere
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İçindekiler tablosunun **Öğreticiler** bölümündeki öğreticilere bakın.
+İçindekiler tablosunun **öğreticiler** bölümünde öğreticilere bakın.

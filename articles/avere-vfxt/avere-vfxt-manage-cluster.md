@@ -1,111 +1,111 @@
 ---
-title: Avere vFXT kümesini yönetme - Azure
-description: Avere kümesi nasıl yönetilir - düğüm ekleme veya kaldırma, yeniden başlatma, durdurma veya vFXT kümesini yok etme
+title: Avere vFXT kümesini yönetme-Azure
+description: Avere kümesini yönetme-düğüm ekleme veya kaldırma, vFXT kümesini yeniden başlatma, durdurma veya yok etme
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 94db4a93025b6e3d633368d924e3e0c518d108ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76153488"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Avere vFXT kümesini yönetme
 
-Azure kümesi için Avere vFXT'nizin yaşam döngüsünün bir noktasında küme düğümleri eklemeniz veya kümeyi başlatmak veya yeniden başlatmanız gerekebilir. Projeniz bittiğinde kümeyi nasıl durdurup kalıcı olarak kaldıracağınıbilmeniz gerekir.
+Azure kümesi için avere vFXT 'nizin yaşam döngüsünün bir noktasında küme düğümleri eklemeniz veya kümeyi başlatmak veya yeniden başlatmanız gerekebilir. Projeniz tamamlandığında, kümeyi durdurmayı ve kalıcı olarak kaldırmayı bilmeniz gerekir.
 
-Bu makalede, küme düğümleri ve diğer temel küme işlemleri nasıl ekleyeceğiniz veya kaldırılacak şekilde açıklanmaktadır. Küme ayarlarını değiştirmeniz veya çalışmasını izlemeniz gerekiyorsa, [Avere Denetim Masası'nı](avere-vfxt-cluster-gui.md)kullanın.
+Bu makalede, küme düğümlerinin ve diğer temel küme işlemlerinin nasıl ekleneceği ve kaldırılacağı açıklanır. Küme ayarlarını değiştirmeniz veya çalışmasını izlemek gerekirse, [avere denetim masasını](avere-vfxt-cluster-gui.md)kullanın.
 
-Yönetim görevine bağlı olarak, üç farklı araçtan birini kullanmanız gerekebilir: Avere Denetim Masası, vfxt.py komut satırı küme yönetimi komut dosyası ve Azure portalı.
+Yönetim görevine bağlı olarak, üç farklı araçlardan birini kullanmanız gerekebilir: avere denetim masası, vfxt.py komut satırı küme yönetimi betiği ve Azure portal.
 
-Bu tablo, her görev için hangi araçların kullanılabileceğine genel bir bakış sağlar.
+Bu tablo, her görev için hangi araçların kullanılabileceğini bir genel bakış sunar.
 
-| Eylem | Avere Kontrol Paneli | vfxt.py  | Azure portalında |
+| Eylem | Avere Denetim Masası | vfxt.py  | Azure portal |
 | --- | --- | --- | --- |
 | Küme düğümleri ekleme | hayır | evet | hayır |
-| Küme düğümlerini kaldırma | evet | hayır | hayır |
-| Küme düğümlerini durdurma | Evet (hizmetleri yeniden başlatabilir veya yeniden başlatabilir) | hayır | portaldan bir düğüm VM'yi kapatması düğüm hatası olarak yorumlanır |
-| Durdurulan düğüm başlatma | hayır | hayır | evet |
-| Tek bir küme düğümlerini yok et | hayır | hayır | evet |
+| Küme düğümlerini kaldır | evet | hayır | hayır |
+| Küme düğümünü durdur | Evet (hizmetleri veya yeniden başlatmayı da yeniden başlatabilir) | hayır | bir düğüm sanal makinesinin portaldan kapatılması düğüm hatası olarak yorumlanır |
+| Durdurulmuş bir düğüm Başlat | hayır | hayır | evet |
+| Tek bir küme düğümünü yok etme | hayır | hayır | evet |
 | Kümeyi yeniden başlatın |  |  |  |
-| Kümeyi güvenli bir şekilde kapatın veya durdurun | evet | evet | hayır |
-| Kümeyi yok et  | hayır | evet | Evet, ama veri bütünlüğü garanti edilmez. |
+| Kümeyi güvenli bir şekilde kapatma veya durdurma | evet | evet | hayır |
+| Kümeyi yok etme  | hayır | evet | Evet, ancak veri bütünlüğü garanti edilmez |
 
-Her araç için ayrıntılı talimatlar aşağıda yer almaktadır.
+Her araçla ilgili ayrıntılı yönergeler aşağıda verilmiştir.
 
-## <a name="about-stopped-instances-in-azure"></a>Azure'da durdurulan örnekler hakkında
+## <a name="about-stopped-instances-in-azure"></a>Azure 'da Durdurulan örnekler hakkında
 
-Herhangi bir Azure VM'sini kapattığınızda veya durdurduğunuzda, işlem ücretlerine maruz bırakmayı durdurur, ancak depolama alanı için ödeme niz gerekir. Bir vFXT düğümünü veya vFXT kümesinin tamamını kapattıysanız ve yeniden başlatmayı düşünmüyorsanız, ilgili VM'leri silmek için Azure portalını kullanmanız gerekir.
+Herhangi bir Azure VM 'yi kapattığınızda veya durdurduğunuzda, işlem ücretleri durduruluyor, ancak yine de depolama alanı için ödeme yapmanız gerekir. Bir vFXT düğümünü veya vFXT kümesini kapatırsanız ve yeniden başlatmayı düşünmüyorsanız ilgili VM 'Leri silmek için Azure portal kullanmanız gerekir.
 
-Azure portalında, *durdurulan* bir düğüm (yeniden başlatılabilir) Azure portalında **durdurulan** durumu gösterir. *Silinen* bir düğüm, durumu **durdurulur (ayrılmış)** gösterir ve artık işlem veya depolama ücretlerine maruz kalmaz.
+Azure portal, *durdurulmuş* bir düğüm (yeniden başlatılabilir) Azure Portal **durdurulan** durumu gösterir. *Silinen* düğüm, durumu **durduruldu (serbest bırakıldı)** durumunu gösterir ve artık işlem veya depolama ücretleri doğurur.
 
-VM'yi silmeden önce, avere denetim masası veya kümeyi durdurmak veya kapatmak için seçenekleri vfxt.py kullanarak değiştirilen tüm verilerin önbellekten arka uç depolamaya yazıldığından emin olun.
+VM 'yi silmeden önce, kümeyi durdurmak veya kapatmak için avere Denetim Masası veya vfxt.py seçenekleri kullanılarak, değiştirilen tüm verilerin önbellekten arka uç depolamaya yazıldığından emin olun.
 
-## <a name="manage-the-cluster-with-avere-control-panel"></a>Avere Kontrol Paneli ile kümeyi yönetme
+## <a name="manage-the-cluster-with-avere-control-panel"></a>Avere denetim masası ile kümeyi yönetme
 
-Avere Denetim Masası şu görevler için kullanılabilir:
+Avere Denetim Masası bu görevler için kullanılabilir:
 
-* Tek tek düğümleri durdurma veya yeniden başlatma
+* Tek tek düğümleri Durdur veya yeniden Başlat
 * Kümeden düğüm kaldırma
-* Tüm kümeyi durdurma veya yeniden başlatma
+* Tüm kümeyi Durdur veya yeniden Başlat
 
-Avere Denetim Masası veri bütünlüğüne öncelik verir, bu nedenle değiştirilen verileri yıkıcı bir işlemden önce arka uç depolamaya yazmaya çalışır. Bu, azure portalından daha güvenli bir seçenek haline getirir.
+Avere denetim masası, veri bütünlüğünü önceliklendirir, bu nedenle, olası bir verileri bir bozucu işlemden önce arka uç depolamaya yazmaya çalışır. Bu, Azure portal daha güvenli bir seçenek sağlar.
 
-Bir web tarayıcısından Avere Kontrol Paneli'ne erişin. Yardıma ihtiyacınız varsa [vFXT kümesine erişme yönergelerini](avere-vfxt-cluster-gui.md) izleyin.
+Web tarayıcısından avere Denetim Masası 'Na erişin. Yardım gerekirse [, vFXT kümesine erişme](avere-vfxt-cluster-gui.md) bölümündeki yönergeleri izleyin.
 
-### <a name="manage-nodes-with-avere-control-panel"></a>Avere Kontrol Paneli ile düğümleri yönetme
+### <a name="manage-nodes-with-avere-control-panel"></a>Avere denetim masası ile düğümleri yönetme
 
-**FXT Düğümleri** ayarları sayfasında tek tek düğümleri yönetmek için denetimler vardır.
+**FXT düğümleri** ayarlar sayfasında, tek tek düğümleri yönetmeye yönelik denetimler bulunur.
 
-Kapatmak, yeniden başlatmak veya düğümü kaldırmak için **FXT Düğümleri** sayfasındaki listedeki düğümü bulun ve **Eylemler** sütunundaki uygun düğmeyi tıklatın.
+Bir düğümü kapatmak, yeniden başlatmak veya kaldırmak için, **FXT düğümleri** sayfasındaki listede bulunan düğümü bulun ve **Eylemler** sütununda ilgili düğmeye tıklayın.
 
 > [!NOTE]
-> Etkin düğüm sayısı değiştiğinde IP adresleri küme düğümleri arasında hareket edebilir.
+> Etkin düğümlerin sayısı değiştiğinde, IP adresleri küme düğümleri arasında hareket edebilir.
 
-Daha fazla bilgi için Avere küme ayarları kılavuzunda [Küme > FXT Düğümlerini](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) okuyun.
+Daha fazla bilgi için avere Cluster Settings kılavuzundaki [küme > FXT düğümlerini](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html#gui-fxt-nodes>) okuyun.
 
-### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Avere Denetim Masası ile kümeyi durdurma veya yeniden başlatma
+### <a name="stop-or-reboot-the-cluster-with-avere-control-panel"></a>Avere denetim masası ile kümeyi durdurma veya yeniden başlatma
 
-**Sistem Bakım** ayarları sayfasında küme hizmetlerini yeniden başlatmak, kümeyi yeniden başlatmak veya kümeyi güvenli bir şekilde kapatma komutları vardır. Ayrıntılar için [Yönetim > Sistem Bakımı](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) 'nı (Avere küme ayarları kılavuzunda) okuyun.
+**Sistem bakım** ayarları sayfasında, küme hizmetlerini yeniden başlatmak, kümeyi yeniden başlatmak veya kümeyi güvenle kapatmak için komutlar bulunur. Ayrıntılar için [yönetim > sistem bakımı](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) 'Nı (avere küme ayarları kılavuzunda) okuyun.
 
-Bir küme kapanmaya başladığında, durum iletilerini **Pano** sekmesine gönderir. Birkaç dakika sonra iletiler durur ve sonunda Avere Denetim Masası oturumu yanıt vermeyi durdurur, bu da kümenin kapandığı anlamına gelir.
+Bir küme kapanmaya başladığında, durum iletilerini **Pano** sekmesine nakleder. Birkaç dakika sonra iletiler durur ve sonunda avere Denetim Masası oturumu yanıt vermemeye başlar, bu da kümenin kapandığı anlamına gelir.
 
-## <a name="manage-the-cluster-with-vfxtpy"></a>Kümeyi vfxt.py ile yönetin
+## <a name="manage-the-cluster-with-vfxtpy"></a>Vfxt.py ile kümeyi yönetme
 
-vfxt.py küme oluşturma ve yönetimi için bir komut satırı aracıdır.
+vfxt.py, küme oluşturma ve yönetimi için bir komut satırı aracıdır.
 
-vfxt.py küme denetleyicisi VM önceden yüklenir. Başka bir sisteme yüklemek istiyorsanız, 'deki <https://github.com/Azure/AvereSDK>belgelere bakın.
+vfxt.py, küme denetleyicisi sanal makinesine önceden yüklenir. Başka bir sisteme yüklemek isterseniz, adresindeki <https://github.com/Azure/AvereSDK>belgelere başvurun.
 
-vfxt.py komut dosyası şu küme yönetimi görevleri için kullanılabilir:
+Vfxt.py betiği şu küme yönetim görevleri için kullanılabilir:
 
 * Kümeye yeni düğümler ekleme
 * Kümeyi durdurma veya başlatma  
-* Bir kümeyi yok et
+* Kümeyi yok etme
 
-Avere Denetim Masası gibi, vfxt.py işlemleri de küme veya düğümü kapatmadan veya yok etmeden önce değiştirilen verilerin arka uç depolamada kalıcı olarak depolanmasını sağlamaya çalışır. Bu, azure portalından daha güvenli bir seçenek haline getirir.
+Avere denetim masası gibi vfxt.py işlemler, küme veya düğümü kapatmadan veya yok etmeden önce değiştirilen verilerin arka uç depolamada kalıcı olarak depolandığından emin olmanızı dener. Bu, Azure portal daha güvenli bir seçenek sağlar.
 
-GitHub: [vfxt.py ile bulut küme yönetimi](https://github.com/azure/averesdk/blob/master/docs/README.md) nde tam bir vfxt.py kullanım kılavuzu mevcuttur
+GitHub 'da tamamı vfxt.py kullanım kılavuzu mevcuttur: [vfxt.py Ile bulut kümesi Yönetimi](https://github.com/azure/averesdk/blob/master/docs/README.md)
 
-### <a name="add-cluster-nodes-with-vfxtpy"></a>küme düğümleri vfxt.py
+### <a name="add-cluster-nodes-with-vfxtpy"></a>Vfxt.py ile küme düğümleri ekleme
 
-Küme düğümleri eklemek için örnek komut komut komut u, küme denetleyicisi üzerinde yer alıyor. Denetleyiciyi bulun ``./add-nodes`` ve küme bilgilerinizle özelleştirmek için bir düzenleyicide açın.
+Küme düğümü eklemek için örnek bir komut betiği, küme denetleyicisine dahildir. Denetleyiciyi ``./add-nodes`` bulun ve küme bilgileriniz ile özelleştirmek için düzenleyiciyi bir düzenleyicide açın.
 
-Küme bu komutu kullanmak için çalışıyor olmalıdır.
+Bu komutu kullanmak için kümenin çalışıyor olması gerekir.
 
-Aşağıdaki değerleri sağlama:
+Aşağıdaki değerleri sağlayın:
 
-* Küme ile aynı kaynak grubunda değillerse küme için kaynak grubu adı ve ağ ve depolama kaynakları için de
+* Küme için kaynak grubu adı ve ayrıca, kümeyle aynı kaynak grubunda olmadıkları durumlarda ağ ve depolama kaynakları için
 * Küme konumu
-* Küme ağı ve alt ağ
-* Küme düğümü erişim rolü (yerleşik rolü [Avere Operatör'ü](../role-based-access-control/built-in-roles.md#avere-operator)kullanın)
-* Küme yönetimi IP adresi ve yönetim şifresi
+* Küme ağı ve alt ağı
+* Küme düğümü erişim rolü (yerleşik rol [avere işlecini](../role-based-access-control/built-in-roles.md#avere-operator)kullanın)
+* Küme yönetimi IP adresi ve yönetici parolası
 * Eklenecek düğüm sayısı (1, 2 veya 3)
 * Düğüm örneği türü ve önbellek boyutu değerleri
 
-Prototipi kullanmıyorsanız, yukarıda açıklanan tüm bilgiler de dahil olmak üzere aşağıdaki gibi bir komut oluşturmanız gerekir.
+Prototip kullanmıyorsanız, yukarıda açıklanan bilgiler dahil olmak üzere aşağıdaki gibi bir komut oluşturmanız gerekir.
 
 ```bash
    vfxt.py --cloud-type azure --from-environment \
@@ -119,96 +119,96 @@ Prototipi kullanmıyorsanız, yukarıda açıklanan tüm bilgiler de dahil olmak
    --log ~/vfxt.log
 ```
 
-Daha fazla bilgi için, vfxt.py kullanım kılavuzunda [kümeye düğüm ekle'yi](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#add-nodes-to-a-cluster) okuyun.
+Daha fazla bilgi için vfxt.py kullanım kılavuzunda [bir kümeye düğüm ekleme](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#add-nodes-to-a-cluster) makalesini okuyun.
 
-### <a name="stop-a-cluster-with-vfxtpy"></a>Kümeyi vfxt.py ile durdurun
+### <a name="stop-a-cluster-with-vfxtpy"></a>Vfxt.py ile küme durdurma
 
 ```bash
 vfxt.py --cloud-type azure --from-environment --stop --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET
 ```
 
-### <a name="start-a-stopped-cluster-with-vfxtpy"></a>vfxt.py ile durmuş küme başlatma
+### <a name="start-a-stopped-cluster-with-vfxtpy"></a>Vfxt.py ile durdurulmuş bir küme başlatma
 
 ```bash
 vfxt.py --cloud-type azure --from-environment --start --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --instances INSTANCE1_ID INSTANCE2_ID INSTANCE3_ID ...
 ```
 
-Küme durdurulduğundan, küme düğümlerini belirtmek için örnek tanımlayıcıları geçmeniz gerekir. Daha fazla bilgi edinmek için vfxt.py kullanım kılavuzunda [hangi kümenin değiştirilmeye](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#specifying-which-cluster-to-modify) karar vereceği belirtin.
+Küme durdurulduğu için, küme düğümlerini belirtmek üzere örnek tanımlayıcıları geçirmeniz gerekir. Daha fazla bilgi için vfxt.py kullanım kılavuzunda [Değiştirilecek kümeyi belirtmeyi](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#specifying-which-cluster-to-modify) okuyun.
 
-### <a name="destroy-a-cluster-with-vfxtpy"></a>bir kümeyi vfxt.py
+### <a name="destroy-a-cluster-with-vfxtpy"></a>Vfxt.py ile küme yok etme
 
 ```bash
 vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --management-address ADMIN_IP
 ```
 
-Değiştirilen ``--quick-destroy`` verileri küme önbelleğinden kaydetmek istemiyorsanız, bu seçenek kullanılabilir.
+Değiştirilen verileri ``--quick-destroy`` küme önbelleğinden kaydetmek istemiyorsanız seçeneği kullanılabilir.
 
 Ek bilgi için [vfxt.py kullanım kılavuzunu](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>) okuyun.
 
-## <a name="manage-cluster-vms-from-the-azure-portal"></a>Azure portalından küme VM'lerini yönetme
+## <a name="manage-cluster-vms-from-the-azure-portal"></a>Azure portal küme VM 'lerini yönetme
 
-Azure portalı küme VM'lerini tek tek yok etmek için kullanılabilir, ancak küme önce temiz olarak kapatılmazsa veri bütünlüğü garanti edilmez.
+Azure portal küme VM 'lerini tek tek yok etmek için kullanılabilir, ancak küme önce düzgün kapatılmadığında veri bütünlüğü garanti edilmez.
 
-Azure portalı şu küme yönetimi görevleri için kullanılabilir:
+Azure portal, bu küme yönetim görevleri için kullanılabilir:
 
-* Durdurulan vFXT düğümü başlatma
-* Tek bir vFXT düğümünü durdurun (küme bunu düğüm hatası olarak yorumlar)
-* Küme önbelleğindeki değiştirilen verilerin çekirdek filer'e yazıldığından emin olmanız gerekmiyorsa vFXT *kümesini* yok edin
-* VFXT düğümlerini ve diğer küme kaynaklarını güvenli bir şekilde kapatıldıktan sonra kalıcı olarak kaldırın
+* Durdurulmuş bir vFXT düğümü başlatma
+* Tek bir vFXT düğümünü Durdur (küme bunu düğüm hatası olarak Yorumlar)
+* Küme önbelleğindeki değiştirilen verilerin çekirdek filklerine yazıldığından *emin olmanız gerekmiyorsa* bir vFXT kümesini yok edin
+* Güvenli bir şekilde kapatıldıktan sonra vFXT düğümlerini ve diğer küme kaynaklarını kalıcı olarak kaldır
 
-### <a name="restart-vfxt-instances-from-the-azure-portal"></a>Azure portalından vFXT örneklerini yeniden başlatın
+### <a name="restart-vfxt-instances-from-the-azure-portal"></a>Azure portal vFXT örneklerini yeniden başlatın
 
-Durmuş bir düğümü yeniden başlatmanız gerekiyorsa, Azure portalını kullanmanız gerekir. Sol menüde **Sanal makineleri** seçin ve genel bakış sayfasını açmak için listedeki VM adını tıklatın.
+Durdurulmuş bir düğümü yeniden başlatmanız gerekiyorsa Azure portal kullanmanız gerekir. Sol taraftaki menüden **sanal makineler** ' i seçin ve sonra genel bakış sayfasını açmak IÇIN listedeki VM adına tıklayın.
 
-VM'yi yeniden etkinleştirmek için genel bakış sayfasının üst kısmındaki **Başlat** düğmesini tıklatın.
+VM 'yi yeniden etkinleştirmek için genel bakış sayfasının en üstündeki **Başlat** düğmesine tıklayın.
 
-![Durmuş vm başlatma seçeneğini gösteren Azure portal ekranı](media/avere-vfxt-start-stopped-incurring-annot.png)
+![Durdurulmuş bir VM başlatma seçeneğini gösteren Azure portal ekran](media/avere-vfxt-start-stopped-incurring-annot.png)
 
 ### <a name="delete-cluster-nodes"></a>Küme düğümlerini silme
 
-VFXT kümesinden bir düğüm silmek ancak kümenin geri kalanını tutmak istiyorsanız, önce Avere Denetim Masası ile [düğümü kümeden kaldırmanız](#manage-nodes-with-avere-control-panel) gerekir.
+VFXT kümesinden bir düğümü silmek, ancak kümenin geri kalanını tutmak istiyorsanız, önce avere denetim masası ile [düğümü kümeden kaldırmanız](#manage-nodes-with-avere-control-panel) gerekir.
 
 > [!CAUTION]
-> Bir düğümü vFXT kümesinden çıkarmadan silerseniz, veriler kaybolabilir.
+> Bir düğümü önce vFXT kümesinden kaldırmadan silerseniz, veriler kaybolabilir.
 
-VFXT düğümü olarak kullanılan bir veya daha fazla örneği kalıcı olarak yok etmek için Azure portalını kullanın.
-Sol menüde **Sanal makineleri** seçin ve genel bakış sayfasını açmak için listedeki VM adını tıklatın.
+VFXT düğümü olarak kullanılan bir veya daha fazla örneği kalıcı olarak yok etmek için Azure portal kullanın.
+Sol taraftaki menüden **sanal makineler** ' i seçin ve sonra genel bakış sayfasını açmak IÇIN listedeki VM adına tıklayın.
 
-VM'yi kalıcı olarak yok etmek için genel bakış sayfasının üst kısmındaki **Sil** düğmesini tıklatın.
+VM 'yi kalıcı olarak yok etmek için genel bakış sayfasının en üstündeki **Sil** düğmesine tıklayın.
 
-Küme düğümlerini güvenli bir şekilde kapatıldıktan sonra kalıcı olarak kaldırmak için bu yöntemi kullanabilirsiniz.
+Bu yöntemi, güvenli bir şekilde kapatıldıktan sonra küme düğümlerini kalıcı olarak kaldırmak için kullanabilirsiniz.
 
-### <a name="destroy-the-cluster-from-the-azure-portal"></a>Azure portalından kümeyi yok edin
+### <a name="destroy-the-cluster-from-the-azure-portal"></a>Azure portal kümeyi yok edin
 
 > [!NOTE]
-> Önbellekte kalan istemci değişikliklerinin arka uç depolamaalanına yazılmasını istiyorsanız, `--destroy` azure portalındaki düğüm örneklerini kaldırmadan önce kümeyi temiz bir şekilde kapatmak için vfxt.py seçeneğini kullanın veya Avere Denetim Masası'nı kullanın.
+> Önbellekte kalan tüm istemci değişikliklerinin arka uç depolamaya yazılmasını istiyorsanız, Azure portal düğüm örneklerini kaldırmadan önce vfxt.py `--destroy` seçeneğini kullanın veya avere Denetim Masası 'nı kullanarak kümeyi düzgün bir şekilde kapatın.
 
-Düğüm örneklerini Azure portalında silerek kalıcı olarak yok edebilirsiniz. Yukarıda açıklandığı gibi teker teker silebilir veya **Sanal Makineler** sayfasını kullanarak tüm küme VM'lerini bulabilir, onay kutularıyla seçebilir ve hepsini tek bir eylemde kaldırmak için **Sil** düğmesini tıklatabilirsiniz.
+Düğüm örneklerini Azure portal silerek kalıcı olarak yok edebilirsiniz. Yukarıda açıklanan şekilde tek seferde silebilir veya **sanal makineler** sayfasını kullanarak küme VM 'lerinin tümünü bulabilir, bunları onay kutuları ile seçebilir ve tümünü tek bir eylemde kaldırmak için **Sil** düğmesine tıklayabilirsiniz.
 
-!["Küme" terimine göre filtrelenen portaldaki VM'lerin listesi, dört işaretten üçü işaretlenmiş ve vurgulanmış](media/avere-vfxt-multi-vm-delete.png)
+![Portalda "Cluster" terimiyle filtrelenen ve dört işaretli ve vurgulanmış olan VM 'lerin listesi](media/avere-vfxt-multi-vm-delete.png)
 
-### <a name="delete-additional-cluster-resources-from-the-azure-portal"></a>Azure portalından ek küme kaynaklarını silme
+### <a name="delete-additional-cluster-resources-from-the-azure-portal"></a>Azure portal ek küme kaynaklarını silme
 
-VFXT kümesi için özel olarak ek kaynaklar oluşturduysanız, kümeyi yıkmanın bir parçası olarak bunları kaldırmak isteyebilirsiniz. İhtiyacınız olan verileri veya diğer projelerle paylaşılan öğeleri içeren öğeleri yok etmeyin.
+Özellikle vFXT kümesi için ek kaynaklar oluşturduysanız, kümeyi aşağı doğru bir şekilde kaldırmak isteyebilirsiniz. İhtiyaç duyduğunuz verileri veya diğer projelerle paylaşılan herhangi bir öğeyi içeren öğeleri yok etme.
 
-Küme düğümlerini silmenin yanı sıra, bu bileşenleri kaldırmayı düşünün:
+Küme düğümlerini silmenin yanı sıra, şu bileşenleri kaldırmayı göz önünde bulundurun:
 
-* Küme denetleyicisi VM
+* Küme denetleyicisi VM 'si
 * Küme düğümleriyle ilişkili veri diskleri
-* Küme bileşenleriyle ilişkili ağ arabirimleri ve ortak IP'ler
+* Küme bileşenleriyle ilişkili ağ arabirimleri ve genel IP 'Ler
 * Sanal ağlar
-* Depolama kapları ve depolama hesapları **(yalnızca** önemli bir veri içermedikleri takdirde)
+* Depolama kapsayıcıları ve depolama hesapları (**yalnızca** önemli veriler içeriyorlarsa)
 * Kullanılabilirlik kümesi
 
-![Bir test kümesi için oluşturulan kaynakları gösteren azure portalı "tüm kaynaklar" listesi](media/avere-vfxt-all-resources-list.png)
+![Bir test kümesi için oluşturulan kaynakları gösteren "tüm kaynaklar" listesi Azure portal](media/avere-vfxt-all-resources-list.png)
 
-### <a name="delete-a-clusters-resource-group-from-the-azure-portal"></a>Azure portalından kümenin kaynak grubunu silme
+### <a name="delete-a-clusters-resource-group-from-the-azure-portal"></a>Azure portal bir kümenin kaynak grubunu silin
 
-Kümeyi barındıracak özel bir kaynak grubu oluşturduysanız, kaynak grubunu yok ederek küme için ilgili tüm kaynakları yok edebilirsiniz.
+Kümeyi barındırmak için özel olarak bir kaynak grubu oluşturduysanız, kaynak grubunu yok ederek küme için tüm ilgili kaynakları yok edebilirsiniz.
 
 > [!Caution]
-> Yalnızca değerli hiçbir şeyin grupta olmadığından eminseniz kaynak grubunu yok edin. Örneğin, kaynak grubundaki herhangi bir depolama kapsayıcısından gerekli verileri taşıdığınızdan emin olun.  
+> Yalnızca grupta hiçbir değerin olmadığından eminseniz kaynak grubunu yok edin. Örneğin, kaynak grubu içindeki herhangi bir depolama kapsayıcılarından gerekli verileri taşıdığınızdan emin olun.  
 
-Kaynak grubunu silmek için, portalın sol menüsündeki **Kaynak gruplarını** tıklatın ve vFXT kümesi için oluşturduğunuz grubu bulmak için kaynak grupları listesine filtre uygulayın. Kaynak grubunu seçin ve panelin sağındaki üç noktayı tıklatın. **Kaynak grubunu sil**'i seçin. Geçit sizden silme işlemini onaylamanızı isteyecektir, ki bu geri alınamaz.
+Bir kaynak grubunu silmek için portalın sol menüsünde **kaynak grupları** ' na tıklayın ve ardından vFXT kümesi için oluşturduğunuz kaynağı bulmak için kaynak grupları listesini filtreleyin. Kaynak grubunu seçin ve panelin sağ tarafındaki üç noktaya tıklayın. **Kaynak grubunu sil**'i seçin. Portal, geri alınamaz olan silme işlemini onaylamanızı ister.
 
 !["Kaynak grubunu sil" eylemini gösteren kaynak grubu](media/avere-vfxt-delete-resource-group.png)

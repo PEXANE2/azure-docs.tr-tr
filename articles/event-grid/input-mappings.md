@@ -1,6 +1,6 @@
 ---
-title: Azure Olay Izgara şemasına özel alanı haritalama
-description: Bu makalede, etkinlik verileriniz Olay Izgara şemasıyla eşleşmediğinde özel şemanızı Azure Olay Izgara şemasına nasıl dönüştürdüğünüz açıklanmaktadır.
+title: Özel alanı Azure Event Grid şemasına eşleyin
+description: Bu makalede, olay veriniz Event Grid şemayla eşleşmediği zaman özel şemanızın Azure Event Grid şemasına nasıl dönüştürüleceği açıklanır.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721668"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Özel alanları Event Grid şemasına eşleme
 
-Etkinlik verileriniz beklenen [Olay Izgara şemasıyla](event-schema.md)eşleşmiyorsa, olayı abonelere yönlendirmek için Olay Izgarasını kullanmaya devam edebilirsiniz. Bu makalede, şemanızın Olay Izgara şemasıyla nasıl eşleneniz açıklanmaktadır.
+Olay verileriniz beklenen [Event Grid şemasıyla](event-schema.md)eşleşmiyorsa, etkinliği abonelere yönlendirmek için Event Grid kullanmaya devam edebilirsiniz. Bu makalede, şemanızın Event Grid şemasına nasıl eşleneceğini açıklanmaktadır.
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-## <a name="install-preview-feature"></a>Önizleme özelliğini yükleme
+## <a name="install-preview-feature"></a>Önizleme özelliğini yükler
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-## <a name="original-event-schema"></a>Orijinal olay şeması
+## <a name="original-event-schema"></a>Özgün olay şeması
 
-Olayları aşağıdaki biçimde gönderen bir uygulamanız olduğunu varsayalım:
+Aşağıdaki biçimde olayları gönderen bir uygulamanız olduğunu varsayalım:
 
 ```json
 [
@@ -39,19 +39,19 @@ Olayları aşağıdaki biçimde gönderen bir uygulamanız olduğunu varsayalım
 ]
 ```
 
-Bu biçim gerekli şemaya uymasa da, Olay Izgara alanlarınızı şema ile eşlebilmenizi sağlar. Veya özgün şemadaki değerleri alabilirsiniz.
+Bu biçim gerekli şemayla eşleşmez, ancak Event Grid alanları şemayla eşlemenizi sağlar. Ya da özgün şemadaki değerleri alabilirsiniz.
 
-## <a name="create-custom-topic-with-mapped-fields"></a>Eşlenen alanlar ile özel konu oluşturma
+## <a name="create-custom-topic-with-mapped-fields"></a>Eşlenmiş alanlarla özel konu oluşturma
 
-Özel bir konu oluştururken, özgün etkinliğinizdeki alanların olay ızgara şemasına nasıl eşlenerek eşlenerek yapılacağını belirtin. Eşlecilik özelleştirmek için kullandığınız üç değer vardır:
+Özel bir konu oluştururken, özgün olayınızdan bulunan alanları Event Grid şemasına nasıl eşleneceğini belirtin. Eşlemeyi özelleştirmek için kullandığınız üç değer vardır:
 
-* **Giriş şeması** değeri şema türünü belirtir. Kullanılabilir seçenekler CloudEvents şeması, özel olay şeması veya Olay Izgara şemasıdır. Varsayılan değer Olay Izgara şemasıdır. Şemanız ve olay ızgara şeması arasında özel eşleme oluştururken, özel olay şeması kullanın. Olaylar CloudEvents şemasında olduğunda, CloudEvents şemasını kullanın.
+* **Giriş şeması** değeri şemanın türünü belirtir. Kullanılabilir seçenekler CloudEvents şeması, özel olay şeması veya Event Grid şemadır. Varsayılan değer Event Grid şemadır. Şemanız ve olay Kılavuzu şeması arasında özel eşleme oluştururken özel olay şeması kullanın. Olaylar CloudEvents şemasında olduğunda, Cloudevents şeması ' nı kullanın.
 
-* **Eşleme varsayılan değerleri** özelliği Olay Izgara şemasındaki alanlar için varsayılan değerleri belirtir. Varsayılan değerleri `subject`, ve `eventtype`. `dataversion` Genellikle, özel şemanız bu üç alandan birine karşılık gelen bir alan içermiyorsa, bu parametreyi kullanırsınız. Örneğin, veri sürümünün her zaman **1.0**olarak ayarlanır belirtebilirsiniz.
+* **Mapping default Values** özelliği Event Grid şemasındaki alanlar için varsayılan değerleri belirtir. , `subject` `eventtype`Ve `dataversion`için varsayılan değerleri ayarlayabilirsiniz. Genellikle bu parametreyi, özel şemanız bu üç alandan birine karşılık gelen bir alan içermiyorsa kullanırsınız. Örneğin, veri sürümünün her zaman **1,0**olarak ayarlandığını belirtebilirsiniz.
 
-* **Eşleme alanları,** şemanızdan olay ızgara şemasına kadar olan alanları değerlendirir. Boşluk ayrılmış anahtar/değer çiftlerinde değerleri belirtirsiniz. Anahtar adı için olay ızgara alanının adını kullanın. Değer için alanınızın adını kullanın. Anahtar `id`adlarını , `topic`, `eventtime` `subject`, `eventtype`, `dataversion`ve .
+* **Mapping Fields** değeri, şemadaki alanları Event Grid şemasına eşler. Değerleri boşlukla ayrılmış anahtar/değer çiftlerinde belirtirsiniz. Anahtar adı için Event Grid alanının adını kullanın. Değer için, alanın adını kullanın. ,, `id`,, Ve `topic` `eventtime` `subject` `eventtype` `dataversion`için anahtar adlarını kullanabilirsiniz.
 
-Azure CLI ile özel bir konu oluşturmak için şunları kullanın:
+Azure CLı ile özel bir konu oluşturmak için şunu kullanın:
 
 ```azurecli-interactive
 # If you have not already installed the extension, do it now.
@@ -83,11 +83,11 @@ New-AzureRmEventGridTopic `
   -InputMappingDefaultValue @{subject="DefaultSubject"; dataVersion="1.0" }
 ```
 
-## <a name="subscribe-to-event-grid-topic"></a>Olay ızgarası konusuna abone olun
+## <a name="subscribe-to-event-grid-topic"></a>Event Grid 'e abone olma konusu
 
-Özel konuya abone olurken, olayları almak için kullanmak istediğiniz şemayı belirtirsiniz. CloudEvents şeasını, özel olay şemasını veya Olay Izgara şeasını belirtirsiniz. Varsayılan değer Olay Izgara şemasıdır.
+Özel konuya abone olurken, olayları almak için kullanmak istediğiniz şemayı belirtirsiniz. CloudEvents şeması, özel olay şeması veya Event Grid şemasını belirtirsiniz. Varsayılan değer Event Grid şemadır.
 
-Aşağıdaki örnek, bir olay ızgarası konusuna abone dir ve Olay Izgara şemasını kullanır. Azure CLI için şunu kullanın:
+Aşağıdaki örnek bir Event Grid konusuna abone olur ve Event Grid şemasını kullanır. Azure CLI için şunu kullanın:
 
 ```azurecli-interactive
 topicid=$(az eventgrid topic show --name demoTopic -g myResourceGroup --query id --output tsv)
@@ -109,7 +109,7 @@ az eventgrid event-subscription create \
   --endpoint <endpoint_URL>
 ```
 
-Aşağıdaki örnek, bir olay ızgarası konusuna abone dir ve Olay Izgara şemasını kullanır. PowerShell için şunu kullanın:
+Aşağıdaki örnek bir Event Grid konusuna abone olur ve Event Grid şemasını kullanır. PowerShell için şunu kullanın:
 
 ```azurepowershell-interactive
 $topicid = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
@@ -133,9 +133,9 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CustomInputSchema
 ```
 
-## <a name="publish-event-to-topic"></a>Olayı konuya yayımlama
+## <a name="publish-event-to-topic"></a>Etkinliği konuya Yayımla
 
-Artık özel konuya bir olay göndermeye ve eşlemenin sonucunu görmeye hazırsınız. [Örnek şemada](#original-event-schema)bir olay göndermek için aşağıdaki komut dosyası:
+Artık özel konuya bir olay göndermeye hazır olursunuz ve eşlemenin sonucunu görebilirsiniz. [Örnek şemasında](#original-event-schema)bir olay göndermek için aşağıdaki komut dosyası:
 
 Azure CLI için şunu kullanın:
 
@@ -166,9 +166,9 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-Şimdi, WebHook bitiş noktasına bakın. İki abonelik farklı şemalarda etkinlikler sundu.
+Şimdi Web kancası uç noktanıza bakın. İki abonelik, farklı şemalarda olay teslim edildi.
 
-İlk abonelik olay ızgara şeması kullanılır. Teslim edilen olayın biçimi:
+İlk kullanılan abonelik olay Kılavuzu şeması. Teslim edilen olayın biçimi:
 
 ```json
 {
@@ -189,9 +189,9 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 }
 ```
 
-Bu alanlar, özel konueşlerini içerir. **myEventTypeField** **EventType**eşlenir. **DataVersion** ve **Subject** için varsayılan değerler kullanılır. **Veri** nesnesi özgün olay şeması alanlarını içerir.
+Bu alanlar özel konudan eşlemeleri içerir. **Myeventtypefield** , **EventType**ile eşlendi. **Dataversion** ve **Subject** için varsayılan değerler kullanılır. **Veri** nesnesi, özgün olay şeması alanlarını içerir.
 
-İkinci abonelik giriş olay şeması kullanılır. Teslim edilen olayın biçimi:
+İkinci abonelik, giriş olay şemasını kullandı. Teslim edilen olayın biçimi:
 
 ```json
 {
@@ -203,10 +203,10 @@ Bu alanlar, özel konueşlerini içerir. **myEventTypeField** **EventType**eşle
 }
 ```
 
-Orijinal alanların teslim edildiğine dikkat edin.
+Özgün alanların teslim edildiğini unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Olay teslimi ve yeniden denemeleri hakkında bilgi için, [Olay Grid ileti teslimi ve yeniden deneme.](delivery-and-retry.md)
+* Olay teslimi ve yeniden denemeler hakkında daha fazla bilgi için [Event Grid ileti teslimi ve yeniden deneyin](delivery-and-retry.md).
 * Event Grid’e giriş için bkz. [Event Grid hakkında](overview.md).
-* Olay Ağıt'ı kullanmaya hızla başlamak için [Azure Olay Ağıtı ile özel etkinlikler oluştur ve yönlendir'e](custom-event-quickstart.md)bakın.
+* Event Grid kullanmaya hızlıca başlamak için bkz. [özel olayları oluşturma ve Azure Event Grid ile yönlendirme](custom-event-quickstart.md).

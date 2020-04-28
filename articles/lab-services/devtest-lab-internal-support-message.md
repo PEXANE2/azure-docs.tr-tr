@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs'daki bir laboratuvara dahili destek bildirimi ekleme
-description: Azure DevTest Labs'daki bir laboratuvara dahili destek bildirimini nasıl yayınlayacağınızı öğrenin
+title: Azure DevTest Labs bir laboratuvara iç destek bildirisi ekleme
+description: Azure DevTest Labs ' de bir laboratuvara iç destek beyanı nakletmeyi öğrenin
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,59 +15,59 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 591dcec36dc62143901d3b49db24196e84d58c29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76170360"
 ---
-# <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs'daki bir laboratuvara dahili destek bildirimi ekleme
+# <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs bir laboratuvara iç destek bildirisi ekleme
 
-Azure DevTest Labs, kullanıcılara laboratuvar hakkında destek bilgileri sağlayan dahili bir destek bildirimiyle laboratuvarınızı özelleştirmenize olanak tanır. Örneğin, kullanıcının sorun giderme veya laboratuvardaki kaynaklara erişim konusunda yardıma ihtiyaç duyduğunda dahili desteğe nasıl ulaşacağını bilmesi için kişi bilgileri sağlayabilirsiniz. Ayrıca, ekibinizin desteğe başvurmadan önce erişebileceği dahili web sitelerine veya SSS'lere bağlantılar da sağlayabilirsiniz.
+Azure DevTest Labs, laboratuvarınızı laboratuvar hakkında Destek bilgileri sunan dahili bir destek bildirimiyle özelleştirmenizi sağlar. Örneğin, bir kullanıcının laboratuvardaki kaynaklara sorun giderme veya erişim ihtiyacı olduğunda iç desteğe nasıl ulaşabulacağını bilmesi için iletişim bilgileri sağlayabilirsiniz. Ayrıca, ekibinizin destek ile iletişime geçmeden önce erişebileceği iç Web siteleri veya SSS bağlantılarını da sağlayabilirsiniz.
 
-Dahili destek deyimi, genellikle çok sık değişmeyen laboratuvar bilgilerini göndermenize izin vermek için tasarlanmıştır. Laboratuvar ilkelerine yönelik son güncellemeler gibi, doğada daha geçici olan laboratuvar bilgileri hakkında kullanıcıları bilgilendirmek için [laboratuvardaki Posta duyurusuna](devtest-lab-announcements.md)bakın.
+Bir iç destek bildirisi, genellikle çok sık değişmeyen laboratuvar bilgileri göndermenize imkan tanır. Laboratuvar ilkelerine yönelik son güncelleştirmeler gibi kullanıcılara daha geçici olan laboratuvar bilgilerini bildirmek için, bkz. [bir laboratuvarda duyuru gönderme](devtest-lab-announcements.md).
 
-Bir destek bildirimini artık geçerli olmadıktan sonra kolayca devre dışı layabilir veya edebilirsiniz.
+Artık geçerli olmadığında bir destek bildirisini kolayca devre dışı bırakabilir veya düzenleyebilirsiniz.
 
-## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Varolan bir laboratuvara destek bildirimi ekleme adımları
+## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Mevcut laboratuvara destek beyanı ekleme adımları
 
-1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040)oturum açın.
-1. Gerekirse Tüm **Hizmetler'i**seçin ve listeden **DevTest Labs'ı** seçin. (Laboratuvarınız **Tüm Kaynaklar**altında Pano'da zaten gösterilmiş olabilir).
-1. Laboratuvarlar listesinden, destek bildirimi eklemek istediğiniz laboratuarı seçin.  
-1. Laboratuvarın Genel **Bakış** alanında **Yapılandırma ve ilkeler'i**seçin.  
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. Gerekirse, **tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin. (Laboratuvarınız panoda zaten **tüm kaynaklar**altında gösteriliyor olabilir).
+1. Laboratuvarlar listesinden, bir destek ekstresi eklemek istediğiniz Laboratuvarı seçin.  
+1. Laboratuvarın **genel bakış** alanında **yapılandırma ve ilkeler**' i seçin.  
 
     ![Yapılandırma ve ilkeler düğmesi](./media/devtest-lab-internal-support-message/devtestlab-config-and-policies.png)
 
-1. **SETTINGS**altında solda, **İç destek**seçin.
+1. Sol taraftaki **Ayarlar**' ın altında **iç destek**' i seçin.
 
-    ![Dahili destek düğmesi](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
+    ![İç destek düğmesi](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
 
-1. Bu laboratuvardaki kullanıcılar için bir iç destek iletisi oluşturmak için Etkin'i **Evet**olarak ayarlayın.
+1. Bu laboratuvardaki kullanıcılar için bir iç destek iletisi oluşturmak için, etkin ' i **Evet**olarak ayarlayın.
 
-1. Destek **iletisi** alanına, laboratuvar kullanıcılarınıza sunmak istediğiniz dahili destek bildirimini girin. Destek iletisi Markdown'ı kabul eder. İleti metnini girdiğinizde, iletinin kullanıcılara nasıl göründüğünü görmek için ekranın altındaki **Önizleme** alanını görüntüleyebilirsiniz.
+1. **Destek iletisi** alanına, laboratuvar kullanıcılarınıza sunmak istediğiniz iç destek bildirisini girin. Destek iletisi markın kabul eder. İleti metnini girerken, iletinin kullanıcılara nasıl göründüğünü görmek için ekranın altındaki **Önizleme** alanını görüntüleyebilirsiniz.
 
-    ![İletioluşturmak için iç destek ekranı.](./media/devtest-lab-internal-support-message/devtestlab-add-support-statement.png)
-
-
-1. Destek ekstreniz yayına hazır olduğunda **Kaydet'i** seçin.
-
-Bu destek iletisini artık laboratuvar kullanıcılarına göstermek istemiyorsanız, **İç destek** sayfasına dönün ve **Etkin'i** **Hayır**olarak ayarlayın.
-
-## <a name="steps-for-users-to-view-the-support-message"></a>Kullanıcıların destek iletisini görüntüleme adımları
-
-1. Azure [portalından](https://go.microsoft.com/fwlink/p/?LinkID=525040)bir laboratuvar seçin.
-
-1. Laboratuvarın Genel **Bakış** **alanında, İç destek'i**seçin.  
-
-    ![Dahili destek düğmesi](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
+    ![İletiyi oluşturmak için iç destek ekranı.](./media/devtest-lab-internal-support-message/devtestlab-add-support-statement.png)
 
 
-1. Bir destek iletisi deftere nakledilirse, kullanıcı bu iletiyi İç destek bölmesinden görüntüleyebilir.
+1. Destek deyiminiz gönderi için hazırsanız **Kaydet** ' i seçin.
 
-    ![Gönderilen destek iletisi gösteren iç destek bölmesi](./media/devtest-lab-internal-support-message/devtestlab-view-suport-statement.png)
+Artık bu destek iletisini laboratuvar kullanıcılarına göstermek istemediğinizde, **iç destek** sayfasına dönün ve **etkin** ' i **Hayır**olarak ayarlayın.
+
+## <a name="steps-for-users-to-view-the-support-message"></a>Destek iletisini görüntülemek için kullanıcılara yönelik adımlar
+
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)bir laboratuvar seçin.
+
+1. Laboratuvarın **genel bakış** alanında **iç destek**' i seçin.  
+
+    ![İç destek düğmesi](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
+
+
+1. Bir destek iletisi gönderildiğinde, Kullanıcı bunu dahili destek bölmesinden görüntüleyebilir.
+
+    ![Gönderilen destek iletisini gösteren iç destek bölmesi](./media/devtest-lab-internal-support-message/devtestlab-view-suport-statement.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* İç destek deyimleri genellikle bunu sık sık değiştirmeyen destek bilgileri sağlamak için kullanılır. Ayrıca, kullanıcıları geçici değişiklikler veya laboratuvar güncellemeleri hakkında bilgilendirmek için [bir duyuruyu laboratuvara](devtest-lab-announcements.md) nasıl yayınlayabileceğinizi de öğrenebilirsiniz.
-* [İlkeler ve zamanlamaları ayarlayın,](devtest-lab-set-lab-policy.md) özelleştirilmiş ilkeler kullanarak aboneliğiniz genelinde diğer kısıtlamaları ve sözleşmeleri nasıl uygulayabileceğiniz hakkında bilgi sağlar.
+* İç destek deyimleri genellikle bu sıklıkla değişmeyen destek bilgilerini sağlamak için kullanılır. Ayrıca, kullanıcıları geçici değişiklikler veya laboratuvarda güncelleştirme hakkında bilgilendirmek için [bir laboratuvara duyuru nakletmeyi](devtest-lab-announcements.md) da öğrenebilirsiniz.
+* [İlke ve zamanlamalar ayarlama](devtest-lab-set-lab-policy.md) , özelleştirilmiş ilkeleri kullanarak aboneliğinizde diğer kısıtlamaları ve kuralları nasıl uygulayabileceğiniz hakkında bilgi sağlar.

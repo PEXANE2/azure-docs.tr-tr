@@ -1,6 +1,6 @@
 ---
-title: Esnek bir erişim denetimi yönetimi stratejisi oluşturun - Azure AD
-description: Bu belge, bir kuruluşun öngörülemeyen aksaklıklar sırasında lokavt riskini azaltmak için esneklik sağlamak için benimsemesi gereken stratejiler hakkında rehberlik sağlar
+title: Esnek erişim denetimi yönetim stratejisi oluşturma-Azure AD
+description: Bu belge, bir kuruluşun öngörülemeyen kesintiler sırasında kilitleme riskini azaltmak için esnekliği sağlamak üzere benimseme gereken stratejiler hakkında rehberlik sağlar
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -13,122 +13,122 @@ ms.date: 01/29/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ca5817e744ff81efcd549bc328d7ce5eeedb2d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76908743"
 ---
-# <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory ile esnek bir erişim denetimi yönetimi stratejisi oluşturun
+# <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma
 
 >[!NOTE]
-> The information contained in this document represents the current view of Microsoft Corporation on the issues discussed as of the date of publication. Microsoft değişen pazar koşullarına yanıt vermesi gerektiğinden, bu durum Microsoft adına bir taahhüt olarak yorumlanmamalıdır ve Microsoft yayımtarihinden sonra sunulan bilgilerin doğruluğunu garanti edemez.
+> The information contained in this document represents the current view of Microsoft Corporation on the issues discussed as of the date of publication. Microsoft 'un değişen piyasa koşullarını yanıtlaması gerektiğinden, Microsoft 'un kapsamında bir taahhüt olarak yorumlanmamalıdır ve Microsoft 'un, yayın tarihinden sonra sunulan bilgilerin doğruluğunu garanti edemez.
 
-BT sistemlerini güvenli hale getirmek için çok faktörlü kimlik doğrulama (MFA) veya tek bir ağ konumu gibi tek bir erişim denetimine güvenen kuruluşlar, tek bir erişim denetimi kullanılamadığında uygulamalarında ve kaynaklarındaki hatalara erişebilir veya yanlış yapılandırılmıştır. Örneğin, doğal bir felaket telekomünikasyon altyapısının veya şirket ağlarının büyük segmentlerinin kullanılamamasına neden olabilir. Böyle bir aksaklık son kullanıcıların ve yöneticilerin oturum açabilmelerini engelleyebilir.
+Multi-Factor Authentication (MFA) veya tek bir ağ konumu gibi tek bir erişim denetimine bağlı olan kuruluşlar, tek erişim denetimi kullanılamaz hale gelirse veya hatalı yapılandırılmış olması durumunda uygulamalarına ve kaynaklarına erişim arızalarına açıktır. Örneğin, doğal bir olağanüstü durum, telekomünikasyon altyapısının veya şirket ağlarının büyük segmentlerinin kullanılamamasına yol açabilir. Bu tür bir kesinti, son kullanıcıların ve yöneticilerin oturum açabilmasını önleyebilir.
 
-Bu belge, bir kuruluşun aşağıdaki senaryolarda öngörülemeyen aksaklıklar sırasında lokavt riskini azaltmak için esneklik sağlamak için benimsemesi gereken stratejiler hakkında rehberlik sağlar:
+Bu belge, bir kuruluşun aşağıdaki senaryolarla öngörülemeyen kesintiler sırasında kilitleme riskini azaltmak için esnekliği sağlamak üzere benimseme gereken stratejiler hakkında rehberlik sağlar:
 
- 1. Kuruluşlar, azaltma stratejileri veya acil durum planları uygulayarak, **bir aksaklık önce** lokavt riskini azaltmak için esnekliklerini artırabilir.
- 2. Kuruluşlar, azaltma stratejileri ve acil durum planları yaparak **bir aksaklık sırasında** seçtikleri uygulamalara ve kaynaklara erişmeye devam edebilirler.
- 3. Kuruluşlar, **bir aksaklık** tan sonra ve uyguladıkları olası olasılıkları geri almadan önce günlükler gibi bilgileri koruduklarından emin olmalıdır.
- 4. Önleme stratejileri veya alternatif planlar uygulamamış kuruluşlar, aksaklıklarla başa çıkmak için **acil durum seçeneklerini** uygulayabilir.
+ 1. Kuruluşlar, risk azaltma stratejilerini veya yedek planları uygulayarak **kesintiye uğramadan önce** kilitleme riskini azaltmak için dayanıklılığı artırabilir.
+ 2. Kuruluşlar, risk azaltma stratejilerini ve acil durum planlarını ortadan kaldırarak, **kesintiye** uğradıklarında seçtikleri uygulamalara ve kaynaklara erişmeye devam edebilir.
+ 3. Kuruluşlar, **kesintiden sonra** ve uygulandıkları tüm kıtları geri almadan önce günlükleri gibi bilgileri korudıklarından emin olmalıdır.
+ 4. Önleme stratejilerini veya alternatif planları uygulanmayan kuruluşlar, kesintiye uğramak için **acil durum seçeneklerini** uygulayabilir.
 
-## <a name="key-guidance"></a>Anahtar kılavuzu
+## <a name="key-guidance"></a>Anahtar Kılavuzu
 
-Bu belgede dört önemli paket vardır:
+Bu belgede dört temel kilit vardır:
 
-* Acil erişim hesaplarını kullanarak yönetici kilitlemekaçının.
-* MFA'yı kullanıcı başına MFA yerine Koşullu Erişim (CA) kullanarak uygulayın.
-* Birden çok Koşullu Erişim (CA) denetimi kullanarak kullanıcı kilitlemeyi azaltı.
-* Her kullanıcı için birden çok kimlik doğrulama yöntemi veya eşdeğeri sağlayarak kullanıcı kilitlemeyi azaltı.
+* Acil durum erişim hesapları kullanarak yönetici kilitlemesini önleyin.
+* Kullanıcı başına MFA yerine koşullu erişim (CA) kullanarak MFA uygulayın.
+* Birden çok koşullu erişim (CA) denetimi kullanarak Kullanıcı kilitlemeyi azaltır.
+* Her bir kullanıcı için birden çok kimlik doğrulama yöntemini veya eşdeğerlerini sağlayarak Kullanıcı kilitlemeyi azaltabilirsiniz.
 
-## <a name="before-a-disruption"></a>Bir bozulmadan önce
+## <a name="before-a-disruption"></a>Kesintiden önce
 
-Gerçek bir kesintiyi hafifletmek, bir kuruluşun ortaya çıkabilecek erişim denetimi sorunlarıyla başa çıkmadaki birincil odak noktası olmalıdır. Azaltma, gerçek bir olay için planlama nın yanı sıra erişim denetimlerinin ve işlemlerinin kesintiler sırasında etkilenmediğinden emin olmak için stratejiler uygulamayı içerir.
+Gerçek kesintiyi azaltıcı bir işlem, ortaya çıkabilecek erişim denetimi sorunlarıyla ilgilenirken kuruluşun birincil odağında olmalıdır. Azaltıcı bir gerçek olay için planlama ve erişim denetimlerinin ve işlemlerin kesintiler sırasında etkilenmemesini sağlamak için stratejiler de dahildir.
 
-### <a name="why-do-you-need-resilient-access-control"></a>Neden esnek erişim kontrolüne ihtiyacınız var?
+### <a name="why-do-you-need-resilient-access-control"></a>Neden esnek erişim denetimine ihtiyacınız var?
 
- Kimlik, uygulamalara ve kaynaklara erişen kullanıcıların kontrol düzlemidir. Kimlik sisteminiz, erişim denetimleri veya kimlik doğrulama gereksinimleri gibi hangi kullanıcıların hangi koşullarda ve hangi koşullar altında uygulamalara erişebildiğinizi denetler. Öngörülemeyen koşullar nedeniyle kullanıcıların kimlik doğrulaması için bir veya daha fazla kimlik doğrulama veya erişim denetimi gereksinimi kullanılamıyorsa, kuruluşlar aşağıdaki sorunlardan birini veya her ikisini de yaşayabilir:
+ Kimlik, uygulamalara ve kaynaklara erişen kullanıcıların Denetim düzledir. Kimlik sisteminiz, erişim denetimleri veya kimlik doğrulama gereksinimleri gibi hangi kullanıcılara ve hangi koşullarda, kullanıcıların uygulamalara erişim edindiğini denetler. Bir veya daha fazla kimlik doğrulama veya erişim denetimi gereksinimi, kullanıcıların öngörülemeyen koşullar nedeniyle kimlik doğrulaması yapabilmeleri durumunda, kuruluşlar aşağıdaki sorunlardan biri veya her ikisi ile karşılaşabilir:
 
 * **Yönetici kilitleme:** Yöneticiler kiracıyı veya hizmetleri yönetemez.
 * **Kullanıcı kilitleme:** Kullanıcılar uygulamalara veya kaynaklara erişemez.
 
-### <a name="administrator-lockout-contingency"></a>Yönetici kilitleme acil durum
+### <a name="administrator-lockout-contingency"></a>Yönetici kilitlenme yedek
 
-Yöneticinin kiracınıza erişiminin kilidini açmak için acil erişim hesapları oluşturmanız gerekir. *Kesme camı* hesapları olarak da bilinen bu acil erişim hesapları, normal ayrıcalıklı hesap erişim yordamları kullanılamıyorsa Azure AD yapılandırmasını yönetmesine olanak tanır. Acil erişim [hesabı önerilerinden]( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)sonra en az iki acil erişim hesabı oluşturulmalıdır.
+Kiracınıza yönetici erişiminin kilidini açmak için acil durum erişim hesapları oluşturmanız gerekir. *Kesme camı* olarak da bilinen bu acil durum erişim hesapları, normal ayrıcalıklı hesap erişimi yordamları kullanılabilir OLMADıĞıNDA Azure AD yapılandırmasını yönetme erişimine izin verir. [Acil durum erişim hesabı önerilerini]( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)takip eden en az iki acil durum erişim hesabı oluşturulmalıdır.
 
 ### <a name="mitigating-user-lockout"></a>Kullanıcı kilitlemeyi azaltma
 
- Kullanıcı kilitleme riskini azaltmak için, kullanıcılara uygulamalara ve kaynaklara nasıl erişeceklerine bir seçenek sunmak için birden çok denetime sahip Koşullu Erişim ilkelerini kullanın. Bir kullanıcıya, örneğin, MFA ile oturum açma **veya** yönetilen bir aygıttan oturum açma **veya** şirket ağında oturum açma arasında seçim yaparak, erişim denetimlerinden biri kullanılamıyorsa, kullanıcının çalışmaya devam etmesi için başka seçenekleri vardır.
+ Kullanıcı kilitleme riskini azaltmak için, kullanıcılara uygulamalara ve kaynaklara nasıl erişebilecekleri konusunda seçim yapmak amacıyla birden çok denetim ile koşullu erişim ilkeleri kullanın. Bir kullanıcıya, örneğin MFA ile oturum açma **veya** yönetilen bir cihazdan oturum açma veya şirket ağından **oturum açma arasında** seçim yaparak, erişim denetimlerinden biri kullanılamaz durumdaysa kullanıcının çalışmaya devam etmesi için başka seçenekleri vardır.
 
 #### <a name="microsoft-recommendations"></a>Microsoft önerileri
 
-Kuruluş için varolan Koşullu Erişim ilkelerinizde aşağıdaki erişim denetimlerini birleştirin:
+Aşağıdaki erişim denetimlerini, kuruluş için mevcut koşullu erişim ilkelerinize ekleyin:
 
-1. Microsoft Authenticator uygulaması (internet tabanlı), OATH jetonu (cihazda oluşturulan) ve SMS (telefon) gibi farklı iletişim kanallarına dayanan her kullanıcı için birden fazla kimlik doğrulama yöntemi sağlama.
-2. MFA gereksinimlerini doğrudan aygıt oturum açma dan karşılamak için Windows Hello for Business'ı Windows 10 aygıtlarına dağıtın.
-3. Azure [AD Karma Birleştirme](https://docs.microsoft.com/azure/active-directory/devices/overview) veya [Microsoft Intune Yönetilen aygıtlar](https://docs.microsoft.com/intune/planning-guide)aracılığıyla güvenilir aygıtları kullanın. Güvenilen aygıtlar kullanıcı deneyimini geliştirir, çünkü güvenilen aygıtın kendisi kullanıcıya mfa meydan okuması olmadan ilkenin güçlü kimlik doğrulama gereksinimlerini karşılayabilir. Daha sonra yeni bir cihaz kaydederken ve uygulamalara veya kaynaklara güvenilmeyen aygıtlardan erişirken MFA gerekir.
-4. Kullanıcı veya oturum açma, sabit MFA ilkeleri yerine risk altında olduğunda erişimi engelleyen Azure AD kimlik koruma risk tabanlı ilkeleri kullanın.
+1. Farklı iletişim kanallarına dayanan her bir kullanıcı için birden çok kimlik doğrulama yöntemi sağlayın (örneğin, Microsoft Authenticator uygulaması (internet tabanlı), OATH belirteci (cihazda oluşturulan) ve SMS (telephonic).
+2. Windows 10 cihazlarında Iş için Windows Hello 'Yu, doğrudan cihaz oturum açma işleminden MFA gereksinimlerini karşılayacak şekilde dağıtın.
+3. Güvenilen cihazları [Azure AD hibrit JOIN](https://docs.microsoft.com/azure/active-directory/devices/overview) veya [Microsoft Intune yönetilen cihazlar](https://docs.microsoft.com/intune/planning-guide)aracılığıyla kullanın. Güvenilen cihazlar, kullanıcıya MFA sınaması olmadan ilkenin güçlü kimlik doğrulama gereksinimlerini karşılayabildiğinden, Kullanıcı deneyimini iyileştirir. Daha sonra MFA, yeni bir cihaz kaydedilirken ve güvenilir olmayan cihazlardan uygulamalara veya kaynaklara erişirken gerekecektir.
+4. Kullanıcı veya oturum açma, sabit MFA ilkelerinin yerine risk altında olduğunda erişimi önleyen Azure AD kimlik koruması risk tabanlı ilkelerini kullanın.
 
 >[!NOTE]
-> Risk tabanlı ilkeler, [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) lisansları gerektirir.
+> Risk tabanlı ilkeler için [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) lisansları gerekir.
 
-Aşağıdaki örnekte, kullanıcının uygulamalarına ve kaynaklarına erişmesi için esnek bir erişim denetimi sağlamak için oluşturmanız gereken ilkeler açıklanmaktadır. Bu örnekte, erişmek istediğiniz hedef kullanıcılara sahip bir güvenlik grubu **AppUsers,** çekirdek yöneticilere sahip **CoreAdmins** adlı bir grup ve acil erişim hesapları olan **EmergencyAccess** adlı bir grup gerekir.
-Bu örnek ilke seti, **AppUsers'teki**seçili kullanıcılara, güvenilir bir aygıttan bağlanan veya mfa gibi güçlü bir kimlik doğrulaması sağlayan belirli uygulamalara erişim hakkı verir. Acil durum hesaplarını ve çekirdek yöneticileri hariç tutar.
+Aşağıdaki örnek, kullanıcının uygulamalarına ve kaynaklarına erişmesi için dayanıklı bir erişim denetimi sağlamak üzere oluşturmanız gereken ilkeleri açıklar. Bu örnekte, erişim vermek istediğiniz hedef kullanıcıları içeren bir güvenlik grubu **Appusers** , çekirdek yöneticilerle **coreadmins** adlı bir grup ve acil durum erişim **hesapları ile acil durum, acil durum** erişimi adlı bir grup sağlamanız gerekir.
+Bu örnek ilke kümesi, **appusers**'daki seçili kullanıcılara, güvenilen bir cihazdan bağlantı varsa veya örneğin MFA gibi güçlü kimlik doğrulaması sağlamasına izin verir. Acil durum hesaplarını ve çekirdek yöneticileri dışlar.
 
-**CA azaltma ilkeleri kümesi:**
+**CA risk azaltma ilkeleri kümesi:**
 
-* İlke 1: Hedef grupların dışındaki kişilere erişimi engelleme
-  * Kullanıcılar ve Gruplar: Tüm kullanıcıları dahil edin. AppUsers, CoreAdmins ve EmergencyAccess hariç
-  * Bulut Uygulamaları: Tüm uygulamaları dahil edin
-  * Koşullar: (Yok)
-  * Hibe Kontrolü: Blok
-* İlke 2: MFA VEYA güvenilir cihaz gerektiren AppUsers'e erişim izni tanıyın.
-  * Kullanıcılar ve Gruplar: AppUsers dahil. CoreAdmins ve EmergencyAccess hariç
-  * Bulut Uygulamaları: Tüm uygulamaları dahil edin
-  * Koşullar: (Yok)
-  * Hibe Kontrolü: Erişim izni, çok faktörlü kimlik doğrulaması gerektirir, aygıtın uyumlu olmasını gerektirir. Birden çok denetim için: Seçili denetimlerden birini gerektirir.
+* İlke 1: hedef grupları dışındaki kişilere erişimi engelleyin
+  * Kullanıcılar ve gruplar: tüm kullanıcıları dahil et. AppUsers, CoreAdmins ve acil bir Gencyaccess hariç tut
+  * Bulut uygulamaları: tüm uygulamaları Ekle
+  * Koşullar: (yok)
+  * İzin denetimi: engelle
+* İlke 2: MFA veya güvenilir cihaz gerektiren AppUsers 'a erişim Izni verin.
+  * Kullanıcılar ve gruplar: AppUsers dahil. CoreAdmins ve acil bir Gencyaccess hariç tut
+  * Bulut uygulamaları: tüm uygulamaları Ekle
+  * Koşullar: (yok)
+  * Verme denetimi: erişim verme, Multi-Factor Authentication gerektir, cihazın uyumlu olmasını gerektir. Birden çok denetim için: seçili denetimlerden birini gerektir.
 
-### <a name="contingencies-for-user-lockout"></a>Kullanıcı kilitleme için olası durumlar
+### <a name="contingencies-for-user-lockout"></a>Kullanıcı kilitleme için kıdurumlar
 
-Alternatif olarak, kuruluşunuz acil durum ilkeleri de oluşturabilir. Acil durum ilkeleri oluşturmak için, iş sürekliliği, operasyonel maliyet, finansal maliyet ve güvenlik riskleri arasındaki denge ölçütlerini tanımlamanız gerekir. Örneğin, bir acil durum ilkesini yalnızca bir kullanıcı alt kümesine, bir uygulama alt kümesiiçin, istemci alt kümesi için veya konumların bir alt kümesinden etkinleştirebilirsiniz. Acil durum ilkeleri, herhangi bir azaltma yöntemi uygulanmadığında kesintiye uğrama sırasında yöneticilere ve son kullanıcılara uygulamalara ve kaynaklara erişim sağlar.
-Bir aksaklık sırasında maruz kalmanızı anlamak riskinizi azaltmaya yardımcı olur ve planlama sürecinizin önemli bir parçasıdır. Acil durum planınızı oluşturmak için öncelikle kuruluşunuzun aşağıdaki iş gereksinimlerini belirleyin:
+Alternatif olarak, kuruluşunuz da yedek ilkeler oluşturabilir. Yedek ilkeler oluşturmak için iş sürekliliği, operasyonel maliyet, mali maliyet ve güvenlik riskleri arasında zorunluluğunu getirir kriterleri tanımlamanız gerekir. Örneğin, bir acil durum ilkesini yalnızca bir kullanıcı alt kümesi, bir uygulamalar alt kümesi veya bir konum alt kümesi için etkinleştirebilirsiniz. Bir risk azaltma yöntemi uygulandığında, acil durum ilkeleri yöneticilere ve son kullanıcılara uygulamalara ve kaynaklara erişim sağlayacak.
+Bir kesinti sırasında pozlandırmayı anlamak, riskinizi azaltmaya yardımcı olur ve planlama sürecinizin önemli bir parçasıdır. Acil durum planınızı oluşturmak için öncelikle kuruluşunuzun aşağıdaki iş gereksinimlerini saptayın:
 
-1. Görev açısından kritik uygulamalarınızı önceden belirleyin: Daha düşük bir risk/güvenlik duruşuyla bile erişim vermeniz gereken uygulamalar nelerdir? Bu uygulamaların bir listesini oluşturun ve diğer hissedarlarınızın (iş, güvenlik, yasal, liderlik) tüm erişim denetimi nin ortadan kalkarsa, bu uygulamaların çalışmaya devam etmesi gerektiği konusunda hemfikir olmasını sağla. Büyük olasılıkla kategorileri ile sona erecek:
-   * **Kategori 1,** örneğin kuruluşun gelirini doğrudan etkileyen uygulamalar gibi birkaç dakikadan fazla kullanılamayan kritik görev uygulamalarıdır.
-   * **Kategori 2,** işletmenin birkaç saat içinde erişilebilir olması gereken önemli uygulamalardır.
-   * Birkaç günlük bir kesintiye dayanabilecek **kategori 3 düşük öncelikli uygulamalar.**
-2. Microsoft, kategori 1 ve 2'deki uygulamalar için, hangi erişim düzeyine izin vermek istediğinizi önceden planlamanızı önerir:
-   * İndirmeleri sınırlama gibi tam erişime veya oturum kısıtlamasına izin vermek istiyor musunuz?
-   * Uygulamanın bir kısmına erişmesine izin vermek istiyor ancak uygulamanın tamamına erişmemek istemiyor musunuz?
+1. Görev açısından kritik uygulamalarınızı daha önce belirleme: daha düşük bir risk/Güvenlik duruşunu kullanarak erişim vermeniz gereken uygulamalar nelerdir? Bu uygulamaların bir listesini oluşturun ve diğer paydaşlarınızın (iş, güvenlik, yasal, liderlik) tüm erişim denetimi dışarıda kaldığında, bu uygulamaların hala çalışmaya devam etmesi gerektiğini kabul etmesini sağlayın. Büyük olasılıkla şu kategoriler ile bitecaksınız:
+   * **Kategori 1 görev açısından kritik uygulamalar** , birkaç dakikadan uzun bir süre içinde kullanılamayacak ve Örneğin kuruluşun gelirini doğrudan etkileyen uygulamalar.
+   * 2. kategoriye, işletmenin birkaç saat içinde erişilebilir olması gereken **önemli uygulamalar** .
+   * 3. Kategori, birkaç gün kesintiye uğraabilecek **düşük öncelikli uygulamalar** .
+2. Kategori 1 ve 2 ' deki uygulamalar için, Microsoft, izin vermek istediğiniz erişim düzeyi türünü önceden planlamanızı önerir:
+   * İndirmeleri kısıtlamak gibi tam erişime veya kısıtlı oturuma izin vermek istiyor musunuz?
+   * Uygulamanın bir kısmına erişime izin vermek istiyor musunuz, ancak tüm uygulamayı değil mi?
    * Erişim denetimi geri yüklenene kadar bilgi çalışanı erişimine izin vermek ve yönetici erişimini engellemek istiyor musunuz?
-3. Bu uygulamalar için Microsoft, hangi erişim yollarını kasıtlı olarak açacağınızı ve hangilerini kapatacağınızı planlamanızı önerir:
-   * Tarayıcıya yalnızca erişim eve izin vermek ve çevrimdışı verileri kaydedebilen zengin istemcileri engellemek istiyor musunuz?
-   * Yalnızca şirket ağındaki kullanıcılar için erişime izin vermek ve dışarıdaki kullanıcıların engellenmesini sağlamak mı istiyorsunuz?
-   * Yalnızca kesinti sırasında belirli ülkelerden veya bölgelerden erişime izin vermek istiyor musunuz?
-   * Alternatif bir erişim denetimi yoksa, özellikle kritik görev uygulamaları için acil durum politikalarına yönelik politikaların başarısız olmasını veya başarılı olmasını istiyor musunuz?
+3. Bu uygulamalar için, Microsoft ayrıca hangi erişim türlerini kasıtlı olarak açacağını ve hangilerinin kapatacağınıza ilişkin plan yapmanızı de önerir:
+   * Yalnızca tarayıcı erişimine izin vermek ve çevrimdışı verileri kaydedebilen zengin istemcileri engellemek istiyor musunuz?
+   * Yalnızca şirket ağı içindeki kullanıcılar için erişime izin vermek ve dış kullanıcıların engellenmesini önlemek istiyor musunuz?
+   * Belirli ülkelerden veya bölgelerden yalnızca kesinti sırasında erişime izin vermek istiyor musunuz?
+   * Farklı bir erişim denetimi yoksa, özellikle de görev açısından kritik uygulamalar için, özel durum ilkelerine ilke eklemek istiyor musunuz?
 
 #### <a name="microsoft-recommendations"></a>Microsoft önerileri
 
-Acil Durum Koşullu Erişim ilkesi, Azure MFA, üçüncü taraf MFA, risk tabanlı veya aygıt tabanlı denetimleri atlayan devre dışı bırakılmış bir **ilkedir.** Ardından, kuruluşunuz acil durum planınızı etkinleştirmeye karar verdiğinde, yöneticiler ilkeyi etkinleştirebilir ve düzenli denetim tabanlı ilkeleri devre dışı bırakabilir.
+Bir yedek koşullu erişim ilkesi, Azure MFA, üçüncü taraf MFA, risk tabanlı veya cihaz tabanlı denetimleri atuygulayan **devre dışı bırakılmış bir ilkedir** . Daha sonra, kuruluşunuz acil durum planınızı etkinleştirmeye karar verdiğinde, Yöneticiler ilkeyi etkinleştirebilir ve normal denetim tabanlı ilkeleri devre dışı bırakabilir.
 
 >[!IMPORTANT]
-> Kullanıcılarınızın güvenliğini geçici de olsa zorlayan ilkeleri devre dışı bırakmak, acil durum planı yerindeyken güvenlik duruşunuzu azaltır.
+> Kullanıcılarınız için güvenliği zorlayan ilkelerin devre dışı bırakılması, geçici olarak bile, acil durum planı çalışırken güvenlik duruşunuzu azaltır.
 
-* Bir kimlik bilgisi türündeki veya tek bir erişim denetim mekanizmasındaki bir aksaklık uygulamalarınıza erişimi etkiliyorsa, bir dizi geri dönüş ilkesini yapılandırın. Bir üçüncü taraf MFA sağlayıcısı gerektiren etkin bir ilke için yedek olarak, etki alanı denetimi olarak Etki Alanı Join gerektiren devre dışı durum bir ilke yapılandırma.
-* MFA gerekli olmadığında, [parola kılavuzu](https://aka.ms/passwordguidance) teknik incelemesindeki uygulamaları izleyerek kötü aktörlerin parolaları tahmin etme riskini azaltın.
-* Kullanıcıların yasaklamayı seçtiğiniz ortak parola ve terimleri kullanmadığından emin olmak için [Azure AD Self Servis Parola Sıfırlama (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) ve Azure AD Parola [Koruması'nı](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) dağıtın.
-* Yalnızca tam erişime geri dönmek yerine belirli bir kimlik doğrulama düzeyine ulaşılamazsa, uygulamalar içindeki erişimi kısıtlayan ilkeleri kullanın. Örnek:
-  * Kısıtlı oturum talebini Exchange ve SharePoint'e gönderen bir yedekleme ilkesini yapılandırın.
-  * Kuruluşunuz Microsoft Bulut Uygulaması Güvenliği'ni kullanıyorsa, MCAS'ı devreye saçan bir ilkeyi kullanmayı düşünün ve ardından MCAS yalnızca okunur erişime izin verir, ancak yüklemeleri yapmayın.
-* Bir aksaklık sırasında bunları kolayca bulmanın kolay olduğundan emin olmak için ilkelerinizi adlandırın. İlke adına aşağıdaki öğeleri ekleyin:
-  * İlke için bir *etiket numarası.*
-  * Metin göstermek için, bu ilke sadece acil durumlar içindir. Örneğin: **ACIL DURUM İÇİNDE ETKINLEŞTIR**
-  * Bozulma *disruption* için geçerlidir. Örneğin: **MFA Kesintisi sırasında**
-  * İlkeleri etkinleştirmeniz gereken sırayı göstermek için bir *sıra numarası.*
-  * Uygulandığı *uygulamalar.*
-  * Uygulanacak *kontroller.*
-  * Gerektirdiği *koşullar.*
+* Bir kimlik bilgisi türü veya bir erişim denetimi mekanizmasının uygulamalarınıza erişimi etkilediği bir geri dönüş ilkeleri kümesi yapılandırın. Bir ilkeyi, bir üçüncü taraf MFA sağlayıcısı gerektiren etkin bir ilkenin yedeklemesi olarak, etki alanına katılmayı gerektiren devre dışı durumda yapılandırın.
+* [Parola Kılavuzu](https://aka.ms/passwordguidance) teknik incelemesindeki UYGULAMALARı izleyerek MFA gerekli olmadığında, kötü aktör tahmin parolalarının riskini azaltın.
+* Kullanıcıların, bir ortak parola ve daha çok tercih ettiğiniz koşulları kullanmayın olduğundan emin olmak için [Azure AD self servis parola sıfırlama (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) ve [Azure AD parola korumasını](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) dağıtın.
+* Belirli bir kimlik doğrulama düzeyi yalnızca tam erişime geri düşmeniz yerine, uygulamalar içindeki erişimi kısıtlayan ilkeler kullanın. Örneğin:
+  * Exchange ve SharePoint 'e kısıtlı oturum talebi gönderen bir yedekleme ilkesi yapılandırın.
+  * Kuruluşunuz Microsoft Cloud App Security kullanıyorsa, MCAS 'nin bulunduğu ilkeye geri dönerek MCAS, salt okuma erişimine Izin verir ancak karşıya yüklemelerden yararlanır.
+* Kesintilerinizi bir kesinti sırasında bulmanın kolay olduğundan emin olmak için ilkelerinizi adlandırın. İlke adına aşağıdaki öğeleri ekleyin:
+  * İlke için bir *etiket numarası* .
+  * Gösterilecek metin, bu ilke yalnızca acil durumlar içindir. Örneğin: **acıl durumda etkinleştir**
+  * İçin *disruption* geçerli olan kesinti. Örneğin: **MFA kesintisi sırasında**
+  * İlkeleri etkinleştirmeniz gereken sırayı göstermek için bir *sıra numarası* .
+  * İçin geçerli olduğu *uygulamalar* .
+  * Uygulanan *denetimler* .
+  * Gereken *koşullar* .
   
 Acil durum ilkeleri için bu adlandırma standardı aşağıdaki gibi olacaktır: 
 
@@ -136,138 +136,138 @@ Acil durum ilkeleri için bu adlandırma standardı aşağıdaki gibi olacaktır
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-Aşağıdaki örnek: **Örnek A - Görev açısından kritik İşbirliği Uygulamalarına Erişimi geri yüklemek için**acil durum CA politikası, tipik bir kurumsal durumdur. Bu senaryoda, kuruluş genellikle tüm Exchange Online ve SharePoint Online erişimi için MFA gerektirir ve bu durumda kesinti müşteri için MFA sağlayıcısı bir kesintisi vardır (Azure MFA, şirket içi MFA sağlayıcısı veya üçüncü taraf MFA olsun). Bu ilke, belirli hedeflenmiş kullanıcıların bu uygulamalara güvenilen Windows aygıtlarından erişmesine izin vererek bu kesintiyi azaltır. Ayrıca, acil durum hesaplarını ve temel yöneticileri bu kısıtlamalardan hariç tutar. Hedeflenen kullanıcılar daha sonra Exchange Online ve SharePoint Online'a erişirken, diğer kullanıcılar kesinti nedeniyle uygulamalara erişemeyecek. Bu örnek, hedef kullanıcılarla birlikte adlandırılmış bir ağ konumu **CorpNetwork** ve bir güvenlik grubu **ContingencyAccess,** çekirdek yöneticilere sahip **CoreAdmins** adlı bir grup ve acil erişim hesapları olan **EmergencyAccess** adlı bir grup gerektirir. Acil durum, istenen erişimi sağlamak için dört ilke gerektirir. 
+Aşağıdaki örnek: **görev açısından kritik Işbirliği uygulamalarına erişimi geri yüklemek Için örnek a-acil durum CA ilkesi**tipik bir kurumsal öneme sahiptir. Bu senaryoda, kuruluş genellikle tüm Exchange Online ve SharePoint Online erişimi için MFA gerektirir ve bu durumda, müşterinin bir kesinti (Azure MFA, şirket içi MFA sağlayıcısı veya üçüncü taraf MFA) vardır. Bu ilke, belirli bir hedeflenmiş kullanıcıların, güvenilen Windows cihazlarından bu uygulamalara erişmesine izin vererek bu kesinti için güvenlik altına alınır. Ayrıca, bu kısıtlamalardan acil durum hesaplarını ve çekirdek yöneticileri de hariç tutar. Daha sonra hedeflenen kullanıcılar Exchange Online ve SharePoint Online 'a erişim kazanacaktır, diğer kullanıcılar da kesinti nedeniyle uygulamalara erişim sahibi olmaya devam eder. Bu örnek, hedef kullanıcılarla adlandırılmış bir ağ **konumu corpnetwork** ve bir güvenlik **grubu gerektirir** , çekirdek yöneticilerle **coreadmins** adlı bir grup ve acil durum erişim hesapları **ile acil durum adı adlı** bir grup gerekir. Acil durum, istenen erişimi sağlamak için dört ilke gerektirir. 
 
-**Örnek A - Görev açısından kritik İşbirliği Uygulamalarına Erişimi geri yüklemek için acil durum CA ilkeleri:**
+**Örnek A-iş açısından kritik Işbirliği uygulamalarına erişimi geri yüklemek için acil durum CA ilkeleri:**
 
-* İlke 1: Exchange ve SharePoint için Etki Alanı Birleştirilmiş aygıtları gerektirir
-  * Adı: EM001 - ENABLE IN EMERGENCY: MFA Disruption[1/4] - Exchange SharePoint - Hybrid Azure AD Join Gerektirir
-  * Kullanıcılar ve Gruplar: ContingencyAccess'i ekleyin. CoreAdmins ve EmergencyAccess hariç
-  * Bulut Uygulamaları: Exchange Online ve SharePoint Online
-  * Koşullar: Herhangi bir
-  * Hibe Kontrolü: Etki Alanının Katılmasını İste
-  * Durum: Devre Dışı
-* İlke 2: Windows dışındaki platformları engelleme
-  * Adı: EM002 - ACIL DURUM İçİnDE ETKINLEŞTIR: MFA Disruption[2/4] - Exchange SharePoint - Windows hariç erişimi engelleyin
-  * Kullanıcılar ve Gruplar: Tüm kullanıcıları dahil edin. CoreAdmins ve EmergencyAccess hariç
-  * Bulut Uygulamaları: Exchange Online ve SharePoint Online
-  * Koşullar: Aygıt Platformu Tüm Platformları Dahil Et, Windows'u hariç tut
-  * Hibe Kontrolü: Blok
-  * Durum: Devre Dışı
-* İlke 3: CorpNetwork dışındaki ağları engelleme
-  * Adı: EM003 - ACIL DURUM İçİnDE ETKINLEŞTIR: MFA Disruption[3/4] - Exchange SharePoint - Kurumsal Ağ hariç erişimi engelleyin
-  * Kullanıcılar ve Gruplar: Tüm kullanıcıları dahil edin. CoreAdmins ve EmergencyAccess hariç
-  * Bulut Uygulamaları: Exchange Online ve SharePoint Online
-  * Koşullar: Konumlar Herhangi bir konum içerir, CorpNetwork hariç
-  * Hibe Kontrolü: Blok
-  * Durum: Devre Dışı
-* İlke 4: EAS'yi Açıkça Engelleyin
-  * Adı: EM004 - ACIL DURUM İçİnDE ETKINLEŞTIR: MFA Disruption[4/4] - Exchange - Tüm kullanıcılar için EAS blok
-  * Kullanıcılar ve Gruplar: Tüm kullanıcıları dahil edin
-  * Bulut Uygulamaları: Exchange Online'ı dahil et
-  * Koşullar: İstemci uygulamaları: Exchange Active Sync
-  * Hibe Kontrolü: Blok
-  * Durum: Devre Dışı
+* İlke 1: Exchange ve SharePoint için etki alanına katılmış cihazlar gerektir
+  * Ad: EM001-acıl ETKINLEŞTIRME: MFA kesintisi [1/4]-Exchange SharePoint-karma Azure AD JOIN gerektir
+  * Kullanıcılar ve gruplar: Kıgencyaccess ekleyin. CoreAdmins ve acil bir Gencyaccess hariç tut
+  * Bulut uygulamaları: Exchange Online ve SharePoint Online
+  * Koşullar: any
+  * İzin verme denetimi: etki alanına katılmış ıste
+  * Durum: devre dışı
+* İlke 2: Windows dışındaki platformları engelleyin
+  * Ad: EM002-acıl ETKINLEŞTIRME: MFA kesintisi [2/4]-Exchange SharePoint-Windows dışında erişimi engelleyin
+  * Kullanıcılar ve gruplar: tüm kullanıcıları dahil et. CoreAdmins ve acil bir Gencyaccess hariç tut
+  * Bulut uygulamaları: Exchange Online ve SharePoint Online
+  * Koşullar: cihaz platformu tüm platformları Içerir, Windows 'u hariç tut
+  * İzin denetimi: engelle
+  * Durum: devre dışı
+* İlke 3: CorpNetwork dışındaki ağları engelleyin
+  * Ad: EM003-acıl ETKINLEŞTIRME: MFA kesintisi [3/4]-Exchange SharePoint-şirket ağı dışında erişimi engelle
+  * Kullanıcılar ve gruplar: tüm kullanıcıları dahil et. CoreAdmins ve acil bir Gencyaccess hariç tut
+  * Bulut uygulamaları: Exchange Online ve SharePoint Online
+  * Koşullar: konumlar her konum Içerir, CorpNetwork ağını hariç tutar
+  * İzin denetimi: engelle
+  * Durum: devre dışı
+* İlke 4: EAS 'yi açıkça engelle
+  * Ad: EM004-acıl ETKINLEŞTIRME: MFA kesintisi [4/4]-Exchange-Block EAS tüm kullanıcılar için
+  * Kullanıcılar ve gruplar: tüm kullanıcıları dahil et
+  * Bulut uygulamaları: Exchange Online 'ı Ekle
+  * Koşullar: Istemci uygulamaları: Exchange Active Sync
+  * İzin denetimi: engelle
+  * Durum: devre dışı
 
 Etkinleştirme sırası:
 
-1. Mevcut MFA ilkesinden ContingencyAccess, CoreAdmins ve EmergencyAccess'i hariç tinleyin. ContingencyAccess'teki bir kullanıcının SharePoint Online ve Exchange Online'a erişebileceğini doğrulayın.
-2. Etkinleştir İlke 1: Dışgruplarda olmayan Etki Alanı Birleştirilmiş cihazlardaki kullanıcıları Exchange Online ve SharePoint Online'a erişebilmelerini doğrulayın. Dışlama grubundaki kullanıcıların Herhangi bir cihazdan SharePoint Online ve Exchange'e erişebileceğini doğrulayın.
-3. Politika yı etkinleştirin 2: Dışlama grubunda olmayan kullanıcıların mobil cihazlarından SharePoint Online ve Exchange Online'a ulaşamamasını doğrulayın. Dışlama grubundaki kullanıcıların herhangi bir cihazdan (Windows/iOS/Android) SharePoint ve Exchange'e erişebileceğini doğrulayın.
-4. İlke 3'e EtkinLiği Etkinleştir: Dışlama gruplarında olmayan kullanıcıların, bir etki alanı birleştirilmiş makinede bile SharePoint ve Exchange'e şirket ağından erişemeyeceğini doğrulayın. Dışlama grubundaki kullanıcıların herhangi bir ağdan SharePoint ve Exchange'e erişebileceğini doğrulayın.
-5. İlke 4'i Etkinleştir: Tüm kullanıcıların mobil cihazlardaki yerel posta uygulamalarından Exchange Online alamayacağını doğrulayın.
-6. SharePoint Online ve Exchange Online için mevcut MFA ilkesini devre dışı kınleyin.
+1. Mevcut MFA ilkesinden Kıgencyaccess, CoreAdmins ve acil bir Gencyaccess hariç tutun. Kıgencyaccess içindeki bir kullanıcının SharePoint Online ve Exchange Online 'a erişebileceğini doğrulayın.
+2. Ilkeyi etkinleştir 1: dışlama gruplarında olmayan etki alanı katılmış cihazlardaki kullanıcıların Exchange Online ve SharePoint Online 'a erişebildiğini doğrulayın. Dışlama grubundaki kullanıcıların SharePoint Online 'a ve Exchange 'e herhangi bir cihazdan erişip erişebildiğini doğrulayın.
+3. Ilkeyi etkinleştir 2: dışlama grubunda olmayan kullanıcıların, mobil cihazlarından SharePoint Online ve Exchange Online 'a alamıyor olduğunu doğrulayın. Dışlama grubundaki kullanıcıların, SharePoint 'e ve Exchange 'e herhangi bir cihazdan (Windows/iOS/Android) erişebileceğini doğrulayın.
+4. Ilkeyi etkinleştir 3: dışlama gruplarında olmayan kullanıcıların, etki alanına katılmış bir makineyle bile SharePoint 'e ve Exchange 'e erişemez olduğunu doğrulayın. Dışlama grubundaki kullanıcıların SharePoint ve Exchange 'e herhangi bir ağdan erişebileceğini doğrulayın.
+5. Ilkeyi etkinleştir 4: tüm kullanıcıların mobil cihazlardaki yerel posta uygulamalarından Exchange Online 'ı alamıyor olduğunu doğrulayın.
+6. SharePoint Online ve Exchange Online için mevcut MFA ilkesini devre dışı bırakın.
 
-Bu sonraki örnekte, **Örnek B - Salesforce mobil erişim eve izin**acil DURUM CA ilkeleri, bir iş uygulamasının erişimi geri yüklenir. Bu senaryoda, müşteri genellikle satış çalışanlarının yalnızca uyumlu aygıtlardan izin verilabilmesi için satış çalışanlarının mobil cihazlardan Salesforce'a (Azure AD ile tek oturum açma için yapılandırılan) erişimini gerektirir. Bu durumda kesinti, cihaz uyumluluğunun değerlendirilmesiyle ilgili bir sorun olması ve satış ekibinin anlaşmaları kapatmak için Salesforce'a erişmesi gereken hassas bir zamanda kesintinin meydana geldiğidir. Bu acil durum ilkeleri, kritik kullanıcılara satışları kapatmaya devam edebilmeleri ve işi aksatmayacakları bir mobil cihazdan Salesforce'a erişim hakkı verecektir. Bu örnekte, **SalesforceContingency** erişimi korumak için gereken tüm Satış çalışanlarını içerir ve **SalesAdmins** Salesforce gerekli yöneticileri içerir.
+Bu sonraki örnekte, **örnek B-Salesforce 'a mobil erişime izin veren CA ilkeleri**, bir iş uygulamasının erişimi geri yüklenir. Bu senaryoda, müşteri genellikle, mobil cihazlardan yalnızca uyumlu cihazlardan izin verilmesini sağlamak üzere satış çalışanlarının Salesforce (Azure AD ile çoklu oturum açma için yapılandırılmış) erişimine ihtiyaç duyar. Bu durumda, cihaz uyumluluğunu değerlendirmek için bir sorun olduğu ve kesinti, satış ekibinin anlaşmaları kapatmak için Salesforce 'a erişmesi gereken hassas bir süre içinde meydana gelir. Bu yedek ilkeler, kritik kullanıcılara bir mobil cihazdan Salesforce erişimi verir, böylece anlaşmaları kapatmaya ve işi kesintiye uğramayacak şekilde devam edebilirler. Bu örnekte, **Salesforceyedek** , erişimi sürdürmeniz gereken tüm satış çalışanlarını Içerir ve **salesadmins** 'nin gereken Salesforce yöneticileri vardır.
 
-**Örnek B - Acil DURUM CA ilkeleri:**
+**Örnek B-yedek CA ilkeleri:**
 
-* İlke 1: SalesContingency ekibinde olmayan herkesi engelleme
-  * Adı: EM001 - ACIL DURUM İÇİNDE ETKINLEŞTIR: Cihaz Uyumluluğu Bozulması[1/2] - Salesforce - SalesforceContingency dışındaki tüm kullanıcıları engelleyin
-  * Kullanıcılar ve Gruplar: Tüm kullanıcıları dahil edin. SalesAdmins ve SalesforceContingency hariç
-  * Bulut Uygulamaları: Salesforce.
+* İlke 1: Salesyedek takımda bulunmayan herkesi engelleyin
+  * Ad: EM001-acıl durum: cihaz uyumluluğu kesintisi [1/2]-Salesforce-Salesforceyedek hariç tüm kullanıcıları engelle
+  * Kullanıcılar ve gruplar: tüm kullanıcıları dahil et. SalesAdmins ve Salesforcedımı hariç tut
+  * Bulut uygulamaları: Salesforce.
   * Koşullar: Yok
-  * Hibe Kontrolü: Blok
-  * Durum: Devre Dışı
-* İlke 2: Satış ekibini mobil dışında herhangi bir platformdan engelleyin (saldırı yüzey alanını azaltmak için)
-  * Adı: EM002 - ACIL DURUM İçİnDE ETKINLEŞTIR: Cihaz Uyumluluğu Kesintisi[2/2] - Salesforce - iOS ve Android dışındaki tüm platformları engelleyin
-  * Kullanıcılar ve Gruplar: SalesforceContingency'yi dahil edin. SalesAdmins hariç
-  * Bulut Uygulamaları: Salesforce
-  * Koşullar: Cihaz Platformu Tüm Platformları Dahil Edin, iOS ve Android hariç
-  * Hibe Kontrolü: Blok
-  * Durum: Devre Dışı
+  * İzin denetimi: engelle
+  * Durum: devre dışı
+* İlke 2: mobil dışındaki herhangi bir platformda Satış ekibini engelleyin (saldırı yüzeyini azaltmak için)
+  * Ad: EM002-acıl ETKINLEŞTIRME: cihaz uyumluluğu kesintisi [2/2]-Salesforce-iOS ve Android dışındaki tüm platformları engelle
+  * Kullanıcılar ve gruplar: Salesforcebir yedek Içerir. SalesAdmins hariç tut
+  * Bulut uygulamaları: Salesforce
+  * Koşullar: cihaz platformu tüm platformları Içerir, iOS ve Android 'i hariç tut
+  * İzin denetimi: engelle
+  * Durum: devre dışı
 
 Etkinleştirme sırası:
 
-1. SalesAdmins ve SalesforceContingency'yi Salesforce için varolan aygıt uyumluluk ilkesinden hariç tinleyin. SalesforceContingency grubundaki bir kullanıcının Salesforce'a erişebileceğini doğrulayın.
-2. Etkinleştir İlke 1: SalesContingency dışındaki kullanıcıların Salesforce'a erişemeyeceğini doğrulayın. SalesAdmins ve SalesforceContingency'deki kullanıcıları Salesforce'a erişebilen doğrulayın.
-3. Etkinleştir İlke 2: SalesContingency grubundaki kullanıcıların Windows/Mac dizüstü bilgisayarlarından Salesforce'a erişemediğini ancak mobil cihazlarından erişebilmelerini doğrulayın. SalesAdmin'in Salesforce'a herhangi bir cihazdan erişebileceğini doğrulayın.
-4. Salesforce için varolan aygıt uyumluluk ilkesini devre dışı bırakın.
+1. Satışsadmins ve Salesforce, Salesforce için mevcut cihaz uyumluluk ilkesinden dışlayın. Salesforceyedek grubundaki bir kullanıcının Salesforce 'a erişebileceğini doğrulayın.
+2. Ilkeyi etkinleştir 1: Salespolicy dışındaki kullanıcıların Salesforce 'a erişemez olduğunu doğrulayın. SalesAdmins ve Salesforceyedek içindeki kullanıcıların Salesforce 'a erişebileceğini doğrulayın.
+3. Ilkeyi etkinleştir 2: Salesyedek grubundaki kullanıcıların Salesforce Windows/Mac dizüstü bilgisayarlarıyla Salesforce 'a erişemediğinizi, ancak mobil cihazlarından erişmeye devam ettiğini doğrulayın. SalesAdmin 'in herhangi bir cihazdan Salesforce 'a erişmeye devam ettiğini doğrulayın.
+4. Salesforce için mevcut cihaz Uyumluluk ilkesini devre dışı bırakın.
 
-### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>Federe olsanız veya geçiş kimlik doğrulaması kullansanız bile parola karma eşitleme dağıtma
+### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>Şirket içinde doğrudan kimlik doğrulaması kullanıyor olsanız bile Parola karması eşitlemesini dağıtma
 
-Aşağıdaki koşullar doğruysa kullanıcı kilitleme si de oluşabilir:
+Aşağıdaki koşullar doğruysa Kullanıcı kilitleme de oluşabilir:
 
-- Kuruluşunuz geçiş kimlik doğrulaması veya federasyon içeren karma kimlik çözümlü bir çözüm kullanır.
-- Şirket içi kimlik sistemleriniz (Active Directory, AD FS veya bağımlı bileşen gibi) kullanılamaz. 
+- Kuruluşunuz, geçişli kimlik doğrulama veya Federasyon ile karma kimlik çözümü kullanır.
+- Şirket içi kimlik sistemleriniz (Active Directory, AD FS veya bağımlı bir bileşen) kullanılamaz. 
  
-Daha esnek olması için, kuruluşunuzun [parola karma eşitlemesini etkinleştirmesi](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)gerekir, çünkü şirket içi kimlik sistemleriniz kapalıysa [parola karma eşitlemesini kullanmaya geçmenizi](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) sağlar.
+Kuruluşunuz, şirket içi kimlik sistemleriniz kapalıysa [Parola karması eşitlemesini kullanmaya geçiş](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) yapmanızı sağladığından, [parola karma eşitlemesini etkinleştirmelidir](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
 
 #### <a name="microsoft-recommendations"></a>Microsoft önerileri
- Kuruluşunuzun federasyon veya geçiş kimlik doğrulaması kullanıp kullanmadığına bakılmaksızın Azure AD Connect sihirbazını kullanarak parola karma eşitlemesini etkinleştirin.
+ Kuruluşunuzun Federasyon veya geçişli kimlik doğrulaması kullandığından bağımsız olarak Azure AD Connect sihirbazını kullanarak parola karması eşitlemesini etkinleştirin.
 
 >[!IMPORTANT]
-> Parola karma eşitleme sini kullanmak için kullanıcıları federeden yönetilen kimlik doğrulamasına dönüştürmek gerekmez.
+> Kullanıcıları federe 'dan yönetilen kimlik doğrulamasına Parola karması eşitlemesini kullanacak şekilde dönüştürmek gerekli değildir.
 
-## <a name="during-a-disruption"></a>Bir aksaklık sırasında
+## <a name="during-a-disruption"></a>Kesilme sırasında
 
-Bir azaltma planı uygulamayı seçtiyseniz, tek bir erişim denetimi kesintisidurumundan otomatik olarak kurtulabilirsiniz. Ancak, bir acil durum planı oluşturmayı seçtiyseniz, erişim denetimi kesintisi sırasında acil durum ilkelerinizi etkinleştirebilirsiniz:
+Risk azaltma planını uygulamayı tercih ediyorsanız, tek bir erişim denetimi kesintisi yaşanmasını otomatik olarak sürdürbileceksiniz. Ancak, bir yedek plan oluşturmayı tercih ettiyseniz, erişim denetimi kesintisi sırasında acil durum ilkelerinizi etkinleştirebileceksiniz:
 
-1. Hedeflenen kullanıcılara belirli ağlardan belirli uygulamalara erişim sağlayan acil durum ilkelerinizi etkinleştirin.
-2. Düzenli kontrol tabanlı ilkelerinizi devre dışı kalın.
+1. Belirli ağlardan hedeflenen kullanıcılara, belirli uygulamalara erişim izni veren acil durum ilkelerinizi etkinleştirin.
+2. Düzenli denetim tabanlı ilkelerinizi devre dışı bırakın.
 
 ### <a name="microsoft-recommendations"></a>Microsoft önerileri
 
-Bir aksaklık sırasında hangi azaltıcı etkenlerin veya olası durumlar kullanıldığına bağlı olarak, kuruluşunuz yalnızca parolalarla erişim izni verebilir. Hiçbir güvenlik dikkatle tartılması gereken önemli bir güvenlik riski değildir. Kuruluşlar şunları yapmalı:
+Bir kesinti sırasında hangi azaltmaları veya kıgenlerle kullanıldığına bağlı olarak, kuruluşunuz yalnızca parolalarla erişim izni verebilir. Hiçbir koruma, dikkatli bir şekilde ağırlıklı olması gereken önemli bir güvenlik riskidir. Kuruluşlar şunları sağlamalıdır:
 
-1. Değişiklik denetimi stratejinizin bir parçası olarak, erişim denetimleri tam olarak çalışır duruma gelmez uyguladığınız olası durumları geri alabilmek için her değişikliği ve önceki durumu belgele.
-2. Kötü niyetli aktörlerin, siz MFA'yı devre dışı bıraktığınızda parola spreyi veya kimlik avı saldırıları yoluyla parola toplamaya çalışacağını varsayalım. Ayrıca, kötü aktörler zaten daha önce bu pencere sırasında denenebilir herhangi bir kaynağa erişim izni vermedi parolaları olabilir. Yöneticiler gibi kritik kullanıcılar için, mfa'yı devre dışı bırakmadan önce parolalarını sıfırlayarak bu riski kısmen azaltabilirsiniz.
-3. MFA devre dışı bırakıldığı süre içinde kimlere erişenleri belirlemek için tüm oturum açma etkinliklerini arşivleyin.
-4. Bu pencere sırasında [bildirilen tüm risk tespitlerini triyaj.](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)
+1. Değişiklik denetimi stratejinizin bir parçası olarak, erişim denetimleri tam olarak çalışır duruma geldiğinde, uyguladığınız tüm kıtları geri almak için her değişikliği ve önceki durumu belgeleyin.
+2. Kötü amaçlı aktörlerin, MFA 'yı devre dışı bıraktığınız sırada parola spreyi veya kimlik avı saldırıları aracılığıyla parola toplama girişiminde bulunduğunu varsayın Ayrıca, kötü aktörlerin bu pencere sırasında denenmeyen herhangi bir kaynağa daha önce erişim vermediği parolalara zaten sahip olması gerekebilir. Yöneticiler gibi kritik kullanıcılar için, MFA 'yı devre dışı bırakmadan önce parolalarını sıfırlayarak bu riski kısmen azaltabilirsiniz.
+3. MFA 'nın devre dışı bırakıldığı zaman ne işe erişebileceğini belirlemek için tüm oturum açma etkinliklerini arşivleyin.
+4. Bu pencere sırasında [raporlanan tüm risk algılamalarını önceliklendirme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) .
 
-## <a name="after-a-disruption"></a>Bir aksaklık tan sonra
+## <a name="after-a-disruption"></a>Kesintiden sonra
 
-Etkinleştirilmiş acil durum planının bir parçası olarak yaptığınız değişiklikleri, kesintiye neden olan hizmet geri yüklendikten sonra geri al. 
+Hizmet geri yüklendikten sonra, kesintiye uğramasından sonra, etkinleştirilen yedek planın bir parçası olarak yaptığınız değişiklikleri geri alın. 
 
-1. Düzenli ilkeleri etkinleştirme
+1. Normal ilkeleri etkinleştir
 2. Acil durum ilkelerinizi devre dışı bırakın. 
-3. Kesinti sırasında yaptığınız ve belgelediğiniz diğer değişiklikleri geri alabilirsiniz.
-4. Acil erişim hesabı kullandıysanız, kimlik bilgilerini yeniden oluşturmayı ve acil erişim hesabı yordamlarınızın bir parçası olarak yeni kimlik bilgilerini fiziksel olarak güvenli hale almayı unutmayın.
-5. Şüpheli etkinlik için bozulmadan sonra [bildirilen tüm risk tespitlerini üçe kalım](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) edin.
-6. Bir dizi kullanıcıyı hedeflemek için [PowerShell kullanılarak](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) verilen tüm yenileme belirteçlerini iptal edin. Tüm yenileme belirteçlerinin iptali, kesinti sırasında kullanılan ayrıcalıklı hesaplar için önemlidir ve bunu yapmak onları yeniden kimlik doğrulamaya ve geri yüklenen politikaların denetimini karşılamaya zorlar.
+3. Yaptığınız diğer değişiklikleri geri alın ve kesinti sırasında belgelenir.
+4. Acil durum erişim hesabı kullandıysanız, kimlik bilgilerini yeniden oluşturmayı ve acil durum erişim hesabı yordamlarınızın bir parçası olarak yeni kimlik bilgileri ayrıntılarını fiziksel olarak güvenli hale getirmeyi unutmayın.
+5. Şüpheli etkinlik kesintiye uğradıktan sonra [raporlanan tüm risk algılamalarını önceliklendirmeye](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) devam edin.
+6. Bir kullanıcı kümesini hedeflemek için [PowerShell kullanılarak](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) verilen tüm yenileme belirteçlerini iptal edin. Tüm yenileme belirteçleri iptal edildiğinde, kesinti sırasında kullanılan ayrıcalıklı hesaplar için önemlidir ve bunun yapılması, geri yüklenen ilkelerin denetimini yeniden kimlik doğrulaması ve karşılamaları için zorlayacaktır.
 
 ## <a name="emergency-options"></a>Acil durum seçenekleri
 
- Acil bir durum olması ve kuruluşunuz daha önce bir azaltma veya acil durum planı uygulamamışsa, MFA'yı uygulamak için Koşullu Erişim ilkelerini zaten kullanıyorlarsa, kullanıcı kilitleme bölümü [için Acil Durumlar'daki](#contingencies-for-user-lockout) önerileri izleyin.
-Kuruluşunuz kullanıcı başına MFA eski ilkeleri kullanıyorsa, aşağıdaki alternatifi göz önünde bulundurabilirsiniz:
+ Bir acil durum durumunda ve kuruluşunuz daha önce bir azaltma ya da acil durum planı uygulamadıysa, MFA 'yı zorlamak için koşullu erişim ilkelerini zaten kullanıyorsa, [Kullanıcı kilitleme bölümünün Kıgenine ilişkin](#contingencies-for-user-lockout) önerileri takip edin.
+Kuruluşunuz Kullanıcı başına MFA eski ilkelerini kullanıyorsa, aşağıdaki alternatifi göz önünde bulundurun:
 
-1. Şirket ağı giden IP adresiniz varsa, kimlik doğrulamayı yalnızca şirket ağına etkinleştirmek için bunları güvenilir IP'ler olarak ekleyebilirsiniz.
-   1. Giden IP adreslerinin envanterine sahip değilseniz veya şirket ağının içinde ve dışında erişimi etkinleştirmeniz gerekiyorsa, 0.0.0.0/1 ve 128.0.0.0/1'i belirterek IPv4 adres alanının tamamını güvenilir IP'ler olarak ekleyebilirsiniz.
+1. Şirket ağına giden IP adresiniz varsa, kimlik doğrulamasını yalnızca şirket ağına etkinleştirmek için güvenilir IP 'Ler olarak ekleyebilirsiniz.
+   1. Giden IP adresi envanteriniz yoksa veya şirket ağı içinde ve dışında erişimi etkinleştirmek istiyorsanız 0.0.0.0/1 ve 128.0.0.0/1 belirterek tüm IPv4 adres alanını güvenilir IP 'Ler olarak ekleyebilirsiniz.
 
 >[!IMPORTANT]
- > Güvenilen IP adreslerini erişim engelini kaldırmak için genişletirseniz, IP adresleriyle ilişkili risk algılamaları (örneğin, imkansız seyahat veya yabancı konumlar) oluşturulmaz.
+ > Erişimi engellemeyi kaldırmak için güvenilen IP adreslerini genişletirseniz, IP adresleriyle ilişkili risk algılamaları (örneğin, imkansız seyahat veya bilmediğiniz konumlar) oluşturulmaz.
 
 >[!NOTE]
- > Azure MFA için [güvenilir IP'leri](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) yapılandırmak yalnızca [Azure AD Premium lisanslarıyla](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)kullanılabilir.
+ > Azure MFA için [Güvenilen IP 'lerin](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) yapılandırılması yalnızca [Azure AD Premium lisanslarla](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)kullanılabilir.
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 * [Azure AD Kimlik Doğrulaması Belgeleri](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
-* [Azure AD'de acil erişim yönetim hesaplarını yönetme](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
-* [Azure Etkin Dizini'nde adlandırılmış konumları yapılandırma](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure AD 'de acil erişimli yönetim hesaplarını yönetme](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+* [Azure Active Directory adlandırılmış konumları yapılandırma](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
-* [Karma Azure Active Directory birleştirilmiş aygıtları yapılandırma](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
+* [Karma Azure Active Directory katılmış cihazları yapılandırma](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [İş İçin Windows Hello Dağıtım Kılavuzu](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
-  * [Parola Kılavuzu - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
-* [Azure Active Directory Koşullu Erişim'deki koşullar nelerdir?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
-* [Azure Active Directory Koşullu Erişim'de erişim denetimleri nelerdir?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
+  * [Parola Kılavuzu-Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
+* [Koşullu erişim Azure Active Directory koşullar nelerdir?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
+* [Koşullu erişim Azure Active Directory erişim denetimleri nelerdir?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

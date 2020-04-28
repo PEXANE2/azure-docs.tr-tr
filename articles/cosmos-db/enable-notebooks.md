@@ -1,31 +1,31 @@
 ---
-title: Azure Cosmos DB hesabındaki dizüstü bilgisayarları etkinleştirme (önizleme)
-description: Azure Cosmos DB'nin yerleşik dizüstü bilgisayarları, Verilerinizi Portal içinden analiz etmenizi ve görselleştirmenizi sağlar. Bu makalede, Cosmos hesapları için bu özelliğietkinleştirmek için nasıl açıklanmaktadır.
+title: Azure Cosmos DB hesabındaki not defterlerini etkinleştir (Önizleme)
+description: Azure Cosmos DB yerleşik Not defterleri, portaldaki verilerinizi analiz etmenize ve görselleştirmenize olanak tanır. Bu makalede, Cosmos hesapları için bu özelliğin nasıl etkinleştirileceği açıklanır.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.author: dech
 ms.openlocfilehash: dcec310db43baa513b2d574d03f3f35dee3f773b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76768013"
 ---
-# <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Azure Cosmos DB hesapları için not defterlerini etkinleştirme (önizleme)
+# <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>Azure Cosmos DB hesapları için not defterlerini etkinleştirme (Önizleme)
 
 > [!IMPORTANT]
-> Azure Cosmos DB için yerleşik dizüstü bilgisayarlar şu anda aşağıdaki Azure bölgelerinde kullanılabilir: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Güney Orta ABD, Güneydoğu Asya, İngiltere Güney, Batı Avrupa ve Batı ABD 2. Not defterlerini kullanmak [için, not defterleriyle yeni bir hesap oluşturun](#enable-notebooks-in-a-new-cosmos-account) veya bu bölgelerden birinde [varolan bir hesapta not defterlerini etkinleştirin.](#enable-notebooks-in-an-existing-cosmos-account)
+> Azure Cosmos DB için yerleşik Not defterleri Şu anda şu Azure bölgelerinde sunulmaktadır: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa ve Batı ABD 2. Not defterlerini kullanmak için, bu bölgelerden birindeki mevcut bir hesapta not defterleri [ile yeni bir hesap oluşturun](#enable-notebooks-in-a-new-cosmos-account) veya Not [defterlerini etkinleştirin](#enable-notebooks-in-an-existing-cosmos-account) .
 
-Azure Cosmos DB'deki yerleşik Jupyter dizüstü bilgisayarlar, Verilerinizi Azure portalından analiz etmenizi ve görselleştirmenizi sağlar. Bu makale, Azure Cosmos DB hesabınız için bu özelliği etkinleştirmeyi açıklar.
+Azure Cosmos DB 'daki yerleşik jupi Not defterleri, Azure portal verilerinizi analiz etmenize ve görselleştirmenize olanak tanır. Bu makale, Azure Cosmos DB hesabınız için bu özelliği etkinleştirmeyi açıklar.
 
-## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Yeni bir Cosmos hesabında ki dizüstü bilgisayarları etkinleştirme
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
-1. **Kaynak** > **Oluştur Veritabanları** > **Azure Cosmos DB'yi**seçin.
-1. Azure **Cosmos DB Hesabı Oluştur** sayfasında **Not Defterleri'ni**seçin. 
+## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Yeni bir Cosmos hesabındaki not defterlerini etkinleştir
+1. [Azure Portal](https://portal.azure.com/)oturum açın.
+1. Azure Cosmos DB **kaynak** > **veritabanları** > **Azure Cosmos DB**oluştur ' u seçin.
+1. **Azure Cosmos DB hesabı oluştur** sayfasında, **Not defterleri**' ni seçin. 
  
-    ![Azure Cosmos DB Create blade'de not defterleri seçeneğini seçin](media/enable-notebooks/create-new-account-with-notebooks.png)
+    ![Azure Cosmos DB dikey pencere Oluştur bölümünde Not defterleri seçeneğini belirleyin](media/enable-notebooks/create-new-account-with-notebooks.png)
 1. **İncele ve oluştur**’u seçin. **Ağ** ve **Etiketler** seçeneğini atlayabilirsiniz. 
 1. Hesap ayarlarını gözden geçirip **Oluştur** seçeneğini belirleyin. Hesabın oluşturulması birkaç dakika sürer. Portal sayfasında **Dağıtımınız tamamlandı** iletisinin görüntülenmesini bekleyin. 
 
@@ -34,39 +34,39 @@ Azure Cosmos DB'deki yerleşik Jupyter dizüstü bilgisayarlar, Verilerinizi Azu
 
     ![Azure Cosmos DB hesabı sayfası](../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png)
 
-1. **Veri Gezgini** bölmesine gidin. Artık not defterlerinizin çalışma alanını görmelisiniz.
+1. **Veri Gezgini** bölmesine gidin. Artık Not defteri çalışma alanınızı görmeniz gerekir.
 
-    ![Yeni Azure Cosmos DB dizüstü bilgisayarlar çalışma alanı](media/enable-notebooks/new-notebooks-workspace.png)
+    ![Yeni Azure Cosmos DB Not defteri çalışma alanı](media/enable-notebooks/new-notebooks-workspace.png)
 
-## <a name="enable-notebooks-in-an-existing-cosmos-account"></a>Varolan bir Cosmos hesabındaki not defterlerini etkinleştirme
-Varolan hesaplardaki not defterlerini de etkinleştirebilirsiniz. Bu adımın hesap başına yalnızca bir kez yapılması gerekir.
+## <a name="enable-notebooks-in-an-existing-cosmos-account"></a>Mevcut Cosmos hesabındaki not defterlerini etkinleştir
+Ayrıca, mevcut hesaplarda not defterlerini etkinleştirebilirsiniz. Bu adımın hesap başına yalnızca bir kez yapılması gerekir.
 
-1. Cosmos hesabınızdaki **Veri Gezgini** bölmesine gidin.
-1. **Not Defterlerini Etkinleştir'i**seçin.
+1. Cosmos hesabınızda **Veri Gezgini** bölmesine gidin.
+1. **Not defterlerini etkinleştir**' i seçin.
 
-    ![Veri Gezgini'nde yeni bir dizüstü bilgisayar çalışma alanı oluşturma](media/enable-notebooks/enable-notebooks-workspace.png)
-1. Bu, yeni bir dizüstü bilgisayar çalışma alanı oluşturmanızı ister. **Kurulumu Tamamla'yı seçin.**
-1. Hesabınız artık not defterlerini kullanmak için etkinleştirildi!
+    ![Veri Gezgini yeni bir not defteri çalışma alanı oluştur](media/enable-notebooks/enable-notebooks-workspace.png)
+1. Bu, yeni bir not defteri çalışma alanı oluşturmanızı ister. **Kurulumu Tamam** ' ı seçin.
+1. Hesabınız artık not defterlerini kullanacak şekilde etkinleştirilmiştir!
 
-## <a name="create-and-run-your-first-notebook"></a>İlk not defterinizi oluşturun ve çalıştırın
+## <a name="create-and-run-your-first-notebook"></a>İlk not defterinizi oluşturma ve çalıştırma
 
-Not defterlerini kullanabileceğinizi doğrulamak için Örnek Not Defterleri'nin altındaki not defterlerinden birini seçin. Bu işlem, not defterinin bir kopyasını çalışma alanınıza kaydeder ve açar.
+Not defterlerini kullanacağınızı doğrulamak için örnek Not defterleri altındaki not defterlerinden birini seçin. Bu işlem, Not defterinin bir kopyasını çalışma alanınıza kaydeder ve açar.
 
-Bu örnekte, **GettingStarted.ipynb'yi**kullanacağız. 
+Bu örnekte, **gettingstarted. ipynb**' yi kullanacağız. 
 
-![GettingStarted.ipynb not defterini görüntüle](media/enable-notebooks/select-getting-started-notebook.png)
+![GettingStarted. ipynb Not defterini görüntüle](media/enable-notebooks/select-getting-started-notebook.png)
 
 Not defterini çalıştırmak için:
 1. Python kodunu içeren ilk kod hücresini seçin. 
-1. Hücreyi çalıştırmak için **Çalıştır'ı** seçin. Hücreyi çalıştırmak için **Shift + Enter'u** da kullanabilirsiniz.
+1. Hücreyi çalıştırmak için **Çalıştır** ' ı seçin. Hücreyi çalıştırmak için **SHIFT + enter** ' i de kullanabilirsiniz.
 1. Oluşturulan veritabanını ve kapsayıcıyı görmek için kaynak bölmesini yenileyin.
 
-    ![Çalıştırma başlangıç not defteri](media/enable-notebooks/run-first-notebook-cell.png)
+    ![Başlarken Not defterini çalıştır](media/enable-notebooks/run-first-notebook-cell.png)
 
-Ayrıca, Yeni bir not defteri oluşturmak veya Varolan bir not defteri (.ipynb) dosyasını yükleyerek **Not Defterlerim** menüsünden **Dosya Yükle'yi** seçerek Yeni **Not Defteri'ni** seçebilirsiniz. 
+Yeni bir not defteri oluşturmak için **Yeni Not** defteri ' ni **seçip not defterim menüsünden** **dosya karşıya yükle** ' yi seçerek var olan bir not defteri (. ipynb) dosyasını karşıya yükleyebilirsiniz. 
 
-![Yeni bir not defteri oluşturma veya yükleme](media/enable-notebooks/create-or-upload-new-notebook.png)
+![Yeni bir not defteri oluşturun veya karşıya yükleyin](media/enable-notebooks/create-or-upload-new-notebook.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Cosmos DB Jupyter dizüstü bilgisayarların](cosmosdb-jupyter-notebooks.md) avantajları hakkında bilgi edinin
+- [Jupyıter Not defterlerinin Azure Cosmos DB](cosmosdb-jupyter-notebooks.md) avantajları hakkında bilgi edinin

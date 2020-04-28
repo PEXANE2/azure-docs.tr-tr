@@ -1,6 +1,6 @@
 ---
-title: Sanal makine ölçek kümeleri için yakınlık yerleşim grupları önizlemesi
-description: Azure'da Windows sanal makine ölçek kümeleri için yakınlık yerleşim grupları oluşturma ve kullanma hakkında bilgi edinin.
+title: Sanal Makine Ölçek Kümeleri için yakınlık yerleşimi grupları önizlemesi
+description: Azure 'da Windows sanal makine ölçek kümeleri için yakınlık yerleşimi grupları oluşturma ve kullanma hakkında bilgi edinin.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
@@ -9,27 +9,27 @@ ms.workload: infrastructure-services
 ms.date: 07/01/2019
 ms.author: cynthn
 ms.openlocfilehash: 4fa2949e2a7e1b99ac26caa35f967e9dc9cf359a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76273614"
 ---
-# <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Önizleme: PowerShell kullanarak yakınlık yerleşim grupları oluşturma ve kullanma
+# <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Önizleme: PowerShell kullanarak yakınlık yerleşimi grupları oluşturma ve kullanma
 
-VM'leri mümkün olduğunca yakın alabilmek ve mümkün olan en düşük gecikmeyi elde etmek için ölçek kümenizi bir [yakınlık yerleşim grubu](co-location.md#preview-proximity-placement-groups)içinde dağıtmanız gerekir.
+Olası en düşük gecikme süresini elde etmek üzere VM 'Leri olabildiğince yakın bir şekilde almak için, ölçek kümesini bir [yakınlık yerleşimi grubu](co-location.md#preview-proximity-placement-groups)içinde dağıtmanız gerekir.
 
-Yakınlık yerleşim grubu, Azure hesaplama kaynaklarının fiziksel olarak birbirine yakın olduğundan emin olmak için kullanılan mantıksal bir gruplandırmadır. Yakınlık yerleşimgrupları, düşük gecikme nin bir gereklilik olduğu iş yükleri için yararlıdır.
+Yakınlık yerleşimi grubu, Azure işlem kaynaklarının fiziksel olarak birbirlerine yakın bir yerde bulunduğundan emin olmak için kullanılan mantıksal bir gruplandırmadır. Yakınlık yerleşimi grupları, düşük gecikme süresinin gereksinim olduğu iş yükleri için faydalıdır.
 
 > [!IMPORTANT]
-> Yakınlık Yerleşim Grupları şu anda genel önizlemede.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Yakınlık yerleşimi grupları Şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Yakınlık yerleştirme grupları önizleme sırasında bu bölgelerde mevcut değildir: **Japonya Doğu,** **Avustralya Doğu** ve **Hindistan Orta**.
+> Önizleme sırasında yakınlık yerleşimi grupları şu bölgelerde kullanılamıyor: **Japonya Doğu**, **Avustralya Doğu** ve **Hindistan Orta**.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Yakınlık yerleştirme grubu oluşturma
-[New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) cmdlet'i kullanarak bir yakınlık yerleşim grubu oluşturun. 
+[New-AzProximityPlacementGroup](https://docs.microsoft.com/powershell/module/az.compute/new-azproximityplacementgroup) cmdlet 'ini kullanarak bir yakınlık yerleşimi grubu oluşturun. 
 
 ```azurepowershell-interactive
 $resourceGroup = "myPPGResourceGroup"
@@ -43,9 +43,9 @@ $ppg = New-AzProximityPlacementGroup `
    -ProximityPlacementGroupType Standard
 ```
 
-## <a name="list-proximity-placement-groups"></a>Yakınlık yerleşim gruplarını listele
+## <a name="list-proximity-placement-groups"></a>Yakınlık yerleşimi gruplarını Listele
 
-[Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup) cmdlet'i kullanarak tüm yakınlık yerleşim gruplarını listeleyebilirsiniz.
+[Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup) cmdlet 'ini kullanarak yakınlık yerleşimi gruplarının tümünü listeleyebilirsiniz.
 
 ```azurepowershell-interactive
 Get-AzProximityPlacementGroup
@@ -54,7 +54,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-scale-set"></a>Ölçek kümesi oluşturma
 
-Ölçek kümesini oluşturmak `-ProximityPlacementGroup $ppg.Id` için [Yeni-AzVMSS](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) kullandığınızda yakınlık yerleşim grubu kimliğine başvurmak için yakınlık yerleşim grubunda bir ölçek oluşturun.
+Ölçek kümesini oluşturmak için `-ProximityPlacementGroup $ppg.Id` [New-azvmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) KULLANDıĞıNıZDA yakınlık yerleşimi grubu kimliğine başvurmak için kullanarak yakınlık yerleşimi grubunda bir ölçek oluşturun.
 
 ```azurepowershell-interactive
 $scalesetName = "myVM"
@@ -71,7 +71,7 @@ New-AzVmss `
   -ProximityPlacementGroup $ppg.Id
 ```
 
-[Get-AzProximityPlacementGroup'u](/powershell/module/az.compute/get-azproximityplacementgroup)kullanarak yerleşim grubunda örneği görebilirsiniz.
+Örneği, [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup)kullanarak yerleştirme grubunda görebilirsiniz.
 
 ```azurepowershell-interactive
   Get-AzProximityPlacementGroup `
@@ -82,4 +82,4 @@ New-AzVmss `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yakınlık yerleşim grupları oluşturmak için [Azure CLI'yi](../virtual-machines/linux/proximity-placement-groups.md) de kullanabilirsiniz.
+Ayrıca, yakınlık yerleşimi grupları oluşturmak için [Azure CLI](../virtual-machines/linux/proximity-placement-groups.md) 'yi de kullanabilirsiniz.

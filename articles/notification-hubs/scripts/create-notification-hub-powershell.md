@@ -1,6 +1,6 @@
 ---
-title: PowerShell | Microsoft Dokümanlar
-description: Azure bildirim merkezi oluşturmak için PowerShell komut dosyasını nasıl kullanacağınızı öğrenin.
+title: PowerShell kullanarak bir Azure Notification Hub 'ı oluşturma | Microsoft Docs
+description: Bir PowerShell betiğini kullanarak bir Azure Notification Hub 'ı oluşturma hakkında bilgi edinin.
 author: dimazaid
 manager: femila
 services: notification-hubs
@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: dimazaid
 ms.openlocfilehash: 01749e1ae5c29a7e77b2143939e25cf1ccd1aec2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76263991"
 ---
-# <a name="use-powershell-to-create-an-azure-notification-hub"></a>Azure bildirim merkezi oluşturmak için PowerShell'i kullanma
+# <a name="use-powershell-to-create-an-azure-notification-hub"></a>PowerShell kullanarak bir Azure Notification Hub 'ı oluşturma
 
-Bu örnek PowerShell komut dosyası, örnek bir Azure bildirim hub'ı oluşturur. 
+Bu örnek PowerShell betiği, örnek bir Azure Bildirim Hub 'ı oluşturur. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -29,7 +29,7 @@ Bu örnek PowerShell komut dosyası, örnek bir Azure bildirim hub'ı oluşturur
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği** - Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir [hesap](https://azure.microsoft.com/free/) oluşturun.
+* **Azure aboneliği** -Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -37,7 +37,7 @@ Bu örnek PowerShell komut dosyası, örnek bir Azure bildirim hub'ı oluşturur
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme
 
-Örnek komut dosyasını çalıştırdıktan sonra, kaynak grubunu ve onunla ilişkili tüm kaynakları kaldırmak için aşağıdaki komutu kullanabilirsiniz:
+Örnek betiği çalıştırdıktan sonra, kaynak grubunu ve onunla ilişkili tüm kaynakları kaldırmak için aşağıdaki komutu kullanabilirsiniz:
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
@@ -50,8 +50,8 @@ Bu betik şu komutları kullanır:
 | Komut | Notlar |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [Yeni-AzNotificationHubsNamespace](/powershell/module/az.notificationhubs/new-aznotificationhubsnamespace) | Bildirim hub'ı için bir ad alanı oluşturur. |
-| [Yeni-AzNotificationHub](/powershell/module/az.notificationhubs/new-aznotificationhub) | Bir bildirim hub'ı oluşturur. |
+| [New-AzNotificationHubsNamespace](/powershell/module/az.notificationhubs/new-aznotificationhubsnamespace) | Bildirim Hub 'ı için bir ad alanı oluşturur. |
+| [New-AzNotificationHub](/powershell/module/az.notificationhubs/new-aznotificationhub) | Bir Bildirim Hub 'ı oluşturur. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

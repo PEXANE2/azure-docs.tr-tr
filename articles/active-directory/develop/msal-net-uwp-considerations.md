@@ -1,7 +1,7 @@
 ---
-title: UWP hususlar (MSAL.NET) | Azure
+title: UWP konuları (MSAL.NET) | Mavisi
 titleSuffix: Microsoft identity platform
-description: .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı ile Evrensel Windows Platformu 'nı (UWP) kullanmak için dikkat edilmesi gereken hususlar hakkında bilgi edinin.
+description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Evrensel Windows Platformu (UWP) kullanmayla ilgili hususlar hakkında bilgi edinin.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -15,54 +15,54 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2eeec28569cf31af4542d6cd7aca1fb27d77b1e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77132522"
 ---
-# <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>Evrensel Windows Platform'u MSAL.NET ile kullanmak için dikkat edilmesi gerekenler
-MSAL.NET ile Evrensel Windows Platformu (UWP) kullanan uygulamaların geliştiricileri bu makalenin sunduğu kavramları göz önünde bulundurmalıdır.
+# <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>MSAL.NET ile Evrensel Windows Platformu kullanma konuları
+MSAL.NET ile Evrensel Windows Platformu (UWP) kullanan uygulamaların geliştiricileri, bu makalenin sunduğu kavramları göz önünde bulundurmalıdır.
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork özelliği
-Windows Runtime (WinRT) platformunda Boolean `PublicClientApplication` `UseCorporateNetwork`özelliği vardır. Bu özellik, kullanıcı federe Azure Active Directory (Azure AD) kiracısı olan bir hesapta oturum açmışsa, Windows 8.1 uygulamalarının ve UWP uygulamalarının Tümleşik Windows kimlik doğrulamasından (IWA) yararlanmasını sağlar. İşletim sisteminde oturum açmış olan kullanıcılar tek oturum açma (SSO) de kullanabilirler. `UseCorporateNetwork` Özelliği ayarladığınızda, MSAL.NET bir web kimlik doğrulama aracısı (WAB) kullanır.
+Windows Çalışma Zamanı (WinRT) platformunda Boole özelliği `PublicClientApplication` `UseCorporateNetwork`vardır. Bu özellik Windows 8.1 uygulamalar ve UWP uygulamalarının, kullanıcı federe Azure Active Directory (Azure AD) kiracısına sahip bir hesapta oturum açmış olması durumunda tümleşik Windows kimlik doğrulamasından (ıWA) faydalanmalarını sağlar. İşletim sisteminde oturum açan kullanıcılar çoklu oturum açma (SSO) da kullanabilir. `UseCorporateNetwork` Özelliği ayarladığınızda, msal.net bir Web kimlik doğrulama ARACıSı (WAB) kullanır.
 
 > [!IMPORTANT]
-> `UseCorporateNetwork` Özelliği niçin doğru ayarladığınız, uygulama geliştiricisinin uygulamada IWA'yı etkinleştirdiğini varsayar. IWA'yı etkinleştirmek için:
-> - UWP uygulamanızın `Package.appxmanifest`, **Yetenekler** sekmesinde aşağıdaki yetenekleri etkinleştirin:
->   - **Kurumsal Kimlik Doğrulama**
->   - **Özel Ağlar (İstemci & Sunucusu)**
->   - **Paylaşılan Kullanıcı Sertifikası**
+> `UseCorporateNetwork` Özelliği true olarak ayarlamak, uygulama geliştiricisinin uygulamada IWA 'yu etkinleştirdiğinizi varsayar. IWA 'yi etkinleştirmek için:
+> - UWP uygulamanızın `Package.appxmanifest`' de, **yetenekler** sekmesinde, aşağıdaki özellikleri etkinleştirin:
+>   - **Kurumsal kimlik doğrulama**
+>   - **Özel ağlar (Istemci & sunucusu)**
+>   - **Paylaşılan Kullanıcı sertifikası**
 
-Microsoft Mağazası, kurumsal kimlik doğrulama veya paylaşılan kullanıcı sertifikalarının özelliklerini isteyen uygulamaları kabul etmeden önce yüksek düzeyde doğrulama gerektirdiğinden, IWA varsayılan olarak etkinleştirilemez. Tüm geliştiriciler bu doğrulama düzeyini yapmak istemez.
+Microsoft Store, kurumsal kimlik doğrulama veya paylaşılan kullanıcı sertifikalarının yeteneklerini isteyen uygulamaları kabul etmeden önce yüksek düzeyde bir doğrulama gerektirdiğinden, varsayılan olarak ıWA etkin değildir. Tüm geliştiriciler bu doğrulama düzeyini yapmak istememe.
 
-UWP platformunda, temel WAB uygulaması koşullu erişimin etkin olduğu kuruluş senaryolarında doğru çalışmaz. Kullanıcılar, Windows Hello kullanarak oturum açmaya çalıştıklarında bu sorunun belirtilerini görürler. Kullanıcıdan bir sertifika seçmesi istendiğinde:
+UWP platformunda, temel alınan WAB uygulamasının Koşullu erişimin etkinleştirildiği kurumsal senaryolarda düzgün şekilde çalışmıyor. Kullanıcılar, Windows Hello kullanarak oturum açmaya çalıştıklarında bu sorunun belirtilerini görür. Kullanıcıdan bir sertifika seçmesi istendiğinde:
 
 - PIN sertifikası bulunamadı.
-- Kullanıcı bir sertifika seçtikten sonra PIN için istenmez.
+- Kullanıcı bir sertifika seçtikten sonra PIN kodu istenmez.
 
-Kullanıcı adı-parola ve telefon kimlik doğrulaması gibi alternatif bir yöntem kullanarak bu sorunu önlemeyi deneyebilirsiniz, ancak deneyim iyi değildir.
+Kullanıcı adı-parola ve telefon kimlik doğrulaması gibi alternatif bir yöntem kullanarak bu sorundan kaçınabilirsiniz, ancak deneyim iyi değildir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Bazı müşteriler, internet bağlantıları olduğunu ve bağlantının ortak bir ağla çalıştığını bildikleri belirli kurumsal ortamlarda aşağıdaki oturum açma hatasını bildirmiş olur.
+Bazı müşteriler, bir internet bağlantısı olduğunu ve bağlantının ortak bir ağla birlikte çalışıp çalışmadığını bildiren belirli kurumsal ortamlarda aşağıdaki oturum açma hatasını bildirdi.
 
 ```Text
 We can't connect to the service you need right now. Check your network connection or try this again later.
 ```
 
-WAB'nin (temel Windows bileşeni) özel bir ağa izin verdiğinden emin olarak bu sorunu önleyebilirsiniz. Bunu bir kayıt defteri anahtarı ayarlayarak yapabilirsiniz:
+WAB (temeldeki Windows bileşeni) özel bir ağa izin verdiğinden emin olmak için bu sorundan kurtulabilirsiniz. Bir kayıt defteri anahtarı ayarlayarak bunu yapabilirsiniz:
 
 ```Text
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
 ```
 
-Daha fazla bilgi için [Web kimlik doğrulama aracısı - Fiddler](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler)adresine bakın.
+Daha fazla bilgi için bkz. [Web kimlik doğrulama Aracısı-Fiddler](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Aşağıdaki örnekler daha fazla bilgi sağlar.
+Aşağıdaki örnekler daha fazla bilgi sağlamaktadır.
 
 Örnek | Platform | Açıklama 
 |------ | -------- | -----------|
-|[aktif-dizin-dotnet-yerli-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | MSAL.NET kullanan bir UWP istemci uygulaması. Azure AD 2.0 bitiş noktası kullanarak kimlik doğrulaması yapan bir kullanıcı için Microsoft Graph'a erişir. <br>![Topoloji](media/msal-net-uwp-considerations/topology-native-uwp.png)|
-|[aktif-dizin-xamarin-yerli-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Azure AD 2.0 bitiş noktası üzerinden Microsoft kişisel hesaplarını ve Azure AD'yi doğrulamak için MSAL'ın nasıl kullanılacağını gösteren basit bir Xamarin Forms uygulaması. Ayrıca, Microsoft Graph'a nasıl erişilir ve ortaya çıkan belirteci gösterir. <br>![Topoloji](media/msal-net-uwp-considerations/topology-xamarin-native.png)|
+|[Active-Directory-DotNet-Native-UWP-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | MSAL.NET kullanan bir UWP istemci uygulaması. Bir Azure AD 2,0 uç noktası kullanarak kimlik doğrulaması yapan bir kullanıcının Microsoft Graph erişir. <br>![Topoloji](media/msal-net-uwp-considerations/topology-native-uwp.png)|
+|[Active-Directory-Xamarin-Native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Azure AD 2,0 uç noktası aracılığıyla Microsoft kişisel hesaplarının ve Azure AD kimlik doğrulaması için MSAL kullanmayı gösteren basit bir Xamarin Forms uygulaması. Ayrıca, Microsoft Graph nasıl erişebileceğini ve elde edilen belirtecin nasıl gösterileceğini gösterir. <br>![Topoloji](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

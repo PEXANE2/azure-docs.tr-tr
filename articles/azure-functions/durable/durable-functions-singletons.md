@@ -1,26 +1,26 @@
 ---
-title: Dayanıklı Fonksiyonlar için Singletons - Azure
-description: Azure İşlevler için Dayanıklı İşlevler uzantısında singleton nasıl kullanılır?
+title: Dayanıklı İşlevler-Azure için tekton
+description: Azure Işlevleri için Dayanıklı İşlevler uzantısında tekton kullanımı.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4eff7c4c91ed664fcf1f4fc7a8be2d43d24e5c6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76262818"
 ---
-# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler (Azure İşlevlerinde) Singleton orkestratörleri
+# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler içindeki tekil düzenleyiciler (Azure Işlevleri)
 
-Arka plan işleri için, genellikle belirli bir orkestratörün yalnızca bir örneğinin aynı anda çalıştığından emin olmanız gerekir. Bu tür singleton davranışı [Kalıcı İşlevler](durable-functions-overview.md) oluştururken bir orkestratöre belirli bir örnek kimliği atayarak sağlayabilirsiniz.
+Arka plan işleri için, genellikle belirli bir Orchestrator örneğinin aynı anda çalıştığından emin olmanız gerekir. Bu tür bir tek [dayanıklı işlevler](durable-functions-overview.md) davranışın, bir Orchestrator 'a belirli BIR örnek kimliği atayarak bir Orchestrator 'a atanmasını sağlayabilirsiniz.
 
-## <a name="singleton-example"></a>Singleton örneği
+## <a name="singleton-example"></a>Tek örnek
 
-Aşağıdaki örnekte, tek tonlu arka plan iş orkestrasyonu oluşturan bir HTTP tetikleyici işlevi gösterilmektedir. Kod, belirtilen bir örnek kimliği için yalnızca bir örneğin bulunmasını sağlar.
+Aşağıdaki örnek, tek bir arka plan işi düzenlemesi oluşturan bir HTTP tetikleyici işlevini gösterir. Kod, belirtilen örnek KIMLIĞI için yalnızca bir örneğin mevcut olmasını sağlar.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -52,11 +52,11 @@ public static async Task<HttpResponseMessage> RunSingle(
 ```
 
 > [!NOTE]
-> Önceki C# kodu Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x için `OrchestrationClient` öznitelik yerine `DurableClient` öznitelik kullanmanız gerekir `DurableOrchestrationClient` ve `IDurableOrchestrationClient`parametre türünü yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Önceki C# kodu Dayanıklı İşlevler 2. x içindir. `OrchestrationClient` Dayanıklı işlevler 1. x için `DurableClient` özniteliği yerine özniteliği kullanmanız gerekir ve yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. `IDurableOrchestrationClient` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-**fonksiyon.json**
+**function. JSON**
 
 ```json
 {
@@ -83,7 +83,7 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-**index.js**
+**index. js**
 
 ```javascript
 const df = require("durable-functions");
@@ -114,14 +114,14 @@ module.exports = async function(context, req) {
 
 ---
 
-Varsayılan olarak, örnek AD'lar rasgele oluşturulan GUID'ler. Önceki örnekte, ancak, örnek kimliği URL'den rota verilerine aktarılır. Belirtilen kimliğe sahip bir örneğin zaten çalışıyor olup olmadığını denetlemek için kod çağrıları `GetStatusAsync`(C#) veya `getStatus` (JavaScript). Böyle bir örnek çalıştırılamazsa, bu kimlikle birlikte yeni bir örnek oluşturulur.
+Varsayılan olarak, örnek kimlikleri rastgele oluşturulan GUID 'lerdir. Bununla birlikte, önceki örnekte, örnek KIMLIĞI URL 'den rota verilerinde geçirilir. Belirtilen KIMLIĞE sahip `GetStatusAsync`bir örneğin zaten çalışır `getStatus` durumda olup olmadığını denetlemek için kod çağırır (C#) veya (JavaScript). Böyle bir örnek çalışmıyorsa, bu KIMLIKLE yeni bir örnek oluşturulur.
 
 > [!NOTE]
-> Bu örnekte potansiyel bir Yarış koşulu var. **İki Örnek HttpStartSingle** aynı anda yürütülürse, her iki işlev çağrısı da başarıyı bildirir, ancak yalnızca bir düzenleme örneği gerçekten başlar. İhtiyaçlarınıza bağlı olarak, bu istenmeyen yan etkileri olabilir. Bu nedenle, iki istek aynı anda bu tetikleyici işlevi yürütebilir sağlamak önemlidir.
+> Bu örnekte olası bir yarış durumu var. İki tane **Httpstartone** örneği aynı anda yürütülecektir, her iki işlev çağrısı de başarıyı bildirir ancak yalnızca bir düzenleme örneği başlatılır. Gereksinimlerinize bağlı olarak, bu istenmeyen yan etkilere sahip olabilir. Bu nedenle, bu tetikleyici işlevini aynı anda yürütebilmesi için iki isteğin olmadığından emin olmanız önemlidir.
 
-Orkestratör işlevinin uygulama ayrıntıları aslında önemli değildir. Bu başlar ve tamamlar düzenli bir orkestratör fonksiyonu olabilir, ya da sonsuza kadar çalışan biri olabilir (yani, bir [Ebedi Orkestrasyon).](durable-functions-eternal-orchestrations.md) Önemli olan nokta, aynı anda çalışan tek bir örnek olmasıdır.
+Orchestrator işlevinin uygulama ayrıntıları gerçek anlamda değildir. Bu, başlayan ve tamamlanmış normal bir Orchestrator işlevi olabilir ya da sonsuza kadar (yani, bir [Eternal düzenleme](durable-functions-eternal-orchestrations.md)) çalışan bir düzenleyici olabilir. Önemli nokta, tek seferde çalışan yalnızca bir örnek vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Orkestrasyonların yerel HTTP özellikleri hakkında bilgi edinin](durable-functions-http-features.md)
+> [Düzenleyicmelerin yerel HTTP özellikleri hakkında bilgi edinin](durable-functions-http-features.md)

@@ -1,22 +1,22 @@
 ---
 title: Üst kaynak hataları
-description: Azure Kaynak Yöneticisi şablonundaki bir üst kaynakla çalışırken hataların nasıl çözüleceğini açıklar.
+description: Azure Resource Manager şablonunda bir üst kaynakla çalışırken hataların nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
 ms.date: 08/01/2018
 ms.openlocfilehash: f1847389d60ddf3c6abc70bc3309940c2246084e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76154049"
 ---
-# <a name="resolve-errors-for-parent-resources"></a>Üst kaynaklardaki hataları çözümle
+# <a name="resolve-errors-for-parent-resources"></a>Üst kaynaklar için hataları çözümleme
 
-Bu makalede, bir üst kaynağa bağlı bir kaynak dağıtılırken karşılaşabileceğiniz hatalar açıklanmaktadır.
+Bu makalede, bir üst kaynağa bağımlı olan bir kaynağı dağıttığınızda karşılaşabileceğiniz hatalar açıklanır.
 
 ## <a name="symptom"></a>Belirti
 
-Çocuk olan bir kaynağı başka bir kaynağa dağıtırken aşağıdaki hatayı alabilirsiniz:
+Bir alt öğe olan bir kaynağı başka bir kaynağa dağıttığınızda, şu hatayı alabilirsiniz:
 
 ```
 Code=ParentResourceNotFound;
@@ -25,7 +25,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 ## <a name="cause"></a>Nedeni
 
-Bir kaynak başka bir kaynağa bir alt kaynak olduğunda, alt kaynak oluşturmadan önce üst kaynak bulunması gerekir. Alt kaynağın adı, üst kaynakla bağlantıyı tanımlar. Alt kaynağın adı biçimindedir. `<parent-resource-name>/<child-resource-name>` Örneğin, bir SQL Veritabanı olarak tanımlanabilir:
+Bir kaynak başka bir kaynağın alt öğesi olduğunda, alt kaynak oluşturulmadan önce üst kaynağın mevcut olması gerekir. Alt kaynağın adı üst kaynakla bağlantıyı tanımlar. Alt kaynağın adı biçimindedir `<parent-resource-name>/<child-resource-name>`. Örneğin, bir SQL veritabanı şöyle tanımlanabilir:
 
 ```json
 {
@@ -34,13 +34,13 @@ Bir kaynak başka bir kaynağa bir alt kaynak olduğunda, alt kaynak oluşturmad
   ...
 ```
 
-Hem sunucuyu hem de veritabanını aynı şablonda dağıtıyorsanız, ancak sunucuya bağımlılık belirtmiyorsanız, veritabanı dağıtımı sunucu dağıtılmadan önce başlayabilir.
+Hem sunucu hem de veritabanını aynı şablonda dağıtırsanız ancak sunucuda bir bağımlılık belirtmezseniz, sunucu dağıtılmadan önce veritabanı dağıtımı başlayabilir.
 
-Ana kaynak zaten varsa ve aynı şablonda dağıtılmıyorsa, Kaynak Yöneticisi alt kaynağı üst kaynakla ilişkilendiremediğinde bu hatayı alırsınız. Alt kaynak doğru biçimde olmadığında veya alt kaynak üst kaynak için kaynak grubundan farklı bir kaynak grubuna dağıtıldığında bu hata olabilir.
+Üst kaynak zaten varsa ve aynı şablonda dağıtılmamışsa, Kaynak Yöneticisi alt kaynağı üst ile ilişkilendiremediğinde bu hatayı alırsınız. Alt kaynak doğru biçimde olmadığında veya alt kaynak, üst kaynak için kaynak grubundan farklı bir kaynak grubuna dağıtıldığında bu hata oluşabilir.
 
 ## <a name="solution"></a>Çözüm
 
-Üst ve alt kaynaklar aynı şablonda dağıtıldığında bu hatayı gidermek için bir bağımlılık ekleyin.
+Üst ve alt kaynaklar aynı şablonda dağıtıldığında bu hatayı çözmek için bir bağımlılık ekleyin.
 
 ```json
 "dependsOn": [
@@ -48,7 +48,7 @@ Ana kaynak zaten varsa ve aynı şablonda dağıtılmıyorsa, Kaynak Yöneticisi
 ]
 ```
 
-Ana kaynak daha önce farklı bir şablonda dağıtıldığında bu hatayı gidermek için bir bağımlılık ayarlamazsınız. Bunun yerine, alt öğeyi aynı kaynak grubuna dağıtın ve üst kaynağın adını sağlayın.
+Üst kaynak daha önce farklı bir şablonda dağıtıldığında bu hatayı çözmek için bir bağımlılık ayarlayamazsınız. Bunun yerine, alt öğeyi aynı kaynak grubuna dağıtın ve üst kaynağın adını sağlayın.
 
 ```json
 {
@@ -78,4 +78,4 @@ Ana kaynak daha önce farklı bir şablonda dağıtıldığında bu hatayı gide
 }
 ```
 
-Daha fazla bilgi için bkz. Azure [Kaynak Yöneticisi şablonlarında kaynakları dağıtma sırasını tanımlayın.](define-resource-dependency.md)
+Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarda kaynak dağıtma sırasını tanımlama](define-resource-dependency.md).

@@ -1,6 +1,6 @@
 ---
-title: Yetkilendirme aracıları ve bunları nasıl etkinleştirmek | Azure
-description: Microsoft Kimlik Doğrulama Kitaplığı'nın (MSAL) Android uygulamanızın kullanmasına izin verdiği farklı yetkilendirme aracıları ve bunları nasıl etkinleştireceğimiz hakkında bilgi edinin.
+title: Yetkilendirme aracıları ve bunları etkinleştirme | Mavisi
+description: Farklı yetkilendirme aracıları hakkında bilgi edinin Microsoft kimlik doğrulama kitaplığı (MSAL), Android uygulamanızın kullanmasına ve bunların nasıl etkinleştirileceğini sağlar.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,81 +13,81 @@ ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
 ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77085323"
 ---
 # <a name="authorization-agents-android"></a>Yetkilendirme aracıları (Android)
 
-Bu makalede, Microsoft Kimlik Doğrulama Kitaplığı'nın (MSAL) uygulamanızın kullanmasına izin verdiği farklı yetkilendirme aracıları ve bunları nasıl etkinleştireceğimiz açıklanmaktadır.
+Bu makalede, Microsoft kimlik doğrulama kitaplığı 'nın (MSAL) uygulamanızın kullanmasını ve bunların nasıl etkinleştirileceğini sağlayan farklı yetkilendirme aracıları açıklanmaktadır.
 
-Yetkilendirme aracıları için belirli bir strateji seçmek isteğe bağlıdır ve uygulamaların özelleştirebileceği ek işlevleri temsil eder. Çoğu uygulama MSAL varsayılanlarını kullanır (bkz. çeşitli varsayılanları görmek için [Android MSAL yapılandırma dosyasını anlayın).](msal-configuration.md)
+Yetkilendirme aracıları için belirli bir strateji seçilmesi isteğe bağlıdır ve uygulamaların özelleştirebileceği ek işlevleri temsil eder. Çoğu uygulama, MSAL varsayılanlarını kullanır (çeşitli Varsayılanları görmek için bkz. [ANDROID msal yapılandırma dosyasını anlayın](msal-configuration.md) ).
 
-`WebView`MSAL, bir veya sistem tarayıcısı kullanarak yetkilendirmeyi destekler.  Aşağıdaki resim, CustomTabs `WebView`ile veya CustomTabs olmadan sistem tarayıcısını kullanarak nasıl göründüğünü gösterir:
+MSAL `WebView`, veya sistem tarayıcısını kullanarak yetkilendirmeyi destekler.  Aşağıdaki görüntüde, veya customtab ile veya Customtab ile sistem tarayıcısını kullanarak `WebView`nasıl göründüğü gösterilmektedir:
 
-![MSAL giriş örnekleri](./media/authorization-agents/sign-in-ui.jpg)
+![MSAL oturum açma örnekleri](./media/authorization-agents/sign-in-ui.jpg)
 
-## <a name="single-sign-in-implications"></a>Tek oturum açma etkileri
+## <a name="single-sign-in-implications"></a>Çoklu oturum açma etkileri
 
-Varsayılan olarak, MSAL ile tümleşik uygulamalar yetkilendirmek için sistem tarayıcısının Özel Sekmelerini kullanır. Web Görünümleri'nin aksine, Özel Sekmeler varsayılan sistem tarayıcısıyla bir çerez kavanozu paylaşır ve web veya Özel Sekmelerle tümleştirilmiş diğer yerel uygulamalarla daha az oturum açma sağlar.
+Varsayılan olarak, MSAL ile tümleştirilmiş uygulamalar, yetkilendirme için sistem tarayıcısının özel sekmelerini kullanır. WebViews 'ın aksine özel sekmeler, Web veya özel sekmelerle tümleştirilmiş diğer yerel uygulamalarla daha az oturum açma olanağı sağlayan bir tanımlama bilgisi jar 'yi varsayılan sistem tarayıcısıyla paylaşır.
 
-Uygulama, Microsoft `WebView` Authenticator veya Şirket Portalı desteğini uygulamalarına entegre etmeden bir strateji kullanıyorsa, kullanıcılar cihaz da veya yerel uygulamalar ve web uygulamaları arasında Tek Oturum Açma (SSO) deneyimine sahip olmaz.
+Uygulama Microsoft Authenticator veya Şirket Portalı desteğini `WebView` uygulamayla tümleştirmeden kullanıyorsa, kullanıcılar cihazda veya yerel uygulamalar ile Web uygulamaları arasında çoklu oturum açma (SSO) deneyimine sahip olmaz.
 
-Uygulama, Microsoft Authenticator veya Şirket Portalı desteğiyle MSAL kullanıyorsa, kullanıcı uygulamalardan biriyle etkin oturum açarsa, kullanıcılar uygulamalar arasında Bir SSO deneyimi yaşayabilir.
+Uygulama, Microsoft Authenticator veya Şirket Portalı desteği ile MSAL kullanıyorsa, kullanıcının uygulamalardan biriyle etkin bir oturum açma işlemi varsa, kullanıcılar uygulamalar arasında SSO deneyimine sahip olabilir.
 
 ## <a name="webview"></a>WebView
 
-Uygulama içi WebView'ı kullanmak için, MSAL'a geçirilen uygulama yapılandırması JSON'a aşağıdaki satırı koyun:
+Uygulama içi WebView 'u kullanmak için, MSAL 'e geçirilen uygulama yapılandırması JSON öğesine aşağıdaki satırı koyun:
 
 ```json
 "authorization_user_agent" : "WEBVIEW"
 ```
 
-Uygulamayı `WebView`kullanırken, kullanıcı doğrudan uygulamaya imza atar. Jetonlar uygulamanın kum havuzunda tutulur ve uygulamanın çerez kavanozunun dışında kullanılamaz. Sonuç olarak, uygulamalar Kimlik Doğrulayıcı veya Şirket Portalı ile tümleşmedikçe kullanıcı uygulamalar arasında Bir SSO deneyimine sahip olamaz.
+Uygulama `WebView`içi kullanıldığında, Kullanıcı doğrudan uygulamada oturum açar. Belirteçler, uygulamanın korumalı alanı içinde tutulur ve uygulamanın tanımlama bilgisi jar dışında kullanılamaz. Sonuç olarak, uygulamalar Authenticator veya Şirket Portalı tümleştirmediği sürece kullanıcının uygulamalar arasında SSO deneyimi yoktur.
 
-Ancak, `WebView` görünüm özelleştirmek için yeteneği sağlar ve oturum açma UI için hissediyorum. Bu özelleştirmenin nasıl yapılacağını öğrenmek için [Android Web Görünümleri'ne](https://developer.android.com/reference/android/webkit/WebView) bakın.
+Ancak, `WebView` oturum açma kullanıcı arabirimi için görünüm ve kullanım özelliklerini özelleştirme yeteneği sağlar. Bu özelleştirmeyi nasıl yapılacağı hakkında daha fazla bilgi için bkz. [Android WebViews](https://developer.android.com/reference/android/webkit/WebView) .
 
-## <a name="default-browser-plus-custom-tabs"></a>Varsayılan tarayıcı artı özel sekmeler
+## <a name="default-browser-plus-custom-tabs"></a>Varsayılan tarayıcı Plus özel sekmeler
 
-Varsayılan olarak, MSAL tarayıcıyı ve [özel sekme stratejisini](https://developer.chrome.com/multidevice/android/customtabs) kullanır. Özel yapılandırma dosyasında aşağıdaki JSON yapılandırmasını `DEFAULT` kullanarak gelecekteki sürümlerde değişiklikleri önlemek için bu stratejiyi açıkça belirtebilirsiniz:
+Varsayılan olarak, MSAL tarayıcıyı ve [özel bir sekmeler](https://developer.chrome.com/multidevice/android/customtabs) stratejisini kullanır. Bu stratejiyi, aşağıdaki JSON yapılandırmasını özel yapılandırma dosyasında kullanarak, gelecekteki sürümlerde `DEFAULT` yapılan değişikliklerin önlenmesi için açıkça belirtebilirsiniz:
 
 ```json
 "authorization_user_agent" : "BROWSER"
 ```
 
-Aygıtın tarayıcısı üzerinden Bir SSO deneyimi sağlamak için bu yaklaşımı kullanın. MSAL, diğer yerel uygulamaların veya web uygulamalarının MSAL tarafından ayarlanan kalıcı oturum çerezini kullanarak aygıtta SSO'ya ulaşmasını sağlayan paylaşılan bir çerez kavanozu kullanır.
+Cihazın tarayıcısı aracılığıyla bir SSO deneyimi sağlamak için bu yaklaşımı kullanın. MSAL, diğer yerel uygulamaların veya Web uygulamalarının, MSAL tarafından ayarlanan kalıcı oturum tanımlama bilgisini kullanarak cihazda SSO sağlamasına izin veren paylaşılan bir tanımlama bilgisi jar 'i kullanır.
 
-## <a name="browser-selection-heuristic"></a>Tarayıcı seçimi sezgisel
+## <a name="browser-selection-heuristic"></a>Tarayıcı seçimi buluşsal yöntemi
 
-MSAL'ın android telefonların geniş bir dizide kullanılacak tam tarayıcı paketini belirtebilmesi mümkün olmadığından, MSAL en iyi cihaz arası SSO'yu sağlamaya çalışan bir tarayıcı seçimi sezgiseluygular.
+MSAL 'in çok sayıda Android telefonunda kullanılacak tarayıcı paketinin tam olarak belirtilmediği için, MSAL, en iyi cihazlar arası SSO sağlamaya çalışan bir tarayıcı seçimi buluşsal yöntemi uygular.
 
-MSAL, hangi tarayıcının kullanılacağını seçmek için cihaza yüklenen tarayıcıların tam listesini alır. Liste, dolaylı olarak kullanıcının tercihlerini yansıtan paket yöneticisi tarafından döndürülen sıradadır. Örneğin, varsayılan tarayıcı, eğer ayarlanırsa, listedeki ilk giriştir. Listedeki _ilk_ tarayıcı, özel sekmeleri destekleyip desteklemediğine bakılmaksızın seçilir. Tarayıcı Özel Sekmeleri destekliyorsa, MSAL Özel Sekmeleri başlatacak. `WebView` Daha fazla bilgi edinmek için [Android'deki Özel Sekmeler'e](https://developer.chrome.com/multidevice/android/customtabs) bakın.
+MSAL, hangi tarayıcıyı kullanacağınızı seçmek için cihaza yüklenmiş tarayıcıların tam listesini alır. Liste Paket Yöneticisi tarafından döndürülen sırada, Kullanıcı tercihlerini dolaylı olarak yansıtır. Örneğin, varsayılan tarayıcı, ayarlandığında, listedeki ilk girdidir. Listedeki _ilk_ tarayıcı, özel sekmeleri destekleyip desteklememesinden bağımsız olarak seçilir. Tarayıcı özel sekmeleri destekliyorsa, MSAL özel sekmesini başlatacaktır. özel sekmeler, uygulamaya `WebView` yönelik bir görünüm ve temel kullanıcı arabirimi özelleştirmesine izin verir. Daha fazla bilgi edinmek için bkz. [Android 'de özel sekmeler](https://developer.chrome.com/multidevice/android/customtabs) .
 
-Cihazda tarayıcı paketi yoksa, MSAL uygulamayı `WebView`kullanır.
+Cihazda hiç tarayıcı paketi yoksa, MSAL uygulamayı `WebView`kullanır.
 
-Tarayıcı listesindeki tarayıcıların sırası işletim sistemi tarafından belirlenir. En çok tercih edilenden en azına doğru sırayla. Aygıt varsayılan ayarı değiştirilmezse, SSO deneyimi sağlamak için her oturum açma için aynı tarayıcı nın başlatılması gerekir.
+Tarayıcı listesindeki tarayıcıların sırası, işletim sistemi tarafından belirlenir. En az tercih edilen en azından bir sıradır. Cihaz varsayılan ayarı değiştirilmemişse, SSO deneyimi sağlamak için her oturum açma için aynı tarayıcı başlatılmalıdır.
 
 > [!NOTE]
-> Başka bir tarayıcı varsayılan olarak ayarlanmışsa MSAL artık her zaman Chrome'u tercih etmez. Örneğin, hem Chrome'u hem de başka bir tarayıcıyı önceden yüklenmiş olan bir aygıtta, MSAL kullanıcının varsayılan olarak belirlediği tarayıcıyı kullanır.
+> MSAL artık, başka bir tarayıcı varsayılan olarak ayarlandıysa Chrome 'ı her zaman tercih eder. Örneğin, hem Chrome hem de başka bir tarayıcı önceden yüklenmiş bir cihazda, MSAL kullanıcının varsayılan olarak ayarlandığı tarayıcıyı kullanır.
 
-### <a name="tested-browsers"></a>Test Edilmiş Tarayıcılar
+### <a name="tested-browsers"></a>Sınanan tarayıcılar
 
-Aşağıdaki tarayıcılar, yapılandırma dosyasında `"redirect_uri"` belirtilenlere doğru şekilde yönlendirilip yönlendirilmediklerini görmek için sınanmıştır:
+Aşağıdaki tarayıcılar yapılandırma dosyasında `"redirect_uri"` belirtilen öğesine doğru şekilde yönlendirildiklerini görmek üzere test edilmiştir:
 
-| | Dahili Tarayıcı | Chrome | Opera  | Microsoft Edge | UC Tarayıcı | Firefox |
+| | Yerleşik tarayıcı | Chrome | Opera  | Microsoft Edge | UC tarayıcısı | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
-| Nexus 4 (API 17) | Geçirmek | Geçirmek |geçerli değildir |geçerli değildir |geçerli değildir |geçerli değildir |
-| Samsung S7 (API 25) | geçiş* | Geçirmek | Geçirmek | Geçirmek | Başarısız |Geçirmek |
-| Huawei (API 26) |geçiş** | Geçirmek | Başarısız | Geçirmek | Geçirmek |Geçirmek |
-| Vivo (API 26) |Geçirmek|Geçirmek|Geçirmek|Geçirmek|Geçirmek|Başarısız|
-| Piksel 2 (API 26) |Geçirmek | Geçirmek | Geçirmek | Geçirmek | Başarısız |Geçirmek |
-| Oppo | Geçirmek | geçerli değildir*** |geçerli değildir  |geçerli değildir |geçerli değildir | geçerli değildir|
-| OnePlus (API 25) |Geçirmek | Geçirmek | Geçirmek | Geçirmek | Başarısız |Geçirmek |
-| Nexus (API 28) |Geçirmek | Geçirmek | Geçirmek | Geçirmek | Başarısız |Geçirmek |
-|MI | Geçirmek | Geçirmek | Geçirmek | Geçirmek | Başarısız |Geçirmek |
+| Nexus 4 (API 17) | aktar | aktar |uygulanamaz |uygulanamaz |uygulanamaz |uygulanamaz |
+| Samsung S7 (API 25) | aktar | aktar | aktar | aktar | Neden |aktar |
+| Huawei (API 26) |Pass * * | aktar | Neden | aktar | aktar |aktar |
+| Vivo (API 26) |aktar|aktar|aktar|aktar|aktar|Neden|
+| Piksel 2 (API 26) |aktar | aktar | aktar | aktar | Neden |aktar |
+| Oppo | aktar | uygulanamaz * * * |uygulanamaz  |uygulanamaz |uygulanamaz | uygulanamaz|
+| OnePlus (API 25) |aktar | aktar | aktar | aktar | Neden |aktar |
+| Nexus (API 28) |aktar | aktar | aktar | aktar | Neden |aktar |
+|MI | aktar | aktar | aktar | aktar | Neden |aktar |
 
-*Samsung'un yerleşik tarayıcısı Samsung Internet'tir.  
-**Huawei'nin yerleşik tarayıcısı Huawei Browser'dır.  
-Varsayılan tarayıcı Oppo aygıt ayarı içinde değiştirilemez.
+* Samsung 'in yerleşik tarayıcısı Samsung Internet 'dir.  
+* * Huawei 'ın yerleşik tarayıcı, Huawei tarayıcısıdır.  
+Varsayılan tarayıcı, Oppo cihaz ayarı içinde değiştirilemez.

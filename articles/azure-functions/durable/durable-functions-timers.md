@@ -1,35 +1,35 @@
 ---
-title: Dayanıklı İşlevlerde Zamanlayıcılar - Azure
-description: Azure İşlevler için Dayanıklı İşlevler uzantısında dayanıklı zamanlayıcıları nasıl uygulayacağınızı öğrenin.
+title: Dayanıklı İşlevler zamanlayıcılar-Azure
+description: Azure Işlevleri için Dayanıklı İşlevler uzantısında dayanıklı zamanlayıcıları nasıl uygulayacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 0565cc149a36baf31d8516fffcf48b194c465760
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76261492"
 ---
-# <a name="timers-in-durable-functions-azure-functions"></a>Dayanıklı İşlevlerde Zamanlayıcılar (Azure Fonksiyonları)
+# <a name="timers-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler süreölçerler (Azure Işlevleri)
 
-[Dayanıklı Fonksiyonlar,](durable-functions-overview.md) gecikmeleri uygulamak veya async eylemleri üzerinde zaman zaman aşması ayarlamak için orchestrator işlevlerinde kullanım için *dayanıklı zamanlayıcılar* sağlar. Dayanıklı `Thread.Sleep` zamanlayıcılar yerine ve `Task.Delay` (C#) veya `setTimeout()` `setInterval()` (JavaScript) yerine orchestrator işlevleri kullanılmalıdır.
+[Dayanıklı işlevler](durable-functions-overview.md) , gecikme süreleri uygulamak veya zaman uyumsuz eylemlerde zaman aşımları ayarlamak için Orchestrator işlevlerinde kullanılmak üzere *dayanıklı zamanlayıcılar* sağlar. `Thread.Sleep` Dayanıklı zamanlayıcılar, `Task.Delay` ve (C#) veya `setTimeout()` ve `setInterval()` (JavaScript) yerine Orchestrator işlevlerinde kullanılmalıdır.
 
-(.NET) yöntemini `CreateTimer` veya `createTimer` (JavaScript) yöntemini çağırarak dayanıklı bir zamanlayıcı [oluşturursunuz.](durable-functions-bindings.md#orchestration-trigger) Yöntem, belirli bir tarih ve saatte tamamlayan bir görevi döndürür.
+`CreateTimer` `createTimer` [Düzenleme tetikleyicisi bağlamasının](durable-functions-bindings.md#orchestration-trigger)(.net) yöntemini veya (JavaScript) yöntemini çağırarak dayanıklı bir Zamanlayıcı oluşturursunuz. Yöntemi, belirtilen tarih ve saatte tamamlanan bir görev döndürür.
 
-## <a name="timer-limitations"></a>Zamanlayıcı sınırlamaları
+## <a name="timer-limitations"></a>Süreölçer sınırlamaları
 
-Saat 16:30'da sona erecek bir zamanlayıcı oluşturduğunuzda, altta yatan Dayanıklı Görev Çerçevesi yalnızca 16:30'da görünür hale gelen bir ileti sıraya girer. Azure İşlevler Tüketimi planında çalışırken, yeni görünen zamanlayıcı iletisi işlev uygulamasının uygun bir VM'de etkinleştirilmesini sağlar.
+4:30 pm tarihinde süresi dolan bir Zamanlayıcı oluşturduğunuzda, temeldeki dayanıklı görev çerçevesi yalnızca 4:30 PM 'de görünür hale gelen bir iletiyi sıraya alır. Azure Işlevleri tüketim planında çalışırken, yeni görünür Zamanlayıcı iletisi, işlev uygulamasının uygun bir VM üzerinde etkinleştirilmesini sağlayacaktır.
 
 > [!NOTE]
-> * Dayanıklı zamanlayıcılar şu anda 7 gün ile sınırlıdır. Daha uzun gecikmeler gerekiyorsa, bir `while` döngü içinde zamanlayıcı API'leri kullanılarak simüle edilebilir.
-> * Dayanıklı `CurrentUtcDateTime` zamanlayıcılar için yangın süresini hesaplarken her zaman .NET yerine `DateTime.UtcNow` veya `currentUtcDateTime` JavaScript yerine `Date.now` veya `Date.UTC` JavaScript'te kullanın. Daha fazla bilgi [için, orchestrator işlev kodu kısıtlamaları](durable-functions-code-constraints.md) makalesine bakın.
+> * Dayanıklı zamanlayıcılar Şu anda 7 gün ile sınırlıdır. Daha uzun gecikmeler gerekliyse, bir `while` döngüdeki Zamanlayıcı API 'leri kullanılarak benzetilen olabilirler.
+> * Dayanıklı zamanlayıcılar için yangın süresini hesaplarken `currentUtcDateTime` , .net `Date.now` veya `Date.UTC` yerine her zaman kullanın `CurrentUtcDateTime` `DateTime.UtcNow` JavaScript. Daha fazla bilgi için bkz. [Orchestrator işlev kodu kısıtlamaları](durable-functions-code-constraints.md) makalesi.
 
-## <a name="usage-for-delay"></a>Gecikme için kullanım
+## <a name="usage-for-delay"></a>Gecikme kullanımı
 
-Aşağıdaki örnek, yürütmeyi geciktirmek için dayanıklı zamanlayıcıların nasıl kullanılacağını göstermektedir. Örnek, 10 gün boyunca her gün bir fatura bildirimi veriyor.
+Aşağıdaki örnek, bir erteleme yürütmesi için dayanıklı zamanlayıcıları nasıl kullanacağınızı gösterir. Örnek, 10 gün boyunca her gün bir fatura bildirimi yayınlanıyor.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("BillingIssuer")]
@@ -46,9 +46,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Önceki C# örneği Dayanıklı Fonksiyonlar 2.x'i hedefler. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örneği Dayanıklı İşlevler 2. x ' i hedefler. Dayanıklı İşlevler 1. x için yerine kullanmanız `DurableOrchestrationContext` gerekir. `IDurableOrchestrationContext` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
@@ -66,13 +66,13 @@ module.exports = df.orchestrator(function*(context) {
 ---
 
 > [!WARNING]
-> Orkestratör işlevlerinde sonsuz döngülerden kaçının. Sonsuz döngü senaryolarının güvenli ve verimli bir şekilde nasıl uygulanacağı hakkında bilgi için [Sonsuz Orkestrasyon'a](durable-functions-eternal-orchestrations.md)bakın.
+> Orchestrator işlevlerinde sonsuz döngüleri önleyin. Sonsuz döngü senaryolarını güvenle ve verimli bir şekilde uygulama hakkında daha fazla bilgi için bkz. [Eternal düzenlemeleri](durable-functions-eternal-orchestrations.md).
 
-## <a name="usage-for-timeout"></a>Zaman adabı için kullanım
+## <a name="usage-for-timeout"></a>Zaman aşımı kullanımı
 
-Bu örnek, zaman zaman larını uygulamak için dayanıklı zamanlayıcıların nasıl kullanılacağını göstermektedir.
+Bu örnek, zaman aşımlarını uygulamak için dayanıklı zamanlayıcıları nasıl kullanacağınızı gösterir.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("TryGetQuote")]
@@ -104,9 +104,9 @@ public static async Task<bool> Run(
 ```
 
 > [!NOTE]
-> Önceki C# örneği Dayanıklı Fonksiyonlar 2.x'i hedefler. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örneği Dayanıklı İşlevler 2. x ' i hedefler. Dayanıklı İşlevler 1. x için yerine kullanmanız `DurableOrchestrationContext` gerekir. `IDurableOrchestrationContext` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```js
 const df = require("durable-functions");
@@ -135,13 +135,13 @@ module.exports = df.orchestrator(function*(context) {
 ---
 
 > [!WARNING]
-> Kodunuzun tamamlanmasını beklememesi durumunda dayanıklı bir zamanlayıcıyı iptal etmek için (.NET) `CancellationTokenSource` veya döndürülen `cancel()` `TimerTask` (JavaScript) üzerinde arama kullanın. Dayanıklı Görev Çerçevesi, bekleyen tüm görevler tamamlanana veya iptal edilene kadar bir orkestrasyonun durumunu "tamamlanmış" olarak değiştirmez.
+> Kodunuzun tamamlanmasını `CancellationTokenSource` beketmeyeceğini dayanıklı bir `cancel()` zamanlayıcıyı iptal etmek `TimerTask` için (.net) veya döndürülen (JavaScript) çağrısı kullanın. Tüm bekleyen görevler tamamlanana veya iptal edilene kadar dayanıklı görev çerçevesi bir düzenleme durumunun "tamamlandı" olarak değiştirilmesine izin vermez.
 
-Bu iptal mekanizması devam eden etkinlik işlevini veya alt orkestrasyon yürütmelerini sonlandırmaz. Bunun yerine, sadece orkestratör işlevi sonucu göz ardı etmek ve hareket sağlar. İşlev uygulamanız Tüketim planını kullanıyorsa, terk edilen etkinlik işlevi tarafından tüketilen herhangi bir zaman ve bellek için faturalandırılırsınız. Varsayılan olarak, Tüketim planında çalışan işlevlerin zaman ası beş dakikadır. Bu sınır aşılırsa, Azure İşlevler ana bilgisayar tüm yürütmeyi durdurmak ve kaçak faturalandırma durumunu önlemek için geri dönüştürülür. [İşlev zaman yapılandırılabilir.](../functions-host-json.md#functiontimeout)
+Bu iptal mekanizması devam eden etkinlik işlevini veya alt düzenleme yürütmelerini sonlandırır. Bunun yerine, Orchestrator işlevinin sonucu yok saymasına ve üzerinde hareket etmesine izin verir. İşlev uygulamanız tüketim planını kullanıyorsa, bırakılan etkinlik işlevi tarafından tüketilen herhangi bir zaman ve bellek için faturalandırılırsınız. Varsayılan olarak, tüketim planında çalışan işlevlerin beş dakikalık bir zaman aşımı vardır. Bu sınır aşılırsa, tüm yürütmeyi durdurmak ve geri ödeme durumunun önlenmesi için Azure Işlevleri ana bilgisayarı geri dönüştürülür. [İşlev zaman aşımı yapılandırılabilir](../functions-host-json.md#functiontimeout).
 
-Orkestratör işlevlerinde zaman aşamaların nasıl uygulanacağının daha ayrıntılı bir örneği [için, İnsan Etkileşimi & Zaman Çıkışları - Telefon Doğrulama](durable-functions-phone-verification.md) makalesine bakın.
+Orchestrator işlevlerinde zaman aşımları uygulama hakkında daha ayrıntılı bir örnek için bkz. [ınsan etkileşimi & zaman aşımları-telefon doğrulama](durable-functions-phone-verification.md) makalesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Dış olayları nasıl yükseltip işleyeceğinizi öğrenin](durable-functions-external-events.md)
+> [Dış olayları nasıl yükselteceğinizi ve işleyeceğinizi öğrenin](durable-functions-external-events.md)

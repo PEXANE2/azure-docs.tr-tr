@@ -1,7 +1,7 @@
 ---
-title: Internet Explorer (MSAL.js) ile ilgili sorunlar | Azure
+title: Internet Explorer sorunları (MSAL. js) | Mavisi
 titleSuffix: Microsoft identity platform
-description: Internet Explorer tarayıcısı ile JavaScript (MSAL.js) için Microsoft Kimlik Doğrulama Kitaplığını kullanın.
+description: JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL. js) Internet Explorer tarayıcısı ile birlikte kullanın.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,44 +14,44 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: c4f3c4153e1404a5576427be7ef218f5a669387e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76695866"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer ve Microsoft Edge tarayıcılarında bilinen sorunlar (MSAL.js)
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer ve Microsoft Edge tarayıcılarında (MSAL. js) bilinen sorunlar
 
-JavaScript için Microsoft Kimlik Doğrulama Kitaplığı (MSAL.js), Internet Explorer'da çalıştırılabilmek için [JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) için oluşturulur. Ancak bilinmesi gereken birkaç şey var.
+JavaScript için Microsoft kimlik doğrulama kitaplığı (MSAL. js), Internet Explorer 'da çalışabilecek şekilde [JAVASCRIPT ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) için oluşturulur. Ancak bilmemiz gereken birkaç nokta vardır.
 
-## <a name="run-an-app-in-internet-explorer"></a>Internet Explorer'da uygulama çalıştırma
-Internet Explorer'da çalıştırılabilen uygulamalarda MSAL.js'yi kullanmayı planlıyorsanız, MSAL.js komut dosyasına başvurmadan önce söz polidoluna bir başvuru eklemeniz gerekir.
+## <a name="run-an-app-in-internet-explorer"></a>Internet Explorer 'da uygulama çalıştırma
+Internet Explorer 'da çalışabilecek uygulamalarda MSAL. js kullanmayı düşünüyorsanız, MSAL. js betiğine başvurmadan önce Promise polyfill öğesine bir başvuru eklemeniz gerekir.
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js" class="pre"></script>
 ```
 
-Bunun nedeni, Internet Explorer'ın JavaScript'in verdiği sözleri desteklememesidir.
+Bunun nedeni, Internet Explorer 'ın yerel olarak bulunan JavaScript 'ı desteklemesidir.
 
-## <a name="debugging-an-application-running-in-internet-explorer"></a>Internet Explorer'da çalışan bir uygulamanın hata ayıklama
+## <a name="debugging-an-application-running-in-internet-explorer"></a>Internet Explorer 'da çalışan bir uygulamada hata ayıklama
 
-### <a name="running-in-production"></a>Üretimde çalışan
-Son kullanıcı nın açılır pencereleri kabul etmesi koşuluyla, uygulamanızı üretime dağıtmak (örneğin Azure Web uygulamalarında) normalde iyi çalışır. Internet Explorer 11 ile test ettik.
+### <a name="running-in-production"></a>Üretimde çalıştırma
+Uygulamanızı üretime dağıtmak (Azure Web Apps 'te olduğu gibi) normalde ince çalışır ve bu da Son Kullanıcı açılan pencereleri kabul etmiş olarak sunulur. Internet Explorer 11 ile test ettik.
 
-### <a name="running-locally"></a>Yerel olarak çalıştırma
-Internet Explorer'da çalışan uygulamanızı yerel olarak çalıştırmak ve hata ayıklamak istiyorsanız, aşağıdaki hususlara dikkat etseniz *http://localhost:1234*gerekir (uygulamanızı aşağıdaki gibi çalıştırmak istediğinizi varsayalım):
+### <a name="running-locally"></a>Yerel olarak çalışıyor
+Uygulamanızı Internet Explorer 'da çalışan yerel olarak çalıştırmak ve hata ayıklamak istiyorsanız, aşağıdaki noktalara dikkat etmeniz gerekir (uygulamanızı farklı *http://localhost:1234*çalıştırmak istediğinizi varsayın):
 
-- Internet Explorer,MSAL.js'lerin doğru çalışmasını engelleyen "korumalı mod" adlı bir güvenlik mekanizmasına sahiptir. Belirtiler arasında, oturum açmadan sonra, sayfa http://localhost:1234/null.
+- Internet Explorer 'Da, MSAL. js ' nin düzgün çalışmasını engelleyen "korumalı mod" adlı bir güvenlik mekanizması vardır. Belirtiler arasında, oturum açtıktan sonra, sayfa öğesine http://localhost:1234/nullyeniden yönlendirilebilir.
 
-- Uygulamanızı yerel olarak çalıştırmak ve hata ayıklamak için bu "korumalı modu" devre dışı balmanız gerekir. Bunun için:
+- Uygulamanızı yerel olarak çalıştırmak ve hatalarını ayıklamak için, bu "korumalı mod" seçeneğini devre dışı bırakmanız gerekir. Bunun için:
 
-    1. Internet Explorer **Araçları'nı** (vites simgesi) tıklatın.
-    1. **Internet Seçenekleri'ni** ve ardından **Güvenlik** sekmesini seçin.
-    1. **Internet** bölgesini tıklatın ve **Korumalı Modu Etkinleştir'in**denetimini kaldırın (Internet Explorer'ı yeniden başlatmayı gerektirir) . Internet Explorer, bilgisayarınızın artık korunmadığı konusunda uyarır. **Tamam**'a tıklayın.
-    1. Internet Explorer'ı yeniden başlatın.
-    1. Uygulamanızı çalıştırın ve hata ayıklanın.
+    1. Internet Explorer **araçları** (dişli simgesi) seçeneğine tıklayın.
+    1. **Internet seçenekleri** ' ni ve ardından **güvenlik** sekmesini seçin.
+    1. **Internet** bölgesine tıklayın ve **korumalı modu etkinleştir (Internet Explorer 'ın yeniden başlatılmasını gerektirir)** seçeneğinin işaretini kaldırın. Internet Explorer, bilgisayarınızın artık korunmuyor olduğunu uyarır. **Tamam**'a tıklayın.
+    1. Internet Explorer 'ı yeniden başlatın.
+    1. Uygulamanızı çalıştırın ve hata ayıklayın.
 
-İşi bittiğinde, Internet Explorer güvenlik ayarlarını geri yükleyin.  **Ayarlar** -> **Internet Seçenekleri** -> **Güvenliği'ni** -> seçin**Tüm bölgeleri varsayılan düzeye sıfırlayın.**
+İşiniz bittiğinde Internet Explorer güvenlik ayarlarını geri yükleyin.  **Ayarlar** -> **Internet seçenekleri** -> **Security**güvenlik -> **tüm bölgeleri varsayılan düzeye sıfırla**' yı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Internet Explorer'da MSAL.js kullanırken bilinen sorunlar](msal-js-use-ie-browser.md)hakkında daha fazla bilgi edinin.
+[Internet Explorer 'DA msal. js kullanırken bilinen sorunlar](msal-js-use-ie-browser.md)hakkında daha fazla bilgi edinin.

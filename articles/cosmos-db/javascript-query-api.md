@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Depolanan Yordamlar ve Tetikleyiciler'de JavaScript tümleşik sorgu API'si ile çalışın
-description: Bu makalede, Azure Cosmos DB'de depolanmış yordamlar ve tetikleyiciler oluşturmak için JavaScript dili tümleşik sorgu API'si kavramları tanıtıştır.
+title: Azure Cosmos DB saklı yordamlar ve Tetikleyiciler 'de JavaScript tümleşik sorgu API 'SI ile çalışma
+description: Bu makalede, Azure Cosmos DB ' de saklı yordamlar ve Tetikleyiciler oluşturmak için JavaScript dil ile tümleşik sorgu API 'SI kavramları tanıtılmaktadır.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,64 +8,64 @@ ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: 7b7ad470b3330224e80a7160fc1a37bb5ee1cde8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76901827"
 ---
-# <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB'de JavaScript sorgu API'si
+# <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 'de JavaScript sorgu API 'SI
 
-Cosmos DB'de SQL API'yi kullanarak sorgu lar vermenin yanı sıra, [Cosmos DB sunucu tarafı SDK, Cosmos DB](https://azure.github.io/azure-cosmosdb-js-server/) Stored Yordamları ve Tetikleyicileri'nde optimize edilmiş sorguları gerçekleştirmek için bir JavaScript arabirimi sağlar. Bu JavaScript arabirimini kullanmak için SQL dilinden haberdar olmak zorunda değilsiniz. JavaScript sorgu API'si, ECMAScript5 dizi yerleşiklerine ve Lodash gibi popüler JavaScript kitaplıklarına aşina bir sözdizimi yle, yüklem işlevlerini işlev çağrıları dizisine geçirerek sorguları programlı bir şekilde oluşturmanıza olanak tanır. Sorgular JavaScript çalışma zamanı tarafından ayrıştırılır ve Azure Cosmos DB endeksleri kullanılarak verimli bir şekilde yürütülür.
+Azure Cosmos DB SQL API 'sini kullanarak sorgu vermekten ek olarak, [Cosmos DB sunucu tarafı SDK 'sı](https://azure.github.io/azure-cosmosdb-js-server/) Cosmos DB saklı yordamlar ve tetikleyicilerinde iyileştirilmiş sorgular gerçekleştirmeye yönelik bir JavaScript arabirimi sağlar. Bu JavaScript arabirimini kullanmak için SQL dilini bilmeniz gerekmez. JavaScript sorgu API 'SI, koşul işlevlerini, ECMAScript5's dizisi yerleşik ve Lodash gibi popüler JavaScript kitaplıklarını bilen bir sözdizimi ile program aracılığıyla sorgu oluşturmanızı sağlar. Sorgular JavaScript çalışma zamanı tarafından ayrıştırılır ve Azure Cosmos DB dizinleri kullanılarak verimli bir şekilde yürütülür.
 
 ## <a name="supported-javascript-functions"></a>Desteklenen JavaScript işlevleri
 
 | **İşlev** | **Açıklama** |
 |---------|---------|
-|`chain() ... .value([callback] [, options])`|Değerle sonlandırılması gereken zincirli bir çağrı başlatır().|
-|`filter(predicateFunction [, options] [, callback])`|Giriş belgelerini çıkan kümeye filtrelemek/çıkarmak için girişi doğru/yanlış döndüren bir yüklem işlevi kullanarak girişi filtreler. Bu işlev, SQL'deki WHERE yan tümcesine benzer şekilde çalışır.|
-|`flatten([isShallow] [, options] [, callback])`|Her giriş öğesindeki dizileri tek bir dizide birleştirir ve düzleştirir. Bu işlev LINQ'daki SelectMany'a benzer şekilde çalışır.|
-|`map(transformationFunction [, options] [, callback])`|Her giriş öğesini bir JavaScript nesnesi veya değeriyle eşleyen bir dönüştürme işlevi verilen bir projeksiyon uygular. Bu işlev, SQL'deki SELECT yan tümcesine benzer şekilde çalışır.|
-|`pluck([propertyName] [, options] [, callback])`|Bu işlev, her giriş öğesinden tek bir özelliğin değerini ayıklayan bir harita için bir kısayoldur.|
-|`sortBy([predicate] [, options] [, callback])`|Giriş belgesi akışındaki belgeleri, verilen yüklemi kullanarak artan sırada sıralayarak sıralayarak yeni bir belge kümesi üretir. Bu işlev, SQL'deki ORDER BY yan tümcesine benzer şekilde çalışır.|
-|`sortByDescending([predicate] [, options] [, callback])`|Giriş belge akışındaki belgeleri verilen yüklemi kullanarak azalan sırada sıralayarak yeni bir belge kümesi üretir. Bu işlev, SQL'deki ORDER BY x DESC yan tümcesine benzer.|
-|`unwind(collectionSelector, [resultSelector], [options], [callback])`|İç diziile kendi kendine birleştirme gerçekleştirir ve sonuç projeksiyonuna tuples olarak her iki taraftan da sonuç ekler. Örneğin, bir kişi belgeye kişi ile katılmak.evcil hayvanlar [kişi, evcil hayvan] tuples üretecek. Bu, .NET LINK'teki SelectMany'a benzer.|
+|`chain() ... .value([callback] [, options])`|Değeri () ile sonlandırılması gereken bir zincir çağrısını başlatır.|
+|`filter(predicateFunction [, options] [, callback])`|Giriş belgelerini sonuç kümesine filtrelemek için doğru/yanlış döndüren bir koşul işlevi kullanarak girişi filtreler. Bu işlev SQL 'de WHERE yan tümcesine benzer şekilde davranır.|
+|`flatten([isShallow] [, options] [, callback])`|Her giriş öğesindeki dizileri tek bir dizide birleştirir ve düzleştirir. Bu işlev, LINQ içinde SelectMany ile benzer şekilde davranır.|
+|`map(transformationFunction [, options] [, callback])`|Her giriş öğesini bir JavaScript nesnesine veya değerine eşleyen bir dönüştürme işlevi verilen bir projeksiyon uygular. Bu işlev, SQL 'deki bir SELECT yan tümcesine benzer şekilde davranır.|
+|`pluck([propertyName] [, options] [, callback])`|Bu işlev, her giriş öğesinden tek bir özelliğin değerini çıkaran bir haritanın kısayoludur.|
+|`sortBy([predicate] [, options] [, callback])`|Giriş belge akışındaki belgeleri verilen koşulu kullanarak artan düzende sıralayarak yeni bir belge kümesi oluşturur. Bu işlev, SQL 'deki ORDER BY yan tümcesine benzer şekilde davranır.|
+|`sortByDescending([predicate] [, options] [, callback])`|Verilen koşulu kullanarak, giriş belgesi akışındaki belgeleri azalan sırada sıralayarak yeni bir belge kümesi oluşturur. Bu işlev, SQL 'deki ORDER BY x DESC yan tümcesine benzer şekilde davranır.|
+|`unwind(collectionSelector, [resultSelector], [options], [callback])`|İç diziye bir kendi kendine birleşim gerçekleştirir ve sonuç projeksiyonunda, her iki taraftan da sonuçları tanımlama grubu olarak ekler. Örneğin, bir kişi belgesine kişi. pets ile katılmak, [Person, Evcil hayvan] tanımlama gruplarını üretecektir. Bu, .NET BAĞLANTıSıNıN SelectMany ile benzerdir.|
 
-Yüklem ve/veya seçici işlevlerine dahil edildiğinde, aşağıdaki JavaScript yapıları doğrudan Azure Cosmos DB endekslerinde çalışacak şekilde otomatik olarak optimize edilir:
+Koşul ve/veya seçici işlevlerinin içine dahil edildiğinde, aşağıdaki JavaScript yapıları doğrudan Azure Cosmos DB dizinleri üzerinde çalışacak şekilde otomatik olarak iyileştirilir:
 
-- Basit işleçler: `=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
-- Gerçek edebi, nesne edebi dahil:{}
-- var, dönüş
+- Basit işleçler `=` `+` `-` `*` : `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
+- Nesne değişmez değeri dahil değişmez değerler:{}
+- var, return
 
-Aşağıdaki JavaScript yapıları Azure Cosmos DB endeksleri için optimize edilmez:
+Aşağıdaki JavaScript yapıları Azure Cosmos DB dizinleri için iyileştirilmez:
 
-- Kontrol akışı (örneğin, eğer, for, while)
+- Denetim akışı (örneğin, for, IF)
 - İşlev çağrıları
 
-Daha fazla bilgi için [Cosmos DB Server Side JavaScript Belgeleri'ne](https://azure.github.io/azure-cosmosdb-js-server/)bakın.
+Daha fazla bilgi için bkz. [sunucu tarafı JavaScript belgeleri Cosmos DB](https://azure.github.io/azure-cosmosdb-js-server/).
 
-## <a name="sql-to-javascript-cheat-sheet"></a>SQL JavaScript hile sayfası
+## <a name="sql-to-javascript-cheat-sheet"></a>SQL 'den JavaScript 'e başvuru sayfası
 
-Aşağıdaki tabloda çeşitli SQL sorguları ve ilgili JavaScript sorguları sunar. SQL sorgularında olduğu gibi, özellikler (örneğin, item.id) büyük/küçük harf duyarlıdır.
+Aşağıdaki tabloda çeşitli SQL sorguları ve ilgili JavaScript sorguları sunulmaktadır. SQL sorgularında olduğu gibi Özellikler (örneğin, item.id) büyük/küçük harfe duyarlıdır.
 
 > [!NOTE]
-> `__`(çift alt çizgi) JavaScript `getContext().getCollection()` sorgu API'sını kullanırken bir diğer addır.
+> `__`(çift alt çizgi), JavaScript sorgu API `getContext().getCollection()` 'si kullanılırken bir diğer addır.
 
-|**SQL**|**JavaScript Sorgu API**|**Açıklama**|
+|**SQL**|**JavaScript sorgu API 'SI**|**Açıklama**|
 |---|---|---|
-|SEÇ *<br>FROM dokümanlar| __.map(fonksiyon(doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;dönüş doc;<br>});|Tüm belgelerde (devamı belirteci ile paginated) sonuçları olduğu gibi.|
-|SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs.message AS msg,<br>&nbsp;&nbsp;&nbsp;docs.actions <br>FROM dokümanlar|__.map(fonksiyon(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;dönüş {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;eylemler:doc.actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Kimlik, ileti (msg takma adı) ve tüm belgelerden eylem projeleri.|
-|SEÇ *<br>FROM dokümanlar<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.filter(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return doc.id ==="X998_Y998";<br>});|Yüklemi olan belgeler için sorgular: id = "X998_Y998".|
-|SEÇ *<br>FROM dokümanlar<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS(docs. Etiketler, 123)|__.filter(fonksiyon(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return x.Etiketler && x.Tags.indexOf(123) > -1;<br>});|Etiketler özelliği olan belgeler için sorgular ve Etiketler değeri 123 içeren bir dizidir.|
-|SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs.message AS msg<br>FROM dokümanlar<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs.id="X998_Y998"|__.zincir()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(fonksiyon(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return doc.id ==="X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(fonksiyon(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dönüş {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.value();|Yüklemi, id = "X998_Y998" olan belgeler için sorgular ve ardından kimlik ve iletiyi (msg'ye takma ad) projeleri.|
-|DEĞER SEÇ etiketi<br>FROM dokümanlar<br>DOC'larda JOIN etiketi. Etiketler<br>docs._ts GÖRE SİPARİş|__.zincir()<br>&nbsp;&nbsp;&nbsp;&nbsp;.filter(fonksiyon(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc'u iade edin. Etiketler && Array.isArray(doc. Etiketler);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.sortBy(fonksiyon(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.pluck("Etiketler")<br>&nbsp;&nbsp;&nbsp;&nbsp;.flatten()<br>&nbsp;&nbsp;&nbsp;&nbsp;.value()|Dizi özelliği olan belgeler için filtreler, Etiketler ve ortaya çıkan belgeleri _ts zaman damgası sistem özelliğine göre sıralar ve ardından projeler + Etiketler dizisini düzleştirir.|
+|SEÇIN<br>Docs 'TAN| __. map (işlev (doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;belgeyi döndür;<br>});|Tüm belgelere (devamlılık belirteci ile sayfalandırılmış olarak) sahip olur.|
+|SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;Msg olarak docs. Message,<br>&nbsp;&nbsp;&nbsp;docs. Actions <br>Docs 'TAN|__. map (işlev (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;döndürülmesini<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kimlik: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Msg: Doc. Message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eylemler: Doc. Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|Kimliği, iletiyi (diğer adı msg) ve tüm belgelerden yapılacak işlemleri projeler.|
+|SEÇIN<br>Docs 'TAN<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. ID = "X998_Y998"|__. Filter (işlev (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Return doc.id = = = "X998_Y998";<br>});|Koşul: ID = "X998_Y998" olan belgeler için sorgular.|
+|SEÇIN<br>Docs 'TAN<br>WHERE<br>&nbsp;&nbsp;&nbsp;ARRAY_CONTAINS (docs. Etiketler, 123)|__. Filter (işlev (x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;x. Tags. IndexOf (123) && x. Tags döndürün >-1;<br>});|Etiketler özelliği ve etiketleri olan belge sorguları 123 değerini içeren bir dizidir.|
+|SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;Msg olarak docs. Message<br>Docs 'TAN<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. ID = "X998_Y998"|__. zinciri ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (işlev (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return doc.id = = = "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. map (işlev (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;döndürülmesini<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kimlik: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Msg: Doc. Message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>. Value ();|Bir koşula sahip belge için sorgular, ID = "X998_Y998" ve ardından kimliği ve iletiyi (diğer adıyla msg) projeler.|
+|DEĞER etiketini Seç<br>Docs 'TAN<br>Docs 'TA etiketi BIrLEŞTIr. Lerimi<br>Belgelere göre sırala. _ts|__. zinciri ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (işlev (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;belgeyi döndür. Array. IsArray (doc && etiketleri. Etiketler);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. sortBy (Function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;belgeyi döndür. _ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. pluck ("Etiketler")<br>&nbsp;&nbsp;&nbsp;&nbsp;. Düzleştir ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Value ()|Bir dizi özelliğine, etikete sahip ve sonuç belgelerini _ts zaman damgası sistemi özelliğine göre sıralayan belgeler ve ardından projeler + Etiketler dizisini düzleştirir.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Cosmos DB'de daha fazla kavram ve depolanmış yordamlar, tetikleyiciler ve kullanıcı tanımlı işlevler yazma ve kullanma hakkında daha fazla bilgi edinin:
+Azure Cosmos DB ' de saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlevleri yazma ve kullanma hakkında daha fazla bilgi edinin:
 
-- [Javascript Query API kullanarak depolanan yordamlar ve tetikleyiciler nasıl yazılır?](how-to-write-javascript-query-api.md)
-- [Azure Cosmos DB depolanan yordamlar, tetikleyiciler ve kullanıcı tanımlı işlevlerle çalışma](stored-procedures-triggers-udfs.md)
-- [Azure Cosmos DB'de depolanan yordamlar, tetikleyiciler, kullanıcı tanımlı işlevler nasıl kullanılır?](how-to-use-stored-procedures-triggers-udfs.md)
+- [JavaScript sorgu API 'sini kullanarak saklı yordamları ve Tetikleyicileri yazma](how-to-write-javascript-query-api.md)
+- [Azure Cosmos DB saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevlerle çalışma](stored-procedures-triggers-udfs.md)
+- [Saklı yordamları, Tetikleyicileri, Kullanıcı tanımlı işlevleri Azure Cosmos DB kullanma](how-to-use-stored-procedures-triggers-udfs.md)
 - [Azure Cosmos DB JavaScript sunucu tarafı API başvurusu](https://azure.github.io/azure-cosmosdb-js-server)
 - [JavaScript ES6 (ECMA 2015)](https://www.ecma-international.org/ecma-262/6.0/)

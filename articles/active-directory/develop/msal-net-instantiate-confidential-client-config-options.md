@@ -1,7 +1,7 @@
 ---
-title: Gizli bir istemci uygulamasını anında anons edin (MSAL.NET) | Azure
+title: Gizli bir istemci uygulaması örneğini oluşturma (MSAL.NET) | Mavisi
 titleSuffix: Microsoft identity platform
-description: .NET (MSAL.NET için Microsoft Kimlik Doğrulama Kitaplığı'nı kullanarak yapılandırma seçenekleriyle gizli bir istemci uygulamasını anında nasıl anons edebilirsiniz öğrenin.
+description: .NET için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL.NET) kullanarak yapılandırma seçenekleriyle gizli bir istemci uygulamasını nasıl örnekleyeceğinizi öğrenin.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,28 +14,28 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1a520c5a1002e401f880fba84f8fc02a0a678133
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77084741"
 ---
-# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET kullanarak yapılandırma seçenekleriyle gizli bir istemci uygulamasını anında
+# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET kullanarak yapılandırma seçenekleriyle bir gizli istemci uygulaması örneği oluşturma
 
-Bu makalede, .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı kullanarak gizli bir [istemci uygulamasının](msal-client-applications.md) anlık olarak nasıl anında gerçekleştirilebildiğini açıklanmaktadır.  Uygulama, ayarlar dosyasında tanımlanan yapılandırma seçenekleriyle anında doldurulabilir.
+Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL.NET) kullanarak bir [Gizli istemci uygulamasının](msal-client-applications.md) örneğini oluşturma açıklanmaktadır.  Uygulama, bir ayar dosyasında tanımlanan yapılandırma seçenekleriyle birlikte oluşturulur.
 
-Bir uygulamayı başlatmadan önce, uygulamanızın Microsoft kimlik platformuyla tümleştirilebilmeleri için uygulamanızı [kaydetmeniz](quickstart-register-app.md) gerekir. Kayıt olduktan sonra aşağıdaki bilgilere ihtiyacınız olabilir (Azure portalında bulunabilir):
+Uygulamayı başlatmadan önce, uygulamanızın Microsoft Identity platformu ile tümleştirilebilmesi için öncelikle [kaydetmeniz](quickstart-register-app.md) gerekir. Kayıttan sonra, aşağıdaki bilgiler (Azure portal bulunabilir) gerekebilir:
 
-- İstemci kimliği (GUID'i temsil eden bir dize)
-- Kimlik sağlayıcı URL (örneğin adı) ve uygulamanız için oturum açma hedef kitlesi. Bu iki parametre topluca otorite olarak bilinir.
-- Yalnızca kuruluşunuz için bir iş başvurusu satırı yazıyorsanız kiracı kimliği (tek kiracılı uygulama olarak da adlandırılır).
-- Uygulama gizli (istemci gizli dize) veya sertifika (tip X509Certificate2) gizli bir istemci uygulaması ise.
-- Web uygulamaları ve bazen kamu istemcisi uygulamaları için (özellikle uygulamanızın bir broker kullanması gerektiğinde), kimlik sağlayıcısının güvenlik belirteçleri ile uygulamanıza geri döneceği redirectUri'yi de ayarlamış olacaksınız.
+- İstemci KIMLIĞI (bir GUID 'YI temsil eden dize)
+- Kimlik sağlayıcısı URL 'SI (örnek olarak adlandırılır) ve uygulamanız için oturum açma hedef kitlesi. Bu iki parametre, her topluca yetkili olarak bilinir.
+- Yalnızca kuruluşunuz için bir iş kolu uygulaması yazıyorsanız (tek kiracılı uygulama olarak da adlandırılır) kiracı KIMLIĞI.
+- Gizli bir istemci uygulaması ise, uygulama gizli anahtarı (istemci gizli dizisi) veya sertifika (X509Certificate2 türünde).
+- Web uygulamaları için ve bazen genel istemci uygulamaları için (uygulamanızın bir aracı kullanması gerektiğinde), kimlik sağlayıcısının güvenlik belirteçleriyle uygulamanızı geri yükleyeceğim yeniden yönlendirilebilir.
 
-## <a name="configure-the-application-from-the-config-file"></a>Uygulamayı config dosyasından yapılandırma
-MSAL.NET'daki seçeneklerin özelliklerinin adı, ASP.NET `AzureADOptions` Core'daki özelliklerin adla eşleşir, böylece yapıştırıcı kodu yazmanız gerekmez.
+## <a name="configure-the-application-from-the-config-file"></a>Uygulamayı yapılandırma dosyasından yapılandırma
+MSAL.NET içindeki seçeneklerin özelliklerinin adı ASP.NET Core `AzureADOptions` içindeki özelliklerinin adı ile eşleşir, bu nedenle herhangi bir birleştirici kod yazmanız gerekmez.
 
-bir ASP.NET Core uygulama *yapılandırması bir appsettings.json* dosyasında açıklanmıştır:
+Bir ASP.NET Core uygulama yapılandırması, bir *appSettings. JSON* dosyasında açıklanmıştır:
 
 ```json
 {
@@ -58,9 +58,9 @@ bir ASP.NET Core uygulama *yapılandırması bir appsettings.json* dosyasında a
 }
 ```
 
-v3.x MSAL.NET itibaren, config dosyasından gizli istemci uygulamanızı yapılandırabilirsiniz.
+MSAL.NET v3. x sürümünden başlayarak, gizli istemci uygulamanızı yapılandırma dosyasından yapılandırabilirsiniz.
 
-Uygulamanızı yapılandırmak ve anında yapmak istediğiniz sınıfta bir `ConfidentialClientApplicationOptions` nesne bildirmeniz gerekir.  `IConfigurationRoot.Bind()` [Microsoft.Extensions.Configuration.Binder nuget paketinden](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)yöntemi kullanarak, kaynaktan okunan yapılandırmayı (appconfig.json dosyası dahil) uygulama seçenekleri örneğine bağla:
+Uygulamanızı yapılandırmak ve örneklerinizi başlatmak istediğiniz sınıfta bir `ConfidentialClientApplicationOptions` nesne bildirmeniz gerekir.  `IConfigurationRoot.Bind()` [Microsoft. Extensions. Configuration. Ciltçi NuGet paketindeki](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)yöntemi kullanarak kaynaktan okunan yapılandırmayı (appconfig. JSON dosyası dahil) uygulama seçeneklerinin örneğine bağlayın:
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -70,7 +70,7 @@ _applicationOptions = new ConfidentialClientApplicationOptions();
 configuration.Bind("AzureAD", _applicationOptions);
 ```
 
-Bu, *appsettings.json* dosyasının "AzureAD" bölümünün içeriğinin `ConfidentialClientApplicationOptions` nesnenin ilgili özelliklerine bağlanmasını sağlar.  Ardından, bir `ConfidentialClientApplication` nesne oluşturun:
+Bu, *appSettings. JSON* dosyasının "azuread" bölümünün içeriğinin `ConfidentialClientApplicationOptions` nesnenin karşılık gelen özelliklerine bağlanmasını sağlar.  Sonra, bir `ConfidentialClientApplication` nesne oluşturun:
 
 ```csharp
 IConfidentialClientApplication app;
@@ -78,8 +78,8 @@ app = ConfidentialClientApplicationBuilder.CreateWithApplicationOptions(_applica
         .Build();
 ```
 
-## <a name="add-runtime-configuration"></a>Çalışma zamanı yapılandırması ekleme
-Gizli bir istemci uygulamasında, genellikle kullanıcı başına bir önbelleğiniz var. Bu nedenle önbelleği kullanıcıyla ilişkilendirmeniz ve uygulama oluşturucuya kullanmak istediğinizi bildirmeniz gerekir. Aynı şekilde, dinamik olarak hesaplanmış bir yeniden yönlendirme URI olabilir. Bu durumda kod aşağıdaki gibidir:
+## <a name="add-runtime-configuration"></a>Çalışma Zamanı Yapılandırması Ekle
+Gizli bir istemci uygulamasında, genellikle Kullanıcı başına bir önbelleğiniz olur. Bu nedenle, kullanıcıyla ilişkili önbelleği almanız ve uygulamayı kullanmak istediğiniz uygulama oluşturucusunu bildirmeniz gerekecektir. Aynı şekilde, dinamik olarak hesaplanmış bir yeniden yönlendirme URI 'SI olabilir. Bu durumda, kod aşağıdaki gibi olur:
 
 ```csharp
 IConfidentialClientApplication app;

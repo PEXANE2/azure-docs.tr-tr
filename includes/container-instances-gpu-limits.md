@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: danlep
 ms.openlocfilehash: e3aeababcd062e315c9d80a35f183173a6fd1273
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77117809"
 ---
 ### <a name="resource-availability"></a>Kaynak kullanılabilirliği
 
-| İşletim Sistemi | GPU SKU | GPU sayısı | En Fazla CPU | Maksimum Bellek (GB) | Depolama (GB) |
+| İşletim Sistemi | GPU SKU 'SU | GPU sayısı | En Fazla CPU | Maksimum bellek (GB) | Depolama (GB) |
 | --- | --- | --- | --- | --- | --- |
 | Linux | K80 | 1 | 6 | 56 | 50 |
 | Linux | K80 | 2 | 12 | 112 | 50 |

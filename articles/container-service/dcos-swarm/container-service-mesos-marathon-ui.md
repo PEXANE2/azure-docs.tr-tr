@@ -1,5 +1,5 @@
 ---
-title: (AmortismanA Uğradı) Marathon UI ile Azure DC/OS kümesini yönetme
+title: Kullanım DıŞı Azure DC/OS kümesini Marathon Kullanıcı arabirimi ile yönetme
 description: Marathon web kullanıcı arabirimini kullanarak Azure Kapsayıcı Hizmeti küme hizmetine kapsayıcıları dağıtın.
 author: iainfoulds
 ms.service: container-service
@@ -8,19 +8,19 @@ ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b251096915506c3c7a4eebf45b6a03e24779a3d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277798"
 ---
-# <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>(AmortismanA Uğradı) Marathon web Kullanıcı Bira Sıtkı'sı aracılığıyla Azure Konteyner Hizmeti DC/OS kümesini yönetme
+# <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>Kullanım DıŞı Marathon Web Kullanıcı arabirimi aracılığıyla Azure Container Service DC/OS kümesini yönetme
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 DC/OS, temel donanımı özetlerken, kümelenmiş iş yüklerini dağıtmak ve ölçeklendirmek için ortam sağlar. DC/OS’nin en üstünde, hesaplama iş yüklerini zamanlamayı ve yürütmeyi yöneten bir çerçeve vardır.
 
-Birçok popüler iş yükü için çerçeveler mevcut olsa da, bu belge Marathon ile kapsayıcıdağıtmaya nasıl başlanır açıklanmaktadır. 
+Çerçeveler birçok popüler iş yükü için kullanılabilir, ancak bu belgede Marathon ile kapsayıcıları dağıtmaya nasıl başlacağınız açıklanır. 
 
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -30,16 +30,16 @@ Bu örneklerin üzerinden geçmeden önce, Azure Kapsayıcı Hizmeti’nde yapı
 * [Azure Kapsayıcı Hizmeti kümesine bağlanma](../container-service-connect.md)
 
 > [!NOTE]
-> Bu makalede, yerel bağlantı noktası 80 üzerinden DC /OS kümesine tünel varsayıyor.
+> Bu makalede, 80 yerel bağlantı noktası üzerinden DC/OS kümesine tünel yaptığınızı varsayılmaktadır.
 >
 
 ## <a name="explore-the-dcos-ui"></a>DC/OS kullanıcı arabirimini keşfetme
-Secure Shell (SSH) tüneli [kurulmuş,](../container-service-connect.md)http göz\/atın: /localhost/ ile. Bu, DC/OS web kullanıcı arabirimini yükler ve kullanılan kaynaklar, etkin aracılar ve çalışan hizmetler gibi, küme hakkında bilgileri gösterir.
+Secure Shell (SSH) tüneli [oluşturulduğunda](../container-service-connect.md)http:/localhost/. ' e gidin.\/ Bu, DC/OS web kullanıcı arabirimini yükler ve kullanılan kaynaklar, etkin aracılar ve çalışan hizmetler gibi, küme hakkında bilgileri gösterir.
 
 ![DC/OS Kullanıcı Arabirimi](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>Marathon kullanıcı arabirimini keşfetme
-Marathon UI'yi görmek için http:\//localhost/marathon'a göz atın. Bu ekranda, Azure Kapsayıcı Hizmeti DC/OS kümesinde yeni kapsayıcı veya başka bir uygulama başlatabilirsiniz. Kapsayıcıları ve uygulamaları çalıştırma hakkında bilgileri de görebilirsiniz.  
+Marathon Kullanıcı arabirimini görmek için, http:\//localhost/Marathon. sayfasına gidin Bu ekranda, Azure Kapsayıcı Hizmeti DC/OS kümesinde yeni kapsayıcı veya başka bir uygulama başlatabilirsiniz. Kapsayıcıları ve uygulamaları çalıştırma hakkında bilgileri de görebilirsiniz.  
 
 ![Marathon kullanıcı arabirimi](./media/container-service-mesos-marathon-ui/dcos3.png)
 
@@ -83,7 +83,7 @@ Marathon ana sayfasına geri döndüğünüzde, kapsayıcının dağıtımın du
 
 ![Marathon ana sayfası kullanıcı arabirimi--kapsayıcı dağıtım durumu](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-DC/OS web Kullanıcı Aracı'na (http://\//localhost/) geri döndüğünüzde, DC/OS kümesinde bir görevin (bu durumda Docker biçimli bir kapsayıcı) çalıştığını görürsünüz.
+DC/OS Web Kullanıcı arabirimine (http:\//localhost/) geri döndüğünüzde, DC/OS kümesinde bir görevin (Bu örnekte, Docker biçimli bir kapsayıcı) çalıştığını görürsünüz.
 
 ![DC/OS web kullanıcı arabirimi--kümede çalışan görev](./media/container-service-mesos-marathon-ui/dcos8.png)
 
@@ -91,14 +91,14 @@ Görevin üzerinde çalıştığı küme düğümünü görmek için **Düğüml
 
 ![DC/OS web kullanıcı arabirimi--görev küme düğümü](./media/container-service-mesos-marathon-ui/dcos9.png)
 
-## <a name="reach-the-container"></a>Konteynere ulaşın
+## <a name="reach-the-container"></a>Kapsayıcıya ulaşın
 
-Bu örnekte, uygulama bir ortak aracı düğüm üzerinde çalışıyor. Cluster'ın aracısı FQDN'ye göz atarak uygulamaya internetten ulaşırsınız: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`, nerede:
+Bu örnekte, uygulama ortak bir aracı düğümünde çalışmaktadır. Kümenin aracı FQDN 'sine göz atarak, uygulamaya internet 'ten ulaşabilirsiniz: `http://[DNSPREFIX]agents.[REGION].cloudapp.azure.com`
 
 * **DNSPREFIX** Kümeyi dağıttığınızda sağladığınız DNS önekidir.
 * **REGION** kaynak grubunuzun bulunduğu bölgedir.
 
-    ![İnternetten Nginx](./media/container-service-mesos-marathon-ui/nginx.png)
+    ![Internet 'ten NGINX](./media/container-service-mesos-marathon-ui/nginx.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

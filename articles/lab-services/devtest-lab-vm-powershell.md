@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell ile DevTest Labs'da sanal bir makine oluşturun
-description: Azure PowerShell ile sanal makineler oluşturmak ve yönetmek için Azure DevTest Laboratuvarlarını nasıl kullanacağınızı öğrenin.
+title: Azure PowerShell ile DevTest Labs 'de sanal makine oluşturma
+description: Azure PowerShell ile sanal makineler oluşturmak ve yönetmek için Azure DevTest Labs nasıl kullanacağınızı öğrenin.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,23 +14,23 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 13014c39641203bddadf858c34cff67462b3a4b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76167102"
 ---
-# <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Azure PowerShell'i kullanarak DevTest Labs ile sanal bir makine oluşturun
-Bu makalede, Azure PowerShell'i kullanarak Azure DevTest Labs'da sanal bir makine nin nasıl oluşturulabileceğiniz gösterilmektedir. Azure DevTest Labs'daki bir laboratuvarda sanal makinelerin oluşturulmasını otomatikleştirmek için PowerShell komut dosyalarını kullanabilirsiniz. 
+# <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Azure PowerShell kullanarak DevTest Labs ile sanal makine oluşturma
+Bu makalede Azure PowerShell kullanarak Azure DevTest Labs sanal makine oluşturma gösterilmektedir. Azure DevTest Labs bir laboratuvarda sanal makine oluşturulmasını otomatikleştirmek için PowerShell betikleri kullanabilirsiniz. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce:
 
-- Bu makaledeki komut dosyasını veya komutları sınamak için varolan bir laboratuarı kullanmak istemiyorsanız [bir laboratuvar oluşturun.](devtest-lab-create-lab.md) 
-- [Azure PowerShell'i yükleyin](/powershell/azure/install-az-ps?view=azps-1.7.0) veya Azure portalına entegre edilmiş Azure Bulut Shell'i kullanın. 
+- Bu makaledeki betiği veya komutları test etmek için mevcut bir laboratuvarı kullanmak istemiyorsanız [bir laboratuvar oluşturun](devtest-lab-create-lab.md) . 
+- [Azure PowerShell yükleyip](/powershell/azure/install-az-ps?view=azps-1.7.0) Azure portal tümleştirilmiş Azure Cloud Shell kullanın. 
 
 ## <a name="powershell-script"></a>PowerShell betiği
-Bu bölümdeki örnek komut dosyası [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) cmdlet kullanır.  Bu cmdlet, laboratuvarın kaynak kimliğini, gerçekleştirecek eylemin`createEnvironment`adını ( ) ve gerekli parametreleri alır. Parametreler, tüm sanal makine açıklama özelliklerini içeren karma tabloda bulunmaktadır. 
+Bu bölümdeki örnek komut dosyası [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) cmdlet 'ini kullanır.  Bu cmdlet, laboratuvarın kaynak KIMLIĞINI, gerçekleştirilecek eylemin adını (`createEnvironment`) ve bu eylemi gerçekleştirmek için gereken parametreleri alır. Parametreler, tüm sanal makine açıklaması özelliklerini içeren bir karma tablodur. 
 
 ```powershell
 [CmdletBinding()]
@@ -115,29 +115,29 @@ finally {
 }
 ```
 
-Yukarıdaki komut dosyasındaki sanal makinenin özellikleri, Windows Server 2016 DataCenter işletim sistemi olarak sanal bir makine oluşturmamıza olanak sağlar. Sanal makine her türü için, bu özellikleri biraz farklı olacaktır. [Sanal makineyi Tanımla](#define-virtual-machine) bölümü, bu komut dosyasında hangi özellikleri kullanacağınızı nasıl belirleyebildiğinizi gösterir.
+Yukarıdaki betikteki sanal makine özellikleri, işletim sistemi olarak Windows Server 2016 DataCenter ile bir sanal makine oluşturmamıza olanak tanır. Her sanal makine türü için bu özellikler biraz farklı olacaktır. [Sanal makineyi tanımla](#define-virtual-machine) bölümü, bu betikte hangi özelliklerin kullanılacağını nasıl belirleyecağınızı gösterir.
 
-Aşağıdaki komut, bir dosya adına kaydedilen komut dosyasını çalıştırmaya bir örnek sağlar: Create-LabVirtualMachine.ps1. 
+Aşağıdaki komut, bir dosya adında kaydedilen betiği çalıştırmaya ilişkin bir örnek sağlar: Create-LabVirtualMachine. ps1. 
 
 ```powershell
  PS> .\Create-LabVirtualMachine.ps1 -ResourceGroupName 'MyLabResourceGroup' -LabName 'MyLab' -userName 'AdminUser' -password 'Password1!' -VMName 'MyLabVM'
 ```
 
-## <a name="define-virtual-machine"></a>Sanal makineyi tanımlama
-Bu bölümde, oluşturmak istediğiniz bir sanal makine türüne özgü özellikleri nasıl elde edebilirsiniz. 
+## <a name="define-virtual-machine"></a>Sanal makineyi tanımla
+Bu bölümde, oluşturmak istediğiniz bir sanal makine türüne özgü özelliklerin nasıl alınacağı gösterilmektedir. 
 
 ### <a name="use-azure-portal"></a>Azure portalı kullanma
-Azure portalında Bir VM oluştururken bir Azure Kaynak Yöneticisi şablonu oluşturabilirsiniz. VM oluşturma işlemini tamamlamanız gerekmez. Yalnızca şablonu görene kadar adımları izlersiniz. Bu zaten oluşturulan bir laboratuvar VM yoksa gerekli JSON açıklamasını almak için en iyi yoldur. 
+Azure portal bir VM oluştururken Azure Resource Manager şablonu oluşturabilirsiniz. VM oluşturma işlemini gerçekleştirmeniz gerekmez. Yalnızca şablonu görene kadar adımları izleyin. Bu, önceden oluşturulmuş bir laboratuvar VM 'si yoksa, gerekli JSON açıklamasını almanın en iyi yoludur. 
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-2. Sol navigasyon menüsünden **Tüm Hizmetler'i** seçin.
-3. Hizmetler listesinden **DevTest Laboratuvarlarını** arayın ve seçin. 
-4. **DevTest Labs** sayfasında, laboratuvarlar listesinde laboratuvarınızı seçin.
-5. Laboratuvarınızın ana sayfasında araç çubuğuna **+ Ekle'yi** seçin. 
+2. Sol gezinti menüsünde **tüm hizmetler** ' i seçin.
+3. Hizmetler listesinden **DevTest Labs** 'i arayın ve seçin. 
+4. **DevTest Labs** sayfasında laboratuvarınızı laboratuvar listesinden seçin.
+5. Laboratuvarınızın giriş sayfasında, araç çubuğunda **+ Ekle** ' yi seçin. 
 6. VM için bir **temel görüntü** seçin. 
-7. **Gönder** düğmesinin üzerindeki sayfanın altındaki **otomasyon seçeneklerini** seçin. 
-8. Sanal makineyi oluşturmak için **Azure Kaynak Yöneticisi şablonuna** bakın. 
-9. **Kaynaklar** bölümündeki JSON kesimi, daha önce seçtiğiniz görüntü türü için tanıma sahiptir. 
+7. **Gönder** düğmesinin üstündeki sayfanın altındaki **Otomasyon seçeneklerini** belirleyin. 
+8. Sanal makineyi oluşturmak için **Azure Resource Manager şablonunu** görürsünüz. 
+9. **Kaynaklar** bölümündeki JSON segmenti, daha önce seçtiğiniz görüntü türünün tanımına sahiptir. 
 
     ```json
     {
@@ -177,22 +177,22 @@ Azure portalında Bir VM oluştururken bir Azure Kaynak Yöneticisi şablonu olu
     }
     ```
 
-Bu örnekte, Azure Market Yeri görüntüsünün tanımını nasıl alacağınızı görürsünüz. Özel bir görüntü, formül veya ortamın tanımını aynı şekilde alabilirsiniz. Sanal makine için gereken yapıları ekleyin ve gerekli gelişmiş ayarları ayarlayın. **Otomasyon seçenekleri** düğmesini seçmeden önce, gerekli alanlar ve isteğe bağlı alanlar için değerler sağladıktan sonra.
+Bu örnekte, bir Azure pazar yeri görüntüsünün tanımını nasıl kullanacağınızı görürsünüz. Aynı şekilde özel bir görüntünün, bir formülün veya ortamın tanımını alabilirsiniz. Sanal makine için gereken yapıtları ekleyin ve gerekli tüm gelişmiş ayarları ayarlayın. Gerekli alanlar için değerleri ve tüm isteğe bağlı alanları **Otomasyon seçenekleri** düğmesini seçmeden önce sağlamaktan sonra.
 
-### <a name="use-azure-rest-api"></a>Azure REST API'sini kullanma
-Aşağıdaki yordam, REST API'sini kullanarak görüntünün özelliklerini almak için adımlar verir: Bu adımlar yalnızca laboratuardaki varolan bir VM için çalışır. 
+### <a name="use-azure-rest-api"></a>Azure REST API kullanma
+Aşağıdaki yordam REST API kullanarak bir görüntünün özelliklerini elde etmenizi sağlar: Bu adımlar yalnızca laboratuvardaki mevcut bir VM için çalışır. 
 
-1. [Sanal Makineler](/rest/api/dtl/virtualmachines/list) e git - liste sayfası, **taç düğmesini** seçin. 
-2. Azure **aboneliğinizi**seçin.
-3. Laboratuvar **için kaynak grubunu**girin.
+1. [Sanal makineler-liste](/rest/api/dtl/virtualmachines/list) sayfasına gidin, **deneyin** düğmesini seçin. 
+2. **Azure aboneliğinizi**seçin.
+3. **Laboratuvar için kaynak grubunu**girin.
 4. **Laboratuvarın adını**girin. 
 5. **Çalıştır**'ı seçin.
-6. VM'nin oluşturulduğu **görüntünün özelliklerini** görürsünüz. 
+6. VM 'nin oluşturulduğu **görüntünün özelliklerini** görürsünüz. 
 
-## <a name="set-expiration-date"></a>Son kullanma tarihini ayarlama
-Eğitim, demolar ve denemeler gibi senaryolarda, gereksiz maliyetlere maruz kalmak sizin için sanal makineler oluşturmak ve sabit bir süre sonra bunları otomatik olarak silmek isteyebilirsiniz. PowerShell [komut dosyası](#powershell-script) bölümünde gösterildiği gibi PowerShell'i kullanarak bir VM için son kullanma tarihini ayarlayabilirsiniz.
+## <a name="set-expiration-date"></a>Sona erme tarihi ayarla
+Eğitim, tanıtımlar ve denemeler gibi senaryolarda, sanal makineler oluşturmak ve bunları sabit bir süreden sonra otomatik olarak silmek isteyebilirsiniz, böylece gereksiz maliyetlere tabi kalmazsınız. PowerShell kullanarak, örnek [PowerShell betiği](#powershell-script) bölümünde gösterildiği gibi, bir VM için bir sona erme tarihi ayarlayabilirsiniz.
 
-Laboratuvardaki tüm mevcut VM'lerin son kullanma tarihini belirleyen örnek bir PowerShell komut dosyası aşağıda veda edebilirsiniz:
+Laboratuvardaki tüm mevcut VM 'Ler için sona erme tarihi ayarlayan örnek bir PowerShell betiği aşağıda verilmiştir:
 
 ```powershell
 # Values to change

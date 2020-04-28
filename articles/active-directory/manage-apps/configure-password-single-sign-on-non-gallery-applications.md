@@ -1,6 +1,6 @@
 ---
-title: Azure AD uygulamaları için parola tek oturum açma nasıl yapılandırılır | Microsoft Dokümanlar
-description: Microsoft kimlik platformundaki (Azure AD) Azure AD kurumsal uygulamalarınızda parola tek oturum açma (SSO) yapılandırma
+title: Azure AD uygulamaları için parola çoklu oturum açmayı yapılandırma | Microsoft Docs
+description: Microsoft Identity platform (Azure AD) içinde Azure AD kurumsal uygulamalarınıza parola çoklu oturum açma (SSO) yapılandırma
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,87 +12,87 @@ ms.date: 07/10/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063535"
 ---
-# <a name="configure-password-single-sign-on"></a>Parolayı tek oturum açma yapılandırma
+# <a name="configure-password-single-sign-on"></a>Parola çoklu oturum açmayı yapılandırma
 
-Azure AD Kurumsal Uygulamalarınıza bir galeri uygulaması veya [galeri dışı bir web uygulaması](add-non-gallery-app.md) [eklediğinizde,](add-gallery-app.md) kullanabileceğiniz tek oturum açma seçeneklerinden biri parola tabanlı tek [oturum açmadır.](what-is-single-sign-on.md#password-based-sso) Bu seçenek, HTML oturum açma sayfası olan tüm web siteleri için kullanılabilir. Parola atlama olarak da adlandırılan parola tabanlı SSO, kimlik federasyonunu desteklemeyen web uygulamalarına kullanıcı erişimini ve parolalarını yönetmenize olanak tanır. Ayrıca, kuruluşunuzun sosyal medya uygulama hesapları gibi birden çok kullanıcının tek bir hesabı paylaşması gereken senaryolar için de yararlıdır. 
+Azure AD kurumsal uygulamalarınıza [bir galeri uygulaması](add-gallery-app.md) veya [Galeri olmayan bir Web uygulaması](add-non-gallery-app.md) eklediğinizde, kullanabileceğiniz çoklu oturum açma seçeneklerinden biri, [parola tabanlı çoklu oturum](what-is-single-sign-on.md#password-based-sso)açma seçenekleriniz vardır. Bu seçenek, HTML oturum açma sayfası olan herhangi bir Web için kullanılabilir. Parola oluşturma olarak da bilinen parola tabanlı SSO, Kimlik Federasyonu desteklemeyen Web uygulamalarına Kullanıcı erişimini ve parolalarını yönetmenizi sağlar. Ayrıca, çeşitli kullanıcıların, kuruluşunuzun sosyal medya uygulaması hesapları gibi tek bir hesabı paylaşması gereken senaryolar için de kullanışlıdır. 
 
-Parola tabanlı SSO, uygulamaları Azure AD'ye hızla entegre etmeye başlamak için harika bir yoldur ve şunları yapmanızı sağlar:
+Parola tabanlı SSO, uygulamaları Azure AD 'ye hızlı bir şekilde tümleştirmenize başlamak için harika bir yoldur ve şunları yapmanızı sağlar:
 
--   Azure AD ile entegre ettiğiniz uygulama için kullanıcı adlarını ve parolaları güvenli bir şekilde depolayarak ve yeniden oynatarak **kullanıcılarınız için Tek Oturum** Açma'yı etkinleştirin
+-   Azure AD ile tümleştirmiş olduğunuz uygulama için Kullanıcı adlarını ve parolaları güvenli bir şekilde depolayıp kaydederek **kullanıcılarınız Için çoklu oturum açmayı** etkinleştirin
 
--   Oturum **açması** için yalnızca kullanıcı adı ve parola alanlarından fazlasını gerektiren uygulamalar için birden çok oturum açma alanı gerektiren uygulamaları destekleme
+-   Yalnızca Kullanıcı adı ve parola alanlarının oturum açmasını gerektiren uygulamalar için **Çoklu oturum açma alanları gerektiren uygulamalar desteklenir**
 
--   Kullanıcılarınızın kimlik bilgilerini girerken [Uygulama Erişim Paneli'nde](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) gördükleri kullanıcı adı ve parola giriş alanlarının **etiketlerini özelleştirin**
+-   Kullanıcılarınızın kimlik bilgilerini girerken [uygulama erişimi panelinde](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) göreceği Kullanıcı adı ve parola giriş alanlarının **etiketlerini özelleştirin**
 
--   **Kullanıcılarınızın** [Uygulama Erişim Paneli'nde](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) el ile yazdıkları mevcut uygulama hesapları için kendi kullanıcı adlarını ve parolalarını sağlamasına izin verin
+-   **Kullanıcılarınızın** , [uygulama erişimi paneline](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) el ile yazdıkları mevcut uygulama hesapları için kendi kullanıcı adlarını ve parolalarını sağlamasına izin verin
 
--   İş grubunun bir üyesinin [Self Servis Uygulama Erişimi](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) **özelliğini** kullanarak kullanıcıya atanan kullanıcı adlarını ve parolaları belirtmesine izin ver
+-   **İş grubunun bir üyesinin** , [self servis uygulama erişimi](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) özelliğini kullanarak bir kullanıcıya atanan kullanıcı adlarını ve parolaları belirtmesini sağlar
 
--   Kimlik Bilgilerini Güncelleştir özelliğini kullanarak uygulamada oturum açtığınızda bir **yöneticinin** kişiler veya gruplar tarafından kullanılacak bir kullanıcı adı ve parola belirtmesine izin ver 
+-   Bir **yöneticinin** kimlik bilgilerini güncelleştir özelliğini kullanarak uygulamada oturum açarken bireyler veya gruplar tarafından kullanılacak kullanıcı adını ve parolayı belirtmesini sağlar 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Uygulama Azure AD kiracınıza eklenmediyse, [bkz.](add-gallery-app.md) [Add a non-gallery app](add-non-gallery-app.md)
+Uygulama Azure AD kiracınıza eklenmemişse, bkz. [Galeri uygulaması ekleme](add-gallery-app.md) veya [Galeri dışı bir uygulama ekleme](add-non-gallery-app.md).
 
-## <a name="open-the-app-and-select-password-single-sign-on"></a>Uygulamayı açın ve parolayı tek oturum açma'yı seçin
+## <a name="open-the-app-and-select-password-single-sign-on"></a>Uygulamayı açın ve parola çoklu oturum açma seçeneğini belirleyin
 
-1. [Azure portalında](https://portal.azure.com) bulut uygulaması yöneticisi veya Azure AD kiracınız için bir uygulama yöneticisi olarak oturum açın.
+1. [Azure Portal](https://portal.azure.com) bir bulut uygulaması Yöneticisi veya Azure AD kiracınız için bir uygulama Yöneticisi olarak oturum açın.
 
-2. Azure **Active Directory** > **Enterprise uygulamalarına**gidin. Azure AD kiracınızdaki uygulamaların rasgele bir örneği görüntülenir. 
+2. **Azure Active Directory** > **kurumsal uygulamalara**gidin. Azure AD kiracınızdaki uygulamaların rastgele bir örneği görüntülenir. 
 
-3. Uygulama **Türü** menüsünde **Tüm uygulamaları**seçin ve sonra **Uygula'yı**seçin.
+3. **Uygulama türü** menüsünde, **tüm uygulamalar**' ı seçin ve ardından **Uygula**' yı seçin.
 
-4. Arama kutusuna uygulamanın adını girin ve ardından sonuçlardan uygulamayı seçin.
+4. Arama kutusuna uygulamanın adını girin ve sonra sonuçlardan uygulamayı seçin.
 
-5. **Yönet** bölümünde, **Tek oturum açma'yı**seçin. 
+5. **Yönet** bölümünde **Çoklu oturum açma**' yı seçin. 
 
-6. **Parola tabanlı'yı**seçin.
+6. **Parola tabanlı**' yı seçin.
 
-7. Uygulamanın web tabanlı oturum açma sayfasının URL'sini girin. Bu dize, kullanıcı adı giriş alanını içeren sayfa olmalıdır.
+7. Uygulamanın Web tabanlı oturum açma sayfasının URL 'sini girin. Bu dize, Kullanıcı adı giriş alanını içeren sayfa olmalıdır.
 
-   ![Parola tabanlı tek oturum açma](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+   ![Parola tabanlı çoklu oturum açma](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
-8. **Kaydet'i**seçin. Azure AD, oturum açma sayfasını kullanıcı adı girişi ve parola girişi için ayrışdırmaya çalışır. Deneme başarılı olursa, bitti. 
+8. **Kaydet**’i seçin. Azure AD, Kullanıcı adı girişi ve parola girişi için oturum açma sayfasını ayrıştırmaya çalışır. Deneme başarılı olursa işiniz bitti demektir. 
  
 > [!NOTE]
-> Bir sonraki adım, [kullanıcıları veya grupları uygulamaya atamaktır.](methods-for-assigning-users-and-groups.md) Kullanıcıları ve grupları atadıktan sonra, uygulamada oturum açtıklarında kullanıcı adına kullanılacak kimlik bilgileri sağlayabilirsiniz. **Kullanıcıları ve grupları**seçin, kullanıcının veya grubun satırı için onay kutusunu seçin ve ardından Kimlik Bilgilerini **Güncelleştir'i**tıklatın. Ardından, kullanıcı veya grup adına kullanılacak kullanıcı adı ve parolayı girin. Aksi takdirde, kullanıcılardan başlatıldıktan sonra kimlik bilgilerini kendileri girmeleri istenir.
+> Sonraki adımınız, [uygulamaya Kullanıcı veya grup atamak](methods-for-assigning-users-and-groups.md)olur. Kullanıcılar ve gruplar atadıktan sonra, uygulamada oturum açtıklarında Kullanıcı adına kullanılacak kimlik bilgilerini sağlayabilirsiniz. **Kullanıcılar ve gruplar**' ı seçin, kullanıcının veya grubun satırı için onay kutusunu işaretleyin ve ardından **kimlik bilgilerini güncelleştir**' e tıklayın. Ardından Kullanıcı veya Grup adına kullanılacak kullanıcı adını ve parolayı girin. Aksi takdirde, kullanıcılardan başlatma sırasında kimlik bilgilerini girmesi istenir.
  
 
 ## <a name="manual-configuration"></a>El ile yapılandırma
 
-Azure AD'nin ayrıştırma girişimi başarısız olursa, oturum açma işlemlerini el ile yapılandırabilirsiniz.
+Azure AD 'nin Ayrıştırma girişimi başarısız olursa, oturum açmayı el ile yapılandırabilirsiniz.
 
-1. ** \<Uygulama adı> Configuration**altında, Yapılandırma oturum açma sayfasını görüntülemek için ** \<Uygulama Adını> Parola Tek Oturum Açma Ayarlarını Yapıla'yı** seçin. **Configure sign-on** 
+1. ** \<Uygulama adı> yapılandırma**altında, **oturum açma yapılandırma** sayfasını göstermek için **uygulama adı> parola çoklu oturum açma ayarları Yapılandır \<** ' ı seçin. 
 
-2. **Oturum açma alanlarını El ile algıla'yı**seçin. Oturum açma alanlarının el ile algılanmasını açıklayan ek yönergeler görüntülenir.
+2. **Oturum açma alanlarını el ile Algıla**' yı seçin. Oturum açma alanlarının el ile algılanmasını açıklayan ek yönergeler görüntülenir.
 
-   ![Parola tabanlı tek oturum açmanın el ile yapılandırması](./media/configure-password-single-sign-on/password-configure-sign-on.png)
-3. **Oturum açma alanlarını kaydedin.** Yakalama durumu sayfası yeni bir sekmede açılır ve meta veri yakalama iletisinin **şu anda devam ettiğini**gösterir.
+   ![Parola tabanlı çoklu oturum açma için el ile yapılandırma](./media/configure-password-single-sign-on/password-configure-sign-on.png)
+3. **Kayıt açma alanlarını yakala '** yı seçin. **Şu anda devam eden ileti meta veri yakalama olduğunu**gösteren yeni bir sekmede yakalama durumu sayfası açılır.
 
-4. Access **Panel Uzantısı Gerekli** kutu yeni bir sekmede görünüyorsa, **Uygulamalarım Güvenli Oturum Açma Uzantısı** tarayıcı uzantısını yüklemek için Şimdi **Yükle'yi** seçin. (Tarayıcı uzantısı Microsoft Edge, Chrome veya Firefox gerektirir.) Ardından uzantıyı yükleyin, başlatın ve etkinleştirin ve yakalama durumu sayfasını yenileyin.
+4. **Erişim paneli uzantısı gerekli** kutusu yeni bir sekmede görünürse **uygulamalarım güvenli oturum açma uzantısı** tarayıcı uzantısını yüklemek için **Şimdi yüklensin** ' i seçin. (Tarayıcı uzantısı Microsoft Edge, Chrome veya Firefox gerektirir.) Sonra uzantıyı yükleyip etkinleştirin, sonra da yakalama durumu sayfasını yenileyin.
 
-   Tarayıcı uzantısı daha sonra girilen URL'yi görüntüleyen başka bir sekmeyi açar.
-5. Girilen URL ile sekmede, oturum açma işleminden geçin. Kullanıcı adı ve parola alanlarını doldurun ve oturum açmayı deneyin. (Doğru parolayı sağlamanız gerekmez.)
+   Tarayıcı uzantısı daha sonra, girilen URL 'YI görüntüleyen bir sekme açar.
+5. Girilen URL 'nin bulunduğu sekmede, oturum açma işlemine gidin. Kullanıcı adı ve parola alanlarını doldurup oturum açmayı deneyin. (Doğru parolayı sağlamanız gerekmez.)
 
-   Bir komut istemi yakalanan oturum açma alanlarını kaydetmenizi ister.
-6. **Tamam'ı**seçin. Tarayıcı uzantısı, **Metadata'nın uygulama için güncelleştirildiğini**ile yakalama durumu sayfasını güncelleştirir. Tarayıcı sekmesi kapanır.
+   Bir istem, yakalanan oturum açma alanlarını kaydetmenizi ister.
+6. **Tamam**’ı seçin. Tarayıcı uzantısı, **uygulama için Ileti meta verileri güncelleştirildiğinde**yakalama durumu sayfasını güncelleştirir. Tarayıcı sekmesi kapanır.
 
-7. Azure AD **Yapılandırma oturum açma** **sayfasında, Tamam'ı seçin, uygulamada başarılı bir şekilde oturum açabildim.**
+7. Azure AD **oturum açma yapılandırma** sayfasında **Tamam ' ı seçin, uygulamada başarıyla oturum açabildim**.
 
-8. **Tamam'ı**seçin.
+8. **Tamam**’ı seçin.
 
-Oturum açma sayfasının ele geçirilmesinden sonra, kullanıcıları ve grupları atayabilir ve normal [parola SSO uygulamaları](what-is-single-sign-on.md)gibi kimlik bilgileri ayarlayabilirsiniz.
+Oturum açma sayfasının yakalandıktan sonra, kullanıcıları ve grupları atayabilir ve yalnızca normal [parola SSO uygulamaları](what-is-single-sign-on.md)gibi kimlik bilgileri ilkeleri ayarlayabilirsiniz.
 
 > [!NOTE]
-> Uygulama için **Yapıl'ı Ayarla** sekmesindeki **Logo yükle** düğmesini kullanarak uygulama için bir döşeme logosu yükleyebilirsiniz.
+> Uygulamanın **yapılandırma** sekmesindeki **logoyu karşıya yükle** düğmesini kullanarak uygulama için bir kutucuk logosu yükleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kullanıcı veya grupları uygulamaya atama](methods-for-assigning-users-and-groups.md)
-- [Otomatik kullanıcı hesabı sağlama yapılandırma](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+- [Uygulamaya Kullanıcı veya Grup atama](methods-for-assigning-users-and-groups.md)
+- [Otomatik Kullanıcı hesabı sağlamayı yapılandırma](../app-provisioning/configure-automatic-user-provisioning-portal.md)

@@ -1,6 +1,6 @@
 ---
-title: "Python: Azure Veri Gölü Depolama Gen1'de hesap yönetimi işlemleri | Microsoft Dokümanlar"
-description: Azure Veri Gölü Depolama Gen1 hesap yönetimi işlemleriyle çalışmak için Python SDK'yı nasıl kullanacağınızı öğrenin.
+title: 'Python: Azure Data Lake Storage 1. hesap yönetimi işlemleri | Microsoft Docs'
+description: Azure Data Lake Storage 1. hesap yönetimi işlemleriyle çalışmak için Python SDK 'nın nasıl kullanılacağını öğrenin.
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: c71136ecb57fac460514b5f4815ba19cc22d86cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76290623"
 ---
-# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Python kullanarak Azure Veri Gölü Depolama Gen1'de hesap yönetimi işlemleri
+# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Python kullanarak Azure Data Lake Storage 1. hesap yönetimi işlemleri
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
@@ -27,7 +27,7 @@ ms.locfileid: "76290623"
 >
 >
 
-Veri Gölü Depolama Gen1 hesabı oluşturma, Veri Gölü Depolama Gen1 hesaplarını listele gibi temel hesap yönetimi işlemlerini gerçekleştirmek için Azure Veri Gölü Depolama Gen1 için Python SDK'yı nasıl kullanacağınızı öğrenin. Python kullanarak Veri Gölü Depolama Gen1'de dosya sistemi işlemlerinin nasıl gerçekleştirileceklerine ilişkin talimatlar için Python [kullanarak Veri Gölü Depolama Gen1'deki Dosya Sistemi işlemlerine](data-lake-store-data-operations-python.md)bakın.
+Data Lake Storage 1. hesabı oluşturma, Data Lake Storage 1. hesaplarını listeleme vb. gibi temel hesap yönetim işlemlerini gerçekleştirmek için Azure Data Lake Storage 1. için Python SDK 'yı nasıl kullanacağınızı öğrenin. Python kullanarak Data Lake Storage 1. dosya sistemi işlemlerinin nasıl gerçekleştirileceği hakkında yönergeler için bkz. [Python kullanarak Data Lake Storage 1. dosya sistemi işlemleri](data-lake-store-data-operations-python.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -35,15 +35,15 @@ Veri Gölü Depolama Gen1 hesabı oluşturma, Veri Gölü Depolama Gen1 hesaplar
 
 * **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure kaynak grubu.** Talimatlar için bkz. [Azure kaynak grubu oluşturma](../azure-resource-manager/management/manage-resource-groups-portal.md).
+* **Bir Azure Kaynak grubu**. Talimatlar için bkz. [Azure kaynak grubu oluşturma](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
 ## <a name="install-the-modules"></a>Modülleri yükleme
 
-Python kullanarak Veri Gölü Depolama Gen1 ile çalışmak için üç modül yüklemeniz gerekir.
+Python kullanarak Data Lake Storage 1. çalışmak için üç modül yüklemeniz gerekir.
 
 * `azure-mgmt-resource` modülü, Active Directory gibi şeyler için Azure modüllerini içerir.
-* Azure `azure-mgmt-datalake-store` Veri Gölü Depolama Gen1 hesap yönetimi işlemlerini içeren modül. Bu modül hakkında daha fazla bilgi için [Azure Veri Gölü Depolama Gen1 Yönetimi modülü başvurusuna](/python/api/azure-mgmt-datalake-store/)bakın.
-* Azure `azure-datalake-store` Veri Gölü Depolama Gen1 dosya sistemi işlemlerini içeren modül. Bu modül hakkında daha fazla bilgi için [azure-datalake-store filesystem modülü başvurusuna](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/)bakın.
+* Azure Data Lake Storage 1. `azure-mgmt-datalake-store` hesap yönetimi işlemlerini içeren modül. Bu modülle ilgili daha fazla bilgi için bkz. [Azure Data Lake Storage 1. Management Module Reference](/python/api/azure-mgmt-datalake-store/).
+* Azure Data Lake Storage 1. `azure-datalake-store` dosya sistemi işlemlerini içeren modül. Bu modülle ilgili daha fazla bilgi için bkz. [Azure-datalake-Store FileSystem Module Reference](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 Modülleri yüklemek için aşağıdaki komutları kullanın.
 
@@ -86,16 +86,16 @@ pip install azure-datalake-store
 
 3. Değişiklikleri örneğim.py uygulamasına kaydedin.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Bu bölümde Azure AD ile gerçekleştirilen farklı kimlik doğrulama yöntemlerinden bahsedeceğiz. Şu seçenekleri kullanabilirsiniz:
 
-* Uygulamanızın son kullanıcı kimlik doğrulaması için [Python kullanarak Veri Gölü Depolama Gen1 ile son kullanıcı kimlik doğrulaması'na](data-lake-store-end-user-authenticate-python.md)bakın.
-* Uygulamanız için servise hizmet kimlik doğrulaması için [Python'u kullanarak Veri Gölü Depolama Gen1 ile hizmete hizmet kimlik doğrulaması'na](data-lake-store-service-to-service-authenticate-python.md)bakın.
+* Uygulamanız için son kullanıcı kimlik doğrulaması için bkz. [Python kullanarak Data Lake Storage 1. Ile Son Kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-python.md).
+* Uygulamanıza yönelik hizmetten hizmete kimlik doğrulaması için bkz. [Python kullanarak Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması](data-lake-store-service-to-service-authenticate-python.md).
 
-## <a name="create-client-and-data-lake-storage-gen1-account"></a>İstemci ve Veri Gölü Depolama Gen1 hesabı oluşturma
+## <a name="create-client-and-data-lake-storage-gen1-account"></a>İstemci ve Data Lake Storage 1. hesabı oluşturma
 
-Aşağıdaki parçacık ilk olarak Veri Gölü Depolama Gen1 hesap istemcisini oluşturur. Bir Veri Gölü Depolama Gen1 hesabı oluşturmak için istemci nesnesini kullanır. Kod parçacığı son olarak bir dosya sistemi istemci nesnesi oluşturur.
+Aşağıdaki kod parçacığı ilk olarak Data Lake Storage 1. hesabı istemcisini oluşturur. Bir Data Lake Storage 1. hesabı oluşturmak için istemci nesnesini kullanır. Kod parçacığı son olarak bir dosya sistemi istemci nesnesi oluşturur.
 
     ## Declare variables
     subscriptionId = 'FILL-IN-HERE'
@@ -116,7 +116,7 @@ Aşağıdaki parçacık ilk olarak Veri Gölü Depolama Gen1 hesap istemcisini o
     ).wait()
 
     
-## <a name="list-the-data-lake-storage-gen1-accounts"></a>Veri Gölü Depolama Gen1 hesaplarını listele
+## <a name="list-the-data-lake-storage-gen1-accounts"></a>Data Lake Storage 1. hesaplarını listeleyin
 
     ## List the existing Data Lake Storage Gen1 accounts
     result_list_response = adlsAcctClient.account.list()
@@ -124,16 +124,16 @@ Aşağıdaki parçacık ilk olarak Veri Gölü Depolama Gen1 hesap istemcisini o
     for items in result_list:
         print(items)
 
-## <a name="delete-the-data-lake-storage-gen1-account"></a>Veri Gölü Depolama Gen1 hesabını silme
+## <a name="delete-the-data-lake-storage-gen1-account"></a>Data Lake Storage 1. hesabını silme
 
     ## Delete an existing Data Lake Storage Gen1 account
     adlsAcctClient.account.delete(adlsAccountName)
     
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Python kullanarak Veri Gölü Depolama Gen1 dosya sistemi işlemleri](data-lake-store-data-operations-python.md).
+* [Python kullanarak Data Lake Storage 1. dosya sistemi işlemleri](data-lake-store-data-operations-python.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [azure-datalake-store Python (Filesystem) başvurusu](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
-* [Azure Veri Gölü Depolama Gen1 ile uyumlu Açık Kaynak Büyük Veri uygulamaları](data-lake-store-compatible-oss-other-applications.md)
+* [Azure-datalake-Store Python (FileSystem) başvurusu](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
+* [Azure Data Lake Storage 1. uyumlu açık kaynak büyük veri uygulamaları](data-lake-store-compatible-oss-other-applications.md)

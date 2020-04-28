@@ -1,87 +1,87 @@
 ---
-title: Azure İlkbahar Bulutu'nda kalıcı depolama nasıl kullanılır | Microsoft Dokümanlar
-description: Azure İlkbahar Bulutu'nda kalıcı depolama nasıl kullanılır?
+title: Azure yay bulutu 'nda kalıcı depolamayı kullanma | Microsoft Docs
+description: Azure yay bulutu 'nda kalıcı depolamayı kullanma
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.openlocfilehash: 0e49d59386b19aa8da46b8c8e6acfe50e2124541
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76278527"
 ---
 # <a name="use-persistent-storage-in-azure-spring-cloud"></a>Azure Spring Cloud'da kalıcı depolama kullanma
 
-Azure Yay Bulutu, uygulamanız için iki tür depolama alanı sağlar: kalıcı ve geçici.
+Azure yay bulutu, uygulamanız için iki tür depolama alanı sağlar: kalıcı ve geçici.
 
-Varsayılan olarak, Azure İlkbahar Bulutu her uygulama örneği için geçici depolama alanı sağlar. Geçici depolama, varsayılan montaj yolu /tmp ile örnek başına 5 GB ile sınırlıdır.
+Azure yay bulutu, varsayılan olarak her uygulama örneği için geçici depolama sağlar. Geçici depolama, varsayılan bağlama yolu olan/t MPa ile örnek başına 5 GB ile sınırlıdır.
 
 > [!WARNING]
 > Bir uygulama örneğini yeniden başlatırsanız, ilişkili geçici depolama kalıcı olarak silinir.
 
-Kalıcı depolama, Azure tarafından yönetilen ve uygulama başına ayrılan bir dosya paylaşım kapsayıcısıdır. Kalıcı depolama alanında depolanan veriler, bir uygulamanın tüm örnekleri tarafından paylaşılır. Azure İlkbahar Bulutu örneğinde kalıcı depolama etkinleştirilmiş en fazla 10 uygulama olabilir. Her uygulamaya 50 GB kalıcı depolama alanı tahsis edilir. Kalıcı depolama için varsayılan montaj yolu /kalıcıdır.
+Kalıcı depolama, Azure tarafından yönetilen ve uygulama başına ayrılan bir dosya paylaşma kapsayıcısıdır. Kalıcı depolamada depolanan veriler, bir uygulamanın tüm örnekleri tarafından paylaşılır. Azure yay bulutu örneği, kalıcı depolama özellikli en fazla 10 uygulama içerebilir. Her uygulamaya 50 GB kalıcı depolama alanı ayrılır. Kalıcı depolama için varsayılan bağlama yolu/persistent'dir.
 
 > [!WARNING]
-> Bir uygulamanın kalıcı depolama sını devre dışı ederseniz, tüm bu depolama alanı ayrılır ve depolanan tüm veriler kaybolur.
+> Bir uygulamanın kalıcı depolama alanını devre dışı bırakırsanız, bu depolama alanı serbest bırakılır ve tüm depolanan veriler kaybolur.
 
-## <a name="use-the-azure-portal-to-enable-persistent-storage"></a>Kalıcı depolamayı etkinleştirmek için Azure portalını kullanma
+## <a name="use-the-azure-portal-to-enable-persistent-storage"></a>Kalıcı depolamayı etkinleştirmek için Azure portal kullanma
 
-1. Azure portalınızın **Giriş** sayfasından **Tüm Kaynaklar'ı**seçin.
+1. Azure portal **ana** sayfasından **tüm kaynaklar**' ı seçin.
 
-    >![Tüm Kaynaklar simgesini bulun](media/portal-all-resources.jpg)
+    >![Tüm kaynaklar simgesini bulma](media/portal-all-resources.jpg)
 
-1. Kalıcı depolama ihtiyacı olan Azure İlkbahar Bulutu kaynağını seçin. Bu örnekte, seçili uygulama **upspring**olarak adlandırılır.
+1. Kalıcı depolama gerektiren Azure Spring Cloud kaynağını seçin. Bu örnekte, seçilen uygulamaya **upspring**adı verilir.
 
     > ![Uygulamanızı seçin](media/select-service.jpg)
 
-1. **Ayarlar** başlığı altında **Uygulamalar'ı**seçin.
+1. **Ayarlar** başlığı altında **uygulamalar**' ı seçin.
 
-1. Azure İlkbahar Bulutu hizmetleriniz bir tabloda görünür.  Kalıcı depolama alanı eklemek istediğiniz hizmeti seçin. Bu örnekte, **ağ geçidi** hizmeti seçilir.
+1. Azure Spring Cloud Services bir tabloda görüntülenir.  Kalıcı depolama eklemek istediğiniz hizmeti seçin. Bu örnekte, **ağ geçidi** hizmeti seçilidir.
 
     > ![Hizmetinizi seçin](media/select-gateway.jpg)
 
-1. Hizmetin yapılandırma sayfasından **Yapılandırma'yı** seçin
+1. Hizmetin yapılandırma sayfasında **yapılandırma** ' yı seçin.
 
-1. Kalıcı **Depolama** sekmesini seçin ve **Etkinleştir'i**seçin.
+1. **Kalıcı depolama** sekmesini seçin ve **Etkinleştir**' i seçin.
 
-    > ![Kalıcı depolamayı etkinleştirme](media/enable-persistent-storage.jpg)
+    > ![Kalıcı depolamayı etkinleştir](media/enable-persistent-storage.jpg)
 
-Kalıcı depolama etkinleştirildikten sonra, boyutu ve yolu yapılandırma sayfasında gösterilir.
+Kalıcı depolama etkinleştirildikten sonra yapılandırma sayfasında boyut ve yol gösterilir.
 
-## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>Kalıcı depolama alanını değiştirmek için Azure CLI'yi kullanın
+## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>Kalıcı depolamayı değiştirmek için Azure CLı 'yi kullanma
 
-Gerekirse, Azure CLI için Bahar Bulutu uzantısını yükleyin:
+Gerekirse, Azure CLı için yay bulutu uzantısını yüklerken:
 
 ```azurecli
 az extension add --name spring-cloud
 ```
 Diğer işlemler:
 
-* Kalıcı depolama alanı etkinleştirilmiş bir uygulama oluşturmak için:
+* Kalıcı depolama özellikli bir uygulama oluşturmak için:
 
     ```azurecli
     az spring-cloud app create -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
     ```
 
-* Varolan bir uygulama için kalıcı depolamayı etkinleştirmek için:
+* Mevcut bir uygulama için kalıcı depolamayı etkinleştirmek için:
 
     ```azurecli
     az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
     ```
 
-* Varolan bir uygulamada kalıcı depolamayı devre dışı kalmak için:
+* Mevcut bir uygulamada kalıcı depolamayı devre dışı bırakmak için:
 
     ```azurecli
     az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage false
     ```
 
     > [!WARNING]
-    > Bir uygulamanın kalıcı depolamasını devre dışı ederseniz, bu depolama alanının tümü ayrılır ve depolanan tüm veriler kalıcı olarak kaybolur.
+    > Bir uygulamanın kalıcı depolama alanını devre dışı bırakırsanız, bu depolama alanı serbest bırakılır ve tüm depolanan veriler kalıcı olarak kaybedilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Uygulama [ve hizmet kotaları](spring-cloud-quotas.md)hakkında bilgi edinin.
-* Uygulamanızı el ile nasıl [ölçeklendireceklerini](spring-cloud-tutorial-scale-manual.md)öğrenin.
+* [Uygulama ve hizmet kotaları](spring-cloud-quotas.md)hakkında bilgi edinin.
+* [Uygulamanızı el ile ölçeklendirmeye](spring-cloud-tutorial-scale-manual.md)yönelik bilgi edinin.

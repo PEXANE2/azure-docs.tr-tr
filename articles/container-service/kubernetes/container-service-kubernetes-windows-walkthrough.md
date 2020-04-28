@@ -1,5 +1,5 @@
 ---
-title: (AmortismanA Uğradı) Quickstart - Windows için Azure Kubernetes kümesi
+title: Kullanım DıŞı Hızlı Başlangıç-Windows için Azure Kubernetes kümesi
 description: Azure CLI ile Azure Container Service'te Windows kapsayıcıları için Kubernetes kümesi oluşturmayı hızlı bir şekilde öğrenin.
 author: dlepow
 ms.service: container-service
@@ -8,19 +8,19 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277656"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(AmortismanA Uğradı) Windows kapsayıcıları için Kubernetes kümesini dağıtma
+# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>Kullanım DıŞı Windows kapsayıcıları için Kubernetes kümesi dağıtma
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu kılavuzda, [Azure Container Service](../container-service-intro.md)'te [Kubernetes](https://kubernetes.io/docs/home/) kümesi dağıtmak için Azure CLI'yi nasıl kullanacağınız ayrıntılı olarak açıklanmaktadır. Küme dağıtıldıktan sonra, Kubernetes `kubectl` komut satırı aracı ile kümeye bağlanır ve ilk Windows kapsayıcınızı dağıtırsınız.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -61,7 +61,7 @@ Birkaç dakika sonra komut tamamlanır ve size dağıtımınız hakkındaki bilg
 
 ## <a name="install-kubectl"></a>Kubectl yükleyin
 
-İstemci bilgisayarınızdan Kubernetes kümesine [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)bağlanmak için Kubernetes komut satırı istemcisini kullanın. 
+İstemci bilgisayarınızdan Kubernetes kümesine bağlanmak için Kubernetes komut [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)satırı istemcisini kullanın. 
 
 Azure CloudShell'i kullanıyorsanız `kubectl` zaten yüklüdür. Yerel olarak yüklemek istiyorsanız [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) komutunu kullanabilirsiniz.
 

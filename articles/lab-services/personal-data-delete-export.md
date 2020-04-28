@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs'dan kişisel veriler silme ve dışa aktarma
-description: Genel Veri Koruma Yönetmeliği (GDPR) kapsamındaki yükümlülüklerinizi desteklemek için Azure DevLast Labs hizmetinden kişisel verilerinizi nasıl silip dışa aktarılacanız gerektiğini öğrenin.
+title: Azure DevTest Labs kişisel verileri silme ve dışarı aktarma
+description: Genel Veri Koruma Yönetmeliği (GDPR) kapsamında yükümlülüklerinizi desteklemek için Azure DevLast Labs hizmetinden kişisel verileri silme ve dışarı aktarma hakkında bilgi edinin.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,72 +13,72 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: c87e2fb534480bbf9bbe625d67782e5a11eda18c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169694"
 ---
-# <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Azure DevTest Labs'dan kişisel verileri dışa aktarma veya silme
-Bu makalede, Azure DevTest Labs hizmetinden kişisel verileri silme ve dışa aktarma adımları sağlanmaktadır. 
+# <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Azure DevTest Labs kişisel verileri dışarı aktarma veya silme
+Bu makalede, Azure DevTest Labs hizmetinden kişisel verileri silmek ve dışarı aktarmak için adımlar sağlanmaktadır. 
 
 ## <a name="what-personal-data-does-devtest-labs-collect"></a>DevTest Labs hangi kişisel verileri toplar?
-DevTest Labs kullanıcıdan iki ana kişisel veri toplar. Bunlar: kullanıcı e-posta adresi ve kullanıcı nesnekimliği. Bu bilgiler, hizmetin laboratuvar yöneticileri ve laboratuvar kullanıcılarına hizmet içi özellikler sağlaması açısından önemlidir.
+DevTest Labs kullanıcıdan iki ana kişisel veri parçası toplar. Bunlar: Kullanıcı e-posta adresi ve Kullanıcı nesne KIMLIĞI. Bu bilgiler, Service 'in laboratuvar yöneticilerine ve laboratuvar kullanıcılarına hizmet içi Özellikler sağlaması açısından önemlidir.
 
 ### <a name="user-email-address"></a>Kullanıcı e-posta adresi
-DevTest Labs, laboratuvar kullanıcılarına otomatik kapatma e-posta bildirimleri göndermek için kullanıcı e-posta adresini kullanır. E-posta, kullanıcılara makinelerinin kapatıldığını haber verir. Kullanıcılar, isterlerse kapatmayı erteleyebilir veya atlayabilir. E-posta adresini laboratuvar düzeyinde veya VM düzeyinde yapılandırırsınız.
+DevTest Labs, laboratuvar kullanıcılarına otomatik kapalı e-posta bildirimleri göndermek için kullanıcı e-posta adresini kullanır. E-posta, kullanıcılarının makine kapatmakta olduğunu bildirir. Kullanıcılar, bunu yapmak istediklerinde kapanmaya erteleyebilir ya da atlayabilir. E-posta adresini laboratuvar düzeyinde veya VM düzeyinde yapılandırırsınız.
 
-**Laboratuvarda e-posta ayarlama:**
+**Laboratuvarda e-posta ayarlanıyor:**
 
-![E-postayı laboratuvar düzeyinde ayarlama](./media/personal-data-delete-export/lab-user-email.png)
+![Laboratuvar düzeyinde e-posta ayarlanıyor](./media/personal-data-delete-export/lab-user-email.png)
 
-**VM'de e-posta ayarlama:**
+**VM 'de e-posta ayarlanıyor:**
 
-![VM düzeyinde e-posta ayarlama](./media/personal-data-delete-export/vm-user-email.png)
+![VM düzeyinde e-posta ayarlanıyor](./media/personal-data-delete-export/vm-user-email.png)
 
-### <a name="user-object-id"></a>Kullanıcı nesne kimliği
-DevTest Labs, kullanıcı nesnesi kimliğini, kaynak bilgileriyle ilgili olarak laboratuvar yöneticilerine aylık maliyet eğilimlerini ve maliyetini göstermek için kullanır. Bu, onların laboratuvarları için maliyetleri izlemelerine ve eşikleri yönetmelerine olanak tanır. 
+### <a name="user-object-id"></a>Kullanıcı nesnesi KIMLIĞI
+DevTest Labs Kullanıcı nesne KIMLIĞINI kullanarak aylık maliyet eğilimlerini ve kaynak bilgilerini laboratuvar yöneticilerine göre gösterir. Bunların laboratuvarlarına ait maliyetleri izlemesine ve eşiklerini yönetmesine olanak tanır. 
 
 **Geçerli takvim ayı için tahmini maliyet eğilimi:**
-![Geçerli takvim ayı için tahmini maliyet eğilimi](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
+![geçerli takvim ayı için tahmini maliyet eğilimi](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
-**Kaynağa göre tahmini ay-tarih maliyeti:**
-![Kaynağa göre tahmini ay-to-date maliyet](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
+**Kaynağa göre tahmini aylık maliyet:**
+![kaynağa göre tahmini aylık maliyet](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
 
 
-## <a name="why-do-we-need-this-personal-data"></a>Bu kişisel verilere neden ihtiyacımız var?
-DevTest Labs hizmeti kişisel verileri operasyonel amaçlar için kullanır. Bu veriler, hizmetin temel özellikleri sunması için çok önemlidir. Kullanıcı e-posta adresine bir saklama ilkesi ayarlarsanız, laboratuvar kullanıcıları e-posta adresleri sistemimizden silindikten sonra otomatik kapatma e-posta bildirimlerini zamanında almazlar. Benzer şekilde, kullanıcı nesnesi kimliklerinin bekletme ilkesine göre silinmesi durumunda, laboratuvar yöneticisi de ay boyunca maliyet eğilimlerini ve laboratuvarlarındaki makineler için kaynak tarafından maliyet görüntülenemez. Bu nedenle, kullanıcının kaynağı Laboratuarda etkin olduğu sürece bu verilerin saklanması gerekir.
+## <a name="why-do-we-need-this-personal-data"></a>Neden bu kişisel verilere ihtiyacımız var?
+DevTest Labs hizmeti, çalışma amacıyla kişisel verileri kullanır. Bu veriler, hizmet için önemli özellikler sunmaları açısından önemlidir. Kullanıcı e-posta adresinde bir bekletme ilkesi ayarlarsanız, laboratuvar kullanıcıları e-posta adresleri sistemimizden silindikten sonra zamanında otomatik olarak kapanmadan e-posta bildirimleri almaz. Benzer şekilde, Laboratuvar Yöneticisi, Kullanıcı nesne kimlikleri bir bekletme ilkesine göre siliniyorsa, laboratuvardaki makineler için aya göre aylık maliyet eğilimlerini ve maliyeti görüntüleyemez. Bu nedenle, kullanıcının kaynağı laboratuvarda etkin olduğu sürece bu verilerin korunması gerekir.
 
-## <a name="how-can-i-have-the-system-to-forget-my-personal-data"></a>Kişisel verilerimi unutacak sisteme nasıl sahip olabilirim?
-Bir laboratuvar kullanıcısı olarak, bu kişisel verilerin silinmiş olmasını istiyorsanız, bunu Laboratuvar'daki ilgili kaynağı silerek yapabilirsiniz. DevTest Labs hizmeti, silinen kişisel verileri kullanıcı tarafından silindikten 30 gün sonra anonimleştirir.
+## <a name="how-can-i-have-the-system-to-forget-my-personal-data"></a>Sisteme kişisel verilerimi nasıl unutabilirim?
+Laboratuvar kullanıcısı olarak, bu kişisel verilerin silinmesini istiyorsanız laboratuvardaki ilgili kaynağı silerek bunu yapabilirsiniz. DevTest Labs hizmeti, silinen kişisel verileri Kullanıcı tarafından silindikten sonraki 30 gün sonra anonimleştirir.
 
-Örneğin, VM'nizi silerseniz veya e-posta adresinizi kaldırdıysanız, DevTest Labs hizmeti kaynak silindikten 30 gün sonra bu verileri anonimleştirir. Silme işleminden sonraki 30 günlük saklama ilkesi, laboratuvar yöneticisine doğru bir aylık maliyet tahmini sağladığımızı sağlamaktır.
+Örneğin, VM 'nizi siler veya e-posta adresinizi kaldırdıysanız, DevTest Labs hizmeti kaynak silindikten sonraki 30 gün sonra bu verileri anonimleştirir. Silinmeden sonra 30 günlük bekletme ilkesi, laboratuvar yöneticisine doğru bir aylık maliyet projeksiyonu sağlamamız sağlamaktır.
 
-## <a name="how-can-i-request-an-export-on-my-personal-data"></a>Kişisel verilerimiçin nasıl ihracat talep edebilirim?
-Azure portalını veya PowerShell'i kullanarak kişisel ve laboratuvar kullanım verilerini dışa aktarabilirsiniz. Veriler iki farklı CSV dosyası olarak dışa aktarılır:
+## <a name="how-can-i-request-an-export-on-my-personal-data"></a>Kişisel verilerim üzerinde nasıl dışarı aktarma isteyebilirim?
+Azure portal veya PowerShell 'i kullanarak kişisel ve laboratuvar kullanım verilerini dışarı aktarabilirsiniz. Veriler iki farklı CSV dosyası olarak verilir:
 
-- **disks.csv** - farklı VM'ler tarafından kullanılan diskler hakkında bilgi içerir
-- **virtualmachines.csv** - laboratuarda VM hakkında bilgi içerir.
+- **diskler. csv** -farklı VM 'ler tarafından kullanılan disklerle ilgili bilgiler içerir
+- **virtualmachines. csv** -laboratuvardaki VM 'ler hakkında bilgi içerir.
 
-### <a name="azure-portal"></a>Azure portalında
-Bir laboratuvar kullanıcısı olarak, DevTest Labs hizmetinin depolayacağı kişisel veriler den bir dışa aktarma talep edebilirsiniz. İhracat talebinde bulunmak için, laboratuvarınızın Genel **Bakış** sayfasındaki **Kişisel veriler** seçeneğine gidin. **İstinye dışa aktarma** düğmesini seçin, Lab yöneticinizin depolama hesabında indirilebilir bir excel dosyası oluşturulabilir bir dosya oluşturmaya başladı. Daha sonra bu verileri görüntülemek için laboratuvar yöneticinize başvurabilirsiniz.
+### <a name="azure-portal"></a>Azure portal
+Laboratuvar kullanıcısı olarak, DevTest Labs hizmetinin depoladığı kişisel veriler üzerinde bir dışarı aktarma isteğinde bulunabilir. Bir dışarı aktarma istemek için laboratuvarınızın **genel bakış** sayfasında **kişisel veriler** seçeneğine gidin. Bir **dışarı aktarma isteği** seçin düğmesini laboratuvar yöneticinizin depolama hesabınızda indirilebilir bir Excel dosyası oluşturmayı devre dışı bırakın. Daha sonra bu verileri görüntülemek için laboratuvar yöneticinize başvurabilirsiniz.
 
-1. Sol menüde **Kişisel verileri** seçin. 
+1. Sol taraftaki menüden **kişisel veriler** ' i seçin. 
 
-    ![Kişisel veriler sayfası](./media/personal-data-delete-export/personal-data-page.png)
-2. Laboratuarı içeren **kaynak grubunu** seçin.
+    ![Kişisel veri sayfası](./media/personal-data-delete-export/personal-data-page.png)
+2. Laboratuvarı içeren **kaynak grubunu** seçin.
 
     ![Kaynak grubu seçin](./media/personal-data-delete-export/select-resource-group.png)
-3. Kaynak grubundaki **depolama hesabını** seçin.
-4. Depolama **hesabı** sayfasında **Blobs'u**seçin.
+3. Kaynak grubundaki **Depolama hesabını** seçin.
+4. **Depolama hesabı** sayfasında, **Bloblar**' ı seçin.
 
-    ![Blobs döşemesi seçin](./media/personal-data-delete-export/select-blobs-tile.png)
+    ![Bloblar kutucuğunu seçin](./media/personal-data-delete-export/select-blobs-tile.png)
 5. Kapsayıcılar listesinde **labresourceusage** adlı kapsayıcıyı seçin.
 
-    ![Blob kabını seçin](./media/personal-data-delete-export/select-blob-container.png)
-6. Laboratuvarınızın adını taşıyan **klasörü** seçin. Bu klasörde laboratuarınızda **diskler** ve **sanal makineler** için **csv** dosyaları bulabilirsiniz. Bu csv dosyalarını indirebilir, erişim isteyen laboratuvar kullanıcısının içeriğini filtreleyebilir ve onlarla paylaşabilirsiniz.
+    ![Blob kapsayıcısını seçin](./media/personal-data-delete-export/select-blob-container.png)
+6. Laboratuvarınızın ardından adlı **klasörü** seçin. Laboratuvarınızda **diskler** ve **sanal makineler** için **CSV** dosyalarını bu klasörde bulabilirsiniz. Bu CSV dosyalarını indirebilir, erişim isteyen laboratuvar kullanıcısının içeriğini filtreleyebilir ve bunlarla paylaşabilirsiniz.
 
-    ![CSV dosyasını indirin](./media/personal-data-delete-export/download-csv-file.png)
+    ![CSV dosyasını indir](./media/personal-data-delete-export/download-csv-file.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -144,7 +144,7 @@ else
 }
 ```
 
-Yukarıdaki örnekteki temel bileşenler şunlardır:
+Yukarıdaki örnekteki anahtar bileşenleri şunlardır:
 
 - Invoke-AzureRmResourceAction komutu.
    
@@ -152,68 +152,68 @@ Yukarıdaki örnekteki temel bileşenler şunlardır:
     Invoke-AzureRmResourceAction -Action 'exportLabResourceUsage' -ResourceId $resourceId -Parameters $actionParameters -Force
     ```
 - İki eylem parametresi
-    - **blobStorageAbsoluteSasUri** - Paylaşılan Erişim İmzası (SAS) belirteci ile depolama hesabı URI. PowerShell komut dosyasında, bu değer depolama anahtarı yerine geçirilebilir.
-    - **usageStartDate** - Son tarih eylemin yürütüldolduğu geçerli tarih olan veri çekmek için başlangıç tarihi. Parçalı lık gün düzeyindedir, bu nedenle zaman bilgisi ekleseniz bile, yoksayılır.
+    - **blobStorageAbsoluteSasUri** -paylaşılan erişim IMZASı (SAS) belirtecine sahip depolama hesabı URI 'si. PowerShell betiğinden, bu değer depolama anahtarı yerine ' de geçirilebilir.
+    - **Usagestartdate** -bitiş tarihi, eylemin yürütüldüğü geçerli tarih olan verileri çekmek için başlangıç tarihi. Ayrıntı düzeyi gün düzeyindedir, bu nedenle saat bilgilerini eklemeseniz bile yok sayılır.
 
-### <a name="exported-data---a-closer-look"></a>Dışa aktarılan veriler - daha yakından bakmak
-Şimdi dışa aktarılan verilere daha yakından bakalım. Daha önce de belirtildiği gibi, veriler başarıyla dışa aktarıldıktan sonra iki CSV dosyası olacaktır. 
+### <a name="exported-data---a-closer-look"></a>Aktarılmış veriler-daha yakından bakış
+Şimdi, dışarıya aktarılmış verilere daha yakından bakalım. Daha önce belirtildiği gibi, veriler başarıyla verildiğinde, iki CSV dosyası olur. 
 
-**virtualmachines.csv** aşağıdaki veri sütunlarını içerir:
+**Virtualmachines. csv** aşağıdaki veri sütunlarını içerir:
 
 | Sütun adı | Açıklama |
 | ----------- | ----------- | 
 | SubscriptionId | Laboratuvarın bulunduğu abonelik tanımlayıcısı. |
-| Labuid | Laboratuvar için benzersiz GUID tanımlayıcısı. |
-| Laboratuvar Adı | Laboratuvarın adı. |
-| LabResourceId | Tam nitelikli laboratuvar kaynak kimliği. |
-| ResourceGroupName | VM içeren kaynak grubunun adı | 
-| ResourceId | VM için tam nitelikli kaynak kimliği. |
-| ResourceUid | VM için GUID |
+| Labuıd | Laboratuvar için benzersiz GUID tanımlayıcısı. |
+| LabName | Laboratuvarın adı. |
+| Labresourceıd | Tam nitelikli laboratuvar kaynak KIMLIĞI. |
+| ResourceGroupName | VM 'yi içeren kaynak grubunun adı | 
+| ResourceId | Sanal makine için tam kaynak KIMLIĞI. |
+| ResourceUId | VM için GUID |
 | Adı | Sanal makine adı. |
-| CreatedTime | VM'nin oluşturulduğu tarih-saati. |
-| Silinen Tarih | VM'nin silindiği tarih-saati. Eğer boşsa, silme henüz gerçekleşmedi. |
-| Kaynak Sahibi | VM'nin sahibi. Değer boşsa, talep edilebilir bir VM'dir veya bir hizmet sorumlusu tarafından oluşturulur. |
-| FiyatlandırmaTier | VM'nin fiyatlandırma katmanı |
-| Kaynak Durumu | VM'nin kullanılabilirlik durumu. Etkin, hala varsa veya Etkin değilse, VM silinmişse. |
-| ComputeResourceId | Tam nitelikli sanal makine bilgi işlem kaynak tanımlayıcısı. |
-| Talep edilebilir | VM talep edilebilir bir VM ise doğru ayarlayın | 
-| ÇevreKimliği | Sanal makinenin oluşturulduğu ortam kaynak tanımlayıcısı. VM bir çevre kaynağının parçası olarak oluşturulmadığında boştur. |
-| Son Kullanma Tarihi | VM için son kullanma tarihi. Son kullanma tarihi belirlenmediyse boşolarak ayarlanır.
-| GaleriImageReferenceVersion |  VM temel görüntüsünün sürümü. |
-| GaleriImageReferenceOffer | VM taban görüntüsü teklifi. |
-| GaleriImageReferencePublisher | VM temel görüntüyayıncısı. |
-| GaleriImageReferenceSku | VM taban görüntüsünün Sku'su |
-| GaleriImageReferenceOsType | VM taban görüntüsünün işletim sistemi tipi |
-| CustomImageId | VM tabanı özel görüntütam nitelikli kimliği. |
+| CreatedTime | VM 'nin oluşturulduğu tarih-saat. |
+| DeletedDate | VM 'nin silindiği tarih-saat. Boşsa, silme işlemi henüz gerçekleşmemiştir. |
+| ResourceOwner | VM sahibi. Değer boşsa, tek bir sanal makine olabilir veya bir hizmet sorumlusu tarafından oluşturulur. |
+| PricingTier | VM 'nin Fiyatlandırma Katmanı |
+| ResourceStatus | VM 'nin kullanılabilirlik durumu. Etkin, hala varsa veya etkin değilse, sanal makine silinmişse. |
+| Computeresourceıd | Tam sanal makine işlem kaynağı tanımlayıcısı. |
+| Talep edilebilir | VM, çakışan bir VM ise, true olarak ayarlayın | 
+| EnvironmentID | Sanal makinenin içinde oluşturulduğu ortam kaynak tanımlayıcısı. VM, bir ortam kaynağının parçası olarak oluşturulmamışsa boştur. |
+| ExpirationDate | VM için sona erme tarihi. Sona erme tarihi ayarlanmamışsa boş olarak ayarlanır.
+| Gallerımagereferenceversion |  VM temel görüntüsünün sürümü. |
+| Gallerimagereferenceteklif | VM temel görüntüsünü sunun. |
+| Gallerimagereferenceyayımcısı | VM temel görüntüsünün yayımcısı. |
+| Gallerimagereferencesku | VM temel görüntüsünün SKU 'su |
+| Gallerimagereferenceostype | VM temel görüntüsünün işletim sistemi türü |
+| Customımageıd | VM tabanlı özel görüntünün tam KIMLIĞI. |
 
-**disks.csv'de** yer alan veri sütunları aşağıda listelenmiştir:
+**Diskler. csv** dosyasında yer alan veri sütunları aşağıda listelenmiştir:
 
 | Sütun adı | Açıklama | 
 | ----------- | ----------- | 
-| SubscriptionId | Laboratuarı içeren aboneliğin kimliği |
-| Labuid | Laboratuvar için GUID |
-| Laboratuvar Adı | Laboratuvarın adı | 
-| LabResourceId | Laboratuvar için tam nitelikli kaynak kimliği | 
-| ResourceGroupName | Laboratuarı içeren kaynak grubunun adı | 
-| ResourceId | VM için tam nitelikli kaynak kimliği. |
-| ResourceUid | VM için GUID |
- |Adı | Ekteki diskin adı |
+| SubscriptionId | Laboratuvarı içeren aboneliğin KIMLIĞI |
+| Labuıd | Laboratuvar için GUID |
+| LabName | Laboratuvarın adı | 
+| Labresourceıd | Laboratuvar için tam kaynak KIMLIĞI | 
+| ResourceGroupName | Laboratuvarın bulunduğu kaynak grubunun adı | 
+| ResourceId | Sanal makine için tam kaynak KIMLIĞI. |
+| ResourceUId | VM için GUID |
+ |Adı | Eklenen diskin adı |
 | CreatedTime |Veri diskinin oluşturulduğu tarih ve saat. |
-| Silinen Tarih | Veri diskinin silindiği tarih ve saat. |
-| Kaynak Durumu | Kaynağın durumu. Kaynak varsa etkin. Etkin değil, silindiğinde. |
-| DiskBlobName | Veri diski için blob adı. |
+| DeletedDate | Veri diskinin silindiği tarih ve saat. |
+| ResourceStatus | Kaynağın durumu. Kaynak varsa etkin. Silindiğinde, etkin değil. |
+| Diskblobadı | Veri diski için blob adı. |
 | DiskSizeGB | Veri diskinin boyutu. |
 | DiskType | Veri diskinin türü. Standart için 0, Premium için 1. |
-| KiralıkByVmId | Veri diskinin eklendiği VM'nin kaynak kimliği. |
+| Leasedbyvmıd | Veri diskinin eklendiği sanal makinenin kaynak KIMLIĞI. |
 
 
 > [!NOTE]
-> Birden çok laboratuvarla uğraşıyorsanız ve genel bilgi almak istiyorsanız, iki temel sütun, abonelikler arasında benzersiz kimlikler olan **LabUID** ve **ResourceUId'dir.**
+> Birden çok laboratuvarda çalışıyorsanız ve genel bilgi almak istiyorsanız, iki anahtar sütunu, abonelikler genelinde benzersiz kimlikler olan **Labuıd** ve **resourceuid**olur.
 
-İhraç edilen veriler SQL Server, Power BI, vb. gibi araçlar kullanılarak manipüle edilebilir ve görselleştirilebilir. Bu özellik, özellikle laboratuvarınızın kullanımını sizinle aynı Azure aboneliğini kullanmayan yönetim ekibinize bildirmek istediğinizde kullanışlıdır.
+İçe aktarılmış veriler, SQL Server, Power BI vb. gibi araçlar kullanılarak işlenebilir ve görselleştirilebilir. Bu özellik özellikle, laboratuvarınızın kullanımını, yaptığınız şekilde aynı Azure aboneliğini kullanmayan Yönetim ekibinize raporlamak istediğinizde yararlıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın: 
 
-- [Laboratuvar için ilkeleri ayarlama](devtest-lab-get-started-with-lab-policies.md)
+- [Laboratuvar ilkelerini ayarlama](devtest-lab-get-started-with-lab-policies.md)
 - [Sık sorulan sorular](devtest-lab-faq.md)

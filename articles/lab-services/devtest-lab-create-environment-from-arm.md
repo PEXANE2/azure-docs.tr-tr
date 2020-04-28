@@ -1,6 +1,6 @@
 ---
-title: Şablonlarla çoklu VM ortamları ve PaaS kaynakları oluşturun
-description: Azure Kaynak Yöneticisi şablonundan Azure DevTest Labs'da çoklu VM ortamları ve PaaS kaynakları oluşturma yı öğrenin
+title: Şablonlarla çoklu VM ortamları ve PaaS kaynakları oluşturma
+description: Azure Resource Manager şablonundan Azure DevTest Labs çoklu VM ortamları ve PaaS kaynakları oluşturmayı öğrenin
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,50 +15,50 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 1385b20847cf90c212a13591389dfb6cda08432a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169642"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonları ile çoklu VM ortamları ve PaaS kaynakları oluşturma
 
-Azure DevTest Labs ortamları, kullanıcıların karmaşık altyapıları laboratuvar sınırları içinde tutarlı bir şekilde kolayca dağıtmalarına olanak tanır. DevTest Labs'da kaynak kümeleri içeren ortamlar oluşturmak için [Azure Kaynak Yöneticisi şablonlarını](../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Bu ortamlar, Kaynak Yöneticisi şablonlarının oluşturabileceği Azure kaynaklarını içerebilir.
+Azure DevTest Labs ortamlar, kullanıcıların karmaşık altyapıları laboratuvarın bir yolu dahilinde tutarlı bir şekilde dağıtmasını sağlar. DevTest Labs içindeki kaynak kümelerine sahip ortamlar oluşturmak için [Azure Resource Manager şablonlarını](../azure-resource-manager/templates/template-syntax.md) kullanabilirsiniz. Bu ortamlar, Kaynak Yöneticisi şablonlarının oluşturabileceğiniz tüm Azure kaynaklarını içerebilir.
 
-[Azure portalını](https://portal.azure.com)kullanarak laboratuvara aynı anda kolayca bir [sanal makine (VM) ekleyebilirsiniz.](devtest-lab-add-vm.md) Ancak, çok katmanlı web uygulamaları veya SharePoint çiftliği gibi senaryoların tek bir adımda birden çok VM oluşturmak için bir mekanizmaya ihtiyacı vardır. Azure Kaynak Yöneticisi şablonlarını kullanarak, Azure çözümünüzün altyapısını ve yapılandırmasını tanımlayabilir ve tutarlı bir durumda sürekli olarak birden çok VM dağıtabilirsiniz.
+[Azure Portal](https://portal.azure.com)kullanarak bir laboratuvara tek seferde bir [sanal makineyi (VM) kolayca ekleyebilirsiniz](devtest-lab-add-vm.md) . Ancak, çok katmanlı Web uygulamalarına veya SharePoint grubuna benzer senaryolar tek bir adımda birden çok VM oluşturmak için bir mekanizmaya ihtiyaç duyar. Azure Resource Manager şablonları kullanarak Azure çözümünüzün altyapısını ve yapılandırmasını tanımlayabilir ve tutarlı bir durumda birden çok VM 'yi sürekli olarak dağıtabilirsiniz.
 
-Azure Kaynak Yöneticisi şablonları da aşağıdaki avantajları sağlar:
+Azure Resource Manager şablonlar aşağıdaki avantajları da sağlar:
 
-- Azure Kaynak Yöneticisi şablonları doğrudan GitHub veya Azure Repos kaynak denetim deposunuzdan yüklenir.
-- Kullanıcılarınız, diğer [VM taban](devtest-lab-comparing-vm-base-image-types.md)türlerinde olduğu gibi Azure portalından yapılandırılmış bir Azure Kaynak Yöneticisi şablonu seçerek bir ortam oluşturabilir.
-- Azure Kaynak Yöneticisi şablonundan bir ortamda Azure PaaS kaynaklarının yanı sıra IaaS VM'leri de sağlayabilirsiniz.
-- Diğer üs türleri tarafından oluşturulan tek tek VM'lere ek olarak, laboratuardaki ortamların maliyetini de izleyebilirsiniz. PaaS kaynakları oluşturulur ve maliyet izleme görünür. Ancak, VM otomatik kapatma PaaS kaynakları için geçerli değildir.
+- Azure Resource Manager şablonlar doğrudan GitHub veya Azure Repos kaynak denetimi deposundan yüklenir.
+- Kullanıcılarınız, Azure portal Azure Resource Manager bir şablonu, diğer türlerdeki [VM tabanlarında](devtest-lab-comparing-vm-base-image-types.md)olduğu gibi seçerek bir ortam oluşturabilir.
+- Azure Resource Manager şablondan bir ortamda Azure PaaS kaynaklarını ve IaaS VM 'lerini sağlayabilirsiniz.
+- Diğer temel türler tarafından oluşturulan ayrı VM 'lere ek olarak laboratuvardaki ortamların maliyetini izleyebilirsiniz. PaaS kaynakları oluşturulur ve maliyet izlemede görüntülenir. Ancak, sanal makine otomatik kapatması PaaS kaynakları için de geçerlidir.
 
-Tek bir işlemde birçok laboratuvar kaynağını dağıtmak, güncelleştirmek veya silmek için Kaynak Yöneticisi şablonlarını kullanmanın yararları hakkında daha fazla bilgi edinmek için Kaynak [Yöneticisi şablonlarını kullanmanın yararları](../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager)bölümüne bakın.
+Tek bir işlemde birçok laboratuvar kaynağını dağıtmak, güncelleştirmek veya silmek için Kaynak Yöneticisi şablonlarını kullanmanın avantajları hakkında daha fazla bilgi edinmek için, bkz. [Kaynak Yöneticisi şablonlarını kullanmanın avantajları](../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager).
 
 > [!NOTE]
-> Laboratuvar VM'leri oluşturmak için taban olarak kaynak yöneticisi şablonu kullandığınızda, birden çok VM veya tek bir VM oluşturma arasında bazı farklar vardır. Daha fazla bilgi için [bkz.](devtest-lab-use-resource-manager-template.md)
+> Laboratuvar VM 'Leri oluşturmak için temel olarak bir Kaynak Yöneticisi şablonu kullandığınızda, birden çok VM veya tek bir VM oluşturma arasında bazı farklılıklar vardır. Daha fazla bilgi için bkz. [sanal makinenin Azure Resource Manager şablonunu kullanma](devtest-lab-use-resource-manager-template.md).
 >
 
-## <a name="use-devtest-labs-public-environments"></a>DevTest Labs ortak ortamlarını kullanma
-Azure DevTest Labs, harici bir GitHub kaynağına kendiniz bağlanmak zorunda kalmadan ortam oluşturmak için kullanabileceğiniz [Azure Kaynak Yöneticisi şablonlarının genel deposuna](https://github.com/Azure/azure-devtestlab/tree/master/Environments) sahiptir. Bu genel depo, oluşturduğunuz her laboratuvar için Azure portalında bulunan yapıtların genel deposuna benzer. Ortam deposu, az sayıda giriş parametresi olan önceden yazılmış ortam şablonlarıyla hızla başlamanızı sağlar. Bu şablonlar, laboratuvarlar içindeki PaaS kaynakları için sorunsuz bir başlangıç deneyimi sağlar.
+## <a name="use-devtest-labs-public-environments"></a>DevTest Labs genel ortamlarını kullanın
+Azure DevTest Labs, bir dış GitHub kaynağına kendi kendinize bağlanmak zorunda kalmadan ortamlar oluşturmak için kullanabileceğiniz, [ortak Azure Resource Manager şablonlarının bir deposuna](https://github.com/Azure/azure-devtestlab/tree/master/Environments) sahiptir. Bu ortak depo, oluşturduğunuz her laboratuvar için Azure portal mevcut olan yapıtların genel deposuna benzer. Ortam deposu, az sayıda giriş parametresine sahip olan önceden yazılmış ortam şablonlarını hızlıca kullanmaya başlamanızı sağlar. Bu şablonlar, Labs içinde PaaS kaynakları için sorunsuz bir başlangıç deneyimi sağlar.
 
-Genel depoda, DevTest Labs ekibi ve diğerleri Azure Web Uygulamaları, Hizmet Kumaş Kümesi ve geliştirme SharePoint Farm ortamı gibi sık kullanılan şablonlar oluşturmuş ve paylaşmıştır. Bu şablonları doğrudan kullanabilir veya gereksinimlerinize uyacak şekilde özelleştirebilirsiniz. Daha fazla bilgi için, [DevTest Labs'daki ortak ortamları yapılandırın ve kullanın.](devtest-lab-configure-use-public-environments.md) Kendi şablonlarınızı oluşturduktan sonra, bunları başkalarıyla paylaşmak için bu depoda saklayabilir veya kendi Git deponuzu ayarlayabilirsiniz.
+Ortak depoda, DevTest Labs ekibi ve diğer kullanıcılar Azure Web Apps, Service Fabric kümesi ve bir geliştirme SharePoint grubu ortamı gibi sık kullanılan şablonları oluşturup paylaşmıştır. Bu şablonları doğrudan kullanabilir veya gereksinimlerinize uyacak şekilde özelleştirebilirsiniz. Daha fazla bilgi için bkz. [DevTest Labs 'de ortak ortamları yapılandırma ve kullanma](devtest-lab-configure-use-public-environments.md). Kendi şablonlarınızı oluşturduktan sonra, bunları başkalarıyla paylaşmak veya kendi git deponuzu ayarlamak için bu depoda saklayabilirsiniz.
 
 <a name="configure-your-own-template-repositories"></a>
 ## <a name="create-your-own-template-repositories"></a>Kendi şablon depolarınızı oluşturun
 
-Kod olarak altyapı ve yapılandırma kodu yla en iyi uygulamalardan biri olarak, kaynak denetiminde ortam şablonlarını yönetmeniz gerekir. Azure DevTest Labs bu uygulamayı izler ve tüm Azure Kaynak Yöneticisi şablonlarını doğrudan GitHub veya Azure Depo depolarından yükler. Sonuç olarak, test ortamından üretim ortamına kadar tüm sürüm döngüsü boyunca Kaynak Yöneticisi şablonlarını kullanabilirsiniz.
+Kod olarak altyapı ve yapılandırma kodu ile en iyi uygulamalardan biri olarak, kaynak denetimindeki ortam şablonlarını yönetmeniz gerekir. Azure DevTest Labs bu uygulamayı izler ve tüm Azure Resource Manager şablonlarını doğrudan GitHub veya Azure Repos depolarınızdan yükler. Sonuç olarak, tüm yayın döngüsünün üzerinde Kaynak Yöneticisi şablonlarını, test ortamından üretim ortamına kullanabilirsiniz.
 
-Azure Kaynak Yöneticisi şablonlarınızı bir depoda düzenlemek için izninizlen birkaç kural vardır:
+Azure Resource Manager şablonlarınızı bir depoda düzenlemek için izlenecek birkaç kural vardır:
 
-- Asıl şablon dosyasını *azuredeploy.json*olarak adlandırmanız gerekir.
+- Ana şablon dosyası *azuredeploy. JSON*olarak ayarlanmalıdır.
 
-- Parametre dosyasında tanımlanan parametre değerlerini kullanmak istiyorsanız, parametre *dosyasıazuredeploy.parameters.json*olarak adlandırılmalıdır.
+- Parametre dosyasında tanımlanan parametre değerlerini kullanmak istiyorsanız, parametre dosyası *azuredeploy. Parameters. JSON*olarak adlandırılmalıdır.
 
-  Parametreleri `_artifactsLocation` kullanabilir ve `_artifactsLocationSasToken` DevTest Labs'ın iç içe olan şablonları otomatik olarak yönetmesine izin vererek parametreleri Link URI değerini oluşturabilirsiniz. Daha fazla bilgi için [bkz.](deploy-nested-template-environments.md)
+  Parametreleri `_artifactsLocation` ve `_artifactsLocationSasToken` parameterslink URI değerini oluşturmak Için, DevTest Labs 'in iç içe şablonları otomatik olarak yönetmesine izin vermek için kullanabilirsiniz. Daha fazla bilgi için bkz. [test ortamları için iç içe Azure Resource Manager şablonlarını dağıtma](deploy-nested-template-environments.md).
 
-- *Metadata.json*adlı bir dosyada şablon görüntü adını ve açıklamasını belirtmek için meta verileri tanımlayabilirsiniz, aşağıdaki gibi:
+- Şablon görünen adını ve açıklamasını, *Metadata. JSON*adlı bir dosyada belirtmek için aşağıdaki gibi meta verileri tanımlayabilirsiniz:
 
   ```json
   {
@@ -67,113 +67,113 @@ Azure Kaynak Yöneticisi şablonlarınızı bir depoda düzenlemek için izniniz
   }
   ```
 
-![Önemli Azure Kaynak Yöneticisi şablon dosyaları](./media/devtest-lab-create-environment-from-arm/master-template.png)
+![Anahtar Azure Resource Manager şablon dosyaları](./media/devtest-lab-create-environment-from-arm/master-template.png)
 
-## <a name="add-template-repositories-to-the-lab"></a>Şablon depolarını laboratuvara ekleme
+## <a name="add-template-repositories-to-the-lab"></a>Laboratuvara şablon depoları ekleme
 
-Deponuzu oluşturduktan ve yapılandırdıktan sonra, Azure portalını kullanarak laboratuvarınıza ekleyebilirsiniz:
+Deponuzu oluşturup yapılandırdıktan sonra, Azure portal kullanarak laboratuvarınızı ekleyebilirsiniz:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-1. **Tüm Hizmetler'i**seçin ve ardından listeden **DevTest Labs'ı** seçin.
-1. Laboratuvarlar listesinden istediğiniz laboratuarı seçin.
-1. Laboratuvarın Genel **Bakış** bölmesine Yapılandırma **ve ilkeler'i**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
+1. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.
+1. Laboratuvarın **genel bakış** bölmesinde **yapılandırma ve ilkeler**' i seçin.
 
    ![Yapılandırma ve ilkeler](./media/devtest-lab-create-environment-from-arm/configuration-and-policies-menu.png)
 
-1. Yapılandırma **ve ilke** ayarları listesinden **Depolar'ı**seçin. **Ortak Artifakı Repo** deposu tüm laboratuvarlar için otomatik olarak oluşturulur ve [DevTest Labs public GitHub deposuna](https://github.com/Azure/azure-devtestlab)bağlanır.
+1. **Yapılandırma ve ilke** ayarları listesinden **depolar**' ı seçin. **Ortak yapıt** depo deposu tüm laboratuvarlar için otomatik olarak oluşturulur ve [DevTest Labs genel GitHub deposuna](https://github.com/Azure/azure-devtestlab)bağlanır.
 
-1. Azure Kaynak Yöneticisi şablon deponuzu eklemek için **Ekle'yi**seçin.
+1. Azure Resource Manager şablon deponuzu eklemek için **Ekle**' yi seçin.
 
-   ![Genel repo](./media/devtest-lab-create-environment-from-arm/public-repo.png)
+   ![Genel depo](./media/devtest-lab-create-environment-from-arm/public-repo.png)
 
-1. **Depolar** bölmesine aşağıdaki bilgileri girin:
+1. **Depolar** bölmesinde aşağıdaki bilgileri girin:
 
-   - **Adı**: Laboratuvarda kullanılacak bir depo adı girin.
-   - **Git klon URL'si**: GitHub veya Azure Repos'tan Git HTTPS klon URL'sini girin.
-   - **Dal** (isteğe bağlı): Azure Kaynak Yöneticisi şablon tanımlarınıza erişmek için şube adını girin.
-   - **Kişisel erişim belirteci**: Deponuza güvenli bir şekilde erişmek için kullanılan kişisel erişim jetonuna girin.
-     - Profilinizin altındaki Azure Repos'tan belirteçlerinizi almak için **Kullanıcı ayarları** > **Güvenlik** > **Kişisel erişim belirteçlerini**seçin.
-     - Profilinizin altındaki GitHub'dan belirteçlerinizi almak için **Ayarlar** > **Geliştirici Ayarları** > **Kişisel erişim belirteçlerini**seçin.
-   - **Klasör yolları**: Yapı tanımlarınız veya Azure Kaynak Yöneticisi şablon tanımlarınız için Git klonu URI'nize göre klasör yolunu girin.
+   - **Ad**: laboratuvarda kullanmak için bir depo adı girin.
+   - **Git kopyası URL 'si**: GitHub 'dan veya Azure Repos git https kopya URL 'sini girin.
+   - **Dal** (isteğe bağlı): Azure Resource Manager şablonu tanımlarınıza erişmek için dal adını girin.
+   - **Kişisel erişim belirteci**: deponuza güvenli bir şekilde erişmek için kullanılan kişisel erişim belirtecini girin.
+     - Azure Repos belirtecinizi almak için, profiliniz altında **Kullanıcı ayarları** > **güvenlik** > **kişisel erişim belirteçleri**' ni seçin.
+     - GitHub 'dan belirtecinizi almak için, profiliniz altında **Ayarlar** > **Geliştirici ayarları** > **kişisel erişim belirteçleri**' ni seçin.
+   - **Klasör yolları**: yapıt tanımlarınız veya Azure Resource Manager şablon tanımlarınız için git kopya URI 'siyle ilişkili klasör yolunu girin.
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
-   ![Yeni depo ekleme](./media/devtest-lab-create-environment-from-arm/repo-values.png)
+   ![Yeni Depo Ekle](./media/devtest-lab-create-environment-from-arm/repo-values.png)
 
-Laboratuvara bir Azure Kaynak Yöneticisi şablonu ekledikten sonra, laboratuvar kullanıcılarınız şablonu kullanarak ortamlar oluşturabilir.
+Laboratuvara bir Azure Resource Manager şablonu ekledikten sonra, laboratuar kullanıcılarınız şablonu kullanarak ortamlar oluşturabilir.
 
 ## <a name="configure-access-rights-for-lab-users"></a>Laboratuvar kullanıcıları için erişim haklarını yapılandırma
 
-Laboratuvar kullanıcıları varsayılan olarak **Reader** rolüne sahiptir, bu nedenle ortam kaynak grubundaki kaynakları değiştiremezler. Örneğin, kaynaklarını durduramıyor veya başlatamıyor.
+Laboratuvar kullanıcıları varsayılan olarak **okuyucu** rolüne sahiptir, bu nedenle bir ortam kaynak grubundaki kaynakları değiştiremezler. Örneğin, kaynaklarını durduramazlar veya başlatamaz.
 
-Laboratuvar kullanıcılarınıza ortamlarındaki kaynakları edinebilmeleri için **Katılımcı** rolü vermek için aşağıdaki adımları izleyin:
+Laboratuvar kullanıcılarına **katkıda** bulunan rolü sağlamak için, ortamlarında kaynakları düzenleyebilmeleri için aşağıdaki adımları izleyin:
 
-1. Azure [portalında,](https://portal.azure.com)laboratuvarınızın **Genel Bakış** bölmesinde Yapılandırma ve ilkeleri seçin **ve**ardından **Laboratuvar ayarlarını**seçin.
+1. [Azure Portal](https://portal.azure.com), laboratuvarınızın **genel bakış** bölmesinde **yapılandırma ve ilkeler**' i seçin ve ardından **Laboratuvar ayarları**' nı seçin.
 
-1. Laboratuvar **ayarları** bölmesinde **Katılımcı'yı**seçin ve ardından laboratuvar kullanıcılarına yazma izni vermek için **Kaydet'i** seçin.
+1. Laboratuvar **ayarları** bölmesinde, **katkıda bulunan**' ı seçin ve ardından Laboratuvar kullanıcılarına yazma izinleri vermek için **Kaydet** ' i seçin.
 
-   ![Laboratuvar kullanıcı erişim haklarını yapılandırma](./media/devtest-lab-create-environment-from-arm/config-access-rights.png)
+   ![Laboratuvar Kullanıcı erişimi haklarını yapılandırma](./media/devtest-lab-create-environment-from-arm/config-access-rights.png)
 
-Bir sonraki bölümde, Azure Kaynak Yöneticisi şablonundan ortamlar oluşturma yoluyla yürür.
+Sonraki bölümde, bir Azure Resource Manager şablonundan ortam oluşturma adımları anlatılmaktadır.
 
-## <a name="create-environments-from-templates-in-the-azure-portal"></a>Azure portalındaki şablonlardan ortamlar oluşturma
+## <a name="create-environments-from-templates-in-the-azure-portal"></a>Azure portal şablonlardan ortam oluşturma
 
-Laboratuvara bir Azure Kaynak Yöneticisi şablonu ekledikten sonra, laboratuvar kullanıcılarınız aşağıdaki adımları izleyerek Azure portalında ortamlar oluşturabilir:
+Laboratuvara bir Azure Resource Manager şablonu ekledikten sonra, laboratuar kullanıcılarınız aşağıdaki adımları izleyerek Azure portal ortamlar oluşturabilir:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-1. **Tüm Hizmetler'i**seçin ve ardından listeden **DevTest Labs'ı** seçin.
+1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
 
-1. Laboratuvarlar listesinden istediğiniz laboratuarı seçin.
+1. Laboratuvarlar listesinden istediğiniz Laboratuvarı seçin.
 
-1. Laboratuvarın sayfasında **Ekle'yi**seçin.
+1. Laboratuvarın sayfasında **Ekle**' yi seçin.
 
-1. Temel bölme **seç,** önce Azure Kaynak Yöneticisi şablonları listelenmiş olarak kullanabileceğiniz temel görüntüleri görüntüler. İstediğiniz Azure Kaynak Yöneticisi şablonuna seçin.
+1. **Bir taban Seç** bölmesi, önce listelenen Azure Resource Manager şablonlar ile kullanabileceğiniz temel görüntüleri görüntüler. İstediğiniz Azure Resource Manager şablonunu seçin.
 
    ![Bir temel seçin](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)
 
-1. **Ekle** bölmesine, ortam kullanıcılarına görüntülemek için bir **Ortam adı** değeri girin.
+1. **Ekle** bölmesinde, ortam kullanıcılarına göstermek Için bir **ortam adı** değeri girin.
 
-   Azure Kaynak Yöneticisi şablonu, giriş alanlarının geri kalanını tanımlar. Şablon *azuredeploy.parameter.json* dosyası varsayılan değerleri tanımlıyorsa, giriş alanları bu değerleri gösterir.
+   Azure Resource Manager şablonu, giriş alanlarının geri kalanını tanımlar. Şablon *azuredeploy. Parameter. JSON* dosyası varsayılan değerleri tanımlıyorsa, giriş alanları bu değerleri gösterir.
 
-   Tür güvenli *dize*parametreleri için Azure Anahtar Kasası'nızdaki sırları kullanabilirsiniz. Sırları önemli bir kasada depolama ve laboratuvar kaynakları oluştururken kullanma hakkında bilgi edinmek için Azure [Anahtar Kasası'nda sırlar saklayın.](devtest-lab-store-secrets-in-key-vault.md)  
+   *Güvenli dize*türündeki parametreler için Azure Key Vault gizli dizileri kullanabilirsiniz. Gizli dizileri bir anahtar kasasında depolama ve laboratuvar kaynakları oluştururken kullanma hakkında bilgi edinmek için bkz. [Azure Key Vault gizli dizileri depolama](devtest-lab-store-secrets-in-key-vault.md).  
 
-   ![Bölme ekle](./media/devtest-lab-create-environment-from-arm/add.png)
+   ![Bölme Ekle](./media/devtest-lab-create-environment-from-arm/add.png)
 
    > [!NOTE]
-   > Şablon bunları belirtse bile, aşağıdaki parametre değerleri giriş alanlarında görünmez. Form, ortamı oluştururken laboratuar kullanıcılarının değerleri girmeleri gereken boş giriş alanlarını gösterir.
+   > Aşağıdaki parametre değerleri, şablon tarafından belirtse bile giriş alanlarında görünmez. Bunun yerine form, laboratuvar kullanıcılarının ortamı oluştururken değer girmesi gereken boş giriş alanlarını gösterir.
    >
-   > - GEN-UNIQUE
+   > - GENEL-BENZERSIZ
    > - GEN-UNIQUE-[N]
    > - GEN-SSH-PUB-ANAHTAR
-   > - GEN-ŞIFRE
+   > - GENEL PAROLA
 
-1. Ortamı oluşturmak için **Ekle'yi** seçin.
+1. Ortamı oluşturmak için **Ekle** ' yi seçin.
 
-   Ortam, durumu **sanal makineler listemde** görüntüleyerek hemen sağlama başlar. Laboratuvar, Azure Kaynak Yöneticisi şablonunda tanımlanan tüm kaynakları sağlamak için otomatik olarak yeni bir kaynak grubu oluşturur.
+   Ortam, sağlama, **sanal makinelerim** listesinde görüntülenen durum ile hemen başlatılır. Laboratuvar, Azure Resource Manager şablonunda tanımlanan tüm kaynakları sağlamak üzere otomatik olarak yeni bir kaynak grubu oluşturur.
 
-1. Ortam oluşturulduktan sonra, kaynak grubu bölmesini açmak ve ortamın sağlanmış tüm kaynaklarına göz atmak için **Sanal Makineler listemdeki** ortamı seçin.
+1. Ortam oluşturulduktan sonra, kaynak grubu bölmesini açmak için **sanal makinelerim** listesinden ortamı seçin ve ortamın sağlandığı tüm kaynaklara gidin.
 
-   ![Çevre kaynakları](./media/devtest-lab-create-environment-from-arm/all-environment-resources.png)
+   ![Ortam kaynakları](./media/devtest-lab-create-environment-from-arm/all-environment-resources.png)
 
-   Ayrıca, sağlanan ortamın sadece VM listesini görüntülemek için ortamı genişletebilirsiniz.
+   Ayrıca ortamı genişleterek yalnızca ortamın sağlandığı VM 'lerin listesini görüntüleyebilirsiniz.
 
-   ![Sanal makineler listem](./media/devtest-lab-create-environment-from-arm/my-vm-list.png)
+   ![Sanal makinelerim listesi](./media/devtest-lab-create-environment-from-arm/my-vm-list.png)
 
-1. Yapı teşkezlikleri uygulama, veri diskleri ekleme, otomatik kapatma süresini değiştirme ve daha fazlası gibi kullanılabilir eylemleri görüntülemek için ortamlardan herhangi birini seçin.
+1. Yapıları uygulama, veri diskleri iliştirme, otomatik kapatılma süresini değiştirme ve daha fazlası gibi kullanılabilir eylemleri görüntülemek için ortamların herhangi birini seçin.
 
-   ![Çevre eylemleri](./media/devtest-lab-create-environment-from-arm/environment-actions.png)
+   ![Ortam eylemleri](./media/devtest-lab-create-environment-from-arm/environment-actions.png)
 
 <a name="automate-deployment-of-environments"></a>
 ## <a name="automate-environment-creation-with-powershell"></a>PowerShell ile ortam oluşturmayı otomatikleştirin
 
-Bir laboratuvara tek bir ortam eklemek için Azure portalını kullanmak mümkündür, ancak bir geliştirme veya test senaryosu birden çok ortam oluşturması gerektiğinde, otomatik dağıtım daha iyi bir deneyimdir.
+Laboratuvara tek bir ortam eklemek için Azure portal kullanımı uygulanabilir, ancak geliştirme veya test senaryosu birden çok ortam oluştururken otomatik dağıtım daha iyi bir deneyimdir.
 
-Devam etmeden önce, oluşturulacak kaynakları tanımlayan bir Azure Kaynak Yöneticisi şablonunuz olduğundan emin olun. [Şablonu Git deposuna ekleyin ve yapılandırın](#configure-your-own-template-repositories)ve [depoyu laboratuvara ekleyin.](#add-template-repositories-to-the-lab)
+Devam etmeden önce, oluşturulacak kaynakları tanımlayan bir Azure Resource Manager şablonunuz olduğundan emin olun. [Bir git deposuna şablon ekleyip yapılandırın](#configure-your-own-template-repositories)ve [depoyu laboratuvara ekleyin](#add-template-repositories-to-the-lab).
 
-Aşağıdaki örnek komut dosyası laboratuarınızda bir ortam oluşturur. Yorumlar, komut dosyasını daha iyi anlamanıza yardımcı olur.
+Aşağıdaki örnek betik laboratuvarınızda bir ortam oluşturur. Açıklamalar, betiği daha iyi anlamanıza yardımcı olur.
 
-1. Aşağıdaki örnek PowerShell komut dosyasını sabit sürücünüze *deployenv.ps1*olarak kaydedin.
+1. Aşağıdaki örnek PowerShell betiğini, *deployenv. ps1*olarak sabit sürücünüze kaydedin.
 
    [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -266,36 +266,36 @@ Aşağıdaki örnek komut dosyası laboratuarınızda bir ortam oluşturur. Yoru
    Write-Output "Environment $EnvironmentName completed."
    ```
 
-1. SubscriptionId, LabName, ResourceGroupName, RepositoryName, TemplateName (Git repo'daki klasör) ve EnvironmentName için özel değerlerinizi kullanarak komut dosyasını aşağıdaki gibi çalıştırın.
+1. Aşağıdaki gibi, SubscriptionID, LabName, ResourceGroupName, Depoadı, TemplateName (git deposunda klasörü) ve EnvironmentName değerlerini kullanarak betiği çalıştırın.
 
    ```powershell
    ./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG000000" -RepositoryName "myRepository" -TemplateName "My Environment template name" -EnvironmentName "myGroupEnv"
    ```
 
-Kaynak Yöneticisi şablonlarıyla kaynakları dağıtmak için Azure CLI'yi de kullanabilirsiniz. Daha fazla bilgi için Kaynak [Yöneticisi şablonları ve Azure CLI ile kaynakları dağıt'a](../azure-resource-manager/templates/deploy-cli.md)bakın.
+Ayrıca, Kaynak Yöneticisi şablonlarıyla kaynakları dağıtmak için Azure CLı 'yi de kullanabilirsiniz. Daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynak dağıtma](../azure-resource-manager/templates/deploy-cli.md).
 
 > [!NOTE]
-> Azure PowerShell'i kullanarak Kaynak Yöneticisi şablonundan yalnızca laboratuvar sahibi izinlerine sahip bir kullanıcı VM'ler oluşturabilir. Bir Kaynak Yöneticisi şablonu kullanarak VM oluşturma otomatikleştirmek istiyorsanız ve sadece kullanıcı izinleri var, CLI [komutu az lab vm oluştur](/cli/azure/lab/vm#az-lab-vm-create)kullanabilirsiniz.
+> Yalnızca laboratuvar sahibi izinleri olan bir Kullanıcı, Azure PowerShell kullanarak Kaynak Yöneticisi şablondan VM 'Ler oluşturabilir. VM oluşturmayı Kaynak Yöneticisi şablonu kullanarak otomatikleştirmek istiyorsanız ve yalnızca kullanıcı izinleriniz varsa, [az Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create)CLI komutunu kullanabilirsiniz.
 
-## <a name="resource-manager-template-limitations-in-devtest-labs"></a>DevTest Labs'da Kaynak Yöneticisi şablon sınırlamaları
+## <a name="resource-manager-template-limitations-in-devtest-labs"></a>DevTest Labs 'de şablon kısıtlamalarını Kaynak Yöneticisi
 
-DevTest Labs'da Kaynak Yöneticisi şablonlarını kullanırken bu sınırlamaları göz önünde bulundurun:
+DevTest Labs 'de Kaynak Yöneticisi şablonları kullanırken bu sınırlamaları göz önünde bulundurun:
 
-- Kaynak Yöneticisi şablonları varolan kaynakların çoğuna başvuramaz. Yalnızca yeni kaynaklar oluşturabilirler. Varolan kaynaklara başvuran DevTest Labs dışında kullandığınız Kaynak Yöneticisi şablonlarınız varsa, bunları DevTest Labs'da kullanamazsınız. Bunun tek istisnası, varolan bir sanal ağa başvuruda bulunabiliyor olmasıdır.
+- Kaynak Yöneticisi şablonlar, en fazla mevcut kaynaklara başvuramaz. Yalnızca yeni kaynaklar oluşturabilir. Mevcut kaynaklara başvuran DevTest Labs dışında kullandığınız Kaynak Yöneticisi şablonunuz varsa, bunları DevTest Labs 'de kullanamazsınız. Tek özel durum, var olan bir sanal ağa başvurkabilmeniz için geçerlidir.
 
-- Kaynak Yöneticisi şablonundan oluşturulan laboratuvar VM'lerinden formüller veya özel görüntüler oluşturamazsınız.
+- Kaynak Yöneticisi şablonundan oluşturulan laboratuvar VM 'lerinden formüller veya özel görüntüler oluşturamazsınız.
 
-- Kaynak Yöneticisi şablonlarını dağıttığınızda çoğu ilke değerlendirilmez.
+- Kaynak Yöneticisi şablonlarını dağıtırken çoğu ilke değerlendirilmez.
 
-  Örneğin, bir kullanıcının yalnızca beş VM oluşturabileceği bir laboratuvar ilkeniz olabilir. Ancak, bir kullanıcı düzinelerce VM oluşturan bir Kaynak Yöneticisi şablonu dağıtabilir. Değerlendirilmeyan ilkeler şunlardır:
+  Örneğin, bir kullanıcının yalnızca beş VM oluşturmakta olabileceği bir laboratuvar ilkenize sahip olabilirsiniz. Ancak, bir Kullanıcı, düzinelerce VM 'Ler oluşturan bir Kaynak Yöneticisi şablonu dağıtabilir. Değerlendirilmeyen ilkeler şunları içerir:
 
   - Kullanıcı başına VM sayısı
 
-  - Laboratuvar kullanıcısı başına premium VM sayısı
+  - Laboratuvar kullanıcısı başına Premium VM sayısı
 
-  - Laboratuvar kullanıcısı başına premium disk sayısı
+  - Laboratuvar kullanıcısı başına Premium disk sayısı
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Bir VM oluşturduktan sonra, VM'nin yönetim bölmesindeki **Bağlan'ı** seçerek VM'ye bağlanabilirsiniz.
-- Laboratuarınızdaki **Sanal Makineler listemdeki** ortamı seçerek bir ortamdaki kaynakları görüntüleyin ve yönetin.
-- Azure [Quickstart şablon galerisinden Azure Kaynak Yöneticisi şablonlarını](https://github.com/Azure/azure-quickstart-templates)keşfedin.
+- Bir VM oluşturduktan sonra VM 'nin Yönetim bölmesinde **Bağlan** ' ı seçerek VM 'ye bağlanabilirsiniz.
+- Laboratuvarınızda **sanal makinelerim** listesinden ortamı seçerek bir ortamdaki kaynakları görüntüleyin ve yönetin.
+- [Azure hızlı başlangıç şablonu galerisindeki Azure Resource Manager şablonlarını](https://github.com/Azure/azure-quickstart-templates)keşfet.

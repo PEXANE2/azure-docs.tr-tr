@@ -1,5 +1,5 @@
 ---
-title: PowerShell'i kullanarak bir Azure dahili Yük Dengeleyicisi oluşturun
+title: PowerShell kullanarak Azure iç Load Balancer oluşturma
 titleSuffix: Azure Load Balancer
 description: Azure PowerShell modülünü Azure Resource Manager ile birlikte kullanarak iç yük dengeleyici oluşturmayı öğrenin
 services: load-balancer
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: da564f8d49675ba0d51c5120768028e9d333e2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76045480"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Azure PowerShell modülünü kullanarak iç yük dengeleyici oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalında](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
-> * [Powershell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
+> * [Azure portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Şablon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
@@ -48,7 +48,7 @@ Bir yük dengeleyiciyi dağıtmak için aşağıdaki nesneleri oluşturmanız ge
 * Araştırma yapılandırması: Sanal makineler için sistem durumu araştırmaları.
 * Gelen NAT kuralları: Sanal makinelere doğrudan erişim için bağlantı noktası kuralları.
 
-Yük dengeleyici bileşenleri hakkında daha fazla bilgi için [Azure Yük Dengeleyici sağl](concepts-limitations.md#load-balancer-components)
+Yük dengeleyici bileşenleri hakkında daha fazla bilgi için bkz. [Azure Load Balancer bileşenleri](concepts-limitations.md#load-balancer-components).
 
 Aşağıdaki adımlarda iki sanal makine arasında yük dengeleyici yapılandırma işlemleri açıklanmaktadır.
 
@@ -251,7 +251,7 @@ Sanal makine oluşturulduktan sonra ağ arabirimini ekleyin.
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>1. Adım: Yük dengeleyici kaynağını depolayın
 
-Yük dengeleyici kaynağını bir değişkene depolayın (henüz yapmadıysanız). **$lb**değişken adını kullanıyoruz. Komut dosyasındaki öznitelik değerleri için, önceki adımlarda oluşturulan yük dengeleyici kaynaklarının adlarını kullanın.
+Yük dengeleyici kaynağını bir değişkene depolayın (henüz yapmadıysanız). **$Lb**değişken adını kullanıyoruz. Betikteki öznitelik değerleri için, önceki adımlarda oluşturulan yük dengeleyici kaynaklarının adlarını kullanın.
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG

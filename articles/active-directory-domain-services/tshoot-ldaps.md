@@ -1,6 +1,6 @@
 ---
-title: Azure AD Etki Alanı Hizmetlerinde güvenli LDAP sorun giderme | Microsoft Dokümanlar
-description: Azure Active Directory Etki Alanı Hizmetleri yönetilen etki alanı için güvenli LDAP (LDAPS) sorun giderme öğrenin
+title: Azure AD Domain Services 'de Güvenli LDAP sorunlarını giderme | Microsoft Docs
+description: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP (LDAPS) sorunlarını giderme hakkında bilgi edinin
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,36 +12,36 @@ ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: iainfou
 ms.openlocfilehash: 22d1b6e2344256b52cfdbc48720a680a770a4216
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77132161"
 ---
-# <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Etki Alanı Hizmetleri yönetilen etki alanında güvenli LDAP bağlantı sorunlarını giderme
+# <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanında güvenli LDAP bağlantısı sorunlarını giderme
 
-Azure Active Directory Domain Services (Azure AD DS) ile iletişim kurmak için hafif dizin erişim protokolü (LDAP) kullanan uygulamalar ve hizmetler [güvenli LDAP kullanacak şekilde yapılandırılabilir.](tutorial-configure-ldaps.md) Güvenli LDAP'nin düzgün çalışması için uygun bir sertifika ve gerekli ağ bağlantı noktalarının açık olması gerekir.
+Azure Active Directory Domain Services (Azure AD DS) ile iletişim kurmak için Basit Dizin Erişim Protokolü (LDAP) kullanan uygulamalar ve hizmetler, [GÜVENLI LDAP kullanacak şekilde yapılandırılabilir](tutorial-configure-ldaps.md). Güvenli LDAP 'nin düzgün çalışması için uygun bir sertifika ve gerekli ağ bağlantı noktalarının açık olması gerekir.
 
-Bu makale, Azure AD DS'de güvenli LDAP erişimiyle ilgili sorunları gidermenize yardımcı olur.
+Bu makale, Azure AD DS 'da Güvenli LDAP erişimiyle ilgili sorunları gidermenize yardımcı olur.
 
-## <a name="common-connection-issues"></a>Sık karşılaşılan bağlantı sorunları
+## <a name="common-connection-issues"></a>Yaygın bağlantı sorunları
 
-Güvenli LDAP kullanarak Azure AD DS yönetilen bir etki alanına bağlanmada sorun yaşıyorsanız, aşağıdaki sorun giderme adımlarını gözden geçirin. Her sorun giderme adımından sonra, Azure AD DS yönetilen etki alanına yeniden bağlanmayı deneyin:
+Güvenli LDAP kullanarak Azure AD DS yönetilen bir etki alanına bağlanmada sorun yaşıyorsanız, aşağıdaki sorun giderme adımlarını gözden geçirin. Her bir sorun giderme adımından sonra Azure AD DS yönetilen etki alanına yeniden bağlanmayı deneyin:
 
-* Güvenli LDAP sertifikasının veren zinciri istemciye güvenilmelidir. Güveni oluşturmak için istemcideki güvenilen kök sertifika deposuna Root sertifika yetkilisini (CA) ekleyebilirsiniz.
-    * [Sertifikayı dışa aktarDığınızdan ve istemci bilgisayarlara uyguladığınıza][client-cert]emin olun.
-* Yönetilen etki alanınızın güvenli LDAP sertifikasının *Özne'de* DNS adı veya *Konu Alternatif Adları* özniteliği olduğunu doğrulayın.
-    * Güvenli [LDAP sertifika gereksinimlerini][certs-prereqs] gözden geçirin ve gerekirse yedek sertifika oluşturun.
-* *LDP.exe* gibi LDAP istemcisinin IP adresini değil, DNS adını kullanarak güvenli LDAP bitiş noktasına bağladığını doğrulayın.
-    * Azure AD DS yönetilen etki alanına uygulanan sertifika, hizmetin IP adreslerini değil, yalnızca DNS adlarını içerir.
-* LDAP istemcisinin bağlandığı DNS adını kontrol edin. Azure AD DS yönetilen etki alanında güvenli LDAP için genel IP adresine çözüm lenmelidir.
-    * DNS adı iç IP adresine çözülürse, harici IP adresine çözüm bulmak için DNS kaydını güncelleştirin.
-* Dış bağlantı için ağ güvenlik grubu, Internet'ten TCP bağlantı noktası 636'ya olan trafiğini sağlayan bir kural içermelidir.
-    * Azure AD DS yönetilen etki alanına doğrudan sanal ağa bağlı ancak dış bağlantılara bağlı kaynaklardan güvenli LDAP kullanarak bağlanabiliyorsanız, [güvenli LDAP trafiğine izin vermek için bir ağ güvenlik grubu kuralı oluşturduğunuzdan][ldaps-nsg]emin olun.
+* Güvenli LDAP sertifikasının veren zincirinin istemcide güvenilir olması gerekir. Güven sağlamak için, kök sertifika yetkilisini (CA) istemcideki güvenilen kök sertifika deposuna ekleyebilirsiniz.
+    * [Sertifikayı dışarı aktarıp istemci bilgisayarlara uyguladığınızdan][client-cert]emin olun.
+* Yönetilen etki alanınız için Güvenli LDAP sertifikasının *Konu* veya *Konu ALTERNATIF adları* özniteliğinde DNS adına sahip olduğunu doğrulayın.
+    * [GÜVENLI LDAP sertifika gereksinimlerini][certs-prereqs] gözden geçirin ve gerekirse bir değiştirme sertifikası oluşturun.
+* *Ldp. exe* gibi LDAP ISTEMCISININ, IP adresi DEĞIL, DNS adı kullanarak Güvenli LDAP uç noktasına bağlandığını doğrulayın.
+    * Azure AD DS tarafından yönetilen etki alanına uygulanan sertifika, hizmetin IP adreslerini değil, yalnızca DNS adlarını içermez.
+* LDAP istemcisinin bağlandığı DNS adını denetleyin. Azure AD DS yönetilen etki alanında güvenli LDAP için genel IP adresine çözümlenmelidir.
+    * DNS adı iç IP adresine çözümlenirse, DNS kaydını dış IP adresine çözülecek şekilde güncelleştirin.
+* Dış bağlantı için ağ güvenlik grubu, internet 'ten gelen TCP bağlantı noktası 636 trafiğine izin veren bir kural içermelidir.
+    * Sanal ağa doğrudan bağlı ancak dış bağlantılara sahip olmayan kaynaklardan Güvenli LDAP kullanarak Azure AD DS yönetilen etki alanına bağlanabiliyorsa, [GÜVENLI LDAP trafiğine izin veren bir ağ güvenlik grubu kuralı oluşturduğunuzdan][ldaps-nsg]emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorunlarınız hala varsa, ek sorun giderme yardımı için [bir Azure destek isteği açın.][azure-support]
+Hala sorun yaşıyorsanız, ek sorun giderme yardımı için [bir Azure destek isteği açın][azure-support] .
 
 <!-- INTERNAL LINKS -->
 [azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

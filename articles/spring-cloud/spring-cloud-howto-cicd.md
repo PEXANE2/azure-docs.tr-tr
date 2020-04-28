@@ -1,31 +1,31 @@
 ---
-title: Azure Bahar Bulutu için CI/CD
-description: Azure Bahar Bulutu için CI/CD
+title: Azure yay bulutu için CI/CD
+description: Azure yay bulutu için CI/CD
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: brendm
 ms.openlocfilehash: f329fb5472c5a2eab6f22a2e81b19d90e7045330
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76278523"
 ---
-# <a name="cicd-for-azure-spring-cloud"></a>Azure Bahar Bulutu için CI/CD
+# <a name="cicd-for-azure-spring-cloud"></a>Azure yay bulutu için CI/CD
 
-Sürekli tümleştirme ve sürekli teslim araçları, geliştiricilerin güncelleştirmeleri en az çaba ve riskle mevcut uygulamalara hızla dağıtmalarına olanak tanır. Azure DevOps, bu önemli işleri düzenlemenize ve denetlemenize yardımcı olur. Şu anda Azure İlkbahar Bulutu belirli bir Azure DevOps eklentisi sunmuyor.  Ancak, Bir [Azure CLI görevini](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops)kullanarak Bahar Bulutu uygulamalarınızı DevOps ile tümleştirebilirsiniz. Bu makalede, Azure DevOps ile tümleştirmek için Azure Yay Bulutu ile bir Azure CLI görevinin nasıl kullanılacağı gösterecektir.
+Sürekli tümleştirme ve sürekli teslim araçları, geliştiricilerin mevcut uygulamalara en az çaba ve riske sahip güncelleştirmeleri hızlı bir şekilde dağıtmasını sağlar. Azure DevOps, bu anahtar işleri düzenlemenize ve denetlemenize yardımcı olur. Şu anda Azure yay bulutu belirli bir Azure DevOps eklentisi sunmaz.  Ancak, [Azure CLI görevi](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli?view=azure-devops)kullanarak Spring Cloud uygulamalarınızı DevOps ile tümleştirebilirsiniz. Bu makalede, Azure Spring Cloud ile Azure DevOps ile tümleştirme için bir Azure CLı görevinin nasıl kullanılacağı gösterilir.
 
-## <a name="create-an-azure-resource-manager-service-connection"></a>Azure Kaynak Yöneticisi hizmet bağlantısı oluşturma
+## <a name="create-an-azure-resource-manager-service-connection"></a>Azure Resource Manager hizmet bağlantısı oluşturma
 
-Azure DevOps projenizde Azure Kaynak Yöneticisi hizmeti bağlantısı nın nasıl oluşturulduğunu öğrenmek için [bu makaleyi](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) okuyun. Azure Bahar Bulutu hizmet örneğiniz için kullandığınız aboneliği seçtiğinizden emin olun.
+Azure DevOps projenize Azure Resource Manager bir hizmet bağlantısı oluşturmayı öğrenmek için [Bu makaleyi](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) okuyun. Azure Spring Cloud Service örneğiniz için kullandığınız aboneliğin aynısını seçtiğinizden emin olun.
 
-## <a name="azure-cli-task-templates"></a>Azure CLI görev şablonları
+## <a name="azure-cli-task-templates"></a>Azure CLı görev şablonları
 
-### <a name="deploy-artifacts"></a>Eserleri dağıtma
+### <a name="deploy-artifacts"></a>Yapıtları dağıt
 
-Bir dizi `tasks`. Bu parçacık, uygulamayı oluşturmak için önce bir Maven görevi tanımlar, ardından Azure İlkbahar Bulutu Azure CLI uzantısını kullanarak JAR dosyasını dağıtan ikinci bir görev tanımlar.
+Bir serisini kullanarak projelerinizi derleyebilir ve dağıtabilirsiniz `tasks`. Bu kod parçacığı ilk olarak, uygulamayı derlemek için bir Maven görevi tanımlar ve ardından Azure Spring Cloud Azure CLı uzantısını kullanarak JAR dosyasını dağıtan ikinci bir görevdir.
 
 ```yaml
 steps:
@@ -42,9 +42,9 @@ steps:
       # deploy other app
 ```
 
-### <a name="deploy-from-source"></a>Kaynaktan dağıtma
+### <a name="deploy-from-source"></a>Kaynaktan dağıt
 
-Ayrı bir yapı adımı olmadan doğrudan Azure'a dağıtmak mümkündür.
+Ayrı bir derleme adımı olmadan doğrudan Azure 'a dağıtım yapılabilir.
 
 ```yaml
 - task: AzureCLI@1

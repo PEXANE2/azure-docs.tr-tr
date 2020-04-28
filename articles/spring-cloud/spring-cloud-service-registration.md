@@ -1,26 +1,26 @@
 ---
-title: Servis kayıt defterini ve keşfi otomatikleştirin
-description: Bahar Bulutu Hizmet Kayıt Defteri'ni kullanarak hizmet bulma ve kaydetmeyi otomatikleştirin
+title: Hizmet kayıt defteri ve bulmayı otomatikleştirin
+description: Yay bulut hizmeti kayıt defteri 'ni kullanarak hizmet bulmayı ve kaydı otomatikleştirmeyi öğrenin
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: brendm
 ms.openlocfilehash: 6c217096f0ba4200f49bd1fd8056768a6f6f6dbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76278850"
 ---
-# <a name="discover-and-register-your-spring-cloud-services"></a>Spring Cloud hizmetlerinizi keşfedin ve kaydedin
+# <a name="discover-and-register-your-spring-cloud-services"></a>Spring Cloud Services 'ı bulma ve kaydetme
 
-Service Discovery, mikro hizmet tabanlı bir mimari için önemli bir gereksinimdir.  Her istemcinin el ile yapılandırılması zaman alır ve insan hatası olasılığını ortaya çıkarır.  Azure İlkbahar Bulut Hizmet Kayıt Defteri bu sorunu çözer.  Bir hizmet kayıt defteri sunucusu yapılandırıldıktan sonra, uygulamanızın mikro hizmetleri için hizmet kaydını ve keşfini denetler. Service Registry sunucusu dağıtılan mikro hizmetlerin bir kayıt defterini tutar, istemci tarafı yük dengelemesine olanak tanır ve servis sağlayıcılarını DNS'ye güvenmeden istemcilerden ayırabilir.
+Hizmet bulma, mikro hizmet tabanlı bir mimari için anahtar gereksinimidir.  Her bir istemciyi el ile yapılandırmak zaman alır ve insan hatası olasılığını tanıtır.  Azure Spring Cloud Service kayıt defteri Bu sorunu çözer.  Yapılandırıldıktan sonra bir hizmet kayıt defteri sunucusu, uygulamanızın mikro hizmetleri için hizmet kaydını ve bulmayı denetler. Hizmet kayıt defteri sunucusu dağıtılan mikro hizmetlerin bir kayıt defterini tutar, DNS 'ye bağlı olmadan istemci tarafı yük dengelemesi ve hizmet sağlayıcılarını istemcilerden ayırır.
 
-## <a name="register-your-application-using-spring-cloud-service-registry"></a>Bahar Bulutu Hizmet Kayıt Defteri'ni kullanarak başvurunuzu kaydedin
+## <a name="register-your-application-using-spring-cloud-service-registry"></a>Spring Cloud Service kayıt defteri 'ni kullanarak uygulamanızı kaydetme
 
-Başvurunuzun Bahar Bulutu Hizmet Kayıt Defteri'ni kullanarak hizmet kaydı nı ve keşfi yönetebilmeleri için, uygulamanın *pom.xml* dosyasına birkaç bağımlılık eklenmelidir.
-*Pom.xml'inize* *spring-cloud-starter-netflix-eureka-client* ve *spring-cloud-starter-azure-cloud-client* bağımlılıklarını ekleyin
+Uygulamanızın, yay bulut hizmeti kayıt defteri kullanarak hizmet kaydını ve bulmayı yönetebilmesi için, uygulamanın *POG. xml* dosyasına birkaç bağımlılık eklenmelidir.
+*Spring-Cloud-Starter-Netflix-Eureka-Client* ve *Spring-Cloud-Starter-Azure-Spring-Cloud-Client* için, *Pod. xml* dosyanıza bağımlılıklar ekleyin
 
 ```xml
     <dependency>
@@ -34,9 +34,9 @@ Başvurunuzun Bahar Bulutu Hizmet Kayıt Defteri'ni kullanarak hizmet kaydı nı
     </dependency>
 ```
 
-## <a name="update-the-top-level-class"></a>Üst düzey sınıfı güncelleştirme
+## <a name="update-the-top-level-class"></a>En üst düzey sınıfı güncelleştirme
 
-Son olarak, uygulamanızın üst düzey sınıfına bir ek açıklama ekliyoruz
+Son olarak, uygulamanızın en üst düzey sınıfına bir ek açıklama ekleyeceğiz
 
  ```java
     package foo.bar;
@@ -52,6 +52,6 @@ Son olarak, uygulamanızın üst düzey sınıfına bir ek açıklama ekliyoruz
     }
  ```
 
-Bahar Bulut Hizmet Kayıt Defteri sunucu bitiş noktası, uygulamanızda bir ortam değişkeni olarak enjekte edilecektir.  Microservices artık kendilerini Hizmet Kayıt Defteri sunucusuna kaydedebilecek ve diğer bağımlı mikro hizmetleri keşfedebilecektir.
+Yay bulutu hizmeti kayıt defteri sunucu uç noktası, uygulamanıza bir ortam değişkeni olarak eklenecektir.  Mikro hizmetler, kendilerini hizmet kayıt defteri sunucusuna kaydedebilve diğer bağımlı mikro hizmetleri keşfedebilecektir.
 
-Değişikliklerin sunucudan tüm mikro hizmetlere yayılmasının birkaç dakika sürebileceğini unutmayın.
+Değişikliklerin sunucudan tüm mikro hizmetlere yayılması birkaç dakika sürebileceğini unutmayın.

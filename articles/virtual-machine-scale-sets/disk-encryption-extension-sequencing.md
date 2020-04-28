@@ -1,34 +1,34 @@
 ---
-title: Azure Disk Şifreleme ve Azure sanal makine ölçeği uzantı sıralamasını ayarlar
-description: Bu makalede, Linux IaaS VM'ler için Microsoft Azure Disk Şifrelemesi etkinleştirme ile ilgili yönergeler sağlanmaktadır.
+title: Azure disk şifrelemesi ve Azure sanal makine ölçek kümeleri uzantı sıralaması
+description: Bu makale, Linux IaaS VM 'Leri için Microsoft Azure disk şifrelemeyi etkinleştirme hakkında yönergeler sağlar.
 author: msmbaldwin
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.openlocfilehash: aa638b86b0788b8c274f9dcb3c04c1fc385b4ae1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76279021"
 ---
-# <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Sanal makine ölçeği kümesi uzantısı sıralaması ile Azure Disk Şifreleme'yi kullanma
+# <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Sanal makine ölçek kümesi uzantısı sıralaması ile Azure disk şifrelemesini kullanma
 
-Azure disk şifrelemesi gibi uzantılar, belirli bir sırada ayarlanan bir Azure sanal makine ölçeğine eklenebilir. Bunu yapmak için [uzantı sıralamasını](virtual-machine-scale-sets-extension-sequencing.md)kullanın. 
+Azure Disk Şifrelemesi gibi uzantılar, belirli bir sırada bir Azure sanal makineler ölçek kümesine eklenebilir. Bunu yapmak için [uzantı sıralaması](virtual-machine-scale-sets-extension-sequencing.md)kullanın. 
 
-Genel olarak, şifreleme bir diske uygulanmalıdır:
+Genel olarak, bir diske şifreleme uygulanmalıdır:
 
-- Diskleri veya birimleri hazırlayan uzantılardan veya özel komut dosyalarından sonra.
-- Şifrelenmiş diskler veya birimlerdeki verilere erişen veya kullanan uzantılar veya özel komut dosyaları ndan önce.
+- Ya da diskleri veya birimleri hazırlayan özel komut dosyalarından sonra.
+- Şifrelenmiş disklerdeki veya birimlerdeki verilere erişen veya bu verileri kullanan özel betiklerden önce.
 
-Her iki durumda `provisionAfterExtensions` da, özellik sırayla daha sonra eklenmesi gereken uzantıyı belirtir.
+Her iki durumda da, `provisionAfterExtensions` özelliği dizide daha sonra hangi uzantının ekleneceğini belirler.
 
-## <a name="sample-azure-templates"></a>Azure şablonlarını örnekle
+## <a name="sample-azure-templates"></a>Örnek Azure şablonları
 
-Azure Disk Şifrelemesinin başka bir uzantıdan `provisionAfterExtensions` sonra uygulanmasını istiyorsanız, özelliği AzureDiskEncryption uzantısı bloğuna koyun. 
+Başka bir uzantıdan sonra Azure disk şifrelemesi 'nin uygulanmasını istiyorsanız, `provisionAfterExtensions` özelliği AzureDiskEncryption Extension bloğuna koyun. 
 
-Bir Windows diskini başlattıve biçimlendiren powershell komut dosyası olan "CustomScriptExtension" ve ardından "AzureDiskEncryption" adlı bir örnek aşağıda verilmiştir:
+Aşağıda, bir Windows diskini başlatan ve biçimlendiren "AzureDiskEncryption" tarafından izlenen bir PowerShell betiği olan "CustomScriptExtension" kullanılarak bir örnek verilmiştir:
 
 ```json
 "virtualMachineProfile": {
@@ -84,9 +84,9 @@ Bir Windows diskini başlattıve biçimlendiren powershell komut dosyası olan "
 }
 ```
 
-Azure Disk Şifrelemesinin başka bir uzantıdan `provisionAfterExtensions` önce uygulanmasını istiyorsanız, özelliği takip etmek üzere uzantı bloğuna koyun.
+Azure disk şifrelemesi 'nin başka bir uzantıdan önce uygulanmasını istiyorsanız, `provisionAfterExtensions` özelliği izlenecek uzantının bloğuna koyun.
 
-Windows tabanlı bir Azure VM'de izleme ve tanılama özellikleri sağlayan bir uzantı olan "AzureDiskSSettings" ve ardından "AzureDiskEncryption" kullanılarak bir örnek verilmiştir:
+Aşağıda, Windows tabanlı bir Azure VM 'de izleme ve tanılama özellikleri sağlayan bir uzantı olan "AzureDiskEncryption" ve arkasından "VMDiagnosticsSettings" kullanılarak sunulan bir örnek verilmiştir:
 
 
 ```json
@@ -151,14 +151,14 @@ Windows tabanlı bir Azure VM'de izleme ve tanılama özellikleri sağlayan bir 
 }
 ```
 
-Daha ayrıntılı bir şablon için bkz:
-* Diski (Linux) biçimlendiren özel bir kabuk komut dosyasından sonra Azure Disk Şifreleme uzantısını uygulayın: [deploy-extseq-linux-ADE-after-customscript.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
+Daha ayrıntılı bir şablon için bkz.:
+* Diski biçimlendiren özel bir kabuk betikten sonra Azure disk şifrelemesi uzantısını uygulama (Linux): [Deploy-extseq-Linux-Ade-After-CustomScript. JSON](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Uzantı sıralaması hakkında daha fazla bilgi edinin: [Sanal makine ölçek kümelerinde sıra uzantısı sağlama.](virtual-machine-scale-sets-extension-sequencing.md)
-- `provisionAfterExtensions` Özellik hakkında daha fazla bilgi edinin: [Microsoft.Compute virtualMachineScaleSets/extensions şablon başvurusu.](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)
-- [Sanal makine ölçek kümeleri için Azure Disk Şifrelemesi](disk-encryption-overview.md)
-- [Azure CLI'yi kullanarak sanal makine ölçeği kümelerini şifreleme](disk-encryption-cli.md)
-- [Azure PowerShell'i kullanarak sanal makine ölçeği kümelerini şifreleme](disk-encryption-powershell.md)
-- [Azure Disk Şifreleme için önemli bir kasa oluşturma ve yapılandırma](disk-encryption-key-vault.md)
+- Uzantı sıralaması hakkında daha fazla bilgi edinin: [sanal makine ölçek kümelerinde dizi uzantısı sağlama](virtual-machine-scale-sets-extension-sequencing.md).
+- `provisionAfterExtensions` Özelliği hakkında daha fazla bilgi edinin: [Microsoft. COMPUTE virtualMachineScaleSets/Extensions şablon başvurusu](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions).
+- [Sanal Makine Ölçek Kümeleri için Azure disk şifrelemesi](disk-encryption-overview.md)
+- [Azure CLı kullanarak sanal makine ölçek kümelerini şifreleme](disk-encryption-cli.md)
+- [Azure PowerShell kullanarak bir sanal makine ölçek kümelerini şifreleme](disk-encryption-powershell.md)
+- [Azure disk şifrelemesi için Anahtar Kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md)

@@ -1,6 +1,6 @@
 ---
-title: PHP ile Azure Bildirim Hub'ları nasıl kullanılır?
-description: Php arka uçtan Azure Bildirim Hub'larını nasıl kullanacağınızı öğrenin.
+title: PHP ile Azure Notification Hubs kullanma
+description: Azure Notification Hubs bir PHP arka ucundan nasıl kullanacağınızı öğrenin.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -17,28 +17,28 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76263855"
 ---
-# <a name="how-to-use-notification-hubs-from-php"></a>PHP'den Bildirim Hub'ları nasıl kullanılır?
+# <a name="how-to-use-notification-hubs-from-php"></a>PHP 'den Notification Hubs kullanma
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-MSDN konu [Bildirim Hub'ları REST API'lerinde](https://msdn.microsoft.com/library/dn223264.aspx)açıklandığı gibi Bildirim Hub'ı REST arabirimini kullanarak Java/PHP/Ruby arka ucundan tüm Bildirim Hub'ları özelliklerine erişebilirsiniz.
+Bir Java/PHP/Ruby arka ucundan, MSDN konusunda [NOTIFICATION HUBS REST API 'lerinde](https://msdn.microsoft.com/library/dn223264.aspx)açıklandığı gibi Bildirim Hub 'ı Rest arabirimini kullanarak tüm Notification Hubs özelliklerine erişebilirsiniz.
 
-Bu konuda nasıl göstereceğimiz:
+Bu konuda nasıl yapılacağını göstereceğiz:
 
-* PHP'deki Bildirim Hub'ları özellikleri için bir REST istemcisi oluşturun;
-* PHP'de arka uç bölümünü uygulayarak seçtiğiniz mobil platform için [Eğitime Başla'yı](notification-hubs-ios-apple-push-notification-apns-get-started.md) izleyin.
+* PHP 'de Notification Hubs özellikleri için bir REST istemcisi oluşturun;
+* Seçtiğiniz mobil platformunuzun [Başlangıç öğreticisini](notification-hubs-ios-apple-push-notification-apns-get-started.md) , php 'deki arka uç bölümünü uygulayarak izleyin.
 
 ## <a name="client-interface"></a>İstemci arabirimi
 
-Ana istemci [arabirimi, .NET Bildirim Hub'ları SDK'da](https://msdn.microsoft.com/library/jj933431.aspx)bulunan ve şu anda bu sitede bulunan tüm öğreticileri ve örnekleri doğrudan tercüme etmenizi sağlayan ve topluluk tarafından internet üzerinden katkıda bulunan aynı yöntemleri sağlayabilir.
+Ana istemci arabirimi, bu sitede mevcut olan tüm öğreticileri ve örnekleri doğrudan çevirebilmeniz ve Internet 'teki topluluk tarafından katkıda bulungirmenize olanak sağlayan [.net Notification Hubs SDK 'sında](https://msdn.microsoft.com/library/jj933431.aspx)kullanılabilen yöntemlerin aynısını sağlayabilir.
 
-[PHP REST sarıcı örneğinde]bulunan tüm kodları bulabilirsiniz.
+[Php Rest sarmalayıcı örneğinde]bulunan tüm kodu bulabilirsiniz.
 
 Örneğin, bir istemci oluşturmak için:
 
@@ -46,7 +46,7 @@ Ana istemci [arabirimi, .NET Bildirim Hub'ları SDK'da](https://msdn.microsoft.c
     $hub = new NotificationHub("connection string", "hubname");
     ```
 
-iOS yerel bildirimi göndermek için:
+İOS yerel bildirimi göndermek için:
 
     ```php
     $notification = new Notification("apple", '{"aps":{"alert": "Hello!"}}');
@@ -55,18 +55,18 @@ iOS yerel bildirimi göndermek için:
 
 ## <a name="implementation"></a>Uygulama
 
-Zaten yapmadıysanız, arka uç uygulamanız gereken son bölüme kadar [Başlat'ın öğreticisini] izleyin.
-Ayrıca, isterseniz [PHP REST sarıcı örneğinden] kodu kullanabilirsiniz ve doğrudan öğretici bölümüne [tamamlayın.](#complete-tutorial)
+Henüz yapmadıysanız, arka ucunu uygulamak istediğiniz son bölüme kadar [kullanmaya başlayın öğreticisini] takip edin.
+Ayrıca, [php Rest sarmalayıcı örneğindeki] kodu kullanabilir ve doğrudan [öğreticiyi tamamlayın](#complete-tutorial) bölümüne gidebilirsiniz.
 
-Tam bir REST sarıcı uygulamak için tüm ayrıntıları [MSDN](https://msdn.microsoft.com/library/dn530746.aspx)bulunabilir. Bu bölümde, Bildirim Hub'larına erişmek için gerekli ana adımların PHP uygulamasını açıklarız:
+Tam REST sarmalayıcı uygulamak için tüm ayrıntılar [MSDN](https://msdn.microsoft.com/library/dn530746.aspx)'de bulunabilir. Bu bölümde, Notification Hubs REST uç noktalarına erişmek için gereken ana adımların PHP uygulamasını açıklıyoruz:
 
 1. Bağlantı dizesini ayrıştırma
-2. Yetkilendirme belirteci oluşturma
-3. HTTP aramasını gerçekleştirin
+2. Yetkilendirme belirtecini oluşturma
+3. HTTP çağrısını gerçekleştirme
 
 ### <a name="parse-the-connection-string"></a>Bağlantı dizesini ayrıştırma
 
-Bağlantı dizesini ayrıştıran oluşturucu istemciyi uygulayan ana sınıf aşağıda veda edebilirsiniz:
+Aşağıda, bağlantı dizesini çözümleyen Oluşturucu olan istemciyi uygulayan ana sınıf verilmiştir:
 
     ```php
     class NotificationHub {
@@ -104,9 +104,9 @@ Bağlantı dizesini ayrıştıran oluşturucu istemciyi uygulayan ana sınıf a�
 
 ### <a name="create-a-security-token"></a>Güvenlik belirteci oluşturma
 
-[SAS Güvenlik Belirteci Oluşturma](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token)hakkında bilgi için Azure belgelerine bakın.
+[SAS güvenlik belirteci oluşturma](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token)hakkında bilgi için Azure belgelerine bakın.
 
-Geçerli `generateSasToken` isteğin `NotificationHub` URI'sini ve bağlantı dizesinden çıkarılan kimlik bilgilerini temel alan belirteci oluşturmak için sınıfa yöntemi ekleyin.
+Geçerli isteğin `generateSasToken` URI 'sini ve `NotificationHub` bağlantı dizesinden ayıklanan kimlik bilgilerini temel alarak belirteci oluşturmak için yöntemini sınıfına ekleyin.
 
     ```php
     private function generateSasToken($uri) {
@@ -126,9 +126,9 @@ Geçerli `generateSasToken` isteğin `NotificationHub` URI'sini ve bağlantı di
     }
     ```
 
-### <a name="send-a-notification"></a>Bildirim gönderme
+### <a name="send-a-notification"></a>Bildirim gönder
 
-İlk olarak, bir bildirimi temsil eden bir sınıf tanımlayalım.
+İlk olarak, bir bildirimi temsil eden bir sınıf tanımlamamıza izin verin.
 
     ```php
     class Notification {
@@ -151,11 +151,11 @@ Geçerli `generateSasToken` isteğin `NotificationHub` URI'sini ve bağlantı di
     }
     ```
 
-Bu sınıf, yerel bildirim gövdesi için bir kapsayıcı veya şablon bildirimi durumunda bir dizi özellik ve biçim (yerel platform veya şablon) ve platforma özgü özellikleri (Apple son kullanma özelliği ve WNS gibi) içeren bir üstbilgi kümesidir üstbilgi).
+Bu sınıf, yerel bir bildirim gövdesi için bir kapsayıcıdır veya bir şablon bildirimi olması durumunda bir dizi özellik ve biçim (yerel platform veya şablon) ve platforma özgü özellikler (Apple Expiration özelliği ve WNS üstbilgileri gibi) içeren bir üst bilgi kümesi.
 
-[Bildirim Hub'ları REST API belgelerine](https://msdn.microsoft.com/library/dn495827.aspx) ve mevcut tüm seçenekler için belirli bildirim platformlarının biçimlerine bakın.
+Kullanılabilir tüm seçenekler için [NOTIFICATION HUBS REST API belgelerine](https://msdn.microsoft.com/library/dn495827.aspx) ve belirli bildirim platformlarına yönelik biçimlere bakın.
 
-Bu sınıfla donanan, artık sınıfın içinde `NotificationHub` bildirim gönder yöntemlerini yazabiliriz:
+Bu sınıfla birlikte, artık `NotificationHub` sınıfın içine gönder bildirim yöntemlerini yazabiliriz:
 
     ```php
     public function sendNotification($notification, $tagsOrTagExpression="") {
@@ -216,13 +216,13 @@ Bu sınıfla donanan, artık sınıfın içinde `NotificationHub` bildirim gönd
     } 
     ```
 
-Yukarıdaki yöntemler, bildirimi göndermek için `/messages` doğru gövde ve üstbilgiile bildirim hub'ınızın bitiş noktasına bir HTTP POST isteği gönderir.
+Yukarıdaki yöntemler, bildirimi göndermek için doğru gövde ve üstbilgilere `/messages` sahip olan Notification Hub 'ının uç noktasına BIR http post isteği gönderir.
 
-## <a name="complete-the-tutorial"></a><a name="complete-tutorial"></a>Öğreticiyi tamamlayın
+## <a name="complete-the-tutorial"></a><a name="complete-tutorial"></a>Öğreticiyi doldurun
 
-Artık bildirimi PHP arka ucundan göndererek Başlat eğitimini tamamlayabilirsiniz.
+Artık bir PHP arka ucunun bildirimini göndererek başlangıç öğreticisini tamamlayabilirsiniz.
 
-Bildirim Hub'ları istemcinizi başlatın [(Başlat öğreticisinde]belirtildiği gibi bağlantı dizesini ve hub adını değiştirin):
+Notification Hubs istemcinizi başlatın (bağlantı dizesini ve hub adını, [kullanmaya başlama öğreticisinde]belirtildiği gibi değiştirin):
 
     ```php
     $hub = new NotificationHub("connection string", "hubname");
@@ -230,7 +230,7 @@ Bildirim Hub'ları istemcinizi başlatın [(Başlat öğreticisinde]belirtildiğ
 
 Ardından, hedef mobil platformunuza bağlı olarak gönderme kodunu ekleyin.
 
-### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Mağazası ve Windows Phone 8.1 (Silverlight olmayan)
+### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Mağazası ve Windows Phone 8,1 (Silverlight olmayan)
 
     ```php
     $toast = '<toast><visual><binding template="ToastText01"><text id="1">Hello from PHP!</text></binding></visual></toast>';
@@ -255,7 +255,7 @@ Ardından, hedef mobil platformunuza bağlı olarak gönderme kodunu ekleyin.
     $hub->sendNotification($notification, null);
     ```
 
-### <a name="windows-phone-80-and-81-silverlight"></a>Windows Phone 8.0 ve 8.1 Silverlight
+### <a name="windows-phone-80-and-81-silverlight"></a>Windows Phone 8,0 ve 8,1 Silverlight
 
     ```php
     $toast = '<?xml version="1.0" encoding="utf-8"?>' .
@@ -270,7 +270,7 @@ Ardından, hedef mobil platformunuza bağlı olarak gönderme kodunu ekleyin.
     $hub->sendNotification($notification, null);
     ```
 
-### <a name="kindle-fire"></a>Kindle Yangın
+### <a name="kindle-fire"></a>Lütfen yangın ateş
 
     ```php
     $message = '{"data":{"msg":"Hello from PHP!"}}';
@@ -278,17 +278,17 @@ Ardından, hedef mobil platformunuza bağlı olarak gönderme kodunu ekleyin.
     $hub->sendNotification($notification, null);
     ```
 
-PHP kodunuzu çalıştırmak, artık hedef aygıtınızda görünen bir bildirim oluşturmalıdır.
+PHP kodunuzun çalıştırılması artık hedef cihazınızda bir bildirim görünür.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Bu konuda, Bildirim Hub'ları için basit bir Java REST istemcisi nasıl oluşturulabileceğimizi gösterdik. Burada yapabilecekleriniz:
+Bu konu başlığında, Notification Hubs için basit bir Java REST istemcisi oluşturmayı gösterdik. Burada yapabilecekleriniz:
 
-* Yukarıdaki tüm kodu içeren tam [PHP REST sarıcı örneğini]indirin.
-* Bildirim Hub'ları etiketleme özelliği hakkında bilgi edinmeye devam edin [Son Dakika Haberleri öğretici]
-* [Kullanıcıları Bildir" öğreticisinde tek tek kullanıcılara bildirim leri iletme hakkında bilgi edinin
+* Yukarıdaki tüm kodu içeren tam [php Rest sarmalayıcı örneğini]indirin.
+* [Son Haberler öğreticisinde Notification Hubs etiketleme özelliğini öğrenmeye devam edin
+* [Kullanıcıları bilgilendir öğreticisini bildirme] içindeki bireysel kullanıcılara yönelik bildirimleri iletme hakkında bilgi edinin
 
-Daha fazla bilgi için [PHP Geliştirici Merkezi'ne](https://azure.microsoft.com/develop/php/)de bakın.
+Daha fazla bilgi için bkz. [php Geliştirici Merkezi](https://azure.microsoft.com/develop/php/).
 
-[PHP REST sarıcı numunesi]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
+[PHP REST sarmalayıcı örneği]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [Başlangıç öğreticisi]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/

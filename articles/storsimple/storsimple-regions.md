@@ -1,65 +1,65 @@
 ---
-title: StorBasit bölge kullanılabilirliği
-description: Çeşitli StorSimple aygıt modellerinin kullanılabildiği Azure bölgelerini açıklar.
+title: StorSimple bölgesi kullanılabilirliği
+description: Çeşitli StorSimple cihaz modellerinin kullanılabildiği Azure bölgelerini açıklar.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
 ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76275120"
 ---
-# <a name="available-regions-for-your-storsimple"></a>StorSimple'ınız için kullanılabilir bölgeler
+# <a name="available-regions-for-your-storsimple"></a>StorSimple için kullanılabilir bölgeler
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure veri merkezleri, müşterinin veri konumuyla ilgili performans, gereksinim ve tercihtaleplerini karşılamak için dünyanın dört bir yanındaki birden fazla coğrafyada çalışır. Azure coğrafyası, dünyanın en az bir Azure Bölgesi içeren tanımlı bir alanıdır. Azure bölgesi, bir veya daha fazla veri merkezi içeren bir coğrafya içindeki bir alandır.
+Azure veri merkezleri, müşterinin performans, gereksinim ve veri konumuyla ilgili tercihleri taleplerini karşılamak için dünyanın dört bir yanındaki birden fazla coğrafi ortamda çalışır. Azure coğrafya, en az bir Azure bölgesi içeren, dünyanın tanımlı bir alanıdır. Bir Azure bölgesi, bir veya daha fazla veri merkezi içeren coğrafya içindeki bir alandır.
 
-Azure bölgesi seçmek çok önemlidir ve bölge seçimi veri ikameti ve egemenlik, hizmet kullanılabilirliği, performans, maliyet ve artıklık gibi etkenlerden etkilenir. Bir bölgeyi nasıl seçeceğiniz hakkında daha fazla bilgi için hangi [Azure bölgesine gidin?](https://azure.microsoft.com/overview/datacenters/how-to-choose/)
+Bir Azure bölgesinin seçilmesi çok önemlidir ve bölge seçimi, veri yerleşimi, hizmet kullanılabilirliği, performans, maliyet ve artıklık gibi faktörlerden etkilenir. Bölge seçme hakkında daha fazla bilgi için [hangi Azure bölgesinin uygun olduğunu seçin?](https://azure.microsoft.com/overview/datacenters/how-to-choose/)
 
-StorSimple çözümü için bölge seçimi özellikle aşağıdaki etkenler tarafından belirlenir:
+StorSimple çözümü için bölge seçimi özellikle aşağıdaki etkenlere göre belirlenir:
 
-- StorSimple Device Manager hizmetinin kullanılabildiği bölgeler.
-- StorSimple fiziksel, bulut veya sanal aygıtın kullanılabildiği ülkeler/bölgeler.
-- Depolama Alanı verilerini depolayan depolama hesaplarının en iyi performans için bulunması gereken bölgeler.
+- StorSimple Aygıt Yöneticisi hizmetinin kullanılabildiği bölgeler.
+- StorSimple fiziksel, bulut veya sanal cihazının kullanılabildiği ülkeler/bölgeler.
+- StorSimple verilerini depolayan depolama hesaplarının en iyi performans için bulunması gereken bölgeler.
 
-Bu öğretici, StorSimple Device Manager hizmeti, şirket içi fiziksel ve bulut aygıtları için bölge kullanılabilirliğini açıklar. Bu makalede yer alan bilgiler StorSimple 8000 ve 1200 serisi cihazlar için geçerlidir.
+Bu öğretici, StorSimple Aygıt Yöneticisi hizmeti, şirket içi fiziksel ve bulut cihazlarıyla ilgili bölge kullanılabilirliğini açıklamaktadır. Bu makalede yer alan bilgiler, StorSimple 8000 ve 1200 serisi cihazlar için geçerlidir.
 
-## <a name="region-availability-for-storsimple-device-manager-service"></a>StorSimple Device Manager hizmeti için bölge durumu
+## <a name="region-availability-for-storsimple-device-manager-service"></a>StorSimple Aygıt Yöneticisi hizmeti için bölge kullanılabilirliği
 
-StorSimple Device Manager hizmeti şu anda 12 genel bölgede ve 2 Azure Resmi bölgesinde desteklenir.
+StorSimple Aygıt Yöneticisi hizmeti şu anda 12 ortak bölgede ve 2 Azure Kamu bölgelerinde desteklenmektedir.
 
-StorSimple Device Manager hizmetini ilk oluşturduğunuzda bir bölge veya konum tanımlarsınız. Genel olarak, aygıtın dağıtıldığı coğrafi bölgeye en yakın konum seçilir. Ancak aygıt ve hizmet farklı konumlarda da dağıtılabilir.
+StorSimple Aygıt Yöneticisi hizmetini ilk oluşturduğunuzda bölge veya konum tanımlarsınız. Genel olarak, cihazın dağıtıldığı coğrafi bölgeye en yakın bir konum seçilir. Ancak cihaz ve hizmet farklı konumlara de dağıtılabilir.
 
-Burada, StorSimple Device Manager hizmetinin Azure genel bulutu için kullanılabildiği ve dağıtılabildiği bölgelerin listesi verebilirsiniz.
+StorSimple Aygıt Yöneticisi hizmetinin Azure genel bulutu 'nda kullanılabildiği ve dağıtılabileceği bölgelerin listesi aşağıda verilmiştir.
 
-![storsimple-device-manager-service-regions](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![StorSimple-Device-Manager-Service-Region](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
-Azure Devlet bulutu için StorSimple Device Manager hizmeti ABD Gov Iowa ve ABD Gov Virginia veri merkezlerinde kullanılabilir.
+Azure Kamu Bulutu için, StorSimple Aygıt Yöneticisi hizmeti US Gov Iowa ve US Gov Virginia veri merkezlerinde kullanılabilir.
 
-## <a name="region-availability-for-data-stored-in-storsimple"></a>StorSimple'da depolanan veriler için bölge kullanılabilirliği
+## <a name="region-availability-for-data-stored-in-storsimple"></a>StorSimple 'da depolanan veriler için bölge kullanılabilirliği
 
-StorBasit veriler Azure depolama hesaplarında fiziksel olarak depolanır ve bu hesaplar tüm Azure bölgelerinde kullanılabilir. Bir Azure depolama hesabı oluşturduğunuzda, depolama hesabının birincil konumu seçilir ve bu da verilerin bulunduğu bölgeyi belirler.
+StorSimple verileri Azure depolama hesaplarında fiziksel olarak depolanır ve bu hesaplar tüm Azure bölgelerinde kullanılabilir. Bir Azure depolama hesabı oluşturduğunuzda, depolama hesabının birincil konumu seçilir ve verilerin bulunduğu bölgeyi belirler.
 
-Bir StorSimple Device Manager hizmetini ilk oluşturduğunuzda ve bir depolama hesabını onunla ilişkilendirdiğinizde, StorSimple Device Manager hizmetiniz ve Azure depolama alanınız iki ayrı konumda olabilir. Böyle bir durumda, StorSimple Cihaz Yöneticisi ve Azure Storage hesabını ayrı ayrı oluşturmanız gerekir.
+İlk olarak bir StorSimple Aygıt Yöneticisi hizmeti oluşturup bir depolama hesabını onunla ilişkilendirdiğinizde, StorSimple Aygıt Yöneticisi hizmetiniz ve Azure depolama alanı iki ayrı konumda olabilir. Böyle bir durumda, StorSimple Cihaz Yöneticisi ve Azure Storage hesabını ayrı ayrı oluşturmanız gerekir.
 
-Genel olarak, depolama hesabınız için servisinizin en yakın bölgesini seçin. Ancak, en yakın Microsoft Azure bölgesi aslında en düşük gecikme gecikmesi olan bölge olmayabilir. Ağ hizmeti performansını ve dolayısıyla çözümün performansını belirleyen gecikmedir. Bu nedenle, farklı bir bölgede bir depolama hesabı seçiyorsanız, hizmetinizle depolama hesabınızla ilişkili bölge arasındaki gecikmelerin ne olduğunu bilmek önemlidir.
+Genel olarak, depolama hesabınız için hizmetinize en yakın bölgeyi seçin. Ancak en yakın Microsoft Azure bölgesi en düşük gecikme süresine sahip olan bölge olmayabilir. Ağ Hizmeti performansını ve bu nedenle çözümün performansını belirleyen gecikmedir. Bu nedenle, farklı bir bölgede bir depolama hesabı tercih ediyorsanız, gecikme sürelerinin hizmetinize ve depolama hesabınızla ilişkili bölgeden ne kadar gecikdiklerini bilmek önemlidir.
 
-StorSimple Cloud Appliance kullanıyorsanız, hizmetin ve ilişkili depolama hesabının aynı bölgede olduğunu öneririz. Farklı bir bölgedeki depolama hesapları düşük performansa neden olabilir.
+StorSimple Cloud Appliance kullanıyorsanız, hizmetin ve ilişkili depolama hesabının aynı bölgede olması önerilir. Farklı bir bölgedeki depolama hesapları, performansın düşmesine neden olabilir.
 
 ## <a name="availability-of-storsimple-device"></a>StorSimple cihazının kullanılabilirliği
 
-Modele bağlı olarak, StorSimple aygıtları farklı coğrafyalarda veya ülkelerde/bölgelerde kullanılabilir.
+Modele bağlı olarak, StorSimple cihazları farklı coğrafi bölgelerde veya ülkelerde/bölgelerde kullanılabilir.
 
-### <a name="storsimple-physical-device-models-81008600"></a>StorBasit fiziksel cihaz (Modeller 8100/8600)
+### <a name="storsimple-physical-device-models-81008600"></a>StorSimple fiziksel cihazı (modeller 8100/8600)
 
-StorSimple 8100 veya 8600 fiziksel aygıtı kullanıyorsanız, cihaz aşağıdaki ülkelerde/bölgelerde kullanılabilir.
+StorSimple 8100 veya 8600 fiziksel cihaz kullanılıyorsa, cihaz aşağıdaki ülkelerde/bölgelerde kullanılabilir.
 
 | #  | Ülke/Bölge        | #  | Ülke/Bölge     | #  | Ülke/Bölge      | #  | Ülke/Bölge             |
 |----|-----------------------|----|--------------------|----|---------------------|----|----------------------------|
@@ -79,25 +79,25 @@ StorSimple 8100 veya 8600 fiziksel aygıtı kullanıyorsanız, cihaz aşağıdak
 | 14 | Almanya               | 29 | Meksika             | 44 | Slovakya            | 59 | Vietnam                    |
 | 15 | Yunanistan                | 30 | Hollanda        | 45 | Slovenya            | 60 | Hırvatistan                    |
 
-Bu liste, daha fazla ülke/bölge eklendikçe değişir. Coğrafyaların en güncel listesi için, [Ürün terimlerinde](https://www.microsoft.com/en-us/licensing/product-licensing/products)Depolama Dizi Terimleri Ekine gidin.
+Bu liste, daha fazla ülke/bölge eklendikçe değişir. Geographıes 'in en güncel listesi için [ürün koşullardaki](https://www.microsoft.com/en-us/licensing/product-licensing/products)depolama dizisi terimleri ek seçeneğine gidin.
 
-Microsoft, fiziksel donanım ı sevk edebilir ve StorSimple için donanım yedek parça değişimini önceki listedeki coğrafyalara sağlayabilir.
+Microsoft, fiziksel donanım sunabilir ve yukarıdaki listede coğrafi olarak StorSimple için donanım yedek parçalar değişikliği sağlayabilir.
 
 > [!IMPORTANT]
-> StorSimple'ın desteklenmediği bir bölgeye StorSimple fiziksel aygıtı yerleştirmeyin. Microsoft, StorSimple'ın desteklenmediği ülkelere/bölgelere yedek parça gönderemez.
+> StorSimple fiziksel cihazını StorSimple 'un desteklenmediği bir bölgeye yerleştirmeyin. Microsoft, StorSimple 'un desteklenmediği ülkelere/bölgelere herhangi bir değişiklik konusu teslim edemeyecektir.
 
-### <a name="storsimple-cloud-appliance-models-80108020"></a>StorSimple Bulut Aletleri (Modeller 8010/8020)
+### <a name="storsimple-cloud-appliance-models-80108020"></a>StorSimple Cloud Appliance (modeller 8010/8020)
 
-StorSimple Cloud Appliance 8010 veya 8020 kullanıyorsanız, aygıt desteklenir ve temel VM'nin desteklendiği tüm bölgelerde kullanılabilir. 8010, tüm Azure bölgelerinde desteklenen _Standard_A3_ bir VM kullanır.
+8010 veya 8020 StorSimple Cloud Appliance kullanıyorsanız, cihaz, temel alınan VM 'nin desteklendiği tüm bölgelerde desteklenir ve kullanılabilir. 8010, tüm Azure bölgelerinde desteklenen bir _Standard_A3_ VM kullanır.
 
-8020, bir bulut cihazı oluşturmak için birinci sınıf depolama alanı ve _Standard_DS3_ VM kullanır. 8020, Premium Depolama'yı destekleyen ve _Standard_DS3_ Azure VM'Standard_DS3 Azure bölgelerinde desteklenir. Bölgenizde hem **Sanal Makineler > DS serisi** hem de **Depolama > Disk depolamanın** mevcut olup olmadığını görmek için [bu listeyi](https://azure.microsoft.com/regions/services/) kullanın.
+8020, bir bulut gereci oluşturmak için Premium Depolama ve _Standard_DS3_ VM kullanır. 8020, Premium depolamayı ve Azure VM 'Leri _Standard_DS3_ destekleyen Azure bölgelerinde desteklenir. Bölgenizde hem **Sanal Makineler > DS serisi** hem de **Depolama > Disk depolamanın** mevcut olup olmadığını görmek için [bu listeyi](https://azure.microsoft.com/regions/services/) kullanın.
 
-### <a name="storsimple-virtual-array-model-1200"></a>StorSimple Sanal Dizi (Model 1200)
+### <a name="storsimple-virtual-array-model-1200"></a>StorSimple Sanal dizisi (model 1200)
 
-1200 serisi StorSimple Virtual Array kullanıyorsanız, sanal disk görüntüsü tüm Azure bölgelerinde desteklenir.
+1200 serisi StorSimple Sanal dizisi kullanılıyorsa, sanal disk görüntüsü tüm Azure bölgelerinde desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Çeşitli StorSimple modellerinin fiyatlandırması](https://azure.microsoft.com/pricing/calculator/#storsimple2)hakkında daha fazla bilgi edinin.
+* [Çeşitli StorSimple modelleriyle ilgili fiyatlandırma](https://azure.microsoft.com/pricing/calculator/#storsimple2)hakkında daha fazla bilgi edinin.
 * [StorSimple depolama hesabınızı yönetme](storsimple-8000-manage-storage-accounts.md)hakkında daha fazla bilgi edinin.
-* [StorSimple cihazınızı yönetmek için StorSimple Device Manager hizmetini](storsimple-8000-manager-service-administration.md)nasıl kullanacağınız hakkında daha fazla bilgi edinin.
+* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
