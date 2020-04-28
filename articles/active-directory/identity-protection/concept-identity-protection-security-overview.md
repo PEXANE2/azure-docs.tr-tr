@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Identity Protection security'ye genel bakış
-description: Güvenlik genel görünümünün kuruluşunuzun güvenlik duruşu hakkında nasıl bir fikir verdiğini öğrenin.
+title: Azure Active Directory Kimlik Koruması güvenliğe genel bakış
+description: Güvenlik genel bakışın size kuruluşunuzun güvenlik duruşuna ilişkin bir Öngörüler nasıl sağladığını öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,20 +12,20 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9550684ad154f28a02ee347fd0a79c1ec286beb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74382192"
 ---
-# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - Güvenlik genel bakış
+# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Kimlik Koruması-güvenliğe genel bakış
 
-Azure portalındaki [Güvenlik genel bakışı,](https://aka.ms/IdentityProtectionRefresh) kuruluşunuzun güvenlik duruşu hakkında bir fikir verir. Olası saldırıları belirlemeye ve politikalarınızın etkinliğini anlamanıza yardımcı olur.
+Azure portal [güvenlik genel bakışı](https://aka.ms/IdentityProtectionRefresh) , kuruluşunuzun güvenlik duruşuna ilişkin bir fikir verir. Olası saldırıları belirlemenize ve ilkelerinizin verimliliğini anlamanıza yardımcı olur.
 
-'Güvenlik genel bakışı' genel olarak iki bölüme ayrılmıştır:
+' Güvenlik genel bakışı ' iki bölüme büyük ölçüde ayrılmıştır:
 
-- Eğilimler, solda, kuruluşunuzdaki risk zaman çizelgesini sağlar.
-- Sağdaki kutucuklar, kuruluşunuzdaki devam eden önemli sorunları vurgulayın ve hızlı bir şekilde nasıl harekete geçilen önerin.
+- Eğilimler, solda, kuruluşunuzda risk zaman çizelgesi sağlar.
+- Kutucuklar, sağda, kuruluşunuzda devam eden sorunları vurgulayabilir ve hızlı bir şekilde nasıl işlem yapılacağını önerir.
 
 ![Güvenliğe genel bakış](./media/concept-identity-protection-security-overview/01.png)
   
@@ -33,37 +33,37 @@ Azure portalındaki [Güvenlik genel bakışı,](https://aka.ms/IdentityProtecti
 
 ### <a name="new-risky-users-detected"></a>Yeni riskli kullanıcılar algılandı
 
-Bu grafik, seçilen zaman dilimi içinde algılanan yeni riskli kullanıcı sayısını gösterir. Bu grafiğin görünümünü kullanıcı risk düzeyine göre filtreleyebilirsiniz (düşük, orta, yüksek). O gün için algılanan riskli kullanıcı sayısını görmek için UTC tarih artışlarının üzerine çıkın. Bu grafiğe yapılacak bir tıklama sizi 'Riskli kullanıcılar' raporuna getirir. Risk altındaki kullanıcıları düzeltmek için parolalarını değiştirmeyi düşünün.
+Bu grafik, seçilen dönemde algılanan yeni riskli Kullanıcı sayısını gösterir. Bu grafiğin görünümünü Kullanıcı risk düzeyine göre filtreleyebilirsiniz (düşük, orta, yüksek). Söz konusu gün için algılanan riskli Kullanıcı sayısını görmek için UTC Tarih artışlarının üzerine gelin. Bu grafiğe tıklama sizi ' riskli kullanıcılar ' raporuna getirecek. Risk altında olan kullanıcıları düzeltmek için parolalarını değiştirmeyi göz önünde bulundurun.
 
-### <a name="new-risky-sign-ins-detected"></a>Yeni riskli oturum açmalar algılandı
+### <a name="new-risky-sign-ins-detected"></a>Yeni riskli oturum açma işlemleri algılandı
 
-Bu grafik, seçilen zaman dilimi içinde algılanan riskli oturum açma sayısını gösterir. Bu grafiğin görünümünü oturum açma risk türüne (gerçek zamanlı veya toplam) ve oturum açma risk düzeyine (düşük, orta, yüksek) göre filtreleyebilirsiniz. Korumasız oturum açmalar, MFA'ya meydan okunmayan başarılı gerçek zamanlı risk oturum açmalarıdır. (Not: Çevrimdışı algılamalar nedeniyle riskli olan oturum açma lar oturum açma riski ilkeleri yle gerçek zamanlı olarak korunamaz). O gün için risk altında olan oturum açma sayısını görmek için UTC tarih artışlarının üzerine çıkın. Bu grafiğe yapılacak bir tıklama sizi 'Riskli oturum açma' raporuna getirir.
+Bu grafik, seçilen dönemde algılanan riskli oturum açma işlemlerinin sayısını gösterir. Bu grafiğin görünümünü oturum açma risk türüne (gerçek zamanlı veya toplu) ve oturum açma riski düzeyine (düşük, orta, yüksek) göre filtreleyebilirsiniz. Korumasız oturum açma işlemleri, MFA 'dan doğan başarılı gerçek zamanlı risk oturum açma bileşenlerlidir. (Unutmayın: çevrimdışı algılamalar nedeniyle riskli olan oturum açma işlemleri, oturum açma riski ilkelerine göre gerçek zamanlı olarak korunamaz). Bu güne yönelik risk altında algılanan oturum açma işlemlerinin sayısını görmek için UTC Tarih artışlarının üzerine gelin. Bu grafiğe tıklama, sizi ' riskli oturum açma ' raporuna getirecek.
 
 ## <a name="tiles"></a>Kutucuklar
  
 ### <a name="high-risk-users"></a>Yüksek riskli kullanıcılar
 
-'Yüksek riskli kullanıcılar' döşemesi, kimlik uzlaşma olasılığı yüksek olan kullanıcıların en son sayısını gösterir. Bunlar soruşturma için en önemli öncelik olmalı. 'Yüksek riskli kullanıcılar' döşemesine yapılan bir tıklama, yalnızca risk düzeyi yüksek olan kullanıcıları gösteren 'Riskli kullanıcılar' raporunun filtrelenmiş görünümüne yönlendirilir. Bu raporu kullanarak, daha fazla bilgi edinebilir ve bu kullanıcıları parola sıfırlama ile düzeltebilirsiniz.
+' Yüksek riskli kullanıcılar ' kutucuğunda, kimlik güvenliğinin en son olasılığı yüksek olan kullanıcı sayısı gösterilir. Bunlar, araştırma için bir üst öncelik olmalıdır. ' Yüksek riskli kullanıcılar ' kutucuğuna tıkladığınızda ' riskli kullanıcılar ' raporunun yalnızca risk düzeyine sahip kullanıcıları gösteren filtrelenmiş bir görünümüne yeniden yönlendirilir. Bu raporu kullanarak daha fazla bilgi alabilir ve parolayı sıfırlama ile bu kullanıcıları düzeltebilirsiniz.
 
 ![Güvenliğe genel bakış](./media/concept-identity-protection-security-overview/02.png)
 
 ### <a name="medium-risk-users"></a>Orta riskli kullanıcılar
-'Orta riskli kullanıcılar' döşemesi, kimlik uzlaşması olasılığı orta olan kullanıcıların en son sayısını gösterir. 'Orta riskli kullanıcılar' döşemesine yapılan bir tıklama, yalnızca orta risk düzeyine sahip kullanıcıları gösteren 'Riskli kullanıcılar' raporunun filtrelenmiş görünümüne yönlendirilir. Bu raporu kullanarak, bu kullanıcıları daha fazla araştırabilir ve düzeltebilirsiniz.
+' Orta riskli kullanıcılar ' kutucuğu, en son kullanıcı sayısını orta düzeyde kimlik güvenliğinin aşılmasına neden gösterir. ' Orta riskli kullanıcılar ' kutucuğuna tıklama, yalnızca risk düzeyine sahip kullanıcıları gösteren ' riskli kullanıcılar ' raporunun filtrelenmiş görünümüne yönlendirilir. Bu raporu kullanarak bu kullanıcıları daha fazla araştırıp düzeltebilirsiniz.
 
-### <a name="unprotected-risky-sign-ins"></a>Korunmasız riskli oturum açma
+### <a name="unprotected-risky-sign-ins"></a>Korumasız riskli oturum açma işlemleri
 
-'Korumasız riskli oturum açma' döşemesi, geçen haftaki, engellenmemiş veya Koşullu Erişim ilkesi, Kimlik Koruması risk ilkesi veya kullanıcı başına MFA tarafından engellenmemiş başarılı, gerçek zamanlı riskli oturum açma sayısını gösterir. Bunlar, MFA'nın meydan okumadığı, başarılı olabilecek potansiyel olarak tehlikeye atılmış oturum açmalardır. Gelecekte bu tür oturum açmaları korumak için oturum açma riski ilkesi uygulayın. 'Korumasız riskli oturum açma' döşemesine yapılan bir tıklama, oturum açma risk ilkesi ni belirli bir risk düzeyine sahip bir oturum açma gereksinimi gerektirecek şekilde oturum açma risk ilkesini yapılandırabileceğiniz oturum açma risk ilkesi yapılandırma bıçağına yönlendirecektir.
+' Korumasız riskli oturum açma ' kutucuğunda, Engellenen veya bir koşullu erişim ilkesi, kimlik koruması risk ilkesi veya Kullanıcı başına MFA tarafından doğan başarılı, gerçek zamanlı riskli oturum açma işlemlerinin sayısı gösterilir. Bunlar, başarılı olan ve MFA 'nın başarıya düşmesine yol açmayan oturumlardır. Gelecekte bu tür oturum açma işlemlerini korumak için bir oturum açma risk ilkesi uygulayın. ' Korumasız riskli oturum açma ' kutucuğunda bir tıklama, oturum açma risk ilkesini, belirtilen risk düzeyiyle bir oturum açma üzerinde MFA 'yı gerektirecek şekilde yapılandırabileceğiniz oturum açma risk ilkesi yapılandırma dikey penceresine yönlendirilir.
 
 ### <a name="legacy-authentication"></a>Eski kimlik doğrulaması
 
-'Eski kimlik doğrulaması' döşemesi, kuruluşunuzdaki son haftanın eski kimlik doğrulama sayısını gösterir. Eski kimlik doğrulama protokolleri MFA gibi modern güvenlik yöntemlerini desteklemez. Eski kimlik doğrulamasını önlemek için Koşullu Erişim ilkesi uygulayabilirsiniz. 'Eski kimlik doğrulama' döşemesine yapılacak bir tıklama yla sizi 'Kimlik Güvenli Puanı'na yönlendirir.
+' Eski kimlik doğrulama ' kutucuğu, son haftanın kuruluşunuzdaki eski kimlik doğrulama sayısını gösterir. Eski kimlik doğrulama protokolleri MFA gibi modern güvenlik yöntemlerini desteklemez. Eski kimlik doğrulamasını engellemek için, koşullu erişim ilkesi uygulayabilirsiniz. ' Eski kimlik doğrulaması ' kutucuğuna tıklama sizi ' kimlik güvenli puanı ' öğesine yönlendirir.
 
-### <a name="identity-secure-score"></a>Kimlik Güvenli Puanı
+### <a name="identity-secure-score"></a>Kimlik güvenli puanı
 
-Identity Secure Score, güvenlik duruşunuzu endüstri kalıplarıyla ölçer ve karşılaştırır. 'Identity Secure Score (Preview)' döşemesine tıklarsanız, güvenlik duruşunuzu geliştirme hakkında daha fazla bilgi edinebileceğiniz 'Identity Secure Score' bıyığı'na yönlendirilir.
+Kimlik güvenli puanı ölçer ve güvenlik duruşunuzu sektör desenleriyle karşılaştırır. ' Kimlik güvenli puanı (Önizleme) ' kutucuğuna tıklarsanız, güvenlik duruşunuzu geliştirme hakkında daha fazla bilgi edinmek için ' kimlik güvenli puanı ' dikey penceresine yönlendirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Risk nedir](concept-identity-protection-risks.md)
+- [Risk nedir?](concept-identity-protection-risks.md)
 
-- [Riskleri azaltmak için kullanılabilen politikalar](concept-identity-protection-policies.md)
+- [Riskleri azaltmak için kullanılabilir ilkeler](concept-identity-protection-policies.md)

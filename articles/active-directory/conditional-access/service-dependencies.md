@@ -1,6 +1,6 @@
 ---
-title: Koşullu Erişim hizmeti bağımlılıkları - Azure Etkin Dizini
-description: Bir ilkeyi tetiklemek için Azure Active Directory Koşullu Erişim'de koşulların nasıl kullanıldığını öğrenin.
+title: Koşullu erişim hizmeti bağımlılıkları-Azure Active Directory
+description: İlke tetiklemek üzere koşullu erişim Azure Active Directory koşulların nasıl kullanıldığını öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,55 +12,55 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b39238575c05d35a2d87999e08c49c0c77e99bfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74380021"
 ---
-# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Etkin Dizin Koşullu Erişimi'nde hizmet bağımlılıkları nelerdir? 
+# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Koşullu erişim Azure Active Directory hizmet bağımlılıkları nelerdir? 
 
-Koşullu Erişim ilkeleriyle, web sitelerine ve hizmetlere erişim gereksinimlerini belirtebilirsiniz. Örneğin, erişim gereksinimleriniz çok faktörlü kimlik doğrulama (MFA) veya [yönetilen aygıtlar](require-managed-devices.md)gerektirmeyi içerebilir. 
+Koşullu erişim ilkeleriyle, Web siteleri ve hizmetleri için erişim gereksinimlerini belirtebilirsiniz. Örneğin, erişim gereksinimleriniz Multi-Factor Authentication (MFA) veya [yönetilen cihazlar](require-managed-devices.md)gerektiriyor olabilir. 
 
-Bir siteye veya hizmete doğrudan erişdiğinizde, ilgili bir ilkenin etkisini değerlendirmek genellikle kolaydır. Örneğin, SharePoint Online yapılandırılmış için MFA gerektiren bir ilkeniz varsa, SharePoint web portalında oturum açan her oturum açma için MFA uygulanır. Ancak, diğer bulut uygulamalarına bağımlı bulut uygulamaları olduğundan, bir politikanın etkisini değerlendirmek her zaman açık değildir. Örneğin, Microsoft Teams SharePoint Online'daki kaynaklara erişim sağlayabilir. Bu nedenle, geçerli senaryomuzda Microsoft Teams'e erişdiğinizde, SharePoint MFA ilkesine de tabi olursunuz.   
+Bir siteye veya hizmete doğrudan eriştiğinizde, ilgili bir ilkenin etkisinden değerlendirmek genellikle kolaydır. Örneğin, SharePoint Online için MFA gerektiren bir ilkenize sahipseniz, MFA SharePoint Web portalındaki her oturum için zorlanır. Ancak, diğer bulut uygulamalarına yönelik bağımlılıklara sahip bulut uygulamaları olduğundan, bir ilkenin etkisini değerlendirmek her zaman düz bir şekilde ileri doğru kalmaz. Örneğin, Microsoft ekipleri SharePoint Online 'daki kaynaklara erişim sağlayabilir. Bu nedenle, geçerli senaryolarımızda Microsoft ekiplerine eriştiğinizde, SharePoint MFA ilkesine de tabidir.   
 
 ## <a name="policy-enforcement"></a>İlke zorlama 
 
-Bir hizmet bağımlılığı yapılandırılan varsa, ilke erken bağlı veya geç bağlı zorlama kullanılarak uygulanabilir. 
+Yapılandırılmış bir hizmet bağımlılığı varsa, ilke erken veya geç bağlantılı zorlama kullanılarak uygulanabilir. 
 
-- **Erken zorunlu ilke zorlama,** bir kullanıcının arama uygulamasına erişmeden önce bağımlı hizmet ilkesini karşılaması gerektiği anlamına gelir. Örneğin, bir kullanıcının MS Teams'de oturum açmadan önce SharePoint ilkesini karşılaması gerekir. 
-- Kullanıcı arama uygulamasına girdikten sonra **geç bağlı ilke uygulaması** oluşur. Uygulama, uygulama isteklerini ararken, akış aşağı hizmeti için bir belirteç olarak ertelenir. Bunlara örnek olarak PLANlayıcıya erişen MS Teams ve SharePoint'e Office.com verilebilir. 
+- **Erken bağlı ilke zorlaması** , bir kullanıcının çağıran uygulamaya erişmeden önce bağımlı hizmet ilkesini karşılaması gerektiği anlamına gelir. Örneğin, bir kullanıcının MS ekiplerinde oturum açmadan önce SharePoint ilkesini karşılaması gerekir. 
+- **Geç bağlantılı ilke zorlaması** , Kullanıcı çağıran uygulamada oturum açtıktan sonra oluşur. Uygulama istekleri çağrılırken, aşağı akış hizmeti için bir belirteç olan zorlaması ertelenir. Örnek olarak, Planner ve Office.com 'e erişen MS ekipleri bulunur. 
 
-Aşağıdaki diyagram, MS Teams hizmet bağımlılıklarını göstermektedir. Katı oklar, Planlayıcı için kesikli ok, geç bağlı zorlamayı gösterir. 
+Aşağıdaki diyagramda MS takımlar hizmet bağımlılıklarını gösterilmektedir. Kalın oklar erken bağlantılı zorlamayı belirtir Planner için kesik çizgili ok, geç bağlantılı uygulamayı gösterir. 
 
-![MS Teams hizmet bağımlılıkları](./media/service-dependencies/01.png)
+![MS ekipleri hizmet bağımlılıkları](./media/service-dependencies/01.png)
 
-En iyi uygulama olarak, mümkün olduğunda ilgili uygulamalar ve hizmetler arasında ortak ilkeler belirlemeniz gerekir. Tutarlı bir güvenlik duruşuna sahip olmak size en iyi kullanıcı deneyimini sunar. Örneğin, Exchange Online, SharePoint Online, Microsoft Teams ve Skype for business genelinde ortak bir ilke ayarlamak, akış aşağı hizmetlerine uygulanan farklı ilkelerden kaynaklanabilecek beklenmeyen istemleri önemli ölçüde azaltır. 
+En iyi uygulama olarak, mümkün olan her durumda ortak ilkeleri ilgili uygulamalar ve hizmetler arasında ayarlamanız gerekir. Tutarlı bir güvenlik duruşunu size en iyi kullanıcı deneyimini sağlar. Örneğin, Exchange Online, SharePoint Online, Microsoft ekipleri ve Skype Kurumsal genelinde ortak bir ilke ayarlamak, akış içi hizmetlere uygulanan farklı ilkelerden kaynaklanan beklenmeyen istekleri önemli ölçüde azaltır. 
 
-Aşağıdaki tabloda, istemci uygulamaların tatmin etmesi gereken ek hizmet bağımlılıkları listelanmaktadır  
+Aşağıdaki tabloda, istemci uygulamalarının karşılaması gereken ek hizmet bağımlılıkları listelenmektedir  
 
-| İstemci uygulamaları         | Downstream hizmeti                          | Zorlama |
+| İstemci uygulamaları         | Aşağı akış hizmeti                          | İşlemlerini |
 | :--                 | :--                                         | ---         | 
-| Azure Data Lake     | Microsoft Azure Yönetimi (portal ve API) | Erken bağlı |
-| Microsoft Sınıfı | Exchange                                    | Erken bağlı |
-|                     | SharePoint                                  | Erken bağlı |
-| Microsoft Teams     | Exchange                                    | Erken bağlı |
-|                     | MS Planlayıcısı                                  | Geç bağlı  |
-|                     | SharePoint                                  | Erken bağlı |
-|                     | Skype Kurumsal Çevrimiçi Sürüm                   | Erken bağlı |
-| Ofis Portalı       | Exchange                                    | Geç bağlı  |
-|                     | SharePoint                                  | Geç bağlı  |
-| Outlook grupları      | Exchange                                    | Erken bağlı |
-|                     | SharePoint                                  | Erken bağlı |
-| PowerApps           | Microsoft Azure Yönetimi (portal ve API) | Erken bağlı |
-|                     | Windows Azure Active Directory              | Erken bağlı |
-| Project             | Dynamics CRM                                | Erken bağlı |
-| Skype Kurumsal  | Exchange                                    | Erken bağlı |
-| Visual Studio       | Microsoft Azure Yönetimi (portal ve API) | Erken bağlı |
-| Microsoft Forms     | Exchange                                    | Erken bağlı |
-|                     | SharePoint                                  | Erken bağlı |
-| Microsoft To-Do     | Exchange                                    | Erken bağlı |
+| Azure Data Lake     | Microsoft Azure yönetimi (portal ve API) | Erken bağlantılı |
+| Microsoft sınıf | Exchange                                    | Erken bağlantılı |
+|                     | SharePoint                                  | Erken bağlantılı |
+| Microsoft Teams     | Exchange                                    | Erken bağlantılı |
+|                     | MS planlayıcısı                                  | Geç bağlantılı  |
+|                     | SharePoint                                  | Erken bağlantılı |
+|                     | Skype Kurumsal Çevrimiçi Sürüm                   | Erken bağlantılı |
+| Office portalı       | Exchange                                    | Geç bağlantılı  |
+|                     | SharePoint                                  | Geç bağlantılı  |
+| Outlook grupları      | Exchange                                    | Erken bağlantılı |
+|                     | SharePoint                                  | Erken bağlantılı |
+| PowerApps           | Microsoft Azure yönetimi (portal ve API) | Erken bağlantılı |
+|                     | Windows Azure Active Directory              | Erken bağlantılı |
+| Project             | Dynamics CRM                                | Erken bağlantılı |
+| Skype Kurumsal  | Exchange                                    | Erken bağlantılı |
+| Visual Studio       | Microsoft Azure yönetimi (portal ve API) | Erken bağlantılı |
+| Microsoft Forms     | Exchange                                    | Erken bağlantılı |
+|                     | SharePoint                                  | Erken bağlantılı |
+| Microsoft To-Do     | Exchange                                    | Erken bağlantılı |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ortamınızda Koşullu Erişim'i nasıl uygulayacağınızı öğrenmek için Azure [Etkin Dizini'nde Koşullu Erişim dağıtımınızı](plan-conditional-access.md)planlayın'a bakın.
+Ortamınızda Koşullu erişimin nasıl uygulanacağını öğrenmek için, bkz. [Azure Active Directory Koşullu erişim dağıtımınızı planlayın](plan-conditional-access.md).

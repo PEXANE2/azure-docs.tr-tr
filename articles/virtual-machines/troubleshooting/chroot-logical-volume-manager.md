@@ -1,6 +1,6 @@
 ---
-title: LVM (Mantıksal Birim Yöneticisi) kullanıldığı chroot kullanarak Linux VM'lerini kurtarma - Azure VM'ler
-description: LVM ile Linux VM'lerin geri kazanımı.
+title: LVM (mantıksal birim Yöneticisi) kullanıldığı chroot kullanarak Linux VM 'lerini kurtarın-Azure VM 'Leri
+description: LVMs ile Linux VM 'lerinin kurtarılması.
 services: virtual-machines-linux
 documentationcenter: ''
 author: vilibert
@@ -15,68 +15,68 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74684141"
 ---
-# <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Azure seri konsoluna erişim olmadığında ve disk düzeni LVM (Mantıksal Birim Yöneticisi) kullanıyorsa Linux VM sorun giderme
+# <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Azure seri konsoluna erişim olmadığında ve disk düzeni LVM kullanıyorsa (mantıksal birim Yöneticisi) bir Linux sanal makinesi sorunlarını giderme
 
-Bu sorun giderme kılavuzu, Linux VM önyükleme değil, ssh mümkün değildir ve temel dosya sistemi düzeni LVM (Mantıksal Birim Yöneticisi) ile yapılandırılır senaryolar için yarar vardır.
+Bu sorun giderme kılavuzu, bir Linux VM 'nin önyüklendiği senaryolarda, SSH 'nin mümkün olmadığı ve temel alınan dosya sistemi düzeninin LVM (mantıksal birim Yöneticisi) ile yapılandırıldığı senaryolar için avantajlı bir avantajdır.
 
-## <a name="take-snapshot-of-the-failing-vm"></a>Başarısız VM'nin anlık görüntüsünü alın
+## <a name="take-snapshot-of-the-failing-vm"></a>Başarısız VM 'nin anlık görüntüsünü al
 
-Etkilenen VM'nin anlık görüntüsünü alın. 
+Etkilenen VM 'nin anlık görüntüsünü alın. 
 
-Anlık görüntü daha sonra bir **kurtarma** VM iliştirilir. **Anlık görüntü**nasıl alınacağına ilişkin talimatları [buradan](https://docs.microsoft.com/azure/virtual-machines/linux/snapshot-copy-managed-disk#use-azure-portal) izleyin.
+Anlık görüntü, bir **Kurtarma** VM 'sine eklenecektir. **Anlık görüntü**almak için [buradaki](https://docs.microsoft.com/azure/virtual-machines/linux/snapshot-copy-managed-disk#use-azure-portal) yönergeleri izleyin.
 
-## <a name="create-a-rescue-vm"></a>Kurtarma VM'si oluşturma
-Genellikle aynı veya benzer İşletim sistemi sürümü bir kurtarma VM önerilir. Etkilenen VM'nin aynı **bölge** sini ve **kaynak grubunu** kullanma
+## <a name="create-a-rescue-vm"></a>Kurtarma VM 'si oluşturma
+Genellikle aynı veya benzer Işletim sistemi sürümünün bir kurtarma VM 'si önerilir. Etkilenen VM 'nin aynı **bölgesini** ve **kaynak grubunu** kullan
 
-## <a name="connect-to-the-rescue-vm"></a>Kurtarma VM'ine bağlanın
-**Kurtarma** VM içine ssh kullanarak bağlanın. Ayrıcalıkları yükseltin ve kullanarak süper kullanıcı olun
+## <a name="connect-to-the-rescue-vm"></a>Kurtarma VM 'sine bağlanma
+SSH kullanarak **Kurtarma** VM 'ye bağlanın. Ayrıcalıkları yükselt ve kullanarak Süper Kullanıcı olma
 
 `sudo su -`
 
-## <a name="attach-the-disk"></a>Diski takın
-Daha önce çekilen anlık görüntüden yapılan **kurtarma** VM'sine bir disk takın.
+## <a name="attach-the-disk"></a>Diski iliştirme
+Daha önce alınan anlık görüntüden oluşturulan **Kurtarma** VM 'sine bir disk ekleyin.
 
-Azure portalı -> **kurtarma** VM -> **Diskleri** seçin 
+Azure portal-> **Kurtarma** VM 'Si > **diskleri** seçin 
 
-![Disk oluşturma](./media/chroot-logical-volume-manager/create-disk-from-snap.png)
+![Disk oluştur](./media/chroot-logical-volume-manager/create-disk-from-snap.png)
 
-Alanları doldurun. Yeni diskinize bir ad atayın, anlık görüntüyle, etkilenen VM'le aynı Kaynak Grubunu ve Kurtarma VM'ini seçin.
+Alanları doldurun. Yeni diskinize bir ad atayın, anlık görüntü, etkilenen VM ve kurtarma VM 'si ile aynı kaynak grubunu seçin.
 
-**Kaynak türü** **Anlık Görüntüdür.**
-**Kaynak anlık görüntü,** daha önce oluşturulmuş **anlık görüntünün** adıdır.
+**Kaynak türü** **anlık görüntüdür** .
+**Kaynak anlık görüntüsü** , önceden oluşturulan **anlık görüntünün** adıdır.
 
-![disk 2 oluşturma](./media/chroot-logical-volume-manager/create-disk-from-snap-2.png)
+![disk oluştur 2](./media/chroot-logical-volume-manager/create-disk-from-snap-2.png)
 
-Bağlı disk için bir montaj noktası oluşturun.
+Eklenen disk için bir bağlama noktası oluşturun.
 
 `mkdir /rescue`
 
-Anlık görüntü diskinin eklendiğini doğrulamak için **fdisk -l** komutunu çalıştırın ve kullanılabilir tüm aygıtları ve bölümleri listele
+Anlık görüntü diskinin ekli olduğunu doğrulamak ve kullanılabilir tüm cihazları ve bölümleri listelemek için **fdisk-l** komutunu çalıştırın
 
 `fdisk -l`
 
-Çoğu senaryoda, ekli anlık görüntü diski **/dev/sdc** iki bölüm **/dev/sdc1** ve **/dev/sdc2** görüntülerken görülecektir
+Çoğu senaryoda, eklenen anlık görüntü diski, iki bölümden oluşan **/dev/sdc1** ve **/dev/sdc2** **/dev/SDC** olarak görülür.
 
 ![Fdisk](./media/chroot-logical-volume-manager/fdisk-output-sdc.png)
 
-Bir **\*** önyükleme bölümü gösterir, her iki bölüm monte edilecektir.
+, **\*** Bir önyükleme bölümünü belirtir, her iki bölüm de takılmalıdır.
 
-Etkilenen VM'nin LVM'lerini görmek için **lsblk** komutunu çalıştırın
+Etkilenen VM 'nin LVM 'lerini görmek için **lsblk** komutunu çalıştırın
 
 `lsblk`
 
-![Çalıştır lsblk](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
+![Lsblk Çalıştır](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
 
 
-Etkilenen VM'den LVM'lerin görüntülenip görüntülenmediğini doğrulayın.
-Değilse, bunları etkinleştirmek ve **lsblk**yeniden aşağıdaki komutları kullanın.
-Devam etmeden önce ekli diskteki LVM'lerin görünür olduğundan emin olun.
+Etkilenen VM 'deki LVM 'Lerin görüntülendiğini doğrulayın.
+Aksi takdirde, bunları etkinleştirmek ve **lsblk**'ı yeniden çalıştırmak için aşağıdaki komutları kullanın.
+Devam etmeden önce, eklenen diskteki LVM 'Lerin görünebildiğinden emin olun.
 
 ```
 vgscan --mknodes
@@ -86,37 +86,37 @@ mount –a
 lsblk
 ```
 
-/ (kök) bölümü içeren Mantıksal Birim monte etmek için yol bulun. /etc/default/grub gibi yapılandırma dosyalarına sahiptir
+/(Root) bölümünü içeren mantıksal birimi bağlamak için yolu bulun. /Etc/default/grub gibi yapılandırma dosyalarına sahiptir
 
-Bu örnekte, önceki **lsblk** **komutrootvg-rootlv** çıktı alarak montaj için doğru **kök** LV ve sonraki komutkullanılabilir.
+Bu örnekte, önceki **lsblk** komutundan çıktının alınması **rootvg-rootlv** , takılacak doğru **kök** LV ve sonraki komutta kullanılabilir.
 
-Bir sonraki komutun **çıktısı kök** LV için monte yolu gösterecektir
+Sonraki komutun çıktısı **kök** LV için bağlama yolunu gösterir
 
 `pvdisplay -m | grep -i rootlv`
 
 ![Rootlv](./media/chroot-logical-volume-manager/locate-rootlv.png)
 
-Bu cihazı dizine /kurtarma dizinin üzerine monte etmeye devam edin
+Bu cihazı/kurtarma dizinine bağlamaya devam et
 
 `mount /dev/rootvg/rootlv /rescue`
 
-**/rescue/boot'da Boot bayrağı** ayarlanmış olan bölümü monte edin
+/Rescue/Boot üzerinde **önyükleme bayrağı** ayarlanmış olan bölümü bağla
 
 `
 mount /dev/sdc1 /rescue/boot
 `
 
-Ekli diskin dosya sistemlerinin **lsblk** komutunu kullanarak doğru şekilde monte edildiğini doğrulayın
+Bağlı diskin dosya sistemlerinin artık **lsblk** komutu kullanılarak doğru şekilde bağlandığından emin olun
 
-![Çalıştır lsblk](./media/chroot-logical-volume-manager/lsblk-output-1.png)
+![Lsblk Çalıştır](./media/chroot-logical-volume-manager/lsblk-output-1.png)
 
-veya **df -Th** komutu
+veya **df-TH** komutu
 
 ![Df](./media/chroot-logical-volume-manager/df-output.png)
 
-## <a name="gaining-chroot-access"></a>Chroot erişimi kazanma
+## <a name="gaining-chroot-access"></a>Chroot erişimi elde etme
 
-Çeşitli düzeltmeler gerçekleştirmek için sağlayacak **chroot** erişim, kazanç, küçük varyasyonlar her Linux dağıtımı için var.
+Çeşitli düzeltmeler gerçekleştirmenize olanak tanıyan tek **köklü** erişim elde edin ve her bir Linux dağıtımı için hafif Çeşitlemeler bulunur.
 
 ```
  cd /rescue
@@ -127,29 +127,29 @@ veya **df -Th** komutu
  chroot /rescue
 ```
 
-Gibi bir hata yaşanırsa:
+Şöyle bir hata yaşanıyorsa:
 
-**chroot: '/bin/bash' komutunu çalıştıramadı: Böyle bir dosya veya dizin yok**
+**chroot: '/bin/Bash ' komutu çalıştırılamadı: böyle bir dosya veya dizin yok**
 
-**usr** Mantıksal Birim monte girişimi
+**usr** mantıksal birimini bağlama girişimi
 
 `
 mount  /dev/mapper/rootvg-usrlv /rescue/usr
 `
 
 > [!TIP]
-> Chroot ortamında komutları **chroot** çalıştırırken, bunların yerel **kurtarma** VM'ine değil, bağlı işletim sistemi diskine karşı çalıştırılmadığını unutmayın. 
+> Bir **chroot** ortamındaki komutları yürütürken, yerel **Kurtarma** VM 'si değil, bağlı işletim sistemi diskine karşı çalıştırıldıklarından not edin. 
 
-Komutlar yazılımı yüklemek, kaldırmak ve güncelleştirmek için kullanılabilir. Hataları gidermek için VM'leri sorun giderin.
+Komutları, yazılım yüklemek, kaldırmak ve güncelleştirmek için kullanılabilir. Hataları gidermek için VM 'Lerle ilgili sorunları giderin.
 
 
-Lsblk komutunu çalıştırın ve /kurtarma şimdi / ve ![/ kurtarma / önyükleme / çizme Chrooted olduğunu](./media/chroot-logical-volume-manager/chrooted.png)
+Lsblk komutunu yürütün ve/kurtarma işlemi şu an/ve/Rescue/Boot/Boot ![chkökü](./media/chroot-logical-volume-manager/chrooted.png)
 
-## <a name="perform-fixes"></a>Düzeltmeleri Gerçekleştir
+## <a name="perform-fixes"></a>Düzeltmeleri gerçekleştir
 
-### <a name="example-1---configure-the-vm-to-boot-from-a-different-kernel"></a>Örnek 1 - VM'yi farklı bir çekirdekten önyüklemeye yapılandırır
+### <a name="example-1---configure-the-vm-to-boot-from-a-different-kernel"></a>Örnek 1-VM 'yi farklı bir çekirdekten önyüklenecek şekilde yapılandırma
 
-Yaygın bir senaryo, geçerli yüklü çekirdek bozuk laşmış olabileceği veya yükseltme doğru tamamlanmadığı için vm'yi önceki çekirdekten önyüklemeye zorlamaktır.
+Yaygın bir senaryo, geçerli yüklü çekirdek bozuk olabileceği veya bir yükseltmenin doğru şekilde tamamlanmadığı için bir VM 'yi önceki bir çekirdekten önyükleme yapmak üzere zorlamaktır.
 
 
 ```
@@ -166,58 +166,58 @@ grub2-editenv list
 grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
-*walkthrough*
+*gidiş*
 
-**Grep** komutu **grub.cfg'nin** farkında olduğu çekirdekleri listeler.
+**Grep** komutu, **grub. cfg** ' nin farkında olduğu çekirdekler 'leri listeler.
 ![Çekirdekler](./media/chroot-logical-volume-manager/kernels.png)
 
-**grub2-editenv listesi** sonraki önyükleme ![Çekirdek varsayılan hangi çekirdek yüklenir görüntüler](./media/chroot-logical-volume-manager/kernel-default.png)
+**GRUB2-editenv listesi** , bir sonraki önyükleme ![çekirdeği varsayılanından hangi çekirdeğin yükleneceğini görüntüler](./media/chroot-logical-volume-manager/kernel-default.png)
 
-**grub2-set-varsayılan** başka bir çekirdek ![Grub2 kümesine değiştirmek için kullanılır](./media/chroot-logical-volume-manager/grub2-set-default.png)
+**GRUB2-set-varsayılan** bir çekirdek ![GRUB2 kümesine geçmek için kullanılır](./media/chroot-logical-volume-manager/grub2-set-default.png)
 
-**grub2-editenv** listesi sonraki önyükleme ![yeni çekirdek yüklenecek hangi çekirdek görüntüler](./media/chroot-logical-volume-manager/kernel-new.png)
+**GRUB2-editenv** listesi, sonraki önyükleme ![yeni çekirdeğine hangi çekirdeğin yükleneceğini gösterir](./media/chroot-logical-volume-manager/kernel-new.png)
 
-**grub2-mkconfig** gerekli ![Grub2 mkconfig sürümlerini kullanarak grub.cfg yeniden](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
+**GRUB2-mkconfig** gereken ![sürümleri kullanarak grub. cfg dosyasını yeniden oluşturur GRUB2 mkconfig](./media/chroot-logical-volume-manager/grub2-mkconfig.png)
 
 
 
-### <a name="example-2---upgrade-packages"></a>Örnek 2 - yükseltme paketleri
+### <a name="example-2---upgrade-packages"></a>Örnek 2-yükseltme paketleri
 
-Başarısız bir çekirdek yükseltmesi VM'yi önyükilemez hale getirebilir.
-Paketlerin kaldırılmasına veya yeniden yüklenmesine izin vermek için tüm Mantıksal Birimleri monte etme
+Başarısız bir çekirdek yükseltmesi, sanal makineyi önyüklenebilir olmayan şekilde işleyebilir.
+Paketlerin kaldırılmasına veya yeniden yüklenmesine izin vermek için tüm mantıksal birimleri bağlama
 
-Hangi **LV'lerin** montaj için kullanılabildiğini doğrulamak için **lvs** komutunu çalıştırın, geçirilen veya başka bir Bulut Sağlayıcısı'ndan gelen her VM yapılandırmada farklılık gösterir.
+Hangi **LVS** 'nin bağlama için kullanılabilir olduğunu doğrulamak için **LVS** komutunu çalıştırın, geçirilen veya başka bir bulut sağlayıcısından gelen her sanal makine yapılandırmada farklılık gösterecektir.
 
-**Chroot** ortamından çıkın gerekli **LV** monte
+**Chroot** ortamından çıkma gerekli **LV** 'yi bağlama
 
 ![Gelişmiş](./media/chroot-logical-volume-manager/advanced.png)
 
-Şimdi çalıştırarak **chroot** ortamına tekrar erişin
+Şimdi, şunu çalıştırarak **chroot** ortamına erişin
 
 `chroot /rescue`
 
-Tüm LV'ler monte edilmiş bölümler olarak görülebilmeli
+Tüm LVs 'ler bağlı bölümler olarak görünür olmalıdır
 
 ![Gelişmiş](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
-Yüklü **çekirdeği** sorgula
+Yüklü **çekirdeği** sorgulama
 
 ![Gelişmiş](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-Gerekirse
-![Gelişmiş **çekirdeği**kaldırın veya yükseltin](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
+Gerekirse **çekirdek**
+![Gelişmiş ' i kaldırın veya yükseltin](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
-### <a name="example-3---enable-serial-console"></a>Örnek 3 - Seri Konsol'u etkinleştirin
-Azure seri konsoluna erişim mümkün değilse, Linux VM'niz için GRUB yapılandırma parametrelerini doğrulayın ve düzeltin. Ayrıntılı bilgi [bu doc](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration) bulunabilir
+### <a name="example-3---enable-serial-console"></a>Örnek 3-seri konsolu etkinleştir
+Azure seri konsoluna erişim mümkün değilse, Linux VM 'niz için GRUB yapılandırma parametrelerini doğrulayın ve bunları düzeltin. Ayrıntılı bilgiler [Bu belgede](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration) bulunabilir
 
-### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>Örnek 4 - sorunlu LVM takas hacmi ile çekirdek yükleme
+### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>Örnek 4-sorunlu LVM takas birimi ile çekirdek yükleme
 
-Bir VM tam önyükleme başarısız olabilir ve **dracut** istemi içine düşer.
-Hatayla ilgili daha fazla ayrıntı Azure seri konsolundan bulunabilir veya Azure portalına (> önyükleme tanılama -> Seri günlüğüne gidebilir
+Bir VM tam olarak önyüklenemeyebilir ve **Drakes** istemine düşmez.
+Hatanın daha fazla ayrıntıları Azure seri konsolundan bulunabilir veya Azure portal-> önyükleme tanılaması-> seri günlüğüne gidebilir
 
 
-Buna benzer bir hata olabilir:
+Buna benzer bir hata var olabilir:
 
 ```
 [  188.000765] dracut-initqueue[324]: Warning: /dev/VG/SwapVol does not exist
@@ -225,19 +225,19 @@ Buna benzer bir hata olabilir:
 Warning: /dev/VG/SwapVol does not exist
 ```
 
-Grub.cfg bu örnekte **rd.lvm.lv=VG/SwapVol** adı ile bir LV yüklemek için yapılandırılmıştır ve VM bu bulmak mümkün değildir. Bu satır, LV SwapVol'a atıfta bulunarak çekirdeğin nasıl yüklendiğini gösterir
+Grub. cfg, bu örnekte **RD. LVM. lv = VG/SwapVol** ADLı bir LV yüklemek için YAPıLANDıRıLıR ve VM bunu bulamıyor. Bu satır, çekirdeğin, LV değiştirme hattına başvurmak için nasıl yüklendiğini gösterir
 
 ```
 [    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.10.0-1062.4.1.el7.x86_64 root=/dev/mapper/VG-OSVol ro console=tty0 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 biosdevname=0 crashkernel=256M rd.lvm.lv=VG/OSVol rd.lvm.lv=VG/SwapVol nodmraid rhgb quiet
 [    0.000000] e820: BIOS-provided physical RAM map:
 ```
 
- Rahatsız edici LV'yi /etc/default/grub yapılandırmasından çıkarın ve grub2.cfg'yi yeniden yeniden oluşturun
+ /Etc/default/grub yapılandırmasından sorunlu LV 'yi kaldırın ve GRUB2. cfg dosyasını yeniden derleyin
 
 
-## <a name="exit-chroot-and-swap-the-os-disk"></a>Chroot'dan çıkın ve işletim sistemi diskini değiştirin
+## <a name="exit-chroot-and-swap-the-os-disk"></a>Chroot 'tan çıkın ve işletim sistemi diskini değiştirin
 
-Sorunu onardıktan sonra, diskin etkilenen VM OS diskiyle değiştirilmesine izin vererek diski sökmeye ve kurtarma VM'sinden ayırmaya devam edin.
+Sorunu onardıktan sonra, uygulamayı kurtarma VM 'sinden çıkarıp, etkilenen VM işletim sistemi diski ile takas etmesini sağlamak için devam edin.
 
 ```
 exit
@@ -250,28 +250,28 @@ umount /rescue/boot
 umount /rescue
 ```
 
-Diski kurtarma VM'sinden ayırın ve bir Disk Değiştirme gerçekleştirin.
+Diski Kurtarma VM 'sinden ayırın ve bir disk takas işlemi gerçekleştirin.
 
-Portal **Disklerinden** VM'yi seçin **detach**
-![ve ayırma diskini seçin](./media/chroot-logical-volume-manager/detach-disk.png) 
+Portal **disklerinden** VM 'yi seçin ve diski **Ayır ayır**
+!['ı seçin](./media/chroot-logical-volume-manager/detach-disk.png) 
 
-Değişiklikleri ![kaydet Ayırma](./media/chroot-logical-volume-manager/save-detach.png) 
+Değişiklikleri ![Kaydet kaydetme ayır](./media/chroot-logical-volume-manager/save-detach.png) 
 
-Disk artık etkilenen VM orijinal işletim sistemi diski ile takas edilmesine izin kullanılabilir hale gelecektir.
+Artık disk, etkilenen VM 'nin orijinal işletim sistemi diski ile takas olmasına izin vermek için kullanılabilir hale gelir.
 
-Azure portalında başarısız VM'ye gidin ve **Diskleri** -> **Takas Os Disk**
-![Değiştirme diskini seçin](./media/chroot-logical-volume-manager/swap-disk.png) 
+Azure Portal başarısız olan sanal makineye gidin **ve disk** -> **değiştirme işletim sistemi diski**
+![takas diski ' ni seçin](./media/chroot-logical-volume-manager/swap-disk.png) 
 
-Alanları tamamlayın **Disk seç,** bir önceki adımda yeni ayrılmış anlık görüntü diskidir. Etkilenen VM VM vm adı da sonra **Ok** seçin gereklidir
+**Disk Seç** ' in, önceki adımda ayrılmış olan anlık görüntü diski olan alanları doldurun. Etkilenen VM 'nin VM adı da gereklidir ve ardından **Tamam** ' ı seçin.
 
 ![Yeni işletim sistemi diski](./media/chroot-logical-volume-manager/new-osdisk.png) 
 
-VM Disk Takas'ı çalıştırıyorsa, disk değiştirme işlemi tamamlandıktan sonra VM'yi yeniden başlatın.
+VM çalışıyorsa disk değiştirme işlemini kapatır, disk değiştirme işlemi tamamlandıktan sonra sanal makineyi yeniden başlatın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Şu konular hakkında daha fazla bilgi edinin:
 
- [Azure Seri Konsolu]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+ [Azure seri konsol]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
 
-[Tek kullanıcı modu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)
+[Tek Kullanıcı modu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)

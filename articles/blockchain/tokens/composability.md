@@ -1,84 +1,84 @@
 ---
-title: Azure Blockchain Belirteçleri tekkullanım
-description: Azure Blockchain Belirteçleri birleştirme özelliği, gelişmiş senaryolar için belirteçler oluşturmak için esneklik sağlar.
+title: Azure blok zinciri belirteçleri bileşim
+description: Azure blok zinciri belirteçleri bileşim, gelişmiş senaryolar için belirteçler oluşturma esnekliği sağlar.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: a3fe1b290917de20b7c3af31fe386ed93580d850
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74325114"
 ---
-# <a name="azure-blockchain-tokens-composability"></a>Azure Blockchain Belirteçleri tekkullanım
+# <a name="azure-blockchain-tokens-composability"></a>Azure blok zinciri belirteçleri bileşim
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Belirteç birleştirme özelliği, gelişmiş senaryolar için belirteçler oluşturmak için esneklik sağlar. [Önceden oluşturulmuş dört belirteç şablonu](templates.md#base-token-types)kullanılarak uygulanamayan karmaşık bir senaryonuz olabilir. Belirteç birleştirme özelliği, kendi belirteç şablonunuzu oluşturmak için tanımlanmış davranışları ekleyerek veya kaldırarak kendi belirteç şablonlarınızı tasarlamanıza olanak tanır. Yeni bir belirteç şablonu oluştururken, Azure Blockchain Belirteçleri tüm belirteç dilbilgisi kurallarını doğrular. Oluşturulan şablonlar, bağlı blockchain ağlarında vermek için Azure Blockchain Belirteçleri hizmetine kaydedilir.
+Belirteç bileşim, gelişmiş senaryolar için belirteçler oluşturma esnekliği sağlar. [Önceden oluşturulmuş dört belirteç şablonu](templates.md#base-token-types)kullanılarak uygulanamaz karmaşık bir senaryonuz olabilir. Belirteç bileşim, kendi belirteç şablonunuzu oluşturmak için tanımlı davranışları ekleyerek veya kaldırarak kendi belirteç şablonlarınızı tasarlamanıza olanak sağlar. Yeni bir belirteç şablonu oluştururken, Azure blok zinciri belirteçleri tüm belirteç dilbilgisi kurallarını doğrular. Oluşturulan şablonlar, bağlantılı blok zinciri ağlarında yayımlamak için Azure blok zinciri belirteçleri hizmetine kaydedilir.
 
 Belirteç şablonunuzu tasarlamak için aşağıdaki bölümlerdeki [belirteç davranışlarını](templates.md#token-behaviors) kullanabilirsiniz.
 
-## <a name="burnable-b"></a>Yanıcı (b)
+## <a name="burnable-b"></a>Burleştir (b)
 
-Belirteçleri tedarikten kaldırma yeteneği.
+Belirteçleri tedariğin kaldırabilme özelliği.
 
-Örneğin, bir hediye kartı için çevrimiçi kredi kartı puanlarını kullandığınızda, kredi kartı puanları yanar.
+Örneğin, bir hediye kartı için çevrimiçi kredi kartı noktaları kullandığınızda, kredi kartı noktaları yazılır.
 
-## <a name="delegable-g"></a>Atılabilir (g)
+## <a name="delegable-g"></a>Temsilci seçilebilen (g)
 
-Sahip olduğunuz belirteç üzerinde gerçekleştirilen eylemleri temsilciye verme becerisi.
+Sahip olduğunuz belirteç üzerinde gerçekleştirilen eylemleri temsil etme yeteneği.
 
-Temsilci, belirteci sahibi olarak eylemleri gerçekleştirebilirsiniz. Örneğin, oylamayı uygulamak için atılabilir bir belirteç kullanabilirsiniz. Atılabilir bir belirteç, oy belirteci sahibinin kendi adına başka birinin oy kullanmasını sağlar.
+Temsilci, belirteç sahibi olarak eylemleri gerçekleştirebilir. Örneğin, bir oyu uygulamak için bir temsilci seçilebilen belirteci kullanabilirsiniz. Bir temsilci seçilebilen belirteci, oy belirteci sahibinin adına başka birinin oymasına izin verir.
 
-## <a name="logable-l"></a>Oturum açılabilir (l)
+## <a name="logable-l"></a>Günlüklenebilir (l)
 
-Kayıt olma yeteneği.
+Günlüğe kaydetme özelliği.
 
-Örneğin, belirli bir filmi gösteren her tiyatroya film dağıtımı için bir günlüğe kaydedilebilir bir belirteç dağıtabilirsiniz. Filmin oynanabilmesi için, telif hakkı ödemeleri filmin gösterimi sırasında gösterilmeye göre olduğundan, gösterimin her gösterim için bir işlem kaydetmesi gerekir. Aktörler inşa dağıtımda tiyatro başına gösterilen film başına ödemeleri doğrulamak için film belirteçleri kullanabilirsiniz.
+Örneğin, belirli bir filmi gösteren her bir sineması için bir film dağıtımı için günlüğe kaydedebilir bir belirteç verebilirsiniz. Filmin yürütülmesi için, bir işlemin her biri için bir işlem çalıştırması gerekir, çünkü bu, telif ücreti ödemeler, filmin yayın çalıştırması sırasında gösterilmelidir. Aktör derlemesi, dağıtım sırasında her bir sineması gösteren film başına ödeme sayısını doğrulamak için film belirteçlerini kullanabilir.
 
-## <a name="mint-able-m"></a>Naneli (m)
+## <a name="mint-able-m"></a>Mint-Able (d)
 
-Belirteç sınıfı için ek belirteçlere basma yeteneği. Minter rolü mintable davranışı içerir.
+Belirteç sınıfı için ek belirteçleri mini gösterme özelliği. Minter rolü mintable davranışını içerir.
 
-Örneğin, bir sadakat programı uygulamak isteyen bir perakende şirketi, sadakat programı için mintable belirteçleri kullanabilir. Müşteri tabanı büyüdükçe müşterileri için ek sadakat puanları nane basabilirler.  
+Örneğin, bir bağlılık programı programını uygulamak isteyen bir perakende şirketi, bağlılık programı programları için mintable belirteçlerini kullanabilir. Müşteri tabanı büyüdükçe müşterileri için ek bağlılık programı noktalarından daha fazla programlama yapabilir.  
 
-## <a name="non-subdividable-or-whole-d"></a>Bölünemez veya bütün (~d)
+## <a name="non-subdividable-or-whole-d"></a>Alt veya tam olmayan (~ d)
 
-Bir belirteci daha küçük parçalara bölünmesini önlemek için kısıtlama.
+Belirtecin daha küçük parçalara bölünmesine engel olan kısıtlama.
 
-Örneğin, tek bir resim boyama birden çok küçük parçalara bölünemez. 
+Örneğin, tek bir resim boyama, birden çok küçük parçaya ayrılabilir. 
 
-## <a name="non-transferable-t"></a>Devredilemez (~t)
+## <a name="non-transferable-t"></a>Aktarılamayan (~ t)
 
-İlk belirteç sahibinden sahiplik değişikliğini önlemek için kısıtlama.
+İlk belirteç sahibinden sahiplik değişikliğini önleme kısıtlaması.
 
-Örneğin, üniversite diploması devredilemez bir belirteçtir. Mezuna diploma verildikten sonra, mezundan başka bir kişiye devredilemez.
+Örneğin, bir üniversite DISA, aktarılamayan bir belirteçtir. Bir gönderdikten sonra, bir sevenma verildiğinde, mezun 'den başka bir kişiye aktarılamaz.
 
 ## <a name="roles-r"></a>Roller (r)
 
-Belirli davranışlar için belirteç şablonu sınıfındaki rolleri tanımlama yeteneği.
+Belirli davranışlar için belirteç şablonu sınıfında Roller tanımlama yeteneği.
 
-Belirteç oluşturma zamanında bir belirteç desteklediği rol adlarının bir listesini sağlayabilirsiniz. Roller belirtildiğinde, kullanıcı bu davranışlara roller atayabilir. Şu anda, sadece minter rolü desteklenir.
+Belirtecin, belirteç oluşturma sırasında desteklediği rol adlarının listesini sağlayabilirsiniz. Roller belirtildiğinde, Kullanıcı bu davranışlara roller atayabilir. Şu anda yalnızca Minter rolü destekleniyor.
 
-## <a name="singleton-s"></a>Singleton (lar)
+## <a name="singleton-s"></a>Tekli (lar)
 
-Bir belirteç kaynağına izin verme kısıtlaması.
+Bir belirteç sağlamak için kısıtlama.
 
-Örneğin, bir müze eser singleton belirtecidir. Müze eserleri eşsizdir. Bir yapıyı temsil eden bir belirteç, yalnızca tek bir öğeye sahiptir.
+Örneğin, bir Museum yapıtı tek bir belirteçtir. Museum yapıtları benzersizdir. Yapıtı temsil eden belirtecin yalnızca TEDARİKTEKİ tek bir öğesi vardır.
 
-## <a name="subdividable-d"></a>Bölünebilir (d)
+## <a name="subdividable-d"></a>Alt (d)
 
-Bir belirteci daha küçük parçalara bölme yeteneği.
+Bir belirteci daha küçük parçalara bölebilme.
 
-Örneğin, bir dolar sente bölünebilir.
+Örneğin, bir dolar, ilal 'ye ayrılabilir.
 
-## <a name="transferable-t"></a>Devredilebilir (t)
+## <a name="transferable-t"></a>Transfer edilebilir (t)
 
-Belirteç sahipliğini devretme yeteneği.
+Belirtecin sahipliğini aktarma özelliği.
 
-Örneğin, mülk unvanı, mülk satıldığında bir kişiden diğerine aktarılabilen devredilebilir bir belirteçtir.
+Örneğin, bir özellik başlığı, özellik satıldığında bir kişiden diğerine aktarılabilen bir aktarılabilir belirteç olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure [Blockchain Belirteçleri hesap yönetimi](account-management.md)hakkında bilgi edinin.
+[Azure blok zinciri belirteçleri hesap yönetimi](account-management.md)hakkında bilgi edinin.

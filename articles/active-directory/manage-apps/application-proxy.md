@@ -1,6 +1,6 @@
 ---
-title: Şirket içi uygulamalara uzaktan erişim - Azure AD Application Proxy
-description: Azure Active Directory'nin Uygulama Proxy'si şirket içi web uygulamalarına güvenli uzaktan erişim sağlar. Azure AD'de tek bir oturum açtıktan sonra, kullanıcılar hem bulut hem de şirket içi uygulamalara harici bir URL veya dahili uygulama portalı üzerinden erişebilir. Örneğin, Application Proxy uzak masaüstü, SharePoint, Takımlar, Tableau, Qlik ve iş hattı (LOB) uygulamalarına uzaktan erişim ve tek oturum açma sağlayabilir.
+title: Şirket içi uygulamalara uzaktan erişim-Azure AD Uygulama Ara Sunucusu
+description: Azure Active Directory uygulama proxy 'Si, şirket içi Web uygulamalarına güvenli uzaktan erişim sağlar. Azure AD 'de çoklu oturum açma işleminden sonra, kullanıcılar harici bir URL veya dahili uygulama portalı aracılığıyla hem buluta hem de şirket içi uygulamalara erişebilir. Örneğin, uygulama proxy 'Si Uzak Masaüstü, SharePoint, takımlar, Tableau, Qlik ve iş kolu (LOB) uygulamaları için uzaktan erişim ve çoklu oturum açma sağlayabilir.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,64 +13,64 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4780786f0caea2c211b6b93fb0736feaade8de80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74274843"
 ---
-# <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Azure Active Directory'nin Uygulama Proxy'si aracılığıyla şirket içi uygulamalara uzaktan erişim 
+# <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Azure Active Directory uygulama proxy 'Si aracılığıyla şirket içi uygulamalara uzaktan erişim 
 
-Azure Active Directory'nin Uygulama Proxy'si şirket içi web uygulamalarına güvenli uzaktan erişim sağlar. Azure AD'de tek bir oturum açtıktan sonra, kullanıcılar hem bulut hem de şirket içi uygulamalara harici bir URL veya dahili uygulama portalı üzerinden erişebilir. Örneğin, Application Proxy uzak masaüstü, SharePoint, Takımlar, Tableau, Qlik ve iş hattı (LOB) uygulamalarına uzaktan erişim ve tek oturum açma sağlayabilir.
+Azure Active Directory uygulama proxy 'Si, şirket içi Web uygulamalarına güvenli uzaktan erişim sağlar. Azure AD 'de çoklu oturum açma işleminden sonra, kullanıcılar harici bir URL veya dahili uygulama portalı aracılığıyla hem buluta hem de şirket içi uygulamalara erişebilir. Örneğin, uygulama proxy 'Si Uzak Masaüstü, SharePoint, takımlar, Tableau, Qlik ve iş kolu (LOB) uygulamaları için uzaktan erişim ve çoklu oturum açma sağlayabilir.
 
 Azure AD Uygulama Ara Sunucusu şu özelliklere sahiptir:
 
-- **Kullanımı basit.** Kullanıcılar şirket içi uygulamalarınıza, Azure AD ile entegre edilmiş O365 ve diğer SaaS uygulamalarına eriştisikleri gibi erişebilir. Uygulama Ara Sunucusu ile çalışması için uygulamanızı değiştirmeniz veya güncelleştirmeniz gerekmez. 
+- **Kullanımı basittir**. Kullanıcılar, şirket içi uygulamalarınıza O365 ve Azure AD ile tümleştirilmiş diğer SaaS uygulamalarına erişen şekilde erişebilirler. Uygulama Ara Sunucusu ile çalışması için uygulamanızı değiştirmeniz veya güncelleştirmeniz gerekmez. 
 
-- **Güvenli**. Şirket içi uygulamalar Azure'un yetkilendirme denetimlerini ve güvenlik analitiğini kullanabilir. Örneğin, şirket içi uygulamalar Koşullu Erişim ve iki aşamalı doğrulamayı kullanabilir. Uygulama Proxy güvenlik duvarı üzerinden gelen bağlantıları açmanızı gerektirmez.
+- **Güvenli**. Şirket içi uygulamalar, Azure 'un yetkilendirme denetimlerini ve güvenlik analizlerini kullanabilir. Örneğin, şirket içi uygulamalar koşullu erişim ve iki adımlı doğrulama kullanabilir. Uygulama proxy 'Si, gelen bağlantıları güvenlik duvarınız aracılığıyla açmanızı gerektirmez.
  
-- **Uygun maliyetli.** Şirket içi çözümler genellikle arındırılmış bölgeler (DMZ'ler), kenar sunucuları veya diğer karmaşık altyapıları ayarlamanızı ve korumanızı gerektirir. Uygulama Proxy'si bulutta çalışır, bu da kullanımı kolaylaştırır. Uygulama Proxy'sini kullanmak için ağ altyapısını değiştirmeniz veya şirket içi ortamınıza ek cihazlar yüklemeniz gerekmez.
+- Uygun **maliyetli**. Şirket içi çözümler genellikle, Parçalandırılmış bölgeleri (DMZs), Edge sunucularını veya diğer karmaşık altyapıları ayarlamanızı ve bakımını korumanızı gerektirir. Uygulama proxy 'Si bulutta çalışır ve bu sayede kullanımı kolaylaşır. Uygulama proxy 'Sini kullanmak için, ağ altyapısını değiştirmeniz veya şirket içi ortamınıza ek gereçler yüklemeniz gerekmez.
 
 ## <a name="what-is-application-proxy"></a>Uygulama Ara Sunucusu nedir?
-Application Proxy, Kullanıcıların şirket içi web uygulamalarına uzak bir istemciden erişmesini sağlayan Azure AD özelliğidir. Application Proxy hem bulutta çalışan Application Proxy hizmetini hem de şirket içi sunucuda çalışan Application Proxy bağlayıcısını içerir. Azure AD, Uygulama Proxy hizmeti ve Application Proxy bağlayıcısı, kullanıcı oturum açma belirteci'ni Azure AD'den web uygulamasına güvenli bir şekilde geçirmek için birlikte çalışır.
+Uygulama proxy 'Si, kullanıcıların uzak bir istemciden şirket içi Web uygulamalarına erişmesini sağlayan bir Azure AD özelliğidir. Uygulama proxy 'Si, hem bulutta çalışan uygulama proxy hizmetini hem de şirket içi sunucuda çalışan uygulama proxy bağlayıcısını içerir. Azure AD, uygulama proxy hizmeti ve uygulama proxy Bağlayıcısı, Azure AD 'deki Kullanıcı oturum açma belirtecini Web uygulamasına güvenli bir şekilde geçirmek için birlikte çalışır.
 
-Uygulama Proxy ile çalışır:
+Uygulama proxy 'Si ile birlikte kullanılabilir:
 
-* Kimlik doğrulama için [Tümleşik Windows Kimlik Doğrulaması](application-proxy-configure-single-sign-on-with-kcd.md) kullanan Web uygulamaları  
-* Form tabanlı veya [üstbilgi tabanlı](application-proxy-configure-single-sign-on-with-ping-access.md) erişimi kullanan web uygulamaları  
-* Farklı cihazlardaki zengin uygulamalara maruz bırakmak istediğiniz Web API'leri  
-* [Uzak Masaüstü Ağ Geçidi'nin](application-proxy-integrate-with-remote-desktop-services.md) arkasında barındırılan uygulamalar  
-* Active Directory Authentication Library (ADAL) ile entegre edilmiş zengin istemci uygulamaları
+* Kimlik doğrulaması için [Tümleşik Windows kimlik doğrulaması](application-proxy-configure-single-sign-on-with-kcd.md) kullanan Web uygulamaları  
+* Form tabanlı veya [üst bilgi tabanlı](application-proxy-configure-single-sign-on-with-ping-access.md) erişim kullanan Web uygulamaları  
+* Farklı cihazlarda zengin uygulamalarda kullanıma sunmak istediğiniz Web API 'Leri  
+* [Uzak Masaüstü Ağ Geçidi](application-proxy-integrate-with-remote-desktop-services.md) arkasında barındırılan uygulamalar  
+* Active Directory Authentication Library (ADAL) ile tümleştirilmiş zengin istemci uygulamaları
 
-Uygulama Proxy tek oturum açma destekler. Desteklenen yöntemler hakkında daha fazla bilgi için [bkz.](what-is-single-sign-on.md#choosing-a-single-sign-on-method)
+Uygulama proxy 'Si çoklu oturum açmayı destekler. Desteklenen yöntemler hakkında daha fazla bilgi için bkz. [Çoklu oturum açma yöntemi seçme](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
 
-Uygulama Proxy uzak kullanıcılara iç kaynaklara erişim vermek için önerilir. Uygulama Proxy vpn veya ters proxy gereksinimini değiştirir. Şirket ağındaki dahili kullanıcılar için tasarlanmamıştır.  Gereksiz yere Uygulama Proxy'si kullanan bu kullanıcılar beklenmeyen ve istenmeyen performans sorunlarına neden olabilir.
+Uzak kullanıcılara iç kaynaklara erişim izni vermek için uygulama proxy 'Si önerilir. Uygulama proxy 'Si, VPN veya ters proxy gereksinimini yerine koyar. Şirket ağındaki dahili kullanıcılara yönelik değildir.  Uygulama proxy 'Sini gereksiz şekilde kullanan bu kullanıcılar beklenmedik ve istenmeyen performans sorunları ortaya çıkarabilir.
 
-## <a name="how-application-proxy-works"></a>Uygulama Proxy nasıl çalışır?
+## <a name="how-application-proxy-works"></a>Uygulama proxy 'Si nasıl kullanılır
 
-Aşağıdaki diyagram, Azure AD ve Uygulama Proxy'sinin şirket içi uygulamalarda tek oturum açma sağlamak için birlikte nasıl çalıştığını gösterir.
+Aşağıdaki diyagramda, şirket içi uygulamalarda çoklu oturum açma sağlamak için Azure AD ve uygulama proxy 'Sinin birlikte nasıl çalıştığı gösterilmektedir.
 
-![AzureAD Uygulama Proxy diyagramı](./media/application-proxy/azureappproxxy.png)
+![AzureAD uygulama proxy diyagramı](./media/application-proxy/azureappproxxy.png)
 
-1. Kullanıcı uygulamanın bitiş noktası üzerinden erişiminden sonra, kullanıcı Azure AD oturum açma sayfasına yönlendirilir. 
-2. Başarılı bir oturum açmadan sonra Azure AD, kullanıcının istemci aygıtına bir belirteç gönderir.
-3. İstemci belirteci, kullanıcı ana adı (UPN) ve güvenlik soyadı (SPN) belirteci alır Uygulama Proxy hizmetine gönderir. Application Proxy daha sonra isteği Application Proxy bağlayıcısına gönderir.
-4. Tek oturum açma yapılandırıldıysanız, bağlayıcı kullanıcı adına gerekli olan ek kimlik doğrulamasını gerçekleştirir.
+1. Kullanıcı bir uç nokta aracılığıyla uygulamaya erişduktan sonra, Kullanıcı Azure AD oturum açma sayfasına yönlendirilir. 
+2. Başarılı bir oturum açma işleminden sonra Azure AD, kullanıcının istemci cihazına bir belirteç gönderir.
+3. İstemci belirteci, belirteç üzerinden Kullanıcı asıl adını (UPN) ve güvenlik asıl adını (SPN) alan uygulama ara sunucusu hizmetine gönderir. Ardından uygulama proxy 'si, isteği uygulama proxy Bağlayıcısı 'na gönderir.
+4. Çoklu oturum açma 'yı yapılandırdıysanız, bağlayıcı kullanıcı adına gereken ek kimlik doğrulamasını gerçekleştirir.
 5. Bağlayıcı, isteği şirket içi uygulamaya gönderir.  
-6. Yanıt, bağlayıcı ve Uygulama Proxy hizmeti aracılığıyla kullanıcıya gönderilir.
+6. Yanıt, kullanıcıya bağlayıcı ve uygulama proxy hizmeti üzerinden gönderilir.
 
 | Bileşen | Açıklama |
 | --------- | ----------- |
-| Uç Nokta  | Bitiş noktası bir URL veya [son kullanıcı portalıdır.](end-user-experiences.md) Kullanıcılar harici bir URL'ye erişerek ağınızın dışındayken uygulamalara ulaşabilirler. Ağınızdaki kullanıcılar uygulamaya bir URL veya son kullanıcı portalı üzerinden erişebilir. Kullanıcılar bu uç noktalardan birine gittiklerinde, Azure AD'de kimlik doğrulaması yaparlar ve daha sonra bağlayıcı aracılığıyla şirket içi uygulamaya yönlendirilirler.|
+| Uç Nokta  | Uç nokta bir URL veya [Son Kullanıcı portalıdır](end-user-experiences.md). Kullanıcılar, dış bir URL 'ye erişerek ağınızın dışından uygulamalara erişebilir. Ağınızdaki kullanıcılar bir URL veya Son Kullanıcı Portalı aracılığıyla uygulamaya erişebilir. Kullanıcılar bu uç noktalardan birine gittiklerinde, Azure AD 'de kimlik doğrular ve ardından bağlayıcı aracılığıyla şirket içi uygulamaya yönlendirilir.|
 | Azure AD | Azure AD, bulutta depolanan kiracı dizinini kullanarak kimlik doğrulamasını gerçekleştirir. |
-| Uygulama Proxy hizmeti | Bu Uygulama Proxy hizmeti, Azure AD'nin bir parçası olarak bulutta çalışır. Oturum açma belirteci kullanıcıdan Uygulama Proxy Bağlayıcısı'na geçer. Application Proxy, istek üzerine erişilebilen tüm üstbilgileri ileter ve üstbilgileri protokolüne göre istemci IP adresine ayarlar. Proxy'ye gelen istek zaten bu üstbilgi varsa, istemci IP adresi üstbilginin değeri olan virgülayrılmış listenin sonuna eklenir.|
-| Uygulama Proxy Konektörü | Bağlayıcı, ağınızın içindeki bir Windows Server'da çalışan hafif bir aracıdır. Bağlayıcı, buluttaki Uygulama Proxy hizmeti ile şirket içi uygulama arasındaki iletişimi yönetir. Bağlayıcı yalnızca giden bağlantıları kullanır, böylece gelen bağlantı noktalarını açmanız veya DMZ'ye herhangi bir şey koymanız gerekmez. Bağlayıcılar devletsizdir ve gerektiğinde buluttan bilgi çeker. Bağlayıcılar hakkında yük bakiyesi ve kimlik doğrulaması gibi daha fazla bilgi için Azure [AD Uygulama Proxy bağlayıcılarını anlayın.](application-proxy-connectors.md)|
-| Aktif Dizin (AD) | Etkin Dizin, etki alanı hesapları için kimlik doğrulaması gerçekleştirmek için şirket içinde çalışır. Tek oturum açma yapılandırıldığında, bağlayıcı gerekli herhangi bir ek kimlik doğrulaması gerçekleştirmek için AD ile iletişim kurar.
-| Şirket içi uygulama | Son olarak, kullanıcı şirket içi bir uygulamaya erişebilir. 
+| Uygulama proxy hizmeti | Bu uygulama proxy hizmeti, Azure AD 'nin bir parçası olarak bulutta çalışır. Kullanıcının oturum açma belirtecini, uygulama proxy Bağlayıcısı 'na geçirir. Uygulama proxy 'Si, istekteki tüm erişilebilir üstbilgileri iletir ve üst bilgileri protokol başına, istemci IP adresine ayarlar. Ara sunucuya gelen istek zaten bu üstbilgiye sahipse, istemci IP adresi üst bilginin değeri olan virgülle ayrılmış listenin sonuna eklenir.|
+| Uygulama proxy Bağlayıcısı | Bağlayıcı, ağınız içindeki bir Windows Server üzerinde çalışan hafif bir aracıdır. Bağlayıcı, bulutta ve şirket içi uygulamada bulunan uygulama proxy hizmeti arasındaki iletişimi yönetir. Bağlayıcı yalnızca giden bağlantıları kullanır, bu nedenle herhangi bir gelen bağlantı noktasını açmanız veya DMZ 'e herhangi bir şey yerleştirmeniz gerekmez. Bağlayıcılar, gereken şekilde durum bilgisiz ve buluttan tanıtım bilgileri. Yük Dengeleme ve kimlik doğrulama gibi bağlayıcılar hakkında daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu bağlayıcılarını anlama](application-proxy-connectors.md).|
+| Active Directory (AD) | Active Directory etki alanı hesapları için kimlik doğrulaması yapmak üzere şirket içinde çalışır. Çoklu oturum açma yapılandırıldığında, bağlayıcı, gereken ek kimlik doğrulamasını gerçekleştirmek için AD ile iletişim kurar.
+| Şirket içi uygulama | Son olarak, Kullanıcı şirket içi bir uygulamaya erişebilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Uygulama Proxy'sini kullanmaya başlamak [için Bkz. Öğretici: Uygulama Proxy'si aracılığıyla uzaktan erişim için şirket içi uygulama ekleyin.](application-proxy-add-on-premises-application.md) 
+Uygulama proxy 'Sini kullanmaya başlamak için bkz. [öğretici: uygulama proxy 'si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md). 
 
-En son haberler ve güncellemeler için [Uygulama Proxy bloguna](https://blogs.technet.com/b/applicationproxyblog/) bakın
+En son haberler ve güncelleştirmeler için bkz. [uygulama proxy blogu](https://blogs.technet.com/b/applicationproxyblog/)
 
 

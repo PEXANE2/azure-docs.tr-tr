@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Temel Etkin Dizin şirket içi ve Azure REKLAM ortamı.
+title: Öğretici-şirket içi ve Azure AD ortamında temel Active Directory.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,40 +11,40 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 356a05d4d92f17ceb66ff0208153ec3eac736757
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74793904"
 ---
-# <a name="tutorial-basic-active-directory-environment"></a>Öğretici: Temel Aktif Dizin ortamı
+# <a name="tutorial-basic-active-directory-environment"></a>Öğretici: temel Active Directory ortamı
 
-Bu öğretici, temel bir Active Directory ortamı oluşturma da size yol göstermektedir. 
+Bu öğreticide, temel bir Active Directory ortamı oluşturma işlemi adım adım açıklanmaktadır. 
 
-![Oluşturma](media/tutorial-single-forest/diagram1.png)
+![Oluştur](media/tutorial-single-forest/diagram1.png)
 
-Öğreticide oluşturduğunuz ortamı, karma kimlik senaryolarının çeşitli yönlerini test etmek için kullanabilirsiniz ve bazı öğreticiler için ön koşul olacaktır.  Zaten varolan bir Active Directory ortamınız varsa, bunu yerine olarak kullanabilirsiniz.  Bu bilgiler benim hiçbir şeyden başlayarak olan bireyler için sağlanmaktadır.
+Hibrit kimlik senaryolarının çeşitli yönlerini test etmek için öğreticide oluşturduğunuz ortamı kullanabilirsiniz ve bazı öğreticiler için bir önkoşul olacaktır.  Zaten mevcut bir Active Directory ortamınız varsa bunu alternatif olarak kullanabilirsiniz.  Bu bilgiler, hiç bir şey başlatmayan bireyler için sağlanır.
 
-Bu öğretici oluşur
+Bu öğreticiden oluşur
 ## <a name="prerequisites"></a>Ön koşullar
-Bu öğreticinin tamamlanması için gerekli ön koşullar aşağıda dır.
-- [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir Windows 10 veya [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir. [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os)
-- Sanal makinenin internetle iletişim kurmasını sağlamak için harici ağ [bağdaştırıcısı.](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network)
-- [Azure aboneliği](https://azure.microsoft.com/free)
-- Windows Server 2016'nın bir kopyası
-- [Microsoft .NET çerçevesi 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115)
+Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
+- [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) veya [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir.
+- Sanal makinenin internet ile iletişim kurmasına izin veren bir [dış ağ bağdaştırıcısı](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network) .
+- Bir [Azure aboneliği](https://azure.microsoft.com/free)
+- Windows Server 2016 kopyası
+- [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56115)
 
 > [!NOTE]
-> Bu öğretici, en kısa sürede öğretici ortamı oluşturabilmeniz için PowerShell komut dosyalarını kullanır.  Komut dosyalarının her biri, komut dosyalarının başında bildirilen değişkenleri kullanır.  Değişkenleri ortamınızı yansıtacak şekilde değiştirebilirsiniz ve değiştirmelisiniz.
+> Bu öğretici, en hızlı zamanda öğretici ortamını oluşturabilmeniz için PowerShell betikleri kullanır.  Betiklerin her biri, betikleri başlangıcında belirtilen değişkenleri kullanır.  Bu değişkenleri ortamınızı yansıtacak şekilde değiştirebilir ve değiştirebilirsiniz.
 >
->Kullanılan komut dosyaları, Azure AD Connect bulut sağlama aracısını yüklemeden önce genel bir Active Directory ortamı oluşturur.  Tüm öğreticiler için geçerlidir.
+>Kullanılan betikler Azure AD Connect bulut sağlama aracısını yüklemeden önce genel Active Directory ortamı oluşturur.  Bunlar tüm öğreticilerle ilgilidir.
 >
-> Bu eğitimde kullanılan PowerShell komut dosyalarının kopyalarını [Burada](https://github.com/billmath/tutorial-phs)GitHub'da bulabilirsiniz.
+> Bu öğreticide kullanılan PowerShell betiklerinin kopyaları [burada](https://github.com/billmath/tutorial-phs)GitHub 'da bulunabilir.
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
-Hibrid kimlik ortamımızı çalışır hale getirmek için yapmanız gereken ilk şey, şirket içi Active Directory sunucumuz olarak kullanılacak sanal bir makine oluşturmaktır.  Şunları yapın:
+Karma kimlik ortamınızı çalışır duruma getirmek için yapmanız gereken ilk şey, şirket içi Active Directory sunucusu olarak kullanılacak bir sanal makine oluşturmaktır.  Şunları yapın:
 
-1. PowerShell ISE'yi Yönetici olarak açın.
+1. PowerShell ıSE 'yi yönetici olarak açın.
 2. Aşağıdaki komut dosyasını çalıştırın.
 
     ```powershell
@@ -72,24 +72,24 @@ Hibrid kimlik ortamımızı çalışır hale getirmek için yapmanız gereken il
     Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive 
     ```
 
-## <a name="complete-the-operating-system-deployment"></a>İşletim sistemi dağıtımını tamamlama
-Sanal makine bina bitirmek için, işletim sistemi yükleme bitirmek gerekir.
+## <a name="complete-the-operating-system-deployment"></a>İşletim sistemi dağıtımını tamamlandırma
+Sanal makineyi oluşturma işleminin tamamlanabilmesi için, işletim sistemi yüklemesini bitirebilmeniz gerekir.
 
-1. Hyper-V Manager, sanal makineye çift tıklayın
+1. Hyper-V Yöneticisi, sanal makineye çift tıklayın
 2. Başlat düğmesine tıklayın.
-3. 'CD veya DVD'den önyükleme için herhangi bir tuşa basın' sizden istenir. Devam et ve yap.
-4. Windows Server başlangıç ekranında dilinizi seçin ve **İleri'yi**tıklatın.
-5. **Şimdi Yükle'yi**tıklatın.
-6. Lisans anahtarınızı girin ve **İleri'yi**tıklatın.
-7. Kontrol **Lisans koşullarını kabul ediyorum ve **İleri'yi**tıklatın.
-8. **Özel'i seçin: Yalnızca Windows'u Yükle (Gelişmiş)**
-9. **İleri'yi** tıklatın
-10. Yükleme tamamlandıktan sonra sanal makineyi yeniden başlatın, VM'nin en güncel olduğundan emin olmak için Windows güncelleştirmelerini oturum açın ve çalıştırın.  En son güncelleştirmeleri yükleyin.
+3. "CD veya DVD 'den önyüklemek için herhangi bir tuşa basmanız" istenir. Devam edin ve bunu yapın.
+4. Windows Server başlangıç ekranında dilinizi seçin ve **İleri**' ye tıklayın.
+5. **Şimdi yüklensin**' e tıklayın.
+6. Lisans anahtarınızı girip **İleri**' ye tıklayın.
+7. Denetle * * lisans koşullarını kabul ediyorum ve **İleri**' ye tıklayın.
+8. Özel ' i seçin **: yalnızca Windows 'ı yükler (Gelişmiş)**
+9. **İleri** 'ye tıklayın
+10. Yükleme tamamlandıktan sonra, sanal makineyi yeniden başlatın, oturum açın ve VM 'nin en güncel olduğundan emin olmak için Windows güncelleştirmelerini çalıştırın.  En son güncelleştirmeleri yükler.
 
-## <a name="install-active-directory-prerequisites"></a>Etkin Dizin önkoşulları yükleyin
-Artık sanal bir makineniz olduğuna göre, Active Directory'yi yüklemeden önce birkaç şey yapmanız gerekir.  Diğer bir süre, sanal makineyi yeniden adlandırmanız, statik bir IP adresi ve DNS bilgileri ayarlamanız ve Uzaktan Sunucu Yönetimi araçlarını yüklemeniz gerekir.   Şunları yapın:
+## <a name="install-active-directory-prerequisites"></a>Active Directory önkoşulları yüklensin
+Artık bir sanal makineniz olduğuna göre, Active Directory yüklemeden önce birkaç şey yapmanız gerekir.  Diğer bir deyişle, sanal makineyi yeniden adlandırmanız, statik bir IP adresi ve DNS bilgileri ayarlamanız ve uzak sunucu yönetim araçları 'nı yüklemeniz gerekir.   Şunları yapın:
 
-1. PowerShell ISE'yi Yönetici olarak açın.
+1. PowerShell ıSE 'yi yönetici olarak açın.
 2. Aşağıdaki komut dosyasını çalıştırın.
 
     ```powershell
@@ -123,9 +123,9 @@ Artık sanal bir makineniz olduğuna göre, Active Directory'yi yüklemeden önc
     ```
 
 ## <a name="create-a-windows-server-ad-environment"></a>Windows Server AD ortamı oluşturma
-Artık VM oluşturulduve yeniden adlandırıldı ve statik bir IP adresi var, devam edin ve yüklemek ve Active Directory Etki Alanı Hizmetleri yapılandırmak.  Şunları yapın:
+VM 'yi oluşturup yeniden adlandırdığınıza ve statik bir IP adresine sahip olduğunuza göre, devam edip Active Directory Domain Services yükleyip yapılandırabilirsiniz.  Şunları yapın:
 
-1. PowerShell ISE'yi Yönetici olarak açın.
+1. PowerShell ıSE 'yi yönetici olarak açın.
 2. Aşağıdaki komut dosyasını çalıştırın.
 
     ```powershell 
@@ -154,9 +154,9 @@ Artık VM oluşturulduve yeniden adlandırıldı ve statik bir IP adresi var, de
     ```
 
 ## <a name="create-a-windows-server-ad-user"></a>Windows Server AD kullanıcısı oluşturma
-Artık Aktif Dizin ortamımıza sahip olduğunuza göre, bir test hesabına ihtiyacınız var.  Bu hesap şirket içi REKLAM ortamımızda oluşturulur ve azure AD ile senkronize edilir.  Şunları yapın:
+Active Directory ortamımız olduğuna göre, bir sınama hesabı gerekir.  Bu hesap, şirket içi AD ortamımızda oluşturulur ve ardından Azure AD ile eşitlenir.  Şunları yapın:
 
-1. PowerShell ISE'yi Yönetici olarak açın.
+1. PowerShell ıSE 'yi yönetici olarak açın.
 2. Aşağıdaki komut dosyasını çalıştırın.
 
     ```powershell 
@@ -194,35 +194,35 @@ Artık Aktif Dizin ortamımıza sahip olduğunuza göre, bir test hesabına ihti
 
 
 ## <a name="create-an-azure-ad-tenant"></a>Azure AD kiracısı oluşturma
-Artık kullanıcılarımızı bulutla senkronize edebilmeniz için bir Azure AD kiracıoluşturmanız gerekiyor.  Yeni bir Azure AD kiracısı oluşturmak için aşağıdaki adımları uygulayın.
+Şimdi, kullanıcılarınızı buluta eşitleyebilmeniz için bir Azure AD kiracısı oluşturmanız gerekir.  Yeni bir Azure AD kiracısı oluşturmak için aşağıdaki adımları uygulayın.
 
 1. [Azure portalına](https://portal.azure.com) gidip Azure aboneliği olan bir hesapla oturum açın.
 2. **Artı simgesini (+)** seçip **Azure Active Directory** terimini aratın.
 3. Arama sonuçlarında **Azure Active Directory** girişini seçin.
-4. **Oluştur'u**seçin.</br>
+4. **Oluştur**’u seçin.</br>
 ![Oluşturma](media/tutorial-single-forest/create1.png)</br>
 5. **Kuruluş için bir ad** ve **ilk etki alanı adı** girin. Ardından **Oluştur**’u seçin. Dizininiz oluşturulur.
-6. Bu işlem tamamlandıktan sonra, dizini yönetmek için **buradaki** bağlantıyı tıklatın.
+6. Bu tamamlandığında, dizini yönetmek için **buraya** tıklayın bağlantısına tıklayın.
 
-## <a name="create-a-global-administrator-in-azure-ad"></a>Azure AD'de genel bir yönetici oluşturma
-Artık bir Azure AD kiracınız olduğuna göre, genel bir yönetici hesabı oluşturursunuz.  Genel yönetici hesabını oluşturmak için aşağıdakileri yapın.
+## <a name="create-a-global-administrator-in-azure-ad"></a>Azure AD 'de Genel yönetici oluşturma
+Artık bir Azure AD kiracınız olduğuna göre, bir genel yönetici hesabı oluşturacaksınız.  Genel yönetici hesabını oluşturmak için aşağıdakileri yapın.
 
 1.  **Yönet** bölümünde **Kullanıcılar**’ı seçin.</br>
 ![Oluşturma](media/tutorial-single-forest/administrator1.png)</br>
 2.  **Tüm kullanıcılar**'ı ve ardından **+ Yeni kullanıcı**'yı seçin.
-3.  Bu kullanıcı için bir ad ve kullanıcı adı girin. Bu kullanıcı kiracınızın Genel Yöneticisi olacak. **Dizin rolünü** Global yönetici olarak da değiştirmek isteyeceksiniz. **Global administrator.** İsterseniz geçici parolayı da gösterebilirsiniz. İşiniz bittiğinde **Oluştur**'u seçin.</br>
+3.  Bu kullanıcı için bir ad ve kullanıcı adı girin. Bu kullanıcı kiracınızın Genel Yöneticisi olacak. Ayrıca, **Dizin rolünü** **genel yönetici** olarak değiştirmek isteyeceksiniz. İsterseniz geçici parolayı da gösterebilirsiniz. İşiniz bittiğinde **Oluştur**'u seçin.</br>
 ![Oluşturma](media/tutorial-single-forest/administrator2.png)</br>
-4. Bu işlem tamamlandıktan sonra, yeni bir web tarayıcısı açın ve yeni genel yönetici hesabını ve geçici parolayı kullanarak myapps.microsoft.com oturum açın.
-5. Genel yöneticinin parolasını hatırlayacağınız bir şeyle değiştirin.
+4. Bu tamamlandığında, yeni bir Web tarayıcısı açın ve yeni genel yönetici hesabı ile geçici parolayı kullanarak myapps.microsoft.com 'de oturum açın.
+5. Genel yönetici parolasını hatırlayacaksınız bir şekilde değiştirin.
 
-## <a name="optional--additional-server-and-forest"></a>İsteğe bağlı: Ek sunucu ve orman
-Aşağıda, ek bir sunucu ve orman oluşturmak için adımlar sağlayan isteğe bağlı bir bölüm veorman.  Bu, Bulut sağlama için [Azure AD Connect için Pilot](tutorial-pilot-aadc-aadccp.md)gibi daha gelişmiş öğreticilerin bazılarında kullanılabilir.
+## <a name="optional--additional-server-and-forest"></a>İsteğe bağlı: ek sunucu ve orman
+Aşağıda ek bir sunucu ve orman oluşturma adımları sağlayan isteğe bağlı bir bölüm verilmiştir.  Bu, [bulut sağlamaya Azure AD Connect yönelik pilot](tutorial-pilot-aadc-aadccp.md)gibi daha gelişmiş öğreticilerde kullanılabilir.
 
-Yalnızca ek bir sunucuya ihtiyacınız varsa, sonra durdurabilirsiniz - **Sanal makine** adımı oluşturun ve yukarıda oluşturulan varolan etki alanına sunucu katılmak.  
+Yalnızca ek bir sunucu gerekiyorsa, **sanal makine oluşturma** adımını başlattıktan sonra durabilir ve sunucuyu yukarıda oluşturulan mevcut etki alanına katabilirsiniz.  
 
 ### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-1. PowerShell ISE'yi Yönetici olarak açın.
+1. PowerShell ıSE 'yi yönetici olarak açın.
 2. Aşağıdaki komut dosyasını çalıştırın.
 
     ```powershell
@@ -259,24 +259,24 @@ Yalnızca ek bir sunucuya ihtiyacınız varsa, sonra durdurabilirsiniz - **Sanal
     Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
     ```
 
-### <a name="complete-the-operating-system-deployment"></a>İşletim sistemi dağıtımını tamamlama
-Sanal makine bina bitirmek için, işletim sistemi yükleme bitirmek gerekir.
+### <a name="complete-the-operating-system-deployment"></a>İşletim sistemi dağıtımını tamamlandırma
+Sanal makineyi oluşturma işleminin tamamlanabilmesi için, işletim sistemi yüklemesini bitirebilmeniz gerekir.
 
-1. Hyper-V Manager, sanal makineye çift tıklayın
+1. Hyper-V Yöneticisi, sanal makineye çift tıklayın
 2. Başlat düğmesine tıklayın.
-3. 'CD veya DVD'den önyükleme için herhangi bir tuşa basın' sizden istenir. Devam et ve yap.
-4. Windows Server başlangıç ekranında dilinizi seçin ve **İleri'yi**tıklatın.
-5. **Şimdi Yükle'yi**tıklatın.
-6. Lisans anahtarınızı girin ve **İleri'yi**tıklatın.
-7. Kontrol **Lisans koşullarını kabul ediyorum ve **İleri'yi**tıklatın.
-8. **Özel'i seçin: Yalnızca Windows'u Yükle (Gelişmiş)**
-9. **İleri'yi** tıklatın
-10. Yükleme tamamlandıktan sonra sanal makineyi yeniden başlatın, VM'nin en güncel olduğundan emin olmak için Windows güncelleştirmelerini oturum açın ve çalıştırın.  En son güncelleştirmeleri yükleyin.
+3. "CD veya DVD 'den önyüklemek için herhangi bir tuşa basmanız" istenir. Devam edin ve bunu yapın.
+4. Windows Server başlangıç ekranında dilinizi seçin ve **İleri**' ye tıklayın.
+5. **Şimdi yüklensin**' e tıklayın.
+6. Lisans anahtarınızı girip **İleri**' ye tıklayın.
+7. Denetle * * lisans koşullarını kabul ediyorum ve **İleri**' ye tıklayın.
+8. Özel ' i seçin **: yalnızca Windows 'ı yükler (Gelişmiş)**
+9. **İleri** 'ye tıklayın
+10. Yükleme tamamlandıktan sonra, sanal makineyi yeniden başlatın, oturum açın ve VM 'nin en güncel olduğundan emin olmak için Windows güncelleştirmelerini çalıştırın.  En son güncelleştirmeleri yükler.
 
-### <a name="install-active-directory-prerequisites"></a>Etkin Dizin önkoşulları yükleyin
-Artık sanal bir makineniz olduğuna göre, Active Directory'yi yüklemeden önce birkaç şey yapmanız gerekir.  Diğer bir süre, sanal makineyi yeniden adlandırmanız, statik bir IP adresi ve DNS bilgileri ayarlamanız ve Uzaktan Sunucu Yönetimi araçlarını yüklemeniz gerekir.   Şunları yapın:
+### <a name="install-active-directory-prerequisites"></a>Active Directory önkoşulları yüklensin
+Artık bir sanal makineniz olduğuna göre, Active Directory yüklemeden önce birkaç şey yapmanız gerekir.  Diğer bir deyişle, sanal makineyi yeniden adlandırmanız, statik bir IP adresi ve DNS bilgileri ayarlamanız ve uzak sunucu yönetim araçları 'nı yüklemeniz gerekir.   Şunları yapın:
 
-1. PowerShell ISE'yi Yönetici olarak açın.
+1. PowerShell ıSE 'yi yönetici olarak açın.
 2. Aşağıdaki komut dosyasını çalıştırın.
 
     ```powershell
@@ -324,9 +324,9 @@ Artık sanal bir makineniz olduğuna göre, Active Directory'yi yüklemeden önc
     Restart-Computer
     ```
 ### <a name="create-a-windows-server-ad-environment"></a>Windows Server AD ortamı oluşturma
-Artık VM oluşturulduve yeniden adlandırıldı ve statik bir IP adresi var, devam edin ve yüklemek ve Active Directory Etki Alanı Hizmetleri yapılandırmak.  Şunları yapın:
+VM 'yi oluşturup yeniden adlandırdığınıza ve statik bir IP adresine sahip olduğunuza göre, devam edip Active Directory Domain Services yükleyip yapılandırabilirsiniz.  Şunları yapın:
 
-1. PowerShell ISE'yi Yönetici olarak açın.
+1. PowerShell ıSE 'yi yönetici olarak açın.
 2. Aşağıdaki komut dosyasını çalıştırın.
 
     ```powershell
@@ -370,9 +370,9 @@ Artık VM oluşturulduve yeniden adlandırıldı ve statik bir IP adresi var, de
     ```
 
 ### <a name="create-a-windows-server-ad-user"></a>Windows Server AD kullanıcısı oluşturma
-Artık Aktif Dizin ortamımıza sahip olduğunuza göre, bir test hesabına ihtiyacınız var.  Bu hesap şirket içi REKLAM ortamımızda oluşturulur ve azure AD ile senkronize edilir.  Şunları yapın:
+Active Directory ortamımız olduğuna göre, bir sınama hesabı gerekir.  Bu hesap, şirket içi AD ortamımızda oluşturulur ve ardından Azure AD ile eşitlenir.  Şunları yapın:
 
-1. PowerShell ISE'yi Yönetici olarak açın.
+1. PowerShell ıSE 'yi yönetici olarak açın.
 2. Aşağıdaki komut dosyasını çalıştırın.
 
     ```powershell 
@@ -409,7 +409,7 @@ Artık Aktif Dizin ortamımıza sahip olduğunuza göre, bir test hesabına ihti
     ```
 
 ## <a name="conclusion"></a>Sonuç
-Artık varolan öğreticiler için kullanılabilecek ve bulut sağlamanın sağladığı ek özellikleri sınamak için kullanılabilen bir ortama sahipsiniz.
+Artık mevcut öğreticiler için kullanılabilen bir ortamınız var ve bulut sağlama sağladığı ek özellikleri test edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

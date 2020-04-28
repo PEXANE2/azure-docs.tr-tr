@@ -1,6 +1,6 @@
 ---
-title: Ölçeklendirmek için varolan veritabanlarını geçirme | Microsoft Dokümanlar
-description: Parçalanmış veritabanlarını, parçalı harita yöneticisi oluşturarak elastik veritabanı araçlarını kullanmak üzere dönüştürme
+title: Ölçeği genişletmek için mevcut veritabanlarını geçirin | Microsoft Docs
+description: Parçalı veritabanlarını bir parça eşleme Yöneticisi oluşturarak elastik veritabanı araçlarını kullanacak şekilde dönüştürme
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,34 +12,34 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: c776f4ac09626f0abd1eb754cde391a1c5447627
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74421212"
 ---
-# <a name="migrate-existing-databases-to-scale-out"></a>Ölçeklendirmek için varolan veritabanlarını geçirme
+# <a name="migrate-existing-databases-to-scale-out"></a>Ölçeği genişletmek için mevcut veritabanlarını geçirme
 
-Azure SQL Veritabanı veritabanı araçlarını [(Elastik Veritabanı istemci kitaplığı](sql-database-elastic-database-client-library.md)gibi) kullanarak varolan ölçeklenmiş veritabanlarınızı kolayca yönetin. [İlk olarak, parça lı harita yöneticisini](sql-database-elastic-scale-shard-map-management.md)kullanmak için varolan bir veritabanları kümesini dönüştürün.
+Azure SQL veritabanı veritabanı araçları 'nı ( [elastik veritabanı istemci kitaplığı](sql-database-elastic-database-client-library.md)gibi) kullanarak, ölçeği oluşturulmuş mevcut veritabanlarını kolayca yönetin. Önce var olan bir veritabanı kümesini parça [eşleme yöneticisini](sql-database-elastic-scale-shard-map-management.md)kullanacak şekilde dönüştürün.
 
 ## <a name="overview"></a>Genel Bakış
 
-Varolan bir veritabanını geçirmek için:
+Var olan bir veritabanının geçişini yapmak için:
 
-1. [Shard harita yöneticisi veritabanını](sql-database-elastic-scale-shard-map-management.md)hazırlayın.
-2. Parça lı haritayı oluşturun.
+1. Parça [eşleme Yöneticisi veritabanını](sql-database-elastic-scale-shard-map-management.md)hazırlayın.
+2. Parça haritasını oluşturun.
 3. Bireysel parçaları hazırlayın.  
-4. Parça eşlemeleri ekleyin.
+4. Parça eşlemesine eşlemeler ekleyin.
 
-Bu teknikler [.NET Framework istemci kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)veya [Azure SQL DB - Elastic Database araçları komut dosyalarında](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)bulunan PowerShell komut dosyaları kullanılarak uygulanabilir. Buradaki örnekler powershell komut dosyalarını kullanır.
+Bu teknikler [.NET Framework istemci kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)veya [Azure SQL DB-elastik veritabanı araçları betikleriyle](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)bulunan PowerShell betikleri kullanılarak uygulanabilir. Buradaki örnekler PowerShell betiklerini kullanır.
 
-ShardMapManager hakkında daha fazla bilgi için [Shard harita yönetimine](sql-database-elastic-scale-shard-map-management.md)bakın. Elastik veritabanı araçlarına genel bakış için Bkz. [Elastik Veritabanı özellikleri genel bakışı.](sql-database-elastic-scale-introduction.md)
+ShardMapManager hakkında daha fazla bilgi için bkz. parça [eşleme yönetimi](sql-database-elastic-scale-shard-map-management.md). Elastik veritabanı araçlarına genel bakış için bkz. [elastik veritabanı özelliklerine genel bakış](sql-database-elastic-scale-introduction.md).
 
-## <a name="prepare-the-shard-map-manager-database"></a>Shard map manager veritabanını hazırlama
+## <a name="prepare-the-shard-map-manager-database"></a>Parça eşleme Yöneticisi veritabanını hazırlama
 
-Shard harita yöneticisi, ölçeklenmiş veritabanlarını yönetmek için verileri içeren özel bir veritabanıdır. Varolan bir veritabanı nı kullanabilir veya yeni bir veritabanı oluşturabilirsiniz. Parça lı harita yöneticisi olarak hareket eden bir veritabanı, parçayla aynı veritabanı olmamalıdır. PowerShell komut dosyası veritabanını sizin için oluşturmaz.
+Parça eşleme Yöneticisi, ölçeği genişletilmiş veritabanlarını yönetmek için verileri içeren özel bir veritabanıdır. Var olan bir veritabanını kullanabilir veya yeni bir veritabanı oluşturabilirsiniz. Parça eşleme Yöneticisi olarak davranan bir veritabanı, parça ile aynı veritabanı olmamalıdır. PowerShell betiği sizin için veritabanını oluşturmaz.
 
-## <a name="step-1-create-a-shard-map-manager"></a>Adım 1: bir parça harita yöneticisi oluşturma
+## <a name="step-1-create-a-shard-map-manager"></a>1. Adım: parça eşleme Yöneticisi oluşturma
 
 ```powershell
 # Create a shard map manager
@@ -49,50 +49,50 @@ New-ShardMapManager -UserName '<user_name>' -Password '<password>' -SqlServerNam
 # tenant-database mapping information.
 ```
 
-### <a name="to-retrieve-the-shard-map-manager"></a>Parça harita yöneticisini almak için
+### <a name="to-retrieve-the-shard-map-manager"></a>Parça eşleme yöneticisini almak için
 
-Oluşturulduktan sonra, bu cmdlet ile parça harita yöneticisi ni alabilirsiniz. Bu adım, ShardMapManager nesnesini her kullanmanız gerektiğinde gereklidir.
+Oluşturulduktan sonra, bu cmdlet ile parça eşleme yöneticisini alabilirsiniz. ShardMapManager nesnesini her kullanmanız gerektiğinde bu adım gereklidir.
 
 ```powershell
 # Try to get a reference to the Shard Map Manager  
 $ShardMapManager = Get-ShardMapManager -UserName '<user_name>' -Password '<password>' -SqlServerName '<server_name>' -SqlDatabaseName '<smm_db_name>'
 ```
 
-## <a name="step-2-create-the-shard-map"></a>Adım 2: parça harita oluşturmak
+## <a name="step-2-create-the-shard-map"></a>2. Adım: parça haritasını oluşturma
 
-Oluşturmak için parça harita türünü seçin. Seçim veritabanı mimarisine bağlıdır:
+Oluşturulacak parça haritasının türünü seçin. Seçim veritabanı mimarisine bağlıdır:
 
-1. Veritabanı başına tek kiracı (Terimler [için, sözlük](sql-database-elastic-scale-glossary.md)bakın.)
+1. Veritabanı başına tek kiracı (koşullar Için bkz. [Sözlük](sql-database-elastic-scale-glossary.md).)
 2. Veritabanı başına birden çok kiracı (iki tür):
    1. Liste eşleme
    2. Aralık eşleme
 
-Tek kiracılı bir model için, bir liste eşleme parça **eşlemi** oluşturun. Tek kiracılı model, kiracı başına bir veritabanı atar. Bu, yönetimi basitleştiren SaaS geliştiricileri için etkili bir modeldir.
+Tek kiracılı bir model için bir **liste eşleme** parça haritası oluşturun. Tek kiracılı model, kiracı başına bir veritabanı atar. Bu, yönetim basitleştirdiği için SaaS geliştiricileri için etkili bir modeldir.
 
 ![Liste eşleme][1]
 
-Çok kiracılı model, tek bir veritabanına birkaç kiracı atar (ve kiracı gruplarını birden çok veritabanına dağıtabilirsiniz). Her kiracının küçük veri gereksinimleri olmasını beklerken bu modeli kullanın. Bu modelde, **aralık eşlemi**kullanarak bir veritabanına bir dizi kiracı atayın.
+Çok kiracılı model tek bir veritabanına birkaç kiracı atar (ve kiracılar gruplarını birden çok veritabanı arasında dağıtabilirsiniz). Her kiracının küçük veri ihtiyaçlarına sahip olmasını beklediğinde bu modeli kullanın. Bu modelde, **Aralık eşleme**kullanarak bir veritabanına kiracı aralığı atayın.
 
 ![Aralık eşleme][2]
 
-Veya tek bir veritabanına birden çok kiracı atamak için bir *liste eşleme* kullanarak çok kiracılı veritabanı modeli uygulayabilirsiniz. Örneğin, DB1 kiracı kimliği 1 ve 5 hakkında bilgi depolamak için kullanılır ve DB2 kiracı 7 ve kiracı 10 için veri depolar.
+Ya da birden çok kiracıyı tek bir veritabanına atamak için bir *liste eşlemesi* kullanarak çok kiracılı bir veritabanı modeli uygulayabilirsiniz. Örneğin, DB1 kiracı KIMLIĞI 1 ve 5 ile ilgili bilgileri depolamak için kullanılır ve DB2, kiracı 7 ve kiracı 10 için veri depolar.
 
-![Tek DB'de birden fazla kiracı][3]
+![Tek VERITABANıNDA birden çok kiracı][3]
 
-**Seçtiğiniz ekine göre, şu seçeneklerden birini seçin:**
+**Seçtiğiniz seçeneğe göre şu seçeneklerden birini seçin:**
 
-### <a name="option-1-create-a-shard-map-for-a-list-mapping"></a>Seçenek 1: liste eşleme için basılı bir harita oluşturma
+### <a name="option-1-create-a-shard-map-for-a-list-mapping"></a>Seçenek 1: bir liste eşlemesi için parça haritası oluşturma
 
-ShardMapManager nesnesini kullanarak bir parça eşlemi oluşturun.
+ShardMapManager nesnesini kullanarak bir parça haritası oluşturun.
 
 ```powershell
 # $ShardMapManager is the shard map manager object
 $ShardMap = New-ListShardMap -KeyType $([int]) -ListShardMapName 'ListShardMap' -ShardMapManager $ShardMapManager
 ```
 
-### <a name="option-2-create-a-shard-map-for-a-range-mapping"></a>Seçenek 2: aralık eşleme için bir parça eşleme oluşturmak
+### <a name="option-2-create-a-shard-map-for-a-range-mapping"></a>2. seçenek: bir Aralık eşlemesi için parça haritası oluşturma
 
-Bu eşleme desenini kullanmak için kiracı kimlik değerlerinin sürekli aralıklar olması gerekir ve veritabanları oluşturulurken aralığı atlayarak aralıklarda boşluk olması kabul edilebilir.
+Bu eşleme modelini kullanmak için kiracı KIMLIĞI değerlerinin sürekli aralıklar olması gerekir ve veritabanlarını oluştururken aralığı atlayarak aralıklarda boşluk olması kabul edilebilir.
 
 ```powershell
 # $ShardMapManager is the shard map manager object
@@ -100,48 +100,48 @@ Bu eşleme desenini kullanmak için kiracı kimlik değerlerinin sürekli aralı
 $ShardMap = New-RangeShardMap -KeyType $([int]) -RangeShardMapName 'RangeShardMap' -ShardMapManager $ShardMapManager
 ```
 
-### <a name="option-3-list-mappings-on-an-individual-database"></a>Seçenek 3: Tek bir veritabanındaki liste eşlemeleri
+### <a name="option-3-list-mappings-on-an-individual-database"></a>Seçenek 3: ayrı bir veritabanında eşleştirmeleri listeleme
 
-Bu deseni ayarlamak, adım 2, seçenek 1'de gösterildiği gibi bir liste eşlemi oluşturulmasını da gerektirir.
+Bu düzenin ayarlanması ayrıca adım 2, seçenek 1 ' de gösterildiği gibi bir liste eşlemesinin oluşturulmasını gerektirir.
 
-## <a name="step-3-prepare-individual-shards"></a>Adım 3: Tek tek parçaları hazırlayın
+## <a name="step-3-prepare-individual-shards"></a>3. Adım: tek tek parçaları hazırlama
 
-Her parçayı (veritabanı) parça lı harita yöneticisine ekleyin. Bu, haritabilgilerini depolamak için tek tek veritabanlarını hazırlar. Bu yöntemi her parçaüzerinde uygulayın.
+Parça eşleme Yöneticisi 'ne her parça (veritabanı) ekleyin. Bu, eşleme bilgilerini depolamak için ayrı veritabanlarını hazırlar. Her parça üzerinde bu yöntemi yürütün.
 
 ```powershell
 Add-Shard -ShardMap $ShardMap -SqlServerName '<shard_server_name>' -SqlDatabaseName '<shard_database_name>'
 # The $ShardMap is the shard map created in step 2.
 ```
 
-## <a name="step-4-add-mappings"></a>Adım 4: Eşleme ekleme
+## <a name="step-4-add-mappings"></a>4. Adım: eşlemeler ekleme
 
-Eşlemelerin eklenmesi, oluşturduğunuz parça haritanın türüne bağlıdır. Bir liste eşlemi oluşturduysanız, liste eşlemeleri eklersiniz. Bir aralık eşlemi oluşturduysanız, aralık eşlemeleri eklersiniz.
+Eşlemelerin eklenmesi, oluşturduğunuz parça haritasının türüne bağlıdır. Bir liste eşlemesi oluşturduysanız, liste eşlemeleri eklersiniz. Bir Aralık eşlemesi oluşturduysanız, Aralık eşlemeleri eklersiniz.
 
-### <a name="option-1-map-the-data-for-a-list-mapping"></a>Seçenek 1: liste eşleme için verileri haritalama
+### <a name="option-1-map-the-data-for-a-list-mapping"></a>Seçenek 1: bir liste eşlemesi için verileri eşleme
 
-Her kiracı için bir liste eşleme ekleyerek verileri eşle.  
+Her kiracı için bir liste eşlemesi ekleyerek verileri eşleyin.  
 
 ```powershell
 # Create the mappings and associate it with the new shards
 Add-ListMapping -KeyType $([int]) -ListPoint '<tenant_id>' -ListShardMap $ShardMap -SqlServerName '<shard_server_name>' -SqlDatabaseName '<shard_database_name>'
 ```
 
-### <a name="option-2-map-the-data-for-a-range-mapping"></a>Seçenek 2: aralık eşleme için verileri haritalama
+### <a name="option-2-map-the-data-for-a-range-mapping"></a>Seçenek 2: bir Aralık eşleme için verileri eşleme
 
-Tüm kiracı kimlik aralığı için aralık eşlemeleri ekleyin - veritabanı dernekleri:
+Tüm kiracı KIMLIĞI aralığı-veritabanı ilişkilendirmeleri için Aralık eşlemelerini ekleyin:
 
 ```powershell
 # Create the mappings and associate it with the new shards
 Add-RangeMapping -KeyType $([int]) -RangeHigh '5' -RangeLow '1' -RangeShardMap $ShardMap -SqlServerName '<shard_server_name>' -SqlDatabaseName '<shard_database_name>'
 ```
 
-### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>Adım 4 seçeneği 3: Tek bir veritabanında birden fazla kiracı için veri haritası
+### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>4. Adım 3: tek bir veritabanındaki birden çok kiracının verilerini eşleme
 
-Her kiracı için Add-ListMapping 'i (seçenek 1) çalıştırın.
+Her kiracı için Add-ListMapping (1. seçenek) öğesini çalıştırın.
 
-## <a name="checking-the-mappings"></a>Eşlemeleri denetleme
+## <a name="checking-the-mappings"></a>Eşlemeler denetleniyor
 
-Varolan kırıklar ve bunlarla ilişkili eşlemeler hakkındaki bilgiler aşağıdaki komutlar kullanılarak sorgulanabilir:  
+Mevcut parçalar ve bunlarla ilişkili eşlemeler hakkında bilgiler aşağıdaki komutlar kullanılarak sorgulanabilecek:  
 
 ```powershell
 # List the shards and mappings
@@ -151,23 +151,23 @@ Get-Mappings -ShardMap $ShardMap
 
 ## <a name="summary"></a>Özet
 
-Kurulumu tamamladıktan sonra, Elastik Veritabanı istemci kitaplığını kullanmaya başlayabilirsiniz. Verilere bağlı [yönlendirme](sql-database-elastic-scale-data-dependent-routing.md) ve [çok parçalı sorgu](sql-database-elastic-scale-multishard-querying.md)da kullanabilirsiniz.
+Kurulumu tamamladıktan sonra elastik veritabanı istemci kitaplığını kullanmaya başlayabilirsiniz. Ayrıca [veriye bağımlı yönlendirme](sql-database-elastic-scale-data-dependent-routing.md) ve [çok parçalı sorgu](sql-database-elastic-scale-multishard-querying.md)kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-PowerShell komut dosyalarını [Azure SQL DB-Elastic Database araçları komut dosyalarından](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)edinin.
+[Azure SQL DB-elastik veritabanı araçları betiklerinden](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)PowerShell betikleri alın.
 
-Araçlar github üzerinde de vardır: [Azure/ elastik-db-araçları.](https://github.com/Azure/elastic-db-tools)
+Araçlar ayrıca GitHub üzerinde de bulunur: [Azure/elastik-DB-Tools](https://github.com/Azure/elastic-db-tools).
 
-Verileri çok kiracılı bir modele veya birden tek bir kiracı modeline taşımak için bölme birleştirme aracını kullanın. Bkz. [Bölme birleştirme aracı.](sql-database-elastic-scale-get-started.md)
+Verileri çok kiracılı bir modelden tek bir kiracı modeline taşımak için bölünmüş birleştirme aracını kullanın. Bkz. [bölünmüş birleştirme aracı](sql-database-elastic-scale-get-started.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 Çok kiracılı hizmet olarak yazılım (SaaS) veritabanı uygulamalarının ortak veri mimarisi düzenlerine ilişkin bilgi için bkz. [Azure SQL Veritabanı ile Çok Kiracılı SaaS Uygulamaları için Tasarım Düzenleri](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
-## <a name="questions-and-feature-requests"></a>Sorular ve Özellik İstekleri
+## <a name="questions-and-feature-requests"></a>Sorular ve özellik Istekleri
 
-Sorularınız için [SQL Veritabanı forumuna](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) ve özellik isteklerini kullanarak SQL [Veritabanı geri bildirim forumuna](https://feedback.azure.com/forums/217321-sql-database/)ekleyin.
+Sorular için, [SQL veritabanı Forumu](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) ' nu kullanın ve özellik istekleri Için bunları [SQL veritabanı geri bildirim forumuna](https://feedback.azure.com/forums/217321-sql-database/)ekleyin.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-convert-to-use-elastic-tools/listmapping.png

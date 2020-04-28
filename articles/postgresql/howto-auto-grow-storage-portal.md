@@ -1,45 +1,45 @@
 ---
-title: Otomatik büyütme depolama - Azure portalı - PostgreSQL için Azure Veritabanı - Tek Sunucu
-description: Bu makalede, PostgreSQL için Azure Veritabanı'ndaki Azure portalını kullanarak depolama otomatik büyümesini nasıl yapılandırabileceğiniz açıklanmaktadır - Tek Sunucu
+title: Depolamayı otomatik Büyüt-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
+description: Bu makalede, PostgreSQL için Azure veritabanı 'nda Azure portal kullanarak depolama otomatik büyümenin nasıl yapılandırılacağı açıklanmaktadır-tek sunucu
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/29/2019
 ms.openlocfilehash: 5e4f9d68d02edf456394d4ce10b7b6af5f8643d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74769243"
 ---
-# <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı'ndaki Azure portalını kullanarak otomatik büyütme depolama - Single Server
-Bu makalede, iş yükünü etkilemeden büyümek üzere PostgreSQL sunucu depolama için bir Azure Veritabanını nasıl yapılandırabileceğiniz açıklanmaktadır.
+# <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda Azure portal kullanarak depolamayı otomatik olarak Büyüt-tek sunucu
+Bu makalede, bir PostgreSQL için Azure veritabanı sunucu depolaması, iş yükünü etkilemeden nasıl büyütüleceği açıklanır.
 
-Bir sunucu ayrılan depolama sınırına ulaştığında, sunucu salt okunur olarak işaretlenir. Ancak, depolama otomatik büyümesini etkinleştirirseniz, sunucu depolama büyüyen verileri karşılamak için artar. 100 GB'dan az depoya sahip sunucular için, ücretsiz depolama alanı 1 GB'ın altında veya sağlanan depolama alanının %10'unun altında olduğu anda sağlanan depolama boyutu 5 GB artırılır. 100 GB'dan fazla depoya sahip sunucular için, ücretsiz depolama alanı sağlanan depolama alanının %5'in altında olduğunda, sağlanan depolama boyutu %5 artırılır. [Burada](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage) belirtildiği gibi maksimum depolama limitleri geçerlidir.
+Sunucu ayrılmış depolama sınırına ulaştığında, sunucu salt okunurdur olarak işaretlenir. Ancak, depolama otomatik büyümeye olanak belirtirseniz, sunucu depolaması büyüyen verileri kapsayacak şekilde artar. 100 GB 'den az kullanılabilir depolama alanı olan sunucularda, ücretsiz depolama alanı sağlanan depolamanın en fazla 1 GB veya %10 ' u altına düşdükten sonra sağlanan depolama boyutu 5 GB ile artar. 100 GB 'tan fazla kullanılabilir depolama alanı olan sunucularda, boş depolama alanı sağlanan depolama boyutunun %5 ' inden az olduğunda sağlanan depolama boyutu %5 oranında artar. [Burada](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage) belirtilen en fazla depolama sınırı geçerlidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu nasıl yapılacağını kılavuzunu tamamlamak için şunları yapmanız gerekir:
-- [PostgreSQL sunucusu için Bir Azure Veritabanı](quickstart-create-server-database-portal.md)
+Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
+- [PostgreSQL Için Azure veritabanı sunucusu](quickstart-create-server-database-portal.md)
 
-## <a name="enable-storage-auto-grow"></a>Depolama otomatik büyümesini etkinleştirin 
+## <a name="enable-storage-auto-grow"></a>Depolama otomatik büyümesini etkinleştir 
 
-PostgreSQL sunucu depolama otomatik büyümek ayarlamak için aşağıdaki adımları izleyin:
+PostgreSQL Server Storage otomatik büyümesini ayarlamak için şu adımları izleyin:
 
-1. Azure [portalında,](https://portal.azure.com/)PostgreSQL sunucusu için mevcut Azure Veritabanınızı seçin.
+1. [Azure Portal](https://portal.azure.com/)var olan PostgreSQL Için Azure veritabanı sunucunuzu seçin.
 
-2. PostgreSQL sunucu sayfasında, **Ayarlar**altında, fiyatlandırma katmanı sayfasını açmak için **Fiyatlandırma katmanını** tıklatın.
+2. PostgreSQL sunucusu sayfasında, **Ayarlar**' ın altında, Fiyatlandırma Katmanı sayfasını açmak için **fiyatlandırma katmanı** ' na tıklayın.
 
-3. Otomatik **büyüme** bölümünde, depolama otomatik büyümesini etkinleştirmek için **Evet'i** seçin.
+3. **Otomatik büyüme** bölümünde, depolama otomatik büyümesini etkinleştirmek için **Evet** ' i seçin.
 
-    ![PostgreSQL için Azure Veritabanı - Settings_Pricing_tier - Otomatik büyüme](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
+    ![PostgreSQL için Azure veritabanı-Settings_Pricing_tier-otomatik büyüme](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
 
 4. Değişiklikleri kaydetmek için **Tamam**’a tıklayın.
 
-5. Bir bildirim, otomatik büyümenin başarıyla etkinleştirildiğini doğrular.
+5. Bir bildirim otomatik büyüme 'nın başarıyla etkinleştirildiğini doğrulayacaktır.
 
-    ![PostgreSQL için Azure Veritabanı - otomatik büyüme başarısı](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
+    ![PostgreSQL için Azure veritabanı-otomatik büyüme başarılı](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ölçümler [de nasıl uyarı oluşturacağınız](howto-alert-on-metric.md)hakkında bilgi edinin.
+[Ölçümler üzerinde uyarılar oluşturma](howto-alert-on-metric.md)hakkında bilgi edinin.

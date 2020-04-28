@@ -1,7 +1,7 @@
 ---
-title: Çıktı alanlarına harita girişi
+title: Girişi çıkış alanlarına eşleyin
 titleSuffix: Azure Cognitive Search
-description: Kaynak veri alanlarını ayıklayın ve zenginleştirin ve Bir Azure Bilişsel Arama dizinindeki çıktı alanlarıyla eşleşin.
+description: Kaynak veri alanlarını ayıklar ve zenginleştirin ve Azure Bilişsel Arama dizinindeki çıkış alanlarıyla eşleyin.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: f0537af684632a08a39e3e681900d62238365073
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74280977"
 ---
-# <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI ile zenginleştirilmiş alanların aranabilir bir dizinle eşlenme
+# <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI zenginleştirilmiş alanları aranabilir bir dizinle eşleme
 
-Bu makalede, zenginleştirilmiş giriş alanlarını kullanılabilir bir dizinde çıktı alanlarıyla nasıl eşlendirdiğinizi öğrenirsiniz. [Bir skillset tanımladıktan](cognitive-search-defining-skillset.md)sonra, arama dizininizdeki belirli bir alana doğrudan değer katan herhangi bir becerinin çıktı alanlarını haritalamalısınız. 
+Bu makalede, aranabilir bir dizindeki çıkış alanlarına zenginleştirilmiş giriş alanlarını eşlemeyi öğreneceksiniz. [Bir beceri tanımladıktan](cognitive-search-defining-skillset.md)sonra, arama dizininizdeki belirli bir alana doğrudan değer katkıda bulunan herhangi bir yeteneğin çıkış alanlarını eşlemeniz gerekir. 
 
-Zenginleştirilmiş belgelerden içeriğin dizin içine taşınması için Çıktı Alanı Eşlemeleri gereklidir.  Zenginleştirilmiş belge gerçekten bir bilgi ağacıdır ve dizideki karmaşık türler için destek olsa da, bazen zenginleştirilmiş ağaçtaki bilgileri daha basit bir türe (örneğin, bir dizi dize) dönüştürmek isteyebilirsiniz. Çıktı alanı eşlemeleri, bilgileri düzleştirmek le veri şekli dönüşümleri gerçekleştirmenize olanak sağlar.
+İçeriği zenginleştirilmiş belgelerden dizine taşımak için çıkış alanı eşlemeleri gereklidir.  Zenginleştirilmiş belge gerçekten bir bilgi ağacıdır ve dizindeki karmaşık türler için destek olsa bile, bazen zenginleştirilmiş ağaç içindeki bilgileri daha basit bir türe (örneğin, dizeler dizisi) dönüştürmek isteyebilirsiniz. Çıkış alanı eşlemeleri, bilgileri düzleştirerek veri şekli dönüştürmeleri gerçekleştirmenize olanak tanır.
 
-## <a name="use-outputfieldmappings"></a>OutputFieldMappings kullanın
-Alanları eşlemek `outputFieldMappings` için, aşağıda gösterildiği gibi dizin leyici tanımınıza ekleyin:
+## <a name="use-outputfieldmappings"></a>OutputFieldMappings kullanma
+Alanları eşlemek için, Dizin `outputFieldMappings` Oluşturucu tanımınıza aşağıda gösterildiği gibi ekleyin:
 
 ```http
 PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
@@ -30,7 +30,7 @@ api-key: [admin key]
 Content-Type: application/json
 ```
 
-İsteğin gövdesi aşağıdaki gibi yapılandırılmıştır:
+İsteğin gövdesi aşağıdaki şekilde yapılandırılır:
 
 ```json
 {
@@ -64,21 +64,21 @@ Content-Type: application/json
 }
 ```
 
-Her çıktı alanı eşleme için, zenginleştirilmiş belge ağacındaki (sourceFieldName) verilerin konumunu ve dizinde (targetFieldName) başvurulan alanın adını ayarlayın.
+Her bir çıkış alanı eşlemesi için, zenginleştirilmiş belge ağacındaki (sourceFieldName) verilerin konumunu ve dizinde başvurulan alanın adını (targetFieldName) ayarlayın.
 
-## <a name="flattening-information-from-complex-types"></a>Karmaşık Türlerden Bilgileri Düzleştirmek 
+## <a name="flattening-information-from-complex-types"></a>Karmaşık türlerden bilgileri düzleştirme 
 
-SourceFieldName'deki yol bir öğeyi veya birden çok öğeyi temsil edebilir. Yukarıdaki örnekte, ```/document/content/sentiment``` tek bir sayısal değeri ```/document/content/organizations/*/description``` temsil ederken, birkaç kuruluş açıklamasını temsil eder. 
+Bir sourceFieldName içindeki yol bir öğeyi veya birden çok öğeyi temsil edebilir. Yukarıdaki örnekte, ```/document/content/sentiment``` tek bir sayısal değeri temsil ederken ```/document/content/organizations/*/description``` , çeşitli kuruluş açıklamalarını temsil eder. 
 
-Birkaç öğenin bulunduğu durumlarda, öğelerin her birini içeren bir diziiçine "düzleştirilmiş" dir. 
+Çeşitli öğelerin olduğu durumlarda, öğelerin her birini içeren bir dizi içinde "düzleştirilmez". 
 
-Daha somut olarak, ```/document/content/organizations/*/description``` örneğin, *açıklamalar* alanındaki veriler dizine girmeden önce düz bir açıklama dizisi gibi görünür:
+Daha fazla iyal, ```/document/content/organizations/*/description``` Örneğin, *açıklamalar* alanındaki veriler, Dizin oluşturulmadan önce düz bir açıklama dizisi gibi görünür:
 
 ```
  ["Microsoft is a company in Seattle","LinkedIn's office is in San Francisco"]
 ```
 
-Bu önemli bir ilkedir, bu yüzden başka bir örnek verecektir. Zenginleştirme ağacının bir parçası olarak karmaşık türleri bir dizi olduğunu düşünün. Aşağıda açıklanan gibi karmaşık türleri bir dizi var customEntities adlı bir üye olduğunu varsayalım.
+Bu önemli bir ilkedir, bu nedenle başka bir örnek sağlıyoruz. Zenginleştirme ağacının bir parçası olarak bir dizi karmaşık türde olduğunu düşünün. Aşağıda açıklandığı gibi karmaşık türlerde bir dizi olan customEntities adlı bir üye olduğunu varsayalım.
 
 ```json
 "document/customEntities": 
@@ -109,9 +109,9 @@ Bu önemli bir ilkedir, bu yüzden başka bir örnek verecektir. Zenginleştirme
 ]
 ```
 
-Dizinizinizin, varlıkların adlarının her birini depolamak istediğiniz Toplama (Edm.String) türünde 'hastalıklar' adı verilen bir alana sahip olduğunu varsayalım. 
+Burada, dizinlerinizin, varlıkların adlarından her birini depolamak istediğiniz türdeki koleksiyon (EDM. String) ' didenler ' adlı bir alana sahip olduğunu varsayalım. 
 
-Bu, aşağıdaki gibi "\*" sembolü kullanılarak kolayca yapılabilir:
+Bu, "\*" simgesi kullanılarak kolayca yapılabilir:
 
 ```json
     "outputFieldMappings": [
@@ -122,13 +122,13 @@ Bu, aşağıdaki gibi "\*" sembolü kullanılarak kolayca yapılabilir:
     ]
 ```
 
-Bu işlem, özel varlıklar öğelerinin adlarının her birinin "düzleştirilme" örneğini aşağıdaki gibi tek bir dize dizisinde n için ayıracaktır:
+Bu işlem, customEntities öğelerinin adlarından her birini şöyle tek bir dize dizisine "düzleştirebilir".
 
 ```json
   "diseases" : ["heart failure","morquio"]
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Zenginleştirilmiş alanlarınızı aranabilir alanlara eşledikten sonra, [dizin tanımının](search-what-is-an-index.md)bir parçası olarak aranabilir alanların her biri için alan özniteliklerini ayarlayabilirsiniz.
+Zenginleştirilmiş alanları aranabilir alanlara eşleştirdikten sonra, aranabilir alanların her biri için alan özniteliklerini [Dizin tanımının bir parçası olarak](search-what-is-an-index.md)ayarlayabilirsiniz.
 
-Alan eşleme hakkında daha fazla bilgi için [Azure Bilişsel Arama dizinleyicilerinde Alan eşlemelerine](search-indexer-field-mappings.md)bakın.
+Alan eşleme hakkında daha fazla bilgi için bkz. [Azure bilişsel arama Dizin oluşturucularda alan eşlemeleri](search-indexer-field-mappings.md).

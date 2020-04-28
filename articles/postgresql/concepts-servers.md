@@ -1,69 +1,69 @@
 ---
-title: Sunucular - PostgreSQL için Azure Veritabanı - Tek Sunucu
-description: Bu makalede, PostgreSQL - Single Server için Azure Veritabanı'nı yapılandırmak ve yönetmek için göz önünde bulundurulması gereken hususlar ve yönergeler sağlanmaktadır.
+title: Sunucular-PostgreSQL için Azure veritabanı-tek sunucu
+description: Bu makalede PostgreSQL için Azure veritabanı 'nın yapılandırılmasına ve yönetilmesine yönelik konular ve tek sunucu için yönergeler sağlanmaktadır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74768172"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı - Tek Sunucu
-Bu makalede, PostgreSQL - Single Server için Azure Veritabanı ile çalışmak için göz önünde bulundurulması gereken hususlar ve yönergeler yer almaktadır.
+Bu makalede PostgreSQL için Azure veritabanı-tek sunucu ile çalışmaya yönelik konular ve yönergeler sağlanmaktadır.
 
 ## <a name="what-is-an-azure-database-for-postgresql-server"></a>PostgreSQL için Azure Veritabanı sunucusu nedir?
-PostgreSQL için Azure Veritabanı'ndaki bir sunucu - Tek Sunucu dağıtım seçeneği, birden çok veritabanı için merkezi bir yönetim noktasıdır. Şirket içi dünyada aşina olabileceğiniz aynı PostgreSQL sunucu yapısıdır. Özellikle, PostgreSQL hizmeti yönetilir, performans garantileri sağlar, sunucu düzeyinde erişim ve özellikleri ortaya çıkarır.
+PostgreSQL için Azure veritabanı-tek sunuculu dağıtım seçeneği, birden çok veritabanı için merkezi bir yönetim noktasıdır. Bu, şirket içi dünyada bildiğiniz PostgreSQL sunucu yapısıdır. Özellikle PostgreSQL hizmeti yönetiliyor, performans garantisi sağlar, sunucu düzeyinde erişim ve özellikler sunar.
 
-PostgreSQL sunucusu için bir Azure Veritabanı:
+PostgreSQL için Azure veritabanı sunucusu:
 
-- Azure aboneliği içinde oluşturulur.
-- Veritabanları için ana kaynaktır.
+- Bir Azure aboneliği içinde oluşturulur.
+- , Veritabanları için üst kaynaktır.
 - Veritabanları için bir ad alanı sağlar.
-- Güçlü ömür boyu semantik ile bir kapsayıcı mı - bir sunucu silmek ve içerdiği veritabanlarını siler.
-- Bir bölgedeki kaynakları bir birime sağlar.
-- Sunucu ve veritabanı erişimi için bağlantı bitiş noktası sağlar 
-- Veritabanlarıiçin geçerli olan yönetim ilkelerinin kapsamını sağlar: giriş, güvenlik duvarı, kullanıcılar, roller, yapılandırmalar, vb.
-- Birden çok sürümde kullanılabilir. Daha fazla bilgi için [desteklenen PostgreSQL veritabanı sürümlerine](concepts-supported-versions.md)bakın.
-- Kullanıcılar tarafından genişletilebilir. Daha fazla bilgi için [PostgreSQL uzantılarına](concepts-extensions.md)bakın.
+- Güçlü yaşam süresi semantiğinin bulunduğu bir kapsayıcıdır; bir sunucuyu silin ve kapsanan veritabanlarını siler.
+- Bir bölgedeki kaynakları birlikte bulur.
+- Sunucu ve veritabanı erişimi için bir bağlantı uç noktası sağlar 
+- Veritabanlarına uygulanan yönetim ilkeleri için kapsam sağlar: oturum açma, güvenlik duvarı, kullanıcılar, roller, konfigürasyonlar vb.
+- Birden çok sürümde kullanılabilir. Daha fazla bilgi için bkz. [desteklenen PostgreSQL veritabanı sürümleri](concepts-supported-versions.md).
+- Kullanıcılara göre genişletilebilir. Daha fazla bilgi için bkz. [PostgreSQL uzantıları](concepts-extensions.md).
 
-PostgreSQL sunucusu için bir Azure Veritabanı içinde bir veya birden çok veritabanı oluşturabilirsiniz. Tüm kaynakları kullanmak için sunucu başına tek bir veritabanı oluşturmayı veya kaynakları paylaşmak için birden çok veritabanı oluşturmayı seçebilirsiniz. Fiyatlandırma, fiyatlandırma katmanı, vCores ve depolama (GB) yapılandırmasına bağlı olarak sunucu başına yapılandırılmıştır. Daha fazla bilgi için [Fiyatlandırma katmanlarına](./concepts-pricing-tiers.md)bakın.
+PostgreSQL için Azure veritabanı sunucusunda bir veya daha fazla veritabanı oluşturabilirsiniz. Tüm kaynakları kullanmak için sunucu başına tek bir veritabanı oluşturmayı veya kaynakları paylaşmak için birden çok veritabanı oluşturmayı seçebilirsiniz. Fiyatlandırma Katmanı, sanal çekirdek ve depolama (GB) yapılandırmasına bağlı olarak, fiyatlandırma sunucu başına yapılandırılır. Daha fazla bilgi için bkz. [fiyatlandırma katmanları](./concepts-pricing-tiers.md).
 
-## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>PostgreSQL sunucusu için bir Azure Veritabanına nasıl bağlanır ve kimliğimi doğrulayabilirim?
-Aşağıdaki öğeler veritabanınıza güvenli erişim sağlamaya yardımcı olur:
+## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>Nasıl yaparım? PostgreSQL sunucusu için Azure veritabanı 'na bağlanıp kimlik doğrulaması yapılsın mı?
+Aşağıdaki öğeler veritabanınıza güvenli erişimin sağlanmasına yardımcı olur:
 
 |||
 |:--|:--|
-| **Kimlik doğrulama ve yetkilendirme** | PostgreSQL için Azure Veritabanı sunucusu, yerel PostgreSQL kimlik doğrulamasını destekler. Sunucunun yönetici hesabını kullanarak sunucuya bağlanabilir ve kimlik doğrulaması gerçekleştirebilirsiniz. |
-| **Protokolü** | Hizmet, PostgreSQL tarafından kullanılan ileti tabanlı bir protokolü destekler. |
-| **TCP/IP** | Protokol TCP/IP ve Unix etki alanı soketleri üzerinden desteklenir. |
-| **Güvenlik duvarı** | Verilerinizin korunmasına yardımcı olmak için, güvenlik duvarı kuralı, siz hangi bilgisayarların izni olduğunu belirtene kadar sunucunuza ve veritabanlarına tüm erişimi engeller.  [PostgreSQL Server güvenlik duvarı kuralları için Azure Veritabanı'na](concepts-firewall-rules.md)bakın. |
+| **Kimlik doğrulaması ve yetkilendirme** | PostgreSQL için Azure Veritabanı sunucusu, yerel PostgreSQL kimlik doğrulamasını destekler. Sunucunun yönetici hesabını kullanarak sunucuya bağlanabilir ve kimlik doğrulaması gerçekleştirebilirsiniz. |
+| **Protocol** | Hizmet, PostgreSQL tarafından kullanılan ileti tabanlı bir protokolü destekler. |
+| **TCP/IP** | Protokol TCP/IP üzerinden ve UNIX-etki alanı Yuvaları üzerinden desteklenir. |
+| **Güvenlik duvarı** | Verilerinizin korunmasına yardımcı olmak için, hangi bilgisayarların izne sahip olduğunu belirtene kadar, bir güvenlik duvarı kuralı sunucunuza ve veritabanlarına tüm erişimi engeller. Bkz. [PostgreSQL Için Azure veritabanı sunucu güvenlik duvarı kuralları](concepts-firewall-rules.md). |
 
 ## <a name="managing-your-server"></a>Sunucunuzu yönetme
-PostgreSQL sunucuları için Azure Veritabanı'nı [Azure portalını](https://portal.azure.com) veya [Azure CLI'yi](/cli/azure/postgres)kullanarak yönetebilirsiniz.
+[Azure Portal](https://portal.azure.com) veya [Azure CLI](/cli/azure/postgres)kullanarak PostgreSQL için Azure veritabanı sunucularını yönetebilirsiniz.
 
-Sunucu oluştururken, yönetici kullanıcınızın kimlik bilgilerini ayarlarsınız. Yönetici kullanıcı, sunucudaki en yüksek ayrıcalık kullanıcısıdır. azure_pg_admin rolüne ait. Bu rolün tam süper kullanıcı izinleri yoktur. 
+Sunucu oluştururken, yönetici kullanıcı için kimlik bilgilerini ayarlarsınız. Yönetici Kullanıcı, sunucuda sahip olduğunuz en yüksek ayrıcalıklı kullanıcı. Azure_pg_admin role aittir. Bu rolün tam süper kullanıcı izinleri yok. 
 
-PostgreSQL süperkullanıcı özniteliği, yönetilen hizmete ait olan azure_superuser atanır. Bu role erişiminiz yok.
+PostgreSQL süper kullanıcı özniteliği, yönetilen hizmete ait olan azure_superuser atanır. Bu role erişiminiz yok.
 
-PostgreSQL sunucusu için bir Azure Veritabanı varsayılan veritabanlarına sahiptir: 
-- **postgres** - Sunucunuz oluşturulduktan sonra bağlanabileceğiniz varsayılan bir veritabanı.
-- **azure_maintenance** - Bu veritabanı, yönetilen hizmeti sağlayan işlemleri kullanıcı eylemlerinden ayırmak için kullanılır. Bu veritabanına erişiminiz yok.
-- **azure_sys** - Sorgu Deposu için bir veritabanı. Bu veritabanı, Sorgu Deposu kapalıyken veri birikir; bu varsayılan ayardır. Daha fazla bilgi için [Sorgu Mağazası'na genel bakış'a](concepts-query-store.md)bakın.
+PostgreSQL için Azure veritabanı sunucusu varsayılan veritabanlarına sahiptir: 
+- **Postgres** -sunucunuz oluşturulduktan sonra bağlanabilir bir varsayılan veritabanıdır.
+- **azure_maintenance** -bu veritabanı, kullanıcı eylemlerinden yönetilen hizmet sağlayan işlemleri ayırmak için kullanılır. Bu veritabanına erişiminiz yok.
+- **azure_sys** -sorgu deposu için bir veritabanı. Bu veritabanı, sorgu deposu kapalıyken veri toplamaz; Bu, varsayılan ayardır. Daha fazla bilgi için bkz. [sorgu deposuna genel bakış](concepts-query-store.md).
 
 
 ## <a name="server-parameters"></a>Sunucu parametreleri
-PostgreSQL sunucu parametreleri sunucunun yapılandırmasını belirler. PostgreSQL için Azure Veritabanı'nda, parametre listesi Azure portalı veya Azure CLI kullanılarak görüntülenebilir ve düzenlenebilir. 
+PostgreSQL sunucu parametreleri sunucunun yapılandırmasını belirlenir. PostgreSQL için Azure veritabanı 'nda, parametre listesi Azure portal veya Azure CLı kullanılarak görüntülenebilir ve düzenlenebilir. 
 
-Postgres için yönetilen bir hizmet olarak, PostgreSQL için Azure Veritabanı'ndaki yapılandırılabilir parametreler yerel bir Postgres örneğindeki parametrelerin bir alt kümesidir (Postgres parametreleri hakkında daha fazla bilgi için [PostgreSQL belgelerine](https://www.postgresql.org/docs/9.6/static/runtime-config.html)bakın). PostgreSQL sunucusu için Azure Veritabanınız, oluşturmadaki her parametre için varsayılan değerlerle etkinleştirilmiştir. Değişikliklerin etkili olması için sunucu yeniden başlatması veya süper kullanıcı erişimi gerektiren bazı parametreler kullanıcı tarafından yapılandırılamaz.
+Postgres için yönetilen bir hizmet olarak, PostgreSQL için Azure veritabanı 'nda yapılandırılabilir parametreler, yerel bir Postgres örneğindeki parametrelerin bir alt kümesidir (Postgres parametreleri hakkında daha fazla bilgi Için bkz. [PostgreSQL belgeleri](https://www.postgresql.org/docs/9.6/static/runtime-config.html)). PostgreSQL için Azure veritabanı sunucusu, oluşturma işlemi sırasında her bir parametre için varsayılan değerlerle etkinleştirilir. Değişikliklerin etkili olması için sunucu yeniden başlatması veya Süper Kullanıcı erişimi gerektiren bazı parametreler Kullanıcı tarafından yapılandırılamaz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Hizmete genel bir bakış için [PostgreSQL Genel Bakışı için Azure Veritabanı'na](overview.md)bakın.
-- **Hizmet katmanınızı**temel alan belirli kaynak kotaları ve sınırlamaları hakkında bilgi için [Bkz. Hizmet katmanları.](concepts-pricing-tiers.md)
-- Hizmete bağlanma hakkında daha fazla bilgi için [PostgreSQL için Azure Veritabanı bağlantı kitaplıklarına](concepts-connection-libraries.md)bakın.
-- Sunucu parametrelerini [Azure portalı](howto-configure-server-parameters-using-portal.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md)üzerinden görüntüleyin ve düzenleme.
+- Hizmete genel bakış için bkz. [PostgreSQL Için Azure veritabanı genel bakış](overview.md).
+- **Hizmet katmanınıza**dayalı belirli kaynak kotaları ve sınırlamalar hakkında bilgi için bkz. [hizmet katmanları](concepts-pricing-tiers.md).
+- Hizmete bağlanma hakkında daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı bağlantı kitaplıkları](concepts-connection-libraries.md).
+- [Azure Portal](howto-configure-server-parameters-using-portal.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md)aracılığıyla sunucu parametrelerini görüntüleyin ve düzenleyin.

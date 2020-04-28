@@ -1,6 +1,6 @@
 ---
-title: B2B dış işbirliği ayarlarını etkinleştirin - Azure AD
-description: Active Directory B2B dış işbirliğini nasıl etkinleştirebileceğinizi ve konuk kullanıcıları kimlere davet edebileceğinizi nasıl yönetebileceğinizi öğrenin. Davetleri devretmek için Konuk Davetçi rolünü kullanın.
+title: B2B dış işbirliği ayarlarını etkinleştirme-Azure AD
+description: B2B dış işbirliğini Active Directory etkinleştirmeyi ve konuk kullanıcıları kimlerin davet edebileceğini yönetmeyi öğrenin. Davetleri devretmek için konuk davet eden rolünü kullanın.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,50 +12,50 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7fb10863334392b207c7cfd2172dc9260cf15e2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272893"
 ---
-# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B dış işbirliğini etkinleştirin ve konukları kimleri davet edebilirsiniz
+# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B dış işbirliğini etkinleştirin ve konukları kimlerin davet edebileceğini yönetin
 
-Bu makalede, Azure Etkin Dizin (Azure AD) B2B işbirliğinin nasıl etkinleştirilen ve konukları kimlertarafından davet edilebildiğini belirlemek açıklanmaktadır. Varsayılan olarak, dizininizdeki tüm kullanıcılar ve konuklar, yönetici rolüne atanmamış olsalar bile konukları davet edebilir. Dış işbirliği ayarları, kuruluşunuzdaki farklı kullanıcı türleri için konuk davetlerini açmanızı veya kapatmanızı sağlar. Ayrıca, konukları davet etmelerine izin veren roller atayarak tek tek kullanıcılara davet ler verebilirsiniz.
+Bu makalede Azure Active Directory (Azure AD) B2B işbirliğinin nasıl etkinleştirileceği ve konukları kimlerin davet edebileceğinizi belirleme açıklanmaktadır. Varsayılan olarak, dizininizdeki tüm kullanıcılar ve konuklar bir yönetici rolüne atanmasa bile konukları davet edebilir. Dış işbirliği ayarları, kuruluşunuzdaki farklı türlerdeki kullanıcılar için konuk davetlerini açmanıza veya kapaetmenize olanak tanır. Ayrıca, konukların konuk davet etmesini sağlayan roller atayarak bireysel kullanıcılara davetiye da atayabilirsiniz.
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>B2B dış işbirliği ayarlarını yapılandırma
 
-Azure AD B2B işbirliği ile kiracı yönetici aşağıdaki davet ilkelerini ayarlayabilir:
+Azure AD B2B işbirliği ile bir kiracı yöneticisi aşağıdaki davet ilkelerini ayarlayabilir:
 
-- Davetiyeleri kapatma
-- Yalnızca Konuk Davetli rolündeki yöneticiler ve kullanıcılar
-- Yöneticiler, Konuk Davetçi rolü ve üyeler
-- Konuklar da dahil olmak üzere tüm kullanıcılar,
+- Davetleri kapat
+- Yalnızca konuk davet eden rolündeki Yöneticiler ve kullanıcılar davet edebilir
+- Yöneticiler, konuk davet eden rolü ve Üyeler davet edebilir
+- Konuklar dahil tüm kullanıcılar davet edebilir
 
-Varsayılan olarak, misafirler de dahil olmak üzere tüm kullanıcılar konuk kullanıcıları davet edebilir.
+Varsayılan olarak, konukları dahil tüm kullanıcılar Konuk kullanıcıları davet edebilir.
 
 ### <a name="to-configure-external-collaboration-settings"></a>Dış işbirliği ayarlarını yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com) kiracı yönetici olarak oturum açın.
-2. **Azure Etkin Dizin** > **Kullanıcıları** > **Kullanıcı ayarlarını**seçin.
-3. **Dış kullanıcılar**altında, dış **işbirliği ayarlarını yönet'i**seçin.
+1. [Azure Portal](https://portal.azure.com) kiracı yöneticisi olarak oturum açın.
+2. **Azure Active Directory** > **Users**kullanıcıları > **Kullanıcı ayarları**' nı seçin.
+3. **Dış kullanıcılar**altında, **dış işbirliği ayarlarını yönet**' i seçin.
    > [!NOTE]
-   > **Dış işbirliği ayarları,** Kuruluş **ilişkileri** sayfasından da kullanılabilir. Azure Etkin Dizini'nde, **Yönet**altında, **Kurumsal ilişkiler** > **Ayarları'na**gidin.
-4. Dış **işbirliği ayarları** sayfasında, etkinleştirmek istediğiniz ilkeleri seçin.
+   > **Dış işbirliği ayarları** , **Kurumsal ilişkiler** sayfasından da kullanılabilir. Azure Active Directory, **Yönet**altında **Kurumsal ilişkiler** > **ayarları**' na gidin.
+4. **Dış işbirliği ayarları** sayfasında, etkinleştirmek istediğiniz ilkeleri seçin.
 
    ![Dış işbirliği ayarları](./media/delegate-invitations/control-who-to-invite.png)
 
-  - **Konuk kullanıcı izinleri sınırlıdır**: Bu politika, dizininizdeki misafirlerin izinlerini belirler. Kullanıcıları, grupları veya diğer dizin kaynaklarını sayısallandırma gibi belirli dizin görevlerinden misafirleri engellemek için **Evet'i** seçin. Misafirlere dizininizdeki normal kullanıcılarla aynı dizin verilerine erişim sağlamak için **Hayır'ı** seçin.
-   - **Konuk davetli rolündeki yöneticiler ve kullanıcılar davet edebilir:**"Konuk Davetli" rolündeki yöneticilerin ve kullanıcıların davet etmesine izin vermek için bu politikayı **Evet**olarak ayarlayın.
-   - **Üyeler davet edebilir**: Dizininizin yönetici olmayan üyelerinin konukları davet etmesine izin vermek için bu politikayı **Evet**olarak ayarlayın.
-   - **Konuklar davet edebilir**: Misafirlerin diğer konukları davet etmesine izin vermek için bu politikayı **Evet**olarak ayarlayın.
-   - **Konuklar için E-posta Tek Seferlik Şifreyi Etkinleştir (Önizleme)**: Tek seferlik parola özelliği hakkında daha fazla bilgi için [e-posta nın tek seferlik parola kimlik doğrulaması (önizleme)](one-time-passcode.md)adresine bakın.
-   - **İşbirliği kısıtlamaları**: Belirli etki alanlarındaki davetlere izin verme veya engelleme hakkında daha fazla bilgi için [bkz.](allow-deny-list.md)
+  - **Konuk kullanıcılar izinleri sınırlıdır**: Bu ilke, dizininizdeki konuklara ilişkin izinleri belirler. Kullanıcıları, grupları veya diğer dizin kaynaklarını numaralandırma gibi belirli dizin görevlerinin konukları engellemek için **Evet** ' i seçin. Konuklara, dizininizdeki normal kullanıcılar olarak dizin verilerine aynı erişimi vermek için **Hayır** ' ı seçin.
+   - **Konuk davet eden rolündeki Yöneticiler ve kullanıcılar davet edebilir**: yöneticilerin ve kullanıcıların "konuk davet eden" rolünde konukları davet etmesini sağlamak için, bu ilkeyi **Evet**olarak ayarlayın.
+   - **Üyeler davet edebilir**: dizininizin yönetici olmayan üyelerinin konukları davet etmesini sağlamak için, bu ilkeyi **Evet**olarak ayarlayın.
+   - **Konuklar davet edebilir**: konukların diğer konukları davet etmesini sağlamak için bu ilkeyi **Evet**olarak ayarlayın.
+   - **Konuklar Için tek seferlik geçiş kodunu etkinleştir (Önizleme)**: tek seferlik geçiş kodu özelliği hakkında daha fazla bilgi için bkz. [e-posta bir kerelik geçiş kodu doğrulaması (Önizleme)](one-time-passcode.md).
+   - **İşbirliği kısıtlamaları**: belirli etki alanlarına davetlere izin verme veya bunları engelleme hakkında daha fazla bilgi için bkz. [belirli kuruluşlardan B2B kullanıcılarına izin verme veya bu kullanıcıları engelleme](allow-deny-list.md).
 
-## <a name="assign-the-guest-inviter-role-to-a-user"></a>Konuk Davetçi rolünü bir kullanıcıya atama
+## <a name="assign-the-guest-inviter-role-to-a-user"></a>Konuk davet eden rolünü bir kullanıcıya atama
 
-Konuk Davetçi rolüyle, bireysel kullanıcılara genel bir yönetici veya başka bir yönetici rolü atamadan konukları davet etme olanağı verebilirsiniz. Konuk davetli rolünü bireylere atayın. Ardından, Konuk **davetli rolündeki Yöneticileri ve kullanıcıları** **Evet'e**davet edebileceğinden emin olun.
+Konuk davet eden rolü sayesinde, bireysel kullanıcılara bir küresel yönetici veya başka yönetici rolü atamadan konukları davet etme yeteneği verebilirsiniz. Konuk davet eden rolünü kişilere atayın. Daha sonra **, yöneticileri ve konuk davet eden rolünde bulunan kullanıcıları Evet 'e davet edediğinizden** emin **Yes**olun.
 
-Aşağıda, Konuk Davetli rolüne bir kullanıcı eklemek için PowerShell'in nasıl kullanılacağını gösteren bir örnek verilmiştir:
+Konuk davet eden rolüne kullanıcı eklemek için PowerShell 'in nasıl kullanılacağını gösteren bir örnek aşağıda verilmiştir:
 
 ```
 Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMemberEmailAddress <RoleMemberEmailAddress>
@@ -66,7 +66,7 @@ Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMembe
 Azure AD B2B işbirliği ile ilgili aşağıdaki makalelere bakın:
 
 - [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
-- [B2B işbirliği konuk kullanıcılarını davetolmadan ekleme](add-user-without-invite.md)
+- [Bir davetiye olmadan B2B işbirliği Konuk kullanıcıları ekleme](add-user-without-invite.md)
 - [Bir role B2B işbirliği kullanıcısı ekleme](add-guest-to-role.md)
 
 

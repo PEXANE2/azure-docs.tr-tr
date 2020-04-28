@@ -1,6 +1,6 @@
 ---
-title: Azure AD'de kurumsal bir uygulama için kullanıcı oturum açma larını devre dışı
-description: Azure Etkin Dizini'nde hiçbir kullanıcının oturum açamayabilmesi için kurumsal bir uygulamayı devre dışı etme
+title: Azure AD 'de kurumsal uygulama için Kullanıcı oturum açma işlemlerini devre dışı bırakma
+description: Bir kurumsal uygulamayı devre dışı bırakma, bir kullanıcının Azure Active Directory oturum açmasını sağlamak için
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,29 +17,29 @@ ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10553898376c4b9236ee62718fffccd45b12d70b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74274085"
 ---
-# <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory'deki bir kurumsal uygulama için kullanıcı oturum açma oturumlarını devre dışı
+# <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory ' de bir kurumsal uygulama için Kullanıcı oturum açma işlemlerini devre dışı bırakma
 
-Azure Etkin Dizini'nde (Azure AD) hiçbir kullanıcının oturum açaması için kurumsal bir uygulamayı devre dışı kullanabilirsiniz. Kurumsal uygulamayı yönetmek için uygun izinlere ihtiyacınız vardır. Ve, dizin için küresel yönetici olmalıdır.
+Bir kurumsal uygulamayı devre dışı bırakmak kolaydır, böylece hiçbir Kullanıcı Azure Active Directory (Azure AD) içinde oturum açabilirler. Kurumsal uygulamayı yönetmek için uygun izinlere sahip olmanız gerekir. Ve, dizin için genel yönetici olmanız gerekir.
 
-## <a name="how-do-i-disable-user-sign-ins"></a>Kullanıcı oturum açma oturumlarını nasıl devre dışı alarım?
+## <a name="how-do-i-disable-user-sign-ins"></a>Kullanıcı Nasıl yaparım? oturum açma işlemlerini devre dışı bırakmak istiyor musunuz?
 
 1. Dizin için genel yönetici olan bir hesapla [Azure portalda](https://portal.azure.com) oturum açın.
-1. **Tüm hizmetleri**seçin, metin kutusuna Azure **Etkin Dizini** girin ve sonra **Enter'u**seçin.
-1. Azure **Etkin Dizin** -  ***dizini bölmesi*** (diğer bir deyişle, yöneticiliğiniz için Azure AD bölmesi) üzerinde **Kurumsal uygulamaları**seçin.
-1. Kurumsal **uygulamalarda - Tüm uygulamalar** bölmesi, yönetebileceğiniz uygulamaların bir listesini görürsünüz. Bir uygulama seçin.
-1. Ad ***bölmesi*** (diğer bir deyişle, başlıkta seçilen uygulamanın adını içeren bölme), **Özellikler'i**seçin.
-1. **Özellikler** ***ekbnde,*** - kullanıcıların oturum **açmaması için Etkin emediye** **Hayır'ı** seçin.
+1. **Tüm hizmetler**' i seçin, metin kutusuna **Azure Active Directory** girin ve ardından **ENTER**' u seçin.
+1. **Azure Active Directory** -  ***DirectoryName*** bölmesinde (diğer bir deyişle, yönettiğiniz dizin için Azure AD bölmesi) **Kurumsal uygulamalar**' ı seçin.
+1. **Kurumsal uygulamalar-tüm uygulamalar** bölmesinde, yönetebileceğiniz uygulamaların bir listesini görürsünüz. Bir uygulama seçin.
+1. ***Appname*** bölmesinde (yani, başlığında Seçili uygulamanın adını taşıyan bölme) **Özellikler**' i seçin.
+1. Kullanıcı ***adı*** - **Özellikler** bölmesinde, **kullanıcıların oturum açması**için **Hayır** ' ı seçin.
 1. **Kaydet** komutunu seçin.
 
-## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Listelenmemiş bir uygulamayı devre dışı etmek için Azure AD PowerShell'i kullanma
+## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Listelenmemiş bir uygulamayı devre dışı bırakmak için Azure AD PowerShell kullanma
 
-Kurumsal uygulamalar listesinde görünmeyen bir uygulamanın AppId'ini biliyorsanız (örneğin, uygulamayı veya hizmet sorumlusu nun Microsoft tarafından ön izin li olması nedeniyle uygulamayı veya hizmet sorumlusu henüz oluşturulmadığıiçin), uygulama için hizmet ilkesini el ile oluşturabilir ve [AzureAD PowerShell cmdlet'i](https://docs.microsoft.com/powershell/module/azuread/New-AzureADServicePrincipal?view=azureadps-2.0)kullanarak uygulamayı devre dışı bırakabilirsiniz.
+Kurumsal uygulamalar listesinde görünmeyen bir uygulamanın uygulama kimliği ' ni biliyorsanız (örneğin, uygulamayı sildiğiniz veya hizmet sorumlusu Microsoft tarafından önceden yetkilendirildiği için henüz oluşturulmadığından), uygulama için hizmet sorumlusunu el ile oluşturabilir ve sonra [Azuread PowerShell cmdlet 'ini](https://docs.microsoft.com/powershell/module/azuread/New-AzureADServicePrincipal?view=azureadps-2.0)kullanarak devre dışı bırakabilirsiniz.
 
 ```PowerShell
 # The AppId of the app to be disabled
@@ -58,7 +58,7 @@ if ($servicePrincipal) {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Tüm gruplarımı görün](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Bir kurumsal uygulamaya kullanıcı veya grup atama](assign-user-or-group-access-portal.md)
-* [Bir kurumsal uygulamadan kullanıcı veya grup ataması kaldırma](remove-user-or-group-access-portal.md)
-* [Kurumsal bir uygulamanın adını veya logosunu değiştirme](change-name-or-logo-portal.md)
+* [Tüm gruplarımı gör](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](assign-user-or-group-access-portal.md)
+* [Bir kurumsal uygulamadan Kullanıcı veya grup atamasını kaldırma](remove-user-or-group-access-portal.md)
+* [Kurumsal uygulamanın adını veya logosunu değiştirme](change-name-or-logo-portal.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure dosya paylaşımı – Azure dosya paylaşımından dosyalar silinemedi
-description: Azure Dosya Paylaşımı'ndan dosyaların silinmemenizi tanımlayın ve sorun giderin.
+description: Azure dosya paylaşımından dosyaları silme başarısızlığını belirleyip sorun giderin.
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
@@ -11,22 +11,22 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: d3a3763a8964810626bcdc47da230a9ee406f1f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74196474"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure dosya paylaşımı – Azure dosya paylaşımından dosyalar silinemedi
 
-Azure Dosya Paylaşımı'ndan dosyaların silinmemesi birkaç belirti olabilir:
+Azure dosya paylaşımından dosyaları silme hatası birkaç belirtime sahip olabilir:
 
 **Belirti 1:**
 
-Aşağıdaki iki sorundan biri nedeniyle azure dosya paylaşımında bir dosyayı silmek için başarısız oldu:
+Aşağıdaki iki sorunlardan biri nedeniyle Azure dosya paylaşımında bir dosya silinemedi:
 
 * Silme için işaretlenmiş dosya
-* Belirtilen kaynak bir Kobİ istemcisi tarafından kullanılıyor olabilir
+* Belirtilen kaynak bir SMB istemcisi tarafından kullanılıyor olabilir
 
 **Belirti 2:**
 
@@ -34,19 +34,19 @@ Bu komutu işlemek için yeterli kota yok
 
 ## <a name="cause"></a>Nedeni
 
-Hata 1816, dosya paylaşımının monte edildiği bilgisayarda, bir dosya için izin verilen eşzamanlı açık tutamaçların üst sınırına ulaştığınızda oluşur. Daha fazla bilgi için [Azure Depolama performansı ve ölçeklenebilirlik denetim listesine](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist)bakın.
+Dosya paylaşımının takılabileceği bilgisayarda bir dosya için izin verilen eş zamanlı açık tanıtıcıların üst sınırına ulaştığınızda hata 1816 oluşur. Daha fazla bilgi için bkz. [Azure depolama performansı ve ölçeklenebilirlik denetim listesi](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist).
 
 ## <a name="resolution"></a>Çözüm
 
-Bazı tutamaçları kapatarak eşzamanlı açık tutamaçların sayısını azaltın.
+Bazı tutamaçları kapatarak eşzamanlı açma tanıtıcılarının sayısını azaltın.
 
 ## <a name="prerequisite"></a>Önkoşul
 
-### <a name="install-the-latest-azure-powershell-module"></a>En son Azure PowerShell modüllerini yükleyin
+### <a name="install-the-latest-azure-powershell-module"></a>En son Azure PowerShell modülünü yükler
 
 * [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
-### <a name="connect-to-azure"></a>Azure'a bağlanın:
+### <a name="connect-to-azure"></a>Azure 'a Bağlan:
 
 ```
 # Connect-AzAccount
@@ -64,7 +64,7 @@ Bazı tutamaçları kapatarak eşzamanlı açık tutamaçların sayısını azal
 $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -StorageAccountKey "StorageAccessKey"
 ```
 
-### <a name="get-the-current-open-handles-of-the-file-share"></a>Dosya paylaşımının geçerli açık tutamaçlarını alın:
+### <a name="get-the-current-open-handles-of-the-file-share"></a>Dosya paylaşımının geçerli açık tutamaçlarını al:
 
 ```
 # Get-AzStorageFileHandle -Context $Context -ShareName "FileShareName" -Recursive
@@ -72,15 +72,15 @@ $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -Storag
 
 ## <a name="example-result"></a>Örnek sonuç:
 
-|Gidiş|Yol|ClientIp|ClientPort|Açık Zaman|LastReconnectTime|FileId|Parentıd|SessionId|
+|Handleıd|Yol|ClientIp|Istemci bağlantı noktası|OpenTime|LastReconnectTime|File|ParentID|SessionId|
 |---|---|---|---|---|---|---|---|---|
 |259101229083|---|10.222.10.123|62758|2019-10-05|12:16:50Z|0|0|9507758546259807489|
 |259101229131|---|10.222.10.123|62758|2019-10-05|12:36:20Z|0|0|9507758546259807489|
 |259101229137|---|10.222.10.123|62758|2019-10-05|12:36:53Z|0|0|9507758546259807489|
-|259101229136|Yeni klasör/test.zip|10.222.10.123|62758|2019-10-05|12:36:29Z|13835132822072852480|9223446803645464576|9507758546259807489|
-|259101229135|test.zip|37.222.22.143|62758|2019-10-05|12:36:24Z|11529250230440558592|0|9507758546259807489|
+|259101229136|Yeni klasör/test. zip|10.222.10.123|62758|2019-10-05|12:36:29Z|13835132822072852480|9223446803645464576|9507758546259807489|
+|259101229135|test. zip|37.222.22.143|62758|2019-10-05|12:36:24Z|11529250230440558592|0|9507758546259807489|
 
-### <a name="close-an-open-handle"></a>Açık tutamacı kapatın:
+### <a name="close-an-open-handle"></a>Açık bir tutamacı kapat:
 
 Açık bir tutamacı kapatmak için aşağıdaki komutu kullanın:
 
@@ -90,6 +90,6 @@ Açık bir tutamacı kapatmak için aşağıdaki komutu kullanın:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Windows'da Azure Dosyaları Sorun Giderme](storage-troubleshoot-windows-file-connection-problems.md)
-* [Linux'ta Azure Dosyalarını Sorun Giderme](storage-troubleshoot-linux-file-connection-problems.md)
+* [Windows 'da Azure dosyaları sorunlarını giderme](storage-troubleshoot-windows-file-connection-problems.md)
+* [Linux 'ta Azure dosyaları sorunlarını giderme](storage-troubleshoot-linux-file-connection-problems.md)
 * [Azure Dosya Eşitleme ile ilgili sorunları giderme](storage-sync-files-troubleshoot.md)

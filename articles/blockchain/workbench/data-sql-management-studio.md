@@ -1,20 +1,20 @@
 ---
-title: SQL Server Management Studio kullanarak Azure Blockchain Workbench verilerini sorgula
+title: SQL Server Management Studio kullanarak Azure blok zinciri çalışma ekranı verilerini sorgulama
 description: SQL Server Management Studio’nun içinden Azure Blockchain Workbench'in SQL Veritabanı’na bağlanmayı öğrenin.
 ms.date: 11/20/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 ms.openlocfilehash: f87d1880c90202fa26b0477e3b4dfbed5965bb82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74326031"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Azure Blockchain Workbench verilerini SQL Server Management Studio ile kullanma
 
-Microsoft SQL Server Management Studio, Azure Blockchain Workbench'in SQL DB'sine karşı hızlı bir şekilde sorgu yazma ve test etme olanağı sağlar. Bu bölümde, SQL Server Management Studio içinden Azure Blockchain Workbench'in SQL Veritabanına nasıl bağlanılabağlanabilen adım adım bir geçiş yer almaktadır.
+Microsoft SQL Server Management Studio Azure blok zinciri çalışma ekranının SQL DB 'ye yönelik sorguları hızlı bir şekilde yazma ve test etme olanağı sağlar. Bu bölümde, Azure blok zinciri 'nin SQL veritabanına SQL Server Management Studio içinden nasıl bağlanabilmeniz için adım adım yönergeler yer almaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -38,7 +38,7 @@ Microsoft SQL Server Management Studio, Azure Blockchain Workbench'in SQL DB'sin
       ![Veritabanı listesi](./media/data-sql-management-studio/db-list.png)
 
 5. Veritabanı görünümlerinin herhangi biri ile ilişkili verileri görüntülemek için aşağıdaki adımlarla otomatik olarak bir select deyimi oluşturabilirsiniz.
-6. Nesne Gezgini'ndeki veritabanı görünümlerinden herhangi birini sağ tıklatın.
+6. Nesne Gezgini veritabanı görünümlerinden birine sağ tıklayın.
 7. **Betiği Farklı Görüntüle** seçeneğini belirleyin.
 8. **Şuna kadar SEÇ:** seçeneğini belirleyin.
 9. **Yeni Sorgu Düzenleyicisi Penceresi**‘ni seçin.

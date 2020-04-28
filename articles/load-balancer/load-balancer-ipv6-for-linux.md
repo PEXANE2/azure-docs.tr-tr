@@ -1,11 +1,11 @@
 ---
-title: Linux VM'leri için DHCPv6'yı yapılandırın
+title: Linux VM 'Ler için DHCPv6 'yi yapılandırma
 titleSuffix: Azure Load Balancer
-description: Bu makalede, Linux VM'leri için DHCPv6'yı nasıl yapılandırıştırılamayı öğrenin.
+description: Bu makalede, Linux VM 'Leri için DHCPv6 yapılandırma hakkında bilgi edinin.
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: ipv6, azure yük dengeleyici, çift yığın, genel ip, yerli ipv6, mobil, iot
+keywords: IPv6, Azure yük dengeleyici, çift yığın, genel IP, yerel IPv6, mobil, IoT
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,48 +15,48 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74225314"
 ---
-# <a name="configure-dhcpv6-for-linux-vms"></a>Linux VM'leri için DHCPv6'yı yapılandırın
+# <a name="configure-dhcpv6-for-linux-vms"></a>Linux VM 'Ler için DHCPv6 'yi yapılandırma
 
 
-Azure Marketi'ndeki Linux sanal makine görüntülerinden bazılarının varsayılan olarak yapılandırılan Dinamik Ana Bilgisayar Yapılandırma Protokolü sürüm 6 (DHCPv6) yoktur. IPv6'yı desteklemek için DHCPv6'nın kullandığınız Linux işletim sistemi dağıtımında yapılandırılması gerekir. Çeşitli Linux dağıtımları DHCPv6'yı çeşitli şekillerde yapılandırır, çünkü farklı paketler kullanırlar.
+Azure Marketi 'ndeki Linux sanal makine görüntülerinin bazıları varsayılan olarak yapılandırılmış dinamik ana bilgisayar Yapılandırma Protokolü sürüm 6 ' ya (DHCPv6) sahip değildir. IPv6 'yı desteklemek için, kullanmakta olduğunuz Linux işletim sistemi dağıtımında DHCPv6 yapılandırılmalıdır. Çeşitli Linux dağıtımları, farklı paketler kullandıkları için DHCPv6 'yi çeşitli şekillerde yapılandırır.
 
 > [!NOTE]
-> Azure Marketi'ndeki son SUSE Linux ve CoreOS görüntüleri DHCPv6 ile önceden yapılandırılmıştır. Bu görüntüleri kullandığınızda ek değişiklik gerekmez.
+> Azure Marketi 'ndeki son SUSE Linux ve CoreOS görüntüleri, DHCPv6 ile önceden yapılandırılmıştır. Bu görüntüleri kullandığınızda ek değişiklik yapmanız gerekmez.
 
-Bu belge, Linux sanal makinenizin bir IPv6 adresi edinebilmesi için DHCPv6'nın nasıl etkinleştirilen olduğunu açıklar.
+Bu belgede, Linux sanal makineniz bir IPv6 adresi edinmesi için DHCPv6 'nin nasıl etkinleştirileceği açıklanır.
 
 > [!WARNING]
-> Ağ yapılandırma dosyalarını yanlış düzenleyerek VM'nize ağ erişimini kaybedebilirsiniz. Yapılandırma değişikliklerinizi üretim dışı sistemlerde test edeyim önerilir. Bu makaledeki yönergeler Azure Marketi'ndeki Linux görüntülerinin en son sürümlerinde test edilmiştir. Daha ayrıntılı talimatlar için, Linux'un kendi sürümünüz için belgelere başvurun.
+> Ağ yapılandırma dosyalarını uygunsuz olarak düzenleyerek sanal makinenize ağ erişimini kaybedebilirsiniz. Üretim dışı sistemlerdeki yapılandırma değişikliklerinizi test etmeniz önerilir. Bu makaledeki yönergeler, Azure Marketi 'nde Linux görüntülerinin en son sürümlerinde test edilmiştir. Daha ayrıntılı yönergeler için kendi Linux sürümünüze yönelik belgelere başvurun.
 
 ## <a name="ubuntu"></a>Ubuntu
 
-1. */etc/dhcp/dhclient6.conf* dosyasını düzenle ve aşağıdaki satırı ekleyin:
+1. */Etc/DHCP/dhclient6.conf* dosyasını düzenleyin ve aşağıdaki satırı ekleyin:
 
         timeout 10;
 
-2. Eth0 arabiriminin ağ yapılandırmasını aşağıdaki yapılandırmayla düzenleme:
+2. Eth0 arabirimi için ağ yapılandırmasını aşağıdaki yapılandırmayla düzenleyin:
 
-   * **Ubuntu 12.04 ve 14.04'te** */etc/network/interfaces.d/eth0.cfg* dosyasını değiştirin. 
-   * **Ubuntu 16.04'te** */etc/network/interfaces.d/50-cloud-init.cfg* dosyasını değiştirin.
+   * **Ubuntu 12,04 ve 14,04**' de, */etc/Network/Interfaces.exe d/ET0.cfg* dosyasını düzenleyin. 
+   * **Ubuntu 16,04**' de */etc/Network/Interfaces.exe d/50-Cloud-init.exe* dosyasını düzenleyin.
 
          iface eth0 inet6 auto
              up sleep 5
              up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
 
-3. IPv6 adresini yenileyin:
+3. IPv6 adresini Yenile:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
-Ubuntu 17.10 ile başlayarak varsayılan ağ yapılandırma mekanizması [NETPLAN'dır.]( https://netplan.io)  Yükleme/anlık işlem saatinde NETPLAN, bu konumdaki YAML yapılandırma dosyalarından ağ yapılandırması okur: /{lib,etc,run}/netplan/*.yaml.
+Ubuntu 17,10 ile başlayarak, varsayılan ağ yapılandırma mekanizması [Netplan]( https://netplan.io)' dır.  Install/örneklemesi oluşturma sırasında NETPLAN şu konumdaki YAML yapılandırma dosyalarından ağ yapılandırmasını okur:/{lib, vs, Run}/Netplan/*. YAML.
 
-Lütfen yapılandırmanızdaki her ethernet arabirimi için *bir dhcp6:true* deyimi ekleyin.  Örnek:
+Lütfen yapılandırmanızda her Ethernet arabirimi için bir *dhcp6: true* ifadesini ekleyin.  Örneğin:
   
         network:
           version: 2
@@ -64,21 +64,21 @@ Lütfen yapılandırmanızdaki her ethernet arabirimi için *bir dhcp6:true* dey
             eno1:
               dhcp6: true
 
-Erken önyükleme sırasında, netplan "ağ işleyicisi" netplan hakkında referans bilgileri için belirtilen ağ daemon https://netplan.io/referencecihazların kontrolünü elden /çalıştırmak için yapılandırma yazar, bkz.
+Erken önyükleme sırasında, Netplan "ağ Oluşturucusu", bir yandan, NETPLAN https://netplan.io/referenceile ilgili başvuru bilgileri için belirtilen ağ Daemon 'e cihazların denetimini bırakma
  
 ## <a name="debian"></a>Debian
 
-1. */etc/dhcp/dhclient6.conf* dosyasını düzenle ve aşağıdaki satırı ekleyin:
+1. */Etc/DHCP/dhclient6.conf* dosyasını düzenleyin ve aşağıdaki satırı ekleyin:
 
         timeout 10;
 
-2. */etc/network/interfaces* dosyasını düzenleme ve aşağıdaki yapılandırmayı ekleyin:
+2. */Etc/Network/Interfaces* dosyasını düzenleyin ve aşağıdaki yapılandırmayı ekleyin:
 
         iface eth0 inet6 auto
             up sleep 5
             up dhclient -1 -6 -cf /etc/dhcp/dhclient6.conf -lf /var/lib/dhcp/dhclient6.eth0.leases -v eth0 || true
 
-3. IPv6 adresini yenileyin:
+3. IPv6 adresini Yenile:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -86,54 +86,54 @@ Erken önyükleme sırasında, netplan "ağ işleyicisi" netplan hakkında refer
 
 ## <a name="rhel-centos-and-oracle-linux"></a>RHEL, CentOS ve Oracle Linux
 
-1. */etc/sysconfig/network* dosyasını edin ve aşağıdaki parametreyi ekleyin:
+1. */Etc/sysconfig/Network* dosyasını düzenleyin ve aşağıdaki parametreyi ekleyin:
 
         NETWORKING_IPV6=yes
 
-2. */etc/sysconfig/network-scripts/ifcfg-eth0* dosyasını edin ve aşağıdaki iki parametreyi ekleyin:
+2. */Etc/sysconfig/Network-Scripts/ifcfg-ET0* dosyasını düzenleyin ve aşağıdaki iki parametreyi ekleyin:
 
         IPV6INIT=yes
         DHCPV6C=yes
 
-3. IPv6 adresini yenileyin:
+3. IPv6 adresini Yenile:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
 
-## <a name="sles-11-and-opensuse-13"></a>SLES 11 ve açıkSUSE 13
+## <a name="sles-11-and-opensuse-13"></a>SLES 11 ve openSUSE 13
 
-Son SUSE Linux Enterprise Server (SLES) ve Azure'daki openSUSE görüntüleri DHCPv6 ile önceden yapılandırılmıştır. Bu görüntüleri kullandığınızda ek değişiklik gerekmez. Eski veya özel bir SUSE resmine dayanan bir VM'iniz varsa, aşağıdakileri yapın:
+Azure 'daki son SUSE Linux Enterprise Server (SLES) ve openSUSE görüntüleri, DHCPv6 ile önceden yapılandırılmıştır. Bu görüntüleri kullandığınızda ek değişiklik yapmanız gerekmez. Eski veya özel bir SUSE görüntüsünü temel alan bir VM varsa şunları yapın:
 
-1. Gerekirse `dhcp-client` paketi yükleyin:
+1. Gerekirse `dhcp-client` paketi yüklemelisiniz:
 
     ```bash
     sudo zypper install dhcp-client
     ```
 
-2. */etc/sysconfig/network/ifcfg-eth0* dosyasını edin ve aşağıdaki parametreyi ekleyin:
+2. */Etc/sysconfig/Network/ifcfg-ET0* dosyasını düzenleyin ve aşağıdaki parametreyi ekleyin:
 
         DHCLIENT6_MODE='managed'
 
-3. IPv6 adresini yenileyin:
+3. IPv6 adresini Yenile:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
 
-## <a name="sles-12-and-opensuse-leap"></a>SLES 12 ve openSUSE Leap
+## <a name="sles-12-and-opensuse-leap"></a>SLES 12 ve openSUSE artık
 
-Azure'daki son SLES ve openSUSE görüntüleri DHCPv6 ile önceden yapılandırılmıştır. Bu görüntüleri kullandığınızda ek değişiklik gerekmez. Eski veya özel bir SUSE resmine dayanan bir VM'iniz varsa, aşağıdakileri yapın:
+Azure 'daki son SLES ve openSUSE görüntüleri, DHCPv6 ile önceden yapılandırılmıştır. Bu görüntüleri kullandığınızda ek değişiklik yapmanız gerekmez. Eski veya özel bir SUSE görüntüsünü temel alan bir VM varsa şunları yapın:
 
-1. */etc/sysconfig/network/ifcfg-eth0* dosyasını ve parametreyi `#BOOTPROTO='dhcp4'` aşağıdaki değerle değiştirin:
+1. */Etc/sysconfig/Network/ifcfg-ET0* dosyasını düzenleyin ve `#BOOTPROTO='dhcp4'` parametresini aşağıdaki değerle değiştirin:
 
         BOOTPROTO='dhcp'
 
-2. */etc/sysconfig/network/ifcfg-eth0* dosyasına aşağıdaki parametreyi ekleyin:
+2. */Etc/sysconfig/Network/ifcfg-ET0* dosyasına şu parametreyi ekleyin:
 
         DHCLIENT6_MODE='managed'
 
-3. IPv6 adresini yenileyin:
+3. IPv6 adresini Yenile:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -141,9 +141,9 @@ Azure'daki son SLES ve openSUSE görüntüleri DHCPv6 ile önceden yapılandır�
 
 ## <a name="coreos"></a>CoreOS
 
-Azure'daki son CoreOS görüntüleri DHCPv6 ile önceden yapılandırılmıştır. Bu görüntüleri kullandığınızda ek değişiklik gerekmez. Eski veya özel bir CoreOS resmine dayalı bir VM'iniz varsa, aşağıdakileri yapın:
+Azure 'daki son CoreOS görüntüleri, DHCPv6 ile önceden yapılandırılmıştır. Bu görüntüleri kullandığınızda ek değişiklik yapmanız gerekmez. Daha eski veya özel bir CoreOS görüntüsüne dayalı bir VM varsa şunları yapın:
 
-1. */etc/systemd/network/10_dhcp.network* dosyasını düzenle:
+1. */Etc/systemd/Network/10_dhcp. Network* dosyasını düzenleyin:
 
         [Match]
         eth0
@@ -151,7 +151,7 @@ Azure'daki son CoreOS görüntüleri DHCPv6 ile önceden yapılandırılmıştı
         [Network]
         DHCP=ipv6
 
-2. IPv6 adresini yenileyin:
+2. IPv6 adresini Yenile:
 
     ```bash
     sudo systemctl restart systemd-networkd

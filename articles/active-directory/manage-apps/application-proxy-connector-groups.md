@@ -1,6 +1,6 @@
 ---
-title: Bağlayıcı grupları aracılığıyla uygulamaları ayrı ağlarda yayımlama - Azure AD
-description: Azure AD Application Proxy'de bağlayıcı gruplarının nasıl oluşturulup yönetilenleri kapsar.
+title: Bağlayıcı grupları aracılığıyla uygulamaları ayrı ağlarda yayımlama-Azure AD
+description: Azure AD Uygulama Ara Sunucusu 'de bağlayıcı gruplarının nasıl oluşturulacağını ve yönetileceğini ele alır.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -15,118 +15,118 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74275574"
 ---
-# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Bağlayıcı gruplarını kullanarak uygulamaları ayrı ağlarda ve konumlarda yayımlama
+# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Bağlayıcı gruplarını kullanarak ayrı ağlarda ve konumlarda uygulama yayımlama
 
-Müşteriler, giderek daha fazla senaryo ve uygulama için Azure AD'nin Uygulama Proxy'si'ni kullanır. Bu nedenle, daha fazla topoloji sağlayarak App Proxy'yi daha da esnek hale getirdik. Belirli uygulamalara hizmet etmek için belirli bağlayıcılar atayabilmek için Uygulama Proxy bağlayıcı grupları oluşturabilirsiniz. Bu özellik, daha fazla denetim ve Uygulama Proxy dağıtım optimize etmek için yollar sağlar.
+Müşteriler, daha fazla senaryo ve uygulama için Azure AD 'nin uygulama proxy 'Sini kullanır. Bu nedenle, daha fazla topoloji etkinleştirerek uygulama proxy 'Si daha da esnek hale getirildik. Belirli uygulamalara yönelik belirli bağlayıcılar atayabilmeniz için, uygulama proxy Bağlayıcısı grupları oluşturabilirsiniz. Bu özellik, uygulama proxy dağıtımınızı iyileştirmek için size daha fazla denetim ve yol sağlar.
 
-Her Uygulama Proxy bağlayıcısı bir bağlayıcı grubuna atanır. Aynı konektör grubuna ait tüm konnektörler, yüksek kullanılabilirlik ve yük dengelemesi için ayrı bir birim olarak hareket eder. Tüm bağlayıcılar bir bağlayıcı grubuna aittir. Gruplar oluşturmazsanız, tüm bağlayıcılarınız varsayılan bir gruptadır. Yöneticiniz Azure portalında yeni gruplar oluşturabilir ve bunlara bağlayıcılar atayabilir.
+Her uygulama proxy Bağlayıcısı bir bağlayıcı grubuna atanır. Aynı bağlayıcı grubuna ait olan tüm bağlayıcılar, yüksek kullanılabilirlik ve yük dengeleme için ayrı bir birim işlevi görür. Tüm bağlayıcılar bir bağlayıcı grubuna aittir. Grupları oluşturmazsanız, tüm bağlayıcılar varsayılan grupta bulunur. Yöneticiniz yeni gruplar oluşturup Azure portal bunlara bağlayıcılar atayabilir.
 
-Tüm uygulamalar bir bağlayıcı grubuna atanır. Gruplar oluşturmazsanız, tüm uygulamalarınız varsayılan bir gruba atanır. Ancak bağlayıcılarınızı gruplar halinde düzenlerseniz, her uygulamayı belirli bir bağlayıcı grubuyla çalışacak şekilde ayarlayabilirsiniz. Bu durumda, yalnızca bu gruptaki bağlayıcılar istek üzerine uygulamaya hizmet eder. Bu özellik, uygulamalarınız farklı konumlarda barındırılıyorsa yararlıdır. Uygulamalarher zaman fiziksel olarak kendilerine yakın bağlayıcılar tarafından sunulan böylece konuma göre bağlayıcı grupları oluşturabilirsiniz.
+Tüm uygulamalar bir bağlayıcı grubuna atanır. Grup oluşturmazsanız tüm uygulamalarınız varsayılan bir gruba atanır. Ancak bağlayıcıları gruplar halinde düzenlediğinizde, her uygulamayı belirli bir bağlayıcı grubuyla çalışacak şekilde ayarlayabilirsiniz. Bu durumda, yalnızca bu gruptaki bağlayıcılar istek üzerine uygulamayı sunar. Uygulamalarınızın farklı konumlarda barındırıldığı durumlarda bu özellik faydalıdır. Konuma göre bağlayıcı grupları oluşturabilirsiniz, böylece uygulamalar her zaman bunlara fiziksel olarak yakın bağlayıcılar tarafından sunulur.
 
 > [!TIP]
-> Büyük bir Uygulama Proxy dağıtımınız varsa, varsayılan bağlayıcı grubuna herhangi bir uygulama atamayın. Bu şekilde, siz onları etkin bir bağlayıcı grubuna atayınakadar yeni bağlayıcılar canlı trafik almaz. Bu yapılandırma ayrıca, kullanıcılarınızı etkilemeden bakım gerçekleştirebilmeniz için bağlayıcıları varsayılan gruba geri taşıyarak boşta bir moda koymanızı da sağlar.
+> Büyük bir uygulama proxy dağıtımınız varsa, varsayılan bağlayıcı grubuna hiçbir uygulama atamayın. Bu şekilde, yeni bağlayıcılar bir etkin bağlayıcı grubuna atamaz kadar canlı trafik almaz. Bu yapılandırma ayrıca, kullanıcıları etkilemeden bakım yapabilmek için bağlayıcıları bir boşta moduna geri taşıyarak bunları bir boşta moduna koymanızı sağlar.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Konektörlerinizi gruplandırmak için birden [çok konektör yüklediğinizden](application-proxy-add-on-premises-application.md)emin olun. Yeni bir bağlayıcı yüklediğinizde, **varsayılan** bağlayıcı grubuna otomatik olarak katılır.
+Bağlayıcılarınızı gruplandırmak için [birden çok bağlayıcı yüklediğinizden](application-proxy-add-on-premises-application.md)emin olmanız gerekir. Yeni bir bağlayıcı yüklediğinizde, otomatik olarak **varsayılan** bağlayıcı grubuna katılır.
 
 ## <a name="create-connector-groups"></a>Bağlayıcı grupları oluşturma
 
-İstediğinizi kadar bağlayıcı grubu oluşturmak için bu adımları kullanın.
+İstediğiniz sayıda bağlayıcı grubu oluşturmak için bu adımları kullanın.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-1. Azure Active Directory**Enterprise uygulamalarını** > seçin**Uygulama proxy'si.** **Azure Active Directory** > 
-1. **Yeni bağlayıcı grubunu**seçin. Yeni Bağlayıcı Grubu bıçağı görüntülenir.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Azure Active Directory** > **Kurumsal uygulamalar** > **uygulama proxy 'si**' ni seçin.
+1. **Yeni bağlayıcı grubu**' nu seçin. Yeni bağlayıcı grubu dikey penceresi görünür.
 
    ![Yeni bir bağlayıcı grubu seçmek için ekranı gösterir](./media/application-proxy-connector-groups/new-group.png)
 
-1. Yeni bağlayıcı grubunuzun adını verin ve bu gruba hangi bağlayıcıların ait olduğunu seçmek için açılır menüyü kullanın.
-1. **Kaydet'i**seçin.
+1. Yeni bağlayıcı grubunuza bir ad verin ve ardından açılan menüyü kullanarak bu gruba ait olan bağlayıcıları seçin.
+1. **Kaydet**’i seçin.
 
-## <a name="assign-applications-to-your-connector-groups"></a>Konektör gruplarınıza uygulama atama
+## <a name="assign-applications-to-your-connector-groups"></a>Bağlayıcı gruplarınızı uygulama atama
 
-Uygulama Proxy ile yayımladınız her uygulama için bu adımları kullanın. Bir uygulamayı ilk yayımladığınızda bağlayıcı gruba atayabilirsiniz veya atamayı istediğiniz zaman değiştirmek için bu adımları kullanabilirsiniz.
+Uygulama proxy 'Si ile yayımladığınız her bir uygulama için bu adımları kullanın. Bir uygulamayı ilk yayımladığınızda bir bağlayıcı grubuna atayabilir veya bu adımları kullanarak atamayı dilediğiniz zaman değiştirebilirsiniz.
 
-1. Dizininizin yönetim panosundan Kurumsal **uygulamaları** > seçin**Tüm uygulamalar** > bir bağlayıcı grubuna atamak istediğiniz uygulama > **Application Proxy'yi**seçin.
-1. Uygulamanın kullanmasını istediğiniz grubu seçmek için **Bağlayıcı Grubu** açılır menüsünü kullanın.
-1. Değişikliği uygulamak için **Kaydet'i** seçin.
+1. Dizininizin Yönetim panosundan **Kurumsal uygulamalar** > ' ı seçin**tüm uygulamalar** > bağlayıcı grubuna atamak istediğiniz uygulamayı > **uygulama proxy 'si**.
+1. Uygulamanın kullanmasını istediğiniz grubu seçmek için **bağlayıcı grubu** açılır menüsünü kullanın.
+1. Değişikliği uygulamak için **Kaydet** ' i seçin.
 
-## <a name="use-cases-for-connector-groups"></a>Konektör grupları için servis taleplerini kullanma
+## <a name="use-cases-for-connector-groups"></a>Bağlayıcı grupları için kullanım örnekleri
 
-Bağlayıcı grupları aşağıdakiler dahil olmak üzere çeşitli senaryolar için yararlıdır:
+Bağlayıcı grupları aşağıdakiler dahil çeşitli senaryolar için yararlıdır:
 
-### <a name="sites-with-multiple-interconnected-datacenters"></a>Birden çok birbirine bağlı veri merkezi olan siteler
+### <a name="sites-with-multiple-interconnected-datacenters"></a>Birden çok bağlantılı veri merkezine sahip siteler
 
-Birçok kuruluşun birbirine bağlı veri merkezleri var. Bu durumda, veri merkezi arası bağlantılar pahalı ve yavaş olduğundan, veri merkezi içinde mümkün olduğunca çok trafik tutmak istiyorsunuz. Bağlayıcıları yalnızca veri merkezi içinde bulunan uygulamalara hizmet etmek üzere her veri merkezine dağıtabilirsiniz. Bu yaklaşım, veri merkezi arasındaki bağlantıları en aza indirir ve kullanıcılarınız için tamamen şeffaf bir deneyim sağlar.
+Birçok kuruluşun birbirine bağlı çeşitli veri merkezleri vardır. Bu durumda, çoklu veri merkezi bağlantıları pahalı ve yavaş olduğu için veri merkezinde çok sayıda trafik olmasını istemeniz gerekir. Her bir veri merkezinde bağlayıcı dağıtarak yalnızca veri merkezinde bulunan uygulamalara erişebilirsiniz. Bu yaklaşım, platformlar arası bağlantıları en aza indirir ve kullanıcılarınız için tamamen saydam bir deneyim sağlar.
 
-### <a name="applications-installed-on-isolated-networks"></a>Yalıtılmış ağlara yüklenen uygulamalar
+### <a name="applications-installed-on-isolated-networks"></a>Yalıtılmış ağlarda yüklü uygulamalar
 
-Uygulamalar ana şirket ağının parçası olmayan ağlarda barındırılabilir. Uygulamaları ağa yalıtmak için yalıtılmış ağlara özel bağlayıcılar yüklemek için bağlayıcı gruplarını kullanabilirsiniz. Bu genellikle bir üçüncü taraf satıcı kuruluşunuz için belirli bir uygulama tutar.
+Uygulamalar, ana şirket ağının parçası olmayan ağlarda barındırılabilir. Ayrıca, uygulamaları ağ üzerinde yalıtmak için yalıtılmış ağlara adanmış bağlayıcılar yüklemek üzere bağlayıcı gruplarını kullanabilirsiniz. Bu genellikle, üçüncü taraf bir satıcı kuruluşunuz için belirli bir uygulamayı koruduğu zaman gerçekleşir.
 
-Bağlayıcı grupları, yalnızca belirli uygulamaları yayımlayan bu ağlar için özel bağlayıcılar yüklemenize olanak sağlayarak, uygulama yönetimini üçüncü taraf satıcılara dış kaynak sağlamayı daha kolay ve güvenli hale getirir.
+Bağlayıcı grupları, yalnızca belirli uygulamaları yayınlayan ağlar için adanmış bağlayıcılar yüklemenize olanak tanır. Bu, dış uygulama yönetiminin üçüncü taraf satıcılara daha kolay ve daha güvenli olmasını sağlar.
 
-### <a name="applications-installed-on-iaas"></a>IaaS'de yüklü uygulamalar
+### <a name="applications-installed-on-iaas"></a>IaaS üzerinde yüklü uygulamalar
 
-Bulut erişimi için IaaS'ye yüklenen uygulamalarda bağlayıcı gruplar, tüm uygulamalara erişimi güvence altına almak için ortak bir hizmet sağlar. Bağlayıcı grupları şirket ağınızda ek bağımlılık oluşturmaz veya uygulama deneyimini parçalamayın. Bağlayıcılar her bulut veri merkezine yüklenebilir ve yalnızca bu ağda bulunan uygulamalara hizmet verebilir. Yüksek kullanılabilirlik elde etmek için birkaç bağlayıcı yükleyebilirsiniz.
+Buluta erişim için IaaS üzerinde yüklü uygulamalar için bağlayıcı grupları, tüm uygulamalara erişimin güvenliğini sağlamak için ortak bir hizmet sağlar. Bağlayıcı grupları, kurumsal ağınızda ek bağımlılık oluşturmaz veya uygulama deneyimini parçalara parçalar. Bağlayıcılar, her bulut veri merkezinde yüklenebilir ve yalnızca o ağda bulunan uygulamalara sunabilir. Yüksek kullanılabilirlik elde etmek için birkaç bağlayıcı yükleyebilirsiniz.
 
-Örnek olarak, kendi IaaS barındırılan sanal ağına bağlı birkaç sanal makinesi olan bir kuruluş alalım. Çalışanların bu uygulamaları kullanmasına izin vermek için, bu özel ağlar siteden siteye VPN kullanarak şirket ağına bağlanır. Bu, şirket içinde bulunan çalışanlar için iyi bir deneyim sağlar. Ancak, aşağıdaki diyagramda görebileceğiniz gibi, erişimi yönlendirmek için ek şirket içi altyapı gerektirdiğinden, uzak çalışanlar için ideal olmayabilir:
+Bir örnek olarak, kendi IaaS barındırılan sanal ağına bağlı birden fazla sanal makine içeren bir kuruluş yapın. Çalışanların bu uygulamaları kullanmasına izin vermek için, bu özel ağlar siteden siteye VPN kullanılarak kurumsal ağa bağlanır. Bu, şirket içinde bulunan çalışanlar için iyi bir deneyim sağlar. Ancak, aşağıdaki diyagramda görebileceğiniz gibi, erişimi yönlendirmek için ek şirket içi altyapı gerektirdiğinden, uzak çalışanlar için ideal olmayabilir:
 
 ![Azure AD IaaS ağını gösteren diyagram](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
-Azure AD Application Proxy bağlayıcı gruplarıyla, şirket ağınıza ek bağımlılık yaratmadan tüm uygulamalara erişimi güvence altına almak için ortak bir hizmeti etkinleştirebilirsiniz:
+Azure AD Uygulama Ara Sunucusu bağlayıcı gruplarıyla, ortak bir hizmetin kurumsal ağınızda ek bağımlılık oluşturmadan tüm uygulamalara erişimi güvenli hale getirmek için bu hizmeti etkinleştirebilirsiniz:
 
-![Azure AD IaaS Çoklu Bulut Satıcıları](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Azure AD IaaS birden çok bulut satıcısı](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
-### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Çok ormanlı – her orman için farklı konektör grupları
+### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Çoklu orman – her orman için farklı bağlayıcı grupları
 
-Uygulama Proxy'yi dağıtan çoğu müşteri, Kerberos Kısıtlı Temsilciliği (KCD) gerçekleştirerek tek oturum açma (SSO) yeteneklerini kullanır. Bunu başarmak için bağlayıcının makinelerinin kullanıcıları uygulamaya yönlendirebilecek bir etki alanına katılması gerekir. KCD, ormanlar arası yetenekleri destekler. Ancak aralarında güven olmayan farklı çok ormanlı ortamlara sahip şirketler için, tüm ormanlar için tek bir konektör kullanılamaz. 
+Uygulama proxy 'Si dağıtan müşterilerin çoğu, Kerberos kısıtlanmış temsili (KCD) gerçekleştirerek tek oturum açma (SSO) yeteneklerini kullanıyor. Bunu başarmak için bağlayıcının makineler, uygulamaya doğru kullanıcı temsilcisi olabilecek bir etki alanına katılması gerekir. KCD, ormanlar arası özellikleri destekler. Ancak, aralarında güven olmadan farklı çok ormanlı ortamları olan şirketler için, tüm ormanlarda tek bir bağlayıcı kullanılamaz. 
 
-Bu durumda, orman başına belirli bağlayıcılar dağıtılabilir ve yalnızca belirli ormanın kullanıcılarına hizmet vermek üzere yayımlanmış uygulamalara hizmet etmek üzere ayarlanabilir. Her bağlayıcı grubu farklı bir ormanı temsil eder. Kiracı ve deneyimin çoğu tüm ormanlar için birleştirilmiş olsa da, kullanıcılar Azure REKLAM gruplarını kullanarak orman uygulamalarına atanabilir.
+Bu durumda, belirli bağlayıcılar her orman için dağıtılabilir ve yalnızca söz konusu ormanın kullanıcılarına yönelik olarak yayınlanan uygulamalara servis vermek üzere ayarlanabilir. Her bağlayıcı grubu farklı bir ormanı temsil eder. Kiracı ve bu deneyimin çoğu orman için Birleşik olsa da, kullanıcılar Azure AD grupları kullanılarak orman uygulamalarına atanabilir.
 
-### <a name="disaster-recovery-sites"></a>Olağanüstü Durum Kurtarma siteleri
+### <a name="disaster-recovery-sites"></a>Olağanüstü durum kurtarma siteleri
 
-Sitelerinizin nasıl uygulandığına bağlı olarak, bir olağanüstü durum kurtarma (DR) sitesiyle uygulayabileceğiniz iki farklı yaklaşım vardır:
+Sitelerinizin nasıl uygulandığına bağlı olarak bir olağanüstü durum kurtarma (DR) sitesiyle gerçekleştirebileceğiniz iki farklı yaklaşım vardır:
 
-* DR siteniz tam olarak ana site gibi aktif-aktif modda yerleşikse ve aynı ağ ve AD ayarlarına sahipse, DR sitesindeki bağlayıcıları ana siteyle aynı bağlayıcı grupta oluşturabilirsiniz. Bu, Azure AD'nin sizin için arızaları algılamasını sağlar.
-* DR siteniz ana siteden ayrıysa, DR sitesinde farklı bir bağlayıcı grubu oluşturabilir ve 1) yedek uygulamalara sahip veya 2) mevcut uygulamayı gerektiğinde DR bağlayıcı grubuna el ile yönlendirebilirsiniz.
+* DR siteniz, tam olarak ana siteye benzer ve aynı ağ ve AD ayarlarına sahip olan etkin-etkin modda yerleşiktir, ana siteyle aynı bağlayıcı grubunda bulunan DR sitesinde bağlayıcılar oluşturabilirsiniz. Bu, Azure AD 'nin sizin için yük devretme algılamasını sağlar.
+* DR siteniz ana siteden ayrı ise, DR sitesinde farklı bir bağlayıcı grubu oluşturabilir ve 1) yedekleme uygulamaları veya 2) var olan uygulamayı DR Bağlayıcısı grubuna gerektiği şekilde el ile el ile el ile kullanabilirsiniz.
 
-### <a name="serve-multiple-companies-from-a-single-tenant"></a>Tek bir kiracıdan birden fazla şirkete hizmet
+### <a name="serve-multiple-companies-from-a-single-tenant"></a>Tek bir kiracıya ait birden çok şirket sunar
 
-Tek bir hizmet sağlayıcısının birden çok şirket için Azure AD ile ilgili hizmetleri dağıtıp koruduğu bir modeli uygulamanın birçok farklı yolu vardır. Bağlayıcı grupları, yöneticinin bağlayıcıları ve uygulamaları farklı gruplara ayırmasına yardımcı olur. Küçük şirketler için uygun olan bir yol, farklı şirketlerin kendi etki alanı adı ve ağları varken tek bir Azure AD kiracısına sahip olmaktır. Bu, M&Tek bir BT bölümünün düzenleyici veya iş nedenleriyle birden fazla şirkete hizmet ettiği senaryolar ve durumlar için de geçerlidir.
+Tek bir hizmet sağlayıcının birden çok şirket için Azure AD ile ilgili hizmetleri dağıttığı ve koruduğu bir modeli uygulamak için birçok farklı yol vardır. Bağlayıcı grupları, yöneticinin bağlayıcıları ve uygulamaları farklı gruplar halinde ayırt etmenize yardımcı olur. Küçük şirketler için uygun olan bir şekilde, farklı şirketlerin kendi etki alanı adı ve ağlarına sahip olduğu sürece tek bir Azure AD kiracısının olması gerekir. Bu aynı zamanda tek bir BT bölümünün yasal veya iş nedenleriyle çeşitli şirketlere hizmet verdiği bir senaryo ve durum&için de geçerlidir.
 
-## <a name="sample-configurations"></a>Örnek yapılandırmalar
+## <a name="sample-configurations"></a>Örnek yapılandırma
 
-Uygulayabileceğiniz bazı örnekler, aşağıdaki bağlayıcı grupları içerir.
+Uygulayabileceğiniz bazı örnekler aşağıdaki bağlayıcı gruplarını içerir.
 
-### <a name="default-configuration--no-use-for-connector-groups"></a>Varsayılan yapılandırma – bağlayıcı grupları için kullanılmaz
+### <a name="default-configuration--no-use-for-connector-groups"></a>Varsayılan yapılandırma – bağlayıcı grupları için kullanım yok
 
-Konektör gruplarını kullanmıyorsanız, yapılandırmanız şu şekilde görünür:
+Bağlayıcı gruplarını kullanmıyorsanız, yapılandırmanız şu şekilde görünür:
 
-![Örnek Azure AD Hayır Bağlayıcı Grupları](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+![Örnek Azure AD bağlayıcı grubu yok](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
 
-Bu yapılandırma küçük dağıtımlar ve testler için yeterlidir. Kuruluşunuzun düz bir ağ topolojisi varsa da iyi çalışacaktır.
+Bu yapılandırma, küçük dağıtımlar ve testler için yeterlidir. Kuruluşunuzun düz bir ağ topolojisi varsa, bu da iyi çalışacaktır.
 
 ### <a name="default-configuration-and-an-isolated-network"></a>Varsayılan yapılandırma ve yalıtılmış ağ
 
-Bu yapılandırma, IaaS sanal ağı gibi yalıtılmış bir ağda çalışan belirli bir uygulamanın bulunduğu varsayılan uygulamanın evrimidir:
+Bu yapılandırma, varsayılan olarak, IaaS sanal ağı gibi yalıtılmış bir ağda çalışan belirli bir uygulama olan bir evrimdir:
 
-![Örnek Azure AD Bağlantı Yok Grupları ve yalıtılmış ağ](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+![Örnek Azure AD hiçbir bağlayıcı grubu ve yalıtılmış ağ](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
 
-### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Önerilen yapılandırma – birkaç özel grup ve boşta kalan varsayılan grup
+### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Önerilen yapılandırma – boşta için birkaç belirli Grup ve varsayılan Grup
 
-Büyük ve karmaşık kuruluşlar için önerilen yapılandırma, varsayılan bağlayıcı grubuna herhangi bir uygulamaya hizmet vermeyen ve boşta veya yeni yüklenen bağlayıcılar için kullanılan bir grup olarak sahip olmaktır. Tüm uygulamalar özelleştirilmiş bağlayıcı grupları kullanılarak sunulur. Bu, yukarıda açıklanan senaryoların tüm karmaşıklığını sağlar.
+Büyük ve karmaşık kuruluşların önerilen yapılandırması, varsayılan bağlayıcı grubuna hiçbir uygulama hizmeti olmayan ve boşta veya yeni yüklenen bağlayıcılar için kullanılan bir grup olarak sahip olmalıdır. Tüm uygulamalar özelleştirilmiş bağlayıcı grupları kullanılarak sunulur. Bu, yukarıda açıklanan senaryoların tüm karmaşıklığına izin vermez.
 
-Aşağıdaki örnekte, şirketin her siteye hizmet veren iki bağlayıcısı olan A ve B olmak üzere iki veri merkezi vardır. Her siteüzerinde çalışan farklı uygulamalar vardır.
+Aşağıdaki örnekte, şirketin her siteye hizmeti sunan iki bağlayıcı içeren iki veri merkezi, A ve B vardır. Her sitenin üzerinde çalışan farklı uygulamaları vardır.
 
-![2 veri merkezi ve 2 konektöre sahip şirket örneği](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+![2 veri merkezi ve 2 bağlayıcısıyla şirket örneği](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure AD Uygulama Proxy bağlayıcılarını anlama](application-proxy-connectors.md)
+* [Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](application-proxy-connectors.md)
 * [Çoklu oturum açmayı etkinleştirme](what-is-single-sign-on.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Bildirim Hub'ları iOS 13 güncellemeleri | Microsoft Dokümanlar
-description: Azure Bildirim Hub'larında iOS 13 son dakika değişiklikleri hakkında bilgi edinin
+title: Azure Notification Hubs iOS 13 güncelleştirmeleri | Microsoft Docs
+description: Azure Notification Hubs iOS 13 ile ilgili son değişiklikler hakkında bilgi edinin
 author: sethmanheim
 ms.author: sethm
 ms.date: 10/16/2019
@@ -9,27 +9,27 @@ ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
 ms.openlocfilehash: 697e8ba9c9f27e8d5644e3a78950ff006290efe7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74228136"
 ---
-# <a name="azure-notification-hubs-updates-for-ios-13"></a>iOS 13 için Azure Bildirim Hub güncellemeleri
+# <a name="azure-notification-hubs-updates-for-ios-13"></a>İOS 13 için Azure Notification Hubs güncelleştirmeleri
 
-Apple son zamanlarda kendi kamu itme hizmeti bazı değişiklikler yaptı; değişiklikler çoğunlukla iOS 13 ve Xcode sürümleri ile uyumlu. Bu makalede, bu değişikliklerin Azure Bildirim Hub'ları üzerindeki etkisi açıklanmaktadır.
+Apple yakın zamanda genel gönderim hizmetinde bazı değişiklikler yaptı; değişiklikler genellikle iOS 13 ve Xcode sürümleriyle hizalanır. Bu makalede, bu değişikliklerin Azure Notification Hubs üzerindeki etkileri açıklanmaktadır.
 
 ## <a name="apns-push-payload-changes"></a>APNS itme yükü değişiklikleri
 
-### <a name="apns-push-type"></a>APNS push türü
+### <a name="apns-push-type"></a>APNS gönderim türü
 
-Apple artık geliştiricilerin APNS API'deki yeni `apns-push-type` üstbilgi aracılığıyla bildirimleri bir uyarı veya arka plan bildirimleri olarak tanımlamasını gerektirir. [Apple'ın belgelerine](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)göre : "Bu üstbilginin değeri, bildiriminizin yükünün içeriğini doğru bir şekilde yansıtmalıdır. Bir uyuşmazlık varsa veya üstbilgi gerekli sistemlerde eksikse, APN'ler bir hata döndürebilir, bildirimin teslimini geciktirebilir veya tamamen bırakabilir."
+Apple artık geliştiricilerin, APNS API 'sindeki yeni `apns-push-type` üst bilgi aracılığıyla bildirimleri bir uyarı veya arka plan bildirimleri olarak belirlemesini gerektirir. [Apple belgelerine](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)göre: "bu üstbilginin değeri, bildirimin yükünün içeriğini doğru şekilde yansıtmalıdır. Bir uyuşmazlık varsa veya gerekli sistemlerde üst bilgi eksikse, APNs bir hata döndürebilir, bildirimin teslimini erteleyebilir veya onu tamamen bırakabilir. "
 
-Geliştiricilerin artık bu üstbilgiyi Azure Bildirim Hub'ları üzerinden bildirim gönderen uygulamalarda ayarlamaları gerekir. Teknik bir sınırlama nedeniyle, müşterilerin APNS kimlik bilgileri için bu özniteliği içeren isteklerle belirteç tabanlı kimlik doğrulaması kullanması gerekir. APNS kimlik bilgileriniz için sertifika tabanlı kimlik doğrulaması kullanıyorsanız, belirteç tabanlı kimlik doğrulamasını kullanmaya geçmeniz gerekir.
+Geliştiricilerin artık bu üstbilgiyi Azure Notification Hubs aracılığıyla bildirim gönderen uygulamalarda ayarlaması gerekir. Teknik bir sınırlama nedeniyle, müşteriler bu özniteliği içeren isteklerle APNS kimlik bilgileri için belirteç tabanlı kimlik doğrulaması kullanmalıdır. APNS kimlik bilgileriniz için sertifika tabanlı kimlik doğrulaması kullanıyorsanız, belirteç tabanlı kimlik doğrulaması ile geçiş yapmanız gerekir.
 
-Aşağıdaki kod örnekleri, azure bildirim hub'ları aracılığıyla gönderilen bildirim isteklerinde bu üstbilgi özniteliğinin nasıl ayarlanır olduğunu gösterir.
+Aşağıdaki kod örnekleri, Azure Notification Hubs aracılığıyla gönderilen bildirim isteklerinde bu üstbilgi özniteliğinin nasıl ayarlanacağını göstermektedir.
 
-#### <a name="template-notifications---net-sdk"></a>Şablon bildirimleri - .NET SDK
+#### <a name="template-notifications---net-sdk"></a>Şablon bildirimleri-.NET SDK
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
@@ -40,7 +40,7 @@ notification.Headers = headers;
 await hub.SendNotificationAsync(notification);
 ```
 
-#### <a name="native-notifications---net-sdk"></a>Yerel bildirimler - .NET SDK
+#### <a name="native-notifications---net-sdk"></a>Yerel bildirimler-.NET SDK
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
@@ -49,7 +49,7 @@ var notification = new AppleNotification("notification text", headers);
 await hub.SendNotificationAsync(notification);
 ```
 
-#### <a name="direct-rest-calls"></a>Doğrudan REST aramaları
+#### <a name="direct-rest-calls"></a>Doğrudan REST çağrıları
 
 ```csharp
 var request = new HttpRequestMessage(method, $"<resourceUri>?api-version=2017-04");
@@ -58,13 +58,13 @@ request.Headers.Add("ServiceBusNotification-Format", "apple");
 request.Headers.Add("apns-push-type", "alert");
 ```
 
-Bu geçiş sırasında size yardımcı olmak için, Azure Bildirim Hub'ları `apns-push-type` kümeye sahip olmayan bir bildirim algıladığında, hizmet anında iletme türünü bildirim isteğinden çıkarve değeri otomatik olarak ayarlar. Gerekli üstbilgiayarlamak için belirteç tabanlı kimlik doğrulaması kullanacak Şekilde Azure Bildirim Hub'larını yapılandırmanız gerektiğini unutmayın; daha fazla bilgi için, [APNS için Belirteç tabanlı (HTTP/2) Kimlik Doğrulaması'na](notification-hubs-push-notification-http2-token-authentification.md)bakın.
+Bu geçiş sırasında size yardımcı olmak için, Azure Notification Hubs `apns-push-type` küme olmayan bir bildirim algıladığında, hizmet bildirim isteğinden gönderim türünü belirler ve değeri otomatik olarak ayarlar. Gerekli üstbilgiyi ayarlamak için Azure Notification Hubs belirteç tabanlı kimlik doğrulaması kullanacak şekilde yapılandırmanız gerektiğini unutmayın; daha fazla bilgi için bkz. [APNs Için belirteç tabanlı (http/2) kimlik doğrulaması](notification-hubs-push-notification-http2-token-authentification.md).
 
 ## <a name="apns-priority"></a>APNS önceliği
 
-Başka bir küçük değişiklik, ancak bildirimleri gönderen arka uç uygulamasında bir değişiklik gerektiren bir `apns-priority` üstbilgi şimdi 5 olarak ayarlanmalıdır arka plan bildirimleri için gereksinimidir. Birçok uygulama üstbilgi10 `apns-priority` (hemen teslim belirten) ayarlayın veya ayarlamak ve varsayılan değeri (aynı zamanda 10) almak değil.
+Başka bir küçük değişiklik, ancak bildirim gönderen arka uç uygulamasında bir değişiklik gerektiren bir arka plan bildirimleri için `apns-priority` üst bilginin 5 olarak ayarlanması gerekir. Birçok uygulama, `apns-priority` üst bilgiyi 10 ' a (hemen teslim olduğunu gösterir) ya da ayarlamazsanız ve varsayılan değeri (aynı zamanda 10) alır.
 
-Bu değeri 10 olarak ayarlamak artık arka plan bildirimleri için izin verilmez ve her istek için değer ayarlamanız gerekir. Bu değer eksikse Apple arka plan bildirimleri sağlamaz. Örnek:
+Arka plan bildirimleri için bu değerin 10 olarak ayarlanmasına artık izin verilmez ve her istek için değeri ayarlamanız gerekir. Bu değer eksikse Apple, arka plan bildirimleri teslim etmez. Örneğin:
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
@@ -75,4 +75,4 @@ await hub.SendNotificationAsync(notification);
 
 ## <a name="sdk-changes"></a>SDK değişiklikleri
 
-IOS geliştiricileri, bir `description` arka uç `deviceToken` uygulamasının aygıta bildirim göndermek için kullandığı itme belirtecisini ayıklamak için itme belirteci temsilcisine gönderilen verilerin özniteliğini yıllarca kullandı. Xcode 11 ile `description` bu öznitelik farklı bir biçime değiştirildi. Geliştiricilerin bu öznitelik için kullandığı varolan kod artık bozuk. Bu değişikliği karşılamak için Azure Bildirim Hub'ları SDK'yı güncelledik, bu nedenle lütfen uygulamalarınız tarafından kullanılan SDK'yı 2.0.4 sürümüne veya [Azure Bildirim Hub'ları iOS SDK'nın](https://github.com/Azure/azure-notificationhubs-ios)daha yeni sürümüne güncelleyin.
+İOS geliştiricileri, bir arka uç uygulamasının `description` cihaza bildirim göndermek `deviceToken` için kullandığı anında iletme belirtecini ayıklamak için gönderme belirteci temsilcisine gönderilen verilerin özniteliğini kullanıyordu. Xcode 11 ile, bu `description` öznitelik farklı bir biçimde değiştirilmiştir. Geliştiricilerin bu öznitelik için kullandığı mevcut kod artık kopuk. Azure Notification Hubs SDK 'sını bu değişikliğe uyum sağlayacak şekilde güncelleştirdik, bu nedenle lütfen uygulamalarınız tarafından kullanılan SDK 'Yı [azure Notification Hubs IOS SDK 'sının](https://github.com/Azure/azure-notificationhubs-ios)2.0.4 veya daha yeni bir sürümüne güncelleştirin.

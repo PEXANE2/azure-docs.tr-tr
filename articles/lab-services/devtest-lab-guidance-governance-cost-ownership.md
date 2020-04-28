@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs'da maliyet ve sahip olma maliyetini ve sahipliği yönetme
-description: Bu makalede, maliyet için optimize ve çevrenizde mülkiyet hizalamak yardımcı olan bilgiler sağlar.
+title: Azure DevTest Labs maliyeti ve sahipliği yönetme
+description: Bu makalede, ortamınızdaki maliyeti iyileştirmenize ve sahipliğini ortamınıza göre hizalamanıza yardımcı olacak bilgiler sağlanmaktadır.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,52 +14,52 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: b82d338f85f1b43712296ac7f27bdad55f8f1919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74561672"
 ---
-# <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Azure DevTest Labs altyapısının yönetimi - Maliyet ve sahipolma
-Geliştirme ve test ortamlarınızı oluşturmayı düşündüğünüzde maliyet ve sahip olma birincil kaygılardır. Bu bölümde, maliyet için optimizasyon ve çevrenizdeki sahipliği hizalamanıza yardımcı olan bilgiler bulabilirsiniz.
+# <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Azure DevTest Labs altyapı yönetimi-maliyeti ve sahipliği yönetme
+Geliştirme ve test ortamlarınızı oluşturmayı düşünmenizde, maliyet ve sahiplik birincil kaygılardır. Bu bölümde, ücretlerinizi iyileştirmek ve ortamınızda sahipliği hizalamak için size yardımcı olacak bilgiler bulabilirsiniz.
 
-## <a name="optimize-for-cost"></a>Maliyet için optimize edin
+## <a name="optimize-for-cost"></a>Maliyet için iyileştirin
 
 ### <a name="question"></a>Soru
-DevTest Labs ortamımda maliyet için nasıl optimizasyon yapabilirim?
+DevTest Labs ortamım dahilinde maliyeti nasıl iyileştirebilirim?
 
 ### <a name="answer"></a>Yanıt
-DevTest Labs'ın maliyet için optimizasyon yaptığınız bir dizi yerleşik özelliği vardır. Kullanıcılarınızın faaliyetlerini sınırlamak için [maliyet yönetimi, eşikler](devtest-lab-configure-cost-management.md) [ve ilkeler](devtest-lab-set-lab-policy.md) makalelerine bakın. 
+Maliyet için iyileştirmenize yardımcı olan DevTest Labs 'in birçok yerleşik özelliği vardır. Kullanıcılarınızın etkinliklerini sınırlamak için [maliyet yönetimi, eşikler](devtest-lab-configure-cost-management.md) [ve ilkeler](devtest-lab-set-lab-policy.md) makalelerine bakın. 
 
-Geliştirme ve test iş yükleri için DevTest Labs'ı kullanırken, Kurumsal Sözleşmenizin bir parçası olarak [Kurumsal Geliştirme/Test Abonelik Avantajı'nı](https://azure.microsoft.com/offers/ms-azr-0148p/)kullanmayı düşünebilirsiniz. Alternatif olarak, müşteriye gittiğinizde Bir Ödeme'yseniz, [Gidergibi Öde DevTest teklifini](https://azure.microsoft.com/offers/ms-azr-0023p/)göz önünde bulundurabilirsiniz.
+Geliştirme ve test iş yükleri için DevTest Labs 'i kullanmaya çalıştığınız için, Kurumsal Anlaşma bir parçası olarak [Kurumsal Geliştirme ve test abonelik avantajını](https://azure.microsoft.com/offers/ms-azr-0148p/)kullanmayı düşünebilirsiniz. Alternatif olarak, Kullandıkça Öde müşterisiyseniz kullandıkça [öde DevTest teklifini](https://azure.microsoft.com/offers/ms-azr-0023p/)göz önünde bulundurmanız gerekebilir.
 
-Bu yaklaşım size sayısız avantaj sağlar:
+Bu yaklaşım size birçok avantaj sağlar:
 
-- Windows sanal makinelerde, bulut hizmetlerinde, HDInsight'ta, Uygulama Hizmeti'nde ve Logic Apps'ta özel düşük Geliştirme/Test oranları
-- Diğer Azure hizmetlerinde Büyük Kurumsal Sözleşme (EA) oranları
-- Windows 8.1 ve Windows 10 dahil olmak üzere Galeri'deki özel Geliştirme/Test görüntülerine erişim
+- Windows sanal makineler, bulut Hizmetleri, HDInsight, App Service ve Logic Apps özel geliştirme ve test ücretleri
+- Diğer Azure hizmetlerinde harika Kurumsal Anlaşma (EA) ücretleri
+- Windows 8.1 ve Windows 10 dahil olmak üzere galerideki özel geliştirme ve test görüntülerine erişim
  
-Yalnızca etkin Visual Studio aboneleri (standart abonelikler, yıllık bulut abonelikleri ve aylık bulut abonelikleri) kurumsal Geliştirme/Test aboneliği nde çalışan Azure kaynaklarını kullanabilir. Ancak, son kullanıcılar geri bildirim sağlamak veya kabul testleri gerçekleştirmek için uygulamaya erişebilir. Bu abonelik içindeki kaynakların kullanımı, uygulama geliştirme ve test etme ile sınırlıdır ve çalışma süresi garantisi sunulmaz.
+Yalnızca etkin Visual Studio aboneleri (Standart abonelikler, yıllık bulut abonelikleri ve aylık bulut abonelikleri), kurumsal bir geliştirme/test aboneliği içinde çalışan Azure kaynaklarını kullanabilir. Ancak, son kullanıcılar geri bildirim sağlamak veya onay testleri gerçekleştirmek amacıyla uygulamaya erişebilir. Bu aboneliğin içindeki kaynakların kullanımı, uygulama geliştirme ve test etme ile kısıtlıdır ve hiçbir çalışma süresi garantisi sunulmaz.
 
-DevTest teklifini kullanmaya karar verirseniz, bu avantajın yalnızca uygulamalarınızı geliştirme ve test etmek için olduğunu unutmayın. Abonelik teki kullanım, Azure DevOps ve HockeyApp kullanımı dışında mali destekli bir SLA taşımaz.
+DevTest teklifini kullanmaya karar verirseniz, bu avantajın yalnızca geliştirme ve uygulamalarınızın test edilmesine yönelik olduğunu unutmayın. Abonelik içindeki kullanım, Azure DevOps ve HockeyApp kullanımı dışında mali olarak desteklenen bir SLA 'yı taşımaz.
 
-## <a name="define-a-role-based-access-across-your-organization"></a>Kuruluşunuz genelinde rol tabanlı bir erişim tanımlama
+## <a name="define-a-role-based-access-across-your-organization"></a>Kuruluşunuz genelinde rol tabanlı bir erişim tanımlayın
 ### <a name="question"></a>Soru
-Geliştiriciler/test işlerini yaparken BT'nin yönetebilmesini sağlamak için DevTest Labs ortamlarım için rol tabanlı erişim denetimini nasıl tanımlayabilirim? 
+Geliştirici/test işlerini yapabilirken yönetebilmemesini sağlamak için DevTest Labs Ortamlarım için rol tabanlı erişim denetimi tanımlama Nasıl yaparım?. 
 
 ### <a name="answer"></a>Yanıt
-Geniş bir desen vardır, ancak ayrıntı kuruluşunuza bağlıdır.
+Geniş bir düzen mevcuttur, ancak ayrıntı kuruluşunuza bağlıdır.
 
-Merkezi BT yalnızca gerekli olana sahip olmalı ve proje ve uygulama ekiplerinin gerekli denetim düzeyine sahip olmasını sağlamalıdır. Genellikle, merkezi BT aboneliğin sahibi ve ağ yapılandırmaları gibi temel BT işlevlerini işlediği anlamına gelir. Abonelik **sahipleri** kümesi küçük olmalıdır. Bu sahipler, ihtiyaç olduğunda ek sahipler atayabilir veya abonelik düzeyi ilkeleri uygulayabilir, örneğin "Genel IP Yok".
+Merkezi olarak yalnızca gerekli olan nedir ve proje ve uygulama ekiplerinin gerekli denetim düzeyine sahip olmasını sağlar. Genellikle, bu, aboneliğin sahibi olduğu ve ağ yapılandırması gibi çekirdek BT işlevlerini işleyeceği anlamına gelir. Bir abonelik için **sahip** kümesi küçük olmalıdır. Bu sahipler, bir gereksinim olduğunda ek sahipleri aday yapabilir veya "genel IP yok" gibi abonelik düzeyinde ilkeler uygulayabilir.
 
-Bir abonelik genelinde erişim gerektiren tier1 veya Tier 2 desteği gibi bir kullanıcı alt kümesi olabilir. Bu durumda, kaynakları yönetebilmeleri için bu kullanıcılara **katkıda bulunanlara** erişim sağlamanızı, ancak kullanıcı erişimi sağlamamanızı veya ilkeleri ayarlamamanızı öneririz.
+Katman1 veya katman 2 desteği gibi bir abonelik genelinde erişim gerektiren kullanıcıların bir alt kümesi olabilir. Bu durumda, bu kullanıcılara, kaynakları yönetebilmeleri, ancak kullanıcı erişimi sağlamamasını veya ilke ayarlamanıza olanak tanımak için **katkıda** bulunan erişimini sağlamanızı öneririz.
 
-DevTest Labs kaynağı, proje/uygulama ekibine yakın olan sahiplere ait olmalıdır. Bunun nedeni, makinelerin ve gerekli yazılımların gereksinimlerini anlamalarıdır. Çoğu kuruluşta, bu DevTest Labs kaynağının sahibi genellikle proje/geliştirme lideridir. Bu sahip, laboratuvar ortamındaki kullanıcıları ve ilkeleri yönetebilir ve DevTest Labs ortamındaki tüm VM'leri yönetebilir.
+DevTest Labs kaynağı, proje/uygulama takımına yakın olan sahiplere ait olmalıdır. Bunun nedeni, makineler ve gerekli yazılımlar açısından gereksinimlerini anladıkları için. Çoğu kuruluşta, bu DevTest Labs kaynağının sahibi genellikle proje/geliştirme lideridir. Bu sahip, Laboratuvar ortamındaki kullanıcıları ve ilkeleri yönetebilir ve DevTest Labs ortamındaki tüm VM 'Leri yönetebilir.
 
-Proje/uygulama ekibi üyeleri DevTest Labs Kullanıcıları rolüne eklenmelidir. Bu kullanıcılar sanal makineler oluşturabilir (laboratuvar ve abonelik düzeyindeki ilkelerle uyumlu). Ayrıca kendi sanal makinelerini de yönetebilirler. Diğer kullanıcılara ait sanal makineleri yönetemezler.
+Proje/uygulama ekibi üyeleri DevTest Labs kullanıcıları rolüne eklenmelidir. Bu kullanıcılar sanal makineler oluşturabilir (Laboratuvar ve abonelik düzeyindeki ilkelerle birlikte). Bunlar, kendi sanal makinelerini de yönetebilir. Diğer kullanıcılara ait sanal makineleri yönetemez.
 
-Daha fazla bilgi için Azure [kurumsal iskelesi – önceden yazılmış abonelik yönetim](/azure/architecture/cloud-adoption/appendix/azure-scaffold) belgelerine bakın.
+Daha fazla bilgi için bkz. [Azure Kurumsal yapı iskelesi – seçkin abonelik idare](/azure/architecture/cloud-adoption/appendix/azure-scaffold) belgeleri.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bkz. [Şirket politikası ve uyumluluk.](devtest-lab-guidance-governance-policy-compliance.md)
+Bkz. [Şirket ilkesi ve uyumluluğu](devtest-lab-guidance-governance-policy-compliance.md).

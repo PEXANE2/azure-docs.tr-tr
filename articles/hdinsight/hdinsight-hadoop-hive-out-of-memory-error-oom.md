@@ -1,7 +1,7 @@
 ---
-title: Azure HDInsight'ta bellek hatasından bir Kovanı düzeltme
-description: HDInsight'ta bellek hatasından bir Kovanı düzeltin. Müşteri senaryosu, birçok büyük tabloda yapılan bir sorgudur.
-keywords: bellek hatası, OOM, Hive ayarları
+title: Azure HDInsight 'ta bir Hive bellek yetersiz hatası giderme
+description: HDInsight 'ta bir Hive bellek yetersiz hatası giderme. Müşteri senaryosu birçok büyük tablo üzerinde bir sorgudur.
+keywords: yetersiz bellek hatası, OOM, Hive ayarları
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,19 +10,19 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
 ms.openlocfilehash: add55c29bb93d8dce9ad69bd9850a1db02ea5afe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74687762"
 ---
-# <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight'ta bellek hatasından bir Apache Hive'ı düzeltme
+# <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight 'ta bellek yetersiz Apache Hive hatasını çözme
 
-Hive bellek ayarlarını yapılandırarak büyük tabloları işlerken apache Hive hatasını bellek dışı (OOM) hatasıyla nasıl düzelteceğinizi öğrenin.
+Hive bellek ayarlarını yapılandırarak büyük tabloları işlerken bellek Apache Hive yetersiz (OOM) hatasını nasıl düzelteceğinizi öğrenin.
 
-## <a name="run-apache-hive-query-against-large-tables"></a>Apache Hive sorgusunu büyük tablolara karşı çalıştırma
+## <a name="run-apache-hive-query-against-large-tables"></a>Büyük tablolar üzerinde Apache Hive sorgusu Çalıştır
 
-Bir müşteri Hive sorgusu çalıştırdın:
+Bir müşteri Hive sorgusu çalıştırdı:
 
 ```sql
 SELECT
@@ -42,18 +42,18 @@ where (T1.KEY1 = T2.KEY1….
     …
 ```
 
-Bu sorgunun bazı nüansları:
+Bu sorgunun bazı nusları:
 
-* T1, string sütun türleri çok olan büyük bir tablo, TABLE1, bir diğer adıdır.
-* Diğer tablolar o kadar büyük değildir, ancak çok sayıda sütunu vardır.
-* Tüm tablolar, bazı durumlarda TABLO1 ve diğerlerinde birden çok sütuniçeren birbiriyle birleşiyor.
+* T1, çok sayıda DIZE sütunu türüne sahip TABLE1, büyük bir tablonun diğer adıdır.
+* Diğer tablolar büyük değildir ancak çok sayıda sütun vardır.
+* Tüm tablolar birbirini birleştiriyorsanız, bazı durumlarda TABLE1 ve diğer sütunlarda birden çok sütun bulunur.
 
-Kovan sorgusunun 24 düğüm A3 HDInsight kümesinde tamamlanması 26 dakika sürdü. Müşteri aşağıdaki uyarı mesajlarını fark etti:
+Hive sorgusunun tamamlanması, 24 dakikalık bir a3 HDInsight kümesinde tamamlanır. Müşteri aşağıdaki uyarı iletilerini tespit ettik:
 
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
 
-Apache Tez yürütme motorini kullanarak. Aynı sorgu 15 dakika boyunca çalıştırılır ve ardından aşağıdaki hatayı ataçıkmıştır:
+Apache Tez yürütme altyapısını kullanarak. Aynı sorgu 15 dakika boyunca çalışır ve şu hatayı oluşturdu:
 
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
@@ -79,15 +79,15 @@ Apache Tez yürütme motorini kullanarak. Aynı sorgu 15 dakika boyunca çalış
         at java.lang.Thread.run(Thread.java:745)
     Caused by: java.lang.OutOfMemoryError: Java heap space
 
-Hata daha büyük bir sanal makine (örneğin, D12) kullanırken kalır.
+Daha büyük bir sanal makine (örneğin, D12) kullanılırken hata kalır.
 
-## <a name="debug-the-out-of-memory-error"></a>Bellek hatası hatasını hata ayıklama
+## <a name="debug-the-out-of-memory-error"></a>Bellek yetersiz hatası ayıklama hatası
 
-Bizim destek ve mühendislik ekipleri birlikte bellek hatası dışında neden sorunlardan biri [apache JIRA açıklanan bilinen](https://issues.apache.org/jira/browse/HIVE-8306)bir sorun bulundu:
+Destek ve mühendislik ekiplerimiz, bellek yetersiz hatası nedeniyle [Apache JIRA ' da açıklanan bilinen bir sorun](https://issues.apache.org/jira/browse/HIVE-8306)olduğunu tespit ediyor.
 
-"Kovan.auto.convert.join.noconditionaltask = true biz noconditionaltask.size kontrol ve harita birleştirme tabloların boyutları nın toplamı noconditionaltask.size plan bir Harita birleştirme oluşturacak daha az ise, bu hesaplama almaz küçük bir kenar boşluğu sorguları tarafından noconditionaltask boyutundan daha küçük ise sonuç olarak farklı HashTable uygulaması tarafından tanıtılan genel yükü dikkate oom vuracaktır."
+"Hive. Auto. Convert. JOIN. noconditionaltask = true olduğunda noconditionaltask 'ı denetliyoruz. boyut ve harita birleştirmesindeki tablo boyutlarının toplamı noconditionaltask değerinden küçükse, planın bir harita birleşimi oluşturacağından, bununla ilgili sorun, hesaplamanın farklı bir karma uygulama tarafından sunulan ek yükü, küçük bir kenar boşluğu sorguları tarafından noconditionaltask boyutundan küçükse, OOM 'ye vuracak şekilde, farklı HashTable uygulamasına göre daha az bir değer elde etmez.
 
-**Kovan.auto.convert.join.noconditionaltask** kovan-site.xml dosyasında **gerçek**olarak ayarlandı :
+Hive-site. xml dosyasındaki **Hive. Auto. Convert. JOIN. noconditionaltask** , **true**olarak ayarlandı:
 
 ```xml
 <property>
@@ -101,22 +101,22 @@ Bizim destek ve mühendislik ekipleri birlikte bellek hatası dışında neden s
 </property>
 ```
 
-Bu harita birleştirme bellek hatası java Yığın Alanı nedeni olması muhtemeldir. [HDInsight'taki hadoop İplik bellek ayarlarıblog](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx)yazısında açıklandığı gibi, Tez yürütme motoru kullanıldığında kullanılan yığın alanı aslında Tez konteynerine aittir. Tez kapsayıcı belleği açıklayan aşağıdaki resme bakın.
+Büyük olasılıkla Map JOIN, Java yığın alanının bellek yetersiz hatası nedeniyle oluşur. Tez yürütme altyapısı, aslında tez kapsayıcısına ait olan bir yığın alanı kullanıldığında, [HDInsight 'Ta Hadoop Yarn bellek ayarlarında](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx)blog gönderisi bölümünde açıklandığı gibi. Tez kapsayıcı belleğini açıklayan aşağıdaki resme bakın.
 
-![Tez konteyner bellek diyagramı: Bellek hatası ndan hive](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
+![Tez kapsayıcı bellek diyagramı: Hive bellek yetersiz hatası](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-Blog gönderisinden de anlaşılacağı gibi, aşağıdaki iki bellek ayarı yığın için kapsayıcı bellek tanımlar: **kovan.tez.container.size** ve **hive.tez.java.opts**. Deneyimlerimize göre, bellek dışı özel durum, kapsayıcı boyutunun çok küçük olduğu anlamına gelmez. Bu Java yığın boyutu (hive.tez.java.opts) çok küçük olduğu anlamına gelir. Yani bellek dışında gördüğünüzde, **kovan.tez.java.opts**artırmak için deneyebilirsiniz . Gerekirse **kovan.tez.container.size**artırmak zorunda kalabilirsiniz . **Java.opts** ayarı **konteyner.size**yaklaşık% 80 olmalıdır.
+Blog gönderisi önerdiğinde, aşağıdaki iki bellek ayarı yığın için kapsayıcı belleğini tanımlar: **Hive. tez. Container. size** ve **Hive. tez. Java. opts**. Deneyimimizden, yetersiz bellek özel durumu, kapsayıcı boyutu çok küçük olduğu anlamına gelmez. Java yığın boyutunun (Hive. tez. Java. opts) çok küçük olduğu anlamına gelir. Bellek yetersiz olduğunda **Hive. tez. Java. opts**'yi artırmayı deneyebilirsiniz. Gerekirse **Hive. tez. Container. size**öğesini artırmanız gerekebilir. **Java. opts** ayarı kapsayıcının %80 ' inden oluşmalıdır. **Boyut**.
 
 > [!NOTE]  
-> Ayar **hive.tez.java.opts** her zaman **kovan.tez.container.size**daha küçük olmalıdır .
+> **Hive. tez. Java. opts** ayarı her zaman **Hive. tez. Container. SIZE**değerinden küçük olmalıdır.
 
-Bir D12 makinesi 28 GB belleğe sahip olduğundan, 10 GB (10240 MB) konteyner boyutu kullanmaya karar verdik ve java.opts'e %80 atamaya karar verdik:
+Bir D12 makinesinde 28 GB bellek bulunduğundan, 10 GB 'lık bir kapsayıcı boyutu (10240 MB) kullanmaya ve Java 'ya %80 ' i atamaya karar verdik. opts:
 
     SET hive.tez.container.size=10240
     SET hive.tez.java.opts=-Xmx8192m
 
-Yeni ayarlarla, sorgu 10 dakikanın altında başarıyla çalıştırılabilmiştir.
+Yeni ayarlarla sorgu, 10 dakikadan kısa bir süre içinde başarıyla çalıştırıldı.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-OOM hatası almak, kapsayıcı boyutunun çok küçük olduğu anlamına gelmez. Bunun yerine, yığın boyutunun artırılaması ve kapsayıcı bellek boyutunun en az %80'i olacak şekilde bellek ayarlarını yapılandırmanız gerekir. Hive sorgularını optimize etmek [için HDInsight'ta Apache Hadoop için Apache Hive sorgularını optimize etme 'ye](hdinsight-hadoop-optimize-hive-query.md)bakın.
+OOM hatası alma, kapsayıcı boyutu çok küçük olduğu anlamına gelmez. Bunun yerine, bellek ayarlarını yığın boyutu artar ve kapsayıcı bellek boyutunun en az %80 ' i olacak şekilde yapılandırmanız gerekir. Hive sorgularını iyileştirmek için bkz. [HDInsight 'ta Apache Hadoop için Apache Hive sorgularını iyileştirme](hdinsight-hadoop-optimize-hive-query.md).

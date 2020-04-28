@@ -1,7 +1,7 @@
 ---
-title: Özel Web API beceri beceri
+title: Becerileri 'de özel Web API 'SI yeteneği
 titleSuffix: Azure Cognitive Search
-description: Web API'lerine seslenerek Azure Bilişsel Arama beceri lerinin yeteneklerini genişletin. Özel kodunuzu tümleştirmek için Özel Web API becerisini kullanın.
+description: Web API 'Lerine çağırarak Azure Bilişsel Arama becerileri 'in yeteneklerini genişletin. Özel kodunuzu bütünleştirmek için özel Web API 'SI yeteneklerinizi kullanın.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,50 +9,50 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 29928d78c2cfc2f21def363341f8383c4efa89d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74484123"
 ---
-# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama zenginleştirme boru hattında özel Web API becerisi
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama enzenginleştirme ardışık düzeninde özel Web API 'SI yeteneği
 
-**Özel Web API** becerisi, özel işlemler sağlayan bir Web API bitiş noktasına seslenerek AI zenginleştirme sini genişletmenize olanak tanır. Yerleşik becerilere benzer şekilde, **Özel Web API** becerisi giriş ve çıktılara sahiptir. Girişlere bağlı olarak, dizinleyici çalıştığında Web API'niz bir JSON yükü alır ve yanıt olarak bir JSON yükü yle birlikte bir başarı durum kodu çıkarır. Yanıtın, özel beceriniz tarafından belirtilen çıktılara sahip olması beklenir. Başka bir yanıt hata olarak kabul edilir ve hiçbir zenginleştirme gerçekleştirilir.
+**Özel Web API 'si** yeteneği, özel işlemler sağlayan BIR Web API uç noktasına çağrı yaparak AI zenginleştirme kapsamını genişletmenizi sağlar. Yerleşik becerilerle benzer şekilde, **özel Web API 'si** becerilerinin giriş ve çıkışları vardır. Girişlere bağlı olarak, Web API 'niz, Dizin Oluşturucu çalıştırıldığında bir JSON yükü alır ve başarılı durum kodu ile birlikte bir JSON yükünün yanıt olarak çıkışını verir. Yanıtın özel becerinize göre belirtilen çıkışların olması beklenir. Diğer herhangi bir yanıt bir hata olarak değerlendirilir ve hiçbir zenginleştirilmez.
 
-JSON yüklerinin yapısı bu belgede daha aşağıda açıklanmıştır.
+JSON yükleri yapısı, bu belgede daha fazla açıklanacaktır.
 
 > [!NOTE]
-> Dizinleyici, Web API'sinden döndürülen belirli standart HTTP durum kodları için iki kez yeniden dener. Bu HTTP durum kodları şunlardır: 
+> Dizin Oluşturucu, Web API 'sinden döndürülen belirli standart HTTP durum kodları için iki kez yeniden dener. Bu HTTP durum kodları şunlardır: 
 > * `502 Bad Gateway`
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Custom.WebApiSkill
+Microsoft. yetenekler. Custom. WebApiSkill
 
-## <a name="skill-parameters"></a>Beceri parametreleri
+## <a name="skill-parameters"></a>Yetenek parametreleri
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
-| Urı | _JSON_ yükünün gönderilen Web API'sinin URI'si. Yalnızca **https URI** şemasına izin verilir |
-| httpYöntem | Yükü gönderirken kullanılacak yöntem. İzin verilen `PUT` yöntemler,`POST` |
-| http://namalar | Anahtarların üstbilgi adlarını ve değerlerini temsil ettiği anahtar değer çiftleri topluluğu, yükle birlikte Web API'nize gönderilecek üstbilgi değerlerini temsil eder. Aşağıdaki üstbilginin bu koleksiyonda olması `Accept`yasaktır: `Content-Type`, `Cookie` `Host`, `TE` `Accept-Charset` `Accept-Encoding` `Content-Length` `Upgrade`, , , , ,`Via` |
-| timeout | (İsteğe bağlı) Belirtildiğinde, API araması yapan http istemcisinin zaman anına işaret ediyor. XSD "dayTimeDuration" değeri [(ISO 8601 süre](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin sınırlı bir alt kümesi) olarak biçimlendirilmelidir. Örneğin, `PT60S` 60 saniye. Ayaredilmezse, varsayılan değeri 30 saniye seçilir. Zaman açısından en fazla 230 saniye ve en az 1 saniye olarak ayarlanıyor. |
-| batchSize | (İsteğe bağlı) API çağrısı başına kaç "veri kaydı" (aşağıdaki _JSON_ yük yapısına bakın) gönderilecek olduğunu gösterir. Ayaredilmezse, varsayılan olarak 1000 seçilir. API'nize dizin oluşturma iş ve yükleme arasında uygun bir denge elde etmek için bu parametreyi kullanmanızı öneririz |
-| dereceOfParallelism | (İsteğe bağlı) Belirtildiğinde, dizinleyicinin sağladığınız bitiş noktasına paralel olarak yapacağı çağrı sayısını gösterir. Bitiş noktanız çok yüksek bir istek yükü altında başarısız oluyorsa bu değeri azaltabilir veya bitiş noktanız daha fazla isteği kabul edebilirse ve dizinleyicinin performansında artış istiyorsanız yükseltebilirsiniz.  Ayaredilmezse, varsayılan değeri 5 kullanılır. Paralellik derecesi en fazla 10 ve en az 1 olarak ayarlanabilir. |
+| kullanılmamışsa | _JSON_ yükünün GÖNDERILECEĞI Web API 'sinin URI 'si. Yalnızca **https** URI şemasına izin veriliyor |
+| httpMethod | Yük gönderilirken kullanılacak yöntem. İzin verilen yöntemler `PUT` veya`POST` |
+| httpHeaders | Anahtarların üstbilgi adlarını ve değerlerini temsil ettiği anahtar-değer çiftleri koleksiyonu, yük ile birlikte Web API 'nize gönderilecek üst bilgi değerlerini temsil eder. Şu üst bilgilerin `Accept`bu koleksiyonda olması yasaktır:, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`,, `Upgrade``Via` |
+| timeout | Seçim Belirtildiğinde, API çağrısını yapan http istemcisinin zaman aşımını gösterir. XSD "dayTimeDuration" değeri ( [ıso 8601 Duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) değerinin kısıtlı bir alt kümesi) olarak biçimlendirilmelidir. Örneğin, `PT60S` 60 saniye için. Ayarlanmamışsa, varsayılan değer olan 30 saniye seçilir. Zaman aşımı en fazla 230 saniyeye ayarlanabilir ve en az 1 saniye olabilir. |
+| batchSize | Seçim Her API çağrısı için, kaç "veri kaydı" (aşağıdaki _JSON_ yük yapısına bakın) gönderileceğini belirtir. Ayarlanmamışsa, varsayılan olarak 1000 seçilidir. Dizin oluşturma işleme ve API 'niz üzerinde yükleme arasında uygun bir zorunluluğunu getirir elde etmek için bu parametreyi kullanmanızı öneririz |
+| Analyticsunits | Seçim Belirtildiğinde, dizin oluşturucunun verdiğiniz bitiş noktasına paralel olarak kullanacağı çağrı sayısını gösterir. Uç noktanız bir istek yükünün çok yüksek altındaysa bu değeri azaltabilir veya uç noktanız daha fazla istek kabul edebilse ve dizin oluşturucunun performansına bir artış istiyorsanız bu değeri azaltabilirsiniz.  Ayarlanmamışsa, varsayılan 5 değeri kullanılır. Degreeofparalellik, en fazla 10 ve en az 1 olarak ayarlanabilir. |
 
-## <a name="skill-inputs"></a>Beceri girdileri
+## <a name="skill-inputs"></a>Beceri girişleri
 
-Bu beceri için "önceden tanımlanmış" giriş ler yoktur. Bu becerinin yürütülmesi sırasında zaten mevcut olan bir veya daha fazla alanı giriş olarak seçebilirsiniz ve Web API'sine gönderilen _JSON_ yükü farklı alanlara sahip olacaktır.
+Bu beceri için "önceden tanımlanmış" giriş yok. Bu beceri yürütme sırasında zaten kullanılabilir olacak bir veya daha fazla alan seçebilirsiniz ve Web API 'sine gönderilen _JSON_ yükünün farklı alanları olacaktır.
 
-## <a name="skill-outputs"></a>Beceri çıktıları
+## <a name="skill-outputs"></a>Yetenek çıkışları
 
-Bu beceri için "önceden tanımlanmış" çıktılar yoktur. Web API'nizin geri döneceği yanıta bağlı olarak, _JSON_ yanıtından alınabilmeleri için çıktı alanları ekleyin.
+Bu beceri için "önceden tanımlanmış" çıkış yok. Web API 'nizin döndürdüğü yanıta bağlı olarak, _JSON_ yanıtından alınabilmeleri için çıktı alanları ekleyin.
 
 
-## <a name="sample-definition"></a>Örnek tanımı
+## <a name="sample-definition"></a>Örnek tanım
 
 ```json
   {
@@ -84,13 +84,13 @@ Bu beceri için "önceden tanımlanmış" çıktılar yoktur. Web API'nizin geri
 ```
 ## <a name="sample-input-json-structure"></a>Örnek giriş JSON yapısı
 
-Bu _JSON_ yapısı, Web API'nize gönderilecek yükü temsil eder.
-Her zaman şu kısıtlamaları takip edecektir:
+Bu _JSON_ yapısı, Web API 'nize gönderilecek yükü temsil eder.
+Her zaman şu kısıtlamalara uyar:
 
-* Üst düzey varlık denir `values` ve nesnelerin bir dizi olacaktır. Bu tür nesnelerin sayısı en fazla olacak`batchSize`
-* Dizideki `values` her nesne,
+* En üst düzey varlık çağrılır `values` ve bir nesne dizisi olur. Bu tür nesnelerin sayısı en fazla şu kadar olacaktır:`batchSize`
+* `values` Dizideki her bir nesne,
     * Bu `recordId` kaydı tanımlamak için kullanılan **benzersiz** bir dize olan bir özellik.
-    * `data` _JSON_ nesnesi olan bir özellik. Özelliğin `data` alanları, beceri tanımının `inputs` bölümünde belirtilen "adlara" karşılık gelir. Bu alanların değeri bu alanların `source` (belgedeki bir alandan veya potansiyel olarak başka bir beceriden olabilir) olacaktır.
+    * JSON `data` nesnesi olan bir özellik _JSON_ . `data` Özelliğin alanları, yetenek tanımının `inputs` bölümünde belirtilen "adlara" karşılık gelir. Bu alanların `source` değeri bu alanlardan (belgedeki bir alandan ya da başka bir beceriye ait olabilir) olacaktır
 
 ```json
 {
@@ -135,18 +135,18 @@ Her zaman şu kısıtlamaları takip edecektir:
 }
 ```
 
-## <a name="sample-output-json-structure"></a>Örnek çıktı JSON yapısı
+## <a name="sample-output-json-structure"></a>Örnek çıkış JSON yapısı
 
-"Çıktı", Web API'nizden döndürülen yanıta karşılık gelir. Web API'si yalnızca bir _JSON_ yükünü döndürmeli `Content-Type` (yanıt üstbilgisini bakarak doğrulanmış) ve aşağıdaki kısıtlamaları karşılamalıdır:
+"Output", Web API 'nizden döndürülen yanıta karşılık gelir. Web API 'si yalnızca bir _JSON_ yükü döndürmelidir ( `Content-Type` yanıt üstbilgisine bakılarak doğrulanır) ve aşağıdaki kısıtlamalara uygun olmalıdır:
 
-* Bir dizi nesne olması gereken `values` üst düzey bir varlık olmalıdır.
-* Dizideki nesne sayısı, Web API'sine gönderilen nesne sayısıyla aynı olmalıdır.
-* Her nesne olmalıdır:
-   * Bir `recordId` özellik
-   * `data` Alanların zenginleştiği ve değeri zenginleştirme olarak kabul edilen bir `output` özelliktir.
-   * Dizinleyici `errors` yürütme geçmişine eklenecek karşılaşılan hataları listeleyen bir özellik. Bu özellik gereklidir, ancak `null` bir değeri olabilir.
-   * Dizinleyici `warnings` yürütme geçmişine eklenecek karşılaşılan uyarıları listeleyen bir özellik. Bu özellik gereklidir, ancak `null` bir değeri olabilir.
-* Dizideki `values` nesnelerin, Web API'sine istek olarak gönderilen `values` dizideki nesnelerle aynı sırada olması gerekmez. Ancak, `recordId` web API orijinal isteğinin bir `recordId` parçası değildi yanıtta herhangi bir kayıt atılır böylece korelasyon için kullanılır.
+* Bir nesne dizisi olması gereken adlı `values` üst düzey bir varlık olmalıdır.
+* Dizideki nesne sayısı, Web API 'sine gönderilen nesne sayısıyla aynı olmalıdır.
+* Her nesne şunları içermelidir:
+   * Bir `recordId` Özellik
+   * Alanların `data` içindeki "adlar" `output` ile eşleşen ve değeri enzenginleştirme olarak kabul edildiği bir nesne olan bir özellik.
+   * Dizin `errors` Oluşturucu yürütme geçmişine eklenecek hatalarla karşılaşan bir dizi özellik. Bu özellik gereklidir, ancak bir `null` değere sahip olabilir.
+   * Dizin `warnings` Oluşturucu yürütme geçmişine eklenecek herhangi bir uyarıyı listelemesi için bir özellik. Bu özellik gereklidir, ancak bir `null` değere sahip olabilir.
+* `values` Dizideki nesneler, Web API 'sine istek olarak gönderilen `values` dizideki nesnelerle aynı sırada olmamalıdır. `recordId` Ancak, bağıntısı için kullanıldığında, Web API 'sine yapılan özgün isteğin bir `recordId` parçası olan yanıttaki tüm kayıtlar atılır.
 
 ```json
 {
@@ -193,16 +193,16 @@ Her zaman şu kısıtlamaları takip edecektir:
 
 ```
 
-## <a name="error-cases"></a>Hata örnekleri
-Web API'nizin kullanılamamasına veya başarısız durum kodları göndermesine ek olarak aşağıdaki hatalı durumlar olarak kabul edilir:
+## <a name="error-cases"></a>Hata durumları
+Web API 'nizin kullanılamaz hale veya başarılı olmayan durum kodları gönderilmesine ek olarak aşağıdakiler hatalı durumlar olarak kabul edilir:
 
-* Web API bir başarı durum kodu döndürür ancak `application/json` yanıt o zaman yanıt geçersiz kabul edilir ve hiçbir zenginleştirme ler gerçekleştirilecektir olduğunu gösterir.
-* Yanıt `values` dizisinde **geçersiz** (özgün istekte `recordId` veya yinelenen değerlerle) kayıtlar varsa, **bu** kayıtlar için zenginleştirme yapılmaz.
+* Web API 'SI bir başarı durum kodu döndürürse ancak yanıt bunun `application/json` olmadığını gösteriyorsa, yanıt geçersiz olarak kabul edilir ve hiçbir zenginleştirilmez.
+* Yanıt `values` dizisinde **geçersiz** (orijinal istekte `recordId` değil veya yinelenen değerler içeren) kayıtları varsa, **Bu** kayıtlar için hiçbir zenginleştirme gerçekleştirilmez.
 
-Web API'sının kullanılamadığı veya bir HTTP hatası döndürdeceği durumlarda, HTTP hatasıyla ilgili kullanılabilir ayrıntıları içeren dostane bir hata dizinleyici yürütme geçmişine eklenir.
+Web API 'sinin kullanılamadığı veya bir HTTP hatası döndürdüğü durumlarda, Dizin Oluşturucu yürütme geçmişine HTTP hatası ile ilgili tüm ayrıntıları içeren bir kolay hata eklenir.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)
-+ [Bir AI zenginleştirme boru hattına özel beceri ekleme](cognitive-search-custom-skill-interface.md)
-+ [Örnek: AI zenginleştirme için özel bir beceri oluşturma](cognitive-search-create-custom-skill-example.md)
++ [Beceri tanımlama](cognitive-search-defining-skillset.md)
++ [Bir AI zenginleştirme ardışık düzenine özel yetenek ekleme](cognitive-search-custom-skill-interface.md)
++ [Örnek: AI zenginleştirme için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)

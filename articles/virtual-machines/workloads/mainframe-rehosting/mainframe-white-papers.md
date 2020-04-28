@@ -1,6 +1,6 @@
 ---
-title: Azure Sanal Makineleri ve Azure Depolama'yı kullanarak ana bilgisayar konuları yla ilgili Azure teknik incelemeleri
-description: Ana bilgisayar geçişi, yeniden barındırma ve IBM Z tabanlı sistemleri Microsoft Azure'a taşıma hakkında kaynaklar alın.
+title: Azure sanal makinelerini ve Azure Storage 'ı kullanarak ana bilgisayar konuları hakkında Azure Teknik İncelemeleri
+description: Ana bilgisayar geçişi, yeniden barındırma ve IBM Z tabanlı sistemleri Microsoft Azure taşıma hakkında kaynak alın.
 services: multiple
 documentationcenter: ''
 author: njray
@@ -9,44 +9,44 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: dd91b4331a6093d1cf208893d5d88746707b473b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74224736"
 ---
-# <a name="azure-white-papers-about-mainframe-topics"></a>Ana bilgisayar konuları yla ilgili azure teknik incelemeleri
+# <a name="azure-white-papers-about-mainframe-topics"></a>Ana bilgisayar hakkında Azure teknik incelemeler konuları
 
-Ana bilgisayar geçişi, yeniden barındırma ve IBM Z tabanlı sistemleri Microsoft Azure'a taşıma hakkında kaynaklar alın.
+Ana bilgisayar geçişi, yeniden barındırma ve IBM Z tabanlı sistemleri Microsoft Azure taşıma hakkında kaynak alın.
 
-### <a name="demystifying-mainframe-to-azure-migration"></a>[Azure geçişiiçin ana bilgisayarın mymystifying](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
+### <a name="demystifying-mainframe-to-azure-migration"></a>[Azure geçişine Demystifying ana bilgisayar](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
-Azure, eşdeğer işlevsellik ve özellikler sunabilen bir ana bilgisayar alternatifi sunar. AzureCAT ekibinden Larry Mead tarafından yayınlanan bu makale, ibm z/OS ana bilgisayar bileşenlerini ve Azure eşdeğerlerini kapsar. Ayrıca, modası geçmiş ana bilgisayar felsefelerine abone olan BT karar vericileriyle sohbete başlamak için bir yol haritası da sağlar.
+Azure, eşdeğer işlevselliği ve özellikleri sunmaya yönelik bir anabilgisayar alternatifi sağlar. Bu sayfa, AzureCAT ekibinin Larry, ana IBM z/OS ana bilgisayar bileşenlerini ve Azure eşdeğerlerini ele alır. Ayrıca, görüşmenin süresi geçmiş ana bilgisayar felsefeleri abone olan BT karar mekanizmasıyla başlatılmasına yönelik bir yol haritası da sağlar.
 
-### <a name="move-mainframe-compute-and-storage-to-azure"></a>[Ana bilgisayar işlem ve depolama alanını Azure'a taşıma](https://azure.microsoft.com/resources/move-mainframe-compute-and-storage-to-azure/)
+### <a name="move-mainframe-compute-and-storage-to-azure"></a>[Anabilgisayar işlem ve depolamayı Azure 'a taşıma](https://azure.microsoft.com/resources/move-mainframe-compute-and-storage-to-azure/)
 
-Microsoft Azure'da ana bilgisayar iş yüklerini çalıştırmak için ana bilgisayarınızın yeteneklerinin Azure ile nasıl karşılaştırılacağını bilmeniz gerekir. AzureCAT'den Larry Mead'in ibm z14 ana bilgisayarına dayanan bu kılavuz, Azure'da karşılaştırılabilir sonuçlar elde etmeyi inceliyor. Azure'daki büyük ölçüde ölçeklenebilir bilgi işlem ve depolama kaynakları, ana bilgisayar iş yüklerini çalıştıran kuruluşlara anında avantajlar sağlar.
+Microsoft Azure ana bilgisayar iş yüklerini çalıştırmak için, ana bilgisayarınızın yeteneklerini Azure ile nasıl karşılaştırılacağını bilmeniz gerekir. Bir IBM Z14 ana bilgisayarı temelinde, bu kılavuz, Azure 'da nasıl karşılaştırılabilir sonuçlar elde edin. Azure 'daki yüksek düzeyde ölçeklenebilir işlem ve depolama kaynakları, anabilgisayar iş yüklerini çalıştıran kuruluşlara anında faydalar sağlar.
 
-### <a name="microsoft-azure-government-cloud-for-mainframe-applications"></a>[Ana bilgisayar uygulamaları için Microsoft Azure Genel bulutu](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
+### <a name="microsoft-azure-government-cloud-for-mainframe-applications"></a>[Anabilgisayar uygulamaları için Microsoft Azure Kamu Bulutu](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
 
-Uygulama geçişini planlamak, köklü ana bilgisayar iş yüklerine bile değer ve çeviklik eklemek için ideal bir zamandır. AzureCAT'den Larry Mead bu hızlı kılavuzda, ABD devlet kurumlarının ve iş ortaklarının ana bilgisayar uygulamaları için Azure Kamu'yu nasıl kullanabileceklerini ve geçişin düşündüğünüz kadar zor olmayabileceğini gösterir. Azure Kamu, ana bilgisayarın avantajlarını daha uygun maliyetli ve çevik bir ortamda sunar. Buna ek olarak, Azure Hükümeti FedRAMP High Impact için Geçici Çalışma Yetkisi (P-ATO) kazandı.
+Uygulama geçişi planlama, iyi şekilde sağlanan anabilgisayar iş yüklerine değer ve çeviklik eklemek için ideal bir süredir. Bu hızlı kılavuzda, AzureCAT devleti, devlet kurumlarının ve iş ortaklarının ana bilgisayar uygulamaları için Azure Kamu 'yu Birleşik Devletler nasıl kullandığını gösterir ve geçiş, düşündüğünüzden zor olmayabilir. Azure Kamu, bir ana bilgisayar avantajlarından daha uygun maliyetli ve çevik bir ortamda yararlanmanızı sağlar. Ayrıca, Azure Kamu, Fedrampa yüksek etkisi için (P-ATO) çalışması için bir geçici yetki elde edin.
 
-### <a name="deploy-ibm-db2-purescale-on-azure"></a>[IBM DB2 pureScale'i Azure'da dağıtma](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure/)
+### <a name="deploy-ibm-db2-purescale-on-azure"></a>[Azure 'da IBM DB2 pureScale dağıtma](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure/)
 
-IBM DB2 ortamını Azure'da yakın zamanda yeniden barındıran bir kuruluşla olan deneyimimizden bilgi edinin. Bu kılavuz, orada bulunan AzureCAT ve DMJ ekip üyeleri tarafından yazılmıştır: Larry Mead, Benjamin Guinebertière, Alessandro Vozza ve Jonathon Frost. Bu göç sırasında atdıkları adımları açıklarlar. Bulguları IBM Db2 pureScale ekibinin üyeleri tarafından gözden geçirildi. GitHub'da bulunan yükleme komut dosyaları, takımın tipik bir orta boy OLTP iş yükü için kullandığı mimariye dayanır.
+Kısa süre önce Azure 'da IBM DB2 ortamını yeniden barındıran bir kuruluş ile deneyimimizi öğrenin. Bu kılavuz, AzureCAT ve DMJ ekibi üyeleri tarafından yazılmıştır: Larry Mead, Benjamin Guinebertière, Alessandro Vozza ve Jonathon Frost. Bu geçiş sırasında geçen adımları anlatmaktadır. Bulguları IBM DB2 pureScale ekibinin üyeleri tarafından incelendi. GitHub 'da bulunan yükleme betikleri, takımın tipik bir orta ölçekli OLTP iş yükü için kullandığı mimariye dayanır.
 
-### <a name="install-tmaxsoft-openframe-on-azure"></a>[Azure'da TmaxSoft OpenFrame'i yükleme](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
+### <a name="install-tmaxsoft-openframe-on-azure"></a>[Azure 'da TmaxSoft OpenFrame 'i yükle](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 
-Altyapınızı bulut ölçeğinde modernize edin. TmaxSoft OpenFrame, mevcut ana bilgisayar varlıklarınızı kaldırmanızı ve Azure'a kaydırmanızı kolaylaştırır. Bu makalede, Steve Read (AzureCAT) ve Manoj Aerroju (TmaxSoft), geliştirme, demolar, testler ve üretim iş yükleri için uygun bir OpenFrame ortamının nasıl kurulabildiğini açıklanmaktadır.
+Altyapınızı bulut ölçeğinde modernleştirin. TmaxSoft OpenFrame, mevcut ana bilgisayar varlıklarınızı kaldırıp Azure 'a kaydırma yapmayı kolaylaştırır. Bu yazıda, Steve Read (AzureCAT) ve Manoj Havaroju (TmaxSoft) geliştirme, tanıtımlar, test ve üretim iş yükleri için uygun bir OpenFrame ortamının nasıl ayarlanacağını açıklar.
 
-### <a name="ibm-mainframe-to-microsoft-azure-reference-architecture"></a>[Microsoft Azure başvuru mimarisine IBM ana bilgisayarı](https://www.astadia.com/whitepaper/ibm-mainframe-to-microsoft-azure)
+### <a name="ibm-mainframe-to-microsoft-azure-reference-architecture"></a>[Başvuru mimarisi Microsoft Azure için IBM ana bilgisayar](https://www.astadia.com/whitepaper/ibm-mainframe-to-microsoft-azure)
 
-Bu teknik inceleme, Astadia'nın 25 yılı aşkın ana bilgisayar platformu modernizasyon uzmanlığını yansıtmaktadır. Modernleşme çabalarının faydalarını ve zorluklarını açıklarlar. Bu kılavuz, IBM ana bilgisayarına ve IBM ana bilgisayardan Azure'a başvuru mimarisine genel bir bakış sağlar. Ayrıca Astadia başarı metodolojisi bir göz sağlar.
+Bu Teknik İnceleme, Astadia 'nin 25 yıldan fazla ana bilgisayar platformu modernleştirme uzmanlığını yansıtır. Bunlar, modernleştirme çabalarının avantajlarının ve güçlüklerinin avantajlarını açıklar. Bu kılavuz IBM ana bilgisayar ve IBM ana bilgisayar-Azure başvuru mimarisine genel bir bakış sunar. Ayrıca, Astaçya Success metodolojisini de bir görünüm sağlar.
 
-### <a name="deploying-mainframe-applications-to-microsoft-azure"></a>[Ana bilgisayar uygulamalarını Microsoft Azure'a dağıtma](https://www.microfocus.com/media/white-paper/deploying_mainframe_applications_to_microsoft_azure_wp.pdf)
+### <a name="deploying-mainframe-applications-to-microsoft-azure"></a>[Ana bilgisayar uygulamalarını Microsoft Azure dağıtma](https://www.microfocus.com/media/white-paper/deploying_mainframe_applications_to_microsoft_azure_wp.pdf)
 
-Micro Focus'un çözümleri sizi tescilli ana bilgisayar donanım ve yazılımının kısıtlamalarından kurtarır. Bu kılavuzda Micro Focus, IBM ana bilgisayarlarında çalışan COBOL ve PL/I uygulamalarınızın buluta nasıl dağıtılabildiğini açıklar.
+Micro Focus 'ten gelen çözümler, özel ana bilgisayar donanımının ve yazılımlarının kısıtlamalarından size kadar ücretsizdir. Bu kılavuzda, mikro odak, IBM ana bilgisayarları 'nda çalışan COBOL ve PL/ı uygulamalarınızın bunun yerine buluta nasıl dağıtılacağını açıklar.
 
-### <a name="breathe-new-life-into-mainframes"></a>[Ana bilgisayarlara yeni bir soluk getirin](https://www.infosys.com/services/modernization/breathe-new-life-mainframes.html)
+### <a name="breathe-new-life-into-mainframes"></a>[Yeni hayata ana bilgisayarları kesmeme](https://www.infosys.com/services/modernization/breathe-new-life-mainframes.html)
 
- Ana bilgisayarlar, işletmenin bakımı için giderek daha zorlu hale gelmektedir. Infosys ve Microsoft tarafından bu teknik inceleme başarılı ana bilgisayar geçişi için kazanan stratejiyi vurgulamaktadır. Kullanım örnekleri ve örnekler seçenekleri gösterir.
+ Ana bilgisayarlar iş için daha fazla zorludur. Infosys 'e göre bu Teknik İnceleme ve Microsoft, başarılı ana bilgisayar geçişi için kazanan stratejiyi vurgular. Kullanım örnekleri ve örnekler, seçenekleri gösterir.

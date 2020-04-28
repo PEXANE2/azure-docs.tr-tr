@@ -1,6 +1,6 @@
 ---
-title: App Proxy uygulaması ile bu Kurumsal Uygulama hatasına erişemiyorum
-description: Azure AD Application Proxy uygulamalarıyla ilgili yaygın erişim sorunlarını çözme.
+title: Uygulama proxy 'Si uygulamasıyla bu kurumsal uygulama hatasına erişilemiyor
+description: Azure AD Uygulama Ara Sunucusu uygulamalarıyla ilgili yaygın erişim sorunlarını çözme.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,92 +17,92 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d61f4b4bce9b8287dc13237f071684ea5d135fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74275463"
 ---
-# <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Bir Uygulama Proxy uygulaması kullanırken "Bu Kurumsal Uygulamaya Erişemiyorum" hatası
+# <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Uygulama proxy 'Si uygulaması kullanılırken "Bu kurumsal uygulamaya erişilemiyor" hatası
 
-Bu makale, Azure AD Uygulama Proxy uygulamasındaki "Bu kurumsal uygulamaya erişilemez" hatasıyla ilgili sık karşılaşılan sorunları gidermenize yardımcı olur.
+Bu makale, bir Azure AD Uygulama Ara Sunucusu uygulamasında "Bu şirket uygulamasına erişilemiyor" hatası için sık karşılaşılan sorunları gidermenize yardımcı olur.
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu hatayı gördüğünüzde, hata sayfasındaki durum kodunu bulun. Bu kod büyük olasılıkla aşağıdaki durum kodlarından biridir:
+Bu hatayı gördüğünüzde hata sayfasında durum kodunu bulun. Bu kod büyük olasılıkla aşağıdaki durum kodlarından biridir:
 
-- **Ağ Geçidi Zaman Süresi**: Uygulama Proxy hizmeti bağlayıcıya ulaşamıyor. Bu hata genellikle bağlayıcı atama, bağlayıcının kendisi veya bağlayıcının etrafındaki ağ kurallarıyla ilgili bir sorunu gösterir.
-- **Kötü Ağ Geçidi**: Bağlayıcı arka uç uygulamasına erişemiyor. Bu hata, uygulamanın yanlış bir yapılandırmasını gösterebilir.
-- **Yasak**: Kullanıcının uygulamaya erişme yetkisi yoktur. Bu hata, kullanıcı Azure Etkin Dizin'de uygulamaya atanmamışsa veya arka uçta kullanıcının uygulamaya erişim izni yoksa meydana gelebilir.
+- **Ağ geçidi zaman aşımı**: uygulama proxy 'si hizmeti bağlayıcıya ulaşamıyor. Bu hata genellikle bağlayıcı atama, bağlayıcının kendisi veya bağlayıcı etrafındaki ağ kuralları ile ilgili bir sorun olduğunu gösterir.
+- **Hatalı ağ geçidi**: bağlayıcı, arka uç uygulamasına ulaşamıyor. Bu hata uygulamanın bir yanlış yapılandırılması olduğunu gösteriyor olabilir.
+- **Yasak**: Kullanıcı uygulamaya erişim yetkisine sahip değil. Bu hata, Kullanıcı Azure Active Directory uygulamaya atanmadığı zaman ya da arka uçta kullanıcının uygulamaya erişim izni olmadığında meydana gelebilir.
 
-Kodu bulmak için, "Durum Kodu" alanı için hata iletisinin sol alt kısmındaki metne bakın. Ayrıca sayfanın altındaki ek ipuçlarıarayın.
+Kodu bulmak için, "durum kodu" alanı için hata iletisinin sol alt kısmındaki metne bakın. Ayrıca sayfanın en altında yer alarak ek ipuçları olup olmadığına bakın.
 
-![Örnek: Ağ geçidi zaman alamı hatası](./media/application-proxy-sign-in-bad-gateway-timeout-error/connection-problem.png)
+![Örnek: ağ geçidi zaman aşımı hatası](./media/application-proxy-sign-in-bad-gateway-timeout-error/connection-problem.png)
 
-Bu hataların temel nedenini nasıl gidereceğimiz ve önerilen düzeltmeler hakkında daha fazla ayrıntı hakkında ayrıntılı bilgi için aşağıdaki ilgili bölüme bakın.
+Bu hataların asıl nedeni ile ilgili sorunların nasıl giderileceği ve önerilen düzeltmeler hakkında daha fazla ayrıntı hakkında ayrıntılar için aşağıdaki ilgili bölüme bakın.
 
-## <a name="gateway-timeout-errors"></a>Ağ Geçidi Zaman Alamı hataları
+## <a name="gateway-timeout-errors"></a>Ağ geçidi zaman aşımı hataları
 
-Hizmet bağlayıcıya ulaşmaya çalıştığında ve zaman dışında zaman dışında bir zaman alamadığında bir ağ geçidi zaman acısı oluşur. Bu hata genellikle çalışan bağlayıcısı olmayan bir Bağlayıcı Grubu'na atanan bir uygulamadan kaynaklanır veya Bağlayıcı tarafından gerekli olan bazı bağlantı noktaları açık değildir.
+Hizmet bağlayıcıya ulaşmaya çalıştığında ve zaman aşımı penceresinde bağlantı kuramadığınızda, bir ağ geçidi zaman aşımı oluşur. Bu hata genellikle, çalışma bağlayıcıları olmayan bir bağlayıcı grubuna atanan bir uygulama veya bağlayıcı için gereken bazı bağlantı noktaları açık değildir.
 
-## <a name="bad-gateway-errors"></a>Hatalı Ağ Geçidi hataları
+## <a name="bad-gateway-errors"></a>Hatalı ağ geçidi hataları
 
-Hatalı ağ geçidi hatası, bağlayıcının arka uç uygulamasına erişemediğini gösterir. doğru uygulamayı yayımladığınızdan emin olun. Bu hataya neden olan yaygın hatalar şunlardır:
+Hatalı ağ geçidi hatası, bağlayıcının arka uç uygulamasına ulaşamayacağını gösterir. doğru uygulamayı yayımladığınızdan emin olun. Bu hataya neden olan yaygın hatalar şunlardır:
 
-- İç URL'de yazım hatası veya hata
-- Uygulamanın kökünü yayımlamamak. Örneğin, yayımlama <http://expenses/reimbursement> ama erişmeye çalışıyor<http://expenses>
-- Kerberos Kısıtlı Delegasyonu (KCD) yapılandırmasındaki sorunlar
+- İç URL 'de bir yazım hatası veya hata
+- Uygulamanın kökü yayınlanmıyor. Örneğin, yayınlama <http://expenses/reimbursement> ancak erişmeye çalışılıyor<http://expenses>
+- Kerberos kısıtlanmış temsili (KCD) yapılandırmasıyla ilgili sorunlar
 - Arka uç uygulamasıyla ilgili sorunlar
 
 ## <a name="forbidden-errors"></a>Yasak hatalar
 
-Yasak bir hata görürseniz, kullanıcı uygulamaya atanmamış olur. Bu hata Azure Etkin Dizin'de veya arka uç uygulamasında olabilir.
+Yasak bir hata görürseniz, Kullanıcı uygulamaya atanmaz. Bu hata Azure Active Directory veya arka uç uygulamasında olabilir.
 
-Azure'da uygulamaya kullanıcıları nasıl ataygöreceğinizi öğrenmek için [yapılandırma belgelerine](application-proxy-add-on-premises-application.md#test-the-application)bakın.
+Azure 'da uygulamaya Kullanıcı atamayı öğrenmek için [yapılandırma belgelerine](application-proxy-add-on-premises-application.md#test-the-application)bakın.
 
-Kullanıcının Azure'da uygulamaya atandığını onaylarsanız, arka uç uygulamasındaki kullanıcı yapılandırmasını denetleyin. Kerberos Kısıtlı Temsilciliği/Tümleşik Windows Kimlik Doğrulaması kullanıyorsanız, yönergeler için KCD Sorun Giderme sayfasına bakın.
+Kullanıcının Azure 'da uygulamaya atandığını onaylamanız durumunda, arka uç uygulamasındaki Kullanıcı yapılandırmasını kontrol edin. Kerberos kısıtlı temsilcisi/tümleşik Windows kimlik doğrulaması kullanıyorsanız, yönergeler için KCD sorun giderme sayfasına bakın.
 
-## <a name="check-the-applications-internal-url"></a>Uygulamanın dahili URL'sini kontrol edin
+## <a name="check-the-applications-internal-url"></a>Uygulamanın iç URL 'sini denetleyin
 
-İlk hızlı adım olarak, **uygulamayı Kurumsal Uygulamalar**aracılığıyla açarak dahili URL'yi iki kez kontrol edin ve düzeltin, ardından Application **Proxy** menüsünü seçin. Dahili URL'nin, uygulamayla erişmek için şirket içi ağınızda kullanılan URL olduğunu doğrulayın.
+İlk hızlı adım olarak, uygulamayı **Kurumsal uygulamalar**aracılığıyla açıp ardından **uygulama proxy 'si** menüsünü seçerek iç URL 'yi iki kez kontrol edin ve onarın. Uygulamaya erişmek için şirket içi ağınızdan kullanılan dahili URL 'nin olduğunu doğrulayın.
 
-## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Uygulamanın çalışan bir Bağlayıcı Grubuna atandığını kontrol edin
+## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Uygulamanın çalışan bir bağlayıcı grubuna atandığını denetleyin
 
-Uygulamanın çalışan bir Bağlayıcı Grubuna atandığını doğrulamak için:
+Uygulamanın çalışan bir bağlayıcı grubuna atandığını doğrulamak için:
 
-1. **Azure Active Directory'ye**giderek uygulamayı portalda açın , **Kurumsal Uygulamalar'a**tıklayarak, ardından **Tüm Uygulamalar'a tıklayın.** Uygulamayı açın ve sol menüden **Uygulama Proxy'sini** seçin.
-1. Bağlayıcı Grup alanına bakın. Grupta etkin bağlayıcı yoksa, bir uyarı görürsünüz. Herhangi bir uyarı görmüyorsanız, gerekli tüm bağlantı noktalarına izin verildiğini doğrulamak için devam edin.
-1. Yanlış Bağlayıcı Grubu görünüyorsa, doğru grubu seçmek ve artık herhangi bir uyarı görmediğinizi onaylamak için açılır dosyayı kullanın. Amaçlanan Bağlayıcı Grubu gösteriliyorsa, Bağlayıcı yönetimi yle sayfayı açmak için uyarı iletisini tıklatın.
-1. Buradan, daha fazla sondaj için birkaç yolu vardır:
+1. Uygulamayı portalda açın **Azure Active Directory**, **Kurumsal uygulamalar**' a ve ardından **tüm uygulamalar** ' a tıklayın. Uygulamayı açın, sonra sol menüden **uygulama proxy 'si** ' ni seçin.
+1. Bağlayıcı grubu alanına bakın. Grupta etkin bağlayıcı yoksa bir uyarı görürsünüz. Herhangi bir uyarı görmüyorsanız, gerekli tüm bağlantı noktalarına izin verildiğini doğrulamak için üzerine gidin.
+1. Yanlış bağlayıcı grubu gösteriyorsa, doğru grubu seçmek için açılan eklentiyi kullanın ve artık herhangi bir uyarı görmediğini onaylayın. Hedeflenen bağlayıcı grubu gösteriyorsa, sayfayı bağlayıcı yönetimi ile açmak için uyarı iletisine tıklayın.
+1. Buradan daha fazla ayrıntıya geçmek için birkaç yol vardır:
 
-   - Etkin bir Bağlayıcıyı gruba taşıyın: Bu gruba ait olması gereken etkin bir Bağlayıcınız varsa ve hedef arka uç uygulamasına görüş hattı varsa, Bağlayıcıyı atanan gruba taşıyabilirsiniz. Bunu yapmak için Bağlayıcı'yı tıklatın. "Bağlayıcı Grubu" alanında, doğru grubu seçmek için açılır dosyayı kullanın ve kaydet'i tıklatın.
-   - Bu grup için yeni bir Bağlayıcı indirin: Bu [sayfadan, yeni bir Bağlayıcı indirmek](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download)için bağlantı alabilirsiniz. Konektörü arka uç uygulamasına doğrudan görüş hattı olan bir makineye takın. Genellikle, Bağlayıcı uygulamayla aynı sunucuya yüklenir. Hedef makineye bir bağlayıcı indirmek için download Connector bağlantısını kullanın. Ardından, Bağlayıcı'yı tıklatın ve doğru gruba ait olduğundan emin olmak için "Bağlayıcı Grubu" açılır masını kullanın.
-   - Etkin olmayan bir Bağlayıcıyı araştırın: Bir bağlayıcı etkin değil olarak gösterirse, hizmete erişemez. Bu hata genellikle bazı gerekli bağlantı noktalarının engellenmesi nedeniyledir. Bu sorunu çözmek için, gerekli tüm bağlantı noktalarına izin verildiğini doğrulamak için devam edin.
+   - Etkin bir bağlayıcıyı gruba taşıma: Bu gruba ait olması ve hedef arka uç uygulamasına bir görüş satırı olması gereken etkin bir bağlayıcınız varsa, bağlayıcıyı atanan gruba taşıyabilirsiniz. Bunu yapmak için bağlayıcıya tıklayın. "Bağlayıcı grubu" alanında, doğru grubu seçmek için açılan eklentiyi kullanın ve Kaydet ' e tıklayın.
+   - Bu grup için yeni bir bağlayıcı indirin: Bu sayfadan [Yeni bir bağlayıcı indirme](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download)bağlantısını alabilirsiniz. Bağlayıcıyı, arka uç uygulamasına doğrudan görüş satırı olan bir makineye yükler. Genellikle bağlayıcı, uygulamayla aynı sunucuya yüklenir. Hedef makineye bir bağlayıcı indirmek için bağlayıcıyı İndir bağlantısını kullanın. Ardından, bağlayıcıya tıklayın ve sağ gruba ait olduğundan emin olmak için "bağlayıcı grubu" açılan simgesini kullanın.
+   - Etkin olmayan bir bağlayıcıyı araştırın: bir bağlayıcının etkin değil olarak gösterdiği, hizmete ulaşılamıyor. Bu hata genellikle, bazı gerekli bağlantı noktalarının engellenmesi nedeniyle yapılır. Bu sorunu gidermek için, gerekli tüm bağlantı noktalarına izin verildiğini doğrulamak için üzerine gidin.
 
-Uygulamanın çalışan Bağlayıcılara sahip bir gruba atanmasını sağlamak için bu adımları kullandıktan sonra, uygulamayı yeniden sınatın. Hala çalışmıyorsa, sonraki bölüme devam edin.
+Uygulamanın çalışan bağlayıcılarla bir gruba atandığından emin olmak için bu adımları kullandıktan sonra, uygulamayı yeniden test edin. Hala çalışmıyorsa sonraki bölüme geçin.
 
-## <a name="check-all-required-ports-are-open"></a>Gerekli tüm bağlantı noktalarının açık olup olduğunu kontrol edin
+## <a name="check-all-required-ports-are-open"></a>Tüm gerekli bağlantı noktalarının açık olduğundan emin olun
 
-Gerekli tüm bağlantı noktalarının açık olduğunu doğrulamak için bağlantı noktalarını açma yla ilgili belgelere bakın. Gerekli tüm bağlantı noktaları açıksa, bir sonraki bölüme geçin.
+Tüm gerekli bağlantı noktalarının açık olduğunu doğrulamak için, bağlantı noktalarını açma ile ilgili belgelere bakın. Gerekli tüm bağlantı noktaları açıksa sonraki bölüme geçin.
 
-## <a name="check-for-other-connector-errors"></a>Diğer Bağlayıcı Hatalarını Denetle
+## <a name="check-for-other-connector-errors"></a>Diğer bağlayıcı hatalarını denetle
 
-Yukarıdakilerden hiçbiri sorunu çözmezse, bir sonraki adım Bağlayıcının kendisiyle ilgili sorunları veya hataları aramaktır. [Sorun Giderme belgesinde](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors)bazı sık karşılaşılan hataları görebilirsiniz.
+Yukarıdaki adımlardan hiçbiri sorunu çözmezse, bir sonraki adım bağlayıcının kendisiyle ilgili sorunları veya hataları aramaya yöneliktir. [Sorun giderme belgesinde](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors)bazı yaygın hataları görebilirsiniz.
 
-Ayrıca, hataları tanımlamak için doğrudan Bağlayıcı günlüklerine bakabilirsiniz. Hata iletilerinin çoğu düzeltmeler için belirli önerileri paylaşır. Günlükleri görüntülemek için [bağlayıcılar belgelerine](application-proxy-connectors.md#under-the-hood)bakın.
+Ayrıca, hataları belirlemek için doğrudan bağlayıcı günlüklerine bakabilirsiniz. Hata iletilerinin birçoğu düzeltmeler için belirli öneriler paylaşır. Günlükleri görüntülemek için [Bağlayıcılar belgelerine](application-proxy-connectors.md#under-the-hood)bakın.
 
-## <a name="additional-resolutions"></a>Ek Kararlar
+## <a name="additional-resolutions"></a>Ek çözümler
 
-Yukarıdaki sorunu gidermek vermedi, birkaç farklı olası nedenleri vardır. Sorunu tanımlamak için:
+Yukarıdaki sorun sorunu çözmezse, olası birkaç nedeni olabilir. Sorunu belirlemek için:
 
-Uygulamanız Tümleşik Windows Kimlik Doğrulaması (IWA) kullanacak şekilde yapılandırıldıysa, uygulamayı tek bir oturum açmadan sınayın. Değilse, bir sonraki paragrafa geçin. Tek oturum açmadan uygulamayı kontrol etmek **için, Kurumsal Uygulamalar** aracılığıyla başvurunuzu açın ve **Tek Oturum Açma** menüsüne gidin. Açılan pencereyi "Tümleşik Windows Kimlik Doğrulaması"ndan "Azure AD tek oturum açma devre dışı" olarak değiştirin.
+Uygulamanız tümleşik Windows kimlik doğrulaması (ıWA) kullanmak üzere yapılandırıldıysa, uygulamayı çoklu oturum açma olmadan test edin. Aksi takdirde, sonraki paragrafa geçin. Çoklu oturum açma olmadan uygulamayı denetlemek için, uygulamanızı **Kurumsal uygulamalar** aracılığıyla açın ve **Çoklu oturum açma** menüsüne gidin. "Tümleşik Windows kimlik doğrulaması" olan açılan eklentiyi "Azure AD çoklu oturum açma devre dışı" olarak değiştirin.
 
-Şimdi bir tarayıcı açın ve uygulamaya yeniden erişmeye çalışın. Kimlik doğrulamaiçin istenmeli ve uygulamaya girmelisiniz. Eğer kimlik doğrulaması yapabiliyorsanız, sorun tek oturum açmayı sağlayan Kerberos Kısıtlı Delegasyonu (KCD) yapılandırmasındadır. Daha fazla bilgi için KCD Sorun Giderme sayfasına bakın.
+Şimdi bir tarayıcı açın ve uygulamaya yeniden erişmeyi deneyin. Kimlik doğrulaması yapmanız ve uygulamaya girmeniz istenir. Kimlik doğrulaması yapabilirseniz, sorun, çoklu oturum açmayı sağlayan Kerberos kısıtlanmış temsili (KCD) yapılandırmasıyla aynıdır. Daha fazla bilgi için bkz. KCD sorun giderme sayfası.
 
-Hatayı görmeye devam ederseniz, Bağlayıcı'nın yüklü olduğu makineye gidin, bir tarayıcı açın ve uygulama için kullanılan dahili URL'ye erişmeye çalışın. Bağlayıcı aynı makineden başka bir istemci gibi davranır. Uygulamaya erişemiyorsanız, bu makinenin uygulamaya neden erişemediğini araştırın veya uygulamaya erişebilen bir sunucuda bağlayıcı kullanın.
+Hatayı görmeye devam ederseniz, bağlayıcının yüklendiği makineye gidin, bir tarayıcı açın ve uygulama için kullanılan iç URL 'ye ulaşmaya çalışın. Bağlayıcı aynı makineden başka bir istemci gibi davranır. Uygulamaya erişemiyorsanız, bu makinenin uygulamaya erişemediğini araştırın veya uygulamaya erişebilen bir sunucuda bir bağlayıcı kullanın.
 
-Bu makineden uygulamaya ulaşabiliyorsanız, Bağlayıcı'nın kendisiyle ilgili sorunları veya hataları aramak için. [Sorun Giderme belgesinde](application-proxy-troubleshoot.md#connector-errors)bazı sık karşılaşılan hataları görebilirsiniz. Ayrıca, hataları tanımlamak için doğrudan Bağlayıcı günlüklerine bakabilirsiniz. Hata iletilerimizin çoğu düzeltmeler için daha özel öneriler paylaşabilir. Günlükleri nasıl görüntüleyin, [bağlayıcı belgelerimize](application-proxy-connectors.md#under-the-hood)bakın.
+Uygulamaya bu makineden ulaşabilseniz, bağlayıcının kendisiyle ilgili sorunları veya hataları aramak için. [Sorun giderme belgesinde](application-proxy-troubleshoot.md#connector-errors)bazı yaygın hataları görebilirsiniz. Ayrıca, hataları belirlemek için doğrudan bağlayıcı günlüklerine bakabilirsiniz. Hata iletilerimizin birçoğu düzeltmeler için daha belirgin öneriler paylaşabilir. Günlükleri görüntülemeyi öğrenmek için [Bağlayıcılar belgelerimize](application-proxy-connectors.md#under-the-hood)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure AD Uygulama Proxy bağlayıcılarını anlama](application-proxy-connectors.md)
+[Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](application-proxy-connectors.md)

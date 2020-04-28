@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/27/2019
 ms.author: aschhab
 ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74560107"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus konuları ile çalışmaya başlama
@@ -32,12 +32,12 @@ Bu öğreticide aşağıdaki adımlar yer almaktadır:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Visual Studio [veya MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya ücretsiz bir [hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
-2. Hızlı Başlangıç'taki adımları izleyin: Hizmet Veri Yolunda niçin [bir konu oluşturmak için Azure portalını kullanın ve](service-bus-quickstart-topics-subscriptions-portal.md) aşağıdaki görevleri yapmak için konuya abonelikler yapın:
-    1. Hizmet Veri Günü **ad alanı**oluşturun.
-    2. Bağlantı **dizesini**alın.
-    3. Ad alanında bir **konu** oluşturun.
-    4. Ad alanında konuya **bir abonelik** oluşturun.
+1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [Visual Studio veya MSDN abonesi avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
+2. Hızlı Başlangıç bölümündeki adımları uygulayın: Azure portal kullanarak aşağıdaki görevleri yapmak için [Service Bus konu başlığı ve konuya yönelik abonelikler oluşturun](service-bus-quickstart-topics-subscriptions-portal.md) :
+    1. Service Bus **ad alanı**oluşturun.
+    2. **Bağlantı dizesini**alın.
+    3. Ad alanında bir **Konu** oluşturun.
+    4. Ad alanındaki konuya **bir abonelik** oluşturun.
 3. [Visual Studio 2017 Güncelleştirme 3 (sürüm 15.3, 26730.01)](https://www.visualstudio.com/vs) veya sonraki sürümler.
 4. [NET Core SDK](https://www.microsoft.com/net/download/windows), sürüm 2.0 veya sonraki sürümler.
  
@@ -75,7 +75,7 @@ Visual Studio'yu başlatın ve yeni bir **Konsol Uygulaması (.NET Core)** proje
     static ITopicClient topicClient;
     ``` 
 
-3. `Main()` Yöntemi, bir sonraki adımda ekleyeceğiniz SendMessagesAsync yöntemini kullanarak eş senkronize olarak ileti gönderen aşağıdaki **async** `Main` yöntemiyle değiştirin. 
+3. `Main()` Yöntemini, bir sonraki adımda ekleyeceğiniz sendmessagesasync yöntemini kullanarak zaman uyumsuz olarak ileti gönderen aşağıdaki **Async** `Main` yöntemiyle değiştirin. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -188,7 +188,7 @@ Visual Studio'yu başlatın ve yeni bir **Konsol Uygulaması (.NET Core)** proje
 
 ## <a name="receive-messages-from-the-subscription"></a>Abonelikten ileti alma
 
-Gönderdiğiniz iletileri almak için başka bir .NET Core konsol uygulaması oluşturun ve önceki gönderen uygulamasına benzer **microsoft.azure.serviceBus** NuGet paketini yükleyin.
+Gönderdiğiniz iletileri almak için, başka bir .NET Core konsol uygulaması oluşturun ve önceki gönderen uygulamaya benzer şekilde **Microsoft. Azure. ServiceBus** NuGet paketini yükleyebilirsiniz.
 
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>Abonelikten ileti almak için kod yazın
 
@@ -210,7 +210,7 @@ Gönderdiğiniz iletileri almak için başka bir .NET Core konsol uygulaması ol
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. Yöntemi `Main()` aşağıdaki **async** `Main` yöntemiyle değiştirin. Bir sonraki `RegisterOnMessageHandlerAndReceiveMessages()` adımda ekleyeceğiniz yöntemi çağırır. 
+3. `Main()` Yöntemini aşağıdaki **Async** `Main` yöntemiyle değiştirin. Bir sonraki adımda `RegisterOnMessageHandlerAndReceiveMessages()` ekleyeceğiniz yöntemi çağırır. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -371,7 +371,7 @@ Gönderdiğiniz iletileri almak için başka bir .NET Core konsol uygulaması ol
 Tebrikler! .NET Standard kitaplığını kullanarak bir konu ve abonelik oluşturdunuz, 10 ileti gönderdiniz ve bu iletileri aldınız.
 
 > [!NOTE]
-> [Servis](https://github.com/paolosalvatori/ServiceBusExplorer/)Veri Servisi Explorer ile Servis Veri Servisi kaynaklarını yönetebilirsiniz. Service Bus Explorer, kullanıcıların bir Service Bus ad alanına bağlanmasına ve ileti varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç, alma/dışa aktarma işlevselliği veya konuyu, kuyrukları, abonelikleri, geçiş hizmetlerini, bildirim hub'larını ve olay hub'larını test etme olanağı gibi gelişmiş özellikler sağlar. 
+> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

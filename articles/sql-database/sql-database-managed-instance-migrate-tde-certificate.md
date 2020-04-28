@@ -1,6 +1,6 @@
 ---
-title: TDE sertifikasını geçir - yönetilen örnek
-description: Saydam Veri Şifrelemesi ile veritabanının Veritabanı Şifreleme Anahtarını koruyan sertifikayı Azure SQL Veritabanı Yönetilen Örneği'ne geçirin
+title: TDE sertifikası ile yönetilen örneği geçirme
+description: Azure SQL veritabanı yönetilen örneği 'ne saydam veri şifrelemesi ile bir veritabanının veritabanı şifreleme anahtarını koruyan sertifikayı geçirme
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,15 +12,15 @@ ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
 ms.openlocfilehash: 0f6e379287323d9353acd887cf30d5c9c0065959
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74555379"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>TDE korumalı veritabanının sertifikasını Azure SQL Veritabanı Yönetilen Örneği’ne geçirme
 
-[Saydam Veri Şifrelemesi](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) tarafından korunan bir veritabanını yerel geri yükleme seçeneğini kullanarak Azure SQL Veritabanı Yönetilen Örneği'ne geçirdiğinizde, şirket içi veya IaaS SQL Server'dan gelen ilgili sertifikanın veritabanı geri yüklemesinden önce geçirilmesi gerekir. Bu makale, sertifikanın Azure SQL Veritabanı Yönetilen Örneği’ne el ile geçiş işleminde size yol gösterir:
+Yerel geri yükleme seçeneği kullanılarak [Saydam veri şifrelemesi](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) tarafından korunan bir VERITABANıNı Azure SQL veritabanı yönetilen örneği 'ne geçirirken, şirket Içi veya ıaas SQL Server karşılık gelen sertifikanın veritabanı geri yüklemeden önce geçirilmesi gerekir. Bu makale, sertifikanın Azure SQL Veritabanı Yönetilen Örneği’ne el ile geçiş işleminde size yol gösterir:
 
 > [!div class="checklist"]
 > * Sertifikayı Kişisel Bilgi Değişimi (.pfx) dosyası olarak dışarı aktarma
@@ -30,7 +30,7 @@ ms.locfileid: "74555379"
 Tam yönetilen hizmet kullanılarak hem TDE korumalı veritabanının hem de ilgili sertifikanın sorunsuz geçişini sağlamaya yönelik alternatif bir seçenek için bkz. [Azure Veritabanı Geçiş Hizmeti'ni kullanarak şirket içi veritabanınızı Yönetilen Örneğe geçirme](../dms/tutorial-sql-server-to-managed-instance.md).
 
 > [!IMPORTANT]
-> Geçirilen sertifika yalnızca TDE korumalı veritabanını geri yüklemek için kullanılır. Geri yükleme yapıldıktan kısa bir süre sonra, geçiş yapılan sertifika, örnekte ayarladığınız saydam veri şifrelemesinin türüne bağlı olarak, anahtar kasasından hizmet yönetilen sertifika veya asimetrik anahtar olmak üzere farklı bir koruyucuyla değiştirilir.
+> Geçirilen sertifika yalnızca TDE korumalı veritabanını geri yüklemek için kullanılır. Geri yükleme işlemi yapıldıktan kısa süre sonra, geçirilen sertifika, örnekte belirlediğiniz saydam veri şifrelemesinin türüne bağlı olarak, hizmet tarafından yönetilen sertifika veya asimetrik anahtar tarafından farklı bir koruyucu ile değiştirilmiştir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -39,19 +39,19 @@ Bu makaledeki adımları tamamlayabilmeniz için şu önkoşullar gereklidir:
 - Şirket içi sunucuya veya dosya olarak dışarı aktarılan sertifikaya erişimi olan başka bir bilgisayara yüklenmiş [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) komut satırı aracı. Pvk2Pfx aracı, tek başına kendi içinde bir komut satırı ortamı olan [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk)'in bir parçasıdır.
 - [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell) sürüm 5.0 veya üstü yüklenmiş olmalıdır.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Aşağıdakilere sahip olduğunuzdan emin olun:
 
-- Azure PowerShell modülü [yüklendi ve güncellendi.](https://docs.microsoft.com/powershell/azure/install-az-ps)
-- [Az.Sql modülü](https://www.powershellgallery.com/packages/Az.Sql).
+- Azure PowerShell modül [yüklendi ve güncelleştirildi](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- [Az. SQL modülü](https://www.powershellgallery.com/packages/Az.Sql).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure Kaynak Yöneticisi modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirme az.sql modülü içindir. Bu cmdlets için [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)bakın. Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
-Modülü yüklemek/güncellemek için PowerShell'de aşağıdaki komutları çalıştırın:
+Modülü yüklemek/güncelleştirmek için PowerShell 'de aşağıdaki komutları çalıştırın:
 
 ```azurepowershell
 Install-Module -Name Az.Sql
@@ -127,9 +127,9 @@ Sertifika SQL Server’ın yerel makine sertifika depolama alanında tutuluyorsa
 
 4. Sertifikayı ve özel anahtarı Kişisel Bilgi Değişimi biçiminde dışarı aktarmak için sihirbazı izleyin
 
-## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>Azure PowerShell cmdlet kullanarak Azure SQL Veritabanı Yönetilen Örneği'ne sertifika yükleme
+## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>Azure PowerShell cmdlet 'ini kullanarak Azure SQL veritabanı yönetilen örneği 'ne sertifika yükleme
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. PowerShell’deki hazırlık adımlarını başlatın:
 
@@ -158,7 +158,7 @@ Sertifika SQL Server’ın yerel makine sertifika depolama alanında tutuluyorsa
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Önce *.pfx* dosyanızla [bir Azure Anahtar Kasası kurmanız](/azure/key-vault/key-vault-manage-with-cli2) gerekir.
+Önce *. pfx* dosyanız ile [bir Azure Key Vault](/azure/key-vault/key-vault-manage-with-cli2) ayarlamanız gerekir.
 
 1. PowerShell’deki hazırlık adımlarını başlatın:
 
@@ -186,6 +186,6 @@ Sertifikaya artık belirtilen Yönetilen Örnekten ulaşılabilir ve buna karş�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, şirket içi veya IaaS SQL Server'dan Azure SQL Veritabanı Yönetilen Örneği'ne şeffaf veri şifreleme ile veritabanının şifreleme anahtarını koruyan sertifikayı nasıl geçirtileceği nizi öğrendiniz.
+Bu makalede, şirket içi veya IaaS SQL Server Azure SQL veritabanı yönetilen örneği ' ne Saydam Veri Şifrelemesi ile veritabanının şifreleme anahtarını koruyan sertifikayı nasıl geçirebileceğiniz öğrendiniz.
 
 Azure SQL Veritabanı Yönetilen Örneği’nde veritabanı yedeğini geri yüklemeyi öğrenmek için bkz. [Veritabanı yedeğini Azure SQL Veritabanı Yönetilen Örneği’ne geri yükleme](sql-database-managed-instance-get-started-restore.md).

@@ -1,5 +1,5 @@
 ---
-title: B2B işbirliği için SaaS uygulamalarını yapılandırın - Azure AD
+title: B2B işbirliği için SaaS uygulamalarını Yapılandırma-Azure AD
 description: Azure Active Directory B2B işbirliği için kod ve PowerShell örnekleri
 services: active-directory
 ms.service: active-directory
@@ -13,97 +13,97 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c73a14c2a8cd063672bd0998368ca660f52cd5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272945"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B işbirliği için SaaS uygulamalarını yapılandırma
 
-Azure Etkin Dizin (Azure AD) B2B işbirliği, Azure AD ile tümleşen uygulamaların çoğunda çalışır. Bu bölümde, Azure AD B2B ile kullanılmak üzere bazı popüler SaaS uygulamalarını yapılandırma yönergelerini gözden geçiriyoruz.
+Azure Active Directory (Azure AD) B2B işbirliği, Azure AD ile tümleştirilen birçok uygulama ile birlikte çalışmaktadır. Bu bölümde, Azure AD B2B ile kullanılmak üzere bazı popüler SaaS uygulamalarını yapılandırmaya yönelik yönergeleri adım adım inceleyeceğiz.
 
-Uygulamaya özel talimatlara bakmadan önce, başparmak bazı kurallar şunlardır:
+Uygulamaya özgü yönergelere bakmadan önce, Thumb 'in bazı kuralları aşağıda verilmiştir:
 
-* Uygulamaların çoğunda, kullanıcı kurulumunun el ile gerçekleşmesi gerekir. Diğer bir deyişle, kullanıcıların uygulamada da el ile oluşturulması gerekir.
+* Çoğu uygulama için, Kullanıcı kurulumunun el ile gerçekleşmesi gerekir. Diğer bir deyişle, kullanıcıların da uygulamada el ile oluşturulması gerekir.
 
-* Dropbox gibi otomatik kurulumu destekleyen uygulamalar için uygulamalardan ayrı davetiyeler oluşturulur. Kullanıcılar her daveti kabul etmek gerekir.
+* Dropbox gibi otomatik kurulumu destekleyen uygulamalar için, uygulamalardan ayrı davetler oluşturulur. Kullanıcılar her daveti kabul ettiğinizden emin olmalıdır.
 
-* Kullanıcı özniteliklerinde, konuk kullanıcılarda ezilmiş kullanıcı profil diski (UPD) ile ilgili sorunları azaltmak için, **kullanıcı tanımlayıcısını** her zaman **user.mail**olarak ayarlayın.
+* Kullanıcı öznitelikleri ' nde, Konuk kullanıcılar içindeki karıştırılmış Kullanıcı profili diski (UPD) ile ilgili sorunları azaltmak için Kullanıcı **tanımlayıcısını** her zaman **Kullanıcı. Mail**olarak ayarlayın.
 
 
-## <a name="dropbox-business"></a>Dropbox İş
+## <a name="dropbox-business"></a>Dropbox Iş
 
-Kullanıcıların kuruluş hesaplarını kullanarak oturum açmalarını sağlamak için, Azure AD'yi Güvenlik İddiası Biçimlendirme Dili (SAML) kimlik sağlayıcısı olarak kullanacak şekilde Dropbox Business'ı el ile yapılandırmanız gerekir. Dropbox Business bunu yapacak şekilde yapılandırılmamışsa, kullanıcıların Azure AD kullanarak oturum açmasına izin veremez veya başka bir şekilde oturum açamaz.
+Kullanıcıların kuruluş hesaplarını kullanarak oturum açmasını sağlamak için Dropbox Business 'ı Security Assertion Markup Language (SAML) kimlik sağlayıcısı olarak Azure AD 'yi kullanacak şekilde el ile yapılandırmanız gerekir. Dropbox Business bunu yapmak üzere yapılandırılmamışsa, kullanıcıların Azure AD 'yi kullanarak oturum açmalarına izin vermez ya da izin vermez.
 
-1. Dropbox Business uygulamasını Azure AD'ye eklemek için sol bölmedeki **Kurumsal uygulamaları** seçin ve sonra **Ekle'yi**tıklatın.
+1. Dropbox Business uygulamasını Azure AD 'ye eklemek için sol bölmedeki **Kurumsal uygulamalar** ' ı seçin ve ardından **Ekle**' ye tıklayın.
 
-   ![Kurumsal uygulamalar sayfasındaki "Ekle" düğmesi](media/configure-saas-apps/add-dropbox.png)
+   ![Kurumsal uygulamalar sayfasında "Ekle" düğmesi](media/configure-saas-apps/add-dropbox.png)
 
-2. Uygulama **ekle** penceresinde, arama kutusuna **dropbox** girin ve ardından sonuç listesinde **İşletmeler için Dropbox'ı** seçin.
+2. **Uygulama Ekle** penceresinde, arama kutusuna **Dropbox** girin ve ardından sonuçlar listesinde **iş için Dropbox** ' u seçin.
 
-   ![Uygulama ekle sayfasında "dropbox" araması](media/configure-saas-apps/add-app-dialog.png)
+   ![Uygulama Ekle sayfasında "Dropbox" araması yapın](media/configure-saas-apps/add-app-dialog.png)
 
-3. Tek **oturum açma** sayfasında, sol bölmede **Tek oturum** açma'yı seçin ve ardından User **Identifier** kutusuna **user.mail** girin. (Varsayılan olarak UPN olarak ayarlanır.)
+3. **Çoklu oturum** açma sayfasında sol bölmedeki **Çoklu oturum açma** ' yı seçin ve Kullanıcı **tanımlayıcısı** kutusuna **Kullanıcı. Mail** yazın. (Varsayılan olarak UPN olarak ayarlanır.)
 
-   ![Uygulama için tek oturum açma yapılandırma](media/configure-saas-apps/configure-app-sso.png)
+   ![Uygulama için çoklu oturum açmayı yapılandırma](media/configure-saas-apps/configure-app-sso.png)
 
-4. Dropbox yapılandırması için kullanılacak sertifikayı indirmek için **DropBox'ı Yapılandır'ı**ve ardından listede **SAML Tek Oturum Açma Hizmet URL'sini** seçin.
+4. Dropbox yapılandırması için kullanılacak sertifikayı indirmek için **Dropbox 'ı Yapılandır**' ı seçin ve ardından listeden **SAML çoklu oturum açma hizmeti URL 'sini** seçin.
 
-   ![Dropbox yapılandırması için sertifikayı indirme](media/configure-saas-apps/download-certificate.png)
+   ![Dropbox yapılandırması için sertifika indiriliyor](media/configure-saas-apps/download-certificate.png)
 
-5. Tek oturum açma sayfasındaki oturum açma URL'si ile Dropbox'ta oturum **açın.**
+5. **Çoklu oturum** açma sayfasından oturum açma URL 'Si ile Dropbox 'ta oturum açın.
 
    ![Dropbox oturum açma sayfasını gösteren ekran görüntüsü](media/configure-saas-apps/sign-in-to-dropbox.png)
 
-6. Menüde Yönetici **Konsolu'nu**seçin.
+6. Menüsünde, **Yönetici Konsolu**' nu seçin.
 
    ![Dropbox menüsündeki "Yönetici Konsolu" bağlantısı](media/configure-saas-apps/dropbox-menu.png)
 
-7. Kimlik **Doğrulama** iletişim **kutusunda, Daha Fazla,** sertifikayı yükleyin ve ardından **URL'de Oturum Aç** kutusuna SAML tek oturum açma URL'sini girin.
+7. **Kimlik doğrulama** iletişim kutusunda, **daha fazla**' yı seçin, sertifikayı karşıya yükleyin ve ardından **oturum aç URL** 'SI kutusuna SAML çoklu oturum açma URL 'sini girin.
 
-   ![Daraltılmış Kimlik Doğrulama iletişim kutusundaki "Daha fazla" bağlantı](media/configure-saas-apps/dropbox-auth-01.png)
+   ![Daraltılan kimlik doğrulama iletişim kutusunda "daha fazla" bağlantısı](media/configure-saas-apps/dropbox-auth-01.png)
 
-   ![Genişletilmiş Kimlik Doğrulama iletişim kutusundaki "GIRIŞ URL'sini oturum aç"](media/configure-saas-apps/paste-single-sign-on-URL.png)
+   ![Genişletilmiş kimlik doğrulaması iletişim kutusunda "oturum aç URL 'SI"](media/configure-saas-apps/paste-single-sign-on-URL.png)
 
-8. Azure portalında otomatik kullanıcı kurulumunu yapılandırmak için sol bölmede **Sağlama'yı** seçin, **Sağlama Modu** kutusunda **Otomatik'i** seçin ve ardından **Yetkilendirme'yi**seçin.
+8. Azure portal otomatik Kullanıcı Kurulumu yapılandırmak için, sol bölmede **sağlama** ' yı seçin, **sağlama modu** kutusunda **Otomatik** ' i seçin ve ardından **Yetkilendir**' i seçin.
 
-   ![Azure portalında otomatik kullanıcı sağlama yapılandırma](media/configure-saas-apps/set-up-automatic-provisioning.png)
+   ![Azure portal otomatik Kullanıcı sağlamayı yapılandırma](media/configure-saas-apps/set-up-automatic-provisioning.png)
 
-Dropbox uygulamasında konuk veya üye kullanıcılar kurulduktan sonra Dropbox'tan ayrı bir davet alırlar. Dropbox'ta tek oturum açma seçeneğini kullanmak için davetlilerin daveti bir bağlantıyı tıklatarak kabul etmesi gerekir.
+Konuk veya üye kullanıcıları Dropbox uygulamasında ayarladıktan sonra Dropbox 'tan ayrı bir davet alırlar. Dropbox çoklu oturum açma 'yı kullanmak için davetliler, içindeki bir bağlantıya tıklayarak daveti kabul etmelidir.
 
 ## <a name="box"></a>Box
-SAML protokolünü temel alan federasyonu kullanarak kullanıcıların Azure AD hesaplarıyla Kutu konuk kullanıcıların kimliğini doğrulamalarını sağlayabilirsiniz. Bu yordamda, meta verileri Box.com yüklersiniz.
+SAML protokolünü temel alan Federasyonu kullanarak kullanıcıların Azure AD hesabıyla Box Konuk kullanıcıları için kimlik doğrulaması yapmasını sağlayabilirsiniz. Bu yordamda, meta verileri Box.com 'e yüklersiniz.
 
-1. Kurumsal uygulamalardan Kutu uygulamasını ekleyin.
+1. Kurumsal uygulamalardan Box uygulamasını ekleyin.
 
-2. Aşağıdaki sırada tek oturum açma yapılandırma:
+2. Çoklu oturum açmayı aşağıdaki sırada yapılandırın:
 
-   ![Tek oturum açma yapılandırma ayarlarını gösteren ekran görüntüsü](media/configure-saas-apps/configure-box-sso.png)
+   ![Çoklu oturum açma yapılandırma ayarlarını gösteren ekran görüntüsü](media/configure-saas-apps/configure-box-sso.png)
 
-   a. **URL'de Oturum Aç** kutusunda, oturum açma URL'sinin Azure portalındaki Kutu için uygun şekilde ayarlandığından emin olun. Bu URL, Box.com kiracınızın URL'sidir. Adlandırma kuralını *https://.box.com*takip etmelidir.  
-   **Tanımlayıcı** bu uygulama için geçerli değildir, ancak yine de zorunlu bir alan olarak görünür.
+   a. **Oturum açma URL 'si** kutusunda, oturum açma url 'Sinin Azure Portal kutusu için uygun şekilde ayarlandığından emin olun. Bu URL, Box.com kiracınızın URL 'sidir. Adlandırma kuralını *https://.box.com*izlemelidir.  
+   **Tanımlayıcı** bu uygulama için uygulanmıyor, ancak yine de zorunlu bir alan olarak görünüyor.
 
-   b. Kullanıcı **tanımlayıcı** kutusuna **user.mail** girin (konuk hesapları için SSO için).
+   b. **Kullanıcı tanımlayıcısı** kutusuna **User. Mail** (Konuk hesapları için SSO) yazın.
 
-   c. **SAML İmzaSertifikası**altında, **yeni sertifika oluştur'u**tıklatın.
+   c. **SAML Imzalama sertifikası**altında **Yeni sertifika oluştur**' a tıklayın.
 
-   d. Box.com kiracınızı Azure AD'yi kimlik sağlayıcısı olarak kullanacak şekilde yapılandırmaya başlamak için meta veri dosyasını indirin ve ardından yerel sürücünüze kaydedin.
+   d. Box.com kiracınızı bir kimlik sağlayıcısı olarak Azure AD kullanacak şekilde yapılandırmaya başlamak için, meta veri dosyasını indirin ve ardından yerel sürücünüze kaydedin.
 
-   e. Meta veri dosyasını, sizin için tek oturum açma yı yapılandıran Kutu destek ekibine iletin.
+   e. Meta veri dosyasını, sizin için çoklu oturum açmayı yapılandıran Box destek ekibine iletin.
 
-3. Azure AD otomatik kullanıcı kurulumu için, sol **bölmede, Sağlama'yı**seçin ve ardından **Yetkilendirme'yi**seçin.
+3. Azure AD otomatik Kullanıcı Kurulumu için, sol bölmede **sağlama**' yı seçin ve ardından **Yetkilendir**' i seçin.
 
-   ![Azure AD'yi Kutuya bağlanmak için yetkilendirme](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
+   ![Box 'a bağlanmak için Azure AD 'yi yetkilendirme](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
 
-Dropbox davetlileri gibi Box davetlilerinin de davetlerini Kutu uygulamasından kullanmaları gerekir.
+Dropbox davetliler gibi Box davetliler, Box uygulamasının davetini kullanmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure AD B2B işbirliği ile ilgili aşağıdaki makalelere bakın:
 
 - [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
-- [Dinamik gruplar ve B2B işbirliği](use-dynamic-groups.md)
-- [B2B işbirliği kullanıcı iddiaları eşleme](claims-mapping.md)
+- [Dinamik Gruplar ve B2B işbirliği](use-dynamic-groups.md)
+- [B2B işbirliği Kullanıcı talepleri eşleme](claims-mapping.md)
 - [Office 365 dış paylaşım](o365-external-user.md)
 

@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: sethm
 ms.openlocfilehash: 7fd161c90234d45a6751f173ba3685ee8c392c87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74260910"
 ---
-## <a name="webapi-project"></a>WebAPI Projesi
+## <a name="webapi-project"></a>WebAPI projesi
 
-1. Visual Studio'da, **Kullanıcıları Bildir** öğreticisinde oluşturduğunuz **AppBackend** projesini açın.
-2. Notifications.cs, **bildirimler** sınıfının tamamını aşağıdaki kodla değiştirin. Yer tutucuları, bildirim hub'ınız ve hub adınız için bağlantı dizenizi (tam erişimli) değiştirdiğinizden emin olun. Bu değerleri [Azure portalından](https://portal.azure.com)edinebilirsiniz. Bu modül artık gönderilecek farklı güvenli bildirimleri temsil eder. Tam bir uygulamada, bildirimler bir veritabanında depolanır; basitlik için, bu durumda biz bellekte saklayın.
+1. Visual Studio 'da, **kullanıcıları bilgilendir** öğreticisinde oluşturduğunuz **apparka uç** projesini açın.
+2. Notifications.cs ' de, tüm **bildirim** sınıfını aşağıdaki kodla değiştirin. Yer tutucuları, Bildirim Hub 'ınız ve hub adı için bağlantı dizeniz (tam erişim ile) değiştirdiğinizden emin olun. Bu değerleri [Azure Portal](https://portal.azure.com)elde edebilirsiniz. Bu modül artık gönderilecek farklı güvenli bildirimleri temsil eder. Tüm bir uygulamada, bildirimler bir veritabanında depolanır; kolaylık olması için, bu durumda bunları bellekte depolarız.
    
    ```csharp
     public class Notification
@@ -56,7 +56,7 @@ ms.locfileid: "74260910"
     }
     ```
 
-1. NotificationsController.cs, **NotificationsController** sınıf tanımının içindeki kodu aşağıdaki kodla değiştirin. Bu bileşen, aygıtın bildirimi güvenli bir şekilde alması için bir yol uygular ve ayrıca aygıtlarınıza güvenli bir itme tetiklemenin bir yolunu (bu öğreticinin amaçları için) sağlar. Bildirim hub'ına bildirim gönderirken, yalnızca bildirimin kimliği (ve gerçek bir ileti olmadan) ham bir bildirim gönderdiğimizi unutmayın:
+1. NotificationsController.cs ' de, **Notificationscontroller** sınıf tanımının içindeki kodu aşağıdaki kodla değiştirin. Bu bileşen, cihazın bildirimi güvenli bir şekilde alması için bir yol uygular ve ayrıca cihazlarınıza güvenli bir gönderim tetiklemesi için bir yol (Bu öğreticinin amaçları doğrultusunda) sağlar. Bildirimi Bildirim Hub 'ına gönderirken yalnızca bildirimin KIMLIĞIYLE (gerçek ileti olmadan) ham Bildirim gönderdiğimiz unutulmamalıdır:
    
    ```csharp
     public NotificationsController()
@@ -92,7 +92,7 @@ ms.locfileid: "74260910"
     }
     ```
 
-Yöntemin `Post` artık tost bildirimi göndermediğini unutmayın. Yalnızca bildirim kimliği içeren ham bir bildirim gönderir ve herhangi bir hassas içerik gönderir. Ayrıca, bildirim merkezinizde kimlik bilgileri yapılandırılan olmayan platformlar için gönderme işlemini yorumladığınızdan emin olun, çünkü bunlar hatalara neden olacaktır.
+`Post` Yöntemin şimdi bir bildirim göndermediğini unutmayın. Yalnızca bildirim KIMLIĞINI içeren ve hassas içerik olmayan ham bir bildirim gönderir. Ayrıca, hata oluşmasına yol açacak şekilde, Bildirim Hub 'ında kimlik bilgilerinizin yapılandırılmadığı platformlar için gönderme işlemine yorum yaptığınızdan emin olun.
 
-1. Şimdi bu uygulamayı tüm cihazlardan erişilebilir hale getirmek için bir Azure Web Sitesine yeniden dağıtacağız. **AppBackend** projesine sağ tıklayıp **Yayımla**’yı seçin.
-2. Yayımlama hedefiniz olarak Azure Web Sitesini seçin. Azure hesabınızla oturum açın ve varolan veya yeni bir Web Sitesi seçin ve **Bağlantı** sekmesinde **hedef URL** özelliğine dikkat edin. Bu URL'yi daha sonra bu öğreticide *arka uç bitiş noktanız* olarak adlandıracağız. **Yayımla**’ta tıklayın.
+1. Şimdi bu uygulamayı tüm cihazlardan erişilebilir hale getirmek için bir Azure Web sitesine yeniden dağıtacağız. **AppBackend** projesine sağ tıklayıp **Yayımla**’yı seçin.
+2. Yayımlama hedefi olarak Azure Web sitesini seçin. Azure hesabınızla oturum açın ve var olan veya yeni bir Web sitesini seçin ve **bağlantı** SEKMESINDE **hedef URL** özelliğini bir yere göz önüne alın. Bu öğreticide daha sonra *arka uç uç* noktanız olarak bu URL 'ye başvuracağız. **Yayımla**’ta tıklayın.

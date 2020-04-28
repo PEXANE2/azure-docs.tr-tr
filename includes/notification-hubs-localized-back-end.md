@@ -9,13 +9,13 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 520a0b4ec42b9a32fbd30c28c7ce311b5445f23d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74260909"
 ---
-Şablon bildirimleri gönderdiğinizde, yalnızca bir dizi özellik sağlamanız gerekir. Bu senaryoda, özellikler kümesi geçerli haberlerin yerelleştirilmiş sürümünü içerir.
+Şablon bildirimleri gönderdiğinizde yalnızca bir özellikler kümesi sağlamanız gerekir. Bu senaryoda, özellikler kümesi geçerli haberlerin yerelleştirilmiş sürümünü içerir.
 
 ```json
 {
@@ -25,9 +25,9 @@ ms.locfileid: "74260909"
 }
 ```
 
-### <a name="send-notifications-using-a-c-console-app"></a>C# konsol uytun uygulamasını kullanarak bildirim gönderme
+### <a name="send-notifications-using-a-c-console-app"></a>C# konsol uygulaması kullanarak bildirim gönderme
 
-Bu bölümde, bir konsol uygulamasını kullanarak bildirimlerin nasıl gönderilen gösteriliyor. Kod, bildirimleri hem Windows Mağazası'na hem de iOS aygıtlarına yayınlar. Daha önce oluşturduğunuz konsol uygulamasındaki `SendTemplateNotificationAsync` yöntemini aşağıdaki kodla değiştirin:
+Bu bölüm, bir konsol uygulaması kullanarak bildirimlerin nasıl gönderileceğini gösterir. Kod hem Windows Mağazası hem de iOS cihazlarına bildirim yayınlar. Daha önce oluşturduğunuz konsol uygulamasındaki `SendTemplateNotificationAsync` yöntemini aşağıdaki kodla değiştirin:
 
 ```csharp
 private static async void SendTemplateNotificationAsync()
@@ -66,11 +66,11 @@ private static async void SendTemplateNotificationAsync()
 }
 ```
 
-SendTemplateNotificationAsync yöntemi, platformdan bağımsız olarak **tüm** aygıtlarınıza yerelleştirilmiş haber parçasını sunar. Bildirim merkeziniz, belirli bir etikete abone olan tüm aygıtlara doğru yerel yükü oluşturur ve sağlar.
+Sendtemplatenocertificate bağımsız zaman uyumsuz yöntemi, platformdan bağımsız olarak yerelleştirilmiş haberleri **Tüm** cihazlarınıza gönderir. Bildirim Hub 'ınız, belirli bir etikete abone olan tüm cihazlara doğru yerel yük oluşturur ve gönderir.
 
-### <a name="sending-notification-with-mobile-services"></a>Mobil Hizmetlerle bildirim gönderme
+### <a name="sending-notification-with-mobile-services"></a>Mobile Services bildirim gönderiliyor
 
-Mobil Hizmetler zamanlayıcısınızda aşağıdaki komut dosyasını kullanın:
+Mobile Services Scheduler 'da aşağıdaki betiği kullanın:
 
 ```csharp
 var azure = require('azure');

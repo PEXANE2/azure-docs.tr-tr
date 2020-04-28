@@ -5,36 +5,36 @@ author: ecfan
 ms.author: estfan
 ms.date: 03/02/2018
 ms.openlocfilehash: 1aabc1b33722c571c6519b6620fb62211a44c2e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789742"
 ---
-1. Azure [portalında](https://portal.azure.com)boş bir mantık uygulaması oluşturun. 
+1. [Azure Portal](https://portal.azure.com), boş bir mantıksal uygulama oluşturun. 
 
-2. Logic Apps Designer'a filtreniz olarak "github" girin. 
+2. Logic Apps tasarımcısında filtreniz olarak "GitHub" yazın. 
 
-3. GitHub konektörünü ve kullanmak istediğiniz tetikleyiciyi seçin.
+3. GitHub bağlayıcısını ve kullanmak istediğiniz tetikleyiciyi seçin.
 
-   ![GitHub konektörünü ve tetikleyiciyi seçin](./media/connectors-create-api-github/github-connector.png)
+   ![GitHub bağlayıcısını ve bir tetikleyiciyi seçin](./media/connectors-create-api-github/github-connector.png)
 
    > [!NOTE]
-   > Tüm mantık uygulaması iş akışları bir tetikleyici ile başlamalıdır. Eylemleri yalnızca mantık iş akışınız zaten bir tetikleyiciyle başladığında seçebilirsiniz. 
+   > Tüm mantıksal uygulama iş akışlarının bir tetikleyiciyle başlaması gerekir. Yalnızca mantık iş akışınız zaten bir tetikleyiciyle başlatıldığında Eylemler ' i seçebilirsiniz. 
 
-4. Daha önce bir bağlantı oluşturmadıysanız, istendiğinde GitHub kimlik bilgilerinizi sağlayabilmek için **Oturum Aç'ı** seçin.  
+4. Daha önce bir bağlantı oluşturmadıysanız, istendiğinde GitHub kimlik bilgilerinizi sağlayabilmeniz için **oturum aç** ' ı seçin.  
 
    ![GitHub kimlik bilgilerinizle oturum açın](./media/connectors-create-api-github/github-connector-sign-in-credentials.png)
 
-   Mantık uygulamanız, GitHub hesabınıziçin veri bağlamayı ve bunlara erişmeye yetki vermek için bu kimlik bilgilerini kullanır. 
+   Mantıksal uygulamanız, GitHub hesabınıza yönelik verileri bağlamayı ve bunlara erişmeyi yetkilendirmek için bu kimlik bilgilerini kullanır. 
 
-5. GitHub kullanıcı adınızı ve parolanızı girin ve yetkilendirmenizi onaylayın.
+5. GitHub Kullanıcı adınızı ve parolanızı girip yetkilendirmeyi onaylayın.
 
-   ![Kimlik bilgileri sağlayın ve yetkilendirmeyi onaylayın](./media/connectors-create-api-github/github-connector-authorize.png)   
+   ![Kimlik bilgilerini sağlayın ve yetkilendirmeyi onaylayın](./media/connectors-create-api-github/github-connector-authorize.png)   
 
-   Bağlantınız artık Azure portalında oluşturuldu ve kullanıma hazır.
+   Bağlantınız artık Azure portal oluşturulmuştur ve kullanıma hazırdır.
 
-6. Mantık uygulaması iş akışınızı tanımlamaya devam edin.
+6. Mantıksal uygulama iş akışınızı tanımlamaya devam edin.
 
-   ![Mantık uygulaması iş akışınıza daha fazla eylem ekleme](./media/connectors-create-api-github/github-connector-logic-app.png)
+   ![Mantıksal uygulama iş akışınıza daha fazla eylem ekleyin](./media/connectors-create-api-github/github-connector-logic-app.png)
 

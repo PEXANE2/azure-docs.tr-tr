@@ -1,88 +1,88 @@
 ---
-title: Uyarıları yapılandırma - Azure portalı - PostgreSQL için Azure Veritabanı - Tek Sunucu
-description: Bu makalede, Azure portalından PostgreSQL - Single Server için Azure Veritabanı için metrik uyarıların nasıl yapılandırılabildiğini ve bunlara erişilenler açıklanmaktadır.
+title: Uyarıları Yapılandırma-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
+description: Bu makalede, Azure portal 'den PostgreSQL için Azure veritabanı-tek sunucu için ölçüm uyarılarını yapılandırma ve erişme açıklanır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: fe099dcb49d176d27466c08749a5873904d1ae2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74766846"
 ---
-# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı ölçümlerinde uyarılar ayarlamak için Azure portalını kullanın - Tek Sunucu
+# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı-tek sunucu ölçümlerinde uyarıları ayarlamak için Azure portal kullanın
 
-Bu makalede, Azure portalını kullanarak PostgreSQL uyarıları için Azure Veritabanı'nı nasıl ayarlayabileceğiniz gösterilmektedir. Azure hizmetleriniz için izleme ölçümlerine dayalı bir uyarı alabilirsiniz.
+Bu makalede, Azure portal kullanarak PostgreSQL için Azure veritabanı uyarılarını ayarlama konusu gösterilmektedir. Azure hizmetleriniz için izleme ölçümlerini temel alan bir uyarı alabilirsiniz.
 
-Belirli bir metnin değeri atadığınız bir eşiği geçtiğinde uyarı tetikler. Uyarı, hem koşul ilk karşılaştığında hem de daha sonra bu koşul artık karşılanmadığında tetikler. 
+Uyarı, belirtilen bir ölçümün değeri atadığınız bir eşiği aştığında tetiklenir. Uyarı hem koşul ilk karşılandığında hem de daha sonra bu koşul karşılanamadığında daha sonra tetiklenir. 
 
-Bir uyarıyı tetiklediğinde aşağıdaki eylemleri yapmak üzere yapılandırabilirsiniz:
-* Hizmet yöneticisine ve yardımcı yöneticilere e-posta bildirimleri gönderin.
+Bir uyarıyı, tetiklendiğinde aşağıdaki eylemleri yapmak üzere yapılandırabilirsiniz:
+* Hizmet yöneticisine ve ortak yöneticilere e-posta bildirimleri gönderin.
 * Belirttiğiniz ek e-postalara e-posta gönderin.
-* Bir webhook çağırın.
+* Web kancası çağırın.
 
-Şu bilgileri kullanarak uyarı kurallarını yapılandırabilir ve bilgi alabilirsiniz:
-* [Azure portalında](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz:
+* [Azure portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure İzleyici REST API'si](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure portalından bir metrik te uyarı kuralı oluşturma
-1. Azure [portalında,](https://portal.azure.com/)izlemek istediğiniz PostgreSQL sunucusu için Azure Veritabanı'nı seçin.
+## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure portal bir ölçümde uyarı kuralı oluşturma
+1. [Azure Portal](https://portal.azure.com/), Izlemek Istediğiniz PostgreSQL Için Azure veritabanı sunucusu ' nu seçin.
 
-2. Kenar çubuğunun **İzleme** bölümü altında, gösterildiği gibi **Uyarılar'ı** seçin:
+2. Kenar çubuğunun **izleme** bölümü altında gösterildiği gibi **Uyarılar** ' ı seçin:
 
-   ![Uyarı Kurallarını Seçin](./media/howto-alert-on-metric/2-alert-rules.png)
+   ![Uyarı kurallarını seçin](./media/howto-alert-on-metric/2-alert-rules.png)
 
-3. **Metrik uyarı ekle** (+ simgesi) seçeneğini belirleyin.
+3. **Ölçüm uyarısı Ekle** (+ simgesi) seçeneğini belirleyin.
 
-4. **Oluştur kuralı** sayfası aşağıda gösterildiği gibi açılır. Gerekli bilgileri doldurun:
+4. **Kural oluştur** sayfası aşağıda gösterildiği gibi açılır. Gerekli bilgileri girin:
 
-   ![Metrik uyarı formu ekleme](./media/howto-alert-on-metric/4-add-rule-form.png)
+   ![Ölçüm uyarısı formu Ekle](./media/howto-alert-on-metric/4-add-rule-form.png)
 
-5. **Koşul** bölümünde, **Koşul Ekle'yi**seçin.
+5. **Koşul** bölümünde **Koşul Ekle**' yi seçin.
 
-6. Uyarılacak sinyaller listesinden bir metrik seçin. Bu örnekte, "Depolama yüzdesi"ni seçin.
+6. Uyarı almak için sinyaller listesinden bir ölçüm seçin. Bu örnekte, "depolama alanı yüzdesi" ni seçin.
    
    ![Ölçüm seçin](./media/howto-alert-on-metric/6-configure-signal-logic.png)
 
-7. **Koşul** (ör. "Büyük"), **Eşik** (ör. Yüzde 85), **Zaman Toplama**, **Zaman zaman** metrik kural uyarı tetikler önce memnun edilmelidir (ör. "Son 30 dakika içinde") ve **Frekans**.
+7. **Koşul** (örn.) gibi uyarı mantığını yapılandırın. "Büyüktür"), **eşik** (örn. yüzde 85), **zaman toplama**, ölçüm kuralının uyarı tetikleyiciden önce karşılanması **gereken süre (** örn. "Son 30 dakika içinde") ve **Sıklık**.
    
-   Tamamlandığında **Bitti'yi** seçin.
+   Tamamlandığında **bitti** ' yi seçin.
 
    ![Ölçüm seçin](./media/howto-alert-on-metric/7-set-threshold-time.png)
 
-8. Eylem **Grupları** bölümünde, uyarıda bildirim almak için yeni bir grup oluşturmak için **Yeni** Oluştur'u'nu seçin.
+8. Uyarı üzerinde bildirim almak üzere yeni bir grup oluşturmak için **eylem grupları** bölümünde **Yeni oluştur** ' u seçin.
 
-9. "Eylem grubu ekle" formunu bir ad, kısa ad, abonelik ve kaynak grubuyla doldurun.
+9. "Eylem grubu Ekle" formunu bir ad, kısa ad, abonelik ve kaynak grubuyla doldurun.
 
 10. **E-posta/SMS/Push/Voice** eylem türünü yapılandırın.
     
-    Bildirim almak için abonelik Sahiplerini, Katkıda Bulunanları ve Okuyucuları seçmek için "Azure Kaynak Yöneticisi Rolü'nü e-posta yla gönder"i seçin.
+    Bildirimleri almak için abonelik sahipleri, katkıda bulunanlar ve okuyucular seçmek üzere "e-posta Azure Resource Manager rolü" nü seçin.
    
-    İsteğe bağlı olarak, uyarı çıktığında çağrılsın istiyorsanız **Webhook** alanında geçerli bir URI sağlayın.
+    İsteğe bağlı olarak, uyarı tetiklendiğinde çağırılabilmesi istiyorsanız **Web kancası** alanında GEÇERLI bir URI sağlayın.
 
-    Tamamlandığında **Tamam'ı** seçin.
+    Tamamlandığında **Tamam ' ı** seçin.
 
     ![Eylem grubu](./media/howto-alert-on-metric/10-action-group-type.png)
 
-11. Uyarı kural adı, Açıklama ve Önem belirtin.
+11. Bir uyarı kuralı adı, açıklaması ve önem derecesi belirtin.
 
     ![Eylem grubu](./media/howto-alert-on-metric/11-name-description-severity.png) 
 
-12. Uyarıyı oluşturmak için **uyarı oluştur kuralını** seçin.
+12. Uyarı oluşturmak için **Uyarı kuralı oluştur** ' u seçin.
 
-    Birkaç dakika içinde, uyarı etkin dir ve daha önce açıklandığı gibi tetikler.
+    Birkaç dakika içinde, uyarı etkin ve daha önce açıklandığı gibi tetikler.
 
 ## <a name="manage-your-alerts"></a>Uyarılarınızı yönetme
-Bir uyarı oluşturduktan sonra, uyarıyı seçebilir ve aşağıdaki eylemleri yapabilirsiniz:
+Bir uyarı oluşturduktan sonra, bunu seçebilir ve aşağıdaki eylemleri gerçekleştirebilirsiniz:
 
-* Bu uyarıyla ilgili önceki güne ait metrik eşiği ve gerçek değerleri gösteren bir grafiği görüntüleyin.
-* Uyarı kuralını **düzenle** veya **sil.**
-* Bildirimleri geçici olarak durdurmak veya bildirim almaya devam etmek istiyorsanız, uyarıyı **devre dışı bırakın** veya **etkinleştirin.**
+* Ölçüm eşiğini ve Bu uyarıyla ilgili olan önceki günün gerçek değerlerini gösteren bir grafik görüntüleyin.
+* Uyarı kuralını **düzenleyin** veya **silin** .
+* Bildirimleri almayı geçici olarak durdurmak veya yeniden başlatmak istiyorsanız, uyarıyı **devre dışı bırakın** veya **etkinleştirin** .
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Uyarılardaki web hook'ları yapılandırma](../azure-monitor/platform/alerts-webhooks.md)hakkında daha fazla bilgi edinin.
-* Hizmetinizin kullanılabilir ve yanıt veren olduğundan emin olmak için [metrik koleksiyonuna genel bir bakış](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) alın.
+* [Uyarılarda Web kancalarını yapılandırma](../azure-monitor/platform/alerts-webhooks.md)hakkında daha fazla bilgi edinin.
+* Hizmetinizin kullanılabilir olduğundan ve yanıt verebilmesini sağlamak için [ölçüm koleksiyonuna genel bakış](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) alın.

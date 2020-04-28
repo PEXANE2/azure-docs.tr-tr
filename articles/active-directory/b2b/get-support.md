@@ -1,5 +1,5 @@
 ---
-title: B2B işbirliği için destek alma - Azure Active Directory
+title: B2B işbirliği için destek alma-Azure Active Directory
 description: Azure Active Directory B2B işbirliği için destek deneyimi nedir?
 services: active-directory
 ms.service: active-directory
@@ -13,30 +13,30 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00817acf93295becefab2d1a61de84a3f5519338
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272763"
 ---
-# <a name="getting-support-for-b2b-collaboration"></a>B2B işbirliği için destek alma
+# <a name="getting-support-for-b2b-collaboration"></a>B2B işbirliği desteği alma
 
-Belgeleri okudun, doğru şeyleri yaptın ama yine de bir şeyler bulamıyor musun? Destek bileti açın (destek planı gerektirir):
+Belgeleri okudunuz, doğru şeyleri tamamladınız, ancak yine de çalışmayı alamıyoruz mi? Bir destek bileti açın (bir destek planı gerektirir):
 
-1. [Azure portalında](https://portal.azure.com)Yardım ve Destek bıçağına gidin ve Yeni Destek İsteği'ni seçin:
+1. [Azure Portal](https://portal.azure.com), yardım ve destek dikey penceresine gidin ve yeni destek isteği ' ni seçin:
    - Sorun türü: Teknik
-   - Abonelik: Etkilenen aboneliği seçin
-     - Hizmet: Aktif Dizin
-     - Destek Planı: İlgili destek planını seçin
+   - Abonelik: etkilenen aboneliği seçin
+     - Hizmet: Active Directory
+     - Destek planı: ilgili destek planını seçin
 
-   ![Yeni bir destek isteğini gösteren ekran görüntüsü](media/get-support/new-support-request.png)
+   ![Yeni bir destek isteği gösteren ekran görüntüsü](media/get-support/new-support-request.png)
 
-2. Sorununuzu açıklayın:
+2. Sorununuzu açıkla:
    - İhtiyaçlarınızı yansıtan uygun önem derecesini seçin.
-   - Kullanıcı ve Grup Yönetimi Olarak Sorun Türünü Seçin
-   - Kullanıcı Ekleme Kategorisi (B2B) seçin
-   - CorrelationID, etkilenen kullanıcılar ve benzeri hatalar gibi tüm hata iletilerini ekleyin.
+   - Kullanıcı ve Grup yönetimi olarak sorun türünü seçin
+   - Kullanıcı ekleme (B2B) olarak kategori seçme
+   - CorrelationId, etkilenen kullanıcılar vb. gibi tüm hata iletilerini ekleyin.
 
-   ![Destek bileti sorunu açıklamasını gösteren ekran görüntüsü](media/get-support/problem-description.png)
+   ![Destek bileti sorun açıklamasını gösteren ekran görüntüsü](media/get-support/problem-description.png)
 
-3. Daha fazla sorun giderme için bir destek temsilcisinin sizinle iletişim kurması için iletişim bilgilerinizi ekleyin.
+3. Daha fazla sorun giderme için sizinle iletişim kurmak üzere bir destek temsilcisinin iletişim bilgilerini ekleyin.

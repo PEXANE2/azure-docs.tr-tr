@@ -1,70 +1,70 @@
 ---
-title: Kayıt defteri webhook şema başvurusu
-description: Yapı itme veya silme olayları için webhook'lar etkinleştirildiğinde oluşturulan Azure kapsayıcı kayıt defterindeki webhook istekleri için JSON yükü için başvuru
+title: Kayıt defteri Web kancası şema başvurusu
+description: Web kancaları yapıt Push veya delete olayları için etkinleştirildiğinde oluşturulan bir Azure Container Registry içindeki Web kancası istekleri için JSON yükünün başvurusu
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74455967"
 ---
-# <a name="azure-container-registry-webhook-reference"></a>Azure Konteyner Kayıt Defteri webhook başvurusu
+# <a name="azure-container-registry-webhook-reference"></a>Web kancası başvurusunu Azure Container Registry
 
-Konteyner kayıt defteriniz için [web hooks'ları yapılandırabilirsiniz](container-registry-webhook.md) ve bu da belirli eylemler gerçekleştirildiğinde olay oluşturur. Örneğin, bir kapsayıcı resmi veya Miğfer grafiği bir kayıt defterine itildiğinde veya silindiğinde tetiklenen web hook'ları etkinleştirin. Bir web hook tetiklendiğinde, Azure Kapsayıcı Kayıt Defteri, olayla ilgili bilgileri içeren bir HTTP veya HTTPS isteğini belirttiğiniz bir bitiş noktasına kadar yayınlar. Bitiş noktanız daha sonra webhook'u işleyebilir ve buna göre hareket edebilir.
+[Web kancalarını](container-registry-webhook.md) kapsayıcı kayıt defteriniz için, belirli eylemleri buna karşı gerçekleştirilen olaylar üreten şekilde yapılandırabilirsiniz. Örneğin, bir kapsayıcı görüntüsü veya helb grafiği bir kayıt defterine gönderildiğinde veya silindiğinde tetiklenen Web kancalarını etkinleştirin. Web kancası tetiklendiğinde, belirttiğiniz bir uç noktaya olay hakkında bilgi içeren bir HTTP veya HTTPS isteği yayınlar Azure Container Registry. Uç noktanız daha sonra Web kancasını işleyebilir ve uygun şekilde hareket edebilir.
 
-Aşağıdaki bölümlerde desteklenen olaylar tarafından oluşturulan webhook isteklerinin şeması ayrıntılı. Olay bölümleri, olay türü için yük şema, bir örnek istek yükü ve webhook tetiklemek bir veya daha fazla örnek komutları içerir.
+Aşağıdaki bölümler desteklenen olaylar tarafından oluşturulan Web kancası isteklerinin şemasını ayrıntılandırır. Olay bölümleri, olay türü için yük şemasını, örnek bir istek yükünü ve Web kancasını tetikleyecek bir veya daha fazla örnek komutu içerir.
 
-Azure kapsayıcı kayıt defteriniz için web hooks yapılandırma hakkında daha fazla bilgi için [bkz.](container-registry-webhook.md)
+Azure Container Registry 'niz için Web kancalarını yapılandırma hakkında daha fazla bilgi için bkz. [Azure Container Registry Web kancaları kullanma](container-registry-webhook.md).
 
-## <a name="webhook-requests"></a>Webhook istekleri
+## <a name="webhook-requests"></a>Web kancası istekleri
 
 ### <a name="http-request"></a>HTTP isteği
 
-Tetiklenen bir webhook, `POST` webhook'u yapılandırdığınızda belirttiğiniz URL bitiş noktasına BIR HTTP isteği nde bulunun.
+Tetiklenen bir Web kancası, Web `POST` kancasını YAPıLANDıRDıĞıNıZDA belirlediğiniz URL uç noktasına bir http isteği oluşturur.
 
-### <a name="http-headers"></a>HTTP üstbilgi
+### <a name="http-headers"></a>HTTP üstbilgileri
 
-Webhook istekleri, `Content-Type` `application/json` webhook'unuzun `Content-Type` özel üstbilgisini belirtmediyseniz bir tane içerir.
+Web kancası istekleri `Content-Type` , `application/json` Web kancası için `Content-Type` özel bir üst bilgi belirtminizi içerir.
 
-Webhook için belirtmiş olabileceğiniz özel üstbilgidışında isteğe başka üstbilgi eklenmez.
+İstek için Web kancası için belirtmiş olabileceğiniz özel üstbilgilerin ötesinde başka üst bilgi eklenmez.
 
-## <a name="push-event"></a>Itme olayı
+## <a name="push-event"></a>Anında iletme olayı
 
-Webhook, bir kapsayıcı görüntüsü depoya itildiğinde tetiklenir.
+Bir kapsayıcı görüntüsü depoya gönderildiğinde Web kancası tetiklendi.
 
-### <a name="push-event-payload"></a>Itme olay yükü
+### <a name="push-event-payload"></a>Olay yükünü gönder
 
 |Öğe|Tür|Açıklama|
 |-------------|----------|-----------|
-|`id`|Dize|Webhook olayının kimliği.|
-|`timestamp`|DateTime|Webhook olayının tetiklendiği saat.|
-|`action`|Dize|Webhook olayını tetikleyen eylem.|
-|[Hedef](#target)|Karmaşık Tür|Webhook olayını tetikleyen olayın hedefi.|
-|[Istek](#request)|Karmaşık Tür|Webhook olayını oluşturan istek.|
+|`id`|Dize|Web kancası olayının KIMLIĞI.|
+|`timestamp`|DateTime|Web kancası olayının tetiklendiği zaman.|
+|`action`|Dize|Web kancası olayını tetikleyen eylem.|
+|[hedef](#target)|Karmaşık Tür|Web kancası olayını tetikleyen etkinliğin hedefi.|
+|[isteyen](#request)|Karmaşık Tür|Web kancası olayını oluşturan istek.|
 
-### <a name="target"></a><a name="target"></a>Hedef
+### <a name="target"></a><a name="target"></a>hedef
 
 |Öğe|Tür|Açıklama|
 |------------------|----------|-----------|
 |`mediaType`|Dize|Başvurulan nesnenin MIME türü.|
-|`size`|Int32|İçeriğin bayt sayısı. Uzunluk alanıyla aynı.|
-|`digest`|Dize|Kayıt Defteri V2 HTTP API Belirtimi tarafından tanımlandığı gibi içeriğin özeti.|
+|`size`|Int32|İçeriğin bayt sayısı. Length alanıyla aynı.|
+|`digest`|Dize|Kayıt defteri v2 HTTP API belirtiminde tanımlanan şekilde içeriğin özeti.|
 |`length`|Int32|İçeriğin bayt sayısı. Boyut alanıyla aynı.|
 |`repository`|Dize|Depo adı.|
 |`tag`|Dize|Resim etiketi adı.|
 
-### <a name="request"></a><a name="request"></a>Istek
+### <a name="request"></a><a name="request"></a>isteyen
 
 |Öğe|Tür|Açıklama|
 |------------------|----------|-----------|
-|`id`|Dize|Olayı başlatan isteğin kimliği.|
-|`host`|Dize|Gelen isteklerde HTTP ana bilgisayar üstbilgisinde belirtildiği gibi, kayıt defteri örneğinin dışarıdan erişilebilir ana adı.|
+|`id`|Dize|Olayı başlatan isteğin KIMLIĞI.|
+|`host`|Dize|Gelen isteklerde HTTP ana bilgisayar üst bilgisi tarafından belirtilen şekilde, kayıt defteri örneğinin dışarıdan erişilebilen ana bilgisayar adı.|
 |`method`|Dize|Olayı oluşturan istek yöntemi.|
-|`useragent`|Dize|İsteğin kullanıcı aracısı üstbilgisi.|
+|`useragent`|Dize|İsteğin Kullanıcı Aracısı üst bilgisi.|
 
-### <a name="payload-example-image-push-event"></a>Yük örneği: görüntü itme olayı
+### <a name="payload-example-image-push-event"></a>Yük örneği: görüntü gönderme olayı
 
 ```JSON
 {
@@ -88,38 +88,38 @@ Webhook, bir kapsayıcı görüntüsü depoya itildiğinde tetiklenir.
 }
 ```
 
-Görüntü **itme** olay webhook tetikleyen Örnek [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) komutu:
+Görüntü **gönderme** olayı Web kancasını tetikleyen örnek [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) komutu:
 
 ```bash
 docker push myregistry.azurecr.io/hello-world:v1
 ```
 
-## <a name="chart-push-event"></a>Grafik itme olayı
+## <a name="chart-push-event"></a>Grafik gönderme olayı
 
-Bir Miğfer grafiği bir depoya itildiğinde Webhook tetiklenir.
+Bir Helu grafiği depoya gönderildiğinde Web kancası tetiklendi.
 
-### <a name="chart-push-event-payload"></a>Grafik itme olay yükü
+### <a name="chart-push-event-payload"></a>Grafik gönderim olayı yükü
 
 |Öğe|Tür|Açıklama|
 |-------------|----------|-----------|
-|`id`|Dize|Webhook olayının kimliği.|
-|`timestamp`|DateTime|Webhook olayının tetiklendiği saat.|
-|`action`|Dize|Webhook olayını tetikleyen eylem.|
-|[Hedef](#helm_target)|Karmaşık Tür|Webhook olayını tetikleyen olayın hedefi.|
+|`id`|Dize|Web kancası olayının KIMLIĞI.|
+|`timestamp`|DateTime|Web kancası olayının tetiklendiği zaman.|
+|`action`|Dize|Web kancası olayını tetikleyen eylem.|
+|[hedef](#helm_target)|Karmaşık Tür|Web kancası olayını tetikleyen etkinliğin hedefi.|
 
-### <a name="target"></a><a name="helm_target"></a>Hedef
+### <a name="target"></a><a name="helm_target"></a>hedef
 
 |Öğe|Tür|Açıklama|
 |------------------|----------|-----------|
 |`mediaType`|Dize|Başvurulan nesnenin MIME türü.|
 |`size`|Int32|İçeriğin bayt sayısı.|
-|`digest`|Dize|Kayıt Defteri V2 HTTP API Belirtimi tarafından tanımlandığı gibi içeriğin özeti.|
+|`digest`|Dize|Kayıt defteri v2 HTTP API belirtiminde tanımlanan şekilde içeriğin özeti.|
 |`repository`|Dize|Depo adı.|
-|`tag`|Dize|Grafik etiket adı.|
+|`tag`|Dize|Grafik etiketi adı.|
 |`name`|Dize|Grafik adı.|
-|`version`|Dize|Grafik versiyonu.|
+|`version`|Dize|Grafik sürümü.|
 
-### <a name="payload-example-chart-push-event"></a>Yük örneği: grafik itme olayı
+### <a name="payload-example-chart-push-event"></a>Yük örneği: grafik gönderme olayı
 
 ```JSON
 {
@@ -138,44 +138,44 @@ Bir Miğfer grafiği bir depoya itildiğinde Webhook tetiklenir.
 }
 ```
 
-Örnek [Azure CLI](/cli/azure/acr) komutu **chart_push** olay webhook tetikler:
+**Chart_push** olay Web kancasını tetikleyen örnek [Azure CLI](/cli/azure/acr) komutu:
 
 ```azurecli
 az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 ```
 
-## <a name="delete-event"></a>Olayı silme
+## <a name="delete-event"></a>Etkinliği sil
 
-Bir görüntü deposu veya bildirimi silindiğinde webhook tetiklenir. Etiket silindiğinde tetiklenmez.
+Bir görüntü deposu veya bildirim silindiğinde Web kancası tetiklendi. Bir etiket silindiğinde tetiklenmez.
 
-### <a name="delete-event-payload"></a>Olay yükünü silme
+### <a name="delete-event-payload"></a>Olay yükünü Sil
 
 |Öğe|Tür|Açıklama|
 |-------------|----------|-----------|
-|`id`|Dize|Webhook olayının kimliği.|
-|`timestamp`|DateTime|Webhook olayının tetiklendiği saat.|
-|`action`|Dize|Webhook olayını tetikleyen eylem.|
-|[Hedef](#delete_target)|Karmaşık Tür|Webhook olayını tetikleyen olayın hedefi.|
-|[Istek](#delete_request)|Karmaşık Tür|Webhook olayını oluşturan istek.|
+|`id`|Dize|Web kancası olayının KIMLIĞI.|
+|`timestamp`|DateTime|Web kancası olayının tetiklendiği zaman.|
+|`action`|Dize|Web kancası olayını tetikleyen eylem.|
+|[hedef](#delete_target)|Karmaşık Tür|Web kancası olayını tetikleyen etkinliğin hedefi.|
+|[isteyen](#delete_request)|Karmaşık Tür|Web kancası olayını oluşturan istek.|
 
-### <a name="target"></a><a name="delete_target"></a>Hedef
+### <a name="target"></a><a name="delete_target"></a>hedef
 
 |Öğe|Tür|Açıklama|
 |------------------|----------|-----------|
 |`mediaType`|Dize|Başvurulan nesnenin MIME türü.|
-|`digest`|Dize|Kayıt Defteri V2 HTTP API Belirtimi tarafından tanımlandığı gibi içeriğin özeti.|
+|`digest`|Dize|Kayıt defteri v2 HTTP API belirtiminde tanımlanan şekilde içeriğin özeti.|
 |`repository`|Dize|Depo adı.|
 
-### <a name="request"></a><a name="delete_request"></a>Istek
+### <a name="request"></a><a name="delete_request"></a>isteyen
 
 |Öğe|Tür|Açıklama|
 |------------------|----------|-----------|
-|`id`|Dize|Olayı başlatan isteğin kimliği.|
-|`host`|Dize|Gelen isteklerde HTTP ana bilgisayar üstbilgisinde belirtildiği gibi, kayıt defteri örneğinin dışarıdan erişilebilir ana adı.|
+|`id`|Dize|Olayı başlatan isteğin KIMLIĞI.|
+|`host`|Dize|Gelen isteklerde HTTP ana bilgisayar üst bilgisi tarafından belirtilen şekilde, kayıt defteri örneğinin dışarıdan erişilebilen ana bilgisayar adı.|
 |`method`|Dize|Olayı oluşturan istek yöntemi.|
-|`useragent`|Dize|İsteğin kullanıcı aracısı üstbilgisi.|
+|`useragent`|Dize|İsteğin Kullanıcı Aracısı üst bilgisi.|
 
-### <a name="payload-example-image-delete-event"></a>Taşıma örneği: resim silme olayı
+### <a name="payload-example-image-delete-event"></a>Yük örneği: görüntü silme olayı
 
 ```JSON
 {
@@ -196,7 +196,7 @@ Bir görüntü deposu veya bildirimi silindiğinde webhook tetiklenir. Etiket si
   }
 ```
 
-Örnek Bir **silme** olayı webhook tetikleyen [Azure CLI](/cli/azure/acr) komutları:
+Olay **silme** Web kancasını tetikleyen örnek [Azure CLI](/cli/azure/acr) komutları:
 
 ```azurecli
 # Delete repository
@@ -208,30 +208,30 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 
 ## <a name="chart-delete-event"></a>Grafik silme olayı
 
-Bir Miğfer grafiği veya deposu silindiğinde webhook tetiklenir. 
+Bir helb grafiği veya deposu silindiğinde Web kancası tetiklendi. 
 
-### <a name="chart-delete-event-payload"></a>Grafik silme olay yükü
+### <a name="chart-delete-event-payload"></a>Grafik olay yükünü silme
 
 |Öğe|Tür|Açıklama|
 |-------------|----------|-----------|
-|`id`|Dize|Webhook olayının kimliği.|
-|`timestamp`|DateTime|Webhook olayının tetiklendiği saat.|
-|`action`|Dize|Webhook olayını tetikleyen eylem.|
-|[Hedef](#chart_delete_target)|Karmaşık Tür|Webhook olayını tetikleyen olayın hedefi.|
+|`id`|Dize|Web kancası olayının KIMLIĞI.|
+|`timestamp`|DateTime|Web kancası olayının tetiklendiği zaman.|
+|`action`|Dize|Web kancası olayını tetikleyen eylem.|
+|[hedef](#chart_delete_target)|Karmaşık Tür|Web kancası olayını tetikleyen etkinliğin hedefi.|
 
-### <a name="target"></a><a name="chart_delete_target"></a>Hedef
+### <a name="target"></a><a name="chart_delete_target"></a>hedef
 
 |Öğe|Tür|Açıklama|
 |------------------|----------|-----------|
 |`mediaType`|Dize|Başvurulan nesnenin MIME türü.|
 |`size`|Int32|İçeriğin bayt sayısı.|
-|`digest`|Dize|Kayıt Defteri V2 HTTP API Belirtimi tarafından tanımlandığı gibi içeriğin özeti.|
+|`digest`|Dize|Kayıt defteri v2 HTTP API belirtiminde tanımlanan şekilde içeriğin özeti.|
 |`repository`|Dize|Depo adı.|
-|`tag`|Dize|Grafik etiket adı.|
+|`tag`|Dize|Grafik etiketi adı.|
 |`name`|Dize|Grafik adı.|
-|`version`|Dize|Grafik versiyonu.|
+|`version`|Dize|Grafik sürümü.|
 
-### <a name="payload-example-chart-delete-event"></a>Taşıma örneği: grafik silme olayı
+### <a name="payload-example-chart-delete-event"></a>Yük örneği: grafik silme olayı
 
 ```JSON
 {
@@ -250,7 +250,7 @@ Bir Miğfer grafiği veya deposu silindiğinde webhook tetiklenir.
 }
 ```
 
-Örnek [Azure CLI](/cli/azure/acr) komutu **chart_delete** olay webhook tetikler:
+**Chart_delete** olay Web kancasını tetikleyen örnek [Azure CLI](/cli/azure/acr) komutu:
 
 ```azurecli
 az acr helm delete wordpress --version 5.4.0 --name MyRegistry
@@ -258,4 +258,4 @@ az acr helm delete wordpress --version 5.4.0 --name MyRegistry
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Kapsayıcı Kayıt Defteri webhooks kullanma](container-registry-webhook.md)
+[Azure Container Registry Web kancalarını kullanma](container-registry-webhook.md)

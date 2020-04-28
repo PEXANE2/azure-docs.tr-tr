@@ -1,49 +1,49 @@
 ---
-title: Öğretici - Çoklu kapsayıcı grubunu dağıt - şablon
-description: Bu eğitimde, Azure CLI ile bir Azure Kaynak Yöneticisi şablonu kullanarak Azure Kapsayıcı Örnekleri'nde birden çok kapsayıcıiçeren bir kapsayıcı grubunu nasıl dağıtabileceğinizi öğrenirsiniz.
+title: Öğretici-çok Kapsayıcılı grup dağıtma-şablon
+description: Bu öğreticide, Azure CLı ile Azure Resource Manager şablonu kullanarak Azure Container Instances birden çok kapsayıcılı bir kapsayıcı grubunu dağıtmayı öğreneceksiniz.
 ms.topic: article
 ms.date: 04/03/2019
 ms.custom: mvc
 ms.openlocfilehash: d2b4e20520cad28c5d62118f6c9d10fcc43ac89e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74533635"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtma
 
 > [!div class="op_single_selector"]
 > * [YAML](container-instances-multi-container-yaml.md)
-> * [Kaynak Yöneticisi](container-instances-multi-container-group.md)
+> * [Resource Manager](container-instances-multi-container-group.md)
 
-Azure Kapsayıcı Örnekleri, bir [kapsayıcı grubu](container-instances-container-groups.md)kullanarak birden çok kapsayıcının tek bir ana bilgisayara dağıtımını destekler. Bir kapsayıcı grubu, bir hizmetin ikinci bir bağlı işleme ihtiyaç duyduğu günlüğe kaydetme, izleme veya başka bir yapılandırma için bir uygulama kenar arabası inşa ederken yararlıdır.
+Azure Container Instances, [kapsayıcı grubu](container-instances-container-groups.md)kullanılarak tek bir konakta birden fazla kapsayıcının dağıtımını destekler. Bir kapsayıcı grubu, günlüğe kaydetme, izleme veya bir hizmetin ikinci bağlı bir işleme ihtiyacı olan başka herhangi bir yapılandırma için bir uygulama arabası oluşturulması durumunda faydalıdır.
 
-Bu öğreticide, Azure CLI'yi kullanarak bir Azure Kaynak Yöneticisi şablonu dağıtarak basit bir iki kapsayıcı kenar araba yapılandırması çalıştırma adımlarını izlersiniz. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+Bu öğreticide, Azure CLı kullanarak bir Azure Resource Manager şablonu dağıtarak basit iki kapsayıcılı bir sepet yapılandırması çalıştırmak için adımları takip edersiniz. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Çok kapsayıcılı grup şablonu yapılandırma
+> * Çok kapsayıcılı bir grup şablonu yapılandırma
 > * Kapsayıcı grubunu dağıtma
 > * Kapsayıcıların günlüklerini görüntüleme
 
-Kaynak Yöneticisi şablonu, kapsayıcı grubuyla ek Azure hizmet kaynakları (örneğin, Azure Dosyaları paylaşımı veya sanal ağ) dağıtmanız gerektiğinde senaryolar için kolayca uyarlanabilir. 
+Bir Kaynak Yöneticisi şablonu, kapsayıcı grubuyla ek Azure hizmet kaynakları (örneğin, bir Azure dosya paylaşımında veya sanal ağ) dağıtmanız gerektiğinde senaryolar için kolay bir şekilde uyarlanmıştır. 
 
 > [!NOTE]
-> Çoklu kapsayıcı grupları şu anda Linux kapsayıcıları ile sınırlıdır. 
+> Çok Kapsayıcılı gruplar Şu anda Linux kapsayıcılarıyla kısıtlıdır. 
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="configure-a-template"></a>Şablonu yapılandırma
+## <a name="configure-a-template"></a>Şablon yapılandırma
 
-Aşağıdaki JSON'u yeni bir dosyaya `azuredeploy.json`kopyalayarak başlayın. Azure Bulut BulutU'da, çalışma dizininizde dosyayı oluşturmak için Visual Studio Code'u kullanabilirsiniz:
+Aşağıdaki JSON öğesini adlı `azuredeploy.json`yeni bir dosyaya kopyalayarak başlayın. Azure Cloud Shell, çalışma dizininizde dosyayı oluşturmak için Visual Studio Code kullanabilirsiniz:
 
 ```
 code azuredeploy.json
 ```
 
-Bu Kaynak Yöneticisi şablonu, iki kapsayıcı, genel BIR IP adresi ve iki açık bağlantı noktası içeren bir kapsayıcı grubu tanımlar. Gruptaki ilk kapsayıcı internete bakan bir web uygulaması çalıştırAr. İkinci konteyner, sidecar, grubun yerel ağ üzerinden ana web uygulaması için bir HTTP isteği yapar.
+Bu Kaynak Yöneticisi şablonu, iki kapsayıcı, genel IP adresi ve iki açığa çıkarılan bağlantı noktası içeren bir kapsayıcı grubunu tanımlar. Gruptaki ilk kapsayıcı, internet 'e yönelik bir Web uygulaması çalıştırır. İkinci kapsayıcı olan sepet, ana Web uygulamasına grubun yerel ağı aracılığıyla bir HTTP isteği oluşturur.
 
 ```JSON
 {
@@ -131,7 +131,7 @@ Bu Kaynak Yöneticisi şablonu, iki kapsayıcı, genel BIR IP adresi ve iki aç�
 }
 ```
 
-Özel bir kapsayıcı resim kayıt defteri kullanmak için, JSON belgesine aşağıdaki biçimde bir nesne ekleyin. Bu yapılandırmanın örnek bir uygulaması [için, ACI Kaynak Yöneticisi şablon başvuru][template-reference] belgelerine bakın.
+Özel bir kapsayıcı görüntüsü kayıt defteri kullanmak için, JSON belgesine aşağıdaki biçimde bir nesne ekleyin. Bu yapılandırmanın örnek bir uygulama için bkz. [aci Kaynak Yöneticisi şablonu başvuru][template-reference] belgeleri.
 
 ```JSON
 "imageRegistryCredentials": [
@@ -151,7 +151,7 @@ Bu Kaynak Yöneticisi şablonu, iki kapsayıcı, genel BIR IP adresi ve iki aç�
 az group create --name myResourceGroup --location eastus
 ```
 
-[Az grubu dağıtım oluşturma][az-group-deployment-create] komutu ile şablonu dağıtın.
+[Az Group Deployment Create][az-group-deployment-create] komutuyla şablonu dağıtın.
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file azuredeploy.json
@@ -159,15 +159,15 @@ az group deployment create --resource-group myResourceGroup --template-file azur
 
 Birkaç saniye içinde Azure’dan bir ilk yanıt almanız gerekir.
 
-## <a name="view-deployment-state"></a>Dağıtım durumunu görüntüleme
+## <a name="view-deployment-state"></a>Dağıtım durumunu görüntüle
 
-Dağıtım durumunu görüntülemek için aşağıdaki [az kapsayıcı göster][az-container-show] komutunu kullanın:
+Dağıtımın durumunu görüntülemek için, aşağıdaki [az Container Show][az-container-show] komutunu kullanın:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Çalışan uygulamayı görüntülemek istiyorsanız, tarayıcınızdaki IP adresine gidin. Örneğin, IP bu `52.168.26.124` örnek çıktı:
+Çalışan uygulamayı görüntülemek isterseniz, tarayıcınızda IP adresine gidin. Örneğin, IP Bu örnek çıktıdır `52.168.26.124` :
 
 ```bash
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
@@ -177,7 +177,7 @@ myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tut
 
 ## <a name="view-container-logs"></a>Kapsayıcı günlüklerini görüntüleme
 
-[Az kapsayıcı günlükleri][az-container-logs] komutunu kullanarak bir kapsayıcının günlük çıktısını görüntüleyin. Bağımsız `--container-name` değişken, günlükleri çekilecek kapsayıcıyı belirtir. Bu örnekte, `aci-tutorial-app` kapsayıcı belirtilir.
+[Az Container logs][az-container-logs] komutunu kullanarak bir kapsayıcının günlük çıktısını görüntüleyin. `--container-name` Bağımsız değişkeni, günlüklerin alınacağı kapsayıcıyı belirtir. Bu örnekte, `aci-tutorial-app` kapsayıcı belirtilir.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -192,7 +192,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Kenar araç kapsayıcısının günlüklerini görmek için, kapsayıcıyı `aci-tutorial-sidecar` belirten benzer bir komut çalıştırın.
+Sepet kapsayıcısının günlüklerini görmek için `aci-tutorial-sidecar` kapsayıcıyı belirten benzer bir komut çalıştırın.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -218,20 +218,20 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-Gördüğünüz gibi, kenar araba düzenli olarak ana web uygulamasına grubun yerel ağı üzerinden bir HTTP isteği nde bulunarak çalıştığını garanti eder. Bu sidecar örneği, 'den `200 OK`başka bir HTTP yanıt kodu aldıysa bir uyarıyı tetiklemek için genişletilebilir.
+Gördüğünüz gibi, sepet, çalıştığından emin olmak için grubun yerel ağı aracılığıyla ana Web uygulamasına bir HTTP isteği düzenli olarak yapar. Bu sepet örneği, dışında bir http yanıt kodu aldıysa bir uyarı tetiklemek için Genişletilebilir `200 OK`.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure Kapsayıcı Örnekleri'nde çok kapsayıcılı bir grup dağıtmak için bir Azure Kaynak Yöneticisi şablonu kullandınız. Şunları öğrendiniz:
+Bu öğreticide, Azure Container Instances içinde çok kapsayıcılı bir grubu dağıtmak için bir Azure Resource Manager şablonu kullandınız. Şunları öğrendiniz:
 
 > [!div class="checklist"]
-> * Çok kapsayıcılı grup şablonu yapılandırma
+> * Çok kapsayıcılı bir grup şablonu yapılandırma
 > * Kapsayıcı grubunu dağıtma
 > * Kapsayıcıların günlüklerini görüntüleme
 
-Ek şablon örnekleri için Azure [Kapsayıcı Örnekleri için Azure Kaynak Yöneticisi şablonlarına](container-instances-samples-rm.md)bakın.
+Ek şablon örnekleri için bkz. [Azure Container Instances için Azure Resource Manager şablonları](container-instances-samples-rm.md).
 
-Ayrıca, [yaml dosyakullanarak](container-instances-multi-container-yaml.md)bir çok kapsayıcı grubu belirtebilirsiniz. YAML biçiminin daha özlü yapısı nedeniyle, dağıtımınız yalnızca kapsayıcı örnekleri içeriyorsa, YAML dosyasıyla dağıtım iyi bir seçimdir.
+Ayrıca, [YAML dosyası](container-instances-multi-container-yaml.md)kullanarak çok kapsayıcılı bir grup belirtebilirsiniz. YAML biçiminin daha kısa olmasından dolayı, bir YAML dosyası ile dağıtım, dağıtımınız yalnızca kapsayıcı örnekleri içerdiğinde iyi bir seçimdir.
 
 
 <!-- LINKS - Internal -->
