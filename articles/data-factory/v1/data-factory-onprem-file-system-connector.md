@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nı kullanarak verileri dosya sistemine kopyalama
-description: Azure Veri Fabrikası'nı kullanarak şirket içi dosya sistemine verileri nasıl kopyalayıp kopyalayarak kopyalayabildiğini öğrenin.
+title: Azure Data Factory kullanarak bir dosya sistemine/veritabanından veri kopyalama
+description: Azure Data Factory kullanarak şirket içi bir dosya sistemine veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,83 +13,83 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d298c83c0c1a0f33f28644e2e467ad5035300221
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265941"
 ---
-# <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri şirket içi dosya sistemine kopyalayın
-> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
+# <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Azure Data Factory kullanarak şirket içi dosya sistemine veri kopyalama
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](data-factory-onprem-file-system-connector.md)
 > * [Sürüm 2 (geçerli sürüm)](../connector-file-system.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [V2'deki Dosya Sistemi bağlayıcısı bölümüne](../connector-file-system.md)bakın.
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [v2 'de dosya sistemi Bağlayıcısı](../connector-file-system.md).
 
 
-Bu makalede, şirket içi bir dosya sistemine/verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopya etkinliğiyle birlikte veri hareketine genel bir genel bakış sunan [Veri Hareketi Etkinlikleri](data-factory-data-movement-activities.md) makalesine dayanmaktadır.
+Bu makalede, şirket içi bir dosya sistemine/veritabanından veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğiyle veri hareketine genel bir bakış sunan [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde oluşturulur.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
-Şirket içi **dosya sistemindeki** verileri aşağıdaki veri depolarına kopyalayabilirsiniz:
+Şirket **içi bir dosya sisteminden** aşağıdaki veri depolarına veri kopyalayabilirsiniz:
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-Aşağıdaki veri depolarından verileri **şirket içi dosya sistemine**kopyalayabilirsiniz:
+Aşağıdaki veri depolarından verileri **Şirket içi dosya sistemine**kopyalayabilirsiniz:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!NOTE]
-> Copy Activity, hedefe başarıyla kopyalandıktan sonra kaynak dosyayı silmez. Başarılı bir kopyadan sonra kaynak dosyayı silmeniz gerekiyorsa, dosyayı silmek ve ardışık düzendeki etkinliği kullanmak için özel bir etkinlik oluşturun.
+> Kopyalama etkinliği, kaynak dosyayı başarıyla hedefe kopyalandıktan sonra silmez. Başarılı bir kopyadan sonra kaynak dosyayı silmeniz gerekiyorsa, dosyayı silmek ve işlem hattındaki etkinliği kullanmak için özel bir etkinlik oluşturun.
 
-## <a name="enabling-connectivity"></a>Bağlantı sağlama
-Veri Fabrikası, **Veri Yönetimi Ağ Geçidi**aracılığıyla şirket içi dosya sistemine bağlanmayı ve şirket içi dosya sistemine bağlanmayı destekler. Dosya sistemi de dahil olmak üzere desteklenen şirket içi veri deposuna bağlanmak için Veri Fabrikası hizmetinin şirket içi ortamınıza Veri Yönetimi Ağ Geçidi'ni yüklemeniz gerekir. Veri Yönetimi Ağ Geçidi hakkında bilgi edinmek ve ağ geçidini kurma yla ilgili adım adım talimatlar için [bkz.](data-factory-move-data-between-onprem-and-cloud.md) Veri Yönetimi Ağ Geçidi dışında, şirket içi dosya sistemine ve şirket içi dosya sistemine iletişim kurmak için başka ikili dosyaların yüklenmesi gerekmez. Dosya sistemi Azure IaaS VM'de olsa bile Veri Yönetimi Ağ Geçidi'ni yüklemeniz ve kullanmanız gerekir. Ağ geçidi hakkında ayrıntılı bilgi için [Veri Yönetimi Ağ Geçidi'ne](data-factory-data-management-gateway.md)bakın.
+## <a name="enabling-connectivity"></a>Bağlantı etkinleştiriliyor
+Data Factory, **veri yönetimi ağ geçidi**aracılığıyla şirket içi bir dosya sistemine bağlanmayı destekler. Dosya sistemi dahil desteklenen herhangi bir şirket içi veri deposuna bağlanmak için Data Factory hizmetinin şirket içi ortamınıza Veri Yönetimi ağ geçidini yüklemelisiniz. Veri Yönetimi ağ geçidi hakkında bilgi edinmek ve ağ geçidini ayarlamaya yönelik adım adım yönergeler için bkz. [veri yönetimi ağ geçidi ile şirket içi kaynaklar ve bulut arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md). Veri Yönetimi ağ geçidi dışında, şirket içi bir dosya sisteminden ve bu bilgisayardan iletişim kurmak için başka hiçbir ikili dosyanın yüklenmesi gerekmez. Dosya sistemi Azure IaaS VM 'sinde olsa bile Veri Yönetimi ağ geçidini yüklemeli ve kullanmanız gerekir. Ağ Geçidi hakkında ayrıntılı bilgi için bkz. [veri yönetimi Gateway](data-factory-data-management-gateway.md).
 
-Linux dosya paylaşımı nı kullanmak için [Samba'yı](https://www.samba.org/) Linux sunucunuza yükleyin ve Windows sunucusuna Veri Yönetimi Ağ Geçidi'ni yükleyin. Linux sunucusuna Veri Yönetimi Ağ Geçidi'nin yüklenmesi desteklenmez.
+Linux dosya paylaşımının kullanılması için, Linux sunucunuza [Samba](https://www.samba.org/) 'yi yükledikten sonra bir Windows sunucusuna veri yönetimi ağ geçidi yüklersiniz. Linux sunucusuna Veri Yönetimi ağ geçidi yükleme desteklenmez.
 
 ## <a name="getting-started"></a>Başlarken
-Farklı araçlar/API'ler kullanarak verileri dosya sistemine/dosya sisteminden hareket ettiren bir kopyalama etkinliği içeren bir ardışık düzen oluşturabilirsiniz.
+Farklı araçlar/API 'Ler kullanarak bir dosya sistemine/veritabanından veri taşıyan kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz.
 
-Bir ardışık yol oluşturmanın en kolay yolu **Kopyalama Sihirbazı'nı**kullanmaktır. Bkz. Öğretici: Veri kopyala sihirbazını kullanarak bir ardışık yol oluşturma konusunda hızlı bir geçiş için Kopya Sihirbazı kullanarak bir [ardışık kaynak oluşturun.](data-factory-copy-data-wizard-tutorial.md)
+İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-Bir ardışık kaynak oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeleri için [etkinlik öğreticisini](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyala'ya bakın.
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
-Araçları veya API'leri kullanın, verileri kaynak veri deposundan bir lavabo veri deposuna aktaran bir ardışık işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
+Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Bir **veri fabrikası**oluşturun. Bir veri fabrikası bir veya daha fazla ardışık hat lar içerebilir.
-2. Giriş ve çıktı veri depolarını veri fabrikanıza bağlamak için **bağlantılı hizmetler** oluşturun. Örneğin, bir Azure blob depolama sından şirket içi dosya sistemine veri kopyalıyorsanız, şirket içi dosya sisteminizi ve Azure depolama hesabınızı veri fabrikanıza bağlamak için iki bağlantılı hizmet oluşturursunuz. Şirket içi dosya sistemine özgü bağlantılı hizmet özellikleri için [bağlantılı hizmet özellikleri](#linked-service-properties) bölümüne bakın.
-3. Kopyalama işlemi için giriş ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. Son adımda belirtilen örnekte, giriş verilerini içeren blob kapsayıcısını ve klasörünü belirtmek için bir veri kümesi oluşturursunuz. Ayrıca, dosya sisteminizdeki klasör ve dosya adını (isteğe bağlı) belirtmek için başka bir veri kümesi oluşturursunuz. Şirket içi dosya sistemine özgü veri kümesi özellikleri için [veri kümesi özellikleri](#dataset-properties) bölümüne bakın.
-4. Giriş olarak veri kümesi ve çıktı olarak veri kümesi alan bir kopyalama etkinliği içeren bir **ardışık işlem oluşturma.** Daha önce bahsedilen örnekte, blobSource'u kaynak olarak, FileSystemSink'i ise kopyalama etkinliği için lavabo olarak kullanırsınız. Benzer şekilde, şirket içi dosya sisteminden Azure Blob Depolama'ya kopyalıyorsanız, kopyalama etkinliğinde FileSystemSource ve BlobSink'i kullanırsınız. Şirket içi dosya sistemine özgü kopyalama etkinlik özellikleri için [kopyalama etkinlik özellikleri](#copy-activity-properties) bölümüne bakın. Kaynak veya lavabo olarak veri deposunun nasıl kullanılacağı yla ilgili ayrıntılar için, veri deponuzun önceki bölümündeki bağlantıyı tıklatın.
+1. Bir **Veri Fabrikası**oluşturun. Bir veri fabrikası bir veya daha fazla işlem hattı içerebilir.
+2. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun. Örneğin, bir Azure Blob depolamadan şirket içi dosya sistemine veri kopyalıyorsanız, şirket içi dosya sisteminizi ve Azure depolama hesabınızı veri fabrikasına bağlamak için iki bağlı hizmet oluşturursunuz. Şirket içi bir dosya sistemine özgü bağlantılı hizmet özellikleri için bkz. [bağlı hizmet özellikleri](#linked-service-properties) bölümü.
+3. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. Son adımda bahsedilen örnekte, blob kapsayıcısını ve girdi verilerini içeren klasörü belirtmek için bir veri kümesi oluşturursunuz. Dosya sisteminizde klasör ve dosya adı (isteğe bağlı) belirtmek için başka bir veri kümesi oluşturursunuz. Şirket içi dosya sistemine özgü veri kümesi özellikleri için bkz. [veri kümesi özellikleri](#dataset-properties) bölümü.
+4. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun. Daha önce bahsedilen örnekte, BlobSource 'u kaynak olarak, kopyalama etkinliği için bir havuz olarak bir havuz olarak kullanırsınız. Benzer şekilde, şirket içi dosya sisteminden Azure Blob depolama alanına kopyalama yapıyorsanız, kopyalama etkinliğinde FileSystemSource ve BlobSink kullanın. Şirket içi dosya sistemine özgü kopyalama etkinliği özellikleri için bkz. [kopyalama etkinliği özellikleri](#copy-activity-properties) bölümü. Bir veri deposunu kaynak veya havuz olarak kullanma hakkında ayrıntılı bilgi için, veri deponuzdaki önceki bölümde yer alan bağlantıya tıklayın.
 
-Sihirbazı kullandığınızda, bu Veri Fabrikası varlıkları (bağlantılı hizmetler, veri kümeleri ve ardışık kuruluş) için JSON tanımları sizin için otomatik olarak oluşturulur. Araçları/API'leri (.NET API hariç) kullandığınızda, Bu Veri Fabrikası varlıklarını JSON biçimini kullanarak tanımlarsınız.  Bir dosya sistemine/dosya sisteminden veri kopyalamak için kullanılan Veri Fabrikası varlıkları için JSON tanımlı örnekler için bu makalenin [JSON örnekleri](#json-examples-for-copying-data-to-and-from-file-system) bölümüne bakın.
+Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçlar/API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız.  Bir dosya sistemine/dosyasından veri kopyalamak için kullanılan Data Factory varlıkları için JSON tanımları içeren örnekler için, bu makalenin [JSON örnekleri](#json-examples-for-copying-data-to-and-from-file-system) bölümüne bakın.
 
-Aşağıdaki bölümler, dosya sistemine özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
+Aşağıdaki bölümler, dosya sistemine özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
-Şirket içi dosya **sistemini, Şirket İçi Dosya Sunucusu** bağlantılı hizmetle bir Azure veri fabrikasına bağlayabilirsiniz. Aşağıdaki tablo, Şirket İçi Dosya Sunucusu bağlantılı hizmete özgü JSON öğeleri için açıklamalar sağlar.
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
+Şirket içi **dosya sunucusu** bağlı hizmeti Ile bir Azure Data Factory 'ye şirket içi dosya sistemi bağlayabilirsiniz. Aşağıdaki tabloda, şirket Içi dosya sunucusu bağlantılı hizmetine özgü JSON öğelerine yönelik açıklamalar sağlanmaktadır.
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Tür özelliğinin **OnPremisesFileServer**olarak ayarlandığından emin olun. |Evet |
-| konak |Kopyalamak istediğiniz klasörün kök yolunu belirtir. Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örnekler için [Örnek bağlantılı hizmet ve veri kümesi tanımlarına](#sample-linked-service-and-dataset-definitions) bakın. |Evet |
-| Userıd |Sunucuya erişimi olan kullanıcının kimliğini belirtin. |Hayır (şifrelenmiş Credential seçerseniz) |
-| password |Kullanıcının parolasını belirtin (userid). |Hayır (şifrelenmiş Credential seçerseniz |
-| şifreli Credential |New-AzDataFactoryEncryptValue cmdlet'i çalıştırarak elde edebileceğiniz şifrelenmiş kimlik bilgilerini belirtin. |Hayır (userid ve parolayı düz metinolarak belirtmeyi seçerseniz) |
-| ağ geçidiAdı |Veri Fabrikası'nın şirket içi dosya sunucusuna bağlanmak için kullanması gereken ağ geçidinin adını belirtir. |Evet |
+| type |Type özelliğinin **OnPremisesFileServer**olarak ayarlandığından emin olun. |Yes |
+| konak |Kopyalamak istediğiniz klasörün kök yolunu belirtir. Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örnekler için bkz. [örnek bağlantılı hizmet ve veri kümesi tanımları](#sample-linked-service-and-dataset-definitions) . |Yes |
+| UserID |Sunucuya erişimi olan kullanıcının KIMLIĞINI belirtin. |Hayır (encryptedCredential öğesini seçerseniz) |
+| password |Kullanıcının parolasını belirtin (Kullanıcı kimliği). |Hayır (encryptedCredential seçeneğini belirlerseniz |
+| encryptedCredential |New-AzDataFactoryEncryptValue cmdlet 'ini çalıştırarak alabileceğiniz şifrelenmiş kimlik bilgilerini belirtin. |Hayır (Kullanıcı kimliği ve parolayı düz metin olarak belirtmeyi seçerseniz) |
+| gatewayName |Data Factory şirket içi dosya sunucusuna bağlanmak için kullanması gereken ağ geçidinin adını belirtir. |Yes |
 
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Örnek bağlantılı hizmet ve veri kümesi tanımları
-| Senaryo | Bağlantılı hizmet tanımında ana bilgisayar | folderDataset tanımında yol |
+| Senaryo | Bağlı hizmet tanımında ana bilgisayar | veri kümesi tanımında folderPath |
 | --- | --- | --- |
-| Veri Yönetimi Ağ Geçidi makinesinde yerel klasör: <br/><br/>Örnekler: D:\\ \* veya D:\folder\subfolder\\\* |D:\\ \\ (Veri Yönetimi Ağ Geçidi 2.0 ve sonraki sürümler için) <br/><br/> localhost (Veri Yönetimi Ağ Geçidi 2.0'dan önceki sürümler için) |. veya\\\\klasör alt klasörü (Veri Yönetimi Ağ Geçidi 2.0 ve sonraki sürümler için) \\ \\ <br/><br/>D:\\ \\ veya\\\\D: klasör alt klasörü\\\\(2.0'ın altındaki ağ geçidi sürümü için) |
-| Uzaktan paylaşılan klasör: <br/><br/>Örnekler: \\ \\\\myserver\\ \* \\ \\share\\veya\\\\myserver share folder alt klasörü\\\* |\\\\\\\\myserver\\\\payı |. veya\\\\klasör alt klasörü \\ \\ |
+| Veri Yönetimi ağ geçidi makinesindeki yerel klasör: <br/><br/>Örnekler: D:\\ \* veya d:\folder\alt klasörü\\\* |D:\\ \\ (veri yönetimi Gateway 2,0 ve üzeri sürümler için) <br/><br/> localhost (Veri Yönetimi Gateway 'den önceki sürümlerde 2,0) |. \\ \\veya klasör\\alt klasörü (veri yönetimi Gateway 2,0 ve \\ üzeri sürümler için) <br/><br/>D:\\ \\ veya d:\\\\Folder\\\\alt klasörü (2,0 altındaki Ağ Geçidi sürümü için) |
+| Uzak paylaşılan klasör: <br/><br/>Örnekler: \\ \\sunucum\\Share\\ \* veya \\\\sunucum Share\\klasör\\alt \\klasörü\\\* |\\\\\\\\sunucum\\\\paylaşma |. \\ \\veya klasör\\ \\ |
 
 >[!NOTE]
->UI üzerinden yazarken, JSON üzerinden yaptığınız gibi çift`\\`eğik çizgi () giriş yapmanıza gerek yok, tek bir ters eğik çizgi belirtin.
+>Kullanıcı arabirimi aracılığıyla yazarken, JSON aracılığıyla yaptığınız gibi kaçış için çift ters`\\`eğik çizgi () eklemeniz gerekmez, tek eğik çizgi belirtin.
 
-### <a name="example-using-username-and-password-in-plain-text"></a>Örnek: Kullanıcı adı ve parolayı düz metinde kullanma
+### <a name="example-using-username-and-password-in-plain-text"></a>Örnek: salt metin olarak Kullanıcı adı ve parola kullanma
 
 ```JSON
 {
@@ -106,7 +106,7 @@ Aşağıdaki bölümler, dosya sistemine özgü Veri Fabrikası varlıklarını 
 }
 ```
 
-### <a name="example-using-encryptedcredential"></a>Örnek: Şifreli credential kullanma
+### <a name="example-using-encryptedcredential"></a>Örnek: encryptedcredential kullanma
 
 ```JSON
 {
@@ -123,26 +123,26 @@ Aşağıdaki bölümler, dosya sistemine özgü Veri Fabrikası varlıklarını 
 ```
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [bkz.](data-factory-create-datasets.md) Bir veri kümesi JSON'un yapısı, kullanılabilirliği ve ilkesi gibi bölümler tüm veri kümesi türleri için benzerdir.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md). Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri için benzerdir.
 
-typeProperties bölümü her veri kümesi türü için farklıdır. Veri deposundaki verilerin konumu ve biçimi gibi bilgiler sağlar. **FileShare** türü veri kümesi için typeProperties bölümü aşağıdaki özelliklere sahiptir:
+TypeProperties bölümü her bir veri kümesi türü için farklıdır. Veri deposundaki verilerin konumu ve biçimi gibi bilgiler sağlar. **FileShare** türündeki veri kümesinin typeproperties bölümü aşağıdaki özelliklere sahiptir:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| folderPath |Klasöre alt patina belirtir. Dizedeki özel\' karakterler için kaçış karakterini kullanın. Joker karakter filtresi desteklenmez. Örnekler için [Örnek bağlantılı hizmet ve veri kümesi tanımlarına](#sample-linked-service-and-dataset-definitions) bakın.<br/><br/>Bu özelliği **partitionBy** ile birleştirerek dilim başlangıç/bitiş tarih saatlerine göre klasör yollarına sahip olabilirsiniz. |Evet |
-| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız **klasörDeki Dosyanın** adını belirtinPath. Bu özellik için herhangi bir değer belirtmezseniz, tablo klasördeki tüm dosyaları işaret edir.<br/><br/>Bir çıktı veri kümesi için **dosya Adı** belirtilmediğinde ve **korumaHiyerarşisi** etkinlik lavabosunda belirtilmemişse, oluşturulan dosyanın adı aşağıdaki biçimdedir: <br/><br/>`Data.<Guid>.txt`(Örnek: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Hayır |
-| dosyaFiltre |Tüm dosyalar yerine folderPath'teki dosyaların bir alt kümesini seçmek için kullanılacak bir filtre belirtin. <br/><br/>İzin verilen `*` değerler şunlardır: `?` (birden çok karakter) ve (tek karakter).<br/><br/>Örnek 1: "fileFilter": "*.log"<br/>Örnek 2: "fileFilter": 2014-1-?. txt"<br/><br/>FileFilter'in bir giriş FileShare veri kümesi için geçerli olduğunu unutmayın. |Hayır |
-| bölümlemeBy |Zaman serisi verileri için dinamik bir folderPath/fileName belirtmek için partitionedBy'yi kullanabilirsiniz. Bir örnek, her saatlik veriler için parametrelendirilmiş klasörYol'dur. |Hayır |
-| biçim | Aşağıdaki biçim türleri desteklenir: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParkeFormat**. Biçim altındaki **tür** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için [Metin Biçimi,](data-factory-supported-file-and-compression-formats.md#text-format) [Json Formatı,](data-factory-supported-file-and-compression-formats.md#json-format) [Avro Biçimi,](data-factory-supported-file-and-compression-formats.md#avro-format) [Ork Biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parke Biçimi](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümlerine bakın. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıktı veri kümesi tanımlarında biçim bölümünü atlayın. |Hayır |
-| sıkıştırma | Verilerin sıkıştırma türünü ve düzeyini belirtin. Desteklenen türleri şunlardır: **GZip**, **Deflate**, **BZip2**, ve **ZipDeflate**. Desteklenen seviyeler şunlardır: **Optimal** ve **En Hızlı.** bkz. [Azure Veri Fabrikası'ndaki Dosya ve sıkıştırma biçimleri.](data-factory-supported-file-and-compression-formats.md#compression-support) |Hayır |
+| folderPath |Klasörün alt yol belirtir. Dizedeki özel karakterler için '\' kaçış karakterini kullanın. Joker karakter filtresi desteklenmiyor. Örnekler için bkz. [örnek bağlantılı hizmet ve veri kümesi tanımları](#sample-linked-service-and-dataset-definitions) .<br/><br/>Bu özelliği, dilim başlangıç/bitiş tarihi-saati temelinde klasör yolları sağlamak için **Partitionby** ile birleştirebilirsiniz. |Yes |
+| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde ve etkinlik havuzunda **preservehierarchy** belirtilmemişse, oluşturulan dosyanın adı şu biçimdedir: <br/><br/>`Data.<Guid>.txt`(Örnek: Data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt) |Hayır |
+| fileFilter |Tüm dosyalar yerine folderPath içindeki dosyaların bir alt kümesini seçmek için kullanılacak bir filtre belirtin. <br/><br/>İzin verilen değerler: `*` (birden çok karakter) `?` ve (tek karakter).<br/><br/>Örnek 1: "fileFilter": "*. log"<br/>Örnek 2: "fileFilter": 2014-1-?. txt<br/><br/>FileFilter 'nin bir giriş FileShare veri kümesi için geçerli olduğunu unutmayın. |Hayır |
+| partitionedBy |Zaman serisi verileri için dinamik bir folderPath/fileName belirtmek üzere partitionedBy ' i kullanabilirsiniz. Her saat veri için folderPath parametreli bir örnektir. |Hayır |
+| biçim | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |Hayır |
+| sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler şunlardır: **gzip**, **söndür**, **bzip2**ve **zipsöndür**. Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı**. [Azure Data Factory dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md#compression-support)bakın. |Hayır |
 
 > [!NOTE]
-> fileName ve fileFilter'i aynı anda kullanamazsınız.
+> Dosya adı ve fileFilter 'yi aynı anda kullanamazsınız.
 
 ### <a name="using-partitionedby-property"></a>PartitionedBy özelliğini kullanma
-Önceki bölümde belirtildiği gibi, **bölümlenmişBy** özelliği, [Veri Fabrikası işlevleri ve sistem değişkenleri](data-factory-functions-variables.md)ile zaman serisi verileri için dinamik bir klasörPath ve dosya adı belirtebilirsiniz.
+Önceki bölümde belirtildiği gibi, **Partitionedby** özelliği, [Data Factory işlevleri ve sistem değişkenleri](data-factory-functions-variables.md)ile zaman serisi verileri için dinamik bir FolderPath ve filename belirtebilirsiniz.
 
-Zaman serisi veri kümeleri, zamanlama ve dilimler hakkında daha fazla [Scheduling and execution](data-factory-scheduling-and-execution.md)ayrıntı yı anlamak [Creating pipelines](data-factory-create-pipelines.md)için [bkz.](data-factory-create-datasets.md)
+Zaman serisi veri kümeleri, zamanlama ve dilimleri hakkında daha fazla ayrıntıyı anlamak için bkz. [veri kümeleri](data-factory-create-datasets.md), [zamanlama ve yürütme](data-factory-scheduling-and-execution.md)ve işlem [hatları](data-factory-create-pipelines.md)oluşturma.
 
 #### <a name="sample-1"></a>Örnek 1:
 
@@ -154,7 +154,7 @@ Zaman serisi veri kümeleri, zamanlama ve dilimler hakkında daha fazla [Schedul
 ],
 ```
 
-Bu örnekte, {Slice} biçiminde Veri Fabrikası sistem değişkeni SliceStart değeri (YYYYMMDDHH) değeri ile değiştirilir. SliceStart, dilimin başlangıç saatini ifade eder. FolderPath her dilim için farklıdır. Örneğin: wikidatagateway/wikisampledataout/2014100103 veya wikidatagateway/wikisampledataout/2014100104.
+Bu örnekte, {Slice}, (YYYYMMDDHH) biçimindeki Data Factory sistem değişkeninin değeri ile değiştirilmiştir. Dilimcstart, dilimin başlangıç zamanına başvurur. FolderPath her bir dilim için farklıdır. Örneğin: wikidatagateway/wisvahili amptadataout/2014100103 veya wikidatagateway/wisvahili amptadataout/2014100104.
 
 #### <a name="sample-2"></a>Örnek 2:
 
@@ -170,57 +170,57 @@ Bu örnekte, {Slice} biçiminde Veri Fabrikası sistem değişkeni SliceStart de
 ],
 ```
 
-Bu örnekte, SliceStart'ın yılı, ayı, günü ve saati, folderPath ve fileName özelliklerinin kullandığı ayrı değişkenlere ayıklanır.
+Bu örnekte, monthestart 'ın Year, month, Day ve Time, folderPath ve fileName özelliklerinin kullandığı ayrı değişkenlere ayıklanır.
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin & özelliklerinin tam listesi [için, Kaynak Hatları Oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıktı veri kümeleri ve ilkeler gibi özellikler tüm etkinlik türleri için kullanılabilir. Oysa, etkinliğin **typeProperties** bölümünde bulunan özellikler her etkinlik türüne göre değişir.
+Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış veri kümeleri ve ilkeler gibi özellikler, tüm etkinlik türleri için kullanılabilir. Ancak, etkinliğin **typeproperties** bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir.
 
-Kopyalama etkinliği için, kaynak ve lavabo türlerine bağlı olarak değişir. Verileri şirket içi dosya sisteminden taşıyorsanız, kopyalama etkinliğindeki kaynak türünü **FileSystemSource'a**ayarlarsınız. Benzer şekilde, verileri şirket içi bir dosya sistemine taşıyorsanız, kopyalama etkinliğindeki lavabo türünü **FileSystemSink**olarak ayarlarsınız. Bu bölümde FileSystemSource ve FileSystemSink tarafından desteklenen özelliklerin bir listesini sağlar.
+Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir. Şirket içi bir dosya sisteminden veri taşıyorsanız, kopyalama etkinliğinde kaynak türünü **Filesystemsource**olarak ayarlarsınız. Benzer şekilde, verileri şirket içi bir dosya sistemine taşıyorsanız, kopyalama etkinliğindeki havuz türünü **Filesystemmsink**olarak ayarlarsınız. Bu bölüm, FileSystemSource ve Filesystemmsink tarafından desteklenen özelliklerin bir listesini sağlar.
 
-**FileSystemSource** aşağıdaki özellikleri destekler:
-
-| Özellik | Açıklama | İzin verilen değerler | Gerekli |
-| --- | --- | --- | --- |
-| Özyinelemeli |Verilerin alt klasörlerden mi yoksa yalnızca belirtilen klasörden mi özyinelemeli olarak okunduğunu gösterir. |True, False (varsayılan) |Hayır |
-
-**FileSystemSink** aşağıdaki özellikleri destekler:
+**Filesystemsource** aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| copyBehavior |Kaynak BlobSource veya FileSystem olduğunda kopyalama davranışını tanımlar. |**Koruma Hiyerarşisi:** Hedef klasördeki dosya hiyerarşisini korur. Diğer bir diğer olarak, kaynak dosyanın kaynak klasöre göreli yolu hedef klasöre hedef dosyanın göreli yolu ile aynıdır.<br/><br/>**FlattenHiyerarşi:** Kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyinde oluşturulur. Hedef dosyalar otomatik olarak oluşturulan bir adla oluşturulur.<br/><br/>**Birleştirme Dosyaları:** Kaynak klasördeki tüm dosyaları tek bir dosyayla birleştirir. Dosya adı/blob adı belirtilirse, birleştirilen dosya adı belirtilen addır. Aksi takdirde, otomatik olarak oluşturulan bir dosya adıdır. |Hayır |
+| öz |Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. |True, false (varsayılan) |Hayır |
+
+**Filesystemmsink** aşağıdaki özellikleri destekler:
+
+| Özellik | Açıklama | İzin verilen değerler | Gerekli |
+| --- | --- | --- | --- |
+| copyBehavior |Kaynak BlobSource veya FileSystem olduğunda kopyalama davranışını tanımlar. |**Preservehierarchy:** Hedef klasördeki dosya hiyerarşisini korur. Diğer bir deyişle, kaynak dosyanın kaynak klasöre göreli yolu hedef klasöre hedef dosyanın göreli yoluyla aynıdır.<br/><br/>**DÜZEDEN hiyerarşisi:** Kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyinde oluşturulur. Hedef dosyalar, otomatik olarak oluşturulan bir adla oluşturulur.<br/><br/>**Mergefiles:** Kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya adı/blob adı belirtilmişse, birleştirilmiş dosya adı belirtilen addır. Aksi takdirde, otomatik olarak oluşturulan bir dosya adıdır. |Hayır |
 
 ### <a name="recursive-and-copybehavior-examples"></a>özyinelemeli ve copyBehavior örnekleri
-Bu bölümde, özyinelemeli ve copyBehavior özellikleri için farklı değer birleşimleri için Kopyalama işleminin ortaya çıkan davranışı açıklanmaktadır.
+Bu bölümde, özyinelemeli ve copyBehavior özelliklerine yönelik farklı değer birleşimleri için kopyalama işleminin ortaya çıkan davranışı açıklanmaktadır.
 
 | özyinelemeli değer | copyBehavior değeri | Sonuç davranış |
 | --- | --- | --- |
-| true |korumaHiyerarşisi |Aşağıdaki yapıya sahip bir kaynak klasör Folder1 için,<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5<br/><br/>hedef klasör Folder1 kaynak la aynı yapıile oluşturulur:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5 |
-| true |flattenHiyerarşi |Aşağıdaki yapıya sahip bir kaynak klasör Folder1 için,<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5<br/><br/>hedef Folder1 aşağıdaki yapı ile oluşturulur: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File3 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File4 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File5 için otomatik olarak oluşturulan ad |
-| true |birleştirmeDosyaları |Aşağıdaki yapıya sahip bir kaynak klasör Folder1 için,<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5<br/><br/>hedef Folder1 aşağıdaki yapı ile oluşturulur: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + File3 + File4 + File 5 içeriği otomatik olarak oluşturulan dosya adı ile bir dosyada birleştirilir. |
-| yanlış |korumaHiyerarşisi |Aşağıdaki yapıya sahip bir kaynak klasör Folder1 için,<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5<br/><br/>hedef klasör Folder1 aşağıdaki yapı ile oluşturulur:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/><br/>Dosya3, File4 ve File5 ile alt klasör1 alınmaz. |
-| yanlış |flattenHiyerarşi |Aşağıdaki yapıya sahip bir kaynak klasör Folder1 için,<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5<br/><br/>hedef klasör Folder1 aşağıdaki yapı ile oluşturulur:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 için otomatik olarak oluşturulan ad<br/><br/>Dosya3, File4 ve File5 ile alt klasör1 alınmaz. |
-| yanlış |birleştirmeDosyaları |Aşağıdaki yapıya sahip bir kaynak klasör Folder1 için,<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Alt klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dosya5<br/><br/>hedef klasör Folder1 aşağıdaki yapı ile oluşturulur:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 içeriği otomatik olarak oluşturulan dosya adı ile bir dosyada birleştirilir.<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 için otomatik oluşturulan ad<br/><br/>Dosya3, File4 ve File5 ile alt klasör1 alınmaz. |
+| true |preserveHierarchy |Aşağıdaki yapıyla Klasör1 kaynak klasörü için<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;FILE1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>hedef klasör Klasör1, kaynak ile aynı yapıyla oluşturulur:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;FILE1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
+| true |DÜZEDEN hiyerarşisi |Aşağıdaki yapıyla Klasör1 kaynak klasörü için<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;FILE1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>hedef Klasör1 aşağıdaki yapıyla oluşturulur: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;file3 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File4 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;File5 için otomatik olarak oluşturulan ad |
+| true |mergeFiles |Aşağıdaki yapıyla Klasör1 kaynak klasörü için<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;FILE1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>hedef Klasör1 aşağıdaki yapıyla oluşturulur: <br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;FILE1 + dosya2 + File3 + File4 + dosya 5 içerikleri, otomatik olarak oluşturulan dosya adına sahip tek bir dosyada birleştirilir. |
+| yanlış |preserveHierarchy |Aşağıdaki yapıyla Klasör1 kaynak klasörü için<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;FILE1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Klasör1 hedef klasörü aşağıdaki yapıyla oluşturulur:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;FILE1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/><br/>File3, File4 ve File5 ile Subfolder1. |
+| yanlış |DÜZEDEN hiyerarşisi |Aşağıdaki yapıyla Klasör1 kaynak klasörü için<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;FILE1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Klasör1 hedef klasörü aşağıdaki yapıyla oluşturulur:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1 için otomatik olarak oluşturulan ad<br/>&nbsp;&nbsp;&nbsp;&nbsp;dosya2 için otomatik olarak oluşturulan ad<br/><br/>File3, File4 ve File5 ile Subfolder1. |
+| yanlış |mergeFiles |Aşağıdaki yapıyla Klasör1 kaynak klasörü için<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;FILE1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Dosya2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Klasör1 hedef klasörü aşağıdaki yapıyla oluşturulur:<br/><br/>Klasör1<br/>&nbsp;&nbsp;&nbsp;&nbsp;FILE1 + dosya2 içerikleri, otomatik olarak oluşturulan dosya adı ile tek bir dosyada birleştirilir.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Fıle1 için otomatik olarak oluşturulan ad<br/><br/>File3, File4 ve File5 ile Subfolder1. |
 
 ## <a name="supported-file-and-compression-formats"></a>Desteklenen dosya ve sıkıştırma biçimleri
-Ayrıntılarla ilgili [Azure Veri Fabrikası makalesinde Dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md) bakın.
+Ayrıntılar hakkında [Azure Data Factory makalesinde dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md) bakın.
 
-## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>Dosya sistemine ve dosya sisteminden veri kopyalamak için JSON örnekleri
-Aşağıdaki örnekler, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir ardışık hat lar oluşturmak için kullanabileceğiniz örnek JSON tanımları sağlar. Şirket içi dosya sistemine ve Azure Blob depolamasına veri kopyalamanın nasıl yapılacağını gösterirler. Ancak, Azure Veri Fabrikası'nda Kopyalama Etkinliği'ni kullanarak verileri *doğrudan* kaynaklardan herhangi birinden [Desteklenen kaynaklarda ve lavabolarda](data-factory-data-movement-activities.md#supported-data-stores-and-formats) listelenen lavabolara kopyalayabilirsiniz.
+## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>Dosya sistemine veya dosya sistemine veri kopyalamaya yönelik JSON örnekleri
+Aşağıdaki örnekler, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir işlem hattı oluşturmak için kullanabileceğiniz örnek JSON tanımlarını sağlar. Şirket içi dosya sistemine ve Azure Blob depolama 'ya veri kopyalamayı gösterir. Ancak, Azure Data Factory ' deki kopyalama etkinliğini kullanarak, kaynakları, [desteklenen kaynaklarda ve havuzlar](data-factory-data-movement-activities.md#supported-data-stores-and-formats) bölümünde listelenen herhangi bir havuza *doğrudan* kopyalayabilirsiniz.
 
-### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Örnek: Şirket içi dosya sistemindeki verileri Azure Blob depolama alanına kopyalama
-Bu örnek, şirket içi bir dosya sisteminden Azure Blob depolamasına verilerin nasıl kopyalanır olduğunu gösterir. Örnekte aşağıdaki Veri Fabrikası varlıkları vardır:
+### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Örnek: şirket içi bir dosya sisteminden Azure Blob depolama alanına veri kopyalama
+Bu örnek, şirket içi bir dosya sisteminden Azure Blob depolamaya nasıl veri kopyalanacağını gösterir. Örnek aşağıdaki Data Factory varlıklara sahiptir:
 
-* [OnPremisesFileServer](#linked-service-properties)türünde bağlantılı bir hizmet.
-* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)türüne bağlı bir hizmet.
-* [FileShare](#dataset-properties)türünden bir giriş [veri kümesi.](data-factory-create-datasets.md)
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünden bir çıktı [veri kümesi.](data-factory-create-datasets.md)
-* [FileSystemSource](#copy-activity-properties) ve [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan Copy Activity ile bir [ardışık düzen.](data-factory-create-pipelines.md)
+* [OnPremisesFileServer](#linked-service-properties)türünde bağlı bir hizmet.
+* [Azurestorage](data-factory-azure-blob-connector.md#linked-service-properties)türünde bağlı bir hizmet.
+* [FileShare](#dataset-properties)türünde bir giriş [veri kümesi](data-factory-create-datasets.md) .
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünde bir çıkış [veri kümesi](data-factory-create-datasets.md) .
+* [Filesystemsource](#copy-activity-properties) ve [Blobsink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md) .
 
-Aşağıdaki örnek, şirket içi bir dosya sisteminden Azure Blob depolamasına her saat başı zaman serisi verilerini kopyalar. Bu örneklerde kullanılan JSON özellikleri örneklerden sonraki bölümlerde açıklanmıştır.
+Aşağıdaki örnek, saat serisi verilerini şirket içi bir dosya sisteminden her saat Azure Blob depolama alanına kopyalar. Bu örneklerde kullanılan JSON özellikleri, örneklerden sonraki bölümlerde açıklanmıştır.
 
-İlk adım olarak, Veri Yönetimi Ağ Geçidi ile şirket içi kaynaklar ve bulut arasında veri taşıma yönergelerine göre [Veri Yönetimi Ağ Geçidi'ni](data-factory-move-data-between-onprem-and-cloud.md)ayarlayın.
+İlk adım olarak, [veri yönetimi ağ geçidi ile şirket içi kaynaklar ve bulut arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md)bölümündeki yönergelere göre veri yönetimi ağ geçidini ayarlayın.
 
-**Şirket İçi Dosya Sunucusu bağlantılı hizmet:**
+**Şirket Içi dosya sunucusu bağlı hizmeti:**
 
 ```JSON
 {
@@ -237,9 +237,9 @@ Aşağıdaki örnek, şirket içi bir dosya sisteminden Azure Blob depolamasına
 }
 ```
 
-Bunun yerine **userid** ve **parola** özelliklerini **kullanarak şifrelenmiş Credential** özelliğini kullanmanızı öneririz. Bu bağlantılı hizmet le ilgili ayrıntılar için [Dosya Sunucusu bağlantılı hizmete](#linked-service-properties) bakın.
+**Kullanıcı kimliği** ve **parola** özellikleri yerine **encryptedcredential** özelliğinin kullanılması önerilir. Bu bağlı hizmet hakkındaki ayrıntılar için bkz. [dosya sunucusu bağlı hizmeti](#linked-service-properties) .
 
-**Azure Depolama bağlantılı hizmet:**
+**Azure depolama bağlı hizmeti:**
 
 ```JSON
 {
@@ -255,9 +255,9 @@ Bunun yerine **userid** ve **parola** özelliklerini **kullanarak şifrelenmiş 
 
 **Şirket içi dosya sistemi giriş veri kümesi:**
 
-Veriler her saat başı yeni bir dosyadan alınır. FolderPath ve fileName özellikleri dilimin başlangıç saatine göre belirlenir.
+Veriler her saat yeni bir dosyadan alınır. FolderPath ve fileName özellikleri, dilimin başlangıç saatine göre belirlenir.
 
-Ayar, `"external": "true"` Veri Fabrikası'na veri kümesinin veri fabrikasının dışında olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
+Data Factory `"external": "true"` , veri kümesinin veri fabrikasında dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
 
 ```JSON
 {
@@ -319,9 +319,9 @@ Ayar, `"external": "true"` Veri Fabrikası'na veri kümesinin veri fabrikasını
 }
 ```
 
-**Azure Blob depolama çıktı veri seti:**
+**Azure Blob depolama çıkış veri kümesi:**
 
-Veriler her saat yeni bir blob 'a yazılır (sıklık: saat, aralık: 1). Blob için klasör yolu, işlenen dilimin başlangıç saatine göre dinamik olarak değerlendirilir. Klasör yolu, başlangıç zamanının yıl, ay, gün ve saat parçalarını kullanır.
+Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un klasör yolu, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay, gün ve saat kısımlarını kullanır.
 
 ```JSON
 {
@@ -379,9 +379,9 @@ Veriler her saat yeni bir blob 'a yazılır (sıklık: saat, aralık: 1). Blob i
 }
 ```
 
-**Dosya Sistemi kaynağı ve Blob lavabosu olan bir ardışık düzende kopyalama etkinliği:**
+**Dosya sistemi kaynağına ve BLOB havuzuna sahip bir işlem hattındaki kopyalama etkinliği:**
 
-Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan ve her saat çalışacak şekilde zamanlanan bir kopyalama etkinliği içerir. Boru hattı JSON tanımında, **kaynak** türü **FileSystemSource**olarak ayarlanır ve **lavabo** türü **BlobSink**olarak ayarlanır.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü **filesystemsource**olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır.
 
 ```JSON
 {
@@ -429,18 +429,18 @@ Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılan
 }
 ```
 
-### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>Örnek: Azure SQL Veritabanı'ndan şirket içi dosya sistemine veri kopyalama
-Aşağıdaki örnek gösterir:
+### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>Örnek: Azure SQL veritabanından şirket içi dosya sistemine veri kopyalama
+Aşağıdaki örnek şunu gösterir:
 
-* [AzureSqlDatabase](data-factory-azure-sql-connector.md#linked-service-properties) türünün bağlantılı bir hizmeti.
-* [OnPremisesFileServer](#linked-service-properties)türünde bağlantılı bir hizmet.
-* [AzureSqlTable](data-factory-azure-sql-connector.md#dataset-properties)türünden bir giriş veri kümesi.
-* [FileShare](#dataset-properties)türünden bir çıktı veri kümesi.
-* [SqlSource](data-factory-azure-sql-connector.md#copy-activity-properties) ve [FileSystemSink](#copy-activity-properties)kullanan bir kopyalama etkinliği olan bir ardışık düzen.
+* [Azuressqldatabase](data-factory-azure-sql-connector.md#linked-service-properties) türünde bağlı bir hizmet.
+* [OnPremisesFileServer](#linked-service-properties)türünde bağlı bir hizmet.
+* [Azuressqltable](data-factory-azure-sql-connector.md#dataset-properties)türünde bir giriş veri kümesi.
+* [FileShare](#dataset-properties)türünde bir çıkış veri kümesi.
+* [SQLSource](data-factory-azure-sql-connector.md#copy-activity-properties) ve [filesystemmsink](#copy-activity-properties)kullanan kopyalama etkinliğine sahip bir işlem hattı.
 
-Örnek, zaman serisi verilerini bir Azure SQL tablosundan şirket içi dosya sistemine her saat başı kopyalar. Bu örneklerde kullanılan JSON özellikleri örneklerden sonraki bölümlerde açıklanmıştır.
+Örnek, bir Azure SQL tablosundan saat serisi verilerini her saat için bir şirket içi dosya sistemine kopyalar. Bu örneklerde kullanılan JSON özellikleri, örneklerden sonraki bölümlerde açıklanmıştır.
 
-**Azure SQL Veritabanı bağlantılı hizmet:**
+**Azure SQL veritabanı bağlı hizmeti:**
 
 ```JSON
 {
@@ -454,7 +454,7 @@ Aşağıdaki örnek gösterir:
 }
 ```
 
-**Şirket İçi Dosya Sunucusu bağlantılı hizmet:**
+**Şirket Içi dosya sunucusu bağlı hizmeti:**
 
 ```JSON
 {
@@ -471,13 +471,13 @@ Aşağıdaki örnek gösterir:
 }
 ```
 
-**Userid** ve **parola** özelliklerini kullanmak yerine **şifreli Credential** özelliğini kullanmanızı öneririz. Bu bağlantılı hizmetle ilgili ayrıntılar için [Dosya Sistemi bağlantılı hizmete](#linked-service-properties) bakın.
+**UserID** ve **Password** özelliklerini kullanmak yerine **encryptedcredential** özelliğinin kullanılması önerilir. Bu bağlı hizmet hakkındaki ayrıntılar için bkz. [dosya sistemi bağlı hizmeti](#linked-service-properties) .
 
 **Azure SQL giriş veri kümesi:**
 
-Örnek, Azure SQL'de "MyTable" tablosu oluşturduğunuzu varsayar ve zaman serisi verileri için "zaman damgası sütunu" adlı bir sütun içerir.
+Örnek, Azure SQL 'de bir "MyTable" tablosu oluşturduğunuzu ve zaman serisi verileri için "timestampcolumn" adlı bir sütun içerdiğini varsayar.
 
-Ayar, ``“external”: ”true”`` Veri Fabrikası'na veri kümesinin veri fabrikasının dışında olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
+Data Factory ``“external”: ”true”`` , veri kümesinin veri fabrikasında dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
 
 ```JSON
 {
@@ -504,9 +504,9 @@ Ayar, ``“external”: ”true”`` Veri Fabrikası'na veri kümesinin veri fab
 }
 ```
 
-**Şirket içi dosya sistemi çıktı veri seti:**
+**Şirket içi dosya sistemi çıkış veri kümesi:**
 
-Veriler her saat başı yeni bir dosyaya kopyalanır. Blob için folderPath ve fileName dilimin başlangıç saatine göre belirlenir.
+Veriler her saat yeni bir dosyaya kopyalanır. Blobun için folderPath ve fileName, dilimin başlangıç saatine göre belirlenir.
 
 ```JSON
 {
@@ -568,9 +568,9 @@ Veriler her saat başı yeni bir dosyaya kopyalanır. Blob için folderPath ve f
 }
 ```
 
-**SQL kaynağı ve Dosya Sistemi lavabosu olan bir ardışık düzende kopyalama etkinliği:**
+**SQL kaynak ve dosya sistemi havuzu ile bir işlem hattındaki kopyalama etkinliği:**
 
-Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan ve her saat çalışacak şekilde zamanlanan bir kopyalama etkinliği içerir. Geçiş adı JSON **tanımında, kaynak** türü **SqlSource**olarak ayarlanır ve **lavabo** türü **FileSystemSink**olarak ayarlanır. **SqlReaderQuery** özelliği için belirtilen SQL sorgusu, kopyalanacak son bir saat içinde verileri seçer.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **SQLSource**olarak ayarlanır ve **Havuz** türü **filesystemmsink**olarak ayarlanır. **Sqlreaderquery** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
 
 ```JSON
 {
@@ -619,7 +619,7 @@ Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılan
 }
 ```
 
-Ayrıca, kopya etkinliği tanımında kaynak veri kümesinden sütunlara, lavabo veri kümesinden sütunlara kadar sütunları eşleyebilirsiniz. Ayrıntılar için Azure [Veri Fabrikası'ndaki veri kümesi sütunlarını eşleme](data-factory-map-columns.md)bilgisine bakın.
+Ayrıca, kaynak veri kümesindeki sütunları, kopyalama etkinliği tanımındaki havuz veri kümesinden sütunlara eşleyebilirsiniz. Ayrıntılar için bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Performans ve ayar
- Azure Veri Fabrikası'ndaki veri hareketinin (Kopyalama Etkinliği) performansını etkileyen önemli etkenler ve bunu optimize etmenin çeşitli yolları hakkında bilgi edinmek için [Kopyalama Etkinliği performansı ve atokslama kılavuzuna](data-factory-copy-activity-performance.md)bakın.
+ Azure Data Factory ve en iyileştirmek için çeşitli yollarla veri taşıma (kopyalama etkinliği) performansını etkileyen anahtar faktörleri hakkında bilgi edinmek için bkz. [kopyalama etkinliği performansı ve ayarlama Kılavuzu](data-factory-copy-activity-performance.md).

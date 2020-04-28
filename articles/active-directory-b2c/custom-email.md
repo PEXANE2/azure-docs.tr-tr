@@ -1,7 +1,7 @@
 ---
 title: Özel e-posta doğrulamaları
 titleSuffix: Azure AD B2C
-description: Azure AD B2C özellikli uygulamalarınızı kullanmak için kaydolurken müşterilerinize gönderilen doğrulama e-postasını nasıl özelleştireceğiz öğrenin.
+description: Azure AD B2C özellikli uygulamalarınızı kullanmak üzere kaydolduklarında müşterilerinize gönderilen doğrulama e-postasını nasıl özelleştireceğinizi öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,50 +12,50 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6cc0508a63f26b955ac5e0ebf3ef58a184a35997
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78671643"
 ---
-# <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de özel e-posta doğrulaması
+# <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel e-posta doğrulaması
 
-Uygulamalarınızı kullanmak için kaydolan kullanıcılara özel e-posta göndermek için Azure Active Directory B2C'de (Azure AD B2C) özel e-posta kullanın. [DisplayControls](display-controls.md) (şu anda önizlemede) ve bir üçüncü taraf e-posta sağlayıcısı nı kullanarak, kendi e-posta şablonunuzu ve *Adres* ve Konuyu kullanabilir, yerelleştirme ve özel tek kullanımlık parola (OTP) ayarlarını destekleyebilirsiniz.
+Uygulamalarınızı kullanmak üzere kaydolan kullanıcılara özelleştirilmiş e-posta göndermek için Azure Active Directory B2C (Azure AD B2C) içinde özel e-posta kullanın. [Displaycontrols](display-controls.md) (Şu anda önizleme aşamasında) ve bir üçüncü taraf e-posta sağlayıcısı kullanarak kendi e-posta şablonunuzu ve *Kimden:* adres ve konu ' ı kullanabilirsiniz, ayrıca yerelleştirme ve özel bır kerelik parola (OTP) ayarlarını destekleyebilirsiniz.
 
-Özel e-posta doğrulama [sendgrid](https://sendgrid.com) veya [SparkPost,](https://sparkpost.com)özel bir REST API veya herhangi bir HTTP tabanlı e-posta sağlayıcısı (kendi dahil) gibi bir üçüncü taraf e-posta sağlayıcısı nın kullanımını gerektirir. Bu makalede, SendGrid kullanan bir çözüm kurma açıklanmaktadır.
+Özel e-posta doğrulaması için [SendGrid](https://sendgrid.com) veya [mini](https://sparkpost.com)posta, özel bir REST API veya herhangi bir HTTP tabanlı e-posta sağlayıcısı (kendinizğiniz dahil) gibi bir üçüncü taraf e-posta sağlayıcısının kullanılması gerekir. Bu makalede, SendGrid kullanan bir çözümün kurulması açıklanmaktadır.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="create-a-sendgrid-account"></a>SendGrid hesabı oluşturma
 
-Zaten hesabınız yoksa, bir SendGrid hesabı oluşturarak başlayın (Azure müşterileri her ay 25.000 ücretsiz e-postanın kilidini açabilir). Kurulum yönergeleri için, Azure ile [SendGrid kullanarak e-posta gönderme nin Bir](../sendgrid-dotnet-how-to-send-email.md) [SendGrid Hesabı Oluştur](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account) bölümüne bakın.
+Henüz bir tane yoksa, bir SendGrid hesabı ayarlayarak başlayın (Azure müşterileri her ay 25.000 ücretsiz e-postaların kilidini açabilir). Kurulum yönergeleri için, [Azure Ile SendGrid kullanarak e-posta gönderme](../sendgrid-dotnet-how-to-send-email.md)konusunun [SendGrid hesabı oluşturma](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account) bölümüne bakın.
 
-[SendGrid API anahtarı oluşturduğunuz](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)bölümü tamamladığınızdan emin olun. Daha sonraki bir adımda kullanılmak üzere API anahtarını kaydedin.
+[SendGrid API anahtarı oluşturduğunuz](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)bölümünü tamamladığınızdan emin olun. API anahtarını sonraki bir adımda kullanmak üzere kaydedin.
 
-## <a name="create-azure-ad-b2c-policy-key"></a>Azure AD B2C ilke anahtarı oluşturma
+## <a name="create-azure-ad-b2c-policy-key"></a>Azure AD B2C İlkesi anahtarı oluştur
 
-Ardından, sendgrid API anahtarını ilkelerinizin başvurması için Azure AD B2C ilke anahtarında saklayın.
+Sonra, ilkenizin başvurmak için SendGrid API anahtarını bir Azure AD B2C ilke anahtarında depolayın.
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
-1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üst menüdeki **Dizin + abonelik** filtresini seçin ve Azure AD B2C diziniseçin.
-1. Azure portalının sol üst köşesindeki **tüm hizmetleri** seçin ve ardından Azure **AD B2C'yi**arayın ve seçin.
-1. Genel Bakış sayfasında Kimlik **Deneyimi Çerçevesi'ni**seçin.
-1. **İlke Anahtarları'nı** seçin ve sonra **Ekle'yi**seçin.
-1. **Seçenekler**için `Manual`, seçin.
-1. İlke anahtarı için bir **Ad** girin. Örneğin, `SendGridSecret`. Önek `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
-1. **Gizli**olarak, daha önce kaydettiğiniz müşteri sırrını girin.
-1. **Anahtar kullanımı**için `Signature`.
-1. **Oluştur'u**seçin.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C dizininizi seçin.
+1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
+1. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
+1. **Ilke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
+1. **Seçenekler**için öğesini seçin `Manual`.
+1. İlke anahtarı için bir **ad** girin. Örneğin, `SendGridSecret`. Ön ek `B2C_1A_` , anahtarınızın adına otomatik olarak eklenir.
+1. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
+1. **Anahtar kullanımı**için öğesini seçin `Signature`.
+1. **Oluştur**’u seçin.
 
 ## <a name="create-sendgrid-template"></a>SendGrid şablonu oluşturma
 
-Oluşturulan SendGrid hesabı ve Azure AD B2C ilke anahtarında depolanan SendGrid API anahtarıyla, SendGrid [dinamik işlem şablonu](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)oluşturun.
+Bir Azure AD B2C ilke anahtarında depolanan SendGrid hesabı oluşturulup SendGrid API anahtarı ile bir SendGrid [dinamik işlem şablonu](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)oluşturun.
 
-1. SendGrid [sitesinde, işlem şablonları](https://sendgrid.com/dynamic_templates) sayfasını açın ve **Şablon Oluştur'u**seçin.
-1. Gibi `Verification email` benzersiz bir şablon adı girin ve sonra **Kaydet'i**seçin.
-1. Yeni şablonunuzu düzenlemeye başlamak için **Sürüm Ekle'yi**seçin.
-1. **Kod Düzenleyicisi'ni** seçin ve ardından **Devam edin.**
-1. HTML düzenleyicisinde, HTML şablonunu takip ederek yapıştırın veya kendi şablonunuzu kullanın. Ve `{{otp}}` `{{email}}` parametreler dinamik olarak tek seferlik parola değeri ve kullanıcı e-posta adresi ile değiştirilecektir.
+1. SendGrid sitesinde, [işlem şablonları](https://sendgrid.com/dynamic_templates) sayfasını açın ve **Şablon Oluştur ' u**seçin.
+1. Gibi `Verification email` benzersiz bir şablon adı girip **Kaydet**' i seçin.
+1. Yeni şablonunuzu düzenlemeyle başlamak için **Sürüm Ekle**' yi seçin.
+1. **Kod düzenleyicisini** seçin ve ardından **devam edin**.
+1. HTML düzenleyicisinde, aşağıdaki HTML şablonunu yapıştırın veya kendi kendinize kullanın. Ve `{{otp}}` `{{email}}` parametreleri, tek seferlik parola değeri ve kullanıcı e-posta adresi ile dinamik olarak değişir.
 
     ```HTML
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -151,16 +151,16 @@ Oluşturulan SendGrid hesabı ve Azure AD B2C ilke anahtarında depolanan SendGr
     </html>
     ```
 
-1. **Soldaki Ayarları** Genişlet in ve **E-posta Konusu**için girin. `{{subject}}`
-1. **Şablonu Kaydet'i**seçin.
-1. Arka oku seçerek **İşlem Şablonları** sayfasına geri dönün.
-1. Daha sonraki bir adımda kullanılmak üzere oluşturduğunuz şablonun **kimliğini** kaydedin. Örneğin, `d-989077fbba9746e89f3f6411f596fb96`. [Talep dönüştürmesini eklerken](#add-the-claims-transformation)bu kimliği belirtirsiniz.
+1. Soldaki **ayarları** genişletin ve **e-posta konusu**için girin `{{subject}}`.
+1. **Şablonu Kaydet**' i seçin.
+1. Geri okunu seçerek **Işlem şablonları** sayfasına dönün.
+1. Daha sonraki bir adımda kullanmak üzere oluşturduğunuz şablonun **kimliğini** kaydedin. Örneğin, `d-989077fbba9746e89f3f6411f596fb96`. [Talep dönüşümünü eklediğinizde](#add-the-claims-transformation)bu kimliği belirtirsiniz.
 
-## <a name="add-azure-ad-b2c-claim-types"></a>Azure AD B2C talep türleri ekleme
+## <a name="add-azure-ad-b2c-claim-types"></a>Azure AD B2C talep türü Ekle
 
-İlkenizde, içindeki `<BuildingBlocks>`öğeye aşağıdaki `<ClaimsSchema>` talep türlerini ekleyin.
+İlkenizde aşağıdaki talep türlerini içinde `<ClaimsSchema>` `<BuildingBlocks>`öğesine ekleyin.
 
-Bu talep türleri, tek seferlik parola (OTP) kodu kullanarak e-posta adresini oluşturmak ve doğrulamak için gereklidir.
+Bu talep türleri, bir kerelik parola (OTP) kodu kullanarak e-posta adresi oluşturmak ve doğrulamak için gereklidir.
 
 ```XML
 <ClaimType Id="Otp">
@@ -179,17 +179,17 @@ Bu talep türleri, tek seferlik parola (OTP) kodu kullanarak e-posta adresini ol
 </ClaimType>
 ```
 
-## <a name="add-the-claims-transformation"></a>Talep dönüştürmesini ekleme
+## <a name="add-the-claims-transformation"></a>Talep dönüşümünü ekleme
 
-Daha sonra, SendGrid'e gönderilen isteğin gövdesi olacak bir JSON dize iddiası çıktısı için bir talep dönüşümü ne gerekir.
+Daha sonra, SendGrid 'e gönderilen isteğin gövdesi olacak bir JSON dize talebinin çıktısını almak için bir talep dönüştürmesi gerekir.
 
-JSON nesnesinin yapısı, Giriş Parametreleri'nin nokta gösterimindeki disler ve Giriş Taleplerinin DönüşümHakkı Türleri tarafından tanımlanır. Nokta gösterimindeki sayılar dizileri ima eder. Değerler, InputClaims'in değerlerinden ve InputParametrelerinin "Değer" özelliklerinden gelir. JSON talepleri dönüşümleri hakkında daha fazla bilgi için, [JSON talepleri dönüşümleri](json-transformations.md)bakın.
+JSON nesnesinin yapısı, InputParameters 'ın nokta gösteriminde ve ınputclaim 'nin dönüştürme Tionclaimtypes öğesindeki kimlikler tarafından tanımlanır. Nokta gösterimindeki sayılar dizileri kapsıyor. Değerler Inputclaim değerlerinin ve InputParameters ' "Value" özelliklerinden gelir. JSON talep dönüştürmeleri hakkında daha fazla bilgi için bkz. [JSON talep dönüştürmeleri](json-transformations.md).
 
-Aşağıdaki talep dönüşüm öğesini `<ClaimsTransformations>` `<BuildingBlocks>`ekleyin. Talep dönüşümü XML için aşağıdaki güncelleştirmeleri yapın:
+Aşağıdaki talep dönüşümünü içindeki `<ClaimsTransformations>` `<BuildingBlocks>`öğesine ekleyin. Talep dönüştürme XML için aşağıdaki güncelleştirmeleri yapın:
 
-* SendGrid `template_id` [şablonu oluştur'da](#create-sendgrid-template)daha önce oluşturduğunuz SendGrid işlem şablonunun kimliğiyle GirişParametre değerini güncelleştirin.
-* Adres `from.email` değerini güncelleştirin. Doğrulama e-postasının spam olarak işaretlanmasını önlemeye yardımcı olmak için geçerli bir e-posta adresi kullanın.
-* `personalizations.0.dynamic_template_data.subject` Konu satırı giriş parametresinin değerini kuruluşunuz için uygun bir konu satırıyla güncelleştirin.
+* InputParameter `template_id` değerini, daha önce [SendGrid şablonunda](#create-sendgrid-template)oluşturduğunuz SendGrid işlem şablonunun kimliğiyle güncelleştirin.
+* `from.email` Adres değerini güncelleştirin. Doğrulama e-postalarından istenmeyen posta olarak işaretlenmesini önlemeye yardımcı olması için geçerli bir e-posta adresi kullanın.
+* `personalizations.0.dynamic_template_data.subject` Konu satırı giriş parametresinin değerini kuruluşunuza uygun bir konu satırıyla güncelleştirin.
 
 ```XML
 <ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
@@ -211,9 +211,9 @@ Aşağıdaki talep dönüşüm öğesini `<ClaimsTransformations>` `<BuildingBlo
 </ClaimsTransformation>
 ```
 
-## <a name="add-datauri-content-definition"></a>DataUri içerik tanımı ekle
+## <a name="add-datauri-content-definition"></a>DataUri içerik tanımı Ekle
 
-İçindeki `<BuildingBlocks>`talep dönüşümlerinin altında, sürüm 2.0.0 veri URI'ye başvurmak için aşağıdaki [ContentDefinition'ı](contentdefinitions.md) ekleyin:
+İçindeki `<BuildingBlocks>`talep dönüştürmelerinin altında, sürüm 2.0.0 veri URI 'sine başvurmak Için aşağıdaki [ContentDefinition](contentdefinitions.md) öğesini ekleyin:
 
 ```XML
 <ContentDefinitions>
@@ -223,20 +223,20 @@ Aşağıdaki talep dönüşüm öğesini `<ClaimsTransformations>` `<BuildingBlo
 </ContentDefinitions>
 ```
 
-## <a name="create-a-displaycontrol"></a>DisplayControl Oluşturma
+## <a name="create-a-displaycontrol"></a>DisplayControl oluştur
 
-Doğrulama görüntüleme denetimi, kullanıcıya gönderilen bir doğrulama koduyla e-posta adresini doğrulamak için kullanılır.
+Bir doğrulama görüntüleme denetimi, e-posta adresini kullanıcıya gönderilen doğrulama koduyla doğrulamak için kullanılır.
 
-Bu örnek ekran denetimi şu şekilde yapılandırılır:
+Bu örnek görüntü denetimi şu şekilde yapılandırılır:
 
-1. `email` Adres talep türünü kullanıcıdan toplayın.
-1. Kullanıcının `verificationCode` kullanıcıya gönderilen kodla birlikte talep türünü sağlamasını bekleyin.
-1. Bu `email` ekran denetimine atıfta bulunulan kendini öne süren teknik profile geri döndürün.
-1. `SendCode` Eylemi kullanarak, bir OTP kodu oluşturun ve kullanıcıya OTP kodu içeren bir e-posta gönderin.
+1. Kullanıcıdan `email` adres talebi türünü toplayın.
+1. Kullanıcının `verificationCode` talep türünü kullanıcıya gönderilen kodla vermesini bekleyin.
+1. Bu görüntü `email` denetimine yönelik bir başvuruya sahip kendi kendine onaylanan teknik Profile geri dönün.
+1. `SendCode` EYLEMI kullanarak OTP kodu oluşturun ve kullanıcıya OTP kodunu içeren bir e-posta gönderin.
 
-![Doğrulama kodu e-posta eylemi gönderme](media/custom-email/display-control-verification-email-action-01.png)
+![Doğrulama kodu e-posta eylemi gönder](media/custom-email/display-control-verification-email-action-01.png)
 
-İçerik tanımları altında, `<BuildingBlocks>`hala içinde , poliçenize doğrulama denetimi türünden aşağıdaki [DisplayControl'ü](display-controls.md) ekleyin. [VerificationControl](display-control-verification.md)
+İçerik tanımları altında, hala içinde `<BuildingBlocks>`, Ilkenize [Denetim](display-control-verification.md) türünde aşağıdaki [DisplayControl](display-controls.md) ' ı ekleyin.
 
 ```XML
 <DisplayControls>
@@ -267,9 +267,9 @@ Bu örnek ekran denetimi şu şekilde yapılandırılır:
 
 ## <a name="add-otp-technical-profiles"></a>OTP teknik profilleri ekleme
 
-Teknik `GenerateOtp` profil, e-posta adresi için bir kod oluşturur. Teknik `VerifyOtp` profil, e-posta adresiyle ilişkili kodu doğrular. Biçimyapılandırmasını ve tek seferlik parolanın sona ermesini değiştirebilirsiniz. OTP teknik profilleri hakkında daha fazla bilgi için tek [seferlik parola teknik profilini tanımla'ya](one-time-password-technical-profile.md)bakın.
+`GenerateOtp` Teknik profil, e-posta adresi için bir kod oluşturur. `VerifyOtp` Teknik profil, e-posta adresiyle ilişkili kodu doğrular. Biçimin yapılandırmasını ve tek seferlik parolanın kullanım süresini değiştirebilirsiniz. OTP teknik profilleri hakkında daha fazla bilgi için bkz. [tek seferlik parola teknik profili tanımlama](one-time-password-technical-profile.md).
 
-`<ClaimsProviders>` Öğeye aşağıdaki teknik profilleri ekleyin.
+Aşağıdaki teknik profilleri `<ClaimsProviders>` öğesine ekleyin.
 
 ```XML
 <ClaimsProvider>
@@ -309,11 +309,11 @@ Teknik `GenerateOtp` profil, e-posta adresi için bir kod oluşturur. Teknik `Ve
 </ClaimsProvider>
 ```
 
-## <a name="add-a-rest-api-technical-profile"></a>REST API teknik profili ekle
+## <a name="add-a-rest-api-technical-profile"></a>REST API teknik profili ekleme
 
-Bu REST API teknik profili e-posta içeriğini oluşturur (SendGrid biçimini kullanarak). ReSTful teknik profilleri hakkında daha fazla bilgi için [bkz.](restful-technical-profile.md)
+Bu REST API teknik profili, e-posta içeriğini (SendGrid biçimini kullanarak) oluşturur. Daha fazla teknik profil hakkında daha fazla bilgi için bkz. [Restuz teknik profili tanımlama](restful-technical-profile.md).
 
-OTP teknik profillerinde olduğu gibi, `<ClaimsProviders>` öğeye aşağıdaki teknik profilleri ekleyin.
+OTP teknik profillerinde olduğu gibi, aşağıdaki teknik profilleri `<ClaimsProviders>` öğesine ekleyin.
 
 ```XML
 <ClaimsProvider>
@@ -342,11 +342,11 @@ OTP teknik profillerinde olduğu gibi, `<ClaimsProviders>` öğeye aşağıdaki 
 </ClaimsProvider>
 ```
 
-## <a name="make-a-reference-to-the-displaycontrol"></a>DisplayControl'e başvuruyapma
+## <a name="make-a-reference-to-the-displaycontrol"></a>DisplayControl öğesine bir başvuru oluşturun
 
-Son adımda, oluşturduğunuz DisplayControl'e bir başvuru ekleyin. Azure AD `LocalAccountSignUpWithLogonEmail` B2C ilkesinin önceki bir sürümünü kullandıysanız, varolan kendi kendini öne süren teknik profilinizi aşağıdakilerle değiştirin. Bu teknik `DisplayClaims` profil, DisplayControl'e atıfta bulunarak kullanır.
+Son adımda, oluşturduğunuz DisplayControl öğesine bir başvuru ekleyin. Azure AD B2C ilkesi 'nin `LocalAccountSignUpWithLogonEmail` önceki bir sürümünü kullandıysanız, mevcut kendi kendini onaylanan teknik profilinizi aşağıdakiler ile değiştirin. Bu teknik profil, `DisplayClaims` DisplayControl başvurusu ile birlikte kullanılır.
 
-Daha fazla bilgi için [bkz.](restful-technical-profile.md) [DisplayControl](display-controls.md)
+Daha fazla bilgi için bkz. [kendi kendine onaylanan teknik profil](restful-technical-profile.md) ve [DisplayControl](display-controls.md).
 
 ```XML
 <ClaimsProvider>
@@ -393,14 +393,14 @@ Daha fazla bilgi için [bkz.](restful-technical-profile.md) [DisplayControl](dis
 </ClaimsProvider>
 ```
 
-## <a name="optional-localize-your-email"></a>[İsteğe bağlı] E-postanızı yerelleştirin
+## <a name="optional-localize-your-email"></a>Seçim E-postanızı yerelleştirin
 
-E-postayı yerelleştirmek için SendGrid'e veya e-posta sağlayıcınıza yerelleştirilmiş dizeleri göndermeniz gerekir. Örneğin, e-posta konusunu, gövdesini, kod iletinizi veya e-postanın imzasını yerelleştirmek için. Bunu yapmak için, yerelleştirilmiş dizeleri talep türlerine kopyalamak için [GetLocalizedStringsTransformation](string-transformations.md) talepleri dönüşümlerini kullanabilirsiniz. JSON `GenerateSendGridRequestBody` yükünü oluşturan talep dönüşümünde, yerelleştirilmiş dizeleri içeren giriş talepleri kullanır.
+E-postayı yerelleştirmek için, SendGrid 'e veya e-posta sağlayıcınıza yerelleştirilmiş dizeler göndermeniz gerekir. Örneğin e-posta konusunu, gövdesini, kod iletinizi veya e-postanın imzasını yerelleştirmek için. Bunu yapmak için, yerelleştirilmiş dizeleri talep türlerine kopyalamak üzere [Getlocalizedstringstrans,](string-transformations.md) talepler dönüşümünü kullanabilirsiniz. JSON yükünü `GenerateSendGridRequestBody` üreten talep dönüşümünde, yerelleştirilmiş dizeleri içeren giriş taleplerini kullanır.
 
-1. İlkenizde aşağıdaki dize taleplerini tanımlayın: özne, ileti, codeIntro ve imza.
-1. Yerelleştirilmiş dize değerlerini adım 1'den gelen taleplere değiştirmek için [GetLocalizedStringsTransformation](string-transformations.md) talepleri dönüştürmesini tanımlayın.
-1. Giriş `GenerateSendGridRequestBody` taleplerini kullanmak için talep dönüşümünü aşağıdaki XML snippet ile değiştirin.
-1. Azure AD B2C tarafından yerelleştirilecek tüm dizeleri yerine dinamik parametreleri kullanmak için SendGrind şablonunuzu güncelleştirin.
+1. İlkenizde şu dize taleplerini tanımlayın: Subject, Message, Codepote ve Signature.
+1. Yerelleştirilmiş dize değerlerini 1. adımdan gelen taleplere koymak için bir [Getlocalizedstringstransbir](string-transformations.md) talep dönüştürmesi tanımlayın.
+1. Talep dönüşümünü `GenerateSendGridRequestBody` , giriş TALEPLERINI aşağıdaki XML kod parçacığıyla kullanılacak şekilde değiştirin.
+1. SendGrind şablonunuzu, Azure AD B2C tarafından Yerelleştirilecek tüm dizelerin yerine dinamik parametreleri kullanacak şekilde güncelleştirin.
 
 ```XML
 <ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
@@ -425,8 +425,8 @@ E-postayı yerelleştirmek için SendGrid'e veya e-posta sağlayıcınıza yerel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-GitHub'da özel bir e-posta doğrulama ilkesinin bir örneğini bulabilirsiniz:
+GitHub 'da özel bir e-posta doğrulama ilkesi örneğini bulabilirsiniz:
 
-[Özel e-posta doğrulaması - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
+[Özel e-posta doğrulama-DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 
-Özel bir REST API veya http tabanlı SMTP e-posta sağlayıcısı kullanma hakkında bilgi [için](restful-technical-profile.md)bkz.
+Özel bir REST API veya herhangi bir HTTP tabanlı SMTP e-posta sağlayıcısı kullanma hakkında bilgi için, bkz. [Azure AD B2C bir özel ilkede, bir RESTAN teknik profili tanımlama](restful-technical-profile.md).

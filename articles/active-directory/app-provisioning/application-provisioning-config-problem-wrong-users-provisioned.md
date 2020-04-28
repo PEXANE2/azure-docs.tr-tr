@@ -1,6 +1,6 @@
 ---
-title: Yanlış kullanıcı kümesi bir Azure AD Galerisi uygulamasına uygulanır
-description: Bir uygulamaya neden beklediğiniz lerden farklı bir kullanıcı kümesinin sağlandığını nasıl öğrenebilirsiniz
+title: Azure AD Galeri uygulaması için yanlış kullanıcı kümesi sağlandı
+description: Farklı bir kullanıcı kümesinin neden beklediğiniz bir uygulamaya sağlandığını öğrenin
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,100 +17,100 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c94388011605da73666e82011bb8ef56d2af8d30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77522790"
 ---
-# <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Azure AD Galerisi uygulamasına yanlış kullanıcı kümesi sağlanıyor
+# <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Azure AD Galeri uygulamasına yanlış kullanıcı kümesi sağlanıyor
 
-Uygulamaiçin hangi kullanıcıların sağlandığı, öncelikle uygulamanın hangi kullanıcı ve grupların **atandığı** dır.
+Uygulamaya hangi kullanıcıların sağlanacağı, öncelikle uygulamaya **atanan** kullanıcılar ve gruplar tarafından çalıştırılır.
 
-Azure Etkin Dizini'ndeki bir uygulamaya hangi kullanıcıların ve grupların atandığını denetlemek için aşağıdaki kaynakları kullanın.
+Azure Active Directory içindeki bir uygulamaya hangi kullanıcıların ve grupların atandığını nasıl denetleyeceğinizi öğrenmek için aşağıdaki kaynakları kullanın.
 
 ## <a name="assign-a-user-directly-as-an-administrator"></a>Kullanıcıyı doğrudan yönetici olarak atama
 
-Bir veya daha fazla kullanıcıyı doğrudan bir uygulamaya atamak için aşağıdaki adımları izleyin:
+Bir uygulamaya doğrudan bir veya daha fazla kullanıcı atamak için şu adımları izleyin:
 
-1. Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
+1. [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** olarak oturum açın.
 
-2. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
+2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
 
-3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
+3. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
 
-4. Azure Active Directory sol navigasyon menüsünden **Kurumsal Uygulamalar'ı** tıklatın.
+4. Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' a tıklayın.
 
-5. **tüm uygulamalarınızın** listesini görüntülemek için Tüm Uygulamalar'ı tıklatın.
+5. tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' a tıklayın.
 
-   * Burada gösterilmesini istediğiniz uygulamayı göremiyorsanız, **Tüm Uygulamalar Listesi'nin** en üstündeki **Filtre** denetimini kullanın ve Tüm Uygulamalar için **Göster** seçeneğini **ayarlayın.**
+   * Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
 
-6. Listeden bir kullanıcı atamak istediğiniz uygulamayı seçin.
+6. Listeden Kullanıcı atamak istediğiniz uygulamayı seçin.
 
-7. Uygulama yüklendikten sonra, uygulamanın sol daki gezinme menüsünden **Kullanıcılar ve Gruplar'ı** tıklatın.
+7. Uygulama yüklendikten sonra, uygulamanın sol taraftaki gezinti menüsünden **Kullanıcılar ve gruplar** ' a tıklayın.
 
-8. **Atama Ekle** bölmesini açmak **için, Kullanıcılar ve Gruplar** listesinin üst kısmındaki **Ekle** düğmesini tıklatın.
+8. **Atama Ekle** bölmesini açmak için **Kullanıcılar ve gruplar** listesinin üstündeki **Ekle** düğmesine tıklayın.
 
-9. **Atama Ekle** bölmesinden Kullanıcılar **ve gruplar** seçicisini tıklatın.
+9. **atama Ekle** bölmesinden **Kullanıcılar ve gruplar** seçicisini tıklatın.
 
-10. Ada veya **e-posta adresi** arama kutusuna atamak istediğiniz kullanıcının **tam adını** veya **e-posta adresini** yazın.
+10. **Ada veya e-posta adresine göre ara** arama kutusuna, ilgilendiğiniz kullanıcının **tam adını** veya **e-posta adresini** yazın.
 
-11. Bir **onay kutusunu**ortaya çıkarmak için listedeki **kullanıcının** üzerine taşırın. Kullanıcınızı **Seçili** listeye eklemek için kullanıcının profil fotoğrafının veya logosunun yanındaki onay kutusunu tıklatın.
+11. Bir **onay kutusunu**açığa çıkarmak için listedeki **kullanıcının** üzerine gelin. Kullanıcıyı **Seçili** listeye eklemek için kullanıcının profil fotoğrafı veya logosu yanındaki onay kutusuna tıklayın.
 
-12. **İsteğe bağlı:** **Birden fazla kullanıcı eklemek**istiyorsanız, **ada veya e-posta adresi** arama kutusuna başka bir tam **ad** veya **e-posta adresi** yazın ve bu kullanıcıyı **Seçili** listeye eklemek için onay kutusunu tıklatın.
+12. **Isteğe bağlı:** Birden **fazla kullanıcı eklemek**istiyorsanız **ada veya e-posta adresine göre ara** kutusuna başka bir **tam ad** veya **e-posta adresi** yazın ve bu kullanıcıyı **Seçili** listeye eklemek için onay kutusuna tıklayın.
 
-13. Kullanıcıları seçmeyi bitirdiğinizde, bunları uygulamaya atanacak kullanıcı ve gruplar listesine eklemek için **Seç** düğmesini tıklatın.
+13. Kullanıcıları seçmeyi tamamladığınızda, uygulamayı atanacak kullanıcılar ve gruplar listesine eklemek için **Seç** düğmesine tıklayın.
 
-14. **İsteğe bağlı:** Seçtiğiniz kullanıcılara atamak için bir rol seçmek için **Atama Ekle** bölmesinde **Rol** seçiyi seçin.
+14. **Isteğe bağlı:** seçtiğiniz kullanıcılara atanacak bir rol seçmek Için **atama Ekle** bölmesinde **rol seçicisini Seç** ' e tıklayın.
 
-15. Uygulamayı seçili kullanıcılara atamak için **Atla** düğmesini tıklatın.
+15. Uygulamayı seçili kullanıcılara atamak için **ata** düğmesine tıklayın.
 
-Sağlama yapılandırılmış ve bir uygulama için zaten çalışıyorsa, yeni kullanıcılar yaklaşık 10 dakika içinde bir uygulamaya sağlanmalıdır. Ayrıntılar için **Denetim Günlükleri'ni** kontrol edin.
+Sağlama yapılandırıldıysa ve bir uygulama için zaten çalışıyorsa, yeni kullanıcıların bir uygulama için yaklaşık 10 dakika içinde sağlanması gerekir. Ayrıntılar için **Denetim günlüklerine** bakın.
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Bir grubu doğrudan yönetici olarak bir uygulamaya atama
+## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Bir grubu doğrudan bir uygulamaya yönetici olarak atama
 
-Bir uygulamaya doğrudan bir veya daha fazla grup atamak için aşağıdaki adımları izleyin:
+Bir uygulamaya doğrudan bir veya daha fazla grup atamak için şu adımları izleyin:
 
-1. Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
+1. [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** olarak oturum açın.
 
-2. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
+2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
 
-3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
+3. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
 
-4. Azure Active Directory sol navigasyon menüsünden **Kurumsal Uygulamalar'ı** tıklatın.
+4. Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' a tıklayın.
 
-5. **tüm uygulamalarınızın** listesini görüntülemek için Tüm Uygulamalar'ı tıklatın.
+5. tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' a tıklayın.
 
-   * Burada gösterilmesini istediğiniz uygulamayı göremiyorsanız, **Tüm Uygulamalar Listesi'nin** en üstündeki **Filtre** denetimini kullanın ve Tüm Uygulamalar için **Göster** seçeneğini **ayarlayın.**
+   * Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
 
-6. Listeden bir kullanıcı atamak istediğiniz uygulamayı seçin.
+6. Listeden Kullanıcı atamak istediğiniz uygulamayı seçin.
 
-7. Uygulama yüklendikten sonra, uygulamanın sol daki gezinme menüsünden **Kullanıcılar ve Gruplar'ı** tıklatın.
+7. Uygulama yüklendikten sonra, uygulamanın sol taraftaki gezinti menüsünden **Kullanıcılar ve gruplar** ' a tıklayın.
 
-8. **Atama Ekle** bölmesini açmak **için, Kullanıcılar ve Gruplar** listesinin üst kısmındaki **Ekle** düğmesini tıklatın.
+8. **Atama Ekle** bölmesini açmak için **Kullanıcılar ve gruplar** listesinin üstündeki **Ekle** düğmesine tıklayın.
 
-9. **Atama Ekle** bölmesinden Kullanıcılar **ve gruplar** seçicisini tıklatın.
+9. **atama Ekle** bölmesinden **Kullanıcılar ve gruplar** seçicisini tıklatın.
 
-10. **Ada veya e-posta adresi** arama kutusuna atamak istediğiniz grubun **tam grup adını** yazın.
+10. **Ada veya e-posta adresine göre ara** arama kutusuna, ilgilendiğiniz grubun **tam grup adını** yazın.
 
-11. Bir onay kutusunu ortaya çıkarmak için listedeki **grubun** üzerine titreyin. **checkbox** Kullanıcınızı **Seçili** listeye eklemek için grubun profil fotoğrafının veya logosunun yanındaki onay kutusunu tıklatın.
+11. Bir **onay kutusunu**açığa çıkarmak için listedeki **grubun** üzerine gelin. Kullanıcıyı **Seçili** listeye eklemek için grubun profil fotoğrafı veya logosu yanındaki onay kutusuna tıklayın.
 
-12. **İsteğe bağlı:** **Birden fazla grup eklemek**istiyorsanız, **ada veya e-posta adresi** arama kutusuna başka bir tam grup **adı** yazın ve bu grubu **Seçili** listeye eklemek için onay kutusunu tıklatın.
+12. **Isteğe bağlı:** Birden **fazla grup eklemek**istiyorsanız **ada veya e-posta adresine göre ara** kutusuna başka bir **tam grup adı** yazın ve bu grubu **Seçili** listeye eklemek için onay kutusuna tıklayın.
 
-13. Grupları seçmeyi bitirdiğinizde, bunları uygulamaya atanacak kullanıcı ve gruplar listesine eklemek için **Seç** düğmesini tıklatın.
+13. Grupları seçmeyi tamamladığınızda, uygulamayı atanacak kullanıcılar ve gruplar listesine eklemek için **Seç** düğmesine tıklayın.
 
-14. **İsteğe bağlı:** Seçtiğiniz gruplara atamak için bir rol seçmek için **Atama Ekle** bölmesinde **Rol** seçiyi seçin' i tıklatın.
+14. **Isteğe bağlı:** seçtiğiniz gruplara atanacak bir rol seçmek Için **atama Ekle** bölmesinde **rol seçicisini Seç** ' e tıklayın.
 
-15. Uygulamayı seçili gruplara atamak için **Atla** düğmesini tıklatın.
+15. Uygulamayı seçili gruplara atamak için **ata** düğmesine tıklayın.
 
-Sağlama yapılandırılmış ve bir uygulama için zaten çalışıyorsa, grup içinde bulunan yeni kullanıcılar yaklaşık 10 dakika içinde bir uygulamaya sağlanmalıdır. Ayrıntılar için **Denetim Günlükleri'ni** kontrol edin.
+Sağlama yapılandırıldıysa ve bir uygulama için zaten çalışıyorsa, Grup içinde yer alan yeni kullanıcıların, yaklaşık 10 dakika içinde bir uygulamaya sağlanması gerekir. Ayrıntılar için **Denetim günlüklerine** bakın.
 
 >[!IMPORTANT]
->Bazı uygulamalar için desteklenirse, üyelere ek olarak grup adı ve grup ayrıntılarının sağlanması. **Sağlama** sekmesinde gösterilen grup nesneleri için **Eşlemeyi** etkinleştirerek veya devre dışı bırakarak bu işlevselliği etkinleştirebilir veya devre dışı bırakabilirsiniz. 
+>Bazı uygulamalarda destekleniyorsa, üyelere ek olarak grup adı ve grup ayrıntılarının sağlanması. **Sağlama** sekmesinde gösterilen Grup nesneleri **eşlemesini** etkinleştirerek veya devre dışı bırakarak bu işlevselliği etkinleştirebilir veya devre dışı bırakabilirsiniz. 
 >
 >
 
-Sağlama grupları etkinse, "eşleşen kimlik" için uygun bir alanın kullanıldığından emin olmak için öznitelik eşlemelerini gözden geçirin. Bu eşleşen kimlik, görüntü adı veya e-posta takma adı olabilir. Grup ve üyeleri, eşleşen özellik boşsa veya Azure AD'deki bir grup için doldurulmuyorsa sağlanmaz.
+Sağlama grupları etkinleştirilmişse, "eşleşen KIMLIK" için uygun bir alanın kullanıldığından emin olmak üzere öznitelik eşlemelerini gözden geçirdiğinizden emin olun. Bu eşleşen KIMLIK görünen ad veya e-posta diğer adı olabilir. Eşleşen özellik boşsa veya Azure AD 'de bir grup için doldurulmamışsa, Grup ve üyeleri sağlanmadı.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Active Directory ile SaaS Uygulamalarına Kullanıcı Sağlama ve Deprovisioning'i otomatikleştirin](user-provisioning.md)
+[Azure Active Directory ile SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme](user-provisioning.md)

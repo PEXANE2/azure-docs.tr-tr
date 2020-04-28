@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nı kullanarak SAP HANA'daki verileri taşıma
-description: Azure Veri Fabrikası'nı kullanarak SAP HANA'daki verileri nasıl taşıyabildiğini öğrenin.
+title: Azure Data Factory kullanarak SAP HANA verileri taşıma
+description: Azure Data Factory kullanarak SAP HANA verileri taşıma hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,96 +13,96 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265824"
 ---
-# <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Azure Veri Fabrikasını kullanarak VERILERI SAP HANA'dan taşıma
-> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
+# <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP HANA verileri taşıma
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](data-factory-sap-hana-connector.md)
 > * [Sürüm 2 (geçerli sürüm)](../connector-sap-hana.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [V2'deki SAP HANA konektörüne](../connector-sap-business-warehouse.md)bakın.
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, [v2 'de SAP HANA Bağlayıcısı](../connector-sap-business-warehouse.md)' na bakın.
 
-Bu makalede, verileri şirket içi SAP HANA'dan taşımak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopya etkinliğiyle birlikte veri hareketine genel bir genel bakış sunan [Veri Hareketi Etkinlikleri](data-factory-data-movement-activities.md) makalesine dayanmaktadır.
+Bu makalede, verileri şirket içi SAP HANA taşımak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğiyle veri hareketine genel bir bakış sunan [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde oluşturulur.
 
-Verileri şirket içi SAP HANA veri deposundan desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Veri fabrikası şu anda yalnızca sap HANA'dan diğer veri depolarına veri taşımayı destekler, ancak verileri diğer veri depolarından SAP HANA'ya taşımak için değildir.
+Şirket içi SAP HANA veri deposundaki verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Data Factory Şu anda yalnızca bir SAP HANA diğer veri depolarına veri taşımayı destekler, ancak diğer veri depolarından verileri bir SAP HANA taşımaya yönelik değildir.
 
-## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve kurulum
-Bu bağlayıcı SAP HANA veritabanının herhangi bir sürümünü destekler. SQL sorgularını kullanarak HANA bilgi modellerinden (Analitik ve Hesaplama görünümleri gibi) ve Satır/Sütun tablolarından veri kopyalamayı destekler.
+## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve yükleme
+Bu bağlayıcı SAP HANA veritabanının herhangi bir sürümünü destekler. SQL sorguları kullanılarak HANA bilgi modellerinden (analitik ve hesaplama görünümleri gibi) ve satır/sütun tablolarının verilerinin kopyalanmasını destekler.
 
-SAP HANA örneğine bağlantıyı etkinleştirmek için aşağıdaki bileşenleri yükleyin:
-- **Veri Yönetimi Ağ Geçidi**: Veri Fabrikası hizmeti, Veri Yönetimi Ağ Geçidi adı verilen bir bileşeni kullanarak şirket içi veri depolarına (SAP HANA dahil) bağlanmayı destekler. Veri Yönetimi Ağ Geçidi ve ağ geçidini ayarlamayla ilgili adım adım yönergeler hakkında bilgi edinmek [için, verileri şirket içi veri deposu arasında bulut veri deposu makalesine taşıma](data-factory-move-data-between-onprem-and-cloud.md) başlıklı bakın. SAP HANA bir Azure IaaS sanal makinede (VM) barındırılabilse bile ağ geçidi gereklidir. Ağ geçidi veritabanına bağlanabildiği sürece ağ geçidini veri deposuyla aynı VM'ye veya farklı bir VM'ye yükleyebilirsiniz.
-- Ağ geçidi makinesinde **SAP HANA ODBC sürücüsü.** SAP HANA ODBC sürücüsünü [SAP Software Download Center](https://support.sap.com/swdc) sayfasından indirebilirsiniz. **Windows için SAP HANA CLIENT**anahtar kelimesi ile arama yapın. 
+SAP HANA örneğine bağlantıyı etkinleştirmek için aşağıdaki bileşenleri yüklemelisiniz:
+- **Veri yönetimi Gateway**: Data Factory hizmeti, veri yönetimi Gateway adlı bir bileşeni kullanarak şirket içi veri depolarına (SAP HANA dahil) bağlanmayı destekler. Ağ geçidini ayarlamaya yönelik Veri Yönetimi ağ geçidi ve adım adım yönergeler hakkında bilgi edinmek için bkz. [Şirket içi veri deposu ile bulut veri deposu arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) makalesi. SAP HANA bir Azure IaaS sanal makinesinde (VM) barındırıldığından bile ağ geçidi gerekir. Ağ geçidini, veri deposuyla aynı VM 'ye veya ağ geçidinin veritabanına bağlanabildiği sürece farklı bir VM 'ye yükleyebilirsiniz.
+- Ağ Geçidi makinesinde **ODBC sürücüsü SAP HANA** . SAP HANA ODBC sürücüsünü [SAP Software Download Center](https://support.sap.com/swdc) sayfasından indirebilirsiniz. **Windows için SAP HANA**anahtar sözcüğünü kullanarak arama yapın. 
 
 ## <a name="getting-started"></a>Başlarken
-Farklı araçlar/API'ler kullanarak şirket içi SAP HANA veri deposundan veri aktaran bir kopyalama etkinliği içeren bir ardışık kaynak oluşturabilirsiniz. 
+Farklı araçlar/API 'Ler kullanarak verileri şirket içi SAP HANA veri deposundan taşıyan kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz. 
 
-- Bir ardışık yol oluşturmanın en kolay yolu **Kopyalama Sihirbazı'nı**kullanmaktır. Bkz. Öğretici: Veri kopyala sihirbazını kullanarak bir ardışık yol oluşturma konusunda hızlı bir geçiş için Kopya Sihirbazı kullanarak bir [ardışık kaynak oluşturun.](data-factory-copy-data-wizard-tutorial.md) 
-- Bir ardışık kaynak oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeleri için [etkinlik öğreticisini](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyala'ya bakın. 
+- İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) . 
+- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
-Araçları veya API'leri kullanın, verileri kaynak veri deposundan bir lavabo veri deposuna aktaran bir ardışık işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
+Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Giriş ve çıktı veri depolarını veri fabrikanıza bağlamak için **bağlantılı hizmetler** oluşturun.
-2. Kopyalama işlemi için giriş ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. 
-3. Giriş olarak veri kümesi ve çıktı olarak veri kümesi alan bir kopyalama etkinliği içeren bir **ardışık işlem oluşturma.** 
+1. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun.
+2. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. 
+3. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun. 
 
-Sihirbazı kullandığınızda, bu Veri Fabrikası varlıkları (bağlantılı hizmetler, veri kümeleri ve ardışık kuruluş) için JSON tanımları sizin için otomatik olarak oluşturulur. Araçları/API'leri (.NET API hariç) kullandığınızda, Bu Veri Fabrikası varlıklarını JSON biçimini kullanarak tanımlarsınız.  Şirket içi SAP HANA'daki verileri kopyalamak için kullanılan Veri Fabrikası varlıkları için JSON tanımlı bir örnek [için Bkz. JSON örneği: Sap HANA'dan Azure Blob bölümüne verileri kopyalayın.](#json-example-copy-data-from-sap-hana-to-azure-blob) 
+Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçlar/API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız.  Şirket içi SAP HANA veri kopyalamak için kullanılan Data Factory varlıkların JSON tanımlarına sahip bir örnek için, bu makalenin [JSON örneği: SAP HANA verileri Azure Blob 'A kopyalama](#json-example-copy-data-from-sap-hana-to-azure-blob) bölümüne bakın. 
 
-Aşağıdaki bölümler, SAP HANA veri deposuna özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
+Aşağıdaki bölümler, bir SAP HANA veri deposuna özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
-Aşağıdaki tablo, SAP HANA bağlantılı hizmete özgü JSON öğeleri için açıklama sağlar.
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
+Aşağıdaki tabloda SAP HANA bağlı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-sunucu | SAP HANA örneğinin bulunduğu sunucunun adı. Sunucunuz özelleştirilmiş bir bağlantı noktası `server:port`kullanıyorsa, belirtin. | string | Evet
-authenticationType | Kimlik doğrulama türü. | kullanabilirsiniz. "Temel" veya "Windows" | Evet 
-kullanıcı adı | SAP sunucusuna erişimi olan kullanıcının adı | string | Evet
-password | Kullanıcının parolası. | string | Evet
-ağ geçidiAdı | Veri Fabrikası hizmetinin şirket içi SAP HANA örneğine bağlanmak için kullanması gereken ağ geçidinin adı. | string | Evet
-şifreli Credential | Şifrelenmiş kimlik bilgisi dizesi. | string | Hayır
+sunucu | SAP HANA örneğinin bulunduğu sunucunun adı. Sunucunuz özelleştirilmiş bir bağlantı noktası kullanıyorsa, belirtin `server:port`. | string | Yes
+authenticationType | Kimlik doğrulama türü. | kullanabilirsiniz. "Temel" veya "Windows" | Yes 
+kullanıcı adı | SAP sunucusuna erişimi olan kullanıcının adı | string | Yes
+password | Kullanıcının parolası. | string | Yes
+gatewayName | Data Factory hizmetinin şirket içi SAP HANA örneğine bağlanmak için kullanması gereken ağ geçidinin adı. | string | Yes
+encryptedCredential | Şifrelenmiş kimlik bilgisi dizesi. | string | Hayır
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin & özelliklerin tam listesi için [veri kümelerini oluşturma](data-factory-create-datasets.md) makalesine bakın. Bir veri kümesi JSON'un yapısı, kullanılabilirliği ve ilkesi gibi bölümler tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu, vb.) için benzerdir.
+Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
 
-**typeProperties** bölümü her veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **İlişkisel Tablo**türü SAP HANA veri kümesi için desteklenen türe özgü özellikler yoktur. 
+**Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Relationaltable**türünde SAP HANA veri kümesi için desteklenen türe özgü özellik yok. 
 
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin & özelliklerinin tam listesi [için, Kaynak Hatları Oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıktı tabloları gibi özellikler, tüm etkinlik türleri için ilkeler mevcuttur.
+Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları gibi özellikler, tüm etkinlik türleri için kullanılabilir ilkeleridir.
 
-Oysa, etkinliğin **typeProperties** bölümünde bulunan özellikler her etkinlik türüne göre değişir. Kopyalama etkinliği için, kaynak ve lavabo türlerine bağlı olarak değişir.
+Ancak, etkinliğin **typeproperties** bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir.
 
-Kopyalama etkinliğindeki kaynak **RelationalSource** türünden (SAP HANA'yı içerir) olduğunda, typeProperties bölümünde aşağıdaki özellikler kullanılabilir:
+Copy etkinliğinin kaynağı **Relationalsource** (SAP HANA içerir) türünde olduğunda, typeproperties bölümünde aşağıdaki özellikler mevcuttur:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sorgu | SAP HANA örneğindeki verileri okumak için SQL sorgusunu belirtir. | SQL sorgusu. | Evet |
+| sorgu | SAP HANA örneğinden verileri okumak için SQL sorgusunu belirtir. | SQL sorgusu. | Yes |
 
-## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON örneği: SAP HANA'dan Azure Blob'a veri kopyalama
-Aşağıdaki örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir ardışık hat lar oluşturmak için kullanabileceğiniz örnek JSON tanımları sağlar. Bu örnek, şirket içi SAP HANA'daki verilerin Azure Blob Depolama alanına nasıl kopyalanır olduğunu gösterir. Ancak, veriler Azure Veri Fabrikası'ndaki Kopyalama Etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) listelenen lavabolardan herhangi biri için **doğrudan** kopyalanabilir.  
+## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON örneği: SAP HANA verileri Azure Blob 'a kopyalama
+Aşağıdaki örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir işlem hattı oluşturmak için kullanabileceğiniz örnek JSON tanımlarını sağlar. Bu örnek, şirket içi SAP HANA verilerinin bir Azure Blob depolama alanına nasıl kopyalanacağını gösterir. Bununla birlikte, veriler, Azure Data Factory kopyalama etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) listelenen herhangi bir havuza **doğrudan** kopyalanabilir.  
 
 > [!IMPORTANT]
-> Bu örnek JSON parçacıkları sağlar. Veri fabrikası oluşturmak için adım adım yönergeler içermez. Adım adım yönergeler için [şirket içi konumlar ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasında hareketli veri bakın.
+> Bu örnek, JSON parçacıkları sağlar. Veri Fabrikası oluşturmaya yönelik adım adım yönergeler içermez. Adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut makalesi arasında verileri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
 
-Örnekte aşağıdaki veri fabrikası varlıkları vardır:
+Örnek, aşağıdaki Data Factory varlıklarına sahiptir:
 
-1. [SapHana](#linked-service-properties)türünde bağlantılı bir hizmet.
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)türüne bağlı bir hizmet.
-3. [İlişkisel Tablo](#dataset-properties)türünden bir giriş [veri kümesi.](data-factory-create-datasets.md)
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünden bir çıktı [veri kümesi.](data-factory-create-datasets.md)
-5. [RelationalSource](#copy-activity-properties) ve [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan Copy Activity içeren bir [ardışık kaynak.](data-factory-create-pipelines.md)
+1. [Saphana](#linked-service-properties)türünde bağlı bir hizmet.
+2. [Azurestorage](data-factory-azure-blob-connector.md#linked-service-properties)türünde bağlı bir hizmet.
+3. [Relationaltable](#dataset-properties)türünde bir giriş [veri kümesi](data-factory-create-datasets.md) .
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünde bir çıkış [veri kümesi](data-factory-create-datasets.md) .
+5. [Relationalsource](#copy-activity-properties) ve [Blobsink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md) .
 
-Örnek, verileri SAP HANA örneğinden bir Azure örneğine saatlik olarak kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri izleyen bölümlerde açıklanmıştır.
+Örnek, verileri bir SAP HANA örneğinden Azure blobuna saatlik olarak kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri takip eden bölümlerde açıklanmıştır.
 
-İlk adım olarak, veri yönetimi ağ geçidini kur. Yönergeler, [şirket içi konumlar ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasındaki hareketli verilerde dir.
+İlk adım olarak, veri yönetimi ağ geçidini kurun. Yönergeler, [Şirket içi konumlar ve bulut makaleleri arasında hareketli verilerde](data-factory-move-data-between-onprem-and-cloud.md) yer alır.
 
-### <a name="sap-hana-linked-service"></a>SAP HANA bağlantılı hizmet
-Bu bağlantılı hizmet, SAP HANA örneğini veri fabrikasına bağlar. Tür özelliği **SapHana**olarak ayarlanır. typeProperties bölümü SAP HANA örneği için bağlantı bilgileri sağlar.
+### <a name="sap-hana-linked-service"></a>Bağlı hizmet SAP HANA
+Bu bağlı hizmet, SAP HANA örneğinizi veri fabrikasına bağlar. Type özelliği **Saphana**olarak ayarlanır. TypeProperties bölümü SAP HANA örneğine yönelik bağlantı bilgilerini sağlar.
 
 ```json
 {
@@ -124,7 +124,7 @@ Bu bağlantılı hizmet, SAP HANA örneğini veri fabrikasına bağlar. Tür öz
 ```
 
 ### <a name="azure-storage-linked-service"></a>Azure Storage bağlı hizmeti
-Bu bağlantılı hizmet, Azure Depolama hesabınızı veri fabrikasına bağlar. Tür özelliği **AzureStorage**olarak ayarlanır. typeProperties bölümü, Azure Depolama hesabı için bağlantı bilgileri sağlar.
+Bu bağlı hizmet, Azure depolama hesabınızı veri fabrikasına bağlar. Type özelliği **Azurestorage**olarak ayarlanır. TypeProperties bölümü, Azure depolama hesabı için bağlantı bilgilerini sağlar.
 
 ```json
 {
@@ -138,13 +138,13 @@ Bu bağlantılı hizmet, Azure Depolama hesabınızı veri fabrikasına bağlar.
 }
 ```
 
-### <a name="sap-hana-input-dataset"></a>SAP HANA giriş veri seti
+### <a name="sap-hana-input-dataset"></a>SAP HANA girişi veri kümesi
 
-Bu veri kümesi SAP HANA veri kümesini tanımlar. Veri Fabrikası veri kümesinin türünü **İlişkisel Tablo**olarak ayarlarsınız. Şu anda, sap HANA veri kümesi için türe özgü özellikler belirtmezsiniz. Kopyalama Etkinliği tanımındaki sorgu, SAP HANA örneğinden hangi verilerin okunacak olduğunu belirtir. 
+Bu veri kümesi SAP HANA veri kümesini tanımlar. Data Factory veri kümesinin türünü **Relationaltable**olarak ayarlarsınız. Şu anda, bir SAP HANA veri kümesi için herhangi bir türe özgü özellik belirtmeyin. Kopyalama etkinliği tanımındaki sorgu SAP HANA örneğinden hangi verilerin okunacağını belirtir. 
 
-Dış özelliğin doğru olarak ayarlanması, Veri Fabrikası hizmetine tablonun veri fabrikasının dışında olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
+External özelliğinin true olarak ayarlanması, Data Factory hizmetine tablonun veri fabrikasının dış olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini bildirir.
 
-Sıklık ve aralık özellikleri zamanlamayı tanımlar. Bu durumda, veriler SAP HANA örneğinden saatlik olarak okunur. 
+Sıklık ve Aralık özellikleri zamanlamayı tanımlar. Bu durumda, veriler SAP HANA örneğinden her saat okunmalıdır. 
 
 ```json
 {
@@ -163,7 +163,7 @@ Sıklık ve aralık özellikleri zamanlamayı tanımlar. Bu durumda, veriler SAP
 ```
 
 ### <a name="azure-blob-output-dataset"></a>Azure Blob çıktı veri kümesi
-Bu veri kümesi, azure blob veri kümesiçıktısını tanımlar. Tür özelliği AzureBlob olarak ayarlanır. TypeProperties bölümü, SAP HANA örneğinden kopyalanan verilerin depolandığı yeri sağlar. Veriler her saat yeni bir blob 'a yazılır (sıklık: saat, aralık: 1). Blob için klasör yolu, işlenen dilimin başlangıç saatine göre dinamik olarak değerlendirilir. Klasör yolu, başlangıç zamanının yıl, ay, gün ve saat bölümlerini kullanır.
+Bu veri kümesi, çıkış Azure blob veri kümesini tanımlar. Type özelliği AzureBlob olarak ayarlanır. TypeProperties bölümü, SAP HANA örneğinden kopyalanmış verilerin nerede depolandığını sağlar. Veriler her saat yeni bir bloba yazılır (sıklık: Hour, Interval: 1). Blob 'un klasör yolu, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay, gün ve saat kısımlarını kullanır.
 
 ```json
 {
@@ -222,9 +222,9 @@ Bu veri kümesi, azure blob veri kümesiçıktısını tanımlar. Tür özelliğ
 ```
 
 
-### <a name="pipeline-with-copy-activity"></a>Kopyalama etkinliği olan boru hattı
+### <a name="pipeline-with-copy-activity"></a>Kopyalama etkinliği içeren işlem hattı
 
-Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan ve her saat çalışacak şekilde zamanlanan bir Kopyalama Etkinliği içerir. Boru hattı JSON tanımında, **kaynak** türü **RelationalSource** (SAP HANA kaynak için) olarak ayarlanır ve **lavabo** türü **BlobSink**olarak ayarlanır. **Sorgu** özelliği için belirtilen SQL sorgusu, kopyalanacak son saatteki verileri seçer.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü, **relationalsource** (SAP HANA kaynağı için) olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
 
 ```json
 {
@@ -274,46 +274,46 @@ Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılan
 
 
 ### <a name="type-mapping-for-sap-hana"></a>SAP HANA için tür eşleme
-[Veri hareketi etkinlikleri](data-factory-data-movement-activities.md) makalesinde belirtildiği gibi, Kopyalama etkinliği aşağıdaki iki adımlı yaklaşımla kaynak türlerinden lavabo türlerine otomatik tür dönüştürmeleri gerçekleştirir:
+[Veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde belirtildiği gibi, kopyalama etkinliği, kaynak türlerindeki otomatik tür dönüştürmeleri aşağıdaki iki adımlı yaklaşımla birlikte havuz türlerine uygular:
 
-1. Yerel kaynak türlerinden .NET türüne dönüştürme
-2. .NET türünden yerel lavabo türüne dönüştürme
+1. Yerel kaynak türlerinden .NET türüne Dönüştür
+2. .NET türünden yerel havuz türüne Dönüştür
 
-SAP HANA'dan veri aktarırken, sap HANA türlerinden .NET türlerine aşağıdaki eşlemeler kullanılır.
+SAP HANA verileri taşırken, SAP HANA türlerinden .NET türlerine aşağıdaki eşlemeler kullanılır.
 
-SAP HANA Tipi | .NET Tabanlı Tip
+SAP HANA türü | .NET tabanlı tür
 ------------- | ---------------
-Tinyint | Bayt
-Smallint | Int16
+Iç | Bayt
+Small | Int16
 INT | Int32
-Bigint | Int64
+BIGıNT | Int64
 GERÇEK SAYI | Tek
-Çift | Tek
-On -da -lık | Ondalık
-Boolean | Bayt
-Varchar | Dize
-Nvarchar | Dize
-Clob | Bayt[]
-ALFANÜM | Dize
-Blob | Bayt[]
+ÇIFT | Tek
+KATEGORI | Ondalık
+BOOLEAN | Bayt
+VARCHAR | Dize
+NVARCHAR | Dize
+CLOB | Byte []
+ALHAYALI um | Dize
+Bun | Byte []
 DATE | DateTime
 TIME | TimeSpan
-Zaman damgası | DateTime
-İkinciTARIH | DateTime
+ILIŞKIN | DateTime
+SECONDDATE | DateTime
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar
-SAP HANA'dan veri kopyalarken bilinen birkaç sınırlama vardır:
+SAP HANA verileri kopyalarken bazı bilinen sınırlamalar vardır:
 
 - NVARCHAR dizeleri 4000 Unicode karakter olan maksimum uzunluğa göre kısaltılır
 - SMALLDECIMAL desteklenmez
 - VARBINARY desteklenmez
 - Geçerli Tarihler 1899/12/30 ile 9999/12/31 arasıdır
 
-## <a name="map-source-to-sink-columns"></a>Sütunları batırmak için harita kaynağı
-Kaynak veri kümesindeki sütunları lavabo veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için Azure [Veri Fabrikası'ndaki veri kümesi sütunlarını eşleme](data-factory-map-columns.md)konusuna bakın.
+## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin
+Kaynak veri kümesindeki sütunları havuz veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>İlişkisel kaynaklardan tekrarlanabilir okuma
-İlişkisel veri depolarından veri kopyalarken, istenmeyen sonuçlardan kaçınmak için tekrarlanabilirliği aklınızda bulundurun. Azure Veri Fabrikası'nda, bir dilimi el ile yeniden çalıştırabilirsiniz. Bir hata oluştuğunda dilimin yeniden çalıştırılaması için bir veri kümesi için yeniden deneme ilkesini de yapılandırabilirsiniz. Bir dilim her iki şekilde de yeniden çalıştırıldığında, bir dilim kaç kez çalıştırılırsa çalıştırın aynı verilerin okunduğundan emin olmanız gerekir. Bkz. [İlişkisel kaynaklardan tekrarlanabilir okuma](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
+## <a name="repeatable-read-from-relational-sources"></a>İlişkisel kaynaklardan yinelenebilir okuma
+İlişkisel veri depolarından veri kopyalarken, istenmeyen sonuçları önlemek için yinelenebilirlik aklınızda bulundurun. Azure Data Factory, bir dilimi el ile yeniden çalıştırabilirsiniz. Bir hata oluştuğunda dilimin yeniden çalıştırılması için bir veri kümesi için yeniden deneme ilkesi de yapılandırabilirsiniz. Bir dilim her iki şekilde yeniden çalıştırıldığında, bir dilimin kaç kez çalıştırıldıklarından bağımsız olarak aynı verilerin okunmasını sağlayın. Bkz. [ilişkisel kaynaklardan tekrarlanabilir okuma](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
 
-## <a name="performance-and-tuning"></a>Performans ve Tuning
-Azure Veri Fabrikası'ndaki veri hareketinin performansını etkileyen önemli faktörler (Kopyalama Etkinliği) ve bunu optimize etmenin çeşitli yolları hakkında bilgi edinmek için [Etkinlik performansını & Tuning Kılavuzu'na](data-factory-copy-activity-performance.md) bakın.
+## <a name="performance-and-tuning"></a>Performans ve ayarlama
+Veri taşıma (kopyalama etkinliği) performansını Azure Data Factory ve en iyileştirmek için çeşitli yollarla etkileyen temel faktörlerle ilgili bilgi edinmek için bkz. [etkinlik performansını kopyalama & ayarlama Kılavuzu](data-factory-copy-activity-performance.md) .

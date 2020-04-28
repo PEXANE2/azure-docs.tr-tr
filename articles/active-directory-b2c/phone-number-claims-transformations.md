@@ -1,7 +1,7 @@
 ---
-title: Telefon numarası özel ilkelerde dönüşüm talep ediyor
+title: Özel ilkelerdeki telefon numarası talep dönüşümleri
 titleSuffix: Azure AD B2C
-description: Azure AD B2C'de telefon numarası talepleri için özel ilke başvurusu.
+description: Azure AD B2C 'de telefon numarası talep dönüştürmeleri için özel ilke başvurusu.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,30 +12,30 @@ ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bd26b2b475e293a1fda1b007289ba7c3eef35136
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183949"
 ---
-# <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Azure AD B2C'de telefon numarası talep dönüşümlerini tanımlama
+# <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Azure AD B2C 'de telefon numarası talep dönüşümlerini tanımlayın
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Bu makalede, Azure Active Directory B2C (Azure AD B2C) kimlik deneyimi çerçevesi şemasının telefon numarası talep dönüşümlerini kullanmak için başvuru ve örnekler verilmektedir. Genel olarak talep dönüşümleri hakkında daha fazla bilgi [için, Bkz.](claimstransformations.md)
+Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de kimlik deneyimi çerçevesi şemasının telefon numarası talep dönüştürmelerinin kullanılmasına yönelik başvuru ve örnekler sağlanmaktadır. Genel olarak talep dönüştürmeleri hakkında daha fazla bilgi için bkz. [Claimstransformations](claimstransformations.md).
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="convertphonenumberclaimtostring"></a>ConvertPhoneNumberclaimtoString
+## <a name="convertphonenumberclaimtostring"></a>ConvertPhoneNumberClaimToString
 
-Veri `phoneNumber` türünü `string` veri türüne dönüştürür.
+`phoneNumber` Veri türünü `string` veri türüne dönüştürür.
 
-| Öğe | DönüşümTalep Türü | Veri Türü | Notlar |
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Girişİddia | Phonenumber | Phonenumber |  Bir dize dönüştürmek için ClaimType. |
-| ÇıktılarTalep | telefonNumberString | string | Bu talep dönüşümünden sonra üretilen ClaimType çağrıldı. |
+| Inputclaim | phoneNumber | phoneNumber |  Bir dizeye dönüştürülecek ClaimType. |
+| OutputClaim | phoneNumberString | string | Bu talep dönüştürmesinin ardından üretilen ClaimType çağırılır. |
 
-Bu örnekte, bir değer türü `phoneNumber` ile cellPhoneNumber iddia bir değer türü ile `string`bir cep Telefonu iddiadönüştürülür .
+Bu örnekte, değer türü `phoneNumber` olan cellphonenumber talebi, değer türü olan bir Cellphone talebine dönüştürülür. `string`
 
 ```XML
 <ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
@@ -51,26 +51,26 @@ Bu örnekte, bir değer türü `phoneNumber` ile cellPhoneNumber iddia bir değe
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **telefonNumarası**: +11234567890 (telefonNumarası)
-- Çıktı talepleri:
-  - **phoneNumberString**: +11234567890 (dize)
+  - **PhoneNumber**: + 11234567890 (PhoneNumber)
+- Çıkış talepleri:
+  - **Phonenumberstring**: + 11234567890 (dize)
 
 
 ## <a name="convertstringtophonenumberclaim"></a>ConvertStringToPhoneNumberClaim
 
-Bu talep dönüştürme telefon numarasının biçimini doğrular. Geçerli bir biçimdeyse, Azure AD B2C tarafından kullanılan standart bir biçime değiştirin. Sağlanan telefon numarası geçerli bir biçimde değilse, bir hata iletisi döndürülür.
+Bu talep dönüştürmesi telefon numarasının biçimini doğrular. Geçerli bir biçimde ise, Azure AD B2C tarafından kullanılan standart bir biçimde değiştirin. Belirtilen telefon numarası geçerli bir biçimde değilse, bir hata iletisi döndürülür.
 
-| Öğe | DönüşümTalep Türü | Veri Türü | Notlar |
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Girişİddia | telefonNumberString | string |  Telefon numarası için string iddiası. Telefon numarası, önde gelen bir "+" ve ülke kodu ile birlikte uluslararası formatta olmalıdır. Giriş talebi `country` sağlanıyorsa, telefon numarası yerel formattadır (ülke kodu olmadan). |
-| Girişİddia | ülke | string | [İsteğe bağlı] ISO3166 formatında telefon numarasının ülke kodu (iki harfli ISO-3166 ülke kodu) için dize talebi. |
-| ÇıktılarTalep | outputClaim | Phonenumber | Bu talep dönüşüm sonucu. |
+| Inputclaim | phoneNumberString | string |  Telefon numarası için dize talebi. Telefon numarasının uluslararası biçimde olması gerekir ve önünde bir "+" ve ülke kodu olmalıdır. Giriş talebi `country` sağlanmışsa telefon numarası yerel biçimindedir (ülke kodu olmadan). |
+| Inputclaim | ülke | string | Seçim Telefon numarasının ülke kodu için ISO3166 biçiminde dize talebi (iki harfli ISO-3166 ülke kodu). |
+| OutputClaim | outputClaim | phoneNumber | Bu talep dönüştürmesinin sonucu. |
 
-**ConvertStringToPhoneNumberClaim** dönüşüm her zaman [kendini ileri teknik profil](self-asserted-technical-profile.md) veya ekran [denetimi](display-controls.md)tarafından çağrılan bir doğrulama [teknik profilden](validation-technical-profile.md) yürütülür iddia ediyor. **UserMessageIfClaimsTransformationInvalidPhoneNumber** kendi kendine ileri teknik profil meta veri kullanıcıya sunulan hata iletisini denetler.
+**Convertstringtophonenumberclaim** talep dönüştürmesi, her zaman [otomatik olarak onaylanan bir teknik profil](self-asserted-technical-profile.md) veya [görüntüleme denetimi](display-controls.md)tarafından çağrılan bir [doğrulama teknik profilinden](validation-technical-profile.md) yürütülür. **Usermessageifclaimstransformationınvalidphonenumber** kendi kendine onaylanan teknik profil meta verileri, kullanıcıya sunulan hata iletisini denetler.
 
 ![Hata iletisi yürütme yolu diyagramı](./media/phone-authentication/assert-execution.png)
 
-Sağlanan dize talebinin geçerli bir telefon numarası olduğundan emin olmak için bu talep dönüştürmesini kullanabilirsiniz. Değilse, bir hata iletisi atılır. Aşağıdaki örnek, **phoneString** ClaimType'ın gerçekten geçerli bir telefon numarası olup olmadığını denetler ve ardından telefon numarasını standart Azure AD B2C biçiminde döndürür. Aksi takdirde, bir hata iletisi atılır.
+Bu talep dönüşümünü, belirtilen dize talebinin geçerli bir telefon numarası olduğundan emin olmak için kullanabilirsiniz. Aksi takdirde, bir hata iletisi oluşturulur. Aşağıdaki örnek **Phonestring** ClaimType 'ın gerçekten geçerli bir telefon numarası olduğunu denetler ve ardından standart Azure AD B2C biçimindeki telefon numarasını döndürür. Aksi takdirde, bir hata iletisi oluşturulur.
 
 ```XML
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
@@ -84,7 +84,7 @@ Sağlanan dize talebinin geçerli bir telefon numarası olduğundan emin olmak i
 </ClaimsTransformation>
 ```
 
-Bu talep dönüştürmesini içeren doğrulama teknik profilini çağıran kendi kendini ileri süren teknik profil hata iletisini tanımlayabilir.
+Bu talep dönüşümünü içeren doğrulama teknik profilini çağıran kendi kendini onaylanan teknik profil, hata iletisini tanımlayabilir.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
@@ -98,39 +98,39 @@ Bu talep dönüştürmesini içeren doğrulama teknik profilini çağıran kendi
 ### <a name="example-1"></a>Örnek 1
 
 - Giriş talepleri:
-  - **telefonNumberString**: 033 456-7890
-  - **ülke**: DK
-- Çıktı talepleri:
-  - **outputTalep**: +450334567890
+  - **Phonenumberstring**: 033 456-7890
+  - **ülke**: dk
+- Çıkış talepleri:
+  - **Outputclaim**: + 450334567890
 
 ### <a name="example-2"></a>Örnek 2
 
 - Giriş talepleri:
-  - **telefonNumberString**: +1 (123) 456-7890
-- Çıktı talepleri:
-  - **outputTalep**: +11234567890
+  - **Phonenumberstring**: + 1 (123) 456-7890
+- Çıkış talepleri:
+  - **Outputclaim**: + 11234567890
 
 
-## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetnationalNumberAndCountryCodeFromPhoneNumberString
+## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>Getülke Alnumberandcountrycodefromphonenumberstring
 
-Bu, giriş talebinden ülke kodunu ve ulusal numarayı ayıklar ve sağlanan telefon numarası geçerli değilse isteğe bağlı olarak bir özel durum atar.
+Bu, ülke kodunu ve ulusal numarayı giriş talebine ayıklar ve isteğe bağlı olarak, sağlanan telefon numarası geçerli değilse bir özel durum oluşturur.
 
-| Öğe | DönüşümTalep Türü | Veri Türü | Notlar |
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Girişİddia | Phonenumber | string | Telefon numarasının string iddiası. Telefon numarası, önde gelen bir "+" ve ülke kodu ile birlikte uluslararası formatta olmalıdır. |
-| ınputparameter | atmaExceptionOnFailure | boole | [İsteğe bağlı] Telefon numarası geçerli olmadığında özel durum atılıp atılmadığını belirten bir parametre. Varsayılan değer yanlıştır. |
-| ınputparameter | ülkeCodeType | string | [İsteğe bağlı] Çıktı talebindeki ülke kodu türünü gösteren bir parametre. Kullanılabilir değerler **CallingCode** (örneğin +1) veya **ISO3166** (iki harfli ISO-3166 ülke kodu) bir ülkenin uluslararası çağrı kodudur. |
-| ÇıktılarTalep | nationalNumber | string | Telefon numarasının ulusal numarası için string iddiası. |
-| ÇıktılarTalep | ülkeKodu | string | Telefon numarasının ülke kodu için string iddiası. |
+| Inputclaim | phoneNumber | string | Telefon numarasının dize talebi. Telefon numarasının uluslararası biçimde olması gerekir ve önünde bir "+" ve ülke kodu olmalıdır. |
+| InputParameter | throwExceptionOnFailure | boole | Seçim Telefon numarası geçerli olmadığında bir özel durumun oluşturulup oluşturulmayacağını gösteren bir parametre. Varsayılan değer false 'dur. |
+| InputParameter | countryCodeType | string | Seçim Çıkış talebinde ülke kodu türünü gösteren bir parametre. Kullanılabilir değerler, **Callingcode** (bir ülkenin uluslararası çağrı kodu, örneğin + 1) veya **ISO3166** (iki harfli ISO-3166 ülke kodu). |
+| OutputClaim | Ülke Alnumarası | string | Telefon numarası Ulusal numarası için dize talebi. |
+| OutputClaim | countryCode | string | Telefon numarasının ülke kodu için dize talebi. |
 
 
-**GetNationalNumberAndCountryCodeFromPhoneNumberString,** [kendi kendine öne çıkan](self-asserted-technical-profile.md) teknik profil veya ekran kontrol [eylemi](display-controls.md#display-control-actions)tarafından çağrılan bir doğrulama [teknik profilinden](validation-technical-profile.md) dönüşüm talep ederse, **UserMessageIfPhoneNumberParseFailure** kendi kendini öne süren teknik profil meta verileri kullanıcıya sunulan hata iletisini denetler.
+**Getülke Alnumberandcountrycodefromphonenumberstring** talep dönüşümü, [kendi kendine onaylanan bir teknik profil](self-asserted-technical-profile.md) veya bir [görüntüleme denetimi eylemi](display-controls.md#display-control-actions)tarafından çağrılan bir [doğrulama teknik profilinden](validation-technical-profile.md) yürütülürse, **usermessageifphonenumberparsefailure** kendini onaylanan teknik profil meta verileri kullanıcıya sunulan hata iletisini denetler.
 
 ![Hata iletisi yürütme yolu diyagramı](./media/phone-authentication/assert-execution.png)
 
-Bu talep dönüşümünden tam telefon numarasını ülke koduna ve ulusal numaraya bölmek için kullanabilirsiniz. Sağlanan telefon numarası geçerli değilse, bir hata iletisi atmayı seçebilirsiniz.
+Bu talep dönüşümünü, tam telefon numarasını ülke koduna ve ulusal numaraya bölmek için kullanabilirsiniz. Girilen telefon numarası geçerli değilse, bir hata iletisi oluşturma seçeneğini belirleyebilirsiniz.
 
-Aşağıdaki örnekte, telefon numarasını ulusal numaraya ve ülke koduna bölmeye çalışır. Telefon numarası geçerliyse, telefon numarası ulusal numara tarafından geçersiz kılınacaktır. Telefon numarası geçerli değilse, bir özel durum atılmaz ve telefon numarası hala orijinal değerine sahiptir.
+Aşağıdaki örnek telefon numarasını Ulusal numara ve ülke koduna bölmeye çalışır. Telefon numarası geçerliyse, telefon numarası Ulusal numara tarafından geçersiz kılınır. Telefon numarası geçerli değilse, bir özel durum oluşturulmaz ve telefon numarası hala özgün değerine sahip olur.
 
 ```XML
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">
@@ -148,7 +148,7 @@ Aşağıdaki örnekte, telefon numarasını ulusal numaraya ve ülke koduna böl
 </ClaimsTransformation>
 ```
 
-Bu talep dönüştürmesini içeren doğrulama teknik profilini çağıran kendi kendini ileri süren teknik profil hata iletisini tanımlayabilir.
+Bu talep dönüşümünü içeren doğrulama teknik profilini çağıran kendi kendini onaylanan teknik profil, hata iletisini tanımlayabilir.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
@@ -162,21 +162,21 @@ Bu talep dönüştürmesini içeren doğrulama teknik profilini çağıran kendi
 ### <a name="example-1"></a>Örnek 1
 
 - Giriş talepleri:
-  - **telefon Numarası**: +49 (123) 456-7890
+  - **PhoneNumber**: + 49 (123) 456-7890
 - Giriş parametreleri:
   - **throwExceptionOnFailure**: false
-  - **countryCodeType**: ISO3166
-- Çıktı talepleri:
-  - **nationalNumber**: 1234567890
-  - **countryCode**: DE
+  - **countrycodeType**: ISO3166
+- Çıkış talepleri:
+  - **ülke Alnumarası**: 1234567890
+  - **CountryCode**: de
 
 ### <a name="example-2"></a>Örnek 2
 
 - Giriş talepleri:
-  - **telefon Numarası**: +49 (123) 456-7890
+  - **PhoneNumber**: + 49 (123) 456-7890
 - Giriş parametreleri
   - **throwExceptionOnFailure**: false
-  - **countryCodeType**: CallingCode
-- Çıktı talepleri:
-  - **nationalNumber**: 1234567890
-  - **ülkeKodu**: +49
+  - **countrycodeType**: callingcode
+- Çıkış talepleri:
+  - **ülke Alnumarası**: 1234567890
+  - **CountryCode**: + 49

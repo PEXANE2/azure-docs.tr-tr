@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nı kullanarak verileri MySQL'den taşıma
-description: Azure Veri Fabrikası'nı kullanarak mySQL veritabanından verileri nasıl taşıyabildiğini öğrenin.
+title: Azure Data Factory kullanarak MySQL 'ten veri taşıma
+description: Azure Data Factory kullanarak MySQL veritabanından veri taşıma hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,109 +13,109 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281294"
 ---
-# <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri MySQL'den taşıma
-> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
+# <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory kullanarak MySQL 'Ten veri taşıma
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](data-factory-onprem-mysql-connector.md)
 > * [Sürüm 2 (geçerli sürüm)](../connector-mysql.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [V2'deki MySQL konektörüne](../connector-mysql.md)bakın.
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, [v2 'de MySQL Bağlayıcısı](../connector-mysql.md)' na bakın.
 
 
-Bu makalede, verileri şirket içi MySQL veritabanından taşımak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopya etkinliğiyle birlikte veri hareketine genel bir genel bakış sunan [Veri Hareketi Etkinlikleri](data-factory-data-movement-activities.md) makalesine dayanmaktadır.
+Bu makalede, verileri şirket içi bir MySQL veritabanından taşımak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğiyle veri hareketine genel bir bakış sunan [veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde oluşturulur.
 
-Verileri şirket içi MySQL veri deposundan desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Veri fabrikası şu anda yalnızca mysql veri deposundan diğer veri depolarına veri taşımayı destekler, ancak verileri diğer veri depolarından MySQL veri deposuna taşımak için değildir. 
+Şirket içi bir MySQL veri deposundan, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tablosuna bakın. Data Factory Şu anda yalnızca bir MySQL veri deposundan diğer veri depolarına veri taşımayı destekler, ancak verileri diğer veri depolarından MySQL veri deposuna taşımamaktadır. 
 
 ## <a name="prerequisites"></a>Ön koşullar
-Veri Fabrikası hizmeti, Veri Yönetimi Ağ Geçidi'ni kullanarak şirket içi MySQL kaynaklarına bağlanmayı destekler. Veri Yönetimi Ağ Geçidi ve ağ geçidini ayarlama yla ilgili adım adım talimatlar hakkında bilgi edinmek için [şirket içi konumlar ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasında taşınan verileri görün.
+Data Factory hizmeti, Veri Yönetimi ağ geçidini kullanarak şirket içi MySQL kaynaklarına bağlanmayı destekler. Veri Yönetimi ağ geçidini ayarlama hakkında bilgi edinmek ve ağ geçidini ayarlamaya yönelik adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut makaleleri arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
 
-MySQL veritabanı bir Azure IaaS sanal makinede (VM) barındırılabilse bile ağ geçidi gereklidir. Ağ geçidi veritabanına bağlanabildiği sürece ağ geçidini veri deposuyla aynı VM'ye veya farklı bir VM'ye yükleyebilirsiniz.
+MySQL veritabanı bir Azure IaaS sanal makinesinde (VM) barındırılıyorsa bile ağ geçidi gereklidir. Ağ geçidini, veri deposuyla aynı VM 'ye veya ağ geçidinin veritabanına bağlanabildiği sürece farklı bir VM 'ye yükleyebilirsiniz.
 
 > [!NOTE]
-> Sorun giderme bağlantısı/ağ geçidi yle ilgili sorunlarla ilgili ipuçları için [sorun giderme ağ geçidi sorunlarına](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) bakın.
+> Bağlantı/ağ geçidi ile ilgili sorunları gidermeye yönelik ipuçları için bkz. [ağ geçidi sorunlarını giderme](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .
 
-## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve kurulum
-Veri Yönetimi Ağ Geçidi'nin MySQL Veritabanı'na bağlanması için, Veri Yönetimi Ağ Geçidi ile aynı sisteme [Microsoft Windows için MySQL Bağlayıcısı/NET](https://dev.mysql.com/downloads/connector/net/) 'i (6.6.5 ile 6.10.7 arasındaki sürüm) yüklemeniz gerekir. Bu 32 bit sürücü 64 bit Veri Yönetimi Ağ Geçidi ile uyumludur. MySQL sürüm 5.1 ve üzeri desteklenir.
+## <a name="supported-versions-and-installation"></a>Desteklenen sürümler ve yükleme
+MySQL veritabanına bağlanmak üzere Veri Yönetimi ağ geçidinin, Veri Yönetimi ağ geçidiyle aynı sisteme [Microsoft Windows Için MySQL bağlayıcısını/net](https://dev.mysql.com/downloads/connector/net/) (6.6.5 ve 6.10.7 arasında sürüm) yüklemeniz gerekir. Bu 32 bit sürücü, 64 bit Veri Yönetimi ağ geçidi ile uyumludur. MySQL sürüm 5,1 ve üzeri desteklenir.
 
 > [!TIP]
-> "Uzak taraf aktarım akışını kapattığı için kimlik doğrulama başarısız oldu" hatasına ulaştıysanız, MySQL Bağlayıcısı/NET'i daha yüksek sürüme yükseltmeyi düşünün.
+> "Uzak taraf aktarım akışını kapattığından" kimlik doğrulaması başarısız oldu. "hatasını alırsanız MySQL bağlayıcısını/NET 'i daha yüksek sürüme yükseltmeyi göz önünde bulundurun.
 
 ## <a name="getting-started"></a>Başlarken
-Farklı araçlar/API'ler kullanarak şirket içi Cassandra veri deposundan veri aktaran bir kopyalama etkinliği içeren bir ardışık kaynak oluşturabilirsiniz. 
+Farklı araçlar/API 'Ler kullanarak şirket içi Cassandra veri deposundan veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz. 
 
-- Bir ardışık yol oluşturmanın en kolay yolu **Kopyalama Sihirbazı'nı**kullanmaktır. Bkz. Öğretici: Veri kopyala sihirbazını kullanarak bir ardışık yol oluşturma konusunda hızlı bir geçiş için Kopya Sihirbazı kullanarak bir [ardışık kaynak oluşturun.](data-factory-copy-data-wizard-tutorial.md) 
-- Bir ardışık kaynak oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliği içeren bir ardışık hatlar oluşturmak için adım adım yönergeleri için [etkinlik öğreticisini](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kopyala'ya bakın. 
+- İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) . 
+- İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
-Araçları veya API'leri kullanın, verileri kaynak veri deposundan bir lavabo veri deposuna aktaran bir ardışık işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
+Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Giriş ve çıktı veri depolarını veri fabrikanıza bağlamak için **bağlantılı hizmetler** oluşturun.
-2. Kopyalama işlemi için giriş ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. 
-3. Giriş olarak veri kümesi ve çıktı olarak veri kümesi alan bir kopyalama etkinliği içeren bir **ardışık işlem oluşturma.** 
+1. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun.
+2. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. 
+3. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun. 
 
-Sihirbazı kullandığınızda, bu Veri Fabrikası varlıkları (bağlantılı hizmetler, veri kümeleri ve ardışık kuruluş) için JSON tanımları sizin için otomatik olarak oluşturulur. Araçları/API'leri (.NET API hariç) kullandığınızda, Bu Veri Fabrikası varlıklarını JSON biçimini kullanarak tanımlarsınız.  Şirket içi MySQL veri deposundaki verileri kopyalamak için kullanılan Veri Fabrikası varlıkları için JSON tanımlı bir örnek [için Bkz. JSON örneği: MySQL'den Azure Blob bölümüne verileri kopyalayın.](#json-example-copy-data-from-mysql-to-azure-blob) 
+Sihirbazı kullandığınızda, bu Data Factory varlıkların JSON tanımları (bağlı hizmetler, veri kümeleri ve işlem hattı) sizin için otomatik olarak oluşturulur. Araçlar/API 'Leri (.NET API hariç) kullandığınızda, bu Data Factory varlıkları JSON biçimini kullanarak tanımlarsınız.  Şirket içi MySQL veri deposundan veri kopyalamak için kullanılan Data Factory varlıkları için JSON tanımlarına sahip bir örnek için, bu makaledeki [JSON örneği: MySQL 'Den Azure Blob 'a veri kopyalama](#json-example-copy-data-from-mysql-to-azure-blob) bölümüne bakın. 
 
-Aşağıdaki bölümler, MySQL veri deposuna özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
+Aşağıdaki bölümler, bir MySQL veri deposuna özgü Data Factory varlıkları tanımlamak için kullanılan JSON özellikleri hakkında ayrıntılı bilgi sağlar:
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
-Aşağıdaki tablo, MySQL bağlantılı hizmete özgü JSON öğeleri için açıklama sağlar.
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
+Aşağıdaki tabloda, MySQL bağlantılı hizmetine özgü JSON öğeleri için açıklama verilmiştir.
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| type |Tür özelliği ayarlanmalıdır: **OnPremisesMySql** |Evet |
-| sunucu |MySQL sunucusunun adı. |Evet |
-| database |MySQL veritabanının adı. |Evet |
-| Şema |Veritabanındaki şemanın adı. |Hayır |
-| authenticationType |MySQL veritabanına bağlanmak için kullanılan kimlik doğrulama türü. Olası değerler `Basic`şunlardır: . |Evet |
-| userName |MySQL veritabanına bağlanmak için kullanıcı adını belirtin. |Evet |
-| password |Belirttiğiniz kullanıcı hesabıiçin parola belirtin. |Evet |
-| ağ geçidiAdı |Veri Fabrikası hizmetinin şirket içi MySQL veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Evet |
+| type |Type özelliği: **OnPremisesMySql** olarak ayarlanmalıdır |Yes |
+| sunucu |MySQL sunucusunun adı. |Yes |
+| database |MySQL veritabanının adı. |Yes |
+| manızı |Veritabanındaki şemanın adı. |Hayır |
+| authenticationType |MySQL veritabanına bağlanmak için kullanılan kimlik doğrulaması türü. Olası değerler şunlardır: `Basic`. |Yes |
+| userName |MySQL veritabanına bağlanmak için Kullanıcı adını belirtin. |Yes |
+| password |Belirttiğiniz kullanıcı hesabı için parola belirtin. |Yes |
+| gatewayName |Data Factory hizmetinin şirket içi MySQL veritabanına bağlanmak için kullanması gereken ağ geçidinin adı. |Yes |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin & özelliklerin tam listesi için [veri kümelerini oluşturma](data-factory-create-datasets.md) makalesine bakın. Bir veri kümesi JSON'un yapısı, kullanılabilirliği ve ilkesi gibi bölümler tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu, vb.) için benzerdir.
+Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
 
-**typeProperties** bölümü her veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Tür İlişkisel Table** veri kümesi için typeProperties bölümü (MySQL dataset içeren) aşağıdaki özelliklere sahiptir
+**Typeproperties** bölümü her bir veri kümesi türü için farklıdır ve veri deposundaki verilerin konumu hakkında bilgi sağlar. **Relationaltable** türündeki veri kümesinin typeproperties bölümü (MySQL veri kümesini içerir) aşağıdaki özelliklere sahiptir
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tableName |MySQL Veritabanı örneğinde bağlı hizmetin başvurulması gereken tablonun adı. |Hayır **(RelationalSource** **sorgusu** belirtilirse) |
+| tableName |Bağlantılı hizmetin başvurduğu MySQL veritabanı örneğindeki tablonun adı. |Hayır ( **Relationalsource** **sorgusu** belirtilmişse) |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin & özelliklerinin tam listesi [için, Kaynak Hatları Oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıktı tabloları gibi özellikler, tüm etkinlik türleri için ilkeler mevcuttur.
+Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış tabloları gibi özellikler, tüm etkinlik türleri için kullanılabilir ilkeleridir.
 
-Oysa, etkinliğin **typeProperties** bölümünde bulunan özellikler her etkinlik türüne göre değişir. Kopyalama etkinliği için, kaynak ve lavabo türlerine bağlı olarak değişir.
+Ancak, etkinliğin **typeproperties** bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir.
 
-Kopyalama etkinliğindeki kaynak **RelationalSource** türünden (MySQL içerir) olduğunda, typeProperties bölümünde aşağıdaki özellikler kullanılabilir:
+Copy etkinliğinin kaynağı **Relationalsource** (MySQL içeren) türünde olduğunda, typeproperties bölümünde aşağıdaki özellikler mevcuttur:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: MyTable'dan * seçin. |Hayır **(veri kümesinin** **tablo adı** belirtilirse) |
+| sorgu |Verileri okumak için özel sorguyu kullanın. |SQL sorgu dizesi. Örneğin: select * from MyTable. |Hayır ( **veri kümesi** **TableName** belirtilmişse) |
 
 
-## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON örneği: MySQL'den Azure Blob'a veri kopyalama
-Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir ardışık hat lar oluşturmak için kullanabileceğiniz örnek JSON tanımları sağlar. Şirket içi MySQL veritabanından Azure Blob Depolama'ya verilerin nasıl kopyalanır şekilde kopyalanırolduğunu gösterir. Ancak, veriler Azure Veri Fabrikası'ndaki Kopyalama Etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen lavabolardan herhangi biri için kopyalanabilir.
+## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON örneği: MySQL 'ten Azure Blob 'a veri kopyalama
+Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) veya [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)kullanarak bir işlem hattı oluşturmak için kullanabileceğiniz örnek JSON tanımlarını sağlar. Şirket içi bir MySQL veritabanından bir Azure Blob depolama alanına nasıl veri kopyalanacağını gösterir. Ancak, veriler burada belirtilen Azure Data Factory kopyalama etkinliği kullanılarak [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats) belirtilen herhangi bir havuza kopyalanabilir.
 
 > [!IMPORTANT]
-> Bu örnek JSON parçacıkları sağlar. Veri fabrikası oluşturmak için adım adım yönergeler içermez. Adım adım yönergeler için [şirket içi konumlar ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasında hareketli veri bakın.
+> Bu örnek, JSON parçacıkları sağlar. Veri Fabrikası oluşturmaya yönelik adım adım yönergeler içermez. Adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut makalesi arasında verileri taşıma](data-factory-move-data-between-onprem-and-cloud.md) .
 
-Örnekte aşağıdaki veri fabrikası varlıkları vardır:
+Örnek, aşağıdaki Data Factory varlıklarına sahiptir:
 
-1. [OnPremisesMySql](data-factory-onprem-mysql-connector.md#linked-service-properties)türünde bağlantılı bir hizmet.
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)türüne bağlı bir hizmet.
-3. [İlişkisel Tablo](data-factory-onprem-mysql-connector.md#dataset-properties)türünden bir giriş [veri kümesi.](data-factory-create-datasets.md)
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünden bir çıktı [veri kümesi.](data-factory-create-datasets.md)
-5. [RelationalSource](data-factory-onprem-mysql-connector.md#copy-activity-properties) ve [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan Copy Activity içeren bir [ardışık kaynak.](data-factory-create-pipelines.md)
+1. [OnPremisesMySql](data-factory-onprem-mysql-connector.md#linked-service-properties)türünde bağlı bir hizmet.
+2. [Azurestorage](data-factory-azure-blob-connector.md#linked-service-properties)türünde bağlı bir hizmet.
+3. [Relationaltable](data-factory-onprem-mysql-connector.md#dataset-properties)türünde bir giriş [veri kümesi](data-factory-create-datasets.md) .
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)türünde bir çıkış [veri kümesi](data-factory-create-datasets.md) .
+5. [Relationalsource](data-factory-onprem-mysql-connector.md#copy-activity-properties) ve [Blobsink](data-factory-azure-blob-connector.md#copy-activity-properties)kullanan kopyalama etkinliğine sahip bir işlem [hattı](data-factory-create-pipelines.md) .
 
-Örnek, MySQL veritabanındaki bir sorgu sonucundaki verileri saatlik bir blob'a kopyalar. Bu örneklerde kullanılan JSON özellikleri, örnekleri izleyen bölümlerde açıklanmıştır.
+Örnek, bir sorgudan veri kopyalar MySQL veritabanındaki bir blob 'a saatlik olarak. Bu örneklerde kullanılan JSON özellikleri, örnekleri takip eden bölümlerde açıklanmıştır.
 
-İlk adım olarak, veri yönetimi ağ geçidini kur. Yönergeler, [şirket içi konumlar ve bulut](data-factory-move-data-between-onprem-and-cloud.md) makalesi arasındaki hareketli verilerde dir.
+İlk adım olarak, veri yönetimi ağ geçidini kurun. Yönergeler, [Şirket içi konumlar ve bulut makaleleri arasında hareketli verilerde](data-factory-move-data-between-onprem-and-cloud.md) yer alır.
 
-**MySQL bağlantılı hizmet:**
+**MySQL bağlı hizmeti:**
 
 ```JSON
     {
@@ -135,7 +135,7 @@ Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-stud
     }
 ```
 
-**Azure Depolama bağlantılı hizmet:**
+**Azure depolama bağlı hizmeti:**
 
 ```JSON
     {
@@ -149,11 +149,11 @@ Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-stud
     }
 ```
 
-**MySQL giriş veri seti:**
+**MySQL giriş veri kümesi:**
 
-Örnek, MySQL'de "MyTable" tablosu oluşturduğunuzu varsayar ve zaman serisi verileri için "zaman damgası sütunu" adlı bir sütun içerir.
+Örnek, MySQL içinde bir "MyTable" tablosu oluşturduğunuzu ve zaman serisi verileri için "timestampcolumn" adlı bir sütun içerdiğini varsayar.
 
-"Dış"ı ayarlamak: "true" tablonun veri fabrikasının dışında olduğunu ve veri fabrikasındaki bir etkinlik tarafından üretilmediğini Veri Fabrikası hizmetine bildirir.
+"External": "true" ayarı, Data Factory hizmetine tablonun veri fabrikasında dış olduğunu bildirir ve veri fabrikasında bir etkinlik tarafından üretilmez.
 
 ```JSON
     {
@@ -179,9 +179,9 @@ Bu örnek, [Visual Studio](data-factory-copy-activity-tutorial-using-visual-stud
     }
 ```
 
-**Azure Blob çıktı veri seti:**
+**Azure Blob çıktı veri kümesi:**
 
-Veriler her saat yeni bir blob 'a yazılır (sıklık: saat, aralık: 1). Blob için klasör yolu, işlenen dilimin başlangıç saatine göre dinamik olarak değerlendirilir. Klasör yolu, başlangıç zamanının yıl, ay, gün ve saat bölümlerini kullanır.
+Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un klasör yolu, işlenmekte olan dilimin başlangıç zamanına göre dinamik olarak değerlendirilir. Klasör yolu başlangıç zamanının yıl, ay, gün ve saat kısımlarını kullanır.
 
 ```JSON
     {
@@ -239,9 +239,9 @@ Veriler her saat yeni bir blob 'a yazılır (sıklık: saat, aralık: 1). Blob i
     }
 ```
 
-**Kopyalama etkinliği olan Boru Hattı:**
+**Kopyalama etkinliği içeren işlem hattı:**
 
-Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılandırılan ve her saat çalışacak şekilde zamanlanan bir Kopyalama Etkinliği içerir. Boru hattı JSON tanımında, **kaynak** türü **RelationalSource** olarak ayarlanır ve **lavabo** türü **BlobSink**olarak ayarlanır. **Sorgu** özelliği için belirtilen SQL sorgusu, kopyalanacak son saatteki verileri seçer.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü, **relationalsource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sorgu** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
 
 ```JSON
     {
@@ -291,60 +291,60 @@ Ardışık iş, giriş ve çıktı veri kümelerini kullanacak şekilde yapılan
 
 
 ### <a name="type-mapping-for-mysql"></a>MySQL için tür eşleme
-[Veri hareketi etkinlikleri](data-factory-data-movement-activities.md) makalesinde belirtildiği gibi, Kopyalama etkinliği aşağıdaki iki adımlı yaklaşımla kaynak türlerinden lavabo türlerine otomatik tür dönüştürmeleri gerçekleştirir:
+[Veri taşıma etkinlikleri](data-factory-data-movement-activities.md) makalesinde belirtildiği gibi, kopyalama etkinliği, kaynak türlerindeki otomatik tür dönüştürmeleri aşağıdaki iki adımlı yaklaşımla birlikte havuz türlerine uygular:
 
-1. Yerel kaynak türlerinden .NET türüne dönüştürme
-2. .NET türünden yerel lavabo türüne dönüştürme
+1. Yerel kaynak türlerinden .NET türüne Dönüştür
+2. .NET türünden yerel havuz türüne Dönüştür
 
-Verileri MySQL'e aktarırken, MySQL türlerinden .NET türlerine aşağıdaki eşlemeler kullanılır.
+MySQL 'e veri taşırken aşağıdaki eşlemeler MySQL türlerinden .NET türlerine kullanılır.
 
-| MySQL Veritabanı türü | .NET Framework türü |
+| MySQL veritabanı türü | .NET Framework türü |
 | --- | --- |
-| bigint imzasız |Ondalık |
+| büyük tamsayı işaretsiz |Ondalık |
 | bigint |Int64 |
 | bit |Ondalık |
-| blob |Bayt[] |
+| blob |Byte [] |
 | bool |Boole |
 | char |Dize |
 | date |Tarih saat |
 | datetime |Tarih saat |
 | decimal |Ondalık |
-| çift hassasiyet |Çift |
+| çift duyarlık |Çift |
 | double |Çift |
 | enum |Dize |
 | float |Tek |
-| int imzasız |Int64 |
+| int işaretsiz |Int64 |
 | int |Int32 |
-| imzasız sonda |Int64 |
+| tamsayı işaretsiz |Int64 |
 | integer |Int32 |
-| uzun varbinary |Bayt[] |
+| Long varbinary |Byte [] |
 | uzun varchar |Dize |
-| longblob |Bayt[] |
-| Longtext |Dize |
-| mediumblob |Bayt[] |
-| mediumint imzasız |Int64 |
-| mediumint |Int32 |
-| mediumtext |Dize |
+| LONGBLOB |Byte [] |
+| LONGTEXT |Dize |
+| düz blob |Byte [] |
+| düz int işaretsiz |Int64 |
+| düz tamsayı |Int32 |
+| düz metin |Dize |
 | sayısal |Ondalık |
-| gerçek |Çift |
+| real |Çift |
 | set |Dize |
-| küçük imzasız |Int32 |
+| küçük tamsayı işaretsiz |Int32 |
 | smallint |Int16 |
 | metin |Dize |
 | time |TimeSpan |
 | timestamp |Tarih saat |
-| miniblob |Bayt[] |
-| tinyint imzasız |Int16 |
+| tinyblob |Byte [] |
+| mini tamsayı imzasız |Int16 |
 | tinyint |Int16 |
 | tinytext |Dize |
 | varchar |Dize |
 | yıl |int |
 
-## <a name="map-source-to-sink-columns"></a>Sütunları batırmak için harita kaynağı
-Kaynak veri kümesindeki sütunları lavabo veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için Azure [Veri Fabrikası'ndaki veri kümesi sütunlarını eşleme](data-factory-map-columns.md)konusuna bakın.
+## <a name="map-source-to-sink-columns"></a>Kaynağı havuz sütunlarına eşleyin
+Kaynak veri kümesindeki sütunları havuz veri kümesindeki sütunlara eşleme hakkında bilgi edinmek için bkz. [Azure Data Factory veri kümesi sütunlarını eşleme](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>İlişkisel kaynaklardan tekrarlanabilir okuma
-İlişkisel veri depolarından veri kopyalarken, istenmeyen sonuçlardan kaçınmak için tekrarlanabilirliği aklınızda bulundurun. Azure Veri Fabrikası'nda, bir dilimi el ile yeniden çalıştırabilirsiniz. Bir hata oluştuğunda dilimin yeniden çalıştırılaması için bir veri kümesi için yeniden deneme ilkesini de yapılandırabilirsiniz. Bir dilim her iki şekilde de yeniden çalıştırıldığında, bir dilim kaç kez çalıştırılırsa çalıştırın aynı verilerin okunduğundan emin olmanız gerekir. Bkz. [İlişkisel kaynaklardan tekrarlanabilir okuma.](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)
+## <a name="repeatable-read-from-relational-sources"></a>İlişkisel kaynaklardan yinelenebilir okuma
+İlişkisel veri depolarından veri kopyalarken, istenmeyen sonuçları önlemek için yinelenebilirlik aklınızda bulundurun. Azure Data Factory, bir dilimi el ile yeniden çalıştırabilirsiniz. Bir hata oluştuğunda dilimin yeniden çalıştırılması için bir veri kümesi için yeniden deneme ilkesi de yapılandırabilirsiniz. Bir dilim her iki şekilde yeniden çalıştırıldığında, bir dilimin kaç kez çalıştırıldıklarından bağımsız olarak aynı verilerin okunmasını sağlayın. Bkz. [ilişkisel kaynaklardan tekrarlanabilir okuma](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Performans ve Tuning
-Azure Veri Fabrikası'ndaki veri hareketinin performansını etkileyen önemli faktörler (Kopyalama Etkinliği) ve bunu optimize etmenin çeşitli yolları hakkında bilgi edinmek için [Etkinlik performansını & Tuning Kılavuzu'na](data-factory-copy-activity-performance.md) bakın.
+## <a name="performance-and-tuning"></a>Performans ve ayarlama
+Veri taşıma (kopyalama etkinliği) performansını Azure Data Factory ve en iyileştirmek için çeşitli yollarla etkileyen temel faktörlerle ilgili bilgi edinmek için bkz. [etkinlik performansını kopyalama & ayarlama Kılavuzu](data-factory-copy-activity-performance.md) .

@@ -1,7 +1,7 @@
 ---
-title: Tek oturum açma (MSAL.js) | Azure
+title: Çoklu oturum açma (MSAL. js) | Mavisi
 titleSuffix: Microsoft identity platform
-description: JavaScript için Microsoft Kimlik Doğrulama Kitaplığını (MSAL.js) kullanarak tek oturum açma deneyimleri oluşturma hakkında bilgi edinin.
+description: JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL. js) kullanarak çoklu oturum açma deneyimleri oluşturma hakkında bilgi edinin.
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,23 +14,23 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79262860"
 ---
 # <a name="single-sign-on-with-msaljs"></a>MSAL.js ile çoklu oturum açma
 
-Tek Oturum Açma (SSO), kullanıcıların oturum açmaları ve yeniden kimlik doğrulamasına gerek kalmadan birden çok uygulamada yeniden kullanılabilecek bir oturum oluşturmaları için kimlik bilgilerini girmelerini sağlar. Bu, kullanıcıya sorunsuz bir deneyim sağlar ve kimlik bilgileri için yinelenen istemleri azaltır.
+Çoklu oturum açma (SSO), kullanıcıların kimlik doğrulaması gerektirmeden birden çok uygulama arasında yeniden kullanılabilecek bir oturum oluşturmak ve oturum açması için kullanıcıların kimlik bilgilerini bir kez girmelerini sağlar. Bu, kullanıcıya sorunsuz bir deneyim sağlar ve kimlik bilgileri için yinelenen istekleri azaltır.
 
-Azure AD, kullanıcı ilk kez kimlik doğruladığında bir oturum çerezi ayarlayarak uygulamalara SSO özellikleri sağlar. MSAL.js kitaplığı uygulamaların bu uygulamadan birkaç şekilde yararlanmasına olanak tanır.
+Azure AD, Kullanıcı ilk kez kimlik doğrulaması gerçekleştirdiğinde bir oturum tanımlama bilgisi ayarlayarak uygulamalara SSO özellikleri sağlar. MSAL. js kitaplığı, uygulamaların bunu birkaç şekilde kullanmasına olanak sağlar.
 
-## <a name="sso-between-browser-tabs"></a>Tarayıcı sekmeleri arasında SSO
+## <a name="sso-between-browser-tabs"></a>Tarayıcı sekmeleri arasındaki SSO
 
-Uygulamanız birden çok sekmede açık olduğunda ve kullanıcıyı ilk kez bir sekmede oturum açtığınızda, kullanıcı da istenmeden diğer sekmelerde oturum açar. MSAL.js tarayıcıdaki `localStorage` kullanıcının kimlik belirteci önbelleğe gelir ve kullanıcıyı diğer açık sekmelerde uygulamaya oturum açar.
+Uygulamanız birden çok sekmede açık olduğunda ve öncelikle bir sekmede Kullanıcı oturum açabilirseniz, Kullanıcı sorulmadan diğer sekmelerde da oturum açar. MSAL. js kullanıcının KIMLIK belirtecini tarayıcıda `localStorage` önbelleğe alır ve diğer açık sekmelerdeki uygulamayı uygulamada oturum açar.
 
-Varsayılan olarak, MSAL.js oturumun sekmeler arasında paylaşılmasına izin vermeyen kullanır. `sessionStorage` Sekmeler arasında SSO almak için, `cacheLocation` aşağıda gösterildiği `localStorage` gibi MSAL.js olarak ayarlamak için emin olun.
+Varsayılan olarak, MSAL. js kullanır `sessionStorage` ve bu, oturumun sekmeler arasında paylaşılmasına izin vermez. Sekmeler arasında SSO almak için, MSAL. js `cacheLocation` içinde aşağıda gösterildiği `localStorage` gibi ayarladığınızdan emin olun.
 
 ```javascript
 const config = {
@@ -47,25 +47,25 @@ const myMSALObj = new UserAgentApplication(config);
 
 ## <a name="sso-between-apps"></a>Uygulamalar arasında SSO
 
-Bir kullanıcı kimlik doğruladığında, tarayıcıdaki Azure AD etki alanında bir oturum çerezi ayarlanır. MSAL.js, kullanıcıya farklı uygulamalar arasında SSO sağlamak için bu oturum çerezine dayanır. MSAL.js ayrıca uygulama etki alanı başına tarayıcı depolama sında kullanıcının kimlik belirteçlerini ve erişim belirteçlerini de önbelleğe adar. Sonuç olarak, SSO davranışı farklı durumlar için değişir:  
+Bir kullanıcı kimlik doğrulaması gerçekleştirdiğinde, tarayıcıda Azure AD etki alanı üzerinde bir oturum tanımlama bilgisi ayarlanır. MSAL. js, Kullanıcı için farklı uygulamalar arasında SSO sağlamak üzere bu oturum tanımlama bilgisine bağımlıdır. MSAL. js Ayrıca, uygulama etki alanı başına tarayıcı depolama alanındaki kullanıcının KIMLIK belirteçlerini ve erişim belirteçlerini önbelleğe alır. Sonuç olarak, SSO davranışı farklı durumlar için farklılık gösterir:  
 
-### <a name="applications-on-the-same-domain"></a>Aynı etki alanında uygulamalar
+### <a name="applications-on-the-same-domain"></a>Aynı etki alanındaki uygulamalar
 
-Uygulamalar aynı etki alanında barındırıldığında, kullanıcı bir uygulamada bir kez oturum açabilir ve ardından bir istem olmadan diğer uygulamalara kimlik doğrulaması yaptırabilir. MSAL.js, kullanıcının etki alanında SSO sağlaması için önbelleğe alınmış belirteçlerden yararlanır.
+Uygulamalar aynı etki alanında barındırıldığı zaman, Kullanıcı bir kez oturum açıp daha sonra bir istem olmadan diğer uygulamalara kimlik doğrulaması yapabilir. MSAL. js, SSO sağlamak için etki alanındaki Kullanıcı için önbelleğe alınmış belirteçlerden yararlanır.
 
-### <a name="applications-on-different-domain"></a>Farklı etki alanında uygulamalar
+### <a name="applications-on-different-domain"></a>Farklı etki alanındaki uygulamalar
 
-Uygulamalar farklı etki alanlarında barındırıldığında, A etki alanında önbelleğe alınmış belirteçlere B etki alanında MSAL.js tarafından erişilemez.
+Uygulamalar farklı etki alanlarında barındırılıyorsa, etki alanı A 'da önbelleğe alınan belirteçlere etki alanı B 'de MSAL. js tarafından erişilemez.
 
-Bu, A etki alanında oturum açtıklarında kullanıcıların B etki alanında bir uygulamaya yön verdiklerinde, Azure REKLAM sayfasıyla yeniden yönlendirilecekleri veya istenecekleri anlamına gelir. Azure AD kullanıcı oturumu çerezine sahip olduğundan, kullanıcıda oturum açacak tır ve kimlik bilgilerini yeniden girmek zorunda kalmayacaktır. Kullanıcının Azure AD ile oturumda birden çok kullanıcı hesabı varsa, kullanıcıdan oturum açması için ilgili hesabı seçmesi istenir.
+Bu, etki alanı A 'da oturum açan kullanıcılar B etki alanındaki bir uygulamaya gittiklerinde, bu kullanıcıların Azure AD sayfasında yeniden yönlendirilmesi veya istenir olması anlamına gelir. Azure AD hala Kullanıcı oturumu tanımlama bilgisine sahip olduğundan, Kullanıcı oturum açacaktır ve kimlik bilgilerini yeniden girmesi gerekmez. Kullanıcının oturum açmak için Azure AD ile birden çok kullanıcı hesabı varsa, kullanıcıdan oturum açması için ilgili hesabı seçmesi istenir.
 
-### <a name="automatically-select-account-on-azure-ad"></a>Azure AD'de hesabı otomatik olarak seçin
+### <a name="automatically-select-account-on-azure-ad"></a>Azure AD 'de otomatik olarak hesap Seç
 
-Bazı durumlarda, uygulama kullanıcının kimlik doğrulama bağlamına erişebilir ve birden çok hesap oturum açıldığında Azure REKLAM hesap seçimi isteminden kaçınmak ister.  Bu birkaç farklı şekilde yapılabilir:
+Bazı durumlarda, uygulamanın kullanıcının kimlik doğrulama bağlamına erişimi vardır ve birden çok hesap oturum açarken Azure AD hesabı seçim isteminden kaçınmak istiyor.  Bu, birkaç farklı şekilde yapılabilir:
 
-**Oturum Kimliğini (SID) kullanma**
+**Oturum KIMLIĞINI (SID) kullanma**
 
-Oturum Kimliği, kimlik belirteçlerinde yapılandırılabilen [isteğe bağlı](active-directory-optional-claims.md) bir taleptir. Bu talep, uygulamanın kullanıcının hesap adından veya kullanıcı adından bağımsız olarak kullanıcının Azure REKLAM oturumunu tanımlamasına olanak tanır. İstek parametrelerindeki SID'yi `acquireTokenSilent` çağrıya geçirebilirsiniz. Bu, Azure AD'nin hesap seçimini atlatır. SID oturum çerezine bağlıdır ve tarayıcı bağlamlarını geçmez.
+Oturum KIMLIĞI, KIMLIK belirteçlerinde yapılandırılabilecek [isteğe bağlı bir talep](active-directory-optional-claims.md) . Bu talep, uygulamanın kullanıcının hesap adının veya Kullanıcı adından bağımsız olarak kullanıcının Azure AD oturumunu belirlemesine izin verir. SID 'yi istek parametrelerinde `acquireTokenSilent` çağrıya geçirebilirsiniz. Bu, Azure AD 'nin hesap seçimini atlamasına izin verir. SID, oturum tanımlama bilgisine bağlanır ve tarayıcı bağlamlarına geçmez.
 
 ```javascript
 var request = {
@@ -82,12 +82,12 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 ```
 
 > [!Note]
-> SID sadece MSAL.js'deki `acquireTokenSilent` çağrı ile yapılan sessiz kimlik doğrulama istekleriile kullanılabilir.
-İsteğe bağlı talepleri yapılandırmak için adımları uygulama bildiriminizde [bulabilirsiniz.](active-directory-optional-claims.md)
+> SID, yalnızca MSAL. js içinde çağrı tarafından `acquireTokenSilent` yapılan sessiz kimlik doğrulama istekleriyle kullanılabilir.
+Uygulama bildiriminizde isteğe bağlı talepler yapılandırma adımlarını [buradan](active-directory-optional-claims.md)öğrenebilirsiniz.
 
-**Giriş İpucu kullanma**
+**Oturum açma Ipucu kullanma**
 
-SID talebiniz yapılandırılmamışsa veya etkileşimli kimlik doğrulama aramalarında hesap seçim istemini atlamanız gerekiyorsa, bunu istek parametrelerinde bir `login_hint` tane ve isteğe bağlı olarak MSAL.js etkileşimli yöntemlerdeki `domain_hint` gibi `extraQueryParameters` (,`loginPopup` `loginRedirect`ve `acquireTokenPopup` `acquireTokenRedirect`) sağlayarak yapabilirsiniz. Örnek:
+SID talebi yapılandırılmamışsa veya etkileşimli `login_hint` kimlik doğrulama çağrılarında hesap seçimi uyarısını atlamanıza gerek yoksa, istek parametrelerinde bir ve isteğe bağlı `domain_hint` olarak msal. js etkileşimli yöntemlerinde ( `extraQueryParameters` `loginPopup`, `loginRedirect`, `acquireTokenPopup` ve `acquireTokenRedirect`) bir olarak belirterek bunu yapabilirsiniz. Örneğin:
 
 ```javascript
 var request = {
@@ -99,28 +99,28 @@ var request = {
 userAgentApplication.loginRedirect(request);
 ```
 
-Kullanıcı için kimlik belirtecinde döndürülen talepleri okuyarak login_hint ve domain_hint değerlerini alabilirsiniz.
+Login_hint ve domain_hint değerlerini, kullanıcının KIMLIK belirtecinde döndürülen talepleri okuyarak alabilirsiniz.
 
-* **loginHint** kimlik belirteci nde `preferred_username` talep olarak ayarlanmalıdır.
+* **Loginipucu** , kimlik belirtecindeki `preferred_username` talep olarak ayarlanmalıdır.
 
-* **domain_hint** yalnızca /ortak otoriteyi kullanırken geçirilmesi gerekir. Etki alanı ipucu kiracı kimliği (tid) tarafından belirlenir.  Kimlik `tid` belirtecindeki talep `9188040d-6c67-4c5b-b112-36a304b66dad` tüketicilerse. Aksi takdirde, bu kuruluşlardır.
+* **domain_hint** yalnızca sık karşılaşılan yetkilisi kullanılırken geçirilmesi gerekir. Etki alanı ipucu, kiracı KIMLIĞI (TID) tarafından belirlenir.  KIMLIK belirtecindeki `tid` `9188040d-6c67-4c5b-b112-36a304b66dad` talep ise tüketicilerdir. Aksi takdirde, kuruluşlardır.
 
-Giriş ipucu ve etki alanı ipucu değerleri hakkında daha fazla bilgi için [burayı](v2-oauth2-implicit-grant-flow.md) okuyun.
+Oturum açma ipucu ve etki alanı ipucu değerleri hakkında daha fazla bilgi için [buraya](v2-oauth2-implicit-grant-flow.md) okuyun.
 
 > [!Note]
-> SID ve login_hint aynı anda geçemezsiniz. Bu hata yanıtı neden olur.
+> SID ve login_hint aynı anda geçirilemez. Bu, hata yanıtına neden olur.
 
-## <a name="sso-without-msaljs-login"></a>MSAL.js girişi olmadan SSO
+## <a name="sso-without-msaljs-login"></a>MSAL. js oturum açma olmadan SSO
 
-Tasarım olarak, MSAL.js API'ler için belirteçleri almadan önce bir kullanıcı bağlamı oluşturmak için bir oturum açma yöntemi çağrılmasını gerektirir. Oturum açma yöntemleri etkileşimli olduğundan, kullanıcı bir istem görür.
+Tasarıma göre, MSAL. js, API 'Ler için belirteçleri almadan önce bir kullanıcı bağlamı oluşturmak üzere bir oturum açma yönteminin çağrılması gerekir. Oturum açma yöntemleri etkileşimli olduğundan Kullanıcı bir istem görür.
 
-Uygulamaların, başka bir uygulamada başlatılan kimlik doğrulama yoluyla kimlik doğrulama yoluyla kimlik doğrulaması veya kimlik belirtecine erişebilen ve SSO'dan msal.js aracılığıyla ilk oturum açmadan belirteçler elde etmek için yararlanmak istediği bazı durumlar vardır.
+Uygulamaların kimliği doğrulanmış kullanıcının bağlamına veya kimlik belirtecine, başka bir uygulamada başlatılan kimlik doğrulaması aracılığıyla erişiminin olduğu bazı durumlar vardır ve ilk olarak MSAL. js aracılığıyla oturum açmadan belirteçleri almak için SSO 'yu kullanmasını istersiniz.
 
-Bunun bir örneği: Bir kullanıcı, eklenti veya eklenti olarak çalışan başka bir JavaScript uygulamasını barındıran bir üst web uygulamasında oturum açılır.
+Buna bir örnek: bir Kullanıcı, eklenti veya eklenti olarak çalışan başka bir JavaScript uygulamasını barındıran bir üst Web uygulamasında oturum açtı.
 
-Bu senaryodaki SSO deneyimi aşağıdaki gibi elde edilebilir:
+Bu senaryodaki SSO deneyimi aşağıdaki gibi sağlanabilir:
 
-Varsa `sid` (veya `login_hint` isteğe bağlı `domain_hint`olarak) istek parametreleri olarak `acquireTokenSilent` MSAL.js çağrısını aşağıdaki şekilde iletin:
+Varsa, `sid` msal. js `login_hint` `acquireTokenSilent` çağrısına (veya `domain_hint`ve isteğe bağlı olarak) istek parametrelerini aşağıdaki gibi geçirin:
 
 ```javascript
 var request = {
@@ -137,11 +137,11 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 });
 ```
 
-## <a name="sso-in-adaljs-to-msaljs-update"></a>SSO ADAL.js msal.js güncelleme
+## <a name="sso-in-adaljs-to-msaljs-update"></a>ADAL. js ile MSAL. js güncelleştirmesine yönelik SSO
 
-MSAL.js, Azure AD kimlik doğrulama senaryoları için ADAL.js ile özellik eşitliği ni getirir. ADAL.js'den MSAL.js'ye geçişi kolaylaştırmak ve kullanıcılarınızın yeniden oturum açmalarını engellemek için, kitaplık ADAL.js önbelleğinde kullanıcının oturumunu temsil eden kimlik belirtecive MSAL.js'deki kullanıcıda sorunsuz bir şekilde oturum lar.  
+MSAL. js, Azure AD kimlik doğrulama senaryoları için ADAL. js ile özellik eşliği getirir. ADAL. js ' den MSAL. js ' ye geçiş yapmak ve kullanıcılarınızın yeniden oturum açmasını önlemek için, kitaplık kullanıcının ADAL. js önbelleğinde Kullanıcı oturumunu temsil eden KIMLIK belirtecini okur ve Kullanıcı için MSAL. js ' de sorunsuzca oturum açar.  
 
-ADAL.js'den güncellenirken tek oturum açma (SSO) davranışından yararlanmak için, kitaplıkların belirteçleri önbelleğe almak için kullandığından `localStorage` emin olmanız gerekir. `cacheLocation` Başlangıç olarak `localStorage` hem MSAL.js hem de ADAL.js yapılandırmasında aşağıdaki gibi ayarlayın:
+ADAL. js ' den güncelleştirme sırasında çoklu oturum açma (SSO) davranışından yararlanmak için, kitaplıkların önbelleğe alma belirteçleri `localStorage` için kullanıldığından emin olmanız gerekir. `cacheLocation` Öğesini başlatma SıRASıNDA hem msal. js hem de adal. js yapılandırmasında aşağıdaki gibi `localStorage` ayarlayın:
 
 
 ```javascript
@@ -167,8 +167,8 @@ const config = {
 const myMSALObj = new UserAgentApplication(config);
 ```
 
-Bu yapılandırıldıktan sonra, MSAL.js ADAL.js'deki kimlik doğrulaması kullanıcının önbelleğe alınmış durumunu okuyabilir ve bunu MSAL.js'de SSO sağlamak için kullanabilecektir.
+Bu yapılandırıldıktan sonra, MSAL. js, ADAL. js ' de kimliği doğrulanmış kullanıcının önbelleğe alınmış durumunu okuyabilir ve bunu MSAL. js ' de SSO sağlamak için kullanabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure AD'deki [tek oturum oturumu ve belirteç ömür değerleri](active-directory-configurable-token-lifetimes.md) hakkında daha fazla bilgi edinin.
+Azure AD 'de [Çoklu oturum açma oturumu ve belirteç yaşam süresi](active-directory-configurable-token-lifetimes.md) değerleri hakkında daha fazla bilgi edinin.

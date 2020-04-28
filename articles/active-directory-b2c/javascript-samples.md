@@ -1,7 +1,7 @@
 ---
 title: JavaScript örnekleri
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C'de JavaScript'i kullanma hakkında bilgi edinin.
+description: Azure Active Directory B2C içinde JavaScript kullanma hakkında bilgi edinin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,43 +12,43 @@ ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a26f6c5e69ca083335580a0368459e062de3941e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78187670"
 ---
-# <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de kullanılmak üzere JavaScript örnekleri
+# <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanım için JavaScript örnekleri
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure Active Directory B2C (Azure AD B2C) uygulamalarınıza kendi JavaScript istemci yan kodunuzu ekleyebilirsiniz.
+Kendi JavaScript istemci tarafı kodunuzu Azure Active Directory B2C (Azure AD B2C) uygulamalarınıza ekleyebilirsiniz.
 
-Uygulamalarınız için JavaScript'i etkinleştirmek için:
+Uygulamalarınız için JavaScript 'ı etkinleştirmek üzere:
 
-* [Özel politikanıza](custom-policy-overview.md) bir öğe ekleme
-* Sayfa [düzeni](page-layout.md) seçme
-* İsteklerinizde [b2clogin.com](b2clogin.md) kullanın
+* [Özel ilkenize](custom-policy-overview.md) bir öğe ekleyin
+* [Sayfa düzeni](page-layout.md) seçin
+* İsteklerinizi [b2clogin.com](b2clogin.md) kullanma
 
-Bu makalede, komut dosyası yürütmeetkinleştirmek için özel ilkenizi nasıl değiştirebileceğiniz açıklanmaktadır.
+Bu makalede, betik yürütmeyi etkinleştirmek için özel ilkenizi nasıl değiştirebileceğiniz açıklanır.
 
 > [!NOTE]
-> Kullanıcı akışları için JavaScript'i etkinleştirmek istiyorsanız, [Azure Active Directory B2C'deki JavaScript ve sayfa düzeni sürümlerine](user-flow-javascript-overview.md)bakın.
+> Kullanıcı akışları için JavaScript 'ı etkinleştirmek istiyorsanız, bkz. [Azure Active Directory B2C JavaScript ve sayfa düzeni sürümleri](user-flow-javascript-overview.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-### <a name="select-a-page-layout"></a>Sayfa düzeni seçme
+### <a name="select-a-page-layout"></a>Sayfa düzeni seçin
 
-* Uygulamanızın kullanıcı arabirimi öğeleri için bir [sayfa düzeni](contentdefinitions.md#select-a-page-layout) seçin.
+* Uygulamanızın Kullanıcı arabirimi öğeleri için bir [sayfa düzeni](contentdefinitions.md#select-a-page-layout) seçin.
 
-    JavaScript'i kullanmayı planlıyorsanız, özel politikanızdaki *tüm* `contract` içerik tanımları için sayfa sürümü içeren [bir sayfa düzeni sürümü tanımlamanız](contentdefinitions.md#migrating-to-page-layout) gerekir.
+    JavaScript kullanmayı düşünüyorsanız, özel ilkenizde *Tüm* içerik tanımlarının sayfa `contract` sürümüyle birlikte [bir sayfa düzeni sürümü tanımlamanız](contentdefinitions.md#migrating-to-page-layout) gerekir.
 
-## <a name="add-the-scriptexecution-element"></a>ScriptExecution öğesini ekleme
+## <a name="add-the-scriptexecution-element"></a>ScriptExecution öğesini ekleyin
 
-**ScriptExecution** öğesini [RelyingParty](relyingparty.md) öğesine ekleyerek komut dosyası yürütmeyi etkinleştirin.
+**Scriptexecution** öğesini [RelyingParty](relyingparty.md) öğesine ekleyerek betik yürütmeyi etkinleştirirsiniz.
 
-1. Özel ilke dosyanızı açın. Örneğin, *SignUpOrSignin.xml*.
-2. **RelyingParty'nin** **UserJourneyBehaviors** öğesine **ScriptExecution** öğesini ekleyin:
+1. Özel ilke dosyanızı açın. Örneğin, *Signuporsignın. xml*.
+2. **Scriptexecution** öğesini **RelyingParty**öğesinin **userscripts newydavranışlar** öğesine ekleyin:
 
     ```XML
     <RelyingParty>
@@ -59,15 +59,15 @@ Bu makalede, komut dosyası yürütmeetkinleştirmek için özel ilkenizi nasıl
       ...
     </RelyingParty>
     ```
-3. Dosyayı kaydedin ve yükleyin.
+3. Dosyayı kaydedin ve karşıya yükleyin.
 
 [!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="javascript-samples"></a>JavaScript örnekleri
 
-### <a name="show-or-hide-a-password"></a>Parolayı gösterme veya gizleme
+### <a name="show-or-hide-a-password"></a>Parolayı göster veya gizle
 
-Müşterilerinize kaydolma başarıları konusunda yardımcı olmanın yaygın bir yolu, parolaolarak girdiklerini görmelerine olanak sağlamaktır. Bu seçenek, kullanıcıların gerektiğinde parolalarını kolayca görmelerini ve düzeltmeyapmalarını sağlayarak kaydolmalarına yardımcı olur. Herhangi bir tür parolası **alanında, parolayı göster** etiketiiçeren bir onay kutusu vardır.  Bu, kullanıcının parolayı düz metin olarak görmesini sağlar. Kendi kendine ileri sayılan bir sayfa için kaydolma veya oturum açma şablonuna bu kod parçacıkını ekleyin:
+Müşterilerinizin kaydolma başarısı ile müşterilerinizin, parola olarak girdiklerinizi görmesine yardımcı olmanın yaygın bir yolu. Bu seçenek, kullanıcıların gerektiğinde parolalarını kolayca görmesini ve bunlara yönelik düzeltmeler yapmasını sağlayarak kaydolmalarına yardımcı olur. Parola türünde herhangi bir alanda, **parolayı göster** etiketi olan bir onay kutusu vardır.  Bu, kullanıcının parolayı düz metin olarak görmesini sağlar. Bu kod parçacığını, otomatik olarak onaylanan bir sayfanın kayıt veya oturum açma şablonuna ekleyin:
 
 ```Javascript
 function makePwdToggler(pwd){
@@ -113,7 +113,7 @@ setupPwdTogglers();
 
 ### <a name="add-terms-of-use"></a>Kullanım koşulları ekleme
 
-**Kullanım Koşulları** onay kutusu eklemek istediğiniz sayfanıza aşağıdaki kodu ekleyin. Bu onay kutusu genellikle yerel hesap kayıt ve sosyal hesap kayıt sayfalarında gereklidir.
+Aşağıdaki kodu sayfanıza bir **kullanım koşulları** onay kutusu eklemek istediğiniz yere ekleyin. Bu onay kutusu genellikle yerel hesap kaydolma ve sosyal hesap kaydolma sayfalarınızda gereklidir.
 
 ```Javascript
 function addTermsOfUseLink() {
@@ -138,8 +138,8 @@ function addTermsOfUseLink() {
 }
 ```
 
-Kodda, kullanım `termsOfUseUrl` koşulları anlaşmanızın bağlantısını değiştirin. Dizininiz için **termsOfUse** adında yeni bir kullanıcı özniteliği oluşturun ve ardından kullanıcı özniteliği olarak **termsOfUse'u** ekleyin.
+Kodda, kullanım koşullarınızın `termsOfUseUrl` anlaşmasıyla bağlantı ile değiştirin. Dizininiz için, **termsofuse** adlı yeni bir kullanıcı özniteliği oluşturun ve ardından Kullanıcı özniteliği olarak **termsofuse** ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Active Directory B2C'de özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirmede uygulamalarınızın](custom-policy-ui-customization.md)kullanıcı arabirimini nasıl özelleştirebileceğiniz hakkında daha fazla bilgi edinin.
+[Azure Active Directory B2C ' de özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme](custom-policy-ui-customization.md)bölümünde uygulamalarınızın Kullanıcı arabirimini özelleştirme hakkında daha fazla bilgi edinin.

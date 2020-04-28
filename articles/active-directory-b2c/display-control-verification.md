@@ -1,7 +1,7 @@
 ---
 title: Görüntüleme denetimleriyle talepleri doğrulama
 titleSuffix: Azure AD B2C
-description: Özel ilkeleriniz tarafından sağlanan kullanıcı yolculuklarında hak iddialarını doğrulamak için Azure AD B2C ekran denetimlerini nasıl kullanacağınızı öğrenin.
+description: Özel ilkeleriniz tarafından sunulan Kullanıcı ilerinizdeki talepleri doğrulamak için Azure AD B2C görüntüleme denetimlerini nasıl kullanacağınızı öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,46 +12,46 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ff2a8ad05e26ea31fc8100d4000171313881f4e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188792"
 ---
-# <a name="verification-display-control"></a>Doğrulama ekran kontrolü
+# <a name="verification-display-control"></a>Doğrulama görüntüleme denetimi
 
-Kullanıcıya gönderilen bir doğrulama koduyla birlikte bir talebi (örneğin bir e-posta adresi veya telefon numarası) doğrulamak için doğrulama [görüntüleme denetimini](display-controls.md) kullanın.
+Bir talebi doğrulamak için bir doğrulama [görüntüleme denetimi](display-controls.md) kullanın, örneğin bir e-posta adresi veya telefon numarası, kullanıcıya bir doğrulama kodu ile gönderilir.
 
-## <a name="verificationcontrol-actions"></a>DoğrulamaKontrol eylemleri
+## <a name="verificationcontrol-actions"></a>Doğrulama eylemleri
 
-Doğrulama görüntüleme denetimi iki adımdan (eylemler) oluşur:
+Doğrulama görüntüleme denetimi iki adımdan oluşur (Eylemler):
 
-1. Doğrulama kodunun gönderilmesi gereken e-posta adresi veya telefon numarası gibi kullanıcıdan bir hedef isteyin. Kullanıcı **Kodu Gönder** düğmesini seçtiğinde, doğrulama ekranı denetiminin **SendCode Eylemi** yürütülür. **SendCode Eylemi** bir kod oluşturur, gönderilecek içeriği oluşturur ve kullanıcıya gönderir. Adresin değeri önceden doldurulabilir ve ikinci faktörkimlik doğrulama olarak hizmet verebilir.
+1. Kullanıcıdan, doğrulama kodunun gönderilmesi gereken bir e-posta adresi veya telefon numarası gibi bir hedef isteyin. Kullanıcı **kod gönder** düğmesini seçtiğinde, doğrulama görüntüleme denetiminin **sendcode eylemi** yürütülür. **Sendcode eylemi** bir kod oluşturur, gönderilecek içeriği oluşturur ve kullanıcıya gönderir. Adresin değeri önceden doldurulabilir ve ikinci öğeli kimlik doğrulaması olarak işlev görebilir.
 
-    ![Kod gönder eylemi için örnek sayfa](media/display-control-verification/display-control-verification-email-action-01.png)
+    ![Kod gönder eyleminin örnek sayfası](media/display-control-verification/display-control-verification-email-action-01.png)
 
-1. Kod gönderildikten sonra, kullanıcı iletiyi okur, doğrulama kodunu görüntü denetimi tarafından sağlanan denetime girer ve **Kodu Doğrula'yı**seçer. **Kodu Doğrula'yı**seçerek, adresle ilişkili kodu doğrulamak için **Doğrulama Kodu Eylemi** yürütülür. Kullanıcı **Yeni Kod Gönder'i**seçerse, ilk eylem yeniden yürütülür.
+1. Kod gönderildikten sonra kullanıcı iletiyi okur, doğrulama kodunu görüntüleme denetimi tarafından sunulan denetime girer ve **kodu doğrula**' yı seçer. **Kodu doğrula**' yı seçerek **verifycode eylemi** yürütülür ve adresle ilişkili kodu doğrular. Kullanıcı **Yeni kod gönder**' i seçerse, ilk eylem yeniden yürütülür.
 
-    ![Kod eylemini doğrulamak için örnek sayfa](media/display-control-verification/display-control-verification-email-action-02.png)
+    ![Kodu doğrula eyleminin örnek sayfası](media/display-control-verification/display-control-verification-email-action-02.png)
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="verificationcontrol-required-elements"></a>DoğrulamaKontrol gerekli öğeler
+## <a name="verificationcontrol-required-elements"></a>Doğrulama gerekli öğeleri
 
-**Doğrulama Denetimi** aşağıdaki öğeleri içermelidir:
+**Doğrulamaları ıationcontrol** aşağıdaki öğeleri içermelidir:
 
-- Türü `DisplayControl` . `VerificationControl`
+- Öğesinin türü `DisplayControl` `VerificationControl`.
 - `DisplayClaims`
-  - **Gönder** - Doğrulama kodunun nereye gönderilen yere gönderilen bir veya daha fazla talep. Örneğin, *e-posta* veya *ülke kodu* ve *telefon numarası.*
-  - **Doğrulama kodu** - Kullanıcının kod gönderildikten sonra sağladığı doğrulama kodu talebi. Bu talep gerektiği gibi ayarlanmalıdır `ControlClaimType` ve `VerificationCode`' .
-- Çıktı talebi (isteğe bağlı) kullanıcı doğrulama işlemini tamamladıktan sonra kendi kendine ileri edilen sayfaya döndürülecek. Örneğin, *e-posta* veya *ülke kodu* ve *telefon numarası.* Kendi kendini öne süren teknik profil, verileri sürdürmek veya çıktı taleplerini bir sonraki düzenleme adımına kadar şişirmek için iddiaları kullanır.
-- Aşağıdaki `Action`adlara sahip iki s:
-  - **SendCode** - Kullanıcıya bir kod gönderir. Bu eylem genellikle bir kod oluşturmak ve göndermek için iki doğrulama teknik profil içerir.
-  - **VerifyCode** - Kodu doğrular. Bu eylem genellikle tek bir doğrulama teknik profil içerir.
+  - Doğrulama kodunun nereye gönderileceğini belirten bir veya daha fazla talebe **gönderin** . Örneğin, *e-posta* veya *ülke kodu* ve *telefon numarası*.
+  - **Doğrulama kodu** -kod gönderildikten sonra kullanıcının sağladığı doğrulama kodu talebi. Bu talep gerekli olarak ayarlanmalıdır ve `ControlClaimType` olarak ayarlanmalıdır. `VerificationCode`
+- Kullanıcı doğrulama sürecini tamamladıktan sonra otomatik olarak onaylanan sayfaya döndürülecek çıkış talebi (isteğe bağlı). Örneğin, *e-posta* veya *ülke kodu* ve *telefon numarası*. Kendi kendini onaylanan teknik profil, verileri kalıcı hale getirmek veya çıkış taleplerini bir sonraki düzenleme adımına çıkarmak için talepleri kullanır.
+- Aşağıdaki `Action`adlarla iki adet:
+  - **Sendcode** -kullanıcıya bir kod gönderir. Bu eylem genellikle bir kod oluşturmak ve göndermek için iki doğrulama teknik profili içerir.
+  - **Verifycode** -kodu doğrular. Bu eylem genellikle tek bir doğrulama teknik profili içerir.
 
-Aşağıdaki örnekte, sayfada bir **e-posta** textbox görüntülenir. Kullanıcı e-posta adresini girer ve **SendCode'u**seçtiğinde, **SendCode** eylemi Azure AD B2C arka uçta tetiklenir.
+Aşağıdaki örnekte, sayfada bir **e-posta** metin kutusu görüntülenir. Kullanıcı e-posta adreslerini girdiğinde ve **sendcode**'u seçtiğinde, Azure AD B2C arka uçta **sendcode** eylemi tetiklenir.
 
-Daha sonra, kullanıcı **verifyCode'u** girer ve arka uçtaki VerifyCode eylemini tetiklemek için **VerifyCode'u** seçer. **VerifyCode** Tüm doğrulamalar geçerse, **Doğrulama Denetimi** tamamlanmış sayılır ve kullanıcı bir sonraki adıma devam edebilir.
+Ardından Kullanıcı, **doğrulama** kodunu girer ve geri uçtaki **verifycode** eylemini tetiklemek için **verifycode** 'u seçer. Tüm doğrulamalar başarılı olursa, **doğrulamaları ıationcontrol** tamamlanmış olarak kabul edilir ve Kullanıcı bir sonraki adıma devam edebilir.
 
 ```XML
 <DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">

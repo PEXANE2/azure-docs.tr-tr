@@ -1,53 +1,53 @@
 ---
-title: Azure Cosmos DB'deki coğrafi ve GeoJSON konum verileri
-description: Azure Cosmos DB ve SQL API ile uzamsal nesnelerin nasıl oluşturulup oluşturultamasını öğrenin.
+title: Azure Cosmos DB Jeo uzamsal ve GeoJSON konum verileri
+description: Azure Cosmos DB ve SQL API ile uzamsal nesneler oluşturmayı anlayın.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79367593"
 ---
-# <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB'deki coğrafi ve GeoJSON konum verileri
+# <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB Jeo uzamsal ve GeoJSON konum verileri
 
-Bu makale, Azure Cosmos DB'deki coğrafi işlevselliğin bir girişidir. Şu anda jeouzamsal verilerin depolanması ve erişilmesi yalnızca Azure Cosmos DB SQL API hesapları tarafından desteklenir. Jeouzamsal indeksleme ile ilgili belgelerimizi okuduktan sonra aşağıdaki soruları yanıtlayabilirsiniz:
+Bu makale, Azure Cosmos DB Jeo uzamsal işlevselliğe giriş niteliğindedir. Şu anda Jeo uzamsal verileri depolama ve bunlara erişme yalnızca SQL API hesapları Azure Cosmos DB desteklenir. Jeo-uzamsal dizin oluşturma hakkındaki belgelerimizi okuduktan sonra aşağıdaki soruları cevaplayabilirsiniz:
 
-* Azure Cosmos DB'de uzamsal verileri nasıl depolarım?
-* SQL ve LINQ'da Azure Cosmos DB'deki jeouzamsal verileri nasıl sorgulayabilirim?
-* Azure Cosmos DB'de uzamsal dizin oluşturmayı nasıl etkinleştirebilirim veya devre dışı alabiliyorum?
+* Uzamsal verileri Azure Cosmos DB depolamak Nasıl yaparım??
+* SQL ve LINQ 'te Azure Cosmos DB Jeo uzamsal verileri nasıl sorgulayabilirim?
+* Azure Cosmos DB uzamsal dizin oluşturmayı etkinleştirmek veya devre dışı bırakmak Nasıl yaparım??
 
 ## <a name="introduction-to-spatial-data"></a>Uzamsal verilere giriş
 
-Uzamsal veriler uzaydaki nesnelerin konumunu ve şeklini açıklar. Çoğu uygulamada, bu dünya ve jeouzamsal veri nesneleri karşılık gelir. Uzamsal veriler bir kişinin konumunu, ilgi çekici bir yeri veya bir şehrin veya gölün sınırını temsil etmek için kullanılabilir. Yaygın kullanım örnekleri genellikle yakınlık sorguları içerir, örneğin, "geçerli konumumun yakınındaki tüm kafeleri bulun."
+Uzamsal veriler, alan içindeki nesnelerin konumunu ve şeklini tanımlar. Çoğu uygulamada, bu, dünya ve jeo uzamsal verilerdeki nesnelere karşılık gelir. Uzamsal veriler, bir kişinin konumunu, ilgi çekici veya bir şehrin veya bir Gölü sınırının veya Gölü sınırının temsil edilebilmesi için kullanılabilir. Yaygın kullanım örnekleri genellikle yakınlık sorguları içerir; örneğin, "geçerli konumumun yakınında tüm kafeterleri bul."
 
-Azure Cosmos DB'nin SQL API'si iki uzamsal veri türünü destekler: **geometri** veri türü ve **coğrafya** veri türü.
+Azure Cosmos DB SQL API 'SI iki uzamsal veri türünü destekler: **geometri** veri türü ve **Coğrafya** veri türü.
 
-- **Geometri** türü Öklid (düz) koordinat sistemindeki verileri temsil eder
-- **Coğrafya** türü, yuvarlak dünya koordinat sistemindeki verileri temsil eder.
+- **Geometri** türü, bir Euclidean (düz) koordinat sistemindeki verileri temsil eder
+- **Coğrafya** türü, bir yuvarlak dünya koordinat sistemindeki verileri temsil eder.
 
 ## <a name="supported-data-types"></a>Desteklenen veri türleri
 
-Azure Cosmos DB, [GeoJSON belirtimi](https://tools.ietf.org/html/rfc7946)kullanılarak temsil edilen coğrafi nokta verilerinin dizinoluşturmasını ve sorgulanmasını destekler. GeoJSON veri yapıları her zaman geçerli JSON nesneleridir, bu nedenle azure cosmos DB kullanılarak özel araçlar veya kitaplıklar olmadan depolanabilir ve sorgulanabilir.
+Azure Cosmos DB [geojson belirtimi](https://tools.ietf.org/html/rfc7946)kullanılarak temsil edilen Jeo uzamsal nokta verilerinin dizinlenmesini ve sorgulanmasını destekler. GeoJSON veri yapıları her zaman geçerli JSON nesneleridir ve bu nedenle, herhangi bir özel araç veya kitaplık olmadan Azure Cosmos DB kullanılarak depolanabilir ve sorgulanırlar.
 
-Azure Cosmos DB aşağıdaki uzamsal veri türlerini destekler:
+Azure Cosmos DB, aşağıdaki uzamsal veri türlerini destekler:
 
-- Nokta
-- Linestring
-- Çokgen
-- Multipolygon
+- Seçeneğinin
+- LineString
+- Gen
+- MultiPolygon
 
 ### <a name="points"></a>Noktalar
 
-Bir **Nokta** uzayda tek bir konumu gösterir. Coğrafi verilerde, bir Nokta bir bakkal, bir büfe, bir otomobil veya bir şehrin sokak adresi olabilir tam konumunu temsil eder.  Bir nokta GeoJSON 'da (ve Azure Cosmos DB) koordinat çiftini veya boylam ve enlemini kullanarak temsil edilir.
+**Nokta** , alanda tek bir konum gösterir. Jeo-uzamsal verilerde bir nokta, bir Market Mağazası, bir bilgi noktası, bir otomobil veya bir şehirin açık adresi olabilecek tam konumu temsil eder.  Bir nokta, koordinat çiftini, boylam ve enlem kullanılarak GeoJSON (ve Azure Cosmos DB) olarak temsil edilir.
 
-Burada bir nokta için bir örnek JSON's:
+Aşağıda nokta için bir JSON örneği verilmiştir:
 
-**Azure Cosmos DB'deki Noktalar**
+**Azure Cosmos DB noktaları**
 
 ```json
 {
@@ -56,9 +56,9 @@ Burada bir nokta için bir örnek JSON's:
 }
 ```
 
-Uzamsal veri türleri, konum verilerini içeren bir kullanıcı profili örneğiörneğinde gösterildiği gibi bir Azure Cosmos DB belgesine katıştırılabilir:
+Uzamsal veri türleri, konum verilerini içeren bir kullanıcı profili örneğinde gösterildiği gibi bir Azure Cosmos DB belgeye gömülebilir:
 
-**Azure Cosmos DB'de Depolanan Konumla Profili Kullanma**
+**Azure Cosmos DB depolanan konum ile profili kullan**
 
 ```json
 {
@@ -73,21 +73,21 @@ Uzamsal veri türleri, konum verilerini içeren bir kullanıcı profili örneği
 }
 ```
 
-### <a name="points-in-a-geometry-coordinate-system"></a>Geometri koordinat sistemindeki noktalar
+### <a name="points-in-a-geometry-coordinate-system"></a>Geometri koordinat sistemindeki noktaları
 
-**Geometri** veri türü için GeoJSON belirtimi yatay ekseni birinci ve dikey ekseni ikinci olarak belirtir.
+**Geometri** veri türü Için, GeoJSON belirtimi ilk olarak yatay ekseni ve dikey eksen ikincisini belirtir.
 
-### <a name="points-in-a-geography-coordinate-system"></a>Coğrafya koordinat sistemindeki noktalar
+### <a name="points-in-a-geography-coordinate-system"></a>Coğrafya koordinat sistemindeki noktaları
 
-**Coğrafya** veri türü için GeoJSON belirtimi boylam birinci ve enlem ikinci belirtir. Diğer haritalama uygulamalarında olduğu gibi, boylam ve enlem açıları ve derece açısından temsil edilir. Boylam değerleri Prime Meridyen'den ölçülür ve -180 derece ile 180,0 derece arasında, enlem değerleri ise ekvatordan ölçülür ve -90.0 derece ile 90.0 derece arasındadır.
+**Coğrafya** veri türü Için geojson belirtimi, önce boylam ve enlem Second 'u belirtir. Diğer eşleme uygulamalarında olduğu gibi, boylam ve enlem, derece cinsinden açılı ve temsil edilir. Boylam değerleri, ana meridyenlerden ölçülür ve-180 derece ile 180,0 derece arasındadır ve enlem değerleri eşlerden ölçülür ve-90,0 derece ile 90,0 derece arasındadır.
 
-Azure Cosmos DB koordinatları WGS-84 başvuru sistemine göre temsil edildiği şekilde yorumlar. Koordinat başvuru sistemleri hakkında daha fazla bilgi için aşağıya bakın.
+Azure Cosmos DB, WGS-84 başvuru sistemine göre gösterilen koordinatları yorumlar. Koordinat başvuru sistemleri hakkında daha fazla bilgi için aşağıya bakın.
 
-### <a name="linestrings"></a>Linestrings
+### <a name="linestrings"></a>LineStrings
 
-**LineStrings** uzayda iki veya daha fazla nokta ve onları bağlayan çizgi segmentleri bir dizi temsil eder. Jeouzamsal verilerde, LineString'ler genellikle otoyolları veya nehirleri temsil etmek için kullanılır.
+**LineStrings** , boşluk içinde iki veya daha fazla noktadan oluşan bir seriyi ve bunları bağlayan çizgi segmentlerini temsil eder. Jeo-uzamsal veriler ' de, LineStrings genellikle highor veya Rivers 'ı temsil etmek için kullanılır.
 
-**GeoJSON'da LineStrings**
+**GeoJSON 'da LineStrings**
 
 ```json
     "type":"LineString",
@@ -97,11 +97,11 @@ Azure Cosmos DB koordinatları WGS-84 başvuru sistemine göre temsil edildiği 
     ] ]
 ```
 
-### <a name="polygons"></a>Çokgen
+### <a name="polygons"></a>Gen
 
-**Çokgen,** kapalı bir LineString oluşturan bağlı noktaların sınırıdır. Çokgenler genellikle göller veya şehirler ve devletler gibi siyasi yargı gibi doğal oluşumları temsil etmek için kullanılır. Azure Cosmos DB'deki Çokgen örneği aşağıda verilmiştir:
+**Çokgen** , kapalı bir LineString oluşturan bağlantılı noktaların bir sınırıdır. Çokgenler yaygın olarak, şehir ve eyalet gibi politik veya siyasi bir vergi gibi doğal formaları temsil etmek için kullanılır. Azure Cosmos DB bir çokgen örneği aşağıda verilmiştir:
 
-**GeoJSON'da çokgenler**
+**GeoJSON 'da çokgenler**
 
 ```json
 {
@@ -117,17 +117,17 @@ Azure Cosmos DB koordinatları WGS-84 başvuru sistemine göre temsil edildiği 
 ```
 
 > [!NOTE]
-> GeoJSON belirtimi, geçerli Çokgenler için, kapalı bir şekil oluşturmak için sağlanan son koordinat çiftinin ilki ile aynı olmasını gerektirir.
+> GeoJSON belirtimi, geçerli çokgenler için, kapatılan bir şekil oluşturmak için, belirtilen son koordinat çiftinin ilki ile aynı olması gerekir.
 >
-> Çokgen içindeki noktalar saat yönünün tersine belirtilmelidir. Saat yönünde belirtilen bir Çokgen, içindeki bölgenin tersini temsil eder.
+> Bir çokgen içindeki noktaların saat yönünde sıralı sırada belirtilmesi gerekir. Saat yönünde belirtilen bir çokgen, içindeki bölgenin tersini temsil eder.
 >
 >
 
-### <a name="multipolygons"></a>MultiPolygons
+### <a name="multipolygons"></a>MultiPolygon
 
-**MultiPolygon** sıfır veya daha fazla Çokgenler bir dizi. **MultiPolygons** taraf örtüşemez veya herhangi bir ortak alana sahip olamaz. Bir veya daha fazla noktada dokunabilirler.
+Bir **MultiPolygon** sıfır veya daha fazla poligoluşan bir dizidir. **MultiPolygon** , kenarlarından çakışamaz veya herhangi bir ortak alana sahip olamaz. Bir veya daha fazla noktaya dokunabilir.
 
-**GeoJSON'da Çok Yönlüler**
+**GeoJSON içinde MultiPolygon**
 
 ```json
 {
@@ -149,16 +149,16 @@ Azure Cosmos DB koordinatları WGS-84 başvuru sistemine göre temsil edildiği 
 }
 ```
 
-## <a name="coordinate-reference-systems"></a>Koordinat referans sistemleri
+## <a name="coordinate-reference-systems"></a>Başvuru sistemlerini koordine et
 
-Yeryüzünün şekli düzensiz olduğundan, coğrafya jeouzamsal verilerinin koordinatları, her biri kendi referans çerçeveleri ve ölçü birimleri ile birçok koordinat referans sisteminde (CRS) temsil edilmektedir. Örneğin, "National Grid of Britain" bir referans sistemi Birleşik Krallık için doğru, ama dışında değil.
+Dünya şekli düzensiz olduğundan, coğrafi bölge Jeo uzamsal verilerinin koordinatları, her biri kendi başvuru ve ölçü birimleri ile birlikte çok sayıda koordinat başvuru sisteminde (yukarı) temsil edilir. Örneğin, "ABD Ulusal ızgarası", Birleşik Krallık için doğru bir başvuru sistemidir.
 
-Bugün kullanılan en popüler CRS Dünya Jeodezik Sistemi [WGS-84](https://earth-info.nga.mil/GandG/update/index.php)olduğunu. GPS cihazları ve Google Haritalar ve Bing Haritalar API'ları da dahil olmak üzere birçok haritalama hizmeti WGS-84 kullanır. Azure Cosmos DB, yalnızca WGS-84 CRS kullanarak coğrafya jeouzamsal verilerinin dizinlenmesini ve sorgulanmasını destekler.
+Günümüzde kullanımda olan en popüler dünyayı dünya çapındaki sistem [WGS-84](https://earth-info.nga.mil/GandG/update/index.php)' dir. GPS cihazları ve Google Maps ve Bing Haritalar API 'Leri dahil olmak üzere birçok eşleme hizmeti WGS-84 kullanır. Azure Cosmos DB Coğrafya Jeo uzamsal verilerinin dizinlenmesini ve sorgulanmasını destekler ve yalnızca WGS-84 leri kullanılarak.
 
 ## <a name="creating-documents-with-spatial-data"></a>Uzamsal verilerle belge oluşturma
-GeoJSON değerlerini içeren belgeler oluşturduğunuzda, bunlar kapsayıcının dizin oluşturma ilkesine uygun olarak otomatik olarak uzamsal dizinle dizine eklenir. Python veya Node.js gibi dinamik olarak yazılan bir dilde bir Azure Cosmos DB SDK ile çalışıyorsanız, geçerli Bir GeoJSON oluşturmanız gerekir.
+GeoJSON değerleri içeren belgeler oluşturduğunuzda, kapsayıcının dizin oluşturma ilkesine uygun olarak bir uzamsal dizin ile otomatik olarak dizinlenir. Python veya Node. js gibi dinamik olarak yazılmış bir dilde Azure Cosmos DB SDK ile çalışıyorsanız, geçerli bir GeoJSON oluşturmanız gerekir.
 
-**Düğüm.js'de Jeouzamsal verilerle belge oluşturma**
+**Node. js ' de Jeo-uzamsal verilerle belge oluşturma**
 
 ```javascript
 var userProfileDocument = {
@@ -174,9 +174,9 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-SQL API'leri ile çalışıyorsanız, uygulama `Point`nesnelerinizin `Polygon`yer `MultiPolygon` bilgilerini `Microsoft.Azure.Cosmos.Spatial` yerleştirmek için ad alanı içindeki , ve `LineString`sınıfları kullanabilirsiniz. Bu sınıflar, uzamsal verilerin GeoJSON'a serileştirilmesini ve deserialization'ını basitleştirmeye yardımcı olur.
+SQL API 'leriyle çalışıyorsanız, uygulama nesnelerinize konum bilgilerini eklemek `Point`için `LineString` `Polygon` `MultiPolygon` `Microsoft.Azure.Cosmos.Spatial` ad alanı içinde,, ve sınıflarını kullanabilirsiniz. Bu sınıflar, uzamsal verilerin seri hale getirilmesi ve coğrafi serisini kaldırma işlemini basitleştirmeye yardımcı olur.
 
-**.NET'te Jeouzamsal verilerle belge oluşturma**
+**.NET 'te Jeo-uzamsal verilerle belge oluşturma**
 
 ```csharp
 using Microsoft.Azure.Cosmos.Spatial;
@@ -199,12 +199,12 @@ await container.CreateItemAsync( new UserProfile
     });
 ```
 
-Enlem ve boylam bilgileriniz yoksa, ancak şehir veya ülke/bölge gibi fiziksel adresleriniz veya konum adınız varsa, Bing Maps REST Services gibi bir coğrafi kodlama hizmetini kullanarak gerçek koordinatları alabilirsiniz. Bing Haritalar coğrafi kodlama hakkında daha fazla bilgiyi [buradan edinebilirsiniz.](https://msdn.microsoft.com/library/ff701713.aspx)
+Enlem ve Boylam bilgisine sahip değilseniz, ancak şehir veya ülke/bölge gibi fiziksel adreslere veya konuma sahipseniz, Bing Haritalar REST hizmetleri gibi bir coğrafi kodlama hizmeti kullanarak gerçek koordinatları arayabilirsiniz. [Burada](https://msdn.microsoft.com/library/ff701713.aspx)Bing Haritalar coğrafi kodlama hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Cosmos DB'de coğrafi destekle nasıl başladığınızı öğrendiğiniz için, bir sonraki
+Artık Azure Cosmos DB Jeo-uzamsal desteği kullanmaya nasıl başladığınıza öğrendiğinize göre şunları yapabilirsiniz:
 
-* [Azure Cosmos DB Sorgusu](sql-query-getting-started.md) hakkında daha fazla bilgi edinin
-* [Azure Cosmos DB ile uzamsal verileri sorgulama](sql-query-geospatial-query.md) hakkında daha fazla bilgi edinin
-* [Azure Cosmos DB ile uzamsal verileri Dizin](sql-query-geospatial-index.md) le ilgili daha fazla bilgi edinin
+* [Azure Cosmos db sorgu](sql-query-getting-started.md) hakkında daha fazla bilgi edinin
+* [Azure Cosmos DB uzamsal verileri sorgulama](sql-query-geospatial-query.md) hakkında daha fazla bilgi edinin
+* [Azure Cosmos DB Ile dizin uzamsal verileri](sql-query-geospatial-index.md) hakkında daha fazla bilgi edinin

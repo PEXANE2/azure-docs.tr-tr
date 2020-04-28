@@ -1,6 +1,6 @@
 ---
-title: Kimlik güvenli puanı nedir? - Azure Etkin Dizin
-description: Dizininizin güvenlik duruşunu geliştirmek için kimlik güvenli puanını nasıl kullanabilirsiniz?
+title: Kimlik güvenli puanı nedir? -Azure Active Directory
+description: Dizininizin güvenlik duruşunu artırmak için kimlik güvenli Puanını nasıl kullanabileceğinizi öğrenin
 services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -12,19 +12,19 @@ manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f75dea2cffbe710bf2778ceab5eacc91ffcca9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77523126"
 ---
-# <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Azure Active Directory'de kimlik güvenli puanı nedir?
+# <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Azure Active Directory kimlik güvenli puanı nedir?
 
-Azure AD kiracınız ne düzeyde güvenli? Bu soruyu nasıl yanıtladığınızı bilmiyorsanız, bu makalede kimlik güvenli puanının kimlik güvenliği duruşunuzu izlemenize ve geliştirmenize nasıl yardımcı olduğu açıklanmaktadır.
+Azure AD kiracınız ne düzeyde güvenli? Bu sorunun nasıl yanıtlandığını bilmiyorsanız, bu makalede kimlik güvenli puanı 'nın kimlik güvenliği sonrası durunuzu izlemenize ve iyileştirebilmenizi nasıl yardımcı olduğu açıklanmaktadır.
 
 ## <a name="what-is-an-identity-secure-score"></a>Kimlik güvenliği puanı nedir?
 
-Kimlik güvenli puanı, Microsoft'un güvenlik için en iyi uygulama önerileriyle ne kadar uyumlu olduğunuza ilişkin bir gösterge olarak işlev gösteren 1 ile 223 arasındaki sayıdır. Kimlik güvenli puanındaki her iyileştirme eylemi, özel yapılandırmanıza göre uyarlanır.  
+Kimlik güvenli puanı, 1 ile 223 arasında, Microsoft 'un güvenlik için en iyi yöntem önerileriyle nasıl hizalanacağını gösteren bir gösterge olarak işlev görür. Kimlik güvenli puanı 'ndaki her geliştirme eylemi, özel yapılandırmanıza göre tasarlanmıştır.  
 
 ![Güvenlik puanı](./media/identity-secure-score/identity-secure-score-overview.png)
 
@@ -36,27 +36,27 @@ Puanın yardımıyla:
 
 Puana ve ilgili bilgilere kimlik güvenliği puanı panosundan erişebilirsiniz. Bu panoda şunları bulursunuz:
 
-- Kimliğiniz güvenli puan
-- Kimlik güvenli puanınızın aynı sektördeki ve benzer boyuttaki diğer kiracılarla karşılaştırışını gösteren bir karşılaştırma grafiği
+- Kimliğiniz güvenli puanı
+- Kimlik güvenli puanınızın aynı sektör ve benzer boyuttaki diğer kiracılar ile nasıl Karşılaştırıldığı gösteren bir karşılaştırma grafiği
 - Kimlik güvenli puanınızın zaman içinde nasıl değiştiğini gösteren bir eğilim grafiği
-- Olası iyileştirmelerin listesi
+- Olası geliştirmelerin listesi
 
 Geliştirme eylemlerini izleyerek:
 
-- Güvenlik duruşunuzu ve puanınızı geliştirin
-- Kimlik yatırımlarınızın bir parçası olarak kuruluşunuzun kullanabileceği özelliklerden yararlanın
+- Güvenlik sonrası ve puanınızı geliştirme
+- Kimlik yatırımlarınızın bir parçası olarak kuruluşunuzun kullanabildiği özelliklerden yararlanın
 
 ## <a name="how-do-i-get-my-secure-score"></a>Güvenlik puanımı nasıl alabilirim?
 
-Kimlik güvenli puanı Azure AD'nin tüm sürümlerinde kullanılabilir. Kuruluşlar, Azure **portalı** > **Azure Active Directory** > **Security** > **Identity Secure Score'dan**kimlik güvenli puanlarına erişebilirler.
+Kimlik güvenli puanı Azure AD 'nin tüm sürümlerinde kullanılabilir. Kuruluşlar, kimlik güvenli puanlarına **Azure Portal** > **Azure Active Directory** > **güvenlik** > **kimliği güvenli puanı**aracılığıyla erişebilir.
 
 ## <a name="how-does-it-work"></a>Nasıl çalışır?
 
-Her 48 saatte bir Azure güvenlik yapılandırmanıza bakar ve sizin ayarlarınızı önerilen en iyi yöntemlerle karşılaştırır. Bu değerlendirmenin sonucuna bağlı olarak, dizininiz için yeni bir puan hesaplanır. Güvenlik yapılandırmanızın en iyi uygulama kılavuzuyla tam olarak uyumlu olmaması ve geliştirme eylemlerinin yalnızca kısmen karşılanmış olması mümkündür. Bu senaryolarda, yalnızca denetim için kullanılabilir maksimum puanın bir kısmı verilir.
+Her 48 saatte bir Azure güvenlik yapılandırmanıza bakar ve sizin ayarlarınızı önerilen en iyi yöntemlerle karşılaştırır. Bu değerlendirmenin sonucuna bağlı olarak, dizininiz için yeni bir puan hesaplanır. Güvenlik yapılandırmanızın en iyi yöntem kılavuzıyla tam olarak hizalanması ve geliştirme eylemlerinin yalnızca kısmen karşılanması olasıdır. Bu senaryolarda, yalnızca denetim için kullanılabilir olan en fazla puanı elde edersiniz.
 
-Her öneri, Azure AD yapılandırmanız temelinde ölçülür. En iyi uygulama önerisini etkinleştirmek için üçüncü taraf ürünleri kullanıyorsanız, bu yapılandırmayı bir geliştirme eyleminin ayarlarında belirtebilirsiniz. Ayrıca, ortamınız için geçerli değilse, göz ardı edilecek öneriler belirleme seçeneğiniz de var. Yoksayılan öneri puanınızın hesaplanmasına katılmaz.
+Her öneri, Azure AD yapılandırmanız temelinde ölçülür. En iyi uygulama önerisini etkinleştirmek için üçüncü taraf ürünleri kullanıyorsanız, bu yapılandırmayı bir geliştirme eylemi ayarlarında belirtebilirsiniz. Ayrıca ortamınız için uygulanamazlar, önerileri yok sayılacak şekilde ayarlama seçeneğiniz de vardır. Yoksayılan öneri puanınızın hesaplanmasına katılmaz.
 
-![Eylemi üçüncü taraflar tarafından kapsanan olarak yoksayma veya işaretleme](./media/identity-secure-score/identity-secure-score-ignore-or-third-party-reccomendations.png)
+![Üçüncü tarafın kapsamına giren eylemi Yoksay veya işaretle](./media/identity-secure-score/identity-secure-score-ignore-or-third-party-reccomendations.png)
 
 ## <a name="how-does-it-help-me"></a>Bana nasıl yardımcı olur?
 
@@ -76,9 +76,9 @@ Kimlik güvenliği puanı aşağıdaki roller tarafından kullanılabilir:
 - Güvenlik yöneticisi
 - Güvenlik okuyucuları
 
-### <a name="how-are-controls-scored"></a>Kontroller nasıl puanlandırılır?
+### <a name="how-are-controls-scored"></a>Denetimler nasıl puanlanır?
 
-Kontroller iki şekilde puanlanabilir. Bazı ikili bir şekilde puanlandırılır - eğer özellik veya ayar bizim tavsiyeye göre yapılandırılmış varsa puan% 100 olsun. Diğer puanlar toplam yapılandırmanın yüzdesi olarak hesaplanır. Örneğin, iyileştirme önerisi, tüm kullanıcılarınızı MFA ile korursanız ve korunan toplam 100 kullanıcıdan yalnızca 5'ine sahipseniz 30 puan alırsınız, size 2 puan (5 korumalı / 100 toplam * 30 max pts = 2 puan kısmi puan) civarında kısmi puan verilir.
+Denetimler iki şekilde puanlanır. Bazıları ikili bir biçimde puanlanır. önerimize göre yapılandırılmış özellik veya ayar varsa puanın %100 ' i elde edersiniz. Diğer puanlar Toplam yapılandırmanın yüzdesi olarak hesaplanır. Örneğin, geliştirme önerisi, tüm kullanıcılarınızı MFA ile koruyorarsa ve yalnızca 5/100 Toplam Kullanıcı korunuyorsa, 2 punto (5 korumalı/100 toplam * 30 maksimum Pts = 2 Pts kısmi puanı) için kısmi bir puan vermiş olursunuz.
 
 ### <a name="what-does-not-scored-mean"></a>[Puanlanmadı] ne anlama geliyor?
 
@@ -90,30 +90,30 @@ Puan günde bir kez hesaplanır (yaklaşık 24:00 PST). Ölçülen eylemde deği
 
 ### <a name="my-score-changed-how-do-i-figure-out-why"></a>Puanım değişti. Nedenini nasıl anlayabilirim?
 
-[Microsoft 365 güvenlik merkezine](https://security.microsoft.com/)gidin ve burada microsoft güvenli puanınızı tamamlayın. Geçmiş sekmesindeki ayrıntılı değişiklikleri inceleyerek güvenli puanınızdaki tüm değişiklikleri kolayca görebilirsiniz.
+Tüm Microsoft güvenli puanınızı bulacağınız [Microsoft 365 Güvenlik Merkezi](https://security.microsoft.com/)' ne gidin. Geçmiş sekmesindeki ayrıntılı değişiklikleri inceleyerek güvenli puanınızın tüm değişikliklerini kolayca görebilirsiniz.
 
-### <a name="does-the-secure-score-measure-my-risk-of-getting-breached"></a>Güvenli skor ihlal edilebiki riskimi ölçüyor mu?
+### <a name="does-the-secure-score-measure-my-risk-of-getting-breached"></a>Güvenli Puanlama, ihlal alma riskimin nedeniyle mi ölçülemidir?
 
-Kısacası, hayır. Güvenli skor, ihlal edilme olasılığınız hakkında kesin bir ölçü ifade etmez. Güvenlik ihlaline uğrama riskini azaltabilecek özellikleri ne düzeyde benimsediğinizi ortaya koyar. Hiçbir hizmet ihlal edilmeyeceğinigaranti edemez ve güvenli puan hiçbir şekilde garanti olarak yorumlanmamalıdır.
+Kısacası, hayır. Güvenli puan, ihlal alma olasıınızın mutlak bir ölçüsünü ifade etmez. Güvenlik ihlaline uğrama riskini azaltabilecek özellikleri ne düzeyde benimsediğinizi ortaya koyar. Hizmet yok, ihlal edilemez ve güvenli puan herhangi bir şekilde garanti olarak yorumlanmamalıdır.
 
 ### <a name="how-should-i-interpret-my-score"></a>Puanımı nasıl yorumlayabilirim?
 
-Önerilen güvenlik özelliklerini yapılandırmanızdan veya güvenlikle ilgili görevleri (raporları okuma gibi) gerçekleştirmenizden dolayı size puan verilir. Kullanıcılarınız için Multi-Factor Authentication'ı (MFA) etkinleştirmeniz gibi bazı eylemler, kısmen tamamlanmış olarak puanlanır. Güvenli puanınız, kullandığınız Microsoft güvenlik hizmetlerini doğrudan temsil eder. Güvenliğin kullanılabilirlikle dengelenmesi gerektiğini unutmayın. Tüm güvenlik denetimlerinin bir de kullanıcı etkisi bileşeni vardır. Düşük kullanıcı etkisine sahip denetimlerin, kullanıcılarınızın gündelik işlemleri üzerinde çok az etkisi olması veya hiç olmaması gerekir.
+Önerilen güvenlik özelliklerini yapılandırmanızdan veya güvenlikle ilgili görevleri (raporları okuma gibi) gerçekleştirmenizden dolayı size puan verilir. Kullanıcılarınız için Multi-Factor Authentication'ı (MFA) etkinleştirmeniz gibi bazı eylemler, kısmen tamamlanmış olarak puanlanır. Güvenli puanınız, kullandığınız Microsoft güvenlik hizmetlerinin doğrudan temsilcisidir. Güvenliğin kullanılabilirlik ile dengelenmesi gerektiğini unutmayın. Tüm güvenlik denetimlerinin bir de kullanıcı etkisi bileşeni vardır. Düşük kullanıcı etkisine sahip denetimlerin, kullanıcılarınızın gündelik işlemleri üzerinde çok az etkisi olması veya hiç olmaması gerekir.
 
-Puan geçmişinizi görmek için [Microsoft 365 güvenlik merkezine](https://security.microsoft.com/) gidin ve genel Microsoft güvenli puanınızı gözden geçirin. Genel güvenli puanınızdaki değişiklikleri gözden geçirebilirsiniz. Belirli bir tarih seçerek o gün hangi denetimlerin etkinleştirildiğini ve her birinden kaç puan kazandığınızı görün.
+Puan geçmişinizi görmek için [Microsoft 365 Güvenlik Merkezi](https://security.microsoft.com/) ' ne gidin ve genel Microsoft güvenli puanınızı gözden geçirin. Görünüm geçmişi ' ne tıklayarak genel güvenli puanınızın değişikliklerini gözden geçirebilirsiniz. Belirli bir tarih seçerek o gün hangi denetimlerin etkinleştirildiğini ve her birinden kaç puan kazandığınızı görün.
 
 ### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>Kimlik güvenliği puanı ile Office 365 güvenlik puanı arasında nasıl bir ilişki vardır?
 
 [Microsoft güvenli puanı](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score) beş farklı denetim ve puan kategorisi içerir:
 
 - Kimlik
-- Veri
+- Veriler
 - Cihazlar
 - Altyapı
 - Uygulamalar
 
-Kimlik güvenli puanı, Microsoft güvenli puanının kimlik kısmını temsil eder. Bu çakışma, kimlik güvenli puanı ve Microsoft'taki kimlik puanı için önerileriniz aynı olduğu anlamına gelir.
+Kimlik güvenli puanı, Microsoft güvenli puanı 'nın kimlik bölümünü temsil eder. Bu örtüşme, kimlik güvenli puanı ve Microsoft 'taki kimlik puanı için önerilerin aynı olduğu anlamına gelir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Microsoft secure score hakkında daha fazla bilgi edinin](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)
+[Microsoft güvenli puanı hakkında daha fazla bilgi edinin](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)

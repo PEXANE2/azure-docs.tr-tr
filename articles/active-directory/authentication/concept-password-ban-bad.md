@@ -1,6 +1,6 @@
 ---
-title: Dinamik olarak yasaklanmış parolalar - Azure Active Directory
-description: Azure AD dinamik olarak yasaklanmış parolalarla ortamınızdan zayıf parolaları yasaklayın
+title: Dinamik olarak yasaklanmış parolalar-Azure Active Directory
+description: Azure AD dinamik olarak yasaklanmış parolalarla ortamınızdaki zayıf parolalar
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,169 +12,169 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79264004"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Kuruluşunuzda kötü parolaları ortadan kaldırma
 
-Sektör liderleri, aynı parolayı birden çok yerde kullanmamanızı, karmaşık hale getirmemenizi ve "Password123" gibi basit hale getirmemenizi söyler. Kuruluşlar, kullanıcılarının en iyi uygulama kılavuzunu takip ettiğini nasıl garanti edebilir? Kullanıcıların zayıf parolalar kullanmadığından ve hatta zayıf parolalarda varyasyonkullanmadığından nasıl emin olabilirler?
+Sektör liderleri, birden çok yerde aynı parolayı kullanmacağınızı, karmaşık hale getirmek ve "Password123" gibi basit hale getirmek için kullanmayı söylemez. Kuruluşlar, kullanıcılarının en iyi yöntem kılavuzunu takip etmesini güvence altına alabilir mi? Kullanıcıların zayıf parolalar kullanmadığından ve hatta zayıf parolalarda çeşitliliğe sahip olduklarından emin olabilirler.
 
-Daha güçlü parolalara sahip olmanın ilk adımı, kullanıcılarınıza rehberlik etmektir. Microsoft'un bu konudaki güncel kılavuzunu aşağıdaki bağlantıdan bulabilirsiniz:
+Daha güçlü parolalara sahip olan ilk adım kullanıcılarınıza rehberlik sağlamaktır. Microsoft 'un bu konuyla ilgili geçerli Kılavuzu aşağıdaki bağlantıda bulunabilir:
 
-[Microsoft Şifre Kılavuzu](https://www.microsoft.com/research/publication/password-guidance)
+[Microsoft parola Kılavuzu](https://www.microsoft.com/research/publication/password-guidance)
 
-Iyi bir rehberlik olması önemlidir, ama biz bile birçok kullanıcı hala zayıf şifreleri seçerek sona erecek biliyorum. Azure AD Parola Koruması, bilinen zayıf parolaları ve bunların türevlerini algılayıp engelleyerek ve kuruluşunuza özel ek zayıf koşulları isteğe bağlı olarak engelleyerek kuruluşunuzu korur.
+İyi bir kılavuzluk olması önemlidir, ancak pek çok kullanıcının hala zayıf parolalar seçeceğimizi bilmemiz gerekir. Azure AD parola koruması, bilinen zayıf parolaları ve türevlerini algılayıp engelleyerek ve isteğe bağlı olarak kuruluşunuza özgü ek zayıf koşulları engelleyerek kuruluşunuzu korur.
 
-Güncel güvenlik çabaları hakkında daha fazla bilgi için [Microsoft Güvenlik İstihbaratı Raporu'na](https://www.microsoft.com/security/operations/security-intelligence-report)bakın.
+Geçerli güvenlik çabaları hakkında daha fazla bilgi için bkz. [Microsoft Güvenlik Intelligence Report](https://www.microsoft.com/security/operations/security-intelligence-report).
 
-## <a name="global-banned-password-list"></a>Genel yasaklı parola listesi
+## <a name="global-banned-password-list"></a>Global yasaklanmış parola listesi
 
-Azure AD Kimlik Koruma ekibi, sık kullanılan zayıf veya gizliliği ihlal edilen parolaları veya daha spesifik olarak zayıf parolalar için temel olarak kullanılan zayıf temel terimleri arayan Azure AD güvenlik telemetri verilerini sürekli olarak analiz eder. Bu tür zayıf terimler bulunduğunda, bunlar genel olarak yasaklanmış parola listesine eklenir. Genel olarak yasaklı parola listesinin içeriği herhangi bir dış veri kaynağına dayanmaz. Genel yasaklı parola listesi tamamen Azure AD güvenlik telemetrisinin ve analizinin devam eden sonuçlarına dayanır.
+Azure AD Kimlik Koruması ekibi, yaygın olarak kullanılan zayıf veya riskli parolalara veya daha belirgin bir şekilde, genellikle zayıf parolaların temeli olarak kullanılan zayıf temel koşullara göre, Azure AD güvenlik telemetri verilerini sürekli olarak analiz eder. Bu zayıf koşullar bulunduğunda, bunlar genel yasaklanmış parola listesine eklenir. Genel yasaklanmış parola listesinin içeriği herhangi bir dış veri kaynağını temel almaz. Global yasaklanmış parola listesi tamamen Azure AD güvenlik telemetri ve analizinin devam eden sonuçlarına dayalıdır.
 
-Azure AD'deki herhangi bir kiracıdaki herhangi bir kullanıcı için yeni bir parola değiştirildiğinde veya sıfırlandığında, genel olarak yasaklı parola listesinin geçerli sürümü, parolanın gücünü doğrularken anahtar girişi olarak kullanılır. Bu doğrulama, tüm Azure AD müşterileri için çok daha güçlü parolalar sağlar.
+Azure AD 'de herhangi bir kiracıda herhangi bir kullanıcı için yeni bir parola değiştirildiğinde veya sıfırlandığında, parolanın gücünü doğrularken anahtar girişi olarak genel yasaklanmış parola listesinin geçerli sürümü kullanılır. Bu doğrulama, tüm Azure AD müşterileri için çok daha güçlü parolalara neden olur.
 
 > [!NOTE]
-> Siber suçlular da saldırılarında benzer stratejiler kullanırlar. Bu nedenle Microsoft bu listenin içeriğini herkese açık olarak yayımlamaz.
+> Cyber-Dolandırıcılar, saldırılarına karşı benzer stratejileri de kullanır. Bu nedenle Microsoft bu listenin içeriğini herkese açık bir şekilde yayımlamaz.
 
-## <a name="custom-banned-password-list"></a>Özel yasaklı şifre listesi
+## <a name="custom-banned-password-list"></a>Özel yasaklanmış parola listesi
 
-Bazı kuruluşlar, Microsoft'un özel yasaklı parola listesi olarak adlandırdığı genel yasaklı parola listesinin üstüne kendi özelleştirmelerini ekleyerek güvenliği daha da artırmak isteyebilir. Microsoft, bu listeye eklenen terimlerin öncelikle kuruluşa özgü terimlere odaklanmasını önerir:
+Bazı kuruluşlar, Microsoft 'un özel yasaklanmış parola listesini çağırdığı genel yasaklanmış parola listesinin üzerine kendi özelleştirmelerini ekleyerek güvenliği daha da geliştirmek isteyebilir. Microsoft bu listeye eklenen koşulların birincil olarak kuruluşa özgü koşullara odaklanmasını önerir, örneğin:
 
 - Marka adları
 - Ürün adları
-- Konumlar (örneğin, şirket merkezi gibi)
-- Şirkete özel iç terimler
-- Belirli bir şirket anlamı olan kısaltmalar.
+- Konumlar (örneğin, Şirket merkez ofisi)
+- Şirkete özgü dahili şartlar
+- Belirli bir şirkete ilişkin anlamı olan kısaltmalar.
 
-Terimler özel yasaklı parola listesine eklendikten sonra, parolaları doğrularken genel yasaklı parola listesindeki terimlerle birleştirilir.
+Özel yasaklanmış parola listesine koşullar eklendikten sonra, parolalar doğrulanırken genel yasaklanmış parola listesindeki koşullara göre birleştirilir.
 
 > [!NOTE]
-> Özel yasaklı parola listesi en fazla 1000 terime sahip olmakla sınırlıdır. Son derece büyük parola listelerini engellemek için tasarlanmaz. Özel yasaklı parola listesinin avantajlarından tam olarak yararlanmak için Microsoft, özel yasaklı listeye yeni terimler eklemeden önce parola değerlendirme algoritmasını (bkz. [parolaların nasıl değerlendirildiğini)](concept-password-ban-bad.md#how-are-passwords-evaluated)incelemenizi ve anlamanızı önerir. Algoritmanın nasıl çalıştığını anlamak, işletmenizin çok sayıda zayıf parolayı ve bunların türevlerini verimli bir şekilde algılamasını ve engellemesini sağlar.
+> Özel yasaklanmış parola listesi en fazla 1000 terim olacak şekilde sınırlıdır. Parolaların son derece büyük listesini engellemek için tasarlanmamıştır. Özel yasaklanmış parola listesinin avantajlarından tamamen yararlanmak için, Microsoft, özel yasaklanmış listesine yeni terimler eklemeden önce parola değerlendirme algoritmasını (bkz. [parolaları nasıl değerlendirdiğini](concept-password-ban-bad.md#how-are-passwords-evaluated)) incelemenizi ve anlamasını önerir. Algoritmanın nasıl çalıştığını anlamak, kuruluşunuzun çok sayıda zayıf parolayı ve türevlerini verimli bir şekilde algılamasını ve engellemesini sağlar.
 
-Örneğin: Merkezi Londra'da bulunan ve "Widget" adlı bir ürün yapan "Contoso" adlı bir müşteri düşünün. Böyle bir müşteri için, bu terimlerin belirli varyasyonlarını engellemeye çalışmak hem savurgan hem de daha az güvenli olacaktır:
+Örneğin: "contoso" adlı bir müşteriyi, Londra 'ya dayalı ve "pencere öğesi" adlı bir ürün yapan bir müşteriyi düşünün. Böyle bir müşteri söz konusu olduğunda, bu koşulların belirli çeşitlemelerini engellemeyi denemek daha az güvenlidir:
 
-- "Contoso!1"
+- "Contoso! 1"
 - "Contoso@London"
-- "ContosoWidget"
-- "! Contoso"
+- "Contosopencere öğesi"
+- "! 'Nun
 - "LondonHQ"
-- ... Etcetera
+- ... etcetera
 
-Bunun yerine, yalnızca temel terimleri engellemek çok daha verimli ve güvenlidir:
+Bunun yerine, yalnızca anahtar temel koşullarını engellemek çok daha verimlidir ve güvenlidir:
 
 - "Contoso"
-- "Londra"
-- "Widget"
+- Londra
+- Pencere öğesi
 
-Parola doğrulama algoritması daha sonra otomatik olarak zayıf türevleri ve yukarıdaki kombinasyonları engeller.
+Parola doğrulama algoritması, yukarıdaki zayıf çeşitleri ve birleşimleri otomatik olarak engeller.
 
-Özel yasaklı parola listesi ve şirket içi Active Directory tümleştirmesini etkinleştirme olanağı Azure portalı kullanılarak yönetilir.
+Özel yasaklanmış parola listesi ve şirket içi Active Directory tümleştirmesini etkinleştirme özelliği Azure portal kullanılarak yönetilir.
 
-![Kimlik Doğrulama Yöntemleri altında özel yasaklı parola listesini değiştirme](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
+![Kimlik doğrulama yöntemleri altındaki özel yasaklanmış parola listesini değiştirme](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
 
-## <a name="password-spray-attacks-and-third-party-compromised-password-lists"></a>Parola püskürtme saldırıları ve üçüncü taraf şifre listeleri
+## <a name="password-spray-attacks-and-third-party-compromised-password-lists"></a>Parola püskürtme saldırıları ve üçüncü taraf güvenliği aşılmış parola listeleri
 
-Önemli bir Azure AD parola koruma avantajı, parola püskürtme saldırılarına karşı savunmanıza yardımcı olmaktır. Bu tür davranışlar hesap kilitleme veya başka yollarla algılama olasılığını büyük ölçüde artırdığından, çoğu parola püskürtme saldırısı herhangi bir tek tek hesaba birkaç kereden fazla saldırmaya kalkışmaz. Bu nedenle, parola püskürtme saldırılarının çoğu, bir kuruluştaki hesapların her birine karşı bilinen en zayıf parolaların yalnızca az sayıda gönderilmesine dayanır. Bu teknik, saldırganın kolayca tehlikeye atabileceğiniz bir hesabı hızlı bir şekilde aramasına ve aynı zamanda olası algılama eşiklerini önlemesine olanak tanır.
+Tek bir Azure AD parola koruması avantajı, parola püskürtme saldırılarına karşı savunmanız açısından yardımcı olur. Çoğu parola püskürtme saldırısı, hesap kilitleme veya başka yollarla algılama olasılığını büyük ölçüde arttığı için, bu tür bir hesap, belirli bir hesaba birkaç kez saldırmayı denemez. Bu nedenle, bir kuruluştaki hesapların her birine karşı yalnızca küçük sayıda bilinen zayıf parolanın gönderilmesi, parola spreyi saldırılarına maruz kalmalıdır. Bu teknik, saldırganın, olası algılama eşiklerinden kaçınırken kolayca güvenliği aşılmış bir hesabı hızla aramasını sağlar.
 
-Azure AD parola koruması, Azure AD tarafından görülen gerçek güvenlik telemetri verilerine dayalı olarak parola püskürtme saldırılarında kullanılması muhtemel bilinen tüm zayıf parolaları verimli bir şekilde engellemek için tasarlanmıştır.  Microsoft, daha önce bilinen güvenlik ihlallerinde ele geçirilen milyonlarca parolayı sıralayan üçüncü taraf web sitelerinin farkındadır. Üçüncü taraf parola doğrulama ürünlerinin bu milyonlarca parolayla kaba kuvvet karşılaştırmasına dayanması yaygındır. Microsoft, parola püskürtme saldırganları tarafından kullanılan tipik stratejiler göz önüne alındığında, bu tür tekniklerin genel parola gücünü artırmanın en iyi yolu olmadığını düşünüyor.
+Azure AD parola koruması, Azure AD tarafından görülen gerçek dünyada güvenlik telemetri verilerine bağlı olarak, parola spreyi saldırılarına karşı kullanılan tüm bilinen zayıf parolaları etkin bir şekilde engelleyecek şekilde tasarlanmıştır.  Microsoft, yaygın olarak bilinen güvenlik ihlallerinin tehlikeye girdiği milyonlarca parolayı belirten üçüncü taraf web sitelerinin farkındadır. Üçüncü taraf parola doğrulama ürünlerinin bu milyonlarca parolalara karşı deneme yanılma karşılaştırmasına dayalı olması yaygındır. Microsoft bu tür tekniklerin, parola spreyi tarafından kullanılan tipik stratejileri verilen genel parola gücünü geliştirmenin en iyi yolu değildir.
 
 > [!NOTE]
-> Microsoft'un genel olarak yasaklanan parola listesi, gizliliği ihlal edilmiş parola listeleri de dahil olmak üzere üçüncü taraf veri kaynaklarına dayanmaz.
+> Microsoft Global yasaklanmış parola listesi, güvenliği aşılmış parola listeleri dahil olmak üzere herhangi bir üçüncü taraf veri kaynağına bağlı değildir.
 
-Microsoft'un genel yasaklı listesi bazı üçüncü taraf toplu listelere kıyasla küçük olsa da, güvenlik etkileri gerçek parola püskürtme saldırılarında gerçek dünya güvenlik telemetrisinden kaynaklanmış olması yla artı Microsoft'un parola doğrulama algoritması akıllı bulanık eşleştirme tekniklerini kullanır. Sonuçta verimli bir şekilde algılamak ve kuruluşunuzda kullanılmaktan en yaygın zayıf parolaların milyonlarca engellemek. Özel yasaklı parola listesine kuruluşa özgü terimler eklemeyi seçen müşteriler de aynı algoritmadan yararlanır.
+Microsoft Global yasaklanmış listesi, bazı üçüncü taraf toplu listelerine kıyasla küçük olsa da, güvenlik etkileri gerçek parola spreyi saldırılarına karşı gerçek bir güvenlik telemetrisinden kaynaklandığından ve Microsoft parola doğrulama algoritmasının akıllı benzer eşleştirme tekniklerini kullanması durumunda elde edilir. Nihai sonuç, kuruluşunuzda en sık kullanılan zayıf parolaların milyonlarca kullanımını etkili bir şekilde algılayıp engelleyecektir. Özel yasaklanmış parola listesine kuruluşa özgü terimler eklemeyi seçen müşteriler aynı algoritmadan da faydalanır.
 
-Parola tabanlı güvenlik sorunları yla ilgili ek bilgiler [Pa$$word](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)önemli değildir gözden geçirilebilir.
+Parola tabanlı güvenlik sorunlarıyla ilgili ek bilgiler, [PA $ $Word](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)tarafından incelenmeyebilir.
 
-## <a name="on-premises-hybrid-scenarios"></a>Şirket içi hibrit senaryolar
+## <a name="on-premises-hybrid-scenarios"></a>Şirket içi karma senaryolar
 
-Yalnızca bulut hesaplarının korunması yararlıdır, ancak birçok kuruluş şirket içi Windows Server Etkin Dizini de dahil olmak üzere karma senaryolar tutar. Azure AD parola korumasının güvenlik avantajları, şirket içi aracıların yüklenmesi yoluyla Windows Server Active Directory ortamınıza da genişletilebilir. Artık Active Directory'de parolaları değiştiren veya sıfırlayan kullanıcıların ve yöneticilerin yalnızca bulut kullanıcılarıyla aynı parola ilkesine uymaları gerekiyor.
+Yalnızca bulut hesaplarının korunması yararlı olur ancak birçok kuruluş, şirket içi Windows Server Active Directory dahil olmak üzere Karma senaryolar yaşar. Azure AD parola korumasının güvenlik avantajları, şirket içi aracıların yüklenmesi yoluyla Windows Server Active Directory ortamınıza da genişletilebilir. Artık Active Directory parolalarını değiştiren veya sıfırlayan kullanıcılar ve Yöneticiler yalnızca bulutta bulunan kullanıcılarla aynı parola ilkesiyle uyum sağlamak için gereklidir.
 
-## <a name="how-are-passwords-evaluated"></a>Parolalar nasıl değerlendirilir?
+## <a name="how-are-passwords-evaluated"></a>Parolalar nasıl değerlendirilir
 
-Bir kullanıcı parolasını değiştirdiğinde veya sıfırladığında, yeni parola, genel ve özel yasaklı parola listelerindeki terimlerin birleşik listesiyle karşısına doğrulayarak (ikincisi yapılandırılırsa) güçlü ve karmaşıklık açısından denetlenir.
+Kullanıcı parolasını değiştirdiğinde veya sıfırladığında yeni parola, genel ve özel yasaklanmış parola listelerinden (ikincisi yapılandırılmışsa) Birleşik koşullar listesine karşı doğrulayarak güç ve karmaşıklık açısından denetlenir.
 
-Bir kullanıcının parolası yasaklı bir parola içerse bile, genel parola aksi takdirde yeterince güçlüyse parola yine de kabul edilebilir. Yeni yapılandırılan bir parola, kabul edilip edilmemesi veya reddedilmesi gerekip gerekmeyeceğini belirlemek için genel gücünü değerlendirmek için aşağıdaki adımlardan geçer.
+Kullanıcının parolası yasaklanmış bir parola içerse bile, genel parola yeterince güçlü olursa parola yine de kabul edilebilir. Yeni yapılandırılan bir parola, kabul edilip edilmesinin gerekip gerekmediğini belirlemek için genel gücünü değerlendirmek üzere aşağıdaki adımlara geçer.
 
-### <a name="step-1-normalization"></a>Adım 1: Normalleştirme
+### <a name="step-1-normalization"></a>1. Adım: normalleştirme
 
-Yeni bir parola önce normalleştirme işleminden geçer. Bu teknik, küçük bir yasaklı parola kümesinin çok daha büyük bir potansiyel zayıf parola kümesiyle eşlenemesine olanak tanır.
+Yeni bir parola, önce bir normalleştirme işleminden geçer. Bu teknik, küçük bir yasaklanmış parola kümesinin daha büyük olabilecek çok zayıf parolalara eşlenmesine olanak tanır.
 
-Normalleştirme iki bölümden oluşur.  İlk olarak, tüm büyük harfler küçük harf olarak değiştirilir.  İkinci olarak, yaygın karakter değiştirmeleri gerçekleştirilir, örneğin:  
+Normalleştirme iki bölümden oluşur.  İlk olarak, tüm büyük harfler küçük harfe dönüştürülür.  İkinci olarak, ortak karakter alternatifleri gerçekleştirilir, örneğin:  
 
-| Orijinal mektup  | Değiştirilen harf |
+| Özgün harf  | Değiştirilen mektup |
 | --- | --- |
-| '0'  | 'o' |
-| '1'  | 'l' |
-| '$'  | 's' |
-| '\@'  | 'a' |
+| 0  | 'h |
+| 1  | ölçek |
+| '$'  | üreticinin |
+| '\@'  | 'm |
 
-Örnek: "boş" parolanın yasaklandığını varsayalım ve kullanıcı parolasınıBl@nK" " olarak değiştirmeye çalışır. " "Bl@nközel olarak yasaklanmamış olsa da, normalleştirme işlemi bu parolayı yasaklı bir parola olan "boş"a dönüştürür.
+Örnek: "boş" parolasının yasaklanmış olduğunu ve bir kullanıcının parolasını "Bl@nK" olarak değiştirmeye çalıştığını varsayın. "Bl@nk" Özellikle yasaklanmış olsa da, normalleştirme süreci bu parolayı yasaklanmış bir parola olan "boş" olarak dönüştürür.
 
-### <a name="step-2-check-if-password-is-considered-banned"></a>Adım 2: Parolanın yasaklı kabul edilip edilemeyişamaz
+### <a name="step-2-check-if-password-is-considered-banned"></a>2. Adım: parolanın yasaklanmış olarak kabul edildiğinden emin olun
 
-#### <a name="fuzzy-matching-behavior"></a>Bulanık eşleştirme davranışı
+#### <a name="fuzzy-matching-behavior"></a>Belirsiz eşleştirme davranışı
 
-Bulanık eşleştirme, normalleştirilmiş parolada, genel veya özel yasaklı parola listelerinde bulunan bir parola bulunip içermeden tanımlanabilmek için kullanılır. Eşleştirme işlemi, bir (1) karşılaştırmanın bir edit mesafesine dayanır.  
+Belirsiz eşleştirme, genel veya özel yasaklanmış parola listelerinde bulunan bir parola içerip içermesinin belirlenmesi için normalleştirilmiş parolada kullanılır. Eşleşen işlem, bir (1) karşılaştırmayla ilgili düzenleme mesafesini temel alır.  
 
-Örnek: "abcdef" parolasının yasaklandığını ve kullanıcının parolasını aşağıdakilerden biriyle değiştirmeye çalıştığını varsayalım:
+Örnek: "abcdef" parolasının yasaklanmış olduğunu ve bir kullanıcının parolasını aşağıdakilerden biriyle değiştirmeye çalıştığını varsayın:
 
-'abcdeg' *(son karakter 'f' den 'g')* 'abcdefg' *'(g' sonuna eklenen)* 'abcde' *('f' izleyerek uçtan silindi)*
+' abcdeg ' *(son karakter ' f ' iken ' g ' olarak değiştirildi)* ' abcdefg ' *' (bitiş* ' f ') ' abcde ' *(sondaki ' f ' sonunda silindi)*
 
-Yukarıdaki parolaların her biri özellikle yasaklı şifre "abcdef" eşleşmiyor. Ancak, her örnek yasaklı terim 'abcdef' 1 bir edit mesafesi içinde olduğundan, hepsi "abcdef" bir maç olarak kabul edilir.
+Yukarıdaki parolaların her biri, yasaklanmış "abcdef" parolasıyla özellikle eşleşmez. Ancak, her örnek yasaklanmış ' abcdef ' teriminin 1. bir düzenleme uzaklığı içinde olduğundan, hepsi "abcdef" ile eşleşme olarak kabul edilir.
 
-#### <a name="substring-matching-on-specific-terms"></a>Substring eşleştirme (belirli terimlerüzerinde)
+#### <a name="substring-matching-on-specific-terms"></a>Alt dize eşleştirme (belirli koşullara göre)
 
-Alt dize eşlemesi, kullanıcının adı ve soyadının yanı sıra kiracı adını denetlemek için normalleştirilmiş parolada kullanılır (Etkin Dizin etki alanı denetleyicisindeki parolaları doğrularken kiracı adı eşleştirmesinin yapılmadığını unutmayın).
+Alt dize eşleştirme, kullanıcının adını ve soyadını denetlemek için normalleştirilmiş parolada, kiracı adının yanı sıra bir Active Directory etki alanı denetleyicisindeki parolaları doğrularken de kiracı adı eşleştirme yapılmadığını unutmayın.
 
-Örnek: şifresini "P0l123fb" olarak sıfırlamak isteyen Pol adlı bir kullanıcımız olduğunu varsayalım. Normalleştirme den sonra, bu şifre "pol123fb" olacaktır. Substring eşleştirme, parolanın kullanıcının ilk adı "Pol" içerdiğini bulur. "P0l123fb" özellikle yasaklı parola listesinde olmamasına rağmen, alt string eşleştirme parolada "Pol" bulundu. Bu nedenle bu parola reddedilir.
+Örnek: parolasını "P0l123fb" olarak sıfırlamak isteyen bir kullanıcı olan bir kullanıcı olduğunu varsayalım. Normalleştirme sonrasında bu parola "pol123fb" olur. Alt dize eşleştirme, parolanın kullanıcının ilk adını "pol" içerdiğini bulur. "P0l123fb" özellikle yasaklanmış parola listesinde olmamasına rağmen, alt dize eşleştirme parolada "pol" buldu. Bu nedenle bu parola reddedilir.
 
-#### <a name="score-calculation"></a>Puan Hesaplama
+#### <a name="score-calculation"></a>Puan hesaplaması
 
-Bir sonraki adım, kullanıcının normalize edilmiş yeni parolasındaki tüm yasaklı parola örneklerini belirlemektir. Ardından:
+Sonraki adım kullanıcının normalleştirilmiş yeni parolalarındaki tüm yasaklanmış parolaların örneklerini belirlemektir. Ardından:
 
-1. Bir kullanıcının parolasında bulunan her yasaklı parolaya bir puan verilir.
-2. Kalan her benzersiz karaktere bir puan verilir.
-3. Parolanın kabul edilemesi için en az beş (5) puan olmalıdır.
+1. Bir kullanıcının parolasıdır bulunan her yasaklanmış parolanın tek bir noktası verilir.
+2. Kalan her benzersiz karaktere bir nokta verilir.
+3. Parola kabul edilebilmesi için en az beş (5) punto olmalıdır.
 
-Sonraki iki örnek için, Contoso'nun Azure AD Parola Koruması kullandığını ve özel listelerinde "contoso" olduğunu varsayalım. "Boş"un genel listede olduğunu da varsayalım.
+Sonraki iki örnek için Contoso 'nun Azure AD parola korumasını kullandığını ve özel listesinde "contoso" olduğunu varsayalım. Ayrıca "boş" öğesinin genel listede olduğunu varsayalım.
 
-Örnek: Bir kullanıcı parolasını "C0ntos0Blank12" olarak değiştirir
+Örnek: bir Kullanıcı, parolasını "C0ntos0Blank12" olarak değiştirir
 
-Normalleştirmeden sonra, bu parola "contosoblank12" olur. Eşleştirme işlemi, bu parolanın iki yasaklı parola içerdiğini bulur: contoso ve boş. Bu parola daha sonra bir puan verilir:
+Normalleştirme sonrasında bu parola "contosoblank12" olur. Eşleşen işlem bu parolanın iki yasaklanmış parola içerdiğini bulur: contoso ve Blank. Bu parolaya daha sonra bir puan verilir:
 
-[contoso] + [boş] + [1] + [2] = 4 puan Bu parola beş (5) puanın altında olduğundan, reddedilecektir.
+[contoso] + [boş] + [1] + [2] = 4 punto bu parola beş (5) Punto altında olduğundan reddedilecek.
 
-Örnek: bir kullanıcı parolasınıContoS0Bl@nkf9" !"' olarak değiştirir.
+Örnek: bir Kullanıcı parolasını "ContoS0Bl@nkf9!" olarak değiştirir.
 
-Normalleştirmeden sonra, bu parola "contosoblankf9!" olur. Eşleştirme işlemi, bu parolanın iki yasaklı parola içerdiğini bulur: contoso ve boş. Bu parola daha sonra bir puan verilir:
+Normalleştirme sonrasında bu parola "contosoblankf9!" olur. Eşleşen işlem bu parolanın iki yasaklanmış parola içerdiğini bulur: contoso ve Blank. Bu parolaya daha sonra bir puan verilir:
 
-[contoso] + [boş] + [f] + [9] + [!] = 5 puan Bu parola en az beş (5) puan olduğundan, kabul edilir.
+[contoso] + [boş] + [f] + [9] + [!] = 5 punto bu parola en az beş (5) puntodan bu yana kabul edilir.
 
    > [!IMPORTANT]
-   > Yasaklı parola algoritmasının genel listeyle birlikte, devam eden güvenlik analizleri ve araştırmalarını temel alan Azure'da herhangi bir zamanda değişiklik yapabileceğini ve değiştirebileceğini lütfen unutmayın. Şirket içi DC aracı hizmeti için, güncelleştirilmiş algoritmalar yalnızca DC aracı yazılımı yeniden yüklendikten sonra etkili olur.
+   > Lütfen genel liste ile yasaklanmış parola algoritmasının, sürekli güvenlik Analizi ve araştırmaya dayalı olarak Azure 'da dilediğiniz zaman değişiklik yapıp yapamadığını unutmayın. Şirket içi DC Aracısı hizmeti için, güncelleştirilmiş algoritmalar yalnızca DC Aracısı yazılımı yeniden yüklendikten sonra devreye girer.
 
 ## <a name="license-requirements"></a>Lisans gereksinimleri
 
-|   | Genel yasaklı parola listesi ile Azure AD parola koruması | Özel yasaklı parola listesi ile Azure AD parola koruması|
+|   | Genel yasaklanmış parola listesiyle Azure AD parola koruması | Özel yasaklanmış parola listesiyle Azure AD parola koruması|
 | --- | --- | --- |
-| Yalnızca bulut kullanıcıları | Azure AD Ücretsiz | Azure AD Premium P1 veya P2 |
-| Şirket içi Windows Server Active Directory'den senkronize edilen kullanıcılar | Azure AD Premium P1 veya P2 | Azure AD Premium P1 veya P2 |
+| Yalnızca bulutta bulunan kullanıcılar | Azure AD Ücretsiz | Azure AD Premium P1 veya P2 |
+| Şirket içi Windows Server Active Directory eşitlenen kullanıcılar | Azure AD Premium P1 veya P2 | Azure AD Premium P1 veya P2 |
 
 > [!NOTE]
-> Azure Active Directory ile senkronize olmayan şirket içi Windows Server Active Directory kullanıcıları, senkronize edilmiş kullanıcılar için varolan lisanslamayı temel alan Azure AD parola korumasından da yararlanır.
+> Şirket içi Windows Server Active Directory, aynı zamanda eşitlenmiş kullanıcılara yönelik mevcut lisanslama temelinde Azure AD parola korumasından de faydalanan Azure Active Directory.
 
-Maliyetler de dahil olmak üzere ek lisans bilgileri [Azure Active Directory fiyatlandırma sitesinde](https://azure.microsoft.com/pricing/details/active-directory/)bulunabilir.
+[Azure Active Directory fiyatlandırma sitesinde](https://azure.microsoft.com/pricing/details/active-directory/)maliyetler de dahil olmak üzere ek lisans bilgileri bulunabilir.
 
 ## <a name="what-do-users-see"></a>Kullanıcıların ne görecek
 
-Bir kullanıcı yasaklanacak bir şeyin parolasını sıfırlamaya çalıştığında, aşağıdaki hata iletisini görür:
+Bir Kullanıcı yasaklanmış olabilecek bir parolayı sıfırlama girişiminde bulunduğunda, şu hata iletisini görürler:
 
-Ne yazık ki, parolanız parolanızı kolayca tahmin edilebilir kılan bir sözcük, tümcecik veya desen içerir. Lütfen farklı bir parola ile yeniden deneyin.
+Ne yazık ki parolanız, parolanızın kolayca tahmin edilebilir olmasını sağlayan bir sözcük, tümcecik veya model içerir. Lütfen farklı bir parola ile yeniden deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Özel yasaklı parola listesini yapılandırma](howto-password-ban-bad.md)
-- [Azure AD parola koruma aracılarını şirket içinde etkinleştirme](howto-password-ban-bad-on-premises-deploy.md)
+- [Özel yasaklanmış parola listesini yapılandırın](howto-password-ban-bad.md)
+- [Şirket içinde Azure AD parola koruma aracılarını etkinleştirme](howto-password-ban-bad-on-premises-deploy.md)

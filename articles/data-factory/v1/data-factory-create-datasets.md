@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nda veri kümeleri oluşturma
-description: Ofset ve anchorDateTime gibi özellikleri kullanan örneklerle Azure Veri Fabrikası'nda nasıl veri kümeleri oluşturup oluşturabilirsiniz öğrenin.
+title: Azure Data Factory veri kümeleri oluşturma
+description: Azure Data Factory ' de, Aralık ve anchorDateTime gibi özellikleri kullanan örneklerle veri kümeleri oluşturmayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,40 +12,40 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 18a5e11d2341fb020fc442d2f9ce7c1d44de9d0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260442"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory'de veri kümeleri
-> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](data-factory-create-datasets.md)
 > * [Sürüm 2 (geçerli sürüm)](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [V2'deki Veri Kümeleri'ne](../concepts-datasets-linked-services.md)bakın.
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [v2 'de veri kümeleri](../concepts-datasets-linked-services.md).
 
-Bu makalede, veri kümelerinin ne olduğu, JSON biçiminde nasıl tanımlandığı ve Azure Veri Fabrikası ardışık hatlarında nasıl kullanıldığı açıklanmaktadır. Veri kümesi JSON tanımındaki her bölüm (örneğin, yapı, kullanılabilirlik ve ilke) hakkında ayrıntılı bilgi sağlar. Makale ayrıca bir dataset JSON tanımında **ofset**, **anchorDateTime**ve **stil** özelliklerini kullanmak için örnekler sağlar.
+Bu makalede, veri kümelerinin ne olduğu, JSON biçiminde nasıl tanımlandığı ve Azure Data Factory işlem hatları 'nda nasıl kullanıldığı açıklanmaktadır. Veri kümesi JSON tanımında her bölüm (örneğin, yapı, kullanılabilirlik ve ilke) hakkında ayrıntılı bilgi sağlar. Makalede ayrıca bir veri kümesi JSON tanımında **konum**, **anchordatetime**ve **Style** özelliklerinin kullanılmasına yönelik örnekler de verilmektedir.
 
 > [!NOTE]
-> Veri Fabrikası'nda yeniyseniz, genel bakış için [Azure Veri Fabrikası'na Giriş'e](data-factory-introduction.md) bakın. Veri fabrikaları oluşturma konusunda uygulamalı deneyiminiz yoksa, [veri dönüştürme öğreticisini](data-factory-build-your-first-pipeline.md) ve veri hareketi [öğreticisini](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)okuyarak daha iyi bir anlayış elde edebilirsiniz.
+> Data Factory yeni bir deyişle, genel bakış için bkz. [Azure Data Factory giriş](data-factory-introduction.md) . Veri fabrikaları oluşturmaya yönelik uygulamalı deneyimle karşılaşdıysanız, [veri dönüştürme öğreticisini](data-factory-build-your-first-pipeline.md) ve [veri taşıma öğreticisini](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)okuyarak daha iyi bir anlayışınız elde edebilirsiniz.
 
 ## <a name="overview"></a>Genel Bakış
-Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. **Ardışık işlem,** bir görevi birlikte gerçekleştiren **etkinliklerin** mantıksal bir gruplandırmasIdır. Bir işlem hattındaki etkinlikler, verilerinizde gerçekleştirilecek eylemleri tanımlar. Örneğin, şirket içi bir SQL Server'dan Azure Blob depolama alanına veri kopyalamak için bir kopyalama etkinliği kullanabilirsiniz. Ardından, çıktı verileri üretmek için Blob depolamadan gelen verileri işlemek için Azure HDInsight kümesinde Hive komut dosyası çalıştıran bir Kovan etkinliği kullanabilirsiniz. Son olarak, çıktı verilerini Azure SQL Veri Ambarı'na kopyalamak için ikinci bir kopyalama etkinliği kullanabilirsiniz ve bunun üzerine iş zekası (BI) raporlama çözümleri oluşturulur. Boru hatları ve etkinlikler hakkında daha fazla bilgi için [Azure Veri Fabrikası'ndaki Boru Hatları ve etkinliklere](data-factory-create-pipelines.md)bakın.
+Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem **hattı** , birlikte bir görevi gerçekleştiren **etkinliklerin** mantıksal gruplandırmasıdır. Bir işlem hattındaki etkinlikler, verilerinizde gerçekleştirilecek eylemleri tanımlar. Örneğin, verileri şirket içi SQL Server Azure Blob depolamaya kopyalamak için bir kopyalama etkinliği kullanabilirsiniz. Daha sonra, çıktı verileri üretmek üzere blob depolamadan veri işlemek için bir Azure HDInsight kümesinde Hive betiği çalıştıran bir Hive etkinliği kullanabilirsiniz. Son olarak, çıkış verilerini Azure SQL veri ambarı 'na kopyalamak için ikinci bir kopyalama etkinliği kullanabilirsiniz. Bu işlem, en üst kısımdaki iş zekası (BI) raporlama çözümlerini oluşturulmuştur. İşlem hatları ve etkinlikler hakkında daha fazla bilgi için bkz. [Azure Data Factory Işlem hatları ve etkinlikleri](data-factory-create-pipelines.md).
 
-Bir etkinlik sıfır veya daha fazla giriş **veri kümesi**alabilir ve bir veya daha fazla çıktı veri kümesi üretebilir. Giriş veri kümesi, ardışık ardışık iştihattaki bir etkinliğin girdisini, çıktı veri kümesi ise etkinlik çıktısını temsil eder. Veri kümeleri tablolar, dosyalar, klasörler ve belgeler gibi farklı veri depolarındaki verileri tanımlar. Örneğin, bir Azure Blob veri kümesi, ardışık aygıtın verileri okuması gereken Blob depolamasındaki blob kapsayıcısını ve klasörünü belirtir.
+Bir etkinlik sıfır veya daha fazla giriş **veri kümesi**alabilir ve bir veya daha fazla çıkış veri kümesi oluşturabilir. Giriş veri kümesi, işlem hattındaki bir etkinliğin girişini temsil eder ve bir çıkış veri kümesi etkinliğin çıkışını temsil eder. Veri kümeleri tablolar, dosyalar, klasörler ve belgeler gibi farklı veri depolarındaki verileri tanımlar. Örneğin, bir Azure blob veri kümesi, işlem hattının verileri okuması gereken blob kapsayıcısını ve BLOB depolama klasörünü belirtir.
 
-Bir veri kümesi oluşturmadan önce, veri deponuzu veri fabrikasına bağlamak için bağlantılı bir **hizmet** oluşturun. Bağlı hizmetler, dış kaynaklara bağlanmak için Data Factory’ye gereken bağlantı bilgilerini tanımlayan bağlantı dizelerine çok benzer. Veri kümeleri, SQL tabloları, dosyalar, klasörler ve belgeler gibi bağlantılı veri depolarında bulunan verileri tanımlar. Örneğin, Azure Depolama bağlantılı bir hizmet, bir depolama hesabını veri fabrikasına bağlar. Azure Blob veri kümesi, blob kapsayıcısını ve işlenecek giriş bloblarını içeren klasörü temsil eder.
+Bir veri kümesi oluşturmadan önce, veri deponuzu veri fabrikasına bağlamak için **bağlı bir hizmet** oluşturun. Bağlı hizmetler, dış kaynaklara bağlanmak için Data Factory’ye gereken bağlantı bilgilerini tanımlayan bağlantı dizelerine çok benzer. Veri kümeleri, SQL tabloları, dosyalar, klasörler ve belgeler gibi bağlantılı veri depolarında bulunan verileri belirler. Örneğin, Azure depolama bağlı hizmeti bir depolama hesabını veri fabrikasına bağlar. Bir Azure blob veri kümesi, blob kapsayıcısını ve işlenecek giriş bloblarını içeren klasörü temsil eder.
 
-İşte örnek bir senaryo. Blob depolamasundaki verileri bir SQL veritabanına kopyalamak için iki bağlantılı hizmet oluşturursunuz: Azure Depolama ve Azure SQL Veritabanı. Ardından, iki veri kümesi oluşturun: Azure Blob veri kümesi (Azure Depolama bağlantılı hizmete başvurur) ve Azure SQL Table veri kümesi (Azure SQL Veritabanı bağlantılı hizmete başvurur). Azure Depolama ve Azure SQL Veritabanı bağlantılı hizmetler, Veri Fabrikası'nın sırasıyla Azure Depolama ve Azure SQL Veritabanınıza bağlanmak için çalışma zamanında kullandığı bağlantı dizeleri içerir. Azure Blob veri kümesi, Blob depolama alanınızdaki giriş bloblarını içeren blob kapsayıcısını ve blob klasörünü belirtir. Azure SQL Tablo veri kümesi, verilerin kopyalanış olacağı SQL veritabanınızdaki SQL tablosunu belirtir.
+Örnek senaryo aşağıda verilmiştir. Blob depolamadan SQL veritabanına veri kopyalamak için, iki bağlı hizmet oluşturursunuz: Azure depolama ve Azure SQL veritabanı. Daha sonra, iki veri kümesi oluşturun: Azure blob veri kümesi (Azure Storage bağlı hizmeti 'ne başvurur) ve Azure SQL tablo veri kümesi (Azure SQL veritabanı bağlı hizmetini ifade eder). Azure depolama ve Azure SQL veritabanı bağlı hizmetleri, Data Factory çalışma zamanında, sırasıyla Azure depolama ve Azure SQL veritabanınıza bağlanmak için kullandığı bağlantı dizelerini içerir. Azure blob veri kümesi blob depoınızda giriş bloblarını içeren blob kapsayıcısını ve BLOB klasörünü belirtir. Azure SQL tablo veri kümesi, verilerin kopyalanacağı SQL veritabanınızda SQL tablosunu belirtir.
 
-Aşağıdaki diyagram, Veri Fabrikası'nda ardışık hatlar, etkinlik, veri kümesi ve bağlantılı hizmet arasındaki ilişkileri gösterir:
+Aşağıdaki diyagramda, Data Factory içinde işlem hattı, etkinlik, veri kümesi ve bağlı hizmet arasındaki ilişkiler gösterilmektedir:
 
-![Boru hattı, etkinlik, veri kümesi, bağlantılı hizmetler arasındaki ilişki](media/data-factory-create-datasets/relationship-between-data-factory-entities.png)
+![İşlem hattı, etkinlik, veri kümesi, bağlı hizmetler arasındaki ilişki](media/data-factory-create-datasets/relationship-between-data-factory-entities.png)
 
-## <a name="dataset-json"></a>Veri Seti JSON
-Veri Fabrikası'ndaki bir veri kümesi JSON formatında aşağıdaki gibi tanımlanır:
+## <a name="dataset-json"></a>JSON veri kümesi
+Data Factory bir veri kümesi JSON biçiminde aşağıdaki gibi tanımlanır:
 
 ```json
 {
@@ -75,20 +75,20 @@ Veri Fabrikası'ndaki bir veri kümesi JSON formatında aşağıdaki gibi tanım
 }
 ```
 
-Aşağıdaki tabloda yukarıdaki JSON özellikleri açıklanır:
+Aşağıdaki tabloda, yukarıdaki JSON 'daki özellikler açıklanmaktadır:
 
 | Özellik | Açıklama | Gerekli | Varsayılan |
 | --- | --- | --- | --- |
-| ad |Veri kümesinin adı. Bkz. [Azure Veri Fabrikası - Adlandırma](data-factory-naming-rules.md) kuralları. |Evet |NA |
-| type |Veri kümesinin türü. Veri Fabrikası tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, AzureSqlTable). <br/><br/>Ayrıntılar için [Bkz. Dataset türü.](#Type) |Evet |NA |
-| yapı |Veri kümesinin şeması.<br/><br/>Ayrıntılar için [Dataset yapısına](#Structure)bakın. |Hayır |NA |
-| typeProperties | Tür özellikleri her tür için farklıdır (örneğin: Azure Blob, Azure SQL tablosu). Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için [Dataset türüne](#Type)bakın. |Evet |NA |
-| external | Bir veri kümesinin açıkça bir veri fabrikası ardışık hattı tarafından üretilip üretilmediğini belirtmek için Boolean bayrağı. Bir etkinliğin giriş veri kümesi geçerli ardışık işlem tarafından üretilmezse, bu bayrağı doğru ayarlayın. Bu bayrağı, ardışık işlemdeki ilk etkinliğin giriş veri kümesi için doğru olarak ayarlayın.  |Hayır |yanlış |
-| availability | Veri kümesi üretimi için işleme penceresini (örneğin, saatlik veya günlük) veya dilimleme modelini tanımlar. Bir etkinlik çalışması tarafından tüketilen ve üretilen her veri birimine veri dilimi denir. Çıktı veri kümesinin kullanılabilirliği günlük olarak ayarlanırsa (sıklık - Gün, aralık - 1), günlük bir dilim üretilir. <br/><br/>Ayrıntılar için Dataset kullanılabilirliği'ne bakın. <br/><br/>Veri kümesi dilimleme modeliyle ilgili ayrıntılar için [Zamanlama ve yürütme](data-factory-scheduling-and-execution.md) makalesine bakın. |Evet |NA |
-| ilke |Veri kümesi dilimlerinin yerine getirmesi gereken ölçütleri veya koşulu tanımlar. <br/><br/>Ayrıntılar için [Dataset ilkesi](#Policy) bölümüne bakın. |Hayır |NA |
+| ad |Veri kümesinin adı. Bkz. adlandırma kuralları için [Azure Data Factory adlandırma kuralları](data-factory-naming-rules.md) . |Yes |NA |
+| type |Veri kümesinin türü. Data Factory tarafından desteklenen türlerden birini belirtin (örneğin: AzureBlob, Azuressqltable). <br/><br/>Ayrıntılar için bkz. [veri kümesi türü](#Type). |Yes |NA |
+| yapı |Veri kümesinin şeması.<br/><br/>Ayrıntılar için bkz. [DataSet yapısı](#Structure). |Hayır |NA |
+| typeProperties | Tür özellikleri her bir tür için farklıdır (örneğin: Azure blob, Azure SQL tablosu). Desteklenen türler ve özellikleri hakkında ayrıntılı bilgi için bkz. [veri kümesi türü](#Type). |Yes |NA |
+| external | Bir veri kümesinin bir Data Factory işlem hattı tarafından açıkça oluşturulup oluşturulmayacağını belirten Boole bayrağı. Bir etkinliğin giriş veri kümesi geçerli işlem hattı tarafından üretildiyse, bu bayrağı true olarak ayarlayın. İşlem hattının ilk etkinliğinin giriş veri kümesi için bu bayrağı true olarak ayarlayın.  |Hayır |yanlış |
+| availability | İşlem penceresini (örneğin, saatlik veya günlük) veya veri kümesi üretiminin Dilimleme modelini tanımlar. Bir etkinlik çalıştırması tarafından tüketilen ve üretilen her veri birimi veri dilimi olarak adlandırılır. Bir çıktı veri kümesinin kullanılabilirliği günlük (sıklık-gün, Aralık-1) olarak ayarlandıysa, her gün bir dilim oluşturulur. <br/><br/>Ayrıntılar için bkz. veri kümesi kullanılabilirliği. <br/><br/>Veri kümesi Dilimleme modeliyle ilgili ayrıntılar için bkz. [zamanlama ve yürütme](data-factory-scheduling-and-execution.md) makalesi. |Yes |NA |
+| ilke |Veri kümesi dilimlerinin yerine getirilmesi gereken ölçütü veya koşulu tanımlar. <br/><br/>Ayrıntılar için bkz. [DataSet ilkesi](#Policy) bölümü. |Hayır |NA |
 
-## <a name="dataset-example"></a>Dataset örneği
-Aşağıdaki örnekte, veri kümesi BIR SQL veritabanında **MyTable** adlı bir tabloyu temsil eder.
+## <a name="dataset-example"></a>Veri kümesi örneği
+Aşağıdaki örnekte, veri kümesi SQL veritabanında **MyTable** adlı bir tabloyu temsil eder.
 
 ```json
 {
@@ -111,12 +111,12 @@ Aşağıdaki örnekte, veri kümesi BIR SQL veritabanında **MyTable** adlı bir
 
 Aşağıdaki noktalara dikkat edin:
 
-* **türü** AzureSqlTable olarak ayarlanır.
-* **tableName** türü özelliği (AzureSqlTable türüne özgü) MyTable olarak ayarlanır.
-* **linkedServiceName,** bir sonraki JSON parçacığında tanımlanan AzureSqlDatabase türünde bağlantılı bir hizmet anlamına gelir.
-* **kullanılabilirlik sıklığı** Gün olarak ayarlanır ve **aralık** 1 olarak ayarlanır. Bu, veri kümesi diliminin günlük olarak üretildiği anlamına gelir.
+* **tür** Azuressqltable olarak ayarlandı.
+* **TableName** türü özelliği (Azurestabtable türüne özgü) MyTable olarak ayarlanır.
+* **Linkedservicename** , BIR sonraki JSON parçacığında tanımlanan Azuressqldatabase türünde bağlı bir hizmete başvurur.
+* **kullanılabilirlik sıklığı** gün olarak ayarlanır ve **Aralık** 1 olarak ayarlanır. Bu, veri kümesi diliminin günlük olarak oluşturulduğu anlamına gelir.
 
-**AzureSqlLinkedService** aşağıdaki gibi tanımlanır:
+**Azuressqllinkedservice** şu şekilde tanımlanır:
 
 ```json
 {
@@ -131,25 +131,25 @@ Aşağıdaki noktalara dikkat edin:
 }
 ```
 
-Önceki JSON snippet olarak:
+Önceki JSON kod parçacığında:
 
-* **türü** AzureSqlDatabase olarak ayarlanır.
-* **connectionString** türü özelliği, bir SQL veritabanına bağlanmak için bilgileri belirtir.
+* **tür** Azuressqldatabase olarak ayarlandı.
+* **ConnectionString** türü ÖZELLIĞI bir SQL veritabanına bağlanmak için bilgileri belirtir.
 
-Gördüğünüz gibi, bağlantılı hizmet bir SQL veritabanına nasıl bağlanılmayı tanımlar. Veri kümesi, bir ardışık ardışık alandaki etkinlik için giriş ve çıktı olarak hangi tablonun kullanıldığını tanımlar.
+Gördüğünüz gibi, bağlantılı hizmet bir SQL veritabanına nasıl bağlanabileceğini tanımlar. Veri kümesi, bir işlem hattındaki etkinliğin giriş ve çıkış olarak hangi tablonun kullanıldığını tanımlar.
 
 > [!IMPORTANT]
-> Bir veri kümesi boru hattı tarafından üretilmediği sürece, **dış**olarak işaretlenmelidir. Bu ayar genellikle bir ardışık işlemdeki ilk etkinlik girişleri için geçerlidir.
+> Bir veri kümesi işlem hattı tarafından üretilmediği sürece, **dış**olarak işaretlenmelidir. Bu ayar genellikle bir işlem hattındaki ilk etkinliğin girişleri için geçerlidir.
 
-## <a name="dataset-type"></a><a name="Type"></a>Dataset türü
-Veri kümesinin türü kullandığınız veri deposuna bağlıdır. Veri Fabrikası tarafından desteklenen veri depolarının listesi için aşağıdaki tabloya bakın. Bağlantılı bir hizmetin ve bu veri deposu için bir veri kümesinin nasıl oluşturulabildiğini öğrenmek için bir veri deposuna tıklayın.
+## <a name="dataset-type"></a><a name="Type"></a>Veri kümesi türü
+Veri kümesinin türü, kullandığınız veri deposuna bağlıdır. Data Factory tarafından desteklenen veri depolarının listesi için aşağıdaki tabloya bakın. Bu veri deposu için bağlı bir hizmet ve veri kümesi oluşturmayı öğrenmek için bir veri deposuna tıklayın.
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
-> * içeren veri depoları şirket içinde veya Hizmet olarak Azure altyapısında (IaaS) olabilir. Bu veri [depoları, Veri Yönetimi Ağ Geçidi'ni](data-factory-data-management-gateway.md)yüklemenizi gerektirir.
+> * İle veri depoları şirket içinde veya hizmet olarak Azure altyapısı (IaaS) olabilir. Bu veri depoları [veri yönetimi ağ geçidini](data-factory-data-management-gateway.md)yüklemenizi gerektirir.
 
-Önceki bölümdeki örnekte, veri kümesinin türü **AzureSqlTable**olarak ayarlanır. Benzer şekilde, bir Azure Blob veri kümesi için, veri kümesinin türü aşağıdaki JSON'da gösterildiği gibi **AzureBlob**olarak ayarlanır:
+Önceki bölümde bulunan örnekte, veri kümesinin türü **Azuressqltable**olarak ayarlanır. Benzer şekilde, bir Azure blob veri kümesi için, veri kümesinin türü, aşağıdaki JSON içinde gösterildiği gibi **AzureBlob**olarak ayarlanır:
 
 ```json
 {
@@ -175,8 +175,8 @@ Veri kümesinin türü kullandığınız veri deposuna bağlıdır. Veri Fabrika
 }
 ```
 
-## <a name="dataset-structure"></a><a name="Structure"></a>Dataset yapısı
-**Yapı** bölümü isteğe bağlıdır. Adlar ve veri türleri sütunlarının bir koleksiyon içeren veri kümesinin şema tanımlar. Türleri ve harita sütunlarını kaynaktan hedefe dönüştürmek için kullanılan tür bilgilerini sağlamak için yapı bölümünü kullanırsınız. Aşağıdaki örnekte, veri kümesinin üç `slicetimestamp` `projectname`sütunu `pageviews`vardır: , ve . Bunlar sırasıyla String, String ve Ondalık vardır.
+## <a name="dataset-structure"></a><a name="Structure"></a>Veri kümesi yapısı
+**Yapı** bölümü isteğe bağlıdır. Bir ad ve sütun veri türleri koleksiyonu içeren veri kümesinin şemasını tanımlar. Kaynak olan türleri ve eşleme sütunlarını hedefe dönüştürmek için kullanılan tür bilgilerini sağlamak için yapı bölümünü kullanın. Aşağıdaki örnekte, veri kümesinde üç sütun bulunur: `slicetimestamp`, `projectname`ve. `pageviews` Bunlar sırasıyla String, String ve Decimal türündedir.
 
 ```json
 structure:
@@ -191,26 +191,26 @@ Yapıdaki her sütun aşağıdaki özellikleri içerir:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| ad |Sütunun adı. |Evet |
+| ad |Sütunun adı. |Yes |
 | type |Sütunun veri türü.  |Hayır |
-| kültür |. Tür .NET türü olduğunda kullanılacak NET tabanlı `Datetime` kültür: `Datetimeoffset`veya . Varsayılan değer: `en-us`. |Hayır |
-| biçim |Tür bir .NET türü olduğunda kullanılacak biçim `Datetime` `Datetimeoffset`dizesi: veya . |Hayır |
+| kültür |. Tür bir .NET türü olduğunda kullanılacak NET tabanlı kültür: `Datetime` veya. `Datetimeoffset` Varsayılan değer: `en-us`. |Hayır |
+| biçim |Tür bir .NET türü olduğunda kullanılacak biçim dizesi: `Datetime` veya. `Datetimeoffset` |Hayır |
 
-Aşağıdaki yönergeler, yapı bilgilerinin ne zaman ekleyip **yapı** bölümüne ne eklendirileceğini belirlemenize yardımcı olur.
+Aşağıdaki yönergeler, yapı bilgilerinin ne zaman ekleneceğini ve **Yapı** bölümüne nelerin ekleneceğini belirlemenize yardımcı olur.
 
-* **Yapılandırılmış veri kaynakları için**yapı bölümünü yalnızca harita kaynak sütunlarının sütunları batırmasını istiyorsanız belirtin ve adları aynı değildir. Bu tür yapılandırılmış veri kaynağı, veri şema larını ve türü bilgileri, verilerin kendisiyle birlikte depolar. Yapılandırılmış veri kaynaklarına örnek olarak SQL Server, Oracle ve Azure tablosu verilebilir.
+* **Yapılandırılmış veri kaynakları için**, yalnızca kaynak sütunlarının havuz sütunlarına eşlenmesi istiyorsanız yapı bölümünü belirtin ve adları aynı değildir. Bu tür bir yapılandırılmış veri kaynağı, veri şemasını ve tür bilgilerini verilerin kendisiyle birlikte depolar. Yapılandırılmış veri kaynaklarına örnek olarak SQL Server, Oracle ve Azure tablosu verilebilir.
   
-    Tür bilgileri yapılandırılmış veri kaynakları için zaten mevcut olduğundan, yapı bölümünü eklediğinizde tür bilgilerini eklememelisiniz.
-* **Okuma veri kaynakları (özellikle Blob depolama) üzerinde şema için,** veri ile herhangi bir şema veya tür bilgi depolamadan veri depolamak için seçebilirsiniz. Bu tür veri kaynakları için, kaynak sütunları batmaya istediğiniz yapıyı ekleyin. Ayrıca, veri kümesi bir kopyalama etkinliği için bir giriş olduğunda yapıyı da içerir ve kaynak veri kümesiveri türlerinin lavabo için yerel türlere dönüştürülmesi gerekir.
+    Tür bilgileri zaten yapılandırılmış veri kaynakları için kullanılabilir olduğundan, yapı bölümünü dahil ettiğinizde tür bilgilerini içermemelidir.
+* **Okuma veri kaynaklarında şema için (özel olarak BLOB depolama)**, verileri herhangi bir şema veya tür bilgisi depolamadan depolamak zorunda kalmadan depolamayı tercih edebilirsiniz. Bu tür veri kaynakları için kaynak sütunları havuz sütunlarına eşlemek istediğinizde yapıyı dahil edin. Ayrıca, veri kümesi bir kopyalama etkinliği girişi olduğunda ve kaynak veri kümesinin veri türleri havuz için yerel türlere dönüştürülebilmelidir yapı da dahil edilir.
     
-    Veri Fabrikası yapı da tür bilgisi sağlamak için aşağıdaki değerleri destekler: **Int16, Int32, Int64, Single, Double, Ondalık, Bayt[], Boolean, String, Guid, Datetime, Datetimeoffset ve Timespan.** Bu değerler Ortak Dil Belirtimi (CLS) uyumludur. NET tabanlı tür değerleri.
+    Data Factory, yapıda tür bilgilerini sağlamak için aşağıdaki değerleri destekler: **Int16, Int32, Int64, Single, Double, Decimal, Byte [], Boolean, String, Guid, DateTime, DateTimeOffset ve TimeSpan**. Bu değerler ortak dil belirtimi (CLS) ile uyumludur. NET tabanlı tür değerleri.
 
-Veri Fabrikası, verileri bir kaynak veri deposundan lavabo veri deposuna taşınırken tür dönüşümlerini otomatik olarak gerçekleştirir.
+Data Factory, verileri bir kaynak veri deposundan havuz veri deposuna taşırken tür dönüştürmeleri otomatik olarak gerçekleştirir.
 
-## <a name="dataset-availability"></a>Dataset kullanılabilirliği
-Veri kümesindeki **kullanılabilirlik** bölümü, veri kümesiiçin işleme penceresini (örneğin, saatlik, günlük veya haftalık) tanımlar. Etkinlik pencereleri hakkında daha fazla bilgi için [Zamanlama ve yürütme'ye](data-factory-scheduling-and-execution.md)bakın.
+## <a name="dataset-availability"></a>Veri kümesi kullanılabilirliği
+Bir veri kümesindeki **kullanılabilirlik** bölümü, veri kümesi için işleme penceresini tanımlar (örneğin, saatlik, günlük veya haftalık). Etkinlik pencereleri hakkında daha fazla bilgi için bkz. [zamanlama ve yürütme](data-factory-scheduling-and-execution.md).
 
-Aşağıdaki kullanılabilirlik bölümü, çıktı veri kümesinin saatlik olarak üretildiğini veya giriş veri kümesinin saatlik olarak kullanılabildiğini belirtir:
+Aşağıdaki kullanılabilirlik bölümü, çıkış veri kümesinin saatlik olarak oluşturulduğunu veya giriş veri kümesinin her saat için kullanılabilir olduğunu belirtir:
 
 ```json
 "availability":
@@ -220,27 +220,27 @@ Aşağıdaki kullanılabilirlik bölümü, çıktı veri kümesinin saatlik olar
 }
 ```
 
-Ardışık hatlar aşağıdaki başlangıç ve bitiş saatlerine sahipse:
+İşlem hattının başlangıç ve bitiş zamanları şunlardır:
 
 ```json
     "start": "2016-08-25T00:00:00Z",
     "end": "2016-08-25T05:00:00Z",
 ```
 
-Çıktı veri kümesi, ardışık hatlar başlangıç ve bitiş saatleri içinde saatlik olarak üretilir. Bu nedenle, bu boru hattı tarafından üretilen beş veri kümesi dilimi vardır, her etkinlik penceresi için bir tane (12 - 1, 1 - 2, 2 - 3, 3 - 4, 4 - 5 AM).
+Çıktı veri kümesi, işlem hattı başlangıç ve bitiş zamanları içinde saatlik olarak üretilir. Bu nedenle, bu işlem hattı tarafından oluşturulan beş veri kümesi dilimi vardır (her etkinlik penceresi için bir adet (12-1, 1,-2, 2, 17:00-3, 3 ila-4, 4-5).
 
 Aşağıdaki tabloda kullanılabilirlik bölümünde kullanabileceğiniz özellikler açıklanmaktadır:
 
 | Özellik | Açıklama | Gerekli | Varsayılan |
 | --- | --- | --- | --- |
-| frequency |Veri kümesi dilimi üretimi için zaman birimini belirtir.<br/><br/><b>Desteklenen frekans</b>: Dakika, Saat, Gün, Hafta, Ay |Evet |NA |
-| interval |Frekans için çarpan belirtir.<br/><br/>"Frekans x aralığı" dilimin ne sıklıkta üretildiğini belirler. Örneğin, veri kümesinin saatlik olarak dilimletilmesi gerekiyorsa, <b>sıklığı</b> <b>Saat</b>ve <b>aralık</b> <b>1</b>olarak ayarlarsınız.<br/><br/>**Sıklığı** **Dakika**olarak belirtirseniz, aralığı en az 15 olarak ayarlamanız gerektiğini unutmayın. |Evet |NA |
-|  stili |Dilimin aralığın başında mı yoksa sonunda mı üretilmesi gerektiğini belirtir.<ul><li>Başlangıç Aralığı</li><li>EndofInterval</li></ul>**Sıklık** **Ay**olarak ayarlanırsa ve **stil** **EndOfInterval**olarak ayarlanırsa, dilim ayın son gününde üretilir. **Stil** **StartOfInterval**olarak ayarlanmışsa, dilim ayın ilk gününde üretilir.<br/><br/>**Sıklık** **Gün**olarak ayarlanırsa ve **stil** **EndOfInterval**olarak ayarlanmışsa, dilim günün son saatinde üretilir.<br/><br/>**Frekans** **Saat**olarak ayarlanırsa ve **stil** **EndOfInterval**olarak ayarlanırsa, dilim saatin sonunda üretilir. Örneğin, 13:00 - 14:00 dönemi için bir dilim için dilim 14:00'te üretilir. |Hayır |EndofInterval |
-| çapaDateTime |Veri kümesi dilimi sınırlarını hesaplamak için zamanlayıcı tarafından kullanılan zamandaki mutlak konumu tanımlar. <br/><br/>Bu özellik, belirtilen sıklıktan daha parçalı tarih parçaları varsa, daha taneli parçalar yoksayılır unutmayın. Örneğin, **aralık** **saatlikse** (sıklık: saat ve aralık: 1) ve **anchorDateTime** **dakika ve saniye**içeriyorsa, **anchorDateTime'ın** dakika ve saniye bölümleri yoksayılır. |Hayır |01/01/0001 |
-| uzaklık |Tüm veri kümesi dilimlerinin başlangıç ve bitişinin kaydırıldığı zaman sonu. <br/><br/>Her iki **anchorDateTime** ve **ofset** belirtilirse, sonuç kombine kaydırma olduğunu unutmayın. |Hayır |NA |
+| frequency |Veri kümesi dilimi üretiminin zaman birimini belirtir.<br/><br/><b>Desteklenen sıklık</b>: dakika, saat, gün, hafta, ay |Yes |NA |
+| interval |Sıklık için bir çarpan belirtir.<br/><br/>"Sıklık x Interval", dilimin ne sıklıkta üretildiğini belirler. Örneğin, veri kümesinin saatlik olarak dilimlenebilir olması gerekiyorsa <b>Sıklık</b> değerini <b>Hour</b>ve <b>Interval</b> değerini <b>1</b>olarak ayarlarsınız.<br/><br/>**Sıklık** değerini **dakika**olarak belirtirseniz, aralığı 15 ' ten az olmayacak şekilde ayarlamanız gerektiğini unutmayın. |Yes |NA |
+|  stili |Dilimin aralığın başlangıcında veya sonunda üretilmesi gerekip gerekmediğini belirtir.<ul><li>StartOfInterval</li><li>Endofınterval</li></ul>**Sıklık** değeri **Month**olarak ayarlanmışsa ve **Style** , **endofınterval**olarak ayarlanırsa, dilim ayın son gününde oluşturulur. **Stil** **StartOfInterval**olarak ayarlandıysa, dilim ayın ilk gününde oluşturulur.<br/><br/>**Sıklık** , **gün**olarak ayarlanmışsa ve **Stil** **endofınterval**olarak ayarlandıysa, dilim günün son saati içinde oluşturulur.<br/><br/>**Sıklık** değeri **Hour**olarak ayarlanmışsa ve **Style** , **endofınterval**olarak ayarlanırsa, dilim saatin sonunda üretilir. Örneğin, 1 PM-2 dönemi için bir dilim için dilim 2 PM 'de oluşturulur. |Hayır |Endofınterval |
+| anchorDateTime |Zamanlayıcı tarafından veri kümesi dilim sınırlarını hesaplamak için kullanılan mutlak konumu tanımlar. <br/><br/>Bu özellikte belirtilen sıklığından daha ayrıntılı olan tarih bölümleri varsa, daha ayrıntılı parçalar yok sayılır. Örneğin, **Aralık** **saatlik** (sıklık: Hour ve Interval: 1) ve **anchordatetime** değeri **dakika ve saniye**içeriyorsa, **anchordatetime** değerinin dakika ve saniye kısımları göz ardı edilir. |Hayır |01/01/0001 |
+| uzaklık |Tüm veri kümesi dilimlerinin başlangıcını ve bitişini kaydırılan zaman aralığı. <br/><br/>Hem **Anchordatetime** hem de **Kaydır** belirtilirse, sonucun Birleşik vardiya olduğunu unutmayın. |Hayır |NA |
 
-### <a name="offset-example"></a>mahsup örneği
-Varsayılan olarak,`"frequency": "Day", "interval": 1`günlük ( ) dilimler 12 (gece yarısı) Eşgüdümlü Evrensel Saat (UTC) olarak başlar. Başlangıç saatinin 6 UTC zamanı olmasını istiyorsanız, ofset'i aşağıdaki parçacıkta gösterildiği gibi ayarlayın:
+### <a name="offset-example"></a>fark örneği
+Varsayılan olarak, günlük (`"frequency": "Day", "interval": 1`) dilimleri 12: (gece yarısı) Eşgüdümlü Evrensel Saat (UTC) ile başlar. Başlangıç saatinin 6 ' dan UTC zamanı olmasını istiyorsanız, sapmayı aşağıdaki kod parçacığında gösterildiği gibi ayarlayın:
 
 ```json
 "availability":
@@ -251,7 +251,7 @@ Varsayılan olarak,`"frequency": "Day", "interval": 1`günlük ( ) dilimler 12 (
 }
 ```
 ### <a name="anchordatetime-example"></a>anchorDateTime örneği
-Aşağıdaki örnekte, veri kümesi her 23 saatte bir üretilir. İlk dilim **anchorDateTime**tarafından belirtilen anda başlar `2017-04-19T08:00:00` , hangi ayarlanır (UTC).
+Aşağıdaki örnekte, veri kümesi her 23 saatte bir oluşturulur. İlk dilim, (UTC) olarak `2017-04-19T08:00:00` ayarlanan **anchordatetime**tarafından belirtilen saatte başlar.
 
 ```json
 "availability":
@@ -262,8 +262,8 @@ Aşağıdaki örnekte, veri kümesi her 23 saatte bir üretilir. İlk dilim **an
 }
 ```
 
-### <a name="offsetstyle-example"></a>ofset/stil örneği
-Aşağıdaki veri kümesi aylıktır ve her ayın 3'ünde 08:00`3.08:00:00`'de ():
+### <a name="offsetstyle-example"></a>fark/stil örneği
+Aşağıdaki veri kümesi ayda bir ve 8:00 (`3.08:00:00`) adresindeki her ayın 3. gününde üretilir:
 
 ```json
 "availability": {
@@ -274,14 +274,14 @@ Aşağıdaki veri kümesi aylıktır ve her ayın 3'ünde 08:00`3.08:00:00`'de (
 }
 ```
 
-## <a name="dataset-policy"></a><a name="Policy"></a>Dataset ilkesi
-Veri kümesi tanımındaki **ilke** bölümü, veri kümesi dilimlerinin yerine getirmesi gereken ölçütleri veya koşulu tanımlar.
+## <a name="dataset-policy"></a><a name="Policy"></a>Veri kümesi ilkesi
+Veri kümesi tanımındaki **ilke** bölümü ölçütü veya veri kümesi dilimlerinin yerine getirilmesi gereken koşulu tanımlar.
 
 ### <a name="validation-policies"></a>Doğrulama ilkeleri
 | İlke adı | Açıklama | Uygulanan | Gerekli | Varsayılan |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB |**Azure Blob depolama sındaki** verilerin minimum boyut gereksinimlerini (megabaytlarda) karşıladığını doğrular. |Azure Blob depolama |Hayır |NA |
-| minimum Satırlar |**Azure SQL veritabanındaki** veya **Azure tablosundaki** verilerin en az satır sayısını içerdiğini doğrular. |<ul><li>Azure SQL veritabanı</li><li>Azure tablosu</li></ul> |Hayır |NA |
+| minimumSizeMB |**Azure Blob depolama** alanındaki verilerin en düşük boyut gereksinimlerini (megabayt cinsinden) karşıladığını doğrular. |Azure Blob depolama |Hayır |NA |
+| minimumRows |Bir **Azure SQL veritabanındaki** veya bir **Azure tablosundaki** verilerin en az sayıda satırı içerdiğini doğrular. |<ul><li>Azure SQL veritabanı</li><li>Azure tablosu</li></ul> |Hayır |NA |
 
 #### <a name="examples"></a>Örnekler
 **minimumSizeMB:**
@@ -297,7 +297,7 @@ Veri kümesi tanımındaki **ilke** bölümü, veri kümesi dilimlerinin yerine 
 }
 ```
 
-**minimum Satırlar:**
+**minimumRows:**
 
 ```json
 "policy":
@@ -310,20 +310,20 @@ Veri kümesi tanımındaki **ilke** bölümü, veri kümesi dilimlerinin yerine 
 ```
 
 ### <a name="external-datasets"></a>Dış veri kümeleri
-Dış veri kümeleri, veri fabrikasında çalışan bir ardışık hatlar tarafından üretilmeyenlerdir. Veri kümesi **dış olarak**işaretlenmişse, veri kümesi dilimi kullanılabilirliğinin davranışını etkilemek için **ExternalData** ilkesi tanımlanabilir.
+Dış veri kümeleri, veri fabrikasında çalışan bir işlem hattı tarafından üretilmeyen alanlardır. Veri kümesi **dış**olarak Işaretlenmişse, **externaldata** ilkesi, veri kümesi dilimi kullanılabilirliğinin davranışını etkilemek için tanımlanabilir.
 
-Veri Kümesi Veri Fabrikası tarafından üretilmediği sürece, **dış.** Bu ayar, etkinlik veya boru hattı zincirleme kullanılmadığı sürece, genellikle bir ardışık işlemdeki ilk etkinliğin girdileri için geçerlidir.
+Bir veri kümesi Data Factory tarafından üretilmediği sürece, **dış**olarak işaretlenmelidir. Bu ayar genellikle, etkinlik veya işlem hattı zinciri kullanılmadığı takdirde bir işlem hattının ilk etkinliğinin girişleri için geçerlidir.
 
 | Adı | Açıklama | Gerekli | Varsayılan değer |
 | --- | --- | --- | --- |
-| veriGecikme |Verilen dilim için dış verilerin kullanılabilirliği üzerindeki denetimi geciktirme zamanı. Örneğin, bu ayarı kullanarak saatlik denetimi geciktirebilirsiniz.<br/><br/>Ayar yalnızca şimdiki zaman için geçerlidir. Örneğin, şu anda saat 13:00 ise ve bu değer 10 dakikaysa, doğrulama 13:10'da başlar.<br/><br/>Bu ayarın geçmişteki dilimleri etkilemediğini unutmayın. **Slice End Time** + **verisi** < Olan DilimlerGecikme**Şimdi** gecikmeden işlenir.<br/><br/>23:59 saatten büyük saatler `day.hours:minutes:seconds` biçimi kullanılarak belirtilmelidir. Örneğin, 24 saat belirtmek için 24:00:00'ı kullanmayın. Bunun yerine, 1.00:00:00 kullanın. 24:00:00 kullanıyorsanız, 24 gün (24:00:00:00) olarak kabul edilir. 1 gün ve 4 saat için 1:04:00:00 belirtiniz. |Hayır |0 |
-| retryInterval |Bir hata ve bir sonraki deneme arasındaki bekleme süresi. Bu ayar şimdiki zaman için geçerlidir. Önceki deneme başarısız olduysa, bir sonraki deneme **retryInterval** döneminden sonradır. <br/><br/>Eğer saat 13:00 ise, ilk denemeye başlıyoruz. İlk doğrulama denetiminin tamamlanma süresi 1 dakika ysa ve işlem başarısız olursa, bir sonraki yeniden deneme 1:00 + 1dk (süre) + 1dk (yeniden deneme aralığı) = 1:02 PM'dir. <br/><br/>Geçmişteki dilimler için gecikme yoktur. Yeniden deneme hemen gerçekleşir. |Hayır |00:01:00 (1 dakika) |
-| yeniden denemeTimeout |Her yeniden deneme denemesi için zaman arası.<br/><br/>Bu özellik 10 dakika olarak ayarlanırsa, doğrulama 10 dakika içinde tamamlanmalıdır. Doğrulamanın gerçekleşilmesi 10 dakikadan uzun süreyle sürüyorsa, yeniden deneme süreleri dışarısızdır.<br/><br/>Doğrulama süresi nin tüm denemeleri ise, dilim **TimedOut**olarak işaretlenir. |Hayır |00:10:00 (10 dakika) |
-| maksimumRetry |Harici verilerin kullanılabilirliğini denetleme sayısı. İzin verilen en büyük değer 10'dur. |Hayır |3 |
+| dataDelay |Belirli bir dilim için dış verilerin kullanılabilirliğine ilişkin denetim gecikme süresi. Örneğin, bu ayarı kullanarak saatlik bir denetimi erteleyebilirsiniz.<br/><br/>Bu ayar yalnızca geçerli süre için geçerlidir. Örneğin, şu anda 1:00 PM ise ve bu değer 10 dakikadır, doğrulama 1:10 PM 'de başlar.<br/><br/>Bu ayarın geçmişte dilimleri etkilemediğini unutmayın. **Dilim bitiş zamanı** + **datadelay** < 'e sahip dilimler**artık** herhangi bir gecikme olmadan işlenir.<br/><br/>`day.hours:minutes:seconds` Biçim kullanılarak 23:59 saatten büyük süreler belirtilmelidir. Örneğin, 24 saat belirtmek için 24:00:00 kullanmayın. Bunun yerine 1.00:00:00 kullanın. 24:00:00 kullanıyorsanız, 24 gün (24.00:00:00) olarak kabul edilir. 1 gün ve 4 saat için 1:04:00:00 belirtin. |Hayır |0 |
+| retryInterval |Bir hata ve sonraki girişim arasındaki bekleme süresi. Bu ayar, geçerli süre için geçerlidir. Önceki deneme başarısız olursa, sonraki deneme, **RetryInterval** süresinden sonra olur. <br/><br/>Şu an 1:00 PM ise ilk denemeye başladık. İlk doğrulama denetiminin tamamlanma süresi 1 dakikadır ve işlem başarısız olduysa, sonraki yeniden deneme 1:00 + 1dk (süre) + 1dk (yeniden deneme aralığı) = 1:02 PM olur. <br/><br/>Geçmişte dilimlerde bir gecikme yoktur. Yeniden deneme anında gerçekleşir. |Hayır |00:01:00 (1 dakika) |
+| retryTimeout |Her yeniden deneme girişimi için zaman aşımı.<br/><br/>Bu özellik 10 dakikaya ayarlanırsa, doğrulamanın 10 dakika içinde tamamlanması gerekir. Doğrulama işlemini gerçekleştirmek için 10 dakikadan uzun sürerse, yeniden deneme zaman aşımına uğrar.<br/><br/>Doğrulama denemeleri tüm denemeler zaman aşımına uğradı, dilim zaman **aşımı olarak işaretlenir**. |Hayır |00:10:00 (10 dakika) |
+| maximumRetry |Dış verilerin kullanılabilirliğine yönelik denetlenecek zaman sayısı. İzin verilen en büyük değer 10 ' dur. |Hayır |3 |
 
 
 ## <a name="create-datasets"></a>Veri kümeleri oluşturma
-Bu araçlardan veya SDK'lardan birini kullanarak veri kümeleri oluşturabilirsiniz:
+Şu araçlardan veya SDK 'Lardan birini kullanarak veri kümeleri oluşturabilirsiniz:
 
 - Kopyalama Sihirbazı
 - Visual Studio
@@ -332,21 +332,21 @@ Bu araçlardan veya SDK'lardan birini kullanarak veri kümeleri oluşturabilirsi
 - REST API
 - .NET API’si
 
-Aşağıdaki araçlardan veya SDK'lardan birini kullanarak ardışık hatlar ve veri kümeleri oluşturmak için adım adım talimatlar için aşağıdaki öğreticilere bakın:
+Şu araçlardan veya SDK 'Lardan birini kullanarak işlem hatları ve veri kümeleri oluşturmaya yönelik adım adım yönergeler için aşağıdaki öğreticilere bakın:
 
 - [Veri dönüştürme etkinliğine sahip işlem hattı oluşturma](data-factory-build-your-first-pipeline.md)
-- [Veri hareketi etkinliği içeren bir ardışık hatlar oluşturma](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Veri taşıma etkinliği ile işlem hattı oluşturma](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 
-Bir ardışık kaynak oluşturulduktan ve dağıtıldıktan sonra, Azure portal bıçaklarını veya İzleme ve Yönetim uygulamasını kullanarak ardışık hatlarınızı yönetebilir ve izleyebilirsiniz. Adım adım talimatlar için aşağıdaki konulara bakın:
+Bir işlem hattı oluşturulup dağıtıldıktan sonra, Azure portal Blade veya Izleme ve yönetim uygulamasını kullanarak işlem hatlarınızı yönetebilir ve izleyebilirsiniz. Adım adım yönergeler için aşağıdaki konulara bakın:
 
-- [Azure portal bıçaklarını kullanarak boru hatlarını izleme ve yönetme](data-factory-monitor-manage-pipelines.md)
-- [İzleme ve Yönetim uygulamasını kullanarak boru hatlarını izleme ve yönetme](data-factory-monitor-manage-app.md)
+- [Azure portal Blade kullanarak işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-pipelines.md)
+- [Izleme ve yönetim uygulamasını kullanarak işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-app.md)
 
 ## <a name="scoped-datasets"></a>Kapsamlı veri kümeleri
-**Veri kümeleri** özelliğini kullanarak bir ardışık lık kapsamına giren veri kümeleri oluşturabilirsiniz. Bu veri kümeleri, diğer ardışık alanlardaki etkinliklertarafından değil, yalnızca bu ardışık alandaki etkinliklertarafından kullanılabilir. Aşağıdaki örnekte, ardışık hatiçinde kullanılacak iki veri kümesi (InputDataset-rdc ve OutputDataset-rdc) bulunan bir ardışık nokta tanımlanır.
+**Veri kümeleri** özelliğini kullanarak bir işlem hattı kapsamındaki veri kümeleri oluşturabilirsiniz. Bu veri kümeleri, diğer işlem hatlarında etkinliklere göre değil, yalnızca bu işlem hattı içindeki etkinlikler tarafından kullanılabilir. Aşağıdaki örnek, işlem hattı içinde kullanılacak iki veri kümesi (ınputdataset-RDC ve OutputDataset-RDC) ile bir işlem hattını tanımlar.
 
 > [!IMPORTANT]
-> Kapsamlı veri kümeleri yalnızca tek seferlik ardışık hatlar ile desteklenir **(pipelineMode** **OneTime**olarak ayarlanır). Ayrıntılar için [Onetime ardışık hattına](data-factory-create-pipelines.md#onetime-pipeline) bakın.
+> Kapsamlı veri kümeleri yalnızca bir kerelik işlem hatları ile desteklenir ( **PipelineMode** değeri **Onetime**olarak ayarlanır). Ayrıntılar için bkz. [Onetime ardışık düzeni](data-factory-create-pipelines.md#onetime-pipeline) .
 >
 >
 
@@ -442,5 +442,5 @@ Bir ardışık kaynak oluşturulduktan ve dağıtıldıktan sonra, Azure portal 
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Ardışık işlerle ilgili daha fazla bilgi için [bkz.](data-factory-create-pipelines.md)
-- Ardışık hatların nasıl zamanlanıp yürütüldedildiği hakkında daha fazla bilgi için Azure [Veri Fabrikası'nda Zamanlama ve yürütme](data-factory-scheduling-and-execution.md)ye bakın.
+- İşlem hatları hakkında daha fazla bilgi için bkz. işlem [hatları oluşturma](data-factory-create-pipelines.md).
+- İşlem hatları zamanlandığında ve yürütüldüğü hakkında daha fazla bilgi için, bkz. [Azure Data Factory zamanlama ve yürütme](data-factory-scheduling-and-execution.md).

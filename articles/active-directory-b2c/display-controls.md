@@ -1,7 +1,7 @@
 ---
-title: Görüntü denetimi başvurusu
+title: Görüntüleme denetimi başvurusu
 titleSuffix: Azure AD B2C
-description: Azure AD B2C ekran denetimleri için başvuru. Özel ilkelerinizde tanımlanan kullanıcı yolculuklarını özelleştirmek için ekran denetimlerini kullanın.
+description: Azure AD B2C görüntüleme denetimlerine yönelik başvuru. Özel ilkeleriniz içinde tanımlanan Kullanıcı ilerliklerini özelleştirmek için görüntü denetimlerini kullanın.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,27 +12,27 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4998fb19e42e123edd57bfcf10931d594ac4cb44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188741"
 ---
-# <a name="display-controls"></a>Görüntü denetimleri
+# <a name="display-controls"></a>Görüntüleme denetimleri
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**Ekran denetimi,** özel işlevsellik olan ve Azure Active Directory B2C (Azure AD B2C) arka uç hizmetiyle etkileşimedebilen bir kullanıcı arabirimi öğesidir. Kullanıcının sayfada arka uçta doğrulama [teknik profili](validation-technical-profile.md) çağıran eylemleri gerçekleştirmesine olanak tanır. Görüntüleme denetimleri sayfada görüntülenir ve kendi [kendine ileri süren bir teknik profille](self-asserted-technical-profile.md)başvurulur.
+**Görüntüleme denetimi** , özel işlevleri olan ve Azure Active Directory B2C (Azure AD B2C) arka uç hizmetiyle etkileşime sahip bir kullanıcı arabirimi öğesidir. Kullanıcının arka uçta [doğrulama teknik profilini](validation-technical-profile.md) çağıran sayfada eylemler gerçekleştirmesine olanak sağlar. Görüntüleme denetimleri sayfada görüntülenir ve [kendi kendine onaylanan bir teknik profil](self-asserted-technical-profile.md)tarafından başvurulur.
 
-Aşağıdaki resim, birincil ve ikincil e-posta adresini doğrulayan iki ekran denetimine sahip kendi kendini öne süren bir kayıt sayfasını göstermektedir.
+Aşağıdaki görüntüde, birincil ve ikincil e-posta adresini doğrulayan iki görüntü denetimine sahip kendiliğinden onaylanan bir kaydolma sayfası gösterilmektedir.
 
-![Örnek işlenmiş ekran denetimi](media/display-controls/display-control-email.png)
+![Örnek işlenmiş görüntüleme denetimi](media/display-controls/display-control-email.png)
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
- [Kendi kendine ileri süren bir teknik profilin](self-asserted-technical-profile.md)Meta [veri](self-asserted-technical-profile.md#metadata) bölümünde, başvurulan [ContentDefinition'ın](contentdefinitions.md) sözleşme sürümü 2.0.0 veya daha yüksek olarak ayarlanmış olması `DataUri` gerekir. Örnek:
+ [Otomatik olarak onaylanan bir teknik profilin](self-asserted-technical-profile.md) [meta veri](self-asserted-technical-profile.md#metadata) bölümünde, başvurulan [ContentDefinition](contentdefinitions.md) 'ın sayfa sözleşmesi sürüm 2.0.0 veya `DataUri` üzeri olarak ayarlanması gerekir. Örneğin:
 
 ```XML
 <ContentDefinition Id="api.selfasserted">
@@ -42,29 +42,29 @@ Aşağıdaki resim, birincil ve ikincil e-posta adresini doğrulayan iki ekran d
   ...
 ```
 
-## <a name="defining-display-controls"></a>Görüntü denetimlerini tanımlama
+## <a name="defining-display-controls"></a>Görüntüleme denetimlerini tanımlama
 
 **DisplayControl** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Evet | Ekran denetimi için kullanılan bir tanımlayıcı. [Bu](#referencing-display-controls)başvurulabilir. |
-| UserInterfaceControlType | Evet | Ekran denetiminin türü. Şu anda desteklenen [DoğrulamaDenetimi](display-control-verification.md) |
+| Kimlik | Yes | Görüntüleme denetimi için kullanılan bir tanımlayıcı. [Başvuru](#referencing-display-controls)yapılabilir. |
+| Userınterfacecontroltype | Yes | Görüntü denetiminin türü. Şu anda desteklenen [doğrulama](display-control-verification.md) |
 
 **DisplayControl** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Oluşum | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| Giriş Talepleri | 0:1 | **Giriş Talepleri,** kullanıcıdan tahsil edilecek taleplerin değerini önceden doldurmak için kullanılır. |
-| Görüntü talepleri | 0:1 | **DisplayClaims,** kullanıcıdan tahsil edilecek talepleri göstermek için kullanılır. |
-| Çıktılar Talepleri | 0:1 | **Çıktılar Bu** **DisplayControl**için geçici olarak kaydedilecek talepleri temsil etmek için kullanılır. |
-| Eylemler | 0:1 | **Eylemler,** ön uçta gerçekleşen kullanıcı eylemleri için çağırmak için doğrulama teknik profillerini listelemek için kullanılır. |
+| Inputclaims | 0:1 | **Inputclaim** , kullanıcıdan toplanacak taleplerin değerini önceden doldurmak için kullanılır. |
+| DisplayClaim | 0:1 | **DisplayClaim** , kullanıcıdan toplanacak talepleri temsil etmek için kullanılır. |
+| Outputclaim | 0:1 | **Outputclaim** , bu **DisplayControl**için geçici olarak kaydedilecek talepleri temsil etmek için kullanılır. |
+| Eylemler | 0:1 | **Eylemler** , ön uçta oluşan Kullanıcı eylemleri için çağrılacak doğrulama teknik profillerini listelemek için kullanılır. |
 
 ### <a name="input-claims"></a>Giriş talepleri
 
-Görüntü denetiminde, sayfadaki kullanıcıdan toplanacak taleplerin değerini önceden doldurmak için **Giriş Talepleri** öğelerini kullanabilirsiniz. Herhangi bir **InputClaimsTransformations** bu ekran denetimi referansları kendini ileri teknik profil tanımlanabilir.
+Bir görüntüleme denetiminde **inputclaim** öğelerini kullanarak sayfadaki kullanıcıdan toplanacak talepler değerini önceden girebilirsiniz. Tüm **ınputclaimsformations** , bu görüntü denetimine başvuran kendi kendini onaylanan teknik profilde tanımlanabilir.
 
-Aşağıdaki örnek, e-posta adresinin zaten mevcut olan adresle doğrulanmasını önkarşılar.
+Aşağıdaki örnek, e-posta adresini önceden var olan adresle doğrulanacak şekilde önceden doldurur.
 
 ```XML
 <DisplayControl Id="emailControl" UserInterfaceControlType="VerificationControl">
@@ -74,31 +74,31 @@ Aşağıdaki örnek, e-posta adresinin zaten mevcut olan adresle doğrulanmasın
   ...
 ```
 
-### <a name="display-claims"></a>Talepleri görüntüleme
+### <a name="display-claims"></a>Talepleri görüntüle
 
-Her görüntü denetimi türü, farklı bir görüntü talebi kümesi, [çıktı talepleri](#output-claims)ve gerçekleştirilecek [eylemler](#display-control-actions) gerektirir.
+Her bir görüntüleme denetimi türü, gerçekleştirilecek farklı bir görüntüleme talepleri, [Çıkış talepleri](#output-claims)ve [eylem](#display-control-actions) kümesi gerektirir.
 
-Kendi kendine ileri edilen [teknik profilde](self-asserted-technical-profile.md#display-claims)tanımlanan **görüntü taleplerine** benzer şekilde, görüntü talepleri görüntü denetimi içinde kullanıcıdan toplanacak talepleri temsil etir. Başvurulan **ClaimType** öğesi, Azure AD B2C tarafından desteklenen bir kullanıcı girişi türü için **UserInputType** öğesini `TextBox` belirtmeli, örneğin. `DropdownSingleSelect` Bir **Eylem**tarafından bir görüntü talep değeri gerekiyorsa, `true` kullanıcıyı belirli bir görüntüleme talebi için bir değer sağlamaya zorlamak için **Gerekli** özniteliği ayarlayın.
+[Kendi kendini onaylanan bir teknik profilde](self-asserted-technical-profile.md#display-claims)tanımlanan **görüntüleme taleplerine** benzer şekilde, görüntüleme talepleri Kullanıcı tarafından görüntüleme denetimindeki toplanacak talepleri temsil eder. Başvurulan **ClaimType** öğesinin, veya `TextBox` `DropdownSingleSelect`gibi Azure AD B2C tarafından desteklenen bir kullanıcı giriş türü için **userınputtype** öğesini belirtmesi gerekir. Bir **eylem**için bir görüntüleme talep değeri gerekliyse, kullanıcıyı o belirli görüntüleme talebi için bir `true` değer sağlamaya zorlamak üzere **gerekli** özniteliği olarak ayarlayın.
 
-Belirli görüntü denetim türleri için belirli ekran talepleri gereklidir. Örneğin, **Doğrulama** Denetimi türündeki ekran denetimi için **Doğrulama**Kodu gereklidir. Gerekli talep için hangi DisplayClaim'in atandığını belirtmek için öznitelik **ControlClaimType'ı** kullanın. Örnek:
+Belirli görüntüleme talepleri belirli görüntüleme denetimi türleri için gereklidir. Örneğin, doğrulamalar **Icationcontrol**türündeki görüntüleme denetimi Için **doğrulama kodu** gereklidir. Bu gerekli talep için hangi DisplayClaim 'nin kullanılacağını belirtmek için **Controlclaimtype** özniteliğini kullanın. Örneğin:
 
 ```XML
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
 ```
 
-### <a name="output-claims"></a>Çıktı talepleri
+### <a name="output-claims"></a>Çıkış talepleri
 
-Görüntü denetiminin **çıktı talepleri** bir sonraki düzenleme adımına gönderilmez. Bunlar geçici olarak yalnızca geçerli görüntü denetim oturumu için kaydedilir. Bu geçici talepler, aynı görüntü denetiminin farklı eylemleri arasında paylaşılabilir.
+Bir görüntü denetiminin **Çıkış talepleri** bir sonraki düzenleme adımına gönderilmez. Yalnızca geçerli görüntüleme denetim oturumu için geçici olarak kaydedilir. Bu geçici talepler, aynı görüntü denetiminin farklı eylemleri arasında paylaşılabilir.
 
-Bir sonraki orkestrasyon adımında çıktı taleplerini kabarcıklamak için, bu ekran denetimine başvuran gerçek kendi kendini öne süren teknik profilin **Çıktı İddialarını** kullanın.
+Sonraki düzenleme adımındaki çıkış taleplerini kabarcığa çıkarmak için, bu görüntü denetimine başvuran gerçek bir kendi kendine onaylanan teknik profilin **Outputclaim** 'sini kullanın.
 
-### <a name="display-control-actions"></a>Görüntü denetimi Eylemleri
+### <a name="display-control-actions"></a>Görüntüleme Denetim eylemleri
 
-Görüntü denetiminin **eylemleri,** bir kullanıcı istemci tarafında (tarayıcı) belirli bir eylem gerçekleştirdiğinde Azure AD B2C arka uçta oluşan yordamlardır. Örneğin, kullanıcı sayfadaki bir düğmeyi seçtiğinde gerçekleştirilecek geçerlilikler.
+Bir görüntü denetiminin **eylemleri** , bir kullanıcı istemci tarafında (tarayıcı) belirli bir işlem gerçekleştirdiğinde Azure AD B2C arka uçta gerçekleşen yordamlardır. Örneğin, Kullanıcı sayfada bir düğme seçtiğinde gerçekleştirilecek doğrulamalar.
 
-Eylem **doğrulama teknik profilleri**listesini tanımlar. Bunlar, ekran denetiminin ekran taleplerinin bir kısmını veya tamamını doğrulamak için kullanılır. Doğrulama teknik profili kullanıcı girişini doğrular ve kullanıcıya bir hata döndürebilir. **ContinueOnError**, **ContinueOnSuccess**ve **Önkoşulları** ekran denetimi Eyleminde, kendi kendini öne eden teknik profildeki [doğrulama teknik profillerinde](validation-technical-profile.md) kullanılana benzer şekilde kullanabilirsiniz.
+Bir eylem, **doğrulama teknik profillerinin**bir listesini tanımlar. Bunlar, görüntüleme denetiminin görüntüleme taleplerinin bazılarını veya tümünü doğrulamak için kullanılır. Doğrulama teknik profili, Kullanıcı girişini doğrular ve kullanıcıya bir hata döndürebilir. Kendi kendini onaylanan bir teknik profilde [doğrulama teknik profillerinde](validation-technical-profile.md) kullanılanlara benzer şekilde, görüntü denetimi eyleminde **devam**ediyor, **devam onSuccess**ve **önkoşulları** kullanabilirsiniz.
 
-Aşağıdaki örnek, **mfaType** iddiasını kullanıcının seçimine dayalı olarak e-posta veya SMS olarak bir kod gönderir.
+Aşağıdaki örnek, kullanıcının **Mfatype** talebinin seçimine bağlı olarak e-posta veya SMS içinde bir kod gönderir.
 
 ```XML
 <Action Id="SendCode">
@@ -125,11 +125,11 @@ Aşağıdaki örnek, **mfaType** iddiasını kullanıcının seçimine dayalı o
 </Action>
 ```
 
-## <a name="referencing-display-controls"></a>Görüntü denetimleri gönderme
+## <a name="referencing-display-controls"></a>Görüntü denetimlerine başvurma
 
-Görüntü [denetimleri, kendi kendine ileri edilen teknik profilin](self-asserted-technical-profile.md)görüntü [taleplerine](self-asserted-technical-profile.md#display-claims) başvurulur.
+Görüntüleme denetimlerine, [kendi kendini onaylanan teknik profilin](self-asserted-technical-profile.md) [görüntüleme taleplerini](self-asserted-technical-profile.md#display-claims) başvurulur.
 
-Örnek:
+Örneğin:
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">

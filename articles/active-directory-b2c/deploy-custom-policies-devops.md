@@ -1,7 +1,7 @@
 ---
 title: Azure Pipelines ile özel ilkeler dağıtma
 titleSuffix: Azure AD B2C
-description: Azure DevOps Hizmetlerinde Azure Ardışık Hatlar hattını kullanarak Bir CI/CD ardışık alanda Azure AD B2C özel ilkelerini nasıl dağıtabileceğinizi öğrenin.
+description: Azure DevOps Services Azure Pipelines kullanarak bir CI/CD işlem hattındaki Azure AD B2C özel ilkeleri dağıtmayı öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,55 +12,55 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b23b60ae49a4973fa04e6fa5f795f99536e32e7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188758"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines ile özel ilkeler dağıtma
 
-[Azure Pipelines'da][devops-pipelines]ayarladığınız sürekli bir tümleştirme ve teslim (CI/CD) ardışık nokta sını kullanarak, Azure AD B2C özel ilkelerinizi yazılım teslimi ve kod denetimi otomasyonunuza ekleyebilirsiniz. Dev, test ve üretim gibi farklı Azure AD B2C ortamlarına dağıtırken, el ile işlemleri kaldırmanızı ve Azure Ardışık Hatlar hattını kullanarak otomatik sınama gerçekleştirmenizi öneririz.
+[Azure Pipelines][devops-pipelines]' de ayarladığınız bir sürekli tümleştirme ve teslım (CI/CD) işlem hattı kullanarak, yazılım teslimine ve kod denetim otomasyonuna Azure AD B2C özel ilkelerinizi dahil edebilirsiniz. Geliştirme, test ve üretim gibi farklı Azure AD B2C ortamlara dağıtırken, el ile işlemleri kaldırmanızı ve Azure Pipelines kullanarak otomatikleştirilmiş test gerçekleştirmenizi öneririz.
 
-Azure Ardışık Hatlarının Azure AD B2C içinde özel ilkeleri yönetmesini etkinleştirmek için gereken üç temel adım vardır:
+Azure AD B2C içindeki özel ilkeleri yönetmek için Azure Pipelines etkinleştirilmesi gereken üç temel adım vardır:
 
-1. Azure AD B2C kiracınızda bir web uygulama kaydı oluşturma
-1. Azure Repo'su yapılandırma
-1. Azure Ardışık Hatlar Yapılandırılması
+1. Azure AD B2C kiracınızda bir Web uygulaması kaydı oluşturma
+1. Azure deposu yapılandırma
+1. Azure işlem hattı yapılandırma
 
 > [!IMPORTANT]
-> Azure AD B2C özel ilkelerini bir **preview** Azure Ardışık Alanı yla `/beta` yönetme, şu anda Microsoft Graph API bitiş noktasında bulunan önizleme işlemlerini kullanır. Bu API'lerin üretim uygulamalarında kullanımı desteklenmez. Daha fazla bilgi için [Microsoft Graph REST API beta uç nokta başvurusuna](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta)bakın.
+> Azure işlem hattı ile Azure AD B2C özel ilkeleri yönetmek Şu anda **preview** Microsoft Graph API `/beta` uç noktasında kullanılabilen önizleme işlemlerini kullanıyor. Üretim uygulamalarında bu API 'lerin kullanılması desteklenmez. Daha fazla bilgi için [Microsoft Graph REST API Beta uç nokta başvurusuna](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Azure AD B2C kiracı](tutorial-create-tenant.md)ve [B2C IEF İlke Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) rolü ile dizindeki bir kullanıcı için kimlik bilgileri
+* [B2C ıEF Ilke Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) rolüyle dizindeki bir kullanıcı için [Azure AD B2C kiracı](tutorial-create-tenant.md)ve kimlik bilgileri
 * Kiracınıza yüklenen [özel ilkeler](custom-policy-get-started.md)
-* Microsoft Graph API izni *Policy.ReadWrite.TrustFramework* ile kiracınızda kayıtlı [yönetim uygulaması](microsoft-graph-get-started.md)
-* [Azure Ardışık Katmanlar](https://azure.microsoft.com/services/devops/pipelines/)ve Bir [Azure DevOps Hizmetleri projesine][devops-create-project] erişim
+* [Yönetim uygulaması](microsoft-graph-get-started.md) kiracınızda Microsoft Graph API izin *ilkesi. ReadWrite. TrustFramework* ile kaydedildi
+* [Azure Işlem hattı](https://azure.microsoft.com/services/devops/pipelines/)ve bir [Azure DevOps Services projesine][devops-create-project] erişim
 
-## <a name="client-credentials-grant-flow"></a>İstemci kimlik bilgileri hibe akışı
+## <a name="client-credentials-grant-flow"></a>İstemci kimlik bilgileri verme akışı
 
-Burada açıklanan senaryo, OAuth 2.0 [istemci kimlik bilgileri hibe akışını](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md)kullanarak Azure Ardışık Hatları ve Azure AD B2C arasındaki hizmet-servis çağrılarından yararlanır. Bu hibe akışı, Azure Altyapı İşlemleri (gizli istemci) gibi bir web hizmetinin, başka bir web hizmetini (bu durumda Microsoft Graph API) ararken kimlik doğrulaması için bir kullanıcının kimliğine bürünmek yerine kendi kimlik bilgilerini kullanmasına izin verir. Azure Pipelines etkileşimli olmayan bir belirteç alır ve microsoft graph API'ye istekte bulunmaktadır.
+Burada açıklanan senaryo, OAuth 2,0 [istemci kimlik bilgileri verme akışını](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md)kullanarak Azure Pipelines ve Azure AD B2C arasındaki hizmetten hizmete yapılan çağrıların kullanımını sağlar. Bu verme akışı, Azure Pipelines (gizli istemci) gibi bir Web hizmetinin başka bir Web hizmetini çağırırken kimlik doğrulaması yapmak yerine kendi kimlik bilgilerini kullanmasına izin verir (Bu durumda, Microsoft Graph API 'SI). Azure Pipelines, etkileşimli olmayan bir belirteci edinir ve sonra Microsoft Graph API 'sine istek yapar.
 
-## <a name="register-an-application-for-management-tasks"></a>Yönetim görevleri için bir uygulama kaydetme
+## <a name="register-an-application-for-management-tasks"></a>Yönetim görevleri için bir uygulamayı kaydetme
 
-[Önkoşullar'da](#prerequisites)belirtildiği gibi, Azure Pipelines tarafından yürütülen PowerShell komut dosyalarınızın kiracınızdaki kaynaklara erişmek için kullanabileceği bir uygulama kaydına ihtiyacınız vardır.
+[Önkoşullardan](#prerequisites)bahsedildiği gibi, PowerShell betiklerinizin (Azure Pipelines tarafından yürütülen), kiracınızdaki kaynaklara erişmek için kullanabileceği bir uygulama kaydına ihtiyacınız vardır.
 
-Otomasyon görevleri için kullandığınız bir uygulama kaydınız varsa, uygulama kaydının **API İzinleri** dahilinde **Microsoft Graph** > **Policy.ReadWrite.TrustFramework** izninin verildiğinden emin olun.**Policy** > 
+Otomasyon görevleri için kullandığınız bir uygulama kaydınız zaten varsa, uygulama kaydının **API izinleri** içinde **Microsoft Graph** > **Policy** > **Policy. ReadWrite. TrustFramework** izninin verildiğinden emin olun.
 
-Bir yönetim uygulamasının kaydedilmesiyle ilgili talimatlar [için](microsoft-graph-get-started.md)bkz.
+Bir yönetim uygulamasını kaydetme hakkında yönergeler için bkz. [Microsoft Graph Azure AD B2C yönetme](microsoft-graph-get-started.md).
 
-## <a name="configure-an-azure-repo"></a>Azure Repo'su yapılandırma
+## <a name="configure-an-azure-repo"></a>Azure deposu yapılandırma
 
-Kayıtlı bir yönetim uygulamasıyla, ilke dosyalarınız için bir depo yapılandırmaya hazırsınız.
+Kayıtlı bir yönetim uygulaması ile, ilke dosyalarınız için bir depo yapılandırmaya hazırsınız demektir.
 
-1. Azure DevOps Hizmetleri kuruluşunuzda oturum açın.
-1. [Yeni bir proje oluşturun][devops-create-project] veya varolan bir projeyi seçin.
-1. **Projenizde, Repos'a** gidin ve **Dosyalar** sayfasını seçin. Varolan bir depo seçin veya bu alıştırma için bir depo oluşturun.
-1. *B2CAssets*adlı bir klasör oluşturun. Gerekli yer tutucu dosyayı *README.md* ve dosyayı **işleme.** İsterseniz bu dosyayı daha sonra kaldırabilirsiniz.
-1. Azure AD B2C ilke dosyalarınızı *B2CAssets* klasörüne ekleyin. Buna *TrustFrameworkBase.xml,* *TrustFrameWorkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*, *PasswordReset.xml*ve oluşturduğunuz diğer ilkeler dahildir. Her Azure AD B2C ilke dosyasının dosya adını daha sonraki bir adımda kullanmak üzere kaydedin (PowerShell komut dosyası bağımsız değişkenleri olarak kullanılırlar).
-1. Deponun kök dizininde *Komut Dosyaları* adlı bir klasör oluşturun, yer tutucu dosyasını *DağıtmaToB2c.ps1'i*adlandırın. Bu noktada dosyayı işlemeyin, bunu daha sonraki bir adımda yaparsınız.
-1. Aşağıdaki PowerShell komut dosyasını *DeployToB2c.ps1'e*yapıştırın, ardından dosyayı **işlayın.** Komut dosyası, Azure AD'den bir belirteç edinir ve *B2CAssets* klasöründeki ilkeleri Azure AD B2C kiracınıza yüklemesi için Microsoft Graph API'yi çağırır.
+1. Azure DevOps Services kuruluşunuzda oturum açın.
+1. [Yeni bir proje oluşturun][devops-create-project] veya var olan bir projeyi seçin.
+1. Projenizde, **Repos** ' a gidin ve **dosyalar** sayfasını seçin. Mevcut bir depoyu seçin veya bu alıştırma için bir tane oluşturun.
+1. *B2CAssets*adlı bir klasör oluşturun. Gerekli yer tutucu dosyasını *README.MD* olarak adlandırın ve dosyayı **işleyin** . İsterseniz bu dosyayı daha sonra kaldırabilirsiniz.
+1. Azure AD B2C ilkesi dosyalarınızı *B2CAssets* klasörüne ekleyin. Bu, *TrustFrameworkBase. xml*, *TrustFrameWorkExtensions. xml*, *Signuporsign. xml*, *profileedit. xml*, *passwordreset. xml*ve oluşturduğunuz diğer tüm ilkeleri içerir. Daha sonraki bir adımda kullanmak üzere her bir Azure AD B2C ilkesi dosyasının dosya adını kaydedin (PowerShell betiği bağımsız değişkenleri olarak kullanılırlar).
+1. Deponun kök dizininde *betikler* adlı bir klasör oluşturun, *DeployToB2c. ps1*yer tutucu dosyasını adlandırın. Bu noktada dosyayı kaydetme, daha sonraki bir adımda yapacaksınız.
+1. Aşağıdaki PowerShell betiğini *DeployToB2c. ps1*dosyasına yapıştırın ve dosyayı **yürütün** . Betik, Azure AD 'den bir belirteç alır ve *B2CAssets* klasörünün içindeki ilkeleri Azure AD B2C kiracınıza yüklemek IÇIN Microsoft Graph API 'sini çağırır.
 
     ```PowerShell
     [Cmdletbinding()]
@@ -107,74 +107,74 @@ Kayıtlı bir yönetim uygulamasıyla, ilke dosyalarınız için bir depo yapıl
     exit 0
     ```
 
-## <a name="configure-your-azure-pipeline"></a>Azure ardışık sisteminizi yapılandırma
+## <a name="configure-your-azure-pipeline"></a>Azure işlem hattınızı yapılandırma
 
-Deponuz başlatılan ve özel ilke dosyalarınızla doldurulan sürüm ardışık hattını ayarlamaya hazırsınız.
+Deponuz başlatılmış ve özel ilke dosyalarınıza doldurulduktan sonra yayın işlem hattını ayarlamaya hazırsınız demektir.
 
 ### <a name="create-pipeline"></a>İşlem hattı oluşturma
 
-1. Azure DevOps Hizmetleri kuruluşunuzla oturum açın ve projenize gidin.
-1. Projenizde, **Pipelines** > **Releases** > **New pipeline'ı**seçin.
-1. **Şablon seç'in**altında Boş **iş'i**seçin.
-1. Bir **Sahne adı**girin , örneğin *Özel İlkeleri Dağıt,* ardından bölmeyi kapatın.
-1. **Yapı ekle'yi**seçin ve **Kaynak türü**altında **Azure Deposu'nu**seçin.
-    1. PowerShell komut dosyasıyla dolduran *Komut Dosyaları* klasörünü içeren kaynak deposunu seçin.
-    1. Varsayılan **dal**seçin. Önceki bölümde yeni bir depo oluşturduysanız, varsayılan dal *ana*.
-    1. *Varsayılan daldan En Son*Varsayılan **sürüm** ayarını bırakın.
-    1. Depo için kaynak **takma adı** girin. Örneğin, *policyRepo*. Takma ada boşluk eklemeyin.
-1. **Ekle**’yi seçin
-1. Boru hattını amacını yansıtacak şekilde yeniden adlandırın. Örneğin, *Özel İlke Ardışık Alanı dağıtın.*
-1. Boru hattı yapılandırmasını kaydetmek için **Kaydet'i** seçin.
+1. Azure DevOps Services kuruluşunuzda oturum açın ve projenize gidin.
+1. Projenizde**Releases** > işlem **hatları** > **Yeni işlem hattı**' nı seçin.
+1. **Şablon seç**altında **boş iş**' ı seçin.
+1. Bir **aşama adı**girin, örneğin *DeployCustomPolicies*, sonra bölmeyi kapatın.
+1. **Yapıt Ekle**' yi seçin ve **kaynak türü**altında **Azure deposu**' nu seçin.
+    1. PowerShell betiği ile doldurulmuş *betikler* klasörünü içeren kaynak depoyu seçin.
+    1. Varsayılan bir **dal**seçin. Önceki bölümde yeni bir depo oluşturduysanız, varsayılan dal *ana öğe*olur.
+    1. Varsayılan daldan varsayılan **Sürüm** ayarını *en son*bırakın.
+    1. Depo için bir **kaynak diğer adı** girin. Örneğin, *policydeposu*. Diğer ada boşluk eklemeyin.
+1. **Ekle** 'yi seçin
+1. İşlem hattını, amacını yansıtacak şekilde yeniden adlandırın. Örneğin, *özel ilke Işlem hattı dağıtın*.
+1. İşlem hattı yapılandırmasını kaydetmek için **Kaydet** ' i seçin.
 
-### <a name="configure-pipeline-variables"></a>Boru hattı değişkenlerini yapılandırma
+### <a name="configure-pipeline-variables"></a>İşlem hattı değişkenlerini yapılandırma
 
 1. **Değişkenler** sekmesini seçin.
-1. **Pipeline değişkenlerinin** altına aşağıdaki değişkenleri ekleyin ve değerlerini belirtildiği gibi ayarlayın:
+1. Aşağıdaki değişkenleri **ardışık düzen değişkenleri** altına ekleyin ve değerlerini belirtilen şekilde ayarlayın:
 
     | Adı | Değer |
     | ---- | ----- |
-    | `clientId` | Daha önce kaydettiğiniz uygulamanın **başvuru (istemci) kimliği.** |
-    | `clientSecret` | Daha önce oluşturduğunuz **istemci sırrının** değeri. <br /> Değişken türünü **gizli** olarak değiştirin (kilit simgesini seçin). |
-    | `tenantId` | `your-b2c-tenant.onmicrosoft.com`, Azure AD *B2C kiracınızın* adı dır. |
+    | `clientId` | Daha önce kaydettiğiniz uygulamanın **uygulama (istemci) kimliği** . |
+    | `clientSecret` | Daha önce oluşturduğunuz **istemci parolasının** değeri. <br /> Değişken türünü **gizli** olarak değiştirin (kilit simgesini seçin). |
+    | `tenantId` | `your-b2c-tenant.onmicrosoft.com`, *-B2C-kiracınız* Azure AD B2C kiracınızın adıdır. |
 
-1. Değişkenleri kaydetmek için **Kaydet'i** seçin.
+1. Değişkenleri kaydetmek için **Kaydet** ' i seçin.
 
-### <a name="add-pipeline-tasks"></a>Boru hattı görevleri ekleme
+### <a name="add-pipeline-tasks"></a>İşlem hattı görevleri ekleme
 
-Ardından, bir ilke dosyası dağıtmak için bir görev ekleyin.
+Sonra, bir ilke dosyası dağıtmak için bir görev ekleyin.
 
 1. **Görevler** sekmesini seçin.
-1. **Aracı işi**seçin ve sonra Aracı**+** lı işe bir görev eklemek için artı işaretini ( ) seçin.
-1. **PowerShell'i**arayın ve seçin. "Azure PowerShell", "Hedef makinelerde PowerShell" veya başka bir PowerShell girişi seçmeyin.
-1. Yeni eklenen **PowerShell Script** görevini seçin.
-1. PowerShell Script görevi için aşağıdaki değerleri girin:
-    * **Görev sürümü**: 2.*
-    * **Görüntü adı**: Bu görevin yüklemesi gereken ilkenin adı. Örneğin, *B2C_1A_TrustFrameworkBase.*
-    * **Tür**: Dosya Yolu
-    * **Komut Dosyası Yolu**: Elipsis ***(...***), *Komut Dosyaları* klasörüne gidin ve ardından *DeployToB2C.ps1* dosyasını seçin.
-    * **Bağımsız değişken:**
+1. **Aracı**işini seçin ve ardından aracı işine bir görev eklemek için**+** artı işaretini () seçin.
+1. **PowerShell**'i arayın ve seçin. "Azure PowerShell," "hedef makinelerde PowerShell" veya başka bir PowerShell girişi seçmeyin.
+1. Yeni eklenen **PowerShell betiği** görevi ' ni seçin.
+1. PowerShell betiği görevi için aşağıdaki değerleri girin:
+    * **Görev sürümü**: 2. *
+    * **Görünen ad**: Bu görevin karşıya yüklenmesi gereken ilkenin adı. Örneğin, *B2C_1A_TrustFrameworkBase*.
+    * **Tür**: dosya yolu
+    * **Betik yolu**: üç noktayı (***...***) seçin, *Scripts* klasörüne gidin ve *DeployToB2C. ps1* dosyasını seçin.
+    * **Değişkenlerinden**
 
-        **Bağımsız değişkenler**için aşağıdaki değerleri girin. Önceki `{alias-name}` bölümde belirttiğiniz takma adla değiştirin.
+        **Bağımsız değişkenler**için aşağıdaki değerleri girin. Önceki `{alias-name}` bölümde belirttiğiniz diğer adla değiştirin.
 
         ```PowerShell
         # Before
         -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/{alias-name}/B2CAssets/TrustFrameworkBase.xml
         ```
 
-        Örneğin, belirttiğiniz diğer ad *policyRepo*ise, bağımsız değişken satırı olmalıdır:
+        Örneğin, belirttiğiniz diğer ad *Policydeppo*ise, bağımsız değişken satırı şu şekilde olmalıdır:
 
         ```PowerShell
         # After
         -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/TrustFrameworkBase.xml
         ```
 
-1. Aracı işini kaydetmek için **Kaydet'i** seçin.
+1. Aracı işini kaydetmek için **Kaydet** ' i seçin.
 
-Az önce eklediğiniz görev Azure AD B2C'ye *bir* ilke dosyası yükler. Devam etmeden önce, ek görevler oluşturmadan önce başarılı bir şekilde tamamlandığından emin olmak için işi **(Sürüm Oluştur)** el ile tetikler.
+Yeni eklediğiniz görev Azure AD B2C *bir* ilke dosyası yükler. Devam etmeden önce, ek görevler oluşturmadan önce başarıyla tamamlandığından emin olmak için işi el ile tetikleyin (**yayın oluşturun**).
 
-Görev başarıyla tamamlanırsa, özel ilke dosyalarının her biri için önceki adımları gerçekleştirerek dağıtım görevleri ekleyin. Her `-PolicyId` ilke için bağımsız `-PathToFile` değişken değerlerini değiştirin.
+Görev başarıyla tamamlanırsa, özel ilke dosyalarının her biri için önceki adımları gerçekleştirerek dağıtım görevleri ekleyin. Her ilke `-PolicyId` için `-PathToFile` ve bağımsız değişken değerlerini değiştirin.
 
-Bu `PolicyId` değer, TrustFrameworkPolicy düğümünde bir XML ilke dosyasının başında bulunan bir değerdir. Örneğin, `PolicyId` aşağıdaki ilke XML *B2C_1A_TrustFrameworkBase:*
+, `PolicyId` TrustFrameworkPolicy DÜĞÜMÜNDEKI bir XML ilke dosyasının başlangıcında bulunan bir değerdir. Örneğin, aşağıdaki Policy `PolicyId` XML dosyasında *B2C_1A_TrustFrameworkBase*:
 
 ```XML
 <TrustFrameworkPolicy
@@ -187,31 +187,31 @@ PolicyId= "B2C_1A_TrustFrameworkBase"
 PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 ```
 
-Aracıları çalıştırırken ve ilke dosyalarını yüklerken, bu dosyaların aşağıdaki sırayla yüklendiğinden emin olun:
+Aracıları çalıştırırken ve ilke dosyalarını karşıya yüklerken, bu sırada karşıya yüklendiklerinden emin olun:
 
-1. *TrustFrameworkBase.xml*
-1. *TrustFrameworkExtensions.xml*
-1. *SignUpOrSignin.xml*
-1. *ProfileEdit.xml*
-1. *PasswordReset.xml*
+1. *TrustFrameworkBase. xml*
+1. *TrustFrameworkExtensions. xml*
+1. *Signuporsignın. xml*
+1. *ProfileEdit. xml*
+1. *PasswordReset. xml*
 
-Dosya yapısı hiyerarşik bir zincir üzerine inşa edildikçe Kimlik Deneyimi Çerçevesi bu düzeni zorlar.
+Dosya yapısı hiyerarşik bir zincirde oluşturulduğu için kimlik deneyimi çerçevesi bu sırayı zorlar.
 
 ## <a name="test-your-pipeline"></a>İşlem hattınızı test etme
 
-Sürüm ardışık sisteminizi test etmek için:
+Yayın işlem hattınızı test etmek için:
 
-1. **Ardışık Hatlar'ı** seçin ve ardından **Sürümler.**
-1. Daha önce oluşturduğunuz ardışık alanı seçin, örneğin *Özel İlkeleri Dağıt.*
-1. **Sürümü Oluştur'u**seçin, ardından sürümü sıraya almak için **Oluştur'u** seçin.
+1. İşlem **hatları** ve sonra **yayınlar**' ı seçin.
+1. Daha önce oluşturduğunuz işlem hattını seçin, örneğin *DeployCustomPolicies*.
+1. **Yayın oluştur**' u seçin ve sonra yayını kuyruğa almak için **Oluştur** ' u seçin.
 
-Bir sürümün sıraya alındığını belirten bir bildirim başlığı görmeniz gerekir. Durumunu görüntülemek için bildirim başlığındaki bağlantıyı seçin veya **Sürümler** sekmesindeki listede seçin.
+Bir yayının sıraya alınmış olduğunu belirten bir bildirim başlığı görmeniz gerekir. Durumunu görüntülemek için bildirim başlığından bağlantıyı seçin ya da **yayınlar** sekmesindeki listeden seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 
-* [İstemci kimlik bilgilerini kullanarak servise hizmet çağrıları](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+* [İstemci kimlik bilgilerini kullanan hizmetten hizmete çağrılar](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 * [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/?view=azure-devops)
 
 <!-- LINKS - External -->

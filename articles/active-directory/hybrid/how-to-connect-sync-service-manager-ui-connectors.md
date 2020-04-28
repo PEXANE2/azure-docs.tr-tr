@@ -1,6 +1,6 @@
 ---
-title: Azure AD Senkronizasyon Hizmet Yöneticisi Kullanıcı Arabirimi'ndeki bağlayıcılar | Microsoft Dokümanlar'
-description: Azure AD Connect için Eşitleme Hizmet Yöneticisi'ndeki Bağlayıcılar sekmesini anlayın.
+title: Azure AD Synchronization Service Manager Kullanıcı arabirimindeki bağlayıcılar | Microsoft Docs '
+description: Azure AD Connect için Synchronization Service Manager bağlayıcılar sekmesini anlayın.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,82 +18,82 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261053"
 ---
-# <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Azure AD Connect Sync Service Manager ile bağlayıcıları kullanma
+# <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Azure AD Connect eşitleme Service Manager bağlayıcı kullanma
 
-![Eşitleme Servis Yöneticisi](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
+![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
 
-Bağlayıcılar sekmesi, eşitleme motorunun bağlı olduğu tüm sistemleri yönetmek için kullanılır.
+Bağlayıcılar sekmesi, eşitleme altyapısının bağlı olduğu tüm sistemleri yönetmek için kullanılır.
 
 ## <a name="connector-actions"></a>Bağlayıcı eylemleri
 | Eylem | Açıklama |
 | --- | --- |
-| Oluşturma |Kullanmayın. Ek AD ormanlarına bağlanmak için yükleme sihirbazını kullanın. |
-| Özellikler |Etki alanı ve OU filtreleme için kullanılır. |
-| [Sil](#delete) |Bağlayıcı alanındaki verileri silmek veya bir ormana bağlantıyı silmek için kullanılır. |
-| [Run Profillerini Yapılandırma](#configure-run-profiles) |Etki alanı filtreleme dışında, burada yapılandırmak için hiçbir şey. Önceden yapılandırılmış çalışan profilleri görmek için bu eylemi kullanabilirsiniz. |
-| Çalıştırın |Bir profilin tek seferlik bir çalışmasını başlatmak için kullanılır. |
-| Durdur |Şu anda profil çalıştıran bir Bağlayıcıyı durdurur. |
-| İhracat Konektörü |Kullanmayın. |
-| Bağlayıcıyı İthalat |Kullanmayın. |
+| Oluştur |Kullanmayın. Ek AD ormanlarına bağlanmak için Yükleme Sihirbazı ' nı kullanın. |
+| Özellikler |Etki alanı ve OU filtrelemesi için kullanılır. |
+| [Sil](#delete) |Bağlayıcı alanındaki verileri silmek ya da bir ormana bağlantıyı silmek için kullanılır. |
+| [Çalıştırma profillerini yapılandırma](#configure-run-profiles) |Etki alanı filtreleme dışında, burada yapılandırılacak bir şey yoktur. Bu eylemi, zaten yapılandırılmış çalıştırma profillerini görmek için kullanabilirsiniz. |
+| Çalıştırın |Bir profilin tek bir çalıştırmasını başlatmak için kullanılır. |
+| Durdur |Şu anda bir profili çalıştıran bir bağlayıcıyı sonlandırır. |
+| Bağlayıcıyı dışarı aktar |Kullanmayın. |
+| Bağlayıcıyı içeri aktar |Kullanmayın. |
 | Bağlayıcıyı Güncelleştir |Kullanmayın. |
-| Şema'yı Yenile |Önbelleğe alınmış şeayı yeniler. Eşitleme kurallarını da güncelleştirir, çünkü bu seçeneği yükleme sihirbazında kullanmak tercih edilir. |
-| [Bağlantı Alanı Ara](#search-connector-space) |Nesneleri bulmak ve sistem üzerinden bir nesneyi ve verilerini takip etmek için kullanılır. |
+| Şemayı Yenile |Önbelleğe alınmış şemayı yeniler. Bunun yerine yükleme sihirbazındaki seçeneğinin kullanılması tercih edilir çünkü bu, eşitleme kurallarını da güncelleştirir. |
+| [Bağlayıcı alanını ara](#search-connector-space) |Nesneleri bulmak ve sistem aracılığıyla bir nesneyi ve verilerini Izlemek için kullanılır. |
 
 ### <a name="delete"></a>Sil
 Silme eylemi iki farklı şey için kullanılır.  
-![Eşitleme Servis Yöneticisi](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
+![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 
-Sil **bağlayıcısı alanı yalnızca** tüm verileri kaldırır, ancak yapılandırmayı korur.
+**Bağlayıcı alanını Sil seçeneği yalnızca** tüm verileri kaldırır, ancak yapılandırmayı tutar.
 
-**Bağlayıcıyı ve bağlayıcı alanını sil** seçeneği verileri ve yapılandırmayı kaldırır. Bu seçenek, artık bir ormana bağlanmak istemiyorsanız kullanılır.
+**Bağlayıcı ve bağlayıcı alanı silme** seçeneği, verileri ve yapılandırmayı kaldırır. Bu seçenek, artık bir ormana bağlanmak istemediğiniz durumlarda kullanılır.
 
-Her iki seçenek de tüm nesneleri eşitler ve metaverse nesneleri güncelleştirin. Bu eylem uzun süren bir işlemdir.
+Her iki seçenek de tüm nesneleri eşitler ve metadize nesnelerini güncelleştirir. Bu eylem, uzun süren bir işlemdir.
 
-### <a name="configure-run-profiles"></a>Run Profillerini Yapılandırma
-Bu seçenek, bağlayıcı için yapılandırılan çalışan profilleri görmenizi sağlar.
+### <a name="configure-run-profiles"></a>Çalıştırma profillerini yapılandırma
+Bu seçenek, bir bağlayıcı için yapılandırılmış çalıştırma profillerini görmenizi sağlar.
 
-![Eşitleme Servis Yöneticisi](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
+![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
 
-### <a name="search-connector-space"></a>Bağlantı Alanı Ara
-Arama bağlayıcısı alanı eylemi nesneleri bulmak ve veri sorunlarını gidermek için yararlıdır.
+### <a name="search-connector-space"></a>Bağlayıcı alanını ara
+Bağlayıcı alanını ara eylemi, nesneleri bulmak ve veri sorunlarını gidermek için kullanışlıdır.
 
-![Eşitleme Servis Yöneticisi](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
+![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
-**Kapsam**seçerek başlayın. Verilere (RDN, DN, Anchor, Alt Ağaç) veya nesnenin durumuna (diğer tüm seçenekler) göre arama yapabilirsiniz.  
-![Eşitleme Servis Yöneticisi](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
-Örneğin bir Alt Ağaç araması yaparsanız, tüm nesneleri tek bir OU'da alırsınız.  
-![Eşitleme Servis Yöneticisi](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
-Bu ızgaradan bir nesne seçebilir, **özellikleri**seçebilir ve kaynak bağlayıcı uzaydan, metaverse üzerinden ve hedef bağlayıcı uzaya [kadar takip](tshoot-connect-object-not-syncing.md) edebilirsiniz.
+Bir **kapsam**seçerek başlayın. Verilere (RDN, DN, tutturucu, alt ağaç) veya nesnenin durumuna (diğer tüm seçenekler) göre arama yapabilirsiniz.  
+![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
+Örneğin bir alt ağaç araması yaparsanız, bir OU 'daki tüm nesneleri alırsınız.  
+![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
+Bu kılavuzdan bir nesne seçebilir, **Özellikler**' i seçebilir ve kaynak bağlayıcı alanından, meta veri deposu ve hedef bağlayıcı alanına göre [takip](tshoot-connect-object-not-syncing.md) edebilirsiniz.
 
 ### <a name="changing-the-ad-ds-account-password"></a>AD DS hesap parolasını değiştirme
-Hesap parolasını değiştirirseniz, Eşitleme Hizmeti artık şirket içi AD'ye değişiklikleri içe aktaramaz/dışa aktaramaz.   Şu durumlarla karşılaşabilirsiniz:
+Hesap parolasını değiştirirseniz, eşitleme hizmeti artık şirket içi AD 'deki değişiklikleri içeri/dışarı aktaramayacaktır.   Şu durumlarla karşılaşabilirsiniz:
 
-- AD bağlayıcısı için alma/dışa aktarma adımı "başlangıçsız kimlik bilgileri" hatasıyla başarısız olur.
-- Windows Olay Görüntüleyicisi altında, uygulama olay günlüğü Olay Kimliği 6000 ile ilgili bir hata içerir ve "Yönetim aracısı "contoso.com" kimlik bilgileri geçersiz olduğu için çalıştırılamamış." iletisi.
+- AD Bağlayıcısı için içeri/dışarı aktarma adımı "Hayır-Başlat-kimlik bilgileri" hatası ile başarısız oluyor.
+- Windows Olay Görüntüleyicisi altında, uygulama olay günlüğü olay KIMLIĞI 6000 ve "Yönetim Aracısı" contoso.com ", kimlik bilgileri geçersiz olduğundan çalıştırılamadı." iletisini içeren bir hata içerir. "
 
-Sorunu gidermek için, AŞAĞıDAKIleri kullanarak AD DS kullanıcı hesabını güncelleştirin:
+Bu sorunu çözmek için, AD DS kullanıcı hesabını aşağıdakileri kullanarak güncelleştirin:
 
 
-1. Eşitleme Hizmet Yöneticisi'ni başlatın (START → Eşitleme Hizmeti).
-</br>![Eşitleme Servis Yöneticisi](./media/how-to-connect-sync-service-manager-ui-connectors/startmenu.png)
+1. Synchronization Service Manager başlatın (→ eşitleme hizmetini başlatın).
+</br>![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/startmenu.png)
 2. **Bağlayıcılar** sekmesine gidin.
-3. AD DS hesabını kullanmak üzere yapılandırılan AD Bağlayıcısı'nı seçin.
-4. Eylemler altında **Özellikler'i**seçin.
-5. Açılan iletişim kutusunda, Etkin Dizin Ormanı'na Bağlan'ı seçin:
-6. Orman adı, şirket içinde karşılık gelen AD'yi gösterir.
-7. Kullanıcı adı, eşitleme için kullanılan AD DS hesabını gösterir.
-8. Parola textbox ![Azure AD Connect Sync Şifreleme Anahtarı Yardımcı Programı'na AD DS hesabının yeni parolasını girin](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
-9. Yeni parolayı kaydetmek için Tamam'ı tıklatın ve eski parolayı bellek önbelleğinden kaldırmak için Eşitleme Hizmetini yeniden başlatın.
+3. AD DS hesabını kullanmak üzere yapılandırılan AD bağlayıcısını seçin.
+4. Eylemler altında **Özellikler**' i seçin.
+5. Açılır iletişim kutusunda Active Directory ormana Bağlan ' ı seçin:
+6. Orman adı, şirket içi AD 'ye karşılık gelen adını gösterir.
+7. Kullanıcı adı, eşitleme için kullanılan AD DS hesabını belirtir.
+8. Parola metin kutusuna ![AD DS hesabının yeni parolasını girin Azure AD Connect şifreleme anahtarını Eşitle yardımcı programı](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
+9. Yeni parolayı kaydetmek için Tamam ' ı tıklatın ve eski parolayı bellek önbelleğinden kaldırmak için eşitleme hizmetini yeniden başlatın.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure AD [Connect eşitleme](how-to-connect-sync-whatis.md) yapılandırması hakkında daha fazla bilgi edinin.
+[Azure AD Connect eşitleme](how-to-connect-sync-whatis.md) yapılandırması hakkında daha fazla bilgi edinin.
 
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

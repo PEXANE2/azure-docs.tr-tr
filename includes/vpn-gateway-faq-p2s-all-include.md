@@ -9,15 +9,15 @@ ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79117114"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Noktadan Siteye yapılandırmamda kaç VPN istemci uç noktam olabilir?
 
-Bu ağ geçidi SKU bağlıdır. Desteklenen bağlantı sayısı hakkında daha fazla bilgi için [ağ geçidi SNU'larına](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)bakın.
+Ağ Geçidi SKU 'suna bağımlıdır. Desteklenen bağlantı sayısı hakkında daha fazla bilgi için bkz. [ağ geçidi SKU 'ları](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
 
 ### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Noktadan Siteye ile hangi istemci işletim sistemlerini kullanabilirim?
 
@@ -30,7 +30,7 @@ Aşağıdaki istemci işletim sistemleri desteklenmektedir:
 * Windows Server 2012 R2 (yalnızca 64 bit)
 * Windows Server 2016 (yalnızca 64 bit)
 * Windows 10
-* Mac OS X sürüm 10.11 veya üzeri
+* Mac OS X sürüm 10,11 veya üzeri
 * Linux (StrongSwan)
 * iOS
 
@@ -38,13 +38,13 @@ Aşağıdaki istemci işletim sistemleri desteklenmektedir:
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Noktadan Siteye özelliğini kullanarak ara sunucuları ve güvenlik duvarlarını geçirebilir miyim?
 
-Azure, üç tür Noktaya Bilgisayar VPN seçeneğini destekler:
+Azure üç tür Noktadan siteye VPN seçeneğini destekler:
 
-* Güvenli Yuva Tünel Protokolü (SSTP). SSTP, çoğu güvenlik duvarı 443 SSL'nin kullandığı giden TCP bağlantı noktasını açtığı ndan güvenlik duvarlarına nüfuz edebilen Microsoft tescilli SSL tabanlı bir çözümdür.
+* Güvenli Yuva Tünel Protokolü (SSTP). SSTP, çoğu güvenlik duvarı tarafından 443 SSL 'nin kullandığı giden TCP bağlantı noktasını açdığından güvenlik duvarlarını sızlayabileceğiniz Microsoft özel bir SSL tabanlı çözümüdür.
 
-* Openvpn. OpenVPN, çoğu güvenlik duvarı 443 SSL'nin kullandığı giden TCP bağlantı noktasını açtığı ndan güvenlik duvarlarına nüfuz edebilen SSL tabanlı bir çözümdür.
+* OpenVPN. OpenVPN, çoğu güvenlik duvarları 443 SSL tarafından kullanılan giden TCP bağlantı noktasını açdığından güvenlik duvarlarını sızlayabileceğiniz SSL tabanlı bir çözümdür.
 
-* IKEv2 VPN. IKEv2 VPN, 500 ve 4500 ve IP protokol no giden UDP bağlantı noktalarını kullanan standartlara dayalı bir IPsec VPN çözümüdür. kullanır. Güvenlik duvarları her zaman bu bağlantı noktalarını açmaz ve bu nedenle IKEv2 VPN’nin proxy ile güvenlik duvarlarını geçememe olasılığı vardır.
+* IKEv2 VPN. IKEv2 VPN, 500 ve 4500 ve IP protokol No giden UDP bağlantı noktalarını kullanan standart tabanlı bir IPSec VPN çözümüdür. kullanır. Güvenlik duvarları her zaman bu bağlantı noktalarını açmaz ve bu nedenle IKEv2 VPN’nin proxy ile güvenlik duvarlarını geçememe olasılığı vardır.
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>Noktadan Siteye için yapılandırılmış istemci bilgisayarını yeniden başlatırsam VPN de otomatik olarak yeniden bağlanacak mı?
 
@@ -58,13 +58,13 @@ Otomatik olarak yeniden ve DDNS şu anda Noktadan Siteye VPN'lerde desteklenmiyo
 
 Evet. Resouce Manager dağıtım modeli için, ağ geçidiniz için RouteBased VPN türü olmalıdır. Klasik dağıtım modeli için dinamik bir ağ geçidiniz olması gerekir. Statik yönlendirme VPN ağ geçitleri veya PolicyBased VPN ağ geçitleri için Noktadan Siteye çözümünü desteklemiyoruz.
 
-### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>Aynı anda birden çok sanal ağ ağ geçidine bağlanmak için bir Noktaya Nokta istemcisi yapılandırabilir miyim?
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>Aynı anda birden çok sanal ağ geçidine bağlanmak için Noktadan siteye istemci yapılandırabilir miyim?
 
-Kullanılan VPN İstemci yazılımına bağlı olarak, bağlanan sanal ağların aralarında çakışan adres boşlukları olmaması veya istemciden bağlanan ağ dışında olması koşuluyla birden çok Sanal Ağ Ağ Geçidi'ne bağlanabilirsiniz.  Azure VPN İstemcisi birçok VPN bağlantısını desteklerken, herhangi bir anda yalnızca bir bağlantı bağlanabilir.
+Kullanılan VPN Istemci yazılımına bağlı olarak, bağlanılan sanal ağların istemciyle bağlantısı olan ağ ile arasında çakışan adres alanları olmadığından, birden çok sanal ağ geçidine bağlanabilirsiniz.  Azure VPN Istemcisi birçok VPN bağlantısını desteklese de, belirli bir zamanda yalnızca bir bağlantı bağlanabilir.
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>Aynı anda birden çok sanal ağa bağlanmak için Noktadan Siteye istemcisi yapılandırabilir miyim?
 
-Evet, diğer VNet'lerle birlikte görünen bir VNet'te dağıtılan sanal ağ ağ geçidine yapılan noktadan siteye bağlantılar, diğer eşlenen VNet'lere erişebilir.  Bakan VNet'lerin UseRemoteGateway / AllowGatewayTransit özelliklerini kullanması koşuluyla, Noktadan Siteye istemci bu bakan VNet'lere bağlanabilecektir.  Daha fazla bilgi için [lütfen bu](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md) makaleye başvurun.
+Evet, diğer VNet 'ler ile eşlenmiş bir sanal ağa dağıtılan bir sanal ağ geçidine yönelik Noktadan siteye bağlantılar, diğer eşlenen VNET 'lere erişebilir.  Eşlenen sanal ağlar UseRemoteGateway/AllowGatewayTransit özelliklerini kullanıyorsa, Noktadan siteye istemci bu eşlenmiş sanal ağlara bağlanabilir.  Daha fazla bilgi için lütfen [Bu](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md) makaleye başvurun.
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>Siteden Siteye ve Noktadan Siteye bağlantılardan ne kadar verimlilik bekleyebilirim?
 
@@ -72,11 +72,11 @@ VPN tünellerinin tam verimini elde etmek zordur. IPsec ve SSTP şifrelemesi ağ
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>SSTP ve/veya IKEv2 desteği sağlayan Noktadan Siteye bağlantı için herhangi bir yazılım VPN istemcisi kullanabilir miyim?
 
-Hayır. SSTP için yalnızca Windows’daki yerel VPN istemcisini ve IKEv2 için yalnızca Mac’teki yerel VPN istemcisini kullanabilirsiniz. Ancak, OpenVPN protokolü üzerinden bağlanmak için tüm platformlarda OpenVPN istemcisini kullanabilirsiniz. Desteklenen istemci işletim sistemleri listesine başvurun.
+Hayır. SSTP için yalnızca Windows’daki yerel VPN istemcisini ve IKEv2 için yalnızca Mac’teki yerel VPN istemcisini kullanabilirsiniz. Ancak, OpenVPN istemcisini, OpenVPN protokolüne bağlanmak için tüm platformlarda kullanabilirsiniz. Desteklenen istemci işletim sistemleri listesine başvurun.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure Windows ile IKEv2 VPN destekler mi?
 
-IKEv2, Windows 10 ve Server 2016’da desteklenir. Ancak IKEv2 kullanmak için güncelleştirmeleri yüklemeli ve yerel bir kayıt defteri anahtar değeri ayarlamalısınız. Windows 10'dan önceki işletim sistemi sürümleri desteklenmez ve yalnızca SSTP veya **OpenVPN® Protokolü'nü**kullanabilir.
+IKEv2, Windows 10 ve Server 2016’da desteklenir. Ancak IKEv2 kullanmak için güncelleştirmeleri yüklemeli ve yerel bir kayıt defteri anahtar değeri ayarlamalısınız. Windows 10 ' dan önceki işletim sistemi sürümleri desteklenmez ve yalnızca SSTP veya **OpenVPN® protokolünü**kullanabilir.
 
 IKEv2 için Windows 10 ve Server 2016’yı hazırlamak için:
 
@@ -86,7 +86,7 @@ IKEv2 için Windows 10 ve Server 2016’yı hazırlamak için:
    |---|---|---|
    | Windows Server 2016<br>Windows 10 Sürüm 1607 | 17 Ocak 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 Sürüm 1703 | 17 Ocak 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
-   | Windows 10 Sürüm 1709 | 22 Mart 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   | Windows 10 sürüm 1709 | 22 Mart 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |
 
 2. Kayıt defteri anahtar değerini ayarlayın. Kayıt defterinde “HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload” REG_DWORD anahtarını oluşturun veya 1 olarak ayarlayın.
@@ -103,9 +103,9 @@ Azure, P2S VPN için Windows, Mac ve Linux’u destekler.
 
 Evet, kullandığınız ağ geçidi SKU’sunun RADIUS ve/veya IKEv2’yi desteklemesi şartıyla Azure portalı veya PowerShell’i kullanarak zaten dağıtılmış ağ geçitleri üzerinde bu yeni özellikleri etkinleştirebilirsiniz. Örneğin VPN ağ geçidi Temel SKU’su RADIUS’u veya IKEv2’yi desteklemez.
 
-### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>P2S bağlantısıyapılandırmasını nasıl kaldırırım?
+### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>P2S bağlantısının yapılandırmasını kaldırmak Nasıl yaparım??
 
-Bir P2S yapılandırması Aşağıdaki komutlar kullanılarak Azure CLI ve PowerShell kullanılarak kaldırılabilir:
+Aşağıdaki komutları kullanarak Azure CLı ve PowerShell kullanılarak P2S yapılandırması kaldırılabilir:
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 

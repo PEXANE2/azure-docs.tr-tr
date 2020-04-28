@@ -1,6 +1,6 @@
 ---
-title: Azure AD Uygulama Proxy için güvenlik hususları | Microsoft Dokümanlar
-description: Azure AD Uygulama Proxy'si kullanmak için güvenlik hususlarını kapsar
+title: Azure AD Uygulama Ara Sunucusu için güvenlik konuları | Microsoft Docs
+description: Azure AD Uygulama Ara Sunucusu kullanmaya yönelik güvenlik konularını ele alır
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,169 +17,169 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fd6794bafc3c209032f32626e8c46b51769d05e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481237"
 ---
-# <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD Application Proxy ile uygulamalara uzaktan erişmek için güvenlik hususları
+# <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile uygulamalara uzaktan erişmenin güvenlik konuları
 
-Bu makalede, Azure Etkin Dizin Uygulama Proxy'sini kullandığınızda kullanıcılarınızın ve uygulamalarınızın güvende kalması için çalışan bileşenler açıklanmaktadır.
+Bu makalede, Azure Active Directory Uygulama Ara Sunucusu kullandığınızda kullanıcılarınızın ve uygulamalarınızın güvende tutulması için çalışan bileşenler açıklanmaktadır.
 
-Aşağıdaki diyagram, Azure AD'nin şirket içi uygulamalarınıza nasıl güvenli uzaktan erişim sağladığını gösterir.
+Aşağıdaki diyagramda Azure AD 'nin şirket içi uygulamalarınıza güvenli uzaktan erişim sağlama şekli gösterilmektedir.
 
- ![Azure AD Application Proxy ile güvenli uzaktan erişim diyagramı](./media/application-proxy-security/secure-remote-access.png)
+ ![Azure AD Uygulama Ara Sunucusu aracılığıyla güvenli uzaktan erişim diyagramı](./media/application-proxy-security/secure-remote-access.png)
 
 ## <a name="security-benefits"></a>Güvenlik avantajları
 
-Azure AD Application Proxy aşağıdaki güvenlik avantajlarını sunar:
+Azure AD Uygulama Ara Sunucusu aşağıdaki güvenlik avantajlarını sunmaktadır:
 
-### <a name="authenticated-access"></a>Kimlik doğrulaması erişim 
+### <a name="authenticated-access"></a>Kimliği doğrulanmış erişim 
 
-Azure Active Directory ön kimlik doğrulamasını kullanmayı seçerseniz, ağınızda yalnızca kimlik doğrulaması olan bağlantılar erişebilir.
+Azure Active Directory ön kimlik doğrulaması kullanmayı seçerseniz, ağınıza yalnızca kimliği doğrulanmış bağlantılar erişebilir.
 
-Azure AD Application Proxy, tüm kimlik doğrulamaiçin Azure AD güvenlik belirteç hizmetine (STS) güvenir.  Yalnızca kimlik doğrulama, arka uç uygulamasına erişebildiği için, kimlik doğrulama, doğası gereği önemli sayıda anonim saldırıyı engeller.
+Azure AD Uygulama Ara Sunucusu, tüm kimlik doğrulaması için Azure AD güvenlik belirteci hizmetini (STS) kullanır.  Ön kimlik doğrulaması, çok doğası gereği, yalnızca kimliği doğrulanmış kimlikler arka uç uygulamasına erişebildiğinden, önemli sayıda anonim saldırıları engeller.
 
-Ön kimlik doğrulama yönteminiz olarak Passthrough'ı seçerseniz, bu avantajdan yararlanamazsınız. 
+Ön kimlik doğrulama yönteminiz olarak PASSTHROUGH ' i seçerseniz, bu avantaja sahip olursunuz. 
 
 ### <a name="conditional-access"></a>Koşullu Erişim
 
-Ağınıza bağlantılar kurulmadan önce daha zengin ilke denetimleri uygulayın.
+Ağınıza yönelik bağlantıların kurulması için daha zengin ilke denetimleri uygulayın.
 
-[Koşullu Erişim](../conditional-access/overview.md)ile, arka uç uygulamalarınıza hangi trafiğin erişmesine izin verildiğine ilişkin kısıtlamalar tanımlayabilirsiniz. Konuma, kimlik doğrulama nın gücüne ve kullanıcı risk profiline göre oturum açmaları kısıtlayan ilkeler oluşturabilirsiniz.
+[Koşullu erişimle](../conditional-access/overview.md), arka uç uygulamalarınıza hangi trafiğin erişebileceğini belirleyen kısıtlamalar tanımlayabilirsiniz. Oturum açma işlemlerini konuma, kimlik doğrulama gücüne ve Kullanıcı risk profiline göre sınırlayan ilkeler oluşturabilirsiniz.
 
-Çok Faktörlü Kimlik Doğrulama ilkelerini yapılandırmak ve kullanıcı kimlik doğrulamalarınıza başka bir güvenlik katmanı eklemek için Koşullu Erişim'i de kullanabilirsiniz. Ayrıca, uygulamalarınız, erişim ve [oturum](https://docs.microsoft.com/cloud-app-security/session-policy-aad) ilkeleri aracılığıyla gerçek zamanlı izleme ve denetimsağlamak için Azure AD Koşullu Erişim aracılığıyla Microsoft Bulut Uygulama [Güvenliği'ne](https://docs.microsoft.com/cloud-app-security/access-policy-aad) de yönlendirilebilir
+Ayrıca, Kullanıcı kimlik doğrulamalarına başka bir güvenlik katmanı ekleyerek Multi-Factor Authentication ilkelerini yapılandırmak için koşullu erişimi de kullanabilirsiniz. Ayrıca, uygulamalarınız, [erişim](https://docs.microsoft.com/cloud-app-security/access-policy-aad) ve [oturum](https://docs.microsoft.com/cloud-app-security/session-policy-aad) ilkeleri aracılığıyla gerçek zamanlı izleme ve DENETIMLER sağlamak Için Azure AD koşullu erişimi aracılığıyla Microsoft Cloud App Security de yönlendirilebilir
 
 ### <a name="traffic-termination"></a>Trafik sonlandırma
 
-Buluttaki tüm trafik sonlandırıldı.
+Tüm trafik bulutta sonlandırılır.
 
-Azure AD Application Proxy bir ters proxy olduğundan, hizmette arka uç uygulamaları için tüm trafik sonlandırılır. Oturum yalnızca arka uç sunucusuyla yeniden oluşturulabilir, bu da arka uç sunucularınızın doğrudan HTTP trafiğine maruz kalınmadığı anlamına gelir. Bu yapılandırma, hedeflenen saldırılara karşı daha iyi korunduğunuz anlamına gelir.
+Azure AD Uygulama Ara Sunucusu bir ters proxy olduğundan, arka uç uygulamalarına giden tüm trafik hizmette sonlandırılır. Oturum yalnızca arka uç sunucusuyla yeniden bağlanabilir ve bu, arka uç sunucularınızın doğrudan HTTP trafiğine açık olmayacağı anlamına gelir. Bu yapılandırma, hedeflenen saldırılardan daha iyi korunduğunuz anlamına gelir.
 
 ### <a name="all-access-is-outbound"></a>Tüm erişim giden 
 
 Şirket ağına gelen bağlantıları açmanız gerekmez.
 
-Uygulama Proxy bağlayıcıları yalnızca Azure AD Application Proxy hizmetine giden bağlantıları kullanır, bu da gelen bağlantılar için güvenlik duvarı bağlantı noktalarını açmaya gerek olmadığı anlamına gelir. Geleneksel yakınlıklar bir çevre ağı *(dmz*olarak da bilinir, *arındırılmış bölge*veya *ekranlı alt ağ)* gerekli ve ağ kenarında kimlik doğrulamamış bağlantılara erişime izin verdi. Bu senaryo, trafiği analiz etmek ve çevreyi korumak için web uygulaması güvenlik duvarı ürünlerine yatırım yapılmasını gerektir. Uygulama Proxy ile, tüm bağlantılar giden ve güvenli bir kanal üzerinden gerçekleşecek bir çevre ağı gerekmez.
+Uygulama proxy bağlayıcıları yalnızca Azure AD Uygulama Ara Sunucusu hizmetine giden bağlantıları kullanır, bu da gelen bağlantılara yönelik güvenlik duvarı bağlantı noktalarını açmaya gerek yoktur. Geleneksel proxy 'ler bir çevre ağı ( *DMZ*, *sivil bölge*veya denetimli *alt ağ*olarak da bilinir) ve ağ kenarındaki kimliği doğrulanmamış bağlantılara erişim izni verilmesini gerektirir. Bu senaryo, trafiği analiz etmek ve ortamı korumak için Web uygulaması güvenlik duvarı ürünlerinde yatırımları gerektirir. Uygulama proxy 'Si ile, tüm bağlantılar giden ve güvenli bir kanaldan yer aldığı için bir çevre ağına ihtiyacınız yoktur.
 
-Bağlayıcılar hakkında daha fazla bilgi için [bkz.](application-proxy-connectors.md)
+Bağlayıcılar hakkında daha fazla bilgi için bkz. [Azure AD uygulama ara sunucusu bağlayıcıları anlama](application-proxy-connectors.md).
 
-### <a name="cloud-scale-analytics-and-machine-learning"></a>Bulut ölçekli analitik ve makine öğrenimi 
+### <a name="cloud-scale-analytics-and-machine-learning"></a>Bulut ölçeğinde analiz ve makine öğrenimi 
 
-En son güvenlik koruması alın.
+Son teknoloji güvenlik koruması alın.
 
-Azure Etkin Dizin'in bir parçası olduğundan, Uygulama Proxy'si Microsoft Güvenlik Yanıt Merkezi ve Dijital Suçlar Birimi'nden alınan verilerle [Azure AD Kimlik Koruması'ndan](../active-directory-identityprotection.md)yararlanabilir. Birlikte, gizliliği ihlal edilen hesapları proaktif olarak tanımlar ve yüksek riskli oturum açmalara karşı koruma sağlarız. Hangi oturum açma girişimlerinin yüksek riskli olduğunu belirlemek için birçok faktörü dikkate alıyoruz. Bu etkenler arasında virüslü aygıtları işaretleme, anonimleştirme ağları ve atipik veya olası konumlar yer almaktadır.
+Azure Active Directory bir parçası olduğundan, uygulama proxy 'Si, Microsoft Güvenlik Yanıt Merkezi ve dijital Crimes biriminden alınan verilerle [Azure AD kimlik koruması](../active-directory-identityprotection.md)faydalanabilir. Birlikte güvenliği aşılmış hesapları ve yüksek riskli oturum açma işlemleri için koruma olanağı sunuyoruz. Hangi oturum açma girişimlerinin yüksek riskli olduğunu belirleyen birçok etken hesaba sunuyoruz. Bu faktörler, virüslü cihazların işaretlenmesini, ağların anonimleştirilmesi ve tipik veya olası konumları içerir.
 
-Bu raporların ve olayların çoğu, güvenlik bilgileriniz ve olay yönetimi (SIEM) sistemlerinizle tümleştirme için bir API aracılığıyla zaten kullanılabilir.
+Bu raporların ve olayların birçoğu, güvenlik bilgileri ve olay yönetimi (SıEM) sistemlerinizle tümleştirme için bir API aracılığıyla zaten kullanılabilir.
 
 ### <a name="remote-access-as-a-service"></a>Hizmet olarak uzaktan erişim
 
-Şirket içi sunucuları koruma ve düzeltme konusunda endişelenmenize gerek yoktur.
+Şirket içi sunucuları koruma ve düzeltme eki uygulama hakkında endişelenmeniz gerekmez.
 
-Yamasız yazılım hala çok sayıda saldırıyı hesaba katsın. Azure AD Application Proxy, Microsoft'un sahip olduğu Internet ölçeğinde bir hizmettir, bu nedenle her zaman en son güvenlik düzeltme emültlerini ve yükseltmelerini alırsınız.
+Çok sayıda saldırı için düzeltme eki yüklenmemiş yazılım hala hesaplar. Azure AD Uygulama Ara Sunucusu, Microsoft 'un sahip olduğu bir Internet ölçeklendirmiş hizmettir, bu nedenle her zaman en son güvenlik düzeltme eklerini ve yükseltmelerini alırsınız.
 
-Azure AD Application Proxy tarafından yayınlanan uygulamaların güvenliğini artırmak için, web tarayıcısı robotlarının uygulamalarınızı dizine ekleyip arşivletmelerini engelliyoruz. Her zaman bir web tarayıcısı robot yayınlanan bir uygulama için robotun ayarlarını almak için çalışır, `User-agent: * Disallow: /`Uygulama Proxy içeren bir robots.txt dosyası ile yanıtlar .
+Azure AD Uygulama Ara Sunucusu tarafından yayınlanan uygulamaların güvenliğini artırmak için Web Gezgini Robotlarınızın uygulamalarınızı dizinlemesini ve arşivlemesini engelliyoruz. Bir Web Gezgini robotu, yayımlanan bir uygulama için robot ayarlarını almaya çalıştığında, uygulama proxy 'Si içeren `User-agent: * Disallow: /`bir robots. txt dosyası ile yanıt verir.
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS koruma hizmeti
 
-Application Proxy aracılığıyla yayınlanan uygulamalar, Dağıtılmış Hizmet Reddi (DDoS) saldırılarına karşı korunur. **Azure DDoS koruması,** Azure kaynaklarınızı hizmet reddi saldırılarına karşı korumak için Azure platformuyla sunulan bir hizmettir. **Temel** hizmet katmanı, her zaman çevrimiçi trafik izleme ve ortak ağ düzeyinde saldırıların gerçek zamanlı olarak azaltılması nı sağlayarak otomatik olarak etkinleştirilir. Azure Sanal Ağ kaynaklarına özel olarak ayarlanmış ek azaltma özellikleri sunan **standart** bir katman da mevcuttur. Ayrıntılar için Azure [DDoS Koruma Standardı'na genel bakış](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)alabilirsiniz.
+Uygulama proxy 'Si aracılığıyla yayımlanan uygulamalar, dağıtılmış hizmet reddi (DDoS) saldırılarına karşı korunur. Azure **DDoS koruması** , Azure Platformlarınızı hizmet reddi saldırılarına karşı korumak için Azure platformunda sunulan bir hizmettir. **Temel** hizmet katmanı otomatik olarak etkinleştirildiğinden, her zaman açık trafik izleme ve ortak ağ düzeyi saldırıları için gerçek zamanlı risk azaltma sağlar. Ayrıca, Azure sanal ağ kaynaklarına özel olarak ayarlanmış ek risk azaltma özellikleri sunan **Standart** bir katman de mevcuttur. Ayrıntılar için bkz. [Azure DDoS koruması standardına genel bakış](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 
 ## <a name="under-the-hood"></a>Başlık altında
 
-Azure AD Application Proxy iki bölümden oluşur:
+Azure AD Uygulama Ara Sunucusu iki bölümden oluşur:
 
-* Bulut tabanlı hizmet: Bu hizmet Azure'da çalışır ve harici istemci/kullanıcı bağlantılarının yapıldığı yerdir.
-* [Şirket içi bağlayıcı](application-proxy-connectors.md): Şirket içi bir bileşen olan konektör, Azure AD Application Proxy hizmetinden gelen istekleri dinler ve dahili uygulamalarla bağlantıları işler. 
+* Bulut tabanlı hizmet: Bu hizmet Azure 'da çalışır ve dış istemci/kullanıcı bağlantılarının yapıldığı yerdir.
+* Şirket [içi bağlayıcı](application-proxy-connectors.md): şirket içi bir bileşen olan bağlayıcı, Azure AD uygulama ara sunucusu hizmetinden gelen istekleri dinler ve iç uygulamalarla bağlantıları işler. 
 
-Aşağıdaki anda bağlayıcı ile Application Proxy hizmeti arasında bir akış belirlenir:
+Bağlayıcı ile uygulama proxy hizmeti arasında bir akış şu durumlarda oluşturulur:
 
-* Konektör ilk olarak ayarlanır.
-* Konektör, Uygulama Proxy hizmetinden yapılandırma bilgilerini çeker.
-* Kullanıcı yayımlanmış bir uygulamaya erişer.
+* Bağlayıcı ilk olarak ayarlanır.
+* Bağlayıcı, uygulama ara sunucusu hizmetinden yapılandırma bilgilerini çeker.
+* Kullanıcı yayımlanmış bir uygulamaya erişiyor.
 
 >[!NOTE]
->Tüm iletişim TLS üzerinden gerçekleşir ve her zaman Uygulama Proxy hizmetinin konektöründen kaynaklanır. Hizmet yalnızca giden.
+>Tüm iletişimler TLS üzerinden oluşur ve her zaman bağlayıcıdan uygulama proxy 'Si hizmetine gelir. Hizmet yalnızca giden.
 
-Bağlayıcı, hemen hemen tüm aramalar için Uygulama Proxy hizmetine kimlik doğrulamak için bir istemci sertifikası kullanır. Bu işlemin tek istisnası, istemci sertifikasının oluşturulduğü ilk kurulum adımıdır.
+Bağlayıcı, neredeyse tüm çağrılar için uygulama ara sunucusu hizmetinde kimlik doğrulamak üzere bir istemci sertifikası kullanır. Bu işlemin tek istisnası, istemci sertifikasının kurulduğu ilk kurulum adımıdır.
 
-### <a name="installing-the-connector"></a>Konektörü yükleme
+### <a name="installing-the-connector"></a>Bağlayıcıyı yükleme
 
-Bağlayıcı ilk ayarlandığında, aşağıdaki akış olayları gerçekleşir:
+Bağlayıcı ilk ayarlandığında aşağıdaki akış olayları gerçekleşir:
 
-1. Hizmete konektör kaydı, konektörün yüklenmesinin bir parçası olarak gerçekleşir. Kullanıcıların Azure AD yönetici kimlik bilgilerini girmeleri istenir.Bu kimlik doğrulamasından elde edilen belirteç daha sonra Azure AD Application Proxy hizmetine sunulur.
-2. Uygulama Proxy hizmeti belirteç değerlendirir. Kullanıcının kiracıda şirket yöneticisi olup olmadığını denetler.Kullanıcı yönetici değilse, işlem sonlandırılır.
-3. Bağlayıcı bir istemci sertifikası isteği oluşturur ve belirteçle birlikte Uygulama Proxy hizmetine iletin. Hizmet sırayla belirteci doğrular ve istemci sertifikası isteğini imzalar.
-4. Bağlayıcı, Uygulama Proxy hizmetiyle gelecekteki iletişim için istemci sertifikasını kullanır.
-5. Bağlayıcı, istemci sertifikasını kullanarak sistem yapılandırma verilerinin hizmetten ilk çekmesini gerçekleştirir ve artık istek almaya hazırdır.
+1. Hizmete Bağlayıcı kaydı, bağlayıcının yüklenmesinin bir parçası olarak gerçekleşir. Kullanıcılardan Azure AD yönetici kimlik bilgilerini girmesi istenir.Bu kimlik doğrulamasından alınan belirteç daha sonra Azure AD Uygulama Ara Sunucusu hizmetine sunulur.
+2. Uygulama Proxy Hizmeti belirteci değerlendirir. Kullanıcının kiracının Şirket Yöneticisi olup olmadığını denetler.Kullanıcı bir yönetici değilse, işlem sonlandırılır.
+3. Bağlayıcı bir istemci sertifikası isteği oluşturur ve belirteç ile birlikte uygulama ara sunucusu hizmetine geçirir. ' Deki hizmet belirteci doğrular ve istemci sertifika isteğini imzalar.
+4. Bağlayıcı, uygulama proxy 'Si hizmetiyle gelecekte iletişim kurmak için istemci sertifikasını kullanır.
+5. Bağlayıcı, istemci sertifikasını kullanarak hizmetten sistem yapılandırma verilerinin ilk çekmesini gerçekleştirir ve artık istekleri almaya hazırdır.
 
-### <a name="updating-the-configuration-settings"></a>Yapılandırma ayarlarını güncelleştirme
+### <a name="updating-the-configuration-settings"></a>Yapılandırma ayarları güncelleştiriliyor
 
-Uygulama Proxy hizmeti yapılandırma ayarlarını güncellediğinde aşağıdaki akış olayları gerçekleşir:
+Uygulama proxy hizmeti yapılandırma ayarlarını güncelleştirdiğinde, aşağıdaki akış olayları gerçekleşir:
 
-1. Bağlayıcı, istemci sertifikasını kullanarak Uygulama Proxy hizmeti içindeki yapılandırma bitiş noktasına bağlanır.
-2. İstemci sertifikası doğrulandıktan sonra, Uygulama Proxy hizmeti yapılandırma verilerini bağlayıcıya döndürür (örneğin, bağlayıcının parçası olması gereken bağlayıcı grubu).
-3. Geçerli sertifika 180 günden eskiyse, bağlayıcı her 180 günde bir istemci sertifikasını etkili bir şekilde güncelleyen yeni bir sertifika isteği oluşturur.
+1. Bağlayıcı, istemci sertifikasını kullanarak uygulama proxy hizmeti içindeki yapılandırma uç noktasına bağlanır.
+2. İstemci sertifikası doğrulandıktan sonra, uygulama proxy hizmeti, bağlayıcı için yapılandırma verileri döndürür (örneğin, bağlayıcının parçası olması gereken bağlayıcı grubu).
+3. Geçerli sertifikanın 180 günden daha eski olması durumunda bağlayıcı, istemci sertifikasını her 180 günde bir etkin şekilde güncelleştiren yeni bir sertifika isteği oluşturur.
 
-### <a name="accessing-published-applications"></a>Yayımlanmış uygulamalara erişim
+### <a name="accessing-published-applications"></a>Yayınlanan uygulamalara erişme
 
-Kullanıcılar yayımlanmış bir uygulamaya eriştiklerinde, Uygulama Proxy hizmeti ile Application Proxy bağlayıcısı arasında aşağıdaki olaylar gerçekleşir:
+Kullanıcılar yayımlanmış bir uygulamaya erişirken, uygulama proxy 'si hizmeti ve uygulama proxy Bağlayıcısı arasında aşağıdaki olaylar gerçekleşir:
 
-1. Hizmet, uygulama için kullanıcının kimliğini doğrular
-2. Hizmet, bağlayıcı kuyruğuna bir istek yerleştirir
-3. Bir bağlayıcı, sıradaki isteği işler
-4. Bağlayıcı yanıt bekler
-5. Hizmet verileri kullanıcıya aktarıyor
+1. Hizmet, uygulamanın kullanıcı kimliğini doğrular
+2. Hizmet, bağlayıcı kuyruğuna bir istek koyar
+3. Bir bağlayıcı, isteği kuyruktan işler
+4. Bağlayıcı bir yanıt bekler
+5. Hizmet, verileri kullanıcıya akışlar
 
-Bu adımların her birinde neler inanacak hakkında daha fazla bilgi edinmek için okumaya devam edin.
-
-
-#### <a name="1-the-service-authenticates-the-user-for-the-app"></a>1. Hizmet, uygulama için kullanıcının kimliğini doğrular
-
-Uygulamayı Passthrough'ı ön kimlik doğrulama yöntemi olarak kullanacak şekilde yapılandırırsanız, bu bölümdeki adımlar atlanır.
-
-Uygulamayı Azure AD ile ön kimlik doğrulaması yapacak şekilde yapılandırırsanız, kullanıcılar kimlik doğrulaması için Azure AD STS'ye yönlendirilir ve aşağıdaki adımlar gerçekleşir:
-
-1. Uygulama Proxy belirli bir uygulama için herhangi bir Koşullu Erişim ilkesi gereksinimleri için denetler. Bu adım, kullanıcının uygulamaya atanmasını sağlar. İki aşamalı doğrulama gerekiyorsa, kimlik doğrulama sırası kullanıcıdan ikinci bir kimlik doğrulama yöntemi ister.
-
-2. Tüm denetimler geçtikten sonra, Azure AD STS uygulama için imzalı bir belirteç verir ve kullanıcıyı Uygulama Proxy hizmetine geri yönlendirir.
-
-3. Application Proxy belirteci doğru uygulama için verilmiş olduğunu doğrular. BelirteçAzure AD tarafından imzalanmış olduğundan ve hala geçerli pencereiçinde olduğundan emin olmak gibi diğer denetimleri de gerçekleştirir.
-
-4. Uygulama Proxy, uygulamanın kimlik doğrulamasının gerçekleştiğini belirtmek için şifrelenmiş bir kimlik doğrulama tanımlama bilgisi ayarlar. Çerez, Azure AD'den gelen belirteci ve kimlik doğrulamasının dayandığı kullanıcı adı gibi diğer verileri temel alan bir son kullanma zaman damgası içerir. Çerez, yalnızca Uygulama Proxy hizmeti tarafından bilinen özel bir anahtarla şifrelenir.
-
-5. Application Proxy, kullanıcıyı ilk istenen URL'ye yönlendirir.
-
-Ön kimlik doğrulama adımlarının herhangi bir bölümü başarısız olursa, kullanıcının isteği reddedilir ve kullanıcıya sorunun kaynağını gösteren bir ileti gösterilir.
+Bu adımların her birinde nelerin gerçekleştiği hakkında daha fazla bilgi edinmek için okumaya devam edin.
 
 
-#### <a name="2-the-service-places-a-request-in-the-connector-queue"></a>2. Servis, bağlayıcı kuyruğuna bir istek yerleştirir
+#### <a name="1-the-service-authenticates-the-user-for-the-app"></a>1. hizmet, uygulamanın kullanıcı kimliğini doğrular
 
-Bağlayıcılar, giden bağlantıyı Uygulama Proxy hizmetine açık tutar. Bir istek geldiğinde, servis bağlayıcının alması için açık bağlantılardan birinde isteği sıraya alır.
+Uygulamayı, ön kimlik doğrulama yöntemi olarak geçiş kullanacak şekilde yapılandırdıysanız, bu bölümdeki adımlar atlanır.
 
-İstek, istek üstbilgileri, şifrelenmiş çerezden alınan veriler, isteği yapan kullanıcı ve istek kimliği gibi uygulamadan öğeler içerir. Şifreli çerezden gelen veriler istekle birlikte gönderilmiş olsa da, kimlik doğrulama çerezinin kendisi gönderilmez.
+Uygulamayı Azure AD ile ön kimlik doğrulaması yapacak şekilde yapılandırdıysanız, kullanıcılar kimlik doğrulaması yapmak için Azure AD STS 'ye yönlendirilir ve aşağıdaki adımlar gerçekleştirilir:
 
-#### <a name="3-the-connector-processes-the-request-from-the-queue"></a>3. Konektör, sıradaki isteği işler. 
+1. Uygulama proxy 'Si, belirli bir uygulama için herhangi bir koşullu erişim ilkesi gereksinimini denetler. Bu adım, kullanıcının uygulamaya atanmasını sağlar. İki adımlı doğrulama gerekliyse, kimlik doğrulama sırası kullanıcıdan ikinci bir kimlik doğrulama yöntemi ister.
 
-İsteğe bağlı olarak, Uygulama Proxy aşağıdaki eylemlerden birini gerçekleştirir:
+2. Tüm denetimler başarılı olduktan sonra Azure AD STS, uygulama için imzalı bir belirteç yayınlar ve kullanıcıyı uygulama proxy 'Si hizmetine yeniden yönlendirir.
 
-* İstek basit bir işlemse (örneğin, restful *GET* isteğinde olduğu gibi gövde içinde veri yoksa), bağlayıcı hedef iç kaynağa bağlantı yapar ve ardından yanıt bekler.
+3. Uygulama proxy 'Si, belirtecin doğru uygulamaya verildiğini doğrular. Belirtecin Azure AD tarafından imzalandığından ve hala geçerli pencerenin içinde olduğundan emin olmak gibi diğer denetimleri de gerçekleştirir.
 
-* İsteğin gövdesinde onunla ilişkili veriler varsa (örneğin, bir RESTful *POST* işlemi), bağlayıcı istemci sertifikasını Uygulama Proxy örneğine kullanarak giden bir bağlantı yapar. Verileri istemek ve iç kaynağa bağlantı açmak için bu bağlantıyı kurar. İstek bağlayıcıdan geldikten sonra, Uygulama Proxy hizmeti kullanıcıdan içerik kabul etmeye başlar ve verileri bağlayıcıya iletir. Konektör, verileri iç kaynağa ileter.
+4. Uygulama proxy 'Si, uygulamaya yönelik kimlik doğrulamanın oluştuğunu göstermek için şifrelenmiş bir kimlik doğrulama tanımlama bilgisi ayarlar. Tanımlama bilgisi, Azure AD ve diğer verilerden (örneğin, kimlik doğrulamanın dayandığı Kullanıcı adı) temel alınarak bir süre sonu zaman damgası içerir. Tanımlama bilgisi, yalnızca uygulama proxy 'Si hizmeti için bilinen özel bir anahtarla şifrelenir.
 
-#### <a name="4-the-connector-waits-for-a-response"></a>4. Bağlayıcı yanıt bekler.
+5. Uygulama proxy 'Si, kullanıcıyı ilk istenen URL 'ye yeniden yönlendirir.
 
-Tüm içeriğin istek ve iletimi arka uca tamamlandıktan sonra bağlayıcı yanıt bekler.
+Ön kimlik doğrulama adımlarının herhangi bir bölümü başarısız olursa, kullanıcının isteği reddedilir ve Kullanıcı sorunun kaynağını belirten bir ileti gösterilir.
 
-Yanıt aldıktan sonra, bağlayıcı üstbilgi ayrıntılarını döndürmek ve iade verilerini akışa başlamak için Uygulama Proxy hizmetine giden bir bağlantı yapar.
 
-#### <a name="5-the-service-streams-data-to-the-user"></a>5. Hizmet verileri kullanıcıya aktarıyor. 
+#### <a name="2-the-service-places-a-request-in-the-connector-queue"></a>2. hizmet bağlayıcı kuyruğuna bir istek koyar
 
-Uygulamanın bazı işleme burada oluşabilir. Uygulama Proxy'sini, uygulamanızdaki üstbilgi veya URL'leri çevirecek şekilde yapılandırırsanız, bu işlem bu adımda gerektiği gibi gerçekleşir.
+Bağlayıcılar, giden bir bağlantıyı uygulama proxy 'Si hizmetine açık tutar. Bir istek geldiğinde, hizmet bağlayıcının çekme bağlantısı için açık bağlantılardan birindeki isteği sıraya alır.
+
+İstek, uygulamanın istek başlıkları, şifreli tanımlama bilgisinden alınan veriler, isteği yapan Kullanıcı ve istek KIMLIĞI gibi öğeleri içerir. Şifrelenmiş tanımlama bilgisinden gelen veriler istekle birlikte gönderilse de, kimlik doğrulama tanımlama bilgisinin kendisi değildir.
+
+#### <a name="3-the-connector-processes-the-request-from-the-queue"></a>3. bağlayıcı isteği kuyruktan işler. 
+
+İsteğe bağlı olarak, uygulama proxy 'Si aşağıdaki eylemlerden birini gerçekleştirir:
+
+* İstek basit bir işlem ise (örneğin, bir Restdeal isteği olan gövde içinde veri yoksa), bağlayıcı hedef iç kaynağa *GET* bir bağlantı yapar ve ardından bir yanıt bekler.
+
+* İstekte, gövdede kendisiyle ilişkili veriler varsa (örneğin, bir RESTAN *Post* işlemi), bağlayıcı Istemci sertifikasını uygulama proxy 'si örneğine kullanarak giden bir bağlantı yapar. Bu bağlantıyı, verileri istemek ve iç kaynağa bir bağlantı açmak için yapar. Bağlayıcının isteği aldıktan sonra, uygulama proxy hizmeti kullanıcıdan içerik kabul etmeye başlar ve verileri bağlayıcıya iletir. Bağlayıcı, sırasıyla verileri iç kaynağa iletir.
+
+#### <a name="4-the-connector-waits-for-a-response"></a>4. bağlayıcı bir yanıt bekler.
+
+Arka uca tüm içeriğin isteği ve iletimi tamamlandıktan sonra, bağlayıcı bir yanıt bekler.
+
+Bir yanıt aldıktan sonra bağlayıcı, üst bilgi ayrıntılarını döndürmek ve döndürülen verileri akışa başlamak için uygulama ara sunucusu hizmetine giden bir bağlantı oluşturur.
+
+#### <a name="5-the-service-streams-data-to-the-user"></a>5. hizmet, verileri kullanıcıya akıtir. 
+
+Uygulamanın bazı işlemleri burada görülebilir. Uygulama proxy 'Sini uygulamanızdaki üst bilgileri veya URL 'Leri çevirecek şekilde yapılandırdıysanız, bu işlem bu adım sırasında gerektiğinde gerçekleşir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure AD Uygulama Proxy'si kullanırken ağ topolojisi hususları](application-proxy-network-topology.md)
+[Azure AD Uygulama Ara Sunucusu kullanırken ağ topolojisi konuları](application-proxy-network-topology.md)
 
-[Azure AD Uygulama Proxy bağlayıcılarını anlama](application-proxy-connectors.md)
+[Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](application-proxy-connectors.md)

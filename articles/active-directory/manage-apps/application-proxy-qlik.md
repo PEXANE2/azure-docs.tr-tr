@@ -1,6 +1,6 @@
 ---
-title: Azure AD Uygulama Proxy ve Qlik Sense| Microsoft Dokümanlar
-description: Azure portalında Uygulama Proxy'sini açın ve ters proxy için Bağlayıcıları yükleyin.
+title: Azure AD Uygulaması Proxy ve Qlik Sense | Microsoft Docs
+description: Azure portal uygulama proxy 'Sini açın ve ters proxy için bağlayıcıları yükledikten sonra.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,57 +15,57 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2edf63da0fd09f829f936b54eb088c34dfe029a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79036990"
 ---
-# <a name="application-proxy-and-qlik-sense"></a>Uygulama Proxy ve Qlik Sense 
-Azure Active Directory Application Proxy ve Qlik Sense, Qlik Sense dağıtımınız için uzaktan erişim sağlamak için Uygulama Proxy'sini kolayca kullanabileceğinizden emin olmak için birlikte iş ortaklığı na sahiptir.  
+# <a name="application-proxy-and-qlik-sense"></a>Uygulama proxy 'Si ve Qlik Sense 
+Azure Active Directory Uygulama Ara Sunucusu ve Qlik Sense, Qlik Sense dağıtımınız için uzaktan erişim sağlamak üzere kolayca uygulama proxy 'Si kullanabildiğinizden emin olmak için iş ortağı ile işbirliği yaptı.  
 
 ## <a name="prerequisites"></a>Ön koşullar 
-Bu senaryonun geri kalanı aşağıdakileri yaptığınızı varsayar:
+Bu senaryonun geri kalanı şunları yaptığınızı varsayar:
  
-- Yapılandırılmış [Qlik Sense](https://community.qlik.com/docs/DOC-19822). 
-- [Uygulama Proxy konektörü yükledi](application-proxy-add-on-premises-application.md#install-and-register-a-connector) 
+- [Qlik Sense](https://community.qlik.com/docs/DOC-19822)yapılandırıldı. 
+- [Uygulama proxy bağlayıcısını yükleme](application-proxy-add-on-premises-application.md#install-and-register-a-connector) 
  
-## <a name="publish-your-applications-in-azure"></a>Uygulamalarınızı Azure'da yayımlayın 
-QlikSense'i yayımlamak için Azure'da iki uygulama yayımlamanız gerekir.  
+## <a name="publish-your-applications-in-azure"></a>Uygulamalarınızı Azure 'da yayımlayın 
+Qliksiz yayımlamak için, Azure 'da iki uygulama yayımlamanız gerekir.  
 
-### <a name="application-1"></a>Başvuru #1: 
-Uygulamanızı yayınlamak için aşağıdaki adımları izleyin. 1-8 adımlarının daha ayrıntılı bir şekilde gözden geçirincesi için Azure [AD Application Proxy'yi kullanarak uygulamaları yayımla'ya](application-proxy-add-on-premises-application.md)bakın. 
+### <a name="application-1"></a>Uygulama #1: 
+Uygulamanızı yayımlamak için aşağıdaki adımları izleyin. 1-8 adımları hakkında daha ayrıntılı yönergeler için bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md). 
 
 
 1. Azure portalında genel yönetici olarak oturum açın. 
-2. **Azure Active Directory** > **Enterprise uygulamalarını**seçin. 
-3. Bıçağın üst kısmında **Ekle'yi** seçin. 
-4. **Şirket içi uygulamayı**seçin. 
-5. Yeni uygulamanız hakkında bilgi içeren gerekli alanları doldurun. Ayarlar için aşağıdaki kılavuzu kullanın: 
-   - **Dahili URL**: Bu uygulamaqlikSense URL kendisi olan bir iç URL olmalıdır. Örneğin, **https&#58;//demo.qlikemm.com:4244** 
-   - **Ön kimlik doğrulama yöntemi**: Azure Etkin Dizini (Önerilir, ancak gerekli değildir) 
-1. Bıçağın altındaki **Ekle'yi** seçin. Uygulamanız eklenir ve hızlı başlatma menüsü açılır. 
-2. Hızlı başlat menüsünde, **sınama için bir kullanıcı atay'ı**seçin ve uygulamaya en az bir kullanıcı ekleyin. Bu test hesabının şirket içi uygulamaya erişimi olduğundan emin olun. 
-3. Test kullanıcı atamasını kaydetmek için **Atla'yı** seçin. 
-4. (İsteğe bağlı) Uygulama yönetim bıçağında Tek oturum açma'yı seçin. Açılan menüden **Kerberos Kısıtlı** Temsilciliği'ni seçin ve Qlik yapılandırmanıza göre gerekli alanları doldurun. **Kaydet'i**seçin. 
+2. **Azure Active Directory** > **Kurumsal uygulamalar**' ı seçin. 
+3. Dikey pencerenin üst kısmında **Ekle** ' yi seçin. 
+4. **Şirket içi uygulama '** yı seçin. 
+5. Gerekli alanları yeni uygulamanız hakkındaki bilgilerle doldurun. Ayarlar için aşağıdaki kılavuzu kullanın: 
+   - **Iç URL**: Bu uygulamanın, QlikSense URL 'sinin kendisi olan BIR Iç URL 'si olmalıdır. Örneğin, **https&#58;//demo.qlikemm.com:4244** 
+   - **Ön kimlik doğrulama yöntemi**: Azure Active Directory (önerilir, ancak gerekli değildir) 
+1. Dikey pencerenin alt kısmında **Ekle** ' yi seçin. Uygulamanız eklenir ve hızlı başlangıç menüsü açılır. 
+2. Hızlı Başlangıç menüsünde, **test için Kullanıcı ata**' yı seçin ve uygulamaya en az bir kullanıcı ekleyin. Bu sınama hesabının şirket içi uygulamaya erişimi olduğundan emin olun. 
+3. Test Kullanıcı atamasını kaydetmek için **ata** ' yı seçin. 
+4. Seçim Uygulama yönetimi dikey penceresinde çoklu oturum açma ' yı seçin. Açılan menüden **Kerberos kısıtlanmış temsilciyi** seçin ve Qlik yapılandırmanıza göre gerekli alanları doldurun. **Kaydet**’i seçin. 
 
 ### <a name="application-2"></a>Uygulama #2: 
-Aşağıdaki istisnalar dışında, Uygulama #1 için aynı adımları izleyin: 
+Aşağıdaki özel durumlarla birlikte uygulama #1 ile aynı adımları izleyin: 
 
-**Adım #5**: Dahili URL artık uygulama tarafından kullanılan kimlik doğrulama bağlantı noktasına sahip QlikSense URL olmalıdır. Varsayılan değer HTTPS için **4244** ve Nisan 2018'den önce QlikSense sürümleri için HTTP için **4248'dir.** Nisan 2018'den sonra QlikSense sürümleri için varsayılan değer HTTPS için **443** ve HTTP için **80'dir.**  Örn: **https&#58;//demo.qlik.com:4244**</br></br>
-**Adım #10:** SSO'yu ayarlamayın ve **Tek oturum açma** yı devre dışı bırakın
+**Adım #5**: İç URL artık uygulama tarafından kullanılan kimlik doğrulama bağlantı noktası Ile QlikSense URL 'si olmalıdır. Varsayılan değer, HTTPS için **4244** ve 2018 Nisan 'Dan önce QlikSense sürümleri için **4248** ' dir. 2018 Nisan sonrasında QlikSense yayınları için varsayılan değer, HTTPS için **443** ve HTTP için **80** .  Ex: **https&#58;//demo.Qlik.com:4244**</br></br>
+**Adım #10:** SSO 'yu ayarlama ve **Çoklu oturum açmayı devre dışı** bırakma
  
  
-## <a name="testing"></a>Sınama 
-Başvurunuz artık test edilebiş hazırdır. QlikSense'i Uygulama #1'nde yayımlamak için kullandığınız harici URL'ye erişin ve her iki uygulamaya atanmış bir kullanıcı olarak oturum açın.  
+## <a name="testing"></a>Test Etme 
+Uygulamanız şimdi test etmeye hazırdır. Uygulama #1 'da QlikSense yayımlamak için kullandığınız dış URL 'ye erişin ve her iki uygulama için de bir kullanıcı olarak oturum açın.  
 
 ## <a name="additional-references"></a>Ek başvurular
-Uygulama Proxy ile Qlik Sense yayımlama hakkında daha fazla bilgi için, Qlik Topluluk Makaleler aşağıdaki bakın: 
-- [Qlik Sense ile Kerberos Kısıtlı Delegasyon kullanarak Entegre Windows Kimlik Doğrulama ile Azure AD](https://community.qlik.com/docs/DOC-20183)
-- [Azure AD Application Proxy ile Qlik Sense entegrasyonu](https://community.qlik.com/t5/Technology-Partners-Ecosystem/Azure-AD-Application-Proxy/ta-p/1528396)
+Uygulama proxy 'Si ile Qlik Sense yayımlama hakkında daha fazla bilgi için, Qlik Community makalelerini inceleyin: 
+- [Qlik Sense ile Kerberos kısıtlanmış bir temsilciyi kullanarak tümleşik Windows kimlik doğrulaması ile Azure AD](https://community.qlik.com/docs/DOC-20183)
+- [Azure AD Uygulama Ara Sunucusu Qlik Sense tümleştirmesi](https://community.qlik.com/t5/Technology-Partners-Ecosystem/Azure-AD-Application-Proxy/ta-p/1528396)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Uygulama Ara Sunucusu ile uygulama yayımlama](application-proxy-add-on-premises-application.md)
-- [Uygulama Proxy konektörleri ile çalışma](application-proxy-connector-groups.md)
+- [Uygulama proxy bağlayıcıları ile çalışma](application-proxy-connector-groups.md)
 

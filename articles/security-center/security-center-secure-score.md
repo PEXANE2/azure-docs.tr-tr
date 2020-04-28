@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi'nde Güvenli Puan | Microsoft Dokümanlar
-description: " Azure Güvenlik Merkezi'nde Güvenli Puan'ı kullanarak güvenlik önerilerinize öncelik verin. "
+title: Azure Güvenlik Merkezi 'nde güvenli puan | Microsoft Docs
+description: " Azure Güvenlik Merkezi 'ndeki güvenli puanı kullanarak güvenlik önerilerinizi önceliklendirin. "
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,71 +14,71 @@ ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
 ms.openlocfilehash: 30405ce5cc875144fcd1cf83d4a3f883a0304989
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79415763"
 ---
-# <a name="improve-your-secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenli puanınızı artırın
+# <a name="improve-your-secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenli puanınızı geliştirme
 
 > [!NOTE]
-> Bu makale, güvenli skorun önceki sürümü hakkındadır. Bu güvenli puan deneyimi hala UI kullanılabilir ama zaman içinde aşamalı olacaktır. İki güvenli skor deneyimi, daha sorunsuz bir geçiş sağlamak için yan yana çalışıyor.
+> Bu makalede, güvenli puanın önceki sürümü hakkında bilgi sağlanır. Bu güvenli puan deneyimi hala kullanıcı arabiriminden kullanılabilir ancak zaman içinde aşamalı olarak alınacaktır. İki güvenli puan deneyimi, daha yumuşak bir geçişe olanak tanımak için yan yana çalışır.
 >
-> Yeni güvenli puanın ayrıntıları için [buraya](secure-score-security-controls.md)bakın.
+> Daha yeni güvenli Puanlama hakkında daha fazla bilgi için [buraya](secure-score-security-controls.md)bakın.
 >
 
-Güvenlik avantajları sunan bu kadar çok hizmetle, iş yükünüzü güvence altına almak ve sertleştirmek için ilk olarak hangi adımları atacağınız genellikle zordur. Güvenli Puan, güvenlik önerilerinizi gözden geçirir ve sizin için önceliklerini belirler, böylece ilk önce hangi önerileri gerçekleştireceklerinizi bilirsiniz. Bu, en ciddi güvenlik açıklarını bulmanıza yardımcı olur, böylece araştırmaya öncelik verirsiniz. Güvenli Puan, iş yükü güvenlik duruşunuzu değerlendirmenize yardımcı olan bir araçtır.
+Bu sayede birçok hizmetin güvenlik avantajları sunarak, iş yükünüzü güvenli hale getirmek ve bu avantajlardan yararlanmak için öncelikle ne yapmanız gereken adımları bilmek zordur. Güvenli puan, güvenlik önerilerinizi gözden geçirir ve bunları sizin için önceliklendirir. bu sayede öncelikle hangi önerilerin gerçekleştirileceğini bilirsiniz. Bu, araştırmanın önceliklerini belirleyebilmeniz için en önemli güvenlik açıklarını bulmanıza yardımcı olur. Güvenli puan, iş yükü güvenlik duruşunuzu değerlendirmenize yardımcı olan bir araçtır.
 
-## <a name="secure-score-calculation"></a>Güvenli Puan hesaplaması
+## <a name="secure-score-calculation"></a>Güvenli puan hesaplaması
 
-Güvenlik Merkezi, güvenlik önerilerinizi gözden geçirerek ve her önerinin ne kadar önemli olduğunu belirlemek için gelişmiş algoritmalar uygulayarak bir güvenlik analistinin çalışmasını taklit eder.
-Azure Güvenlik merkezi etkin önerilerinizi sürekli olarak gözden geçirir ve Güvenli Puanınızı bunlara göre hesaplar, bir önerinin puanı, iş yükü güvenliğinizi en çok etkileyecek önem derecesi ve güvenlik en iyi uygulamalarından türetilir.
+Güvenlik Merkezi, bir güvenlik analistinin çalışmasına, güvenlik önerilerinizi gözden geçirmeye ve her öneriye ne kadar önemli olduğunu belirlemede gelişmiş algoritmalar uygulamasına olanak sağlar.
+Azure Güvenlik Merkezi, etkin önerilerinizi sürekli olarak inceler ve bunlara göre güvenli puanınızı hesaplar. bir önerinin puanı, iş yükünüzü en iyi şekilde etkileyecek önem derecesini ve en iyi güvenlik uygulamalarını elde eder.
 
-Güvenlik Merkezi de **Genel Güvenli Puan**sağlar. 
+Ayrıca Güvenlik Merkezi, size genel olarak **güvenli bir puan**sağlar. 
 
-**Genel Güvenli Puan,** tüm tavsiye puanlarınızın bir birikimidir. Seçtiğiniz şeye bağlı olarak, genel Güvenli Puanınızı abonelikleriniz veya yönetim gruplarınız arasında görüntüleyebilirsiniz. Puan, seçilen abonelik ve bu abonelikler üzerindeki etkin önerilere bağlı olarak değişir.
+**Genel güvenli puan** , tüm öneri Puanlarınızın birikmesi olur. Seçtiğiniz seçeneğe bağlı olarak abonelikleriniz veya yönetim gruplarınız genelinde genel güvenli puanınızı görüntüleyebilirsiniz. Puan, seçilen aboneliğe ve bu aboneliklerdeki etkin önerilere göre değişir.
 
-Hangi önerilerin Güvenli Puanınızı en çok etkilediğini kontrol etmek için, Güvenlik Merkezi panosundaki en etkili üç öneriyi görüntüleyebilir veya **Güvenli Puan etki** sütununu kullanarak öneriler listesindeki önerileri sıralayabilirsiniz.
+En çok güvenli puanınızı hangi önerilerin etkilediğini denetlemek için, güvenlik merkezi panosunda en iyi üç önemli öneriyi görüntüleyebilir veya öneriler listesi dikey penceresinde önerileri, **güvenli puan etkisi** sütununu kullanarak sıralayabilirsiniz.
 
-Genel Güvenli Puanınızı görüntülemek için:
+Genel güvenli puanınızı görüntülemek için:
 
-1. Azure panosunda **Güvenlik Merkezi'ni** tıklatın ve ardından **Güvenli Puan'ı**tıklatın.
+1. Azure panosunda **Güvenlik Merkezi** ' ne ve ardından **güvenli skor**' e tıklayın.
 
-2. En üstte Güvenli Skor vurgularını görebilirsiniz:
-   - **Genel Güvenli Puan,** seçili abonelik başına ilkeler başına puanı temsil eder
-   - **Kategoriye göre Güvenli Puan,** hangi kaynakların en çok ilgiye ihtiyacı olduğunu gösterir
-   - **Secure Score etkisiyle en iyi öneriler,** bunları uygularsanız Güvenli Puanınızı en çok artıracak önerilerin bir listesini sağlar.
+2. En üstte, güvenli puanı vurgular ' a bakabilirsiniz:
+   - **Genel güvenli puan** , seçilen abonelik başına düşen ilke başına puan sayısını temsil eder
+   - **Kategoriye göre güvenli puan** , en çok dikkat gerektiren kaynakları gösterir
+   - **Güvenli puan etkisinden en önemli öneriler** , uygulamanızı uygularsanız en çok güvenli puanı iyileştirecek önerilerin bir listesini sağlar.
  
-   ![Güvenlik Puanı](./media/security-center-secure-score/secure-score-dashboard.png)
+   ![Güvenli puan](./media/security-center-secure-score/secure-score-dashboard.png)
 
-3. Aşağıdaki tabloda aboneliklerinizin her birini ve her biri için genel Güvenli Puanı görebilirsiniz.
+3. Aşağıdaki tabloda, aboneliklerinizin her birini ve her biri için genel güvenli puanı görebilirsiniz.
 
    > [!NOTE]
-   > Her aboneliğin Güvenli Puanı'nın toplamı, genel Güvenli Puan'a eşit değildir. Güvenli Puan, aboneliklerinizdeki Güvenli Puanların toplamı değil, sağlıklı kaynaklarınız ve öneri başına toplam kaynaklarınız arasındaki orana dayalı bir hesaplamadır. 
+   > Her aboneliğin güvenli Puanlama toplamı, genel güvenli puana eşit değildir. Güvenli puan, aboneliklerinizde güvenli puanlar toplamı değil, sağlıklı kaynaklarınız ve öneri başına toplam kaynaklarınızın oranına göre hesaplanır. 
    >
-4. Güvenli Puanınızı geliştirmek için düzeltebileceğiniz bu abonelik için önerileri görmek için **Önerileri Görüntüle'yi** tıklatın.
-4. Öneriler listesinde, her öneri için **Güvenli Puan etkisini**temsil eden bir sütun olduğunu görebilirsiniz. Bu sayı, önerileri uygularsanız genel Güvenli Puanınızın ne kadar artacağını gösterir. Örneğin, aşağıdaki ekranda, kapsayıcı **güvenlik yapılandırmalarında güvenlik açıklarını**düzeltiyorsanız, Güvenli Puanınız 35 puan artacaktır.
+4. Güvenli puanınızı iyileştirmek için düzeltebileceğiniz bu aboneliğe yönelik önerileri görmek için **öneriyi görüntüle** ' ye tıklayın.
+4. Öneriler listesinde, her öneri için, **güvenli puan etkisini**temsil eden bir sütun olduğunu görebilirsiniz. Bu sayı, önerileri izlerseniz genel güvenli puanınızın ne kadar iyileştirebileceğini temsil eder. Örneğin, aşağıdaki ekranda, **kapsayıcı güvenlik yapılandırmalarında güvenlik açıklarını düzeltmeniz**durumunda, güvenli puanınız 35 noktayla artacaktır.
 
-   ![Güvenlik Puanı](./media/security-center-secure-score/security-center-secure-score1.png)
+   ![Güvenli puan](./media/security-center-secure-score/security-center-secure-score1.png)
 
 
 
-## <a name="individual-secure-score"></a>Bireysel Güvenli Puan
+## <a name="individual-secure-score"></a>Bireysel güvenli puan
 
-Buna ek olarak, tek tek Güvenli Puanları görüntülemek için, bunları tek tek tavsiye bıçağıiçinde bulabilirsiniz.  
+Ayrıca, bireysel güvenli puanları görüntülemek için, bunları bireysel öneri dikey penceresinde bulabilirsiniz.  
 
-**Tavsiye Güvenli Puan,** sağlıklı kaynaklarınız ve toplam kaynaklarınız arasındaki orana dayalı bir hesaplamadır. Sağlıklı kaynak sayısı toplam kaynak sayısına eşitse, tavsiye önerisinin en yüksek Güvenli Puanı 50'yi alırsınız. Secure Score'unuzu maksimum skora yaklaştırmayı denemek için, önerileri izleyerek sağlıksız kaynakları düzeltin.
+**Öneri güvenli puanı** , sağlıklı kaynaklarınızın ve toplam kaynaklarınızın oranına göre hesaplanır. Sağlıklı kaynakların sayısı toplam kaynak sayısına eşitse, 50 önerisinin en yüksek güvenlik puanı elde edersiniz. Güvenli puanınızı en fazla puanı daha yakınına getirmek için, önerileri izleyerek sağlıksız kaynakları düzeltemedi.
 
-**Öneri etkisi,** öneri adımlarını uygularsanız Güvenli Puanınızın ne kadar iyileştiğini bilmenizi sağlar. Örneğin, Güvenli Puanınız 42 ve **Tavsiye etkisi** +3 ise, öneride belirtilen adımları gerçekleştirmek puanınızı 45'e yükseltin.
+Öneri **etkisi** , öneri adımlarını uyguladığınızda güvenli puanınızın ne kadar İyileşeceğimizi size sağlar. Örneğin, güvenli puanınız 42 ise ve **öneri etkisi** + 3 ise, öneriye göre özetlenen adımları gerçekleştirmek 45 için puanınızı geliştirme.
 
-Öneri, düzeltme adımları atılırsa iş yükünüzün hangi tehditlere maruz kaldığını gösterir.
+Öneri, düzeltme adımları alınmadığı takdirde iş yükünüzün hangi tehditlere maruz olduğunu gösterir.
 
-![bireysel tavsiye güvenli puan](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
+![tek öneri güvenli puanı](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, Azure Güvenlik Merkezi'nde **Güvenli Puan'ı** kullanarak güvenlik duruşunuzu nasıl iyileştireceğiniz gösterilebistir. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için bkz:
+Bu makalede, Azure Güvenlik Merkezi 'nde **güvenli puanı** kullanarak güvenlik duruşunuzu nasıl iyileştireceğiniz gösterilmektedir. Güvenlik Merkezi hakkında daha fazla bilgi için bkz.
 
 * [Azure Güvenlik Merkezi ile ilgili SSS](security-center-faq.md) - Hizmeti kullanımı ile ilgili sık sorulan soruları bulabilirsiniz.
 * [Azure Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md) - Azure kaynaklarınızın sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.

@@ -1,6 +1,6 @@
 ---
-title: (AmortismanA Uğradı) Docker API ile Azure Sürüsü kümesini yönetme
-description: Azure Kapsayıcı Hizmeti'nde kapsayıcıları Docker Swarm kümesine dağıtma
+title: Kullanım DıŞı Azure Sısınma kümesini Docker API 'siyle yönetme
+description: Kapsayıcıları Azure Container Service bir Docker Sısınma kümesine dağıtma
 services: container-service
 author: rgardler
 manager: madhana
@@ -10,13 +10,13 @@ ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: c76701ce74aafcccdbb2f1a2454f9528b52fc096
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79136236"
 ---
-# <a name="deprecated-container-management-with-docker-swarm"></a>(AmortismanA Uğradı) Docker Swarm ile konteyner yönetimi
+# <a name="deprecated-container-management-with-docker-swarm"></a>Kullanım DıŞı Docker Sısınma ile kapsayıcı yönetimi
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -69,7 +69,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ## <a name="deploy-containers-by-using-docker-compose"></a>Docker Compose kullanarak kapsayıcıları dağıtma
 Birden çok kapsayıcının dağıtımını ve yapılandırmasını otomatik hale getirmek için Docker Compose’u kullanabilirsiniz. Bunu yapmak için, bir Secure Shell (SSH) tüneli oluşturulduğundan ve DOCKER_HOST değişkeninin ayarlandığından emin olun (yukarıdaki önkoşullara bakın).
 
-Yerel sisteminizde docker-compose.yml dosyası oluşturun. Bunu yapmak için bu örneği kullanın:
+Yerel sisteminizde docker-compose.yml dosyası oluşturun. Bunu yapmak için şu örneği kullanın:
 
 ```dockerfile
 web:

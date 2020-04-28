@@ -1,6 +1,6 @@
 ---
-title: Kapsam filtreleri ile sağlama uygulamaları | Microsoft Dokümanlar
-description: Bir nesne iş gereksinimlerinizi karşılamazsa, otomatik kullanıcı sağlamayı destekleyen uygulamalardaki nesnelerin sağlanmasını önlemek için kapsam filtrelerini nasıl kullanacağınızı öğrenin.
+title: Kapsam filtreleriyle uygulama sağlama | Microsoft Docs
+description: Bir nesnenin iş gereksinimlerinizi karşılamadığı durumlarda otomatik Kullanıcı sağlamayı destekleyen uygulamalardaki nesneleri engellemek için kapsam filtrelerini nasıl kullanacağınızı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,123 +16,123 @@ ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c667409f2abb9f1cf89ae3b34f08e0f9eec067e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79138544"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Kapsam filtreleri ile öznitelik tabanlı uygulama sağlama
-Bu makalenin amacı, hangi kullanıcıların bir uygulamaya sağlanmış olduğunu belirleyen öznitelik tabanlı kuralları tanımlamak için kapsam filtrelerinin nasıl kullanılacağını açıklamaktır.
+Bu makalenin amacı, bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik tabanlı kurallar tanımlamak için kapsam filtrelerinin nasıl kullanılacağını açıklamaktır.
 
-## <a name="scoping-filter-use-cases"></a>Kapsam filtresi kullanım kılıfları
+## <a name="scoping-filter-use-cases"></a>Kapsam filtresi kullanım örnekleri
 
-Kapsam filtresi, Azure Etkin Dizin (Azure AD) sağlama hizmetinin belirli bir değerle eşleşen bir özelliğe sahip kullanıcıları eklemesine veya hariç tutmasına olanak tanır. Örneğin, kullanıcıları Azure AD'den bir satış ekibi tarafından kullanılan bir SaaS uygulamasına sağlarken, yalnızca "Satış" özelliğine sahip "Departman" özelliğine sahip kullanıcıların sağlama kapsamında olması gerektiğini belirtebilirsiniz.
+Kapsam filtresi, Azure Active Directory (Azure AD) sağlama hizmeti 'nin belirli bir değerle eşleşen bir özniteliğe sahip tüm kullanıcıları içermesini veya dışlanmasını sağlar. Örneğin, kullanıcıları Azure AD 'den bir satış ekibi tarafından kullanılan bir SaaS uygulamasına sağlarken, yalnızca "Sales" özniteliği olan kullanıcıların sağlama kapsamında olması gerektiğini belirtebilirsiniz.
 
-Kapsam filtreleri, sağlayan bağlayıcının türüne bağlı olarak farklı şekilde kullanılabilir:
+Kapsam filtreleri, sağlama bağlayıcısının türüne göre farklı şekilde kullanılabilir:
 
-* **Azure AD'den SaaS uygulamalarına giden sağlama.** Azure AD kaynak sistem olduğunda, [kullanıcı ve grup atamaları,](../manage-apps/assign-user-or-group-access-portal.md) hangi kullanıcıların sağlama kapsamında olduğunu belirlemek için en yaygın yöntemdir. Bu atamalar, tek oturum açmayı etkinleştirmek ve erişimi ve sağlamayı yönetmek için tek bir yöntem sağlamak için de kullanılır. Kapsam filtreleri, atamalara ek olarak veya bunların yerine, kullanıcıları öznitelik değerlerine göre filtrelemek için isteğe bağlı olarak kullanılabilir.
+* **Azure AD 'Den SaaS uygulamalarına giden sağlama**. Azure AD kaynak sistem olduğunda, [Kullanıcı ve Grup atamaları](../manage-apps/assign-user-or-group-access-portal.md) , hangi kullanıcıların sağlama kapsamında olduğunu belirlemek için en yaygın yöntemdir. Bu atamalar, çoklu oturum açmayı etkinleştirmek ve erişim ve sağlamayı yönetmek için tek bir yöntem sağlamak için de kullanılır. Kapsam filtreleri, kullanıcıların öznitelik değerlerine göre filtreleneceği şekilde, atamaları veya bunların yerine, isteğe bağlı olarak kullanılabilir.
 
     >[!TIP]
-    > **Tüm kullanıcıları ve grupları eşitlemek**için sağlama ayarları altında [Kapsam](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) menüsündeki ayarları değiştirerek, kurumsal uygulama için atamalara dayalı sağlamayı devre dışı kullanabilirsiniz. Bu seçeneğin yanı sıra öznitelik tabanlı kapsam filtreleri kullanmak, grup tabanlı atamaları kullanmaktan daha hızlı performans sağlar.  
+    > **Tüm kullanıcıları ve grupları eşitlemek**için sağlama ayarları altındaki [kapsam](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) menüsündeki ayarları değiştirerek bir kurumsal uygulama için atamaları temel alarak sağlamayı devre dışı bırakabilirsiniz. Bu seçeneğin ve öznitelik tabanlı kapsam filtrelerinin kullanılması, grup tabanlı atamaları kullanmaktan daha hızlı performans sağlar.  
 
-* **HCM uygulamalarından Azure AD ve Active Directory'ye gelen sağlama.** İş Günü gibi bir [HCM uygulaması](../saas-apps/workday-tutorial.md) kaynak sistem olduğunda, kapsam filtreleri, HCM uygulamasından Active Directory veya Azure AD'ye hangi kullanıcıların sağlanması gerektiğini belirlemek için birincil yöntemdir.
+* **HCM uygulamalarından Azure AD 'ye gelen sağlama ve Active Directory**. [Workday gibi bir HCM uygulaması](../saas-apps/workday-tutorial.md) kaynak sistem olduğunda, kapsam filtreleri hcm uygulamasından Active Directory veya Azure AD 'ye hangi kullanıcıların sağlanması gerektiğini belirlemek için birincil yöntemdir.
 
-Varsayılan olarak, Azure AD sağlama bağlayıcılarının yapılandırılan öznitelik tabanlı kapsam filtreleri yoktur. 
+Varsayılan olarak, Azure AD sağlama bağlayıcılarında hiçbir öznitelik tabanlı kapsam filtresi yapılandırılmamış. 
 
-## <a name="scoping-filter-construction"></a>Kapsam filtresi yapımı
+## <a name="scoping-filter-construction"></a>Kapsam filtresi oluşturma
 
-Kapsam filtresi bir veya daha fazla *yan tümceden*oluşur. Yan tümceler, her kullanıcının özniteliklerini değerlendirerek hangi kullanıcıların kapsam filtresinden geçmesine izin verilebilenleri belirler. Örneğin, bir kullanıcının "Eyalet" özniteliğinin "New York" özelliğine eşit olduğunu, bu nedenle uygulamaya yalnızca New York kullanıcılarının girmesini gerektiren bir yan tümceniz olabilir. 
+Kapsam filtresi bir veya daha fazla *yan tümce*içerir. Yan tümceler, her kullanıcının özniteliklerini değerlendirerek kapsam filtresinden hangi kullanıcıların geçmesine izin verileceğini belirleme. Örneğin, bir kullanıcının "durum" özniteliğinin "New York" değerine eşit olmasını gerektiren bir yan tümcesine sahip olabilirsiniz, bu nedenle yalnızca New York kullanıcıları uygulamaya sağlanabilir. 
 
-Tek bir tümce, tek bir öznitelik değeri için tek bir koşul tanımlar. Tek bir kapsam filtresinde birden çok yan tümce oluşturulursa, "AND" mantığı kullanılarak birlikte değerlendirilirler. Bu, bir kullanıcının sağlanması için tüm yan tümcelerin "doğru" olarak değerlendirilmesi gerektiği anlamına gelir.
+Tek bir yan tümce tek bir öznitelik değeri için tek bir koşulu tanımlar. Tek bir kapsam filtresinde birden çok yan tümce oluşturulduysa, "AND" mantığı kullanılarak birlikte değerlendirilir. Bu, bir kullanıcının sağlanması için tüm yan tümcelerinin "true" olarak değerlendirilmesi gerektiği anlamına gelir.
 
-Son olarak, tek bir uygulama için birden çok kapsam filtresi oluşturulabilir. Birden çok kapsam filtresi varsa, "VEYA" mantığı kullanılarak birlikte değerlendirilir. Bu, yapılandırılan kapsam filtrelerinden herhangi birinde yer alan tüm yan tümcelerin "doğru" olarak değerlendirildiğini, kullanıcının sağlanmış olduğu anlamına gelir.
+Son olarak, tek bir uygulama için birden çok kapsam filtresi oluşturulabilir. Birden çok kapsam filtresi varsa, bunlar "OR" mantığı kullanılarak birlikte değerlendirilir. Bu, yapılandırılmış kapsam filtrelerinden herhangi birinin tüm yan tümcelerinin "true" olarak değerlendirilmesi durumunda kullanıcının sağlanması anlamına gelir.
 
-Azure AD sağlama hizmeti tarafından işlenen her kullanıcı veya grup, her kapsam filtresine göre her zaman ayrı ayrı değerlendirilir.
+Azure AD sağlama hizmeti tarafından işlenen her kullanıcı veya grup her zaman kapsam filtrelerinde ayrı ayrı değerlendirilir.
 
 Örnek olarak, aşağıdaki kapsam filtresini göz önünde bulundurun:
 
 ![Kapsam filtresi](./media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
 
-Bu kapsam filtresine göre, kullanıcıların sağlanacak aşağıdaki kriterleri karşılaması gerekir:
+Bu kapsam filtresine göre, kullanıcıların sağlanması için aşağıdaki ölçütleri karşılaması gerekir:
 
-* New York'ta olmalılar.
-* Mühendislik bölümünde çalışmak zorundalar.
-* Şirket çalışan larının kimliği 1.000.000 ile 2.000.000 arasında olmalıdır.
-* Onların iş unvanı boş veya boş olmamalıdır.
+* Bunların New York 'ta olmaları gerekir.
+* Mühendislik bölümünde çalışması gerekir.
+* Şirket çalışan KIMLIĞI 1.000.000 ile 2.000.000 arasında olmalıdır.
+* İş unvanı null veya boş olmamalıdır.
 
 ## <a name="create-scoping-filters"></a>Kapsam filtreleri oluşturma
-Kapsam filtreleri, her Azure AD kullanıcı sağlama bağlayıcısı için öznitelik eşlemelerinin bir parçası olarak yapılandırılır. Aşağıdaki yordam, [desteklenen uygulamalardan biri](../saas-apps/tutorial-list.md) için otomatik sağlama zaten ayarladığınızı ve bu uygulamaya bir kapsam filtresi eklediğinizi varsayar.
+Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öznitelik eşlemelerinin bir parçası olarak yapılandırılır. Aşağıdaki yordamda, [desteklenen uygulamalardan biri](../saas-apps/tutorial-list.md) için otomatik sağlamayı ayarlamış olduğunuz ve buna kapsam filtresi eklemekte olduğunuz varsayılmaktadır.
 
 ### <a name="create-a-scoping-filter"></a>Kapsam filtresi oluşturma
-1. Azure [portalında,](https://portal.azure.com)Azure **Active Directory** > **Enterprise Applications** > **Tüm uygulamalar** bölümüne gidin.
+1. [Azure Portal](https://portal.azure.com), **Azure Active Directory** > **Enterprise Applications** > **tüm uygulamalar** bölümüne gidin.
 
-2. Otomatik sağlama yı yapılandırdığınız uygulamayı seçin: örneğin, "ServiceNow".
+2. Otomatik sağlamayı yapılandırdığınız uygulamayı seçin: Örneğin, "ServiceNow".
 
 3. **Sağlama** sekmesini seçin.
 
-4. **Eşlemeler** bölümünde, kapsam landırma filtresini yapılandırmak istediğiniz eşleciliği seçin: örneğin, "Azure Etkin Dizin Kullanıcılarını ServiceNow ile senkronize edin".
+4. **Eşlemeler** bölümünde, kapsam filtresi yapılandırmak istediğiniz eşlemeyi seçin: Örneğin, "kullanıcıları ServiceNow 'a Azure Active Directory.
 
-5. Kaynak **nesne kapsamı** menüsünü seçin.
+5. **Kaynak nesne kapsamı** menüsünü seçin.
 
-6. **Kapsam filtresi ekle'yi**seçin.
+6. **Kapsam filtresi ekle**' yi seçin.
 
-7. Bir kaynak **Öznitelik Adı,** **Işleç**ve eşleşecek bir **Öznitelik Değeri** seçerek bir yan tümce tanımlayın. Aşağıdaki işleçler desteklenir:
+7. Bir kaynak **öznitelik adı**, bir **işleç**ve eşleştirilecek bir **öznitelik değeri** seçerek bir yan tümce tanımlayın. Aşağıdaki işleçler desteklenir:
 
-   a. **EŞLer**. Değerlendirilen öznitelik giriş dize değeriyle tam olarak eşleşirse (büyük/küçük harf duyarlı) "true" yan tümcesi döndürür.
+   a. **Eşittir**. Değerlendirilen öznitelik, giriş dizesi değeri tam olarak (büyük/küçük harfe duyarlı) eşleşiyorsa "true" döndürür.
 
-   b. **EŞIT Değİl .** Değerlendirilen öznitelik giriş dize değeri (büyük/küçük harf duyarlı) eşleşmiyorsa yan tümce "true" döndürür.
+   b. **eşit değildir**. Değerlendirilen öznitelik, giriş dizesi değeriyle (büyük/küçük harfe duyarlı) eşleşmezse "true" döndürür.
 
-   c. **DOĞRUDUR.** Değerlendirilen öznitelik gerçek bir Boolean değeri içeriyorsa yan tümce "true" döndürür.
+   c. **doğru**. Değerlendirilen öznitelik true Boole değeri içeriyorsa, yan tümce "true" döndürür.
 
-   d. **YANLıŞ MıDıR.** Değerlendirilen öznitelik false boolean değeri içeriyorsa yan tümce "true" döndürür.
+   d. **yanlış**. Değerlendirilen öznitelik yanlış Boole değeri içeriyorsa, yan tümce "true" döndürür.
 
-   e. **NULL OLDUĞUNU**. Değerlendirilen öznitelik boşsa yan tümce "true" döndürür.
+   e. **null**. Değerlendirilen öznitelik boş ise yan tümce "true" döndürür.
 
-   f. **NULL DEĞILDIR.** Değerlendirilen öznitelik boş değilse yan tümce "true" döndürür.
+   f. **null değil**. Değerlendirilen öznitelik boş değilse yan tümce "true" döndürür.
 
-   g. **REGEX MAÇ**. Değerlendirilen öznitelik normal bir ifade deseniyle eşleşiyorsa, yan tümce "true" döndürür. Örneğin: ([1-9][0-9]) 10 ile 99 arasındaki sayılarla eşleşir.
+   g. **Regex eşleşiyor**. Değerlendirilen öznitelik bir normal ifade düzeniyle eşleşiyorsa, yan tümce "true" döndürür. Örneğin: ([1-9] [0-9]), 10 ile 99 arasında herhangi bir sayıyla eşleşir.
 
-   h. **REGEX EŞLEŞMESI DEĞIL.** Değerlendirilen öznitelik normal bir ifade deseniyle eşleşmiyorsa, yan tümce "true" döndürür.
+   h. **Regex eşleşmiyor**. Değerlendirilen öznitelik bir normal ifade düzeniyle eşleşmezse, yan tümce "true" döndürür.
    
-   i. **Greater_Than.** Değerlendirilen öznitelik değerden büyükse yan tümce "true" verir. Kapsam filtresinde belirtilen değer bir tamsayı olmalı ve kullanıcıdaki öznitelik bir tamsayı olmalıdır [0,1,2,...]. 
+   i. **Greater_Than.** Değerlendirilen öznitelik değerden büyükse, yan tümce "true" döndürür. Kapsam filtresinde belirtilen değer bir tamsayı olmalı ve kullanıcının özniteliği tamsayı olmalıdır [0, 1, 2,...]. 
    
-   j. **Greater_Than_OR_EQUALS.** Değerlendirilen öznitelik değerden büyük veya eşitse yan tümce "true" döndürür. Kapsam filtresinde belirtilen değer bir tamsayı olmalı ve kullanıcıdaki öznitelik bir tamsayı olmalıdır [0,1,2,...]. 
+   j. **Greater_Than_OR_EQUALS.** Değerlendirilen öznitelik değerden büyük veya bu değere eşitse, yan tümce "true" döndürür. Kapsam filtresinde belirtilen değer bir tamsayı olmalı ve kullanıcının özniteliği tamsayı olmalıdır [0, 1, 2,...]. 
    
-   k. **Içerir.** Değerlendirilen öznitelik [burada](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8)açıklandığı gibi dize değerini (büyük/küçük harf duyarlı) içeriyorsa yan tümce "true" döndürür. 
+   k. **İçermektedir.** Değerlendirilen öznitelik, [burada](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8)açıklanan dize değerini (büyük/küçük harfe duyarlı) içeriyorsa "true" döndürür. 
 
 
 >[!IMPORTANT] 
-> - IsMemberOf filtresi şu anda desteklenmiyor.
-> - EQUALS ve NOT EQUALS çok değerli öznitelikler için desteklenmez
+> - Imemberof filtresi şu anda desteklenmiyor.
+> - EŞITTIR ve eşit DEĞILDIR birden çok değerli öznitelikler için desteklenmez
 
-9. İsteğe bağlı olarak, daha fazla kapsam altanlama yan tümcesi eklemek için 7-8 adımlarını yineleyin.
+9. İsteğe bağlı olarak, daha fazla kapsam tümcesi eklemek için 7-8 arası adımları tekrarlayın.
 
-10. **Kapsam Filtresi Başlığı'nda,** kapsam filtreniz için bir ad ekleyin.
+10. **Kapsam filtresi başlığı**' nda, kapsam filtreniz için bir ad ekleyin.
 
-11. **Tamam'ı**seçin.
+11. **Tamam**’ı seçin.
 
-12. **Kapsam Filtreleri** ekranında tekrar **Tamam'ı** seçin. İsteğe bağlı olarak, başka bir kapsam filtresi eklemek için 6-11 adımlarını yineleyin.
+12. **Kapsam filtreleri** ekranında yeniden **Tamam ' ı** seçin. İsteğe bağlı olarak, farklı bir kapsam filtresi eklemek için 6-11 arası adımları tekrarlayın.
 
-13. **Öznitelik Eşleme** ekranında **Kaydet'i** seçin. 
+13. **Öznitelik eşleme** ekranında **Kaydet** ' i seçin. 
 
 >[!IMPORTANT] 
-> Yeni bir kapsam filtresi nin kaydedilmesi, kaynak sistemdeki tüm kullanıcıların yeni kapsam filtresine göre yeniden değerlendirildiği uygulama için yeni bir tam eşitleme tetikler. Uygulamadaki bir kullanıcı daha önce sağlama kapsamındaysa, ancak kapsam dışına çıkarsa, hesabı devre dışı bırakılır veya uygulamada hükmü bozulabilir. Bu varsayılan davranışı geçersiz kılmak [için, kapsam dışına çıkan kullanıcı hesapları için silmeyi atla'ya](../app-provisioning/skip-out-of-scope-deletions.md)bakın.
+> Yeni bir kapsam filtresi kaydetmek, uygulama için, kaynak sistemdeki tüm kullanıcıların yeni kapsam filtresine göre yeniden değerlendirildiği yeni bir tam eşitleme tetiklemesini tetikler. Uygulamadaki bir Kullanıcı daha önce sağlama için kapsamdadır, ancak kapsam dışında kalırsa, bu durumda hesabı devre dışı bırakılır veya uygulama tarafından devre dışı bırakılır. Bu varsayılan davranışı geçersiz kılmak için [kapsamdaki Kullanıcı hesapları için silme Işlemini atlama](../app-provisioning/skip-out-of-scope-deletions.md)bölümüne bakın.
 
 
-## <a name="common-scoping-filters"></a>Yaygın kapsam filtreleri
-| Hedef Öznitelik| İşleç | Değer | Açıklama|
+## <a name="common-scoping-filters"></a>Ortak kapsam filtreleri
+| Target özniteliği| İşleç | Değer | Açıklama|
 |----|----|----|----|
-|userPrincipalName|REGEX MAÇI|.\*@domain.com |KullanıcıPrensibi olan tüm kullanıcılar, @domain.com etki alanına sahip|
-|userPrincipalName|DEĞIL REGEX MAÇ|.\*@domain.com|KullanıcıPrensibi olan tüm kullanıcılar, @domain.com etki alanına sahip olan tüm kullanıcılar,|
-|bölüm|Eşit -tir|Satış|Satış departmanındaki tüm kullanıcılar,|
-|işçi Kimliği|REGEX MAÇI|(1[0-9][0-9][0-9][0-9][0-9][0-9])| 1000000 ile 2000000 arasında işçi liği olan tüm çalışanlar tedarik kapsamındadır.|
+|userPrincipalName|REGEX EŞLEŞMESI|.\*@domain.com |Etki alanı @domain.com olan UserPrincipal 'a sahip tüm kullanıcılar sağlama kapsamında olacaktır|
+|userPrincipalName|REGEX EŞLEŞMIYOR|.\*@domain.com|Etki alanı @domain.com olan UserPrincipal 'a sahip tüm kullanıcılar, sağlama için kapsam dışı olacaktır|
+|bölüm|EŞITTIR|Sales|Satış departmanından tüm kullanıcılar sağlama kapsamındadır|
+|Workerıd|REGEX EŞLEŞMESI|(1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])| 1000000 ve 2000000 arasında Workerıd 'Leri olan tüm çalışanlar sağlama kapsamındadır.|
 
 ## <a name="related-articles"></a>İlgili makaleler:
-* [SaaS uygulamalarında kullanıcı sağlama ve sağlamanın otomatikleştirilmesi](../app-provisioning/user-provisioning.md)
-* [Kullanıcı sağlama için öznitelik eşlemelerini özelleştirme](../app-provisioning/customize-application-attributes.md)
+* [SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma işlemlerini otomatikleştirme](../app-provisioning/user-provisioning.md)
+* [Kullanıcı hazırlama için öznitelik eşlemelerini özelleştirme](../app-provisioning/customize-application-attributes.md)
 * [Öznitelik eşlemeleri için ifadeler yazma](functions-for-customizing-application-data.md)
 * [Hesap sağlama bildirimleri](../app-provisioning/user-provisioning.md)
-* [Azure Active Directory'den uygulamalara kullanıcıların ve grupların otomatik olarak sağlanmasını etkinleştirmek için SCIM'i kullanın](../app-provisioning/use-scim-to-provision-users-and-groups.md)
-* [SaaS uygulamalarının nasıl entegre edilebildiğini anlatan öğreticiler listesi](../saas-apps/tutorial-list.md)
+* [Kullanıcıları ve grupları Azure Active Directory uygulamalara otomatik olarak sağlamayı etkinleştirmek için SCıM kullanın](../app-provisioning/use-scim-to-provision-users-and-groups.md)
+* [SaaS uygulamalarının nasıl tümleştirileceği hakkında öğreticiler listesi](../saas-apps/tutorial-list.md)
 

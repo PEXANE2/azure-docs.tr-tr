@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2C'deki kullanıcı hesaplarına genel bakış
-description: Azure Active Directory B2C'de kullanılabilecek kullanıcı hesabı türleri hakkında bilgi edinin.
+title: Azure Active Directory B2C Kullanıcı hesaplarına genel bakış
+description: Azure Active Directory B2C ' de kullanılabilecek Kullanıcı hesabı türleri hakkında bilgi edinin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,77 +11,77 @@ ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9630e1f23b6595ca690ecafcf0c4b9bfff603f2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78185667"
 ---
-# <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'deki kullanıcı hesaplarına genel bakış
+# <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı hesaplarına genel bakış
 
-Azure Etkin Dizin B2C'de (Azure AD B2C) oluşturulabilecek çeşitli hesap türleri vardır. Azure Etkin Dizini, Active Directory B2B ve Active Directory B2C, kullanılabilecek kullanıcı hesabı türlerinde paylaşır.
+Azure Active Directory B2C (Azure AD B2C) içinde, oluşturulabilecek birkaç hesap türü vardır. Kullanılabilecek Kullanıcı hesabı türlerinde Azure Active Directory, Active Directory B2B ve Active Directory B2C paylaşma.
 
 Aşağıdaki hesap türleri kullanılabilir:
 
-- **Çalışma hesabı** - Bir iş hesabı kiracıdaki kaynaklara erişebilir ve yönetici rolüyle kiracıları yönetebilir.
-- **Konuk hesabı** - Konuk hesabı yalnızca bir Microsoft hesabı veya uygulamalara erişmek veya kiracıları yönetmek için kullanılabilecek bir Azure Etkin Dizin kullanıcısı olabilir.
-- **Tüketici hesabı** - Azure AD B2C'ye kaydettiğiniz uygulamaların kullanıcısı tarafından bir tüketici hesabı kullanılır. Tüketici hesapları tarafından oluşturulabilir:
-  - Azure AD B2C uygulamasında kaydolma kullanıcı akışından geçen kullanıcı
-  - Microsoft Grafik API'yi kullanma
+- **İş hesabı** -bir iş hesabı Kiracıdaki kaynaklara erişebilir ve bir yönetici rolüyle, kiracılar yönetebilir.
+- **Konuk hesabı** -bir Konuk hesabı yalnızca uygulamalara erişmek veya kiracılar yönetmek için kullanılabilecek bir Microsoft hesabı veya Azure Active Directory Kullanıcı olabilir.
+- **Tüketici hesabı** -bir tüketici hesabı, Azure AD B2C kaydettiğiniz uygulamaların bir kullanıcısı tarafından kullanılır. Tüketici hesapları şu şekilde oluşturulabilir:
+  - Kullanıcı bir Azure AD B2C uygulamasındaki kaydolma Kullanıcı akışından geçiyor
+  - Microsoft Graph API 'sini kullanma
   - Azure portalını kullanma
 
-## <a name="work-account"></a>Çalışma hesabı
+## <a name="work-account"></a>İş hesabı
 
-Azure AD'yi temel alan tüm kiracılar için aynı şekilde bir iş hesabı oluşturulur. Bir iş hesabı oluşturmak için [Quickstart: Azure Etkin Dizin'e yeni kullanıcılar ekleme](../active-directory/fundamentals/add-users-azure-active-directory.md)'de bu bilgileri kullanabilirsiniz. Azure portalındaki Yeni **kullanıcı** seçimi kullanılarak bir iş hesabı oluşturulur.
+İş hesabı, Azure AD 'ye bağlı tüm kiracılar için aynı şekilde oluşturulur. Bir iş hesabı oluşturmak için [hızlı başlangıç: Azure Active Directory Yeni Kullanıcı Ekle](../active-directory/fundamentals/add-users-azure-active-directory.md)' deki bilgileri kullanabilirsiniz. Azure portal **Yeni Kullanıcı** seçeneği kullanılarak bir iş hesabı oluşturulur.
 
-Yeni bir iş hesabı eklediğinizde, aşağıdaki yapılandırma ayarlarını göz önünde bulundurmanız gerekir:
+Yeni bir iş hesabı eklediğinizde aşağıdaki yapılandırma ayarlarını göz önünde bulundurmanız gerekir:
 
-- **Ad** ve **Kullanıcı Adı** - **Ad** özelliği, kullanıcının verilen ve soyadını içerir. **Kullanıcı adı,** kullanıcının oturum açmaiçin girdiği tanımlayıcıdır. Kullanıcı adı tam etki alanını içerir. Kullanıcı adının alan adı bölümü, *your-domain.onmicrosoft.com*ilk varsayılan etki alanı adı veya *contoso.com*gibi doğrulanmış, federe olmayan [özel alan](../active-directory/fundamentals/add-custom-domain.md) adı olmalıdır.
-- **Profil** - Hesap, kullanıcı verilerinin profili ile ayarlanır. Ad, soyad, iş unvanı ve bölüm adı girme fırsatınız var. Hesap oluşturulduktan sonra profili edinebilirsiniz.
-- **Gruplar** - Aynı anda bir dizi kullanıcıya veya cihaza lisans veya izin atama gibi yönetim görevlerini gerçekleştirmek için bir grup kullanın. Yeni hesabı kiracınızdaki varolan bir [gruba](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) koyabilirsiniz.
-- **Dizin rolü** - Kullanıcı hesabının kiracınızdaki kaynaklara sahip olduğu erişim düzeyini belirtmeniz gerekir. Aşağıdaki izin düzeyleri kullanılabilir:
+- **Ad** ve **Kullanıcı adı** - **Name** özelliği, kullanıcının verilen ve soyadını içerir. **Kullanıcı adı** , kullanıcının oturum açmak için girdiği tanıtıcıdır. Kullanıcı adı, tam etki alanını içerir. Kullanıcı adının etki alanı adı bölümü, ilk varsayılan etki alanı adı *Your-Domain.onmicrosoft.com*veya *contoso.com*gibi doğrulanmış, Federasyon dışı bir [özel etki alanı](../active-directory/fundamentals/add-custom-domain.md) adı olmalıdır.
+- **Profil** -hesap, Kullanıcı verileri profiliyle ayarlanır. Ad, soyadı, iş unvanı ve bölüm adı girme şansınız vardır. Hesap oluşturulduktan sonra profili düzenleyebilirsiniz.
+- **Gruplar** -tek seferde birkaç Kullanıcı veya cihaza lisans veya izin atama gibi yönetim görevlerini gerçekleştirmek için bir grup kullanın. Yeni hesabı kiracınızdaki mevcut bir [gruba](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) koyabilirsiniz.
+- **Dizin rolü** -Kullanıcı hesabının kiracınızdaki kaynaklara sahip olduğu erişim düzeyini belirtmeniz gerekir. Aşağıdaki izin düzeyleri kullanılabilir:
 
-    - **Kullanıcı** - Kullanıcılar atanan kaynaklara erişebilir, ancak kiracı kaynaklarının çoğunu yönetemez.
-    - **Global yönetici** - Global yöneticiler tüm kiracı kaynakları üzerinde tam denetime sahiptir.
-    - **Sınırlı yönetici** - Kullanıcının yönetim rolünü veya rollerini seçin. Seçilebilen roller hakkında daha fazla bilgi için Azure [Etkin Dizini'nde yönetici rolleri atama](../active-directory/users-groups-roles/directory-assign-admin-roles.md)'ya bakın.
+    - **Kullanıcı** -kullanıcılar atanan kaynaklara erişebilir, ancak çoğu kiracı kaynağını yönetemez.
+    - **Genel yönetici** -Genel Yöneticiler tüm kiracı kaynakları üzerinde tam denetime sahiptir.
+    - **Sınırlı yönetici** -Kullanıcı için yönetim rolü veya rolleri seçin. Seçilebilecekleri roller hakkında daha fazla bilgi için, bkz. [Azure Active Directory yönetici rolleri atama](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ### <a name="create-a-work-account"></a>İş hesabı oluşturma
 
 Yeni bir iş hesabı oluşturmak için aşağıdaki bilgileri kullanabilirsiniz:
 
-- [Azure portalında](../active-directory/fundamentals/add-users-azure-active-directory.md)
+- [Azure portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>Kullanıcı profilini güncelleştirme
 
 Bir kullanıcının profilini güncelleştirmek için aşağıdaki bilgileri kullanabilirsiniz:
 
-- [Azure portalında](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+- [Azure portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
-### <a name="reset-a-password-for-a-user"></a>Kullanıcı için parolayı sıfırlama
+### <a name="reset-a-password-for-a-user"></a>Kullanıcı parolasını sıfırlama
 
 Bir kullanıcının parolasını sıfırlamak için aşağıdaki bilgileri kullanabilirsiniz:
 
-- [Azure portalında](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
+- [Azure portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
-## <a name="guest-user"></a>Konuk kullanıcı
+## <a name="guest-user"></a>Konuk Kullanıcı
 
-Harici kullanıcıları konuk kullanıcı olarak kiracınıza davet edebilirsiniz. Konuk kullanıcıyı Azure AD B2C kiracınıza davet etmek için tipik bir senaryo, yönetim sorumluluklarını paylaşmaktır. Konuk hesabı kullanma örneği için, [Azure Etkin Dizin B2B işbirliği kullanıcısının Özellikleri](../active-directory/b2b/user-properties.md)bölümüne bakın.
+Dış kullanıcıları kiracınıza Konuk Kullanıcı olarak davet edebilirsiniz. Konuk kullanıcıyı Azure AD B2C kiracınıza davet etmek için tipik bir senaryo, yönetim sorumluluklarını paylaşmalıdır. Konuk hesabı kullanmanın bir örneği için bkz. [Azure ACTIVE DIRECTORY B2B işbirliği kullanıcısının özellikleri](../active-directory/b2b/user-properties.md).
 
-Bir konuk kullanıcıyı kiracınıza davet ettiğinizde, alıcının e-posta adresini ve daveti açıklayan bir iletiyi sağlarsınız. Davet bağlantısı, kullanıcıyı **Başlat düğmesinin** seçildiği ve izinlerin gözden geçirilmesinin kabul edildiği onay sayfasına götürür. Gelen kutusu e-posta adresine eklenmemişse, kullanıcı davet edilen kimlik bilgilerini kullanarak bir Microsoft sayfasına giderek onay sayfasına gidebilir. Kullanıcı daha sonra daveti e-postadaki bağlantıyı tıklatarak kullanmak zorunda kalır. Örneğin: `https://myapps.microsoft.com/B2CTENANTNAME`.
+Kiracınıza bir Konuk Kullanıcı davet ettiğinizde, alıcının e-posta adresini ve daveti açıklayan bir iletiyi sağlarsınız. Davet **bağlantısı, kullanıcıyı Başlarken düğmesinin seçildiği** ve izin gözden geçirinin kabul edildiği onay sayfasına götürür. Bir gelen kutusu e-posta adresine iliştirilmemişse, Kullanıcı davet edilen kimlik bilgilerini kullanarak bir Microsoft sayfasına giderek onay sayfasına gidebilir. Daha sonra Kullanıcı, e-postadaki bağlantıya tıklanmakla aynı şekilde daveti kullanmaya zorlanır. Örneğin: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
-Konuk kullanıcıyı davet etmek için [Microsoft Graph API'yi](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) de kullanabilirsiniz.
+Konuk Kullanıcı davet etmek için [MICROSOFT Graph API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) 'sini de kullanabilirsiniz.
 
 ## <a name="consumer-user"></a>Tüketici kullanıcısı
 
-Tüketici kullanıcı, Azure AD B2C tarafından güvenli hale gelen uygulamalarda oturum açabilir, ancak Azure portalı gibi Azure kaynaklarına erişemez. Tüketici kullanıcı, Facebook veya Twitter gibi yerel bir hesabı veya federe hesapları kullanabilir. Bir tüketici hesabı, [Kaydolma veya Kaydolma kullanıcı akışı](user-flow-overview.md)kullanılarak, Microsoft Graph API'sını kullanarak veya Azure portalını kullanarak oluşturulur.
+Tüketici Kullanıcı Azure AD B2C tarafından güvenliği sağlanmış uygulamalarda oturum açabilir, ancak Azure portal gibi Azure kaynaklarına erişemez. Tüketici kullanıcısı, Facebook veya Twitter gibi yerel bir hesabı veya Federasyon hesaplarını kullanabilir. Bir tüketici hesabı, Microsoft Graph API kullanılarak veya Azure portal kullanılarak [kaydolma veya oturum açma Kullanıcı akışı](user-flow-overview.md)kullanılarak oluşturulur.
 
-Özel kullanıcı öznitelikleri kullanılarak bir tüketici kullanıcı hesabı oluşturulduğunda toplanan verileri belirtebilirsiniz. Daha fazla bilgi için Azure [Etkin Dizin B2C'de özel öznitelikleri tanımlayın'](user-flow-custom-attributes.md)a bakın.
+Özel Kullanıcı özniteliklerini kullanarak bir tüketici Kullanıcı hesabı oluşturulduğunda toplanan verileri belirtebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory B2C özel öznitelikleri tanımlama](user-flow-custom-attributes.md).
 
-Tüketici hesaplarını yönetme hakkında daha fazla bilgi için [bkz.](manage-user-accounts-graph-api.md)
+Tüketici hesaplarını yönetme hakkında daha fazla bilgi için bkz. [Microsoft Graph Azure AD B2C Kullanıcı hesaplarını yönetme](manage-user-accounts-graph-api.md).
 
-### <a name="migrate-consumer-user-accounts"></a>Tüketici kullanıcı hesaplarını geçirme
+### <a name="migrate-consumer-user-accounts"></a>Tüketici Kullanıcı hesaplarını geçirme
 
-Varolan tüketici kullanıcı hesaplarını herhangi bir kimlik sağlayıcısından Azure AD B2C'ye geçirmeniz gerekebilir. Daha fazla bilgi için [bkz.](user-migration.md)
+Mevcut tüketici Kullanıcı hesaplarını herhangi bir kimlik sağlayıcısından Azure AD B2C geçirmeniz gerekebilir. Daha fazla bilgi için bkz. [Azure AD B2C kullanıcıları geçirme](user-migration.md).

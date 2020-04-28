@@ -1,7 +1,7 @@
 ---
-title: Özel ilkeleri kullanarak parola değişikliğini yapılandırma
+title: Özel ilkeler kullanarak parola değişikliğini yapılandırma
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C'de özel ilkeleri kullanarak kullanıcıların parolalarını nasıl değiştireceğinizi öğrenin.
+description: Kullanıcıların Azure Active Directory B2C özel ilkeleri kullanarak parolalarını değiştirmesini nasıl sağlayacağınızı öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,25 +12,25 @@ ms.date: 12/13/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2c351f8a95110a32c53c68c5eb6095918578bc5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78189183"
 ---
-# <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de özel ilkeleri kullanarak parola değişikliğini yapılandırma
+# <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak parola değişikliğini yapılandırma
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C'de (Azure AD B2C), yerel bir hesapla oturum açmış olan kullanıcıların e-posta doğrulaması yla orijinalliklerini kanıtlamalarına gerek kalmadan parolalarını değiştirmelerini sağlayabilirsiniz. Oturum, kullanıcı parola değişikliği akışına ulaştığında sona ererse, yeniden oturum açmaları istenir. Bu makalede, [özel ilkelerde](custom-policy-overview.md)parola değişikliği yapılandırmak için nasıl gösterir. Kullanıcı akışları için self [servis parola sıfırlamayı](user-flow-self-service-password-reset.md) yapılandırmak da mümkündür.
+Azure Active Directory B2C (Azure AD B2C) ' de, yerel bir hesapla oturum açan kullanıcıların, kendi kimlik doğrulamasını e-posta doğrulamaya göre kanıtlamaları gerekmeden parolalarını değiştirmesine olanak sağlayabilirsiniz. Oturumun süresi dolduğunda Kullanıcı parola değiştirme akışına geçtiğinde, yeniden oturum açması istenir. Bu makalede, [özel ilkelerde](custom-policy-overview.md)parola değişikliğini yapılandırma gösterilmektedir. Kullanıcı akışları için [self servis parola sıfırlamayı](user-flow-self-service-password-reset.md) yapılandırmak da mümkündür.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-[Active Directory B2C'deki özel ilkelerle başlayın](custom-policy-get-started.md)adımlarını tamamlayın.
+[Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 
-## <a name="add-the-elements"></a>Öğeleri ekleme
+## <a name="add-the-elements"></a>Öğeleri ekleyin
 
-1. *TrustframeworkExtensions.xml* dosyanızı açın ve [ClaimsSchema](claimsschema.md) öğesine tanımlayıcı `oldPassword` sıyrık ile aşağıdaki **ClaimType** öğesini ekleyin:
+1. *TrustframeworkExtensions. xml* dosyanızı açın ve aşağıdaki **ClaimType** öğesini `oldPassword` [claimsschema](claimsschema.md) öğesine tanıtıcısı ile ekleyin:
 
     ```XML
     <BuildingBlocks>
@@ -45,7 +45,7 @@ Azure Active Directory B2C'de (Azure AD B2C), yerel bir hesapla oturum açmış 
     </BuildingBlocks>
     ```
 
-2. [ClaimsProvider](claimsproviders.md) öğesi, kullanıcının kimliğini doğrulayan teknik profili içerir. Aşağıdaki talep sağlayıcılarını **Talep Sağlayıcıları** öğesine ekleyin:
+2. Bir [ClaimsProvider](claimsproviders.md) öğesi, kullanıcının kimliğini doğrulayan teknik profili içerir. Aşağıdaki talep sağlayıcılarını **Claimsproviders** öğesine ekleyin:
 
     ```XML
     <ClaimsProviders>
@@ -121,9 +121,9 @@ Azure Active Directory B2C'de (Azure AD B2C), yerel bir hesapla oturum açmış 
     </ClaimsProviders>
     ```
 
-    Ön `IdentityExperienceFrameworkAppId` koşul öğreticisinde oluşturduğunuz IdentityExperienceFramework uygulamasının uygulama kimliğini değiştirin. Daha `ProxyIdentityExperienceFrameworkAppId` önce oluşturduğunuz ProxyIdentityExperienceFramework uygulamasının uygulama kimliğiyle değiştirin.
+    Önkoşul `IdentityExperienceFrameworkAppId` öğreticisinde oluşturduğunuz IdentityExperienceFramework UYGULAMASıNıN uygulama kimliğiyle değiştirin. Daha `ProxyIdentityExperienceFrameworkAppId` önce oluşturduğunuz ProxyIdentityExperienceFramework UYGULAMASıNıN uygulama kimliğiyle değiştirin.
 
-3. [UserJourney](userjourneys.md) öğesi, kullanıcının uygulamanızla etkileşimde yken izlediği yolu tanımlar. Olarak tanımlanan UserJourney ile yoksa `PasswordChange` **UserJourneys** öğesini ekleyin: **UserJourney**
+3. [Kullanıcıyolculuğu](userjourneys.md) öğesi, uygulamanız ile etkileşim kurarken kullanıcının aldığı yolu tanımlar. Kullanıcı tarafından tanımlanan **Kullanıcı yolculuğu** Ile yoksa `PasswordChange` **userıt neys** öğesini ekleyin:
 
     ```XML
     <UserJourneys>
@@ -151,35 +151,35 @@ Azure Active Directory B2C'de (Azure AD B2C), yerel bir hesapla oturum açmış 
     </UserJourneys>
     ```
 
-4. *TrustFrameworkExtensions.xml* ilke dosyasını kaydedin.
-5. Başlangıç paketi ile indirdiğiniz *ProfileEdit.xml* dosyasını kopyalayın ve *profileEditPasswordChange.xml*adını.
-6. Yeni dosyayı açın ve **PolicyId** özniteliğini benzersiz bir değerle güncelleştirin. Bu değer, ilkenizin adıdır. Örneğin, *B2C_1A_profile_edit_password_change.*
-7. **Oluşturduğunuz** yeni kullanıcı `<DefaultUserJourney>` yolculuğunun kimliğiyle eşleşecek şekilde ReferenceId özniteliğini değiştirin. Örneğin, *PasswordChange*.
+4. *TrustFrameworkExtensions. xml* ilke dosyasını kaydedin.
+5. Başlangıç paketiyle indirdiğiniz *Profileedit. xml* dosyasını kopyalayın ve *Profileeditpasswordchange. xml*olarak adlandırın.
+6. Yeni dosyayı açın ve **PolicyId** özniteliğini benzersiz bir değerle güncelleştirin. Bu değer, ilkenizin adıdır. Örneğin, *B2C_1A_profile_edit_password_change*.
+7. ' `<DefaultUserJourney>` Deki **referenceıd** özniteliğini, oluşturduğunuz yenı Kullanıcı yolculuğunun kimliğiyle eşleşecek şekilde değiştirin. Örneğin, *PasswordChange*.
 8. Yaptığınız değişiklikleri kaydedin.
 
-Örnek politikayı [burada](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change)bulabilirsiniz.
+Örnek ilkeyi [burada](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change)bulabilirsiniz.
 
-## <a name="test-your-policy"></a>İlkinizi test edin
+## <a name="test-your-policy"></a>İlkenizi test etme
 
-Uygulamalarınızı Azure AD B2C'de sınarken, azure AD B2C belirtecinin iade edilebilmek için `https://jwt.ms` azure AD B2C belirteci nin bu araçtaki talepleri gözden geçirebilmesi yararlı olabilir.
+Azure AD B2C ' de Uygulamalarınızı sınarken, içindeki talepleri gözden geçirebilmek `https://jwt.ms` için Azure AD B2C belirtecinin geri döndürüldüğünden yararlı olabilir.
 
 ### <a name="upload-the-files"></a>Dosyaları karşıya yükleme
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
-2. Üst menüdeki **Dizin + abonelik** filtresini seçerek ve kiracınızı içeren dizin seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
-3. Azure portalının sol üst köşesindeki **tüm hizmetleri** seçin ve ardından Azure **AD B2C'yi**arayın ve seçin.
-4. **Kimlik Deneyimi Çerçevesi'ni**seçin.
-5. Özel İlkeler sayfasında, **Yükle İlkesi'ni**tıklatın.
-6. **Varsa politikanın Üzerine Yaz'ı**seçin ve ardından *TrustframeworkExtensions.xml* dosyasını arayın ve seçin.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
+2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
+3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
+4. **Kimlik deneyimi çerçevesini**seçin.
+5. Özel Ilkeler sayfasında, **Ilkeyi karşıya yükle**' ye tıklayın.
+6. Varsa **Ilkenin üzerine yaz**' ı seçin ve ardından *TrustframeworkExtensions. xml* dosyasını bulun ve seçin.
 7. **Karşıya Yükle**'ye tıklayın.
-8. *ProfileEditPasswordChange.xml*gibi güvenen taraf dosyası için 5'ten 7'ye kadar olan adımları yineleyin.
+8. Bağlı olan taraf dosyası için *Profileeditpasswordchange. xml*gibi 5 ' ten 7 ' ye kadar olan adımları yineleyin.
 
-### <a name="run-the-policy"></a>İlkeyi çalıştırın
+### <a name="run-the-policy"></a>İlkeyi çalıştırma
 
-1. Değiştirdiğiniz ilkeyi açın. Örneğin, *B2C_1A_profile_edit_password_change.*
-2. **Uygulama**için, daha önce kaydolduğunuz başvurunuzu seçin. Belirteci görmek için **Yanıt URL'sinin** göstermesi `https://jwt.ms`gerekir.
-3. **Şimdi çalıştır**’a tıklayın. Daha önce oluşturduğunuz acouunt ile oturum açın. Artık parolayı değiştirme fırsatınız olmalıdır.
+1. Değiştirdiğiniz ilkeyi açın. Örneğin, *B2C_1A_profile_edit_password_change*.
+2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Belirteci görmek için, **yanıt URL 'sinin** gösterilmesi `https://jwt.ms`gerekir.
+3. **Şimdi çalıştır**’a tıklayın. Daha önce oluşturduğunuz acouyeniden bağlama ile oturum açın. Şimdi parolayı değiştirme fırsatına sahip olmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory B2C'de özel ilkeleri kullanarak parola karmaşıklığını nasıl yapılandırabileceğiniz](custom-policy-password-complexity.md)hakkında bilgi edinin.
+- [Azure Active Directory B2C özel ilkeleri kullanarak parola karmaşıklığını nasıl yapılandırabileceğinizi](custom-policy-password-complexity.md)öğrenin.

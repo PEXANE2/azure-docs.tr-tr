@@ -1,6 +1,6 @@
 ---
-title: Azure Etkinlik Ağıtı için etkinlikler filtreleme
-description: Bu makalede, Olay Izgara aboneliği oluşturulurken olayların (olay türüne, konuya göre, operatörlere ve verilere göre vb.) nasıl filtreuygulanılanın caizdir.
+title: Azure Event Grid olayları filtreleme
+description: Bu makalede, bir Event Grid aboneliği oluştururken olayların (olay türüne, konuya göre, işleçlere ve verilere göre) nasıl filtreleneceği gösterilir.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 63a5cdbff79af52d9f96cf410a820c6cfc530066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79454032"
 ---
-# <a name="filter-events-for-event-grid"></a>Olay Izgarası için filtre olayları
+# <a name="filter-events-for-event-grid"></a>Olayları Event Grid filtrele
 
-Bu makalede, Olay Izgara aboneliği oluşturulurken olaylar nasıl filtrelenir. Olay filtreleme seçenekleri hakkında bilgi edinmek için Olay [Ağı abonelikleri için olay filtrelemeyi anlayın'a](event-filtering.md)bakın.
+Bu makalede, Event Grid aboneliği oluştururken olayların nasıl filtreleneceği gösterilir. Olay filtreleme seçenekleri hakkında bilgi edinmek için bkz. [Event Grid abonelikleri için olay filtrelemeyi anlama](event-filtering.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="filter-by-event-type"></a>Olay türüne göre filtreleme
+## <a name="filter-by-event-type"></a>Olay türüne göre filtrele
 
-Olay Izgara aboneliği oluştururken, bitiş noktasına hangi [olay türlerinin](event-schema.md) gönderilecek lerini belirtebilirsiniz. Bu bölümdeki örnekler, bir kaynak grubu için olay abonelikleri `Microsoft.Resources.ResourceWriteFailure` oluşturur, ancak gönderilen olayları sınırlar ve `Microsoft.Resources.ResourceWriteSuccess`. Olayları olay türlerine göre filtrelerken daha fazla esnekliğe ihtiyacınız varsa, gelişmiş işleçlere ve veri alanlarına göre filtreleme konusuna bakın.
+Event Grid bir abonelik oluştururken, hangi [olay türlerinin](event-schema.md) uç noktaya gönderileceğini belirtebilirsiniz. Bu bölümdeki örnekler, bir kaynak grubu için olay abonelikleri oluşturur ancak `Microsoft.Resources.ResourceWriteFailure` ve ' `Microsoft.Resources.ResourceWriteSuccess`a gönderilen olayları sınırlandırır. Olayları olay türlerine göre filtrelerken daha fazla esneklik gerekiyorsa bkz. filtre gelişmiş işleçler ve veri alanları.
 
-PowerShell için, `-IncludedEventType` aboneliği oluştururken parametreyi kullanın.
+PowerShell için, aboneliği oluştururken `-IncludedEventType` parametresini kullanın.
 
 ```powershell
 $includedEventTypes = "Microsoft.Resources.ResourceWriteFailure", "Microsoft.Resources.ResourceWriteSuccess"
@@ -36,7 +36,7 @@ New-AzEventGridSubscription `
   -IncludedEventType $includedEventTypes
 ```
 
-Azure CLI için `--included-event-types` parametreyi kullanın. Aşağıdaki örnekte, Bir Bash kabuğunda Azure CLI kullanır:
+Azure CLı için `--included-event-types` parametresini kullanın. Aşağıdaki örnek, bir bash kabuğu 'nda Azure CLı kullanır:
 
 ```azurecli
 includedEventTypes="Microsoft.Resources.ResourceWriteFailure Microsoft.Resources.ResourceWriteSuccess"
@@ -48,7 +48,7 @@ az eventgrid event-subscription create \
   --included-event-types $includedEventTypes
 ```
 
-Kaynak Yöneticisi şablonu için `includedEventTypes` özelliği kullanın.
+Kaynak Yöneticisi şablonu için `includedEventTypes` özelliğini kullanın.
 
 ```json
 "resources": [
@@ -77,11 +77,11 @@ Kaynak Yöneticisi şablonu için `includedEventTypes` özelliği kullanın.
 ]
 ```
 
-## <a name="filter-by-subject"></a>Konuya göre filtreleme
+## <a name="filter-by-subject"></a>Konuya göre filtrele
 
-Olay verilerindeki olayları konuya göre filtreleyebilirsiniz. Konunun başlangıcı veya sonu için eşleşecek bir değer belirtebilirsiniz. Olayları konuya göre filtrelerken daha fazla esnekliğe ihtiyacınız varsa, gelişmiş işleçler ve veri alanlarına göre Filtreleme konusuna bakın.
+Olayları olay verilerinde konuya göre filtreleyebilirsiniz. Konunun başlangıcı veya bitişi için eşleştirilecek bir değer belirtebilirsiniz. Olayları konuya göre filtrelerken daha fazla esneklik gerekiyorsa bkz. Gelişmiş Operatörler ve veri alanlarına göre filtreleme.
 
-Aşağıdaki PowerShell örneğinde, konunun başına göre filtreleyen bir olay aboneliği oluşturursunuz. Olayları belirli `-SubjectBeginsWith` bir kaynak için olanolaylarla sınırlamak için parametreyi kullanırsınız. Bir ağ güvenlik grubunun kaynak kimliğini geçersiniz.
+Aşağıdaki PowerShell örneğinde, konusunun başlangıcına göre filtreleyen bir olay aboneliği oluşturacaksınız. Belirli bir kaynaktaki `-SubjectBeginsWith` olayları sınırlamak için parametresini kullanabilirsiniz. Bir ağ güvenlik grubunun kaynak KIMLIĞINI geçirirsiniz.
 
 ```powershell
 $resourceId = (Get-AzResource -ResourceName demoSecurityGroup -ResourceGroupName myResourceGroup).ResourceId
@@ -93,7 +93,7 @@ New-AzEventGridSubscription `
   -SubjectBeginsWith $resourceId
 ```
 
-Sonraki PowerShell örneği, bir blob depolama için abonelik oluşturur. Olayları, bir konu yla sınırlandıran `.jpg`olaylar.
+Sonraki PowerShell örneği bir blob depolaması için bir abonelik oluşturur. Olayları ile biten bir konuyla sınırlı olarak kısıtlar `.jpg`.
 
 ```powershell
 $storageId = (Get-AzStorageAccount -ResourceGroupName myResourceGroup -AccountName $storageName).Id
@@ -105,7 +105,7 @@ New-AzEventGridSubscription `
   -SubjectEndsWith ".jpg"
 ```
 
-Aşağıdaki Azure CLI örneğinde, konunun başına göre filtreleyen bir olay aboneliği oluşturursunuz. Olayları belirli `--subject-begins-with` bir kaynak için olanolaylarla sınırlamak için parametreyi kullanırsınız. Bir ağ güvenlik grubunun kaynak kimliğini geçersiniz.
+Aşağıdaki Azure CLı örneğinde, konunun başlangıcına göre filtreleyen bir olay aboneliği oluşturacaksınız. Belirli bir kaynaktaki `--subject-begins-with` olayları sınırlamak için parametresini kullanabilirsiniz. Bir ağ güvenlik grubunun kaynak KIMLIĞINI geçirirsiniz.
 
 ```azurecli
 resourceId=$(az resource show --name demoSecurityGroup --resource-group myResourceGroup --resource-type Microsoft.Network/networkSecurityGroups --query id --output tsv)
@@ -117,7 +117,7 @@ az eventgrid event-subscription create \
   --subject-begins-with $resourceId
 ```
 
-Sonraki Azure CLI örneği, bir blob depolama alanı için abonelik oluşturur. Olayları, bir konu yla sınırlandıran `.jpg`olaylar.
+Sonraki Azure CLı örneği bir blob depolaması için bir abonelik oluşturur. Olayları ile biten bir konuyla sınırlı olarak kısıtlar `.jpg`.
 
 ```azurecli
 storageid=$(az storage account show --name $storageName --resource-group myResourceGroup --query id --output tsv)
@@ -129,7 +129,7 @@ az eventgrid event-subscription create \
   --subject-ends-with ".jpg"
 ```
 
-Aşağıdaki Kaynak Yöneticisi şablonu örneğinde, konunun başına göre filtreleyen bir olay aboneliği oluşturursunuz. Belirli bir `subjectBeginsWith` kaynak için olayları sınırlamak için özelliği kullanırsınız. Bir ağ güvenlik grubunun kaynak kimliğini geçersiniz.
+Aşağıdaki Kaynak Yöneticisi şablonu örneğinde, konunun başlangıcına göre filtreleyen bir olay aboneliği oluşturursunuz. Belirli bir kaynaktaki `subjectBeginsWith` olayları sınırlamak için özelliğini kullanın. Bir ağ güvenlik grubunun kaynak KIMLIĞINI geçirirsiniz.
 
 ```json
 "resources": [
@@ -155,7 +155,7 @@ Aşağıdaki Kaynak Yöneticisi şablonu örneğinde, konunun başına göre fil
 ]
 ```
 
-Sonraki Kaynak Yöneticisi şablonu örneği, bir blob depolama alanı için abonelik oluşturur. Olayları, bir konu yla sınırlandıran `.jpg`olaylar.
+Sonraki Kaynak Yöneticisi şablonu örneği bir blob depolaması için bir abonelik oluşturur. Olayları ile biten bir konuyla sınırlı olarak kısıtlar `.jpg`.
 
 ```json
 "resources": [
@@ -181,15 +181,15 @@ Sonraki Kaynak Yöneticisi şablonu örneği, bir blob depolama alanı için abo
 ]
 ```
 
-## <a name="filter-by-operators-and-data"></a>Operatörler ve verilere göre filtreleme
+## <a name="filter-by-operators-and-data"></a>İşleçlere ve verilere göre filtrele
 
-Filtrelemede daha fazla esneklik için, olayları filtrelemek için işleçleri ve veri özelliklerini kullanabilirsiniz.
+Filtrelemeye ilişkin daha fazla esneklik için İşleçleri ve veri özelliklerini kullanarak olayları filtreleyebilirsiniz.
 
-### <a name="subscribe-with-advanced-filters"></a>Gelişmiş filtrelerle abone olun
+### <a name="subscribe-with-advanced-filters"></a>Gelişmiş filtrelerle abone olma
 
-Gelişmiş filtreleme için kullanabileceğiniz işleçler ve anahtarlar hakkında bilgi edinmek için [Gelişmiş filtreleme'ye](event-filtering.md#advanced-filtering)bakın.
+Gelişmiş filtreleme için kullanabileceğiniz işleçler ve anahtarlar hakkında bilgi edinmek için bkz. [Gelişmiş filtreleme](event-filtering.md#advanced-filtering).
 
-Bu örnekler özel bir konu oluşturur. Özel konuya abone olurlar ve veri nesnesindeki bir değere göre filtrelenirler. Renk özelliği mavi, kırmızı veya yeşil olarak ayarlanmış olaylar aboneliğe gönderilir.
+Bu örnekler özel bir konu oluşturur. Özel konuya abone olur ve veri nesnesindeki bir değere göre filtre uygulayın. Color özelliği mavi, Red veya yeşil olarak ayarlanmış olaylar aboneliğe gönderilir.
 
 Azure CLI için şunu kullanın:
 
@@ -236,7 +236,7 @@ New-AzEventGridSubscription `
 
 ### <a name="test-filter"></a>Test filtresi
 
-Filtreyi sınamak için, renk alanı yeşile ayarlanmış bir olay gönderin. Yeşil filtredeki değerlerden biri olduğundan, olay bitiş noktasına teslim edilir.
+Filtreyi test etmek için, Color alanı yeşil olarak ayarlanmış bir olay gönderin. Yeşil, filtredeki değerlerden biri olduğundan, olay uç noktaya teslim edilir.
 
 Azure CLI için şunu kullanın:
 
@@ -275,7 +275,7 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-Olayın gönderilmediği bir senaryoyu sınamak için renk alanı kümesini sarıya doğru bir olay gönderin. Sarı, abonelikte belirtilen değerlerden biri olmadığından, etkinlik aboneliğinize teslim edilmemiştür.
+Olayın gönderilmediği bir senaryoyu test etmek için, Color alanı sarı olarak ayarlanmış bir olay gönderin. Sarı, abonelikte belirtilen değerlerden biri değildir, bu nedenle etkinlik aboneliğinize teslim edilmemiş.
 
 Azure CLI için şunu kullanın:
 
@@ -306,6 +306,6 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Olay teslimlerini izleme hakkında daha fazla bilgi için [Bkz.](monitor-event-delivery.md)
-* Kimlik doğrulama anahtarı hakkında daha fazla bilgi için [Olay Izgara güvenliği ve kimlik doğrulama](security-authentication.md)sı'na bakın.
-* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.
+* Olay teslimatlarını izleme hakkında bilgi için bkz. [izleyici Event Grid ileti teslimi](monitor-event-delivery.md).
+* Kimlik doğrulama anahtarı hakkında daha fazla bilgi için bkz. [Event Grid Security and Authentication](security-authentication.md).
+* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md).

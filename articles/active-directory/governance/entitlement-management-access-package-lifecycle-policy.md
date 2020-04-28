@@ -1,6 +1,6 @@
 ---
-title: Azure AD yetkilendirme yönetiminde bir erişim paketi için yaşam döngüsü ayarlarını değiştirme - Azure Etkin Dizin
-description: Azure Active Directory yetkilendirme yönetiminde bir erişim paketi için yaşam döngüsü ayarlarını nasıl değiştireceğinizi öğrenin.
+title: Azure AD Yetkilendirme Yönetimi 'nde erişim paketi için yaşam döngüsü ayarlarını değiştirme-Azure Active Directory
+description: Azure Active Directory yetkilendirme yönetimindeki bir erişim paketi için yaşam döngüsü ayarlarını değiştirmeyi öğrenin.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,42 +17,42 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 959d85f496a4a573a969bf736aba137d5b86154a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261989"
 ---
-# <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için yaşam döngüsü ayarlarını değiştirme
+# <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimindeki bir erişim paketi için yaşam döngüsü ayarlarını değiştirme
 
-Erişim paketi yöneticisi olarak, varolan bir ilkeyi düzenleyerek bir erişim paketinin yaşam döngüsü ayarlarını istediğiniz zaman değiştirebilirsiniz. Bir ilkenin son kullanma tarihini değiştirirseniz, bekleyen onay veya onaylı durumda olan isteklerin son kullanma tarihi değişmez.
+Bir erişim paketi Yöneticisi olarak, mevcut bir ilkeyi düzenleyerek, erişim paketinin yaşam döngüsü ayarlarını dilediğiniz zaman değiştirebilirsiniz. Bir ilkenin sona erme tarihini değiştirirseniz, zaten bekleyen bir onaylama veya onaylanan durumda olan isteklerin sona erme tarihi değişmez.
 
-Bu makalede, varolan bir erişim paketinin yaşam döngüsü ayarlarının nasıl değiştirilen açıklanmaktadır.
+Bu makalede, var olan bir erişim paketinin yaşam döngüsü ayarlarının nasıl değiştirileceği açıklanır.
 
-## <a name="open-lifecycle-settings"></a>Yaşam döngüsü ayarlarını açın
+## <a name="open-lifecycle-settings"></a>Yaşam döngüsü ayarlarını açma
 
-Bir erişim paketinin yaşam döngüsü ayarlarını değiştirmek için ilgili ilkeyi açmanız gerekir. Bir erişim paketinin yaşam döngüsü ayarlarını açmak için aşağıdaki adımları izleyin.
+Bir erişim paketinin yaşam döngüsü ayarlarını değiştirmek için, ilgili ilkeyi açmanız gerekir. Bir erişim paketinin yaşam döngüsü ayarlarını açmak için aşağıdaki adımları izleyin.
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı yöneticisi, Katalog sahibi veya Access paket yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Etkin Dizin'i** tıklatın ve ardından **Kimlik Yönetimi'ni**tıklatın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde, **Access paketlerini** tıklatın ve ardından erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. **İlkeler'i** tıklatın ve ardından dönüştürmek istediğiniz yaşam döngüsü ayarlarına sahip ilkeyi tıklatın.
+1. **İlkeler** ' e tıklayın ve ardından düzenlemek istediğiniz yaşam döngüsü ayarlarına sahip ilkeye tıklayın.
 
-    İlke ayrıntıları bölmesi sayfanın alt kısmında açılır.
+    Ilke ayrıntıları bölmesi sayfanın altında açılır.
 
-    ![Erişim paketi - İlke ayrıntıları bölmesi](./media/entitlement-management-shared/policy-details.png)
+    ![Erişim paketi-Ilke ayrıntıları bölmesi](./media/entitlement-management-shared/policy-details.png)
 
-1. İlkeyi yeniden yapmak için **Edit'i** tıklatın.
+1. İlkeyi düzenlemek için **Düzenle** ' ye tıklayın.
 
-    ![Erişim paketi - İlkeyi güncelle](./media/entitlement-management-shared/policy-edit.png)
+    ![Erişim paketi-ilkeyi Düzenle](./media/entitlement-management-shared/policy-edit.png)
 
-1. Yaşam **döngüsü** ayarlarını açmak için Yaşam Döngüsü sekmesini tıklatın.
+1. Yaşam döngüsü ayarlarını açmak için **yaşam döngüsü** sekmesine tıklayın.
 
 [!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Erişim paketi için istek ve onay ayarlarını değiştirme](entitlement-management-access-package-request-policy.md)
+- [Erişim paketi için değişiklik isteği ve onay ayarları](entitlement-management-access-package-request-policy.md)

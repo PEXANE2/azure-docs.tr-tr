@@ -1,6 +1,6 @@
 ---
-title: (AmortismanA Uğradı) Azure DC/OS kümesinde ile kanarya sürümü
-description: Vamp'ı kanarya sürümü hizmetlerine kullanma ve bir Azure Kapsayıcı Hizmeti DC/OS kümesinde akıllı trafik filtresi uygulama
+title: Kullanım DıŞı Azure DC/OS kümesinde vamp ile Canary sürümü
+description: Vamp 'yi bir Azure Container Service DC/OS kümesine akıllı trafik filtreleme ve uygulama hizmetleri için kullanma
 author: gggina
 ms.service: container-service
 ms.topic: conceptual
@@ -8,61 +8,61 @@ ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
 ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77189099"
 ---
-# <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(AmortismanA Uğradı) Azure Konteyner Hizmeti DC/OS kümesinde içeren kanarya sürümü mikro hizmetleri
+# <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>Kullanım DıŞı Azure Container Service DC/OS kümesinde vamp ile mikro hizmetler yayın
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Bu izbarada, Azure Konteyner Hizmeti'nde BIR DC/OS kümesiyle Vamp'ı kurduk. Biz kanarya demo hizmeti sava serbest bırakmak ve daha sonra akıllı trafik filtreleme uygulayarak Firefox ile hizmet uyumsuzluğu çözmek. 
+Bu kılavuzda, bir DC/OS kümesi ile Azure Container Service vamp 'yi ayarladık. Vamp demo hizmeti "Sava" ' ı yayınlarız ve ardından akıllı trafik filtrelemesi uygulayarak Firefox ile hizmetin bir uyumsuzluğunun çözümlenme. 
 
 > [!TIP] 
-> Bu izme bir DC/OS kümesi üzerinde çalışır, ancak orkestratör olarak Kubernetes ile kullanabilirsiniz.
+> Bu kılavuzda, vamp bir DC/OS kümesinde çalışır, ancak Orchestrator olarak Kubernetes ile vamp 'yi de kullanabilirsiniz.
 >
 
-## <a name="about-canary-releases-and-vamp"></a>Kanarya bültenleri ve hakkında
+## <a name="about-canary-releases-and-vamp"></a>Kanarlı yayınlar ve vamp hakkında
 
 
-[Kanarya serbest](https://martinfowler.com/bliki/CanaryRelease.html) Netflix, Facebook ve Spotify gibi yenilikçi kuruluşlar tarafından benimsenen akıllı bir dağıtım stratejisidir. Bu mantıklı bir yaklaşımdır, çünkü sorunları azaltır, güvenlik ağları sunar ve yeniliği artırır. Peki neden tüm şirketler kullanmıyor? Bir CI/CD boru hattını kanarya stratejilerini içerecek şekilde genişletmek karmaşıklık katar ve kapsamlı devops bilgi ve deneyimi gerektirir. Bu, daha başlamadan küçük şirketleri ve işletmeleri engellemeye yeter. 
+[Kanarya serbest bırakma](https://martinfowler.com/bliki/CanaryRelease.html) , Netflix, Facebook ve Spotify gibi yenilikçi kuruluşların benimsediği bir akıllı dağıtım stratejisidir. Sorunları azalttığı, güvenlik ağları sunan ve yeniliklerin arttığı için anlamlı bir yaklaşım. Öyleyse, neden tüm şirketler bunu kullanmıyor? Bir CI/CD işlem hattının, kanarary stratejileri içerecek şekilde genişletilmesi karmaşıklık sağlar ve kapsamlı DevOps bilgi ve deneyimi gerektirir. Bu, daha küçük şirketlerin ve kuruluşların çalışmaya başlamadan önce, benzer şekilde engellenmesi için yeterlidir. 
 
-[Vamp](https://vamp.io/) bu geçişi kolaylaştırmak ve tercih ettiğiniz konteyner zamanlayıcısına kanarya bırakma özellikleri getirmek için tasarlanmış açık kaynak kodlu bir sistemdir. Vamp'ın kanarya işlevselliği yüzde tabanlı kullanıma göre daha fazladır. Trafik filtrelenebilir ve örneğin belirli kullanıcıları, IP aralıklarını veya aygıtları hedeflemek için çok çeşitli koşullara bölünebilir. , gerçek dünya verilerine dayalı otomasyona olanak tanıyan performans ölçümlerini izler ve analiz eder. Hatalar üzerinde otomatik geri alma ayarlayabilir veya yük veya gecikme durumuna göre tek tek hizmet türevlerini ölçeklendirebilirsiniz.
+[Vamp](https://vamp.io/) , bu geçişi kolaylaştırmak ve tercih ettiğiniz kapsayıcı zamanlayıcısına özellikler getirmek için tasarlanan açık kaynaklı bir sistemdir. Vamp 'nin kanarya işlevselliği, yüzde tabanlı piyasaya çıkarma 'dan daha fazla gider. Trafik, belirli kullanıcıları, IP aralıklarını veya cihazları hedeflemek için çok çeşitli koşullara göre filtrelenebilir ve ayrılabilir. Vamp, performans ölçümlerini izler ve analiz eder ve gerçek dünya verilerine göre Otomasyon sağlar. Hatalarda otomatik geri alma veya yükleme ya da gecikme süresine göre tek tek hizmet türevlerini ölçeklendirebilirsiniz.
 
-## <a name="set-up-azure-container-service-with-dcos"></a>DC/OS ile Azure Kapsayıcı Hizmeti ayarlama
-
-
-
-1. Bir ana ve varsayılan boyutta iki aracıyla [bir DC/İŞLetim sistemi kümesi dağıtın.](container-service-deployment.md) 
-
-2. DC/OS kümesine bağlanmak için [bir SSH tüneli oluşturun.](../container-service-connect.md) Bu makalede, yerel bağlantı noktası 80 üzerinde kümeye tünel varsayar.
+## <a name="set-up-azure-container-service-with-dcos"></a>DC/OS ile Azure Container Service ayarlama
 
 
-## <a name="set-up-vamp"></a>Vamp'ı ayarlama
 
-Artık çalışan bir DC/OS kümeniz olduğuna göre, DC/OS Kullanıcı Arabirimi'nden yükleyebilirsiniz (http:\//localhost:80). 
+1. Bir ana ve iki aracı varsayılan boyutu olan bir [DC/OS kümesi dağıtın](container-service-deployment.md) . 
+
+2. DC/OS kümesine bağlanmak için [BIR SSH tüneli oluşturun](../container-service-connect.md) . Bu makalede, yerel bağlantı noktasındaki 80 kümesine tünel oluşturduğunuz varsayılır.
+
+
+## <a name="set-up-vamp"></a>Vamp 'yi ayarlama
+
+Artık çalışan bir DC/OS kümeniz olduğuna göre, DC/OS kullanıcı arabiriminden vamp 'yi yükleyebilirsiniz (http:\//localhost: 80). 
 
 ![DC/OS Kullanıcı Arabirimi](./media/container-service-dcos-vamp-canary-release/01_set_up_vamp.png)
 
-Kurulum iki aşamada yapılır:
+Yükleme iki aşamada yapılır:
 
-1. **Elasticsearch dağıtın.**
+1. **Elaa aramasını dağıtın**.
 
-2. Ardından DC/OS evren paketini kurarak **Vamp'ı dağıtın.**
+2. Ardından, vamp DC/OS Universe paketini yükleyerek **vamp 'yi dağıtın** .
 
-### <a name="deploy-elasticsearch"></a>Elasticsearch'u dağıt
+### <a name="deploy-elasticsearch"></a>Elaun aramasını dağıtma
 
-, ölçümlerin toplanması ve toplanması için Elasticsearch gerektirir. Uyumlu bir Elasticsearch yığını dağıtmak için [magneticio Docker görüntülerini](https://hub.docker.com/r/magneticio/elastic/) kullanabilirsiniz.
+Vamp, ölçüm toplama ve toplama için Elana Search gerektirir. [Manyetik ticio Docker görüntülerini](https://hub.docker.com/r/magneticio/elastic/) , uyumlu bir vamp Elaticsearch yığını dağıtmak için kullanabilirsiniz.
 
-1. DC/OS Kullanıcı İşi'nde **Hizmetler'e** gidin ve **Hizmeti Dağıt'ı**tıklatın.
+1. DC/OS Kullanıcı arabiriminde, **Hizmetler** ' e gidin ve **Hizmeti Dağıt**' a tıklayın.
 
-2. Yeni Hizmet Aç'ını **Dağıt'tan** **JSON modunu** seçin.
+2. **Yeni hizmet dağıtma** açılır listesinden **JSON modu** ' nu seçin.
 
-   ![JSON modunu seçin](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
+   ![JSON modunu seç](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
 
-3. Aşağıdaki JSON yapıştırın. Bu yapılandırma, 1 GB RAM ve Elasticsearch bağlantı noktasında temel bir sistem durumu denetimi ile konteyner çalışır.
+3. Aşağıdaki JSON 'a yapıştırın. Bu yapılandırma, kapsayıcıyı 1 GB RAM ve Elaana arama bağlantı noktası üzerinde temel bir sistem durumu denetimi ile çalıştırır.
   
    ```JSON
    {
@@ -91,51 +91,51 @@ Kurulum iki aşamada yapılır:
    ```
   
 
-3. **Dağıt'ı**tıklatın.
+3. **Dağıt**' a tıklayın.
 
-   DC/OS Elasticsearch konteynerini dağıtıyor. **İlerlemeyi Hizmetler** sayfasından izleyebilirsiniz.  
+   DC/OS, Elayoara kapsayıcısını dağıtır. İlerlemeyi **Hizmetler** sayfasında izleyebilirsiniz.  
 
-   ![dağıtmak e? Elastik arama](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
+   ![e-dağıt mı? Elasticsearch](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
 
-### <a name="deploy-vamp"></a>Vamp'ı Dağıt
+### <a name="deploy-vamp"></a>Vamp dağıtma
 
-**Elasticsearch'ü Çalıştırma**olarak bildirdikten sonra DC/OS Universe paketini ekleyebilirsiniz. 
+Bir kez **çalışıyor**olarak rapor aradıktan sonra, vamp DC/OS Universe paketini ekleyebilirsiniz. 
 
-1. **Evrene** git ve **vampir**ara. 
-   ![DC/OS evreninde](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
+1. **Universe** adresine gidin ve **vamp**araması yapın. 
+   ![DC/OS Universe üzerinde vamp](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
 
-2. paketinin yanına **yükle'yi** tıklatın ve **Gelişmiş Kurulum'u**seçin.
+2. Vamp paketinin yanındaki **yükleme** ' ye tıklayın ve **Gelişmiş yükleme**' yi seçin.
 
-3. Aşağı kaydırın ve aşağıdaki elasticsearch-url girin: `http://elasticsearch.marathon.mesos:9200`. 
+3. Aşağı kaydırın ve aşağıdaki elaun arama URL 'sini girin: `http://elasticsearch.marathon.mesos:9200`. 
 
-   ![Elasticsearch URL'yi girin](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
+   ![Elaun Search URL 'sini girin](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
 
-4. **Gözden Geçir ve Yükle'yi**tıklatın, ardından dağıtımı başlatmak için **Yükle'yi** tıklatın.  
+4. **İnceleme ve**Kurulum ' a tıklayın ve ardından dağıtımı başlatmak için **Kurulum** ' a tıklayın.  
 
-   DC/OS gerekli tüm bileşenlerini dağıtMaktadır. **İlerlemeyi Hizmetler** sayfasından izleyebilirsiniz.
+   DC/OS tüm gerekli vamp bileşenlerini dağıtır. İlerlemeyi **Hizmetler** sayfasında izleyebilirsiniz.
   
-   ![Vamp'ı evren paketi olarak dağıtın](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
+   ![Vamp 'yi Universe paketi olarak dağıtma](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
   
-5. Dağıtım tamamlandıktan sonra UI'ye erişebilirsiniz:
+5. Dağıtım tamamlandıktan sonra, vamp Kullanıcı arabirimine erişebilirsiniz:
 
-   ![DC/OS'de hizmeti](./media/container-service-dcos-vamp-canary-release/07_deploy_vamp_complete.png)
+   ![DC/OS üzerinde vamp hizmeti](./media/container-service-dcos-vamp-canary-release/07_deploy_vamp_complete.png)
   
-   ![UI](./media/container-service-dcos-vamp-canary-release/08_vamp_ui.png)
+   ![Vamp Kullanıcı arabirimi](./media/container-service-dcos-vamp-canary-release/08_vamp_ui.png)
 
 
-## <a name="deploy-your-first-service"></a>İlk hizmetinizi dağıtın
+## <a name="deploy-your-first-service"></a>İlk hizmetinizi dağıtma
 
-çalışmaya devam ettiğine göre, bir plandan bir hizmet dağıtın. 
+Artık vamp çalışır durumdadır ve bir Blueprint 'ten bir hizmet dağıtın. 
 
-En basit haliyle, [Bir planı](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments) dağıtılabilmek için uç noktaları (ağ geçitleri), kümeleri ve hizmetleri açıklar. , aynı hizmetin farklı türevlerini kanarya serbesti veya A/B testi için mantıksal gruplarhalinde gruplandırmak için kümeler kullanır.  
+En basit biçimde, bir [vamp şeması](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments) , dağıtılacak uç noktaları (ağ geçitleri), kümeleri ve hizmetleri açıklar. Vamp, aynı hizmetin farklı türevlerini, kanlarca serbest bırakma veya A/B testi için mantıksal gruplar halinde gruplamak için kümeler kullanır.  
 
-Bu senaryo, sürüm 1.0 olan [**sava**](https://github.com/magneticio/sava)adlı bir örnek monolitik uygulama kullanır. Monolit, Docker Hub'da magneticio/sava:1.0.0 altında bulunan Docker konteynerinde paketlenir. Uygulama normalde port 8080 üzerinde çalışır, ancak bu durumda port 9050 altında ortaya çıkarmak istiyorum. Basit bir plan kullanarak uygulamayı üzerinden dağıtın.
+Bu senaryo, sürüm 1,0 ' de olan [**Sava**](https://github.com/magneticio/sava)adlı örnek bir tek parçalı uygulama kullanır. Mimariden, manyetik ticio/Sava: 1.0.0 altındaki Docker Hub 'ında bulunan bir Docker kapsayıcısında paketlenir. Uygulama normalde bağlantı noktası 8080 ' de çalışır, ancak bu durumda, bağlantı noktası 9050 altında kullanıma sunabilirsiniz. Basit bir Blueprint kullanarak uygulamayı vamp aracılığıyla dağıtın.
 
-1. **Dağıtımlara**gidin.
+1. **Dağıtımlar**'a gidin.
 
-2. **Ekle**’ye tıklayın.
+2. **Ekle**'ye tıklayın.
 
-3. Aşağıdaki plana yapıştırın YAML. Bu plan, daha sonraki bir adımda değiştirdiğimiz tek bir hizmet varyantı olan bir küme içerir:
+3. Aşağıdaki şema YAML 'ye yapıştırın. Bu şema, daha sonraki bir adımda değiştirdiğimiz tek bir hizmet çeşidine sahip bir küme içerir:
 
    ```YAML
    name: sava                        # deployment name
@@ -151,53 +151,53 @@ Bu senaryo, sürüm 1.0 olan [**sava**](https://github.com/magneticio/sava)adlı
               webport: 8080/http # cluster endpoint, used for canary releasing
    ```
 
-4. **Kaydet**'e tıklayın. dağıtımı başlatır.
+4. **Kaydet**’e tıklayın. Vamp, dağıtımı başlatır.
 
-Dağıtım **Dağıtımlar** sayfasında listelenir. Durumunu izlemek için dağıtıma tıklayın.
+Dağıtım, **dağıtımlar** sayfasında listelenir. Durumunu izlemek için dağıtıma tıklayın.
 
-![UI - sava dağıtma](./media/container-service-dcos-vamp-canary-release/09_sava100.png)
+![Vamp UI-Sava dağıtma](./media/container-service-dcos-vamp-canary-release/09_sava100.png)
 
-![UI sava hizmeti](./media/container-service-dcos-vamp-canary-release/09a_sava100.png)
+![Vamp Kullanıcı arabirimindeki Sava hizmeti](./media/container-service-dcos-vamp-canary-release/09a_sava100.png)
 
-**Ağ Geçitleri** sayfasında listelenen iki ağ geçidi oluşturulur:
+**Ağ geçitleri** sayfasında listelenen iki ağ geçidi oluşturulur:
 
-* çalışan hizmete erişmek için kararlı bir bitiş noktası (bağlantı noktası 9050) 
-* tarafından yönetilen bir iç ağ geçidi (daha sonra bu ağ geçidinde daha fazla). 
+* çalışan hizmete erişmek için kararlı bir uç nokta (bağlantı noktası 9050) 
+* Vamp tarafından yönetilen bir iç ağ geçidi (daha sonra bu ağ geçidinde daha fazla). 
 
-![UI - sava ağ geçitleri](./media/container-service-dcos-vamp-canary-release/10_vamp_sava_gateways.png)
+![Vamp UI-Sava ağ geçitleri](./media/container-service-dcos-vamp-canary-release/10_vamp_sava_gateways.png)
 
-Sava hizmeti şu anda dağıtıldı, ancak Azure Yük Dengeleyici'si trafiği henüz iletmeyi bilmediği için dışarıdan erişemezsiniz. Hizmete erişmek için Azure ağ yapılandırmasını güncelleştirin.
+Sava hizmeti artık dağıtıldı, ancak Azure Load Balancer trafiği henüz buraya iletmediğini bilmediğinden dışarıdan erişemezsiniz. Hizmete erişmek için Azure ağ yapılandırmasını güncelleştirin.
 
 
 ## <a name="update-the-azure-network-configuration"></a>Azure ağ yapılandırmasını güncelleştirme
 
-, sava hizmetini DC/OS aracı düğümlerine yerleştirmiş ve 9050 numaralı bağlantı noktasında sabit bir bitiş noktası ortaya çıkarmış. Hizmete DC/İŞLET kümesi dışından erişmek için, küme dağıtımınızda Azure ağ yapılandırmasında aşağıdaki değişiklikleri yapın: 
+Vamp, 9050 numaralı bağlantı noktasında kararlı bir uç nokta ortaya çıkaran DC/OS aracı düğümlerinde Sava hizmetini dağıttı. DC/OS kümesi dışından hizmete erişmek için, küme dağıtımınızdaki Azure ağ yapılandırmasında aşağıdaki değişiklikleri yapın: 
 
-1. Aracılar için **Azure Yük Dengeleyicisini** **(dcos-agent-lb-xxxx**adlı kaynak) bir sağlık sondası ve 9050 no'lu bağlantı noktasındaki trafiği sava örneklerine iletme kuralıyla yapılandırın. 
+1. Aracılar için Azure Load Balancer ( **DCOS-Agent-lb-xxxx**adlı kaynak) bir sistem durumu araştırması ve 9050 numaralı bağlantı noktasındaki trafiği Sava örneklerine iletmek için bir kuralla **yapılandırın** . 
 
-2. Bağlantı noktası 9050'deki trafiğe izin vermek için ortak aracılar **(XXXX-agent-public-nsg-XXXX**adlı kaynak) için **ağ güvenlik grubunu güncelleştirin.**
+2. 9050 numaralı bağlantı noktasında trafiğe izin vermek için genel aracıların ( **xxxx-Agent-public-NSG-xxxx**adlı kaynak) **ağ güvenlik grubunu güncelleştirin** .
 
-Azure portalını kullanarak bu görevleri tamamlamak için ayrıntılı adımlar [için](container-service-enable-public-access.md)bkz. Tüm bağlantı noktası ayarları için bağlantı noktası 9050'yi belirtin.
-
-
-Her şey oluşturulduktan sonra, DC/OS aracıyük bakiyesinin **(dcos-agent-lb-xxxx**adlı kaynak) **Genel Bakış** bıçağına gidin. Genel **IP adresini**bulun ve 9050 portundaki sava'ya erişmek için adresi kullanın.
-
-![Azure portalı - genel IP adresi alın](./media/container-service-dcos-vamp-canary-release/18_public_ip_address.png)
-
-![Sava](./media/container-service-dcos-vamp-canary-release/19_sava100.png)
+Azure portal kullanarak bu görevleri tamamlamaya yönelik ayrıntılı adımlar için bkz. [bir Azure Container Service uygulamasına genel erişimi etkinleştirme](container-service-enable-public-access.md). Tüm bağlantı noktası ayarları için 9050 bağlantı noktasını belirtin.
 
 
-## <a name="run-a-canary-release"></a>Bir kanarya sürümü çalıştırın
+Her şey oluşturulduktan sonra DC/OS Aracısı Yük dengeleyicinin **genel bakış** dikey penceresine gidin ( **DCOS-Agent-lb-xxxx**adlı kaynak). **Genel IP adresini**bulun ve 9050 numaralı bağlantı noktasında Sava 'ya erişmek için adresi kullanın.
 
-Bu uygulamanın, kanaryanın üretime salmak istediği yeni bir sürümü olduğunu varsayalım. Manyetikio/sava:1.1.0 olarak kaplanmış ve gitmeye hazır. , çalışan dağıtıma kolayca yeni hizmetler eklemenizi sağlar. Bu "birleştirilmiş" hizmetler kümedeki varolan hizmetlerin yanında dağıtılır ve %0'lık bir ağırlık atanır. Trafik dağıtımını ayarlayana kadar trafik yeni birleştirilmiş bir hizmete yönlendirilir. UI'deki ağırlık kaydırıcısı, dağıtım üzerinde tam kontrol sağlar ve artımlı ayarlamalar (kanarya sürümü) veya anında geri alma sağlar.
+![Azure portal-genel IP adresi al](./media/container-service-dcos-vamp-canary-release/18_public_ip_address.png)
 
-### <a name="merge-a-new-service-variant"></a>Yeni bir hizmet varyantı birleştirme
+![Sava dili](./media/container-service-dcos-vamp-canary-release/19_sava100.png)
 
-Yeni sava 1.1 hizmetini çalışan dağıtımla birleştirmek için:
 
-1. UI'de **Planlar'ı**tıklatın.
+## <a name="run-a-canary-release"></a>Kanarya yayını çalıştırma
 
-2. Aşağıdaki plan YAML'de **Ekle** ve yapıştır'ı tıklatın: Bu plan, varolan küme (sava_cluster) içinde dağıtmak için yeni bir hizmet varyantını (sava:1.1.0) açıklar.
+Bu uygulamanın, üretime yönelik olarak yayınlamak istediğiniz yeni bir sürümüne sahip olduğunuzu varsayalım. Manyetik ticio/Sava: 1.1.0 olarak kapsayıþmanıza ve gönderilmeye hazırsınızdır. Vamp, çalışan dağıtıma kolayca yeni hizmetler eklemenize olanak tanır. Bu "birleştirilmiş" hizmetler, kümedeki mevcut hizmetlerle birlikte dağıtılır ve %0 ağırlığı atanır. Trafik dağıtımını değiştirene kadar yeni bir birleştirilmiş hizmete hiçbir trafik yönlendirilemez. Vamp Kullanıcı arabirimindeki ağırlık kaydırıcısı, dağıtım üzerinde tam denetim elde etmenizi sağlar ve artımlı ayarlamalar (Canary yayını) veya anında geri alma işlemi için size izin verir.
+
+### <a name="merge-a-new-service-variant"></a>Yeni bir hizmet türevini birleştirme
+
+Yeni Sava 1,1 hizmetini çalışan dağıtımla birleştirmek için:
+
+1. Vamp Kullanıcı arabiriminde, **planlar**' a tıklayın.
+
+2. Aşağıdaki şema YAML 'ye **Ekle** ve Yapıştır 'a tıklayın: Bu şema, mevcut kümede (sava_cluster) dağıtılacak yeni bir hizmet varyantı (Sava: 1.1.0) tanımlıyor.
 
    ```YAML
    name: sava:1.1.0      # blueprint name
@@ -211,85 +211,85 @@ Yeni sava 1.1 hizmetini çalışan dağıtımla birleştirmek için:
               webport: 8080/http # cluster endpoint to update
    ```
   
-3. **Kaydet**'e tıklayın. Plan saklanır ve **Planlar** sayfasında listelenir.
+3. **Kaydet**’e tıklayın. Şema, **planlar** sayfasında depolanır ve listelenir.
 
-4. Sava:1.1 planındaki eylem menüsünü açın ve **Birleştir'e**tıklayın.
+4. Sava: 1.1 şema üzerinde Eylem menüsünü açın ve **Birleştir ' e**tıklayın.
 
-   ![UI - planlar](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
+   ![Vamp Kullanıcı arabirimi-planlar](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
 
-5. **Sava** dağıtımını seçin ve **Birleştir'i**tıklatın.
+5. **Sava** dağıtımını seçin ve **Birleştir**' e tıklayın.
 
-   ![UI - planı dağıtımla birleştirme](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
+   ![Vamp UI-birleştirilecek şema](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
 
-, çalışan dağıtımın **sava_cluster** sava:1.0.0 ile birlikte planda açıklanan yeni sava:1.1.0 hizmet çeşidini dağıtır. 
+Vamp, çalışan dağıtımın **sava_cluster** Sava: 1.0.0 ile tanımlanan New Sava: 1.1.0 Service türevini dağıtır. 
 
-![UI - güncellenmiş sava dağıtım](./media/container-service-dcos-vamp-canary-release/22_sava_cluster.png)
+![Vamp UI-güncelleştirilmiş Sava dağıtımı](./media/container-service-dcos-vamp-canary-release/22_sava_cluster.png)
 
-**Sava/sava_cluster/webport** ağ geçidi (küme bitiş noktası) da güncellenerek yeni dağıtılan sava:1.1.0'a bir rota ekler. Bu noktada, hiçbir trafik burada yönlendirilir **(WEIGHT** 0%) olarak ayarlanır.
+**Sava/sava_cluster/WebPort** Gateway (küme uç noktası) de güncellenir ve yeni dağıtılan Sava 'ya bir rota eklenerek güncelleştirilir: 1.1.0. Bu noktada, burada trafik yönlendirilmez ( **Ağırlık** %0 olarak ayarlanır).
 
-![UI - küme ağ geçidi](./media/container-service-dcos-vamp-canary-release/23_sava_cluster_webport.png)
+![Vamp UI-küme ağ geçidi](./media/container-service-dcos-vamp-canary-release/23_sava_cluster_webport.png)
 
-### <a name="canary-release"></a>Kanarya serbest
+### <a name="canary-release"></a>Canary yayını
 
-Aynı kümede konuşlandırılmış sava'nın her iki sürümüyle, **WEIGHT** kaydırıcısını hareket ettirerek aralarındaki trafiğin dağılımını ayarlayın.
+Aynı kümede dağıtılan Sava sürümlerinin her ikisi de, **Ağırlık** kaydırıcısını taşıyarak aralarındaki trafiğin dağıtımını yapın.
 
-1. UI'yi ![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) tıklatın - **WEIGHT'in**yanında edin.
+1. Ağırlık ![' ın](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) yanındaki Ara ' yı tıklatın **WEIGHT**.
 
-2. Ağırlık dağılımını %50/50 olarak ayarlayın ve **Kaydet'i**tıklatın.
+2. Ağırlık dağılımını 50%/%50 olarak ayarlayın ve **Kaydet**' e tıklayın.
 
-   ![UI - ağ geçidi ağırlık kaydırıcısı](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
+   ![Vamp UI-ağ geçidi ağırlığı kaydırıcısı](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
 
-3. Tarayıcınıza geri dön ve sava sayfasını birkaç kez daha yenileyin. Sava uygulaması artık bir sava:1.0 sayfası ile sava:1.1 sayfası arasında geçiş yap.
+3. Tarayıcınıza geri dönün ve Sava sayfasını birkaç kez yenileyin. Sava uygulaması şimdi bir Sava: 1.0 sayfası ile Sava: 1.1 sayfası arasında geçiş yapar.
 
-   ![alternatif sava1.0 ve sava1.1 hizmetleri](./media/container-service-dcos-vamp-canary-release/25_sava_100_101.png)
+   ![değişen Sava 1.0 ve Sava 1.1 Hizmetleri](./media/container-service-dcos-vamp-canary-release/25_sava_100_101.png)
 
 
   > [!NOTE]
-  > Sayfanın bu şekilde değiştirilmesi, statik varlıkların önbelleğe aldaması nedeniyle tarayıcınızın "Gizli" veya "Anonim" moduyla en iyi şekilde çalışır.
+  > Bu sayfanın değişim biçimi, statik varlıkların önbelleğe alınması nedeniyle tarayıcınızın "ınbilito" veya "anonim" moduyla en iyi şekilde çalışacaktır.
   >
 
-### <a name="filter-traffic"></a>Filtre trafiği
+### <a name="filter-traffic"></a>Trafiği filtrele
 
-Dağıtımdan sonra sava:1.1.0'da Firefox tarayıcılarında görüntü sorunlarına neden olan bir uyumsuzluk keşfettiğinizi varsayalım. Vamp'ı gelen trafiği filtrelemek ve tüm Firefox kullanıcılarını bilinen kararlı sava:1.0.0'a yönlendirecek şekilde ayarlayabilirsiniz. Bu filtre, Firefox kullanıcılarının aksaklıklarını anında çözerken, herkes geliştirilmiş sava:1.1.0 avantajlarından yararlanmaya devam ediyor.
+Sava: 1.1.0 içinde Firefox tarayıcılarında görüntü sorunlarına neden olan bir uyumsuzluk bulduğunuzu varsayalım. Vamp 'yi gelen trafiği filtrelemek ve tüm Firefox kullanıcılarını bilinen kararlı Sava: 1.0.0 'e geri yönlendirmek için ayarlayabilirsiniz. Bu filtre, Firefox kullanıcıları için kesintiyi anında çözümler, ancak başka bir deyişle, gelişmiş Sava: 1.1.0 avantajlarından faydalanmaya devam eder.
 
-, ağ geçidindeki rotalar arasındaki trafiği filtrelemek için **koşulları** kullanır. Trafik ilk olarak her rotaya uygulanan koşullara göre filtrelenir ve yönlendirilir. Kalan tüm trafik ağ geçidi ağırlık ayarına göre dağıtılır.
+Vamp, bir ağ geçidinde yollar arasındaki trafiği filtrelemek için **koşullar** kullanır. Trafik ilk olarak filtrelenir ve her bir rotaya uygulanan koşullara göre yönlendirilir. Kalan tüm trafik, ağ geçidi ağırlığı ayarına göre dağıtılır.
 
-Tüm Firefox kullanıcılarını filtrelemek ve eski sava:1.0.0'a yönlendirmek için bir koşul oluşturabilirsiniz:
+Tüm Firefox kullanıcılarını filtrelemek ve bunları eski Sava 'ya yönlendirmek için bir koşul oluşturabilirsiniz: 1.0.0:
 
-1. Sava/sava_cluster/webport **Ağ Geçitleri** sayfasında, UI'yi tıklatın ![- rota sava/sava_cluster/sava:1.0.0/webport'a bir](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) **DURUM** eklemek için düzenlendi. 
+1. Sava/sava_cluster/WebPort Gateway sayfasında **Gateways** , Route sava ![/sava_cluster/Sava](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) : 1.0.0/WebPort dizinine BIR **koşul** eklemek için vamp UI-Edit ' e tıklayın. 
 
-2. Koşul **kullanıcı aracısı ==** Firefox ![girin ve UI tıklayın - kaydet](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png).
+2. **User-Agent = = Firefox** koşulunu girin ve vamp ![Kullanıcı arabirimi-Kaydet](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png)' e tıklayın.
 
-   varsayılan gücü %0 olan koşulu ekler. Trafiği filtrelemeye başlamak için durum gücünü ayarlamanız gerekir.
+   Vamp, koşulu varsayılan %0 kuvvetle ekler. Trafiği filtrelemeye başlamak için, koşul gücünü ayarlamanız gerekir.
 
-3. UI'yi ![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) tıklatın - koşula uygulanan **GÜCÜ** değiştirmek için değiştirin.
+3. Koşula ![uygulanan](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) **KUVVETI** değiştirmek için vamp UI-Düzenle ' ye tıklayın.
  
-4. **STRENGTH'ı** %100'e ![ayarlayın ve UI'yi tıklatın - kaydetmek için kaydedin.](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png)
+4. **Kuvveti** %100 olarak ayarlayın ve vamp ![UI-kaydetmek için Kaydet](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png) ' e tıklayın.
 
-   şimdi sava:1.0.0 için durum (tüm Firefox kullanıcıları) eşleşen tüm trafik gönderir.
+   Vamp artık koşulla eşleşen tüm trafiği (tüm Firefox kullanıcıları) Sava: 1.0.0 ' e gönderir.
 
-   ![UI - ağ geçidine koşul uygulayın](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
+   ![Vamp UI-ağ geçidine koşul uygulama](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
 
-5. Son olarak, kalan tüm trafiği (Firefox olmayan tüm kullanıcılar) yeni sava:1.1.0'a göndermek için ağ geçidi ağırlığını ayarlayın. UI'yi ![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) tıklatın - **WEIGHT'in** yanında edin ve ağırlık dağılımını %100 sava/sava_cluster/sava:1.1.0/webport rotasına yönlendirilir şekilde ayarlayın.
+5. Son olarak, tüm kalan trafiği (tüm Firefox kullanıcıları) yeni Sava: 1.1.0 göndermek için ağ geçidi ağırlığını ayarlayın. Vamp Kullanıcı arabirimi ' ne](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) tıklayın, **Ağırlık** ' ![ın yanındaki düzenleme yapın ve ağırlık dağılımını ayarlayın. bu nedenle %100, Route Sava/sava_cluster/Sava: 1.1.0/WebPort yoluna yönlendirilir.
 
-   Koşultarafından filtrelenmemiş tüm trafik artık yeni sava:1.1.0'a yönlendirilir.
+   Koşula göre filtrelenmemiş tüm trafik artık New Sava: 1.1.0 'a yönlendirilir.
 
-6. Filtreyi iş başında görmek için iki farklı tarayıcı (bir Firefox ve bir diğer tarayıcı) açın ve her ikisinden de sava hizmetine erişin. Tüm Firefox istekleri sava:1.0.0'a gönderilirken, diğer tüm tarayıcılar sava:1.1.0 adresine yönlendirilir.
+6. Filtre eylemini görmek için iki farklı tarayıcı (bir Firefox ve başka bir tarayıcı) açın ve her ikisiyle de Sava hizmetine erişin. Tüm Firefox istekleri Sava: 1.0.0 'e gönderilir, ancak diğer tüm tarayıcılar Sava: 1.1.0 'ya yönlendirilir.
 
-   ![UI - filtre trafiği](./media/container-service-dcos-vamp-canary-release/27_filter_traffic.png)
+   ![Vamp UI-trafiği filtrele](./media/container-service-dcos-vamp-canary-release/27_filter_traffic.png)
 
-## <a name="summing-up"></a>Özetleme
+## <a name="summing-up"></a>Toplam
 
-Bu makale, bir DC/OS kümesinde Vamp'a hızlı bir girişti. Yeni başlayanlar için, Azure Kapsayıcı Hizmeti DC/OS kümenizde Vamp'ı çalışır hale verdiniz, planı olan bir hizmeti dağıttınız ve açık uç noktada (ağ geçidi) eriştin.
+Bu makale, bir DC/OS kümesinde vamp 'ye hızlı bir giriş niteliğindedir. Başlangıçlar için Azure Container Service DC/OS kümenizde çalışır duruma gelir, vamp şeması ile bir hizmet dağıtıldı ve kullanıma sunulan uç noktada (Gateway) erişilir.
 
-Vamp'ın bazı güçlü özelliklerine de değindik: yeni bir hizmet varyantını çalışan dağıtıma birleştirme ve kademeli olarak kullanıma sunma, ardından bilinen bir uyumsuzluğu gidermek için trafiği filtreleme.
+Ayrıca, vamp 'nin bazı güçlü özelliklerine de dokunduk: çalışan dağıtıma yeni bir hizmet varyantı birleştirme ve bu işlemi artımlı olarak tanıtma ve sonra bilinen bir uyumsuzluğun çözülmesi için trafiği Filtreleme.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Vamp REST API](https://docs.vamp.io/how-vamp-works/events-and-metrics#events)ile eylemlerini yönetme hakkında bilgi edinin.
+* Vamp eylemlerini, [vamp REST API](https://docs.vamp.io/how-vamp-works/events-and-metrics#events)aracılığıyla yönetme hakkında bilgi edinin.
 
-* Düğüm.js'de otomasyon komut dosyaları oluşturun ve bunları iş akışları olarak [çalıştırın.](https://docs.vamp.io/how-vamp-works/concepts-and-components#workflows)
+* Node. js ' de vamp Otomasyon betikleri oluşturun ve bunları [vamp iş akışları](https://docs.vamp.io/how-vamp-works/concepts-and-components#workflows)olarak çalıştırın.
 
-* Ek [VAMP öğreticilerine](https://docs.vamp.io/tutorials/)bakın.
+* Ek [vamp öğreticilerine](https://docs.vamp.io/tutorials/)bakın.
 

@@ -1,6 +1,6 @@
 ---
-title: Uygulamaları Azure Etkin Dizine geçirmek için kaynaklar | Microsoft Dokümanlar
-description: Uygulama erişimini ve kimlik doğrulamasını Azure Etkin Dizin'e (Azure AD) geçirmenize yardımcı olacak kaynaklar.
+title: Azure Active Directory uygulamasına uygulama geçirme kaynakları | Microsoft Docs
+description: Uygulama erişimini ve kimlik doğrulamasını Azure Active Directory (Azure AD) ile geçirmenize yardımcı olacak kaynaklar.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,25 +13,25 @@ ms.author: mimart
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b30469858a5dd83f7f5f707f74466302b3000510
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968719"
 ---
-# <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Uygulamaları Azure Etkin Dizini'ne geçirmek için kaynaklar
+# <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Azure Active Directory uygulamalara geçiş kaynakları
 
-Uygulama erişimini ve kimlik doğrulamasını Azure Etkin Dizin'e (Azure AD) geçirmenize yardımcı olacak kaynaklar. Bu kısa anketihttps://aka.ms/AppsMigrationFeedback) (uygulamaları Azure AD'ye geçirme deneyiminiz hakkında geri bildirim sağlamak için (geçiş edoğru engelleyiciler, araç kullanma / yönlendirme gereksinimi veya şirket içi IDP'nizi koruma nedenleri dahil) sağlayın. 
+Uygulama erişimini ve kimlik doğrulamasını Azure Active Directory (Azure AD) ile geçirmenize yardımcı olacak kaynaklar. Bu kısa ankete katılın (https://aka.ms/AppsMigrationFeedback) geçiş için engelleyiciler dahil olmak üzere Azure AD 'ye uygulama geçirme, alet kullanımı/yönergeler veya şirket içi IDP 'nizi sürdürme nedenleri dahil) hakkında geri bildirimde bulunmak için. 
 
 | Kaynak  | Açıklama  |
 |:-----------|:-------------|
-|[Uygulamalarınızı Azure AD'ye geçirme](https://aka.ms/migrateapps/whitepaper) | Bu teknik inceleme, göçün faydalarını sunar ve açıkça özetlenen dört aşamada geçişin nasıl planlanır: keşif, sınıflandırma, göç ve sürekli yönetim. Süreci nasıl düşüneceğiniz ve projenizi tüketilmesi kolay parçalara ayırma konusunda size rehberlik edilecektir. Belge boyunca yol boyunca size yardımcı olacak önemli kaynaklara bağlantılar vardır. |
-|[Çözüm kılavuzu: Uygulamaları Active Directory Federation Services 'ten (AD FS) Azure AD'ye geçirme](https://aka.ms/migrateapps/adfssolutionguide) | Bu çözüm kılavuzu, geçiş teknik incelemesinde daha yüksek bir düzeyde açıklanan bir uygulama geçiş projesini planlamanın ve yürütmenin aynı dört aşamasında size yol gösterin. Bu kılavuzda, bu aşamaları, bir uygulamayı Azure Dizin Federe Hizmetleri'nden (AD FS) Azure AD'ye taşıma hedefine nasıl uygulayacağınızı öğreneceksiniz.|
-| [Araç: Aktif Dizin Federasyon Hizmetleri Geçiş Hazırlık Script](https://aka.ms/migrateapps/adfstools) | Bu, Azure AD'ye geçiş için uygulamaların hazır olup olmadığını belirlemek için şirket içi Active Directory Federation Services (AD FS) sunucunuzda çalıştırabileceğiniz bir komut dosyasıdır.|
-| [Dağıtım planı: AD FS'den parola karma eşitlemesine geçiş](https://aka.ms/ADFSTOPHSDPDownload) | Parola karma senkronizasyonu ile, kullanıcı parolalarının karmaları şirket içi Active Directory'den Azure AD'ye eşitlenir. Bu, Azure AD'nin şirket içi Active Directory ile etkileşimde olmadan kullanıcıların kimliğini doğrulamasını sağlar.| 
-| [Dağıtım planı: AD FS'den geçiş kimlik doğrulaması'na geçiş](https://aka.ms/ADFSTOPTADPDownload)|Azure AD geçiş kimlik doğrulaması, kullanıcıların aynı parolayı kullanarak hem şirket içinde hem de bulut tabanlı uygulamalarda oturum açmalarına yardımcı olur. Bu özellik, kullanıcılarınızın hatırlanacak bir parolaları daha az olduğundan daha iyi bir deneyim sağlar. Ayrıca, kullanıcıların yalnızca bir parolayı hatırlamaları gerektiğinde oturum açma olasılığını unutma olasılığı daha düşük olduğundan BT yardım masası maliyetlerini de azaltır. Kullanıcılar Azure AD'de oturum açtığında bu özellik parolaları doğrudan şirket için Active Directory dizininizde doğrular.|
-| [Dağıtım planı: Azure AD ile Bir SaaS uygulamasında Tek Oturum Açma'yı etkinleştirme](https://aka.ms/SSODPDownload) | Tek oturum açma (SSO), tek bir kullanıcı hesabı kullanarak yalnızca bir kez oturum açarak, iş yapmak için ihtiyacınız olan tüm uygulamalara ve kaynaklara erişmenize yardımcı olur. Örneğin, bir kullanıcı oturum açsa, kullanıcı ikinci kez kimlik doğrulamadan (örneğin parola yazma) Microsoft Office'ten SalesForce'a, Kutu'ya taşınabilir. 
-| [Dağıtım planı: Uygulama Proxy ile uygulamaları Azure AD'ye genişletme](https://aka.ms/AppProxyDPDownload)| Çalışan dizüstü bilgisayarlarından ve diğer cihazlardan şirket içi uygulamalara erişim sağlamak geleneksel olarak sanal özel ağları (VPN'ler) veya arındırılmış bölgeleri (DMZ'ler) içeriyordu. Bunlar yalnızca karmaşık ve güvenliği zor sağlanan çözümler değil aynı zamanda kurulumu ve yönetimi yüksek maliyetli seçeneklerdir. Azure AD Application Proxy, şirket içi uygulamalara erişmenizi kolaylaştırır. |
-| [Dağıtım planları](../fundamentals/active-directory-deployment-plans.md) | Çok Faktörlü kimlik doğrulama, Koşullu Erişim, kullanıcı sağlama, sorunsuz SSO, self servis parola sıfırlama ve daha fazlası gibi özellikleri dağıtmak için daha fazla dağıtım planı bulun! |
+|[Uygulamalarınızı Azure AD 'ye geçirme](https://aka.ms/migrateapps/whitepaper) | Bu Teknik İnceleme, geçişin avantajlarının yanı sıra, açıkça Seviyelendirilmiş dört aşamada geçişin nasıl planlanacağını açıklar: bulma, sınıflandırma, geçiş ve devam eden yönetim. İşlemin nasıl düşündüğünü ve projenizi kullanımı kolay parçalara nasıl başlayacağınızı öğreneceksiniz. Belge genelinde, bu şekilde size yardımcı olacak önemli kaynakların bağlantıları bulunur. |
+|[Çözüm Kılavuzu: uygulamaları Active Directory Federasyon Hizmetleri (AD FS) (AD FS) 'den Azure AD 'ye geçirme](https://aka.ms/migrateapps/adfssolutionguide) | Bu çözüm kılavuzu, geçiş teknik incelemesi 'nde daha yüksek bir düzeyde açıklanan uygulama geçiş projesini planlama ve yürütmenin aynı dört aşamada size kılavuzluk eder. Bu kılavuzda, bir uygulamayı Azure Directory Federasyon Hizmetleri 'nden (AD FS) Azure AD 'ye taşımaya yönelik belirli bir hedefe bu aşamaları nasıl uygulayacağınızı öğreneceksiniz.|
+| [Araç: Active Directory Federasyon Hizmetleri (AD FS) geçiş hazırlığı betiği](https://aka.ms/migrateapps/adfstools) | Bu, şirket içi Active Directory Federasyon Hizmetleri (AD FS) (AD FS) sunucunuzda çalıştırabileceğiniz ve Azure AD 'ye geçiş için uygulamaların hazır olduğunu belirleyebilmeniz için kullanabileceğiniz bir betiktir.|
+| [Dağıtım planı: AD FS 'den Parola karması eşitlemesine geçiş](https://aka.ms/ADFSTOPHSDPDownload) | Parola karması eşitlemeyle, kullanıcı parolalarının karmaları şirket içi Active Directory Azure AD 'ye eşitlenir. Bu, Azure AD 'nin şirket içi Active Directory etkileşime girmeden kullanıcıların kimliğini doğrulamasına olanak sağlar.| 
+| [Dağıtım planı: AD FS 'den geçişli kimlik doğrulamaya geçiş](https://aka.ms/ADFSTOPTADPDownload)|Azure AD geçişli kimlik doğrulaması, kullanıcıların aynı parolayı kullanarak hem şirket içi hem de bulut tabanlı uygulamalarda oturum açmalarına yardımcı olur. Bu özellik, daha az bir parolaya sahip olmaları gerektiğinden kullanıcılarınıza daha iyi bir deneyim sağlar. Ayrıca, kullanıcıların yalnızca bir parolayı hatırlamaları gerektiğinde nasıl oturum açabileceğini unutmaları daha az olduğu için BT yardım masası maliyetlerini de azaltır. Kullanıcılar Azure AD'de oturum açtığında bu özellik parolaları doğrudan şirket için Active Directory dizininizde doğrular.|
+| [Dağıtım planı: Azure AD ile bir SaaS uygulamasında çoklu oturum açmayı etkinleştirme](https://aka.ms/SSODPDownload) | Çoklu oturum açma (SSO), tek bir kullanıcı hesabı kullanarak yalnızca bir kez oturum açarak iş yapmak için ihtiyacınız olan tüm uygulamalara ve kaynaklara erişmenize yardımcı olur. Örneğin, bir Kullanıcı oturum açtıktan sonra Kullanıcı Microsoft Office, SalesForce 'a (örneğin, bir parola yazarak) ikinci bir kez geçebilir. 
+| [Dağıtım planı: uygulama proxy 'Si ile uygulamaları Azure AD 'ye genişletme](https://aka.ms/AppProxyDPDownload)| Çalışan dizüstü bilgisayarlardan ve diğer cihazlardan şirket içi uygulamalara erişim sağlamak, geleneksel olarak sanal özel ağlar (VPN 'Ler) veya sivilleştirilmiş bölgeler (DMZs) ile ilgilidir. Bunlar yalnızca karmaşık ve güvenliği zor sağlanan çözümler değil aynı zamanda kurulumu ve yönetimi yüksek maliyetli seçeneklerdir. Azure AD Uygulama Ara Sunucusu, şirket içi uygulamalara erişmeyi kolaylaştırır. |
+| [Dağıtım planları](../fundamentals/active-directory-deployment-plans.md) | Multi-Factor Authentication, koşullu erişim, Kullanıcı sağlama, sorunsuz SSO, self servis parola sıfırlama ve daha fazlası gibi özellikleri dağıtmaya yönelik daha fazla dağıtım planı bulabilirsiniz! |
 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure AD, Sağlık Ve Kullanıcı Gizliliğini Bağlayın | Microsoft Dokümanlar
-description: Bu belge, Azure AD Connect Health ile kullanıcı gizliliğini açıklar.
+title: Azure AD Connect Health ve kullanıcı gizliliği | Microsoft Docs
+description: Bu belge, Azure AD Connect Health ile Kullanıcı gizliliğini açıklamaktadır.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,10 +16,10 @@ ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 58cddcde71e6e86b9abe07eb4200f13ad55ea659
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253669"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Kullanıcı gizliliği ve Azure AD Connect Health 
@@ -27,76 +27,76 @@ ms.locfileid: "79253669"
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
->Bu makalede, Azure AD Connect Health ve kullanıcı gizliliği ile ilgilidir.  Azure AD Connect ve kullanıcı gizliliği hakkında daha fazla bilgi için [makaleye buradan](reference-connect-user-privacy.md)bakın.
+>Bu makale Azure AD Connect Health ve kullanıcı gizliliği ile ilgilidir.  Azure AD Connect ve kullanıcı gizliliği hakkında bilgi için [buradaki](reference-connect-user-privacy.md)makaleye bakın.
 
-## <a name="user-privacy-classification"></a>Kullanıcı gizliliği sınıflandırması
-Azure AD Connect Health, GDPR sınıflandırmasının **veri işlemcisi** kategorisine girer. Bir veri işlemcisi boru hattı olarak, hizmet önemli ortaklara ve son tüketicilere veri işleme hizmetleri sağlar. Azure AD Connect Health kullanıcı verileri oluşturmaz ve hangi kişisel verilerin toplandığı ve nasıl kullanıldığı üzerinde bağımsız bir denetime sahip değildir. Azure AD Connect Health'te veri alma, toplama, analiz ve raporlama, mevcut şirket içi verilere dayanır. 
+## <a name="user-privacy-classification"></a>Kullanıcı Gizlilik sınıflandırması
+Azure AD Connect Health, GDPR sınıflandırmasının **veri işlemcisi** kategorisine denk gelir. Veri işlemcisi işlem hattı olarak hizmet, önemli iş ortaklarına ve son tüketicilere veri işleme hizmeti sağlar. Azure AD Connect Health, Kullanıcı verileri oluşturmaz ve kişisel verilerin toplandığı ve nasıl kullanıldığı üzerinde bağımsız bir denetime sahip değildir. Azure AD Connect Health veri alımı, toplama, analiz ve raporlama, mevcut şirket içi verileri temel alır. 
 
-## <a name="data-retention-policy"></a>Veri saklama ilkesi
-Azure AD Connect Health raporlar oluşturmaz, analiz yapmaz veya 30 günden fazla öngörü sağlamaz. Bu nedenle, Azure AD Connect Health 30 günden uzun bir süre boyunca hiçbir veriyi depolamaz, işlemez veya saklamaz. Bu tasarım, GDPR yönetmeliklerine, Microsoft gizlilik uyumluluk yönetmeliklerine ve Azure REKLAM veri saklama ilkeleriyle uyumludur. 
+## <a name="data-retention-policy"></a>Veri bekletme ilkesi
+Azure AD Connect Health rapor oluşturmaz, analiz gerçekleştirmez veya öngörüleri 30 gün boyunca sağlar. Bu nedenle, Azure AD Connect Health 30 günden daha fazla veriyi depolamaz, işlemez veya korumaz. Bu tasarım, GDPR yönetmelikleri, Microsoft gizliliği uyumluluk düzenlemeleri ve Azure AD veri saklama ilkeleriyle uyumludur. 
 
-Etkin Sağlık hizmeti verilerine sahip **sunucular,** 30 günden uzun bir süredir güncel **hata** uyarılarına sahip değildir ve bu süre içinde Hiçbir veri Connect Health'e ulaşmadığını gösterir. Bu sunucular devre dışı bırakılır ve Connect Health portalında gösterilmez. Sunucuları yeniden etkinleştirmek [için, sistem durumu aracısını](how-to-connect-health-agent-install.md)kaldırmanız ve yeniden yüklemeniz gerekir. Bunun aynı uyarı türüne sahip **uyarılar** için geçerli olmadığını lütfen unutmayın. Uyarılar, uyarı aldığınız sunucuda kısmi verilerin eksik olduğunu gösterir. 
+Etkin **sistem durumu hizmeti verileri olan sunucular, en** fazla 30 ardışık gün için **hata** uyarıları güncel değildir ve bu süre boyunca Connect Health 'e ulaşmadığını önerin. Bu sunucular, Connect Health portalında devre dışı bırakılacak ve gösterilmez. Sunucuları yeniden etkinleştirmek için [sistem durumu aracısını kaldırmanız ve yeniden yüklemeniz](how-to-connect-health-agent-install.md)gerekir. Bu, aynı uyarı türüne sahip **Uyarılar** için uygulanmadığını lütfen unutmayın. Uyarılar, uyarı aldığınız sunucuda kısmi verilerin eksik olduğunu gösterir. 
  
-## <a name="disable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Azure AD Connect Health'te veri toplama yı ve izlemeyi devre dışı
-Azure AD Connect Health, izlenen her bir sunucu veya izlenen bir hizmet örneği için veri toplamayı durdurmanızı sağlar. Örneğin, Azure AD Connect Health kullanılarak izlenen tek tek ADFS (Active Directory Federation Services) sunucuları için veri toplamayı durdurabilirsiniz. Azure AD Connect Health kullanılarak izlenen tüm ADFS örneğinin veri toplamasını da durdurabilirsiniz. Bunu yapmayı seçtiğinizde, ilgili sunucular veri toplamayı durdurduktan sonra Azure AD Connect Health portalından silinir. 
+## <a name="disable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Azure AD Connect Health veri toplamayı ve izlemeyi devre dışı bırakma
+Azure AD Connect Health, izlenen her sunucu için veya izlenen bir hizmetin bir örneği için veri toplamayı durdurmanızı sağlar. Örneğin, Azure AD Connect Health kullanılarak izlenen tek bir ADFS (Active Directory Federasyon Hizmetleri (AD FS)) sunucusu için veri toplamayı durdurabilirsiniz. Ayrıca, Azure AD Connect Health kullanılarak izlenmekte olan tüm ADFS örneği için veri toplamayı durdurabilirsiniz. Bunu seçtiğinizde, veri toplamayı durdurduktan sonra karşılık gelen sunucular Azure AD Connect Health portalından silinir. 
 
 >[!IMPORTANT]
-> İzlenen sunucuları Azure AD Connect Health'ten silmek için Azure AD Global Administrator ayrıcalıklarına veya RBAC'daki Katılımcı rolüne ihtiyacınız vardır.
+> İzlenen sunucuları Azure AD Connect Health silmek için Azure AD Genel yönetici ayrıcalıklarına ya da RBAC 'de katkıda bulunan rolüne sahip olmanız gerekir.
 >
-> Bir sunucu veya hizmet örneğini Azure AD Connect Health'ten kaldırmak geri döndürülebilir bir eylem değildir. 
+> Azure AD Connect Health bir sunucu veya hizmet örneğinin kaldırılması, geri alınamaz bir eylem değildir. 
 
-### <a name="what-to-expect"></a>Ne beklemelisin?
-Tek bir izlenen sunucu veya izlenen bir hizmet örneği için veri toplamayı ve izlemeyi durdurursanız, aşağıdakileri unutmayın:
+### <a name="what-to-expect"></a>Beklensin mi?
+Tek bir izlenen sunucu veya izlenen bir hizmetin bir örneği için veri toplamayı ve izlemeyi durdurursanız şunları göz önünde bulabilirsiniz:
 
-- İzlenen bir hizmetörneğini sildiğinizde, örnek portaldaki Azure AD Connect Sistem Durumu izleme hizmet listesinden kaldırılır. 
-- İzlenen bir sunucuyu veya izlenen bir hizmetörneğini sildiğinizde, Sistem Durumu Aracısı kaldırılmaz veya sunucularınızdan kaldırılır. Sistem Durumu Aracısı, Azure AD Connect Health'e veri göndermemek üzere yapılandırıldı. Daha önce izlenen sunucularda Sistem Durumu Aracısı'nı el ile kaldırmanız gerekir.
-- Bu adımı gerçekleştirmeden önce Sağlık Aracısı'nı kaldırmadıysanız, Sunucuda Sağlık Aracısı ile ilgili hata olayları görebilirsiniz.
-- İzlenen hizmetörneğine ait tüm veriler Microsoft Azure Veri Saklama İlkesi uyarınca silinir.
+- İzlenen bir hizmetin bir örneğini sildiğinizde, örnek portalda Azure AD Connect Health izleme hizmeti listesinden kaldırılır. 
+- İzlenen bir sunucuyu veya izlenen bir hizmetin bir örneğini sildiğinizde, sistem durumu Aracısı kaldırılmaz veya sunucularınızdan kaldırılmaz. Sistem Durumu Aracısı, Azure AD Connect Health veri göndermeyecek şekilde yapılandırıldı. Daha önce izlenen sunucularda sistem durumu aracısını el ile kaldırmanız gerekir.
+- Bu adımı gerçekleştirmeden önce sistem durumu aracısını kaldırmadıysanız, sistem durumu aracısıyla ilgili sunucu (lar) da hata olayları görebilirsiniz.
+- İzlenen hizmet örneğine ait olan tüm veriler Microsoft Azure veri saklama Ilkesine göre silinir.
 
-### <a name="disable-data-collection-and-monitoring-for-an-instance-of-a-monitored-service"></a>İzlenen bir hizmet örneği için veri toplama ve izlemeyi devre dışı
-[Azure AD Connect Health'ten bir hizmet örneğini nasıl kaldırılacak üzerinde](how-to-connect-health-operations.md#delete-a-service-instance-from-azure-ad-connect-health-service)görün.
+### <a name="disable-data-collection-and-monitoring-for-an-instance-of-a-monitored-service"></a>İzlenen bir hizmetin örneği için veri toplamayı ve izlemeyi devre dışı bırakma
+[Azure AD Connect Health bir hizmet örneğini kaldırma](how-to-connect-health-operations.md#delete-a-service-instance-from-azure-ad-connect-health-service)bölümüne bakın.
 
-### <a name="disable-data-collection-and-monitoring-for-a-monitored-server"></a>İzlenen bir sunucu için veri toplama ve izlemeyi devre dışı
-[Bir sunucunun Azure AD Connect Health'ten nasıl kaldırılabildiğini](how-to-connect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service)görün.
+### <a name="disable-data-collection-and-monitoring-for-a-monitored-server"></a>İzlenen bir sunucu için veri toplamayı ve izlemeyi devre dışı bırakma
+Bkz. [Azure AD Connect Health bir sunucuyu kaldırma](how-to-connect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service).
 
-### <a name="disable-data-collection-and-monitoring-for-all-monitored-services-in-azure-ad-connect-health"></a>Azure AD Connect Health'te izlenen tüm hizmetler için veri toplama yı ve izlemeyi devre dışı
-Azure AD Connect Health, kiracıdaki **tüm** kayıtlı hizmetlerin veri toplanmasını durdurma seçeneği de sunar. Harekete geçmeden önce tüm küresel yöneticilerin dikkatli bir şekilde değerlendirilmesini ve tam olarak kabul edilmesinizi öneririz. İşlem başladıktan sonra, Connect Health hizmeti tüm hizmetlerinizin verilerini almayı, işlemeyi ve raporlamayı durdurur. Connect Health hizmetindeki varolan veriler en fazla 30 gün süreyle saklanır.
-Belirli bir sunucunun veri toplamasını durdurmak istiyorsanız, lütfen belirli sunucuların silinme adımlarını izleyin. Kiracı açısından veri toplamayı durdurmak için, veri toplamayı durdurmak ve kiracının tüm hizmetlerini silmek için aşağıdaki adımları izleyin.
+### <a name="disable-data-collection-and-monitoring-for-all-monitored-services-in-azure-ad-connect-health"></a>Azure AD Connect Health tüm izlenen hizmetler için veri toplamayı ve izlemeyi devre dışı bırak
+Azure AD Connect Health, Kiracıdaki **Tüm** kayıtlı hizmetlerin veri toplamayı durdurma seçeneği de sağlar. Eylemi gerçekleştirmeden önce, tüm genel yöneticilerin dikkatli bir şekilde dikkate alınması ve tam onayı olması önerilir. İşlem başladıktan sonra, Connect Health Service, tüm hizmetlerinizin verilerini alma, işleme ve raporlama işlemlerini durdurur. Connect Health hizmetindeki mevcut veriler 30 günden daha uzun bir süre boyunca tutulacaktır.
+Belirli bir sunucunun veri toplamayı durdurmak istiyorsanız, lütfen belirli sunucuları silme adımlarını izleyin. Kiracı odaklı veri toplamayı durdurmak için, veri toplamayı durdurmak ve kiracının tüm hizmetlerini silmek için aşağıdaki adımları izleyin.
 
-1. Ana bıçakta yapılandırma altında **Genel Ayarlar'a** tıklayın. 
-2. Bıçağın üst kısmındaki **Veri Toplamayı Durdur** düğmesine tıklayın. İşlem başladıktan sonra kiracı yapılandırma ayarlarının diğer seçenekleri devre dışı bırakılır.  
+1. Ana dikey pencerede yapılandırma altında **Genel ayarlar** ' a tıklayın. 
+2. Dikey pencerenin üst kısmındaki **veri toplamayı durdur** düğmesine tıklayın. İşlem başladıktan sonra Kiracı yapılandırma ayarlarının diğer seçenekleri devre dışı bırakılır.  
  
-   ![Veri toplamayı durdurma](./media/reference-connect-health-user-privacy/gdpr4.png)
+   ![Veri toplamayı durdur](./media/reference-connect-health-user-privacy/gdpr4.png)
   
-3. Veri toplamaları durduran yerleşik hizmetlerin listesini emin olun. 
-4. **Eylem sil** düğmesini etkinleştirmek için tam kiracı adını girin
-5. Tüm hizmetlerin silinmesini tetiklemek için **Sil'i** tıklatın. Connect Health, yerleşik hizmetlerinizden gönderilen verileri almayı, işlemeyi ve raporlamayı durdurur. Tüm süreç 24 saat kadar sürebilir. Bu adımın geri döndürülemez olduğuna dikkat edin. 
-6. İşlem tamamlandıktan sonra, Connect Health'te artık kayıtlı hizmetler görmezsiniz. 
+3. Veri koleksiyonlarını durdurarak etkilenen eklendi hizmetleri listesinin bulunduğundan emin olun. 
+4. Eylemi **Sil** düğmesini etkinleştirmek için tam kiracı adını girin
+5. Tüm hizmetlerin silinmesini tetiklemek için **Sil** ' e tıklayın. Connect Health, eklendi hizmetlerinden gönderilen tüm verileri alma, işleme ve raporlama işlemlerini durdurur. Tüm süreci 24 saate kadar sürebilir. Bu adımın geri döndürülemez olduğuna dikkat edin. 
+6. İşlem tamamlandıktan sonra, Connect Health içinde herhangi bir kayıtlı hizmeti daha görmezsiniz. 
 
    ![Veri toplama durdurulduktan sonra](./media/reference-connect-health-user-privacy/gdpr5.png)
 
-## <a name="re-enable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Azure AD Connect Health'te veri toplama ve izlemeyi yeniden etkinleştirme
-Azure AD Connect Health'te daha önce silinmiş bir hizmet için izlemeyi yeniden etkinleştirmek için, tüm sunucularda [sistem durumu aracısını](how-to-connect-health-agent-install.md) kaldırmanız ve yeniden yüklemeniz gerekir.
+## <a name="re-enable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Azure AD Connect Health veri toplamayı ve izlemeyi yeniden etkinleştirin
+Daha önce silinmiş bir izlenen hizmette Azure AD Connect Health izlemeyi yeniden etkinleştirmek için, [sistem durumu aracısını](how-to-connect-health-agent-install.md) tüm sunuculara kaldırmanız ve yeniden yüklemeniz gerekir.
 
-### <a name="re-enable-data-collection-and-monitoring-for-all-monitored-services"></a>Tüm izlenen hizmetler için veri toplama ve izlemeyi yeniden etkinleştirin
+### <a name="re-enable-data-collection-and-monitoring-for-all-monitored-services"></a>İzlenen tüm hizmetler için veri toplamayı ve izlemeyi yeniden etkinleştirin
 
-Azure AD Connect Health'te kiracı bazında veri toplamaya devam edilebilir. Harekete geçmeden önce tüm küresel yöneticilerin dikkatli bir şekilde değerlendirilmesini ve tam olarak kabul edilmesinizi öneririz.
+Kiracı odaklı veri toplama Azure AD Connect Health devam edebilir. Eylemi gerçekleştirmeden önce, tüm genel yöneticilerin dikkatli bir şekilde dikkate alınması ve tam onayı olması önerilir.
 
 >[!IMPORTANT]
-> Aşağıdaki adımlar, 24 saatlik devre dışı atma eyleminden sonra kullanılabilir olacaktır.
-> Veri toplama etkinleştirildikten sonra, Connect Health'te sunulan içgörü ve izleme verileri daha önce toplanan eski verileri göstermez. 
+> Aşağıdaki adımlar, 24 saat devre dışı bırakma eyleminden sonra kullanılabilir olacaktır.
+> Veri toplamayı etkinleştirdikten sonra, Connect Health 'teki sunulan Öngörüler ve izleme verileri, daha önce toplanan eski verileri göstermez. 
 
-1. Ana bıçakta yapılandırma altında **Genel Ayarlar'a** tıklayın. 
-2. Bıçağın üst **kısmındaki Veri Toplamayı Etkinleştir** düğmesine tıklayın. 
+1. Ana dikey pencerede yapılandırma altında **Genel ayarlar** ' a tıklayın. 
+2. Dikey pencerenin üst kısmındaki **veri toplamayı etkinleştir** düğmesine tıklayın. 
  
    ![Veri toplamayı etkinleştirme](./media/reference-connect-health-user-privacy/gdpr6.png)
  
 3. **Etkinleştir** düğmesini etkinleştirmek için tam kiracı adını girin.
-4. Connect Health hizmetinde veri toplama izni vermek için **Etkinleştir** düğmesini tıklatın. Değişiklik kısa süre içinde uygulanacaktır. 
-5. İzlenecek sunucularda aracıyı yeniden yüklemek için [yükleme işlemini](how-to-connect-health-agent-install.md) izleyin ve hizmetler portalda bulunacaktır.  
+4. Connect Health hizmetinde veri toplamaya izin vermek için **Etkinleştir** düğmesine tıklayın. Bu değişiklik kısa bir süre içinde uygulanır. 
+5. Aracıyı izlenecek sunuculara yeniden yüklemek için [yükleme işlemini](how-to-connect-health-agent-install.md) izleyin ve hizmetler portalda mevcut olacaktır.  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Güven Merkezi'ndeki Microsoft Gizlilik ilkesini inceleyin](https://www.microsoft.com/trustcenter)
-* [Azure AD Connect ve Kullanıcı Gizliliği](reference-connect-user-privacy.md)
+* [Güven Merkezi 'nde Microsoft gizlilik ilkesini gözden geçirme](https://www.microsoft.com/trustcenter)
+* [Azure AD Connect ve kullanıcı gizliliği](reference-connect-user-privacy.md)
 

@@ -1,7 +1,7 @@
 ---
 title: Özel ilkeleri kullanarak SSO ve belirteç özelleştirmesini yönetme
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C'de özel ilkeleri kullanarak SSO ve belirteç özelleştirmesini yönetme hakkında bilgi edinin.
+description: Azure Active Directory B2C özel ilkeleri kullanarak SSO ve belirteç özelleştirmeyi yönetme hakkında bilgi edinin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,23 +12,23 @@ ms.date: 10/09/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ff9f57af92c50c0df6f628113bd9490ca83e1310
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78189302"
 ---
-# <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de özel ilkeleri kullanarak SSO ve belirteç özelleştirmesini yönetme
+# <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak SSO ve belirteç özelleştirmesini yönetme
 
-Bu makalede, Azure Etkin Dizin B2C'de (Azure AD B2C) [özel ilkeleri](custom-policy-overview.md) kullanarak belirteç, oturum ve tek oturum (SSO) yapılandırmalarınızı nasıl yönetebileceğiniz hakkında bilgi verilmektedir.
+Bu makalede belirteç, oturum ve çoklu oturum açma (SSO) yapılandırmalardan Azure Active Directory B2C (Azure AD B2C) [özel ilkelerini](custom-policy-overview.md) kullanarak nasıl yönetebileceğiniz hakkında bilgi sağlanır.
 
-## <a name="token-lifetimes-and-claims-configuration"></a>Belirteç ömürleri ve talep yapılandırması
+## <a name="token-lifetimes-and-claims-configuration"></a>Belirteç yaşam süreleri ve talep yapılandırması
 
-Belirteç yaşam sürenizdeki ayarları değiştirmek için, etkilemek istediğiniz politikanın güvenilen taraf dosyasına bir [ClaimsProviders](claimsproviders.md) öğesi eklersiniz.  **ClaimsProviders** öğesi [TrustFrameworkPolicy](trustframeworkpolicy.md) öğesinin bir alt öğesidir.
+Belirteç yaşam sürelerinin ayarlarını değiştirmek için, etkilemek istediğiniz ilkenin bağlı olan taraf dosyasına bir [Claimsproviders](claimsproviders.md) öğesi eklersiniz.  **Claimsproviders** öğesi, [TrustFrameworkPolicy](trustframeworkpolicy.md) öğesinin bir alt öğesidir.
 
-BasePolicy öğesi ile güvenilen taraf dosyasının RelyingParty öğesi arasına İddia Sağlayıcıları öğesini ekleyin.
+BasePolicy öğesi ve bağlı olan taraf dosyasının RelyingParty öğesi arasına ClaimsProviders öğesini ekleyin.
 
-İçinde, belirteç ömürünüzü etkileyen bilgileri koymanız gerekir. XML aşağıdaki örneğe benzer:
+İçinde, belirteç ömürlerinizi etkileyen bilgileri yerleştirmeniz gerekir. XML şu örneğe benzer şekilde görünür:
 
 ```XML
 <ClaimsProviders>
@@ -50,16 +50,16 @@ BasePolicy öğesi ile güvenilen taraf dosyasının RelyingParty öğesi arası
 </ClaimsProviders>
 ```
 
-Aşağıdaki değerler önceki örnekte ayarlanır:
+Önceki örnekte aşağıdaki değerler ayarlanır:
 
-- **Erişim belirteç ömürleri** - Erişim belirteç yaşam süresi değeri **token_lifetime_secs** meta veri öğesi ile ayarlanır. Varsayılan değer 3600 saniyedir (60 dakika).
-- **Kimlik belirteç ömrü** - Kimlik belirteç ömür boyu değeri **id_token_lifetime_secs** meta veri öğesi ile ayarlanır. Varsayılan değer 3600 saniyedir (60 dakika).
-- **Belirteç ömrünü yenileyin** - Belirteç kullanım ömrü değerini refresh_token_lifetime_secs **meta** veri öğesiyle birlikte yenileyin. Varsayılan değer 1209600 saniyedir (14 gün).
-- **Belirteç kaydırma penceresi nin kullanım ömrünü yenileyin** - Yenileme belirtecinize kayan bir pencere ömrü ayarlamak istiyorsanız, **rolling_refresh_token_lifetime_secs** meta veri öğesinin değerini ayarlayın. Varsayılan değer 7776000 (90 gün) idi. Kayan bir pencere ömrünü zorlamak istemiyorsanız, öğeyi `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`' yi .
-- **Veren (iss) iddiası** - Veren (iss) talebi **IssuanceClaimPattern** meta veri öğesi ile ayarlanır. Geçerli değerler `AuthorityAndTenantGuid` ve `AuthorityWithTfp`.
-- **İlke Kimliğini temsil eden talep ayarlama** - `TFP` Bu değeri ayarlama `ACR` seçenekleri (güven çerçevesi ilkesi) ve (kimlik doğrulama bağlamı başvurusu). `TFP`önerilen değerdir. **Kimlik DoğrulamaBağlamReferansClaimPattern** değerini `None`ayarlayın.
+- **Erişim belirteci yaşam süreleri** -erişim belirteci yaşam süresi değeri **token_lifetime_secs** meta veri öğesiyle ayarlanır. Varsayılan değer 3600 saniyedir (60 dakika).
+- **Kimlik belirteci ömrü** -kimlik belirtecinin yaşam süresi değeri **id_token_lifetime_secs** meta veri öğesiyle ayarlanır. Varsayılan değer 3600 saniyedir (60 dakika).
+- **Belirteç ömrünü Yenile** -yenileme belirteci yaşam süresi değeri **refresh_token_lifetime_secs** meta veri öğesiyle ayarlanır. Varsayılan değer 1209600 saniyedir (14 gün).
+- **Yenileme belirteci kayan pencere ömrü** -yenileme belirtecinize bir kayan pencere ömrü ayarlamak isterseniz, **rolling_refresh_token_lifetime_secs** meta veri öğesi değerini ayarlayın. Varsayılan değer 7776000 ' dir (90 gün). Bir kayan pencere ömrü zorlamak istemiyorsanız, öğesini ile `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`değiştirin.
+- **Veren (ISS) talebi** -veren (İSS) talebi **ıssuanceclaımpattern** meta veri öğesiyle ayarlanır. Geçerli değerler ve ' `AuthorityAndTenantGuid` `AuthorityWithTfp`dir.
+- **Ilke kimliğini temsil eden talep ayarlama** -bu değeri ayarlama seçenekleri `TFP` (güven Framework ilkesi) ve `ACR` (kimlik doğrulama bağlamı başvurusu). `TFP`önerilen değerdir. **Authenticationcontextreferenceclaımpattern** değerini olarak ayarlayın `None`.
 
-    **ClaimsSchema** öğesine şu öğeyi ekleyin:
+    **Claimsschema** öğesinde şu öğeyi ekleyin:
 
     ```XML
     <ClaimType Id="trustFrameworkPolicy">
@@ -68,21 +68,21 @@ Aşağıdaki değerler önceki örnekte ayarlanır:
     </ClaimType>
     ```
 
-    Çıktı **Talepleri** öğenize şu öğeyi ekleyin:
+    **Outputclaim** öğesinde şu öğeyi ekleyin:
 
     ```XML
     <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
     ```
 
-    ACR için **AuthenticationContextReferenceClaimPattern** öğesini kaldırın.
+    ACR için **Authenticationcontextreferenceclaımpattern** öğesini kaldırın.
 
-- **Konu (alt) talep** - Bu ayarı `Not Supported`bu satırı değiştirmek için değiştirmek istiyorsanız, bu seçenek ObjectID varsayılan:
+- **Subject (Sub) talebi** -Bu seçenek, bu ayarı değiştirmek istiyorsanız varsayılan olarak ObjectID olarak değiştirilir `Not Supported`, şu satırı değiştirin:
 
     ```XML
     <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
     ```
 
-    bu satırile:
+    Bu satırla:
 
     ```XML
     <OutputClaim ClaimTypeReferenceId="sub" />
@@ -90,7 +90,7 @@ Aşağıdaki değerler önceki örnekte ayarlanır:
 
 ## <a name="session-behavior-and-sso"></a>Oturum davranışı ve SSO
 
-Oturum davranışınızı ve SSO yapılandırmalarınızı değiştirmek [için, RelyingParty](relyingparty.md) öğesinin içine bir **UserJourneyBehaviors** öğesi eklersiniz.  **UserJourneyBehaviors** öğesi hemen **DefaultUserJourney**takip etmelidir. **UserJourneyBehavors** öğenizin içi aşağıdaki örnek gibi görünmelidir:
+Oturum davranışlarını ve SSO yapılandırmasını değiştirmek için [RelyingParty](relyingparty.md) öğesinin Içine bir **usersesneonbehavior** öğesi eklersiniz.  **User, Newıdavranışlar** öğesi hemen **Defaultuseryolculuney**' i izlemelidir. **Kullanıcılarınızın Neydavranstes** öğesinin içindeki içindeki bir örneği şöyle görünmelidir:
 
 ```XML
 <UserJourneyBehaviors>
@@ -100,8 +100,8 @@ Oturum davranışınızı ve SSO yapılandırmalarınızı değiştirmek [için,
 </UserJourneyBehaviors>
 ```
 
-Aşağıdaki değerler önceki örnekte yapılandırılır:
+Önceki örnekte aşağıdaki değerler yapılandırılır:
 
-- **Tek oturum açma (SSO)** - Tek oturum açma **SingleSignOn**ile yapılandırılır. Geçerli değerler `Tenant`, `Application` `Policy`, `Suppressed`, ve .
-- **Web uygulaması oturumu zaman aşımı** - Web uygulaması oturum zaman aşımı **SessionExpiryType** öğesi ile ayarlanır. Geçerli değerler `Absolute` ve `Rolling`.
-- **Web uygulaması oturumu ömür boyu** - Web uygulaması oturum ömrü **SessionExpiryInSeconds** öğesi ile ayarlanır. Varsayılan değer 86400 saniyedir (1440 dakika).
+- **Çoklu oturum açma (SSO)** -çoklu oturum açma, **SingleSignon**ile yapılandırılır. Geçerli `Tenant`değerler, `Application` `Policy`, ve `Suppressed`' dir.
+- **Web uygulaması oturumu zaman** aşımı-Web uygulaması oturumu zaman aşımı, **Sessionexpiryıtype** öğesiyle ayarlanır. Geçerli değerler ve ' `Absolute` `Rolling`dir.
+- **Web uygulaması oturumu ömrü** -Web uygulaması oturumu ömrü, **Sessionexpirınseconds** öğesi ile ayarlanır. Varsayılan değer 86400 saniyedir (1440 dakika).

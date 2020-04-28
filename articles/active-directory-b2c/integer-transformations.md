@@ -1,7 +1,7 @@
 ---
-title: Tamsayı, özel ilkeler için dönüşüm örnekleri talep ediyor
+title: Özel ilkeler için tamsayı talep dönüştürme örnekleri
 titleSuffix: Azure AD B2C
-description: Tamsayı, Azure Active Directory B2C'nin Kimlik Deneyimi Çerçevesi (IEF) şeması için dönüşüm örnekleri talep eder.
+description: Azure Active Directory B2C Identity Experience Framework (ıEF) şeması için tamsayı talep dönüştürme örnekleri.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,28 +12,28 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ece25e95bbbe9f1a1fa591c29ea9ffda0fefd369
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78187687"
 ---
-# <a name="integer-claims-transformations"></a>Tamsayı dönüşümleri talep ediyor
+# <a name="integer-claims-transformations"></a>Tamsayı talebi dönüşümleri
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Bu makalede, Azure Active Directory B2C (Azure AD B2C) kimlik deneyimi çerçevesi şemasının tamsayı talep dönüşümlerini kullanmak için örnekler verilmektedir. Daha fazla bilgi için [Bkz.](claimstransformations.md)
+Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de kimlik deneyimi çerçevesi şemasının tamsayı talep dönüştürmelerinin kullanılmasına yönelik örnekler sağlanmaktadır. Daha fazla bilgi için bkz. [Claimstransformations](claimstransformations.md).
 
-## <a name="convertnumbertostringclaim"></a>ConvertNumbertostringClaim
+## <a name="convertnumbertostringclaim"></a>ConvertNumberToStringClaim
 
 Uzun bir veri türünü dize veri türüne dönüştürür.
 
-| Öğe | DönüşümTalep Türü | Veri Türü | Notlar |
+| Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Girişİddia | inputClaim | long | Bir dize dönüştürmek için ClaimType. |
-| ÇıktılarTalep | outputClaim | string | Bu Talep Dönüşümünden sonra üretilen ClaimType çağrıldı. |
+| Inputclaim | ınputclaim | long | Bir dizeye dönüştürülecek ClaimType. |
+| OutputClaim | outputClaim | string | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. |
 
-Bu örnekte, `numericUserId` uzun bir değer türüne sahip `UserId` talep, bir değer dize türüne sahip bir talep için dönüştürülür.
+Bu örnekte, Long değer `numericUserId` türüne sahip talep, dize değer türüne sahip bir `UserId` talebe dönüştürülür.
 
 ```XML
 <ClaimsTransformation Id="CreateUserId" TransformationMethod="ConvertNumberToStringClaim">
@@ -49,7 +49,7 @@ Bu örnekte, `numericUserId` uzun bir değer türüne sahip `UserId` talep, bir 
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **inputClaim**: 12334 (uzun)
-- Çıktı talepleri:
-    - **outputClaim**: "12334" (string)
+    - **ınputclaim**: 12334 (uzun)
+- Çıkış talepleri:
+    - **Outputclaim**: "12334" (dize)
 

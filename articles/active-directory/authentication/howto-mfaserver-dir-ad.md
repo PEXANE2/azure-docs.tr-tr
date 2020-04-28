@@ -1,5 +1,5 @@
 ---
-title: Azure MFA Server ve Active Directory - Azure Active Directory
+title: Azure MFA sunucusu ve Active Directory Azure Active Directory
 description: Dizinleri eşitleyebilmek için Azure Multi-Factor Authentication Server ile Active Directory’yi tümleştirme.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fceaa203944074b0c3fcf5cb6254f1e87ac16cba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480989"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Sunucusu ile Active Directory arasında dizin tümleştirme
@@ -24,16 +24,16 @@ ms.locfileid: "79480989"
 Active Directory veya başka bir LDAP dizini ile tümleştirmek için Azure MFA Sunucusu’nun Dizin Tümleştirme bölümünü kullanın. Öznitelikleri dizin şeması ile eşleşecek şekilde yapılandırabilir ve kullanıcıların otomatik eşitlemesini ayarlayabilirsiniz.
 
 > [!IMPORTANT]
-> 1 Temmuz 2019 itibariyle Microsoft, yeni dağıtımlar için Artık MFA Server sunmayacak. Kullanıcılarından çok faktörlü kimlik doğrulaması isteyen yeni müşteriler bulut tabanlı Azure Çok Faktörlü Kimlik Doğrulaması'nı kullanmalıdır. 1 Temmuz'dan önce MFA Server'ı etkinleştirmiş olan mevcut müşteriler en son sürümü, gelecekteki güncelleştirmeleri karşıdan yükleyebilecek ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilecek.
+> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
 
 ## <a name="settings"></a>Ayarlar
 
 Varsayılan olarak, Azure Multi-Factor Authentication (MFA) Sunucusu kullanıcıları Active Directory'den içeri aktaracak ya da eşitleyecek şekilde yapılandırılır.  Dizin Tümleştirme sekmesi, varsayılan davranışın üzerine yazmanızı ve farklı bir LDAP dizini, ADAM dizini ya da belirli bir Active Directory etki alanı denetçisine bağlamanızı sağlar.  Ayrıca, LDAP Kimlik Doğrulaması için kullanmak üzere RADIUS hedefi olarak LDAP ya da LDAP Bağlama sunma, IIS Kimlik Doğrulaması için önceden kimlik doğrulaması ya da Kullanıcı Portalı için birincil kimlik doğrulaması sağlar.  Aşağıdaki tabloda tek tek ayarlar açıklanır.
 
-![MFA Server'da LDAP yapılandırmalarını düzenleme](./media/howto-mfaserver-dir-ad/dirint.png)
+![MFA sunucusu 'nda LDAP yapılandırmasını düzenle](./media/howto-mfaserver-dir-ad/dirint.png)
 
 > [!NOTE]
-> Dizin tümleştirmesi, Active Directory Domain Services dışındaki dizinlerle çalışmak için garanti edilmez.
+> Dizin tümleştirmesinin Active Directory Domain Services dışındaki dizinlerde çalışması garanti edilmez.
 
 | Özellik | Açıklama |
 | --- | --- |
@@ -47,8 +47,8 @@ LDAP yapılandırması ayarları aşağıdaki tabloda açıklanmaktadır.
 
 | Özellik | Açıklama |
 | --- | --- |
-| Sunucu |LDAP dizinini çalıştıran sunucunun ana bilgisayar adını veya IP adresini girin.  Noktalı virgülle ayrılarak bir yedek sunucu de belirtilebilir. <br>Not: Bind Türü SSL (TLS) olduğunda, tam nitelikli bir ana bilgisayar adı gereklidir. |
-| Taban DN |Tüm dizin sorgularının başlatıldığı temel dizin nesnesinin ayırt edici adını girin.  Örneğin, dc=abc,dc=com. |
+| Sunucu |LDAP dizinini çalıştıran sunucunun ana bilgisayar adını veya IP adresini girin.  Noktalı virgülle ayrılarak bir yedek sunucu de belirtilebilir. <br>Note: bağlama türü SSL (TLS) olduğunda, tam olarak nitelendirilmiş bir konak adı gereklidir. |
+| Temel DN |Tüm dizin sorgularının başlatıldığı temel dizin nesnesinin ayırt edici adını girin.  Örneğin, dc=abc,dc=com. |
 | Bağlama türü - Sorgular |LDAP dizinini aramak için bağlanırken kullanmak üzere uygun bağlama türünü seçin.  Bu, içeri aktarımlar, eşitleme ve kullanıcı adı çözümleme için kullanılır. <br><br>  Anonim - Anonim bir bağlama gerçekleştirilir.  Bağlama DN’si ve Bağlama Parolası kullanılmaz.  Bu yalnızca, LDAP dizini anonim bağlamaya izin verirse ve izinler uygun kayıtların ve özniteliklerin sorgulanmasına izin verirse çalışır.  <br><br> Basit - Bağlama DN’si ve Bağlama Parolası LDAP dizinine bağlanmak için düz metin olarak geçirilir.  Bu metot, yalnızca sunucuya erişilebildiğini ve bağlama hesabının uygun erişime sahip olduğunu doğrulamayı hedefleyen testlere yöneliktir. Uygun sertifika yüklendikten sonra bunun yerine SSL’yi kullanın.  <br><br> SSL - Bağlama DN’si ve Bağlama Parolası LDAP dizinine bağlanmak için SSL kullanılarak şifrelenir.  Yerel olarak LDAP dizininin güvendiği bir sertifika yükleyin.  <br><br> Windows - Bir Active Directory etki alanı denetleyicisine veya ADAM dizinine güvenli bir şekilde bağlanmak için Bağlama Kullanıcı Adı ve Bağlama Parolası kullanılır.  Bağlama Kullanıcı Adı boş bırakılırsa, bağlama için oturum açmış kullanıcının hesabı kullanılır. |
 | Bağlama türü - Kimlik doğrulamaları |LDAP bağlama kimlik doğrulaması gerçekleştirirken kullanmak üzere uygun bağlama türünü seçin.  Bağlama türü altındaki bağlama türü açıklamalarına bakın - Sorgular  Örneğin, bu SSL bağlama LDAP bağlama kimlik doğrulamaları için kullanılırken, sorgular için Anonim bağlama kullanılmasını sağlar. |
 | Bağlama DN’si veya Bağlama kullanıcı adı |LDAP dizinine bağlanırken kullanmak üzere hesabın kullanıcı kaydı ayırt edici adını girin.<br><br>Bağlama ayırt edici adı yalnızca Bağlama Türü Basit ya da SSL olduğunda kullanılır.  <br><br>Bağlama Türü Windows olduğunda, LDAP dizinine bağlanırken kullanmak üzere Windows hesabı kullanıcı adını girin.  Boş bırakılırsa, bağlama için oturum açmış kullanıcının hesabı kullanılır. |
@@ -56,11 +56,11 @@ LDAP yapılandırması ayarları aşağıdaki tabloda açıklanmaktadır.
 | Sorgu boyutu sınırı |Bir dizin araması tarafından döndürülen en fazla kullanıcı sayısı için boyut sınırını belirtin.  Bu sınır LDAP dizinindeki yapılandırmayla eşleşmelidir.  Disk belleğinin desteklenmediği büyük aramalar için, içeri aktarma ve eşitleme işlemleri kullanıcıları toplu olarak almayı dener.  Burada belirtilen boyut sınırı LDAP dizininde yapılandırılan sınırdan daha büyükse, bazı kullanıcılar eksik olabilir. |
 | Test düğmesi |LDAP sunucusuna bağlamayı test etmek için **Test et** düğmesine tıklayın.  <br><br>Bağlamayı test etmek için **LDAP kullan** seçeneğini belirlemeniz gerekmez. Bu, LDAP yapılandırması kullanılmadan önce bağlamanın test edilmesini sağlar. |
 
-## <a name="filters"></a>Filtreler
+## <a name="filters"></a>FilTReleri
 
 Filtreler, dizin araması yaparken kayıtları nitelemek üzere ölçüt belirlemenizi sağlar.  Filtreyi ayarlayarak eşitlemek istediğiniz nesnelerin kapsamını belirleyebilirsiniz.  
 
-![MFA Server'da dizin filtreleme yapılandırma](./media/howto-mfaserver-dir-ad/dirint2.png)
+![MFA sunucusunda Dizin filtrelemeyi yapılandırma](./media/howto-mfaserver-dir-ad/dirint2.png)
 
 Azure Multi-Factor Authentication aşağıdaki üç filtreleme seçeneğine sahiptir:
 
@@ -70,17 +70,17 @@ Azure Multi-Factor Authentication aşağıdaki üç filtreleme seçeneğine sahi
 
 ## <a name="attributes"></a>Öznitelikler
 
-Belirli bir dizinin özniteliklerini gerektiği şekilde özelleştirebilirsiniz.  Bu, özel öznitelikler eklemenizi ve eşitlemeyi yalnızca size gereken öznitelikleri kapsayacak şekilde ayarlamanızı sağlar. Her öznitelik alanının değeri için dizin şemasında tanımlandığı gibi öznitelik adını kullanın. Aşağıdaki tabloda her özellikle ilgili ek bilgiler sağlanmıştır.
+Belirli bir dizinin özniteliklerini gerektiği şekilde özelleştirebilirsiniz.  Bu, özel öznitelikler eklemenizi ve eşitlemeyi yalnızca size gereken öznitelikleri kapsayacak şekilde ayarlamanızı sağlar. Özniteliğin adını, her öznitelik alanının değeri için dizin şemasında tanımlanan şekilde kullanın. Aşağıdaki tabloda her özellikle ilgili ek bilgiler sağlanmıştır.
 
 Öznitelikler el ile girilebilir ve öznitelik listesindeki bir öznitelikle eşleşmesi gerekmez.
 
-![MFA Server'da dizin tümleştirme özniteliklerini özelleştirme](./media/howto-mfaserver-dir-ad/dirint3.png)
+![MFA sunucusu 'nda Dizin tümleştirme özniteliklerini özelleştirme](./media/howto-mfaserver-dir-ad/dirint3.png)
 
 | Özellik | Açıklama |
 | --- | --- |
 | Benzersiz tanımlayıcı |Kapsayıcı, güvenlik grubu ve kullanıcı kayıtlarının benzersiz tanımlayıcısı olarak hizmet eden özniteliğin öznitelik adını girin.  Active Directory'de, bu genellikle objectGUID’dir. Diğer LDAP uygulamaları entryUUID veya benzerini kullanabilir.  ObjectGUID varsayılandır. |
 | Benzersiz tanımlayıcı türü |Benzersiz tanımlayıcı özniteliği türünü seçin.  Active Directory'de objectGUID özniteliğinin türü GUID’dir. Diğer LDAP uygulamaları ASCII Bayt Dizisi ya da Dize türü kullanabilir.  GUID varsayılandır. <br><br>Eşitleme Öğeleri’ne Benzersiz Tanımlayıcısı ile başvurulduğundan, bu türü doğru ayarlamanız önemlidir. Nesnenin dizinde doğrudan bulunabilmesi için Benzersiz Tanımlayıcı Türü kullanılır.  Dizin değeri aslında ASCII bayt dizisi olarak depolanıyorsa bu türün Dize olarak ayarlanması eşitlemenin düzgün çalışmasını engeller. |
-| Ayırt edici ad |Her bir kaydın ayırt edici adını içeren özniteliğin öznitelik adını girin.  Active Directory'de, bu genellikle distinguishedName’dir. Diğer LDAP uygulamaları entryDN veya benzerini kullanabilir.  distinguishedName varsayılandır. <br><br>Sadece ayırt edilen adı içeren bir öznitelik yoksa, reklam yolu özniteliği kullanılabilir.  Yolun "LDAP://\<server\>/" kısmı, nesnenin yalnızca ayırt edici adı bırakılarak otomatik olarak çıkarılır. |
+| Ayırt edici ad |Her bir kaydın ayırt edici adını içeren özniteliğin öznitelik adını girin.  Active Directory'de, bu genellikle distinguishedName’dir. Diğer LDAP uygulamaları entryDN veya benzerini kullanabilir.  distinguishedName varsayılandır. <br><br>Yalnızca ayırt edici adı içeren bir öznitelik yoksa, ads path özniteliği kullanılabilir.  Yolun "LDAP://\<server\>/" kısmı, nesnenin yalnızca ayırt edici adı bırakılarak otomatik olarak çıkarılır. |
 | Kapsayıcı adı |Kapsayıcı kaydındaki adı içeren özniteliğin öznitelik adını girin.  Bu özniteliğin değeri, Active Directory’den içeri aktarılırken ya da eşitleme öğeleri eklenirken Kapsayıcı Hiyerarşisi’nde görüntülenir.  Varsayılan addır. <br><br>Farklı kapsayıcılar kendi adları için farklı öznitelikler kullanıyorsa, birden çok kapsayıcı adı özniteliğini ayırmak için noktalı virgül kullanın.  Bir kapsayıcı nesnesinde bulunan ilk kapsayıcı adı özniteliği, nesnenin adını görüntülemek için kullanılır. |
 | Güvenlik grubu adı |Güvenlik grubu kaydındaki adı içeren özniteliğin öznitelik adını girin.  Bu özniteliğin değeri, Active Directory’den içeri aktarılırken ya da eşitleme öğeleri eklenirken Güvenlik Grubu listesinde görüntülenir.  Varsayılan addır. |
 | Kullanıcı adı |Kullanıcı kaydındaki kullanıcı adını içeren özniteliğin öznitelik adını girin.  Bu özniteliğin değeri Multi-Factor Auth Sunucusu kullanıcı adı olarak kullanılır.  Birinciye yedek olarak ikinci bir öznitelik belirtilebilir.  İkinci öznitelik, yalnızca ilk öznitelik kullanıcı için bir değer içermiyorsa kullanılır.  userPrincipalName ve sAMAccountName varsayılanlardır. |
@@ -103,9 +103,9 @@ Belirli bir dizinin özniteliklerini gerektiği şekilde özelleştirebilirsini
 | Dahili numara |Kullanıcı kaydındaki telefon numarası dahili numarasını içeren özniteliğin öznitelik adını girin.  Dahili numara alanının değeri yalnızca birincil telefon numarası için dahili numara olarak kullanılır.  Varsayılan boştur. <br><br>Dahili numara özniteliği belirtilmezse, dahili numaralar telefon özniteliğinin parçası olarak eklenebilir. Bu durumda, uzantının düzgün ayrıştırılabilmesi için önüne 'x' ekleyin.  Örneğin, 555-123-4567 x890, telefon numarası olarak 555-123-4567 ve dahili numara olarak 890’ı ifade eder. |
 | Varsayılanları Geri Yükle düğmesi |Tüm öznitelikleri varsayılan değerlerine geri döndürmek için **Varsayılanları Geri Yükle**’ye tıklayın.  Varsayılanlar normal Active Directory ya da ADAM şemasıyla düzgün çalışmalıdır. |
 
-Öznitelikleri ni değişimi düşünmek için Öznitelikler sektüründe **DÃ**  Bu, öznitelikleri ni ayarlayabileceğiniz bir pencere getirir. Herhangi bir özniteliğin yanındaki **...** simgesini seçerek hangi özelliklerin görüntüleneceğini seçebileceğiniz pencereyi açın.
+Öznitelikleri düzenlemek için, öznitelikler sekmesinde **Düzenle** ' ye tıklayın.  Bu, öznitelikleri düzenleyebileceğiniz bir pencere getirir. Herhangi bir özniteliğin yanındaki **...** simgesini seçerek hangi özelliklerin görüntüleneceğini seçebileceğiniz pencereyi açın.
 
-![MFA Server'da dizin özniteliği eşleme özelliğini düzenleme](./media/howto-mfaserver-dir-ad/dirint4.png)
+![MFA sunucusunda Dizin öznitelik eşlemesini Düzenle](./media/howto-mfaserver-dir-ad/dirint4.png)
 
 ## <a name="synchronization"></a>Eşitleme
 
@@ -117,7 +117,7 @@ Multi-Factor Auth ADSync hizmeti, değişiklikleri verimli şekilde yoklamak üz
 
 LDAP dizini DirSync’i destekliyorsa ve DirSync kullanacak şekilde yapılandırılmışsa, kullanıcı ve güvenlik grubu değişiklikleri için yoklama işlemi Active Directory’dekiyle aynı şekilde işler.  LDAP dizini DirSync denetimini desteklemiyorsa, her döngü sırasında tam eşitleme gerçekleştirilir.
 
-![Dizin nesnelerinin MFA Server'a eşitlenmesi](./media/howto-mfaserver-dir-ad/dirint5.png)
+![Dizin nesnelerinin MFA sunucusuna eşitlenmesi](./media/howto-mfaserver-dir-ad/dirint5.png)
 
 Aşağıdaki tablo, Eşitleme sekmesi ayarlarının her biriyle ilgili daha fazla bilgi içerir.
 
@@ -143,8 +143,8 @@ Yukarı Taşı ve Aşağı Taşı düğmeleri yöneticinin eşitleme öğelerini
 > [!TIP]
 > Eşitleme öğeleri kaldırıldıktan sonra bir tam eşitleme gerçekleştirilmelidir.  Eşitleme öğeleri sıralandıktan sonra bir tam eşitleme gerçekleştirilmelidir.  Tam eşitleme gerçekleştirmek için **Şimdi Eşitle**’ye tıklayın.
 
-## <a name="multi-factor-authentication-servers"></a>Çok Faktörlü Kimlik Doğrulama sunucuları
+## <a name="multi-factor-authentication-servers"></a>Multi-Factor Authentication sunucuları
 
-Ek Multi-Factor Kimlik Doğrulama sunucuları yedek RADIUS proxy, LDAP proxy veya IIS Kimlik Doğrulama sı için hizmet vermek üzere ayarlanabilir. Eşitleme yapılandırması tüm aracılar arasında paylaşılır. Ancak, bu aracılardan yalnızca biri Çok Faktörlü Kimlik Doğrulama sunucu hizmeti çalışıyor olabilir. Bu sekme, eşitleme için etkinleştirilmesi gereken Çok Faktörlü Kimlik Doğrulama sunucusunu seçmenize olanak tanır.
+Ek Multi-Factor Authentication sunucular yedek RADIUS proxy, LDAP proxy veya IIS kimlik doğrulaması olarak kullanılmak üzere ayarlanabilir. Eşitleme yapılandırması tüm aracılar arasında paylaşılır. Ancak, bu aracılardan yalnızca birinde Multi-Factor Authentication sunucusu hizmeti çalışıyor olabilir. Bu sekme, eşitleme için etkinleştirilmesi gereken Multi-Factor Authentication sunucuyu seçmenizi sağlar.
 
-![İlgili Çok Faktörlü Kimlik Doğrulama Sunucuları](./media/howto-mfaserver-dir-ad/dirint6.png)
+![İlgili Multi-Factor Authentication sunucuları](./media/howto-mfaserver-dir-ad/dirint6.png)

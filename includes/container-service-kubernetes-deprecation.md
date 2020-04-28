@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: iainfou
 ms.openlocfilehash: 858bc0814bc798cec31fb2be22608122a95c09db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77651607"
 ---
 > [!WARNING]
->  **Azure Kapsayıcı Hizmeti (ACS) amortismana dahil ediliyor. ACS'ye yeni özellikler veya işlevler eklenmemektedir. Tüm API'ler, portal deneyimi, CLI komutları ve dokümantasyon lar amortismana ermiş olarak işaretlenir.**
+>  **Azure Container Service (ACS) kullanım dışı bırakılıyor. ACS 'ye yeni özellik veya işlevsellik eklenmiyor. Tüm API 'Ler, Portal deneyimi, CLı komutları ve belgeleri kullanım dışı olarak işaretlendi.**
 >
-> 2017 yılında, Kubernetes yönetimini, dağıtımını ve işlemlerini basitleştirmek için Azure Kubernetes Hizmetini (AKS) kullanıma sunduk. Kubernetes orkestratörünü kullanıyorsanız, lütfen 31 Ocak 2020'ye kadar AKS'ye geçin. Başlamak için Azure [Kubernetes Hizmeti'ne geçiş](../articles/aks/aks-migration.md)bkz.
+> 2017 ' de, Kubernetes yönetimini, dağıtımını ve işlemlerini basitleştirmek için Azure Kubernetes hizmeti (AKS) tanıtıldık. Kubernetes Orchestrator kullanıyorsanız lütfen 31 Ocak 2020 tarihine kadar AKS 'e geçiş yapın. Başlamak için bkz. [Azure Kubernetes hizmetine geçiş](../articles/aks/aks-migration.md).
 >
-> Daha fazla bilgi [için, Azure.com'daki Azure Kapsayıcı Hizmeti amortisman duyurusuna](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)bakın.
+> Daha fazla bilgi için, Azure.com adresindeki kullanım [duyurusu Azure Container Service](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)bakın.

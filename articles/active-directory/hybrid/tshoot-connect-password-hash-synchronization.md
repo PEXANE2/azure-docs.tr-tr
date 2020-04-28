@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect eşitlemeile parola karma senkronizasyonu | Microsoft Dokümanlar
-description: Bu makalede, parola karma eşitleme sorunları giderilmesi hakkında bilgi sağlar.
+title: Azure AD Connect Sync ile parola karması eşitleme sorunlarını giderme | Microsoft Docs
+description: Bu makalede, Parola karması eşitleme sorunlarını giderme hakkında bilgi sağlanır.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,194 +17,194 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253552"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitlemesi ile parola karması eşitleme sorunlarını giderme
 
-Bu konu, parola karma eşitleme ile sorunları gidermek için nasıl adımlar sağlar. Parolalar beklendiği gibi eşitlemiyorsa, bu kullanıcı alt kümesi veya tüm kullanıcılar için olabilir.
+Bu konuda, Parola karması eşitlemeyle ilgili sorunları gidermeye yönelik adımlar sağlanmaktadır. Parolalar beklenildiği gibi eşitlenmiyorsa, kullanıcılar veya tüm kullanıcılar için bir alt küme olabilir.
 
-Azure Etkin Dizini (Azure AD) Sürüm 1.1.614.0 veya sonrası ile dağıtımı bağlamak için, parola karma eşitleme sorunlarını gidermek için sihirbazdaki sorun giderme görevini kullanın:
+Sürüm 1.1.614.0 veya sonra dağıtım dağıtımı Azure Active Directory (Azure AD) için, Parola karması eşitleme sorunlarını gidermek için sihirbazda sorun giderme görevini kullanın:
 
-* Parolaların eşitlenmediği bir sorununuz varsa, parola yok bölümüne [bakın: sorun giderme görev](#no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task) bölümünü kullanarak sorun giderme.
+* Parolaların eşitlenmediği bir sorununuz varsa, [hiçbir parola eşitlenmedi: sorun giderme görevini kullanarak sorun giderme](#no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task) bölümüne bakın.
 
-* Tek tek nesnelerle ilgili bir sorununuzun varsa, [tek bir nesnenin parolaları eşitlemediğini belirtin: sorun giderme görev](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task) bölümünü kullanarak sorun giderme.
+* Ayrı nesneler ile ilgili bir sorununuz varsa, [bir nesne parolaları eşitlememe: sorun giderme görevi ile ilgili sorun giderme](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task) bölümüne bakın.
 
-Sürüm 1.1.524.0 veya sonraki sürümlerle dağıtım için, parola karma eşitleme sorunlarını gidermek için kullanabileceğiniz bir tanılama cmdleti vardır:
+Sürüm 1.1.524.0 veya üzeri bir dağıtım için, Parola karması eşitleme sorunlarını gidermek için kullanabileceğiniz bir tanılama cmdlet 'i vardır:
 
-* Parolanın eşitlenmediği bir sorununuz varsa, parola yok bölümüne [bakın: tanılama cmdlet](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet) bölümünü kullanarak sorun giderme.
+* Parolaların eşitlenmediği bir sorununuz varsa, [hiçbir parola eşitlenmedi: Tanılama cmdlet 'ini kullanarak sorun giderme](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet) bölümüne bakın.
 
-* Tek tek nesnelerle ilgili bir sorununuzun varsa, [tek nesnenin parolaları eşitlemediğini belirtin: tanılama cmdlet](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet) bölümünü kullanarak sorun giderme.
+* Ayrı nesneler ile ilgili bir sorununuz varsa, [bir nesne parolaları eşitlememe: Tanılama cmdlet 'i kullanarak sorun giderme](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet) bölümüne bakın.
 
 Azure AD Connect dağıtımının eski sürümleri için:
 
-* Parolanın eşitlenmediği bir sorununuz varsa, parola yok bölümüne [bakın: el ile sorun giderme adımları](#no-passwords-are-synchronized-manual-troubleshooting-steps) bölümüne bakın.
+* Parolaların eşitlenmediği bir sorununuz varsa, [hiçbir parola eşitlenmedi: el ile sorun giderme adımları](#no-passwords-are-synchronized-manual-troubleshooting-steps) bölümüne bakın.
 
-* Tek tek nesnelerle ilgili bir sorununuz varsa, tek nesneye bakın [parolaları eşitlemiyor: el ile sorun giderme adımları](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps) bölümü.
+* Ayrı nesneler ile ilgili bir sorununuz varsa, [bir nesne parolaları eşitlememe: el ile sorun giderme adımları](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps) bölümüne bakın.
 
 
 
-## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task"></a>Parola senkronize olmaz: sorun giderme görevini kullanarak sorun giderme
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task"></a>Eşitlenen parola yok: sorun giderme görevini kullanarak sorun giderme
 
-Parolaların neden eşitlenmedığını anlamak için sorun giderme görevini kullanabilirsiniz.
+Hiçbir parolanın nasıl eşitlenmediğini anlamak için sorun giderme görevini kullanabilirsiniz.
 
 > [!NOTE]
-> Sorun giderme görevi yalnızca Azure AD Connect sürümü 1.1.614.0 veya sonraki sürümiçin kullanılabilir.
+> Sorun giderme görevi yalnızca Azure AD Connect Version 1.1.614.0 veya üzeri için kullanılabilir.
 
-### <a name="run-the-troubleshooting-task"></a>Sorun giderme görevini çalıştırın
+### <a name="run-the-troubleshooting-task"></a>Sorun giderme görevini çalıştırma
 
-Parolanın eşitlenmediği sorunları gidermek için:
+Hiçbir parolanın eşitlenmediği sorunları gidermek için:
 
-1. Azure AD Connect sunucunuzda **Yönetici olarak Çalıştır** seçeneğiyle yeni bir Windows PowerShell oturumu açın.
+1. **Yönetici olarak çalıştır** seçeneğiyle Azure AD Connect sunucunuzda yeni bir Windows PowerShell oturumu açın.
 
-2. Çalıştır `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`ya da .
+2. Veya `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`çalıştırın.
 
-3. Azure AD Bağlantısı sihirbazını başlatın.
+3. Azure AD Connect Sihirbazı 'nı başlatın.
 
-4. **Ek Görevler** sayfasına gidin, **Sorun Giderme'yi**seçin ve **İleri'yi**tıklatın.
+4. **Ek görevler** sayfasına gidin, **sorun gider**' i seçin ve **İleri**' ye tıklayın.
 
-5. Sorun Giderme sayfasında, PowerShell'deki sorun giderme menüsünü başlatmak için **Başlat'ı** tıklatın.
+5. Sorun giderme sayfasında, PowerShell 'de sorun giderme menüsünü başlatmak için **Başlat** ' a tıklayın.
 
-6. Ana menüde **Sorun Giderme parola karma senkronizasyonu'nu**seçin.
+6. Ana menüde, **Parola karması eşitlemesini sorun gider**' i seçin.
 
-7. Alt menüde Parola **karma senkronizasyonu'nu seçin.**
+7. Alt menüde **Parola karması eşitleme**' yi seçin.
 
-### <a name="understand-the-results-of-the-troubleshooting-task"></a>Sorun giderme görevinin sonuçlarını anlama
+### <a name="understand-the-results-of-the-troubleshooting-task"></a>Sorun giderme görevinin sonuçlarını anlayın
 
 Sorun giderme görevi aşağıdaki denetimleri gerçekleştirir:
 
-* Azure AD kiracınız için parola karma eşitleme özelliğinin etkin olduğunu doğrular.
+* Azure AD kiracınız için Parola karması eşitleme özelliğinin etkinleştirildiğini doğrular.
 
-* Azure AD Connect sunucusunun hazırlama modunda olmadığını doğrular.
+* Azure AD Connect sunucusunun hazırlama modunda olmadığı doğrular.
 
-* Varolan her şirket içi Active Directory bağlayıcısı için (varolan bir Active Directory ormanına karşılık gelir):
+* Mevcut olan her bir şirket içi Active Directory Bağlayıcısı için (mevcut bir Active Directory ormanına karşılık gelen):
 
-   * Parola karma eşitleme özelliğinin etkin olduğunu doğrular.
+   * Parola karması eşitleme özelliğinin etkinleştirildiğini doğrular.
    
-   * Windows Application Event günlüklerinde parola karma eşitleme sinyali olaylarını arar.
+   * Windows uygulama olay günlüklerinde Parola karması eşitleme sinyal olaylarını arar.
 
-   * Şirket içi Active Directory bağlayıcısı altındaki her Active Directory etki alanı için:
+   * Şirket içi Active Directory Bağlayıcısı altındaki her bir Active Directory etki alanı için:
 
-      * Etki alanına Azure AD Connect sunucusundan erişilebildiğini doğrular.
+      * Azure AD Connect sunucusundan etki alanına ulaşılabildiğini doğrular.
 
-      * Şirket içi Active Directory bağlayıcısı tarafından kullanılan Active Directory Domain Services (AD DS) hesaplarının parola karma senkronizasyonu için gerekli doğru kullanıcı adı, parola ve izinlere sahip olduğunu doğrular.
+      * Şirket içi Active Directory Bağlayıcısı tarafından kullanılan Active Directory Domain Services (AD DS) hesaplarının parola karması eşitlemesi için gereken doğru Kullanıcı adı, parola ve izinlere sahip olduğunu doğrular.
 
-Aşağıdaki diyagram, cmdlet'in tek alanlı, şirket içi Active Directory topolojisi sonuçlarını göstermektedir:
+Aşağıdaki diyagramda tek etki alanı, şirket içi Active Directory topolojisi için cmdlet 'inin sonuçları gösterilmektedir:
 
-![Parola karma senkronizasyonu için tanılama çıktısı](./media/tshoot-connect-password-hash-synchronization/phsglobalgeneral.png)
+![Parola karması eşitleme için tanılama çıktısı](./media/tshoot-connect-password-hash-synchronization/phsglobalgeneral.png)
 
-Bu bölümün geri kalanı, görev ve ilgili sorunlar tarafından döndürülen belirli sonuçları açıklar.
+Bu bölümün geri kalanında, görev ve ilgili sorunlar tarafından döndürülen belirli sonuçlar açıklanmaktadır.
 
-#### <a name="password-hash-synchronization-feature-isnt-enabled"></a>şifre karma eşitleme özelliği etkin değil
+#### <a name="password-hash-synchronization-feature-isnt-enabled"></a>Parola karması eşitleme özelliği etkin değil
 
-Azure AD Connect sihirbazını kullanarak parola karma eşitlemesi etkinleştirmediyseniz, aşağıdaki hata döndürülür:
+Parola karma eşitlemesini Azure AD Connect Sihirbazı 'nı kullanarak etkinleştirmediyseniz, aşağıdaki hata döndürülür:
 
-![parola karma eşitleme etkin değil](./media/tshoot-connect-password-hash-synchronization/phsglobaldisabled.png)
+![Parola karması eşitleme etkin değil](./media/tshoot-connect-password-hash-synchronization/phsglobaldisabled.png)
 
-#### <a name="azure-ad-connect-server-is-in-staging-mode"></a>Azure AD Connect sunucusu evreleme modunda
+#### <a name="azure-ad-connect-server-is-in-staging-mode"></a>Azure AD Connect sunucusu hazırlama modunda
 
-Azure AD Connect sunucusu hazırlama modundaysa, parola karma eşitleme geçici olarak devre dışı bırakılır ve aşağıdaki hata döndürülür:
+Azure AD Connect sunucusu hazırlama modundaysa, Parola karması eşitlemesi geçici olarak devre dışı bırakılır ve aşağıdaki hata döndürülür:
 
-![Azure AD Connect sunucusu evreleme modunda](./media/tshoot-connect-password-hash-synchronization/phsglobalstaging.png)
+![Azure AD Connect sunucusu hazırlama modunda](./media/tshoot-connect-password-hash-synchronization/phsglobalstaging.png)
 
-#### <a name="no-password-hash-synchronization-heartbeat-events"></a>Parola karma eşitleme kalp atışı olayları yok
+#### <a name="no-password-hash-synchronization-heartbeat-events"></a>Parola karması eşitleme sinyal olayı yok
 
-Her şirket içi Active Directory bağlayıcısı kendi şifre karma eşitleme kanalı vardır. Parola karma eşitleme kanalı kurulduğunda ve eşitlenecek parola değişikliği olmadığında, Windows Application Event Log altında her 30 dakikada bir bir sinyal olayı (EventId 654) oluşturulur. Her şirket içi Active Directory bağlayıcısı için cmdlet, son üç saat içinde ilgili kalp atışı olaylarını arar. Sinyal olayı bulunamazsa, aşağıdaki hata döndürülür:
+Her şirket içi Active Directory bağlayıcısının kendi parola karması eşitleme kanalı vardır. Parola karması eşitleme kanalı oluşturulduğunda ve eşitlenecek herhangi bir parola değişikliği olmadığında, Windows uygulama olay günlüğü altında 30 dakikada bir sinyal olayı (EventID 654) oluşturulur. Her şirket içi Active Directory Bağlayıcısı için, cmdlet son üç saat içinde ilgili sinyal olaylarını arar. Hiçbir sinyal olayı bulunmazsa, aşağıdaki hata döndürülür:
 
-![Şifre hash senkronizasyon kalp atışı olay](./media/tshoot-connect-password-hash-synchronization/phsglobalnoheartbeat.png)
+![Parola karması eşitleme sinyal olayı yok](./media/tshoot-connect-password-hash-synchronization/phsglobalnoheartbeat.png)
 
-#### <a name="ad-ds-account-does-not-have-correct-permissions"></a>AD DS hesabının doğru izinleri yok
+#### <a name="ad-ds-account-does-not-have-correct-permissions"></a>AD DS hesabın doğru izinleri yok
 
-Parola açıklarını eşitlemek için şirket içi Active Directory bağlayıcısı tarafından kullanılan AD DS hesabı uygun izinlere sahip değilse, aşağıdaki hata döndürülür:
+Parola karmalarını eşitlemeye yönelik şirket içi Active Directory Bağlayıcısı tarafından kullanılan AD DS hesabı uygun izinlere sahip değilse, aşağıdaki hata döndürülür:
 
 ![Yanlış kimlik bilgisi](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
 
-#### <a name="incorrect-ad-ds-account-username-or-password"></a>Yanlış AD DS hesabı kullanıcı adı veya şifre
+#### <a name="incorrect-ad-ds-account-username-or-password"></a>Hesap Kullanıcı adı veya parola yanlış AD DS
 
-İşyeri içinde Active Directory bağlayıcısı tarafından parola hatalarını veya parolayı eşitlemek için kullanılan AD DS hesabının yanlış bir kullanıcı adı veya parolası varsa, aşağıdaki hata döndürülür:
+Parola karmalarını eşitlemeye yönelik şirket içi Active Directory Bağlayıcısı tarafından kullanılan AD DS hesabının Kullanıcı adı veya parolası yanlış olursa aşağıdaki hata döndürülür:
 
 ![Yanlış kimlik bilgisi](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectcredential.png)
 
 
 
-## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task"></a>Bir nesne parolaları eşitleme değildir: sorun giderme görevini kullanarak sorun giderme
+## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task"></a>Bir nesne parolaları eşitlemiyor: sorun giderme görevini kullanarak sorun giderme
 
-Bir nesnenin parolaları neden eşitlemediğini belirlemek için sorun giderme görevini kullanabilirsiniz.
+Bir nesnenin neden parolaları eşitleyeceğini anlamak için sorun giderme görevini kullanabilirsiniz.
 
 > [!NOTE]
-> Sorun giderme görevi yalnızca Azure AD Connect sürümü 1.1.614.0 veya sonraki sürümiçin kullanılabilir.
+> Sorun giderme görevi yalnızca Azure AD Connect Version 1.1.614.0 veya üzeri için kullanılabilir.
 
-### <a name="run-the-diagnostics-cmdlet"></a>Tanılama cmdlet çalıştırın
+### <a name="run-the-diagnostics-cmdlet"></a>Tanılama cmdlet 'ini çalıştırma
 
-Belirli bir kullanıcı nesnesi için sorunları gidermek için:
+Belirli bir kullanıcı nesnesi ile ilgili sorunları gidermek için:
 
-1. Azure AD Connect sunucunuzda **Yönetici olarak Çalıştır** seçeneğiyle yeni bir Windows PowerShell oturumu açın.
+1. **Yönetici olarak çalıştır** seçeneğiyle Azure AD Connect sunucunuzda yeni bir Windows PowerShell oturumu açın.
 
-2. Çalıştır `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`ya da .
+2. Veya `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`çalıştırın.
 
-3. Azure AD Bağlantısı sihirbazını başlatın.
+3. Azure AD Connect Sihirbazı 'nı başlatın.
 
-4. **Ek Görevler** sayfasına gidin, **Sorun Giderme'yi**seçin ve **İleri'yi**tıklatın.
+4. **Ek görevler** sayfasına gidin, **sorun gider**' i seçin ve **İleri**' ye tıklayın.
 
-5. Sorun Giderme sayfasında, PowerShell'deki sorun giderme menüsünü başlatmak için **Başlat'ı** tıklatın.
+5. Sorun giderme sayfasında, PowerShell 'de sorun giderme menüsünü başlatmak için **Başlat** ' a tıklayın.
 
-6. Ana menüde **Sorun Giderme parola karma senkronizasyonu'nu**seçin.
+6. Ana menüde, **Parola karması eşitlemesini sorun gider**' i seçin.
 
-7. Alt menüde, Parola'yı seçin **belirli bir kullanıcı hesabı için senkronize edilmez.**
+7. Alt menüde, **belirli bir kullanıcı hesabı Için parola eşitlenmez**' ı seçin.
 
-### <a name="understand-the-results-of-the-troubleshooting-task"></a>Sorun giderme görevinin sonuçlarını anlama
+### <a name="understand-the-results-of-the-troubleshooting-task"></a>Sorun giderme görevinin sonuçlarını anlayın
 
 Sorun giderme görevi aşağıdaki denetimleri gerçekleştirir:
 
-* Active Directory bağlayıcısı, Metaverse ve Azure AD bağlayıcısı alanında Etkin Dizin nesnesinin durumunu inceler.
+* Active Directory bağlayıcı alanı, Metadize ve Azure AD bağlayıcı alanındaki Active Directory nesnesinin durumunu inceler.
 
-* Etkin Dizin nesnesine uygulanan parola karma eşitlemesi etkin leştirilmiş eşitleme kuralları olduğunu doğrular.
+* Parola karması eşitlemesi etkinleştirilmiş ve Active Directory nesnesine uygulanan eşitleme kuralları bulunduğunu doğrular.
 
-* Nesnenin parolasını eşitlemek için son denemenin sonuçlarını almaya ve görüntülemeye çalışır.
+* Nesnenin parolasını eşitlemeye yönelik son girişim sonuçlarını almaya ve görüntülemeye çalışır.
 
-Aşağıdaki diyagram, tek bir nesne için parola karma eşitleme sinisorun giderme cmdlet sonuçlarını gösterir:
+Aşağıdaki diyagramda tek bir nesne için Parola karması eşitlemeyle ilgili sorun giderirken cmdlet 'in sonuçları gösterilmektedir:
 
-![Parola karma senkronizasyonu için tanılama çıktısı - tek nesne](./media/tshoot-connect-password-hash-synchronization/phssingleobjectgeneral.png)
+![Parola karması eşitlemesi için tanılama çıktısı-tek nesne](./media/tshoot-connect-password-hash-synchronization/phssingleobjectgeneral.png)
 
-Bu bölümün geri kalanında cmdlet ve ilgili sorunlar tarafından döndürülen özel sonuçlar açıklanmaktadır.
+Bu bölümün geri kalanında cmdlet tarafından döndürülen belirli sonuçlar ve ilgili sorunlar açıklanmaktadır.
 
-#### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>Etkin Dizin nesnesi Azure AD'ye dışa aktarılmaz
+#### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>Active Directory nesnesi Azure AD 'ye aktarılmaz
 
-Azure AD kiracısında karşılık gelen bir nesne olmadığından, bu şirket içi Active Directory hesabı için parola karma eşitleme başarısız olur. Aşağıdaki hata döndürülür:
+Azure AD kiracısında karşılık gelen bir nesne olmadığından, bu şirket içi Active Directory hesabı için Parola karması eşitlemesi başarısız oldu. Aşağıdaki hata döndürülür:
 
 ![Azure AD nesnesi eksik](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnotexported.png)
 
-#### <a name="user-has-a-temporary-password"></a>Kullanıcının geçici bir şifresi var
+#### <a name="user-has-a-temporary-password"></a>Kullanıcının geçici bir parolası vardır
 
-Şu anda Azure AD Connect, geçici parolaları Azure AD ile eşitlemeyi desteklemez. **Bir sonraki oturum açma seçeneğindeki Değiştir parolası** şirket içi Active Directory kullanıcısında ayarlanırsa, parola geçici olarak kabul edilir. Aşağıdaki hata döndürülür:
+Şu anda Azure AD Connect Azure AD ile geçici parolaların eşitlenmesini desteklemez. Şirket içi Active Directory Kullanıcı üzerinde bir **sonraki oturum açışında parolayı Değiştir** seçeneği ayarlandıysa parolanın geçici olduğu kabul edilir. Aşağıdaki hata döndürülür:
 
-![Geçici parola dışa aktarılmaz](./media/tshoot-connect-password-hash-synchronization/phssingleobjecttemporarypassword.png)
+![Geçici parola dışarıya aktarılmamış](./media/tshoot-connect-password-hash-synchronization/phssingleobjecttemporarypassword.png)
 
-#### <a name="results-of-last-attempt-to-synchronize-password-arent-available"></a>Parolayı eşitlemek için yapılan son girişimin sonuçları kullanılamıyor
+#### <a name="results-of-last-attempt-to-synchronize-password-arent-available"></a>Parola eşitlemeye yönelik son deneme sonuçları kullanılamıyor
 
-Varsayılan olarak, Azure AD Connect parola karma eşitleme denemelerinin sonuçlarını yedi gün boyunca saklar. Seçili Active Directory nesnesi için sonuç yoksa, aşağıdaki uyarı döndürülür:
+Varsayılan olarak, Azure AD Connect yedi gün boyunca Parola karması eşitleme denemelerinin sonuçlarını depolar. Seçili Active Directory nesnesi için kullanılabilir sonuç yoksa, aşağıdaki uyarı döndürülür:
 
-![Tek bir nesne için tanılama çıktısı - parola eşitleme geçmişi yok](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnohistory.png)
+![Tek nesne için tanılama çıktısı-parola eşitleme geçmişi yok](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnohistory.png)
 
 
 
-## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Hiçbir parola senkronize edilir: tanılama cmdlet kullanılarak sorun giderme
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Eşitlenen parola yok: Tanılama cmdlet 'ini kullanarak sorun giderme
 
-Hiçbir parolanın `Invoke-ADSyncDiagnostics` neden senkronize olmadığını anlamak için cmdlet'i kullanabilirsiniz.
+Bir parolanın neden eşitlenmemiş `Invoke-ADSyncDiagnostics` olduğunu anlamak için cmdlet 'ini kullanabilirsiniz.
 
 > [!NOTE]
-> Cmdlet `Invoke-ADSyncDiagnostics` yalnızca Azure AD Connect sürümü 1.1.524.0 veya sonraki sürümiçin kullanılabilir.
+> `Invoke-ADSyncDiagnostics` Cmdlet 'i yalnızca Azure AD Connect Version 1.1.524.0 veya üzeri için kullanılabilir.
 
-### <a name="run-the-diagnostics-cmdlet"></a>Tanılama cmdlet çalıştırın
+### <a name="run-the-diagnostics-cmdlet"></a>Tanılama cmdlet 'ini çalıştırma
 
-Parolanın eşitlenmediği sorunları gidermek için:
+Hiçbir parolanın eşitlenmediği sorunları gidermek için:
 
-1. Azure AD Connect sunucunuzda **Yönetici olarak Çalıştır** seçeneğiyle yeni bir Windows PowerShell oturumu açın.
+1. **Yönetici olarak çalıştır** seçeneğiyle Azure AD Connect sunucunuzda yeni bir Windows PowerShell oturumu açın.
 
-2. Çalıştır `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`ya da .
+2. Veya `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`çalıştırın.
 
 3. `Import-Module ADSyncDiagnostics` öğesini çalıştırın.
 
@@ -212,20 +212,20 @@ Parolanın eşitlenmediği sorunları gidermek için:
 
 
 
-## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Bir nesne parolaları eşitleme değildir: tanılama cmdlet kullanarak sorun giderme
+## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Bir nesne parolaları eşitlemiyor: Tanılama cmdlet 'ini kullanarak sorun giderme
 
-Bir nesnenin `Invoke-ADSyncDiagnostics` neden parolaları eşitlemediğini belirlemek için cmdlet'i kullanabilirsiniz.
+Bir nesnenin neden parolaları `Invoke-ADSyncDiagnostics` eşitleyeceğini anlamak için cmdlet 'ini kullanabilirsiniz.
 
 > [!NOTE]
-> Cmdlet `Invoke-ADSyncDiagnostics` yalnızca Azure AD Connect sürümü 1.1.524.0 veya sonraki sürümiçin kullanılabilir.
+> `Invoke-ADSyncDiagnostics` Cmdlet 'i yalnızca Azure AD Connect Version 1.1.524.0 veya üzeri için kullanılabilir.
 
-### <a name="run-the-diagnostics-cmdlet"></a>Tanılama cmdlet çalıştırın
+### <a name="run-the-diagnostics-cmdlet"></a>Tanılama cmdlet 'ini çalıştırma
 
-Kullanıcı için parola eşitlenmediği sorunları gidermek için:
+Bir kullanıcı için hiçbir parolanın eşitlenmediği sorunları gidermek için:
 
-1. Azure AD Connect sunucunuzda **Yönetici olarak Çalıştır** seçeneğiyle yeni bir Windows PowerShell oturumu açın.
+1. **Yönetici olarak çalıştır** seçeneğiyle Azure AD Connect sunucunuzda yeni bir Windows PowerShell oturumu açın.
 
-2. Çalıştır `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`ya da .
+2. Veya `Set-ExecutionPolicy RemoteSigned` `Set-ExecutionPolicy Unrestricted`çalıştırın.
 
 3. `Import-Module ADSyncDiagnostics` öğesini çalıştırın.
 
@@ -235,7 +235,7 @@ Kullanıcı için parola eşitlenmediği sorunları gidermek için:
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
 
-   Örnek:
+   Örneğin:
 
    ```powershell
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
@@ -243,109 +243,109 @@ Kullanıcı için parola eşitlenmediği sorunları gidermek için:
 
 
 
-## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Parola senkronize olmaz: el ile sorun giderme adımları
+## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Eşitlenen parola yok: el ile sorun giderme adımları
 
-Parolanın neden eşitlenmeyiş olduğunu belirlemek için aşağıdaki adımları izleyin:
+Parolaların neden eşitlenmediğini öğrenmek için şu adımları izleyin:
 
-1. Connect sunucusu [evreleme modunda](how-to-connect-sync-staging-server.md)mı? Hazırlama modundaki bir sunucu parolaları eşitlemez.
+1. Sunucu, [hazırlama modunda](how-to-connect-sync-staging-server.md)mı? Hazırlama modundaki bir sunucu herhangi bir parolayı eşitlemez.
 
-2. Komut dosyasını [parola eşitleme ayarları](#get-the-status-of-password-sync-settings) nın durumunu al bölümünde çalıştırın. Parola eşitleme yapılandırması hakkında genel bir bakış sağlar.  
+2. Komut dosyasını [parola eşitleme ayarlarının durumunu Al](#get-the-status-of-password-sync-settings) bölümünde çalıştırın. Parola eşitleme yapılandırmasına genel bir bakış sunar.  
 
-    ![Parola eşitleme ayarlarından PowerShell komut dosyası çıkışı](./media/tshoot-connect-password-hash-synchronization/psverifyconfig.png)  
+    ![Parola eşitleme ayarlarından gelen PowerShell betiği çıkışı](./media/tshoot-connect-password-hash-synchronization/psverifyconfig.png)  
 
-3. Özellik Azure AD'de etkinleştirilemezse veya eşitleme kanalı durumu etkin değilse, Bağla yükleme sihirbazını çalıştırın. **Eşitleme seçeneklerini özelleştir'i**ve parola eşitlemeyi seçilmeyi seçin. Bu değişiklik özelliği geçici olarak devre dışı kılabilir. Ardından sihirbazı yeniden çalıştırın ve parola eşitlemesini yeniden etkinleştirin. Yapılandırmanın doğru olup olmadığını doğrulamak için komut dosyasını yeniden çalıştırın.
+3. Özellik Azure AD 'de etkinleştirilmemişse veya eşitleme kanalı durumu etkinleştirilmemişse, yükleme Yükleme Sihirbazı 'nı çalıştırın. **Eşitleme seçeneklerini Özelleştir**' i seçin ve parola eşitleme seçimini kaldırın. Bu değişiklik, özelliği geçici olarak devre dışı bırakır. Sonra Sihirbazı yeniden çalıştırın ve parola eşitlemesini yeniden etkinleştirin. Yapılandırmanın doğru olduğundan emin olmak için betiği yeniden çalıştırın.
 
-4. Hatalar için olay günlüğüne bakın. Bir sorunu gösteren aşağıdaki olaylara bakın:
-    * Kaynak: "Dizin eşitleme" ID: 0, 611, 652, 655 Bu olayları görürseniz, bir bağlantı sorunu var. Olay günlüğü iletisi, sorun yaşadığın orman bilgilerini içerir. Daha fazla bilgi için Bağlantı [sorununa](#connectivity problem)bakın.
+4. Hatalara yönelik olay günlüğüne bakın. Bir sorunu belirten aşağıdaki olayları arayın:
+    * Kaynak: "Dizin eşitleme" KIMLIĞI: 0, 611, 652, 655 bu olayları görürseniz bir bağlantı sorununuz vardır. Olay günlüğü iletisi, bir sorun yaşadığınız orman bilgilerini içerir. Daha fazla bilgi için bkz. [bağlantı sorunu](#connectivity problem).
 
-5. Sinyal atlayış görmüyorsanız veya başka bir şey çalışmıyorsa, [tüm parolaların tam eşitlesini tetikle'yi çalıştırın.](#trigger-a-full-sync-of-all-passwords) Komut dosyasını yalnızca bir kez çalıştırın.
+5. Hiçbir sinyal görmüyorsanız veya başka bir şey çalışmışsa, [tüm parolaların tam eşitlemesini tetikleyin](#trigger-a-full-sync-of-all-passwords). Betiği yalnızca bir kez çalıştırın.
 
-6. Parolaları eşitlemeyen bir nesneyi giderme sorununa bakın.
+6. Parolaları eşitlenmeyen bir nesneyle Ilgili sorun giderme bölümüne bakın.
 
 ### <a name="connectivity-problems"></a>Bağlantı sorunları
 
 Azure AD ile bağlantınız var mı?
 
-Hesabın tüm etki alanlarındaki şifre yazılarını okumak için izinleri gerekli mi? Express ayarlarını kullanarak Bağlan'ı yüklediyseniz, izinlerin zaten doğru olması gerekir. 
+Hesap, tüm etki alanlarındaki parola karmalarını okumak için gerekli izinlere sahip mi? Hızlı ayarları kullanarak bağlan ' ı yüklediyseniz, izinlerin zaten doğru olması gerekir. 
 
 Özel yükleme kullandıysanız, aşağıdakileri yaparak izinleri el ile ayarlayın:
     
-1. Active Directory bağlayıcısı tarafından kullanılan hesabı bulmak için **Eşitleme Hizmet Yöneticisi'ni**başlatın. 
+1. Active Directory Bağlayıcısı tarafından kullanılan hesabı bulmak için **Synchronization Service Manager**başlatın. 
  
-2. **Bağlayıcılar'a**gidin ve ardından sorun giderdiğiniz şirket içi Active Directory ormanını arayın. 
+2. **Bağlayıcılar**' a gidin ve sorun giderirken şirket içi Active Directory ormanını arayın. 
  
-3. Bağlayıcıyı seçin ve ardından **Özellikler'i**tıklatın. 
+3. Bağlayıcıyı seçin ve ardından **Özellikler**' e tıklayın. 
  
-4. Active **Directory Forest'a Bağlan'a**gidin.  
+4. **Active Directory ormana Bağlan**' a gidin.  
     
-    ![Active Directory konektörü tarafından kullanılan hesap](./media/tshoot-connect-password-hash-synchronization/connectoraccount.png)  
-    Kullanıcı adını ve hesabın bulunduğu etki alanını not edin.
+    ![Active Directory Bağlayıcısı tarafından kullanılan hesap](./media/tshoot-connect-password-hash-synchronization/connectoraccount.png)  
+    Kullanıcı adını ve hesabın bulunduğu etki alanını aklınızda bulundurun.
     
-5. **Etkin Dizin Kullanıcıları ve Bilgisayarlarını**başlatın ve daha önce bulduğunuz hesabın ormanınızdaki tüm etki alanlarının kökünde ayarlanmış izleme izinlerine sahip olduğunu doğrulayın:
-    * Dizin Değişikliklerini Çoğaltma
-    * Dizin Değişikliklerini Tümünü Çoğaltma
+5. **Active Directory Kullanıcıları ve bilgisayarları**başlatın ve ardından, daha önce bulduğunuz hesabın ormanınızdaki tüm etki alanlarının kökünde ayarlanan izleme izinlerine sahip olduğunu doğrulayın:
+    * Dizin Değişikliklerini Çoğalt
+    * Dizin değişikliklerini çoğaltma
 
-6. Etki alanı denetleyicilerine Azure AD Connect tarafından erişilebilir mi? Connect sunucusu tüm etki alanı denetleyicilerine bağlanamıyorsa, yalnızca **tercih edilen etki alanı denetleyicisini kullanın.**  
+6. Etki alanı denetleyicileri Azure AD Connect tarafından erişilebilir mi? Connect sunucusu tüm etki alanı denetleyicilerine bağlanamazsa, **yalnızca tercih edilen etki alanı denetleyicisini kullan**seçeneğini yapılandırın.  
     
-    ![Active Directory bağlayıcısı tarafından kullanılan etki alanı denetleyicisi](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
+    ![Active Directory Bağlayıcısı tarafından kullanılan etki alanı denetleyicisi](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
     
-7. **Eşitleme Hizmet Yöneticisi'ne** geri dön ve **Dizin Bölümü'ni yapılandır.** 
+7. **Synchronization Service Manager** ve **dizin bölümünü yapılandırmak**için geri dönün. 
  
-8. **Dizin bölümlerini seç'te**etki alanınızı seçin, **Yalnızca kullanımda tercih edilen etki alanı denetleyicileri** onay kutusunu seçin ve sonra **Yapıl'ı**tıklatın. 
+8. **Dizin bölümlerini Seç**' de etki alanınızı seçin, **yalnızca tercih edilen etki alanı denetleyicilerini kullan** onay kutusunu işaretleyin ve ardından **Yapılandır**' a tıklayın. 
 
-9. Listede, Connect'in parola eşitlemesi için kullanması gereken etki alanı denetleyicilerini girin. Aynı liste ithalat ve dışa aktarma için de kullanılır. Tüm etki alanlarınız için bu adımları yapın.
+9. Listede, parola eşitleme için bağlantı için kullanması gereken etki alanı denetleyicilerini girin. Aynı liste içeri ve dışarı aktarma için de kullanılır. Tüm etki alanlarınız için bu adımları uygulayın.
 
-10. Komut dosyası sinyal atışını olmadığını gösteriyorsa, komut dosyasını [tüm parolaların tam eşitle'sini tetikle'de](#trigger-a-full-sync-of-all-passwords)çalıştırın.
+10. Betik, sinyal bulunmadığını gösteriyorsa, [tüm parolaların tam eşitlemesini tetiklemek](#trigger-a-full-sync-of-all-passwords)için betiği çalıştırın.
 
-## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>Bir nesne parolaları eşitleme değildir: el ile sorun giderme adımları
+## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>Bir nesne parolaları eşitlemiyor: el ile sorun giderme adımları
 
-Bir nesnenin durumunu gözden geçirerek parola karma eşitleme sorunlarını kolayca giderebilirsiniz.
+Bir nesnenin durumunu inceleyerek Parola karması eşitleme sorunlarını kolayca giderebilirsiniz.
 
-1. **Etkin Dizin Kullanıcıları ve Bilgisayar'da,** kullanıcıyı arayın ve ardından **kullanıcının bir sonraki oturum açma** onay kutusunda parolayı değiştirmesi gerektiğini doğrulayın.  
+1. **Active Directory Kullanıcıları ve bilgisayarları**, kullanıcıyı arayın ve sonra **kullanıcının bir sonraki oturum açışında parolayı değiştirmesi gerektiğini** doğrulayın onay kutusunun işaretini kaldırın.  
 
-    ![Etkin Dizin üretken parolalar](./media/tshoot-connect-password-hash-synchronization/adprodpassword.png)  
+    ![Active Directory üretken parolalar](./media/tshoot-connect-password-hash-synchronization/adprodpassword.png)  
 
-    Onay kutusu seçilirse, kullanıcıdan oturum açmasını ve parolayı değiştirmesini isteyin. Geçici parolalar Azure AD ile eşitlenmez.
+    Onay kutusu işaretliyse kullanıcıdan oturum açmasını ve parolayı değiştirmesini isteyin. Geçici parolalar Azure AD ile eşitlenmez.
 
-2. Etkin Dizin'de parola doğru görünüyorsa, eşitleme motorundaki kullanıcıyı izleyin. Kullanıcıyı şirket içi Active Directory'den Azure AD'ye kadar takip ederek, nesneüzerinde açıklayıcı bir hata olup olmadığını görebilirsiniz.
+2. Parola Active Directory doğru görünüyorsa, eşitleme altyapısındaki kullanıcıyı izleyin. Şirket içi Active Directory kullanıcıyı Azure AD 'den izleyerek, nesne üzerinde açıklayıcı bir hata olup olmadığını görebilirsiniz.
 
-    a. [Eşitleme Hizmet Yöneticisi'ni](how-to-connect-sync-service-manager-ui.md)başlatın.
+    a. [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md)başlatın.
 
-    b. **Bağlayıcılar'ı**tıklatın.
+    b. **Bağlayıcılar**' a tıklayın.
 
-    c. Kullanıcının bulunduğu **Active Directory Bağlayıcısı'nı** seçin.
+    c. Kullanıcının bulunduğu **Active Directory bağlayıcısını** seçin.
 
-    d. **Arama Bağlayıcısı Alanı'nı**seçin.
+    d. **Arama Bağlayıcısı alanı**' nı seçin.
 
-    e. **Kapsam** kutusunda, **DN veya Anchor'ı**seçin ve ardından sorun giderdiğiniz kullanıcının tam DN'sini girin.
+    e. **Kapsam** kutusunda **DN veya bağlayıcı**' yı seçin ve ardından sorun gidermekte olduğunuz kullanıcının tam DN 'sini girin.
 
-    ![DN ile bağlayıcı alanında kullanıcı arama](./media/tshoot-connect-password-hash-synchronization/searchcs.png)  
+    ![DN ile bağlayıcı alanında Kullanıcı arayın](./media/tshoot-connect-password-hash-synchronization/searchcs.png)  
 
-    f. Aradığınız kullanıcıyı bulun ve tüm öznitelikleri görmek için **Özellikler'i** tıklatın. Kullanıcı arama sonucunda değilse, [filtreleme kurallarınızı](how-to-connect-sync-configure-filtering.md) doğrulayın ve [Uygula'yı](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes) çalıştırdığınızdan emin olun ve kullanıcının Connect'te görünmesi için değişiklikleri doğrulayın.
+    f. Aradığınız kullanıcıyı bulun ve ardından **Özellikler** ' e tıklayarak tüm öznitelikleri görüntüleyin. Kullanıcı arama sonucu değilse, [filtreleme kurallarınızı](how-to-connect-sync-configure-filtering.md) doğrulayın ve uygulamanın Connect 'te görünmesi için [Uygula ve değişiklikleri doğrula](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes) ' yı çalıştırdığınızdan emin olun.
 
-    g. Nesnenin son bir haftaya ait parola eşitleme ayrıntılarını görmek için **Günlük'ü**tıklatın.  
+    g. Son hafta için nesnenin parola eşitleme ayrıntılarını görmek için **günlük**' e tıklayın.  
 
     ![Nesne günlüğü ayrıntıları](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
-    Nesne günlüğü boşsa, Azure AD Connect Active Directory'den parola karmasını okuyamaz. Bağlantı Hataları ile sorun giderme devam edin. **Başarıdan**başka bir değer görürseniz, [Parola eşitleme günlüğündeki](#password-sync-log)tabloya bakın.
+    Nesne günlüğü boşsa, Azure AD Connect Active Directory parola karmasını okuyamadı. Bağlantı hatalarıyla sorun gidermeye devam edin. **Başarıya**ait başka bir değer görürseniz, [parola eşitleme günlüğündeki](#password-sync-log)tabloya bakın.
 
-    h. **Soy** sekmesini seçin ve **PasswordSync** sütunundaki en az bir eşitleme kuralının **Doğru**olduğundan emin olun. Varsayılan yapılandırmada, eşitleme kuralının adı **AD'den - Kullanıcı Hesabı Etkin'den**gelir.  
+    h. **Kökenini** sekmesini seçin ve **PasswordSync** sütununda en az bir eşitleme kuralının **doğru**olduğundan emin olun. Varsayılan yapılandırmada, eşitleme kuralının adı **ad-User AccountEnabled konumunda**bulunur.  
 
-    ![Bir kullanıcı hakkında soy bilgileri](./media/tshoot-connect-password-hash-synchronization/cspasswordsync.png)  
+    ![Bir kullanıcı hakkında kökenini bilgileri](./media/tshoot-connect-password-hash-synchronization/cspasswordsync.png)  
 
-    i. Kullanıcı özniteliklerinin listesini görüntülemek için **Metaverse Nesne Özellikleri'ni** tıklatın.  
+    i. Kullanıcı özniteliklerinin listesini göstermek için **Metadize nesne özellikleri ' ne** tıklayın.  
 
-    ![Metaverse bilgi](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
+    ![Meta veri deposu bilgileri](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
 
-    **BulutFiltreleştirilmiş** öznitelik bulunmadığını doğrulayın. Etki alanı özniteliklerinin (domainFQDN ve domainNetBios) beklenen değerlere sahip olduğundan emin olun.
+    Hiçbir **Cloudfıltered** özniteliği bulunmadığını doğrulayın. Etki alanı özniteliklerinin (domainFQDN ve Domainnetbıos) beklenen değerlere sahip olduğundan emin olun.
 
-    j. **Bağlayıcılar** sekmesini tıklatın. Hem şirket içi Active Directory hem de Azure AD'ye bağlı bağlayıcıları gördüğünüzden emin olun.
+    j. **Bağlayıcılar** sekmesine tıklayın. hem şirket içi Active Directory hem de Azure AD 'de bağlayıcılar görtığınızdan emin olun.
 
-    ![Metaverse bilgi](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
+    ![Meta veri deposu bilgileri](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 
-    k. Azure AD'yi temsil eden satırı seçin, **Özellikler'i**tıklatın ve ardından **Soy** sekmesini tıklatın. Bağlayıcı alan **nesnesinin, ParolaSync** sütununda **True**olarak ayarlanmış bir giden kural alabilmeli. Varsayılan yapılandırmada, eşitleme kuralının adı **AAD'ye out - User Join**.  
+    k. Azure AD 'yi temsil eden satırı seçin, **Özellikler**' e ve ardından **kökenini** sekmesine tıklayın. Bağlayıcı alanı nesnesinin, **PasswordSync** sütununda **doğru**olarak ayarlanmış bir giden kuralı olmalıdır. Varsayılan yapılandırmada, eşitleme kuralının adı **AAD-User JOIN ' e**gönderilir.  
 
-    ![Bağlayıcı Alan Nesne Özellikleri iletişim kutusu](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
+    ![Bağlayıcı alanı nesne özellikleri iletişim kutusu](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
 
 ### <a name="password-sync-log"></a>Parola eşitleme günlüğü
 
@@ -354,19 +354,19 @@ Durum sütunu aşağıdaki değerlere sahip olabilir:
 | Durum | Açıklama |
 | --- | --- |
 | Başarılı |Parola başarıyla eşitlendi. |
-| FilteredByTarget |Parola Kullanıcı olarak ayarlanır **bir sonraki oturumda şifreyi değiştirmek gerekir.** Parola eşitlenmedi. |
-| NoTargetConnection |Metaverse veya Azure AD bağlayıcı sı'nda nesne yok. |
-| KaynakConnectorNotPresent |Şirket içi Active Directory bağlayıcı alanında nesne bulunamadı. |
-| TargetNotExportedToDirectory |Azure AD bağlayıcısı alanındaki nesne henüz dışa aktarılmadı. |
-| GöçCheckDetailsForMoreInfo |Günlük girişi 1.0.9125.0 oluşturmadan önce oluşturulmuştur ve eski durumunda gösterilir. |
-| Hata |Hizmet bilinmeyen bir hata döndürür. |
-| Bilinmiyor |Bir yığın parola işbirliği işlemeye çalışırken bir hata oluştu.  |
-| MissingAttribute |Azure AD Etki Alanı Hizmetleri tarafından gereken belirli öznitelikler (örneğin, Kerberos karması) kullanılamaz. |
-| Yeniden DenemeRequestedByTarget |Azure AD Etki Alanı Hizmetleri tarafından gereken belirli öznitelikler (örneğin, Kerberos karma) önceden kullanılamadı. Kullanıcının parola karmasını yeniden eşitleme girişimi yapılır. |
+| FilteredByTarget |Parola, kullanıcının bir **sonraki oturum açışında parolayı değiştirmesi gerekir**. Parola eşitlenmedi. |
+| NoTargetConnection |Meta veri deposunda veya Azure AD bağlayıcı alanında hiç nesne yok. |
+| Sourceconnectornotsun |Şirket içi Active Directory bağlayıcı alanında hiç nesne bulunamadı. |
+| TargetNotExportedToDirectory |Azure AD bağlayıcı alanındaki nesne henüz verilmedi. |
+| MigratedCheckDetailsForMoreInfo |Derleme 1.0.9125.0 önce günlük girdisi oluşturuldu ve eski durumunda gösteriliyor. |
+| Hata |Hizmet bilinmeyen bir hata döndürdü. |
+| Bilinmiyor |Bir grup Parola karması işlenmeye çalışılırken bir hata oluştu.  |
+| MissingAttribute |Azure AD Domain Services için gereken belirli öznitelikler (örneğin, Kerberos karması) kullanılamıyor. |
+| RetryRequestedByTarget |Azure AD Domain Services için gereken belirli öznitelikler (örneğin, Kerberos karması) daha önce kullanılabilir değil. Kullanıcının parola karmasını yeniden eşitleme girişimi yapılır. |
 
-## <a name="scripts-to-help-troubleshooting"></a>Sorun gidermeye yardımcı olacak komut dosyaları
+## <a name="scripts-to-help-troubleshooting"></a>Sorun gidermeye yardımcı olan betikler
 
-### <a name="get-the-status-of-password-sync-settings"></a>Parola eşitleme ayarlarının durumunu alın
+### <a name="get-the-status-of-password-sync-settings"></a>Parola eşitleme ayarlarının durumunu al
 
 ```powershell
 Import-Module ADSync
@@ -421,12 +421,12 @@ if ($adConnectors -eq $null)
 Write-Host
 ```
 
-#### <a name="trigger-a-full-sync-of-all-passwords"></a>Tüm parolaların tam eşitlesini tetikleme
+#### <a name="trigger-a-full-sync-of-all-passwords"></a>Tüm parolaların tam eşitlemesini Tetikle
 
 > [!NOTE]
-> Bu komut dosyalarını yalnızca bir kez çalıştırın. Birden fazla kez çalıştırmak gerekiyorsa, başka bir şey sorundur. Sorunu gidermek için Microsoft desteğine başvurun.
+> Bu betiği yalnızca bir kez çalıştırın. Birden çok kez çalıştırmanız gerekiyorsa, sorun başka bir şeydir. Sorunu gidermek için Microsoft destek 'e başvurun.
 
-Aşağıdaki komut dosyasını kullanarak tüm parolaların tam eşitlesini tetikleyebilirsiniz:
+Aşağıdaki betiği kullanarak tüm parolaların tam eşitlemesini tetikleyebilirsiniz:
 
 ```powershell
 $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"
@@ -444,6 +444,6 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure AD Connect eşitlemeile parola karma senkronizasyonu uygulama](how-to-connect-password-hash-synchronization.md)
-* [Azure AD Connect Sync: Eşitleme seçeneklerini özelleştirme](how-to-connect-sync-whatis.md)
+* [Azure AD Connect Sync ile parola karması eşitlemesi uygulama](how-to-connect-password-hash-synchronization.md)
+* [Azure AD Connect eşitleme: eşitleme seçeneklerini özelleştirme](how-to-connect-sync-whatis.md)
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)

@@ -1,7 +1,7 @@
 ---
 title: PowerShell ile özel ilkeleri yönetme
 titleSuffix: Azure AD B2C
-description: Azure AD B2C özel ilkelerinizin programlı yönetimi için Azure Active Directory (Azure AD) PowerShell cmdlet'ini kullanın. PowerShell ile özel ilkeler oluşturun, okuyun, güncelleyin ve silin.
+description: Azure AD B2C özel ilkelerinizin programlı yönetimi için Azure Active Directory (Azure AD) PowerShell cmdlet 'ini kullanın. PowerShell ile özel ilkeler oluşturun, okuyun, güncelleştirin ve silin.
 author: msmimart
 manager: celestedg
 ms.service: active-directory
@@ -11,33 +11,33 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ebf0cfffa410d8dfe2f0e0b42a0fee0c16106fde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78187415"
 ---
-# <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure PowerShell ile Azure AD B2C özel ilkelerini yönetme
+# <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure PowerShell ile Azure AD B2C özel ilkeleri yönetme
 
-Azure PowerShell, Azure AD B2C kiracınızda komut satırı ve komut dosyası tabanlı özel ilke yönetimi için birkaç cmdlet sağlar. Azure AD PowerShell modüllerini aşağıdakiler için nasıl kullanacağınızı öğrenin:
+Azure PowerShell, Azure AD B2C kiracınızda komut satırı ve betik tabanlı özel ilke yönetimi için çeşitli cmdlet 'ler sağlar. Azure AD PowerShell modülünü kullanarak şunları yapmayı öğrenin:
 
-* Azure AD B2C kiracısında özel ilkeleri listele
-* Kiracıdan bir ilke indirme
-* İçeriğini üzerine yazarak varolan bir ilkeyi güncelleştirme
+* Azure AD B2C kiracısındaki özel ilkeleri listeleme
+* Bir kiracıdan bir ilke indirin
+* Mevcut bir ilkeyi içeriğini üzerine yazarak Güncelleştir
 * Azure AD B2C kiracınıza yeni bir ilke yükleme
-* Özel bir ilkeyi kiracıdan silme
+* Bir kiracıdan özel bir ilke silme
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Azure AD B2C kiracı](tutorial-create-tenant.md)ve [B2C IEF İlke Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) rolü ile dizindeki bir kullanıcı için kimlik bilgileri
+* [B2C ıEF Ilke Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) rolüyle dizindeki bir kullanıcı için [Azure AD B2C kiracı](tutorial-create-tenant.md)ve kimlik bilgileri
 * Kiracınıza yüklenen [özel ilkeler](custom-policy-get-started.md)
-* [Grafik **önizleme modülü** için Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+* [Grafik **Önizleme modülü** IÇIN Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
 
-## <a name="connect-powershell-session-to-b2c-tenant"></a>PowerShell oturumunu B2C kiracısına bağlayın
+## <a name="connect-powershell-session-to-b2c-tenant"></a>PowerShell oturumunu B2C kiracısına bağlama
 
-Azure AD B2C kiracınızda özel ilkelerle çalışmak için öncelikle PowerShell oturumunuzu [Connect-AzureAD][Connect-AzureAD] komutunu kullanarak kiracıya bağlamanız gerekir.
+Azure AD B2C kiracınızdaki özel ilkelerle çalışmak için, önce [Connect-AzureAD][Connect-AzureAD] komutunu kullanarak PowerShell oturumunuzu kiracıya bağlamanız gerekir.
 
-Azure AD B2C kiracınızın adını değiştirerek `{b2c-tenant-name}` aşağıdaki komutu uygulayın. Dizindeki [B2C IEF İlke Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) rolünü atanmış bir hesapla oturum açın.
+Azure AD B2C kiracınızın adıyla değiştirerek `{b2c-tenant-name}` aşağıdaki komutu yürütün. Dizinde [B2C ıEF Ilke Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) rolüne atanan bir hesapla oturum açın.
 
 ```PowerShell
 Connect-AzureAD -Tenant "{b2c-tenant-name}.onmicrosoft.com"
@@ -53,9 +53,9 @@ Account               Environment TenantId                             TenantDom
 azureuser@contoso.com AzureCloud  00000000-0000-0000-0000-000000000000 contosob2c.onmicrosoft.com   User
 ```
 
-## <a name="list-all-custom-policies-in-the-tenant"></a>Kiracıdaki tüm özel ilkeleri listele
+## <a name="list-all-custom-policies-in-the-tenant"></a>Kiracıdaki tüm özel ilkeleri listeleme
 
-Özel ilkeleri keşfetmek, bir Azure AD B2C yöneticisinin işlemlerini gözden geçirmesine, yönetmesine ve iş mantığı eklemesine olanak tanır. Azure AD B2C kiracısında özel ilkelerin adlarının listesini döndürmek için [AzureADMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy] komutunu kullanın.
+Özel ilkeleri keşfetmek, bir Azure AD B2C yöneticisinin işlemlerine iş mantığını gözden geçirmesine, yönetmesine ve eklemesini sağlar. Bir Azure AD B2C kiracısındaki özel ilkelerin kimliklerinin bir listesini döndürmek için [Get-AzureADMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy] komutunu kullanın.
 
 ```PowerShell
 Get-AzureADMSTrustFrameworkPolicy
@@ -77,13 +77,13 @@ B2C_1A_PasswordReset
 
 ## <a name="download-a-policy"></a>Bir ilke indirin
 
-İlke iI'lerinin listesini inceledikten sonra, içeriğini indirmek için [Get-AzureADMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy] ile belirli bir ilkeyi hedefleyebilirsiniz.
+İlke kimliklerinin listesini inceledikten sonra, içeriğini indirmek için [Get-AzureADMSTrustFrameworkPolicy][Get-AzureADMSTrustFrameworkPolicy] ile belirli bir ilkeyi hedefleyebilirsiniz.
 
 ```PowerShell
 Get-AzureADMSTrustFrameworkPolicy [-Id <policyId>]
 ```
 
-Bu örnekte, kimlik *B2C_1A_signup_signin* olan ilke indirilir:
+Bu örnekte, *B2C_1A_SIGNUP_SIGNIN* kimlikli ilke indirilir:
 
 ```Console
 PS C:\> Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
@@ -112,20 +112,20 @@ PS C:\> Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
 </TrustFrameworkPolicy>
 ```
 
-İlke içeriğini yerel olarak yeniden sağlamak için komut çıktısını `-OutputFilePath` bağımsız değişkeniçeren bir dosyaya aktarın ve ardından sık kullanılan düzenleyicide dosyayı açın.
+İlke içeriğini yerel olarak düzenlemek için komut çıkışını `-OutputFilePath` bağımsız değişkenle bir dosyaya boru yapın ve ardından dosyayı en sevdiğiniz düzenleyicide açın.
 
-Bir dosyaya çıktı gönderme örneği komutu:
+Bir dosyaya çıkış gönderen örnek komut:
 
 ```PowerShell
 # Download and send policy output to a file
 Get-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin -OutputFilePath C:\RPPolicy.xml
 ```
 
-## <a name="update-an-existing-policy"></a>Varolan bir ilkeyi güncelleştirme
+## <a name="update-an-existing-policy"></a>Mevcut bir ilkeyi güncelleştirme
 
-Oluşturduğunuz veya indirdiğiniz bir ilke dosyasını düzenlemeden sonra, Güncelleştirilmiş ilkeyi [Set-AzureADMSTrustFrameworkPolicy][Set-AzureADMSTrustFrameworkPolicy] komutunu kullanarak Azure ADMSTrustFrameworkPolicy komutunu kullanarak Azure ADMsTrustFrameworkPolicy komutunu kullanarak Azure ADMTrustFrameworkPolicy komutunu kullanarak Azure AD B2C'de yayımlayabilirsiniz.
+Oluşturduğunuz veya indirdiğiniz bir ilke dosyasını düzenledikten sonra, [set-AzureADMSTrustFrameworkPolicy][Set-AzureADMSTrustFrameworkPolicy] komutunu kullanarak güncelleştirilmiş ilkeyi Azure AD B2C olarak yayımlayabilirsiniz.
 
-Komutu `Set-AzureADMSTrustFrameworkPolicy` Azure AD B2C kiracınızda zaten var olan bir ilkenin kimliğiyle birlikte yazarsanız, bu iipolitikasının içeriği üzerine yazılır.
+`Set-AzureADMSTrustFrameworkPolicy` Komutu Azure AD B2C kiracınızda zaten bulunan BIR ilkenin kimliğiyle verirseniz, bu ilkenin içeriğinin üzerine yazılır.
 
 ```PowerShell
 Set-AzureADMSTrustFrameworkPolicy [-Id <policyId>] -InputFilePath <inputpolicyfilePath> [-OutputFilePath <outputFilePath>]
@@ -138,13 +138,13 @@ Set-AzureADMSTrustFrameworkPolicy [-Id <policyId>] -InputFilePath <inputpolicyfi
 Set-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin -InputFilePath C:\B2C_1A_signup_signin.xml
 ```
 
-Ek örnekler [için, Set-AzureADMSTrustFrameworkPolicy][Set-AzureADMSTrustFrameworkPolicy] komut başvurusuna bakın.
+Daha fazla örnek için bkz. [set-AzureADMSTrustFrameworkPolicy][Set-AzureADMSTrustFrameworkPolicy] komut başvurusu.
 
-## <a name="upload-a-new-policy"></a>Yeni bir ilke yükleme
+## <a name="upload-a-new-policy"></a>Yeni bir ilkeyi karşıya yükle
 
-Üretimde çalışan özel bir ilkede değişiklik yaptığınızda, geri dönüş veya A/B test senaryoları için ilkenin birden çok sürümü yayımlanmak isteyebilirsiniz. Veya, varolan bir ilkenin bir kopyasını yapmak, birkaç küçük değişiklikle değiştirmek ve ardından farklı bir uygulama tarafından kullanılmak üzere yeni bir ilke olarak yüklemek isteyebilirsiniz.
+Üretimde çalışan bir özel ilkede değişiklik yaptığınızda, geri dönüş veya A/B testi senaryolarında ilkenin birden çok sürümünü yayımlamak isteyebilirsiniz. Ya da, var olan bir ilkenin kopyasını oluşturmak, birkaç küçük değişiklikle değiştirmek ve sonra farklı bir uygulama tarafından kullanılmak üzere yeni bir ilke olarak yüklemek isteyebilirsiniz.
 
-Yeni bir ilke yüklemek için [Yeni AzureADMSTrustFrameworkPolicy][New-AzureADMSTrustFrameworkPolicy] komutunu kullanın:
+Yeni bir ilkeyi karşıya yüklemek için [New-AzureADMSTrustFrameworkPolicy][New-AzureADMSTrustFrameworkPolicy] komutunu kullanın:
 
 ```PowerShell
 New-AzureADMSTrustFrameworkPolicy -InputFilePath <inputpolicyfilePath> [-OutputFilePath <outputFilePath>]
@@ -159,9 +159,9 @@ New-AzureADMSTrustFrameworkPolicy -InputFilePath C:\SignUpOrSignInv2.xml
 
 ## <a name="delete-a-custom-policy"></a>Özel bir ilkeyi silme
 
-Temiz bir işlem yaşam döngüsünü korumak için, kullanılmayan özel ilkeleri düzenli aralıklarla kaldırmanızı öneririz. Örneğin, yeni bir ilke kümesine geçiş yaptıktan ve yeni ilkelerin işlevselliğini doğruladıktan sonra eski ilke sürümlerini kaldırmak isteyebilirsiniz. Ayrıca, bir dizi özel ilke yayımlamaya çalışır ve bir hata alırsanız, başarısız sürümün bir parçası olarak oluşturulan ilkeleri kaldırmak mantıklı olabilir.
+Temiz bir işlem yaşam döngüsünü sürdürmek için kullanılmayan özel ilkeleri düzenli olarak kaldırmanızı öneririz. Örneğin, yeni bir ilke kümesine geçiş gerçekleştirdikten ve yeni ilkelerin işlevselliğini doğruladıktan sonra eski ilke sürümlerini kaldırmak isteyebilirsiniz. Ayrıca, bir dizi özel ilke yayımlamaya ve bir hata almaya çalışırsanız, başarısız olan yayının bir parçası olarak oluşturulan ilkelerin kaldırılması mantıklı olabilir.
 
-Kiracınızdan bir ilkeyi silmek için [Azure'u KaldırADMSTrustFrameworkPolicy][Remove-AzureADMSTrustFrameworkPolicy] komutunu kullanın.
+Kiracınızdan bir ilkeyi silmek için [Remove-AzureADMSTrustFrameworkPolicy][Remove-AzureADMSTrustFrameworkPolicy] komutunu kullanın.
 
 ```PowerShell
 Remove-AzureADMSTrustFrameworkPolicy -Id <policyId>
@@ -174,11 +174,11 @@ Remove-AzureADMSTrustFrameworkPolicy -Id <policyId>
 Remove-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin
 ```
 
-## <a name="troubleshoot-policy-upload"></a>Sorun giderme ilkesi yükleme
+## <a name="troubleshoot-policy-upload"></a>Karşıya ilke yükleme sorunlarını giderme
 
-Yeni bir özel ilke yayımlamaya veya varolan bir ilkeyi güncelleştirmeye çalıştığınızda, yanlış XML biçimlendirmeve ilke dosyası devralma zincirindeki hatalar doğrulama hatalarına neden olabilir.
+Yeni bir özel ilke yayımlamaya veya mevcut bir ilkeyi güncelleştirmeye çalıştığınızda, ilke dosyası devralma zincirindeki hatalı XML biçimlendirmesi ve hataları doğrulama hatalarına neden olabilir.
 
-Örneğin, hatalı Biçimlendirilmiş XML içeren içerikli bir ilkeyi güncelleştirme girişimi aşağıda verilmiştir (çıktı kısalık için kesilir):
+Örneğin, bir ilkeyi hatalı biçimlendirilmiş XML içeren içerikle güncelleştirme girişiminde bulunuldu (çıktı, breçekimi için kesilir):
 
 ```Console
 PS C:\> Set-AzureADMSTrustFrameworkPolicy -Id B2C_1A_signup_signin -InputFilePath C:\B2C_1A_signup_signin.xml
@@ -191,11 +191,11 @@ Message: Validation failed: 1 validation error(s) found in policy "B2C_1A_SIGNUP
 ...
 ```
 
-Sorun giderme özel ilkeleri hakkında bilgi için Bkz. [Sorun Giderme Azure AD B2C özel ilkeleri ve Kimlik Deneyimi Çerçevesi.](active-directory-b2c-guide-troubleshooting-custom.md)
+Özel ilkelerin sorunlarını giderme hakkında daha fazla bilgi için bkz. [Azure AD B2C özel ilkeler ve kimlik deneyimi çerçevesi](active-directory-b2c-guide-troubleshooting-custom.md)sorun giderme.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sürekli tümleştirme/sürekli teslim (CI/CD) ardışık hattının bir parçası olarak özel ilkeleri dağıtmak için PowerShell'i kullanma hakkında bilgi [için](deploy-custom-policies-devops.md)bkz.
+Bir sürekli tümleştirme/sürekli teslim (CI/CD) işlem hattının parçası olarak özel ilkeleri dağıtmak üzere PowerShell kullanma hakkında bilgi için bkz. [Azure DevOps işlem hattından özel Ilkeler dağıtma](deploy-custom-policies-devops.md).
 
 <!-- LINKS - External -->
 [Connect-AzureAD]: https://docs.microsoft.com/powershell/module/azuread/get-azureadmstrustframeworkpolicy

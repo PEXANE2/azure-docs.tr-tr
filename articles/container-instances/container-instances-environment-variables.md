@@ -1,34 +1,34 @@
 ---
 title: Kapsayıcı örneğinde ortam değişkenlerini ayarlama
-description: Azure Kapsayıcı Örnekleri'nde çalıştırdığınız kapsayıcılarda ortam değişkenlerini nasıl ayarlayabileceğinizi öğrenin
+description: Azure Container Instances çalıştırdığınız kapsayıcılarda ortam değişkenlerini ayarlamayı öğrenin
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247234"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Kapsayıcı örneklerinde ortam değişkenlerini ayarlama
 
-Kapsayıcı örneklerinizde ortam değişkenleri ayarlamanız, kapsayıcı tarafından çalıştırılan uygulamanın veya betiğin dinamik yapılandırmasını sağlamanıza imkan tanır. Bu komut satırı `--env` bağımsız değişkenine `docker run`benzer. 
+Kapsayıcı örneklerinizde ortam değişkenleri ayarlamanız, kapsayıcı tarafından çalıştırılan uygulamanın veya betiğin dinamik yapılandırmasını sağlamanıza imkan tanır. Bu, `--env` için `docker run`komut satırı bağımsız değişkenine benzerdir. 
 
-Bir kapsayıcıda ortam değişkenleri ayarlamak için, bir kapsayıcı örneği oluştururken bunları belirtin. Bu makalede, [Azure CLI](#azure-cli-example), [Azure PowerShell](#azure-powershell-example)ve [Azure portalı](#azure-portal-example)ile bir kapsayıcı başlattığınızda ortam değişkenleri ayarlama örnekleri gösterilmektedir. 
+Bir kapsayıcıda ortam değişkenlerini ayarlamak için, bir kapsayıcı örneği oluşturduğunuzda bunları belirtin. Bu makalede, [Azure CLI](#azure-cli-example), [Azure PowerShell](#azure-powershell-example)ve [Azure Portal](#azure-portal-example)ile bir kapsayıcı başlattığınızda ortam değişkenlerini ayarlama örnekleri gösterilmektedir. 
 
-Örneğin, Microsoft [aci-wordcount][aci-wordcount] kapsayıcı görüntüsünü çalıştırıyorsanız, aşağıdaki ortam değişkenlerini belirterek davranışını değiştirebilirsiniz:
+Örneğin, Microsoft [aci-WORDCOUNT][aci-wordcount] kapsayıcı görüntüsünü çalıştırırsanız, aşağıdaki ortam değişkenlerini belirterek davranışını değiştirebilirsiniz:
 
-*NumWords*: STDOUT'a gönderilen kelime sayısı.
+*NumWords*: stdout 'a gönderilen sözcüklerin sayısı.
 
-*MinLength*: Bir sözcükteki en az karakter sayısının sayılması. Daha yüksek bir sayı "of" ve "the" gibi yaygın sözcükleri yok sayar.
+*MinLength*: sayılacak bir sözcükteki karakter sayısı alt sınırı. Daha yüksek bir sayı, "/" ve "The" gibi yaygın kelimeleri yoksayar.
 
-Çevre değişkenleri olarak sırları geçirmeniz gerekiyorsa, Azure Kapsayıcı Örnekleri hem Windows hem de Linux kapsayıcıları için [güvenli değerleri](#secure-values) destekler.
+Gizli dizileri ortam değişkenleri olarak geçirmeniz gerekiyorsa, Azure Container Instances hem Windows hem de Linux kapsayıcıları için [güvenli değerleri](#secure-values) destekler.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-cli-example"></a>Azure CLI örneği
+## <a name="azure-cli-example"></a>Azure CLı örneği
 
-[aci-wordcount][aci-wordcount] kapsayıcının varsayılan çıktısını görmek için, önce bu [az kapsayıcı oluşturma komutuyla][az-container-create] çalıştırın (ortam değişkenleri belirtilmedi):
+[Aci-WORDCOUNT][aci-wordcount] kapsayıcısının varsayılan çıktısını görmek için, bunu önce bu [az Container Create][az-container-create] komutuyla çalıştırın (ortam değişkeni belirtilmemiş):
 
 ```azurecli-interactive
 az container create \
@@ -38,7 +38,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Çıktıyı değiştirmek için, `--environment-variables` *NumWords* ve *MinLength* değişkenleri için değerleri belirterek eklenen bağımsız değişkenle ikinci bir kapsayıcı başlatın. (Bu örnek, CLI'yi Bir Bash kabuğunda veya Azure Bulut Su şuramasında çalıştırdığınızı varsayalım. Windows Komut İstemi'ni kullanıyorsanız, değişkenleri çift tırnak `--environment-variables "NumWords"="5" "MinLength"="8"`işaretleri yle belirtin, örneğin .)
+Çıktıyı değiştirmek için, eklenen `--environment-variables` bağımsız değişkenle ikinci bir kapsayıcı başlatın, *NumWords* ve *minLength* değişkenlerinin değerlerini belirtin. (Bu örnek, bir bash kabuğunda veya Azure Cloud Shell CLı kullandığınızı varsayar. Windows komut Istemi 'ni kullanırsanız, gibi çift tırnak ile değişkenleri belirtin `--environment-variables "NumWords"="5" "MinLength"="8"`.)
 
 ```azurecli-interactive
 az container create \
@@ -49,14 +49,14 @@ az container create \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
 
-Her iki kapsayıcının durumu *Sonlandırıldı* (durumu kontrol etmek için [az kapsayıcı gösterisini][az-container-show] kullanın) olarak gösterildikten sonra, çıktıyı görmek için günlüklerini [az kapsayıcı günlükleriyle][az-container-logs] görüntüler.
+Her iki kapsayıcının durumu *sonlandırıldığını* gösterir (durumu denetlemek için [az Container Show][az-container-show] kullanın), çıktıyı görmek için [az Container logs][az-container-logs] ile günlüklerini görüntüleyin.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
 az container logs --resource-group myResourceGroup --name mycontainer2
 ```
 
-Kapsayıcıların çıktısı, ortam değişkenlerini ayarlayarak ikinci kapsayıcının komut dosyası davranışını nasıl değiştirdiğinizi gösterir.
+Kapsayıcıların çıktısı, ortam değişkenlerini ayarlayarak ikinci kapsayıcının betik davranışını nasıl değiştirmiş olduğunu gösterir.
 
 **mycontainer1**
 ```output
@@ -83,9 +83,9 @@ Kapsayıcıların çıktısı, ortam değişkenlerini ayarlayarak ikinci kapsay�
 
 ## <a name="azure-powershell-example"></a>Azure PowerShell örneği
 
-PowerShell'de ortam değişkenlerini ayarlamak CLI'ye `-EnvironmentVariable` benzer, ancak komut satırı bağımsız değişkenini kullanır.
+PowerShell 'de ortam değişkenlerinin ayarlanması CLı 'ye benzerdir, ancak `-EnvironmentVariable` komut satırı bağımsız değişkenini kullanır.
 
-İlk olarak, bu [Yeni-AzContainerGroup][new-Azcontainergroup] komutu ile varsayılan yapılandırmasında [aci-wordcount][aci-wordcount] kapsayıcı başlatın:
+İlk olarak, bu [New-AzContainerGroup][new-Azcontainergroup] komutuyla [aci-WORDCOUNT][aci-wordcount] kapsayıcısını varsayılan yapılandırmasında başlatın:
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
@@ -94,7 +94,7 @@ New-AzContainerGroup `
     -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
-Şimdi aşağıdaki [New-AzContainerGroup][new-Azcontainergroup] komutunu çalıştırın. Bu, bir dizi değişkenini doldurmadan sonra *NumWords* ve *MinLength* ortam değişkenlerini belirtir: `envVars`
+Şimdi aşağıdaki [New-AzContainerGroup][new-Azcontainergroup] komutunu çalıştırın. Bu, bir dizi değişkeni doldurulduktan sonra *NumWords* ve *minLength* ortam değişkenlerini belirtir `envVars`:
 
 ```azurepowershell-interactive
 $envVars = @{'NumWords'='5';'MinLength'='8'}
@@ -106,14 +106,14 @@ New-AzContainerGroup `
     -EnvironmentVariable $envVars
 ```
 
-Her iki kapsayıcının durumu *sonlandırıldıktan* sonra (durumu kontrol etmek için [Get-AzContainerInstanceLog'u][azure-instance-log] kullanın) [Get-AzContainerInstanceLog][azure-instance-log] komutuyla günlüklerini çekin.
+Her iki kapsayıcının durumu *sonlandırıldıktan* sonra (durumu denetlemek için [Get-AzContainerInstanceLog][azure-instance-log] kullanın), [Get-AzContainerInstanceLog][azure-instance-log] komutuyla günlüklerini çekin.
 
 ```azurepowershell-interactive
 Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
 Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer2
 ```
 
-Her kapsayıcının çıktısı, ortam değişkenlerini ayarlayarak kapsayıcı tarafından çalıştırılabilen komut dosyasını nasıl değiştirdiğinizi gösterir.
+Her kapsayıcının çıktısı, ortam değişkenlerini ayarlayarak kapsayıcı tarafından çalıştırılan betiği nasıl değiştirmiş olduğunu gösterir.
 
 ```console
 PS Azure:\> Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
@@ -139,31 +139,31 @@ PS Azure:\> Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -Conta
 Azure:\
 ```
 
-## <a name="azure-portal-example"></a>Azure portalı örneği
+## <a name="azure-portal-example"></a>Azure portal örneği
 
-Azure portalında bir kapsayıcı başlattığınızda ortam değişkenlerini ayarlamak için, kapsayıcıyı oluştururken **bunları Gelişmiş** sayfada belirtin.
+Azure portal bir kapsayıcıyı başlattığınızda ortam değişkenlerini ayarlamak için, kapsayıcıyı oluştururken bunu **Gelişmiş** sayfada belirtin.
 
-1. **Gelişmiş** sayfada, Yeniden **Başlatma ilkesini** *on hatasına* ayarlayın
-2. **Çevre değişkenleri**altında, ilk `5` değişken için bir değer `MinLength` le girin `8` `NumWords` ve ikinci değişken için bir değerle girin. 
-1. Doğrulamak için **Gözden Geçir + oluştur'u** seçin ve ardından kapsayıcıyı dağıtın.
+1. **Gelişmiş** sayfasında, **yeniden başlatma ilkesini** *hata durumunda* olarak ayarlayın
+2. **Ortam değişkenleri**' nın altında `NumWords` , ilk değişken `5` için değerini girin ve ikinci değişken `MinLength` `8` için değerini girin. 
+1. Kapsayıcıyı doğrulamak ve sonra dağıtmak için **gözden geçir + oluştur** ' u seçin.
 
-![Çevre değişkenini gösteren portal sayfası Etkinleştir düğmesi ve metin kutuları][portal-env-vars-01]
+![Ortam değişkeni etkinleştir düğme ve metin kutularını gösteren Portal sayfası][portal-env-vars-01]
 
-Kapsayıcının günlüklerini görüntülemek için **Ayarlar'ın** altında **Kapsayıcılar'ı**seçin, ardından Günlükler. **Containers** Önceki CLI ve PowerShell bölümlerinde gösterilen çıktıya benzer şekilde, komut dosyasının davranışının ortam değişkenleri tarafından nasıl değiştirildiğini görebilirsiniz. Her biri en az sekiz karakter uzunluğunda beş sözcük görüntülenir.
+Kapsayıcının günlüklerini görüntülemek için, **Ayarlar** ' ın altında **kapsayıcılar**' ı ve ardından **Günlükler**' i seçin. Önceki CLı ve PowerShell bölümlerinde gösterilen çıktıya benzer şekilde, komut dosyasının davranışının ortam değişkenleri tarafından nasıl değiştirildiğini görebilirsiniz. Her biri en az sekiz karakter uzunluğunda olan beş sözcük görüntülenir.
 
-![Konteyner günlük çıktısını gösteren portal][portal-env-vars-02]
+![Kapsayıcı günlüğü çıkışını gösteren Portal][portal-env-vars-02]
 
 ## <a name="secure-values"></a>Güvenli değerler
 
-Güvenli değerlere sahip nesneler, uygulamanız için parolalar veya anahtarlar gibi hassas bilgileri tutmak için tasarlanmıştır. Ortam değişkenleri için güvenli değerler kullanmak, kapsayıcınızın görüntüsüne dahil etmekten daha güvenli ve esnektir. Başka bir seçenek, [Azure Kapsayıcı Örnekleri'nde gizli bir birim montaj'da](container-instances-volume-secret.md)açıklanan gizli birimleri kullanmaktır.
+Güvenli değerlere sahip nesneler, uygulamanız için parola veya anahtarlar gibi hassas bilgileri tutmak üzere tasarlanmıştır. Ortam değişkenlerinin güvenli değerlerinin kullanılması, kapsayıcının görüntüsüne dahil etme özelliğinden daha güvenli ve daha esnektir. Başka bir seçenek [de Azure Container Instances bir gizli birim bağlama](container-instances-volume-secret.md)bölümünde açıklanan gizli birimleri kullanmaktır.
 
-Güvenli değerlere sahip ortam değişkenleri kapsayıcınızın özelliklerinde görünmez, değerlerine yalnızca kapsayıcının içinden erişilebilir. Örneğin, Azure portalında veya Azure CLI'de görüntülenen kapsayıcı özellikleri, değerini değil, yalnızca güvenli bir değişkenin adını görüntüler.
+Güvenli değerlere sahip ortam değişkenleri, kapsayıcının özelliklerinde görünmez, ancak değerleri yalnızca kapsayıcının içinden erişilebilir. Örneğin, Azure portal veya Azure CLı 'de görüntülenen kapsayıcı özellikleri, değerini değil yalnızca güvenli bir değişkenin adını görüntüler.
 
-Değişkenin `secureValue` türü için normal `value` yerine özelliği belirterek güvenli bir ortam değişkeni ayarlayın. Aşağıdaki YAML'de tanımlanan iki değişken iki değişken türünü gösterir.
+Değişkenin türü için normal `secureValue` `value` yerine özelliği belirterek güvenli bir ortam değişkeni ayarlayın. Aşağıdaki YAML 'de tanımlanan iki değişken iki değişken türünü gösterir.
 
 ### <a name="yaml-deployment"></a>YAML dağıtımı
 
-Aşağıdaki `secure-env.yaml` parçacıkiçeren bir dosya oluşturun.
+Aşağıdaki kod `secure-env.yaml` parçacığına sahip bir dosya oluşturun.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -190,7 +190,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Yaml ile kapsayıcı grubunu dağıtmak için aşağıdaki komutu çalıştırın (kaynak grup adını gerektiği gibi ayarlayın):
+Bir kapsayıcı grubunu YAML ile dağıtmak için aşağıdaki komutu çalıştırın (kaynak grubu adını gerektiği şekilde ayarlayın):
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --file secure-env.yaml
@@ -198,13 +198,13 @@ az container create --resource-group myResourceGroup --file secure-env.yaml
 
 ### <a name="verify-environment-variables"></a>Ortam değişkenlerini doğrulama
 
-Kapsayıcınızın ortam değişkenlerini sorgulamak için [az kapsayıcı göster][az-container-show] komutunu çalıştırın:
+Kapsayıcının ortam değişkenlerini sorgulamak için [az Container Show][az-container-show] komutunu çalıştırın:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name securetest --query 'containers[].environmentVariables'
 ```
 
-JSON yanıtı hem güvenli ortam değişkeninin anahtarını hem de değerini, ancak yalnızca güvenli ortam değişkeninin adını gösterir:
+JSON yanıtı hem güvensiz ortam değişkeninin anahtarını hem de değerini gösterir, ancak yalnızca güvenli ortam değişkeninin adı:
 
 ```json
 [
@@ -223,7 +223,7 @@ JSON yanıtı hem güvenli ortam değişkeninin anahtarını hem de değerini, a
 ]
 ```
 
-Çalışan bir kapsayıcıda bir komutun yürütülmesini sağlayan [az kapsayıcı exec][az-container-exec] komutu yla, güvenli ortam değişkeninin ayarlandığını doğrulayabilirsiniz. Kapsayıcıda etkileşimli bir bash oturumu başlatmak için aşağıdaki komutu çalıştırın:
+Çalışan bir kapsayıcıda bir komutun yürütülmesini sağlayan [az Container exec][az-container-exec] komutuyla, güvenli ortam değişkeninin ayarlandığını doğrulayabilirsiniz. Kapsayıcıda etkileşimli bir bash oturumu başlatmak için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az container exec --resource-group myResourceGroup --name securetest --exec-command "/bin/bash"
@@ -238,7 +238,7 @@ my-secret-value
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Birkaç kapsayıcıyla büyük bir veri kümesini toplu işleme gibi görev tabanlı senaryolar, çalışma zamanında özel ortam değişkenlerinden yararlanabilir. Görev tabanlı kapsayıcıları çalıştırma hakkında daha fazla bilgi için [bkz.](container-instances-restart-policy.md)
+Birden çok kapsayıcı içeren büyük bir veri kümesini toplu olarak işleme gibi görev tabanlı senaryolar, çalışma zamanında özel ortam değişkenlerinden faydalanabilir. Görev tabanlı kapsayıcılar çalıştırma hakkında daha fazla bilgi için bkz. [yeniden başlatma ilkeleriyle Kapsayıcılı görevleri çalıştırma](container-instances-restart-policy.md).
 
 <!-- IMAGES -->
 [portal-env-vars-01]: ./media/container-instances-environment-variables/portal-env-vars-01.png

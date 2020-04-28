@@ -1,7 +1,7 @@
 ---
 title: Sayfa düzeni sürümleri
 titleSuffix: Azure AD B2C
-description: Özel ilkelerde Kullanıcı Arabirimi özelleştirmesi için sayfa düzeni sürüm geçmişi.
+description: Özel ilkelerde UI özelleştirmesi için sayfa düzeni sürüm geçmişi.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,56 +12,56 @@ ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3d0cb06f84fdd96d099e05f55ba62c37cb1192c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183984"
 ---
 # <a name="page-layout-versions"></a>Sayfa düzeni sürümleri
 
-Sayfa düzeni paketleri, sayfa öğelerine düzeltmeleri ve iyileştirmeleri içerecek şekilde düzenli olarak güncelleştirilir. Aşağıdaki değişiklik günlüğü, her sürümde tanıtılan değişiklikleri belirtir.
+Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içerecek şekilde düzenli olarak güncelleştirilir. Aşağıdaki değişiklik günlüğü her sürümde tanıtılan değişiklikleri belirtir.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="200"></a>2.0.0
 
-- Kendi kendine ileri`selfasserted`sayfa ( )
-  - Özel ilkelerde [görüntü denetimleri](display-controls.md) için destek eklendi.
+- Otomatik olarak onaylanan sayfa (`selfasserted`)
+  - Özel ilkelerde [görüntüleme denetimleri](display-controls.md) için destek eklendi.
 
 ## <a name="120"></a>1.2.0
 
 - Tüm sayfalar
   - Erişilebilirlik düzeltmeleri
-  - Artık `data-preload="true"` CSS ve JavaScript için yük sırasını denetlemek için [HTML etiketleriöz](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) ekleyebilirsiniz.
-    - Bağlantılı CSS dosyalarını HTML şablonunuzun yüklemesi arasında 'titrememesi' için HTML şablonunuzun aynı anda yükleyin.
-    - Etiketlerinizin `script` sayfa yüklemesinden önce getirilip yürütülme sırasını denetleyin.
-  - E-posta `type=email` alanı şimdi ve mobil klavye doğru öneriler sağlayacaktır
+  - Artık CSS ve JavaScript için `data-preload="true"` yükleme sırasını denetlemek üzere [HTML etiketinizdeki](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) özniteliği ekleyebilirsiniz.
+    - Bağlı CSS dosyalarını HTML şablonunuz ile aynı anda yükleyin; böylece dosyalar yüklenirken ' titreşimi ' yoktur.
+    - `script` Etiketlerin alındığı ve sayfa yüklenmeden önce yürütüldüğü sırayı denetleyin.
+  - E-posta alanı `type=email` artık ve mobil klavyeler doğru önerileri sağlayacak
   - Chrome çevirisi desteği
-- Birleşik ve kendini öne süren sayfalar
-  - Kullanıcı adı/e-posta ve parola `form` alanları artık Edge ve Internet Explorer'ın (IE) bu bilgileri düzgün bir şekilde kaydetmesine izin vermek için HTML öğesini kullanmaktadır.
+- Birleşik ve kendinden onaylanan sayfalar
+  - Username/email ve Password alanları artık Edge ve Internet `form` Explorer 'ıN (IE) bu bilgileri düzgün bir şekilde kaydetmesine izin vermek için HTML öğesini kullanır.
 
 ## <a name="110"></a>1.1.0
 
-- Özel durum sayfası (genel özel durum)
-  - Erişilebilirlik düzeltmesi
-  - İlkeden bir kişi olmadığında varsayılan iletiyi kaldırma
+- Özel durum sayfası (globalexception)
+  - Erişilebilirlik onarımı
+  - İlkeden hiçbir kişi olmadığında varsayılan ileti kaldırılmıştır
   - Varsayılan CSS kaldırıldı
 - MFA sayfası (çok faktörlü)
-  - 'Kodu Onayla' düğmesi kaldırıldı
-  - Kodun giriş alanı artık yalnızca altı (6) karaktere kadar giriş alır
-  - Sayfa, herhangi bir düğmeye tıklamak zorunda kalmadan, 6 haneli bir kod girildiğinde girilen kodu otomatik olarak doğrulamaya çalışır
+  - ' Kodu onayla ' düğmesi kaldırıldı
+  - Kod için giriş alanı artık altı (6) karaktere kadar olan girişleri alır
+  - Sayfa, 6 basamaklı bir kod girildiğinde, tıklanmasına gerek kalmadan, otomatik olarak girilen kodu doğrulamaya çalışır
   - Kod yanlışsa, giriş alanı otomatik olarak temizlenir
-  - Yanlış kodla yapılan üç (3) denemeden sonra, B2C bir hatayı güvenen tarafa geri gönderir
+  - Üç (3) yanlış kodla çalıştıktan sonra, B2C bağlı olan tarafa geri bir hata gönderir
   - Erişilebilirlik düzeltmeleri
   - Varsayılan CSS kaldırıldı
-- Kendi kendini öne süren sayfa (selfasserted)
+- Otomatik olarak onaylanan sayfa (selfasted)
   - İptal uyarısı kaldırıldı
-  - Hata elemanları için CSS sınıfı
-  - Hata mantığı geliştirildi göster/gizle
+  - Hata öğeleri için CSS sınıfı
+  - Hata mantığını gelişmiş göster/gizle
   - Varsayılan CSS kaldırıldı
 - Birleşik SSP (unifiedssp)
-  - (KMSI) denetiminde oturum u tut beni tut eklendi
+  - Oturumumu Açık tut (KMSı) denetimi eklendi
 
 ## <a name="100"></a>1.0.0
 
@@ -69,4 +69,4 @@ Sayfa düzeni paketleri, sayfa öğelerine düzeltmeleri ve iyileştirmeleri iç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamalarınızın kullanıcı arabirimini özel ilkelerde özelleştirme hakkında ayrıntılı bilgi için, [özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştir'e](custom-policy-ui-customization.md)bakın.
+Özel ilkelerde uygulamalarınızın Kullanıcı arabirimini özelleştirmeye ilişkin ayrıntılar için bkz. [özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme](custom-policy-ui-customization.md).

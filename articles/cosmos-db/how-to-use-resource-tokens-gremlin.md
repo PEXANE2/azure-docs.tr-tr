@@ -1,6 +1,6 @@
 ---
-title: Gremlin SDK ile Azure Cosmos DB kaynak belirteçlerini kullanma
-description: Kaynak belirteçleri oluşturmayı ve Grafik veritabanına erişmek için bunları nasıl kullanacağınızı öğrenin.
+title: Gremlin SDK ile Azure Cosmos DB kaynak belirteçleri kullanma
+description: Kaynak belirteçleri oluşturmayı ve grafik veritabanına erişmek için bunları kullanmayı öğrenin.
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
@@ -8,29 +8,29 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78897840"
 ---
-# <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Gremlin SDK ile Azure Cosmos DB kaynak belirteçlerini kullanma
+# <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Gremlin SDK ile Azure Cosmos DB kaynak belirteçleri kullanma
 
-Bu makalede, Gremlin SDK üzerinden Grafik veritabanına erişmek için [Azure Cosmos DB kaynak belirteçlerinin](secure-access-to-data.md) nasıl kullanılacağı açıklanmaktadır.
+Bu makalede, Gremlin SDK aracılığıyla grafik veritabanına erişmek için [Azure Cosmos DB kaynak belirteçlerinin](secure-access-to-data.md) nasıl kullanılacağı açıklanmaktadır.
 
 ## <a name="create-a-resource-token"></a>Kaynak belirteci oluşturma
 
-Apache TinkerPop Gremlin SDK kaynak belirteçleri oluşturmak için kullanmak için bir API yok. Kaynak *belirteci* terimi bir Azure Cosmos DB kavramıdır. Kaynak belirteçleri oluşturmak için [Azure Cosmos DB SDK'yı](sql-api-sdk-dotnet.md)indirin. Uygulamanızın kaynak belirteçleri oluşturması ve Grafik veritabanına erişmek için bunları kullanması gerekiyorsa, iki ayrı SDK gerekir.
+Apache TinkerPop Gremlin SDK 'sı, kaynak belirteçleri oluşturmak için kullanılacak bir API 'ye sahip değil. *Kaynak belirteci* terimi bir Azure Cosmos DB kavramıdır. Kaynak belirteçleri oluşturmak için [Azure Cosmos DB SDK 'sını](sql-api-sdk-dotnet.md)indirin. Uygulamanızın, grafik veritabanına erişmek için kaynak belirteçleri oluşturması ve bunları kullanması gerekiyorsa, iki ayrı SDK gerektirir.
 
-Kaynak belirteçleri üzerindeki nesne modeli hiyerarşisi aşağıdaki anasatırda gösterilmiştir:
+Kaynak belirteçlerinin üzerindeki nesne modeli hiyerarşisi aşağıdaki ana hatlarıyla gösterilmiştir:
 
-- **Azure Cosmos DB hesabı** - Onunla ilişkili bir DNS'si `contoso.gremlin.cosmos.azure.com`olan üst düzey varlık (örneğin, ).
+- **Azure Cosmos DB hesabı** -kendisiyle ILIŞKILI bir DNS içeren en üst düzey varlık (örneğin, `contoso.gremlin.cosmos.azure.com`).
   - **Azure Cosmos DB veritabanı**
     - **Kullanıcı**
       - **İzin**
-        - **Belirteç** - Hangi eylemlerin izin verildiğini veya reddedildiğini gösteren Bir İzin nesnesi özelliği.
+        - **Belirteç** -izin verilen veya reddedilen eylemleri belirten bir izin nesnesi özelliği.
 
-Kaynak belirteci aşağıdaki biçimi `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`kullanır: . Bu dize istemciler için opaktır ve değişiklik veya yorum olmadan olduğu gibi kullanılmalıdır.
+Kaynak belirteci şu biçimi kullanır: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`. Bu dize, istemciler için opaktır ve değişiklik veya yorum olmadan olduğu gibi kullanılmalıdır.
 
 ```csharp
 // Notice that document client is created against .NET SDK endpoint, rather than Gremlin.
@@ -55,7 +55,7 @@ DocumentClient client = new DocumentClient(
 ```
 
 ## <a name="use-a-resource-token"></a>Kaynak belirteci kullanma
-GremlinServer sınıfını inşa ederken kaynak belirteçlerini doğrudan "parola" özelliği olarak kullanabilirsiniz.
+GremlinServer sınıfını oluştururken kaynak belirteçlerini doğrudan bir "parola" özelliği olarak kullanabilirsiniz.
 
 ```csharp
 // The Gremlin application needs to be given a resource token. It can't discover the token on its own.
@@ -78,7 +78,7 @@ GremlinServer server = new GremlinServer(
   }
 ```
 
-Aynı yaklaşım tüm TinkerPop Gremlin SDKs çalışır.
+Aynı yaklaşım, tüm TinkerPop Gremlin SDK 'lerinde de geçerlidir.
 
 ```java
 Cluster.Builder builder = Cluster.build();
@@ -95,12 +95,12 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="limit"></a>Sınır
 
-Tek bir Gremlin hesabı yla sınırsız sayıda jeton verebilirsiniz. Ancak, 1 saat içinde aynı anda yalnızca en fazla 100 jeton kullanabilirsiniz. Bir uygulama saat başına belirteç sınırını aşarsa, kimlik doğrulama isteği reddedilir ve aşağıdaki hata iletisini alırsınız: "Aynı anda kullanılabilecek 100 kaynak belirteç sınırı aşılır." Yeni belirteçler için yuvaları boşaltmak için belirli belirteçleri kullanan etkin bağlantıları kapatmak işe yaramaz. Azure Cosmos DB Gremlin veritabanı altyapısı, kimlik doğrulama isteğinden hemen önceki saat boyunca benzersiz jetonları izler.
+Tek bir Gremlin hesabıyla sınırsız sayıda belirteç verebilirsiniz. Ancak, 1 saat içinde aynı anda en fazla 100 belirteç kullanabilirsiniz. Bir uygulama, saat başına belirteç sınırını aşarsa, bir kimlik doğrulama isteği reddedilir ve şu hata iletisini alırsınız: "eşzamanlı olarak kullanılabilecek izin verilen kaynak belirteci sınırı 100 aşıldı." Yeni belirteçler için yuvaları serbest bırakmak üzere belirli belirteçleri kullanan etkin bağlantıları kapatmak için çalışmaz. Azure Cosmos DB Gremlin veritabanı altyapısı, kimlik doğrulama isteğinden hemen önce, saat boyunca benzersiz belirteçleri izler.
 
 ## <a name="permission"></a>İzin
 
-Uygulamaların kaynak belirteçlerini kullanırken karşılaştıkları yaygın bir hata şudur: "İlgili istek için yetkilendirme üstbilgisinde sağlanan yetersiz izinler. Lütfen başka bir yetkilendirme üstbilgisiyle yeniden deneyin." Gremlin geçiş bir kenar veya tepe noktası yazmaya çalıştığında ancak kaynak belirteci yalnızca *Okuma* izinleri verdiğinde bu hata döndürülür. Geçişinizi aşağıdaki adımlardan herhangi birini içerip içermediğini incelemek için: *.addV()*, *.addE()*, *.drop()* veya *.property()*.
+Uygulamaların kaynak belirteçlerini kullanırken karşılaştığı yaygın bir hata, "karşılık gelen istek için yetkilendirme üstbilgisinde izin verilmedi. Lütfen başka bir yetkilendirme üstbilgisiyle yeniden deneyin. " Bu hata, Gremlin geçişi bir kenar veya köşe yazmaya çalıştığında, ancak kaynak belirteci yalnızca *okuma* izinleri verdiğinde döndürülür. Şu adımlardan herhangi birini içerip içermediğini görmek için çapraz geçiş bilgilerinizi inceleyin: *. addv ()*, *. Adde ()*, *. Drop ()* veya *. Property ()*.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Azure Cosmos DB'de [rol tabanlı erişim denetimi](role-based-access-control.md)
-* Azure Cosmos DB'deki [verilere erişimi nasıl güvenli hale erdirebilirsiniz öğrenin](secure-access-to-data.md)
+* Azure Cosmos DB [rol tabanlı erişim denetimi](role-based-access-control.md)
+* Azure Cosmos DB [veri erişimini güvenli hale getirme hakkında bilgi edinin](secure-access-to-data.md)

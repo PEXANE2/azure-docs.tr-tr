@@ -1,186 +1,186 @@
 ---
-title: Microsoft Azure Hizmet Kumaşı hakkında sık sorulan sorular
-description: Özellikler, kullanım örnekleri ve yaygın senaryolar da dahil olmak üzere Service Fabric hakkında sık sorulan sorular.
+title: Microsoft Azure Service Fabric hakkında sık sorulan sorular
+description: Yetenekler, kullanım örnekleri ve yaygın senaryolar da dahil olmak üzere Service Fabric hakkında sık sorulan sorular.
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
 ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78254898"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Sık sorulan Service Fabric soruları
 
-Service Fabric'in neler yapabileceği ve nasıl kullanılması gerektiği hakkında sık sorulan birçok soru vardır. Bu belge, bu sık sorulan soruların çoğunu ve yanıtlarını kapsar.
+Service Fabric ne yapabilecekleri ve nasıl kullanılması gerektiği hakkında sık sorulan birçok soru vardır. Bu belge, yaygın soruların ve bunların yanıtlarının çoğunu içerir.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cluster-setup-and-management"></a>Küme kurulumu ve yönetimi
 
-### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Service Fabric küme sertifikamı nasıl geri alarım?
+### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Service Fabric küme sertifikamı geri almak Nasıl yaparım??
 
-Uygulamanızda herhangi bir yükseltmeyi geri almak, Hizmet Kumaşı küme çoğunluk taahhüdünüzden önce sağlık hatası nın algılanmasını gerektirir; taahhüt edilen değişiklikler yalnızca ileri ye doğru atılabilir. Yükseltme mühendisinin Müşteri Destek Hizmetleri aracılığıyla, denetlenmeyen bir kesme sertifikası değişikliği getirildiğinde kümenizi kurtarmak için gerekli olabilir.  [Service Fabric'in uygulama yükseltmesi](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) [Uygulama yükseltme parametreleri](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)uygular ve sıfır kesinti yükseltme sözü verir.  Önerilen uygulama yükseltme izleme modumuzu takiben, güncelleştirme etki alanlarında otomatik ilerleme, varsayılan bir hizmeti güncelleştirmebaşarısız olursa otomatik olarak geri alma, sağlık denetimleri geçen dayanmaktadır.
+Uygulamanıza yapılan herhangi bir yükseltmeyi geri alma işlemi, Service Fabric kümesi çekirdeğinin değişikliği yapmadan önce sistem durumu hata algılaması gerektirir; yürütülen değişiklikler yalnızca ileri alınabilir. İzlenmeyen bir sertifika değişikliği ortaya çıktıysa, müşteri destek hizmetleri aracılığıyla yükseltme mühendisi, kümenizi kurtarmak için gerekli olabilir.  [Service Fabric uygulama yükseltmesi](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) [uygulama yükseltme parametreleri](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)uygular ve sıfır kesinti süresi yükseltme taahhüdünü sunar.  Önerilen uygulama yükseltme izlenen Modumuzdan sonra, güncelleştirme etki alanları aracılığıyla otomatik ilerleme durumu denetimleri başarılı olur ve varsayılan bir hizmetin güncelleştirilmesi başarısız olursa otomatik olarak geri döndürülüyor.
  
-Kümeniz, Kaynak Yöneticisi şablonunuzdaki klasik Sertifika Parmak İzi özelliğinden hala yararlanıyorsa, kümeyi [sertifika parmak baskısından ortak ada değiştirmeniz](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)ve modern sırlar yönetimi özelliklerinden yararlanmanız önerilir.
+Kümeniz Kaynak Yöneticisi şablonunuzda klasik sertifika parmak Izi özelliğini kullanmaya devam ediyorsa, modern gizli dizi yönetim özelliklerinden yararlanmak için [kümeyi sertifika parmak iziyle ortak ad olarak değiştirmeniz](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)önerilir.
 
-### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Birden çok Azure bölgesine veya kendi veri merkezlerimi kapsayan bir küme oluşturabilir miyim?
+### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Birden çok Azure bölgesini veya kendi veri merkezlerimi kapsayan bir küme oluşturabilir miyim?
 
 Evet. 
 
-Çekirdek Hizmet Kumaş kümeleme teknolojisi, birbirleriyle ağ bağlantısı olduğu sürece dünyanın her yerinden çalışan makineleri birleştirmek için kullanılabilir. Ancak, böyle bir küme oluşturma ve çalıştırma karmaşık olabilir.
+Çekirdek Service Fabric kümeleme teknolojisi, dünyanın herhangi bir yerinden çalışan makineleri birleştirmek için kullanılabilir, bu sayede birbirleriyle ağ bağlantısı olduğu sürece. Ancak, böyle bir küme oluşturmak ve çalıştırmak karmaşık olabilir.
 
-Bu senaryoyla ilgileniyorsanız, ek rehberlik almak için [Service Fabric GitHub Sorunlar Listesi](https://github.com/azure/service-fabric-issues) veya destek temsilciniz aracılığıyla iletişime geçmenizi öneririz. Service Fabric ekibi, bu senaryo için ek netlik, kılavuzluk ve öneriler sağlamak için çalışmaktadır. 
+Bu senaryoyla ilgileniyorsanız, ek rehberlik elde etmek için [Service Fabric GitHub sorunları listesi](https://github.com/azure/service-fabric-issues) veya destek temsilcilerinizle iletişim kurmanız önerilir. Service Fabric takım, bu senaryoya yönelik ek netlik, kılavuz ve öneriler sağlamak için çalışmaktadır. 
 
-Göz önünde bulundurulması gereken bazı şeyler: 
+Göz önünde bulundurulması gereken bazı noktalar: 
 
-1. Azure'daki Hizmet Kumaşı küme kaynağı, kümenin üzerine inşa edilen sanal makine ölçeği kümeleri gibi bugün bölgeseldir. Bu, bölgesel bir hata durumunda, azure kaynak yöneticisi veya Azure portalı üzerinden kümeyi yönetme yeteneğini kaybedebileceğiniz anlamına gelir. Küme çalışmaya devam etse ve onunla doğrudan etkileşimkurabilirsiniz olsa bile bu durum olabilir. Buna ek olarak, Azure bugün bölgeler arasında kullanılabilir tek bir sanal ağa sahip olma olanağı sunmamaktadır. Bu, Azure'daki çok bölgeli bir kümenin [VM Ölçeği Kümeleri'ndeki her VM için Genel IP Adresleri](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) veya Azure VPN Ağ [Geçitleri](../vpn-gateway/vpn-gateway-about-vpngateways.md)gerektirdiği anlamına gelir. Bu ağ seçenekleri maliyetler, performans ve bir dereceye kadar uygulama tasarımı üzerinde farklı etkileri vardır, bu nedenle dikkatli analiz ve planlama böyle bir ortam ayakta önce gereklidir.
-2. Bu makinelerin bakımı, yönetimi ve izlenmesi, özellikle farklı bulut sağlayıcıları arasında veya şirket içi kaynaklar ile Azure arasında olduğu gibi _ortam türlerine_ yayılmışken karmaşık hale gelebilir. Yükseltmelerin, izlemenin, yönetimin ve tanılamanın, bu tür bir ortamda üretim iş yüklerini çalıştırmadan önce hem küme hem de uygulamalar için anlaşıldığından emin olmak için dikkatli olunmalıdır. Azure'da veya kendi veri merkezlerinizde bu sorunları çözme deneyiminiz varsa, Service Fabric kümenizi kurarken veya çalıştırırken aynı çözümlerin de uygulanabileceği olasıdır. 
+1. Azure 'daki Service Fabric küme kaynağı, kümenin üzerinde oluşturulduğu sanal makine ölçek kümeleri olduğundan, bugün bölgesel olarak bölgedir. Bu durum, bölgesel bir hata durumunda Azure Resource Manager veya Azure portal aracılığıyla kümeyi yönetme özelliğini kaybedebileceğinizi gösterir. Bu durum, küme çalışır durumda kalmaya devam edebilir ve doğrudan etkileşime girebileceksiniz. Ayrıca, Azure bugün bölgeler arasında kullanılabilen tek bir sanal ağa sahip olmanın yanı sıra bu özelliği de sunar. Bu, Azure 'daki çok bölgeli bir kümenin, VM Ölçek kümelerinde veya [Azure VPN ağ geçitlerinde](../vpn-gateway/vpn-gateway-about-vpngateways.md) [her VM için genel IP adresleri](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) gerektirdiği anlamına gelir. Bu ağ seçimleri, maliyet, performans ve bazı derece uygulama tasarımında farklı etkileri vardır. bu nedenle, bu tür bir ortam olmadan önce dikkatli bir analiz ve planlama gereklidir.
+2. Bu makinelerin bakımı, yönetimi ve izlenmesi, özellikle farklı bulut sağlayıcıları veya şirket içi kaynaklar ile Azure arasında gibi ortam _türlerine_ yayıldığınızda karmaşık hale gelebilir. Yükseltmeler, izleme, yönetim ve tanılamayı, bu tür bir ortamda üretim iş yüklerini çalıştırmadan önce hem küme hem de uygulamalar için anlaşılabilmesini sağlamak için dikkatli olunması gerekir. Bu sorunları Azure 'da veya kendi veri merkezlerinizde çözmenizde deneyimleriniz zaten varsa, Service Fabric kümenizi oluştururken veya çalıştırırken aynı çözümlerin uygulanması olasıdır. 
 
-### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Servis Kumaş düğümleri otomatik olarak işletim sistemi güncelleştirmeleri alır mı?
+### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Service Fabric düğümleri işletim sistemi güncelleştirmelerini otomatik olarak alır mi?
 
-[Sanal Makine Ölçeği Seti Otomatik İşletim Güncelleme](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) Genel Olarak Kullanılabilir özelliği ni bugün kullanabilirsiniz.
+[Sanal makine ölçek kümesi otomatik işletim sistemi görüntüsü güncelleştirme](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) genel olarak kullanılabilir özelliğini bugün kullanabilirsiniz.
 
-Azure'da çalıştırılamayan kümeler için, Hizmet Kumaş düğümlerinizin altındaki işletim sistemlerini yamalamak için [bir uygulama sağladık.](service-fabric-patch-orchestration-application.md)
+Azure 'da çalıştırılmayan kümeler için, Service Fabric düğümlerinizin altında işletim sistemlerinin yaması için [bir uygulama sunuyoruz](service-fabric-patch-orchestration-application.md) .
 
-### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>SF kümemde büyük sanal makine ölçek kümelerini kullanabilir miyim? 
+### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>SF kümemdeki büyük sanal makine ölçek kümelerini kullanabilir miyim? 
 
-**Kısa cevap** - Hayır. 
+**Kısa yanıt** -Hayır. 
 
-**Uzun Yanıt** - Büyük sanal makine ölçeği kümeleri, 1000 VM örneğine ayarlanmış sanal bir makine ölçeğini ölçeklendirmenize olanak sayılsa da, bunu Yerleşim Grupları (PGs) kullanarak yapar. Hata etki alanları (FD'ler) ve yükseltme etki alanları (UD'ler) yalnızca bir yerleşim grubu içinde tutarlıdır Hizmet dokusu, hizmet yinelemelerinizin/Hizmet örneklerinin yerleşim kararlarını almak için FD'ler ve UD'ler kullanır. FD'ler ve UD'ler yalnızca bir yerleşim grubu içinde karşılaştırılabilir olduğundan, SF bunu kullanamaz. Örneğin, PG1'deki VM1'de FD=0 ve PG2'de VM9 topolojisi Varsa, bu VM1 ve VM2'nin iki farklı Donanım Rafı üzerinde olduğu anlamına gelmez, bu nedenle SF bu durumda fd değerlerini yerleşim kararları almak için kullanamaz.
+**Uzun yanıt** -büyük sanal makine ölçek kümeleri, bir sanal makine ÖLÇEĞINI 1000 VM örneğine kadar ölçeklendirmenize izin verse de, bu, yerleştirme gruplarının (PG 'ler) kullanılmasını sağlar. Hata etki alanları (FDs) ve yükseltme etki alanları (UDs) yalnızca bir yerleştirme grubu hizmeti dokusunda tutarlıdır, hizmet çoğaltmalarınızın/hizmet örneklerinizin yerleştirme kararları vermek için FDs ve UDs kullanır. FDs ve UDs 'ler yalnızca bir yerleştirme grubu içinde karşılaştırılabilir olduğundan, SF bunu kullanamaz. Örneğin, PG1 'ın içindeki VM1 'in bir FD = 0 topolojisi varsa ve PG2 içindeki VM9, FD = 4 topolojisine sahipse, bu, VM1 ve VM2 iki farklı donanım rafın üzerinde olduğu anlamına gelmez, bu nedenle BT kararları almak için bu durumda SF değerlerini kullanamaz.
 
-Düzey-4 Yük dengeleme desteğinin eksikliği gibi, şu anda büyük sanal makine ölçek setleri ile ilgili diğer sorunlar vardır. [Büyük ölçekli kümelerle ilgili ayrıntılar](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) için bkz.
-
-
-
-### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Service Fabric kümesinin minimum boyutu nedir? Neden daha küçük olamaz?
-
-Üretim iş yüklerini çalıştıran bir Service Fabric kümesi için desteklenen minimum boyut beş düğümdür. Dev senaryoları için, bir düğümü (Visual Studio'da hızlı geliştirme deneyimi için optimize edilmiş) ve beş düğüm kümesini destekliyoruz.
-
-Aşağıdaki üç nedenden dolayı bir üretim kümesinin en az 5 düğüme sahip olmasını şart görüyoruz:
-1. Hiçbir kullanıcı hizmeti çalışmadığında bile, Service Fabric kümesi adlandırma hizmeti ve başarısız yönetici hizmeti de dahil olmak üzere bir dizi durumlu sistem hizmeti çalıştırın. Bu sistem hizmetleri kümenin çalışır durumda kalması için gereklidir.
-2. Her zaman düğüm başına bir hizmetin bir kopyasını yer, bu nedenle küme boyutu bir hizmetin (aslında bir bölüm) sahip olabileceği yineleme sayısı için üst sınırdır.
-3. Bir küme yükseltmesi en az bir düğüm aşağı getirecek olduğundan, en az bir düğüm bir arabellek olmasını istiyorum, bu nedenle, bir üretim kümesi çıplak minimum *ek olarak* en az iki düğüm olmasını istiyorum. Çıplak minimum aşağıda açıklandığı gibi bir sistem hizmeti nin çoğunluk boyutudur.  
-
-Kümenin iki düğümün eşzamanlı arızası karşısında kullanılabilir olmasını istiyoruz. Hizmet Kumaşı kümesinin kullanılabilmesi için sistem hizmetlerinin kullanılabilir olması gerekir. Adlandırma hizmeti ve başarısız yönetici hizmeti gibi, kümeye hangi hizmetlerin dağıtıldığını ve şu anda nerede barındırıldığını izleyen durumlu sistem hizmetleri güçlü tutarlılığa bağlıdır. Bu güçlü tutarlılık, sırayla, bir çoğunluk belirli bir hizmet için yinelemeler (N/2 +1) sıkı bir çoğunluğu temsil bu hizmetlerin durumuna herhangi bir güncelleştirme için bir *çoğunluk* elde etmek için yeteneğine bağlıdır. Bu nedenle, iki düğümün eşzamanlı kaybına (böylece bir sistem hizmetinin iki kopyasının aynı anda kaybedilmesi) karşı dirençli olmak istiyorsak, minimum boyutu beş olmaya zorlayan ClusterSize - QuorumSize >= 2'ye sahip olmamız gerekir. Bunu görmek için, kümenin N düğümleri olduğunu ve bir sistem hizmetinin N kopyaları olduğunu düşünün -- her düğümde bir tane. Bir sistem hizmeti için çoğunluk boyutu (N/2 + 1). Yukarıdaki eşitsizlik N - (N/2 + 1) >= 2 gibi görünür. Göz önünde bulundurulması gereken iki durum vardır: N çift olduğunda ve N tek olduğunda. N çift ise, diyelim\*ki N = 2 m burada m\*>=\*1, eşitsizlik 2 m gibi görünür - (2 m/2 + 1) >= 2 veya m >= 3. N için minimum 6'dır ve m = 3 olduğunda elde edilir. Öte yandan, N tek ise, diyelim\*ki M = 2 m+1 burada m\*>= 1,\*eşitsizlik 2 m+1 gibi görünür -\*( (2 m+1)/2 + 1 ) >= 2 veya 2 m+1 - (m+1) >= 2 veya m >= 2. N için minimum 5'tir ve m = 2 olduğunda elde edilir. Bu nedenle, eşitsizlik ClusterSize - QuorumSize >= 2 tatmin N tüm değerleri arasında, en az 5'tir.
-
-Not, yukarıdaki bağımsız değişkende her düğümün bir sistem hizmetinin kopyasına sahip olduğunu varsaydık, bu nedenle çoğunluk boyutu kümedeki düğüm sayısına göre hesaplanmıştır. Ancak, *TargetReplicaSetSize* değiştirerek biz çoğunluk boyutu daha az yapabilir (N/2+1) hangi bir küme daha küçük olabilir izlenimi verebilir 5 düğümleri ve hala çoğunluk boyutu üzerinde 2 ekstra düğümleri var. Örneğin, 4 düğüm kümesinde, TargetReplicaSetSize'ı 3 olarak ayarlarsak, TargetReplicaSetSize'a dayalı çoğunluk boyutu (3/2 + 1) veya 2 olur, böylece ClusterSize - QuorumSize = 4-2 >= 2 olur. Ancak, aynı anda herhangi bir düğüm çiftini kaybedersek sistem hizmetinin çoğunlukta veya üstünde olacağını garanti edemeyiz, bu da kaybettiğimiz iki düğümün iki kopyaya ev sahipliği yapması olabilir, bu nedenle sistem hizmeti çoğunluk kaybına (sadece tek bir çoğaltma kaldı) ve kullanılamaz hale gelecektir.
-
-Bu arka planla, bazı olası küme yapılandırmalarını inceleyelim:
-
-**Bir düğüm**: Tek bir düğümün herhangi bir nedenle kaybedilmesi tüm kümenin kaybı anlamına geldiğinden, bu seçenek yüksek kullanılabilirlik sağlamaz.
-
-**İki düğüm:** Iki düğüm (N = 2) arasında dağıtılan bir hizmet için bir çoğunluk 2 'dir (2/2 + 1 = 2). Tek bir yineleme kaybolduğunda, bir çoğunluk oluşturmak mümkün değildir. Bir hizmet yükseltmesi gerçekleştirmek geçici olarak bir yinelemeyi aşağı çekmek gerektirdiğinden, bu yararlı bir yapılandırma değildir.
-
-**Üç düğüm**: üç düğüm (N=3) ile, çoğunluk oluşturma gereksinimi hala iki düğümdür (3/2 + 1 = 2). Bu, tek bir düğümü kaybedebileceğiniz ve yine de yeterli çoğunluğu koruyabileceğiniz anlamına gelir, ancak iki düğümün eşzamanlı olarak başarısız olması sistem hizmetlerini çoğunluk kaybına sürükleyecek ve kümenin kullanılamamasına neden olur.
-
-**Dört düğüm**: dört düğüm (N=4) ile, çoğunluk oluşturma gereksinimi üç düğümdür (4/2 + 1 = 3). Bu, tek bir düğümü kaybedebileceğiniz ve yine de yeterli çoğunluğu koruyabileceğiniz anlamına gelir, ancak iki düğümün eşzamanlı olarak başarısız olması sistem hizmetlerini çoğunluk kaybına sürükleyecek ve kümenin kullanılamamasına neden olur.
-
-**Beş düğüm**: beş düğüm (N=5) ile, çoğunluk oluşturma gereksinimi hala üç düğümdür (5/2 + 1 = 3). Bu, aynı anda iki düğüm kaybedebileceğiniz ve sistem hizmetleri için yeterli çoğunluğu koruyabileceğiniz anlamına gelir.
-
-Üretim iş yükleri için, en az iki düğümün eşzamanlı olarak arızalanmasına karşı dirençli olmalısınız (örneğin, biri küme yükseltmesi, diğeri başka nedenlerden dolayı), bu nedenle beş düğüm gereklidir.
-
-### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Maliyetlerden tasarruf etmek için kümemi gece/hafta sonları kapatabilir miyim?
-
-Genellikle yapamazsınız. Service Fabric yerel, kısa ömürlü disklerde durum depolar, yani sanal makine farklı bir ana bilgisayara taşınırsa, veriler onunla birlikte hareket etmez. Normal çalışmada, yeni düğüm diğer düğümler tarafından güncel olarak getirildiğinden, bu bir sorun değildir. Ancak, tüm düğümleri durdurur ve daha sonra yeniden başlatırsanız, düğümlerin çoğunun yeni ana bilgisayarlarda başlaması ve sistemin kurtarılamamasına neden olma olasılığı önemlitür.
-
-Uygulamanız dağıtılmadan önce test etmek için kümeler oluşturmak istiyorsanız, [sürekli tümleştirme/sürekli dağıtım ardışık lığınızın](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)bir parçası olarak bu kümeleri dinamik olarak oluşturmanızı öneririz.
+Şu anda büyük sanal makine ölçek kümelerinde, düzey 4 Yük Dengeleme desteğinin bulunmaması gibi diğer sorunlar vardır. [Büyük ölçekli kümeler hakkında ayrıntılı bilgi](../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) için bkz.
 
 
-### <a name="how-do-i-upgrade-my-operating-system-for-example-from-windows-server-2012-to-windows-server-2016"></a>İşletim Sistemimi (örneğin Windows Server 2012'den Windows Server 2016'ya) nasıl yükseltebilirim?
 
-Biz gelişmiş bir deneyim üzerinde çalışırken, bugün, yükseltme sorumludur. Kümenin sanal makinelerindeki işletim sistemi görüntüsünü her seferinde bir VM yükseltmeniz gerekir. 
+### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Service Fabric kümesinin en küçük boyutu nedir? Neden daha küçük olamaz?
 
-### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Bağlı veri disklerini küme düğümü türünde (sanal makine ölçek kümesi) şifreleyebilir miyim?
-Evet.  Daha fazla bilgi için [bkz.](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) [Azure Disk Encryption for Virtual Machine Scale Sets](../virtual-machine-scale-sets/disk-encryption-overview.md)
+Üretim iş yüklerini çalıştıran bir Service Fabric kümesi için desteklenen minimum boyut beş düğümünüz. Geliştirme senaryolarında, tek bir düğüm (Visual Studio 'da hızlı geliştirme deneyimi için iyileştirilmiş) ve beş düğüm kümesi destekliyoruz.
 
-### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Küme düğüm türünde (sanal makine ölçek kümesi) düşük öncelikli VM'ler kullanabilir miyim?
-Hayır. Düşük öncelikli VM'ler desteklenmez. 
+Aşağıdaki üç nedenden dolayı bir üretim kümesinin en az 5 düğüme sahip olması gerekir:
+1. Hiçbir Kullanıcı Hizmeti çalıştırılmasa bile, Service Fabric küme, adlandırma hizmeti ve yük devretme Yöneticisi hizmeti de dahil olmak üzere durum bilgisi olan bir sistem hizmetleri kümesi çalıştırır. Bu sistem hizmetleri, kümenin çalışır durumda kalması için gereklidir.
+2. Her zaman düğüm başına bir hizmetin çoğaltmasını yerleştirdik, bu nedenle küme boyutu bir hizmetin (gerçekte bir bölümün) sahip olduğu kopyaların sayısı için üst sınırdır.
+3. Bir küme yükseltmesi en az bir düğüm getirecek olduğundan, en az bir düğüm için bir arabelleğe sahip olmak istiyoruz, bu nedenle bir üretim kümesinin en düşük düzeyde *ek* olarak en az iki düğüme sahip olmasını istiyoruz. En az, aşağıda açıklandığı gibi bir sistem hizmetinin çekirdek boyutudur.  
 
-### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Kümemde bir virüsten koruma programı çalıştırırken hariç tutmam gereken dizinler ve işlemler nelerdir?
+Kümenin iki düğümden oluşan eşzamanlı hata durumunda kullanılabilmesini istiyoruz. Service Fabric kümesinin kullanılabilir olması için sistem hizmetlerinin kullanılabilir olması gerekir. Adlandırma hizmeti ve yük devretme Yöneticisi hizmeti gibi durum bilgisi olan sistem hizmetleri, kümeye hangi hizmetlerin dağıtıldığını ve şu anda barındırıldığını izleyen, güçlü tutarlılığa bağlıdır. Bu güçlü tutarlılık, buna karşılık, belirtilen bir hizmet için bir çekirdeğin bir katı büyük çoğunluğunu (N/2 + 1) temsil ettiği bu hizmetlerin durumuna bir *çekirdek* alma özelliğine bağlıdır. Bu nedenle, iki düğümün eşzamanlı kaybına karşı dayanıklı olması (Bu nedenle, bir sistem hizmetinin iki çoğaltmasının eşzamanlı kaybolması) için, en düşük boyutu beş olarak zorlayan ClusterSize-QuorumSize >= 2 olması gerekir. Bunu görmek için, kümenin N düğümü olduğunu ve her düğümde bir sistem hizmetinin N çoğaltmaları olduğunu düşünün. Bir sistem hizmeti için çekirdek boyutu (N/2 + 1). Yukarıdaki eşitsizlik, N-(N/2 + 1) >= 2 gibi görünüyor. Göz önünde bulundurulması gereken iki durum vardır: N çift olduğunda ve N tekse. N çift ise, N = 2\*m, 5 >= 1 olduğunda, eşitsizlik 2\*m-(2\*m/2 + 1) >= 2 veya m >= 3 gibi görünür. N için en az 6 ve bu, e = 3 olduğunda elde edilir. Öte yandan, N tek ise, n =\*2 m + 1 (m >= 1), eşitsizlik ise 2\*m + 1-((2\*m + 1)/2 + 1) >= 2 veya 2\*m + 1-(m + 1) >= 2 veya m >= 2 ' dir. N için en düşük değer 5 ' tir ve bu, a = 2 olduğunda elde edilir. Bu nedenle, eşitsizlik ClusterSize ' >= 2 ' yi karşılayan tüm N değerleri arasında en az 5 ' tir.
 
-| **Antivirus Dışlanmış dizinler** |
+Yukarıdaki bağımsız değişkende, her düğümün bir sistem hizmeti kopyası olduğunu varsaydık, bu nedenle çekirdek boyutu kümedeki düğümlerin sayısına göre hesaplanır. Ancak, *Targetreplicasetsize* öğesini değiştirerek çekirdek boyutunu (N/2 + 1), bu durum 5 düğümden daha küçük bir küme olabilecek ve yine de çekirdek boyutunun üzerinde 2 ek düğüm bulunan bir duruma sahip olduğumuz izlenimi verebilir. Örneğin, 4 düğümlü bir kümede TargetReplicaSetSize öğesini 3 olarak ayarlarsanız, TargetReplicaSetSize 'yi temel alan çekirdek boyutu (3/2 + 1) veya 2 ' dir. bu nedenle, ClusterSize-QuorumSize = 4-2 >= 2 ' dir. Bununla birlikte, aynı anda herhangi bir çift düğümü kaybederseniz sistem hizmetinin çekirdekte veya üzerinde olacağını garanti edemeyiz; bu durumda, kaybedildiğimiz iki düğüm iki çoğaltma barındırıyor olabilir, bu nedenle sistem hizmeti çekirdek kaybına geçer (yalnızca tek bir kopya sola sahip olur) ve kullanılamaz hale gelir.
+
+Bu arka planda, bazı olası küme yapılandırmalarının incelim:
+
+Tek **düğüm**: Bu seçenek, herhangi bir nedenden dolayı tek bir düğümün kaybedilmesi tüm kümenin kaybedilmesinden dolayı yüksek kullanılabilirlik sağlamaz.
+
+**İki düğüm**: iki düğüm arasında dağıtılan bir hizmetin çekirdeği (N = 2) 2 ' dir (2/2 + 1 = 2). Tek bir çoğaltma kaybedilmişse, çekirdek oluşturmak olanaksızdır. Hizmet yükseltmesi gerçekleştirmede bir çoğaltmanın geçici olarak alınması gerektiğinden, bu kullanışlı bir yapılandırma değildir.
+
+**Üç düğüm**: üç düğüm (N = 3) ile bir çekirdek oluşturma gereksinimi yine iki düğüm olur (3/2 + 1 = 2). Bu, tek bir düğümü kaybedebilmeniz ve yine de çekirdeği koruyabilmeniz, ancak iki düğümden oluşan eşzamanlı başarısızlığın sistem hizmetlerini çekirdek kaybına ayıracağı ve kümenin kullanılamaz hale gelmesine neden olacağı anlamına gelir.
+
+**Dört**düğüm: dört düğüm (N = 4) ile bir çekirdek oluşturma gereksinimi üç düğümtür (4/2 + 1 = 3). Bu, tek bir düğümü kaybedebilmeniz ve yine de çekirdeği koruyabilmeniz, ancak iki düğümden oluşan eşzamanlı başarısızlığın sistem hizmetlerini çekirdek kaybına ayıracağı ve kümenin kullanılamaz hale gelmesine neden olacağı anlamına gelir.
+
+**Beş düğüm**: beş düğüm (N = 5) ile bir çekirdek oluşturma gereksinimi hala üç düğüm olur (5/2 + 1 = 3). Bu, aynı anda iki düğümü kaybedebilmeniz ve sistem hizmetleri için çekirdeği sürdürmenize yol açabilir.
+
+Üretim iş yükleri için, en az iki düğüm için (örneğin, diğer nedenlerden dolayı bir tane olmak üzere küme yükseltmesi nedeniyle) eş zamanlı hata arızası olması gerekir. bu nedenle beş düğüm gerekir.
+
+### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Maliyetleri kaydetmek için kümi gece/hafta sonları üzerinden kapatabilir miyim?
+
+Genellikle yapamazsınız. Service Fabric durumu yerel, kısa ömürlü disklerde depolar, yani sanal makine farklı bir konağa taşınırsa, verilerin onunla birlikte hareket etmez. Normal işlemde, yeni düğüm diğer düğümlere göre güncel hale getirilmediğinden bu bir sorun değildir. Ancak, tüm düğümleri durdurup daha sonra yeniden başlatırsanız, düğümlerin çoğunun yeni konaklarda başlaması ve sistemin kurtulamadığında önemli bir olasılık vardır.
+
+Uygulamanızı dağıtılmadan önce test etmek üzere kümeler oluşturmak isterseniz, bu kümeleri [sürekli tümleştirme/sürekli dağıtım işlem hattının](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)bir parçası olarak dinamik olarak oluşturmanızı öneririz.
+
+
+### <a name="how-do-i-upgrade-my-operating-system-for-example-from-windows-server-2012-to-windows-server-2016"></a>Işletim sistemmi (örneğin, Windows Server 2012 ' den Windows Server 2016 ' e) yükseltmek Nasıl yaparım??
+
+Günümüzde, geliştirilmiş bir deneyim üzerinde çalışıyoruz, bu da yükseltmeden sorumludur. İşletim sistemi görüntüsünü aynı anda tek bir VM 'nin sanal makinelerinde yükseltmeniz gerekir. 
+
+### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Bir küme düğümü türündeki (sanal makine ölçek kümesi) bağlı veri disklerini şifreleyebilir miyim?
+Evet.  Daha fazla bilgi için bkz. [sanal makine ölçek kümeleri için](../virtual-machine-scale-sets/disk-encryption-overview.md)bağlı veri diskleri ve Azure disk şifrelemesi [ile küme oluşturma](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) .
+
+### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Düşük öncelikli VM 'Leri bir küme düğümü türünde (sanal makine ölçek kümesi) kullanabilir miyim?
+Hayır. Düşük öncelikli VM 'Ler desteklenmez. 
+
+### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Kümemdeki virüsten koruma programını çalıştırırken dışlandığım dizin ve süreçler nelerdir?
+
+| **Virüsten koruma için dışlanan dizinler** |
 | --- |
 | Program Files\Microsoft Service Fabric |
 | FabricDataRoot (küme yapılandırmasından) |
 | FabricLogRoot (küme yapılandırmasından) |
 
-| **Antivirus Dışlanmış işlemler** |
+| **Virüsten koruma hariç tutulan süreçler** |
 | --- |
-| Kumaş.exe |
-| FabricHost.exe |
-| FabricInstallerService.exe |
-| FabricSetup.exe |
-| FabricDeployer.exe |
-| ImageBuilder.exe |
-| FabricGateway.exe |
-| FabricDCA.exe |
-| FabricFAS.exe |
-| FabricUOS.exe |
-| FabricRM.exe |
-| FileStoreService.exe |
+| Fabric. exe |
+| FabricHost. exe |
+| Fabricınstallerservice. exe |
+| FabricSetup. exe |
+| FabricDeployer. exe |
+| Imagebuilder. exe |
+| FabricGateway. exe |
+| FabricDCA. exe |
+| FabricFAS. exe |
+| FabricUOS. exe |
+| FabricRM. exe |
+| FileStoreService. exe |
  
-### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Uygulamam sırları almak için KeyVault'a nasıl kimlik doğrulayabilir?
-Uygulamanızın KeyVault kimlik bilgilerini almak için aşağıdaki araçlar şunlardır:
+### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Uygulamamın gizli dizileri almak için Keykasada kimlik doğrulaması nasıl yapılır?
+Aşağıdakiler, uygulamanızın Keykasada kimlik doğrulaması için kimlik bilgilerini alması anlamına gelir:
 
-A. Uygulamalarınız oluşturma/paketleme işi sırasında, SF uygulamanızın veri paketine bir sertifika çekebilir ve bunu KeyVault'a kimlik doğrulamak için kullanabilirsiniz.
-B. Sanal makine ölçeği seti MSI etkin ana bilgisayarları için, [MSI uç noktasından bir erişim belirteci](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)almak için SF uygulamanız için basit bir PowerShell SetupEntryPoint geliştirebilir ve ardından [keyvault'tan sırlarınızı alabilirsiniz.](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)
+A. Uygulamalarınızın derleme/paketleme işi sırasında, SF uygulamanızın veri paketine bir sertifika çekebilir ve bunu anahtar kasasında kimlik doğrulaması yapmak için kullanabilirsiniz.
+B. Sanal makine ölçek kümesi MSI etkin konaklar için, [MSI uç noktasından bir erişim belirteci](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)almak üzere SF uygulamanız için basit bir PowerShell setupentrypoint geliştirebilir ve sonra [gizli dizileri keykasasından alabilirsiniz](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
-## <a name="application-design"></a>Uygulama Tasarımı
+## <a name="application-design"></a>Uygulama tasarımı
 
-### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Güvenilir Koleksiyon'un bölümleri arasında verileri sorgulamanın en iyi yolu nedir?
+### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Güvenilir bir koleksiyonun bölümleri genelinde verileri sorgulamak için en iyi yol nedir?
 
-Daha fazla performans ve iş elde etme için ölçeklendirmeyi etkinleştirmek için güvenilir koleksiyonlar genellikle [bölümlere ayrılmıştır.](service-fabric-concepts-partitioning.md) Bu, belirli bir hizmet için devlet onlarca veya yüzlerce makine yayılmış olabilir anlamına gelir. Bu tam veri kümesi üzerinde işlemleri gerçekleştirmek için birkaç seçeneğiniz var:
+Güvenilir koleksiyonlar genellikle daha fazla performans ve verimlilik için ölçeklendirmeyi etkinleştirmek üzere [bölümlenir](service-fabric-concepts-partitioning.md) . Bu, belirli bir hizmetin durumunun on binlerce veya yüzlerce makineye yayılabilen anlamına gelir. Bu tam veri kümesi üzerinde işlem gerçekleştirmek için birkaç seçeneğiniz vardır:
 
 - Gerekli verileri çekmek için başka bir hizmetin tüm bölümlerini sorgulayan bir hizmet oluşturun.
 - Başka bir hizmetin tüm bölümlerinden veri alabilen bir hizmet oluşturun.
-- Her hizmetten gelen verileri düzenli aralıklarla harici bir depoya itin. Bu yaklaşım, yalnızca gerçekleştirdiğiniz sorgular temel iş mantığınızın bir parçası değilse, dış mağazanın verileri bayat olacaksa uygundur.
-- Alternatif olarak, tüm kayıtlar arasında sorgulamayı desteklemesi gereken verileri güvenilir bir koleksiyon yerine doğrudan bir veri deposunda depolayın. Bu, eski verilerle ilgili sorunu ortadan kaldırır, ancak güvenilir koleksiyonların avantajlarından yararlanılmasına izin vermez.
+- Her hizmetten gelen verileri bir dış depoya düzenli olarak gönderin. Bu yaklaşım yalnızca, gerçekleştirdiğiniz sorgular çekirdek iş mantığınızın bir parçası değilse, dış deponun verileri eski olacağı için uygundur.
+- Alternatif olarak, güvenilir bir koleksiyon yerine, tüm kayıtlar genelinde doğrudan bir veri deposunda sorgu yapmayı desteklemesi gereken verileri depolayın. Bu, eski verilerle ilgili sorunu ortadan kaldırır, ancak güvenilir koleksiyonların avantajlarından yararlanılabilir olarak izin vermez.
 
 
-### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>Aktörlerim arasında verileri sorgulamanın en iyi yolu nedir?
+### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>Aktörlerde verileri sorgulamak için en iyi yol nedir?
 
-Aktörler bağımsız devlet ve bilgi işlem birimleri olarak tasarlanmıştır, bu nedenle çalışma zamanında aktör durumu geniş sorguları gerçekleştirmek için tavsiye edilmez. Aktör durumu kümesinin tamamında sorgu yapmanız gerekiyorsa, aşağıdakilerden birini göz önünde bulundurmanız gerekir:
+Aktörler bağımsız durum ve işlem birimleri olacak şekilde tasarlanmıştır. bu nedenle, çalışma zamanında aktör durumunun geniş sorgularının yapılması önerilmez. Aktör durumunda tam olarak sorgu yapmanız gerekiyorsa, şunlardan birini göz önünde bulundurmanız gerekir:
 
-- Aktör hizmetlerinizi, aktör sayısından, oyuncu sayısından hizmetinizdeki bölüm sayısına kadar tüm verileri toplamak için ağ isteklerinin sayısının olağanüstü güvenilir hizmetlerle değiştirilmesi.
-- Daha kolay sorgulama için durumlarını düzenli aralıklarla harici bir mağazaya itecek aktörlertasarlamak. Yukarıdaki gibi, bu yaklaşım yalnızca gerçekleştirdiğiniz sorgular çalışma zamanı davranışınız için gerekli değilse uygulanabilir.
+- Aktör hizmetlerinizi, durum bilgisi olan güvenilir hizmetlerle değiştirme, bu sayede ağ sayısı her türlü verileri, hizmetinizdeki bölüm sayısına kadar tüm verileri toplamak üzere
+- Aktörlerinizi, daha kolay sorgulamak için düzenli aralıklarla bir dış depoya göndermek için tasarlama. Yukarıdaki gibi, bu yaklaşım yalnızca, gerçekleştirdiğiniz sorgular çalışma zamanı davranışınız için gerekmiyorsa geçerlidir.
 
-### <a name="how-much-data-can-i-store-in-a-reliable-collection"></a>Güvenilir Bir Koleksiyonda ne kadar veri depolayabilirim?
+### <a name="how-much-data-can-i-store-in-a-reliable-collection"></a>Güvenilir bir koleksiyonda ne kadar veri depolayabilirim?
 
-Güvenilir hizmetler genellikle bölümlenir, bu nedenle depolayabildiğiniz miktar yalnızca kümedeki makine sayısı ve bu makinelerde bulunan bellek miktarıyla sınırlıdır.
+Güvenilir hizmetler genellikle bölümlenebilir, bu nedenle depoladığınız miktar yalnızca kümedeki makine sayısıyla ve bu makinelerde kullanılabilir bellek miktarı ile sınırlıdır.
 
-Örnek olarak, 100 bölüm ve 3 yinelemeiçeren bir hizmette, ortalama 1 kb boyutundaki nesneleri depolayan güvenilir bir koleksiyona sahip olduğunuzu varsayalım. Şimdi makine başına 16 gb belleğe sahip 10 makine kümesine sahip olduğunuzu varsayalım. Basitlik ve muhafazakar olmak için, işletim sistemi ve sistem hizmetleri, Service Fabric çalışma süresi ve hizmetleri makine başına 10gb veya küme için 100 gb kullanılabilir bırakarak, bunun 6gb tüketmek varsayalım.
+Örnek olarak, 100 bölümlü ve 3 çoğaltmada bir hizmette güvenilir bir koleksiyonunuz olduğunu ve 1 KB 'lik ortalama bir nesne boyutunu Artık makine başına 16 GB bellek içeren bir 10 makine kümeniz olduğunu varsayalım. Basitlik ve koruyucu için, işletim sistemi ve sistem hizmetleri, Service Fabric çalışma zamanı ve hizmetlerinizin 6 GB kullanmasını, makine başına 10 GB veya küme için 100 GB olduğunu varsayalım.
 
-Her nesnenin üç kez (bir birincil ve iki yineleme) depolanması gerektiğini göz önünde bulundurarak, tam kapasitede çalışırken koleksiyonunuzdaki yaklaşık 35 milyon nesne için yeterli belleğe sahip olursunuz. Ancak, bir başarısızlık etki alanının ve kapasitenin yaklaşık 1/3'ünün ilerlediği ve bu sayıyı kabaca 23 milyona düşürecek bir yükseltme etki alanının eşzamanlı kaybına karşı dirençli olmanızı öneririz.
+Her bir nesnenin üç kez depolanması gerektiğini aklınızda bulundurun (bir birincil ve iki çoğaltma), tam kapasiteyle çalışırken koleksiyonunuzda yaklaşık 35.000.000 nesne için yeterli belleğe sahip olursunuz. Bununla birlikte, bir hata etki alanının ve yükseltme etki alanının eş zamanlı kaybını dayanıklı bir şekilde kullanmanızı öneririz. Bu, 1/3 kapasitesini temsil eder ve sayıyı kabaca 23.000.000 olarak azaltır.
 
-Bu hesaplamanın aşağıdakileri de varsaydığını unutmayın:
+Bu hesaplamanın ayrıca şunları varsaydığını unutmayın:
 
-- Bölümler arasında veri dağılımıkabaca tek düze olduğunu veya yük ölçümlerini Küme Kaynak Yöneticisi'ne bildirdiğiniz. Varsayılan olarak, Service Fabric yineleme sayısına göre bakiye yükler. Önceki örnekte, kümedeki her düğüme 10 birincil yineleme ve 20 ikincil yineleme konur. Bu, bölümler arasında eşit olarak dağıtılan yük için iyi çalışır. Yük eşit değilse, Kaynak Yöneticisi'nin daha küçük yinelemeleri bir araya getirebilmesi ve daha büyük yinelemelerin tek bir düğümüzerinde daha fazla bellek tüketmesine izin vermesi için yüklemeyi bildirmeniz gerekir.
+- Verilerin bölümler arasında dağıtılması kabaca Tekdüzen olur veya yük ölçümlerini Küme Kaynak Yöneticisi olarak raporlıyoruz. Varsayılan olarak, Service Fabric çoğaltma sayısına göre dengeyi yükler. Yukarıdaki örnekte, kümedeki her düğüme 10 birincil çoğaltma ve 20 ikincil çoğaltma yerleştirdi. Bu, bölümler arasında eşit olarak dağıtılan yük için iyi bir sonuç verir. Yük bile olmasa da, Kaynak Yöneticisi daha küçük çoğaltmaları paket, daha büyük çoğaltmaların tek bir düğümde daha fazla bellek kullanmasına izin vermek için yükleme rapor etmeniz gerekir.
 
-- Söz konusu güvenilir hizmet kümede tek depolama durumudur. Bir kümeye birden çok hizmet dağıtabildiğinizden, her birinin çalışması ve durumunu yönetmesi gereken kaynaklara dikkat etmeniz gerekir.
+- Söz konusu güvenilir hizmetin kümedeki tek bir depolama durumu olduğu durumdur. Bir kümeye birden çok hizmet dağıtabileceğinizden, her birinin çalışması ve durumunu yönetmesi gereken kaynakların en az olması gerekir.
 
-- Kümenin kendisinin büyümediğini ya da küçülmediğini. Daha fazla makine eklerseniz, Tek tek bir yineleme makineleri geçemez beri makine sayısı hizmetinizdeki bölüm sayısını aşana kadar Ek kapasite kaldıraç için Servis Kumaş ı çoğaltmaları yeniden dengeler. Bunun aksine, makineleri kaldırarak kümenin boyutunu küçültürseniz, kopyalarınız daha sıkı paketlenir ve genel kapasiteyi azaltır.
+- Kümenin kendisinin büyümesi veya küçültülmediği. Daha fazla makine eklerseniz, tek bir çoğaltma makinelere yayılabileceğinden makine sayısı, hizmetinizdeki bölüm sayısını geçirene kadar çoğaltmalarınızı daha fazla kapasiteyi kullanacak şekilde yeniden dengeleyecek Service Fabric. Buna karşılık, makineleri kaldırarak kümenin boyutunu azaltmanız durumunda çoğaltmalar daha sıkı bir şekilde paketlenmiştir ve genel kapasiteye sahiptir.
 
 ### <a name="how-much-data-can-i-store-in-an-actor"></a>Bir aktörde ne kadar veri depolayabilirim?
 
-Güvenilir hizmetlerde olduğu gibi, bir aktör hizmetinde depolayabildiğiniz veri miktarı yalnızca kümenizdeki düğümler arasında bulunan toplam disk alanı ve bellekle sınırlıdır. Ancak, bireysel aktörler en çok devlet ve ilişkili iş mantığı küçük bir miktar kapsüllemek için kullanıldığında etkilidir. Genel bir kural olarak, tek bir aktör kilobayt cinsinden ölçülen devlet olmalıdır.
+Güvenilir hizmetlerde olduğu gibi, bir aktör hizmetinde depolayabilmeniz gereken veri miktarı yalnızca kümenizdeki düğümlerde bulunan toplam disk alanı ve bellekle sınırlıdır. Ancak, tek tek aktörler, az miktarda durum ve ilişkili iş mantığını kapsüllemek için kullanıldıkları zaman en etkilidir. Genel bir kural olarak, tek bir aktör, kilobayt cinsinden ölçülen bir duruma sahip olmalıdır.
 
 ## <a name="other-questions"></a>Diğer sorular
 
-### <a name="how-does-service-fabric-relate-to-containers"></a>Servis Kumaşı'nın konteynerler ile ilişkisi nedir?
+### <a name="how-does-service-fabric-relate-to-containers"></a>Service Fabric kapsayıcılarla nasıl ilişkilidir?
 
-Kapsayıcılar, tüm ortamlarda tutarlı bir şekilde çalışacak ve tek bir makinede izole bir şekilde çalışabilen hizmetleri ve bağımlılıklarını paketlemek için basit bir yol sunar. Service Fabric, [bir kapta paketlenmiş hizmetler](service-fabric-containers-overview.md)de dahil olmak üzere hizmetleri dağıtmak ve yönetmek için bir yol sunar.
+Kapsayıcılar Hizmetleri ve bağımlılıklarını, her türlü ortamda tutarlı bir şekilde çalıştıkları ve tek bir makinede yalıtılmış bir biçimde çalışabilecek şekilde paketlemeyi sağlayan basit bir yol sunar. Service Fabric, [bir kapsayıcıda paketlenmiş hizmetler](service-fabric-containers-overview.md)de dahil olmak üzere hizmetleri dağıtmak ve yönetmek için bir yol sunar.
 
-### <a name="are-you-planning-to-open-source-service-fabric"></a>Açık kaynak Hizmet Kumaşı'nı mı planlıyorsunuz?
+### <a name="are-you-planning-to-open-source-service-fabric"></a>Açık kaynak Service Fabric mı planlıyorsunuz?
 
-Biz Hizmet Kumaş açık kaynaklı parçaları var[(güvenilir hizmet çerçevesi,](https://github.com/Azure/service-fabric-services-and-actors-dotnet) [güvenilir aktörler çerçeve,](https://github.com/Azure/service-fabric-services-and-actors-dotnet) [ASP.NET Çekirdek entegrasyon kütüphaneleri](https://github.com/Azure/service-fabric-aspnetcore), [Hizmet Kumaş Explorer](https://github.com/Azure/service-fabric-explorer), ve [Hizmet Kumaş CLI](https://github.com/Azure/service-fabric-cli)) GitHub ve bu projelere topluluk katkıları kabul. 
+GitHub 'da Service Fabric ([güvenilir hizmetler çerçevesi](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [güvenilir aktör çerçevesi](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.NET Core tümleştirme KITAPLıKLARı](https://github.com/Azure/service-fabric-aspnetcore), [Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer)ve [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) açık kaynaklı parçaları vardır ve bu projelere yönelik topluluk katkılarını kabul etmiş bulunuyoruz. 
 
-Geçenlerde Hizmet Kumaş çalışma zamanı açık kaynak planı [duyurdu.](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/) Bu noktada, Linux oluşturma ve test araçlarıyla GitHub'da [Service Fabric repo'ya](https://github.com/Microsoft/service-fabric/) sahibiz, bu da repo'yu klonlayabileceğiniz, Linux için Service Fabric oluşturabileceğiniz, temel testleri çalıştırabileceğiniz, sorunları açabileceğiniz ve çekme istekleri gönderebileceğiniz anlamına gelir. Windows yapı ortamının da tamamen bir CI ortamıyla birlikte geçirilebiyi almak için çok çalışıyoruz.
+[Kısa süre önce](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/) Service Fabric çalışma zamanını açık kaynak olarak planladığımızda duyuruyoruz. Bu noktada, Linux derleme ve test araçlarıyla GitHub 'da [Service Fabric](https://github.com/Microsoft/service-fabric/) , depoyu kopyalayabilir, Linux için Service Fabric derleyebilir, temel testleri çalıştırabilir, sorunları açabilir ve çekme istekleri gönderebilirsiniz. Windows Build ortamını, tüm CI ortamıyla birlikte geçiş yapmak için çok çalıştık.
 
-Duyuruldukları gibi daha fazla ayrıntı için [Service Fabric blogunu](https://blogs.msdn.microsoft.com/azureservicefabric/) takip edin.
+Duyurulduğu gibi daha fazla ayrıntı için [Service Fabric blogunu](https://blogs.msdn.microsoft.com/azureservicefabric/) izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Temel [Hizmet Kumaşı kavramları](service-fabric-technical-overview.md) ve [en iyi uygulamalar](service-fabric-best-practices-overview.md) hakkında bilgi edinin
+[Temel Service Fabric kavramlar](service-fabric-technical-overview.md) ve [en iyi uygulamalar](service-fabric-best-practices-overview.md) hakkında bilgi edinin

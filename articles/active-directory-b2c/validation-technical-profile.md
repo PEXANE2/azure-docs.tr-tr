@@ -1,7 +1,7 @@
 ---
-title: Özel bir ilkede doğrulama teknik profili tanımlama
+title: Özel ilkede doğrulama teknik profili tanımlama
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C'deki özel bir ilkede doğrulama teknik profili kullanarak talepleri doğrulayın.
+description: Azure Active Directory B2C bir özel ilkede doğrulama teknik profili kullanarak talepleri doğrulayın.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,17 +12,17 @@ ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1eaf159149bb353b1cf0474aad5bc233decddc5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481577"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde doğrulama teknik profili tanımlama
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Doğrulama teknik profili, [Azure Etkin Dizini](active-directory-technical-profile.md) veya [REST API](restful-technical-profile.md)gibi herhangi bir protokolün sıradan bir teknik profilidir. Doğrulama teknik profili çıktı taleplerini döndürür veya aşağıdaki verilerle 4xx HTTP durum kodunu döndürür. Daha fazla bilgi için [dönen hata iletisi](restful-technical-profile.md#returning-error-message)
+Bir doğrulama teknik profili, [Azure Active Directory](active-directory-technical-profile.md) veya [REST API](restful-technical-profile.md)gibi herhangi bir protokolün sıradan bir teknik profilidir. Doğrulama teknik profili, çıkış taleplerini döndürür veya aşağıdaki verilerle 4xx HTTP durum kodunu döndürür. Daha fazla bilgi için bkz. [hata iletisi döndürme](restful-technical-profile.md#returning-error-message)
 
 ```JSON
 {
@@ -32,60 +32,60 @@ Doğrulama teknik profili, [Azure Etkin Dizini](active-directory-technical-profi
 }
 ```
 
-Doğrulama teknik profilinin çıktı taleplerinin kapsamı, doğrulama teknik profilini çağıran [kendi kendini öne süren teknik profil](self-asserted-technical-profile.md) ve doğrulama teknik profilleriile sınırlıdır. Çıktı taleplerini bir sonraki düzenleme adımında kullanmak istiyorsanız, çıktı taleplerini doğrulama teknik profilini çağıran kendi kendini öne süren teknik profile ekleyin.
+Doğrulama teknik profilinin çıkış taleplerinin kapsamı, doğrulama teknik profilini ve doğrulama teknik profillerini çağıran [kendi kendine onaylanan teknik profille](self-asserted-technical-profile.md) sınırlıdır. Sonraki düzenleme adımında çıkış taleplerini kullanmak istiyorsanız, çıkış taleplerini doğrulama teknik profilini çağıran kendi kendine onaylanan teknik profiline ekleyin.
 
-Doğrulama teknik profilleri, **DoğrulamaTeknik Profiller** öğesinde göründükleri sırayla yürütülür. Doğrulama teknik profili bir hata ortaya çıkarırsa veya başarılı olursa, sonraki doğrulama teknik profillerinin yürütülmesinin devam edip etmeyeceğini bir doğrulama teknik profilinde yapılandırabilirsiniz.
+Doğrulama teknik profilleri, **Validationteknisyen** öğesinde göründükleri sırada yürütülür. Doğrulama teknik profili bir hata harekete geçirirse veya başarılı olursa, sonraki doğrulama teknik profillerinin yürütülmesine devam edip etmeyeceğini doğrulama teknik profilinde yapılandırabilirsiniz.
 
-Doğrulama teknik profili, **ValidationTechnicalProfile** öğesinde tanımlanan ön koşullara göre koşullu olarak yürütülebilir. Örneğin, belirli bir talebin var olup olmadığını veya bir talebin belirtilen değere eşit olup olmadığını denetleyebilirsiniz.
+Doğrulama teknik profili, **Validationteknisyen** öğesinde tanımlanan önkoşullara göre koşullu bir şekilde yürütülebilir. Örneğin, belirli bir talebin var olduğunu veya bir talebin belirtilen değere eşit olup olmadığını kontrol edebilirsiniz.
 
-Kendi kendine ileri atılmış bir teknik profil, çıktı taleplerinin bir kısmını veya tamamını doğrulamak için kullanılacak bir doğrulama teknik profili tanımlayabilir. Başvurulan teknik profilin tüm giriş iddiaları, başvuru doğrulama teknik profilinin çıktı taleplerinde görünmelidir.
+Kendi kendine onaylanan bir teknik profil, çıkış taleplerinin bazılarını veya tümünü doğrulamak için kullanılmak üzere bir doğrulama teknik profili tanımlayabilir. Başvurulan teknik profilin tüm giriş talepleri, başvuran doğrulama teknik profilinin çıkış talepleri ' nde görünmelidir.
 
 > [!NOTE]
-> Yalnızca kendi kendini öne süren teknik profiller doğrulama teknik profillerini kullanabilir. Kendi kendine ileri edilmeyen teknik profillerden çıktı taleplerini doğrulamanız gerekiyorsa, doğrulamadan sorumlu teknik profili karşılamak için kullanıcı yolculuğunuzda ek bir düzenleme adımı kullanmayı düşünün.
+> Yalnızca kendi kendine onaylanan teknik profiller, doğrulama teknik profillerini kullanabilir. Kendi kendini onaylanan teknik profillerdeki çıkış taleplerini doğrulamanız gerekiyorsa, Kullanıcı yolculuğunda, doğrulama aşamasında teknik profile uyum sağlamak için ek bir düzenleme adımı kullanmayı göz önünde bulundurun.
 
-## <a name="validationtechnicalprofiles"></a>DoğrulamaTeknik Profiller
+## <a name="validationtechnicalprofiles"></a>Validationcealprofiles
 
-**DoğrulamaTeknik Profiller** öğesi aşağıdaki öğeleri içerir:
+**Validation, Alprofiles** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Oluşum | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| DoğrulamaTeknikProfil | 1:n | Başvuru teknik profilinin çıktı taleplerinin bir kısmını veya tamamını doğrulamak için kullanılacak teknik profil. |
+| Validationteknisyen Alprofıle | 1: n | Başvuru yapan teknik profilin bazı veya tüm çıkış taleplerini doğrulamak için kullanılacak teknik bir profil. |
 
-**DoğrulamaTeknikProfil** öğesi aşağıdaki özniteliği içerir:
+**Validation, Alprofile** öğesi aşağıdaki özniteliği içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ReferenceId | Evet | İlke veya üst ilkede zaten tanımlanmış bir teknik profilin tanımlayıcısı. |
-|ContinueOnError|Hayır| Bu doğrulama teknik profil bir hata yükseltirse sonraki doğrulama teknik profillerin doğrulanması devam edip etmeyeceğini belirten. Olası `true` değerler: `false` veya (varsayılan olarak, daha fazla doğrulama profillerinin işlenmesi durdurulacak ve bir hata döndürülür). |
-|ContinueOnSuccess | Hayır | Bu doğrulama teknik profilbaşarılı olursa sonraki doğrulama profillerinin doğrulanması devam edip etmeyeceğini belirten. Olası `true` değerler: `false`veya . Varsayılan, `true`diğer doğrulama profillerinin işlenmesi devam edeceği anlamına gelir. |
+| ReferenceId | Yes | İlkede veya üst ilkede önceden tanımlanmış bir teknik profil tanıtıcısı. |
+|ContinueOnError|Hayır| Bu doğrulama teknik profili bir hata harekete geçirirse sonraki doğrulama teknik profillerinin doğrulanmasının gerekip gerekmediğini belirtir. Olası değerler: `true` veya `false` (varsayılan, diğer doğrulama profillerinin işlenmesi durdurulur ve bir hata döndürülür). |
+|Devam onSuccess | Hayır | Bu doğrulama teknik profili başarılı olursa sonraki doğrulama profillerinin doğrulanmasının gerekip gerekmediğini belirtir. Olası değerler: `true` veya `false`. Varsayılan `true`olarak, diğer doğrulama profillerinin işlenmesi devam edecektir. |
 
-**DoğrulamaTeknikProfil** öğesi aşağıdaki öğeyi içerir:
+**Validation, Alprofile** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Oluşum | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| Önkoşulları | 0:1 | Doğrulama teknik profilinin yürütülmesi için karşılanması gereken ön koşulların listesi. |
+| Üstbilgisinde | 0:1 | Doğrulama teknik profilinin yürütülmesi için karşılanması gereken önkoşulların bir listesi. |
 
 **Önkoşul** öğesi aşağıdaki özniteliği içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| `Type` | Evet | Ön koşul için gerçekleştirecek denetim veya sorgu türü. `ClaimsExist` Belirtilen talepler kullanıcının geçerli talep kümesinde varsa eylemlerin gerçekleştirilmesini sağlamak için `ClaimEquals` belirtilir veya belirtilen talep varsa ve değeri belirtilen değere eşitse eylemlerin gerçekleştirilmesi gerektiği belirtilir. |
-| `ExecuteActionsIf` | Evet | Test doğru veya yanlışsa ön koşuldaki eylemlerin gerçekleştirilip gerçekleştirilmeyeceğini gösterir. |
+| `Type` | Yes | Önkoşul için gerçekleştirilecek denetim veya sorgunun türü. Belirtilen `ClaimsExist` talepler kullanıcının geçerli talep kümesinde varsa veya `ClaimEquals` belirtilen talep varsa ve değeri belirtilen değere eşitse eylemlerin gerçekleştirilmesi gerektiğini sağlamak için, belirtilen iki seçenekten biri de belirtilmiştir. |
+| `ExecuteActionsIf` | Yes | Test true veya false olduğunda önkoşuldaki eylemlerin gerçekleştirilip gerçekleştirilmeyeceğini gösterir. |
 
 **Önkoşul** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Oluşum | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| Değer | 1:n | Denetim tarafından kullanılan veriler. Bu denetimin türü `ClaimsExist`ise, bu alan için sorgulanacak bir ClaimTypeReferenceId belirtir. Denetim türü ise, `ClaimEquals`bu alan için sorguiçin bir ClaimTypeReferenceId belirtir. Başka bir değer öğesi denetlenecek değeri içerirken.|
-| Eylem | 1:1 | Bir düzenleme adımı içinde ön koşul denetimi doğruysa yapılması gereken eylem. **Eylemin** değeri ' olarak `SkipThisValidationTechnicalProfile`ayarlanır. İlişkili doğrulama teknik profilinin yürütülmemesi gerektiğini belirtir. |
+| Değer | 1: n | Denetim tarafından kullanılan veriler. Bu denetim türü ise `ClaimsExist`, bu alan, sorgulanacak bir ClaimTypeReferenceId belirtir. Denetim türü ise `ClaimEquals`, bu alan sorgu Için bir ClaimTypeReferenceId belirtir. Başka bir değer öğesi, denetlenecek değeri içerdiğinde.|
+| Eylem | 1:1 | Bir düzenleme adımı içindeki önkoşul denetimi doğru ise, alınması gereken eylem. **Eylemin** değeri olarak `SkipThisValidationTechnicalProfile`ayarlanır. İlişkili doğrulama teknik profilinin yürütülmemelidir. |
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnekte bu doğrulama teknik profilleri kullanır:
+Aşağıdaki örnek, bu doğrulama teknik profillerini kullanır:
 
-1. İlk doğrulama teknik profili kullanıcı kimlik bilgilerini denetler ve geçersiz kullanıcı adı veya hatalı parola gibi bir hata oluşursa devam etmez.
-2. Sonraki doğrulama teknik profili, userType claim yoksa veya userType değeri ise `Partner`yürütmez . Doğrulama teknik profili, kullanıcı profilini dahili müşteri veritabanından okumaya çalışır ve REST API hizmeti nin kullanılamaması veya herhangi bir iç hata gibi bir hata oluşursa devam etmeye çalışır.
-3. Son doğrulama teknik profili, userType talebi yoksa veya userType değeri ise `Customer`yürütmez. Doğrulama teknik profili kullanıcı profilini iç iş ortağı veritabanından okumaya çalışır ve REST API hizmeti nin kullanılamaması veya herhangi bir iç hata gibi bir hata oluşursa devam eder.
+1. İlk doğrulama teknik profili, Kullanıcı kimlik bilgilerini denetler ve geçersiz Kullanıcı adı veya hatalı parola gibi bir hata oluşursa devam etmez.
+2. Bir sonraki doğrulama teknik profili, userType talebi yoksa veya userType değeri ise yürütülür `Partner`. Doğrulama teknik profili, iç müşteri veritabanından kullanıcı profilini okumaya çalışır ve REST API hizmet kullanılamıyor ya da herhangi bir iç hata gibi bir hata oluşursa devam eder.
+3. Son doğrulama teknik profili, userType talebi yoksa veya userType değeri ise yürütülür `Customer`. Doğrulama teknik profili, iç iş ortağı veritabanından kullanıcı profilini okumaya çalışır ve REST API hizmet kullanılamıyor ya da herhangi bir iç hata gibi bir hata oluşursa devam eder.
 
 ```XML
 <ValidationTechnicalProfiles>

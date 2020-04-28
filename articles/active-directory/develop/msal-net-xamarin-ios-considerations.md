@@ -1,7 +1,7 @@
 ---
-title: Xamarin iOS hususlar (MSAL.NET) | Azure
+title: Xamarin iOS konuları (MSAL.NET) | Mavisi
 titleSuffix: Microsoft identity platform
-description: .NET (MSAL.NET için Microsoft Kimlik Doğrulama Kitaplığı ile Xamarin iOS'u kullanmak için dikkat edilmesi gereken hususlar hakkında bilgi edinin.
+description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin iOS kullanma hakkında konular hakkında bilgi edinin.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -15,24 +15,24 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 76e614b605cd07cd5dc454824dd204447f806907
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79262717"
 ---
-# <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>xamarin iOS'u MSAL.NET ile kullanmak için dikkat edilmesi gerekenler
-Xamarin iOS'ta .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı'nı kullandığınızda, şunları 
+# <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>MSAL.NET ile Xamarin iOS kullanma konuları
+Xamarin iOS üzerinde .NET için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL.NET) kullandığınızda şunları yapmalısınız: 
 
-- Geçersiz kılın ve `OpenUrl` işlevi `AppDelegate`uygulayın.
+- `OpenUrl` İşlevini geçersiz kılın ve ' de `AppDelegate`uygulayın.
 - Anahtarlık gruplarını etkinleştirin.
-- Belirteç önbellek paylaşımını etkinleştirin.
+- Belirteç önbelleği paylaşımını etkinleştirin.
 - Anahtarlık erişimini etkinleştirin.
-- iOS 12 ve kimlik doğrulama ile bilinen sorunları anlayın.
+- İOS 12 ve kimlik doğrulamasıyla ilgili bilinen sorunları anlayın.
 
-## <a name="implement-openurl"></a>OpenUrl uygula
+## <a name="implement-openurl"></a>OpenUrl 'Yi Uygula
 
-Türemiş `OpenUrl` sınıfın `FormsApplicationDelegate` yöntemini geçersiz `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`kılın ve çağırın. Bir örneği aşağıda verilmiştir:
+Türetilmiş sınıfın `OpenUrl` yöntemini ve çağrısını `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs`geçersiz kılın. `FormsApplicationDelegate` Bir örneği aşağıda verilmiştir:
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
@@ -42,19 +42,19 @@ public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 }
 ```
 
-Ayrıca aşağıdaki görevleri yapın: 
-* BIR URL düzeni tanımlayın.
-* Uygulamanızın başka bir uygulamayı araması için izinler talep edin.
-* Yönlendirme URL'si için belirli bir form alalım.
-* Yeniden yönlendirme URL'sini [Azure portalına](https://portal.azure.com)kaydedin.
+Aşağıdaki görevleri de yapın: 
+* Bir URL şeması tanımlayın.
+* Uygulamanızın başka bir uygulamayı çağırması için izin gerektir.
+* Yeniden yönlendirme URL 'SI için belirli bir form gerekir.
+* Yeniden yönlendirme URL 'sini [Azure Portal](https://portal.azure.com)kaydedin.
 
-### <a name="enable-keychain-access"></a>Anahtarlık erişimini etkinleştirme
+### <a name="enable-keychain-access"></a>Anahtarlık erişimini etkinleştir
 
-Anahtarlık erişimini etkinleştirmek için uygulamanızın bir anahtarzinciri erişim grubuna sahip olduğundan emin olun. UYGULAMANIZI `WithIosKeychainSecurityGroup()` oluştururken, API'yi kullanarak anahtarzinciri erişim grubunu ayarlayabilirsiniz.
+Anahtarlık erişimini etkinleştirmek için, uygulamanızın bir Anahtarlık erişim grubuna sahip olduğundan emin olun. `WithIosKeychainSecurityGroup()` API 'yi kullanarak uygulamanızı oluştururken Anahtarlık erişim grubunu ayarlayabilirsiniz.
 
-Önbellekten ve tek oturum açmadan (SSO) yararlanmak için, anahtarlık erişim grubunu tüm uygulamalarınızda aynı değere ayarlayın.
+Önbellek ve çoklu oturum açma (SSO) avantajlarından yararlanmak için, Anahtarlık erişim grubunu tüm uygulamalarınızda aynı değere ayarlayın.
 
-Kurulumun bu örneği MSAL 4.x kullanır:
+Kurulumun bu örneği MSAL 4. x kullanır:
 ```csharp
 var builder = PublicClientApplicationBuilder
      .Create(ClientId)
@@ -62,7 +62,7 @@ var builder = PublicClientApplicationBuilder
      .Build();
 ```
 
-Ayrıca dosyada anahtarlık `Entitlements.plist` erişimini etkinleştirin. Aşağıdaki erişim grubunu veya kendi erişim grubunuzu kullanın.
+Ayrıca, `Entitlements.plist` dosyasında Anahtarlık erişimini etkinleştirin. Aşağıdaki erişim grubunu ya da kendi erişim grubunuzu kullanın.
 
 ```xml
 <dict>
@@ -73,50 +73,50 @@ Ayrıca dosyada anahtarlık `Entitlements.plist` erişimini etkinleştirin. Aşa
 </dict>
 ```
 
-API'yi `WithIosKeychainSecurityGroup()` kullandığınızda, MSAL güvenlik grubunuzu otomatik olarak uygulamanın *takım kimliğinin* sonuna ekler (`AppIdentifierPrefix`). MSAL, uygulamanızı Xcode'da oluşturduğunuzda aynı şeyi yapacağından güvenlik grubunuzu ekler. Bu nedenle, dosyadaki `Entitlements.plist` yetkilendirmelerin anahtarlık `$(AppIdentifierPrefix)` erişim grubuna dahil etmesi gerekir.
+`WithIosKeychainSecurityGroup()` API 'yi KULLANDıĞıNıZDA, msal otomatik olarak güvenlik grubunuzu UYGULAMANıN *Takım Kimliği* (`AppIdentifierPrefix`) sonuna ekler. MSAL, uygulamanızı Xcode 'da oluştururken aynı şekilde güvenlik grubunuzu ekler. Bu nedenle, `Entitlements.plist` dosyadaki yetkilendirmelerin Anahtarlık erişim grubundan önce `$(AppIdentifierPrefix)` eklenmesi gerekir.
 
-Daha fazla bilgi için [iOS yetkilendirme belgelerine](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps)bakın. 
+Daha fazla bilgi için bkz. [iOS yetkilendirmeleri belgeleri](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps). 
 
-### <a name="enable-token-cache-sharing-across-ios-applications"></a>iOS uygulamaları arasında belirteç önbelleği paylaşımını etkinleştirme
+### <a name="enable-token-cache-sharing-across-ios-applications"></a>İOS uygulamaları arasında belirteç önbelleği paylaşımını etkinleştir
 
-MSAL 2.x'ten başlayarak, belirteç önbelleğini birden çok uygulamada sürdürmek için bir anahtarlık erişim grubu belirtebilirsiniz. Bu ayar, belirteç önbelleğini aynı anahtarlık erişim grubuna sahip birkaç uygulama arasında paylaşmanızı sağlar. Jeton nakitini [ADAL.NET](https://aka.ms/adal-net) uygulamalar, MSAL.NET Xamarin.iOS uygulamaları ve [ADAL.objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc) veya [MSAL.objc'de](https://github.com/AzureAD/microsoft-authentication-library-for-objc)geliştirilen yerel iOS uygulamaları arasında paylaşabilirsiniz.
+MSAL 2. x ' den başlayarak, belirteç önbelleğini birden çok uygulama arasında kalıcı hale getirmek için bir Anahtarlık erişim grubu belirtebilirsiniz. Bu ayar, belirteç önbelleğini aynı Anahtarlık erişim grubuna sahip çeşitli uygulamalar arasında paylaşmanızı sağlar. [Adal.net](https://aka.ms/adal-net) uygulamaları, msal.net Xamarin. iOS uygulamaları ve [adal. ObjC](https://github.com/AzureAD/azure-activedirectory-library-for-objc) veya [msal. ObjC](https://github.com/AzureAD/microsoft-authentication-library-for-objc)içinde geliştirilen Yerel iOS uygulamaları arasında bir belirteç Cash 'ı paylaşabilirsiniz.
 
-Belirteç önbelleğini paylaşarak, aynı anahtarzinciri erişim grubunu kullanan tüm uygulamalar arasında tek oturum açma (SSO) izni verirsiniz.
+Belirteç önbelleğini paylaşarak, aynı Anahtarlık erişim grubunu kullanan tüm uygulamalar arasında çoklu oturum açma 'ya (SSO) izin verebilirsiniz.
 
-Bu önbellek paylaşımını etkinleştirmek için, anahtar zinciri erişim grubunu aynı önbelleği paylaşan tüm uygulamalarda aynı değere ayarlamak için `WithIosKeychainSecurityGroup()` yöntemi kullanın. Bu makaledeki ilk kod örneği yöntemin nasıl kullanılacağını gösterir.
+Bu önbellek paylaşımını etkinleştirmek için `WithIosKeychainSecurityGroup()` yöntemini kullanarak, Anahtarlık erişim grubunu aynı önbelleği paylaşan tüm uygulamalarda aynı değere ayarlayın. Bu makaledeki ilk kod örneği, yönteminin nasıl kullanılacağını gösterir.
 
-Bu makalenin başlarında, API'yi her kullandığınızda MSAL'ın `$(AppIdentifierPrefix)` `WithIosKeychainSecurityGroup()` ekettiğini öğrenmişsinizdir. MSAL bu öğeyi ekler, çünkü takım kimliği `AppIdentifierPrefix` yalnızca aynı yayımcı tarafından yapılan uygulamaların anahtarlık erişimini paylaşabilmesini sağlar.
+Bu makalenin önceki kısımlarında, `$(AppIdentifierPrefix)` `WithIosKeychainSecurityGroup()` API 'yi her kullandığınızda msal eklediği hakkında daha fazla öğrendiniz. Takım KIMLIĞI `AppIdentifierPrefix` , yalnızca aynı yayımcı tarafından yapılan uygulamaların Anahtarlık erişimini paylaşabilmesini SAĞLADıĞıNDAN, msal bu öğeyi ekler.
 
 > [!NOTE]
-> Mülk `KeychainSecurityGroup` amortismana lı.
+> `KeychainSecurityGroup` Özelliği kullanım dışıdır.
 > 
-> MSAL 2.x'ten başlayarak, geliştiriciler `TeamId` `KeychainSecurityGroup` özelliği kullanırken önek eklemek zorunda kaldılar. Ancak MSAL 2.7.x'ten başlayarak, `iOSKeychainSecurityGroup` yeni özelliği kullandığınızda, MSAL çalışma süresi sırasında `TeamId` öneki çözer. Bu özelliği kullandığınızda, değere `TeamId` önek eklemeyin. Önek gerekli değildir.
+> MSAL 2. x ' den başlayarak, geliştiriciler `TeamId` `KeychainSecurityGroup` özelliği kullandıklarında öneki dahil etmek için zorlanmıştır. Ancak, MSAL 2.7. x öğesinden başlayarak, yeni `iOSKeychainSecurityGroup` ÖZELLIĞI kullandığınızda msal, çalışma zamanı sırasında `TeamId` öneki çözer. Bu özelliği kullandığınızda, değerine `TeamId` öneki eklemeyin. Ön ek gerekli değildir.
 >
-> `KeychainSecurityGroup` Özellik eski olduğundan, `iOSKeychainSecurityGroup` özelliği kullanın.
+> `KeychainSecurityGroup` Özelliği kullanılmıyor olduğundan, `iOSKeychainSecurityGroup` özelliğini kullanın.
 
-### <a name="use-microsoft-authenticator"></a>Microsoft Authenticator'ı kullanma
+### <a name="use-microsoft-authenticator"></a>Microsoft Authenticator kullan
 
-Uygulamanız, şunları etkinleştirmek için Microsoft Authenticator'ı aracı olarak kullanabilir:
+Uygulamanız, etkinleştirmek için bir aracı olarak Microsoft Authenticator kullanabilir:
 
-- **SSO**: SSO'yu etkinleştirdiğinizde, kullanıcılarınızın her uygulamada oturum açmalarına gerek yoktur.
-- **Cihaz tanımlama**: Cihaz sertifikasına erişerek kimlik doğrulaması yapmak için aygıt tanımlamasını kullanın. Bu sertifika, işyerine katıldığında aygıtta oluşturulur. Kiracı yöneticiler aygıtlarla ilgili koşullu erişimi etkinleştirirlerse uygulamanız hazır olur.
-- **Uygulama tanımlama doğrulaması**: Bir uygulama aracıyı aradığında, yeniden yönlendirme URL'sini geçer. Aracı, yönlendirme URL'sini doğrular.
+- **SSO**: SSO 'yu etkinleştirdiğinizde, kullanıcılarınızın her uygulamada oturum açması gerekmez.
+- **Cihaz kimliği**: cihaz sertifikasına erişerek kimlik doğrulamak için cihaz kimliğini kullanın. Bu sertifika, çalışma alanına katıldığında cihazda oluşturulur. Kiracı yöneticileri cihazlarla ilgili koşullu erişimi etkinleştirmeleri durumunda uygulamanız hazırlanacaktır.
+- **Uygulama tanımlama doğrulaması**: bir uygulama aracıyı çağırdığında, yeniden yönlendirme URL 'sini geçirir. Aracı yeniden yönlendirme URL 'sini doğrular.
 
-Bir aracıyı etkinleştirme hakkında daha fazla bilgi için, [Xamarin iOS ve Android uygulamalarında Microsoft Authenticator veya Microsoft Intune Company Portalını Kullanın'a](msal-net-use-brokers-with-xamarin-apps.md)bakın.
+Bir aracısının nasıl etkinleştirileceği hakkında ayrıntılar için bkz. [Use Microsoft Authenticator veya Microsoft Intune şirket portalı Xamarin iOS ve Android uygulamalarında](msal-net-use-brokers-with-xamarin-apps.md).
 
-## <a name="known-issues-with-ios-12-and-authentication"></a>iOS 12 ve kimlik doğrulama ile bilinen sorunlar
-Microsoft, iOS 12 ile bazı kimlik doğrulama türleri arasındaki uyumsuzlukla ilgili bir [güvenlik danışma belgesi](https://github.com/aspnet/AspNetCore/issues/4647) yayımladı. Uyumsuzluk sosyal, WSFed ve OIDC oturum açmaları tatili. Güvenlik danışma belgesi, geliştiricilerin ASP.NET güvenlik kısıtlamalarını iOS 12 ile uyumlu hale getirmek için uygulamalarından nasıl kaldıracaklarını anlamalarına yardımcı olur.  
+## <a name="known-issues-with-ios-12-and-authentication"></a>İOS 12 ve kimlik doğrulama ile ilgili bilinen sorunlar
+Microsoft, iOS 12 ve bazı kimlik doğrulama türleri arasında uyumsuzluk hakkında bir [Güvenlik Danışmanlığı](https://github.com/aspnet/AspNetCore/issues/4647) yayımlamıştır. Uyumsuzluk sosyal, Wsbeslenir ve OıDC oturum açma işlemlerini keser. Güvenlik Danışmanlığı, geliştiricilerin iOS 12 ile uyumlu hale getirmek için uygulamalarından ASP.NET güvenlik kısıtlamalarını nasıl kaldırabileceğini anlamalarına yardımcı olur.  
 
-Xamarin iOS'ta MSAL.NET uygulamaları geliştirdiğinizde, iOS 12'den web sitelerinde oturum açmaya çalıştığınızda sonsuz bir döngü görebilirsiniz. Bu davranış, bu [ADAL sorununa](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)benzer. 
+Xamarin iOS üzerinde MSAL.NET uygulamaları geliştirirken, iOS 12 ' den web sitelerinde oturum açmaya çalıştığınızda sonsuz bir döngüye karşılaşabilirsiniz. Bu davranış, bu [adal sorununa](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/1329)benzer. 
 
-Ayrıca, iOS 12 Safari ile Core OIDC kimlik doğrulaması ASP.NET bir kopuş da görebilirsiniz. Daha fazla bilgi için bu [WebKit sorununa](https://bugs.webkit.org/show_bug.cgi?id=188165)bakın.
+İOS 12 Safari ile ASP.NET Core OıDC kimlik doğrulamasında bir kesme de görebilirsiniz. Daha fazla bilgi için bu [WebKit sorununa](https://bugs.webkit.org/show_bug.cgi?id=188165)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Xamarin iOS özellikleri hakkında bilgi için, aşağıdaki örneğin README.md dosyasının [iOS'a özgü hususlar](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/master/1-Basic#ios-specific-considerations) paragrafına bakın:
+Xamarin iOS özellikleri hakkında daha fazla bilgi için, aşağıdaki örneğin README.md dosyasının [iOS 'a özgü dikkat edilecek noktalar](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/master/1-Basic#ios-specific-considerations) paragrafına bakın:
 
 Örnek | Platform | Açıklama
 ------ | -------- | -----------
-[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, Evrensel Windows Platformu (UWP) | Azure AD 2.0 bitiş noktası üzerinden Microsoft kişisel hesaplarını ve Azure AD'yi doğrulamak için MSAL'ın nasıl kullanılacağını gösteren basit bir Xamarin Forms uygulaması. Uygulama ayrıca Microsoft Graph'a erişmek için ortaya çıkan belirteci nasıl kullanacağımı da gösterir.
+[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, Evrensel Windows Platformu (UWP) | Azure AD 2,0 uç noktası aracılığıyla Microsoft kişisel hesaplarının ve Azure AD kimlik doğrulaması için MSAL kullanmayı gösteren basit bir Xamarin Forms uygulaması. Uygulama ayrıca Microsoft Graph erişmek için elde edilen belirtecin nasıl kullanılacağını gösterir.
 
 <!--- https://github.com/Azure-Samples/active-directory-xamarin-native-v2/blob/master/ReadmeFiles/Topology.png -->

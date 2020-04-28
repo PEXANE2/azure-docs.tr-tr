@@ -1,6 +1,6 @@
 ---
-title: İddialarSchema - Azure Active Directory B2C | Microsoft Dokümanlar
-description: Azure Active Directory B2C'de özel bir ilkenin ClaimsSchema öğesini belirtin.
+title: ClaimsSchema-Azure Active Directory B2C | Microsoft Docs
+description: Azure Active Directory B2C bir özel ilkenin ClaimsSchema öğesini belirtin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,17 +11,17 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4c3b3318e941723ec333597c7e4b3e48710152d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78397794"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**ClaimsSchema** öğesi, ilkenin bir parçası olarak başvurulabilecek talep türlerini tanımlar. İddialar şema, iddialarınızı beyan ettiğiniz yerdir. Bir talep ad, soyad, görüntü adı, telefon numarası ve daha fazlası olabilir. ClaimsSchema öğesi **ClaimType** öğelerinin listesini içerir. **ClaimType** öğesi, talep adı olan **Id** özniteliğini içerir.
+**Claimsschema** öğesi, ilkenin bir parçası olarak başvurulabilen talep türlerini tanımlar. Talep şeması, taleplerinizi bildirdiğiniz yerdir. Bir talep adı, soyadı, görünen ad, telefon numarası ve daha fazlası olabilir. ClaimsSchema öğesi **ClaimType** öğelerinin listesini içerir. **ClaimType** öğesi, talep adı olan **ID** özniteliğini içerir.
 
 ```XML
 <BuildingBlocks>
@@ -38,27 +38,27 @@ ms.locfileid: "78397794"
       <UserInputType>TextBox</UserInputType>
 ```
 
-## <a name="claimtype"></a>Claimtype
+## <a name="claimtype"></a>ClaimType
 
-**ClaimType** öğesi aşağıdaki öznitelik içerir:
+**ClaimType** öğesi aşağıdaki özniteliği içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Evet | Talep türü için kullanılan bir tanımlayıcı. Diğer öğeler bu tanımlayıcıyı ilkede kullanabilir. |
+| Kimlik | Yes | Talep türü için kullanılan bir tanımlayıcı. Diğer öğeler ilkede bu tanımlayıcıyı kullanabilir. |
 
 **ClaimType** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Oluşum | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| DisplayName | 1:1 | Çeşitli ekranlarda kullanıcılara görüntülenen başlık. Değer [yerelleştirilebilir.](localization.md) |
-| DataType | 1:1 | İddianın türü. |
-| VarsayılanOrtak Talep Türleri | 0:1 | İş ortağı varsayılan talep türleri belirtilen bir protokol için kullanılacak. Değer, Giriş Talebi veya **OutputClaim** öğelerinde belirtilen **PartnerClaimType'da** üzerine yazılabilir. **InputClaim** Bir protokolün varsayılan adını belirtmek için bu öğeyi kullanın.  |
-| Maskeleme | 0:1 | Talebi görüntülerken uygulanabilecek isteğe bağlı maskeleme karakterleri dizisi. Örneğin, telefon numarası 324-232-4343 XXX-XXX-4343 olarak maskelenebilir. |
-| UserHelpText | 0:1 | Kullanıcıların amacını anlamalarına yardımcı olabilecek talep türünün açıklaması. Değer [yerelleştirilebilir.](localization.md) |
-| UserInputType | 0:1 | Talep türüiçin talep verilerini el ile girerken kullanıcıtarafından kullanılabilir olması gereken giriş denetimi türü. Daha sonra bu sayfada tanımlanan kullanıcı giriş türlerine bakın. |
-| AdminHelpText | 0:1 | Yöneticilerin amacını anlamalarına yardımcı olabilecek talep türünün açıklaması. |
-| Kısıtlama | 0:1 | Normal bir ifade (Regex) veya kabul edilebilir değerlerin listesi gibi bu talep için değer kısıtlamaları. Değer [yerelleştirilebilir.](localization.md) |
-YüklemValidationReferans| 0:1 | **Bir PredicateValidationsInput** öğesine bir başvuru. **PredicateValidationReference** öğeleri, yalnızca düzgün biçimlendirilmiş verilerin girilmesini sağlamak için bir doğrulama işlemi gerçekleştirmenize olanak tanır. Daha fazla bilgi için [Bkz. Predicates](predicates.md). |
+| DisplayName | 1:1 | Çeşitli ekranlarda kullanıcılara görüntülenen başlık. Değer [yerelleştirilmiş](localization.md)olabilir. |
+| DataType | 1:1 | Talebin türü. |
+| DefaultPartnerClaimTypes | 0:1 | Belirtilen bir protokol için kullanılacak iş ortağı varsayılan talep türleri. Değerin **ınputclaim** veya **outputclaim** öğelerinde belirtilen **partnerclaimtype** 'da üzerine yazılabilir. Bir protokol için varsayılan adı belirtmek üzere bu öğeyi kullanın.  |
+| Maskeleme | 0:1 | Talep görüntülenirken uygulanabilecek bir maske karakterleri için isteğe bağlı bir dize. Örneğin, 324-232-4343 telefon numarası XXX-XXX-4343 olarak maskelenebilir. |
+| UserHelpText | 0:1 | Kullanıcıların amacını anlaması için yararlı olabilecek talep türünün açıklaması. Değer [yerelleştirilmiş](localization.md)olabilir. |
+| Userınputtype | 0:1 | Talep türü için talep verilerini el ile girerken Kullanıcı tarafından kullanılabilir olması gereken giriş denetiminin türü. Bu sayfada daha sonra tanımlanan Kullanıcı giriş türlerine bakın. |
+| AdminHelpText | 0:1 | Yöneticilerin amacını anlaması için yararlı olabilecek talep türünün açıklaması. |
+| Kısıtlama | 0:1 | Bu talep için normal ifade (Regex) veya kabul edilebilir değerlerin bir listesi gibi değer kısıtlamaları. Değer [yerelleştirilmiş](localization.md)olabilir. |
+PredicateValidationReference| 0:1 | Bir **Predicatevalidationsinput** öğesine başvuru. **Predicatevalidationreference** öğeleri yalnızca düzgün biçimlendirilmiş verilerin girildiğinden emin olmak için bir doğrulama işlemi gerçekleştirmenizi sağlar. Daha fazla bilgi için bkz. [koşullar](predicates.md). |
 
 
 
@@ -68,34 +68,34 @@ YüklemValidationReferans| 0:1 | **Bir PredicateValidationsInput** öğesine bir
 
 | Tür | Açıklama |
 | ------- | ----------- |
-|boole|Boolean (`true` veya `false`) değerini temsil eder.|
-|date| Genellikle bir günün tarihi olarak ifade edilen, zaman içinde bir an temsil eder. Tarihin değeri ISO 8601 kuralını takip eder.|
-|tarih saat|Genellikle günün tarihi ve saati olarak ifade edilen bir zamanı temsil eder. Tarihin değeri ISO 8601 kuralını takip eder.|
-|süre|Yıl, ay, gün, saat, dakika ve saniye cinsinden bir zaman aralığını temsil eder. `PnYnMnDTnHnMnS`Biçimi, pozitif `P` veya negatif değer `N` için gösterir. `nY`yıl sayısı gerçek bir takip `Y`edilir. `nMo`bir harfi `Mo`takip ay sayısıdır. `nD`bir harfi `D`takip gün sayısıdır. Örnekler: `P21Y` 21 yılı temsil eder. `P1Y2Mo`bir yıl ve iki ayı temsil eder. `P1Y2Mo5D`bir yıl, iki ay ve beş günü temsil eder.  `P1Y2M5DT8H5M620S`bir yıl, iki ay, beş gün, sekiz saat, beş dakika ve yirmi saniyeyi temsil eder.  |
-|Phonenumber|Bir telefon numarasını temsil eder. |
-|int| -2.147.483.648 ile 2.147.483.647 arasındaki sayıyı temsil eder.|
-|long| -9.223.372.036.854.775.808 ile 9.223.372.036.854.775.807 arasındaki rakamı temsil eder. |
-|string| Metni UTF-16 kod birimlerinin sırası olarak temsil eder.|
-|Stringcollection|Bir koleksiyon `string`temsil eder.|
-|kullanıcıKimliği| Kullanıcı kimliğini temsil eder.|
-|userIdentityCollection|Bir koleksiyon `userIdentity`temsil eder.|
+|boole|Bir Boole (`true` veya `false`) değeri temsil eder.|
+|date| Genellikle günün bir tarihi olarak ifade edilen bir anlık zamanı temsil eder. Tarihin değeri ISO 8601 kuralı ' nı izler.|
+|tarih saat|Genellikle günün tarih ve saati olarak ifade edilen bir anlık zamanı temsil eder. Tarihin değeri ISO 8601 kuralı ' nı izler.|
+|süre|Yıl, ay, gün, saat, dakika ve saniye cinsinden bir zaman aralığını temsil eder. Biçimi `PnYnMnDTnHnMnS`, burada `P` pozitif veya `N` negatif değer için belirtir. `nY`, bir sabit değer `Y`tarafından izlenen yıl sayısıdır. `nMo`, bir sabit değer `Mo`tarafından izlenen ayların sayısıdır. `nD`, ardından bir sabit değer `D`tarafından izlenen gün sayısıdır. Örnekler: `P21Y` 21 yılı temsil eder. `P1Y2Mo`bir yılı ve iki ayı temsil eder. `P1Y2Mo5D`bir yılı, iki ayı ve beş günü temsil eder.  `P1Y2M5DT8H5M620S`bir yıl, iki ay, beş gün, sekiz saat, beş dakika ve Yirmi saniye temsil eder.  |
+|phoneNumber|Bir telefon numarasını temsil eder. |
+|int| -2.147.483.648 ile 2.147.483.647 arasındaki sayıyı temsil eder|
+|long| -9223372036854775808 ile 9.223.372.036.854.775.807 arasında bir sayı temsil eder |
+|string| Metni UTF-16 kod birimi dizisi olarak temsil eder.|
+|stringCollection|Bir koleksiyonunu temsil eder `string`.|
+|UserIdentity| Bir kullanıcı kimliğini temsil eder.|
+|Userıdentitycollection|Bir koleksiyonunu temsil eder `userIdentity`.|
 
-### <a name="defaultpartnerclaimtypes"></a>VarsayılanOrtak Talep Türleri
+### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
-**DefaultPartnerClaimTypes** aşağıdaki öğeyi içerebilir:
+**Defaultpartnerclaimtypes** aşağıdaki öğeyi içerebilir:
 
-| Öğe | Oluşum | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| Protokol | 1:n | Varsayılan ortak talep türü adı ile protokollerin listesi. |
+| Protokol | 1: n | Varsayılan iş ortağı talep türü adı olan protokollerin listesi. |
 
 **Protokol** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Adı | Evet | Azure AD B2C tarafından desteklenen geçerli bir protokolün adı. Olası değerler şunlardır: OAuth1, OAuth2, SAML2, OpenIdConnect. |
-| OrtakClaimType | Evet | Kullanılacak talep türü adı. |
+| Adı | Yes | Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler şunlardır: OAuth1, OAuth2, SAML2, Openıdconnect. |
+| PartnerClaimType | Yes | Kullanılacak talep türü adı. |
 
-Aşağıdaki örnekte, Kimlik Deneyimi Çerçevesi bir SAML2 kimlik sağlayıcısı veya güvenerek **surname** taraf uygulaması ile `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`etkileşime girdiğinde, soyadı talebi OpenIdConnect ve OAuth2 ile eşlenir, talep `family_name`.
+Aşağıdaki örnekte, kimlik deneyimi çerçevesi bir SAML2 Identity provider veya bağlı olan taraf uygulamasıyla `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`etkileşime geçtiğinde, Openıdconnect ve OAuth2 ile **, talep ile** eşleştirilir `family_name`.
 
 ```XML
 <ClaimType Id="surname">
@@ -109,7 +109,7 @@ Aşağıdaki örnekte, Kimlik Deneyimi Çerçevesi bir SAML2 kimlik sağlayıcı
 </ClaimType>
 ```
 
-Sonuç olarak, Azure AD B2C tarafından verilen JWT belirteci, ClaimType ad `family_name` **soyadı**yerine yayır.
+Sonuç olarak, Azure AD B2C tarafından verilen JWT belirteci, ClaimType adının `family_name` **Soyadı**yerine yayar.
 
 ```JSON
 {
@@ -123,14 +123,14 @@ Sonuç olarak, Azure AD B2C tarafından verilen JWT belirteci, ClaimType ad `fam
 
 ### <a name="mask"></a>Maskeleme
 
-**Maske** öğesi aşağıdaki öznitelikleri içerir:
+**Mask** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| `Type` | Evet | Talep maskesinin türü. Olası `Simple` değerler: `Regex`veya . Değer, `Simple` dize talebinin önde gelen bölümüne basit bir metin maskesi uygulandığını gösterir. Değer, dize `Regex` talebine bir bütün olarak normal bir ifadenin uygulandığını gösterir.  `Regex` Değer belirtilirse, kullanılacak normal ifadeyle isteğe bağlı bir öznitelik de tanımlanmalıdır. |
-| `Regex` | Hayır | **`Type`** Ayarlanmışsa, kullanılacak normal ifadeyi belirtin. `Regex`
+| `Type` | Yes | Talep maskesinin türü. Olası değerler: `Simple` veya `Regex`. Değer `Simple` , bir dize talebinin önde gelen kısmına bir basit metin maskesinin uygulanacağını gösterir. Değer `Regex` , normal bir ifadenin dize talebine tam olarak uygulandığını belirtir.  `Regex` Değer belirtilmişse, kullanılacak normal ifadeyle isteğe bağlı bir özniteliğin de tanımlanması gerekir. |
+| `Regex` | Hayır | **`Type`** Olarak `Regex`ayarlanırsa, kullanılacak normal ifadeyi belirtin.
 
-Aşağıdaki örnek, maskeyle **bir PhoneNumber** iddiasını yapılandırır: `Simple`
+Aşağıdaki örnek, `Simple` maskeyle bir **PhoneNumber** talebi yapılandırır:
 
 ```XML
 <ClaimType Id="PhoneNumber">
@@ -141,11 +141,11 @@ Aşağıdaki örnek, maskeyle **bir PhoneNumber** iddiasını yapılandırır: `
 </ClaimType>
 ```
 
-Kimlik Deneyimi Çerçevesi, ilk altı basamağı gizlerken telefon numarasını işler:
+Kimlik deneyimi çerçevesi, ilk altı basamağı gizlerken telefon numarasını işler:
 
-![X'ler tarafından maskeli ilk altı basamaklı tarayıcıda gösterilen telefon numarası iddiası](./media/claimsschema/mask.png)
+![Bir tarayıcıda gösterilen telefon numarası talebi, XS tarafından maskelenen ilk altı basamakla](./media/claimsschema/mask.png)
 
-Aşağıdaki örnek, maskeyle birlikte Bir `Regex` Alternatif **E-posta** iddiasını yapılandırır:
+Aşağıdaki örnek, `Regex` maskeyle bir **alternateemail** talebi yapılandırır:
 
 ```XML
 <ClaimType Id="AlternateEmail">
@@ -156,39 +156,39 @@ Aşağıdaki örnek, maskeyle birlikte Bir `Regex` Alternatif **E-posta** iddias
 </ClaimType>
 ```
 
-Kimlik Deneyimi Çerçevesi, yalnızca e-posta adresinin ilk harfini ve e-posta alan adını işler:
+Kimlik deneyimi çerçevesi yalnızca e-posta adresinin ilk harfini ve e-posta etki alanı adını işler:
 
-![Yıldız işaretleri tarafından maskeli karakterlerle tarayıcıda gösterilen e-posta talebi](./media/claimsschema/mask-regex.png)
+![Yıldız işaretiyle maskelenmiş karakterlerle tarayıcıda gösterilen e-posta talebi](./media/claimsschema/mask-regex.png)
 
 
 ### <a name="restriction"></a>Kısıtlama
 
-**Kısıtlama** öğesi aşağıdaki öznitelik içerebilir:
+**Kısıtlama** öğesi aşağıdaki özniteliği içerebilir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Birleştirme Davranışı | Hayır | Numaralandırma değerlerini bir üst ilkedeki ClaimType ile aynı tanımlayıcıyla birleştirmek için kullanılan yöntem. Temel ilkede belirtilen bir talebin üzerine yazarken bu özniteliği kullanın. Olası `Append`değerler: `Prepend`, `ReplaceAll`, veya . Değer, `Append` üst ilkede belirtilen koleksiyonun sonuna ekilmesi gereken bir veri topluluğudur. Değer, `Prepend` üst ilkede belirtilen koleksiyondan önce eklenmesi gereken bir veri topluluğudur. Değer, `ReplaceAll` üst ilkede belirtilen ve yoksayılması gereken bir veri topluluğudur. |
+| MergeBehavior | Hayır | Aynı tanımlayıcıya sahip bir üst ilkede bir ClaimType ile numaralandırma değerlerini birleştirmek için kullanılan yöntem. Temel ilkede belirtilen bir talebin üzerine yazdığınızda bu özniteliği kullanın. Olası değerler: `Append`, `Prepend`, veya `ReplaceAll`. `Append` Değer, üst ilkede belirtilen koleksiyonun sonuna eklenmesi gereken verilerin bir koleksiyonudur. `Prepend` Değer, üst ilkede belirtilen koleksiyondan önce eklenmesi gereken verilerin bir koleksiyonudur. `ReplaceAll` Değer, üst ilkede yok sayılacak belirtilen verilerin bir koleksiyonudur. |
 
 **Kısıtlama** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Oluşum | Açıklama |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
-| Sabit Listesi | 1:n | Kullanıcının bir talep için seçmesi için kullanıcı arabirimindeki kullanılabilir seçenekler(örneğin, açılır düşüşteki bir değer). |
+| Sabit Listesi | 1: n | Kullanıcının bir talep için seçmesini sağlamak üzere Kullanıcı arabirimindeki kullanılabilir seçenekler (örneğin, açılan menüdeki bir değer). |
 | Desen | 1:1 | Kullanılacak normal ifade. |
 
 #### <a name="enumeration"></a>Sabit Listesi
 
-**Numaralandırma** öğesi, kullanıcı arabirimindeki bir talep için kullanıcı nın seçebilmek için kullanılabilir `CheckboxMultiSelect` `DropdownSingleSelect`seçenekleri `RadioSingleSelect`tanımlar( örneğin, bir , veya . Alternatif olarak, [Yerelleştirilmiş Koleksiyonlar](localization.md#localizedcollections) öğesiyle kullanılabilir seçenekleri tanımlayabilir ve yerelleştirebilirsiniz. Bir talep Numaralandırma koleksiyonundan bir **öğeyi** aramak için [GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) talepleri dönüştürmesini kullanın.
+**Enumeration** öğesi, Kullanıcı arabiriminde,, veya `CheckboxMultiSelect` `DropdownSingleSelect` `RadioSingleSelect`içindeki bir değer gibi bir talep için seçilecek kullanılabilir seçenekleri tanımlar. Alternatif olarak, mevcut seçenekleri [Localizedcollections](localization.md#localizedcollections) öğesiyle tanımlayabilir ve yerelleştirebilirsiniz. Bir talep **numaralandırma** koleksiyonundan bir öğe aramak Için [Getmappedvaluefromlocalizedcollection](string-transformations.md#getmappedvaluefromlocalizedcollection) talepler dönüşümünü kullanın.
 
-**Numaralandırma** öğesi aşağıdaki öznitelikleri içerir:
+**Enumeration** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Metin | Evet | Bu seçenek için kullanıcı arabiriminde kullanıcıya gösterilen görüntü dizesi. |
-|Değer | Evet | Bu seçeneğin seçilmesiile ilişkili talep değeri. |
-| SelectbyDefault | Hayır | UI'de bu seçeneğin varsayılan olarak seçilip seçilmemesi gerektiğini gösterir. Olası değerler: Doğru veya Yanlış. |
+| Metin | Yes | Bu seçenek için Kullanıcı arabirimindeki kullanıcıya gösterilen görüntüleme dizesi. |
+|Değer | Yes | Bu seçeneği belirleyerek ilişkili talep değeri. |
+| SelectByDefault | Hayır | Bu seçeneğin Kullanıcı arabiriminde varsayılan olarak seçilmesinin gerekip gerekmediğini gösterir. Olası değerler: true veya false. |
 
-Aşağıdaki örnekte, **city** varsayılan değer kümesi olan bir şehir `New York`açılır listesi talebi yapılandırılır:
+Aşağıdaki örnek, varsayılan değer **city** olarak `New York`ayarlanmış bir şehir açılan listesi talebi yapılandırır:
 
 ```XML
 <ClaimType Id="city">
@@ -203,20 +203,20 @@ Aşağıdaki örnekte, **city** varsayılan değer kümesi olan bir şehir `New 
 </ClaimType>
 ```
 
-Varsayılan değeri New York olarak ayarlanmış açılır şehir listesi:
+Yeni York olarak ayarlanan varsayılan değere sahip aşağı açılan şehir listesi:
 
-![Tarayıcıda işlenen ve varsayılan değeri gösteren açılır bırakma denetimi](./media/claimsschema/dropdownsingleselect.png)
+![Tarayıcıda işlenmiş ve varsayılan değeri gösteren açılan denetim denetimi](./media/claimsschema/dropdownsingleselect.png)
 
 ### <a name="pattern"></a>Desen
 
-**Desen** öğesi aşağıdaki öznitelikleri içerebilir:
+**Model** öğesi aşağıdaki öznitelikleri içerebilir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Düzenli İfade | Evet | Geçerli olabilmesi için bu tür iddiaların eşmesi gereken normal ifade. |
-| Helptext | Hayır | Normal ifade denetimi başarısız olursa kullanıcılar için bir hata iletisi. |
+| Cevap içerisinde RegularExpression | Yes | Bu tür taleplerin geçerli olması için aynı olması gereken normal ifade. |
+| HelpText | Hayır | Normal ifade denetimi başarısız olursa kullanıcılara yönelik bir hata iletisi. |
 
-Aşağıdaki örnek, normal ifade girişi doğrulama ve yardım metni ile bir **e-posta** talebi yapılandırır:
+Aşağıdaki örnek, normal ifade giriş doğrulaması ve yardım metni ile bir **e-posta** talebi yapılandırır:
 
 ```XML
 <ClaimType Id="email">
@@ -233,34 +233,34 @@ Aşağıdaki örnek, normal ifade girişi doğrulama ve yardım metni ile bir **
  </ClaimType>
 ```
 
-Kimlik Deneyimi Çerçevesi, e-posta biçimi giriş doğrulamasıyla e-posta adresi talebini işler:
+Kimlik deneyimi çerçevesi, e-posta adresi talebini e-posta biçiminde giriş doğrulamasına göre işler:
 
-![Regex kısıtlaması tarafından tetiklenen hata iletisi gösteren TextBox](./media/claimsschema/pattern.png)
+![Regex kısıtlaması tarafından tetiklenen hata iletisini gösteren TextBox](./media/claimsschema/pattern.png)
 
-### <a name="userinputtype"></a>UserInputType
+### <a name="userinputtype"></a>Userınputtype
 
-Azure AD B2C, talep türü için talep verilerini el ile girerken kullanılabilecek textbox, parola ve açılır bırakma listesi gibi çeşitli kullanıcı giriş türlerini destekler. Kullanıcıdan bilgi [topladığınızda, kendi kendine öne sürülen bir teknik profil](self-asserted-technical-profile.md) ve [görüntü denetimleri](display-controls.md)kullanarak **UserInputType'ı** belirtmeniz gerekir.
+Azure AD B2C, talep türü için talep verilerini el ile girerken kullanılabilecek bir TextBox, parola ve açılan liste gibi çeşitli kullanıcı giriş türlerini destekler. [Kendi kendine onaylanan bir teknik profil](self-asserted-technical-profile.md) ve [görüntüleme denetimleri](display-controls.md)kullanarak kullanıcıdan bilgi topladığınızda **userınputtype** belirtmelisiniz.
 
-**UserInputType** öğesi kullanılabilir kullanıcı giriş türleri:
+**Userınputtype** öğesi kullanılabilir kullanıcı giriş türleri:
 
-| UserInputType | Desteklenen Talep Türü | Açıklama |
+| Userınputtype | Desteklenen ClaimType | Açıklama |
 | --------- | -------- | ----------- |
-|Onay KutusuMultiSelect| `string` |Çok seçimli açılır kutu. Talep değeri, seçili değerlerin virgülde sınırlayıcı dizesinde temsil edilir. |
-|DateTimeDropdown | `date`, `dateTime` |Bir gün, ay ve yıl seçmek için açılır düşüşler. |
-|DropdownTekSeç |`string` |Tek seçim açılır kutusu. Talep değeri seçili değerdir.|
-|EmailKutusu | `string` |E-posta giriş alanı. |
-|Paragraf | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`|Metni yalnızca bir paragraf etiketinde gösteren bir alan. |
+|CheckboxMultiSelect| `string` |Çoklu seçim açılan kutusu. Talep değeri, seçilen değerlerin bir virgülle ayrılmış dizesinde temsil edilir. |
+|DateTimeDropdown | `date`, `dateTime` |Gün, ay ve yıl seçmek için açılan listeler. |
+|DropdownSingleSelect |`string` |Tek seçim açılan kutusu. Talep değeri seçili değerdir.|
+|EmailBox | `string` |E-posta girişi alanı. |
+|Paragraf | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`|Yalnızca bir paragraf etiketinde metin gösteren bir alan. |
 |Parola | `string` |Parola metin kutusu.|
-|RadioSingleSelect |`string` | Radyo düğmelerinin toplanması. Talep değeri seçili değerdir.|
-|Readonly | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Salt okunur metin kutusu. |
-|TextBox |`boolean`, `int`, `string` |Tek satırlık metin kutusu. |
+|RadioSingleSelect |`string` | Radyo düğmelerinin koleksiyonu. Talep değeri seçili değerdir.|
+|Özelliğinin | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Salt okunurdur metin kutusu. |
+|TextBox |`boolean`, `int`, `string` |Tek satırlı metin kutusu. |
 
 
 #### <a name="textbox"></a>TextBox
 
-**TextBox** kullanıcı giriş türü, tek satırlık bir metin kutusu sağlamak için kullanılır.
+**TextBox** Kullanıcı giriş türü, tek satırlık bir metin kutusu sağlamak için kullanılır.
 
-![Talep türünde belirtilen özellikleri gösteren TextBox](./media/claimsschema/textbox.png)
+![Talep türünde belirtilen özellikleri gösteren metin kutusu](./media/claimsschema/textbox.png)
 
 ```XML
 <ClaimType Id="displayName">
@@ -271,11 +271,11 @@ Azure AD B2C, talep türü için talep verilerini el ile girerken kullanılabile
 </ClaimType>
 ```
 
-#### <a name="emailbox"></a>EmailKutusu
+#### <a name="emailbox"></a>EmailBox
 
-**EmailBox** kullanıcı giriş türü temel bir e-posta giriş alanı sağlamak için kullanılır.
+**Emailbox** Kullanıcı giriş türü, temel bir e-posta girişi alanı sağlamak için kullanılır.
 
-![E-posta Kutusu talep türünde belirtilen özellikleri gösteren](./media/claimsschema/emailbox.png)
+![Talep türünde belirtilen özellikleri gösteren EmailBox](./media/claimsschema/emailbox.png)
 
 ```XML
 <ClaimType Id="email">
@@ -291,9 +291,9 @@ Azure AD B2C, talep türü için talep verilerini el ile girerken kullanılabile
 
 #### <a name="password"></a>Parola
 
-**Parola** kullanıcı girişi türü, kullanıcı tarafından girilen bir parolayı kaydetmek için kullanılır.
+**Parola** Kullanıcı giriş türü, Kullanıcı tarafından girilen bir parolayı kaydetmek için kullanılır.
 
-![Parolaile talep türünü kullanma](./media/claimsschema/password.png)
+![Talep türünü parolayla kullanma](./media/claimsschema/password.png)
 
 ```XML
 <ClaimType Id="password">
@@ -306,9 +306,9 @@ Azure AD B2C, talep türü için talep verilerini el ile girerken kullanılabile
 
 #### <a name="datetimedropdown"></a>DateTimeDropdown
 
-**DateTimeDropdown** kullanıcı girişi türü, bir gün, ay ve yıl seçmek için açılır bırakma kümesi sağlamak için kullanılır. Minimum ve maksimum tarih değerlerini denetlemek için Yüklemler ve Yüklemler öğelerini kullanabilirsiniz. Daha fazla bilgi için, [Yüklemler ve Yüklemler'in](predicates.md) **tarih aralığını yapılandır** ın bölümüne bakın.
+**Datetimeaçýlan** Kullanıcı giriş türü, bir gün, ay ve yıl seçmek üzere bir dizi açılır menü sağlamak için kullanılır. En düşük ve en yüksek tarih değerlerini denetlemek için, koşullar ve Predicatedoğrulamaları öğelerini kullanabilirsiniz. Daha fazla bilgi için, [koşullar ve Predicatedoðrulamaların](predicates.md) **Tarih aralığını yapılandırma** bölümüne bakın.
 
-![Datetimedropdown ile talep türünü kullanma](./media/claimsschema/datetimedropdown.png)
+![Datetimedropdown ile talep türü kullanma](./media/claimsschema/datetimedropdown.png)
 
 ```XML
 <ClaimType Id="dateOfBirth">
@@ -321,9 +321,9 @@ Azure AD B2C, talep türü için talep verilerini el ile girerken kullanılabile
 
 #### <a name="radiosingleselect"></a>RadioSingleSelect
 
-**RadioSingleSelect** kullanıcı giriş türü, kullanıcının bir seçenek seçmesine olanak tanıyan radyo düğmeleri koleksiyonunu sağlamak için kullanılır.
+**RadioSingleSelect** Kullanıcı girişi türü, kullanıcının bir seçenek seçmesini sağlayan radyo düğmelerinin bir koleksiyonunu sağlamak için kullanılır.
 
-![Radiodsingleselect ile talep türünü kullanma](./media/claimsschema/radiosingleselect.png)
+![Radiodsingleselect ile talep türü kullanma](./media/claimsschema/radiosingleselect.png)
 
 ```XML
 <ClaimType Id="color">
@@ -338,11 +338,11 @@ Azure AD B2C, talep türü için talep verilerini el ile girerken kullanılabile
 </ClaimType>
 ```
 
-#### <a name="dropdownsingleselect"></a>DropdownTekSeç
+#### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
-**DropdownSingleSelect** kullanıcı giriş türü, kullanıcının bir seçeneği seçmesini sağlayan açılır kutusağlamak için kullanılır.
+Kullanıcı **giriş türü, kullanıcının** bir seçenek seçmesini sağlayan bir açılan kutu sağlamak için kullanılır.
 
-![Dropdownsingleselect ile talep türünü kullanma](./media/claimsschema/dropdownsingleselect.png)
+![Talep türünü dropdownsingleselect ile kullanma](./media/claimsschema/dropdownsingleselect.png)
 
 ```XML
 <ClaimType Id="city">
@@ -357,11 +357,11 @@ Azure AD B2C, talep türü için talep verilerini el ile girerken kullanılabile
 </ClaimType>
 ```
 
-#### <a name="checkboxmultiselect"></a>Onay KutusuMultiSelect
+#### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
-**CheckboxMultiSelect** kullanıcı giriş türü, kullanıcının birden çok seçenek seçmesine olanak tanıyan bir onay kutusu koleksiyonu sağlamak için kullanılır.
+**Checkboxmultiselect** Kullanıcı giriş türü, kullanıcının birden çok seçenek seçmesine izin veren bir onay kutusu koleksiyonu sağlamak için kullanılır.
 
-![Onay kutusumultiselect ile talep türünü kullanma](./media/claimsschema/checkboxmultiselect.png)
+![Checkboxmultiselect ile talep türü kullanma](./media/claimsschema/checkboxmultiselect.png)
 
 ```XML
 <ClaimType Id="languages">
@@ -376,11 +376,11 @@ Azure AD B2C, talep türü için talep verilerini el ile girerken kullanılabile
 </ClaimType>
 ```
 
-#### <a name="readonly"></a>Readonly
+#### <a name="readonly"></a>Özelliğinin
 
-**Readonly** kullanıcı girişi türü, talep ve değeri görüntülemek için salt okunur bir alan sağlamak için kullanılır.
+**Salt okunur** Kullanıcı giriş türü, talebi ve değeri göstermek için salt okunur bir alan sağlamak üzere kullanılır.
 
-![Yalnızca readonly ile talep türünü kullanma](./media/claimsschema/readonly.png)
+![Salt okunur ile talep türü kullanma](./media/claimsschema/readonly.png)
 
 ```XML
 <ClaimType Id="membershipNumber">
@@ -394,9 +394,9 @@ Azure AD B2C, talep türü için talep verilerini el ile girerken kullanılabile
 
 #### <a name="paragraph"></a>Paragraf
 
-**Paragraf** kullanıcı giriş türü, yalnızca bir paragraf etiketinde metni gösteren bir alan sağlamak için kullanılır.  Örneğin, &lt;p&gt;&lt;metin&gt;/p . Kendi **Paragraph** kendine ileri `OutputClaim` teknik profil bir Paragraf kullanıcı giriş `Required` türü, öznitelik `false` (varsayılan) ayarlamak gerekir.
+**Paragraf** Kullanıcı giriş türü, yalnızca bir paragraf etiketinde metin gösteren bir alan sağlamak için kullanılır.  Örneğin, &lt;p&gt;metni&lt;/p.&gt; Kendi **Paragraph** kendine onaylanan teknik profilin `OutputClaim` paragraf Kullanıcı giriş türü `Required` özniteliği `false` ayarlanmalıdır (varsayılan).
 
-![Paragrafla talep türünü kullanma](./media/claimsschema/paragraph.png)
+![Paragrafla birlikte talep türü kullanma](./media/claimsschema/paragraph.png)
 
 ```XML
 <ClaimType Id="responseMsg">

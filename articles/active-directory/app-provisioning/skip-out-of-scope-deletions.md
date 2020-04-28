@@ -1,6 +1,6 @@
 ---
-title: Kapsam dışı kullanıcıların silinmesini atlayın | Microsoft Dokümanlar
-description: Kapsam dışı sağlama nın varsayılan davranışını nasıl geçersiz kısılamayı öğrenin.
+title: Kapsam dışı kullanıcıları silmeyi atlayın | Microsoft Docs
+description: Kapsam kullanıcılarının ön sağlamasını kaldırma işlemi için varsayılan davranışı nasıl geçersiz kılacağınızı öğrenin.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -16,53 +16,53 @@ ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1668c022a0f067a381ba09b397c7d38c99ad074
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77522458"
 ---
-# <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Kapsam dışına çıkan kullanıcı hesaplarının silinmesini atlama
+# <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Kapsam dışına çıkan Kullanıcı hesaplarını silmeyi atlayın
 
-Varsayılan olarak, Azure AD sağlama motoru yumuşak siler veya kapsam dışına çıkan kullanıcıları devre dışı kılabilir. Ancak, Ad Kullanıcı Gelen Sağlama Için İş Günü gibi belirli senaryolar için bu davranışı beklenen olmayabilir ve bu varsayılan davranışı geçersiz kılmak isteyebilirsiniz.  
+Varsayılan olarak, Azure AD sağlama altyapısı, kapsam dışına çıkan kullanıcıları geçici olarak siler veya devre dışı bırakır. Ancak, Workday ile AD Kullanıcı tarafından sağlanma gibi bazı senaryolar için bu davranış beklenmeyebilir ve bu varsayılan davranışı geçersiz kılmak isteyebilirsiniz.  
 
-Bu kılavuzda, kapsam dışına çıkan hesapların işlenmesini denetleyen ***SkipOutOfScopeDeletions*** bayrağını ayarlamak için Microsoft Graph API ve Microsoft Graph API gezgininin nasıl kullanılacağı açıklanmaktadır. 
-* ***SkipOutOfScopeDeletions*** 0 (yanlış) olarak ayarlanırsa, kapsam dışına çıkan hesaplar hedefte devre dışı bırakılır
-* ***SkipOutOfScopeDeletions*** 1 (true) olarak ayarlanırsa, kapsam dışına çıkan hesaplar hedefte devre dışı bırakılmaz Bu bayrak *Madde Uygulama* düzeyinde ayarlanır ve Grafik API kullanılarak yapılandırılabilir. 
+Bu kılavuzda, kapsam dışına çıkan hesapların işlenmesini denetleyen ***Skipoutofscopesilmeleri*** bayrağını ayarlamak IÇIN Microsoft Graph apı ve Microsoft Graph API Explorer 'ın nasıl kullanılacağı açıklanmaktadır. 
+* ***Skipoutofscopesilmeleri*** 0 (false) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı bırakılır
+* ***Skipoutofscopesilmeleri*** 1 (true) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı bırakılmayacak ve bu bayrak, *sağlama uygulama* düzeyinde ayarlanır ve Graph API kullanılarak yapılandırılabilir. 
 
-Bu *yapılandırma, İş Günü'nden Active Directory kullanıcı sağlama uygulamasına* yaygın olarak kullanıldığından, aşağıdaki adımlar İş Günü uygulamasının ekran görüntülerini içerir. Ancak bu, (ServiceNow, Salesforce, Dropbox, vb.) gibi **diğer tüm uygulamalarda** da kullanılabilir.
+Bu yapılandırma, *Kullanıcı sağlama uygulamasını Active Directory Için Workday* ile yaygın olarak kullanıldığından, aşağıdaki adımlarda Workday uygulamasının ekran görüntüleri yer alır. Ancak bu, (ServiceNow, Salesforce, Dropbox vb.) gibi **diğer uygulamalarla** de kullanılabilir.
 
-## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Adım 1: Uygulama Hizmeti Asıl Kimliğinizi (Object ID) alın
+## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>1. Adım: sağlama App Service asıl KIMLIĞINI alma (nesne KIMLIĞI)
 
-1. Azure [portalını](https://portal.azure.com)başlatın ve sağlama uygulamanızın Özellikler bölümüne gidin. Örneğin, *İş gününüzü AD Kullanıcı Sağlama uygulamasına* aktarmak istiyorsanız, söz konusu uygulamanın Özellikler bölümüne gidin. 
-1. Sağlama uygulamanızın Özellikler bölümünde, *Nesne Kimliği* alanıyla ilişkili GUID değerini kopyalayın. Bu değer, Uygulamanızın **ServicePrincipalId'i** olarak da adlandırılır ve Grafik Explorer işlemlerinde kullanılır.
+1. [Azure Portal](https://portal.azure.com)başlatın ve sağlama uygulamanızın Özellikler bölümüne gidin. Örneğin, *Workday 'NIZI ad Kullanıcı sağlama uygulama* eşlemesinde dışarı aktarmak istiyorsanız, uygulamanın Özellikler bölümüne gidin. 
+1. Sağlama uygulamanızın Özellikler bölümünde, *nesne kimliği* ALANıYLA ilişkili GUID değerini kopyalayın. Bu değer, uygulamanızın **Serviceprincipalıd** olarak da adlandırılır ve Graph Explorer işlemlerinde kullanılacaktır.
 
-   ![İş Günü Uygulama Hizmeti Ana Kimliği](./media/skip-out-of-scope-deletions/wd_export_01.png)
+   ![App Service ana iş günü KIMLIĞI](./media/skip-out-of-scope-deletions/wd_export_01.png)
 
-## <a name="step-2-sign-into-microsoft-graph-explorer"></a>Adım 2: Microsoft Graph Explorer'da oturum açma
+## <a name="step-2-sign-into-microsoft-graph-explorer"></a>2. Adım: Microsoft Graph Explorer 'da oturum açın
 
-1. [Microsoft Graph Explorer'ı](https://developer.microsoft.com/graph/graph-explorer) başlatın
-1. Azure AD Global Admin veya App Admin kimlik bilgilerini kullanarak "Microsoft ile Oturum Açma" düğmesine tıklayın ve oturum açın.
+1. [Microsoft Graph Gezginini](https://developer.microsoft.com/graph/graph-explorer) Başlat
+1. "Microsoft 'a oturum aç" düğmesine tıklayın ve Azure AD Genel yönetici veya uygulama Yöneticisi kimlik bilgilerini kullanarak oturum açın.
 
-    ![Grafik Oturum Açma](./media/skip-out-of-scope-deletions/wd_export_02.png)
+    ![Graph oturum açma](./media/skip-out-of-scope-deletions/wd_export_02.png)
 
-1. Başarılı oturum açma dan sonra, kullanıcı hesap ayrıntılarını sol bölmede görürsünüz.
+1. Başarılı oturum açma işlemi tamamlandıktan sonra, sol bölmedeki Kullanıcı hesabı ayrıntılarını görürsünüz.
 
-## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>Adım 3: Varolan uygulama kimlik bilgilerini ve bağlantı ayrıntılarını alın
+## <a name="step-3-get-existing-app-credentials-and-connectivity-details"></a>3. Adım: mevcut uygulama kimlik bilgilerini ve bağlantı ayrıntılarını alın
 
-Microsoft Graph Explorer'da, [servicePrincipalId] yerine adım [1'den](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)çıkarılan **ServicePrincipalId** ile aşağıdaki GET sorgusunu çalıştırın.
+Microsoft Graph Gezgini ' nde, [Adım 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)' den ayıklanan **serviceprincipalıd** Ile [serviceprincipalıd] yerine aşağıdaki Get sorgusunu çalıştırın.
 
 ```http
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
 
-   ![İş sorgusu alma](./media/skip-out-of-scope-deletions/skip-03.png)
+   ![İş sorgusunu al](./media/skip-out-of-scope-deletions/skip-03.png)
 
-Yanıt'ı bir metin dosyasına kopyalayın. Aşağıda gösterilen JSON metnine benzer ve dağıtımınıza özgü sarı renkte vurgulanır. Vurgulanan satırları sonuna yeşil olarak ekleyin ve mavi yle vurgulanan İş Günü bağlantı parolasını güncelleştirin. 
+Yanıtı bir metin dosyasına kopyalayın. Bu, dağıtımınız için özel sarı renkle vurgulanmış şekilde aşağıda gösterildiği gibi JSON metni gibi görünür. Yeşil renkle vurgulanmış satırları sonuna ekleyin ve Blue 'da vurgulanmış olan Workday bağlantı parolasını güncelleştirin. 
 
    ![İş yanıtı al](./media/skip-out-of-scope-deletions/skip-04.png)
 
-Burada haritalama eklemek için JSON bloğudur. 
+Eşlemeye eklenecek JSON bloğu aşağıda verilmiştir. 
 
 ```json
         {
@@ -71,33 +71,33 @@ Burada haritalama eklemek için JSON bloğudur.
         }
 ```
 
-## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>Adım 4: SkipOutOfScopeDeletions bayrağı ile sırları bitiş noktasını güncelleştirin
+## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>4. Adım: Skipoutofscopesilmeleri bayrağıyla gizli dizileri bitiş noktasını güncelleştirme
 
-Grafik Gezgini'nde, ***SkipOutOfScopeDeletions*** bayrağıyla sırları niçin güncelleştirmek için aşağıdaki komutu çalıştırın. 
+Grafik Gezgini 'nde, gizli dizi uç noktasını ***Skipoutofscopesilmeleri*** bayrağıyla güncelleştirmek için aşağıdaki komutu çalıştırın. 
 
-Aşağıdaki URL'de [servicePrincipalId] [adım 1'den](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)çıkarılan **ServicePrincipalId** ile değiştirin. 
+Aşağıdaki URL 'de, [Serviceprincipalıd] öğesini [Adım 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)' den ayıklanan **serviceprincipalıd** ile değiştirin. 
 
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
-Güncelleştirilmiş metni Adım 3'ten "İstek Gövdesi"ne kopyalayın ve üstbilgi "İçerik Türü"nü "İstek Başlıkları"nda "uygulama/json" olarak ayarlayın. 
+Adım 3 ' teki güncelleştirilmiş metni "istek gövdesine" kopyalayın ve "Istek üstbilgileri" içinde "Content-Type" başlığını "Application/JSON" olarak ayarlayın. 
 
-   ![PUT isteği](./media/skip-out-of-scope-deletions/skip-05.png)
+   ![İsteği koy](./media/skip-out-of-scope-deletions/skip-05.png)
 
-"Sorguyı Çalıştır"a tıklayın. 
+"Sorguyu Çalıştır" seçeneğine tıklayın. 
 
-Çıktıyı "Başarı – Durum Kodu 204" olarak almalısınız. 
+Çıktıyı "başarılı – durum kodu 204" olarak almalısınız. 
 
-   ![PUT yanıtı](./media/skip-out-of-scope-deletions/skip-06.png)
+   ![Yanıtı koy](./media/skip-out-of-scope-deletions/skip-06.png)
 
-## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>Adım 5: Kapsam dışında kullanıcıların devre dışı bırakılmadığını doğrulayın
+## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>5. Adım: kapsam dışı kullanıcıların devre dışı bırakıldığını doğrulama
 
-Belirli bir kullanıcıyı atlamak için kapsam kurallarınızı güncelleştirerek bu bayrak sonuçlarını beklenen davranışta sınayabilirsiniz. Aşağıdaki örnekte, yeni bir kapsam kuralı ekleyerek 21173 kimliğine sahip (daha önce kapsamda olan) çalışanı hariç tutarak: 
+Kapsam kurallarınızı belirli bir kullanıcıyı atlayacak şekilde güncelleştirerek, bu bayrak sonuçlarını beklenen davranışa göre test edebilirsiniz. Aşağıdaki örnekte, KIMLIĞI 21173 olan çalışanı (kapsam içinde daha önce olan) yeni bir kapsam kuralı ekleyerek dışlıyoruz: 
 
-   ![Kapsam örneği](./media/skip-out-of-scope-deletions/skip-07.png)
+   ![Kapsam oluşturma örneği](./media/skip-out-of-scope-deletions/skip-07.png)
 
-Bir sonraki sağlama döngüsünde, Azure AD sağlama hizmeti, kullanıcı 21173'ün kapsam dışına çıktığını ve SkipOutOfScopeDeletions özelliği etkinse, bu kullanıcıiçin eşitleme kuralı aşağıda gösterildiği gibi bir ileti görüntüler: 
+Bir sonraki sağlama döngüsünün Azure AD sağlama hizmeti, 21173 kullanıcısının kapsam dışına çıkış olduğunu ve Skipoutofscopesilmeleri özelliğinin etkin olduğunu belirler, bu durumda Kullanıcı için eşitleme kuralı aşağıda gösterildiği gibi bir ileti görüntüler: 
 
-   ![Kapsam örneği](./media/skip-out-of-scope-deletions/skip-08.png)
+   ![Kapsam oluşturma örneği](./media/skip-out-of-scope-deletions/skip-08.png)
 
 

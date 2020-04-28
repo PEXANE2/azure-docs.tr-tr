@@ -1,7 +1,7 @@
 ---
-title: Özel bir ilke yle müşteri kayıt sırasında e-posta doğrulamayı devre dışı
+title: Özel ilkeyle müşteri kaydı sırasında e-posta doğrulamayı devre dışı bırakma
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C'de müşteri kaydolma sırasında e-posta doğrulamayı nasıl devre dışı köğreneceğinizi öğrenin.
+description: Azure Active Directory B2C ' de müşteri kaydı sırasında e-posta doğrulamayı devre dışı bırakmayı öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,27 +12,27 @@ ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 13a5fa6a030d876d92651ca587e37fdc6a3ec600
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79136151"
 ---
-# <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de özel bir ilke kullanarak müşteri kaydolma sırasında e-posta doğrulamayı devre dışı
+# <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içinde özel bir ilke kullanarak müşteri kaydı sırasında e-posta doğrulamayı devre dışı bırakma
 
 [!INCLUDE [disable email verification intro](../../includes/active-directory-b2c-disable-email-verification.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-[Özel ilkelerle başlayın](custom-policy-get-started.md)adımlarını tamamlayın. Sosyal ve yerel hesaplarla kaydolmak ve oturum açmak için çalışan bir özel politikanız olmalıdır.
+[Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Kaydolma ve oturum açma için sosyal ve yerel hesaplarla çalışan bir özel ilkenize sahip olmanız gerekir.
 
-## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>Meta verileri kendi kendini öne süren teknik profile ekleme
+## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>Otomatik olarak onaylanan teknik profile meta verileri ekleyin
 
-**LocalAccountSignUpWithLogonEmail** teknik profili, kayıt akışı sırasında çağrılan [kendi kendine öne çıkan](self-asserted-technical-profile.md)bir teknik profildir. E-posta doğrulamasını devre dışı `EnforceEmailVerification` bırakarak meta verileri yanlış olarak ayarlayın. Uzantı dosyasındaki LocalAccountSignWithLogonEmail teknik profillerini geçersiz kılın. 
+**Localaccountsignupwithlogonemail** teknik profili, kaydolma akışı sırasında çağrılan, [kendiliğinden onaylanan](self-asserted-technical-profile.md)bir değerdir. E-posta doğrulamasını devre dışı bırakmak için `EnforceEmailVerification` meta verileri false olarak ayarlayın. Uzantı dosyasındaki LocalAccountSignUpWithLogonEmail teknik profillerini geçersiz kılın. 
 
-1. İlkinizin uzantılar dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
-1. Öğeyi `ClaimsProviders` bulun. Öğe yoksa, ekleyin.
-1. Öğeye aşağıdaki talep `ClaimsProviders` sağlayıcı ekleyin:
+1. İlkenizin uzantıları dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
+1. `ClaimsProviders` Öğesini bulun. Öğe yoksa, ekleyin.
+1. Aşağıdaki talep sağlayıcısını `ClaimsProviders` öğesine ekleyin:
 
 ```XML
 <ClaimsProvider>
@@ -47,17 +47,17 @@ ms.locfileid: "79136151"
 </ClaimsProvider>
 ```
 
-## <a name="test-the-custom-policy"></a>Özel ilkeyi test edin
+## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-2. Üst menüdeki **Dizin + abonelik** filtresini seçerek ve Azure AD kiracınızı içeren dizin seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
-3. Azure portalının sol üst köşesindeki **tüm hizmetleri** seçin ve ardından **Uygulama kayıtlarını**arayın ve seçin.
-4. **Kimlik Deneyimi Çerçevesi'ni**seçin.
-5. **Özel İlke Yükle'yi**seçin ve ardından değiştirdiğiniz iki ilke dosyasını yükleyin.
-2. Yüklediğiniz kaydolma veya kaydolma ilkesini seçin ve **Şimdi Çalıştır** düğmesini tıklatın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+2. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
+3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
+4. **Kimlik deneyimi çerçevesini**seçin.
+5. **Özel Ilkeyi karşıya yükle**' yi seçin ve ardından değiştirdiğiniz iki ilke dosyasını karşıya yükleyin.
+2. Karşıya yüklediğiniz kaydolma veya oturum açma ilkesini seçin ve **Şimdi Çalıştır** düğmesine tıklayın.
 3. Doğrulama olmadan bir e-posta adresi kullanarak kaydolabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- IEF referansında [kendini öne süren teknik profil](self-asserted-technical-profile.md) hakkında daha fazla bilgi edinin.
+- IEF başvurusunda [kendi kendine onaylanan teknik profil](self-asserted-technical-profile.md) hakkında daha fazla bilgi edinin.

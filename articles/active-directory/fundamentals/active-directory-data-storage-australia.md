@@ -1,6 +1,6 @@
 ---
-title: Avustralya ve Yeni Zelandamüşterileri için kimlik veri depolama - Azure AD
-description: Azure Active Directory'nin Avustralyalı müşterileri için kimlikle ilgili verileri nerede depoladığı hakkında bilgi edinin.
+title: Avustralya ve Yeni Zelanda müşterileri için kimlik verileri depolama-Azure AD
+description: Azure Active Directory, Avustralya müşterileri için kimlikle ilgili verileri nerede depoladığını öğrenin.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -13,29 +13,29 @@ ms.date: 12/13/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 850298719d5636e964b0c338d7a2a4cc9bb8aece
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77370301"
 ---
-# <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory'de Avustralya ve Yeni Zelanda müşterileri için kimlik veri depolama
+# <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory 'de Avustralya ve Yeni Zelanda müşterileri için kimlik verileri depolama
 
-Kimlik verileri, Azure AD tarafından kuruluşunuzun Office 365 ve Azure gibi bir Microsoft Çevrimiçi hizmetine abone olurken sağladığı adrese dayalı coğrafi bir konumda depolanır. Kimlik Müşteri Verilerinizin nerede depolandığı hakkında bilgi almak [için, verilerinizin nerede bulunduğu?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünü microsoft güven merkezinin kullanabilirsiniz.
+Kimlik verileri, Azure AD tarafından, Office 365 ve Azure gibi bir Microsoft Online hizmetine abone olurken kuruluşunuzun verdiği adrese bağlı olarak coğrafi bir konumda depolanır. Kimlik müşteri verilerinizin depolandığı yer hakkında bilgi için, Microsoft Güven Merkezi ' nin [veri konumunu nerede bulabilirsiniz?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) bölümünde bulabilirsiniz.
 
 > [!NOTE]
-> Azure AD ile tümleşen hizmetler ve uygulamalar Kimlik Müşteri Verilerine erişebilir. Kimlik Müşteri Verilerinin söz konusu hizmet ve uygulama tarafından nasıl işlenip işlenmediğini ve şirketinizin veri depolama gereksinimlerini karşılayıp karşılamadığını belirlemek için kullandığınız her hizmet ve uygulamayı değerlendirin. Microsoft hizmetlerinin verileri depoladığı konumlar hakkında daha fazla bilgi için Microsoft Güven Merkezi'nin Verileriniz nerede bulunur? bölümünü inceleyebilirsiniz.
+> Azure AD ile tümleştirilen hizmetler ve uygulamalar, kimlik müşteri verilerine erişebilir. Kimlik müşteri verilerinin, belirli bir hizmet ve uygulama tarafından nasıl işlendiğini ve şirketinizin veri depolama gereksinimlerini karşılayıp karşılamadığını öğrenmek için kullandığınız her hizmeti ve uygulamayı değerlendirin. Microsoft hizmetlerinin verileri depoladığı konumlar hakkında daha fazla bilgi için Microsoft Güven Merkezi'nin Verileriniz nerede bulunur? bölümünü inceleyebilirsiniz.
 
-Azure AD, Avustralya veya Yeni Zelanda'da adres sağlayan müşteriler için bu hizmetlerin kimlik verilerini Avustralya veri merkezlerinde saklar: 
-- Azure AD Dizin Yönetimi 
-- Kimlik doğrulaması
+Avustralya veya Yeni Zelanda 'da adres sağlayan müşteriler için Azure AD, Avustralya veri merkezleri içindeki bu hizmetler için kimlik verilerini tutar: 
+- Azure AD dizin yönetimi 
+- Kimlik Doğrulaması
 
-Diğer tüm Azure AD hizmetleri müşteri verilerini genel veri merkezlerinde depolar. Bir hizmetin veri merkezini bulmak için Azure [Etkin Dizini – Verileriniz nerede bulunur?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
+Diğer tüm Azure AD Hizmetleri, müşteri verilerini küresel veri merkezlerinde depolar. Bir hizmetin veri merkezini bulmak için bkz. [Azure Active Directory – verileriniz nerede bulunur?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure çok faktörlü kimlik doğrulama (MFA)
+## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure Multi-Factor Authentication (MFA)
 
-MFA, Kimlik Müşteri Verilerini küresel veri merkezlerinde depolar. Bulut tabanlı Azure MFA ve Azure MFA Server tarafından toplanan ve depolanan kullanıcı bilgileri hakkında daha fazla bilgi edinmek için [Azure Çok Faktörlü Kimlik Doğrulama kullanıcı veri koleksiyonuna](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency)bakın.
+MFA, kimlik müşteri verilerini küresel veri merkezlerinde depolar. Bulut tabanlı Azure MFA ve Azure MFA sunucusu tarafından toplanan ve depolanan kullanıcı bilgileri hakkında daha fazla bilgi edinmek için bkz. [Azure Multi-Factor Authentication Kullanıcı verileri koleksiyonu](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Yukarıda açıklanan özellikler ve işlevler hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Yukarıda açıklanan özellik ve işlevlerden herhangi biri hakkında daha fazla bilgi için şu makalelere bakın:
 - [Multi-Factor Authentication nedir?](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)

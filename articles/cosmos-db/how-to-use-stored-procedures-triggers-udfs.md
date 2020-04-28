@@ -1,34 +1,34 @@
 ---
-title: Azure Cosmos DB SDK'larında depolanmış yordamları, tetikleyicileri ve kullanıcı tanımlı işlevleri kaydedin ve kullanın
-description: Azure Cosmos DB SDK'ları kullanarak depolanan yordamları, tetikleyicileri ve kullanıcı tanımlı işlevleri nasıl kaydedebilirsiniz ve çağırın
+title: Azure Cosmos DB SDK 'larda saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlevleri kaydedin ve kullanın
+description: Azure Cosmos DB SDK 'Ları kullanarak saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlevleri nasıl kaydedeceğinizi ve çağıracağınızı öğrenin
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: mjbrown
 ms.openlocfilehash: 00740bc2255962089789682e3227ce414fd0ce64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77582509"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB'de saklı yordamları, tetikleyicileri ve kullanıcı tanımlı işlevleri kaydetme ve kullanma
 
-Azure Cosmos DB'de SQL API JavaScript dilinde yazılmış saklı yordamların, tetikleyicilerin ve kullanıcı tanımlı işlevlerin (UDF) kaydedilmesini ve çağrılmasını destekler. SQL API [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md)veya [Python](sql-api-sdk-python.md) SDKs'yi kaydolmak ve depolanan yordamları çağırmak için kullanabilirsiniz. Bir veya daha fazla depolanmış yordam, tetikleyici ve kullanıcı tanımlı işlevi tanımladıktan sonra, Veri Gezgini'ni kullanarak [bunları Azure portalında](https://portal.azure.com/) yükleyebilir ve görüntüleyebilirsiniz.
+Azure Cosmos DB'de SQL API JavaScript dilinde yazılmış saklı yordamların, tetikleyicilerin ve kullanıcı tanımlı işlevlerin (UDF) kaydedilmesini ve çağrılmasını destekler. Saklı yordamları kaydettirmek ve çağırmak için SQL API [.net](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node. js](sql-api-sdk-node.md)veya [Python](sql-api-sdk-python.md) SDK 'larını kullanabilirsiniz. Bir veya daha fazla saklı yordam, tetikleyici ve Kullanıcı tanımlı işlevleri tanımladıktan sonra, Veri Gezgini kullanarak bunları [Azure Portal](https://portal.azure.com/) yükleyebilir ve görüntüleyebilirsiniz.
 
-## <a name="how-to-run-stored-procedures"></a><a id="stored-procedures"></a>Depolanan yordamlar nasıl çalıştırılalır?
+## <a name="how-to-run-stored-procedures"></a><a id="stored-procedures"></a>Saklı yordamları çalıştırma
 
-Saklanan yordamlar JavaScript kullanılarak yazılır. Azure Cosmos kapsayıcısı içinde öğeler oluşturabilir, güncelleyebilir, okuyabilir, sorgulayabilir ve silebilir. Azure Cosmos DB'de depolanan yordamların nasıl yazılması hakkında daha fazla bilgi için Azure [Cosmos DB makalesinde depolanmış yordamları nasıl yazınız](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) bilgi sini öğrenin.
+Saklı yordamlar JavaScript kullanılarak yazılır. Azure Cosmos kapsayıcısı içinde öğeleri oluşturabilir, güncelleştirebilir, okuyabilir, sorgulayabilir ve silebilir. Azure Cosmos DB saklı yordamları yazma hakkında daha fazla bilgi için, bkz. [Azure Cosmos DB makalesinde saklı yordamlar yazma](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) .
 
-Aşağıdaki örnekler, Azure Cosmos DB SDK'larını kullanarak depolanan bir yordamı nasıl kaydedeceğimiz ve çağırılanın gösterilmektedir. Bu depolanan yordam için kaynak olarak bir belge `spCreateToDoItem.js` [oluştur'a](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) bakın .
+Aşağıdaki örneklerde, Azure Cosmos DB SDK 'Ları kullanılarak saklı yordamın nasıl kaydedileceği ve çağrılacağını gösterilmektedir. Bu saklı yordamın kaynağı olarak `spCreateToDoItem.js`kaydedildiği Için [bir belge oluşturma](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) bölümüne bakın.
 
 > [!NOTE]
-> Bölümlenmiş kapsayıcılar için, depolanan yordamı yürürken, istek seçeneklerinde bir bölüm anahtarı değeri sağlanmalıdır. Depolanan yordamlar her zaman bir bölüm anahtarına kapsamlıdır. Farklı bir bölüm anahtar değerine sahip öğeler depolanan yordam tarafından görünür olmayacaktır. Bu da tetikleyiciler için de uygulanır.
+> Bölümlenmiş kapsayıcılar için, saklı bir yordam yürütürken, istek seçeneklerinde bir bölüm anahtarı değeri belirtilmelidir. Saklı yordamlar her zaman bir bölüm anahtarına göre kapsamlandırılır. Farklı bir bölüm anahtarı değerine sahip öğeler, saklı yordama görünür olmayacaktır. Bu ayrıca tetikleyicilere de uygulanır.
 
-### <a name="stored-procedures---net-sdk-v2"></a>Saklanan prosedürler - .NET SDK V2
+### <a name="stored-procedures---net-sdk-v2"></a>Saklı yordamlar-.NET SDK v2
 
-Aşağıdaki örnekte,.NET SDK V2'yi kullanarak depolanan bir yordamın nasıl kaydedilen
+Aşağıdaki örnek, bir saklı yordamın .NET SDK v2 kullanılarak nasıl kaydedileceği gösterilmektedir:
 
 ```csharp
 string storedProcedureId = "spCreateToDoItem";
@@ -42,7 +42,7 @@ var response = await client.CreateStoredProcedureAsync(containerUri, newStoredPr
 StoredProcedure createdStoredProcedure = response.Resource;
 ```
 
-Aşağıdaki kod, .NET SDK V2 kullanarak depolanan bir yordamı nasıl çağırılanın gösterir:
+Aşağıdaki kod, bir saklı yordamın .NET SDK v2 kullanılarak nasıl çağrılacağını göstermektedir:
 
 ```csharp
 dynamic newItem = new
@@ -58,9 +58,9 @@ RequestOptions options = new RequestOptions { PartitionKey = new PartitionKey("P
 var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, newItem);
 ```
 
-### <a name="stored-procedures---net-sdk-v3"></a>Saklanan prosedürler - .NET SDK V3
+### <a name="stored-procedures---net-sdk-v3"></a>Saklı yordamlar-.NET SDK V3
 
-Aşağıdaki örnekte,.NET SDK V3'ü kullanarak depolanan bir yordamın nasıl kaydedilen
+Aşağıdaki örnek .NET SDK V3 kullanarak bir saklı yordamın nasıl kaydedileceği gösterilmektedir:
 
 ```csharp
 StoredProcedureResponse storedProcedureResponse = await client.GetContainer("database", "container").Scripts.CreateStoredProcedureAsync(new StoredProcedureProperties
@@ -70,7 +70,7 @@ StoredProcedureResponse storedProcedureResponse = await client.GetContainer("dat
 });
 ```
 
-Aşağıdaki kod, .NET SDK V3'ü kullanarak depolanan bir yordamın nasıl çağrıldığını gösterir:
+Aşağıdaki kod, .NET SDK V3 kullanarak bir saklı yordamın nasıl çağrılacağını göstermektedir:
 
 ```csharp
 dynamic[] newItems = new dynamic[]
@@ -86,9 +86,9 @@ dynamic[] newItems = new dynamic[]
 var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItems);
 ```
 
-### <a name="stored-procedures---java-sdk"></a>Saklanan prosedürler - Java SDK
+### <a name="stored-procedures---java-sdk"></a>Saklı yordamlar-Java SDK
 
-Aşağıdaki örnek, Java SDK'yı kullanarak depolanan bir yordamın nasıl kaydedildiğini gösterir:
+Aşağıdaki örnek, bir saklı yordamın Java SDK kullanarak nasıl kaydedileceği gösterilmektedir:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -102,7 +102,7 @@ StoredProcedure createdStoredProcedure = asyncClient.createStoredProcedure(conta
     .toBlocking().single().getResource();
 ```
 
-Aşağıdaki kod, Java SDK'yı kullanarak depolanan bir yordamın nasıl çağrıldığını gösterir:
+Aşağıdaki kod, bir saklı yordamın Java SDK kullanarak nasıl çağrılacağını göstermektedir:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -140,9 +140,9 @@ asyncClient.executeStoredProcedure(sprocLink, requestOptions, storedProcedureArg
 successfulCompletionLatch.await();
 ```
 
-### <a name="stored-procedures---javascript-sdk"></a>Saklanan prosedürler - JavaScript SDK
+### <a name="stored-procedures---javascript-sdk"></a>Saklı yordamlar-JavaScript SDK 'Sı
 
-Aşağıdaki örnek, JavaScript SDK'yı kullanarak depolanan bir yordamın nasıl kaydedildiğini gösterir
+Aşağıdaki örnek, bir saklı yordamın JavaScript SDK kullanılarak nasıl kaydedileceği gösterilmektedir
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -153,7 +153,7 @@ await container.scripts.storedProcedures.create({
 });
 ```
 
-Aşağıdaki kod, JavaScript SDK'yı kullanarak depolanan bir yordamın nasıl çağrıldığını gösterir:
+Aşağıdaki kod, JavaScript SDK kullanarak bir saklı yordamın nasıl çağrılacağını göstermektedir:
 
 ```javascript
 const newItem = [{
@@ -167,9 +167,9 @@ const sprocId = "spCreateToDoItem";
 const {body: result} = await container.scripts.storedProcedure(sprocId).execute(newItem, {partitionKey: newItem[0].category});
 ```
 
-### <a name="stored-procedures---python-sdk"></a>Depolanan yordamlar - Python SDK
+### <a name="stored-procedures---python-sdk"></a>Saklı yordamlar-Python SDK
 
-Aşağıdaki örnek, Python SDK'yı kullanarak depolanan bir yordamın nasıl kaydedildiğini gösterir
+Aşağıdaki örnek, bir saklı yordamın Python SDK kullanılarak nasıl kaydedileceği gösterilmektedir
 
 ```python
 with open('../js/spCreateToDoItem.js') as file:
@@ -182,7 +182,7 @@ sproc_definition = {
 sproc = client.CreateStoredProcedure(container_link, sproc_definition)
 ```
 
-Aşağıdaki kod Python SDK kullanarak depolanan bir yordamı nasıl çağırın gösterir
+Aşağıdaki kod, bir saklı yordamın Python SDK kullanılarak nasıl çağrılacağını gösterir
 
 ```python
 sproc_link = 'dbs/myDatabase/colls/myContainer/sprocs/spCreateToDoItem'
@@ -195,18 +195,18 @@ new_item = [{
 client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 ```
 
-## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>Ön tetikleyiciler çalıştırma
+## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>Ön Tetikleyiciler çalıştırma
 
-Aşağıdaki örnekler, Azure Cosmos DB SDK'ları kullanarak ön tetikleyiciyi nasıl kaydedip çağırılamayı gösterir. Bu ön [tetikleyicinin](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) kaynağı olarak `trgPreValidateToDoItemTimestamp.js`kaydedilir gibi Ön tetikleyici örneğine bakın.
+Aşağıdaki örneklerde, Azure Cosmos DB SDK 'larını kullanarak bir ön tetikleyiciyi kaydetme ve çağırma gösterilmektedir. Bu ön tetikleyicinin kaynağı olarak `trgPreValidateToDoItemTimestamp.js`kaydedildiği Için, [ön tetikleme örneğine](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) bakın.
 
-Yürütüldüğünde, Bir Liste nesnesinde tetikleyicinin adını belirterek `PreTriggerInclude` ve sonra geçirerek İstek Seçenekleri nesnesinde ön tetikleyiciler geçirilir.
+Yürütme sırasında, ön Tetikleyiciler RequestOptions nesnesine geçirilir `PreTriggerInclude` ve ardından bir liste nesnesi içinde tetikleyicinin adını geçirerek.
 
 > [!NOTE]
-> Tetikleyicinin adı Liste olarak geçirilir olsa bile, yine de işlem başına yalnızca bir tetikleyici çalıştırabilirsiniz.
+> Tetikleyicinin adı bir liste olarak geçirilse de, işlem başına yalnızca bir tetikleyici yürütüleyebilirsiniz.
 
-### <a name="pre-triggers---net-sdk-v2"></a>Ön tetikleyiciler - .NET SDK V2
+### <a name="pre-triggers---net-sdk-v2"></a>Ön Tetikleyiciler-.NET SDK v2
 
-Aşağıdaki kod, .NET SDK V2 kullanarak bir ön tetikleyicinin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod .NET SDK v2 kullanarak bir ön tetikleyiciyi nasıl kaydedeceğinizi göstermektedir:
 
 ```csharp
 string triggerId = "trgPreValidateToDoItemTimestamp";
@@ -221,7 +221,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-Aşağıdaki kod, .NET SDK V2 kullanarak ön tetikleyicinin nasıl çağrıldığını gösterir:
+Aşağıdaki kod .NET SDK v2 kullanarak bir ön tetikleyicinin nasıl çağrılacağını göstermektedir:
 
 ```csharp
 dynamic newItem = new
@@ -237,9 +237,9 @@ RequestOptions requestOptions = new RequestOptions { PreTriggerInclude = new Lis
 await client.CreateDocumentAsync(containerUri, newItem, requestOptions);
 ```
 
-### <a name="pre-triggers---net-sdk-v3"></a>Ön tetikleyiciler - .NET SDK V3
+### <a name="pre-triggers---net-sdk-v3"></a>Ön Tetikleyiciler-.NET SDK V3
 
-Aşağıdaki kod, .NET SDK V3 kullanarak bir ön tetikleyicinin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod .NET SDK V3 kullanarak bir ön tetikleyiciyi nasıl kaydedeceğinizi göstermektedir:
 
 ```csharp
 await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
@@ -251,7 +251,7 @@ await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(ne
 });
 ```
 
-Aşağıdaki kod, .NET SDK V3'ü kullanarak ön tetikleyicinin nasıl çağrıldığını gösterir:
+Aşağıdaki kod .NET SDK V3 kullanarak bir ön tetikleyicinin nasıl çağrılacağını göstermektedir:
 
 ```csharp
 dynamic newItem = new
@@ -265,9 +265,9 @@ dynamic newItem = new
 await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PreTriggers = new List<string> { "trgPreValidateToDoItemTimestamp" } });
 ```
 
-### <a name="pre-triggers---java-sdk"></a>Ön tetikleyiciler - Java SDK
+### <a name="pre-triggers---java-sdk"></a>Ön Tetikleyiciler-Java SDK
 
-Aşağıdaki kod, Java SDK'yı kullanarak bir ön tetikleyicinin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod, Java SDK kullanarak bir ön tetikleyiciyi nasıl kaydedeceğinizi göstermektedir:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -281,7 +281,7 @@ trigger.setTriggerType(TriggerType.Pre);
 Trigger createdTrigger = asyncClient.createTrigger(containerLink, trigger, new RequestOptions()).toBlocking().single().getResource();
 ```
 
-Aşağıdaki kod, Java SDK'yı kullanarak ön tetikleyicinin nasıl çağrıldığını gösterir:
+Aşağıdaki kod, Java SDK kullanarak bir ön tetikleyicinin nasıl çağrılacağını göstermektedir:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -298,9 +298,9 @@ requestOptions.setPreTriggerInclude(Arrays.asList("trgPreValidateToDoItemTimesta
 asyncClient.createDocument(containerLink, item, requestOptions, false).toBlocking();
 ```
 
-### <a name="pre-triggers---javascript-sdk"></a>Ön tetikleyiciler - JavaScript SDK
+### <a name="pre-triggers---javascript-sdk"></a>Ön Tetikleyiciler-JavaScript SDK 'Sı
 
-Aşağıdaki kod, JavaScript SDK'yı kullanarak ön tetikleyicinin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod, JavaScript SDK kullanarak bir ön tetikleyiciyi nasıl kaydedeceğinizi göstermektedir:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -313,7 +313,7 @@ await container.triggers.create({
 });
 ```
 
-Aşağıdaki kod, JavaScript SDK'yı kullanarak ön tetikleyicinin nasıl çağrıldığını gösterir:
+Aşağıdaki kod, JavaScript SDK kullanarak bir ön tetikleyicinin nasıl çağrılacağını göstermektedir:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -326,9 +326,9 @@ await container.items.create({
 }, {preTriggerInclude: [triggerId]});
 ```
 
-### <a name="pre-triggers---python-sdk"></a>Ön tetikleyiciler - Python SDK
+### <a name="pre-triggers---python-sdk"></a>Ön Tetikleyiciler-Python SDK
 
-Aşağıdaki kod Python SDK kullanarak bir ön tetikleyici nin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod, Python SDK kullanarak bir ön tetikleyiciyi nasıl kaydedeceğinizi göstermektedir:
 
 ```python
 with open('../js/trgPreValidateToDoItemTimestamp.js') as file:
@@ -343,7 +343,7 @@ trigger_definition = {
 trigger = client.CreateTrigger(container_link, trigger_definition)
 ```
 
-Aşağıdaki kod Python SDK kullanarak bir ön tetikleyici nasıl çağırılanın gösterir:
+Aşağıdaki kod, Python SDK kullanarak bir ön tetikleyicinin nasıl çağrılacağını göstermektedir:
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
@@ -353,13 +353,13 @@ client.CreateItem(container_link, item, {
                   'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
 ```
 
-## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>Tetikleyici sonrası çalıştırma
+## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>Tetikleyicileri çalıştırma
 
-Aşağıdaki örnekler, Azure Cosmos DB SDK'larını kullanarak bir tetikleyicinin nasıl kaydedilen olduğunu gösterir. Bu post-trigger için kaynak olarak `trgPostUpdateMetadata.js` [Post-tetikleyici örneğine](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) bakın .
+Aşağıdaki örneklerde, Azure Cosmos DB SDK 'Ları kullanılarak tetikleyiciden nasıl kaydedileceği gösterilmektedir. Bu tetikleyicinin kaynak olarak `trgPostUpdateMetadata.js`kaydedildiği, [tetikleyici sonrası örneğine](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) bakın.
 
-### <a name="post-triggers---net-sdk-v2"></a>Tetikleyicisonrası - .NET SDK V2
+### <a name="post-triggers---net-sdk-v2"></a>Tetikleyiciler sonrası-.NET SDK v2
 
-Aşağıdaki kod, .NET SDK V2 kullanarak bir post-tetikleyicinin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod .NET SDK v2 kullanarak bir tetikleyiciyi nasıl kaydedeceğinizi göstermektedir:
 
 ```csharp
 string triggerId = "trgPostUpdateMetadata";
@@ -374,7 +374,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-Aşağıdaki kod, .NET SDK V2'yi kullanarak bir post-tetikleyicinin nasıl çağrıldığını gösterir:
+Aşağıdaki kod .NET SDK v2 kullanarak tetikleyiciden nasıl çağrılacağını göstermektedir:
 
 ```csharp
 var newItem = { 
@@ -388,9 +388,9 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.createDocumentAsync(containerUri, newItem, options);
 ```
 
-### <a name="post-triggers---net-sdk-v3"></a>Tetikleyicisonrası - .NET SDK V3
+### <a name="post-triggers---net-sdk-v3"></a>Tetikleyiciler sonrası-.NET SDK V3
 
-Aşağıdaki kod, .NET SDK V3 kullanarak bir post-tetikleyicinin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod .NET SDK V3 kullanarak bir tetikleyiciyi nasıl kaydedeceğinizi göstermektedir:
 
 ```csharp
 await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
@@ -402,7 +402,7 @@ await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(ne
 });
 ```
 
-Aşağıdaki kod, .NET SDK V3'ü kullanarak bir post-tetikleyicinin nasıl çağrıldığını gösterir:
+Aşağıdaki kod .NET SDK V3 kullanarak bir tetikleyicisinin nasıl çağrılacağını göstermektedir:
 
 ```csharp
 var newItem = { 
@@ -414,9 +414,9 @@ var newItem = {
 await client.GetContainer("database", "container").CreateItemAsync(newItem, null, new ItemRequestOptions { PostTriggers = new List<string> { "trgPostUpdateMetadata" } });
 ```
 
-### <a name="post-triggers---java-sdk"></a>Tetikleyicisonrası - Java SDK
+### <a name="post-triggers---java-sdk"></a>Tetikleyiciler sonrası-Java SDK
 
-Aşağıdaki kod, Java SDK'yı kullanarak bir tetikleyicinin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod, Java SDK 'sını kullanarak bir tetikleyiciyi nasıl kaydedeceğinizi göstermektedir:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -429,7 +429,7 @@ trigger.setTriggerType(TriggerType.Post);
 Trigger createdTrigger = asyncClient.createTrigger(containerLink, trigger, new RequestOptions()).toBlocking().single().getResource();
 ```
 
-Aşağıdaki kod, Java SDK'yı kullanarak bir tetikleyicinin nasıl çağırılabildiğini gösterir:
+Aşağıdaki kod, Java SDK kullanarak bir tetikleyicisinin nasıl çağrılacağını göstermektedir:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -445,9 +445,9 @@ requestOptions.setPostTriggerInclude(Arrays.asList("trgPostUpdateMetadata"));
 asyncClient.createDocument(containerLink, item, requestOptions, false).toBlocking();
 ```
 
-### <a name="post-triggers---javascript-sdk"></a>Tetikleyicisonrası - JavaScript SDK
+### <a name="post-triggers---javascript-sdk"></a>Tetikleyiciler-son-JavaScript SDK
 
-Aşağıdaki kod, JavaScript SDK'yı kullanarak bir tetikleyicinin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod, JavaScript SDK kullanarak bir tetikleyicisinin nasıl kaydedileceği gösterilmektedir:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -460,7 +460,7 @@ await container.triggers.create({
 });
 ```
 
-Aşağıdaki kod, JavaScript SDK'yı kullanarak nasıl post-tetikleyici çağırılanın gösterir:
+Aşağıdaki kod, JavaScript SDK kullanarak bir tetikleyicisinin nasıl çağrılacağını göstermektedir:
 
 ```javascript
 const item = {
@@ -473,9 +473,9 @@ const triggerId = "trgPostUpdateMetadata";
 await container.items.create(item, {postTriggerInclude: [triggerId]});
 ```
 
-### <a name="post-triggers---python-sdk"></a>Tetikleyicisonrası - Python SDK
+### <a name="post-triggers---python-sdk"></a>Tetikleyiciler-Python SDK
 
-Aşağıdaki kod, Python SDK'yı kullanarak bir post-tetikleyicinin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod, Python SDK kullanarak bir tetikleyiciyi nasıl kaydedeceğinizi göstermektedir:
 
 ```python
 with open('../js/trgPostUpdateMetadata.js') as file:
@@ -490,7 +490,7 @@ trigger_definition = {
 trigger = client.CreateTrigger(container_link, trigger_definition)
 ```
 
-Aşağıdaki kod, Python SDK'yı kullanarak nasıl post-tetikleyici çağırılanın gösterir:
+Aşağıdaki kod, Python SDK kullanarak bir tetikleyicisinin nasıl çağrılacağını göstermektedir:
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
@@ -502,11 +502,11 @@ client.CreateItem(container_link, item, {
 
 ## <a name="how-to-work-with-user-defined-functions"></a><a id="udfs"></a>Kullanıcı tanımlı işlevlerle çalışma
 
-Aşağıdaki örnekler, Azure Cosmos DB SDK'larını kullanarak kullanıcı tarafından tanımlanan bir işlevin nasıl kaydedilebildiğini gösterir. Bu tetikleyici sonrası kaynağı olarak `udfTax.js`kaydedilir olarak bu Kullanıcı [tanımlı işlev örneğine](how-to-write-stored-procedures-triggers-udfs.md#udfs) bakın.
+Aşağıdaki örneklerde, Azure Cosmos DB SDK 'Ları kullanılarak Kullanıcı tanımlı bir işlevin nasıl kaydedileceği gösterilmektedir. Bu tetikleyicinin kaynağı olarak `udfTax.js`kaydedildiği Için bu [Kullanıcı tanımlı işlev örneğine](how-to-write-stored-procedures-triggers-udfs.md#udfs) başvurun.
 
-### <a name="user-defined-functions---net-sdk-v2"></a>Kullanıcı tanımlı fonksiyonlar - .NET SDK V2
+### <a name="user-defined-functions---net-sdk-v2"></a>Kullanıcı tanımlı işlevler-.NET SDK v2
 
-Aşağıdaki kod, .NET SDK V2'yi kullanarak kullanıcı tanımlı bir işlevin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod, .NET SDK v2 kullanılarak Kullanıcı tanımlı bir işlevin nasıl kaydedileceği gösterilmektedir:
 
 ```csharp
 string udfId = "Tax";
@@ -521,7 +521,7 @@ await client.CreateUserDefinedFunctionAsync(containerUri, udfTax);
 
 ```
 
-Aşağıdaki kod, .NET SDK V2'yi kullanarak kullanıcı tanımlı bir işlevin nasıl çağrıldığını gösterir:
+Aşağıdaki kod, .NET SDK v2 kullanılarak Kullanıcı tanımlı bir işlevin nasıl çağrılacağını göstermektedir:
 
 ```csharp
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
@@ -533,9 +533,9 @@ foreach (var result in results)
 }
 ```
 
-### <a name="user-defined-functions---net-sdk-v3"></a>Kullanıcı tanımlı fonksiyonlar - .NET SDK V3
+### <a name="user-defined-functions---net-sdk-v3"></a>Kullanıcı tanımlı işlevler-.NET SDK V3
 
-Aşağıdaki kod, .NET SDK V3'ü kullanarak kullanıcı tanımlı bir işlevin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod, .NET SDK V3 kullanılarak Kullanıcı tanımlı bir işlevin nasıl kaydedileceği gösterilmektedir:
 
 ```csharp
 await client.GetContainer("database", "container").Scripts.CreateUserDefinedFunctionAsync(new UserDefinedFunctionProperties
@@ -545,7 +545,7 @@ await client.GetContainer("database", "container").Scripts.CreateUserDefinedFunc
 });
 ```
 
-Aşağıdaki kod, .NET SDK V3'ü kullanarak kullanıcı tanımlı bir işlevin nasıl çağrıldığını gösterir:
+Aşağıdaki kod, .NET SDK V3 kullanılarak Kullanıcı tanımlı bir işlevin nasıl çağrılacağını göstermektedir:
 
 ```csharp
 var iterator = client.GetContainer("database", "container").GetItemQueryIterator<dynamic>("SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000");
@@ -559,9 +559,9 @@ while (iterator.HasMoreResults)
 }
 ```
 
-### <a name="user-defined-functions---java-sdk"></a>Kullanıcı tanımlı fonksiyonlar - Java SDK
+### <a name="user-defined-functions---java-sdk"></a>Kullanıcı tanımlı işlevler-Java SDK
 
-Aşağıdaki kod, Java SDK'yı kullanarak kullanıcı tanımlı bir işlevin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod, Java SDK kullanılarak Kullanıcı tanımlı bir işlevin nasıl kaydedileceği gösterilmektedir:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -573,7 +573,7 @@ udf.setBody(new String(Files.readAllBytes(Paths.get(String.format("..\\js\\%s.js
 UserDefinedFunction createdUDF = client.createUserDefinedFunction(containerLink, udf, new RequestOptions()).toBlocking().single().getResource();
 ```
 
-Aşağıdaki kod, Java SDK'yı kullanarak kullanıcı tanımlı bir işlevin nasıl çağrıldığını gösterir:
+Aşağıdaki kod, Java SDK kullanılarak Kullanıcı tanımlı bir işlevin nasıl çağrılacağını göstermektedir:
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
@@ -597,9 +597,9 @@ queryObservable.subscribe(
 completionLatch.await();
 ```
 
-### <a name="user-defined-functions---javascript-sdk"></a>Kullanıcı tanımlı fonksiyonlar - JavaScript SDK
+### <a name="user-defined-functions---javascript-sdk"></a>Kullanıcı tanımlı işlevler-JavaScript SDK
 
-Aşağıdaki kod, JavaScript SDK'yı kullanarak kullanıcı tanımlı bir işlevin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod, JavaScript SDK kullanılarak Kullanıcı tanımlı bir işlevin nasıl kaydedileceği gösterilmektedir:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -609,7 +609,7 @@ await container.userDefinedFunctions.create({
     body: require(`../js/${udfId}`)
 ```
 
-Aşağıdaki kod, JavaScript SDK'yı kullanarak kullanıcı tanımlı bir işlevin nasıl çağrıldığını gösterir:
+Aşağıdaki kod, JavaScript SDK kullanılarak Kullanıcı tanımlı bir işlevin nasıl çağrılacağını göstermektedir:
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
@@ -617,9 +617,9 @@ const sql = "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000";
 const {result} = await container.items.query(sql).toArray();
 ```
 
-### <a name="user-defined-functions---python-sdk"></a>Kullanıcı tanımlı fonksiyonlar - Python SDK
+### <a name="user-defined-functions---python-sdk"></a>Kullanıcı tanımlı işlevler-Python SDK
 
-Aşağıdaki kod, Python SDK'yı kullanarak kullanıcı tanımlı bir işlevin nasıl kaydedildiğini gösterir:
+Aşağıdaki kod, Python SDK kullanılarak Kullanıcı tanımlı bir işlevin nasıl kaydedileceği gösterilmektedir:
 
 ```python
 with open('../js/udfTax.js') as file:
@@ -632,7 +632,7 @@ udf_definition = {
 udf = client.CreateUserDefinedFunction(container_link, udf_definition)
 ```
 
-Aşağıdaki kod, Python SDK'yı kullanarak kullanıcı tanımlı bir işlevin nasıl çağrıldığını gösterir:
+Aşağıdaki kod, Python SDK kullanılarak Kullanıcı tanımlı bir işlevin nasıl çağrılacağını göstermektedir:
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
@@ -642,9 +642,9 @@ results = list(client.QueryItems(
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Cosmos DB'de depolanmış yordamları, tetikleyicileri ve kullanıcı tanımlı işlevleri nasıl yazkullanılacağını veya nasıl kullanılacağını öğrenin:
+Azure Cosmos DB saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlevleri yazma veya kullanma hakkında daha fazla bilgi edinin:
 
-- [Azure Cosmos DB'de Azure Cosmos DB depolanan yordamlar, tetikleyiciler ve kullanıcı tanımlı işlevlerle çalışma](stored-procedures-triggers-udfs.md)
-- [Azure Cosmos DB'de JavaScript dili tümleşik sorgu API'si ile çalışma](javascript-query-api.md)
-- [Azure Cosmos DB'de depolanan yordamlar, tetikleyiciler ve kullanıcı tanımlı işlevler nasıl yazılır?](how-to-write-stored-procedures-triggers-udfs.md)
-- [Azure Cosmos DB'de Javascript Query API kullanarak depolanan yordamlar ve tetikleyiciler nasıl yazılır?](how-to-write-javascript-query-api.md)
+- [Azure Cosmos DB içinde Azure Cosmos DB saklı yordamlar, Tetikleyiciler ve Kullanıcı tanımlı işlevlerle çalışma](stored-procedures-triggers-udfs.md)
+- [Azure Cosmos DB 'de JavaScript Dil tümleşik sorgu API 'SI ile çalışma](javascript-query-api.md)
+- [Saklı yordamları, Tetikleyicileri ve Kullanıcı tanımlı işlevleri Azure Cosmos DB yazma](how-to-write-stored-procedures-triggers-udfs.md)
+- [Azure Cosmos DB içinde JavaScript sorgu API 'sini kullanarak saklı yordamları ve Tetikleyicileri yazma](how-to-write-javascript-query-api.md)

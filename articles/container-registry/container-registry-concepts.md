@@ -1,89 +1,89 @@
 ---
-title: Görüntüler & depolar hakkında
-description: Azure kapsayıcı kayıt defterleri, depolar ve kapsayıcı resimlerinin temel kavramlarına giriş.
+title: '& görüntüleri hakkında'
+description: Azure Container kayıt defterleri, depolar ve kapsayıcı görüntülerinin temel kavramlarına giriş.
 ms.topic: article
 ms.date: 09/10/2019
 ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247065"
 ---
 # <a name="about-registries-repositories-and-images"></a>Kayıt defterleri, depolar ve görüntüler hakkında
 
-Bu makalede, konteyner kayıt defterleri, depolar ve kapsayıcı görüntüleri ve ilgili yapılar temel kavramları tanıtışlar. 
+Bu makalede, kapsayıcı kayıt defterleri, depolar ve kapsayıcı görüntülerinin ve ilgili yapıtların temel kavramları tanıtılmaktadır. 
 
 ## <a name="registry"></a>Kayıt Defteri
 
-Konteyner *kayıt defteri,* kapsayıcı görüntülerini depolayan ve dağıtan bir hizmettir. Docker Hub, açık kaynak topluluğunu destekleyen ve genel bir resim kataloğu olarak hizmet veren genel bir konteyner kayıt defteridir. Azure Konteyner Kayıt Defteri, kullanıcılara, ağ kapatma dağıtımları, sanal ağ ve [güvenlik duvarı yapılandırması,](container-registry-vnet.md)etiket [kilitleme](container-registry-image-lock.md)ve diğer birçok gelişmiş özellik için küresel dağıtımı ve güvenilirliği destekleyen tümleşik kimlik doğrulama, [coğrafi çoğaltma](container-registry-geo-replication.md) ile görüntülerini doğrudan kontrol altına almalarını sağlar. 
+Kapsayıcı *kayıt defteri* , kapsayıcı görüntülerini depolayan ve dağıtan bir hizmettir. Docker Hub, açık kaynak topluluğu destekleyen ve görüntülerin genel kataloğu olarak hizmet veren ortak bir kapsayıcı kayıt defteridir. Azure Container Registry, kullanıcılara, tümleşik kimlik doğrulama, [coğrafi çoğaltma](container-registry-geo-replication.md) , ağ kapatma dağıtımları, [sanal ağ ve güvenlik duvarı yapılandırması](container-registry-vnet.md), [etiket kilitleme](container-registry-image-lock.md)ve diğer birçok gelişmiş özellik için genel dağıtım ve güvenilirlik desteği sağlar. 
 
-Azure Kapsayıcı Kayıt Defteri, Docker kapsayıcı resimlerine ek olarak, Open Container Initiative (OCI) görüntü biçimleri de dahil olmak üzere ilgili [içerik yapılarını](container-registry-image-formats.md) destekler.
+Docker kapsayıcı görüntülerine ek olarak Azure Container Registry, açık kapsayıcı girişimi (OCı) görüntü biçimleri dahil ilgili [içerik yapılarını](container-registry-image-formats.md) destekler.
 
-## <a name="content-addressable-elements-of-an-artifact"></a>Bir yapının içerik adreslenebilir öğeleri
+## <a name="content-addressable-elements-of-an-artifact"></a>Yapıtın içerik adreslenebilir öğeleri
 
-Azure kapsayıcı kayıt defterindeki bir yapının adresi aşağıdaki öğeleri içerir. 
+Bir Azure Container Registry 'deki yapıt adresi aşağıdaki öğeleri içerir. 
 
 `[loginUrl]/[namespace]/[artifact:][tag]`
 
-* **loginUrl** - kayıt sahibinin tam nitelikli adı. Azure kapsayıcı kayıt defterindeki kayıt sahibi, *myregistry*.azurecr.io (tümü küçük harf) biçimindedir. Yapılarını bir Azure kapsayıcı kayıt defterine çekmek veya itmek için Docker veya diğer istemci araçlarını kullanırken giriş Url'sini belirtmeniz gerekir. 
-* **ad alanı** - İlgili görüntülerin veya yapıtların slash-sınırlı mantıksal gruplandırma - örneğin, bir çalışma grubu veya uygulama için
-* **artefakt** - Belirli bir resim veya artifakı için bir deponun adı
-* **etiket** - Bir depoda saklanan bir görüntünün veya yapının belirli bir sürümü
+* **loginUrl** -kayıt defteri konağının tam adı. Azure Container Registry içindeki kayıt defteri Konağı *myregistry*. azurecr.io biçimindedir (tümü küçük harfle). Bir Azure Container Registry 'ye yapıt çekmek veya göndermek için Docker veya diğer istemci araçlarını kullanırken loginUrl 'sini belirtmeniz gerekir. 
+* **ad alanı** eğik çizgili-ilişkili görüntülerin veya yapıtların mantıksal gruplandırması-Örneğin, bir çalışma grubu veya uygulama için
+* **yapıt** -belirli bir görüntü veya yapıt için bir deponun adı
+* **etiket** -bir depoda depolanan bir görüntünün veya yapıtın belirli bir sürümü
 
 
-Örneğin, Azure kapsayıcı kayıt defterindeki bir resmin tam adı aşağıdaki gibi görünebilir:
+Örneğin, bir Azure Container Registry 'deki bir görüntünün tam adı şöyle görünebilir:
 
 *myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2*
 
-Bu öğeler hakkında ayrıntılı bilgi için aşağıdaki bölümlere bakın.
+Bu öğeler hakkındaki ayrıntılar için aşağıdaki bölümlere bakın.
 
 ## <a name="repository-name"></a>Depo adı
 
-Konteyner *kayıtları, depoları,* kapsayıcı görüntülerinin toplarını veya aynı ada sahip diğer yapıları yönetir, ancak farklı etiketleri yönetir. Örneğin, aşağıdaki üç resim "acr-helloworld" deposundadır:
+Kapsayıcı kayıt defterleri, *depoları*, kapsayıcı görüntülerinin koleksiyonlarını veya aynı ada sahip diğer yapıtları, ancak farklı etiketleri yönetir. Örneğin, aşağıdaki üç görüntü "ACR-HelloWorld" deposunda bulunur:
 
 
-- *acr-helloworld:en son*
-- *acr-helloworld:v1*
-- *acr-helloworld:v2*
+- *ACR-HelloWorld: en son*
+- *ACR-HelloWorld: v1*
+- *ACR-HelloWorld: v2*
 
-Depo adları [ad boşluklarını](container-registry-best-practices.md#repository-namespaces)da içerebilir. Ad alanları, görüntüleri ileri eğik çizgi-sınırlandırılmış depo adlarını kullanarak gruplandırmanıza olanak sağlar, örneğin:
+Depo adlarında [ad alanları](container-registry-best-practices.md#repository-namespaces)da bulunabilir. Ad alanları, eğik çizgi ile ayrılmış depo adlarını kullanarak resimleri gruplandırmalarınıza izin verir, örneğin:
 
-- *pazarlama/kampanya10-18/web:v2*
-- *pazarlama/kampanya10-18/api:v3*
-- *pazarlama/kampanya10-18/email-gönderen:v2*
-- *ürün-iade/web-gönderim:20180604*
-- *ürün-iade/miras entegratörü:20180715*
+- *Pazarlama/campaign10-18/Web: v2*
+- *Pazarlama/campaign10-18/API: v3*
+- *Pazarlama/campaign10-18/email-gönderici: v2*
+- *Ürün-döndürür/Web-gönderim: 20180604*
+- *Ürün-döndürür/eski-tümleştirici: 20180715*
 
 ## <a name="image"></a>Görüntü
 
-Bir kapsayıcı görüntüsü veya kayıt defteri içindeki diğer yapı, bir veya daha fazla etiketle ilişkilidir, bir veya daha fazla katmanı vardır ve bir manifesto tarafından tanımlanır. Bu bileşenlerin birbiriyle nasıl ilişkili olduğunu anlamak, kayıt defterinizi etkili bir şekilde yönetmenize yardımcı olabilir.
+Bir kayıt defteri içindeki bir kapsayıcı görüntüsü veya diğer yapıtlar, bir veya daha fazla katmana sahiptir ve bir bildirim tarafından tanımlanır. Bu bileşenlerin birbirleriyle ilişkisini anlamak, kayıt defterinizi etkili bir şekilde yönetmenize yardımcı olabilir.
 
 ### <a name="tag"></a>Etiket
 
-Bir görüntünün veya başka bir yapının *etiketi,* onun sürümünü belirtir. Depo içindeki tek bir yapıya bir veya birden çok etiket atanabilir ve "etiketlenmemiş" de olabilir. Diğer bir deyişle, görüntünün verileri (katmanları) kayıt defterinde kalırken, görüntüdeki tüm etiketleri silebilirsiniz.
+Bir görüntünün veya diğer yapıtın *etiketi* , sürümünü belirtir. Bir depodaki tek bir yapıya bir veya daha fazla etiket atanabilir ve ayrıca "etiketsiz" olabilir. Diğer bir deyişle, görüntünün verileri (katmanları) kayıt defterinde kalacağından, bir görüntüdeki tüm etiketleri silebilirsiniz.
 
-Depo (veya depo ve ad alanı) artı bir etiket görüntünün adını tanımlar. İtme veya çekme işleminde adını belirterek görüntüyü itebilir ve çekebilirsiniz.
+Depo (veya depo ve ad alanı) ve bir etiket bir görüntünün adını tanımlar. Anında iletme veya çekme işleminde adını belirterek bir görüntüyü gönderebilir ve çekebilirsiniz.
 
-Kapsayıcı görüntülerini nasıl etiketlediğiniz, bunları geliştirmek veya dağıtmak için senaryolarınız tarafından yönlendirilir. Örneğin, temel resimlerinizi korumak için kararlı etiketler ve görüntüleri dağıtmak için benzersiz etiketler önerilir. Daha fazla bilgi [için, kapsayıcı görüntülerini etiketleme ve sürüm önerilerine](container-registry-image-tag-version.md)bakın.
+Kapsayıcı görüntülerini etiketleyerek, bunları geliştirmek veya dağıtmak için senaryolarınız tarafından nasıl kılavuzluk edilir. Örneğin, kararlı Etiketler temel görüntülerinizi sürdürmek için, görüntü dağıtmak için de benzersiz Etiketler önerilir. Daha fazla bilgi için bkz. [kapsayıcı görüntülerini etiketleme ve sürüm oluşturma önerileri](container-registry-image-tag-version.md).
 
 ### <a name="layer"></a>Katman
 
-Kapsayıcı görüntüler, her biri Dockerfile'da görüntüyü tanımlayan bir satıra karşılık gelen bir veya daha fazla *katmandan*oluşur. Kayıt defterindeki görüntüler ortak katmanları paylaşarak depolama verimliliğini artırır. Örneğin, farklı depolarda bulunan birkaç resim aynı Alp Linux taban katmanını paylaşabilir, ancak bu katmanın yalnızca bir kopyası kayıt defterinde depolanır.
+Kapsayıcı görüntüleri, her biri görüntüyü tanımlayan Dockerfile dosyasında bir satıra karşılık gelen bir veya daha fazla *katmandan*oluşur. Kayıt defterindeki görüntüler ortak katmanları paylaşır ve depolama verimliliğini artırır. Örneğin, farklı depolardaki birçok görüntü aynı alp Linux temel katmanını paylaşabilir, ancak bu katmanın yalnızca bir kopyası kayıt defterinde saklanır.
 
-Katman paylaşımı, ortak katmanları paylaşan birden çok görüntüyle düğümlere katman dağıtımında da en iyi duruma getirilmiştir. Örneğin, düğüm üzerindeki bir görüntü taban olarak Alp Linux katmanını içeriyorsa, aynı katmana başvuran farklı bir görüntünün sonraki çekme leri katmanı düğüme aktarmaz. Bunun yerine, düğümüzerinde zaten var olan katmana başvurur.
+Katman paylaşımı, katman dağıtımını aynı zamanda ortak katmanları paylaşan birden çok görüntü içeren düğümlere iyileştirir. Örneğin, zaten bir düğümde bulunan bir görüntü temel olarak alp Linux katmanını içeriyorsa, aynı katmana başvuran farklı bir görüntünün sonraki çekme katmanı düğüme aktarılmaz. Bunun yerine, düğüm üzerinde zaten var olan katmana başvurur.
 
-Güvenli yalıtım ve olası katman işlemeye karşı koruma sağlamak için katmanlar kayıt defterleri arasında paylaşılmaz.
+Olası katman işlemesini güvenli yalıtım ve koruma sağlamak için Katmanlar kayıt defterleri arasında paylaşılmaz.
 
 ### <a name="manifest"></a>Bildirim
 
-Bir kapsayıcı kayıt defterine itilen her kapsayıcı görüntüsü veya yapı bir *manifesto*ile ilişkilidir. Görüntü itildiğinde kayıt defteri tarafından oluşturulan bildirim, görüntüyü benzersiz bir şekilde tanımlar ve katmanlarını belirtir. Azure CLI komutu [az acr deposu gösteri manifestoları][az-acr-repository-show-manifests]ile bir depo için bildirimleri listeleyebilirsiniz:
+Bir kapsayıcı kayıt defterine gönderilen her kapsayıcı görüntüsü veya yapıtı bir *bildirimle*ilişkilendirilir. Görüntü gönderildiğinde kayıt defteri tarafından oluşturulan bildirim, görüntüyü benzersiz bir şekilde tanımlar ve katmanlarını belirtir. Azure CLı komutu ile bir depo için bildirimleri listeleyebilir [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests]:
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>
 ```
 
-Örneğin, "acr-helloworld" deposu için bildirimleri listele:
+Örneğin, "ACR-HelloWorld" deposu için bildirimleri listeleyin:
 
 ```azurecli
 az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -116,22 +116,22 @@ az acr repository show-manifests --name myregistry --repository acr-helloworld
 ]
 ```
 
-### <a name="manifest-digest"></a>Manifest özet
+### <a name="manifest-digest"></a>Bildirim Özeti
 
-Manifestolar benzersiz bir SHA-256 karma veya *manifest digest*tarafından tanımlanır. Etiketli olsun veya olmasın, her resim veya yapı özetiyle tanımlanır. Görüntünün katman verileri başka bir görüntüyle aynı olsa bile özet değeri benzersizdir. Bu mekanizma, aynı etiketlenmiş görüntüleri tekrar tekrar bir kayıt defterine itmenize olanak sağlar. Örneğin, her görüntü benzersiz `myimage:latest` özetiyle tanımlandığından, kayıt defterinize hatasız olarak tekrar tekrar itebilirsiniz.
+Bildirimler benzersiz bir SHA-256 karması veya *bildirim Özeti*tarafından tanımlanır. Her resim veya yapıt--etiketlenebilir veya değil, Özeti tarafından tanımlanır. Görüntünün katman verileri başka bir görüntüyle aynı olsa bile Özet değeri benzersizdir. Bu mekanizma, aynı etiketli görüntüleri bir kayıt defterine sürekli olarak göndermenize olanak tanır. Örneğin, her görüntü benzersiz Özet tarafından `myimage:latest` tanımlandığından, hata vermeden Kayıt defterinize sürekli olarak gönderim yapabilirsiniz.
 
-Çekme işleminde özetini belirterek bir görüntüyü kayıt defterinden çekebilirsiniz. Bazı sistemler, aynı şekilde etiketlenmiş bir görüntü daha sonra kayıt defterine itilse bile, görüntü sürümünün çekilmesini garanti ettiği için sindirilebilir şekilde yapılandırılabilir.
+Çekme işleminde özetini belirterek bir kayıt defterinden görüntü çekebilirsiniz. Bazı sistemler, aynı etiketli bir görüntü daha sonra kayıt defterine gönderilse bile, çekilmekte olan görüntü sürümünü garanti ettiğinden Özet tarafından çekilecek şekilde yapılandırılabilir.
 
-Örneğin, manifesto özetine göre "acr-helloworld" deposundan bir görüntü çekin:
+Örneğin, bildirim özetine göre "ACR-HelloWorld" deposundan bir görüntü çekin:
 
 `docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108`
 
 > [!IMPORTANT]
-> Değiştirilen görüntüleri sürekli olarak aynı etiketlerle iterseniz, etiketlenmemiş, ancak kayıt defterinizde yine de yer tüketen, adsız resimler oluşturabilirsiniz. Etikete göre görüntüleri listelediğinizde veya görüntülediğinizde, Etiketlenmemiş resimler Azure CLI'de veya Azure portalında gösterilmez. Ancak, katmanları hala var ve kayıt defterinizde yer tüketir. Etiketlenmemiş bir görüntünün silmesi, bildirim yalnızca veya sonuncusu olduğunda kayıt defteri alanını boşaltArak belirli bir katmanı işaret eder. Etiketlenmemiş görüntüler tarafından kullanılan alanı boşaltma hakkında bilgi [için](container-registry-delete.md)bkz.
+> Aynı etiketlere sahip değiştirilmiş görüntüleri sürekli olarak gönderseniz, yalnız bırakılmış görüntüler oluşturabilirsiniz--etiketsiz, ancak hala kayıt defterinizde alan tüketiyor olabilirsiniz. Resimleri etikete göre listelediğinizde veya görüntülediğinizde etiketlenmemiş görüntüler Azure CLı 'de veya Azure portal gösterilmez. Ancak, katmanları hala mevcut ve kayıt defterinizde alan tüketir. Etiketlenmemiş bir görüntünün silinmesi, bildirim tek bir veya sonuncu olduğunda, belirli bir katmana işaret edildiğinde kayıt defteri alanını serbest bırakır. Etiketlenmemiş görüntüler tarafından kullanılan boşluğu boşaltma hakkında daha fazla bilgi için bkz. [Azure Container Registry kapsayıcı görüntülerini silme](container-registry-delete.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Kapsayıcı Kayıt Defteri'nde [görüntü depolama](container-registry-storage.md) ve desteklenen [içerik biçimleri](container-registry-image-formats.md) hakkında daha fazla bilgi edinin.
+Azure Container Registry ' de [görüntü depolama](container-registry-storage.md) ve [desteklenen içerik biçimleri](container-registry-image-formats.md) hakkında daha fazla bilgi edinin.
 
 <!-- LINKS - Internal -->
 [az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests

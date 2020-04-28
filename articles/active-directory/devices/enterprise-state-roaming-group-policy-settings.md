@@ -1,6 +1,6 @@
 ---
-title: ESR için Grup İlkesi ve MDM ayarları - Azure Active Directory
-description: Kurumsal Durum Dolaşımı için yönetim ayarları
+title: ESR için grup ilkesi ve MDM ayarları-Azure Active Directory
+description: Enterprise State Roaming için yönetim ayarları
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,51 +12,51 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdffbc3a140bd13dcd6d352db8c192803d39b03e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78672361"
 ---
-# <a name="group-policy-and-mdm-settings"></a>Grup İlkesi ve MDM ayarları
+# <a name="group-policy-and-mdm-settings"></a>grup ilkesi ve MDM ayarları
 
-Bu ilkeler kullanıcının tüm aygıtına uygulandığından, bu grup ilkesini ve mobil cihaz yönetimi (MDM) ayarlarını yalnızca şirkete ait cihazlarda kullanın. Kişisel, kullanıcıya ait bir cihaz için ayarlar eşitlemesini devre dışı kılabilir bir MDM ilkesi uygulamak, söz sahibi aygıtın kullanımını olumsuz etkiler. Ayrıca, aygıttaki diğer kullanıcı hesapları da ilkeden etkilenir.
+Bu ilkeler kullanıcının tüm cihazına uygulandığından, bu Grup İlkesi ve mobil cihaz yönetimi (MDM) ayarlarını yalnızca şirkete ait cihazlarda kullanın. Kişisel, kullanıcıya ait bir cihaz için ayar eşitlemesini devre dışı bırakmak üzere MDM ilkesi uygulamak, bu cihazın kullanımını olumsuz yönde etkiler. Ayrıca, cihazdaki diğer Kullanıcı hesapları da ilkeden etkilenir.
 
-Kişisel (yönetilmeyen) aygıtlar için dolaşımı yönetmek isteyen işletmeler, Grup İlkesi veya MDM kullanmak yerine dolaşımı etkinleştirmek veya devre dışı etmek için Azure portalını kullanabilir.
-Aşağıdaki tablolarda kullanılabilir ilke ayarları açıklayınız.
+Kişisel (yönetilmeyen) cihazlar için dolaşımı yönetmek isteyen kuruluşlar, grup ilkesi veya MDM kullanmak yerine, dolaşımını etkinleştirmek veya devre dışı bırakmak için Azure portal kullanabilir.
+Aşağıdaki tablolarda kullanılabilir ilke ayarları açıklanır.
 
 > [!NOTE]
-> Bu makale, Temmuz 2015'te Windows 10 ile başlatılan Microsoft Edge Legacy HTML tabanlı tarayıcı için geçerlidir. Makale, 15 Ocak 2020'de yayımlanan yeni Microsoft Edge Krom tabanlı tarayıcı için geçerli değildir. Yeni Microsoft Edge için Eşitleme davranışı hakkında daha fazla bilgi için [Microsoft Edge Eşitleme](/deployedge/microsoft-edge-enterprise-sync)makalesine bakın.
+> Bu makale, 2015 Temmuz sürümünde Windows 10 ile başlatılan Microsoft Edge eski HTML tabanlı tarayıcı için geçerlidir. Makale, 15 Ocak 2020 ' de yayınlanan yeni Microsoft Edge Bermıum tabanlı tarayıcı için de geçerlidir. Yeni Microsoft Edge için eşitleme davranışı hakkında daha fazla bilgi için [Microsoft Edge Sync](/deployedge/microsoft-edge-enterprise-sync)makalesine bakın.
 
 ## <a name="mdm-settings"></a>MDM ayarları
 
-MDM ilke ayarları hem Windows 10 hem de Windows 10 Mobile için geçerlidir.  Windows 10 Mobile desteği yalnızca Microsoft hesabı tabanlı kullanıcının OneDrive hesabı üzerinden dolaşım için vardır. Azure AD tabanlı eşitleme için hangi aygıtların desteklendirilip desteklendirilene ilişkin ayrıntılar için [Aygıtlar ve uç noktalara](enterprise-state-roaming-windows-settings-reference.md) bakın.
+MDM ilke ayarları hem Windows 10 hem de Windows 10 Mobile için geçerlidir.  Windows 10 Mobile desteği yalnızca kullanıcının OneDrive hesabı aracılığıyla Microsoft hesabı tabanlı dolaşımda bulunur. Azure AD tabanlı eşitlemede desteklenen cihazların ayrıntılarını görmek için [cihazlar ve uç noktalar](enterprise-state-roaming-windows-settings-reference.md) bölümüne bakın.
 
 | Adı | Açıklama |
 | --- | --- |
-| Microsoft Hesap Bağlantısına İzin Ver |Kullanıcıların aygıtta bir Microsoft hesabı kullanarak kimlik doğrulaması yapmanızı sağlar |
-| Ayarlarımı Eşitle'ye Izin Ver |Kullanıcıların Windows ayarlarında ve uygulama verilerinde gezinmelerine izin verir; Bu politikayı devre dışı bırakmak, mobil cihazlardaki yedeklemelerin yanı sıra eşitlemeyi de devre dışı bırakacaktır |
+| Microsoft hesabı bağlantısına izin ver |Kullanıcıların cihazda Microsoft hesabı kullanarak kimlik doğrulaması yapmasına izin verir |
+| Ayarlarımı eşitlemeye izin ver |Kullanıcıların Windows ayarlarını ve uygulama verilerini dolaşımını sağlar; Bu ilkeyi devre dışı bırakmak, eşitlemenin yanı sıra mobil cihazlarda yedeklemeler de devre dışı bırakılır |
 
 ## <a name="group-policy-settings"></a>Grup ilkesi ayarları
 
-Grup ilkesi ayarları, Etkin Dizin etki alanına birleştirilmiş Windows 10 aygıtları için geçerlidir. Tablo ayrıca eşitleme ayarlarını yönetmek için görünen, ancak windows 10 için Enterprise State Roaming için çalışmayan ve açıklamata 'Kullanmayın' ile birlikte belirtilen eski ayarları da içerir.
+Grup İlkesi ayarları, bir Active Directory etki alanına katılmış Windows 10 cihazlarına uygulanır. Tablo, eşitleme ayarlarını yönetmek için görünen eski ayarları da içerir, ancak bu, açıklamada ' kullanılamaz ' olarak belirtilen Windows 10 için Enterprise State Roaming çalışmaz.
 
-Bu ayarlar şu adreste bulunur:`Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
+Bu ayarlar şurada bulunur:`Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
 | Adı | Açıklama |
 | --- | --- |
-| Hesaplar: Microsoft Hesaplarını Engelle |Bu ilke ayarı, kullanıcıların bu bilgisayara yeni Microsoft hesapları eklemesini engeller |
-| Eşitleme yapma |Kullanıcıların Windows ayarlarında ve uygulama verilerinde gezinmesini önler |
-| Kişiselleştirme |Temalar grubunun eşitlemeyi devre dışı |
-| Tarayıcı ayarlarını senkronize etmeyin |Internet Explorer grubunun eşitlemeyi devre dışı |
-| Parolaları eşitleme |Parolalar grubunun eşitlemeyi devre dışı |
-| Diğer Windows ayarlarını eşitleme |Diğer Windows ayarları grubunun eşitlemeyi devre dışı |
-| Masaüstü kişiselleştirmeyi senkronize etmeyin |Kullanmayın; hiçbir etkisi yoktur |
-| Tarifeli bağlantılarda eşitleme yapmayın |Hücresel 3G gibi tarifeli bağlantılarda dolaşımı devre dışı |
-| Uygulamaları senkronize etmeyin |Kullanmayın; hiçbir etkisi yoktur |
-| Uygulama ayarlarını senkronize etmeyin |Uygulama verilerinin dolaşımını devre dışı kılabilir |
+| Hesaplar: Microsoft hesaplarını engelleyin |Bu ilke ayarı, kullanıcıların bu bilgisayarda yeni Microsoft hesapları eklemesini engeller |
+| Eşitleme |Kullanıcıların Windows ayarlarını ve uygulama verilerini dolaşımını engeller |
+| Kişiselleştirmeyi eşitleme |Temalar grubunun eşitlenmesini devre dışı bırakır |
+| Tarayıcı ayarlarını eşitleme |Internet Explorer grubunun eşitlenmesini devre dışı bırakır |
+| Parolaları eşitleme |Parola grubu eşitlemesini devre dışı bırakır |
+| Diğer Windows ayarlarını eşitleme |Diğer Windows ayarları grubunu eşitlemeyi devre dışı bırakır |
+| Masaüstü kişiselleştirmesini eşitleme |Kullanmayın; hiçbir etkisi yoktur |
+| Tarifeli bağlantılarda eşitleme |Şebeke 3G gibi tarifeli bağlantılarda dolaşımı devre dışı bırakır |
+| Uygulamaları eşitleme |Kullanmayın; hiçbir etkisi yoktur |
+| Uygulama ayarlarını eşitleme |Uygulama verilerinin dolaşımını devre dışı bırakır |
 | Başlangıç ayarlarını eşitleme |Kullanmayın; hiçbir etkisi yoktur |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Genel bakış için [kurumsal Devlet Dolaşımıgenel görünümüne](enterprise-state-roaming-overview.md)bakın.
+Genel bakış için bkz. [kuruluş durumu dolaşımına genel bakış](enterprise-state-roaming-overview.md).

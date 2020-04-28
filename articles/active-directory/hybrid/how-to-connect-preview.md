@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Önizlemedeki özellikler | Microsoft Dokümanlar'
-description: Bu konu, Azure AD Connect'te önizlemede olan özellikleri daha ayrıntılı olarak açıklar.
+title: 'Azure AD Connect: Önizlemedeki Özellikler | Microsoft Docs'
+description: Bu konuda, Azure AD Connect önizleme aşamasında olan daha ayrıntılı özellikler açıklanmaktadır.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,41 +17,41 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261287"
 ---
-# <a name="more-details-about-features-in-preview"></a>Önizlemedeki özellikler hakkında daha fazla bilgi
-Bu konu, şu anda önizlemede bulunan özelliklerin nasıl kullanılacağını açıklar.
+# <a name="more-details-about-features-in-preview"></a>Önizlemedeki özellikler hakkında daha fazla ayrıntı
+Bu konuda, şu anda önizleme aşamasında olan özelliklerin nasıl kullanılacağı açıklanmaktadır.
 
 ## <a name="group-writeback"></a>Grup geri yazma
-İsteğe bağlı özelliklerde grup geri yazma seçeneği, **Office 365 Gruplarını** Exchange yüklü bir ormana geri yazmanızı sağlar. Bu, bulutta her zaman hakim olan bir gruptur. Şirket içinde Exchange varsa, bu grupları şirket içi Exchange posta kutusuna sahip kullanıcıların bu gruplardan e-posta gönderip alabilmeleri için şirket içi olarak geri yazabilirsiniz.
+İsteğe bağlı özelliklerde grup geri yazma seçeneği, Exchange yüklü bir ormana **Office 365 gruplarını** geri almanıza olanak sağlar. Bu, bulutta her zaman ana kopyalı bir gruptur. Şirket içi Exchange kullanıyorsanız, şirket içi Exchange posta kutusu olan kullanıcıların bu gruplardan e-posta gönderip alabilmesi için bu grupları şirket içinde geri yazabilirsiniz.
 
-Office 365 Grupları ve bunların nasıl kullanılacağı hakkında daha fazla bilgiyi [burada](https://aka.ms/O365g)bulabilirsiniz.
+Office 365 grupları ve bunların nasıl kullanılacağı hakkında daha fazla bilgi [burada](https://aka.ms/O365g)bulunabilir.
 
-Office 365 grubu, şirket içi AD DS'de dağıtım grubu olarak temsil edilir. Şirket içi Exchange sunucunuz, bu yeni grup türünü tanımak için Exchange 2013 kümülatif güncelleştirme 8 (Mart 2015'te yayımlandı) veya Exchange 2016'da olmalıdır.
+Office 365 Grubu, şirket içi AD DS dağıtım grubu olarak temsil edilir. Şirket içi Exchange Server, bu yeni grup türünü tanımak için Exchange 2013 toplu güncelleştirme 8 ' de (2015 Mart 'ta yayımlanmıştır) veya Exchange 2016 ' de olmalıdır.
 
-**Önizleme sırasında notlar**
+**Önizleme sırasında Notlar**
 
-* Adres defteri özniteliği şu anda önizlemede doldurulmadı. Bu öznitelik olmadan, grup GAL görünür değildir. Bu özelliği doldurmak için en kolay yolu Exchange PowerShell cmdlet `update-recipient`kullanmaktır.
-* Sadece Exchange şeması olan ormanlar gruplar için geçerli hedeflerdir. Exchange algılanmadıysa, grup geri yazmayı etkinleştirmek mümkün değildir.
-* Şu anda yalnızca tek ormanlı Exchange kuruluş dağıtımları desteklenir. Şirket içinde birden fazla Exchange kuruluşunuz varsa, bu grupların diğer ormanlarınızda görünmesi için şirket içi GALSync çözümüne ihtiyacınız vardır.
+* Adres defteri özniteliği şu anda önizlemede doldurulmamış. Bu öznitelik olmadan grup, GAL 'nda görünmez. Bu özniteliği doldurmanın en kolay yolu, Exchange PowerShell cmdlet 'ini `update-recipient`kullanmaktır.
+* Yalnızca Exchange şemasına sahip ormanlar gruplar için geçerli hedeflerdir. Exchange algılanmadığında, grup geri yazma özelliğinin etkinleştirilmesi mümkün değildir.
+* Şu anda yalnızca tek ormanlı Exchange kuruluşu dağıtımları desteklenmektedir. Şirket içinde birden fazla Exchange kuruluşunuz varsa, bu grupların diğer ormanlarınızdan görünmesi için bir şirket içi GALSync çözümüne ihtiyacınız vardır.
 * Grup geri yazma özelliği güvenlik gruplarını veya dağıtım gruplarını işlemez.
 
 > [!NOTE]
-> Grup geri yazımı için Azure AD Premium aboneliği gereklidir.
+> Grup geri yazma için Azure AD Premium bir abonelik gereklidir.
 > 
 >
 
 ## <a name="user-writeback"></a>Kullanıcı geri yazma
 > [!IMPORTANT]
-> Kullanıcı geri yazma önizleme özelliği, Ağustos 2015 güncelleştirmesinde Azure AD Connect'e kaldırıldı. Etkinleştirdiyseniz, bu özelliği devre dışı bmelisiniz.
+> Kullanıcı geri yazma önizleme özelliği Azure AD Connect için Ağustos 2015 güncelleştirmesinde kaldırılmıştır. Bunu etkinleştirdiyseniz, bu özelliği devre dışı bırakmanız gerekir.
 >
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure [AD Connect'in Özel yüklemenize devam edin.](how-to-connect-install-custom.md)
+[Azure AD Connect özel yüklemenize](how-to-connect-install-custom.md)devam edin.
 
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

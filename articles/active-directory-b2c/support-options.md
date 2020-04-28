@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2C desteği | Microsoft Dokümanlar
-description: Azure Active Directory B2C için destek isteklerini dosyalama.
+title: Azure Active Directory B2C için destek | Microsoft Docs
+description: Azure Active Directory B2C için destek isteklerini dosya olarak kullanma.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,58 +11,58 @@ ms.date: 12/06/2016
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5195241003b1ce4ea505002e2cc3c10410e6cde1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183729"
 ---
-# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Dosya Destek İstekleri
-Azure portalında Azure Active Directory B2C (Azure AD B2C) için destek isteklerini aşağıdaki adımları kullanarak dosyalayabilirsiniz:
+# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: dosya destek Istekleri
+Aşağıdaki adımları kullanarak Azure portal Azure Active Directory B2C (Azure AD B2C) için destek isteklerini dosya olarak kullanabilirsiniz:
 
-1. B2C kiracınızdan, onunla ilişkili bir Azure aboneliği olan başka bir kiracıya geçiş yapabilirsiniz. Genellikle, ikincisi çalışan kiracınız veya Azure aboneliğine kaydolduğunuzda sizin için oluşturulan varsayılan kiracıdır. Daha fazla bilgi edinmek için [Azure aboneliğinin Azure REKLAMı ile nasıl ilişkili olduğunu](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)görün.
+1. B2C kiracınızdan ilişkili bir Azure aboneliğine sahip başka bir kiracıya geçiş yapın. Genellikle, son olarak çalışan kiracınız veya bir Azure aboneliğine kaydolduğunuzda sizin için oluşturulan varsayılan kiracı olur. Daha fazla bilgi edinmek için bkz. [Azure aboneliğinin Azure AD ile ilişkisi](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-    ![Kiracı seçimi vurgulanan Azure portalı](./media/support-options/support-switch-dir.png)
+    ![Kiracı seçimi vurgulanmış Azure portal](./media/support-options/support-switch-dir.png)
 
-1. Kiracı ları değiştirdikten sonra **Yardım + destek'i**tıklatın.
+1. Kiracılar değiştirildikten sonra yardım ve **destek**' e tıklayın.
 
-    ![Azure portalında vurgulanan Yardım + Destek döşemesi](./media/support-options/support-support.png)
+    ![Yardım + Destek kutucuğu Azure portal vurgulanmış olarak](./media/support-options/support-support.png)
 
-1. **Yeni destek isteğini**tıklatın.
+1. **Yeni destek isteği**' ne tıklayın.
 
-    ![Azure portalında vurgulanan yeni destek isteği döşemesi](./media/support-options/support-new.png)
+    ![Yeni destek isteği kutucuğu Azure portal vurgulandı](./media/support-options/support-new.png)
 
-1. **Basics** bıçak, bu ayrıntıları kullanın ve **İleri'yi**tıklatın.
+1. **Temel bilgiler** dikey penceresinde bu ayrıntıları kullanın ve **İleri**' ye tıklayın.
 
-    * **Sorun türü** **Tekniktir.**
-    * Uygun **Aboneliği**seçin.
-    * **Hizmet** **Aktif Dizin**olduğunu.
-    * Uygun **Destek planını**seçin. Eğer yoksa, [burada](https://azure.microsoft.com/support/plans/)bir kaydolabilirsiniz.
+    * **Sorun türü** **Teknik**.
+    * Uygun **aboneliği**seçin.
+    * **Hizmet** **Active Directory**.
+    * Uygun **destek planını**seçin. Bunlardan biri yoksa, [buradan](https://azure.microsoft.com/support/plans/)kaydolabilirsiniz.
 
-     ![Azure portalında vurgulanan Next düğmesiile temel bilgiler sayfası](./media/support-options/support-basics.png)
+     ![Azure portal sonraki Düğme vurgulanmış temel bilgiler sayfası](./media/support-options/support-basics.png)
 
-1. **Sorun** çubuğunda, bu ayrıntıları kullanın ve **İleri'yi**tıklatın.
+1. **Sorun** dikey penceresinde bu ayrıntıları kullanın ve **İleri**' ye tıklayın.
 
-    * Uygun **Önem Düzeyi'ni** seçin.
-    * **Sorun türü** **B2C'dir.**
-    * Uygun **Kategoriyi**seçin.
-    * Sorununuzu **Ayrıntılar** alanında açıklayın. B2C kiracı adı, sorunun açıklaması, hata iletileri, korelasyon işleri (varsa) gibi ayrıntılarsını sağlayın.
-    * Zaman **çerçevesi** alanında, sorunun oluştuğu tarih ve saati (saat dilimi dahil) sağlayın.
-    * **Dosya yükleme**altında, sorunu çözmede yardımcı olacağını düşündüğünüz tüm ekran görüntüleri ve dosyaları yükleyin.
+    * Uygun **önem derecesini** seçin.
+    * **Sorun türü** **B2C**.
+    * Uygun **kategoriyi**seçin.
+    * **Ayrıntılar** alanındaki sorununuzu tanıtın. B2C kiracı adı, sorunun açıklaması, hata iletileri ve bağıntı kimlikleri (varsa) gibi ayrıntıları sağlayın.
+    * **Zaman çerçevesi** alanında, sorunun gerçekleştiği tarih ve saati (saat dilimi dahil) belirtin.
+    * **Karşıya dosya yükleme**altında, sorunu çözmeye yardımcı olacak tüm ekran görüntülerini ve dosyaları karşıya yükleyin.
 
-     ![Azure portalında Vurgulanan Sonraki düğmeyle sorun sayfası](./media/support-options/support-problem.png)
+     ![Azure portal sonraki Düğme vurgulanmış sorun sayfası](./media/support-options/support-problem.png)
 
-1. İletişim **bilgileri** bıçak, iletişim bilgilerinizi ekleyin. **Oluştur'u**tıklatın.
+1. **İletişim bilgileri** dikey penceresinde, iletişim bilgilerinizi ekleyin. **Oluştur**' a tıklayın.
 
-    ![Portalda vurgulanan Oluştur düğmesi ile iletişim bilgileri sayfası](./media/support-options/support-contact.png)
+    ![Portalda oluştur düğmesi vurgulanmış iletişim bilgileri sayfası](./media/support-options/support-contact.png)
 
-1. Destek isteğinizi gönderdikten sonra Başlangıç Panosunda **Yardım + destek'i** tıklatarak bunu izleyebilir ve ardından **destek isteklerini yönetebilirsiniz.**
+1. Destek isteğinizi gönderdikten sonra, başlangıç panosundaki **Yardım + Destek** ' i ve ardından **destek isteklerini yönet**' e tıklayarak bunu izleyebilirsiniz.
 
-## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Bilinen sorun: Bir B2C kiracı bağlamında bir destek isteği dosyalama
+## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Bilinen sorun: bir destek isteğini B2C kiracısı bağlamında dosyalama
 
-Yukarıda özetlenen adım 2'yi kaçırdıysanız ve B2C kiracınız bağlamında bir destek isteği oluşturmaya çalışırsanız, aşağıdaki hatayı görürsünüz.
+Yukarıda belirtilen 2. adımı kaçırdıysanız ve B2C kiracınızın bağlamında bir destek isteği oluşturmayı denerseniz, aşağıdaki hatayı görürsünüz.
 
 > [!IMPORTANT]
-> B2C kiracınızda yeni bir Azure aboneliğine kaydolmaya çalışmayın.
+> B2C kiracınızda yeni bir Azure aboneliğine kaydolmayı denemeyin.
 
-![Azure portalında görüntülenen abonelik hatanız yok](./media/support-options/support-no-sub.png)
+![Azure portal ' de bir abonelik hatası görüntülenmiyor](./media/support-options/support-no-sub.png)

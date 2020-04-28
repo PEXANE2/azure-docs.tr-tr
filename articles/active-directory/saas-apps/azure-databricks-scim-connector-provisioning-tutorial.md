@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Azure Databricks SCIM Bağlayıcısı'nı yapılandırın | Microsoft Dokümanlar"
-description: Azure AD'den Azure Databricks SCIM Connector'a kullanıcı hesaplarını otomatik olarak nasıl sağlayıp yok edebilirsiniz öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Azure Databricks SCıM bağlayıcısını yapılandırma | Microsoft Docs'
+description: Azure AD 'deki Kullanıcı hesaplarını Azure Databricks SCıM bağlayıcısına otomatik olarak sağlamayı ve sağlamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -16,147 +16,147 @@ ms.topic: article
 ms.date: 01/15/2020
 ms.author: Zhchia
 ms.openlocfilehash: fe1260982edc877c049716bd74f1bb3e90d33b0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77370528"
 ---
-# <a name="tutorial-configure-azure-databricks-scim-connector-for-automatic-user-provisioning"></a>Öğretici: Azure Databricks SCIM Bağlayıcısı'nı otomatik kullanıcı sağlama için yapılandırın
+# <a name="tutorial-configure-azure-databricks-scim-connector-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Azure Databricks SCıM bağlayıcısını yapılandırma
 
-Bu öğretici, otomatik kullanıcı sağlama yapılandırmak için hem Azure Databricks SCIM Bağlayıcısı'nda hem de Azure Active Directory'de (Azure AD) gerçekleştirmeniz gereken adımları açıklar. Azure AD, yapılandırıldığınızda, Azure REKLAM Sağlama hizmetini kullanarak kullanıcıları ve grupları [Azure Databricks SCIM Connector'a](https://databricks.com/) otomatik olarak hükümler ve hükümlerden arındırma sağlar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../manage-apps/user-provisioning.md)bkz. 
+Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Azure Databricks SCıM Bağlayıcısı hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti 'ni kullanarak [SCıM bağlayıcısını Azure Databricks](https://databricks.com/) için kullanıcıları ve grupları otomatik olarak hazırlar ve devre dışı bırakmayı sağlar. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Desteklenen yetenekler
 > [!div class="checklist"]
-> * Azure Databricks SCIM Bağlayıcısı'nda kullanıcı oluşturma
-> * Artık erişim egerekmediklerinde Azure Databricks SCIM Connector'daki kullanıcıları kaldırın
-> * Kullanıcı özniteliklerini Azure AD ve Azure Databricks SCIM Bağlayıcısı arasında senkronize tutma
-> * Azure Databricks SCIM Bağlayıcısı'ndaki sağlama grupları ve grup üyelikleri
+> * Azure Databricks SCıM bağlayıcısında Kullanıcı oluşturma
+> * Artık erişim gerektirmeyen Azure Databricks SCıM bağlayıcısında kullanıcıları kaldırın
+> * Azure AD ile Azure Databricks SCıM Bağlayıcısı arasında kullanıcı özniteliklerini eşitlenmiş olarak tut
+> * Azure Databricks SCıM Bağlayıcısı 'nda grupları ve grup üyeliklerini sağlama
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* [Azure AD kiracı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Sağlama yapılandırma [izniyle](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) Azure AD'deki bir kullanıcı hesabı (örn. Uygulama Yöneticisi, Bulut Uygulama yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
-* Yönetici izinlerine sahip bir Azure Databricks hesabı.
+* [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örn. uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
+* Yönetici izinlerine sahip Azure Databricks hesabı.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
-1. Sağlama [hizmetinin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
-2. [Kimler in provizyon kapsamına](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)alınacağını belirleyin.
-3. Azure AD [ile Azure Databricks SCIM Bağlayıcısı arasında hangi verilerin eşleneredeği](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)belirlenip belirlenip belirleyin. 
+1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
+2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
+3. [Azure AD ile Azure Databricks SCIM Bağlayıcısı arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="step-2-configure-azure-databricks-scim-connector-to-support-provisioning-with-azure-ad"></a>2. Adım Azure Databricks SCIM Connector'ı Azure AD ile sağlamayı destekleyecek şekilde yapılandırın
+## <a name="step-2-configure-azure-databricks-scim-connector-to-support-provisioning-with-azure-ad"></a>2. Adım Azure AD ile sağlamayı desteklemek için Azure Databricks SCıM bağlayıcısını yapılandırın
 
-1. Azure Databricks SCIM sağlamasını ayarlamak için, azure etkin dizin kiracınıza kaynak olarak ekleyin ve aşağıdaki ayarları kullanarak yapılandırın.
+1. Azure Databricks SCıM sağlamayı ayarlamak için, Azure Active Directory kiracınızda kaynak olarak ekleyin ve aşağıdaki ayarları kullanarak yapılandırın.
 
-    ![Azure Databricks kurulumu](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/setup.png)
+    ![Azure Databricks kurulum](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/setup.png)
 
-2. Azure Veri Tuğlaları'nda kişisel erişim belirteci oluşturmak için [buna](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/authentication#token-management)bakın.
+2. Azure Databricks ' de bir kişisel erişim belirteci oluşturmak için [bunu](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/authentication#token-management)inceleyin.
 
-3. **Jetonu**kopyala. Bu değer, Azure portalındaki Azure Databricks SCIM Bağlayıcısı uygulamanızın Sağlama sekmesinde Gizli Belirteç alanına girilir.
+3. **Belirteci**kopyalayın. Bu değer, Azure portal Azure Databricks SCıM bağlayıcı uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
 
-## <a name="step-3-add-azure-databricks-scim-connector-from-the-azure-ad-application-gallery"></a>3. Adım Azure REKLAM uygulama galerisinden Azure Databricks SCIM Bağlayıcısı ekleme
+## <a name="step-3-add-azure-databricks-scim-connector-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Azure Databricks SCıM Bağlayıcısı ekleme
 
-Azure Databricks SCIM Bağlayıcısı'na sağlama yı yönetmeye başlamak için Azure AD uygulama galerisinden Azure Databricks SCIM Bağlayıcısı ekleyin. SSO için azure databricks SCIM Bağlayıcısı'nı daha önce kurduksanız, aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. [Burada](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)galeriden bir uygulama ekleme hakkında daha fazla bilgi edinin. 
+Azure AD uygulama galerisinden Azure Databricks SCıM bağlayıcısını, Azure Databricks SCıM bağlayıcısına sağlamayı yönetmeye başlamak için ekleyin. Daha önce SSO için Azure Databricks SCıM bağlayıcısını ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin. 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Tedarik kapsamına kimlerde olacağını tanımlama 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Sağlama kapsamında kim olacağını tanımlama 
 
-Azure AD sağlama hizmeti, uygulamaya yapılan atamaya ve kullanıcının/ grubun özniteliklerine göre kimin sağlanacak kapsamını kapsamanızı sağlar. Atamaya göre uygulamanız için kimlerin sağlanacak kapsamını seçerseniz, uygulamayı zedelektirler ve kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca kullanıcı nın veya grubun özelliklerine göre kimlerin sağlanacak kapsamını seçerseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
+Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup özniteliklerine göre sağlanacak olan kapsamlarına olanak tanır. Atamaya göre uygulamanıza sağlanacak kapsamı tercih ederseniz, uygulamayı kullanıcılara ve gruplara atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca Kullanıcı veya grubun özniteliklerine göre sağlanacak olan kapsamı tercih ederseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
 
-* Kullanıcıları ve grupları Azure Databricks SCIM Bağlayıcısı'na atarken, **Varsayılan Erişim**dışında bir rol seçmeniz gerekir. Varsayılan Erişim rolüne sahip kullanıcılar sağlama nın dışında tutulur ve sağlama günlüklerinde etkin bir şekilde hak sahibi olmadığı şeklinde işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolüyse, ek roller eklemek için [uygulama bildirimini](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) güncelleştirebilirsiniz. 
+* Azure Databricks SCıM bağlayıcısına Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan erişim rolüne sahip kullanıcılar sağlanmasından çıkarılır ve sağlama günlüklerinde etkin değil olarak işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolü ise, ek roller eklemek için [uygulama bildirimini güncelleştirebilirsiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
 
-* Küçük başla. Herkese kullanıma başlamadan önce küçük bir kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanmış kullanıcılara ve gruplara ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu denetleyebilirsiniz. Kapsam tüm kullanıcılar ve gruplar için ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
+* Küçük Başlat. Herkese sunulmadan önce küçük bir Kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-azure-databricks-scim-connector"></a>5. Adım. Otomatik kullanıcı sağlamayı Azure Databricks SCIM Bağlayıcısı olarak yapılandırma 
+## <a name="step-5-configure-automatic-user-provisioning-to-azure-databricks-scim-connector"></a>5. Adım. Azure Databricks SCıM bağlayıcısını otomatik Kullanıcı sağlamasını yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak TestApp'teki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
 
 > [!NOTE]
-> Azure Databricks'in SCIM bitiş noktası hakkında daha fazla bilgi edinmek için [şuna](https://docs.databricks.com/dev-tools/api/latest/scim.html
+> Azure Databricks ' SCıM uç noktası hakkında daha fazla bilgi edinmek için, [buna](https://docs.databricks.com/dev-tools/api/latest/scim.html
 )bakın.
 
-### <a name="to-configure-automatic-user-provisioning-for-azure-databricks-scim-connector-in-azure-ad"></a>Azure AD'de Azure Databricks SCIM Bağlayıcısı için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-azure-databricks-scim-connector-in-azure-ad"></a>Azure AD 'de Azure Databricks SCıM Bağlayıcısı için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Azure Databricks SCIM Bağlayıcısı'nı**seçin.
+2. Uygulamalar listesinde, **Azure Databricks SCIM Bağlayıcısı**' nı seçin.
 
-    ![Uygulamalar listesindeki Azure Databricks SCIM Bağlayıcısı bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Azure Databricks SCıM bağlayıcı bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümüne, **Kiracı URL'sinde**SCIM uç nokta değerini girdi. Kiracı URL'si, `https://<region>.azuredatabricks.net/api/2.0/preview/scim` azure veri tuğlaları ana sayfa URL'nizde **bölgenin** bulunabileceği biçimde olmalıdır. Örneğin, **Westus** bölgesi için bir SCIM `https://westus.azuredatabricks.net/api/2.0/preview/scim`bitiş noktası olacaktır. Gizli Belirteç'te daha önce alınan belirteç değerini **girdi.** Azure AD'nin Azure Databricks SCIM Bağlayıcısı'na bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Azure Databricks SCIM Bağlayıcı hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde, **kiracı URL**'sinde SCIM uç noktası değerini girin. Kiracı URL 'SI, **bölgenin** Azure Databricks GIRIŞ sayfası `https://<region>.azuredatabricks.net/api/2.0/preview/scim` URL 'niz içinde bulunabileceği biçimde olmalıdır. Örneğin, **westus** Region IÇIN BIR SCIM uç noktası olacaktır `https://westus.azuredatabricks.net/api/2.0/preview/scim`. Daha önce **gizli bir belirteçte**alınan belirteç değerini girin. Azure AD 'nin Azure Databricks SCıM bağlayıcısına bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Azure Databricks SCıM bağlayıcı hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Sağlama](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/provisioning.png)
+    ![alınıyor](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/provisioning.png)
 
-6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve **bir hata olduğunda e-posta bildirimi gönder'i** seçin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet'i**seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Azure Databricks SCIM Bağlayıcısı**ile Senkronize Et'i seçin.
+8. **Eşlemeler** bölümünde, **Azure Active Directory kullanıcılarını Azure Databricks SCIM Bağlayıcısı ile eşitler**' ı seçin.
 
-9. Azure AD'den Azure Databricks SCIM Bağlayıcısı'na eşitlenen kullanıcı özniteliklerini **Atnitelik-Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Azure Databricks SCIM Connector'daki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. [Eşleşen hedef özniteliği](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, Azure Veri Tuğlaları SCIM Bağlayıcı API'sinin bu özniteliğe bağlı olarak kullanıcıları filtrelemeyi desteklediğinden emin olmanız gerekir. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde, Azure AD 'den Azure Databricks SCIM Bağlayıcısı ' na eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için Azure Databricks SCIM bağlayıcısında Kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, Azure Databricks SCIM BAĞLAYıCı API 'sinin, bu özniteliğe göre kullanıcıların filtrelemesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
    |Öznitelik|Tür|
    |---|---|
    |userName|Dize|
    |displayName|Dize|
-   |Etkin|Boole|
+   |bkz|Boole|
 
-10. **Eşlemeler** bölümünde, **Azure Etkin Dizin Gruplarını Azure Databricks SCIM Bağlayıcısı'na Senkronize Et'i**seçin.
+10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını Azure Databricks SCIM Bağlayıcısı olarak eşitler**' ı seçin.
 
-11. Azure AD'den Azure Databricks SCIM Bağlayıcısı'na eşitlenen grup özniteliklerini **Atnitelik-Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Azure Databricks SCIM Connector'daki gruplarla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+11. **Öznitelik eşleme** bölümünde, Azure AD 'den Azure Databricks SCIM Bağlayıcısı ' na eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için Azure Databricks SCIM bağlayıcısında grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
      |Öznitelik|Tür|
      |---|---|
      |displayName|Dize|
      |üyeler|Başvuru|
 
-11. **Eşlemeler** bölümünde, **Azure Etkin Dizin Gruplarını Azure Databricks SCIM Bağlayıcısı'na Senkronize Et'i**seçin.
+11. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını Azure Databricks SCIM Bağlayıcısı olarak eşitler**' ı seçin.
 
-12. Azure Databricks SCIM Bağlayıcısı için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **KiSama Durumunu** **Ayarı** olarak değiştirin.
+12. Azure Databricks SCıM Bağlayıcısı için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-13. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Azure Databricks SCIM Bağlayıcısı'na sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+13. **Ayarlar** bölümünde **kapsam** içinde istenen değerleri seçerek Azure Databricks SCIM bağlayıcısını sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-14. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+14. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve grupların ilk eşitleme döngüsünü başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki döngülere göre ilk çevrimin gerçekleşmesi daha uzun sürer. 
+Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm Kullanıcı ve grupların ilk eşitleme döngüsünü başlatır. İlk döngü daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki Döngülerde yerine daha uzun sürer. 
 
 ## <a name="step-6-monitor-your-deployment"></a>6. Adım. Dağıtımınızı izleme
 Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
-* Hangi kullanıcıların başarılı veya başarısız bir şekilde sağlandığını belirlemek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanma
-* Sağlama döngüsünün durumunu ve tamamlanmasına ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) kontrol edin
-* Sağlama yapılandırması sağlıksız bir durumda gibi görünüyorsa, uygulama karantinaya alınır. Karantina durumları hakkında daha fazla bilgi [için burada.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)  
+* Hangi kullanıcıların başarıyla sağlandığını veya başarısız olduğunu öğrenmek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
+* Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) denetleyin
+* Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Buradaki](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantina durumları hakkında daha fazla bilgi edinin.  
 
 ## <a name="troubleshooting-tips"></a>Sorun giderme ipuçları
-* Databricks, SCIM üzerinden gönderdiğimiz büyük harfe bakılmaksızın, kullanıcı adı değerlerini her zaman dizinlerine kaydederken kullanıcı adı değerlerini küçük harflere dönüştürür.
-* Şu anda Kullanıcılar için Azure Databricks'in SCIM API'sına USER@contoso.com karşı istekler alın, bu nedenle user@contoso.combunu sorgularsak, bunu depoladıkları nda 0 sonuç elde edecektir.
+* Databricks, SCıM aracılığıyla bunlara gönderdiğimiz büyük harfle ne olursa olsun, kendi Kullanıcı adı değerlerini her zaman küçük harfe dönüştürür.
+* Şu anda kullanıcılar için Azure Databricks ' SCıM API 'sine karşı istek al büyük/küçük harfe duyarlıdır. USER@contoso.com bu nedenle, sorgulama yaptığımız, farklı user@contoso.comdepolarsa 0 sonuç alır.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)

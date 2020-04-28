@@ -1,6 +1,6 @@
 ---
 title: Risk nedir? Azure AD Kimlik Koruması
-description: Azure AD Kimlik Koruması'nda riski açıklama
+description: Azure AD Kimlik Koruması risk hakkında
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,60 +12,60 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 775ff6b3ba003bed22ccd5a42cb4da005c4dbb69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253695"
 ---
 # <a name="what-is-risk"></a>Risk nedir?
 
-Azure AD Kimlik Koruması'ndaki risk algılamaları, dizindeki kullanıcı hesaplarıyla ilgili tanımlanmış şüpheli eylemleri içerir.
+Azure AD Kimlik Koruması risk algılamaları, dizindeki Kullanıcı hesaplarıyla ilgili tüm tanınan şüpheli eylemleri içerir.
 
-Kimlik Koruması, kuruluşların bu şüpheli eylemleri hızlı bir şekilde görmek ve bunlara yanıt vermek için güçlü kaynaklara erişmelerini sağlar. 
+Kimlik koruması, kuruluşların bu şüpheli eylemlere kolayca bakmak ve yanıt vermesi için güçlü kaynaklara erişmesini sağlar. 
 
-![Riskli kullanıcıları ve oturum açmaları gösteren güvenliğe genel bakış](./media/concept-identity-protection-risks/identity-protection-security-overview.png)
+![Riskli kullanıcıları ve oturum açma işlemlerini gösteren güvenliğe genel bakış](./media/concept-identity-protection-risks/identity-protection-security-overview.png)
 
 ## <a name="risk-types-and-detection"></a>Risk türleri ve algılama
 
-İki tür risk vardır **Kullanıcı** ve **Oturum Açma** ve iki tür algılama veya hesaplama **Gerçek zamanlı** ve **Çevrimdışı.**
+İki tür risk **kullanıcısı** ve **oturum açma** ve iki tür algılama veya hesaplama **Gerçek** zamanlı ve **çevrimdışı**olabilir.
 
 ### <a name="user-risk"></a>Kullanıcı riski
 
-Kullanıcı riski, belirli bir kimliğin veya hesabın tehlikeye girme olasılığını temsil eder. 
+Bir Kullanıcı riski, belirli bir kimliğin veya hesabın güvenliğinin aşıldığına ilişkin olasılığı temsil eder. 
 
-Bu riskler, güvenlik araştırmacıları, emniyet uzmanları, Microsoft'taki güvenlik ekipleri ve diğer güvenilen kaynaklar da dahil olmak üzere Microsoft'un dahili ve harici tehdit istihbarat kaynakları kullanılarak çevrimdışı olarak hesaplanır.
+Bu riskler, Microsoft 'un güvenlik araştırmacıları, hukuk uzmanları, Microsoft 'ta güvenlik takımları ve diğer güvenilen kaynaklar dahil olmak üzere Microsoft 'un dahili ve harici tehdit bilgileri kaynakları kullanılarak çevrimdışı olarak hesaplanır.
 
-| Risk tespiti | Açıklama |
+| Risk algılama | Açıklama |
 | --- | --- |
-| Sızdırılan kimlik bilgileri | Bu risk algılama türü, kullanıcının geçerli kimlik bilgilerinin sızdırıldığını gösterir. Siber suçlular yasal kullanıcıların geçerli parolalarını tehlikeye attıklarında, genellikle bu kimlik bilgilerini paylaşırlar. Bu paylaşım genellikle karanlık web, yapıştırma siteleri, kamuya yayın veya ticaret ve karaborsada kimlik bilgileri satarak yapılır. Microsoft sızdırılan kimlik bilgileri hizmeti karanlık web, yapıştırma sitelerinden veya diğer kaynaklardan kullanıcı kimlik bilgileri aldığında, geçerli eşleşmeleri bulmak için Azure AD kullanıcılarının geçerli kimlik bilgileriyle karşılaştırılır. |
-| Azure AD tehdit zekası | Bu risk algılama türü, verilen kullanıcı için alışılmadık olan veya Microsoft'un iç ve dış tehdit istihbarat kaynaklarına dayalı olarak bilinen saldırı kalıplarıyla tutarlı olan kullanıcı etkinliğini gösterir. |
+| Sızdırılan kimlik bilgileri | Bu risk algılama türü, kullanıcının geçerli kimlik bilgilerinin sızdırdığını gösterir. Sidolandırıcılar meşru kullanıcıların geçerli parolalarını tehlikeye ayorsa, genellikle bu kimlik bilgilerini paylaşır. Bu paylaşım genellikle koyu Web üzerinden genel olarak, siteler yapıştırarak veya ticari ve kimlik bilgilerini siyah pazarda satarak yapılır. Microsoft sızdırılan kimlik bilgileri hizmeti, koyu Web, siteleri veya diğer kaynaklardan Kullanıcı kimlik bilgilerini edindiğinde, geçerli eşleşmeleri bulmak için Azure AD kullanıcılarının geçerli geçerli kimlik bilgileriyle denetlenir. |
+| Azure AD tehdit bilgileri | Bu risk algılama türü, belirli bir kullanıcı için olağandışı olan veya Microsoft 'un dahili ve dış tehdit bilgileri kaynaklarına dayanan bilinen saldırı desenleriyle tutarlı olan kullanıcı etkinliklerini gösterir. |
 
 ### <a name="sign-in-risk"></a>Oturum açma riski
 
-Oturum açma riski, belirli bir kimlik doğrulama isteğinin kimlik sahibi tarafından yetkilendirilmeyen olasılığını gösterir. 
+Bir oturum açma riski, belirli bir kimlik doğrulama isteğinin kimlik sahibi tarafından yetkilendirilmemiş olma olasılığını temsil eder. 
 
-Bu riskler, güvenlik araştırmacıları, emniyet güçleri uzmanları, Microsoft'taki güvenlik ekipleri ve diğer güvenilen kaynaklar da dahil olmak üzere Microsoft'un dahili ve harici tehdit istihbarat kaynakları kullanılarak gerçek zamanlı olarak veya çevrimdışı olarak hesaplanabilir.
+Bu riskler, gerçek zamanlı olarak hesaplanabilir veya güvenlik araştırmacıları, hukuk uzmanları, Microsoft 'taki güvenlik ekipleri ve diğer güvenilen kaynaklar dahil olmak üzere Microsoft 'un dahili ve harici tehdit bilgileri kaynakları kullanılarak, çevrimdışı olarak hesaplanabilir.
 
-| Risk tespiti | Algılama türü | Açıklama |
+| Risk algılama | Algılama türü | Açıklama |
 | --- | --- | --- |
-| Anonim IP adresi | Gerçek zamanlı | Bu risk algılama türü, anonim bir IP adresinden (örneğin, Tor tarayıcısı veya anonim VPN) oturum açma ları gösterir. Bu IP adresleri genellikle giriş telemetrilerini (IP adresi, konum, aygıt, vb.) kötü amaçlı olarak gizlemek isteyen aktörler tarafından kullanılır. |
-| Atipik seyahat | Çevrimdışı | Bu risk algılama türü, geçmiş davranışlar göz önüne alındığında, konumlardan en az birinin kullanıcı için atipik olabileceği coğrafi olarak uzak konumlardan kaynaklanan iki oturum açma yı tanımlar. Diğer bazı faktörlerin yanı sıra, bu makine öğrenme algoritması, iki oturum açma arasındaki süreyi ve kullanıcının ilk konumdan ikinci ye seyahat etmesi için gereken süreyi dikkate alır ve farklı bir kullanıcının aynı Kimlik bilgi -leri. <br><br> Algoritma, VPN'ler ve kuruluştaki diğer kullanıcılar tarafından düzenli olarak kullanılan konumlar gibi imkansız seyahat koşullarına katkıda bulunan bariz "yanlış pozitifleri" yok sayar. Sistem, 14 gün veya 10 giriş en erken bir başlangıç öğrenme süresi vardır, bu süre boyunca yeni bir kullanıcının oturum açma davranışını öğrenir. |
-| Kötü amaçlı yazılım bağlantılı IP adresi | Çevrimdışı | Bu risk algılama türü, bir bot sunucusuyla etkin olarak iletişim kurduğu bilinen kötü amaçlı yazılımla enfekte olan IP adreslerinden oturum açma ları gösterir. Bu algılama, kullanıcının cihazının IP adreslerinin, bot sunucusu etkinken bir bot sunucusuyla temas halinde olan IP adresleriyle ilişkilendirilerek belirlenir. |
-| Bilmediğiniz oturum açma özellikleri | Gerçek zamanlı | Bu risk algılama türü, anormal işaret-ins aramak için geçmiş oturum geçmişi (IP, Enlem / Boylam ve ASN) dikkate alır. Sistem, kullanıcı tarafından kullanılan önceki konumlar la ilgili bilgileri depolar ve bu "tanıdık" konumları dikkate alır. Oturum açma, tanıdık konumlar listesinde zaten olmayan bir konumdan gerçekleştiğinde risk algılama tetiklenir. Yeni oluşturulan kullanıcılar, algoritmalarımız kullanıcının davranışını öğrenirken, yabancı oturum açma özelliklerinin risk tespitlerinin kapatılacağı bir süre için "öğrenme modunda" olacaktır. Öğrenme modu süresi dinamiktir ve algoritmanın kullanıcının oturum açma desenleri hakkında yeterli bilgi toplamasının ne kadar zaman aldığına bağlıdır. Minimum süre beş gündür. Bir kullanıcı uzun bir hareketsizlik döneminden sonra öğrenme moduna geri dönebilir. Sistem ayrıca, tanıdık aygıtlardan gelen oturum açma ları ve coğrafi olarak tanıdık bir konuma yakın olan konumları da yok sayar. <br><br> Bu algılamayı temel kimlik doğrulama (veya eski protokoller) için de çalıştırıyoruz. Bu protokoller istemci kimliği gibi modern özelliklere sahip olmadığından, yanlış pozitifleri azaltmak için sınırlı bir telemetri vardır. Müşterilerimizin modern kimlik doğrulamasına geçmelerini öneririz. |
-| Yönetici doğruladı kullanıcı tehlikeye | Çevrimdışı | Bu algılama, bir yöneticinin Riskli kullanıcı Kullanıcı UI'sinde 'Kullanıcının gizliliğini bozun' veya riskli Kullanıcı API'sini kullanarak 'Kullanıcının gizliliğini bozun' seçtiğini gösterir. Hangi yöneticinin bu kullanıcının gizliliğini ihlal ettiğine dair onayını almak için, kullanıcının risk geçmişini kontrol edin (Kullanıcı arabirimi veya API üzerinden). |
-| Kötü amaçlı IP adresi | Çevrimdışı | Bu algılama, kötü amaçlı bir IP adresinden oturum açmayı gösterir. IP adresi, IP adresinden veya diğer IP itibar kaynaklarından alınan geçersiz kimlik bilgileri nedeniyle yüksek hata oranlarına bağlı olarak kötü amaçlı olarak kabul edilir. |
-| Şüpheli gelen kutusu düzenleme kuralları | Çevrimdışı | Bu algılama Microsoft [Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules)tarafından keşfedilmiştir. Bu algılama, ortamınızın profilini koyar ve iletileri veya klasörleri kullanıcının gelen kutusunda silen veya hareket ettiren şüpheli kurallar ayarlandığında uyarıları tetikler. Bu, kullanıcının hesabının gizliliğinin ihlal edildiğini, iletilerin kasıtlı olarak gizlendiğini ve posta kutusunun kuruluşunuzdaki istenmeyen postaları veya kötü amaçlı yazılımları dağıtmak için kullanıldığını gösterebilir. |
-| Mümkün olmayan seyahat | Çevrimdışı | Bu algılama Microsoft [Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel)tarafından keşfedilmiştir. Bu algılama, kullanıcının ilk konumdan ikinci konuma seyahat etmesini gerektiren süreden daha kısa bir süre içinde coğrafi olarak uzak yerlerden kaynaklanan iki kullanıcı faaliyetini (tek veya birden çok oturumdur) tanımlar ve farklı bir kullanıcıaynı kimlik bilgilerini kullanıyor. |
+| Anonim IP adresi | Gerçek zamanlı | Bu risk algılama türü, anonim bir IP adresinden (örneğin, Tor tarayıcısı veya anonim VPN) oturum açma işlemlerini gösterir. Bu IP adresleri genellikle kötü amaçlı olabilecek bir amaç için oturum açma telemetrisini (IP adresi, konum, cihaz vb.) gizlemek isteyen aktörler tarafından kullanılır. |
+| Atipik seyahat | Çevrimdışı | Bu risk algılama türü, coğrafi olarak uzak konumlardan kaynaklanan iki oturum açma işlemini tanımlar. Bu konumlar, konumların en az birinin Kullanıcı için de normal bir şekilde (geçmiş davranışa göre) de olabileceğini belirtir. Bu makine öğrenimi algoritması, farklı bir kullanıcının aynı kimlik bilgilerini kullandığını belirten, iki oturum açma işlemi ve kullanıcının ilk konumdan ikincisine geçebileceği zaman arasındaki süreyi dikkate alır. <br><br> Algoritma, kuruluştaki diğer kullanıcılar tarafından düzenli olarak kullanılan VPN 'Ler ve konumlar gibi mümkün olmayan seyahat koşullarına katkıda bulunan açık "yanlış pozitif sonuçlar" i yoksayar. Sistemin ilk öğrenme süresi en fazla 14 gün veya 10 oturum açma, yeni bir kullanıcının oturum açma davranışını öğreniyor. |
+| Kötü amaçlı yazılım bağlı IP adresi | Çevrimdışı | Bu risk algılama türü, bir bot sunucusuyla etkin bir şekilde iletişim kuran bilinen kötü amaçlı yazılımdan etkilenen IP adreslerinden oturum açma işlemlerini gösterir. Bu algılama, Kullanıcı cihazının IP adresleri, bot sunucusu etkinken bir bot sunucusu ile iletişim içinde olan IP adreslerine göre belirlenir. |
+| Bilmediğiniz oturum açma özellikleri | Gerçek zamanlı | Bu risk algılama türü, anormal oturum açma işlemlerini aramak için geçen oturum açma geçmişini (IP, Enlem/Boylam ve ASN) dikkate alır. Sistem, bir kullanıcı tarafından kullanılan önceki konumlara ilişkin bilgileri depolar ve bu "tanıdık" konumları dikkate alır. Risk algılama, oturum açma, zaten tanıdık konumlar listesinde olmayan bir konumdan gerçekleştirildiğinde tetiklenir. Yeni oluşturulan kullanıcılar "öğrenme modunda", algoritmalarımız kullanıcının davranışını öğrenirken, bilinmeyen oturum açma özelliklerinin risk algılamalarının devre dışı bırakıldığına ilişkin bir süre için "öğrenme modunda" olacaktır. Öğrenme modu süresi dinamiktir ve kullanıcının oturum açma desenleriyle ilgili yeterli bilgi toplamak için algoritmanın ne kadar zaman aldığını bağlıdır. En kısa süre beş gündür. Bir Kullanıcı, uzun bir süre etkinlik dışı kaldıktan sonra öğrenme moduna geçebilir. Sistem ayrıca tanıdık cihazlardan oturum açma işlemlerini ve coğrafi olarak tanıdık bir konuma yakın konumları yoksayar. <br><br> Bu algılamayı Ayrıca temel kimlik doğrulaması (veya eski protokoller) için de çalıştırdık. Bu protokollerin istemci KIMLIĞI gibi modern özellikleri olmadığından, hatalı pozitif sonuçları azaltmak için sınırlı telemetri vardır. Müşterilerimizin modern kimlik doğrulamasına taşınmasını öneririz. |
+| Yönetici tarafından onaylanan Kullanıcı güvenliği aşılmış | Çevrimdışı | Bu algılama, bir yöneticinin riskli kullanıcılar Kullanıcı arabiriminde veya riskyUsers API 'sini kullanarak ' Kullanıcı güvenliğinin aşılmasına karşı ' yı seçtiğinizi gösterir. Bu kullanıcının hangi yönetici tarafından tehlikede olduğunu görmek için kullanıcının risk geçmişini (UI veya API aracılığıyla) denetleyin. |
+| Kötü amaçlı IP adresi | Çevrimdışı | Bu algılama, kötü amaçlı bir IP adresinden oturum açma işlemini gösterir. IP adresi veya diğer IP saygınlığı kaynaklarından alınan geçersiz kimlik bilgileri nedeniyle, bir IP adresi yüksek hata ücretleri temelinde kötü amaçlı olarak değerlendirilir. |
+| Şüpheli gelen kutusu düzenleme kuralları | Çevrimdışı | Bu algılama [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules)tarafından keşfedilir. Bu algılama, ortamınızı profiller ve iletileri veya klasörleri silen veya taşıyan şüpheli kurallar bir kullanıcının gelen kutusunda ayarlandığında uyarıları tetikler. Bu, Kullanıcı hesabının tehlikeye girdiği, iletilerin kasıtlı olarak gizlendiğini ve posta kutusunun kuruluşunuzda istenmeyen posta veya kötü amaçlı yazılım dağıtmak için kullanıldığını gösterebilir. |
+| Mümkün olmayan seyahat | Çevrimdışı | Bu algılama [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel)tarafından keşfedilir. Bu algılama, farklı bir kullanıcının aynı kimlik bilgilerini kullandığını gösteren bir zaman dilimi içinde coğrafi olarak uzak konumların ikinci kez, ilk konumdan saniye içinde hareket etmek için geçen süreden daha kısa bir süre içinde olan iki kullanıcı etkinliğini tanımlar (tek veya birden çok oturumdur). |
 
-### <a name="other-risk-detections"></a>Diğer risk tespitleri
+### <a name="other-risk-detections"></a>Diğer risk algılamaları
 
-| Risk tespiti | Algılama türü | Açıklama |
+| Risk algılama | Algılama türü | Açıklama |
 | --- | --- | --- |
-| Ek risk algılandı | Gerçek zamanlı veya Çevrimdışı | Bu algılama, yukarıdaki premium algılamalardan birinin algılandığını gösterir. Premium algılamalar yalnızca Azure AD Premium P2 müşterileri tarafından görülebildiğinden, Azure AD Premium P2 lisansı olmayan müşteriler için "ek risk algılanır". |
+| Ek risk algılandı | Gerçek zamanlı veya çevrimdışı | Bu algılama, yukarıdaki Premium algılamalardan birinin algılandığını gösterir. Premium algılamalar yalnızca Azure AD Premium P2 müşterilerine görünür olduğundan, müşteriler için Azure AD Premium P2 lisansları olmayan "ek risk algılandı" olarak adlandırılmış olurlar. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Riskleri azaltmak için kullanılabilen politikalar](concept-identity-protection-policies.md)
+- [Riskleri azaltmak için kullanılabilir ilkeler](concept-identity-protection-policies.md)
 
 - [Güvenliğe genel bakış](concept-identity-protection-security-overview.md)

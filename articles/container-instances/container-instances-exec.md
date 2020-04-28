@@ -1,34 +1,34 @@
 ---
 title: Çalışan kapsayıcı örneğinde komutları yürütme
-description: Şu anda Azure Kapsayıcı Örnekleri'nde çalışan bir kapsayıcıda komutu nasıl yürütteceklerini öğrenin
+description: Azure Container Instances ' de çalışmakta olan bir kapsayıcıda bir komutu nasıl yürütebileceğinizi öğrenin
 ms.topic: article
 ms.date: 03/30/2018
 ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247208"
 ---
-# <a name="execute-a-command-in-a-running-azure-container-instance"></a>Çalışan bir Azure kapsayıcı örneğinde komut uygulama
+# <a name="execute-a-command-in-a-running-azure-container-instance"></a>Çalışan bir Azure Container Instance 'da bir komut yürütün
 
 Azure Container Instances, çalışmakta olan bir kapsayıcıda komut yürütülmesini destekler. Zaten başlattığınız bir kapsayıcıda komut yürütmek, özellikle de uygulama geliştirme ve sorun giderme sırasında kullanışlıdır. Bu özelliğin en yaygın kullanım örneği, çalışan bir kapsayıcıdaki sorunlarla ilgili hata ayıklama gerçekleştirmek amacıyla etkileşimli bir kabuk başlatmaktır.
 
-## <a name="run-a-command-with-azure-cli"></a>Azure CLI ile komut çalıştırma
+## <a name="run-a-command-with-azure-cli"></a>Azure CLı ile bir komut çalıştırma
 
-[Azure CLI'de][azure-cli] [az kapsayıcı yöneticisi][az-container-exec] olan çalışan bir kapsayıcıda komut uygulayın:
+[Azure CLI][azure-cli]'de [az Container exec][az-container-exec] ile çalışan bir kapsayıcıda bir komut yürütün:
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"
 ```
 
-Örneğin, bir Nginx konteyner bir Bash kabuk başlatmak için:
+Örneğin, bir NGINX kapsayıcısında bash kabuğu başlatmak için:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
 ```
 
-Aşağıdaki örnek çıktıda, Bash kabuğu çalışan bir Linux konteynerinde başlatılır `ls` ve bu da yürütülen bir terminal sağlar:
+Aşağıdaki örnek çıktıda, bash kabuğu çalışan bir Linux kapsayıcısında başlatılır ve içinde `ls` yürütülen bir Terminal sağlanır:
 
 ```output
 root@caas-83e6c883014b427f9b277a2bba3b7b5f-708716530-2qv47:/# ls
@@ -39,7 +39,7 @@ exit
 Bye.
 ```
 
-Bu örnekte, Komut İstemi çalışan bir Nanoserver kapsayıcısında başlatılır:
+Bu örnekte, komut Istemi çalışan bir Nanoserver kapsayıcısında başlatılır:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
@@ -72,9 +72,9 @@ Bye.
 
 ## <a name="multi-container-groups"></a>Birden çok kapsayıcılı gruplar
 
-Kapsayıcı [grubunuzun](container-instances-container-groups.md) uygulama kapsayıcısı ve günlük kenar arabası gibi birden çok kapsayıcısı varsa, komutu `--container-name`çalıştıracak kapsayıcının adını belirtin.
+[Kapsayıcı grubunuz](container-instances-container-groups.md) , uygulama kapsayıcısı ve günlük arabası gibi birden çok kapsayıcıyla, komutun çalıştırılacağı kapsayıcının adını belirtin `--container-name`.
 
-Örneğin, konteyner grubunda *mynginx* iki kap, *nginx-app* ve *logger*vardır. *Nginx-app* konteyner üzerinde bir kabuk başlatmak için:
+Örneğin, *myngınx* kapsayıcı grubunda iki kapsayıcı, *NGINX-App* ve *günlükçü*vardır. *NGINX-uygulama* kapsayıcısında bir kabuğu başlatmak için:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --container-name nginx-app --exec-command "/bin/bash"
@@ -82,11 +82,11 @@ az container exec --resource-group myResourceGroup --name mynginx --container-na
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
-Azure Kapsayıcı Örnekleri şu anda [az kapsayıcı yöneticisiyle][az-container-exec]tek bir işlem başlatmayı destekler ve komut bağımsız değişkenlerini geçiremezsiniz. Örneğin, 'deki `sh -c "echo FOO && echo BAR"`gibi komutları zincirleyemez `echo FOO`siniz veya yürütemezsiniz.
+Azure Container Instances Şu anda [az Container exec][az-container-exec]ile tek bir işlem başlatmayı destekler ve komut bağımsız değişkenlerini geçiremezsiniz. Örneğin, veya gibi `sh -c "echo FOO && echo BAR"`komutları zincirlenemez. `echo FOO`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Kapsayıcı Örnekleri'ndeki Sorun Giderme kapsayıcısı ve dağıtım sorunlarındaki](container-instances-troubleshooting.md)diğer sorun giderme araçları ve yaygın dağıtım sorunları hakkında bilgi edinin.
+[Azure Container Instances 'de kapsayıcı ve dağıtım sorunlarını gidermeye yönelik](container-instances-troubleshooting.md)diğer sorun giderme araçları ve yaygın dağıtım sorunları hakkında bilgi edinin.
 
 <!-- LINKS - internal -->
 [az-container-create]: /cli/azure/container#az-container-create

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Connect SSS - | Microsoft Dokümanlar
-description: Bu makalede, Azure AD Connect hakkında sık sorulan sorular yanıtlanmaktadır.
+title: Azure Active Directory Connect SSS-| Microsoft Docs
+description: Bu makale Azure AD Connect hakkında sık sorulan soruları yanıtlar.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,261 +16,261 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5aa30bc819531ee8cc9cd337648a6cbc661bb29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77149822"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect SSS
 
-## <a name="general-installation"></a>Genel kurulum
+## <a name="general-installation"></a>Genel yükleme
 
-**S: Güvenlik saldırısı yüzeyini azaltmak için Azure AD Connect sunucumu nasıl sertleştiririm?**
+**S: güvenlik saldırısı yüzeyini azaltmak için Azure AD Connect sunucudan nasıl HARG olabilirim?**
 
-Microsoft, BT ortamınızın bu kritik bileşeni için güvenlik saldırı yüzeyini azaltmak için Azure AD Connect sunucunuzun sertleştirmesini önerir.  Aşağıdaki önerileri izleyerek kuruluşunuz için güvenlik riskleri azalacaktır.
+Microsoft, BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltmak için Azure AD Connect sunucunuzu sağlamlaştırmanızı önerir.  Aşağıdaki önerilerin ardından kuruluşunuza yönelik güvenlik riskleri azalır.
 
-* Azure AD Connect'i bir etki alanı bağlantılı sunucuda dağıtın ve etki alanı yöneticilerine veya sıkı denetimaltındaki diğer güvenlik gruplarına yönetim erişimi kısıtlama
+* Etki alanına katılmış bir sunucuda Azure AD Connect dağıtma ve etki alanı yöneticilerine veya daha sıkı denetlenen güvenlik gruplarına yönetici erişimini kısıtlama
 
 Daha fazla bilgi için bkz: 
 
-* [Yönetici gruplarını güvence altına alma](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+* [Yöneticiler gruplarının güvenliğini sağlama](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
 * [Yerleşik yönetici hesaplarının güvenliğini sağlama](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
 
-* [Saldırı yüzeylerini azaltarak güvenlik iyileştirme ve sürdürme](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+* [Saldırı yüzeylerini azaltarak güvenlik iyileştirmesi ve sürdürülebilirlik](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
 
 * [Active Directory saldırı yüzeyini azaltma](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
-**S: Azure Etkin Dizin (Azure AD) Global Yöneticisi'nde iki faktörlü kimlik doğrulama (2FA) etkinleştirilmişse yükleme çalışır mı?**  
-Şubat 2016'dan itibaren bu senaryo desteklenir.
+**S: Azure Active Directory (Azure AD) genel yöneticisinin iki öğeli kimlik doğrulaması (2FA) etkinse, yükleme işi yapılacak.**  
+Şubat 2016 Derlemeleriyle, bu senaryo desteklenir.
 
-**S: Azure AD Connect'i gözetimsiz yüklemenin bir yolu var mı?**  
-Azure AD Connect yüklemesi yalnızca yükleme sihirbazını kullandığınızda desteklenir. Gözetimsiz, sessiz bir yükleme desteklenmez.
+**S: Azure AD Connect katılımsız olarak yüklemek için bir yol var mı?**  
+Azure AD Connect yükleme yalnızca yükleme sihirbazını kullandığınızda desteklenir. Katılımsız, sessiz yükleme desteklenmez.
 
-**S: Bir etki alanına ulaşılamayan bir ormanım var. Azure AD Connect'i nasıl yüklerim?**  
-Şubat 2016'dan itibaren bu senaryo desteklenir.
+**S: bir etki alanına başvurmayan bir ormanım var. Nasıl yaparım? Azure AD Connect yüklensin mi?**  
+Şubat 2016 Derlemeleriyle, bu senaryo desteklenir.
 
-**S: Azure Active Directory Domain Services (Azure AD DS) sağlık aracısı sunucu çekirdeğinde çalışıyor mu?**  
-Evet. Aracıyı yükledikten sonra aşağıdaki PowerShell cmdlet'i kullanarak kayıt işlemini tamamlayabilirsiniz: 
+**S: Azure Active Directory Domain Services (Azure AD DS) sistem durumu Aracısı sunucu çekirdeği üzerinde çalışıyor mu?**  
+Evet. Aracıyı yükledikten sonra, aşağıdaki PowerShell cmdlet 'ini kullanarak kayıt işlemini tamamlayabilirsiniz: 
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
 
-**S: Azure AD Connect, iki etki alanından Azure AD'ye eşitlenmeyi destekler mi?**  
-Evet, bu senaryo desteklenir. Birden [Çok Etki Alanına](how-to-connect-install-multiple-domains.md)bakın.
+**S: iki etki alanından bir Azure AD ile eşitleme Azure AD Connect destekler mi?**  
+Evet, bu senaryo desteklenir. [Birden çok etki alanına](how-to-connect-install-multiple-domains.md)bakın.
  
-**S: Azure AD Connect'te aynı Active Directory etki alanı için birden çok bağlayıcınız olabilir mi?**  
-Hayır, aynı AD etki alanı için birden çok bağlayıcı desteklenmez. 
+**S: Azure AD Connect aynı Active Directory etki alanı için birden çok bağlayıcı olabilir mi?**  
+Hayır, aynı AD etki alanı için birden fazla bağlayıcı desteklenmez. 
 
-**S: Azure AD Connect veritabanını yerel veritabanından uzak bir SQL Server örneğine taşıyabilir miyim?**   
-Evet, aşağıdaki adımlar bunun nasıl yapılacılailgili genel yürütülüyor Şu anda daha ayrıntılı bir belge üzerinde çalışıyoruz.
+**S: Azure AD Connect veritabanını yerel veritabanından uzak SQL Server örneğine taşıyabilir miyim?**   
+Evet, aşağıdaki adımlar bunu nasıl yapabileceğine ilişkin genel yönergeler sağlar. Şu anda daha ayrıntılı bir belge üzerinde çalışıyoruz.
 1. LocalDB ADSync veritabanını yedekleyin.
-Bunu yapmanın en basit yolu, Azure AD Connect ile aynı makinede yüklü olan SQL Server Management Studio'yu kullanmaktır. Bağlanın *(LocalDb).\ADSync*ve ardından ADSync veritabanını yedekleyin.
+Bunu yapmanın en kolay yolu, Azure AD Connect aynı makinede yüklü SQL Server Management Studio kullanmaktır. *(LocalDB) .\ADSync*öğesine bağlanın ve ardından ADSync veritabanını yedekleyin.
 
-2. ADSync veritabanını uzak SQL Server örneğinize geri yükleyin.
+2. ADSync veritabanını uzak SQL Server örneğine geri yükleyin.
 
-3. Azure AD Connect'i varolan [uzak SQL veritabanına](how-to-connect-install-existing-database.md)yükleyin.
-   Makale, yerel bir SQL veritabanı kullanarak nasıl geçirilmeye nasıl yol açtığını gösterir. Uzak bir SQL veritabanı nı kullanmaya geçiş yapıyorsunuzsa, işlemin adım 5'inde Windows Sync hizmetinin çalışacağı varolan bir hizmet hesabı da girmeniz gerekir. Bu eşitleme motoru hizmet hesabı burada açıklanmıştır:
+3. Azure AD Connect mevcut [uzak SQL veritabanına](how-to-connect-install-existing-database.md)karşı yükler.
+   Makalesinde yerel bir SQL veritabanı kullanılarak nasıl geçiş yapılacağı gösterilir. ' I uzak bir SQL veritabanı kullanarak geçiriyorsanız, işlemin 5. adımında, Windows eşitleme hizmeti 'nin çalışacağı mevcut bir hizmet hesabını da girmeniz gerekir. Bu eşitleme altyapısı hizmet hesabı aşağıda açıklanmıştır:
    
-      **Varolan bir hizmet hesabı kullanın**: Varsayılan olarak, Azure AD Connect kullanılacak eşitleme hizmetleri için sanal bir hizmet hesabı kullanır. Uzak bir SQL Server örneğini kullanıyorsanız veya kimlik doğrulaması gerektiren bir proxy kullanıyorsanız, etki alanında yönetilen bir hizmet hesabı veya hizmet hesabı kullanın ve parolayı bilin. Bu gibi durumlarda kullanılacak olan hesabı girin. Yüklemeyi çalıştıran kullanıcıların, hizmet hesabı için giriş kimlik bilgilerinin oluşturulabilmesi için SQL'de sistem yöneticileri olduğundan emin olun. Daha fazla bilgi için Azure [AD Connect hesaplarını ve izinlerine](reference-connect-accounts-permissions.md#adsync-service-account)bakın. 
+      **Mevcut bir hizmet hesabını kullan**: varsayılan olarak, Azure AD Connect eşitleme hizmetlerinin kullanması için bir sanal hizmet hesabı kullanır. Uzak bir SQL Server örneği kullanıyorsanız veya kimlik doğrulaması gerektiren bir proxy kullanıyorsanız, bir yönetilen hizmet hesabı veya etki alanında bir hizmet hesabı kullanın ve parolayı öğrenin. Bu gibi durumlarda kullanılacak olan hesabı girin. Yüklemeyi çalıştıran kullanıcıların, hizmet hesabı için oturum açma kimlik bilgilerinin oluşturulabilmesi için SQL 'de sistem yöneticileri olduğundan emin olun. Daha fazla bilgi için bkz. [Azure AD Connect hesapları ve izinleri](reference-connect-accounts-permissions.md#adsync-service-account). 
    
-      En son sürümle, veritabanını sağlama, artık SQL yöneticisi tarafından bant dışında gerçekleştirilebilir ve ardından veritabanı sahibi haklarıyla Azure AD Connect yöneticisi tarafından yüklenebilir. Daha fazla bilgi için bkz: [SQL temsilciyönetici izinlerini kullanarak Azure AD Bağlantısını Yükle.](how-to-connect-install-sql-delegation.md)
+      En son sürümle, veritabanını sağlama, artık SQL yöneticisi tarafından bant dışında gerçekleştirilebilir ve ardından veritabanı sahibi haklarıyla Azure AD Connect yöneticisi tarafından yüklenebilir. Daha fazla bilgi için bkz. [SQL Temsilcili yönetici izinleri kullanarak Azure AD Connect yüklemesi](how-to-connect-install-sql-delegation.md).
 
-İşleri basit tutmak için Azure AD Connect'i yükleyen kullanıcıların SQL'de sistem yöneticisi olmasını öneririz. Ancak, son yapılarda artık, [Sql temsilci yönetici izinlerini kullanarak Azure AD Connect'i yükleyin'de](how-to-connect-install-sql-delegation.md)açıklandığı gibi, devralınan SQL yöneticilerini kullanabilirsiniz.
+Şeyleri basit tutmak için, Azure AD Connect yükleyen kullanıcıların SQL 'de sistem yöneticileri olması önerilir. Ancak, son derlemeler sayesinde, [SQL yönetici temsilcisi izinlerini kullanarak Azure AD Connect yüklemesi](how-to-connect-install-sql-delegation.md)bölümünde açıklandığı gibi, artık atanmış SQL yöneticileri kullanabilirsiniz.
 
-**S: Alanında en iyi uygulamalardan bazıları nelerdir?**  
+**S: alandan en iyi uygulamalardan bazıları nelerdir?**  
 
-Aşağıda, mühendislik, destek ve danışmanlarımızın yıllar içinde geliştirdiği en iyi uygulamalardan bazılarını sunan bir bilgilendirme belgesi veremilmektedir.  Bu hızlı bir şekilde başvurulabilir bir madde işareti listesinde sunulur.  Bu liste kapsamlı olmaya çalışsa da, henüz listede yer alamayabilecek ek en iyi uygulamalar olabilir.
+Aşağıda, mühendislik, destek ve danışmanlarımızın yıllarca geliştirildiği en iyi uygulamalardan bazılarını sunan bilgilendirici bir belgedir.  Bu, hızlı bir şekilde başvurulabilen bir madde işareti listesinde sunulmaktadır.  Bu liste kapsamlı bir hale getirmeye çalışsa da, listede henüz yapılmamış olabilecek ek en iyi uygulamalar olabilir.
 
-- Tam SQL kullanıyorsanız, o zaman yerel vs uzak kalmalıdır
-    - Daha az atlama
-    - Sorun giderme daha kolay
+- Tam SQL kullanılıyorsa, yerel ve uzak kalacak
+    - Daha az sıçrama
+    - Sorun gidermek daha kolay
     - Daha az karmaşıklık
-    - Kaynakları SQL'e atamalı ve Azure AD Connect ve OS için ek ek ek intiaça izin vermeli
-- Proxy'yi mümkünse atlayın, proxy'yi atlayamıyorsanız zaman atlama değerinin 5 dakikadan büyük olduğundan emin olmanız gerekir.
-- Proxy gerekiyorsa, proxy'yi machine.config dosyasına eklemeniz gerekir
-- Yerel SQL işleri ve bakım ve bunların Azure AD Connect'i nasıl etkileyeceğini ve özellikle yeniden dizine alma hakkında bilgi edinin
-- DNS'nin harici olarak çözebileceğinden emin olun
-- Fiziksel veya sanal sunucular kullanıyor olun sunucu [belirtimlerinin](how-to-connect-install-prerequisites.md#hardware-requirements-for-azure-ad-connect) öneri başına olduğundan emin olun
-- Sanal bir sunucu kullanıyorsanız, gerekli kaynakların özel olduğundan emin olun
-- Disk ve disk yapılandırmasının SQL Server için En İyi Uygulamalarla buluştuğundan emin olun
-- İzleme için Azure AD Connect Health'i yükleme ve yapılandırma
-- Azure AD Connect'te yerleşik olan Silme Eşiğini kullanın.
-- Eklenebilecek tüm değişiklikler ve yeni öznitelikler için hazırlanmak üzere sürüm güncelleştirmelerini dikkatle gözden geçirin
-- Her şeyi yedekleme
-    - Yedek Anahtarlar
-    - Yedekleme Eşitleme Kuralları
-    - Yedek Sunucu Yapılandırması
-    - Yedekleme SQL Veritabanı
-- SQL VSS Writer olmadan SQL'i yedekleyen üçüncü taraf yedekleme aracıları olmadığından emin olun (üçüncü taraf anlık görüntüleri olan sanal sunucularda yaygındır)
-- Karmaşıklık ekledikçe kullanılan özel eşitleme kurallarının miktarını sınırlama
-- Azure AD Connect Sunucularını Tier 0 Sunucuları olarak ele
-- Etki ve doğru iş sürücüleri büyük anlamadan bulut senkronizasyon kurallarını değiştirme leery olun
-- Azure AD Connect ve Azure AD Connect Health desteği için doğru URL ve Güvenlik Duvarı bağlantı noktalarının açık olduğundan emin olun
-- Sorun giderme ve hayalet nesneleri önlemek için bulut filtreli öznitelikten yararlanın
-- Evreleme Sunucusu ile, sunucular arasında tutarlılık sağlamak için Azure AD Connect Yapılandırma Belgeleyicisini kullandığınızdan emin olun
-- Evreleme Sunucuları ayrı veri merkezlerinde olmalıdır (Fiziksel Konumlar
-- Evreleme sunucuları Yüksek Kullanılabilirlik çözümü olması amaçlanmaz, ancak birden çok evreleme sunucunuz olabilir
-- "Gecikme" Evreleme Sunucuları nın tanıtılması, hata durumunda bazı olası kapalı kalma sürelerini azaltabilir
-- Önce Evreleme Sunucusu'ndaki tüm yükseltmeleri test edin ve doğrulayın
-- Evreleme sunucusuna geçmeden önce her zaman dışa aktarmayı doğrulayın.  İş etkisini azaltmak için Tam İthalat ve Tam Eşitlemeler için hazırlama sunucusundan yararlanın
-- Azure AD Bağlantı Sunucuları arasında sürüm tutarlılığını mümkün olduğunca koruyun 
+    - Kaynakları SQL 'e atamanız ve Azure AD Connect ve işletim sistemi için ek yüke izin vermeniz gerekir
+- Tüm mümkünse proxy 'yi atla, proxy 'yi atlayadıysanız, zaman aşımı değerinin 5 dakikadan fazla olduğundan emin olmanız gerekir.
+- Proxy gerekliyse, proxy 'yi Machine. config dosyasına eklemeniz gerekir
+- Yerel SQL işlerinin ve bakımın yanı sıra Azure AD Connect-özellikle yeniden dizin oluşturma işlemlerini nasıl etkileyeceğini göz önünde bulundurun
+- DNS 'in dışarıdan çözümleyebileceğinden emin olun
+- Fiziksel veya sanal sunucuları kullanıp kullanmayacağınızı [sunucu belirtimlerinin](how-to-connect-install-prerequisites.md#hardware-requirements-for-azure-ad-connect) öneri başına olduğundan emin olun
+- Gerekli kaynakların ayrılmış olduğu bir sanal sunucu kullanıyorsanız emin olun
+- Disk ve disk yapılandırmasının SQL Server için En Iyi uygulamaları karşıladığından emin olun
+- İzleme için Azure AD Connect Health yükleyip yapılandırın
+- Azure AD Connect yerleşik olarak bulunan silme eşiğini kullanın.
+- Tüm değişiklikler ve eklenebilir yeni öznitelikler için hazırlanmaya yönelik sürüm güncelleştirmelerini dikkatle gözden geçirin
+- Her şeyi yedekle
+    - Yedekleme anahtarları
+    - Yedekleme eşitleme kuralları
+    - Yedekleme sunucusu yapılandırması
+    - SQL veritabanını yedekle
+- SQL VSS Yazıcı olmadan SQL 'i yedekleyen 3. taraf yedekleme Aracısı olmadığından emin olun (3. taraf anlık görüntülerle sanal sunucularda ortak)
+- Karmaşıklık ekleme için kullanılan özel eşitleme kuralları miktarını sınırlayın
+- Azure AD Connect sunucularını katman 0 sunucuları olarak değerlendir
+- Bulut eşitleme kurallarının etkisini ve doğru iş sürücülerini önemli ölçüde anlayabilmeksizin değiştirme
+- Azure AD Connect ve Azure AD Connect Health desteği için doğru URL 'nin ve güvenlik duvarı bağlantı noktalarının açık olduğundan emin olun
+- Hayalet nesneleri sorunlarını gidermek ve engellemek için, bulut filtrelenmiş özniteliğiyle yararlanın
+- Hazırlama sunucusu ile sunucular arasında tutarlılık için Azure AD Connect yapılandırma Belgeno ' nı kullandığınızdan emin olun
+- Hazırlama sunucuları ayrı veri merkezlerinde (fiziksel konumlar) olmalıdır
+- Hazırlama sunucularının yüksek kullanılabilirlik çözümü olması amaçlıyordu, ancak birden fazla hazırlama sunucunuz olabilir
+- "Gecikme" hazırlama sunucularına giriş, hata durumunda bazı olası kapalı kalma sürelerini azaltabileceği için
+- Önce hazırlama sunucusundaki tüm yükseltmeleri test edin ve doğrulayın
+- Hazırlama sunucusuna geçiş yapmadan önce her zaman dışarı aktarmaları doğrula.  Tam Içeri aktarmalar ve iş etkisini azaltmak için tam eşitlemeler hazırlama sunucusundan yararlanın
+- Azure AD Connect sunucular arasında sürüm tutarlılığını mümkün olduğunca koru 
 
-**S: Azure AD Connect'in Çalışma Grubu makinesinde Azure AD Bağlayıcısı hesabını oluşturmasına izin verebilir miyim?**
-Hayır.  Azure AD Connect'in Azure AD Bağlayıcısı hesabını otomatik olarak oluşturmasına izin vermek için makinenin etki alanına katılması gerekir.  
+**S: Azure AD Connect çalışma grubu makinesinde Azure AD bağlayıcı hesabı oluşturmasına izin verebilir miyim?**
+Hayır.  Azure AD Connect Azure AD Bağlayıcısı hesabını otomatik olarak oluşturmasına izin vermek için, makinenin etki alanına katılmış olması gerekir.  
 
 ## <a name="network"></a>Ağ
-**S: Bir güvenlik duvarım, ağ aygıtım veya bağlantıların ağımda açık kalabilecekleri süreyi sınırlayan başka bir şeyim var. Azure AD Connect'i kullandığımda istemci tarafı zaman ödeme eşiğim ne olmalıdır?**  
-Tüm ağ yazılımları, fiziksel aygıtlar veya bağlantıların açık kalabileceği maksimum süreyi sınırlayan herhangi bir şey, Azure AD Connect istemcisinin yüklü olduğu sunucu arasındaki bağlantı için en az beş dakika (300 saniye) bir eşik kullanmalıdır ve Azure Etkin Dizini. Bu öneri, daha önce yayımlanmış tüm Microsoft Identity eşitleme araçları için de geçerlidir.
+**S: bir güvenlik duvarım, ağ cihazım veya bağlantının ağımdaki açık kalabileceği süreyi sınırlayan başka bir şeydir. Azure AD Connect kullandığım zaman istemci tarafı zaman aşımı eşiğim ne olur?**  
+Tüm ağ yazılımı, fiziksel cihazlar veya bağlantıların açık kalabileceği en uzun süreyi sınırlayan diğer her şey, Azure AD Connect istemcisinin yüklendiği sunucu ile Azure Active Directory arasında bağlantı için en az beş dakika (300 saniye) uzunluğunda bir eşik kullanmalıdır. Bu öneri, daha önce yayınlanan tüm Microsoft Kimlik eşitlemesi araçları için de geçerlidir.
 
-**S: Tek etiketli etki alanları (SLD'ler) desteklendi mi?**  
-Bu ağ yapılandırmasına[(makaleye bakınız)](https://support.microsoft.com/help/2269810/microsoft-support-for-single-label-domains)karşı şiddetle tavsiye etsek de, tek bir düzey etki alanı için ağ yapılandırması düzgün çalıştığı sürece Azure AD Connect eşitlemeyi tek bir etiket etki alanıyla birlikte desteklenir.
+**S: tek etiketli etki alanları (SLDs) destekleniyor mu?**  
+Tek düzeyli etki alanı için ağ yapılandırması doğru şekilde çalıştığı sürece, bu ağ yapılandırmasına karşı ([bkz. makaleye bakın](https://support.microsoft.com/help/2269810/microsoft-support-for-single-label-domains)), tek etiketli bir etki alanıyla Azure AD Connect eşitleme kullanılması desteklenir.
 
-**S: Bağımsız AD alan ad alanadlarına sahip ormanlar desteklenir mi?**  
-Hayır, Azure AD Connect, ayrı ayrı ad alanları içeren şirket içi ormanları desteklemez.
+**S: kopuk AD etki alanları olan ormanlar destekleniyor mu?**  
+Hayır, Azure AD Connect ayrık ad alanları içeren şirket içi ormanları desteklemez.
 
-**S: "Noktalı" NetBIOS adları desteklendi mi?**  
-Hayır, Azure AD Connect, NetBIOS adının nokta içerdiği şirket içi ormanları veya etki alanlarını desteklemez (.).
+**S: "noktalı" NetBIOS adları destekleniyor mu?**  
+Hayır, Azure AD Connect NetBIOS adının bir nokta (.) içerdiği şirket içi ormanları veya etki alanlarını desteklemez.
 
-**S: Saf IPv6 ortamı desteklendi mi?**  
-Hayır, Azure AD Connect saf bir IPv6 ortamını desteklemez.
+**S: saf IPv6 ortamı destekleniyor mu?**  
+Hayır, Azure AD Connect saf IPv6 ortamını desteklemez.
 
-**S:I çok ormanlı bir ortama sahip olmak ve iki orman arasındaki ağ NAT (Ağ Adresi Çevirisi) kullanıyor. Bu iki orman arasında Azure AD Bağlantısı kullanmak desteklendi mi?**</br>
-Hayır, NAT üzerinden Azure AD Connect kullanmak desteklenmez. 
+**Q:ı Çok ormanlı bir ortama ve iki orman arasındaki ağa NAT (ağ adresi çevirisi) kullanılıyor. Bu iki ormanla desteklenen Azure AD Connect kullanıyor mu?**</br>
+Hayır, NAT üzerinden Azure AD Connect kullanılması desteklenmez. 
 
 ## <a name="federation"></a>Federasyon
-**S: Office 365 sertifikamı yenilememi isteyen bir e-posta alırsam ne yapmalıyım?**  
-Sertifikayı yenileme hakkında rehberlik için [sertifikaları yenileme'ye](how-to-connect-fed-o365-certs.md)bakın.
+**S: Office 365 sertifikamı yenilediğimi soran bir e-posta alırsanız ne yapmalıyım?**  
+Sertifikayı yenileme hakkında rehberlik için bkz. [sertifikaları yenileme](how-to-connect-fed-o365-certs.md).
 
-**S: Office 365'e güvenen taraf için "Güvenen tarafı otomatik olarak güncelleştir" ayarladım. Belirteç imzalama sertifikam otomatik olarak devrildiğinde herhangi bir işlem yapmak zorunda mıyım?**  
-Makalede özetlenen sertifikaları [yenileme](how-to-connect-fed-o365-certs.md)kılavuzunu kullanın.
+**S: Office 365 bağlı olan taraf için "bağlı olan taraf otomatik olarak güncelleştir" kümesini aldım. Belirteç imzalama sertifikamın üzerine otomatik olarak kayıt yapması durumunda herhangi bir işlem yapmam gerekir mi?**  
+[Sertifikaları yenileme](how-to-connect-fed-o365-certs.md)makalesinde özetlenen kılavuzu kullanın.
 
 ## <a name="environment"></a>Ortam
-**S: Azure AD Connect yüklendikten sonra sunucunun yeniden adını almak desteklendi mi?**  
-Hayır. Sunucu adının değiştirilmesi, eşitleme altyapısının SQL veritabanı örneğine bağlanamamasını sağlar ve hizmet başlatılamaz.
+**S: Azure AD Connect yüklendikten sonra sunucunun yeniden adlandırılması destekleniyor mu?**  
+Hayır. Sunucu adının değiştirilmesi, eşitleme altyapısının SQL veritabanı örneğine bağlanamamasıyla bağlantı kuramıyor ve hizmet başlatılamıyor.
 
-**S: Yeni Nesil Şifreleme (NGC) eşitleme kuralları FIPS özellikli bir makinede desteklenir mi?**  
+**S: bir sonraki nesil şifreleme (NGC) eşitleme kuralları FIPS özellikli bir makinede destekleniyor mu?**  
 Hayır.  Bu, desteklenmeyen bir durumdur.
 
-**S. Azure portalında senkronize edilmiş bir aygıtı (örneğin: HAADJ) devre dışı bıraktıysam, neden yeniden etkinleştirilir?**<br>
-Senkronize aygıtlar şirket içinde yazılabilir veya kullanılabilir. İşyerinde eşitlenmiş bir aygıt etkinleştirilirse, daha önce bir yönetici tarafından devre dışı bırakılmış olsa bile Azure portalında yeniden etkinleştirilebilir. Eşitlenmiş bir aygıtı devre dışı bırakın, bilgisayar hesabını devre dışı katmak için şirket içi Active Directory'yi kullanın.
+**S. Azure portal eşitlenmiş bir cihazı (örneğin: HASıFATı) devre dışı bırakırsanız, neden yeniden etkinleştirilmiştir?**<br>
+Eşitlenmiş cihazlar şirket içinde yazılmış veya ana kopyalı olabilir. Eşitlenmiş bir cihaz şirket içinde etkinleştirilirse, daha önce bir yönetici tarafından devre dışı bırakılmış olsa bile Azure portal yeniden etkinleştirilebilir. Eşitlenmiş bir cihazı devre dışı bırakmak için, bilgisayar hesabını devre dışı bırakmak üzere şirket içi Active Directory kullanın.
 
-**S. Senkronize edilmiş kullanıcılar için Office 365 veya Azure AD portalında kullanıcı oturum açmaoturumlarını engellersem, oturum açıldıktan sonra neden engellenir?**<br>
-Senkronize kullanıcılar şirket içinde yazılabilir veya üzerinde ustalanabilir. Hesap şirket içinde etkinleştirilirse, yönetici tarafından yerleştirilen oturum açma engelini kaldırabilir.
+**Soru-cevap kullanıcılar için Office 365 veya Azure AD portalında Kullanıcı oturum açmayı engellediğimde, yeniden oturum açmak için neden engellenmemiş?**<br>
+Eşitlenen kullanıcılar şirket içinde yazılabilir veya ana kopyalı olabilir. Hesap şirket içinde etkinleştirilirse, yönetici tarafından yerleştirilmiş oturum açma bloğunun engellemesini kaldırabilir.
 
 ## <a name="identity-data"></a>Kimlik verileri
-**S: Azure AD'deki userPrincipalName (UPN) özniteliği neden şirket içi UPN ile eşleşmiyor?**  
-Bilgi için şu makalelere bakın:
+**S: Azure AD 'deki userPrincipalName (UPN) özniteliği şirket içi UPN ile neden eşleşmiyor?**  
+Daha fazla bilgi için şu makalelere bakın:
 
-* [Office 365, Azure veya Intune'daki kullanıcı adları şirket içi UPN veya alternatif giriş kimliğiyle eşleşmiyor](https://support.microsoft.com/kb/2523192)
-* [Farklı bir federe etki alanı kullanmak için bir kullanıcı hesabının UPN'sini değiştirdikten sonra değişiklikler Azure Etkin Dizin eşitleme aracı tarafından eşitlenmez](https://support.microsoft.com/kb/2669550)
+* [Office 365, Azure veya Intune 'daki Kullanıcı adları şirket içi UPN veya alternatif oturum açma KIMLIĞIYLE eşleşmez](https://support.microsoft.com/kb/2523192)
+* [Kullanıcı hesabının UPN 'sini farklı bir Federasyon etki alanı kullanacak şekilde değiştirdikten sonra değişiklikler Azure Active Directory eşitleme aracı tarafından eşitlenmedi](https://support.microsoft.com/kb/2669550)
 
-Azure [AD Connect eşitleme hizmeti özelliklerinde](how-to-connect-syncservice-features.md)açıklandığı gibi, eşitleme altyapısının UPN'yi güncelleştirmesine izin verecek şekilde Azure AD'yi de yapılandırabilirsiniz.
+Azure AD 'yi, eşitleme altyapısının [Azure AD Connect eşitleme hizmeti özellikleri](how-to-connect-syncservice-features.md)bölümünde açıklandığı gıbı, UPN 'yi güncelleştirmesine izin verecek şekilde de yapılandırabilirsiniz.
 
-**S: Şirket içinde bir Azure REKLAM grubu yla veya varolan bir Azure REKLAM grubu veya ilgili kişi nesnesi ile ilgili nesneyi yumuşak eşleştirmek için desteklenir mi?**  
-Evet, bu yumuşak eşleşme proxyAddress dayanmaktadır. Yumuşak eşleştirme, posta etkin olmayan gruplar için desteklenmez.
+**S: şirket içi bir Azure AD grubu veya var olan bir Azure AD grubu ya da ilgili kişi nesnesiyle yazılım ile eşleştirmek için destekleniyor mu?**  
+Evet, bu yumuşak eşleşme proxyAddress tabanlıdır. Posta etkin olmayan gruplar için geçici eşleştirme desteklenmez.
 
-**S: ImmutableId özniteliğini varolan bir Azure REKLAM grubunda el ile ayarlamak veya ilgili kişi nesnesini şirket içi Bir Azure REKLAM grubu veya ilgili kişi nesnesi ile sıkı eşleştirmek için desteklenir mi?**  
-Hayır, ImmutableId özniteliğini varolan bir Azure REKLAM grubuna veya kişi nesnesine şu anda desteklenmiyor olan zor eşleşmeye göre el ile ayarlıyor.
+**S: var olan bir Azure AD grubunda ImmutableID özniteliğini el ile ayarlamak veya bir şirket içi Azure AD grubu veya ilgili kişi nesnesiyle sabit eşleşmesi için iletişim nesnesi mi istiyorsunuz?**  
+Hayır, var olan bir Azure AD grubunda veya ilgili kişi nesnesinde ImmutableID özniteliğini elle ayarlama işlemi şu anda desteklenmiyor.
 
 ## <a name="custom-configuration"></a>Özel yapılandırma
-**S: Azure AD Connect için PowerShell cmdlets nerede belgelenmiştir?**  
-Bu sitede belgelenen cmdletler dışında, Azure AD Connect'te bulunan diğer PowerShell cmdlet'ler müşteri kullanımı için desteklenmez.
+**S: Azure AD Connect için PowerShell cmdlet 'leri nerede belgelenmiştir?**  
+Bu sitede belgelenen cmdlet 'ler dışında, Azure AD Connect ' de bulunan diğer PowerShell cmdlet 'leri müşteri kullanımı için desteklenmez.
 
-**S: Yapılandırmayı sunucular arasında taşımak için Synchronization Service Manager'da bulunan "Sunucu dışa aktarma/sunucu alma" seçeneğini kullanabilir miyim?**  
-Hayır. Bu seçenek tüm yapılandırma ayarlarını almaz ve kullanılmamalıdır. Bunun yerine, ikinci sunucuda temel yapılandırmayı oluşturmak için sihirbazı kullanın ve sunucular arasında herhangi bir özel kuralı taşımak için PowerShell komut dosyaları oluşturmak için eşitleme kuralı düzenleyicisini kullanın. Daha fazla bilgi [için, Bkz. Swing geçiş.](how-to-upgrade-previous-version.md#swing-migration)
+**S: yapılandırmayı sunucular arasında taşımak için Synchronization Service Manager bulunan "sunucu dışarı aktarma/sunucu içeri aktarma" seçeneğini kullanabilir miyim?**  
+Hayır. Bu seçenek, tüm yapılandırma ayarlarını almaz ve kullanılmamalıdır. Bunun yerine, ikinci sunucuda temel yapılandırmayı oluşturmak için Sihirbazı kullanın ve sunucular arasında özel bir kural taşımak üzere PowerShell betikleri oluşturmak için eşitleme kuralı düzenleyicisini kullanın. Daha fazla bilgi için bkz. [esnek geçiş](how-to-upgrade-previous-version.md#swing-migration).
 
-**S: Parolalar Azure oturum açma sayfası için önbelleğe alınabilir ve *otomatik tamamlama = "false"* özniteliğiiçeren bir parola giriş öğesi içerdiği için bu önbelleğe alma önlenebilir mi?**  
-Şu anda, otomatik tamamlama etiketi de dahil olmak üzere **Parola** alanının HTML özniteliklerinin değiştirilmesi desteklenmez. Şu **anda, Parola** alanına herhangi bir öznitelik eklemenize olanak tanıyan özel JavaScript'e izin veren bir özellik üzerinde çalışıyoruz.
+**S: Azure oturum açma sayfası için parolalar önbelleğe alınabilir ve bu önbelleğe alma, *AutoComplete = "false"* özniteliğine sahip bir parola girişi öğesi içerdiği için önlenebilir mi?**  
+Şu anda, otomatik tamamlama etiketi de dahil olmak üzere **parola** alanının HTML özniteliklerini değiştirme desteklenmez. Şu anda özel JavaScript 'e izin veren bir özellik üzerinde çalışıyoruz. Bu, **parola** alanına herhangi bir öznitelik eklemenize olanak tanır.
 
-**S: Azure oturum açma sayfası, daha önce başarılı bir şekilde oturum açmış olan kullanıcıların kullanıcı adlarını görüntüler. Bu davranış kapatılabilir mi?**  
-Şu anda, otomatik tamamlama etiketi de dahil olmak üzere **Parola** giriş alanının HTML özniteliklerinin değiştirilmesi desteklenmez. Şu **anda, Parola** alanına herhangi bir öznitelik eklemenize olanak tanıyan özel JavaScript'e izin veren bir özellik üzerinde çalışıyoruz.
+**S: Azure oturum açma sayfası, daha önce başarıyla oturum açmış kullanıcıların kullanıcı adlarını görüntüler. Bu davranış kapalı olabilir mi?**  
+Şu anda, otomatik tamamlama etiketi de dahil olmak üzere **parola** GIRIŞI alanının HTML özniteliklerini değiştirme desteklenmez. Şu anda özel JavaScript 'e izin veren bir özellik üzerinde çalışıyoruz. Bu, **parola** alanına herhangi bir öznitelik eklemenize olanak tanır.
 
-**S: Eşzamanlı oturumları önlemenin bir yolu var mı?**  
+**S: eşzamanlı oturumları önlemenin bir yolu var mı?**  
 Hayır.
 
 ## <a name="auto-upgrade"></a>Otomatik yükseltme
 
-**S: Otomatik yükseltme kullanmanın avantajları ve sonuçları nelerdir?**  
-Azure AD Connect yüklemeleri için tüm müşterilere otomatik yükseltmeyi etkinleştirmelerini tavsiye ediyoruz. Bunun avantajı, Azure AD Connect'te bulunan güvenlik açıklarına yönelik güvenlik güncelleştirmeleri de dahil olmak üzere her zaman en son düzeltme ekilerini almanızdır. Yükseltme işlemi acısızdır ve yeni bir sürüm kullanılabilir olur bulunmaz otomatik olarak gerçekleşir. Binlerce Azure AD Connect müşterisi, her yeni sürümde otomatik yükseltme yi kullanır.
+**S: otomatik yükseltmeyi kullanmanın avantajları ve sonuçları nelerdir?**  
+Azure AD Connect yüklemeleri için otomatik yükseltmeyi etkinleştirmek üzere tüm müşterileri inceleyeceğiz. Avantajı, Azure AD Connect bulunan güvenlik açıklarına yönelik güvenlik güncelleştirmeleri de dahil olmak üzere her zaman en son düzeltme eklerini almanızı öneririz. Yükseltme işlemi çok daha azdır ve yeni bir sürüm kullanılabilir duruma geldiğinde otomatik olarak gerçekleşir. Birçok binlerce Azure AD Connect müşterisi, her yeni sürümde otomatik yükseltmeyi kullanır.
 
-Otomatik yükseltme işlemi her zaman ilk yüklemeotomatik yükseltme için uygun olup olmadığını belirler. Uygunsa, yükseltme gerçekleştirilir ve test edilir. Süreç aynı zamanda kurallara ve belirli çevresel faktörlere özel değişiklikler aramayı da içerir. Testler yükseltmenin başarısız olduğunu gösterirse, önceki sürüm otomatik olarak geri yüklenir.
+Otomatik yükseltme işlemi her zaman önce bir yüklemenin otomatik yükseltme için uygun olup olmadığını belirler. Uygun değilse, yükseltme gerçekleştirilir ve test edilir. İşlem ayrıca kurallara ve belirli ortam faktörlerine özel değişiklikler için arama de içerir. Testler bir yükseltmenin başarısız olduğunu göstermediğinde, önceki sürüm otomatik olarak geri yüklenir.
 
-Ortamın boyutuna bağlı olarak, işlem birkaç saat sürebilir. Yükseltme devam ederken, Windows Server Active Directory ile Azure AD arasında eşitleme olmaz.
+Ortamın boyutuna bağlı olarak, işlem birkaç saat sürebilir. Yükseltme devam ederken, Windows Server Active Directory ile Azure AD arasında eşitleme gerçekleşmez.
 
-**S: Benim otomatik yükseltme artık çalıştığını ve yeni bir sürümünü yüklemem gerektiğini söyleyen bir e-posta aldım. Bunu neden yapmam gerekiyor?**  
-Geçen yıl, belirli koşullar altında sunucunuzdaki otomatik yükseltme özelliğini devre dışı bırakabilecek bir Azure AD Connect sürümünü yayımladık. Azure AD Connect sürüm 1.1.750.0 sürümünde sorunu giderdik. Sorundan etkilendiyseniz, onarmak için bir PowerShell komut dosyası çalıştırarak veya Azure AD Connect'in en son sürümüne el ile yükselterek bu komut dosyasını azaltabilirsiniz. 
+**S: otomatik yükseltmem artık çalışmadığını söyleyen bir e-posta aldım ve yeni bir sürüm yüklemem gerekiyor. Neden bunu yapmam gerekir?**  
+Son yıl, belirli koşullar altında, sunucunuzdaki otomatik yükseltme özelliğini devre dışı bırakmış olabilecek bir Azure AD Connect sürümü yayımladık. Azure AD Connect Version 1.1.750.0 'daki sorunu düzelttik. Sorundan etkileniyorsanız, bunu onarmak için bir PowerShell betiği çalıştırarak veya Azure AD Connect en son sürümüne el ile yükselterek sorunu azaltabilirsiniz. 
 
-PowerShell komut dosyasını çalıştırmak için [komut dosyasını indirin](https://aka.ms/repairaadconnect) ve yönetimpowershell penceresinde Azure AD Connect sunucunuzda çalıştırın. Komut dosyasının nasıl çalıştırılsüreceğini öğrenmek için [bu kısa videoyu görüntüleyin.](https://aka.ms/repairaadcau)
+PowerShell betiğini çalıştırmak için [betiği indirip](https://aka.ms/repairaadconnect) Azure AD Connect sunucunuzda bir yönetim PowerShell penceresinde çalıştırın. Betiği çalıştırmayı öğrenmek için [Bu kısa videoyu görüntüleyin](https://aka.ms/repairaadcau).
 
-El ile yükseltmek için AADConnect.msi dosyasının en son sürümünü indirmeniz ve çalıştırmanız gerekir.
+El ile yükseltmek için AADConnect. msi dosyasının en son sürümünü indirmeniz ve çalıştırmanız gerekir.
  
--  Geçerli sürümünüz 1.1.750.0'dan eskiyse, [en son sürüme indirin ve yükseltin.](https://www.microsoft.com/download/details.aspx?id=47594)
-- Azure AD Connect sürümünüz 1.1.750.0 veya sonraki sürümse, başka bir işlem gerekmez. Otomatik yükseltme düzeltmesini içeren sürümü zaten kullanıyorsunuz. 
+-  Geçerli sürümünüz 1.1.750.0 ' den eskiyse, [en son sürüme indirip yükseltin](https://www.microsoft.com/download/details.aspx?id=47594).
+- Azure AD Connect sürümünüz 1.1.750.0 veya üzeri ise başka bir eylem gerekmez. Otomatik yükseltme düzeltmesini içeren sürümü zaten kullanıyorsunuz. 
 
-**S: Otomatik yükseltmeyi yeniden etkinleştirmek için en son sürüme yükseltmemi söyleyen bir e-posta aldım. Sürüm 1.1.654.0 kullanıyorum. Yükseltmeyapmam gerekiyor mu?**  
-Evet, otomatik yükseltmeyi yeniden etkinleştirmek için sürüm 1.1.750.0 veya daha sonra yükseltmeniz gerekir. [En son sürüme indirin ve yükseltin.](https://www.microsoft.com/download/details.aspx?id=47594)
+**S: otomatik yükseltmeyi yeniden etkinleştirmek için en son sürüme yükseltmeme bildiren bir e-posta aldım. 1.1.654.0 sürümünü kullanıyorum. Yükseltmem gerekiyor mu?**  
+Evet, otomatik yükseltmeyi yeniden etkinleştirmek için sürüm 1.1.750.0 veya sonraki bir sürüme yükseltmeniz gerekir. [' İ indirin ve en son sürüme yükseltin](https://www.microsoft.com/download/details.aspx?id=47594).
 
-**S: Otomatik yükseltmeyi yeniden etkinleştirmek için en son sürüme yükseltmemi söyleyen bir e-posta aldım. Otomatik yükseltmeyi etkinleştirmek için PowerShell'i kullandıysam, yine de en son sürümü yüklemem gerekir mi?**  
-Evet, yine de sürüm 1.1.750.0 veya daha sonra yükseltmeniz gerekir. PowerShell ile otomatik yükseltme hizmetini etkinleştirmek, 1.1.750.0'dan önceki sürümlerde bulunan otomatik yükseltme sorununu azaltmaz.
+**S: otomatik yükseltmeyi yeniden etkinleştirmek için en son sürüme yükseltmeme bildiren bir e-posta aldım. Otomatik yükseltmeyi etkinleştirmek için PowerShell 'i kullandım, hala en son sürümü yüklemem gerekir mi?**  
+Evet, hala sürüm 1.1.750.0 veya sonraki sürüme yükseltmeniz gerekir. PowerShell ile otomatik yükseltme hizmetini etkinleştirmek, 1.1.750.0 'ten önceki sürümlerde bulunan otomatik yükseltme sorununu azaltmaz.
 
-**S: Daha yeni bir sürüme yükseltmek istiyorum ancak Azure AD Connect'i kimin yüklediğinden emin değilim ve kullanıcı adı ve parolamız yok. Buna ihtiyacımız var mı?**
-Azure AD Connect'i yükseltmek için başlangıçta kullanılan kullanıcı adını ve parolayı bilmeniz gerekmez. Genel Yönetici rolüne sahip herhangi bir Azure REKLAM hesabını kullanın.
+**S: daha yeni bir sürüme yükseltmek istiyorum, ancak Azure AD Connect kim yükledim ve Kullanıcı adı ve parola yok. Bunun için gerekli midir?**
+Azure AD Connect yükseltmek için başlangıçta kullanılan Kullanıcı adını ve parolayı bilmeniz gerekmez. Genel yönetici rolüne sahip herhangi bir Azure AD hesabını kullanın.
 
-**S: Azure AD Connect'in hangi sürümünü kullandığımı nasıl bulabilirim?**  
-Sunucunuzda Azure AD Connect'in hangi sürümünün yüklü olduğunu doğrulamak için Denetim Masası'na gidin ve **Burada** > gösterildiği gibi**Programlar ve Özellikler'i**seçerek Microsoft Azure AD Connect'in yüklü sürümünü arayın:
+**S: hangi Azure AD Connect sürümünü kullandığım hakkında nasıl öğrenebilirim?**  
+Sunucunuza hangi Azure AD Connect sürümünün yüklendiğini doğrulamak için, Denetim Masası ' na gidin ve aşağıda gösterildiği gibi **Programlar** > **Programlar ve Özellikler**' i seçerek Microsoft Azure AD Connect ' in yüklü sürümünü bulun:
 
-![Denetim Masası'nda Azure AD Connect sürümü](./media/reference-connect-faq/faq1.png)
+![Denetim Masası 'nda Azure AD Connect sürümü](./media/reference-connect-faq/faq1.png)
 
-**S: Azure AD Connect'in en son sürümüne nasıl yükseltebilirim?**  
-En son sürüme nasıl yükseltilen öğrenmek için [Azure AD Connect: Önceki sürümden en son sürümüne yükseltme](how-to-upgrade-previous-version.md)konusuna bakın. 
+**S: Nasıl yaparım? Azure AD Connect en son sürümüne yükseltme yapılsın mı?**  
+En son sürüme yükseltme hakkında bilgi edinmek için bkz. [Azure AD Connect: önceki bir sürümden en son sürüme yükseltme](how-to-upgrade-previous-version.md). 
 
-**S: Geçen yıl Azure AD Connect'in en son sürümüne yükselttik. Tekrar yükseltmemiz gerekiyor mu?**  
-Azure AD Connect ekibi, hizmete sık sık güncellemeler yapar. Hata düzeltmeleri ve güvenlik güncelleştirmelerinin yanı sıra yeni özelliklerden yararlanmak için sunucunuzu en son sürümden haberdar etmek önemlidir. Otomatik yükseltmeyi etkinleştirirseniz, yazılım sürümünüz otomatik olarak güncelleştirilir. Azure AD Connect'in sürüm çıkış geçmişini bulmak için [bkz.](reference-connect-version-history.md)
+**S: son yılın Azure AD Connect en son sürümüne zaten yükseltiyoruz. Yeniden yükseltmeniz gerekiyor mu?**  
+Azure AD Connect ekibi, hizmette sık sık güncelleştirme yapar. Hata düzeltmelerinin ve güvenlik güncelleştirmelerinin yanı sıra yeni özelliklerden yararlanmak için, en son sürümle sunucunuzu güncel tutmak önemlidir. Otomatik yükseltmeyi etkinleştirirseniz, yazılım sürümünüz otomatik olarak güncelleştirilir. Azure AD Connect sürüm sürümü geçmişini bulmak için, bkz. [Azure AD Connect: sürüm yayınlama geçmişi](reference-connect-version-history.md).
 
-**S: Yükseltmenin gerçeklemesi ne kadar sürer ve kullanıcılarım üzerindeki etkisi nedir?**  
-Yükseltme için gereken süre kiracınızın boyutuna bağlıdır. Daha büyük kuruluşlar için yükseltmeyi akşam veya hafta sonu gerçekleştirmek en iyisi olabilir. Yükseltme sırasında eşitleme etkinliği gerçekleşmez.
+**S: yükseltmeyi gerçekleştirmek için ne kadar sürer ve Kullanıcılarım üzerinde ne etkisi vardır?**  
+Yükseltme için gereken süre, kiracı boyutınıza bağlıdır. Daha büyük kuruluşlar için, yükseltmenin akşam veya hafta sonu içinde yapılması en iyi yöntem olabilir. Yükseltme sırasında, hiçbir eşitleme etkinliği gerçekleşmez.
 
-**S: Azure AD Connect'e yükselttiğine inanıyorum, ancak Office portalı hala DirSync'den bahsediyor. Bu neden?**  
-Office ekibi, Office portal güncelleştirmelerini geçerli ürün adını yansıtacak şekilde almak için çalışıyor. Hangi eşitleme aracını kullandığınızı yansıtmaz.
+**S: Azure AD Connect yükseltilip yükseltildiğimde, ancak Office portalı hala DirSync 'e değindim. Bunun nedeni nedir?**  
+Office ekibi, Office portalı güncelleştirmelerini almak için geçerli ürün adını yansıtacak şekilde çalışmaktadır. Hangi eşitleme aracının kullandığınızı yansıtmaz.
 
-**S: Otomatik yükseltme durumumda "Askıya alındı" yazıyor. Neden askıya alındı? Etkinleştirmeli miyim?**  
-Bir hata, belirli koşullar altında otomatik yükseltme durumunu "Askıya Alındı" olarak ayarlayan önceki bir sürümde tanıtıldı. Teknik olarak etkinleştirmek teknik olarak mümkündür, ancak birkaç karmaşık adım gerektirir. Yapabileceğiniz en iyi şey Azure AD Connect'in en son sürümünü yüklemektir.
+**S: otomatik yükseltme durumum "askıya alındı" diyor. Neden askıya alındı? Bunu etkinleştirmem gerekir mi?**  
+Bir hata, belirli koşullarda, otomatik yükseltme durumunun "askıya alındı" olarak ayarlanmış olduğu önceki bir sürümde tanıtılmıştır. BT 'nin el ile etkinleştirilmesi teknik açıdan olasıdır, ancak birkaç karmaşık adım gerektirir. Yapabileceğiniz en iyi şey Azure AD Connect en son sürümünü yükler.
 
-**S: Şirketimin katı değişim yönetimi gereksinimleri vardır ve ne zaman dışarı itildiğini kontrol etmek istiyorum. Otomatik yükseltmenin ne zaman başlatıldığını kontrol edebilir miyim?**  
-Hayır, bugün böyle bir özellik yok. Özellik gelecekteki bir sürüm için değerlendirilmektedir.
+**S: şirketim kesin değişiklik yönetimi gereksinimlerine sahiptir ve ne zaman dışarı itiltiğini denetlemek istiyorum. Otomatik yükseltmenin ne zaman başlatılabildiğini denetleyebilir miyim?**  
+Hayır, bugün böyle bir özellik yok. Özellik gelecek bir sürüm için değerlendiriliyor.
 
-**S: Otomatik yükseltme başarısız olursa bir e-posta alır mıyım? Başarılı olduğunu nasıl bileceğim?**  
-Yükseltme nin sonucu size bildirilmez. Özellik gelecekteki bir sürüm için değerlendirilmektedir.
+**S: otomatik yükseltme başarısız olursa bir e-posta alacak mıyım? Başarılı olduğunu nasıl anlarım?**  
+Yükseltmenin sonucu hakkında bilgilendirilmeyecektir. Özellik gelecek bir sürüm için değerlendiriliyor.
 
-**S: Otomatik yükseltmeleri ne zaman dışarı itme yi planladığınız için bir zaman çizelgesi yayımlıyor musunuz?**  
-Otomatik yükseltme, daha yeni bir sürümün sürüm sürecinin ilk adımıdır. Yeni bir sürüm olduğunda, yükseltmeler otomatik olarak itilir. Azure AD Connect'in daha yeni sürümleri [Azure AD Yol Haritası'nda](../fundamentals/whats-new.md)önceden duyurulur.
+**S: Otomatik yükseltmeleri göndermeyi planlarken bir zaman çizelgesi yayımladığınızı mı istiyorsunuz?**  
+Otomatik yükseltme, daha yeni bir sürümün yayın işlemindeki ilk adımdır. Yeni bir sürüm olduğunda, yükseltmeler otomatik olarak gönderilir. Azure AD Connect daha yeni sürümleri, [Azure AD yol haritasında](../fundamentals/whats-new.md)önceden duyurulmuştur.
 
-**S: Otomatik yükseltme, Azure AD Connect Health'i de yükseltiyor mu?**  
-Evet, otomatik yükseltme, Azure AD Connect Health'i de yükseltir.
+**S: otomatik yükseltme Azure AD Connect Health de Yükselt mi?**  
+Evet, otomatik yükseltme Azure AD Connect Health de yükseltir.
 
-**S: Azure AD Connect sunucularını evreleme modunda otomatik olarak da yükseltiyor musunuz?**  
-Evet, evreleme modunda olan bir Azure AD Connect sunucusunu otomatik olarak yükseltebilirsiniz.
+**S: Ayrıca, hazırlama modunda Azure AD Connect sunucularını otomatik olarak yükseltirsiniz misiniz?**  
+Evet, hazırlama modundaki bir Azure AD Connect sunucusunu otomatik olarak yükseltebilirsiniz.
 
-**S: Otomatik yükseltme başarısız olursa ve Azure AD Connect sunucum başlamazsa ne yapmalıyım?**  
-Nadiren, Azure AD Connect hizmeti siz yükseltmeyi yaptıktan sonra başlamaz. Bu gibi durumlarda, sunucunun yeniden başlatılması genellikle sorunu giderir. Azure AD Connect hizmeti hala başlamazsa, bir destek bileti açın. Daha fazla bilgi için [bkz.](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/) 
+**S: otomatik yükseltme başarısız olursa ve Azure AD Connect sunucum başlamazsa, ne yapmam gerekir?**  
+Nadir durumlarda Azure AD Connect hizmeti, yükseltmeyi gerçekleştirdikten sonra başlatılmaz. Bu durumlarda, sunucuyu yeniden başlatmak genellikle sorunu düzeltir. Azure AD Connect hizmeti hala başlamazsa, bir destek bileti açın. Daha fazla bilgi için bkz. [Office 365 desteğiyle iletişim kurmak için hizmet Isteği oluşturma](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/). 
 
-**S: Azure AD Connect'in daha yeni bir sürümüne yükselttiğinde risklerin ne olduğundan emin değilim. Yükseltme konusunda bana yardım etmem için beni arayabilir misin?**  
-Azure AD Connect'in daha yeni bir sürümüne yükseltme konusunda yardıma ihtiyacınız varsa, [Office 365 desteğine başvurmak için bir hizmet isteği oluştur'da bir](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)destek bileti açın.
+**S: Azure AD Connect daha yeni bir sürüme yükseltdiğimde risklerden emin değilim. Yükseltmeye yardım etmek için beni çağırabilir miyim?**  
+Azure AD Connect daha yeni bir sürüme yükseltme için yardıma ihtiyacınız varsa, [hizmet oluşturma isteği sırasında Office 365 desteği 'ne başvurmak için](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)bir destek bileti açın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
-**S: Azure AD Connect ile ilgili nasıl yardım alabilirim?**
+**S: Azure AD Connect nasıl yardım alabilirim?**
 
-[Microsoft Bilgi Bankası'nda arama (KB)](https://www.microsoft.com/en-us/search/result.aspx?q=azure+active+directory+connect)
+[Microsoft Bilgi Bankası 'Nda (KB) arama](https://www.microsoft.com/en-us/search/result.aspx?q=azure+active+directory+connect)
 
-* Azure AD Connect desteğiyle ilgili yaygın çözüm çözme sorunlarına teknik çözümler bulmak için KB'de arama yapın.
+* Azure AD Connect desteğiyle ilgili sık karşılaşılan sorunları gidermek için KB 'de teknik çözümler arayın.
 
-[Azure Aktif Dizin Forumları](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
+[Azure Active Directory forumları](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
 
-* [Azure AD topluluğuna](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)giderek teknik soruları ve yanıtları arayın veya kendi sorularınızı sorun.
+* [Azure AD Community](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)'ye giderek Teknik sorular ve yanıtlar arayın veya kendi sorularınızı sorun.
 
 [Azure AD için destek alma](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
 
-**S: Neden Eşitleme Adım Hataları sonra Olaylar 6311 ve 6401 oluşur görüyorum?**
+**S: eşitleme adımı hatalarından sonra neden 6311 ve 6401 olaylarını görüyorum?**
 
-Olaylar 6311 - **Sunucu bir geri arama yaparken beklenmeyen bir hata ile karşılaştı** ve 6401 - Yönetim **aracısı denetleyicisi beklenmeyen bir hatayla karşılaştı** - her zaman bir eşitleme adımı hatasından sonra günlüğe kaydedilir. Bu hataları gidermek için eşitleme adımı hatalarını temizlemeniz gerekir.  Daha fazla bilgi için, azure AD Connect eşitleme ile eşitleme ve [Sorun Giderme nesne senkronizasyonu](tshoot-connect-objectsync.md) [sırasında Sorun Giderme hatalarına](tshoot-connect-sync-errors.md) bakın
+Olaylar 6311- **sunucu, geri çağırma işlemi gerçekleştirirken beklenmeyen bir hatayla karşılaştı** ve 6401- **Yönetim aracısı denetleyicisi beklenmeyen bir hatayla karşılaştı** -eşitleme adımı hatasından sonra her zaman günlüğe kaydedilir. Bu hataları gidermek için, eşitleme adımı hatalarını temizlemeniz gerekir.  Daha fazla bilgi için bkz. [eşitleme sırasında hata giderme](tshoot-connect-sync-errors.md) ve [Azure AD Connect eşitleme Ile nesne eşitleme sorunlarını giderme](tshoot-connect-objectsync.md)

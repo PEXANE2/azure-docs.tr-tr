@@ -1,7 +1,7 @@
 ---
-title: Özel ilkelerle telefona kaydolma ve oturum açma (Önizleme)
+title: Telefon kaydı ve özel ilkelerle oturum açma (Önizleme)
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C'de özel ilkelerle uygulama kullanıcılarınızın telefonlarına kısa mesajlarla tek seferlik parolalar (OTP) gönderin.
+description: Bir kerelik parolalar (OTP) metin iletilerinde, uygulama kullanıcılarınızın telefonlarınıza Azure Active Directory B2C ' de özel ilkelerle gönderin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,81 +12,81 @@ ms.date: 02/25/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: eadac0e973b361b1fdee63dcc9cfa848a0b2bacb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183967"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Azure AD B2C'de özel ilkelerle telefon kaydolma ve oturum açma (Önizleme) ayarlama
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Azure AD B2C (Önizleme) içinde özel ilkelerle telefon kayıt ve oturum açma ayarlama
 
-Azure Active Directory B2C'de (Azure AD B2C) telefona kaydolma ve kaydolma, kullanıcılarınızın telefonlarına kısa mesajla gönderilen tek seferlik bir parola (OTP) kullanarak uygulamalarınıza kaydolmasını ve oturum açmalarına olanak tanır. Tek seferlik parolalar, kullanıcılarınızın parolalarını unutma veya parolalarını tehlikeye atma riskini en aza indirmeye yardımcı olabilir.
+Azure Active Directory B2C (Azure AD B2C) telefon kaydı ve oturum açma, kullanıcılarınızın telefonunuza bir kısa mesajdan gönderilen bir kerelik parola (OTP) kullanarak uygulamalarınıza kaydolmalarını ve oturum açmasını sağlar. Bir kerelik parolalar, kullanıcılarınızın parolalarının tehlikeye düşmesi veya bu uygulamaların güvenliğinin aşılmasına neden olması riskini en aza indirmenize yardımcı olabilir.
 
-Müşterilerinizin telefonlarına gönderilen tek seferlik bir parolayı kullanarak uygulamalarınıza kaydolmalarını ve uygulamalarınızda oturum açmalarını sağlamak için bu makaledeki adımları izleyin.
+Müşterilerinizin, telefonunuza bir kerelik parola kullanarak uygulamalarınıza kaydolup oturum açmasını sağlamak üzere özel ilkeleri kullanmak için bu makaledeki adımları izleyin.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Sms kısa mesajları kullanılarak kullanıcılarınıza tek seferlik parolalar gönderilir ve gönderilen her mesaj için ücretlendirilebilirsiniz. Fiyatlandırma bilgileri için Azure Active [Directory B2C fiyatlandırmasının](https://azure.microsoft.com/pricing/details/active-directory-b2c/) **Ayrı Ücretler** bölümüne bakın.
+Bir kerelik parolalar SMS metin iletileri kullanılarak kullanıcılarınıza gönderilir ve gönderilen her ileti için ücretlendirilmeyebilirsiniz. Fiyatlandırma bilgileri için [Azure Active Directory B2C fiyatlandırmasının](https://azure.microsoft.com/pricing/details/active-directory-b2c/) **ayrı ücretler** bölümüne bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-OTP'yi kurmadan önce aşağıdaki kaynaklara ihtiyacınız var.
+OTP 'yi ayarlamadan önce aşağıdaki kaynaklara sahip olmanız gerekir.
 
 * [Azure AD B2C kiracı](tutorial-create-tenant.md)
-* Kiracınızda [kayıtlı web uygulaması](tutorial-register-applications.md)
+* Kiracınızda [kayıtlı Web uygulaması](tutorial-register-applications.md)
 * Kiracınıza yüklenen [özel ilkeler](custom-policy-get-started.md)
 
-## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Kaydolma başlangıç paketini & telefona kaydolun
+## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Telefon kaydolma & oturum açma başlangıç paketini alın
 
-Azure AD B2C kiracınızla çalışmak için telefon kayıt ve oturum açma özel ilke dosyalarını güncelleyerek başlayın.
+Telefon kayıt ve oturum açma özel ilke dosyalarını güncelleştirerek Azure AD B2C kiracınızla çalışacak şekilde çalışmaya başlayın.
 
-Aşağıdaki adımlar, [ön koşulları](#prerequisites) tamamladığınızı ve yerel makinenize [özel ilke başlangıç paketi][starter-pack] deposunu zaten klonladığınızı varsayar.
+Aşağıdaki adımlarda [önkoşulları](#prerequisites) tamamladığınız ve [özel ilke Başlatıcı paketi][starter-pack] deposunu zaten yerel makinenize Klonladığınız varsayılır.
 
-1. Başlangıç paketi repo'nun yerel klonunuzda [telefon kaydolma ve kaydolma özel ilke dosyalarını][starter-pack-phone] bulun veya doğrudan indirin. XML ilke dosyaları aşağıdaki dizinde bulunur:
+1. Başlangıç paketi deposunun yerel kopyanızda [Telefon kayıt ve oturum açma özel ilke dosyalarını][starter-pack-phone] bulun veya doğrudan indirin. XML ilke dosyaları şu dizinde bulunur:
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
 
-1. Her dosyada, dizeyi `yourtenant` Azure AD B2C kiracınızın adıyla değiştirin. Örneğin, B2C kiracınızın adı *contosob2c*ise, tüm `yourtenant.onmicrosoft.com` örnekleri `contosob2c.onmicrosoft.com`.
+1. Her dosyada, dizeyi `yourtenant` Azure AD B2C kiracınızın adıyla değiştirin. Örneğin, B2C kiracınızın adı *contosob2c*ise, tüm örnekleri `yourtenant.onmicrosoft.com` olur. `contosob2c.onmicrosoft.com`
 
-1. [Azure Active Directory B2C'deki özel ilkelerle başlayın'ın](custom-policy-get-started.md) [özel ilke bölümüne uygulama ii'leri ekle](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) adımlarını tamamlayın. Bu durumda, `/phone-number-passwordless/` **`Phone_Email_Base.xml`** ön koşulları tamamlarken kaydettiğiniz iki uygulamanın **Uygulama (istemci) kimliklerini,** *IdentityExperienceFramework'ü* ve *ProxyIdentityExperienceFramework'ü*güncelleyin.
+1. [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)konusunun [özel Ilkeye uygulama kimlikleri ekleme](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) bölümündeki adımları uygulayın. Bu `/phone-number-passwordless/` **`Phone_Email_Base.xml`** durumda, *IdentityExperienceFramework* ve *ProxyIdentityExperienceFramework*önkoşullarını tamamlarken kaydettiğiniz iki uygulamanın **uygulama (istemci) kimlikleriyle** güncelleştirin.
 
-## <a name="upload-the-policy-files"></a>İlke dosyalarını yükleme
+## <a name="upload-the-policy-files"></a>İlke dosyalarını karşıya yükle
 
-1. [Azure portalında](https://portal.azure.com) oturum açın ve Azure AD B2C kiracınıza gidin.
-1. **İlkeler**altında Kimlik **Deneyimi Çerçevesi'ni**seçin.
-1. **Özel politika yükle'yi**seçin.
-1. İlke dosyalarını aşağıdaki sırayla yükleyin:
-    1. *Phone_Email_Base.xml*
-    1. *SignUpOrSignInWithPhone.xml*
-    1. *SignUpOrSignInWithPhoneOrEmail.xml*
-    1. *ProfileEditPhoneOnly.xml*
-    1. *ProfilEditPhoneEmail.xml*
-    1. *ChangePhoneNumber.xml*
-    1. *PasswordResetEmail.xml*
+1. [Azure Portal](https://portal.azure.com) oturum açın ve Azure AD B2C kiracınıza gidin.
+1. **İlkeler**altında **kimlik deneyimi çerçevesi**' ni seçin.
+1. **Özel Ilkeyi karşıya yükle**' yi seçin.
+1. İlke dosyalarını aşağıdaki sırada karşıya yükleyin:
+    1. *Phone_Email_Base. xml*
+    1. *Signuporsignınwithphone. xml*
+    1. *SignUpOrSignInWithPhoneOrEmail. xml*
+    1. *ProfileEditPhoneOnly. xml*
+    1. *ProfileEditPhoneEmail. xml*
+    1. *ChangePhoneNumber. xml*
+    1. *PasswordResetEmail. xml*
 
-Her dosyayı yüklerken Azure önekini `B2C_1A_`ekler.
+Her dosyayı karşıya yüklerken Azure, ön eki `B2C_1A_`ekler.
 
-## <a name="test-the-custom-policy"></a>Özel ilkeyi test edin
+## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
-1. **Özel ilkeler**altında, **B2C_1A_SignUpOrSignInWithPhone**seçin.
-1. **Select uygulaması**altında, ön koşulları tamamlarken kaydettiğiniz *webapp1* uygulamasını seçin.
-1. **Yanıt url'sini** `https://jwt.ms`seç , seçin.
-1. **Şimdi Çalıştır'ı** seçin ve bir e-posta adresi veya telefon numarası kullanarak kaydolun.
-1. **Şimdi çalıştır'ı** bir kez daha seçin ve doğru yapılandırmaya sahip olduğunuzu doğrulamak için aynı hesapla oturum açın.
+1. **Özel ilkeler**altında **B2C_1A_SignUpOrSignInWithPhone**' yi seçin.
+1. **Uygulama Seç**altında önkoşulları tamamlarken kaydettiğiniz *WebApp1* uygulamasını seçin.
+1. **Yanıt URL 'Si Seç**için öğesini `https://jwt.ms`seçin.
+1. **Şimdi Çalıştır** ' ı seçin ve bir e-posta adresi veya telefon numarası kullanarak kaydolun.
+1. **Şimdi Çalıştır** ' ı bir kez daha seçin ve doğru yapılandırmaya sahip olduğunu onaylamak için aynı hesapla oturum açın.
 
-## <a name="get-user-account-by-phone-number"></a>Telefon numarasına göre kullanıcı hesabı alma
+## <a name="get-user-account-by-phone-number"></a>Telefon numarasına göre Kullanıcı hesabını al
 
-Bir telefon numarasıyla kaydolan ancak kurtarma e-posta adresi sağlamayan bir kullanıcı, oturum açma adı olarak telefon numarasıyla Birlikte Azure AD B2C dizininize kaydedilir. Kullanıcı daha sonra telefon numarasını değiştirmek isterse, yardım masanızın veya destek ekibinizin önce hesaplarını bulması ve ardından telefon numarasını güncellemesi gerekir.
+Telefon numarası ile kaydolan ancak bir kurtarma e-posta adresi sağlamayan bir Kullanıcı, oturum açma adı olarak telefon numarası ile Azure AD B2C dizinine kaydedilir. Kullanıcı daha sonra telefon numaralarını değiştirmeyi istiyorsa, yardım masasına veya destek ekibinizin öncelikle hesabını bulması ve sonra telefon numaralarını güncelleştirmesi gerekir.
 
-[Microsoft Graph'ı](manage-user-accounts-graph-api.md)kullanarak bir kullanıcıyı telefon numarasına (oturum açma adına) göre bulabilirsiniz:
+[Microsoft Graph](manage-user-accounts-graph-api.md)kullanarak, bir kullanıcıyı telefon numarası (oturum açma adı) ile bulabilirsiniz:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
 ```
 
-Örnek:
+Örneğin:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
@@ -94,14 +94,14 @@ GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Telefon kayıt ve oturum açma özel ilke başlangıç paketini (ve diğer başlangıç paketlerini) GitHub'da bulabilirsiniz:
+GitHub 'da telefon kayıt ve oturum açma özel İlkesi başlangıç paketini (ve diğer başlangıç paketleri) bulabilirsiniz:
 
-[Azure-Örnekler/etkin-dizin-b2c-özel-ilke-başlangıç paketi/senaryolar/telefon-numara-şifresiz][starter-pack-phone]
+[Azure-Samples/Active-Directory-B2C-Custom-Policy-starterpack/senaryolar/Phone-Number-passwordless][starter-pack-phone]
 
-Başlangıç paketi ilke dosyaları çok faktörlü kimlik doğrulama teknik profilleri ve telefon numarası talepleri dönüşümleri kullanın:
+Başlangıç paketi ilke dosyaları Multi-Factor Authentication teknik profillerini ve telefon numarası talep dönüşümlerini kullanır:
 
-* [Azure Çok Faktörlü Kimlik Doğrulama teknik profilini tanımla](multi-factor-auth-technical-profile.md)
-* [Telefon numarası talep dönüşümlerini tanımlama](phone-number-claims-transformations.md)
+* [Azure Multi-Factor Authentication teknik profili tanımlama](multi-factor-auth-technical-profile.md)
+* [Telefon numarası talep dönüşümlerini tanımlayın](phone-number-claims-transformations.md)
 
 <!-- LINKS - External -->
 [starter-pack]: https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack

@@ -1,7 +1,7 @@
 ---
 title: JavaScript ve sayfa düzeni sürümleri
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C'de JavaScript'i etkinleştirmeyi ve sayfa düzeni sürümlerini nasıl kullanacağınızı öğrenin.
+description: JavaScript 'ı etkinleştirme ve Azure Active Directory B2C sayfa düzeni sürümlerini kullanma hakkında bilgi edinin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,42 +12,42 @@ ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 23d345ea9f22be5c4dac20e6e8784a8de079bccb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78185854"
 ---
-# <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de JavaScript ve sayfa düzeni sürümleri
+# <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki JavaScript ve sayfa düzeni sürümleri
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure AD B2C, kullanıcı akışlarınızdaki ve özel ilkelerinizdeki kullanıcı arabirimi öğeleri için HTML, CSS ve JavaScript içeren bir paket içerik kümesi sağlar.
+Azure AD B2C, Kullanıcı akışlarınızda ve özel ilkelerindeki Kullanıcı arabirimi öğeleri için HTML, CSS ve JavaScript içeren bir paketlenmiş içerik kümesi sağlar.
 
-Uygulamalarınız için JavaScript'i etkinleştirmek için:
+Uygulamalarınız için JavaScript 'ı etkinleştirmek üzere:
 
-* Azure portalını kullanarak kullanıcı akışında etkinleştirme
-* Sayfa [düzeni](page-layout.md) seçme
-* İsteklerinizde [b2clogin.com](b2clogin.md) kullanın
+* Azure portal kullanarak Kullanıcı akışında etkinleştirin
+* [Sayfa düzeni](page-layout.md) seçin
+* İsteklerinizi [b2clogin.com](b2clogin.md) kullanma
 
-[JavaScript](javascript-samples.md) istemci tarafı kodunu etkinleştirmek istiyorsanız, JavaScript'inizi temel aldığınız öğeler değişmez olmalıdır. Değişmez değillerse, herhangi bir değişiklik kullanıcı sayfalarınızda beklenmeyen davranışlara neden olabilir. Bu sorunları önlemek için, bir sayfa düzeninin kullanımını zorleyin ve JavaScript'inizi temel aldığınız içerik tanımlarının değişmez olduğundan emin olmak için bir sayfa düzeni sürümü belirtin. JavaScript'i etkinleştirmek istemeseniz bile, sayfalarınız için bir sayfa düzeni sürümü belirtebilirsiniz.
+[JavaScript](javascript-samples.md) istemci tarafı kodunu etkinleştirmek Istiyorsanız, JavaScript 'i temel alan öğelerin sabit olması gerekir. Sabit olmadıkları takdirde, herhangi bir değişiklik Kullanıcı sayfalarınızda beklenmeyen davranışlara neden olabilir. Bu sorunları engellemek için, bir sayfa düzeni kullanımını zorunlu tutun ve JavaScript 'i temel alan içerik tanımlarının sabit olduğundan emin olmak için bir sayfa düzeni sürümü belirtin. JavaScript 'i etkinleştirmeyi amaçlamadığınız halde, sayfalarınız için bir sayfa düzeni sürümü belirtebilirsiniz.
 
 ## <a name="enable-javascript"></a>JavaScript'i etkinleştirme
 
-Kullanıcı akışı **Özellikleri'nde**JavaScript'i etkinleştirebilirsiniz. JavaScript'i etkinleştirmek, sayfa düzeninin kullanımını da zorlar. Daha sonra, bir sonraki bölümde açıklandığı gibi kullanıcı akışı için sayfa düzeni sürümünü ayarlayabilirsiniz.
+Kullanıcı akışı **özelliklerinde**JavaScript 'i etkinleştirebilirsiniz. JavaScript 'in etkinleştirilmesi, sayfa düzeninin kullanımını da zorunlu kılar. Daha sonra, sonraki bölümde açıklandığı gibi Kullanıcı akışının sayfa düzeni sürümünü ayarlayabilirsiniz.
 
-![JavaScript ayarını etkinleştir ile kullanıcı akışı özellikleri sayfası vurgulanır](media/user-flow-javascript-overview/javascript-settings.png)
+![JavaScript ayarlarını etkinleştir seçeneği vurgulanmış şekilde Kullanıcı akışı özellikleri sayfası](media/user-flow-javascript-overview/javascript-settings.png)
 
-## <a name="select-a-page-layout-version"></a>Sayfa düzeni sürümü seçme
+## <a name="select-a-page-layout-version"></a>Sayfa düzeni sürümü seçin
 
-Kullanıcı akışınızın özelliklerinde JavaScript'i etkinleştirseniz de etkinleştirmeseniz de, kullanıcı akış sayfalarınız için bir sayfa düzeni sürümü belirtebilirsiniz. Kullanıcı akışını açın ve **Sayfa düzenlerini**seçin. **DÜZEN ADI**altında, bir kullanıcı akış sayfası seçin ve **Sayfa Düzeni Sürümünü**seçin.
+Kullanıcı akışınızın özelliklerinde JavaScript 'ı etkinleştirip etkinleştirmeyeceğinizi, Kullanıcı akış sayfalarınız için bir sayfa düzeni sürümü belirtebilirsiniz. Kullanıcı akışını açın ve **sayfa düzenleri**' ni seçin. **Düzen adı**altında, bir Kullanıcı akış sayfası seçin ve **sayfa düzeni sürümünü**seçin.
 
-Farklı sayfa düzeni sürümleri hakkında bilgi için [Sayfa düzeni sürüm değişikliği günlüğüne](page-layout.md)bakın.
+Farklı sayfa düzeni sürümleri hakkında daha fazla bilgi için bkz. [sayfa düzeni sürümü değişiklik günlüğü](page-layout.md).
 
-![Portaldaki sayfa düzeni ayarları sayfa düzeni sürüm açılır bırakma](media/user-flow-javascript-overview/page-layout-version.png)
+![Portalda sayfa düzeni sürüm açılan listesini gösteren sayfa düzeni ayarları](media/user-flow-javascript-overview/page-layout-version.png)
 
 [!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Active Directory B2C'de kullanılmak üzere JavaScript örneklerinde JavaScript](javascript-samples.md)kullanım örneklerini bulabilirsiniz.
+JavaScript örneklerindeki JavaScript kullanım örneklerini [Azure Active Directory B2C ' de kullanmak üzere](javascript-samples.md)bulabilirsiniz.

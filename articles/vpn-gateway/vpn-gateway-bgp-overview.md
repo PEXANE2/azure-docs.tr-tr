@@ -1,5 +1,5 @@
 ---
-title: 'BGP ve Azure VPN Ağ Geçidi: Genel Bakış'
+title: 'BGP ve Azure VPN Gateway: genel bakış'
 description: Bu makale Azure VPN Gateways ile BGP’ye genel bakış sağlar.
 services: vpn-gateway
 author: yushwang
@@ -9,14 +9,14 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: yushwang
 ms.openlocfilehash: 0b4bb7ed90225fcb52ea170c07be2b57f8afbafe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279331"
 ---
-# <a name="about-bgp-with-azure-vpn-gateway"></a>Azure VPN Ağ Geçidi ile BGP Hakkında
-Bu makalede, Azure VPN Ağ Geçidi'nde BGP (Kenarlık Ağ Geçidi Protokolü) desteğine genel bir bakış sağlanmaktadır.
+# <a name="about-bgp-with-azure-vpn-gateway"></a>Azure VPN Gateway ile BGP hakkında
+Bu makalede, Azure VPN Gateway 'da BGP (Sınır Ağ Geçidi Protokolü) desteğine genel bir bakış sunulmaktadır.
 
 BGP iki veya daha fazla ağ arasında yönlendirme ve ulaşılabilirlik bilgilerini takas etmek üzere İnternet’te yaygın olarak kullanılan standart yönlendirme protokolüdür. BGP, Azure Virtual Networks bağlamında kullanıldığında her iki ağ geçidini ön eklerin ilgili ağ geçitlerinden veya yönlendiricilerden geçmeye yönelik kullanılabilirliği ve ulaşılabilirliği konusunda bilgilendiren “yolları” değiştirmek amacıyla, Azure VPN Gateways’i ve BGP eşlikleri veya komşuları olarak adlandırılan şirket içi VPN cihazlarınızı etkinleştirir. BGP ayrıca bir BGP ağ geçidinin öğrendiği yolları bir BGP eşliğinden diğer tüm BGP eşliklerine yayarak birden fazla ağ arasında geçiş yönlendirmesi sağlayabilir. 
 
@@ -28,10 +28,10 @@ BGP’nin çeşitli avantajları ve yeni özellikleri vardır:
 ### <a name="support-automatic-and-flexible-prefix-updates"></a><a name="prefix"></a>Otomatik ve esnek ön ek güncelleştirmelerini destekler
 BGP ile yalnızca belirli bir BGP eşliğine IPSec S2S VPN tüneli üzerinden en küçük ön eki bildirmeniz gerekir. Şirket içi VPN cihazınızın BGP eşliği IP adresinin ana bilgisayar ön eki (/32) kadar küçük olabilir. Azure Virtual Network’un erişmesine izin vermek üzere hangi şirket içi ağ ön eklerinin Azure’a tanıtılacağını denetleyebilirsiniz.
 
-Büyük bir özel IP adresi alanı (örneğin, 10.0.0.0/8) gibi Bazı VNet adresi öneklerinizi içerebilecek daha büyük öneklerin reklamını da yapabilirsiniz. Öneklerin VNet öneklerinden herhangi biriyle aynı olmamasına rağmen dikkat edin. VNet ön eklerinizle aynı olan yollar reddedilir.
+Ayrıca, büyük bir özel IP adres alanı (örneğin, 10.0.0.0/8) gibi VNet adres öneklerinizden bazılarını içerebilen daha büyük ön ekler tanıtabilirsiniz. Ön ekler, VNet öneklerinizden herhangi biriyle aynı olamaz. VNet ön eklerinizle aynı olan yollar reddedilir.
 
 ### <a name="support-multiple-tunnels-between-a-vnet-and-an-on-premises-site-with-automatic-failover-based-on-bgp"></a><a name="multitunnel"></a>Bir VNet ile şirket içi site arasında BGP’yi temel alan otomatik yük devretme ile birden fazla tüneli destekler
-Azure VNet ile şirket içi VPN cihazlarınız arasında aynı konumda birden fazla bağlantı kurabilirsiniz. Bu özellik aktif-aktif bir yapılandırmadaki iki ağ arasında birden fazla tünel (yol) sağlar. Tünellerden birinin bağlantısı kesilirse, ilgili güzergahlar BGP üzerinden geri çekilir ve trafik otomatik olarak kalan tünellere geçer.
+Azure VNet ile şirket içi VPN cihazlarınız arasında aynı konumda birden fazla bağlantı kurabilirsiniz. Bu özellik aktif-aktif bir yapılandırmadaki iki ağ arasında birden fazla tünel (yol) sağlar. Tünellerden birinin bağlantısı kesilirse, ilgili yollar BGP üzerinden geri alınacaktır ve trafik otomatik olarak kalan tünellere kayar.
 
 Aşağıdaki diyagramda yüksek oranda kullanılabilen bu kurulumun basit bir örneği gösterilmiştir:
 
