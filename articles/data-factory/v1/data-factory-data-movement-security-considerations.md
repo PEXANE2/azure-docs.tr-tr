@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nda veri hareketi için güvenlik konuları
-description: Azure Veri Fabrikası'nda veri hareketini güvence altına alma hakkında bilgi edinin.
+title: Azure Data Factory veri hareketine yönelik güvenlik konuları
+description: Azure Data Factory veri hareketini güvenli hale getirme hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,166 +12,166 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 1f19d258531e5368238cba72c986aede3f4a64ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80130830"
 ---
-# <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Veri Fabrikası - Veri hareketi için güvenlik hususları
+# <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory-veri hareketine yönelik güvenlik konuları
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [Veri Fabrikası için veri hareketi güvenlik hususlarına](../data-movement-security-considerations.md)bakın.
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory için veri taşıma güvenliği konuları](../data-movement-security-considerations.md).
 
 ## <a name="introduction"></a>Giriş
-Bu makalede, Azure Veri Fabrikası'ndaki veri hareketi hizmetlerinin verilerinizi güvence altına almak için kullandığı temel güvenlik altyapısı açıklanmaktadır. Azure Veri Fabrikası yönetim kaynakları Azure güvenlik altyapısı nda oluşturulur ve Azure tarafından sunulan tüm olası güvenlik önlemlerini kullanır.
+Bu makalede, veri taşıma hizmetlerinin Azure Data Factory verileri güvenli hale getirmek için kullandığı temel güvenlik altyapısı açıklanır. Azure Data Factory yönetim kaynakları Azure güvenlik altyapısına kurulmuştur ve Azure tarafından sunulan tüm olası güvenlik önlemlerini kullanır.
 
-Bir Data Factory çözümünde bir veya daha fazla [işlem hattı](data-factory-create-pipelines.md) oluşturursunuz. İşlem hattı, bir araya geldiğinde bir görev gerçekleştiren mantıksal etkinlik grubudur. Bu boru hatları, veri fabrikasının oluşturulduğu bölgede bulunmaktadır. 
+Bir Data Factory çözümünde bir veya daha fazla [işlem hattı](data-factory-create-pipelines.md) oluşturursunuz. İşlem hattı, bir araya geldiğinde bir görev gerçekleştiren mantıksal etkinlik grubudur. Bu işlem hatları, Data Factory 'nin oluşturulduğu bölgede bulunur. 
 
-Veri Fabrikası sadece Batı **ABD,** **Doğu ABD**ve **Kuzey Avrupa** bölgelerinde mevcut olsa da, veri hareketi hizmeti çeşitli bölgelerde [küresel olarak](data-factory-data-movement-activities.md#global)kullanılabilir. Veri Hareketi hizmeti, veri hareketi hizmeti henüz o bölgeye dağıtılmadığı takdirde, hizmete alternatif bir bölgeyi kullanması için açıkça talimat vermedikçe, verilerin coğrafi bir bölgeden/ bölgeden ayrılmamasını sağlar. 
+Data Factory yalnızca **Batı ABD**, **Doğu ABD**ve **Kuzey Avrupa** bölgelerinde kullanılabilir olsa da, veri taşıma hizmeti [küresel olarak birkaç bölgede](data-factory-data-movement-activities.md#global)kullanılabilir. Data Factory hizmeti, veri taşıma hizmeti henüz o bölgeye dağıtılmamışsa, hizmeti açık bir şekilde bir alternatif bölge kullanmaya yönlendirmediğiniz müddetçe verilerin coğrafi bir alana/bölgeye ayrılmamasını sağlar. 
 
-Azure Veri Fabrikası'nın kendisi, sertifikalar kullanılarak şifrelenen bulut veri depoları için bağlantılı hizmet kimlik bilgileri dışında hiçbir veri depolamaz. Veri hareketini [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) arasında, verilerin işlenmesini de başka bölgelerde veya şirket içi bir ortamda [işlem hizmetleri](data-factory-compute-linked-services.md) kullanarak düzenlemek için veri temelinde iş akışları oluşturmanızı sağlar. Hem programlama, hem de kullanıcı arabirimi mekanizmalarını kullanarak [iş akışlarını izlemenizi ve yönetmenizi](data-factory-monitor-manage-pipelines.md) de sağlar.
+Azure Data Factory kendisi, sertifikalar kullanılarak şifrelenen bulut veri depoları için bağlı hizmet kimlik bilgileri dışında hiçbir veri depolamaz. Veri hareketini [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) arasında, verilerin işlenmesini de başka bölgelerde veya şirket içi bir ortamda [işlem hizmetleri](data-factory-compute-linked-services.md) kullanarak düzenlemek için veri temelinde iş akışları oluşturmanızı sağlar. Hem programlama, hem de kullanıcı arabirimi mekanizmalarını kullanarak [iş akışlarını izlemenizi ve yönetmenizi](data-factory-monitor-manage-pipelines.md) de sağlar.
 
-Azure Veri Fabrikası'nı kullanarak veri hareketi şu şekilde **onaylanmıştır:**
--   [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
--   [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
--   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
--   [CSA YILDIZ](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
+Azure Data Factory kullanarak veri taşıma için **sertifikalıdır** :
+-   [HıPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
+-   [ISO/ıEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
+-   [ISO/ıEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
+-   [CSA YıLDıZı](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
-Azure uyumluluğu ve Azure'un kendi altyapısını nasıl güvence altına aldığıyla ilgileniyorsanız, [Microsoft Güven Merkezi'ni](https://microsoft.com/en-us/trustcenter/default.aspx)ziyaret edin. 
+Azure uyumluluğu ile ilgileniyorsanız ve Azure 'un kendi altyapısını nasıl güvenlik altına alıyorsa, [Microsoft Güven Merkezi](https://microsoft.com/en-us/trustcenter/default.aspx)' ni ziyaret edin. 
 
-Bu makalede, aşağıdaki iki veri hareketi senaryosundaki güvenlik hususlarını gözden geçiriyoruz: 
+Bu makalede, aşağıdaki iki veri taşıma senaryosunda güvenlik konularını gözden geçiririz: 
 
-- **Bulut senaryosu**- Bu senaryoda, hem kaynağınıza hem de hedefinize internet üzerinden genel olarak erişilebilir. Bunlar arasında Azure Depolama, Azure SQL Veri Ambarı, Azure SQL Veritabanı, Azure Veri Gölü Deposu, Amazon S3, Amazon Redshift, Salesforce gibi SaaS hizmetleri ve FTP ve OData gibi web protokolleri gibi yönetilen bulut depolama hizmetleri yer almaktadır. Desteklenen veri kaynaklarının tam listesini [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats)bulabilirsiniz.
-- **Karma senaryo**- Bu senaryoda, kaynağınız veya hedefiniz bir güvenlik duvarının arkasında veya şirket içi bir şirket ağının içinde veya veri deposu özel bir ağda/ sanal ağda (çoğu zaman kaynak) ve herkese açık değildir. Sanal makinelerde barındırılan veritabanı sunucuları da bu senaryonun kapsamına girer.
+- **Bulut senaryosu**-Bu senaryoda, hem kaynak hem de hedef Internet üzerinden herkese açık bir şekilde erişilebilir. Bunlar Azure depolama, Azure SQL veri ambarı, Azure SQL veritabanı, Azure Data Lake Store, Amazon S3, Amazon Redshift, Salesforce gibi SaaS Hizmetleri ve FTP ve OData gibi web protokolleri gibi yönetilen bulut depolama hizmetlerini içerir. Desteklenen veri kaynaklarının tüm listesini [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats)bulabilirsiniz.
+- **Karma senaryo**-Bu senaryoda, kaynak veya hedef bir güvenlik duvarının arkasında veya şirket içi bir şirket ağında yer alır ya da veri deposu özel bir ağ/sanal ağda (genellikle kaynak) ve genel olarak erişilebilir değildir. Sanal makinelerde barındırılan veritabanı sunucuları da bu senaryonun altına düşmektedir.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="cloud-scenarios"></a>Bulut senaryoları
-### <a name="securing-data-store-credentials"></a>Veri deposu kimlik bilgilerini güvence altına alma
-Azure Veri Fabrikası, **Microsoft tarafından yönetilen sertifikaları**kullanarak veri deposu kimlik bilgilerinizi **şifreleyerek** korur. Bu sertifikalar her **iki yılda** bir döndürülür (sertifika yenileme ve kimlik bilgilerinin geçişini içerir). Bu şifrelenmiş kimlik bilgileri, **Azure Veri Fabrikası yönetim hizmetleri tarafından yönetilen**bir Azure Depolama'da güvenli bir şekilde depolanır. Azure Depolama güvenliği hakkında daha fazla bilgi için [Azure Depolama Güvenliği'ne genel bakış](../../security/fundamentals/storage-overview.md)bilgisine bakın.
+### <a name="securing-data-store-credentials"></a>Veri deposu kimlik bilgilerinin güvenliğini sağlama
+Azure Data Factory, **Microsoft tarafından yönetilen sertifikaları**kullanarak verileri **şifreleyerek** veri deposu kimlik bilgilerinizi korur. Bu sertifikalar her **iki yılda** bir döndürülür (sertifika yenileme ve kimlik bilgilerinin geçirilmesi dahildir). Bu şifrelenmiş kimlik bilgileri, **Azure Data Factory Yönetim Hizmetleri tarafından yönetilen bir Azure depolama**alanında güvenli bir şekilde depolanır. Azure Depolama güvenliği hakkında daha fazla bilgi için [Azure depolama güvenliğine genel bakış](../../security/fundamentals/storage-overview.md)konusuna bakın.
 
-### <a name="data-encryption-in-transit"></a>Aktarımda veri şifreleme
-Bulut veri deposu HTTPS veya TLS'yi destekliyorsa, Veri Fabrikası'ndaki veri hareketi hizmetleri ile bulut veri deposu arasındaki tüm veri aktarımları güvenli kanal HTTPS veya TLS üzerinden yapılır.
+### <a name="data-encryption-in-transit"></a>Aktarım sırasında veri şifreleme
+Bulut veri deposu HTTPS veya TLS 'yi destekliyorsa, Data Factory ve bulut veri deposundaki veri taşıma hizmetleri arasındaki tüm veri aktarımları, güvenli kanal HTTPS veya TLS aracılığıyla yapılır.
 
 > [!NOTE]
-> Azure SQL **Veritabanı** ve **Azure SQL Veri Ambarı'na** yapılan tüm bağlantılar, veri veritabanına ve veritabanından aktarım sırasında her zaman şifreleme (SSL/TLS) gerektirir. Bir JSON düzenleyicisi kullanarak bir ardışık yol üzerinde bir yardımcı kaynak yazarken, **şifreleme** özelliğini ekleyin ve **bağlantı dizesinde** **doğru** şekilde ayarlayın. [Kopya Sihirbazı'nı](data-factory-azure-copy-wizard.md)kullandığınızda sihirbaz bu özelliği varsayılan olarak ayarlar. **Azure Depolama**için bağlantı dizesinde **HTTPS'yi** kullanabilirsiniz.
+> **Azure SQL veritabanı** ve **Azure SQL veri ambarı** 'na yönelik tüm bağlantılar her zaman ŞIFRELEME (SSL/TLS) gerektirir ve veriler veritabanına aktarılırken ve veritabanından gönderilir. JSON Düzenleyicisi kullanarak bir işlem hattı yazarken, **şifreleme** özelliğini ekleyin ve **bağlantı dizesinde** **true** olarak ayarlayın. [Kopyalama Sihirbazı](data-factory-azure-copy-wizard.md)'nı kullandığınızda, sihirbaz bu özelliği varsayılan olarak ayarlar. **Azure depolama**için bağlantı dizesinde **https** kullanabilirsiniz.
 
 ### <a name="data-encryption-at-rest"></a>Bekleme sırasında veri şifrelemesi
-Bazı veri depoları, veri şifrelemesini istirahatte destekler. Bu veri depoları için veri şifreleme mekanizmasını etkinleştirmenizi öneririz. 
+Bazı veri depoları, bekleyen verilerin şifrelenmesini destekler. Bu veri depoları için veri şifreleme mekanizmasını etkinleştirmenizi öneririz. 
 
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı
-Azure SQL Veri Ambarı'ndaki Saydam Veri Şifreleme (TDE), gerçek zamanlı şifreleme gerçekleştirerek ve verilerinizin şifresini tam olarak çözerek kötü amaçlı etkinlik tehdidine karşı koruma sağlar. Bu davranış istemci için saydamdır. Daha fazla bilgi için SQL [Veri Ambarı'nda veritabanını güvenli](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)olarak ele abakın.
+Azure SQL veri ambarı 'nda Saydam Veri Şifrelemesi (TDE), bekleyen veriler için gerçek zamanlı şifreleme ve şifre çözme gerçekleştirerek kötü amaçlı etkinlik tehditlerine karşı korumaya yardımcı olur. Bu davranış, istemci için saydamdır. Daha fazla bilgi için bkz. [SQL veri ambarı 'nda veritabanını güvenli hale getirme](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL Veritabanı
-Azure SQL Veritabanı ayrıca, uygulamada değişiklik gerektirmeden gerçek zamanlı şifreleme ve verilerin şifresini çözme gerçekleştirerek kötü amaçlı etkinlik tehdidine karşı koruma sağlayan saydam veri şifrelemesini (TDE) de destekler. Bu davranış istemci için saydamdır. Daha fazla bilgi için Azure [SQL Veritabanı ile Saydam Veri Şifreleme'ye](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)bakın. 
+Azure SQL veritabanı Ayrıca, uygulamada değişiklik yapılmasına gerek kalmadan gerçek zamanlı şifreleme ve veri şifre çözme işlemleri gerçekleştirerek kötü amaçlı etkinlik tehditlerine karşı korumaya yardımcı olan saydam veri şifrelemesini (TDE) destekler. Bu davranış, istemci için saydamdır. Daha fazla bilgi için bkz. [Azure SQL veritabanı ile saydam veri şifrelemesi](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database). 
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
-Azure Veri Gölü deposu, hesapta depolanan veriler için şifreleme de sağlar. Etkinleştirildiğinde, Veri Gölü deposu kalıcı olmadan önce verileri otomatik olarak şifreler ve almadan önce şifresini çözer, bu da verileri erişen istemciye saydam hale getirir. Daha fazla bilgi için [Azure Veri Gölü Deposu'nda Güvenlik'e](../../data-lake-store/data-lake-store-security-overview.md)bakın. 
+Azure Data Lake depolama, hesapta depolanan veriler için de şifreleme sağlar. Etkinleştirildiğinde, Data Lake deposu verileri vermeden önce kalıcı hale getirerek ve şifresini çözmeden önce otomatik olarak şifreler ve verilere erişen istemciye saydam hale getirir. Daha fazla bilgi için bkz. [Azure Data Lake Store güvenlik](../../data-lake-store/data-lake-store-security-overview.md). 
 
-#### <a name="azure-blob-storage-and-azure-table-storage"></a>Azure Blob Depolama ve Azure Tablo Depolama
-Azure Blob Depolama ve Azure Tablo depolama, depolamaya devam etmeden önce verilerinizi otomatik olarak şifreleyen ve almadan önce şifrelerini çözen Depolama Hizmeti Şifrelemesini (SSE) destekler. Daha fazla bilgi [için, Veriler için Azure Depolama Hizmeti Şifrelemesi'ne](../../storage/common/storage-service-encryption.md)bakın.
+#### <a name="azure-blob-storage-and-azure-table-storage"></a>Azure Blob depolama ve Azure Tablo depolama
+Azure Blob depolama ve Azure Tablo depolama, verileri depolamaya kalıcı yapmadan önce otomatik olarak şifreleyen Depolama Hizmeti Şifrelemesi (SSE) destekler ve almadan önce şifresini çözer. Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama hizmeti şifrelemesi](../../storage/common/storage-service-encryption.md).
 
 #### <a name="amazon-s3"></a>Amazon S3
-Amazon S3, Rest'te hem istemci hem de sunucu şifreleme verilerini destekler. Daha fazla bilgi için bkz. Şifreleme [Kullanarak Verileri Koruma.](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html) Şu anda, Veri Fabrikası sanal bir özel bulut (VPC) içinde Amazon S3 desteklemiyor.
+Amazon S3, bekleyen verilerin hem istemci hem de sunucu şifrelemesini destekler. Daha fazla bilgi için bkz. [şifrelemeyi kullanarak verileri koruma](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html). Şu anda Data Factory, bir sanal özel bulut (VPC) içinde Amazon S3 desteklemez.
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift, veri için küme şifrelemesini destekler. Daha fazla bilgi için [Amazon Redshift Veritabanı Şifreleme'ye](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)bakın. Şu anda, Veri Fabrikası bir VPC içinde Amazon Redshift desteklemiyor. 
+Amazon Redshift, bekleyen veriler için küme şifrelemeyi destekler. Daha fazla bilgi için bkz. [Amazon Redshift veritabanı şifrelemesi](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). Şu anda Data Factory, bir VPC içinde Amazon Redshift 'ı desteklemez. 
 
 #### <a name="salesforce"></a>Salesforce
-Salesforce, tüm dosyaların, eklerin, özel alanların şifrelemesine olanak tanıyan Shield Platform Şifrelemesini destekler. Daha fazla bilgi için bkz: [Web Sunucusu OAuth Kimlik Doğrulama Akışını Anlama.](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)  
+Salesforce, tüm dosyaları, ekleri ve özel alanları şifrelemeye izin veren Shield platform şifrelemesini destekler. Daha fazla bilgi için bkz. [Web sunucusu OAuth kimlik doğrulama akışını anlama](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
 
-## <a name="hybrid-scenarios-using-data-management-gateway"></a>Karma Senaryolar (Veri Yönetimi Ağ Geçidi'ni kullanarak)
-Karma senaryolar, Veri Yönetimi Ağ Geçidi'nin şirket içi bir ağa veya sanal ağ (Azure) veya sanal özel bulut (Amazon) içinde yüklenmesini gerektirir. Ağ geçidi yerel veri depolarına erişebilmeli. Ağ geçidi hakkında daha fazla bilgi için [Veri Yönetimi Ağ Geçidi'ne](data-factory-data-management-gateway.md)bakın. 
+## <a name="hybrid-scenarios-using-data-management-gateway"></a>Karma senaryolar (Veri Yönetimi ağ geçidini kullanarak)
+Karma senaryolar, Veri Yönetimi ağ geçidinin şirket içi bir ağa veya bir sanal ağ (Azure) ya da bir sanal özel buluta (Amazon) yüklenmesini gerektirir. Ağ geçidinin yerel veri depolarına erişebilmesi gerekir. Ağ Geçidi hakkında daha fazla bilgi için bkz. [veri yönetimi Gateway](data-factory-data-management-gateway.md). 
 
-![Veri Yönetimi Ağ Geçidi kanalları](media/data-factory-data-movement-security-considerations/data-management-gateway-channels.png)
+![Veri Yönetimi ağ geçidi kanalları](media/data-factory-data-movement-security-considerations/data-management-gateway-channels.png)
 
-**Komut kanalı,** Veri Fabrikası ve Veri Yönetimi Ağ Geçidi'ndeki veri hareketi hizmetleri arasındaki iletişimi sağlar. İletişim, etkinlikle ilgili bilgileri içerir. Veri kanalı, şirket içi veri depoları ve bulut veri depoları arasında veri aktarmak için kullanılır.    
+**Komut kanalı** , Data Factory ve veri yönetimi ağ geçidinde veri taşıma hizmetleri arasında iletişime olanak sağlar. İletişim, etkinlikle ilgili bilgiler içerir. Veri kanalı, şirket içi veri depoları ile bulut veri depoları arasında veri aktarmak için kullanılır.    
 
-### <a name="on-premises-data-store-credentials"></a>Şirket içi veri depolama kimlik bilgileri
-Şirket içi veri depolarınızın kimlik bilgileri yerel olarak depolanır (bulutta değil). Onlar üç farklı şekilde ayarlanabilir. 
+### <a name="on-premises-data-store-credentials"></a>Şirket içi veri deposu kimlik bilgileri
+Şirket içi veri depolarınız için kimlik bilgileri yerel olarak depolanır (bulutta değil). Bunlar üç farklı şekilde ayarlanabilir. 
 
-- Azure Portalı/Kopyalama Sihirbazı'ndan HTTPS üzerinden **düz metin** (daha az güvenli) kullanma. Kimlik bilgileri, şirket içi ağ geçidine düz metin olarak geçirilir.
-- **Kopya Sihirbazı'ndan JavaScript Şifreleme kitaplığını**kullanma.
-- **Tıklama tabanlı kimlik bilgileri yöneticisi uygulamasını kullanma.** Tıkla-bir uygulama ağ geçidine erişimi olan şirket içi makinede yürütülür ve veri deposu için kimlik bilgileri ayarlar. Bu seçenek ve bir sonraki en güvenli seçeneklerdir. Kimlik bilgisi yöneticisi uygulaması, varsayılan olarak, güvenli iletişim için ağ geçidi ne olan makinede 8050 bağlantı noktasını kullanır.  
-- Kimlik bilgilerini şifrelemek için [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) PowerShell cmdlet kullanın. Cmdlet, kimlik bilgilerini şifrelemek için ağ geçidinin kullanacağı sertifikayı kullanır. Bu cmdlet tarafından döndürülen şifrelenmiş kimlik bilgilerini kullanabilir ve [Yeni-AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) cmdlet ile kullandığınız JSON dosyasındaki **connectionString'in** **EncryptedCredential** öğesine veya portaldaki Veri Fabrikası Düzenleyicisi'ndeki JSON parçacığına ekleyebilirsiniz. Bu seçenek ve tıklama-bir kez uygulama en güvenli seçeneklerdir. 
+- Azure portalından/kopyalama sihirbazından HTTPS aracılığıyla **düz metin** (daha az güvenli) kullanma. Kimlik bilgileri, şirket içi ağ geçidine düz metin olarak geçirilir.
+- **Kopyalama sihirbazından JavaScript şifreleme kitaplığı 'nı**kullanma.
+- **Tıklama tabanlı kimlik bilgileri Yöneticisi uygulamasını**kullanma. Bir kez tıklama uygulaması, ağ geçidine erişimi olan şirket içi makinede yürütülür ve veri deposunun kimlik bilgilerini ayarlar. Bu seçenek ve bir sonraki seçenek en güvenli seçeneklerdir. Kimlik bilgisi Yöneticisi uygulaması, varsayılan olarak güvenli iletişim için ağ geçidine sahip makinede 8050 numaralı bağlantı noktasını kullanır.  
+- Kimlik bilgilerini şifrelemek için [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) PowerShell cmdlet 'ini kullanın. Cmdlet 'i, kimlik bilgilerini şifrelemek için kullanılacak ağ geçidinin yapılandırıldığı sertifikayı kullanır. Bu cmdlet tarafından döndürülen şifrelenmiş kimlik bilgilerini kullanabilir ve bunu [New-AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) cmdlet 'i Ile kullandığınız JSON dosyasındaki **ya da PORTALDAKI** Data Factory düzenleyicisinde JSON **kod öğesine ekleyebilirsiniz** . Bu seçenek ve tek tıklama uygulaması en güvenli seçeneklerdir. 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>JavaScript şifreleme kitaplığı tabanlı şifreleme
-[Kopya](data-factory-copy-wizard.md)Sihirbazı'ndan [JavaScript Şifreleme kitaplığını](https://www.microsoft.com/download/details.aspx?id=52439) kullanarak veri deposu kimlik bilgilerini şifreleyebilirsiniz. Bu seçeneği seçtiğinizde, Kopya Sihirbazı ağ geçidinin ortak anahtarını alır ve veri deposu kimlik bilgilerini şifrelemek için kullanır. Kimlik bilgileri ağ geçidi makinesi tarafından deşifre edilir ve Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx)tarafından korunur.
+[Kopyalama sihirbazından](data-factory-copy-wizard.md) [JavaScript şifreleme kitaplığı](https://www.microsoft.com/download/details.aspx?id=52439) 'nı kullanarak veri deposu kimlik bilgilerini şifreleyebilirsiniz. Bu seçeneği belirlediğinizde, kopyalama Sihirbazı ağ geçidinin ortak anahtarını alır ve veri deposu kimlik bilgilerini şifrelemek için kullanır. Kimlik bilgilerinin ağ geçidi makinesi tarafından şifresi çözülür ve Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx)tarafından korunur.
 
-**Desteklenen tarayıcılar:** IE8, IE9, IE10, IE11, Microsoft Edge ve en son Firefox, Chrome, Opera, Safari tarayıcıları. 
+**Desteklenen tarayıcılar:** IE8, ıE9, ıE10, ıE11, Microsoft Edge ve en son Firefox, Chrome, Opera, Safari tarayıcıları. 
 
-#### <a name="click-once-credentials-manager-app"></a>Bir kez kimlik bilgileri yöneticisi uygulamasına tıklayın
-Ardışık hatlar yazarken Azure portalı/Kopyalama Sihirbazı'ndan tıklama tabanlı kimlik yöneticisi uygulamasını başlatabilirsiniz. Bu uygulama, kimlik bilgilerinin tel üzerinde düz metin olarak aktarılmamasını sağlar. Varsayılan olarak, güvenli iletişim için ağ geçidi olan makinede **8050** bağlantı noktasını kullanır. Gerekirse, bu bağlantı noktası değiştirilebilir.  
+#### <a name="click-once-credentials-manager-app"></a>Tıkla-bir kez kimlik bilgileri Yöneticisi uygulaması
+İşlem hatları yazarken Azure portal/kopyalama sihirbazından tıklama tabanlı kimlik bilgileri Yöneticisi uygulamasını başlatabilirsiniz. Bu uygulama, kimlik bilgilerinin kablo üzerinden düz metin olarak aktarılmamasını sağlar. Varsayılan olarak, güvenli iletişim için ağ geçidine sahip makinede **8050** numaralı bağlantı noktasını kullanır. Gerekirse, bu bağlantı noktası değiştirilebilir.  
   
-![Ağ geçidi için HTTPS bağlantı noktası](media/data-factory-data-movement-security-considerations/https-port-for-gateway.png)
+![Ağ Geçidi için HTTPS bağlantı noktası](media/data-factory-data-movement-security-considerations/https-port-for-gateway.png)
 
-Şu anda, Veri Yönetimi Ağ Geçidi tek bir **sertifika**kullanır. Bu sertifika ağ geçidi yüklemesi sırasında oluşturulur (Kasım 2016'dan sonra oluşturulan Veri Yönetimi Ağ Geçidi ve sürüm 2.4.xxxx.x veya sonraki sürümiçin geçerlidir). Bu sertifikayı kendi SSL/TLS sertifikanızla değiştirebilirsiniz. Bu sertifika, veri deposu kimlik bilgilerini ayarlamak için ağ geçidi makinesine güvenli bir şekilde bağlanmak için tıklama bir kez kimlik yöneticisi uygulaması tarafından kullanılır. Ağ geçidi olan makinede Windows [DPAPI'yi](https://msdn.microsoft.com/library/ms995355.aspx) kullanarak veri deposu kimlik bilgilerini şirket içinde güvenli bir şekilde saklar. 
+Şu anda Veri Yönetimi ağ geçidi tek bir **sertifika**kullanıyor. Bu sertifika, ağ geçidi yüklemesi sırasında oluşturulur (2016 Kasım ve sürüm 2.4 ' den sonra oluşturulan Veri Yönetimi ağ geçidi için geçerlidir. xxxx. x veya üzeri). Bu sertifikayı kendi SSL/TLS sertifikanız ile değiştirebilirsiniz. Bu sertifika, veri deposu kimlik bilgilerini ayarlamak için ağ geçidi makinesine güvenli bir şekilde bağlanmak üzere tıkla-bir tek kimlik bilgileri Yöneticisi uygulaması tarafından kullanılır. Ağ geçidine sahip makinede Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) kullanarak şirket içinde güvenli bir şekilde veri deposu kimlik bilgilerini depolar. 
 
 > [!NOTE]
-> Kasım 2016'dan önce veya sürüm 2.3.xxxx.x sürümünden önce yüklenen eski ağ geçitleri, şifrelenmiş ve bulutta depolanan kimlik bilgilerini kullanmaya devam eder. Ağ geçidini en son sürüme yükseltseniz bile, kimlik bilgileri şirket içi makineye geçirilemez    
+> 2016 Kasım veya 2.3 sürümünden önce yüklenen eski ağ geçitleri. xxxx. x, buluta şifrelenmiş ve depolanan kimlik bilgilerini kullanmaya devam eder. Ağ geçidini en son sürüme yükseltseniz bile, kimlik bilgileri şirket içi bir makineye geçirilmez    
   
-| Ağ geçidi sürümü (oluşturma sırasında) | Depolanan Kimlik Bilgileri | Kimlik bilgisi şifreleme/ güvenlik | 
+| Ağ Geçidi sürümü (oluşturma sırasında) | Depolanan kimlik bilgileri | Kimlik bilgisi şifreleme/güvenlik | 
 | --------------------------------- | ------------------ | --------- |  
-| < = 2.3.xxxx.x | Bulut üzerinde | Sertifika kullanılarak şifrelenmiş (Kimlik Bilgisi yöneticisi uygulaması tarafından kullanılandan farklı) | 
-| > = 2.4.xxxx.x | Şirket içinde | DPAPI ile güvenli | 
+| < = 2.3. xxxx. x | Bulutta | Sertifika kullanılarak şifrelendi (kimlik bilgileri Yöneticisi uygulamasının kullandığı bilgisayardan farklı) | 
+| > = 2,4. xxxx. x | Şirket içi | DPAPI aracılığıyla güvenli hale getirilir | 
   
 
 ### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
-Tüm veri aktarımları, Azure hizmetleriyle iletişim sırasında ortadaki adam saldırılarını önlemek için **TCP üzerinden** güvenli kanal **HTTPS** ve TLS üzerinden yapılır.
+Tüm veri aktarımları, Azure hizmetleriyle iletişim sırasında ortadaki adam saldırılarını engellemek için güvenli kanal **https** ve **TCP üzerinden TLS** aracılığıyla yapılır.
  
-Şirket içi ağınızla Azure arasındaki iletişim kanalını daha da güvenli hale getirmek için [IPSec VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) veya [Express Route'u](../../expressroute/expressroute-introduction.md) da kullanabilirsiniz.
+Ayrıca, şirket içi ağınız ve Azure arasında iletişim kanalını daha güvenli hale getirmek için [ıPSEC VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) veya [Express Route](../../expressroute/expressroute-introduction.md) 'u da kullanabilirsiniz.
 
-Sanal ağ, ağınızın buluttaki mantıksal bir temsilidir. IPSec VPN (siteden siteye) veya Express Route (Özel Eşleme) ayarlayarak bir şirket içi ağı Azure sanal ağınıza (VNet) bağlayabilirsiniz     
+Sanal ağ, buluttaki ağınızın mantıksal bir gösterimidir. IPSec VPN (siteden siteye) veya Express Route (özel eşleme) ayarlayarak, şirket içi bir ağı Azure sanal ağınıza (VNet) bağlayabilirsiniz     
 
-Aşağıdaki tablo, karma veri hareketi için kaynak ve hedef konumlarının farklı birleşimlerini temel alan ağ ve ağ geçidi yapılandırma önerilerini özetler.
+Aşağıdaki tabloda, karma veri hareketine yönelik farklı kaynak ve hedef konum birleşimlerine göre ağ ve ağ geçidi yapılandırma önerileri özetlenmektedir.
 
 | Kaynak | Hedef | Ağ yapılandırması | Ağ geçidi kurulumu |
 | ------ | ----------- | --------------------- | ------------- | 
-| Şirket içi | Sanal ağlarda dağıtılan sanal makineler ve bulut hizmetleri | IPSec VPN (noktadan siteye veya siteden siteye) | Ağ geçidi, VNet'te şirket içinde veya bir Azure sanal makinesine (VM) yüklenebilir | 
-| Şirket içi | Sanal ağlarda dağıtılan sanal makineler ve bulut hizmetleri | ExpressRoute (Özel Peering) | Ağ geçidi, Şirket içinde veya VNet'te azure VM'de yüklenebilir | 
-| Şirket içi | Genel bitiş noktası olan Azure tabanlı hizmetler | ExpressRoute (Genel Bakış) | Ağ geçidi şirket içinde kurulmalıdır | 
+| Şirket içi | Sanal ağlarda dağıtılan sanal makineler ve bulut Hizmetleri | IPSec VPN (Noktadan siteye veya siteden siteye) | Ağ Geçidi, şirket içinde veya VNet 'teki bir Azure sanal makinesine (VM) yüklenebilir | 
+| Şirket içi | Sanal ağlarda dağıtılan sanal makineler ve bulut Hizmetleri | ExpressRoute (özel eşleme) | Ağ Geçidi, şirket içinde veya VNet 'teki bir Azure VM 'ye yüklenebilir | 
+| Şirket içi | Genel uç noktası olan Azure tabanlı hizmetler | ExpressRoute (genel eşleme) | Ağ geçidinin şirket içinde yüklü olması gerekir | 
 
-Aşağıdaki resimler, Express rotası ve IPSec VPN (Virtual Network ile) kullanarak verileri şirket içi veritabanı ile Azure hizmetleri arasında taşımak için Veri Yönetimi Ağ Geçidi'nin kullanımını gösterir:
+Aşağıdaki resimlerde Express Route ve IPSec VPN (sanal ağ ile) kullanarak şirket içi veritabanı ve Azure hizmetleri arasında veri taşımak için Veri Yönetimi ağ geçidinin kullanımı gösterilmektedir:
 
-**Ekspres Rota:**
+**Hızlı rota:**
  
-![Ağ geçidi ile Express Rotasını Kullanma](media/data-factory-data-movement-security-considerations/express-route-for-gateway.png) 
+![Ağ Geçidi ile Express Route kullanma](media/data-factory-data-movement-security-considerations/express-route-for-gateway.png) 
 
 **IPSec VPN:**
 
-![Ağ geçidi ile IPSec VPN](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
+![Ağ Geçidi ile IPSec VPN](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>Güvenlik duvarı yapılandırmaları ve ağ geçidinin IP adresini beyaz listeye alma
+### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>Güvenlik duvarı yapılandırmalarının ve güvenilir listenin IP adresi
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Şirket içi/özel ağ için güvenlik duvarı gereksinimleri  
-Bir kuruluşta, kuruluşun merkezi yönlendiricisinde kurumsal bir **güvenlik duvarı** çalışır. Ayrıca, **Windows güvenlik duvarı** ağ geçidinin yüklü olduğu yerel makinede bir daemon olarak çalışır. 
+Bir kuruluşta kurumsal **güvenlik duvarı** kuruluşun merkezi yönlendiricisinde çalışır. Ve **Windows Güvenlik Duvarı** , ağ geçidinin yüklü olduğu yerel makinede bir daemon olarak çalışır. 
 
-Aşağıdaki **tablo, şirket güvenlik duvarı**için **giden bağlantı noktası** ve etki alanı gereksinimleri sağlar.
+Aşağıdaki tabloda, **Şirket güvenlik duvarı**için **giden bağlantı noktası** ve etki alanı gereksinimleri verilmiştir.
 
 | Etki alanı adları | Giden bağlantı noktaları | Açıklama |
 | ------------ | -------------- | ----------- | 
-| `*.servicebus.windows.net` | 443, 80 | Veri Fabrikası'ndaki veri hareket hizmetlerine bağlanmak için ağ geçidi tarafından gerekli |
-| `*.core.windows.net` | 443 | [Sahnelenen kopyalama](data-factory-copy-activity-performance.md#staged-copy) özelliğini kullandığınızda Azure Depolama Hesabı'na bağlanmak için ağ geçidi tarafından kullanılır. | 
-| `*.frontend.clouddatahub.net` | 443 | Azure Veri Fabrikası hizmetine bağlanmak için ağ geçidi tarafından gereklidir. | 
-| `*.database.windows.net` | 1433   | (İstEĞE BAĞLI) hedefiniz Azure SQL Veritabanı/ Azure SQL Veri Ambarı olduğunda gereklidir. 1433 bağlantı noktasını açmadan verileri Azure SQL Veritabanı/Azure SQL Veri Ambarı'na kopyalamak için aşamalı kopyalama özelliğini kullanın. | 
-| `*.azuredatalakestore.net` | 443 | (İstEĞE BAĞLI) hedefiniz Azure Veri Gölü deposu olduğunda gereklidir | 
+| `*.servicebus.windows.net` | 443, 80 | Data Factory içindeki veri taşıma hizmetlerine bağlanmak için ağ geçidi için gereklidir |
+| `*.core.windows.net` | 443 | [Hazırlanmış kopya](data-factory-copy-activity-performance.md#staged-copy) özelliğini kullandığınızda, Azure depolama hesabına bağlanmak için ağ geçidi tarafından kullanılır. | 
+| `*.frontend.clouddatahub.net` | 443 | Azure Data Factory hizmetine bağlanmak için ağ geçidi gereklidir. | 
+| `*.database.windows.net` | 1433   | (Isteğe bağlı) hedef Azure SQL veritabanı/Azure SQL veri ambarı olduğunda gereklidir. Azure SQL veritabanı/Azure SQL veri ambarı 'na veri kopyalamak için 1433 numaralı bağlantı noktasını açmadan hazırlanan kopyalama özelliğini kullanın. | 
+| `*.azuredatalakestore.net` | 443 | (Isteğe bağlı) hedef Azure Data Lake deposu olduğunda gereklidir | 
 
 > [!NOTE] 
-> İlgili veri kaynaklarının gerektirdiği şekilde, bağlantı noktalarını/ beyaz liste alan adlarını şirket güvenlik duvarı düzeyinde yönetmeniz gerekebilir. Bu tabloda yalnızca Azure SQL Veritabanı, Azure SQL Veri Ambarı, Azure Veri Gölü Deposu örnek olarak kullanılır.   
+> Şirket güvenlik duvarı düzeyindeki bağlantı noktalarını, ilgili veri kaynakları için gereken şekilde yönetmeniz/bu etki alanlarını daha fazla listeye almanız gerekebilir. Bu tablo yalnızca Azure SQL veritabanı, Azure SQL veri ambarı, örnek olarak Azure Data Lake Store kullanır.   
 
-Aşağıdaki **tablo, windows güvenlik duvarı**için **gelen bağlantı noktası** gereksinimlerini sağlar.
+Aşağıdaki tabloda **Windows Güvenlik Duvarı**için **gelen bağlantı noktası** gereksinimleri verilmiştir.
 
 | Gelen bağlantı noktaları | Açıklama | 
 | ------------- | ----------- | 
-| 8050 (TCP) | Ağ geçidinde şirket içi veri depoları için kimlik bilgilerini güvenli bir şekilde ayarlamak için kimlik bilgisi yöneticisi uygulaması tarafından gereklidir. | 
+| 8050 (TCP) | Ağ geçidinde şirket içi veri depoları için kimlik bilgilerini güvenli bir şekilde ayarlamak üzere kimlik bilgileri Yöneticisi uygulaması gereklidir. | 
 
-![Ağ geçidi bağlantı noktası gereksinimleri](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
+![Ağ Geçidi bağlantı noktası gereksinimleri](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
 
-#### <a name="ip-configurations-whitelisting-in-data-store"></a>Veri deposunda IP yapılandırmaları/ beyaz liste
-Buluttaki bazı veri depoları da bunlara erişen makinenin IP adresinin beyaz listesini gerektirir. Ağ geçidi makinesinin IP adresinin güvenlik duvarında uygun şekilde beyaz listeye alındığından/ yapılandırıldığından emin olun.
+#### <a name="ip-configurations-whitelisting-in-data-store"></a>Veri deposunda IP yapılandırması/beyaz listeleme
+Buluttaki bazı veri depoları da bunlara erişen makinenin IP adresinin beyaz listesini gerektirir. Ağ Geçidi makinesinin IP adresinin güvenlik duvarından uygun şekilde listelendiğinden/yapılandırıldığından emin olun.
 
-Aşağıdaki bulut veri depoları ağ geçidi makinesinin IP adresinin beyaz listesini gerektirir. Bu veri depolarından bazıları, varsayılan olarak, IP adresinin beyaz listesini gerektirmeyebilir. 
+Aşağıdaki bulut veri depoları, ağ geçidi makinesinin IP adresinin beyaz listesini gerektirir. Bu veri mağazalarından bazıları varsayılan olarak IP adresinin beyaz listesini gerektirmeyebilir. 
 
 - [Azure SQL Veritabanı](../../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL Veri Ambarı](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -181,16 +181,16 @@ Aşağıdaki bulut veri depoları ağ geçidi makinesinin IP adresinin beyaz lis
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-**Soru:** Ağ Geçidi farklı veri fabrikalarında paylaşılabilir mi?
-**Cevap:** Bu özelliği henüz destekliyoruz. Üzerinde çalışmaya devam ediyoruz.
+**Soru:** Ağ Geçidi farklı veri fabrikaları genelinde paylaşılabilir mi?
+**Cevap:** Henüz bu özelliği desteklemiyoruz. Üzerinde çalışmaya devam ediyoruz.
 
 **Soru:** Ağ geçidinin çalışması için bağlantı noktası gereksinimleri nelerdir?
-**Cevap:** Ağ Geçidi, internet için HTTP tabanlı bağlantılar sağlıyor. Bu bağlantıyı yapmak için **443 ve 80 giden bağlantı noktaları** ağ geçidi için açılmalıdır. Gelen **Bağlantı Noktası 8050'yi** yalnızca Kimlik Bilgisi Yöneticisi uygulaması için makine düzeyinde (kurumsal güvenlik duvarı düzeyinde değil) açın. Azure SQL Veritabanı veya Azure SQL Veri Ambarı kaynak/ hedef olarak kullanılıyorsa, **1433** bağlantı noktasını da açmanız gerekir. Daha fazla bilgi için [Güvenlik Duvarı yapılandırmaları ve IP adreslerini beyaz listeye alma](#firewall-configurations-and-whitelisting-ip-address-of gateway) bölümüne bakın. 
+**Cevap:** Ağ Geçidi, HTTP tabanlı bağlantıları internet 'te açmaya olanak sağlar. Bu bağlantıyı yapmak için ağ geçidi **443 ve 80 giden bağlantı noktaları** açılmalıdır. Kimlik bilgisi Yöneticisi uygulaması için yalnızca makine düzeyinde (kurumsal güvenlik duvarı düzeyinde değil) **gelen bağlantı noktası 8050** ' i açın. Azure SQL veritabanı veya Azure SQL veri ambarı kaynak/hedef olarak kullanılıyorsa, **1433** bağlantı noktasını da açmanız gerekir. Daha fazla bilgi için bkz. [güvenlik duvarı yapılandırması ve beyaz LISTEYE IP adresleri](#firewall-configurations-and-whitelisting-ip-address-of gateway) bölümü. 
 
 **Soru:** Ağ Geçidi için sertifika gereksinimleri nelerdir?
-**Cevap:** Geçerli ağ geçidi, veri deposu kimlik bilgilerini güvenli bir şekilde ayarlamak için kimlik bilgisi yöneticisi uygulaması tarafından kullanılan bir sertifika gerektirir. Bu sertifika, ağ geçidi kurulumu tarafından oluşturulan ve yapılandırılan kendi imzalı bir sertifikadır. Bunun yerine kendi TLS/SSL sertifikanızı kullanabilirsiniz. Daha fazla bilgi [için, bir kez kimlik bilgisi yöneticisi uygulama](#click-once-credentials-manager-app) bölümüne bakın. 
+**Cevap:** Geçerli ağ geçidi, veri deposu kimlik bilgilerini güvenli bir şekilde ayarlamak için kimlik bilgisi Yöneticisi uygulaması tarafından kullanılan bir sertifika gerektirir. Bu sertifika, ağ geçidi kurulumu tarafından oluşturulan ve yapılandırılan kendinden imzalı bir sertifikadır. Bunun yerine kendi TLS/SSL sertifikanızı kullanabilirsiniz. Daha fazla bilgi için bkz. [tıklama-bir kez kimlik bilgileri Yöneticisi uygulaması](#click-once-credentials-manager-app) bölümü. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kopyalama etkinliğinin performansı hakkında daha fazla bilgi için [bkz.](data-factory-copy-activity-performance.md)
+Kopyalama etkinliğinin performansı hakkında daha fazla bilgi için bkz. [kopyalama etkinliği performansı ve ayarlama Kılavuzu](data-factory-copy-activity-performance.md).
 
  

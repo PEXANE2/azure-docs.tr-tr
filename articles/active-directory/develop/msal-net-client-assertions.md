@@ -1,7 +1,7 @@
 ---
-title: İstemci iddiaları (MSAL.NET) | Azure
+title: İstemci onayları (MSAL.NET) | Mavisi
 titleSuffix: Microsoft identity platform
-description: .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı'ndaki gizli istemci uygulamaları için imzalı istemci iddiaları desteği hakkında bilgi edinin.
+description: .NET için Microsoft kimlik doğrulama kitaplığı 'nda bulunan gizli istemci uygulamaları için imzalanmış istemci onayları desteği (MSAL.NET) hakkında bilgi edinin.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -14,32 +14,32 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8c97387bfd2a362d3bf5a6b8a3252242f061da31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80050283"
 ---
-# <a name="confidential-client-assertions"></a>Gizli istemci iddiaları
+# <a name="confidential-client-assertions"></a>Gizli istemci onayları
 
-Gizli istemci uygulamaları, kimliklerini kanıtlamak için Azure AD ile bir sır alışverişinde bulundu. Sır olabilir:
-- İstemci sırrı (uygulama parolası).
-- Standart talepleri içeren imzalı bir iddia oluşturmak için kullanılan sertifika.
+Gizli istemci uygulamalarının kimliğini kanıtlamak için Azure AD ile gizli bir parola değişimi yapın. Gizli dizi şu olabilir:
+- Bir istemci parolası (uygulama parolası).
+- Standart talepler içeren imzalı bir onaylama oluşturmak için kullanılan bir sertifika.
 
-Bu sır doğrudan imzalı bir iddia da olabilir.
+Bu gizli dizi doğrudan imzalı bir onaylama da olabilir.
 
-MSAL.NET gizli istemci uygulamasına kimlik bilgileri veya iddiaları sağlamak için dört yöntem vardır:
+MSAL.NET, gizli istemci uygulamasına kimlik bilgileri veya onaylama sağlamak için dört yöntem içerir:
 - `.WithClientSecret()`
 - `.WithCertificate()`
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
 > [!NOTE]
-> `WithClientAssertion()` Gizli istemci için belirteçleri elde etmek için API'yi kullanmak mümkün olsa da, daha gelişmiş olduğundan ve yaygın olmayan çok özel senaryoları işlemek üzere tasarlandığı için varsayılan olarak kullanmanızı önermiyoruz. API'yi `.WithCertificate()` kullanmak, MSAL.NET sizin için bunu ele almasına olanak sağlar. Bu api, gerekirse kimlik doğrulama isteğinizi özelleştirme olanağı sunar, `.WithCertificate()` ancak oluşturulan varsayılan sapma çoğu kimlik doğrulama senaryosu için yeterli olacaktır. Bu API, MSAL.NET'nin imzalama işlemini dahili olarak gerçekleştiremediği bazı senaryolarda geçici çözüm olarak da kullanılabilir.
+> Gizli istemci için belirteçleri almak üzere `WithClientAssertion()` API kullanmak mümkün olsa da, daha gelişmiş olduğu ve yaygın olmayan çok sayıda senaryoyu işleyecek şekilde tasarlanan varsayılan olarak kullanılması önerilmez. API 'nin `.WithCertificate()` kullanılması msal.net bunu sizin için işlemesini sağlayacaktır. Bu API, gerekirse kimlik doğrulama isteğinizi özelleştirmenizi sağlar ancak tarafından `.WithCertificate()` oluşturulan varsayılan onaylama, çoğu kimlik doğrulama senaryosunda yeterli olacaktır. Bu API, MSAL.NET imzalama işlemini dahili olarak gerçekleştiremediği bazı senaryolarda geçici çözüm olarak da kullanılabilir.
 
-### <a name="signed-assertions"></a>İmzalanmış iddialar
+### <a name="signed-assertions"></a>İmzalı Onaylamalar
 
-İmzalanmış bir istemci iddiası, Azure AD, Base64 tarafından kodlanan gerekli kimlik doğrulama taleplerini içeren yükü içeren imzalı bir JWT biçiminde dir. Bunu kullanmak için:
+İmzalı bir istemci onaylama işlemi, Azure AD tarafından istenen kimlik doğrulama taleplerini uygulanan, Base64 kodlamalı bir yük ile imzalı JWT biçimini alır. Bunu kullanmak için:
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -52,14 +52,14 @@ Azure AD tarafından beklenen talepler şunlardır:
 
 Talep türü | Değer | Açıklama
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "Aud" (hedef kitle) iddiası, JWT'nin amaçlandığı alıcıları tanımlar (burada Azure AD) Bkz.[RFC 7519, Bölüm 4.1.3]
-Exp | Perşembe 27 Haziran 2019 15:04:17 GMT+0200 (Romance Daylight Time) | "Exp" (son kullanma süresi) talebi, JWT'nin işleme için kabul edilmemesi gereken son kullanma süresini tanımlar. Bkz. [RFC 7519, Bölüm 4.1.4]
-ıss | {ClientID} | "iss" (veren) iddiası, JWT'yi çıkaran asıl adı tanımlar. Bu talebin işlenmesi uygulamaya özgüdür. "iss" değeri StringOrURI değeri içeren büyük/küçük harf duyarlı bir dizedir. [RFC 7519, Bölüm 4.1.1]
-jti | (Bir Kılavuz) | "Jti" (JWT KIMLIĞI) iddiası JWT için benzersiz bir tanımlayıcı sağlar. Tanımlayıcı değeri, aynı değerin yanlışlıkla farklı bir veri nesnesine atanacağı gibi önemsiz bir olasılık olmasını sağlayacak şekilde atanmalıdır; uygulama birden çok ihraççı kullanıyorsa, farklı verenler tarafından üretilen değerler arasında çarpışmaların engellenmesi gerekir. "Jti" iddiası, JWT'nin yeniden oynatLanmasını önlemek için kullanılabilir. "Jti" değeri büyük/küçük harf duyarlı bir dizedir. [RFC 7519, Bölüm 4.1.7]
-nbf | Perşembe 27 Haziran 2019 14:54:17 GMT+0200 (Romance Daylight Time) | "Nbf" (daha önce değil) iddiası, JWT'nin işleme alınmak üzere kabul edilmemesi gereken zamanı tanımlar. [RFC 7519, Bölüm 4.1.5]
-Alt | {ClientID} | "Alt" (özne) iddiası JWT konusunu tanımlar. Bir JWT iddiaları normalde konu hakkında ifadeler vardır. Özne değeri, ihraççı bağlamında yerel olarak benzersiz olacak veya genel olarak benzersiz olmalıdır. Bkz. [RFC 7519, Bölüm 4.1.2]
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "AUD" (hedef kitle) talebi, JWT 'nin hedeflenen alıcılarını tanımlar (burada Azure AD) bkz. [RFC 7519, Section 4.1.3]
+exp | Per Haz 27 2019 15:04:17 GMT + 0200 (Romanya yaz saati) | "Exp" (sona erme saati) talebi, JWT 'ın işlenmek üzere kabul edilmemelidir. Bkz. [RFC 7519, Section 4.1.4]
+ğe | ClientID | "ISS" (veren) talebi, JWT veren sorumluyu tanımlar. Bu talebin işlenmesi uygulamaya özgüdür. "ISS" değeri, bir StringOrURI değeri içeren büyük küçük harfe duyarlı bir dizedir. [RFC 7519, Bölüm 4.1.1]
+JTI dili | (GUID) | "JTI" (JWT ID) talebi, JWT için benzersiz bir tanımlayıcı sağlar. Tanımlayıcı değeri, aynı değerin yanlışlıkla farklı bir veri nesnesine atanabileceği bir olasılık olmasını sağlayacak şekilde atanmalıdır; uygulama birden çok veren kullanıyorsa, çarpışmaların de farklı verenler tarafından üretilen değerler arasında engellenmeleri gerekır. "JTI" talebi, JWT 'ın yeniden çalınmasını engellemek için kullanılabilir. "JTI" değeri büyük/küçük harfe duyarlı bir dizedir. [RFC 7519, Bölüm 4.1.7]
+NBF | Per Haz 27 2019 14:54:17 GMT + 0200 (Romanya yaz saati) | "NBF" (before) talebi, JWT 'ın işlenmek üzere kabul edilmeden önce geçen süreyi tanımlar. [RFC 7519, Bölüm 4.1.5]
+alt | ClientID | "Sub" (konu) talebi, JWT konusunu tanımlar. Bir JWT içindeki talepler normalde konu hakkında ifadelerdir. Konu değeri, verenin bağlamında yerel olarak benzersiz olmalıdır ya da genel olarak benzersiz olmalıdır. Bkz. [RFC 7519, Section 4.1.2]
 
-Aşağıda, bu iddiaların nasıl işledilene ilgili bir örnek verilmiştir:
+Bu taleplerin nasıl yapıldığını gösteren bir örnek aşağıda verilmiştir:
 
 ```csharp
 private static IDictionary<string, string> GetClaims()
@@ -85,7 +85,7 @@ private static IDictionary<string, string> GetClaims()
 }
 ```
 
-İmzalı bir istemci iddiasını nasıl ortaya atabilirsiniz:
+İmzalı bir istemci onayını oluşturma:
 
 ```csharp
 string Encode(byte[] arg)
@@ -133,9 +133,9 @@ string GetSignedClientAssertion()
 }
 ```
 
-### <a name="alternative-method"></a>Alternatif yöntem
+### <a name="alternative-method"></a>Alternatif Yöntem
 
-Ayrıca, sizin için iddia oluşturmak için [Microsoft.IdentityModel.JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) kullanma seçeneğiniz vardır. Kod aşağıdaki örnekte gösterildiği gibi daha zarif olacaktır:
+Ayrıca, onaylaması sizin için oluşturmak üzere [Microsoft. IdentityModel. JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) kullanma seçeneğiniz de vardır. Kod, aşağıdaki örnekte gösterildiği gibi daha zarif olacaktır:
 
 ```csharp
         string GetSignedClientAssertion()
@@ -168,7 +168,7 @@ Ayrıca, sizin için iddia oluşturmak için [Microsoft.IdentityModel.JsonWebTok
         }
 ```
 
-İmzalı istemci iddianızı aldıktan sonra, aşağıda gösterildiği gibi MSAL apis ile kullanabilirsiniz.
+İmzalı istemci onayınız olduktan sonra, MSAL API 'leriyle aşağıda gösterildiği gibi kullanabilirsiniz.
 
 ```csharp
             string signedClientAssertion = GetSignedClientAssertion();
@@ -179,9 +179,9 @@ Ayrıca, sizin için iddia oluşturmak için [Microsoft.IdentityModel.JsonWebTok
                 .Build();
 ```
 
-### <a name="withclientclaims"></a>Müşteri Talepleri ile
+### <a name="withclientclaims"></a>Withclientclaim
 
-`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`varsayılan olarak, Azure AD tarafından beklenen talepleri ve göndermek istediğiniz ek istemci taleplerini içeren imzalı bir iddia üretir. Burada bunu yapmak için nasıl bir kod snippet olduğunu.
+`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`Varsayılan olarak, Azure AD ile beklenen talepleri ve göndermek istediğiniz ek istemci taleplerini içeren imzalı bir onaylama işlemi oluşturacaktır. Bunun nasıl yapılacağını gösteren bir kod parçacığı aşağıda verilmiştir.
 
 ```csharp
 string ipAddress = "192.168.1.2";
@@ -194,6 +194,6 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 ```
 
-Sözlükte geçtiğiniz taleplerden biri zorunlu taleplerden biriyle aynıysa, ek talebin değeri dikkate alınır. MSAL.NET tarafından hesaplanan talepleri geçersiz kılar.
+Geçirdiğiniz sözlüklerdeki taleplerden biri zorunlu taleplerden biriyle aynıysa, ek talebin değeri hesaba alınacaktır. Bu, MSAL.NET tarafından hesaplanan talepleri geçersiz kılar.
 
-Azure AD tarafından beklenen zorunlu talepler de dahil olmak üzere kendi `false` taleplerinizi sağlamak istiyorsanız, `mergeWithDefaultClaims` parametre için geçiş.
+Azure AD tarafından beklenen zorunlu talepler dahil olmak üzere kendi taleplerinizi sağlamak istiyorsanız, `false` `mergeWithDefaultClaims` parametresi için geçirin.

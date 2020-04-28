@@ -1,6 +1,6 @@
 ---
-title: Azure Trafik Analizi şeması güncellemesi - Mart 2020 | Microsoft Dokümanlar
-description: Trafik Analitiği şemasında yeni alanlar içeren örnek sorgular.
+title: Azure Trafik Analizi şema güncelleştirmesi-Mart 2020 | Microsoft Docs
+description: Trafik Analizi şemasında yeni alanlarla örnek sorgular.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -14,23 +14,23 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
 ms.openlocfilehash: 4fe981576e3f6e58b0886d9c0d2eb2915d8b7720
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80396618"
 ---
-# <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>Trafik Analitiği şemasında yeni alanlar içeren örnek sorgular (Ağustos 2019 şema güncelleştirmesi)
+# <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>Trafik Analizi şemasında yeni alanlarla örnek sorgular (Ağustos 2019 şema güncelleştirmesi)
 
-[Trafik Analitiği günlük şema](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) aşağıdaki yeni alanları içerir: **SrcPublicIPs_s**, **DestPublicIPs_s**, **NSGRule_s**. Yeni alanlar kaynak ve hedef IP'ler hakkında bilgi sağlar ve sorguları basitleştirir.
+[Trafik Analizi log şeması](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) şu yeni alanları içerir: **SrcPublicIPs_s**, **DestPublicIPs_s**, **NSGRule_s**. Yeni alanlar, kaynak ve hedef IP 'Ler hakkında bilgi sağlar ve sorguları basitleştirir.
 
-Önümüzdeki birkaç ay içinde, aşağıdaki eski alanlar amortismana sunulacak: **VMIP_s**, **Subscription_g**, **Region_s**, **NSGRules_s**, **Subnet_s**, **VM_s**, **NIC_s**, **PublicIPs_s**, **FlowCount_d**.
+Önümüzdeki birkaç ay içinde şu eski alanlar kullanım dışı olacaktır: **VMIP_s**, **Subscription_g**, **Region_s**, **NSGRules_s**, **Subnet_s**, **VM_s**, **NIC_s**, **PublicIPs_s**, **FlowCount_d**.
 
-Aşağıdaki üç örnek, eski alanların yenileriyle nasıl değiştirilmeye kadar değiştirilebildiğini gösterir.
+Aşağıdaki üç örnek, eski alanların yeni olanlarla nasıl değiştirileceğini gösterir.
 
 ## <a name="example-1-vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-and-publicips_s-fields"></a>Örnek 1: VMIP_s, Subscription_g, Region_s, Subnet_s, VM_s, NIC_s ve PublicIPs_s alanları
 
-AzurePublic ve ExternalPublic akışları için **FlowDirection_s** alanından kaynak ve hedef servis taleplerini çıkarmak zorunda değiliz. Ayrıca bir ağ sanal cihaz için **FlowDirection_s** alanı kullanmak uygunsuz olabilir.
+Azucumhuriyeti ve ExternalPublic akışları için **FlowDirection_s** alanından kaynak ve hedef durumları çıkarması gerekmez. Ayrıca, bir ağ sanal gereci için **FlowDirection_s** alanını kullanmak uygun olmayabilir.
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -74,11 +74,11 @@ DestPublicIPsAggregated = iif(isnotempty(DestPublicIPs_s), DestPublicIPs_s, "N/A
 
 ## <a name="example-2-nsgrules_s-field"></a>Örnek 2: NSGRules_s alanı
 
-Eski alan biçimini kullandı:
+Eski alan şu biçimi kullandı:
 
-<Endeksi değeri 0)>|<NSG_ RuleName>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
+<dizin değeri 0) >|<NSG_ RuleName>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
 
-Artık bir ağ güvenlik grubu (NSG) üzerinden veri toplamıyoruz. Güncelleştirilmiş şemada, **NSGList_s** yalnızca bir NSG içerir. Ayrıca **NSGRules** yalnızca bir kural içerir. Burada ve örnekte gösterildiği gibi diğer alanlarda karmaşık biçimlendirme kaldırıldı.
+Artık bir ağ güvenlik grubu (NSG) genelinde verileri toplamıyoruz. Güncelleştirilmiş şemada, **NSGList_s** yalnızca bir NSG içerir. Ayrıca **Nsgrules** yalnızca bir kural içerir. Burada ve diğer alanlarda, örnekte gösterildiği gibi karmaşık biçimlendirmeyi kaldırdık.
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -105,22 +105,22 @@ FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_
 
 ## <a name="example-3-flowcount_d-field"></a>Örnek 3: FlowCount_d alanı
 
-NSG'de veri gütmediğimiz **için, FlowCount_d** basitçe şöyledir:
+NSG genelinde verileri kulüettiğimiz için **FlowCount_d** yalnızca şu şekilde olur:
 
-**AllowedInFlows_d** + **DeniedInFlows_d** + **AllowedOutFlows_d** + **DeniedOutFlows_d**
+**AllowedInFlows_d** + **DeniedInFlows_d**DeniedInFlows_d + **AllowedOutFlows_d**AllowedOutFlows_d + **DeniedOutFlows_d**
 
-Dört alandan yalnızca biri sıfırdan olacaktır. Diğer üç alan sıfır olacak. Alanlar durumu belirtmek için doldurulur ve akış yakalanan NIC sayısı.
+Dört alandan yalnızca biri sıfır dışı olacaktır. Diğer üç alan sıfır olacaktır. Alanlar, akışın yakalandığı NIC 'de durum ve sayı belirtmek için doldurulur.
 
 Bu koşulları göstermek için:
 
-- Akışa izin verilirse, "İzin Verilen" önceden belirlenmiş alanlardan biri doldurulur.
-- Akış reddedilirse, "Reddedildi" önceden belirlenmiş alanlardan biri doldurulur.
-- Akış gelen olsaydı, "InFlows_d" suffixed alanlardan biri doldurulur.
-- Akış giden ise, "OutFlows_d" suffixed alanlardan biri doldurulur.
+- Akışa izin verildiyse, "Izin verilen" önekli alanlardan biri doldurulur.
+- Akış reddedildiyse, "reddedilen" önekli alanlardan biri doldurulur.
+- Akış geldiği takdirde, "InFlows_d" soneki sabit alanlarından biri doldurulur.
+- Akış giden bir ise, "OutFlows_d" sonekli alanlardan biri doldurulur.
 
-Koşullara bağlı olarak, dört alandan hangisinin doldurulacağını biliyoruz.
+Koşullara bağlı olarak, dört alandan hangisini doldurabileceğinizi biliyoruz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sık sorulan soruların yanıtlarını almak için [Trafik Analizi SSS](traffic-analytics-faq.md)bölümüne bakın.
-- İşlevsellikle ilgili ayrıntıları görmek için [Trafik Analizi belgelerine](traffic-analytics.md)bakın.
+- Sık sorulan soruların yanıtlarını almak için [trafık ANALIZI SSS](traffic-analytics-faq.md)bölümüne bakın.
+- İşlevlerle ilgili ayrıntıları görmek için bkz. [Trafik Analizi belgeleri](traffic-analytics.md).

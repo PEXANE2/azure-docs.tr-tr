@@ -1,52 +1,52 @@
 ---
 title: Azure tarafından atanan temsilcinin kaynak yönetimi
-description: Yönetilen hizmetler, hizmet sağlayıcıların Azure Marketi'ndeki müşterilere kaynak yönetimi teklifleri satmasına olanak tanır.
+description: Yönetilen hizmetler, hizmet sağlayıcılarının Azure Marketi 'ndeki müşterilere kaynak yönetimi tekliflerini satmasını sağlar.
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: db9f562ca4f42d1c1d85eeac44495a8ec7e01beb
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80548415"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure tarafından atanan temsilcinin kaynak yönetimi
 
-Azure temsilci kaynak yönetimi, Azure Deniz Feneri'nin önemli bileşenlerinden biridir. Azure yetkili kaynak yönetimi yle, hizmet sağlayıcıları müşteri etkileşimini ve biniş deneyimlerini basitleştirebilir ve yetkin kaynakları çeviklik ve hassasiyetle ölçekte yönetebilir.
+Azure Temsilcili kaynak yönetimi, Azure Use 'ın temel bileşenlerinden biridir. Azure Temsilcili kaynak yönetimi sayesinde, hizmet sağlayıcıları müşteri katılımı ve ekleme deneyimlerini basitleştirecek şekilde, yetki verilen kaynakları çeviklik ve duyarlıkla yönetdirebilir.
 
-## <a name="what-is-azure-delegated-resource-management"></a>Azure temsilci kaynak yönetimi nedir?
+## <a name="what-is-azure-delegated-resource-management"></a>Azure Temsilcili kaynak yönetimi nedir?
 
-Azure temsilci kaynak yönetimi, kaynakların bir kiracıdan başka bir kiracıya mantıksal olarak projeksiyonuna olanak tanır. Bu, tek bir Azure Etkin Dizin (Azure AD) kiracısındaki yetkili kullanıcıların müşterilerine ait farklı Azure AD kiracılarında yönetim işlemleri gerçekleştirmesini sağlar. Hizmet sağlayıcıları kendi Azure AD kiracılarında oturum açabilir ve temsilcileştirilmiş müşteri abonelikleri ve kaynak gruplarında çalışma yetkisine sahip olabilir. Bu, her bir müşteri kiracısına oturum açmadan müşterileri adına yönetim işlemleri gerçekleştirmelerine olanak tanır.
-
-> [!NOTE]
-> Azure temsilci kaynak yönetimi, kiracılar arası yönetimi basitleştirmek için [birden çok Azure AD kiracısına sahip bir kuruluşta](enterprise.md) da kullanılabilir.
-
-Azure temsilci kaynak yönetimi yle, yetkili kullanıcılar müşterinin kiracısında bir hesap olmadan veya müşterinin kiracısının ortak sahibi olmadan doğrudan müşteri aboneliği bağlamında çalışabilir. Ayrıca Azure [portalındaki yeni **Müşterilerim** sayfasında ki tüm temsilci müşteri aboneliklerini görüntüleyebilir ve yönetebilirler.](../how-to/view-manage-customers.md)
-
-[Kiracılar arası yönetim deneyimi,](cross-tenant-management-experience.md) Azure İlkesi, Azure Güvenlik Merkezi ve daha fazlası gibi Azure yönetim hizmetleriyle daha verimli çalışmanıza yardımcı olur. Tüm hizmet sağlayıcı etkinliği, müşterinin kiracısında depolanan (ve yönetici kiracıdaki kullanıcılar tarafından görüntülenebileceğiniz) etkinlik günlüğünde izlenir. Bu, hem müşteri hem de hizmet sağlayıcısının herhangi bir değişiklikle ilişkili kullanıcıyı kolayca tanımlayabileceği anlamına gelir.
-
-Bir müşteriyi Azure'a devredilen kaynak yönetimine dahil ettiğinizde, [tekliflerini, hizmet sağlayıcılarını ve temsilci kaynaklarını onaylayıp yönetebilecekleri](../how-to/view-manage-service-providers.md)Azure portalındaki yeni **Hizmet sağlayıcıları** sayfasına erişebilirler. Müşteri bir hizmet sağlayıcısının erişimini iptal etmek isterse, bunu istediği zaman burada yapabilir.
-
-Yeni [Yönetilen Hizmet teklifi türünü Azure Marketi'nde yayımlayabilirsiniz](../how-to/publish-managed-services-offers.md) ve müşterileri Azure temsilci kaynak yönetimine kolayca dahil edebilirsiniz. Alternatif olarak, [Azure Kaynak Yöneticisi şablonlarını dağıtarak onboarding işlemini](../how-to/onboard-customer.md)tamamlayabilirsiniz.
-
-## <a name="how-azure-delegated-resource-management-works"></a>Azure temsilci kaynak yönetimi nasıl çalışır?
-
-Yüksek düzeyde, Azure temsilci kaynak yönetimi şu şekilde çalışır:
-
-1. Bir hizmet sağlayıcısı olarak, gruplarınızın, hizmet ilkelerinizin veya kullanıcılarınızın müşterinin Azure kaynaklarını yönetmek için ihtiyaç dedeceği erişimi (rolleri) tanımlarsınız. Erişim tanımı, hizmet sağlayıcısının kiracı kimliğini ve teklif için gerekli erişimi içerir ve kiracınızdan yerleşik [ **roleDefinition** değerlerine](../../role-based-access-control/built-in-roles.md) (Katkıda Bulunan, VM Katılımcısı, Okuyucu, vb.) eşlenen **principalId** kimlikleri kullanılarak tanımlanır.
-2. Bu erişimi ve müşteriyi Azure temsilcili kaynak yönetimine iki şekilde belirtirsiniz:
-   - Müşterinin kabul edeceği [bir Azure Marketi yönetilen hizmet teklifi](../how-to/publish-managed-services-offers.md) (özel veya herkese açık) yayımlama
-   - Bir veya daha fazla özel abonelik veya kaynak grubu için [müşterinin kiracısına azure kaynak yöneticisi şablonu dağıtma](../how-to/onboard-customer.md)
-3. Müşteri uçağa bindikten sonra, yetkili kullanıcılar hizmet sağlayıcınızla oturum açabilir ve belirlediğiniz erişime bağlı olarak verilen müşteri kapsamında yönetim görevlerini gerçekleştirebilir.
+Azure Temsilcili kaynak yönetimi, kaynakların bir kiracıdan başka bir kiracıya mantıksal olarak projeksiyonunu sunar. Bu, bir Azure Active Directory (Azure AD) kiracısındaki yetkili kullanıcıların müşterilerine ait farklı Azure AD kiracılar arasında yönetim işlemleri gerçekleştirmesini sağlar. Hizmet sağlayıcıları kendi Azure AD kiracısında oturum açabilir ve Temsilcili müşteri abonelikleri ve kaynak gruplarında çalışmak için yetkilendirmeye sahip olabilir. Bu, her bir müşteri kiracısında oturum açmaya gerek kalmadan, kendi müşterileri adına yönetim işlemleri gerçekleştirmesini sağlar.
 
 > [!NOTE]
-> Ayrı bulutlar arasında iki kiracı arasında bir abonelik delegasyonu desteklenmez.
+> Azure Temsilcili kaynak yönetimi, platformlar arası yönetimi basitleştirmek için [birden çok Azure AD kiracısına sahip bir kuruluşta](enterprise.md) de kullanılabilir.
 
-## <a name="support-for-azure-delegated-resource-management"></a>Azure temsilci kaynak yönetimi desteği
+Yetkili kullanıcılar, Azure Temsilcili kaynak yönetimi sayesinde, bu müşterinin kiracısında bir hesabı olmadan veya müşterinin kiracısının ortak sahibi olmasına gerek kalmadan doğrudan bir müşteri aboneliği bağlamında çalışabilir. Ayrıca, [Tüm Temsilcili müşteri aboneliklerini, Azure Portal yeni **müşterilerimiz** sayfasında görüntüleyebilir ve yönetebilir](../how-to/view-manage-customers.md) .
 
-Azure temsilci kaynak yönetimiyle ilgili yardıma ihtiyacınız varsa, Azure portalında bir destek isteği açabilirsiniz. **Sorun türü için** **Teknik'i**seçin. Bir abonelik seçin, ardından **Deniz Feneri'ni** seçin **(İzleme & Yönetimi**altında).
+[Çapraz kiracı yönetim deneyimi](cross-tenant-management-experience.md) , Azure Ilkesi, Azure Güvenlik Merkezi ve daha fazlası gibi Azure Yönetim Hizmetleri ile daha verimli çalışmanıza yardımcı olur. Tüm hizmet sağlayıcı etkinlikleri, müşterinin kiracısında saklanan (ve yönetim kiracısında kullanıcılar tarafından görüntülenebilir) etkinlik günlüğünde izlenir. Bu, hem müşteri hem de hizmet sağlayıcının herhangi bir değişiklikle ilişkili kullanıcıyı kolayca tanımlayabileceği anlamına gelir.
+
+Azure tarafından atanan kaynak yönetimine bir müşteri eklediğinizde, bu [kişilerin tekliflerini, hizmet sağlayıcılarını ve Temsilcili kaynakları doğrulayabilecekleri ve yönetebilecekleri](../how-to/view-manage-service-providers.md)Azure Portal yeni **hizmet sağlayıcıları** sayfasına erişimi vardır. Müşteri, bir hizmet sağlayıcısı için erişimi iptal etmek isterse, bunu dilediğiniz zaman yapabilirsiniz.
+
+Azure tarafından sunulan kaynak yönetimine kolayca müşteri eklemek için [Yeni yönetilen hizmet teklifi türünü Azure Market 'e yayımlayabilirsiniz](../how-to/publish-managed-services-offers.md) . Alternatif olarak, [Azure Resource Manager şablonlarını dağıtarak ekleme işlemini tamamlayabilirsiniz](../how-to/onboard-customer.md).
+
+## <a name="how-azure-delegated-resource-management-works"></a>Azure Temsilcili kaynak yönetimi nasıl kullanılır?
+
+Yüksek düzeyde, Azure tarafından atanan kaynak yönetiminin nasıl çalıştığı aşağıda verilmiştir:
+
+1. Hizmet sağlayıcı olarak, gruplarınızın, hizmet sorumlularının veya kullanıcılarınızın müşterinin Azure kaynaklarını yönetmesi gereken erişimi (rolleri) belirlersiniz. Erişim tanımı, [yerleşik **roledefinition** değerleriyle](../../role-based-access-control/built-in-roles.md) (katkıda bulunan, VM katılımcısı, okuyucu vb.) eşlenmiş kiracınızdan **PrincipalId** kimlikleri KULLANıLARAK tanımlanan, hizmet sağlayıcısının Kiracı kimliğini ve bu teklif için gerekli erişimi içerir.
+2. Bu erişimi belirtin ve müşteriyi, Azure tarafından atanan kaynak yönetimine iki şekilde katılın:
+   - Müşterinin kabul edeceği [bir Azure Marketi yönetilen hizmet teklifi](../how-to/publish-managed-services-offers.md) (özel veya ortak) yayımlayın
+   - Bir veya daha fazla belirli abonelik veya kaynak grubu için [Azure Resource Manager şablonunu müşterinin kiracısına dağıtma](../how-to/onboard-customer.md)
+3. Müşteri eklendi olduktan sonra yetkili kullanıcılar, hizmet sağlayıcı kiracınızda oturum açabilir ve tanımladığınız erişime göre belirtilen müşteri kapsamında yönetim görevleri gerçekleştirebilir.
+
+> [!NOTE]
+> Ayrı bulutlar genelinde iki kiracı arasında bir aboneliğin temsili desteklenmez.
+
+## <a name="support-for-azure-delegated-resource-management"></a>Azure tarafından yetkilendirilen kaynak yönetimi desteği
+
+Azure Temsilcili kaynak yönetimiyle ilgili yardıma ihtiyacınız varsa Azure portal bir destek isteği açabilirsiniz. **Sorun türü**için **Teknik**' i seçin. Bir **abonelik seçin ve ardından açık (** **& yönetimi**altında) seçeneğini belirleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kiracılar [arası yönetim deneyimleri](cross-tenant-management-experience.md)hakkında bilgi edinin.
-- Azure [Marketi'nde yönetilen hizmet teklifleri](managed-services-offers.md)hakkında bilgi edinin.
+- [Çapraz kiracı yönetim deneyimleri](cross-tenant-management-experience.md)hakkında bilgi edinin.
+- [Azure Market 'te yönetilen hizmet teklifleri](managed-services-offers.md)hakkında bilgi edinin.

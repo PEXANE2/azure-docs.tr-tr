@@ -1,6 +1,6 @@
 ---
-title: Web API'lerini arayan daemon uygulamalarını kaydedin - Microsoft kimlik platformu | Azure
-description: Web API'lerini çağıran bir daemon uygulaması oluşturmayı öğrenin - uygulama kaydı
+title: Web API 'Lerini çağıran Daemon uygulamalarını kaydetme-Microsoft Identity platform | Mavisi
+description: Web API 'Leri çağıran bir Daemon uygulaması oluşturmayı öğrenin-uygulama kaydı
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,43 +12,43 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 508101ad615dd96559b1c68a61be7c08772545db
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885489"
 ---
-# <a name="daemon-app-that-calls-web-apis---app-registration"></a>Web API'lerini çağıran Daemon uygulaması - uygulama kaydı
+# <a name="daemon-app-that-calls-web-apis---app-registration"></a>Web API 'Lerini çağıran Daemon uygulaması-uygulama kaydı
 
-Bir daemon uygulaması için, uygulamayı kaydederken bilmeniz gerekenler şunlardır.
+Bir Daemon uygulaması için uygulamayı kaydettiğinizde bilmeniz gerekenler aşağıda verilmiştir.
 
 ## <a name="supported-account-types"></a>Desteklenen hesap türleri
 
-Daemon uygulamaları yalnızca Azure AD kiracılarında anlamlıdır. Bu nedenle uygulamayı oluştururken, aşağıdaki seçeneklerden birini seçmeniz gerekir:
+Daemon uygulamaları yalnızca Azure AD kiracılarında anlamlı hale getirir. Bu nedenle, uygulamayı oluştururken aşağıdaki seçeneklerden birini belirlemeniz gerekir:
 
-- **Yalnızca bu kuruluş dizinindeki hesaplar.** Daemon uygulamaları genellikle iş hattı (LOB) geliştiricileri tarafından yazıldığından, bu seçim en yaygın olanıdır.
-- **Herhangi bir kuruluş dizinindeki hesaplar.** Müşterilerinize yardımcı program sağlayan bir ISV iseniz bu seçimi yaparsınız. Bunu onaylamak için müşterilerinizin kiracı yöneticilerine ihtiyacınız vardır.
+- **Yalnızca bu kuruluş dizinindeki hesaplar**. Daemon uygulamaları genellikle iş kolu (LOB) geliştiricileri tarafından yazıldığı için bu seçim en yaygın bir seçenektir.
+- **Herhangi bir kuruluş dizinindeki hesaplar**. Müşterileriniz için bir yardımcı program aracı sağlayan bir ISV 'niz varsa, bu seçimi yaparsınız. Müşterilerinizin kiracı yöneticilerinin onayını onaylaması gerekir.
 
-## <a name="authentication---no-reply-uri-needed"></a>Kimlik doğrulama - hiçbir cevap URI gerekli
+## <a name="authentication---no-reply-uri-needed"></a>Kimlik doğrulama-yanıt URI 'SI gerekli değil
 
-Gizli istemci uygulamanızın *yalnızca* istemci kimlik bilgilerini kullandığı durumlarda, uri yanıtının kaydedilmesi gerekmez. Uygulama yapılandırması veya inşaat için gerekli değildir. İstemci kimlik bilgileri akışı bunu kullanmaz.
+Gizli istemci uygulamanızın *yalnızca* istemci kimlik bilgileri akışını kullanması durumunda, yanıt URI 'sinin kayıtlı olması gerekmez. Uygulama yapılandırması veya oluşturulması için gerekli değildir. İstemci kimlik bilgileri akışı bunu kullanmaz.
 
-## <a name="api-permissions---app-permissions-and-admin-consent"></a>API izinleri - uygulama izinleri ve yönetici onayı
+## <a name="api-permissions---app-permissions-and-admin-consent"></a>API izinleri-uygulama izinleri ve yönetici onayı
 
-Daemon uygulaması yalnızca API'lere uygulama izinleri isteyebilir (devredilen izinler değil). Uygulama kaydı için **API izinleri** sayfasında, izin **ekle'yi** seçtikten ve API ailesini seçtikten sonra, **Uygulama izinlerini**seçin ve ardından izinlerinizi seçin.
+Bir Daemon uygulaması, API 'lere yalnızca uygulama izinleri isteyebilir (temsilci izinleri yoktur). Uygulama kaydı için **API izinleri** sayfasında, **izin Ekle** ' yi seçtikten sonra API ailesini seçtikten sonra **Uygulama izinleri**' ni seçin ve ardından izinlerinizi seçin.
 
 ![Uygulama izinleri ve yönetici onayı](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
-> Aramak istediğiniz web API'sinin, yetkin *izinleri değil, uygulama izinlerini (uygulama rolleri)* tanımlaması gerekir. Böyle bir API'nin nasıl ortaya çıkarılacağına ilişkin ayrıntılar için [Korumalı web API: Uygulama kaydı - web API'nız bir daemon uygulaması tarafından çağrıldığında.](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)
+> Çağırmak istediğiniz Web API 'sinin, temsilci izinleri değil *Uygulama izinleri (uygulama rolleri)* tanımlamasına ihtiyacı vardır. Böyle bir API 'yi kullanıma sunma hakkında daha fazla bilgi için bkz. [Protected Web API: uygulama kaydı-Web API 'niz bir Daemon uygulaması tarafından çağrıldığında](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app).
 
-Daemon uygulamaları, kiracı yöneticinin web API'yi çağıran uygulamaya önceden onay göstermesini gerektirir. Kiracı yöneticiler, ** *kuruluşumuza* Grant admin onayı** seçerek aynı **API izin** sayfasında bu onayı sağlar
+Daemon uygulamaları, kiracı yöneticisinin Web API 'sini çağıran uygulamaya ön onayını gerektirir. Kiracı yöneticileri, ** *kuruluşumuza* yönetici izni ver** ' i seçerek aynı **API izin** sayfasında bu onayı sağlar
 
-Çok kiracılı bir uygulama oluşturan bir ISV iseniz, dağıtım bölümünü okumalısınız [- çok kiracılı daemon uygulamaları.](scenario-daemon-production.md#deployment---multitenant-daemon-apps)
+Çok kiracılı bir uygulama için bir ISV oluşturuyorsanız, [çok kiracılı Daemon uygulamalarının dağıtım durumunu](scenario-daemon-production.md#deployment---multitenant-daemon-apps)okumanız gerekir.
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Daemon uygulaması - uygulama kodu yapılandırması](./scenario-daemon-app-configuration.md)
+> [Daemon uygulaması-uygulama kodu yapılandırması](./scenario-daemon-app-configuration.md)

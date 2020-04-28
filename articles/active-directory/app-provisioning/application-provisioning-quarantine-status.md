@@ -1,6 +1,6 @@
 ---
-title: Karantina Başvuru Durumu | Microsoft Dokümanlar
-description: Otomatik kullanıcı sağlama için bir uygulama yapılandırdığınızda, Karantina'nın sağlama durumunun ne anlama geldiğini ve nasıl temizlenerek temize çıktığınızı öğrenin.
+title: Karantina uygulama sağlama durumu | Microsoft Docs
+description: Otomatik Kullanıcı sağlama için bir uygulama yapılandırdığınızda, karantinanın sağlama durumunun ne anlama geldiğini ve nasıl temizleyeceğinizi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,60 +17,60 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 563c049bf3d1606e87db54e3b003dac987594610
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154636"
 ---
-# <a name="application-provisioning-in-quarantine-status"></a>Karantina durumunda başvuru sağlama
+# <a name="application-provisioning-in-quarantine-status"></a>Karantina durumunda uygulama sağlama
 
-Azure AD sağlama hizmeti yapılandırmanızın durumunu izler ve sağlıksız uygulamaları bir "karantina" durumuna yerleştirir. Hedef sisteme karşı yapılan çağrıların çoğu veya tümü bir hata nedeniyle sürekli olarak başarısız olursa (örneğin geçersiz yönetici kimlik bilgileri), sağlama işi karantinada olarak işaretlenir.
+Azure AD sağlama hizmeti yapılandırmanızın sistem durumunu izler ve sağlıksız uygulamaları bir "Karantina" durumuna koyar. Hedef sisteme karşı yapılan çağrıların çoğu veya hepsi bir hata nedeniyle sürekli olarak başarısız olursa, örneğin, geçersiz yönetici kimlik bilgileri gibi, sağlama işi karantinada olarak işaretlenir.
 
-Karantina sırasında, artımlı döngülerin sıklığı yavaş yavaş günde bir kez azalır. Tüm hatalar düzeltildikten ve bir sonraki eşitleme döngüsü başladıktan sonra sağlama işi karantinadan kaldırılır. Sağlama işi dört haftadan uzun süre karantinada kalırsa, sağlama işi devre dışı bırakılır (çalışmayı durdurur).
+Karantinaya alma sırasında, artımlı döngülerin sıklığı günde bir kez yavaş şekilde azaltılır. Hazırlama işi, tüm hatalar düzeltildikten ve sonraki eşitleme döngüsünün başlamasından sonra karantinadan kaldırılır. Sağlama işi dört haftadan uzun bir süreyle karantinayla kalırsa, sağlama işi devre dışı bırakılır (çalışmayı sonlandırır).
 
-## <a name="how-do-i-know-if-my-application-is-in-quarantine"></a>Başvurumun karantinada olup olmadığını nasıl anlarım?
+## <a name="how-do-i-know-if-my-application-is-in-quarantine"></a>Nasıl yaparım? uygulamamın karantinaya alınsın mı?
 
-Bir uygulamanın karantinada olup olmadığını denetlemenin üç yolu vardır:
+Bir uygulamanın karantinada olup olmadığını denetlemek için üç yol vardır:
   
-- Azure portalında, **Azure Active Directory** > **Enterprise uygulamalarına** > &lt;gidin*uygulama adı*&gt; > **Sağlama'ya** gidin ve en alttaki ilerleme çubuğuna gidin.  
+- Azure Portal**Kurumsal uygulamalar** >  **Azure Active Directory** > &lt;*uygulama*adı&gt;Sağlama Azure Active Directory gidin ve alt kısımdaki ilerleme çubuğuna kaydırın.**Provisioning**  >   
 
-  ![Karantina durumunu gösteren hüküm çubuğu](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
+  ![Karantina durumunu gösteren sağlama durumu çubuğu](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
-- Azure portalında, **Etkinlik: Karantina** ve karantina geçmişini gözden geçirin > **Azure Etkin Dizin** > **Denetim Günlükleri'ne** gidin. Yukarıda açıklandığı gibi ilerleme çubuğundaki görünüm, sağlamanın şu anda karantinada olup olmadığını gösterirken, denetim günlükleri bir uygulamaiçin karantina geçmişini görmenizi sağlar. 
+- Azure Portal, **Azure Active Directory** > **Denetim günlüklerine** gidin > etkinliğe filtre uygula **:** karantinaya alma ve karantina geçmişini gözden geçirme. Yukarıda açıklanan ilerleme çubuğundaki görünüm, sağlama işleminin şu anda karantinada olup olmadığını gösterir. denetim günlükleri, bir uygulamanın karantina geçmişini görmenizi sağlar. 
 
-- Sağlama [işinin](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) durumunu programlı bir şekilde almak için Microsoft Graph isteğini kullan
+- Sağlama işinin durumunu programlı bir şekilde almak için Microsoft Graph isteği [Al işini](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) kullanın:
 
         `GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/`
 
-- E-postanızı kontrol edin. Bir uygulama karantinaya alındığı zaman, tek seferlik bir bildirim e-postası gönderilir. Karantina nedeni değişirse, karantina için yeni nedeni gösteren güncelleştirilmiş bir e-posta gönderilir. Bir e-posta görmüyorsanız:
+- E-postanızı kontrol edin. Bir uygulama karantinada yerleştirildiğinde, bir kerelik bildirim e-postası gönderilir. Karantina nedeni değişirse, karantinanın yeni nedenini gösteren güncelleştirilmiş bir e-posta gönderilir. E-posta görmüyorsanız:
 
-  - Uygulama için sağlama yapılandırmasında geçerli bir **Bildirim E-postası** belirttiğinizi unutmayın.
-  - Bildirim e-posta gelen kutusunda istenmeyen posta filtresi olmadığından emin olun.
-  - E-postaaboneliğini iptal etmediğinizden emin olun.
+  - Uygulamanın sağlama yapılandırmasında geçerli bir **bildirim e-postası** belirttiğinizden emin olun.
+  - Bildirim e-postası gelen kutusunda istenmeyen posta filtrelemesi olmadığından emin olun.
+  - E-postalardan aboneliği kaldırdığınızdan emin olun.
 
-## <a name="why-is-my-application-in-quarantine"></a>Başvurum neden karantinada?
+## <a name="why-is-my-application-in-quarantine"></a>Uygulamamın neden karantinaya alınsın?
 
-Sağlama işinin durumunu almak için microsoft grafiği isteği karantina için aşağıdaki nedeni gösterir:
+Sağlama işinin durumunu almak için bir Microsoft Graph isteği, karantinaya alma işleminin aşağıdaki nedenini gösterir:
 
-- `EncounteredQuarantineException`geçersiz kimlik bilgilerinin sağlandığını gösterir. Sağlama hizmeti, kaynak sistem ile hedef sistem arasında bağlantı kuramadı.
+- `EncounteredQuarantineException`geçersiz kimlik bilgilerinin sağlandığını belirtir. Sağlama Hizmeti, kaynak sistemle hedef sistem arasında bir bağlantı kuramıyor.
 
-- `EncounteredEscrowProportionThreshold`hükmün emanet eşiğini aştığını gösterir. Bu durum, sağlama olaylarının %60'ından fazlası başarısız olduğunda oluşur.
+- `EncounteredEscrowProportionThreshold`sağlamanın Emanet eşiğini aştığını gösterir. Bu durum, sağlama olaylarının %60 ' inden fazlası başarısız olduğunda meydana gelir.
 
-- `QuarantineOnDemand`uygulamanızla ilgili bir sorun tespit ettiğimiz ve el ile karantinaya aldığımız anlamına gelir.
+- `QuarantineOnDemand`uygulamanızla ilgili bir sorun tespit ettiğimiz ve bunu el ile karantinaya ayarlamış olduğumuz anlamına gelir.
 
-## <a name="how-do-i-get-my-application-out-of-quarantine"></a>Başvurumu karantinadan nasıl çıkaracağım?
+## <a name="how-do-i-get-my-application-out-of-quarantine"></a>Uygulamamı karantinaya alma Nasıl yaparım??
 
-İlk olarak, uygulamanın karantinaya alınmasına neden olan sorunu giderin.
+İlk olarak, uygulamanın karantinada yerleştirilmesine neden olan sorunu çözün.
 
-- [Geçerli Yönetici Kimlik Bilgileri girdiğinizi](../app-provisioning/configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning)emin olmak için uygulamanın sağlama ayarlarını denetleyin. Azure AD hedef uygulama ile bir güven kurmak gerekir. Geçerli kimlik bilgilerini girdiğinizden ve hesabınızda gerekli izinlere sahip olduğundan emin olun.
+- [Geçerli yönetici kimlik bilgilerini girdiğinizden](../app-provisioning/configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning)emin olmak için uygulamanın sağlama ayarlarını kontrol edin. Azure AD, hedef uygulamayla bir güven kurabilmesi gerekir. Geçerli kimlik bilgilerini girdiğinizden ve hesabınızda gerekli izinlere sahip olduğunuzdan emin olun.
 
-- Karantinaya neden olan hataları daha fazla araştırmak ve hatayı gidermek için [sağlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md) gözden geçirin. **Etkinlik** bölümündeki **Azure Active Directory** &gt; **Enterprise Apps** &gt; **Sağlama günlüklerine (önizleme)** giderek Azure portalındaki sağlama günlüklerine erişin.
+- Hangi hataların karantinaya neden olduğunu araştırmak ve hatayı gidermek için [sağlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md) gözden geçirin. **Etkinlik** bölümündeki **Azure Active Directory** &gt; **Kurumsal uygulamalar** &gt; **sağlama günlükleri (Önizleme)** bölümüne giderek Azure Portal sağlama günlüklerine erişin.
 
-Sorunu çözdükten sonra, sağlama işini yeniden başlatın. Öznitelik eşlemeleri veya kapsam filtreleri gibi uygulamanın sağlama ayarlarında yapılan belirli değişiklikler, sizin için hükmü otomatik olarak yeniden başlatacaktır. Uygulamanın **Sağlama** sayfasındaki ilerleme çubuğu, sağlamanın en son ne zaman başlatılacağı dır. Sağlama işini el ile yeniden başlatmanız gerekiyorsa, aşağıdaki yöntemlerden birini kullanın:  
+Sorunu çözdükten sonra, sağlama işini yeniden başlatın. Uygulamanın sağlama ayarlarında öznitelik eşlemeleri veya kapsam filtreleri gibi bazı değişiklikler, sağlamayı sizin için otomatik olarak yeniden başlatacak. Uygulamanın **sağlama** sayfasındaki ilerleme çubuğu, sağlamanın en son ne zaman başlatıldığını gösterir. Sağlama işini el ile yeniden başlatmanız gerekiyorsa aşağıdaki yöntemlerden birini kullanın:  
 
-- Sağlama işini yeniden başlatmak için Azure portalını kullanın. **Uygulamanın Ayarlar**altındaki **Sağlama** sayfasında, **Durumu Temizle'yi seçin ve eşitlemayı yeniden başlatın** ve **Sağlama Durumunu** **Açık**olarak ayarlayın. Bu eylem, biraz zaman alabilir sağlama hizmeti tamamen yeniden başlatır. Tam bir ilk döngü tekrar çalışır, bu da emanetleri temizler, uygulamayı karantinadan kaldırır ve filigranları temizler.
+- Sağlama işini yeniden başlatmak için Azure portal kullanın. Uygulamanın **sağlama** sayfasında, **Ayarlar**' ın altında, **durumu temizle ve eşitlemeyi yeniden Başlat** ' ı seçin ve **sağlama durumunu** **Açık**olarak ayarlayın. Bu eylem, sağlama hizmetini tamamen yeniden başlatır ve bu işlem biraz zaman alabilir. Tam bir başlangıç döngüsünün yeniden çalışması için, escrows 'yi temizler, uygulamayı karantinadan kaldırır ve tüm filigranları temizler.
 
-- Sağlama işini yeniden başlatmak için Microsoft [Graph'ı](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)kullanın. Yeniden başlatacağınız şey üzerinde tam kontrole sahip olacaksınız. Emanetleri temizlemeyi (karantina durumuna doğru tahakkuk eden emanet sayacını yeniden başlatmak için), karantinayı (uygulamayı karantinadan kaldırmak için) veya filigranları temizlemeyi seçebilirsiniz. Aşağıdaki isteği kullanın:
+- [Sağlama işini yeniden başlatmak](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)için Microsoft Graph kullanın. Yeniden başlatdıklarınız üzerinde tam denetime sahip olacaksınız. Et 'ları kaldırmayı seçebilirsiniz (karantina durumuna göre tahakkuk eden Emanet sayacını yeniden başlatmak için), karantinayı temizleyebilir (uygulamayı karantinadan kaldırmak için) veya filigranları temizleyebilirsiniz. Aşağıdaki isteği kullanın:
  
        `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`

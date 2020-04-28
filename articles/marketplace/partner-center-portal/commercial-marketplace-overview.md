@@ -1,6 +1,6 @@
 ---
 title: İş Ortağı Merkezi'ndeki Ticari Market portalına genel bakış
-description: İş Ortağı Merkezi'ndeki Ticari Pazar Portalı ve Azure Marketi, AppSource ve Bulut Çözüm Sağlayıcısı (CSP) programı aracılığıyla tekliflerin nasıl listelenip satılabildiğini öğrenin.
+description: Iş Ortağı Merkezi ' nde ticari Market portalı ve Azure Marketi, AppSource ve bulut çözümü sağlayıcısı (CSP) programı aracılığıyla teklifleri listeleme ve satma hakkında daha fazla bilgi edinin.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,68 +8,68 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: 909f044fd18ce98577e16d877f174dfa00bc1f3c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81270409"
 ---
-# <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>İş Ortağı Merkezi'ndeki Ticari Pazar Portalına Genel Bakış
+# <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market portalına genel bakış
 
-Partner Center'daki Commercial Marketplace Portalı'na hoş geldiniz. [Ticari pazar portalı,](https://partner.microsoft.com/dashboard/commercial-marketplace/) ürünlerinizden ve hizmetlerinizden para kazanmanıza, müşterilere ulaşmanıza ve işinizi büyütmenize yardımcı olur.
+Iş Ortağı Merkezi 'nde ticari Market portalına hoş geldiniz. [Ticari Market portalı](https://partner.microsoft.com/dashboard/commercial-marketplace/) , ürünlerinizi ve hizmetlerinizi aktarmanıza, müşterilere ulaşmanıza ve işletmenizi büyütmenize yardımcı olur.
 
-Bu makaleler, İş Ortağı Merkezi hesabınızı oluşturma ve kullanma temellerini kapsar. Buna [Azure Marketi](https://azuremarketplace.microsoft.com/) veya [AppSource'da](https://appsource.microsoft.com/)listelenebilen yeni teklifler oluşturmak, Bulut İş Ortağı Portalı'ndan geçirilen mevcut tekliflerinizi yönetmek ve sorularla ilgili yardımcı olacak ve geri bildirimlerinizi toplamak için kaynaklar sağlamak da dahildir.
+Bu makaleler, Iş Ortağı Merkezi hesabınızı oluşturma ve kullanma hakkında temel bilgileri kapsar. Bu, [Azure Market](https://azuremarketplace.microsoft.com/) veya [appsource](https://appsource.microsoft.com/)'ta listelenebilir, bulut iş ortağı portalı geçirilmiş mevcut tekliflerinizi yönetmek ve sorularınızla ilgili yardım almak ve geri bildirimlerinizi toplamak için kaynaklar sağlamayı içerir.
 
-## <a name="about-the-commercial-marketplace"></a>Ticari pazar hakkında
+## <a name="about-the-commercial-marketplace"></a>Ticari Market hakkında
 
-İşletmeler, hükümetler ve her büyüklükteki kuruluş, [Azure Marketi](https://azuremarketplace.microsoft.com/) ve [AppSource](https://appsource.microsoft.com/) web mağazaları, [Azure portalının ürün içi deneyimi,](https://portal.azure.com) [Bulut Çözüm Sağlayıcıları](https://partner.microsoft.com/cloud-solution-provider)ve Microsoft Satış ekipleri aracılığıyla iş çözümleri, yenilikçi teknoloji ve etkinleştirme hizmetleri bulur.
+Kuruluşlar, kamu kurumları ve tüm boyutlardaki kuruluşlar, [Azure Marketi](https://azuremarketplace.microsoft.com/) ve [appsource](https://appsource.microsoft.com/) Web depoları aracılığıyla iş çözümleri, yenilikçi teknoloji ve etkinleştirme Hizmetleri bulur, [Azure Portal ürün Içi deneyim](https://portal.azure.com), [bulut çözümü sağlayıcıları](https://partner.microsoft.com/cloud-solution-provider)ve Microsoft satış ekipleri.
 
-İş Ortağı Merkezi, Microsoft iş ortağı deneyiminin merkezidir. Microsoft ile pazara giden ve ticari pazardan yararlanan kuruluşlar için İş Merkezi, yayıncıların teklifler oluşturmak ve yönetmek, test sürüşü gösterimleri sağlamak ve teklif performansında analizleri görüntülemek için kullandıkları bir portaldır.
+İş Ortağı Merkezi, bir Microsoft iş ortağı deneyiminin merkezidir. Microsoft ile pazara giren ve ticari Market 'ten faydalanan kuruluşlar için Iş Ortağı Merkezi, yayımcıların teklifleri oluşturmak ve yönetmek, test sürücüsü gösterileri sağlamak ve teklif performansı üzerinde analizler görüntülemek için kullanılan portaldır.
 
-## <a name="migration-from-cloud-partner-portal"></a>Bulut İş Ortağı Portalından Geçiş
+## <a name="migration-from-cloud-partner-portal"></a>Bulut İş Ortağı Portalı geçiş
 
-Ortak Merkezi, yazılım yayıncılarıyla olan ilişkimizin tüm yönlerini daha iyi entegre etmek için gelişmektedir. Bu evrimin bir parçası olarak, [Bulut İş Ortağı Portalını](https://cloudpartner.azure.com/) İş Ortağı Merkezi'ne taşıyoruz.
+İş Ortağı Merkezi, Yazılım yayımcıları ile ilişkimizin tüm yönlerini daha iyi tümleştirecek şekilde gelişiyor. Bu evrimi kapsamında [bulut iş ortağı portalı](https://cloudpartner.azure.com/) Iş Ortağı Merkezi 'ne geçiriyoruz.
 
-Mevcut ticari pazar yayıncıları sezgisel bir arayüz ile tanıdık ama geliştirilmiş bir kullanıcı deneyimi bulacaksınız. Portaldaki bildirimler ve e-posta bildirimleri yayıncıları geçiş hakkında bilgilendirir. Kullanıcılar sorunsuz bir şekilde uygun konuma yönlendirilecektir. Müşteriler bu iş ortağı deneyimi yükseltmesi etkilenmez.
+Mevcut ticari Market yayımcıları, sezgisel bir arabirimle tanıdık ancak gelişmiş bir kullanıcı deneyimi bulur. Portaldaki bildirimler ve e-posta bildirimleri, geçişin yayımcılarını bilgilendirir. Kullanıcılar uygun konuma sorunsuzca yönlendirilmeyecektir. Müşteriler bu iş ortağı deneyimini yükseltmeden etkilenmeyecektir.
 
 >[!NOTE]
->Şu anda, İş Ortağı Merkezi, aşağıdaki tabloda belirtildiği gibi bazı teklif türlerinin oluşturulmasını ve yönetimini desteklemektedir. Tüm teklif yönetimini İş Ortağı Merkezi'ne ilettiğimizde daha fazla teklif türü desteklenecektir.
+>Şu anda Iş Ortağı Merkezi, aşağıdaki tabloda belirtildiği gibi bazı teklif türlerinin oluşturulmasını ve yönetimini destekler. Tüm teklif yönetimini Iş Ortağı Merkezi 'ne geçirirken yakında daha fazla teklif türü desteklenecektir.
 
-|Teklif Türü  |Teklif yönetimi Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne geçti  |
+|Teklif türü  |Teklif yönetimi Bulut İş Ortağı Portalı 'ten Iş ortağı merkezine geçirildi  |
 |---------|---------|
 |Hizmet Olarak Yazılım (SaaS)     | Kullanıma sunuldu       |
-|PowerApps & Müşteri Katılımı için Dynamics 365     | Kullanıma sunuldu         |
-|Operasyonlar için Dynamics 365     | Kullanıma sunuldu        |
-|İş merkezi için Dynamics 365     | Kullanıma sunuldu        |
+|PowerApps & müşteri katılımı için Dynamics 365     | Kullanıma sunuldu         |
+|İşlemler için Dynamics 365     | Kullanıma sunuldu        |
+|Dynamics 365 for Business Central     | Kullanıma sunuldu        |
 |Azure Uygulaması     | Kullanıma sunuldu        |
-|Azure Sanal Makinesi     | Genel kullanılabilirlik Nisan-Mayıs 2020        |
-|Azure Kapsayıcı     | Genel kullanılabilirlik Nisan-Mayıs 2020        |
-|Danışmanlık hizmeti     | Genel kullanılabilirlik Nisan-Mayıs 2020        |
-|IoT Edge modülü     | Genel kullanılabilirlik Nisan-Mayıs 2020        |
-|Power BI App    | Genel kullanılabilirlik Nisan-Mayıs 2020        |
+|Azure Sanal Makinesi     | Genel kullanılabilirlik Nisan – Mayıs 2020        |
+|Azure kapsayıcısı     | Genel kullanılabilirlik Nisan – Mayıs 2020        |
+|Danışmanlık hizmeti     | Genel kullanılabilirlik Nisan – Mayıs 2020        |
+|IoT Edge modülü     | Genel kullanılabilirlik Nisan – Mayıs 2020        |
+|Power BI App    | Genel kullanılabilirlik Nisan – Mayıs 2020        |
 
-### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>Yayıncılık ve teklif yönetimi kullanıcı deneyimi ile ilgili geliştirmeler
+### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>Yayımlama ve teklif yönetimi Kullanıcı deneyimi geliştirmeleri
 
-İş Ortağı Merkezi'ne geçişle birlikte, kullanıcı deneyimindeki iyileştirmelere ek olarak yayıncılar için yeni işlevler kullanılabilir.  Ayrıntılar için Bulut [İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne geçiş için sık sorulan sorulara](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-migration-faq)bakın.
+Iş Ortağı Merkezi 'ne geçiş ile, yeni işlevsellik, Kullanıcı deneyimine yönelik geliştirmelere ek olarak yayımcılar tarafından kullanılabilir.  Ayrıntılar için bkz. [bulut iş ortağı portalı Iş ortağı merkezine geçiş Için sık sorulan sorular](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-migration-faq).
 
-### <a name="account-and-user-management-updates"></a>Hesap ve kullanıcı yönetimi güncellemeleri
+### <a name="account-and-user-management-updates"></a>Hesap ve Kullanıcı yönetimi güncelleştirmeleri
 
-İş Ortağı Merkezi'ndeki hesap ve kullanıcı yönetimi, portala erişmenizi ve yöneticilerin uygun izinleri uygulamalarını kolaylaştırır. Önceki teklif yönetimi portalları ile karşılaştırıldığında, İş Ortağı Merkezi'ndeki rol tabanlı erişim denetimi yetenekleri, yayımlama işlemini büyük kuruluşlar için daha basit hale getiren güvenlik geliştirmeleri sağlar.
+Iş Ortağı Merkezi 'nde hesap ve Kullanıcı yönetimi, portala erişiminizi ve yöneticilerin uygun izinleri uygulamasını kolaylaştırır. Önceki teklif yönetim portallarıyla karşılaştırıldığında, Iş ortağı merkezindeki rol tabanlı erişim denetimi özellikleri, Yayımlama sürecini büyük kuruluşlar için daha kolay hale getirir.
 
-### <a name="improved-certification-experience"></a>Geliştirilmiş belgelendirme deneyimi
+### <a name="improved-certification-experience"></a>Geliştirilmiş sertifika deneyimi
 
-İş Ortağı Merkezi gelişmiş bir belgelendirme deneyimi sağlar. Belgelendirme artık gelişmiş geri dönüş süreleri ve daha hızlı işleme için otomasyon ve makine öğrenimini kullanıyor. Doğruluğu korumak, pazar Alanının güvenli olmasını ve müşterilerimiz için değerli teklifler içermesini sağlayarak birinci öncelik olmaya devam edecektir. Gereksinimler değişmez, ancak artık İş Ortağı Merkezi aracılığıyla teklif gönderdiğinde, genel kullanıma [yönelik ilkelere](https://docs.microsoft.com/legal/marketplace/certification-policies)başvuran daha ayrıntılı ve açıklayıcı sertifika raporları alırsınız.
+İş Ortağı Merkezi, geliştirilmiş bir sertifika deneyimi sağlar. Sertifika artık daha hızlı işlem ve daha hızlı işleme için Otomasyon ve makine öğrenimini kullanıyor. Tutarlığun sağlanması, Market 'in güvende olduğundan ve müşterilerimiz için değerli teklifler içerdiğinden emin olmak için en yüksek önceliğe sahip olmaya devam edecektir. Gereksinimler değişmez, ancak artık Iş Ortağı Merkezi aracılığıyla teklif gönderdiğinizde, [herkese açık ilkelere](https://docs.microsoft.com/legal/marketplace/certification-policies)başvuran daha ayrıntılı ve açıklayıcı sertifika raporları alırsınız.
 
-### <a name="analytics-for-performance-reporting"></a>Performans raporlaması için analitik
+### <a name="analytics-for-performance-reporting"></a>Performans raporlaması için analiz
 
-İş Ortağı Merkezi analitiği, tekliflerinizin performansına ve geliştirilmiş raporlama araçlarının görünümünü sağlar. Yayıncılar, girişleri optimize etmek için veri görselleştirme ve öngörü grafiklerini kullanarak satışları izleyebilir. Geliştirilmiş analiz araçları, performans sonuçlarına göre hareket edinve müşteriler ve satıcılarla daha iyi ilişkiler kurmanıza izin verir.
+İş ortağı merkezi analizi, tekliflerinizin ve geliştirilmiş raporlama araçlarının performansına yönelik bir görünüm sağlar. Yayımcılar, listeleri iyileştirmek için veri görselleştirme ve Öngörüler grafiklerini kullanarak satışları izleyebilir. Geliştirilmiş analiz araçları, performans sonuçları üzerinde işlem yapmanızı ve müşteriler ve satıcılarla daha iyi ilişkiler yapmanızı sağlar.
 
-## <a name="view-the-roadmap-and-join-the-conversation"></a>Yol haritasını görüntüleyin ve konuşmaya katılın
+## <a name="view-the-roadmap-and-join-the-conversation"></a>Yol haritasını görüntüleyin ve konuşmaya ekleyin
 
-[Microsoft ticari pazar yol haritasını](https://docs.microsoft.com/azure/marketplace/marketplace-roadmap)ziyaret ederek son ve gelecekteki sürümler hakkında daha fazla bilgi edinin veya Microsoft İş Ortağı [Topluluğu'ndaki](https://www.microsoftpartnercommunity.com/)konuşmaya katılın.
+[Microsoft ticari Market yol haritasını](https://docs.microsoft.com/azure/marketplace/marketplace-roadmap)ziyaret ederek en son ve gelecekteki sürümler hakkında daha fazla bilgi edinin veya [Microsoft iş ortağı topluluğu](https://www.microsoftpartnercommunity.com/)'nda konuşmaya katın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Pazar yerlerine teklif yayınlamak isteyen yeni Microsoft iş ortakları için [bkz.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)
-- Bulut İş Ortağı Portalı'nda daha önce teklif yayınlamış olan mevcut iş ortakları [için, İş Ortağı Merkezi'ndeki Ticari Pazar hesabınızı yönetin.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)
-- Bir demo video içeren bu İş [Ortağı Topluluğu blog gönderisinde](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)Bulut Pazarı yönetiminin İş Ortağı Merkezi'ne taşınması hakkında daha fazla bilgi edinin.
+- Market konumlarına bir teklif yayımlamaya ilgilenen yeni Microsoft iş ortakları için bkz. [Iş Ortağı Merkezi 'Nde ticari Market hesabı oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+- Daha önce Bulut İş Ortağı Portalı tekliflerini yayımlayan mevcut iş ortakları için [Iş Ortağı Merkezi ' nde ticari Market hesabınızı yönetin](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+- Bu [Iş ortağı topluluğu](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)'nda, tanıtım videosu Içeren Iş Ortağı Merkezi 'ne taşıma hakkında daha fazla bilgi edinin.

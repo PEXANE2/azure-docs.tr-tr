@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Merkezi kuralından birden çok eylem çalıştırma | Microsoft Dokümanlar
-description: Tek bir IoT Merkezi kuralından birden çok eylem çalıştırın ve birden çok kuraldan çalıştırabileceğiniz yeniden kullanılabilir eylem grupları oluşturun.
+title: Azure IoT Central kuralından birden çok eylem çalıştırma | Microsoft Docs
+description: Tek bir IoT Central kuralından birden çok eylem çalıştırın ve birden çok kuraldan çalıştırabileceğiniz yeniden kullanılabilir eylem grupları oluşturun.
 services: iot-central
 author: dominicbetts
 ms.author: dobett
@@ -9,65 +9,65 @@ ms.topic: how-to
 ms.service: iot-central
 manager: philmea
 ms.openlocfilehash: b447f44d0c95693e560fd5bbfbff8c8daeec964e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80157696"
 ---
-# <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Bir veya daha fazla kuraldan çalıştırmak için birden çok eylemi gruplandırma
+# <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Birden çok eylemi bir veya daha fazla kuralla çalışacak şekilde gruplandırma
 
-*Bu makale, inşaatçılar ve yöneticiler için geçerlidir.*
+*Bu makale, oluşturucular ve yöneticiler için geçerlidir.*
 
-Azure IoT Central'da, bir koşul karşılandığında eylemleri çalıştırmak için kurallar oluşturursunuz. Kurallar, aygıt telemetrisini veya olayları temel alınmaktadır. Örneğin, bir aygıtın sıcaklığı bir eşiği aştığında işleç tarafından bilgilendirebilirsiniz. Bu makalede, Bir IoT Merkezi kuralına birden çok eylem eklemek için [Azure Monitor](../../azure-monitor/overview.md) *eylem gruplarının* nasıl kullanılacağı açıklanmaktadır. Bir eylem grubunu birden çok kurala ekleyebilirsiniz. [Eylem grubu,](../../azure-monitor/platform/action-groups.md) Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri topluluğudur.
+Azure IoT Central, bir koşul karşılandığında eylemleri çalıştırmak için kurallar oluşturursunuz. Kurallar cihaz telemetrisini veya olaylarını temel alır. Örneğin, bir cihazın sıcaklığı bir eşiği aştığında bir işlece bildirimde bulunabilir. Bu makalede, bir IoT Central kuralına birden çok eylem eklemek için [Azure izleyici](../../azure-monitor/overview.md) *eylem gruplarının* nasıl kullanılacağı açıklanır. Birden çok kurala bir eylem grubu ekleyebilirsiniz. Bir [eylem grubu](../../azure-monitor/platform/action-groups.md) , bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Standart bir fiyatlandırma planı kullanılarak oluşturulan bir uygulama
-- Azure Monitöreylem grupları oluşturmak ve yönetmek için bir Azure hesabı ve aboneliği
+- Standart fiyatlandırma planı kullanılarak oluşturulan bir uygulama
+- Azure Izleyici eylem grupları oluşturmak ve yönetmek için bir Azure hesabı ve aboneliği
 
 ## <a name="create-action-groups"></a>Eylem grubu oluşturma
 
-Azure [portalında](../../azure-monitor/platform/action-groups.md) veya Azure Kaynak Yöneticisi [şablonuyla](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)eylem grupları oluşturabilir ve yönetebilirsiniz.
+Azure portal veya [Azure Resource Manager şablonuyla](../../azure-monitor/platform/action-groups-create-resource-manager-template.md) [eylem grupları oluşturabilir ve yönetebilirsiniz](../../azure-monitor/platform/action-groups.md) .
 
 Bir eylem grubu şunları yapabilir:
 
-- E-posta, SMS gibi bildirimler gönderin veya sesli arama yapın.
-- Webhook arama gibi bir eylem çalıştırın.
+- E-posta, SMS veya sesli çağrı oluşturma gibi bildirimleri gönderin.
+- Web kancası çağırma gibi bir eylem çalıştırın.
 
-Aşağıdaki ekran görüntüsü, e-posta ve SMS bildirimleri gönderen ve webhook çağıran bir eylem grubunu gösterir:
+Aşağıdaki ekran görüntüsünde, e-posta ve SMS bildirimleri gönderen ve bir Web kancası çağıran bir eylem grubu gösterilmektedir:
 
 ![Eylem grubu](media/howto-use-action-groups/actiongroup.png)
 
-Bir eylem grubunu Bir IoT Merkezi kuralında kullanmak için eylem grubunun IoT Merkezi uygulamasıyla aynı Azure aboneliğinde olması gerekir.
+Bir IoT Central kuralında bir eylem grubunu kullanmak için, eylem grubunun IoT Central uygulamayla aynı Azure aboneliğinde olması gerekir.
 
-## <a name="use-an-action-group"></a>Eylem grubu kullanma
+## <a name="use-an-action-group"></a>Bir eylem grubu kullanma
 
-IoT Merkezi uygulamanızda bir eylem grubu kullanmak için önce bir kural oluşturun. Kurala bir eylem eklediğinizde, **Azure MonitörEylem Grupları'nı**seçin:
+IoT Central uygulamanızda bir eylem grubu kullanmak için önce bir kural oluşturun. Kurala bir eylem eklediğinizde **Azure Izleyici eylem grupları**' nı seçin:
 
 ![Eylem seçin](media/howto-use-action-groups/chooseaction.png)
 
 Azure aboneliğinizden bir eylem grubu seçin:
 
-![Eylem grubunu seçin](media/howto-use-action-groups/chooseactiongroup.png)
+![Eylem grubu seçin](media/howto-use-action-groups/chooseactiongroup.png)
 
-**Kaydet'i**seçin. Eylem grubu şimdi kural tetiklendiğinde çalıştırılan eylemler listesinde görünür:
+**Kaydet**’i seçin. Eylem grubu artık kural tetiklendiğinde çalıştırılacak Eylemler listesinde görüntülenir:
 
-![Kaydedilen eylem grubu](media/howto-use-action-groups/savedactiongroup.png)
+![Eylem grubu kaydedildi](media/howto-use-action-groups/savedactiongroup.png)
 
-Aşağıdaki tablo, desteklenen eylem türlerine gönderilen bilgileri özetler:
+Aşağıdaki tabloda, desteklenen eylem türlerine gönderilen bilgiler özetlenmektedir:
 
-| Eylem türü | Çıktı biçimi |
+| Eylem türü | Çıkış biçimi |
 | ----------- | -------------- |
-| Email       | Standart IoT Merkezi e-posta şablonu |
-| SMS         | Azure IoT Merkezi uyarısı: ${applicationName} - "${ruleName}" ${triggerDate} ${triggerTime} adresiyle "${deviceName}" üzerinde tetiklenir |
-| Ses       | Azure I.O.T Merkezi uyarısı: ${triggerDate} ${triggerTime}, "${deviceName}" cihazında tetiklenen "${ruleName}" kuralı ${applicationName} |
-| Web Kancası     | { "schemaId" : "AzureIoTCentralRuleWebhook", "veri": {[normal webhook yükü](howto-create-webhooks.md#payload)}} |
+| E-posta       | Standart IoT Central e-posta şablonu |
+| SMS         | Azure IoT Central uyarısı: $ {applicationName}-"$ {ruleName}", $ {triggerDate} $ {triggerTime} konumunda "$ {aygıtadı}" üzerinde tetiklendi |
+| Ses       | Azure ı. O. T orta uyarı: "$ {ruleName}" kuralı $ {triggerDate} $ {triggerTime} konumunda "$ {aygıtadı}" cihazında tetiklendi; uygulama $ {applicationName} |
+| Web Kancası     | {"SchemaId": "AzureIoTCentralRuleWebhook", "Data": {[Regular Web kancası yükü](howto-create-webhooks.md#payload)}} |
 
-Aşağıdaki metin, bir eylem grubundan örnek bir SMS mesajıdır:
+Aşağıdaki metin bir eylem grubundan örnek bir SMS iletisidir:
 
 `iotcentral: Azure IoT Central alert: Contoso - "Low pressure alert" triggered on "Motion sensor 2" at March 20, 2019 10:12 UTC`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık eylem gruplarını kurallarla kullanmayı öğrendiğinize göre, önerilen bir sonraki adım cihazlarınızı nasıl [yöneteceklerinizi](howto-manage-devices.md)öğrenmektir.
+Artık eylem gruplarını kurallarla nasıl kullanacağınızı öğrendiğinize göre, önerilen sonraki adım [cihazlarınızın nasıl yönetileceğini](howto-manage-devices.md)öğrenirsiniz.

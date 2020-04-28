@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2C'de Beni Oturum Aç
-description: Azure Active Directory B2C'de Beni İmzala (KMSI) nasıl ayarlayabilirsiniz öğrenin.
+title: Oturumumu Açık tut Azure Active Directory B2C
+description: Azure Active Directory B2C 'da Oturumumu Açık tut (KMSI) ayarlamayı öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,36 +11,36 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80803169"
 ---
-# <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de Beni Oturum Aç (KMSI) etkinleştirin
+# <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'da Oturumumu Açık tut (KMSI) özelliğini etkinleştir
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) dizininizde yerel hesapları olan web ve yerel uygulamalarınızın kullanıcıları için Beni İmzala (KMSI) Tut işlevini etkinleştirebilirsiniz. Bu özellik, uygulamanız için geri dönen kullanıcılara kullanıcı adlarını ve parolalarını yeniden girmelerini sormadan erişim sağlar. Bir kullanıcı imzaladığında bu erişim iptal edilir.
+Web kullanıcılarınızın kullanıcıları ve Azure Active Directory B2C (Azure AD B2C) dizininizde yerel hesaplara sahip yerel uygulamalarınız için Oturumumu Açık tut (KMSı) işlevini etkinleştirebilirsiniz. Bu özellik, Kullanıcı adını ve parolasını yeniden girmesi istenmeden, uygulamanıza geri dönen kullanıcılara erişim izni verir. Kullanıcı oturumu kapattığında bu erişim iptal edilir.
 
-Kullanıcılar bu seçeneği ortak bilgisayarlarda etkinleştirmemelidir.
+Kullanıcılar bu seçeneği genel bilgisayarlarda etkinleştirmemelidir.
 
-![Beni onay kutusunda tut imzalı olarak gösteren örnek kayıt sayfası](./media/custom-policy-keep-me-signed-in/kmsi.PNG)
+![Oturumumu Açık tut onay kutusunun gösterildiği örnek kaydolma, oturum açma sayfası](./media/custom-policy-keep-me-signed-in/kmsi.PNG)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Yerel hesap oturum açmasına izin verecek şekilde yapılandırılan bir Azure AD B2C kiracısı. KMSI dış kimlik sağlayıcı hesapları için desteklenmez.
-- [Özel ilkelerle başlayın](custom-policy-get-started.md)adımlarını tamamlayın.
+- Yerel hesap oturum açmaya izin verecek şekilde yapılandırılmış bir Azure AD B2C kiracısı. KMSı, dış kimlik sağlayıcısı hesaplarında desteklenmez.
+- [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 
 ## <a name="configure-the-page-identifier"></a>Sayfa tanımlayıcısını yapılandırma
 
-KMSI'yi etkinleştirmek için `DataUri` içerik tanım öğesini [sayfa tanımlayıcısı](contentdefinitions.md#datauri) `unifiedssp` ve [sayfa sürümü](page-layout.md) *1.1.0* veya üzeri olarak ayarlayın.
+KMsi 'yi etkinleştirmek için, içerik `DataUri` tanımı öğesini [sayfa tanımlayıcısı](contentdefinitions.md#datauri) `unifiedssp` ve [sayfa sürümü](page-layout.md) *1.1.0* veya üzeri olarak ayarlayın.
 
-1. İlkinizin uzantı dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>. Bu uzantı dosyası, ön koşulda elde etmiş olması gereken özel ilke başlangıç paketinde yer alan ilke dosyalarından biridir, [özel ilkeler ile başlayın.](custom-policy-get-started.md)
-1. **BuildingBlocks** öğesini arayın. Öğe yoksa, ekleyin.
-1. İçerik **Tanımları** öğesini ipolitikasının **BuildingBlocks** öğesine ekleyin.
+1. İlkenizin uzantısı dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>. Bu uzantı dosyası, önkoşul içinde elde etmeniz gereken özel ilke başlangıç paketine dahil olan ilke dosyalarından biridir, [özel ilkeleri](custom-policy-get-started.md)kullanmaya başlayın.
+1. **Buildingblocks** öğesi için arama yapın. Öğe yoksa, ekleyin.
+1. **ContentDefinitions** öğesini Ilkenin **buildingblocks** öğesine ekleyin.
 
-    Özel politikanız aşağıdaki kod parçacığı gibi görünmelidir:
+    Özel ilkeniz aşağıdaki kod parçacığı gibi görünmelidir:
 
     ```xml
     <BuildingBlocks>
@@ -52,12 +52,12 @@ KMSI'yi etkinleştirmek için `DataUri` içerik tanım öğesini [sayfa tanımla
     </BuildingBlocks>
     ```
 
-## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>Meta verileri kendi kendini öne süren teknik profile ekleme
+## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>Otomatik olarak onaylanan teknik profile meta verileri ekleyin
 
-KMSI onay kutusunu kaydolma ve kaydolma sayfasına eklemek `setting.enableRememberMe` için meta verileri doğru olarak ayarlayın. Uzantı dosyasındaki SelfAsserted-LocalAccountSignin-Email teknik profillerini geçersiz kılın.
+Kayıt ve oturum açma sayfasına KMSI onay kutusunu eklemek için `setting.enableRememberMe` meta verileri doğru olarak ayarlayın. Uzantı dosyasındaki SelfAsserted-Localaccountsignın-email teknik profillerini geçersiz kılın.
 
-1. İddia Sağlayıcıları öğesini bulun. Öğe yoksa, ekleyin.
-1. Aşağıdaki talep sağlayıcıyı Talep Sağlayıcıları öğesine ekleyin:
+1. ClaimsProviders öğesini bulun. Öğe yoksa, ekleyin.
+1. Aşağıdaki talep sağlayıcısını ClaimsProviders öğesine ekleyin:
 
 ```XML
 <ClaimsProvider>
@@ -72,15 +72,15 @@ KMSI onay kutusunu kaydolma ve kaydolma sayfasına eklemek `setting.enableRememb
 </ClaimsProvider>
 ```
 
-1. Uzantılar dosyasını kaydedin.
+1. Uzantı dosyasını kaydedin.
 
-## <a name="configure-a-relying-party-file"></a>Güvenilen bir parti dosyanı yapılandırma
+## <a name="configure-a-relying-party-file"></a>Bağlı olan taraf dosyası yapılandırma
 
-Oluşturduğunuz kullanıcı yolculuğunu başlatan güvenen taraf (RP) dosyasını güncelleştirin.
+Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosyasını güncelleştirin.
 
-1. Özel ilke dosyanızı açın. Örneğin, *SignUpOrSignin.xml*.
-1. Zaten yoksa, `<UserJourneyBehaviors>` `<RelyingParty>` düğüme bir alt düğüm ekleyin. Hemen sonra `<DefaultUserJourney ReferenceId="User journey Id" />`yer almalıdır , örneğin: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`.
-1. `<UserJourneyBehaviors>` Öğenin bir alt öğesi olarak aşağıdaki düğümü ekleyin.
+1. Özel ilke dosyanızı açın. Örneğin, *Signuporsignın. xml*.
+1. Zaten mevcut değilse, `<UserJourneyBehaviors>` `<RelyingParty>` düğüme bir alt düğüm ekleyin. Hemen sonra `<DefaultUserJourney ReferenceId="User journey Id" />`yerleştirilmelidir, örneğin: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`.
+1. Aşağıdaki düğümü `<UserJourneyBehaviors>` öğesinin alt öğesi olarak ekleyin.
 
     ```XML
     <UserJourneyBehaviors>
@@ -90,15 +90,15 @@ Oluşturduğunuz kullanıcı yolculuğunu başlatan güvenen taraf (RP) dosyası
     </UserJourneyBehaviors>
     ```
 
-    - **SessionExpiryType** - Oturumda belirtilen süreye göre `SessionExpiryInSeconds` nasıl `KeepAliveInDays`uzatıldığını gösterir ve . Değer `Rolling` (varsayılan), kullanıcı kimlik doğrulaması her gerçekleştirişinde oturumun uzatıldığını gösterir. Değer, `Absolute` kullanıcının belirtilen süreden sonra yeniden kimlik doğrulaması yapmak zorunda kaldığını gösterir.
+    - **Sessionexpiryıtype** -oturumun ve `SessionExpiryInSeconds` `KeepAliveInDays`' de belirtilen zamana göre nasıl uzatıldığını gösterir. `Rolling` Değer (varsayılan), kullanıcının kimlik doğrulaması gerçekleştirdiği her seferinde oturumun genişletildiğini gösterir. `Absolute` Değer, kullanıcının belirtilen süre sonunda yeniden kimlik doğrulaması zorlaması gerektiğini gösterir.
 
-    - **SessionExpiryInSeconds** - Oturum çerezleri süresi *beni oturumda tutmak* etkin değil, ya da bir kullanıcı *beni oturumda tut*seçmez. Oturum geçtikten `SessionExpiryInSeconds` sonra sona erer veya tarayıcı kapatılır.
+    - **Sessionexpirınınseconds** - *Oturumumu Açık bırak* etkin olmadığında oturum tanımlama bilgilerinin ömrü etkinleştirilmemiştir veya bir Kullanıcı Oturumumu *Açık bırak*seçeneğini seçmiyor. Oturumun süresi geçtiğinde veya `SessionExpiryInSeconds` tarayıcı kapatıldıktan sonra sona erer.
 
-    - **KeepAliveInDays** - Oturum çerezleri ömür boyu *beni oturumda tutmak* etkin dir ve kullanıcı beni *oturumda tutmak*seçer .  Değerin `KeepAliveInDays` değeri, değerden `SessionExpiryInSeconds` önce gelir ve oturum bitiş saatini belirler. Bir kullanıcı tarayıcıyı kapatır ve daha sonra yeniden açarsa, KeepAliveInDays zaman dilimi içinde olduğu sürece sessizce oturum açabilir.
+    - **Keepaliveındays** - *Oturumumu Açık bırak* etkin olduğunda oturum tanımlama bilgilerinin yaşam süresi etkindir ve Kullanıcı Oturumumu *açık tut '* i seçer.  Değeri `KeepAliveInDays` `SessionExpiryInSeconds` değerin üzerine gelir ve oturum sona erme süresini belirler. Bir kullanıcı tarayıcıyı kapatır ve daha sonra yeniden açarsa, bu kullanıcılar yine de Keepaliveındays zaman diliminde olduğu sürece sessizce oturum açabilir.
 
-    Daha fazla bilgi için [kullanıcı yolculuğu davranışlarına](relyingparty.md#userjourneybehaviors)bakın.
+    Daha fazla bilgi için bkz. [Kullanıcı yolculuğu davranışları](relyingparty.md#userjourneybehaviors).
 
-SessionExpiryInSeconds değerini kısa bir süre (1200 saniye) olarak ayarlamanızı öneririz, KeepAliveInDays değeri aşağıdaki örnekte gösterildiği gibi nispeten uzun bir süre (30 gün) olarak ayarlanabilir:
+Aşağıdaki örnekte gösterildiği gibi, Sessionexpirınseconds değerini kısa bir süre (1200 saniye) olarak ayarlamanızı öneririz, ancak Keepaliveındays değeri görece uzun bir döneme (30 gün) ayarlanabilir:
 
 ```XML
 <RelyingParty>
@@ -125,14 +125,14 @@ SessionExpiryInSeconds değerini kısa bir süre (1200 saniye) olarak ayarlaman�
 </RelyingParty>
 ```
 
-## <a name="test-your-policy"></a>İlkinizi test edin
+## <a name="test-your-policy"></a>İlkenizi test etme
 
-1. Değişikliklerinizi kaydedin ve ardından dosyayı yükleyin.
-1. Azure portalında yüklediğiniz özel ilkeyi sınamak için ilke sayfasına gidin ve ardından **şimdi Çalıştır'ı**seçin.
-1. Kullanıcı **adınızı** ve **şifrenizi**yazın, **beni oturum aç'ı**seçin ve oturum **aç'ı**tıklatın.
-1. Azure portalına geri dönün. İlke sayfasına gidin ve **Copy** oturum açma URL'sini kopyalamak için Kopyala'yı seçin.
-1. Tarayıcı adresi çubuğunda, `&prompt=login` kullanıcıyı bu istek üzerine kimlik bilgilerini girmeye zorlayan sorgu dize parametresini kaldırın.
-1. Tarayıcıda **Git'i**tıklatın. Artık Azure AD B2C, yeniden oturum açmanızı istemeden bir erişim jetonu yayınlayacak. 
+1. Değişikliklerinizi kaydedin ve sonra dosyayı karşıya yükleyin.
+1. Karşıya yüklediğiniz özel ilkeyi test etmek için, Azure portal ilke sayfasına gidin ve **Şimdi Çalıştır**' ı seçin.
+1. **Kullanıcı adınızı** ve **parolanızı**yazın, **Oturumumu Açık bırak**' ı seçin ve **oturum aç**' a tıklayın.
+1. Azure portalına geri dönün. İlke sayfasına gidin ve ardından oturum açma URL 'sini kopyalamak için **Kopyala** ' yı seçin.
+1. Tarayıcı adres çubuğunda, kullanıcıyı bu istek üzerine `&prompt=login` kimlik bilgilerini girmeye zorlayan sorgu dizesi parametresini kaldırın.
+1. Tarayıcıda **Git**' e tıklayın. Artık Azure AD B2C, yeniden oturum açmanızı istemeden bir erişim belirteci yayımlayacak. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

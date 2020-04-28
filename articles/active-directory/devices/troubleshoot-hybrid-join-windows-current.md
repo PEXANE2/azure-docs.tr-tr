@@ -1,6 +1,6 @@
 ---
-title: Karma Azure Etkin Dizin'ine katılan aygıtları sorun giderme
-description: Sorun giderme hibrit Azure Active Directory, Windows 10 ve Windows Server 2016 aygıtlarına katıldı.
+title: Karma Azure Active Directory katılmış cihazlarda sorun giderme
+description: Karma Azure Active Directory katılmış Windows 10 ve Windows Server 2016 cihazlarında sorun giderme.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,35 +12,35 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 26e52930211611673b6fe2309e2dca067a91ebc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331782"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Karma Azure Etkin Dizin'ine katılan aygıtları sorun giderme 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Karma Azure Active Directory katılmış cihazlarda sorun giderme 
 
-Bu makalenin içeriği, Windows 10 veya Windows Server 2016 çalıştıran aygıtlar için geçerlidir.
+Bu makalenin içeriği, Windows 10 veya Windows Server 2016 çalıştıran cihazlar için geçerlidir.
 
-Diğer Windows istemcileri için, [alt düzey aygıtları birleştiren karma Azure Etkin Dizini'ni](troubleshoot-hybrid-join-windows-legacy.md)gideren makaleye bakın.
+Diğer Windows istemcileri için bkz. [karma Azure Active Directory birleştirilmiş alt düzey cihazlarda sorun giderme](troubleshoot-hybrid-join-windows-legacy.md)makalesi.
 
-Bu makalede, aşağıdaki senaryoları desteklemek için [karma Azure Etkin Dizin birleştirilmiş aygıtlar yapılandırdığınız](hybrid-azuread-join-plan.md) varsayar:
+Bu makalede, [karma Azure Active Directory katılmış cihazları](hybrid-azuread-join-plan.md) aşağıdaki senaryoları destekleyecek şekilde yapılandırdığınız varsayılır:
 
-- Aygıt Tabanlı Koşullu Erişim
+- Cihaz tabanlı koşullu erişim
 - [Ayarların kurumsal dolaşımı](../active-directory-windows-enterprise-state-roaming-overview.md)
 - [İş İçin Windows Hello](../active-directory-azureadjoin-passport-deployment.md)
 
-Bu belge, olası sorunları gidermek için sorun giderme kılavuzu sağlar. 
+Bu belge olası sorunları çözmek için sorun giderme kılavuzu sağlar. 
 
-Windows 10 ve Windows Server 2016 için karma Azure Active Directory join, Windows 10 Kasım 2015 Güncelleştirmesi ve üzerini destekler.
+Windows 10 ve Windows Server 2016 için hibrit Azure Active Directory JOIN, Windows 10 Kasım 2015 güncelleştirmesini ve üstünü destekler.
 
-## <a name="troubleshoot-join-failures"></a>Sorun giderme birleştirme hataları
+## <a name="troubleshoot-join-failures"></a>JOIN hatalarıyla ilgili sorunları giderme
 
-### <a name="step-1-retrieve-the-join-status"></a>Adım 1: Birleştirme durumunu alma 
+### <a name="step-1-retrieve-the-join-status"></a>1. Adım: JOIN durumunu alma 
 
-**Birleştirme durumunu almak için:**
+**JOIN durumunu almak için:**
 
-1. Yönetici olarak komut istemi açma
+1. Yönetici olarak bir komut istemi açın
 2. `dsregcmd /status` yazın
 
 ```
@@ -88,31 +88,31 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-### <a name="step-2-evaluate-the-join-status"></a>Adım 2: Birleştirme durumunu değerlendirme 
+### <a name="step-2-evaluate-the-join-status"></a>2. Adım: JOIN durumunu değerlendirme 
 
-Aşağıdaki alanları gözden geçirin ve beklenen değerlere sahip olduğundan emin olun:
+Aşağıdaki alanları gözden geçirin ve beklenen değerlere sahip olduklarından emin olun:
 
-#### <a name="domainjoined--yes"></a>DomainJoined : EVET  
+#### <a name="domainjoined--yes"></a>Domainkatılmış: Evet  
 
-Bu alan, aygıtın şirket içi Active Directory'ye katılıp katılmadığını gösterir. Değer **HAYRsi**ise, aygıt karma Azure AD birleştirme gerçekleştiremez.  
+Bu alan, cihazın şirket içi Active Directory katılıp katılmadığını gösterir. Değer **Hayır**ise, cihaz karma Azure AD katılımı gerçekleştiremez.  
 
-#### <a name="workplacejoined--no"></a>İşyeri Katıldı : HAYDI  
+#### <a name="workplacejoined--no"></a>Iş Placekatılacak: Hayır  
 
-Bu alan, aygıtın Azure AD'ye kişisel bir aygıt olarak kaydedilip kaydedildiğini gösterir *(İşyeri Birleştirilmiş olarak*işaretlenir). Bu değer, karma Azure AD'si de birleştirilmiş etki alanı birleştirilmiş bir bilgisayar için **HAYR** olmalıdır. Değer **EVET**ise, karma Azure AD join'in tamamlanmasından önce bir çalışma veya okul hesabı eklendi. Bu durumda, Windows 10'un Yıldönümü Güncelleştirmesi (1607) sürümü kullanırken hesap yoksayılır.
+Bu alan, cihazın Azure AD 'ye kişisel bir cihaz olarak kaydedilip kaydedilmediğini belirtir ( *çalışma alanına katılmış*olarak işaretlenir). Bu değer, aynı zamanda karma Azure AD 'ye katılmış bir etki alanına katılmış **bilgisayar için olmamalıdır** . Değer **Evet**ise, hibrit Azure AD katılımı tamamlanmadan önce bir iş veya okul hesabı eklenmiştir. Bu durumda, Windows 10 ' un yıldönümü güncelleştirme sürümü (1607) kullanılırken hesap yok sayılır.
 
-#### <a name="azureadjoined--yes"></a>AzureAdJoined : EVET  
+#### <a name="azureadjoined--yes"></a>Azureadkatıldı: Evet  
 
-Bu alan, aygıtın birleşip birleştirilemeyeceğini gösterir. Aygıt Azure AD'ye bağlı bir aygıt veya karma bir Azure AD birleştirilmiş aygıtsa, değer **EVET** olacaktır.
-Değer **HAYRsi**ise, Azure AD'ye katılma henüz tamamlanmadı. 
+Bu alan, cihazın katılıp katılmadığını gösterir. Cihaz bir Azure AD 'ye katılmış cihaz ya da karma Azure AD 'ye katılmış bir cihaz ise değer **Evet** olur.
+Değer **Hayır**Ise Azure AD 'ye ekleme henüz tamamlanmamıştır. 
 
-Daha fazla sorun giderme için sonraki adımlara devam edin.
+Daha fazla sorun giderme için sonraki adımlara geçin.
 
-### <a name="step-3-find-the-phase-in-which-join-failed-and-the-errorcode"></a>Adım 3: Birleştirme nin başarısız olduğu aşamayı ve hata kodunu bulma
+### <a name="step-3-find-the-phase-in-which-join-failed-and-the-errorcode"></a>3. Adım: birleştirmenin başarısız olduğu aşamayı ve hata kodu bulma işlemini bulun
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 ve üzeri
 
-Birleştirme durumu çıktısının 'Tanılama Verileri' bölümündeki 'Önceki Kayıt' alt bölümüne bakın. Bu bölüm yalnızca aygıt etki alanı birleştirilmişse ve Azure AD birleştirmesini hibrit olarak kullanamıyorsa görüntülenir.
-'Hata Aşaması' alanı birleştirme hatası aşamasını gösterirken ,'Client ErrorCode' Join işleminin hata kodunu gösterir.
+JOIN durum çıktısının ' Tanılama verileri ' bölümünde ' önceki kayıt ' alt bölümüne bakın. Bu bölüm yalnızca cihaz etki alanına katılmış ise ve Azure AD JOIN 'i karma olarak alıyorsa görüntülenir.
+' Hata aşaması ' alanı, ' Istemci ErrorCode ', JOIN işleminin hata kodunu işaret ederken, JOIN hatasının aşamasını gösterir.
 
 ```
 +----------------------------------------------------------------------+
@@ -129,60 +129,60 @@ Birleştirme durumu çıktısının 'Tanılama Verileri' bölümündeki 'Önceki
 
 #### <a name="older-windows-10-versions"></a>Eski Windows 10 sürümleri
 
-Birleştirme hataları için aşama ve hata kodunu bulmak için Olay Görüntüleyici günlüğünü kullanın.
+Ekleme hatalarıyla ilgili aşamayı ve hata kodunu bulmak için Olay Görüntüleyicisi günlüklerini kullanın.
 
-1. Olay görüntüleyicide **Kullanıcı Aygıtı Kaydı** olay günlüğünü açın. **Uygulamalar ve Hizmetler Günlüğü** > **Microsoft** > **Windows** > **Kullanıcı Cihazı Kaydı** altında bulunan
-2. Aşağıdaki eventIDs 304, 305, 307 ile olayları arayın.
+1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü** > **Microsoft** > **Windows** > **Kullanıcı cihaz kaydı** altında bulunur
+2. Aşağıdaki EventIDs 304, 305, 307 olan olayları arayın.
 
-![Hata Günlüğü Olayı](./media/troubleshoot-hybrid-join-windows-current/1.png)
+![Hata günlüğü olayı](./media/troubleshoot-hybrid-join-windows-current/1.png)
 
-![Hata Günlüğü Olayı](./media/troubleshoot-hybrid-join-windows-current/2.png)
+![Hata günlüğü olayı](./media/troubleshoot-hybrid-join-windows-current/2.png)
 
-### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>Adım 4: Aşağıdaki listelerden olası nedenleri ve çözümleri kontrol edin
+### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>4. Adım: Aşağıdaki listelerden olası nedenleri ve çözümleri denetleyin
 
-#### <a name="pre-check-phase"></a>Ön kontrol aşaması
+#### <a name="pre-check-phase"></a>Denetim öncesi aşaması
 
-Başarısızlığın olası nedenleri:
+Hatanın olası nedenleri:
 
-- Aygıtın Etki Alanı denetleyicisine görüş alanı yoktur.
-   - Aygıt, kuruluşun dahili ağında veya VPN'de, şirket içi Active Directory (AD) etki alanı denetleyicisine ağ çizgisiyle birlikte olmalıdır.
+- Cihazda etki alanı denetleyicisine bir görüş satırı yok.
+   - Cihazın kuruluşun iç ağında veya şirket içi Active Directory (AD) etki alanı denetleyicisine yönelik ağ hattını içeren VPN üzerinde olması gerekir.
 
-#### <a name="discover-phase"></a>Aşamayı keşfedin
+#### <a name="discover-phase"></a>Bulma aşaması
 
-Başarısızlığın olası nedenleri:
+Hatanın olası nedenleri:
 
-- Hizmet Bağlantı Noktası (SCP) nesnesi DC'den SCP nesnesini yanlış yapılandırMış/okuyamaz.
-   - Aygıtın ait olduğu AD ormanında, Azure AD'de doğrulanmış bir etki alanı adına işaret eden geçerli bir SCP nesnesi gereklidir.
-   - Ayrıntılar bir [Hizmet Bağlantı Noktası Yapılandırma](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)bölümünde bulunabilir.
-- Bulma meta verilerinin bulma bitiş noktasından bağlanmaması ve getirilememesi.
-   - Cihaz, kayıt ve `https://enterpriseregistration.windows.net`yetkilendirme uç noktalarını bulmak için SİsteM bağlamında erişebilmeli. 
-   - Şirket içi ortam giden bir proxy gerektiriyorsa, BT yöneticisi aygıtın bilgisayar hesabının giden proxy'yi keşfedip sessizce doğrulayabilmesini sağlamalıdır.
-- Kullanıcı alemi bitiş noktasına bağlanma ve bölge keşfini gerçekleştirememe. (Windows 10 sürüm 1809 ve daha sonra sadece)
-   - Aygıt, doğrulanmış etki `https://login.microsoftonline.com`alanı için alan keşfi gerçekleştirmek ve etki alanı türünü (yönetilen/federe) belirlemek için SİsteM bağlamında erişebilmeli.
-   - Şirket içi ortam giden bir proxy gerektiriyorsa, BT yöneticisi aygıttaki SYSTEM bağlamını keşfedebilmesini ve giden proxy'ye sessizce doğrulayabilmesini sağlamalıdır.
+- Hizmet bağlantı noktası (SCP) nesnesi hatalı yapılandırılmış/DC 'den SCP nesnesi okunamıyor.
+   - AD ormanında, cihazın ait olduğu, Azure AD 'de doğrulanmış bir etki alanı adına işaret eden geçerli bir SCP nesnesi gerekir.
+   - Ayrıntıları, [hizmet bağlantı noktası yapılandırma](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)bölümünde bulabilirsiniz.
+- Bulgu uç noktasından bağlama ve bulma meta verilerini getirme hatası.
+   - Cihazın, kayıt ve yetkilendirme uç noktalarını `https://enterpriseregistration.windows.net`BULMASı için sistem bağlamına erişebilmesi gerekir. 
+   - Şirket içi ortamda giden bir ara sunucu gerekiyorsa, BT Yöneticisi, cihazın bilgisayar hesabının giden ara sunucuya keşfedip sessizce kimlik doğrulaması yapabildiğinden emin olmalıdır.
+- Kullanıcı bölgesi uç noktasına bağlanılamadı ve bölge bulma işlemi gerçekleştirilemiyor. (Yalnızca Windows 10 sürüm 1809 ve üzeri)
+   - Cihaz, doğrulanmış etki alanı için bölge `https://login.microsoftonline.com`bulma işlemini gerçekleştirmek ve etki alanı türünü (yönetilen/Federasyon) BELIRLEYEBILMEK için sistem bağlamına erişebilmelidir.
+   - Şirket içi ortamda giden bir ara sunucu gerekiyorsa, BT Yöneticisi, cihazdaki SISTEM bağlamının giden ara sunucuya keşfedip sessizce kimlik doğrulaması yapabildiğinden emin olmalıdır.
 
-**Yaygın hata kodları:**
+**Ortak hata kodları:**
 
 - **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** (0x801c001d/-2145648611)
-   - Neden: SCP nesnesini okuyamıyor ve Azure AD kiracı bilgilerini alamıyor.
-   - Çözünürlük: [Hizmet Bağlantı Noktasını Yapılandır'a](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)bakın.
+   - Neden: SCP nesnesi okunamıyor ve Azure AD kiracı bilgilerini alamıyor.
+   - Çözüm: [hizmet bağlantı noktası yapılandırma](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)bölümüne bakın.
 - **DSREG_AUTOJOIN_DISC_FAILED** (0x801c0021/-2145648607)
-   - Sebep: Genel Bulma hatası. DRS'den bulma meta verilerini alamadım.
-   - Çözüm: Daha fazla araştırmak için aşağıdaki alt hatayı bulun.
+   - Neden: genel bulma hatası. DRS 'nin bulma meta verileri alınamadı.
+   - Çözüm: daha fazla araştırmak için aşağıdaki alt hatayı bulun.
 - **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** (0x801c001f/-2145648609)
-   - Sebep: İşlem, Discovery gerçekleştirirken zaman doldu.
-   - Çözüm: SİsteM bağlamında erişilebilir `https://enterpriseregistration.windows.net` olduğundan emin olun. Daha fazla bilgi için, bölüm [Ağ bağlantı gereksinimleri](hybrid-azuread-join-managed-domains.md#prerequisites)bakın.
+   - Neden: bulma Işlemi gerçekleştirilirken Işlem zaman aşımına uğradı.
+   - Çözüm: SISTEM bağlamında `https://enterpriseregistration.windows.net` erişilebilir olduğundan emin olun. Daha fazla bilgi için [ağ bağlantısı gereksinimleri](hybrid-azuread-join-managed-domains.md#prerequisites)bölümüne bakın.
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
-   - Sebep: Genel Diyar Bulma hatası. STS'den etki alanı türünü (yönetilen/federe) belirleyemedi. 
-   - Çözüm: Daha fazla araştırmak için aşağıdaki alt hatayı bulun.
+   - Neden: genel bölge bulma hatası. STS 'den etki alanı türü (yönetilen/Federasyon) saptanamadı. 
+   - Çözüm: daha fazla araştırmak için aşağıdaki alt hatayı bulun.
 
 **Ortak alt hata kodları:**
 
-Bulma hata kodunun alt hata kodunu bulmak için aşağıdaki yöntemlerden birini kullanın.
+Bulma hata kodu için alt hata kodunu bulmak için aşağıdaki yöntemlerden birini kullanın.
 
 ##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 ve üzeri
 
-Birleştirme durumu çıktısının 'Tanılama Verileri' bölümünde 'DRS Bulma Testi'ni arayın. Bu bölüm yalnızca aygıt etki alanı birleştirilmişse ve Azure AD birleştirmesini hibrit olarak kullanamıyorsa görüntülenir.
+JOIN durum çıktısının ' Tanılama verileri ' bölümünde ' DRS bulma testi ' ' ni arayın. Bu bölüm yalnızca cihaz etki alanına katılmış ise ve Azure AD JOIN 'i karma olarak alıyorsa görüntülenir.
 
 ```
 +----------------------------------------------------------------------+
@@ -204,110 +204,110 @@ Birleştirme durumu çıktısının 'Tanılama Verileri' bölümünde 'DRS Bulma
 
 ##### <a name="older-windows-10-versions"></a>Eski Windows 10 sürümleri
 
-Birleştirme hataları için aşama ve hata kodunu bulmak için Olay Görüntüleyici günlüğünü kullanın.
+Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay Görüntüleyicisi günlüklerini kullanın.
 
-1. Olay görüntüleyicide **Kullanıcı Aygıtı Kaydı** olay günlüğünü açın. **Uygulamalar ve Hizmetler Günlüğü** > **Microsoft** > **Windows** > **Kullanıcı Cihazı Kaydı** altında bulunan
-2. Aşağıdaki eventIDs 201 ile olayları arayın
+1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü** > **Microsoft** > **Windows** > **Kullanıcı cihaz kaydı** altında bulunur
+2. Aşağıdaki EventIDs 201 'e sahip olayları arayın
 
-![Hata Günlüğü Olayı](./media/troubleshoot-hybrid-join-windows-current/5.png)
+![Hata günlüğü olayı](./media/troubleshoot-hybrid-join-windows-current/5.png)
 
 ###### <a name="network-errors"></a>Ağ hataları
 
-- **WININET_E_CANNOT_CONNECT** (0x80072efd/-2147012867)
-   - Sebep: Sunucu ile bağlantı kurulamadı
-   - Çözüm: Gerekli Microsoft kaynaklarına ağ bağlantısı sağlayın. Daha fazla bilgi için [Ağ bağlantı gereksinimlerine](hybrid-azuread-join-managed-domains.md#prerequisites)bakın.
-- **WININET_E_TIMEOUT** (0x80072e2/-2147012894)
-   - Sebep: Genel ağ zaman.
-   - Çözüm: Gerekli Microsoft kaynaklarına ağ bağlantısı sağlayın. Daha fazla bilgi için [Ağ bağlantı gereksinimlerine](hybrid-azuread-join-managed-domains.md#prerequisites)bakın.
-- **WININET_E_DECODING_FAILED** (0x80072f8f/-2147012721)
-   - Sebep: Ağ yığını sunucudan gelen yanıtı çözemedi.
-   - Çözüm: Ağ proxy'sinin sunucu yanıtını engellemediğinden ve değiştirmediğinden emin olun.
+- **WININET_E_CANNOT_CONNECT** (0x80072EFD/-2147012867)
+   - Neden: sunucuyla bağlantı kurulamadı
+   - Çözüm: gerekli Microsoft kaynaklarıyla ağ bağlantısının olduğundan emin olun. Daha fazla bilgi için bkz. [ağ bağlantısı gereksinimleri](hybrid-azuread-join-managed-domains.md#prerequisites).
+- **WININET_E_TIMEOUT** (0x80072EE2/-2147012894)
+   - Neden: genel ağ zaman aşımı.
+   - Çözüm: gerekli Microsoft kaynaklarıyla ağ bağlantısının olduğundan emin olun. Daha fazla bilgi için bkz. [ağ bağlantısı gereksinimleri](hybrid-azuread-join-managed-domains.md#prerequisites).
+- **WININET_E_DECODING_FAILED** (0x80072F8F/-2147012721)
+   - Neden: ağ yığını sunucudan gelen yanıtın kodunu çözemedi.
+   - Çözüm: ağ proxy 'sinin engel olmadığından ve sunucu yanıtını değiştirirken emin olun.
 
 ###### <a name="http-errors"></a>HTTP hataları
 
 - **DSREG_DISCOVERY_TENANT_NOT_FOUND** (0x801c003a/-2145648582)
-   - Sebep: SCP nesnesi yanlış kiracı kimliğiyle yapılandırıldı. Veya kiracıda etkin abonelik bulunamadı.
-   - Çözüm: SCP nesnesinin doğru Azure AD kiracı kimliği ve etkin aboneliklerle yapılandırıldığından veya kiracıda bulunduğundan emin olun.
+   - Neden: SCP nesnesi yanlış kiracı KIMLIĞIYLE yapılandırıldı. Veya kiracıda etkin abonelik bulunamadı.
+   - Çözüm: SCP nesnesinin doğru Azure AD kiracı KIMLIĞI ve etkin abonelikler ile yapılandırıldığından veya kiracıda mevcut olduğundan emin olun.
 - **DSREG_SERVER_BUSY** (0x801c0025/-2145648603)
-   - Sebep: DRS sunucusundan HTTP 503.
-   - Çözünürlük: Sunucu şu anda kullanılamıyor. sunucu yeniden çevrimiçi olduğunda gelecekteki birleştirme girişimleri büyük olasılıkla başarılı olacaktır.
+   - Neden: DRS sunucusundan HTTP 503.
+   - Çözüm: sunucu şu anda kullanılamıyor. sunucu yeniden çevrimiçi olduğunda gelecek birleştirme denemeleri büyük olasılıkla başarılı olur.
 
 ###### <a name="other-errors"></a>Diğer hatalar
 
 - **E_INVALIDDATA** (0x8007000d/-2147024883)
-   - Sebep: Sunucu yanıtı JSON ayrıştı olamazdı. Büyük olasılıkla bir HTML auth sayfası ile HTTP 200 dönen proxy nedeniyle.
-   - Çözüm: Şirket içi ortam giden bir proxy gerektiriyorsa, BT yöneticisi aygıttaki SYSTEM bağlamını keşfedebilmesini ve giden proxy'ye sessizce doğrulayabilmesini sağlamalıdır.
+   - Neden: Sunucu yanıtı JSON 'SI ayrıştırılamadı. Büyük olasılıkla, bir HTML kimlik doğrulama sayfası ile HTTP 200 döndüren proxy nedeniyle.
+   - Çözüm: şirket içi ortamda giden bir ara sunucu gerekiyorsa, BT Yöneticisi, cihazdaki SISTEM bağlamının giden ara sunucuya keşfedip sessizce kimlik doğrulaması yapabildiğinden emin olmalıdır.
 
 #### <a name="authentication-phase"></a>Kimlik doğrulama aşaması
 
-Yalnızca federe etki alanı hesapları için geçerlidir.
+Yalnızca Federal etki alanı hesapları için geçerlidir.
 
-Başarısızlık nedenleri:
+Hatanın nedenleri:
 
-- DRS kaynağı için sessizce bir Erişim belirteci alınamıyor.
-   - Windows 10 aygıtları, Tümleşik Windows Kimlik Doğrulaması'nı kullanarak federasyon hizmetinden etkin bir WS-Trust bitiş noktasına auth belirteci elde etti. Ayrıntılar: [Federasyon Hizmet Yapılandırması](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
+- DRS kaynağı için sessizce erişim belirteci alınamadı.
+   - Windows 10 cihazları, tümleşik Windows kimlik doğrulamasını etkin bir WS-Trust uç noktasına kullanarak Federasyon hizmetinden kimlik doğrulama belirteci edinir. Ayrıntılar: [Federasyon Hizmeti yapılandırma](hybrid-azuread-join-manual.md#set-up-issuance-of-claims)
 
-**Yaygın hata kodları:**
+**Ortak hata kodları:**
 
-Hata kodunu, alt hata kodunu, sunucu hata kodunu ve sunucu hata iletisini bulmak için Olay Görüntüleyici günlüğünü kullanın.
+Hata kodu, alt hata kodu, sunucu hata kodu ve sunucu hata iletisini bulmak için Olay Görüntüleyicisi günlükleri kullanın.
 
-1. Olay görüntüleyicide **Kullanıcı Aygıtı Kaydı** olay günlüğünü açın. **Uygulamalar ve Hizmetler Günlüğü** > **Microsoft** > **Windows** > **Kullanıcı Cihazı Kaydı** altında bulunan
-2. Aşağıdaki eventID 305 ile olayları arayın
+1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü** > **Microsoft** > **Windows** > **Kullanıcı cihaz kaydı** altında bulunur
+2. Aşağıdaki EventID 305 'e sahip olayları arayın
 
-![Hata Günlüğü Olayı](./media/troubleshoot-hybrid-join-windows-current/3.png)
+![Hata günlüğü olayı](./media/troubleshoot-hybrid-join-windows-current/3.png)
 
 ##### <a name="configuration-errors"></a>Yapılandırma hataları
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057)
-   - Sebep: Kimlik doğrulama protokolü WS-Trust değildir.
-   - Çözüm: Şirket içi kimlik sağlayıcısı WS-Trust'ı desteklemelidir 
+   - Neden: kimlik doğrulama protokolü WS-Trust değil.
+   - Çözüm: şirket içi kimlik sağlayıcısı WS-Trust ' i desteklemelidir 
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036)
-   - Sebep: Şirket içi federasyon hizmeti XML yanıtını döndürmedi.
-   - Çözünürlük: MEX uç noktasının geçerli bir XML döndürdiğinden emin olun. Proxy'nin xml olmayan yanıtları engellemediğinden ve döndürmediğinden emin olun.
+   - Neden: şirket içi Federasyon Hizmeti bir XML yanıtı döndürmedi.
+   - Çözüm: MEX uç noktasının geçerli bir XML döndürürken emin olun. Proxy 'nin müdahale olmadığından ve XML olmayan yanıtları döndürmediğinden emin olun.
 - **ERROR_ADAL_COULDNOT_DISCOVER_USERNAME_PASSWORD_ENDPOINT** (0xcaa90023/-894894045)
-   - Sebep: Kullanıcı adı/parola kimlik doğrulaması için bitiş noktası bulunamadı.
-   - Çözüm: Şirket içi kimlik sağlayıcı ayarlarını kontrol edin. WS-Trust uç noktalarının etkin olduğundan emin olun ve MEX yanıtının bu doğru uç noktaları içerdiğinden emin olun.
+   - Neden: Kullanıcı adı/parola kimlik doğrulaması için uç nokta bulunamadı.
+   - Çözüm: şirket içi kimlik sağlayıcısı ayarlarını kontrol edin. WS-Trust uç noktalarının etkinleştirildiğinden ve MEX yanıtının bu doğru uç noktaları içerdiğinden emin olun.
 
 ##### <a name="network-errors"></a>Ağ hataları
 
 - **ERROR_ADAL_INTERNET_TIMEOUT** (0xcaa82ee2/-894947614)
-   - Sebep: Genel ağ zaman.
-   - Çözüm: SİsteM bağlamında erişilebilir `https://login.microsoftonline.com` olduğundan emin olun. Şirket içi kimlik sağlayıcısına SİsteM bağlamında erişilebilir olduğundan emin olun. Daha fazla bilgi için [Ağ bağlantı gereksinimlerine](hybrid-azuread-join-managed-domains.md#prerequisites)bakın.
+   - Neden: genel ağ zaman aşımı.
+   - Çözüm: SISTEM bağlamında `https://login.microsoftonline.com` erişilebilir olduğundan emin olun. Şirket içi kimlik sağlayıcısına SISTEM bağlamında erişilebildiğinden emin olun. Daha fazla bilgi için bkz. [ağ bağlantısı gereksinimleri](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **ERROR_ADAL_INTERNET_CONNECTION_ABORTED** (0xcaa82efe/-894947586)
-   - Sebep: Auth uç noktası ile bağlantı iptal edildi.
-   - Çözüm: Bir süre sonra yeniden deneyin veya alternatif bir kararlı ağ konumundan katılmayı deneyin.
+   - Neden: kimlik doğrulama uç noktası ile bağlantı iptal edildi.
+   - Çözüm: bir süre sonra yeniden deneyin veya alternatif bir kararlı ağ konumundan katılmayı deneyin.
 - **ERROR_ADAL_INTERNET_SECURE_FAILURE** (0xcaa82f8f/-894947441)
-   - Sebep: Daha önce Güvenli Soketkatmanı (SSL) olarak bilinen Aktarım Katmanı Güvenliği (TLS), sunucu tarafından gönderilen sertifika doğrulanamadı.
-   - Çözüm: İstemcinin zaman eğriliğini kontrol edin. Bir süre sonra yeniden deneyin veya alternatif bir kararlı ağ konumundan katılmayı deneyin. 
+   - Neden: daha önce Güvenli Yuva Katmanı (SSL) olarak bilinen Aktarım Katmanı Güvenliği (TLS), sunucu tarafından gönderilen sertifika doğrulanamadı.
+   - Çözüm: istemci saati eğriliğini denetleyin. Bir süre sonra yeniden deneyin veya alternatif bir kararlı ağ konumundan katılmayı deneyin. 
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
-   - Sebep: `https://login.microsoftonline.com` Başarısız bağlanma girişimi.
-   - Çözünürlük: Ağ bağlantısını `https://login.microsoftonline.com`kontrol edin.
+   - Neden: bağlanma girişimi `https://login.microsoftonline.com` başarısız oldu.
+   - Çözüm: ağ bağlantısını denetleyin `https://login.microsoftonline.com`.
 
 ##### <a name="other-errors"></a>Diğer hatalar
 
 - **ERROR_ADAL_SERVER_ERROR_INVALID_GRANT** (0xcaa20003/-895352829)
-   - Sebep: Şirket içi kimlik sağlayıcısından SAML belirteci Azure AD tarafından kabul edilmedi.
-   - Çözünürlük: Federasyon sunucu ayarlarını kontrol edin. Kimlik doğrulama günlüklerinde sunucu hata kodunu arayın.
+   - Neden: şirket içi kimlik sağlayıcısından gelen SAML belirteci Azure AD tarafından kabul edilmedi.
+   - Çözüm: Federasyon sunucusu ayarlarını kontrol edin. Kimlik doğrulama günlüklerinde sunucu hata kodunu arayın.
 - **ERROR_ADAL_WSTRUST_REQUEST_SECURITYTOKEN_FAILED** (0xcaa90014/-894894060)
-   - Sebep: Sunucu WS-Trust yanıtı hata özel durum bildirdi ve iddia almak için başarısız oldu
-   - Çözünürlük: Federasyon sunucu ayarlarını kontrol edin. Kimlik doğrulama günlüklerinde sunucu hata kodunu arayın.
+   - Neden: sunucu WS-Trust yanıtı hata özel durumu bildirdi ve onaylama işlemi alamadı
+   - Çözüm: Federasyon sunucusu ayarlarını kontrol edin. Kimlik doğrulama günlüklerinde sunucu hata kodunu arayın.
 - **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** (0xcaa90006/-894894074)
-   - Sebep: Belirteç bitiş noktasından erişim belirteci almaya çalışırken bir hata aldı.
-   - Çözüm: ADAL günlüğündeki altta yatan hatayı arayın. 
+   - Neden: belirteç uç noktasından erişim belirteci alınmaya çalışılırken bir hata alındı.
+   - Çözüm: ADAL günlüğünde temeldeki hataya bakın. 
 - **ERROR_ADAL_OPERATION_PENDING** (0xcaa1002d/-895418323)
-   - Sebep: Genel ADAL hatası
-   - Çözüm: Kimlik doğrulama günlüklerinden alt hata kodunu veya sunucu hata kodunu arayın.
+   - Neden: genel ADAL hatası
+   - Çözüm: kimlik doğrulama günlüklerinden alt hata kodunu veya sunucu hata kodunu bulun.
     
-#### <a name="join-phase"></a>Birleştirme Aşaması
+#### <a name="join-phase"></a>JOIN aşaması
 
-Başarısızlık nedenleri:
+Hatanın nedenleri:
 
 Kayıt türünü bulun ve aşağıdaki listeden hata kodunu arayın.
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 ve üzeri
 
-Birleştirme durumu çıktısının 'Tanılama Verileri' bölümündeki 'Önceki Kayıt' alt bölümüne bakın. Bu bölüm yalnızca aygıt etki alanı birleştirilmişse ve Azure AD birleştirmesini hibrit olarak kullanamıyorsa görüntülenir.
-'Kayıt Türü' alanı gerçekleştirilen birleştirme türünü gösterir.
+JOIN durum çıktısının ' Tanılama verileri ' bölümünde ' önceki kayıt ' alt bölümüne bakın. Bu bölüm yalnızca cihaz etki alanına katılmış ise ve Azure AD JOIN 'i karma olarak alıyorsa görüntülenir.
+' Kayıt türü ' alanı, gerçekleştirilen birleştirmenin türünü gösterir.
 
 ```
 +----------------------------------------------------------------------+
@@ -324,92 +324,92 @@ Birleştirme durumu çıktısının 'Tanılama Verileri' bölümündeki 'Önceki
 
 #### <a name="older-windows-10-versions"></a>Eski Windows 10 sürümleri
 
-Birleştirme hataları için aşama ve hata kodunu bulmak için Olay Görüntüleyici günlüğünü kullanın.
+Ekleme hatalarıyla ilgili aşamayı ve hata kodu hatasını bulmak için Olay Görüntüleyicisi günlüklerini kullanın.
 
-1. Olay görüntüleyicide **Kullanıcı Aygıtı Kaydı** olay günlüğünü açın. **Uygulamalar ve Hizmetler Günlüğü** > **Microsoft** > **Windows** > **Kullanıcı Cihazı Kaydı** altında bulunan
-2. Aşağıdaki eventIDs 204 ile olayları arayın
+1. Olay Görüntüleyicisi 'nde **Kullanıcı cihaz kaydı** olay günlüklerini açın. **Uygulamalar ve hizmetler günlüğü** > **Microsoft** > **Windows** > **Kullanıcı cihaz kaydı** altında bulunur
+2. Aşağıdaki EventIDs 204 'e sahip olayları arayın
 
-![Hata Günlüğü Olayı](./media/troubleshoot-hybrid-join-windows-current/4.png)
+![Hata günlüğü olayı](./media/troubleshoot-hybrid-join-windows-current/4.png)
 
-##### <a name="http-errors-returned-from-drs-server"></a>DRS sunucusundan http hataları döndürülür
+##### <a name="http-errors-returned-from-drs-server"></a>DRS sunucusundan gelen HTTP hataları döndürüldü
 
 - **DSREG_E_DIRECTORY_FAILURE** (0x801c03f2/-2145647630)
-   - Sebep: ErrorCode ile DRS'den hata yanıtı aldı: "DirectoryError"
-   - Çözüm: Olası nedenler ve çözümler için sunucu hata koduna bakın.
+   - Neden: hata kodu: "DirectoryError" ile DRS 'den bir hata yanıtı alındı
+   - Çözüm: olası nedenler ve çözümler için sunucu hata koduna bakın.
 - **DSREG_E_DEVICE_AUTHENTICATION_ERROR** (0x801c0002/-2145648638)
-   - Sebep: ErrorCode ile DRS bir hata yanıtı aldı: "AuthenticationError" ve ErrorSubCode Değİl "DeviceNotFound". 
-   - Çözüm: Olası nedenler ve çözümler için sunucu hata koduna bakın.
+   - Neden: hata kodu: "AuthenticationError" ve Erroralt kod "DeviceNotFound" DEĞIL, DRS 'den bir hata yanıtı alındı. 
+   - Çözüm: olası nedenler ve çözümler için sunucu hata koduna bakın.
 - **DSREG_E_DEVICE_INTERNALSERVICE_ERROR** (0x801c0006/-2145648634)
-   - Sebep: ErrorCode ile DRS'den hata yanıtı aldı: "DirectoryError"
-   - Çözüm: Olası nedenler ve çözümler için sunucu hata koduna bakın.
+   - Neden: hata kodu: "DirectoryError" ile DRS 'den bir hata yanıtı alındı
+   - Çözüm: olası nedenler ve çözümler için sunucu hata koduna bakın.
 
 ##### <a name="tpm-errors"></a>TPM hataları
 
 - **NTE_BAD_KEYSET** (0x80090016/-2146893802)
-   - Sebep: TPM işlemi başarısız oldu veya geçersiz oldu
-   - Çözünürlük: Büyük olasılıkla kötü bir sysprep görüntü nedeniyle. Sysprep görüntüsünün oluşturulduğu makinenin Azure AD'ye katılmadığından, karma Azure AD'si birleştirilmiş veya Azure AD kayıtlı olmadığından emin olun.
+   - Neden: TPM işlemi başarısız oldu veya geçersiz
+   - Çözüm: muhtemelen kötü bir Sysprep görüntüsü nedeniyle. Sysprep görüntüsünün oluşturulduğu makinenin Azure AD 'ye katılmış, karma Azure AD 'ye katılmış veya Azure AD 'nin kayıtlı olduğundan emin olun.
 - **TPM_E_PCP_INTERNAL_ERROR** (0x80290407/-2144795641)
-   - Sebep: Genel TPM hatası. 
-   - Çözünürlük: Bu hataya sahip cihazlarda TPM'yi devre dışı kılabilir. Windows 10 sürüm 1809 ve üzeri otomatik olarak TPM hatalarını algılar ve TPM'yi kullanmadan karma Azure AD birleştirmesini tamamlar.
+   - Neden: Genel TPM hatası. 
+   - Çözüm: Bu hatayla birlikte cihazlarda TPM 'YI devre dışı bırakın. Windows 10 sürüm 1809 ve üzeri, TPM başarısızlıklarını otomatik olarak algılar ve TPM 'YI kullanmadan karma Azure AD JOIN işlemini tamamlar.
 - **TPM_E_NOTFIPS** (0x80280036/-2144862154)
-   - Sebep: FIPS modunda TPM şu anda desteklenmez.
-   - Çözünürlük: Bu hataya sahip cihazlarda TPM'yi devre dışı kılabilir. Windows 1809, TPM hatalarını otomatik olarak algılar ve TPM'yi kullanmadan karma Azure AD birleştirmesini tamamlar.
+   - Neden: FIPS modundaki TPM şu anda desteklenmiyor.
+   - Çözüm: Bu hatayla birlikte cihazlarda TPM 'YI devre dışı bırakın. Windows 1809 TPM başarısızlıklarını otomatik olarak algılar ve karma Azure AD JOIN 'i TPM kullanmadan tamamlar.
 - **NTE_AUTHENTICATION_IGNORED** (0x80090031/-2146893775)
-   - Sebep: TPM kilitlendi.
-   - Çözünürlük: Geçici hata. Bekleme süresini bekleyin. Bir süre sonra girişimi katılın başarılı olmalıdır. Daha fazla bilgi makale [TPM temelleri](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering) bulunabilir
+   - Neden: TPM kilitlendi.
+   - Çözüm: geçici hata. Coolazaltma dönemi için bekleyin. Bir süre sonra birleştirme denemesi başarılı olmalıdır. [TPM temelleri](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering) makalesinde daha fazla bilgi bulabilirsiniz
 
-##### <a name="network-errors"></a>Ağ Hataları
+##### <a name="network-errors"></a>Ağ hataları
 
-- **WININET_E_TIMEOUT** (0x80072e2/-2147012894)
-   - Sebep: Cihazı DRS'de kaydetmeye çalışırken genel ağ süresi
-   - Çözünürlük: Ağ bağlantısını `https://enterpriseregistration.windows.net`kontrol edin.
-- **WININET_E_NAME_NOT_RESOLVED** (0x80072ee7/-2147012889)
-   - Sebep: Sunucu adı veya adresi çözülemedi.
-   - Çözünürlük: Ağ bağlantısını `https://enterpriseregistration.windows.net`kontrol edin. Ana bilgisayar adı için DNS çözünürlüğünün n/w'de ve cihazda doğru olduğundan emin olun.
+- **WININET_E_TIMEOUT** (0x80072EE2/-2147012894)
+   - Neden: cihaz DRS 'ye kaydettirilmeye çalışılırken genel ağ zaman aşımı
+   - Çözüm: ağ bağlantısını kontrol edin `https://enterpriseregistration.windows.net`.
+- **WININET_E_NAME_NOT_RESOLVED** (0x80072EE7/-2147012889)
+   - Neden: sunucu adı veya adresi çözümlenemedi.
+   - Çözüm: ağ bağlantısını kontrol edin `https://enterpriseregistration.windows.net`. Ana bilgisayar adı için DNS çözümlemenin, n/w ve cihazda doğru olduğundan emin olun.
 - **WININET_E_CONNECTION_ABORTED** (0x80072efe/-2147012866)
-   - Sebep: Sunucuyla bağlantı anormal olarak sonlandırıldı.
-   - Çözüm: Bir süre sonra yeniden deneyin veya alternatif bir kararlı ağ konumundan katılmayı deneyin.
+   - Neden: sunucu bağlantısı anormal olarak sonlandırıldı.
+   - Çözüm: bir süre sonra yeniden deneyin veya alternatif bir kararlı ağ konumundan katılmayı deneyin.
 
-##### <a name="federated-join-server-errors"></a>Federe birleştirme sunucusu Hataları
-
-| Sunucu hata kodu | Sunucu hata iletisi | Olası nedenler | Çözüm |
-| --- | --- | --- | --- |
-| DizinHatası | İsteğiniz geçici olarak azaltıldı. Lütfen 300 saniye sonra deneyin. | Beklenen hata. Muhtemelen hızlı bir şekilde birden fazla kayıt isteğinde bulunmak nedeniyle. | Bekleme süresinden sonra yeniden birleştirme |
-
-##### <a name="sync-join-server-errors"></a>Eşitleme birleştirme sunucusu Hataları
+##### <a name="federated-join-server-errors"></a>Federasyon birleşimi sunucu hataları
 
 | Sunucu hata kodu | Sunucu hata iletisi | Olası nedenler | Çözüm |
 | --- | --- | --- | --- |
-| DizinHatası | AADSTS90002: <UUID> Kiracı bulunamadı. Kiracı için etkin abonelik yoksa bu hata oluşabilir. Abonelik yöneticinize danışın. | SCP nesnesindeki kiracı kimliği yanlış | SCP nesnesinin doğru Azure AD kiracı kimliği ve etkin aboneliklerle yapılandırıldığından ve kiracıda bulunduğundan emin olun. |
-| DizinHatası | Verilen kimlikteki aygıt nesnesi bulunamadı. | Eşitleme birleştirme için beklenen hata. Aygıt nesnesi AD'den Azure AD'ye eşitlenmedi | Azure AD Connect eşitlemesini bekleyin ve eşitleme tamamlandıktan sonraki birleştirme denemesi sorunu çözecektir |
-| Kimlik Doğrulama Hatası | Hedef bilgisayarın SID'sinin doğrulanması | Azure AD aygıtındaki sertifika, eşitleme birleştirme sırasında blob'u imzalamak için kullanılan sertifikayla eşleşmiyor. Bu hata genellikle eşitlemenin henüz tamamlanmadığı anlamına gelir. |  Azure AD Connect eşitlemesini bekleyin ve eşitleme tamamlandıktan sonraki birleştirme denemesi sorunu çözecektir |
+| DirectoryError | İsteğiniz geçici olarak kısıtlandı. Lütfen 300 saniye sonra yeniden deneyin. | Beklenen hata. Büyük olasılıkla birden çok kayıt isteğinin hemen art arda getirilmesi nedeniyle. | Coolafter döneminden sonra katılmayı yeniden dene |
 
-### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Adım 5: Günlükleri toplayın ve Microsoft Desteği'ne başvurun
+##### <a name="sync-join-server-errors"></a>Eşitleme sunucusu hatalarını Eşitle
 
-Burada kamu scriptler alın: [ https://1drv.ms/u/s! AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
+| Sunucu hata kodu | Sunucu hata iletisi | Olası nedenler | Çözüm |
+| --- | --- | --- | --- |
+| DirectoryError | AADSTS90002: kiracı <UUID> bulunamadı. Kiracı için etkin abonelik yoksa bu hata oluşabilir. Abonelik yöneticinizle görüşün. | SCP nesnesindeki kiracı KIMLIĞI yanlış | SCP nesnesinin doğru Azure AD kiracı KIMLIĞI ve etkin abonelikler ile yapılandırıldığından ve kiracıda mevcut olduğundan emin olun. |
+| DirectoryError | Belirtilen KIMLIĞE göre cihaz nesnesi bulunamadı. | Eşitleme katılımı için beklenen hata. Cihaz nesnesi AD 'den Azure AD 'ye eşitlenmedi | Azure AD Connect eşitlemenin tamamlanmasını bekleyin ve eşitleme tamamlandıktan sonra bir sonraki JOIN denemesi sorunu çözecektir |
+| AuthenticationError | Hedef bilgisayarın SID doğrulaması | Azure AD cihazındaki sertifika, eşitleme birleşimi sırasında Blobun imzalanacak sertifikayla eşleşmiyor. Bu hata genellikle eşitlemenin henüz tamamlanmamış olduğu anlamına gelir. |  Azure AD Connect eşitlemenin tamamlanmasını bekleyin ve eşitleme tamamlandıktan sonra bir sonraki JOIN denemesi sorunu çözecektir |
 
-1. Yönetici komut istemini `start_ngc_tracing_public.cmd`açın ve çalıştırın.
-2. Sorunu çoğaltmak için adımları gerçekleştirin.
-3. Yürüterek günlük komut dosyasını çalıştırmayı durdurun. `stop_ngc_tracing_public.cmd`
-4. Zip ve analiz için `%SYSTEMDRIVE%\TraceDJPP\*` altında günlükleri gönderin.
+### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>5. Adım: günlükleri ve iletişim Microsoft Desteği toplayın
 
-## <a name="troubleshoot-post-join-issues"></a>Birleştirme Sonrası sorunları giderme
+Ortak betikleri buradan alın: [ https://1drv.ms/u/s! AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
 
-### <a name="retrieve-the-join-status"></a>Birleştirme durumunu alma 
+1. Bir yönetici komut istemi açın ve çalıştırın `start_ngc_tracing_public.cmd`.
+2. Sorunu yeniden oluşturmak için adımları uygulayın.
+3. Çalıştırarak günlük betiğini çalıştırmayı durdurun `stop_ngc_tracing_public.cmd`.
+4. ZIP ve analiz için altında `%SYSTEMDRIVE%\TraceDJPP\*` günlükleri gönder.
 
-#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: EVET ve AzureADPrt: EVET
+## <a name="troubleshoot-post-join-issues"></a>Ekleme sonrası sorunlar hakkında sorun giderme
+
+### <a name="retrieve-the-join-status"></a>JOIN durumunu al 
+
+#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: YES ve AzureADPrt: YES
   
-Bu alanlar, kullanıcının aygıtta oturum açken Azure AD'de başarıyla kimlik doğrulaması yapıp olmadığını gösterir. Değerler **HAYRsi**ise, vadesi geçmiş olabilir:
+Bu alanlar, kullanıcının cihazda oturum açarken Azure AD 'ye başarıyla kimlik doğrulaması yapıp belirtmediğini belirtir. Değerler **Hayır**ise bunun nedeni şu olabilir:
 
-- Kayıt sırasında cihazla ilişkili TPM'deki bozuk depolama anahtarı (yüksek çalışırken KeySignTest'i kontrol edin).
-- Alternatif Giriş Kimliği
-- HTTP Proxy bulunamadı
+- Kayıt sırasında cihazla ilişkili TPM 'de hatalı depolama anahtarı (yükseltilmiş çalıştırılırken KeySignTest denetimini denetleyin).
+- Alternatif oturum açma KIMLIĞI
+- HTTP proxy bulunamadı
 
 ## <a name="known-issues"></a>Bilinen sorunlar
-- Ayarlar -> Hesapları -> Access Work veya Okul altında, Karma Azure AD birleştirilmiş aygıtlar, biri Azure AD diğeri mobil etkin noktalara veya harici Wi-Fi ağlarına bağlandığında şirket içi AD için olmak üzere iki farklı hesap gösterebilir. Bu yalnızca bir UI sorunudur ve işlevsellik üzerinde herhangi bir etkisi yoktur. 
+- Ayarlar-> hesaplar-Iş veya okul > erişin, karma Azure AD 'ye katılmış cihazlar, Mobil etkin noktalara veya dış WiFi ağlarına bağlıyken, biri Azure AD ve bir şirket içi AD için olmak üzere iki farklı hesap gösterebilir. Bu yalnızca bir kullanıcı arabirimi sorunudur ve işlevselliği etkilemez. 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[dsregcmd komutunu kullanarak aygıtları sorun giderme ye](troubleshoot-device-dsregcmd.md) devam etme
+[Dsregcmd komutunu kullanarak cihazlarda sorun gidermeye](troubleshoot-device-dsregcmd.md) devam edin
 
-Sorularınız için [cihaz yönetimi SSS'ye](faq.md) bakın
+Sorular için bkz. [cihaz YÖNETIMI SSS](faq.md)

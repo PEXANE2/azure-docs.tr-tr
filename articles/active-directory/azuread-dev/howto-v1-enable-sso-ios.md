@@ -1,6 +1,6 @@
 ---
-title: ADAL kullanarak iOS'ta çapraz uygulama SSO nasıl etkinleştirilir | Microsoft Dokümanlar
-description: Uygulamalarınızda Tek Oturum Açma özelliğini etkinleştirmek için ADAL SDK'nın özelliklerini nasıl kullanabilirsiniz?
+title: ADAL kullanarak iOS 'ta uygulamalar arası SSO 'yu etkinleştirme | Microsoft Docs
+description: Uygulamalarınızdaki çoklu oturum açmayı etkinleştirmek için ADAL SDK 'nın özelliklerini kullanma.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -16,68 +16,68 @@ ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 082cbb931c9dae60b39f9ee5323337bf051fb56d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154789"
 ---
-# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Nasıl? ADAL kullanarak iOS'ta çapraz uygulama SSO'su etkinleştirme
+# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Nasıl yapılır: ADAL kullanarak iOS 'ta uygulamalar arası SSO 'yu etkinleştirme
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Tek oturum açma (SSO), kullanıcıların kimlik bilgilerini yalnızca bir kez girmelerine ve bu kimlik bilgilerinin uygulamalar da ve diğer uygulamaların kullanabileceği platformlar da (Microsoft Hesapları veya Microsoft 365'teki bir iş hesabı gibi) otomatik olarak çalışmasını sağlar. yayıncı önemli.
+Çoklu oturum açma (SSO), kullanıcıların kimlik bilgilerini yalnızca bir kez girmelerini ve bu kimlik bilgilerinin diğer uygulamaların kullanabileceği platformlar arasında (Microsoft hesapları veya Microsoft 365 bir iş hesabı gibi) otomatik olarak çalışmasını sağlar.
 
-Microsoft'un kimlik platformu, SDK'larla birlikte, SSO'yu kendi uygulama paketinizde veya aracı özelliği ve Kimlik Doğrulayıcı uygulamalarıyla tüm cihazda etkinleştirmenizi kolaylaştırır.
+Microsoft 'un SDK 'larıyla birlikte kimlik platformu, kendi uygulama paketinizde veya aracı özelliği ve Authenticator uygulamalarıyla tüm cihaz genelinde SSO 'yu etkinleştirmeyi kolaylaştırır.
 
-Bu nasıl yapılandırılırsa, müşterilerinize SSO sağlamak için uygulamanız dahilinde SDK'yı nasıl yapılandırabileceğinizi öğreneceksiniz.
+Bu nasıl yapılır bölümünde, müşterilerinize SSO sağlamak için uygulamanızın içinde SDK 'Yı nasıl yapılandıracağınızı öğreneceksiniz.
 
-Bu nasıl uygulanır:
+Bu nasıl yapılır:
 
-* Azure Etkin Dizini (Azure Etkin Dizin)
+* Azure Active Directory (Azure Active Directory)
 * Azure Active Directory B2C
-* Azure Etkin Dizin B2B
-* Azure Etkin Dizin Koşullu Erişim
+* Azure Active Directory B2B
+* Koşullu erişim Azure Active Directory
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu nasıl yapılacağını bildiğinizi varsayar:
+Bu şekilde nasıl yapılacağını bildiğiniz varsayılır:
 
-* Azure AD için eski portalı kullanarak uygulamanızı sağlama. Daha fazla bilgi için [bkz.](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
-* Uygulamanızı Azure [AD iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc)ile tümleştirin.
+* Azure AD için eski portalı kullanarak uygulamanızı sağlayın. Daha fazla bilgi için bkz. [uygulamayı kaydetme](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
+* Uygulamanızı [Azure AD IOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc)ile tümleştirin.
 
-## <a name="single-sign-on-concepts"></a>Tek oturum açma kavramları
+## <a name="single-sign-on-concepts"></a>Çoklu oturum açma kavramları
 
-### <a name="identity-brokers"></a>Kimlik simsarları
+### <a name="identity-brokers"></a>Kimlik aracıları
 
-Microsoft, farklı satıcılardan gelen uygulamalar arasında kimlik bilgilerinin birleştirilmesine olanak tanıyan her mobil platform ve kimlik bilgilerini doğrulamak için tek bir güvenli yer gerektiren gelişmiş özellikler için uygulamalar sağlar. Bunlara **broker**denir.
+Microsoft, farklı satıcılardan uygulamalar arasında kimlik bilgilerinin köprülemesini ve kimlik bilgilerinin doğrulanması için tek bir güvenli yer gerektiren gelişmiş özellikler için tüm mobil platformlar için uygulamalar sağlar. Bunlar **aracılar**olarak adlandırılır.
 
-iOS ve Android'de, brokerlar, müşterilerin bağımsız olarak yükleyebileceği veya çalışanları için cihazların bir kısmını veya tamamını yöneten bir şirket tarafından cihaza itildiği indirilebilir uygulamalar aracılığıyla sağlanır. Aracılar, bt yöneticisi yapılandırmasını temel alan bazı uygulamalar veya aygıtın tamamı için güvenliği yönetmeyi destekler. Windows'da bu işlevsellik, teknik olarak Web Kimlik Doğrulama Aracısı olarak bilinen işletim sistemine yerleşik bir hesap seçici tarafından sağlanır.
+İOS ve Android 'de aracılar, müşterilerin çalışanlara ait cihazların bazılarını veya tümünü yöneten bir şirket tarafından bağımsız olarak yüklemiş veya cihaza itilbileceği indirilebilir uygulamalar aracılığıyla sağlanır. Aracılar, güvenlik yönetimini yalnızca bazı uygulamalar için veya BT Yöneticisi yapılandırmasına bağlı olarak tüm cihaz için destekler. Bu işlevsellik, Windows 'ta, teknik olarak Web kimlik doğrulama Aracısı olarak bilinen, işletim sisteminde yerleşik bir hesap Seçicisi tarafından sağlanır.
 
-### <a name="patterns-for-logging-in-on-mobile-devices"></a>Mobil cihazlarda oturum açma desenleri
+### <a name="patterns-for-logging-in-on-mobile-devices"></a>Mobil cihazlarda oturum açmak için desenler
 
-Aygıtlarda kimlik bilgilerine erişim iki temel desen izler:
+Cihazlardaki kimlik bilgilerine erişim iki temel deseni izler:
 
-* Aracı olmayan destekli girişler
-* Broker destekli girişler
+* Aracı olmayan yardımlı oturum açma işlemleri
+* Aracı yardımlı oturum açma işlemleri
 
-#### <a name="non-broker-assisted-logins"></a>Aracı olmayan destekli girişler
+#### <a name="non-broker-assisted-logins"></a>Aracı olmayan yardımlı oturum açma işlemleri
 
-Aracı olmayan destekli oturum açmalar, uygulamayla birlikte olur ve bu uygulama için aygıttaki yerel depolamayı kullanır. Bu depolama, uygulamalar arasında paylaşılabilir, ancak kimlik bilgileri bu kimlik bilgilerini kullanarak uygulamaya veya uygulama paketine sıkı sıkıya bağlıdır. Uygulamanın kendi içinde bir kullanıcı adı ve parola girdiğinizde büyük olasılıkla birçok mobil uygulamada bu deneyim yaşadım.
+Aracı olmayan yardımlı oturum açmalar, uygulamayla satır içi olarak gerçekleşen ve bu uygulama için cihazdaki yerel depolamayı kullanan oturum açma deneyimidir. Bu depolama, uygulamalar arasında paylaşılabilir, ancak kimlik bilgileri bu kimlik bilgisini kullanan uygulama veya uygulama paketine sıkı bir şekilde bağlanır. Uygulamanın kendisi içinde bir Kullanıcı adı ve parola girdiğinizde birçok mobil uygulamada bu sorunla karşılaştık.
 
-Bu oturum açmaların aşağıdaki avantajları vardır:
+Bu oturumlar aşağıdaki avantajlara sahiptir:
 
-* Kullanıcı deneyimi tamamen uygulama içinde bulunmaktadır.
-* Kimlik bilgileri, aynı sertifika tarafından imzalanan uygulamalar arasında paylaşılarak, uygulama paketinize tek bir oturum açma deneyimi sağlar.
-* Oturum açma deneyimi nin kontrolü oturum açmadan önce ve sonra uygulamaya sağlanır.
+* Kullanıcı deneyimi tamamen uygulamanın içinde bulunur.
+* Kimlik bilgileri, uygulama paketinize tek bir oturum açma deneyimi sunan aynı sertifika tarafından imzalanmış uygulamalar arasında paylaşılabilir.
+* Oturum açma deneyiminin etrafında denetim, oturum açmadan önce ve sonra uygulamaya sunulur.
 
-Bu girişlerin aşağıdaki dezavantajları vardır:
+Bu oturum açmalar aşağıdaki dezavantajları vardır:
 
-* Kullanıcılar, Microsoft kimliği kullanan tüm uygulamalarda, yalnızca uygulamanızın yapılandırdığı Microsoft kimlikleri arasında tek oturum açamazsınız.
-* Uygulamanız Koşullu Erişim gibi daha gelişmiş iş özellikleriyle kullanılamaz veya Intune ürün paketini kullanamaz.
-* Uygulamanız, iş kullanıcıları için sertifika tabanlı kimlik doğrulamasını destekleemez.
+* Kullanıcılar, Microsoft kimliği kullanan tüm uygulamalarda tek oturum açma deneyiminden yalnızca uygulamanızın yapılandırıldığı Microsoft kimliklerine sahip olamaz.
+* Uygulamanız koşullu erişim gibi daha gelişmiş iş özellikleriyle kullanılamaz veya Intune ürün paketini kullanın.
+* Uygulamanız iş kullanıcıları için sertifika tabanlı kimlik doğrulamasını destekleyemez.
 
-SSO'yu etkinleştirmek için SDK'ların uygulamalarınızın paylaşılan depolama alanıyla nasıl çalıştığının bir gösterimi aşağıda veda edebilirsiniz:
+SDK 'ların, SSO 'yu etkinleştirmek için uygulamalarınızın paylaşılan depolamayla nasıl çalıştığı hakkında bir temsili aşağıda verilmiştir:
 
 ```
 +------------+ +------------+  +-------------+
@@ -93,39 +93,39 @@ SSO'yu etkinleştirmek için SDK'ların uygulamalarınızın paylaşılan depola
 +--------------------------------------------+
 ```
 
-#### <a name="broker-assisted-logins"></a>Broker destekli girişler
+#### <a name="broker-assisted-logins"></a>Aracı yardımlı oturum açma işlemleri
 
-Broker destekli oturum açmalar, broker uygulamasında meydana gelen ve aracının depolama ve güvenliğini kullanarak kimlik platformını uygulayan cihazdaki tüm uygulamalarda kimlik bilgilerini paylaşmak için kullanılan oturum açma deneyimleridir. Bu, uygulamalarınızın kullanıcıları oturum açmanız için aracıya güvendiği anlamına gelir. iOS ve Android'de bu brokerlar, müşterilerin bağımsız olarak yükleyebileceği veya cihazı kullanıcıiçin yöneten bir şirket tarafından cihaza itildiği indirilebilir uygulamalar aracılığıyla sağlanır. Bu tür uygulamalara örnek olarak iOS'taki Microsoft Authenticator uygulaması örnektir. Windows'da bu işlevsellik, teknik olarak Web Kimlik Doğrulama Aracısı olarak bilinen işletim sistemine yerleşik bir hesap seçici tarafından sağlanır.
+Aracı yardımlı oturum açmalar, Aracı uygulamasında gerçekleşen oturum açma deneyimlerinden ve kimlik platformunu uygulayan cihazdaki tüm uygulamalarda kimlik bilgilerini paylaşmak için aracının depolama ve güvenliğini kullanır. Bu, uygulamalarınızın içindeki kullanıcıları imzalamak için aracıya bağlı olduğu anlamına gelir. İOS ve Android 'de, Bu aracılar, müşterilerin cihazı bağımsız olarak yükleyen veya cihaza Kullanıcı tarafından yönetilen bir şirket tarafından gönderilen indirilebilir uygulamalar aracılığıyla sağlanır. Bu tür bir uygulama örneği, iOS üzerinde Microsoft Authenticator uygulamasıdır. Windows 'da Bu işlevsellik, Web kimlik doğrulama Aracısı olarak teknik olarak bilinen, işletim sisteminde yerleşik olarak bulunan bir hesap Seçicisi tarafından sağlanır.
 
-Deneyim platforma göre değişir ve doğru yönetilmezse bazen kullanıcılar için rahatsız edici olabilir. Facebook uygulamasını yüklediyseniz ve başka bir uygulamadan Facebook Connect kullanıyorsanız, muhtemelen bu modele aşinasınızdır. Kimlik platformu aynı deseni kullanır.
+Deneyim platforma göre farklılık gösterir ve bazen doğru yönetilmiyorsa kullanıcılara karışıklığa neden olabilir. Facebook uygulamanız yüklüyse ve başka bir uygulamadan Facebook Connect kullanıyorsanız, bu düzene en çok alışkın olursunuz. Kimlik platformu aynı kalıbı kullanır.
 
-iOS için bu, Microsoft Authenticator uygulamaları kullanıcının oturum açacak hangi hesapla oturum açacağını seçmesi için ön plana çıkarken uygulamanızın arka plana gönderildiği bir "geçiş" animasyonuna yol açar.
+İOS için bu, uygulamanızın arka plana gönderildiği bir "geçiş" animasyonuna yol açar, çünkü Microsoft Authenticator uygulamalar kullanıcının oturum açmak istedikleri hesabı seçmesini sağlamak için bir ön plana gelir.
 
-Android ve Windows için hesap seçici uygulamanızın üstünde görüntülenir ve bu da kullanıcı için daha az rahatsız edicidir.
+Android ve Windows için hesap Seçicisi, uygulamanızın üst kısmında görüntülenir ve bu, kullanıcıya daha az karışıklığa neden olur.
 
-#### <a name="how-the-broker-gets-invoked"></a>Komisyoncu nasıl çağrılır
+#### <a name="how-the-broker-gets-invoked"></a>Aracının nasıl çağrıldığında
 
-Microsoft Authenticator uygulaması gibi aygıta uyumlu bir broker yüklenirse, kullanıcı kimlik platformundan herhangi bir hesabı kullanarak oturum açmak istediğini belirttiğinde SDK'lar aracıyı sizin için çağırmak işini otomatik olarak yapar. Bu hesap, B2C ve B2B ürünlerimizi kullanarak azure'da sağladığınız ve barındırdığınız kişisel bir Microsoft Hesabı, bir iş veya okul hesabı veya hesap olabilir.
+Cihaza Microsoft Authenticator uygulaması gibi uyumlu bir aracı yüklüyse, Kullanıcı kimlik platformundan herhangi bir hesabı kullanarak oturum açmasını gösterdiğinde SDK 'lar sizin için otomatik olarak aracı çağırma işini yapılır. Bu hesap, bir kişisel Microsoft hesabı, bir iş veya okul hesabı ya da Azure 'da B2C ve B2B ürünlerimizi kullanarak barındırmanıza ve barındırmanıza izin verdiğiniz bir hesaptır.
 
-#### <a name="how-we-ensure-the-application-is-valid"></a>Uygulamanın geçerli olduğundan nasıl emin oluruz?
+#### <a name="how-we-ensure-the-application-is-valid"></a>Uygulamanın geçerli olduğundan emin olduğumuz
 
-Broker i çağrıştıran bir uygulamanın kimliğinin güvence ye mesi ihtiyacı, broker destekli girişlerde sağladığımız güvenlik için çok önemlidir. Ne iOS ne de Android yalnızca belirli bir uygulama için geçerli olan benzersiz tanımlayıcıları zorlar, bu nedenle kötü amaçlı uygulamalar yasal bir uygulamanın tanımlayıcısını "taklit edebilir" ve yasal uygulama için verilen belirteçleri alabilir. Çalışma zamanında her zaman doğru uygulamayla iletişim kurduğumuzdan emin olmak için, geliştiriciden uygulamalarını Microsoft'a kaydederken özel bir yönlendirmeuri sağlamasını isteriz. Geliştiriciler bu yönlendirme URI zanaat nasıl ayrıntılı olarak aşağıda ele alınmıştır. Bu özel redirectURI uygulamanın Paket Kimliğini içerir ve Apple App Store tarafından uygulamaya özgü olması sağlanır. Bir uygulama broker'ı aradığında, broker iOS işletim sisteminden aracıyı arayan Paket Kimliği'ni sağlamasını ister. Aracı, kimlik sistemimize yapılan çağrıda bu Paket Kimliğini Microsoft'a sağlar. Uygulamanın Paket Kimliği, kayıt sırasında geliştirici tarafından bize sağlanan Paket Kimliği ile eşleşmiyorsa, uygulamanın talep ettiği kaynak için belirteçlere erişimi reddetmiş oluruz. Bu denetim, yalnızca geliştirici tarafından kaydedilmiş uygulamanın belirteçleri almasını sağlar.
+Aracıyı çağıran bir uygulamanın kimliğinin, aracı yardımlı oturum açma işlemleri için sağlamamız gereken güvenlik açısından önemli olmasına dikkat edin. Ne iOS ne de Android, yalnızca belirli bir uygulama için geçerli olan benzersiz tanımlayıcılar uygular, bu nedenle kötü amaçlı uygulamalar yasal uygulamanın tanımlayıcısını "taklit edebilir" ve yasal uygulama için gereken belirteçleri alabilir. Çalışma zamanında doğru uygulamayla her zaman iletişim kurduğumuz için, geliştiriciden Microsoft ile uygulama kaydederken özel bir redirectURI sağlamasını isteyeceğiz. Geliştiricilerin bu yeniden yönlendirme URI 'sini oluşturması gereken ayrıntılar aşağıda ayrıntılarıyla açıklanmıştır. Bu özel redirectURI, uygulamanın paket KIMLIĞINI içerir ve Apple App Store tarafından uygulamaya benzersiz olacak şekilde tasarlanmıştır. Bir uygulama aracıya çağrı yaparken, Aracı iOS işletim sistemini aracıyı çağıran paket KIMLIĞI ile sağlamasını ister. Aracı kimlik sistemimize yapılan çağrıda Bu paket KIMLIĞINI Microsoft 'a sağlar. Uygulamanın paket KIMLIĞI, kayıt sırasında geliştirici tarafından bize girilen paket KIMLIĞIYLE eşleşmiyorsa, uygulamanın istediği kaynak için belirteçlere erişimi reddedecağız. Bu denetim, yalnızca geliştirici tarafından kaydedilen uygulamanın belirteçleri almasını sağlar.
 
-**Geliştirici, SDK'nın aracıyı arayıp aramadığı veya broker olmayan destekli akışı kullanıp kullanmama seçeneğine sahiptir.** Ancak geliştirici broker destekli akışı kullanmamayı seçerse, kullanıcının cihaza zaten eklemiş olabileceği SSO kimlik bilgilerini kullanma avantajını kaybeder ve uygulamalarının Microsoft'un sağladığı iş özellikleriyle kullanılmasını engeller. Koşullu Erişim, Intune yönetim yetenekleri ve sertifika tabanlı kimlik doğrulama gibi müşteriler.
+**Geliştirici, SDK 'nın aracıyı çağırırsa veya aracı olmayan yardımlı akışı kullanıp kullanmadığını tercih etti.** Ancak geliştirici, aracı yardımlı akışı kullanmayı seçerse, kullanıcının cihaza zaten eklemiş olabileceği ve uygulamaların iş özellikleriyle kullanılmasını önlediği, Microsoft 'un, koşullu erişim, Intune yönetim özellikleri ve sertifika tabanlı kimlik doğrulama gibi müşterileri sağladığı avantajlardan faydalanır.
 
-Bu oturum açmaların aşağıdaki avantajları vardır:
+Bu oturumlar aşağıdaki avantajlara sahiptir:
 
-* Kullanıcı, satıcı ne olursa olsun tüm uygulamalarında SSO'yu deneyimler.
-* Uygulamanız Koşullu Erişim gibi daha gelişmiş iş özelliklerini kullanabilir veya Intune ürün paketini kullanabilir.
+* Kullanıcı, satıcıya bakılmaksızın tüm uygulamalarında SSO ile karşılaşır.
+* Uygulamanız, koşullu erişim gibi daha gelişmiş iş özellikleri kullanabilir veya Intune ürün paketini kullanabilir.
 * Uygulamanız, iş kullanıcıları için sertifika tabanlı kimlik doğrulamasını destekleyebilir.
-* Uygulamanın kimliği ve kullanıcı olarak çok daha güvenli oturum açma deneyimi, ek güvenlik algoritmaları ve şifreleme ile broker uygulaması tarafından doğrulanır.
+* Uygulamanın kimliği ve Kullanıcı, ek güvenlik algoritmaları ve şifrelemesi ile aracı uygulama tarafından doğrulandığından, daha güvenli oturum açma deneyimi.
 
-Bu girişlerin aşağıdaki dezavantajları vardır:
+Bu oturum açmalar aşağıdaki dezavantajları vardır:
 
-* iOS'ta kimlik bilgileri seçilirken kullanıcı uygulamanızın deneyiminden uzaklara geçiş yapılır.
-* Uygulamanızda müşterileriniz için giriş deneyimini yönetme yeteneğinin kaybı.
+* İOS 'ta, kimlik bilgileri seçildiği sırada kullanıcı uygulamanızın deneyiminden geçirilir.
+* Uygulamanızdaki müşterilerinizin oturum açma deneyimini yönetme yeteneğinin kaybı.
 
-SSO'yu etkinleştirmek için SDK'ların broker uygulamalarıyla nasıl çalıştığını aşağıda açıklayabilirsiniz:
+SDK 'ların, SSO 'yu etkinleştirmek için aracı uygulamalarla nasıl çalıştığı hakkında bir temsili aşağıda verilmiştir:
 
 ```
 +------------+ +------------+   +-------------+
@@ -151,39 +151,39 @@ SSO'yu etkinleştirmek için SDK'ların broker uygulamalarıyla nasıl çalışt
               +-------------+
 ```
 
-## <a name="enabling-cross-app-sso-using-adal"></a>ADAL kullanarak çapraz uygulama SSO'nun etkinleştirilmesi
+## <a name="enabling-cross-app-sso-using-adal"></a>ADAL kullanarak uygulamalar arası SSO 'yu etkinleştirme
 
-Burada ADAL iOS SDK'yı şu şekilde kullanıyoruz:
+Burada, ADAL iOS SDK 'sını kullanarak şunları yapın:
 
-* Uygulama paketiniz için broker destekli olmayan SSO'ya açın
-* Broker destekli SSO için desteği açın
+* Uygulama paketiniz için aracı olmayan yardımlı SSO 'yu açın
+* Aracı yardımlı SSO desteğini aç
 
-### <a name="turning-on-sso-for-non-broker-assisted-sso"></a>Broker olmayan destekli SSO için SSO'nun açık
+### <a name="turning-on-sso-for-non-broker-assisted-sso"></a>Aracı olmayan yardımlı SSO için SSO 'yu açma
 
-Uygulamalar arasında broker destekli olmayan SSO için SDK'lar sizin için SSO'nun karmaşıklığının çoğunu yönetir. Bu, önbellekte doğru kullanıcıyı bulmayı ve sorgulamanız için kullanıcılarda oturum açmış kullanıcıların listesini korumayı içerir.
+Uygulamalar arasında aracı olmayan yardımlı SSO için SDK 'lar sizin için SSO 'nun karmaşıklığını çoğunu yönetir. Bu, önbellekte doğru kullanıcıyı bulmayı ve sorgulamanızı sağlamak için oturum açmış kullanıcıların bir listesini sürdürmeyi içerir.
 
-SSO'yu sahip olduğunuz uygulamalar arasında etkinleştirmek için aşağıdakileri yapmanız gerekir:
+Sahip olduğunuz uygulamalar genelinde SSO 'yu etkinleştirmek için aşağıdakileri yapmanız gerekir:
 
-1. Tüm uygulamalarınızın aynı İstemci Kimliği veya Uygulama Kimliği'ni kullandığından emin olun.
-2. Anahtarlıkları paylaşabilmeniz için tüm uygulamalarınızın Apple'dan aynı imza sertifikasını paylaştığından emin olun.
-3. Her uygulamanız için aynı anahtarlık hakkını isteyin.
-4. SDK'lara kullanmamızı istediğiniz ortak anahtarzincirinden bahsedin.
+1. Tüm uygulamalarınızın aynı Istemci KIMLIĞINI veya uygulama KIMLIĞINI kullandığından emin olun.
+2. Anahtar zincirlerini paylaşabilmek için tüm uygulamalarınızın Apple 'dan aynı imzalama sertifikasını paylaştığından emin olun.
+3. Uygulamalarınızın her biri için aynı Anahtarlık yetkilendirmesini isteyin.
+4. Kullanmamızı istediğiniz paylaşılan anahtarlığa ilişkin SDK 'lara anlatın.
 
-#### <a name="using-the-same-client-id--application-id-for-all-the-applications-in-your-suite-of-apps"></a>Uygulama paketinizdeki tüm uygulamalar için aynı İstemci Kimliğini / Uygulama Kimliğini kullanma
+#### <a name="using-the-same-client-id--application-id-for-all-the-applications-in-your-suite-of-apps"></a>Uygulama paketinizdeki tüm uygulamalar için aynı Istemci KIMLIĞINI/uygulama KIMLIĞINI kullanma
 
-Kimlik platformunun başvurularınızda belirteçleri paylaşmasına izin verildiğini bilmesi için, uygulamalarınızın her birinin aynı İstemci Kimliğini veya Uygulama Kimliğini paylaşması gerekir. Bu, portala ilk uygulamanızı kaydettiğinizde size sağlanan benzersiz tanımlayıcıdır.
+Kimlik platformunun, uygulamalarınızda belirteçleri paylaşmasına izin verildiğini bilmesi için, uygulamalarınızın her birinin aynı Istemci KIMLIĞINI veya uygulama KIMLIĞINI paylaşması gerekir. Bu, portalda ilk uygulamanızı kaydettiğinizde size sağlanmış olan benzersiz tanıtıcıdır.
 
-Yeniden yönlendirme IU'ları, aynı Uygulama Kimliğini kullanıyorsa, farklı uygulamaları Microsoft kimlik hizmetine tanımlamanıza olanak tanır. Her uygulama, biniş portalında kayıtlı birden çok Yönlendirme URIs'ine sahip olabilir. Süitinizdeki her uygulama farklı bir yeniden yönlendirme URI olacaktır. Bunun nasıl göründüğüne bir örnek aşağıdadır:
+Yeniden yönlendirme URI 'Leri, aynı uygulama KIMLIĞINI kullanıyorsa Microsoft Identity Service 'e farklı uygulamalar tanımlamanızı sağlar. Her uygulamanın, ekleme portalında kayıtlı birden çok yeniden yönlendirme URI 'si olabilir. Paketinizdeki her uygulamanın farklı bir yeniden yönlendirme URI 'SI olacaktır. Bunun nasıl görüneceğine ilişkin bir örnek:
 
-App1 Uri Yönlendirme:`x-msauth-mytestiosapp://com.myapp.mytestapp`
+APP1 yeniden yönlendirme URI 'SI:`x-msauth-mytestiosapp://com.myapp.mytestapp`
 
-App2 Redirect URI:`x-msauth-mytestiosapp://com.myapp.mytestapp2`
+App2 yeniden yönlendirme URI 'SI:`x-msauth-mytestiosapp://com.myapp.mytestapp2`
 
-App3 Redirect URI:`x-msauth-mytestiosapp://com.myapp.mytestapp3`
+App3 yeniden yönlendirme URI 'SI:`x-msauth-mytestiosapp://com.myapp.mytestapp3`
 
 ....
 
-Bunlar aynı istemci kimliği / uygulama kimliği altında iç içe ve SDK yapılandırmabize dönmek uri yönlendirme dayalı baktı.
+Bunlar, aynı istemci KIMLIĞI/uygulama KIMLIĞI altında iç içe yerleştirilmiş ve SDK yapılandırmanızda bize geri döndürülen yeniden yönlendirme URI 'sine bağlı olarak aranır.
 
 ```
 +-------------------+
@@ -208,13 +208,13 @@ Bunlar aynı istemci kimliği / uygulama kimliği altında iç içe ve SDK yapı
 
 ```
 
-Bu yönlendirme URI'lerinin biçimi aşağıda açıklanmıştır. Komisyoncuyu desteklemek istemiyorsanız herhangi bir Yönlendirme URI'si kullanabilirsiniz, bu durumda yukarıdaki gibi görünmeleri gerekir*
+Bu yeniden yönlendirme URI 'Lerinin biçimi aşağıda açıklanmıştır. Aracıyı desteklemek istemediğiniz müddetçe herhangi bir yeniden yönlendirme URI 'SI kullanabilirsiniz; Bu durumda yukarıdaki gibi görünmelidir *
 
-#### <a name="create-keychain-sharing-between-applications"></a>Uygulamalar arasında anahtarzinciri paylaşımı oluşturma
+#### <a name="create-keychain-sharing-between-applications"></a>Uygulamalar arasında Anahtarlık paylaşımı oluşturma
 
-Anahtarlık paylaşımını etkinleştirmek bu belgenin kapsamı dışındadır ve Apple tarafından belge [Ekleme Özellikleri'nde](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html)yer almaktadır. Önemli olan, anahtarzincirinizin ne olarak adlandırılmasını istediğinize karar vermeniz ve bu özelliği tüm uygulamalarınızda eklemenizdir.
+Anahtarlık paylaşımının etkinleştirilmesi, bu belgenin kapsamı dışındadır ve bu sayede, belge [özellikleri ekleme özelliği](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html)bulunur. Önemli olan özellikler, anahtarlarınızın hangi amaçla çağrdığına karar verirsiniz ve bu özelliği tüm uygulamalarınızda eklemektir.
 
-Doğru ayarlanmış yetkilendirmeleriniz olduğunda, proje dizininizde `entitlements.plist` aşağıdakilere benzeyen bir şey içeren bir dosya görmeniz gerekir:
+Yetkilendirmeler doğru şekilde ayarlandığında, proje dizininizde `entitlements.plist` aşağıdaki gibi görünen bir öğe içeren bir dosya görmeniz gerekir:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -230,46 +230,46 @@ Doğru ayarlanmış yetkilendirmeleriniz olduğunda, proje dizininizde `entitlem
 </plist>
 ```
 
-Her bir uygulamanızda anahtarlık yetkilendirmesi etkinleştirildikten ve SSO'yu kullanmaya hazır olduktan sonra, aşağıdaki ayarı `ADAuthenticationSettings` kullanarak anahtarlınızın kimliğini SDK'ya bildirin:
+Her uygulamanızda Anahtarlık yetkilendirme yetkilerini etkinleştirdikten sonra ve SSO kullanmaya hazırsanız, aşağıdaki ayarı kullanarak aşağıdaki ayarı `ADAuthenticationSettings` kullanarak kimlik anahtarlığınıza ilişkin kimlik SDK 'sını söyleyin:
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";
 ```
 
 > [!WARNING]
-> Uygulamalarınız arasında bir anahtarzinciri paylaştığınızda, herhangi bir uygulama kullanıcıları silebilir veya daha kötüsü uygulamanızdaki tüm belirteçleri silebilir. Arka plan çalışması yapmak için belirteçleri güveniyor uygulamaları varsa bu özellikle felaket. Anahtarlık paylaşmak, kimlik SDK'ları aracılığıyla tüm işlemleri kaldırmada çok dikkatli olmanız gerektiği anlamına gelir.
+> Uygulamalarınız genelinde bir anahtarlık paylaştığınızda, herhangi bir uygulama kullanıcıları silebilir veya uygulamanızdaki tüm belirteçleri daha kötü bir şekilde silebilir. Arka plan işlerini yapmak için belirteçlere güvenen uygulamalarınız varsa, bu özellikle felaket. Anahtarlık paylaşımı, kimlik SDK 'Ları aracılığıyla herhangi bir ve tüm kaldırma işlemlerine çok dikkatli olmanız gerektiği anlamına gelir.
 
-İşte bu kadar! SDK artık tüm başvurularınızda kimlik bilgilerini paylaşacaktır. Kullanıcı listesi uygulama örnekleri arasında da paylaşılacaktır.
+İşte bu kadar! SDK artık tüm uygulamalarınızda kimlik bilgilerini paylaşacaktır. Kullanıcı listesi ayrıca uygulama örnekleri arasında paylaşılır.
 
-### <a name="turning-on-sso-for-broker-assisted-sso"></a>Broker destekli SSO için SSO'ya açma
+### <a name="turning-on-sso-for-broker-assisted-sso"></a>Aracı yardımlı SSO için SSO 'yu açma
 
-Bir uygulamanın aygıta yüklenen herhangi bir aracıyı kullanabilmesi **varsayılan olarak kapatılır.** Aracı ile uygulamanızı kullanmak için bazı ek yapılandırma yapmak ve uygulamanıza bazı kod eklemek gerekir.
+Uygulamanın cihazda yüklü olan herhangi bir aracıyı kullanma yeteneği **Varsayılan olarak**kapalıdır. Uygulamanızı aracıda kullanabilmek için bazı ek yapılandırmalar yapmanız ve uygulamanıza bazı kodlar eklemeniz gerekir.
 
-İzlenen adımlar şunlardır:
+İzlenecek adımlar şunlardır:
 
-1. Uygulama kodunuzdaki MS SDK'ya yapılan çağrıda broker modunu etkinleştirin.
-2. Uri'yi yeni bir yönlendirme kurun ve bunu hem uygulamanıza hem de uygulama kaydınıza sağlayın.
-3. URL Düzeni kaydetme.
-4. info.plist dosyanıza izin ekleyin.
+1. Uygulama kodunuzun MS SDK çağrısında aracı modunu etkinleştirin.
+2. Yeni bir yeniden yönlendirme URI 'si oluşturun ve hem uygulama hem de uygulama kaydınız için bu URI 'yi sağlayın.
+3. URL şeması kaydediliyor.
+4. İnfo. plist dosyanıza bir izin ekleyin.
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>Adım 1: Uygulamanızda broker modunu etkinleştirin
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>1. Adım: uygulamanızda aracı modunu etkinleştirme
 
-Kimlik Doğrulama nesnenizin "bağlamını" veya ilk kurulumunu oluşturduğunuzda uygulamanızın aracıyı kullanma özelliği açık olur. Bunu, kodunuzda kimlik bilgileri türünü ayarlayarak yaparsınız:
+Uygulamanızın aracıyı kullanma yeteneği, kimlik doğrulama nesnenizin "bağlam" veya ilk kurulumunu oluştururken açıktır. Bunu, kodunuzda kimlik bilgileri türünü ayarlayarak yapabilirsiniz:
 
 ```
 /*! See the ADCredentialsType enumeration definition for details */
 @propertyADCredentialsType credentialsType;
 ```
-Ayar `AD_CREDENTIALS_AUTO` SDK broker aramak için denemek için izin `AD_CREDENTIALS_EMBEDDED` verecek, broker için arama SDK engelleyecektir.
+`AD_CREDENTIALS_AUTO` Ayar SDK 'nın aracıya çağrı yapmasına izin verır, `AD_CREDENTIALS_EMBEDDED` SDK 'nın aracıya çağrılmasını engeller.
 
-#### <a name="step-2-registering-a-url-scheme"></a>Adım 2: URL Düzenini Kaydetme
+#### <a name="step-2-registering-a-url-scheme"></a>2. Adım: URL şeması kaydetme
 
-Kimlik platformu, aracıyı çağırmak ve ardından denetimi uygulamanıza geri döndürmek için URL'leri kullanır. Bu gidiş-dönüş yolculuğunu tamamlamak için, başvurunuz için kimlik platformunun haberi olan bir URL şemasına ihtiyacınız vardır. Bu, daha önce uygulamanıza kaydolmuş olabileceğiniz diğer uygulama düzenlerine ek olarak olabilir.
+Kimlik platformu, aracıyı çağırmak için URL 'Leri kullanır ve sonra denetimi uygulamanıza geri döndürür. Bu gidiş dönüş için, kimlik platformunun hakkında bilgi sahibi olacağı uygulamanız için kayıtlı bir URL şemasına ihtiyacınız vardır. Bu, daha önce uygulamanıza kaydetmiş olabilecek diğer uygulama şemalarına ek olarak olabilir.
 
 > [!WARNING]
-> Aynı URL düzenini kullanarak başka bir uygulamanın şansını en aza indirmek için URL düzenini oldukça benzersiz hale getirmenizi öneririz. Apple, uygulama mağazasında kayıtlı OLAN URL şemalarının benzersizliğini zorlamaz.
+> Aynı URL düzenini kullanan başka bir uygulamanın olasılığını en aza indirmek için, URL düzenini oldukça benzersiz hale getirmeyi öneririz. Apple, App Store 'da kayıtlı URL düzenlerinin benzersizlik düzeyini zorlamaz.
 
-Aşağıda, bunun proje yapılandırmanızda nasıl göründüğüne bir örnek verilmiştir. Bunu XCode'da da yapabilirsiniz:
+Bunun proje yapılandırmanızda nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir. Bunu ayrıca XCode 'da da yapabilirsiniz:
 
 ```
 <key>CFBundleURLTypes</key>
@@ -287,29 +287,29 @@ Aşağıda, bunun proje yapılandırmanızda nasıl göründüğüne bir örnek 
 </array>
 ```
 
-#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>Adım 3: URL Şemanızla yeni bir yeniden yönlendirme URI kurun
+#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>3. Adım: URL şemanızın bulunduğu yeni bir yeniden yönlendirme URI 'SI oluşturma
 
-Kimlik bilgileri belirteçlerini her zaman doğru uygulamaya iade ettiğimizden emin olmak için, iOS işletim sisteminin doğrulayabildiği şekilde uygulamanızı geri aradığımızdan emin olmamız gerekir. iOS işletim sistemi, Microsoft aracısı uygulamalarına onu çağıran uygulamanın Paket Kimliğini bildirir. Bu bir haydut uygulama tarafından taklit edilemez. Bu nedenle, jetonun doğru uygulamaya döndürülmesini sağlamak için aracı uygulamamızın URI ile birlikte bu kaldıraç. Bu benzersiz yönlendirme URI'yi hem uygulamanızda hem de geliştirici portalımızda Yeniden Yönlendirme URI olarak ayarlamanızı istiyoruz.
+Her zaman kimlik bilgisi belirteçlerini doğru uygulamaya döndürtiğimiz için, iOS işletim sisteminin doğrulayabilmesi için uygulamanıza geri dönediğimiz bir şekilde emin olunması gerekir. İOS işletim sistemi, Microsoft Broker uygulamalarına bu uygulamayı çağıran uygulamanın paket KIMLIĞINI bildirir. Bu, standart dışı bir uygulama tarafından taklit edilemez. Bu nedenle, belirteçlerin doğru uygulamaya döndürüldüğünden emin olmak için bu, aracı uygulamamız URI 'siyle birlikte faydalanır. Bu benzersiz yeniden yönlendirme URI 'sini uygulamanızda her ikisi de oluşturmanız ve geliştirici portalımızda yeniden yönlendirme URI 'SI olarak ayarlamanız gerekir.
 
-Yeniden yönlendirme URI uygun biçimde olmalıdır:
+Yeniden yönlendirme URI 'niz doğru biçimde olmalıdır:
 
 `<app-scheme>://<your.bundle.id>`
 
-Örn: *x-msauth-mytestiosapp://com.myapp.mytestapp*
+Ex: *x-msauth-mytesosapp://com.MyApp.mytestapp*
 
-Bu yeniden yönlendirme URI'nin [Azure portalını](https://portal.azure.com/)kullanarak uygulama kaydınızda belirtilmesi gerekir. Azure AD uygulama kaydı hakkında daha fazla bilgi için azure [etkin dizinle tümleştirme](../develop/active-directory-how-to-integrate.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)'ye bakın.
+Bu yeniden yönlendirme URI 'sinin [Azure Portal](https://portal.azure.com/)kullanarak uygulama kaydlarınızın belirtilmesi gerekir. Azure AD uygulama kaydı hakkında daha fazla bilgi için bkz. [Azure Active Directory tümleştirme](../develop/active-directory-how-to-integrate.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 
-##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>Adım 3a: Sertifika tabanlı kimlik doğrulamasını desteklemek için uygulamanıza ve geliştirme portalınıza yeniden yönlendirme URI'si ekleyin
+##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>Adım 3a: sertifika tabanlı kimlik doğrulamasını desteklemek için uygulamanıza ve dev portalına yeniden yönlendirme URI 'SI ekleme
 
-Sertifika tabanlı kimlik doğrulamayı desteklemek için, uygulamanızda bu desteği eklemek istiyorsanız, sertifika kimlik doğrulamasını işlemek için uygulamanızda ve [Azure portalına](https://portal.azure.com/) ikinci bir "msauth"un kaydedilmesi gerekir.
+Sertifika tabanlı kimlik doğrulamasını desteklemek için ikinci bir "msauth" uygulamanız gerekir ve bu desteği uygulamanızda eklemek istiyorsanız sertifika kimlik doğrulamasını işlemek için [Azure Portal](https://portal.azure.com/) .
 
 `msauth://code/<broker-redirect-uri-in-url-encoded-form>`
 
-ör: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
+örn.: *msauth://Code/x-msauth-mytestiosapp%3A%2F%2Fcom.MyApp.mytestapp*
 
-#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>Adım 4: Uygulamanız için yapılandırma parametresi ekleme
+#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>4. Adım: uygulamanıza bir yapılandırma parametresi ekleme
 
-ADAL kullanır –canOpenURL: aracıcihaza yüklü olup olmadığını kontrol etmek için. iOS 9'da Apple, bir uygulamanın sorgulayabileceği şemaları kilitledi. LSApplicationQueriesSchemes bölümüne "msauth" eklemeniz `info.plist file`gerekir.
+ADAL, aracının cihaza yüklenip yüklenmediğini denetlemek için – canOpenURL: kullanır. Üzerinde iOS 9 ' da, Apple bir uygulamanın sorgulayabilecekleri düzenleri kilitlemiş. ' Nin Lsapplicationqueriesdüzenleri bölümüne "msauth" eklemeniz gerekir `info.plist file`.
 
 ```
     <key>LSApplicationQueriesSchemes</key>
@@ -319,10 +319,10 @@ ADAL kullanır –canOpenURL: aracıcihaza yüklü olup olmadığını kontrol e
 
 ```
 
-### <a name="youve-configured-sso"></a>SSO'ya göre yapılandırıldınız!
+### <a name="youve-configured-sso"></a>SSO 'yu yapılandırdınız!
 
-Artık kimlik SDK, hem uygulamalarınızda kimlik bilgilerini otomatik olarak paylaşır hem de aygıtlarında varsa aracıyı çağırır.
+Artık kimlik SDK 'Sı, her ikisi de uygulamalarınızın genelinde kimlik bilgilerini paylaşır ve cihazında varsa aracıyı çağırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Tek [oturum açma SAML protokolü](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) hakkında bilgi edinin
+* [Çoklu oturum açma SAML Protokolü](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) hakkında bilgi edinin

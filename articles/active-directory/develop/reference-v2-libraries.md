@@ -1,6 +1,6 @@
 ---
-title: Microsoft kimlik platformu kimlik doğrulama kitaplıkları
-description: Microsoft kimlik platformu bitiş noktası için uyumlu istemci kitaplıkları ve sunucu ara yazılım kitaplıkları, ilgili kitaplık, kaynak ve örnek bağlantılarla birlikte.
+title: Microsoft Identity platform kimlik doğrulama kitaplıkları
+description: Microsoft Identity platform uç noktası için ilgili kitaplık, kaynak ve örnek bağlantılarla birlikte uyumlu istemci kitaplıkları ve sunucu ara yazılım kitaplıkları.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -13,99 +13,99 @@ ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 22e2ee0e3596bc996482a090af7509db4c415e61
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80883500"
 ---
-# <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft kimlik platformu kimlik doğrulama kitaplıkları
+# <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft Identity platform kimlik doğrulama kitaplıkları
 
-[Microsoft kimlik platformu bitiş noktası,](active-directory-v2-compare.md) endüstri standardı OAuth 2.0 ve OpenID Connect 1.0 protokollerini destekler. Microsoft Kimlik Doğrulama Kitaplığı (MSAL), Microsoft kimlik platformu bitiş noktasıyla çalışmak üzere tasarlanmıştır. OAuth 2.0 ve OpenID Connect 1.0'ı destekleyen açık kaynak kitaplıklarını da kullanabilirsiniz.
+[Microsoft Identity platform uç noktası](active-directory-v2-compare.md) , sektör standardı OAuth 2,0 ve OpenID Connect 1,0 protokollerini destekler. Microsoft kimlik doğrulama kitaplığı (MSAL), Microsoft Identity platform uç noktasıyla çalışacak şekilde tasarlanmıştır. OAuth 2,0 ve OpenID Connect 1,0 ' i destekleyen açık kaynaklı kitaplıkları da kullanabilirsiniz.
 
-Güvenlik Geliştirme Yaşam Döngüsü (SDL) metodolojisi izleyen protokol etki alanı uzmanları tarafından yazılmış kitaplıkları kullanmanızı öneririz. Bu tür metodolojiler [Microsoft'un izlediği metodolojileri][Microsoft-SDL]içerir. Protokoller için kod teslim ederseniz, Microsoft SDL gibi bir metodolojiizlemeniz gerekir. Her protokol için standart belirtimlerinde güvenlik hususlarına dikkat edin.
+Güvenlik geliştirme yaşam döngüsü (SDL) metodolojisini izleyen protokol etki alanı uzmanları tarafından yazılmış kitaplıkları kullanmanızı öneririz. Bu tür yöntemler [, Microsoft 'un izlediği bir][Microsoft-SDL]yöntem içerir. Protokoller için kod kullandıysanız, Microsoft SDL gibi bir metodolojiyi izlemelisiniz. Her protokol için standartlar belirtimlerinde güvenlik açısından dikkat edilmesi gereken noktaları ödeyin.
 
 > [!NOTE]
-> Azure Active Directory Authentication Library'yi (ADAL) mi arıyorsunuz? [ADAL kitaplık kılavuzuna](../azuread-dev/active-directory-authentication-libraries.md)göz atın.
+> Azure Active Directory kimlik doğrulaması kitaplığı (ADAL) arıyor musunuz? [Adal kitaplığı kılavuzuna](../azuread-dev/active-directory-authentication-libraries.md)göz atın.
 
-## <a name="types-of-libraries"></a>Kütüphane türleri
+## <a name="types-of-libraries"></a>Kitaplık türleri
 
-Microsoft kimlik platformu bitiş noktası iki tür kitaplıkla çalışır:
+Microsoft Identity platform uç noktası iki tür kitaplık ile çalışmaktadır:
 
-* **İstemci kitaplıkları**: Yerel istemciler ve sunucular, Microsoft Graph gibi bir kaynağı çağırmak için erişim belirteçleri elde etmek için istemci kitaplıklarını kullanır.
-* **Sunucu ara yazılım kitaplıkları**: Web uygulamaları, kullanıcı oturum açma için sunucu ara yazılım kitaplıklarını kullanır. Web API'leri, yerel istemciler veya diğer sunucular tarafından gönderilen belirteçleri doğrulamak için sunucu ara yazılım kitaplıklarını kullanır.
+* **İstemci kitaplıkları**: yerel istemciler ve sunucular, Microsoft Graph gibi bir kaynağı çağırmak için erişim belirteçleri elde etmek üzere istemci kitaplıklarını kullanır.
+* **Sunucu ara yazılım kitaplıkları**: Web Apps, Kullanıcı oturum açma için sunucu ara yazılım kitaplıklarını kullanır. Web API 'Leri, yerel istemciler veya diğer sunucular tarafından gönderilen belirteçleri doğrulamak için sunucu ara yazılım kitaplıklarını kullanır.
 
-## <a name="library-support"></a>Kütüphane desteği
+## <a name="library-support"></a>Kitaplık desteği
 
 Kitaplıklar iki destek kategorisinde gelir:
 
-* **Microsoft destekli**: Microsoft bu kitaplıklar için düzeltmeler sağlar ve bu kitaplıklar üzerinde SDL durum tespiti yapmıştır.
-* **Uyumlu**: Microsoft bu kitaplıkları temel senaryolarda sınamıştır ve Microsoft kimlik platformu bitiş noktasıyla çalıştıklarını doğrulamıştır. Microsoft bu kitaplıklar için düzeltmeler sağlamaz ve bu kitaplıklar üzerinde inceleme yapmamıştır. Sorunlar ve özellik istekleri kitaplığın açık kaynak projesine yönlendirilmelidir.
+* **Microsoft tarafından desteklenen**: Microsoft, bu kitaplıklara yönelik düzeltmeler sağlar ve bu kitaplıklarda, bu kitaplıklara yönelik olarak bir işlem yapılmakta.
+* **Uyumlu**: Microsoft bu kitaplıkları temel senaryolarda test etmiştir ve Microsoft Identity platform uç noktasıyla çalıştığını doğruladı. Microsoft bu kitaplıklara yönelik düzeltmeler sağlamaz ve bu kitaplıkların gözden geçirilmesini gerçekleştirmemiştir. Sorunlar ve özellik istekleri kitaplığın açık kaynaklı projesine yönlendirilmelidir.
 
-Microsoft kimlik platformu bitiş noktasıyla çalışan kitaplıkların listesi için aşağıdaki bölümlere bakın.
+Microsoft Identity platform uç noktasıyla çalışan kitaplıkların listesi için aşağıdaki bölümlere bakın.
 
-## <a name="microsoft-supported-client-libraries"></a>Microsoft destekli istemci kitaplıkları
+## <a name="microsoft-supported-client-libraries"></a>Microsoft tarafından desteklenen istemci kitaplıkları
 
-Korumalı web API'sini çağırmak için bir belirteç elde etmek için istemci kimlik doğrulama kitaplıklarını kullanın.
+Korumalı bir Web API 'SI çağırmak için bir belirteç almak üzere istemci kimlik doğrulama kitaplıklarını kullanın.
 
-| Platform | Kitaplık | İndirme | Kaynak kod | Örnek | Başvuru | Kavramsal doküman | Yol Haritası |
+| Platform | Kitaplık | İndirme | Kaynak kod | Örnek | Başvuru | Kavramsal belge | Yol Haritası |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [Tek sayfalı uygulama](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Başvuru](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [Kavramsal dokümanlar](msal-overview.md)| [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
-![Angular](media/sample-v2-code/logo_angular.png) | MSAL Açısal | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [Açısal SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [Başvuru](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [Kavramsal dokümanlar](msal-overview.md) | [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
-| ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Masaüstü uygulaması](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[Kavramsal dokümanlar](msal-overview.md) | [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
-| ![Python](media/sample-v2-code/logo_python.png) | MSAL Piton | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [Örnekler](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
+| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [Tek sayfalı uygulama](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Başvuru](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [Kavramsal belgeler](msal-overview.md)| [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
+![Angular](media/sample-v2-code/logo_angular.png) | MSAL angular | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [Angular SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [Başvuru](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [Kavramsal belgeler](msal-overview.md) | [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
+| ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Masaüstü uygulaması](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[Kavramsal belgeler](msal-overview.md) | [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
+| ![Python](media/sample-v2-code/logo_python.png) | MSAL Python | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [Örnekler](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [Belgeleri Readthe](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
 | ![Java](media/sample-v2-code/logo_java.png) | MSAL Java | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [Örnekler](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | [Başvuru](https://javadoc.io/doc/com.microsoft.azure/msal4j/latest/index.html) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | [Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
-| iOS & macOS | MSAL iOS ve macOS | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [iOS uygulaması](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc), [macOS uygulaması](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) | [Başvuru](https://azuread.github.io/microsoft-authentication-library-for-objc/index.html)  | [Kavramsal dokümanlar](msal-overview.md) | |
-|![Android / Java](media/sample-v2-code/logo_Android.png) | MSAL Android | [Merkezi depo](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Android uygulaması](quickstart-v2-android.md) | [JavaDocs](https://javadoc.io/doc/com.microsoft.identity.client/msal) | [Kavramsal dokümanlar](msal-overview.md) |[Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Roadmap)
+| iOS & macOS | MSAL iOS ve macOS | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [iOS uygulaması](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc), [MacOS uygulaması](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) | [Başvuru](https://azuread.github.io/microsoft-authentication-library-for-objc/index.html)  | [Kavramsal belgeler](msal-overview.md) | |
+|![Android/Java](media/sample-v2-code/logo_Android.png) | MSAL Android | [Merkezi depo](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Android uygulaması](quickstart-v2-android.md) | [JavaDocs](https://javadoc.io/doc/com.microsoft.identity.client/msal) | [Kavramsal belgeler](msal-overview.md) |[Yol Haritası](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Roadmap)
 
-## <a name="microsoft-supported-server-middleware-libraries"></a>Microsoft destekli sunucu ara yazılım kitaplıkları
+## <a name="microsoft-supported-server-middleware-libraries"></a>Microsoft tarafından desteklenen sunucu ara yazılım kitaplıkları
 
-Web uygulamalarını ve web API'lerini korumaya yardımcı olmak için ara yazılım kitaplıklarını kullanın. ASP.NET veya ASP.NET Core ile yazılmış web uygulamaları veya web API'leri ara yazılım kitaplıklarını kullanır.
+Web uygulamalarını ve Web API 'Lerini korumaya yardımcı olması için ara yazılım kitaplıklarını kullanın. ASP.NET veya ASP.NET Core yazılmış Web uygulamaları veya Web API 'Leri, ara yazılım kitaplıklarını kullanır.
 
-| Platform | Kitaplık | İndirme | Kaynak Kodu | Örnek | Başvuru
+| Platform | Kitaplık | İndirme | Kaynak kodu | Örnek | Başvuru
 | --- | --- | --- | --- | --- | --- |
-| ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET Güvenlik |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[MVC uygulaması](quickstart-v2-aspnet-webapp.md) |[ASP.NET API başvurusu](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0) |
-| ![.NET](media/sample-v2-code/logo_NET.png)| .NET için IdentityModel Uzantıları| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC uygulaması](quickstart-v2-aspnet-webapp.md) |[Başvuru](https://docs.microsoft.com/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
+| ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET güvenliği |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[MVC uygulaması](quickstart-v2-aspnet-webapp.md) |[ASP.NET API başvurusu](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0) |
+| ![.NET](media/sample-v2-code/logo_NET.png)| .NET için IdentityModel uzantıları| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC uygulaması](quickstart-v2-aspnet-webapp.md) |[Başvuru](https://docs.microsoft.com/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
 | ![Node.js](media/sample-v2-code/logo_nodejs.png) | Azure AD Passport |[NPM](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Web uygulaması](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
 
-## <a name="microsoft-supported-libraries-by-os--language"></a>Os / dil tarafından Microsoft destekli kitaplıklar
+## <a name="microsoft-supported-libraries-by-os--language"></a>İşletim sistemine/dile göre desteklenen Microsoft kitaplıkları
 
-Desteklenen işletim sistemleri vs diller açısından, eşleme aşağıdaki gibidir:
+Desteklenen işletim sistemleri vs dilleri söz konusu olduğunda, eşleme aşağıdaki gibi olur:
 
 |             | Windows    | Linux      | macOS      | iOS | Android    |
 |-------------|------------|------------|------------|------------|------------|
 | ![JavaScript](media/sample-v2-code/logo_js.png)  |  MSAL.js | MSAL.js | MSAL.js | MSAL.js |  MSAL.js |
-| <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET, ASP.NET Çekirdek, MSAL.Net (.NET FW, Çekirdek, UWP)| ASP.NET Çekirdek, MSAL.Net (.NET Çekirdek) | ASP.NET Çekirdek, MSAL.Net (macOS)       | MSAL.Net (Xamarin.iOS) | MSAL.Net (Xamarin.Android)|
+| <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET, ASP.NET Core, MSAL.Net (.NET ILT, Core, UWP)| ASP.NET Core, MSAL.Net (.NET Core) | ASP.NET Core, MSAL.Net (macOS)       | MSAL.Net (Xamarin. iOS) | MSAL.Net (Xamarin. Android)|
 | Swift <br> Objective-C |            |            | [iOS ve macOS için MSAL](msal-overview.md) | [iOS ve macOS için MSAL](msal-overview.md) |            |
 | ![Java](media/sample-v2-code/logo_java.png) Java | msal4j | msal4j | msal4j | | MSAL Android |
-| ![Python](media/sample-v2-code/logo_python.png) Python | MSAL Piton | MSAL Piton | MSAL Piton |
-| ![Node.js](media/sample-v2-code/logo_nodejs.png) Node.JS | Passport.node | Passport.node | Passport.node |
+| ![Python](media/sample-v2-code/logo_python.png) Python | MSAL Python | MSAL Python | MSAL Python |
+| ![Node. js](media/sample-v2-code/logo_nodejs.png) Node.JS | Passport. Node | Passport. Node | Passport. Node |
 
-Ayrıca [desteklenen platformlara ve dillere](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages) göre senaryolara bakın
+Ayrıca bkz. [Desteklenen platformlar ve dillere göre senaryolar](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)
 
 ## <a name="compatible-client-libraries"></a>Uyumlu istemci kitaplıkları
 
-| Platform | Kitaplık adı | Test edilmiş sürüm | Kaynak kod | Örnek |
+| Platform | Kitaplık adı | Test edilen sürüm | Kaynak kod | Örnek |
 |:---:|:---:|:---:|:---:|:---:|
-|![JavaScript](media/sample-v2-code/logo_js.png)|[Merhaba.js](https://adodson.com/hello.js/) | Sürüm 1.13.5 |[Merhaba.js](https://github.com/MrSwitch/hello.js) |[Spa](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
-| ![Java](media/sample-v2-code/logo_java.png) | [Scribe Java](https://github.com/scribejava/scribejava) | [Sürüm 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
+|![JavaScript](media/sample-v2-code/logo_js.png)|[Merhaba. js](https://adodson.com/hello.js/) | Sürüm 1.13.5 |[Merhaba. js](https://github.com/MrSwitch/hello.js) |[Star](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
+| ![Java](media/sample-v2-code/logo_java.png) | [Java](https://github.com/scribejava/scribejava) | [Sürüm 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [Karalama Java](https://github.com/scribejava/scribejava/) | |
 | ![Java](media/sample-v2-code/logo_java.png) | [Gluu OpenID Connect kitaplığı](https://github.com/GluuFederation/oxAuth) | [Sürüm 3.0.2](https://github.com/GluuFederation/oxAuth/releases/tag/3.0.2) | [Gluu OpenID Connect kitaplığı](https://github.com/GluuFederation/oxAuth) | |
 | ![Python](media/sample-v2-code/logo_python.png) | [İstekler-OAuthlib](https://github.com/requests/requests-oauthlib) | [Sürüm 1.2.0](https://github.com/requests/requests-oauthlib/releases/tag/v1.2.0) | [İstekler-OAuthlib](https://github.com/requests/requests-oauthlib) | |
-| ![Node.js](media/sample-v2-code/logo_nodejs.png) | [openid istemci](https://github.com/panva/node-openid-client) | [Sürüm 2.4.5](https://github.com/panva/node-openid-client/releases/tag/v2.4.5) | [openid istemci](https://github.com/panva/node-openid-client) | |
-| ![PHP](media/sample-v2-code/logo_php.png) | [PHP Ligi oauth2-istemci](https://github.com/thephpleague/oauth2-client) | [Sürüm 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-istemci](https://github.com/thephpleague/oauth2-client/) | |
-| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth-oauth2: 1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
-| iOS, macOS, & Android  | [Tepki Yerli App Auth](https://github.com/FormidableLabs/react-native-app-auth) | [Sürüm 4.2.0](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [Tepki Yerli App Auth](https://github.com/FormidableLabs/react-native-app-auth) | |
+| ![Node.js](media/sample-v2-code/logo_nodejs.png) | [OpenID-istemci](https://github.com/panva/node-openid-client) | [Sürüm 2.4.5](https://github.com/panva/node-openid-client/releases/tag/v2.4.5) | [OpenID-istemci](https://github.com/panva/node-openid-client) | |
+| ![PHP](media/sample-v2-code/logo_php.png) | [PHP League OAuth2-Client](https://github.com/thephpleague/oauth2-client) | [Sürüm 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [OAuth2-istemci](https://github.com/thephpleague/oauth2-client/) | |
+| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth-OAuth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
+| iOS, macOS, & Android  | [Yerel uygulama kimlik doğrulamasını tepki verme](https://github.com/FormidableLabs/react-native-app-auth) | [Sürüm 4.2.0](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [Yerel uygulama kimlik doğrulamasını tepki verme](https://github.com/FormidableLabs/react-native-app-auth) | |
 
-Standartlara uygun kitaplık için Microsoft kimlik platformu bitiş noktasını kullanabilirsiniz. Destek için nereye gideceğimi bilmek önemlidir:
+Standartlarla uyumlu herhangi bir kitaplık için Microsoft Identity platform uç noktasını kullanabilirsiniz. Destek için Nereye gidebileceğinizi bilmemiz önemlidir:
 
 * Kitaplık kodundaki sorunlar ve yeni özellik istekleri için kitaplık sahibine başvurun.
-* Hizmet tarafı iletişim kuralı uygulamasındaki sorunlar ve yeni özellik istekleri için Microsoft'a başvurun.
-* Protokolde görmek istediğiniz ek özellikler için [bir özellik isteği dosya.](https://feedback.azure.com/forums/169401-azure-active-directory)
-* Microsoft kimlik platformu bitiş noktasının OAuth 2.0 veya OpenID Connect 1.0 ile uyumlu olmadığı bir sorun bulursanız [bir destek isteği oluşturun.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
+* Hizmet tarafı protokol uygulamasındaki sorunlar ve yeni özellik istekleri için Microsoft ile iletişim kurun.
+* Protokolde görmek istediğiniz ek özellikler için [bir özellik isteği](https://feedback.azure.com/forums/169401-azure-active-directory) yapın.
+* Microsoft Identity platform uç noktasının OAuth 2,0 veya OpenID Connect 1,0 ile uyumlu olmadığı bir sorun bulursanız [bir destek Isteği oluşturun](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) .
 
 ## <a name="related-content"></a>İlgili içerik
 
-Microsoft kimlik platformu bitiş noktası hakkında daha fazla bilgi için [Microsoft kimlik platformuna genel bakış'a][AAD-App-Model-V2-Overview]bakın.
+Microsoft Identity platform uç noktası hakkında daha fazla bilgi için bkz. [Microsoft Identity platform 'a genel bakış][AAD-App-Model-V2-Overview].
 
 <!--Image references-->
 

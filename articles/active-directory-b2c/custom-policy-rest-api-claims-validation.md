@@ -1,7 +1,7 @@
 ---
-title: REST API doğrulama olarak değişimleri talep
+title: Talep değiş tokuşları doğrulama olarak REST API
 titleSuffix: Azure AD B2C
-description: RESTful hizmetleriyle etkileşimedebilen bir Azure AD B2C kullanıcı yolculuğu oluşturmak için bir yol için bir yol.
+description: Yeniden çalışan hizmetlerle etkileşim kuran Azure AD B2C Kullanıcı yolculuğu oluşturmaya yönelik bir yol.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,32 +12,32 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a4902e96cd41a02953b6686b5d52d7912b27809f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80330830"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Walkthrough: Kullanıcı girişini doğrulamak için REST API taleplerini Azure AD B2C kullanıcı yolculuğunuzda tümleştirin
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>İzlenecek yol: Kullanıcı girişini doğrulamak için Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirin
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C'nin (Azure AD B2C) temelini oluşturan Kimlik Deneyimi Çerçevesi (IEF), kimlik geliştiricilerin kullanıcı yolculuğunda yeniden bir API ile etkileşimi tümleştirmelerine olanak tanır.  Bu iznin sonunda, kullanıcı girişini doğrulamak için [yeniden kullanılabilir hizmetlerle](custom-policy-rest-api-intro.md) etkileşimedebilen bir Azure AD B2C kullanıcı yolculuğu oluşturabilirsiniz.
+Azure Active Directory B2C (Azure AD B2C) altındaki kimlik deneyimi çerçevesi (ıEF), kimlik geliştiricilerinin Kullanıcı yolculuğu içindeki bir etkileşimi bir API ile tümleştirmesini sağlar.  Bu izlenecek yolun sonunda, Kullanıcı girişini doğrulamak üzere [yeniden çalışan hizmetlerle](custom-policy-rest-api-intro.md) etkileşim kuran Azure AD B2C bir Kullanıcı yolculuğu oluşturabileceksiniz.
 
-Bu senaryoda, kullanıcıların Azure AD B2C kayıt sayfasına bir sadakat numarası girme özelliğini ekleyeceğiz. Bu e-posta ve sadakat numarası kombinasyonunun bir PROMOSYON KODUna eşlenip eşlenmediğini, bu verileri BIR REST API'sine göndererek doğrulayacağız. REST API bu kullanıcı için bir promosyon kodu bulursa, Azure AD B2C'ye döndürülür. Son olarak, promosyon kodu, uygulamanın tüketilmesi için belirteç taleplerine eklenir.
+Bu senaryoda, kullanıcıların Azure AD B2C kaydolma sayfasına bağlılık programı numarası girme yeteneğini ekleyeceğiz. Bu e-posta ve bağlılık programı numarası birleşiminin, bu verileri bir REST API göndererek Promosyon koduyla eşleştirildiğini doğrulayacağız. REST API bu kullanıcı için bir promosyon kodu bulursa, bu, Azure AD B2C döndürülür. Son olarak, promosyon kodu uygulamanın kullanacağı belirteç taleplerine eklenecektir.
 
-Etkileşimi bir orkestrasyon adımı olarak da tasarlayabilirsiniz. Bu, REST API'sinin ekrandaki verileri doğrulatmayacak ve her zaman talepleri iade etmeyecektir. Daha fazla bilgi için [Walkthrough: Azure AD B2C kullanıcı yolculuğunuzdaki REST API talep alışverişini bir düzenleme adımı olarak tümleştirin.](custom-policy-rest-api-claims-exchange.md)
+Ayrıca, etkileşimi bir düzenleme adımı olarak tasarlayabilirler. Bu, REST API ekranda verileri doğrulamadan ve her zaman talepler döndürecek şekilde uygundur. Daha fazla bilgi için bkz. [Izlenecek yol: Azure AD B2C Kullanıcı yolculuğunda düzenleme adımı olarak REST API talep alışverişlerinde tümleştirme](custom-policy-rest-api-claims-exchange.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Özel ilkelerle başlayın](custom-policy-get-started.md)adımlarını tamamlayın. Yerel hesaplarla kaydolmak ve oturum açmak için çalışan bir özel politikanız olmalıdır.
-- [REST API talep alışverişini Azure AD B2C özel politikanızda](custom-policy-rest-api-intro.md)nasıl entegre edebilirsiniz öğrenin.
+- [Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Kaydolma ve yerel hesaplarla oturum açma için çalışan bir özel ilkenize sahip olmanız gerekir.
+- [Azure AD B2C özel ilkenizde REST API talep değişimlerinin nasıl tümleştirileceğini](custom-policy-rest-api-intro.md)öğrenin.
 
-## <a name="prepare-a-rest-api-endpoint"></a>REST API bitiş noktası hazırlama
+## <a name="prepare-a-rest-api-endpoint"></a>REST API uç noktası hazırlama
 
-Bu izbin için, bir e-posta adresinin bir sadakat kimliğiyle arka uç sisteminizde kayıtlı olup olmadığını doğrulayan bir REST API'niz olmalıdır. Kayıtlıysa, REST API'si, müşterinin uygulamanız dahilinde mal satın almak için kullanabileceği bir kayıt tanıtım kodu döndürmelidir. Aksi takdirde, REST API bir HTTP 409 hata iletisi döndürmelidir: "Sadakat kimliği '{loyalty ID}' '{email}' e-posta adresiyle ilişkili değildir.".
+Bu kılavuzda, bir e-posta adresinin bir bağlılık programı KIMLIĞI ile arka uç sisteminizde kayıtlı olup olmadığını doğrulayan bir REST API olması gerekir. Kaydedilmişse, REST API bir kayıt promosyon kodu döndürmelidir, bu da müşterinin sizin uygulamanızdaki malları satın alabilir. Aksi takdirde REST API bir HTTP 409 hata iletisi döndürmelidir: "bağlılık programı KIMLIĞI ' {bağlılık KIMLIĞI} ', ' {email} ' e-posta adresi ile ilişkilendirilmemiş.".
 
-Aşağıdaki JSON kodu, Azure AD B2C'nin REST API bitiş noktanıza göndereceği verileri gösterir. 
+Aşağıdaki JSON kodu Azure AD B2C REST API uç noktanıza gönderilecek verileri gösterir. 
 
 ```json
 {
@@ -47,7 +47,7 @@ Aşağıdaki JSON kodu, Azure AD B2C'nin REST API bitiş noktanıza göndereceğ
 }
 ```
 
-REST API'niz verileri doğruladıktan sonra, aşağıdaki JSON verileriyle birlikte bir HTTP 200 (Ok) döndürmesi gerekir:
+REST API verileri doğruladıktan sonra, aşağıdaki JSON verileriyle birlikte bir HTTP 200 (Tamam) döndürmesi gerekir:
 
 ```json
 {
@@ -55,7 +55,7 @@ REST API'niz verileri doğruladıktan sonra, aşağıdaki JSON verileriyle birli
 }
 ```
 
-Doğrulama başarısız olduysa, REST API'nin `userMessage` JSON öğesiyle birlikte bir HTTP 409 (Çakışma) döndürmesi gerekir. IEF, REST `userMessage` API'nin geri döndüğü iddiasını bekliyor. Doğrulama başarısız olursa, bu talep kullanıcıya bir dize olarak sunulacaktır.
+Doğrulama başarısız olursa, REST API `userMessage` JSON ÖĞESIYLE bir http 409 (Conflict) döndürmelidir. IEF, REST API döndürdüğü `userMessage` talebi bekliyor. Doğrulama başarısız olursa, bu talep kullanıcıya bir dize olarak sunulacaktır.
 
 ```json
 {
@@ -65,16 +65,16 @@ Doğrulama başarısız olduysa, REST API'nin `userMessage` JSON öğesiyle birl
 }
 ```
 
-REST API bitiş noktasının kurulumu bu makalenin kapsamı dışındadır. Bir Azure [İşlevler](https://docs.microsoft.com/azure/azure-functions/functions-reference) örneği oluşturduk. Tüm Azure işlev koduna [GitHub'dan](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function)erişebilirsiniz.
+REST API uç noktasının kurulumu Bu makalenin kapsamı dışındadır. Bir [Azure işlevleri](https://docs.microsoft.com/azure/azure-functions/functions-reference) örneği oluşturduk. [GitHub](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function)'Daki tüm Azure işlev koduna erişebilirsiniz.
 
 ## <a name="define-claims"></a>Talepleri tanımlama
 
-Talep, Azure AD B2C ilke yürütmesi sırasında verilerin geçici olarak depolanmasını sağlar. [İddialar şeması](claimsschema.md) bölümünde ki talepleri beyan edebilirsiniz. 
+Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici olarak depolanmasını sağlar. Talepleri [talep şeması](claimsschema.md) bölümünde bildirebilirsiniz. 
 
-1. İlkinizin uzantılar dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
-1. [BuildingBlocks](buildingblocks.md) öğesini arayın. Öğe yoksa, ekleyin.
-1. [ClaimsSchema](claimsschema.md) öğesini bulun. Öğe yoksa, ekleyin.
-1. Aşağıdaki iddiaları **ClaimsSchema** öğesine ekleyin.  
+1. İlkenizin uzantıları dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
+1. [Buildingblocks](buildingblocks.md) öğesi için arama yapın. Öğe yoksa, ekleyin.
+1. [Claimsschema](claimsschema.md) öğesini bulun. Öğe yoksa, ekleyin.
+1. Aşağıdaki talepleri **Claimsschema** öğesine ekleyin.  
 
 ```xml
 <ClaimType Id="loyaltyId">
@@ -93,9 +93,9 @@ Talep, Azure AD B2C ilke yürütmesi sırasında verilerin geçici olarak depola
 </ClaimType>
 ```
 
-## <a name="configure-the-restful-api-technical-profile"></a>RESTful API teknik profilini yapılandırma 
+## <a name="configure-the-restful-api-technical-profile"></a>Restsize API teknik profilini yapılandırma 
 
-[Dinlendirici teknik profil,](restful-technical-profile.md) kendi RESTful hizmetinize ara vermek için destek sağlar. Azure AD B2C, bir `InputClaims` koleksiyondaki RESTful hizmetine veri `OutputClaims` gönderir ve bir koleksiyondaki verileri geri alır. İddia **Sağlayıcıları** öğesini bulun ve aşağıdaki gibi yeni bir talep sağlayıcısı ekleyin:
+Daha fazla [Teknik bir teknik profil](restful-technical-profile.md) , kendi resteğiniz hizmetinize yönelik arabirim desteği sağlar. Azure AD B2C, verileri bir `InputClaims` koleksiyondaki yeniden bir hizmete gönderir ve verileri bir `OutputClaims` koleksiyonda geri alır. **Claimsproviders** öğesini bulun ve yeni bir talep sağlayıcısını aşağıdaki şekilde ekleyin:
 
 ```xml
 <ClaimsProvider>
@@ -128,17 +128,17 @@ Talep, Azure AD B2C ilke yürütmesi sırasında verilerin geçici olarak depola
 </ClaimsProvider>
 ```
 
-Bu örnekte, `userLanguage` JSON yükü içinde `lang` olduğu gibi REST hizmetine gönderilecektir. Talebin `userLanguage` değeri geçerli kullanıcı dili kimliğini içerir. Daha fazla bilgi [için, talep çözümleyicisi](claim-resolver-overview.md)bakın.
+Bu örnekte `userLanguage` , JSON yükünün içinde olduğu gibi `lang` Rest hizmetine gönderilir. `userLanguage` Talebin değeri geçerli kullanıcı dili kimliğini içerir. Daha fazla bilgi için bkz. [talep çözümleyici](claim-resolver-overview.md).
 
-Yukarıdaki `AuthenticationType` açıklamaları `AllowInsecureAuthInProduction` belirtin ve bir üretim ortamına taşınırken yaptığınız değişiklikleri belirtin. Yeniden üretim için yeniden ifl eksalarınızı nasıl güvenli hale erdireceğimize yönelik bilgi için Secure [RESTful API'ye](secure-rest-api.md)bakın.
+Yukarıdaki `AuthenticationType` açıklamalar ve `AllowInsecureAuthInProduction` bir üretim ortamına geçtiğinizde yapmanız gereken değişiklikleri belirtin. Üretim için yeniden yapılan API 'lerinizi güvenli hale getirme hakkında bilgi edinmek için bkz. [güvenli restsize API](secure-rest-api.md).
 
 ## <a name="validate-the-user-input"></a>Kullanıcı girişini doğrulama
 
-Kayıt sırasında kullanıcının sadakat numarasını elde etmek için, kullanıcının bu verileri ekrana girmesine izin vermelisiniz. **LoyaltyId** çıktı iddiasını, varolan kaydolma teknik profil bölümünün `OutputClaims` öğesine ekleyerek kaydolma sayfasına ekleyin. Taleplerin ekranda sunulduğu sırayı denetlemek için çıktı taleplerinin tüm listesini belirtin.  
+Kaydolma sırasında kullanıcının bağlılık programı numarasını almak için, kullanıcının bu verileri ekranda girmesine izin vermelisiniz. **Loyaltyıd** çıkış talebini, mevcut kaydolma teknik profili bölümünün `OutputClaims` öğesine ekleyerek kaydolma sayfasına ekleyin. Taleplerin ekranda sunulduğu sırayı denetlemek için tüm çıkış talepleri listesini belirtin.  
 
-Kayıt teknik profiline doğrulama teknik profil referansı ekleyin. `REST-ValidateProfile` Yeni doğrulama teknik profili, temel ilkede `<ValidationTechnicalProfiles>` tanımlanan koleksiyonun üst bölümüne eklenir. Bu davranış, yalnızca başarılı doğrulamadan sonra Azure AD B2C'nin dizinde hesabı oluşturmak için harekete geçtiği anlamına gelir.   
+Doğrulama teknik profili başvurusunu, `REST-ValidateProfile`öğesini çağıran kaydolma teknik profiline ekleyin. Yeni doğrulama teknik profili, temel ilkede tanımlanan `<ValidationTechnicalProfiles>` koleksiyonun en üstüne eklenecektir. Bu davranış, yalnızca başarılı doğrulamadan sonra, Azure AD B2C dizinde hesap oluşturmak için ' ın üzerinde çalışacağı anlamına gelir.   
 
-1. İddia **Sağlayıcıları** öğesini bulun. Aşağıdaki gibi yeni bir talep sağlayıcısı ekleyin:
+1. **Claimsproviders** öğesini bulun. Yeni bir talep sağlayıcısını aşağıdaki şekilde ekleyin:
 
     ```xml
     <ClaimsProvider>
@@ -190,9 +190,9 @@ Kayıt teknik profiline doğrulama teknik profil referansı ekleyin. `REST-Valid
     </ClaimsProvider>
     ```
 
-## <a name="include-a-claim-in-the-token"></a>Belirteci bir talep ekleme 
+## <a name="include-a-claim-in-the-token"></a>Belirtece bir talep ekleyin 
 
-Promosyon kodu talebini güvenen taraf uygulamasına geri döndürmek <em> `SocialAndLocalAccounts/` </em> için, dosyaya bir çıktı talebi ekleyin. Çıktı talebi, talebin başarılı bir kullanıcı yolculuğundan sonra jetonun içine eklenmesine olanak sağlar ve uygulamaya gönderilir. Çıktı talebi olarak eklemek için güvenilen `promoCode` taraf bölümündeki teknik profil öğesini değiştirin.
+Promosyon kodu talebini bağlı olan taraf uygulamasına geri döndürmek için, <em> `SocialAndLocalAccounts/` </em> dosyaya bir çıkış talebi ekleyin. Çıkış talebi, başarılı bir Kullanıcı yolculuğuna sonra, talebin belirtece eklenmesine izin verir ve uygulamaya gönderilir. Bir çıkış talebi `promoCode` olarak eklemek için bağlı olan taraf bölümündeki teknik profil öğesini değiştirin.
  
 ```xml
 <RelyingParty>
@@ -215,19 +215,19 @@ Promosyon kodu talebini güvenen taraf uygulamasına geri döndürmek <em> `Soci
 </RelyingParty>
 ```
 
-## <a name="test-the-custom-policy"></a>Özel ilkeyi test edin
+## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-1. Üst menüdeki **Dizin + abonelik** filtresini seçerek ve Azure AD kiracınızı içeren dizin seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
-1. Azure portalının sol üst köşesindeki **tüm hizmetleri** seçin ve ardından **Uygulama kayıtlarını**arayın ve seçin.
-1. **Kimlik Deneyimi Çerçevesi'ni**seçin.
-1. **Özel Politika Yükle'yi**seçin ve sonra değiştirdiğiniz ilke dosyalarını yükleyin: *TrustFrameworkExtensions.xml*ve *SignUpOrSignin.xml*. 
-1. Yüklediğiniz kaydolma veya kaydolma ilkesini seçin ve **Şimdi Çalıştır** düğmesini tıklatın.
-1. Bir e-posta adresi kullanarak kaydolmalısınız.
-1. **Şimdi Kaydol** bağlantısına tıklayın.
-1. Sadakat **kimliğinizde**, 1234 yazın ve **Devam et'i**tıklatın. Bu noktada, bir doğrulama hatası iletisi almalısınız.
-1. Başka bir değere değiştirin ve **Devam et'i**tıklatın.
-1. Başvurunuza geri gönderilen `promoCode` belirteç, talebi içerir.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
+1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
+1. **Kimlik deneyimi çerçevesini**seçin.
+1. **Özel Ilkeyi karşıya yükle**' yi seçin ve ardından değiştirdiğiniz ilke dosyalarını karşıya yükleyin: *TrustFrameworkExtensions. xml*ve *signuporsign. xml*. 
+1. Karşıya yüklediğiniz kaydolma veya oturum açma ilkesini seçin ve **Şimdi Çalıştır** düğmesine tıklayın.
+1. Bir e-posta adresi kullanarak kaydolabilirsiniz.
+1. **Şimdi kaydolun** bağlantısına tıklayın.
+1. **Bağlılık programı kimliğinizle**1234 yazın ve **devam**' a tıklayın. Bu noktada, bir doğrulama hata iletisi almalısınız.
+1. Başka bir değere değiştirip **devam**' a tıklayın.
+1. Uygulamanıza geri gönderilen belirteç `promoCode` talebi içerir.
 
 ```json
 {
@@ -255,8 +255,8 @@ Promosyon kodu talebini güvenen taraf uygulamasına geri döndürmek <em> `Soci
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-API'lerinizi nasıl güvene aldığınızı öğrenmek için aşağıdaki makalelere bakın:
+API 'lerinizi güvenli hale getirme hakkında bilgi edinmek için aşağıdaki makalelere bakın:
 
-- [Walkthrough: Azure AD B2C kullanıcı yolculuğunuzdaki REST API taleplerini bir orkestrasyon adımı olarak tümleştirin](custom-policy-rest-api-claims-exchange.md)
-- [RESTful API'nizi emniyete alasınız](secure-rest-api.md)
-- [Referans: RESTful teknik profili](restful-technical-profile.md)
+- [İzlenecek yol: Azure AD B2C Kullanıcı yolculuğunda düzenleme adımı olarak REST API talep alışverişlerinde tümleştirin](custom-policy-rest-api-claims-exchange.md)
+- [Yeniden takip eden API 'nizin güvenliğini sağlama](secure-rest-api.md)
+- [Başvuru: Restuz teknik profili](restful-technical-profile.md)

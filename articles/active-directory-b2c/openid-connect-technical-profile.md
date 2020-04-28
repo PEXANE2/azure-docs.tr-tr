@@ -1,7 +1,7 @@
 ---
-title: Özel bir ilkede OpenID Connect teknik profilini tanımlama
+title: Özel ilkede bir OpenID Connect Teknik profili tanımlama
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C'de özel bir ilke de OpenID Connect teknik profilini tanımlayın.
+description: Azure Active Directory B2C bir özel ilkede OpenID Connect Teknik profili tanımlayın.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,21 +12,21 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e259a57a9cd6b24362862ffd6cb738157ca912d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80332757"
 ---
-# <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde OpenID Connect teknik profilini tanımlama
+# <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde OpenID Connect Teknik profili tanımlama
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C), [OpenID Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) iletişim kuralı kimlik sağlayıcısı için destek sağlar. OpenID Connect 1.0, OAuth 2.0'ın üstündeki kimlik katmanını tanımlar ve modern kimlik doğrulama protokollerinde en son teknolojiyi temsil eder. OpenID Connect teknik profiliyle, Azure AD gibi OpenID Connect tabanlı bir kimlik sağlayıcısıyla federate yapabilirsiniz. Bir kimlik sağlayıcısıyla federating kullanıcıların mevcut sosyal veya kurumsal kimlikleri ile oturum açmalarına olanak tanır.
+Azure Active Directory B2C (Azure AD B2C), [OpenID Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protokol kimlik sağlayıcısı için destek sağlar. OpenID Connect 1,0, OAuth 2,0 üzerinde bir kimlik katmanını tanımlar ve modern kimlik doğrulama protokollerinde bulunan resimlerin durumunu temsil eder. OpenID Connect Teknik profiliyle birlikte, OpenID Connect tabanlı bir kimlik sağlayıcısıyla (örneğin, Azure AD) federasyona bağlayabilirsiniz. Bir kimlik sağlayıcısı ile federasyona eklemek, kullanıcıların mevcut sosyal veya kurumsal kimliklerinde oturum açmasına olanak tanır.
 
 ## <a name="protocol"></a>Protokol
 
-**Protokol** öğesinin `OpenIdConnect` **Ad** özniteliğinin . Örneğin, **MSA-OIDC** teknik profili için `OpenIdConnect`protokol:
+**Protokol** öğesinin `OpenIdConnect` **Name** özniteliğinin olarak ayarlanması gerekir. Örneğin, **MSA-OıDC** Technical profile için protokol `OpenIdConnect`:
 
 ```XML
 <TechnicalProfile Id="MSA-OIDC">
@@ -37,7 +37,7 @@ Azure Active Directory B2C (Azure AD B2C), [OpenID Connect](https://openid.net/2
 
 ## <a name="input-claims"></a>Giriş talepleri
 
-**Giriş Talepleri** ve **GirişTalepleri Dönüşümleri** öğeleri gerekli değildir. Ancak, kimlik sağlayıcınıza ek parametreler göndermek isteyebilirsiniz. Aşağıdaki örnek, **domain_hint** yetkilendirme isteğine değeri `contoso.com` yle birlikte domain_hint sorgu dize parametresi ekler.
+**Inputclaim** ve **ınputclaimstransformations** öğeleri gerekli değildir. Ancak kimlik sağlayıcınıza ek parametreler göndermek isteyebilirsiniz. Aşağıdaki örnek, değerini `contoso.com` yetkilendirme isteğine **domain_hint** sorgu dizesi parametresini ekler.
 
 ```XML
 <InputClaims>
@@ -45,22 +45,22 @@ Azure Active Directory B2C (Azure AD B2C), [OpenID Connect](https://openid.net/2
 </InputClaims>
 ```
 
-## <a name="output-claims"></a>Çıktı talepleri
+## <a name="output-claims"></a>Çıkış talepleri
 
-**Çıktılar İçeriği** öğesi, OpenID Connect kimlik sağlayıcısı tarafından döndürülen taleplerin listesini içerir. İlkenizde tanımlanan talep adını kimlik sağlayıcısında tanımlanan adla eşlemeniz gerekebilir. Özniteliği ayarladığınız `DefaultValue` sürece kimlik sağlayıcısı tarafından döndürülen talepleri de ekleyebilirsiniz.
+**Outputclaim** öğesi, OpenID Connect kimlik sağlayıcısı tarafından döndürülen taleplerin bir listesini içerir. İlkenizde tanımlanan talebin adını kimlik sağlayıcısında tanımlanan adla eşlemeniz gerekebilir. `DefaultValue` Özniteliği ayarladığınız sürece, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de ekleyebilirsiniz.
 
-**OutputClaimsTransformations** öğesi, çıktı taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan **OutputClaimsTransformation** öğelerikoleksiyonunu içerebilir.
+**Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
-Aşağıdaki örnek, Microsoft Hesabı kimlik sağlayıcısı tarafından iade edilen talepleri gösterir:
+Aşağıdaki örnekte, Microsoft hesabı kimlik sağlayıcısı tarafından döndürülen talepler gösterilmektedir:
 
-- **İhraççıUserId** iddiasına eşlenen **alt** talep.
-- **DisplayName** claim'ineşe eşlenen **ad** iddiası.
-- Ad eşlemesiz **e-posta.**
+- **Issueruserıd** talebine eşlenen **Sub** talebi.
+- **DisplayName** talebine eşlenen **ad** talebi.
+- Ad eşleştirmesi olmayan **e-posta** .
 
-Teknik profil, kimlik sağlayıcısı tarafından döndürülen talepleri de döndürür:
+Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de döndürür:
 
-- Kimlik **Sağlayıcı,** kimlik sağlayıcısının adını içeren talepte bulunun.
-- **SocialIdpAuthentication** varsayılan değeri **socialIdpAuthentication**ile kimlik doğrulamaKaynak iddiası .
+- Kimlik sağlayıcısının adını içeren **IdentityProvider** talebi.
+- Varsayılan bir **Socialidpauthentication**değeri olan **authenticationsource** talebi.
 
 ```xml
 <OutputClaims>
@@ -76,46 +76,46 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülen talepleri de dö
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| client_id | Evet | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
-| IdTokenAudience | Hayır | id_token seyircisi. Belirtilirse, Azure AD B2C, kimlik sağlayıcısı tarafından döndürülen bir belirteçteki `aud` talebin IdTokenAudience meta verilerinde belirtilene eşit olup olmadığını denetler.  |
-| Meta veri | Evet | OpenID Connect kimlik sağlayıcısı yapılandırma belgesine işaret eden ve OpenID olarak bilinen yapılandırma bitiş noktası olarak da bilinen URL. URL, kiracı `{tenant}` adı ile değiştirilen ifadeyi içerebilir.  |
-| authorization_endpoint | Hayır | OpenID Connect kimlik sağlayıcısı yapılandırma yetkilendirme bitiş noktasını gösteren bir URL. authorization_endpoint meta verilerin değeri, OpenID `authorization_endpoint` iyi bilinen yapılandırma bitiş noktasında belirtilenden önce gelir. URL, kiracı `{tenant}` adı ile değiştirilen ifadeyi içerebilir. |
-| yayınlayan | Hayır | OpenID Connect kimlik sağlayıcısının benzersiz tanımlayıcısı. Veren meta verilerin değeri, OpenID `issuer` iyi bilinen yapılandırma bitiş noktasında belirtilenden önce gelir.  Belirtilirse, Azure AD B2C, kimlik sağlayıcısı tarafından döndürülen bir belirteçteki `iss` talebin veren meta verilerinde belirtilene eşit olup olmadığını denetler. |
-| Sağlayıcı Adı | Hayır | Kimlik sağlayıcısının adı.  |
-| response_types | Hayır | OpenID Connect Core 1.0 belirtimine göre yanıt türü. Olası `id_token`değerler: `code`, `token`, veya . |
-| response_mode | Hayır | Kimlik sağlayıcısının sonucu Azure AD B2C'ye geri göndermek için kullandığı yöntem. Olası `query`değerler: `form_post` , (varsayılan) veya `fragment`. |
-| scope | Hayır | OpenID Connect Core 1.0 belirtimine göre tanımlanan isteğin kapsamı. Gibi `openid`, `profile`, `email`ve . |
-| httpBinding | Hayır | Beklenen HTTP erişim belirteci ve iddia belirteç bitiş noktaları için bağlayıcı. Olası `GET` değerler: `POST`veya .  |
-| ValidTokenIssuerÖnefixes | Hayır | Azure Etkin Dizini gibi çok kiracılı bir kimlik sağlayıcısı kullanırken kiracıların her birinde oturum açmada kullanılabilecek bir anahtar. |
-| UsePolicyInRedirectUri | Hayır | Yeniden yönlendirme URI'yi yaparken bir ilke kullanıp kullanmayacağını gösterir. Uygulamanızı kimlik sağlayıcısında yapılandırdığınızda, uri yönlendirmesini belirtmeniz gerekir. URI'yi Azure AD B2C'ye yönlendiren noktalar, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`.  Belirtirseniz, `false`kullandığınız her ilke için yeniden yönlendirme URI eklemeniz gerekir. Örneğin: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
-| MarkAsFailureOnStatusCode5xx | Hayır | Http durum kodu 5xx aralığındaysa, harici bir hizmete yapılan isteğin hata olarak işaretlenip işaretlenmemesi gerektiğini gösterir. Varsayılan değer: `false`. |
-| DiscoverMetadataByKenIssuer | Hayır | OIDC meta verilerinin JWT belirtecindeki veren kullanılarak bulunup bulunmayacağını gösterir. |
-| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıktı talepleri [için, talep çözümlübir](claim-resolver-overview.md) çözümünü teknik profilde bulunup bulunmayacağını belirtir. Olası değerler: `true` `false`  , veya (varsayılan). Teknik profilde bir talep çözümleyicisi kullanmak istiyorsanız, bunu ' ya `true`göre ayarlayın. |
+| client_id | Yes | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
+| Idtokenaudience | Hayır | İd_token kitlesi. Belirtilmişse, kimlik sağlayıcısı tarafından döndürülen bir `aud` belirteçte talebin ıdtokenaudience meta verilerinde belirtilen değere eşit olup olmadığını denetler Azure AD B2C.  |
+| VERIYI | Yes | OpenID ile bilinen yapılandırma uç noktası olarak da bilinen bir OpenID Connect kimlik sağlayıcısı yapılandırma belgesine işaret eden bir URL. URL, kiracı adıyla değiştirilmiş `{tenant}` olan ifadesini içerebilir.  |
+| authorization_endpoint | Hayır | Bir OpenID Connect kimlik sağlayıcısı yapılandırma yetkilendirmesi uç noktasına işaret eden bir URL. Authorization_endpoint meta veri değeri, OpenID iyi bilinen `authorization_endpoint` yapılandırma uç noktasında belirtilen değere göre önceliklidir. URL, kiracı adıyla değiştirilmiş `{tenant}` olan ifadesini içerebilir. |
+| yayınlayan | Hayır | Bir OpenID Connect kimlik sağlayıcısının benzersiz tanımlayıcısı. Verenin meta verilerinin değeri, OpenID iyi bilinen `issuer` yapılandırma uç noktasında belirtilen değere göre önceliklidir.  Belirtilmişse, kimlik sağlayıcısı tarafından döndürülen bir `iss` belirteçte talebin, verenin meta verilerinde belirtilen değere eşit olup olmadığını denetler Azure AD B2C. |
+| Adı | Hayır | Kimlik sağlayıcısının adı.  |
+| response_types | Hayır | OpenID Connect Core 1,0 belirtimine göre yanıt türü. Olası değerler: `id_token`, `code`, veya `token`. |
+| response_mode | Hayır | Kimlik sağlayıcısının sonucu Azure AD B2C geri göndermek için kullandığı yöntem. Olası değerler: `query`, `form_post` (varsayılan) veya `fragment`. |
+| scope | Hayır | OpenID Connect Core 1,0 belirtimine göre tanımlanan isteğin kapsamı. `openid`, `profile`Ve `email`gibi. |
+| HttpBinding | Hayır | Erişim belirtecine ve talep belirteci uç noktalarına beklenen HTTP bağlaması. Olası değerler: `GET` veya `POST`.  |
+| Validtokenıssueröneklerini | Hayır | Azure Active Directory gibi çok kiracılı bir kimlik sağlayıcısı kullanırken kiracıların her birinde oturum açmak için kullanılabilen bir anahtar. |
+| Usepolicınredirecturi | Hayır | Yeniden yönlendirme URI 'SI oluşturulurken bir ilke kullanılıp kullanılmayacağını belirtir. Uygulamanızı kimlik sağlayıcısında yapılandırdığınızda, yeniden yönlendirme URI 'sini belirtmeniz gerekir. Yeniden yönlendirme URI 'SI Azure AD B2C, ' `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`a işaret eder.  Belirtirseniz `false`, kullandığınız her ilke için bir yeniden yönlendirme URI 'si eklemeniz gerekir. Örneğin: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
+| MarkAsFailureOnStatusCode5xx | Hayır | Http durum kodu 5xx aralığalıyorsa, bir dış hizmete yönelik isteğin hata olarak işaretlenip işaretlenmeyeceğini gösterir. Varsayılan değer: `false`. |
+| Discovermetadatabyıtokenıssuer | Hayır | OıDC meta verilerinin JWT belirtecindeki veren kullanılarak bulunup bulunmadığını gösterir. |
+| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true`, veya `false`  (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak `true`ayarlayın. |
 
 ### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
  
-Aşağıdaki ayarlar, hata üzerine görüntülenen hata iletisini yapılandırmak için kullanılabilir. Meta veriler OpenID Connect teknik profilinde yapılandırılmalıdır. Hata iletileri [yerelleştirilebilir.](localization-string-ids.md#sign-up-or-sign-in-error-messages)
+Hata durumunda görüntülenecek hata iletisini yapılandırmak için aşağıdaki ayarlar kullanılabilir. Meta verilerin OpenID Connect Teknik profilinde yapılandırılması gerekir. Hata iletileri [yerelleştirilebilecek](localization-string-ids.md#sign-up-or-sign-in-error-messages).
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| UserMessageIfClaimsPrincipalDoesExist | Hayır | Sağlanan kullanıcı adı ile bir hesap dizinde bulunamadıysa kullanıcıya görüntülenecek ileti. |
-| UserMessageIfGeçersizŞifre | Hayır | Parola yanlışsa kullanıcıya görüntülenecek ileti. |
+| UserMessageIfClaimsPrincipalDoesNotExist | Hayır | Dizinde, girilen kullanıcı adına sahip bir hesap bulunmazsa kullanıcıya görüntülenecek ileti. |
+| Usermessageifınvalidpassword | Hayır | Parola yanlışsa kullanıcıya görüntülenecek ileti. |
 | UserMessageIfOldPasswordUsed| Hayır |  Eski bir parola kullanılıyorsa kullanıcıya görüntülenecek ileti.|
 
-## <a name="cryptographic-keys"></a>Şifreleme tuşları
+## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
-**CryptographicKeys** öğesi aşağıdaki özniteliği içerir:
+**Cryptographickeys** öğesi aşağıdaki özniteliği içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| client_secret | Evet | Kimlik sağlayıcı uygulamasının istemci sırrı. Şifreleme anahtarı yalnızca **response_types** meta veri sayar. `code` Bu durumda, Azure AD B2C, yetkilendirme kodunu bir erişim jetonuyla değiştirmek için başka bir arama yapar. Meta veriler ayarlanmışsa, `id_token` şifreleme anahtarını atlayabilirsiniz.  |
+| client_secret | Yes | Kimlik sağlayıcısı uygulamasının istemci gizli anahtarı. Şifreleme anahtarı yalnızca **response_types** meta verileri olarak `code`ayarlanmışsa gereklidir. Bu durumda Azure AD B2C, bir erişim belirtecinin yetkilendirme kodunu Exchange için başka bir çağrı yapar. Meta veriler olarak `id_token` ayarlandıysa, şifreleme anahtarını atlayabilirsiniz.  |
 
-## <a name="redirect-uri"></a>Uri'yi Yönlendirme
+## <a name="redirect-uri"></a>Yeniden yönlendirme URI 'Si
 
-Kimlik sağlayıcınızın yeniden yönlendirme URI'sini yapılandırdığınızda, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`girin. Kiracınızın adını `{your-tenant-name}` değiştirdiğinizden emin olun. Yeniden yönlendirme URI tüm küçük olması gerekir.
+Kimlik sağlayıcınızın yeniden yönlendirme URI 'sini yapılandırdığınızda, girin `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`. Öğesini kiracınızın adıyla `{your-tenant-name}` değiştirdiğinizden emin olun. Yeniden yönlendirme URI 'sinin tamamen küçük harfle olması gerekir.
 
 Örnekler:
 
-- [Özel ilkeler kullanarak microsoft hesabını (MSA) kimlik sağlayıcısı olarak ekleme](identity-provider-microsoft-account-custom.md)
+- [Özel ilkeler kullanarak bir kimlik sağlayıcısı olarak Microsoft hesabı (MSA) ekleme](identity-provider-microsoft-account-custom.md)
 - [Azure AD hesaplarını kullanarak oturum açın](identity-provider-azure-ad-single-tenant-custom.md)
-- [Kullanıcıların özel ilkeler kullanarak çok kiracılı bir Azure AD kimlik sağlayıcısında oturum açmalarına izin verme](identity-provider-azure-ad-multi-tenant-custom.md)
+- [Kullanıcıların özel ilkeleri kullanarak çok kiracılı bir Azure AD kimlik sağlayıcısında oturum açmalarına izin ver](identity-provider-azure-ad-multi-tenant-custom.md)

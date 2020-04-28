@@ -1,6 +1,6 @@
 ---
-title: Daemon uygulamasından web API'sını arayın - Microsoft kimlik platformu | Azure
-description: Web API'lerini çağıran bir daemon uygulaması oluşturmayı öğrenin
+title: Bir Daemon uygulamasının Web API 'sini çağırma-Microsoft Identity platform | Mavisi
+description: Web API 'Lerini çağıran bir Daemon uygulaması derlemeyi öğrenin
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e440628526dada7655cc71f63fc9fff006cc5ef5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885455"
 ---
-# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Web API'ları çağıran Daemon uygulaması - uygulamadan bir web API'sini arayın
+# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Web API 'Lerini çağıran Daemon uygulaması-uygulamadan bir Web API 'SI çağırma
 
-.NET daemon uygulamaları web API'sını arayabilir. .NET daemon uygulamaları da birkaç önceden onaylanmış web API'si arayabilirsiniz.
+.NET Daemon uygulamaları, bir Web API 'SI çağırabilir. .NET Daemon uygulamaları, önceden onaylanmış birkaç Web API 'Sini de çağırabilir.
 
-## <a name="calling-a-web-api-from-a-daemon-application"></a>Daemon uygulamasından web API'si çağırma
+## <a name="calling-a-web-api-from-a-daemon-application"></a>Bir Daemon uygulamasından Web API 'SI çağırma
 
-API çağırmak için belirteci şu şekilde kullanabilirsiniz:
+Bir API 'yi çağırmak için belirtecin nasıl kullanılacağı aşağıda verilmiştir:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -61,25 +61,25 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ---
 
-## <a name="calling-several-apis"></a>Birkaç API'yi arama
+## <a name="calling-several-apis"></a>Çeşitli API 'Ler çağırma
 
-Daemon uygulamaları için, aradığınız web API'leri önceden onaylanması gerekir. Daemon uygulamalarında artımlı onay yoktur. (Kullanıcı etkileşimi yoktur.) Kiracı yöneticinin uygulama ve tüm API izinleri için önceden onay vermesi gerekir. Birkaç API çağırmak istiyorsanız, her kaynak için bir belirteç edinmeniz gerekir, her arama. `AcquireTokenForClient` MSAL, gereksiz servis çağrılarını önlemek için uygulama belirteci önbelleğini kullanır.
+Daemon uygulamaları için, çağırdığınız Web API 'Lerinin önceden onaylanmış olması gerekir. Daemon uygulamalarıyla artımlı izin yoktur. (Kullanıcı etkileşimi yoktur.) Kiracı yöneticisinin, uygulama ve tüm API izinleri için önceden onay sağlaması gerekir. Çeşitli API 'Ler çağırmak isterseniz her bir kaynak için her seferinde bir belirteç edinmeniz gerekir `AcquireTokenForClient`. MSAL, gereksiz hizmet çağrılarını önlemek için uygulama belirteci önbelleğini kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Daemon uygulaması - üretime geçin](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
+> [Daemon uygulaması-üretime taşı](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Daemon uygulaması - üretime geçin](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
+> [Daemon uygulaması-üretime taşı](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Daemon uygulaması - üretime geçin](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
+> [Daemon uygulaması-üretime taşı](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
 
 ---

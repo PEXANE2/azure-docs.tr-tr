@@ -1,6 +1,6 @@
 ---
-title: Java'dan Sıra depolama nasıl kullanılır - Azure Depolama
-description: Kuyrukoluşturmak ve silmek için Kuyruk depolama alanını nasıl kullanacağınızı ve Java için Azure Depolama istemci kitaplığıyla ileti eklemeyi, almayı ve silmeyi öğrenin.
+title: Java-Azure Storage 'da kuyruk depolama 'yı kullanma
+description: Kuyruk depolama 'yı kullanarak kuyruklar oluşturup silme ve Java için Azure Storage istemci kitaplığı ile ileti ekleme, alma ve silme hakkında bilgi edinin.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/08/2016
@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.openlocfilehash: 7658b8541e7a79a5e547a6649b35681446e34b0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80067140"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Java’dan Kuyruk depolama kullanma
@@ -21,7 +21,7 @@ ms.locfileid: "80067140"
 
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
-Bu kılavuz, Azure Kuyruk depolama hizmetini kullanarak sık karşılaşılan senaryoları nasıl gerçekleştireceğinizi gösterir. Örnekler Java dilinde yazılır ve [Java için Azure Depolama SDK’sı][Azure Storage SDK for Java] kullanır. Kapsanan senaryolar arasında kuyruk iletileri **ekleme,** **gözetleme,** **alma**ve **silme** nin yanı sıra kuyruk **oluşturma** ve **silme** yer alır. Kuyruklar hakkında daha fazla bilgi için [Sonraki adımlar](#next-steps) bölümüne bakın.
+Bu kılavuzda, Azure kuyruk depolama hizmetini kullanarak genel senaryoları nasıl gerçekleştireceğiniz gösterilmektedir. Örnekler Java dilinde yazılır ve [Java için Azure Depolama SDK’sı][Azure Storage SDK for Java] kullanır. Kapsanan senaryolar sıra iletilerini **ekleme**, göz **atma**, **alma**ve **silme** , Ayrıca kuyruk **oluşturma** ve **silme** içerir. Kuyruklar hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
 
 > [!NOTE]
 > Android cihazlarda Azure Depolama kullanan geliştiriciler için bir SDK mevcuttur. Daha fazla bilgi için bkz. [Android için Azure Depolama SDK’sı][Azure Storage SDK for Android].
@@ -32,13 +32,13 @@ Bu kılavuz, Azure Kuyruk depolama hizmetini kullanarak sık karşılaşılan se
 
 ## <a name="create-a-java-application"></a>Java uygulaması oluşturma
 
-Bu kılavuzda, bir Java uygulaması içinde yerel olarak veya Azure'daki bir web uygulaması içinde çalışan kodda çalıştırılabilen depolama özelliklerini kullanırsınız.
+Bu kılavuzda, yerel olarak bir Java uygulaması içinde veya Azure 'da bir Web uygulaması içinde çalışan kodda çalıştırılabilen depolama özelliklerini kullanacaksınız.
 
-Bunu yapmak için Java Geliştirme Kiti'ni (JDK) yüklemeniz ve Azure aboneliğinizde bir Azure depolama hesabı oluşturmanız gerekir. Bunu yaptıktan sonra, geliştirme sisteminizin GitHub'daki Java deposu için Azure Depolama [SDK'sında][Azure Storage SDK for Java] listelenen minimum gereksinimleri ve bağımlılıkları karşıladığını doğrulamanız gerekir. Sisteminiz bu gereksinimleri karşılıyorsa, sisteminizdeki Java için Azure Depolama Kitaplıklarını indirme ve yükleme yönergelerini bu depodan takip edebilirsiniz. Bu görevleri tamamladıktan sonra, bu makaledeki örnekleri kullanan bir Java uygulaması oluşturabilirsiniz.
+Bunu yapmak için, Java Development Kit (JDK) yüklemeniz ve Azure aboneliğinizde bir Azure depolama hesabı oluşturmanız gerekir. Bu işlemi tamamladıktan sonra, geliştirme sisteminizin GitHub 'daki [Java Için Azure depolama SDK 'sı][Azure Storage SDK for Java] deposunda listelenen en düşük gereksinimleri ve bağımlılıkları karşıladığını doğrulamanız gerekir. Sisteminiz bu gereksinimleri karşılıyorsa, bu depodan sisteminizde Java için Azure depolama kitaplıklarını indirme ve yükleme yönergelerini takip edebilirsiniz. Bu görevleri tamamladıktan sonra, bu makaledeki örnekleri kullanan bir Java uygulaması oluşturabileceksiniz.
 
-## <a name="configure-your-application-to-access-queue-storage"></a>Uygulamanızı sıra depolamaalanına erişmek için yapılandırın
+## <a name="configure-your-application-to-access-queue-storage"></a>Uygulamanızı kuyruk depolamaya erişecek şekilde yapılandırma
 
-Kuyruklara erişmek için Azure depolama API'lerini kullanmak istediğiniz Java dosyasının en üstüne aşağıdaki içe aktarma ekstrelerini ekleyin:
+Aşağıdaki Import deyimlerini, kuyruklara erişmek için Azure depolama API 'Lerini kullanmak istediğiniz Java dosyasının en üstüne ekleyin:
 
 ```java
 // Include the following imports to use queue APIs.
@@ -58,7 +58,7 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-Microsoft Azure'da bir rol içinde çalışan bir uygulamada, bu dize hizmet yapılandırma dosyasında depolanabilir, *ServiceConfiguration.cscfg*, ve **RoleEnvironment.getConfigurationSettings** yöntemine yapılan bir çağrıyla erişilebilir. Yapılandırma dosyasındaki *StorageConnectionString* adlı bir **Ayar** öğesinden bağlantı dizesini alma örneği aşağıda verilmiştir:
+Microsoft Azure bir rol içinde çalışan bir uygulamada, bu dize hizmet yapılandırma dosyasında *ServiceConfiguration. cscfg*' de depolanabilir ve **Roleenvironment. getconfigurationsettings** yöntemi çağrısıyla erişilebilir. Yapılandırma dosyasındaki *StorageConnectionString* adlı bir **Ayar** öğesinden bağlantı dizesini alma örneği aşağıda verilmiştir:
 
 ```java
 // Retrieve storage account from connection-string.
@@ -68,10 +68,10 @@ String storageConnectionString =
 
 Aşağıdaki örnekler, depolama bağlantı dizesini almak için bu iki yöntemden birini kullandığınızı varsayar.
 
-## <a name="how-to-create-a-queue"></a>Nasıl yapılı: Sıra oluşturma
-**CloudQueueClient** nesnesi, kuyruklar için başvuru nesneleri almanızı sağlar. Aşağıdaki kod bir **CloudQueueClient** nesnesi oluşturur. (Not: **CloudStorageAccount** nesneleri oluşturmanın ek yolları vardır; daha fazla bilgi için [Azure Depolama İstemci SDK Başvurusu'nda] **CloudStorageAccount'a** bakın .)
+## <a name="how-to-create-a-queue"></a>Nasıl yapılır: kuyruk oluşturma
+**Cloudqueueclient** nesnesi, kuyruklar için başvuru nesneleri almanızı sağlar. Aşağıdaki kod bir **Cloudqueueclient** nesnesi oluşturur. (Örneğin, **cloudstorageaccount** nesneleri oluşturmanın başka yolları vardır; daha fazla bilgi için bkz. [Azure Storage Client SDK başvurusunda] **cloudstorageaccount** .)
 
-Kullanmak istediğiniz kuyruğa başvuru almak için **CloudQueueClient** nesnesini kullanın. Yoksa sırayı oluşturabilirsiniz.
+Kullanmak istediğiniz kuyruğa bir başvuru almak için **Cloudqueueclient** nesnesini kullanın. Sıra yoksa kuyruğu oluşturabilirsiniz.
 
 ```java
 try
@@ -96,8 +96,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-add-a-message-to-a-queue"></a>Nasıl yapilir: Kuyruğa ileti ekleme
-Varolan bir sıraya bir ileti yerleştirmek için ilk olarak yeni bir **CloudQueueMessage** oluşturun. Ardından **addMessage** yöntemini arayın. **CloudQueueMessage** bir dizeden (UTF-8 biçiminde) veya bir bayt dizisinden oluşturulabilir. Burada bir sıra oluşturan kod (yoksa) ve "Merhaba, Dünya" iletisi ekler.
+## <a name="how-to-add-a-message-to-a-queue"></a>Nasıl yapılır: bir kuyruğa ileti ekleme
+Varolan bir sıraya bir ileti yerleştirmek için ilk olarak yeni bir **CloudQueueMessage** oluşturun. Sonra **AddMessage** yöntemini çağırın. **CloudQueueMessage** bir dizeden (UTF-8 biçiminde) veya bir bayt dizisinden oluşturulabilir. Burada bir sıra (yoksa) oluşturan ve "Hello, World" iletisini ekleyen kod verilmiştir.
 
 ```java
 try
@@ -126,8 +126,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Nasıl yapılsın: Bir sonraki iletiye göz atın
-**PeekMessage'ı**arayarak sıranın önündeki iletiye göz atabilirsiniz.
+## <a name="how-to-peek-at-the-next-message"></a>Nasıl yapılır: bir sonraki iletiye göz atma
+**PeekMessage**çağırarak bir kuyruğun ön tarafındaki iletiye göz atmayı sağlayabilirsiniz.
 
 ```java
 try
@@ -158,10 +158,10 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Nasıl yapilir: Sıralı iletinin içeriğini değiştirme
-Kuyrukta yer alan bir iletinin içeriğini değiştirebilirsiniz. Eğer ileti bir iş görevini temsil ediyorsa, bu özelliği kullanarak iş görevinin durumunu güncelleştirebilirsiniz. Aşağıdaki kod kuyruk iletisini yeni içeriklerle güncelleştirir ve görünürlük zaman aşımını 60 saniye daha uzatır. Görünürlük zaman anına kadar genişletmek, iletiyle ilişkili çalışma durumunu kaydeder ve istemciye ileti üzerinde çalışmaya devam etmesi için bir dakika daha verir. Bir işleme adımı donanım veya yazılım arızasından dolayı başarısız olursa baştan başlamanıza gerek kalmadan kuyruk iletilerindeki çok adımlı iş akışlarını izlemek için bu yöntemi kullanabilirsiniz. Genellikle bir yeniden deneme sayacı tutmanı gerekir ve bir ileti *n* seferden daha fazla yeniden denenirse, silebilirsiniz. Bu, her işlendiğinde bir uygulama hatası tetikleyen bir iletiye karşı koruma sağlar.
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Nasıl yapılır: kuyruğa alınan iletinin içeriğini değiştirme
+Kuyrukta yer alan bir iletinin içeriğini değiştirebilirsiniz. Eğer ileti bir iş görevini temsil ediyorsa, bu özelliği kullanarak iş görevinin durumunu güncelleştirebilirsiniz. Aşağıdaki kod kuyruk iletisini yeni içeriklerle güncelleştirir ve görünürlük zaman aşımını 60 saniye daha uzatır. Görünürlük zaman aşımını genişletmek iletiyle ilişkili çalışmanın durumunu kaydeder ve istemciye ileti üzerinde çalışmaya devam etmesi için başka bir dakika verir. Bir işleme adımı donanım veya yazılım arızasından dolayı başarısız olursa baştan başlamanıza gerek kalmadan kuyruk iletilerindeki çok adımlı iş akışlarını izlemek için bu yöntemi kullanabilirsiniz. Genellikle bir yeniden deneme sayacı tutmanı gerekir ve bir ileti *n* seferden daha fazla yeniden denenirse, silebilirsiniz. Bu, her işlendiğinde bir uygulama hatası tetikleyen bir iletiye karşı koruma sağlar.
 
-Aşağıdaki kod örneği ileti kuyruğunda arama lar, içerik için "Merhaba, Dünya" ile eşleşen ilk iletiyi bulur, ardından ileti içeriğini ve çıkışları değiştirir.
+Aşağıdaki kod örneği, ileti sırasını arar, içerik için "Hello, World" ile eşleşen ilk iletiyi bulur, ardından ileti içeriğini değiştirir ve çıkar.
 
 ```java
 try
@@ -204,7 +204,7 @@ catch (Exception e)
 }
 ```
 
-Alternatif olarak, aşağıdaki kod örneği yalnızca kuyruktaki ilk görünür iletiyi güncelleştirir.
+Alternatif olarak, aşağıdaki kod örneği kuyruktaki yalnızca ilk görünür iletiyi günceller.
 
 ```java
 try
@@ -241,8 +241,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Nasıl yapılır: Sıra uzunluğunu alma
-Bir kuyruktaki ileti sayısı ile ilgili bir tahmin alabilirsiniz. **DownloadAttributes** yöntemi, kuyrukta kaç ileti olduğunu saymak da dahil olmak üzere çeşitli geçerli değerler için Sıra hizmeti ister. Sıra hizmeti isteğinize yanıt verdikten sonra iletiler eklenebileceği veya kaldırılabildiği için sayım yalnızca yaklaşık olarak dır. **getApproximateMessageCount** yöntemi, Çağrı'nın **GelenE'yi indirmesi**için alınan son değeri Sıra hizmetini aramadan döndürür.
+## <a name="how-to-get-the-queue-length"></a>Nasıl yapılır: kuyruk uzunluğunu alma
+Bir kuyruktaki ileti sayısı ile ilgili bir tahmin alabilirsiniz. **Downloadattributes** yöntemi, bir kuyrukta kaç ileti olduğunu gösteren bir sayı dahil olmak üzere birkaç geçerli değer için kuyruk hizmeti ister. Bu sayı yalnızca, Kuyruk hizmeti isteğiniz yanıt verdiğinde iletiler eklenebildiğinden veya kaldırılacağından yaklaşık olur. **Getapproximatemessagecount** metodu, kuyruk hizmeti çağırılmadan **downloadattributes**çağrısının aldığı son değeri döndürür.
 
 ```java
 try
@@ -273,8 +273,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>Nasıl yapılsın: Bir sonraki iletide sırayı silme
-Kodunuz iki adımda bir kuyruktaki bir iletiyi sıradan uzaklar. **retrieveMessage'ı**aradiğinizde, bir sonraki iletiyi kuyrukta alırsınız. **retrieveMessage'dan** döndürülen ileti, bu kuyruktan gelen diğer kod okuma iletileri için görünmez olur. Varsayılan olarak bu ileti 30 saniye görünmez kalır. İletiyi kuyruktan kaldırmayı bitirmek için **deleteMessage'ı**da aramanız gerekir. Bir iletinin iki adımlı kaldırılma süreci, donanım veya yazılım arızasından dolayı kodunuzun bir iletiyi işleyememesi durumunda kodunuzun başka bir örneğinin aynı iletiyi alıp yeniden denemesini sağlar. Kodunuz ileti işlendikten hemen sonra **deleteMessage'ı** çağırır.
+## <a name="how-to-dequeue-the-next-message"></a>Nasıl yapılır: sonraki iletiyi sıradan çıkarma
+Kodunuz, iki adımda bir kuyruktan bir ileti sırasını kaldırır. **Retrievemessage**çağırdığınızda bir kuyruktaki sonraki iletiyi alırsınız. **Retrievemessage** 'ten döndürülen bir ileti, bu kuyruktan gelen diğer kod okuma iletileri için görünmez hale gelir. Varsayılan olarak bu ileti 30 saniye görünmez kalır. İletiyi kuyruktan kaldırmayı tamamlaması için, **deleteMessage**' ı da çağırmanız gerekir. Bir iletinin iki adımlı kaldırılma süreci, donanım veya yazılım arızasından dolayı kodunuzun bir iletiyi işleyememesi durumunda kodunuzun başka bir örneğinin aynı iletiyi alıp yeniden denemesini sağlar. Kodunuz, ileti işlendikten hemen sonra **deleteMessage** ' i çağırır.
 
 ```java
 try
@@ -305,10 +305,10 @@ catch (Exception e)
 }
 ```
 
-## <a name="additional-options-for-dequeuing-messages"></a>İletileri sıraya alma için ek seçenekler
+## <a name="additional-options-for-dequeuing-messages"></a>Dequeuing iletileri için ek seçenekler
 İletilerin bir kuyruktan alınma şeklini iki yöntemle özelleştirebilirsiniz. İlk olarak toplu iletiler alabilirsiniz (en fazla 32). İkinci olarak daha uzun veya daha kısa bir görünmezlik süresi ayarlayarak kodunuzun her iletiyi tamamen işlemesi için daha az veya daha fazla zaman tanıyabilirsiniz.
 
-Aşağıdaki kod örneği, tek bir aramada 20 ileti almak için **retrieveMessages** yöntemini kullanır. Daha sonra her iletiyi **for** döngüsü kullanarak işler. Ayrıca, görünmezlik zaman anına her ileti için beş dakika (300 saniye) olarak ayarlar. Tüm iletiler için beş dakika aynı anda başlar, bu nedenle **İletileri alma**çağrısından bu yana beş dakika geçtiğinde, silinmemiş iletiler yeniden görünür hale gelir.
+Aşağıdaki kod örneği, tek bir çağrıda 20 ileti almak için **retrievemessages** yöntemini kullanır. Sonra her iletiyi bir **for** döngüsü kullanarak işler. Ayrıca, her ileti için geçersiz kılma zaman aşımını beş dakikaya (300 saniye) ayarlar. Beş dakika aynı anda tüm iletiler için başlar. bu nedenle, **retrievemessages**çağrısından bu yana beş dakika geçtiğinde, silinmeyen tüm iletiler yeniden görünür hale gelir.
 
 ```java
 try
@@ -337,8 +337,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-list-the-queues"></a>Nasıl yapılı: Kuyrukları listele etme
-Geçerli kuyrukların listesini almak için **CloudQueueClient.listQueues()** yöntemini arayabilirsiniz ve bu yöntem **CloudQueue** nesnelerinden oluşan bir koleksiyon döndürecek.
+## <a name="how-to-list-the-queues"></a>Nasıl yapılır: kuyrukları listeleme
+Geçerli sıraların bir listesini almak için **Cloudqueueclient. listQueues ()** yöntemini çağırın ve bu, **cloudqueue** nesnelerinin bir koleksiyonunu döndürür.
 
 ```java
 try
@@ -365,8 +365,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-delete-a-queue"></a>Nasıl yapılı: Sırayı silme
-Bir kuyruğ ve içinde bulunan tüm iletileri silmek için **CloudQueue** nesnesindeki **deleteIfExists** yöntemini arayın.
+## <a name="how-to-delete-a-queue"></a>Nasıl yapılır: kuyruğu silme
+Bir kuyruğu ve içerdiği tüm iletileri silmek için **Cloudqueue** nesnesinde **deleteifexists** yöntemini çağırın.
 
 ```java
 try
@@ -392,7 +392,7 @@ catch (Exception e)
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık sıra depolamanın temellerini öğrendiğiniz için, daha karmaşık depolama görevleri hakkında bilgi edinmek için bu bağlantıları izleyin.
+Sıra depolamanın temellerini öğrendiğinize göre, daha karmaşık depolama görevleri hakkında bilgi edinmek için bu bağlantıları izleyin.
 
 * [Java için Azure Depolama SDK'sı][Azure Storage SDK for Java]
 * [Azure Depolama İstemcisi SDK Başvurusu][Azure Storage Client SDK Reference]

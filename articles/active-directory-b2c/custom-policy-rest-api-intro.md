@@ -1,7 +1,7 @@
 ---
-title: REST API, B2C özel politikasındaki değişimleri talep ediyor
+title: B2C özel ilkesinde talep değişimlerinin REST API
 titleSuffix: Azure AD B2C
-description: RESTful hizmetleriyle etkileşimedebilen bir Azure AD B2C kullanıcı yolculuğu oluşturmaya giriş.
+description: Yeniden çalışan hizmetlerle etkileşim kuran Azure AD B2C Kullanıcı yolculuğu oluşturmaya giriş.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,71 +12,71 @@ ms.date: 03/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6a6cc8e5931f3e29c242f51a6e062441953228ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80337421"
 ---
-# <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API talep alışverişini Azure AD B2C özel politikanızda tümleştirin
+# <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkenizde REST API talep alışverişlerini tümleştirin
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C 'nin (Azure AD B2C) altında yatan Kimlik Deneyimi Çerçevesi, kullanıcı yolculuğu içinde YENIDEN Kullanılabilir API'lerle tümleşebilir. Bu makalede, [restful teknik profili](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster)kullanarak bir RESTful hizmeti ile etkileşim edebilen bir kullanıcı yolculuğu oluşturmak için nasıl gösterir.
+Azure Active Directory B2C (Azure AD B2C) olan kimlik deneyimi çerçevesi, Kullanıcı yolculuğu içindeki yeniden kullanılabilir API 'lerle tümleştirilebilir. Bu makalede, daha fazla [Teknik profil](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster)kullanarak bir rehirsiz hizmetle etkileşim kuran bir Kullanıcı yolculuğu nasıl oluşturacağınız gösterilmektedir.
 
-Azure AD B2C'yi kullanarak, kendi RESTful hizmetinizi arayarak kullanıcı yolculuğuna kendi iş mantığınızı ekleyebilirsiniz. Kimlik Deneyimi Çerçevesi, talep alışverişinde bulunmak için restful hizmetinizden veri gönderebilir ve alabilir. Örneğin, şunları yapabilirsiniz:
+Azure AD B2C kullanarak, kendi iş mantığınızı Kullanıcı yolculuğuna ekleyerek kendi Reişsiz hizmetinizi ekleyebilirsiniz. Kimlik deneyimi çerçevesi, talepler alışverişi için yeniden elde edilebilir hizmetten veri gönderip alabilir. Örneğin, şunları yapabilirsiniz:
 
-- **Kullanıcı giriş verilerini doğrulayın.** Örneğin, kullanıcı tarafından sağlanan e-posta adresinin müşterinizin veritabanında olduğunu doğrulayabilir ve değilse bir hata sunabilirsiniz.
-- **İşlem talepleri**. Bir kullanıcı ilk adını tüm küçük veya büyük harflerle girerse, REST API'niz adı yalnızca ilk harfle biçimlendirebilir ve Azure AD B2C'ye döndürebilir.
-- **Kurumsal iş yeri uygulamalarıyla daha fazla entegre ederek kullanıcı verilerini zenginleştirin.** RESTful hizmetiniz kullanıcının e-posta adresini alabilir, müşterinin veritabanını sorgulayabilir ve kullanıcının sadakat numarasını Azure AD B2C'ye döndürebilir. Daha sonra iade talepleri kullanıcının Azure REKLAM hesabında depolanabilir, sonraki düzenleme adımlarında değerlendirilebilir veya erişim belirtecine dahil edilebilir.
-- **Özel iş mantığı çalıştırın.** Anında iletme bildirimleri gönderebilir, şirket veritabanlarını güncelleştirebilir, kullanıcı geçiş işlemini çalıştırabilir, izinleri yönetebilir, veritabanlarını denetleyebilir ve diğer iş akışlarını gerçekleştirebilirsiniz.
+- **Kullanıcı giriş verilerini doğrulayın**. Örneğin, Kullanıcı tarafından girilen e-posta adresinin müşterinizin veritabanında var olduğunu ve bir hata sunkullanılmadığını doğrulayabilirsiniz.
+- **Talep işleme**. Bir Kullanıcı ilk adını küçük harfle veya tüm büyük harflerde girerse, REST API adı yalnızca ilk harfi büyük harfle biçimlendirebilir ve Azure AD B2C olarak döndürebilir.
+- **Şirket iş kolu uygulamalarıyla daha fazla tümleştirerek Kullanıcı verilerini zenginleştirin**. Yeniden deneme hizmetiniz, kullanıcının e-posta adresini alabilir, müşterinin veritabanını sorgulayabilir ve Azure AD B2C için kullanıcının bağlılık programı numarasını döndürebilir. Ardından, dönüş talepleri kullanıcının Azure AD hesabında depolanabilir, sonraki düzenleme adımlarında değerlendirilir veya erişim belirtecine dahil edilir.
+- **Özel iş mantığını çalıştırın**. Anında iletme bildirimleri gönderebilir, kurumsal veritabanlarını güncelleştirebilir, bir kullanıcı geçiş işlemi çalıştırabilir, izinleri yönetebilir, veritabanlarını denetleyebilir ve diğer iş akışlarını gerçekleştirebilirsiniz.
 
-![RESTful hizmet talep değişimi diyagramı](media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
+![Yeniden takip eden bir hizmet talebi değişimi diyagramı](media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
 
-## <a name="calling-a-restful-service"></a>RESTful hizmeti arama
+## <a name="calling-a-restful-service"></a>Yeniden bir hizmet çağırma
 
-Etkileşim, REST API talepleri ile Azure AD B2C arasında bilgi alışverişi taleplerini içerir. RESTful hizmetleriyle tümleştirmeyi aşağıdaki yollarla tasarlayabilirsiniz:
+Etkileşim, REST API talepler ve Azure AD B2C arasında bilgi talebi alışverişi içerir. Aşağıdaki yollarla, yeniden kullanılabilen hizmetlerle tümleştirmeyi tasarlayabilirsiniz:
 
-- **Doğrulama teknik profili**. RESTful hizmetine çağrı, belirtilen kendi kendini ileri [süren teknik profilin](self-asserted-technical-profile.md) [doğrulama teknik profili](validation-technical-profile.md) veya bir ekran [denetiminin](display-controls.md) [doğrulama ekran denetimi](display-control-verification.md) içinde gerçekleşir. Doğrulama teknik profili, kullanıcı yolculuğu ilerlemeden önce kullanıcı tarafından sağlanan verileri doğrular. Doğrulama teknik profili ile şunları yapabilirsiniz:
+- **Doğrulama teknik profili**. Yeniden gerçekleşen hizmete yapılan çağrı, belirtilen [otomatik olarak onaylanan teknik profilin](self-asserted-technical-profile.md)bir [doğrulama teknik profilinde](validation-technical-profile.md) veya bir [görüntü denetiminin](display-controls.md) [doğrulama görüntüleme denetiminden](display-control-verification.md) oluşur. Doğrulama teknik profili, Kullanıcı yolculuğu ileründen önce Kullanıcı tarafından belirtilen verileri doğrular. Doğrulama teknik profiliyle şunları yapabilirsiniz:
 
-  - İddiaları REST API'nize gönderin.
-  - Talepleri doğrulayın ve kullanıcıya görüntülenen özel hata iletileri atın.
-  - REST API'deki talepleri sonraki orkestrasyon adımlarına geri gönderin.
+  - Talepler REST API gönderin.
+  - Talepleri doğrulayın ve kullanıcıya görüntülenen özel hata iletileri oluşturun.
+  - Talepleri REST API sonraki düzenleme adımlarına geri gönderin.
 
-- **İddia değişimi**. Doğrudan talep değişimi, doğrudan bir [kullanıcı yolculuğunun](userjourneys.md)bir orkestrasyon adımından BIR REST API teknik profilini arayarak yapılandırılabilir. Bu tanım aşağıdakiile sınırlıdır:
+- **Talep değişimi**. Doğrudan talep alışverişi, bir [Kullanıcı yolculuğunun](userjourneys.md)düzenleme adımından doğrudan bir REST API teknik profil çağırarak yapılandırılabilir. Bu tanım şu şekilde sınırlıdır:
 
-  - İddiaları REST API'nize gönderin.
-  - Talepleri doğrulayın ve uygulamaya döndürülen özel hata iletileri atın.
-  - REST API'deki talepleri sonraki orkestrasyon adımlarına geri gönderin.
+  - Talepler REST API gönderin.
+  - Talepleri doğrulayın ve uygulamaya döndürülen özel hata iletilerini oluşturun.
+  - Talepleri REST API sonraki düzenleme adımlarına geri gönderin.
 
-Özel bir ilke ile tanımlanan kullanıcı yolculuğundaki herhangi bir adımda bir REST API çağrısı ekleyebilirsiniz. Örneğin, REST API'yi arayabilirsiniz:
+Özel bir ilke tarafından tanımlanan Kullanıcı yolculuğu içindeki herhangi bir adımda REST API çağrısı ekleyebilirsiniz. Örneğin, bir REST API çağırabilirsiniz:
 
-- Oturum açma sırasında, Azure AD B2C kimlik bilgilerini doğrulamadan hemen önce.
-- Oturum açmadan hemen sonra.
-- Azure AD B2C dizinde yeni bir hesap oluşturmadan önce.
-- Azure AD B2C dizinde yeni bir hesap oluşturduktan sonra.
-- Azure AD B2C erişim jetonu vermeden önce.
+- Oturum açma sırasında, Azure AD B2C kimlik bilgilerini doğrulamak yeterlidir.
+- Oturum açma işleminden hemen sonra.
+- Azure AD B2C önce, dizinde yeni bir hesap oluşturmadan önce.
+- Azure AD B2C sonra dizinde yeni bir hesap oluşturur.
+- Azure AD B2C önce, bir erişim belirteci vermeden önce.
 
-![Doğrulama teknik profil koleksiyonu](media/custom-policy-rest-api-intro/validation-technical-profile.png)
+![Doğrulama teknik profili koleksiyonu](media/custom-policy-rest-api-intro/validation-technical-profile.png)
 
-## <a name="sending-data"></a>Veri gönderme
+## <a name="sending-data"></a>Veriler gönderiliyor
 
-[RESTful teknik](restful-technical-profile.md)profilinde, `InputClaims` öğe, restful hizmetinize göndermek için taleplerin bir listesini içerir. Talebinizin adını, YENIDEN kullanım hizmetinde tanımlanan ada eşleyebilir, varsayılan değer belirleyebilir ve [talep çözümleyicilerini](claim-resolver-overview.md)kullanabilirsiniz.
+Daha fazla [Teknik profilde](restful-technical-profile.md), `InputClaims` öğesi, yeniden takip eden hizmetinize göndermek için taleplerin bir listesini içerir. Talebin adını, Restity hizmetinde tanımlanan adla eşleyebilir, varsayılan bir değer ayarlayabilir ve [talep çözücüler](claim-resolver-overview.md)kullanabilirsiniz.
 
-SendClaimsIn özniteliğini kullanarak giriş taleplerinin geri alınabilir talepler sağlayıcısına nasıl gönderilmiş olduğunu yapılandırabilirsiniz. Olası değerler şunlardır:
+Giriş taleplerinin, SendClaimsIn özniteliğini kullanarak yeniden gönderilmiş talepler sağlayıcısına nasıl gönderileceğini yapılandırabilirsiniz. Olası değerler şunlardır:
 
-- **Gövde**, JSON formatında HTTP POST istek gövdesi gönderildi.
-- **Form**, http POST istek gövdesinde bir ampersand '&' ayrılmış anahtar değeri biçiminde gönderildi.
-- **Üstbilgi**, HTTP GET istek üstbilgisinde gönderilir.
-- **QueryString**, HTTP GET istek sorgu dizesi gönderildi.
+- **Gövde**, JSON BIÇIMINDE http post istek gövdesinde gönderilir.
+- HTTP POST istek gövdesinde, ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen **form**.
+- HTTP GET istek üst bilgisinde gönderilen **üst bilgi**.
+- HTTP GET isteği sorgu dizesinde gönderilen **QueryString**.
 
-**Gövde** seçeneği yapılandırıldığında, REST API teknik profili karmaşık bir JSON yükünü bitiş noktasına göndermenize olanak tanır. Daha fazla bilgi için [json yükü gönder'e](restful-technical-profile.md#send-a-json-payload)bakın.
+**Gövde** seçeneği yapılandırıldığında REST API teknik profili, bir uç noktaya karmaşık bir JSON yükü göndermenizi sağlar. Daha fazla bilgi için bkz. [JSON yükü gönderme](restful-technical-profile.md#send-a-json-payload).
 
 ## <a name="receiving-data"></a>Veri alma
 
-`OutputClaims` [RESTful teknik profilinin](restful-technical-profile.md) öğesi, REST API tarafından döndürülen taleplerin bir listesini içerir. İlkenizde tanımlanan talebin adını REST API'sinde tanımlanan adla eşlemeniz gerekebilir. Varsayılan Değer özniteliğini ayarladığınızda, REST API kimlik sağlayıcısı tarafından döndürülen talepleri de ekleyebilirsiniz.
+`OutputClaims` [Restlen teknik profilinin](restful-technical-profile.md) öğesi, REST API tarafından döndürülen taleplerin bir listesini içerir. İlkenizde tanımlanan talebin adını REST API tanımlı adla eşlemeniz gerekebilir. DefaultValue özniteliğini ayarladığınız sürece REST API Identity sağlayıcısı tarafından döndürülmeyen talepleri de ekleyebilirsiniz.
 
-RESTful claims sağlayıcısı tarafından ayrıştırılan çıktı talepleri her zaman aşağıdakiler gibi düz bir JSON Body yanıtını ayrıştırmayı bekler:
+Yeniden takip eden talepler sağlayıcısı tarafından ayrıştırılmış çıkış talepleri her zaman düz bir JSON gövde yanıtı ayrıştırmayı bekler, örneğin:
 
 ```json
 {
@@ -86,7 +86,7 @@ RESTful claims sağlayıcısı tarafından ayrıştırılan çıktı talepleri h
 }
 ```
 
-Çıktı talepleri aşağıdaki gibi görünmelidir:
+Çıkış talepleri aşağıdaki gibi görünmelidir:
 
 ```xml
 <OutputClaims>
@@ -96,7 +96,7 @@ RESTful claims sağlayıcısı tarafından ayrıştırılan çıktı talepleri h
 </OutputClaims>
 ```
 
-İç içe json vücut yanıtını ayrıştırmak için ResolveJsonPathsInJsonTokens meta verilerini doğru olarak ayarlayın. Çıktı talebinde, PartnerClaimType'ı çıktıalmak istediğiniz JSON yol öğesine ayarlayın.
+İç içe geçmiş bir JSON gövdesi yanıtını ayrıştırmak için, ResolveJsonPathsInJsonTokens meta verilerini true olarak ayarlayın. Çıkış talebinde, PartnerClaimType ' ı çıkış yapmak istediğiniz JSON yolu öğesi olarak ayarlayın.
 
 ```json
 "contacts": [
@@ -118,7 +118,7 @@ RESTful claims sağlayıcısı tarafından ayrıştırılan çıktı talepleri h
 ```
 
 
-Çıktı talepleri aşağıdaki gibi görünmelidir:
+Çıkış talepleri aşağıdaki gibi görünmelidir:
 
 ```xml
 <OutputClaims>
@@ -130,17 +130,17 @@ RESTful claims sağlayıcısı tarafından ayrıştırılan çıktı talepleri h
 
 ## <a name="security-considerations"></a>Güvenlik konuları
 
-Yalnızca kimlik doğrulaması verilen istemcilerin onunla iletişim kurabilmeleri için REST API bitiş noktanızı korumanız gerekir. REST API bir HTTPS bitiş noktası kullanmalıdır. Kimlik Doğrulama Türü meta verilerini aşağıdaki kimlik doğrulama yöntemlerinden birine ayarlayın:
+Yalnızca kimliği doğrulanmış istemcilerin sizinle iletişim kurabilmesi için REST API uç noktanızı korumanız gerekir. REST API bir HTTPS uç noktası kullanmalıdır. AuthenticationType meta verilerini aşağıdaki kimlik doğrulama yöntemlerinden biri olarak ayarlayın:
 
-- **İstemci sertifikası** istemci sertifikası kimlik doğrulamasını kullanarak erişimi kısıtlar. Yalnızca uygun sertifikalara sahip hizmetler API'nize erişebilir. İstemci sertifikasını Azure AD B2C İlke Anahtarı'nda saklarsınız. [İstemci sertifikalarını kullanarak RESTful hizmetinizi nasıl güvence altına alasınız](secure-rest-api.md#https-client-certificate-authentication)hakkında daha fazla bilgi edinin.
-- **Basic,** HTTP temel kimlik doğrulaması ile REST API'sini güvence altına alar. API'nize yalnızca Azure AD B2C de dahil olmak üzere doğrulanmış kullanıcılar erişebilir. Kullanıcı adı ve parola Azure AD B2C ilke anahtarlarında depolanır. [HTTP temel kimlik doğrulamasını kullanarak yeni hizmetlerinizin](secure-rest-api.md#http-basic-authentication)nasıl güvenli hale yapılacağını öğrenin.
-- **Taşıyıcı,** istemci OAuth2 erişim jetonunu kullanarak erişimi kısıtlar. Erişim belirteci, Azure AD B2C ilke anahtarında depolanır. [Bearer belirteci'ni kullanarak RESTful hizmetinizi nasıl güvence altına alasınız](secure-rest-api.md#oauth2-bearer-authentication)hakkında daha fazla bilgi edinin.
+- **İstemci sertifikası** , istemci sertifikası kimlik doğrulaması kullanarak erişimi kısıtlar. Yalnızca uygun sertifikalara sahip olan hizmetler, API 'nize erişebilir. İstemci sertifikasını bir Azure AD B2C Ilkesi anahtarında depoladığınızda. [İstemci sertifikalarını kullanarak, daha fazla hizmetin güvenliğini sağlama](secure-rest-api.md#https-client-certificate-authentication)hakkında daha fazla bilgi edinin.
+- **Temel** , http temel kimlik doğrulamasıyla REST API güvenliğini sağlar. Yalnızca doğrulanmış kullanıcılar, Azure AD B2C dahil, API 'nize erişebilir. Kullanıcı adı ve parola Azure AD B2C ilke anahtarlarında depolanır. [Http temel kimlik doğrulaması kullanarak, yeniden yapılan hizmetlerinizin güvenliğini sağlama](secure-rest-api.md#http-basic-authentication)hakkında bilgi edinin.
+- **Taşıyıcı** , bir istemci OAuth2 erişim belirteci kullanarak erişimi kısıtlar. Erişim belirteci Azure AD B2C ilke anahtarında depolanır. Daha fazla bilgi için, [taşıyıcı belirtecini kullanarak, Restsize hizmetinin güvenliğini sağlama](secure-rest-api.md#oauth2-bearer-authentication)hakkında daha fazla bilgi edinin.
 
-## <a name="rest-api-platform"></a>REST API platformu
-REST API'niz herhangi bir platforma dayalı olabilir ve güvenli olduğu sürece herhangi bir programlama dilinde yazılabilir ve [restful teknik profilinde](restful-technical-profile.md)belirtildiği gibi talepleri gönderip alabilir.
+## <a name="rest-api-platform"></a>REST API platform
+REST API, tüm platformları temel alabilir ve her türlü programlama dilinde yazılabilir ve bu, güvenli olduğu sürece, daha fazla [Teknik profilde](restful-technical-profile.md)belirtildiği gibi talepler gönderebilir ve alabilir.
 
-## <a name="localize-the-rest-api"></a>REST API'sini yerelleştirin
-Yeniden bir teknik profilde, geçerli oturumun dilini/yerel bağlantısını göndermek ve gerekirse yerelleştirilmiş bir hata iletisi yükseltmek isteyebilirsiniz. Talep [çözümleyicisini](claim-resolver-overview.md)kullanarak, kullanıcı dili gibi bağlamsal bir talep gönderebilirsiniz. Aşağıdaki örnekte, bu senaryoyu gösteren yeni bir teknik profil gösterilmektedir.
+## <a name="localize-the-rest-api"></a>REST API yerelleştirin
+Teknik bir teknik profilde, geçerli oturumun dilini/yerel ayarını göndermek ve gerekirse, yerelleştirilmiş bir hata iletisi vermek isteyebilirsiniz. [Talep çözümleyici](claim-resolver-overview.md)'yi kullanarak, Kullanıcı dili gibi bağlamsal bir talep gönderebilirsiniz. Aşağıdaki örnekte, bu senaryoyu gösteren, teknik bir teknik profil gösterilmektedir.
 
 ```XML
 <TechnicalProfile Id="REST-ValidateUserData">
@@ -162,25 +162,25 @@ Yeniden bir teknik profilde, geçerli oturumun dilini/yerel bağlantısını gö
 
 ## <a name="handling-error-messages"></a>Hata iletilerini işleme
 
-REST API'nizin "Kullanıcı CRM sisteminde bulunamadı" gibi bir hata iletisi döndürmesi gerekebilir. Bir hata oluşursa, REST API bir HTTP 409 hata iletisi (Çakışma yanıt durum kodu) döndürmelidir. Daha fazla bilgi [için, RESTful teknik profiline](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster&anchor=returning-error-message)bakın.
+REST API, "kullanıcının CRM sisteminde bulunamamıştır" gibi bir hata iletisi döndürmesi gerekebilir. Bir hata oluşursa REST API bir HTTP 409 hata iletisi (çakışma yanıtı durum kodu) döndürmelidir. Daha fazla bilgi için bkz. [Restsize teknik profil](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster&anchor=returning-error-message).
 
-Bu, yalnızca doğrulama teknik profilinden REST API teknik profilini arayarak elde edilebilir. Bu, kullanıcının sayfadaki verileri düzeltmesine ve sayfa gönderimi sırasında doğrulamayı yeniden çalıştırmasına olanak tanır.
+Bu yalnızca bir doğrulama teknik profilinden REST API teknik bir profil çağırarak elde edilebilir. Bu, kullanıcının sayfadaki verileri düzeltmesini ve sayfa gönderimi sırasında doğrulamayı yeniden çalıştırmasını sağlar.
 
-Bu düzenleme adımı nda sonraki doğrulama teknik profillerinin işlenmesini önlemek için bir HTTP 409 yanıtı gereklidir.
+Bu düzenleme adımında sonraki tüm doğrulama teknik profillerinin işlenmesini engellemek için bir HTTP 409 yanıtı gereklidir.
 
-Bir REST API teknik profiline doğrudan bir kullanıcı yolculuğundan başvurursanız, kullanıcı ilgili hata iletisiyle birlikte güvenilen taraf uygulamasına geri yönlendirilir.
+Bir Kullanıcı yolculuğuna doğrudan bir REST API teknik profile başvurmanız durumunda, Kullanıcı bağlı olan taraf uygulamasına ilgili hata iletisiyle yeniden yönlendirilir.
 
-## <a name="publishing-your-rest-api"></a>REST API'nizi yayınlama
+## <a name="publishing-your-rest-api"></a>REST API yayımlama
 
-REST API hizmetinizin isteği Azure AD B2C sunucularından gelir. REST API hizmeti, herkese açık bir HTTPS bitiş noktasında yayınlanmalıdır. REST API çağrıları bir Azure veri merkezi IP adresinden gelecektir.
+REST API hizmetinize yönelik istek Azure AD B2C sunuculardan gelir. REST API hizmeti, herkese açık bir HTTPS uç noktasına yayımlanmalıdır. REST API çağrıları bir Azure veri merkezi IP adresinden gelir.
 
-REST API hizmetinizi ve altta yatan bileşenlerini (veritabanı ve dosya sistemi gibi) son derece kullanılabilir olacak şekilde tasarlayın.
+REST API hizmetinizi ve temel alınan bileşenlerini (veritabanı ve dosya sistemi gibi) yüksek oranda kullanılabilir olacak şekilde tasarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-ReSTful teknik profil kullanma örnekleri için aşağıdaki makalelere bakın:
+Daha fazla teknik profil kullanma örnekleri için aşağıdaki makalelere bakın:
 
-- [Walkthrough: Kullanıcı girişinin doğrulanması olarak Azure AD B2C kullanıcı yolculuğunuzdaki REST API talep alışverişini tümleştirin](custom-policy-rest-api-claims-validation.md)
-- [Walkthrough: Azure Active Directory B2C'deki özel ilkelere REST API talep alışverişi ekleme](custom-policy-rest-api-claims-validation.md)
-- [REST API hizmetlerinizi güvence altına ala](secure-rest-api.md)
-- [Referans: RESTful teknik profili](restful-technical-profile.md)
+- [İzlenecek yol: Kullanıcı girişinin doğrulanması sırasında Azure AD B2C Kullanıcı yolculuğunda REST API talep alışverişlerinde tümleştirin](custom-policy-rest-api-claims-validation.md)
+- [İzlenecek yol: Azure Active Directory B2C içindeki özel ilkelere REST API talep alışverişi ekleme](custom-policy-rest-api-claims-validation.md)
+- [REST API hizmetlerinizin güvenliğini sağlama](secure-rest-api.md)
+- [Başvuru: Restuz teknik profili](restful-technical-profile.md)

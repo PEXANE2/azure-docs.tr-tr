@@ -1,6 +1,6 @@
 ---
-title: Düğümden Azure Kuyruk depolama alanını kullanma - Azure Depolama
-description: Kuyrukoluşturmak ve silmek ve ileti eklemek, almak ve silmek için Azure Kuyruk hizmetini nasıl kullanacağınızı öğrenin. Düğüm.js ile yazılmış örnekler.
+title: Node. js ' den Azure kuyruk depolaması kullanma-Azure depolama
+description: Kuyrukları oluşturmak ve silmek için Azure Kuyruk hizmeti kullanmayı ve iletileri ekleme, alma ve silme hakkında bilgi edinin. Node. js içinde yazılan örnekler.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/08/2016
@@ -10,32 +10,32 @@ ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-september2019
 ms.openlocfilehash: 7abcad03678131668700f5d2c64b9c971081cb89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80060927"
 ---
-# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Node.js'den kuyruklar oluşturmak ve silmek için Azure Kuyruk Hizmeti'ni kullanın
+# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Node. js ' den kuyruk oluşturmak ve silmek için Azure kuyruk hizmeti 'ni kullanma
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu kılavuz, Microsoft Azure Kuyruk hizmetini kullanarak sık karşılaşılan senaryoları nasıl gerçekleştireceklerini gösterir. Örnekler Düğüm.js API kullanılarak yazılır. Kapsanan senaryolar arasında kuyruk iletileri **ekleme,** **gözetleme,** **alma**ve **silme** nin yanı sıra **kuyruk oluşturma ve silme**yer alır.
+Bu kılavuzda, Microsoft Azure Kuyruk hizmeti kullanarak nasıl yaygın senaryolar gerçekleştirebileceğiniz gösterilmektedir. Örnekler Node. js API 'SI kullanılarak yazılır. Kapsanan senaryolar sıra iletilerini **ekleme**, göz **atma**, **alma**ve **silme** , Ayrıca kuyruk **oluşturma ve silme**içerir.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-nodejs-application"></a>Düğüm Oluşturma.js Uygulaması
-Boş bir Düğüm.js uygulaması oluşturun. Bir Düğüm.js uygulaması oluşturan talimatlar için, Azure [Uygulama Hizmeti'nde Bir Düğüm.js web uygulaması oluşturma](../../app-service/app-service-web-get-started-nodejs.md), Windows PowerShell veya Visual Studio [Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)kullanarak bir Azure [Bulut Hizmetine Düğüm uygulaması oluşturma](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) ve dağıtma bölümüne bakın.
+## <a name="create-a-nodejs-application"></a>Node. js uygulaması oluşturma
+Boş bir Node. js uygulaması oluşturun. Bir Node. js uygulaması oluşturma yönergeleri için, bkz. [Azure App Service bir Node. js web uygulaması oluşturma](../../app-service/app-service-web-get-started-nodejs.md), Windows PowerShell kullanarak bir [Azure bulut hizmetinde Node. js uygulaması oluşturma ve dağıtma](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) veya [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
 
-## <a name="configure-your-application-to-access-storage"></a>Uygulamanızı Access Depolamasına Yapılandırın
-Azure depolama alanını kullanmak için, depolama REST hizmetleriyle iletişim kuran bir dizi kolaylık kitaplığı içeren Node.js için Azure Depolama SDK'sına ihtiyacınız vardır.
+## <a name="configure-your-application-to-access-storage"></a>Uygulamanızı depolamaya erişecek şekilde yapılandırma
+Azure Storage 'ı kullanmak için, depolama REST hizmetleriyle iletişim kuran bir dizi kullanışlı kitaplık içeren node. js için Azure depolama SDK 'sına ihtiyacınız vardır.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Paketi almak için Düğüm Paket Yöneticisi'ni (NPM) kullanın
-1. **PowerShell** (Windows,), **Terminal** (Mac,) veya **Bash** (Unix) gibi bir komut satırı arabirimi kullanın, örnek uygulamanızı oluşturduğunuz klasöre gidin.
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Paketi edinmek için düğüm Paket Yöneticisi 'Ni (NPM) kullanın
+1. **PowerShell** (Windows,) **Terminal** (Mac,) veya **Bash** (Unix) gibi bir komut satırı arabirimi kullanın, örnek uygulamanızı oluşturduğunuz klasöre gidin.
 2. Komut penceresine **npm install azure-storage** yazın. Komutun çıktısı aşağıdaki örneğe benzer.
  
     ```bash
@@ -51,26 +51,26 @@ Azure depolama alanını kullanmak için, depolama REST hizmetleriyle iletişim 
     +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
     ```
 
-3. Düğüm **\_modülleri** klasörü oluşturulduğunu doğrulamak için **lS** komutunu el ile çalıştırabilirsiniz. Bu klasörün içinde, depolama alanına erişmek için ihtiyaç duyduğunuz kitaplıkları içeren **azure-storage** paketini bulacaksınız.
+3. Bir **\_düğüm modülleri** klasörünün oluşturulduğunu doğrulamak için **ls** komutunu el ile çalıştırabilirsiniz. Bu klasörün içinde, depolama alanına erişmek için ihtiyaç duyduğunuz kitaplıkları içeren **azure-storage** paketini bulacaksınız.
 
 ### <a name="import-the-package"></a>Paketi içeri aktarma
-Not Defteri'ni veya başka bir metin düzenleyicisini kullanarak, depolama alanını kullanmak istediğiniz uygulamanın **server.js** dosyasının üst bölümüne aşağıdakileri ekleyin:
+Not defteri veya başka bir metin düzenleyicisi kullanarak aşağıdakini, depolamayı kullanmayı düşündüğünüz uygulamanın **Server. js** dosyasına ekleyin:
 
 ```javascript
 var azure = require('azure-storage');
 ```
 
-## <a name="setup-an-azure-storage-connection"></a>Azure Depolama Bağlantısı Kurma
-Azure modülü,\_Azure depolama hesabınıza\_bağlanmak\_için\_gereken bilgiler için azure depolama hesabı ve AZURE DEPOLAMA\_ACCESS KEY veya\_AZURE DEPOLAMA\_BAĞLANTI\_STRING ortam değişkenlerini okur. Bu ortam değişkenleri ayarlanmazsa, **createQueueService'i**ararken hesap bilgilerini belirtmeniz gerekir.
+## <a name="setup-an-azure-storage-connection"></a>Azure depolama bağlantısı kurma
+Azure modülü, Azure depolama hesabınıza bağlanmak için gereken\_bilgiler\_için AZURE depolama\_hesabı\_ve\_Azure depolama erişim anahtarı\_ya\_da\_Azure depolama bağlantı dizesi ortam değişkenlerini okur. Bu ortam değişkenleri ayarlanmamışsa, **Createqueueservice**çağrılırken hesap bilgilerini belirtmeniz gerekir.
 
-## <a name="how-to-create-a-queue"></a>Nasıl Yapılsın: Sıra Oluşturma
-Aşağıdaki kod, kuyruklarla çalışmanızı sağlayan bir **QueueService** nesnesi oluşturur.
+## <a name="how-to-create-a-queue"></a>Nasıl yapılır: kuyruk oluşturma
+Aşağıdaki kod, kuyruklarla çalışmanıza olanak sağlayan bir **QueueService** nesnesi oluşturur.
 
 ```javascript
 var queueSvc = azure.createQueueService();
 ```
 
-Zaten varsa belirtilen sırayı döndüren veya zaten yoksa belirtilen ada sahip yeni bir sıra oluşturan **createQueueIfNotExists** yöntemini kullanın.
+Zaten varsa belirtilen kuyruğu döndüren **Createqueueifnotexists** yöntemini kullanın veya zaten mevcut değilse belirtilen ada sahip yeni bir kuyruk oluşturur.
 
 ```javascript
 queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
@@ -80,32 +80,32 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 });
 ```
 
-Sıra oluşturulursa, `result.created` doğrudur. Sıra varsa, `result.created` yanlıştır.
+Sıra oluşturulduysa, `result.created` doğru olur. Sıra varsa, `result.created` false olur.
 
-### <a name="filters"></a>Filtreler
-İsteğe bağlı filtreleme işlemleri **QueueService**kullanılarak gerçekleştirilen işlemlere uygulanabilir. Filtreleme işlemleri günlüğe kaydetmeyi, otomatik olarak yeniden denemeyi vb. içerebilir. Filtreler, imzaile birlikte bir yöntem uygulayan nesnelerdir:
+### <a name="filters"></a>FilTReleri
+İsteğe bağlı filtreleme işlemleri, **QueueService**kullanılarak gerçekleştirilen işlemlere uygulanabilir. Filtreleme işlemleri, günlüğe kaydetme, otomatik yeniden deneme vb. içerebilir. Filtreler imzaya sahip bir yöntemi uygulayan nesnelerdir:
 
 ```javascript
 function handle (requestOptions, next)
 ```
 
-İstek seçenekleri üzerinde ön işleme yaptıktan sonra, yöntem aşağıdaki imza ile bir geri arama geçen "sonraki" aramak gerekir:
+İstek seçeneklerinde ön işleme gerçekleştirildikten sonra, yöntemin aşağıdaki imzayla bir geri çağırma işlemi "Next" çağrısını yapması gerekir:
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-Bu geri aramada ve returnObject'i (isteğin sunucuya verdiği yanıt) işledikten sonra, diğer filtreleri işlemeye devam etmek için geri aramanın bir sonraki çağrıda bulunması veya yalnızca hizmetin sona ermesi için son Çağrı'yı çağırması gerekir Çağırma.
+Bu geri çağırmada ve returnObject (istekten sunucuya olan yanıt) işlendikten sonra geri çağırma işlemi, diğer filtreleri işlemeye devam etmek veya hizmet çağrısını sonlandırmak için Aksi takdirde finalCallback çağırmak için varsa bir sonrakini çağırmalıdır.
 
-Yeniden deneme mantığı uygulayan iki filtre (**ExponentialRetryPolicyFilter** ve **LinearRetryPolicyFilter**), Node.js için Azure SDK’sına dahil edilir. Aşağıdaki, **Üstel RetryPolicyFilter**kullanan bir **QueueService** nesnesi oluşturur:
+Yeniden deneme mantığı uygulayan iki filtre (**ExponentialRetryPolicyFilter** ve **LinearRetryPolicyFilter**), Node.js için Azure SDK’sına dahil edilir. Aşağıdaki, **üs Alretrypolicyfilter**kullanan bir **QueueService** nesnesi oluşturur:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var queueSvc = azure.createQueueService().withFilter(retryOperations);
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Nasıl Alınır: Sıraya İleti Ekleme
-Bir iletiyi kuyruğa eklemek için, yeni bir ileti oluşturmak ve kuyruğa eklemek için **CreateMessage** yöntemini kullanın.
+## <a name="how-to-insert-a-message-into-a-queue"></a>Nasıl yapılır: bir kuyruğa Ileti ekleme
+Bir kuyruğa ileti eklemek için **CreateMessage** metodunu kullanarak yeni bir ileti oluşturun ve kuyruğa ekleyin.
 
 ```javascript
 queueSvc.createMessage('myqueue', "Hello world!", function(error, results, response){
@@ -115,8 +115,8 @@ queueSvc.createMessage('myqueue', "Hello world!", function(error, results, respo
 });
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Nasıl Yapılsın: Sonraki İletiye Göz At
-**PeekMessages** yöntemini çağırarak sıranın önündeki iletiye kuyruktan çıkarmadan göz atabilirsiniz. Varsayılan olarak, **peekMessages** tek bir iletiyi gözetler.
+## <a name="how-to-peek-at-the-next-message"></a>Nasıl yapılır: bir sonraki Iletiye göz atma
+**PeekMessages** yöntemini çağırarak sıradan kaldırmadan bir kuyruğun önündeki iletiye göz atmayı sağlayabilirsiniz. Varsayılan olarak, **peekMessages** , tek bir iletiye bakar.
 
 ```javascript
 queueSvc.peekMessages('myqueue', function(error, results, response){
@@ -129,17 +129,17 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 İletiyi `result` içerir.
 
 > [!NOTE]
-> Sırada ileti yoksa **peekMessage'ların** kullanılması hata döndürmez, ancak hiçbir ileti döndürülmez.
+> Kuyruktaki hiçbir ileti olmadığında **peekMessages** kullanılması bir hata döndürmez, ancak hiçbir ileti döndürülmez.
 > 
 > 
 
-## <a name="how-to-dequeue-the-next-message"></a>Nasıl YapılSın: Sonraki İletiyi Sırayla Çözme
-İletiyi işleme iki aşamalı bir işlemdir:
+## <a name="how-to-dequeue-the-next-message"></a>Nasıl yapılır: sonraki Iletiyi sıradan çıkarma
+Bir iletiyi işlemek iki aşamalı bir işlemdir:
 
-1. İletiyi sıradan ayırın.
+1. İleti sıradan çıkar.
 2. İletiyi silin.
 
-İletinin kuyruğundan çıkarmak için **getMessage'ları**kullanın. Bu, iletileri kuyrukta görünmez kılar, böylece başka istemciler bunları işleyebilir. Uygulamanız bir iletiyi işledikten sonra, sıradan silmek için **deleteMessage'ı** arayın. Aşağıdaki örnek bir ileti alır, sonra siler:
+Bir iletiyi sıradan çıkarma için **GetMessages**kullanın. Bu, iletileri kuyrukta görünmez hale getirir, dolayısıyla başka hiçbir istemci bunları işleyemez. Uygulamanız bir iletiyi işledikten sonra sıradan silmek için **deleteMessage** ' ı çağırın. Aşağıdaki örnek bir ileti alır ve siler:
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, results, response){
@@ -156,15 +156,15 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 ```
 
 > [!NOTE]
-> Varsayılan olarak, bir ileti yalnızca 30 saniye boyunca gizlenir ve ardından diğer istemciler tarafından görülebilir. `options.visibilityTimeout` **GetMessages**ile kullanarak farklı bir değer belirtebilirsiniz.
+> Varsayılan olarak, bir ileti yalnızca 30 saniye gizlidir, bu da diğer istemcilere görünür. `options.visibilityTimeout` **GetMessages**ile kullanarak farklı bir değer belirtebilirsiniz.
 > 
 > [!NOTE]
-> Sırada ileti yokken **getMessage'ların** kullanılması hata döndürmez, ancak hiçbir ileti döndürülmez.
+> Kuyruktaki hiçbir ileti olmadığında **GetMessages** kullanılması bir hata döndürmez, ancak hiçbir ileti döndürülmez.
 > 
 > 
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Nasıl YapılSın: Sıralı İletinin İçeriğini Değiştirme
-**UpdateMessage'ı**kullanarak kuyruktaki bir iletinin içeriğini yerinde değiştirebilirsiniz. Aşağıdaki örnek, bir iletinin metnini güncelleştirir:
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Nasıl yapılır: kuyruğa alınan Iletinin Içeriğini değiştirme
+**Updatemessage**kullanarak kuyruktaki bir iletinin içeriğini yerinde değiştirebilirsiniz. Aşağıdaki örnek bir iletinin metnini güncelleştirir:
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
@@ -180,13 +180,13 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 });
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>Nasıl Yapılsın: İletileri Sıraya Almak için Ek Seçenekler
-İleti alma sıranından özelleştirebileceğiniz iki yolu vardır:
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>Nasıl yapılır: sıradan sıraya alma Iletileri için ek seçenekler
+Bir kuyruktan ileti alımını özelleştirmek için iki yol vardır:
 
-* `options.numOfMessages`- Bir yığın ileti alın (en fazla 32.)
-* `options.visibilityTimeout`- Daha uzun veya daha kısa bir görünmezlik zaman aşımı ayarlayın.
+* `options.numOfMessages`-Bir ileti toplu işi alın (32 'e kadar.)
+* `options.visibilityTimeout`-Daha uzun veya daha kısa görünürlük zaman aşımı ayarlayın.
 
-Aşağıdaki örnek, tek bir aramada 15 ileti almak için **getMessages** yöntemini kullanır. Daha sonra her iletiyi for döngüsü kullanarak işler. Ayrıca, bu yöntemle döndürülen tüm iletiler için görünmezlik zaman anına beş dakika ayarlar.
+Aşağıdaki örnek, bir çağrıda 15 ileti almak için **GetMessages** yöntemini kullanır. Sonra her iletiyi bir for döngüsü kullanarak işler. Ayrıca, bu yöntemin döndürdüğü tüm iletiler için geçersiz kılma zaman aşımını beş dakikaya ayarlar.
 
 ```javascript
 queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, results, getResponse){
@@ -205,8 +205,8 @@ queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, 
 });
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Nasıl Gidilir: Sıra Uzunluğunu Alın
-**getQueueMeta verileri,** kuyrukta bekleyen yaklaşık ileti sayısı da dahil olmak üzere kuyrukla ilgili meta verileri döndürür.
+## <a name="how-to-get-the-queue-length"></a>Nasıl yapılır: kuyruk uzunluğunu alma
+**Getqueuemetadata** , sırada bekleyen iletilerin yaklaşık sayısı dahil olmak üzere kuyruk hakkında meta veriler döndürür.
 
 ```javascript
 queueSvc.getQueueMetadata('myqueue', function(error, results, response){
@@ -216,8 +216,8 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 });
 ```
 
-## <a name="how-to-list-queues"></a>Nasıl YapılSın: Kuyrukları Listele
-Kuyrukların listesini almak için **listQueuesSegmented'i**kullanın. Belirli bir önek tarafından filtre uygulanmış bir liste yi almak için **listQueuesSegmentedWithPrefix'i**kullanın.
+## <a name="how-to-list-queues"></a>Nasıl yapılır: kuyrukları listeleme
+Kuyrukların listesini almak için **Listqueueskesimli**öğesini kullanın. Belirli bir ön eke göre filtrelenmiş bir listeyi almak için **listQueuesSegmentedWithPrefix**kullanın.
 
 ```javascript
 queueSvc.listQueuesSegmented(null, function(error, results, response){
@@ -227,10 +227,10 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 });
 ```
 
-Tüm kuyruklar döndürülemiyorsa, `result.continuationToken` daha fazla sonuç almak için **listQueuesSegmented'in** ilk parametresi veya **listQueuesSegmentedWithPrefix'in** ikinci parametresi olarak kullanılabilir.
+Tüm kuyruklar döndürülmezse, `result.continuationToken` daha fazla sonuç almak Için **Listqueuessegmentinin** Ilk parametresi olarak veya **listQueuesSegmentedWithPrefix** ikinci parametresi olarak kullanılabilir.
 
-## <a name="how-to-delete-a-queue"></a>Nasıl Alınır: Sırayı Silme
-Bir kuyruğ ve içindeki tüm iletileri silmek için, sıra nesnesindeki **deleteQueue** yöntemini arayın.
+## <a name="how-to-delete-a-queue"></a>Nasıl yapılır: kuyruğu silme
+Bir kuyruğu ve içerdiği tüm iletileri silmek için, kuyruk nesnesi üzerinde **DeleteQueue** yöntemini çağırın.
 
 ```javascript
 queueSvc.deleteQueue(queueName, function(error, response){
@@ -240,14 +240,14 @@ queueSvc.deleteQueue(queueName, function(error, response){
 });
 ```
 
-Tüm iletileri silmeden bir kuyruktan temizlemek için **clearMessages'ı**kullanın.
+Sıradan tüm iletileri silmeden temizlemek için **ClearMessages**kullanın.
 
-## <a name="how-to-work-with-shared-access-signatures"></a>Nasıl yapılır: Paylaşılan Erişim İmzalarıyla Çalışma
-Paylaşılan Erişim İmzaları (SAS), depolama hesabı adınızı veya anahtarlarınızı sağlamadan kuyruklara parçalı erişim sağlamanın güvenli bir yoludur. SAS genellikle, bir mobil uygulamanın mesaj göndermesine izin vermek gibi kuyruklarınıza sınırlı erişim sağlamak için kullanılır.
+## <a name="how-to-work-with-shared-access-signatures"></a>Nasıl yapılır: paylaşılan erişim Imzaları ile çalışma
+Paylaşılan erişim Imzaları (SAS), depolama hesabı adınızı veya anahtarlarınızı sağlamamanız gerekmeden kuyruklara ayrıntılı erişim sağlamanın güvenli bir yoludur. SAS, genellikle bir mobil uygulamanın ileti göndermesine izin verme gibi kuyruklara sınırlı erişim sağlamak için kullanılır.
 
-Bulut tabanlı bir hizmet gibi güvenilir bir uygulama, **QueueService'in** **oluşturduğu SharedAccessSignature'ı** kullanarak bir SAS oluşturur ve bunu güvenilmeyen veya yarı güvenilen bir uygulamaya sağlar. Örneğin, bir mobil uygulama. SAS’ın geçerli olduğu başlangıç ve bitiş tarihlerini ve SAS sahibine verilen erişim düzeyini açıklayan bir ilke kullanılarak SAS oluşturulur.
+Bulut tabanlı bir hizmet gibi güvenilir bir uygulama, **Queuesharedaccesssignature** öğesini kullanarak bir SAS oluşturur ve bunu güvenilmeyen **QueueService**veya yarı güvenilir bir uygulamaya sağlar. Örneğin, bir mobil uygulama. SAS’ın geçerli olduğu başlangıç ve bitiş tarihlerini ve SAS sahibine verilen erişim düzeyini açıklayan bir ilke kullanılarak SAS oluşturulur.
 
-Aşağıdaki örnek, SAS sahibinin kuyruğa ileti eklemesine olanak tanıyan ve oluşturulduğu andan 100 dakika sonra sona eren yeni bir paylaşılan erişim ilkesi oluşturur.
+Aşağıdaki örnek, SAS sahibinin sıraya ileti eklemesine ve oluşturulma zamanından sonra 100 dakika süre sonu sağlayacak yeni bir paylaşılan erişim ilkesi oluşturur.
 
 ```javascript
 var startDate = new Date();
@@ -267,9 +267,9 @@ var queueSAS = queueSvc.generateSharedAccessSignature('myqueue', sharedAccessPol
 var host = queueSvc.host;
 ```
 
-SAS sahibi kuyruğa erişmeye çalıştığında gerekli olduğu gibi ana bilgisayar bilgilerinin de sağlanması gerektiğini unutmayın.
+SAS tutucusu sıraya erişmeyi denediğinde gerekli olduğundan, ana bilgisayar bilgilerinin de sağlanması gerektiğini unutmayın.
 
-İstemci uygulaması daha sonra sıraya karşı işlemleri gerçekleştirmek için **QueueServiceWithSAS** ile SAS kullanır. Aşağıdaki örnek kuyruğa bağlanır ve bir ileti oluşturur.
+Daha sonra istemci uygulama, kuyruğa yönelik işlemler gerçekleştirmek için **Queueservicewithsas** ile SAS kullanır. Aşağıdaki örnek kuyruğa bağlanır ve bir ileti oluşturur.
 
 ```javascript
 var sharedQueueService = azure.createQueueServiceWithSas(host, queueSAS);
@@ -280,12 +280,12 @@ sharedQueueService.createMessage('myqueue', 'Hello world from SAS!', function(er
 });
 ```
 
-SAS ekle erişimi yle oluşturulduğundan, iletileri okumaya, güncelleştirmeye veya silme girişiminde bulunulduysa, bir hata döndürülür.
+SAS, erişim Ekle ile oluşturulduğundan, iletileri okuma, güncelleştirme veya silme girişiminde bulunulduğunda bir hata döndürülür.
 
 ### <a name="access-control-lists"></a>Erişim denetimi listeleri
-Ayrıca SAS için erişim ilkesini ayarlamak istediğinizde de bir Erişim Denetim Listesi (ACL) kullanabilirsiniz. Bu, birden çok istemcinin kuyruğa erişmesine izin vermek, ancak her istemci için farklı erişim ilkeleri sağlamak istiyorsanız yararlıdır.
+Ayrıca SAS için erişim ilkesini ayarlamak istediğinizde de bir Erişim Denetim Listesi (ACL) kullanabilirsiniz. Bu, birden çok istemcinin sıraya erişmesine izin vermek istiyorsanız, ancak her istemci için farklı erişim ilkeleri sağlamak istediğinizde yararlıdır.
 
-Her politikayla ilişkilendirilmiş bir kimlik ile, bir erişim ilkeleri dizisi kullanılarak ACL uygulanır. Aşağıdaki örnekte iki ilke tanımlanır; biri 'user1' ve diğeri 'user2' için:
+Her politikayla ilişkilendirilmiş bir kimlik ile, bir erişim ilkeleri dizisi kullanılarak ACL uygulanır. Aşağıdaki örnek iki ilkeyi tanımlar; biri ' Kullanıcı1 ' ve diğeri ' kullanıcı2 ' için:
 
 ```javascript
 var sharedAccessPolicy = {
@@ -302,7 +302,7 @@ var sharedAccessPolicy = {
 };
 ```
 
-Aşağıdaki örnek **myqueue**için geçerli ACL alır, sonra **setQueueAcl**kullanarak yeni ilkeler ekler. Bu yaklaşım aşağıdakilere olanak sağlar:
+Aşağıdaki örnek, **myQueue**IÇIN geçerli ACL 'yi alır, ardından **setqueueacl**kullanarak yeni ilkeleri ekler. Bu yaklaşım aşağıdakilere olanak sağlar:
 
 ```javascript
 var extend = require('extend');
@@ -318,17 +318,17 @@ queueSvc.getQueueAcl('myqueue', function(error, result, response) {
 });
 ```
 
-ACL ayarlandıktan sonra, bir ilke için kimlik tabanlı bir SAS oluşturabilirsiniz. Aşağıdaki örnek, 'user2' için yeni bir SAS oluşturur:
+ACL ayarlandıktan sonra, bir ilkenin KIMLIĞINE göre bir SAS oluşturabilirsiniz. Aşağıdaki örnek, 'user2' için yeni bir SAS oluşturur:
 
 ```javascript
 queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 ```
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Artık sıra depolamanın temellerini öğrendiğiniz için, daha karmaşık depolama görevleri hakkında bilgi edinmek için bu bağlantıları izleyin.
+Sıra depolamanın temellerini öğrendiğinize göre, daha karmaşık depolama görevleri hakkında bilgi edinmek için bu bağlantıları izleyin.
 
 * [Azure Storage ekip blogunu][Azure Storage Team Blog] ziyaret edin.
-* GitHub'daki Düğüm deposu [için Azure Depolama SDK'sını][Azure Storage SDK for Node] ziyaret edin.
+* GitHub 'daki [düğüm deposu Için Azure depolama SDK 'sını][Azure Storage SDK for Node] ziyaret edin.
 
 
 

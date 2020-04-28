@@ -1,7 +1,7 @@
 ---
-title: Özel bir ilkede kendi kendini öne süren bir teknik profil tanımlama
+title: Özel ilkede kendi kendine onaylanan teknik profil tanımlama
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C'de özel bir ilkede kendi kendini öne süren bir teknik profil tanımlayın.
+description: Azure Active Directory B2C bir özel ilkede kendi kendine onaylanan bir teknik profil tanımlayın.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,23 +12,23 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2b29b8b0975639e5c5315a55e1382794d7662665
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80332500"
 ---
-# <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde kendi kendini öne süren bir teknik profil tanımlama
+# <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde kendi kendine onaylanan teknik profil tanımlama
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Kullanıcının girdi sağlamasıbeklenen Azure Active Directory B2C'deki (Azure AD B2C) tüm etkileşimler, kendi kendine öne sürülen teknik profillerdir. Örneğin, bir kayıt sayfası, oturum açma sayfası veya parola sıfırlama sayfası.
+Kullanıcının giriş sağlaması beklenen Azure Active Directory B2C (Azure AD B2C) içindeki tüm etkileşimler kendi kendine onaylanan teknik profillerdir. Örneğin, bir kaydolma sayfası, oturum açma sayfası veya parola sıfırlama sayfası.
 
 ## <a name="protocol"></a>Protokol
 
-**Protokol** öğesinin `Proprietary` **Ad** özniteliğinin . **Işleyici** özniteliği, azure AD B2C tarafından kullanılan protokol işleyicisi derlemesinin tam nitelikli adını içermelidir:`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+**Protokol** öğesinin `Proprietary` **Name** özniteliğinin olarak ayarlanması gerekir. **Handler** özniteliği, kendi kendine onaylanan Azure AD B2C tarafından kullanılan protokol işleyici derlemesinin tam adını içermelidir:`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
-Aşağıdaki örnek, e-posta kaydolmak için kendi kendini öne süren bir teknik profili gösterir:
+Aşağıdaki örnek, e-posta kaydı için kendi kendine onaylanan bir teknik profili göstermektedir:
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -38,7 +38,7 @@ Aşağıdaki örnek, e-posta kaydolmak için kendi kendini öne süren bir tekni
 
 ## <a name="input-claims"></a>Giriş talepleri
 
-Kendi kendini öne süren bir teknik profilde, kendi kendini öne süren sayfada görünen iddiaların değerini önceden doldurmak için Giriş Talepleri ve **InputClaimsTransformations** öğelerini kullanabilirsiniz (talepleri görüntüler). **InputClaims** Örneğin, profil oluşturma ilkesinde, kullanıcı yolculuğu önce Azure AD B2C dizin hizmetinden kullanıcı profilini okur, ardından kendi kendini öne süren teknik profil, kullanıcı profilinde depolanan kullanıcı verileriyle giriş taleplerini ayarlar. Bu talepler kullanıcı profilinden toplanır ve daha sonra varolan verileri yeniden atabilecek kullanıcıya sunulur.
+Kendi kendine onaylanan bir teknik profilde, otomatik olarak onaylanan sayfada görünen taleplerin değerini önceden doldurmak için **inputclaim** ve **ınputclaimstransformations** öğelerini kullanabilirsiniz (talepleri görüntüle). Örneğin, profil düzenleme ilkesinde Kullanıcı yolculuğu ilk olarak Azure AD B2C dizin hizmetinden kullanıcı profilini okur, ardından kendi kendini onaylanan teknik profil, giriş taleplerini Kullanıcı profilinde depolanan kullanıcı verileriyle ayarlar. Bu talepler Kullanıcı profilinden toplanır ve sonra var olan verileri düzenleyebilen kullanıcıya sunulur.
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -51,25 +51,25 @@ Kendi kendini öne süren bir teknik profilde, kendi kendini öne süren sayfada
   </InputClaims>
 ```
 
-## <a name="display-claims"></a>Talepleri görüntüleme
+## <a name="display-claims"></a>Talepleri görüntüle
 
-Ekran talepleri özelliği şu anda **önizlemede.**
+Görüntüleme talepleri özelliği şu anda **önizlemededir**.
 
-**DisplayClaims** öğesi, kullanıcıdan veri toplamak için ekranda sunulacak taleplerin bir listesini içerir. Görüntü taleplerinin değerlerini önceden doldurmak için, daha önce açıklanan giriş taleplerini kullanın. Öğe varsayılan bir değer de içerebilir.
+**DisplayClaim** öğesi, kullanıcıdan veri toplamaya yönelik ekranda sunulacak talepler listesini içerir. Görüntüleme taleplerinin değerlerini önceden doldurmak için, daha önce açıklanan giriş taleplerini kullanın. Öğesi de varsayılan bir değer içerebilir.
 
-**DisplayClaims'teki** taleplerin sırası, Azure AD B2C'nin talepleri ekranda işleme sırasını belirtir. Kullanıcıyı belirli bir talep için bir değer sağlamaya zorlamak için **DisplayClaim** `true`öğesinin **gerekli** özniteliğini .
+**DisplayClaim** 'teki taleplerin sırası, Azure AD B2C ekranda talepleri işleyen sırayı belirtir. Kullanıcıyı belirli bir talep için bir değer sağlamaya zorlamak için, **DisplayClaim** öğesinin `true` **gerekli** özniteliğini olarak ayarlayın.
 
-**DisplayClaims** koleksiyonundaki **ClaimType** öğesinin **UserInputType** öğesini Azure AD B2C tarafından desteklenen herhangi bir kullanıcı giriş türüne ayarlaması gerekir. Örneğin `TextBox` veya `DropdownSingleSelect` olabilir.
+**DisplayClaim** koleksiyonundaki **ClaimType** öğesi, **userınputtype** öğesini Azure AD B2C tarafından desteklenen herhangi bir kullanıcı giriş türüne ayarlamış olmalıdır. Örneğin `TextBox` veya `DropdownSingleSelect` olabilir.
 
-### <a name="add-a-reference-to-a-displaycontrol"></a>DisplayControl'e başvuru ekleme
+### <a name="add-a-reference-to-a-displaycontrol"></a>DisplayControl öğesine başvuru ekleme
 
-Görüntü talepleri koleksiyonuna, oluşturduğunuz [DisplayControl'e](display-controls.md) bir başvuru ekleyebilirsiniz. Ekran denetimi, özel işlevsellik olan ve Azure AD B2C arka uç hizmetiyle etkileşim edebilen bir kullanıcı arabirimi öğesidir. Kullanıcının sayfada arka uçta doğrulama teknik profili çağıran eylemleri gerçekleştirmesine olanak tanır. Örneğin, bir e-posta adresini, telefon numarasını veya müşteri sadakat numarasını doğrulama.
+Görüntüleme talepleri koleksiyonunda, oluşturduğunuz bir [DisplayControl](display-controls.md) öğesine başvuru ekleyebilirsiniz. Görüntüleme denetimi, özel işlevleri olan ve Azure AD B2C arka uç hizmetiyle etkileşime sahip bir kullanıcı arabirimi öğesidir. Kullanıcının arka uçta doğrulama teknik profilini çağıran sayfada eylemler gerçekleştirmesine olanak sağlar. Örneğin, bir e-posta adresi, telefon numarası veya müşteri bağlılık programı numarası doğrulanıyor.
 
-Aşağıdaki örnekte, `TechnicalProfile` görüntü denetimleri ile görüntü taleplerinin kullanımı gösteriş verilmiştir.
+Aşağıdaki örnek `TechnicalProfile` , görüntüleme ile ilgili görüntüleme taleplerinin kullanımını gösterir.
 
-* İlk görüntüleme talebi, e-posta adresini toplayan ve doğrulayan `emailVerificationControl` ekran denetimine başvuruda bulunarak, bu denetimi sağlar.
-* Beşinci ekran talebi, bir `phoneVerificationControl` telefon numarasını toplayan ve doğrulayan ekran denetimine başvuruda bulunarak, bu denetime başvuru yapar.
-* Diğer görüntü talepleri, kullanıcıdan toplanacak ClaimTypes'dır.
+* İlk görüntüleme talebi, e-posta adresini toplayıp `emailVerificationControl` doğrulayan görüntü denetimine bir başvuru yapar.
+* Beşinci görüntüleme talebi, bir telefon numarasını toplayıp doğrulayan `phoneVerificationControl` görüntü denetimine bir başvuru yapar.
+* Diğer görüntüleme talepleri, kullanıcıdan toplanacak ClaimTypes türleridir.
 
 ```XML
 <TechnicalProfile Id="Id">
@@ -85,13 +85,13 @@ Aşağıdaki örnekte, `TechnicalProfile` görüntü denetimleri ile görüntü 
 </TechnicalProfile>
 ```
 
-Belirtildiği gibi, bir görüntü denetimine başvuru içeren bir görüntüleme talebi, örneğin e-posta adresini doğrulamak için kendi doğrulamasını çalıştırabilir. Buna ek olarak, kendi kendini öne süren sayfa, bir sonraki düzenleme adımına geçmeden önce kullanıcı girişi (talep türleri veya görüntü denetimleri) dahil olmak üzere tüm sayfayı doğrulamak için bir doğrulama teknik profili kullanılmasını destekler.
+Belirtildiği gibi, bir görüntü denetimi başvurusu olan bir görüntüleme talebi kendi doğrulamasını çalıştırabilir, örneğin e-posta adresini doğrulayan. Ayrıca, otomatik olarak onaylanan sayfa, bir sonraki düzenleme adımına geçmeden önce herhangi bir kullanıcı girişi (talep türleri veya görüntüleme denetimleri) dahil olmak üzere tüm sayfayı doğrulamak için bir doğrulama teknik profili kullanmayı destekler.
 
-### <a name="combine-usage-of-display-claims-and-output-claims-carefully"></a>Ekran taleplerinin ve çıktı taleplerinin kullanımını dikkatle birleştirin
+### <a name="combine-usage-of-display-claims-and-output-claims-carefully"></a>Görüntüleme taleplerinin ve çıkış taleplerinin kullanımını dikkatle birleştirin
 
-Kendi kendine öne çıkan bir teknik profilde bir veya daha fazla **DisplayClaim** öğesi belirtirseniz, ekranda görüntülemek ve kullanıcıdan toplamak istediğiniz *her* talep için bir DisplayClaim kullanmanız gerekir. Hiçbir çıktı talebi, en az bir görüntü talebi içeren kendi kendini öne süren teknik bir profil tarafından görüntülenmez.
+Kendi kendine onaylanan bir teknik profilde bir veya daha fazla **DisplayClaim** öğesi belirtirseniz, ekranda görüntülemek ve kullanıcıdan toplamak istediğiniz *her* talep için bir DisplayClaim kullanmanız gerekir. En az bir görüntüleme talebi içeren, kendi kendine onaylanan bir teknik profille hiçbir çıkış talebi gösterilmiyor.
 
-Bir `age` talebin temel ilkedeki **çıktı** talebi olarak tanımlandığı aşağıdaki örneği göz önünde bulundurun. Herhangi bir görüntü iddiasını kendi kendine öne süren `age` teknik profile eklemeden önce, talep kullanıcıdan veri toplama için ekranda görüntülenir:
+Bir `age` talebin bir temel ilkede **Çıkış** talebi olarak tanımlandığı aşağıdaki örneği göz önünde bulundurun. Kendi kendini onaylanan teknik profile herhangi bir görüntüleme talebi eklemeden önce, `age` talep kullanıcıdan veri toplamaya yönelik ekranda görüntülenir:
 
 ```XML
 <TechnicalProfile Id="id">
@@ -101,7 +101,7 @@ Bir `age` talebin temel ilkedeki **çıktı** talebi olarak tanımlandığı aş
 </TechnicalProfile>
 ```
 
-Bu temeli devralan bir yaprak ilkesi `officeNumber` daha sonra **bir görüntü** talebi olarak belirtirse:
+O temeli devralan bir yaprak ilke daha sonra bir `officeNumber` **görüntüleme** talebi olarak belirtirse:
 
 ```XML
 <TechnicalProfile Id="id">
@@ -114,31 +114,31 @@ Bu temeli devralan bir yaprak ilkesi `officeNumber` daha sonra **bir görüntü*
 </TechnicalProfile>
 ```
 
-Temel `age` ilkedeki talep artık ekranda kullanıcıya sunulmadı - etkili bir şekilde "gizlidir." `age` Talebi görüntülemek ve kullanıcıdan yaş değerini toplamak için `age` bir **DisplayClaim**eklemeniz gerekir.
+Temel `age` ilkedeki talep artık ekranda kullanıcıya sunulmadı; bu, etkin bir "gizli". `age` Talebi görüntülemek ve kullanıcıdan yaş değerini toplamak için bir `age` **DisplayClaim**eklemeniz gerekir.
 
-## <a name="output-claims"></a>Çıktı talepleri
+## <a name="output-claims"></a>Çıkış talepleri
 
-**OutputClaims** öğesi, bir sonraki düzenleme adımına döndürülecek taleplerin listesini içerir. **Varsayılan Değer** özniteliği yalnızca talep hiç ayarlanmadıysa etkinolur. Önceki bir düzenleme adımında ayarlanmışsa, kullanıcı değeri boş bıraksa bile varsayılan değer etkili olmaz. Varsayılan değerin kullanımını zorlamak `true` **için, AlwaysUseDefaultValue** özniteliğini .
+**Outputclaim** öğesi, sonraki düzenleme adımına döndürülecek talepler listesini içerir. **DefaultValue** özniteliği yalnızca talep ayarlanmamışsa devreye girer. Önceki bir düzenleme adımında ayarlandıysa, Kullanıcı değeri boş bırakırsa bile varsayılan değer geçerli olmaz. Varsayılan bir değerin kullanımını zorlamak için, **Alwaysusedefaultvalue** özniteliğini olarak `true`ayarlayın.
 
-Güvenlik nedenleriyle, parola talep`UserInputType` değeri `Password`(ayarlanmış) yalnızca kendi kendini öne süren teknik profilin doğrulama teknik profillerinde kullanılabilir. Sonraki düzenleme adımlarında parola iddiasını kullanamazsınız. 
+Güvenlik nedenleriyle, bir parola talep değeri (`UserInputType` olarak `Password`ayarlanır) yalnızca kendi kendine onaylanan teknik profilin doğrulama teknik profillerinde kullanılabilir. Sonraki düzenleme adımlarında parola talebi kullanamazsınız. 
 
 > [!NOTE]
-> Kimlik Deneyimi Çerçevesi'nin (IEF) önceki sürümlerinde, çıktı talepleri kullanıcıdan veri toplamak için kullanılmıştır. Kullanıcıdan veri toplamak için **displayclaims** koleksiyonunu kullanın.
+> Kimlik deneyimi çerçevesinin (ıEF) önceki sürümlerinde, çıkış talepleri kullanıcıdan veri toplamak için kullanıldı. Kullanıcıdan veri toplamak için bunun yerine bir **DisplayClaim** koleksiyonu kullanın.
 
-**OutputClaimsTransformations** öğesi, çıktı taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan **OutputClaimsTransformation** öğelerikoleksiyonunu içerebilir.
+**Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
-### <a name="when-you-should-use-output-claims"></a>Çıktı taleplerini kullanmanız gerektiğinde
+### <a name="when-you-should-use-output-claims"></a>Çıkış taleplerini kullanmanız gerektiğinde
 
-Kendi kendine ileri süren teknik profilde, çıktı talepleri toplama talepleri bir sonraki düzenleme adımına döndürür.
+Kendi kendine onaylanan bir teknik profilde, çıkış talep koleksiyonu, talepleri sonraki düzenleme adımına döndürür.
 
-Çıktı taleplerini şu anda kullanın:
+Şu durumlarda çıkış taleplerini kullan:
 
-- **Talepler çıktı talepleri dönüşümü ile çıktıdır.**
-- Kullanıcıdan veri toplamadan veya doğrulama teknik profilinden verileri döndürmeden **çıktı talebinde varsayılan değer ayarlama.** Kendi `LocalAccountSignUpWithLogonEmail` kendini ileri süren teknik **profil, yürütülen-SelfAsserted-Giriş** iddiasını `true`ayarlar.
-- **Doğrulama teknik profili çıktı taleplerini döndürür** - Teknik profiliniz bazı talepleri döndüren bir doğrulama teknik profili çağırabilir. İddiaları kabarcıklamak ve kullanıcı yolculuğunda bir sonraki düzenleme adımlarına döndürmek isteyebilirsiniz. Örneğin, yerel bir hesapla oturum açken, kendi kendini `SelfAsserted-LocalAccountSignin-Email` öne süren teknik `login-NonInteractive`profil adlı doğrulama teknik profilini çağırır. Bu teknik profil kullanıcı kimlik bilgilerini doğrular ve kullanıcı profilini de döndürür. 'userPrincipalName', 'displayName', 'givenName' ve 'surname' gibi.
-- **Görüntü denetimi çıktı taleplerini döndürür** - Teknik profilinizin [ekran denetimine](display-controls.md)bir başvurusu olabilir. Görüntü denetimi, doğrulanmış e-posta adresi gibi bazı talepleri döndürür. İddiaları kabarcıklamak ve kullanıcı yolculuğunda bir sonraki düzenleme adımlarına döndürmek isteyebilirsiniz. Ekran denetimi özelliği şu anda **önizlemede.**
+- **Talepler çıkış talebi dönüşümüne göre çıktılardır**.
+- Kullanıcıdan veri toplanmadan veya doğrulama teknik profilindeki verileri döndürmeden **bir çıkış talebinde varsayılan değer ayarlama** . `LocalAccountSignUpWithLogonEmail` Kendi kendini onaylanan teknik profil, **yürütülen-SelfAsserted-Input** talebini olarak `true`ayarlar.
+- **Bir doğrulama teknik profili, çıkış taleplerini döndürür** . Teknik profiliniz, bazı talepler döndüren bir doğrulama teknik profili çağırabilir. Talepleri kabarcığa eklemek ve bunları Kullanıcı yolculuğunda sonraki düzenleme adımlarına döndürmek isteyebilirsiniz. Örneğin, yerel bir hesapla oturum açarken, adlı otomatik olarak onaylanan teknik profil adlı `SelfAsserted-LocalAccountSignin-Email` `login-NonInteractive`doğrulama teknik profilini çağırır. Bu teknik profil, Kullanıcı kimlik bilgilerini doğrular ve kullanıcı profilini de döndürür. ' UserPrincipalName ', ' displayName ', ', ' ve ' soyadı ' gibi.
+- **Bir görüntü denetimi çıkış taleplerini döndürür** . Teknik profiliniz bir [görüntü denetimine](display-controls.md)yönelik bir başvuruya sahip olabilir. Görünen denetim, doğrulanmış e-posta adresi gibi bazı talepler döndürür. Talepleri kabarcığa eklemek ve bunları Kullanıcı yolculuğunda sonraki düzenleme adımlarına döndürmek isteyebilirsiniz. Görüntüleme denetimi özelliği şu anda **önizlemededir**.
 
-Aşağıdaki örnek, hem görüntü talepleri hem de çıktı talepleri kullanan kendini ileri süren bir teknik profilin kullanımını göstermektedir.
+Aşağıdaki örnek, hem görüntüleme taleplerini hem de çıkış taleplerini kullanan kendi kendine onaylanan bir teknik profilin kullanımını gösterir.
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -175,39 +175,39 @@ Aşağıdaki örnek, hem görüntü talepleri hem de çıktı talepleri kullanan
 </TechnicalProfile>
 ```
 
-## <a name="persist-claims"></a>Devam talepleri
+## <a name="persist-claims"></a>Kalıcı talepler
 
-PersistedClaims öğesi kullanılmaz. Kendi kendini öne süren teknik profil, verileri Azure AD B2C'ye kadar devam etmez. Bunun yerine, verileri kalıcı olarak sağlamakla sorumlu bir doğrulama teknik profiline arama yapılır. Örneğin, kaydolma ilkesi, yeni `LocalAccountSignUpWithLogonEmail` kullanıcı profilini toplamak için kendi kendini öne süren teknik profili kullanır. Teknik `LocalAccountSignUpWithLogonEmail` profil, hesabı Azure AD B2C'de oluşturmak için doğrulama teknik profilini çağırır.
+PersistedClaims öğesi kullanılmıyor. Otomatik olarak onaylanan teknik profil, verileri Azure AD B2C kalıcı tutmaz. Bunun yerine, verileri kalıcı hale getirmekten sorumlu bir doğrulama teknik profiline çağrı yapılır. Örneğin, kaydolma ilkesi, yeni kullanıcı profilini toplamak için `LocalAccountSignUpWithLogonEmail` kendi kendine onaylanan teknik profilini kullanır. `LocalAccountSignUpWithLogonEmail` Teknik profil, Azure AD B2C hesabı oluşturmak için doğrulama teknik profilini çağırır.
 
 ## <a name="validation-technical-profiles"></a>Doğrulama teknik profilleri
 
-Doğrulama teknik profili, başvuru teknik profilinin çıktı taleplerinin bir kısmını veya tamamını doğrulamak için kullanılır. Doğrulama teknik profilinin giriş talepleri, kendi kendine ileri sürülen teknik profilin çıktı taleplerinde görünmelidir. Doğrulama teknik profili kullanıcı girişini doğrular ve kullanıcıya bir hata döndürebilir.
+Bir doğrulama teknik profili, başvuru yapan teknik profilin bazı veya tüm çıkış taleplerini doğrulamak için kullanılır. Doğrulama teknik profilinin giriş talepleri, kendi kendini onaylanan teknik profilin çıkış taleplerinde görünmelidir. Doğrulama teknik profili, Kullanıcı girişini doğrular ve kullanıcıya bir hata döndürebilir.
 
-Doğrulama teknik profili, ilkedeki [Azure Etkin Dizini](active-directory-technical-profile.md) veya REST [API](restful-technical-profile.md) teknik profilleri gibi herhangi bir teknik profil olabilir. Önceki örnekte, `LocalAccountSignUpWithLogonEmail` teknik profil signinName dizinde yok olduğunu doğrular. Değilse, doğrulama teknik profili yerel bir hesap oluşturur ve objectId, authenticationSource, newUser döndürür. Teknik `SelfAsserted-LocalAccountSignin-Email` profil, `login-NonInteractive` kullanıcı kimlik bilgilerini doğrulamak için doğrulama teknik profilini çağırır.
+Doğrulama teknik profili, ilkede [Azure Active Directory](active-directory-technical-profile.md) veya [REST API](restful-technical-profile.md) teknik profilleri gibi herhangi bir teknik profil olabilir. Önceki örnekte, `LocalAccountSignUpWithLogonEmail` teknik profil, Signınname 'in dizinde mevcut olmadığını doğrular. Aksi takdirde, doğrulama teknik profili yerel bir hesap oluşturur ve objectID, authenticationSource, newUser öğesini döndürür. `SelfAsserted-LocalAccountSignin-Email` Teknik profil, Kullanıcı kimlik `login-NonInteractive` bilgilerini doğrulamak için doğrulama teknik profilini çağırır.
 
-Ayrıca, iş mantığınızla birlikte REST API teknik profilini arayabilir, giriş taleplerinin üzerine yazabilir veya kurumsal iş yeri uygulamasıyla daha fazla entegre ederek kullanıcı verilerini zenginleştirebilirsiniz. Daha fazla bilgi için Doğrulama [teknik profiline](validation-technical-profile.md) bakın
+Ayrıca kurumsal iş kolu uygulamasıyla daha fazla tümleştirme yaparak iş mantığınızla birlikte REST API teknik bir profil çağırabilir, giriş taleplerinin üzerine yazabilir veya zenginleştirme Kullanıcı verileri sağlayabilirsiniz. Daha fazla bilgi için bkz. [doğrulama teknik profili](validation-technical-profile.md)
 
 ## <a name="metadata"></a>Meta Veriler
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| setting.operatingMod <sup>1</sup>| Hayır | Oturum açma sayfası için bu özellik, giriş doğrulama ve hata iletileri gibi kullanıcı adı alanının davranışını denetler. Beklenen `Username` değerler: `Email`veya .  |
-| İzin GenerationofclaimsWithNullvalues| Hayır| Null değeri olan bir talep oluşturmamaya izin verin. Örneğin, bir durumda kullanıcı bir onay kutusu seçmez.|
-| İçerikDefinitionReferenceId | Evet | Bu teknik profille ilişkili [içerik tanımının](contentdefinitions.md) tanımlayıcısı. |
-| E-posta Doğrulamayı Uygulayın | Hayır | Kaydolma veya profil düzeltme için e-posta doğrulamasını zorlar. Olası değerler: `true` (varsayılan) veya `false`. |
-| setting.retryLimit | Hayır | Bir kullanıcının doğrulama teknik profiliyle karşısına çıkan verileri sağlamayı kaç kez deneyebileceğini denetler. Örneğin, bir kullanıcı zaten var olan bir hesapla kaydolmaya çalışır ve sınırulaşınana kadar denemeye devam eder.
-| Kayıt Hedef <sup>1</sup>| Hayır | Kayıt hedef değişim tanımlayıcısı. Kullanıcı kaydol düğmesini tıklattığında, Azure AD B2C belirtilen değişim tanımlayıcısını çalıştırır. |
-| setting.showCancelButton | Hayır | İptal düğmesini görüntüler. Olası değerler: `true` (varsayılan) veya`false` |
-| setting.showContinueButton | Hayır | Continue düğmesini görüntüler. Olası değerler: `true` (varsayılan) veya`false` |
-| setting.showSignupLink <sup>2</sup>| Hayır | Kaydol düğmesini görüntüler. Olası değerler: `true` (varsayılan) veya`false` |
-| ayarı.forgotPasswordLinkLocation <sup>2</sup>| Hayır| Unutulan parola bağlantısını görüntüler. Olası değerler: `AfterInput` (varsayılan) bağlantı sayfanın alt kısmında `None` görüntülenir veya unutulan parola bağlantısını kaldırır.|
-| ayarı.enableRememberMe <sup>2</sup>| Hayır| Beni [tut imzalı](custom-policy-keep-me-signed-in.md) onay kutusunu görüntüler. Olası değerler: `true` `false` , veya (varsayılan). |
-| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıktı talepleri [için, talep çözümlübir](claim-resolver-overview.md) çözümünü teknik profilde bulunup bulunmayacağını belirtir. Olası değerler: `true` `false`  , veya (varsayılan). Teknik profilde bir talep çözümleyicisi kullanmak istiyorsanız, bunu ' ya `true`göre ayarlayın. |
+| ayarlanıyor. operatingMode <sup>1</sup>| Hayır | Oturum açma sayfası için bu özellik, giriş doğrulaması ve hata iletileri gibi Kullanıcı adı alanının davranışını denetler. Beklenen değerler: `Username` veya `Email`.  |
+| AllowGenerationOfClaimsWithNullValues| Hayır| Null değerli bir talep oluşturmaya izin verin. Örneğin, bir durumda Kullanıcı bir onay kutusu seçmez.|
+| Contentdefinitionreferenceıd | Yes | Bu teknik profille ilişkili [içerik tanımının](contentdefinitions.md) tanımlayıcısı. |
+| Enforceemaildoğrulaması | Hayır | Kaydolma veya profil düzenleme için, e-posta doğrulamasını uygular. Olası değerler: `true` (varsayılan) veya `false`. |
+| . retryLimit ayarlanıyor | Hayır | Bir kullanıcının bir doğrulama teknik profiline karşı denetlenen verileri sağlamaya kaç kez denendiğini denetler. Örneğin, bir kullanıcı zaten var olan bir hesapla kaydolmaya çalışır ve sınıra ulaşılana kadar denemeye devam eder.
+| SignUpTarget <sup>1</sup>| Hayır | Kaydolma hedefi değişim tanımlayıcısı. Kullanıcı kaydolma düğmesine tıkladığında, Azure AD B2C belirtilen Exchange tanımlayıcısını yürütür. |
+| Setting. showCancelButton | Hayır | İptal düğmesini görüntüler. Olası değerler: `true` (varsayılan) veya`false` |
+| Setting. Showdevam düğmesi | Hayır | Devam düğmesini görüntüler. Olası değerler: `true` (varsayılan) veya`false` |
+| Setting. Showsignyukarı <sup>2</sup>| Hayır | Kaydolma düğmesini görüntüler. Olası değerler: `true` (varsayılan) veya`false` |
+| ayar. forgotPasswordLinkLocation <sup>2</sup>| Hayır| Parolayı unuttum bağlantısını görüntüler. Olası değerler: `AfterInput` (varsayılan) bağlantı sayfanın alt kısmında görüntülenir veya `None` parolayı unutma bağlantısını kaldırır.|
+| ayarlanıyor. enableRememberMe <sup>2</sup>| Hayır| Oturumumu [açık tut](custom-policy-keep-me-signed-in.md) onay kutusunu görüntüler. Olası değerler: `true` , veya `false` (varsayılan). |
+| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true`, veya `false`  (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak `true`ayarlayın. |
 
 Notlar:
-1. İçerik tanımı [dataUri](contentdefinitions.md#datauri) türü `unifiedssp`için `unifiedssd`kullanılabilir , veya .
-1. İçerik tanımı [dataUri](contentdefinitions.md#datauri) türü `unifiedssp`için `unifiedssd`kullanılabilir , veya . [Sayfa düzeni sürüm](page-layout.md) 1.1.0 ve üzeri.
+1. `unifiedssp`Ya `unifiedssd`da içerik tanımı [datauri](contentdefinitions.md#datauri) türü için kullanılabilir.
+1. `unifiedssp`Ya `unifiedssd`da içerik tanımı [datauri](contentdefinitions.md#datauri) türü için kullanılabilir. [Sayfa düzeni sürüm](page-layout.md) 1.1.0 ve üstü.
 
-## <a name="cryptographic-keys"></a>Şifreleme tuşları
+## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
-**CryptographicKeys** öğesi kullanılmaz.
+**Cryptographickeys** öğesi kullanılmıyor.

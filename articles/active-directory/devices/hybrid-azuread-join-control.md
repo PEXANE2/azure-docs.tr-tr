@@ -1,6 +1,6 @@
 ---
-title: Karma Azure AD join'in kontrollü doğrulaması - Azure AD
-description: Tüm kuruluş genelinde tek seferde etkinleştirmeden önce karma Azure AD birleştirmenin kontrollü doğrulamasını nasıl yapacağınızı öğrenin
+title: Karma Azure AD katılımı denetimi-Azure AD
+description: Tek seferde tüm kuruluş genelinde etkinleştirmeden önce karma Azure AD JOIN 'in denetimli bir doğrulamasını yapmayı öğrenin
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,94 +12,94 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f43db805ccbb7d4e546c51bbe39350f4bbba2efb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80049991"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrit Azure AD’ye katılıma yönelik denetimli doğrulama
 
-Ön koşulların tümü yerinde olduğunda, Windows aygıtları otomatik olarak Azure AD kiracınızda aygıt olarak kaydedilir. Azure AD'deki bu aygıt kimliklerinin durumu karma Azure AD join olarak adlandırılır. Bu makalede kapsanan kavramlar hakkında daha fazla bilgiyi Azure [Etkin Dizini'nde cihaz yönetimine giriş](overview.md) ve karma Azure Active [Directory'nizi planlayın](hybrid-azuread-join-plan.md)makalelerinde bulabilirsiniz.
+Tüm önkoşulların yerine Windows cihazları otomatik olarak Azure AD kiracınızda cihaz olarak kaydedilir. Azure AD 'deki bu cihaz kimliklerinin durumu karma Azure AD katılımı olarak adlandırılır. Bu makalede ele alınan kavramlar hakkında daha fazla bilgi [Azure Active Directory içinde cihaz yönetimine giriş](overview.md) ve [hibrit Azure Active Directory JOIN Uygulamanızı planlayın](hybrid-azuread-join-plan.md).
 
-Kuruluşlar, tüm kuruluşlarında tek seferde etkinleştirmeden önce karma Azure AD birleştirmesinin kontrollü bir doğrulamasını yapmak isteyebilir. Bu makalede, karma Azure AD join'in kontrollü bir doğrulamasının nasıl gerçekleştirileceği açıklanmaktadır.
+Kuruluşlar, karma Azure AD JOIN 'in tüm kuruluşları genelinde tek seferde etkinleştirmeden önce denetimli bir doğrulama yapmak isteyebilir. Bu makalede, karma Azure AD JOIN 'in denetimli doğrulamasının nasıl yapılacağı açıklanmaktadır.
 
-## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-current-devices"></a>Windows geçerli cihazlarda karma Azure AD birleştirme denetiminde doğrulama
+## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-current-devices"></a>Windows geçerli cihazlarda karma Azure AD JOIN 'in denetimli doğrulaması
 
-Windows masaüstü işletim sistemini çalıştıran aygıtlar için desteklenen sürüm Windows 10 Anniversary Update (sürüm 1607) veya daha sonraki sürümdür. En iyi yöntem olarak, Windows 10'un en son sürümüne yükseltin.
+Windows masaüstü işletim sistemi çalıştıran cihazlarda, desteklenen sürüm Windows 10 yıldönümü Güncelleştirmesi (sürüm 1607) veya daha sonraki bir sürümdür. En iyi uygulama olarak Windows 10 ' un en son sürümüne yükseltin.
 
-Windows geçerli cihazlarda karma Azure AD join'in kontrollü bir şekilde doğrulanmasını yapmak için şunları yapmanız gerekir:
+Windows geçerli cihazlarda karma Azure AD JOIN 'in denetimli bir doğrulamasını yapmak için şunları yapmanız gerekir:
 
-1. Varsa Active Directory (AD)'den Hizmet Bağlantı Noktası (SCP) girişini temizleme
-1. Grup İlkesi Nesnesi (GPO) kullanarak etki alanı birleştirilmiş bilgisayarlarınızda SCP için istemci tarafı kayıt defteri ayarını yapılandırın
-1. AD FS kullanıyorsanız, SCP için istemci tarafı kayıt defteri ayarını DA Ad FS sunucunuzda bir GPO kullanarak yapılandırmanız gerekir  
-1. Aygıt eşitlemesini etkinleştirmek için Azure AD Connect'te [eşitleme seçeneklerini özelleştirmeniz](../hybrid/how-to-connect-post-installation.md#additional-tasks-available-in-azure-ad-connect) de gerekebilir. 
-
-
-### <a name="clear-the-scp-from-ad"></a>SCP'yi AD'den temizleyin
-
-AD'deki SCP nesnelerini değiştirmek için Active Directory Services Interfaces Editor 'ı (ADSI Edit) kullanın.
-
-1. **ADSI Masaüstü** uygulamasını kurumsal yönetici olarak başlatın ve yönetim iş istasyonundan veya etki alanı denetleyicisinden başlatın.
-1. Etki alanınızın **Yapılandırma Adlandırma Bağlamına** bağlanın.
-1. **CN=Configuration,DC=contoso,DC=com** > **CN=Services** > **CN=Device Registration Configuration** adresine göz atın
-1. Yaprak **nesneCN=62a0ff2e-97b9-4513-943f-0d221bd30080** sağ tıklayın ve **Özellikleri** seçin
-   1. **Öznitelik Düzenleyicisi** penceresinden **anahtar kelimeler** seçin ve **Edit'i** tıklatın
-   1. **azureADId** ve **azureADName** değerlerini seçin (birer birer) ve **Kaldır'ı** tıklatın
-1. **ADSI'yi** Kapat
+1. Varsa, hizmet bağlantı noktası (SCP) girişini Active Directory (AD) öğesinden temizle
+1. Grup ilkesi nesnesi (GPO) kullanarak etki alanına katılmış bilgisayarlarınızda SCP için istemci tarafı kayıt defteri ayarını yapılandırma
+1. AD FS kullanıyorsanız, GPO kullanarak AD FS sunucunuzdaki SCP için istemci tarafı kayıt defteri ayarını da yapılandırmanız gerekir.  
+1. Cihaz eşitlemesini etkinleştirmek için Azure AD Connect [eşitleme seçeneklerini de özelleştirmeniz](../hybrid/how-to-connect-post-installation.md#additional-tasks-available-in-azure-ad-connect) gerekebilir. 
 
 
-### <a name="configure-client-side-registry-setting-for-scp"></a>SCP için istemci tarafı kayıt ayarı yapılandırma
+### <a name="clear-the-scp-from-ad"></a>AD 'den SCP 'YI Temizleme
 
-Aygıtlarınızın kayıt defterinde bir SCP girişi yapılandıran bir kayıt defteri ayarı dağıtmak için bir Grup İlkesi Nesnesi (GPO) oluşturmak için aşağıdaki örneği kullanın.
+AD 'deki SCP nesnelerini değiştirmek için Active Directory Hizmetleri arabirimleri Düzenleyicisi 'Ni (ADSI düzenleme) kullanın.
 
-1. Grup İlkesi Yönetimi konsolu açın ve etki alanınızda yeni bir Grup İlkesi Nesnesi oluşturun.
-   1. Yeni oluşturduğunuz GPO'ya bir ad (örneğin, ClientSideSCP) sağlayın.
-1. GPO'yu düzenleme ve aşağıdaki yolu bulma: **Bilgisayar Yapılandırma** > **Tercihleri** > **Windows Ayarları** > **Kayıt Defteri**
-1. Kayıt Defteri'ne sağ tıklayın ve **Yeni** > **Kayıt Defteri Öğesi'ni** seçin
+1. Şirket Yöneticisi olarak ve yönetim iş istasyonundan veya bir etki alanı denetleyicisinden **ADSI düzenleme** masaüstü uygulamasını başlatın.
+1. Etki alanınız için **yapılandırma adlandırma bağlamına** bağlanın.
+1. **CN = Configuration, DC = contoso, DC = com** > **CN = Services** > **CN = cihaz kayıt yapılandırması** ' na gidin
+1. **CN = 62a0ff2e-97B9-4513-943F-0d221bd30080** yaprak nesnesine sağ tıklayın ve **Özellikler** ' i seçin
+   1. **Öznitelik Düzenleyicisi** penceresinde **anahtar sözcükler** ' i seçin ve **Düzenle** ' ye tıklayın.
+   1. **Azureadıd** ve **azureadname** değerlerini (tek seferde bir kez) seçip **Kaldır** ' a tıklayın.
+1. **ADSI düzenlemesini** kapat
+
+
+### <a name="configure-client-side-registry-setting-for-scp"></a>SCP için istemci tarafı kayıt defteri ayarını yapılandırma
+
+Cihazlarınızın kayıt defterinde bir SCP girişi yapılandırmak için bir kayıt defteri ayarı dağıtmak üzere bir grup ilkesi nesnesi (GPO) oluşturmak için aşağıdaki örneği kullanın.
+
+1. Grup ilkesi bir Yönetim Konsolu açın ve etki alanında yeni bir grup ilkesi nesnesi oluşturun.
+   1. Yeni oluşturduğunuz GPO 'YU bir ad sağlayın (örneğin, ClientSideSCP).
+1. GPO 'yu düzenleyin ve şu yolu bulun: **bilgisayar yapılandırma** > **tercihleri** > **Windows ayarları** > **kayıt defteri**
+1. Kayıt defterine sağ tıklayıp **Yeni** > **kayıt defteri öğesi** ' ni seçin
    1. **Genel** sekmesinde, aşağıdakileri yapılandırın
-      1. Eylem: **Güncelleme**
-      1. Kovan: **HKEY_LOCAL_MACHINE**
-      1. Anahtar Yol: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
-      1. Değer adı: **TenantId**
+      1. Eylem: **Güncelleştir**
+      1. Hive: **HKEY_LOCAL_MACHINE**
+      1. Anahtar yolu: **Software\microsoft\windows\currentversion\cdj\aad**
+      1. Değer adı: **Tenantıd**
       1. Değer türü: **REG_SZ**
-      1. Değer verileri: Azure REKLAM örneğinizin GUID veya **Dizin Kimliği** (Bu değer **Azure portalı** > **Azure Active Directory** > **Properties** > **Directory ID'de**bulunabilir)
-   1. **Tamam'ı** tıklatın
-1. Kayıt Defteri'ne sağ tıklayın ve **Yeni** > **Kayıt Defteri Öğesi'ni** seçin
+      1. Değer verileri: Azure AD örneğinizin GUID veya **dizin kimliği** (Bu değer **Azure Portal** > **Azure Active Directory** > **Özellikler** > **Dizin kimliğinde**bulunabilir)
+   1. **Tamam 'a** tıklayın
+1. Kayıt defterine sağ tıklayıp **Yeni** > **kayıt defteri öğesi** ' ni seçin
    1. **Genel** sekmesinde, aşağıdakileri yapılandırın
-      1. Eylem: **Güncelleme**
-      1. Kovan: **HKEY_LOCAL_MACHINE**
-      1. Anahtar Yol: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
+      1. Eylem: **Güncelleştir**
+      1. Hive: **HKEY_LOCAL_MACHINE**
+      1. Anahtar yolu: **Software\microsoft\windows\currentversion\cdj\aad**
       1. Değer adı: **TenantName**
       1. Değer türü: **REG_SZ**
-      1. Değer verileri: AD FS gibi federe ortamı kullanıyorsanız doğrulanmış **alan adınız.** Yönetilen ortamı kullanıyorsanız, `contoso.onmicrosoft.com` doğrulanmış alan **adınız** veya onmicrosoft.com alan adınız örneğin
-   1. **Tamam'ı** tıklatın
-1. Yeni oluşturulan GPO için düzenleyiciyi kapatma
-1. Yeni oluşturulan GPO'yu, kontrollü kullanıma alma popülasyonunuza ait etki alanı birleştirilmiş bilgisayarları içeren istediğiniz OU'ya bağla
+      1. Değer verileri: AD FS gibi federe ortam kullanıyorsanız, doğrulanmış **etki alanı adınız** . Yönetilen ortam kullanıyorsanız, `contoso.onmicrosoft.com` doğrulanmış **etki alanı adınız** veya onmicrosoft.com etki alanı adınız
+   1. **Tamam 'a** tıklayın
+1. Yeni oluşturulan GPO için Düzenleyiciyi Kapat
+1. Yeni oluşturulan GPO 'YU, denetimli dağıtım popülasyona ait olan, etki alanına katılmış bilgisayarları içeren istenen OU 'ya bağlayın
 
 ### <a name="configure-ad-fs-settings"></a>AD FS ayarlarını yapılandırma
 
-AD FS kullanıyorsanız, öncelikle GPO'yu AD FS sunucularınıza bağlayarak yukarıda belirtilen yönergeleri kullanarak istemci tarafındaki SCP'yi yapılandırmanız gerekir. SCP nesnesi aygıt nesneleri için yetki kaynağını tanımlar. Şirket içinde veya Azure AD olabilir. İstemci tarafı SCP AD FS için yapılandırıldığında, aygıt nesnelerinin kaynağı Azure AD olarak belirlenir.
+AD FS kullanıyorsanız, önce GPO 'YU AD FS sunucularınıza bağlayarak, yukarıda bahsedilen yönergeleri kullanarak istemci tarafı SCP 'yi yapılandırmanız gerekir. SCP nesnesi, cihaz nesneleri için yetki kaynağını tanımlar. Şirket içi veya Azure AD olabilir. İstemci tarafı SCP AD FS için yapılandırıldığında, cihaz nesneleri kaynağı Azure AD olarak oluşturulur.
 
 > [!NOTE]
-> AD FS sunucularınızda istemci tarafındaki SCP'yi yapılandırmayı başaramadıysanız, aygıt kimlikleri için kaynak şirket içi olarak kabul edilir. ADFS daha sonra ADFS Aygıt Kaydı'nın "MaximumInactiveDays" özelliğinde tanımlanan süre sonunda aygıt nesnelerini şirket içi dizinden silmeye başlar. ADFS Cihaz Kayıt nesneleri [Get-AdfsDeviceRegistration cmdlet](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)kullanılarak bulunabilir.
+> AD FS sunucularınızda istemci tarafı SCP 'YI yapılandıradıysanız, cihaz kimliklerinin kaynağı şirket içi olarak kabul edilir. ADFS daha sonra, ADFS cihaz kaydının "Maximumınactivedays" özniteliğinde tanımlanan bir süre sonra şirket içi dizinden cihaz nesnelerini silmeye başlayacaktır. ADFS cihaz kayıt nesneleri [Get-AdfsDeviceRegistration cmdlet 'i](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)kullanılarak bulunabilir.
 
-## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Windows alt düzey cihazlarda karma Azure AD birleştirme denetimi
+## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Windows alt düzey cihazlarda karma Azure AD JOIN 'in denetimli doğrulaması
 
-Windows alt düzey aygıtları kaydetmek için kuruluşların, Microsoft İndirme Merkezi'nde bulunmayan [Windows 10 bilgisayarlar için Microsoft İşyeri Birleştirme'yi](https://www.microsoft.com/download/details.aspx?id=53554) yüklemesi gerekir.
+Windows alt düzey cihazlarını kaydettirmek için kuruluşların Microsoft Indirme Merkezi ' nde [Windows 10 olmayan bilgisayarlar Için microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554) yüklemesi gerekir.
 
- [Paketi Microsoft Endpoint Configuration Manager](/configmgr/)gibi bir yazılım dağıtım sistemi kullanarak dağıtabilirsiniz. Paket sessiz parametre ile standart sessiz kurulum seçeneklerini destekler. Configuration Manager'ın geçerli şubesi, tamamlanan kayıtları izleme olanağı gibi önceki sürümlere göre avantajlar sunar.
+Paketi [Microsoft uç noktası Configuration Manager](/configmgr/)gibi bir yazılım dağıtım sistemi kullanarak dağıtabilirsiniz. Paket, sessiz parametre ile standart sessiz yükleme seçeneklerini destekler. Configuration Manager geçerli dalı, tamamlanan kayıtları izleme özelliği gibi önceki sürümlerden daha fazla avantaj sunar.
 
-Yükleyici, kullanıcı bağlamında çalışan sistemde zamanlanmış bir görev oluşturur. Kullanıcı Windows'da kaydolduğunda görev tetiklenir. Görev, Azure AD ile kimlik doğrulaması yaptıktan sonra azure AD ile aygıta sessizce katılır.
+Yükleyici, kullanıcı bağlamında çalışan sistemde zamanlanmış bir görev oluşturur. Görev, Kullanıcı Windows 'da oturum açtığında tetiklenir. Bu görev, Azure AD ile kimlik doğrulamasından geçtikten sonra, Kullanıcı kimlik bilgileriyle cihazı Azure AD ile sessizce birleştirir.
 
-Aygıt kaydını denetlemek için, Windows Installer paketini seçtiğiniz Windows alt düzey aygıtgrubuna dağıtmanız gerekir.
+Cihaz kaydını denetlemek için Windows Installer paketini seçili Windows alt düzey cihaz grubunuza dağıtmanız gerekir.
 
 > [!NOTE]
-> Bir SCP AD'de yapılandırılmamışsa, Grup İlkesi Nesnesi (GPO) kullanarak etki alanı birleştirilmiş bilgisayarlarınızda [SCP için istemci tarafı kayıt defteri ayarını yapılandırmak için](#configure-client-side-registry-setting-for-scp)açıklandığı şekilde aynı yaklaşımı izlemeniz gerekir.
+> AD 'de bir SCP yapılandırılmamışsa, grup ilkesi nesnesi (GPO) kullanarak etki alanına katılmış bilgisayarlarınızda [SCP için istemci tarafı kayıt defteri ayarını yapılandırma](#configure-client-side-registry-setting-for-scp)konusunda açıklandığı gibi aynı yaklaşımı izlemeniz gerekir.
 
 
-Her şeyin beklendiği gibi çalıştığını doğruladıktan sonra, Azure AD Connect kullanarak [SCP'yi yapılandırarak](hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join)windows geçerli ve alt düzey aygıtlarınızın geri kalanını Azure AD'ye otomatik olarak kaydedebilirsiniz.
+Her şeyin beklendiği gibi çalıştığını doğruladıktan sonra, [Azure AD Connect kullanarak SCP 'yi yapılandırarak](hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join)Windows geçerli ve alt düzey cihazlarınızın geri KALANıNı Azure AD 'ye otomatik olarak kaydedebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Karma Azure Etkin Dizininizi uygulamanızı planlayın](hybrid-azuread-join-plan.md)
+[Hibrit Azure Active Directory JOIN Uygulamanızı planlayın](hybrid-azuread-join-plan.md)

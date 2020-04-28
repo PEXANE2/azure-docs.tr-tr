@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.openlocfilehash: fac9933c57a54736aed5ccfdd54d126f0ca32973
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418363"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory'de işlem hattı çalıştırma ve tetikleyiciler
 
-> [!div class="op_single_selector" title1="Kullanmakta olduğunuz Veri Fabrikası hizmetinin sürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmetinin sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-scheduling-and-execution.md)
-> * [Geçerli sürüm](concepts-pipeline-execution-triggers.md)
+> * [Güncel sürüm](concepts-pipeline-execution-triggers.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory'de _işlem hattı çalıştırması_, bir işlem hattı yürütme örneğini tanımlar. Örneğin, 08.00, 09.00 ve 10.00'da çalışan bir işlem hattınız olduğunu kabul edelim. Bu durumda, boru hattı veya boru hattı çalışır üç ayrı çalışır vardır. Her işlem hattı çalıştırması benzersiz bir işlem hattı çalıştırma kimliğine sahiptir. Çalıştırma kimliği, belirli bir işlem hattı çalıştırmasını benzersiz bir şekilde tanımlayan GUID’dir.
+Azure Data Factory'de _işlem hattı çalıştırması_, bir işlem hattı yürütme örneğini tanımlar. Örneğin, 08.00, 09.00 ve 10.00'da çalışan bir işlem hattınız olduğunu kabul edelim. Bu durumda, işlem hattının veya işlem hattı çalıştırmalarının üç ayrı çalıştırması vardır. Her işlem hattı çalıştırması benzersiz bir işlem hattı çalıştırma kimliğine sahiptir. Çalıştırma kimliği, belirli bir işlem hattı çalıştırmasını benzersiz bir şekilde tanımlayan GUID’dir.
 
 İşlem hattı çalıştırmaları örneği genelde bağımsız değişkenlerin işlem hatlarında tanımladığınız parametrelere iletilmesiyle oluşturulur. İşlem hattını el ile veya bir _tetikleyici_ kullanarak çalıştırabilirsiniz. Bu makalede her iki işlem hattı çalıştırma yöntemiyle ilgili ayrıntılı bilgiler yer almaktadır.
 
@@ -87,7 +87,7 @@ Aşağıdaki yöntemlerden birini kullanarak işlem hattınızı el ile çalış
 
 ### <a name="rest-api"></a>REST API
 
-Aşağıdaki örnek komut, REST API'sini el ile kullanarak ardışık hattınızı nasıl çalıştırabileceğinizi gösterir:
+Aşağıdaki örnek komut, REST API işlem hattınızı el ile kullanarak nasıl çalıştıracağınızı gösterir:
 
 ```
 POST
@@ -127,7 +127,7 @@ Eksiksiz bir örnek için bkz. [Hızlı başlangıç: Azure PowerShell kullanara
 
 ### <a name="net-sdk"></a>.NET SDK
 
-Aşağıdaki örnek arama, .NET SDK'yı el ile kullanarak ardışık hattınızı nasıl çalıştırabileceğinizi gösterir:
+Aşağıdaki örnek çağrı, .NET SDK kullanarak işlem hattınızı el ile nasıl çalıştıracağınızı gösterir:
 
 ```csharp
 client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName, parameters)
@@ -136,7 +136,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 Eksiksiz bir örnek için bkz. [Hızlı başlangıç: .NET SDK kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-dot-net.md).
 
 > [!NOTE]
-> .NET SDK'yı, Azure İşlerinden, web hizmetlerinizden ve benzeri Veri Fabrikası ardışık hatlarını çağırmak için kullanabilirsiniz.
+> .NET SDK 'yı kullanarak Azure Işlevleri 'nden, Web hizmetinizden ve benzeri Data Factory işlem hatlarını çağırabilirsiniz.
 
 ## <a name="trigger-execution"></a>Yürütme tetikleme
 
@@ -148,7 +148,7 @@ Tetikleyiciler, işlem hattı çalıştırmasını yürütmenin bir diğer yolud
 
 - Olay tabanlı tetikleyici: Bir olaya yanıt veren tetikleyicidir.
 
-Boru hatları ve tetikleyiciler çok-çok ilişkisi vardır (yuvarlanan pencere tetikleyicisi hariç). Birden çok tetikleyici tek bir ardışık hattı başlatabilir veya tek bir tetikleyici birden çok ardışık hattı başlatabilir. Aşağıdaki tetikleyici tanımında, **pipelines** özelliği belirli bir tetikleyici tarafından tetiklenen işlem hattı listesini ifade eder. Özellik tanımı, işlem hattı parametrelerinin değerlerini içerir.
+İşlem hatları ve Tetikleyiciler çoktan çoğa ilişkiye sahiptir (atlayan pencere tetikleyicisi hariç). Birden çok tetikleyici tek bir işlem hattını başlatabilir veya tek bir tetikleyici birden çok işlem hattı başlatabilir. Aşağıdaki tetikleyici tanımında, **pipelines** özelliği belirli bir tetikleyici tarafından tetiklenen işlem hattı listesini ifade eder. Özellik tanımı, işlem hattı parametrelerinin değerlerini içerir.
 ### <a name="basic-trigger-definition"></a>Temel tetikleyici tanımı
 
 ```json
@@ -179,7 +179,7 @@ Boru hatları ve tetikleyiciler çok-çok ilişkisi vardır (yuvarlanan pencere 
 ## <a name="schedule-trigger"></a>Zamanlama tetikleyicisi
 Zamanlama tetikleyicisi, işlem hatlarını duvar saati zamanlamasıyla çalıştırır. Bu tetikleyici düzenli ve gelişmiş takvim seçeneklerini destekler. Örneğin, “haftalık” veya “Pazartesi saat 17:00 ve Perşembe saat 21:00” gibi aralıkları destekler. Veri kümesi deseni belirsiz olduğundan ve tetikleyici zaman serisi verileri ile zaman serisi dışı veriler arasında ayrım yapmadığından zamanlama tetikleyicisi esnektir.
 
-Zamanlama tetikleyicileri hakkında daha fazla bilgi için ve örneğin, [bkz.](how-to-create-schedule-trigger.md)
+Zamanlama Tetikleyicileri hakkında daha fazla bilgi için ve örnekler için bkz. [zamanlama tetikleyicisi oluşturma](how-to-create-schedule-trigger.md).
 
 ## <a name="schedule-trigger-definition"></a>Zamanlama tetikleyicisi tanımı
 Bir zamanlama tetikleyicisi oluştururken JSON tanımı kullanarak zamanlamayı ve yinelemeyi belirtirsiniz.
@@ -240,10 +240,10 @@ Aşağıdaki tabloda bir tetikleyicinin yinelenmesi ve zamanlanmasıyla ilgili a
 | **startTime** | Bir tarih-saat değeri. Temel zamanlamalar için **startTime** özelliğinin değeri ilk oluşum için geçerli olur. Karmaşık zamanlamalar için tetikleyici belirtilen **startTime** değerinden önce başlamaz. |
 | **endTime** | Tetikleyicinin bitiş tarihi ve saati. Tetikleyici belirtilen bitiş tarihi ve saatinden sonra yürütülmez. Bu özelliğin değeri geçmişte olamaz. <!-- This property is optional. --> |
 | **timeZone** | Saat dilimi. Şu anda yalnızca UTC saat dilimi desteklenmektedir. |
-| **Yineleme** | Tetikleyici için yinelenme kurallarını belirten bir yinelenme nesnesi. recurrence nesnesi şu öğeleri destekler: **frequency**, **interval**, **endTime**, **count** ve **schedule**. Bir yinelenme nesnesi tanımlanırken **frequency** öğesi gereklidir. Yinelenme nesnesinin diğer öğeleri isteğe bağlıdır. |
-| **Frekans** | Tetikleyicinin yineleneceği sıklık birimi. "Minute", "hour", "day", "week" ve "month" değerleri desteklenir. |
-| **Aralığı** | **frequency** değerinin aralığını gösteren pozitif bir tamsayı. **frequency** değeri tetikleyicinin çalışma sıklığını belirler. Örneğin **interval** değeri 3, **frequency** değeri de "week" ise tetikleyici üç haftada bir yinelenir. |
-| **Zamanlama** | Tetikleyicinin yinelenme zamanlaması. **frequency** değeri belirtilen bir tetikleyici, yinelenmesini bir yinelenme zamanlamasına göre değiştirir. **schedule** özelliği, yinelenme için dakika, saat, haftanın günü, ayın günü ve hafta numarası tabanlı değişiklikleri içerir.
+| **yinelemeyi** | Tetikleyici için yinelenme kurallarını belirten bir yinelenme nesnesi. recurrence nesnesi şu öğeleri destekler: **frequency**, **interval**, **endTime**, **count** ve **schedule**. Bir yinelenme nesnesi tanımlanırken **frequency** öğesi gereklidir. Yinelenme nesnesinin diğer öğeleri isteğe bağlıdır. |
+| **lemiyor** | Tetikleyicinin yineleneceği sıklık birimi. "Minute", "hour", "day", "week" ve "month" değerleri desteklenir. |
+| **aralığında** | **frequency** değerinin aralığını gösteren pozitif bir tamsayı. **frequency** değeri tetikleyicinin çalışma sıklığını belirler. Örneğin **interval** değeri 3, **frequency** değeri de "week" ise tetikleyici üç haftada bir yinelenir. |
+| **çizelgesini** | Tetikleyicinin yinelenme zamanlaması. **frequency** değeri belirtilen bir tetikleyici, yinelenmesini bir yinelenme zamanlamasına göre değiştirir. **schedule** özelliği, yinelenme için dakika, saat, haftanın günü, ayın günü ve hafta numarası tabanlı değişiklikleri içerir.
 
 ### <a name="schedule-trigger-example"></a>Zamanlama tetikleyicisi örneği
 
@@ -283,11 +283,11 @@ Aşağıdaki tabloda bir tetikleyicinin yinelenmesi ve zamanlanmasıyla ilgili a
 
 | JSON özelliği | Tür | Gerekli | Varsayılan değer | Geçerli değerler | Örnek |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | string | Evet | Hiçbiri | ISO 8601 tarih-saatleri | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **Yineleme** | object | Evet | Hiçbiri | Yinelenme nesnesi | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **Aralığı** | number | Hayır | 1 | 1-1000 arası | `"interval":10` |
-| **endTime** | string | Evet | Hiçbiri | Gelecekteki bir zamanı temsil eden tarih-saat değeri | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **Zamanlama** | object | Hayır | Hiçbiri | Zamanlama nesnesi | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | string | Yes | Hiçbiri | ISO 8601 tarih-saatleri | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **yinelemeyi** | object | Yes | Hiçbiri | Yinelenme nesnesi | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **aralığında** | number | Hayır | 1 | 1-1000 arası | `"interval":10` |
+| **endTime** | string | Yes | Hiçbiri | Gelecekteki bir zamanı temsil eden tarih-saat değeri | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **çizelgesini** | object | Hayır | Hiçbiri | Zamanlama nesnesi | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime özelliği
 Aşağıdaki tabloda **startTime** özelliğinin bir tetikleyici çalıştırmasını nasıl denetlediği gösterilmektedir:
@@ -295,48 +295,48 @@ Aşağıdaki tabloda **startTime** özelliğinin bir tetikleyici çalıştırmas
 | startTime değeri | Zamanlama olmadan yinelenme | Zamanlama ile yinelenme |
 |:--- |:--- |:--- |
 | **Geçmişe ait bir başlangıç zamanı** | Başlangıç zamanından sonraki ilk gelecek yürütme zamanını hesaplar ve bu zamanda çalıştırır.<br /><br />Son yürütme zamanına göre hesaplanan sonraki yürütmeleri çalıştırır.<br /><br />Bu tablonun altındaki örneğe bakın. | Tetikleyici belirtilen başlangıç zamanından _önce_ başlamaz. İlk yinelenme, başlangıç zamanından hesaplanan zamanlamaya göre gerçekleştirilir.<br /><br />Sonraki yürütmeleri yinelenme zamanlamasına göre çalıştırır. |
-| **Geleceğe ait veya şimdiki zamana denk gelen başlangıç zamanı** | Belirtilen başlangıç zamanında bir kez çalışır.<br /><br />Son yürütme zamanına göre hesaplanan sonraki yürütmeleri çalıştırır. | Tetikleyici belirtilen başlangıç saatinden _daha erken_ başlar. İlk yinelenme, başlangıç zamanından hesaplanan zamanlamaya göre gerçekleştirilir.<br /><br />Sonraki yürütmeleri yinelenme zamanlamasına göre çalıştırır. |
+| **Geleceğe ait veya şimdiki zamana denk gelen başlangıç zamanı** | Belirtilen başlangıç zamanında bir kez çalışır.<br /><br />Son yürütme zamanına göre hesaplanan sonraki yürütmeleri çalıştırır. | Tetikleyici belirtilen başlangıç zamanından _önce_ başlamaz. İlk yinelenme, başlangıç zamanından hesaplanan zamanlamaya göre gerçekleştirilir.<br /><br />Sonraki yürütmeleri yinelenme zamanlamasına göre çalıştırır. |
 
-Başlangıç zamanı geçmişte olduğunda ve bir yinelenme olmasına rağmen zamanlama olmadığında neler olacağını gösteren bir örneğe bakalım. Geçerli zamanın 2017-04-08 13:00, başlangıç zamanının 2017-04-07 14:00 ve yinelemenin iki günde bir olduğunu varsayalım. (Yineleme **recurrence** değeri **frekans** özelliği "gün" ve **aralık** özelliği 2 olarak ayarlayarak tanımlanır.) **Başlangıç Zamanı** değerinin geçmişte olduğuna ve geçerli zamandan önce oluştuğuna dikkat edin.
+Başlangıç zamanı geçmişte olduğunda ve bir yinelenme olmasına rağmen zamanlama olmadığında neler olacağını gösteren bir örneğe bakalım. Geçerli zamanın 2017-04-08 13:00, başlangıç zamanının 2017-04-07 14:00 ve yinelemenin iki günde bir olduğunu varsayalım. ( **Yinelenme** değeri, **Sıklık** özelliği "Day" ve **Interval** özelliği 2 olarak ayarlanarak tanımlanır.) **StartTime** değerinin geçmişte olduğuna ve geçerli zamandan önce gerçekleşdiğine dikkat edin.
 
-Bu şartlar altında ilk icra 2017-04-09 saat 14:00'te. Zamanlayıcı altyapısı çalıştırma yinelenmelerini başlangıç zamanından itibaren hesaplar. Geçmişteki örnekler dikkate alınmaz. Altyapı gelecekte gerçekleşen bir sonraki örneği kullanır. Bu senaryoda başlangıç zamanı 07-04-2017, saat 14:00 olur. Sonraki örnek bu zamandan iki gün sonrası olan 09-04-2017 saat 14:00'a denk gelir.
+Bu koşullar altında ilk yürütme 14:00 2017-04-09 ' dir. Zamanlayıcı altyapısı çalıştırma yinelenmelerini başlangıç zamanından itibaren hesaplar. Geçmişteki örnekler dikkate alınmaz. Altyapı gelecekte gerçekleşen bir sonraki örneği kullanır. Bu senaryoda başlangıç zamanı 07-04-2017, saat 14:00 olur. Sonraki örnek bu zamandan iki gün sonrası olan 09-04-2017 saat 14:00'a denk gelir.
 
 **startTime** ister 05-04-2017 14:00 isterse 01-04-2017 14:00 olsun, ilk yürütme zamanı değişmez. İlk yürütme sonrasındaki yürütmeler zamanlama kullanılarak hesaplanır. Dolayısıyla, izleyen yürütmeler 11-04-2017 14:00, sonra 13-04-2017 14:00, sonra 15-04-2017 14:00, vb. olur.
 
-Son olarak, saat veya dakika tetikleyici için zamanlamada ayarlıdeğil, ilk yürütme saatleri veya dakika varsayılan olarak kullanılır.
+Son olarak, bir tetikleyicinin zamanlamasında saat veya dakika ayarlanmamışsa, ilk yürütmenin saati veya dakikası varsayılanlar olarak kullanılır.
 
 ### <a name="schedule-property"></a>schedule özelliği
 Tetikleyici yürütmelerinin sayısını **sınırlandırmak** için *schedule* özelliğini kullanabilirsiniz. Örneğin, aylık sıklığa sahip bir tetikleyici 31. günde çalışacak şekilde zamanlanırsa, tetikleyici yalnızca otuz birinci günü olan aylarda çalışır.
 
 Ayrıca, tetikleyici yürütmelerinin sayısını **artırmak** için de *schedule* kullanabilirsiniz. Örneğin, aylık sıklığa sahip olan ve ayın 1. ve 2. günlerinde çalışacak şekilde zamanlanan bir tetikleyici, ayda bir kez çalışmak yerine ayın birinci ve ikinci günlerinde çalışır.
 
-Birden çok **zamanlama** öğesi belirtilirse, değerlendirme sırası en büyükten en küçük zamanlama ayarına kadardır: hafta sayısı, ay günü, hafta içi, saat, dakika.
+Birden çok **zamanlama** öğesi belirtilmişse, değerlendirme sırası en büyükten en küçük zamanlama ayarına kadar olur: hafta numarası, ay günü, haftanın günü, saat, dakika.
 
 Aşağıdaki tabloda **schedule** öğeleri ayrıntılı bir şekilde açıklanmıştır:
 
 | JSON öğesi | Açıklama | Geçerli değerler |
 |:--- |:--- |:--- |
-| **minutes** | Tetikleyicinin çalıştığı dakika değeri. |- Tamsayı<br />- Tamsayı dizisi|
-| **Saat** | Tetikleyicinin çalıştığı saat değeri. |- Tamsayı<br />- Tamsayı dizisi|
-| **weekDays** | Tetikleyicinin çalıştığı hafta günleri. Bu değer yalnızca haftalık bir sıklıkta belirtilebilir.|<br />- Pazartesi<br />- Salı<br />- Çarşamba<br />- Perşembe<br />- Cuma<br />- Cumartesi<br />- Pazar<br />- Gün değerleri dizisi (en fazla dizi boyutu 7’dir)<br /><br />Gün değerleri büyük/küçük harf duyarlı değildir|
-| **monthlyOccurrences** | Tetikleyicinin çalıştığı ay günleri. Bu değer yalnızca aylık bir sıklık ile belirtilebilir. |- **Aylık Oluşum** nesnelerinin dizilimi:`{ "day": day, "occurrence": occurrence }`<br />- **day** özniteliği, tetikleyicinin çalıştığı gündür. Örneğin, **day** değeri `{Sunday}` olan bir **monthlyOccurrences** özelliği, ayın her Pazar günü anlamına gelir. **day** özniteliği gereklidir.<br />- **occurrence** özniteliği, ay içinde belirtilen **day** değerinin gerçekleşmesidir. Örneğin, **day** ve **occurrence** değerleri `{Sunday, -1}` olan bir **monthlyOccurrences** özelliği, ayın son Pazar günü anlamına gelir. **occurrence** özniteliği isteğe bağlıdır.|
+| **dakika** | Tetikleyicinin çalıştığı dakika değeri. |- Tamsayı<br />- Tamsayı dizisi|
+| **saatlerinin** | Tetikleyicinin çalıştığı saat değeri. |- Tamsayı<br />- Tamsayı dizisi|
+| **weekDays** | Tetikleyicinin çalıştığı hafta günleri. Bu değer yalnızca haftalık bir sıklıkta belirtilebilir.|<br />- Pazartesi<br />- Salı<br />- Çarşamba<br />- Perşembe<br />- Cuma<br />- Cumartesi<br />- Pazar<br />- Gün değerleri dizisi (en fazla dizi boyutu 7’dir)<br /><br />Gün değerleri büyük/küçük harfe duyarlı değildir|
+| **monthlyOccurrences** | Tetikleyicinin çalıştığı ay günleri. Bu değer yalnızca aylık bir sıklık ile belirtilebilir. |- **Monthlyoccurrence** nesnelerinin dizisi:`{ "day": day, "occurrence": occurrence }`<br />- **day** özniteliği, tetikleyicinin çalıştığı gündür. Örneğin, **day** değeri `{Sunday}` olan bir **monthlyOccurrences** özelliği, ayın her Pazar günü anlamına gelir. **day** özniteliği gereklidir.<br />- **occurrence** özniteliği, ay içinde belirtilen **day** değerinin gerçekleşmesidir. Örneğin, **day** ve **occurrence** değerleri `{Sunday, -1}` olan bir **monthlyOccurrences** özelliği, ayın son Pazar günü anlamına gelir. **occurrence** özniteliği isteğe bağlıdır.|
 | **monthDays** | Tetikleyicinin çalıştığı ay günü. Bu değer yalnızca aylık bir sıklık ile belirtilebilir. |- <= -1 ve >= -31 koşullarına uyan herhangi bir değer<br />- >= 1 ve <= 31 koşullarına uyan herhangi bir değer<br />- Değer dizisi|
 
 ## <a name="tumbling-window-trigger"></a>Atlayan pencere tetikleyicisi
 Atlayan pencere tetikleyicileri, durumu korurken belirtilen bir başlangıç zamanından itibaren periyodik bir zaman aralığında başlatılan bir tetikleyici türüdür. Atlayan pencereler sabit boyutlu, çakışmayan ve bitişik zaman aralıkları dizisidir.
 
-Yuvarlanan pencere tetikleyicileri hakkında daha fazla bilgi için ve örneğin, [bkz.](how-to-create-tumbling-window-trigger.md)
+Atlayan pencere Tetikleyicileri hakkında daha fazla bilgi için ve örnekler için bkz. [pencere tetikleyicisi oluşturma](how-to-create-tumbling-window-trigger.md).
 
 ## <a name="event-based-trigger"></a>Olay tabanlı tetikleyici
 
-Olay tabanlı tetikleyici, Azure Blob Depolama'da bir dosyanın gelişi veya bir dosyanın silinmesi gibi bir olaya yanıt olarak ardışık hatlar çalışır.
+Olay tabanlı tetikleyici, bir dosyanın yanıtı veya Azure Blob depolama alanında bir dosyanın silinmesi gibi bir olaya yanıt olarak işlem hatlarını çalıştırır.
 
 Olay tabanlı tetikleyiciler hakkında daha fazla bilgi için bkz. [Bir olaya yanıt olarak işlem hattı çalıştıran bir tetikleyici oluşturma](how-to-create-event-trigger.md).
 
 ## <a name="examples-of-trigger-recurrence-schedules"></a>Tetikleyici yineleme zamanlaması örnekleri
 Bu bölümde yineleme zamanlaması örnekleri sağlanır. **schedule** nesnesine ve onun öğelerine odaklanılmıştır.
 
-Örnekler, **aralık** değerinin 1 olduğunu ve zamanlama tanımına göre **frekans** değerinin doğru olduğunu varsayar. Örneğin, hem "day" şeklinde bir **frequency** değeriniz hem de **schedule** nesnesinde bir **monthDays** değişikliğiniz olamaz. Bu tür kısıtlamalar önceki bölümde verilen tabloda açıklanmıştır.
+Örneklerde, **Aralık** değerinin 1 olduğunu ve **Sıklık** değerinin zamanlama tanımına göre doğru olduğunu varsaymaktadır. Örneğin, hem "day" şeklinde bir **frequency** değeriniz hem de **schedule** nesnesinde bir **monthDays** değişikliğiniz olamaz. Bu tür kısıtlamalar önceki bölümde verilen tabloda açıklanmıştır.
 
 | Örnek | Açıklama |
 |:--- |:--- |
@@ -345,7 +345,7 @@ Bu bölümde yineleme zamanlaması örnekleri sağlanır. **schedule** nesnesine
 | `{"minutes":[15], "hours":[5,17]}` | Her gün 05.15 ve 17.15’te çalıştır. |
 | `{"minutes":[15,45], "hours":[5,17]}` | Her gün 05.15, 05.45, 17.15 ve 17.45’te çalıştır. |
 | `{"minutes":[0,15,30,45]}` | 15 dakikada bir çalıştır. |
-| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` | Saatte bir çalıştır.<br /><br />Bu tetikleyici saatte bir çalışır. **startTime** değeri belirtilirse dakikalar bu değer tarafından denetlenir. Değer belirtilmezse, dakikalar oluşturma zamanı tarafından denetlenir. Örneğin başlangıç zamanı veya oluşturma zamanı (hangisi geçerliyse) 12:25 ise tetikleyici 00.25, 01.25, 02.25, ... ve 23.25 saatlerinde çalışır.<br /><br />Bu zamanlama, **frekans** değeri "saat", 1 **aralık** değeri ve **zamanlama**olmayan bir tetikleyiciye sahip olmaya eşdeğerdir. Bu zamanlama farklı **frequency** ve **interval** değerleriyle kullanılarak başka tetikleyiciler oluşturulabilir. Örneğin, **sıklık** değeri "ay" olduğunda, **zamanlama, sıklık** değerinin "gün" olduğu her gün yerine yalnızca ayda bir çalışır. |
+| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` | Saatte bir çalıştır.<br /><br />Bu tetikleyici saatte bir çalışır. **startTime** değeri belirtilirse dakikalar bu değer tarafından denetlenir. Değer belirtilmezse, dakikalar oluşturma zamanı tarafından denetlenir. Örneğin başlangıç zamanı veya oluşturma zamanı (hangisi geçerliyse) 12:25 ise tetikleyici 00.25, 01.25, 02.25, ... ve 23.25 saatlerinde çalışır.<br /><br />Bu zamanlama, **Sıklık** değeri "Hour", **Aralık** değeri 1 ve **zamanlama**olmadan bir tetikleyicisine sahip olmaya eşdeğerdir. Bu zamanlama farklı **frequency** ve **interval** değerleriyle kullanılarak başka tetikleyiciler oluşturulabilir. Örneğin **Sıklık** değeri "month" olduğunda, zamanlama **Sıklık** değeri "Day" olduğunda her gün yerine yalnızca ayda bir kez çalışır. |
 | `{"minutes":[0]}` | Her saat başı çalıştır.<br /><br />Bu tetikleyici 12.00, 01.00, 02.00 gibi bir saatte başlayarak saat başı çalışır.<br /><br />Bu zamanlama, **frequency** değeri "hour" olup **startTime** değeri sıfır dakika olan ve **schedule** değeri olmayıp **frequency** değeri "day" olan bir tetikleyiciye eşdeğerdir. **frequency** değeri "week" veya "month" olursa zamanlama yalnızca haftada bir gün veya ayda bir gün çalışır. |
 | `{"minutes":[15]}` | Her saat başını 15 dakika geçe çalıştır.<br /><br />Bu tetikleyici, 00.15, 01.15, 02.15, vb. bir saatte başlayıp 23.15’te bitecek şekilde her saat başını 15 dakika geçe çalışır. |
 | `{"hours":[17], "weekDays":["saturday"]}` | Her hafta Cumartesi günleri saat 17.00'de çalıştır. |
@@ -376,7 +376,7 @@ Aşağıdaki tabloda atlayan pencere tetikleyicisi ile zamanlama tetikleyicisini
 |:--- |:--- |:--- |
 | **Doldurma senaryoları** | Destekleniyor. Geçmişteki aralıklar için işlem hattı çalıştırmaları zamanlanabilir. | Desteklenmiyor. İşlem hattı çalıştırmaları yalnızca geçerli zamandan sonraki ve gelecekteki zaman dönemlerinde yürütülebilir. |
 | **Güvenilirlik** | %100 güvenilirlik. Belirtilen bir başlangıç tarihinden itibaren boşluk olmayacak şekilde tüm aralıklar için işlem hattı çalıştırması zamanlanabilir. | Daha az güvenilir. |
-| **Yeniden deneme özelliği** | Destekleniyor. Başarısız işlem hattı çalıştırmaları varsayılan olarak 0 yeniden deneme ilkesine veya kullanıcı tarafından tetikleyici tanımında belirtilen bir ilkeye sahiptir. Eşzamanlılık/sunucu/azaltma sınırları nedeniyle ardışık çalışır başarısız olduğunda otomatik olarak yeniden çalışır (diğer bir süre durum kodları 400: Kullanıcı Hatası, 429: Çok fazla istek ve 500: Internal Server hatası). | Desteklenmiyor. |
+| **Yeniden deneme özelliği** | Destekleniyor. Başarısız işlem hattı çalıştırmaları varsayılan olarak 0 yeniden deneme ilkesine veya kullanıcı tarafından tetikleyici tanımında belirtilen bir ilkeye sahiptir. Eşzamanlılık/sunucu/azaltma sınırları nedeniyle işlem hattı çalışırken otomatik olarak yeniden dener (yani, durum kodları 400: Kullanıcı hatası, 429: çok fazla istek ve 500: Iç sunucu hatası). | Desteklenmiyor. |
 | **Eşzamanlılık** | Destekleniyor. Kullanıcılar tetikleyicinin eş zamanlılık sınırlarını açıkça ayarlayabilir. 1 ile 50 arasında eş zamanlı tetikleyici işlem hattı çalıştırmasına izin verir. | Desteklenmiyor. |
 | **Sistem değişkenleri** | **WindowStart** ve **WindowEnd** sistem değişkenlerinin kullanımını destekler. Kullanıcılar, tetikleyici tanımında tetikleyici sistem değişkenleri olarak `triggerOutputs().windowStartTime` ve `triggerOutputs().windowEndTime` değişkenine erişebilir. Değerler sırasıyla aralık başlangıç zamanı ve aralık bitiş zamanı olarak kullanılır. Örneğin, saat başı çalışan bir atlayan pencere tetikleyicisi için 01.00 ile 02.00 arası aralığın tanımı `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` ve `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z` şeklinde olur. | Desteklenmiyor. |
 | **İşlem hattı-tetikleyici ilişkisi** | Bire bir ilişkileri destekler. Yalnızca bir işlem hattı tetiklenebilir. | Çoka çok ilişkileri destekler. Birden çok tetikleyici tek bir işlem hattını başlatabilir. Tek bir tetikleyici birden fazla işlem hattını başlatabilir. |

@@ -1,7 +1,7 @@
 ---
-title: Web API'lerini çağıran bir web API'si için belirteç alın | Azure
+title: Web API 'Lerini çağıran bir Web API 'SI için belirteç alın | Mavisi
 titleSuffix: Microsoft identity platform
-description: Uygulama için bir belirteç edinmeyi gerektiren web API'lerini çağıran bir web API'sini nasıl oluştureceğinizi öğrenin.
+description: Uygulama için belirteç alma gerektiren Web API 'Lerini çağıran bir Web API 'SI oluşturmayı öğrenin.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,21 +13,21 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 79f8eb9e804502a7c0e61c18e4998fa05db10278
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885149"
 ---
-# <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API'lerini çağıran bir web API'sı: Uygulama için bir belirteç edinme
+# <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web API 'Lerini çağıran bir Web API 'SI: uygulama için belirteç alma
 
-İstemci uygulama nesnesi oluşturduktan sonra, web API'sını çağırmak için kullanabileceğiniz bir belirteç edinmek için kullanın.
+Bir istemci uygulama nesnesi oluşturduktan sonra, bir Web API 'sini çağırmak için kullanabileceğiniz bir belirteç almak için bu uygulamayı kullanın.
 
 ## <a name="code-in-the-controller"></a>Denetleyicideki kod
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Aşağıda, API denetleyicilerinin eylemlerinde çağrılan bir kod örneği verilmiştir. Bu *todolist*adlı bir downstream API çağırır.
+API denetleyicilerinin eylemlerinde çağrılan kod örneği aşağıda verilmiştir. *ToDoList*adlı bir aşağı akış API 'si çağırır.
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -48,9 +48,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()`web API'lerini çağıran bir web API'sindeki senaryoya [benzer: Uygulama yapılandırması.](scenario-web-api-call-api-app-configuration.md) `BuildConfidentialClient()`yalnızca bir `IConfidentialClientApplication` hesap için bilgi içeren bir önbellekle anında gerçekleşir. Hesap `GetAccountIdentifier` yöntem tarafından sağlanır.
+`BuildConfidentialClient()`Web API ['leri çağıran bir Web API 'si senaryosuna benzerdir: uygulama yapılandırması](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()`yalnızca `IConfidentialClientApplication` bir hesap için bilgi içeren bir önbellekle birlikte başlatılır. Hesap `GetAccountIdentifier` yöntemi tarafından sağlanır.
 
-Yöntem, `GetAccountIdentifier` web API'sinin JSON Web Belirteci 'ni (JWT) aldığı kullanıcının kimliğiyle ilişkili talepleri kullanır:
+`GetAccountIdentifier` Yöntemi, Web apı 'sinin JSON Web token (JWT) aldığı kullanıcı kimliğiyle ilişkili talepleri kullanır:
 
 ```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
@@ -69,7 +69,7 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 ```
 
 # <a name="java"></a>[Java](#tab/java)
-Aşağıda, API denetleyicilerinin eylemlerinde çağrılan bir kod örneği verilmiştir. Bu downstream API çağırır - Microsoft Graph.
+API denetleyicilerinin eylemlerinde çağrılan kod örneği aşağıda verilmiştir. Aşağı akış API 'sini Microsoft Graph çağırır.
 
 ```java
 @RestController
@@ -91,11 +91,11 @@ public class ApiController {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python web API'sinin istemciden alınan taşıyıcı belirteci doğrulamak için bazı ara yazılımlar kullanması gerekir. Web API'si daha sonra yöntemi arayarak MSAL Python kitaplığını [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) kullanarak akış aşağı API'ye erişim belirteci elde edebilir. MSAL Python ile bu akışı gösteren bir örnek henüz mevcut değildir.
+Bir Python Web API 'sinin istemciden alınan taşıyıcı belirtecini doğrulamak için bazı ara yazılım kullanması gerekir. Web API 'si daha sonra [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) YÖNTEMI çağırarak msal Python kitaplığı kullanarak aşağı akış API 'sine yönelik erişim belirtecini alabilir. Bu akışı MSAL Python ile gösteren bir örnek henüz kullanılamamaktadır.
 
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Web API'lerini çağıran bir web API'si: API'yi arayın](scenario-web-api-call-api-call-api.md)
+> [Web API 'Leri çağıran bir Web API 'si: API çağırma](scenario-web-api-call-api-call-api.md)

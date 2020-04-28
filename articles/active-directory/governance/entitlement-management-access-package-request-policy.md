@@ -1,6 +1,6 @@
 ---
-title: Azure AD yetkilendirme yönetiminde bir erişim paketi için istek ve onay ayarlarını değiştirme - Azure Etkin Dizini
-description: Azure Active Directory yetkilendirme yönetiminde bir erişim paketi için istek ve onay ayarlarını nasıl değiştireceğinizi öğrenin.
+title: Azure AD Yetkilendirme Yönetimi 'nde erişim paketi için değişiklik isteği ve onay ayarları-Azure Active Directory
+description: Azure Active Directory yetkilendirme yönetimi 'nde erişim paketi için istek ve onay ayarlarını değiştirmeyi öğrenin.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,82 +17,82 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0eae4f53283c33f3d7372a606f8c0a3ac27d079
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655951"
 ---
-# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için istek ve onay ayarlarını değiştirme
+# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için değişiklik isteği ve onay ayarları
 
-Erişim paketi yöneticisi olarak, ilkeyi düzenleyerek veya yeni bir ilke ekleyerek istediğiniz zaman bir erişim paketi talep edebilirsiniz kullanıcıları değiştirebilirsiniz. Onay ayarlarını da değiştirebilirsiniz.
+Erişim paketi Yöneticisi olarak, ilkeyi düzenleyerek veya yeni bir ilke ekleyerek herhangi bir zamanda erişim paketi talep edebilen kullanıcıları değiştirebilirsiniz. Ayrıca onay ayarlarını da değiştirebilirsiniz.
 
-Bu makalede, varolan bir erişim paketi için istek ve onay ayarlarının nasıl değiştirilen açıklanmaktadır.
+Bu makalede, var olan bir erişim paketinin istek ve onay ayarlarının nasıl değiştirileceği açıklanır.
 
-## <a name="choose-between-one-or-multiple-polices"></a>Bir veya birden çok polis arasında seçim yapın
+## <a name="choose-between-one-or-multiple-polices"></a>Bir veya birden çok ilke arasında seçim yapın
 
-Bir erişim paketini kimlerin isteyebileceğini belirtme şekliniz bir ilkeyle dir. Bir erişim paketi oluşturduğunuzda, bir ilke oluşturan istek ve onay ayarını belirtirsiniz. Çoğu erişim paketinin tek bir ilkesi vardır, ancak tek bir erişim paketinin birden çok ilkesi olabilir. Farklı kullanıcı kümelerine farklı istek ve onay ayarlarıyla atama verilmesine izin vermek istiyorsanız, bir erişim paketi için birden çok ilke oluşturursunuz. Örneğin, tek bir ilke, dahili ve harici kullanıcıları aynı erişim paketine atamak için kullanılamaz. Ancak, aynı erişim paketinde biri dahili kullanıcılar, diğeri dış kullanıcılar için olmak üzere iki ilke oluşturabilirsiniz. Bir kullanıcı için geçerli olan birden çok ilke varsa, bu ilkeler, atanmak istedikleri ilkeyi seçmeleri istendiği anda istenir. Aşağıdaki diyagram, iki ilke içeren bir erişim paketini gösterir.
+Bir ilke ile bir erişim paketi talep edebilen kim tarafından belirtilme yöntemi. Bir erişim paketi oluşturduğunuzda, ilke oluşturan istek ve onay ayarını belirtirsiniz. Çoğu erişim paketi tek bir ilkeye sahip olur, ancak tek bir erişim paketinde birden çok ilke olabilir. Farklı Kullanıcı kümelerine farklı istek ve onay ayarları içeren atamalar verilmesini sağlamak istiyorsanız, bir erişim paketi için birden çok ilke oluşturabilirsiniz. Örneğin, tek bir ilke, aynı erişim paketine iç ve dış kullanıcı atamak için kullanılamaz. Bununla birlikte, aynı erişim paketinde bir tane olmak üzere, biri iç kullanıcılar ve diğeri dış kullanıcılar için olmak üzere iki ilke oluşturabilirsiniz. Bir kullanıcı için uygulanan birden çok ilke varsa, kendilerine atanması gereken ilkeyi seçme istekleri sırasında istenir. Aşağıdaki diyagramda, iki ilkeye sahip bir erişim paketi gösterilmektedir.
 
-![Bir erişim paketinde birden çok ilke](./media/entitlement-management-access-package-request-policy/access-package-policy.png)
+![Erişim paketinde birden çok ilke](./media/entitlement-management-access-package-request-policy/access-package-policy.png)
 
 | Senaryo | İlke sayısı |
 | --- | --- |
-| Dizinimdeki tüm kullanıcıların bir erişim paketi için aynı istek ve onay ayarlarına sahip olmasını istiyorum | Bir |
+| Dizinimde tüm kullanıcıların bir erişim paketi için aynı istek ve onay ayarlarına sahip olmasını istiyorum | Bir |
 | Belirli bağlı kuruluşlardaki tüm kullanıcıların bir erişim paketi isteyebilmesini istiyorum | Bir |
-| Dizinimdeki ve dizinim dışındaki kullanıcıların bir erişim paketi istemesine izin vermek istiyorum | Birden çok |
+| Dizinimde bulunan kullanıcılara ve ayrıca dizinimin dışındaki kullanıcıların erişim paketi istemesine izin vermek istiyorum | Birden çok |
 | Bazı kullanıcılar için farklı onay ayarları belirtmek istiyorum | Birden çok |
-| Bazı kullanıcıların paket atamalarına erişim süresinin dolmasını ve diğer kullanıcıların erişimlerini genişletmesini istiyorum | Birden çok |
+| Diğer kullanıcıların erişimini genişletecek bazı kullanıcıların paket atamalarına erişmesini istiyorum | Birden çok |
 
-Birden çok ilke uygulandığında kullanılan öncelik mantığı hakkında bilgi [için](entitlement-management-troubleshoot.md#multiple-policies
-)bkz.
+Birden çok ilke uyguladığınızda kullanılan öncelik mantığı hakkında daha fazla bilgi için bkz. [birden çok ilke](entitlement-management-troubleshoot.md#multiple-policies
+).
 
-### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>Varolan istek ve onay ayarları ilkesini açma
+### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>İstek ve onay ayarlarının mevcut bir ilkesini açın
 
-Bir erişim paketi için istek ve onay ayarlarını değiştirmek için ilgili ilkeyi açmanız gerekir. Bir erişim paketi için istek ve onay ayarlarını açmak için aşağıdaki adımları izleyin.
+Bir erişim paketinin istek ve onay ayarlarını değiştirmek için, ilgili ilkeyi açmanız gerekir. Bir erişim paketinin istek ve onay ayarlarını açmak için aşağıdaki adımları izleyin.
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı yöneticisi, Katalog sahibi veya Access paket yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Etkin Dizin'i** tıklatın ve ardından **Kimlik Yönetimi'ni**tıklatın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde, **Access paketlerini** tıklatın ve ardından erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. **İlkeler'i** tıklatın ve ardından görüntülemek istediğiniz ilkeyi tıklatın.
+1. **İlkeler** ' e tıklayın ve ardından düzenlemek istediğiniz ilkeye tıklayın.
 
-    İlke ayrıntıları bölmesi sayfanın alt kısmında açılır.
+    Ilke ayrıntıları bölmesi sayfanın altında açılır.
 
-    ![Erişim paketi - İlke ayrıntıları bölmesi](./media/entitlement-management-shared/policy-details.png)
+    ![Erişim paketi-Ilke ayrıntıları bölmesi](./media/entitlement-management-shared/policy-details.png)
 
-1. İlkeyi yeniden yapmak için **Edit'i** tıklatın.
+1. İlkeyi düzenlemek için **Düzenle** ' ye tıklayın.
 
-    ![Erişim paketi - İlkeyi güncelle](./media/entitlement-management-shared/policy-edit.png)
+    ![Erişim paketi-ilkeyi Düzenle](./media/entitlement-management-shared/policy-edit.png)
 
-1. İstek ve onay ayarlarını açmak için **İstekler** sekmesini tıklatın.
+1. İstek ve onay ayarlarını açmak için **istekler** sekmesine tıklayın.
 
-1. Aşağıdaki istek bölümlerinden birinde adımları gerçekleştirin.
+1. Aşağıdaki istek bölümlerinden birindeki adımları gerçekleştirin.
 
-### <a name="add-a-new-policy-of-request-and-approval-settings"></a>İstek ve onay ayarlarıyla ilgili yeni bir ilke ekleme
+### <a name="add-a-new-policy-of-request-and-approval-settings"></a>İstek ve onay ayarları için yeni bir ilke ekleyin
 
-Farklı istek ve onay ayarlarına sahip olması gereken bir kullanıcı kümeniz varsa, büyük olasılıkla yeni bir ilke oluşturmanız gerekir. Varolan bir erişim paketine yeni bir ilke eklemeye başlamak için aşağıdaki adımları izleyin.
+Farklı istek ve onay ayarlarına sahip olması gereken bir kullanıcı kümesine sahipseniz, muhtemelen yeni bir ilke oluşturmanız gerekecektir. Var olan bir erişim paketine yeni bir ilke eklemeye başlamak için bu adımları izleyin.
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı yöneticisi, Katalog sahibi veya Access paket yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Etkin Dizin'i** tıklatın ve ardından **Kimlik Yönetimi'ni**tıklatın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde, **Access paketlerini** tıklatın ve ardından erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. **İlkeler'i** tıklatın ve ardından **ilke ekleyin.**
+1. **İlkeler** ' e ve ardından **ilke Ekle**' ye tıklayın.
 
 1. İlke için bir ad ve açıklama yazın.
 
-    ![Ad ve açıklama ile ilke oluşturma](./media/entitlement-management-access-package-request-policy/policy-name-description.png)
+    ![Ad ve açıklama ile ilke oluştur](./media/entitlement-management-access-package-request-policy/policy-name-description.png)
 
-1. **İstekler** sekmesini açmak için **İleri'yi** tıklatın.
+1. **İleri** ' ye tıklayarak **istekler** sekmesini açın.
 
-1. Aşağıdaki istek bölümlerinden birinde adımları gerçekleştirin.
+1. Aşağıdaki istek bölümlerinden birindeki adımları gerçekleştirin.
 
 [!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 
-Bir ilke düzenliyorsanız **Güncelleştir'i**tıklatın. Yeni bir ilke ekliyorsanız, **Oluştur'u**tıklatın.
+Bir ilkeyi düzenliyorsanız **Güncelleştir**' e tıklayın. Yeni bir ilke ekliyorsanız **Oluştur**' a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

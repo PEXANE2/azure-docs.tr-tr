@@ -1,6 +1,6 @@
 ---
-title: Azure AD Etki Alanı Hizmetlerinde hesap kilitleme sorunu | Microsoft Dokümanlar
-description: Kullanıcı hesaplarının Azure Etkin Dizin Etki Alanı Hizmetlerinde kilitlenemelerine neden olan sık karşılaşılan sorunları nasıl gidereceğinizi öğrenin.
+title: Azure AD Domain Services hesap kilitleme sorunlarını giderme | Microsoft Docs
+description: Azure Active Directory Domain Services ' de Kullanıcı hesaplarının kilitlenmesine neden olan yaygın sorunları nasıl giderebileceğinizi öğrenin.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,54 +11,54 @@ ms.topic: troubleshooting
 ms.date: 04/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743456"
 ---
-# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Etki Alanı Hizmetleri yönetilen etki alanıyla hesap kilitleme sorunlarını giderme
+# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanıyla hesap kilitleme sorunlarını giderme
 
-Azure AD DS, yinelenen kötü amaçlı oturum açma girişimlerini önlemek için hesapları tanımlı bir eşiğe göre kilitler. Bu hesap kilitleme de bir oturum açma saldırısı olayı olmadan kazara gerçekleşebilir. Örneğin, bir kullanıcı sürekli olarak yanlış parola girerse veya bir hizmet eski bir parola kullanmaya çalışırsa, hesap kilitlenir.
+Yinelenen kötü amaçlı oturum açma girişimlerini engellemek için Azure AD DS, tanımlı eşikten sonra hesapları kilitler. Bu hesap kilitleme, bir oturum açma saldırısı olayı olmadan yanlışlıkla de gerçekleşebilir. Örneğin, bir Kullanıcı yanlış parolayı tekrar girerse veya bir hizmet eski bir parola kullanmaya çalışırsa, hesap kilitlenir.
 
-Bu sorun giderme makalesi, hesap kilitlemelerinin neden meydana gelip davranışı nasıl yapılandırabileceğinizi ve kilitlenme olaylarını gidermek için güvenlik denetimlerini nasıl gözden geçireceğinizi özetleyilmiştir.
+Bu sorun giderme makalesinde, hesap kilitleme işlemlerinin neden olduğu ve davranışı nasıl yapılandırabileceğiniz ve kilitleme olayları sorunlarını gidermek için güvenlik denetimlerinin nasıl inceleyeceği özetlenmektedir.
 
 ## <a name="what-is-an-account-lockout"></a>Hesap kilitleme nedir?
 
-Azure AD DS'deki bir kullanıcı hesabı, başarısız oturum açma denemeleri için tanımlanmış bir eşik karşılandığında kilitlenir. Bu hesap kilitleme davranışı, otomatik bir dijital saldırıyı gösterebilecek tekrarlanan kaba kuvvet oturum açma girişimlerinden sizi korumak için tasarlanmıştır.
+Başarısız oturum açma girişimleri için tanımlanan bir eşik karşılandığında Azure AD DS bir kullanıcı hesabı kilitlenir. Bu hesap kilitleme davranışı, otomatikleştirilmiş bir dijital saldırıyı gösterebilen yinelenen deneme yanılma girişimlerini korumak için tasarlanmıştır.
 
-**Varsayılan olarak, 2 dakika içinde 5 kötü parola denemesi varsa, hesap 30 dakika kilitlenir.**
+**Varsayılan olarak, 2 dakika içinde 5 hatalı parola denemesi varsa, hesap 30 dakika boyunca kilitlenir.**
 
-Varsayılan hesap kilitleme eşikleri, ince taneli parola ilkesi kullanılarak yapılandırılır. Belirli bir gereksinim ler kümesiniz varsa, bu varsayılan hesap kilitleme eşiklerini geçersiz kılabilirsiniz. Ancak, numara hesabı kilitlemelerini azaltmak için eşik sınırlarını artırmanın önerilmez. Önce hesap kilitleme davranışının kaynağını giderin.
+Varsayılan hesap kilitleme eşikleri, hassas parola ilkesi kullanılarak yapılandırılır. Belirli bir gereksinim kümesine sahipseniz, bu varsayılan hesap kilitleme eşiklerini geçersiz kılabilirsiniz. Ancak, sayı limitlerini azaltmayı denemek için eşik sınırlarını artırmanız önerilmez. İlk olarak hesap kilitleme davranışının kaynağını giderin.
 
-### <a name="fine-grained-password-policy"></a>İnce taneli parola ilkesi
+### <a name="fine-grained-password-policy"></a>Hassas parola ilkesi
 
-Ayrıntılı parola ilkeleri (FGPPs), bir etki alanında farklı kullanıcılara parola ve hesap kilitleme ilkeleri için belirli kısıtlamalar uygulamanıza izin verir. FGPP yalnızca Azure AD DS yönetilen etki alanındaki kullanıcıları etkiler. Azure AD'den Azure AD DS yönetilen etki alanına senkronize edilen bulut kullanıcıları ve etki alanı kullanıcıları yalnızca Azure AD DS'deki parola ilkelerinden etkilenir. Azure AD'deki veya şirket içi dizinindeki hesapları etkilenmez.
+Hassas parola ilkeleri (FGPPs), bir etki alanındaki farklı kullanıcılara parola ve hesap kilitleme ilkeleri için özel kısıtlamalar uygulamanıza imkan tanır. FGPP yalnızca Azure AD DS yönetilen bir etki alanında bulunan kullanıcıları etkiler. Azure AD 'den Azure AD DS yönetilen etki alanı ile eşitlenen bulut kullanıcıları ve etki alanı kullanıcıları yalnızca Azure AD DS 'deki parola ilkelerinden etkilenir. Azure AD 'deki hesapları veya şirket içi bir dizin etkilenmemektedir.
 
-İlkeler, Azure AD DS yönetilen etki alanında grup ilişkilendirme yoluyla dağıtılır ve yaptığınız tüm değişiklikler bir sonraki kullanıcı oturum açma sırasında uygulanır. İlkenin değiştirilmesi, zaten kilitlenmiş bir kullanıcı hesabının kilidini açmaz.
+İlkeler, Azure AD DS yönetilen etki alanındaki grup ilişkilendirmesi aracılığıyla dağıtılır ve yaptığınız tüm değişiklikler sonraki Kullanıcı oturumu sırasında uygulanır. İlkenin değiştirilmesi, zaten kilitlenen bir kullanıcı hesabının kilidini açmıyor.
 
-Ayrıntılı parola ilkeleri ve doğrudan Azure AD DS'de oluşturulan ve Azure AD'den senkronize edilen kullanıcılar arasındaki farklar hakkında daha fazla bilgi için [bkz.][configure-fgpp]
+Hassas parola ilkeleri hakkında daha fazla bilgi ve Azure AD 'de doğrudan Azure AD DS tarafından oluşturulan kullanıcılar arasındaki farklılıklar, bkz. [parola ve hesap kilitleme Ilkeleri yapılandırma][configure-fgpp].
 
 ## <a name="common-account-lockout-reasons"></a>Ortak hesap kilitleme nedenleri
 
-Bir hesabın kötü niyetli veya etken olmadan kilitlenemesinin en yaygın nedenleri aşağıdaki senaryoları içerir:
+Herhangi bir kötü amaçlı amaç veya etken olmadan bir hesabın kilitlenmesinin en yaygın nedenleri şunlardır:
 
-* **Kullanıcı kendini kilitledi.**
-    * Son parola değişikliğinden sonra, kullanıcı önceki bir parolayı kullanmaya devam etti mi? 2 dakika içinde 5 başarısız denemenin varsayılan hesap kilitleme ilkesi, kullanıcının yanlışlıkla eski bir parolayı yeniden denemesinden kaynaklanabilir.
-* **Eski bir parolası olan bir uygulama veya hizmet vardır.**
-    * Bir hesap uygulamalar veya hizmetler tarafından kullanılıyorsa, bu kaynaklar sürekli olarak eski bir parola kullanarak oturum açmayı deneyebilir. Bu davranış, hesabın kilitlenensine neden olur.
-    * Birden çok farklı uygulama veya hizmet arasında hesap kullanımını en aza indirmeyi deneyin ve kimlik bilgilerinin kullanıldığı yeri kaydedin. Hesap parolası değiştirilirse, ilişkili uygulamaları veya hizmetleri buna göre güncelleştirin.
-* **Parola farklı bir ortamda değiştirildi ve yeni parola henüz eşitlenmedi.**
-    * Bir hesap parolası, ön hazırlık AD DS ortamında olduğu gibi Azure AD DS dışında değiştirilirse, parola değişikliğinin Azure AD üzerinden eşitleme ve Azure AD DS'ye dönüştürülmesi birkaç dakika sürebilir.
-    * Parola eşitleme işlemi tamamlanmadan önce Azure AD DS aracılığıyla bir kaynakta oturum açmaya çalışan bir kullanıcı, hesaplarının kilitlenmesine neden olur.
+* **Kullanıcı kendini kilitlediği.**
+    * Son parola değişikliğinden sonra, Kullanıcı önceki bir parolayı kullanmaya devam eder mi? 2 dakika içinde başarısız olan 5 denemeden varsayılan hesap kilitleme ilkesi, kullanıcının yanlışlıkla eski bir parolayı istememesinin nedeni olabilir.
+* **Eski bir parolası olan bir uygulama veya hizmet var.**
+    * Bir hesap uygulamalar veya hizmetler tarafından kullanılıyorsa, bu kaynaklar sürekli olarak eski bir parola kullanarak oturum açmaya çalışabilir. Bu davranış, hesabın kilitlenmesine neden olur.
+    * Hesap kullanımını birden çok farklı uygulama veya hizmet genelinde en aza indirmenize ve kimlik bilgilerinin kullanıldığı yere kayıt yapmayı deneyin. Hesap parolası değiştirilirse, ilişkili uygulamaları veya hizmetleri uygun şekilde güncelleştirin.
+* **Farklı bir ortamda Parola değiştirildi ve yeni parola henüz eşitlenmedi.**
+    * Bir hesap parolası Azure AD DS dışında değiştirildiyse (örneğin, şirket içi AD DS ortamında), parola değişikliğinin Azure AD ile ve Azure AD DS arasında eşitlenmesi birkaç dakika sürebilir.
+    * Parola eşitleme işlemi tamamlanmadan önce Azure AD DS aracılığıyla bir kaynakta oturum açmaya çalışan bir Kullanıcı, hesaplarının kilitlenmesine neden olur.
 
-## <a name="troubleshoot-account-lockouts-with-security-audits"></a>Güvenlik denetimleriyle hesap kilitlemelerini giderme
+## <a name="troubleshoot-account-lockouts-with-security-audits"></a>Güvenlik denetimleri ile hesap kilitlenmelerini giderme
 
-Hesap kilitleme olaylarının ne zaman ve nereden geldiklerini gidermek [için Azure AD DS için güvenlik denetimlerini etkinleştirin.][security-audit-events] Denetim olayları yalnızca özelliği etkinleştirdiğiniz andan itibaren yakalanır. İdeal olarak, sorun giderme niz için bir hesap kilitleme sorunu olmadan *önce* güvenlik denetimlerini etkinleştirmelisiniz. Bir kullanıcı hesabının sürekli olarak kilitleme sorunları varsa, güvenlik denetimlerinin bir sonraki durum oluştuğunda hazır olmasını sağlayabilirsiniz.
+Hesap kilitleme olaylarının gerçekleştiği ve nereden geldiği hakkında sorun gidermek için [Azure AD DS güvenlik denetimlerini etkinleştirin][security-audit-events]. Denetim olayları yalnızca özelliği etkinleştirdiğiniz zamandan itibaren yakalanır. İdeal olarak, sorun gidermek için hesap kilitleme sorunu *olmadan önce* güvenlik denetimlerini etkinleştirmeniz gerekir. Bir kullanıcı hesabında sürekli olarak kilitleme sorunları varsa, bir sonraki durumda güvenlik denetimlerini mümkün hale getirebilirsiniz.
 
-Güvenlik denetimlerini etkinleştirdikten sonra, aşağıdaki örnek sorgular *Hesap Kilitleme Olaylarını*, kod *4740'ı*nasıl gözden geçireceğinizi gösterir.
+Güvenlik denetimlerini etkinleştirdikten sonra, aşağıdaki örnek sorgularda *Hesap kilitleme olaylarını*gözden geçirme, kod *4740*.
 
-Son yedi gündeki tüm hesap kilitleme olaylarını görüntüleyin:
+Son yedi güne ait tüm hesap kilitleme olaylarını görüntüleyin:
 
 ```Kusto
 AADDomainServicesAccountManagement
@@ -66,7 +66,7 @@ AADDomainServicesAccountManagement
 | where OperationName has "4740"
 ```
 
-*Driley*adlı hesap için son yedi güne ait tüm hesap kilitleme olaylarını görüntüleyin.
+*Drley*adlı hesap için son yedi günün tüm hesap kilitleme olaylarını görüntüleyin.
 
 ```Kusto
 AADDomainServicesAccountLogon
@@ -75,7 +75,7 @@ AADDomainServicesAccountLogon
 | where "driley" == tolower(extract("Logon Account:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
 ```
 
-26 Haziran 2019 saat 09:00 arasındaki tüm hesap kilitleme olaylarını görüntüleyebilirsiniz. ve 1 Temmuz 2019 gece yarısı, tarih ve saate göre artan:
+26 Haziran 2019 arasındaki tüm hesap kilitleme olaylarını 9 saat 00 ' da görüntüleyin ve 1 Temmuz 2019 gece yarısı, tarih ve saate göre artan düzende sıralanır:
 
 ```Kusto
 AADDomainServicesAccountManagement
@@ -86,9 +86,9 @@ AADDomainServicesAccountManagement
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hesap kilitleme eşiklerini ayarlamak için ince taneli parola ilkeleri hakkında daha fazla bilgi için [parolayı ve hesap kilitleme ilkelerini yapılandır'a][configure-fgpp]bakın.
+Hesap kilitleme eşiklerini ayarlamaya yönelik hassas parola ilkeleri hakkında daha fazla bilgi için bkz. [parola ve hesap kilitleme Ilkeleri yapılandırma][configure-fgpp].
 
-VM'inizi Azure AD DS yönetilen etki alanına katılmakta hala sorun yaşıyorsanız, [yardım bulun ve Azure Etkin Dizin için bir destek bileti açın.][azure-ad-support]
+VM 'nize Azure AD DS yönetilen etki alanına katılma sorunları yaşıyorsanız, [yardım bulun ve Azure Active Directory için bir destek bileti açın][azure-ad-support].
 
 <!-- INTERNAL LINKS -->
 [configure-fgpp]: password-policy.md

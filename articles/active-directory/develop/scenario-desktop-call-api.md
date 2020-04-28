@@ -1,6 +1,6 @@
 ---
-title: Bir masaüstü uygulamasından web API'lerini arayın - Microsoft kimlik platformu | Azure
-description: Web API'leri çağıran bir masaüstü uygulaması oluşturmayı öğrenin
+title: Bir masaüstü uygulamasından Web API 'Lerini çağırma-Microsoft Identity platform | Mavisi
+description: Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmayı öğrenin
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882973"
 ---
-# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Web API'lerini çağıran masaüstü uygulaması: Web API'sını arayın
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Web API 'Lerini çağıran masaüstü uygulaması: Web API 'SI çağırma
 
-Artık bir belirteç var, korumalı web API arayabilirsiniz.
+Artık bir belirteciniz olduğuna göre, korumalı bir Web API 'SI çağırabilirsiniz.
 
 ## <a name="call-a-web-api"></a>Web API çağrısı
 
@@ -60,11 +60,11 @@ if(responseCode != HttpURLConnection.HTTP_OK) {
 JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
 ```
 
-# <a name="macos"></a>[Macos](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
-## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>iOS ve macOS için MSAL'da web API'sını arayın
+## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>İOS ve macOS için MSAL içinde bir Web API 'SI çağırma
 
-Belirteçleri elde etme `MSALResult` yöntemleri bir nesneyi döndürer. `MSALResult`web API'sını çağırmak için kullanılabilecek bir `accessToken` özelliği ortaya çıkarır. Korumalı web API'sine erişmek için arama yapmadan önce HTTP yetkilendirme üstbilgisine bir erişim belirteci ekleyin.
+Belirteçleri elde etmek için yöntemler bir `MSALResult` nesne döndürür. `MSALResult`bir Web `accessToken` API 'si çağırmak için kullanılabilecek bir özellik sunar. Korumalı Web API 'sine erişmek için çağrıyı yapmadan önce HTTP yetkilendirme üstbilgisine bir erişim belirteci ekleyin.
 
 Amaç-C:
 
@@ -80,7 +80,7 @@ NSURLSessionDataTask *task =
 [task resume];
 ```
 
-Swift:
+SWIFT
 
 ```swift
 let urlRequest = NSMutableURLRequest()
@@ -92,9 +92,9 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Birkaç API arayın: Artımlı onay ve koşullu erişim
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Çeşitli API 'Leri çağırma: artımlı izin ve koşullu erişim
 
-Aynı kullanıcı için birkaç API çağırmak için, ilk API için `AcquireTokenSilent`bir belirteç aldıktan sonra, arayın. Çoğu zaman diğer API'ler için bir belirteç alırsınız.
+Aynı kullanıcı için çeşitli API 'Leri çağırmak için, ilk API için bir belirteç aldıktan sonra çağrısı `AcquireTokenSilent`yapın. Diğer API 'Ler için çoğu zaman sessizce bir belirteç alacaksınız.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -104,10 +104,10 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-Etkileşim şu zaman gereklidir:
+Şu durumlarda etkileşim gerekir:
 
-- Kullanıcı ilk API için izin verdi, ancak şimdi daha fazla kapsam için onay alması gerekiyor. Bu tür bir rıza, artımlı rıza olarak bilinir.
-- İlk API çok faktörlü kimlik doğrulaması gerektirmedi, ama bir sonraki yok.
+- Kullanıcı ilk API 'ye onay verdi, ancak şimdi daha fazla kapsam için onay gerektirir. Bu tür bir onay, artımlı izin olarak bilinir.
+- İlk API, çok faktörlü kimlik doğrulaması gerektirmez, ancak bir sonraki tane.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

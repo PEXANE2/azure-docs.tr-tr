@@ -1,6 +1,6 @@
 ---
-title: Eşleme veri akışını kullanarak verileri dönüştürme
-description: Bu öğretici, veri akışını eşlemeyle verileri dönüştürmek için Azure Veri Fabrikası'nı kullanmak için adım adım yönergeler sağlar
+title: Eşleme veri akışı kullanarak veri dönüştürme
+description: Bu öğretici, veri akışı eşleme ile verileri dönüştürmek için Azure Data Factory kullanmaya yönelik adım adım yönergeler sağlar
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: makromer
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
 ms.openlocfilehash: 917a8d6edf04d8a160c3a6a5ac59949623dfee5c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418686"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Veri akışlarını eşleme kullanarak verileri dönüştürme
@@ -21,35 +21,35 @@ ms.locfileid: "81418686"
 
 Azure Data Factory kullanmaya yeni başlıyorsanız bkz. [Azure Data Factory'ye giriş](introduction.md).
 
-Bu eğitimde, veri akışını eşleme kullanarak Azure Veri Gölü Depolama (ADLS) Gen2 kaynağındaki verileri kopyalayan ve dönüştüren bir ardışık hat lar oluşturmak için Azure Veri Fabrikası kullanıcı arabirimini (UX) kullanırsınız. Bu öğreticideki yapılandırma deseni, veri akışını eşleme kullanarak verileri dönüştürürken genişletilebilir
+Bu öğreticide, veri akışını eşleme kullanarak bir Azure Data Lake Storage (ADLS) Gen2 kaynağından bir ADLS 2. havuzuna verileri kopyalayan ve dönüştüren bir işlem hattı oluşturmak için Azure Data Factory Kullanıcı arabirimini (UX) kullanacaksınız. Bu öğreticideki yapılandırma deseninin verileri, eşleme veri akışı kullanılarak dönüştürülürken Genişletilebilir
 
 Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 > [!div class="checklist"]
 > * Veri fabrikası oluşturma.
-> * Veri Akışı etkinliği içeren bir ardışık hatlar oluşturma.
-> * Dört dönüşümiçeren bir eşleme veri akışı oluşturun.
+> * Veri akışı etkinliğine sahip bir işlem hattı oluşturun.
+> * Dört dönüşümle bir eşleme veri akışı oluşturun.
 > * İşlem hattında test çalıştırması yapma.
-> * Veri Akışı etkinliğini izleme
+> * Veri akışı etkinliğini izleme
 
 ## <a name="prerequisites"></a>Ön koşullar
-* **Azure aboneliği.** Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* **Azure depolama hesabı**. ADLS depolama alanını *kaynak* ve *lavabo* veri depoları olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md).
+* **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
+* **Azure depolama hesabı**. ADLS depolamayı *kaynak* ve *Havuz* veri depoları olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md).
 
-Biz bu öğretici dönüştüren dosya MoviesDB.csv, [burada](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)bulabilirsiniz . Dosyayı GitHub'dan almak için, içeriği seçtiğiniz bir metin düzenleyicisine kopyalayın ve yerel olarak .csv dosyası olarak kaydedin. Dosyayı depolama hesabınıza yüklemek için [Azure Portalı ile Yükleme bloblarını](../storage/blobs/storage-quickstart-blobs-portal.md)görün. Örnekler ,'örnek veri' adlı bir kapsayıcıya başvurulacaktır.
+Bu öğreticide dönüştürtiğimiz dosya MoviesDB. csv ' dir ve [burada](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)bulunabilir. Dosyayı GitHub 'dan almak için, bir. csv dosyası olarak yerel olarak kaydetmek üzere içeriği istediğiniz bir metin düzenleyicisine kopyalayın. Dosyayı depolama hesabınıza yüklemek için bkz. [Azure portalı ile Blobları karşıya yükleme](../storage/blobs/storage-quickstart-blobs-portal.md). Örnekler ' Sample-Data ' adlı bir kapsayıcıya başvuracaktır.
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-Bu adımda, bir veri fabrikası oluşturur ve veri fabrikasında bir ardışık hat lar oluşturmak için Veri Fabrikası UX'yi açarsınız.
+Bu adımda, bir veri fabrikası oluşturur ve veri fabrikasında bir işlem hattı oluşturmak için Data Factory UX 'i açarsınız.
 
-1. **Microsoft Edge** veya **Google Chrome'u**açın. Şu anda, Veri Fabrikası UI yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenir.
-2. Sol menüde, **bir kaynak** > **Analiz** > **Veri Fabrikası**Oluştur'u seçin:
+1. **Microsoft Edge** veya **Google Chrome**'ı açın. Şu anda Data Factory UI yalnızca Microsoft Edge ve Google Chrome Web tarayıcılarında desteklenir.
+2. Sol menüde, **kaynak** > **Analizi** > **Data Factory**oluştur ' u seçin:
 
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 3. **Yeni veri fabrikası** sayfasında **Ad** bölümüne **ADFTutorialDataFactory** girin.
 
-   Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Ad değeriyle ilgili bir hata iletisi alırsanız, veri fabrikası için farklı bir ad girin. (örneğin, adınızADFTutorialDataFactory). Data Factory yapıtlarının adlandırma kuralları için bkz.[Data Factory adlandırma kuralları](naming-rules.md).
+   Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Ad değeriyle ilgili bir hata iletisi alırsanız, veri fabrikası için farklı bir ad girin. (örneğin, Adınızadftutorialdatafactory). Data Factory yapıtlarının adlandırma kuralları için bkz.[Data Factory adlandırma kuralları](naming-rules.md).
 
      ![Yeni veri fabrikası](./media/doc-common-process/name-not-available-error.png)
 4. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğinizi** seçin.
@@ -61,148 +61,148 @@ Bu adımda, bir veri fabrikası oluşturur ve veri fabrikasında bir ardışık 
          
     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md). 
 6. **Sürüm** bölümünde **V2**'yi seçin.
-7. **Konum** bölümünden veri fabrikası için bir konum seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları (örneğin, Azure Depolama ve SQL Veritabanı) ve bilgi işlem (örneğin, Azure HDInsight) başka bölgelerde olabilir.
+7. **Konum** bölümünden veri fabrikası için bir konum seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri Fabrikası tarafından kullanılan veri depoları (örneğin, Azure depolama ve SQL veritabanı) ve işlemler (örneğin, Azure HDInsight) başka bölgelerde olabilir.
 8. **Oluştur**’u seçin.
-9. Oluşturma tamamlandıktan sonra bildirimler merkezinde bildirimi görürsünüz. Veri fabrikası sayfasına gitmek için **kaynağa** git'i seçin.
+9. Oluşturma işlemi tamamlandıktan sonra, Bildirim Merkezi ' nde bildirimi görürsünüz. Data Factory sayfasına gitmek için **Kaynağa Git** ' i seçin.
 10. Data Factory Kullanıcı Arabirimini (UI) ayrı bir sekmede başlatmak için **Geliştir ve İzle**’yi seçin.
 
-## <a name="create-a-pipeline-with-a-data-flow-activity"></a>Veri Akışı etkinliği olan bir ardışık hatlar oluşturma
+## <a name="create-a-pipeline-with-a-data-flow-activity"></a>Veri akışı etkinliği ile işlem hattı oluşturma
 
-Bu adımda, veri akışı etkinliği içeren bir ardışık işlem hattı oluşturursunuz.
+Bu adımda, bir veri akışı etkinliği içeren bir işlem hattı oluşturacaksınız.
 
 1. **Kullanmaya başlama** sayfasında **İşlem hattı oluştur** seçeneğini belirleyin.
 
    ![İşlem hattı oluşturma](./media/doc-common-process/get-started-page.png)
 
-1. Ardışık hatlar için **Genel** sekmesinde, ardışık adı **için** **TransformMovies'i** girin.
-1. Fabrikanın üst çubuğunda, **Veri Akışı hata ayıklama** kaydırıcısını kaydırın. Hata ayıklama modu, dönüşüm mantığının canlı bir Kıvılcım kümesine karşı etkileşimli sınamasına olanak tanır. Veri Akışı kümelerinin ısınması 5-7 dakika sürer ve kullanıcıların Veri Akışı geliştirmesini yapmayı planlıyorlarsa önce hata ayıklamayı açmaları önerilir. Daha fazla bilgi için [Hata Ayıklama Modu'na](concepts-data-flow-debug-mode.md)bakın.
+1. İşlem hattının **genel** sekmesinde, Işlem hattının **adı** için **transformfilmlerini** girin.
+1. Fabrika üst çubuğunda, **veri akışı hata ayıklama** kaydırıcısını üzerine kaydırın. Hata ayıklama modu, canlı bir Spark kümesine karşı dönüştürme mantığının etkileşimli olarak test edilmesine olanak tanır. Veri akışı kümelerinin ısınma için 5-7 dakika sürer ve veri akışı geliştirmeyi planlarsa, kullanıcıların hata ayıklamanın ilk kez etkinleştirilmesi önerilir. Daha fazla bilgi için bkz. [hata ayıklama modu](concepts-data-flow-debug-mode.md).
 
-    ![Veri Akışı Etkinliği](media/tutorial-data-flow/dataflow1.png)
-1. **Etkinlikler** bölmesinde, Taşı **ve Dönüştür** akordeonu genişletin. **Veri Akışı** etkinliğini bölmeden boru hattı tuvaline sürükleyin ve bırakın.
+    ![Veri akışı etkinliği](media/tutorial-data-flow/dataflow1.png)
+1. **Etkinlikler** bölmesinde, **taşıma ve dönüştürme** Accordion ' ı genişletin. Bölmedeki **veri akışı** etkinliğini, işlem hattı tuvaline sürükleyin ve bırakın.
 
-    ![Veri Akışı Etkinliği](media/tutorial-data-flow/activity1.png)
-1. Veri **Akışı Ekleme** açılır penceresinde, **yeni Veri Akışı Oluştur'u** seçin ve ardından veri akışınızı **TransformMovies**olarak adlandırın. Bittiğinde Bitir'i tıklatın.
+    ![Veri akışı etkinliği](media/tutorial-data-flow/activity1.png)
+1. **Veri akışı ekleme** açılır penceresinde **Yeni veri akışı oluştur** ' u seçin ve ardından veri akışı **dönüştürfilmlerinizi**adlandırın. Bittiğinde son ' a tıklayın.
 
-    ![Veri Akışı Etkinliği](media/tutorial-data-flow/activity2.png)
+    ![Veri akışı etkinliği](media/tutorial-data-flow/activity2.png)
 
-## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Veri akışı tuvalinde dönüşüm mantığı oluşturma
+## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Veri akışı tuvalinde dönüştürme mantığı oluşturma
 
-Veri Akışınızı oluşturduktan sonra, otomatik olarak veri akışı tuvaline gönderilirsiniz. Bu adımda, ADLS depolama filmDB.csv alır ve 1910-2000 yılları arasında komedi ortalama derecelendirme toplar bir veri akışı oluşturmak. Daha sonra bu dosyayı ADLS depolama alanına geri yazarsınız.
+Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline gönderilir. Bu adımda, ADLS depolamada moviesDB. csv ' yi alan ve 1910 ' den 2000 ' e kadar olan Ortalama derecelendirme derecelendirmesini toplayan bir veri akışı oluşturacaksınız. Daha sonra bu dosyayı ADLS depolamasına geri yazacaksınız.
 
-1. Veri akışı tuvalinde Kaynak **Ekle** kutusunu tıklatarak bir kaynak ekleyin.
+1. Veri akışı tuvalinde, **Kaynak Ekle** kutusuna tıklayarak bir kaynak ekleyin.
 
-    ![Veri Akışı Tuvali](media/tutorial-data-flow/dataflow2.png)
-1. Kaynak **MoviesDB**adlandırın. Yeni bir kaynak veri kümesi oluşturmak için **Yeni'yi** tıklatın.
+    ![Veri akışı tuvali](media/tutorial-data-flow/dataflow2.png)
+1. Kaynak **MoviesDB**adlandırın. Yeni kaynak veri kümesi oluşturmak için **Yeni** ' ye tıklayın.
 
-    ![Veri Akışı Tuvali](media/tutorial-data-flow/dataflow3.png)
-1. **Azure Veri Gölü Depolama Gen2'yi**seçin. Devam’a tıklayın.
+    ![Veri akışı tuvali](media/tutorial-data-flow/dataflow3.png)
+1. **Azure Data Lake Storage 2.** seçin. Devam’a tıklayın.
 
     ![Veri kümesi](media/tutorial-data-flow/dataset1.png)
-1. **DelimitedText'i**seçin. Devam’a tıklayın.
+1. **Delimitedtext**öğesini seçin. Devam’a tıklayın.
 
     ![Veri kümesi](media/tutorial-data-flow/dataset2.png)
-1. Veri setinizi **FilmDB**olarak adlandırın. Bağlantılı hizmet açılır düşüşünde **Yeni'yi**seçin.
+1. Veri kümenizi **MoviesDB**olarak adlandırın. Bağlı hizmet açılan menüsünde **Yeni**' yi seçin.
 
     ![Veri kümesi](media/tutorial-data-flow/dataset3.png)
-1. Bağlantılı hizmet oluşturma ekranında ADLS gen2 bağlantılı hizmetinizi **ADLSGen2** olarak adlandırın ve kimlik doğrulama yönteminizi belirtin. Ardından bağlantı kimlik bilgilerinizi girin. Bu eğitimde, depolama hesabımıza bağlanmak için Hesap tuşunu kullanıyoruz. Kimlik bilgilerinizin doğru girilmesini doğrulamak için **Test bağlantısını** tıklatabilirsiniz. Tamamlandığında Oluştur'u tıklatın.
+1. Bağlı hizmet oluşturma ekranında, ADLS Gen2 Linked Service **ADLSGen2** ' yi adlandırın ve kimlik doğrulama yönteminizi belirtin. Ardından bağlantı kimlik bilgilerinizi girin. Bu öğreticide, depolama hesabımızla bağlantı kurmak için hesap anahtarı 'nı kullanıyoruz. Kimlik bilgilerinizin doğru girildiğini doğrulamak için **Bağlantıyı Sına** ' ya tıklayabilirsiniz. İşiniz bittiğinde oluştur ' a tıklayın.
 
-    ![Bağlantılı Hizmet](media/tutorial-data-flow/ls1.png)
-1. Veri kümesi oluşturma ekranına geri döndüğünüzde, **Dosya yol** alanının altında dosyanızın bulunduğu yeri girin. Bu öğreticide, dosya moviesDB.csv kapsayıcı örnek veri bulunur. Dosyanın üstbilgisi olduğu için, **İlk satırı üstbilgi olarak**denetleyin. Üstbilgi şemasını doğrudan depolama daki dosyadan almak için **Bağlantıdan/Mağaza'dan'ı** seçin. Bittiğinde Tamam'ı tıklatın.
+    ![Bağlı hizmet](media/tutorial-data-flow/ls1.png)
+1. Veri kümesi oluşturma ekranına geri döndüğünüzde, dosyanın **dosya yolu** alanının altında bulunduğu yeri girin. Bu öğreticide, moviesDB. csv dosyası kapsayıcı örnek verilerinde bulunur. Dosya üst bilgileri içerdiğinden **ilk satırı üst bilgi olarak**denetleyin. Üst bilgi şemasını depolama alanındaki dosyadan doğrudan içeri aktarmak için **bağlantı/depolama alanından** seçim yapın. Bittiğinde Tamam ' a tıklayın.
 
     ![Veri kümeleri](media/tutorial-data-flow/dataset4.png)
-1. Hata ayıklama kümeniz başladıysa, kaynak dönüşümünün **Veri Önizleme** sekmesine gidin ve verilerin anlık görüntüsünü almak için **Yenile'yi** tıklatın. Dönüşümünüzün doğru şekilde yapılandırıldığından doğrulamak için veri önizlemesini kullanabilirsiniz.
+1. Hata ayıklama kümeniz başlatıldıysa, kaynak dönüşümünün **veri önizleme** sekmesine gidin ve verilerin anlık görüntüsünü almak için **Yenile** ' ye tıklayın. Dönüşümün doğru yapılandırıldığını doğrulamak için veri önizlemeyi kullanabilirsiniz.
 
-    ![Veri Akışı Tuvali](media/tutorial-data-flow/dataflow4.png)
-1. Veri akışı tuvalindeki kaynak düğümünüzün yanında, yeni bir dönüşüm eklemek için artı simgesine tıklayın. Eklediğiniz ilk dönüşüm bir **Filtre'dir.**
+    ![Veri akışı tuvali](media/tutorial-data-flow/dataflow4.png)
+1. Veri akışı tuvalindeki kaynak Düğümünüzün yanında, yeni bir dönüşüm eklemek için artı simgesine tıklayın. Eklemekte olduğunuz ilk dönüşüm bir **filtredir**.
 
-    ![Veri Akışı Tuvali](media/tutorial-data-flow/dataflow5.png)
-1. Filtre **dönüşümünüzü filtreyıl**adlandırın. İfade oluşturucuyu açmak için **Filtre'nin** yanındaki ifade kutusunu tıklatın. Burada filtreleme durumunuzu belirteceksiniz.
+    ![Veri akışı tuvali](media/tutorial-data-flow/dataflow5.png)
+1. Filtre dönüştürmesinin **Filtreyıllarınızı**adlandırın. **Filtre Uygula** ' nın yanındaki ifade kutusuna tıklayıp deyim Oluşturucu 'yu açın. Burada filtreleme koşullarınızı belirtirsiniz.
 
     ![Filtre](media/tutorial-data-flow/filter1.png)
-1. Veri akışı ifade oluşturucu, çeşitli dönüşümlerde kullanmak üzere etkileşimli ifadeler oluşturmanıza olanak tanır. İfadeler yerleşik işlevleri, giriş şemasından sütunlar ve kullanıcı tanımlı parametreler içerebilir. İfadelerin nasıl oluşturulabildiğini hakkında daha fazla bilgi için Bkz. [Veri Akışı ifade oluşturucusu.](concepts-data-flow-expression-builder.md)
+1. Veri akışı ifade Oluşturucusu, çeşitli dönüşümlerde kullanılacak ifadeleri etkileşimli bir şekilde oluşturmanıza olanak tanır. İfadeler, yerleşik işlevleri, giriş şemasından sütunları ve Kullanıcı tanımlı parametreleri içerebilir. İfadelerin nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [veri akışı ifade Oluşturucusu](concepts-data-flow-expression-builder.md).
 
-    Bu eğitimde, 1910 ve 2000 yılları arasında ortaya çıkan tür komedi filmleri filtrelemek istiyorum. Yıl şu anda bir dize olduğundan, ```toInteger()``` işlevi kullanarak bir tamsayıya dönüştürmeniz gerekir. 1910 ve 200-'deki gerçek yıl değerleriyle karşılaştırmak için (>=) ve (<=) işleçlerden daha az veya eşit olan büyük veya eşit leri kullanın. Bu ifadeleri ve (&&) işleciyle birleştirin. İfade olarak çıkar:
+    Bu öğreticide, 1910 ve 2000 yılları arasında gelen tarz komedi filmlerini filtrelemek istersiniz. Yıl şu anda bir dize olduğu için ```toInteger()``` işlevi kullanarak bir tamsayıya dönüştürmeniz gerekir. 1910 ve 200-sabit yıl değerlerine göre karşılaştırmak için büyüktür veya eşittir (>=) ve küçüktür veya eşittir (<=) işleçlerini kullanın. Bu ifadeleri ve (&&) işleciyle birlikte toplayın. İfade şu şekilde gelir:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
 
-    Hangi filmlerin komedi olduğunu bulmak için, ```rlike()``` sütun türlerinde desen 'Komedi' bulmak için işlevi kullanabilirsiniz. Birlik yıl karşılaştırma ile rlike ifade almak için:
+    Hangi filmlerin ortak olduğunu bulmak için, ' komedi ' stilini sütun tarzları içinde bulmak için ```rlike()``` işlevini kullanabilirsiniz. Şunun için yıl karşılaştırmasına sahip rlıke ifadesini birleşim:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
 
-    Hata ayıklama kümeniz etkinse, kullanılan girişlere kıyasla ifade çıktısını görmek için **Yenile'yi** tıklatarak mantığınızı doğrulayabilirsiniz. Veri akışı ifade dilini kullanarak bu mantığı nasıl başarabileceğinize dair birden fazla doğru yanıt vardır.
+    Etkin bir hata ayıklama kümeniz varsa, kullanılan girişlerle karşılaştırılan ifade çıktısını görmek için **Yenile** ' ye tıklayarak mantığınızı doğrulayabilirsiniz. Veri akışı ifade dilini kullanarak bu mantığı nasıl gerçekleştirebileceğiniz üzerinde birden fazla doğru yanıt vardır.
 
     ![Filtre](media/tutorial-data-flow/filter2.png)
 
-    İfadenizi bitirdikten sonra **Kaydet ve Bitir'i** tıklatın.
+    Deyiminizi tamamladıktan sonra Kaydet ' e tıklayın **ve son** ' a tıklayın.
 
-1. Filtrenin doğru çalıştığını doğrulamak için **Veri Önizlemesi** getirin.
+1. Filtrenin düzgün çalıştığını doğrulamak için bir **veri önizlemesi** getirin.
 
     ![Filtre](media/tutorial-data-flow/filter3.png)
-1. Ekleyeceğiniz bir sonraki dönüşüm, **Schema değiştirici**altında **toplu** dönüşümdür.
+1. Ekleyeceğiniz bir sonraki dönüşüm, **şema değiştiricisi**altında bir **Toplam** dönüşümdir.
 
     ![Toplama](media/tutorial-data-flow/agg1.png)
-1. Toplu dönüşüm **AggregateComedyRatings**adı . **Sekmeye göre** Grup'ta, açılan alt tan film çıktığı yıla göre toplamaları gruplandırmak için **yılı** seçin.
+1. Toplam dönüşüm **Aggregatecomedyıderecelendirmeleri**olarak adlandırın. **Gruplandırma ölçütü** sekmesinde, toplamaların filmi filmin geldiği yıla göre gruplamak için açılan listeden **yıl** ' ı seçin.
 
     ![Toplama](media/tutorial-data-flow/agg2.png)
-1. **Agregalar** sekmesine gidin. Sol metin kutusunda, toplam sütun **OrtalamaComedyRating**adını. İfade oluşturucu aracılığıyla toplu ifadeyi girmek için sağ ifade kutusuna tıklayın.
+1. **Toplamlar** sekmesine gidin. Sol metin kutusunda, toplam sütununu **Averagecomedyıderecelendirme**olarak adlandırın. Deyim Oluşturucu aracılığıyla toplama ifadesini girmek için sağ ifade kutusuna tıklayın.
 
     ![Toplama](media/tutorial-data-flow/agg3.png)
-1. Sütun **Derecelendirmesi**ortalamasını almak ```avg()``` için toplam işlevini kullanın. **Rating** bir dize ```avg()``` olduğundan ve sayısal bir giriş aldığından, ```toInteger()``` işlevi aracılığıyla değeri bir sayıya dönüştürmemiz gerekir. Bu ifade gibi görünüyor:
+1. Sütun **derecelendirmesinin**ortalamasını almak için ```avg()``` toplama işlevini kullanın. **Derecelendirme** bir dize olduğu ve ```avg()``` sayısal bir girişi aldığı için değeri ```toInteger()``` işlev aracılığıyla bir sayıya dönüştürmemiz gerekir. Bu ifade şöyle görünür:
 
     ```avg(toInteger(Rating))```
 
-    Bittiğinde **Kaydet ve Bitir'i** tıklatın.
+    İşiniz bittiğinde **Kaydet ve son** ' a tıklayın.
 
     ![Toplama](media/tutorial-data-flow/agg4.png)
-1. Dönüşüm çıktısını görüntülemek için **Veri Önizleme** sekmesine gidin. Dikkat sadece iki sütun var, **yıl** ve **AverageComedyRating**.
+1. Dönüştürme çıkışını görüntülemek için **veri önizleme** sekmesine gidin. Yalnızca iki sütun varsa, **yıl** ve **Averageıda ortalama derecelendirmesine**dikkat edin.
 
     ![Toplama](media/tutorial-data-flow/agg3.png)
-1. Ardından, **Hedef**altında bir **Lavabo** dönüşümü eklemek istiyorsunuz.
+1. Ardından, **hedef**altına bir **Havuz** dönüştürmesi eklemek istersiniz.
 
     ![Havuz](media/tutorial-data-flow/sink1.png)
-1. Lavabonuna **Sink**isim söyle. Lavabo veri kümenizi oluşturmak için **Yeni'yi** tıklatın.
+1. Havuz **havuzunuzu**adlandırın. Havuz veri kümenizi oluşturmak için **Yeni** ' ye tıklayın.
 
     ![Havuz](media/tutorial-data-flow/sink2.png)
-1. **Azure Veri Gölü Depolama Gen2'yi**seçin. Devam’a tıklayın.
+1. **Azure Data Lake Storage 2.** seçin. Devam’a tıklayın.
 
     ![Veri kümesi](media/tutorial-data-flow/dataset1.png)
-1. **DelimitedText'i**seçin. Devam’a tıklayın.
+1. **Delimitedtext**öğesini seçin. Devam’a tıklayın.
 
     ![Veri kümesi](media/tutorial-data-flow/dataset2.png)
-1. Lavabo veri setinizi adlandırın **MoviesSink**. Bağlantılı hizmet için, adım 6'da oluşturduğunuz ADLS gen2 bağlantılı hizmeti seçin. Verilerinizi yazmak için bir çıktı klasörü girin. Bu öğreticide, kapsayıcı 'örnek-veri'deki 'çıktı' klasörüne yazıyoruz. Klasörün önceden var olması gerekmez ve dinamik olarak oluşturulabilir. İlk satırı doğru **olarak üstbilgi olarak** ayarlayın ve **Alma şeması**için **Yok'u** seçin. Son'a tıklayın.
+1. Havuz veri kümenizi **MoviesSink**olarak adlandırın. Bağlı hizmet için 6. adımda oluşturduğunuz ADLS Gen2 bağlı hizmetini seçin. Verilerinizi yazmak için bir çıkış klasörü girin. Bu öğreticide, ' Sample-Data ' kapsayıcısının ' output ' klasörüne yazıyoruz. Klasörün önceden var olması gerekmez ve dinamik olarak oluşturulabilir. **İlk satırı üst bilgi olarak** ayarlayın ve **içeri aktarma şeması**için **hiçbiri** ' ni seçin. Son'a tıklayın.
 
     ![Havuz](media/tutorial-data-flow/sink3.png)
 
-Şimdi veri akışınızı oluşturmayı bitirdiniz. Boru hattında çalıştırmaya hazırsın.
+Artık veri akışınızı oluşturmayı tamamladınız. İşlem hattınızda çalıştırmak için hazırsınız.
 
-## <a name="running-and-monitoring-the-data-flow"></a>Veri Akışının Çalıştırılması ve İzlenmesi
+## <a name="running-and-monitoring-the-data-flow"></a>Veri akışını çalıştırma ve izleme
 
-Yayımlamadan önce bir ardışık bölümü hata ayıklayabilirsiniz. Bu adımda, veri akışı ardışık bir hata ayıklama çalışmasını tetikleyebilirsiniz. Veri önizlemesi veri yazmasa da, hata ayıklama çalışması lavabo hedefinize veri yazar.
+Yayımlamadan önce bir işlem hattında hata ayıklaması yapabilirsiniz. Bu adımda, veri akışı işlem hattının hata ayıklama çalıştırmasını tetikleyeceksiniz. Veri önizleme verileri yazmazsa, bir hata ayıklama çalıştırması havuz Hedefinizdeki verileri yazar.
 
-1. Boru hattı tuvaline git. Hata **ayıklama** çalışmasını tetiklemek için hata ayıklama'yı tıklatın.
+1. İşlem hattı tuvaline gidin. Hata ayıklama çalıştırmasını tetiklemek için **Hata Ayıkla** ' ya tıklayın.
 
     ![İşlem hattı](media/tutorial-data-flow/pipeline1.png)
-1. Veri Akışı etkinliklerinin ardışık alt bilgi ayıklama etkin hata ayıklama kümesini kullanır, ancak başlatması yine de en az bir dakika sürer. **İlerleme** sekmesinden ilerlemeyi izleyebilirsiniz. Çalıştırma başarılı olduktan sonra, izleme bölmesini açmak için gözlük simgesine tıklayın.
+1. Veri akışı etkinliklerinin ardışık düzen hata ayıklaması, etkin hata ayıklama kümesini kullanır, ancak yine de başlatmak için en az bir dakika sürer. İlerlemeyi **Çıkış** sekmesi aracılığıyla izleyebilirsiniz. Çalıştırma başarılı olduktan sonra, izleme bölmesini açmak için göz gözlük simgesine tıklayın.
 
     ![İşlem hattı](media/tutorial-data-flow/pipeline2.png)
-1. İzleme bölmesinde, her dönüşüm adımında harcanan satır sayısını ve zamanı görebilirsiniz.
+1. İzleme bölmesinde her bir dönüştürme adımında harcanan satır sayısını ve süreyi görebilirsiniz.
 
     ![İzleme](media/tutorial-data-flow/pipeline3.png)
-1. Sütunlar ve verilerin bölümleme hakkında ayrıntılı bilgi almak için bir dönüşüm etıklayın.
+1. Verilerin sütunları ve bölümlenmesi hakkında ayrıntılı bilgi almak için bir dönüşüme tıklayın.
 
     ![İzleme](media/tutorial-data-flow/pipeline4.png)
 
-Bu öğreticiyi doğru bir şekilde izlediyseniz, lavabo klasörünüze 83 satır ve 2 sütun yazmış olmalısınız. Blob depolamanızı kontrol ederek verilerin doğru luğunu doğrulayabilirsiniz.
+Bu öğreticiyi izlediyseniz, havuz klasörünüze 83 satır ve 2 sütun yazmış olmanız gerekir. BLOB depolama alanınızı denetleyerek verilerin doğru olduğunu doğrulayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticideki ardışık işlem, 1910'dan 2000'e kadar komedilerin ortalama derecelendirmesini toplayan ve verileri ADLS'ye yazan bir veri akışı çalıştırıyor. Şunları öğrendiniz:
+Bu öğreticideki işlem hattı, 1910 ' den 2000 ' e kadar olan ve verileri ADLS 'ye yazan ortalama Comedies derecelendirmesini toplayan bir veri akışı çalıştırır. Şunları öğrendiniz:
 
 > [!div class="checklist"]
 > * Veri fabrikası oluşturma.
-> * Veri Akışı etkinliği içeren bir ardışık hatlar oluşturma.
-> * Dört dönüşümiçeren bir eşleme veri akışı oluşturun.
+> * Veri akışı etkinliğine sahip bir işlem hattı oluşturun.
+> * Dört dönüşümle bir eşleme veri akışı oluşturun.
 > * İşlem hattında test çalıştırması yapma.
-> * Veri Akışı etkinliğini izleme
+> * Veri akışı etkinliğini izleme
 
-Veri akışı [ifade dili](data-flow-expression-functions.md)hakkında daha fazla bilgi edinin.
+[Veri akışı ifade dili](data-flow-expression-functions.md)hakkında daha fazla bilgi edinin.

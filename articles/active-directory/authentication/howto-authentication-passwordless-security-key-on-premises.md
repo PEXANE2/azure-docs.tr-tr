@@ -1,6 +1,6 @@
 ---
-title: Şirket içi kaynaklarda parolasız güvenlik anahtarı oturum açma (önizleme) - Azure Etkin Dizini
-description: Azure Active Directory 'i kullanarak şirket içi kaynaklarda parolasız güvenlik anahtarı oturum açmayı nasıl etkinleştirin (önizleme) öğrenin
+title: Passwordless güvenlik anahtarı şirket içi kaynaklarda oturum açma (Önizleme)-Azure Active Directory
+description: Azure Active Directory (Önizleme) kullanarak şirket içi kaynaklarda passwordless güvenlik anahtarı oturumunu nasıl etkinleştirebileceğinizi öğrenin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,76 +12,76 @@ manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 181e8192170cd7394d6817edd655f4e8257b48a4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80654035"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Azure Active Directory (önizleme) ile şirket içi kaynaklarda parolasız güvenlik anahtarı oturum açma olanağı sağlama
+# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile şirket içi kaynaklarda passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirin
 
-Bu belge, hem **Azure AD'nin katıldığı** hem de karma **Azure AD'nin** Windows 10 aygıtlarına katıldığı ortamlar için şirket içi kaynaklara parolasız kimlik doğrulamayı etkinleştirmeye odaklanır. Bu işlevsellik, Microsoft uyumlu güvenlik anahtarlarını kullanarak şirket içi kaynaklara sorunsuz tek oturum açma (SSO) sağlar.
+Bu belge, **Azure AD 'ye katılmış** ve **hibrit Azure AD 'ye katılmış** Windows 10 cihazlarındaki ortamlar için, şirket içi kaynaklarda parolasız kimlik doğrulamanın etkinleştirilmesinde odaklanır. Bu işlevsellik, Microsoft uyumlu güvenlik anahtarlarını kullanarak şirket içi kaynaklara sorunsuz çoklu oturum açma (SSO) sağlar.
 
 |     |
 | --- |
-| FIDO2 güvenlik anahtarları, Azure Etkin Dizini'nin genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) bakın|
+| FIDO2 güvenlik anahtarları Azure Active Directory genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>FIDO2 tuşlarını kullanarak şirket içi kaynaklara SSO
+## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>FIDO2 anahtarlarını kullanarak şirket içi kaynaklara SSO
 
-Azure Active Directory (AD), Aktif Dizin etki alanlarınızın bir veya birkaçı için Kerberos Bilet Verme Biletleri (TGTs) verebilir. Bu işlevsellik, kullanıcıların FIDO2 güvenlik anahtarları gibi modern kimlik bilgileriyle Windows'da oturum açmalarına ve geleneksel Active Directory tabanlı kaynaklara erişmelerine olanak tanır. Kerberos Servis Biletleri ve yetkilendirme, şirket içi Active Directory etki alanı denetleyicileriniz tarafından kontrol edilmeye devam etmektedir.
+Azure Active Directory (AD) bir veya daha fazla Active Directory etki alanı için Kerberos Anahtar verme biletleri (TGT 'ler) verebilir. Bu işlevsellik, kullanıcıların Windows 'da FIDO2 güvenlik anahtarları gibi modern kimlik bilgileriyle oturum açmasına ve geleneksel Active Directory tabanlı kaynaklara erişmesine olanak sağlar. Kerberos hizmeti biletleri ve yetkilendirme, şirket içi Active Directory etki alanı denetleyicileriniz tarafından denetlenmeye devam eder.
 
-Bir Azure AD Kerberos Server nesnesi şirket içi Active Directory'nizde oluşturulur ve ardından Azure Active Directory'de güvenli bir şekilde yayımlanır. Nesne herhangi bir fiziksel sunucuile ilişkili değildir. Bu, Azure Active Directory tarafından Active Directory Etki Alanınız için Kerberos TGT'leri oluşturmak için kullanılabilecek bir kaynaktır.
+Şirket içi Active Directory bir Azure AD Kerberos sunucu nesnesi oluşturulur ve Azure Active Directory güvenli bir şekilde yayımlanır. Nesne herhangi bir fiziksel sunucu ile ilişkilendirilmemiş. Yalnızca, Active Directory Etki Alanı için Kerberos TGT 'leri oluşturmak üzere Azure Active Directory tarafından kullanılabilecek bir kaynaktır.
 
-![Azure AD ve AD DS'den bilet (TGT) sağlayan bilet alma](./media/howto-authentication-passwordless-on-premises/fido2-ticket-granting-ticket-exchange-process.png)
+![Azure AD ve AD DS bir bilet verme bileti (TGT) alma](./media/howto-authentication-passwordless-on-premises/fido2-ticket-granting-ticket-exchange-process.png)
 
-1. Kullanıcı, Windows 10 aygıtında FIDO2 güvenlik anahtarıyla giriş yapar ve Azure AD'ye kimlik doğrular.
-1. Azure AD, kullanıcının şirket içi AD etki alanıyla eşleşen bir Kerberos sunucu anahtarının dizinini denetler.
-   1. Azure AD, kullanıcının şirket içi AD etki alanı için bir Kerberos TGT oluşturur. TGT yalnızca kullanıcının SID'sini içerir. TGT'ye yetkilendirme verisi dahil değildir.
-1. TGT, Azure AD Birincil Yenileme Belirteci (PRT) ile birlikte istemciye döndürülür.
-1. İstemci makinesi şirket içi bir AD etki alanı denetleyicisi ile bağlantı kurlar ve kısmi TGT'yi tam olarak oluşturulmuş bir TGT karşılığında satlar.
-1. İstemci makinesi artık bir Azure AD PRT'ye ve tam bir Active Directory TGT'ye sahiptir ve hem bulut hem de şirket içi kaynaklara erişebilir.
+1. Kullanıcı Windows 10 cihazlarında bir FIDO2 güvenlik anahtarıyla oturum açar ve Azure AD kimlik doğrulamasını yapar.
+1. Azure AD, kullanıcının şirket içi AD etki alanıyla eşleşen bir Kerberos sunucu anahtarı dizinini denetler.
+   1. Azure AD, kullanıcının şirket içi AD etki alanı için bir Kerberos TGT 'si oluşturur. TGT yalnızca kullanıcının SID 'sini içerir. TGT 'ye yetkilendirme verisi eklenmez.
+1. TGT, Azure AD birincil yenileme belirteci (PRT) ile birlikte istemciye döndürülür.
+1. İstemci makinesi, şirket içi AD etki alanı denetleyicisi ile iletişim kurar ve tamamen oluşturulmuş bir TGT için kısmi TGT 'yi alır.
+1. İstemci makinede artık Azure AD PRT ve tam Active Directory TGT bulunur ve hem buluta hem de şirket içi kaynaklara erişebilir.
 
 ## <a name="requirements"></a>Gereksinimler
 
-Kuruluşlar, bu makaledeki adımları tamamlamadan önce [Windows 10 aygıtlarında parolasız güvenlik anahtarı oturumunu etkinleştirme](howto-authentication-passwordless-security-key.md) adımlarını (önizleme) tamamlamalıdır.
+Kuruluşlar, bu makaledeki adımları tamamlamadan önce [Windows 10 cihazlarında (Önizleme) passwordless güvenlik anahtarı Işaretini etkinleştirme](howto-authentication-passwordless-security-key.md) adımlarını tamamlamalıdır.
 
-Kuruluşlar da aşağıdaki yazılım gereksinimlerini karşılamalıdır.
+Kuruluşların Ayrıca aşağıdaki yazılım gereksinimlerini karşılaması gerekir.
 
-- Aygıtlar Windows 10 Insider Build 18945 veya daha yeni çalışıyor olmalıdır.
-- Sürüm 1.4.32.0 veya daha sonra [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)olmalıdır.
-  - Kullanılabilir Azure AD karma kimlik doğrulama seçenekleri hakkında daha fazla bilgi için [bkz.](../../security/fundamentals/choose-ad-authn.md) [Select which installation type to use for Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md)
-- Windows Server etki alanı denetleyicilerinizde aşağıdaki düzeltme emaları yüklü olmalıdır:
-    - Windows Server 2016 için -https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
-    - Windows Server 2019 için -https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
+- Cihazların Windows 10 Insider Build 18945 veya daha yeni bir sürümü çalıştırması gerekir.
+- [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)sürüm 1.4.32.0 veya sonraki bir sürüme sahip olmanız gerekir.
+  - Kullanılabilir Azure AD karma kimlik doğrulama seçenekleri hakkında daha fazla bilgi için bkz. [Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçme](../../security/fundamentals/choose-ad-authn.md) ve [Azure AD Connect için hangi yükleme türünün kullanılacağını seçme](../hybrid/how-to-connect-install-select-installation.md).
+- Windows Server etki alanı denetleyicileriniz aşağıdaki düzeltme eklerini yüklemiş olmalıdır:
+    - Windows Server 2016 için-https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
+    - Windows Server 2019 için-https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
 
 ### <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-Senaryo, aşağıdaki senaryoların her ikisinde de tek oturum açma (SSO) destekler:
+Senaryo, aşağıdaki senaryolardan her ikisinde de çoklu oturum açmayı (SSO) destekler:
 
 - Office 365 ve diğer SAML özellikli uygulamalar gibi bulut kaynakları için.
-- Şirket içi kaynaklar ve web sitelerine Windows-Integrated kimlik doğrulaması için. Kaynaklar, IIS Kimlik Doğrulaması gerektiren web sitelerini ve SharePoint sitelerini ve/veya NTLM kimlik doğrulamasını kullanan kaynakları içerebilir.
+- Şirket içi kaynaklar ve Web sitelerine Windows tümleşik kimlik doğrulaması için. Kaynaklar, IIS kimlik doğrulaması gerektiren Web siteleri ve SharePoint siteleri ve/veya NTLM kimlik doğrulaması kullanan kaynaklar içerebilir.
 
 ### <a name="unsupported-scenarios"></a>Desteklenmeyen senaryolar
 
 Aşağıdaki senaryolar desteklenmez:
 
-- Windows Server Active Directory Domain Services (AD DS) etki alanı (şirket içi yalnızca aygıtlar) dağıtımına katıldı.
-- Güvenlik anahtarı kullanarak RDP, VDI ve Citrix senaryoları.
-- Güvenlik anahtarı nı kullanarak S/MIME.
-- Güvenlik anahtarı nı kullanarak "Çalıştır" olarak çalıştırın.
-- Güvenlik anahtarını kullanarak sunucuda oturum açın.
+- Windows Server Active Directory Domain Services (AD DS) etki alanına katılmış (Şirket içi aygıtlar) dağıtımı.
+- Güvenlik anahtarı kullanan RDP, VDı ve Citrix senaryoları.
+- Bir güvenlik anahtarı kullanan S/MIME.
+- Güvenlik anahtarı kullanarak "farklı çalıştır".
+- Güvenlik anahtarını kullanarak bir sunucuda oturum açın.
 
-## <a name="create-kerberos-server-object"></a>Kerberos sunucu nesnesi oluşturma
+## <a name="create-kerberos-server-object"></a>Kerberos sunucu nesnesi oluştur
 
-Yöneticiler, şirket içi dizinde bir Azure AD Kerberos Server nesnesi oluşturmak için Azure AD Connect sunucularındaki PowerShell araçlarını kullanır. Kuruluşunuzdaki Azure AD kullanıcılarını içeren her etki alanı ve ormanda aşağıdaki adımları çalıştırın:
+Yöneticiler, şirket içi dizininizde bir Azure AD Kerberos sunucu nesnesi oluşturmak için Azure AD Connect sunucusundan PowerShell araçlarını kullanır. Kuruluşunuzda Azure AD kullanıcıları içeren her etki alanı ve orman için aşağıdaki adımları çalıştırın:
 
-1. Azure AD Connect'in en son sürümüne yükseltin. Yönergeler, karma ortamınızı desteklemek için Azure AD Connect'i zaten yapılandırdığınızı varsayar.
-1. Azure AD Connect Server'da, yükseltilmiş bir PowerShell istemi açın ve`C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`
-1. Hem şirket içi Active Directory etki alanınızda hem de Azure Active Directory kiracınızda yeni bir Azure AD Kerberos sunucu nesnesi oluşturmak için aşağıdaki PowerShell komutlarını çalıştırın.
+1. Azure AD Connect en son sürümüne yükseltin. Yönergeler, karma ortamınızı desteklemek için Azure AD Connect zaten yapılandırmış olduğunuz varsayılır.
+1. Azure AD Connect sunucusunda, yükseltilmiş bir PowerShell istemi açın ve şuraya gidin`C:\Program Files\Microsoft Azure Active Directory Connect\AzureADKerberos\`
+1. Şirket içi Active Directory etki alanı ve Azure Active Directory kiracınızda yeni bir Azure AD Kerberos sunucu nesnesi oluşturmak için aşağıdaki PowerShell komutlarını çalıştırın.
 
 > [!NOTE]
-> Aşağıdaki `contoso.corp.com` örnekte şirket içi Active Directory etki alanı adınız ile değiştirin.
+> Aşağıdaki `contoso.corp.com` örnekte yerine şirket içi Active Directory etki alanı adınızı koyun.
 
 ```powerShell
 Import-Module ".\AzureAdKerberos.psd1"
@@ -101,104 +101,104 @@ $domainCred = Get-Credential
 Set-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCredential $domainCred
 ```
 
-### <a name="viewing-and-verifying-the-azure-ad-kerberos-server"></a>Azure AD Kerberos Server'ı görüntüleme ve doğrulama
+### <a name="viewing-and-verifying-the-azure-ad-kerberos-server"></a>Azure AD Kerberos sunucusunu görüntüleme ve doğrulama
 
-Yeni oluşturulan Azure AD Kerberos Server'ı aşağıdaki komutu kullanarak görüntüleyebilir ve doğrulayabilirsiniz:
+Aşağıdaki komutu kullanarak yeni oluşturulan Azure AD Kerberos sunucusunu görüntüleyebilir ve doğrulayabilirsiniz:
 
 ```powerShell
 Get-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCredential $domainCred
 ```
 
-Bu komut, Azure AD Kerberos Server özelliklerini çıkarır. Her şeyin iyi durumda olduğunu doğrulamak için özellikleri gözden geçirebilirsiniz.
+Bu komut, Azure AD Kerberos sunucusunun özelliklerini verir. Her şeyin iyi sırada olduğunu doğrulamak için özellikleri gözden geçirebilirsiniz.
 
 | Özellik | Açıklama |
 | --- | --- |
-| Kimlik | AD DS DC nesnesinin benzersiz kimliği. Bu kimlik bazen "yuva" veya "şube kimliği" olarak adlandırılır. |
-| DomainDnsName | Etkin Dizin Etki Alanı'nın DNS etki alanı adı. |
-| Bilgisayar Hesabı | Azure AD Kerberos Server nesnesinin (DC) bilgisayar hesabı nesnesi. |
-| Kullanıcı Hesabı | Azure AD Kerberos Server TGT şifreleme anahtarını tutan devre dışı bırakılmış kullanıcı hesabı nesnesi. Bu hesabın DN`CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
-| Tuş Versiyonu | Azure AD Kerberos Server TGT şifreleme anahtarının anahtar sürümü. Anahtar oluşturulduğunda sürüm atanır. Sürüm daha sonra anahtar döndürüldüğünde her döndürüldüğünde artımlanır. Artışlar çoğaltma meta-veri dayanmaktadır ve büyük olasılıkla birden büyüktür. Örneğin, ilk *KeyVersion* *192272*olabilir. Anahtar ilk kez döndürüldüğünde, sürüm *212621'e*kadar ilerleyebilir. Doğrulamak için önemli olan şey, şirket içi nesne için *KeyVersion* ve bulut nesnesi için *CloudKeyVersion* aynı olmasıdır. |
-| TuşGüncelleme | Azure AD Kerberos Server TGT şifreleme anahtarının güncelleştirilme veya oluşturulduğu tarih ve saat. |
-| KeyUpdatedFrom | Azure AD Kerberos Server TGT şifreleme anahtarının en son güncellendiği DC. |
-| Bulutlu | Azure AD Nesnesi'nden kimlik. Yukarıdaki kimlikle eşleşmelidir. |
-| CloudDomainDnsName | Azure AD Nesnesinden *DomainDnsName.* Yukarıdaki *DomainDnsName* ile eşleşmelidir. |
-| CloudKeyVersion | Azure AD Nesnesinden *Anahtar Sürümü.* Yukarıdaki *KeyVersion* maç gerekir. |
-| CloudKeyGüncelle | Azure AD Nesnesinden *KeyUpdatedOn.* Yukarıdaki *KeyUpdatedOn* maç gerekir. |
+| Kimlik | AD DS DC nesnesinin benzersiz KIMLIĞI. Bu KIMLIK bazen "yuva" veya "dal KIMLIĞI" olarak adlandırılır. |
+| DomainDnsName | Active Directory Etki Alanı DNS etki alanı adı. |
+| Bilgisayar hesabı | Azure AD Kerberos Sunucusu nesnesinin (DC) bilgisayar hesabı nesnesi. |
+| UserAccount | Azure AD Kerberos Sunucusu TGT şifreleme anahtarını tutan devre dışı Kullanıcı hesabı nesnesi. Bu hesabın DN 'si`CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
+| KeyVersion | Azure AD Kerberos Sunucusu TGT şifreleme anahtarının anahtar sürümü. Anahtar oluşturulduğunda sürüm atanır. Anahtar her döndürüldüğünde sürüm artar. Artış, çoğaltma meta verilerine ve muhtemelen büyük olasılıkla fazlasına dayanır. Örneğin, ilk *Keyversion* *192272*olabilir. Anahtar ilk kez döndürüldüğünde, sürüm *212621*' e kadar ilerleyebilirsiniz. Doğrulamanız gereken önemli şey, şirket içi nesne için *keyversion* ve bulut nesnesine ait *cloudkeyversion* 'un aynı olmasıdır. |
+| KeyUpdatedOn | Azure AD Kerberos Sunucusu TGT şifreleme anahtarının güncelleştirildiği veya oluşturulduğu tarih ve saat. |
+| KeyUpdatedFrom | Azure AD Kerberos Sunucusu TGT şifreleme anahtarının en son güncelleştirildiği DC. |
+| Cloudıd | Azure AD nesnesinden KIMLIĞI. Yukarıdaki KIMLIKLE eşleşmelidir. |
+| CloudDomainDnsName | Azure AD nesnesinden *Domaindnsname* . Yukarıdaki *Domaindnsname* ile aynı olmalıdır. |
+| CloudKeyVersion | Azure AD nesnesinden *Keyversion* . Yukarıdaki *Keyversion* ile aynı olmalıdır. |
+| CloudKeyUpdatedOn | Azure AD nesnesinden *Keyupdatedon* . Yukarıdaki *Keyupdatedile* eşleşmelidir. |
 
-### <a name="rotating-the-azure-ad-kerberos-server-key"></a>Azure AD Kerberos Server anahtarını döndürme
+### <a name="rotating-the-azure-ad-kerberos-server-key"></a>Azure AD Kerberos sunucu anahtarını döndürme
 
-Azure AD Kerberos Server şifreleme krbtgt anahtarları düzenli olarak döndürülmelidir. Diğer tüm Active Directory Domain Controller krbtgt tuşlarını döndürmek için kullandığınız aynı zamanlamaya uymanız önerilir.
+Azure AD Kerberos sunucu şifrelemesi krbtgt anahtarları düzenli olarak döndürülmelidir. Diğer tüm Active Directory Etki Alanı Denetleyicisi krbtgt anahtarlarını döndürmek için kullandığınız zamanlamanın aynısını izlemeniz önerilir.
 
 > [!WARNING]
-> Krbtgt tuşlarını döndürebilecek başka araçlar da vardır, ancak Azure AD Kerberos Server'ınızın krbtgt anahtarlarını döndürmek için bu belgede belirtilen araçları kullanmanız gerekir. Bu, anahtarların hem şirket içi AD hem de Azure AD'de güncelleştirilmesini sağlar.
+> Ancak, KRBTGT anahtarlarını döndürebileceğiniz başka araçlar vardır, ancak Azure AD Kerberos sunucunuzun krbtgt anahtarlarını döndürmek için bu belgede bahsedilen araçları kullanmanız gerekir. Bu, anahtarların hem şirket içi AD hem de Azure AD 'de güncelleştirilmesini sağlar.
 
 ```powerShell
 Set-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCredential $domainCred -RotateServerKey
 ```
 
-### <a name="removing-the-azure-ad-kerberos-server"></a>Azure AD Kerberos Server'ı kaldırma
+### <a name="removing-the-azure-ad-kerberos-server"></a>Azure AD Kerberos Sunucusu kaldırılıyor
 
-Senaryoyu tersine çevirmek ve Azure AD Kerberos Server'ı şirket içi Active Directory ve Azure Active Directory'den kaldırmak istiyorsanız aşağıdaki komutu çalıştırın:
+Senaryoya dönmek ve Azure AD Kerberos sunucusunu hem şirket içi Active Directory hem de Azure Active Directory kaldırmak istiyorsanız aşağıdaki komutu çalıştırın:
 
 ```powerShell
 Remove-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCredential $domainCred
 ```
 
-### <a name="multi-forest-and-multi-domain-scenarios"></a>Çok ormanlı ve çok etki alanı senaryoları
+### <a name="multi-forest-and-multi-domain-scenarios"></a>Çok ormanlı ve çoklu etki alanı senaryoları
 
-Azure AD Kerberos sunucu nesnesi Azure AD'de *KerberosDomain nesnesi* olarak temsil edilir. Şirket içinde her Active Directory etki alanı, Azure AD'de tek bir *KerberosDomain* nesnesi olarak temsil edilir.
+Azure AD Kerberos Sunucusu nesnesi, Azure AD 'de bir *KerberosDomain* nesnesi olarak temsil edilir. Her şirket içi Active Directory etki alanı, Azure AD 'de tek bir *KerberosDomain* nesnesi olarak temsil edilir.
 
-Örneğin, kuruluşunuzun iki etki alanı olan bir `contoso.com` Etkin `fabrikam.com`Dizin ormanı vardır ve. Azure AD'nin tüm orman için Kerberos TGT'ler yayınlamasına izin vermeyi seçerseniz, Azure AD'de iki *KerberosDomain* nesnesi vardır. Bir *KerberosDomain* `contoso.com`nesne için `fabrikam.com`, ve bir için . Birden çok Active Directory ormanın varsa, her ormandaki her etki alanı için bir *KerberosDomain* nesnesi vardır.
+Örneğin, kuruluşunuzun iki etki alanı olan bir Active Directory ormanı vardır `contoso.com` ve. `fabrikam.com` Azure AD 'nin tüm orman için Kerberos TGT 'leri vermesine izin vermeyi seçerseniz, Azure AD 'de iki *KerberosDomain* nesnesi vardır. İçin bir *KerberosDomain* nesnesi `contoso.com`ve için `fabrikam.com`bir. Birden çok Active Directory ormanlarınız varsa her ormandaki her etki alanı için bir *KerberosDomain* nesnesi vardır.
 
-Kuruluşunuzda Azure AD kullanıcıları içeren her etki alanında ve ormanda [Kerberos sunucu nesnesi oluşturmak](#create-kerberos-server-object) için adımları çalıştırmanız gerekir.
+Kuruluşunuzda Azure AD kullanıcıları içeren her etki alanı ve ormanda [Kerberos sunucu nesnesi oluşturmak](#create-kerberos-server-object) için bu adımları çalıştırmanız gerekir.
 
 ## <a name="known-behavior"></a>Bilinen davranış
 
-Parolanızın süresi dolmuşsa FIDO ile oturum açma engellenir. Beklenti, kullanıcının FIDO kullanarak oturum açmadan önce parolasını sıfırlamasıdır.
+Parolanızın süresi dolmuşsa FIDO ile oturum açma engellenmiştir. Beklentisi Kullanıcı, FIDO kullanarak oturum açmadan önce kullanıcının parolasını sıfırlamasına yöneliktir.
 
 ## <a name="troubleshooting-and-feedback"></a>Sorun giderme ve geri bildirim
 
-Bu özelliği niönizlerken geri bildirim paylaşmak veya sorunlarla karşılaşmak istiyorsanız, aşağıdaki adımları kullanarak Windows Geri Bildirim Hub uygulaması üzerinden paylaşın:
+Bu özelliği önizlemede geri bildirimde bulunmak veya sorun yaşıyorsanız, aşağıdaki adımları kullanarak Windows geri bildirim Merkezi uygulaması aracılığıyla paylaşabilirsiniz:
 
-1. **Geri Bildirim Hub'ı** başlatın ve oturum açmış olduğunuzdan emin olun.
-1. Aşağıdaki kategoriler altında geri bildirim gönderin:
-   - Kategori: Güvenlik ve Gizlilik
-   - Alt kategori: FIDO
-1. Günlükleri yakalamak **için, Sorunumu Yeniden Oluşturma** seçeneğini kullanın
+1. **Geri Bildirim Hub 'ını** başlatın ve oturum açtığınızdan emin olun.
+1. Aşağıdaki kategoriye göre geri bildirim gönderin:
+   - Kategori: güvenlik ve Gizlilik
+   - Alt Kategori: FıDO
+1. Günlükleri yakalamak için, **sorunu yeniden oluşturmak** için seçeneğini kullanın
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-### <a name="does-this-work-in-my-on-premises-environment"></a>Bu benim şirket içi çevremde işe yarıyor mu?
+### <a name="does-this-work-in-my-on-premises-environment"></a>Bu, şirket içi ortammda mi çalışıyor?
 
-Bu özellik, saf bir şirket içi Active Directory Domain Services (AD DS) ortamı için çalışmaz.
+Bu özellik, saf şirket içi Active Directory Domain Services (AD DS) ortamları için çalışmaz.
 
-### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>Kuruluşum, kaynaklara erişmek için iki faktörlü kimlik doğrulaması gerektirir. Bu gereksinimi desteklemek için ne yapabilirim?
+### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>Kuruluşumun kaynaklara erişmesi için iki öğeli kimlik doğrulaması gerekir. Bu gereksinimi desteklemek için ne yapabilirim?
 
-Güvenlik anahtarları çeşitli form faktörleri gelir. Cihazlarının ikinci bir faktör olarak PIN veya biyometrik ile nasıl etkinleştirilebileceğini tartışmak için ilgi çeken aygıt üreticisine başvurun.
+Güvenlik anahtarları çeşitli form faktörleri halinde gelir. Cihazların bir PIN veya biyometri ile ikinci bir faktör ile nasıl etkinleştirilenebileceği hakkında tartışmak için cihaz üreticisine başvurun.
 
 ### <a name="can-admins-set-up-security-keys"></a>Yöneticiler güvenlik anahtarlarını ayarlayabilir mi?
 
 Bu özelliğin genel kullanılabilirliği (GA) için bu özellik üzerinde çalışıyoruz.
 
-### <a name="where-can-i-go-to-find-compliant-security-keys"></a>Uyumlu Güvenlik Anahtarlarını bulmak için nereye gidebilirim?
+### <a name="where-can-i-go-to-find-compliant-security-keys"></a>Uyumlu güvenlik anahtarlarını bulmak için nereye gidebilirim?
 
 [FIDO2 güvenlik anahtarları](concept-authentication-passwordless.md#fido2-security-keys)
 
-### <a name="what-do-i-do-if-i-lose-my-security-key"></a>Güvenlik anahtarımı kaybedersem ne yapmalıyım?
+### <a name="what-do-i-do-if-i-lose-my-security-key"></a>Güvenlik Anahtarımı kaybedersem ne yapmam gerekiyor?
 
-**Güvenlik bilgileri** sayfasına giderek güvenlik anahtarını kaldırarak Azure portalından anahtarları kaldırabilirsiniz.
+**Güvenlik bilgileri** sayfasına giderek ve güvenlik anahtarını kaldırarak Azure Portal anahtarları kaldırabilirsiniz.
 
-### <a name="im-not-able-to-use-fido-immediately-after-i-create-a-hybrid-azure-ad-joined-machine"></a>Hibrit Azure AD birleştirilmiş makine oluşturduktan hemen sonra FIDO'da kullanamam
+### <a name="im-not-able-to-use-fido-immediately-after-i-create-a-hybrid-azure-ad-joined-machine"></a>Karma Azure AD 'ye katılmış bir makine oluşturduktan sonra FIDO 'ı hemen kullanmıyorum
 
-Karma azure AD'yi yükleme yi temiz yüklerseniz, etki alanı birleştirme ve yeniden başlatma işleminden sonra bir parolayla oturum açmanız ve oturum açabilmek için FIDO'yu kullanmadan önce ilkenin eşitlenmesini beklemeniz gerekir.
+Karma Azure AD 'ye katılmış bir makineyi temiz yükleme, etki alanına katılma ve yeniden başlatma işleminden sonra bir parolayla oturum açmanız ve oturum açmak için FıDO 'ı kullanabilmeniz için ilkenin eşitlenmesini beklemeniz gerekir.
 
-- Komut penceresine `dsregcmd /status` yazarak geçerli durumunuzu kontrol edin ve hem AzureAdJoined hem de *DomainJoined'In* *EVET*gösterip göstermediğini kontrol edin. *DomainJoined*
-- Bu gecikme etki alanı birleştirilmiş aygıtlar için bilinen bir sınırlamadır ve FIDO'ya özgü değildir.
+- Bir komut `dsregcmd /status` penceresine yazarak geçerli durumunuzu denetleyin ve hem *Azureadkatılmış* hem de *domainkatılmış* ' in *Evet*' i göstermesini denetleyin.
+- Bu gecikme, etki alanına katılmış cihazlar için bilinen bir sınırlamadır ve FIDO 'a özgü değildir.
 
-### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>FIDO ile oturum açtıktan sonra SSO'yu NTLM ağ kaynağıma ulaştırıyorum ve kimlik bilgisi istemi alıyorum
+### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>FIDO ile oturum açtıktan ve kimlik bilgisi istemi almaya çalıştıktan sonra NTLM ağ kaynaklarım için SSO alamıyorum
 
-Kaynak isteğinize hizmet vermek için zamanında yanıt verecek yeterli etki alanı denetleyicilerinin yamalı olduğundan emin olun. Özelliği çalıştıran bir etki alanı denetleyicisi görüp görebildiğinizi denetlemek için, 'nin çıktısını `nltest /dsgetdc:contoso /keylist /kdc`gözden geçirin.
+Kaynak isteğinize hizmet vermek için, yeterli sayıda etki alanı denetleyicisinin yanıt vermesi için düzeltme eki uygulanmış olduğundan emin olun. Özelliği çalıştıran bir etki alanı denetleyicisi görüp görbir şekilde bakmak için çıkışını gözden geçirin `nltest /dsgetdc:contoso /keylist /kdc`.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Şifresiz ler hakkında daha fazla bilgi edinin](concept-authentication-passwordless.md)
+[Passwordless hakkında daha fazla bilgi edinin](concept-authentication-passwordless.md)

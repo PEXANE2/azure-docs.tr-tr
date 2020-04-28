@@ -1,71 +1,71 @@
 ---
-title: Azure Monitor'da günlük sorgularını optimize edin
-description: Azure Monitor'da günlük sorgularını en iyi duruma duruma duruma en iyi şekilde uygulamak için en iyi uygulamalar.
+title: Azure Izleyici 'de günlük sorgularını iyileştirme
+description: Azure Izleyici 'de günlük sorgularını iyileştirmek için en iyi uygulamalar.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
 ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411424"
 ---
-# <a name="optimize-log-queries-in-azure-monitor"></a>Azure Monitor'da günlük sorgularını optimize edin
-Azure Monitor Günlükleri, günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak için [Azure Veri Gezgini 'ni (ADX)](/azure/data-explorer/) kullanır. ADX kümelerini sizin için oluşturur, yönetir ve korur ve bunları günlük çözümlemesi iş yükünüz için optimize eder. Bir sorgu çalıştırdığınızda, en iyi duruma getirilmiş ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Monitor Günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu optimizasyonu mekanizması kullanır. Otomatik optimizasyonlar önemli bir artış sağlarken, sorgu performansınızı önemli ölçüde artırabileceğiniz bazı durumlarda bunlardır. Bu makalede, performans konuları ve bunları düzeltmek için çeşitli teknikler açıklanmaktadır.
+# <a name="optimize-log-queries-in-azure-monitor"></a>Azure Izleyici 'de günlük sorgularını iyileştirme
+Azure Izleyici günlükleri günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak üzere [azure Veri Gezgini (ADX)](/azure/data-explorer/) kullanır. Sizin için ADX kümelerini oluşturur, yönetir ve korur ve bunları günlük Analizi iş yükünüz için en iyi duruma getirir. Bir sorgu çalıştırdığınızda, en iyi duruma getirilir ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Izleyici günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu iyileştirme mekanizması kullanır. Otomatik iyileştirmeler önemli ölçüde artırma sağlarken, bu durumlar bazı durumlarda sorgu performansınızı ciddi ölçüde İyileştirebileceğiniz bir durumlardır. Bu makalede, performans konuları ve bunları gidermeye yönelik çeşitli teknikler açıklanmaktadır.
 
-Tekniklerin çoğu, doğrudan Azure Veri Gezgini ve Azure Monitör Günlükleri'nde çalıştırılan sorgularda yaygındır, ancak burada tartışılan birkaç benzersiz Azure Monitör Günlükleri göz önünde bulundurulur. Daha fazla Azure Veri Gezgini optimizasyonu ipucu için [sorgula en iyi uygulamaları](/azure/kusto/query/best-practices)görün.
+Çoğu teknikte doğrudan Azure Veri Gezgini ve Azure Izleyici günlüklerinde çalıştırılan sorgularda yaygın olarak, burada ele alınan birkaç benzersiz Azure Izleyici günlüğü konuları bulunur. Daha fazla Azure Veri Gezgini iyileştirme ipucu için bkz. [sorgu en iyi uygulamaları](/azure/kusto/query/best-practices).
 
-En iyi duruma getirilmiş sorgular:
+İyileştirilmiş sorgular:
 
-- Daha hızlı çalıştırın, sorgu yürütmesinin toplam süresini azaltın.
-- Daraltılmış veya reddedilme şansınız daha azdır.
+- Daha hızlı çalıştırın, sorgu yürütmenin genel süresini azaltın.
+- Daha az kısıtlanacak veya reddedilme şansı vardır.
 
-Panolar, uyarılar, Mantık Uygulamaları ve Power BI gibi tekrarlayan ve patlamalı kullanımiçin kullanılan sorgulara özellikle dikkat etmelisiniz. Bu gibi durumlarda etkisiz bir sorgunun etkisi önemli.
+Panolar, uyarılar, Logic Apps ve Power BI gibi yinelenen kira ve bursty kullanımı için kullanılan sorgulara özellikle dikkat etmeniz gerekir. Bu durumlarda, verimsiz bir sorgunun etkisi önemli değildir.
 
-## <a name="query-performance-pane"></a>Performans bölmesine sorgula
-Günlük Analizi'nde bir sorgu çalıştırdıktan sonra, sorgu için çeşitli performans göstergelerinin sonuçlarını gösteren sorgu performans bölmesini görüntülemek için sorgu sonuçlarının üzerindeki aşağı ok'u tıklatın. Bu performans göstergelerinin her biri aşağıdaki bölümde açıklanmıştır.
+## <a name="query-performance-pane"></a>Sorgu performansı bölmesi
+Log Analytics bir sorgu çalıştırdıktan sonra sorgu sonuçlarının üzerindeki aşağı oka tıklayarak sorgu için çeşitli performans göstergelerinin sonuçlarını gösteren sorgu performansı bölmesini görüntüleyin. Bu performans göstergeleri, her biri aşağıdaki bölümde açıklanmıştır.
 
-![Performans bölmesine sorgula](media/query-optimization/query-performance-pane.png)
+![Sorgu performansı bölmesi](media/query-optimization/query-performance-pane.png)
 
 
-## <a name="query-performance-indicators"></a>Performans göstergelerini sorgula
+## <a name="query-performance-indicators"></a>Sorgu performans göstergeleri
 
-Yürütülen her sorgu için aşağıdaki sorgu performans göstergeleri kullanılabilir:
+Aşağıdaki sorgu performans göstergeleri, yürütülen her sorgu için kullanılabilir:
 
-- [Toplam Cpu](#total-cpu): Tüm işlem düğümleri arasında sorgu işlemek için kullanılan genel işlem. Bilgi işlem, ayrıştma ve veri alma için kullanılan zamanı temsil eder. 
+- [Toplam CPU](#total-cpu): tüm işlem düğümleri genelinde sorguyu işlemek için kullanılan genel işlem. Bilgi işlem, ayrıştırma ve veri getirme için kullanılan süreyi temsil eder. 
 
-- [İşlenmiş sorgu için kullanılan veriler](#data-used-for-processed-query): Sorguyu işlemek için erişilen genel veriler. Hedef tablonun boyutundan, kullanılan zaman aralığından, uygulanan filtrelerden ve başvurulan sütun sayısından etkilenir.
+- [İşlenen sorgu için kullanılan veriler](#data-used-for-processed-query): sorguyu işlemek için erişilen genel veriler. Hedef tablonun boyutuyla, kullanılan zaman aralığı, uygulanan filtrelerin ve başvurulan sütun sayısının etkilenerek etkilenir.
 
-- [İşlenen sorgunun zaman aralığı](#time-span-of-the-processed-query): Sorguyu işlemek için erişilen en yeni ve en eski veriler arasındaki boşluk. Sorgu için belirtilen açık zaman aralığından etkilenir.
+- [İşlenen sorgunun zaman aralığı](#time-span-of-the-processed-query): sorguyu işlemek için erişilen en yeni ve en eski veriler arasındaki boşluk. Sorgu için belirtilen açık zaman aralığına göre etkilendi.
 
-- [İşlenen verilerin yaşı](#age-of-processed-data): Sorguyu işlemek için erişilen en eski verilerle şimdiki arasındaki boşluk. Veri alma verimliliğini son derece etkiler.
+- [İşlenen verilerin yaşı](#age-of-processed-data): Şu anda ve sorguyu işlemek için erişilen en eski veriler arasındaki boşluk. Veri getirme verimliliğini oldukça etkiler.
 
-- [Çalışma alanı sayısı](#number-of-workspaces): Örtülü veya açık seçim nedeniyle sorgu işleme sırasında kaç çalışma alanı erişildi.
+- [Çalışma alanı sayısı](#number-of-workspaces): örtük veya açık seçim nedeniyle sorgu işlemi sırasında kaç çalışma alanına erişildiği.
 
-- Bölge Sayısı : Çalışma [alanlarının](#number-of-regions)örtülü veya açık seçimi nedeniyle sorgu işleme sırasında kaç bölgeye erişildi. Çok bölgeli sorgular çok daha az verimlidir ve performans göstergeleri kısmi kapsama alanı sunar.
+- [Bölge sayısı](#number-of-regions): örtük veya açık çalışma alanı seçimine bağlı olarak sorgu işleme sırasında kaç bölgeye erişildiğini. Çok bölgeli sorgular çok daha az verimlidir ve performans göstergeleri kısmi kapsam sunar.
 
-- [Paralellik](#parallelism): Sistemin bu sorguyu birden çok düğümde ne kadar yürütebildiğini gösterir. Yalnızca yüksek CPU tüketimi olan sorgularla alakalıdır. Belirli işlevlerin ve işleçlerin kullanımından etkilenir.
+- [Paralellik](#parallelism): sistemin birden çok düğümde bu sorguyu ne kadar yürütebileceğini belirtir. Yalnızca yüksek CPU tüketimi olan sorgularla ilgilidir. Belirli işlevlerin ve işleçlerin kullanımından etkilendi.
 
 
 ## <a name="total-cpu"></a>Toplam CPU
-Bu sorguyu tüm sorgu işleme düğümleri arasında işlemek için yatırılan gerçek işlem cpu'su. Sorguların çoğu çok sayıda düğümüzerinde yürütüldolduğundan, bu genellikle sorgunun gerçekten yürütmek için aldığı süreden çok daha büyük olacaktır. 
+Tüm sorgu işleme düğümlerinde bu sorguyu işlemek için yatırılan gerçek işlem CPU 'SU. Çoğu sorgu çok sayıda düğüm üzerinde yürütüldüğü için bu, genellikle sorgunun yürütülmesi için geçen süreden daha büyük olur. 
 
-Sorgu işleme süresi harcanmış:
-- Veri alma - eski verilerin alınması, son verilerin alınmasından daha fazla zaman tüketir.
-- Veri işleme – verilerin mantığı ve değerlendirilmesi. 
+Sorgu işleme süresi şu saatte harcanan:
+- Veri alma – eski verilerin alınması, son verilerin alınmından daha fazla zaman harcar.
+- Veri işleme – verilerin mantığı ve değerlendirmesi. 
 
-Sorgu işleme düğümlerinde harcanan zaman dışında, Azure Monitor Günlükleri tarafından kullanıcının kimliğini doğrulamak ve bu verilere erişmelerine izin verildiğinden doğrulamak, veri deposunu bulmak, sorguyu ayrıştırmak ve sorgu işleme düğümlerini ayırmak için harcanan ek süre vardır. Bu süre sorgu toplam CPU süresine dahil edilmez.
+Sorgu işleme düğümlerinde harcanan süre dışında, Azure Izleyici günlükleri tarafından şu şekilde harcayacak ek zaman vardır: kullanıcının kimliğini doğrular ve bu verilere erişim izni verildiğini doğrulayın, veri deposunu bulun, sorguyu ayrıştırır ve sorgu işleme düğümlerini ayırır. Bu zaman sorguya toplam CPU süresi dahil değildir.
 
-### <a name="early-filtering-of-records-prior-of-using-high-cpu-functions"></a>Yüksek CPU işlevleri kullanmadan önce kayıtların erken filtrelemi
+### <a name="early-filtering-of-records-prior-of-using-high-cpu-functions"></a>Yüksek CPU işlevleri kullanılmadan önce kayıtların erken filtrelenmesi
 
-Bazı sorgu komutları ve işlevleri CPU tüketiminde ağırdır. Bu, özellikle JSON ve XML'i ayrıştıran veya karmaşık düzenli ifadeleri ayıklayan komutlar için geçerlidir. Bu tür ayrıştırma, [parse_json()](/azure/kusto/query/parsejsonfunction) veya [parse_xml()](/azure/kusto/query/parse-xmlfunction) işlevleri aracılığıyla veya dinamik sütunlara atıfta bulunurken dolaylı olarak gerçekleşebilir.
+Sorgu komutlarının ve işlevlerinin bazıları CPU tüketimine ağır. Bu, özellikle JSON ve XML ayrıştırma veya karmaşık normal ifadeleri ayıklama komutları için geçerlidir. Bu tür ayrıştırma, açıkça [parse_json ()](/azure/kusto/query/parsejsonfunction) veya [parse_xml ()](/azure/kusto/query/parse-xmlfunction) işlevleri aracılığıyla veya dinamik sütunlara başvurulurken örtülü olarak gerçekleşebilir.
 
-Bu işlevler, işlemyaptıkları satır sayısıyla orantılı olarak CPU tüketir. En verimli en iyi duruma getirilmesi, CPU yoğun işlevi yürütülmeden önce mümkün olduğunca çok kaydı filtreleyebilen sorgunun erken koşullarını eklemektir.
+Bu işlevler, işlenen satır sayısıyla orantılı olarak CPU kullanır. En verimli iyileştirme, CPU yoğun işlevi yürütülmeden önce mümkün olduğunca çok kayıt filtreleyebileceği şekilde sorgu içinde nerede koşul eklemektir.
 
-Örneğin, aşağıdaki sorgular tam olarak aynı sonucu üretir, ancak ikincisi, ayrıştırmadan önceki koşulun birçok kaydı dışladığı [yer](/azure/kusto/query/whereoperator) olarak açık ara en verimli olandır:
+Örneğin, aşağıdaki sorgular tam olarak aynı sonucu üretir ancak ikinci tane, ayrıştırma işleminden [önce koşul çok](/azure/kusto/query/whereoperator) sayıda kaydı dışladığı için en verimli şekilde belirlenir:
 
 ```Kusto
 //less efficient
@@ -88,10 +88,10 @@ SecurityEvent
 | where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
 ```
 
-### <a name="avoid-using-evaluated-where-clauses"></a>Değerlendirilmiş maddeleri kullanmaktan kaçının
+### <a name="avoid-using-evaluated-where-clauses"></a>Değerlendirilen WHERE yan tümceleri kullanmaktan kaçının
 
-Veri kümesinde fiziksel olarak bulunan sütunlar yerine değerlendirilmiş sütundaki [yan](/azure/kusto/query/whereoperator) tümcelerin bulunduğu sorgular verimlilik kaybeder. Değerlendirilen sütunlara filtre uygulama, büyük veri kümeleri işlendiğinde bazı sistem optimizasyonlarını önler.
-Örneğin, aşağıdaki sorgular tam olarak aynı sonucu üretir, ancak ikincisi, koşulun yerleşik sütuna atıfta bulunduğu [yer](/azure/kusto/query/whereoperator) olarak daha verimlidir
+Veri kümesinde fiziksel olarak bulunan sütunlarda değil, değerlendirilen bir sütunda [WHERE](/azure/kusto/query/whereoperator) yan tümceleri içeren sorgular, verimliliği kaybeder. Değerlendirilen sütunlarda filtreleme, büyük veri kümeleri işlendiği sırada bazı sistem iyileştirmelerinin yapılmasını önler.
+Örneğin, aşağıdaki sorgular tam olarak aynı sonucu üretir ancak ikinci tane, [WHERE](/azure/kusto/query/whereoperator) koşulunun yerleşik sütuna başvurduğu şekilde daha verimlidir
 
 ```Kusto
 //less efficient
@@ -108,13 +108,13 @@ Heartbeat
 | summarize count() by Computer
 ```
 
-### <a name="use-effective-aggregation-commands-and-dimmentions-in-summarize-and-join"></a>Özetlemek ve katılmak etkili toplama komutları ve dimmentions kullanın
+### <a name="use-effective-aggregation-commands-and-dimmentions-in-summarize-and-join"></a>Özetle ve birleştirme için etkin toplama komutlarını ve dimbahsetmeleri kullanma
 
-[Max()](/azure/kusto/query/max-aggfunction), [sum()](/azure/kusto/query/sum-aggfunction), [count()](/azure/kusto/query/count-aggfunction)ve [avg()](/azure/kusto/query/avg-aggfunction) gibi bazı toplama komutları, mantıkları nedeniyle düşük CPU etkisine sahip olsa da, diğer leri daha karmaşıktır ve buluşsal ve verimli bir şekilde yürütülmesini sağlayan tahminler içerir. Örneğin, [dcount()](/azure/kusto/query/dcount-aggfunction) hyperloglog algoritmasını kullanarak her değeri gerçekten saymadan büyük veri kümelerinin farklı sayılarına yakın bir tahmin sağlar; yüzdelik fonksiyonlar en yakın sıralama yüzdelik algoritması kullanarak benzer yaklaşımlar yapıyoruz. Komutların bazıları, etkilerini azaltmak için isteğe bağlı parametreler içerir. Örneğin, [makeset()](/azure/kusto/query/makeset-aggfunction) işlevi, CPU ve belleği önemli ölçüde etkileyen maksimum ayar boyutunu tanımlamak için isteğe bağlı bir parametreye sahiptir.
+[Max ()](/azure/kusto/query/max-aggfunction), [Sum ()](/azure/kusto/query/sum-aggfunction), [Count ()](/azure/kusto/query/count-aggfunction)ve [AVG ()](/azure/kusto/query/avg-aggfunction) gibi bazı toplama komutlarının mantığı nedeniyle düşük CPU etkisi olsa da, diğerleri daha karmaşıktır ve verimli bir şekilde yürütülmesine izin veren buluşsal yöntemler ve tahminler içerir. Örneğin, [DCount ()](/azure/kusto/query/dcount-aggfunction) , her bir değeri gerçekten saymadan, büyük veri kümelerinin ayrı sayısına kapanış tahmini sağlamak Için HyperLogLog algoritmasını kullanır; yüzdebirlik işlevleri, en yakın derecelendirme yüzdebirlik algoritmasını kullanarak benzer bir şekilde yapılır. Birçok komut, etkilerini azaltmak için isteğe bağlı parametreler içerir. Örneğin, [makeset ()](/azure/kusto/query/makeset-aggfunction) IŞLEVININ, CPU ve belleği önemli ölçüde etkileyen en büyük küme boyutunu tanımlamak için isteğe bağlı bir parametresi vardır.
 
-[Birleştirme](/azure/kusto/query/joinoperator?pivots=azuremonitor) ve [özet komutları,](/azure/kusto/query/summarizeoperator) büyük bir veri kümesini işlerken yüksek CPU kullanımına neden olabilir. Karmaşıklıkları, özetlemek veya birleştirme öznitelikleri olarak `by` kullanan sütunların *kardinallik*olarak adlandırılan olası değerlerin sayısıyla doğrudan ilişkilidir. Birleştirme ve özetleme nin açıklaması ve optimizasyonu için, dokümantasyon makalelerine ve optimizasyon ipuçlarına bakın.
+[JOIN](/azure/kusto/query/joinoperator?pivots=azuremonitor) ve [özetleme](/azure/kusto/query/summarizeoperator) komutları, büyük bir VERI kümesini işlerken yüksek CPU kullanımına neden olabilir. Karmaşıklığı, özetleme olarak ya da JOIN özniteliği olarak kullanılan `by` sütunların *kardinalite*olarak adlandırılan olası değer sayısıyla doğrudan ilgilidir. Katılmayı ve özetlemeyi açıklama ve iyileştirme için bkz. belge makaleleri ve iyileştirme ipuçları.
 
-Örneğin, **CounterPath** her zaman **CounterName** ve **ObjectName**eşlenir, çünkü aşağıdaki sorgular tam olarak aynı sonucu üretir. Toplama boyutu daha küçük olduğundan ikincisi daha verimlidir:
+Örneğin, **CounterPath** her zaman **CounterName** ve **ObjectName**'e eşlenmiş olduğundan aşağıdaki sorgular tam olarak aynı sonucu üretir. İkinci bir, toplama boyutu daha küçük olduğu için daha verimlidir:
 
 ```Kusto
 //less efficient
@@ -129,9 +129,9 @@ Perf
 by CounterPath
 ```
 
-CPU tüketimi, yoğun bilgi işlem gerektiren koşulların veya genişletilmiş sütunların bulunduğu yerlerden de etkilenebilir. Gelişmiş metin eşleşmeleri daha fazla etkiye [sahipken, eşit ==](/azure/kusto/query/datatypes-string-operators) ve [başlangıçlar](/azure/kusto/query/datatypes-string-operators) gibi tüm önemsiz dize karşılaştırmaları kabaca aynı CPU etkisine sahiptir. Özellikle, [operatör](/azure/kusto/query/datatypes-string-operators) daha verimli olduğunu [operatör içerir.](/azure/kusto/query/datatypes-string-operators) Dize işleme teknikleri nedeniyle, kısa dizeleri daha dört karakterdaha uzun dizeleri aramak için daha verimlidir.
+CPU tüketimi Ayrıca koşullarda veya yoğun bilgi işlem gerektiren genişletilmiş sütunlarda da etkilenebilir. [Eşittir = =](/azure/kusto/query/datatypes-string-operators) ve [StartsWith](/azure/kusto/query/datatypes-string-operators) gibi tüm önemsiz dize karşılaştırmaları, Gelişmiş metin eşleştirmelerinde daha fazla etkiye sahip olsa da kabaca aynı CPU etkisi vardır. Özellikle, [sahip](/azure/kusto/query/datatypes-string-operators) operatörü [Contains](/azure/kusto/query/datatypes-string-operators) işlecinin daha etkilidir. Dize işleme teknikleri nedeniyle, kısa dizelerdeki dört karakterden daha uzun dizeler aramak daha etkilidir.
 
-Örneğin, aşağıdaki sorgular Bilgisayar adlandırma ilkesine bağlı olarak benzer sonuçlar üretir, ancak ikincisi daha verimlidir:
+Örneğin, aşağıdaki sorgular bilgisayar adlandırma ilkesine bağlı olarak benzer sonuçlar üretir ancak ikincisi daha etkilidir:
 
 ```Kusto
 //less efficient – due to filter based on contains
@@ -154,12 +154,12 @@ Heartbeat
 ```
 
 > [!NOTE]
-> Bu gösterge, hemen kümeden yalnızca CPU'yu sunar. Çok günlük sorgusunda, yalnızca bir bölgeyi temsil eder. Çok çalışma alanı sorgusunda, tüm çalışma alanlarını içermeyebilir.
+> Bu gösterge yalnızca en hızlı kümeden CPU gösterir. Çok bölgeli sorguda bölge yalnızca birini temsil eder. Çoklu çalışma alanı sorgusunda, tüm çalışma alanlarını içermeyebilir.
 
-### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>Dize ayrıştma çalışırken tam XML ve JSON ayrıştma kaçının
-Bir XML veya JSON nesnesinin tam ayrıştırma yüksek CPU ve bellek kaynakları tüketebilir. Çoğu durumda, yalnızca bir veya iki parametre gerektiğinde ve XML veya JSON nesneleri basit olduğunda, [ayrıştırma işleci](/azure/kusto/query/parseoperator) veya diğer [metin ayrıştırma tekniklerini](/azure/azure-monitor/log-query/parse-text)kullanarak dizeleri olarak ayrıştırmak daha kolaydır. XML veya JSON nesnesindeki kayıt sayısı arttıkça performans artışı daha önemli olacaktır. Kayıt sayısı on milyonlara ulaştığında bu esastır.
+### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>Dize ayrıştırması çalışırken tam XML ve JSON ayrıştırmayı önleyin
+Bir XML veya JSON nesnesinin tam ayrıştırması, yüksek CPU ve bellek kaynakları tüketebilir. Çoğu durumda, yalnızca bir veya iki parametre gerektiğinde ve XML veya JSON nesneleri basit olduğunda, [ayrıştırma işlecini](/azure/kusto/query/parseoperator) veya diğer [metin ayrıştırma tekniklerini](/azure/azure-monitor/log-query/parse-text)kullanarak bunları dizeler olarak ayrıştırmanız daha kolay olur. XML veya JSON nesnesindeki kayıt sayısı arttıkça performans artışı daha önemli olacaktır. Kayıt sayısı on milyona ulaştığında, bu önemlidir.
 
-Örneğin, aşağıdaki sorgu tam XML ayrıştırma gerçekleştirmeden yukarıdaki sorgularla tam olarak aynı sonuçları döndürecektir. FilePath öğesi FileHash sonra gelir ve bunların hiçbiri öznitelikleri vardır gibi XML dosya yapısı üzerinde bazı varsayımlar yapar unutmayın. 
+Örneğin, aşağıdaki sorgu tam XML ayrıştırma gerçekleştirmeksizin yukarıdaki sorgularla tam olarak aynı sonuçları döndürür. XML dosya yapısında, FilePath öğesinin dosya karmasından sonra geldiği ve hiçbirinin özniteliklere sahip olmadığı gibi bazı varsayımlar yaptığı unutulmamalıdır. 
 
 ```Kusto
 //even more efficient
@@ -172,17 +172,17 @@ SecurityEvent
 ```
 
 
-## <a name="data-used-for-processed-query"></a>İşlenmiş sorgu için kullanılan veriler
+## <a name="data-used-for-processed-query"></a>İşlenen sorgu için kullanılan veriler
 
-Sorgunun işlenmesinde önemli bir faktör, taranan ve sorgu işleme için kullanılan veri hacmidir. Azure Veri Gezgini, diğer veri platformlarına kıyasla veri hacmini önemli ölçüde azaltan agresif optimizasyonlar kullanır. Yine de, sorguda kullanılan veri hacmini etkilenebilen kritik etkenler vardır.
+Sorgu işlenirken kritik bir faktör, taranan ve sorgu işleme için kullanılan veri birimidir. Azure Veri Gezgini, diğer veri platformları ile karşılaştırıldığında veri hacmini önemli ölçüde azaltan agresif iyileştirmeler kullanır. Hala, sorguda kullanılan veri birimini etkileyebilecek kritik etmenler vardır.
 
-Azure Monitor Günlükleri'nde, **Zaman Oluşturulan** sütun verileri dizine ekolarak kullanılır. **TimeGenerated** değerlerinin mümkün olduğunca dar bir aralıkla sınırlandırılması, işlenmesi gereken veri miktarını önemli ölçüde sınırlayarak sorgu performansında önemli bir iyileşme sağlar.
+Azure Izleyici günlüklerinde **TimeGenerated** sütunu, verileri dizine almanın bir yolu olarak kullanılır. **TimeGenerated** değerlerinin mümkün olduğunca dar olarak sınırlanması, işlenmesi gereken veri miktarını önemli ölçüde sınırlandırarak performansı sorgulamak için önemli bir geliştirme sağlar.
 
-### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>Arama ve sendika operatörlerinin gereksiz kullanımından kaçının
+### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>Arama ve birleşim işleçlerinin gereksiz kullanımını önleyin
 
-İşlem olan verileri artıran bir diğer faktör de çok sayıda tablonun kullanılmasıdır. Bu genellikle `search *` ve `union *` komutları kullanıldığında olur. Bu komutlar, sistemi çalışma alanındaki tüm tablolardaki verileri değerlendirmeye ve tarayabilir. Bazı durumlarda, çalışma alanında yüzlerce tablo olabilir. Belirli bir tabloya kapsam olmadan "arama *" veya herhangi bir arama kullanarak mümkün olduğunca uzak durmaya çalışın.
+İşlem olan verileri artıran bir faktör çok sayıda tablo kullanmaktır. Bu genellikle ve `union *` komutlarının `search *` kullanıldığı zaman gerçekleşir. Bu komutlar, sistem çalışma alanındaki tüm tablolardaki verileri değerlendirmeye ve taramaya zorlar. Bazı durumlarda, çalışma alanında yüzlerce tablo olabilir. "Arama *" veya herhangi bir aramayı belirli bir tabloya kapsama almadan mümkün olduğunca kaçınmaya çalışın.
 
-Örneğin, aşağıdaki sorgular tam olarak aynı sonucu üretir, ancak sonuncusu açık ara en verimli dir:
+Örneğin, aşağıdaki sorgular tam olarak aynı sonucu üretir, ancak sonuncusu en verimli bir şekilde yapılır:
 
 ```Kusto
 // This version scans all tables though only Perf has this kind of data
@@ -204,9 +204,9 @@ Perf
 
 ### <a name="add-early-filters-to-the-query"></a>Sorguya erken filtreler ekleme
 
-Veri hacmini azaltmak için başka bir [yöntem,](/azure/kusto/query/whereoperator) sorgunun erken koşulları olmasıdır. Azure Veri Gezgini platformu, hangi bölümlerin belirli bir durum için uygun veriler içerdiğini bilmesini sağlayan bir önbellek içerir. Örneğin, bir sorgu `where EventID == 4624` içeriyorsa, sorguyu yalnızca eşleşen olaylarla bölümleri işleyen düğümlere dağıtır.
+Veri birimini azaltmaya yönelik başka bir yöntem ise, koşullarda sorgunun başlarında [yer](/azure/kusto/query/whereoperator) almak için kullanılır. Azure Veri Gezgini platformu, belirli bir koşul için ilgili verileri hangi bölümlerin içerdiğini öğrenmenizi sağlayan bir önbellek içerir. Örneğin, bir sorgu içeriyorsa `where EventID == 4624` , sorguyu yalnızca eşleşen olaylara sahip bölümleri işleyen düğümlere dağıtır.
 
-Aşağıdaki örnek sorgular tam olarak aynı sonucu üretir, ancak ikincisi daha verimlidir:
+Aşağıdaki örnek sorgular tam olarak aynı sonucu üretir ancak ikincisi daha etkilidir:
 
 ```Kusto
 //less efficient
@@ -222,9 +222,9 @@ SecurityEvent
 
 ### <a name="reduce-the-number-of-columns-that-is-retrieved"></a>Alınan sütun sayısını azaltın
 
-Azure Veri Gezgini bir sütun veri deposu olduğundan, her sütunun alınması diğerlerinden bağımsızdır. Alınan sütun sayısı genel veri hacmini doğrudan etkiler. Yalnızca sonuçları [özetleyerek](/azure/kusto/query/summarizeoperator) veya belirli sütunları [yansıtarak](/azure/kusto/query/projectoperator) gereken çıktısütunlarını eklemeniz gerekir. Azure Veri Gezgini, alınan sütun sayısını azaltmak için çeşitli optimizasyonlara sahiptir. Bir sütunun gerekli olmadığını belirlerse, örneğin [özet](/azure/kusto/query/summarizeoperator) komutunda başvurulmuyorsa, sütunu geri almaz.
+Azure Veri Gezgini bir sütunlu veri deposu olduğundan, her sütunun alınması diğerlerinden bağımsızdır. Alınan sütun sayısı, genel veri hacmini doğrudan etkiler. Yalnızca sonuçları [özetleyerek](/azure/kusto/query/summarizeoperator) veya belirli sütunları [yansıtırken](/azure/kusto/query/projectoperator) gereken çıktıya sütunları dahil etmelisiniz. Azure Veri Gezgini alınan sütun sayısını azaltmak için çeşitli iyileştirmeler içerir. Bir sütunun gerekli olmadığını belirlerse, örneğin, [özetleme](/azure/kusto/query/summarizeoperator) komutunda başvurulmamışsa, bunu alamaz.
 
-Örneğin, ikinci sorgu, bir sütun değil üç sütun getirmesi gerektiğinden üç kat daha fazla veri işleyebilir:
+Örneğin, ikinci sorgu üç kat daha fazla veri işleyebilir, çünkü bir sütun değil, üç kez getirmek gerekir:
 
 ```Kusto
 //Less columns --> Less data
@@ -239,16 +239,16 @@ SecurityEvent
 
 ## <a name="time-span-of-the-processed-query"></a>İşlenen sorgunun zaman aralığı
 
-Azure Monitör Günlükleri'ndeki tüm günlükler **TimeGenerated** sütununa göre bölümlere ayrılmıştır. Erişilen bölüm sayısı, zaman aralığıyla doğrudan ilişkilidir. Zaman aralığını azaltmak, bir istem sorgusu yürütmesini güvence altına almanın en etkili yoludur.
+Azure Izleyici günlüklerindeki tüm Günlükler, **TimeGenerated** sütununa göre bölümlendirilir. Erişilen bölüm sayısı doğrudan zaman dilimi ile ilgilidir. Zaman aralığını azaltmak, istem sorgusu yürütmeyi en verimli yoludur.
 
-Zaman aralığı, [Azure Monitor Log Analytics'te Log sorgu kapsamı ve zaman aralığında](scope.md#time-range)açıklandığı gibi Log Analytics ekranındaki zaman aralığı seçici kullanılarak ayarlanabilir. Seçili zaman aralığı sorgu meta verileri kullanılarak arka uca geçirildiği için önerilen yöntem budur. 
+Zaman aralığı, [Azure izleyici Log Analytics günlük sorgusu kapsamı ve zaman aralığı](scope.md#time-range)bölümünde açıklandığı gibi Log Analytics ekranındaki zaman aralığı Seçicisi kullanılarak ayarlanabilir. Bu, seçili zaman aralığı, sorgu meta verileri kullanılarak arka uca geçirildiği için önerilen yöntemdir. 
 
-Alternatif bir yöntem açıkça sorguda **TimeGenerated** bir [nerede](/azure/kusto/query/whereoperator) koşulu eklemektir. Sorgu farklı bir arabirimden kullanıldığında bile, zaman aralığının sabit olmasını garanti ettiği için bu yöntemi kullanmalısınız.
-Sorgunun tüm bölümlerinin **TimeGenerated** filtreleri olduğundan emin olmalısınız. Bir sorgu, çeşitli tablolardan veya aynı tablodan veri getiren alt sorgulara sahipse, her birinin kendi [koşulunu](/azure/kusto/query/whereoperator) eklemesi vardır.
+Alternatif bir yöntem, sorguda her **zaman** bir [WHERE](/azure/kusto/query/whereoperator) koşulunu açıkça içermelidir. Bu yöntemi, sorgu farklı bir arabirimden kullanıldığında bile zaman aralığının düzeltildiğinden emin olmak için kullanmanız gerekir.
+Sorgunun tüm bölümlerinin **TimeGenerated** filtrelerine sahip olduğundan emin olmanız gerekir. Bir sorguda çeşitli tablolardan veya aynı tablodan veri getirilirken alt sorgular olduğunda, her birinin kendi [WHERE](/azure/kusto/query/whereoperator) koşulunu içermesi gerekir.
 
 ### <a name="make-sure-all-sub-queries-have-timegenerated-filter"></a>Tüm alt sorguların TimeGenerated filtresi olduğundan emin olun
 
-Örneğin, aşağıdaki sorguda, **Perf** tablosu yalnızca son gün için taranırken, **Kalp Atışı** tablosu tüm geçmişi için taranacaktır ve bu tablo iki yıla kadar olabilir:
+Örneğin, aşağıdaki sorguda, **performans** tablosu yalnızca son gün için taranırken, **sinyal** tablosu, en fazla iki yıla kadar olan tüm geçmişi için taranacaktır:
 
 ```Kusto
 Perf
@@ -261,7 +261,7 @@ Perf
 ) on Computer
 ```
 
-Böyle bir hatanın meydana geldiği yaygın bir durum, en son oluşumu bulmak için [arg_max()](/azure/kusto/query/arg-max-aggfunction) kullanıldığında gerçekleşir. Örnek:
+Bir hata oluşması durumunda, en son oluşumu bulmak için [arg_max ()](/azure/kusto/query/arg-max-aggfunction) kullanıldığında oluşan yaygın bir durumdur. Örneğin:
 
 ```Kusto
 Perf
@@ -289,9 +289,9 @@ by Computer
 ) on Computer
 ```
 
-Bu hata için başka bir örnek, zaman kapsamı filtreleme nin birkaç tablo üzerinde [birbirleğe](/azure/kusto/query/unionoperator?pivots=azuremonitor) hemen sonra gerçekleştirilmesidir. Birliği gerçekleştirirken, her alt sorgu kapsamlı olmalıdır. Kapsam tutarlılığını sağlamak için [let](/azure/kusto/query/letstatement) deyimini kullanabilirsiniz.
+Bu hata için başka bir örnek, birkaç tablo üzerinde bir [birleşimden](/azure/kusto/query/unionoperator?pivots=azuremonitor) hemen sonra zaman kapsamı filtrelemesinin gerçekleştirilemedir. Birleşim gerçekleştirirken, her alt sorgu kapsamlı olmalıdır. Kapsam tutarlılığı güvence altına almak için [Let](/azure/kusto/query/letstatement) deyiminizi kullanabilirsiniz.
 
-Örneğin, aşağıdaki sorgu yalnızca son 1 gün değil, *Kalp Atışı* ve *Perf* tablolarında bulunan tüm verileri tarar:
+Örneğin, aşağıdaki sorgu yalnızca son 1 güne değil, *sinyal* ve *performans* tablolarındaki tüm verileri tarayacaktır:
 
 ```Kusto
 Heartbeat 
@@ -303,7 +303,7 @@ Heartbeat
 | summarize min(TimeGenerated) by Computer
 ```
 
-Bu sorgu aşağıdaki gibi düzeltilmelidir:
+Bu sorgu şu şekilde düzeltilmelidir:
 
 ```Kusto
 let MinTime = ago(1d);
@@ -319,67 +319,67 @@ Heartbeat
 
 ### <a name="time-span-measurement-limitations"></a>Zaman aralığı ölçüm sınırlamaları
 
-Ölçüm her zaman belirtilen gerçek süreden daha büyüktür. Örneğin, sorgudaki filtre 7 gün ise, sistem 7,5 veya 8,1 gün tarayabilir. Bunun nedeni, sistemin verileri değişken boyutta parçalara bölmesidir. İlgili tüm kayıtların tarandığından emin olmak için, birkaç saat ve hatta bir günden daha uzun bir süreyi kapsayabilecek tüm bölümü tarar.
+Ölçüm, belirtilen gerçek süreden her zaman daha büyüktür. Örneğin, sorgudaki filtre 7 gün ise, sistem 7,5 veya 8,1 gün tarama alabilir. Bunun nedeni, sistemin verileri değişken boyuttaki parçalara bölümlendirmesi nedeniyle oluşur. Tüm ilgili kayıtların tarandığından emin olmak için, birkaç saati ve hatta bir günden daha fazlasını kapsayan tüm bölümü tarar.
 
-Sistemin zaman aralığının doğru bir ölçümünün sağlayamadığı birkaç durum vardır. Bu, sorgunun bir günden kısa bir süre içinde veya çok çalışma alanı sorgularında olduğu durumların çoğunda gerçekleşir.
+Sistemin zaman aralığının doğru bir ölçümünü sağlayamadığının birkaç durumu vardır. Bu durum, sorgunun bir günden veya çok çalışma alanı sorgularından daha az olduğu durumlarda oluşur.
 
 
 > [!IMPORTANT]
-> Bu gösterge yalnızca hemen kümede işlenen verileri sunar. Çok günlük sorgusunda, yalnızca bir bölgeyi temsil eder. Çok çalışma alanı sorgusunda, tüm çalışma alanlarını içermeyebilir.
+> Bu gösterge yalnızca anında kümede işlenen verileri gösterir. Çok bölgeli sorguda bölge yalnızca birini temsil eder. Çoklu çalışma alanı sorgusunda, tüm çalışma alanlarını içermeyebilir.
 
 ## <a name="age-of-processed-data"></a>İşlenen verilerin yaşı
-Azure Veri Gezgini çeşitli depolama katmanları kullanır: bellek içi, yerel SSD diskler ve çok daha yavaş Azure Blob'ları. Veriler ne kadar yeniyse, sorgu süresini ve CPU'yu azaltarak daha küçük gecikme süresine sahip daha performant bir katmanda depolanma olasılığı o kadar yüksek olur. Verilerin kendisi dışında, sistemin meta veriler için bir önbelleği de vardır. Veriler ne kadar eskiolursa, meta verilerinin önbellekte olma olasılığı da o kadar az olur.
+Azure Veri Gezgini, çeşitli depolama katmanlarını kullanır: bellek içi, yerel SSD diskleri ve çok daha yavaş Azure Blob 'Ları. Veriler arttıkça, daha yüksek gecikme süresine sahip daha fazla performans ve sorgu süresi ve CPU 'YU azaltan bir daha iyi hale gelir. Verilerin kendisi dışında, sistem meta veriler için de önbelleğe sahiptir. Veriler daha eski olduğunda meta verileri önbellekte olacaktır.
 
-Bazı sorgular eski verilerin kullanımını gerektirirken, eski verilerin yanlışlıkla kullanıldığı durumlar vardır. Bu, sorgular meta verilerinde zaman aralığı sağlamadan yürütüldüğünde ve tüm tablo başvuruları **TimeGenerated** sütununa filtre içermediğinde olur. Bu gibi durumlarda, sistem bu tabloda depolanan tüm verileri tayacaktır. Veri saklama uzun olduğunda, uzun zaman aralıkları ve böylece veri saklama süresi kadar eski verileri kapsayabilir.
+Bazı sorgular eski verilerin kullanımını gerektirirken, eski verilerin yanlışlıkla kullanıldığı durumlar vardır. Bu durum, sorguları meta verilerinde zaman aralığı sağlamaktan yürütülene ve tüm tablo başvuruları, **TimeGenerated** sütununda filtre içermez. Bu durumlarda sistem, bu tabloda depolanan tüm verileri tarar. Veri saklama süresi uzunsa, uzun zaman aralıklarını ve bu nedenle veri saklama süresi kadar eski olan verileri kapsayacaktır.
 
-Bu gibi durumlar örneğin olabilir:
+Bu gibi durumlarda, örneğin:
 
-- Log Analytics'te zaman aralığını sınırlı olmayan bir alt sorguyla ayarlamamak. Yukarıdaki örneğe bakın.
-- Zaman aralığı isteğe bağlı parametreler olmadan API kullanma.
-- Power BI konektörü gibi bir zaman aralığı zorlamayan bir istemci kullanma.
+- Sınırlı olmayan bir alt sorgu ile Log Analytics zaman aralığı ayarlamamıyor. Yukarıdaki örneğe bakın.
+- Zaman aralığı isteğe bağlı parametreleri olmadan API 'YI kullanma.
+- Power BI Bağlayıcısı gibi zaman aralığına zormeyen bir istemciyi kullanma.
 
-Bu durumda da ilgili olduğu gibi bölümünde örnekler ve notlar bakın.
+Bu durumda da alakalı olduklarından, bazı örnekler bölümündeki örneklere ve notlara göz atın.
 
 ## <a name="number-of-regions"></a>Bölge sayısı
-Tek bir sorgunun farklı bölgelerde yürütülebileceği birkaç durum vardır:
+Farklı bölgelerde tek bir sorgunun yürütülebileceği birkaç durum vardır:
 
-- Birkaç çalışma alanı açıkça listelendiğinde ve bunlar farklı bölgelerde bulunduğunda.
-- Kaynak kapsamı yla yapılan bir sorgu veri alıyorsa ve veriler farklı bölgelerde bulunan birden çok çalışma alanında depolandığında.
+- Birden çok çalışma alanı açık olarak listeleniyorsa ve bunlar farklı bölgelerde bulunuyorsa.
+- Kaynak kapsamlı bir sorgu veri getirilirken ve veriler farklı bölgelerde bulunan birden çok çalışma alanında depolanıyorsa.
 
-Bölgeler arası sorgu yürütme, sistemin genellikle sorgu nihai sonuçlarından çok daha büyük olan büyük ara veri yığınlarını serihale ve aktarmasını gerektirir. Ayrıca, sistemin optimizasyonları, buluşsal işlemleri gerçekleştirme ve önbellekkullanma yeteneğini de sınırlar.
-Tüm bu bölgeleri taramak için gerçek bir neden yoksa, kapsamı daha az bölgeyi kapsaya göre ayarlamanız gerekir. Kaynak kapsamı en aza indirilmiş, ancak yine de birçok bölge kullanılıyorsa, yanlış yapılandırma nedeniyle oluşabilir. Örneğin, denetim günlükleri ve tanılama ayarları farklı bölgelerdeki farklı çalışma alanlarına gönderilir veya birden çok tanılama ayarları yapılandırmaları vardır. 
+Çapraz bölge sorgusu yürütme, sistemin son kullanılan büyük öbeklere, genellikle sorgu nihai sonuçlarından çok daha büyük parçalar halinde serileştirmek ve aktarım yapılmasını gerektirir. Ayrıca sistemin iyileştirmeler, buluşsal yöntemler gerçekleştirme ve önbellekleri kullanma yeteneğini de kısıtlar.
+Tüm bu bölgeleri taramak için gerçek bir neden yoksa, kapsamı daha az bölge içerecek şekilde ayarlamanız gerekir. Kaynak kapsamı simge durumuna küçültülmüş, ancak hala çok sayıda bölge kullanılıyorsa, yanlış yapılandırma nedeniyle bu durum oluşabilir. Örneğin, denetim günlükleri ve Tanılama ayarları farklı bölgelerdeki farklı çalışma alanlarına gönderilir veya birden çok Tanılama ayarları yapılandırması vardır. 
 
 > [!IMPORTANT]
-> Bir sorgu çeşitli bölgeler arasında çalıştırıldığında, CPU ve veri ölçümleri doğru olmaz ve ölçümü yalnızca bölgelerden birinde temsil eder.
+> Bir sorgu çeşitli bölgelerde çalıştırıldığında, CPU ve veri ölçümleri doğru olmayacaktır ve yalnızca bölgelerden birindeki ölçüyü temsil eder.
 
 ## <a name="number-of-workspaces"></a>Çalışma alanı sayısı
-Çalışma alanları, günlük verilerini ayırmak ve yönetmek için kullanılan mantıksal kapsayıcılardır. Arka uç, seçili bölge içindeki fiziksel kümeler üzerindeki çalışma alanı yerleşimlerini en iyi duruma getirin.
+Çalışma alanları, günlük verilerini ayırmak ve yönetmek için kullanılan mantıksal kapsayıcılardır. Arka uç, Seçili bölge içindeki fiziksel kümelerdeki çalışma alanı yerleştirmelerinin en iyi duruma getirir.
 
-Birden çok çalışma alanının kullanımı şu nedenlerden kaynaklanabilir: 
+Birden çok çalışma alanının kullanımı şu sonucu verebilir: 
 
-- Birden çok çalışma alanının açıkça listelendiği yer.
-- Kaynak kapsamı yla yapılan bir sorgu veri alıyorsa ve veriler birden çok çalışma alanında depolandığında.
+- Burada birkaç çalışma alanı açık olarak listelenir.
+- Kaynak kapsamlı bir sorgu veri getirilirken ve veriler birden fazla çalışma alanında depolandığında.
  
-Sorguların çapraz bölge ve çapraz küme yürütmesi, sistemin genellikle sorgu nihai sonuçlarından çok daha büyük olan arka uçtaki büyük ara veri yığınlarında serihale getirilmesini ve aktarılmasını gerektirir. Ayrıca optimizasyonlar, buluşsal ve önbellekleri kullanarak gerçekleştirmek için sistem yeteneğini sınırlar.
+Sorguların bölgeler arası ve çapraz küme yürütmesi, sistemin son görüntülenen büyük öbeklere, genellikle sorgu nihai sonuçlarından çok daha büyük parçalara serileştirmesinin ve aktarılmasını gerektirir. Ayrıca sistem, iyileştirmeler, buluşsal yöntemler ve önbellekler gerçekleştirme becerisini de kısıtlar.
 
 > [!IMPORTANT]
-> Bazı çok çalışma alanı senaryolarında, CPU ve veri ölçümleri doğru olmaz ve ölçümü yalnızca çalışma alanlarının birkaçına gösterir.
+> Bazı çok çalışma alanı senaryolarında CPU ve veri ölçümleri doğru olmayacaktır ve yalnızca birkaç çalışma alanında ölçüyü temsil eder.
 
-## <a name="parallelism"></a>Parallelism
-Azure Monitor Günlükleri sorguları çalıştırmak için büyük Azure Veri Gezgini kümeleri kullanıyor ve bu kümeler ölçek olarak farklılık gösterarak düzinelerce işlem düğümüne kadar çıkma potansiyeline varıyor. Sistem kümeleri çalışma alanı yerleştirme mantığına ve kapasitesine göre otomatik olarak ölçeklendirilir.
+## <a name="parallelism"></a>Paralellik
+Azure Izleyici günlükleri sorguları çalıştırmak için büyük Azure Veri Gezgini kümeleri kullanıyor ve bu kümeler ölçekli, büyük olasılıkla düzinelerce işlem düğümlerine göre farklılık gösterir. Sistem, çalışma alanı yerleştirme mantığı ve kapasitesine göre kümeleri otomatik olarak ölçeklendirir.
 
-Bir sorguyu verimli bir şekilde yürütmek için, işlem için gerekli olan verilere göre bölümlere bölünür ve düğümleri hesaplamak için dağıtılır. Sistemin bunu verimli bir şekilde yapamayacağı bazı durumlar vardır. Bu, sorgunun uzun bir süreye yol açabilir. 
+Bir sorguyu verimli bir şekilde yürütmek için bölümlenmiş ve işleme için gereken verilere göre işlem düğümlerine dağıtılır. Sistemin bunu verimli bir şekilde yapamadığı bazı durumlar vardır. Bu, sorgunun uzun süreli olmasına neden olabilir. 
 
-Paralelliği azaltabilecek sorgu davranışları şunlardır:
+Paralellik 'i azaltan sorgu davranışları şunlardır:
 
-- [Serialize işleci](/azure/kusto/query/serializeoperator), [sonraki()](/azure/kusto/query/nextfunction), [prev()](/azure/kusto/query/prevfunction)ve [satır](/azure/kusto/query/rowcumsumfunction) işlevleri gibi serileştirme ve pencere işlevlerinin kullanımı. Bu durumlardan bazılarında zaman serisi ve kullanıcı analizi işlevleri kullanılabilir. Aşağıdaki işleçler sorgunun sonunda kullanılmazsa verimsiz serileştirme de oluşabilir: [aralık](/azure/kusto/query/rangeoperator), [sıralama,](/azure/kusto/query/sortoperator) [sıra](/azure/kusto/query/orderoperator), [üst](/azure/kusto/query/topoperator), [üst hitters](/azure/kusto/query/tophittersoperator), [getschema](/azure/kusto/query/getschemaoperator).
--    [Dcount()](/azure/kusto/query/dcount-aggfunction) toplama işlevinin kullanımı sistemi farklı değerlerin merkezi kopyasına sahip olmaya zorlar. Veri ölçeği yüksek olduğunda, doğruluğu azaltmak için dcount işlevini isteğe bağlı parametreleri kullanmayı düşünün.
--    Çoğu durumda, [birleştirme](/azure/kusto/query/joinoperator?pivots=azuremonitor) işleci genel paralelliği düşürür. Performans sorunlu olduğunda shuffle birleştirme'yi alternatif olarak inceleyin.
--    Kaynak kapsamı sorgularında, yürütme öncesi RBAC denetimleri çok sayıda RBAC ataması olduğu durumlarda oyalanabilir. Bu, daha düşük paralelliğe neden olacak daha uzun denetimlere yol açabilir. Örneğin, bir sorgu, binlerce kaynağın bulunduğu ve her kaynağın kaynak düzeyinde abonelik veya kaynak grubunda değil, çok sayıda rol ataması olduğu bir abonelikte yürütülür.
--    Bir sorgu küçük veri yığınlarını işliyorsa, sistem onu birçok işlem düğümüne yaymayacağı için paralelliği düşük olacaktır.
+- Seri hale getirme [işleci](/azure/kusto/query/serializeoperator), [Next ()](/azure/kusto/query/nextfunction), [önceki ()](/azure/kusto/query/prevfunction)ve [Row](/azure/kusto/query/rowcumsumfunction) işlevleri gibi serileştirme ve pencere işlevlerinin kullanımı. Bu durumlarda zaman serisi ve Kullanıcı Analizi işlevleri kullanılabilir. Şu işleçler sorgu sonunda değilse, verimsiz serileştirme de oluşabilir: [Range](/azure/kusto/query/rangeoperator), [Sort](/azure/kusto/query/sortoperator), [Order](/azure/kusto/query/orderoperator), [top](/azure/kusto/query/topoperator), [top-hitters](/azure/kusto/query/tophittersoperator), [GetSchema](/azure/kusto/query/getschemaoperator).
+-    [DCount ()](/azure/kusto/query/dcount-aggfunction) toplama işlevinin kullanımı, sistemi farklı değerlerin merkezi kopyasına sahip olacak şekilde zorlar. Verilerin ölçeği yüksek olduğunda, doğruluğu azaltmak için DCount işlevi isteğe bağlı parametrelerini kullanmayı deneyin.
+-    Birçok durumda, [JOIN](/azure/kusto/query/joinoperator?pivots=azuremonitor) işleci genel paralellik düşürür. Performans sorunlu olduğunda bir alternatif olarak karışık katılmayı inceleyin.
+-    Kaynak kapsamı sorgularında, ön yürütme RBAC denetimleri çok fazla sayıda RBAC atamasının olduğu durumlarda kalabilir. Bu, daha uzun bir denetim oluşmasına neden olabilir ve bu da daha fazla paralellik sağlar. Örneğin, bir sorgu binlerce kaynağın bulunduğu bir abonelikte yürütülür ve her bir kaynağın abonelik veya kaynak grubunda değil kaynak düzeyinde birçok rol ataması vardır.
+-    Bir sorgu küçük veri öbeklerini işlerse, sistem çok sayıda işlem düğümüne yayılmadığından paralelliği düşük olur.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Kusto sorgu dili için başvuru belgeleri](/azure/kusto/query/).
+- [Kusto sorgu dili Için başvuru belgeleri](/azure/kusto/query/).

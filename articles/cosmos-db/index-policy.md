@@ -1,48 +1,48 @@
 ---
-title: Azure Cosmos DB dizin oluşturma ilkeleri
-description: Azure Cosmos DB'de otomatik dizin oluşturma ve daha fazla performans için varsayılan dizin oluşturma ilkesini nasıl yapılandırıp değiştireceğinizi öğrenin.
+title: Azure Cosmos DB Dizin oluşturma ilkeleri
+description: Azure Cosmos DB ' de otomatik dizin oluşturma ve daha fazla performans için varsayılan dizin oluşturma ilkesini yapılandırma ve değiştirme hakkında bilgi edinin.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: tisande
 ms.openlocfilehash: 930f156ebec76be860e7af02d41540ce67982f92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80292048"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkeleri
 
-Azure Cosmos DB'de, her kapsayıcının, kapsayıcının öğelerinin nasıl dizine eklenmesini belirleyen bir dizin oluşturma ilkesi vardır. Yeni oluşturulan kapsayıcılar için varsayılan dizin oluşturma ilkesi, her öğenin her özelliğini dizine dizine, herhangi bir dize veya sayı için aralık dizinlerini ve Point türündeki herhangi bir GeoJSON nesnesi için uzamsal dizinleri zorlar. Bu, dizin oluşturma ve dizin yönetimi hakkında önceden düşünmek zorunda kalmadan yüksek sorgu performansı elde etmenizi sağlar.
+Azure Cosmos DB, her kapsayıcının kapsayıcının öğelerinin nasıl dizine alınacağını belirleyen bir dizin oluşturma ilkesi vardır. Yeni oluşturulan kapsayıcılar için varsayılan dizin oluşturma ilkesi her öğenin her bir özelliğini dizinleyen, herhangi bir dize veya sayı için Aralık dizini uygulayan ve tür noktası olan herhangi bir GeoJSON nesnesi için uzamsal dizinler. Bu, dizin oluşturma ve dizin yönetimi ile ilgili düşünmek zorunda kalmadan yüksek sorgu performansı almanızı sağlar.
 
-Bazı durumlarda bu otomatik davranışı kendi gereksinimlerinize daha iyi uyacak şekilde geçersiz kılmak isteyebilirsiniz. *Dizin oluşturma modunu*ayarlayarak bir kapsayıcının dizin oluşturma ilkesini özelleştirebilir ve *özellik yollarını*ekleyebilir veya hariç tutabilirsiniz.
+Bazı durumlarda bu otomatik davranışı kendi gereksinimlerinize daha iyi uyacak şekilde geçersiz kılmak isteyebilirsiniz. *Dizin oluşturma modunu*ayarlayarak bir kapsayıcının dizin oluşturma ilkesini özelleştirebilir ve *özellik yollarını*dahil edebilir veya dışlayabilirsiniz.
 
 > [!NOTE]
-> Bu makalede açıklanan dizin oluşturma ilkelerini güncelleştirme yöntemi yalnızca Azure Cosmos DB'nin SQL (Core) API'si için geçerlidir.
+> Bu makalede açıklanan dizin oluşturma ilkelerini güncelleştirme yöntemi yalnızca Azure Cosmos DB SQL (Core) API 'SI için geçerlidir.
 
 ## <a name="indexing-mode"></a>Dizin oluşturma modu
 
 Azure Cosmos DB iki dizin oluşturma modunu destekler:
 
-- **Tutarlı**: Öğeleri oluştururken, güncellerken veya silerken dizin eşzamanlı olarak güncelleştirilir. Bu, okundu sorgularınızın tutarlılığının [hesap için yapılandırılan tutarlılık](consistency-levels.md)olacağı anlamına gelir.
-- **Yok**: Dizin oluşturma kapsayıcıda devre dışı bırakılır. Bu genellikle bir kapsayıcı ikincil dizinler gerek kalmadan saf bir anahtar değeri deposu olarak kullanıldığında kullanılır. Toplu işlemlerin performansını artırmak için de kullanılabilir. Toplu işlemler tamamlandıktan sonra, dizin modu Tutarlı olarak ayarlanabilir ve tamamlanana kadar [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) kullanılarak izlenebilir.
+- **Tutarlı**: öğe oluşturma, güncelleştirme veya silme işlemi sırasında dizin zaman uyumlu olarak güncelleştirilir. Bu, okuma sorgularınızın tutarlılığı, [hesap için yapılandırılmış tutarlılığa](consistency-levels.md)sahip olacağı anlamına gelir.
+- **Hiçbiri**: Dizin oluşturma kapsayıcıda devre dışı bırakıldı. Bu genellikle bir kapsayıcı, ikincil dizinlere gerek olmadan saf anahtar-değer deposu olarak kullanıldığında kullanılır. Toplu işlemlerin performansını artırmak için de kullanılabilir. Toplu işlemler tamamlandıktan sonra, dizin modu tutarlı olarak ayarlanabilir ve sonra, Işlem tamamlanana kadar [ındexdönüşümle ilerlemesi](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) kullanılarak izlenebilir.
 
 > [!NOTE]
-> Azure Cosmos DB, Tembel dizin oluşturma modunu da destekler. Tembel dizin oluşturma, dizin güncelleştirmelerini, altyapı başka bir iş yapmadığında çok daha düşük öncelik düzeyinde gerçekleştirir. Bu tutarsız **veya eksik** sorgu sonuçlarına neden olabilir. Bir Cosmos kapsayıcısını sorgulamayı planlıyorsanız, tembel dizin oluşturmayı seçmemelisiniz.
+> Azure Cosmos DB, yavaş dizin oluşturma modunu da destekler. Yavaş dizin oluşturma, altyapı başka bir iş gerçekleştirmediğinden daha düşük bir öncelik düzeyinde dizinde güncelleştirmeler gerçekleştirir. Bu, **tutarsız veya tamamlanmamış** sorgu sonuçlarının oluşmasına neden olabilir. Bir Cosmos kapsayıcısını sorgulamayı planlıyorsanız, geç dizin oluşturma ' yı seçmemelisiniz.
 
-Varsayılan olarak, dizin oluşturma `automatic`ilkesi . Dizin oluşturma ilkesindeki `automatic` özelliği `true`. Bu özelliği, `true` Azure CosmosDB'nin belgeleri yazıldığı gibi otomatik olarak dizine ekecek şekilde ayarlama.
+Varsayılan olarak, dizin oluşturma ilkesi olarak `automatic`ayarlanır. Dizin oluşturma ilkesindeki `automatic` özelliği olarak `true`ayarlanarak elde edilir. Bu özelliği ayarlamak için `true` Azure cosmosdb 'nin belgeleri yazıldığı gibi otomatik olarak dizin oluşturulmasına izin verir.
 
-## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Özellik yolları dahil ve hariç
+## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Özellik yollarını dahil etme ve hariç tutma
 
-Özel dizin oluşturma ilkesi, açıkça dahil edilen veya dizin oluşturma dışında olan özellik yollarını belirtebilir. Dizine eklenmiş yol sayısını en iyi duruma düşürerek, kapsayıcınız tarafından kullanılan depolama miktarını düşürebilir ve yazma işlemlerinin gecikmesini artırabilirsiniz. Bu yollar, [dizin oluşturma genel bakış bölümünde açıklanan yöntem](index-overview.md#from-trees-to-property-paths) ve aşağıdaki eklemeler aşağıdaki şekilde tanımlanır:
+Özel bir dizin oluşturma ilkesi, dizin oluşturma işleminden açıkça dahil edilen veya dışlanan Özellik yollarını belirtebilir. Dizini oluşturulmuş yolların sayısını en iyi duruma getirerek, Kapsayıcınız tarafından kullanılan depolama miktarını düşürebilirsiniz ve yazma işlemlerinin gecikme süresini artırabilirsiniz. Bu yollar, [Dizin oluşturma genel bakış bölümünde açıklanan yöntemi](index-overview.md#from-trees-to-property-paths) aşağıdaki eklemelerle izleyerek tanımlanmıştır:
 
-- skaler değere (dize veya sayı) giden bir yol,`/?`
-- bir diziden öğeler `/[]` gösterim yoluyla birlikte ele `/0`alınır `/1` (yerine, vb.)
-- `/*` joker düğüm altındaki tüm öğeleri eşleştirmek için kullanılabilir
+- skaler bir değere (dize veya sayı) öndeki bir yol, şununla biter`/?`
+- bir dizideki öğeler `/[]` `/0`, Gösterim (yerine, `/1` vb.) ile birlikte karşılanır
+- `/*` joker karakter, düğümün altındaki herhangi bir öğeyi eşleştirmek için kullanılabilir
 
-Yine aynı örneği alarak:
+Aynı örneği yeniden almak:
 
 ```
     {
@@ -58,85 +58,85 @@ Yine aynı örneği alarak:
     }
 ```
 
-- 'ın `headquarters` `employees` yolu`/headquarters/employees/?`
+- `headquarters`yolu `employees``/headquarters/employees/?`
 
-- ' `locations` `country` yolu`/locations/[]/country/?`
+- `locations`' `country` yol`/locations/[]/country/?`
 
-- altında `headquarters` bir şey için yol`/headquarters/*`
+- altında `headquarters` herhangi bir şeyin yolu`/headquarters/*`
 
-Örneğin, `/headquarters/employees/?` yolu ekleyebiliriz. Bu yol, çalışanların özelliğini dizine dizine dizine sahip olmamızı sağlar, ancak bu özellik içinde ek iç içe json dizine olmaz.
+Örneğin, `/headquarters/employees/?` yolunu dahil eteceğiz. Bu yol çalışanlar özelliğini dizinliyoruz, ancak bu özellik içinde iç içe geçmiş JSON dizinini dizinliyoruz.
 
-## <a name="includeexclude-strategy"></a>Stratejiekleme/hariç tutma
+## <a name="includeexclude-strategy"></a>Dahil etme/hariç tutma stratejisi
 
-Herhangi bir dizin oluşturma ilkesi, kök yolu `/*` dahil edilmiş veya dışlanmış bir yol olarak içermelidir.
+Herhangi bir dizin oluşturma ilkesinin kök yolu `/*` dahil edilen ya da hariç tutulmuş bir yol olarak içermesi gerekmez.
 
-- Dizine alınması gerekmeyen yolları seçiçi olarak dışlamak için kök yolu ekleyin. Azure Cosmos DB'nin modelinize eklenebilecek yeni mülkleri proaktif olarak dizine eklemesine olanak tanıyan önerilen yaklaşım budur.
-- Dizine alınması gereken yolları seçikar bir şekilde eklemek için kök yolu hariç tut.
+- Dizin oluşturma gerektirmeyen yolları seçmeli olarak hariç tutmak için kök yolu ekleyin. Bu, modelinize eklenebilen yeni bir özelliğin Azure Cosmos DB proaktif olarak dizinlemenizi sağlayan bu, önerilen yaklaşımdır.
+- Dizine eklenmesi gereken yolları seçmeli olarak dahil etmek için kök yolu hariç tutun.
 
-- Alfasayısal karakterler ve _ (alt çizgi) içeren normal karakterli yollar için çift tırnak (örneğin, "/path/?") etrafındaki yol dizelerinden kaçmak zorunda değilsiniz. Diğer özel karakterlerle olan yollar için çift tırnak (örneğin, "/\"path-abc\"/?") etrafında yol dizesini kaçmış olmanız gerekir. Eğer yolunuza özel karakterler bekliyorsanız, güvenlik için her yoldan kaçabilirsiniz. Fonksiyonel olarak her yoldan kaçarsanız bir fark yaratmaz Vs sadece özel karakterleri olanlar.
+- : Alfasayısal karakterler ve _ (alt çizgi) içeren normal karakter içeren yollar için, yol dizesinin çift tırnak etrafında (örneğin, "/path/?") kaçış olması gerekmez. Diğer özel karakterlere sahip yollar için, yol dizesini çift tırnak etrafında (örneğin, "/\"Path-ABC\"/?") kaçış yapmanız gerekir. Yolunuzda özel karakterler bekleliyorsanız, güvenlik için her yolu da kaçış yapabilirsiniz. İşlevsel olarak, tüm yolları yalnızca özel karakterlere sahip olanlara karşı atladıysanız herhangi bir farklılık yapmaz.
 
-- Etag `_etag` dizin oluşturma için dahil edilen yola eklenmedikçe, sistem özelliği varsayılan olarak dizin oluşturma nın dışında tutulur.
+- `_etag` ETag, dizin oluşturma için eklenen yola eklenmediği takdirde, varsayılan olarak dizin oluşturma işleminden çıkarılır.
 
-- Dizin oluşturma modu **tutarlı**olarak ayarlanmışsa, sistem özellikleri `id` ve `_ts` otomatik olarak dizine eklenir.
+- Dizin oluşturma modu **tutarlı**olarak ayarlandıysa, sistem özellikleri `id` ve `_ts` otomatik olarak dizinlenir.
 
-Yolları dahil ederken ve hariç tbelirtirken, aşağıdaki özniteliklerle karşılaşabilirsiniz:
+Yolları dahil etme ve hariç tutma sırasında aşağıdaki özniteliklerle karşılaşabilirsiniz:
 
-- `kind`ya da `range` `hash`olabilir . Aralık dizini işlevselliği karma dizinin tüm işlevselliğini sağlar, bu nedenle bir aralık dizini kullanmanızı öneririz.
+- `kind`ya `range` `hash`da olabilir. Aralık dizini işlevselliği bir karma dizinin tüm işlevlerini sağlar, bu nedenle bir Aralık dizini kullanmanızı öneririz.
 
-- `precision`dahil edilen yollar için dizin düzeyinde tanımlanan bir sayıdır. Değeri maksimum `-1` hassasiyeti gösterir. Bu değeri her zaman `-1`'ye ayarlamanızı öneririz.
+- `precision`, eklenen yollar için dizin düzeyinde tanımlanmış bir sayıdır. Değeri en fazla `-1` duyarlığı gösterir. Bu değeri her zaman olarak `-1`ayarlamayı öneririz.
 
-- `dataType`ya da `String` `Number`olabilir . Bu, dizine ekilecek JSON özelliklerinin türlerini gösterir.
+- `dataType`ya `String` `Number`da olabilir. Bu, dizine eklenecek JSON özelliklerinin türlerini gösterir.
 
-Belirtilmediğinde, bu özellikler aşağıdaki varsayılan değerlere sahip olacaktır:
+Belirtilmediğinde, bu özellikler aşağıdaki varsayılan değerlere sahip olur:
 
-| **Özellik Adı**     | **Varsayılan Değer** |
+| **Özellik Adı**     | **Varsayılan değer** |
 | ----------------------- | -------------------------------- |
 | `kind`   | `range` |
 | `precision`   | `-1`  |
 | `dataType`    | `String` ve `Number` |
 
-Yolları dahil etmek ve hariç tetmek için ilke örneklerini dizine ekin ler için [bu bölüme](how-to-manage-indexing-policy.md#indexing-policy-examples) bakın.
+Yolların dahil edilmesi ve dışlanması için ilke örneklerinin dizinini oluşturma [bölümüne](how-to-manage-indexing-policy.md#indexing-policy-examples) bakın.
 
 ## <a name="spatial-indexes"></a>Uzamsal dizinler
 
-Dizin oluşturma ilkesinde uzamsal bir yol tanımladığınızda, bu yola hangi dizin ```type``` uygulanması gerektiğini tanımlamanız gerekir. Uzamsal dizinler için olası türleri şunlardır:
+Dizin oluşturma ilkesinde bir uzamsal yol tanımladığınızda, bu yola hangi dizinin ```type``` uygulanacağını tanımlamanız gerekir. Uzamsal dizinler için olası türler şunlardır:
 
-* Nokta
+* Seçeneğinin
 
-* Çokgen
+* Gen
 
-* Multipolygon
+* MultiPolygon
 
-* Linestring
+* LineString
 
-Azure Cosmos DB, varsayılan olarak, herhangi bir uzamsal dizin oluşturmaz. Uzamsal SQL yerleşik işlevlerini kullanmak istiyorsanız, gerekli özellikleri bir uzamsal dizin oluşturmanız gerekir. Uzamsal dizinler eklemek için ilke örneklerini dizine eklemek için [bu bölüme](geospatial.md) bakın.
+Azure Cosmos DB, varsayılan olarak hiçbir uzamsal dizin oluşturmaz. Uzamsal SQL yerleşik işlevlerini kullanmak isterseniz, gereken özelliklerde bir uzamsal dizin oluşturmanız gerekir. Uzamsal dizinler eklemeye yönelik dizin oluşturma örnekleri için [Bu bölüme](geospatial.md) bakın.
 
 ## <a name="composite-indexes"></a>Bileşik dizinler
 
-İki veya daha `ORDER BY` fazla özelliği olan bir yan tümcesi olan sorgular bileşik dizin gerektirir. Ayrıca, birçok eşitlik ve aralık sorgusunun performansını artırmak için bileşik dizin tanımlayabilirsiniz. Varsayılan olarak, hiçbir bileşik dizinler tanımlanır, bu nedenle gerektiğinde [bileşik dizinler eklemeniz](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) gerekir.
+İki veya daha fazla `ORDER BY` özelliği olan bir yan tümcesine sahip sorgular bileşik bir dizin gerektirir. Ayrıca, birçok eşitlik ve Aralık sorgusunun performansını artırmak için bir bileşik dizin tanımlayabilirsiniz. Varsayılan olarak, bir bileşik dizin tanımlanmadığında, gereken şekilde [Bileşik dizinler eklemelisiniz](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) .
 
-Bileşik dizini tanımlarken şunları belirtirsiniz:
+Bileşik dizin tanımlarken şunu belirtirsiniz:
 
-- İki veya daha fazla özellik yolu. Özellik yollarının tanımlandığı sıra önemlidir.
+- İki veya daha fazla özellik yolu. Özellik yollarının önemli olarak tanımlandığı sıra.
 
 - Sıra (artan veya azalan).
 
 > [!NOTE]
-> Bileşik dizin eklediğinizde, sorgu, yeni bileşik dizin ekini tamamlanana kadar varolan aralık dizinlerini kullanır. Bu nedenle, bileşik dizini eklediğinizde, performans iyileştirmelerini hemen gözlemlemeyebilirsiniz. [SDK'lardan birini kullanarak](how-to-manage-indexing-policy.md)dizin dönüşümündeki ilerlemeyi izlemek mümkündür.
+> Bileşik dizin eklediğinizde, yeni bileşik dizin ekleme tamamlanana kadar sorgu mevcut Aralık dizinlerini kullanır. Bu nedenle, bileşik bir dizin eklediğinizde performans iyileştirmelerini hemen gözlemleyebilirsiniz. [SDK 'lardan birini kullanarak](how-to-manage-indexing-policy.md)Dizin dönüşümünün ilerlemesini izlemek mümkündür.
 
-### <a name="order-by-queries-on-multiple-properties"></a>Birden çok özellik üzerinde sorguları BY ORDER:
+### <a name="order-by-queries-on-multiple-properties"></a>Birden çok özelliklerde sorguya göre sırala:
 
-İki veya daha fazla özele sahip bir `ORDER BY` yan tümcesi olan sorgular için bileşik dizinler kullanılırken aşağıdaki hususlar kullanılır:
+İki veya daha fazla özelliği olan bir `ORDER BY` yan tümcesine sahip sorgular için Bileşik dizinler kullanılırken aşağıdaki noktalar kullanılır:
 
-- Bileşik dizin yolları `ORDER BY` yan tümcedeki özelliklerin sırasıyla eşleşmiyorsa, bileşik dizin sorguyu destekleyemez.
+- Bileşik dizin yolları `ORDER BY` yan tümcesindeki özelliklerin dizisiyle eşleşmezse, bileşik dizin sorguyu desteklemiyor.
 
-- Bileşik dizin yollarının sırası (artan veya azalan) `order` da `ORDER BY` yan tümceyle eşleşmelidir.
+- Bileşik dizin yollarının sırası (artan veya azalan), `order` `ORDER BY` yan tümcesindeki ile de eşleşmelidir.
 
-- Bileşik dizini de `ORDER BY` tüm yollarda ters sırayla bir yan tümceyi destekler.
+- Bileşik dizin aynı zamanda tüm yollarda `ORDER BY` ters sırada olan bir yan tümceyi destekler.
 
-Özellikler adı, yaş ve _ts bileşik dizinin tanımlandığı aşağıdaki örneği göz önünde bulundurun:
+Bir bileşik dizinin özellikler adı, yaşı ve _ts tanımlı olduğu aşağıdaki örneği göz önünde bulundurun:
 
-| **Bileşik Dizin**     | **Örnek `ORDER BY` Sorgu**      | **Bileşik Endeksi tarafından desteklenir?** |
+| **Bileşik Dizin**     | **Örnek `ORDER BY` sorgu**      | **Bileşik dizin tarafından destekleniyor mu?** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.name ASC, c.age asc``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.age ASC, c.name asc```   | ```No```             |
@@ -145,41 +145,41 @@ Bileşik dizini tanımlarken şunları belirtirsiniz:
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c ORDER BY c.name ASC, c.age ASC, timestamp ASC``` | ```Yes```            |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c ORDER BY c.name ASC, c.age ASC``` | ```No```            |
 
-Gerekli `ORDER BY` tüm sorguları hizmet böylece dizin oluşturma ilkesini özelleştirmeniz gerekir.
+Tüm gerekli `ORDER BY` sorgulara hizmeti sağlamak için dizin oluşturma ilkenizi özelleştirmeniz gerekir.
 
 ### <a name="queries-with-filters-on-multiple-properties"></a>Birden fazla özelliğinde filtreler olan sorgular
 
-Bir sorguda iki veya daha fazla özellik üzerinde filtreler varsa, bu özellikler için bileşik dizin oluşturmak yararlı olabilir.
+Bir sorgu iki veya daha fazla özelliğe filtre içeriyorsa, bu özellikler için bileşik bir dizin oluşturmak yararlı olabilir.
 
-Örneğin, iki özellik üzerinde eşitlik filtresi olan aşağıdaki sorguyu göz önünde bulundurun:
+Örneğin, iki özellik üzerinde bir eşitlik filtresi bulunan aşağıdaki sorguyu göz önünde bulundurun:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John" AND c.age = 18
 ```
 
-Bu sorgu daha verimli olacak, daha az zaman alıyor ve daha az RU tüketen, bir bileşik dizini kaldıraç yapabiliyorsa (asc adı, yaş ASC).
+Bu sorgu daha verimli olacaktır, daha az zaman alır ve bir bileşik dizinden yararlanıyorsa daha az RU (ad ASC, Age ASC).
 
-Aralık filtrelerine sahip sorgular bileşik dizinle de en iyi duruma getirilebilir. Ancak, sorguyalnızca tek bir aralık filtresi olabilir. Aralık filtreleri `>` `<`, `<=` `>=`, `!=`, , ve . Aralık filtresi bileşik dizinde son olarak tanımlanmalıdır.
+Aralık filtreleri içeren sorgular da bileşik bir dizinle iyileştirilebilir. Ancak, sorgu yalnızca tek bir Aralık filtresine sahip olabilir. Aralık filtreleri, `>` `<` `<=` `>=`,, ve `!=`içerir. Aralık filtresi, en son bileşik dizinde tanımlanmalıdır.
 
-Hem eşitlik hem de aralık filtreleriyle aşağıdaki sorguyu düşünün:
+Aşağıdaki sorguyu hem eşitlik hem de Aralık filtreleriyle göz önünde bulundurun:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John" AND c.age > 18
 ```
 
-Bu sorgu üzerinde bileşik dizin (asc adı, yaş ASC) ile daha verimli olacaktır. Ancak, eşitlik filtreleri bileşik dizinde ilk olarak tanımlanması gerektiğinden, sorguda (yaş ASC, ad ASC) bileşik dizini kullanılmaz.
+Bu sorgu, üzerinde bileşik bir dizin ile daha verimli olacaktır (ad ASC, Age ASC). Ancak, sorgu (Age ASC, ad ASC) üzerinde bir bileşik dizin kullanmaz, çünkü eşitlik filtreleri ilk olarak bileşik dizinde tanımlanmalıdır.
 
-Birden çok özelliği olan sorgular için bileşik dizinler oluşturulurken aşağıdaki hususlar kullanılır
+Birden çok özelliklerde filtre içeren sorgular için Bileşik dizinler oluşturulurken aşağıdaki noktalar kullanılır
 
-- Sorgunun filtresindeki özellikler bileşik dizindekilerle eşleşmelidir. Bir özellik bileşik dizinde yse ancak sorguya filtre olarak dahil edilmezse, sorgu bileşik dizini kullanmaz.
-- Bir sorgunun filtrede bileşik dizinde tanımlanmamış ek özellikleri varsa, sorguyu değerlendirmek için bileşik ve aralık dizinleri birleşimi kullanılır. Bu sadece aralık dizinleri kullanarak daha az RU gerektirir.
-- Bir özelliğin aralık filtresi`>` `<`varsa `<=` `>=`(, `!=`, , , , veya ), bu özellik bileşik dizinde son olarak tanımlanmalıdır. Bir sorguda birden fazla aralık filtresi varsa, bileşik dizini kullanmaz.
-- Birden çok filtreiçeren sorguları en iyi duruma `ORDER` getirmek için bileşik dizin oluştururken, bileşik dizinin sonuçları üzerinde hiçbir etkisi olmaz. Bu özellik isteğe bağlıdır.
-- Birden çok özellik üzerinde filtreleri olan bir sorgu için bileşik dizin tanımlamazsanız, sorgu yine de başarılı olur. Ancak, sorgunun RU maliyeti bileşik dizin ile azaltılabilir.
+- Sorgunun filtresindeki özellikler, bileşik dizinindekilerle eşleşmelidir. Bir özellik bileşik dizindaysa, ancak sorguya filtre olarak eklenmemelidir, sorgu bileşik dizinden yararlanmaz.
+- Bir sorguda, bir bileşik dizinde tanımlanmayan ek özellikler varsa, sorguyu değerlendirmek için bileşik ve Aralık dizinlerinin bir birleşimi kullanılır. Bu, Aralık dizinleri kullanılarak özel olarak daha az RU gerektirir.
+- Bir`>`özelliğin Aralık filtresi varsa (, `<` `<=` `>=`,, veya `!=`), bu özellik bileşik dizinde son olarak tanımlanmalıdır. Bir sorguda birden fazla Aralık filtresi varsa, bileşik dizinden yararlanmaz.
+- Birden çok filtre içeren sorguları iyileştirmek için bir bileşik dizin oluştururken, `ORDER` bileşik dizinin sonuçları üzerinde hiçbir etkisi olmayacaktır. Bu özellik isteğe bağlıdır.
+- Birden çok özelliklerde filtre içeren bir sorgu için bileşik dizin tanımlamadıysanız sorgu yine de başarılı olur. Ancak, sorgunun RU maliyeti bir bileşik dizinle azaltılabilir.
 
-Özellikler adı, yaş ve zaman damgası üzerinde bileşik dizinin tanımlandığı aşağıdaki örnekleri göz önünde bulundurun:
+Bir bileşik dizinin özellikler adı, yaşı ve zaman damgasında tanımlandığı aşağıdaki örnekleri göz önünde bulundurun:
 
-| **Bileşik Dizin**     | **Örnek Sorgu**      | **Bileşik Endeksi tarafından desteklenir?** |
+| **Bileşik Dizin**     | **Örnek sorgu**      | **Bileşik dizin tarafından destekleniyor mu?** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age > 18```   | ```Yes```             |
@@ -190,44 +190,44 @@ Birden çok özelliği olan sorgular için bileşik dizinler oluşturulurken aş
 
 ### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>Filtresi ve ORDER BY yan tümcesi olan sorgular
 
-Bir sorgu bir veya daha fazla özelliği filtreler ve ORDER BY yan tümcesinde farklı özelliklere sahipse, filtredeki özellikleri `ORDER BY` yan tümceye eklemek yararlı olabilir.
+Bir sorgu bir veya daha fazla özellik üzerinde filtreleyip ORDER BY yan tümcesinde farklı özelliklere sahipse, filtrenin içindeki özellikleri `ORDER BY` yan tümcesine eklemek yararlı olabilir.
 
-Örneğin, filtredeki özellikleri ORDER BY yan tümcesine ekleyerek, bileşik dizinden yararlanmak için aşağıdaki sorgu yeniden yazılabilir:
+Örneğin, filtreye ORDER BY yan tümcesine eklenen özellikleri ekleyerek, bir bileşik dizinden yararlanmak için aşağıdaki sorgu yeniden yazılabilir:
 
-Aralık dizini kullanarak sorgu:
+Aralık dizinini kullanan sorgu:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp
 ```
 
-Bileşik dizin kullanarak sorgu:
+Bileşik dizin kullanarak sorgula:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John" ORDER BY c.name, c.timestamp
 ```
 
-Aynı desen ve sorgu optimizasyonları birden çok eşitlik filtresi olan sorgular için genelleştirilmiş olabilir:
+Aynı model ve sorgu iyileştirmeleri, birden çok eşitlik filtresi içeren sorgular için genelleştirilerek bulunabilir:
 
-Aralık dizini kullanarak sorgu:
+Aralık dizinini kullanan sorgu:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.timestamp
 ```
 
-Bileşik dizin kullanarak sorgu:
+Bileşik dizin kullanarak sorgula:
 
 ```sql
 SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.timestamp
 ```
 
-Bir filtre ve `ORDER BY` yan tümceile bir sorgu en iyi duruma getirmek için bileşik dizinler oluştururken aşağıdaki hususlar kullanılır:
+Bir sorguyu bir filtre ve `ORDER BY` yan tümcesiyle iyileştirmek için Bileşik dizinler oluşturulurken aşağıdaki noktalar kullanılır:
 
-* Sorgu özellikleri filtreler, bu `ORDER BY` ilk yan tümcesi dahil edilmelidir.
-* Bir özellik ve farklı bir özellik kullanarak ayrı `ORDER BY` bir yan tümcesi olan bir sorguda bileşik dizin tanımlamazsanız, sorgu yine de başarılı olur. Ancak, sorgunun RU maliyeti bileşik bir dizin le, özellikle `ORDER BY` de yan tümcedeki özelliğin yüksek bir kardinallik varsa azaltılabilir.
-* Birden çok özelliği olan sorgular için bileşik dizinler ve birden çok özellik üzerinde filtreleri olan sorgular için bileşik dizinler oluşturmak için `ORDER BY` tüm hususlar hala geçerlidir.
+* Sorgu, özelliklere filtre uygular, bu, ilk olarak `ORDER BY` yan tümcesine eklenmelidir.
+* Bir özellikte filtre içeren bir sorgu üzerinde bir bileşik dizin tanımlamadıysanız ve farklı bir özellik kullanarak ayrı `ORDER BY` bir yan tümce kullanırsanız, sorgu yine de başarılı olur. Ancak, özellikle `ORDER BY` yan tümcesindeki özelliğin yüksek bir kardinalite özelliği varsa, sorgunun ru maliyeti bileşik bir dizinle azaltılabilir.
+* Birden çok özelliği olan sorgular için `ORDER BY` Bileşik dizinler oluşturmaya yönelik tüm hususlar ve birden çok özelliklerde filtre içeren sorgular hala geçerlidir.
 
 
-| **Bileşik Dizin**                      | **Örnek `ORDER BY` Sorgu**                                  | **Bileşik Endeksi tarafından desteklenir?** |
+| **Bileşik Dizin**                      | **Örnek `ORDER BY` sorgu**                                  | **Bileşik dizin tarafından destekleniyor mu?** |
 | ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC, c.name ASC``` | `No`  |
@@ -237,29 +237,29 @@ Bir filtre ve `ORDER BY` yan tümceile bir sorgu en iyi duruma getirmek için bi
 
 ## <a name="modifying-the-indexing-policy"></a>Dizin oluşturma ilkesini değiştirme
 
-Bir kapsayıcının dizin oluşturma [ilkesi, Azure portalı veya desteklenen SDK'lardan birini kullanarak](how-to-manage-indexing-policy.md)herhangi bir zamanda güncelleştirilebilir. Dizin oluşturma ilkesine yapılan bir güncelleştirme, eski dizinden çevrimiçi ve yerinde gerçekleştirilen yeni dizine dönüşümü tetikler (böylece işlem sırasında ek depolama alanı tüketilmez). Eski ilke dizini, yazma kullanılabilirliğini veya kapsayıcıda sağlanan iş başına verilen iş buzunu etkilemeden verimli bir şekilde yeni ilkeye dönüştürülür. Dizin dönüştürme bir eşzamanlı işlemdir ve tamamlanması gereken süre, sağlanan iş başına, madde sayısına ve boyutlarına bağlıdır.
+Kapsayıcının dizin oluşturma ilkesi [, Azure Portal veya desteklenen SDK 'lardan birini kullanarak](how-to-manage-indexing-policy.md)dilediğiniz zaman güncelleştirilemeyebilir. Dizin oluşturma ilkesi için bir güncelleştirme, eski dizinden yeni bir dönüştürmeyi tetikler ve bu, çevrimiçi ve yerinde gerçekleştirilir (Bu nedenle işlem sırasında ek depolama alanı tüketilmelidir). Eski ilkenin dizini, yazma kullanılabilirliğini etkilemeden ve kapsayıcıda sağlanan aktarım hızını etkilemeden etkili bir şekilde yeni ilkeye dönüştürülür. Dizin dönüştürme zaman uyumsuz bir işlemdir ve tamamlanmak üzere gereken süre, sağlanan aktarım hızına, öğe sayısına ve bunların boyutuna bağlıdır.
 
 > [!NOTE]
-> Bir aralık veya uzamsal dizin eklerken, sorgular eşleşen tüm sonuçları döndürmeyebilir ve bunu herhangi bir hata döndürmeden yapar. Bu, dizin dönüşümü tamamlanana kadar sorgu sonuçlarının tutarlı olmadığı anlamına gelir. [SDK'lardan birini kullanarak](how-to-manage-indexing-policy.md)dizin dönüşümündeki ilerlemeyi izlemek mümkündür.
+> Bir Aralık veya uzamsal dizin eklenirken, sorgular tüm eşleşen sonuçları döndürmeyebilir ve hata döndürmeksizin bunu yapacaktır. Bu, sorgu sonuçlarının Dizin dönüştürmesi tamamlanana kadar tutarlı olamayacağı anlamına gelir. [SDK 'lardan birini kullanarak](how-to-manage-indexing-policy.md)Dizin dönüşümünün ilerlemesini izlemek mümkündür.
 
-Yeni dizin oluşturma ilkesi modu Tutarlı olarak ayarlanmışsa, dizin dönüşümü devam ederken başka bir dizin oluşturma ilkesi değişikliği uygulanamaz. Çalışan dizin dönüşümü, dizin oluşturma ilkesinin modunu Yok olarak ayarlayarak iptal edilebilir (bu da dizini hemen düşürür).
+Yeni dizin oluşturma ilkesinin modu tutarlı olarak ayarlandıysa, Dizin dönüştürme işlemi devam ederken başka bir dizin oluşturma ilkesi değişikliği uygulanabilir. Çalışan bir dizin dönüştürmesi, dizin oluşturma ilkesinin modu None olarak ayarlanarak iptal edilebilir (Bu, dizini hemen bırakacak).
 
 ## <a name="indexing-policies-and-ttl"></a>Dizin oluşturma ilkeleri ve TTL
 
-[Live'a Zaman (TTL) özelliği,](time-to-live.md) açık olduğu kapsayıcıda dizini etkin olmasını gerektirir. Bu şu anlama gelir:
+[Yaşam süresi (TTL) özelliği](time-to-live.md) , dizin oluşturmanın açık olduğu kapsayıcıda etkin olmasını gerektirir. Bunun anlamı:
 
-- dizin oluşturma modunun Yok olarak ayarlandığı bir kapsayıcıda TTL'yi etkinleştirmek mümkün değildir,
-- Dizin oluşturma modunu TTL'nin etkinleştirildiği bir kapsayıcıda Yok olarak ayarlamak mümkün değildir.
+- Dizin oluşturma modunun None olarak ayarlandığı bir kapsayıcıda TTL 'yi etkinleştirmek mümkün değildir,
+- TTL 'nin etkinleştirildiği bir kapsayıcıda dizin oluşturma modunun hiçbiri olarak ayarlanması mümkün değildir.
 
-Özellik yolunun dizine eklenmemesi gereken, ancak TTL gerektiren senaryolarda, dizin oluşturma ilkesini şu şekilde kullanabilirsiniz:
+Hiçbir özellik yolunun dizine alınması gereken ancak TTL 'nin gerekli olduğu senaryolarda, ile bir dizin oluşturma ilkesi kullanabilirsiniz:
 
-- tutarlı olarak ayarlanmış bir dizin oluşturma modu ve
-- hiçbir yol dahil ve
-- `/*`tek dışlanan yol olarak.
+- bir dizin oluşturma modu tutarlı olarak ayarlanır ve
+- dahil edilen yol yok ve
+- `/*`yalnızca Dışlanan yol olarak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Aşağıdaki makalelerde dizin oluşturma hakkında daha fazla bilgi edinin:
 
-- [Dizin oluşturma genel bakış](index-overview.md)
-- [Dizin oluşturma ilkesi nasıl yönetilir?](how-to-manage-indexing-policy.md)
+- [Dizinlemeye genel bakış](index-overview.md)
+- [Dizin oluşturma ilkesini yönetme](how-to-manage-indexing-policy.md)

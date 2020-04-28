@@ -1,7 +1,7 @@
 ---
-title: Tek seferlik parola (OTP) doğrulamasını etkinleştirme
+title: Bir kerelik parola (OTP) doğrulamasını etkinleştir
 titleSuffix: Azure AD B2C
-description: Azure AD B2C özel ilkelerini kullanarak tek seferlik parola (OTP) senaryosu nasıl ayarlayamaize cereyan edin.
+description: Azure AD B2C özel ilke kullanarak bir kerelik parola (OTP) senaryosu ayarlamayı öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,29 +12,29 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bd5fed45332c73c633db1137bdc23aea66fd3403
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80332775"
 ---
-# <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde tek seferlik parola teknik profili tanımlama
+# <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde bir kerelik parola teknik profili tanımlama
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C), tek seferlik bir parolanın oluşturma ve doğrulamasını yönetmek için destek sağlar. Kod oluşturmak için teknik bir profil kullanın ve ardından bu kodu daha sonra doğrulayın.
+Azure Active Directory B2C (Azure AD B2C), tek seferlik bir parolanın oluşturulmasını ve doğrulanmasını yönetmek için destek sağlar. Bir kod oluşturmak için teknik profil kullanın ve ardından kodu daha sonra doğrulayın.
 
-Tek seferlik parola teknik profili, kod doğrulaması sırasında bir hata iletisi de döndürebilir. **Doğrulama teknik profilini**kullanarak tümleştirmeyi tek seferlik parolayla tasarla. Doğrulama teknik profili, kodu doğrulamak için tek seferlik parola teknik profilini çağırır. Doğrulama teknik profili, kullanıcı yolculuğu devam etmeden önce kullanıcı tarafından sağlanan verileri doğrular. Doğrulama teknik profiliile, kendi kendini öne süren bir sayfada bir hata iletisi görüntülenir.
+Bir kerelik parola teknik profili, kod doğrulama sırasında de bir hata mesajı döndürebilir. Bir **doğrulama teknik profili**kullanarak bir kerelik parolayla tümleştirmeyi tasarlayın. Bir doğrulama teknik profili, bir kodu doğrulamak için bir kerelik parola teknik profilini çağırır. Doğrulama teknik profili, Kullanıcı yolculuğu devam etmeden önce Kullanıcı tarafından belirtilen verileri doğrular. Doğrulama teknik profiliyle, otomatik olarak onaylanan sayfada bir hata iletisi görüntülenir.
 
 ## <a name="protocol"></a>Protokol
 
-**Protokol** öğesinin `Proprietary` **Ad** özniteliğinin . **Işleyici** özniteliği, Azure AD B2C tarafından kullanılan protokol işleyicisi derlemesinin tam nitelikli adını içermelidir:
+**Protokol** öğesinin `Proprietary` **Name** özniteliğinin olarak ayarlanması gerekir. **Handler** özniteliği, Azure AD B2C tarafından kullanılan protokol işleyici derlemesinin tam adını içermelidir:
 
 ```XML
 Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 ```
 
-Aşağıdaki örnekte tek seferlik parola teknik profili gösterilmektedir:
+Aşağıdaki örnekte bir kerelik parola teknik profili gösterilmektedir:
 
 ```XML
 <TechnicalProfile Id="VerifyCode">
@@ -45,27 +45,27 @@ Aşağıdaki örnekte tek seferlik parola teknik profili gösterilmektedir:
 
 ## <a name="generate-code"></a>Kod oluşturma
 
-Bu teknik profilin ilk modu bir kod oluşturmaktır. Aşağıda bu mod için yapılandırılabilir seçenekleri vardır.
+Bu teknik profilin ilk modu bir kod oluşturmak. Bu mod için yapılandırılabilecek seçenekler aşağıda verilmiştir.
 
 ### <a name="input-claims"></a>Giriş talepleri
 
-**InputClaims** öğesi, tek seferlik parola protokolü sağlayıcısına göndermek için gereken taleplerin listesini içerir. İddianızın adını aşağıda tanımlanan adla eşleyebilirsiniz.
+**Inputclaim** öğesi, bir kerelik parola Protokolü sağlayıcısına göndermek için gereken taleplerin bir listesini içerir. Ayrıca, talebin adını aşağıda tanımlanan adla eşleyebilirsiniz.
 
-| ClaimReferenceId | Gerekli | Açıklama |
+| Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| tanımlayıcı | Evet | Kodu daha sonra doğrulaması gereken kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır( örneğin e-posta adresi veya telefon numarası). |
+| tanımlayıcı | Yes | Kodu daha sonra doğrulaması gereken kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
 
-**InputClaimsTransformations** öğesi, giriş taleplerini değiştirmek veya tek seferlik parola protokolü sağlayıcısına göndermeden önce yenilerini oluşturmak için kullanılan **InputClaimsTransformation** öğeleri koleksiyonunu içerebilir.
+**Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya tek seferlik parola Protokolü sağlayıcısına göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstranssize** öğelerinin bir koleksiyonunu içerebilir.
 
-### <a name="output-claims"></a>Çıktı talepleri
+### <a name="output-claims"></a>Çıkış talepleri
 
-**Çıktılar Almalar** öğesi, tek seferlik parola protokolü sağlayıcısı tarafından oluşturulan taleplerin listesini içerir. İddianızın adını aşağıda tanımlanan adla eşleyebilirsiniz.
+**Outputclaim** öğesi, tek seferlik parola Protokolü sağlayıcısı tarafından oluşturulan taleplerin bir listesini içerir. Ayrıca, talebin adını aşağıda tanımlanan adla eşleyebilirsiniz.
 
-| ClaimReferenceId | Gerekli | Açıklama |
+| Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| otpGenerated | Evet | Oturumu Azure AD B2C tarafından yönetilen oluşturulan kod. |
+| otpGenerated | Yes | Oturumu Azure AD B2C tarafından yönetilen oluşturulan kod. |
 
-**OutputClaimsTransformations** öğesi, çıktı taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan **OutputClaimsTransformation** öğelerikoleksiyonunu içerebilir.
+**Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
 ### <a name="metadata"></a>Meta Veriler
 
@@ -73,16 +73,16 @@ Kod oluşturma modunu yapılandırmak için aşağıdaki ayarlar kullanılabilir
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | Hayır | Kodun sona erme tarihine saniyeler içinde zaman. Minimum: `60`; Maksimum: `1200`; Varsayılan: `600`. |
-| Kod Uzunluğu | Hayır | Kodun uzunluğu. Varsayılan değer: `6`. |
-| Characterset | Hayır | Kod için ayarlanmış karakter, normal bir ifadede kullanılmak üzere biçimlendirilmiş. Örneğin, `a-z0-9A-Z`. Varsayılan değer: `0-9`. Karakter kümesi, belirtilen kümede en az 10 farklı karakter içermelidir. |
-| NumRetryGirişimleri | Hayır | Koddan önce doğrulama denemesi sayısı geçersiz kabul edilir. Varsayılan değer: `5`. |
-| İşlem | Evet | Yapılacak işlem. Olası değer: `GenerateCode`. |
-| SameCode'u Yeniden Kullan | Hayır | Verilen kodun süresi dolmamışken yeni bir kod oluşturmak yerine yinelenen bir kod verilip verilmemesi ve hala geçerli olup olmadığı. Varsayılan değer: `false`. |
+| Codeexpirationınseconds | Hayır | Süre sonuna kadar saniye cinsinden süre. En az `60`:; En fazla `1200`:; Varsayılan: `600`. |
+| Kod uzunluğu | Hayır | Kodun uzunluğu. Varsayılan değer: `6`. |
+| CharacterSet | Hayır | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. Varsayılan değer: `0-9`. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
+| NumRetryAttempts | Hayır | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. Varsayılan değer: `5`. |
+| İşlem | Yes | Gerçekleştirilecek işlem. Olası değer: `GenerateCode`. |
+| ReuseSameCode | Hayır | Verilen kodun süresi dolmamışsa ve hala geçerliyse, yeni bir kod oluşturmak yerine yinelenen kodun verilmesi gerekip gerekmediğini belirtir. Varsayılan değer: `false`. |
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, `TechnicalProfile` bir kod oluşturmak için kullanılır:
+Aşağıdaki örnek `TechnicalProfile` bir kod oluşturmak için kullanılır:
 
 ```XML
 <TechnicalProfile Id="GenerateCode">
@@ -107,48 +107,48 @@ Aşağıdaki örnek, `TechnicalProfile` bir kod oluşturmak için kullanılır:
 
 ## <a name="verify-code"></a>Kodu doğrula
 
-Bu teknik profilin ikinci modu bir kodu doğrulamaktır. Aşağıda bu mod için yapılandırılabilir seçenekleri vardır.
+Bu teknik profilin ikinci modu bir kodu doğrulamadır. Bu mod için yapılandırılabilecek seçenekler aşağıda verilmiştir.
 
 ### <a name="input-claims"></a>Giriş talepleri
 
-**InputClaims** öğesi, tek seferlik parola protokolü sağlayıcısına göndermek için gereken taleplerin listesini içerir. İddianızın adını aşağıda tanımlanan adla eşleyebilirsiniz.
+**Inputclaim** öğesi, bir kerelik parola Protokolü sağlayıcısına göndermek için gereken taleplerin bir listesini içerir. Ayrıca, talebin adını aşağıda tanımlanan adla eşleyebilirsiniz.
 
-| ClaimReferenceId | Gerekli | Açıklama |
+| Claimreferenceıd | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| tanımlayıcı | Evet | Daha önce bir kod oluşturmuş kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır( örneğin e-posta adresi veya telefon numarası). |
-| otpToVerify | Evet | Kullanıcı tarafından sağlanan doğrulama kodu. |
+| tanımlayıcı | Yes | Daha önce bir kod oluşturmuş kullanıcıyı tanımlamak için tanımlayıcı. Genellikle kodun teslim edildiği hedefin tanımlayıcısı olarak kullanılır, örneğin e-posta adresi veya telefon numarası. |
+| otpToVerify | Yes | Kullanıcı tarafından belirtilen doğrulama kodu. |
 
-**InputClaimsTransformations** öğesi, giriş taleplerini değiştirmek veya tek seferlik parola protokolü sağlayıcısına göndermeden önce yenilerini oluşturmak için kullanılan **InputClaimsTransformation** öğeleri koleksiyonunu içerebilir.
+**Inputclaimstransformations** öğesi, giriş taleplerini değiştirmek veya tek seferlik parola Protokolü sağlayıcısına göndermeden önce yenilerini oluşturmak Için kullanılan **inputclaimstranssize** öğelerinin bir koleksiyonunu içerebilir.
 
-### <a name="output-claims"></a>Çıktı talepleri
+### <a name="output-claims"></a>Çıkış talepleri
 
-Bu protokol sağlayıcısının kod doğrulaması sırasında sağlanan çıktı talebi yoktur.
+Bu protokol sağlayıcısının kod doğrulaması sırasında belirtilen çıkış talebi yok.
 
-**OutputClaimsTransformations** öğesi, çıktı taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan **OutputClaimsTransformation** öğelerikoleksiyonunu içerebilir.
+**Outputclaimstransformations** öğesi, çıkış taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan bir **outputclaimstransreference** öğeleri koleksiyonu içerebilir.
 
 ### <a name="metadata"></a>Meta Veriler
 
-Kod doğrulama modu için aşağıdaki ayarlar kullanılabilir:
+Aşağıdaki ayarlar, doğrulama modunu kod için kullanılabilir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| İşlem | Evet | Yapılacak işlem. Olası değer: `VerifyCode`. |
+| İşlem | Yes | Gerçekleştirilecek işlem. Olası değer: `VerifyCode`. |
 
 
 ### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
 
-Kod doğrulama hatası üzerine görüntülenen hata iletilerini yapılandırmak için aşağıdaki meta veriler kullanılabilir. Meta [veriler, kendi kendine ileri süren](self-asserted-technical-profile.md) teknik profilde yapılandırılmalıdır. Hata iletileri [yerelleştirilebilir.](localization-string-ids.md#one-time-password-error-messages)
+Aşağıdaki meta veriler, kod doğrulama hatası üzerine görüntülenecek hata iletilerini yapılandırmak için kullanılabilir. Meta veriler, [kendi kendine onaylanan](self-asserted-technical-profile.md) teknik profilde yapılandırılmalıdır. Hata iletileri [yerelleştirilebilecek](localization-string-ids.md#one-time-password-error-messages).
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| UserMessageIfSessionYoksaYok | Hayır | Kod doğrulama oturumunun süresi dolmuşsa kullanıcıya görüntülenecek ileti. Kodun süresi doldu veya kod belirli bir tanımlayıcı için hiç oluşturulmadı. |
-| UserMessageIfMaxRetryGirişimi | Hayır | İzin verilen maksimum doğrulama denemelerini aşmışsa kullanıcıya görüntülenecek ileti. |
-| UserMessageIfGeçersiz Kod | Hayır | Geçersiz bir kod sağlamışsa kullanıcıya görüntülenecek ileti. |
-|UserMessageIfSessionÇ|Hayır| Kod doğrulanamıyorsa kullanıcıya görüntülenecek ileti.|
+| Usermessageifsessionffnotexist | Hayır | Kod doğrulama oturumunun süresi dolmuşsa kullanıcıya görüntülenecek ileti. Kodun süresi dolmuştur veya kod belirli bir tanımlayıcı için hiçbir zaman üretilmemiş olabilir. |
+| UserMessageIfMaxRetryAttempted | Hayır | İzin verilen en fazla doğrulama denemesini aşarsa kullanıcıya görüntülenecek ileti. |
+| Usermessageifınvalidcode | Hayır | Geçersiz bir kod sağladıklarında kullanıcıya görüntülenecek ileti. |
+|UserMessageIfSessionConflict|Hayır| Kod doğrulanamazsa kullanıcıya görüntülenecek ileti.|
 
 ### <a name="example"></a>Örnek
 
-Aşağıdaki örnek, `TechnicalProfile` bir kodu doğrulamak için kullanılır:
+Aşağıdaki örnek `TechnicalProfile` bir kodu doğrulamak için kullanılır:
 
 ```XML
 <TechnicalProfile Id="VerifyCode">
@@ -166,7 +166,7 @@ Aşağıdaki örnek, `TechnicalProfile` bir kodu doğrulamak için kullanılır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel e-posta doğrulaması ile tek seferlik parola teknik profilini kullanma örneğinaşağıdaki makaleye bakın:
+Özel e-posta doğrulama ile bir kerelik parola teknik profili kullanma örneği için aşağıdaki makaleye bakın:
 
-- [Azure Active Directory B2C'de özel e-posta doğrulaması](custom-email.md)
+- [Azure Active Directory B2C özel e-posta doğrulaması](custom-email.md)
 

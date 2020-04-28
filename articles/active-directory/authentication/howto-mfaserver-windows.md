@@ -1,5 +1,5 @@
 ---
-title: Windows kimlik doğrulama ve Azure MFA Server - Azure Active Directory
+title: Windows kimlik doğrulaması ve Azure MFA sunucusu-Azure Active Directory
 description: Windows Kimlik Doğrulaması ve Azure Multi-Factor Authentication Sunucusu dağıtılıyor.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4abfb970ca322724adb0f8919b7509bc8a641378
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80652791"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows Kimlik Doğrulaması ve Azure Multi-Factor Authentication Sunucusu
@@ -23,28 +23,28 @@ ms.locfileid: "80652791"
 Uygulamalara yönelik Windows kimlik doğrulamasını etkinleştirmek ve yapılandırmak için Azure Multi-Factor Authentication Sunucusunun Windows Kimlik Doğrulaması bölümünü kullanın. Windows Kimlik Doğrulamasını ayarlamadan önce aşağıdaki listeyi aklınızda bulundurun:
 
 * Ayarladıktan sonra Terminal Hizmetlerinin etkili olması için Azure Multi-Factor Authentication’ı yeniden başlatın.
-* 'Azure Çok Faktörlü Kimlik Doğrulama kullanıcı eşleşmesi yap'ı işaretlenirve kullanıcı listesinde değilseniz, yeniden başlatıldıktan sonra makineye giriş yapamazsınız.
+* ' Azure Multi-Factor Authentication Kullanıcı eşleşmesi gerektir ' işaretliyse ve Kullanıcı listesinde değilseniz, yeniden başlatmadan sonra makinede oturum açamazsınız.
 * Güvenilen IP'ler uygulamanın ile kimlik doğrulaması ile istemci IP’si sağlayıp sağlayamayacağına bağlıdır. Şu anda yalnızca Terminal Hizmetleri desteklenmektedir.  
 
 > [!IMPORTANT]
-> 1 Temmuz 2019 itibariyle Microsoft, yeni dağıtımlar için Artık MFA Server sunmayacak. Kullanıcılarından çok faktörlü kimlik doğrulaması isteyen yeni müşteriler bulut tabanlı Azure Çok Faktörlü Kimlik Doğrulaması'nı kullanmalıdır. 1 Temmuz'dan önce MFA Server'ı etkinleştirmiş olan mevcut müşteriler en son sürümü, gelecekteki güncelleştirmeleri karşıdan yükleyebilecek ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilecek.
+> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
 
 > [!NOTE]
 > Bu özellik, Windows Server 2012 R2’de Terminal Hizmetleri’ni güvenli hale getirmek için desteklenmemektedir.
 
-## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Windows Kimlik Doğrulama ile bir uygulamayı güvenli hale getirmek için aşağıdaki yordamı kullanın
+## <a name="to-secure-an-application-with-windows-authentication-use-the-following-procedure"></a>Windows kimlik doğrulaması ile bir uygulamanın güvenliğini sağlamak için aşağıdaki yordamı kullanın
 
 1. Azure Multi-Factor Authentication Sunucusu’nda Windows Kimlik Doğrulaması simgesine tıklayın.
-   ![MFA Server'da Windows Kimlik Doğrulama](./media/howto-mfaserver-windows/windowsauth.png)
+   ![MFA sunucusunda Windows kimlik doğrulaması](./media/howto-mfaserver-windows/windowsauth.png)
 2. **Windows Kimlik Doğrulamasını Etkinleştir** onay kutusunu işaretleyin. Varsayılan olarak, bu kutu işaretlenmemiştir.
 3. Uygulamalar sekmesi yöneticinin Windows Kimlik Doğrulaması için bir veya daha fazla uygulamayı yapılandırmasını sağlar.
 4. Bir sunucu veya uygulama seçin – sunucusu/uygulama etkin olup olmadığını belirtin. **Tamam**'a tıklayın.
-5. **Ekle'yi tıklatın...**
+5. **Ekle...** öğesine tıklayın
 6. Güvenilen IP'ler sekmesi belirli IP'lerden gelen Windows oturumları için Azure Multi-Factor Authentication’ı atlamanızı sağlar. Örneğin, çalışanlar ofiste ve evden uygulama kullanıyorsa, ofisteyken Azure Multi-Factor Authentication için telefonlarının çalmasını istemediğinize karar verebilirsiniz. Bunun için ofis alt ağını Güvenilen IP’ler girişi olarak belirtebilirsiniz.
-7. **Ekle'yi tıklatın...**
-8. Tek bir IP adresini atlamak istiyorsanız **Tek IP'yi** seçin.
-9. Tüm IP aralığını atlamak istiyorsanız **IP Aralığı'nı** seçin. Örnek: 10.63.193.1-10.63.193.100.
-10. Alt net gösterimini kullanarak bir IP aralığı belirtmek istiyorsanız **Subnet'i** seçin. Alt ağın başlangıç IP’sini girin ve açılır listede uygun ağ maskesini seçin.
+7. **Ekle...** öğesine tıklayın
+8. Tek bir IP adresini atlamak istiyorsanız, **tek IP** ' yi seçin.
+9. Tüm IP aralığını atlamak istiyorsanız **IP aralığı** ' nı seçin. Örnek: 10.63.193.1-10.63.193.100.
+10. Alt ağ gösterimini kullanarak bir IP aralığı belirtmek istiyorsanız **alt ağ** ' ı seçin. Alt ağın başlangıç IP’sini girin ve açılır listede uygun ağ maskesini seçin.
 11. **Tamam**'a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

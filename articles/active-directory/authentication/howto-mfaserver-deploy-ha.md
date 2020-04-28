@@ -1,6 +1,6 @@
 ---
-title: Azure MFA Server için yüksek kullanılabilirlik - Azure Active Directory
-description: Yüksek kullanılabilirlik sağlayan yapılandırmalarda Azure Çok Faktörlü Kimlik Doğrulama Sunucusu'nun birden çok örneğini dağıtın.
+title: Azure MFA sunucusu için yüksek kullanılabilirlik-Azure Active Directory
+description: Yüksek kullanılabilirlik sağlayan yapılandırmalarda birden çok Azure Multi-Factor Authentication Sunucusu örneğini dağıtın.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,66 +12,66 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e7b5f6bef5358acf0709f994b85215e505fa4db
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653376"
 ---
-# <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Yüksek kullanılabilirlik için Azure Çok Faktörlü Kimlik Doğrulama Sunucusu'na yapılandırma
+# <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Azure Multi-Factor Authentication Sunucusu yüksek kullanılabilirlik için yapılandırma
 
-Azure Server MFA dağıtımınızda yüksek kullanılabilirlik elde etmek için birden çok MFA sunucusu dağıtmanız gerekir. Bu bölümde, Azure MFS Server dağıtımınızda yüksek kullanılabilirlik hedeflerinize ulaşmak için yük dengeli bir tasarım hakkında bilgi verilmektedir.
+Azure Server MFA dağıtımınız ile yüksek kullanılabilirlik elde etmek için birden çok MFA sunucusu dağıtmanız gerekir. Bu bölümde, Azure MFS sunucu dağıtımında yüksek kullanılabilirlik hedeflerine ulaşmak için yük dengeli bir tasarımla ilgili bilgiler sağlanmaktadır.
 
 > [!IMPORTANT]
-> 1 Temmuz 2019 itibariyle Microsoft, yeni dağıtımlar için Artık MFA Server sunmayacak. Kullanıcılarından çok faktörlü kimlik doğrulaması isteyen yeni müşteriler bulut tabanlı Azure Çok Faktörlü Kimlik Doğrulaması'nı kullanmalıdır. 1 Temmuz'dan önce MFA Server'ı etkinleştirmiş olan mevcut müşteriler en son sürümü, gelecekteki güncelleştirmeleri karşıdan yükleyebilecek ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilecek.
+> 1 Temmuz 2019 itibariyle, Microsoft artık Yeni dağıtımlar için MFA sunucusu sunmaz. Kullanıcılardan Multi-Factor Authentication istemek isteyen yeni müşteriler bulut tabanlı Azure Multi-Factor Authentication kullanmalıdır. MFA sunucusunu 1 Temmuz 'dan önce etkinleştiren mevcut müşteriler, en son sürümü ve gelecekteki güncelleştirmeleri indirebilir ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilir.
 
-## <a name="mfa-server-overview"></a>MFA Server'a genel bakış
+## <a name="mfa-server-overview"></a>MFA sunucusuna genel bakış
 
-Azure MFA Server hizmet mimarisi, aşağıdaki diyagramda gösterildiği gibi birkaç bileşenden oluşur:
+Azure MFA sunucu hizmeti mimarisi, aşağıdaki diyagramda gösterildiği gibi birçok bileşeni kapsar:
 
- ![MFA Server Architecture bileşenleri](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
+ ![MFA sunucu mimarisi bileşenleri](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
 
-MFA Server, Azure Çok Faktörlü Kimlik Doğrulama yazılımı yüklü olan bir Windows Server'dır. MFA Server örneğinin çalışabilmesi için Azure'daki MFA Hizmeti tarafından etkinleştirilmesi gerekir. Şirket içinde birden fazla MFA Sunucusu kurulabilir.
+MFA sunucusu, Azure Multi-Factor Authentication yazılımının yüklü olduğu bir Windows sunucusudur. MFA sunucusu örneğinin Azure 'da MFA hizmeti tarafından çalışması için etkinleştirilmesi gerekir. Şirket içi bir MFA sunucusu yüklenebilir.
 
-Yüklenen ilk MFA Server varsayılan olarak Azure MFA Hizmeti tarafından etkinleştirildikten sonra ana MFA Server'dır. Ana MFA sunucusu, PhoneFactor.pfdata veritabanının yazılabilir bir kopyasına sahiptir. MFA Server örneklerinin sonraki yüklemeleri ast olarak bilinir. MFA astları PhoneFactor.pfdata veritabanının çoğaltılmış salt okunur kopyasına sahiptir. MFA sunucuları Uzaktan Yordam Çağrısı (RPC) kullanarak bilgileri çoğaltAbilir. Tüm MFA Severs topluca ya etki alanı katıldı ya da tek başına bilgi çoğaltmak için olmalıdır.
+Yüklü olan ilk MFA sunucusu, varsayılan olarak Azure MFA hizmeti tarafından etkinleştirilmesinin ardından ana MFA sunucusudur. Ana MFA sunucusunda PhoneFactor. pfdata veritabanının yazılabilir bir kopyası vardır. MFA sunucusu örneklerinin sonraki yüklemeleri, astlar olarak bilinir. MFA astlarındaki PhoneFactor. pfdata veritabanının çoğaltılan bir salt okunurdur kopyası vardır. MFA sunucuları, uzak yordam çağrısı (RPC) kullanarak bilgileri çoğaltır. Tüm MFA 'lar, bilgileri çoğaltmak için her zaman etki alanına katılmış veya tek başına olmalıdır.
 
-İki faktörlü kimlik doğrulama gerektiğinde hem MFA yöneticisi hem de ast MFA Sunucuları MFA Hizmeti ile iletişim kurar. Örneğin, bir kullanıcı iki faktörlü kimlik doğrulaması gerektiren bir uygulamaya erişmeye çalıştığında, kullanıcı ilk olarak Active Directory (AD) gibi bir kimlik sağlayıcısı tarafından kimlik doğrulaması yapılacaktır.
+İki öğeli kimlik doğrulaması gerektiğinde, MFA ana ve alt MFA sunucularının her ikisi de MFA hizmetiyle iletişim kurar. Örneğin, bir Kullanıcı iki öğeli kimlik doğrulaması gerektiren bir uygulamaya erişim kazanmak istediğinde, önce Kullanıcı Active Directory (AD) gibi bir kimlik sağlayıcısı tarafından doğrulanır.
 
-AD ile başarılı kimlik doğrulamasonra, MFA Server MFA Hizmeti ile iletişim kurar. MFA Sunucusu, kullanıcının uygulamaya erişimini engellemek veya reddetmek için MFA Hizmeti'nden bildirim bekler.
+AD ile başarılı kimlik doğrulamasından sonra MFA sunucusu MFA hizmetiyle iletişim kurar. MFA sunucusu, MFA hizmetinden uygulamaya Kullanıcı erişimine izin vermek veya erişimi reddetmek için bildirim bekler.
 
-MFA ana sunucusu çevrimdışı duruma geçerse, kimlik doğrulamaları yine de işlenebilir, ancak MFA veritabanında değişiklik gerektiren işlemler işlenemez. (Örnekler şunlardır: kullanıcıların eklenmesi, self-servis PIN değişiklikleri, değişen kullanıcı bilgileri veya kullanıcı portalına erişim)
+MFA ana sunucusu çevrimdışı kalırsa, kimlik doğrulamaları yine de işlenebilir, ancak MFA veritabanında değişiklik gerektiren işlemler işlenemiyor. (Örnekler şunlardır: kullanıcıların eklenmesi, self servis PIN değişikliği, Kullanıcı bilgilerini değiştirme veya Kullanıcı portalına erişim)
 
 ## <a name="deployment"></a>Dağıtım
 
-Azure MFA Server ve ilgili bileşenlerini yük dengeleme için aşağıdaki önemli noktaları göz önünde bulundurun.
+Azure MFA sunucusu 'nun ve ilgili bileşenlerinin yük dengelenmesi için aşağıdaki önemli noktaları göz önünde bulundurun.
 
-* **Yüksek kullanılabilirlik elde etmek için RADIUS standardını kullanma.** Azure MFA Sunucularını RADIUS sunucusu olarak kullanıyorsanız, bir MFA Server'ı birincil RADIUS kimlik doğrulama hedefi olarak ve diğer Azure MFA Sunucularını ikincil kimlik doğrulama hedefleri olarak yapılandırma potansiyeliniz vardır. Ancak, ikincil kimlik doğrulama hedefine karşı kimlik doğrulamanın birincil kimlik doğrulama hedefinde başarısız olması gerektiğinden, yüksek kullanılabilirlik elde etmek için bu yöntem pratik olmayabilir. RADIUS istemcisi ile RADIUS Sunucuları (bu durumda, RADIUS sunucusu olarak hareket eden Azure MFA Sunucuları) arasındaki RADIUS trafiğini yüklemek daha verimlidir, böylece RADIUS istemcilerini işaret edebilecekleri tek bir URL ile yapılandırabilirsiniz.
-* **MFA astlarını el ile tanıtmanız gerekir.** Ana Azure MFA sunucusu çevrimdışı ysa, ikincil Azure MFA Sunucuları MFA isteklerini işlemeye devam eder. Ancak, ana MFA sunucusu kullanılabilir olana kadar, yöneticiler kullanıcı ekemez veya MFA ayarlarını değiştiremez ve kullanıcılar kullanıcı portalını kullanarak değişiklik yapamaz. Ana role bir MFA astını teşvik etmek her zaman el ile bir işlemdir.
-* **Bileşenlerin ayrılmazlığı.** Azure MFA Sunucusu, aynı Windows Server örneğine veya farklı örneklere yüklenebilen birkaç bileşenden oluşur. Bu bileşenler arasında Kullanıcı Portalı, Mobil Uygulama Web Hizmeti ve ADFS bağdaştırıcısı (aracı) bulunur. Bu eşitlik, Kullanıcı Portalı ve Mobil Uygulama Web Sunucusu'nu çevre ağından yayınlamak için Web Application Proxy'yi kullanmayı mümkün kılar. Böyle bir yapılandırma, aşağıdaki diyagramda gösterildiği gibi, tasarımınızın genel güvenliğine katkıda bulunmaktadır. MFA Kullanıcı Portalı ve Mobil App Web Sunucusu, HA yük dengeli yapılandırmalarında da dağıtılabilir.
+* **Yüksek kullanılabilirlik elde etmek IÇIN RADIUS standardını kullanma**. Azure MFA sunucularını RADIUS sunucuları olarak kullanıyorsanız, büyük olasılıkla bir MFA sunucusunu birincil RADIUS kimlik doğrulama hedefi ve diğer Azure MFA sunucuları olarak ikincil kimlik doğrulama hedefleri olarak yapılandırabilirsiniz. Ancak, ikincil kimlik doğrulama hedefinde kimlik doğrulamasından geçmeden önce birincil kimlik doğrulama hedefinde kimlik doğrulaması başarısız olduğunda bir zaman aşımı süresinin oluşmasını beklemeniz gerektiğinden, yüksek kullanılabilirlik elde etmek için bu yöntem pratik olmayabilir. RADIUS istemcilerini, işaret ettikleri tek bir URL ile yapılandırabilmeniz için, RADIUS istemcisi ile RADIUS sunucuları arasındaki RADIUS trafiğinin yük dengelenmesi daha etkilidir (Bu durumda, RADIUS sunucuları olarak davranan Azure MFA sunucuları).
+* **MFA astlarını el ile yükseltmeniz gerekir**. Ana Azure MFA sunucusu çevrimdışı kalırsa, ikincil Azure MFA sunucuları MFA isteklerini işlemeye devam eder. Ancak, bir Master MFA sunucusu kullanılabilir olana kadar Yöneticiler kullanıcı ekleyemez veya MFA ayarlarını değiştiremezler ve kullanıcılar Kullanıcı portalını kullanarak değişiklik yapamaz. MFA astını ana role yükseltmek her zaman el ile gerçekleştirilen bir işlemdir.
+* **Bileşenlerin Separability**. Azure MFA sunucusu, aynı Windows Server örneğine veya farklı örneklere yüklenebilen birkaç bileşenden oluşur. Bu bileşenler Kullanıcı Portalı, mobil uygulama Web hizmeti ve ADFS bağdaştırıcısı (aracı) içerir. Bu ayrılabilir, Kullanıcı Portalı ve mobil uygulama Web sunucusunu çevre ağından yayımlamak için Web uygulaması ara sunucusu 'nu kullanmayı mümkün kılar. Bu tür bir yapılandırma, aşağıdaki diyagramda gösterildiği gibi tasarımınızın genel güvenliğine ekler. MFA Kullanıcı Portalı ve mobil uygulama Web sunucusu da HA yük dengeli yapılandırmalara dağıtılabilir.
 
-   ![Çevre Ağı olan MFA Server](./media/howto-mfaserver-deploy-ha/mfasecurity.png)
+   ![Çevre ağı olan MFA sunucusu](./media/howto-mfaserver-deploy-ha/mfasecurity.png)
 
-* **SMS üzerinden tek seferlik şifre (OTP) (aka tek yönlü SMS) trafik yük dengeli ise yapışkan oturumların kullanımını gerektirir.** Tek yönlü SMS, MFA Sunucusu'nun kullanıcılara OTP içeren bir kısa mesaj göndermesine neden olan bir kimlik doğrulama seçeneğidir. Kullanıcı, MFA meydan okumasını tamamlamak için OTP'yi bir istem penceresinde girer. Bakiye bakiyesi Azure MFA Sunucularını yüklerseniz, ilk kimlik doğrulama isteğine hizmet veren sunucu kullanıcıdan OTP iletisi alan sunucu olmalıdır; Başka bir MFA Sunucusu OTP yanıtını alırsa, kimlik doğrulama zorluğu başarısız olur. Daha fazla bilgi için Azure [MFA Server'a Eklenen SMS üzerinden Tek Seferlik Parola'ya](https://blogs.technet.microsoft.com/enterprisemobility/2015/03/02/one-time-password-over-sms-added-to-azure-mfa-server)bakın.
-* **Kullanıcı Portalı ve Mobil Uygulama Web Hizmetinin Yük Dengeli dağıtımları yapışkan oturumlar gerektirir.** MFA Kullanıcı Portalı ve Mobil Uygulama Web Hizmeti'ni yük dengelemeniz gerekiyorsa, her oturumun aynı sunucuda kalması gerekir.
+* **SMS üzerinden bir kerelik parola (OTP) (diğer adıyla tek yönlü SMS), trafik yük dengeli ise yapışkan oturumların kullanılmasını gerektirir**. Tek yönlü SMS, MFA sunucusunun kullanıcılara OTP içeren bir kısa mesaj göndermesini sağlayan bir kimlik doğrulama seçeneğidir. Kullanıcı MFA sınamasını tamamlamaya yönelik bir istem penceresinde OTP 'yi girer. Azure MFA sunucularının yükünü dengeleyebilirsiniz, ilk kimlik doğrulama isteğine hizmet eden aynı sunucu, kullanıcıdan OTP iletisini alan sunucu olmalıdır; başka bir MFA sunucusu OTP yanıtı alırsa, kimlik doğrulama sınaması başarısız olur. Daha fazla bilgi için bkz. [Azure MFA sunucusuna SMS üzerinden bir kez parola eklendi](https://blogs.technet.microsoft.com/enterprisemobility/2015/03/02/one-time-password-over-sms-added-to-azure-mfa-server).
+* **Kullanıcı Portalı ve mobil uygulama Web hizmeti 'Nin yük dengeli dağıtımları, yapışkan oturumlar gerektirir**. MFA Kullanıcı Portalı ve mobil uygulama Web hizmeti 'ni yük dengelebiliyorsanız, her oturumun aynı sunucuda kalması gerekir.
 
 ## <a name="high-availability-deployment"></a>Yüksek kullanılabilirlik dağıtımı
 
-Aşağıdaki diyagram, Azure MFA ve bileşenlerinin tam bir HA yük dengeli uygulamasının yanı sıra başvuru için ADFS'yi gösterir.
+Aşağıdaki diyagramda, Azure MFA ve bileşenlerinin, başvuru için ADFS ile birlikte tam bir HA yükü dengelenmiş uygulamasını gösterilmektedir.
 
- ![Azure MFA Server HA uygulaması](./media/howto-mfaserver-deploy-ha/mfa-ha-deployment.png)
+ ![Azure MFA sunucusu HA uygulama](./media/howto-mfaserver-deploy-ha/mfa-ha-deployment.png)
 
-Önceki diyagramın ilgili numaralı alanı için aşağıdaki öğeleri not edin.
+Yukarıdaki diyagramın ilgili numaralandırılmış alanı için aşağıdaki öğeleri göz önünde bulundurun.
 
-1. İki Azure MFA Sunucusu (MFA1 ve MFA2) yük dengelidir (mfaapp.contoso.com) ve PhoneFactor.pfdata veritabanını çoğaltmak için statik bağlantı noktası (4443) kullanacak şekilde yapılandırılmıştır. Web Hizmeti SDK, ADFS sunucuları ile TCP bağlantı noktası 443 üzerinden iletişimi etkinleştirmek için MFA Server'ın her birine yüklenir. MFA sunucuları, durum dışı yük dengeli yapılandırmada dağıtılır. Ancak, SMS üzerinden OTP kullanmak istiyorsanız, durumlu yük dengeleme kullanmanız gerekir.
-   ![Azure MFA Server - Uygulama sunucusu HA](./media/howto-mfaserver-deploy-ha/mfaapp.png)
+1. İki Azure MFA sunucusu (MFA1 ve MFA2) yük dengeli (mfaapp.contoso.com) ve PhoneFactor. pfdata veritabanını çoğaltmak için statik bağlantı noktası (4443) kullanmak üzere yapılandırılmıştır. Web hizmeti SDK 'Sı, ADFS sunucularıyla TCP bağlantı noktası 443 üzerinden iletişim sağlamak için MFA sunucusuna yüklenir. MFA sunucuları durum bilgisiz yük dengeli bir yapılandırmada dağıtılır. Ancak, SMS üzerinden OTP kullanmak isterseniz, durum bilgisi olan yük dengelemeyi kullanmanız gerekir.
+   ![Azure MFA sunucusu-App Server HA](./media/howto-mfaserver-deploy-ha/mfaapp.png)
 
    > [!NOTE]
-   > RPC dinamik bağlantı noktaları kullandığından, RPC'nin kullanabileceği dinamik bağlantı noktaları aralığına kadar güvenlik duvarları açmak önerilmez. MFA uygulama sunucularınız **arasında** bir güvenlik duvarı varsa, MFA Sunucusu'nu alt ve ana sunucular arasındaki çoğaltma trafiği için statik bir bağlantı noktasında iletişim kurmak üzere yapılandırmanız ve güvenlik duvarınızdaki bağlantı noktasını açmanız gerekir. ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` Çağrıda ```Pfsvc_ncan_ip_tcp_port``` bulunan bir DWORD kayıt defteri değeri oluşturarak ve değeri kullanılabilir bir statik bağlantı noktasına ayarlayarak statik bağlantı noktasını zorlayabilirsiniz. Bağlantılar her zaman ana ast MFA Sunucuları tarafından başlatılır, statik bağlantı noktası yalnızca ana üzerinde gereklidir, ancak herhangi bir zamanda ana olmak için bir ast teşvik edebilirsiniz, tüm MFA Sunucularında statik bağlantı noktası ayarlamanız gerekir.
+   > RPC dinamik bağlantı noktaları kullandığından, güvenlik duvarlarını RPC 'nin potansiyel olarak kullanabileceği dinamik bağlantı noktası aralığına kadar açmanız önerilmez. MFA uygulama sunucularınız **arasında** bir güvenlik duvarınız varsa, MFA sunucusunu, alt ve ana sunucular arasındaki çoğaltma trafiği için bir statik bağlantı noktası üzerinde iletişim kuracak şekilde yapılandırmanız ve bu bağlantı noktasını güvenlik duvarınızdan açmanız gerekir. ```HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Positive Networks\PhoneFactor``` ÇAĞRıLAN ```Pfsvc_ncan_ip_tcp_port``` bir DWORD kayıt defteri değeri oluşturarak ve değeri kullanılabilir bir statik bağlantı noktasına ayarlayarak statik bağlantı noktasını zorlayabilirsiniz. Bağlantılar her zaman alt MFA sunucuları tarafından ana sunucu tarafından başlatılır, statik bağlantı noktası yalnızca ana bilgisayarda gereklidir, ancak bir alt öğeyi herhangi bir zamanda ana olacak şekilde yükseltebileceğinizden, tüm MFA sunucularında statik bağlantı noktasını ayarlamanız gerekir.
 
-2. İki Kullanıcı Portalı/MFA Mobil Uygulama sunucusu (MFA-UP-MAS1 ve MFA-UP-MAS2) yük dengeli **bir** yapılandırmada (mfa.contoso.com) dengelenir. Yapışkan oturumların MFA Kullanıcı Portalı ve Mobil Uygulama Hizmeti'ni dengelemek için bir gereklilik olduğunu hatırlayın.
-   ![Azure MFA Server - Kullanıcı Portalı ve Mobil Uygulama Hizmeti HA](./media/howto-mfaserver-deploy-ha/mfaportal.png)
-3. ADFS Server çiftliği yük dengeli ve çevre ağında yük dengeli ADFS yakınlık yoluyla Internet'e yayınlanır. Her ADFS Sunucusu, TCP bağlantı noktası 443 üzerinden tek bir yük dengeli URL (mfaapp.contoso.com) kullanarak Azure MFA Sunucularıyla iletişim kurmak için ADFS aracısını kullanır.
+2. İki Kullanıcı Portalı/MFA mobil uygulama sunucusu (MFA-UP-MAS1 ve MFA-MAS2), **durum bilgisi olan** bir yapılandırmada (MFA.contoso.com) yük dengelemesi yapılır. Yapışkan oturumların MFA Kullanıcı Portalı ve mobil App Service yük dengelemesi için bir gereksinim olduğunu hatırlayın.
+   ![Azure MFA sunucusu-Kullanıcı Portalı ve mobil App Service HA](./media/howto-mfaserver-deploy-ha/mfaportal.png)
+3. ADFS sunucu grubu, çevre ağındaki yük dengeli ADFS proxy 'leri aracılığıyla yük dengelenebilir ve Internet 'e yayımlanır. Her ADFS sunucusu, TCP bağlantı noktası 443 üzerinden tek bir yük dengeli URL (mfaapp.contoso.com) kullanarak Azure MFA sunucularıyla iletişim kurmak için ADFS aracısını kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure MFA Server'ı yükleme ve yapılandırma](howto-mfaserver-deploy.md)
+* [Azure MFA sunucusunu yükleyip yapılandırma](howto-mfaserver-deploy.md)

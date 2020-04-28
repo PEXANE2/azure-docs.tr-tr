@@ -1,6 +1,6 @@
 ---
-title: Web API çağıran tek sayfalık uygulama oluşturma - Microsoft kimlik platformu | Azure
-description: Web API çağıran tek sayfalık bir uygulama oluşturmayı öğrenin
+title: Web API 'sini çağıran tek sayfalı uygulama oluşturma-Microsoft Identity platform | Mavisi
+description: Web API 'sini çağıran tek sayfalı bir uygulama oluşturmayı öğrenin
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,21 +12,21 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882140"
 ---
-# <a name="single-page-application-call-a-web-api"></a>Tek sayfalı uygulama: Web API'sını arayın
+# <a name="single-page-application-call-a-web-api"></a>Tek sayfalı uygulama: Web API 'SI çağırma
 
-Web API'yi `acquireTokenSilent` aramadan önce bir erişim jetonunu elde etmek veya yenilemek için yöntemi aramanızı öneririz. Bir belirteç aldıktan sonra, korumalı web API'sini arayabilirsiniz.
+Web API 'sini çağırmak için bir `acquireTokenSilent` erişim belirteci almak veya yenilemek üzere yöntemini çağırmanız önerilir. Belirteciniz olduktan sonra korumalı bir Web API 'SI çağırabilirsiniz.
 
 ## <a name="call-a-web-api"></a>Web API çağrısı
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Microsoft Graph API gibi web API'sini aramak için bir HTTP isteğinde edinilmiş erişim belirtecisini taşıyıcı olarak kullanın. Örneğin:
+Microsoft Graph API gibi herhangi bir Web API 'sini çağırmak için bir HTTP isteğindeki alınan erişim belirtecini bir taşıyıcı olarak kullanın. Örneğin:
 
 ```javascript
     var headers = new Headers();
@@ -46,7 +46,7 @@ Microsoft Graph API gibi web API'sini aramak için bir HTTP isteğinde edinilmi�
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-MSAL Açısal sarıcı, erişim belirteçlerini otomatik olarak sessizce elde etmek ve API'lere HTTP isteklerine eklemek için HTTP önleme örüntüsünden yararlanır. Daha fazla bilgi için [bkz.](scenario-spa-acquire-token.md)
+MSAL angular sarmalayıcısı, erişim belirteçlerini sessizce otomatik olarak almak ve bunları API 'lere HTTP isteklerine eklemek için HTTP yakalayıcısından yararlanır. Daha fazla bilgi için bkz. [API 'yi çağırmak için belirteç alma](scenario-spa-acquire-token.md).
 
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Uygulamanızı Azure AD uygulama galerisinde listele | Microsoft Dokümanlar
-description: Azure Active Directory uygulama galerisinde tek oturum açmayı destekleyen bir uygulamayı nasıl listeleyyin
+title: Uygulamanızı Azure AD Uygulama Galerisi 'nde listeleyin | Microsoft Docs
+description: Azure Active Directory Uygulama galerisinde çoklu oturum açmayı destekleyen bir uygulamayı nasıl listeleyeceğinizi öğrenin
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,146 +14,146 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80666934"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory uygulama galerisinde uygulamanızı listeleme
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Bu makalede, Azure Etkin Dizin (Azure AD) uygulama galerisinde bir uygulamanın nasıl listelenebildiğini, tek oturum açma (SSO) nasıl uygulanacağını ve girişi nasıl yönetiştiracağı gösterilmektedir.
+Bu makalede, Azure Active Directory (Azure AD) uygulama galerisinde bir uygulamayı listeleme, çoklu oturum açma (SSO) uygulama ve listeyi yönetme işlemlerinin nasıl yapılacağı gösterilir.
 
-## <a name="what-is-the-azure-ad-application-gallery"></a>Azure AD uygulama galerisi nedir?
+## <a name="what-is-the-azure-ad-application-gallery"></a>Azure AD Uygulama Galerisi nedir?
 
-- Müşteriler mümkün olan en iyi tek oturum açma deneyimini bulurlar.
-- Uygulamanın yapılandırması basit ve minimaldir.
-- Hızlı bir arama, uygulamanızı galeride bulur.
-- Ücretsiz, Temel ve Premium Azure REKLAM müşterilerinin tümü bu tümleştirmeyi kullanabilir.
-- Ortak müşteriler adım adım yapılandırma öğretici olsun.
-- Etki alanları arası Kimlik Yönetimi[Sistemi'ni (SCIM)](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)kullanan müşteriler, aynı uygulama için sağlama yı kullanabilir.
+- Müşteriler olası en iyi çoklu oturum açma deneyimini bulur.
+- Uygulamanın yapılandırması basit ve en düşüktür.
+- Hızlı arama, uygulamanızı galeride bulur.
+- Ücretsiz, temel ve Premium Azure AD müşterilerinin hepsi bu tümleştirmeyi kullanabilir.
+- Karşılıklı müşteriler, adım adım bir yapılandırma öğreticisini alır.
+- Etki alanları arası kimlik yönetimi ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) için sistemi kullanan müşteriler aynı uygulama için sağlama kullanabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Federe uygulamalar (Open ID ve SAML/WS-Fed) için uygulamanın Azure AD uygulama galerisinde listelenemesi için hizmet olarak yazılım (SaaS) modelini desteklemesi gerekir. Kurumsal galeri uygulamaları, belirli bir müşteriyi değil, birden çok müşteri yapılandırmasını desteklemelidir.
-- Open ID Connect için uygulamanın çok kiracılı olması ve uygulama için [Azure AD onay çerçevesinin](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) düzgün şekilde uygulanması gerekir. Kullanıcı, herhangi bir müşterinin uygulamaya onay verebilmesi için oturum açma isteğini ortak bir bitiş noktasına gönderebilir. Kullanıcı erişimini kiracı kimliğine ve kullanıcının belirteçte alınan UPN'ine göre denetleyebilirsiniz.
-- SAML 2.0/WS-Fed için, uygulamanızın SamL/WS-Fed SSO entegrasyonunu SP veya IDP modunda yapabilme yeteneğine sahip olması gerekir. İsteğe başvurmadan önce bu özelliğin doğru çalıştığından emin olun.
-- Parola SSO için, parola atlamanın beklendiği gibi çalışması için tek oturum açma yapabilmesi için başvurunuzun form kimlik doğrulamasını desteklediğinden emin olun.
-- Kayıtlı en az iki kullanıcıyla sınama için kalıcı bir hesaba ihtiyacınız vardır.
+- Federasyon uygulamaları (açık KIMLIK ve SAML/WS-beslenir) için, uygulamanın Azure AD uygulama galerisinde listelenen hizmet olarak yazılım (SaaS) modelini desteklemesi gerekir. Kurumsal Galeri uygulamaları, belirli bir müşteriyi değil birden çok müşteri yapılandırmasını desteklemelidir.
+- Açık KIMLIK bağlantısı için, uygulamanın çok kiracılı olması ve [Azure AD onay çerçevesinin](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) uygulama için uygun şekilde uygulanması gerekir. Kullanıcı, herhangi bir müşterinin uygulamaya onay sağlayabilmesi için, oturum açma isteğini ortak bir uç noktaya gönderebilir. Kullanıcı erişimini, kiracı KIMLIĞINE ve Kullanıcı belirtecine göre belirteçte alınan UPN 'yi kontrol edebilirsiniz.
+- SAML 2.0/WS-beslenir için, uygulamanızın SP veya ıDP modunda SAML/WS-Beslilik tümleştirmesi tümleştirme yeteneği olmalıdır. İsteği göndermeden önce bu özelliğin düzgün çalıştığından emin olun.
+- Parola SSO 'SU için, uygulamanızın form kimlik doğrulamasını desteklediğinden emin olun ve bu sayede, tek oturum açma için beklenen şekilde çalışmaya başlayın.
+- En az iki Kullanıcı kayıtlı olarak test için kalıcı bir hesaba ihtiyacınız vardır.
 
-**Geliştiriciler için Azure AD nasıl edinilir?**
+**Geliştiriciler için Azure AD nasıl alınır?**
 
-Tüm premium Azure AD özellikleriyle ücretsiz bir test hesabı alabilirsiniz - 90 gün ücretsiz ve onunla iş yaptığınız sürece uzatılabilir:https://docs.microsoft.com/office/developer-program/office-365-developer-program
+Tüm Premium Azure AD özellikleriyle 90 gün ücretsiz olan ücretsiz bir test hesabı alabilir ve geliştirme yaparken sizinle birlikte çalışırken genişletilebilir.https://docs.microsoft.com/office/developer-program/office-365-developer-program
 
-## <a name="submit-the-request-in-the-portal"></a>İsteği portalda gönderin
+## <a name="submit-the-request-in-the-portal"></a>İsteği portalda gönder
 
-Uygulama tümleştirmenizin Azure AD ile çalıştığını test ettikten sonra, uygulama isteğinizi [Microsoft Application Network portalına](https://microsoft.sharepoint.com/teams/apponboarding/Apps)gönderin.
+Uygulama tümleştirmesinin Azure AD ile çalışıp çalışmadığını test ettikten sonra, uygulama isteğinizi [Microsoft Application Network portalında](https://microsoft.sharepoint.com/teams/apponboarding/Apps)gönderebilirsiniz.
 
-Oturum açmadan sonra aşağıdaki sayfa görünürse, [Azure AD SSO Tümleştirme Ekibi'ne](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun. İsteğe yönelik göndermek için kullanmak istediğiniz e-posta hesabını sağlayın. Gibi bir iş [name@yourbusiness.com](mailto:name@yourbusiness.com) e-posta adresi tercih edilir. Azure AD ekibi hesabı Microsoft Application Network portalına ekler.
+Oturum açtıktan sonra aşağıdaki sayfa görünürse [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun. İsteği göndermek için kullanmak istediğiniz e-posta hesabını belirtin. Gibi bir iş e-posta [name@yourbusiness.com](mailto:name@yourbusiness.com) adresi tercih edilir. Azure AD ekibi, hesabı Microsoft uygulama ağı portalına ekler.
 
-![SharePoint portalında istek iletisi erişim](./media/howto-app-gallery-listing/errorimage.png)
+![SharePoint portalındaki erişim isteği iletisi](./media/howto-app-gallery-listing/errorimage.png)
 
-Hesap eklendikten sonra Microsoft Application Network portalında oturum açabilirsiniz.
+Hesap eklendikten sonra, Microsoft uygulama ağı portalında oturum açabilirsiniz.
 
-Oturum açmadan sonra aşağıdaki sayfa görünürse, metin kutusuna erişim gereksinimi için bir iş gerekçesi sağlayın. Ardından **Erişim İste'yi**seçin.
+Oturum açtıktan sonra aşağıdaki sayfa görünürse, metin kutusuna erişim gereksinimi için bir iş doğrulaması belirtin. Ardından **erişim iste**' yi seçin.
 
-  ![SharePoint portalında iş yaslama kutusu](./media/howto-app-gallery-listing/accessrequest.png)
+  ![SharePoint portalındaki iş doğrulama kutusu](./media/howto-app-gallery-listing/accessrequest.png)
 
-Ekibimiz detayları gözden geçirir ve size buna göre erişim sağlar. İsteğiniz onaylandıktan sonra, portalda oturum açabilir ve ana sayfadaki **İstek Gönder (ISV)** döşemesini seçerek isteğinizi iletebilirsiniz.
+Ekibimiz ayrıntıları inceler ve size buna göre erişim sağlar. İsteğiniz onaylandıktan sonra, portalda oturum açabilir ve giriş sayfasındaki **Isteği gönder (ISV)** kutucuğunu seçerek isteği gönderebilirsiniz.
 
-![Giriş sayfasında İstek Gönder (ISV) döşemesi](./media/howto-app-gallery-listing/homepage.png)
+![Giriş sayfasında Istek (ISV) kutucuğunu gönder](./media/howto-app-gallery-listing/homepage.png)
 
-## <a name="issues-on-logging-into-portal"></a>Portala giriş le ilgili sorunlar
+## <a name="issues-on-logging-into-portal"></a>Portalda oturum açma sorunları
 
-Oturum açarken bu hatayı görüyorsanız, sorunla ilgili ayrıntılar aşağıda ve bunu nasıl düzeltebileceğiniz aşağıda açıklanmıştır.
+Oturum açarken bu hatayı görüyorsanız, sorun hakkında ayrıntılı bilgi ve bu sorunu nasıl giderebilirim?
 
-* Oturum açma nız aşağıda gösterildiği gibi engellendiyse:
+* Oturum açma bilgileriniz aşağıda gösterildiği gibi engellenmişse:
 
-  ![galeride uygulama çözme sorunları](./media/howto-app-gallery-listing/blocked.png)
+  ![Galerideki uygulamayı çözümleyen sorunlar](./media/howto-app-gallery-listing/blocked.png)
 
 **Ne oluyor:**
 
-Konuk kullanıcı, aynı zamanda bir Azure AD olan bir ev kiracısına federe edilir. Konuk kullanıcı yüksek risk altındadır. Microsoft, Yüksek riskli kullanıcıların kaynaklarına erişmesine izin vermez. Tüm Yüksek riskli kullanıcılar (çalışanlar veya misafirler / satıcılar) Microsoft kaynaklarına erişmek için risklerini düzeltmelidir / kapatmalıdır. Konuk kullanıcılar için bu kullanıcı riski ev kiracısından gelir ve ilke kaynak kiracısından (bu durumda Microsoft) gelir.
+Konuk Kullanıcı aynı zamanda bir Azure AD olan bir giriş kiracıya federe olur. Konuk Kullanıcı yüksek risk altında. Microsoft, yüksek riskli kullanıcıların kaynaklarına erişmelerine izin vermez. Tüm yüksek riskli kullanıcılar (çalışanlar veya konuklar/satıcılar) Microsoft kaynaklarına erişmek için riskleri düzeltmeli/kapatacaktır. Konuk kullanıcılar için bu kullanıcı riski, ana kiracıdan gelir ve ilke, kaynak kiracısından gelir (Bu durumda Microsoft).
  
 **Güvenli çözümler:**
 
-* MFA kayıtlı konuk kullanıcılar kendi kullanıcı risklerini düzeltiyor. Bu güvenli bir şifre değişikliği veya sıfırlama (ev kiracıhttps://aka.ms/sspr) (bu ev kiracı mfa ve SSPR ihtiyacı) gerçekleştiren konuk kullanıcı tarafından yapılabilir. Güvenli parola değişikliği veya sıfırlama işlemi ön-prem'de değil, Azure AD'de başlatılmalıdır.
+* MFA kayıtlı Konuk kullanıcılar kendi Kullanıcı riskini düzeltir. Bu işlem, Konuk Kullanıcı tarafından güvenli bir parola değişikliği veya sıfırlama (https://aka.ms/sspr) ana KIRACıSıNDA MFA ve SSPR gerekir) gerçekleştiriliyor tarafından yapılabilir. Güvenli parola değiştirme veya sıfırlama özelliği, Azure AD 'de başlatılmalıdır ve şirket içi değil.
 
-* Konuk kullanıcıların yöneticileri risklerini düzeltiyor. Bu durumda, yönetici bir parola sıfırlama (geçici parola oluşturma) gerçekleştirecektir. Bunun kimlik koruması gerektirmemesi gerekmez. Konuk kullanıcının yöneticisi 'Parolayı Sıfırla'ya https://aka.ms/RiskyUsers gidebilir ve tıklayabilir.
+* Konuk kullanıcıların yöneticileri, riskini düzeltir. Bu durumda, yönetici bir parola sıfırlama işlemi gerçekleştirir (geçici parola oluşturma). Bu, kimlik koruması gerektirmez. Konuk kullanıcının Yöneticisi ' ne gidebilir ve ' https://aka.ms/RiskyUsers Parolayı Sıfırla ' öğesine tıklayabilirsiniz.
 
-* Konuk kullanıcıların yöneticileri yakın / risklerini göz ardı. Yine, bu Kimlik Koruması gerekmez. Yönetici 'Kullanıcı https://aka.ms/RiskyUsers riskini düşür' seçeneğini tıklayabilir. Ancak, yönetici kullanıcı riskini kapatmadan önce bunun yanlış bir pozitif risk değerlendirmesi olduğundan emin olmak için durum tespitini yapmalıdır. Aksi takdirde, araştırma yapmadan bir risk değerlendirmesini bastırarak kendi ve Microsoft'un kaynaklarını riske atmaktadırlar.
+* Konuk kullanıcıların yöneticileri, riskini kapatır/kapatabilir. Bu, kimlik korumasına gerek kalmaz. Yönetici öğesine https://aka.ms/RiskyUsers gidebilir ve ' Kullanıcı riskini Kapat ' seçeneğine tıklayabilir. Ancak, bu, Kullanıcı riskini kapatmadan önce bunun yanlış bir pozitif risk değerlendirmesi olduğundan emin olmak için yöneticinin, süresi dolan bir süre olması gerekir. Aksi takdirde, araştırma yapmadan risk değerlendirmesi ortadan kaldırarak ve Microsoft 'un kaynaklarını riske sokuyor.
 
 > [!NOTE]
-> Erişimle ilgili herhangi bir sorun varsa, [Azure AD SSO Tümleştirme Ekibi'ne](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
+> Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
 
-## <a name="implement-sso-by-using-the-federation-protocol"></a>Federasyon protokolünü kullanarak SSO'yu uygulayın
+## <a name="implement-sso-by-using-the-federation-protocol"></a>Federasyon protokolünü kullanarak SSO 'yu uygulama
 
-Bir uygulamayı Azure AD uygulama galerisinde listelemek için öncelikle Azure AD tarafından desteklenen aşağıdaki federasyon protokollerinden birini uygulamanız gerekir. Azure AD uygulama galerisi hüküm ve koşullarını da kabul etmeniz gerekir. Azure AD uygulama galerisinin hüküm ve koşullarını [bu web sitesinde](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)okuyun.
+Azure AD uygulama galerisinde bir uygulamayı listelemek için, önce Azure AD tarafından desteklenen aşağıdaki Federasyon protokollerinden birini uygulamanız gerekir. Ayrıca Azure AD Uygulama Galerisi hüküm ve koşullarını kabul etmeniz gerekir. [Bu Web sitesindeki](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)Azure AD uygulama galerisinin hüküm ve koşullarını okuyun.
 
-- **OpenID Connect**: Open ID Connect protokolünü kullanarak uygulamanızı Azure AD ile tümleştirmek için [geliştiricilerin talimatlarına](v1-authentication-scenarios.md)uyun.
+- **OpenID Connect**: Open ID Connect protokolünü kullanarak UYGULAMANıZı Azure AD ile tümleştirmek için [geliştiricilerin yönergelerini](v1-authentication-scenarios.md)izleyin.
 
-    ![Galeride bir OpenID Connect uygulamasını listeleme](./media/howto-app-gallery-listing/openid.png)
+    ![Galerideki bir OpenID Connect uygulamasını listeleme](./media/howto-app-gallery-listing/openid.png)
 
-    * OpenID Connect'i kullanarak uygulamanızı galerideki listeye eklemek istiyorsanız, gösterildiği gibi **OpenID Connect & OAuth 2.0'ı** seçin.
-    * Erişimle ilgili herhangi bir sorun varsa, [Azure AD SSO Tümleştirme Ekibi'ne](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
+    * Uygulamanızı OpenID Connect kullanarak galerinin listesine eklemek istiyorsanız, gösterildiği gibi **OpenID connect & OAuth 2,0** ' ı seçin.
+    * Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
 
-- **SAML 2.0** veya **WS-Fed**: Uygulamanız SAML 2.0'ı destekliyorsa, [özel bir uygulama eklemek için yönergeleri](../active-directory-saas-custom-apps.md)izleyerek uygulamayı doğrudan bir Azure AD kiracısıyla tümleştirebilirsiniz.
+- **Saml 2,0** veya **WS-BESLENIR**: uygulamanız SAML 2,0 ' yi destekliyorsa, [özel bir uygulama ekleme YÖNERGELERINI](../active-directory-saas-custom-apps.md)izleyerek doğrudan bir Azure AD kiracısı ile tümleştirebilirsiniz.
 
-  ![Galeride SAML 2.0 veya WS-Fed uygulamasını listeleme](./media/howto-app-gallery-listing/saml.png)
+  ![Bir SAML 2,0 veya WS-beslenir uygulamasını galeride listeleme](./media/howto-app-gallery-listing/saml.png)
 
-  * Saml **2.0** veya **WS-Fed**kullanarak uygulamanızı galerideki listeye eklemek istiyorsanız, gösterildiği gibi **SAML 2.0/WS-Fed'i** seçin.
+  * **Saml 2,0** veya **WS-besu**kullanarak uygulamanızı Galeriye eklemek Istiyorsanız, gösterildiği gıbı **SAML 2.0/WS-beslenir** ' i seçin.
 
-  * Erişimle ilgili herhangi bir sorun varsa, [Azure AD SSO Tümleştirme Ekibi'ne](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
+  * Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
 
-## <a name="implement-sso-by-using-the-password-sso"></a>SSO parolasını kullanarak SSO'yu uygulayın
+## <a name="implement-sso-by-using-the-password-sso"></a>SSO parolasını kullanarak SSO uygulama
 
-[Parola tabanlı tek oturum](../manage-apps/what-is-single-sign-on.md)açma yapılandırmak için HTML oturum açma sayfası olan bir web uygulaması oluşturun. Parola atlama olarak da adlandırılan parola tabanlı SSO, kimlik federasyonunu desteklemeyen web uygulamalarına kullanıcı erişimini ve parolalarını yönetmenize olanak tanır. Ayrıca, birden çok kullanıcının kuruluşunuzun sosyal medya uygulama hesapları gibi tek bir hesabı paylaşması gereken senaryolar için de yararlıdır.
+[Parola tabanlı çoklu oturum açmayı](../manage-apps/what-is-single-sign-on.md)YAPıLANDıRMAK için HTML oturum açma sayfasına sahip bir Web uygulaması oluşturun. Parola oluşturma olarak da bilinen parola tabanlı SSO, Kimlik Federasyonu desteklemeyen Web uygulamalarına Kullanıcı erişimini ve parolalarını yönetmenizi sağlar. Ayrıca, çeşitli kullanıcıların, kuruluşunuzun sosyal medya uygulaması hesapları gibi tek bir hesabı paylaşması gereken senaryolar için de kullanışlıdır.
 
-![Galeride bir parola SSO uygulamasını listeleme](./media/howto-app-gallery-listing/passwordsso.png)
+![Galerideki parola SSO uygulamasını listeleme](./media/howto-app-gallery-listing/passwordsso.png)
 
-* Uygulamanızı galerideki listeye sso parolasını kullanarak eklemek istiyorsanız, gösterildiği gibi **Parola SSO'yu** seçin.
-* Erişimle ilgili herhangi bir sorun varsa, [Azure AD SSO Tümleştirme Ekibi'ne](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
+* Uygulamanızı parola SSO 'SU kullanarak galerideki listeye eklemek istiyorsanız, gösterilen şekilde **parola SSO** 'yu seçin.
+* Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
 
-## <a name="request-for-user-provisioning"></a>Kullanıcı sağlama talebi
+## <a name="request-for-user-provisioning"></a>Kullanıcı hazırlama isteği
 
-Kullanıcı sağlama isteğinde bulunmak için aşağıdaki resimde gösterilen işlemi izleyin.
+Kullanıcı sağlaması istemek için aşağıdaki görüntüde gösterilen işlemi izleyin.
 
-   ![Kullanıcı sağlama talebi](./media/howto-app-gallery-listing/user-provisioning.png)
+   ![Kullanıcı hazırlama isteği](./media/howto-app-gallery-listing/user-provisioning.png)
 
-## <a name="update-or-remove-an-existing-listing"></a>Varolan bir girişi güncelleştirme veya kaldırma
+## <a name="update-or-remove-an-existing-listing"></a>Mevcut bir listeyi güncelleştirme veya kaldırma
 
-Azure AD uygulama galerisindeki mevcut bir uygulamayı güncelleştirmek veya kaldırmak için öncelikle isteği [Uygulama Ağı portalına](https://microsoft.sharepoint.com/teams/apponboarding/Apps)göndermeniz gerekir. Office 365 hesabınız varsa, bu portalda oturum açabilmek için bunu kullanın. Değilse, oturum açabilmek için Outlook veya Hotmail gibi Microsoft hesabınızı kullanın.
+Azure AD uygulama galerisinde mevcut bir uygulamayı güncelleştirmek veya kaldırmak için, önce isteği [uygulama ağ portalında](https://microsoft.sharepoint.com/teams/apponboarding/Apps)göndermeniz gerekir. Office 365 hesabınız varsa, Bu portalda oturum açmak için bu hesabı kullanın. Aksi takdirde, oturum açmak için Outlook veya Hotmail gibi Microsoft hesabı kullanın.
 
-- Aşağıdaki resimde gösterildiği gibi uygun seçeneği seçin.
+- Aşağıdaki görüntüde gösterildiği gibi uygun seçeneği belirleyin.
 
-    ![Galeride bir SAML uygulamasını listeleme](./media/howto-app-gallery-listing/updateorremove.png)
+    ![Galerideki bir SAML uygulamasını listeleme](./media/howto-app-gallery-listing/updateorremove.png)
 
-    * Varolan bir uygulamayı güncelleştirmek için gereksiniminize göre uygun seçeneği seçin.
-    * Varolan bir uygulamayı Azure AD uygulama galerisinden kaldırmak **için, uygulama listemi galeriden kaldır'ı**seçin.
-    * Erişimle ilgili herhangi bir sorun varsa, [Azure AD SSO Tümleştirme Ekibi'ne](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
+    * Mevcut bir uygulamayı güncelleştirmek için, gereksiniminize göre uygun seçeneği belirleyin.
+    * Mevcut bir uygulamayı Azure AD Uygulama Galerisi 'nden kaldırmak için **galerideki uygulama listemi kaldır**' ı seçin.
+    * Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
 
-## <a name="list-requests-by-customers"></a>Müşterilere göre istekleri listele
+## <a name="list-requests-by-customers"></a>İstekleri müşterilere göre Listele
 
-Müşteriler, **Müşterilere** > Uygulama isteklerini seçerek bir uygulamayı listelemek için istek gönderebilirler**Yeni istek gönder.**
+Müşteriler, **müşterilerin** > **yeni istek göndermesi**için uygulama istekleri seçerek bir uygulamayı listeleme isteği gönderebilir.
 
-![İstenilen uygulamalar döşemesini gösterir](./media/howto-app-gallery-listing/customer-submit-request.png)
+![Müşteri tarafından istenen uygulamalar kutucuğunu gösterir](./media/howto-app-gallery-listing/customer-submit-request.png)
 
-İşte müşteri tarafından istenen uygulamaların akışı.
+Müşteri tarafından istenen uygulamaların akışı aşağıda verilmiştir.
 
-![İstenilen uygulamalar akışını gösterir](./media/howto-app-gallery-listing/customerrequest.png)
+![Müşteri tarafından istenen uygulamalar akışını gösterir](./media/howto-app-gallery-listing/customerrequest.png)
 
 ## <a name="timelines"></a>Zaman çizelgeleri
 
-Galeride bir SAML 2.0 veya WS-Fed uygulaması listeleme işlemi için zaman çizelgesi 7 ila 10 iş günüdür.
+Galerideki bir SAML 2,0 veya WS-Besme uygulamasını listeleme işleminin zaman çizelgesi 7 ila 10 iş gününe kadar olur.
 
-  ![Galeride bir SAML uygulamasını listelemek için zaman çizelgesi](./media/howto-app-gallery-listing/timeline.png)
+  ![Galerideki bir SAML uygulamasını listelemek için zaman çizelgesi](./media/howto-app-gallery-listing/timeline.png)
 
-Galeride bir OpenID Connect uygulamasını listeleme işleminin zaman çizelgesi 2 ila 5 iş günüdür.
+Galerideki bir OpenID Connect uygulamasını listeleme işleminin zaman çizelgesi 2 ile 5 iş gününe kadar olur.
 
-  ![Galeride bir OpenID Connect uygulamasını listelemek için zaman çizelgesi](./media/howto-app-gallery-listing/timeline2.png)
+  ![Galerideki bir OpenID Connect uygulamasını listelemek için zaman çizelgesi](./media/howto-app-gallery-listing/timeline2.png)
 
-## <a name="escalations"></a>Escalations
+## <a name="escalations"></a>Yükseltmeleri
 
-Herhangi bir artış için [Azure AD SSO Entegrasyon Ekibine](mailto:SaaSApplicationIntegrations@service.microsoft.com) e-posta gönderin SaaSApplicationIntegrations@service.microsoft.comve en kısa sürede yanıt verelim.
+Tüm yürüyen değişiklikler için [Azure AD SSO tümleştirme ekibine](mailto:SaaSApplicationIntegrations@service.microsoft.com) e-posta gönderin ve en SaaSApplicationIntegrations@service.microsoft.comkısa sürede yanıt vereceğiz.

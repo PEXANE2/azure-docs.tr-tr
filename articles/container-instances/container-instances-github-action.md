@@ -1,59 +1,59 @@
 ---
-title: GitHub eylemine göre kapsayıcı örneğini dağıtma
-description: Kapsayıcı görüntüsünü Azure Kapsayıcı Örnekleri'ne oluşturmak, itmek ve dağıtmak için adımları otomatikleştiren bir GitHub eylemini yapılandırma
+title: GitHub eylemine göre kapsayıcı örneği dağıt
+description: Azure Container Instances bir kapsayıcı görüntüsü oluşturma, gönderme ve dağıtma adımlarını otomatikleştiren bir GitHub eylemi yapılandırın
 ms.topic: article
 ms.date: 03/18/2020
 ms.custom: ''
 ms.openlocfilehash: 13397cee8197afc65b93c587ae1505e59cfdebc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80258048"
 ---
-# <a name="configure-a-github-action-to-create-a-container-instance"></a>Kapsayıcı örneği oluşturmak için GitHub eylemini yapılandırma
+# <a name="configure-a-github-action-to-create-a-container-instance"></a>Bir kapsayıcı örneği oluşturmak için bir GitHub eylemi yapılandırma
 
-[GitHub Eylemleri,](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) kod depoladığınız ve çekme istekleri ve sorunları üzerinde işbirliği yaptığınız aynı yerde yazılım geliştirme iş akışlarınızı otomatikleştirmek için GitHub'daki bir özellik paketidir.
+[GitHub eylemleri](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) , yazılım geliştirme iş akışlarınızı aynı yerde otomatik hale getirmek için GitHub 'daki bir özellik paketidir. böylece, çekme istekleri ve sorunları üzerinde kod depolar ve işbirliği yapın.
 
-Bir kapsayıcının Azure Kapsayıcı Örneklerine dağıtımını otomatikleştirmek için [Azure Kapsayıcı Örnekleri](https://github.com/azure/aci-deploy) GitHub eylemini dağıt'ı kullanın. Eylem [az kapsayıcı oluşturma][az-container-create] komutu benzer bir kapsayıcı örneği için özellikleri ayarlamanızı sağlar.
+Bir kapsayıcının Azure Container Instances dağıtımını otomatik hale getirmek için GitHub [Azure Container Instances Için dağıt](https://github.com/azure/aci-deploy) eylemini kullanın. Bu eylem, [az Container Create][az-container-create] komutuyla benzer bir kapsayıcı örneği için özellikler ayarlamanıza olanak sağlar.
 
-Bu makalede, aşağıdaki eylemleri gerçekleştiren Bir GitHub repo'da iş akışı nasıl ayarlanıncayasınız:
+Bu makalede, bir GitHub deposunda aşağıdaki eylemleri gerçekleştiren bir iş akışının nasıl ayarlanacağı gösterilmektedir:
 
-* Dockerfile'den görüntü oluşturma
-* Görüntüyü Azure kapsayıcı kayıt defterine itme
-* Kapsayıcı görüntüsünü Azure kapsayıcı örneğine dağıtma
+* Dockerfile dosyasından görüntü oluşturma
+* Görüntüyü Azure Container Registry 'ye gönderme
+* Kapsayıcı görüntüsünü bir Azure Container örneğine dağıtma
 
-Bu makalede, iş akışını ayarlamak için iki yol gösterilmektedir:
+Bu makalede, iş akışını kurmanın iki yolu gösterilmektedir:
 
-* Azure Kapsayıcı Örnekleri eylemini ve diğer eylemleri kullanarak GitHub repo'sunda bir iş akışını kendiniz yapılandırın.  
-* Azure `az container app up` CLI'deki [Azure'a Dağıt](https://github.com/Azure/deploy-to-azure-cli-extension) uzantısındaki komutu kullanın. Bu komut, GitHub iş akışı ve dağıtım adımlarının oluşturulmasını kolaylaştırır.
+* Azure Container Instances dağıt eylemini ve diğer eylemleri kullanarak bir GitHub deposunda iş akışını kendiniz yapılandırın.  
+* Azure CLı `az container app up` 'de Azure 'da [dağıtma](https://github.com/Azure/deploy-to-azure-cli-extension) uzantısında komutunu kullanın. Bu komut GitHub iş akışını ve dağıtım adımlarını oluşturmayı kolaylaştırır.
 
 > [!IMPORTANT]
-> Azure Kapsayıcı Örnekleri için GitHub eylemi şu anda önizlemededir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
+> Azure Container Instances için GitHub eylemi şu anda önizlemededir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **GitHub hesabı** - Zaten https://github.com hesabınız yoksa bir hesap oluşturun.
-* **Azure CLI** - Azure CLI adımlarını tamamlamak için Azure Bulut Kabuğu'nu veya Azure CLI'nin yerel yüklemesini kullanabilirsiniz. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
-* **Azure kapsayıcı kayıt defteri** - Yoksa, [Azure CLI](../container-registry/container-registry-get-started-azure-cli.md), [Azure portalı](../container-registry/container-registry-get-started-portal.md)veya diğer yöntemleri kullanarak Temel katmanda bir Azure kapsayıcı kayıt defteri oluşturun. GitHub iş akışı için kullanılan dağıtım için kullanılan kaynak grubuna dikkat edin.
+* **GitHub hesabı** -henüz yoksa bir hesap https://github.com oluşturun.
+* **Azure CLI** -Azure CLI adımlarını tamamlayabilmeniz için Azure Cloud Shell veya yerel BIR Azure CLI yüklemesi kullanabilirsiniz. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
+* **Azure Container Registry** -Azure [CLI](../container-registry/container-registry-get-started-azure-cli.md), [Azure Portal](../container-registry/container-registry-get-started-portal.md)veya diğer yöntemleri kullanarak temel katmanda bir Azure Container Registry oluşturun. Dağıtım için kullanılan kaynak grubunu, GitHub iş akışı için kullanılan bir yere göz atın.
 
-## <a name="set-up-repo"></a>Repo'u ayarlama
+## <a name="set-up-repo"></a>Depoyu ayarlama
 
-* Bu makaledeki örnekler için, aşağıdaki depoyu çatallamak için GitHub'ı kullanın:https://github.com/Azure-Samples/acr-build-helloworld-node
+* Bu makaledeki örneklerde, aşağıdaki depoyu çatalı yapmak için GitHub kullanın:https://github.com/Azure-Samples/acr-build-helloworld-node
 
-  Bu repo, küçük bir web uygulamasının kapsayıcı görüntüsünü oluşturmak için dockerfile ve kaynak dosyaları içerir.
+  Bu depo, küçük bir Web uygulamasının kapsayıcı görüntüsünü oluşturmak için bir Dockerfile ve kaynak dosyaları içerir.
 
   ![GitHub’daki Çatal düğmesinin (vurgulanmış) ekran görüntüsü](../container-registry/media/container-registry-tutorial-quick-build/quick-build-01-fork.png)
 
-* Deponuz için Eylemlerin etkinleştirildiğinden emin olun. Çatallı deponuza gidin ve **Ayarlar** > **Eylemleri'ni**seçin. **Eylemler izinlerinde,** **bu depo için yerel ve üçüncü taraf Eylemleri Etkinleştir'in** seçildiğinden emin olun.
+* Deponuz için eylemlerin etkinleştirildiğinden emin olun. Komut deponuza gidin ve **Ayarlar** > **Eylemler**' i seçin. **Eylemler izinlerinde**, **Bu depo için yerel ve üçüncü taraf eylemlerin etkinleştir** ' in seçildiğinden emin olun.
 
 ## <a name="configure-github-workflow"></a>GitHub iş akışını yapılandırma
 
-### <a name="create-service-principal-for-azure-authentication"></a>Azure kimlik doğrulaması için hizmet ilkesi oluşturma
+### <a name="create-service-principal-for-azure-authentication"></a>Azure kimlik doğrulaması için hizmet sorumlusu oluşturma
 
-GitHub iş akışında, Azure CLI'ye kimlik doğrulamak için Azure kimlik bilgilerini sağlamanız gerekir. Aşağıdaki örnek, kapsayıcı kayıt defteriniz için kaynak grubuna yönelik Katılımcı rolüyle birlikte bir hizmet ilkesi oluşturur.
+GitHub iş akışında Azure CLı kimlik doğrulaması için Azure kimlik bilgilerini sağlamanız gerekir. Aşağıdaki örnek, kapsayıcı kayıt defteriniz için kaynak grubu kapsamındaki katkıda bulunan rolüne sahip bir hizmet sorumlusu oluşturur.
 
-İlk olarak, kaynak grubunuzun kaynak kimliğini alın. Aşağıdaki [az grup gösteri][az-acr-show] komutunda grubunuzun adını değiştirin:
+İlk olarak, kaynak grubunuzun kaynak KIMLIĞINI alın. Aşağıdaki [az Group Show][az-acr-show] komutunda grubunuzun adını değiştirin:
 
 ```azurecli
 groupId=$(az group show \
@@ -61,7 +61,7 @@ groupId=$(az group show \
   --query id --output tsv)
 ```
 
-Hizmet ilkesini oluşturmak [için az reklam sp create-for-rbac'ı][az-ad-sp-create-for-rbac] kullanın:
+Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın:
 
 ```azurecli
 az ad sp create-for-rbac \
@@ -87,13 +87,13 @@ az ad sp create-for-rbac \
 }
 ```
 
-Daha sonraki bir adımda kullanıldığından JSON çıktısını kaydedin. Ayrıca, bir sonraki `clientId`bölümde hizmet ilkesini güncelleştirmeniz gereken ,
+Sonraki bir adımda kullanıldığından JSON çıkışını kaydedin. Ayrıca, sonraki bölümde hizmet sorumlusunu `clientId`güncelleştirmeniz gereken öğesini de göz önünde bulabilirsiniz.
 
-### <a name="update-service-principal-for-registry-authentication"></a>Kayıt defteri kimlik doğrulaması için hizmet ilkesini güncelleştirme
+### <a name="update-service-principal-for-registry-authentication"></a>Kayıt defteri kimlik doğrulaması için hizmet sorumlusu güncelleştirme
 
-Konteyner kayıt defterinizde itme ve çekme izinlerine izin vermek için Azure hizmet temel kimlik bilgilerini güncelleştirin. Bu adım, GitHub iş akışının [kapsayıcı kayıt defterinizle kimlik doğrulaması](../container-registry/container-registry-auth-service-principal.md)için hizmet ilkesini kullanmasına olanak tanır. 
+Kapsayıcı kayıt defterinizde gönderme ve çekme izinlerine izin vermek için Azure hizmet sorumlusu kimlik bilgilerini güncelleştirin. Bu adım, GitHub iş akışının [kapsayıcı kayıt defterinizde kimlik doğrulamak](../container-registry/container-registry-auth-service-principal.md)için hizmet sorumlusunu kullanmasına izin verir. 
 
-Konteyner kayıt defterinizin kaynak kimliğini alın. Aşağıdaki [az acr show][az-acr-show] komutunda kayıt defterinizin adını değiştirin:
+Kapsayıcı kayıt defterinizin kaynak KIMLIĞINI alın. Kayıt defterinizin adını şu [az ACR Show][az-acr-show] komutunda değiştirin:
 
 ```azurecli
 registryId=$(az acr show \
@@ -101,7 +101,7 @@ registryId=$(az acr show \
   --query id --output tsv)
 ```
 
-Kayıt defterine itme ve çekme erişimi sağlayan AcrPush rolünü atamak için [az rol ataması oluşturun.][az-role-assignment-create] Hizmet müdürünüzin istemci kimliğini değiştirin:
+Kayıt defterine gönderme ve çekme erişimi sağlayan AcrPush rolünü atamak için [az role atama Create][az-role-assignment-create] ' i kullanın. Hizmet sorumlunun istemci KIMLIĞINI değiştirin:
 
 ```azurecli
 az role assignment create \
@@ -110,26 +110,26 @@ az role assignment create \
   --role AcrPush
 ```
 
-### <a name="save-credentials-to-github-repo"></a>Kimlik bilgilerini GitHub repo'ya kaydetme
+### <a name="save-credentials-to-github-repo"></a>Kimlik bilgilerini GitHub deposuna Kaydet
 
-1. GitHub UI'sinde çatallı deponuza gidin ve **Ayarlar** > **Sırları'nı**seçin. 
+1. GitHub Kullanıcı arabiriminde, gizli deponuza gidin ve **Ayarlar** > **gizli**dizileri ' ni seçin. 
 
-1. Aşağıdaki sırları eklemek için **yeni bir sır ekle'yi** seçin:
+1. Aşağıdaki gizli dizileri eklemek için **Yeni bir parola Ekle** ' yi seçin:
 
 |Gizli dizi  |Değer  |
 |---------|---------|
-|`AZURE_CREDENTIALS`     | Hizmet temel oluşturmadan tüm JSON çıkışı |
-|`REGISTRY_LOGIN_SERVER`   | Kayıt defterinizin giriş sunucusu adı (hepsi küçük harf). Örnek: *myregistry.azure.cr.io*        |
-|`REGISTRY_USERNAME`     |  Hizmet `clientId` temel oluşturma JSON çıktısından       |
-|`REGISTRY_PASSWORD`     |  Hizmet `clientSecret` temel oluşturma JSON çıktısından |
-| `RESOURCE_GROUP` | Hizmet ilkesini kapsamda kapsamda görmek için kullandığınız kaynak grubunun adı |
+|`AZURE_CREDENTIALS`     | Hizmet sorumlusu oluşturma işleminden tüm JSON çıkışı |
+|`REGISTRY_LOGIN_SERVER`   | Kayıt defterinizin oturum açma sunucusu adı (tümü küçük harf). Örnek: *myregistry.Azure.CR.io*        |
+|`REGISTRY_USERNAME`     |  Hizmet `clientId` sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından       |
+|`REGISTRY_PASSWORD`     |  Hizmet `clientSecret` sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından |
+| `RESOURCE_GROUP` | Hizmet sorumlusu kapsamında kullanılan kaynak grubunun adı |
 
-### <a name="create-workflow-file"></a>İş akışı dosyası oluşturma
+### <a name="create-workflow-file"></a>İş akışı dosyası oluştur
 
-1. GitHub UI'sinde **Eylemler** > **Yeni iş akışını**seçin.
-1. **İş akışını kendiniz ayarla'yı**seçin.
-1. **Yeni dosyayı edit,** örnek kodu n üzerine yazmak için aşağıdaki YAML içeriğini yapıştırın. Varsayılan dosya adını `main.yml`kabul edin veya seçtiğiniz bir dosya adı sağlayın.
-1. **Commit Commit'ı**seç, isteğe bağlı olarak işlemenin kısa ve genişletilmiş açıklamalarını sağlayın ve **yeni dosyayı commit'i**seçin.
+1. GitHub Kullanıcı arabiriminde **Eylemler** > **yeni iş akışı**' nı seçin.
+1. **Bir iş akışını kendiniz ayarlayın**öğesini seçin.
+1. **Yeni dosyayı Düzenle**' de, örnek kodun üzerine yazmak için aşağıdaki YAML içeriğini yapıştırın. Varsayılan dosya adını `main.yml`kabul edin veya seçtiğiniz bir dosya adı sağlayın.
+1. **Yürütmeyi Başlat**' ı seçin, isteğe bağlı olarak işlemeniz için kısa ve genişletilmiş açıklamaları sağlayın ve **Yeni Dosya Yürüt**' ü seçin
 
 ```yml
 on: [push]
@@ -171,15 +171,15 @@ jobs:
             location: 'west us'
 ```
 
-### <a name="validate-workflow"></a>İş akışını doğrulama
+### <a name="validate-workflow"></a>İş akışını doğrula
 
-İş akışı dosyasını işledikten sonra, iş akışı tetiklenir. İş akışı ilerlemesini gözden geçirmek **için, Eylemler** > **İş Akışları'na**gidin. 
+İş akışı dosyası kaydedildikten sonra iş akışı tetiklenir. İş akışı ilerlemesini gözden geçirmek için **Eylemler** > **iş akışları**' na gidin. 
 
-![İş akışı ilerlemeyi görüntüleme](./media/container-instances-github-action/github-action-progress.png)
+![İş akışı ilerlemesini görüntüleme](./media/container-instances-github-action/github-action-progress.png)
 
-İş akışınızdaki her adımın durumunu ve sonuçlarını görüntüleme hakkında bilgi için [iş akışını yönetme](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run) bölümüne bakın.
+İş akışınızda her adımın durumunu ve sonuçlarını görüntüleme hakkında bilgi için bkz. [iş akışı çalıştırmasını yönetme](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run) .
 
-İş akışı tamamlandığında, [az kapsayıcı göster][az-container-show] komutunu çalıştırarak *aci-sampleapp* adlı kapsayıcı örneği hakkında bilgi alın. Kaynak grubunuzun adını değiştirin: 
+İş akışı tamamlandığında, [az Container Show][az-container-show] komutunu çalıştırarak *aci-SampleApp* adlı kapsayıcı örneği hakkında bilgi alın. Kaynak grubunuzun adını değiştirin: 
 
 ```azurecli
 az container show \
@@ -197,35 +197,35 @@ FQDN                                   ProvisioningState
 aci-action01.westus.azurecontainer.io  Succeeded
 ```
 
-Örnek sağlandıktan sonra, çalışan web uygulamasını görüntülemek için tarayıcınızdaki kapsayıcının FQDN'sine gidin.
+Örnek sağlandıktan sonra, çalışan Web uygulamasını görüntülemek için, tarayıcınızda kapsayıcının FQDN 'sine gidin.
 
-![Tarayıcıda web uygulaması çalıştırma](./media/container-instances-github-action/github-action-container.png)
+![Web uygulamasını tarayıcıda çalıştırma](./media/container-instances-github-action/github-action-container.png)
 
-## <a name="use-deploy-to-azure-extension"></a>Azure uzantısına Dağıt'ı kullanma
+## <a name="use-deploy-to-azure-extension"></a>Azure 'a dağıt uzantısını kullanma
 
-Alternatif olarak, iş akışını yapılandırmak için Azure CLI'de [Azure'a Dağıt uzantısını](https://github.com/Azure/deploy-to-azure-cli-extension) kullanın. Uzantıdaki komut, `az container app up` Azure Kapsayıcı Örnekleri'ne dağıtmak için bir iş akışı ayarlamak için giriş parametrelerini sizden alır. 
+Alternatif olarak, iş akışını yapılandırmak için Azure CLı 'da [Azure 'Da dağıtma uzantısı](https://github.com/Azure/deploy-to-azure-cli-extension) ' nı kullanın. Uzantıdaki `az container app up` komut, Azure Container Instances dağıtmak üzere bir iş akışı ayarlamak için sizin giriş parametrelerini alır. 
 
-Azure CLI tarafından oluşturulan iş [akışı, GitHub'ı kullanarak el ile oluşturabileceğiniz](#configure-github-workflow)iş akışına benzer.
+Azure CLı tarafından oluşturulan iş akışı, [GitHub kullanarak el ile oluşturabileceğiniz](#configure-github-workflow)iş akışına benzer.
 
-### <a name="additional-prerequisite"></a>Ek ön koşul
+### <a name="additional-prerequisite"></a>Ek önkoşul
 
-Bu senaryoiçin [ön koşullar](#prerequisites) avesi ve [repo kurulumuna](#set-up-repo) ek olarak, Azure CLI için **Azure'a Dağıt uzantısını** yüklemeniz gerekir.
+Bu senaryonun [önkoşullarını](#prerequisites) ve [Depo kurulumuna](#set-up-repo) ek olarak, Azure CLI için **Azure uzantısına dağıtım** ' yi yüklemeniz gerekir.
 
-Uzantısı yüklemek için [az uzantısı eklemek][az-extension-add] komutunu çalıştırın:
+Uzantıyı yüklemek için [az Extension Add][az-extension-add] komutunu çalıştırın:
 
 ```azurecli
 az extension add \
   --name deploy-to-azure
 ```
 
-Uzantıları bulma, yükleme ve yönetme hakkında daha fazla bilgi için azure [CLI ile uzantıları kullan'a](/cli/azure/azure-cli-extensions-overview)bakın.
+Uzantıları bulma, yükleme ve yönetme hakkında daha fazla bilgi için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
 
 ### <a name="run-az-container-app-up"></a>`az container app up` öğesini çalıştırın
 
-[Az konteyner uygulamasını çalıştırmak][az-container-app-up] için en az aşağıdakileri sağlayın:
+Az [Container App up][az-container-app-up] komutunu çalıştırmak için en az:
 
-* Azure kapsayıcı kayıt defterinizin adı, örneğin, *kayıt defteri*
-* Örneğin, GitHub repo'nuzun URL'si,`https://github.com/<your-GitHub-Id>/acr-build-helloworld-node`
+* Azure Container Registry 'nizin adı, örneğin, *myregistry*
+* GitHub deposunun URL 'SI, örneğin`https://github.com/<your-GitHub-Id>/acr-build-helloworld-node`
 
 Örnek komut:
 
@@ -235,16 +235,16 @@ az container app up \
   --repository https://github.com/myID/acr-build-helloworld-node
 ```
 
-### <a name="command-progress"></a>Komut ilerlemesi
+### <a name="command-progress"></a>Komut ilerleme durumu
 
-* İstendiğinde, GitHub kimlik bilgilerinizi sağlayın veya kayıt defterinizde kimlik doğrulaması için *repo* ve *kullanıcı* kapsamları olan bir [GitHub kişisel erişim belirteci](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (PAT) sağlayın. GitHub kimlik bilgilerini sağlarsanız, komut sizin için bir PAT oluşturur.
+* İstendiğinde, GitHub kimlik bilgilerinizi sağlayın veya kayıt defterinizde kimlik doğrulaması yapmak için *Depo* ve *Kullanıcı* Kapsamları içeren bir [GitHub kişisel erişim belirteci](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (Pat) sağlayın. GitHub kimlik bilgilerini sağlarsanız, komut sizin için bir PAT oluşturur.
 
-* Komut, iş akışı için repo sırları oluşturur:
+* Komut iş akışı için depo gizli dizileri oluşturur:
 
-  * Azure CLI için hizmet temel kimlik bilgileri
-  * Azure kapsayıcı kayıt defterine erişmek için kimlik bilgileri
+  * Azure CLı için hizmet sorumlusu kimlik bilgileri
+  * Azure Container Registry 'ye erişim için kimlik bilgileri
 
-* Komut iş akışı dosyasını repo'nuza işledikten sonra, iş akışı tetiklenir. 
+* Komut iş akışı dosyasını depoya kaydettikten sonra iş akışı tetiklenir. 
 
 Çıkış şuna benzer olacaktır:
 
@@ -258,11 +258,11 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer.io:8080/
 ```
 
-### <a name="validate-workflow"></a>İş akışını doğrulama
+### <a name="validate-workflow"></a>İş akışını doğrula
 
-İş akışı, GitHub repo'nuzun temel adını içeren bir Azure kapsayıcı örneği dağıtıyor, bu durumda *acr-build-helloworld düğümü.* Tarayıcınızda, çalışan web uygulamasını görüntülemek için sağlanan bağlantıya göz atabilirsiniz. Uygulamanız 8080'den başka bir bağlantı noktasında dinliyorsa, bunun yerine URL'de bunu belirtin.
+İş akışı, bu örnekte *ACR-Build-HelloWorld-node*adlı GitHub deponuzun temel adıyla bir Azure Container örneği dağıtır. Tarayıcınızda, çalışan Web uygulamasını görüntülemek için belirtilen bağlantıya gidebilirsiniz. Uygulamanız 8080 dışında bir bağlantı noktasını dinliyorsa, bunun yerine URL 'de bunu belirtin.
 
-GitHub UI'daki her adımın iş akışı durumunu ve sonuçlarını görüntülemek için [bkz.](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)
+GitHub Kullanıcı arabirimindeki her adımın iş akışı durumunu ve sonuçlarını görüntülemek için bkz. [iş akışı çalıştırmasını yönetme](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -274,7 +274,7 @@ az container delete \
   --resource-group <resource-group-name>
 ```
 
-Kaynak grubunu ve tüm kaynakları silmek için [az grubu silme][az-group-delete] komutunu çalıştırın:
+Kaynak grubunu ve içindeki tüm kaynakları silmek için [az Group Delete][az-group-delete] komutunu çalıştırın:
 
 ```azurecli
 az group delete \
@@ -283,7 +283,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Geliştirme iş akışınızı otomatikleştirmek için daha fazla eylem için [GitHub](https://github.com/marketplace?type=actions) Marketi'ne göz atın
+Geliştirme iş akışınızı otomatikleştirmeye yönelik daha fazla eylem için [GitHub Market](https://github.com/marketplace?type=actions) 'e gidin
 
 
 <!-- LINKS - external -->

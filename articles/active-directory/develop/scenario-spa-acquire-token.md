@@ -1,6 +1,6 @@
 ---
-title: Web API(tek sayfalı uygulamalar) aramak için bir belirteç edinin - Microsoft kimlik platformu | Azure
-description: Tek sayfalı bir uygulama oluşturmayı öğrenin (API çağırmak için bir belirteç edinin)
+title: Bir Web API 'SI çağırmak için belirteç alma (tek sayfalı uygulamalar)-Microsoft Identity platform | Mavisi
+description: Tek sayfalı uygulama oluşturmayı öğrenin (bir API çağırmak için belirteç alma)
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -12,36 +12,36 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882327"
 ---
-# <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Tek sayfalı uygulama: API çağırmak için bir belirteç edinin
+# <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Tek sayfalı uygulama: API 'YI çağırmak için belirteç alma
 
-MSAL.js ile API'ler için belirteçleri edinme deseni ilk `acquireTokenSilent` yöntemi kullanarak sessiz bir belirteç isteği girişimidir. Bu yöntem çağrıldığında, kitaplık önce tarayıcı depolama alanında geçerli bir belirteç olup olmadığını görmek için önbelleği denetler ve döndürür. Önbellekte geçerli bir belirteç yoksa, gizli bir iframe'den Azure Etkin Dizin'e (Azure AD) sessiz bir belirteç isteği gönderir. Bu yöntem, kitaplığın belirteçleri yenilemesine de olanak tanır. Azure AD'de tek oturum oturumu ve belirteç yaşam süresi değerleri hakkında daha fazla bilgi için [bkz.](active-directory-configurable-token-lifetimes.md)
+MSAL. js ile API 'Ler için belirteçleri alma deseninin, `acquireTokenSilent` yöntemi kullanılarak sessiz bir belirteç isteği denemesi gerekir. Bu yöntem çağrıldığında, kitaplık önce geçerli bir belirtecin mevcut olup olmadığını görmek için tarayıcı depolamada önbelleği denetler ve döndürür. Önbellekte geçerli bir belirteç yoksa, gizli bir iframe 'den Azure Active Directory (Azure AD) için sessiz bir belirteç isteği gönderir. Bu yöntem, kitaplığın belirteçleri yenilemesini de sağlar. Azure AD 'de çoklu oturum açma oturumu ve belirteç yaşam süresi değerleri hakkında daha fazla bilgi için bkz. [belirteç yaşam süreleri](active-directory-configurable-token-lifetimes.md).
 
-Azure AD'ye yönelik sessiz belirteç istekleri, süresi dolmuş Azure REKLAM oturumu veya parola değişikliği gibi nedenlerden dolayı başarısız olabilir. Bu durumda, belirteçleri elde etmek için etkileşimli yöntemlerden birini (kullanıcıyı ister) çağırabilirsiniz:
+Azure AD 'ye yönelik sessiz Belirteç istekleri, zaman aşımına uğradı bir Azure AD oturumu veya parola değişikliği gibi nedenlerle başarısız olabilir. Bu durumda, bir etkileşimli yöntemden birini çağırabilirsiniz (kullanıcıdan, belirteçleri, belirteç almasına izin verir).
 
-* [Açılan pencere](#acquire-a-token-with-a-pop-up-window), kullanarak`acquireTokenPopup`
-* [Yeniden yönlendirme](#acquire-a-token-with-a-redirect), kullanarak`acquireTokenRedirect`
+* Kullanarak [açılır pencere](#acquire-a-token-with-a-pop-up-window)`acquireTokenPopup`
+* Kullanarak [yeniden yönlendirin](#acquire-a-token-with-a-redirect)`acquireTokenRedirect`
 
-## <a name="choose-between-a-pop-up-or-redirect-experience"></a>Açılır pencere veya yeniden yönlendirme deneyimi arasında seçim yapma
+## <a name="choose-between-a-pop-up-or-redirect-experience"></a>Bir açılır pencere veya yeniden yönlendirme deneyimi arasında seçim yapın
 
- Uygulamanızda hem açılır pencere hem de yeniden yönlendirme yöntemlerini kullanamazsınız. Açılır pencere veya yeniden yönlendirme deneyimi arasındaki seçim, uygulama akışınıza bağlıdır:
+ Uygulamanızda hem açılır hem de yeniden yönlendirme yöntemlerini kullanamazsınız. Açılır veya yeniden yönlendirme deneyimi arasındaki seçim, uygulama akışınıza bağlıdır:
 
-* Kimlik doğrulama sırasında kullanıcıların ana uygulama sayfanızdan uzaklaşmasını istemiyorsanız, açılır pencere yöntemini önerdik. Kimlik doğrulama yönlendirmesi açılır pencerede gerçekleştiğinden, ana uygulamanın durumu korunur.
+* Kimlik doğrulama sırasında kullanıcıların ana uygulama sayfanız dışında hareket etmemenizi istemiyorsanız, açılır yöntemi öneririz. Kimlik doğrulama yeniden yönlendirmesi bir açılır pencerede olduğundan, ana uygulamanın durumu korunur.
 
-* Kullanıcıların açılır pencerelerinin devre dışı bırakıldığı tarayıcı kısıtlamaları veya ilkeleri varsa, yeniden yönlendirme yöntemini kullanabilirsiniz. Internet Explorer'da [açılır pencerelerle ilgili bilinen sorunlar](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser)olduğundan, Internet Explorer tarayıcısıyla yönlendirme yöntemini kullanın.
+* Kullanıcılar, tarayıcı kısıtlamalarına veya açılır pencerelere ait pencerelerin devre dışı bırakıldığı ilkelere sahip ise, yeniden yönlendirme yöntemini kullanabilirsiniz. [Internet Explorer 'da açılır pencereler ile ilgili bilinen sorunlar](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser)olduğundan, Internet Explorer tarayıcısı ile yeniden yönlendirme yöntemini kullanın.
 
-Erişim belirteci isteğini yaparken dahil olmasını istediğiniz API kapsamlarını ayarlayabilirsiniz. Erişim belirtecinde istenen tüm kapsamların verilmeyebileceğini unutmayın. Bu, kullanıcının rızasına bağlıdır.
+Erişim belirtecinin, erişim belirteci isteği oluştururken dahil olmasını istediğiniz API kapsamlarını ayarlayabilirsiniz. Tüm istenen kapsamların erişim belirtecinde verilmediğini unutmayın. Bu, kullanıcının onay durumuna bağlıdır.
 
-## <a name="acquire-a-token-with-a-pop-up-window"></a>Açılır pencereli bir belirteç edinme
+## <a name="acquire-a-token-with-a-pop-up-window"></a>Açılır pencere ile belirteç alma
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki kod, daha önce açıklanan deseni açılır pencere yöntemleriyle birleştirir:
+Aşağıdaki kod, daha önce açıklanan kalıbı bir açılır deneyim yöntemleriyle birleştirir:
 
 ```javascript
 const accessTokenRequest = {
@@ -68,9 +68,9 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-MSAL Açısal sarıcı, otomatik olarak erişim belirteçleri elde edecek ve API'lere HTTP isteklerine eklemek HTTP önleme sağlar.
+MSAL angular sarmalayıcısı, erişim belirteçlerini sessizce otomatik olarak alacak ve bunları API 'lere HTTP isteklerine ekleyecek HTTP yakalayıcısını sağlar.
 
-`protectedResourceMap` Yapılandırma seçeneğinde API'lerin kapsamlarını belirtebilirsiniz. `MsalInterceptor`jetonları otomatik olarak alırken bu kapsamları talep edecektir.
+`protectedResourceMap` Yapılandırma seçeneğinde API 'ler için kapsamları belirtebilirsiniz. `MsalInterceptor`belirteçleri otomatik olarak alırken bu kapsamları ister.
 
 ```javascript
 // app.module.ts
@@ -109,7 +109,7 @@ MSAL Açısal sarıcı, otomatik olarak erişim belirteçleri elde edecek ve API
 export class AppModule { }
 ```
 
-Sessiz belirteç ediniminin başarısı ve başarısızlığı için MSAL Açısal, abone olabileceğiniz geri aramalar sağlar. Aboneliği iptal etmeyi de unutmamak önemlidir.
+Sessiz belirteç alma başarısızlığının başarısı ve başarısızlığı için MSAL angular, abone olabileceğiniz geri çağrılar sağlar. Aboneliğinizi kaldırmak da önemlidir.
 
 ```javascript
 // In app.component.ts
@@ -126,15 +126,15 @@ ngOnDestroy() {
  }
 ```
 
-Alternatif olarak, çekirdek MSAL.js kitaplığında açıklandığı gibi edinme belirteç yöntemlerini kullanarak belirteçleri açıkça elde edebilirsiniz.
+Alternatif olarak, çekirdek MSAL. js kitaplığı 'nda açıklandığı gibi Acquire-Token yöntemlerini kullanarak açıkça belirteç alabilirsiniz.
 
 ---
 
-## <a name="acquire-a-token-with-a-redirect"></a>Yeniden yönlendirme ile belirteç edinme
+## <a name="acquire-a-token-with-a-redirect"></a>Yeniden yönlendirme ile belirteç alma
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki desen daha önce açıklandığı gibi, ancak etkileşimli belirteçleri elde etmek için bir yönlendirme yöntemi ile gösterilir. Daha önce belirtildiği gibi yeniden yönlendirme geri aramasını kaydetmeniz gerekir.
+Aşağıdaki model daha önce açıklanmamaktadır, ancak belirteçleri etkileşimli olarak almak için bir yeniden yönlendirme yöntemiyle gösteriliyor. Yeniden yönlendirme geri aramasını daha önce belirtildiği gibi kaydetmeniz gerekir.
 
 ```javascript
 function authCallback(error, response) {
@@ -160,15 +160,15 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-## <a name="request-optional-claims"></a>İsteğe bağlı talep isteme
+## <a name="request-optional-claims"></a>İsteğe bağlı talepler isteme
 
-İsteğe bağlı talepleri aşağıdaki amaçlar la kullanabilirsiniz:
+Aşağıdaki amaçlar için isteğe bağlı talepler kullanabilirsiniz:
 
-- Uygulamanız için belirteçlere ek talepler ekleyin.
-- Azure AD'nin belirteçlerle döndürdettiği bazı iddiaların davranışını değiştirin.
+- Uygulamanıza yönelik belirteçlere ek talepler ekleyin.
+- Azure AD 'nin belirteçlerde döndürdüğü belirli taleplerin davranışını değiştirin.
 - Uygulamanız için özel talepler ekleyin ve erişin.
 
-İsteğe bağlı `IdToken`talepler istemek için, `AuthenticationParameters.ts` sınıfın alanına `claimsRequest` dizilmiş bir talep nesnesi gönderebilirsiniz.
+İçinde `IdToken`isteğe bağlı talepler istemek için, `claimsRequest` `AuthenticationParameters.ts` sınıfının alanına bir strıngiingclaim nesnesi gönderebilirsiniz.
 
 ```javascript
 "optionalClaims":
@@ -188,11 +188,11 @@ var request = {
 myMSALObj.acquireTokenPopup(request);
 ```
 
-Daha fazla bilgi için [isteğe bağlı taleplere](active-directory-optional-claims.md)bakın.
+Daha fazla bilgi için bkz. [Isteğe bağlı talepler](active-directory-optional-claims.md).
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-Bu kod, daha önce açıklandığı gibi aynıdır.
+Bu kod, daha önce açıklananla aynıdır.
 
 ---
 

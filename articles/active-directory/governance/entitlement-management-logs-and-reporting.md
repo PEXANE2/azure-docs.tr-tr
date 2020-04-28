@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor ile & raporu arşivleyin - Azure AD yetkilendirme yönetimi
-description: Azure Active Directory yetkilendirme yönetiminde Azure Monitor ile günlükleri nasıl arşivlendirecek ve rapor oluşturabilirsiniz öğrenin.
+title: Azure Izleyici ile arşiv & raporu-Azure AD Yetkilendirme Yönetimi
+description: Azure Active Directory yetkilendirme yönetimi 'nde Azure Izleyici ile günlükleri arşivlemeyi ve rapor oluşturmayı öğrenin.
 services: active-directory
 documentationCenter: ''
 author: barclayn
@@ -17,140 +17,140 @@ ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d59a508d03730a51e793a5e30e2c99a91af77ce8
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81380179"
 ---
-# <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Monitor'da Azure AD yetkilendirme yönetimi yle ilgili arşiv günlükleri ve raporlama
+# <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Izleyici 'de Azure AD yetkilendirme yönetiminde arşiv günlükleri ve raporları
 
-Azure AD, denetim olaylarını denetim günlüğünde 30 güne kadar saklar. Ancak, azure [AD'nin raporlama verilerini ne kadar süreyle depoladığı?](../reports-monitoring/reference-reports-data-retention.md) Daha sonra bu verilerle ilgili çalışma kitaplarını ve özel sorguları ve raporları kullanabilirsiniz.
+Azure AD denetim günlüğünde en fazla 30 gün boyunca denetim olaylarını depolar. Bununla birlikte, denetim verilerini varsayılan saklama süresinden daha uzun bir süre boyunca tutabilirsiniz. Azure [ad depolama, verileri](../reports-monitoring/reference-reports-data-retention.md)bir Azure depolama hesabına yönlendirerek veya Azure izleyici 'yi kullanarak verileri raporlama. Daha sonra bu veriler üzerinde çalışma kitaplarını ve özel sorguları ve raporları kullanabilirsiniz.
 
 
-## <a name="configure-azure-ad-to-use-azure-monitor"></a>Azure Monitörünü kullanacak şekilde Azure AD'yi yapılandırma
-Azure Monitor çalışma kitaplarını kullanmadan önce, denetim günlüklerinin bir kopyasını Azure Monitor'a gönderecek şekilde Azure AD'yi yapılandırmanız gerekir.
+## <a name="configure-azure-ad-to-use-azure-monitor"></a>Azure AD 'yi Azure Izleyici kullanacak şekilde yapılandırma
+Azure Izleyici çalışma kitaplarını kullanmadan önce Azure AD 'yi, denetim günlüklerinin bir kopyasını Azure Izleyici 'ye gönderecek şekilde yapılandırmanız gerekir.
 
-Azure AD denetim günlüklerini arşivlemek için Azure Monitor aboneliğinde Azure Monitor'a sahip olmak gerekir. Azure Monitörü'nde [Azure REKLAM etkinlik günlüklerinde](../reports-monitoring/concept-activity-logs-azure-monitor.md)Azure Monitor kullanmanın ön koşulları ve tahmini maliyetleri hakkında daha fazla bilgi edinebilirsiniz.
+Azure AD denetim günlüklerini arşivleme, bir Azure aboneliğinde Azure Izleyici olmasını gerektirir. Azure izleyici ['de](../reports-monitoring/concept-activity-logs-azure-monitor.md)Azure izleyici 'de Azure izleyici 'yi kullanmaya ilişkin ön koşullar ve tahmini maliyetler hakkında daha fazla bilgi edinebilirsiniz.
 
-**Önkoşul rolü**: Global Admin
+**Önkoşul rolü**: genel yönetici
 
-1. Azure portalında Global Yönetici olan bir kullanıcı olarak oturum açın. Azure Monitörü çalışma alanını içeren kaynak grubuna erişebildiğinizden emin olun.
+1. Azure portal, genel yönetici olan bir kullanıcı olarak oturum açın. Azure Izleyici çalışma alanını içeren kaynak grubuna erişiminizin olduğundan emin olun.
  
-1. **Azure Etkin Dizin'i** seçin ve sol daki gezinme menüsünde İzleme altında **Tanılama ayarlarını** tıklatın. Denetim günlüklerini bu çalışma alanına göndermek için zaten bir ayar olup olmadığını denetleyin.
+1. **Azure Active Directory** öğesini seçin ve ardından sol gezinti menüsünde Izleme altında **Tanılama ayarları** ' na tıklayın. Denetim günlüklerini bu çalışma alanına göndermek için zaten bir ayar olup olmadığını denetleyin.
 
-1. Zaten bir ayar yoksa, **tanı ayarını ekle'yi**tıklatın. Azure AD denetim günlüğünü Azure Monitor çalışma alanına göndermek için [Azure AD günlüklerini Azure Monitor günlükleriyle tümleştir](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md#send-logs-to-azure-monitor) makaledeki yönergeleri kullanın.
+1. Zaten bir ayar yoksa, **Tanılama ayarı Ekle**' ye tıklayın. Azure AD denetim günlüğünü Azure Izleyici çalışma alanına göndermek için Azure [ad günlüklerini Azure izleyici günlükleriyle tümleştirme](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md#send-logs-to-azure-monitor) makalesindeki yönergeleri kullanın.
 
     ![Tanılama ayarları bölmesi](./media/entitlement-management-logs-and-reporting/audit-log-diagnostics-settings.png)
 
 
-1. Günlük Azure Monitor'a gönderildikten **sonra, Günlük Analizi çalışma alanlarını**seçin ve Azure AD denetim günlüklerini içeren çalışma alanını seçin.
+1. Günlük Azure Izleyici 'ye gönderildikten sonra **Log Analytics çalışma alanları**' nı seçin ve Azure AD denetim günlüklerini içeren çalışma alanını seçin.
 
-1. **Kullanımı ve tahmini maliyetleri** seçin ve Veri **Saklama'yı**tıklatın. Kaydırıcıyı, denetim gereksinimlerinizi karşılamak için verileri tutmak istediğiniz gün sayısıyla değiştirin.
+1. **Kullanım ve tahmini maliyetler** ' i seçin ve **veri saklama**' ye tıklayın. Kaydırıcıyı, verileri denetim gereksinimlerinize uyacak şekilde tutmak istediğiniz gün sayısıyla değiştirin.
 
-    ![Günlük Analizi çalışma alanları bölmesi](./media/entitlement-management-logs-and-reporting/log-analytics-workspaces.png)
+    ![Log Analytics çalışma alanları bölmesi](./media/entitlement-management-logs-and-reporting/log-analytics-workspaces.png)
 
-1. Daha sonra, çalışma alanınızda tutulan tarih aralığını görmek için *Arşivlenmiş Günlük Tarih Aralığı* çalışma kitabını kullanabilirsiniz:  
+1. Daha sonra, çalışma alanınızda tutulan tarih aralığını görmek için *arşivlenmiş günlük tarih aralığı* çalışma kitabını kullanabilirsiniz:  
     
-    1. **Azure Etkin Dizin'i** seçin ve **ardından Çalışma Kitapları'nı**tıklatın. 
+    1. **Azure Active Directory** sonra **çalışma kitapları**' nı seçin. 
     
-    1. **Azure Active Directory Sorun Giderme**bölümünü genişletin ve **Arşivlenmiş Günlük Tarih Aralığı'nı**tıklatın. 
+    1. **Sorun giderme Azure Active Directory**bölümünü genişletin ve **arşivlenmiş günlük tarih aralığı**' na tıklayın. 
 
 
 ## <a name="view-events-for-an-access-package"></a>Erişim paketi için olayları görüntüleme  
 
-Bir erişim paketi için olayları görüntülemek için, temel Azure monitörçalışma alanına (bilgi için [Azure Monitor'da veri ve çalışma alanlarına erişimi yönet'e](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) bakın) ve aşağıdaki rollerden birine erişiminiz olması gerekir: 
+Bir erişim paketinin olaylarını görüntülemek için, temel alınan Azure izleyici çalışma alanına erişiminizin olması gerekir (bilgi için bkz. [Azure izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) ) ve aşağıdaki rollerden biri: 
 
 - Genel yönetici  
 - Güvenlik yöneticisi  
 - Güvenlik okuyucusu  
 - Rapor okuyucu  
-- Uygulama yöneticisi  
+- Uygulama Yöneticisi  
 
 Olayları görüntülemek için aşağıdaki yordamı kullanın: 
 
-1. Azure portalında Azure **Etkin Dizin'i** seçin ve **ardından Çalışma Kitapları'nı**tıklatın. Yalnızca bir aboneliğiniz varsa, adım 3'e geçin. 
+1. Azure portal, **Azure Active Directory** ve ardından **çalışma kitapları**' nı seçin. Yalnızca bir aboneliğiniz varsa adım 3 ' e geçin. 
 
 1. Birden çok aboneliğiniz varsa, çalışma alanını içeren aboneliği seçin.  
 
-1. *Access Package Etkinliği*adlı çalışma kitabını seçin. 
+1. *Erişim paketi etkinliği*adlı çalışma kitabını seçin. 
 
-1. Bu çalışma kitabında, bir zaman aralığı (Emin değilse **hepsine** değiştirin) seçin ve bu süre boyunca etkinliği olan tüm erişim paketlerinin açılır listesinden bir erişim paketi Kimliği seçin. Seçili zaman aralığında gerçekleşen erişim paketiyle ilgili olaylar görüntülenir.  
+1. Bu çalışma kitabında, bir zaman aralığı seçin (emin değil **tümüne** değiştirin) ve bu zaman aralığı boyunca etkinliği olan tüm erişim paketlerinin açılan listesinden bir erişim paketi kimliği seçin. Seçilen zaman aralığı boyunca oluşan erişim paketiyle ilgili olaylar görüntülenir.  
 
-    ![Erişim paketi olaylarını görüntüleme](./media/entitlement-management-logs-and-reporting/view-events-access-package.png) 
+    ![Erişim paketi olaylarını görüntüle](./media/entitlement-management-logs-and-reporting/view-events-access-package.png) 
 
-    Her satırda saat, erişim paketi Kimliği, işlemin adı, nesne Kimliği, UPN ve işlemi başlatan kullanıcının görüntü adı yer alıyor.  Ek ayrıntılar JSON dahildir.   
+    Her satır saat, erişim paketi kimliği, işlemin adı, nesne kimliği, UPN ve işlemi başlatan kullanıcının görünen adını içerir.  Ek ayrıntılar JSON 'a dahildir.   
 
 
-## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>Azure portalını kullanarak özel Azure Monitör sorguları oluşturun
-Azure AD denetim etkinliklerinde yetki yönetimi etkinlikleri de dahil olmak üzere kendi sorgularınızı oluşturabilirsiniz.  
+## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>Azure portal kullanarak özel Azure Izleyici sorguları oluşturma
+Yetkilendirme Yönetimi olayları dahil olmak üzere Azure AD denetim olayları üzerinde kendi sorgularınızı oluşturabilirsiniz.  
 
-1. Azure portalının Azure Etkin Dizini'nde, yeni bir sorgu sayfası oluşturmak için sol daki gezinme menüsündeki İzleme bölümünün altındaki **Günlükler'i** tıklatın.
+1. Azure portal Azure Active Directory, yeni bir sorgu sayfası oluşturmak için sol gezinti menüsündeki Izleme bölümünde bulunan **Günlükler** ' e tıklayın.
 
-1. Çalışma alanınız sorgu sayfasının sol üst kısmında gösterilmelidir. Birden çok Azure Monitor çalışma alanınız varsa ve Azure REKLAM denetim olaylarını depolamak için kullandığınız çalışma alanı görünmüyorsa, **Kapsamı Seç'i**tıklatın. Ardından, doğru aboneliği ve çalışma alanını seçin.
+1. Çalışma alanınızın, sorgu sayfasının sol üst kısmında gösterilmesi gerekir. Birden çok Azure Izleyici çalışma alanınız varsa ve Azure AD denetim olaylarını depolamak için kullandığınız çalışma alanı gösterilmemişse, **kapsam Seç**' e tıklayın. Ardından, doğru aboneliği ve çalışma alanını seçin.
 
-1. Ardından, sorgu metni alanında "search *" dizesini silin ve aşağıdaki sorguyla değiştirin:
+1. Sonra sorgu metin alanında "Search *" dizesini silin ve aşağıdaki sorguyla değiştirin:
 
     ```
     AuditLogs | where Category == "EntitlementManagement"
     ```
 
-1. Ardından **Çalıştır'ı**tıklatın. 
+1. Ardından **Çalıştır**' a tıklayın. 
 
-    ![Sorguyı başlatmak için Çalıştır'ı tıklatın](./media/entitlement-management-logs-and-reporting/run-query.png)
+    ![Sorguyu başlatmak için Çalıştır 'a tıklayın](./media/entitlement-management-logs-and-reporting/run-query.png)
 
-Tablo, varsayılan olarak son saatten itibaren yetkilendirme yönetimi için Denetim günlüğü olaylarını gösterir. Eski olayları görüntülemek için "Zaman aralığı" ayarını değiştirebilirsiniz. Ancak, bu ayarı değiştirmek yalnızca Azure AD'nin Azure Monitor'a olay gönderecek şekilde yapılandırılmasından sonra meydana gelen olayları gösterir.
+Tablo, varsayılan olarak son saatten yetkilendirme yönetimi için denetim günlüğü olaylarını gösterir. Eski olayları görüntülemek için "zaman aralığı" ayarını değiştirebilirsiniz. Ancak, bu ayarın değiştirilmesi yalnızca Azure AD, olayları Azure Izleyici 'ye göndermek üzere yapılandırıldıktan sonra gerçekleşen olayları gösterir.
 
-Azure Monitor'da düzenlenen en eski ve en yeni denetim olaylarını öğrenmek istiyorsanız, aşağıdaki sorguyu kullanın:
+Azure Izleyici 'de tutulan en eski ve en yeni denetim olaylarını bildirmek istiyorsanız aşağıdaki sorguyu kullanın:
 
 ```
 AuditLogs | where TimeGenerated > ago(3653d) | summarize OldestAuditEvent=min(TimeGenerated), NewestAuditEvent=max(TimeGenerated) by Type
 ```
 
-Azure Monitor'da denetim etkinlikleri için depolanan [sütunlar](../reports-monitoring/reference-azure-monitor-audit-log-schema.md)hakkında daha fazla bilgi için bkz.
+Azure Izleyici 'de denetim olayları için depolanan sütunlar hakkında daha fazla bilgi için bkz. [Azure izleyici 'de Azure AD denetim günlükleri şemasını yorumlama](../reports-monitoring/reference-azure-monitor-audit-log-schema.md).
 
-## <a name="create-custom-azure-monitor-queries-using-azure-powershell"></a>Azure PowerShell'i kullanarak özel Azure Monitör sorguları oluşturun
+## <a name="create-custom-azure-monitor-queries-using-azure-powershell"></a>Azure PowerShell kullanarak özel Azure Izleyici sorguları oluşturma
 
-Azure Monitor'a günlük göndermek için Azure AD'yi yapılandırdıktan sonra PowerShell üzerinden günlüklere erişebilirsiniz. Ardından, kiracıda Global Yönetici olmanıza gerek kalmadan komut dosyalarından veya PowerShell komut satırından sorgu gönderin. 
+Azure AD 'yi Azure Izleyici 'ye Günlükler gönderecek şekilde yapılandırdıktan sonra, PowerShell aracılığıyla günlüklere erişebilirsiniz. Ardından, kiracınızda genel yönetici olması gerekmeden, komut dosyalarından veya PowerShell komut satırından sorgular gönderin. 
 
-### <a name="ensure-the-user-or-service-principal-has-the-correct-role-assignment"></a>Kullanıcı veya hizmet sorumlusunun doğru rol atamaya sahip olduğundan emin olun
+### <a name="ensure-the-user-or-service-principal-has-the-correct-role-assignment"></a>Kullanıcı veya hizmet sorumlusunun doğru rol atamasına sahip olduğundan emin olun
 
-Azure AD kimliğine kimlik tayini yapacak kullanıcı veya hizmet sorumlusunun, Log Analytics çalışma alanında uygun Azure rolünde olduğundan emin olun. Rol seçenekleri Log Analytics Reader veya Log Analytics Katılımcısı'dır. Bu rollerden birindeyseniz, [tek bir Azure aboneliğiyle Günlük Analizi Kimliğini Al'a](#retrieve-log-analytics-id-with-one-azure-subscription)atlayın.
+Azure AD 'de kimlik doğrulaması yapılacak Kullanıcı veya hizmet sorumlusu Log Analytics çalışma alanında uygun Azure rolünde olduğundan emin olun. Rol seçenekleri Log Analytics okuyucu veya Log Analytics katılımcısı olabilir. Bu rollerden birinde zaten varsa, [bir Azure aboneliğiyle log ANALYTICS kimliği almak](#retrieve-log-analytics-id-with-one-azure-subscription)için atlayın.
 
-Rol atamasını ayarlamak ve sorgu oluşturmak için aşağıdaki adımları yapın:
+Rol atamasını ayarlamak ve bir sorgu oluşturmak için aşağıdaki adımları uygulayın:
 
-1. Azure [portalında, Log Analytics çalışma alanını](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces
+1. Azure portal, [Log Analytics çalışma alanını](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces
 )bulun.
 
-1. **Erişim Denetimi 'ni (IAM)** seçin.
+1. **Access Control (IAM)** seçeneğini belirleyin.
 
-1. Ardından rol ataması eklemek için **Ekle'yi** tıklatın.
+1. Rol ataması eklemek için **Ekle** ' ye tıklayın.
 
     ![Rol ataması ekleyin](./media/entitlement-management-logs-and-reporting/workspace-set-role-assignment.png)
 
-### <a name="install-azure-powershell-module"></a>Azure PowerShell modüllerini yükleyin
+### <a name="install-azure-powershell-module"></a>Azure PowerShell modülünü Install
 
-Uygun rol atamasını yaptıktan sonra PowerShell'i başlatın ve [Azure PowerShell modüllerini](/powershell/azure/install-az-ps?view=azps-3.3.0) (henüz yapmadıysanız) yazarak yükleyin:
+Uygun rol atamasını aldıktan sonra PowerShell 'i başlatın ve [Azure PowerShell modülünü](/powershell/azure/install-az-ps?view=azps-3.3.0) (henüz yapmadıysanız), şunu yazarak yükleyebilirsiniz:
 
 ```azurepowershell
 install-module -Name az -allowClobber -Scope CurrentUser
 ```
     
-Artık Azure AD'ye kimlik doğrulamaya ve sorguladığınız Log Analytics çalışma alanının kimliğini almaya hazırsınız.
+Artık Azure AD 'ye kimlik doğrulaması yapmaya hazırsınız ve sorguladığınız Log Analytics çalışma alanının KIMLIĞINI alma.
 
-### <a name="retrieve-log-analytics-id-with-one-azure-subscription"></a>Tek bir Azure aboneliğiyle Günlük Analizi Kimliğini alma
-Yalnızca tek bir Azure aboneliğiniz ve tek bir Log Analytics çalışma alanınız varsa, Azure AD'de kimlik doğrulaması yapmak, bu aboneğe bağlanmak ve bu çalışma alanını almak için aşağıdakileri yazın:
+### <a name="retrieve-log-analytics-id-with-one-azure-subscription"></a>Tek bir Azure aboneliğiyle Log Analytics KIMLIĞINI alma
+Yalnızca tek bir Azure aboneliğiniz ve tek bir Log Analytics çalışma alanınız varsa, Azure AD 'de kimlik doğrulaması yapmak, bu aboneliğe bağlanmak ve bu çalışma alanını almak için aşağıdakileri yazın:
  
 ```azurepowershell
 Connect-AzAccount
 $wks = Get-AzOperationalInsightsWorkspace
 ```
  
-### <a name="retrieve-log-analytics-id-with-multiple-azure-subscriptions"></a>Birden fazla Azure aboneliğiyle Günlük Analizi Kimliği'ni alın
+### <a name="retrieve-log-analytics-id-with-multiple-azure-subscriptions"></a>Birden çok Azure aboneliğine sahip Log Analytics KIMLIĞINI alma
 
- [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) aynı anda tek bir abonelikle çalışır. Bu nedenle, birden çok Azure aboneliğiniz varsa, Azure AD günlükleriyle Birlikte Günlük Analizi çalışma alanına sahip olan aboneye bağlandığınızdan emin olmak istersiniz. 
+ [Get-Azoperationalınsightsworkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) her seferinde bir abonelikte çalışır. Bu nedenle, birden çok Azure aboneliğiniz varsa, Azure AD günlükleriyle Log Analytics çalışma alanına sahip olan birine bağlandığınızdan emin olmak isteyeceksiniz. 
  
- Aşağıdaki cmdlets aboneliklerin bir listesini görüntüler ve Log Analytics çalışma alanına sahip aboneliğin kimliğini bulun:
+ Aşağıdaki cmdlet 'ler, aboneliklerin bir listesini görüntüler ve Log Analytics çalışma alanına sahip olan aboneliğin KIMLIĞINI bulur:
  
 ```azurepowershell
 Connect-AzAccount
@@ -158,21 +158,21 @@ $subs = Get-AzSubscription
 $subs | ft
 ```
  
-PowerShell oturumunuzu yeniden authenticate ve bu abonelik le `Connect-AzAccount –Subscription $subs[0].id`ilişkilendirebilirsiniz. Etkileşimli olmayan lar da dahil olmak üzere PowerShell'den Azure'a nasıl kimlik doğrulaması yapılacağını öğrenmek için Azure [PowerShell ile Oturum Aç'a](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
-)bakın.
+Gibi `Connect-AzAccount –Subscription $subs[0].id`bir komut kullanarak PowerShell oturumunuzu yeniden kimlik doğrulaması yapabilir ve bu abonelikle ilişkilendirebilirsiniz. Etkileşimli olmayanlar dahil olmak üzere PowerShell 'den Azure 'da kimlik doğrulaması yapma hakkında daha fazla bilgi edinmek için bkz. [Azure PowerShell oturum açma](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
+).
 
-Bu abonelikte birden çok Log Analytics çalışma alanınız varsa, cmdlet [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) çalışma alanları listesini döndürür. Ardından Azure AD günlüklerine sahip olanı bulabilirsiniz. Bu `CustomerId` cmdlet tarafından döndürülen alan, Log Analytics çalışma alanına genel bakışta Azure portalında görüntülenen "Çalışma Alanı Kimliği"nin değeriyle aynıdır.
+Bu abonelikte birden çok Log Analytics çalışma alanınız varsa, [Get-Azoperationalınsightsworkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) cmdlet 'i, çalışma alanlarının listesini döndürür. Daha sonra Azure AD günlüklerine sahip olan bir tane bulabilirsiniz. Bu `CustomerId` cmdlet tarafından döndürülen alan, Log Analytics çalışma alanına genel bakış alanındaki Azure Portal gösterildiği "çalışma alanı kimliği" değeri ile aynıdır.
  
 ```powershell
 $wks = Get-AzOperationalInsightsWorkspace
 $wks | ft CustomerId, Name
 ```
 
-### <a name="send-the-query-to-the-log-analytics-workspace"></a>Sorguyu Log Analytics çalışma alanına gönderme
-Son olarak, bir çalışma alanı tanımlandıktan sonra, bu çalışma alanına bir Kusto sorgusu göndermek için [Invoke-AzOperationalInsightsQuery'yi](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) kullanabilirsiniz. Bu sorgular [Kusto sorgu dilinde](https://docs.microsoft.com/azure/kusto/query/)yazılır.
+### <a name="send-the-query-to-the-log-analytics-workspace"></a>Sorguyu Log Analytics çalışma alanına gönder
+Son olarak, bir çalışma alanı tanımlandıktan sonra, bu çalışma alanına bir kusto sorgusu göndermek için [Invoke-Azoperationalınsightsquery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
+) komutunu kullanabilirsiniz. Bu sorgular [kusto sorgu dilinde](https://docs.microsoft.com/azure/kusto/query/)yazılır.
  
-Örneğin, denetim olay kayıtlarının tarih aralığını Log Analytics çalışma alanından powershell cmdlet'ler gibi bir sorgu göndermek için alabilirsiniz:
+Örneğin, Log Analytics çalışma alanından denetim olay kayıtlarının tarih aralığını, PowerShell cmdlet 'leri ile birlikte kullanarak, şunun gibi bir sorgu gönderebilmeniz için alabilirsiniz:
  
 ```powershell
 $aQuery = "AuditLogs | where TimeGenerated > ago(3653d) | summarize OldestAuditEvent=min(TimeGenerated), NewestAuditEvent=max(TimeGenerated) by Type"
@@ -180,7 +180,7 @@ $aResponse = Invoke-AzOperationalInsightsQuery -WorkspaceId $wks[0].CustomerId -
 $aResponse.Results |ft
 ```
 
-Ayrıca, şu gibi bir sorgu kullanarak yetkilendirme yönetimi olaylarını da alabilirsiniz:
+Yetkilendirme yönetimi olaylarını, şunun gibi bir sorgu kullanarak da alabilirsiniz:
 
 ```azurepowershell
 $bQuery = 'AuditLogs | where Category == "EntitlementManagement"'
@@ -189,5 +189,5 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar:
-- [Azure Monitor çalışma kitaplarıyla etkileşimli raporlar oluşturun](../../azure-monitor/app/usage-workbooks.md) 
+- [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturma](../../azure-monitor/app/usage-workbooks.md) 
 

@@ -1,7 +1,7 @@
 ---
 title: Yeni Azure portalı uygulama kaydı deneyimi
 titleSuffix: Microsoft identity platform
-description: Azure portalındaki yeni Uygulama kaydı deneyimine giriş
+description: Azure portal yeni uygulama kayıt deneyimine giriş
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,114 +14,114 @@ ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.openlocfilehash: 50c88dd1785bd9177219054fed3800ca725a5274
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154602"
 ---
-# <a name="the-new-azure-portal-app-registration-experience"></a>Yeni Azure portalı uygulama kayıt deneyimi
+# <a name="the-new-azure-portal-app-registration-experience"></a>Yeni Azure portal uygulama kayıt deneyimi
 
-Azure portalındaki yeni [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminde birçok iyileştirme vardır. Eski deneyim olarak adlandırılan yakınsanmış uygulamaları kaydetmek veya yönetmek için Uygulama kayıt portalı (apps.dev.microsoft.com) deneyimini daha iyi biliyorsanız, bu eğitim kılavuzu yeni deneyimi kullanmaya başlamanızı sağlar.
+Azure portal yeni [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminde birçok iyileştirme vardır. Eski deneyim olarak adlandırılan yakınsama uygulamalarını kaydetme veya yönetme ile ilgili uygulama kayıt portalı (apps.dev.microsoft.com) deneyimiyle daha fazla bilginiz varsa, bu eğitim kılavuzu yeni deneyimi kullanmaya başlamanızı sağlar.
 
-## <a name="whats-not-changing"></a>Ne değişmiyor?
+## <a name="whats-not-changing"></a>Ne değiştirmiyor?
 
-- Uygulamalarınız ve ilgili yapılandırmalarınız yeni deneyimde olduğu gibi bulunabilir. Uygulamaları yeniden kaydetmeniz gerekmez ve uygulamalarınızın kullanıcılarının yeniden oturum açmalarına gerek yoktur.
+- Uygulamalarınız ve ilgili yapılandırmalar yeni deneyimde olduğu gibi bulunabilir. Uygulamaları yeniden kaydetmeniz gerekmez ve uygulamalarınızın kullanıcılarının yeniden oturum açması gerekmez.
 
     > [!NOTE]
-    > Azure portalında bulmak için uygulamaları kaydetmek için kullandığınız hesapla oturum açmanız gerekir. Azure portalındaki oturum açmış kullanıcının profilinizdeki e-posta adresini karşılaştırarak Uygulama kayıt portalında oturum açan kullanıcıyla eşleştiğini kontrol etmenizi öneririz.
+    > Azure portal bulmak için, uygulamaları kaydetmek üzere kullandığınız hesapla oturum açmanız gerekir. Azure portal oturum açmış kullanıcının, e-posta adresini profilinizden karşılaştırarak, uygulama kayıt portalı 'nda oturum açan kullanıcıyla aynı olduğunu kontrol etmenizi öneririz.
     >
-    > Bazı durumlarda, özellikle Azure AD e-posta adresiyle kişisel Microsoft hesaplarını (Outlook, Live, Xbox, vb.) kullanarak oturum açtığınızda, azure portalına eski deneyimden gittiğinizde, aynı hesapla farklı bir hesaba imzaladığını fark ettik. Azure AD kiracınıza e-posta gönder. Uygulamalarınızın hala eksik olduğunu düşünüyorsanız, oturumunuzu açın ve doğru hesapla oturum açın.
+    > Bazı durumlarda, özellikle de bir Azure AD e-posta adresiyle kişisel Microsoft hesaplarını (örn. Outlook, Live, Xbox vb.) kullanarak oturum açtığınızda, eski deneyimden Azure portal giderek, sizi Azure AD kiracınızda aynı e-posta ile farklı bir hesaba işaret ettiğimiz tespit ettik. Uygulamalarınızın eksik olduğunu düşünüyorsanız, oturumunuzu kapatıp doğru hesapla oturum açın.
 
-- Kişisel Microsoft hesapları kullanılarak oluşturulan canlı SDK uygulamaları henüz Azure portalında desteklenmez ve yakın gelecekte de eski deneyiminde kalmaya devam eder.
+- Kişisel Microsoft hesapları kullanılarak oluşturulan canlı SDK uygulamaları Azure portal henüz desteklenmemektedir ve yakın gelecekte eski deneyimde olmaya devam edecektir.
 
-## <a name="key-changes"></a>Önemli değişiklikler
+## <a name="key-changes"></a>Anahtar değişiklikleri
 
--   Eski deneyimlerde, uygulamalar varsayılan olarak tüm kuruluş hesaplarını (çok kiracılı) ve kişisel Microsoft hesaplarını destekleyen yakınsanmış uygulamalar olarak kaydedilmiştir. Bu, eski deneyim le değiştirilemedi ve bu da yalnızca kuruluş hesaplarını (çok kiracılı veya tek kiracı) destekleyen uygulamalar oluşturmayı zorlaştırdı.
-    Yeni deneyim, tüm bu seçenekleri destekleyen uygulamaları kaydetmenize olanak tanır. [Uygulama türleri hakkında daha fazla bilgi edinin.](active-directory-v2-registration-portal.md)
+-   Eski deneyimde, uygulamalar varsayılan olarak, tüm kuruluş hesaplarını (çok kiracılı) ve kişisel Microsoft hesaplarını destekleyen yakınsanmış uygulamalar olarak kaydedilmıştı. Bu, eski deneyimle değiştirilemedi, yalnızca kurumsal hesapların (çok kiracılı veya tek bir kiracı) desteklendiği uygulamalar oluşturulmasını zorlaştırır.
+    Yeni deneyim, tüm bu seçenekleri destekleyen uygulamaları kaydetmenizi sağlar. [Uygulama türleri hakkında daha fazla bilgi edinin](active-directory-v2-registration-portal.md).
 
--   Yeni deneyimde, kişisel Microsoft hesabınız da bir Azure AD kiracısındaysa, kiracıdaki tüm uygulamalar, kiracıdaki sahip olunan uygulamalar ve kişisel hesabınızdaki uygulamalar olmak üzere üç sekme görürsünüz. Bu nedenle, kişisel Microsoft hesabınıza kayıtlı uygulamaların eksik olduğunu düşünüyorsanız, **Kişisel hesap sekmenizden Uygulamalar'ı** kontrol edin.
+-   Yeni deneyimde, kişisel Microsoft hesabı de bir Azure AD kiracısında varsa, Kiracıdaki tüm uygulamalar, Kiracıdaki uygulamaların yanı sıra kişisel hesabınızdaki uygulamalar da görürsünüz. Bu nedenle, kişisel Microsoft hesabı kayıtlı uygulamaların eksik olduğunu düşünüyorsanız, **kişisel hesap Sekmesinizdeki uygulamaları** kontrol edin.
 
--   Yeni deneyimde, profilinize yönlendirerek ve anahtar dizini seçerek kiracılar arasında kolayca geçiş yapabilirsiniz.
+-   Yeni deneyimde, profilinize gidip Dizin Değiştir ' i seçerek kiracılar arasında kolayca geçiş yapabilirsiniz.
 
-## <a name="list-of-applications"></a>Başvuru listesi
+## <a name="list-of-applications"></a>Uygulama listesi
 
--   Yeni uygulama listesi, Azure portalındaki eski uygulama kayıtları deneyimi (yalnızca Azure AD hesaplarında oturum açan uygulamalar) aracılığıyla kaydedilmiş uygulamaları ve [Uygulama kayıt portalına](https://apps.dev.microsoft.com/) rağmen kaydedilmiş uygulamaları (hem Azure AD hem de kişisel Microsoft hesaplarında oturum açan uygulamalar) gösterir.
+-   Yeni uygulama listesi, Azure portal eski uygulama kayıtları deneyimiyle (yalnızca Azure AD hesaplarında oturum açma uygulamaları) ve [uygulama kayıt portalı](https://apps.dev.microsoft.com/) (hem Azure AD hem de kişisel Microsoft hesaplarında oturum açma uygulamaları) kayıtlı uygulamaları gösterir.
 
--   Yeni uygulama listesinde iki sütun daha vardır: Sütun **ve** **Sertifikalar & sırlar** sütununda oluşturulan ve uygulamada kayıtlı olan kimlik bilgilerinin durumunu (geçerli, süresi dolan veya süresi dolan) gösterir.
+-   Yeni uygulama listesinde iki **ek sütun bulunur: uygulamada** kayıtlı olan kimlik bilgilerinin durumunu (geçerli, süresi yakında veya süresi dolan) gösteren sütunlar ve **Sertifikalar &** .
 
 ## <a name="new-app-registration"></a>Yeni uygulama kaydı
 
-Eski deneyimlerime göre, yakınsanmış bir uygulamayı kaydetmek için yalnızca bir Ad sağlamanız gerekiyordu. Oluşturulan uygulamalar, tüm kuruluş dizinini (çok kiracılı) ve kişisel Microsoft hesaplarını destekleyen yakınsanmış uygulamalar olarak kaydedildi.  Bu, eski deneyim le değiştirilemedi ve bu da yalnızca kuruluş hesaplarını (çok kiracılı veya tek kiracı) destekleyen uygulamalar oluşturmayı zorlaştırdı. [Desteklenen hesap türleri hakkında daha fazla bilgi edinin](v2-supported-account-types.md)
+Eski deneyimde, Yakınsanan bir uygulamayı kaydetmek için yalnızca bir ad sağlamanız gerekir. Oluşturulan uygulamalar, tüm kuruluş dizinini (çok kiracılı) ve kişisel Microsoft hesaplarını destekleyen yakınsanmış uygulamalar olarak kaydedilmiş.  Bu, eski deneyimle değiştirilemedi, yalnızca kurumsal hesapların (çok kiracılı veya tek bir kiracı) desteklendiği uygulamalar oluşturulmasını zorlaştırır. [Desteklenen hesap türleri hakkında daha fazla bilgi edinin](v2-supported-account-types.md)
 
-Yeni deneyimde, uygulama için bir Ad sağlamanız ve Desteklenen hesap türlerini seçmeniz gerekir. İsteğe bağlı olarak yeniden yönlendirme URI sağlayabilirsiniz.
-Uri'yi yeniden yönlendirme sağlıyorsanız, web/herkese açık (yerel/mobil ve masaüstü) olup olmadığını belirtmeniz gerekir. Yeni uygulama kayıtları deneyimini kullanarak bir uygulamayı nasıl kaydedebilirsiniz hakkında daha fazla bilgi için [bu hızlı başlangıç'a](quickstart-register-app.md)bakın.
+Yeni deneyimde uygulama için bir ad belirtmeniz ve desteklenen hesap türlerini seçmeniz gerekir. İsteğe bağlı olarak bir yeniden yönlendirme URI 'SI sağlayabilirsiniz.
+Yeniden yönlendirme URI 'SI sağlarsanız, bunun Web/genel (yerel/mobil ve Masaüstü) olup olmadığını belirtmeniz gerekir. Yeni uygulama kaydı deneyimini kullanarak bir uygulamayı kaydetme hakkında daha fazla bilgi için [Bu hızlı başlangıç](quickstart-register-app.md)bölümüne bakın.
 
-## <a name="app-management-page"></a>Uygulama yönetimi sayfası
+## <a name="app-management-page"></a>Uygulama Yönetimi sayfası
 
-Eski deneyimaşağıdaki bölümlerle yakınsama uygulamaları için tek bir uygulama yönetim sayfası vardı: Özellikler, Uygulama sırları, Platformlar, Sahipleri, Microsoft Grafik İzinleri, Profil ve Gelişmiş Seçenekler.
+Eski deneyim, yakınsama uygulamaları için şu bölümlerle tek bir uygulama yönetimi sayfasına sahipti: özellikler, uygulama gizli dizileri, platformlar, sahipler Microsoft Graph Izinler, profil ve Gelişmiş Seçenekler.
 
-Azure portalındaki yeni deneyim, bu özellikleri ayrı sayfalarda temsil eder. Eşdeğer işlevselliği burada bulabilirsiniz:
+Azure portal yeni deneyim, bu özellikleri ayrı sayfalarda temsil eder. Eşdeğer işlevselliği bulabileceğiniz yer:
 
--   Özellikler - Ad ve Uygulama Kimliği Genel Bakış sayfasındadır.
+-   Özellikler-ad ve uygulama KIMLIĞI genel bakış sayfasıdır.
 
--   Uygulama Sırları Sertifikalar & sırları sayfasında
+-   Uygulama gizli dizileri, sertifikalar & gizlilikler sayfasında bulunur
 
--   Platformlar yapılandırması Kimlik Doğrulama sayfasında
+-   Platformlar yapılandırması, kimlik doğrulama sayfamı
 
--   Microsoft Graph izinleri diğer izinlerle birlikte API izinleri sayfasında
+-   Microsoft Graph izinler, diğer izinlerle birlikte API izinleri sayfasında bulunur
 
--   Profil Markalama sayfasında
+-   Profil marka sayfasında
 
--   Gelişmiş seçenek - Canlı SDK desteği Kimlik Doğrulama sayfasındadır.
+-   Gelişmiş seçenek-Live SDK desteği, kimlik doğrulama sayfasıdır.
 
-## <a name="application-secretscertificates--secrets"></a>Uygulama sırları/Sertifikalar & sırları
+## <a name="application-secretscertificates--secrets"></a>Gizli dizi & uygulama gizli dizileri/sertifikaları
 
-Yeni deneyim, **Uygulama sırları** **Sertifikalar & sırları**olarak yeniden adlandırılmıştır. Buna ek olarak, **Ortak anahtarlar** **Sertifikalar** olarak adlandırılır ve **Parolalar** **İstemci sırları**olarak adlandırılır. Güvenlik nedenleriyle bu işlevselliği yeni deneyimde getirmemeyi seçtik, bu nedenle artık yeni bir anahtar çifti oluşturamazsınız.
+Yeni deneyimde, **uygulama gizli** dizileri **sertifikalarla &** yeniden adlandırıldı. Bunlara ek olarak, **ortak anahtarlar** **sertifika** ve **parolalar** **istemci gizli**dizileri olarak adlandırılır. Güvenlik nedenleriyle bu işlevselliği yeni deneyimde getirmemeyi seçtik, bu nedenle artık yeni bir anahtar çifti üretilemez.
 
-## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformlar/Kimlik Doğrulama: URL'leri yanıtla/URL'leri yeniden yönlendirme
-Eski deneyimde, bir uygulama, Yönlendirme URL'lerini, Logout URL'sini ve Örtülü akışı yapılandırmak için Web, yerel ve Web API'sı için Platformlar bölümüne sahipti.
+## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformlar/kimlik doğrulaması: yanıt URL 'Leri/yeniden yönlendirme URI 'leri
+Eski deneyimde bir uygulamada Web, yerel ve Web API 'SI için platformlar bölümü, yeniden yönlendirme URL 'Leri, oturum kapatma URL 'SI ve örtük akış yapılandırılması gerekir.
 
-Yeni deneyimde, Yanıt URL'leri bir uygulamanın\'Kimlik Doğrulama bölümünde bulunabilir. Buna ek olarak, bunlar yeniden yönlendirme URI'leri olarak adlandırılır ve yeniden yönlendirme URI biçimi değişti. Bir uygulama türüyle (web veya genel istemci - mobil ve masaüstü) ilişkilendirilmeleri gerekir. [Daha fazlasını öğrenin](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+Yeni deneyimde, yanıt URL 'Leri bir App\'s kimlik doğrulama bölümünde bulunabilir. Bunlara ek olarak, yeniden yönlendirme URI 'Leri olarak adlandırılır ve yeniden yönlendirme URI 'Leri biçimi değişmiştir. Bunların bir uygulama türüyle ilişkilendirilmesi gerekir (Web veya genel istemci-mobil ve Masaüstü). [Daha fazlasını öğrenin](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
 
-Web API'leri Bir API Ortaya Çıkar sayfasında yapılandırılır.
+Web API 'Leri bir API 'YI kullanıma sunma sayfasında yapılandırılır.
 
 > [!NOTE]
-> Hedeflemek istediğiniz platforma veya cihaza göre uygulamanızın ayarlarını yapılandırabileceğiniz yeni Kimlik Doğrulama ayarları deneyimini deneyin. [Daha fazlasını öğrenin](quickstart-configure-app-access-web-apis.md#configure-platform-settings-for-your-application)
+> Hedeflemek istediğiniz platforma veya cihaza göre uygulamanızın ayarlarını yapılandırabileceğiniz yeni kimlik doğrulama ayarları deneyimini deneyin. [Daha fazlasını öğrenin](quickstart-configure-app-access-web-apis.md#configure-platform-settings-for-your-application)
 
 ## <a name="microsoft-graph-permissionsapi-permissions"></a>Microsoft Graph izinleri/API izinleri
 
--   Eski deneyimde bir API seçerken, yalnızca Microsoft Grafik API'leri arasından seçim yapabilirsiniz. Yeni deneyimde, Microsoft Graph, kuruluşunuzdaki API'ler ve API'ler dahil olmak üzere birçok Microsoft API'si arasından seçim yapabilirsiniz, bu üç sekmede sunulur: Microsoft API'leri, kuruluşumun kullandığı API'ler veya API'lerim. Kuruluşumdaki API'ler üzerindeki arama çubuğu, kiracıdaki servis ilkeleri aracılığıyla sekme aramaları kullanır.
+-   Eski deneyimde bir API seçerken yalnızca Microsoft Graph API 'Leri seçebilirsiniz. Yeni deneyimde Microsoft Graph, kuruluşunuzdaki ve API 'lerinizin API 'Leri gibi birçok Microsoft API arasından seçim yapabilirsiniz, bu üç sekmede sunulmaktadır: Microsoft API 'leri, Kuruluşumun kullandığı API 'ler veya API 'Lerim. API 'lerim üzerindeki arama çubuğu, Kiracıdaki hizmet sorumluları aracılığıyla sekme aramalarını kullanır.
 
     > [!NOTE]
-    > Uygulamanız bir kiracıyla ilişkili değilse bu sekmeyi görmezsiniz. Yeni deneyimi kullanarak izinleri nasıl isteyeceksiniz hakkında daha fazla bilgi için [bu hızlı başlangıç'a](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/develop/quickstart-configure-app-access-web-apis.md)bakın.
+    > Uygulamanız bir kiracı ile ilişkili değilse bu sekmeyi görmezsiniz. Yeni deneyimi kullanarak izin isteme hakkında daha fazla bilgi için [Bu hızlı başlangıç](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/develop/quickstart-configure-app-access-web-apis.md)bölümüne bakın.
 
--   Eski deneyimbir Hibe **izinleri** düğmesi yoktu. Yeni deneyimde, bir uygulamanın API izinleri bölümünde **Grant yöneticisi onayı** düğmesi bulunan bir Hibe onayı bölümü vardır. Yalnızca bir yönetici izin verebilir ve bu düğme yalnızca yöneticiler için etkinleştirilir. Bir yönetici Grant **admin onay** düğmesini seçtiğinde, istenen tüm izinlere yönetici onayı verilir.
+-   Eski deneyimde **Izin verme** düğmesi yoktu. Yeni deneyimde, bir uygulamanın API izinleri bölümünde **yönetici Izni verme** düğmesine sahip bir izin ver bölümü vardır. Yalnızca bir yönetici onay verebilir ve bu düğme yalnızca Yöneticiler için etkinleştirilmiştir. Bir yönetici **yönetici onayı ver** düğmesini seçtiğinde, istenen tüm izinlere yönetici izni verilir.
 
 ## <a name="profile"></a>Profil
-Eski deneyimde Profil'de Logo, Giriş sayfası URL'si, Hizmet Şartları URL'si ve Gizlilik Bildirimi URL yapılandırması vardı. Yeni deneyim, bu Marka lama sayfasında bulunabilir.
+Eski deneyimde profilde logo, giriş sayfası URL 'si, hizmet koşulları URL 'SI ve gizlilik bildirimi URL 'SI yapılandırması vardı. Yeni deneyimde, bu, marka sayfasında bulunabilir.
 
 ## <a name="application-manifest"></a>Uygulama bildirimi
-Yeni deneyimde, Manifest sayfası uygulamanın özniteliklerini güncellemenize ve güncellemenize olanak tanır. Daha fazla bilgi için [Uygulama bildirimine](reference-app-manifest.md)bakın.
+Yeni deneyimde bildirim sayfası, uygulamanın özniteliklerini düzenlemenize ve güncelleştirmenize olanak tanır. Daha fazla bilgi için bkz. [uygulama bildirimi](reference-app-manifest.md).
 
-## <a name="new-ui"></a>Yeni UI
-Daha önce yalnızca bildirim düzenleyicisi veya API kullanılarak ayarlanabilen veya var olmayan özellikler için yeni bir arama arabirimi vardır.
+## <a name="new-ui"></a>Yeni Kullanıcı arabirimi
+Daha önce yalnızca bildirim Düzenleyicisi veya API kullanılarak ayarlanan özellikler için yeni kullanıcı arabirimi var veya yok.
 
--   Örtülü hibe akışı (oauth2AllowImplicitFlow) Kimlik Doğrulama sayfasında bulunabilir. Eski deneyimin aksine, erişim belirteçleri veya kimlik belirteçleri veya her ikisini de etkinleştirebilirsiniz.
+-   Örtük verme akışı (oauth2AllowImplicitFlow) kimlik doğrulama sayfasında bulunabilir. Eski deneyimden farklı olarak, erişim belirteçlerini veya KIMLIK belirteçlerini veya her ikisini de etkinleştirebilirsiniz.
 
--   Bu API (oauth2Permissions) ve Yetkili istemci uygulamaları (ön Yetkili Uygulamalar) tarafından tanımlanan kapsamlar, api açığa çıkarma sayfası üzerinden yapılandırılabilir. Bir uygulamanın web API'si olarak nasıl yapılandırılabildiğini ve izinleri/kapsamları nasıl açıkhale erdireceğiniz hakkında daha fazla bilgi için [bu hızlı başlangıç'a](quickstart-configure-app-expose-web-apis.md)bakın.
+-   Bu API (oauth2Permissions) ve yetkili istemci uygulamaları (ön kimlik doğrulama) tarafından tanımlanan kapsamlar, bir API 'YI kullanıma sunma sayfasından yapılandırılabilir. Bir uygulamayı Web API 'SI olarak yapılandırma ve izinleri/kapsamları kullanıma sunma hakkında daha fazla bilgi için [Bu hızlı başlangıç](quickstart-configure-app-expose-web-apis.md)bölümüne bakın.
 
--   Publisher etki alanı [(uygulamanın\'onay isteminde](application-consent-experience.md)kullanıcılara görüntülenen) Markalama bıçağı sayfasında bulunabilir. Yayımcı etki alanını yapılandırma hakkında daha fazla bilgi için [bu nasıl yapılandırıldık bilgisine](howto-configure-publisher-domain.md)bakın.
+-   Yayımcı etki alanı ( [\'uygulama tarafından izin isteminde](application-consent-experience.md)kullanıcılara gösterilir), marka dikey penceresi sayfasında bulunabilir. Yayımcı etki alanını yapılandırma hakkında daha fazla bilgi için, bkz. [nasıl yapılır](howto-configure-publisher-domain.md).
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Yeni deneyimaşağıdaki sınırlamalar vardır:
+Yeni deneyim aşağıdaki sınırlamalara sahiptir:
 
--   Yeni deneyim, Azure AD B2C kiracıları için uygulama kayıtlarını henüz desteklememektedir.
+-   Yeni deneyim, Azure AD B2C kiracılar için Uygulama kayıtları henüz desteklememektedir.
 
--   Yeni deneyim henüz kişisel Microsoft hesapları ile oluşturulan Live SDK uygulamalarını desteklememektedir.
+-   Yeni deneyim, kişisel Microsoft hesaplarıyla oluşturulan canlı SDK uygulamalarını henüz desteklememektedir.
 
--   Desteklenen hesapların değerini değiştirmek UI'de desteklenmez. Azure AD tek kiracılı\'ve çok kiracılı arasında geçiş yaptığınız sürece uygulama bildirimini kullanmanız gerekir.
+-   Desteklenen hesapların değerini değiştirmek Kullanıcı arabiriminde desteklenmez. Azure AD tek kiracılı ve çok kiracılı bir şekilde\'geçiş yapmadığınız takdirde uygulama bildirimini kullanmanız gerekir.
 
    > [!NOTE]
-   > Azure AD kiracısında kişisel bir Microsoft hesabı kullanıcısıysanız ve kiracı yöneticinin Azure portalına erişimi kısıtlanmışsa, erişim reddedilebilir. Ancak, kısayol üzerinden arama çubuğuna Uygulama kayıtlarını yazarak veya sabitleyerek gelirseniz, yeni deneyime erişebilirsiniz.
+   > Azure AD kiracısında kişisel Microsoft hesabı bir Kullanıcı ve kiracı yöneticisinin Azure portal erişimi kısıtlanmışsa, erişim reddedildi. Ancak, arama çubuğuna Uygulama kayıtları yazarak veya sabitleyerek kısayoldan geliyorsa yeni deneyimle erişebilirsiniz.

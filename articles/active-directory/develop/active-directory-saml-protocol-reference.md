@@ -1,6 +1,6 @@
 ---
 title: Azure AD, SAML protokolünü nasıl kullanır?
-description: Bu makalede, Azure Etkin Dizini'ndeki Tek Oturum Açma ve Tek Oturum Açma SAML profillerine genel bir bakış sağlanır.
+description: Bu makalede, Azure Active Directory ' deki çoklu oturum açma ve çoklu oturum kapatma SAML profillerine genel bakış sunulmaktadır.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,26 +13,26 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 44d06030d8015d2df9499ce903eb9cb06e1ef27a
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885659"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Azure AD, SAML protokolünü nasıl kullanır?
 
-Azure Active Directory (Azure AD), uygulamaların kullanıcılarına tek bir oturum açma deneyimi sağlamasını sağlamak için SAML 2.0 protokolünü kullanır. Azure AD'nin [Tek Oturum Açma](single-sign-on-saml-protocol.md) ve Tek Oturum [Açma](single-sign-out-saml-protocol.md) SAML profilleri, SAML iddialarının, protokollerinin ve bağlamalarının kimlik sağlayıcı hizmetinde nasıl kullanıldığını açıklar.
+Azure Active Directory (Azure AD), uygulamaların kullanıcılarına çoklu oturum açma deneyimi sağlamasına olanak tanımak için SAML 2,0 protokolünü kullanır. Azure AD 'nin [Çoklu oturum açma](single-sign-on-saml-protocol.md) ve [Çoklu oturum açma](single-sign-out-saml-protocol.md) SAML profilleri, SAML onayları, protokolleri ve bağlamaları kimlik sağlayıcısı hizmetinde nasıl kullanıldığını açıklar.
 
-SAML Protokolü, kimlik sağlayıcısının (Azure AD) ve hizmet sağlayıcısının (uygulama) kendileri hakkında bilgi alışverişinde bulunmalarını gerektirir.
+SAML protokolü, kimlik sağlayıcısını (Azure AD) ve hizmet sağlayıcısını (uygulama) kendileri hakkındaki bilgileri değiş tokuş etmek için gereklidir.
 
-Bir uygulama Azure AD'ye kaydedildiğinde, uygulama geliştiricisi federasyonla ilgili bilgileri Azure AD'ye kaydeder. Bu bilgiler, uygulamanın URI ve **Metadata URI** **Yönlendirme** içerir.
+Bir uygulama Azure AD 'ye kaydedildiğinde, uygulama geliştiricisi Federasyon ile ilgili bilgileri Azure AD 'ye kaydeder. Bu bilgiler, uygulamanın **yeniden YÖNLENDIRME URI** 'Sini ve **meta veri URI** 'sini içerir.
 
-Azure AD, imzalama anahtarını ve oturum açma URI'sini almak için bulut hizmetinin **Metadata URI'sini** kullanır. Müşteri uygulamayı Azure **AD -> Uygulama Kaydı'nda** açabilir ve ardından **Ayarlar -> Özellikleri'nde**Logout URL'sini güncelleyebilir. Bu şekilde Azure AD yanıtı doğru URL'ye gönderebilir. 
+Azure AD, imzalama anahtarını ve oturum kapatma URI 'sini almak için bulut hizmetinin **meta VERI URI** 'sini kullanır. Müşteri, uygulamayı **Azure AD > uygulama kaydında** açabilir ve sonra **Ayarlar-> Özellikler**bölümünde oturum kapatma URL 'sini güncelleştirebilir. Bu şekilde, Azure AD yanıtı doğru URL 'ye gönderebilir. 
 
-Azure Etkin Dizin, kiracıya özel ve ortak (kiracıdan bağımsız) tek oturum açma ve tek oturum açma bitiş noktalarını ortaya çıkarır. Bu URL'ler adreslenebilir konumları temsil eder -- bunlar sadece tanımlayıcı değildir -- böylece meta verileri okumak için bitiş noktasına gidebilirsiniz.
+Azure Active Directory, kiracıya özgü ve ortak (kiracıdan bağımsız) çoklu oturum açma ve çoklu oturum açma uç noktalarını kullanıma sunar. Bu URL 'Ler adreslenebilir konumları temsil eder; bu, yalnızca tanımlayıcılardır; bu nedenle meta verileri okumak için uç noktaya gidebilirsiniz.
 
-* Kiracıya özgü bitiş `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`noktası. TenantDomainName>yer tutucusu, kayıtlı bir etki alanı adını veya Azure AD kiracısının TenantID GUID'ini temsil eder. * \<* Örneğin, contoso.com kiracının federasyon meta verileri şu şekildedir:https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* Kiracıya özgü uç nokta konumunda `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`bulunur. * \<Tenantdomainname>* yer tutucusu, bir Azure AD kiracısının bir kayıtlı etki alanı adını veya tenantıd 'sini temsil eder. Örneğin, contoso.com kiracının Federasyon meta verileri şu konumda:https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
-* Kiracıdan bağımsız bitiş `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`noktası. Bu bitiş noktası adresinde, kiracı etki alanı adı veya kimliği yerine **ortak** görünür.
+* Kiracıdan bağımsız uç nokta konumunda `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`bulunur. Bu uç nokta adresinde, kiracı etki alanı adı veya KIMLIĞI yerine **yaygın** görüntülenir.
 
-Azure AD'nin yayımettiği federasyon meta veri belgeleri hakkında bilgi için [Federasyon Meta verileri](../azuread-dev/azure-ad-federation-metadata.md)bölümüne bakın.
+Azure AD 'nin yayımladığı Federasyon meta verileri belgeleri hakkında daha fazla bilgi için bkz. [Federasyon meta verileri](../azuread-dev/azure-ad-federation-metadata.md).

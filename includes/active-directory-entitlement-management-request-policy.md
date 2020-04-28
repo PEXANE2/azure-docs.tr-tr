@@ -9,201 +9,201 @@ ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
 ms.openlocfilehash: 7fd716be397d9ef6b9d6132cd4470f653f3cea0f
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655930"
 ---
 ## <a name="for-users-in-your-directory"></a>Dizininizdeki kullanıcılar için
 
-Dizininizdeki kullanıcıların bu erişim paketini isteyebilmesine izin vermek istiyorsanız aşağıdaki adımları izleyin. İstek ilkesini tanımlarken, tek tek kullanıcıları veya daha yaygın kullanıcı gruplarını belirtebilirsiniz. Örneğin, kuruluşunuzun zaten **Tüm çalışanlar**gibi bir grubu olabilir.  Bu grup, erişim isteyebilecek kullanıcılar için ilkeye eklenirse, bu grubun herhangi bir üyesi erişim isteyebilir.
+Dizininizdeki kullanıcıların bu erişim paketini isteyebilmesini sağlamak istiyorsanız bu adımları izleyin. İstek ilkesini tanımlarken, bireysel kullanıcıları veya daha yaygın kullanıcı gruplarını belirtebilirsiniz. Örneğin, kuruluşunuz **tüm çalışanlar**gibi bir gruba zaten sahip olabilir.  Bu grup, erişim isteyebilen kullanıcılar için ilkeye eklenirse, o grubun herhangi bir üyesi daha sonra erişim isteğinde bulunabilir.
 
-1. Erişim **talebinde bulunabilecek Kullanıcılar** bölümünde, **dizininizdeki kullanıcılar için'** i tıklatın.
+1. **Erişim isteyebilen kullanıcılar** bölümünde, **dizininizdeki kullanıcılar için**öğesine tıklayın.
 
-    Bu seçeneği seçtiğinizde, dizininizdeki kimler bu erişim paketini isteyebilir daha fazla rafine yeni seçenekler görünür.
+    Bu seçeneği belirlediğinizde, dizininizdeki kim tarafından bu erişim paketini isteyebileceğiniz konusunda daha fazla belirginleştirmek için yeni seçenekler görünür.
 
-    ![Erişim paketi - İstekler - Dizininizdeki kullanıcılar için](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
+    ![Erişim paketi Istekleri-dizininizdeki kullanıcılar Için](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
 
 1. Aşağıdaki seçeneklerden birini belirtin:
 
     |  |  |
     | --- | --- |
-    | **Belirli kullanıcılar ve gruplar** | Dizininizde yalnızca bu erişim paketini talep edebilmek için belirttiğiniz kullanıcıları ve grupları istiyorsanız bu seçeneği belirleyin. |
-    | **Tüm üyeler (konuklar hariç)** | Dizininizdeki tüm üye kullanıcıların bu erişim paketini isteyebilmesini istiyorsanız bu seçeneği belirleyin. Bu seçenek, dizininize davet etmiş olabileceğiniz konuk kullanıcıları içermez. |
-    | **Tüm kullanıcılar (konuklar dahil)** | Dizininizdeki tüm üye kullanıcıların ve konuk kullanıcıların bu erişim paketini isteyebilmesini istiyorsanız bu seçeneği belirleyin. |
+    | **Belirli kullanıcılar ve gruplar** | Yalnızca dizininizdeki Kullanıcı ve grupların bu erişim paketini isteyebilmesini istiyorsanız bu seçeneği belirleyin. |
+    | **Tüm Üyeler (konuklar hariç)** | Dizininizdeki tüm üye kullanıcılarının bu erişim paketini isteyebilmesini istiyorsanız bu seçeneği belirleyin. Bu seçenek, dizininize davet ettiğiniz tüm konuk kullanıcılarını içermez. |
+    | **Tüm kullanıcılar (konuklar dahil)** | Dizininizdeki tüm üye kullanıcılarının ve konuk kullanıcıların bu erişim paketini isteyebilmesini istiyorsanız bu seçeneği belirleyin. |
 
-    Konuk kullanıcılar, [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md)ile dizininize davet edilen harici kullanıcılara başvurur. Üye kullanıcılar ve konuk kullanıcılar arasındaki farklar hakkında daha fazla bilgi için Azure [Etkin Dizin'de varsayılan kullanıcı izinleri nelerdir?](../articles/active-directory/fundamentals/users-default-permissions.md)
+    Konuk kullanıcılar, [Azure AD B2B](../articles/active-directory/b2b/what-is-b2b.md)ile dizininize davet edilen dış kullanıcılara başvurur. Üye kullanıcılar ve Konuk kullanıcılar arasındaki farklar hakkında daha fazla bilgi için bkz. [Azure Active Directory varsayılan kullanıcı Izinleri nelerdir?](../articles/active-directory/fundamentals/users-default-permissions.md).
 
-1. **Belirli kullanıcıları ve grupları**seçtiyseniz, kullanıcı ve gruplar **ekle'yi**tıklatın.
+1. **Belirli kullanıcılar ve gruplar**' ı seçtiyseniz, **Kullanıcı ve Grup Ekle**' ye tıklayın.
 
 1. Kullanıcıları ve grupları seç bölmesinde, eklemek istediğiniz kullanıcıları ve grupları seçin.
 
-    ![Erişim paketi - İstekler - Kullanıcıları ve grupları seçin](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
+    ![Erişim paketi Istekleri-kullanıcıları ve grupları seçin](./media/active-directory-entitlement-management-request-policy/select-users-groups.png)
 
-1. Kullanıcıları ve grupları eklemek için **Seç'i** tıklatın.
+1. Kullanıcıları ve grupları eklemek için **Seç** ' e tıklayın.
 
 1. [Onay](#approval) bölümüne atlayın.
 
-## <a name="for-users-not-in-your-directory"></a>Dizininizde olmayan kullanıcılar için
+## <a name="for-users-not-in-your-directory"></a>Dizininizde bulunmayan kullanıcılar için
 
- **Dizininizde olmayan kullanıcılar,** başka bir Azure AD dizininde veya etki alanında olan kullanıcılar anlamına gelir. Bu kullanıcılar henüz dizininize davet edilmemiş olabilir. Azure REKLAM dizinleri, **İşbirliği kısıtlamalarındaki**davetlere izin verecek şekilde yapılandırılmalıdır. Daha fazla bilgi için [B2B dış işbirliğini etkinleştir mecnuna bakın ve konukları kimlerin davet edebileceğini yönetin.](../articles/active-directory/b2b/delegate-invitations.md)
+ **Dizininizde olmayan kullanıcılar** , başka BIR Azure ad dizini veya etki alanındaki kullanıcılara başvurur. Bu kullanıcılar henüz dizininize davet edilmemiş olabilir. Azure AD dizinleri **işbirliği kısıtlamalarında**davetlere izin verecek şekilde yapılandırılmalıdır. Daha fazla bilgi için bkz. [B2B dış Işbirliğini etkinleştirme ve konukları kimlerin davet edebileceğini yönetme](../articles/active-directory/b2b/delegate-invitations.md).
 
 > [!NOTE]
-> İsteği onaylanan veya otomatik olarak onaylanan dizininizde henüz bulunmayan bir kullanıcı için bir konuk kullanıcı hesabı oluşturulur. Konuk davet edilecektir, ancak davet e-postası almayacaktır. Bunun yerine, erişim paketi atamaları teslim edildiğinde bir e-posta alırlar. Varsayılan olarak, daha sonra bu konuk kullanıcının artık herhangi bir erişim paketi ataması yoksa, son atamaları nın süresi dolduğundan veya iptal edildiğinden, konuk kullanıcı hesabının oturum açması engellenir ve daha sonra silinir. Konuk kullanıcıların süresiz olarak dizininizde kalmasını istiyorsanız, erişim paketi atamaları olmasa bile, yetkilendirme yönetimi yapılandırmanızın ayarlarını değiştirebilirsiniz. Konuk kullanıcı nesnesi hakkında daha fazla bilgi için Azure [Etkin Dizin B2B işbirliği kullanıcısının özellikleri](../articles/active-directory/b2b/user-properties.md)bölümüne bakın.
+> Henüz, isteğiniz onaylanmış veya otomatik olarak onaylanan dizininizde olmayan bir kullanıcı için bir Konuk Kullanıcı hesabı oluşturulur. Konuk davet edilecek, ancak davet e-postası almacaktır. Bunun yerine, bunlara erişim paketi ataması teslim edildiğinde bir e-posta gönderilir. Varsayılan olarak, Konuk kullanıcının artık herhangi bir erişim paketi ataması olmadığında, son atamasının süresi dolduğunda veya iptal edildiğinden, bu Konuk Kullanıcı hesabının oturum açması engellenir ve daha sonra silinir. Konuk kullanıcılarınızın, hiçbir erişim paketi ataması olmasa bile dizininizden sonsuza kadar kalmasını istiyorsanız, Yetkilendirme Yönetimi yapılandırmanızın ayarlarını değiştirebilirsiniz. Konuk Kullanıcı nesnesi hakkında daha fazla bilgi için, [Azure ACTIVE DIRECTORY B2B işbirliği kullanıcısının özelliklerine](../articles/active-directory/b2b/user-properties.md)bakın.
 
-Dizininizde olmayan kullanıcıların bu erişim paketini istemesine izin vermek istiyorsanız aşağıdaki adımları izleyin:
+Dizininizdeki kullanıcıların bu erişim paketini istemesi için izin vermek istiyorsanız aşağıdaki adımları izleyin:
 
-1. Erişim **talebinde bulunabilecek Kullanıcılar** bölümünde, **dizininizde olmayan kullanıcılar için'i**tıklatın.
+1. **Erişim isteyebilen kullanıcılar** bölümünde, **dizininizde olmayan kullanıcılar için**öğesine tıklayın.
 
-    Bu seçeneği seçtiğinizde, yeni seçenekler görüntülenir.
+    Bu seçeneği belirlediğinizde yeni seçenekler görüntülenir.
 
-    ![Erişim paketi - İstekler - Dizininizde olmayan kullanıcılar için](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
+    ![Erişim paketi Istekleri-dizininizde olmayan kullanıcılar Için](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
 
 1. Aşağıdaki seçeneklerden birini belirtin:
 
     |  |  |
     | --- | --- |
-    | **Belirli bağlı kuruluşlar** | Yöneticinizin daha önce ekleyen kuruluşlar listesinden seçim yapmak istiyorsanız bu seçeneği belirleyin. Seçili kuruluşlardan tüm kullanıcılar bu erişim paketini isteyebilir. |
-    | **Tüm bağlı kuruluşlar** | Bağlı kuruluşlarınızdaki tüm kullanıcılar bu erişim paketini talep edebilirse bu seçeneği belirleyin. |
-    | **Tüm kullanıcılar (Tüm bağlı kuruluşlar + herhangi bir yeni dış kullanıcı)** | Bağlı kuruluşlarınızdaki tüm kullanıcılar bu erişim paketini talep edebilirse ve B2B liste ayarlarına izin verirse veya reddederse, yeni harici kullanıcılar için öncelikli olmalıdırysa bu seçeneği belirleyin. |
+    | **Belirli bağlı kuruluşlar** | Yöneticinizin daha önce eklediği kuruluşların listesinden seçim yapmak istiyorsanız bu seçeneği belirleyin. Seçili kuruluşların tüm kullanıcıları bu erişim paketini isteyebilir. |
+    | **Tüm bağlı kuruluşlar** | Bağlı Kuruluşlarınızın tüm kullanıcıları bu erişim paketini talep edebilir ise bu seçeneği belirleyin. |
+    | **Tüm kullanıcılar (tüm bağlı kuruluşlar + tüm yeni dış kullanıcılar)** | Tüm bağlı kuruluşlarınızdaki tüm kullanıcılar bu erişim paketini isteyebilse ve B2B izin verme veya reddetme listesi ayarlarının tüm yeni dış kullanıcılar için öncelikli olması durumunda bu seçeneği belirleyin. |
 
-    Bağlı kuruluş, ilişki içinde olduğunuz harici bir Azure REKLAM dizini veya etki alanıdır.
+    Bağlı bir kuruluş, ile ilişkiniz olan bir dış Azure AD dizini veya etki alanıdır.
 
-1. **Belirli bağlı kuruluşlar**seçtiyseniz, yöneticinizin daha önce ekleyen bağlı kuruluşlar listesinden seçim yapmak için **dizin ekle'yi** tıklatın.
+1. **Belirli bağlı kuruluşları**seçtiyseniz, yöneticinizin daha önce eklediği bağlı kuruluşların listesinden seçmek Için **Dizin Ekle** ' ye tıklayın.
 
-1. Daha önce bağlı bir kuruluş için arama yapmak için adı veya etki alanı adını yazın.
+1. Daha önce bağlı bir kuruluşun aranacağı adı veya etki alanı adını yazın.
 
-    ![Erişim paketi - İstekler - Dizin seçin](./media/active-directory-entitlement-management-request-policy/select-directories.png)
+    ![Erişim paketi-Istekler-Dizin Seçme](./media/active-directory-entitlement-management-request-policy/select-directories.png)
 
-    İşbirliği yapmak istediğiniz kuruluş listede yoksa, yöneticinizden bu kuruluşa bağlı kuruluş olarak eklemesini isteyebilirsiniz. Daha fazla bilgi için [bkz.](../articles/active-directory/governance/entitlement-management-organization.md)
+    İşbirliği yapmak istediğiniz kuruluş listede yoksa, yöneticinizden onu bağlı bir kuruluş olarak eklemesini isteyebilirsiniz. Daha fazla bilgi için bkz. [bağlı kuruluş ekleme](../articles/active-directory/governance/entitlement-management-organization.md).
 
-1. Bağlı kuruluşlarınızı seçtikten sonra **Seç'i**tıklatın.
+1. Bağlı Kuruluşlarınızın tümünü seçtikten sonra **Seç**' e tıklayın.
 
     > [!NOTE]
-    > Seçili bağlı kuruluşlardan tüm kullanıcılar bu erişim paketini talep edebilecektir. Bu, azure B2B izin veren veya reddeden liste tarafından engellenen bu etki alanları sürece, kuruluşla ilişkili tüm alt etki alanlarından Azure AD kullanıcıları içerir. Daha fazla bilgi için [bkz.](../articles/active-directory/b2b/allow-deny-list.md)
+    > Seçili bağlı kuruluşların tüm kullanıcıları bu erişim paketini isteyebilecektir. Bu, Azure AD 'deki kullanıcıları, bu etki alanları Azure B2B izin verilenler veya reddetme listesi tarafından engellenmediği durumlar dışında, kuruluş ile ilişkili tüm alt etki alanlarından de içerir. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](../articles/active-directory/b2b/allow-deny-list.md).
 
 1. [Onay](#approval) bölümüne atlayın.
 
-## <a name="none-administrator-direct-assignments-only"></a>Yok (yalnızca yönetici doğrudan atamaları)
+## <a name="none-administrator-direct-assignments-only"></a>Hiçbiri (yalnızca yönetici doğrudan atamaları)
 
-Erişim isteklerini atlamak ve yöneticilerin bu erişim paketine doğrudan belirli kullanıcıları atamasına izin vermek istiyorsanız aşağıdaki adımları izleyin. Kullanıcıların erişim paketini istemesi gerekmeyecek. Yaşam döngüsü ayarlarını yine de ayarlayabilirsiniz, ancak istek ayarları yoktur.
+Erişim isteklerini atlamak ve yöneticilerin bu erişim paketine belirli kullanıcıları doğrudan atamasını sağlamak istiyorsanız bu adımları izleyin. Kullanıcıların erişim paketini istemesi gerekmez. Yaşam döngüsü ayarlarını ayarlamaya devam edebilirsiniz, ancak hiçbir istek ayarı yoktur.
 
-1. Erişim **isteğinde bulunabilen Kullanıcılar'da** **Yok 'u tıklatın (yalnızca yönetici doğrudan atamaları**.
+1. **Erişim Isteyebilen kullanıcılar** bölümünde Hiçbiri ' ne tıklayın **(yalnızca yönetici doğrudan atamaları**).
 
-    ![Erişim paketi - İstekler - Yalnızca yönetici doğrudan atamaları yok](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
+    ![Erişim paketi-Istekler-hiçbiri yönetici yalnızca doğrudan atamalar](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
 
-    Erişim paketini oluşturduktan sonra, belirli iç ve dış kullanıcıları doğrudan erişim paketine atayabilirsiniz. Harici bir kullanıcı belirtirseniz, dizininizde bir konuk kullanıcı hesabı oluşturulur. Doğrudan bir kullanıcı atama hakkında bilgi için, [erişim paketi için atamaları görüntüle, ekleme ve kaldırma](../articles/active-directory/governance/entitlement-management-access-package-assignments.md)bilgisine bakın.
+    Erişim paketini oluşturduktan sonra, erişim paketine belirli iç ve dış kullanıcıları doğrudan atayabilirsiniz. Bir dış Kullanıcı belirtirseniz, dizininizde bir Konuk Kullanıcı hesabı oluşturulur. Bir kullanıcıyı doğrudan atama hakkında daha fazla bilgi için bkz. [bir erişim paketi için atamaları görüntüleme, ekleme ve kaldırma](../articles/active-directory/governance/entitlement-management-access-package-assignments.md).
 
-1. [İstekleri Etkinleştir](#enable-requests) bölümüne atlayın.
+1. [Istekleri etkinleştir](#enable-requests) bölümüne atlayın.
 
 ## <a name="approval"></a>Onay
 
-Onay bölümünde, kullanıcılar bu erişim paketini istediğinde onay gerekip gerekmediğini belirtirsiniz. Onay ayarları aşağıdaki şekilde çalışır:
+Onay bölümünde, kullanıcılar bu erişim paketini istemesi durumunda bir onayın gerekli olup olmadığını belirtirsiniz. Onay ayarları aşağıdaki şekilde çalışır:
 
-- Seçili onaylayanlardan veya geri dönüş onaylayanlardan yalnızca birinin tek aşamalı onay isteğini onaylaması gerekir. 
-- Her aşamadan seçilen onaylayıcılardan yalnızca birinin 2 aşamalı onay isteğini onaylaması gerekir.
-- Onaylayan, politikanın erişimi yöneten kişiye bağlı olarak Yönetici, İç sponsor veya Dış sponsor olabilir.
-- Seçilen her onaylayıcının onayı tek veya 2 aşamalı onay için gerekli değildir.
-- Onay kararı, talebi ilk olarak hangi onaylayanın gözden geçirirse ona göre karara bağlıdır.
+- Seçili onaylayanlardan veya geri dönüş onaylayanlardan yalnızca birinin tek aşamalı onay için bir isteği onaylaması gerekir. 
+- Her bir aşamanın seçili onaylayanlardan yalnızca birinin, 2 aşamalı onay için bir isteği onaylaması gerekir.
+- Onaylayan, ilkenin erişimi hangi kişiye göre yapılandırdığına bağlı olarak bir yönetici, dahili sponsor veya harici sponsor olabilir.
+- Tek veya 2 aşamalı onay için seçili her Onaylayandan onay gerekli değildir.
+- Onay kararı, onaylayan kullanıcının isteği gözden geçirmelerine göre belirlenir.
 
-İstek ilkesine onaylayıcıların nasıl ekleyeceğiniz hakkında bir gösteri için aşağıdaki videoyu izleyin:
+Bir istek ilkesine onaylayanlar ekleme hakkında bir gösterim için aşağıdaki videoyu izleyin:
 
 >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4cZfg]
 
-İstek ilkesine çok aşamalı onay eklemenin nasıl yapılacağını göstermek için aşağıdaki videoyu izleyin:
+Bir istek ilkesine çok aşamalı onay ekleme hakkında bir gösterim için aşağıdaki videoyu izleyin:
 
 >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4d1Jw]
 
-Erişim paketi istekleriiçin onay ayarlarını belirtmek için aşağıdaki adımları izleyin:
+Erişim paketine yönelik isteklerin onay ayarlarını belirtmek için şu adımları izleyin:
 
-1. Seçili kullanıcılardan gelen istekler için onay istemek için Onay **İsteği'ni** **Evet**olarak ayarlayın. Veya isteklerin otomatik olarak onaylanması için, geçiş ini **No**olarak ayarlayın.
+1. Seçili kullanıcılardan gelen isteklere onay gerektirmek için **onay gerektir** seçeneğini **Evet**olarak ayarlayın. Ya da isteklerin otomatik olarak onaylanmasını sağlamak için, geçiş seçeneğini **Hayır**olarak ayarlayın.
 
-1. Kullanıcıların erişim paketini istemek için bir gerekçe sağlamalarını sağlamak için, **İstek İsteme veya yaslamayı** **Evet**olarak ayarlayın.
+1. Kullanıcıların erişim paketi istemek için bir gerekçe sağlamasını gerektirmek için, **istek sahibine iste** modunu **Evet**olarak ayarlayın.
     
-1. Şimdi isteklerin tek veya 2 aşamalı onay gerektirip gerekmeyeceğini belirleyin. Tek aşama onayı için **kaç aşamalı** geçişini **1'e** ayarlayın veya 2 aşamalı onay için geçişini **2'ye** ayarlayın.
+1. Şimdi isteklerin tek veya 2 aşamalı onay gerektirmesine göre belirlenir. Tek aşamalı onay için **1** ' e geçiş yapma veya 2 aşamalı onay için **2** ' **ye geçişi ayarlama** .
 
-    ![Erişim paketi - İstekler - Onay ayarları](./media/active-directory-entitlement-management-request-policy/approval.png)
+    ![Erişim paketi Istekleri-onay ayarları](./media/active-directory-entitlement-management-request-policy/approval.png)
 
-Kaç aşamaya ihtiyacınız olduğunu seçtikten sonra onaylayıcıeklemek için aşağıdaki adımları kullanın: 
+Kaç aşamanın gerekli olduğunu seçtikten sonra onaylayanları eklemek için aşağıdaki adımları kullanın: 
 
 ### <a name="single-stage-approval"></a>Tek aşamalı onay
 
-1. İlk **Onaylayıcı**ekle :
+1. **Ilk onaylayanı**ekleyin:
     
-    İlke dizininizdeki kullanıcıların erişimini yönetecek şekilde ayarlanmışsa, **Yönetici'yi onaylayan olarak**seçebilirsiniz. Veya açılır menüden belirli onaylayıcıları seç seçeneğini seçtikten sonra **onaylayıcıları ekle'yi** tıklatarak belirli bir kullanıcı ekleyin.
+    İlke, dizininizdeki kullanıcılar için erişimi yönetecek şekilde ayarlandıysa, yönetici ' yi **onaylayan olarak**seçebilirsiniz. Ya da, belirli bir **kullanıcıyı ekleme ' yi seçtikten sonra,** açılan menüden belirli onaylayanları Seç ' i tıklatarak ekleyebilirsiniz.
     
-    ![Erişim paketi - İstekler - Dizindeki kullanıcılar için - İlk Onaylayıcı](./media/active-directory-entitlement-management-request-policy/approval-single-stage-first-approver-manager.png)
+    ![Erişim paketi-Istekler-Dizin-Ilk onaylayanın kullanıcıları Için](./media/active-directory-entitlement-management-request-policy/approval-single-stage-first-approver-manager.png)
 
-    Bu ilke, dizininizde olmayan kullanıcıların erişimini yönetecek şekilde ayarlanmışsa, **Dış sponsor** veya **Dahili sponsor**seçebilirsiniz. Veya belirli onaylayıcıları seç'in altındaki **Onaylayıcılar** veya Gruplar Ekle'yi tıklatarak belirli bir kullanıcı ekleyin.
+    Bu ilke, dizininizde olmayan kullanıcılar için erişimi yönetecek şekilde ayarlandıysa, **Harici sponsor** veya **dahili sponsor**seçeneğini belirleyebilirsiniz. Ya da belirli onaylayanlara seç altında **Onaylayanlar Ekle** veya gruplar ' a tıklayarak belirli bir kullanıcıyı ekleyin.
     
-    ![Erişim paketi - İstekler - Dizin dışında kullanıcılar için - İlk Onaylayıcı](./media/active-directory-entitlement-management-request-policy/out-directory-first-approver.png)
+    ![Erişim paketi-Istekler-Dizin Ilk onaylayan kullanıcılar Için](./media/active-directory-entitlement-management-request-policy/out-directory-first-approver.png)
     
-1. **Yönetici'yi** ilk onaylayıcı olarak seçtiyseniz, geri dönüş onaylayıcısı olmak için dizininizdeki bir veya daha fazla kullanıcı veya grubu seçmek için **geri dönüş ekle'yi** tıklatın. Yetkilendirme yönetimi erişim isteyen kullanıcı için yöneticiyi bulamazsa, geri dönüş onaylayıcıları isteği alır.
+1. **Yöneticiyi** ilk onaylayan olarak seçtiyseniz, geri dönüş **Ekle** ' ye tıklayarak dizininizdeki bir veya daha fazla kullanıcıyı veya grubu geri dönüş onaylayıcısı olacak şekilde seçin. Yetkilendirme Yönetimi, erişim isteyen kullanıcı için yönetici bulamazsa, geri dönüş onaylayanları isteği alır.
 
-    Yönetici, **Yönetici** özniteliğini kullanarak yetkilendirme yönetimi tarafından bulunur. Öznitelik, Kullanıcının Azure AD'deki profilinde dir. Daha fazla bilgi için Azure [Etkin Dizin'i kullanarak kullanıcının profil bilgilerini ekle veya güncelleştir'e](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md)bakın.
+    Yönetici, **yönetici** özniteliği kullanılarak Yetkilendirme Yönetimi tarafından bulunur. Öznitelik, kullanıcının Azure AD 'deki profilidir. Daha fazla bilgi için, bkz. [Azure Active Directory kullanarak kullanıcının profil bilgilerini ekleme veya güncelleştirme](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
 
-1. **Belirli onaylayıcılar seçin'i**seçtiyseniz, onaylayıcı olmak için dizininizdeki bir veya daha fazla kullanıcı veya grubu seçmek için **onaylayıcıekle'yi** tıklatın.
+1. **Belirli onaylayanları Seç**' i seçtiyseniz, dizininizdeki bir veya daha fazla Kullanıcı ya da grubun onaylayanlarını seçmek Için **onaylayan Ekle** ' ye tıklayın.
 
-1. Karar altında kutusunda **kaç gün içinde yapılmalıdır?**
+1. Kararın altındaki kutuda **kaç gün içinde yapılmalıdır?**, bir onaylayanın bu erişim paketi için bir isteği gözden geçirmesi gereken gün sayısını belirtin.
 
-    Bu süre içinde bir istek onaylanmazsa, otomatik olarak reddedilir. Kullanıcının erişim paketi için başka bir istek göndermesi gerekir.
+    Bu süre içinde bir istek onaylanmamışsa, otomatik olarak reddedilir. Kullanıcının erişim paketi için başka bir istek göndermesi gerekir.
 
-1. Onaylayanların kararları için bir gerekçe sağlamalarını istemek için, **Onaylayıcıyı Evet**olarak ayarlamayı ayarlayın.
+1. Onaylayanlara kararların bir gerekçe vermesini gerektirmek için, onaylayan gerekçe ıste seçeneğini **Evet**olarak ayarlayın.
 
-    Gerekçe, diğer onaylayıcılar ve talepçi tarafından görülebilir.
+    Gerekçe diğer onaylayanlara ve istek sahibine görünür.
 
 ### <a name="2-stage-approval"></a>2 aşamalı onay
 
-2 aşamalı bir onay seçtiyseniz, ikinci bir onaylayıcı eklemeniz gerekir.
+2 aşamalı onay seçtiyseniz ikinci bir onaylayan eklemeniz gerekir.
 
-1. İkinci **Onaylayıcı**ekle : 
+1. **Ikinci onaylayanı**ekleyin: 
     
-    Kullanıcılar dizininizdeyse, belirli onaylayıcıları seç altında **Onaylayıcıları Ekle'yi** tıklatarak ikinci onaylayıcı olarak belirli bir kullanıcı ekleyin.
+    Kullanıcılar dizininizdeki ise, belirli onaylayanları seçin altında **onaylayan Ekle** ' ye tıklayarak ikinci onaylayan olarak belirli bir kullanıcıyı ekleyin.
 
-    ![Erişim paketi - İstekler - Dizindeki kullanıcılar için - İkinci Onaylayıcı](./media/active-directory-entitlement-management-request-policy/in-directory-second-approver.png)
+    ![Erişim paketi Istekleri-Dizin-Ikinci onaylayan kullanıcılar Için](./media/active-directory-entitlement-management-request-policy/in-directory-second-approver.png)
 
-    Kullanıcılar dizininizde yoksa, ikinci onaylayıcı olarak **Dahili sponsoru** veya **Dış sponsor'u** seçin. Onaylayıcıyı seçtikten sonra geri dönüş onaylayıcılarını ekleyin.
+    Kullanıcılar dizininizden değilse, ikinci onaylayan olarak **dahili sponsor** veya **External sponsoru** seçin. Onaylayanı seçtikten sonra geri dönüş onaylayanları ekleyin.
 
-    ![Erişim paketi - İstekler - Dizin dışında kullanıcılar için - İkinci Onaylayıcı](./media/active-directory-entitlement-management-request-policy/out-directory-second-approver.png) 
+    ![Erişim paketi Istekleri-Ikinci Dizin Için olan kullanıcılar Için-Ikinci onaylayan](./media/active-directory-entitlement-management-request-policy/out-directory-second-approver.png) 
 
-1. Karar kapsamında ikinci onaylayanın isteği kutusunda onaylaması gereken gün sayısını **kaç gün içinde belirtin?** 
+1. İkinci onaylayanın onay kutusundaki isteği onaylaması gereken gün sayısını **kaç gün içinde yapmanız gerektiğini**belirtin. 
 
-1. **Onaylayıcı** yımını Evet veya **Hayır**olarak ayarlamayı ayarlayın.
+1. Onaylayan ıste gerekçe **Evet** veya **Hayır**olarak ayarlanmalıdır.
 
-### <a name="alternate-approvers"></a>Alternatif onaylayıcılar
+### <a name="alternate-approvers"></a>Alternatif onaylayanlar
 
-İstekleri onaylayan birinci ve ikinci onaylayıcıları belirtmeye benzer şekilde alternatif onaylayıcılar belirtebilirsiniz. Alternatif onaylayıcıların olması, isteklerin süresi dolmadan önce onaylanmasına veya reddedilmesine (zaman aşımı) yardımcı olur. Alternatif onaylayıcıları ilk onaylayıcıyı ve ikinci onaylayıcıyı 2 aşamalı onay için listeleyebilirsiniz. 
+İstekleri onaylayabilecek birinci ve ikinci onaylayanları belirtmeye benzer şekilde alternatif onaylayanlar belirtebilirsiniz. Alternatif onaylayanlar olması, isteklerin süresi dolmadan önce onaylanmış veya reddedildiğinden emin olmaya yardımcı olur (zaman aşımı). İlk onaylayanın ve ikinci onaylayanın 2 aşamalı onay için alternatif onaylayanlar listeleyebilirsiniz. 
 
-Alternatif onaylayıcılar belirterek, birinci veya ikinci onaylayanların isteği onaylayamayacağı veya reddedememesi durumunda, bekleyen istek, ilke kurulumu sırasında belirttiğiniz iletme zamanlamasına göre alternatif onaylayıcılara iletilir. Bekleyen isteği onaylamak veya reddetmek için bir e-posta alırlar.
+Alternatif onaylayanlar belirterek, ilk veya ikinci onaylayanlardan isteği onaylayamayan veya reddetmeyen olayda, ilke kurulumu sırasında belirttiğiniz iletme zamanlaması başına bekleyen istek alternatif onaylayanlara iletilir. Bekleyen isteği onaylamak veya reddetmek için bir e-posta alırlar.
 
-İstek alternatif onaylayıcılara iletildikten sonra, birinci veya ikinci onaylayıcılar isteği yine de onaylayabilir veya reddedebilir. Alternatif onaylayıcılar, bekleyen isteği onaylamak veya reddetmek için aynı Erişimim sitesini kullanır.
+İstek alternatif onaylayanlara iletildikten sonra, ilk veya ikinci onaylayanlar isteği yine de onaylayabilir veya reddedebilir. Alternatif onaylayanlar, bekleyen isteği onaylamak veya reddetmek için aynı erişim sitemi kullanır.
 
-Kişileri veya kişi gruplarını onaylayan ve alternatif onaylayıcı olarak listeleyebiliriz. Lütfen birinci, ikinci ve alternatif onaylayıcılar olacak farklı kişi kümelerini listelediğinden emin olun.
-Örneğin, Gamze ve Bob'u İlk Onaylayıcı(lar) olarak listelediyseniz, Carol ve Dave'i alternatif onaylayıcılar olarak listele. Bir erişim paketine alternatif onaylayıcılar eklemek için aşağıdaki adımları kullanın:
+Kişiler veya kişi gruplarını onaylayan ve alternatif onaylayanlar olacak şekilde listeliyoruz. Lütfen birinci, ikinci ve alternatif onaylayanlar olacak farklı kişi kümelerini listediğinizden emin olun.
+Örneğin, Gamze ve emre 'yi Ilk onaylayan olarak listeleniyorsa, alternatif onaylayanlar olarak Carol ve Davde listesini listeleyin. Bir erişim paketine alternatif onaylayanlar eklemek için aşağıdaki adımları kullanın:
 
-1. İlk Onaylayan, İkinci Onaylayıcı veya her ikisi altında **gelişmiş istek ayarlarını göster'i**tıklatın.
+1. Ilk onaylayanın, Ikinci onaylayan veya her ikisinde de **Gelişmiş istek ayarlarını göster**' e tıklayın.
 
-    ![Erişim paketi - İlke - Gelişmiş istek ayarlarını göster](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
+    ![Erişim paketi-Ilke-Gelişmiş istek ayarlarını göster](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
 
-1. **Herhangi bir işlem yapılmazsa, alternatif onaylayıcılara geçirin?** **Yes**
+1. **Herhangi bir eylem yapılmadı, alternatif onaylayanlara ilet mi?** **Evet**olarak değiştirin.
 
-1. **Alternatif onaylayıcılar ekle'yi** tıklatın ve listeden alternatif onaylayıcıyı seçin.
+1. **Alternatif onaylayanlar Ekle** ' ye tıklayın ve listeden alternatif onaylayanı seçin.
 
-    ![Erişim paketi - İlke - Alternatif Onaylayıcılar Ekle](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+    ![Erişim paketi-Ilke-alternatif onaylayanlar ekleme](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
 
-1. **İleri'de kaç gün sonra alternatif onaylayıcı(lar)** kutusunda, onaylayanların bir isteği onaylaması veya reddetmesi gereken gün sayısı koyun. İstek süresinden önce hiçbir onaylayıcı isteği onaylamamış veya reddetmemişse, istek süresi (zaman aşımı) sona erer ve kullanıcı erişim paketi için başka bir istek göndermek zorundadır. 
+1. **Kaç gün sonra diğer onaylayanlara ilet** kutusunda, onaylayanın bir isteği onaylaması veya reddetmesi için sahip olduğu gün sayısına koyun. Onaylayan, istek süresinden önce isteği onaylamadıysa veya reddetmezse, isteğin süresi dolar (zaman aşımı) ve kullanıcının erişim paketi için başka bir istek göndermesi gerekecektir. 
 
-    İstekler, istek süresinin yarı ömrüne ulaşmasından bir gün sonra alternatif onaylayıcılara iletilebilir. Bu örnekte, istek süresi 14 gündür. Yani, istek süresi 7. Bu nedenle istek 8. Ayrıca, istekler istek süresinin son gününde iletilemeyebilir. Yani örnekte, en son istek iletilebilir gün 13.
+    İstekler yalnızca, istek süresi yarı hayata geçtikten sonra bir gün daha farklı onaylayanlara iletilebilir. Bu örnekte, istek süresi 14 gündür. Bu nedenle, istek süresi 7. günde yarı yaşam süresine ulaşır. Bu nedenle, istek 8. günden daha önce iletilemez. Ayrıca, istekler istek süresinin son gününde iletilemez. Bu nedenle, isteğin iletilebilmesi için en son, gün 13 ' dir.
 
-## <a name="enable-requests"></a>İstekleri etkinleştirme
+## <a name="enable-requests"></a>İstekleri etkinleştir
 
-1. Erişim paketinin istek ilkesindeki kullanıcıların istekte bulunması için hemen kullanılabilir hale verilmesini istiyorsanız, Geçiş Yap'ı **Evet'e**taşıyın.
+1. Erişim paketinin istek ilkesindeki kullanıcıların istemesi için hemen kullanılabilir olmasını istiyorsanız, etkinleştir seçeneğini **Evet**olarak taşıyın.
 
-    Erişim paketini oluşturmayı bitirdikten sonra gelecekte her zaman etkinleştirebilirsiniz.
+    Erişim paketini oluşturma işlemi bittikten sonra bunu gelecekte etkinleştirebilirsiniz.
 
-    **Yok'u (yalnızca yönetici doğrudan atamaları)** seçtiyseniz ve etkinleştirmeyi **Hayır**olarak ayarlarsanız, yöneticiler bu erişim paketini doğrudan atayamaz.
+    Hiçbiri ' ni seçtiyseniz **(yalnızca yönetici doğrudan atamaları)** ve Etkinleştir **' i ayarlarsanız, Yöneticiler**bu erişim paketini doğrudan atayamaz.
 
-    ![Erişim paketi - İlke- İlke ayarını etkinleştir](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
+    ![Erişim paketi-Ilke-ilke ayarını etkinleştir](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. **İleri**’ye tıklayın.

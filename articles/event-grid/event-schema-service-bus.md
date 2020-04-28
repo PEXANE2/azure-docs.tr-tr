@@ -1,6 +1,6 @@
 ---
-title: Olay Izgara kaynağı olarak Azure Hizmet Veri Tos
-description: Azure Olay Ağıtı ile Hizmet Veri Veri Mes'leri etkinlikleri için sağlanan özellikleri açıklar
+title: Event Grid kaynak olarak Azure Service Bus
+description: Azure Event Grid Service Bus olaylar için belirtilen özellikleri açıklar
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: babanisa
 ms.openlocfilehash: 141a0e96071014dc3705d30f72b1a9257737298a
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393234"
 ---
-# <a name="azure-service-bus-as-an-event-grid-source"></a>Olay Izgara kaynağı olarak Azure Hizmet Veri Tos
+# <a name="azure-service-bus-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure Service Bus
 
-Bu makalede, Servis Veri Servisi etkinlikleri için özellikler ve şema sağlar.Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
+Bu makalede Service Bus olayları için özellikler ve şema sağlanmaktadır.Olay şemalarına giriş için bkz. [Azure Event Grid olay şeması](event-schema.md).
 
-## <a name="event-grid-event-schema"></a>Olay Izgara olay şeması
+## <a name="event-grid-event-schema"></a>Event Grid olay şeması
 
-### <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
+### <a name="available-event-types"></a>Kullanılabilir olay türleri
 
-Servis Veri Servisi aşağıdaki olay türlerini yayır:
+Service Bus aşağıdaki olay türlerini yayar:
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | Bir Kuyruk veya Abonelik'te etkin iletiler olduğunda ve alıcı lar dinlemediğinde yükseltilir. |
-| Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | Ölü Harf Kuyruğu'nda etkin iletiler olduğunda ve etkin dinleyici olmadığında yükseltilir. |
+| Microsoft. ServiceBus. ActiveMessagesAvailableWithNoListeners | Bir kuyrukta veya abonelikte etkin iletiler olduğunda ve hiçbir alıcı dinlemeden oluşturulur. |
+| Microsoft. ServiceBus. DeadletterMessagesAvailableWithNoListener | Sahipsiz bir kuyrukta etkin iletiler olduğunda ve etkin dinleyici olmadığında tetiklenir. |
 
 ### <a name="example-event"></a>Örnek olay
 
-Aşağıdaki örnek, dinleyici olayı olmayan etkin iletilerin şemasını gösterir:
+Aşağıdaki örnekte, hiçbir dinleyici olayı olmayan etkin iletilerin şeması gösterilmektedir:
 
 ```json
 [{
@@ -53,7 +53,7 @@ Aşağıdaki örnek, dinleyici olayı olmayan etkin iletilerin şemasını göst
 }]
 ```
 
-Ölü harf sırası olayının şeması benzer:
+Geçerliliği kalmamış bir sıra olayının şeması benzerdir:
 
 ```json
 [{
@@ -77,16 +77,16 @@ Aşağıdaki örnek, dinleyici olayı olmayan etkin iletilerin şemasını göst
 
 ### <a name="event-properties"></a>Olay özellikleri
 
-Bir olay aşağıdaki üst düzey verilere sahiptir:
+Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| konu başlığı | string | Olay kaynağına tam kaynak yolu. Bu alan yazılamaz. Event Grid bu değeri sağlar. |
+| konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| Eventtype | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
-| id | string | Etkinlik için benzersiz tanımlayıcı. |
-| veri | object | Blob depolama olay verileri. |
+| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| id | string | Etkinliğin benzersiz tanımlayıcısı. |
+| veri | object | BLOB depolama olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
@@ -94,22 +94,22 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| Namespacename | string | Hizmet Veri Servisi ad alanı kaynağı var. |
-| Requesturi | string | Uri belirli sıraya veya abonelik olay yayan. |
-| Entitytype | string | Hizmet Veri Mesuliyeti kuruluş türü yayan olaylar (sıra veya abonelik). |
-| queueName | string | Bir kuyruğa abone olan etkin iletilerin yer alan sırası. Konular / abonelikler kullanıyorsanız null değeri. |
-| topicName | string | Etkin iletilerin yer alan Servis Veri Servisi aboneliğinin ait olduğu konu. Sıra kullanıyorsanız null değeri. |
-| subscriptionName | string | Etkin iletilerle Hizmet Veri Servisi aboneliği. Sıra kullanıyorsanız null değeri. |
+| Uz | string | Kaynağın mevcut olduğu ad alanı Service Bus. |
+| requestUri | string | Olayı yayan belirli bir sıranın veya aboneliğin URI 'SI. |
+| entityType | string | Olayların (kuyruk veya abonelik) yayan Service Bus varlık türü. |
+| Adı | string | Bir kuyruğa abone olunurken etkin iletileri olan kuyruk. Konular/abonelikler kullanılıyorsa null değeri. |
+| topicName | string | Etkin iletilerle Service Bus aboneliğin üyesi olan konu. Kuyruk kullanılıyorsa null değeri. |
+| subscriptionName | string | Etkin iletilerle Service Bus aboneliği. Kuyruk kullanılıyorsa null değeri. |
 
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
 |Başlık  |Açıklama  |
 |---------|---------|
-| [Öğretici: Azure Hizmet Veri Servisi'ni Azure Olay Izgara tümleştirme örneklerine](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Olay Grid, Service Bus konusundan işlev uygulamasına ve mantık uygulamasına ileti gönderir. |
-| [Azure Servis Veri Servisi'ndan Olay Ağı tümleştirmesine](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Hizmet Veri Veri Tos'u Olay Izgarasıyla tümleştirmeye genel bakış. |
+| [Öğretici: Azure Event Grid tümleştirme örneklerine Azure Service Bus](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid, Service Bus konudan işlev uygulaması ve mantıksal uygulama 'a ileti gönderir. |
+| [Event Grid tümleştirmeye Azure Service Bus](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Service Bus Event Grid tümleştirilmesine genel bakış. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Etkinlik Izgarasına giriş için [olay ızgarası nedir?](overview.md)
-* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.
-* Hizmet Veri Yolunda Azure Olay Izgarasını kullanma hakkında ayrıntılı bilgi [için, Olay Ağı tümleştirmesine genel bakış](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md)alameti olan Servis Veri Yolunda'na bakın.
-* [Fonksiyonlar veya Logic Apps ile Servis Veri Servisi etkinlikleri almayı](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json)deneyin.
+* Azure Event Grid giriş için bkz. [Event Grid nedir?](overview.md)
+* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md).
+* Service Bus ile Azure Event Grid kullanma hakkında ayrıntılı bilgi için bkz. [Service Bus Event Grid tümleştirmeye genel bakış](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md).
+* [İşlevlerle veya Logic Apps Service Bus olayları almayı](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json)deneyin.

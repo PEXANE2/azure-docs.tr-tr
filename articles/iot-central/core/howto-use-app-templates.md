@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Merkezi uygulamasını dışa aktarma | Microsoft Dokümanlar
-description: Çözüm yöneticisi olarak, yeniden kullanabilmek için bir uygulama şablonu dışa aktarmak istiyorum.
+title: Azure IoT Central uygulamasını dışarı aktarma | Microsoft Docs
+description: Bir çözüm Yöneticisi olarak, bir uygulama şablonunu yeniden kullanabilmek için dışarı aktarmak istiyorum.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/09/2019
@@ -9,88 +9,88 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: f50c7e8dcb33fd2ed95829286aaf815926d9fb3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80157662"
 ---
 # <a name="export-your-application"></a>Uygulamanızı dışarı aktarma
 
 
 
-Bu makalede, bir çözüm yöneticisi olarak, yeniden kullanabilmek için bir IoT Merkezi uygulamasını nasıl dışa aktarılabilmek için açıklanmaktadır.
+Bu makalede, bir IoT Central uygulamasının yeniden kullanabilmek için bir çözüm Yöneticisi olarak nasıl dışarı aktarılacağı açıklanmaktadır.
 
 İki seçeneğiniz vardır:
 
-- Uygulamanızın yinelenen bir kopyasını oluşturmanız gerekiyorsa uygulamanızın bir kopyasını oluşturabilirsiniz.
-- Birden çok kopya oluşturmayı planlıyorsanız, uygulamanızdan bir uygulama şablonu oluşturabilirsiniz.
+- Yalnızca uygulamanızın yinelenen bir kopyasını oluşturmanız gerekiyorsa uygulamanızın bir kopyasını oluşturabilirsiniz.
+- Birden çok kopya oluşturmayı planlıyorsanız uygulamanızdan bir uygulama şablonu oluşturabilirsiniz.
 
-## <a name="copy-your-application"></a>Başvurunuzu kopyalayın
+## <a name="copy-your-application"></a>Uygulamanızı kopyalayın
 
-Herhangi bir uygulamanın kopyasını oluşturabilirsiniz, herhangi bir aygıt örnekleri, aygıt veri geçmişi ve kullanıcı verileri hariç. Kopya, faturalandırılacağınız standart bir fiyatlandırma planı kullanır. Bir uygulamayı kopyalayarak ücretsiz fiyatlandırma planını kullanan bir uygulama oluşturamazsınız.
+Herhangi bir uygulamanın bir kopyasını, eksi herhangi bir cihaz örneğini, cihaz veri geçmişini ve Kullanıcı verilerini oluşturabilirsiniz. Kopya, için faturalandırılacağımız standart bir fiyatlandırma planı kullanır. Bir uygulamayı kopyalayarak ücretsiz fiyatlandırma planı kullanan bir uygulama oluşturamazsınız.
 
-**Kopyala**’yı seçin. İletişim kutusuna, yeni uygulamanın ayrıntılarını girin. Ardından **Copy** devam etmek istediğinizi doğrulamak için Kopyala'yı seçin. Formdaki alanlar hakkında daha fazla bilgi edinmek için uygulama hızlı [başlat'ı oluştur'a](quick-deploy-iot-central.md) bakın.
+**Kopyala**’yı seçin. İletişim kutusunda, yeni uygulamanın ayrıntılarını girin. Sonra devam etmek istediğinizi onaylamak için **Kopyala** ' yı seçin. Formdaki alanlar hakkında daha fazla bilgi edinmek için bkz. [uygulama oluşturma](quick-deploy-iot-central.md) hızlı başlangıcı.
 
 ![Uygulama ayarları sayfası](media/howto-use-app-templates/appcopy2.png)
 
-Uygulama kopyalama işlemi başarılı olduktan sonra, bağlantıyı kullanarak yeni uygulamaya gidebilirsiniz.
+Uygulama kopyalama işlemi başarılı olduktan sonra, bağlantısını kullanarak yeni uygulamaya gidebilirsiniz.
 
 ![Uygulama ayarları sayfası](media/howto-use-app-templates/appcopy3a.png)
 
-Bir uygulamayı kopyalamak, kuralların ve e-posta eyleminin tanımını da kopyalar. Akış ve Mantık Uygulamaları gibi bazı eylemler, Kural Kimliği aracılığıyla belirli kurallara bağlıdır. Bir kural farklı bir uygulamaya kopyalandığında, kendi Kural Kimliğini alır. Bu durumda, kullanıcıların yeni bir eylem oluşturması ve ardından yeni kuralı onunla ilişkilendirmeleri gerekir. Genel olarak, yeni uygulamada güncel olduğundan emin olmak için kuralları ve eylemleri kontrol etmek iyi bir fikirdir.
+Bir uygulamayı kopyalamak kuralların ve e-posta eyleminin tanımını da kopyalar. Flow ve Logic Apps gibi bazı eylemler kural KIMLIĞI aracılığıyla belirli kurallara bağlıdır. Bir kural farklı bir uygulamaya kopyalandığında kendi kural KIMLIĞINI alır. Bu durumda, kullanıcıların yeni bir eylem oluşturması ve yeni kuralı onunla ilişkilendirilmesi gerekir. Genel olarak, yeni uygulamada güncel olduklarından emin olmak için kuralları ve eylemleri denetlemeniz iyi bir fikirdir.
 
 > [!WARNING]
-> Pano, belirli aygıtlar hakkında bilgi görüntüleyen kutucuklar içeriyorsa, bu kutucuklar **istenen kaynağın** yeni uygulamada bulunmadığını gösterir. Bu kutucukları yeni uygulamanızdaki aygıtlar hakkında bilgi görüntülemek için yeniden yapılandırmanız gerekir.
+> Bir pano belirli cihazlarla ilgili bilgileri görüntüleyen kutucuklar içeriyorsa, bu kutucuklar **istenen kaynağı** yeni uygulamada bulamadı. Yeni uygulamanızdaki cihazlarla ilgili bilgileri göstermek için bu kutucukları yeniden yapılandırmanız gerekir.
 
 ## <a name="create-an-application-template"></a>Uygulama şablonu oluşturma
 
-Bir Azure IoT Merkezi uygulaması oluşturduğunuzda, yerleşik örnek şablon seçeneğiniz vardır. Ayrıca, mevcut IoT Merkezi uygulamalarından kendi uygulama şablonlarınızı oluşturabilirsiniz. Daha sonra yeni uygulamalar oluştururken kendi uygulama şablonlarınızı kullanabilirsiniz.
+Bir Azure IoT Central uygulaması oluşturduğunuzda, yerleşik bir örnek şablonlar seçiminiz vardır. Ayrıca, mevcut IoT Central uygulamalarından kendi uygulama şablonlarınızı da oluşturabilirsiniz. Ardından, yeni uygulamalar oluştururken kendi uygulama şablonlarınızı kullanabilirsiniz.
 
-Bir uygulama şablonu oluşturduğunuzda, varolan uygulamanızdan aşağıdaki öğeleri içerir:
+Bir uygulama şablonu oluşturduğunuzda, var olan uygulamanızdan aşağıdaki öğeleri içerir:
 
-- Pano düzeni ve tanımladığınız tüm döşemeler dahil olmak üzere varsayılan uygulama panosu.
-- Ölçümler, ayarlar, özellikler, komutlar ve pano dahil olmak üzere aygıt şablonları.
-- Kural -ları. Tüm kural tanımları dahildir. Ancak, e-posta eylemleri dışında eylemler dahil değildir.
-- Durumları ve panoları da dahil olmak üzere cihaz kümeleri.
+- Pano düzeni ve tanımladığınız tüm kutucuklar dahil olmak üzere varsayılan uygulama panosu.
+- Ölçümler, ayarlar, özellikler, komutlar ve Pano dahil cihaz şablonları.
+- Kuralın. Tüm kural tanımları dahildir. Ancak, e-posta eylemleri hariç eylemler dahil değildir.
+- Koşulları ve panoları dahil cihaz kümeleri.
 
 > [!WARNING]
-> Pano, belirli aygıtlar hakkında bilgi görüntüleyen kutucuklar içeriyorsa, bu kutucuklar **istenen kaynağın** yeni uygulamada bulunmadığını gösterir. Bu kutucukları yeni uygulamanızdaki aygıtlar hakkında bilgi görüntülemek için yeniden yapılandırmanız gerekir.
+> Bir pano belirli cihazlarla ilgili bilgileri görüntüleyen kutucuklar içeriyorsa, bu kutucuklar **istenen kaynağı** yeni uygulamada bulamadı. Yeni uygulamanızdaki cihazlarla ilgili bilgileri göstermek için bu kutucukları yeniden yapılandırmanız gerekir.
 
-Bir uygulama şablonu oluşturduğunuzda, aşağıdaki öğeleri içermez:
+Bir uygulama şablonu oluşturduğunuzda, bu, aşağıdaki öğeleri içermez:
 
 - Cihazlar
 - Kullanıcılar
 - İş tanımları
 - Sürekli veri dışa aktarma tanımları
 
-Bu öğeleri bir uygulama şablonundan oluşturulan uygulamalara el ile ekleyin.
+Bu öğeleri bir uygulama şablonundan oluşturulan tüm uygulamalara el ile ekleyin.
 
-Varolan bir IoT Merkezi uygulamasından bir uygulama şablonu oluşturmak için:
+Mevcut bir IoT Central uygulamasından uygulama şablonu oluşturmak için:
 
-1. Başvurunuzdaki **İdare** bölümüne gidin.
-1. **Uygulama Şablonu Dışa Aktarma'yı**seçin.
-1. Uygulama **Şablonu Dışa Aktarma** sayfasında şablonunuzun adını ve açıklamasını girin.
-1. Uygulama şablonu oluşturmak için **Dışa** Aktarma düğmesini seçin. Artık birinin şablondan yeni bir uygulama oluşturmasına olanak tanıyan **Paylaşılabilir Bağlantıyı** kopyalayabilirsiniz:
+1. Uygulamanızdaki **Yönetim** bölümüne gidin.
+1. **Uygulama şablonu dışarı aktar**' ı seçin.
+1. **Uygulama şablonu dışarı aktarma** sayfasında, şablonunuz için bir ad ve açıklama girin.
+1. Uygulama şablonunu oluşturmak için **dışarı aktar** düğmesini seçin. Artık, bir kişinin şablondan yeni bir uygulama oluşturmasını sağlayan **paylaşılabilir bağlantıyı** kopyalayabilirsiniz:
 
 ![Uygulama şablonu oluşturma](media/howto-use-app-templates/create-template.png)
 
 ### <a name="use-an-application-template"></a>Uygulama şablonu kullanma
 
-Yeni bir IoT Merkezi uygulaması oluşturmak için bir uygulama şablonu kullanmak için, önceden oluşturulmuş bir **Paylaşılabilir Bağlantı**gerekir. **Paylaşılabilir Bağlantıyı** tarayıcınızın adres çubuğuna yapıştırın. **Uygulama sayfası oluştur,** özel uygulama şablonunuzun seçili olduğunu gösterir:
+Yeni bir IoT Central uygulaması oluşturmak üzere bir uygulama şablonu kullanmak için önceden oluşturulmuş **paylaşılabilir bir bağlantıya**ihtiyacınız vardır. **Paylaşılabilir bağlantıyı** tarayıcınızın adres çubuğuna yapıştırın. **Uygulama oluştur** sayfası, özel uygulama şablonunuz seçili olarak görüntülenir:
 
 ![Şablondan uygulama oluşturma](media/howto-use-app-templates/create-app.png)
 
-Fiyatlandırma planınızı seçin ve formdaki diğer alanları doldurun. Ardından, uygulama şablonundan yeni bir IoT Merkezi uygulaması oluşturmak için **Oluştur'u** seçin.
+Fiyatlandırma planınızı seçin ve formdaki diğer alanları doldurun. Sonra uygulama şablonundan yeni bir IoT Central uygulaması oluşturmak için **Oluştur** ' u seçin.
 
 ### <a name="manage-application-templates"></a>Uygulama şablonlarını yönetme
 
-Uygulama **Şablonu Dışa Aktarma** sayfasında, uygulama şablonu silebilir veya güncelleyebilirsiniz.
+**Uygulama şablonu dışarı aktarma** sayfasında, uygulama şablonunu silebilir veya güncelleştirebilirsiniz.
 
-Bir uygulama şablonu silerseniz, yeni uygulamalar oluşturmak için daha önce oluşturulmuş paylaşılabilir bağlantıyı artık kullanamazsınız.
+Bir uygulama şablonunu silerseniz, yeni uygulamalar oluşturmak için daha önce oluşturulmuş paylaşılabilir bağlantısını artık kullanamazsınız.
 
-Uygulama şablonunuzu güncelleştirmek **için, Uygulama Şablonu Dışa Aktarma** sayfasındaşablon adını veya açıklamasını değiştirin. Ardından **Dışa** Aktar düğmesini yeniden seçin. Bu eylem yeni bir **Paylaşılabilir bağlantı** oluşturur ve önceki **Paylaşılabilir bağlantı** URL'lerini geçersiz kılabilir.
+Uygulama şablonunuzu güncelleştirmek için, **uygulama şablonu dışarı aktarma** sayfasındaki şablon adını veya açıklamasını değiştirin. Ardından **dışarı aktar** düğmesini tekrar seçin. Bu eylem, yeni bir **paylaşılabilir bağlantı** oluşturur ve önceki **paylaşılabilir bağlantı** URL 'lerini geçersiz kılar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulama şablonlarını kullanmayı öğrendiğiniz için önerilen bir sonraki adım, [Azure portalından IoT Central'ı](howto-manage-iot-central-from-portal.md) nasıl yöneteceğimi öğrenmektir
+Uygulama şablonlarını nasıl kullanacağınızı öğrendiğinize göre, önerilen sonraki adım [Azure portal IoT Central nasıl yöneteceğinizi öğreneceksiniz.](howto-manage-iot-central-from-portal.md)

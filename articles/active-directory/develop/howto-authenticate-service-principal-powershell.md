@@ -1,5 +1,5 @@
 ---
-title: Azure uygulama kimliği (PowerShell) oluşturma | Azure
+title: Azure Uygulama kimliği oluşturma (PowerShell) | Mavisi
 titleSuffix: Microsoft identity platform
 description: Azure PowerShell kullanarak Azure Active Directory uygulamasıyla hizmet sorumlusu oluşturma ve rol tabanlı erişim denetimi aracılığıyla bu uygulamaya kaynaklar için erişim verme işlemleri açıklanır. Bir sertifikayla uygulamanın kimliğinin nasıl doğrulandığı gösterilir.
 services: active-directory
@@ -14,13 +14,13 @@ ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.openlocfilehash: 7bd8c3b25c23ba8586e38ec8eb7d1baefaa21633
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884197"
 ---
-# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Nasıl olunur: Sertifikası olan bir hizmet sorumlusu oluşturmak için Azure PowerShell'i kullanın
+# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Nasıl yapılır: sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanma
 
 Kaynaklara erişmesi gereken bir uygulamanız veya betiğiniz olduğunda, uygulama için bir kimlik ayarlayabilir ve uygulamanın kimliğini kendi kimlik bilgileriyle doğrulayabilirsiniz. Bu kimlik, hizmet sorumlusu olarak bilinir. Bu yaklaşım şunları yapmanızı sağlar:
 
@@ -28,7 +28,7 @@ Kaynaklara erişmesi gereken bir uygulamanız veya betiğiniz olduğunda, uygula
 * Katılımsız bir betik yürütürken kimlik doğrulaması için sertifika kullanabilirsiniz.
 
 > [!IMPORTANT]
-> Hizmet ilkesi oluşturmak yerine, uygulama kimliğiniz için Azure kaynakları için yönetilen kimlikler kullanmayı düşünün. Kodunuz yönetilen kimlikleri destekleyen bir hizmette çalışıyorsa ve Azure Etkin Dizini (Azure AD) kimlik doğrulamasını destekleyen kaynaklara erişiyorsa, yönetilen kimlikler sizin için daha iyi bir seçenektir. Şu anda hangi hizmetlerin desteklediği de dahil olmak üzere Azure kaynaklarıiçin yönetilen kimlikler hakkında daha fazla bilgi edinmek için Azure [kaynakları için yönetilen kimlikler nedir?](../managed-identities-azure-resources/overview.md)
+> Hizmet sorumlusu oluşturmak yerine, uygulama kimliğiniz için Azure kaynakları için Yönetilen kimlikler kullanmayı göz önünde bulundurun. Kodunuz yönetilen kimlikleri destekleyen ve Azure Active Directory (Azure AD) kimlik doğrulamasını destekleyen kaynaklara erişen bir hizmette çalışıyorsa, Yönetilen kimlikler sizin için daha iyi bir seçenektir. Azure kaynakları için Yönetilen kimlikler hakkında daha fazla bilgi edinmek için şu anda hangi hizmetleri desteklediği hakkında daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](../managed-identities-azure-resources/overview.md).
 
 Bu makalede, sertifikayla kimlik doğrulaması yapan bir hizmet sorumlusunun nasıl oluşturulduğu gösterilir. Parolası olan bir hizmet sorumlusu ayarlamak için bkz. [Azure PowerShell ile Azure hizmet sorumlusu oluşturma](/powershell/azure/create-azure-service-principal-azureps).
 
@@ -38,21 +38,21 @@ Bu makale için PowerShell'in [en son sürümünü](/powershell/azure/install-az
 
 ## <a name="required-permissions"></a>Gerekli izinler
 
-Bu makaleyi tamamlamak için hem Azure REKLAM'ınızda hem de Azure aboneliğinizde yeterli izinlere sahip olmalısınız. Özellikle, Azure AD'de bir uygulama oluşturabilmeli ve hizmet ilkesini bir role atayabiliyor olmalısınız.
+Bu makaleyi tamamlayabilmeniz için hem Azure AD hem de Azure aboneliğinizde yeterli izinlere sahip olmanız gerekir. Özellikle, Azure AD 'de bir uygulama oluşturabilmek ve hizmet sorumlusunu bir role atamanız gerekir.
 
 Hesabınızın yeterli izinlere sahip olup olmadığını denetlemenin en kolay yolu portalı kullanmaktır. Bkz. [Gerekli izinleri denetleme](howto-create-service-principal-portal.md#required-permissions).
 
 ## <a name="assign-the-application-to-a-role"></a>Uygulamayı bir role atama
-Aboneliğinizdeki kaynaklara erişmek için uygulamayı bir role atamanız gerekir. Hangi rolün uygulama için doğru izinleri sunduğuna karar verin. Kullanılabilir roller hakkında bilgi edinmek için Bkz. [RBAC: Built in Roles](/azure/role-based-access-control/built-in-roles).
+Aboneliğinizdeki kaynaklara erişmek için uygulamayı bir role atamanız gerekir. Hangi rolün uygulama için doğru izinleri sunduğunu belirleyin. Kullanılabilir roller hakkında daha fazla bilgi edinmek için bkz. [RBAC: yerleşik roller](/azure/role-based-access-control/built-in-roles).
 
-Kapsamı abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzinler daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için *Okuyucu* rolüne bir uygulama eklemek, kaynak grubunu ve içerdiği kaynakları okuyabileceği anlamına gelir. Uygulamanın yeniden başlatma, başlatma ve durdurma gibi eylemleri yürütmesine izin vermek için *Katılımcı* rolünü seçin.
+Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzinler, daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için *okuyucu* rolüne bir uygulama eklemek, kaynak grubunu ve içerdiği kaynakları okuyabileceği anlamına gelir. Uygulamanın yeniden başlatma, örnekleri başlatma ve durdurma gibi eylemleri yürütmesine izin vermek için, *katkıda bulunan* rolünü seçin.
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Otomatik olarak imzalanan bir sertifikayla hizmet sorumlusu oluşturma
 
-Aşağıdaki örnekte basit bir senaryo ele alınmıştır. Kendi imzalı sertifikası olan bir hizmet ilkesi oluşturmak için [New-AzADServicePrincipal'ı](/powershell/module/az.resources/new-azadserviceprincipal) kullanır ve [Reader](/azure/role-based-access-control/built-in-roles#reader) rolünü hizmet ilkesine atamak için [New-AzRoleAssignment'ı](/powershell/module/az.resources/new-azroleassignment) kullanır. Rol atamasının kapsamı şu anda seçili olan Azure aboneliğinizdir. Farklı bir abonelik seçmek için [Set-AzContext'ı](/powershell/module/Az.Accounts/Set-AzContext)kullanın.
+Aşağıdaki örnekte basit bir senaryo ele alınmıştır. Otomatik olarak imzalanan bir sertifika ile hizmet sorumlusu oluşturmak için [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) kullanır ve [Yeni-Azroleatama](/powershell/module/az.resources/new-azroleassignment) kullanarak [okuyucu](/azure/role-based-access-control/built-in-roles#reader) rolünü hizmet sorumlusuna atar. Rol atamasının kapsamı şu anda seçili olan Azure aboneliğinizdir. Farklı bir abonelik seçmek için [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)' i kullanın.
 
 > [!NOTE]
-> Yeni SelfSignedCertificate cmdlet ve PKI modülü şu anda PowerShell Core'da desteklenmez. 
+> New-SelfSignedCertificate cmdlet 'i ve PKI modülü şu anda PowerShell Core 'da desteklenmiyor. 
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
@@ -68,7 +68,7 @@ Sleep 20
 New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.ApplicationId
 ```
 
-Örnek, yeni hizmet sorumlusunun Azure AD boyunca yayılması için biraz zaman tanımak için 20 saniye uyur. Betiğiniz yeteri kadar uzun beklemiyorsa, "{DIR-ID} dizininde {ID} sorumlusu yok" hatasını görürsünüz. Bu hatayı gidermek için bir dakika bekleyin ve **Yeni-AzRoleAssignment** komutunu yeniden çalıştırın.
+Örnek, yeni hizmet sorumlusu tarafından Azure AD genelinde yayılır. Betiğiniz yeteri kadar uzun beklemiyorsa, "{DIR-ID} dizininde {ID} sorumlusu yok" hatasını görürsünüz. Bu hatayı çözmek için bir süre bekleyip **New-Azroleatama** komutunu yeniden çalıştırın.
 
 **ResourceGroupName** parametresini kullanıp rol atamasının kapsamı olarak belirli bir kaynak grubunu belirtebilirsiniz. Ayrıca kapsam olarak belirli bir kaynağı belirtmek için **ResourceType** ve **ResourceName** parametrelerini kullanabilirsiniz. 
 
@@ -91,7 +91,7 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Otomatik PowerShell betiği aracılığıyla sertifika sağlama
 
-Hizmet sorumlusu olarak her oturum açtığınızda, AD uygulamanız için dizinin kiracı kimliğini sağlamanız gerekir. Kiracı, Azure AD'nin bir örneğidir.
+Hizmet sorumlusu olarak her oturum açtığınızda, AD uygulamanız için dizinin kiracı kimliğini sağlamanız gerekir. Kiracı, Azure AD 'nin bir örneğidir.
 
 ```powershell
 $TenantId = (Get-AzSubscription -SubscriptionName "Contoso Default").TenantId
@@ -106,7 +106,7 @@ $ApplicationId = (Get-AzADApplication -DisplayNameStartWith exampleapp).Applicat
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>Sertifika Yetkilisinin sertifikasıyla hizmet sorumlusu oluşturma
 
-Aşağıdaki örnekte, hizmet sorumlusu oluşturmak için bir Sertifika Yetkilisinin verdiği sertifika kullanılır. Atamanın kapsamı belirtilen Azure aboneliğidir. Okuyucu [rolüne](../../role-based-access-control/built-in-roles.md#reader) hizmet ilkesini ekler. Rol ataması sırasında hata oluştursa, atamayı yeniden dener.
+Aşağıdaki örnekte, hizmet sorumlusu oluşturmak için bir Sertifika Yetkilisinin verdiği sertifika kullanılır. Atamanın kapsamı belirtilen Azure aboneliğidir. Hizmet sorumlusunu [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolüne ekler. Rol ataması sırasında hata oluştursa, atamayı yeniden dener.
 
 ```powershell
 Param (
@@ -151,7 +151,7 @@ Param (
 ```
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>Otomatik PowerShell betiği aracılığıyla sertifika sağlama
-Hizmet sorumlusu olarak her oturum açtığınızda, AD uygulamanız için dizinin kiracı kimliğini sağlamanız gerekir. Kiracı, Azure AD'nin bir örneğidir.
+Hizmet sorumlusu olarak her oturum açtığınızda, AD uygulamanız için dizinin kiracı kimliğini sağlamanız gerekir. Kiracı, Azure AD 'nin bir örneğidir.
 
 ```powershell
 Param (
@@ -195,7 +195,7 @@ Uygulama kimliğini almanız gerekiyorsa şunu kullanın:
 
 ## <a name="change-credentials"></a>Kimlik bilgilerini değiştirme
 
-Bir AD uygulamasının kimlik bilgilerini değiştirmek için, bir güvenlik uzlaşması veya kimlik bilgisi süresi nin dolması nedeniyle [Remove-AzADAppCredential](/powershell/module/az.resources/remove-azadappcredential) ve [New-AzADAppCredential](/powershell/module/az.resources/new-azadappcredential) cmdlets'i kullanın.
+Bir güvenlik güvenliği tehlikeye veya kimlik bilgisi süre sonu nedeniyle bir AD uygulamasının kimlik bilgilerini değiştirmek için, [Remove-AzADAppCredential](/powershell/module/az.resources/remove-azadappcredential) ve [New-AzADAppCredential](/powershell/module/az.resources/new-azadappcredential) cmdlet 'lerini kullanın.
 
 Uygulamanın tüm kimlik bilgilerini kaldırmak için şunu kullanın:
 
@@ -216,12 +216,12 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 
 Hizmet sorumlusu oluştururken şu hataları alabilirsiniz:
 
-* **"Authentication_Unauthorized"** veya **"Bağlamda hiç abonelik bulunamadı."** - Hesabınızda bir uygulamayı kaydetmek için Azure AD'de [gerekli izinler](#required-permissions) olmadığında bu hatayı görürsünüz. Genellikle, bu hatayı yalnızca Azure Etkin Dizininizdeki yönetici kullanıcılar uygulamaları kaydedebiliyor ve hesabınız yönetici olmadığında görürsünüz. Yöneticinizden sizi yönetici rolüne atamasını veya kullanıcıların uygulamaları kaydetmesini sağlamasını isteyin.
+* **"Authentication_Unauthorized"** veya **"Bağlamda hiç abonelik bulunamadı."** -Hesabınız, Azure AD 'de bir uygulamayı kaydetmek için [gerekli izinlere](#required-permissions) sahip olmadığında bu hatayı görürsünüz. Genellikle, yalnızca Azure Active Directory yönetici kullanıcılar uygulamaları kaydedebilmeniz ve hesabınız yönetici değilse bu hatayı görürsünüz. Yöneticinizden sizi bir yönetici rolüne atamasını ya da kullanıcıların uygulama kaydetmesini etkinleştirmesini isteyin.
 
-* Hesabınızın **"'Microsoft.Authorization/roleAssignments/write' (Microsoft.Authorization/roleAssignments/write) kapsamını '/abonelikler/{guid}') üzerinden gerçekleştirme yetkisi yoktur."** - Hesabınızda bir kimliğe rol atamak için yeterli izin yoksa bu hatayı görürsünüz. Abonelik yöneticinizden sizi Kullanıcı Erişimi Yöneticisi rolüne atamasını isteyin.
+* Hesabınız **"'/Subscriptions/{Guid} ' kapsamı üzerinde ' Microsoft. Authorization/Roleatamalar/Write ' işlemini gerçekleştirme yetkisi yok."** -hesabınız bir kimliğe rol atamak için yeterli izinlere sahip olmadığında bu hatayı görürsünüz. Abonelik yöneticinizden sizi Kullanıcı Erişimi Yöneticisi rolüne atamasını isteyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Parolası olan bir hizmet sorumlusu ayarlamak için bkz. [Azure PowerShell ile Azure hizmet sorumlusu oluşturma](/powershell/azure/create-azure-service-principal-azureps).
 * Uygulamaların ve hizmet sorumlularının daha ayrıntılı açıklaması için bkz. [Uygulama Nesneleri ve Hizmet Sorumlusu Nesneleri](app-objects-and-service-principals.md).
-* Azure AD kimlik doğrulaması hakkında daha fazla bilgi için Azure [AD kimlik doğrulama senaryolarına](authentication-scenarios.md)bakın.
+* Azure AD kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](authentication-scenarios.md).

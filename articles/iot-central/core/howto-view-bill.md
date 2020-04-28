@@ -1,6 +1,6 @@
 ---
-title: Faturanızı yönetin ve Azure IoT Central uygulamasındaki ücretsiz fiyatlandırma planından dönüştürün | Microsoft Dokümanlar
-description: Yönetici olarak, faturanızı nasıl yöneteceğimiz ve ücretsiz fiyatlandırma planından Azure IoT Merkezi uygulamanızda standart bir fiyatlandırma planına nasıl geçeceğinizi öğrenin
+title: Faturanızı yönetin ve Azure IoT Central uygulamasındaki ücretsiz fiyatlandırma planından dönüştürün | Microsoft Docs
+description: Yönetici olarak, faturanızı yönetme ve ücretsiz fiyatlandırma planından Azure IoT Central uygulamanızda standart bir fiyatlandırma planına taşıma hakkında bilgi edinin
 author: v-krghan
 ms.author: v-krghan
 ms.date: 12/09/2019
@@ -9,65 +9,65 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 888b9f31b8082ac124a773cc489293b335d7d255
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80157543"
 ---
-# <a name="manage-your-bill-in-an-iot-central-application"></a>Faturanızı Bir IoT Merkezi uygulamasında yönetme
+# <a name="manage-your-bill-in-an-iot-central-application"></a>IoT Central uygulamasında faturanızı yönetme
 
-Bu makalede, bir yönetici olarak, yönetim bölümündeki Azure IoT Central uygulamasında faturanızı nasıl yönetebileceğiniz açıklanmaktadır. Uygulamanızı ücretsiz fiyatlandırma planından standart bir fiyatlandırma planına nasıl taşıyabileceğinizi ve fiyatlandırma planınızı nasıl yükselteceğinizi veya düşüreceğinizi öğreneceksiniz.
+Bu makalede, yönetici olarak Yönetim bölümünde faturanız Azure IoT Central uygulamanızı nasıl yönetebileceğinizi açıklar. Uygulamanızı ücretsiz fiyatlandırma planından standart fiyatlandırma planına nasıl taşıyabileceğinizi ve ayrıca fiyatlandırma planınızı nasıl yükselteceğinizi veya indirgetireceğinizi öğreneceksiniz.
 
-Yönetim bölümüne erişmek ve **Yönetim'i** kullanmak için *Yönetici* rolünde veya Azure IoT Merkezi uygulamasının faturalandırmasını görüntülemenize olanak tanıyan özel bir *kullanıcı rolüne* sahip olmalısınız. Bir Azure IoT Merkezi uygulaması oluşturursanız, otomatik olarak bu uygulama için **Yönetici** rolüne atanırsınız.
+**Yönetim** bölümüne erişmek ve bunları kullanmak Için, *yönetici* rolünde olmanız veya bir Azure IoT Central uygulaması için faturalandırmayı görüntülemenize olanak tanıyan *özel bir kullanıcı rolüne* sahip olmanız gerekir. Azure IoT Central uygulaması oluşturursanız, bu uygulama için otomatik olarak **yönetici** rolüne atanırsınız.
 
-## <a name="move-from-free-to-standard-pricing-plan"></a>Ücretsizden standart fiyatlandırma planına geçiş
+## <a name="move-from-free-to-standard-pricing-plan"></a>Ücretsiz 'tan standart fiyatlandırma planına taşıma
 
-- Ücretsiz fiyatlandırma planını kullanan uygulamalar, süresi dolmadan önce yedi gün boyunca ücretsizdir. Veri kaybetmemek için, bunları süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planına taşıyabilirsiniz.
-- Standart bir fiyatlandırma planı kullanan uygulamalar cihaz başına ücretlendirilir ve ilk iki cihaz uygulama başına ücretsiz olarak ücretlendirilir.
+- Ücretsiz fiyatlandırma planını kullanan uygulamalar, süreleri dolmadan yedi gün boyunca ücretsizdir. Verilerin kaybolmasını önlemek için, süreleri dolmadan önce istediğiniz zaman standart bir fiyatlandırma planına taşıyabilirsiniz.
+- Standart bir fiyatlandırma planı kullanan uygulamalar, uygulama başına ilk iki cihazdan ücretsiz olarak cihaz başına ücretlendirilir.
 
 [Azure IoT Central fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/iot-central/), fiyatlar hakkında daha fazla bilgi edinin.
 
-Fiyatlandırma bölümünde, uygulamanızı ücretsizden standart bir fiyatlandırma planına taşıyabilirsiniz.
+Fiyatlandırma bölümünde, uygulamanızı ücretsiz bir standart fiyatlandırma planına taşıyabilirsiniz.
 
-Bu self servis işlemini tamamlamak için aşağıdaki adımları izleyin:
+Bu self servis işlemini gerçekleştirmek için şu adımları izleyin:
 
-1. **İdare** bölümündeki **Fiyatlandırma** sayfasına gidin.
+1. **Yönetim** bölümündeki **fiyatlandırma** sayfasına gidin.
 
     ![Deneme durumu](media/howto-view-bill/freetrialbilling.png)
 
-1. **Ücretli plana Dönüştür'ü**seçin.
+1. **Ücretli plana Dönüştür**' ü seçin.
 
-    ![Deneme sürümünü dönüştürme](media/howto-view-bill/convert.png)
+    ![Deneme süresini Dönüştür](media/howto-view-bill/convert.png)
 
-1. Ücretli bir plan kullanan uygulamanız için kullanmak üzere uygun Azure Etkin Dizin'ini ve ardından kullanmak üzere Azure aboneliğini seçin.
+1. Uygun Azure Active Directory ve ardından ücretli bir plan kullanan uygulamanız için kullanılacak Azure aboneliğini seçin.
 
-1. **Convert'i**seçtikten sonra, uygulamanız artık ücretli bir plan kullanır ve faturalandırılamaya başlarsınız.
+1. **Dönüştür**' ü seçtikten sonra uygulamanız artık ücretli bir plan kullanır ve faturalandırılmaya başlayabilirsiniz.
 
 > [!Note]
-> Varsayılan olarak, *Standart 2* fiyatlandırma planına dönüştürülür.
+> Varsayılan olarak, *Standart bir 2* fiyatlandırma planına dönüştürülülüyordu.
 
 ## <a name="how-to-change-your-application-pricing-plan"></a>Uygulama fiyatlandırma planınızı değiştirme
 
-Standart bir fiyatlandırma planı kullanan uygulamalar cihaz başına ücretlendirilir ve ilk iki cihaz uygulama başına ücretsiz olarak ücretlendirilir.
+Standart bir fiyatlandırma planı kullanan uygulamalar, uygulama başına ilk iki cihazdan ücretsiz olarak cihaz başına ücretlendirilir.
 
-Fiyatlandırma bölümünde, Azure IoT fiyatlandırma planınızı istediğiniz zaman yükseltebilir veya düşürebilirsiniz.
+Fiyatlandırma bölümünde, Azure IoT fiyatlandırma planınızı dilediğiniz zaman yükseltebilir veya indirgeyede olursunuz.
 
-1. **İdare** bölümündeki **Fiyatlandırma** sayfasına gidin.
+1. **Yönetim** bölümündeki **fiyatlandırma** sayfasına gidin.
 
     ![Deneme durumu](media/howto-view-bill/pricing.png)
 
-1. **Plan'ı** seçin ve yükseltme veya düşürme için **Kaydet'i** tıklatın.
+1. **Planı** seçin ve yükseltmek veya alçaldüşürmek için **Kaydet** ' e tıklayın.
 
 ## <a name="view-your-bill"></a>Faturanızı görüntüleme
 
-1. Ücretli bir plan kullanan uygulamanız için kullanmak üzere uygun Azure Etkin Dizin'ini ve ardından kullanmak üzere Azure aboneliğini seçin.
+1. Uygun Azure Active Directory ve ardından ücretli bir plan kullanan uygulamanız için kullanılacak Azure aboneliğini seçin.
 
-1. **Convert'i**seçtikten sonra, uygulamanız artık ücretli bir plan kullanır ve faturalandırılamaya başlarsınız.
+1. **Dönüştür**' ü seçtikten sonra uygulamanız artık ücretli bir plan kullanır ve faturalandırılmaya başlayabilirsiniz.
 
 > [!Note]
-> Varsayılan olarak, *Standart 2* fiyatlandırma planına dönüştürülür.
+> Varsayılan olarak, *Standart bir 2* fiyatlandırma planına dönüştürülülüyordu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IoT Central uygulamasında faturanızı nasıl yöneteceğimize ilişkin bilgi edindiğinize göre, önerilen bir sonraki adım Azure IoT Central'da uygulama kullanıcı arabirimi [özelleştir](howto-customize-ui.md) hakkında bilgi edinmektir.
+Azure IoT Central uygulamasında faturanızı yönetme hakkında bilgi edindiğinize göre, önerilen sonraki adım Azure IoT Central [uygulama kullanıcı arabirimini özelleştirme](howto-customize-ui.md) hakkında bilgi edindiniz.

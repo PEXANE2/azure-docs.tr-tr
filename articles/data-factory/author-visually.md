@@ -1,6 +1,6 @@
 ---
 title: Görsel yazma
-description: Azure Veri Fabrikası'nda görsel yazma yı nasıl kullanacağınızı öğrenin
+description: Azure Data Factory 'de görsel yazma kullanmayı öğrenin
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,50 +11,50 @@ ms.reviewer: ''
 manager: anandsub
 ms.date: 12/19/2019
 ms.openlocfilehash: e7de92878dac72470c0b65d1cf18c1a2d526a0bb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418499"
 ---
-# <a name="visual-authoring-in-azure-data-factory"></a>Azure Veri Fabrikası'nda görsel yazma
+# <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory 'de görsel yazma
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Veri Fabrikası kullanıcı arabirimi deneyimi (UX), herhangi bir kod yazmak zorunda kalmadan veri fabrikanız için kaynakları görsel olarak yazmanızı ve dağıtmanızı sağlar. Etkinlikleri bir boru hattı tuvaline sürükleyebilir, test çalıştırmaları gerçekleştirebilir, yinelemeli hata ayıklayabilir ve ardışık hatlar çalışanlarınızı dağıtabilir ve izleyebilirsiniz.
+Azure Data Factory Kullanıcı arabirimi deneyimi (UX), herhangi bir kod yazmak zorunda kalmadan veri fabrikanızın kaynaklarını görsel olarak yazmanızı ve dağıtmanızı sağlar. Etkinlikleri bir işlem hattı tuvaline sürükleyebilir, test çalıştırmaları gerçekleştirebilir, tekrarlayarak hata ayıklayın ve işlem hattı çalıştırmalarınızın dağıtımını yapabilir ve izleyebilirsiniz.
 
-Şu anda Azure Veri Fabrikası UX yalnızca Microsoft Edge ve Google Chrome'da desteklenir.
+Şu anda Azure Data Factory UX yalnızca Microsoft Edge ve Google Chrome 'da desteklenir.
 
-## <a name="authoring-canvas"></a>Tuval yazma
+## <a name="authoring-canvas"></a>Yazı tuvali
 
 **Yazma tuvalini**açmak için kalem simgesine tıklayın. 
 
-![Tuval Yazma](media/author-visually/authoring-canvas.png)
+![Yazı tuvali](media/author-visually/authoring-canvas.png)
 
-Burada, fabrikanızı oluşturan ardışık hatları, etkinlikleri, veri kümelerini, bağlantılı hizmetleri, veri akışlarını, tetikleyicileri ve tümleştirme çalışma sürelerini yazarsınız. Yazma tuvalini kullanarak bir ardışık yapı oluşturmaya başlamak için, [kopyalama Etkinliği'ni kullanarak verileri kopyala'ya](tutorial-copy-data-portal.md)bakın. 
+Burada, fabrikanızı oluşturan işlem hatları, Etkinlikler, veri kümeleri, bağlı hizmetler, veri akışları, Tetikleyiciler ve tümleştirme çalışma zamanları yazacaktır. Yazma tuvali 'ni kullanarak bir işlem hattı oluşturmaya başlamak için bkz. [kopyalama etkinliğini kullanarak verileri kopyalama](tutorial-copy-data-portal.md). 
 
-Varsayılan görsel yazma deneyimi doğrudan Veri Fabrikası hizmetiyle çalışıyor. Azure Repos Git veya GitHub tümleştirmesi, veri fabrikası ardışık hatlarınızda çalışmak için kaynak denetimi ve işbirliğine olanak sağlamak için de desteklenir. Bu yazma deneyimleri arasındaki farklar hakkında daha fazla bilgi edinmek için [Azure Veri Fabrikası'nda Kaynak denetimine](source-control.md)bakın.
+Varsayılan görsel yazma deneyimi, Data Factory hizmetiyle doğrudan çalışır. Veri Fabrikası işlem hatlarınız üzerinde çalışma için kaynak denetimi ve işbirliği yapmak üzere Azure Repos git veya GitHub tümleştirmesi de desteklenir. Bu yazma deneyimleri arasındaki farklar hakkında daha fazla bilgi edinmek için [Azure Data Factory Içindeki kaynak denetimi](source-control.md)konusuna bakın.
 
 ## <a name="expressions-and-functions"></a>İfadeler ve işlevler
 
-İfadeler ve işlevler, Azure Veri Fabrikası'nda birçok özelliği belirtmek için statik değerler yerine kullanılabilir.
+Azure Data Factory ' de birçok özellik belirtmek için, statik değerler yerine ifadeler ve işlevler kullanılabilir.
 
-Özellik değeri için bir ifade belirtmek için **Dinamik İçerik Ekle'yi** seçin veya alana odaklanırken **Alt + P'yi** tıklatın.
+Bir özellik değeri için bir ifade belirtmek üzere, **dinamik Içerik Ekle** ' yi seçin veya alana odaklanırken **alt + P** ' ye tıklayın.
 
-![Dinamik İçerik Ekle](media/author-visually/dynamic-content-1.png)
+![Dinamik Içerik Ekle](media/author-visually/dynamic-content-1.png)
 
-Bu, desteklenen sistem değişkenlerinden, etkinlik çıktısından, işlevlerden ve kullanıcı tarafından belirtilen değişkenlerden veya parametrelerden ifadeler oluşturabileceğiniz **Veri Fabrikası İfade Oluşturucusu'nu** açar. 
+Bu, desteklenen sistem değişkenlerinden, etkinlik çıktısından, işlevlerden ve Kullanıcı tarafından belirtilen değişkenlerle ya da parametrelerden ifade oluşturabileceğiniz **Data Factory Ifade oluşturucusunu** açar. 
 
 ![İfade oluşturucusu](media/author-visually/dynamic-content-2.png)
 
-İfade dili hakkında bilgi için [Azure Veri Fabrikası'ndaki ifadeler ve işlevler'e](control-flow-expression-language-functions.md)bakın.
+İfade dili hakkında daha fazla bilgi için, [Azure Data Factory Içindeki ifadeler ve işlevler](control-flow-expression-language-functions.md)bölümüne bakın.
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 
-Özellikler hakkında yorum yapmak veya araçla ilgili sorunlar hakkında Microsoft'a bilgi vermek için **Geri Bildirim'i** seçin:
+Özellikler hakkında yorum yapmak veya araçla ilgili sorunları bildirmek için **geri bildirim** ' ı seçin:
 
 ![Geri Bildirim](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Boru hatlarını izleme ve yönetme hakkında daha fazla bilgi edinmek [için, denetim kanallarını programlı olarak izleyin ve yönetin.](monitor-programmatically.md)
+İşlem hatlarını izleme ve yönetme hakkında daha fazla bilgi edinmek için bkz. işlem [hatlarını programlama yoluyla izleme ve yönetme](monitor-programmatically.md).

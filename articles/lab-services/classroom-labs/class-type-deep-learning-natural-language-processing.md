@@ -1,6 +1,6 @@
 ---
-title: Azure Laboratuvar Hizmetlerini kullanarak derin öğrenmeye odaklanan bir laboratuvar ayarlayın | Microsoft Dokümanlar
-description: Linux'ta kabuk komut dosyası yazmayı öğretmek için nasıl bir laboratuvar kurup kurup kurmayı öğrenin.
+title: Azure Lab Services kullanarak derin öğrenime odaklanan bir laboratuvar ayarlayın | Microsoft Docs
+description: Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvarı ayarlamayı öğrenin.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,51 +14,51 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 889d0d1e98f5c9947588011774d02e54f05edca1
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81257768"
 ---
-# <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Azure Lab Hizmetlerini kullanarak doğal dil işlemede derin öğrenmeye odaklanan bir laboratuvar kurun
-Bu makalede, Azure Laboratuvar Hizmetleri'ni kullanarak doğal dil işlemede (NLP) derin öğrenmeye odaklanmış bir laboratuvar nasıl kurulabileceğinizi gösterilmektedir. Doğal dil işleme (NLP), çeviri, konuşma tanıma ve diğer dil anlama özelliklerine sahip bilgisayarlara olanak tanıyan bir yapay zeka (AI) biçimidir.  
+# <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Azure Lab Services kullanarak doğal dil işlemede derin öğrenmeye odaklanan bir laboratuvar kurun
+Bu makalede, Azure Lab Services kullanarak doğal dil işleme (NLP) için derin öğrenime odaklanan bir laboratuvarı nasıl ayarlayabileceğiniz gösterilmektedir. Doğal dil işleme (NLP), çeviri, konuşma tanıma ve diğer dil anlama özelliklerine sahip bilgisayarları sağlayan yapay zeka (AI) biçimidir.  
 
-NLP sınıfına giren öğrenciler, yazılı insan dilini analiz etmek için kullanılan derin öğrenme modelleri geliştirmek için sinir ağı algoritmalarını nasıl uygulayacaklarını öğrenmek için bir Linux sanal makinesi (VM) alır. 
+Bir NLP sınıfı alan öğrenciler bir Linux sanal makinesi (VM) alır ve yazılı insan dilini çözümlemek için kullanılan derin öğrenme modelleri geliştirmek üzere sinir ağ algoritmalarının nasıl uygulanacağını öğrenin. 
 
 ## <a name="lab-configuration"></a>Laboratuvar yapılandırması
-Bu laboratuarı kurmak için başlamak için bir Azure aboneliğine ihtiyacınız var. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun. Azure aboneliğiniz olduktan sonra, Azure Laboratuvar Hizmetleri'nde yeni bir laboratuvar hesabı oluşturabilir veya varolan bir laboratuvar hesabını kullanabilirsiniz. Yeni bir laboratuvar hesabı oluşturmak için aşağıdaki [öğreticiye](tutorial-setup-lab-account.md)bakın: Laboratuvar Hesabı Kurma Öğreticisi.
+Bu Laboratuvarı kurmak için başlamak üzere bir Azure aboneliğine sahip olmanız gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. Azure aboneliğiniz olduğunda, Azure Lab Services yeni bir laboratuvar hesabı oluşturabilir veya var olan bir laboratuvar hesabını kullanabilirsiniz. Yeni bir laboratuvar hesabı oluşturmak için aşağıdaki öğreticiye bakın: [Laboratuvar hesabı ayarlama öğreticisi](tutorial-setup-lab-account.md).
  
-Laboratuvar hesabını oluşturduktan sonra, laboratuvar hesabında aşağıdaki ayarları etkinleştirin: 
+Laboratuvar hesabını oluşturduktan sonra laboratuvar hesabında aşağıdaki ayarları etkinleştirin: 
 
-| Laboratuvar hesap ayarı | Yönergeler |
+| Laboratuvar hesabı ayarı | Yönergeler |
 | ----------- | ------------ |  
-| Pazar yeri görüntüleri | Laboratuvar hesabınızda kullanmak üzere Linux için Veri Bilimi Sanal Makine (Ubuntu) görüntüsünü etkinleştirin.  Talimatlar için aşağıdaki makaleye bakın: [Laboratuvar oluşturucuları tarafından kullanılabilen pazar yeri görüntülerini belirtin.](specify-marketplace-images.md) | 
+| Market görüntüleri | Laboratuvar hesabınızda kullanmak için Veri Bilimi Sanal Makinesi Linux (Ubuntu) görüntüsünü etkinleştirin.  Yönergeler için aşağıdaki makaleye bakın: [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtin](specify-marketplace-images.md). | 
 
-Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [bu öğreticiizleyin:](tutorial-setup-classroom-lab.md)
+Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [Bu öğreticiyi](tutorial-setup-classroom-lab.md) izleyin:
 
-| Laboratuvar ayarları | Değer/talimatlar | 
+| Laboratuvar ayarları | Değer/yönergeler | 
 | ------------ | ------------------ |
-| Sanal makine (VM) boyutu | Küçük GPU (İşlem). Bu boyut, Yapay Zeka ve Derin Öğrenme gibi bilgi işlem yoğun ve ağ yoğun uygulamalar için en uygun uyrmuştur. |
-| VM görüntü | [Linux (Ubuntu) için Veri Bilimi Sanal Makine.](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) Bu görüntü, makine öğrenimi ve veri bilimi için derin öğrenme çerçeveleri ve araçları sağlar. Bu resimdeki yüklü araçların tam listesini görüntülemek için aşağıdaki makaleye bakın: [DSVM'de neler yer alıyor?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm) |
-| Uzak masaüstü bağlantısını etkinleştirme | Etkinleştirmek. <p>Bu ayarı etkinleştirmek, öğretmenlerin ve öğrencilerin Uzak Masaüstü (RDP) kullanarak Sanal Makinelerine (VM) bağlanmalarına olanak sağlar.</p><p>**Önemli**: RDP zaten Linux görüntü için Veri Bilimi Sanal Makine yüklü ve yapılandırılmıştır. Sonuç olarak, öğretmenler/öğrenciler herhangi bir ek adım olmadan RDP üzerinden VM'lere bağlanabilirler. Ayrıca, grafik masaüstüne bağlanmanız gerekiyorsa, bu görüntü de sanal makineye [x2Go server](https://wiki.x2go.org/doku.php/doc:newtox2go) yüklü. Öğrenciler x2Go istemcisini yerel makinelerine yüklemeli ve bağlanmak için istemciyi kullanmalıdır. Daha fazla bilgi için aşağıdaki kılavuzlara bakın: <ul><li>[Linux için Veri Bilimi Sanal Makine nasıl erişilir](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[RDP ve GUI paketlerini yüklemek için şablon VM'ye bağlanın](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
+| Sanal makine (VM) boyutu | Küçük GPU (Işlem). Bu boyut, yapay zeka ve derin öğrenme gibi yoğun işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir. |
+| VM görüntüsü | [Linux için veri bilimi sanal makinesi (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Bu görüntü, Machine Learning ve veri bilimi için derin öğrenme çerçeveleri ve araçları sağlar. Bu görüntüdeki yüklü araçların tam listesini görüntülemek için şu makaleye bakın: [DSVM 'ye nelerin dahil olduğu?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
+| Uzak Masaüstü bağlantısı 'nı etkinleştir | Etkinleştirebilir. <p>Bu ayarın etkinleştirilmesi, öğretmenler ve öğrencilerin uzak masaüstü (RDP) kullanarak kendi sanal makinelerine (VM) bağlanmasına imkan tanır.</p><p>**Önemli**: RDP, Linux görüntüsü için veri bilimi sanal makinesi zaten yüklü ve yapılandırılmış. Sonuç olarak, öğretmenler/öğrenciler ek adımlar olmadan VM 'lere RDP aracılığıyla bağlanabilir. Ayrıca, grafik masaüstüne bağlanmanız gerekiyorsa, bu görüntüde [X2Go sunucusu](https://wiki.x2go.org/doku.php/doc:newtox2go) zaten sanal makinede yüklü olmalıdır. Öğrenciler, X2Go istemcisini yerel makinelerine yüklemelidir ve bağlanmak için istemcisini kullanmalıdır. Daha fazla bilgi için aşağıdaki kılavuzlara bakın: <ul><li>[Linux için Veri Bilimi Sanal Makinesi erişme](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[RDP ve GUI paketlerini yüklemek için şablon VM 'sine bağlanma](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
 
-Linux görüntü için Veri Bilimi Sanal Makine gerekli derin öğrenme çerçeveleri ve araçları sınıf bu tür için gerekli sağlar. Sonuç olarak, şablon makinesi oluşturulduktan sonra, daha fazla özelleştirmeniz gerekmez. Öğrencilerin kullanması için yayınlanabilir. Şablonu laboratuvarda yayınlamak için şablon **sayfasındayayım** düğmesini seçin.  
+Linux görüntüsü için Veri Bilimi Sanal Makinesi, bu tür bir sınıf için gereken ayrıntılı öğrenme çerçevelerini ve araçları sağlar. Sonuç olarak, şablon makine oluşturulduktan sonra daha fazla özelleştirmeniz gerekmez. Bu, öğrencilerin kullanması için yayımlanabilir. Şablonu laboratuvarda yayımlamak için şablon sayfasında **Yayımla** düğmesini seçin.  
 
 ## <a name="cost"></a>Maliyet
 Bu laboratuvarın maliyetini tahmin etmek isterseniz, aşağıdaki örneği kullanabilirsiniz: 
 
-20 saatlik planlanan ders süresi ve ödev ler için 10 saatlik kontenjanı olan 25 öğrenciden oluşan bir sınıf için, laboratuvar fiyatı - 25 öğrenci * (20 + 10) saat * 139 Laboratuvar Birimi * 0,01 USD saat = 1042,5 USD olacaktır
+20 saatlik zamanlanan sınıf süresi ve ev ödevi veya atamalar için 10 saatlik kota içeren 25 öğrencideki bir sınıf için, laboratuvarın fiyatı-25 öğrencilertir * (20 + 10) saat * 139 Lab birimi * 0,01 saat başına USD = 1042,5 ABD Doları
 
-Fiyatlandırma hakkında daha fazla ayrıntı için Azure [Lab Hizmetleri Fiyatlandırması'na](https://azure.microsoft.com/pricing/details/lab-services/)bakın.
+Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Lab Services fiyatlandırması](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Sonuç
-Bu makalede, doğal dil işleme sınıfı için bir laboratuvar oluşturmak için adımlar boyunca yürüdü. Diğer derin öğrenme sınıfları için benzer bir kurulum kullanabilirsiniz.
+Bu makale, doğal dil işleme sınıfı için Laboratuvar oluşturma adımlarında size kılavuzluk eden adımlar. Diğer derin öğrenme sınıfları için benzer bir kurulum kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Sonraki adımlar herhangi bir laboratuvar kurmak için ortak:
+Sonraki adımlar herhangi bir laboratuvarı ayarlamak için ortaktır:
 
 - [Kullanıcı ekle](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Kota ayarlama](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Zamanlama ayarlama](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [Öğrencilere e-posta kayıt bağlantıları](how-to-configure-student-usage.md#send-invitations-to-users). 
+- [Öğrenciler Için e-posta kaydı bağlantıları](how-to-configure-student-usage.md#send-invitations-to-users). 
 

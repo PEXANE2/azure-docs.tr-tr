@@ -1,6 +1,6 @@
 ---
-title: Koşullu Erişimile ilgili oturum açma sorunlarını giderme - Azure Etkin Dizini
-description: Bu makalede, Koşullu Erişim ilkeleriniz beklenmeyen sonuçlara neden olduğunda ne yapmanız gerektiğini açıklamaktadır
+title: Koşullu erişim ile oturum açma sorunlarını giderme-Azure Active Directory
+description: Bu makalede, koşullu erişim ilkeleriniz beklenmedik sonuçlar elde edildiğinde ne yapmanız gerekenler açıklanmaktadır
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,70 +12,70 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdf1daca79f3ed20d9b7a89af20d74ff5f3148b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80337447"
 ---
-# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Koşullu Erişim ile ilgili oturum açma sorunlarını giderme
+# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Koşullu erişimle oturum açma sorunlarını giderme
 
-Bu makaledeki bilgiler, hata iletileri ve Azure AD oturum açma günlüğünü kullanarak Koşullu Erişim ile ilgili beklenmeyen oturum açma sonuçlarını gidermek için kullanılabilir.
+Bu makaledeki bilgiler, hata iletileri ve Azure AD oturum açma günlüğü kullanılarak koşullu erişimle ilgili beklenmedik oturum açma sonuçlarının giderilmesi için kullanılabilir.
 
-## <a name="conditional-access-sign-in-interrupt"></a>Koşullu Erişim oturum açma kesintisi
+## <a name="conditional-access-sign-in-interrupt"></a>Koşullu erişim oturum açma kesmesi
 
-İlk yol, görünen hata iletisini gözden geçirmektir. Bir web tarayıcısı kullanırken oturum açma sorunları için, hata sayfasının kendisi ayrıntılı bilgilere sahiptir. Bu bilgiler tek başına sorunun ne olduğunu açıklayabilir ve bu bir çözüm önerebilir.
+İlk yöntem görüntülenen hata iletisini gözden geçirmesidir. Bir Web tarayıcısı kullanırken oturum açan sorunlar için, hata sayfasında ayrıntılı bilgiler bulunur. Bu bilgiler, yalnızca sorunun ne olduğunu ve bir çözüm önerebileceğini betimedebilir.
 
-![Oturum açma hatası - uyumlu cihaz gerekli](./media/troubleshoot-conditional-access/image1.png)
+![Oturum açma hatasıyla uyumlu cihaz gerekiyor](./media/troubleshoot-conditional-access/image1.png)
 
-Yukarıdaki hatada, ileti, uygulamaya yalnızca şirketin mobil cihaz yönetim ilkesini karşılayan aygıtlardan veya istemci uygulamalarından erişilebileni belirtir. Bu durumda, uygulama ve aygıt bu ilkeyi karşılamaz.
+Yukarıdaki hatada, ileti uygulamanın yalnızca şirketin mobil cihaz yönetimi ilkesini karşılayan cihazlardan veya istemci uygulamalarından erişilebilir olduğunu belirtir. Bu durumda, uygulama ve cihaz bu ilkeyi karşılamıyor.
 
-## <a name="azure-ad-sign-in-events"></a>Azure AD oturum açma etkinlikleri
+## <a name="azure-ad-sign-in-events"></a>Azure AD oturum açma olayları
 
-Oturum açma kesintisi hakkında ayrıntılı bilgi almak için ikinci yöntem, Hangi Koşullu Erişim ilkesinin veya ilkelerinin uygulandığını ve neden uygulandığını görmek için Azure AD oturum açma olaylarını gözden geçirmektir.
+Oturum açma kesintisini hakkında ayrıntılı bilgi almak için ikinci yöntem, hangi koşullu erişim ilkesi veya ilkelerinin uygulanacağını ve bunun neden olduğunu görmek için Azure AD oturum açma olaylarını gözden geçirmelidir.
 
-İlk hata sayfasında **Daha Fazla Ayrıntı'yı** tıklatarak sorun hakkında daha fazla bilgi bulabilirsiniz. Daha **Fazla Ayrıntı'yı** tıklatmak, kullanıcının gördüğü belirli bir hata olayı için Azure AD oturum açma olaylarını ararken veya Microsoft ile bir destek olayı açarken yararlı olan sorun giderme bilgilerini ortaya çıkarır.
+İlk hata sayfasında **daha fazla ayrıntı** öğesine tıklanarak sorun hakkında daha fazla bilgi bulabilirsiniz. **Daha fazla ayrıntı** için, kullanıcının Microsoft ile bir destek olayı görmekte veya hata OLUŞTUĞUNDA Azure AD oturum açma olaylarını ararken yararlı olan sorun giderme bilgileri ortaya çıkar.
 
-![Koşullu Erişim'den daha fazla ayrıntı web tarayıcısı oturumunu yarıda kesti.](./media/troubleshoot-conditional-access/image2.png)
+![Koşullu erişim kesintiye uğramış Web tarayıcı oturum açma bilgileri hakkında daha fazla bilgi.](./media/troubleshoot-conditional-access/image2.png)
 
-Hangi Koşullu Erişim ilkesinin veya ilkelerinin uygulandığını ve neden aşağıdakileri uyguladığını öğrenmek için.
+Hangi koşullu erişim ilkesinin veya ilkelerinin uygulanacağını ve bunun nedenini nasıl yapabileceğinizi öğrenmek için.
 
-1. **Azure portalında** genel yönetici, güvenlik yöneticisi veya genel okuyucu olarak oturum açın.
-1. **Azure Etkin Dizin** > **Oturum Açma'ya**göz atın.
-1. Oturum açma nın gözden geçirilmesi için olayı bulun. Gereksiz bilgileri filtrelemek için filtre ler ve sütunlar ekleyin veya kaldırın.
+1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya küresel okuyucu olarak oturum açın.
+1. **Azure Active Directory** > **oturum açma**işlemlerini inceleyin.
+1. Gözden geçirilecek oturum açma için olayı bulun. Gereksiz bilgileri filtrelemek için filtre ve sütun ekleyin veya kaldırın.
    1. Kapsamı daraltmak için filtre ekleyin:
-      1. Araştırmanız gereken belirli bir olay olduğunda **Korelasyon Kimliği.**
-      1. İlke başarısızlığı nı ve başarısını görmek için **koşullu erişim.** Filtrenizi yalnızca sonuçları sınırlamak için yapılan hataları göstermek için kapsamda uygulayın.
-      1. Belirli kullanıcılarla ilgili bilgileri görmek için **kullanıcı adı.**
-      1. **Tarih,** söz konusu zaman dilimine göre kapsamdadır.
+      1. Araştırmanız için özel bir olaylarınızın olduğu **BAĞıNTı kimliği** .
+      1. İlke hatasını ve başarısını görmek için **koşullu erişim** . Filtrenizi yalnızca sonuçları sınırlamaya yönelik hataların kapsamını gösterecek şekilde kapsama.
+      1. Belirli kullanıcılarla ilgili bilgileri görmek için **Kullanıcı adı** .
+      1. Söz konusu zaman dilimine göre kapsam **tarihi** .
 
-   ![Oturum açma günlüğünde Koşullu erişim filtresini seçme](./media/troubleshoot-conditional-access/image3.png)
+   ![Oturum açma günlüğünde koşullu erişim filtresini seçme](./media/troubleshoot-conditional-access/image3.png)
 
-1. Kullanıcının oturum açma hatasına karşılık gelen oturum açma olayı bulunduktan sonra **Koşullu Erişim** sekmesini seçin. Koşullu Erişim sekmesi, oturum açma kesintisiyle sonuçlanan belirli ilke veya ilkeleri gösterir.
-   1. **Sorun Giderme ve destek** sekmesindeki bilgiler, uyumluluk gereksinimlerini karşılamayan bir aygıt gibi oturum açmanın neden başarısız olduğuna dair açık bir neden sağlayabilir.
-   1. Daha fazla araştırmak için, **İlke Adı'nı**tıklayarak ilkelerin yapılandırmasını derinlemesine inceleyin. **İlke Adı'nı** tıklattığınızda, gözden geçirme ve düzenleme için seçili ilke için ilke yapılandırma sı kullanıcı arabirimi gösterilecek.
-   1. Koşullu Erişim ilkesi değerlendirmesi için kullanılan **istemci kullanıcı** ve **aygıt ayrıntıları,** oturum açma olayının **Temel Bilgileri,** **Konumu,** **Cihaz Bilgileri,** **Kimlik Doğrulama Ayrıntıları**ve **Ek Ayrıntılar** sekmelerinde de bulunur.
+1. Kullanıcının oturum açma hatasına karşılık gelen oturum açma olayı bulunursa **koşullu erişim** sekmesini seçin. Koşullu erişim sekmesi, oturum açma kesintiye neden olan belirli ilke veya ilkeleri gösterir.
+   1. **Sorun giderme ve destek** sekmesindeki bilgiler, bir oturum açma nedeninin, uyumluluk gereksinimlerini karşılamayan bir cihaz gibi neden başarısız olduğu konusunda açık bir neden sağlayabilir.
+   1. Daha fazla araştırmak için, **Ilke adına**tıklayarak ilkelerin yapılandırmasında ayrıntıya gidin. **Ilke adına** tıkladığınızda, seçilen ilke için ilke yapılandırma kullanıcı arabirimi gözden geçirme ve düzenlemeyle gösterilir.
+   1. Koşullu erişim ilkesi değerlendirmesi için kullanılan **istemci kullanıcı** ve **cihaz ayrıntıları** **temel bilgiler**, **konum**, **cihaz bilgileri**, **kimlik doğrulama ayrıntıları**ve oturum açma olayının **ek ayrıntılar** sekmelerinde da kullanılabilir.
 
-   ![Oturum açma olayı Koşullu Erişim sekmesi](./media/troubleshoot-conditional-access/image5.png)
+   ![Oturum açma olayı koşullu erişim sekmesi](./media/troubleshoot-conditional-access/image5.png)
 
-Etkinlikteki bilgiler oturum açma sonuçlarını anlamak veya istenen sonuçları alacak şekilde ilkeyi ayarlamak için yeterli değilse, bir destek olayı açılabilir. Oturum açma etkinliğinin Sorun **Giderme ve Destek** sekmesine gidin ve **yeni bir destek isteği oluştur'u**seçin.
+Olaydaki bilgiler, oturum açma sonuçlarını anlamak veya istenen sonuçları almak için ilkeyi ayarlamak üzere yeterli değilse, bir destek olayı açılabilir. Bu oturum açma olayının **sorun giderme ve destek** sekmesine gidin ve **Yeni bir destek isteği oluştur**' u seçin.
 
-![Oturum Açma etkinliğinin Sorun Giderme ve destek sekmesi](./media/troubleshoot-conditional-access/image6.png)
+![Oturum açma olayının sorun giderme ve destek sekmesi](./media/troubleshoot-conditional-access/image6.png)
 
-Olayı gönderirken, istek kimliğini ve olay gönderme ayrıntılarındaki oturum açma olayından gelen saati ve tarihi sağlayın. Bu bilgiler, Microsoft'un endişe duyduğunuz olayı bulması için destek sağlar.
+Olayı gönderirken, olay gönderim ayrıntılarında oturum açma olayından istek KIMLIĞI ve saat ve tarih bilgilerini sağlayın. Bu bilgiler, Microsoft destek 'in ilgilendiğiniz olayı bulmasını sağlar.
 
-### <a name="conditional-access-error-codes"></a>Koşullu Erişim hata kodları
+### <a name="conditional-access-error-codes"></a>Koşullu erişim hata kodları
 
-| Oturum Açma Hata Kodu | Hata Dizesi |
+| Oturum açma hata kodu | Hata dizesi |
 | --- | --- |
-| 53000 | Aygıt Uyumlu Değil |
-| 53001 | DeviceNotDomainKatıldı |
-| 53002 | UygulamaUsedIsNotanApprovedApp |
-| 53003 | EngellenmişByConditionalAccess |
-| 53004 | ProofUpBlockedDueToRisk |
+| 53000 | Devicenotuyumlu |
+| 53001 | Devicenotdomainkatılmış |
+| 53002 | ApplicationUsedIsNotAnApprovedApp |
+| 53003 | BlockedByConditionalAccess |
+| 53004 | Redakupblockedduetorisk |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Active Directory portaldaki oturum açma etkinlik raporları](../reports-monitoring/concept-sign-ins.md)
-- [What If aracını kullanarak Koşullu Erişim Sorunu Giderme](troubleshoot-conditional-access-what-if.md)
-- Azure Etkin [Dizini'nde Koşullu Erişim](best-practices.md) için en iyi uygulamalar
+- [What If aracını kullanarak koşullu erişim sorunlarını giderme](troubleshoot-conditional-access-what-if.md)
+- [Azure Active Directory 'de koşullu erişim](best-practices.md) için en iyi yöntemler

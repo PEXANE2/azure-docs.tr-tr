@@ -18,20 +18,20 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80891518"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD denetim etkinliği başvurusu
 
-Azure Etkin Dizin (Azure AD) raporlarıyla, ortamınızın nasıl olduğunu belirlemek için ihtiyacınız olan bilgileri alabilirsiniz.
+Azure Active Directory (Azure AD) raporlarında, ortamınızın nasıl çalıştığını öğrenmek için gereken bilgileri alabilirsiniz.
 
 Azure AD'nin raporlama mimarisi aşağıdaki bileşenlerden oluşur:
 
 - **Etkinlik raporları** 
-    - [Oturum açma -](concept-sign-ins.md) Yönetilen uygulamaların kullanımı ve kullanıcı oturum açma etkinlikleri hakkında bilgi sağlar
+    - [Oturum açma](concept-sign-ins.md) işlemleri – yönetilen uygulamaların kullanımı ve Kullanıcı oturum açma etkinlikleri hakkında bilgi sağlar
     - [Denetim günlükleri](concept-audit-logs.md) - Azure AD içindeki çeşitli özellikler tarafından yapılan tüm değişiklikler için günlükler aracılığıyla izlenebilirlik sağlar. 
     
 - **Güvenlik raporları** 
@@ -64,12 +64,12 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Erişim Gözden Geçirmeleri|İstek onayı isteğini gözden geçirme|
 |Erişim Gözden Geçirmeleri|Program denetiminin bağlantısını kaldırma|
 |Erişim Gözden Geçirmeleri|Erişim Gözden Geçirmesini Güncelleştirme|
-|Erişim Gözden Geçirmeleri|Azure AD Erişim İncelemelerini Onboarding durumunu güncelleştirme|
+|Erişim Gözden Geçirmeleri|Azure AD erişim Incelemelerini güncelleştirme ekleme durumu|
 |Erişim Gözden Geçirmeleri|Erişim gözden geçirmesi posta bildirimi ayarlarını güncelleştirme|
-|Erişim Gözden Geçirmeleri|Erişim gözden geçirme yineleme sayısı ayarını güncelleştirme|
-|Erişim Gözden Geçirmeleri|Gün ayarında erişim gözden geçirme yineleme süresini güncelleştirme|
-|Erişim Gözden Geçirmeleri|Erişim gözden geçirme yineleme son tür ayarını güncelleştirme|
-|Erişim Gözden Geçirmeleri|Erişim gözden geçirme yineleme türü ayarını güncelleştirme|
+|Erişim Gözden Geçirmeleri|Erişim gözden geçirme yinelenme sayısı ayarını Güncelleştir|
+|Erişim Gözden Geçirmeleri|Erişim gözden geçirme gün cinsinden yineleme süresini Güncelleştir ayarı|
+|Erişim Gözden Geçirmeleri|Erişim gözden geçirme yineleme bitiş türü ayarını Güncelleştir|
+|Erişim Gözden Geçirmeleri|Erişim gözden geçirme yineleme türü ayarını Güncelleştir|
 |Erişim Gözden Geçirmeleri|Erişim gözden geçirmesi anımsatıcı ayarlarını güncelleştirme|
 |Erişim Gözden Geçirmeleri|Program güncelleştirme|
 |Erişim Gözden Geçirmeleri|İstek onayını güncelleştirme|
@@ -169,7 +169,7 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Yetkilendirme|V1 uygulamaları alma|
 |Yetkilendirme|V2 uygulaması alma|
 |Yetkilendirme|V2 uygulamaları alma|
-|Yetkilendirme|B2C dizin kaynağı alma|
+|Yetkilendirme|B2C dizin kaynağı al|
 |Yetkilendirme|Kiracıdaki özel etki alanlarının listesini alma|
 |Yetkilendirme|Kullanıcı yolculuğu alma|
 |Yetkilendirme|Kullanıcı yolculuğu için izin verilen uygulama taleplerini alma|
@@ -234,7 +234,7 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Yetkilendirme|Kullanıcı Yetkilendirmesi: Kullanıcıya 'Kiracı Yöneticisi' olarak erişim izni verildi|
 |Yetkilendirme|Kullanıcı Yetkilendirmesi: Kullanıcıya 'Kimliği Doğrulanmış Kullanıcılar' erişim hakları verildi|
 |Yetkilendirme|B2C özelliğinin etkinleştirildiğini doğrulama|
-|Yetkilendirme|Özelliğin etkin olup olmadığını doğrulama|
+|Yetkilendirme|Özelliğin etkin olduğunu doğrulayın|
 |Yetkilendirme|Program oluşturma|
 |Yetkilendirme|Program silme|
 |Yetkilendirme|Program denetimini bağlama|
@@ -258,7 +258,7 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Dizin Yönetimi|tenantDomains alma|
 |Anahtar|Kiracı türünü alır|
 |Anahtar|B2C özelliğinin etkinleştirildiğini doğrulama|
-|Anahtar|Özelliğin etkin olup olmadığını doğrulama|
+|Anahtar|Özelliğin etkin olduğunu doğrulayın|
 |Anahtar|Şirkete iş ortağı ekleme|
 |Anahtar|Doğrulanmamış etki alanı ekleme|
 |Anahtar|Doğrulanmış etki alanı ekleme|
@@ -348,10 +348,10 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 
 |Denetim Kategorisi|Etkinlik|
 |---|---|
-|Yönetim Birimi Yönetimi|Tek bir risk algılama türü indirin|
+|Yönetim Birimi Yönetimi|Tek bir risk algılama türünü indirin|
 |Yönetim Birimi Yönetimi|Yöneticileri ve haftalık özet katılımı durumunu indirme|
-|Yönetim Birimi Yönetimi|Tüm risk algılama türlerini indirin|
-|Yönetim Birimi Yönetimi|Ücretsiz kullanıcı risk algılamalarını indirin|
+|Yönetim Birimi Yönetimi|Tüm risk algılama türlerini indir|
+|Yönetim Birimi Yönetimi|Ücretsiz Kullanıcı risk algılamalarını indirin|
 |Yönetim Birimi Yönetimi|Riskli olduğu belirlenen kullanıcıları indirme|
 |Uygulama Yönetimi|İşlenen toplu davetler|
 |Uygulama Yönetimi|Karşıya yüklenen toplu davetler|
@@ -370,8 +370,8 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Uygulama Yönetimi|Kullanım Koşullarını Düzenleme|
 |Uygulama Yönetimi|Kullanım Koşullarını Yayımlama|
 |Uygulama Yönetimi|Kullanım Koşullarını Yayımdan Kaldırma|
-|Uygulama Yönetimi|Uygulama TLS/SSL sertifikası ekleme|
-|Uygulama Yönetimi|TLS bağlamayı silme|
+|Uygulama Yönetimi|Uygulama TLS/SSL sertifikası Ekle|
+|Uygulama Yönetimi|TLS bağlamasını Sil|
 |Uygulama Yönetimi|Bağlayıcıyı kaydetme|
 |Uygulama Yönetimi|AdminPolicyDatas-RemoveResources|
 |Uygulama Yönetimi|AdminPolicyDatas-SetResources|
@@ -398,7 +398,7 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Dizin Yönetimi|Bir abonelikteki B2C dizin kaynaklarını alma|
 |Dizin Yönetimi|Özel IDP alma|
 |Dizin Yönetimi|IDP alma|
-|Dizin Yönetimi|B2C dizin kaynağı alma|
+|Dizin Yönetimi|B2C dizin kaynağı al|
 |Dizin Yönetimi|Kullanıcı yolculuğu alma|
 |Dizin Yönetimi|Kullanıcı yolculuğu için izin verilen uygulama taleplerini alma|
 |Dizin Yönetimi|Kullanıcı yolculuğu için izin verilen otomatik olarak onaylanan talepler alma|
@@ -408,14 +408,14 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Dizin Yönetimi|Belirli bir yönetim akışı için idp’leri alma|
 |Dizin Yönetimi|Tüm yönetim akışlarının listesini alma|
 |Dizin Yönetimi|Tüm kullanıcılar için tüm yönetim akışlarının etiketlerinin listesini alma|
-|Grup Yönetimi|Toplu İndirme grup üyeleri - başladı|
-|Grup Yönetimi|Toplu İndirme grup üyeleri - bitmiş|
-|Grup Yönetimi|Toplu alma grubu üyeleri - başladı|
-|Grup Yönetimi|Toplu alma grubu üyeleri - bitmiş|
-|Grup Yönetimi|Toplu kaldırma grup üyeleri - başladı|
-|Grup Yönetimi|Toplu kaldırma grup üyeleri - bitmiş|
-|Grup Yönetimi|Toplu indirme grupları - başladı|
-|Grup Yönetimi|Toplu indirme grupları - bitmiş|
+|Grup Yönetimi|Grup üyelerini toplu Indirme-başlatıldı|
+|Grup Yönetimi|Grup üyelerini toplu Indirme-tamamlandı|
+|Grup Yönetimi|Grup üyelerini toplu içeri aktarma-başlatıldı|
+|Grup Yönetimi|Toplu içeri aktarma Grup üyeleri-tamamlandı|
+|Grup Yönetimi|Grup üyelerini toplu kaldırma-başlatıldı|
+|Grup Yönetimi|Grup üyelerini toplu kaldırma-tamamlandı|
+|Grup Yönetimi|Toplu indirme grupları-başlatıldı|
+|Grup Yönetimi|Toplu indirme grupları-tamamlandı|
 |Grup Yönetimi|Bir kullanıcı için kiracıların listesini alma|
 |Grup Yönetimi|Yerel hesapların otomatik olarak onaylanan taleplerini alma|
 |Grup Yönetimi|Yerelleştirilmiş kaynak json alma|
@@ -475,16 +475,16 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Kullanıcı Yönetimi|Role kapsamlı üye ekleme|
 |Kullanıcı Yönetimi|Eklendi|
 |Kullanıcı Yönetimi|Ata|
-|Kullanıcı Yönetimi|Toplu oluşturma kullanıcıları - başladı|
-|Kullanıcı Yönetimi|Toplu oluşturma kullanıcıları - bitmiş|
-|Kullanıcı Yönetimi|Toplu silme kullanıcıları - başladı|
-|Kullanıcı Yönetimi|Toplu silme kullanıcıları - bitmiş|
-|Kullanıcı Yönetimi|Toplu indirme kullanıcıları - başladı|
-|Kullanıcı Yönetimi|Toplu indirme kullanıcıları - bitmiş|
-|Kullanıcı Yönetimi|Toplu geri yükleme silinen kullanıcılar - başladı|
-|Kullanıcı Yönetimi|Toplu geri yükleme silinen kullanıcılar - bitmiş|
-|Kullanıcı Yönetimi|Toplu davet kullanıcıları - başladı|
-|Kullanıcı Yönetimi|Toplu davet kullanıcıları - bitmiş|
+|Kullanıcı Yönetimi|Toplu Kullanıcı oluşturma-başlatılan|
+|Kullanıcı Yönetimi|Toplu Kullanıcı oluşturma-tamamlandı|
+|Kullanıcı Yönetimi|Kullanıcıları toplu silme-başlatıldı|
+|Kullanıcı Yönetimi|Kullanıcıları toplu silme-tamamlandı|
+|Kullanıcı Yönetimi|Kullanıcıları toplu indirme-başlatıldı|
+|Kullanıcı Yönetimi|Kullanıcıları toplu indirme-tamamlandı|
+|Kullanıcı Yönetimi|Silinen kullanıcıları toplu geri yükleme-başlatıldı|
+|Kullanıcı Yönetimi|Silinen kullanıcıları toplu geri yükleme-tamamlandı|
+|Kullanıcı Yönetimi|Toplu davet kullanıcıları-başlatıldı|
+|Kullanıcı Yönetimi|Toplu davet kullanıcıları-tamamlandı|
 |Kullanıcı Yönetimi|Cihazdan kayıtlı sahibi kaldırma|
 |Kullanıcı Yönetimi|Cihazdan kayıtlı kullanıcıları kaldırma|
 |Kullanıcı Yönetimi|Rolden uygun üyeyi kaldırma|
@@ -540,10 +540,10 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Grup Yönetimi|İstek onayı isteğini gözden geçirme|
 |Grup Yönetimi|Erişim Gözden Geçirmesini Güncelleştirme|
 |Grup Yönetimi|Erişim gözden geçirmesi posta bildirimi ayarlarını güncelleştirme|
-|Grup Yönetimi|Erişim gözden geçirme yineleme sayısı ayarını güncelleştirme|
-|Grup Yönetimi|Gün ayarında erişim gözden geçirme yineleme süresini güncelleştirme|
-|Kullanıcı Yönetimi|Erişim gözden geçirme yineleme son tür ayarını güncelleştirme|
-|Kullanıcı Yönetimi|Erişim gözden geçirme yineleme türü ayarını güncelleştirme|
+|Grup Yönetimi|Erişim gözden geçirme yinelenme sayısı ayarını Güncelleştir|
+|Grup Yönetimi|Erişim gözden geçirme gün cinsinden yineleme süresini Güncelleştir ayarı|
+|Kullanıcı Yönetimi|Erişim gözden geçirme yineleme bitiş türü ayarını Güncelleştir|
+|Kullanıcı Yönetimi|Erişim gözden geçirme yineleme türü ayarını Güncelleştir|
 
 
 
@@ -554,21 +554,21 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |PIM|ActivationAborted|
 |PIM|ActivationApproved|
 |PIM|ActivationCanceled|
-|PIM|Etkinleştirme Reddedildi|
+|PIM|Activationreddedildi|
 |PIM|ActivationRequested|
 |PIM|Eklendi|
-|PIM|Eklenen DışPIM|
+|PIM|AddedOutsidePIM|
 |PIM|Ata|
-|PIM|DismissAlert|
+|PIM|Dissalert|
 |PIM|Yükselt|
 |PIM|ReactivateAlert|
 |PIM|Kaldırıldı|
-|PIM|Kaldırılan DışPIM|
+|PIM|RemovedOutsidePIM|
 |PIM|Gözden Geçirmeyi Durdurmayı İsteme|
 |PIM|Rol Ayarı değişiklikleri|
 |PIM|ScanAlertsNow|
 |PIM|Kaydol|
-|PIM|Atamaz|
+|PIM|Kaldırmanız|
 |PIM|Yetkiyi Kaldır|
 |PIM|UpdateAlertSettings|
 |PIM|UpdateCurrentState|
@@ -612,17 +612,17 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Kullanım Koşulları|Kullanım Koşullarını Kabul Etme|
 |Kullanım Koşulları|Kullanım Koşulları Oluşturma|
 |Kullanım Koşulları|Kullanım Koşullarını Reddetme|
-|Kullanım Koşulları|İzin Silme|
+|Kullanım Koşulları|Onayı Sil|
 |Kullanım Koşulları|Kullanım Koşullarını Silme|
 |Kullanım Koşulları|Kullanım Koşullarını Düzenleme|
-|Kullanım Koşulları|Kullanım Koşullarının Süresi Doldu|
-|Kullanım Koşulları|Sabit Silme Kullanım Koşulları|
+|Kullanım Koşulları|Süre sonu kullanım koşulları|
+|Kullanım Koşulları|Kullanım koşullarını kalıcı olarak sil|
 |Kullanım Koşulları|Kullanım Koşullarını Yayımlama|
 |Kullanım Koşulları|Kullanım Koşullarını Yayımdan Kaldırma|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD raporlarına genel bakış.](overview-reports.md)
-- [Denetim günlükleri raporu.](concept-audit-logs.md) 
+- [Azure AD raporlarına genel bakış](overview-reports.md).
+- [Denetim günlükleri raporu](concept-audit-logs.md). 
 - [Azure AD raporlarına programlı erişim](concept-reporting-api.md)

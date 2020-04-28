@@ -1,6 +1,6 @@
 ---
-title: Azure AD yetkilendirme yönetiminde bir erişim paketi isteklerini görüntüleme - Azure Etkin Dizin
-description: Azure Active Directory yetkilendirme yönetiminde bir erişim paketi isteklerini nasıl görüntüleyebilirsiniz öğrenin.
+title: Azure AD Yetkilendirme Yönetimi 'nde erişim paketi isteklerini görüntüleme-Azure Active Directory
+description: Azure Active Directory yetkilendirme yönetiminde bir erişim paketi için istekleri görüntülemeyi öğrenin.
 services: active-directory
 documentationCenter: ''
 author: barclayn
@@ -17,32 +17,32 @@ ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f210602817c03b73ca4c48da2c3dad5549777f47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80128723"
 ---
-# <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi isteklerini görüntüleme
+# <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde erişim paketi isteklerini görüntüleme
 
-Azure AD yetkilendirme yönetiminde, kimlerin erişim paketleri, ilkeleri ve durumları istediğini görebilirsiniz. Bu makalede, erişim paketleri için istekleri görüntülemek için nasıl açıklanmaktadır.
+Azure AD Yetkilendirme Yönetimi 'nde kimin erişim paketleri, ilkeleri ve durumu olduğunu görebilirsiniz. Bu makalede, bir erişim paketleri için isteklerin nasıl görüntüleneceği açıklanır.
 
 ## <a name="view-requests"></a>İstekleri görüntüleme
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı yöneticisi, Katalog sahibi veya Access paket yöneticisi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portalında **Azure Etkin Dizin'i** tıklatın ve ardından **Kimlik Yönetimi'ni**tıklatın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde, **Access paketlerini** tıklatın ve ardından erişim paketini açın.
+1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
-1. **İstekleri**tıklatın.
+1. **İstekler**' e tıklayın.
 
-1. Ek ayrıntıları görmek için belirli bir isteği tıklatın.
+1. Ek ayrıntıları görmek için belirli bir isteğe tıklayın.
 
-    ![Erişim paketi isteklerilistesi](./media/entitlement-management-access-package-requests/requests-list.png)
+    ![Erişim paketi isteklerinin listesi](./media/entitlement-management-access-package-requests/requests-list.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Erişim paketi için istek ve onay ayarlarını değiştirme](entitlement-management-access-package-request-policy.md)
+- [Erişim paketi için değişiklik isteği ve onay ayarları](entitlement-management-access-package-request-policy.md)
 - [Erişim paketi için atamaları görüntüleme, ekleme ve kaldırma](entitlement-management-access-package-assignments.md)
-- [Sorun giderme istekleri](entitlement-management-troubleshoot.md#requests)
+- [İsteklerin sorunlarını giderme](entitlement-management-troubleshoot.md#requests)

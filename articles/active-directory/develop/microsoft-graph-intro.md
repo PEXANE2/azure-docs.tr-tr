@@ -1,6 +1,6 @@
 ---
 title: Microsoft Graph API'si
-description: Microsoft Graph API, Microsoft Cloud hizmet kaynaklarına erişmenizi sağlayan yeni bir web API'sidir.
+description: Microsoft Graph API 'SI, Microsoft Bulut hizmet kaynaklarına erişmenize olanak tanıyan bir yeniden takip eden Web API 'sidir.
 author: davidmu1
 services: active-directory
 manager: CelesteDG
@@ -12,49 +12,49 @@ ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
 ms.openlocfilehash: 67dbf696903e7a930d75762deb00ad58ed1a4f69
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886475"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API'si
 
-Microsoft Graph API, Microsoft Cloud hizmet kaynaklarına erişmenizi sağlayan yeni bir web API'sidir. Uygulamanızı kaydettikten ve bir kullanıcı veya hizmet için kimlik doğrulama belirteçleri aldıktan sonra, Microsoft Graph API'ye istekte bulunabilirsiniz. Daha fazla bilgi için Microsoft [Graph'a Genel Bakış](https://docs.microsoft.com/graph/overview)bölümüne bakın.
+Microsoft Graph API 'SI, Microsoft Bulut hizmet kaynaklarına erişmenize olanak tanıyan bir yeniden takip eden Web API 'sidir. Uygulamanızı kaydettikten ve bir kullanıcı veya hizmet için kimlik doğrulama belirteçleri aldıktan sonra, Microsoft Graph API 'sine istek yapabilirsiniz. Daha fazla bilgi için bkz. [Microsoft Graph genel bakış](https://docs.microsoft.com/graph/overview).
 
-Microsoft Graph, aşağıdaki Microsoft 365 hizmetlerindeki verilere erişmek için REST API'larını ve istemci kitaplıklarını ortaya çıkarır:
-- Office 365 hizmetleri: Delve, Excel, Microsoft Rezervasyonları, Microsoft Teams, OneDrive, OneNote, Outlook/Exchange, Planlayıcı ve SharePoint
-- Kurumsal Mobilite ve Güvenlik hizmetleri: Gelişmiş Tehdit Analizi, Gelişmiş Tehdit Koruması, Azure Active Directory, Identity Manager ve Intune
-- Windows 10 hizmetleri: etkinlikler, cihazlar, bildirimler
+Microsoft Graph, aşağıdaki Microsoft 365 hizmetlerindeki verilere erişmek için REST API 'Leri ve istemci kitaplıklarını kullanıma sunar:
+- Office 365 hizmetleri: Delve, Excel, Microsoft kayıtları, Microsoft ekipleri, OneDrive, OneNote, Outlook/Exchange, Planner ve SharePoint
+- Enterprise Mobility and Security Services: Gelişmiş tehdit analizi, Gelişmiş tehdit koruması, Azure Active Directory, Identity Manager ve Intune
+- Windows 10 Hizmetleri: Etkinlikler, cihazlar, bildirimler
 - Dynamics 365 Business Central
 
 ## <a name="versions"></a>Sürümler
 
-Microsoft Graph şu anda iki sürümü destekler: v1.0 ve beta. v1.0 sürümü genellikle kullanılabilir API'leri içerir. Tüm üretim uygulamaları için v1.0 sürümünü kullanın. Beta, şu anda önizlemede olan API'leri içerir. Beta API'lerimizde çığır açan değişiklikler getirebileceğimizden, beta sürümünü yalnızca geliştirilmekte olan uygulamaları test etmek için kullanmanızı öneririz; üretim uygulamalarınızda beta API'leri kullanmayın. Daha fazla bilgi için Microsoft [Graph için Sürüm, destek ve kesme değişiklik ilkeleri](https://docs.microsoft.com/graph/versioning-and-support)ne resitiğe bakın.
+Microsoft Graph Şu anda iki sürümü desteklemektedir: v 1.0 ve Beta. V 1.0 sürümü, genel olarak kullanılabilir API 'Leri içerir. Tüm üretim uygulamaları için v 1.0 sürümünü kullanın. Beta, şu anda önizleme aşamasında olan API 'Leri içerir. Beta API 'lerimiz üzerinde önemli değişiklikler sunabileceğimizden, yalnızca geliştirme aşamasında olan uygulamaları test etmek için beta sürümünü kullanmanızı öneririz. üretim uygulamalarınızda Beta API 'Lerini kullanmayın. Daha fazla bilgi için, bkz. [Microsoft Graph Için sürüm oluşturma, destek ve bölme değiştirme ilkeleri](https://docs.microsoft.com/graph/versioning-and-support).
 
-Beta API'lerini kullanmaya başlamak için [Microsoft Graph beta uç nokta başvurusuna](https://docs.microsoft.com/graph/api/overview?view=graph-rest-beta) bakın
+Beta API 'Lerini kullanmaya başlamak için bkz. [Microsoft Graph Beta uç noktası başvurusu](https://docs.microsoft.com/graph/api/overview?view=graph-rest-beta)
 
-v1.0 API'lerini kullanmaya başlamak için [Microsoft Graph REST API v1.0 başvurusuna](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0) bakın
+V 1.0 API 'Lerini kullanmaya başlamak için bkz. [Microsoft Graph REST API v 1.0 başvurusu](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)
 
 ## <a name="get-started"></a>başlarken
 
-Kullanıcı veya e-posta iletisi gibi bir kaynaktan okumak veya yazmak için aşağıdakigibi görünen bir istek oluşturuyorsunuz:
+Kullanıcı veya e-posta iletisi gibi bir kaynağı okumak veya bir kaynağa yazmak için aşağıdaki gibi görünen bir istek oluşturursunuz:
 
 `{HTTP method} https://graph.microsoft.com/{version}/{resource}?{query-parameters}`
 
-Yapılandırılan isteğin öğeleri hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/graph/use-the-api)
+Oluşturulan isteğin öğeleri hakkında daha fazla bilgi için bkz [. MICROSOFT Graph API 'Sini kullanma](https://docs.microsoft.com/graph/use-the-api)
 
-Quickstart örnekleri, Microsoft Graph API'nin gücüne nasıl erişilenleri göstermek için kullanılabilir. Kullanılabilir örnekler, tek bir kimlik doğrulaması olan iki hizmete erişi: Microsoft hesabı ve Outlook. Her hızlı başlangıç Microsoft hesap kullanıcılarının profillerinden bilgilere erişir ve takvimlerindeki olayları görüntüler.
-Hızlı başlatmalar dört adım içerir:
+Hızlı başlangıç örnekleri, Microsoft Graph API 'sinin gücüne nasıl erişekullanacağınızı göstermek için kullanılabilir. Kullanılabilir örnekler, bir kimlik doğrulaması ile iki hizmete erişir: Microsoft hesabı ve Outlook. Her hızlı başlangıç, Microsoft hesabı kullanıcıların profillerinin bilgilerine erişir ve takviminden olayları görüntüler.
+Hızlı başlangıçlarda dört adım vardır:
 - Platformunuzu seçin
-- Uygulama kimliğinizi alın (istemci kimliği)
+- Uygulama KIMLIĞINIZI (istemci KIMLIĞI) alın
 - Örneği oluşturma
-- Oturum açın ve takviminizdeki etkinlikleri görüntüleyin
+- Oturum açın ve takviminizde olayları görüntüleyin
 
-Hızlı başlatmayı tamamladığınızda, çalışmaya hazır bir uygulamanız vardır. Daha fazla bilgi için [Microsoft Graph hızlı başlatSS SSS'ye](https://docs.microsoft.com/graph/quick-start-faq)bakın. Örneklerle başlamak için [Microsoft Graph QuickStart'a](https://developer.microsoft.com/graph/quick-start)bakın.
+Hızlı başlangıcı tamamladığınızda, çalıştırmaya hazırlamış bir uygulamanız vardır. Daha fazla bilgi için [Microsoft Graph hızlı başlangıç hakkında SSS](https://docs.microsoft.com/graph/quick-start-faq)bölümüne bakın. Örnekleri kullanmaya başlamak için bkz. [Microsoft Graph hızlı başlangıç](https://developer.microsoft.com/graph/quick-start).
 
 ## <a name="tools"></a>Araçlar
 
-Microsoft Graph Explorer, Microsoft Graph API'lerini kullanarak istekleri oluşturmak ve sınamak için kullanabileceğiniz web tabanlı bir araçtır. Microsoft Graph Explorer'a `https://developer.microsoft.com/graph/graph-explorer`şu andan erişebilirsiniz.
+Microsoft Graph Explorer, Microsoft Graph API 'Leri kullanarak istek derlemek ve test etmek için kullanabileceğiniz web tabanlı bir araçtır. Microsoft Graph Explorer 'a şu adreste erişebilirsiniz: `https://developer.microsoft.com/graph/graph-explorer`.
 
-Postacı, Microsoft Graph API'lerini kullanarak istekleri oluşturmak ve sınamak için de kullanabileceğiniz bir araçtır. Postacı'yı şu `https://www.getpostman.com/`telefondan indirebilirsiniz: . Postacı'da Microsoft Graph ile etkileşimde kalmak için Postacı'da Microsoft Graph koleksiyonunu kullanırsınız. Daha fazla bilgi için [Microsoft Graph API'si ile Postacı'yı kullan'a](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)bakın.
+Postman, Microsoft Graph API 'Lerini kullanarak istek derlemek ve test etmek için de kullanabileceğiniz bir araçtır. Postman 'yi şurada indirebilirsiniz: `https://www.getpostman.com/`. Postman 'da Microsoft Graph etkileşimde bulunmak için Postman 'da Microsoft Graph koleksiyonunu kullanırsınız. Daha fazla bilgi için bkz. [MICROSOFT Graph API Ile Postman kullanma](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).

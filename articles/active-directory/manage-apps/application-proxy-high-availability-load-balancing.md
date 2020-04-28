@@ -1,6 +1,6 @@
 ---
-title: Yüksek kullanılabilirlik ve yük dengeleme - Azure AD Application Proxy
-description: Uygulama Proxy dağıtımınızla trafik dağıtımı nasıl çalışır? Konektör performansını en iyi duruma getirme ve arka uç sunucuları için yük dengelemeyi kullanma ipuçları içerir.
+title: Yüksek kullanılabilirlik ve yük dengeleme-Azure AD Uygulama Ara Sunucusu
+description: Trafik dağıtımı, uygulama proxy dağıtımıyla birlikte nasıl kullanılır. Bağlayıcı performansını iyileştirme ve arka uç sunucuları için yük dengelemeyi kullanma ipuçları içerir.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,85 +17,85 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 992075378737552e890bd2d6fed3c519e6c62aa7
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312944"
 ---
-# <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Uygulama Proxy bağlayıcılarınızın ve uygulamalarınızın yüksek kullanılabilirliği ve yük dengelemesi
+# <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Uygulama proxy bağlayıcılarınızın ve uygulamalarınızın yüksek kullanılabilirliği ve yük dengelemesi
 
-Bu makalede, Uygulama Proxy dağıtımınızla trafik dağıtımının nasıl çalıştığı açıklanmaktadır. Tartışacağız:
+Bu makalede, trafik dağıtımının uygulama proxy dağıtımıyla nasıl çalıştığı açıklanmaktadır. Şunları tartışacağız:
 
-- Trafiğin kullanıcılar ve bağlayıcılar arasında nasıl dağıtıldığı ve konektör performansını optimize etme ipuçları
+- Trafiğin kullanıcılar ve bağlayıcılar arasında dağıtılması ve bağlayıcı performansını iyileştirmeye yönelik ipuçları
 
-- Birden çok arka uç sunucusu arasında yük dengeleme önerileri ile bağlayıcılar ve arka uç uygulama sunucuları arasında trafik nasıl akar?
+- Birden çok arka uç sunucusu arasında yük dengelemeye yönelik önerilerle, bağlayıcılar ve arka uç uygulama sunucuları arasında trafik nasıl akar
 
-## <a name="traffic-distribution-across-connectors"></a>Konektörler arasında trafik dağılımı
+## <a name="traffic-distribution-across-connectors"></a>Bağlayıcılar genelinde trafik dağıtımı
 
-Bağlayıcılar, bağlantılarını yüksek kullanılabilirlik ilkelerine göre kurarlar. Trafiğin her zaman bağlayıcılar arasında eşit olarak dağıtılacağının ve oturum yakınlığı olmadığının garantisi yoktur. Ancak, kullanım değişir ve istekler rasgele Uygulama Proxy hizmet örneklerine gönderilir. Sonuç olarak, trafik genellikle bağlayıcılar arasında neredeyse eşit olarak dağıtılır. Aşağıdaki diyagram ve adımlar, kullanıcılar ve bağlayıcılar arasında bağlantıların nasıl kurulduğunu göstermektedir.
+Bağlayıcılar, yüksek kullanılabilirlik ilkelerine bağlı olarak bağlantılarını oluştururlar. Trafiğin her zaman bağlayıcılar arasında eşit olarak dağıtılması ve oturum benzeşimi olmaması garanti yoktur. Bununla birlikte, kullanım değişiklik gösterir ve istekler uygulama proxy 'Si hizmet örneklerine rastgele gönderilir. Sonuç olarak, trafik genellikle bağlayıcılar arasında neredeyse eşit olarak dağıtılır. Aşağıdaki diyagramda ve adımlarda, kullanıcılar ve bağlayıcılar arasında bağlantıların nasıl kurulduğu gösterilmektedir.
 
 ![Kullanıcılar ve bağlayıcılar arasındaki bağlantıları gösteren diyagram](media/application-proxy-high-availability-load-balancing/application-proxy-connections.png)
 
-1. İstemci aygıtındaki bir kullanıcı, Application Proxy aracılığıyla yayınlanan şirket içi bir uygulamaya erişmeye çalışır.
-2. İstek, hangi Uygulama Proxy hizmeti örneğinin isteği alması gerektiğini belirlemek için bir Azure Yük Dengeleyicisi'nden geçer. Bölge başına, isteği kabul etmek için kullanılabilir onlarca örnek vardır. Bu yöntem, hizmet örnekleri arasında trafiği eşit dağıtmaya yardımcı olur.
-3. İstek [Servis Otobüsü'ne](https://docs.microsoft.com/azure/service-bus-messaging/)gönderilir.
-4. Servis Veri Servisi sinyalleri kullanılabilir bir konektöre bağlanır. Konektör daha sonra Servis Veri Servisi'nden isteği alır.
-   - Adım 2'de, istekler farklı Uygulama Proxy hizmet örneklerine gider, bu nedenle bağlantıların farklı bağlayıcılarla yapılma olasılığı daha yüksektir. Sonuç olarak, konektörler grup içinde neredeyse eşit olarak kullanılır.
-5. Bağlayıcı isteği uygulamanın arka uç sunucusuna geçirir. Daha sonra uygulama yanıtı bağlayıcıya geri gönderir.
-6. Bağlayıcı, isteğin geldiği hizmet örneğine giden bir bağlantı açarak yanıtı tamamlar. Sonra bu bağlantı hemen kapatılır. Varsayılan olarak, her bağlayıcı 200 eşzamanlı giden bağlantılarla sınırlıdır.
-7. Yanıt daha sonra hizmet örneğinden istemciye geri aktarılır.
-8. Aynı bağlantıdan sonraki istekler yukarıdaki adımları yineler.
+1. İstemci cihazındaki bir Kullanıcı, uygulama proxy 'Si aracılığıyla yayınlanan şirket içi bir uygulamaya erişmeye çalışır.
+2. İstek, hangi uygulama proxy hizmeti örneğinin istek için gerekli olacağını belirleyen bir Azure Load Balancer geçer. Her bölge için, isteği kabul etmek için kullanılabilecek onlarca örnek vardır. Bu yöntem, trafiği hizmet örnekleri genelinde eşit bir şekilde dağıtmaya yardımcı olur.
+3. İstek [Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/)gönderilir.
+4. Kullanılabilir bir bağlayıcıya sinyal Service Bus. Bağlayıcı daha sonra Service Bus isteği alır.
+   - 2. adımda istekler farklı uygulama proxy hizmeti örneklerine gider, bu nedenle bağlantıların farklı bağlayıcılarla yapılması daha olasıdır. Sonuç olarak, bağlayıcılar grup içinde neredeyse eşit olarak kullanılır.
+5. Bağlayıcı, isteği uygulamanın arka uç sunucusuna geçirir. Ardından uygulama, yanıtı bağlayıcıya geri gönderir.
+6. Bağlayıcı, isteğin geldiği hizmet örneğine giden bir bağlantı açarak yanıtı tamamlar. Bu bağlantı hemen kapatılır. Varsayılan olarak, her bağlayıcı 200 eşzamanlı giden bağlantı ile sınırlıdır.
+7. Yanıt daha sonra hizmet örneğinden istemciye geri geçirilir.
+8. Aynı bağlantıdan gelen sonraki istekler yukarıdaki adımları yineleyin.
 
-Bir uygulama genellikle birçok kaynağa sahiptir ve yüklendiğinde birden çok bağlantı açar. Her bağlantı, bir hizmet örneğine tahsis olmak için yukarıdaki adımlardan geçer, bağlantı daha önce bir bağlayıcıyla eşleşmiyorsa yeni bir kullanılabilir bağlayıcı seçin.
+Uygulama genellikle birçok kaynağa sahiptir ve yüklendiğinde birden çok bağlantı açar. Her bağlantı, bir hizmet örneğine ayrılmek için yukarıdaki adımlardan geçer, bağlantı henüz bir bağlayıcıya eşlenmemişse yeni bir kullanılabilir bağlayıcı seçin.
 
 
-## <a name="best-practices-for-high-availability-of-connectors"></a>Konektörlerin yüksek kullanılabilirliği için en iyi uygulamalar
+## <a name="best-practices-for-high-availability-of-connectors"></a>Bağlayıcıların yüksek kullanılabilirliği için en iyi uygulamalar
 
-- Trafiğin yüksek kullanılabilirlik için bağlayıcılar arasında dağıtılme biçimi nedeniyle, bir bağlayıcı grubunda her zaman en az iki bağlayıcının olması önemlidir. Bağlayıcılar arasında ek arabellek sağlamak için üç konektör tercih edilir. İhtiyacınız olan doğru bağlayıcı sayısını belirlemek için kapasite planlama belgelerini izleyin.
+- Trafiğin yüksek kullanılabilirlik için bağlayıcılar arasında dağıtıldığı şekilde, bir bağlayıcı grubunda her zaman en az iki bağlayıcı olması önemlidir. Bağlayıcılar arasında ek arabellek sağlamak için üç bağlayıcı tercih edilir. Gereken bağlayıcı sayısını öğrenmek için kapasite planlama belgelerini izleyin.
 
-- Tek bir hata noktasını önlemek için bağlayıcıları farklı giden bağlantılara yerleştirin. Bağlayıcılar aynı giden bağlantıyı kullanıyorsa, bağlantıyla ilgili bir ağ sorunu onu kullanan tüm bağlayıcıları etkileyebilir.
+- Tek bir hata noktası oluşmasını önlemek için bağlayıcıları farklı giden bağlantılara yerleştirin. Bağlayıcılar aynı giden bağlantıyı kullanıyorsa, bağlantıyla ilgili bir ağ sorunu, kendisini kullanan tüm bağlayıcıları etkileyebilir.
 
-- Üretim uygulamalarına bağlandığında bağlayıcıları yeniden başlatmaya zorlamaktan kaçının. Bunu yapmak, trafiğin bağlayıcılar arasında dağılımını olumsuz etkileyebilir. Konektörlerin yeniden başlatılması, daha fazla bağlayıcının kullanılamamasına ve kalan kullanılabilir bağlayıcıya bağlanmaya zorlar. Sonuç, başlangıçta bağlayıcıların düzensiz kullanımıdır.
+- Üretim uygulamalarına bağlıyken bağlayıcıları yeniden başlamaya zormaktan kaçının. Bu işlem, trafiğin bağlayıcılar arasında dağıtılmasını olumsuz yönde etkileyebilir. Bağlayıcıları yeniden başlatmak, daha fazla bağlayıcının kullanılamamasına neden olur ve kullanılabilir kalan bağlayıcıya bağlantıları zorlar. Sonuç olarak, ilk olarak bağlayıcıların düzensiz bir kullanımı.
 
-- Bağlayıcılar ve Azure arasındaki giden TLS iletişimlerinde her türlü satır ara denetiminden kaçının. Bu tür satır ortası denetimleri iletişim akışında bozulmaya neden olur.
+- Bağlayıcılar ve Azure arasındaki giden TLS iletişimlerinde tüm satır içi denetleme biçimlerinden kaçının. Bu tür satır içi denetleme iletişim akışına düşüşe neden olur.
 
-- Konektörleriniz için otomatik güncelleştirmeleri çalışır durumda tuttuğunızdan emin olun. Uygulama Proxy Bağlayıcı Sıtkı Güncelleme hizmeti çalışıyorsa, bağlayıcılarınız otomatik olarak güncellenir ve en son yükseltilmiş olanları alır. Sunucunuzda Bağlayıcı Güncelleyici hizmetini görmüyorsanız, herhangi bir güncelleştirme almak için bağlayıcınızı yeniden yüklemeniz gerekir.
+- Bağlayıcılarınız için otomatik güncelleştirmeleri çalıştırmaya devam ettiğinizden emin olun. Uygulama proxy 'Si Bağlayıcı Güncelleştiricisi hizmeti çalışıyorsa, bağlayıcılarınız otomatik olarak güncelleştirir ve en son yükseltilen sürümü alır. Sunucunuzda Bağlayıcı Güncelleştiricisi hizmetini görmüyorsanız, tüm güncelleştirmeleri almak için bağlayıcınızı yeniden yüklemeniz gerekir.
 
 ## <a name="traffic-flow-between-connectors-and-back-end-application-servers"></a>Bağlayıcılar ve arka uç uygulama sunucuları arasındaki trafik akışı
 
-Yüksek kullanılabilirlik bir faktör olduğu bir diğer önemli alan bağlayıcılar ve arka uç sunucuları arasındaki bağlantıdır. Bir uygulama Azure AD Application Proxy aracılığıyla yayımlandığında, kullanıcılardan uygulamalara giden trafik üç atlamadan akar:
+Yüksek kullanılabilirliğe sahip olan başka bir anahtar alanı, bağlayıcılar ve arka uç sunucuları arasındaki bağlantıdır. Bir uygulama Azure AD Uygulama Ara Sunucusu aracılığıyla yayımlandığında, kullanıcılardan uygulamalara olan trafik üç atlama üzerinden akar:
 
-1. Kullanıcı, Azure'daki Azure AD Application Proxy hizmetinin genel bitiş noktasına bağlanır. Bağlantı, istemcinin kaynak olan istemci IP adresi (ortak) ile Uygulama Proxy bitiş noktasının IP adresi arasında kurulur.
-2. Application Proxy bağlayıcısı, istemcinin HTTP isteğini Uygulama Proxy Hizmeti'nden çeker.
-3. Uygulama Proxy bağlayıcısı hedef uygulamaya bağlanır. Bağlayıcı, bağlantıyı kurmak için kendi IP adresini kullanır.
+1. Kullanıcı Azure 'da Azure AD Uygulama Ara Sunucusu hizmeti genel uç noktasına bağlanır. Bağlantı, istemcinin kaynak istemci IP adresi (genel) ve uygulama proxy uç noktasının IP adresi arasında oluşturulur.
+2. Uygulama proxy Bağlayıcısı, istemcinin HTTP isteğini uygulama proxy hizmetinden çeker.
+3. Uygulama proxy Bağlayıcısı, hedef uygulamaya bağlanır. Bağlayıcı, bağlantıyı kurmak için kendi IP adresini kullanır.
 
-![Uygulama Proxy ile bir uygulamaya bağlanan kullanıcı diyagramı](media/application-proxy-high-availability-load-balancing/application-proxy-three-hops.png)
+![Uygulama proxy 'Si aracılığıyla bir uygulamaya bağlanan kullanıcı Diyagramı](media/application-proxy-high-availability-load-balancing/application-proxy-three-hops.png)
 
-### <a name="x-forwarded-for-header-field-considerations"></a>X-Forwarded-Üstbilgi alanı hususları için
-Bazı durumlarda (denetim, yük dengeleme vb.) dış istemcinin kaynaklanan IP adresini şirket içi ortamla paylaşmak bir gerekliliktir. Gereksinimi gidermek için Azure AD Application Proxy bağlayıcısı, http isteğine kaynak istemci IP adresine (ortak) sahip X-Forwarded-For üstbilgi alanını ekler. Uygun ağ aygıtı (yük dengeleyici, güvenlik duvarı) veya web sunucusu veya arka uç uygulaması daha sonra bilgileri okuyabilir ve kullanabilir.
+### <a name="x-forwarded-for-header-field-considerations"></a>X-Iletilmiş-üst bilgi alanı konuları
+Bazı durumlarda (denetim, Yük Dengeleme vb. gibi), dış istemcinin kaynak IP adresini şirket içi ortamla paylaşmak bir gereksinimdir. Azure AD Uygulama Ara Sunucusu Bağlayıcısı, gereksinimi karşılamak için, HTTP isteğine kaynak istemci IP adresi (genel) içeren X-Iletilen üst bilgi alanını ekler. Uygun ağ aygıtı (yük dengeleyici, güvenlik duvarı) veya Web sunucusu ya da arka uç uygulaması daha sonra bilgileri okuyabilir ve kullanabilir.
 
 ## <a name="best-practices-for-load-balancing-among-multiple-app-servers"></a>Birden çok uygulama sunucusu arasında yük dengeleme için en iyi uygulamalar
-Uygulama Proxy uygulamasına atanan bağlayıcı grubunun iki veya daha fazla bağlayıcısı varsa ve arka uç web uygulamasını birden çok sunucuda (sunucu çiftliğinde) çalıştırıyorsanız, iyi bir yük dengeleme stratejisi gereklidir. İyi bir strateji, sunucuların istemci isteklerini eşit olarak almasını sağlar ve sunucu çiftliğindeki sunucuların aşırı veya az kullanılmasını engeller.
-### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>Senaryo 1: Arka uç uygulaması oturum kalıcılığı gerektirmez
-En basit senaryo, arka uç web uygulamasının oturum yapışkanlığı (oturum kalıcılığı) gerektirmediği yerdir. Kullanıcıdan gelen herhangi bir istek, sunucu çiftliğindeki herhangi bir arka uç uygulama örneği tarafından işlenebilir. Bir katman 4 yük dengeleyicik kullanabilirsiniz ve hiçbir yakınlık ile yapılandırAbilirsiniz. Bazı seçenekler arasında Microsoft Ağ Yük Dengeleme ve Azure Yük Dengeleyicisi veya başka bir satıcıdan gelen yük dengeleyicisi yer almaktadır. Alternatif olarak, round-robin DNS yapılandırılabilir.
-### <a name="scenario-2-back-end-application-requires-session-persistence"></a>Senaryo 2: Arka uç uygulaması oturum kalıcılığı gerektirir
-Bu senaryoda, arka uç web uygulaması, kimlik doğrulaması yapılan oturum sırasında oturum yapışkanlığı (oturum kalıcılığı) gerektirir. Kullanıcıdan gelen tüm istekler, sunucu çiftliğinde aynı sunucuda çalışan arka uç uygulama örneği tarafından işlenmelidir.
-İstemci genellikle Uygulama Proxy hizmetine birden çok bağlantı oluşturduğundan, bu senaryo daha karmaşık olabilir. Farklı bağlantılar üzerindeki istekler çiftlikteki farklı bağlayıcılara ve sunuculara gelebilir. Her bağlayıcı bu iletişim için kendi IP adresini kullandığından, yük dengeleyici bağlayıcıların IP adresine bağlı olarak oturum yapışkanlığı sağlayamaz. Kaynak IP Affinity de kullanılamaz.
+Uygulama proxy 'Si uygulamasına atanan bağlayıcı grubunun iki veya daha fazla bağlayıcısı varsa ve arka uç Web uygulamasını birden çok sunucuda (sunucu grubu) çalıştırıyorsanız, iyi bir yük dengeleme stratejisi gerekir. İyi bir strateji, sunucuların istemci isteklerini eşit olarak seçmesini ve sunucu grubundaki sunucuların aşırı veya daha fazla kullanımını engeller.
+### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>Senaryo 1: arka uç uygulaması, oturum kalıcılığı gerektirmez
+En basit senaryo, arka uç Web uygulamasının oturum sürekliliği (oturum kalıcılığı) gerektirmez. Kullanıcıdan gelen herhangi bir istek, sunucu grubundaki herhangi bir arka uç uygulama örneği tarafından işlenebilir. Bir katman 4 yük dengeleyici kullanabilir ve bunu hiçbir benzeşim olmadan yapılandırabilirsiniz. Bazı seçenekler, Microsoft Ağ Yükü Dengeleme ve Azure Load Balancer veya başka bir satıcıdan yük dengeleyici içerir. Alternatif olarak, hepsini bir kez deneme DNS yapılandırılabilir.
+### <a name="scenario-2-back-end-application-requires-session-persistence"></a>Senaryo 2: arka uç uygulaması, oturum kalıcılığı gerektiriyor
+Bu senaryoda, arka uç Web uygulaması kimliği doğrulanmış oturum sırasında oturum sürekliliği (oturum kalıcılığı) gerektirir. Kullanıcının tüm isteklerinin sunucu grubundaki aynı sunucuda çalışan arka uç uygulama örneği tarafından işlenmesi gerekir.
+Bu senaryo daha karmaşık olabilir çünkü istemci genellikle uygulama proxy 'Si hizmetine birden çok bağlantı kurar. Farklı bağlantı istekleri gruptaki farklı bağlayıcılara ve sunuculara gelebilir. Her bağlayıcı bu iletişim için kendi IP adresini kullandığından, yük dengeleyici bağlayıcının IP adresini temel alarak oturumun sürekliliğini güvence altına alamazsınız. Kaynak IP benzeşimi, her ikisi de kullanılamaz.
 Senaryo 2 için bazı seçenekler şunlardır:
 
-- Seçenek 1: Oturum kalıcılığını yük dengeleyicisi tarafından ayarlanan bir oturum çerezine dayandırın. Bu seçenek, yükün arka uç sunucular arasında daha eşit olarak yayılmasını sağladığı için önerilir. Bu yeteneğe sahip bir katman 7 yük dengeleyici gerektirir ve BU http trafik işleyebilir ve TLS bağlantısını sona erdirebilir. Azure Uygulama Ağ Geçidi 'ni (Oturum Affinity) veya başka bir satıcıdan yük dengeleyicisi kullanabilirsiniz.
+- 1. seçenek: oturum kalıcılığını yük dengeleyici tarafından ayarlanan bir oturum tanımlama bilgisine dayandırın. Bu seçenek, yükün arka uç sunucuları arasında eşit olarak yayılmasını sağladığından önerilir. Bu özelliğe sahip bir katman 7 Yük Dengeleyici gerektirir ve HTTP trafiğini işleyebilir ve TLS bağlantısını sonlandırabilirler. Azure Application Gateway (oturum benzeşimi) veya başka bir satıcıdan yük dengeleyici kullanabilirsiniz.
 
-- Seçenek 2: Oturum kalıcılığını X-Forwarded-For üstbilgi alanına dayandırın. Bu seçenek, bu yeteneğe sahip bir katman 7 yük dengeleyicisi gerektirir ve BU özellik HTTP trafiğini işleyebilir ve TLS bağlantısını sonlandırabilir.  
+- 2. seçenek: oturum kalıcılığını X-Iletilmiş-for üst bilgisinde temel alan. Bu seçenek, bu özelliğe sahip bir katman 7 Yük Dengeleyici gerektirir ve HTTP trafiğini işleyebilir ve TLS bağlantısını sonlandırabilirler.  
 
-- Seçenek 3: Arka uç uygulamasını oturum kalıcılığı gerektirmeyecek şekilde yapılandırın.
+- Seçenek 3: arka uç uygulamasını, oturum kalıcılığı gerektirecek şekilde yapılandırın.
 
-Arka uç uygulamasının yük dengeleme gereksinimlerini anlamak için yazılım satıcınızın belgelerine bakın.
+Arka uç uygulamasının Yük Dengeleme gereksinimlerini anlamak için Yazılım satıcınızın belgelerine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Uygulama Ara Sunucusunu etkinleştirme](application-proxy-add-on-premises-application.md)
 - [Çoklu oturum açmayı etkinleştirme](application-proxy-configure-single-sign-on-with-kcd.md)
-- [Koşullu Erişimi Etkinleştir](application-proxy-integrate-with-sharepoint-server.md)
+- [Koşullu erişimi etkinleştir](application-proxy-integrate-with-sharepoint-server.md)
 - [Uygulama Ara Sunucusu ile ilgili sorunları giderme](application-proxy-troubleshoot.md)
 - [Azure AD mimarisinin yüksek kullanılabilirliği nasıl desteklediğini öğrenin](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

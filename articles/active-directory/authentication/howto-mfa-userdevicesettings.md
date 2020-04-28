@@ -1,6 +1,6 @@
 ---
-title: Azure Çok Faktörlü Kimlik Doğrulama - Azure Etkin Dizini için kullanıcı ayarlarını yönetme
-description: Azure Çok Faktörlü Kimlik Doğrulama için Azure Active Directory kullanıcı ayarlarını nasıl yapılandırabileceğinizi öğrenin
+title: Azure Multi-Factor Authentication için Kullanıcı ayarlarını yönetme-Azure Active Directory
+description: Azure Multi-Factor Authentication için Azure Active Directory Kullanıcı ayarlarını nasıl yapılandırabileceğinizi öğrenin
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,44 +12,44 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 048224a55c2bbcbc99281d070d88d34e2dc77168
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81309766"
 ---
-# <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Azure Çok Faktörlü Kimlik Doğrulama için kullanıcı ayarlarını yönetme
+# <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication için Kullanıcı ayarlarını yönetme
 
-Azure Çok Faktörlü Kimlik Doğrulama kullanıcılarını yönetmenize yardımcı olmak için, kullanıcıların parolalarını sıfırlamalarını, MFA'ya yeniden kaydolmalarını veya varolan MFA oturumlarını iptal etmesini sağlayabilirsiniz. Uygulama parolalarını tanımlayan kullanıcılar için, bu parolaları silmeyi de seçebilirsiniz ve bu da eski kimlik doğrulamasının bu uygulamalarda başarısız olmasını sağlayabilirsiniz. Bir kullanıcıya yardım sağlamanız gerekiyorsa veya güvenlik durumlarını sıfırlamak istiyorsanız, bu eylemler gerekli olabilir.
+Azure Multi-Factor Authentication kullanıcılarının yönetilmesine yardımcı olmak için kullanıcıların parolalarını sıfırlamasını, MFA için yeniden kaydolmayı veya mevcut MFA oturumlarını iptal etmeyi isteyebilirsiniz. Uygulama parolaları tanımlı kullanıcılar için, bu parolaları silmeyi de seçebilirsiniz ve bu durumda eski kimlik doğrulamanın Bu uygulamalarda başarısız olmasına neden olabilir. Bu eylemler, bir kullanıcıya yardım sağlamanız veya güvenlik durumlarını sıfırlamak istediğinizde gerekli olabilir.
 
 ## <a name="manage-user-authentication-options"></a>Kullanıcı kimlik doğrulama seçeneklerini yönetme
 
-*Kimlik Doğrulama Yöneticisi* rolü size atanırsa, kullanıcıların parolalarını sıfırlamalarını, MFA'ya yeniden kaydolmalarını veya kullanıcı nesnelerinden varolan MFA oturumlarını iptal etmelerine gerek kalabilirsiniz. Kullanıcı ayarlarını yönetmek için aşağıdaki adımları tamamlayın:
+*Kimlik doğrulama Yöneticisi* rolüne atandıysanız, kullanıcıların parolalarını SıFıRLAMALARıNı, MFA için yeniden kaydolmayı veya mevcut MFA oturumlarını kullanıcı nesnesinden iptal etmeyi isteyebilirsiniz. Kullanıcı ayarlarını yönetmek için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Solda, Azure **Etkin Dizin** > **Kullanıcıları** > **Tüm kullanıcıları**seçin.
-1. Bir eylem gerçekleştirmek istediğiniz kullanıcıyı seçin ve **Kimlik Doğrulama yöntemlerini**seçin. Pencerenin üst kısmında, ardından kullanıcı için aşağıdaki seçeneklerden birini seçin:
-   - **Parolayı Sıfırla** kullanıcının parolasını sıfırlar ve bir sonraki oturum açmada değiştirilmesi gereken geçici bir parola atar.
-   - **MFA'yı yeniden kaydetmeyi** zorunlu kılması, kullanıcı bir dahaki sefere imzalandığında yeni bir MFA kimlik doğrulama yöntemi ayarlamaları istenir.
-   - **MFA Oturumları'nın iptali,** kullanıcının hatırlanan MFA oturumlarını temizler ve cihazdaki ilke tarafından bir sonraki kez gerekli olduğunda MFA gerçekleştirmelerini gerektirir.
+1. Sol tarafta **Azure Active Directory** > **Kullanıcılar** > **tüm kullanıcılar**' ı seçin.
+1. Üzerinde bir eylem gerçekleştirmek istediğiniz kullanıcıyı seçin ve **kimlik doğrulama yöntemleri**' ni seçin. Pencerenin üst kısmında, Kullanıcı için aşağıdaki seçeneklerden birini belirleyin:
+   - **Parola sıfırlama** Kullanıcı parolasını sıfırlar ve sonraki oturum açma sırasında değiştirilmesi gereken geçici bir parola atar.
+   - **MFA 'Yı yeniden kaydettirme** , Kullanıcı bir sonraki sefer oturum açtığında yenı bir MFA kimlik doğrulama yöntemi ayarlaması istenmesini sağlar.
+   - **MFA oturumlarını Iptal etme** , kullanıcının HATıRLANAN MFA oturumlarını temizler ve cihazdaki ilke için bir sonraki ihtiyaç DUYULıŞıNDA MFA gerçekleştirmesini gerektirir.
 
-   ![Azure portalından kimlik doğrulama yöntemlerini yönetme](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
+   ![Azure portal kimlik doğrulama yöntemlerini yönetin](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
 
-## <a name="delete-users-existing-app-passwords"></a>Kullanıcıların varolan uygulama parolalarını silme
+## <a name="delete-users-existing-app-passwords"></a>Kullanıcı var olan uygulama parolalarını silme
 
-Gerekirse, bir kullanıcının oluşturduğu tüm uygulama parolalarını silebilirsiniz. Bu uygulama parolalarıyla ilişkili tarayıcı dışı uygulamalar, yeni bir uygulama parolası oluşturulana kadar çalışmayı durdurur. *Bu* eylemi gerçekleştirmek için genel yönetici izinleri gereklidir.
+Gerekirse, bir kullanıcının oluşturduğu tüm uygulama parolalarını silebilirsiniz. Bu uygulama parolalarıyla ilişkilendirilen tarayıcı olmayan uygulamalar, yeni bir uygulama parolası oluşturuluncaya kadar çalışmayı durdurur. Bu eylemi gerçekleştirmek için *genel yönetici* izinleri gereklidir.
 
-Bir kullanıcının uygulama parolalarını silmek için aşağıdaki adımları tamamlayın:
+Bir kullanıcının uygulama parolalarını silmek için aşağıdaki adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Sol tarafta, **Azure Etkin Dizin** > **Kullanıcıları** > **Tüm kullanıcıları**seçin.
-1. **Çok Faktörlü Kimlik Doğrulama'yı**seçin. Bu menü seçeneğini görmek için sağa kaydırmanız gerekebilir. Azure portal penceresinin tamamını ve menü konumunu görmek için aşağıdaki örnek ekran görüntüsünü seçin:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Azure AD'deki Kullanıcılar penceresinden Çok Faktörlü Kimlik Doğrulaması'nı seçin")](media/howto-mfa-userstates/selectmfa.png#lightbox)
-1. Yönetmek istediğiniz kullanıcı veya kullanıcıların yanındaki kutuyu işaretleyin. Hızlı adım seçeneklerilistesi sağda görünür.
-1. **Kullanıcı ayarlarını yönet'i**seçin, ardından aşağıdaki örnekte gösterildiği **gibi, seçili kullanıcılar tarafından oluşturulan tüm varolan uygulama parolalarını sil**kutusunu işaretleyin: ![Varolan tüm uygulama parolalarını silin](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
-1. **Kaydet'i**seçin, ardından **kapatın.**
+1. Sol tarafta **Azure Active Directory** > **Kullanıcılar** > **tüm kullanıcılar**' ı seçin.
+1. **Multi-Factor Authentication**seçin. Bu menü seçeneğini görmek için sağa kaydırmanız gerekebilir. Tam Azure portal pencere ve menü konumunu görmek için aşağıdan örnek ekran görüntüsünü seçin:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Azure AD 'de kullanıcılar penceresinden Multi-Factor Authentication seçin")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. Yönetmek istediğiniz kullanıcı veya kullanıcıların yanındaki kutuyu işaretleyin. Sağ tarafta hızlı adım seçeneklerinin bir listesi görüntülenir.
+1. **Kullanıcı ayarlarını yönet**' i seçin, sonra aşağıdaki örnekte gösterildiği gibi **Seçilen kullanıcılar tarafından oluşturulan mevcut tüm uygulama parolalarını Sil**kutusunu işaretleyin. ![var olan tüm uygulama parolalarını Sil](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. **Kaydet**' i ve ardından **Kapat**' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makale, tek tek kullanıcı ayarlarının yapılandırılmasına yardımcı oldu. Azure Çok Faktörlü Kimlik Doğrulama hizmeti ayarlarını yapılandırmak için [bkz.](howto-mfa-mfasettings.md)
+Bu makale, bireysel kullanıcı ayarlarını yapılandırmaya yardımcı oldu. Azure Multi-Factor Authentication hizmet ayarlarını yapılandırmak için bkz. [azure Multi-Factor Authentication ayarlarını yapılandırma](howto-mfa-mfasettings.md)
 
-Kullanıcılarınızın yardıma ihtiyacı varsa, [Azure Çok Faktörlü Kimlik Doğrulama için Kullanım kılavuzuna](../user-help/multi-factor-authentication-end-user.md)bakın.
+Kullanıcılarınızın yardıma ihtiyacı varsa bkz. [Azure Multi-Factor Authentication Için Kullanıcı Kılavuzu](../user-help/multi-factor-authentication-end-user.md).

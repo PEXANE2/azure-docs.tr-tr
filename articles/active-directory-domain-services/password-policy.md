@@ -1,6 +1,6 @@
 ---
-title: Azure AD Etki Alanı Hizmetlerinde parola ilkeleri oluşturma ve kullanma | Microsoft Dokümanlar
-description: Azure AD DS yönetilen bir etki alanında hesap parolalarını korumak ve denetlemek için ince taneli parola ilkelerini nasıl ve neden kullanacağınızı öğrenin.
+title: Azure AD Domain Services parola ilkeleri oluşturma ve kullanma | Microsoft Docs
+description: Azure AD DS yönetilen bir etki alanında hesap parolalarını güvenli hale getirmek ve denetlemek için hassas parola ilkelerinin nasıl ve neden kullanılacağını öğrenin.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,127 +12,127 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
 ms.openlocfilehash: b14fed07c9bd9b5fcb6a5489719481902351fc0d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80654881"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri
 
-Azure Etkin Dizin Etki Alanı Hizmetlerinde (Azure AD DS) kullanıcı güvenliğini yönetmek için, hesap kilitleme ayarlarını veya minimum parola uzunluğu ve karmaşıklığını kontrol eden ince taneli parola ilkeleri tanımlayabilirsiniz. Varsayılan ince taneli parola ilkesi oluşturulur ve Azure AD DS yönetilen etki alanında tüm kullanıcılara uygulanır. Parçalı denetim sağlamak ve belirli iş veya uyumluluk gereksinimlerini karşılamak için, ek ilkeler oluşturulabilir ve belirli kullanıcı gruplarına uygulanabilir.
+Azure Active Directory Domain Services (Azure AD DS) ' de Kullanıcı güvenliğini yönetmek için hesap kilitleme ayarlarını veya en düşük parola uzunluğunu ve karmaşıklığı denetleyen hassas parola ilkeleri tanımlayabilirsiniz. Azure AD DS yönetilen bir etki alanındaki tüm kullanıcılara varsayılan bir hassas parola ilkesi oluşturulur ve uygulanır. Ayrıntılı denetim sağlamak ve belirli iş veya uyumluluk ihtiyaçlarını karşılamak için, ek ilkeler oluşturulup belirli kullanıcı gruplarına uygulanabilir.
 
-Bu makalede, Etkin Dizin Yönetim Merkezi'ni kullanarak Azure AD DS'de ince taneli bir parola ilkesinin nasıl oluşturulup yapılandırılabildiğini gösterilmektedir.
+Bu makalede, Azure AD DS Active Directory Yönetim Merkezi kullanarak hassas bir parola ilkesi oluşturma ve yapılandırma açıklanmaktadır.
 
 > [!NOTE]
-> Parola ilkeleri yalnızca Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan Azure AD DS yönetilen etki alanları için kullanılabilir. Classic kullanılarak oluşturulan eski yönetilen etki alanları için, [Klasik sanal ağ modelinden Kaynak Yöneticisi'ne geçirin.][migrate-from-classic]
+> Parola ilkeleri yalnızca Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan Azure AD DS yönetilen etki alanları için kullanılabilir. Klasik kullanılarak oluşturulan eski yönetilen etki alanları için, [Klasik sanal ağ modelinden Kaynak Yöneticisi 'e geçiş][migrate-from-classic]yapın.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makaleyi tamamlamak için aşağıdaki kaynaklara ve ayrıcalıklara ihtiyacınız vardır:
+Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
 * Etkin bir Azure aboneliği.
-  * Azure aboneliğiniz yoksa [bir hesap oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Aboneliğinizle ilişkili bir Azure Etkin Dizin kiracısı, şirket içi bir dizini veya yalnızca bulut dizininizle eşitlenir.
-  * Gerekirse, [bir Azure Etkin Dizin kiracısı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin.][associate-azure-ad-tenant]
-* Azure Etkin Dizin Etki Alanı Hizmetleri, Azure AD kiracınızda etkin leştirilmiş ve yapılandırılan bir etki alanı yönetildi.
-  * Gerekirse, bir Azure [Active Directory Etki Alanı Hizmetleri örneği oluşturmak ve yapılandırmak][create-azure-ad-ds-instance]için öğreticiyi tamamlayın.
-  * Azure AD DS örneği Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulmuş olmalıdır. Gerekirse, [Klasik sanal ağ modelinden Kaynak Yöneticisi'ne geçirin.][migrate-from-classic]
-* Azure AD DS yönetilen etki alanına katılan bir Windows Server yönetimi VM'si.
-  * Gerekirse, bir yönetim [VM oluşturmak][tutorial-create-management-vm]için öğretici tamamlayın.
-* Azure AD kiracınızda *Azure AD DC yöneticileri* grubunun üyesi olan bir kullanıcı hesabı.
+  * Azure aboneliğiniz yoksa [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
+  * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
+* Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
+  * Gerekirse, [Azure Active Directory Domain Services bir örnek oluşturmak ve yapılandırmak][create-azure-ad-ds-instance]için öğreticiyi doldurun.
+  * Azure AD DS örneği, Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulmuş olmalıdır. Gerekirse, [Klasik sanal ağ modelinden Kaynak Yöneticisi ' ye geçirin][migrate-from-classic].
+* Azure AD DS yönetilen etki alanına katılmış bir Windows Server Yönetim sanal makinesi.
+  * Gerekirse, [bir yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticiyi izleyin.
+* Azure AD kiracınızda *Azure AD DC Administrators* grubunun üyesi olan bir kullanıcı hesabı.
 
 ## <a name="default-password-policy-settings"></a>Varsayılan parola ilkesi ayarları
 
-Ayrıntılı parola ilkeleri (FGPPs), bir etki alanında farklı kullanıcılara parola ve hesap kilitleme ilkeleri için belirli kısıtlamalar uygulamanıza izin verir. Örneğin, ayrıcalıklı hesapların güvenliğini sağlamak için normal ayrıcalıklı olmayan hesaplara göre daha sıkı hesap kilitleme ayarları uygulayabilirsiniz. Azure AD DS yönetilen bir etki alanında birden çok FGPP oluşturabilir ve bunları kullanıcılara uygulamak için öncelik sırasını belirtebilirsiniz.
+Hassas parola ilkeleri (FGPPs), bir etki alanındaki farklı kullanıcılara parola ve hesap kilitleme ilkeleri için özel kısıtlamalar uygulamanıza imkan tanır. Örneğin, ayrıcalıklı hesapların güvenliğini sağlamak için, normal ayrıcalıklı olmayan hesaplardan daha sıkı hesap kilitleme ayarları uygulayabilirsiniz. Azure AD DS yönetilen bir etki alanı içinde birden fazla FGPPs oluşturabilir ve bunları kullanıcılara uygulamak için öncelik sırasını belirtebilirsiniz.
 
-Parola ilkeleri ve Active Directory Administration Center'ı kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Parola ilkeleri hakkında daha fazla bilgi ve Active Directory Yönetim Merkezi 'ni kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [İnce taneli parola ilkeleri hakkında bilgi edinin](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
-* [AD Yönetim Merkezi'ni kullanarak ince taneli parola ilkelerini yapılandırma](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
+* [Hassas parola ilkeleri hakkında bilgi edinin](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
+* [AD Yönetim merkezini kullanarak hassas parola ilkelerini yapılandırma](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
 
-İlkeler, Azure AD DS yönetilen bir etki alanında grup ilişkilendirme yoluyla dağıtılır ve yaptığınız tüm değişiklikler bir sonraki kullanıcı oturum açma sırasında uygulanır. İlkenin değiştirilmesi, zaten kilitlenmiş bir kullanıcı hesabının kilidini açmaz.
+İlkeler, Azure AD DS yönetilen bir etki alanında Grup ilişkilendirmesi aracılığıyla dağıtılır ve yaptığınız tüm değişiklikler sonraki Kullanıcı oturumu sırasında uygulanır. İlkenin değiştirilmesi, zaten kilitlenen bir kullanıcı hesabının kilidini açmıyor.
 
-Parola ilkeleri, uygulandığı kullanıcı hesabının nasıl oluşturulduğuna bağlı olarak biraz farklı davranılır. Azure AD DS'de bir kullanıcı hesabının oluşturulabileceği iki yol vardır:
+Parola ilkeleri, uygulanan kullanıcı hesabının oluşturulma şekline bağlı olarak biraz daha farklı davranır. Azure AD DS bir kullanıcı hesabının oluşturulabilmesi için iki yol vardır:
 
-* Kullanıcı hesabı Azure AD'den senkronize edilebilir. Buna, doğrudan Azure'da oluşturulan yalnızca bulutkullanıcı hesapları ve Azure AD Connect'i kullanarak şirket içi AD DS ortamından senkronize edilen karma kullanıcı hesapları dahildir.
-    * Azure AD DS'deki kullanıcı hesaplarının çoğu, Azure AD'nin eşitleme işlemi yle oluşturulur.
-* Kullanıcı hesabı, Azure AD DS yönetilen bir etki alanında el ile oluşturulabilir ve Azure AD'de bulunmaz.
+* Kullanıcı hesabı Azure AD 'den eşitlenebilir. Bu, doğrudan Azure 'da oluşturulan bulut Kullanıcı hesaplarını ve Azure AD Connect kullanılarak şirket içi AD DS ortamından eşitlenmiş karma Kullanıcı hesaplarını içerir.
+    * Azure AD DS 'daki Kullanıcı hesaplarının çoğu Azure AD 'den eşitleme işlemi aracılığıyla oluşturulur.
+* Kullanıcı hesabı Azure AD DS yönetilen bir etki alanında el ile oluşturulabilir ve Azure AD 'de mevcut değildir.
 
-Tüm kullanıcılar, nasıl oluşturulduklarına bakılmaksızın, Azure AD DS'deki varsayılan parola ilkesi tarafından uygulanan aşağıdaki hesap kilitleme ilkelerine sahiptir:
+Tüm kullanıcılar, oluşturulma şeklinden bağımsız olarak, Azure AD DS varsayılan parola ilkesi tarafından uygulanan aşağıdaki hesap kilitleme ilkelerine sahiptir:
 
 * **Hesap kilitleme süresi:** 30
-* **İzin verilen başarısız oturum açma denemelerinin sayısı:** 5
-* **Başarısız oturum açma denemelerini sıfırlama:** 30 dakika sonra
-* **Maksimum parola yaşı (ömür boyu):** 90 gün
+* **İzin verilen başarısız oturum açma denemesi sayısı:** 5
+* **Başarısız oturum açma denemesi sayısı sıfırlama süresi:** 30 dakika
+* **En fazla parola yaşı (ömür):** 90 gün
 
-Bu varsayılan ayarlarla, beş geçersiz parola 2 dakika içinde kullanılırsa, kullanıcı hesapları 30 dakika süreyle kilitlenir. Hesaplar 30 dakika sonra otomatik olarak açılır.
+Bu varsayılan ayarlarla, 2 dakika içinde beş geçersiz parola kullanılırsa, Kullanıcı hesapları 30 dakika boyunca kilitlenir. Hesaplar 30 dakika sonra otomatik olarak açılır.
 
-Hesap kilitlemeleri yalnızca yönetilen etki alanında gerçekleşir. Kullanıcı hesapları yalnızca Azure AD DS'de ve yalnızca yönetilen etki alanına yönelik başarısız oturum açma girişimleri nedeniyle kilitlenir. Azure AD'den veya şirket içinde senkronize edilen kullanıcı hesapları kaynak dizinlerinde, yalnızca Azure AD DS'lerinde kilitli değildir.
+Hesap kilitleme işlemleri yalnızca yönetilen etki alanı içinde oluşur. Kullanıcı hesapları yalnızca Azure AD DS ve yönetilen etki alanına karşı başarısız oturum açma girişimleri nedeniyle kilitlidir. Azure AD 'den veya şirket içinde eşitlenmiş Kullanıcı hesapları, kaynak dizinlerinde yalnızca Azure AD DS kilitli değildir.
 
-En fazla parola yaşını 90 günden fazla belirten bir Azure AD parola ilkeniz varsa, bu parola yaşı Azure AD DS'deki varsayılan ilkeiçin uygulanır. Azure AD DS'de farklı bir maksimum parola yaşı tanımlamak için özel bir parola ilkesi yapılandırabilirsiniz. Azure AD DS parola ilkesinde yapılandırılan maksimum parola yaşınız Azure AD veya şirket içi AD DS ortamından daha kısaysa dikkatli olun. Bu senaryoda, bir kullanıcının parolası Azure AD veya şirket içi AD DS ortamında değişiklik istenmeden önce Azure AD DS'de sona erebilir.
+90 günden büyük bir maksimum parola yaşı belirten bir Azure AD parola ilkeniz varsa, bu parola yaşı Azure AD DS varsayılan ilkesine uygulanır. Azure AD DS 'de farklı bir maksimum parola yaşı tanımlamak için özel bir parola ilkesi yapılandırabilirsiniz. Azure AD 'de bir Azure AD DS parola ilkesinde yapılandırılmış en kısa bir parola yaşı varsa, Azure AD 'den veya şirket içi bir AD DS ortamından bir dikkatli olmanız gerekir. Bu senaryoda, Azure AD 'de veya şirket içi AD DS ortamında değiştirilmesi istenmeden önce kullanıcının parolasının AD DS kullanım süreleri dolacak.
 
-Azure AD DS yönetilen etki alanında el ile oluşturulan kullanıcı hesapları için varsayılan ilkeden aşağıdaki ek parola ayarları da uygulanır. Bu ayarlar Azure AD'den senkronize edilen kullanıcı hesapları için geçerli değildir, çünkü kullanıcı parolalarını doğrudan Azure AD DS'de güncelleştiremez.
+Azure AD DS yönetilen bir etki alanında el ile oluşturulan kullanıcı hesapları için, varsayılan ilkeden aşağıdaki ek parola ayarları da uygulanır. Bu ayarlar, Azure AD 'den eşitlenen Kullanıcı hesaplarına uygulanmaz, çünkü bir Kullanıcı, parolasını doğrudan Azure AD DS 'de güncelleştiremez.
 
-* **Minimum parola uzunluğu (karakter):** 7
-* **Parolalar karmaşıklık gereksinimlerini karşılamalıdır**
+* **En az parola uzunluğu (karakter):** 7
+* **Parolaların karmaşıklık gereksinimlerini karşılaması gerekir**
 
-Varsayılan parola ilkesinde hesap kilitleme veya parola ayarlarını değiştiremezsiniz. Bunun yerine, *AAD DC Yöneticileri* grubunun üyeleri özel parola ilkeleri oluşturabilir ve bir sonraki bölümde gösterildiği gibi varsayılan yerleşik ilkeyi geçersiz kılacak (öncegelen) olarak yapılandırabilir.
+Varsayılan parola ilkesindeki hesap kilitleme veya parola ayarlarını değiştiremezsiniz. Bunun yerine, *AAD DC yöneticileri* grubunun üyeleri özel parola ilkeleri oluşturabilir ve sonraki bölümde gösterildiği gibi varsayılan yerleşik ilkeyi geçersiz kılmak (öncelikli hale getirmeleri) için yapılandırabilir.
 
 ## <a name="create-a-custom-password-policy"></a>Özel parola ilkesi oluşturma
 
-Azure'da uygulama oluşturup çalıştırırken, özel bir parola ilkesi yapılandırmak isteyebilirsiniz. Örneğin, farklı hesap kilitleme ilkesi ayarlarını ayarlamak için bir ilke oluşturabilirsiniz.
+Azure 'da uygulama oluşturup çalıştırdığınızda, özel bir parola ilkesi yapılandırmak isteyebilirsiniz. Örneğin, farklı hesap kilitleme ilkesi ayarlarını ayarlamak için bir ilke oluşturabilirsiniz.
 
-Azure AD DS yönetilen etki alanında gruplara özel parola ilkeleri uygulanır. Bu yapılandırma varsayılan ilkeyi etkin bir şekilde geçersiz kılar.
+Özel parola ilkeleri, Azure AD DS yönetilen bir etki alanındaki gruplara uygulanır. Bu yapılandırma varsayılan ilkeyi etkin bir şekilde geçersiz kılar.
 
-Özel bir parola ilkesi oluşturmak için etki alanına katılan bir VM'den Etkin Dizin Yönetim Araçları'nı kullanırsınız. Etkin Dizin Yönetim Merkezi, OS B'ler de dahil olmak üzere Azure AD DS yönetilen bir etki alanında kaynakları görüntülemenize, görüntülemenize ve oluşturmanıza olanak tanır.
+Özel bir parola ilkesi oluşturmak için, etki alanına katılmış bir VM 'den Active Directory yönetim araçlarını kullanırsınız. Active Directory Yönetim Merkezi, OU 'Lar dahil olmak üzere Azure AD DS yönetilen bir etki alanında kaynakları görüntülemenize, düzenlemenize ve oluşturmanıza olanak sağlar.
 
 > [!NOTE]
-> Azure AD DS yönetilen bir etki alanında özel bir parola ilkesi oluşturmak için, *AAD DC Yöneticileri* grubunun üyesi bir kullanıcı hesabında oturum açmanız gerekir.
+> Azure AD DS yönetilen bir etki alanında özel bir parola ilkesi oluşturmak için, *AAD DC Administrators* grubunun üyesi olan bir kullanıcı hesabında oturum açmış olmanız gerekir.
 
-1. Başlangıç ekranından **Yönetim Araçları'nı**seçin. Kullanılabilir yönetim araçlarının [listesi, bir yönetim VM oluşturmak][tutorial-create-management-vm]için öğreticiyüklü olarak gösterilmiştir.
-1. OS B'ler oluşturmak ve yönetmek için, yönetim araçları listesinden **Active Directory Administrative Center'ı** seçin.
+1. Başlangıç ekranından **Yönetim Araçları**' nı seçin. [Yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticide yüklü olan kullanılabilir yönetim araçlarının bir listesi gösterilir.
+1. OU 'Ları oluşturup yönetmek için, yönetim araçları listesinden **Active Directory Yönetim Merkezi** ' yi seçin.
 1. Sol bölmede, *aaddscontoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin.
-1. **Sistem** kapsayıcısını açın, ardından **Parola Ayarları Kapsayıcısı'** nı .
+1. **Sistem** kapsayıcısını ve sonra **parola ayarları kapsayıcısı**açın.
 
-    Azure AD DS yönetilen etki alanı için yerleşik bir parola ilkesi gösterilir. Bu yerleşik ilkeyi değiştiremezsiniz. Bunun yerine, varsayılan ilkegeçersiz kılmak için özel bir parola ilkesi oluşturun.
+    Azure AD DS yönetilen etki alanı için yerleşik bir parola ilkesi gösterilir. Bu yerleşik ilkeyi değiştiremezsiniz. Bunun yerine, varsayılan ilkeyi geçersiz kılmak için özel bir parola ilkesi oluşturun.
 
-    ![Etkin Dizin Yönetim Merkezi'nde parola ilkesi oluşturma](./media/password-policy/create-password-policy-adac.png)
+    ![Active Directory Yönetim Merkezi parola ilkesi oluşturma](./media/password-policy/create-password-policy-adac.png)
 
-1. Sağdaki **Görevler** panelinde **Yeni > Parola Ayarları'nı**seçin.
-1. Parola **Ayarları Oluştur** iletişim kutusunda, *MyCustomFGPP*gibi ilke için bir ad girin.
-1. Birden çok parola ilkesi varsa, en yüksek önceliğe veya önceliğe sahip ilke bir kullanıcıya uygulanır. Sayı ne kadar düşükse, öncelik de o kadar yüksektir. Varsayılan parola *ilkesinin önceliği 200'dür.*
+1. Sağdaki **Görevler** panelinde **Yeni > parola ayarları**' nı seçin.
+1. **Parola ayarlarını oluştur** iletişim kutusunda, Ilke Için *Mycustomfgpp*gibi bir ad girin.
+1. Birden çok parola ilkesi varsa, en yüksek önceliğe veya önceliğe sahip ilke bir kullanıcıya uygulanır. Sayı ne kadar düşükse öncelik o kadar yüksektir. Varsayılan parola ilkesinin önceliği *200*' dir.
 
-    *Varsayılanı*geçersiz kılmak için özel parola ilkenizin önceliğini 1 olarak ayarlayın.
+    Varsayılan değer olan *1*' i geçersiz kılmak için özel parola ilkenizin önceliğini ayarlayın.
 
-1. Diğer parola ilkesi ayarlarını istediğiniz gibi edin. Aşağıdaki önemli noktaları unutmayın:
+1. Diğer parola ilkesi ayarlarını istediğiniz gibi düzenleyin. Aşağıdaki anahtar noktalarını unutmayın:
 
-    * Parola karmaşıklığı, yaş veya son kullanma süresi gibi ayarlar yalnızca Azure AD DS yönetilen bir etki alanında el ile oluşturulan kullanıcılar için.
-    * Hesap kilitleme ayarları tüm kullanıcılar için geçerlidir, ancak yalnızca yönetilen etki alanında etkili olur, Azure AD'nin kendisinde değil.
+    * Parola karmaşıklığı, yaşı veya sona erme zamanı gibi ayarlar yalnızca Azure AD DS yönetilen bir etki alanında el ile oluşturulan kullanıcılara.
+    * Hesap kilitleme ayarları tüm kullanıcılar için geçerlidir, ancak Azure AD 'de değil yalnızca yönetilen etki alanı içinde etkili olur.
 
-    ![Özel bir ince taneli parola ilkesi oluşturma](./media/password-policy/custom-fgpp.png)
+    ![Özel bir hassas parola ilkesi oluşturma](./media/password-policy/custom-fgpp.png)
 
-1. Uncheck **Yanlışlıkla silmeye karşı koruyun.** Bu seçenek seçilirse, FGPP kaydedemez.
-1. Doğrudan **Uygulan** bölümünde **Ekle** düğmesini seçin. Kullanıcıları **seç veya Gruplar** iletişim kutusunda **Konumlar** düğmesini seçin.
+1. **Yanlışlıkla silinmeye karşı koru**seçeneğinin işaretini kaldırın. Bu seçenek işaretliyse, FGPP 'yi kaydedemezsiniz.
+1. **Doğrudan Için geçerli** bölümünde, **Ekle** düğmesini seçin. **Kullanıcıları veya grupları seç** Iletişim kutusunda **konumlar** düğmesini seçin.
 
-    ![Parola ilkesini uygulamak için kullanıcıları ve grupları seçin](./media/password-policy/fgpp-applies-to.png)
+    ![Parola ilkesinin uygulanacağı kullanıcıları ve grupları seçin](./media/password-policy/fgpp-applies-to.png)
 
-1. Parola ilkeleri yalnızca gruplara uygulanabilir. **Konumlar** iletişim kutusunda, *aaddscontoso.com*gibi etki alanı adını genişletin ve ardından **AADDC Kullanıcıları**gibi bir OU seçin. Uygulamak istediğiniz bir kullanıcı grubu içeren özel bir OU'nuz varsa, bu OU'yi seçin.
+1. Parola ilkeleri yalnızca gruplara uygulanabilir. **Konumlar** iletişim kutusunda, *aaddscontoso.com*gibi etki alanı adını genişletin ve ardından **aaddc kullanıcıları**gibi bir OU seçin. Uygulamak istediğiniz kullanıcı grubunu içeren özel bir OU varsa, bu OU 'yu seçin.
 
-    ![Grubun ait olduğu OU'yu seçin](./media/password-policy/fgpp-container.png)
+    ![Grubun ait olduğu OU 'yu seçin](./media/password-policy/fgpp-container.png)
 
-1. İlkeyi uygulamak istediğiniz grubun adını yazın ve grubun var olduğunu doğrulamak için **Adları Denetle'yi** seçin.
+1. İlkeyi uygulamak istediğiniz grubun adını yazın ve ardından grubun var olduğunu doğrulamak için **adları denetle** ' yi seçin.
 
-    ![FGPP uygulamak için grubu arayın ve seçin](./media/password-policy/fgpp-apply-group.png)
+    ![FGPP uygulanacak grubu arayıp seçin](./media/password-policy/fgpp-apply-group.png)
 
-1. **Şimdi Doğrudan Aapply Bölümünde** görüntülenen seçtiğiniz grubun adı ile, özel parola ilkenizi kaydetmek için **Tamam'ı** seçin.
+1. Şimdi, bölümünde seçtiğiniz grubun adı bölüm **Için geçerli** olarak görüntüleniyorsa, özel parola ilkenizi kaydetmek için **Tamam** ' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Parola ilkeleri ve Active Directory Administration Center'ı kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Parola ilkeleri hakkında daha fazla bilgi ve Active Directory Yönetim Merkezi 'ni kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [İnce taneli parola ilkeleri hakkında bilgi edinin](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
-* [AD Yönetim Merkezi'ni kullanarak ince taneli parola ilkelerini yapılandırma](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
+* [Hassas parola ilkeleri hakkında bilgi edinin](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
+* [AD Yönetim merkezini kullanarak hassas parola ilkelerini yapılandırma](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

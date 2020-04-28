@@ -1,6 +1,6 @@
 ---
-title: Web API'lerini üretime çağıran bir daemon uygulamasını taşıma - Microsoft kimlik platformu | Azure
-description: Web API'lerini üretime çağıran bir daemon uygulamasını nasıl taşıyın
+title: Web API 'Lerini üretime çağıran bir Daemon uygulamasını üretime taşıma-Microsoft Identity platform | Mavisi
+description: Web API 'Lerini üretime çağıran bir Daemon uygulamasını nasıl taşıyacağınızı öğrenin
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,56 +12,56 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e5d25169aa3daee33a9f02e605cbff91776dc7f1
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885438"
 ---
-# <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Web API'leri çağıran Daemon uygulaması - üretime geçin
+# <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Web API 'Lerini çağıran Daemon uygulaması-üretime taşı
 
-Artık bir hizmet çağrısı için bir jetonu nasıl elde edip kullanacağınızı bildiğinize göre, uygulamanızı üretime nasıl taşıyabileceğinizi öğrenin.
+Artık bir hizmetten hizmete çağrı için bir belirteç edinmeyi ve kullanmayı öğrenmiş olduğunuza göre, uygulamanızı üretime taşımayı öğrenin.
 
-## <a name="deployment---multitenant-daemon-apps"></a>Dağıtım - çok kiracılı daemon uygulamaları
+## <a name="deployment---multitenant-daemon-apps"></a>Dağıtım-çok kiracılı Daemon uygulamaları
 
-Birkaç kiracı da çalıştırabilen bir daemon uygulaması oluşturan bir ISV iseniz, kiracı yönetici emin olmanız gerekir:
+Birkaç kiracıda çalışabilen bir arka plan programı uygulaması oluşturuyorsanız, kiracı yöneticisinin şu şekilde olduğundan emin olmanız gerekir:
 
-- Hükümler uygulama için bir hizmet müdürü.
-- Başvuruya onay verir.
+- Uygulama için bir hizmet sorumlusu sağlar.
+- Uygulamaya onay verir.
 
-Müşterilerinize bu işlemleri nasıl gerçekleştireceğiniz konusunda açıklama yapmanız gerekir. Daha fazla bilgi için [bkz.](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)
+Müşterilerinize bu işlemleri gerçekleştirme hakkında açıklayabilmeniz gerekir. Daha fazla bilgi için, bkz. [Tüm kiracı için Izin isteme](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi edinmenize yardımcı olacak birkaç bağlantı aşağıda veda edebilirsiniz:
+Daha fazla bilgi edinmenize yardımcı olacak birkaç bağlantı aşağıda verilmiştir:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-- Hızlı başlangıç: [Bir belirteç edinin ve uygulamanın kimliğini kullanarak bir konsol uygulamasından Microsoft Graph API'yi arayın.](./quickstart-v2-netcore-daemon.md)
-- Başvuru belgeleri:
-  - Anında [GizliMüşteri Uygulaması](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder).
-  - [Arama AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder).
-- Diğer örnekler/öğreticiler:
-  - [microsoft-identity-platform-console-daemon,](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) Microsoft Graph sorgulayan bir kiracının kullanıcılarını görüntüleyen basit bir .NET Core daemon konsol uygulamasına sahiptir.
+- Hızlı başlangıç: [bir belirteç alın ve uygulama kimliğini kullanarak bir konsol uygulamasından Microsoft Graph API 'si çağırın](./quickstart-v2-netcore-daemon.md).
+- İçin başvuru belgeleri:
+  - [ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)örneği oluşturuluyor.
+  - [Acquiretokenforclient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)çağrılıyor.
+- Diğer örnekler/Öğreticiler:
+  - [Microsoft-Identity-platform-Console-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) , bir kiracı Microsoft Graph sorgulayan kullanıcıları görüntüleyen basit bir .NET Core Daemon konsol uygulamasıdır.
 
-    ![Örnek daemon uygulaması topolojisi](media/scenario-daemon-app/daemon-app-sample.svg)
+    ![Örnek Daemon uygulama topolojisi](media/scenario-daemon-app/daemon-app-sample.svg)
 
-    Aynı örnek, sertifikalarla ilgili bir varyasyonu da göstermektedir:
+    Aynı örnek, sertifikalarla bir çeşitlemesi de gösterir:
 
-    ![Örnek daemon uygulaması topolojisi - sertifikalar](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
+    ![Örnek Daemon uygulama topolojisi-sertifikalar](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
 
-  - [microsoft-identity-platform-aspnet-webapp-daemon,](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) kullanıcı adına değil, uygulamanın kimliğini kullanarak Microsoft Graph'tan gelen verileri senkronize eden bir ASP.NET MVC web uygulamasına sahiptir. Bu örnek aynı zamanda yönetici onay sürecini de göstermektedir.
+  - [Microsoft-Identity-platform-ASPNET-WebApp-Daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) , bir kullanıcı adına değil uygulamanın kimliğini kullanarak Microsoft Graph verileri eşitlenen BIR ASP.NET MVC web uygulamasıdır. Bu örnek, yönetici onay işlemini de gösterir.
 
     ![topology](media/scenario-daemon-app/damon-app-sample-web.svg)
 
 # <a name="python"></a>[Python](#tab/python)
 
-Hızlı başlat'ı deneyin [Bir belirteç edinin ve uygulamanın kimliğini kullanarak Python konsol uygulamasından Microsoft Graph API'yi arayın.](./quickstart-v2-python-daemon.md)
+Hızlı Başlangıç ['ı bir belirteç alma ve uygulama kimliğini kullanarak bir Python konsol uygulamasından MICROSOFT Graph API çağrısı](./quickstart-v2-python-daemon.md)yapın.
 
 # <a name="java"></a>[Java](#tab/java)
 
-MSAL Java şu anda genel önizlemededir. Daha fazla bilgi için [MSAL Java geliştirme örneklerine](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples)bakın.
+MSAL Java Şu anda genel önizlemededir. Daha fazla bilgi için bkz. [msal Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples).
 
 ---

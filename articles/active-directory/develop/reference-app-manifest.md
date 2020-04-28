@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory uygulama bildirimini anlama
-description: Bir Azure AD kiracısında bir uygulamanın kimlik yapılandırmasını temsil eden ve OAuth yetkilendirmesini, onay deneyimini ve daha fazlasını kolaylaştırmak için kullanılan Azure Active Directory uygulama bildiriminin ayrıntılı kapsamı.
+description: Uygulamanın Azure AD kiracısındaki kimlik yapılandırmasını temsil eden ve OAuth yetkilendirme, onay deneyimini ve daha fazlasını kolaylaştırmak için kullanılan Azure Active Directory Uygulama bildiriminin ayrıntılı kapsamı.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,41 +13,41 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81450896"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory uygulama bildirimi
 
-Uygulama bildirimi, Microsoft kimlik platformundaki bir uygulama nesnesinin tüm özniteliklerinin tanımını içerir. Ayrıca, uygulama nesnesini güncelleştirmek için bir mekanizma olarak da hizmet vermektedir. Uygulama varlığı ve şeması hakkında daha fazla bilgi için [Grafik API Uygulama varlık belgelerine](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)bakın.
+Uygulama bildirimi Microsoft Identity platformunda bir uygulama nesnesinin tüm özniteliklerinin tanımını içerir. Ayrıca uygulama nesnesini güncelleştirmek için bir mekanizma işlevi görür. Uygulama varlığı ve şeması hakkında daha fazla bilgi için [Graph API uygulama varlığı belgelerine](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)bakın.
 
-Bir uygulamanın özniteliklerini Azure portalı üzerinden veya [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) veya [PowerShell'i](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications)kullanarak programlı olarak yapılandırabilirsiniz. Ancak, bir uygulamanın özniteliğini yapılandırmak için uygulama bildirimini yeniden yapılandırmanız gereken bazı senaryolar vardır. Bu senaryolar şunlardır:
+Bir uygulamanın özniteliklerini Azure portal veya [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) veya [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications)kullanarak program aracılığıyla yapılandırabilirsiniz. Ancak, bir uygulamanın özniteliğini yapılandırmak için uygulama bildirimini düzenlemeniz gereken bazı senaryolar vardır. Bu senaryolar şunlardır:
 
-* Uygulamayı Azure AD çok kiracılı ve kişisel Microsoft hesapları olarak kaydettiyseniz, Kullanıcı Arabirimi'nde desteklenen Microsoft hesaplarını değiştiremezsiniz. Bunun yerine, desteklenen hesap türünü değiştirmek için uygulama bildirimi düzenleyicisini kullanmanız gerekir.
+* Uygulamayı Azure AD çok kiracılı ve kişisel Microsoft hesapları olarak kaydettiniz, Kullanıcı arabirimindeki desteklenen Microsoft hesaplarını değiştiremezsiniz. Bunun yerine, desteklenen hesap türünü değiştirmek için uygulama bildirimi düzenleyicisini kullanmanız gerekir.
 * Uygulamanızın desteklediği izinleri ve rolleri tanımlamanız gerekiyorsa, uygulama bildirimini değiştirmeniz gerekir.
 
 ## <a name="configure-the-app-manifest"></a>Uygulama bildirimini yapılandırma
 
 Uygulama bildirimini yapılandırmak için:
 
-1. [Azure portalına](https://portal.azure.com)gidin. **Azure Active Directory** hizmetini arayın ve seçin.
+1. [Azure Portal](https://portal.azure.com)gidin. **Azure Active Directory** hizmetini arayıp seçin.
 1. **Uygulama kayıtları**'nı seçin.
 1. Yapılandırmak istediğiniz uygulamayı seçin.
-1. Uygulamanın **Genel Bakış** sayfasında, **Bildirim** bölümünü seçin. Web tabanlı bir manifesto düzenleyicisi açılır ve portal içindeki bildirimi yeniden atasınız. İsteğe bağlı olarak, bildirimi yerel olarak yeniden yüklemek için **İndir'i** seçebilir ve ardından uygulamanıza yeniden uygulamak için **Yükle'yi** kullanabilirsiniz.
+1. Uygulamanın **Genel Bakış** sayfasında, **Bildirim** bölümünü seçin. Web tabanlı bir bildirim Düzenleyicisi açılır ve bu, portalı içindeki bildirimi düzenlemenize olanak tanır. İsteğe bağlı olarak, bildirimi yerel olarak düzenlemek için **İndir** ' i seçip uygulamanıza yeniden uygulamak Için **karşıya yükle** ' yi kullanabilirsiniz.
 
 ## <a name="manifest-reference"></a>Bildirim başvurusu
 
-Bu bölümde, uygulama bildiriminde bulunan öznitelikler açıklanmaktadır.
+Bu bölümde uygulama bildiriminde bulunan öznitelikler açıklanmaktadır.
 
-### <a name="id-attribute"></a>id özniteliği
+### <a name="id-attribute"></a>ID özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
 | id | Dize |
 
-Dizindeki uygulama için benzersiz tanımlayıcı. Bu kimlik, herhangi bir protokol hareketinde uygulamayı tanımlamak için kullanılan tanımlayıcı değildir. Dizin sorgularında nesneye başvurmak için kullanılır.
+Dizindeki uygulamanın benzersiz tanımlayıcısı. Bu KIMLIK, herhangi bir protokol işleminde uygulamayı tanımlamak için kullanılan tanımlayıcı değildir. Dizin sorgularında nesnesine başvurmak için kullanılır.
 
 Örnek:
 
@@ -59,15 +59,15 @@ Dizindeki uygulama için benzersiz tanımlayıcı. Bu kimlik, herhangi bir proto
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| accessTokenAcceptedVersion | Nullable Int32 |
+| accessTokenAcceptedVersion | Null yapılabilir Int32 |
 
-Kaynak tarafından beklenen erişim belirteç sürümünü belirtir. Bu parametre, erişim belirteci istemek için kullanılan bitiş noktası veya istemciden bağımsız olarak üretilen JWT'nin sürümünü ve biçimini değiştirir.
+Kaynak tarafından beklenen erişim belirteci sürümünü belirtir. Bu parametre, erişim belirtecini istemek için kullanılan uç noktadan veya istemciden bağımsız olarak üretilen JWT sürümünü ve biçimini değiştirir.
 
-Kullanılan bitiş noktası, v1.0 veya v2.0, istemci tarafından seçilir ve yalnızca id_tokens sürümünü etkiler. Kaynakların, desteklenen erişim `accesstokenAcceptedVersion` belirteci biçimini belirtmek için açıkça yapılandırması gerekir.
+Kullanılan uç nokta, v 1.0 veya v 2.0, istemci tarafından seçilir ve yalnızca id_tokens sürümünü etkiler. Kaynakların, desteklenen erişim belirteci `accesstokenAcceptedVersion` biçimini belirtecek şekilde açıkça yapılandırılması gerekir.
 
-Olası `accesstokenAcceptedVersion` değerler 1, 2 veya null'dür. Değer null ise, bu parametre varsayılan 1, v1.0 bitiş noktasına karşılık gelir.
+İçin `accesstokenAcceptedVersion` olası değerler 1, 2 veya null. Değer null ise, bu parametre, v 1.0 uç noktasına karşılık gelen varsayılan olarak 1 ' dir.
 
-Ise, `signInAudience` değer olmalıdır. `2` `AzureADandPersonalMicrosoftAccount`
+`signInAudience` İse `AzureADandPersonalMicrosoftAccount`, değer olmalıdır `2`.
 
 Örnek:
 
@@ -75,13 +75,13 @@ Ise, `signInAudience` değer olmalıdır. `2` `AzureADandPersonalMicrosoftAccoun
     "accessTokenAcceptedVersion": 2,
 ```
 
-### <a name="addins-attribute"></a>addIns özniteliği
+### <a name="addins-attribute"></a>AddIns özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| Addins | Koleksiyon |
+| Eklentileri | Koleksiyon |
 
-Tüketen bir hizmetin bir uygulamayı belirli bağlamlarda çağırmak için kullanabileceği özel davranışı tanımlar. Örneğin, dosya akışlarını işleyebilecek uygulamalar `addIns` özelliği "FileHandler" işlevi için ayarlayabilir. Bu parametre, Office 365 gibi hizmetlerin, kullanıcının üzerinde çalıştığı belge bağlamında uygulamayı aramasına izin verecektir.
+Bir tüketen hizmetin belirli bağlamlarda uygulama çağırmak için kullanabileceği özel davranışı tanımlar. Örneğin, dosya akışlarını işleyebilen uygulamalar `addIns` özelliği "filehandler" işlevselliği için ayarlayabilir. Bu parametre, Office 365 gibi hizmetlerin uygulamayı kullanıcının üzerinde çalıştığı bir belge bağlamında çağırmasını sağlar.
 
 Örnek:
 
@@ -100,13 +100,13 @@ Tüketen bir hizmetin bir uygulamayı belirli bağlamlarda çağırmak için kul
     ],
 ```
 
-### <a name="allowpublicclient-attribute"></a>publicclient özniteliğine izin
+### <a name="allowpublicclient-attribute"></a>allowPublicClient özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
 | allowPublicClient | Boole |
 
-Geri dönüş uygulama türünü belirtir. Azure AD varsayılan olarak yanıturlsWithType'tan uygulama türünü çıkartıyor. Azure AD'nin istemci uygulama türünü belirleyemeyebileceği belirli senaryolar vardır. Örneğin, bu tür senaryolardan biri, HTTP isteğinin URL yeniden yönlendirmesi olmadan gerçekleştiği [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) akışıdır). Bu gibi durumlarda, Azure AD uygulama türünü bu özelliğin değerine göre yorumlanır. Bu değer doğru ayarlanırsa, geri dönüş uygulama türü, mobil aygıtta çalışan yüklü bir uygulama gibi ortak istemci olarak ayarlanır. Varsayılan değer yanlıştır, bu da geri dönüş uygulama türünün web uygulaması gibi gizli istemci olduğu anlamına gelir.
+Geri dönüş uygulama türünü belirtir. Azure AD, varsayılan olarak, bir uygulama türünü replyUrlsWithType öğesinden algılar. Azure AD 'nin istemci uygulama türünü belirleyeleyemiyorsa bazı senaryolar vardır. Örneğin, bu tür bir senaryo HTTP isteğinin URL yeniden yönlendirmesi olmadan gerçekleştiği [Ropc](https://tools.ietf.org/html/rfc6749#section-4.3) akışsudur. Bu durumlarda, Azure AD, uygulama türünü bu özelliğin değerine göre yorumlayacak. Bu değer true olarak ayarlanırsa, geri dönüş uygulama türü, bir mobil cihazda çalışan yüklü uygulama gibi ortak istemci olarak ayarlanır. Varsayılan değer false 'dur. Bu, geri dönüş uygulama türünün Web uygulaması gibi gizli bir istemci olduğu anlamına gelir.
 
 Örnek:
 
@@ -114,24 +114,24 @@ Geri dönüş uygulama türünü belirtir. Azure AD varsayılan olarak yanıturl
     "allowPublicClient": false,
 ```
 
-### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants özniteliği
+### <a name="availabletoothertenants-attribute"></a>Availabletootherkiracılar özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| kullanılabilirToOtherTenants | Boole |
+| Availabletootherkiracılar | Boole |
 
-Uygulama diğer kiracılarla paylaşılırsa doğru olarak ayarlayın; aksi takdirde, yanlış.
+Uygulama diğer kiracılar ile paylaşılmışsa, true olarak ayarlayın; Aksi takdirde, false.
 
 > [!NOTE]
-> Bu özellik yalnızca Uygulama **kayıtları (Eski)** deneyiminde kullanılabilir. [Uygulama](https://go.microsoft.com/fwlink/?linkid=2083908) kayıtları `signInAudience` deneyiminde değiştirilir.
+> Bu öznitelik yalnızca **uygulama kayıtları (eski)** deneyimde kullanılabilir. `signInAudience` [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimiyle değiştirilmiştir.
 
-### <a name="appid-attribute"></a>appId özniteliği
+### <a name="appid-attribute"></a>AppID özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
 | appId | Dize |
 
-Azure AD tarafından bir uygulamaya atanan uygulamaiçin benzersiz tanımlayıcıyı belirtir.
+Azure AD tarafından bir uygulamaya atanan uygulama için benzersiz tanımlayıcıyı belirtir.
 
 Örnek:
 
@@ -145,7 +145,7 @@ Azure AD tarafından bir uygulamaya atanan uygulamaiçin benzersiz tanımlayıc�
 | :--- | :--- |
 | appRoles | Koleksiyon |
 
-Bir uygulamanın beyan edebileceği rollerin toplanmasını belirtir. Bu roller kullanıcılara, gruplara veya hizmet ilkelerine atanabilir. Daha fazla örnek ve bilgi için, [uygulamanızda uygulama rollerini ekle ve bunları belirteç olarak alın.](howto-add-app-roles-in-azure-ad-apps.md)
+Bir uygulamanın bildirebilen rollerin koleksiyonunu belirtir. Bu roller kullanıcılara, gruplara veya hizmet sorumlularına atanabilir. Daha fazla örnek ve bilgi için bkz. [uygulamanıza uygulama rolleri ekleme ve bunları belirtece alma](howto-add-app-roles-in-azure-ad-apps.md).
 
 Örnek:
 
@@ -170,30 +170,30 @@ Bir uygulamanın beyan edebileceği rollerin toplanmasını belirtir. Bu roller 
 | :--- | :--- |
 | displayName | Dize |
 
-Uygulamanın görüntü adı.
+Uygulamanın görünen adı.
 
 > [!NOTE]
-> Bu özellik yalnızca Uygulama **kayıtları (Eski)** deneyiminde kullanılabilir. [Uygulama](https://go.microsoft.com/fwlink/?linkid=2083908) kayıtları `name` deneyiminde değiştirilir.
+> Bu öznitelik yalnızca **uygulama kayıtları (eski)** deneyimde kullanılabilir. `name` [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimiyle değiştirilmiştir.
 
-### <a name="errorurl-attribute"></a>errorUrl öznitelik
+### <a name="errorurl-attribute"></a>errorUrl özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| errorUrl | Dize |
+| errorUrl 'Si | Dize |
 
 Desteklenmez.
 
-### <a name="groupmembershipclaims-attribute"></a>groupÜyelikClaims öznitelik
+### <a name="groupmembershipclaims-attribute"></a>Groupmembershipclaim özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-|grupÜyelikTalepleri | Dize |
+|Groupmembershipclaim | Dize |
 
-Bir kullanıcı `groups` veya Uygulamanın beklediği OAuth 2.0 erişim belirtecinde verilen talebi yapılandırır. Bu özniteliği ayarlamak için aşağıdaki geçerli dize değerlerinden birini kullanın:
+Uygulamanın beklediği `groups` bir kullanıcı veya OAuth 2,0 erişim belirtecinde verilen talebi yapılandırır. Bu özniteliği ayarlamak için aşağıdaki geçerli dize değerlerinden birini kullanın:
 
 - `"None"`
 - `"SecurityGroup"`(güvenlik grupları ve Azure AD rolleri için)
-- `"All"`(bu, oturum açmış kullanıcının üyesi olduğu tüm güvenlik gruplarını, dağıtım gruplarını ve Azure AD dizin rollerini alır.
+- `"All"`(Bu, oturum açan kullanıcının üyesi olduğu tüm güvenlik gruplarını, dağıtım gruplarını ve Azure AD dizin rollerini alır.
 
 Örnek:
 
@@ -201,26 +201,26 @@ Bir kullanıcı `groups` veya Uygulamanın beklediği OAuth 2.0 erişim belirtec
     "groupMembershipClaims": "SecurityGroup",
 ```
 
-### <a name="homepage-attribute"></a>ana sayfa özniteliği
+### <a name="homepage-attribute"></a>giriş sayfası özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| Ana sayfa |Dize |
+| değiştirir |Dize |
 
-Uygulamanın ana sayfasının URL'si.
+Uygulamanın giriş sayfasının URL 'SI.
 
 > [!NOTE]
-> Bu özellik yalnızca Uygulama **kayıtları (Eski)** deneyiminde kullanılabilir. [Uygulama](https://go.microsoft.com/fwlink/?linkid=2083908) kayıtları `signInUrl` deneyiminde değiştirilir.
+> Bu öznitelik yalnızca **uygulama kayıtları (eski)** deneyimde kullanılabilir. `signInUrl` [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimiyle değiştirilmiştir.
 
-### <a name="objectid-attribute"></a>objectId özniteliği
+### <a name="objectid-attribute"></a>ObjectID özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-|Objectıd | Dize |
+|Uzantının | Dize |
 
-Dizindeki uygulama için benzersiz tanımlayıcı.
+Dizindeki uygulamanın benzersiz tanımlayıcısı.
 
-Bu yalnızca Uygulama **kayıtları (Eski)** deneyiminde kullanılabilir. [Uygulama](https://go.microsoft.com/fwlink/?linkid=2083908) kayıtları `id` deneyiminde değiştirilir.
+Bu yalnızca **uygulama kayıtları (eski)** deneyimde mevcuttur. `id` [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimiyle değiştirilmiştir.
 
 Örnek:
 
@@ -228,15 +228,15 @@ Bu yalnızca Uygulama **kayıtları (Eski)** deneyiminde kullanılabilir. [Uygul
     "objectId": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
 ```
 
-### <a name="optionalclaims-attribute"></a>isteğe bağlıİddialar öznitelik
+### <a name="optionalclaims-attribute"></a>Optionalclaim özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| isteğe bağlı Talepler | Dize |
+| Optionalclaim | Dize |
 
-İsteğe bağlı talepler, bu özel uygulama için güvenlik belirteci hizmeti tarafından belirteç olarak döndürülür.
+Bu belirli uygulama için güvenlik belirteci hizmeti tarafından belirteçte döndürülen isteğe bağlı talepler.
 
-Şu anda, hem kişisel hesapları hem de Azure AD'yi (uygulama kayıt portalı üzerinden kaydedilmiş) destekleyen uygulamalar isteğe bağlı talepleri kullanamaz. Ancak, v2.0 bitiş noktasını kullanarak yalnızca Azure AD için kayıtlı uygulamalar, bildirimde talep ettikleri isteğe bağlı talepleri alabilir. Daha fazla bilgi için [isteğe bağlı taleplere](active-directory-optional-claims.md)bakın.
+Şu anda, hem kişisel hesapları hem de Azure AD 'yi (uygulama kayıt portalı üzerinden kaydedilir) destekleyen uygulamalar isteğe bağlı talepler kullanamaz. Ancak, yalnızca Azure AD için kaydedilmiş uygulamalar, v 2.0 uç noktasını kullanarak, bildirimde istedikleri isteğe bağlı talepleri alabilir. Daha fazla bilgi için bkz. [Isteğe bağlı talepler](active-directory-optional-claims.md).
 
 Örnek:
 
@@ -246,13 +246,13 @@ Bu yalnızca Uygulama **kayıtları (Eski)** deneyiminde kullanılabilir. [Uygul
 
 
 
-### <a name="identifieruris-attribute"></a>identifierUris özniteliği
+### <a name="identifieruris-attribute"></a>ıdentifieruris özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| identifierUris | Dize Dizisi |
+| ıdentifieruris | Dize dizisi |
 
-Azure AD kiracısı içinde veya uygulama çok kiracılıysa, doğrulanmış özel etki alanı içinde bir Web uygulamasını benzersiz olarak tanımlayan kullanıcı tanımlı URI(ler).
+Bir Web uygulamasını Azure AD kiracısı içinde benzersiz bir şekilde tanımlayan Kullanıcı tanımlı URI 'ler veya uygulama çok kiracılı ise doğrulanmış bir özel etki alanı içinde.
 
 Örnek:
 
@@ -260,13 +260,13 @@ Azure AD kiracısı içinde veya uygulama çok kiracılıysa, doğrulanmış öz
     "identifierUris": "https://MyRegisteredApp",
 ```
 
-### <a name="informationalurls-attribute"></a>informationalUrls öznitelik
+### <a name="informationalurls-attribute"></a>ınformationalurls özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| bilgialUrls | Dize |
+| ınformationalurls | Dize |
 
-Uygulamanın hizmet koşulları ve gizlilik bildirimine bağlantılar belirtir. Hizmet koşulları ve gizlilik bildirimi, kullanıcı onayı deneyimi aracılığıyla kullanıcılara açıklanır. Daha fazla bilgi [için bkz: Kayıtlı Azure REKLAM uygulamaları için Hizmet Şartları ve gizlilik bildirimi ekleyin.](howto-add-terms-of-service-privacy-statement.md)
+Uygulamanın hizmet koşulları ve gizlilik bildirimi bağlantılarını belirtir. Hizmet koşulları ve gizlilik bildirimi, kullanıcılar tarafından Kullanıcı onay deneyimi aracılığıyla ortaya çıkmış. Daha fazla bilgi için bkz. [nasıl yapılır: kayıtlı Azure AD uygulamaları için hizmet koşulları ve gizlilik bildirimi ekleme](howto-add-terms-of-service-privacy-statement.md).
 
 Örnek:
 
@@ -279,13 +279,13 @@ Uygulamanın hizmet koşulları ve gizlilik bildirimine bağlantılar belirtir. 
     },
 ```
 
-### <a name="keycredentials-attribute"></a>keyCredentials öznitelik
+### <a name="keycredentials-attribute"></a>keyCredentials özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
 | keyCredentials | Koleksiyon |
 
-Uygulama tarafından atanan kimlik bilgilerine, dize tabanlı paylaşılan sırlara ve X.509 sertifikalarına başvurular tutar. Bu kimlik bilgileri, erişim belirteçleri talep ederken (uygulama bir kaynak olarak değil, bir istemci olarak hareket ederken) kullanılır.
+Uygulama tarafından atanan kimlik bilgileri, dize tabanlı paylaşılan gizlilikler ve X. 509.440 sertifikalarına yönelik başvuruları tutar. Bu kimlik bilgileri, erişim belirteçleri istenirken kullanılır (uygulama bir kaynak olarak bir istemci olarak hareket etmekzaman).
 
 Örnek:
 
@@ -303,13 +303,13 @@ Uygulama tarafından atanan kimlik bilgilerine, dize tabanlı paylaşılan sırl
     ],
 ```
 
-### <a name="knownclientapplications-attribute"></a>bilinenMüşteri Uygulamaları özniteliği
+### <a name="knownclientapplications-attribute"></a>knownClientApplications özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| bilinenMüşteri Uygulamaları | Dize Dizisi |
+| knownClientApplications | Dize dizisi |
 
-İki bölümden biri olan bir çözüm varsa, istemci uygulaması ve özel bir web API uygulaması için kullanılır. Bu değere istemci uygulamasının appID'ini girerseniz, kullanıcının yalnızca bir kez istemci uygulamasına onay vermek zorunda kalacaktır. Azure AD, istemciye rıza göstermenin web API'sini dolaylı olarak kabul etmek anlamına geldiğini bilir. Hem istemci hem de web API'sı için servis ilkelerini aynı anda otomatik olarak sağlayacaktır. Hem istemci hem de web API uygulaması aynı kiracıya kayıtlı olmalıdır.
+İki bölümden oluşan bir çözümünüz varsa, bir istemci uygulaması ve özel bir Web API uygulaması varsa, bu izni paketleme için kullanılır. İstemci uygulamasının AppID 'sini bu değere girerseniz, kullanıcının istemci uygulamasına yalnızca bir kez onay girmesi gerekir. Azure AD, istemci ile ilgili bir bildirimin Web API 'sine örtülü olarak nasıl katılmadığını bilecektir. Hem istemci hem de Web API 'SI için aynı anda hizmet sorumlularını otomatik olarak sağlayacaktır. Hem istemci hem de Web API uygulaması aynı kiracıda kayıtlı olmalıdır.
 
 Örnek:
 
@@ -317,13 +317,13 @@ Uygulama tarafından atanan kimlik bilgilerine, dize tabanlı paylaşılan sırl
     "knownClientApplications": ["f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"],
 ```
 
-### <a name="logourl-attribute"></a>logoUrl öznitelik
+### <a name="logourl-attribute"></a>Logo URL özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| logoUrl | Dize |
+| Logo URL 'si | Dize |
 
-Portala yüklenen logoya CDN URL'sini gösteren yalnızca değeri okuyun.
+Portalda karşıya yüklenen logoya yönelik CDN URL 'sine işaret eden salt okuma değeri.
 
 Örnek:
 
@@ -335,9 +335,9 @@ Portala yüklenen logoya CDN URL'sini gösteren yalnızca değeri okuyun.
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| logoutUrl | Dize |
+| logoutUrl 'Si | Dize |
 
-Uygulamadan çıkış yapmak için URL.
+Uygulamanın oturumunu kapatmak için kullanılacak URL.
 
 Örnek:
 
@@ -351,7 +351,7 @@ Uygulamadan çıkış yapmak için URL.
 | :--- | :--- |
 | ad | Dize |
 
-Uygulamanın görüntü adı.
+Uygulamanın görünen adı.
 
 Örnek:
 
@@ -365,7 +365,7 @@ Uygulamanın görüntü adı.
 | :--- | :--- |
 | oauth2AllowImplicitFlow | Boole |
 
-Bu web uygulamasının OAuth2.0 örtülü akış erişim belirteçleri isteyip istemeyeceğini belirtir. Varsayılan değer false. Bu bayrak, JavaScript tek sayfalı uygulamalar gibi tarayıcı tabanlı uygulamalar için kullanılır. Daha fazla bilgi `OAuth 2.0 implicit grant flow` edinmek için içindekiler tablosuna girin ve örtük akışla ilgili konulara bakın.
+Bu Web uygulamasının OAuth 2.0 örtük akış erişim belirteçleri isteyip isteyemeyeceğini belirtir. Varsayılan değer false. Bu bayrak, JavaScript tek sayfalı uygulamalar gibi tarayıcı tabanlı uygulamalar için kullanılır. Daha fazla bilgi edinmek için `OAuth 2.0 implicit grant flow` içindekiler tablosuna girip örtük akış hakkındaki konulara bakın.
 
 Örnek:
 
@@ -373,13 +373,13 @@ Bu web uygulamasının OAuth2.0 örtülü akış erişim belirteçleri isteyip i
     "oauth2AllowImplicitFlow": false,
 ```
 
-### <a name="oauth2allowidtokenimplicitflow-attribute"></a>oauth2AllowIdTokenImplicitFlow öznitelik
+### <a name="oauth2allowidtokenimplicitflow-attribute"></a>oauth2AllowIdTokenImplicitFlow özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
 | oauth2AllowIdTokenImplicitFlow | Boole |
 
-Bu web uygulamasının OAuth2.0 örtülü akış kimliği belirteçleri isteyip istemeyeceğini belirtir. Varsayılan değer false. Bu bayrak, JavaScript tek sayfalı uygulamalar gibi tarayıcı tabanlı uygulamalar için kullanılır.
+Bu Web uygulamasının OAuth 2.0 örtük akış KIMLIĞI belirteçleri isteyip isteyemeyeceğini belirtir. Varsayılan değer false. Bu bayrak, JavaScript tek sayfalı uygulamalar gibi tarayıcı tabanlı uygulamalar için kullanılır.
 
 Örnek:
 
@@ -387,13 +387,13 @@ Bu web uygulamasının OAuth2.0 örtülü akış kimliği belirteçleri isteyip 
     "oauth2AllowIdTokenImplicitFlow": false,
 ```
 
-### <a name="oauth2permissions-attribute"></a>oauth2Permissions öznitelik
+### <a name="oauth2permissions-attribute"></a>oauth2Permissions özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| oauth2İzinler | Koleksiyon |
+| oauth2Permissions | Koleksiyon |
 
-Web API (kaynak) uygulamasının istemci uygulamalarına maruz kdığı OAuth 2.0 izin kapsamlarının toplanmasını belirtir. Bu izin kapsamları, onay sırasında istemci uygulamalarına verilebilir.
+Web API (kaynak) uygulamasının istemci uygulamalarına sunduğu OAuth 2,0 izin kapsamlarının koleksiyonunu belirtir. Bu izin kapsamları, izin sırasında istemci uygulamalarına verilebilir.
 
 Örnek:
 
@@ -412,13 +412,13 @@ Web API (kaynak) uygulamasının istemci uygulamalarına maruz kdığı OAuth 2.
     ],
 ```
 
-### <a name="oauth2requiredpostresponse-attribute"></a>oauth2RequiredPostResponse öznitelik
+### <a name="oauth2requiredpostresponse-attribute"></a>oauth2RequiredPostResponse özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
 | oauth2RequiredPostResponse | Boole |
 
-OAuth 2.0 belirteç isteklerinin bir parçası olarak Azure AD'nin GET isteklerinin aksine POST isteklerine izin verip vermeyeceği belirtilir. Varsayılan, yalnızca GET isteklerine izin verilemeyeceğini belirten yanlıştır.
+OAuth 2,0 belirteç isteklerinin bir parçası olarak, Azure AD 'nin istekleri almak yerine POST isteklerine izin verip vermeyeceğini belirtir. Varsayılan değer, yalnızca GET isteklerinin izin verileceğini belirten false şeklindedir.
 
 Örnek:
 
@@ -432,8 +432,8 @@ OAuth 2.0 belirteç isteklerinin bir parçası olarak Azure AD'nin GET istekleri
 | :--- | :--- |
 | parentalControlSettings | Dize |
 
-- `countriesBlockedForMinors`uygulamanın reşit olmayanlar için engellendiği ülkeleri belirtir.
-- `legalAgeGroupRule`uygulamanın kullanıcıları için geçerli olan yasal yaş grubu kuralını belirtir. Ayarlanabilir `Allow`, , `RequireConsentForPrivacyServices` `RequireConsentForMinors` `RequireConsentForKids`, , `BlockMinors`veya .  
+- `countriesBlockedForMinors`uygulamanın, minors için bloke olduğu ülkeleri belirtir.
+- `legalAgeGroupRule`uygulamanın kullanıcıları için geçerli olan geçerli yaş grubu kuralını belirtir. , `RequireConsentForKids` `BlockMinors` `Allow` `RequireConsentForPrivacyServices`,, Veya olarak `RequireConsentForMinors`ayarlanabilir.  
 
 Örnek:
 
@@ -444,13 +444,13 @@ OAuth 2.0 belirteç isteklerinin bir parçası olarak Azure AD'nin GET istekleri
     },
 ```
 
-### <a name="passwordcredentials-attribute"></a>passwordCredentials öznitelik
+### <a name="passwordcredentials-attribute"></a>passwordCredentials özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
 | passwordCredentials | Koleksiyon |
 
-Tesisin açıklamasına `keyCredentials` bakın.
+`keyCredentials` Özelliğin açıklamasına bakın.
 
 Örnek:
 
@@ -466,13 +466,13 @@ Tesisin açıklamasına `keyCredentials` bakın.
     ],
 ```
 
-### <a name="preauthorizedapplications-attribute"></a>preAuthorizedApplications özniteliği
+### <a name="preauthorizedapplications-attribute"></a>Ön kimlik Uthorizedapplications özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| önYetkili Uygulamalar | Koleksiyon |
+| Ön kimlik doğrulama | Koleksiyon |
 
-Uygulamaları ve örtülü onay için istenen izinleri listeler. Yöneticinin uygulamaya onay vermiş olmasını gerektirir. ön Yetkili Uygulamalar, kullanıcının istenen izinleri onaylamasını gerektirmez. Ön Yetkili Uygulamalarda listelenen izinler kullanıcı onayı gerektirmez. Ancak, ön Yetkili Uygulamalarda listelenmemiş ek istenen izinler kullanıcı onayı gerektirir.
+Kapalı onay için uygulamaları ve istenen izinleri listeler. Uygulamaya onay sağlanması için bir yönetici gerekir. Ön kimlik onayı Kullanıcı tarafından istenen izinlere izin vermesini gerektirmez. Ön kimlik onayı ' nda listelenen izinler için Kullanıcı onayı gerekmez. Bununla birlikte, ön ek Uthorizedapplications içinde listelenmeyen ek istenen izinler için Kullanıcı onayı gerekir.
 
 Örnek:
 
@@ -493,9 +493,9 @@ Uygulamaları ve örtülü onay için istenen izinleri listeler. Yöneticinin uy
 | :--- | :--- |
 | publicClient | Boole|
 
-Bu uygulamanın ortak istemci olup olmadığını (mobil aygıtta çalışan yüklü bir uygulama gibi) belirtir. 
+Bu uygulamanın ortak bir istemci olup olmadığını belirtir (örneğin, bir mobil cihazda çalışan yüklü bir uygulama gibi). 
 
-Bu özellik yalnızca **Uygulama kayıtları (Eski)** deneyiminde kullanılabilir. [Uygulama](https://go.microsoft.com/fwlink/?linkid=2083908) kayıtları `allowPublicClient` deneyiminde değiştirilir.
+Bu özellik yalnızca **uygulama kayıtları (eski)** deneyimde kullanılabilir. `allowPublicClient` [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimiyle değiştirilmiştir.
 
 ### <a name="publisherdomain-attribute"></a>publisherDomain özniteliği
 
@@ -511,28 +511,28 @@ Uygulama için doğrulanmış yayımcı etki alanı. Salt okunur.
     "publisherDomain": "https://www.contoso.com",
 ````
 
-### <a name="replyurls-attribute"></a>replyUrls öznitelik
+### <a name="replyurls-attribute"></a>replyUrls özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| cevapUrlleri | Dize dizisi |
+| replyUrls | Dize dizisi |
 
-Bu çok değerli özellik, Azure AD'nin jeton döndürürken hedef olarak kabul edeceği kayıtlı redirect_uri değerlerin listesini tutar.
+Bu çoklu değer özelliği, Azure AD 'nin belirteçleri döndürürken hedef olarak kabul edeceği kayıtlı redirect_uri değerlerinin listesini tutar.
 
-Bu özellik yalnızca **Uygulama kayıtları (Eski)** deneyiminde kullanılabilir. [Uygulama](https://go.microsoft.com/fwlink/?linkid=2083908) kayıtları `replyUrlsWithType` deneyiminde değiştirilir.
+Bu özellik yalnızca **uygulama kayıtları (eski)** deneyimde kullanılabilir. `replyUrlsWithType` [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyimiyle değiştirilmiştir.
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| cevapUrlsWithType | Koleksiyon |
+| replyUrlsWithType | Koleksiyon |
 
-Bu çok değerli özellik, Azure AD'nin jeton döndürürken hedef olarak kabul edeceği kayıtlı redirect_uri değerlerin listesini tutar. Her URI değeri ilişkili bir uygulama türü değeri içermelidir. Desteklenen tür değerleri şunlardır:
+Bu çoklu değer özelliği, Azure AD 'nin belirteçleri döndürürken hedef olarak kabul edeceği kayıtlı redirect_uri değerlerinin listesini tutar. Her URI değeri, ilişkili bir uygulama türü değeri içermelidir. Desteklenen tür değerleri şunlardır:
 
 - `Web`
 - `InstalledClient`
 
-Daha fazla bilgi için [yanıtUrl kısıtlamaları ve sınırlamalarına](https://docs.microsoft.com/azure/active-directory/develop/reply-url)bakın.
+Daha fazla bilgi için bkz. [Replyurl kısıtlamaları ve sınırlamaları](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
 
 Örnek:
 
@@ -545,16 +545,16 @@ Daha fazla bilgi için [yanıtUrl kısıtlamaları ve sınırlamalarına](https:
     ],
 ```
 
-### <a name="requiredresourceaccess-attribute"></a>gerekliResourceAccess özniteliği
+### <a name="requiredresourceaccess-attribute"></a>requiredResourceAccess özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| gerekliResourceAccess | Koleksiyon |
+| requiredResourceAccess | Koleksiyon |
 
-Dinamik onay `requiredResourceAccess` ile, statik onay kullanan kullanıcılar için yönetici onayı deneyimini ve kullanıcı onayı deneyimini yönlendirir. Ancak, bu parametre genel servis talebi için kullanıcı onayı deneyimini yönlendirmez.
+Dinamik onay ile, `requiredResourceAccess` yönetici onay deneyimini ve statik onay kullanan kullanıcılar için Kullanıcı onay deneyimini de yürütür. Ancak, bu parametre genel durum için Kullanıcı onay deneyimini değil.
 
-- `resourceAppId`uygulamanın erişilmesi gereken kaynak için benzersiz tanımlayıcıdır. Bu değer, hedef kaynak uygulamasında bildirilen appId'e eşit olmalıdır.
-- `resourceAccess`oAuth2.0 izin kapsamlarını ve uygulama rollerini listeleyen bir dizidir. Belirtilen `id` kaynakların `type` değerlerini ve değerlerini içerir.
+- `resourceAppId`, uygulamanın erişmesi gereken kaynak için benzersiz tanıtıcıdır. Bu değer, hedef kaynak uygulamasında belirtilen uygulama kimliğine eşit olmalıdır.
+- `resourceAccess`, belirtilen kaynaktan uygulamanın gerektirdiği OAuth 2.0 izin kapsamlarını ve uygulama rollerini listeleyen bir dizidir. Belirtilen kaynakların `id` ve `type` değerlerini içerir.
 
 Örnek:
 
@@ -572,13 +572,13 @@ Dinamik onay `requiredResourceAccess` ile, statik onay kullanan kullanıcılar i
     ],
 ```
 
-### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl öznitelik
+### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| samlMetadataUrl | Dize |
+| samlMetadataUrl 'Si | Dize |
 
-Uygulama için SAML meta verilerinin URL'si.
+Uygulamanın SAML meta verilerinin URL 'SI.
 
 Örnek:
 
@@ -586,13 +586,13 @@ Uygulama için SAML meta verilerinin URL'si.
     "samlMetadataUrl": "https://MyRegisteredAppSAMLMetadata",
 ```
 
-### <a name="signinurl-attribute"></a>signInUrl özniteliği
+### <a name="signinurl-attribute"></a>Signınurl özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| signInUrl | Dize |
+| Signınurl | Dize |
 
-URL'yi uygulamanın ana sayfasına belirtir.
+Uygulamanın giriş sayfasına yönelik URL 'YI belirtir.
 
 Örnek:
 
@@ -600,17 +600,17 @@ URL'yi uygulamanın ana sayfasına belirtir.
     "signInUrl": "https://MyRegisteredApp",
 ```
 
-### <a name="signinaudience-attribute"></a>signInAudience özniteliği
+### <a name="signinaudience-attribute"></a>Signınaudience özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| signInAudience | Dize |
+| Signınkitci | Dize |
 
-Geçerli uygulama için Microsoft hesaplarının destekleniyi belirtir. Desteklenen değerler şunlardır:
-- `AzureADMyOrg`- Kuruluşumun Azure AD kiracısında Microsoft çalışması veya okul hesabı olan kullanıcılar (örneğin, tek kiracı)
-- `AzureADMultipleOrgs`- Herhangi bir kuruluşun Azure AD kiracısında Microsoft çalışması veya okul hesabı olan kullanıcılar (örneğin, çok kiracılı)
-- `AzureADandPersonalMicrosoftAccount`- Herhangi bir kuruluşun Azure AD kiracısında kişisel Microsoft hesabı veya iş veya okul hesabı olan kullanıcılar
-- `PersonalMicrosoftAccount`- Xbox ve Skype gibi hizmetlerde oturum açmada kullanılan kişisel hesaplar.
+Geçerli uygulama için hangi Microsoft hesaplarının desteklendiğini belirtir. Desteklenen değerler şunlardır:
+- `AzureADMyOrg`-Kuruluşumun Azure AD kiracısında bir Microsoft iş veya okul hesabı olan kullanıcılar (örneğin, tek kiracılı)
+- `AzureADMultipleOrgs`-Herhangi bir kuruluşun Azure AD kiracısında bir Microsoft iş veya okul hesabı olan kullanıcılar (örneğin, çok kiracılı)
+- `AzureADandPersonalMicrosoftAccount`-Kişisel Microsoft hesabı olan veya herhangi bir kuruluşun Azure AD kiracısındaki bir iş veya okul hesabı olan kullanıcılar
+- `PersonalMicrosoftAccount`-Xbox ve Skype gibi hizmetlerde oturum açmak için kullanılan kişisel hesaplar.
 
 Örnek:
 
@@ -618,13 +618,13 @@ Geçerli uygulama için Microsoft hesaplarının destekleniyi belirtir. Destekle
     "signInAudience": "AzureADandPersonalMicrosoftAccount",
 ```
 
-### <a name="tags-attribute"></a>etiketler öznitelik
+### <a name="tags-attribute"></a>Tags özniteliği
 
 | Anahtar | Değer türü |
 | :--- | :--- |
-| etiketler | Dize Dizisi  |
+| etiketler | Dize dizisi  |
 
-Uygulamayı kategorilere ayırmak ve tanımlamak için kullanılabilecek özel dizeleri.
+Uygulamayı kategorilere ayırmak ve tanımlamak için kullanılabilen özel dizeler.
 
 Örnek:
 
@@ -636,18 +636,18 @@ Uygulamayı kategorilere ayırmak ve tanımlamak için kullanılabilecek özel d
 
 ## <a name="common-issues"></a>Genel sorunlar
 
-### <a name="manifest-limits"></a>Bildirim sınırları
+### <a name="manifest-limits"></a>Bildirim limitleri
 
-Uygulama bildirimi, koleksiyon lar olarak adlandırılan birden çok öznitelide dir; örneğin, appRoles, keyCredentials, knownClientApplications, identifierUris, redirectUris, requiredResourceAccess ve oauth2Permissions. Herhangi bir uygulama için tam başvuru bildirimi içinde, tüm koleksiyonlarda toplam giriş sayısı 1200 olarak sınırlanmıştır. Daha önce uygulama bildiriminde 100 yeniden yönlendirme URI belirtirseniz, bildirimi oluşturan diğer tüm koleksiyonlarda kullanmak üzere yalnızca 1100 kalan girişle kalırsınız.
+Uygulama bildiriminde koleksiyonlar olarak adlandırılan birden çok öznitelik vardır; Örneğin, appRoles, keyCredentials, knownClientApplications, ıdentifieruris, Redirecturo, requiredResourceAccess ve oauth2Permissions. Herhangi bir uygulama için tam uygulama bildiriminde, Birleşik tüm koleksiyonlardaki toplam giriş sayısı 1200 ' de kadık. Daha önce uygulama bildiriminde 100 yeniden yönlendirme URI 'si belirtirseniz, daha sonra yalnızca, bildirimi oluşturan diğer tüm koleksiyonlar genelinde kullanılacak 1100 kalan girişlerle birlikte kaldınız.
 
 > [!NOTE]
-> Uygulama bildirimine 1200'den fazla giriş eklemeye çalışırsanız, **"Uygulama xxxxxx'i güncelleştirmek için başarısız olunması gereken bir hata görebilirsiniz. Hata ayrıntıları: Bildirimin boyutu sınırını aştı. Lütfen değer sayısını azaltın ve isteğinizi yeniden deneyin."**
+> Uygulama bildiriminde 1200 'den fazla girdi eklemeye çalışırsanız, **"uygulama xxxxxx güncelleştirilemedi" hatasını görebilirsiniz. Hata ayrıntıları: bildirimin boyutu sınırı aştı. Lütfen değer sayısını azaltın ve isteğinizi yeniden deneyin. "**
 
 ### <a name="unsupported-attributes"></a>Desteklenmeyen öznitelikler
 
-Uygulama bildirimi, Azure AD'deki temel uygulama modelinin şemasını temsil eder. Altta yatan şema geliştikçe, manifesto düzenleyicisi zaman zaman yeni şemayı yansıtacak şekilde güncellenir. Sonuç olarak, uygulama bildiriminde yeni özniteliklerin ortaya çıktığını fark edebilirsiniz. Nadir durumlarda, varolan özniteliklerde sözdizim veya anlamdeğişikliği fark edebilirsiniz veya daha önce var olan bir öznitelik artık desteklenmeyen bulabilirsiniz. Örneğin, Uygulama kayıtlarında farklı bir adla bilinen [Uygulama kayıtlarında](https://go.microsoft.com/fwlink/?linkid=2083908)(Eski) yeni öznitelikler görürsünüz.
+Uygulama bildirimi, Azure AD 'de temel alınan uygulama modelinin şemasını temsil eder. Temel alınan şema geliştikçe, bildirim Düzenleyicisi yeni şemayı zaman zaman yansıtacak şekilde güncelleştirilecektir. Sonuç olarak, uygulama bildiriminde yeni öznitelikler olduğunu fark edebilirsiniz. Nadir durumlarda, var olan özniteliklerde bir sözdizimsel veya anlamsal değişiklik fark edebilir veya daha önce artık desteklenmeyen bir öznitelik bulabilirsiniz. Örneğin, Uygulama kayıtları (eski) deneyiminde farklı bir adla bilinen [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908)yeni öznitelikleri görürsünüz.
 
-| Uygulama kayıtları (Eski)| Uygulama kayıtları           |
+| Uygulama kayıtları (eski)| Uygulama kayıtları           |
 |---------------------------|-----------------------------|
 | `availableToOtherTenants` | `signInAudience`            |
 | `displayName`             | `name`                      |
@@ -657,27 +657,27 @@ Uygulama bildirimi, Azure AD'deki temel uygulama modelinin şemasını temsil ed
 | `publicClient`            | `allowPublicClient`         |
 | `replyUrls`               | `replyUrlsWithType`         |
 
-Bu özniteliklere yönelik açıklamalar için [bildirim başvuru](#manifest-reference) bölümüne bakın.
+Bu özniteliklerin açıklamaları için [bildirim başvurusu](#manifest-reference) bölümüne bakın.
 
-Daha önce indirilen bir bildirimi yüklemeye çalıştığınızda, aşağıdaki hatalardan birini görebilirsiniz. Bu hata, bildirim düzenleyicisinin artık şemanın yüklemeye çalıştığınız sürümle eşleşmeyen daha yeni bir sürümünü desteklemesinden kaynaklanıyor.
+Daha önce indirilen bir bildirimi karşıya yüklemeye çalıştığınızda, aşağıdaki hatalardan birini görebilirsiniz. Bu hata, bildirim Düzenleyicisi 'nin artık bir şemanın daha yeni bir sürümünü desteklediğinden, bu nedenle karşıya yüklemeye çalıştığınız bir ile eşleşmediği için olasıdır.
 
-* "xxxxxx uygulamasını güncelleştiremedi. Hata ayrıntısı: Geçersiz nesne tanımlayıcısı 'tanımsız'. []."
-* "xxxxxx uygulamasını güncelleştiremedi. Hata ayrıntısı: Belirtilen bir veya daha fazla özellik değeri geçersizdir. []."
-* "xxxxxx uygulamasını güncelleştiremedi. Hata ayrıntısı: Güncelleştirme için bu api sürümünde kullanılabilir ToOtherTenants ayarlamak için izin verilmez. []."
-* "xxxxxx uygulamasını güncelleştiremedi. Hata ayrıntısı: Bu uygulama için 'yanıtUrl'ler' özelliğigüncelleştirmelerine izin verilmez. Bunun yerine 'replyUrlsWithType' özelliğini kullanın. []."
-* "xxxxxx uygulamasını güncelleştiremedi. Hata ayrıntısı: Tür adı olmayan bir değer bulundu ve beklenen bir tür bulunamadı. Model belirtildiğinde, yükteki her değer, arayan tarafından açıkça veya üst değerden dolaylı olarak çıkarılabilen, yükte belirtilebilen bir türe sahip olmalıdır. []"
+* "Xxxxxx uygulamasının güncelleştirilmesi başarısız oldu. Hata ayrıntısı: geçersiz nesne tanımlayıcısı ' undefined '. []."
+* "Xxxxxx uygulamasının güncelleştirilmesi başarısız oldu. Hata ayrıntısı: belirtilen bir veya daha fazla özellik değeri geçersiz. []."
+* "Xxxxxx uygulamasının güncelleştirilmesi başarısız oldu. Hata ayrıntısı: güncelleştirme için bu API sürümünde Availabletootherkiracılar ayarlanamaz. []."
+* "Xxxxxx uygulamasının güncelleştirilmesi başarısız oldu. Hata ayrıntısı: Bu uygulama için ' replyUrls ' özelliğine yönelik güncelleştirmelere izin verilmiyor. Bunun yerine ' replyUrlsWithType ' özelliğini kullanın. []."
+* "Xxxxxx uygulamasının güncelleştirilmesi başarısız oldu. Hata ayrıntısı: tür adı olmayan bir değer bulundu ve beklenen tür yok. Model belirtildiğinde, yükteki her bir değerin, açıkça çağıran tarafından ya da üst değerden dolaylı olarak belirtilen bir türde olması gerekir. []"
 
-Bu hatalardan birini gördüğünüzde, aşağıdaki eylemleri öneririz:
+Bu hatalardan birini gördüğünüzde, aşağıdaki işlemleri yapmanızı öneririz:
 
-1. Daha önce indirilen bir bildirimi yüklemek yerine öznitelikleri manifest düzenleyicisinde tek tek edin. İlgilendiğiniz öznitelikleri başarılı bir şekilde yeniden yapabilmek için eski ve yeni özniteliklerin sözdizimini ve anlambilimini anlamak için [bildirim başvuru](#manifest-reference) tablosunu kullanın. 
-1. İş akışınız daha sonra kullanılmak üzere kaynak deponuzdaki bildirimleri kaydetmenizi gerektiriyorsa, deponuzdaki kaydedilen bildirimleri **Uygulama kayıtları** deneyiminde gördüğünüz bildirimle yeniden birleştirmenizi öneririz.
+1. Daha önce indirilen bir bildirimi karşıya yüklemek yerine, öznitelikleri bildirim düzenleyicisinde tek tek düzenleyin. İlgilendiğiniz öznitelikleri başarıyla düzenleyebilmeniz için, eski ve yeni özniteliklerin sözdizimini ve semantiğini anlamak için [bildirim başvuru](#manifest-reference) tablosunu kullanın. 
+1. İş akışınız, daha sonra kullanmak üzere bildirimleri kaynak deponuza kaydetmenizi gerektiriyorsa, kayıtlı bildirimleri deponuzda **uygulama kayıtları** deneyiminde gördüğünüz bir şekilde yeniden temellendirmenizi öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir uygulamanın uygulaması ve hizmet temel nesnesi(ler) arasındaki ilişki hakkında daha fazla bilgi için [Azure AD'deki Uygulama ve hizmet temel nesneleri'ne](app-objects-and-service-principals.md)bakın.
-* Bazı temel Microsoft kimlik platformu geliştirici kavramlarının tanımları için [Microsoft kimlik platformu geliştirici sözlüğüne](developer-glossary.md) bakın.
+* Bir uygulamanın uygulaması ve hizmet sorumlusu nesneleri arasındaki ilişki hakkında daha fazla bilgi için bkz. [Azure AD 'de uygulama ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md).
+* Bazı temel Microsoft kimlik platformu geliştirici kavramlarının tanımları için [Microsoft Identity Platform geliştirici sözlüğü](developer-glossary.md) ' ne bakın.
 
-İçeriğimizi geliştirmeye ve şekillendirmeye yardımcı olan geri bildirim sağlamak için aşağıdaki yorumlar bölümünü kullanın.
+İçeriğimizi iyileştirmenize ve şekillendirmeye yardımcı olacak geri bildirimler sağlamak için aşağıdaki açıklamalar bölümünü kullanın.
 
 <!--article references -->
 [AAD-APP-OBJECTS]:app-objects-and-service-principals.md

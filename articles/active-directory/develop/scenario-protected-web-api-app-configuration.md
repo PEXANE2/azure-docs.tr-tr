@@ -1,7 +1,7 @@
 ---
-title: Korumalı web API uygulamalarını yapılandırma | Azure
+title: Korumalı Web API uygulamalarını yapılandırma | Mavisi
 titleSuffix: Microsoft identity platform
-description: Korumalı bir web API'sini nasıl oluşturup uygulamanızın kodunu nasıl yapılandırıştırmayı öğrenin.
+description: Korumalı bir Web API 'SI oluşturmayı ve uygulamanızın kodunu yapılandırmayı öğrenin.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,34 +13,34 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 073eca94ad93c69811b02abe2c8649940a394e8e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882480"
 ---
-# <a name="protected-web-api-code-configuration"></a>Korumalı web API: Kod yapılandırması
+# <a name="protected-web-api-code-configuration"></a>Korumalı Web API 'SI: kod yapılandırması
 
-Korumalı web API'nizin kodunu yapılandırmak için şunları anlamanız gerekir:
+Korunan Web API 'niz için kodu yapılandırmak üzere şunları anlamanız gerekir:
 
-- API'leri korumalı olarak tanımlayan şey.
-- Taşıyıcı belirteci nasıl yapılandırılatır.
-- Belirteci nasıl doğrulanır.
+- API 'Leri korumalı olarak tanımlar.
+- Bir taşıyıcı belirtecini yapılandırma.
+- Belirteci doğrulama.
 
-## <a name="what-defines-aspnet-and-aspnet-core-apis-as-protected"></a>ASP.NET ve ASP.NET Çekirdek API'leri korumalı olarak tanımlar?
+## <a name="what-defines-aspnet-and-aspnet-core-apis-as-protected"></a>ASP.NET ve ASP.NET Core API 'Leri korunan olarak tanımlar?
 
-Web uygulamaları gibi, ASP.NET ve ASP.NET Core web API'leri de denetleyici eylemleri **[Authorize]** özelliğiyle önceden belirlenmiş olduğundan korunur. Denetleyici eylemleri yalnızca API yetkili bir kimlikle çağrıldığında çağrılabilir.
+Web Apps gibi, ASP.NET ve ASP.NET Core Web API 'Leri, denetleyici eylemlerine **[Yetkilendir]** özniteliği ön eki eklendiği için korunur. Denetleyici eylemleri yalnızca API bir yetkili kimlikle çağrılırsa çağrılabilir.
 
 Aşağıdaki soruları göz önünde bulundurun:
 
-- Yalnızca bir uygulama web API'sını arayabilir. API, onu çağıran uygulamanın kimliğini nasıl biliyor?
-- Uygulama bir kullanıcı adına API'yi arıyorsa, kullanıcının kimliği nedir?
+- Yalnızca bir uygulama, bir Web API 'sini çağırabilir. API bu uygulamayı çağıran uygulamanın kimliğini nasıl bilir?
+- Uygulama bir kullanıcı adına API 'yi çağırırsa, kullanıcının kimliği nedir?
 
 ## <a name="bearer-token"></a>Taşıyıcı belirteci
 
-Uygulama çağrıldığında üstbilgide ayarlanan taşıyıcı belirteci, uygulama kimliği hakkında bilgi tutar. Ayrıca, web uygulaması bir daemon uygulamasından servise yapılan çağrıları kabul etmediği sürece kullanıcı hakkında bilgi tutar.
+Uygulama çağrıldığında üst bilgide ayarlanan taşıyıcı belirteç, uygulama kimliği hakkında bilgi içerir. Web uygulaması, bir Daemon uygulamasından hizmetten hizmete çağrılar kabul etmediği takdirde, kullanıcı hakkındaki bilgileri de barındırır.
 
-Aşağıda, .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı ile bir belirteç edindikten sonra API çağıran bir istemcinin api'yi aradığını gösteren bir C# kodu örneği verilmiştir:
+Aşağıda, .NET için Microsoft kimlik doğrulama kitaplığı ile bir belirteç aldıktan sonra API 'YI çağıran bir istemciyi gösteren bir C# kod örneği (MSAL.NET):
 
 ```csharp
 var scopes = new[] {$"api://.../access_as_user"};
@@ -55,15 +55,15 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> İstemci uygulaması, taşıyıcının *web API'si için*Microsoft kimlik platformu bitiş noktasına belirteci istemesini ister. Web API, belirteci doğrulaması ve içerdiği iddiaları görüntülemesi gereken tek uygulamadır. İstemci uygulamaları hiçbir zaman jetondaki talepleri incelemeye çalışmamalıdır.
+> İstemci uygulaması, *Web API 'si Için*Microsoft Identity platform uç noktasına taşıyıcı belirtecini ister. Web API 'SI, belirtecin doğrulanması ve içerdiği talepleri görüntülemesi gereken tek uygulamadır. İstemci uygulamaları, belirteçlerdeki talepleri incelemeye asla denememelidir.
 >
-> Gelecekte, web API belirteci şifrelenmiş olması gerekebilir. Bu gereksinim, erişim belirteçlerini görüntüleyebilen istemci uygulamalarına erişimi engeller.
+> Gelecekte, Web API 'SI belirtecin şifrelenmesini gerektirebilir. Bu gereksinim, erişim belirteçlerini görüntüleyebilen istemci uygulamalarına erişimi engeller.
 
-## <a name="jwtbearer-configuration"></a>JwtBearer yapılandırma
+## <a name="jwtbearer-configuration"></a>Jwttaşıyıcı yapılandırması
 
-Bu bölümde taşıyıcı belirteci nasıl yapılandırılabildiğini açıklar.
+Bu bölümde, bir taşıyıcı belirtecinin nasıl yapılandırılacağı açıklanmaktadır.
 
-### <a name="config-file"></a>Config dosyası
+### <a name="config-file"></a>Yapılandırma dosyası
 
 ```Json
 {
@@ -93,22 +93,22 @@ Bu bölümde taşıyıcı belirteci nasıl yapılandırılabildiğini açıklar.
 
 ### <a name="code-initialization"></a>Kod başlatma
 
-Bir uygulama **,[Authorize]** özniteliği tutan bir denetleyici eylemine çağrıldığında, ASP.NET ve ASP.NET Core, Yetkilendirme üstbilginin taşıyıcı belirtecinden erişim belirteci ayıklayın. Erişim belirteci daha sonra .NET için Microsoft IdentityModel Uzantıları çağıran JwtBearer ara yazılımına iletilir.
+Bir uygulama bir **[Yetkilendir]** özniteliği tutan bir denetleyici eyleminde çağrıldığında, ASP.NET ve ASP.NET Core erişim belirtecini yetkilendirme üstbilgisinin taşıyıcı belirtecinden ayıklayın. Daha sonra erişim belirteci, .NET için Microsoft IdentityModel uzantıları 'nı çağıran Jwttaşıyıcı ara yazılıma iletilir.
 
-ASP.NET Core'da, bu ara yazılım Startup.cs dosyasında başharflere işlenir.
+ASP.NET Core, bu ara yazılım Startup.cs dosyasında başlatılır.
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 ```
 
-Ara yazılım bu talimatla web API'sine eklenir:
+Bu yönerge, ara yazılım Web API 'sine eklenir:
 
 ```csharp
  services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
          .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
- Şu anda, ASP.NET Core şablonları, kuruluşunuzdaki veya herhangi bir kuruluştaki kullanıcıları oturum açan Azure Etkin Dizin (Azure AD) web API'leri oluşturur. Kişisel hesapları olan kullanıcılaroturum açmaz. Ancak, bu kodu Startup.cs ekleyerek Microsoft kimlik platformu bitiş noktasını kullanmak üzere şablonları değiştirebilirsiniz:
+ Şu anda ASP.NET Core şablonları, kuruluşunuzdaki veya herhangi bir kuruluşun içindeki kullanıcıların oturum açmasını sağlayan Azure Active Directory (Azure AD) Web API 'Leri oluşturur. Kişisel hesaplarla kullanıcıları oturum açtıklarında oturum açabilirler. Ancak, bu kodu Startup.cs 'e ekleyerek şablonları Microsoft Identity platform uç noktasını kullanacak şekilde değiştirebilirsiniz:
 
 ```csharp
 services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
@@ -130,42 +130,42 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 });
 ```
 
-Önceki kod parçacığı [Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/154282843da2fc2958fad151e2a11e521e358d42/Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63)ASP.NET Core web API artımlı öğretici ayıklanır. Snippet'in gösterdiğinden daha fazlasını yapan **AddProtectedWebApi** yöntemi Startup.cs' dan çağrılır.
+Yukarıdaki kod parçacığı, [Microsoft. Identity. Web/WebApiServiceCollectionExtensions. cs # L50-L63](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/154282843da2fc2958fad151e2a11e521e358d42/Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63)' deki ASP.NET Core Web API artımlı öğreticiden ayıklanır. Kod parçacığının gösterdiği daha fazla olan **Addprotectedwebapi** yöntemi, Startup.cs adresinden çağırılır.
 
 ## <a name="token-validation"></a>Belirteç doğrulama
 
-Önceki snippet, JwtBearer ara yazılım, web uygulamalarında OpenID Connect ara ware gibi, değerine `TokenValidationParameters`göre belirteç doğrular. Belirteç gerektiğinde şifresi çözülür, talepler ayıklanır ve imza doğrulanır. Ara yazılım daha sonra bu verileri denetleyerek belirteci doğrular:
+Yukarıdaki kod parçacığında, Web Apps 'teki OpenID Connect ara yazılımı gibi Jwttaşıyıcı ara yazılımı, belirtecini değerine göre doğrular `TokenValidationParameters`. Gerektiğinde belirtecin şifresi çözülür, talepler ayıklanır ve imza doğrulanır. Bu durumda, ara yazılım bu verileri denetleyerek belirteci doğrular:
 
-- Hedef kitle: Belirteç web API'sını hedeflenebilmiştir.
-- Alt: Web API'sını aramasına izin verilen bir uygulama için yayımlandı.
-- İhraççı: Güvenilir bir güvenlik belirteci hizmeti (STS) tarafından verildi.
-- Son kullanma tarihi: Ömrü aralıktadır.
-- İmza: Kurcalanmadı.
+- Hedef kitle: belirteç Web API 'sine yöneliktir.
+- Sub: Web API 'sini çağırmaya izin verilen bir uygulama için verildi.
+- Veren: bir güvenilen güvenlik belirteci hizmeti (STS) tarafından verilmiş.
+- Süre sonu: ömrü Aralık içinde.
+- İmza: ile oynanmadı.
 
-Özel doğrulamalar da olabilir. Örneğin, bir belirteç gömülü olduğunda imza anahtarları güvenilir olduğunu ve belirteç yeniden oynatılmıyor doğrulamak mümkündür. Son olarak, bazı protokoller belirli doğrulamalar gerektirir.
+Özel doğrulamalar de olabilir. Örneğin, bir belirteçte gömülü olduğunda imzalama anahtarlarının güvenilir olduğunu ve belirtecin yeniden çalınmayacağını doğrulamak mümkündür. Son olarak, bazı protokoller belirli doğrulamalar gerektirir.
 
-### <a name="validators"></a>Doğrulayıcıları
+### <a name="validators"></a>Metninin
 
-Doğrulama adımları, .NET açık kaynak kitaplığı [için Microsoft IdentityModel Uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) tarafından sağlanan doğrulayıcılarda yakalanır. Doğrulayıcılar [microsoft.identitymodel.Tokens/Validators.cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs)kitaplık kaynak dosyasında tanımlanır.
+Doğrulama adımları, .NET açık kaynak kitaplığı [Için Microsoft IdentityModel uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) tarafından belirtilen doğrulayıcılar içinde yakalanır. Doğrulayıcılar, [Microsoft. IdentityModel. Tokens/Doğrulayıcı. cs](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs)kitaplık kaynak dosyasında tanımlanmıştır.
 
-Bu tablo doğrulayıcıları açıklar:
+Bu tabloda doğrulayıcılar açıklanmaktadır:
 
 | Doğrulayıcı | Açıklama |
 |---------|---------|
-| **Doğrulayan Kitle** | Belirteci sizin için belirteç doğrulayan uygulama için olduğundan emin olun. |
-| **Doğrulayıcı** | Belirteci güvenilir bir STS tarafından verildiğinden emin olur, yani güvendiğiniz birinden gelir. |
-| **DoğrulamaIssuerSigningKey** | Belirteç güvenleri doğrulayan uygulama sağlar belirteci imzalamak için kullanılan anahtar. Anahtarın jetonun içine gömülü olduğu özel bir durum var. Ama bu dava genelde ortaya çıkmaz. |
-| **Ömür Boyu Doğrulama** | Belirteci hala veya zaten geçerli olduğundan emin olur. Geçerlilik, belirteç ömrü önceki tarafından belirtilen aralıkta **notbefore** olup olmadığını ve **süresinin dolup olmadığını denetler.** |
-| **İmzayı Doğrula** | Jetonun kurcalanmadığından emin olmak için. |
-| **TokenReplay'i Doğrulama** | Belirteç yeniden oynatını sağlar. Bazı tek kullanımlık protokoller için özel bir durum var. |
+| **ValidateAudience** | Belirtecin sizin için belirteci doğrulayan uygulamanın olduğundan emin olur. |
+| **Validateıssuer** | Belirtecin güvenilir bir STS tarafından verildiğini ve güvendiğiniz bir kişiden geldiğini sağlar. |
+| **Validateıssuersigningkey** | Belirteç, belirteci imzalamak için kullanılan anahtara güvendiğini belirten uygulamayı sağlar. Anahtarın belirtece gömülü olduğu özel bir durum vardır. Ancak bu durum genellikle ortaya çıkar. |
+| **ValidateLifetime** | Belirtecin hala veya zaten geçerli olduğundan emin olur. Doğrulayıcı, belirtecin kullanım ömrünün **NotBefore** ve **Expires** talepleri tarafından belirtilen aralıkta olup olmadığını denetler. |
+| **ValidateSignature** | Belirtecin oynanmamasını sağlar. |
+| **ValidateTokenReplay** | Belirtecin yeniden çalınmamasını sağlar. Bazı Onetime kullanım protokolleri için özel bir durum vardır. |
 
-Doğrulayıcılar, **TokenValidationParametreler** sınıfının özellikleriyle ilişkilidir. Özellikler ASP.NET ve ASP.NET Core yapılandırmasından başharfe alınır.
+Doğrulayıcılar **Tokenvalidationparameters** sınıfının özellikleriyle ilişkilendirilir. Özellikler, ASP.NET ve ASP.NET Core yapılandırmasından başlatılır.
 
-Çoğu durumda, parametreleri değiştirmeniz gerekmez. Tek kiracı olmayan uygulamalar istisnadır. Bu web uygulamaları, herhangi bir kuruluştan veya kişisel Microsoft hesaplarından kullanıcıları kabul eder. Bu durumda verenler doğrulanmalıdır.
+Çoğu durumda, parametreleri değiştirmeniz gerekmez. Tek kiracılar olmayan uygulamalar özel durumlardır. Bu Web Apps kullanıcıları herhangi bir kuruluştan veya kişisel Microsoft hesaplarından kabul eder. Bu durumda verenler doğrulanması gerekir.
 
-## <a name="token-validation-in-azure-functions"></a>Azure İşlevlerinde Belirteç doğrulaması
+## <a name="token-validation-in-azure-functions"></a>Azure Işlevlerinde belirteç doğrulama
 
-Azure İşlevler'de gelen erişim belirteçlerini de doğrulayabilirsiniz. [Microsoft .NET](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions), [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)ve [Python'da](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)bu tür doğrulama örnekleri bulabilirsiniz.
+Ayrıca, Azure Işlevlerinde gelen erişim belirteçlerini doğrulayabilirsiniz. [Microsoft .net](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions), [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)ve [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)'da bu doğrulamanın örneklerini bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

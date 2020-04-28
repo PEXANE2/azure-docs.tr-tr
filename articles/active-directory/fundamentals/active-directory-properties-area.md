@@ -1,6 +1,6 @@
 ---
-title: Kuruluşunuzun gizlilik bilgilerini ekleyin - Azure Active Directory | Microsoft Dokümanlar
-description: Kuruluşunuzun gizlilik bilgilerini Azure Etkin Dizin Özellikleri alanına nasıl ekleyeceğiniz le ilgili talimatlar.
+title: Kuruluşunuzun gizlilik bilgilerini ekleme-Azure Active Directory | Microsoft Docs
+description: Kuruluşunuzun gizlilik bilgilerini Azure Active Directory özellikleri alanına nasıl ekleyeceğiniz hakkında yönergeler.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,47 +14,47 @@ ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 343671c1d9ee82950a9822648f9831588da7e9f8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80876193"
 ---
-# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Azure Active Directory'yi kullanarak kuruluşunuzun gizlilik bilgilerini ekleme
-Bu makalede, kiracı yöneticinin Azure portalı aracılığıyla kuruluşun Azure Etkin Dizini (Azure AD) kiracısına gizlilikle ilgili bilgileri nasıl ekleyebileceği açıklanmaktadır.
+# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Azure Active Directory kullanarak kuruluşunuzun gizlilik bilgilerini ekleyin
+Bu makalede, bir kiracı yöneticisinin Azure portal aracılığıyla bir kuruluşun Azure Active Directory (Azure AD) kiracısına gizlilikle ilgili bilgileri nasıl ekleyebileceği açıklanmaktadır.
 
-Dahili çalışanlarınızın ve harici misafirlerinizin politikalarınızı gözden geçirebilmeleri için hem küresel gizlilik kişinizi hem de kuruluşunuzun gizlilik bildirimini eklemenizi şiddetle öneririz. Gizlilik bildirimleri benzersiz bir şekilde oluşturulduğu ve her işletme için uyarlandığı için, yardım için bir avukata başvurmanızı şiddetle öneririz.
+İç çalışanlarınız ve dış konularınızın ilkelerinizi gözden geçirebilmesi için hem genel gizlilik kişinizi hem de kuruluşunuzun gizlilik bildirimini eklemenizi önemle öneririz. Gizlilik deyimleri her işletme için benzersiz olarak oluşturulup uygun olduğundan, yardım için bir avuya başvurmanız önemle önerilir.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="add-your-privacy-info-on-azure-ad"></a>Azure AD'de gizlilik bilgilerinizi ekleyin
-Kuruluşunuzun gizlilik bilgilerini Azure AD'nin **Özellikler** alanına eklersiniz.
+## <a name="add-your-privacy-info-on-azure-ad"></a>Azure AD 'de gizlilik bilgilerinizi ekleyin
+Kuruluşunuzun gizlilik bilgilerini Azure AD 'nin **Özellikler** alanına eklersiniz.
 
 ### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>Özellikler alanına erişmek ve gizlilik bilgilerinizi eklemek için
 
-1.    Azure portalında kiracı yönetici olarak oturum açın.
+1.    Azure portal Kiracı Yöneticisi olarak oturum açın.
 
-2.    Soldaki gezinme çubuğunda **Azure Etkin Dizini'ni**seçin ve ardından **Özellikler'i**seçin.
+2.    Sol gezinti çubuğunda **Azure Active Directory**' yi seçin ve ardından **Özellikler**' i seçin.
 
     **Özellikler** alanı görüntülenir.
 
-    ![Gizlilik bilgileri alanını vurgulayan Azure AD Özellikleri alanı](media/active-directory-properties-area/properties-area.png)
+    ![Gizlilik bilgileri alanını vurgulayan Azure AD özellikleri alanı](media/active-directory-properties-area/properties-area.png)
 
-3.    Çalışanlarınız için gizlilik bilgilerinizi ekleyin:
+3.    Çalışanlarınıza ait gizlilik bilgilerinizi ekleyin:
 
-    - **Teknik temas.** Kuruluşunuzdaki teknik destek için iletişim kuracak kişinin e-posta adresini yazın.
+    - **Teknik iletişim.** Kuruluşunuz dahilinde teknik destek için iletişim kurulacak kişinin e-posta adresini yazın.
     
-    - **Küresel gizlilik iletişimi.** Kişisel verilerin gizliliği yle ilgili sorularınız için iletişim kuracak kişinin e-posta adresini yazın. Bu kişi, bir veri ihlali olduğunda Microsoft'un bağlantı kiminle iletişim kuran kişisidir. Burada listelenen kişi yoksa, Microsoft genel yöneticilerinizle iletişim eler.
+    - **Genel Gizlilik kişisi.** Kişisel veri gizliliği hakkındaki sorgular için kişinin e-posta adresini yazın. Bu kişi, Microsoft 'un de bir veri ihlali olup olmadığını da kim. Burada listelenen bir kişi yoksa, Microsoft genel yöneticilerinizle iletişim kurar.
 
-    - **Gizlilik bildirimi URL'si.** Kuruluşunuzun hem dahili hem de harici konuk gizliliğini nasıl işleyeceğini açıklayan kuruluşunuzun belgesine bağlantı yazın.
+    - **Gizlilik bildirimi URL 'SI.** Kuruluşunuzun hem iç hem de dış konuğun veri gizliliğini nasıl işlediğini açıklayan, kuruluşunuzun belgesinin bağlantısını yazın.
 
         >[!Important]
-        >Kendi gizlilik bildiriminizi veya gizlilik kişinizi eklemezseniz, harici konuklarınız **İnceleme İzinleri** kutusunda, ** < _org adınız_> yorumlayasınız.** Örneğin, bir konuk kullanıcı b2B işbirliği yoluyla bir kuruluşa erişim daveti aldığında bu iletiyi görür.
+        >Kendi gizlilik bildirimimizi veya gizlilik kişinizi eklemezseniz, dış konularınız, gözden **geçirme izinleri** kutusunda bir metin görür, ** <bu da _kuruluş adınızın_> gözden geçirmeniz için kendi koşullarına bağlantı sağlamamıştır**. Örneğin, bir Konuk Kullanıcı B2B işbirliği aracılığıyla kuruluşa erişim daveti aldıklarında bu iletiyi görür.
 
-        ![B2B İşbirliği İnceleme İzinleri kutusu ile ileti](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
+        ![B2B Işbirliği Inceleme Izinleri kutusu ileti](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.    **Kaydet'i**seçin.
+4.    **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure Active Directory B2B işbirliği daveti ödeme](../b2b/redemption-experience.md)
-- [Azure Etkin Dizini'ndeki bir kullanıcı için profil bilgileri ekleme veya değiştirme](active-directory-users-profile-azure-portal.md)
+- [Azure Active Directory B2B işbirliği daveti kullanım](../b2b/redemption-experience.md)
+- [Azure Active Directory bir kullanıcının profil bilgilerini ekleme veya değiştirme](active-directory-users-profile-azure-portal.md)
