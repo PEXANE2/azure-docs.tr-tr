@@ -1,6 +1,6 @@
 ---
-title: Azure CDN varlıklarını belirteç kimlik doğrulamasıyla güvence altına alma| Microsoft Dokümanlar
-description: Azure CDN varlıklarınıza erişimi güvence altına almak için belirteç kimlik doğrulamasını nasıl kullanacağınızı öğrenin.
+title: Belirteç kimlik doğrulamasıyla Azure CDN varlıkların güvenliğini sağlama | Microsoft Docs
+description: Azure CDN varlıklarınıza erişim sağlamak için belirteç kimlik doğrulamasını nasıl kullanacağınızı öğrenin.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
@@ -15,82 +15,82 @@ ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
 ms.openlocfilehash: fa71f472294b91baebc2a6075ddb2b50123e545d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67593386"
 ---
-# <a name="securing-azure-cdn-assets-with-token-authentication"></a>Azure CDN varlıklarını belirteç kimlik doğrulamasıyla güvence altına alma
+# <a name="securing-azure-cdn-assets-with-token-authentication"></a>Belirteç kimlik doğrulamasıyla Azure CDN varlıkların güvenliğini sağlama
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
-Belirteç kimlik doğrulaması, Azure İçerik Teslim Ağı'nın (CDN) varlıkları yetkisiz istemcilere sunmasını engellemenize olanak tanıyan bir mekanizmadır. Belirteç kimlik doğrulaması genellikle, ileti panosu gibi farklı bir web sitesinin varlıklarınızı izinsiz olarak kullandığı içeriğin *hotlinking'ini* önlemek için yapılır. Hotlinking'in içerik dağıtım maliyetleriniz üzerinde bir etkisi olabilir. CDN'de belirteç kimlik doğrulaması etkinleştirilerek, CDN içeriği teslim etmeden önce isteklerin CDN kenar sunucusu tarafından doğrulanması. 
+Belirteç kimlik doğrulaması, Azure Content Delivery Network (CDN) 'in varlık dışı istemcilere hizmet etmelerini engellemenizi sağlayan bir mekanizmadır. Belirteç kimlik doğrulaması genellikle, bir ileti panosu gibi farklı bir Web sitesinin varlıklarınızı izin olmadan kullandığı, içeriğin *anında bağlanmasını* engellemek için yapılır. Hotlink, içerik teslim maliyetlerinizi etkileyebilir. CDN 'de belirteç kimlik doğrulamasını etkinleştirerek, CDN 'nin içeriği teslim etmeden önce CDN Edge sunucusu tarafından kimlik doğrulaması yapılır. 
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Belirteç kimlik doğrulaması, isteklerin isteğe bağlı bir site tarafından oluşturulduğunu doğrulayarak, istekte bulunan hakkında kodlanmış bilgiler tutan bir belirteç değeri içermesini gerektirir. İçerik, yalnızca kodlanmış bilgiler gereksinimleri karşılıyorsa, istekte bulunana sunulur; aksi takdirde, istekler reddedilir. Aşağıdaki parametrelerden birini veya birkaçını kullanarak gereksinimleri ayarlayabilirsiniz:
+Belirteç kimlik doğrulaması, isteklerin istek sahibi hakkında kodlanmış bilgileri tutan bir belirteç değeri içermesini gerektirerek güvenilen bir site tarafından oluşturulduğunu doğrular. İçerik, yalnızca kodlanan bilgiler gereksinimleri karşılıyorsa istek sahibine sunulur; Aksi takdirde, istekler reddedilir. Aşağıdaki parametrelerden bir veya daha fazlasını kullanarak gereksinimleri ayarlayabilirsiniz:
 
-- Ülke: [Ülke kodlarında](/previous-versions/azure/mt761717(v=azure.100))belirtilen ülkelerden/bölgelerden kaynaklanan isteklere izin verin veya bunları reddedin.
-- URL: Yalnızca belirtilen varlık veya yol ile eşleşen isteklere izin verin.
-- Ana Bilgisayar: İstek üstbilgisinde belirtilen ana bilgisayarları kullanan isteklere izin verin veya reddedin.
-- Başvurucu: Belirtilen başvurucun isteğine izin verin veya reddedin.
-- IP adresi: Yalnızca belirli IP adresinden veya IP alt ağlarından kaynaklanan isteklere izin verin.
-- Protokol: İçeriği istemek için kullanılan protokole dayalı isteklere izin verin veya reddedin.
-- Son kullanma süresi: Bir bağlantının yalnızca sınırlı bir süre için geçerli kalmasını sağlamak için bir tarih ve saat atayın.
+- Ülke: [Ülke kodları](/previous-versions/azure/mt761717(v=azure.100))tarafından belirtilen ülkelerden/bölgelerden kaynaklanan Isteklere izin ver veya Reddet istekleri.
+- URL: yalnızca belirtilen varlık veya yol ile eşleşen isteklere Izin ver.
+- Ana bilgisayar: istek üstbilgisinde belirtilen konakları kullanan isteklere Izin ver veya Reddet istekleri.
+- Başvuran: belirtilen başvuran için istekleri Izin ver veya Reddet.
+- IP adresi: yalnızca belirli bir IP adresinden veya IP alt ağından kaynaklanan isteklere Izin verir.
+- Protokol: içeriği istemek için kullanılan protokole göre isteklere Izin ver veya Reddet.
+- Sona erme saati: bir bağlantının yalnızca sınırlı bir süre için geçerli kalmasını sağlamak için bir tarih ve zaman aralığı atayın.
 
-Daha fazla bilgi için, [belirteç kimlik doğrulaması ayarlama'daki](#setting-up-token-authentication)her parametre için ayrıntılı yapılandırma örneklerine bakın.
+Daha fazla bilgi için, [belirteç kimlik doğrulamasını ayarlama](#setting-up-token-authentication)içindeki her parametre için ayrıntılı yapılandırma örneklerine bakın.
 
 >[!IMPORTANT] 
-> Bu hesaptaki herhangi bir yol için belirteç yetkilendirmesi etkinleştirilmişse, sorgu dizesi önbelleğe alınması için kullanılabilecek tek mod standart önbellek modudur. Daha fazla bilgi için bkz. [Sorgu dizeleri içeren Azure CDN önbelleğe alma davranışını kontrol etme](cdn-query-string-premium.md).
+> Bu hesapta herhangi bir yol için belirteç yetkilendirmesi etkinleştirilmişse, sorgu dizesi önbelleğe alma için kullanılabilecek tek mod standart önbellek modu olur. Daha fazla bilgi için bkz. [Sorgu dizeleri içeren Azure CDN önbelleğe alma davranışını kontrol etme](cdn-query-string-premium.md).
 
 ## <a name="reference-architecture"></a>Başvuru mimarisi
 
-Aşağıdaki iş akışı diyagramı, CDN'nin web uygulamanızla çalışmak için belirteç kimlik doğrulamasını nasıl kullandığını açıklar.
+Aşağıdaki iş akışı diyagramı, CDN 'nin Web uygulamanızla birlikte çalışmak için belirteç kimlik doğrulamasını nasıl kullandığını açıklar.
 
-![CDN belirteç kimlik doğrulama iş akışı](./media/cdn-token-auth/cdn-token-auth-workflow2.png)
+![CDN belirteci kimlik doğrulama iş akışı](./media/cdn-token-auth/cdn-token-auth-workflow2.png)
 
-## <a name="token-validation-logic-on-cdn-endpoint"></a>CDN bitiş noktasında belirteç doğrulama mantığı
+## <a name="token-validation-logic-on-cdn-endpoint"></a>CDN uç noktasındaki belirteç doğrulama mantığı
     
-Aşağıdaki akış şeması, belirteç kimlik doğrulaması CDN bitiş noktasında yapılandırıldığında Azure CDN'nin istemci isteğini nasıl doğruladığını açıklar.
+Aşağıdaki akış çizelgesi, CDN uç noktasında belirteç kimlik doğrulaması yapılandırıldığında Azure CDN istemci isteğini nasıl doğrulayacağını açıklar.
 
-![CDN belirteç doğrulama mantığı](./media/cdn-token-auth/cdn-token-auth-validation-logic.png)
+![CDN belirteci doğrulama mantığı](./media/cdn-token-auth/cdn-token-auth-validation-logic.png)
 
-## <a name="setting-up-token-authentication"></a>Belirteç kimlik doğrulaması ayarlama
+## <a name="setting-up-token-authentication"></a>Belirteç kimlik doğrulamasını ayarlama
 
-1. Azure [portalından](https://portal.azure.com)CDN profilinize göz atın ve ek portalı başlatmak için **Yönet'i** seçin.
+1. [Azure Portal](https://portal.azure.com), CDN profilinize gidin ve ardından **Yönet** ' i seçerek ek portalı başlatın.
 
     ![CDN profili Yönet düğmesi](./media/cdn-token-auth/cdn-manage-btn.png)
 
-2. **HTTP Büyük**üzerinde hover , sonra flyout **Token Auth** seçin. Daha sonra şifreleme anahtarı nı ve şifreleme parametrelerini aşağıdaki gibi ayarlayabilirsiniz:
+2. **Http büyük**üzerine gelin, ardından açılır menü kutusunda **belirteç kimlik doğrulaması** ' nı seçin. Daha sonra şifreleme anahtarını ve şifreleme parametrelerini aşağıdaki gibi ayarlayabilirsiniz:
 
-   1. Bir veya daha fazla şifreleme anahtarı oluşturun. Şifreleme anahtarı büyük/küçük harf duyarlıdır ve alfasayısal karakterlerin herhangi bir birleşimini içerebilir. Boşluklar da dahil olmak üzere diğer karakter türlerine izin verilmez. Maksimum uzunluk 250 karakterdir. Şifreleme anahtarlarınızın rasgele olduğundan emin olmak için [OpenSSL aracını](https://www.openssl.org/)kullanarak bunları oluşturmanız önerilir. 
+   1. Bir veya daha fazla şifreleme anahtarı oluşturun. Şifreleme anahtarı büyük/küçük harfe duyarlıdır ve alfasayısal karakterlerin herhangi bir birleşimini içerebilir. Boşluk da dahil olmak üzere diğer karakter türlerine izin verilmez. En fazla 250 karakter uzunluğunda olur. Şifreleme anahtarlarınızın rastgele olduğundan emin olmak için, [OpenSSL aracını](https://www.openssl.org/)kullanarak bunları oluşturmanız önerilir. 
 
       OpenSSL aracı aşağıdaki sözdizimine sahiptir:
 
       ```rand -hex <key length>```
 
-      Örnek:
+      Örneğin:
 
       ```OpenSSL> rand -hex 32``` 
 
-      Kapalı kalma süresini önlemek için hem birincil hem de yedek anahtar oluşturun. Yedekleme anahtarı, birincil anahtarınız güncelleştirilirken içeriğinize kesintisiz erişim sağlar.
+      Kapalı kalma süresini önlemek için hem birincil hem de bir yedekleme anahtarı oluşturun. Bir yedekleme anahtarı, birincil anahtarınız güncelleştirilirken içeriğinize kesintisiz erişim sağlar.
     
-   2. **Birincil Anahtar** kutusuna benzersiz bir şifreleme anahtarı girin ve isteğe bağlı olarak **Yedek Anahtar** kutusuna bir yedek anahtar girin.
+   2. **Birincil anahtar** kutusuna benzersiz bir şifreleme anahtarı girin ve isteğe bağlı olarak **yedekleme anahtarı** kutusuna bir yedekleme anahtarı girin.
 
-   3. **Minimum Şifreleme Sürüm** listesinden her anahtar için minimum şifreleme sürümünü seçin ve ardından **Güncelleştir'i**seçin:
-      - **V2**: 2.0 ve 3.0 belirteçleri oluşturmak için anahtarın kullanılabileceğini gösterir. Bu seçeneği yalnızca eski sürüm 2.0 şifreleme anahtarından sürüm 3.0 anahtarına geçiş yapıyorsunuz.
-      - **V3**: (Önerilen) Anahtarın yalnızca sürüm 3.0 belirteçlerini oluşturmak için kullanılabileceğini belirtir.
+   3. **En düşük şifreleme sürümü** listesinden her anahtar için en düşük şifreleme sürümünü seçin ve ardından **Güncelleştir**' i seçin:
+      - **V2**: anahtarın sürüm 2,0 ve 3,0 belirteçleri oluşturmak için kullanılabileceğini gösterir. Bu seçeneği yalnızca eski sürüm 2,0 şifreleme anahtarından sürüm 3,0 anahtarına geçiş yapıyorsanız kullanın.
+      - **V3**: (önerilir), anahtarın yalnızca sürüm 3,0 belirteçleri oluşturmak Için kullanılabileceğini gösterir.
 
-      ![CDN belirteç auth kurulum anahtarı](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
+      ![CDN belirteci kimlik doğrulama kurulum anahtarı](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
-   4. Şifreleme parametrelerini ayarlamak ve bir belirteç oluşturmak için şifreleme aracını kullanın. Şifreleme aracıyla, son kullanma süresi, ülke/bölge, referrer, protokol ve istemci IP'ye (herhangi bir kombinasyonda) dayalı isteklere izin verebilir veya reddedebilirsiniz. Belirteç oluşturmak için biraraya getirilebilen parametrelerin sayısı ve birleşimi için bir sınır olmamasına rağmen, bir belirteç toplam uzunluğu 512 karakterle sınırlıdır. 
+   4. Şifreleme parametrelerini ayarlamak ve bir belirteç oluşturmak için şifreleme aracını kullanın. Şifreleme Aracı ile, süresi sona erme saati, ülke/bölge, başvuran, protokol ve istemci IP 'si (herhangi bir bileşimde) temelinde istekleri izin verebilir veya reddedebilirsiniz. Belirteç oluşturmak için birleştirilebilecek parametrelerin sayısı ve birleşimine yönelik bir sınır olmasa da, belirtecin toplam uzunluğu 512 karakterle sınırlıdır. 
 
       ![CDN şifreleme aracı](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
 
-      **Aracı Şifreleme** bölümünde aşağıdaki şifreleme parametrelerinden biri veya birkaçı için değerleri girin: 
+      Şifreleme **Aracı** bölümünde aşağıdaki şifreleme parametrelerinden bir veya daha fazlası için değerler girin: 
 
       > [!div class="mx-tdCol2BreakAll"] 
       > <table>
@@ -100,95 +100,95 @@ Aşağıdaki akış şeması, belirteç kimlik doğrulaması CDN bitiş noktası
       > </tr>
       > <tr>
       >    <td><b>ec_expire</b></td>
-      >    <td>Belirteci için bir son kullanma süresi atar ve sonra belirteci sona erer. Son kullanma tarihinden sonra gönderilen istekler reddedilir. Bu parametre, standart Unix döneminden bu yana saniye sayısına dayalı bir `1/1/1970 00:00:00 GMT`Unix zaman damgası kullanır. (Standart saat ile Unix saati arasında dönüştürme yapmak için çevrimiçi araçları kullanabilirsiniz.)> 
-      >    Örneğin, belirteci süresinin dolmasını `12/31/2016 12:00:00 GMT`istiyorsanız, Unix zaman `1483185600`damgası değerini girin. 
+      >    <td>Belirtecin süresi dolduktan sonra belirtece bir süre sonu süresi atar. Süre sonu zamanından sonra gönderilen istekler reddedilir. Bu parametre, standart Unix dönemi sonrasındaki saniye sayısına bağlı olarak bir UNIX zaman damgası kullanır `1/1/1970 00:00:00 GMT`. (Standart saat ve UNIX saati arasında dönüştürme yapmak için çevrimiçi araçları kullanabilirsiniz.)> 
+      >    Örneğin, belirtecin süre içinde dolacağını `12/31/2016 12:00:00 GMT`Istiyorsanız, Unix zaman damgası değerini girin. `1483185600` 
       > </tr>
       > <tr>
       >    <td><b>ec_url_allow</b></td> 
-      >    <td>Belirteçleri belirli bir varlığa veya yola uyarlamanızı sağlar. URL'si belirli bir göreli yol ile başlayan isteklere erişimi kısıtlar. URL'ler büyük/küçük harf duyarlıdır. Her yolu virgülle ayırarak birden çok yol gir; boşluk eklemeyin. Gereksinimlerinize bağlı olarak, farklı erişim düzeyi sağlamak için farklı değerler ayarlayabilirsiniz.> 
+      >    <td>Belirteçleri belirli bir varlığa veya yola uyarlamanızı sağlar. URL 'SI belirli bir göreli yol ile başlayan isteklere erişimi kısıtlar. URL 'Ler büyük/küçük harfe duyarlıdır. Her yolu virgülle ayırarak birden çok yol girin; boşluk eklemeyin. Gereksinimlerinize bağlı olarak, farklı erişim düzeyi sağlamak için farklı değerler ayarlayabilirsiniz.> 
       >    Örneğin, URL `http://www.mydomain.com/pictures/city/strasbourg.png`için, bu isteklere aşağıdaki giriş değerleri için izin verilir: 
       >    <ul>
-      >       <li>Giriş değeri `/`: Tüm isteklere izin verilir.</li>
-      >       <li>Giriş değeri, `/pictures`aşağıdaki isteklere izin verilir: <ul>
+      >       <li>Giriş değeri `/`: tüm isteklere izin verilir.</li>
+      >       <li>Giriş değeri `/pictures`, aşağıdaki isteklere izin verilir: <ul>
       >          <li>`http://www.mydomain.com/pictures.png`</li>
       >          <li>`http://www.mydomain.com/pictures/city/strasbourg.png`</li>
       >          <li>`http://www.mydomain.com/picturesnew/city/strasbourgh.png`</li>
       >       </ul></li>
-      >       <li>Giriş değeri `/pictures/`: Yalnızca `/pictures/` yolu içeren isteklere izin verilir. Örneğin, `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
-      >       <li>Giriş değeri `/pictures/city/strasbourg.png`: Yalnızca bu belirli yol ve varlık için isteklere izin verilir.</li>
+      >       <li>Giriş değeri `/pictures/`: yalnızca `/pictures/` yolu içeren isteklere izin verilir. Örneğin, `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
+      >       <li>Giriş değeri `/pictures/city/strasbourg.png`: yalnızca bu belirli yol ve varlık için isteklere izin verilir.</li>
       >    </ul>
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Yalnızca belirli bir veya daha fazla ülkeden/bölgeden gelen isteklere izin verir. Diğer tüm ülkelerden/bölgelerden gelen talepler reddedilir. Her ülke için iki harfli [ISO 3166 ülke kodu](/previous-versions/azure/mt761717(v=azure.100)) kullanın ve her birini virgülle ayırın; boşluk eklemeyin. Örneğin, yalnızca ABD ve Fransa'dan erişime izin `US,FR`vermek istiyorsanız, girin.</td>
+      >    <td>Yalnızca bir veya daha fazla belirtilen ülkede/bölgeden kaynaklı isteklere izin verir. Diğer tüm ülkelerden/bölgelerden kaynaklanan istekler reddedilir. Her ülke için iki harfli [ıso 3166 ülke kodu](/previous-versions/azure/mt761717(v=azure.100)) kullanın ve her birini virgülle ayırın; boşluk eklemeyin. Örneğin, yalnızca Birleşik Devletler ve Fransa 'dan erişime izin vermek istiyorsanız, girin `US,FR`.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>Belirli bir ülkeden/bölgeden kaynaklanan istekleri reddeder. Diğer tüm ülkelerden/bölgelerden gelen isteklere izin verilir. Uygulama <b>ec_country_allow</b> parametresi ile aynıdır. <b>Hem ec_country_allow</b> hem de <b>ec_country_deny</b> parametrelerinde bir ülke kodu varsa, <b>ec_country_allow</b> parametresi önceliklidir.</td>
+      >    <td>Belirtilen bir veya daha fazla ülke/bölgeden kaynaklanan istekleri reddeder. Diğer tüm ülkelerden/bölgelerden kaynaklı isteklere izin verilir. Uygulama <b>ec_country_allow</b> parametresiyle aynıdır. Hem <b>ec_country_allow</b> hem de <b>ec_country_deny</b> parametrelerinde ülke kodu varsa <b>ec_country_allow</b> parametresi önceliklidir.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>
-      >    <td>Yalnızca belirtilen başvurucun isteklerine izin verir. Bir başvuru, istenen kaynağa bağlı web sayfasının URL'sini tanımlar. Protokolü parametre değerine dahil etmeyin.> 
+      >    <td>Yalnızca belirtilen başvuran isteklere izin verir. Başvuran, istenen kaynakla bağlantılı web sayfasının URL 'sini tanımlar. Protokolü parametre değerine eklemeyin.> 
       >    Aşağıdaki giriş türlerine izin verilir:
       >    <ul>
-      >       <li>Bir ana bilgisayar adı veya bir ana bilgisayar adı ve bir yol.</li>
-      >       <li>Birden fazla referrer. Birden çok başvuru eklemek için, her başvurucuzun virgülle ayrılması; boşluk eklemeyin. Bir yönlendirici değeri belirtirseniz, ancak tarayıcı yapılandırması nedeniyle istekte yönlendirici bilgileri gönderilmezse, istek varsayılan olarak reddedilir.</li> 
-      >       <li>Eksik veya boş yönlendirme bilgileri içeren istekler. Varsayılan olarak, <b>ec_ref_allow</b> parametresi bu tür istekleri engeller. Bu isteklere izin vermek için, "eksik" metni girin veya boş bir değer girin (sondaki virgül kullanarak).</li> 
-      >       <li>Alt. Alt etki adlarına izin vermek için\*yıldız işareti girin ( ). Örneğin, tüm alt etki alanlarını `contoso.com`, `*.contoso.com`girin izin vermek için .</li>
+      >       <li>Ana bilgisayar adı veya ana bilgisayar adı ve yolu.</li>
+      >       <li>Birden çok başvuranlar. Birden çok başvura eklemek için, her bir başvuran virgülle ayırın; boşluk eklemeyin. Bir başvuran değeri belirtirseniz, ancak tarayıcı yapılandırması nedeniyle istek içinde başvuran bilgileri gönderilmezse, istek varsayılan olarak reddedilir.</li> 
+      >       <li>Eksik veya boş başvuran bilgileri olan istekler. Varsayılan olarak, <b>ec_ref_allow</b> parametresi bu istek türlerini engeller. Bu isteklere izin vermek için, "eksik" metnini girin veya boş bir değer girin (sondaki virgül kullanarak).</li> 
+      >       <li>Alt. Alt etki alanlarına izin vermek için bir yıldız\*işareti () girin. Örneğin, tüm alt etki alanlarına izin vermek `contoso.com`için, `*.contoso.com`girin.</li>
       >    </ul> 
-      >    Örneğin, tüm alt alan `www.contoso.com`adlarından `contoso2.com`gelen isteklere ve boş veya eksik yönlendiren lere erişimsağlamak için girin. `www.contoso.com,*.contoso.com,missing`</td>
+      >    Örneğin, içindeki isteklerin, içindeki `www.contoso.com`tüm alt etki alanları `contoso2.com`ve boş veya eksik başvuranlar içeren istekler için erişime izin vermek için girin `www.contoso.com,*.contoso.com,missing`.</td>
       > </tr>
       > <tr> 
       >    <td><b>ec_ref_deny</b></td>
-      >    <td>Belirtilen başvurucun isteklerini reddeder. Uygulama <b>ec_ref_allow</b> parametresi ile aynıdır. <b>Hem ec_ref_allow</b> hem de <b>ec_ref_deny</b> parametrelerinde bir başvuru varsa, <b>ec_ref_allow</b> parametresi önceliklidir.</td>
+      >    <td>Belirtilen başvuran istekleri reddeder. Uygulama <b>ec_ref_allow</b> parametresiyle aynıdır. Hem <b>ec_ref_allow</b> hem de <b>ec_ref_deny</b> parametrelerinde bir başvuran varsa <b>ec_ref_allow</b> parametresi önceliklidir.</td>
       > </tr>
       > <tr> 
       >    <td><b>ec_proto_allow</b></td> 
-      >    <td>Yalnızca belirtilen protokolden gelen isteklere izin verir. Geçerli değerler `http` `https`, `http,https`veya .</td>
+      >    <td>Yalnızca belirtilen protokoldeki isteklere izin verir. Geçerli değerler `http`, `https`, veya. `http,https`</td>
       > </tr>
       > <tr>
       >    <td><b>ec_proto_deny</b></td>
-      >    <td>Belirtilen protokolden gelen istekleri reddeder. Uygulama <b>ec_proto_allow</b> parametresi ile aynıdır. <b>Hem ec_proto_allow</b> hem de <b>ec_proto_deny</b> parametrelerinde bir protokol varsa, <b>ec_proto_allow</b> parametresi önceliklidir.</td>
+      >    <td>Belirtilen protokolden gelen istekleri reddeder. Uygulama <b>ec_proto_allow</b> parametresiyle aynıdır. Bir protokol hem <b>ec_proto_allow</b> hem de <b>ec_proto_deny</b> parametrelerinde mevcutsa <b>ec_proto_allow</b> parametresi önceliklidir.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_clientip</b></td>
-      >    <td>Belirtilen isteğin IP adresine erişimi kısıtlar. Hem IPV4 hem de IPV6 desteklenir. Belirli bir alt ağla ilişkili tek bir istek IP adresi veya IP adresi belirtebilirsiniz. Örneğin, `11.22.33.0/22` IP adreslerinden 11.22.32.1 ile 11.22.35.254 arasında isteklere izin verir.</td>
+      >    <td>Belirtilen istek sahibinin IP adresine erişimi kısıtlar. Hem ıPV4 hem de ıPV6 desteklenir. Tek bir istek IP adresi veya belirli bir alt ağla ilişkili IP adresleri belirtebilirsiniz. Örneğin, `11.22.33.0/22` 11.22.32.1 IP adreslerinden gelen isteklerin 11.22.35.254 'e erişmesine izin verir.</td>
       > </tr>
       > </table>
 
-   5. Şifreleme parametre değerlerini girmeyi bitirdikten sonra, **Şifrelemek Için Anahtar** listesinden şifrelemek için bir anahtar (hem birincil hem de yedek anahtar oluşturduysanız) seçin.
+   5. Şifreleme parametre değerlerini girmeyi bitirdikten sonra, **şifrelemek Için anahtardan** bir anahtar seçin (hem birincil hem de bir yedek anahtar oluşturduysanız).
     
-   6. **Şifreleme Sürüm** listesinden bir şifreleme sürümü seçin: Sürüm 2 için **V2** veya sürüm 3 için **V3** (önerilir). 
+   6. **Şifreleme sürümü** listesinden bir şifreleme sürümü seçin: sürüm 2 için **v2** veya sürüm 3 için **v3** (önerilir). 
 
-   7. Belirteci oluşturmak için **Şifrele'yi** seçin.
+   7. Belirteci oluşturmak için **şifreleyin** ' ı seçin.
 
-      Belirteç oluşturulduktan sonra **Oluşturulan Belirteç** kutusunda görüntülenir. Belirteci kullanmak için, URL yolunuzdaki dosyanın sonuna sorgu dizesi olarak ekleyin. Örneğin, `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
+      Belirteç oluşturulduktan sonra, **üretilen belirteç** kutusunda görüntülenir. Belirteci kullanmak için, URL yolunuzda dosyanın sonuna bir sorgu dizesi olarak ekleyin. Örneğin, `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
         
-   8. İsteğe bağlı olarak, belirteç parametrelerini görebilmeniz için belirtecinizi şifre çözme aracıyla test edin. Token'deki belirteç değerini **Decrypt kutusuna** yapıştırın. **Şifreyi Çöz'e Anahtar** listesinden kullanılacak şifreleme anahtarını seçin ve ardından **Şifreyi Çöz'ü**seçin.
+   8. İsteğe bağlı olarak, belirtecinizin parametrelerini görüntüleyebilmeniz için, şifre çözme aracıyla belirtecinizi test edin. Belirteç değerini **şifre çözme** kutusuna yapıştırın. **Şifresini çözmek Için anahtardan** kullanılacak şifreleme anahtarını seçin ve ardından **şifre çöz**' ü seçin.
 
-      Belirteç şifresi çözüldükten sonra parametreleri **Özgün Parametreler** kutusunda görüntülenir.
+      Belirtecin şifresi çözülmediğinde, parametreleri **özgün parametreler** kutusunda görüntülenir.
 
-   9. İsteğe bağlı olarak, bir istek reddedildiğinde döndürülen yanıt kodu türünü özelleştirin. **Etkin'i**seçin, ardından **Yanıt Kodu** listesinden yanıt kodunu seçin. **Üstbilgi Adı** otomatik olarak **Konum**olarak ayarlanır. Yeni yanıt kodunu uygulamak için **Kaydet'i** seçin. Belirli yanıt kodları için, hata sayfanızın URL'sini **üstbilgi değeri** kutusuna da girmeniz gerekir. **403** yanıt kodu (Yasak) varsayılan olarak seçilir. 
+   9. İsteğe bağlı olarak, bir istek reddedildiğinde döndürülen yanıt kodu türünü özelleştirin. **Etkin**' i seçin, ardından **Yanıt** kodu listesinden yanıt kodunu seçin. **Üstbilgi adı** otomatik olarak **konum**olarak ayarlanır. Yeni yanıt kodunu uygulamak için **Kaydet** ' i seçin. Belirli yanıt kodları için **üstbilgi değeri** kutusuna hata sayfanızın URL 'sini de girmeniz gerekir. **403** yanıt kodu (yasak) varsayılan olarak seçilidir. 
 
-3. **HTTP Large**altında, **Kurallar Motoru**seçin. Özelliği uygulamak, belirteç kimlik doğrulama özelliğini etkinleştirmek ve belirteç kimlik doğrulamayla ilgili ek özellikleri etkinleştirmek için yolları tanımlamak için kurallar altyapısını kullanırsınız. Daha fazla bilgi için [Kurallar motoru başvurusuna](cdn-rules-engine-reference.md)bakın.
+3. **Http büyük**altında **Rules Engine**' i seçin. Özelliği uygulamak için yollar tanımlamak, belirteç kimlik doğrulaması özelliğini etkinleştirmek ve belirteç kimlik doğrulaması ile ilgili ek özellikleri etkinleştirmek için Rules altyapısını kullanın. Daha fazla bilgi için bkz. [kural altyapısı başvurusu](cdn-rules-engine-reference.md).
 
-   1. Varolan bir kural seçin veya belirteç kimlik doğrulaması uygulamak istediğiniz varlığı veya yolu tanımlamak için yeni bir kural oluşturun. 
-   2. Bir kuralda belirteç kimlik doğrulamasını etkinleştirmek için **Özellikler** listesinden **[Token Auth'u](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** seçin ve ardından **Etkin'i**seçin. Bir kuralı güncelliyorsanız **Güncelleştir'i** veya kural oluşturuyorsanız **Ekle'yi** seçin.
+   1. Belirteç kimlik doğrulaması uygulamak istediğiniz varlığı veya yolu tanımlamak için mevcut bir kuralı seçin veya yeni bir kural oluşturun. 
+   2. Bir kuralda belirteç kimlik doğrulamasını etkinleştirmek için, **Özellikler** listesinden **[belirteç](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** kimlik doğrulaması ' nı seçin ve ardından **etkin**' i seçin. Bir kuralı **güncelleştiriyorsanız veya bir kural oluşturuyorsanız,** **Güncelleştir** ' i seçin.
         
-      ![CDN kuralları motor belirteç kimlik doğrulaması örnek etkinleştirme](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
+      ![CDN kuralları altyapı belirteci kimlik doğrulama etkinleştirme örneği](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
-4. Kurallar altyapısında, belirteç kimlik doğrulamayla ilgili ek özellikleri de etkinleştirebilirsiniz. Aşağıdaki özelliklerden herhangi birini etkinleştirmek için **Özellikler** listesinden seçin ve ardından **Etkin'i**seçin.
+4. Kurallar altyapısında, ek belirteç kimlik doğrulaması ile ilgili özellikleri de etkinleştirebilirsiniz. Aşağıdaki özelliklerden herhangi birini etkinleştirmek için, **Özellikler** listesinden seçin ve ardından **etkin**' i seçin.
     
-   - **[Token Auth Denial Code](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)**: İstek reddedildiğinde kullanıcıya döndürülen yanıt türünü belirler. Burada ayarlanan kurallar, belirteç tabanlı kimlik doğrulama sayfasındaki **Özel Reddi İşlemi** bölümünde ayarlanan yanıt kodunu geçersiz kılar.
+   - **[Belirteç kimlik doğrulaması reddi kodu](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)**: bir istek reddedildiğinde kullanıcıya döndürülen yanıtın türünü belirler. Burada ayarlanan kurallar, belirteç tabanlı kimlik doğrulama sayfasındaki **özel olarak reddetme** bölümünde ayarlanan yanıt kodunu geçersiz kılar.
 
-   - **[Token Auth Ignore URL Case](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)**: Belirteci doğrulamak için kullanılan URL'nin büyük/küçük harf duyarlı olup olmadığını belirler.
+   - **[Belirteç kimlik doğrulaması URL 'Sini yoksay durum](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)**: belirteci doğrulamak IÇIN kullanılan URL 'nin büyük/küçük harfe duyarlı olup olmadığını belirler.
 
-   - **[Belirteç Auth Parametresi](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)**: İstenen URL'de görünen belirteç auth sorgu dize parametresini yeniden adlandırır. 
+   - **[Belirteç kimlik doğrulaması parametresi](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)**: istenen URL 'de görünen belirteç kimlik doğrulama sorgu dizesi parametresini yeniden adlandırır. 
         
-     ![CDN kuralları motor belirteç kimlik doğrulama ayarları örneği](./media/cdn-token-auth/cdn-rules-engine2.png)
+     ![CDN kuralları altyapı belirteci kimlik doğrulama ayarları örneği](./media/cdn-token-auth/cdn-rules-engine2.png)
 
-5. [GitHub'da](https://github.com/VerizonDigital/ectoken)kaynak koduna erişerek belirtecinizi özelleştirebilirsiniz.
-   Kullanılabilir diller şunlardır:
+5. [GitHub](https://github.com/VerizonDigital/ectoken)'da kaynak koduna erişerek belirtecinizi özelleştirebilirsiniz.
+   Kullanılabilir diller şunları içerir:
     
    - C
    - C#
@@ -199,4 +199,4 @@ Aşağıdaki akış şeması, belirteç kimlik doğrulaması CDN bitiş noktası
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN özellikleri ve sağlayıcı fiyatlandırması
 
-Özellikler hakkında daha fazla bilgi için [Azure CDN ürün özelliklerine](cdn-features.md)bakın. Fiyatlandırma hakkında daha fazla bilgi için [İçerik Dağıtım Ağı fiyatlandırması'na](https://azure.microsoft.com/pricing/details/cdn/)bakın.
+Özellikler hakkında bilgi için bkz. [Azure CDN ürün özellikleri](cdn-features.md). Fiyatlandırma hakkında bilgi için bkz. [Content Delivery Network fiyatlandırması](https://azure.microsoft.com/pricing/details/cdn/).

@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70012579"
 ---
 # <a name="create-a-netapp-account"></a>NetApp hesabı oluşturma
 NetApp hesabı oluşturmak, kapasite havuzu ayarlamanıza ve ardından birim oluşturmanıza olanak tanır. Yeni NetApp hesabını oluşturmak için Azure NetApp Files dikey penceresini kullanırsınız.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-Azure NetApp Files ekibinden hizmete erişim izni verildiğini onaylayan bir e-posta almış olmalısınız. Bkz. [Hizmete erişmek için bekleme listesi isteği gönder.](azure-netapp-files-register.md#waitlist)
+Azure NetApp Files takımdan, hizmete erişim verildiğini onaylayan bir e-posta almış olmanız gerekir. Bkz. [hizmete erişmek için bir eklenebileceğinizi isteği gönderme](azure-netapp-files-register.md#waitlist).
 
-NetApp Kaynak Sağlayıcısı'nı kullanmak için aboneliğinizi de kaydetmiş olmalısınız. Bkz. [NetApp Kaynak Sağlayıcısı'nı kaydedin.](azure-netapp-files-register.md#resource-provider)
+Ayrıca, NetApp kaynak sağlayıcısını kullanmak için aboneliğinizi kaydetmiş olmanız gerekir. Bkz. [NetApp kaynak sağlayıcısını kaydetme](azure-netapp-files-register.md#resource-provider).
 
 ## <a name="steps"></a>Adımlar 
 
@@ -54,15 +54,15 @@ NetApp Kaynak Sağlayıcısı'nı kullanmak için aboneliğinizi de kaydetmiş o
      ![Yeni NetApp hesabı](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
-5. **Oluştur'u**tıklatın.     
+5. **Oluştur**' a tıklayın.     
    Oluşturduğunuz NetApp hesabı artık Azure NetApp Files dikey penceresinde gösterilir. 
 
 > [!NOTE] 
-> Azure NetApp Files hizmetine erişim izniniz yoksa, ilk NetApp hesabını oluşturmaya çalıştığınızda aşağıdaki hatayı alırsınız:  
+> Azure NetApp Files hizmetine erişim verilmemişse, ilk NetApp hesabını oluşturmaya çalıştığınızda aşağıdaki hatayı alırsınız:  
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-[Kapasitesi havuzunu ayarlama](azure-netapp-files-set-up-capacity-pool.md)
+[Kapasite havuzunu ayarlama](azure-netapp-files-set-up-capacity-pool.md)
 

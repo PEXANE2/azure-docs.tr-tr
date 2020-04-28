@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 29be95a53004070753ca742cd8d76ca9d8384ea0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70166796"
 ---
 ## <a name="specifying-formats"></a>Biçim belirtme
 Azure Data Factory şu biçim türlerini destekler:
 
 * [Metin Biçimi](#specifying-textformat)
-* [JSON Biçimi](#specifying-jsonformat)
-* [Avro Biçimi](#specifying-avroformat)
-* [ORC Biçimi](#specifying-orcformat)
-* [Parke Formatı](#specifying-parquetformat)
+* [JSON biçimi](#specifying-jsonformat)
+* [Avro biçimi](#specifying-avroformat)
+* [ORC biçimi](#specifying-orcformat)
+* [Parquet biçimi](#specifying-parquetformat)
 
 ### <a name="specifying-textformat"></a>TextFormat belirtme
 Metin dosyalarını ayrıştırmak veya verileri metin biçiminde yazmak istiyorsanız `format` `type` özelliğini **TextFormat** olarak ayarlayın. İsterseniz `format` bölümünde aşağıdaki **isteğe bağlı** özellikleri de belirtebilirsiniz. Yapılandırma adımları için [TextFormat örneği](#textformat-example) bölümünü inceleyin.
@@ -69,7 +69,7 @@ Aşağıdaki örnekte TextFormat için bazı biçim özellikleri gösterilmişti
 * Bir metin dosyasından kopyalama yapıyorsunuz ve dosyanın başındaki veri içermeyen veya üst bilgi bilgilerini içeren birkaç satırı atlamak istiyorsunuz. Atlanacak satır sayısını belirtmek için `skipLineCount` değerini belirtin. Dosyanın geri kalan kısmında üst bilgi satırı varsa `firstRowAsHeader` değerini de belirtebilirsiniz. Hem `skipLineCount` hem de `firstRowAsHeader` parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur.
 
 ### <a name="specifying-jsonformat"></a>JsonFormat belirtme
-**Azure Cosmos DB'den JSON dosyalarını olduğu gibi alma/dışa aktarma**için Azure Cosmos DB bağlayıcısındaki [JSON belgelerini içe aktarma/dışa aktarma](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents) bölümüne bakın.
+**JSON dosyalarını, Azure Cosmos DB olduğu gibi içeri/dışarı**aktarmak için, Azure Cosmos DB BAĞLAYıCıSı 'ndaki [JSON belgelerini içeri/dışarı](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents) aktarma bölümüne bakın.
 
 JSON dosyalarını ayrıştırmak veya verileri JSON biçiminde yazmak istiyorsanız `format` `type` özelliğini **JsonFormat** olarak ayarlayın. İsterseniz `format` bölümünde aşağıdaki **isteğe bağlı** özellikleri de belirtebilirsiniz. Yapılandırma adımları için [JsonFormat örneği](#jsonformat-example) bölümünü inceleyin.
 
@@ -207,14 +207,14 @@ Bu örnekte, bir kök JSON nesnesinin tablosal sonuçtaki tek bir kayıtla eşle
 ```
 ve hem nesne hem de diziden veri ayıklayarak bir Azure SQL tablosuna aşağıdaki biçimde kopyalamak istersiniz:
 
-| id | deviceType | targetResourceType | kaynakManagementProcessRunId | occurrenceTime |
+| id | deviceType | targetResourceType | Resourcemanagementprocessrunıd | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
 **JsonFormat** türüne sahip giriş veri kümesi şu şekilde tanımlanır: (yalnızca ilgili bölümlerin gösterildiği kısmi tanım). Daha ayrıntılı belirtmek gerekirse:
 
 - `structure` bölümü, tablo verilerine dönüştürme sırasında kullanılan özelleştirilmiş sütun adlarını ve karşılık gelen veri türünü tanımlar. Bu bölüm **isteğe bağlıdır** ve yalnızca sütun eşleme için kullanmanız gerekir. Ayrıntılı bilgi için bkz. Dikdörtgen veri kümeleri için yapı tanımını belirtme.
-- `jsonPathDefinition`, her sütun için verilerin ayıklanacağı JSON yolunu belirtir. Diziden veri kopyalamak için, verilen özelliği xth nesnesinden ayıklamak için **array[x].property'i** kullanabilir veya bu özelliği içeren herhangi bir nesnenin değerini bulmak için **array[*].property'i** kullanabilirsiniz.
+- `jsonPathDefinition`, her sütun için verilerin ayıklanacağı JSON yolunu belirtir. Diziden veri kopyalamak için **Array [x]. Property** ' yi kullanarak verilen özelliğin değerini XTH nesnesinden çıkarabilir veya bu tür özelliği içeren herhangi bir nesneden değeri bulmak için **Array [*]. Property** ' yi kullanabilirsiniz.
 
 ```json
 "properties": {

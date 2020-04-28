@@ -1,16 +1,16 @@
 ---
 title: Azure Veri Kataloğu için klavye kısayolları
-description: Bu makalede, Azure Veri Kataloğu'nda kullanabileceğiniz klavye kısayollarının bir listesi gösterilmektedir.
+description: Bu makalede, Azure Veri Kataloğu 'nda kullanabileceğiniz klavye kısayollarının bir listesi gösterilir.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 72d1ce0ded61b1143f99769319892981f3cd1c10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69014443"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Azure Veri Kataloğu için klavye kısayolları
@@ -20,63 +20,63 @@ ms.locfileid: "69014443"
 ### <a name="general-keyboard-shortcuts"></a>Genel klavye kısayolları
 | İşlem | Buna basın |
 | --- | --- |
-| Bir sayfadaki her denetime sekme |Tab |
-| Bir seçenek belirtin |Girin veya Boşluk Çubuğu |
-| Sayfayı en üst düzeye çıkar |KAZAN+YUKARı |
-| Sayfayı geri yükleme/simge durumuna küçültme |WIN+DOWN |
-| Sayfa menüsünü aç |ALT+SPACEBAR |
+| Sayfadaki her denetim için sekme |Tab |
+| Bir seçenek belirtin |ENTER veya boşluk çubuğu |
+| Ekranı Kapla |WIN + yukarı |
+| Sayfayı geri yükle/Küçült |WIN + aşağı |
+| Sayfa menüsünü aç |ALT + ara çubuğu |
 
 ### <a name="authentication-page"></a>Kimlik doğrulama sayfası
 | İşlem | Buna basın |
 | --- | --- |
-| Hizmete giriş |ALT+S |
+| Hizmette oturum aç |ALT + S |
 
 ### <a name="data-source-selection-page"></a>Veri kaynağı seçim sayfası
 | İşlem | Buna basın |
 | --- | --- |
-| Sonraki sayfaya git (etkinse) |ALT+N |
-| Odak bir döşeme üzerindeyken seçili türü değiştirme |SOL, YUKARı, SAĞ VEYA ALT OK |
+| Sonraki sayfaya git (etkinse) |ALT + N |
+| Odak bir kutucukta olduğunda seçili türü Değiştir |Sol, yukarı, sağ veya aşağı ok |
 
 ### <a name="data-source-connection-page"></a>Veri kaynağı bağlantı sayfası
 | İşlem | Buna basın |
 | --- | --- |
-| Önceki sayfaya git (etkinse) |ALT+P |
-| Bağlan düğmesini seçin. |ALT+C |
+| Önceki sayfaya git (etkinse) |ALT + P |
+| Bağlan düğmesini seçin. |ALT + C |
 
 ### <a name="connection-context-page"></a>Bağlantı bağlamı sayfası
 | İşlem | Buna basın |
 | --- | --- |
-| Kayıt düğmesi (etkinse) |ALT+R |
-| Önizleme onay kutusunu ekle (varsa) |ALT+P |
-| Veri Profili onay kutusunu ekleyin (varsa) |ALT+D |
-| Her liste öğesine gidin |YUKARı veya AŞAĞı OK |
-| Sunucu Hiyerarşisi, ağaç görünümünün düğüm'üne genişletme |SAĞ OK |
-| **Kullanılabilir Nesneler** veya Nesneler için seçili öğeleri **kaydedilecek** taşıma |Ara çubuğu |
+| Kaydet düğmesi (etkinse) |ALT + R |
+| Önizlemeyi ekle onay kutusu (varsa) |ALT + P |
+| Veri profili Ekle onay kutusu (varsa) |ALT + D |
+| Her liste öğesine git |YUKARı veya aşağı ok |
+| Sunucu hiyerarşisi, ağaç görünümünün düğümünü Genişlet |SAĞ OK |
+| **Kullanılabilir nesneler** veya **nesneler** için seçili öğeleri taşıma |'NU |
 
-### <a name="publish-progress-page"></a>İlerleme sayfasını yayımlama
+### <a name="publish-progress-page"></a>Yayımla ilerleme durumu sayfası
 | İşlem | Buna basın |
 | --- | --- |
-| İptal düğmesi |ALT+C |
-| Diğer Nesneleri Kaydol düğmesi |ALT+R |
-| Portal ı görüntüle düğmesi |ALT+V |
+| İptal düğmesi |ALT + C |
+| Daha fazla nesne Kaydet düğmesi |ALT + R |
+| Portalı görüntüle düğmesi |ALT + V |
 
-### <a name="publish-progress-page"></a>İlerleme sayfasını yayımlama
+### <a name="publish-progress-page"></a>Yayımla ilerleme durumu sayfası
 | İşlem | Buna basın |
 | --- | --- |
-| Kaydet düğmesi (etkinse) |ALT+S |
-| İptal düğmesi |ALT+C |
+| Kaydet düğmesi (etkinse) |ALT + S |
+| İptal düğmesi |ALT + C |
 
 ## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>Veri Kataloğu portalı için klavye kısayolları
 | İşlem | Buna basın |
 | --- | --- |
-| Gidin |SEKME ve SHIFT+TAB |
-| Bir öğeyi tıklatın |BOŞLUK veya ENTER |
-| Bir bölüm içine detaya inin |BOŞLUK veya ENTER |
-| Bir bölümden çıkış |Esc |
-| Bir varlığı pinleme/save |ALT+P |
-| Keşfet sayfasında, bir varlığın odağı olduğunda, varlığı seçin |BOŞLUK veya ENTER |
-| Çoklu seçikten varlık ekler/kaldırma |CTRL+SPACE veya ENTER |
-| Arama eşler menüsünü geçiş |ALT+S |
-| Açma **menüsünde** geçiş yapın |ALT+O |
-| Kıymet bir kapsayıcıysa, kapsayıcıyı keşfedin |ALT+L |
+| Gidin |SEKME ve SHIFT + TAB |
+| Bir öğeye tıklayın |BOŞLUK veya ENTER |
+| Bir bölümde detaya gitme |BOŞLUK veya ENTER |
+| Bir bölümden çıkma |LARıNA |
+| Bir varlığı sabitleme/serbest bırak |ALT + P |
+| Bul sayfasında, bir varlık odağa sahip olduğunda varlık ' ı seçin. |BOŞLUK veya ENTER |
+| Çoklu Select 'ten varlık ekler/kaldırır |CTRL + boşluk veya ENTER |
+| Arama eşleşmeleri menüsünü değiştirme |ALT + S |
+| Menüdeki **açma aç** |ALT+O |
+| Varlık bir kapsayıcı ise kapsayıcıyı keşfet |ALT + L |
 

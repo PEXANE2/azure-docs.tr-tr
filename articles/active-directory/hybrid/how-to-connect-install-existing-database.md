@@ -1,6 +1,6 @@
 ---
-title: Varolan bir ADSync veritabanını kullanarak Azure AD Connect'i yükleme | Microsoft Dokümanlar
-description: Bu konu, varolan bir ADSync veritabanının nasıl kullanılacağını açıklar.
+title: Mevcut bir ADSync veritabanını kullanarak Azure AD Connect 'yi yükler | Microsoft Docs
+description: Bu konu başlığı altında, var olan bir ADSync veritabanının nasıl kullanılacağı açıklanmaktadır.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,56 +18,56 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60245217"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect'i mevcut bir AD Eşitleme veritabanını kullanarak yükleme
-Azure AD Connect, verileri depolamak için bir SQL Server veritabanı gerektirir. Azure AD Connect yüklü varsayılan SQL Server 2012 Express LocalDB'yi kullanabilir veya kendi SQL sürümünüzü kullanabilirsiniz. Daha önce, Azure AD Connect'i yüklediğinizde, ADSync adında yeni bir veritabanı her zaman oluşturulmuştu. Azure AD Connect sürümü 1.1.613.0 (veya sonrası) ile, varolan bir ADSync veritabanına işaret ederek Azure AD Connect'i yükleme seçeneğiniz vardır.
+Azure AD Connect, verileri depolamak için SQL Server bir veritabanı gerektirir. Azure AD Connect yüklü olan SQL Server Express LocalDB varsayılan 2012 kullanabilir veya kendi tam SQL sürümünüzü kullanabilirsiniz. Daha önce Azure AD Connect yüklediğinizde, ADSync adlı yeni bir veritabanı her zaman oluşturulmuştur. Azure AD Connect sürüm 1.1.613.0 (veya sonrası) ile, var olan bir ADSync veritabanına işaret ederek Azure AD Connect yükleyebilirsiniz.
 
-## <a name="benefits-of-using-an-existing-adsync-database"></a>Varolan bir ADSync veritabanıkullanmanın yararları
-Varolan bir ADSync veritabanını işaret ederek:
+## <a name="benefits-of-using-an-existing-adsync-database"></a>Mevcut bir ADSync veritabanını kullanmanın avantajları
+Varolan bir ADSync veritabanına işaret ederek:
 
-- Kimlik bilgileri dışında, ADSync veritabanında depolanan senkronizasyon yapılandırması (özel eşitleme kuralları, bağlayıcılar, filtreleme ve isteğe bağlı özellikler yapılandırması dahil) otomatik olarak kurtarılır ve yükleme sırasında kullanılır . Azure AD Connect tarafından şirket içi AD ve Azure AD ile değişiklikleri eşitlemek için kullanılan kimlik bilgileri şifrelenir ve yalnızca önceki Azure AD Connect sunucusu tarafından erişilebilir.
-- ADSync veritabanında depolanan tüm kimlik verileri (bağlayıcı boşlukları ve metaverse ile ilişkili) ve eşitleme çerezleri de kurtarılır. Yeni yüklenen Azure AD Connect sunucusu, tam eşitleme gerçekleştirme gereksinimine sahip olmak yerine önceki Azure AD Connect sunucusunun kaldığı yerden eşitleme yapmaya devam edebilir.
+- Kimlik bilgileri hariç, ADSync veritabanında depolanan eşitleme yapılandırması (özel eşitleme kuralları, bağlayıcılar, filtreleme ve isteğe bağlı özellikler yapılandırma dahil) otomatik olarak kurtarılır ve yükleme sırasında kullanılır. Azure AD Connect tarafından, şirket içi AD ve Azure AD ile değişiklikleri eşitlemeye yönelik kimlik bilgileri şifrelenir ve yalnızca önceki Azure AD Connect sunucusu tarafından erişilebilir.
+- ADSync veritabanında depolanan tüm kimlik verileri (bağlayıcı alanları ve metadize ile ilişkili) ve eşitleme tanımlama bilgileri de kurtarılır. Yeni yüklenen Azure AD Connect sunucusu, bir tam eşitleme gerçekleştirmek zorunda kalmak yerine önceki Azure AD Connect sunucusunun sol tarafında eşitlemeye devam edebilir.
 
-## <a name="scenarios-where-using-an-existing-adsync-database-is-beneficial"></a>Varolan bir ADSync veritabanını kullanmanın yararlı olduğu senaryolar
-Bu avantajlar aşağıdaki senaryolarda yararlıdır:
+## <a name="scenarios-where-using-an-existing-adsync-database-is-beneficial"></a>Mevcut bir ADSync veritabanını kullanmanın faydalı olduğu senaryolar
+Bu avantajlar aşağıdaki senaryolarda faydalıdır:
 
 
-- Varolan bir Azure AD Connect dağıtımınız var. Varolan Azure AD Connect sunucunuz artık çalışmıyor, ancak ADSync veritabanını içeren SQL sunucusu hala çalışıyor. Yeni bir Azure AD Connect sunucusu yükleyebilir ve varolan ADSync veritabanına yönlendirebilirsiniz. 
-- Varolan bir Azure AD Connect dağıtımınız var. ADSync veritabanını içeren SQL sunucunuz artık çalışmıyor. Ancak, veritabanının yeni bir yedekleme var. Önce ADSync veritabanını yeni bir SQL sunucusuna geri yükleyebilirsiniz. Bundan sonra, yeni bir Azure AD Connect sunucusu yükleyebilir ve geri yüklenen ADSync veritabanına yönlendirebilirsiniz.
-- YerelDB kullanan varolan bir Azure AD Connect dağıtımınız vardır. LocalDB tarafından uygulanan 10 GB sınırı nedeniyle, tam SQL'e geçiş yapmak istiyorsunuz. ADSync veritabanını LocalDB'den yedekleyebilir ve bir SQL sunucusuna geri yükleyebilirsiniz. Bundan sonra, yeni bir Azure AD Connect sunucusunu yeniden yükleyebilir ve geri yüklenen ADSync veritabanına yönlendirebilirsiniz.
-- Bir evreleme sunucusu ayarlamaya çalışıyorsunuz ve yapılandırmasının geçerli etkin sunucuyla eşleştiğinden emin olmak istiyor. ADSync veritabanını yedekleyebilir ve başka bir SQL sunucusuna geri yükleyebilirsiniz. Bundan sonra, yeni bir Azure AD Connect sunucusunu yeniden yükleyebilir ve geri yüklenen ADSync veritabanına yönlendirebilirsiniz.
+- Mevcut bir Azure AD Connect dağıtımınız var. Mevcut Azure AD Connect sunucunuz artık çalışmıyor, ancak ADSync veritabanını içeren SQL Server hala çalışıyor. Yeni bir Azure AD Connect sunucusu yükleyebilir ve var olan ADSync veritabanına işaret edebilirsiniz. 
+- Mevcut bir Azure AD Connect dağıtımınız var. ADSync veritabanını içeren SQL Server 'niz artık çalışmıyor. Ancak, veritabanının yeni bir yedeğini alırsınız. ADSync veritabanını önce yeni bir SQL Server 'a geri yükleyebilirsiniz. Bundan sonra yeni bir Azure AD Connect sunucusu yükleyebilir ve geri yüklenen ADSync veritabanına işaret edebilirsiniz.
+- LocalDB kullanan mevcut bir Azure AD Connect dağıtımınız var. LocalDB tarafından uygulanan 10 GB 'lik sınır nedeniyle tam SQL 'e geçiş yapmak istersiniz. ADSync veritabanını LocalDB 'den yedekleyebilir ve bunu bir SQL Server 'a geri yükleyebilirsiniz. Bundan sonra yeni bir Azure AD Connect sunucusunu yeniden yükleyebilir ve geri yüklenen ADSync veritabanına işaret edebilirsiniz.
+- Hazırlama sunucusu kurmaya çalışıyorsunuz ve yapılandırmasının geçerli etkin sunucu ile eşleştiğinden emin olmak istiyor. ADSync veritabanını yedekleyebilir ve bunu başka bir SQL Server 'a geri yükleyebilirsiniz. Bundan sonra yeni bir Azure AD Connect sunucusunu yeniden yükleyebilir ve geri yüklenen ADSync veritabanına işaret edebilirsiniz.
 
 ## <a name="prerequisite-information"></a>Önkoşul bilgileri
 
-Devam etmeden önce dikkat edilmesi gereken önemli notlar:
+Devam etmeden önce dikkat etmeniz gereken önemli notlar:
 
-- Azure AD Connect'i Donanıma ve ön koşullara yüklemek için ön koşulları ve Azure AD Connect'i yüklemek için gereken hesap ve izinleri gözden geçirin. Azure AD Connect'i "varolan veritabanını kullan" modunu kullanarak yüklemek için gereken izinler, "özel" yüklemeyle aynıdır.
-- Azure AD Connect'i varolan bir ADSync veritabanına dağıtmak yalnızca tam SQL ile desteklenir. SQL Express LocalDB ile desteklenmez. LocalDB'de kullanmak istediğiniz varolan bir ADSync veritabanınız varsa, önce ADSync veritabanını yedeklemeniz ve tam SQL'e geri yüklemeniz gerekir. Bundan sonra, bu yöntemi kullanarak geri yüklenen veritabanına karşı Azure AD Connect dağıtabilirsiniz.
-- Yükleme için kullanılan Azure AD Connect sürümü aşağıdaki ölçütleri karşılamalıdır:
-    - 1.1.613.0 veya üzeri, VE
-    - ADSync veritabanında en son kullanılan Azure AD Connect sürümüyle aynı veya daha yüksek. Yükleme için kullanılan Azure AD Connect sürümü, ADSync veritabanında en son kullanılan sürümden daha yüksekse, tam bir eşitleme gerekebilir.  İki sürüm arasında şema veya eşitleme kuralı değişiklikleri varsa tam eşitleme gereklidir. 
-- AdSync veritabanı kullanılan nispeten yeni bir eşitleme durumu içermelidir. Varolan ADSync veritabanı ile son eşitleme etkinliği son üç hafta içinde olmalıdır.
-- Azure AD Connect'i "varolan veritabanını kullan" yöntemini kullanarak yüklerken, önceki Azure AD Connect sunucusunda yapılandırılan oturum açma yöntemi korunmaz. Ayrıca, yükleme sırasında oturum açma yöntemini yapılandıramazsınız. Oturum açma yöntemini yalnızca yükleme tamamlandıktan sonra yapılandırabilirsiniz.
-- Birden çok Azure AD Connect sunucusunun aynı ADSync veritabanını paylaşmasını sağlayamazsınız. "Varolan veritabanını kullan" yöntemi, varolan bir ADSync veritabanını yeni bir Azure AD Connect sunucusuyla yeniden kullanmanıza olanak tanır. Paylaşımı desteklemez.
+- Donanım ve önkoşullara Azure AD Connect yüklemek için önkoşulları ve Azure AD Connect yüklemek için gereken hesap ve izinleri gözden geçirdiğinizden emin olun. "Var olan veritabanını kullan" modunu kullanarak Azure AD Connect yüklemek için gereken izinler "özel" yükleme ile aynıdır.
+- Mevcut bir ADSync veritabanına karşı Azure AD Connect dağıtmak yalnızca tam SQL ile desteklenir. SQL Express LocalDB ile desteklenmez. LocalDB 'de kullanmak istediğiniz mevcut bir ADSync veritabanınız varsa, önce ADSync veritabanını (LocalDB) yedeklemeniz ve tam SQL 'e geri yüklemeniz gerekir. Bundan sonra, bu yöntemi kullanarak geri yüklenen veritabanına karşı Azure AD Connect dağıtabilirsiniz.
+- Yükleme için kullanılan Azure AD Connect sürümünün aşağıdaki ölçütleri karşılaması gerekir:
+    - 1.1.613.0 veya üzeri ve
+    - ADSync veritabanıyla en son kullanılan Azure AD Connect sürümünden aynı veya daha yüksek. Yükleme için kullanılan Azure AD Connect sürümü, ADSync veritabanıyla en son kullanılan sürümden yüksekse, tam eşitleme gerekebilir.  İki sürüm arasında şema veya eşitleme kuralı değişikliği varsa tam eşitleme gereklidir. 
+- Kullanılan ADSync veritabanı görece olarak yeni bir eşitleme durumu içermelidir. Mevcut ADSync veritabanına sahip son eşitleme etkinliği son üç hafta içinde olmalıdır.
+- "Var olan veritabanını kullan" yöntemi kullanılarak Azure AD Connect yüklenirken, önceki Azure AD Connect sunucusunda yapılandırılan oturum açma yöntemi korunmaz. Ayrıca, yükleme sırasında oturum açma yöntemini yapılandıramazsınız. Oturum açma yöntemini, yükleme tamamlandıktan sonra yapılandırabilirsiniz.
+- Aynı ADSync veritabanını paylaşan birden çok Azure AD Connect sunucusu olamaz. "Var olan veritabanını kullan" yöntemi, var olan bir ADSync veritabanını yeni bir Azure AD Connect sunucusuyla birlikte kullanmanıza olanak sağlar. Paylaşmayı desteklemez.
 
-## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>Azure AD Connect'i "varolan veritabanını kullan" moduyla yükleme adımları
-1.  Azure AD Connect yükleyicisini (AzureADConnect.MSI) Windows sunucusuna indirin. Azure AD Connect'i yüklemeye başlamak için Azure AD Connect yükleyicisini çift tıklatın.
+## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>"Var olan veritabanını kullan" modunu kullanarak Azure AD Connect yüklemek için gereken adımlar
+1.  Azure AD Connect yükleyicisi 'ni (AzureADConnect. MSI) Windows Server 'a indirin. Azure AD Connect yüklemeye başlamak için Azure AD Connect yükleyiciye çift tıklayın.
 2.  MSI yüklemesi tamamlandıktan sonra Azure AD Connect sihirbazı Hızlı mod kurulumu açılır. Çıkış simgesine tıklayarak ekranı kapatın.
 ![Hoş geldiniz](./media/how-to-connect-install-existing-database/db1.png)
 3.  Yeni bir komut istemi veya PowerShell oturumu başlatın. "C:\Program Files\Microsoft Azure Active Directory Connect" klasörüne gidin. Azure AD Connect sihirbazını "Var olan veritabanını kullan" modunda başlatmak için .\AzureADConnect.exe /useexistingdatabase komutunu çalıştırın.
 
 > [!NOTE]
-> Yalnızca veritabanı daha önceki bir Azure AD Connect yüklemesinden veri içeriyorsa **/UseExistingDatabase** anahtarını kullanın. Örneğin, yerel bir veritabanından tam bir SQL Server veritabanına taşınırken veya Azure AD Connect sunucusu yeniden oluşturulurken ve ADSync veritabanının SQL yedeklemesini daha önceki bir Azure AD Connect yüklemesinden geri yüklediğinizde. Veritabanı boşsa, diğer bir deyişle önceki Bir Azure AD Connect yüklemesinden herhangi bir veri içermiyorsa, bu adımı atlayın.
+> Yalnızca veritabanı daha önceki bir Azure AD Connect yüklemesinden veri içerdiğinde **/Useexistingdatabase** anahtarını kullanın. Örneğin, yerel bir veritabanından tam SQL Server veritabanına geçiş yaparken veya Azure AD Connect sunucusu yeniden oluşturulduğunda ve ADSync veritabanının bir SQL yedeklemesini daha önceki bir Azure AD Connect yüklemesinden geri yükledikten sonra. Veritabanı boşsa, diğer bir deyişle, önceki Azure AD Connect yüklemesinden herhangi bir veri içermiyorsa, bu adımı atlayın.
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 1. Azure AD Connect'e Hoş Geldiniz ekranı açılır. Lisans koşullarını ve gizlilik bildirimini kabul ettikten sonra **Devam**'a tıklayın.
    ![Hoş geldiniz](./media/how-to-connect-install-existing-database/db3.png)
-1. **Gerekli bileşenleri yükleme** ekranında **Mevcut bir SQL Server'ı kullanma** seçeneği etkinleştirilir. AD Eşitleme veritabanını barındıran SQL sunucusunun adını belirtin. AD Eşitleme veritabanını barındırmak için kullanılan SQL altyapısı örneği SQL sunucusundaki varsayılan örnek değilse SQL altyapısı örneği adını belirtmeniz gerekir. Ayrıca SQL göz atma özelliği etkin değilse SQL altyapısı örneği bağlantı noktası numarasını da belirtmeniz gerekir. Örnek:         
+1. **Gerekli bileşenleri yükleme** ekranında **Mevcut bir SQL Server'ı kullanma** seçeneği etkinleştirilir. AD Eşitleme veritabanını barındıran SQL sunucusunun adını belirtin. AD Eşitleme veritabanını barındırmak için kullanılan SQL altyapısı örneği SQL sunucusundaki varsayılan örnek değilse SQL altyapısı örneği adını belirtmeniz gerekir. Ayrıca SQL göz atma özelliği etkin değilse SQL altyapısı örneği bağlantı noktası numarasını da belirtmeniz gerekir. Örneğin:         
    ![Hoş geldiniz](./media/how-to-connect-install-existing-database/db4.png)           
 
 1. **Azure AD'ye bağlan** ekranında Azure AD dizininizin genel yöneticisinin kimlik bilgilerini girmeniz gerekir. Varsayılan onmicrosoft.com etki alanındaki bir hesabı kullanmanız önerilir. Bu hesap yalnızca Azure AD'de hizmet hesabı oluşturmak için kullanılır ve sihirbaz tamamlandıktan sonra kullanılmaz.
@@ -81,7 +81,7 @@ Devam etmeden önce dikkat edilmesi gereken önemli notlar:
    ![Hoş geldiniz](./media/how-to-connect-install-existing-database/db7.png)
  
  
-1. Kimlik bilgileri girildikten sonra kırmızı çarpı işaretinin yerine yeşil onay işareti görünür. **İleri**'ye tıklayın.
+1. Kimlik bilgileri girildikten sonra kırmızı çarpı işaretinin yerine yeşil onay işareti görünür. **İleri**’ye tıklayın.
    ![Hoş geldiniz](./media/how-to-connect-install-existing-database/db8.png)
  
  
@@ -92,16 +92,16 @@ Devam etmeden önce dikkat edilmesi gereken önemli notlar:
 1. Yükleme tamamlandıktan sonra Azure AD Connect otomatik olarak Hazırlama Modunda etkinleştirilir. Hazırlama Modunu devre dışı bırakmadan önce sunucu yapılandırmasını ve bekleme durumundaki dışarı aktarma işlemlerini gözden geçirerek beklenmeyen değişikliklerin olup olmadığını kontrol etmeniz önerilir. 
 
 ## <a name="post-installation-tasks"></a>Yükleme sonrası görevler
-1.2.65.0'dan önce Azure AD Connect sürümü tarafından oluşturulan bir veritabanı yedeklemesini geri gönderirken, evreleme sunucusu otomatik olarak **Yapılandırma Yapma'nın**oturum açma yöntemini seçer. Parola karma eşitleme ve parola yazma tercihleriniz geri yüklenirken, oturum açma yöntemini etkin eşitleme sunucunuz için geçerli olan diğer ilkelerle eşleşecek şekilde değiştirmeniz gerekir.  Bu adımların tamamlanmaması, bu sunucunun etkin hale gelmesi durumunda kullanıcıların oturum açmasını engelleyebilir.  
+1.2.65.0 ' den önceki bir Azure AD Connect sürümü tarafından oluşturulan bir veritabanı yedeklemesini geri yüklerken, hazırlama sunucusu otomatik olarak **yapılandırma**için bir oturum açma yöntemi seçer. Parola karması eşitleme ve parola geri yazma tercihleri geri yüklenecek olsa da, oturum açma yöntemini daha sonra etkin eşitleme sunucunuz için geçerli olan diğer ilkelerle eşleşecek şekilde değiştirmeniz gerekir.  Bu adımların tamamlanamaması, bu sunucunun etkin hale gelmesi için kullanıcıların oturum açmasını önleyebilir.  
 
 Gerekli olan ek adımları doğrulamak için aşağıdaki tabloyu kullanın.
 
 |Özellik|Adımlar|
 |-----|-----|
-|Şifre Karma Senkronizasyonu| Parola Karma Eşitleme ve Parola geri yazma ayarları, 1.2.65.0'dan başlayan Azure AD Connect sürümleri için tamamen geri yüklenir.  Azure AD Connect'in eski bir sürümünü kullanarak geri geliyorsanız, etkin eşitleme sunucunuzla eşleştiklerinden emin olmak için bu özelliklerin eşitleme seçeneği ayarlarını gözden geçirin.  Başka yapılandırma adımları gerekli olmamalıdır.|
-|AD FS ile Federasyon|Azure kimlik doğrulamaları, etkin eşitleme sunucunuz için yapılandırılan AD FS ilkesini kullanmaya devam eder.  AD FS çiftliğinizi yönetmek için Azure AD Connect'i kullanıyorsanız, bekleme sunucunuzun etkin eşitleme örneği olmasına hazırlanmak için oturum açma yöntemini isteğe bağlı olarak AD FS federasyonu olarak değiştirebilirsiniz.   Etkin eşitleme sunucusunda aygıt seçenekleri etkinse, "Aygıt seçeneklerini yapılandır" görevini çalıştırarak bu sunucudaki bu seçenekleri yapılandırın.|
-|Geçiş kimlik doğrulaması ve Masaüstü Tek Oturum Açma|Etkin eşitleme sunucunuzdaki yapılandırmayla eşleşecek şekilde oturum açma yöntemini güncelleştirin.  Sunucuyu birincil olarak tanıtmadan önce bu izlenmezse, Kesintisiz Tek Oturum açma ile birlikte geçiş kimlik doğrulaması devre dışı bırakılır ve yedek oturum açma seçeneği olarak parola karma eşitlemeniz yoksa kiracınız kilitlenebilir. Ayrıca, evreleme modunda geçiş kimlik doğrulamasını etkinleştirdiğinizde, yeni bir kimlik doğrulama aracısının yüklenir, kaydedilir ve oturum açma isteklerini kabul edecek yüksek kullanılabilirlikli bir aracı olarak çalışacaktır.|
-|PingFederate ile federasyon|Azure kimlik doğrulamaları, etkin eşitleme sunucunuz için yapılandırılan PingFederate ilkesini kullanmaya devam eder.  Oturum açma yöntemini isteğe bağlı olarak, bekleme sunucunuzun etkin senkronizasyon örneği haline gelmesine hazırlık olarak PingFederate olarak değiştirebilirsiniz.  Bu adım, PingFederate ile ek etki alanları federe gerekir kadar ertelenebilir.|
+|Parola karması eşitleme| Parola karması eşitleme ve parola geri yazma ayarları, 1.2.65.0 ile başlayan Azure AD Connect sürümleri için tamamen geri yüklenir.  Azure AD Connect eski bir sürümünü kullanarak geri yükleme işlemi, etkin eşitleme sunucunuza eşleştiğinden emin olmak için bu özellikler için eşitleme seçeneği ayarlarını gözden geçirin.  Başka yapılandırma adımları gerekli değildir.|
+|AD FS ile Federasyon|Azure kimlik doğrulamaları, etkin eşitleme sunucunuz için yapılandırılmış AD FS ilkesini kullanmaya devam edecektir.  AD FS grubunuzu yönetmek için Azure AD Connect kullanıyorsanız, isteğe bağlı olarak, oturum açma yöntemini, etkin eşitleme örneği haline gelmelerine izin vermek üzere, bekleyen sunucunuzun hazırlanması AD FS Federasyon olarak değiştirebilirsiniz.   Etkin eşitleme sunucusunda cihaz seçenekleri etkinleştirilmişse, "cihaz seçeneklerini yapılandırma" görevini çalıştırarak bu sunucuda bu seçenekleri yapılandırın.|
+|Geçişli kimlik doğrulaması ve Masaüstü çoklu oturum açma|Oturum açma yöntemini, etkin eşitleme sunucunuzdaki yapılandırmayla eşleşecek şekilde güncelleştirin.  Bu durum, sunucuyu birincil olarak yükseltmeden önce, sorunsuz çoklu oturum açma ile birlikte geçişli kimlik doğrulaması devre dışı bırakılır ve yedekleme oturum açma seçeneği olarak parola karması eşitleme seçeneği yoksa kiracınız kilitlenmiş olabilir. Ayrıca, hazırlama modunda geçiş kimlik doğrulamasını etkinleştirdiğinizde yeni bir kimlik doğrulama aracısının yükleneceğini, kaydedildiğini ve oturum açma isteklerini kabul edecek yüksek kullanılabilirliğe sahip bir aracı olarak çalışacağını unutmayın.|
+|PingFederate ile federasyon|Azure kimlik doğrulamaları, etkin eşitleme sunucunuz için yapılandırılmış PingFederate ilkesini kullanmaya devam edecektir.  İsteğe bağlı olarak, bekleme sunucunuzun etkin eşitleme örneği haline gelmesini sağlamak için oturum açma yöntemini PingFederate olarak değiştirebilirsiniz.  Bu adım, PingFederate ile ek etki alanlarını federasyona kadar ertelenebilir.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

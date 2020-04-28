@@ -5,27 +5,27 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 22f16a7382cb0fe1f3fe2a6ef5e7c00a6989623c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67188321"
 ---
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Key Vault Tümleştirmesini etkinleştirdikten sonra, SQL VM'nizde SQL Server şifrelemesini etkinleştirebilirsiniz. İlk olarak, anahtar kasanızın içinde asimetrik bir anahtar ve VM'nizde SQL Server içinde simetrik bir anahtar oluşturmanız gerekir. Ardından, veritabanlarınız ve yedeklemeleriniz için şifreleme sağlamak için T-SQL deyimlerini yürütebilirsiniz.
+Azure Key Vault tümleştirmeyi etkinleştirdikten sonra SQL sanal makinenizde SQL Server şifrelemeyi etkinleştirebilirsiniz. İlk olarak, Anahtar Kasanızda bir asimetrik anahtar ve sanal makinenizde SQL Server içinde bir simetrik anahtar oluşturmanız gerekir. Daha sonra, veritabanınız ve yedeklemeleriniz için şifrelemeyi etkinleştirmek üzere T-SQL deyimlerini yürütebileceksiniz.
 
-Yararlanabileceğiniz çeşitli şifreleme biçimleri vardır:
+Avantajlarından faydalanabilirsiniz birkaç şifreleme biçimi vardır:
 
 * [Saydam Veri Şifrelemesi (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
-* [Şifreli yedeklemeler](https://msdn.microsoft.com/library/dn449489.aspx)
-* [Sütun Düzeyi Şifrelemesi (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
+* [Şifrelenmiş yedeklemeler](https://msdn.microsoft.com/library/dn449489.aspx)
+* [Sütun düzeyinde şifreleme (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
 
-Aşağıdaki Transact-SQL komut dosyaları bu alanların her biri için örnekler sağlar.
+Aşağıdaki Transact-SQL betikleri, bu alanların her biri için örnekler sağlar.
 
-### <a name="prerequisites-for-examples"></a>Örnekler için ön koşullar
+### <a name="prerequisites-for-examples"></a>Örnek önkoşulları
 
-Her örnek iki ön koşula dayanır: **CONTOSO_KEY** adlı anahtar kasanızdan asimetrik bir anahtar ve **Azure_EKM_TDE_cred**adlı AKV Tümleştirme özelliği tarafından oluşturulan bir kimlik bilgisi. Aşağıdaki Transact-SQL komutları, örnekleri çalıştırmak için bu ön koşulları düzenesin.
+Her örnek iki önkoşul temel alır: **CONTOSO_KEY** adlı anahtar kasanızdan asimetrik bir anahtar ve **Azure_EKM_TDE_cred**adlı Akv tümleştirme özelliği tarafından oluşturulan kimlik bilgileri. Aşağıdaki Transact-SQL komutları, örnekleri çalıştırmak için bu önkoşulları ayarlar.
 
 ``` sql
 USE master;
@@ -52,7 +52,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="transparent-data-encryption-tde"></a>Saydam Veri Şifrelemesi (TDE)
 
-1. TDE veritabanı altyapısı tarafından kullanılmak üzere bir SQL Server girişi oluşturun ve ardından kimlik bilgilerini ekleyin.
+1. TDE veritabanı altyapısı tarafından kullanılacak SQL Server bir oturum açma oluşturun, ardından kimlik bilgisini buna ekleyin.
 
    ``` sql
    USE master;
@@ -87,9 +87,9 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-### <a name="encrypted-backups"></a>Şifreli yedeklemeler
+### <a name="encrypted-backups"></a>Şifrelenmiş yedeklemeler
 
-1. Yedeklemeleri şifrelemek için Veritabanı Altyapısı tarafından kullanılmak üzere bir SQL Server girişi oluşturun ve kimlik bilgilerini ekleyin.
+1. Yedeklemeleri şifrelemek için veritabanı altyapısı tarafından kullanılacak SQL Server bir oturum açma oluşturun ve kimlik bilgisini buna ekleyin.
 
    ``` sql
    USE master;
@@ -106,7 +106,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-1. Anahtar kasasında depolanan asimetrik anahtarla şifreleme yi belirten veritabanını yedekleyin.
+1. Anahtar kasasında depolanan asimetrik anahtarla şifrelemeyi belirterek veritabanını yedekleyin.
 
    ``` sql
    USE master;
@@ -117,9 +117,9 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-### <a name="column-level-encryption-cle"></a>Sütun Düzeyi Şifrelemesi (CLE)
+### <a name="column-level-encryption-cle"></a>Sütun düzeyinde şifreleme (CLE)
 
-Bu komut dosyası, anahtar kasasındaki asimetrik anahtar tarafından korunan simetrik bir anahtar oluşturur ve veritabanındaki verileri şifrelemek için simetrik anahtarı kullanır.
+Bu betik, anahtar kasasındaki asimetrik anahtarla korunan bir simetrik anahtar oluşturur ve sonra veritabanındaki verileri şifrelemek için simetrik anahtar kullanır.
 
 ``` sql
 CREATE SYMMETRIC KEY DATA_ENCRYPTION_KEY
@@ -144,6 +144,6 @@ CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-Bu şifreleme özelliklerinin nasıl kullanılacağı hakkında daha fazla bilgi için [bkz.](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)
+Bu şifreleme özelliklerinin nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [SQL Server şifreleme ÖZELLIKLERIYLE ekm kullanma](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
 
-Bu makaledeki adımların, Azure sanal makinesinde zaten SQL Server'ın çalıştığını varsaydığını unutmayın. Değilse, [Azure'da sql server sanal makine sağlama](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md)konusuna bakın. Azure VM'lerde SQL Server'ı çalıştırmayla ilgili diğer kılavuzlar için [Azure Sanal Makinelere genel bakışta SQL Server'a](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)bakın.
+Bu makaledeki adımlarda, zaten bir Azure sanal makinesinde SQL Server çalıştırmakta olduğunuz varsayılmaktadır. Aksi takdirde bkz. [Azure 'da SQL Server sanal makinesi sağlama](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md). Azure VM 'lerinde SQL Server çalıştırmaya ilişkin diğer yönergeler için bkz. [Azure sanal makinelerine genel bakış SQL Server](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).

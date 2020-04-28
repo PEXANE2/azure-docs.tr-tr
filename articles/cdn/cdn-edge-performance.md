@@ -1,6 +1,6 @@
 ---
-title: Azure CDN'de kenar düğümü performansını analiz edin | Microsoft Dokümanlar
-description: Microsoft Azure CDN'de kenar düğümü performansını analiz edin. Edge Performance Analytics, CDN için ayrıntılı bilgi trafiği ve bant genişliği kullanımı sağlar.
+title: Azure CDN | kenar düğümü performansını çözümleme Microsoft Docs
+description: Microsoft Azure CDN 'de kenar düğümü performansını analiz edin. Edge Performans Analizi, CDN için ayrıntılı bilgi trafiği ve bant genişliği kullanımı sağlar.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,177 +15,177 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67593910"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Microsoft Azure CDN’de kenar düğümü performansını çözümleme
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Kenar performans analitiği, CDN için parçalı bilgi trafiği ve bant genişliği kullanımı sağlar. Bu bilgiler daha sonra, varlıklarınızın önbelleğe alınıp müşterilerinize nasıl teslim edildiği hakkında fikir edinmenize olanak tanıyan popüler istatistikler oluşturmak için kullanılabilir. Buna karşılık, bu, içeriğinizin teslimini optimize etme ve CDN'den daha iyi yararlanmak için hangi sorunların ele alınması gerektiğini belirleme konusunda bir strateji oluşturmanıza olanak tanır. Sonuç olarak, yalnızca veri teslim performansını artırmakla kalmamış, CDN maliyetlerinizi de azaltabilirsiniz.
+Edge Performans Analizi, CDN için ayrıntılı bilgi trafiği ve bant genişliği kullanımı sağlar. Bu bilgiler daha sonra, Varlıklarınızın önbelleğe alınma ve istemcilerinize teslim etme hakkında fikir edinmenizi sağlayan eğilim istatistikleri oluşturmak için kullanılabilir. Bu sayede, içeriğinizin teslimini iyileştirmek ve CDN 'den daha iyi yararlanmak için hangi sorunların hangi sorunları ele almak gerektiğini belirlemek için bir strateji oluşturmanıza olanak sağlar. Sonuç olarak, yalnızca veri teslimi performansını iyileştirebileceksiniz, ancak CDN maliyetlerinizi de azaltabilirsiniz.
 
 > [!NOTE]
-> Bir tarih/saat belirtirken tüm raporlar UTC/GMT gösterimini kullanır.
+> Tüm raporlar bir tarih/saat belirtirken UTC/GMT gösterimini kullanır.
 > 
 > 
 
-## <a name="reports-and-log-collection"></a>Raporlar ve günlük toplama
-CDN etkinlik verileri, hakkında rapor oluşturabilmesi için Edge Performance Analytics modülü tarafından toplanmalıdır. Bu toplama işlemi günde bir kez gerçekleşir ve önceki gün gerçekleşen etkinliği kapsar. Bu, bir raporun istatistiklerinin işlenirken günün istatistiklerinin bir örneğini temsil ettiği ve geçerli günün tüm veri kümesini içermediği anlamına gelir. Bu raporların birincil işlevi performansı değerlendirmektir. Bunlar faturalandırma amaçları veya tam sayısal istatistikler için kullanılmamalıdır.
+## <a name="reports-and-log-collection"></a>Raporlar ve günlük koleksiyonu
+CDN etkinlik verilerinin, üzerinde rapor oluşturulabilmesi için önce Edge performans analizi modülü tarafından toplanması gerekir. Bu koleksiyon işlemi günde bir kez gerçekleşir ve önceki gün boyunca gerçekleşen etkinliği ele alır. Bu, bir raporun istatistikleri, işlendiği sırada günün istatistikleri örneğini temsil eden ve geçerli gün için tüm veri kümesini bulundurmayan anlamına gelir. Bu raporların birincil işlevi, performansı değerlendirmek için kullanılır. Bu, fatura amaçları veya tam sayısal istatistikler için kullanılmamalıdır.
 
 > [!NOTE]
-> Edge Performance Analytic raporlarının oluşturulduğu ham veriler en az 90 gün boyunca kullanılabilir.
+> Edge Performans Analizi raporlarının oluşturulduğu ham veriler en az 90 gün boyunca kullanılabilir.
 > 
 > 
 
 ## <a name="dashboard"></a>Pano
-Edge Performance Analytics panosu, geçerli ve geçmiş CDN trafiğini bir grafik ve istatistikler aracılığıyla izler. Hesabınız için CDN trafiğinin performansıyla ilgili son ve uzun vadeli eğilimleri algılamak için bu panoyu kullanın.
+Edge Performans Analizi panosu, bir grafik ve istatistikler aracılığıyla geçerli ve geçmiş CDN trafiğini izler. Hesabınız için CDN trafiğinin performansına ilişkin en son ve uzun süreli eğilimleri algılamak için bu panoyu kullanın.
 
 Bu pano aşağıdakilerden oluşur:
 
-* Önemli ölçümlerin ve eğilimlerin görselleştirilmesine olanak tanıyan etkileşimli bir grafik.
-* Önemli ölçümler ve eğilimler için uzun vadeli desenler duygusu sağlayan bir zaman çizelgesi.
-* CDN ağımızın genel performans, kullanım ve verimlilikle ölçüldüğü üzere site trafiğini nasıl iyileştirdüğü hakkında temel ölçümler ve istatistiksel bilgiler.
+* Anahtar ölçümlerinin ve eğilimler görselleştirmesine olanak sağlayan etkileşimli bir grafik.
+* Önemli ölçümler ve eğilimler için uzun vadeli desenler sağlayan bir zaman çizelgesi.
+* CDN ağımızın, genel performans, kullanım ve verimlilik ile ölçülen Site trafiğini nasıl geliştirdüğüne ilişkin temel ölçümler ve istatistiksel bilgiler.
 
-### <a name="accessing-the-edge-performance-dashboard"></a>Kenar performans panosuna erişim
-1. CDN profil bıçağından **Yönet** düğmesini tıklatın.
+### <a name="accessing-the-edge-performance-dashboard"></a>Uç performans panosuna erişme
+1. CDN profili dikey penceresinde **Yönet** düğmesine tıklayın.
    
-    ![CDN profil blade yönetme düğmesi](./media/cdn-edge-performance/cdn-manage-btn.png)
+    ![CDN profili dikey penceresi Yönet düğmesi](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     CDN yönetim portalı açılır.
-2. **Analytics** sekmesinin üzerine, ardından Edge **Performance Analytics** flyout'un üzerinde gezin.  **Pano'ya**tıklayın.
+2. **Analiz** sekmesinin üzerine gelin ve ardından **kenar performansı Analizi** açılır öğesi üzerine gelin.  **Panoya**tıklayın.
    
-    Kenar düğümü analiz panosu görüntülenir.
+    Kenar düğümü Analizi panosu görüntülenir.
 
 ### <a name="chart"></a>Grafik
-Pano, zaman çizelgesinde seçilen zaman çizelgesinde doğrudan altında görünen bir metrik izleyen bir grafik içerir.  CDN etkinliğinin son iki yılını gösteren bir zaman çizelgesi grafiğin hemen altında görüntülenir.
+Panoda, doğrudan altında görüntülenen zaman çizelgesinde seçilen zaman dilimi boyunca bir ölçümü izleyen bir grafik bulunur.  CDN etkinliğinin son iki yıla kadar grafik oluşturan bir zaman çizelgesi doğrudan grafiğin altında görüntülenir.
 
 #### <a name="using-the-chart"></a>Grafiği kullanma
-* Varsayılan olarak, son 30 gün için önbellek verimlilik oranı grafiklenir.
+* Varsayılan olarak, son 30 güne ait önbellek verimlilik oranı alınacaktır.
 * Bu grafik, günlük olarak harmanlanmış verilerden oluşturulur.
-* Satır grafiğinde bir gün boyunca gezinmek, o tarihteki bir tarihi ve metnin değerini gösterir.
-* Hafta sonlarını grafikte temsil eden açık gri dikey çubukların bir bindirmesini geçişyapmak için Hafta Sonlarını Vurgula'yı tıklatın. Bu tür bir kaplama, hafta sonları trafik düzenini belirlemek için yararlıdır.
-* Bir önceki yılın tümlemesini aynı zaman diliminde grafiğe kaydırmak için Bir Yıl Önce Görüntüle'yi tıklatın. Bu tür karşılaştırmalar, uzun vadeli CDN kullanım kalıplarına ilişkin içgörü sağlar. Grafiğin sağ üst köşesinde, her satır grafiği için renk kodunu gösteren bir gösterge içerir.
+* Çizgi grafiğinde bir günün üzerine gelindiğinde, bu tarihteki bir tarih ve ölçüm değeri gösterilir.
+* Hafta sonlarını grafiğe göre temsil eden açık gri dikey çubukların bir kaplamasını değiştirmek için hafta sonlarını Vurgula ' ya tıklayın. Bu tür bir kaplama, hafta sonları üzerinde trafik desenlerini belirlemek için faydalıdır.
+* Önceki yılın etkinliğinin bir kaplamasını grafiğin üzerine aynı zaman diliminde değiştirmek için bir yıl önce görüntüle ' ye tıklayın. Bu tür karşılaştırma, uzun süreli CDN kullanım desenlerine yönelik öngörüler sağlar. Grafiğin sağ üst köşesi, her çizgi grafiğinin renk kodunu gösteren bir açıklama içerir.
 
-#### <a name="updating-the-chart"></a>Grafiği güncelleştirme
-* Zaman Aralığı: Aşağıdakilerden birini gerçekleştirin:
-  * Zaman çizelgesinde istenilen bölgeyi seçin. Grafik, seçilen döneme karşılık gelen verilerle güncelleştirilir.
-  * Mevcut tüm geçmiş verilerini en fazla iki yıla kadar görüntülemek için grafiğe çift tıklayın.
-* Metrik: İstenilen metnin yanında görünen grafik simgesini tıklatın. Grafik ve zaman çizelgesi, ilgili metrik için verilerle yenilenir.
+#### <a name="updating-the-chart"></a>Grafik güncelleştiriliyor
+* Zaman aralığı: aşağıdakilerden birini yapın:
+  * Zaman çizelgesinde istenen bölgeyi seçin. Grafik, seçilen döneme karşılık gelen verilerle güncelleştirilir.
+  * Tüm kullanılabilir geçmiş verileri en fazla iki yıla kadar göstermek için grafiğe çift tıklayın.
+* Ölçüm: istenen ölçümün yanında görünen grafik simgesine tıklayın. Grafik ve zaman çizelgesi, karşılık gelen ölçüm için verilerle yenilenecektir.
 
 ### <a name="key-metrics-and-statistics"></a>Temel ölçümler ve istatistikler
 #### <a name="efficiency-metrics"></a>Verimlilik ölçümleri
-Bu ölçümlerin amacı önbellek verimliliğinin artırılıp geliştirilemeyeceğini görmektir. Önbellek verimliliğinden elde edilen başlıca faydalar şunlardır:
+Bu ölçümlerin amacı, önbellek verimliliğinin iyileşip artamayacağını görsağlamaktır. Önbellek verimliliğiyle elde edilen başlıca avantajlar şunlardır:
 
-* Kaynak sunucusundaki azaltılmış yük:
-  * Daha iyi web sunucusu performansı.
-  * Azaltılmış işletme maliyetleri.
-* Daha fazla istek doğrudan CDN'den sunulacak olduğundan, geliştirilmiş veri teslim ivmesi.
+* Kaynak sunucu üzerinde daha az yük şu şekilde olabilir:
+  * Daha iyi Web sunucusu performansı.
+  * Azaltılmış işletimsel maliyetler.
+* Daha fazla istek CDN 'den doğrudan sunulacak olduğundan, geliştirilmiş veri teslimi hızlandırma.
 
 | Alan | Açıklama |
 | --- | --- |
-| Önbellek Verimliliği |Önbellekten aktarılan veri yüzdesini gösterir. Bu metrik, istenen içeriğin önbelleğe alınmış bir sürümünün doğrudan CDN'den (kenar sunucuları) istekte bulundurculara (örn. web tarayıcısı) sunulduğunda ölçer |
-| Isabet Oranı |Önbellekten sunulan isteklerin yüzdesini gösterir. Bu metrik, istenen içeriğin önbelleğe alınmış bir sürümünün doğrudan CDN'den (kenar sunucuları) talep edenlere (örn. web tarayıcısı) sunulduğunu ölçer. |
-| Uzak Baytların %'si - Önbellek Config yok |Başlangıç sunucularından CdN'ye (kenar sunucuları) sunulan ve Bypass Önbellek özelliği (HTTP Rules Engine) sonucunda önbelleğe alınmayacak trafik yüzdesini gösterir. |
-| Uzak Baytların %'si - Süresi Dolmuş Önbellek |Eski içerik yeniden validasyonu sonucunda kaynak sunucularından CDN'ye (kenar sunucuları) sunulan trafiğin yüzdesini gösterir. |
+| Önbellek verimliliği |Önbellekten sunulan aktarılan veri yüzdesini gösterir. Bu ölçüm, istenen içeriğin önbelleğe alınmış bir sürümü doğrudan CDN 'den (uç sunuculardan) istek veripçilerine (ör. Web tarayıcısı) sunulduğunu ölçer. |
+| İsabet oranı |Önbellekten sunulan isteklerin yüzdesini gösterir. Bu ölçüm, istenen içeriğin önbelleğe alınmış bir sürümü doğrudan CDN 'den (uç sunuculardan) istekçilere (ör. Web tarayıcısı) sunulduğunda ölçer. |
+| Uzak baytların yüzdesi-önbellek yapılandırması yok |Kaynak sunuculardan, önbellek özelliği (HTTP kuralları altyapısı) sonucu olarak önbelleğe alınmayacak CDN 'ye (uç sunucular) sunulan trafik yüzdesini gösterir. |
+| Uzak bayt yüzdesi-süre sonu biten önbellek |Eski içerik yeniden doğrulamasının sonucu olarak, kaynak sunuculardan CDN 'ye (uç sunucular) sunulan trafik yüzdesini gösterir. |
 
 #### <a name="usage-metrics"></a>Ölçümleri kullanma
-Bu ölçümlerin amacı, aşağıdaki maliyet düşürücü önlemlerhakkında bilgi sağlamaktır:
+Bu ölçümlerin amacı, aşağıdaki maliyet kesme ölçüleriyle ilgili Öngörüler sağlamaktır:
 
-* CDN ile işletme maliyetlerini en aza indirmek.
-* Önbellek verimliliği ve sıkıştırma yoluyla CDN harcamalarını azaltma.
+* CDN aracılığıyla işlem maliyetlerini en aza indirme.
+* Önbellek verimliliği ve sıkıştırma aracılığıyla CDN harcamalarını azaltma.
 
 > [!NOTE]
-> Trafik hacmi numaraları, oranların ve yüzdelerin hesaplamalarında kullanılan trafiği temsil eder ve yüksek hacimli müşteriler için toplam trafiğin yalnızca bir kısmını gösterebilir.
+> Trafik birimi numaraları, oranlar ve yüzdeler hesaplamalarında kullanılan trafiği temsil eder ve yalnızca yüksek hacimli müşteriler için toplam trafiğin bir kısmını gösterebilir.
 > 
 > 
 
 | Alan | Açıklama |
 | --- | --- |
-| Ave Bayt Dışarı |CDN'den (kenar sunucuları) istenene (örn. web tarayıcısı) sunulan her istek için aktarılan ortalama bayt sayısını gösterir. |
-| Önbellek Config Bayt Oranı Yok |CDN'den (kenar sunucuları) Bypass Önbellek özelliği nedeniyle önbelleğe alınmayacak olan istekte cisime (örn. web tarayıcısı) sunulan trafik yüzdesini gösterir. |
-| Sıkıştırılmış Bayt Oranı |CDN'den (kenar sunucuları) sıkıştırılmış biçimde istekte bulunanlara (örn. web tarayıcısı) gönderilen trafik yüzdesini gösterir. |
-| Bayt Çıkış |CDN'den (kenar sunucuları) istekte bulunana (örn. web tarayıcısı) teslim edilen baytlarda bulunan veri miktarını gösterir. |
-| Bayt Lar |İstekçilerden CDN'ye (kenar sunucuları) gönderilen baytlarda bulunan veri miktarını gösterir. |
-| Bayt Uzaktan Kumanda |CDN ve müşteri kaynağı sunucularından CDN'ye (kenar sunucuları) gönderilen baytlarda bulunan veri miktarını gösterir. |
+| Ortalama çıkış baytları |CDN 'den (uç sunuculardan) sunulan her istek için, istek sahibine (ör. Web tarayıcısı) aktarılan baytların ortalama sayısını belirtir. |
+| Önbellek yapılandırması bayt oranı yok |CDN 'den (uç sunuculardan) sunulan trafik yüzdesini, önbelleği atlama özelliği nedeniyle önbelleğe alınmayacak olan istek sahibine (ör. Web tarayıcısına) gösterir. |
+| Sıkıştırılmış bayt oranı |CDN 'den (Edge sunucuları), sıkıştırılmış bir biçimde sahiplerini (ör. Web Browser) ile gönderilen trafiğin yüzdesini gösterir. |
+| Giden bayt |CDN 'den (uç sunuculardan) istek sahibine (ör. Web tarayıcısı) gönderilen veri miktarını bayt cinsinden belirtir. |
+| Içindeki baytlar |Sahiplerini (ör. Web tarayıcısı) ile CDN (Edge sunucuları) arasında gönderilen veri miktarını bayt cinsinden belirtir. |
+| Uzak bayt sayısı |CDN ve müşteri kaynak sunucularından CDN 'ye (uç sunucular) gönderilen veri miktarını bayt cinsinden belirtir. |
 
 #### <a name="performance-metrics"></a>Performans Ölçümleri
-Bu ölçümlerin amacı, trafiğiniz için genel CDN performansını izlemektir.
+Bu ölçümlerin amacı, trafiğiniz için genel CDN performansını izlemek içindir.
 
 | Alan | Açıklama |
 | --- | --- |
-| Transfer Oranı |İçeriğin CDN'den istekte bulunan bir kullanıcıya aktarıldığı ortalama oranı gösterir. |
-| Süre |Bir varlığı bir istekte bulunana (örn. web tarayıcısı) teslim etmek için gereken ortalama süreyi milisaniye cinsinden gösterir. |
-| Sıkıştırılmış İstek Oranı |CDN'den (kenar sunucuları) sıkıştırılmış bir biçimde istekte bulunana (örn. web tarayıcısı) teslim edilen isabet lerin yüzdesini gösterir. |
-| 4xx Hata Oranı |4xx durum kodu oluşturulan isabet yüzdesini gösterir. |
-| 5xx Hata Oranı |5xx durum kodu oluşturulan isabet yüzdesini gösterir. |
+| Aktarım hızı |İçeriğin CDN 'den istek sahibine aktarıldığı ortalama oranı gösterir. |
+| Süre |Bir varlığın bir istek sahibine (ör. Web tarayıcısı) teslim edilmesi için geçen milisaniye cinsinden ortalama süreyi belirtir. |
+| Sıkıştırılan Istek hızı |CDN 'den (uç sunuculardan) istek sahibine (ör. Web tarayıcısı) sıkıştırılmış bir biçimde teslim edilen isabetlerin yüzdesini gösterir. |
+| 4xx hata oranı |Bir 4xx durum kodu oluşturan isabetlerin yüzdesini gösterir. |
+| 5xx hata oranı |5xx durum kodu oluşturan isabetlerin yüzdesini gösterir. |
 | İsabetler |CDN içeriği için istek sayısını gösterir. |
 
-#### <a name="secure-traffic-metrics"></a>Güvenli Trafik Ölçümleri
-Bu ölçümlerin amacı, HTTPS trafiği için CDN performansını izlemektir.
+#### <a name="secure-traffic-metrics"></a>Güvenli trafik ölçümleri
+Bu ölçümlerin amacı, HTTPS trafiği için CDN performansını izlemek içindir.
 
 | Alan | Açıklama |
 | --- | --- |
-| Güvenli Önbellek Verimliliği |Önbellekten sunulan HTTPS istekleri için aktarılan verilerin yüzdesini gösterir. Bu metrik, istenen içeriğin önbelleğe alınmış bir sürümünün doğrudan CDN'den (kenar sunucuları) HTTPS üzerinden talepte bulundurculara (örn. web tarayıcısı) sunulduğunu ölçer. |
-| Güvenli Aktarım Hızı |İçeriğin CDN'den (kenar sunucuları) HTTPS üzerinden istekte bulunanlara (örn. web sunucuları) aktarıldığı ortalama oranı gösterir. |
-| Ortalama Güvenli Süre |Bir varlığı https üzerinden bir istekte bulunana (örn. web tarayıcısı) teslim etmek için gereken ortalama süreyi milisaniye cinsinden belirtir. |
-| Güvenli Vuruşlar |CDN içeriği için HTTPS isteklerinin sayısını gösterir. |
-| Güvenli Bayt Lar Dışarı |CDN'den (kenar sunucuları) istekte bulunana (örn. web tarayıcısı) teslim edilen BAYtlar halindeki HTTPS trafiğinin miktarını gösterir. |
+| Güvenli önbellek verimliliği |Önbellekten sunulan HTTPS istekleri için aktarılan verilerin yüzdesini gösterir. Bu ölçüm, istenen içeriğin önbelleğe alınmış bir sürümü (ör. Web Browser) ile HTTPS üzerinden doğrudan istek üzerine (örn. Web tarayıcısı) sunulduğunu ölçer. |
+| Güvenli aktarım hızı |İçeriğin CDN 'den (uç sunuculardan), https üzerinden sahiplerini (ör. Web sunucuları) olarak aktarıldığı ortalama oranı gösterir. |
+| Ortalama güvenli süre |Bir varlığın bir istek sahibine (ör. Web tarayıcısına) HTTPS üzerinden teslim edilmesi için geçen milisaniye cinsinden ortalama süreyi belirtir. |
+| Güvenli Isabet sayısı |CDN içeriği için HTTPS isteklerinin sayısını gösterir. |
+| Güvenli baytlar çıkışı |CDN 'den (uç sunuculardan) istek sahibine (ör. Web tarayıcısı) gönderilen HTTPS trafik miktarını bayt cinsinden belirtir. |
 
-## <a name="reports"></a>Reports
-Bu modüldeki her rapor, farklı ölçüm türleri (örneğin, HTTP durum kodları, önbellek durum kodları, istek URL'si, vb.) için bant genişliği ve trafik kullanımına ilişkin bir grafik ve istatistik içerir. Bu bilgiler, içeriğin müşterilerinize nasıl sunulduğuhakkında daha derin bilgi vermek ve veri teslim performansını artırmak için CDN davranışında ince ayar yapmak için kullanılabilir.
+## <a name="reports"></a>Raporlar
+Bu modüldeki her rapor, farklı türlerde ölçümler için bant genişliği ve trafik kullanımıyla ilgili bir grafik ve istatistikler içerir (örneğin, HTTP durum kodları, önbellek durum kodları, istek URL 'SI vb.). Bu bilgiler, içeriğin istemcilerinize nasıl sunulduğunu daha ayrıntılı olarak sunmak ve veri teslimi performansını geliştirmek için CDN davranışını ince ayar yapmak üzere kullanılabilir.
 
-### <a name="accessing-the-edge-performance-reports"></a>Kenar performans raporlarına erişim
-1. CDN profil bıçağından **Yönet** düğmesini tıklatın.
+### <a name="accessing-the-edge-performance-reports"></a>Uç performans raporlarına erişme
+1. CDN profili dikey penceresinde **Yönet** düğmesine tıklayın.
    
-    ![CDN profil blade yönetme düğmesi](./media/cdn-edge-performance/cdn-manage-btn.png)
+    ![CDN profili dikey penceresi Yönet düğmesi](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     CDN yönetim portalı açılır.
-2. **Analytics** sekmesinin üzerine, ardından Edge **Performance Analytics** flyout'un üzerinde gezin.  HTTP **Büyük Nesne'ye**tıklayın.
+2. **Analiz** sekmesinin üzerine gelin ve ardından **kenar performansı Analizi** açılır öğesi üzerine gelin.  **Http büyük nesne**' ye tıklayın.
    
-    Kenar düğümü analiz raporları ekranı görüntülenir.
+    Edge düğümü analiz raporları ekranı görüntülenir.
 
 | Rapor | Açıklama |
 | --- | --- |
-| Günlük Özet |Belirli bir zaman dilimi içinde günlük trafik eğilimlerini görüntülemenizi sağlar. Bu grafikteki her çubuk belirli bir tarihi temsil eder. Çubuğun boyutu, o tarihte gerçekleşen toplam isabet sayısını gösterir. |
-| Saatlik Özet |Belirli bir zaman dilimi içinde saatlik trafik eğilimlerini görüntülemenizi sağlar. Bu grafikteki her çubuk belirli bir tarihteki tek bir saati temsil eder. Çubuğun boyutu, o saat içinde gerçekleşen toplam isabet sayısını gösterir. |
-| Protokoller |HTTP ve HTTPS protokolleri arasındaki trafiğin dökümünü görüntüler. Donut grafiği, her protokol türü için gerçekleşen isabet yüzdesini gösterir. |
-| HTTP Yöntemleri |Verilerinizi istemek için HTTP yöntemlerinin kullanıldığı hakkında hızlı bir fikir edinmenizi sağlar. Genellikle, en yaygın HTTP istek yöntemleri GET, HEAD ve POST'tür. Donut grafiği, her BIR HTTP istek yöntemi türü için gerçekleşen isabet yüzdesini gösterir. |
-| URL'ler |İstenilen en iyi 10 URL'yi görüntüleyen bir grafik içerir. Her URL için bir çubuk görüntülenir. Çubuğun yüksekliği, belirli bir URL'nin raporun kapsadığı zaman aralığında kaç isabet oluşturduğunu gösterir. İstenen ilk 100 URL'nin istatistikleri bu grafiğin hemen altında görüntülenir. |
-| KNAMEs |Bir raporun zaman aralığında varlık istemek için kullanılan en iyi 10 CNAM'ı görüntüleyen bir grafik içerir. İstenen ilk 100 CNAM'ın istatistikleri bu grafiğin hemen altında görüntülenir. |
-| Kökeni |Varlıkların belirli bir süre içinde istendiği en iyi 10 CDN veya müşteri kökenli sunucuları görüntüleyen bir grafik içerir. İstenen ilk 100 CDN veya müşteri kaynağı sunucunun istatistikleri bu grafiğin hemen altında görüntülenir. Müşteri kökenli sunucular, Dizin Adı seçeneğinde tanımlanan adla tanımlanır. |
-| Geo POP'lar |Trafiğinizin ne kadarının belirli bir durum noktası (POP) üzerinden yönlendirildiğini gösterir. Üç harfli kısaltma, CDN ağımızda bir POP'u temsil eder. |
-| İstemciler |Belirli bir süre içinde varlıkları isteyen en iyi 10 istemciyi görüntüleyen bir grafik içerir. Bu raporun amaçları doğrultusunda, aynı IP adresinden gelen tüm istekler aynı istemciden gelmiş olarak kabul edilir. En iyi 100 istemcinin istatistikleri doğrudan bu grafiğin altında görüntülenir. Bu rapor, en iyi müşterileriniz için indirme etkinlik modellerini belirlemek için yararlıdır. |
-| Önbellek Durumları |Genel son kullanıcı deneyimini geliştirmeye yönelik yaklaşımları ortaya çıkarabilecek önbellek davranışının ayrıntılı bir dökümünü verir. En hızlı performans önbellek isabetlerinden geldiği için, önbellek eksikliklerini ve süresi dolmuş önbellek isabetlerini en aza indirerek veri teslim hızlarını en iyi duruma getirebilirsiniz. |
-| YOK Ayrıntılar |Önbellek içeriği tazeliğinin belirli bir süre boyunca denetlenmediğinin varlıkları için en iyi 10 URL'yi görüntüleyen bir grafik içerir. Bu tür varlıklar için en iyi 100 URL'nin istatistikleri bu grafiğin hemen altında görüntülenir. |
-| CONFIG_NOCACHE Detayları |Müşterinin CDN yapılandırması nedeniyle önbelleğe alınmayan varlıklar için en iyi 10 URL'yi görüntüleyen bir grafik içerir. Bu tür varlıklar doğrudan kaynak sunucusundan sunuldu. Bu tür varlıklar için en iyi 100 URL'nin istatistikleri bu grafiğin hemen altında görüntülenir. |
-| ÖNBELLEMEZ Ayrıntılar |İstek üstbilgisi verileri nedeniyle önbelleğe alınamayan varlıklar için en iyi 10 URL'yi görüntüleyen bir grafik içerir. Bu tür varlıklar için en iyi 100 URL'nin istatistikleri bu grafiğin hemen altında görüntülenir. |
-| TCP_HIT Detayları |Önbellekten hemen servis edilen varlıklar için en iyi 10 URL'yi görüntüleyen bir grafik içerir. Bu tür varlıklar için en iyi 100 URL'nin istatistikleri bu grafiğin hemen altında görüntülenir. |
-| TCP_MISS Detayları |önbellek durumu TCP_MISS olan varlıklar için en iyi 10 URL'yi görüntüleyen bir grafik içerir. Bu tür varlıklar için en iyi 100 URL'nin istatistikleri bu grafiğin hemen altında görüntülenir. |
-| TCP_EXPIRED_HIT Detayları |Doğrudan POP'tan sunulan eski varlıklar için en iyi 10 URL'yi görüntüleyen bir grafik içerir. Bu tür varlıklar için en iyi 100 URL'nin istatistikleri bu grafiğin hemen altında görüntülenir. |
-| TCP_EXPIRED_MISS Detayları |Yeni bir sürümün kaynak sunucudan alınması gereken eski varlıklar için en iyi 10 URL'yi görüntüleyen bir grafik içerir. Bu tür varlıklar için en iyi 100 URL'nin istatistikleri bu grafiğin hemen altında görüntülenir. |
-| TCP_CLIENT_REFRESH_MISS Detayları |İstemciden gelen önbellek yok isteği nedeniyle bir başlangıç sunucusundan alınan varlıkların en iyi 10 URL'sini görüntüleyen bir çubuk grafik içerir. Bu tür istekler için en iyi 100 URL'nin istatistikleri doğrudan bu grafiğin altında görüntülenir. |
-| İstemci İstek Türleri |HTTP istemcileri (örn. tarayıcılar) tarafından yapılan istek türünü gösterir. Bu rapor, isteklerin nasıl işlendiğine dair bir fikir veren bir donut grafiği içerir. Her istek türü için bant genişliği ve trafik bilgileri grafiğin altında görüntülenir. |
-| Kullanıcı Aracısı |CDN'miz aracılığıyla içeriğinizi istemek için en iyi 10 kullanıcı aracısını görüntüleyen bir çubuk grafik içerir. Genellikle, bir kullanıcı aracısı bir web tarayıcısı, medya oynatıcı veya bir cep telefonu tarayıcısıdır. En iyi 100 kullanıcı aracısının istatistikleri bu grafiğin hemen altında görüntülenir. |
-| Referanslar |CDN'miz aracılığıyla erişilen içeriğe ilk 10 atıfta bulunanları gösteren bir çubuk grafik içerir. Genellikle, bir başvuru, web sayfasının veya içeriğinize bağlantı veren kaynağın URL'sidir. En iyi 100 başvurucu için grafiğin altında ayrıntılı bilgi verilmiştir. |
-| Sıkıştırma Türleri |İstenen varlıkları kenar sunucularımız tarafından sıkıştırılıp sıkıştırılmadığına göre ayıran bir donut grafiği içerir. Sıkıştırılmış varlıkların yüzdesi kullanılan sıkıştırma türüne göre bölünur. Her sıkıştırma türü ve durumu için grafiğin altında ayrıntılı bilgi verilmiştir. |
-| Dosya Türleri |Hesabınız için CDN aracılığıyla istenen en iyi 10 dosya türünü görüntüleyen bir çubuk grafiği içerir. Bu raporun amaçları doğrultusunda, bir dosya türü varlığın dosya adı uzantısı ve Internet ortam türü \[(örn.\].html \[text/html\], .htm text/html , .aspx \[text/html,\]vb.) tarafından tanımlanır. En iyi 100 dosya türü için grafiğin altında ayrıntılı bilgi sağlanır. |
-| Benzersiz Dosyalar |Belirli bir süre içinde belirli bir günde istenen benzersiz varlıkların toplam sayısını çizen bir grafik içerir. |
-| Token Auth Özeti |İstenen varlıkların Token Tabanlı Kimlik Doğrulama tarafından korunup korunmadığına ilişkin hızlı bir genel bakış sağlayan bir pasta grafiği içerir. Korumalı varlıklar, kimlik doğrulama denemelerinin sonuçlarına göre grafikte görüntülenir. |
-| Token Auth Ayrıntılarını Reddet |Belirteç Tabanlı Kimlik Doğrulama nedeniyle reddedilen en iyi 10 isteği görüntülemenizi sağlayan bir çubuk grafik içerir. |
-| HTTP Yanıt Kodları |En son sunucularımız tarafından HTTP istemcilerinize teslim edilen HTTP durum kodlarının (örneğin, 200 Ok, 403 Forbidden, 404 Bulunamadı, vb.) dökümünü sağlar. Pasta grafiği, varlıklarınızın nasıl sunulduğunun hızla değerlendirilmesini sağlar. Grafiğin altındaki her yanıt kodu için ayrıntılı istatistiksel veriler sağlanır. |
-| 404 Hatalar |404 Bulunamadı yanıt koduyla sonuçlanan en iyi 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. |
-| 403 Hatalar |403 Yasak yanıt koduyla sonuçlanan en iyi 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. 403 Yasak yanıt kodu, bir istek müşteri kökenli bir sunucu veya POP'umuzdaki bir kenar sunucusu tarafından reddedildiğinde oluşur. |
-| 4xx Hatalar |400 aralığında yanıt koduyla sonuçlanan en iyi 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. Bu raporun dışında 403 Bulunamadı ve 404 Yasak yanıt kodları vardır. Genellikle, bir istek bir istemci hatası sonucu reddedildiğinde bir 4xx yanıt kodu oluşur. |
-| 504 Hatalar |504 Ağ Geçidi Zaman Sonu yanıt koduyla sonuçlanan en iyi 10 isteği görüntülemenize olanak tanıyan bir çubuk grafiği içerir. Bir HTTP proxy başka bir sunucu ile iletişim kurmaya çalışırken bir zaman dışarı oluştuğunda bir 504 Ağ Geçidi Zaman Çıkış yanıt kodu oluşur. CDN'miz söz konusu olduğunda, bir kenar sunucusu müşteri kökenli bir sunucuyla iletişim kuramayınca genellikle 504 Ağ Geçidi Zaman Sınırı yanıt kodu oluşur. |
-| 502 Hatalar |502 Kötü Ağ Geçidi yanıt koduyla sonuçlanan en iyi 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. Bir 502 Kötü Ağ Geçidi yanıt kodu, bir SUNUCU ve bir HTTP proxy arasında bir HTTP iletişim kuralı hatası oluştuğunda oluşur. CDN'miz söz konusu olduğunda, genellikle bir müşteri kaynağı sunucusu kenar sunucusuna geçersiz bir yanıt verdiğinde 502 Kötü Ağ Geçidi yanıt kodu oluşur. Bir yanıt ayrıştırılamazsa veya eksikse geçersizdir. |
-| 5xx Hatalar |500 aralığında yanıt koduyla sonuçlanan en iyi 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir.  Bu raporun dışında 502 Bad Gateway ve 504 Ağ Geçidi Zaman Adak yanıt kodları vardır. |
+| Günlük Özet |Belirli bir süre boyunca günlük trafik eğilimlerini görüntülemenize izin verir. Bu grafikteki her çubuk belirli bir tarihi temsil eder. Çubuğun boyutu, bu tarihte gerçekleşen toplam isabet sayısını gösterir. |
+| Saatlik Özet |Belirli bir süre boyunca saatlik trafik eğilimlerini görüntülemenize izin verir. Bu grafikteki her çubuk, belirli bir tarihte tek bir saati temsil eder. Çubuğun boyutu, bu saat içinde gerçekleşen toplam isabet sayısını gösterir. |
+| Protokoller |HTTP ve HTTPS protokolleri arasındaki trafiğin dökümünü görüntüler. Halka grafik her protokol türü için gerçekleşen isabetlerin yüzdesini gösterir. |
+| HTTP yöntemleri |Verilerinizi istemek için hangi HTTP yöntemlerinin kullanıldığını hızlı bir şekilde almanızı sağlar. Genellikle, en yaygın HTTP istek yöntemleri GET, HEAD ve POST ' lardır. Halka grafik her HTTP istek yöntemi türü için gerçekleşen isabetlerin yüzdesini gösterir. |
+| URL’ler |En çok istenen 10 URL 'yi görüntüleyen bir grafik içerir. Her URL için bir çubuk görüntülenir. Çubuğun yüksekliği, belirli URL 'nin rapor kapsamındaki zaman dilimi üzerinden kaç isabetle oluşturulduğunu gösterir. En üstteki 100 istenen URL 'Lerin istatistikleri doğrudan bu grafiğin altında görüntülenir. |
+| CNAME 'leri |Bir raporun zaman dilimi boyunca varlık istemek için kullanılan ilk 10 CNAMEs öğesini görüntüleyen bir grafik içerir. En üstteki 100 istenen CNAMEs istatistikleri doğrudan bu grafiğin altında görüntülenir. |
+| Kadar |Belirli bir süre boyunca varlıkların istendiği ilk 10 CDN veya müşteri kaynak sunucusunu görüntüleyen bir grafik içerir. En üstteki 100 istenen CDN veya müşteri kaynak sunucuları için istatistikler doğrudan bu grafiğin altında görüntülenir. Müşteri kaynak sunucuları, dizin adı seçeneğinde tanımlanan adla tanımlanır. |
+| Coğrafi pop 'Lar |Trafiğinizin belirli bir varlık noktası (POP) üzerinden ne kadarının yönlendirildiğini gösterir. Üç harfli kısaltma, CDN ağımızda bir POP 'U temsil eder. |
+| İstemciler |Belirli bir süre içinde varlık isteyen ilk 10 istemciyi görüntüleyen bir grafik içerir. Bu raporun amaçları doğrultusunda, aynı IP adresinden kaynaklanan tüm istekler aynı istemciden oldukları kabul edilir. En üstteki 100 istemci istatistikleri doğrudan bu grafiğin altında görüntülenir. Bu rapor, en üst istemcileriniz için indirme etkinliği düzenlerini belirlemek için faydalıdır. |
+| Önbellek durumları |Önbellek davranışının ayrıntılı bir dökümünü verir ve bu, genel Son Kullanıcı deneyimini geliştirmeye yönelik yaklaşımları açığa çıkabilir. En yüksek performans, önbellek isabetlerinin geldiği için, önbellek isabetsizliği ve zaman aşımına uğradı önbellek isabetlerinin en aza giderek veri teslim hızlarını iyileştirebilirsiniz. |
+| HIÇBIRI ayrıntıları |Önbellek içeriği yeniliği belirli bir süre boyunca denetlenmedi olan varlıklar için en iyi 10 URL 'yi görüntüleyen bir grafik içerir. Bu tür varlıklar için en üstteki 100 URL 'Lerin istatistikleri doğrudan bu grafiğin altında görüntülenir. |
+| CONFIG_NOCACHE ayrıntıları |Müşterinin CDN yapılandırması nedeniyle önbelleğe alınmamış varlıklar için en iyi 10 URL 'yi görüntüleyen bir grafik içerir. Bu tür varlıklar doğrudan kaynak sunucudan sunulur. Bu tür varlıklar için en üstteki 100 URL 'Lerin istatistikleri doğrudan bu grafiğin altında görüntülenir. |
+| ÖNBELLEKLENEBILIR Ayrıntılar |İstek üst bilgisi verileri nedeniyle önbellekte olmayan varlıklar için en iyi 10 URL 'yi görüntüleyen bir grafik içerir. Bu tür varlıklar için en üstteki 100 URL 'Lerin istatistikleri doğrudan bu grafiğin altında görüntülenir. |
+| TCP_HIT ayrıntıları |Önbellekten hemen sunulan varlıklar için en iyi 10 URL 'yi görüntüleyen bir grafik içerir. Bu tür varlıklar için en üstteki 100 URL 'Lerin istatistikleri doğrudan bu grafiğin altında görüntülenir. |
+| TCP_MISS ayrıntıları |TCP_MISS önbellek durumuna sahip varlıklar için ilk 10 URL 'yi görüntüleyen bir grafik içerir. Bu tür varlıklar için en üstteki 100 URL 'Lerin istatistikleri doğrudan bu grafiğin altında görüntülenir. |
+| TCP_EXPIRED_HIT ayrıntıları |Doğrudan POP 'tan sunulan eski varlıklar için en iyi 10 URL 'yi görüntüleyen bir grafik içerir. Bu tür varlıklar için en üstteki 100 URL 'Lerin istatistikleri doğrudan bu grafiğin altında görüntülenir. |
+| TCP_EXPIRED_MISS ayrıntıları |Kaynak sunucudan yeni bir sürümün alınması gereken eski varlıklar için en iyi 10 URL 'yi görüntüleyen bir grafik içerir. Bu tür varlıklar için en üstteki 100 URL 'Lerin istatistikleri doğrudan bu grafiğin altında görüntülenir. |
+| TCP_CLIENT_REFRESH_MISS ayrıntıları |İstemciden gelen önbellek isteği olmayan bir istek nedeniyle kaynak sunucudan alınan varlıkların ilk 10 URL 'sini görüntüleyen bir çubuk grafik içerir. Bu tür istekler için en üstteki 100 URL 'Lerin istatistikleri doğrudan bu grafiğin altında görüntülenir. |
+| İstemci Istek türleri |HTTP istemcileri (ör. tarayıcılar) tarafından yapılan isteklerin türünü gösterir. Bu rapor, isteklerin nasıl işlendiği konusunda bir fikir sağlayan halka grafik içerir. Her istek türü için bant genişliği ve trafik bilgileri grafiğin altında görüntülenir. |
+| Kullanıcı Aracısı |CDN 'imizde içeriğinizi istemek için ilk 10 Kullanıcı aracısının görüntülendiği bir çubuk grafik içerir. Genellikle, bir Kullanıcı Aracısı bir Web tarayıcısı, medya oynatıcı veya cep telefonu tarayıcısıdır. İlk 100 Kullanıcı aracısının istatistikleri doğrudan bu grafiğin altında görüntülenir. |
+| Başvuranları |CDN 'umuzdan erişilen içeriğe en iyi 10 başvuranları görüntüleyen bir çubuk grafik içerir. Genellikle, başvuran Web sayfasının veya içeriğinizi bağlayan kaynağın URL 'sidir. En üstteki 100 başvuranlar için grafiğin altında ayrıntılı bilgiler verilmiştir. |
+| Sıkıştırma türleri |İstenen varlıkları kenar sunucularımızla sıkıştırılıp sıkıştırılmadığını kesen bir halka grafik içerir. Sıkıştırılan varlıkların yüzdesi, kullanılan sıkıştırma türüne göre bölünür. Her bir sıkıştırma türü ve durumu için grafiğin altında ayrıntılı bilgiler verilmiştir. |
+| Dosya türleri |Hesabınız için CDN 'umuz aracılığıyla istenen ilk 10 dosya türünü görüntüleyen bir çubuk grafik içerir. Bu raporun amaçları doğrultusunda, bir dosya türü varlığın dosya adı uzantısı ve Internet medya türü ( \[örn. html metni/HTML\],. htm \[metin/html\],. aspx \[metni/HTML\]vb.) tarafından tanımlanır. Ayrıntılı bilgiler, en üstteki 100 dosya türleri için grafiğin altında verilmiştir. |
+| Benzersiz dosyalar |Belirli bir günde belirli bir süre boyunca istenen toplam benzersiz varlık sayısını çizmiş bir grafik içerir. |
+| Belirteç kimlik doğrulama özeti |İstenen varlıkların belirteç tabanlı kimlik doğrulamasıyla korunup korunmayacağı hakkında hızlı bir genel bakış sağlayan bir pasta grafiği içerir. Korunan varlıklar, denendiği kimlik doğrulamasının sonuçlarına göre grafikte görüntülenir. |
+| Belirteç kimlik doğrulaması reddetme ayrıntıları |Belirteç tabanlı kimlik doğrulaması nedeniyle reddedilen ilk 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. |
+| HTTP yanıt kodları |Uç sunucularımız tarafından HTTP istemcilerinize gönderilen HTTP durum kodlarının dökümünü (ör., 200 Tamam, 403 Yasak, 404 bulunamadı vb.) sağlar. Pasta grafik, varlıklarınızın nasıl sunulduğunu hızlı bir şekilde değerlendirmenize olanak tanır. Grafiğin altındaki her yanıt kodu için ayrıntılı istatistiksel veriler sağlanır. |
+| 404 hata |404 olmayan bir yanıt kodu ile sonuçlanan ilk 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. |
+| 403 hata |403 yasaklanmış yanıt kodu ile sonuçlanan ilk 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. 403 yasaklanmış bir yanıt kodu, bir istek müşteri kaynak sunucusu veya POP 'umuza ait bir uç sunucu tarafından reddedildiğinde oluşur. |
+| 4 xx hata |400 aralığında yanıt kodu ile sonuçlanan ilk 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. Bu rapordan hariç tutulan 403, 404 yasak yanıt kodlarıdır. Genellikle, bir istemci hatası nedeniyle bir istek reddedildiğinde bir 4xx yanıt kodu oluşur. |
+| 504 hata |504 ağ geçidi zaman aşımı yanıt kodu ile sonuçlanan ilk 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. Bir HTTP proxy 'si başka bir sunucuyla iletişim kurmaya çalıştığında bir zaman aşımı oluştuğunda, 504 ağ geçidi zaman aşımı yanıt kodu oluşur. CDN 'imizde, bir uç sunucu bir müşteri kaynak sunucusuyla iletişim kuramazsa genellikle bir 504 ağ geçidi zaman aşımı yanıt kodu oluşur. |
+| 502 hata |502 hatalı ağ geçidi yanıt kodu ile sonuçlanan ilk 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir. Bir sunucu ile HTTP proxy arasında HTTP protokol hatası oluştuğunda 502 hatalı ağ geçidi yanıt kodu oluşur. CDN 'umuz durumunda, genellikle bir müşteri kaynak sunucusu bir uç sunucuya geçersiz yanıt döndürdüğünde 502 hatalı bir ağ geçidi yanıt kodu oluşur. Bir yanıt ayrıştırılamamıyorsa veya tamamlanmamışsa geçersizdir. |
+| 5 xx hata |500 aralığında yanıt kodu ile sonuçlanan ilk 10 isteği görüntülemenize olanak tanıyan bir çubuk grafik içerir.  Bu rapordan dışlanan 502 hatalı ağ geçidi ve 504 ağ geçidi zaman aşımı yanıt kodlarıdır. |
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure CDN'ye Genel Bakış](cdn-overview.md)
-* [Microsoft Azure CDN'de gerçek zamanlı istatistikler](cdn-real-time-stats.md)
+* [Microsoft Azure CDN 'de gerçek zamanlı istatistikler](cdn-real-time-stats.md)
 * [Kurallar altyapısını kullanarak varsayılan HTTP davranışını geçersiz kılma](cdn-rules-engine.md)
-* [Gelişmiş HTTP Raporları](cdn-advanced-http-reports.md)
+* [Gelişmiş HTTP raporları](cdn-advanced-http-reports.md)
 

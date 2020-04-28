@@ -10,16 +10,16 @@ ms.date: 05/23/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 55e57d12b6d632f19318f221a49668804724e865
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67659921"
 ---
-Aşağıdaki tablo, her geliştirme ortamında bu bağlama için destek eklemek için nasıl söyler.
+Aşağıdaki tabloda, her geliştirme ortamında bu bağlama için nasıl destek ekleneceği açıklanmaktadır.
 
-| Geliştirme ortamı               | Destek eklemek için <br>İşlevler 1.x  |
+| Geliştirme ortamı               | İçinde destek eklemek için <br>İşlevler 1.x  |
 |----------------------|----------------|
-|Yerel gelişim - C# sınıf kitaplığı       | [Paketi yükleyin](../articles/azure-functions/functions-bindings-register.md#vs) | 
-|Yerel gelişim - C# komut dosyası, JavaScript, F # |Automatic         |
+|Yerel geliştirme-C# sınıf kitaplığı       | [Paketi yükler](../articles/azure-functions/functions-bindings-register.md#vs) | 
+|Yerel geliştirme-C# betiği, JavaScript, F # |Automatic         |
 |Portal geliştirme|  Automatic    |

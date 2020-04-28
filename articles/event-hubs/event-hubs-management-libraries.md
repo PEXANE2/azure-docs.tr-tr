@@ -1,6 +1,6 @@
 ---
-title: Yönetim kitaplıkları - Azure Etkinlik Hub'ları| Microsoft Dokümanlar
-description: Bu makalede, .NET adresinden Azure Olay Hub'ları ad alanlarını ve varlıklarını yönetmek için kullanabileceğiniz kitaplık hakkında bilgiler sağlanmaktadır.
+title: Yönetim kitaplıkları-Azure Event Hubs | Microsoft Docs
+description: Bu makalede, .NET Event Hubs ad alanlarını ve varlıklarını .NET 'ten yönetmek için kullanabileceğiniz kitaplık hakkında bilgi sağlanır.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -11,37 +11,37 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 431fe04461f422274697d1e91c4b56e914ce2d4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60746667"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs yönetim kitaplıkları
 
-Olay Hub'ları ad alanlarını ve varlıklarını dinamik olarak sağlamak için Azure Etkinlik Hub'ları yönetim kitaplıklarını kullanabilirsiniz. Bu dinamik doğa, karmaşık dağıtımlara ve ileti senaryolarına olanak sağlar, böylece hangi varlıkların sağlanmasını programlı olarak belirleyebilirsiniz. Bu kitaplıklar şu anda .NET için kullanılabilir.
+Event Hubs ad alanlarını ve varlıklarını dinamik olarak sağlamak için Azure Event Hubs yönetim kitaplıklarını kullanabilirsiniz. Bu dinamik yapı, karmaşık dağıtımlar ve mesajlaşma senaryolarına olanak sağladığından, sağlanacak varlıkları programlı bir şekilde tespit edebilirsiniz. Bu kitaplıklar Şu anda .NET için kullanılabilir.
 
 ## <a name="supported-functionality"></a>Desteklenen işlevsellik
 
-* Namespace oluşturma, güncelleştirme, silme
-* Olay Hub'ları oluşturma, güncelleştirme, silme
-* Tüketici Grubu oluşturma, güncelleme, silme
+* Ad alanı oluşturma, güncelleştirme, silme
+* Event Hubs oluşturma, güncelleştirme, silme
+* Tüketici grubu oluşturma, güncelleştirme, silme
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Olay Hub'ları yönetim kitaplıklarını kullanmaya başlamak için Azure Etkin Dizini (AAD) ile kimlik doğrulamanız gerekir. AAD, Azure kaynaklarına erişim sağlayan bir hizmet sorumlusu olarak kimlik doğrulamanızı gerektirir. Hizmet sorumlusu oluşturma hakkında bilgi için şu makalelerden birine bakın:  
+Event Hubs yönetim kitaplıklarını kullanmaya başlamak için Azure Active Directory (AAD) ile kimlik doğrulaması yapmanız gerekir. AAD, Azure kaynaklarınıza erişim sağlayan bir hizmet sorumlusu olarak kimlik doğrulaması yapmanızı gerektirir. Hizmet sorumlusu oluşturma hakkında daha fazla bilgi için şu makalelerden birine bakın:  
 
-* [Kaynaklara erişebilen Etkin Dizin uygulaması ve hizmet ilkesi oluşturmak için Azure portalını kullanın](../active-directory/develop/howto-create-service-principal-portal.md)
+* [Kaynaklara erişebilen Active Directory uygulama ve hizmet sorumlusu oluşturmak için Azure portal kullanın](../active-directory/develop/howto-create-service-principal-portal.md)
 * [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 * [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure CLI kullanma](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
 
-Bu öğreticiler, yönetim `AppId` kitaplıkları `TenantId`tarafından `ClientSecret` kimlik doğrulama için kullanılan bir (İstemci Kimliği) ve (kimlik doğrulama anahtarı) sağlar. Çalıştırmak istediğiniz kaynak grubu için **Sahip** izinlerine sahip olmalısınız.
+Bu öğreticiler size, yönetim kitaplıkları `AppId` tarafından kimlik doğrulaması için kullanılan `TenantId`bir ( `ClientSecret` istemci kimliği), ve (kimlik doğrulama anahtarı) sağlar. Çalıştırmak istediğiniz kaynak grubu için **sahip** izinleriniz olmalıdır.
 
-## <a name="programming-pattern"></a>Programlama deseni
+## <a name="programming-pattern"></a>Programlama stili
 
-Herhangi bir Olay Hub'ı kaynağını işlemek için desen ortak bir protokol izler:
+Herhangi bir Event Hubs kaynağını işlemek için kullanılan desenler ortak bir protokol izler:
 
-1. `Microsoft.IdentityModel.Clients.ActiveDirectory` Kitaplığı kullanarak AAD'den bir belirteç edinin.
+1. `Microsoft.IdentityModel.Clients.ActiveDirectory` KITAPLıĞı kullanarak AAD 'den bir belirteç alın.
     ```csharp
     var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
@@ -51,7 +51,7 @@ Herhangi bir Olay Hub'ı kaynağını işlemek için desen ortak bir protokol iz
     );
     ```
 
-1. Nesneyi `EventHubManagementClient` oluşturun.
+1. `EventHubManagementClient` Nesnesini oluşturun.
     ```csharp
     var creds = new TokenCredentials(token);
     var ehClient = new EventHubManagementClient(creds)
@@ -60,7 +60,7 @@ Herhangi bir Olay Hub'ı kaynağını işlemek için desen ortak bir protokol iz
     };
     ```
 
-1. Parametreleri `CreateOrUpdate` belirtilen değerlere ayarlayın.
+1. `CreateOrUpdate` Parametreleri belirtilen değerlerinizle ayarlayın.
     ```csharp
     var ehParams = new EventHubCreateOrUpdateParameters()
     {
@@ -68,11 +68,11 @@ Herhangi bir Olay Hub'ı kaynağını işlemek için desen ortak bir protokol iz
     };
     ```
 
-1. Aramayı yürütün.
+1. Çağrıyı yürütün.
     ```csharp
     await ehClient.EventHubs.CreateOrUpdateAsync(resourceGroupName, namespaceName, EventHubName, ehParams);
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [.NET Yönetim örneği](https://github.com/Azure-Samples/event-hubs-dotnet-management/)
-* [Microsoft.Azure.Management.EventHub Başvurusu](/dotnet/api/Microsoft.Azure.Management.EventHub) 
+* [Microsoft. Azure. Management. EventHub başvurusu](/dotnet/api/Microsoft.Azure.Management.EventHub) 

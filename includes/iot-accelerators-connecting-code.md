@@ -9,52 +9,52 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: c79b6f854dc78670a7eb8a1275c3e2fc46fcdd99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67188806"
 ---
 ### <a name="code-walkthrough"></a>Kod kılavuzu
 
-Bu bölümde örnek kodun bazı önemli bölümleri açıklanır ve uzaktan izleme çözüm hızlandırıcısı ile nasıl ilişkili olduklarını açıklar.
+Bu bölümde, örnek kodun bazı önemli bölümleri açıklanmakta ve bunların uzaktan Izleme çözümü hızlandırıcılarıyla ilgisi açıklanmaktadır.
 
-Aşağıdaki snippet, aygıtın yeteneklerini açıklayan bildirilen özelliklerin nasıl tanımlandığını gösterir. Bu özellikler şunlardır:
+Aşağıdaki kod parçacığında, cihazın yeteneklerini tanımlayan raporlanan özelliklerin nasıl tanımlandığı gösterilmektedir. Bu özellikler şunları içerir:
 
-- Çözüm hızlandırıcısının cihazı eşe eklemesini sağlamak için aygıtın konumu.
-- Geçerli firmware sürümü.
-- Aygıtın desteklediği yöntemlerin listesi.
+- Cihazı haritaya eklemek için çözüm hızlandırıcıyı etkinleştirmek üzere cihazın konumu.
+- Geçerli bellenim sürümü.
+- Cihazın desteklediği yöntemlerin listesi.
 - Cihaz tarafından gönderilen telemetri iletilerinin şeması.
 
 [!code-cpp[Define data structures for Chiller](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=datadefinition "Define data structures for Chiller")]
 
-Örnek, Parson kitaplığını kullanarak bu veri yapısını seri hale getiren bir **serializeToJson** işlevi içerir.
+Örnek, Parson kitaplığı kullanılarak bu veri yapısını serileştiren bir **Serializetojson** işlevi içerir.
 
-Örnek, istemci çözüm hızlandırıcısıyla etkileşimde bulunduğunda konsola bilgi yazdıran birkaç geri arama işlevi içerir:
+Örnek, istemci çözüm hızlandırıcıyla etkileşerek konsola bilgi yazdıracak birkaç geri çağırma işlevi içerir:
 
 - **connection_status_callback**
 - **send_confirm_callback**
 - **reported_state_callback**
 - **device_method_callback**
 
-Aşağıdaki parçacık **device_method_callback** işlevini gösterir. Bu işlev, çözüm hızlandırıcıdan bir yöntem çağrısı aldığında yapılacak eylemi belirler. **İşlev, userContextCallback** parametresinde **Chiller** veri yapısına bir başvuru alır. Geri arama işlevi **ana** işlevde yapılandırıldığında **userContextCallback'in** değeri ayarlanır:
+Aşağıdaki kod parçacığında **device_method_callback** işlevi gösterilmektedir. Bu işlev, çözüm hızlandırıcısında bir yöntem çağrısı alındığında gerçekleştirilecek eylemi belirler. İşlevi, **Usercontextcallback** parametresindeki **Chiller** veri yapısına bir başvuru alır. **Usercontextcallback** değeri, **Main** işlevinde geri çağırma işlevi yapılandırıldığında ayarlanır:
 
 [!code-cpp[Device method callback](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=devicemethodcallback "Device method callback")]
 
-Çözüm hızlandırıcı firmware güncelleştirme yöntemini aradığında, örnek JSON yükünü deserialize eder ve güncelleştirme işlemini tamamlamak için bir arka plan iş parçacığı başlatır. Aşağıdaki parçacık iş parçacığı üzerinde çalışan **do_firmware_update** gösterir:
+Çözüm Hızlandırıcısı bellenim güncelleştirme yöntemini çağırdığında, örnek JSON yükünü serileştirir ve güncelleştirme işlemini tamamlaması için bir arka plan iş parçacığı başlatır. Aşağıdaki kod parçacığında iş parçacığı üzerinde çalışan **do_firmware_update** gösterilmektedir:
 
 [!code-cpp[Firmware update thread](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=firmwareupdate "Firmware update thread")]
 
-Aşağıdaki parçacık, istemcinin çözüm hızlandırıcısına nasıl bir telemetri iletisi gönderdiğini gösterir. İleti özellikleri, çözüm hızlandırıcısının gösterge panelinde telemetriyi görüntülemesine yardımcı olacak ileti şemasını içerir:
+Aşağıdaki kod parçacığında, istemcinin çözüm hızlandırıcısına nasıl telemetri iletisi gönderdiği gösterilmektedir. İleti özellikleri, çözüm hızlandırıcısının panoda telemetri görüntülemesine yardımcı olacak ileti şemasını içerir:
 
 [!code-cpp[Send telemetry](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=sendmessage "Send telemetry")]
 
-Örnekteki **ana** işlev:
+Örnekteki **Main** işlevi:
 
-- SDK alt sistemini başlayıp kapatır.
-- **Chiller** veri yapısını başharfe aktarıyor.
+- SDK alt sistemini başlatır ve kapatır.
+- **Chilveri** yapısını başlatır.
 - Bildirilen özellikleri çözüm hızlandırıcısına gönderir.
-- Aygıt yöntemi geri arama işlevini yapılandırır.
-- Çözüm hızlandırıcısına simüle telemetri değerleri gönderir.
+- Cihaz yöntemi geri çağırma işlevini yapılandırır.
+- Çözüm hızlandırıcısına sanal telemetri değerleri gönderir.
 
 [!code-cpp[Main](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=main "Main")]

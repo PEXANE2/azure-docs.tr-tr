@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: cb160a140b5c0cb184a5172da10ade0de37c4fed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67188415"
 ---
 <!--v-sharos 10/13/2105 virtual device security-->
 
-StorSimple sanal cihazını kullanırken aşağıdaki güvenlik hususlarını göz önünde bulundurun:
+StorSimple Sanal cihazını kullanırken aşağıdaki güvenlik konularını göz önünde bulundurun:
 
-* Sanal cihaz, Microsoft Azure aboneliğiniz aracılığıyla güvenli hale getirilmiştir. Bu, sanal aygıtı kullanıyorsanız ve Azure aboneliğiniz tehlikeye girerse, sanal cihazınızda depolanan verilerin de hassas olduğu anlamına gelir.
-* Azure StorSimple'da depolanan verileri şifrelemek için kullanılan sertifikanın ortak anahtarı Azure klasik portalında güvenli bir şekilde kullanılabilir hale getirilir ve özel anahtar StorSimple aygıtıyla tutulur. StorSimple sanal aygıtında hem ortak hem de özel anahtarlar Azure'da depolanır.
-* Sanal aygıt Microsoft Azure veri merkezinde barındırılır.
+* Sanal cihazın Microsoft Azure aboneliğiniz aracılığıyla güvenliği sağlanır. Bu, sanal cihaz kullanıyorsanız ve Azure aboneliğiniz tehlikeye girerse, sanal cihazınızda depolanan verilerin de riskli olması anlamına gelir.
+* Azure StorSimple 'ta depolanan verileri şifrelemek için kullanılan sertifikanın ortak anahtarı, klasik Azure portalı ile güvenli bir şekilde kullanıma sunulmuştur ve özel anahtar StorSimple cihazınızla birlikte tutulur. StorSimple Sanal cihazında, hem genel hem de özel anahtarlar Azure 'da depolanır.
+* Sanal cihaz Microsoft Azure veri merkezinde barındırılır.
 

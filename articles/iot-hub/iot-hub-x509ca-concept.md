@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub X.509 güvenlik kavramları | Microsoft Dokümanlar
-description: Kavram - IoT cihaz üretiminde X.509 sertifika yetkilisi sertifikaları değerini anlamak ve kimlik doğrulama.
+title: Azure IoT Hub X. 509.440 güvenliği kavramları | Microsoft Docs
+description: Kavram-IoT cihaz üretimi ve kimlik doğrulaması içindeki X. 509.440 sertifika yetkilisi sertifikalarını anlamak.
 author: eustacea
 manager: arjmands
 ms.service: iot-hub
@@ -9,124 +9,124 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61320483"
 ---
-# <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>IoT endüstrisinde X.509 CA sertifikalarının kavramsal olarak anlaşılması
+# <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>IoT sektöründe X. 509.440 CA sertifikalarının kavramsal olarak anlaşılmasına
 
-Bu makalede, IoT aygıt üretiminde ve IoT Hub'a kimlik doğrulamasında X.509 sertifika yetkilisi (CA) sertifikaları kullanmanın değeri açıklanmaktadır. Tedarik zinciri kurulumu ve vurgulama avantajları hakkında bilgiler içerir.
+Bu makalede, IoT cihaz üretimi ve kimlik doğrulama IoT Hub için X. 509.440 sertifika yetkilisi (CA) sertifikalarının kullanılması değeri açıklanmaktadır. Tedarik zinciri kurulumu ve vurgulamanın avantajları hakkında bilgi içerir.
 
-Bu makalede açıklanır:
+Bu makalede şunları açıklanmaktadır:
 
-* X.509 CA sertifikaları nelerdir ve nasıl alınır?
+* X. 509.440 CA sertifikalarının ne olduğu ve nasıl alınacağı
 
-* X.509 CA sertifikanızı IoT Hub'a kaydetme
+* X. 509.952 CA sertifikanızı IoT Hub 'e kaydetme
 
-* X.509 CA tabanlı kimlik doğrulama için üretim tedarik zinciri nasıl kurulur?
+* X. 509.440 CA tabanlı kimlik doğrulaması için üretim tedarik zinciri ayarlama
 
-* X.509 CA ile imzalanan aygıtlar IoT Hub'a nasıl bağlanır?
+* X. 509.440 CA ile imzalanan cihazların IoT Hub 'e bağlanması
 
 ## <a name="overview"></a>Genel Bakış
 
-X.509 Sertifika Yetkilisi (CA) kimlik doğrulaması, tedarik zincirinde aygıt kimlik oluşturmayı ve yaşam döngüsü yönetimini önemli ölçüde kolaylaştıran bir yöntem kullanarak aygıtları IoT Hub'a doğrulayan bir yaklaşımdır.
+X. 509.440 sertifika yetkilisi (CA) kimlik doğrulaması, sağlama zincirindeki cihaz kimliği oluşturma ve yaşam döngüsü yönetimini önemli ölçüde basitleştiren bir yöntemi kullanarak IoT Hub, cihazların kimliğini doğrulamaya yönelik bir yaklaşımdır.
 
-X.509 CA kimlik doğrulaması ayırt edici bir özniteliği, BIR CA sertifikasının akış aşağı aygıtlarıyla olan bire bir ilişkisidir. Bu ilişki, x.509 CA sertifikasını bir kez kaydederek herhangi bir sayıda cihazın IoT Hub'a kaydedilmesini sağlar, aksi takdirde aygıtın bağlanabilmesi için cihaza özgü sertifikaların her cihaz için önceden kaydedilmesi gerekir. Bu bir-çok ilişkisi, aygıt sertifikalarıyaşam döngüsü yönetimi işlemlerini de kolaylaştırır.
+X. 509.440 CA kimlik doğrulamasının ayırt edici özniteliği bir CA sertifikasının aşağı akış cihazlarına sahip olan bire çok ilişkidir. Bu ilişki, bir X. 509.952 CA sertifikasını bir kez kaydederek IoT Hub herhangi bir sayıda cihazın kaydedilmesine izin verebilir; Aksi takdirde, cihazın bağlanabilmesi için her cihaz için benzersiz sertifikaların önceden kaydolmalıdır. Bu bire çok ilişki Ayrıca cihaz sertifikalarının yaşam döngüsü yönetimi işlemlerini basitleştirir.
 
-X.509 CA kimlik doğrulaması bir diğer önemli özelliği tedarik zinciri lojistik basitleştirilmesidir. Aygıtların güvenli kimlik doğrulaması, her aygıtın güven temeli olarak anahtar gibi benzersiz bir sır saklaması gerektirir. Sertifika tabanlı kimlik doğrulamasında bu gizli özel bir anahtardır. Tipik bir cihaz üretim akışı birden çok adım ve vasiiçerir. Aygıt özel anahtarlarını birden çok vasi arasında güvenli bir şekilde yönetmek ve güveni korumak zor ve pahalıdır. Sertifika yetkililerinin kullanılması, her veliyi aygıt özel anahtarlarını emanet etmek yerine bir şifreleme güven zincirine imzalayarak bu sorunu çözer. Sırayla her vasi üretim akışının kendi süreç adımında cihazları işaretler. Genel sonuç, kriptografik güven zincirinin kullanımı yoluyla yerleşik hesap verebilirliğe sahip optimum bir tedarik zinciridir. Aygıtlar benzersiz özel anahtarlarını koruduğunda bu işlemin en fazla güvenliği verdiğini belirtmekte yarar vardır. Bu amaçla, donanım güvenli modülleri (HSM) dahili gün ışığı görmek asla özel anahtarlar oluşturma yeteneğine sahip kullanılmasını çağırıyoruz.
+X. 509.440 CA kimlik doğrulamasının diğer önemli bir özniteliği, tedarik zinciri lojistik 'nın basitleştiridir. Cihazların güvenli kimlik doğrulaması, her cihazın güven için temel olarak bir anahtar gibi benzersiz bir gizli dizi bulundurmayı gerektirir. Sertifika tabanlı kimlik doğrulaması ' nda, bu gizli anahtar özel bir anahtardır. Tipik bir cihaz üretim akışı, birden çok adım ve custodıans içerir. Cihaz özel anahtarlarının birden çok koruyucu genelinde güvenli bir şekilde yönetilmesi ve güvenin sürdürülmesi zor ve pahalıdır. Sertifika yetkililerini kullanmak bu sorunu, her bir koruyucu, cihaz özel anahtarlarıyla güvenmek yerine güven zincirine imzalayarak çözer. İçindeki her bir koruyucu, cihazları üretim akışının ilgili işlem adımından kapatır. Genel sonuç, şifreleme zincirinin kullanılmasıyla birlikte yerleşik sorumluluire sahip en iyi tedarik zinciridir. Bu işlem, cihazlar benzersiz özel anahtarlarını koruduğu sırada bu işlemin en çok güvenliği oluştuğunu belirtmekte de yararlıdır. Bu uçta, günün ışığını hiçbir şekilde görmeyecek özel anahtarlar oluşturma yeteneğine sahip donanım güvenli modülleri 'nin (HSM) kullanımını inceleyeceğiz.
 
-Bu makalede, x.509 CA kimlik doğrulaması kullanarak uçtan uca bir görünüm sunar, tedarik zinciri kurulumundan aygıt bağlantısına kadar, anlayışı sağlamlaştırmak için gerçek bir dünya örneğinden yararlanırken.
+Bu makalede, sağlama zinciri kurulumundan cihaz bağlantısına kadar X. 509.952 CA kimlik doğrulamasını kullanmanın uçtan uca bir görünümü sunulmaktadır. Bu arada, anlamak için gerçek bir dünya örneğini kullanabilirsiniz.
 
 ## <a name="introduction"></a>Giriş
 
-X.509 CA sertifikası, sahibi diğer sertifikaları imzalayabilen dijital bir sertifikadır. Bu dijital sertifika X.509'dur, çünkü IETF'nin RFC 5280 standardı tarafından öngörülen bir sertifika biçimlendirme standardına uygundur ve sahibi diğer sertifikaları imzalayabildiği için bir sertifika yetkilisidir (CA).
+X. 509.440 CA sertifikası, sahibi diğer sertifikaları imzalayabileceği dijital bir sertifikadır. Bu dijital sertifika, IETF 'nin RFC 5280 standardına göre belirtilen bir sertifika biçimlendirme standardına uyduğundan ve sahibi diğer sertifikaları imzalayabildiğinden bir sertifika yetkilisi (CA) olduğundan, X. 509.440 olur.
 
-X.509 CA kullanımı en iyi somut bir örnek ile ilgili olarak anlaşılmaktadır. Profesyonel kurulum için tasarlanmış Smart-X-Widget üreticisi Company-X'i düşünün. Company-X hem üretim hem de kurulum kaynaklarını dış kaynakolarak karşılar. Bu smart-x-widget'lar üretmek için üretici Factory-Y sözleşmeleri ve servis sağlayıcı Teknisyen-Z yüklemek için. Şirket-X, Smart-X-Widget'ın kurulum için doğrudan Factory-Y'den Technician-Z'ye bağlanmasını ve şirket-X'in başka bir müdahalesi olmaksızın kurulumdan sonra Company-X'in IoT Hub örneğine doğrudan bağlanmasını arzu eder. Bunun gerçekleşmesi için, Şirket-X'in otomatik bağlantı için Smart-X-Widget'ı prime'e getirmek için birkaç tek seferlik kurulum işlemlerini tamamlaması gerekir. Uçtan uca senaryo göz önünde bulundurularak, bu makalenin geri kalanı aşağıdaki gibi yapılandırılır:
+X. 509.440 CA kullanımı, somut bir örnekle ilişkili olarak en iyi şekilde anlaşılmıştır. Profesyonel yükleme için tasarlanan bir akıllı X pencere öğesi Oluşturucu olan şirket-X ' i göz önünde bulundurun. Şirket-X outsources hem üretim hem de yükleme. BT sözleşmeleri üretici üreticisi-Y 'yi, akıllı X Pencere öğelerinin yanı sıra yüklemek için hizmet sağlayıcı teknisyeni-Z olarak üretme. Şirket-x, akıllı-x-pencere öğesinin, yükleme için doğrudan Factory-Y ' d e n ve şirket-x ' d e n daha fazla müdahale olmadan yüklemeden sonra şirket X ' in IoT Hub örneğine doğrudan bağlanmasını sağlar. Bunun gerçekleşmesini sağlamak için, şirket-X ' in otomatik bağlantı için birkaç tek seferlik kurulum işlemini tamamlaması gerekir. Uçtan uca senaryo göz önünde bulundurularak, bu makalenin geri kalanı aşağıdaki şekilde yapılandırılmıştır:
 
-* X.509 CA sertifikasını edinin
+* X. 509.440 CA sertifikasını alma
 
-* X.509 CA sertifikasını IoT Hub'a kaydedin
+* X. 509.440 CA sertifikasını IoT Hub kaydetme
 
-* Aygıtları sertifika güven zincirinde imzalama
+* Cihazları bir sertifika güven zincirinde imzala
 
 * Cihaz bağlantısı
 
-## <a name="acquire-the-x509-ca-certificate"></a>X.509 CA sertifikasını edinin
+## <a name="acquire-the-x509-ca-certificate"></a>X. 509.440 CA sertifikasını alma
 
-Company-X, bir genel kök sertifika yetkilisinden X.509 CA sertifikası satın alma veya kendi imzalanmış bir işlem yoluyla sertifika oluşturma seçeneğine sahiptir. Bir seçenek, uygulama senaryosuna bağlı olarak diğerine göre en uygun seçenek tir. Seçenek ne olursa olsun, işlem iki temel adım gerektirir, bir ortak /özel anahtar çifti oluşturma ve ortak anahtarı bir sertifika ya da imzalayarak.
+Şirket-X ' i bir genel kök sertifika yetkilisinden bir X. 509.952 CA sertifikası satın alma veya otomatik olarak imzalanan bir işlem aracılığıyla bir tane oluşturma seçeneği vardır. Bir seçenek, uygulama senaryosuna bağlı olarak, diğeri üzerinde en iyi seçenektir. Bu seçenek ne olursa olsun, ortak/özel anahtar çifti oluşturan ve ortak anahtarı bir sertifikaya imzalayan iki temel adımı da kapsar.
 
 ![X509CA sertifikaları oluşturmak için akış](./media/iot-hub-x509ca-concept/csr-flow.png)
 
-Bu adımların nasıl gerçekleştirilene ilişkin ayrıntılar çeşitli hizmet sağlayıcılarla farklılık gösterir.
+Bu adımların nasıl yerine getirileceğini gösteren Ayrıntılar çeşitli hizmet sağlayıcılarıyla farklıdır.
 
-### <a name="purchasing-an-x509-ca-certificate"></a>X.509 CA sertifikası satın alma
+### <a name="purchasing-an-x509-ca-certificate"></a>X. 509.440 CA sertifikası satın alma
 
-CA sertifikası satın almak, aygıtlar bağlandığında IoT aygıtlarının meşruiyetine kefil olmak için güvenilir bir üçüncü taraf olarak iyi bilinen bir kök CA eylemine sahip olmanın avantajına sahiptir. Şirket-X, Smart-X-Widget'ın IoT Hub'a ilk bağlantıdan sonra üçüncü taraf ürün veya hizmetlerle etkileşimde olmasını istiyorlarsa bu seçeneği seçer.
+CA sertifikasının satın alınması iyi bilinen bir kök CA 'nın, Cihazlar bağlandığında IoT cihazlarının yasallığı için güvenilir bir üçüncü taraf görevi gören avantajına sahip olma avantajına sahiptir. IoT Hub ilk bağlantıdan sonra, şirket-X, üçüncü taraf ürün veya hizmetlerle etkileşim kurmak için akıllı X pencere öğesi istiyorsanız bu seçeneği seçer.
 
-X.509 CA sertifikası satın almak için, Company-X bir kök sertifika hizmetleri sağlayıcısı seçer. 'Root CA' deyimi için bir internet araması iyi müşteri adayları verecektir. CA kökü, Company-X'e ortak/özel anahtar çiftinin nasıl oluşturulacağı ve hizmetleri için sertifika imzalama isteğinin (CSR) nasıl oluşturulacağı konusunda rehberlik edecektir. CSR, sertifika yetkilisinden sertifika başvurusu için resmi bir işlemdir. Bu satın alma nın sonucu, yetki belgesi olarak kullanılmak üzere bir sertifikadır. X.509 sertifikalarının her yerde olması göz önüne alındığında, sertifikanın IETF'nin RFC 5280 standardına uygun şekilde biçimlendirilmiş olması muhtemeldir.
+X. 509.952 CA sertifikası satın almak için, şirket-X bir kök sertifika hizmetleri sağlayıcısı seçer. ' Kök CA ' ifadesi için bir internet araması iyi müşteri adayları elde eder. Kök CA, şirket-X ' i ortak/özel anahtar çiftinin nasıl oluşturulacağını ve hizmetleri için bir sertifika Imzalama Isteği (CSR) oluşturmayı yönlendirecektir. CSR, sertifika yetkilisinden bir sertifika için uygulama ile ilgili biçimsel bir işlemdir. Bu satınalmanın sonucu, yetkili sertifika olarak kullanılacak bir sertifikadır. X. 509.440 sertifikalarınızın kolaylaşmıştır 'e verildiğine göre, sertifika, IETF 'nin RFC 5280 standardına göre düzgün şekilde biçimlendirildi.
 
-### <a name="creating-a-self-signed-x509-ca-certificate"></a>Kendi İmzalı X.509 CA sertifikası oluşturma
+### <a name="creating-a-self-signed-x509-ca-certificate"></a>Otomatik olarak Imzalanan bir X. 509.440 CA sertifikası oluşturma
 
-Kendi Kendine İmzalanmış X.509 CA sertifikası oluşturma işlemi, kök sertifika yetkilisi gibi üçüncü taraf imzalayan bir sertifikayı dahil etmek dışında satın almaya benzer. Örneğimizde, Şirket-X, kök sertifika yetkilisi yerine yetki sertifikasını imzalar. Şirket-X, bir yetki sertifikası satın almaya hazır olana kadar test etmek için bu seçeneği seçebilir. Şirket-X, Smart-X-Widget'ın IoT Hub dışındaki herhangi bir üçüncü taraf hizmetine bağlanması amaçlanmamışsa, üretimde kendi imzalanmış bir X.509 CA sertifikası da kullanabilir.
+Otomatik olarak Imzalanan bir X. 509.440 CA sertifikası oluşturma işlemi, kök sertifika yetkilisi gibi üçüncü taraf imzalayıcısı ile ilgili özel durum ile satın almaya benzer. Bizim örneğimizde, şirket-X kök sertifika yetkilisi yerine yetkili sertifikasını imzalayacaktır. Şirket-X, bir yetkili sertifika satın almaya hazırlanana kadar bu seçeneği test etmek için seçebilirler. Şirket-X, akıllı-X-pencere öğesinin IoT Hub dışındaki herhangi bir üçüncü taraf hizmete bağlanması amaçlanmamışsa, üretimde otomatik olarak imzalanan bir X. 509.440 CA sertifikası da kullanabilir.
 
-## <a name="register-the-x509-certificate-to-iot-hub"></a>X.509 sertifikasını IoT Hub'a kaydedin
+## <a name="register-the-x509-certificate-to-iot-hub"></a>X. 509.440 sertifikasını kaydedin IoT Hub
 
-Şirket-X'in X.509 CA'yı IoT Hub'a kaydetmesi gerekir ve burada akıllı x widget'ları bağlanırken kimlik doğrulaması yapacaktır. Bu, herhangi bir sayıda Smart-X-Widget aygıtının kimliğini doğrulamave yönetme olanağı sağlayan tek seferlik bir işlemdir. Bu işlem, yetki sertifikası ve aygıtlar arasındaki bir-çok ilişkisi nedeniyle bir kereliktir ve x.509 CA kimlik doğrulama yöntemini kullanmanın başlıca avantajlarından birini oluşturur. Alternatif, her Smart-X-Widget cihazı için ayrı ayrı sertifika parmak izleri yüklemek ve böylece operasyonel maliyetlere katkıda bulunmaktadır.
+Şirket-X ' e, bağlandıkları gibi akıllı X Pencere öğelerinin kimliğini doğrulamak için kullanacağı IoT Hub, X. 509.440 CA 'sını kaydetmesi gerekir. Bu, herhangi bir sayıda akıllı X-pencere öğesi cihazını kimlik doğrulaması ve yönetme olanağı sağlayan tek seferlik bir işlemdir. Bu işlem, yetkili sertifika ve cihazlar arasındaki bire çok ilişki nedeniyle tek seferlik ve ayrıca X. 509.440 CA kimlik doğrulama yöntemini kullanmanın başlıca avantajlarından birini oluşturur. Diğer bir deyişle, her bir ve her akıllı X pencere öğesi için tek tek sertifika parmak izlerini karşıya yükleme işlemi, böylece işletimsel maliyetlere ekleniyor.
 
-X.509 CA sertifikasının kaydedilmesi iki aşamalı bir işlemdir, sertifika yüklemesi ve sertifika kanıtıdır.
+X. 509.440 CA sertifikasını kaydetmek, iki adımlı bir işlemdir, sertifika karşıya yükleme ve sertifika geçirmez.
 
-![X509CA sertifikası kaydetme](./media/iot-hub-x509ca-concept/pop-flow.png)
+![X509CA sertifikasını kaydetme](./media/iot-hub-x509ca-concept/pop-flow.png)
 
-### <a name="x509-ca-certificate-upload"></a>X.509 CA Sertifikası Yükleme
+### <a name="x509-ca-certificate-upload"></a>X. 509.440 CA sertifikasını karşıya yükleme
 
-X.509 CA sertifika yükleme işlemi, CA sertifikasını IoT Hub'a yükleyin. IoT Hub sertifikayı bir dosyada bekler. Company-X sadece sertifika dosyasını yükler. Sertifika dosyası hiçbir koşulda herhangi bir özel anahtar içermemelidir. Kamu Anahtar Altyapısı (PKI) ile ilgili standartlardaki en iyi uygulamalar, bu durumda Şirket-X'in özel bilgisinin yalnızca Company-X'te yer almalarını zorunlu kılmalıdır.
+X. 509.440 CA sertifikası karşıya yükleme işlemi yalnızca IoT Hub, CA sertifikasını karşıya yükler. IoT Hub bir dosyadaki sertifikayı bekliyor. Şirket-X yalnızca sertifika dosyasını karşıya yükler. Sertifika dosyası herhangi bir koşulda herhangi bir özel anahtar içermemelidir. Ortak anahtar altyapısını (PKI) yöneten standartlardan en iyi uygulamalar, bu durumda Şirket-X ' i z i bu örnekte özel olarak şirket-X ' in içinde yer alır.
 
-### <a name="proof-of-possession-of-the-certificate"></a>Sertifikanın Sahip Olduğu Kanıt
+### <a name="proof-of-possession-of-the-certificate"></a>Sertifika kanıtı
 
-X.509 CA sertifikası, herhangi bir dijital sertifika gibi, gizlice dinlemeye açık olan genel bilgilerdir. Bu nedenle, bir kulak misafiri bir sertifikanın yolunu kesebilir ve sertifikayı kendi sertifikaları olarak yüklemeyi deneyebilir. Örneğimizde, IoT Hub CA sertifikası Company-X'in gerçekten Company-X'e ait olduğundan emin olmak ister. Bunu şirket-X'e meydan okuyarak, aslında sertifikaya [sahip](https://tools.ietf.org/html/rfc5280#section-3.1)olduklarını kanıtlamaya çalışır. Sahip olma kanıtı akışı, IoT Hub'ın özel anahtarını kullanarak Şirket-X tarafından imzalanacak rastgele bir sayı oluşturmasını gerektirir. Eğer Şirket-X, PKI'nın en iyi uygulamalarını takip ettiyse ve özel anahtarlarını koruduysa, o zaman yalnızca onlar sahip olma kanıtı sorununa doğru şekilde yanıt verecek konumda olurlar. IoT Hub, sahip olma kanıtı mücadelesinin başarılı bir yanıtı üzerine X.509 CA sertifikasını kaydetmeye devam eder.
+X. 509.440 CA sertifikası, tıpkı her dijital sertifika gibi, gizlice dinleme saldırılarına açık olan genel bilgiler. Bu nedenle, bir gizlice dinber bir sertifikayı ele geçirebilir ve kendi kendine yüklemeyi deneyebilir. Bizim örneğimizde, IoT Hub Company-X CA sertifikasının gerçekten şirket-X ' e ait olduğundan emin olmak istersiniz. Bu sayede, zorlayıcı şirket-X ' i kullanarak sertifika [kanıtlama (pop) akışı](https://tools.ietf.org/html/rfc5280#section-3.1)aracılığıyla sertifikaya sahip oldukları konusunda kanıt sağlar. Bu arada bulunan akış, özel anahtarını kullanarak şirket-X tarafından imzalanmış rastgele bir sayı oluşturmak IoT Hub gerektirir. Şirket-X ' i takip eden PKI en iyi uygulamaları ve özel anahtarlarını koruduktan sonra, yalnızca BT, elinde bulunan zorlukları doğru bir şekilde yanıtlamak için bir konumda olacaktır. IoT Hub, X. 509.440 CA sertifikasını, elinde yer kanıtlama zorluğu başarılı bir yanıtı üzerine kaydetmeye devam eder.
 
-IoT Hub'ın sahip olma kanıtı sorununa başarılı bir yanıt X.509 CA kaydını tamamlar.
+IoT Hub ' dan elinde bulunan bir çekişme için başarılı bir yanıt, X. 509.440 CA kaydını tamamlar.
 
-## <a name="sign-devices-into-a-certificate-chain-of-trust"></a>Cihazları Sertifika Güven Zincirinde Oturum Aç
+## <a name="sign-devices-into-a-certificate-chain-of-trust"></a>Cihazları bir sertifika güven zincirinde imzala
 
-IoT, her aygıtın benzersiz bir kimliğe sahip olmasını gerektirir. Bu kimlikler, sertifika tabanlı kimlik doğrulama düzenleri için form sertifikalarında yer alıyor. Örneğimizde, bu her Smart-X-Widget benzersiz bir cihaz sertifikasına sahip olması gerektiği anlamına gelir. Şirket-X, tedarik zincirinde bunun için nasıl kurulum yapar?
+IoT, her cihazın benzersiz bir kimliğe sahip olmasını gerektirir. Bu kimlikler sertifika tabanlı kimlik doğrulama şemaları için sertifikalardır. Örneğimizde bu, her Smart-X pencere öğesinin benzersiz bir cihaz sertifikasına sahip olması gerektiği anlamına gelir. Şirket-X ' i tedarik zincirinde bu için nasıl ayarlar?
 
-Bu konuda gitmek için bir yolu Smart-X-Widgets için önceden sertifikalar oluşturmak ve tedarik zinciri ortakları ile ilgili benzersiz cihaz özel anahtarları bilgi emanet etmektir. Şirket-X için bu, Fabrika-Y ve Teknisyen-Z'ye emanet anlamına gelir. Bu geçerli bir yöntem olmakla birlikte, aşağıdaki gibi güven sağlamak için aşılması gereken zorluklarla birlikte gelir:
+Bunu yapmanın bir yolu, akıllı-X pencere öğeleri için önceden sertifika oluşturmak ve tedarik zinciri ortaklarıyla ilgili benzersiz cihaz özel anahtarları hakkında bilgi sahibi olmak içindir. Şirket-X için bu, Factory-Y ve teknisyen-Z ' Y i güvenilen bir araçtır. Bu geçerli bir yöntem olsa da, güven sağlamak için aşağıdaki şekilde ele alınması gereken zorluk sunar:
 
-1. Özel anahtarları asla paylaşmamak için PKI'nın en iyi uygulamalarını göz ardı etmenin yanı sıra, cihaz özel anahtarlarını tedarik zinciri ortaklarıyla paylaşmak zorunda kalmak, tedarik zincirine güven inşa etmeyi pahalıhale getirir. Bu, güvenli odalar gibi güvenli sistemler den cihaz özel anahtarları nın bulunduğu anlamına gelir ve periyodik güvenlik denetimleri gibi işlemlerin yüklenmesi gerekir. Her ikisi de tedarik zincirine maliyet ekler.
+1. Özel anahtarların hiçbir şekilde paylaşılmaması için PKI en iyi yöntemlerini göz ardı etmekle birlikte, cihaz özel anahtarlarını tedarik zinciri ortaklarıyla paylaşma Bu, şirket içi cihaz özel anahtarları ve düzenli güvenlik denetimleri gibi işlemlerin yüklenmesi için güvenli odalar gibi büyük sistemler anlamına gelir. Her ikisi de tedarik zincirine maliyet ekleyin.
 
-2. Tedarik zincirindeki aygıtlar için güvenli bir şekilde muhasebeve daha sonra dağıtımda bunları yönetmek, aygıta özgü sertifika (dolayısıyla özel anahtar) oluşturma noktasından aygıt emekliliğine kadar her anahtardan cihaza çift için bire bir görev haline gelir. Bu, grup kavramı bir şekilde sürece açıkça yerleşik olmadıkça cihazların grup yönetimini engellemez. Güvenli muhasebe ve cihaz yaşam döngüsü yönetimi, bu nedenle, ağır bir işlem yükü haline gelir. Örneğimizde, Şirket-X bu yükü taşıyacak.
+2. Tedarik zincirindeki cihazların güvenli bir şekilde oluşturulması ve daha sonra dağıtımda yönetilmesi, cihaz benzersiz sertifikası (Bu nedenle özel anahtar) ile cihaz emekliliğe kadar her anahtar-cihaz çifti için bire bir görev haline gelir. Bu, Grup kavramı işleme açık bir şekilde doğrudan derlenmediği sürece cihazların Grup yönetimini daha fazla halden ayırır. Bu nedenle, güvenli muhasebe ve cihaz yaşam döngüsü yönetimi ağır bir işlem yükü haline gelir. Bizim örneğimizde, şirket-X bu yükü taşır.
 
-X.509 CA sertifikası kimlik doğrulaması, sertifika zincirleri nin kullanımı yoluyla listelenen sorunlara zarif çözümler sunar. Bir ca'nın bir ara CA imzalamasından elde edilen sertifika zinciri, başka bir ara CA imzalar ve böylece son bir ara CA aygıtı imzalayana kadar devam eder. Örneğimizde, Company-X fabrika-y işaretleri, hangi sırayla sonunda Smart-X-Widget işaretleri Technician-Z işaretleri.
+X. 509.440 CA sertifikası kimlik doğrulaması, sertifika zincirlerinin kullanımı aracılığıyla listelenen güçlüklere yönelik zarif çözümler sunar. Bir sertifika zinciri, başka bir ara CA 'yı açan bir ara CA 'yı imzalayan bir CA 'dan kaynaklanır ve son ara CA bir cihazı imzalana kadar devam eder. Bizim örneğimizde, şirket-X ' i işaret eden, bu, son olarak, akıllı-X-pencere öğesini imzaladığında teknisyen-Z ' Y i kapatır.
 
 ![Sertifika zinciri hiyerarşisi](./media/iot-hub-x509ca-concept/cert-chain-hierarchy.png)
 
-Zincirdeki sertifikaların yukarıda mantıksal teslimi yetki sunar. Birçok tedarik zinciri, her ara CA'nın tüm upstream CA sertifikalarını alırken zincire imza attığı ve son ara CA'nın sonunda her aygıtı imzaladığı ve zincirdeki tüm yetki sertifikalarını enjekte ettiği bu mantıksal teslimi takip eder cihaza. Bu, fabrikalar hiyerarşisi ile sözleşme üretim şirketi üretim yapmak için belirli bir fabrika komisyonları zaman yaygındır. Hiyerarşi birkaç düzeyde derin olabilir (örneğin, coğrafya / ürün türü / üretim hattı), sadece fabrika sonunda cihaz ile etkileşim alır ama zincir hiyerarşinin üstünden korunur.
+Zincirdeki sertifikaların üzerinde Cascade 'ın mantıksal el ile kullanımını gösterir. Birçok Arz Zinciri, tüm yukarı akış CA sertifikalarını alırken her bir ara CA 'nın zincirde oturum açtığı ve son ara CA 'nın her bir cihazı imzaladığı ve tüm yetkili sertifikalarını cihaza açtığı bir şekilde bu mantıksal izlemeyi izler. Bu, bir fabrika hiyerarşisine sahip şirket üretim şirketi, üretimi yapmak için belirli bir fabrikaya yönelik bir fabrikasının bulunduğu durumlarda yaygın bir sözleşmedir. Hiyerarşi, çeşitli seviyeler (örneğin, Coğrafya/ürün türü/üretim satırına göre) olabileceğinden, yalnızca uçtaki fabrika cihazla etkileşime geçebilir, ancak zincir hiyerarşinin en üstünde tutulur.
 
-Alternatif zincirlerin cihazla etkileşimi farklı ara CA'ya sahip olabilir ve bu durumda CA'nın cihazla etkileşimi bu noktada sertifika zinciri içeriği enjekte eder. Hibrit modeller, CA'nın yalnızca bir kısmının cihazla fiziksel etkileşime sahip olduğu durumlarda da mümkündür.
+Diğer zincirlerde farklı ara CA 'lar cihaz ile etkileşime geçerek, bu durumda CA cihaz ile etkileşim kurar ve bu noktada sertifika zinciri içeriğini çıkartır. Karma modeller Ayrıca, CA 'nın yalnızca bir kısmının cihazla fiziksel etkileşimi olduğu durumlarda da mümkündür.
 
-Örneğimizde, hem Factory-Y hem de Technician-Z Smart-X-Widget ile etkileşime girebedilmektedir. Company-X Smart-X-Widget sahibi iken, aslında fiziksel olarak tüm tedarik zinciri ile etkileşim değildir. Bu nedenle Smart-X-Widget için güven sertifikası zinciri, Company-X imzası olan Factory-Y'yi kapsamaktadır ve bu da Daha sonra Smart-X-Widget'a son imzayı verecek olan Technician-Z'yi imzalar. Smart-X-Widget'ın üretimi ve kurulumu, her Smart-X-Widget'ı imzalamak için kendi ara CA sertifikalarını kullanarak Factory-Y ve Technician-Z'yi kapsar. Tüm bu sürecin sonucu, benzersiz cihaz sertifikalarına ve Şirket-X CA sertifikasına kadar giden sertifika güven zincirine sahip Smart-X-Widget'larıdır.
+Bizim örneğimizde, hem Factory-Y hem de teknisyen-Z, akıllı-X pencere öğesiyle etkileşime geçin. Şirket-X ' i z X pencere öğesine sahip olsa da, bu, tüm tedarik zincirinde fiziksel olarak etkileşime girmiyor. Akıllı-X-pencere öğesinin sertifika zinciri, bu nedenle, teknisyen-Z ' Y i, ardından da akıllı-X pencere öğesi için son imza sağlayacak olan şirket-X imzalama fabrikasını oluşturur. Akıllı-X pencere öğesinin üretimi ve yüklemesi, ilgili ara CA sertifikalarını kullanarak her bir ve her akıllı X pencere öğesinin imzalanmamasını sağlar. Bu işlemin nihai sonucu, benzersiz cihaz sertifikaları ve şirket-X CA sertifikasına giden sertifika güven zinciri ile birlikte akıllı X pencere öğeleri sağlar.
 
-![Bir şirketin sertifikalarından başka bir şirketin sertifikalarına güven zinciri](./media/iot-hub-x509ca-concept/cert-mfr-chain.png)
+![Bir şirketin sertifikalarından başka bir şirketin sertifikalarını güven zinciri](./media/iot-hub-x509ca-concept/cert-mfr-chain.png)
 
-Bu, X.509 CA yönteminin değerini gözden geçirmek için iyi bir noktadır. Her Smart-X-Widget için ön üretim ve sertifikaları tedarik zincirine teslim etmek yerine, Company-X'in Factory-Y'yi yalnızca bir kez imzalaması gerekiyordu. Şirket-X, cihazın kullanım ömrü boyunca her cihazı izlemek yerine, bir yılın Temmuz ayından sonra Teknisyen-Z tarafından yüklenen cihazlar gibi, tedarik zinciri sürecinden doğal olarak çıkan gruplar aracılığıyla cihazları izleyebilir ve yönetebilir.
+Bu, X. 509.440 CA yönteminin değerini gözden geçirmek için iyi bir noktasıdır. Şirket-X ' i her akıllı X-pencere öğesi için önceden oluşturma ve teslim etme yerine yalnızca bir kez Factory-Y ' Y i imzalamıştır. Şirket-X, cihazın yaşam döngüsü boyunca her aygıtı izlemek zorunda kalmak yerine, tedarik zinciri işleminden doğal olarak oluşan gruplar aracılığıyla cihazları izleyebilir ve yönetebilir (örneğin, bir yıldan sonra teknisyen-Z tarafından yüklenen cihazlar).
 
-Son olarak, CA kimlik doğrulama yöntemi, cihaz üretim tedarik zincirine güvenli hesap verebilirliği aşılar. Sertifika zinciri işlemi nedeniyle, zincirdeki her üyenin eylemleri şifreleme olarak kaydedilir ve doğrulanabilir.
+Son olarak, en azından CA kimlik doğrulama yöntemi, cihaz üretim tedarik zinciri ile güvenli sorumluluk kullanır. Sertifika zinciri işlemi nedeniyle, zincirdeki her üyenin eylemleri şifreli olarak kaydedilir ve doğrulanabilir.
 
-Bu işlem, bütünlük için su yüzüne çıkması gereken bazı varsayımlara dayanır. Aygıtbenzersiz ortak/özel anahtar çiftinin bağımsız oluşturulmasını ve özel anahtarın aygıt içinde korunmasını gerektirir. Neyse ki, donanım güvenli modülleri şeklinde güvenli silikon yongaları (HSM) dahili anahtarlar üreten ve özel tuşları koruma yeteneğine sahip var. Şirket-X'in bu tür fişlerden yalnızca smart-x-widget'ın bileşen malzeme faturasına eklemesi gerekir.
+Bu işlem, tamamlanma açısından ortaya çıkması gereken belirli varsayımlar kullanır. Bağımsız olarak cihaz benzersiz ortak/özel anahtar çifti oluşturulmasını ve özel anahtarın cihaz içinde korunmasını gerektirir. Neyse ki, anahtar üreten ve özel anahtarları koruyan donanım güvenli modülleri (HSM) biçimindeki güvenli bir Silicon yongalar mevcuttur. Şirket-X ' in yalnızca bu tür yongalardan birini, akıllı X pencere öğesinin bileşen ürün reçetelerine eklemesi gerekir.
 
-## <a name="device-connection"></a>Cihaz Bağlantısı
+## <a name="device-connection"></a>Cihaz bağlantısı
 
-Yukarıdaki önceki bölümlerde aygıt bağlantısı kadar bina olmuştur. X.509 CA sertifikasını Bir kez IoT Hub'a kaydederek, potansiyel olarak milyonlarca cihaz ilk andan itibaren nasıl bağlanır ve kimlik doğrulaması olur?  Basit; x.509 CA sertifikasını kaydederken daha önce karşılaştığımız aynı sertifika yükleme ve sahip kanıtı akışı sayesinde.
+Yukarıdaki önceki bölümler cihaz bağlantısı oluşturuyor. Yalnızca bir kez IoT Hub bir X. 509.440 CA sertifikası kaydederek, milyonlarca cihaz nasıl bağlanır ve ilk kez kimlik doğrulamasından geçer?  MPLE aynı sertifika karşıya yüklemesi ve daha önce X. 509.440 CA sertifikasını kaydetme konusunda daha önce karşılaştık.
 
-X.509 CA kimlik doğrulaması için üretilen cihazlar, cihaza özgü sertifikalar ve kendi üretim tedarik zincirinden bir sertifika zinciri ile donatılmıştır. Cihaz bağlantısı, ilk kez bile iki aşamalı bir işlemle gerçekleşir: sertifika zinciri yüklemeve bulundurma kanıtı.
+X. 509.440 CA kimlik doğrulaması için üretilen cihazlar, cihaz benzersiz sertifikaları ve ilgili üretim tedarik zincirinden bir sertifika zinciri ile donatılmıştır. Cihaz bağlantısı, çok ilk kez bile, iki adımlı bir işlemde gerçekleşir: sertifika zinciri yüklemesi ve sahip olma kanıtı.
 
-Sertifika zinciri yüklemesi sırasında cihaz, içinde bulunan sertifika zinciriyle birlikte cihaza özgü sertifikasını IoT Hub'a yükler. Önceden kaydedilmiş X.509 CA sertifikasını kullanan IoT Hub, yüklenen sertifika zincirinin dahili olarak tutarlı olduğu ve zincirin X.509 CA sertifikasının geçerli sahibi tarafından kaynaklandığı birkaç şeyi şifreleme olarak doğrulayabilir. Sadece X.509 CA kayıt işlemi ile oldu, IoT Hub zincir ve dolayısıyla cihaz sertifikası aslında yüklenen cihaza ait olduğunu tespit etmek için bir kanıt-sahip sorun-yanıt süreci başlatacak. Bunu, IoT Hub tarafından doğrulama için özel anahtarını kullanarak aygıt tarafından imzalanacak rasgele bir meydan okuma oluşturarak yapar. Başarılı bir yanıt, IoT Hub'ın aygıtı özgün olarak kabul etmesini ve bağlantı vermesini sağlar.
+Sertifika zincirini karşıya yükleme sırasında, cihaz, onun içinde yüklü olan sertifika zinciriyle birlikte cihaz benzersiz sertifikasını karşıya yükler IoT Hub. Önceden kaydedilmiş X. 509.952 CA sertifikasını kullanarak IoT Hub, karşıya yüklenen Sertifika zincirinin dahili olarak tutarlı olduğunu ve bu zincirinin X. 509.440 CA sertifikasının geçerli sahibi tarafından geldiğini şifreli olarak doğrulayabilirler. X. 509.440 CA kayıt süreciyle birlikte IoT Hub, zincirin ve bu nedenle cihaz sertifikasının gerçekten onu karşıya yükleyen cihaza ait olduğunu belirlemek için, birlikte bulunan bir bilgi işlem kanıtlama işlemi başlatır. Bu, IoT Hub tarafından doğrulanmak üzere özel anahtarı kullanılarak cihaz tarafından imzalanmış rastgele bir sınama oluşturarak bunu yapar. Başarılı bir yanıt, cihazı gerçek olarak kabul etmek ve bağlantıya vermek için IoT Hub tetikler.
 
-Örneğimizde, her Smart-X-Widget cihaza özgü sertifikasını Factory-Y ve Technician-Z X.509 CA sertifikalarıile birlikte yükler ve ardından IoT Hub'ın sahip kanıtı mücadelesine yanıt verir.
+Örneğimizde, her bir Smart-X-pencere öğesi, üretici sürümü ve teknisyen-Z X. 509.440 CA sertifikaları ile cihaz benzersiz sertifikasını karşıya yükler ve ardından IoT Hub sahip olma zorluğu sınamasına yanıt verir.
 
-![Bir sertifikadan diğerine akış, hub'dan pop meydan okuma](./media/iot-hub-x509ca-concept/device-pop-flow.png)
+![Bir CERT diğerine akış, hub 'dan bir pop Challenge](./media/iot-hub-x509ca-concept/device-pop-flow.png)
 
-Güvenin temelinin cihaz özel anahtarları da dahil olmak üzere özel anahtarları korumaya dayandığına dikkat edin. Bu nedenle, donanım özel anahtarları korumak için Donanım Güvenli Modülleri (HSM) şeklinde güvenli silikon yongaları önemini yeterince vurgulamak değil, ve herhangi bir özel tuşları paylaşan asla genel en iyi uygulama, bir fabrika ile başka emanet gibi özel anahtar.
+Güven temelini, cihaz özel anahtarları dahil özel anahtarları korumaya göre bekletildiğine dikkat edin. Bu nedenle, cihaz özel anahtarlarını korumak için donanım güvenli modülleri (HSM) biçimindeki güvenli Silicon yongalarının önemini önemli bir şekilde düşüremez ve tek bir fabrika gibi özel anahtarı olan bir fabrika gibi özel anahtarların hiçbir şekilde paylaşılmaması için genel en iyi uygulamadır.

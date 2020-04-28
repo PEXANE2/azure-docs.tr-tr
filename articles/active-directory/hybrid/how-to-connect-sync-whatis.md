@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect eşitlemesi: Eşitlemeyi anlama ve özelleştirme | Microsoft Dokümanlar'
-description: Azure AD Connect eşitlemenin nasıl çalıştığını ve nasıl özelleştirilebildiğini açıklar.
+title: 'Azure AD Connect eşitleme: eşitlemeyi anlama ve özelleştirme | Microsoft Docs'
+description: Azure AD Connect eşitlemenin nasıl çalıştığını ve nasıl özelleştirileceğini açıklar.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,54 +17,54 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e3b87f40d75d4045155e7dd953dc76ffd9de2b34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60348748"
 ---
-# <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect eşitlemesi: Eşitlemeyi anlama ve özelleştirme
-Azure Active Directory Connect eşitleme hizmetleri (Azure AD Connect eşitleme), Azure AD Connect'in ana bileşenidir. Şirket ortamınız ve Azure AD arasında kimlik verilerini eşitlemekle ilgili tüm işlemleri halleder. Azure AD Connect eşitlemi, Azure Active Directory Bağlayıcısı yapılandırılmış olan DirSync, Azure AD Sync ve Forefront Identity Manager'ın halefidir.
+# <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect eşitleme: eşitlemeyi anlama ve özelleştirme
+Azure Active Directory Connect Eşitleme Hizmetleri (Azure AD Connect eşitleme) Azure AD Connect ana bileşenidir. Şirket içi ortamınız ile Azure AD arasında kimlik verilerini eşitlemeye ilişkin tüm işlemlerin ilgilendiğinden emin olur. Azure AD Connect eşitleme, Azure Active Directory Bağlayıcısı yapılandırılmış DirSync, Azure AD Eşitleme ve Forefront Identity Manager 'ın ardıllarıdır.
 
-Bu **konu, Azure AD Connect eşitleme** **(eşitleme motoru**olarak da adlandırılır) için ana sayfadır ve bununla ilgili diğer tüm konulara bağlantılar listeler. Azure AD Connect'e bağlantılar için [bkz.](whatis-hybrid-identity.md)
+Bu konu, **Azure AD Connect Sync** ( **eşitleme altyapısı**da denir) için giriş ve onunla ilgili diğer tüm konuların bağlantılarını listeler. Azure AD Connect bağlantıları için bkz. Şirket [içi kimliklerinizi Azure Active Directory Ile tümleştirme](whatis-hybrid-identity.md).
 
-Eşitleme hizmeti iki bileşenden oluşur: şirket içi **Azure AD Connect eşitleme** bileşeni ve Azure AD **Connect eşitleme hizmeti**olarak adlandırılan Azure AD'deki hizmet tarafı.
+Eşitleme hizmeti iki bileşenden oluşur, şirket içi **Azure AD Connect eşitleme** bileşeni ve Azure AD 'deki hizmet tarafı **Azure AD Connect eşitleme hizmeti**olarak adlandırılır.
 
-## <a name="azure-ad-connect-sync-topics"></a>Azure AD Bağlama eşitleme konuları
-| Konu başlığı | Neleri kapsıyor ve ne zaman okunacak |
+## <a name="azure-ad-connect-sync-topics"></a>Azure AD Connect eşitleme konuları
+| Konu başlığı | Ne kapsıyorsa ve ne zaman okunacaktır |
 | --- | --- |
 | **Azure AD Connect eşitleme temelleri** | |
-| [Mimariyi anlama](concept-azure-ad-connect-sync-architecture.md) |Senkronizasyon motoruna yeni gelen ve mimari ve kullanılan terimler hakkında bilgi edinmek isteyenler için. |
-| [Teknik kavramlar](how-to-connect-sync-technical-concepts.md) |Mimari konunun kısa bir sürümü ve kısaca kullanılan terimleri açıklar. |
+| [Mimariyi anlama](concept-azure-ad-connect-sync-architecture.md) |Eşitleme motoruna yeni olan ve kullanılan mimari ve kullanım koşulları hakkında bilgi edinmek isteyen kişiler için. |
+| [Teknik kavramlar](how-to-connect-sync-technical-concepts.md) |Mimari konusunun kısa bir sürümü ve kullanılan terimleri kısaca açıklar. |
 | [Azure AD Connect için topolojiler](plan-connect-topologies.md) |Eşitleme altyapısının desteklediği farklı topolojileri ve senaryoları açıklar. |
 | **Özel yapılandırma** | |
-| [Yükleme sihirbazını yeniden çalıştırma](how-to-connect-installation-wizard.md) |Azure AD Connect yükleme sihirbazını yeniden çalıştırdığınızda hangi seçeneklerin kullanılabildiğinizi açıklar. |
-| [Bildirimsel Sağlamanın Anlaşılması](concept-azure-ad-connect-sync-declarative-provisioning.md) |Bildirimsel sağlama olarak adlandırılan yapılandırma modelini açıklar. |
-| [Beyan Edici İfadeleri Anlama](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) |Bildirimsel sağlamada kullanılan ifade dilinin sözdizimini açıklar. |
-| [Varsayılan yapılandırmayı anlama](concept-azure-ad-connect-sync-default-configuration.md) |Kutudan çıkma kurallarını ve varsayılan yapılandırmayı açıklar. Ayrıca, kutunun dışında senaryoların çalışması için kuralların birlikte nasıl çalıştığını da açıklar. |
-| [Kullanıcıları ve Kişileri Anlama](concept-azure-ad-connect-sync-user-and-contacts.md) |Önceki konu üzerinde devam eder ve özellikle çok ormanlı bir ortamda, kullanıcılar ve ilgili kişiler için yapılandırmanın birlikte nasıl çalıştığını açıklar. |
-| [Varsayılan yapılandırmada değişiklik yapma](how-to-connect-sync-change-the-configuration.md) |Akışları öznitelik için ortak bir yapılandırma değişikliği nasıl yapacağınız konusunda size yol gösterir. |
-| [Varsayılan yapılandırmanın değiştirilmesine ilişkin önerilen yöntemler](how-to-connect-sync-best-practices-changing-default-configuration.md) |Destek sınırlamaları ve kutu dan sıcağkonfigürasyonda değişiklik yapmak için. |
-| [Filtreleme yapılandırma](how-to-connect-sync-configure-filtering.md) |Hangi nesnelerin Azure AD ile senkronize edildiği ne kadar sınırlanılabilmek için farklı seçenekleri ve bu seçenekleri nasıl yapılandırılabilmek için adım adım açıklar. |
+| [Yükleme Sihirbazı 'nı yeniden çalıştırma](how-to-connect-installation-wizard.md) |Azure AD Connect Yükleme Sihirbazı 'nı yeniden çalıştırdığınızda kullanabileceğiniz seçenekleri açıklar. |
+| [Bildirim Temelli Sağlamayı Anlama](concept-azure-ad-connect-sync-declarative-provisioning.md) |Bildirim temelli sağlama adlı yapılandırma modelini açıklar. |
+| [Bildirim Temelli Sağlama İfadelerini Anlama](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) |Bildirime dayalı sağlama içinde kullanılan ifade dili için sözdizimi açıklar. |
+| [Varsayılan yapılandırmayı anlama](concept-azure-ad-connect-sync-default-configuration.md) |Hazır olmayan kuralları ve varsayılan yapılandırmayı açıklar. Ayrıca kuralların çalışma dışı senaryolar için birlikte nasıl çalıştığını açıklar. |
+| [Kullanıcıları ve kişileri anlama](concept-azure-ad-connect-sync-user-and-contacts.md) |Önceki konu başlığında devam eder ve özellikle çok ormanlı bir ortamda Kullanıcı ve kişilerin yapılandırmasının birlikte nasıl çalıştığını açıklar. |
+| [Varsayılan yapılandırmada değişiklik yapma](how-to-connect-sync-change-the-configuration.md) |Öznitelik akışlarda ortak bir yapılandırma değişikliği yapma konusunda size kılavuzluk eder. |
+| [Varsayılan yapılandırmanın değiştirilmesine ilişkin en iyi yöntemler](how-to-connect-sync-best-practices-changing-default-configuration.md) |Destek sınırlamaları ve kullanıma hazır yapılandırmada değişiklik yapmak için. |
+| [Filtrelemeyi yapılandırma](how-to-connect-sync-configure-filtering.md) |Hangi nesnelerin Azure AD ile eşitlendiğini sınırlandırma ve adım adım bu seçenekleri nasıl yapılandıracağınızı belirleyen farklı seçenekleri açıklar. |
 | **Özellikler ve senaryolar** | |
-| [Yanlışlıkla silmeleri önleme](how-to-connect-sync-feature-prevent-accidental-deletes.md) |Önleme *yanlışlıkla siler* özelliğini ve nasıl yapılandırılabildiğini açıklar. |
-| [Zamanlayıcı](how-to-connect-sync-feature-scheduler.md) |Verileri içe aktaran, eşitleyen ve dışa aktaran yerleşik zamanlayıcıyı açıklar. |
-| [Parola karma senkronizasyonunu uygulama](how-to-connect-password-hash-synchronization.md) |Parola eşitlemenin nasıl çalıştığını, nasıl uygulanacağını ve nasıl çalıştırılabildiğini ve sorun gidermesini açıklar. |
-| [Cihaz geri yazma](how-to-connect-device-writeback.md) |Azure AD Connect'te aygıt yazma nın nasıl çalıştığını açıklar. |
-| [Dizin genişletmeleri](how-to-connect-sync-feature-directory-extensions.md) |Azure AD şemasını kendi özel özniteliklerinizle nasıl genişletirleştirin. |
-| [Office 365 Tercih Edilen Veri Konumu](how-to-connect-sync-feature-preferreddatalocation.md) |Kullanıcının Office 365 kaynaklarını kullanıcıyla aynı bölgeye nasıl koyacağımı açıklar. |
-| **Eşitleme Hizmeti** | |
-| [Azure AD Connect eşitleme hizmeti özellikleri](how-to-connect-syncservice-features.md) |Azure AD'de eşitleme hizmeti tarafını ve eşitleme ayarlarını nasıl değiştireceğiniz açıklanır. |
-| [Yinelenen öznitelik esnekliği](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |**UserPrincipalName** ve **proxyAddresses** yinelenen öznitelik değerleri esnekliğini nasıl etkinleştireceği ve kullanılacağını açıklar. |
-| **Operasyonlar ve UI** | |
-| [Eşitleme Hizmeti Yöneticisi](how-to-connect-sync-service-manager-ui.md) |[Operations,](how-to-connect-sync-service-manager-ui-operations.md) [Connectors,](how-to-connect-sync-service-manager-ui-connectors.md) [Metaverse Designer](how-to-connect-sync-service-manager-ui-mvdesigner.md)ve [Metaverse Search](how-to-connect-sync-service-manager-ui-mvsearch.md) sekmeleri de dahil olmak üzere Eşitleme Servis Yöneticisi Kullanıcı Arabirimi'ni açıklar. |
-| [Operasyonel görevler ve dikkat edilecek hususlar](how-to-connect-sync-operations.md) |Olağanüstü durum kurtarma gibi operasyonel kaygıları açıklar. |
+| [Yanlışlıkla silmeleri engelleme](how-to-connect-sync-feature-prevent-accidental-deletes.md) |*Yanlışlıkla silmeleri engelleme* özelliğini ve nasıl yapılandırılacağını açıklar. |
+| [Scheduler](how-to-connect-sync-feature-scheduler.md) |Verilerin içeri aktarılması, eşitlenmesi ve dışarı aktarılması için yerleşik Scheduler 'ı açıklar. |
+| [Parola karması eşitlemeyi uygulama](how-to-connect-password-hash-synchronization.md) |Parola eşitlemesinin nasıl çalıştığını, nasıl uygulanacağını ve nasıl çalışılacağını ve sorun giderileceğini açıklar. |
+| [Cihaz geri yazma](how-to-connect-device-writeback.md) |Azure AD Connect içinde cihaz geri yazma özelliğinin nasıl çalıştığını açıklar. |
+| [Dizin genişletmeleri](how-to-connect-sync-feature-directory-extensions.md) |Azure AD şemasının kendi özel nitelikleriyle nasıl genişletileceğini açıklar. |
+| [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) |Kullanıcının Office 365 kaynaklarını kullanıcıyla aynı bölgeye nasıl koyabileceğinizi açıklar. |
+| **Eşitleme hizmeti** | |
+| [Azure AD Connect eşitleme hizmeti özellikleri](how-to-connect-syncservice-features.md) |Eşitleme hizmeti tarafını ve Azure AD 'de eşitleme ayarlarının nasıl değiştirileceğini açıklar. |
+| [Yinelenen öznitelik dayanıklılığı](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |**UserPrincipalName** ve **proxyAddresses** yinelenen öznitelik değerleri dayanıklılığı 'nin nasıl etkinleştirileceğini ve kullanılacağını açıklar. |
+| **İşlemler ve Kullanıcı arabirimi** | |
+| [Eşitleme Hizmeti Yöneticisi](how-to-connect-sync-service-manager-ui.md) |[İşlemler](how-to-connect-sync-service-manager-ui-operations.md), [Bağlayıcılar](how-to-connect-sync-service-manager-ui-connectors.md), [meta](how-to-connect-sync-service-manager-ui-mvdesigner.md)veri deposu Tasarımcısı ve [metadize arama](how-to-connect-sync-service-manager-ui-mvsearch.md) sekmeleri dahil Synchronization Service Manager Kullanıcı arabirimini açıklar. |
+| [İşletimsel görevler ve önemli noktalar](how-to-connect-sync-operations.md) |Olağanüstü durum kurtarma gibi işlem sorunlarını açıklar. |
 | **Nasıl Yapılır...** | |
-| [Azure REKLAM hesabını sıfırlama](how-to-connect-azureadaccount.md) |Azure AD Connect sync'inden Azure AD'ye bağlanmak için kullanılan hizmet hesabının kimlik bilgilerini sıfırlama. |
-| **Daha fazla bilgi ve referanslar** | |
-| [Bağlantı Noktaları](reference-connect-ports.md) |Eşitleme motoru ile şirket içi dizinleriniz ve Azure AD arasında açmanız gereken bağlantı noktalarını listeler. |
-| [Azure Etkin Dizini'ne senkronize edilen öznitelikler](reference-connect-sync-attributes-synchronized.md) |Şirket içi AD ve Azure AD arasında senkronize edilen tüm öznitelikleri listeler. |
-| [Fonksiyonlar Referans](reference-connect-sync-functions-reference.md) |Bildirimsağlamada kullanılabilen tüm işlevleri listeler. |
+| [Azure AD hesabını sıfırlayın](how-to-connect-azureadaccount.md) |Azure AD Connect eşitlemeden Azure AD 'ye bağlanmak için kullanılan hizmet hesabının kimlik bilgilerini sıfırlama. |
+| **Daha fazla bilgi ve başvuru** | |
+| [Bağlantı noktaları](reference-connect-ports.md) |Eşitleme altyapısı ve şirket içi dizinleriniz ile Azure AD arasında açmanız gereken bağlantı noktalarını listeler. |
+| [Azure Active Directory eşitlenen öznitelikler](reference-connect-sync-attributes-synchronized.md) |Şirket içi AD ve Azure AD arasında eşitlenen tüm öznitelikleri listeler. |
+| [İşlevler başvurusu](reference-connect-sync-functions-reference.md) |Bildirim temelli sağlama içinde kullanılabilen tüm işlevleri listeler. |
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)

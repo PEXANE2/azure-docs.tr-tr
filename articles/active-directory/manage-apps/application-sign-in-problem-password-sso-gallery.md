@@ -1,6 +1,6 @@
 ---
-title: SSO için yapılandırılan Azure AD galerisi uygulamasında oturum açma sorunu | Microsoft Dokümanlar
-description: Parola tek oturum açma için yapılandırılan bir Azure AD Galerisi uygulamasıyla ilgili sorunları giderme sorunları nasıl giderilir?
+title: SSO için yapılandırılmış Azure AD Galeri uygulamasında oturum açma sorunu | Microsoft Docs
+description: Parola çoklu oturum açma için yapılandırılmış Azure AD Galeri uygulamasıyla ilgili sorunları giderme.
 documentationcenter: ''
 author: msmimart
 manager: CelesteDG
@@ -16,182 +16,182 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e9fd17d9e066be6a1abff5165436a09b8921184e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68381301"
 ---
-# <a name="sign-in-problems-with-an-azure-ad-gallery-app-configured-for-sso"></a>SSO için yapılandırılan bir Azure REKLAM galerisi uygulamasıyla oturum açma sorunları
+# <a name="sign-in-problems-with-an-azure-ad-gallery-app-configured-for-sso"></a>SSO için yapılandırılmış bir Azure AD Galeri uygulamasıyla oturum açma sorunları
 
-Access Panel web tabanlı bir portaldır. Azure Active Directory (Azure AD) çalışmasına veya okul hesaplarına sahip kullanıcıların izinleri olan bulut tabanlı uygulamalara erişmesini sağlar. Azure AD sürümlerine sahip kullanıcılar, Access Panel aracılığıyla self servis grubu ve uygulama yönetimi özelliklerini de kullanabilir.
+Access panel, Web tabanlı bir portaldır. Azure Active Directory (Azure AD) iş veya okul hesabı olan kullanıcıların, izinleri olan bulut tabanlı uygulamalara erişmesine olanak sağlar. Azure AD sürümlerine sahip kullanıcılar, erişim paneli aracılığıyla self servis grup ve uygulama yönetimi özelliklerini de kullanabilir.
 
-Access Panel, Azure portalından ayrıdır. Kullanıcıların Access Panel'i kullanmak için Azure aboneliğine ihtiyacı yoktur.
+Erişim paneli Azure portal farklıdır. Kullanıcıların erişim paneli 'ni kullanması için bir Azure aboneliğine ihtiyacı yoktur.
 
-Access Panel'de parola tabanlı tek oturum açma (SSO) kullanmak için Tarayıcınızda Access Panel uzantısı yüklenmiş olmalıdır. Uzantı, parola tabanlı SSO için yapılandırılmış bir uygulamayı seçtiğinizde otomatik olarak indirilir.
+Erişim paneli 'nde parola tabanlı çoklu oturum açma 'yı (SSO) kullanmak için tarayıcınıza erişim paneli uzantısı yüklenmelidir. Parola tabanlı SSO için yapılandırılmış bir uygulama seçtiğinizde uzantı otomatik olarak indirilir.
 
-## <a name="browser-requirements-for-access-panel"></a>Access Panel için tarayıcı gereksinimleri
+## <a name="browser-requirements-for-access-panel"></a>Erişim paneli için tarayıcı gereksinimleri
 
-Access Panel, JavaScript'i destekleyen ve CSS özellikli bir tarayıcı gerektirir.
+Erişim paneli JavaScript 'ı destekleyen ve CSS 'nin etkinleştirildiği bir tarayıcı gerektirir.
 
-Aşağıdaki tarayıcılar parola tabanlı SSO'yu destekler:
+Aşağıdaki tarayıcılarda parola tabanlı SSO desteklenir:
 
-- Windows 7 veya sonraki internet explorer 8, 9, 10 ve 11
+- Windows 7 veya sonraki sürümlerde Internet Explorer 8, 9, 10 ve 11
 
-- Windows 7 veya sonraki veya MacOS X veya daha sonra Chrome
+- Windows 7 veya üzeri cihazlarda veya MacOS X veya üzeri cihazlarda Chrome
 
-- Firefox 26.0 veya daha sonra Windows XP SP2 veya daha sonra veya Mac OS X 10.6 veya daha sonra
+- Windows XP SP2 veya sonraki sürümlerde veya Mac OS X 10,6 veya üzeri sürümlerde Firefox 26,0 veya üzeri
 
 >[!NOTE]
->Tarayıcı uzantıları desteği Microsoft Edge'e eklendiğinde, parola tabanlı SSO uzantısı Windows 10'da Microsoft Edge için kullanılabilir hale gelir.
+>Microsoft Edge 'e tarayıcı uzantıları desteği eklendiğinde, parola tabanlı SSO uzantısı Windows 10 ' da Microsoft Edge için kullanılabilir hale gelir.
 
-## <a name="install-the-access-panel-browser-extension"></a>Access Panel Tarayıcı uzantısını yükleme
+## <a name="install-the-access-panel-browser-extension"></a>Erişim paneli tarayıcı uzantısını yükler
 
 Şu adımları uygulayın:
 
-1. Desteklenen bir tarayıcıda [Erişim Paneli'ni](https://myapps.microsoft.com) açın ve Azure AD'de kullanıcı olarak oturum açın.
+1. [Access panel](https://myapps.microsoft.com) 'i desteklenen bir tarayıcıda açın ve Azure AD 'de Kullanıcı olarak oturum açın.
 
-2. Access Panel'de parola SSO özellikli bir uygulama seçin.
+2. Erişim paneli 'nde parola-SSO özellikli bir uygulama seçin.
 
-3. Sizden istendiğinde, Şimdi **Yükle'yi**seçin.
+3. Sorulduğunda **Şimdi yüklensin**' i seçin.
 
-4. Tarayıcınıza dayalı bir indirme bağlantısına yönlendirilirsiniz. Tarayıcı uzantısını yüklemek için **Ekle'yi** seçin.
+4. Tarayıcınızı temel alan bir indirme bağlantısına yönlendirilirsiniz. Tarayıcı uzantısını yüklemek için **Ekle** ' yi seçin.
 
-5. Sizden istenirse, **Etkinleştir** veya **İzin Ver'i**seçin.
+5. İstenirse **Etkinleştir** veya **izin ver**' i seçin.
 
-6. Yüklemeden sonra tarayıcınızı yeniden başlatın.
+6. Yükleme sonrasında tarayıcınızı yeniden başlatın.
 
-7.  Access Panel'de oturum açın ve parola SSO özellikli uygulamalarınızı başlatıp başlatamayacağınızı görün.
+7.  Erişim paneli ' nde oturum açın ve parola SSO özellikli uygulamalarınızı başlatıp başlatamadıysanız bakın.
 
-Ayrıca chrome ve firefox uzantılarını doğrudan şu bağlantılar aracılığıyla indirebilirsiniz:
+Ayrıca, Chrome ve Firefox uzantılarını bu bağlantılar aracılığıyla doğrudan indirebilirsiniz:
 
--   [Chrome Erişim Paneli uzantısı](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+-   [Chrome erişim paneli uzantısı](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Firefox Erişim Paneli uzantısı](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
+-   [Firefox erişim paneli uzantısı](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
 ## <a name="set-up-a-group-policy-for-internet-explorer"></a>Internet Explorer için bir grup ilkesi ayarlama
 
-Internet Explorer için Erişim Masası uzantısını kullanıcılarınızın makinelerine uzaktan yüklemenize olanak tanıyan bir grup ilkesi ayarlayabilirsiniz.
+Kullanıcılarınızın makinelerinde Internet Explorer için erişim paneli uzantısını uzaktan yüklemenize olanak tanıyan bir grup ilkesi ayarlayabilirsiniz.
 
-Bu ön koşullar şunlardır:
+Önkoşullar şunlardır:
 
--   [Etkin Dizin Etki Alanı Hizmetleri](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx) ayarlanmalıdır ve kullanıcılarınızın makineleri etki alanınıza katılmalı.
+-   [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx) ayarlanması gerekir ve kullanıcılarınızın makineleri etki alanına katılması gerekir.
 
--   Grup İlkesi Nesnesini (GPO) yeniden atamak için "Ayarları düzelt" izniniz vardır. Varsayılan olarak, aşağıdaki güvenlik gruplarının üyeleri şu izne sahiptir: Etki Alanı Yöneticileri, Kurumsal Yöneticiler ve Grup İlkesi Oluşturucusu Sahipleri. [Daha fazla bilgi edinin](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
+-   Grup ilkesi nesnesini (GPO) düzenlemek için "Ayarları Düzenle" izninizin olması gerekir. Varsayılan olarak, aşağıdaki güvenlik gruplarının üyeleri bu izne sahiptir: etki alanı yöneticileri, kuruluş yöneticileri ve grup ilkesi Oluşturucu sahipleri. [Daha fazla bilgi edinin](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
 
-Grup ilkesini yapılandırmak ve kullanıcılara dağıtmak [için, grup ilkesini kullanarak Internet Explorer için Erişim Masası uzantısını nasıl dağıtılayabilirsiniz'](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy)e bakın.
+Grup ilkesini yapılandırmak ve kullanıcılara dağıtmak için bkz. [Grup İlkesi kullanarak Internet Explorer Için erişim paneli uzantısını dağıtma](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy).
 
-## <a name="troubleshoot-access-panel-in-internet-explorer"></a>Internet Explorer'da Sorun Giderme Access Paneli
+## <a name="troubleshoot-access-panel-in-internet-explorer"></a>Internet Explorer 'da erişim paneli sorunlarını giderme
 
-Uzantıyı yapılandırmak için bir tanılama aracına ve yönergelerine erişmek için Internet [Explorer için Access Panel uzantısını giderme](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting)sorununa bakın.
+Uzantıyı yapılandırmaya yönelik bir tanılama aracına ve yönergelerine erişmek için bkz. [Internet Explorer Için erişim paneli uzantısı sorunlarını giderme](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting).
 
-## <a name="configure-password-sso-for-an-azure-ad-gallery-app"></a>Azure AD galerisi uygulaması için parola SSO'su yapılandırma
+## <a name="configure-password-sso-for-an-azure-ad-gallery-app"></a>Azure AD Galeri uygulaması için parola SSO 'yu yapılandırma
 
-Azure AD galerisinden bir uygulamayı yapılandırmak için aşağıdakileri yapmanız gerekir:
+Azure AD Galerisi 'nden bir uygulamayı yapılandırmak için şu işlemleri yapmanız gerekir:
 
--   Uygulamayı Azure REKLAM galerisinden ekleme
--   [Parola tek oturum açma için uygulamayı yapılandırma](#configure-the-app-for-password-sso)
+-   Uygulamayı Azure AD Galerisi 'nden ekleyin
+-   [Uygulamayı parola çoklu oturum açma için yapılandırma](#configure-the-app-for-password-sso)
 -   [Uygulamaya kullanıcı atama](#assign-users-to-the-app)
 
-### <a name="add-the-app-from-the-azure-ad-gallery"></a>Uygulamayı Azure REKLAM galerisinden ekleme
+### <a name="add-the-app-from-the-azure-ad-gallery"></a>Uygulamayı Azure AD Galerisi 'nden ekleyin
 
 Şu adımları uygulayın:
 
-1. Azure [portalını](https://portal.azure.com) açın ve genel yönetici veya yardımcı yönetici olarak oturum açın.
+1. [Azure Portal](https://portal.azure.com) açın ve genel yönetici veya ortak yönetici olarak oturum açın.
 
-2. Azure AD uzantısını açmak için sol taraftaki gezinti bölmesinin üst kısmındaki **Tüm hizmetleri** seçin.
+2. Azure AD uzantısını açmak için sol taraftaki Gezinti bölmesinin en üstünde bulunan **tüm hizmetler** ' i seçin.
 
-3. Filtre arama kutusuna **Azure Etkin Dizini** yazın ve ardından **Azure Etkin Dizin'i**seçin.
+3. Filtre arama kutusuna **Azure Active Directory** yazın ve **Azure Active Directory**' ı seçin.
 
-4. Azure AD gezinti bölmesinden **Kurumsal Uygulamalar'ı** seçin.
+4. Azure AD gezinti bölmesinden **Kurumsal uygulamalar** ' ı seçin.
 
-5. **Kurumsal Uygulamalar** bölmesinin sağ üst köşesinde **Ekle'yi** seçin.
+5. **Kurumsal uygulamalar** bölmesinin sağ üst köşesindeki **Ekle** ' yi seçin.
 
-6. Galeri **bölümünden Ekle bölümüne,** **ad ekle** kutusuna uygulamanın adını yazın.
+6. **Galeriden Ekle** bölümünde, **bir ad girin** kutusuna uygulamanın adını yazın.
 
 7. SSO için yapılandırmak istediğiniz uygulamayı seçin.
 
-8. *İsteğe bağlı:* Uygulamayı eklemeden önce **Ad** kutusunda adını değiştirebilirsiniz.
+8. *Isteğe bağlı:* Uygulamayı eklemeden önce **ad** kutusunda adını değiştirebilirsiniz.
 
 9. Uygulamayı eklemek için **Ekle**’ye tıklayın.
 
-   Kısa bir gecikmeden sonra, uygulamanın yapılandırma bölmesini görebilirsiniz.
+   Kısa bir gecikmeden sonra uygulamanın yapılandırma bölmesini görebileceksiniz.
 
-### <a name="configure-the-app-for-password-sso"></a>SSO şifresi için uygulamayı yapılandırma
+### <a name="configure-the-app-for-password-sso"></a>Uygulamayı parola SSO 'SU için yapılandırma
 
 Şu adımları uygulayın:
 
-1. Azure [portalını](https://portal.azure.com/) açın ve genel yönetici veya yardımcı yönetici olarak oturum açın.
+1. [Azure Portal](https://portal.azure.com/) açın ve genel yönetici veya ortak yönetici olarak oturum açın.
 
-2. Azure AD uzantısını açmak için sol taraftaki gezinti bölmesinin üst kısmındaki **Tüm hizmetleri** seçin.
+2. Azure AD uzantısını açmak için sol taraftaki Gezinti bölmesinin en üstünde bulunan **tüm hizmetler** ' i seçin.
 
-3. Filtre arama kutusuna **Azure Etkin Dizini** yazın ve ardından **Azure Etkin Dizin'i**seçin.
+3. Filtre arama kutusuna **Azure Active Directory** yazın ve **Azure Active Directory**' ı seçin.
 
-4. Azure AD gezinti bölmesinde **Kurumsal Uygulamalar'ı** seçin.
+4. Azure AD gezinti bölmesinde **Kurumsal uygulamalar** ' ı seçin.
 
-5. Uygulamalarınızın listesini görüntülemek için **Tüm Uygulamalar'ı** seçin.
+5. Uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
 
    > [!NOTE]
-   > İstediğiniz uygulamayı görmüyorsanız, **Tüm Uygulamalar Listesi'nin**en üstündeki **Filtre** denetimini kullanın. **Göster** seçeneğini "Tüm Uygulamalar" olarak ayarlayın.
+   > İstediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin**en üstündeki **filtre** denetimini kullanın. **Göster** seçeneğini "tüm uygulamalar" olarak ayarlayın.
 
 6. SSO için yapılandırmak istediğiniz uygulamayı seçin.
 
-7. Uygulama yüklendikten sonra, uygulamanın sol tarafındaki bölmede **Tek oturum** açma'yı seçin.
+7. Uygulama yüklendikten sonra, uygulamanın sol tarafındaki bölmedeki **Çoklu oturum açma** seçeneğini belirleyin.
 
-8. **Parola tabanlı oturum açma modunu** seçin.
+8. **Parola tabanlı oturum açma** modunu seçin.
 
 9. Kullanıcıları uygulamaya atayın.
 
-10. Ayrıca kullanıcılar için kimlik bilgileri sağlayabilirsiniz. (Aksi takdirde, kullanıcılardan uygulama başlangıç sırasında kimlik bilgilerini girmeleri istenir.) Bunu yapmak için, kullanıcıların satırlarını seçin. Ardından **Kimlik Bilgilerini Güncelleştir'i** seçin ve kullanıcı adlarını ve parolalarını girin.
+10. Ayrıca, kullanıcılar için kimlik bilgileri de sağlayabilirsiniz. (Aksi takdirde, kullanıcılardan uygulama başlangıcında kimlik bilgilerini girmesi istenir.) Bunu yapmak için kullanıcıların satırlarını seçin. Ardından **kimlik bilgilerini güncelleştir** ' i seçin ve Kullanıcı adlarını ve parolalarını girin.
 
 ### <a name="assign-users-to-the-app"></a>Uygulamaya kullanıcı atama
 
-Kullanıcıları doğrudan bir uygulamaya atamak için aşağıdaki adımları izleyin:
+Kullanıcıları doğrudan bir uygulamaya atamak için şu adımları izleyin:
 
-1. Azure [portalını](https://portal.azure.com/) açın ve genel yönetici olarak oturum açın.
+1. [Azure Portal](https://portal.azure.com/) açın ve genel yönetici olarak oturum açın.
 
-2. Azure AD uzantısını açmak için sol taraftaki gezinti **acısındaki tüm hizmetleri** seçin.
+2. Azure AD uzantısını açmak için sol taraftaki Gezinti sorunun **tüm hizmetleri** ' ni seçin.
 
-3. Filtre arama kutusuna **Azure Etkin Dizini** yazın ve ardından **Azure Etkin Dizin'i**seçin.
+3. Filtre arama kutusuna **Azure Active Directory** yazın ve **Azure Active Directory**' ı seçin.
 
-4. Azure AD gezinti bölmesinde **Kurumsal Uygulamalar'ı** seçin.
+4. Azure AD gezinti bölmesinde **Kurumsal uygulamalar** ' ı seçin.
 
-5. **Uygulamalarınızın** listesini görüntülemek için Tüm Uygulamalar'ı seçin.
+5. Uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
 
    > [!NOTE]
-   > İstediğiniz uygulamayı görmüyorsanız, **Tüm Uygulamalar Listesi'nin**en üstündeki **Filtre** denetimini kullanın. **Göster** seçeneğini "Tüm Uygulamalar" olarak ayarlayın.
+   > İstediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin**en üstündeki **filtre** denetimini kullanın. **Göster** seçeneğini "tüm uygulamalar" olarak ayarlayın.
 
-6. Listeden, bir kullanıcıyı atamak istediğiniz uygulamayı seçin.
+6. Listeden, kullanıcı atamak istediğiniz uygulamayı seçin.
 
-7. Uygulama yüklendikten sonra, uygulamanın sol taraftaki gezinti bölmesinden **Kullanıcılar ve Gruplar'ı** seçin.
+7. Uygulama yüklendikten sonra, sol taraftaki uygulamanın gezinti bölmesinden **Kullanıcılar ve gruplar** ' ı seçin.
 
-8. **Atama Ekle** bölmesini açmak için Kullanıcılar **ve Gruplar** listesinin en üstüne **Ekle'yi** seçin.
+8. **Atama Ekle** bölmesini açmak için **Kullanıcılar ve gruplar** listesinin üst kısmında **Ekle** ' yi seçin.
 
-9. **Atama Ekle** bölmesinde Kullanıcıları **ve grupları** seçin.
+9. **Atama Ekle** bölmesinde **Kullanıcılar ve gruplar ' ı** seçin.
 
-10. **Ada veya e-posta adresine göre arama** kutusuna, atamak istediğiniz kullanıcının tam adını veya e-posta adresini yazın.
+10. **Ada veya e-posta adresine göre ara** kutusuna, atamak istediğiniz kullanıcının tam adını veya e-posta adresini yazın.
 
-11. Listedeki kullanıcının üzerine titretin. Kullanıcının profil fotoğrafının veya logosunun yanındaki onay kutusunu seçin ve bu kullanıcıyı **Seçili** listeye ekleyin.
+11. Listedeki kullanıcının üzerine gelin. Kullanıcının profil fotoğrafı veya logosu ' nın yanındaki onay kutusunu seçerek bu kullanıcıyı **Seçili** listeye ekleyin.
 
-12. *İsteğe bağlı:* Başka bir kullanıcı eklemek için, **Ada veya e-posta adresi** kutusuna başka bir ad veya e-posta adresi yazın ve ardından bu kullanıcıyı **Seçili** listeye eklemek için onay kutusunu seçin.
+12. *Isteğe bağlı:* Başka bir kullanıcı eklemek için **ada veya e-posta adresine göre ara** kutusuna başka bir ad veya e-posta adresi yazın ve ardından bu kullanıcıyı **Seçili** listeye eklemek için onay kutusunu işaretleyin.
 
-13. Kullanıcıları seçmeyi bitirdiğinizde, bunları uygulamaya atanan kullanıcılar ve gruplar listesine eklemek için **Seç'i** tıklatın.
+13. Kullanıcıları seçmeyi tamamladığınızda, uygulamayı uygulamaya atanan kullanıcı ve gruplar listesine eklemek için **Seç** ' e tıklayın.
 
-14. *İsteğe bağlı:* Seçtiğiniz kullanıcılara atamak için bir rol seçmek için **Atama Ekle** bölmesinde **Rolü Seç'i** tıklatın.
+14. *Isteğe bağlı:* Seçtiğiniz kullanıcılara atanacak bir rol seçmek için **atama Ekle** bölmesinde **Rol Seç** ' e tıklayın.
 
-15. Uygulamayı seçili kullanıcılara atamak için **Ata'yı** seçin.
+15. Uygulamayı seçili kullanıcılara atamak için **ata** ' yı seçin.
 
-    Kısa bir gecikmeden sonra, kullanıcılar bu uygulamalara Access Panel'den erişebilecektir.
+    Kısa bir gecikmeden sonra kullanıcılar bu uygulamalara erişim panelinden erişebilecektir.
 
-## <a name="request-support"></a>Destek isteyin 
-SSO'u kurup kullanıcıları atadığınızda bir hata iletisi alırsanız, bir destek bileti açın. Aşağıdaki bilgilerin mümkün olduğunca çoğunu ekleyin:
+## <a name="request-support"></a>Destek iste 
+SSO 'yu ayarlarken ve kullanıcıları atarken bir hata mesajı alırsanız, bir destek bileti açın. Mümkün olduğunca aşağıdaki bilgilerin çoğunu ekleyin:
 
--   Korelasyon hatası kimliği
--   UPN (kullanıcı e-posta adresi)
--   Kiracı Kimliği
+-   Bağıntı hata KIMLIĞI
+-   UPN (Kullanıcı e-posta adresi)
+-   Değerine
 -   Tarayıcı türü
--   Hata oluştuğunda saat dilimi ve saat/saat çerçevesi
--   Kemancı izleri
+-   Hatanın gerçekleştiği saat dilimi ve saat/saat dilimi
+-   Fiddler izlemeleri
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Application Proxy ile uygulamalarınızda tek oturum açma sağlayın](application-proxy-configure-single-sign-on-with-kcd.md)
+[Uygulama proxy 'Si ile uygulamalarınıza çoklu oturum açma sağlama](application-proxy-configure-single-sign-on-with-kcd.md)

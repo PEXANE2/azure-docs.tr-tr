@@ -1,92 +1,92 @@
 ---
-title: Azure Veri Kataloğu'nda veri profil oluşturma veri kaynakları nasıl kullanılır?
-description: Azure Veri Kataloğu'nda veri kaynaklarını kaydederken tablo ve sütun düzeyinde veri profillerinin nasıl eklenebilir ve veri kaynaklarını anlamak için veri profillerinin nasıl kullanılacağını vurgulayan nasıl yapılır makalesi.
+title: Azure Veri Kataloğu 'nda veri profili oluşturma veri kaynaklarını kullanma
+description: Nasıl yapılır makalesi Azure Veri Kataloğu 'nda veri kaynaklarını kaydederken tablo ve sütun düzeyi veri profillerinin nasıl ekleneceğini ve veri kaynaklarını anlamak için veri profillerinin nasıl kullanılacağını vurgulamaktır.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 04ac6c2bf0137289221a4ae6ed58d5a71ad21739
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68950230"
 ---
-# <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu'nda veri profili kaynakları nasıl verilenebilir?
+# <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda veri profili veri kaynakları
 
 ## <a name="introduction"></a>Giriş
 
-**Microsoft Azure Veri Kataloğu,** kurumsal veri kaynakları için bir kayıt ve keşif sistemi olarak hizmet veren tam olarak yönetilen bir bulut hizmetidir. Başka bir deyişle, **Azure Veri Kataloğu** tamamen insanların veri kaynaklarını keşfetmesine, anlamasına ve kullanmasına ve kuruluşların mevcut verilerinden daha fazla değer elde etmesine yardımcı olmak için önemlidir. Bir veri kaynağı **Azure Veri Kataloğu'na**kaydedildiğinde, meta verileri hizmet tarafından kopyalanır ve dizine eklenir, ancak hikaye burada bitmez.
+**Microsoft Azure Veri Kataloğu** , kurumsal veri kaynakları için bir kayıt sistemi ve bulma sistemi olarak hizmet veren tam olarak yönetilen bir bulut hizmetidir. Diğer bir deyişle, **Azure Veri Kataloğu** , kullanıcıların veri kaynaklarını bulmasına, anlamasına ve kullanmasına yardımcı olur ve kuruluşların mevcut verilerinden daha fazla değer almasını sağlar. Bir veri kaynağı **Azure Veri Kataloğu 'na**kaydedildiğinde, meta verileri hizmet tarafından kopyalanıp dizinlenir, ancak hikaye burada sonlanmaz.
 
-**Azure Veri Kataloğu'nun** **Veri Profil oluşturma** özelliği kataloğunuzdaki desteklenen veri kaynaklarından gelen verileri inceler ve bu verilerle ilgili istatistik ve bilgi toplar. Veri varlıklarınızın profilini eklemek kolaydır. Bir veri varlığını kaydettirdiğinizde, veri kaynağı kayıt aracına **Veri Profili Ekle'yi** seçin.
+**Azure Veri Kataloğu** 'Nun **veri profili oluşturma** özelliği, kataloğunuzdaki desteklenen veri kaynaklarından verileri inceler ve bu verilerle ilgili istatistikleri ve bilgileri toplar. Veri varlıklarınızın profilini eklemek kolaydır. Bir veri varlığını kaydettiğinizde veri kaynağı kayıt aracında **veri profilini dahil et** ' i seçin.
 
-## <a name="what-is-data-profiling"></a>Veri Profilleme Nedir
+## <a name="what-is-data-profiling"></a>Veri profili oluşturma nedir?
 
-Veri profiloluşturma, kayıtlı olan veri kaynağındaki verileri inceler ve bu veriler le ilgili istatistik ve bilgi toplar. Veri kaynağı bulma sırasında, bu istatistikler verilerin iş sorunlarını çözmek için uygunluğunu belirlemenize yardımcı olabilir.
+Veri profili kaydı yapılan veri kaynağındaki verileri inceler ve bu verilerle ilgili istatistikleri ve bilgileri toplar. Veri kaynağı bulma sırasında, bu istatistikler iş sorununu çözmek üzere verilerin uygunluğunu belirlemenize yardımcı olabilir.
 
 <!-- In [How to discover data sources](data-catalog-how-to-discover.md), you learn about **Azure Data Catalog's** extensive search capabilities including searching for data assets that have a profile. See [How to include a data profile when registering a data source](#howto). -->
 
-Aşağıdaki veri kaynakları veri profiloluşturmayı destekler:
+Aşağıdaki veri kaynakları, veri profilini oluşturmayı destekler:
 
-* SQL Server (Azure SQL DB ve Azure SQL Veri Ambarı dahil) tabloları ve görünümleri
+* SQL Server (Azure SQL VERITABANı ve Azure SQL veri ambarı dahil) tabloları ve görünümleri
 * Oracle tabloları ve görünümleri
 * Teradata tabloları ve görünümleri
 * Hive tabloları
 
-Veri varlıklarını kaydederken veri profilleri dahil olmak üzere, kullanıcıların veri kaynakları yla ilgili soruları yanıtlamalarına yardımcı olur:
+Veri varlıklarını kaydederken veri profillerinin dahil edilmesi, kullanıcıların aşağıdakiler de dahil olmak üzere veri kaynaklarıyla ilgili sorularınızı yanıtlamasını sağlar:
 
-* İş problemimi çözmek için kullanılabilir mi?
-* Veriler belirli standartlara veya desenlere uygun mu?
-* Veri kaynağının bazı anormallikleri nelerdir?
-* Bu verileri uygulamama entegre etmenin olası zorlukları nelerdir?
+* İş sorunumu çözmek için kullanılabilir mi?
+* Veriler belirli standartlara veya desenlere uygun mı?
+* Veri kaynağının bazı bozukluklar nelerdir?
+* Bu verileri uygulamamda tümleştirmeyle ilgili olası sorunlar nelerdir?
 
 > [!NOTE]
-> Ayrıca, verilerin bir uygulamaya nasıl entegre edilebildiğini açıklamak için bir varlığa belge ekleyebilirsiniz. Veri [kaynaklarını nasıl belgeleyeceklerine](data-catalog-how-to-documentation.md)bakın.
+> Ayrıca, verilerin bir uygulamayla nasıl tümleştirilebileceğini betimleyen bir varlığa belgeler ekleyebilirsiniz. Bkz. [veri kaynaklarını belgeleme](data-catalog-how-to-documentation.md).
 >
 
 <a name="howto"/>
 
-## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>Bir veri kaynağını kaydederken veri profili nasıl ekilir?
+## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>Veri kaynağı kaydedilirken veri profili ekleme
 
-Veri kaynağınızın profilini eklemek kolaydır. Bir veri kaynağı kaydettirdiğinizde, veri kaynağı kayıt aracının kayıtlı paneli **olacak Nesneler'de** **Veri Profili Ekle'yi**seçin.
+Veri kaynağınızın bir profilini eklemek kolaydır. Veri kaynağını kaydettiğinizde, veri kaynağı kayıt aracının **kaydedileceği nesneler** panelinde **veri profilini dahil et**' i seçin.
 
-![Veri Profili onay kutusunu ekle](media/data-catalog-data-profile/data-catalog-register-profile.png)
+![Veri profilini dahil et onay kutusu](media/data-catalog-data-profile/data-catalog-register-profile.png)
 
-Veri kaynaklarını nasıl kaydedebilirsiniz hakkında daha fazla bilgi edinmek için [veri kaynaklarını nasıl kaydedin](data-catalog-how-to-register.md) ve [Azure Veri Kataloğu'na nasıl başlayın.](data-catalog-get-started.md)
+Veri kaynaklarını kaydetme hakkında daha fazla bilgi edinmek için bkz. [veri kaynaklarını kaydetme](data-catalog-how-to-register.md) ve [Azure Veri Kataloğu ile çalışmaya başlama](data-catalog-get-started.md).
 
-## <a name="filtering-on-data-assets-that-include-data-profiles"></a>Veri profilleri içeren veri varlıklarına filtre uygulama
+## <a name="filtering-on-data-assets-that-include-data-profiles"></a>Veri profillerini içeren veri varlıklarının filtrelenmesi
 
-Veri profili içeren veri varlıklarını keşfetmek için `has:tableDataProfiles` `has:columnsDataProfiles` arama terimlerinizden birini ekleyebilir veya ekleyebilirsiniz.
+Bir veri profili `has:tableDataProfiles` `has:columnsDataProfiles` içeren veri varlıklarını bulmak için arama koşullarınızdan birini ekleyebilirsiniz.
 
 > [!NOTE]
-> Veri kaynağı kayıt aracında **Veri Profili Ekle'yi** seçmek hem tablo hem de sütun düzeyinde profil bilgilerini içerir. Ancak, Veri Kataloğu API veri varlıklarının yalnızca bir profil bilgisi kümesiyle kaydedilmesine olanak tanır.
+> Veri kaynağı kayıt aracında **veri profili Ekle** ' nin seçilmesi, hem tablo hem de sütun düzeyi profil bilgilerini içerir. Ancak, veri kataloğu API 'SI, veri varlıklarının yalnızca tek bir profil bilgileri kümesiyle kaydedilmesini sağlar.
 >
 
 ## <a name="viewing-data-profile-information"></a>Veri profili bilgilerini görüntüleme
 
-Profilli uygun bir veri kaynağı bulduğunuzda, veri profili ayrıntılarını görüntüleyebilirsiniz. Veri profilini görüntülemek için bir veri varlığı seçin ve Veri Kataloğu portalı penceresinde **Veri Profili'ni** seçin.
+Bir profille uygun bir veri kaynağı bulduktan sonra, veri profili ayrıntılarını görüntüleyebilirsiniz. Veri profilini görüntülemek için bir veri varlığı seçin ve veri kataloğu portalı penceresinde **veri profili** ' ni seçin.
 
-![Veri Profili sekmesi](media/data-catalog-data-profile/data-catalog-view.png)
+![Veri profili sekmesi](media/data-catalog-data-profile/data-catalog-view.png)
 
-Azure Veri **Kataloğu'ndaki** bir veri profili, tablo ve sütun profili bilgilerini şunları içeren şekilde gösterir:
+**Azure Veri Kataloğu** 'ndaki bir veri profili, aşağıdakiler dahil olmak üzere tablo ve sütun profili bilgilerini gösterir:
 
 ### <a name="object-data-profile"></a>Nesne veri profili
 
 * Satır sayısı
 * Tablo boyutu
-* Nesne en son güncelleştirildiğinde
+* Nesne son güncelleştirildiği zaman
 
 ### <a name="column-data-profile"></a>Sütun veri profili
 
 * Sütun veri türü
-* Farklı değerlerin sayısı
-* NULL değerlerine sahip satır sayısı
+* Farklı değer sayısı
+* NULL değerli satır sayısı
 * Sütun değerleri için minimum, maksimum, ortalama ve standart sapma
 
 ## <a name="summary"></a>Özet
 
-Veri profiloluşturma, verilerin iş sorunlarını çözmek için uygunluğunu belirlemenize yardımcı olmak için kayıtlı veri varlıkları hakkında istatistikler ve bilgiler sağlar. Veri profilleri, açıklama açıklama ve veri kaynaklarını belgelemenin yanı sıra, kullanıcılara verilerinizin daha derin bir şekilde anlaşılmasını sağlayabilir.
+Veri profili oluşturma, iş sorunlarını çözmeye yönelik verilerin uygunluğunu belirlemenize yardımcı olmak üzere kayıtlı veri varlıkları hakkında istatistikler ve bilgiler sağlar. Veri profillerini açıklama ekleme ve belgeleme ile birlikte, veri Profilleri kullanıcılara verilerinizi daha ayrıntılı bir şekilde anlayabilirler.
 
 ## <a name="see-also"></a>Ayrıca Bkz.
 

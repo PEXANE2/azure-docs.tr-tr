@@ -9,10 +9,10 @@ ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 13089a2514229c5c5bc7b40d9447719247b23405
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67188208"
 ---
 ### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>Yerel ağ geçidinin IP adresi ön eklerini değiştirmek için - ağ geçidi bağlantısı yok
@@ -33,7 +33,7 @@ Başka adres ön ekleri eklemek için:
 
 Adres ön eklerini kaldırmak için:
 
-  Artık gereği olmayan önekleri bırakın. Bu örnekte, artık öneki 10.101.2.0/24 (önceki örnekten) gerekmez, bu nedenle bu önek hariç yerel ağ ağ ağ geçidini güncelliyoruz.
+  Artık gereği olmayan önekleri bırakın. Bu örnekte, artık 10.101.2.0/24 ön ekine gerek kalmaz (önceki örnekte), bu önek hariç olmak üzere yerel ağ geçidini güncelleştiririz.
 
 1. LocalNetworkGateway için değişkeni ayarlayın.
 
@@ -56,7 +56,7 @@ Ağ geçidi bağlantınız varsa ve yerel ağ geçidinizde bulunan IP adresi ön
    ```azurepowershell-interactive
    Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
    ```
-2. Değiştirilen adres önekleri ile yerel ağ ağ ağ geçidini ayarlayın.
+2. Yerel ağ geçidini değiştirilen adres önekleriyle ayarlayın.
    
    LocalNetworkGateway için değişkeni ayarlayın.
 

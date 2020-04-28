@@ -1,6 +1,6 @@
 ---
-title: Azure veri merkezlerinin fiziksel güvenliği - Microsoft Azure | Microsoft Dokümanlar
-description: Makalede, Microsoft'un fiziksel altyapı, güvenlik ve uyumluluk teklifleri de dahil olmak üzere Azure veri merkezlerini güvence altına almak için ne yaptığı açıklanmaktadır.
+title: Azure veri merkezlerinin fiziksel güvenliği-Microsoft Azure | Microsoft Docs
+description: Makalede, Microsoft 'un fiziksel altyapı, güvenlik ve uyumluluk teklifleri dahil olmak üzere Azure veri merkezlerini güvenli hale getirmek için ne olduğu açıklanır.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,76 +16,76 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 634f89b3123902d981ad07dd1404315387104322
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68726736"
 ---
-# <a name="azure-facilities-premises-and-physical-security"></a>Azure tesisleri, tesisler ve fiziksel güvenlik
-Bu makalede, Microsoft'un Azure altyapısını güvence altına almak için ne yaptığı açıklanmaktadır.
+# <a name="azure-facilities-premises-and-physical-security"></a>Azure tesisler, şirket içi ve fiziksel güvenlik
+Bu makalede, Microsoft 'un Azure altyapısını güvenli hale getirmek için ne olduğu açıklanır.
 
-## <a name="datacenter-infrastructure"></a>Datacenter altyapısı
-Azure, binlerce çevrimiçi hizmeti destekleyen ve dünya çapında 100'den fazla yüksek güvenlikli tesisi [kapsayan, küresel olarak dağıtılan veri merkezi altyapısından](https://azure.microsoft.com/global-infrastructure/)oluşur.
+## <a name="datacenter-infrastructure"></a>Veri merkezi altyapısı
+Azure, binlerce çevrimiçi hizmetler desteklemeye ve dünya çapındaki 100 ' den fazla güvenli tesisden fazlasını kapsayan [küresel olarak dağıtılmış bir veri merkezi altyapısından](https://azure.microsoft.com/global-infrastructure/)oluşur.
 
-Altyapı, uygulamaları dünyanın dört bir yanındaki kullanıcılara daha da yakınlaştırmak, veri ikametini korumak ve müşteriler için kapsamlı uyumluluk ve esneklik seçenekleri sunmak üzere tasarlanmıştır. Azure'un dünya çapında 52 bölgesi vardır ve 140 ülkede/bölgede kullanılabilir.
+Altyapı, uygulamaları dünyanın dört bir yanındaki kullanıcılara yaklaştırmak, veri uygunluğunu korumak ve müşteriler için kapsamlı uyumluluk ve dayanıklılık seçenekleri sunmak üzere tasarlanmıştır. Azure, dünya çapındaki 52 bölgeye sahiptir ve 140 ülkede/bölgede kullanılabilir.
 
-Bölge, büyük ve esnek bir ağ üzerinden birbirine bağlı bir veri merkezi kümesidir. Ağ varsayılan olarak içerik dağıtımı, yük dengeleme, artıklık ve şifreleme içerir. Azure, diğer bulut sağlayıcılarından daha fazla küresel bölgeye sahip olarak, size gereken uygulamaları dağıtma esnekliği sağlar.
+Bölge, büyük ve dayanıklı bir ağ aracılığıyla birbirine bağlanmış bir veri merkezleri kümesidir. Ağ, varsayılan olarak içerik dağıtımı, Yük Dengeleme, artıklık ve şifreleme içerir. Diğer tüm bulut sağlayıcılarından daha fazla genel bölge ile Azure, size ihtiyacınız olan uygulamaları dağıtma esnekliği sunar.
 
-Azure bölgeleri coğrafyalar halinde düzenlenir. Azure coğrafyası, veri ikameti, egemenlik, uyumluluk ve esneklik gereksinimlerinin coğrafi sınırlar içinde yerine getirilmesini sağlar.
+Azure bölgeleri coğrafi olarak düzenlenir. Azure coğrafya, veri fazlalığının, egemenlik, uyumluluk ve dayanıklılık gereksinimlerinin coğrafi sınırlar içinde kabul edilmesini sağlar.
 
-Coğrafyalar, özel veri yerleşikliği ve uyumluluk gereksinimleri olan müşterilerin verileri ile uygulamalarını yakın tutmasına olanak tanır. Coğrafyalar, özel, yüksek kapasiteli ağ altyapısına olan bağlantıları sayesinde tam bir bölge arızasına dayanacak şekilde hataya dayanıklıdır.
+Coğrafyalar, özel veri yerleşikliği ve uyumluluk gereksinimleri olan müşterilerin verileri ile uygulamalarını yakın tutmasına olanak tanır. Geographiler, adanmış ve yüksek kapasiteli ağ altyapısına olan bağlantılar aracılığıyla, tam bölge hatası ile hataya dayanıklıdır.
 
-Kullanılabilirlik bölgeleri, Azure bölgesindeki fiziksel olarak ayrı konumlardır. Her kullanılabilirlik alanı, bağımsız enerji, soğutma ve ağ kaynaklarıyla donatılmış bir veya daha fazla veri merkezinden oluşur. Kullanılabilirlik bölgeleri, yüksek kullanılabilirlik ve düşük gecikme süresi çoğaltma ile görev açısından kritik uygulamaları çalıştırmanızı sağlar.
+Kullanılabilirlik alanları, bir Azure bölgesi içinde fiziksel olarak ayrı konumlardır. Her kullanılabilirlik alanı, bağımsız enerji, soğutma ve ağ kaynaklarıyla donatılmış bir veya daha fazla veri merkezinden oluşur. Kullanılabilirlik alanları, yüksek kullanılabilirlik ve düşük gecikmeli çoğaltma ile görev açısından kritik uygulamalar çalıştırmanıza olanak tanır.
 
-Aşağıdaki şekil, Azure global altyapısının yüksek kullanılabilirlik, olağanüstü durum kurtarma ve yedekleme için aynı veri ikamet sınırı içindeki bölge ve kullanılabilirlik bölgelerini nasıl eşleştirdiği gösterilmektedir.
+Aşağıdaki şekilde, aynı veriler içindeki Azure genel altyapı çiftleri bölgesinin ve kullanılabilirlik bölgelerinin yüksek kullanılabilirlik, olağanüstü durum kurtarma ve yedekleme için nasıl bulunduğu gösterilmektedir.
 
-![Veri ikamet sınırını gösteren diyagram](./media/physical-security/data-residency-boundary.png)
+![Veri fazlalığını gösteren diyagram](./media/physical-security/data-residency-boundary.png)
 
-Coğrafi olarak dağıtılmış veri merkezleri Microsoft'un müşterilere yakın olmasını, ağ gecikmesini azaltmasını ve coğrafi yedekli yedekleme ve başarısızlığa izin etmesini sağlar.
+Coğrafi olarak dağıtılmış veri merkezleri, ağ gecikmesini azaltmak ve coğrafi olarak yedekli yedekleme ve yük devretme için izin vermek üzere Microsoft 'un müşterilerine kapatılmasını sağlar.
 
 ## <a name="physical-security"></a>Fiziksel güvenlik
-Microsoft, verilerinizin depolandığı alanlara fiziksel erişimi sıkı bir şekilde denetler, oluşturur ve çalıştırZ. Microsoft, verilerinizi korumanın önemini anlıyor ve verilerinizi içeren veri merkezlerinin güvenliğini sağlamaya yardımcı olmaya kendini adamıştır. Microsoft'ta Azure'u destekleyen fiziksel tesisleri tasarlamaya, oluşturmaya ve çalıştırmaya adanmış bir bölümüz var. Bu ekip son teknoloji fiziksel güvenliği korumaya yatırım yapar.
+Microsoft, verilerinizin depolandığı alanlara fiziksel erişimi kesinlikle kontrol eden bir şekilde veri merkezlerini tasarlar, oluşturur ve çalışır. Microsoft verilerinizi korumanın önemini anlamıştır ve verilerinizi içeren veri merkezlerinin güvenliğinin sağlanmasına yardımcı olmaya kararlıdır. Microsoft 'un, Azure 'u destekleyen fiziksel tesislerin tasarlanmasıyla, oluşturulmasına ve bu olanakları desteklemeye yönelik olarak tamamına yönelik bir bölüm sunuyoruz. Bu ekip, son derece fiziksel güvenliği korumak için yatırım yapmış.
 
-Microsoft, yetkisiz kullanıcıların verilere ve veri merkezi kaynaklarına fiziksel erişim kazanma riskini azaltmak için fiziksel güvenliğe katmanlı bir yaklaşım benimser. Microsoft tarafından yönetilen veri merkezleri geniş koruma katmanlarına sahiptir: tesisin çevresinde, binanın çevresinde, binanın içinde ve veri merkezi zemininde erişim onayı. Fiziksel güvenlik katmanları şunlardır:
+Microsoft, yetkisiz kullanıcıların verilere ve veri merkezi kaynaklarına fiziksel erişim riskini azaltmak için fiziksel güvenliğe yönelik katmanlı bir yaklaşım alır. Microsoft tarafından yönetilen veri merkezlerinin kapsamlı koruma katmanları vardır: tesisin çevre sürümünde, Bina içinde ve veri merkezi tabanında erişim onayı. Fiziksel güvenlik katmanları şunlardır:
 
-- **Erişim isteği ve onayı.** Veri merkezine gelmeden önce erişim istemeniz gerekir. Ziyaretiniz için uyumluluk veya denetim amaçları gibi geçerli bir iş gerekçesi sağlamanız gerekir. Tüm istekler, Microsoft çalışanları tarafından erişim emareleri temelinde onaylanır. Erişim gereksinimi temeli, veri merkezlerinde bir görevi tamamlamak için gereken kişi sayısının en aza inmesine yardımcı olur. Microsoft izin verdikten sonra, bir birey yalnızca onaylanan iş gerekçesine bağlı olarak gerekli veri merkezinin ayrık alanına erişebilir. İzinler belirli bir süreyle sınırlıdır ve sonra süresi doluyor.
+- **Erişim isteği ve onayı.** Veri merkezine ulaşan önce erişim istemeniz gerekir. Ziyaretiniz için uyumluluk veya denetim amaçları gibi geçerli bir iş doğrulaması sağlamanız gerekir. Tüm istekler, Microsoft çalışanları tarafından erişim gereksinimi temelinde onaylanır. Erişim gereksinimi gereği, veri merkezlerinde bir görevi tam en düşük düzeyde tutmak için gereken kişilerin sayısını tutmaya yardımcı olur. Microsoft izin verdikten sonra, yalnızca bir bireyin, onaylanan iş gerekçe temelinde gerekli olan veri merkezinin ayrı alanına erişimi vardır. İzinler belirli bir süre ile sınırlıdır ve sonra süresi sona erer.
 
-- **Tesisin çevresi.** Bir veri merkezine vardığınızda, iyi tanımlanmış bir erişim noktasından geçmeniz gerekir. Tipik olarak, çelik ve betondan yapılmış uzun çitler çevrenin her santimini kapsar. Veri merkezlerinin etrafında kameralar var, bir güvenlik ekibi her zaman videolarını izliyor.
+- **Tesis çevresi.** Bir veri merkezine geldiğinizde, iyi tanımlanmış bir erişim noktasından gitmeniz gerekir. Genellikle, her bir kuşın her bir saniyede çelik ve somut bir şekilde oluşan uzun bir ölçü. Bir güvenlik ekibinin videolarını her zaman izlerken, veri merkezlerinin etrafında kameralar vardır.
 
-- **Bina girişi.** Veri merkezi girişi, sıkı eğitim ve arka plan kontrollerinden geçmiş profesyonel güvenlik görevlileri ile görevlidir. Bu güvenlik görevlileri de rutin veri merkezi devriye ve her zaman veri merkezi içinde kameraların videoları izlemek.
+- **Giriş oluşturma.** Veri Merkezi giriş, eğitilebilir eğitim ve arka plan denetimleri olan profesyonel güvenlik ofisleriyle birlikte çalışıyor. Bu güvenlik ofisleri ayrıca veri merkezini düzenli olarak denetler ve her zaman veri merkezinde bulunan kameraların videolarını izler.
 
-- **Binanın içinde.** Binaya girdikten sonra, veri merkezinde niçin hareket etmeye devam etmek için biyometriyle iki faktörlü kimlik doğrulamasını geçirmeniz gerekir. Kimliğiniz doğrulanırsa, veri merkezinin yalnızca erişimi onayladığınız bölümünü girebilirsiniz. Orada sadece onaylanan süre boyunca kalabilirsiniz.
+- **Yapı içinde.** Oluşturma 'yı girdikten sonra, veri merkezinde taşımaya devam etmek için biyometri ile iki öğeli kimlik doğrulaması geçirmeniz gerekir. Kimliğiniz doğrulandıktan sonra, yalnızca erişimini onayladığınız veri merkezinin bölümünü girebilirsiniz. Yalnızca onaylanan sürenin süresi boyunca kalabilirler.
 
-- **Datacenter katı.** Sadece girmeniz onaylanan kata girmenize izin verilir. Tam bir vücut metal algılama tarama geçmek için gereklidir. Bilgimiz olmadan veri merkezine yetkisiz veri girme veya ayrılma riskini azaltmak için, veri merkezi zeminine yalnızca onaylı aygıtlar girebilir. Ayrıca, video kameralar her sunucu rafının ön ve arka sını izler. Veri merkezi zemininden çıktığınızda, yine tam gövdeli metal algılama taramasından geçmeniz gerekir. Veri merkezini terk etmek için ek bir güvenlik teşlikinden geçmeniz gerekir.
+- **Veri merkezi tabanı.** Yalnızca girmeye onayladığınız tabanda izin verilir. Tam gövde metal algılama filtrelemeden geçiş yapmanız gerekir. Yetkisiz veriler hakkında bilgi sahibi olmadan veri merkezini girme veya ayrılma riskini azaltmak için, yalnızca onaylanan cihazlar veri merkezi katında kendi yolunu yapabilir. Ayrıca, video kameraları her sunucu rafın ön ve geri 'yi izler. Veri merkezi tabanından çıktığınızda, yeniden tam gövde metal algılama filtrelemeden geçiş yapmanız gerekir. Veri merkezini bırakmak için, ek bir güvenlik taramasından geçiş yapmanız gerekir.
 
-Microsoft, ziyaretçilerin herhangi bir Microsoft tesisinden ayrıldıktan sonra rozetlerini teslim etmesini gerektirir.
+Microsoft, ziyaretçilerin herhangi bir Microsoft tesisinden ayrılınca rozetleri işlemesini gerektirir.
 
 ## <a name="physical-security-reviews"></a>Fiziksel güvenlik incelemeleri
-Veri merkezlerinin Azure güvenlik gereksinimlerini doğru şekilde karşılamasını sağlamak için düzenli olarak tesislerin fiziksel güvenlik incelemelerini yapıyoruz. Veri merkezi barındırma sağlayıcısı personeli Azure hizmet yönetimini sağlamaz. Personel Azure sistemlerinde oturum alamaz ve Azure'daki konumlandırma odasına ve kafeslere fiziksel erişimi yoktur.
+Düzenli olarak, veri merkezlerinin Azure Güvenlik gereksinimlerini doğru şekilde ele aldığından emin olmak için tesislerin fiziksel güvenlik incelemelerini sunuyoruz. Veri merkezi barındırma sağlayıcısı personeli, Azure hizmet yönetimi sağlamaz. Personel Azure sistemlerinde oturum açamaz ve Azure birlikte bulunan yere ve cages 'e fiziksel erişime sahip olamaz.
 
-## <a name="data-bearing-devices"></a>Veri taşıyan cihazlar
-Microsoft en iyi uygulama yordamları ve [NIST 800-88 uyumlu](https://csrc.nist.gov/publications/detail/sp/800-88/archive/2006-09-01)bir silme çözümü kullanır. Silinemez sabit diskler için, onu yok eden ve bilginin kurtarılmasını imkansız hale getiren bir imha işlemi kullanırız. Bu imha işlemi parçalamak, parçalamak, toz haline getirmek veya yakmak olabilir. Elden çıkarma araçlarını varlık türüne göre belirleriz. Yıkımın kayıtlarını tutuyoruz.  
+## <a name="data-bearing-devices"></a>Cihazların verileri alınıyor
+Microsoft en iyi uygulama yordamlarını ve [nıst 800-88 uyumlu](https://csrc.nist.gov/publications/detail/sp/800-88/archive/2006-09-01)bir wpıng çözümünü kullanır. Silinebilen sabit sürücüler için, bunu yok eden bir yok etme işlemi kullanıyoruz ve bilgilerin kurtarılmasını mümkün değildir. Bu yok etme işlemi, tümleştirilebilir, shred, pulnize veya ıneylemsizlik olabilir. Aktiften çıkarma araçlarını varlık türüne göre belirliyoruz. Yok etme kayıtlarının kayıtları bekletiyoruz.  
 
-## <a name="equipment-disposal"></a>Ekipman imhası
-Bir sistemin kullanım ömrünün sona ermesi üzerine, Microsoft operasyonel personeli, verilerinizi içeren donanımın güvenilmeyen taraflarca kullanıma sunulmamasını sağlamak için sıkı veri işleme ve donanım imha yordamlarını izler. Bunu destekleyen sabit diskler için güvenli silme yaklaşımı kullanıyoruz. Silinemez sabit diskler için, sürücüyü yok eden ve bilgilerin kurtarılmasını imkansız hale getiren bir imha işlemi kullanırız. Bu imha işlemi parçalamak, parçalamak, toz haline getirmek veya yakmak olabilir. Elden çıkarma araçlarını varlık türüne göre belirleriz. Yıkımın kayıtlarını tutuyoruz. Tüm Azure hizmetleri onaylı medya depolama ve imha yönetimi hizmetlerini kullanır.
+## <a name="equipment-disposal"></a>Ekipman elden çıkarma
+Bir sistemin yaşam süresi boyunca Microsoft operasyonel personeli, verilerinizi içeren donanımın güvenilmeyen tarafların kullanımına açık olmamasını güvence altına almak için kapsamlı veri işleme ve donanım çıkarma yordamlarını izler. Bunu destekleyen sabit sürücüler için güvenli bir silme yaklaşımı kullanıyoruz. Silinebilen sabit sürücüler için, sürücüyü yok eden ve bilgilerin kurtarmasını işleyen bir yok etme işlemi kullanırız. Bu yok etme işlemi, tümleştirilebilir, shred, pulnize veya ıneylemsizlik olabilir. Aktiften çıkarma araçlarını varlık türüne göre belirliyoruz. Yok etme kayıtlarının kayıtları bekletiyoruz. Tüm Azure hizmetleri onaylı medya depolama ve aktiften çıkarma Yönetim Hizmetleri kullanır.
 
 ## <a name="compliance"></a>Uyumluluk
-Azure altyapısını, ISO 27001, HIPAA, FedRAMP, SOC 1 ve SOC 2 gibi uluslararası ve sektöre özel geniş bir uyumluluk standartlarını karşılayacak şekilde tasarlar ve yönetiriz. Ayrıca Avustralya IRAP, Uk G-Cloud ve Singapore MTCS gibi ülkeye veya bölgeye özgü standartları da karşılıyoruz. İngiliz Standartlar Enstitüsü tarafından yapılanlar gibi sıkı üçüncü taraf denetimleri, bu standartların gerektirdiği sıkı güvenlik denetimlerine uygunluğu doğrular.
+ISO 27001, HIPAA, Fedrampa, SOC 1 ve SOC 2 gibi çok sayıda uluslararası ve sektöre özgü uyumluluk standardını karşılamak için Azure altyapısını tasarlıyoruz ve yönettik. Avustralya ıRAP, UK G-Cloud ve Singapur MTCS dahil olmak üzere ülkeye veya bölgeye özgü standartları da karşıladık. Ingiliz Standartları Enstitüsü 'Nün yaptığı gibi zorlu üçüncü taraf denetimleri, bu standartlar ve bu standartları denetler.
 
-Azure'un bağlı olduğu uyumluluk standartlarının tam listesi [için, Uyumluluk tekliflerine](https://www.microsoft.com/trustcenter/compliance/complianceofferings)bakın.
+Azure 'un bağlı olduğu uyumluluk standartlarının tam listesi için bkz. [Uyumluluk teklifleri](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Microsoft'un Azure altyapısının güvenliğini sağlamaya yardımcı olmak için neler yaptığı hakkında daha fazla bilgi edinmek için bkz:
+Microsoft 'un Azure altyapısını güvenli hale getirmeye yardımcı olma hakkında daha fazla bilgi edinmek için bkz.:
 
-- [Azure altyapısı kullanılabilirliği](infrastructure-availability.md)
-- [Azure bilgi sistemi bileşenleri ve sınırları](infrastructure-components.md)
+- [Azure altyapı kullanılabilirliği](infrastructure-availability.md)
+- [Azure Information System bileşenleri ve sınırları](infrastructure-components.md)
 - [Azure ağ mimarisi](infrastructure-network.md)
 - [Azure üretim ağı](production-network.md)
-- [Azure SQL Veritabanı güvenlik özellikleri](infrastructure-sql.md)
+- [Azure SQL veritabanı güvenlik özellikleri](infrastructure-sql.md)
 - [Azure üretim işlemleri ve yönetimi](infrastructure-operations.md)
 - [Azure altyapı izleme](infrastructure-monitoring.md)
 - [Azure altyapı bütünlüğü](infrastructure-integrity.md)
-- [Azure müşteri veri koruması](protection-customer-data.md)
+- [Azure müşteri verileri koruması](protection-customer-data.md)
 
 

@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 24bb7a1fcb1569922fb34034fb3c0d003cdd7061
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67188838"
 ---
-## <a name="repeatability-during-copy"></a>Kopyalama sırasında tekrarlanabilirlik
-Verileri diğer veri depolarından Azure SQL/SQL Server'a kopyalarken istenmeyen sonuçlardan kaçınmak için tekrarlanabilirliği göz önünde bulundurmak gerekir. 
+## <a name="repeatability-during-copy"></a>Kopyalama sırasında yinelenebilirlik
+Diğer verilerden Azure SQL/SQL Server veri kopyalama sırasında, istenmeyen sonuçların önüne geçmek için yinelenebilirlik aklınızda bulundurmanız gerekir. 
 
-Verileri Azure SQL/SQL Server Veritabanı'na kopyalarken, kopyalama etkinliği varsayılan olarak veri kümesini varsayılan olarak lavabo tablosuna ekler. Örneğin, iki kayıt içeren bir CSV (virgülle ayrılmış değerler verileri) dosya kaynağından Azure SQL/SQL Server Veritabanı'na veri kopyalanırken, tablo şu şekilde görünür:
+Verileri Azure SQL/SQL Server veritabanına kopyalarken, varsayılan olarak veri kümesi varsayılan olarak havuz tablosuna eklenir. Örneğin, iki kayıt içeren bir CSV (virgülle ayrılmış değerler verileri) dosya kaynağındaki verileri Azure SQL/SQL Server veritabanına kopyalarken, bu tablo şöyle görünür:
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -23,7 +23,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    2            2015-05-01 00:00:00
 ```
 
-Kaynak dosyada hatalar bulduğunuzu ve Kaynak dosyadaki Down Tube miktarını 2'den 4'e kadar güncelleştirdiğinizi varsayalım. Bu döneme ait veri dilimini yeniden çalıştıran tutarsanız, Azure SQL/SQL Server Veritabanı'na eklenen iki yeni kayıt bulursunuz. Aşağıdaki tablodaki sütunların hiçbirinde birincil anahtar kısıtlaması olduğunu varsayar.
+Kaynak dosyasında hata bulduğunuzu ve kaynak dosyada 2 ' den 4 ' e kadar aşağı boru miktarını güncelleştirdiğinizi varsayın. Bu dönem için veri dilimini yeniden çalıştırırsanız, Azure SQL/SQL Server veritabanına eklenen iki yeni kayıt bulacaksınız. Aşağıdaki tabloda, tablodaki sütunlardan hiçbirinin birincil anahtar kısıtlaması olmadığı varsayılır.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -34,15 +34,15 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Bunu önlemek için, aşağıda belirtilen 2 mekanizmadan birini yararlanarak UPSERT semantiklerini belirtmeniz gerekir.
+Bunu önlemek için, aşağıda belirtilen 2 mekanizmalardan birini kullanarak, UPSERT semantiği belirtmeniz gerekecektir.
 
 > [!NOTE]
-> Bir dilim, belirtilen yeniden deneme ilkesine göre Azure Veri Fabrikası'nda otomatik olarak yeniden çalıştırılabilir.
+> Bir dilim, belirtilen yeniden deneme ilkesine göre Azure Data Factory otomatik olarak yeniden çalıştırılabilir.
 > 
 > 
 
 ### <a name="mechanism-1"></a>Mekanizma 1
-Bir dilim çalıştırıldığında ilk temizleme eylemi gerçekleştirmek için **sqlWriterCleanupScript** özelliğikaldıraç olabilir. 
+Yalnızca bir dilim çalıştırıldığında Temizleme eylemini gerçekleştirmek için **Sqlwritercleanupscript** özelliğinden yararlanabilirsiniz. 
 
 ```json
 "sink":  
@@ -52,9 +52,9 @@ Bir dilim çalıştırıldığında ilk temizleme eylemi gerçekleştirmek için
 }
 ```
 
-Temizleme komut dosyası, belirli bir dilimin kopyalanması sırasında ilk olarak, bu dilime karşılık gelen SQL Tablosundaki verileri silecek şekilde yürütülür. Etkinlik daha sonra verileri SQL Tablosuna ekler. 
+Temizleme betiği, söz konusu dilime karşılık gelen SQL tablosundan verileri silecek belirli bir dilim için kopyalama sırasında yürütülür. Etkinlik daha sonra verileri SQL tablosuna ekler. 
 
-Dilim şimdi yeniden çalıştırılırsa, miktarın istenilen şekilde güncelleştirildiği göreceksiniz.
+Dilim şimdi yeniden çalışıyorsa, miktarın istendiği şekilde güncelleştirildiğini görürsünüz.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -63,25 +63,25 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Düz Yıkayılabilir kaydının orijinal csv'den kaldırıldığını varsayalım. Daha sonra dilimin yeniden çalıştırılması aşağıdaki sonucu doğuracak: 
+Düz rondela kaydının orijinal CSV 'den kaldırıldığını varsayın. Sonra dilimi yeniden çalıştırmak aşağıdaki sonucu verir: 
 
 ```
 ID    Product        Quantity    ModifiedDate
 ...    ...            ...            ...
 7     Down Tube    4            2015-05-01 00:00:00
 ```
-Yeni bir şey yapılmamagerek yoktu. Kopyalama etkinliği, o dilimiçin karşılık gelen verileri silmek için temizleme komut dosyasını çalıştırdı. Daha sonra csv 'den gelen girişi okudu (daha sonra sadece 1 kayıt içeriyordu) ve Tablo'ya ekledi. 
+Yeni bir şey yapılması gerekiyordu. Kopyalama etkinliği, bu dilim için karşılık gelen verileri silmek üzere Temizleme betiğini çalıştırdı. Ardından CSV 'den (daha sonra yalnızca 1 kayıt içeren) girişi okur ve tabloya yerleştirilir. 
 
 ### <a name="mechanism-2"></a>Mekanizma 2
 > [!IMPORTANT]
-> sliceIdentifierColumnName şu anda Azure SQL Veri Ambarı için desteklenmez. 
+> Şu anda Azure SQL veri ambarı için Daeıdentifiercolumnname desteklenmiyor. 
 
-Tekrarlanabilirliği sağlamak için başka bir mekanizma hedef Tablo'da özel bir sütun **(sliceIdentifierColumnName)** sahip olmaktır. Bu sütun, kaynak ve hedefin eşitlenmiş kalmasını sağlamak için Azure Veri Fabrikası tarafından kullanılır. Bu yaklaşım, hedef SQL Tablo şemasını değiştirme veya tanımlamada esneklik olduğunda çalışır. 
+Yinelenebilirlik elde etmek için başka bir mekanizma, hedef tabloda adanmış bir sütun ('**Feleştirme ColumnName**) içermelidir. Bu sütun, kaynak ve hedefin eşitlenmiş kalmasını sağlamak için Azure Data Factory tarafından kullanılır. Bu yaklaşım, hedef SQL tablo şemasını değiştirme veya tanımlama konusunda esneklik olduğunda işe yarar. 
 
-Bu sütun, Azure Veri Fabrikası tarafından tekrarlanabilirlik amacıyla kullanılır ve bu süreçte Azure Veri Fabrikası Tabloda herhangi bir şema değişikliği yapmaz. Bu yaklaşımı kullanmanın yolu:
+Bu sütun, yinelenebilirlik amaçları için Azure Data Factory tarafından ve işlem Azure Data Factory, tabloda herhangi bir şema değişikliği yapmayacak. Bu yaklaşımı kullanmanın yolu:
 
-1. Hedef SQL Tablosu'nda tür ikili (32) bir sütun tanımlayın. Bu sütunda kısıtlama olmamalıdır. Bu sütunu bu örnek için 'ColumnForADFuseOnly' olarak adlandıralım.
-2. Kopyalama etkinliğinde aşağıdaki gibi kullanın:
+1. Hedef SQL tablosunda ikili (32) türünde bir sütun tanımlayın. Bu sütunda hiçbir kısıtlama olmamalıdır. Bu örnek için bu sütunu ' ColumnForADFuseOnly ' olarak adlandırın.
+2. Bunu kopyalama etkinliğinde aşağıdaki gibi kullanın:
    
     ```json
     "sink":  
@@ -92,7 +92,7 @@ Bu sütun, Azure Veri Fabrikası tarafından tekrarlanabilirlik amacıyla kullan
     }
     ```
 
-Azure Veri Fabrikası, kaynağın ve hedefin eşitlenmiş kalmasını sağlamak için bu sütunu gereksinimine göre dolduracaktır. Bu sütunun değerleri kullanıcı tarafından bu bağlam ın dışında kullanılmamalıdır. 
+Azure Data Factory, kaynak ve hedefin eşitlendiğinden emin olmak için bu sütunu gerek temelinde dolduracaktır. Bu sütunun değerleri, Kullanıcı tarafından bu bağlamın dışında kullanılmamalıdır. 
 
-Mekanizma 1'e benzer şekilde, Kopyalama Etkinliği önce hedef SQL Tablosundan verilen dilime ait verileri otomatik olarak temizler ve ardından verileri o dilimiçin kaynaktan hedefe eklemek için normal olarak kopyalama etkinliğini çalıştırır. 
+Mekanizmaya benzer şekilde, kopyalama etkinliği, hedef SQL tablosundan belirli bir dilim için verileri otomatik olarak temizler ve sonra bu dilim için kaynaktan hedefe veri eklemek üzere kopyalama etkinliğini normal olarak çalıştırır. 
 

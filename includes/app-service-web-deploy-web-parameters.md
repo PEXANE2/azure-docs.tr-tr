@@ -5,34 +5,34 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 5bde217601d27129e044b64d90184727ea717950
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67188179"
 ---
-Azure Resource Manager sayesinde, şablon dağıtıldığında belirtmek istediğiniz değerlerin parametrelerini siz tanımlarsınız. Şablon, parametre değerlerinin tümünün bulunduğu Parametreler adlı bir bölüm içerir.
-Dağıttığınız projeye veya dağıtmakta olduğunuz ortama göre değişen değerler için bir parametre tanımlamanız gerekir. Her zaman aynı kalacak değerler için parametreleri tanımlamayın. Her parametre değeri, dağıtılan kaynakları tanımlamak için şablonda kullanılır. 
+Azure Resource Manager sayesinde, şablon dağıtıldığında belirtmek istediğiniz değerlerin parametrelerini siz tanımlarsınız. Şablon, parametre değerlerinin tümünü içeren parametreler adlı bir bölüm içerir.
+Dağıttığınız projeye göre veya dağıttığınız ortama göre farklılık gösteren değerler için bir parametre tanımlamalısınız. Her zaman aynı kalacak değerler için parametre tanımlamayın. Her parametre değeri, dağıtılan kaynakları tanımlamak için şablonda kullanılır. 
 
-Parametreleri tanımlarken, bir kullanıcının dağıtım sırasında hangi değerleri sağlayabileceğini belirtmek için **izin verilen Değerler** alanını kullanın. Dağıtım sırasında değer sağlanmazsa, parametreye değer atamak için **varsayılan Değer** alanını kullanın.
+Parametreleri tanımlarken, bir kullanıcının dağıtım sırasında sağlayabileceği değerleri belirtmek için **allowedValues** alanını kullanın. Dağıtım sırasında hiçbir değer sağlanmazsa parametreye bir değer atamak için **DefaultValue** alanını kullanın.
 
-Şablondaki her parametreyi açıklayacağız.
+Şablondaki her parametreyi anlayacağız.
 
-### <a name="sitename"></a>Sitename
-Oluşturmak istediğiniz web uygulamasının adı.
+### <a name="sitename"></a>siteName
+Oluşturmak istediğiniz Web uygulamasının adı.
 
     "siteName":{
       "type":"string"
     }
 
 ### <a name="hostingplanname"></a>hostingPlanName
-Web uygulamasını barındırmak için kullanılacak Uygulama Hizmeti'nin adı.
+Web uygulamasını barındırmak için kullanılacak App Service planının adı.
 
     "hostingPlanName":{
       "type":"string"
     }
 
-### <a name="sku"></a>Sku
+### <a name="sku"></a>isteyin
 Barındırma planının fiyatlandırma katmanı.
 
     "sku": {
@@ -57,9 +57,9 @@ Barındırma planının fiyatlandırma katmanı.
       }
     }
 
-Şablon, bu parametre için izin verilen değerleri tanımlar ve değer belirtilmemişse varsayılan değer (S1) atar.
+Şablon, bu parametre için izin verilen değerleri tanımlar ve hiçbir değer belirtilmemişse varsayılan bir değer (S1) atar.
 
-### <a name="workersize"></a>işçiBoyut
+### <a name="workersize"></a>workerSize
 Barındırma planının örnek boyutu (küçük, orta veya büyük).
 
     "workerSize":{
@@ -72,5 +72,5 @@ Barındırma planının örnek boyutu (küçük, orta veya büyük).
       "defaultValue":"0"
     }
 
-Şablon, bu parametre için izin verilen değerleri tanımlar (0, 1 veya 2) ve değer belirtilmemişse varsayılan değer (0) atar. Değerler küçük, orta ve büyük karşılık gelir.
+Şablon, bu parametre için izin verilen değerleri tanımlar (0, 1 veya 2) ve hiçbir değer belirtilmemişse varsayılan bir değer (0) atar. Değerler küçük, orta ve büyük bir değere karşılık gelir.
 

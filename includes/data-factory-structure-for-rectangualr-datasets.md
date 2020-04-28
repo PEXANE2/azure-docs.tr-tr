@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67189041"
 ---
-## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Dikdörtgen veri kümeleri için yapı tanımını belirtme
-JSON veri kümelerinin yapı bölümü dikdörtgen tablolar (satırlar & sütunlar ile) için **isteğe bağlı** bir bölümdür ve tablo için sütunkoleksiyonu içerir. Tür dönüşümleri için tür bilgileri sağlamak veya sütun eşlemeleri yapmak için yapı bölümünü kullanırsınız. Aşağıdaki bölümlerde bu özellikler ayrıntılı olarak açıklayınız. 
+## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Dikdörtgen veri kümeleri için yapı tanımı belirtme
+JSON veri kümelerinde yapı bölümü, dikdörtgen tablolar (satırlar & sütunları olan) için **isteğe bağlı** bir bölümdür ve tablo için bir sütun koleksiyonu içerir. Tür dönüştürmeleri için tür bilgilerini sağlamak ya da sütun eşlemeleri yapmak için yapı bölümünü kullanacaksınız. Aşağıdaki bölümlerde bu özellikler ayrıntılı olarak açıklanır. 
 
 Her sütun aşağıdaki özellikleri içerir:
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| ad |Sütunun adı. |Evet |
-| type |Sütunun veri türü. Tür bilgilerini ne zaman belirtmeniz gerektiğine ilişkin daha fazla bilgi için aşağıdaki tür dönüşümleri bölümüne bakın |Hayır |
-| kültür |.NET tabanlı kültür türü belirtildiğinde kullanılacak ve .NET türü Datetime veya Datetimeoffset olduğunu. Varsayılan "en-us". |Hayır |
-| biçim |Tür belirtildiğinde ve .NET türü Datetime veya Datetimeoffset olduğunda kullanılacak biçim dizesi. |Hayır |
+| ad |Sütunun adı. |Yes |
+| type |Sütunun veri türü. Tür bilgilerini belirtmeniz gerektiğinde ilgili daha fazla ayrıntı için aşağıdaki tür dönüştürmeleri bölümüne bakın |Hayır |
+| kültür |Tür belirtildiğinde ve .NET türü DateTime veya DateTimeOffset olduğunda kullanılacak .NET tabanlı kültür. Varsayılan değer "en-US" dir. |Hayır |
+| biçim |Tür belirtildiğinde kullanılacak dize ve .NET türü DateTime veya DateTimeOffset olduğunda kullanılacak biçim dizesi. |Hayır |
 
-Aşağıdaki örnek, üç sütun userid, ad ve lastlogindate olan bir tablo için yapı bölümü JSON gösterir.
+Aşağıdaki örnek, UserID, Name ve LastLoginDate adlı üç sütunlu bir tablo için yapı bölümü JSON ' ı gösterir.
 
 ```json
 "structure": 
@@ -34,17 +34,17 @@ Aşağıdaki örnek, üç sütun userid, ad ve lastlogindate olan bir tablo içi
 ],
 ```
 
-Lütfen "yapı" bilgilerinin ne zaman eklendiğinde ve **yapı** bölümüne ne eklensiniz için aşağıdaki yönergeleri kullanın.
+"Structure" bilgilerinin ne zaman ekleneceğini ve **Yapı** bölümüne nelerin ekleneceğini görmek için lütfen aşağıdaki yönergeleri kullanın.
 
-* Veri şemasını ve tür bilgilerini verilerin kendisiyle birlikte depolayan **yapılandırılmış veri kaynakları** için (SQL Server, Oracle, Azure tablosu vb. kaynaklar gibi kaynaklar), "yapı" bölümünü yalnızca belirli kaynak sütunların lavabodaki belirli sütunlara sütun eşlemesi yapmak istiyorsanız belirtmeniz gerekir ve adları aynı değildir (aşağıdaki sütun eşleme bölümündeki ayrıntılara bakın). 
+* Veri şemasını depolayan **yapılandırılmış veri kaynakları** ve verilerin kendisiyle birlikte (SQL Server, Oracle, Azure tablosu vb. gibi), yalnızca belirli kaynak sütunlarının havuz içindeki belirli sütunlara eşlenmesini istiyorsanız ve adları aynı değilse, "yapı" bölümünü belirtmeniz gerekir (Aşağıdaki sütun eşleme bölümünde ayrıntılara bakın). 
   
-    Yukarıda belirtildiği gibi, tür bilgileri "yapı" bölümünde isteğe bağlıdır. Yapılandırılmış kaynaklar için, tür bilgileri veri deposunda veri kümesi tanımının bir parçası olarak zaten kullanılabilir, bu nedenle "yapı" bölümünü eklediğinizde tür bilgilerini eklememelisiniz.
-* **Okuma veri kaynakları (özellikle Azure blob) üzerinde şema için,** verilerle herhangi bir şema depolamadan veya bilgi yazmadan verileri depolamayı seçebilirsiniz. Bu veri kaynakları türleri için aşağıdaki 2 duruma "yapı" eklemeniz gerekir:
-  * Sütun eşleme yapmak istiyorsunuz.
-  * Veri kümesi Bir Kopya etkinliğinde bir kaynak olduğunda, "yapı"da tür bilgileri sağlayabilirsiniz ve veri fabrikası bu tür bilgilerini lavabo için yerel türlere dönüştürme için kullanır. Daha fazla bilgi [için verileri Azure Blob makalesine taşıyın.](../articles/data-factory/v1/data-factory-azure-blob-connector.md)
+    Yukarıda belirtildiği gibi, tür bilgileri "yapı" bölümünde isteğe bağlıdır. Yapılandırılmış kaynaklar için, tür bilgileri veri deposundaki veri kümesi tanımının bir parçası olarak zaten mevcut olduğundan, "yapı" bölümünü dahil ettiğinizde tür bilgilerini içermemelidir.
+* **Okuma veri kaynakları üzerindeki şema için (özellikle Azure blob)** verileri herhangi bir şema veya tür bilgilerini depolamadan depolamak zorunda kalmadan depolamayı tercih edebilirsiniz. Bu veri kaynağı türleri için aşağıdaki 2 durumda "Structure" eklemeniz gerekir:
+  * Sütun eşlemesi yapmak istiyorsunuz.
+  * Veri kümesi bir kopyalama etkinliğinde kaynak olduğunda, "Structure" içinde tür bilgilerini sağlayabilir ve Data Factory, bu tür bilgilerini havuzun yerel türlerine dönüştürmek için kullanır. Daha fazla bilgi için bkz. [Azure Blob 'a veri taşıma](../articles/data-factory/v1/data-factory-azure-blob-connector.md) makalesi.
 
-### <a name="supported-net-based-types"></a>Desteklenen. NET tabanlı türleri
-Veri fabrikası, Azure blob gibi okuma veri kaynaklarında şema için "yapı" türü bilgisi sağlamak için aşağıdaki CLS uyumlu .NET tabanlı tür değerlerini destekler.
+### <a name="supported-net-based-types"></a>Destek. NET tabanlı türler
+Data Factory, Azure Blob gibi okuma veri kaynaklarında şema için "Structure" içinde tür bilgilerini sağlamak için aşağıdaki CLS uyumlu .NET tabanlı tür değerlerini destekler.
 
 * Int16
 * Int32 
@@ -52,13 +52,13 @@ Veri fabrikası, Azure blob gibi okuma veri kaynaklarında şema için "yapı" t
 * Tek
 * Çift
 * Ondalık
-* Bayt[]
+* Byte []
 * Bool
 * Dize 
 * Guid
 * Tarih saat
-* Datetimeoffset
+* Türünde
 * Timespan 
 
-Datetime & Datetimeoffset için, özel Datetime dizenizin ayrıştırmasını kolaylaştırmak için isteğe bağlı olarak "kültür" & "biçim" dizesini de belirtebilirsiniz. Aşağıdaki tür dönüştürme örneği bakın.
+Tarih saat & DateTimeOffset için, isteğe bağlı olarak, özel tarih/saat dizenizi ayrıştırmayı kolaylaştırmak için "kültür" & "biçim" dizesini de belirtebilirsiniz. Aşağıdaki tür dönüştürmesi için örneğe bakın.
 

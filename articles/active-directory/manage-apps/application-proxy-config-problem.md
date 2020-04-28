@@ -1,6 +1,6 @@
 ---
-title: Uygulama Proxy uygulaması oluşturma sorunu | Microsoft Dokümanlar
-description: Azure AD Yöneticisi portalında Uygulama Proxy uygulamaları oluşturma sorunları giderme
+title: Uygulama proxy 'Si uygulaması oluşturma sorunu | Microsoft Docs
+description: Azure AD yönetim portalında uygulama proxy 'Si uygulamaları oluşturma sorunlarını giderme
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,37 +17,37 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 104b98cba0948ec5d0896877e54eab1e7cd4049f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65825812"
 ---
-# <a name="problem-creating-an-application-proxy-application"></a>Uygulama Proxy uygulaması oluşturma sorunu 
+# <a name="problem-creating-an-application-proxy-application"></a>Uygulama proxy 'Si uygulaması oluşturma sorunu 
 
-Aşağıda, yeni bir uygulama proxy uygulaması oluştururken insanların karşılaştığı ortak sorunlardan bazıları verilmiştir.
+Aşağıda, yeni bir uygulama proxy uygulaması oluştururken insanların karşılaştığı yaygın sorunlardan bazıları verilmiştir.
 
 ## <a name="recommended-documents"></a>Önerilen belgeler 
 
-Yönetici Portalı üzerinden Uygulama Proxy uygulaması oluşturma hakkında daha fazla bilgi edinmek için Azure [AD Application Proxy kullanarak uygulama yayımla'ya](application-proxy-add-on-premises-application.md)bakın.
+Yönetici portalı aracılığıyla uygulama proxy 'Si uygulaması oluşturma hakkında daha fazla bilgi edinmek için bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md).
 
-Bu belgedeki adımları takip ediyorsanız ve uygulamayı oluştururken bir hata alıyorsanız, uygulamayı nasıl düzelteceğimiz le ilgili bilgi ve öneriler için hata ayrıntılarına bakın. Çoğu hata iletisi önerilen düzeltmeyi içerir. 
+Bu belgedeki adımları takip ediyorsanız ve uygulamayı oluştururken hata alıyorsanız, uygulamanın nasıl düzeltileceğini gösteren bilgi ve öneriler için hata ayrıntılarına bakın. Çoğu hata iletisi önerilen bir çözümü içerir. 
 
-## <a name="specific-things-to-check"></a>Kontrol etmek için belirli şeyler
+## <a name="specific-things-to-check"></a>Denetlenecek belirli şeyler
 
-Sık karşılaşılan hataları önlemek için şu leri doğrulayın:
+Yaygın hatalardan kaçınmak için şunları doğrulayın:
 
--   Bir Uygulama Proxy uygulaması oluşturmak için izni olan bir yönetici vardır
+-   Uygulama proxy 'Si uygulaması oluşturma izni olan bir yöneticiniz
 
--   Dahili URL benzersizdir
+-   İç URL benzersizdir
 
--   Harici URL benzersizdir
+-   Dış URL benzersizdir
 
--   URL'ler http veya https ile başlar ve "/" ile sona erer
+-   URL 'Ler http veya https ile başlar ve bir "/" ile biter
 
--   URL bir etki alanı adı değil, bir IP adresi olmalıdır
+-   URL, bir etki alanı adı olmalı ve bir IP adresi olmamalıdır
 
-Uygulamayı oluştururken hata iletisi sağ üst köşede görüntülenmelidir. Hata iletilerini görmek için bildirim simgesini de seçebilirsiniz.
+Hata iletisi, uygulamayı oluştururken sağ üst köşede görüntülenmelidir. Hata iletilerini görmek için bildirim simgesini de seçebilirsiniz.
 
    ![Bildirim istemi](./media/application-proxy-config-problem/error-message.png)
 

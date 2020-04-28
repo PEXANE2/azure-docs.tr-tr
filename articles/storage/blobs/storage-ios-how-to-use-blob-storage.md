@@ -1,5 +1,5 @@
 ---
-title: iOS'tan nesne (Blob) depolama nasıl kullanılır - Azure | Microsoft Dokümanlar
+title: İOS-Azure ' t e nesne (blob) depolaması kullanma | Microsoft Docs
 description: Azure Blob Storage (nesne depolama) ile bulutta yapılandırılmamış veri depolayın.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,38 +8,38 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: 54085d602246d38adb970ed02f451241ca7ba19d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68726415"
 ---
-# <a name="how-to-use-blob-storage-from-ios"></a>iOS'tan Blob depolama nasıl kullanılır?
+# <a name="how-to-use-blob-storage-from-ios"></a>İOS 'dan blob depolamayı kullanma
 
-Bu makalede, Microsoft Azure Blob depolama alanını kullanarak sık karşılaşılan senaryoların nasıl gerçekleştirildirilen gösterilmektedir. Örnekler Objective-C ile yazılır ve [iOS için Azure Depolama İstemci Kitaplığı'nı](https://github.com/Azure/azure-storage-ios)kullanır. Kapsanan senaryolar yükleme, listeleme, indirme ve blobs silme içerir. Lekeler hakkında daha fazla bilgi için [Sonraki Adımlar](#next-steps) bölümüne bakın. Azure Depolama'nın bir iOS uygulamasında kullanımını hızlı bir şekilde görmek için [örnek uygulamayı](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) da indirebilirsiniz.
+Bu makalede Microsoft Azure Blob Storage kullanarak yaygın senaryoların nasıl gerçekleştirileceği gösterilmektedir. Örnekler, amaç-C ' d e yazılır ve [iOS Için Azure Storage Istemci kitaplığı](https://github.com/Azure/azure-storage-ios)' nı kullanır. Kapsanan senaryolar, Blobları karşıya yükleme, listeleme, indirme ve silmeyi içerir. Blob 'lar hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın. Azure depolama 'nın bir iOS uygulamasında kullanımını hızlıca görmek için [Örnek uygulamayı](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) da indirebilirsiniz.
 
-Blob depolama hakkında daha fazla bilgi edinmek için Azure [Blob depolamasına Giriş 'e](storage-blobs-introduction.md)bakın.
+BLOB depolama hakkında daha fazla bilgi için bkz. [Azure Blob depolamaya giriş](storage-blobs-introduction.md).
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="import-the-azure-storage-ios-library-into-your-application"></a>Azure Depolama iOS kitaplığını uygulamanıza aktarın
+## <a name="import-the-azure-storage-ios-library-into-your-application"></a>Azure Storage iOS kitaplığını uygulamanıza aktarın
 
-Azure Depolama [cocoaPod'unu](https://cocoapods.org/pods/AZSClient) kullanarak veya **Çerçeve** dosyasını içe aktararak Azure Depolama iOS kitaplığını uygulamanız içine aktarabilirsiniz. CocoaPod, kitaplığı tümleştirmeyi kolaylaştıran önerilen yoldur, ancak çerçeve dosyasından içe aktarma mevcut projeniz için daha az müdahalecidir.
+Azure Storage [CocoaPod](https://cocoapods.org/pods/AZSClient) 'i kullanarak veya **çerçeve** dosyasını Içeri aktararak Azure Storage iOS kitaplığını uygulamanıza aktarabilirsiniz. CocoaPod, kitaplığın daha kolay tümleştirilebilmesini sağlayan önerilen yoldur, ancak Framework dosyasından içeri aktarma mevcut projeniz için daha az zorlayıcıdır.
 
-Bu kitaplığı kullanmak için aşağıdakileri yapmanız gerekir:
+Bu kitaplığı kullanmak için şunlar gerekir:
 
-- iOS 8+
-- Xcode 7+
+- iOS 8 +
+- Xcode 7 +
 
 ## <a name="cocoapod"></a>CocoaPod
 
-1. Bunu daha önce yapmadıysanız, bir terminal penceresi açarak ve aşağıdaki komutu çalıştırarak [bilgisayarınıza CocoaPods yükleyin](https://guides.cocoapods.org/using/getting-started.html#toc_3)
+1. Daha önce yapmadıysanız, bir Terminal penceresi açıp aşağıdaki komutu çalıştırarak bilgisayarınıza [Cocoapods 'Yi yükleyebilirsiniz](https://guides.cocoapods.org/using/getting-started.html#toc_3)
 
     ```shell
     sudo gem install cocoapods
     ```
 
-2. Ardından, proje dizininde (.xcodeproj dosyanızı içeren dizin), _Podfile_(dosya uzantısı yok) adlı yeni bir dosya oluşturun. Aşağıdakileri _Podfile'ye_ ekleyin ve kaydedin.
+2. Ardından, proje dizininde (. XCODEPROJ dosyanızı içeren dizin), _pod dosyası_(dosya uzantısı olmadan) adlı yeni bir dosya oluşturun. Şunları _Pod dosyasına_ ekleyin ve kaydedin.
 
     ```ruby
     platform :ios, '8.0'
@@ -55,51 +55,51 @@ Bu kitaplığı kullanmak için aşağıdakileri yapmanız gerekir:
     pod install
     ```
 
-4. .xcodeproj'unuz Xcode'da açıksa kapatın. Proje dizininizde .xcworkspace uzantılı yeni oluşturulan proje dosyasını açın. Bu, şimdilik çalışacağın dosya.
+4. . XCODEPROJ, Xcode 'da açıksa kapatın. Proje dizininizde. xcworkspace uzantısına sahip olacak yeni oluşturulan proje dosyasını açın. Bu, şu anda üzerinde çalıştığınız dosyadır.
 
 ## <a name="framework"></a>Framework
 
-Kitaplığı kullanmanın diğer yolu çerçeveyi el ile oluşturmaktır:
+Kitaplığı kullanmanın diğer yolu, çerçeveyi el ile oluşturmak için kullanılır:
 
-1. İlk olarak, [azure-depolama-ios repo'yu](https://github.com/azure/azure-storage-ios)indirin veya klonla.
-2. *Azure-depolama-ios* -> *Lib* -> *Azure Depolama İstemci Kitaplığına*gidin ve Xcode'da açın. `AZSClient.xcodeproj`
-3. Xcode'un sol üst kısmında, etkin düzeni "Azure Depolama İstemci Kitaplığı"ndan "Framework" olarak değiştirin.
-4. Projeyi oluşturun (10+B). Bu, Masaüstünüzde bir `AZSClient.framework` dosya oluşturur.
+1. İlk olarak, [Azure-Storage-iOS depoyu](https://github.com/azure/azure-storage-ios)indirin veya kopyalayın.
+2. *Azure-Storage-iOS* -> *lib* -> *Azure depolama istemci kitaplığı*' na gidin ve Xcode 'da açın `AZSClient.xcodeproj` .
+3. Xcode 'un sol üst kısmında, etkin düzeni "Azure Storage Istemci kitaplığı" iken "Framework" olarak değiştirin.
+4. Projeyi derleyin (⌘ + B). Bu işlem masaüstünüzde bir `AZSClient.framework` dosya oluşturur.
 
-Daha sonra aşağıdakileri yaparak çerçeve dosyasını uygulamanız içine aktarabilirsiniz:
+Ardından, aşağıdaki işlemleri gerçekleştirerek Framework dosyasını uygulamanıza aktarabilirsiniz:
 
-1. Yeni bir proje oluşturun veya xcode'da mevcut projenizi açın.
-2. Xcode proje `AZSClient.framework` gezgininize sürükleyin ve bırakın.
-3. *Gerekirse öğeleri kopyala'yı*seçin ve *Finish'e*tıklayın.
-4. Sol navigasyonda projenize tıklayın ve proje düzenleyicisinin üst kısmındaki *Genel* sekmesini tıklatın.
-5. Bağlantılı *Çerçeveler ve Kitaplıklar* bölümünde Ekle düğmesini (+) tıklatın.
-6. Zaten sağlanan kitaplıklar listesinde, `libxml2.2.tbd` projenizi arayın ve ekleyebilirsiniz.
+1. Yeni bir proje oluşturun veya mevcut projenizi Xcode 'da açın.
+2. Öğesini Xcode proje `AZSClient.framework` Gezgininizi sürükleyip bırakın.
+3. *Gerekirse öğeleri Kopyala*' yı seçin ve *son*' a tıklayın.
+4. Sol taraftaki gezinmede projenize tıklayın ve proje Düzenleyicisi ' nin en üstündeki *genel* sekmesine tıklayın.
+5. *Bağlantılı çerçeveler ve kitaplıklar* bölümünde Ekle düğmesine (+) tıklayın.
+6. Zaten sağlanmış olan Kitaplıklar listesinde, öğesini arayıp `libxml2.2.tbd` projenize ekleyin.
 
-## <a name="import-the-library"></a>Kitaplığı Alma
+## <a name="import-the-library"></a>Kitaplığı İçeri aktarma
 
 ```objc
 // Include the following import statement to use blob APIs.
 #import <AZSClient/AZSClient.h>
 ```
 
-Swift kullanıyorsanız, bir köprü başlığı oluşturmanız ve azsclient/AZSClient.h> \<almanız gerekir:
+Swift kullanıyorsanız, bir köprü oluşturma üst bilgisi oluşturmanız ve AZSClient/AZSClient. h> \<içeri aktarmanız gerekir:
 
-1. Üstbilgi dosyası `Bridging-Header.h`oluşturun ve yukarıdaki alma deyimini ekleyin.
-2. *Yapı Ayarları* sekmesine gidin ve *Objective-C Köprü Üstbilgisini*arayın.
-3. *Objective-C Köprü Üstbilgi* alanına çift tıklayın ve üstbilgi dosyanıza yolu ekleyin:`ProjectName/Bridging-Header.h`
-4. Köprüleme üstbilgisinin Xcode tarafından alındığını doğrulamak için projeyi (1+B) oluşturun.
-5. Kitaplığı doğrudan herhangi bir Swift dosyasında kullanmaya başlayın, alma deyimleri için gerek yoktur.
+1. Üst bilgi dosyası `Bridging-Header.h`oluşturun ve yukarıdaki içeri aktarma ifadesini ekleyin.
+2. *Derleme ayarları* sekmesine gidin ve *Amaç-C köprü oluşturma üst bilgisi*için arama yapın.
+3. *Hedef-C köprüleme üst bilgisine* çift tıklayın ve yolu üst bilgi dosyanıza ekleyin:`ProjectName/Bridging-Header.h`
+4. Köprü üstbilgisinin Xcode tarafından çekildiğini doğrulamak için projeyi derleyin (⌘ + B).
+5. Kitaplığı doğrudan herhangi bir Swift dosyasında kullanmaya başlayın, içeri aktarma deyimlerine gerek yoktur.
 
 [!INCLUDE [storage-mobile-authentication-guidance](../../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="asynchronous-operations"></a>Zaman Uyumsuz İşlemler
 
 > [!NOTE]
-> Hizmete karşı istek gerçekleştiren tüm yöntemler eşzamanlı işlemlerdir. Kod örneklerinde, bu yöntemlerin bir tamamlama işleyicisi olduğunu göreceksiniz. Tamamlanma işleyicisinin içindeki kod, istek **tamamlandıktan sonra** çalışacaktır. İstek **yapılırken** tamamlanma işleyicisi çalıştırılacak sonra kod.
+> Hizmette bir istek gerçekleştiren tüm yöntemler zaman uyumsuz işlemlerdir. Kod örneklerinde, bu yöntemlerin bir tamamlama işleyicisine sahip olduğunu göreceksiniz. Tamamlama işleyicisinin içindeki kod, istek tamamlandıktan **sonra** çalışır. İstek yapıldığında tamamlama işleyiciden sonraki kod **çalışır.**
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
-Azure Depolama'daki her blob bir kapta olmalıdır. Aşağıdaki örnek, zaten yoksa Depolama hesabınızda *yeni kapsayıcı*adı verilen bir kapsayıcının nasıl oluşturultuğu gösterilmektedir. Kapsayıcınız için bir ad seçerken, yukarıda belirtilen adlandırma kurallarına dikkat edin.
+Azure Storage 'daki her blob bir kapsayıcıda yer almalıdır. Aşağıdaki örnek, henüz yoksa depolama hesabınızda *newcontainer*adlı bir kapsayıcının nasıl oluşturulacağını gösterir. Kapsayıcınız için bir ad seçerken yukarıda belirtilen adlandırma kurallarından en az birini seçin.
 
 ```objc
 -(void)createContainer{
@@ -127,17 +127,17 @@ Azure Depolama'daki her blob bir kapta olmalıdır. Aşağıdaki örnek, zaten y
 }
 ```
 
-[Bunun Microsoft Azure Depolama Gezgini'ne](https://storageexplorer.com) bakarak ve yeni *kapsayıcının* Depolama hesabınız için kapsayıcılar listesinde olduğunu doğrulayarak çalıştığını doğrulayabilirsiniz.
+[Microsoft Azure Depolama Gezgini](https://storageexplorer.com) bakarak bu işlemi, *Newcontainer* 'ın depolama hesabınız için kapsayıcı listesinde olduğunu doğrulayabilirsiniz.
 
-## <a name="set-container-permissions"></a>Konteyner İzinlerini Ayarla
+## <a name="set-container-permissions"></a>Kapsayıcı Izinlerini ayarla
 
-Bir kapsayıcının izinleri varsayılan olarak **Özel** erişim için yapılandırılır. Ancak, kapsayıcılar kapsayıcı erişimi için birkaç farklı seçenek sağlar:
+Kapsayıcının izinleri, varsayılan olarak **özel** erişim için yapılandırılır. Ancak kapsayıcılar kapsayıcı erişimi için birkaç farklı seçenek sunar:
 
-- **Özel**: Konteyner ve blob verileri yalnızca hesap sahibi tarafından okunabilir.
-- **Blob**: Bu kapsayıcının içindeki blob verileri anonim istek le okunabilir, ancak kapsayıcı verileri kullanılamaz. İstemciler, anonim istek le konteyner içindeki lekeleri sayısalaramaz.
-- **Konteyner**: Konteyner ve blob verileri anonim istek ile okunabilir. İstemciler, anonim istek le kapsayıcıiçindeki lekeleri sayabilir, ancak depolama hesabı içindeki kapsayıcıları sayamaz.
+- **Özel**: kapsayıcı ve blob verileri yalnızca hesap sahibi tarafından okunabilir.
+- **BLOB**: Bu kapsayıcı içindeki blob verileri anonim istek aracılığıyla okunabilir, ancak kapsayıcı verileri kullanılamıyor. İstemciler, anonim istek aracılığıyla kapsayıcı içindeki Blobları numaralandıramaz.
+- **Kapsayıcı**: kapsayıcı ve blob verileri, anonim istek aracılığıyla okunabilir. İstemciler, anonim istek aracılığıyla kapsayıcı içindeki Blobları numaralandırabilir, ancak depolama hesabı içindeki kapsayıcıları numaralandıramaz.
 
-Aşağıdaki örnek, **Kapsayıcı** erişim izinlerine sahip bir kapsayıcının nasıl oluşturulacağını ve Internet'teki tüm kullanıcılar için herkese açık, salt okunur erişime izin verecek bir kapsayıcıyı gösterir:
+Aşağıdaki örnek, Internet 'teki tüm kullanıcılar için genel, salt okuma erişimine izin veren **kapsayıcı** erişim izinleri ile bir kapsayıcının nasıl oluşturulacağını gösterir:
 
 ```objc
 -(void)createContainerWithPublicAccess{
@@ -167,9 +167,9 @@ Aşağıdaki örnek, **Kapsayıcı** erişim izinlerine sahip bir kapsayıcını
 
 ## <a name="upload-a-blob-into-a-container"></a>Bir kapsayıcıya bir blob yükleme
 
-Blob servis kavramları bölümünde belirtildiği gibi, Blob Depolama blobs üç farklı türde sunuyor: blok blobs, ek blobs, ve sayfa lekeleri. Azure Depolama iOS kitaplığı üç blob türünü de destekler. Çoğu durumda, kullanılması önerilen blob türü blok blobudur.
+Blob hizmeti kavramları bölümünde belirtildiği gibi, blob Storage üç farklı tür blob sunar: blok Blobları, ekleme Blobları ve sayfa Blobları. Azure Storage iOS kitaplığı, her üç blob türünü destekler. Çoğu durumda, kullanılması önerilen blob türü blok blobudur.
 
-Aşağıdaki örnek, bir NSString'ten bir blok blob'unnasıl yüklenirken gösterilmektedir. Bu kapsayıcıda zaten aynı ada sahip bir blob varsa, bu blob'un içeriği üzerine yazılır.
+Aşağıdaki örnek, bir NSString 'ten bir blok blobunun nasıl yükleneceğini gösterir. Aynı ada sahip bir blob zaten bu kapsayıcıda varsa, bu Blobun içeriğinin üzerine yazılır.
 
 ```objc
 -(void)uploadBlobToContainer{
@@ -208,32 +208,32 @@ Aşağıdaki örnek, bir NSString'ten bir blok blob'unnasıl yüklenirken göste
 }
 ```
 
-Microsoft Azure Depolama Gezgini'ne [Microsoft Azure Storage Explorer](https://storageexplorer.com) bakarak ve *kapsayıcının, konteynerin genel*olarak blob, *sampleblob*içerdiğini doğrulayarak bunun işe yaradığını doğrulayabilirsiniz. Bu örnekte, bu uygulamanın URI blobs'a giderek çalıştığını da doğrulayabilmeniz için ortak bir kapsayıcı kullandık:
+[Microsoft Azure Depolama Gezgini](https://storageexplorer.com) bakarak ve *containerpublic*kapsayıcısının blob, *sampleblob*' u içerdiğini doğrulamak için bu işe yarar. Bu örnekte, bir ortak kapsayıcı kullandık, bu uygulamanın Bloblar URI 'sine giderek çalıştığını da doğrulayabilirsiniz.
 
 ```http
 https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
 ```
 
-NSString'ten blok blob yüklemeye ek olarak, NSData, NSInputStream veya yerel bir dosya için de benzer yöntemler bulunur.
+Bir NSString 'ten bir Blok Blobu yüklemeye ek olarak, NSData, NSInputStream veya yerel bir dosya için benzer yöntemler bulunur.
 
 ## <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
 
-Aşağıdaki örnek, bir kapsayıcıdaki tüm lekelerin nasıl listelenebildiğini gösterir. Bu işlemi gerçekleştirirken aşağıdaki parametrelere dikkat edin:
+Aşağıdaki örnek, bir kapsayıcıdaki tüm Blobların nasıl ekleneceğini gösterir. Bu işlemi gerçekleştirirken aşağıdaki parametrelerin azının olması gerekir:
 
-- **continuationToken** - Devamı belirteci, listeleme işleminin nerede başlatılması gerektiğini gösterir. Belirteç sağlanmazsa, en başından itibaren lekeler listelenir. Herhangi bir sayıda blobs, sıfırdan bir set maksimuma kadar listelenebilir. Bu yöntem sıfır sonuç döndürse bile, `results.continuationToken` sıfır değilse, serviste listelenmemiş daha fazla leke olabilir.
-- **önek** - Blob listesi için kullanılacak önek belirtebilirsiniz. Yalnızca bu önek ile başlayan lekeler listelenir.
-- **useFlatBlobListing** - Blob hizmeti düz bir depolama düzeni olmasına rağmen, [adlandırma ve başvuru kapları ve blobs](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) bölümünde belirtildiği gibi, yol bilgileri ile blobs adlandırarak sanal bir hiyerarşi oluşturabilirsiniz. Ancak, düz olmayan liste şu anda desteklenmez. Bu özellik yakında geliyor. Şimdilik, bu değer **EVET**olmalıdır.
-- **blobListingDetails** - Lekeleri listelerken hangi öğelerin dahil edilecegini belirtebilirsiniz
-  - _AZSBlobListingDetailsNone_: Yalnızca taahhüt edilen lekeleri listelayın ve blob meta verilerini döndürmeyin.
-  - _AZSBlobListingDetailsSnapshots_: Liste taahhüt lekeler ve blob anlık görüntüler.
-  - _AZSBlobListingDetailsMetadata_: Girişte döndürülen her blob için blob meta verilerini alın.
-  - _AZSBlobListingDetailsUncommittedBlobs_: Taahhüt edilen ve taahhüt edilmeyen blobs listesi.
-  - _AZSBlobListingDetailsCopy_: Listeye kopya özelliklerini ekleyin.
-  - _AZSBlobListingDetailsAll_: Tüm kullanılabilir taahhüt lekeler, taahhüt edilmemiş lekeler ve anlık görüntüler listelayın ve bu lekeler için tüm meta verileri ve kopyalama durumunu döndürün.
-- **maxResults** - Bu işlem için döndürülecek maksimum sonuç sayısı. Bir sınır belirlememek için -1'i kullanın.
-- **completionHandler** - Listeleme işleminin sonuçlarıyla birlikte yürütülecek kod bloğu.
+- **Continuationtoken** -devamlılık belirteci, listeleme işleminin başlayacağı yeri temsil eder. Hiçbir belirteç sağlanmazsa, Blobların başlangıçtan itibaren listelendirilecektir. Herhangi bir sayıda blob, sıfırdan büyük bir küme en fazla olacak şekilde listelenebilir. Bu yöntem sıfır sonuçları döndürse bile, bu `results.continuationToken` işlem Nil değilse, hizmette listelenmeyen daha fazla BLOB olabilir.
+- **ön ek** -blob listesi için kullanılacak ön eki belirtebilirsiniz. Yalnızca bu önek ile başlayan Bloblar listelenecektir.
+- **Useyataybloblisteleme** - [kapsayıcı ve bloblara başvurma](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) bölümünde belirtildiği gibi, blob hizmeti düz bir depolama düzeni olsa da, Bloblar yol bilgileriyle adlandırarak bir sanal hiyerarşi oluşturabilirsiniz. Ancak, düz olmayan listeleme Şu anda desteklenmiyor. Bu özellik yakında kullanıma sunulacak. Şimdilik, bu değer **Yes**olmalıdır.
+- **Bloblistingdetails** -Blobları listelenirken hangi öğelerin ekleneceğini belirtebilirsiniz
+  - _Azsbloblistingdetailsnone_: yalnızca işlenen Blobları listeleyin ve BLOB meta verilerini döndürmez.
+  - _Azsbloblistingdetailssnapsnapshots_: işlenen Blobları ve BLOB anlık görüntülerini listeleyin.
+  - _Azsbloblistingayrıntılar meta verileri_: listede döndürülen her blob için blob meta verilerini alın.
+  - _Azsbloblistingdetailsuncommittedbloblar_: işlenen ve işlenmemiş Blobları listeleyin.
+  - _Azsbloblistingayrıntılar Copy_: ekleme özelliklerini listeye ekleyin.
+  - _Azsbloblistinglılarall_: kullanılabilir tüm blob 'ları, işlenmemiş Blobları ve anlık görüntüleri listeleyin ve bu Blobların tüm meta verilerini ve kopyalama durumunu geri döndürün.
+- **MaxResults** -bu işlem için döndürülecek en fazla sonuç sayısı. Sınır ayarlamak için-1 kullanın.
+- **Completionhandler** -listeleme işleminin sonuçlarıyla yürütülecek kod bloğu.
 
-Bu örnekte, bir devam belirteci döndürüldeğinde liste blobs yöntemini özyinelemeli olarak çağırmak için bir yardımcı yöntemi kullanılır.
+Bu örnekte bir yardımcı yöntem, bir devamlılık belirteci döndürüldüğünde, liste Blobları yöntemini yinelemeli olarak çağırmak için kullanılır.
 
 ```objc
 -(void)listBlobsInContainer{
@@ -288,7 +288,7 @@ Bu örnekte, bir devam belirteci döndürüldeğinde liste blobs yöntemini özy
 
 ## <a name="download-a-blob"></a>Blob indirme
 
-Aşağıdaki örnek, bir NSString nesnesine bir blob nasıl indirilir gösterir.
+Aşağıdaki örnek bir blob 'un NSString nesnesine nasıl indirileceği gösterilmektedir.
 
 ```objc
 -(void)downloadBlobToString{
@@ -324,7 +324,7 @@ Aşağıdaki örnek, bir NSString nesnesine bir blob nasıl indirilir gösterir.
 
 ## <a name="delete-a-blob"></a>Blob silme
 
-Aşağıdaki örnek, bir lekenin nasıl silinir olduğunu gösterir.
+Aşağıdaki örnek, bir Blobun nasıl silineceğini gösterir.
 
 ```objc
 -(void)deleteBlob{
@@ -355,9 +355,9 @@ Aşağıdaki örnek, bir lekenin nasıl silinir olduğunu gösterir.
 }
 ```
 
-## <a name="delete-a-blob-container"></a>Blob kapsayıcısı silme
+## <a name="delete-a-blob-container"></a>Blob kapsayıcısını silme
 
-Aşağıdaki örnekte, bir kapsayıcının nasıl silinir gösterilmektedir.
+Aşağıdaki örnek, bir kapsayıcının nasıl silineceğini gösterir.
 
 ```objc
 -(void)deleteContainer{
@@ -387,12 +387,12 @@ Aşağıdaki örnekte, bir kapsayıcının nasıl silinir gösterilmektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Blob Depolama'yı iOS'tan kullanmayı öğrendiğiniz için, iOS kitaplığı ve Depolama hizmeti hakkında daha fazla bilgi edinmek için bu bağlantıları takip edin.
+Artık iOS 'dan blob Storage 'ı nasıl kullanacağınızı öğrendiğinize göre, iOS kitaplığı ve depolama hizmeti hakkında daha fazla bilgi edinmek için bu bağlantıları izleyin.
 
-- [iOS için Azure Depolama İstemci Kitaplığı](https://github.com/azure/azure-storage-ios)
-- [Azure Depolama iOS Başvuru Belgeleri](https://azure.github.io/azure-storage-ios/)
+- [İOS için Azure depolama Istemci kitaplığı](https://github.com/azure/azure-storage-ios)
+- [Azure depolama iOS başvuru belgeleri](https://azure.github.io/azure-storage-ios/)
 - [Azure Storage Hizmetleri REST API’si](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 - [Azure Depolama Ekibi Blogu](https://blogs.msdn.com/b/windowsazurestorage)
 
-Bu kitaplıkla ilgili sorularınız varsa, [MSDN Azure forumumuza](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) veya Stack [Overflow'a](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)göndermekle çekinmeyin.
-Azure Depolama için özellik önerileriniz varsa, lütfen [Azure Depolama Geri Bildirimi'ne](https://feedback.azure.com/forums/217298-storage/)gönderin.
+Bu kitaplıkla ilgili sorularınız varsa, [MSDN Azure forumumuza](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) veya [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)göndermekten çekinmeyin.
+Azure depolama için özellik önerileriniz varsa lütfen [Azure Storage geri bildirimlerine](https://feedback.azure.com/forums/217298-storage/)gönderin.

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/14/2019
 ms.author: robinsh
 ms.openlocfilehash: 943e3e153411459a66aaffac68658e0780a25734
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69638283"
 ---
 > [!div class="op_single_selector"]
@@ -16,7 +16,7 @@ ms.locfileid: "69638283"
 > * [.NET ile sanal cihaz](../articles/iot-hub/quickstart-send-telemetry-dotnet.md)
 > * [Java ile sanal cihaz](../articles/iot-hub/quickstart-send-telemetry-java.md)
 > * [Node.js sanal cihaz](../articles/iot-hub/quickstart-send-telemetry-node.md)
-> * [Python ile simüle edilmiş aygıt](../articles/iot-hub/quickstart-send-telemetry-python.md)
+> * [Python ile sanal cihaz](../articles/iot-hub/quickstart-send-telemetry-python.md)
 > * [VS Code’lu IoT DevKit AZ3166](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)
 > * [Node.js ile Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md)
 > * [C ile Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-kit-c-get-started.md)

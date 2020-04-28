@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 297317ff33d88d6390220980ef35f2538579e310
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67188312"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Veritabanı Altyapısı’nın varsayılan örneği için Windows güvenlik duvarında TCP bağlantı noktalarını açma
 1. Uzak Masaüstü kullanarak sanal makineye bağlanın. Sanal makineye bağlanma işleminin ayrıntılı yönergeleri için bkz. [Uzak Masaüstü ile SQL VM’yi Açma](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop).
-2. Oturum girdikten sonra Başlangıç ekranında **WF.msc**yazın ve ENTER tuşuna basın.
+2. Oturum açıldıktan sonra, başlangıç ekranında, **WF. msc**YAZıN ve ENTER tuşuna basın.
    
     ![Güvenlik Duvarı Programını başlatın](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
 3. **Gelişmiş Güvenlik Özellikli Windows Güvenlik Duvarı**’nın sol bölmesinde **Gelen Kuralları**’na tıklayın ve ardından eylem bölmesinde **Yeni Kural**’a tıklayın.
@@ -23,7 +23,7 @@ ms.locfileid: "67188312"
 5. **Protokol ve Bağlantı Noktaları** iletişim kutusunda varsayılan **TCP**’yi kullanın. **Belirli yerel bağlantı noktaları** kutusunda, Veritabanı Altyapısı örneğinin bağlantı noktası numarasını yazın (varsayılan örnek için **1433** değeri veya uç nokta adımında kendi seçtiğiniz özel bağlantı noktası).
    
     ![TCP Bağlantı Noktası 1433](./media/virtual-machines-sql-server-connection-steps/14Port-1433.png)
-6. **İleri**'ye tıklayın.
+6. **İleri**’ye tıklayın.
 7. **Eylem** iletişim kutusunda **Bağlantıya izin ver**’i seçin ve **İleri**’ye tıklayın.
    
     **Güvenlik Notu:****Bağlantı güvenliyse izin ver** seçeneği ek güvenlik sağlayabilir. Ortamınızda ek güvenlik seçenekleri yapılandırmak istiyorsanız bu seçeneği belirtin.
@@ -55,7 +55,7 @@ SQL Server Veritabanı Altyapısı, etki alanı ortamı olmadan Windows Kimlik D
 1. Sanal makineye bağlı durumdayken, Başlangıç sayfasında **SQL Server Management Studio** yazın ve seçili simgeye tıklayın.
    
     İlk kez açtığınızda Management Studio’nun, kullanıcıların Management Studio ortamını oluşturması gerekir. Bu birkaç dakika sürebilir.
-2. Management Studio, **Sunucuya Bağlan** iletişim kutusunu gösterir. **Sunucu adı** kutusuna, Nesne Gezgini’yle Veritabanı Altyapısı’na bağlanacak sanal makinenin adını yazın. (Sanal makine adı yerine **Sunucu adı** olarak **(yerel)** veya tek nokta da kullanabilirsiniz). **Windows Kimlik Doğrulama'yı**seçin ve **Kullanıcı adı** kutusuna ***your_VM_name\your_local_administrator*** bırakın. **Bağlan**'a tıklayın.
+2. Management Studio, **Sunucuya Bağlan** iletişim kutusunu gösterir. **Sunucu adı** kutusuna, Nesne Gezgini’yle Veritabanı Altyapısı’na bağlanacak sanal makinenin adını yazın. (Sanal makine adı yerine **Sunucu adı** olarak **(yerel)** veya tek nokta da kullanabilirsiniz). **Windows kimlik doğrulaması**' nı seçin ve **kullanıcı adı** kutusuna ***your_VM_name \ your_local_administrator*** bırakın. **Bağlan**'a tıklayın.
    
     ![Sunucuya bağlanma](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
 3. SQL Server Management Studio Nesne Gezgini’nde, SQL Server örneğinin adına (sanal makine adı) sağ tıklayın ve ardından **Özellikler**’e tıklayın.

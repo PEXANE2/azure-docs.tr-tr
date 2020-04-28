@@ -1,6 +1,6 @@
 ---
-title: "PowerShell komut dosyası: Azure Veri Paylaşımı'na blob veri seti ekleme | Microsoft Dokümanlar"
-description: Bu PowerShell komut dosyası, varolan bir paylaşıma bir blob veri kümesi ekler.
+title: 'PowerShell betiği: bir Azure veri paylaşımında blob veri kümesi ekleme | Microsoft Docs'
+description: Bu PowerShell betiği var olan bir paylaşıma blob veri kümesi ekler.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 95a10b112c9f6448c437f20ee95f808632a31d2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70307310"
 ---
-# <a name="use-powershell-to-create-a-data-share-in-azure"></a>Azure'da veri paylaşımı oluşturmak için PowerShell'i kullanın
+# <a name="use-powershell-to-create-a-data-share-in-azure"></a>Azure 'da veri paylaşma oluşturmak için PowerShell 'i kullanma
 
-Bu PowerShell komut dosyası, varolan bir Veri Paylaşımı'na bir blob veri kümesi ekler.
+Bu PowerShell betiği, var olan bir veri paylaşımında bir blob veri kümesi ekler.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -44,11 +44,11 @@ Bu betik şu komutları kullanır:
 
 | Komut | Notlar |
 |---|---|
-| [Yeni-AzDataShareDataSet](/powershell/module/az.datashare/new-azdatasharedataset?view=azps-2.6.0) | Veri paylaşımına veri kümesi ekler. |
+| [New-AzDataShareDataSet](/powershell/module/az.datashare/new-azdatasharedataset?view=azps-2.6.0) | Veri paylaşımında bir veri kümesi ekler. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
 
-Ek Azure Veri Paylaşımı PowerShell komut dosyası örnekleri [Azure Veri Paylaşımı PowerShell örneklerinde](../../samples-powershell.md)bulunabilir.
+Ek Azure veri paylaşımının PowerShell betiği örnekleri, [Azure veri paylaşımında PowerShell örnekleri](../../samples-powershell.md)bölümünde bulunabilir.

@@ -1,6 +1,6 @@
 ---
-title: .NET| için Azure Medya Hizmetleri SDK'sını kullanarak medya işlemcisi oluşturma Microsoft Dokümanlar
-description: Azure Medya Hizmetleri için medya içeriğini kodlamak, biçimlendirmek, şifrelemek veya şifresini çözmek için medya işlemcisi bileşenini nasıl oluşturabileceğinizi öğrenin. Kod örnekleri C# olarak yazılır ve .NET için Medya Hizmetleri SDK'sını kullanın.
+title: .NET için Azure Media Services SDK kullanarak medya işlemcisi oluşturma | Microsoft Docs
+description: Azure Media Services için medya içeriğini kodlamak, dönüştürmek, şifrelemek veya şifresini çözmek için bir medya işlemcisi bileşeni oluşturmayı öğrenin. Kod örnekleri C# dilinde yazılır ve .NET için Media Services SDK kullanır.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: af6badda426f1bb81d8528cfda9b8c02d55712b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463863"
 ---
-# <a name="how-to-get-a-media-processor-instance"></a>Nasıl yapılsın: Medya İşlemcisi örneği alın
+# <a name="how-to-get-a-media-processor-instance"></a>Nasıl yapılır: medya Işlemcisi örneği alma
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
-> * [Geri kalanı](media-services-rest-get-media-processor.md)
+> * [REST](media-services-rest-get-media-processor.md)
 > 
 > 
 
 ## <a name="overview"></a>Genel Bakış
-Medya Hizmetleri'nde ortam işlemcisi, medya içeriğini kodlama, biçim dönüştürme, şifreleme veya şifre çözme gibi belirli bir işleme görevini işleyen bir bileşendir. Medya içeriğinin biçimini kodlamak, şifrelemek veya dönüştürmek için bir görev oluştururken genellikle bir ortam işlemcisi oluşturursunuz.
+Media Services bir medya işlemcisi, kodlama, biçim dönüştürme, şifreleme veya medya içeriğini çözme gibi belirli bir işleme görevini işleyen bir bileşendir. Medya içeriğini kodlamak, şifrelemek veya dönüştürmek için bir görev oluştururken genellikle bir medya işlemcisi oluşturursunuz.
 
-## <a name="azure-media-processors"></a>Azure ortam işlemcileri 
+## <a name="azure-media-processors"></a>Azure Medya işlemcileri 
 
-Aşağıdaki konu, ortam işlemcilerinin listesini sağlar:
+Aşağıdaki konuda medya işlemcilerin listesi verilmiştir:
 
 * [Kodlama medya işleyicileri](scenarios-and-availability.md#encoding-media-processors)
 * [Analiz medya işlemcileri](scenarios-and-availability.md#analytics-media-processors)
 
-## <a name="get-media-processor"></a>Ortam İşlemcisi Alın
+## <a name="get-media-processor"></a>Medya Işlemcisini al
 
-Aşağıdaki yöntem, bir ortam işlemci örneği almak için nasıl gösterir. Kod örneği, sunucu bağlamına başvurmak için **_context** adlı modül düzeyinde bir değişkenin kullanımını varsayar nasıl [kullanılır: Medya Hizmetlerine Programlı olarak bağlanma.](media-services-use-aad-auth-to-access-ams-api.md)
+Aşağıdaki yöntem, bir medya işlemcisi örneğinin nasıl alınacağını gösterir. Kod örneği, [nasıl yapılır: Media Services programlı olarak bağlanma](media-services-use-aad-auth-to-access-ams-api.md)bölümünde açıklandığı gibi sunucu bağlamına başvurmak için **_context** adlı modül düzeyi değişkenin kullanımını varsayar.
 
     private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {
@@ -61,5 +61,5 @@ Aşağıdaki yöntem, bir ortam işlemci örneği almak için nasıl gösterir. 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Artık bir medya işlemciörneğini nasıl elde edeceğinizkonusunda, bir varlığı kodlamak için Media Encoder Standardını nasıl kullanacağınızı gösterecek bir Varlık konusunu nasıl [kodlarsınız](media-services-dotnet-encode-with-media-encoder-standard.md) konusuna gidin.
+Bir medya işlemcisi örneğinin nasıl alınacağını öğrenmiş olduğunuza göre, bir varlığı kodlamak için Media Encoder Standard nasıl kullanacağınızı gösteren [bir varlık kodlama](media-services-dotnet-encode-with-media-encoder-standard.md) konusuna gidin.
 

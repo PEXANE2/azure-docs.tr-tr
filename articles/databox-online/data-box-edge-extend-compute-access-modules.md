@@ -1,6 +1,6 @@
 ---
-title: Modüllere erişmek için Azure Veri Kutusu Kenarı'ndaki bilgi işlem ağını yönetin| Microsoft Dokümanlar
-description: Veri Kutusu Kenarınızdaki bilgi işlem ağını harici bir IP üzerinden modüllere erişmek için nasıl genişletiriz açıklar.
+title: Modül erişimi için Azure Data Box Edge işlem ağını yönetme | Microsoft Docs
+description: Bir dış IP aracılığıyla modüllerde erişim sağlamak için Data Box Edge işlem ağının nasıl genişletileceğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,61 +9,61 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 907647725dd6795b3b6482476de7442fbbf66114
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65917243"
 ---
-# <a name="enable-compute-network-on-your-azure-data-box-edge"></a>Azure Veri Kutusu Kenarı'nda bilgi işlem ağını etkinleştirme
+# <a name="enable-compute-network-on-your-azure-data-box-edge"></a>Azure Data Box Edge işlem ağını etkinleştirin
 
-Bu makalede, Azure Veri Kutusu Kenarı'nda çalışan modüllerin aygıtta etkinleştirilmiş bilgi işlem ağına nasıl erişebileceği açıklanmaktadır.
+Bu makalede, Azure Data Box Edge çalışan modüllerin cihazda etkin olan işlem ağına nasıl erişebileceği açıklanır.
 
-Ağı yapılandırmak için aşağıdaki adımları atarsınız:
+Ağı yapılandırmak için aşağıdaki adımları uygulayın:
 
-- İşlem yapmak için Veri Kutusu Kenarı cihazınızda bir ağ arabirimi etkinleştirme
-- Veri Kutusu Kenarı'nda bilgi işlem ağına erişmek için bir modül ekleme
+- İşlem için Data Box Edge cihazınızda bir ağ arabirimini etkinleştirme
+- Data Box Edge işlem ağına erişmek için bir modül ekleyin
 - Modülün etkin ağ arabirimine erişebileceğini doğrulayın
 
-Bu eğitimde, senaryoyu göstermek için bir webserver uygulaması modülü kullanırsınız.
+Bu öğreticide, senaryoyu göstermek için bir Web sunucusu uygulama modülünü kullanacaksınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce şunları yapmanız gerekir:
 
-- Aygıt kurulumu tamamlanmış bir Veri Kutusu Kenarı aygıtı.
-- Öğreticiye göre **yapılandırma işlem** adımını tamamladınız: Cihazınızda Azure Veri Kutusu Kenarı ile verileri [dönüştürün.](data-box-edge-deploy-configure-compute-advanced.md#configure-compute) Cihazınızda ilişkili bir IoT Hub kaynağı, bir IoT aygıtı ve bir IoT Edge aygıtı olmalıdır.
+- Cihaz kurulumuna sahip Data Box Edge bir cihaz tamamlandı.
+- Öğreticiye göre **işlem adımını yapılandırmayı** tamamladınız: cihazınızdaki [Azure Data Box Edge verileri dönüştürme](data-box-edge-deploy-configure-compute-advanced.md#configure-compute) . Cihazınızın ilişkili bir IoT Hub kaynağına, IoT cihazına ve bir IoT Edge cihazına sahip olması gerekir.
 
-## <a name="enable-network-interface-for-compute"></a>İşlem için ağ arabirimini etkinleştirme
+## <a name="enable-network-interface-for-compute"></a>İşlem için ağ arabirimini etkinleştir
 
-Harici bir ağ üzerinden cihazınızda çalışan modüllere erişmek için cihazınızdaki bir ağ arabirimine bir IP adresi atamanız gerekir. Bu bilgi işlem ayarlarını yerel web web arama biriminizden yönetebilirsiniz.
+Cihazınızda çalışan modüllerle bir dış ağ aracılığıyla erişmek için, cihazınızdaki bir ağ arabirimine bir IP adresi atamanız gerekir. Bu işlem ayarlarını, yerel Web kullanıcı arabiriminden yönetebilirsiniz.
 
-Bilgi işlem ayarlarını yapılandırmak için yerel web UI'nizde aşağıdaki adımları izleyin.
+İşlem ayarlarını yapılandırmak için yerel Web Kullanıcı arabiriminde aşağıdaki adımları uygulayın.
 
-1. Yerel web ui'sinde Configuration **> Compute ayarlarına**gidin.  
+1. Yerel Web Kullanıcı arabiriminde **yapılandırma > işlem ayarları**' na gidin.  
 
-2. Aygıtta çalıştıracağınız bir bilgi işlem modülüne bağlanmak için kullanmak istediğiniz ağ arabirimini **etkinleştirin.**
+2. Cihazda çalıştıracağınız bir işlem modülüne bağlanmak için kullanmak istediğiniz ağ arabirimini **etkinleştirin** .
 
-    - Statik IP adreslerini kullanıyorsanız, ağ arabirimi için bir IP adresi girin.
-    - DHCP kullanıyorsanız, IP adresleri otomatik olarak atanır. Bu örnekte DHCP kullanır.
+    - Statik IP adresleri kullanılıyorsa, ağ arabirimi için bir IP adresi girin.
+    - DHCP kullanılıyorsa, IP adresleri otomatik olarak atanır. Bu örnek DHCP kullanır.
 
-    ![İşlem ayarlarını etkinleştirme 1](media/data-box-edge-extend-compute-access-modules/enable-compute-setting-1.png)
+    ![İşlem ayarlarını etkinleştir 1](media/data-box-edge-extend-compute-access-modules/enable-compute-setting-1.png)
 
-3. Ayarları uygulamak için **Uygula'yı** seçin. DHCP kullanıyorsanız ağ arabirimine atanan IP adresini not alın.
+3. Ayarları uygulamak için **Uygula** ' yı seçin. DHCP kullanılıyorsa ağ arabirimine atanan IP adresini bir yere unutmayın.
 
-    ![İşlem ayarlarını etkinleştirme](media/data-box-edge-extend-compute-access-modules/enable-compute-setting-2.png)
+    ![İşlem ayarlarını etkinleştir](media/data-box-edge-extend-compute-access-modules/enable-compute-setting-2.png)
 
-## <a name="add-webserver-app-module"></a>Webserver uygulama modülü ekleme
+## <a name="add-webserver-app-module"></a>Web sunucusu uygulama modülünü Ekle
 
-Veri Kutusu Edge cihazınıza bir websunucusu uygulaması modülü eklemek için aşağıdaki adımları izleyin.
+Data Box Edge cihazınıza bir Web sunucusu uygulama modülü eklemek için aşağıdaki adımları uygulayın.
 
-1. Veri Kutusu Edge aygıtınızla ilişkili IoT Hub kaynağına gidin ve ardından **IoT Edge aygıtını**seçin.
-2. Veri Kutusu Kenarı aygıtınızla ilişkili IoT Edge aygıtını seçin. Aygıt **ayrıntılarında,** **modülleri ayarla'yı**seçin. **Modül ekle'de**, **+ Ekle'yi** seçin ve ardından **IoT Edge Modülünü**seçin.
-3. **IoT Edge özel modülleri** bıçak:
+1. Data Box Edge cihazlarınız ile ilişkili IoT Hub kaynağına gidin ve **IoT Edge cihaz**' ı seçin.
+2. Data Box Edge cihazlarınızın ilişkilendirildiği IoT Edge cihazını seçin. **Cihaz ayrıntıları**' nın **Modül ayarla**' yı seçin. **Modül Ekle**' de **+ Ekle** ' yi seçin ve ardından **IoT Edge modülü**' nü seçin.
+3. **IoT Edge özel modüller** dikey penceresinde:
 
-    1. Dağıtmak istediğiniz web sunucusu uygulama modülünüz için bir **Ad** belirtin.
-    2. Modül görüntünüz için bir **Image URI** sağlayın. Sağlanan ad ve etiketlerle eşleşen bir modül alınır. Bu durumda, `nginx:stable` kamu [Docker deposundan](https://hub.docker.com/_/nginx/)istikrarlı bir nginx görüntü (kararlı olarak etiketlenmiş) çekecektir.
-    3. Kapsayıcı **Oluşturma**Seçenekleri'nde, aşağıdaki örnek kodu yapıştırın:  
+    1. Web sunucusu uygulaması modülünüzün dağıtmak istediğiniz bir **ad** belirtin.
+    2. Modül görüntünüz için bir **görüntü URI 'si** sağlayın. Belirtilen ad ve etiketlerle eşleşen bir modül alındı. Bu durumda, `nginx:stable` genel [Docker deposundan](https://hub.docker.com/_/nginx/)kararlı bir NGINX görüntüsü (kalıcı olarak etiketlenir) çeker.
+    3. **Kapsayıcı oluşturma seçeneklerinde**aşağıdaki örnek kodu yapıştırın:  
 
         ```
         {
@@ -79,22 +79,22 @@ Veri Kutusu Edge cihazınıza bir websunucusu uygulaması modülü eklemek için
         }
         ```
 
-        Bu yapılandırma, TCP bağlantı noktası 8080'deki *http* üzerinden bilgi işlem ağı IP'sini kullanarak modüle erişmenizi sağlar (varsayılan web sunucusu bağlantı noktası 80'dir).
+        Bu yapılandırma, TCP bağlantı noktası 8080 ' de (varsayılan Web sunucusu bağlantı noktası 80 olan) *http* üzerinden Işlem ağı IP 'sini kullanarak modüle erişmenizi sağlar.
 
-        ![IoT Edge özel modül bıçağında bağlantı noktası bilgilerini belirtin](media/data-box-edge-extend-compute-access-modules/module-information.png)
+        ![IoT Edge özel modül dikey penceresinde bağlantı noktası bilgilerini belirtin](media/data-box-edge-extend-compute-access-modules/module-information.png)
 
-    4. **Kaydet'i**seçin.
+    4. **Kaydet**’i seçin.
 
-## <a name="verify-module-access"></a>Modül erişimini doğrulama
+## <a name="verify-module-access"></a>Modül erişimini doğrula
 
-1. Modülün başarıyla dağıtılmış ve çalıştığını doğrulayın. Aygıt **Ayrıntıları** sayfasında, **Modüller** sekmesinde, modülün çalışma süresi durumu **çalışıyor**olmalıdır.  
-2. Web sunucusu uygulaması modülüne bağlanın. Tarayıcı penceresi açın ve yazın:
+1. Modülün başarıyla dağıtıldığını ve çalıştığını doğrulayın. **Cihaz ayrıntıları** sayfasındaki **modüller** sekmesinde, modülün çalışma zamanı durumu **çalışıyor**olmalıdır.  
+2. Web sunucusu uygulama modülüne bağlanın. Bir tarayıcı penceresi açın ve şunu yazın:
 
     `http://<compute-network-IP-address>:8080`
 
     Web sunucusu uygulamasının çalıştığını görmeniz gerekir.
 
-    ![Modüle bağlantıyı belirtilen bağlantı noktası üzerinden doğrulama](media/data-box-edge-extend-compute-access-modules/verify-connect-module-1.png)
+    ![Belirtilen bağlantı noktası üzerinden modülle bağlantıyı doğrula](media/data-box-edge-extend-compute-access-modules/verify-connect-module-1.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

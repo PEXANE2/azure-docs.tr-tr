@@ -1,6 +1,6 @@
 ---
-title: .NET için Medya Hizmetleri SDK'da mantığı yeniden deneyin | Microsoft Dokümanlar
-description: Konu, .NET için Medya Hizmetleri SDK'daki yeniden deneme mantığına genel bir bakış sağlar.
+title: .NET için Media Services SDK 'da yeniden deneme mantığı | Microsoft Docs
+description: Bu konu, .NET için Media Services SDK 'da yeniden deneme mantığına genel bir bakış sunar.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,73 +15,73 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61094666"
 ---
-# <a name="retry-logic-in-the-media-services-sdk-for-net"></a>.NET için Medya Hizmetleri SDK'da mantığı yeniden deneyin  
+# <a name="retry-logic-in-the-media-services-sdk-for-net"></a>.NET için Media Services SDK 'da yeniden deneme mantığı  
 
-Microsoft Azure hizmetleriyle çalışırken geçici hatalar oluşabilir. Geçici bir hata oluşursa, çoğu durumda, birkaç yeniden denemeden sonra işlem başarılı olur. .NET için Medya Hizmetleri SDK, web isteklerinin neden olduğu özel durumlar ve hatalarla ilişkili geçici hataları işlemek için yeniden deneme mantığını uygular, sorguları yürütme, değişiklikleri kaydetme ve depolama işlemleri.  Varsayılan olarak, .NET için Medya Hizmetleri SDK uygulamanızın özel durum yeniden atmadan önce dört yeniden çalışır. Uygulamanızdaki kodun bu özel durumu düzgün bir şekilde işlemesi gerekir.  
+Microsoft Azure hizmetleriyle çalışırken geçici hatalar meydana gelebilir. Geçici bir hata oluşursa, çoğu durumda işlem başarılı olur. .NET için Media Services SDK, Web istekleri, sorgu yürütme, değişiklikleri kaydetme ve depolama işlemleri gibi özel durumlar ve hatalarla ilişkili geçici hataları işlemek için yeniden deneme mantığını uygular.  Varsayılan olarak, .NET için Media Services SDK, uygulamanıza özel durumu yeniden oluşturmadan önce dört yeniden deneme yürütür. Uygulamanızdaki kod daha sonra bu özel durumu doğru bir şekilde işlemelidir.  
 
- Aşağıda Web İsteği, Depolama, Sorgu ve SaveChanges ilkelerinin kısa bir kılavuzu verilmiştir:  
+ Web Isteği, depolama, sorgu ve SaveChanges ilkelerinin kısa bir Kılavuzu aşağıda verilmiştir:  
 
-* Depolama ilkesi blob depolama işlemleri (yüklemeler veya varlık dosyalarının karşıdan yüklenmesi) için kullanılır.  
-* Web İstek ilkesi genel web istekleri (örneğin, kimlik doğrulama belirteci almak ve kullanıcı kümesi bitiş noktasını çözmek için) için kullanılır.  
-* Sorgu ilkesi, REST'teki varlıkları sorgulamak için kullanılır (örneğin, mediaContext.Assets.Where(...).  
-* SaveChanges ilkesi, hizmet içindeki verileri değiştiren her şeyi yapmak için kullanılır (örneğin, bir varlığı güncelleyen, bir işlem için hizmet işlevini çağıran bir varlık oluşturmak).  
+* Depolama ilkesi, BLOB depolama işlemleri için kullanılır (varlık dosyalarını karşıya yükler veya indirir).  
+* Web Isteği ilkesi, genel Web istekleri için kullanılır (örneğin, kimlik doğrulama belirteci almak ve kullanıcı kümesi uç noktasını çözümlemek için).  
+* Sorgu İlkesi, varlıkları REST 'ten sorgulamak için kullanılır (örneğin, mediaContext. Entities. WHERE (...)).  
+* SaveChanges ilkesi, hizmet içindeki verileri değiştiren her şeyi yapmak için kullanılır (örneğin, bir varlığı güncelleştiren bir varlık oluşturmak ve bir işlem için bir hizmet işlevi çağırmak).  
   
-  Bu konu, .NET yeniden deneme mantığı için Medya Hizmetleri SDK tarafından işlenen özel durum türlerini ve hata kodlarını listeler.  
+  Bu konu, .NET yeniden deneme mantığı için Media Services SDK tarafından işlenen özel durum türlerini ve hata kodlarını listeler.  
 
 ## <a name="exception-types"></a>Özel durum türleri
-Aşağıdaki tabloda, .NET için Medya Hizmetleri SDK'sının işlediği veya geçici hatalara neden olabilecek bazı işlemler için işlemediği özel durumları açıklanmaktadır.  
+Aşağıdaki tabloda, .NET için Media Services SDK 'nın, geçici hatalara neden olabilecek bazı işlemler için işlediği veya işlemeyen özel durumlar açıklanmaktadır.  
 
-| Özel durum | Web İsteği | Depolama | Sorgu | Savechanges |
+| Özel durum | Web Isteği | Depolama | Sorgu | Sonrasında |
 | --- | --- | --- | --- | --- |
-| Webexception<br/>Daha fazla bilgi için [WebException durum kodları](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus) bölümüne bakın. |Evet |Evet |Evet |Evet |
-| Dataserviceclientexception<br/> Daha fazla bilgi için [HTTP hata durum kodlarına](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)bakın. |Hayır |Evet |Evet |Evet |
-| Dataservicequeryexception<br/> Daha fazla bilgi için [HTTP hata durum kodlarına](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)bakın. |Hayır |Evet |Evet |Evet |
-| Dataservicerequestexception<br/> Daha fazla bilgi için [HTTP hata durum kodlarına](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)bakın. |Hayır |Evet |Evet |Evet |
-| DataServiceTransportException |Hayır |Hayır |Evet |Evet |
-| Timeoutexception |Evet |Evet |Evet |Hayır |
-| Socketexception |Evet |Evet |Evet |Evet |
-| Depolama Özel Durumu |Hayır |Evet |Hayır |Hayır |
-| ıoexception |Hayır |Evet |Hayır |Hayır |
+| Gönderdi<br/>Daha fazla bilgi için, [WebException durum kodları](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus) bölümüne bakın. |Yes |Yes |Yes |Yes |
+| DataServiceClientException<br/> Daha fazla bilgi için bkz. [http hata durumu kodları](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Hayır |Yes |Yes |Yes |
+| DataServiceQueryException<br/> Daha fazla bilgi için bkz. [http hata durumu kodları](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Hayır |Yes |Yes |Yes |
+| DataServiceRequestException<br/> Daha fazla bilgi için bkz. [http hata durumu kodları](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Hayır |Yes |Yes |Yes |
+| DataServiceTransportException |Hayır |Hayır |Yes |Yes |
+| TimeoutException |Yes |Yes |Yes |Hayır |
+| SocketException |Yes |Yes |Yes |Yes |
+| StorageException |Hayır |Yes |Hayır |Hayır |
+| IOException |Hayır |Yes |Hayır |Hayır |
 
 ### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a>WebException durum kodları
-Aşağıdaki tablo, yeniden deneme mantığının hangi WebException hata kodlarını kodlar olduğunu gösterir. [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) numaralandırma durum kodlarını tanımlar.  
+Aşağıdaki tabloda, yeniden deneme mantığının uygulandığı WebException hata kodlarının gösterildiği gösterilmektedir. [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) numaralandırması durum kodlarını tanımlar.  
 
-| Durum | Web İsteği | Depolama | Sorgu | Savechanges |
+| Durum | Web Isteği | Depolama | Sorgu | Sonrasında |
 | --- | --- | --- | --- | --- |
-| ConnectFailure |Evet |Evet |Evet |Evet |
-| Ad Çözümleme Hatası |Evet |Evet |Evet |Evet |
-| ProxyNameResolutionFailure |Evet |Evet |Evet |Evet |
-| SendFailure |Evet |Evet |Evet |Evet |
-| Boru Hattı Arıza |Evet |Evet |Evet |Hayır |
-| Bağlantı Kapalı |Evet |Evet |Evet |Hayır |
-| KeepAliveFailure |Evet |Evet |Evet |Hayır |
-| UnknownError |Evet |Evet |Evet |Hayır |
-| Alma Hatası |Evet |Evet |Evet |Hayır |
-| İstekİptal edildi |Evet |Evet |Evet |Hayır |
-| Zaman aşımı |Evet |Evet |Evet |Hayır |
-| ProtokolHatası <br/>ProtocolError'ın yeniden denemesi HTTP durum kodu işleme tarafından denetlenir. Daha fazla bilgi için [HTTP hata durum kodlarına](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)bakın. |Evet |Evet |Evet |Evet |
+| ConnectFailure |Yes |Yes |Yes |Yes |
+| NameResolutionFailure |Yes |Yes |Yes |Yes |
+| ProxyNameResolutionFailure |Yes |Yes |Yes |Yes |
+| SendFailure |Yes |Yes |Yes |Yes |
+| PipelineFailure |Yes |Yes |Yes |Hayır |
+| ConnectionClosed |Yes |Yes |Yes |Hayır |
+| KeepAliveFailure |Yes |Yes |Yes |Hayır |
+| UnknownError |Yes |Yes |Yes |Hayır |
+| ReceiveFailure |Yes |Yes |Yes |Hayır |
+| Requestiptal edildi |Yes |Yes |Yes |Hayır |
+| Zaman aşımı |Yes |Yes |Yes |Hayır |
+| ProtocolError <br/>Protocolon 'da yeniden dene hatası, HTTP durum kodu işleme tarafından denetlenir. Daha fazla bilgi için bkz. [http hata durumu kodları](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Yes |Yes |Yes |Yes |
 
-### <a name="http-error-status-codes"></a><a name="HTTPStatusCode"></a>HTTP hata durum kodları
-Sorgu ve SaveChanges işlemleri DataServiceClientException, DataServiceQueryException veya DataServiceQueryException'ı attığında, HTTP hata durum kodu StatusCode özelliğinde döndürülür.  Aşağıdaki tablo, yeniden deneme mantığının hangi hata kodlarıiçin uygulandığını gösterir.  
+### <a name="http-error-status-codes"></a><a name="HTTPStatusCode"></a>HTTP hatası durum kodları
+Sorgu ve SaveChanges işlemleri DataServiceClientException, DataServiceQueryException veya DataServiceQueryException oluştururken, StatusCode özelliğinde HTTP hatası durum kodu döndürülür.  Aşağıdaki tabloda, yeniden deneme mantığının uygulandığı hata kodları gösterilmektedir.  
 
-| Durum | Web İsteği | Depolama | Sorgu | Savechanges |
+| Durum | Web Isteği | Depolama | Sorgu | Sonrasında |
 | --- | --- | --- | --- | --- |
-| 401 |Hayır |Evet |Hayır |Hayır |
-| 403 |Hayır |Evet<br/>Daha uzun beklemelerle yeniden denemeleri işleme. |Hayır |Hayır |
-| 408 |Evet |Evet |Evet |Evet |
-| 429 |Evet |Evet |Evet |Evet |
-| 500 |Evet |Evet |Evet |Hayır |
-| 502 |Evet |Evet |Evet |Hayır |
-| 503 |Evet |Evet |Evet |Evet |
-| 504 |Evet |Evet |Evet |Hayır |
+| 401 |Hayır |Yes |Hayır |Hayır |
+| 403 |Hayır |Yes<br/>Daha uzun bir süre sonra yeniden denemeleri işleme. |Hayır |Hayır |
+| 408 |Yes |Yes |Yes |Yes |
+| 429 |Yes |Yes |Yes |Yes |
+| 500 |Yes |Yes |Yes |Hayır |
+| 502 |Yes |Yes |Yes |Hayır |
+| 503 |Yes |Yes |Yes |Yes |
+| 504 |Yes |Yes |Yes |Hayır |
 
-.NET yeniden deneme mantığı için Medya Hizmetleri SDK'nın gerçek uygulamasına bakmak istiyorsanız, [bkz.](https://github.com/Azure/azure-sdk-for-media-services/tree/dev/src/net/Client/TransientFaultHandling)
+.NET yeniden deneme mantığı için Media Services SDK 'nın gerçek uygulamasına göz atmak istiyorsanız bkz. [Azure-SDK-for-Media-Services](https://github.com/Azure/azure-sdk-for-media-services/tree/dev/src/net/Client/TransientFaultHandling).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

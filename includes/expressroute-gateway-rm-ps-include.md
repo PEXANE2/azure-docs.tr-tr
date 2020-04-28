@@ -9,33 +9,33 @@ ms.date: 02/21/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 922ac7eb6cb9676af65700a6a2fe7fbae35a0dc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67188904"
 ---
-Bu görevin adımları, aşağıdaki yapılandırma başvuru listesindeki değerleri temel alan bir VNet kullanır. Ek ayarlar ve adlar da bu listede özetlenmiştir. Bu listedeki değerlere dayalı değişkenler eklesek de, bu listeyi doğrudan adımların hiçbirinde kullanmayız. Listeyi başvuru olarak kullanmak üzere kopyalayarak değerleri kendi değerlerinideğiştirebilirsiniz.
+Bu görevin adımları aşağıdaki yapılandırma başvurusu listesindeki değerleri temel alarak bir sanal ağ kullanır. Ek ayarlar ve adlar bu listede de özetlenmiştir. Bu liste, bu listedeki değerlere göre değişken eklediğimiz halde, bu listeyi doğrudan herhangi bir adımda kullanmıyoruz. Bir başvuru olarak kullanmak için listeyi kopyalayabilir ve değerleri kendi değerlerinizle değiştirin.
 
-* Sanal Ağ Adı = "TestVNet"
-* Sanal Ağ adres alanı = 192.168.0.0/16
-* Kaynak Grubu = "TestRG"
-* Subnet1 Adı = "FrontEnd" 
+* Sanal ağ adı = "TestVNet"
+* Sanal ağ adres alanı = 192.168.0.0/16
+* Kaynak grubu = "TestRG"
+* Subnet1 Name = "ön uç" 
 * Subnet1 adres alanı = "192.168.1.0/24"
-* Ağ Geçidi Subnet adı: "GatewaySubnet" Her zaman bir ağ geçidi alt ağ *GatewaySubnet*adlandırmanız gerekir.
-* Ağ Geçidi Subnet adres alanı = "192.168.200.0/26"
-* Bölge = "Doğu ABD"
-* Ağ Geçidi Adı = "GW"
-* Ağ Geçidi IP Adı = "GWIP"
-* Ağ geçidi IP yapılandırma Adı = "gwipconf"
+* Ağ geçidi alt ağ adı: "GatewaySubnet" her zaman bir ağ geçidi alt ağı *gatewaysubnet*adını vermelisiniz.
+* Ağ geçidi alt ağ adres alanı = "192.168.200.0/26"
+* Region = "Doğu ABD"
+* Ağ geçidi adı = "GW"
+* Ağ geçidi IP adı = "GWıP"
+* Ağ geçidi IP yapılandırma adı = "gwipconf"
 * Type = "ExpressRoute" Bu tür bir ExpressRoute yapılandırması için gereklidir.
-* Ağ Geçidi Genel IP Adı = "gwpip"
+* Ağ Geçidi genel IP adı = "gwpıp"
 
 ## <a name="add-a-gateway"></a>Ağ geçidi ekleme
-1. Azure Aboneliğinize bağlanın.
+1. Azure aboneliğinize bağlanın.
 
    [!INCLUDE [Sign in](expressroute-cloud-shell-connect.md)]
-2. Bu alıştırma için değişkenlerinizi bildirin. Kullanmak istediğiniz ayarları yansıtacak şekilde örneği istediğinizden emin olun.
+2. Bu alıştırma için değişkenlerinizi bildirin. Örneği, kullanmak istediğiniz ayarları yansıtacak şekilde düzenlemediğinizden emin olun.
 
    ```azurepowershell-interactive 
    $RG = "TestRG"
@@ -45,12 +45,12 @@ Bu görevin adımları, aşağıdaki yapılandırma başvuru listesindeki değer
    $GWIPconfName = "gwipconf"
    $VNetName = "TestVNet"
    ```
-3. Sanal ağ nesnesini değişken olarak saklayın.
+3. Sanal ağ nesnesini bir değişken olarak depolayın.
 
    ```azurepowershell-interactive
    $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
    ```
-4. Sanal Ağınıza bir ağ geçidi alt ağı ekleyin. Ağ geçidi alt ağı "GatewaySubnet" olarak adlandırılmalıdır. /27 veya daha büyük (/26, /25, vb.) bir ağ geçidi alt ağı oluşturmalısınız.
+4. Sanal ağınıza bir ağ geçidi alt ağı ekleyin. Ağ geçidi alt ağı "GatewaySubnet" olarak adlandırılmalıdır. /27 veya daha büyük (/26,/25 vb.) bir ağ geçidi alt ağı oluşturmanız gerekir.
 
    ```azurepowershell-interactive
    Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
@@ -60,28 +60,28 @@ Bu görevin adımları, aşağıdaki yapılandırma başvuru listesindeki değer
    ```azurepowershell-interactive
    $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
-6. Ağ geçidi alt netini değişken olarak saklayın.
+6. Ağ geçidi alt ağını bir değişken olarak depolayın.
 
    ```azurepowershell-interactive
    $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
    ```
-7. Genel bir IP adresi isteyin. Ağ geçidini oluşturmadan önce IP adresi istenir. Kullanmak istediğiniz IP adresini belirtemezsiniz; dinamik olarak tahsis edilir. Sonraki yapılandırma bölümünde bu IP adresini kullanacaksınız. Ayırma Yöntemi Dinamik olmalıdır.
+7. Genel bir IP adresi isteyin. Ağ Geçidi oluşturulmadan önce IP adresi istendi. Kullanmak istediğiniz IP adresini belirtemezsiniz; dinamik olarak ayrılır. Sonraki yapılandırma bölümünde bu IP adresini kullanacaksınız. AllocationMethod dinamik olmalıdır.
 
    ```azurepowershell-interactive
    $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
    ```
-8. Ağ geçidiniz için yapılandırmaoluşturun. Ağ geçidi yapılandırması, kullanılacak alt ağı ve genel IP adresini tanımlar. Bu adımda, ağ geçidi oluştururken kullanılacak yapılandırmayı belirtin. Bu adım aslında ağ geçidi nesnesi oluşturmaz. Aşağıdaki örneği kullanarak kendi ağ geçidi yapılandırmanızı oluşturun.
+8. Ağ geçidinizin yapılandırmasını oluşturun. Ağ geçidi yapılandırması, kullanılacak alt ağı ve genel IP adresini tanımlar. Bu adımda, ağ geçidini oluştururken kullanılacak yapılandırmayı belirtirsiniz. Bu adım aslında ağ geçidi nesnesini oluşturmaz. Aşağıdaki örneği kullanarak kendi ağ geçidi yapılandırmanızı oluşturun.
 
    ```azurepowershell-interactive
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
    ```
-9. Ağ geçidini oluşturun. Bu adımda, **-GatewayType** özellikle önemlidir. **ExpressRoute**değerini kullanmalısınız. Bu cmdlets çalıştırdıktan sonra, ağ geçidi oluşturmak için 45 dakika veya daha fazla sürebilir.
+9. Ağ geçidini oluşturun. Bu adımda **-gatewaytype** özellikle önemlidir. **ExpressRoute**değerini kullanmanız gerekir. Bu cmdlet 'leri çalıştırdıktan sonra ağ geçidinin oluşturulması 45 dakika veya daha fazla sürebilir.
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
    ```
 
-## <a name="verify-the-gateway-was-created"></a>Ağ geçidinin oluşturulduğunu doğrulama
+## <a name="verify-the-gateway-was-created"></a>Ağ geçidinin oluşturulduğunu doğrulayın
 Ağ geçidinin oluşturulduğunu doğrulamak için aşağıdaki komutları kullanın:
 
 ```azurepowershell-interactive
@@ -89,10 +89,10 @@ Get-AzVirtualNetworkGateway -ResourceGroupName $RG
 ```
 
 ## <a name="resize-a-gateway"></a>Ağ geçidini yeniden boyutlandırma
-[Ağ Geçidi SKUs](../articles/expressroute/expressroute-about-virtual-network-gateways.md)bir dizi vardır. Ağ Geçidi SKU'yu istediğiniz zaman değiştirmek için aşağıdaki komutu kullanabilirsiniz.
+Birçok [ağ geçidi SKU](../articles/expressroute/expressroute-about-virtual-network-gateways.md)'su vardır. Ağ Geçidi SKU 'sunu dilediğiniz zaman değiştirmek için aşağıdaki komutu kullanabilirsiniz.
 
 > [!IMPORTANT]
-> Bu komut UltraPerformance ağ geçidi için çalışmaz. Ağ geçidinizi bir UltraPerformance ağ geçidine değiştirmek için önce varolan ExpressRoute ağ geçidini kaldırın ve ardından yeni bir UltraPerformance ağ geçidi oluşturun. Ağ geçidinizi bir UltraPerformance ağ geçidinden düşürmek için önce UltraPerformance ağ geçidini kaldırın ve ardından yeni bir ağ geçidi oluşturun.
+> Bu komut UltraPerformance ağ geçidi için çalışmıyor. Ağ geçidinizi bir UltraPerformance ağ geçidine dönüştürmek için, önce mevcut ExpressRoute Gateway 'i kaldırın ve ardından yeni bir UltraPerformance Ağ Geçidi oluşturun. Ağ geçidinizin bir UltraPerformance ağ geçidiyle indirgenmesini sağlamak için önce UltraPerformance ağ geçidini kaldırın ve ardından yeni bir ağ geçidi oluşturun.
 > 
 > 
 
@@ -102,7 +102,7 @@ Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerfor
 ```
 
 ## <a name="remove-a-gateway"></a>Ağ geçitlerini kaldırma
-Ağ geçidini kaldırmak için aşağıdaki komutu kullanın:
+Bir ağ geçidini kaldırmak için aşağıdaki komutu kullanın:
 
 ```azurepowershell-interactive
 Remove-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG

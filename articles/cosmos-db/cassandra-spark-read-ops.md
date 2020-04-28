@@ -1,7 +1,7 @@
 ---
-title: Spark kullanarak Cassandra API tablo verilerini okuyun
+title: Spark kullanarak Cassandra API tablo verilerini okuma
 titleSufix: Azure Cosmos DB
-description: Bu makalede, Azure Cosmos DB'deki Cassandra API tablolarından alınan verilerin nasıl okunduğu açıklanmaktadır.
+description: Bu makalede Azure Cosmos DB Cassandra API tablolarından verilerin nasıl okunacağı açıklanır.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60893419"
 ---
-# <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Azure Cosmos DB Cassandra API tablolarından verileri Spark'ı kullanarak okuyun
+# <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Spark kullanarak Azure Cosmos DB Cassandra API tablolarından veri okuma
 
- Bu makalede, Azure Cosmos DB Cassandra API'de depolanan verilerin Spark'tan nasıl okunduğu açıklanmaktadır.
+ Bu makalede, Spark 'dan Azure Cosmos DB Cassandra API depolanan verilerin nasıl okunacağı açıklanır.
 
 ## <a name="cassandra-api-configuration"></a>Cassandra API yapılandırması
 ```scala
@@ -46,9 +46,9 @@ spark.conf.set("spark.cassandra.concurrent.reads", "512")
 spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
-## <a name="dataframe-api"></a>Veri çerçevesi API'si
+## <a name="dataframe-api"></a>Dataframe API 'SI
 
-### <a name="read-table-using-sessionreadformat-command"></a>session.read.format komutunu kullanarak tabloyu okuma
+### <a name="read-table-using-sessionreadformat-command"></a>Session. Read. Format komutunu kullanarak tablo oku
 
 ```scala
 val readBooksDF = sqlContext
@@ -60,13 +60,13 @@ val readBooksDF = sqlContext
 readBooksDF.explain
 readBooksDF.show
 ```
-### <a name="read-table-using-sparkreadcassandraformat"></a>spark.read.cassandraFormat kullanarak tabloyu okuyun 
+### <a name="read-table-using-sparkreadcassandraformat"></a>Spark. Read. cassandraFormat kullanarak tablo oku 
 
 ```scala
 val readBooksDF = spark.read.cassandraFormat("books", "books_ks", "").load()
 ```
 
-### <a name="read-specific-columns-in-table"></a>Tabloda belirli sütunları okuma
+### <a name="read-specific-columns-in-table"></a>Tablodaki belirli sütunları oku
 
 ```scala
 val readBooksDF = spark
@@ -83,7 +83,7 @@ readBooksDF.show
 
 ### <a name="apply-filters"></a>Filtreleri uygulama
 
-Şu anda yüklem pushdown desteklenmez, aşağıdaki örnekler istemci tarafı filtreleme yansıtır. 
+Koşul itme Şu anda desteklenmiyor, aşağıdaki örnekler istemci tarafı filtrelemeyi yansıtır. 
 
 ```scala
 val readBooksDF = spark
@@ -103,24 +103,24 @@ readBooksDF.explain
 readBooksDF.show
 ```
 
-## <a name="rdd-api"></a>RDD API
+## <a name="rdd-api"></a>RDD APı 'SI
 
-### <a name="read-table"></a>Tabloyu oku
+### <a name="read-table"></a>Tablo oku
 ```scala
 val bookRDD = sc.cassandraTable("books_ks", "books")
 bookRDD.take(5).foreach(println)
 ```
 
-### <a name="read-specific-columns-in-table"></a>Tabloda belirli sütunları okuma
+### <a name="read-specific-columns-in-table"></a>Tablodaki belirli sütunları oku
 
 ```scala
 val booksRDD = sc.cassandraTable("books_ks", "books").select("book_id","book_name").cache
 booksRDD.take(5).foreach(println)
 ```
 
-## <a name="sql-views"></a>SQL Görünümleri 
+## <a name="sql-views"></a>SQL görünümleri 
 
-### <a name="create-a-temporary-view-from-a-dataframe"></a>Veri çerçevesinden geçici görünüm oluşturma
+### <a name="create-a-temporary-view-from-a-dataframe"></a>Veri çerçevesinden geçici bir görünüm oluşturma
 
 ```scala
 spark
@@ -130,7 +130,7 @@ spark
   .load.createOrReplaceTempView("books_vw")
 ```
 
-### <a name="run-queries-against-the-view"></a>Sorguları görünüme karşı çalıştırma
+### <a name="run-queries-against-the-view"></a>Görünümde sorgu çalıştırma
 
 ```sql
 select * from books_vw where book_pub_year > 1891
@@ -138,10 +138,10 @@ select * from books_vw where book_pub_year > 1891
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Spark'tan Azure Cosmos DB Cassandra API ile çalışma yla ilgili ek makaleler şunlardır:
+Spark 'tan Azure Cosmos DB Cassandra API ile çalışmaya yönelik ek makaleler aşağıda verilmiştir:
  
- * [İşlemleri yukarı yaslar](cassandra-spark-upsert-ops.md)
- * [İşlemleri silme](cassandra-spark-delete-ops.md)
+ * [Upsert işlemler](cassandra-spark-upsert-ops.md)
+ * [Silme işlemleri](cassandra-spark-delete-ops.md)
  * [Toplama işlemleri](cassandra-spark-aggregation-ops.md)
  * [Tablo kopyalama işlemleri](cassandra-spark-table-copy-ops.md)
 

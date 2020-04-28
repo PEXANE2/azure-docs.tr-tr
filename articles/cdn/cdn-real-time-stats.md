@@ -1,6 +1,6 @@
 ---
-title: Azure CDN'de gerçek zamanlı istatistikler | Microsoft Dokümanlar
-description: Gerçek zamanlı istatistikler, müşterilerinize içerik sunarken Azure CDN performansı hakkında gerçek zamanlı veriler sağlar.
+title: Azure CDN 'de gerçek zamanlı istatistikler | Microsoft Docs
+description: Gerçek zamanlı istatistikler, istemcilerinize içerik teslim edilirken Azure CDN performansına ilişkin gerçek zamanlı veriler sağlar.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,82 +15,82 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d56007e5a196a0857f3b69ac51f5e3b5a88c4f6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67593500"
 ---
-# <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN'de gerçek zamanlı istatistikler
+# <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN 'de gerçek zamanlı istatistikler
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu belge, Microsoft Azure CDN'deki gerçek zamanlı istatistikleri açıklar.  Bu işlevsellik, istemcilerinize içerik teslim ederken bant genişliği, önbellek durumları ve CDN profilinize eşzamanlı bağlantılar gibi gerçek zamanlı veriler sağlar. Bu, canlı yayın etkinlikleri de dahil olmak üzere hizmetinizin durumunun her zaman sürekli olarak izlenmesini sağlar.
+Bu belgede Microsoft Azure CDN 'deki gerçek zamanlı istatistikler açıklanmaktadır.  Bu işlevsellik, istemcilerinize içerik teslim edilirken bant genişliği, önbellek durumları ve CDN profiliniz için eşzamanlı bağlantı gibi gerçek zamanlı veriler sağlar. Bu, canlı etkinlikler dahil olmak üzere, hizmetinizin sistem durumunun sürekli izlenmesini mümkün bir zamanda sunar.
 
 Aşağıdaki grafikler mevcuttur:
 
 * [Bant genişliği](#bandwidth)
-* [Durum Kodları](#status-codes)
-* [Önbellek Durumları](#cache-statuses)
+* [Durum kodları](#status-codes)
+* [Önbellek durumları](#cache-statuses)
 * [Bağlantılar](#connections)
 
-## <a name="accessing-real-time-stats"></a>Gerçek zamanlı istatistiklere erişim
-1. Azure [Portalı'nda](https://portal.azure.com)CDN profilinize göz atın.
+## <a name="accessing-real-time-stats"></a>Gerçek zamanlı istatistikler 'e erişme
+1. [Azure portalında](https://portal.azure.com), CDN profilinize gidin.
    
-    ![CDN profil bıçağı](./media/cdn-real-time-stats/cdn-profile-blade.png)
-2. CDN profil bıçağından **Yönet** düğmesini tıklatın.
+    ![CDN profili dikey penceresi](./media/cdn-real-time-stats/cdn-profile-blade.png)
+2. CDN profili dikey penceresinde **Yönet** düğmesine tıklayın.
    
-    ![CDN profil blade yönetme düğmesi](./media/cdn-real-time-stats/cdn-manage-btn.png)
+    ![CDN profili dikey penceresi Yönet düğmesi](./media/cdn-real-time-stats/cdn-manage-btn.png)
    
     CDN yönetim portalı açılır.
-3. **Analytics** sekmesinin üzerine binin, ardından **Gerçek Zamanlı İstatistikler** uçuşunun üzerinde gezin.  HTTP **Büyük Nesne'ye**tıklayın.
+3. **Analiz** sekmesinin üzerine gelin ve ardından **gerçek zamanlı istatistikler** açılır öğesi üzerine gelin.  **Http büyük nesne**' ye tıklayın.
    
     ![CDN yönetim portalı](./media/cdn-real-time-stats/cdn-premium-portal.png)
    
-    Gerçek zamanlı istatistik grafikleri görüntülenir.
+    Gerçek zamanlı istatistikler grafikleri görüntülenir.
 
-Grafiklerin her biri, sayfa yüklendiğinden itibaren seçili zaman aralığı için gerçek zamanlı istatistikler görüntüler.  Grafikler birkaç saniyede bir otomatik olarak güncellenir.  Varsa **Grafiği Yenile** düğmesi grafiği temizler ve ardından yalnızca seçili verileri görüntüler.
+Grafiklerin her biri, sayfa yüklendiğinde başlayarak seçili zaman aralığı için gerçek zamanlı istatistikleri görüntüler.  Grafikler her birkaç saniyede bir otomatik olarak güncelleştirilecek.  Varsa **grafiği Yenile** düğmesi grafiği temizler, sonrasında yalnızca seçili veriler görüntülenir.
 
 ## <a name="bandwidth"></a>Bant genişliği
 ![Bant genişliği grafiği](./media/cdn-real-time-stats/cdn-bandwidth.png)
 
-**Bant genişliği** grafiği, seçili zaman aralığında geçerli platform için kullanılan bant genişliği miktarını görüntüler. Grafiğin gölgeli kısmı bant genişliği kullanımını gösterir. Şu anda kullanılmakta olan bant genişliğinin tam miktarı çizgi grafiğinin hemen altında görüntülenir.
+**Bant genişliği** grafiğinde, seçili zaman aralığında geçerli platform için kullanılan bant genişliği miktarı görüntülenir. Grafiğin gölgeli kısmı bant genişliği kullanımını gösterir. Şu anda kullanılmakta olan bant genişliğinin tam miktarı doğrudan çizgi grafiğinin altında görüntülenir.
 
 ## <a name="status-codes"></a>Durum Kodları
 ![Durum kodu grafiği](./media/cdn-real-time-stats/cdn-status-codes.png)
 
-**Durum Kodları** grafiği, belirli HTTP yanıt kodlarının seçili zaman aralığında ne sıklıkta oluştuğunu gösterir.
+**Durum kodları** grafiği, belirli http yanıt kodlarının seçili zaman aralığında ne sıklıkla oluştuğunu gösterir.
 
 > [!TIP]
-> Her BIR HTTP durum kodu seçeneğinin açıklaması için [Azure CDN HTTP Durum Kodları'na](/previous-versions/azure/mt759238(v=azure.100))bakın.
+> Her HTTP durum kodu seçeneğinin açıklaması için bkz. [Azure CDN http durum kodları](/previous-versions/azure/mt759238(v=azure.100)).
 > 
 > 
 
-HTTP durum kodlarının listesi grafiğin hemen üzerinde görüntülenir. Bu liste, satır grafiğine dahil edilebilen her durum kodunu ve bu durum kodu için saniyedeki geçerli oluşum sayısını gösterir. Varsayılan olarak, grafikteki bu durum kodlarının her biri için bir satır görüntülenir. Ancak, yalnızca CDN yapılandırmanız için özel öneme sahip durum kodlarını izlemeyi seçebilirsiniz. Bunu yapmak için, istenilen durum kodlarını kontrol edin ve diğer tüm seçenekleri temizleyin, ardından **Graph'ı Yenile'yi**tıklatın. 
+Grafik üzerinde doğrudan bir HTTP durum kodları listesi görüntülenir. Bu liste, bu durum kodu için çizgi grafiğine dahil edilebilir her durum kodunu ve saniye başına geçerli oluşum sayısını belirtir. Varsayılan olarak, grafikteki bu durum kodlarının her biri için bir satır görüntülenir. Bununla birlikte, yalnızca CDN yapılandırmanız için özel anlam içeren durum kodlarını izlemeyi tercih edebilirsiniz. Bunu yapmak için, istenen durum kodlarını denetleyip diğer tüm seçenekleri temizleyin ve ardından **grafiği Yenile**' ye tıklayın. 
 
-Belirli bir durum kodu için günlüğe kaydedilmiş verileri geçici olarak gizleyebilirsiniz.  Grafiğin hemen altındaki göstergeden, gizlemek istediğiniz durum kodunu tıklatın. Durum kodu grafikten hemen gizlenir. Durum kodunu yeniden tıklatmak, bu seçeneğin yeniden görüntülenmesine neden olur.
+Günlüğe kaydedilen verileri, belirli bir durum kodu için geçici olarak gizleyebilirsiniz.  Göstergenin doğrudan grafiğin altında, gizlemek istediğiniz durum koduna tıklayın. Durum kodu hemen grafikten gizlenir. Bu durum koduna yeniden tıklamak, bu seçeneğin yeniden görüntülenmesine neden olur.
 
-## <a name="cache-statuses"></a>Önbellek Durumları
-![Önbellek Durumları grafiği](./media/cdn-real-time-stats/cdn-cache-status.png)
+## <a name="cache-statuses"></a>Önbellek durumları
+![Önbellek durumları grafiği](./media/cdn-real-time-stats/cdn-cache-status.png)
 
-**Önbellek Durumları** grafiği, belirli önbellek durumlarının belirli zaman aralığında ne sıklıkta oluştuğunu gösterir. 
+**Önbellek durumları** grafiği, seçilen zaman dilimi boyunca belirli önbellek durumları türlerinin ne sıklıkla oluştuğunu gösterir. 
 
 > [!TIP]
-> Her önbellek durum kodu seçeneğinin açıklaması için [Azure CDN Önbellek Durum Kodları'na](/previous-versions/azure/mt759237(v=azure.100))bakın.
+> Her önbellek durum kodu seçeneğinin açıklaması için bkz. [Azure CDN önbelleği durum kodları](/previous-versions/azure/mt759237(v=azure.100)).
 > 
 > 
 
-Önbellek durum kodlarının listesi doğrudan grafiğin üzerinde görüntülenir. Bu liste, satır grafiğine dahil edilebilen her durum kodunu ve bu durum kodu için saniyedeki geçerli oluşum sayısını gösterir. Varsayılan olarak, grafikteki bu durum kodlarının her biri için bir satır görüntülenir. Ancak, yalnızca CDN yapılandırmanız için özel öneme sahip durum kodlarını izlemeyi seçebilirsiniz. Bunu yapmak için, istenilen durum kodlarını kontrol edin ve diğer tüm seçenekleri temizleyin, ardından **Graph'ı Yenile'yi**tıklatın. 
+Grafiğin üzerinde doğrudan bir önbellek durum kodları listesi görüntülenir. Bu liste, bu durum kodu için çizgi grafiğine dahil edilebilir her durum kodunu ve saniye başına geçerli oluşum sayısını belirtir. Varsayılan olarak, grafikteki bu durum kodlarının her biri için bir satır görüntülenir. Bununla birlikte, yalnızca CDN yapılandırmanız için özel anlam içeren durum kodlarını izlemeyi tercih edebilirsiniz. Bunu yapmak için, istenen durum kodlarını denetleyip diğer tüm seçenekleri temizleyin ve ardından **grafiği Yenile**' ye tıklayın. 
 
-Belirli bir durum kodu için günlüğe kaydedilmiş verileri geçici olarak gizleyebilirsiniz.  Grafiğin hemen altındaki göstergeden, gizlemek istediğiniz durum kodunu tıklatın. Durum kodu grafikten hemen gizlenir. Durum kodunu yeniden tıklatmak, bu seçeneğin yeniden görüntülenmesine neden olur.
+Günlüğe kaydedilen verileri, belirli bir durum kodu için geçici olarak gizleyebilirsiniz.  Göstergenin doğrudan grafiğin altında, gizlemek istediğiniz durum koduna tıklayın. Durum kodu hemen grafikten gizlenir. Bu durum koduna yeniden tıklamak, bu seçeneğin yeniden görüntülenmesine neden olur.
 
 ## <a name="connections"></a>Bağlantılar
 ![Bağlantılar grafiği](./media/cdn-real-time-stats/cdn-connections.png)
 
-Bu grafik, kenar sunucularınıza kaç bağlantı kurulduğunu gösterir. CDN'mizden geçen bir varlık için yapılan her istek bir bağlantıyla sonuçlanır.
+Bu grafik Edge sunucularınızda kaç bağlantı yapıldığını gösterir. Bir varlık için CDN 'ümüzden geçen her istek bir bağlantıyla sonuçlanır.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-* [Azure CDN'de gerçek zamanlı uyarılarla](cdn-real-time-alerts.md) bilgilendirilin
-* [Gelişmiş HTTP raporlarıyla](cdn-advanced-http-reports.md) daha derine inin
-* [Kullanım modellerini](cdn-analyze-usage-patterns.md) analiz edin
+* [Azure CDN gerçek zamanlı uyarılarla](cdn-real-time-alerts.md) bildirim alın
+* [GELIŞMIŞ http raporları](cdn-advanced-http-reports.md) ile daha derin bilgi
+* [Kullanım düzenlerini](cdn-analyze-usage-patterns.md) çözümleme
 

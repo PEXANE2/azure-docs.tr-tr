@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gölü Analizi'nde Python ile U-SQL komut dosyalarını genişletme
-description: Azure Veri Gölü Analizi'ni kullanarak U-SQL komut dosyalarında Python kodunu nasıl çalıştırılacaklarla çalıştırılamayı öğrenin
+title: Azure Data Lake Analytics 'de Python ile U-SQL betiklerini genişletme
+description: Azure Data Lake Analytics kullanarak U-SQL betiklerinizde Python kodu çalıştırmayı öğrenin
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,30 +10,30 @@ ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
 ms.openlocfilehash: 0a49cbdb4caf474d0628fea3679ce712d37886e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60813407"
 ---
-# <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>Azure Veri Gölü Analizi'nde Python koduyla U-SQL komut dosyalarını genişletme
+# <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>U-SQL betiklerini Azure Data Lake Analytics Python kodu ile genişletme
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce Python uzantılarının Azure Veri Gölü Analizi hesabınıza yüklendiğinden emin olun.
+Başlamadan önce, Python uzantılarının Azure Data Lake Analytics hesabınızda yüklü olduğundan emin olun.
 
-* Azure portalında Veri Gölü Analizi Hesabı'nda size gidin
-* Sol menüde, **BAŞLARKEN** **Altında Örnek Komut Dosyaları'na** tıklayın
-* **U-SQL Uzantıları yükle'yi** tıklatın sonra **Tamam**
+* Azure portal Data Lake Analytics hesabınıza gidin
+* Sol taraftaki menüde, **Başlarken** bölümünde **örnek betiklerine** tıklayın
+* **U-SQL uzantılarını yükleyip** **Tamam 'a** tıklayın
 
 ## <a name="overview"></a>Genel Bakış 
 
-U-SQL için Python Uzantıları, geliştiricilerin Python kodunun büyük ölçüde paralel yürütülmesini gerçekleştirmesini sağlar. Aşağıdaki örnekte temel adımlar gösteriş verilmiştir:
+U-SQL için Python uzantıları, geliştiricilerin Python kodu üzerinde yüksek düzeyde paralel yürütme gerçekleştirmesini sağlar. Aşağıdaki örnek, temel adımları göstermektedir:
 
-* U-SQL Komut Dosyası için Python uzantılarını `REFERENCE ASSEMBLY` etkinleştirmek için deyimi kullanın
-* Giriş `REDUCE` verilerini bir anahtarüzerinde bölmek için işlemi kullanma
-* U-SQL için Python uzantıları, indiriciye atanan`Extension.Python.Reducer`her tepe noktası üzerinde Python kodunu çalıştıran yerleşik bir indirgeci () içerir
-* U-SQL komut dosyası, pandadataframe'i `usqlml_main` girdi olarak kabul eden ve bir panda DataFrame'i çıktı olarak döndüren bir işlevi olan gömülü Python kodunu içerir.
+* U- `REFERENCE ASSEMBLY` SQL betiği için Python uzantılarını etkinleştirmek üzere ifadesini kullanın
+* Anahtar üzerinde `REDUCE` giriş verilerini bölümlemek için işlemi kullanma
+* U-SQL için Python uzantıları, Reducer atanan her bir köşede Python kodu`Extension.Python.Reducer`çalıştıran yerleşik bir Reducer () içerir.
+* U-SQL betiği, giriş olarak bir Pandas DataFrame kabul eden adlı `usqlml_main` ve çıkış olarak bir Pandas dataframe döndüren bir işlevi olan gömülü Python kodunu içerir.
 
 --
 
@@ -68,40 +68,40 @@ U-SQL için Python Uzantıları, geliştiricilerin Python kodunun büyük ölç�
         TO "/tweetmentions.csv"
         USING Outputters.Csv();
 
-## <a name="how-python-integrates-with-u-sql"></a>Python U-SQL ile Nasıl Bütünleşir?
+## <a name="how-python-integrates-with-u-sql"></a>Python U-SQL ile nasıl tümleştirilir?
 
-### <a name="datatypes"></a>Veri Tipleri
+### <a name="datatypes"></a>Türleriyle
 
-* U-SQL'den dize ve sayısal sütunlar Pandalar ve U-SQL arasında olduğu gibi dönüştürülür
-* U-SQL Null'lar Pandas `NA` değerlerine dönüştürülür ve
+* U-SQL ' den gelen dize ve sayısal sütunlar, Pandas ve U-SQL arasında olduğu gibi dönüştürülür
+* U-SQL null değerleri Pandas `NA` değerlerine ve öğesinden dönüştürülür
 
 ### <a name="schemas"></a>Şemalar
 
-* Pandalarda dizin vektörleri U-SQL'de desteklenmez. Python işlevindeki tüm giriş veri çerçeveleri her zaman 0'dan eksi 1 satır sayısına kadar 64 bitlik sayısal bir indekse sahiptir. 
-* U-SQL veri kümelerinin yinelenen sütun adları olamaz
-* U-SQL veri kümeleri dize olmayan sütun adlarını. 
+* Pandas 'teki Dizin vektörleri U-SQL ' de desteklenmez. Python işlevindeki tüm giriş verisi çerçeveleri her zaman 0 ' dan 1 ' den fazla satır sayısı kadar olan 64 bitlik bir sayısal dizine sahiptir. 
+* U-SQL veri kümelerinde yinelenen sütun adları olamaz
+* U-SQL veri kümeleri dize olmayan sütun adları. 
 
-### <a name="python-versions"></a>Python Sürümleri
-Yalnızca Python 3.5.1 (Windows için derlenmiş) desteklenir. 
+### <a name="python-versions"></a>Python sürümleri
+Yalnızca Python 3.5.1 (Windows için derlenen) desteklenir. 
 
 ### <a name="standard-python-modules"></a>Standart Python modülleri
 Tüm standart Python modülleri dahildir.
 
 ### <a name="additional-python-modules"></a>Ek Python modülleri
-Standart Python kitaplıklarının yanı sıra, yaygın olarak kullanılan birkaç python kitaplıkları da dahildir:
+Standart Python kitaplıklarının yanı sıra, yaygın olarak kullanılan birkaç Python kitaplığı dahil edilmiştir:
 
     pandas
     numpy
     numexpr
 
-### <a name="exception-messages"></a>Özel Durum Mesajları
-Şu anda, Python kodunda bir özel durum genel tepe noktası hatası olarak gösterilmektedir. Gelecekte, U-SQL İş hata iletileri Python özel durum iletisini görüntüler.
+### <a name="exception-messages"></a>Özel durum Iletileri
+Şu anda Python kodundaki bir özel durum genel köşe hatası olarak gösteriliyor. Gelecekte, U-SQL Işi hata iletilerinde Python özel durum iletisi görüntülenir.
 
-### <a name="input-and-output-size-limitations"></a>Giriş ve Çıkış boyutu sınırlamaları
-Her tepe noktası, ona atanmış sınırlı miktarda belleğe sahiptir. Şu anda, bu sınır bir AU için 6 GB'dır. Veri Çerçeveleri Python kodundaki bellekte bulunması gerektiğinden, giriş ve çıktının toplam boyutu 6 GB'ı geçemez.
+### <a name="input-and-output-size-limitations"></a>Giriş ve çıkış boyutu sınırlamaları
+Her köşenin kendisine atanan sınırlı miktarda belleği vardır. Şu anda bu sınır, AU için 6 GB 'dir. Giriş ve çıkış veri çerçevelerinin Python kodundaki bellekte bulunması gerektiğinden, giriş ve çıkış için Toplam Boyut 6 GB 'ı aşamaz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Microsoft Azure Data Lake Analytics'e genel bakış](data-lake-analytics-overview.md)
 * [Visual Studio için Data Lake Araçları'nı kullanarak U-SQL betikleri geliştirme](data-lake-analytics-data-lake-tools-get-started.md)
-* [Azure Veri Gölü Analizi işleri için U-SQL pencere işlevlerini kullanma](data-lake-analytics-use-window-functions.md)
+* [Azure Data Lake Analytics işleri için U-SQL pencere işlevlerini kullanma](data-lake-analytics-use-window-functions.md)
 * [Visual Studio Code için Azure Data Lake Araçları’nı kullanma](data-lake-analytics-data-lake-tools-for-vscode.md)

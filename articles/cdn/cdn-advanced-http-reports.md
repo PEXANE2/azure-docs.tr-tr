@@ -1,6 +1,6 @@
 ---
-title: Azure CDN gelişmiş HTTP raporlarıyla kullanım istatistiklerini analiz edin | Microsoft Dokümanlar
-description: Microsoft Azure CDN'de gelişmiş HTTP raporlarının nasıl oluşturulabildiğini öğrenin. Bu raporlar CDN etkinliği hakkında ayrıntılı bilgi sağlar.
+title: Gelişmiş HTTP raporları Azure CDN kullanım istatistiklerini çözümleme | Microsoft Docs
+description: Microsoft Azure CDN 'de gelişmiş HTTP raporları oluşturmayı öğrenin. Bu raporlar CDN etkinliği hakkında ayrıntılı bilgi sağlar.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,193 +15,193 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 0b0eec2425f8a1663eb7a09c83a6bad037d1d79c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67594103"
 ---
-# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Azure CDN gelişmiş HTTP raporlarıyla kullanım istatistiklerini analiz edin
+# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Gelişmiş HTTP raporları Azure CDN kullanım istatistiklerini çözümleme
 ## <a name="overview"></a>Genel Bakış
-Bu belge, Microsoft Azure CDN'deki gelişmiş HTTP raporlamalarını açıklar. Bu raporlar CDN etkinliği hakkında ayrıntılı bilgi sağlar.
+Bu belgede Microsoft Azure CDN 'de gelişmiş HTTP raporlaması açıklanmaktadır. Bu raporlar CDN etkinliği hakkında ayrıntılı bilgi sağlar.
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="accessing-advanced-http-reports"></a>Gelişmiş HTTP raporlarına erişim
-1. CDN profil bıçağından **Yönet** düğmesini tıklatın.
+## <a name="accessing-advanced-http-reports"></a>Gelişmiş HTTP raporlarına erişme
+1. CDN profili dikey penceresinde **Yönet** düğmesine tıklayın.
    
-    ![CDN profil blade yönetme düğmesi](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
+    ![CDN profili dikey penceresi Yönet düğmesi](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
    
     CDN yönetim portalı açılır.
-2. **Analytics** sekmesinin üzerine gel, ardından **Gelişmiş HTTP Raporları** uçuşunun üzerinde gezin.  HTTP **Büyük Platformu'na**tıklayın.
+2. **Analiz** sekmesinin üzerine gelin ve ardından **Gelişmiş http raporları** açılır öğesi üzerine gelin.  **Http büyük platformu**' na tıklayın.
    
-    ![CDN yönetim portalı - Gelişmiş Raporlar menüsü](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
+    ![CDN yönetim portalı-gelişmiş raporlar menüsü](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
    
     Rapor seçenekleri görüntülenir.
 
-## <a name="geography-reports-map-based"></a>Coğrafya Raporları (Harita Tabanlı)
-İçeriğinizin istendiği bölgeleri belirtmek için bir haritadan yararlanan beş rapor vardır. Bu raporlar Dünya Haritası, Amerika Birleşik Devletleri Haritası, Kanada Haritası, Avrupa Haritası ve Asya Pasifik Haritası'dır.
+## <a name="geography-reports-map-based"></a>Coğrafya raporları (eşleme tabanlı)
+İçeriğinizi istediğiniz bölgeleri göstermek için bir haritanın avantajlarından yararlanan beş rapor vardır. Bu raporlar Dünya Haritası, Birleşik Devletler Haritası, Kanada haritası, Avrupa Haritası ve Asya Pasifik haritalarıdır.
 
-Harita tabanlı her rapor coğrafi varlıkları sıralar (örneğin, ülkeler/bölgeler, içeriğinizin istendiği konumları görselleştirmenize yardımcı olmak için bir harita sağlanır). Bunu, o bölgede yaşanan talep miktarına göre her bölgeyi renk lendirerek yapabilir. Daha açık gölgeli bölgeler içeriğinize olan talebin daha düşük olduğunu gösterirken, daha koyu bölgeler içeriğinize daha yüksek talep düzeyleri gösterir.
+Her harita tabanlı rapor, coğrafi varlıkları (yani, ülkeler/bölgeler) derecelendirerek, içeriğinizin istediği konumları görselleştirmenize yardımcı olmak için bir eşlem sağlanır. Bu bölge, bu bölgede karşılaşılan talep miktarına göre her bölge için renk kodlayarak bunu yapabilir. Daha açık gölgeli bölgeler içeriğiniz için daha düşük talebi gösterir, daha koyu bölgeler içeriğiniz için daha yüksek talepler gösterir.
 
-Her bölge için ayrıntılı trafik ve bant genişliği bilgileri haritanın hemen altında sağlanır. Bu, toplam isabet sayısını, isabet yüzdesini, aktarılan toplam veri miktarını (gigabaytlarda) ve her bölge için aktarılan verilerin yüzdesini görüntülemenize olanak tanır. Bu ölçümlerin her biri için bir açıklama görüntüleyin. Son olarak, bir bölgenin (örn. ülke/bölge, eyalet veya bölge) üzerinde gezinirken, bölgede meydana gelen isabetlerin adı ve yüzdesi araç ipucu olarak görüntülenir.
+Her bölge için ayrıntılı trafik ve bant genişliği bilgileri, doğrudan haritanın altında sağlanır. Bu, toplam isabet sayısını, isabetlerin yüzdesini, aktarılan toplam veri miktarını (gigabayt cinsinden) ve her bölge için aktarılan verilerin yüzdesini görüntülemenize olanak sağlar. Bu ölçümlerin her biri için bir açıklama görüntüleyin. Son olarak, bir bölgenin üzerine geldiğinizde (örn. ülke/bölge, eyalet veya bölge), bölgede oluşan isabetlerin adı ve yüzdesi bir araç ipucu olarak görüntülenir.
 
-Harita tabanlı coğrafya raporunun her türü için aşağıda kısa bir açıklama verilmiştir.
+Her harita tabanlı Coğrafya raporu türü için aşağıda kısaca bir açıklama verilmiştir.
 
 | Rapor Adı | Açıklama |
 | --- | --- |
-| Dünya Haritası |Bu rapor, CDN içeriğiniz için dünya çapındaki talebi görüntülemenize olanak tanır. Her ülke/bölge, o bölgeden kaynaklanan isabet yüzdesini belirtmek için dünya haritasında renk kodludur. |
-| Amerika Birleşik Devletleri Haritası |Bu rapor, CDN içeriğiniz için abd'deki talebi görüntülemenize olanak tanır. Her durum, bu haritada, o bölgeden kaynaklanan isabet yüzdesini belirtmek için renk kodludur. |
-| Kanada Haritası |Bu rapor, Kanada'daki CDN içeriğinize olan talebi görüntülemenizi sağlar. Her bölge, bu bölgeden kaynaklanan isabet yüzdesini belirtmek için bu haritada renk kodludur. |
-| Avrupa Haritası |Bu rapor, Avrupa'daki CDN içeriğinize olan talebi görüntülemenizi sağlar. Her ülke/bölge, bu haritada, o bölgeden kaynaklanan isabet yüzdesini belirtmek için renk kodludur. |
-| Asya Pasifik Haritası |Bu rapor, Asya'daki CDN içeriğinize olan talebi görüntülemenizi sağlar. Her ülke/bölge, bu haritada, o bölgeden kaynaklanan isabet yüzdesini belirtmek için renk kodludur. |
+| Dünya Haritası |Bu rapor, CDN içeriğiniz için dünya çapında talebi görüntülemenizi sağlar. Her ülke/bölge, bu bölgeden kaynaklanan isabetlerin yüzdesini belirtmek için dünya haritasında renk kodludur. |
+| Birleşik Devletler eşleme |Bu rapor, Birleşik Devletler CDN içeriğiniz için talebi görüntülemenize olanak sağlar. Her durum bu haritada, bu bölgeden kaynaklı isabetlerin yüzdesini göstermek için renk kodludur. |
+| Kanada haritası |Bu rapor, Kanada 'daki CDN içeriğiniz için talebi görüntülemenize olanak sağlar. Her eyalet bu haritada, bu bölgeden kaynaklı isabetlerin yüzdesini göstermek için renk kodludur. |
+| Avrupa Haritası |Bu rapor, Avrupa 'daki CDN içeriğiniz için talebi görüntülemenize olanak sağlar. Her ülke/bölge, söz konusu bölgeden kaynaklanan isabetlerin yüzdesini belirtmek için bu haritada renk kodludur. |
+| Asya Pasifik eşleme |Bu rapor, Asya 'daki CDN içeriğiniz için talebi görüntülemenize olanak sağlar. Her ülke/bölge, söz konusu bölgeden kaynaklanan isabetlerin yüzdesini belirtmek için bu haritada renk kodludur. |
 
-## <a name="geography-reports-bar-charts"></a>Coğrafya Raporları (Çubuk Grafikler)
-En İyi Şehirler ve En İyi Ülkeler olan coğrafyaya göre istatistiksel bilgi sağlayan iki ek rapor daha bulunmaktadır. Bu raporlar, şehirleri ve ülkeleri/bölgeleri sırasıyla, bu ülkelerden/bölgelerden kaynaklanan isabet sayısına göre sıralar. Bu tür bir rapor üretildikten sonra, bir çubuk grafik, belirli bir platform üzerinden içerik isteyen en iyi 10 şehri veya ülkeyi/bölgeyi gösterir. Bu çubuk grafik, içeriğiniz için en yüksek sayıda istek oluşturan bölgeleri hızla değerlendirmenize olanak tanır.
+## <a name="geography-reports-bar-charts"></a>Coğrafya raporları (çubuk grafikler)
+Coğrafi şehir ve en üst ülkeler olan coğrafya 'ya göre istatistiksel bilgiler sağlayan iki ek rapor vardır. Bu raporlar, bu ülkelerden/bölgelerden kaynaklanan isabetlerin sayısına göre, şehir ve ülkeleri/bölgeleri sırasıyla derecelendirmez. Bu tür bir rapor oluşturduktan sonra bir çubuk grafik, belirli bir platform üzerinde içerik isteyen ilk 10 şehir veya ülke/bölge olduğunu gösterir. Bu çubuk grafik, içeriğiniz için en yüksek istek sayısını üreten bölgeleri hızlı bir şekilde değerlendirmenize olanak tanır.
 
-Grafiğin sol tarafı (y ekseni) belirtilen bölgede kaç isabet oluştuğunu gösterir. Grafiğin (x ekseni) hemen altında, en iyi 10 bölgenin her biri için bir etiket bulacaksınız.
+Grafiğin sol tarafı (y ekseni), belirtilen bölgede kaç isabetlerin oluştuğunu gösterir. Grafiğin hemen altında (x ekseni), ilk 10 bölgenin her biri için bir etiket bulacaksınız.
 
 ### <a name="using-the-bar-charts"></a>Çubuk grafiklerini kullanma
-* Bir çubuğun üzerinde gezinirseniz, bölgede oluşan ad ve toplam isabet sayısı araç ucu olarak görüntülenir.
-* Top Cities raporunun araç ipucu, bir şehri ada, eyalet/eyalete ve ülke/bölge kısaltmasına göre tanımlar.
-* Bir talebin kaynaklandığı şehir veya bölge (yani eyalet/eyalet) belirlenemediyse, bu onların bilinmediğini gösterir. Ülke/bölge bilinmiyorsa, iki soru işareti (örn.
-* Bir rapor "Avrupa" veya "Asya/Pasifik Bölgesi" ölçümlerini içerebilir. Bu öğeler, bu bölgelerdeki tüm IP adresleri hakkında istatistiksel bilgi sağlamak için değildir. Bunun yerine, yalnızca belirli bir şehir veya ülke/bölge yerine Avrupa veya Asya/Pasifik'e yayılan IP adreslerinden kaynaklanan istekler için geçerlidir.
+* Bir çubuğun üzerine geldiğinizde, bölgede gerçekleşen isabetlerin adı ve toplam isabet sayısı bir araç ipucu olarak görüntülenir.
+* En üstteki şehirler raporunun araç ipucu adı, eyalet/il ve ülke/bölge kısaltması tarafından bir şehri tanımlar.
+* Bir isteğin kaynaklandığı şehir veya bölge (örneğin, Eyalet/bölge) belirlenmiyorsa, bunların bilinmediği anlamına gelir. Ülke/bölge bilinmiyorsa, iki soru işareti (ör.,??) görüntülenir.
+* Bir rapor "Avrupa" veya "Asya/Pasifik bölgesi" ölçümlerini içerebilir. Bu öğeler, bu bölgelerdeki tüm IP adresleri hakkında istatistiksel bilgiler sağlamaya yöneliktir. Bunun yerine, yalnızca belirli bir şehir veya ülke/bölge yerine Avrupa veya Asya/Pasifik üzerinden yayılan IP adreslerinden kaynaklanan istekler için geçerlidir.
 
-Çubuk grafiği oluşturmak için kullanılan veriler aşağıda görüntülenebilir. Burada toplam isabet sayısını, isabet yüzdesini, aktarılan veri miktarını (gigabaytlarda) ve en iyi 250 bölge için aktarılan verilerin yüzdesini bulacaksınız. Bu ölçümlerin her biri için bir açıklama görüntüleyin.
+Çubuk grafiği oluşturmak için kullanılan veriler bunun altında görüntülenebilir. Toplam isabet sayısı, isabet yüzdesi, aktarılan veri miktarı (gigabayt cinsinden) ve en üstteki 250 bölgeleri için aktarılan verilerin yüzdesi bulacaksınız. Bu ölçümlerin her biri için bir açıklama görüntüleyin.
 
-Aşağıdaki her iki rapor türü için de kısa bir açıklama sağlanmıştır.
+Aşağıdaki tür raporların her ikisi için de kısa bir açıklama verilmiştir.
 
 | Rapor Adı | Açıklama |
 | --- | --- |
-| En İyi Şehirler |Bu rapor, şehirleri o bölgeden gelen isabet sayısına göre sıralar. |
-| En İyi Ülkeler |Bu rapor, ülkeleri/bölgeleri, o ülkeden/bölgeden kaynaklanan isabet sayısına göre sıralar. |
+| En çok şehir |Bu rapor, şehri ilgili bölgeden kaynaklanan isabet sayısına göre derecelendirir. |
+| Popüler ülkeler |Bu rapor, ülkeleri/bölgeleri, bu ülke/bölgeden kaynaklanan isabetlerin sayısına göre derecelendirir. |
 
 ## <a name="daily-summary"></a>Günlük Özet
-Günlük Özet raporu, belirli bir platform üzerinden aktarılan toplam isabet ve veri sayısını günlük olarak görüntülemenize olanak tanır. Bu bilgiler CDN etkinlik desenlerini hızla ayırt etmek için kullanılabilir. Örneğin, bu rapor, beklenenden daha yüksek veya daha düşük trafikle hangi günlerin yaşandığını tespit nize yardımcı olabilir.
+Günlük Özet raporu, belirli bir platform üzerinden günlük olarak aktarılan toplam isabet sayısını ve verileri görüntülemenize olanak sağlar. Bu bilgiler, CDN etkinlik desenlerini hızlı bir şekilde ayırt etmek için kullanılabilir. Örneğin, bu rapor, beklenen trafikten daha yüksek veya daha düşük olan günleri tespit etmenize yardımcı olabilir.
 
-Bu tür bir rapor oluşturduktan sonra, bir çubuk grafik, raporun kapsadığı süre boyunca günlük olarak karşılaşılan platforma özgü talep miktarı hakkında görsel bir gösterge sağlayacaktır. Bunu raporda her gün için bir çubuk görüntüleyerek yapacaktır. Örneğin, "Geçen Hafta" adlı zaman dilimini seçmek, yedi çubuklu bir çubuk grafik oluşturur. Her çubuk, o gün yaşanan toplam isabet sayısını gösterir.
+Bu tür bir rapor oluşturduktan sonra, bir çubuk grafik, raporun kapsadığı zaman dilimi boyunca günlük olarak karşılaşılan platforma özgü talep miktarına göre görsel bir gösterge sağlar. Bu işlem, rapordaki her gün için bir çubuk görüntüleyerek yapılır. Örneğin, "Last Week" olarak adlandırılan zaman döneminin seçilmesi yedi çubuk içeren bir çubuk grafik oluşturur. Her çubuk, o gün üzerinde karşılaşılan isabetlerin toplam sayısını gösterir.
 
-Grafiğin sol tarafı (y ekseni) belirtilen tarihte kaç isabet oluştuğunu gösterir. Grafiğin (x ekseni) hemen altında, raporda yer alan her gün için tarihi (Format: YYYY-MM-DD) gösteren bir etiket bulursunuz.
-
-> [!TIP]
-> Bir çubuğun üzerinde gezinirseniz, o tarihte gerçekleşen toplam isabet sayısı araç ucu olarak görüntülenir.
-> 
-> 
-
-Çubuk grafiği oluşturmak için kullanılan veriler aşağıda görüntülenebilir. Burada, raporun kapsadığı her gün için toplam isabet sayısını ve aktarılan veri miktarını (gigabaytolarak) bulacaksınız.
-
-## <a name="by-hour"></a>Saate Göre
-By Hour raporu, belirli bir platform üzerinden aktarılan toplam isabet ve veri sayısını saatlik olarak görüntülemenize olanak tanır. Bu bilgiler CDN etkinlik desenlerini hızla ayırt etmek için kullanılabilir. Örneğin, bu rapor, gün içinde beklenenden daha yüksek veya daha düşük trafik yaşayan zaman dönemlerini algılamanıza yardımcı olabilir.
-
-Bu tür bir rapor oluşturduktan sonra, bir çubuk grafik, raporun kapsadığı süre boyunca saatlik olarak karşılaşılan platforma özgü talep miktarı hakkında görsel bir gösterge sağlar. Bunu, raporun kapsadığı her saat için bir çubuk göstererek yapar. Örneğin, 24 saatlik bir zaman dilimi seçmek yirmi dört çubuklu bir çubuk grafik oluşturur. Her çubuk, o saat içinde yaşanan toplam isabet sayısını gösterir.
-
-Grafiğin sol tarafı (y ekseni) belirtilen saatte kaç isabet oluştuğunu gösterir. Grafiğin (x ekseni) hemen altında, raporda yer alan her saat için tarih/saati (Format: YYYY-MM-DD hh:mm) gösteren bir etiket bulacaksınız. Saat 24 saat biçimi kullanılarak bildirilir ve UTC/GMT saat dilimi kullanılarak belirtilir.
+Grafiğin sol tarafı (y ekseni), belirtilen tarihte kaç isabetlerin oluştuğunu gösterir. Grafiğin hemen altında (x ekseni), rapora dahil edilen her bir gün için tarihi (Biçim: YYYY-AA-GG) belirten bir etiket bulacaksınız.
 
 > [!TIP]
-> Bir çubuğun üzerinde gezinirseniz, o saat içinde oluşan toplam isabet sayısı araç ucu olarak görüntülenir.
+> Bir çubuğun üzerine geldiğinizde, bu tarihte gerçekleşen toplam isabet sayısı bir araç ipucu olarak görüntülenir.
 > 
 > 
 
-Çubuk grafiği oluşturmak için kullanılan veriler aşağıda görüntülenebilir. Burada, raporun kapsadığı her saat için toplam isabet sayısını ve aktarılan veri miktarını (gigabaytlarda) bulacaksınız.
+Çubuk grafiği oluşturmak için kullanılan veriler bunun altında görüntülenebilir. Toplam isabet sayısını ve rapor kapsamındaki her bir gün için aktarılan veri miktarını (gigabayt cinsinden) bulacaksınız.
 
-## <a name="by-file"></a>Dosyaya Göre
-Dosya Tarafından raporu, en çok istenen varlıklar için belirli bir platform üzerinden tahakkuk eden talep miktarını ve trafiği görüntülemenize olanak tanır. Bu rapor türünü oluşturduktan sonra, belirtilen süre içinde en çok istenen 10 varlık üzerinde bir çubuk grafik oluşturulur.
+## <a name="by-hour"></a>Saate göre
+Saate göre raporu, belirli bir platform üzerinden saatlik olarak aktarılan toplam isabet sayısını ve verileri görüntülemenize olanak sağlar. Bu bilgiler, CDN etkinlik desenlerini hızlı bir şekilde ayırt etmek için kullanılabilir. Örneğin, bu rapor, gün içinde beklenen trafikten daha yüksek veya daha düşük olan zaman aralıklarını tespit etmenize yardımcı olabilir.
+
+Bu tür bir rapor oluşturduktan sonra, bir çubuk grafik, raporun kapsadığı zaman dilimi boyunca saatlik olarak karşılaşılan platforma özgü talep miktarına göre görsel bir gösterge sağlar. Bu işlem, raporun kapsadığı her saat için bir çubuk görüntüleyerek yapılır. Örneğin, 24 saatlik bir zaman dilimi seçilmesi yirmi dört çubuk içeren bir çubuk grafik oluşturacaktır. Her çubuk, bu saat içinde karşılaşılan toplam isabet sayısını belirtir.
+
+Grafiğin sol tarafı (y ekseni), belirtilen saatte kaç isabetlerin oluştuğunu gösterir. Grafiğin hemen altında (x ekseni), rapora dahil edilen her saat için tarih/saat (Biçim: YYYY-AA-GG SS: DD) belirten bir etiket bulacaksınız. Saat, 24 saat biçimi kullanılarak bildirilir ve UTC/GMT saat dilimi kullanılarak belirtilir.
+
+> [!TIP]
+> Bir çubuğun üzerine geldiğinizde, bu saat boyunca gerçekleşen isabetlerin toplam sayısı bir araç ipucu olarak görüntülenir.
+> 
+> 
+
+Çubuk grafiği oluşturmak için kullanılan veriler bunun altında görüntülenebilir. Toplam isabet sayısını ve rapor kapsamındaki her saat için aktarılan veri miktarını (gigabayt cinsinden) bulacaksınız.
+
+## <a name="by-file"></a>Dosyaya göre
+Dosya tarafından yapılan rapor, istenen varlıklar için belirli bir platformda uygulanan talep miktarını ve trafiği görüntülemenize olanak sağlar. Bu tür bir rapor oluşturduktan sonra, belirtilen dönemde en çok istenen 10 varlık üzerinde bir çubuk grafik oluşturulacaktır.
 
 > [!NOTE]
-> Bu raporun amaçları doğrultusunda, kenar CNAME URL'leri eşdeğer CDN URL'lerine dönüştürülür. Bu, bir varlıkla ilişkili toplam isabet sayısının, istemek için kullanılan CDN veya kenar CNAME URL'sinden bağımsız olarak doğru bir sayım alabına olanak tanır.
+> Bu raporun amaçları doğrultusunda, Edge CNAME URL 'Leri eşdeğer CDN URL 'lerine dönüştürülür. Bu, istekte bulunan CDN veya Edge CNAME URL 'sinden bağımsız olarak bir varlıkla ilişkili isabetlerin toplam sayısının doğru bir şekilde oluşturulmasına izin verir.
 > 
 > 
 
-Grafiğin sol tarafı (y ekseni), belirtilen zaman dilimi içinde her kıymet için istek sayısını gösterir. Grafiğin (x ekseni) hemen altında, istenen en iyi 10 varlığın her biri için dosya adını gösteren bir etiket bulacaksınız.
+Grafiğin sol tarafı (y ekseni), belirtilen dönem içindeki her bir varlık için istek sayısını gösterir. Grafiğin hemen altında (x ekseni), istenen ilk 10 varlık için dosya adını belirten bir etiket bulacaksınız.
 
-Çubuk grafiği oluşturmak için kullanılan veriler aşağıda görüntülenebilir. Burada en çok istenen 250 varlığın her biri için aşağıdaki bilgileri bulacaksınız: göreli yol, toplam isabet sayısı, isabet yüzdesi, aktarılan veri miktarı (gigabayt olarak) ve aktarılan verilerin yüzdesi.
+Çubuk grafiği oluşturmak için kullanılan veriler bunun altında görüntülenebilir. En üstteki 250 istenen varlıkların her biri için aşağıdaki bilgileri bulabilirsiniz: göreli yol, toplam isabet sayısı, isabetlerin yüzdesi, aktarılan veri miktarı (gigabayt cinsinden) ve aktarılan verilerin yüzdesi.
 
-## <a name="by-file-detail"></a>Dosya Detayına Göre
-Dosya Ayrıntısı tarafından rapor, belirli bir varlık için belirli bir platform üzerinden tahakkuk eden talep miktarını ve trafiği görüntülemenize olanak tanır. Bu raporun en üstünde, Dosya Ayrıntıları seçeneği yer alıyor. Bu seçenek, seçili platformda en çok istediğiniz varlıkların listesini sağlar. Dosya Ayrıntısına Göre raporu oluşturmak için, Dosya Ayrıntıları seçeneğinden istenen varlığı seçmeniz gerekir. Bundan sonra, bir çubuk grafik, belirtilen zaman dilimi içinde oluşturulan günlük talep miktarını gösterir.
+## <a name="by-file-detail"></a>Dosya ayrıntısına göre
+Dosya ayrıntısı raporu, belirli bir varlık için belirli bir platformda uygulanan talep miktarını ve trafiği görüntülemenize olanak sağlar. Bu raporun en üst kısmında, seçeneğinin dosya ayrıntıları vardır. Bu seçenek, seçilen platformda en çok istenen varlıkların bir listesini sağlar. Bir dosya ayrıntısı raporu oluşturmak için, dosya ayrıntıları seçeneğinin yanındaki istenen varlığı seçmeniz gerekir. Bundan sonra çubuk grafik, belirtilen dönem boyunca oluşturduğu günlük talep miktarını gösterir.
 
-Grafiğin sol tarafı (y ekseni), bir varlığın belirli bir günde karşılaştığı toplam istek sayısını gösterir. Grafiğin (x ekseni) hemen altında, kıymet için CDN talebinin raporlandığı tarihi (Biçim: YYYY-MM-DD) gösteren bir etiket bulursunuz.
+Grafiğin sol tarafı (y ekseni), bir varlığın belirli bir günde yaşadığı toplam istek sayısını gösterir. Grafiğin (x ekseni) doğrudan altında, varlık için CDN talebinin bildirildiği tarihi (Biçim: YYYY-AA-GG) belirten bir etiket görürsünüz.
 
-Çubuk grafiği oluşturmak için kullanılan veriler aşağıda görüntülenebilir. Burada, raporun kapsadığı her gün için toplam isabet sayısını ve aktarılan veri miktarını (gigabaytolarak) bulacaksınız.
+Çubuk grafiği oluşturmak için kullanılan veriler bunun altında görüntülenebilir. Toplam isabet sayısını ve rapor kapsamındaki her bir gün için aktarılan veri miktarını (gigabayt cinsinden) bulacaksınız.
 
-## <a name="by-file-type"></a>Dosya Türüne Göre
-Dosya Türüne Göre raporu, talep miktarını ve dosya türünden kaynaklanan trafiği görüntülemenize olanak tanır. Bu tür bir rapor oluşturulduktan sonra, donut grafiği en iyi 10 dosya türü tarafından oluşturulan isabet yüzdesini gösterir.
+## <a name="by-file-type"></a>Dosya türüne göre
+Dosya türüne göre raporu, istek miktarını ve dosya türüne göre tahakkuk eden trafiği görüntülemenize olanak sağlar. Bu tür bir rapor oluşturduktan sonra, halka grafik ilk 10 dosya türü tarafından oluşturulan isabetlerin yüzdesini gösterir.
 
 > [!TIP]
-> Donut grafiğindeki bir dilimin üzerinde gezinirseniz, bu dosya türünün Internet ortam türü araç ipucu olarak görüntülenir.
+> Halka grafiğindeki bir dilimin üzerine geldiğinizde, bu dosya türünün Internet medya türü bir araç ipucu olarak görüntülenir.
 > 
 > 
 
-Donut grafiğioluşturmak için kullanılan veriler aşağıda görüntülenebilir. Burada dosya adı uzantısı/Internet ortam türü, toplam isabet sayısı, isabet yüzdesi, aktarılan veri miktarı (gigabaytolarak) ve en iyi 250 dosya türünün her biri için aktarılan verilerin yüzdesi bulacaksınız.
+Halka grafik oluşturmak için kullanılan veriler bunun altında görüntülenebilir. Dosya adı uzantısı/Internet medya türü, toplam isabet sayısı, isabetlerin yüzdesi, aktarılan veri miktarı (gigabayt cinsinden) ve her bir üst 250 dosya türü için aktarılan verilerin yüzdesi bulunur.
 
-## <a name="by-directory"></a>Yazar: Directory
-By Directory raporu, belirli bir dizindeki içerik için belirli bir platform üzerinden tahakkuk eden talep miktarını ve trafiği görüntülemenize olanak tanır. Bu tür bir rapor oluşturulduktan sonra, çubuk grafik, ilk 10 dizindeki içerik tarafından oluşturulan toplam isabet sayısını gösterir.
+## <a name="by-directory"></a>Dizine göre
+Dizin oluşturma raporu, belirli bir dizinden içerik için belirli bir platformda oluşan istek miktarını ve trafiği görüntülemenize olanak sağlar. Bu tür bir rapor oluşturduktan sonra, bir çubuk grafik, ilk 10 dizindeki içerik tarafından oluşturulan isabetlerin toplam sayısını gösterir.
 
 ### <a name="using-the-bar-chart"></a>Çubuk grafiği kullanma
-* İlgili dizine giden göreli yolu görüntülemek için çubuğun üzerine titreyin.
-* Dizin alt klasöründe depolanan içerik, dizin tarafından talep hesaplanırken sayılmaz. Bu hesaplama yalnızca gerçek dizinde depolanan içerik için oluşturulan istek sayısına dayanır.
-* Bu raporun amaçları doğrultusunda, kenar CNAME URL'leri eşdeğer CDN URL'lerine dönüştürülür. Bu, bir varlıkla ilişkili tüm istatistikler için, istemek için kullanılan CDN veya kenar CNAME URL'sinden bağımsız olarak doğru bir sayım sağlar.
+* İlgili dizinin göreli yolunu görüntülemek için bir çubuğun üzerine gelin.
+* Dizinin bir alt klasöründe depolanan içerik, talebe göre hesaplama sırasında sayılmaz. Bu hesaplama yalnızca gerçek dizinde depolanan içerik için oluşturulan istek sayısına dayanır.
+* Bu raporun amaçları doğrultusunda, Edge CNAME URL 'Leri eşdeğer CDN URL 'lerine dönüştürülür. Bu, bir varlıkla ilişkili tüm istatistiklerin, bunu istemek için kullanılan CDN veya Edge CNAME URL 'sinden bağımsız olarak doğru bir şekilde oluşturulmasına olanak sağlar.
 
-Grafiğin sol tarafı (y ekseni), en iyi 10 dizininizde depolanan içerik için toplam istek sayısını gösterir. Grafikteki her çubuk bir dizin temsil eder. Bir çubuğu En İyi 250 Tam Dizinler bölümünde listelenen bir dizine eşleştirmek için renk kodlama düzenini kullanın.
+Grafiğin sol tarafı (y ekseni), ilk 10 dizininizde depolanan içerik için toplam istek sayısını gösterir. Grafikteki her çubuk bir dizini temsil eder. En üstteki 250 tam dizinler bölümünde listelenen bir dizine bir çubuk ile eşleştirmek için renk kodlama şemasını kullanın.
 
-Çubuk grafiği oluşturmak için kullanılan veriler aşağıda görüntülenebilir. Burada en iyi 250 dizinlerin her biri için aşağıdaki bilgileri bulacaksınız: göreli yol, toplam isabet sayısı, isabet yüzdesi, aktarılan veri miktarı (gigabayt olarak) ve aktarılan verilerin yüzdesi.
+Çubuk grafiği oluşturmak için kullanılan veriler bunun altında görüntülenebilir. En üstteki 250 dizinlerin her biri için aşağıdaki bilgileri bulabilirsiniz: göreli yol, toplam isabet sayısı, isabetlerin yüzdesi, aktarılan veri miktarı (gigabayt cinsinden) ve aktarılan verilerin yüzdesi.
 
-## <a name="by-browser"></a>Tarayıcıya Göre
-Tarayıcı tarafından rapor, içerik istemek için hangi tarayıcıların kullanıldığını görüntülemenize olanak tanır. Bu tür bir rapor üretilmesi üzerine, bir pasta grafiği en iyi 10 tarayıcı tarafından işlenen isteklerin yüzdesini gösterir.
+## <a name="by-browser"></a>Tarayıcıya göre
+Tarayıcı tarafından yapılan rapor, içerik istemek için hangi tarayıcıların kullanıldığını görüntülemenize olanak sağlar. Bu tür bir rapor oluşturduktan sonra, bir pasta grafik, ilk 10 tarayıcı tarafından işlenen isteklerin yüzdesini gösterir.
 
 ### <a name="using-the-pie-chart"></a>Pasta grafiğini kullanma
-* Tarayıcının adını ve sürümünü görüntülemek için pasta grafiğindeki bir dilimin üzerine titreyin.
-* Bu raporun amaçları için, her benzersiz tarayıcı/sürüm kombinasyonu farklı bir tarayıcı olarak kabul edilir.
-* "Diğer" adı verilen dilim, diğer tüm tarayıcılar ve sürümler tarafından işlenen isteklerin yüzdesini gösterir.
+* Bir tarayıcının adını ve sürümünü görüntülemek için pasta grafiğindeki bir dilimin üzerine gelin.
+* Bu raporun amaçları doğrultusunda, her benzersiz tarayıcı/sürüm kombinasyonu farklı bir tarayıcı olarak değerlendirilir.
+* "Diğer" adlı dilim, diğer tüm tarayıcılar ve sürümler tarafından işlenen isteklerin yüzdesini gösterir.
 
-Pasta grafiği oluşturmak için kullanılan veriler aşağıda görüntülenebilir. Burada tarayıcı türü/sürüm numarası, toplam isabet sayısı ve en iyi 250 tarayıcının her biri için isabet yüzdesi bulacaksınız.
+Pasta grafiğini oluşturmak için kullanılan veriler bunun altında görüntülenebilir. Tarayıcı türü/sürüm numarasını, toplam isabet sayısını ve ilk 250 tarayıcıların her biri için isabet yüzdesini bulacaksınız.
 
-## <a name="by-referrer"></a>Yazar: Referrer
-By Referrer raporu, seçili platformdaki içeriğe en üstten yönlendirenleri görüntülemenize olanak tanır. Başvuran, istek oluşturulan ana bilgisayar adını gösterir. Bu tür bir rapor oluşturulduktan sonra, bir çubuk grafik, en iyi 10 başvurucu tarafından oluşturulan talep miktarını (yani, isabet) gösterir.
+## <a name="by-referrer"></a>Başvuran tarafından
+Başvuran bu rapor, seçilen platformda içeriğe en üstteki başvuranları görüntülemenize olanak sağlar. Başvuran, bir isteğin oluşturulduğu ana bilgisayar adını gösterir. Bu tür bir rapor oluşturduktan sonra, bir çubuk grafik, ilk 10 başvura göre oluşturulan istek miktarını (örn. isabetler) gösterecektir.
 
-Grafiğin sol tarafı (y ekseni), bir varlığın her başvuru için karşılaştığı toplam istek sayısını gösterir. Grafikteki her çubuk bir başvurucucuyu temsil eder. Bir çubuğu En İyi 250 Yönlendiren bölümünde listelenen bir başvurucucuyla eşleştirmek için renk kodlama düzenini kullanın.
+Grafiğin sol tarafı (y ekseni), bir varlığın her bir başvuran için yaşadığı isteklerin toplam sayısını gösterir. Grafikteki her çubuk bir başvuran temsil eder. En üstteki 250 başvuran bölümünde listelenen başvuran için bir çubuk ile eşleştirmek için renk kodlama şemasını kullanın.
 
-Çubuk grafiği oluşturmak için kullanılan veriler aşağıda görüntülenebilir. Burada URL'yi, toplam isabet sayısını ve en iyi 250 başvurucunun her birinden oluşturulan isabet yüzdesini bulacaksınız.
+Çubuk grafiği oluşturmak için kullanılan veriler bunun altında görüntülenebilir. URL 'yi, toplam isabetlerin sayısını ve ilk 250 başvurağından oluşturulan isabetlerin yüzdesini bulacaksınız.
 
-## <a name="by-download"></a>İndirerek
-By Download raporu, en çok istediğiniz içeriğiniz için indirme modellerini çözümlemenize olanak tanır. Raporun üst kısmında, istenen en iyi 10 varlık için tamamlanan indirmelerle deneme denemelerini karşılaştıran bir çubuk grafik içerir. Her çubuk, indirme denemesi (mavi) veya tamamlanmış bir indirme (yeşil) olup olmadığına göre renk kodludur.
+## <a name="by-download"></a>Indirme yoluyla
+Indirme ölçütü raporu, en son içerikleriniz için karşıdan yükleme düzenlerini analiz etmenizi sağlar. Raporun en üstünde, tamamlanan indirmeleri, en çok istenen 10 varlık için tamamlanan indirmelerle karşılaştıran bir çubuk grafik bulunur. Her çubuk, bir indirme girişimi (mavi) veya tamamlanmış bir indirme (yeşil) olup olmadığına göre renk kodludur.
 
 > [!NOTE]
-> Bu raporun amaçları doğrultusunda, kenar CNAME URL'leri eşdeğer CDN URL'lerine dönüştürülür. Bu, bir varlıkla ilişkili tüm istatistikler için, istemek için kullanılan CDN veya kenar CNAME URL'sinden bağımsız olarak doğru bir sayım sağlar.
+> Bu raporun amaçları doğrultusunda, Edge CNAME URL 'Leri eşdeğer CDN URL 'lerine dönüştürülür. Bu, bir varlıkla ilişkili tüm istatistiklerin, bunu istemek için kullanılan CDN veya Edge CNAME URL 'sinden bağımsız olarak doğru bir şekilde oluşturulmasına olanak sağlar.
 > 
 > 
 
-Grafiğin sol tarafı (y ekseni), istenen en iyi 10 varlığın her biri için dosya adını gösterir. Grafiğin (x ekseni) hemen altında, toplam denenmiş/tamamlanmış indirme sayısını gösteren etiketler bulacaksınız.
+Grafiğin sol tarafı (y ekseni), istenen ilk 10 varlık için dosya adını gösterir. Grafiğin hemen altında (x ekseni), denenen/tamamlanan indirmelerin toplam sayısını belirten Etiketler bulacaksınız.
 
-Çubuk grafiğin hemen altında, aşağıdaki bilgiler en çok istenen 250 varlık için listelenir: göreli yol (dosya adı dahil), tamamlanmak üzere indirilme sayısı, talep edilen kaç kez ve tam bir indirme ile sonuçlanan istekler.
+Çubuk grafiğinin doğrudan altında, aşağıdaki bilgiler, istenen ilk 250 varlık: göreli yol (dosya adı dahil), tamamlanmasına kaç kez indirildiğini, istek yaptığı sürelerin sayısını ve tamamen İndirilme ile sonuçlanan isteklerin yüzdesini içerecek şekilde listelenecektir.
 
 > [!TIP]
-> CdN'miz, bir varlık tamamen indirildiğinde bir HTTP istemcisi (yani tarayıcı) tarafından bilgilendirilmez. Sonuç olarak, bir varlığın durum kodlarına ve bayt aralığı isteklerine göre tamamen indirilip indirilmediğini hesaplamamız gerekir. Bu hesaplamayaparken aradığımız ilk şey, isteğin 200 Ok durum koduyla sonuçlanıp sonuçlamayacağıdır. Eğer öyleyse, o zaman tüm varlığı kapsayacak şekilde bayt aralığı istekleribakmak. Son olarak, istenen varlığın boyutuna aktarılan veri miktarını karşılaştırıyoruz. Aktarılan veriler dosya boyutuna eşit veya daha büyükse ve bayt aralığı istekleri bu varlık için uygunsa, isabet tam bir karşıdan yükleme olarak sayılır.
+> Bir varlık tamamen indirildiyse CDN, bir HTTP istemcisi (tarayıcı) tarafından bilgilendirilmez. Sonuç olarak, bir varlığın durum kodlarına ve bayt aralığı isteklerine göre tamamen indirilip indirilmediğini hesapladık. Bu hesaplamayı yaparken ilk şey, isteğin 200 OK bir durum kodu ile sonuçlanmasının gerekip gerekmediğini belirtir. Bu durumda, tüm varlığı kapsadıklarından emin olmak için, bayt aralığı isteklerine bakacağız. Son olarak, aktarılan veri miktarını istenen varlığın boyutuna göre karşılaştırıyoruz. Aktarılan veriler dosya boyutundan büyük veya bu değere eşitse ve bu varlık için bayt aralığı istekleri uygunsa, isabet tam indirme olarak sayılır.
 > 
-> Bu raporun yorumlayıcı yapısı nedeniyle, bu raporun tutarlılığını ve doğruluğunu değiştirebilecek aşağıdaki noktaları göz önünde bulundurmalısınız.
+> Bu raporun yorumlık doğası nedeniyle, bu raporun tutarlılığını ve doğruluğunu değiştirebilecek aşağıdaki noktaları göz önünde bulundurmanız gerekir.
 > 
-> * Kullanıcı aracıları farklı davrandığında trafik desenleri doğru tahmin edilemez. Bu, %100'den büyük tamamlanmış indirme sonuçları üretebilir.
-> * HTTP Aşamalı İndirme'den yararlanan varlıklar bu raporla doğru şekilde temsil edilemeyebilir. Bunun nedeni, bir videoda farklı konumlara gitmek isteyen kullanıcılardır.
+> * Kullanıcı aracıları farklı davrandığınızda trafik desenleri doğru şekilde tahmin edilemez. Bu, %100 ' den büyük olan tamamlanmış indirme sonuçları üretebilir.
+> * HTTP aşamalı Indirmenin avantajlarından yararlanan varlıklar bu rapor tarafından doğru şekilde gösterilmeyebilir. Bunun nedeni, bir videoda farklı konumlara arayan kullanıcılardan kaynaklanır.
 > 
 > 
 
-## <a name="by-404-errors"></a>Tarafından 404 Hatalar
-By 404 Errors raporu, en çok 404 Bulunamadı durum kodu üreten içerik türünü belirlemenize olanak tanır. Raporun üst kısmında, 404 Bulunamadı durum kodunun döndürüldİğİ en iyi 10 varlık için bir çubuk grafik bulunur. Bu çubuk grafik, bu varlıklar için 404 Bulunamadı durum koduyla sonuçlanan isteklerle toplam istek sayısını karşılaştırır. Her çubuk renk kodludur. Sarı çubuk, isteğin 404 Bulunamadı durum koduyla sonuçlandığını belirtmek için kullanılır. Kıymet için toplam istek sayısını belirtmek için kırmızı çubuk kullanılır.
+## <a name="by-404-errors"></a>404 ile hata
+404 ' den fazla hata raporu, en fazla 404 bulunamayan durum kodunu üreten içerik türünü tanımlamanızı sağlar. Raporun en üstünde, 404 olmayan bir durum kodunun döndürdüğü ilk 10 varlık için bir çubuk grafik bulunur. Bu çubuk grafik, bu varlıklar için 404 bulunamadı durum kodu ile sonuçlanan isteklerin toplam istek sayısını karşılaştırır. Her çubuk renk kodludur. İsteğin 404 olmayan bir durum kodu ile sonuçlandığını göstermek için sarı bir çubuk kullanılır. Varlık için toplam istek sayısını göstermek için kırmızı bir çubuk kullanılır.
 
 > [!NOTE]
-> Bu raporun amaçları için aşağıdakileri unutmayın:
+> Bu raporun amaçları doğrultusunda aşağıdakilere göz önünde yer verilmiştir:
 > 
-> * Isabet, durum kodundan bağımsız olarak bir varlık için herhangi bir isteği temsil eder.
-> * Kenar CNAME URL'leri eşdeğer CDN URL'lerine dönüştürülür. Bu, bir varlıkla ilişkili tüm istatistikler için, istemek için kullanılan CDN veya kenar CNAME URL'sinden bağımsız olarak doğru bir sayım sağlar.
+> * İsabet, durum kodundan bağımsız olarak bir varlık için istekleri temsil eder.
+> * Edge CNAME URL 'Leri eşdeğer CDN URL 'lerine dönüştürülür. Bu, bir varlıkla ilişkili tüm istatistiklerin, bunu istemek için kullanılan CDN veya Edge CNAME URL 'sinden bağımsız olarak doğru bir şekilde oluşturulmasına olanak sağlar.
 > 
 > 
 
-Grafiğin sol tarafı (y ekseni), 404 Bulunamadı durum koduyla sonuçlanan en iyi 10 varlığın her biri için dosya adını gösterir. Grafiğin (x ekseni) hemen altında, toplam istek sayısını ve 404 Bulunamadı durum koduyla sonuçlanan istek sayısını gösteren etiketler bulacaksınız.
+Grafiğin sol tarafı (y ekseni), 404 olmayan bir durum kodu ile sonuçlanan ilk 10, istenen varlıkların her biri için dosya adını gösterir. Grafiğin hemen altında (x ekseni), toplam istek sayısını ve 404 bulunamayan bir durum kodu ile sonuçlanan istek sayısını belirten Etiketler bulacaksınız.
 
-Çubuk grafiğin hemen altında, aşağıdaki bilgiler en çok istenen 250 varlık için listelenir: göreli yol (dosya adı dahil), 404 Bulunamadı durum koduyla sonuçlanan istek sayısı, varlığın talep edildiği toplam sayı ve 404 Bulunamadı durum koduyla sonuçlanan isteklerin yüzdesi.
+Çubuk grafiğinin doğrudan altında, aşağıdaki bilgiler, istenen ilk 250 varlık için listelenir: göreli yol (dosya adı dahil), 404 ile sonuçlanan istek sayısı durum kodu, varlığın istenen toplam sayısı ve bir 404 ile sonuçlanan isteklerin yüzdesi durum kodu.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure CDN'ye Genel Bakış](cdn-overview.md)
-* [Microsoft Azure CDN'de gerçek zamanlı istatistikler](cdn-real-time-stats.md)
+* [Microsoft Azure CDN 'de gerçek zamanlı istatistikler](cdn-real-time-stats.md)
 * [Kurallar altyapısını kullanarak varsayılan HTTP davranışını geçersiz kılma](cdn-rules-engine.md)
-* [Kenar Performansını Analiz Et](cdn-edge-performance.md)
+* [Kenar performansını çözümleme](cdn-edge-performance.md)
 

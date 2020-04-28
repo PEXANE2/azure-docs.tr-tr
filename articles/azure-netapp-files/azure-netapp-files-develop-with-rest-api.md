@@ -1,6 +1,6 @@
 ---
-title: REST API ile Azure NetApp Dosyaları için geliştirin | Microsoft Dokümanlar
-description: Azure NetApp Files REST API'yi kullanmaya nasıl başnan açıklar.
+title: REST API için geliştirme Azure NetApp Files | Microsoft Docs
+description: Azure NetApp Files REST API kullanmaya nasıl başlaılacağını açıklar.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,30 +15,30 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: b-juche
 ms.openlocfilehash: 996fbcc7c3c9af0da9160216785ecd54840660e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65957030"
 ---
-# <a name="develop-for-azure-netapp-files-with-rest-api"></a>REST API'li Azure NetApp Dosyaları için geliştirin 
+# <a name="develop-for-azure-netapp-files-with-rest-api"></a>REST API Azure NetApp Files için geliştirme 
 
-Azure NetApp Files hizmetinin REST API'si, NetApp hesabı, kapasite havuzu, birimler ve anlık görüntüler gibi kaynaklara karşı HTTP işlemlerini tanımlar. Bu makale, Azure NetApp Files REST API'yi kullanmaya başlamanıza yardımcı olur.
+Azure NetApp Files hizmetinin REST API, NetApp hesabı, kapasite havuzu, birimler ve anlık görüntüler gibi kaynaklara karşı HTTP işlemlerini tanımlar. Bu makale, Azure NetApp Files REST API kullanmaya başlamanıza yardımcı olur.
 
-## <a name="azure-netapp-files-rest-api-specification"></a>Azure NetApp Dosyaları REST API belirtimi
+## <a name="azure-netapp-files-rest-api-specification"></a>Azure NetApp Files REST API belirtimi
 
-Azure NetApp Dosyaları için REST API belirtimi [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)üzerinden yayınlanır:
+Azure NetApp Files için REST API belirtimi [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)aracılığıyla yayımlanır:
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 
 
-## <a name="access-the-azure-netapp-files-rest-api"></a>Azure NetApp Dosyalarına ErişREST API  
+## <a name="access-the-azure-netapp-files-rest-api"></a>Azure NetApp Files erişin REST API  
 
-1. Bunu daha önce yapmadıysanız [Azure CLI'yi yükleyin.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-2. Azure Etkin Dizininizde (Azure AD) bir hizmet ilkesi oluşturun:
+1. Daha önce yapmadıysanız [Azure CLI 'Yı yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .
+2. Azure Active Directory bir hizmet sorumlusu oluşturun (Azure AD):
    1. [Yeterli izinlere](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)sahip olduğunuzu doğrulayın.
 
-   1. Azure CLI'ye aşağıdaki komutu girin:  
+   1. Azure CLı 'de aşağıdaki komutu girin:  
 
            az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE--password $YOURGENERATEDPASSWORDGOESHERE
 
@@ -52,13 +52,13 @@ Azure NetApp Dosyaları için REST API belirtimi [GitHub](https://github.com/Azu
                "tenant": "tenantIDgoeshere" 
            } 
 
-      Komut çıktısını koruyun.  "Ve `appId` `password` `tenant` değerlere" ihtiyacınız olacaktır. 
+      Komut çıkışını saklayın.  `appId`, `password`Ve `tenant` değerlerine ihtiyacınız olacaktır. 
 
-3. OAuth erişim jetonunu isteyin:
+3. Bir OAuth erişim belirteci isteyin:
 
-    Bu makaledeki örnekler cURL'yi kullanır.  Ayrıca [Postacı,](https://www.getpostman.com/) [Uykusuzluk](https://insomnia.rest/)ve [Paw](https://paw.cloud/)gibi çeşitli API araçları kullanabilirsiniz.  
+    Bu makaledeki örneklerde kıvrımlı kullanılır.  [Postman](https://www.getpostman.com/), [Insomnia](https://insomnia.rest/)ve [Paw](https://paw.cloud/)gibi çeşitli API araçlarını da kullanabilirsiniz.  
 
-    Aşağıdaki örnekteki değişkenleri yukarıdaki Adım 2'den gelen komut çıktısıyla değiştirin. 
+    Aşağıdaki örnekteki değişkenleri yukarıdaki 2. adımdaki komut çıktısı ile değiştirin. 
 
         curl -X POST -d 'grant_type=client_credentials&client_id=[APP_ID]&client_secret=[PASSWORD]&resource=https%3A%2F%2Fmanagement.azure.com%2F' https://login.microsoftonline.com/[TENANT_ID]/oauth2/token
 
@@ -66,24 +66,24 @@ Azure NetApp Dosyaları için REST API belirtimi [GitHub](https://github.com/Azu
 
         eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSIsImtpZCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSJ9
 
-    Görüntülenen belirteç 3600 saniye için geçerlidir. Bundan sonra, yeni bir belirteç talep etmek gerekir. 
-    Belirteci bir metin düzenleyicisine kaydedin.  Bir sonraki adım için ihtiyacınız olacak.
+    Görüntülenmiş belirteç 3600 saniye için geçerlidir. Bundan sonra yeni bir belirteç istemeniz gerekir. 
+    Belirteci bir metin düzenleyicisine kaydedin.  Bir sonraki adımda ihtiyacınız olacak.
 
-4. Bir test çağrısı gönderin ve REST API'ye erişiminizi doğrulamak için belirteci ekleyin:
+4. REST API erişiminizi doğrulamak için bir test çağrısı gönderin ve belirteci ekleyin:
 
         curl -X GET -H "Authorization: Bearer [TOKEN]" -H "Content-Type: application/json" https://management.azure.com/subscriptions/[SUBSCRIPTION_ID]/providers/Microsoft.Web/sites?api-version=2016-08-01
 
-## <a name="examples-using-the-api"></a>API'yi kullanan örnekler  
+## <a name="examples-using-the-api"></a>API kullanan örnekler  
 
-Bu makalede, isteklerin temeli için aşağıdaki URL kullanır. Bu URL, Azure NetApp Dosyaları ad alanının köküne işaret edin. 
+Bu makale, istek taban çizgisi için aşağıdaki URL 'YI kullanır. Bu URL, Azure NetApp Files ad alanının köküne işaret eder. 
 
 `https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2017-08-15`
 
-Aşağıdaki örneklerdeki `subID` `resourceGroups` değerleri ve değerleri kendi değerlerinizle değiştirmelisiniz. 
+Aşağıdaki örneklerde `subID` ve `resourceGroups` değerlerini kendi değerlerinizle değiştirmelisiniz. 
 
-### <a name="get-request-examples"></a>İstek örnekleri alın
+### <a name="get-request-examples"></a>İstek örneklerini al
 
-Aşağıdaki örneklerin gösterdiği gibi, bir abonelikteki Azure NetApp Dosyalarının nesnelerini sorgulamak için GET isteği kullanırsınız: 
+Aşağıdaki örneklerde gösterildiği gibi, bir abonelikte Azure NetApp Files nesnelerini sorgulamak için GET isteği kullanırsınız: 
 
         #get NetApp accounts 
         curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2017-08-15
@@ -97,9 +97,9 @@ Aşağıdaki örneklerin gösterdiği gibi, bir abonelikteki Azure NetApp Dosyal
         #get snapshots for a volume 
         curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/VOLUMEGOESHERE/snapshots?api-version=2017-08-15
 
-### <a name="put-request-examples"></a>PUT istek örnekleri
+### <a name="put-request-examples"></a>PUT isteği örnekleri
 
-Aşağıdaki örneklerde olduğu gibi Azure NetApp Dosyalarında yeni nesneler oluşturmak için PUT isteği kullanırsınız. PUT isteğinin gövdesi değişiklikler için JSON biçimlendirilmiş verileri içerebilir veya okunacak bir dosya belirtebilir. 
+Aşağıdaki örneklerde gösterildiği gibi Azure NetApp Files yeni nesneler oluşturmak için bir PUT isteği kullanırsınız. PUT isteğinin gövdesi, değişiklikler için JSON biçimli verileri içerebilir veya okunacak bir dosyayı belirtebilir. 
 
         #create a NetApp account  
         curl -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE?api-version=2017-08-15
@@ -115,7 +115,7 @@ Aşağıdaki örneklerde olduğu gibi Azure NetApp Dosyalarında yeni nesneler o
 
 ### <a name="json-examples"></a>JSON örnekleri
 
-Aşağıdaki örnekte, NetApp hesabının nasıl oluşturulabildiğini gösterilmektedir:
+Aşağıdaki örnekte bir NetApp hesabının nasıl oluşturulacağı gösterilmektedir:
 
     { 
         "name": "MYNETAPPACCOUNT", 
@@ -126,7 +126,7 @@ Aşağıdaki örnekte, NetApp hesabının nasıl oluşturulabildiğini gösteril
         }
     } 
 
-Aşağıdaki örnek, kapasite havuzunun nasıl oluşturulabildiğini gösterir: 
+Aşağıdaki örnek, bir kapasite havuzunun nasıl oluşturulacağını gösterir: 
 
     {
         "name": "MYNETAPPACCOUNT/POOLNAME",
@@ -139,7 +139,7 @@ Aşağıdaki örnek, kapasite havuzunun nasıl oluşturulabildiğini gösterir:
         }
     }
 
-Aşağıdaki örnekte, yeni bir birimin nasıl oluşturulacak olduğu gösterilmektedir: 
+Aşağıdaki örnek, yeni bir birimin nasıl oluşturulacağını gösterir: 
 
     {
         "name": "MYNEWVOLUME",
@@ -154,7 +154,7 @@ Aşağıdaki örnekte, yeni bir birimin nasıl oluşturulacak olduğu gösterilm
             }
     }
 
-Aşağıdaki örnek, bir birimin anlık görüntüsününasıl oluşturulacak gösterilmektedir: 
+Aşağıdaki örnekte, bir birimin anlık görüntüsünün nasıl oluşturulacağı gösterilmektedir: 
 
     {
         "name": "apitest2/apiPool01/apiVol01/snap02",
@@ -167,8 +167,8 @@ Aşağıdaki örnek, bir birimin anlık görüntüsününasıl oluşturulacak g�
     }
 
 > [!NOTE] 
-> Anlık görüntü `fileSystemId` oluşturmak için belirtmeniz gerekir.  Bir GET `fileSystemId` isteği yle değeri bir birimden elde edebilirsiniz. 
+> Anlık görüntü oluşturmak için `fileSystemId` belirtmeniz gerekir.  `fileSystemId` Değeri bir BIRIME yönelik Get isteğiyle elde edebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure NetApp Dosyaları REST API başvurusuna bakın](https://docs.microsoft.com/rest/api/netapp/)
+[Azure NetApp Files REST API başvurusuna bakın](https://docs.microsoft.com/rest/api/netapp/)

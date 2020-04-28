@@ -1,6 +1,6 @@
 ---
-title: Azure İşlevleri ile bir Twitter iletisi alın | Microsoft Dokümanlar
-description: Titremeyi algılamak için hareket sensörünü kullanın ve belirttiğiniz bir hashtag ile rastgele bir tweet bulmak için Azure Fonksiyonlarını kullanın
+title: Azure Işlevleri ile Twitter iletisi alma | Microsoft Docs
+description: Gerçekleşmesi algılamak için hareket algılayıcısını kullanın ve belirttiğiniz diyez etiketiyle rastgele bir tweet bulmak için Azure Işlevlerini kullanın
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -10,202 +10,202 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60779908"
 ---
-# <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Bir Tweet için Salla, Salla -- Azure İşleriyle Twitter mesajı alın
+# <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Tweet için sallayın, sallayın, Azure Işlevleri ile Twitter iletisi alın
 
-Bu projede, Azure İşlevlerini kullanarak bir olayı tetiklemek için hareket sensörünü nasıl kullanacağınızı öğrenirsiniz. Uygulama, Arduino çiziminizde yapılandırdığınız #hashtag rastgele bir tweet alır. Tweet DevKit ekranında görüntülenir.
+Bu projede, Azure Işlevleri 'ni kullanarak bir olayı tetiklemek için hareket algılayıcıyı nasıl kullanacağınızı öğrenirsiniz. Uygulama, Arduino taslacda yapılandırdığınız #hashtag rastgele bir tweet alır. Tweet, DevKit ekranında görüntülenir.
 
 ## <a name="what-you-need"></a>Ne gerekiyor
 
-[Başlarken Kılavuzunu](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) bitirin:
+[Başlarken Kılavuzunu](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) şu şekilde sona erdirin:
 
-* DevKit'inizin Wi-Fi'a bağlanmasını sağlar.
+* DevKit 'in Wi-Fi ' a bağlanmasını sağlar.
 * Geliştirme ortamını hazırlayın.
 
-Etkin bir Azure aboneliği. Eğer yoksa, şu yöntemlerden biri ile kaydolabilirsiniz:
+Etkin bir Azure aboneliği. Bir tane yoksa, aşağıdaki yöntemlerden birini kullanarak kaydedebilirsiniz:
 
-* Ücretsiz [30 günlük deneme Sürümünü Microsoft Azure hesabını](https://azure.microsoft.com/free/) etkinleştirme
-* MSDN veya Visual Studio abonesiyseniz [Azure kredinizi](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) talep edin
+* [30 günlük ücretsiz deneme Microsoft Azure hesabını](https://azure.microsoft.com/free/) etkinleştirin
+* MSDN veya Visual Studio abonesi olduğunuzda [Azure kredinizi](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) talep edin
 
-## <a name="open-the-project-folder"></a>Proje klasörünü açma
+## <a name="open-the-project-folder"></a>Proje klasörünü açın
 
 Proje klasörünü açarak başlayın. 
 
-### <a name="start-vs-code"></a>VS Kodunu Başlat
+### <a name="start-vs-code"></a>VS Code Başlat
 
-* DevKit'inizin bilgisayarınıza bağlı olduğundan emin olun.
+* DevKit 'in bilgisayarınıza bağlı olduğundan emin olun.
 
 * VS Code'u başlatın.
 
-* DevKit'i bilgisayarınıza bağlayın.
+* DevKit 'i bilgisayarınıza bağlayın.
 
    > [!NOTE]
-   > VS Kodu başlatırken, Arduino IDE veya ilgili yönetim kurulu paketinin bulunamayan bir hata iletisi alabilirsiniz. Bu hata oluşursa, VS Kodunu kapatın ve Arduino IDE'yi yeniden başlatın. VS Kodu artık Arduino IDE yolunu doğru bir şekilde bulmalı.
+   > VS Code başlatırken, Arduino IDE veya ilgili Pano paketinin bulunamadığını belirten bir hata iletisi alabilirsiniz. Bu hata oluşursa VS Code kapatın ve Arduino IDE 'yi yeniden başlatın. VS Code artık Arduino IDE yolunu doğru bir şekilde bulmalıdır.
 
-### <a name="open-the-arduino-examples-folder"></a>Arduino Örnekleri klasörünü açma
+### <a name="open-the-arduino-examples-folder"></a>Arduino örnekleri klasörünü açın
 
-Sol **taraftaki ARDUINO ÖRNEKLERİ** bölümünü genişletin, **MXCHIP AZ3166 > AzureIoT örneklerine**göz atın ve **ShakeShake'i**seçin. Proje klasörünü görüntüleyen yeni bir VS Kodu penceresi açılır. MXCHIP AZ3166 bölümünü göremiyorsanız, cihazınızın düzgün bir şekilde bağlı olduğundan emin olun ve Visual Studio Code'u yeniden başlatın.  
-![mini çözüm örnekleri](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
+Sol taraftaki **Arduino örnekleri** bölümünü GENIŞLETIN, **mxyongaAZ3166 > AzureIoT için örneklere**gidin ve **ShakeShake**' yi seçin. Proje klasörünü görüntüleyen yeni bir VS Code penceresi açılır. MXYONGAAZ3166 bölümünü göremiyorsanız, cihazınızın doğru bir şekilde bağlı olduğundan emin olun ve Visual Studio Code yeniden başlatın.  
+![mini çözüm-örnekler](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-Örnek projeyi komut paletinden de açabilirsiniz. Komut `Ctrl+Shift+P` paletini `Cmd+Shift+P`açmak için (macOS: ) tıklatın, **Arduino**yazın ve ardından **Arduino'yu**bulup seçin: Örnekler .
+Örnek projeyi komut paletinden da açabilirsiniz. Komut `Ctrl+Shift+P` paletini açmak için ( `Cmd+Shift+P`MacOS:) seçeneğine tıklayın, **Arduino**yazın ve ardından **Arduino: örnekleri**bulun ve seçin.
 
 ## <a name="provision-azure-services"></a>Azure hizmetlerini sağlama
 
-Çözüm penceresinde, (macOS: `Ctrl+P` `Cmd+P`) üzerinden . `task cloud-provision`
+Çözüm penceresinde, öğesini girerek `Ctrl+P` `Cmd+P` `task cloud-provision`(MacOS:) görevini çalıştırın.
 
-VS Code terminalinde, etkileşimli bir komut satırı gerekli Azure hizmetlerini sağlama konusunda size yol göstermektedir:
+VS Code terminalinde, etkileşimli bir komut satırı gerekli Azure hizmetlerini sağlama sırasında size rehberlik eder:
 
-![bulut hükmü](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
+![bulut sağlama](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
 
 > [!NOTE]
-> Azure'da oturum açmaya çalışırken sayfa yükleme durumunda [duruyorsa, IoT DevKit SSS'deki "giriş sayfası askıda" adımına](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure)bakın.
+> Azure 'da oturum açmaya çalışırken sayfa yükleme durumunda askıda kalırsa, [IoT DevKit SSS içindeki "oturum açma sayfası askıda kalıyor" adımına](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure)bakın.
  
-## <a name="modify-the-hashtag"></a>#hashtag değiştirin
+## <a name="modify-the-hashtag"></a>#Hashtag değiştirin
 
-Açın `ShakeShake.ino` ve bu kod satırına bakın:
+Bu `ShakeShake.ino` kod satırını açın ve bulun:
 
 ```cpp
 static const char* iot_event = "{\"topic\":\"iot\"}";
 ```
 
-Kıvırcık `iot` ayraçların içindeki dizeyi tercih ettiğiniz hashtag ile değiştirin. DevKit daha sonra bu adımda belirttiğiniz hashtag'i içeren rastgele bir tweet alır.
+Küme ayraçları içindeki `iot` dizeyi, tercih ettiğiniz diyez etiketiyle değiştirin. DevKit daha sonra bu adımda belirttiğiniz diyez etiketini içeren bir rastgele Tweet alır.
 
 ## <a name="deploy-azure-functions"></a>Azure İşlevleri’ni dağıtma
 
-Azure `Ctrl+P` İşlevler `Cmd+P`kodunu `task cloud-deploy` dağıtmaya başlamak için çalıştırmak için (macOS: ) kullanın:
+Azure `Ctrl+P` işlevleri kodunu dağıtmaya başlamak `Cmd+P`üzere çalıştırmak `task cloud-deploy` için (MacOS:) kullanın:
 
-![bulut dağıtma](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
+![bulut-dağıtım](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
 
 > [!NOTE]
-> Bazen Azure İşlevi düzgün çalışmayabilir. Bu sorunu oluştuğunda gidermek [için, IoT DevKit SSS'nin "derleme hatası" bölümünü](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#compilation-error-for-azure-function)kontrol edin.
+> Azure Işlevi bazen düzgün çalışmayabilir. Bu sorunu oluştuğunda gidermek için [IoT DevKit SSS konusunun "derleme hatası" bölümüne](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#compilation-error-for-azure-function)bakın.
 
-## <a name="build-and-upload-the-device-code"></a>Aygıt kodunu oluşturma ve yükleme
+## <a name="build-and-upload-the-device-code"></a>Cihaz kodunu derleyin ve karşıya yükleyin
 
-Ardından, aygıt kodunu oluşturun ve yükleyin.
+Sonra, cihaz kodunu derleyin ve karşıya yükleyin.
 
 ### <a name="windows"></a>Windows
 
 1. Çalıştırmak `Ctrl+P` `task device-upload`için kullanın.
 
-2. Terminal, yapılandırma moduna girmenizi ister. Bunu yapmak için:
+2. Terminal sizden yapılandırma moduna girmenizi ister. Bunu yapmak için:
 
-   * Basılı düğme A
+   * Düğmeyi basılı tutarak A
 
-   * Sıfırlama düğmesine basın ve bırakın.
+   * Sıfırla düğmesini gönderin ve serbest bırakın.
 
-3. Ekranda DevKit Kimliği ve 'Yapılandırma' görüntülenir.
+3. Bu ekranda DevKit KIMLIĞI ve ' Configuration ' görüntülenir.
 
 ### <a name="macos"></a>macOS
 
-1. DevKit'i yapılandırma moduna koyun:
+1. DevKit 'ı yapılandırma moduna alın:
 
-   A düğmesini basılı tutun, ardından sıfırlama düğmesine basın ve bırakın. Ekranda 'Yapılandırma' görüntülenir.
+   Düğme A tuşunu basılı tutarak sıfırlama düğmesini gönderin ve serbest bırakın. Ekran ' yapılandırma ' görüntüler.
 
-2. Adımdan `task device-upload` alınan bağlantı dizesini ayarlamak için `task cloud-provision` çalıştırmayı kullanın. `Cmd+P`
+2. Adımdan alınan bağlantı `task device-upload` dizesini ayarlamak için öğesini kullanın `Cmd+P` `task cloud-provision`
 
-### <a name="verify-upload-and-run"></a>Doğrula, yükle ve çalıştır
+### <a name="verify-upload-and-run"></a>Doğrulayın, karşıya yükleyin ve çalıştırın
 
-Şimdi bağlantı dizesi ayarlanır, uygulamayı doğrular ve yükler, sonra çalıştırır. 
+Artık bağlantı dizesi ayarlandı, uygulamayı doğrular ve karşıya yükler, ardından onu çalıştırır. 
 
-1. VS Code, Arduino çizimini doğrulamaya ve DevKit'inize yüklemeye başlar:
+1. VS Code, Arduino taslağını DevKit 'e doğrulamaya ve karşıya yüklemeye başlar:
 
-   ![cihaz yükleme](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
+   ![cihaz-karşıya yükle](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/device-upload.png)
 
 2. DevKit yeniden başlatılır ve kodu çalıştırmaya başlar.
 
-"Hata: AZ3166: Bilinmeyen paket" hata iletisi alabilirsiniz. Bu hata, yönetim kurulu paket dizini doğru şekilde yenilenmediğinde oluşur. Bu sorunu gidermek [için, IoT DevKit SSS'deki "bilinmeyen paket" hatasını kontrol edin.](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)
+"Hata: AZ3166: bilinmeyen paket" hata iletisi alabilirsiniz. Pano paket dizini doğru yenilenmediğinde bu hata oluşur. Bu sorunu çözmek için [IoT DevKit SSS içindeki "bilinmeyen paket" hatasını](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)denetleyin.
 
-## <a name="test-the-project"></a>Projeyi test edin
+## <a name="test-the-project"></a>Projeyi test etme
 
-Uygulama nın başlatılmasından sonra A düğmesini tıklatın ve bırakın, ardından DevKit kartını hafifçe sallayın. Bu eylem, daha önce belirttiğiniz hashtag'i içeren rasgele bir tweet alır. Birkaç saniye içinde, DevKit ekranınızda bir tweet görüntülenir:
+Uygulama başlatma sonrasında A düğmesine tıklayın ve sonra DevKit panosunu yavaşça sallayın. Bu eylem, daha önce belirttiğiniz diyez etiketini içeren bir rastgele Tweet alır. Birkaç saniye içinde, DevKit ekranınızda bir tweet görüntülenir:
 
-### <a name="arduino-application-initializing"></a>Arduino uygulaması nın başlatılması...
+### <a name="arduino-application-initializing"></a>Arduino uygulaması başlatılıyor...
 
-![Arduino-uygulama-başbaşlatma](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-1.png)
+![Arduino-uygulama-başlatılıyor](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-1.png)
 
-### <a name="press-a-to-shake"></a>Sallamak için A tuşuna basın...
+### <a name="press-a-to-shake"></a>Sallanması için A 'ya basın...
 
-![Basın-A-to-shake](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-2.png)
+![A-salya 'ya kadar basın](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-2.png)
 
-### <a name="ready-to-shake"></a>Sallanmaya hazır...
+### <a name="ready-to-shake"></a>Ayrılmaya hazırlanıyor...
 
-![Sallamaya hazır](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-3.png)
+![Salmaya hazırlanma](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-3.png)
 
-### <a name="processing"></a>Işleme...
+### <a name="processing"></a>İşleniyor...
 
 ![İşleniyor](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-4.png)
 
 ### <a name="press-b-to-read"></a>Okumak için B tuşuna basın...
 
-![Okumaya basın](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-5.png)
+![-B-okuma tuşlarına basın](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-5.png)
 
-### <a name="display-a-random-tweet"></a>Rastgele bir tweet görüntüleyin...
+### <a name="display-a-random-tweet"></a>Rastgele bir tweet görüntüle...
 
-![Rastgele tweet görüntüle](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-6.png)
+![Görüntü-a-Random-Tweet](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-6.png)
 
-- A tuşuna tekrar basın, ardından yeni bir tweet için sallayın.
-- Tweetin geri kalanında gezinmek için B düğmesine basın.
+- Düğmeye bir kez daha basın ve ardından yeni bir Tweet için sallayın.
+- Tweet geri kalanında gezinmek için düğme B 'ye basın.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
 ![şema](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
 
-Arduino çizimi, bir olayı Azure IoT Hub'ına gönderir. Bu olay Azure İşlevler uygulamasını tetikler. Azure İşlevleri uygulaması, Twitter'ın API'sine bağlanma ve bir tweet alma mantığını içerir. Daha sonra tweet metnini C2D (Buluttan cihaza) iletisine sarar ve aygıta geri gönderir.
+Arduino taslağı Azure IoT Hub bir olay gönderir. Bu olay, Azure Işlevleri uygulamasını tetikler. Azure Işlevleri uygulaması, Twitter API 'sine bağlanma ve bir tweet alma mantığını içerir. Daha sonra Tweet metnini bir C2D (buluttan cihaza) iletisine sarmalar ve cihaza geri gönderir.
 
-## <a name="optional-use-your-own-twitter-bearer-token"></a>İsteğe bağlı: Kendi Twitter taşıyıcı belirteci kullanın
+## <a name="optional-use-your-own-twitter-bearer-token"></a>İsteğe bağlı: kendi Twitter taşıyıcı belirtecinizi kullanın
 
-Test amacıyla, bu örnek proje önceden yapılandırılmış bir Twitter taşıyıcı belirteci kullanır. Ancak, her Twitter hesabı için bir [oran sınırı](https://dev.twitter.com/rest/reference/get/search/tweets) vardır. Kendi belirtecinizi kullanmayı düşünüyorsanız aşağıdaki adımları izleyin:
+Bu örnek proje, test amacıyla önceden yapılandırılmış bir Twitter taşıyıcı belirteci kullanır. Ancak, her Twitter hesabı için bir [hız sınırı](https://dev.twitter.com/rest/reference/get/search/tweets) vardır. Kendi belirtecinizi kullanmayı düşünmek istiyorsanız aşağıdaki adımları izleyin:
 
-1. Yeni bir Twitter uygulaması kaydetmek için [Twitter Developer portalına](https://dev.twitter.com/) gidin.
+1. Yeni bir Twitter uygulamasını kaydetmek için [Twitter geliştirici portalı](https://dev.twitter.com/) ' na gidin.
 
-2. Uygulamanızın [Tüketici Anahtarı ve Tüketici Sırları'nı alın.](https://support.yapsody.com/hc/en-us/articles/360003291573-How-do-I-get-a-Twitter-Consumer-Key-and-Consumer-Secret-key-)
+2. Uygulamanızın [Tüketici anahtar ve tüketici gizli dizilerini alın](https://support.yapsody.com/hc/en-us/articles/360003291573-How-do-I-get-a-Twitter-Consumer-Key-and-Consumer-Secret-key-) .
 
-3. Bu iki anahtardan bir Twitter taşıyıcı belirteci oluşturmak için [bazı yardımcı program](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/) kullanın.
+3. Bu iki anahtardan bir Twitter taşıyıcı belirteci oluşturmak için [bazı yardımcı programları](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/) kullanın.
 
-4. Azure [portalı](https://portal.azure.com/){:target="_blank"}'de **Kaynak Grubuna** girin ve "Sallama, Sallama" projeniz için Azure İşi'ni (Tür: Uygulama Hizmeti) bulun. Adı her zaman 'shake ...' içerir Dize.
+4. {: Target = "_blank"} [Azure Portal](https://portal.azure.com/), **kaynak grubuna** ulaşın ve "sallama, sallama" projeniz Için Azure işlevini (tür: App Service) bulun. Ad her zaman ' Sal... ' içerir dizisinde.
 
-   ![azure fonksiyonu](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
+   ![Azure-işlevi](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
-5. Kendi belirteç ile `run.csx` **shakeshake-cs > Fonksiyonlar** içinde için kodu güncelleştirin:
+5. `run.csx` **Shakeshake-CS > işlevleri** içinde kendi belirtecinizle ilgili kodu güncelleştirin:
 
    ```csharp
    string authHeader = "Bearer " + "[your own token]";
    ```
   
-   ![twitter-belirteç](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
+   ![Twitter-belirteç](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
-6. Dosyayı kaydedin ve **Çalıştır'ı**tıklatın.
+6. Dosyayı kaydedin ve **Çalıştır**' a tıklayın.
 
 ## <a name="problems-and-feedback"></a>Sorunlar ve geri bildirim
 
 Sorunları giderme veya geri bildirim sağlama. 
 
-### <a name="problems"></a>Sorun
+### <a name="problems"></a>Sorunlarının
 
-Her adım başarıyla çalışırken ekranın 'Tweet Yok' görüntülediğini görebileceğiniz bir sorun. Bu durum normalde örneği ilk kez dağıtTığınız ve çalıştırdığınızda gerçekleşir, çünkü işlev uygulaması uygulamayı başlatmak için birkaç saniyeden bir dakikaya kadar herhangi bir yerde gerektirir. 
+Her adım başarıyla çalıştırıldığında ekranda ' fazla yer yok ' ekranında görüntülenen bir sorun. Bu durum normalde, örneği ilk kez dağıtıp çalıştırdığınızda gerçekleşir çünkü işlev uygulaması, uygulamayı soğuk olarak başlatmak için bir dakika kadar birkaç saniyeden fazla bir süre bekleyin. 
 
-Veya, kodu çalıştırırken, uygulamanın yeniden başlatılmasına neden olan bazı blips vardır. Bu durum gerçekleştiğinde, aygıt uygulaması tweet'i almak için bir zaman ara sı alabilir. Bu durumda, sorunu çözmek için aşağıdaki yöntemlerden birini veya her ikisini deneyebilirsiniz:
+Ya da kodu çalıştırırken, uygulamanın yeniden başlatılmasına neden olan bazı sinyalleri 'ler vardır. Bu durum gerçekleştiğinde, cihaz uygulaması Tweet getirme zaman aşımını alabilir. Bu durumda, sorunu gidermek için bu yöntemlerin birini veya her ikisini de deneyebilirsiniz:
 
-1. Cihaz uygulamasını yeniden çalıştırmak için DevKit'teki sıfırlama düğmesini tıklatın.
+1. Cihaz uygulamasını yeniden çalıştırmak için DevKit üzerindeki sıfırla düğmesine tıklayın.
 
-2. Azure [portalında,](https://portal.azure.com/)oluşturduğunuz Azure İşlevleri uygulamasını bulun ve yeniden başlatın:
+2. [Azure Portal](https://portal.azure.com/)oluşturduğunuz Azure işlevleri uygulamasını bulun ve yeniden başlatın:
 
-   ![azure-fonksiyon-yeniden başlatma](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
+   ![Azure-Function-yeniden Başlat](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
 
 ### <a name="feedback"></a>Geri Bildirim
 
-Başka sorunlarla karşılaşırsanız, [IoT DevKit SSS'ye](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) bakın veya aşağıdaki kanalları kullanarak bizimle iletişime geçin:
+Başka sorunlarla karşılaşırsanız, [IoT DevKit hakkında SSS bölümüne](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) bakın veya aşağıdaki kanalları kullanarak bizimle iletişime geçin:
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir DevKit aygıtını Azure IoT Uzaktan İzleme çözüm hızlandırıcınıza nasıl bağlayıp bir tweet aldığınızı öğrendiğinize göre, önerilen sonraki adımlar şunlardır:
+Artık bir DevKit cihazını Azure IoT uzaktan Izleme çözüm hızlandırıcısına bağlamayı ve bir tweet almanızı öğrendiğinize göre, önerilen sonraki adımlar aşağıda verilmiştir:
 
-* [Azure IoT Uzaktan İzleme çözüm hızlandırıcıya genel bakış](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT uzaktan Izleme çözüm hızlandırıcısının genel bakış](https://docs.microsoft.com/azure/iot-suite/)

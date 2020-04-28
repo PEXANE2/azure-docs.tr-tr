@@ -1,6 +1,6 @@
 ---
-title: Uzaktan İzleme çözümü mimari seçenekleri - Azure | Microsoft Dokümanlar
-description: Bu makalede, Uzaktan İzleme'de yapılan mimari ve teknik seçimler açıklanmaktadır.
+title: Uzaktan Izleme çözümü mimari seçimleri-Azure | Microsoft Docs
+description: Bu makalede, uzaktan Izlemede yapılan mimari ve teknik seçimler açıklanmaktadır
 author: timlaverty
 manager: camerons
 ms.author: timlav
@@ -9,81 +9,81 @@ services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61447185"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Uzaktan İzleme mimari seçenekleri
 
-Azure IoT Uzaktan İzleme çözüm hızlandırıcısı açık kaynak kodlu, MIT lisanslı, çözüm hızlandırıcıdır. IoT geliştirme sürecinizi hızlandırmanıza yardımcı olmak için, şu gibi yaygın IoT senaryoları gösterir:
+Azure IoT uzaktan Izleme çözümü hızlandırıcısı, açık kaynaklı, MıT lisanslanmış ve çözüm hızlandırıcısıdır. IoT geliştirme sürecinizi hızlandırmanıza yardımcı olmak için şu gibi yaygın IoT senaryolarını gösterir:
 
 - Cihaz bağlantısı
 - Cihaz yönetimi
 - Akış işleme
 
-Uzaktan İzleme çözümü, önerilen [Azure IoT başvuru mimarisini](https://aka.ms/iotrefarchitecture)izler.
+Uzaktan Izleme çözümü, önerilen [Azure IoT başvuru mimarisini](https://aka.ms/iotrefarchitecture)izler.
 
-Bu makalede, Uzaktan İzleme alt sistemlerinin her birinde yapılan temel mimari ve teknik seçimler açıklanmaktadır. Ancak, Microsoft'un Uzaktan İzleme çözümünde yaptığı teknik seçimler, uzaktan izleme IoT çözümünü uygulamanın tek yolu değildir. Teknik uygulamayı başarılı bir uygulama oluşturmak için bir temel olarak kabul etmeli ve aşağıdakileri yapmalısınız:
+Bu makalede, uzak Izleme alt sistemlerinde yapılan temel mimari ve teknik seçimler açıklanmaktadır. Ancak, uzaktan izleme çözümünde yapılan Microsoft Teknik seçimleri, uzaktan izleme IoT çözümünü kullanmanın tek yoludur. Teknik uygulamayı başarılı bir uygulama oluşturmaya yönelik bir taban çizgisi olarak görmeniz gerekir ve bunu şöyle değiştirmelisiniz:
 
-- Kuruluşunuzdaki mevcut beceri ve deneyimi sığdırın.
-- Dikey uygulama ihtiyaçlarınızı karşılar.
+- Kuruluşunuzdaki kullanılabilir becerileri ve deneyimi uygun hale göre yapın.
+- Dikey uygulama gereksinimlerinizi karşılayın.
 
 ## <a name="architectural-choices"></a>Mimari seçenekleri
 
-Microsoft'un bir IoT uygulaması için önerdiği mimari bulut, microservice ve sunucusuz tabanlıdır. Bir IoT uygulamasının farklı alt sistemlerini, bağımsız olarak dağıtabileceğiniz ve ölçeklendirebileceğiniz ayrı hizmetler olarak oluşturmalısınız. Bu öznitelikler, tek tek alt sistemleri güncelleştirmede daha fazla ölçek, daha fazla esneklik sağlar ve her alt sistem için uygun bir teknoloji seçme esnekliği sağlar.
+Microsoft 'un bir IoT uygulaması için önerdiği mimari, bulutta yerel, mikro hizmet ve sunucusuz tabanlıdır. Bir IoT uygulamasının farklı alt sistemlerini ayrı ayrı dağıtabileceğiniz ve ölçeklendirebilmeniz için ayrı hizmetler olarak oluşturmanız gerekir. Bu öznitelikler daha fazla ölçeklendirmeyi etkinleştirir, tek alt sistemleri güncelleştirmede daha fazla esneklik sağlar ve her alt sistem için uygun bir teknoloji seçme esnekliği sağlar.
 
-Birden fazla teknoloji kullanarak mikro hizmetleri uygulayabilirsiniz. Örneğin, bir mikro hizmeti uygulamak için aşağıdaki seçeneklerden birini seçebilirsiniz:
+Mikro Hizmetleri birden fazla teknoloji kullanarak uygulayabilirsiniz. Örneğin, bir mikro hizmeti uygulamak için aşağıdaki seçeneklerden birini seçebilirsiniz:
 
-- Azure Fonksiyonları gibi sunucusuz teknolojiye sahip Docker gibi bir kapsayıcı teknolojisi kullanın.
-- Azure Uygulama Hizmetleri gibi PaaS hizmetlerinde mikro hizmetlerinizi barındırın.
+- Azure Işlevleri gibi sunucusuz teknolojiyle Docker gibi bir kapsayıcı teknolojisini kullanın.
+- Mikro hizmetlerinizi Azure uygulama hizmetleri gibi PaaS hizmetlerinde barındırın.
 
 ## <a name="technology-choices"></a>Teknoloji seçimleri
 
-Bu bölümde, temel alt sistemlerin her biri için Uzaktan İzleme çözümünde yapılan teknoloji seçimleri ayrıntılı olarak anlatılıyor.
+Bu bölümde, çekirdek alt sistemlerinin her biri için uzaktan Izleme çözümünde yapılan teknoloji seçimleri ayrıntılı olarak sunulur.
 
-![Çekirdek Diyagramı](./media/iot-accelerators-remote-monitoring-architectural-choices/subsystem.png)
+![Temel diyagram](./media/iot-accelerators-remote-monitoring-architectural-choices/subsystem.png)
 
-### <a name="cloud-gateway"></a>Bulut Ağ Geçidi
+### <a name="cloud-gateway"></a>Bulut ağ geçidi
 
-Azure IoT Hub, Uzaktan İzleme çözümü bulut ağ geçidi olarak kullanılır. [IoT Hub,](https://azure.microsoft.com/services/iot-hub/) cihazlarla güvenli, çift yönlü iletişim sunar.
+Azure IoT Hub, uzaktan Izleme çözümü bulut ağ geçidi olarak kullanılır. [IoT Hub](https://azure.microsoft.com/services/iot-hub/) cihazlarla güvenli, çift yönlü iletişim sağlar.
 
-IoT aygıt bağlantısı için şunları kullanabilirsiniz:
+IoT cihaz bağlantısı için şunu kullanabilirsiniz:
 
-- IoT Hub aygıtı, aygıtınız için yerel bir istemci uygulaması uygulamak için [SDK'lar.](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) SDK'lar IoT Hub REST API'nin etrafında paketleyiciler sunar ve yeniden deneme ler gibi senaryoları işler.
-- Aygıtlarınızda kapsayıcılarda çalışan özel modülleri dağıtmak ve yönetmek için Azure IoT Edge ile tümleştirme.
-- Bağlı cihazları toplu olarak yönetmek için IoT Hub'da otomatik aygıt yönetimi ile entegrasyon.
+- Cihazınız için bir yerel istemci uygulaması uygulamak üzere [IoT Hub cihaz SDK 'ları](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) . SDK 'lar IoT Hub REST API etrafında sarmalayıcılar sunar ve yeniden denemeler gibi senaryoları işler.
+- Cihazlarınızdaki kapsayıcılar üzerinde çalışan özel modülleri dağıtmak ve yönetmek için Azure IoT Edge ile tümleştirme.
+- Bağlı cihazları toplu olarak yönetmek için IoT Hub ' de otomatik cihaz yönetimiyle tümleştirme.
 
 ### <a name="stream-processing"></a>Akış işleme
 
-Akış işleme için Uzaktan İzleme çözümü, karmaşık kural işleme için Azure Akış Analizi'ni kullanır. Daha basit kurallar kullanmak istiyorsanız, bu kurulum kullanıma hazır dağıtımın bir parçası olmasa da, basit kural işleme desteğine sahip özel bir microservice vardır. Başvuru mimarisi, basit kural işleme için Azure İşlevleri ve karmaşık kural işleme için Azure Akış Analizi önerir.
+Akış işleme için, uzaktan Izleme çözümü karmaşık kural işleme için Azure Stream Analytics kullanır. Daha basit kurallar kullanmak istiyorsanız, basit kural işleme desteğiyle özel bir mikro hizmet vardır, ancak bu kurulum, kullanıma hazır dağıtımın bir parçası değildir. Başvuru mimarisi basit kural işleme için Azure Işlevleri ve karmaşık kural işleme için Azure Stream Analytics önerir.
 
 ### <a name="storage"></a>Depolama
 
-Depolama için Uzaktan İzleme çözüm hızlandırıcısı hem Azure Time Series Öngörülerini hem de Azure Cosmos DB'yi kullanır. Azure Time Series Insights, IoT Hub üzerinden gelen iletileri bağlı aygıtlarınızdan saklar. Çözüm hızlandırıcı, soğuk depolama, kural tanımları, uyarılar ve yapılandırma ayarları gibi diğer tüm depolama alanları için Azure Cosmos DB kullanır.
+Depolama için, uzaktan Izleme çözümü Hızlandırıcısı hem Azure Time Series Insights hem de Azure Cosmos DB kullanır. Azure Time Series Insights, bağlı cihazlarınızdan IoT Hub üzerinden gelen iletileri depolar. Çözüm Hızlandırıcısı, soğuk depolama, kural tanımları, uyarılar ve yapılandırma ayarları gibi diğer tüm depolama için Azure Cosmos DB kullanır.
 
-Azure Cosmos DB, IoT uygulamaları için önerilen genel amaçlı sıcak depolama çözümüdür. Ancak, Azure Zaman Serisi Öngörüleri ve Azure Veri Gölü gibi çözümler birçok kullanım durumu için uygundur. Azure Time Series Öngörüleri ile eğilimleri ve anormallikleri tespit ederek zaman serisi sensör verilerinize daha derin bakışaçısılar elde edebilirsiniz. Bu özellik, kök neden analizleri yapmanızı ve maliyetli kapalı kalma sürelerinden kaçınmanızı sağlar.
+Azure Cosmos DB IoT uygulamaları için önerilen genel amaçlı ısınma depolama çözümüdür. Ancak, Azure Time Series Insights ve Azure Data Lake gibi çözümler birçok kullanım durumu için uygundur. Azure Time Series Insights, eğilimleri ve anormallikleri birleştirerek zaman serisi algılayıcı verilerinize daha derin Öngörüler elde edebilirsiniz. Bu özellik, kök neden analizleri gerçekleştirmenizi ve maliyetli kapalı kalma süresini önlemenize olanak sağlar.
 
 > [!NOTE]
-> Zaman Serisi Öngörüleri şu anda Azure Çin bulutunda kullanılamıyor. Azure Çin bulutundaki yeni Uzaktan İzleme çözüm hızlandırıcı dağıtımları, tüm depolama için Cosmos DB'yi kullanır.
+> Time Series Insights Azure Çin bulutu 'nda Şu anda kullanılamıyor. Azure Çin bulutu 'ndaki yeni uzaktan Izleme çözümü Hızlandırıcısı dağıtımları tüm depolama için Cosmos DB kullanır.
 
-### <a name="business-integration"></a>İş entegrasyonu
+### <a name="business-integration"></a>İş tümleştirmesi
 
-Uzaktan İzleme çözümündeki iş entegrasyonu, sıcak depolama alanına yerleştirilen uyarıların üretimiyle sınırlıdır. Daha derin iş tümleştirme senaryoları uygulamak için çözümü Azure Logic Apps ile bağlayın.
+Uzaktan Izleme çözümünde iş tümleştirmesi, normal depolamaya yerleştirilmiş uyarıların nesli ile sınırlıdır. Daha derin iş tümleştirme senaryolarını uygulamak için çözümü Azure Logic Apps bağlayın.
 
 ### <a name="user-interface"></a>Kullanıcı Arabirimi
 
-Web UI JavaScript React ile oluşturulmuşdur. React yaygın olarak kullanılan bir endüstri web Web Web çerçevesi sunar ve Açısal gibi diğer popüler çerçeveler benzer.
+Web Kullanıcı arabirimi, JavaScript 'e tepki vererek oluşturulur. Yanıt verme, yaygın olarak kullanılan bir sektör Web UI çerçevesi sunar ve angular gibi diğer popüler çerçevelerle benzerdir.
 
-### <a name="runtime-and-orchestration"></a>Çalışma zamanı ve orkestrasyon
+### <a name="runtime-and-orchestration"></a>Çalışma zamanı ve düzenleme
 
-Uzaktan İzleme çözümü, yatay ölçek için orkestratör olarak Kubernetes ile alt sistemleri çalıştırmak için Docker kapları kullanır. Bu mimari, her alt sistem için ayrı ölçek tanımları sağlar. Ancak, bu mimari sanal makineleri ve kapsayıcıları güncel ve güvenli tutmak için DevOps maliyetleri ne tabidir yok.
+Uzaktan Izleme çözümü, Kubernetes ile alt sistemleri yatay ölçek için Orchestrator olarak çalıştırmak için Docker kapsayıcılarını kullanır. Bu mimari her alt sistem için ayrı ölçek tanımlarının kullanılmasına izin vermez. Ancak bu mimari, sanal makineleri ve kapsayıcıları güncel ve güvenli tutmak için DevOps maliyetlerine neden olacak.
 
-Docker'a alternatifler arasında Azure Uygulama Hizmeti gibi PaaS hizmetlerinde mikro hizmetler barındırma yer alıyor. Kubernetes alternatifleri Service Fabric, DC / OS veya Swarm gibi orkestratörleri içerir.
+Docker alternatifleri, Azure App Service gibi PaaS hizmetlerinde mikro hizmetleri barındırmakla birlikte bulunur. Kubernetes alternatifleri Service Fabric, DC/OS veya Sısınma gibi düzenleyiciler içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Uzaktan İzleme çözümünüzü [buradan](https://www.azureiotsolutions.com/)dağıtın.
-* [C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) ve [Java'da](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/)GitHub kodunu keşfedin.  
-* Burada IoT Başvuru [Mimarisi](https://aka.ms/iotrefarchitecture)hakkında daha fazla bilgi edinin.
+* Uzaktan Izleme çözümünüzü [buraya](https://www.azureiotsolutions.com/)dağıtın.
+* [C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) ve [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/)'da GitHub kodunu araştırma.  
+* IoT [başvuru mimarisi hakkında](https://aka.ms/iotrefarchitecture)daha fazla bilgi edinin.

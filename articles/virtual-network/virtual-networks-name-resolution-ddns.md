@@ -1,6 +1,6 @@
 ---
-title: Azure'da ana bilgisayar adlarını kaydetmek için dinamik DNS kullanma | Microsoft Dokümanlar
-description: Kendi DNS sunucularınıza ana bilgisayar adlarını kaydetmek için dinamik DNS'yi nasıl kuracağınızı öğrenin.
+title: Azure 'da ana bilgisayar adlarını kaydettirmek için dinamik DNS kullanma | Microsoft Docs
+description: Kendi DNS sunucularınızda ana bilgisayar adlarını kaydettirmek için dinamik DNS ayarlamayı öğrenin.
 services: dns
 documentationcenter: na
 author: subsarma
@@ -15,27 +15,27 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
 ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60640387"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Kendi DNS sunucunuzda ana bilgisayar adlarını kaydetmek için dinamik DNS kullanma
 
-Azure, sanal makineler (VM) ve rol örnekleri için [ad çözümlemesi sağlar.](virtual-networks-name-resolution-for-vms-and-role-instances.md) Ad çözümlemesi gereksinimleriniz Azure'un varsayılan DNS'si tarafından sağlanan yetenekleri aştığında, kendi DNS sunucularınızı sağlayabilirsiniz. Kendi DNS sunucularınızı kullanmak, DNS çözümünüzü kendi özel gereksinimlerinize göre uyarlama olanağı sağlar. Örneğin, Etkin Dizin etki alanı denetleyiciniz aracılığıyla şirket içi kaynaklara erişmeniz gerekebilir.
+Azure, sanal makineler (VM) ve rol örnekleri için [ad çözümlemesi sağlar](virtual-networks-name-resolution-for-vms-and-role-instances.md) . Ad çözünürlüğünüz, Azure 'un varsayılan DNS DNS 'in sağladığı özellikleri aştığında kendi DNS sunucularınızı sağlayabilirsiniz. Kendi DNS sunucularınızı kullanarak, DNS çözümünüzü kendi özel gereksinimlerinize uyacak şekilde uyarlayabilme olanağı elde edersiniz. Örneğin, Active Directory etki alanı denetleyiciniz aracılığıyla şirket içi kaynaklara erişmeniz gerekebilir.
 
-Özel DNS sunucularınız Azure VM'ler olarak barındırıldığında, ana bilgisayar adlarını çözmek için aynı sanal ağın ana bilgisayar adı sorgularını Azure'a iletebilirsiniz. Bu seçeneği kullanmak istemiyorsanız, Dinamik DNS (DDNS) kullanarak VM ana bilgisayar adlarınızı DNS sunucunuza kaydedebilirsiniz. Azure,DNS sunucularınızda doğrudan kayıt oluşturacak kimlik bilgilerine sahip değildir, bu nedenle genellikle alternatif düzenlemelere ihtiyaç duyur. Alternatifleri ile bazı yaygın senaryolar izleyin:
+Özel DNS sunucularınız Azure sanal makineleri olarak barındırılıyorsa, ana bilgisayar adlarını çözümlemek için aynı sanal ağa ait konak sorgularını Azure 'a iletebilirsiniz. Bu seçeneği kullanmak istemiyorsanız, sanal makine ana bilgisayar adlarını dinamik DNS (DDNS) kullanarak DNS sunucunuza kaydedebilirsiniz. Azure, DNS sunucularınızda kayıtları doğrudan oluşturmak için kimlik bilgilerine sahip değildir, bu nedenle diğer düzenlemeler genellikle gereklidir. Bazı yaygın senaryolar, alternatiflerle birlikte şunları izler:
 
 ## <a name="windows-clients"></a>Windows istemcileri
-Etki alanına katılmayan Windows istemcileri, önyükleme yaptıklarında veya IP adresleri değiştiğinde güvenli olmayan DDNS güncelleştirmelerini dener. DNS adı ana bilgisayar adı artı birincil DNS sonekidir. Azure birincil DNS sonekini boş bırakır, ancak [kullanıcı arabirimi](https://technet.microsoft.com/library/cc794784.aspx) veya [PowerShell](/powershell/module/dnsclient/set-dnsclient)üzerinden VM'deki sonek ayarlayabilirsiniz.
+Etki alanına katılmış olmayan Windows istemcileri, önyüklenirken veya IP adresleri değiştiğinde güvenli olmayan DDNS güncelleştirmelerini dener. DNS adı, ana bilgisayar adı artı birincil DNS son ekidir. Azure birincil DNS sonekini boş bırakır, ancak son eki [Kullanıcı arabirimi](https://technet.microsoft.com/library/cc794784.aspx) veya [PowerShell](/powershell/module/dnsclient/set-dnsclient)aracılığıyla sanal makinede ayarlayabilirsiniz.
 
-Etki alanına katılan Windows istemcileri, güvenli DDNS kullanarak IP adreslerini etki alanı denetleyicisiyle kaydeder. Etki alanı birleştirme işlemi istemcide birincil DNS sonekiayarlar ve güven ilişkisini oluşturur ve korur.
+Etki alanına katılmış Windows istemcileri, IP adreslerini güvenli DDNS kullanarak etki alanı denetleyicisi ile kaydeder. Etki alanına ekleme işlemi, istemcideki birincil DNS sonekini ayarlar ve güven ilişkisini oluşturur ve korur.
 
 ## <a name="linux-clients"></a>Linux istemcileri
-Linux istemcileri genellikle başlangıçta DNS sunucusu ile kendilerini kayıt yok, onlar DHCP sunucusu bunu varsayıyorum. Azure'un DHCP sunucuları, DNS sunucunuzdaki kayıtları kaydedecek kimlik bilgilerine sahip değildir. DDNS güncelleştirmelerini göndermek için Bind paketine dahil edilen bir `nsupdate`araç kullanabilirsiniz. DDNS protokolü standart olduğundan, DNS sunucusunda Bind kullanmadığınızda bile kullanabilirsiniz. `nsupdate`
+Linux istemcileri başlangıçta DNS sunucusuna kayıt yaptırmaz, DHCP sunucusunun bunu yaptığı varsayılmaktadır. Azure 'un DHCP sunucularının, DNS sunucunuzdaki kayıtları kaydetme kimlik bilgileri yoktur. DDNS güncelleştirmelerini göndermek için, `nsupdate`bağlama paketine dahil edilen adlı bir aracı kullanabilirsiniz. DDNS Protokolü standartlaştırılmış olduğundan, DNS sunucusunda bağlama kullanmadığınız durumlarda `nsupdate` bile kullanabilirsiniz.
 
-DNS sunucusunda ana bilgisayar girişi oluşturmak ve korumak için DHCP istemcisi tarafından sağlanan kancaları kullanabilirsiniz. DHCP döngüsü sırasında istemci */etc/dhcp/dhclient-exit-hooks.d/* komut dosyalarını yürütür. Yeni IP adresini kullanmak `nsupdate`için kancaları kullanabilirsiniz. Örnek:
+DHCP istemcisi tarafından, DNS sunucusunda ana bilgisayar adı girişini oluşturmak ve korumak için sunulan kancaları kullanabilirsiniz. DHCP çevrimi sırasında istemci, komut dosyalarını */etc/DHCP/dhclient-Exit-kancas.d/* içinde yürütür. Kullanarak `nsupdate`yeni IP adresini kaydetmek için kancaları kullanabilirsiniz. Örneğin:
 
 ```bash
 #!/bin/sh
@@ -61,11 +61,11 @@ then
 fi
 ```
 
-Güvenli DDNS güncelleştirmeleri gerçekleştirmek için `nsupdate` komutu da kullanabilirsiniz. Örneğin, Bind DNS sunucusu kullanırken, ortak-özel anahtar çifti [oluşturulur.](http://linux.yyz.us/nsupdate/) DNS sunucusu, istekteki imzayı doğrulayabilmek için anahtarın ortak bölümüyle [yapılandırılır.](http://linux.yyz.us/dns/ddns-server.html) Anahtar çiftini sağlamak `nsupdate`için, `-k` DDNS güncelleştirme isteğinin imzalanması için bu seçeneği kullanın.
+Güvenli DDNS güncelleştirmeleri gerçekleştirmek `nsupdate` için komutunu da kullanabilirsiniz. Örneğin, bir BIND DNS sunucusu kullanırken, ortak özel anahtar çifti [oluşturulur](http://linux.yyz.us/nsupdate/). DNS sunucusu, anahtarın genel bölümüyle [yapılandırılır](http://linux.yyz.us/dns/ddns-server.html) , böylece istekteki imzayı doğrulayabilirler. İçin `nsupdate`anahtar çiftini sağlamak üzere, DDNS Güncelleştirme isteğinin `-k` imzalanabilmesi için seçeneğini kullanın.
 
-Bir Windows DNS sunucusu kullanırken, `-g` Kerberos kimlik doğrulamasını parametre `nsupdate`ile kullanabilirsiniz, ancak Windows sürümünde `nsupdate`kullanılamaz. Kerberos'u kullanmak `kinit` için kimlik bilgilerini yüklemek için kullanın. Örneğin, kimlik bilgilerini bir [anahtar sekme dosyasından](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)yükleyebilirsiniz), ardından `nsupdate -g` önbellekten kimlik bilgilerini alır.
+Bir Windows DNS sunucusu kullanırken, içindeki `-g` `nsupdate`parametresiyle Kerberos kimlik doğrulamasını kullanabilirsiniz, ancak Windows sürümünde kullanılamaz. `nsupdate` Kerberos 'u kullanmak için kimlik `kinit` bilgilerini yüklemek üzere kullanın. Örneğin, bir [keytab dosyasından](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)kimlik bilgilerini yükleyebilir ve sonra `nsupdate -g` önbellekten kimlik bilgilerini alabilir.
 
-Gerekirse, VM'lerinize bir DNS arama soneki ekleyebilirsiniz. */etc/resolv.conf* dosyasında DNS soneki belirtilir. Çoğu Linux dağıtımcısı bu dosyanın içeriğini otomatik olarak yönetir, bu nedenle genellikle bu dosyayı ayarlayamazsınız. Ancak, DHCP istemcikomutunu `supersede` kullanarak sonek geçersiz kılınabilir. Sonekleri geçersiz kılmak için */etc/dhcp/dhclient.conf* dosyasına aşağıdaki satırı ekleyin:
+Gerekirse, sanal makinelerinize bir DNS arama son eki ekleyebilirsiniz. DNS son eki, */etc/resolv.exe* dosyasında belirtilir. Çoğu Linux, bu dosyanın içeriğini otomatik olarak yönetir, bu nedenle genellikle düzenleyemezsiniz. Ancak, DHCP istemcisinin `supersede` komutunu kullanarak soneki geçersiz kılabilirsiniz. Son eki geçersiz kılmak için, */etc/DHCP/dhclient.exe* dosyasına şu satırı ekleyin:
 
 ```
 supersede domain-name <required-dns-suffix>;

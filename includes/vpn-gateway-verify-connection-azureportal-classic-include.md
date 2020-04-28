@@ -9,10 +9,10 @@ ms.date: 010/17/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 26e48d1af8e29c7d00a80910dcca62811da14822
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67673548"
 ---
 Azure portalında, bağlantıya giderek klasik bir Sanal Ağ VPN Ağ Geçidi bağlantısının durumunu görüntüleyebilirsiniz. Aşağıdaki adımlarda, bağlantınıza gitmek ve doğrulamak için bir yol gösterilmiştir.
@@ -27,4 +27,4 @@ Azure portalında, bağlantıya giderek klasik bir Sanal Ağ VPN Ağ Geçidi ba�
     ![Bağlantı durumu](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "Bağlantı durumu")
 5. Bağlantı hakkında daha fazla bilgi görüntülemek için bağlantının adına tıklayarak **Siteden Siteye VPN Bağlantısı** dikey penceresini açın.
 
-    ![Bağlantı durumu daha fazla](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Bağlantı durumu daha fazla bilgi")
+    ![Bağlantı durumu daha](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Bağlantı durumu daha fazla bilgi")

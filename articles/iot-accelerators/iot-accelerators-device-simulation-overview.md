@@ -1,6 +1,6 @@
 ---
-title: Cihaz simülasyonuna genel bakış - Azure | Microsoft Dokümanlar
-description: Cihaz Simülasyonu çözüm hızlandırıcısının ve yeteneklerinin açıklaması.
+title: Cihaz simülasyonu genel bakış-Azure | Microsoft Docs
+description: Cihaz benzetimi çözüm hızlandırıcısının açıklaması ve özellikleri.
 author: dominicbetts
 manager: philmea
 ms.service: iot-accelerators
@@ -10,57 +10,57 @@ ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
 ms.openlocfilehash: f58eb05ed582cf18157a76f4d637d72a228f4e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65464890"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Cihaz Simülasyonu çözüm hızlandırıcısına genel bakış
 
-Bulut tabanlı bir IoT çözümünde, aygıtlarınız sıcaklık, konum ve durum gibi telemetrigöndermek için bulut bitiş noktasına bağlanır. Çözümünüz bu telemetriyi tüketerek eylemde kalmanızı veya ondan öngörüler elde etmenizi sağlar.
+Bulut tabanlı bir IoT çözümünde, cihazlarınız sıcaklık, konum ve durum gibi telemetri göndermek için bir bulut uç noktasına bağlanır. Çözümünüz bu Telemetriyi tüketir ve bu telemetri aracılığıyla eylemler gerçekleştirebilir veya bundan Öngörüler türetebilirsiniz.
 
-Bir IoT Çözümü geliştirdiğinizde, deneme ve test bu sürecin temel parçalarıdır. Simülasyon bu süreç boyunca önemli bir araçtır. Cihaz Simülasyonu ile şunları yapabilirsiniz:
+IoT çözümü geliştirirken, deneme ve test bu işlemin önemli parçalarından biridir. Benzetim, bu süreç boyunca önemli bir araçtır. Cihaz benzetimi ile şunları yapabilirsiniz:
 
-* Hızlı bir şekilde bir prototip olsun ve çalışan ve daha sonra anında simüle cihaz davranışı ayarlayarak yineleyin. Bu işlem, pahalı donanımyatırım yapmadan önce fikri kanıtlamak sağlar. Saniyeler içinde bir prototip aygıtı oluşturmak için web kullanıcı aracı üzerinden özel aygıtlar oluşturabilirsiniz.
-* Gerçek aygıt davranışlarını simüle ederek çözümü cihazdan çözüme beklendiği gibi doğrulayın. Gerçekçi simüle telemetri oluşturmak için JavaScript kullanarak karmaşık aygıt davranışları komut dosyası olabilir.
-* Normal, tepe noktası ve en yüksek yük koşullarını simüle ederek çözümünüzü ölçeklendirin. Ölçek testleri, çözümünüzü çalıştırmak için gereken Azure kaynaklarını doğru boyutlandırmanıza da yardımcı olur.
+* Hızlı bir şekilde bir prototip oluşturun ve çalıştırın ve sonra sanal cihaz davranışını anında ayarlayarak yineleyin. Bu işlem, maliyetli donanıma yatırım yapmadan önce fikri kanıtlamanızı sağlar. Saniyeler içinde bir prototip cihaz oluşturmak için Web Kullanıcı arabirimi aracılığıyla özel cihazlar oluşturabilirsiniz.
+* Gerçek dünyada cihaz davranışlarına benzetim yaparak, çözümün cihazdan çözüme beklendiğini doğrulayın. Gerçekçi sanal telemetri oluşturmak için JavaScript kullanarak karmaşık cihaz davranışlarına komut dosyası ekleyebilirsiniz.
+* Normal, yoğun ve en yoğun yük koşullarına benzetilerek çözümünüze test ölçeklendirin. Ölçek testleri, çözümünüzü çalıştırmak için gereken Azure kaynaklarını doğru boyuta getirmenize de yardımcı olur.
 
 ![Örnek drone simülasyonu](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
 
-Aygıt Simülasyonu ile, gerçek cihazlarınızı simüle etmek için aygıt modellerini tanımlayabilirsiniz. Bu model ileti biçimlerini, ikiz özelliklerini ve yöntemleri içerir. JavaScript ile karmaşık aygıt davranışlarını da simüle edebilirsiniz.
+Cihaz benzetimi ile gerçek cihazlarınızın benzetimini yapmak için cihaz modellerini tanımlayabilirsiniz. Bu model İleti biçimlerini, ikizi özelliklerini ve yöntemlerini içerir. JavaScript ile karmaşık cihaz davranışlarının benzetimini de yapabilirsiniz.
 
-Herhangi bir IoT hub'ına bağlanan bir ila binlerce aygıt için simülasyonlar çalıştırabilirsiniz. Teste yardımcı olmak için, tek başına bir ortam için Aygıt Simülasyonu ile birlikte isteğe bağlı olarak bir IoT hub'ı dağıtabilirsiniz.
+Herhangi bir IoT Hub 'ına bağlanan binlerce cihaza yönelik benzetimleri çalıştırabilirsiniz. Test ile ilgili yardım için, isteğe bağlı olarak tek başına bir ortam için cihaz benzetimine sahip bir IoT Hub 'ı dağıtabilirsiniz.
 
-Cihaz Simülasyonu ücretsizdir. Ancak, Aygıt Simülasyonu bulutta Azure aboneliğinize dağıtır ve Azure kaynaklarını tüketir. Aygıt Simülasyonu gereksinimlerinizi karşılamıyorsa, kaynak kodu kopyalayıp değiştirmeniz için [GitHub'da da kullanılabilir.](https://github.com/Azure/device-simulation-dotnet)
+Cihaz benzetimi ücretsizdir. Ancak, cihaz benzetimi Bulutta Azure aboneliğinize dağıtılır ve Azure kaynaklarını kullanır. Cihaz benzetimi gereksinimlerinizi karşılamıyorsa, kopyalama ve değiştirme için [GitHub 'da kaynak kodu da mevcuttur](https://github.com/Azure/device-simulation-dotnet) .
 
-## <a name="sample-simulations"></a>Örnek simülasyonlar
+## <a name="sample-simulations"></a>Örnek benzetimler
 
-Aygıt Simülasyonu'ni dağıttığınızda, bazı örnek simülasyonlar ve örnek aygıtlar elde elabilirsiniz. Aygıt Simülasyonu'nun nasıl kullanılacağını öğrenmek için bu örnekleri kullanabilirsiniz. Başlamak için, [10 kamyon simüle](quickstart-device-simulation-deploy.md)eden bir örnek simülasyon çalıştırın. Ayrıca [sağlanan birçok örnek cihazlardan birini kullanarak kendi simülasyon oluşturabilirsiniz.](iot-accelerators-device-simulation-create-simulation.md)
+Cihaz simülasyonu dağıtırken, bazı örnek benzetimleri ve örnek cihazları alırsınız. Bu örnekleri, cihaz benzetimi kullanımını öğrenmek için kullanabilirsiniz. Başlamak için [10 structuralks benzetimi yapan bir örnek simülasyonu](quickstart-device-simulation-deploy.md)çalıştırın. Ayrıca, [belirtilen birçok örnek cihazdan birini kullanarak kendi simülasyoninizi oluşturabilirsiniz](iot-accelerators-device-simulation-create-simulation.md).
 
 ![Benzetim yapılandırması](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
-## <a name="custom-simulated-devices"></a>Özel simüle edilmiş cihazlar
+## <a name="custom-simulated-devices"></a>Özel sanal cihazlar
 
-Aygıt Simülasyonu'nu kullanarak simülasyonlarınızda kullanmak üzere [özel aygıt modelleri oluşturabilirsiniz.](iot-accelerators-device-simulation-create-custom-device.md) Örneğin, sıcaklık ve nem telemetrisi gönderen yeni bir buzdolabı cihazı modeli tanımlayabilirsiniz. Özel simüle edilmiş aygıtlar, rastgele, artan veya atere telemetri değerlerine sahip basit aygıt davranışları için idealdir.
+Benzetimlerinizde kullanmak üzere [özel cihaz modelleri oluşturmak](iot-accelerators-device-simulation-create-custom-device.md) Için cihaz simülasyonu ' nu kullanabilirsiniz. Örneğin, sıcaklık ve nem telemetrisi gönderen yeni bir soğutucu cihaz modeli tanımlayabilirsiniz. Özel sanal cihazlar, telemetri değerlerini rastgele, artırma veya azaltma ile basit cihaz davranışları için idealdir.
 
 ![Cihaz modelini oluşturma](media/iot-accelerators-device-simulation-overview/adddevicemodel.png)
 
-## <a name="advanced-simulated-devices"></a>Gelişmiş simüle edilmiş cihazlar
+## <a name="advanced-simulated-devices"></a>Gelişmiş sanal cihazlar
 
-Bir aygıtın gönderdiği telemetri değerleri üzerinde daha fazla denetime ihtiyacınız olduğunda, gelişmiş bir aygıt modeli kullanabilirsiniz. Gelişmiş aygıt modelleri, gönderilen telemetri değerlerini işlemek için JavaScript desteğini etkinleştirin. Örneğin, sıcak güneşli bir günde park halindeki bir arabanın iç sıcaklığını simüle edebilirsiniz - dış sıcaklık arttıkça, iç sıcaklık katlanarak artar.
+Bir cihazın gönderdiği telemetri değerleri üzerinde daha fazla denetime ihtiyacınız olduğunda, gelişmiş bir cihaz modeli kullanabilirsiniz. Gelişmiş cihaz modelleri, gönderilen telemetri değerlerini değiştirmek için JavaScript desteğini etkinleştirir. Örneğin, dış sıcaklık arttığı için, bir park eden arabasının iç sıcaklığını taklit edebilirsiniz. dış sıcaklık arttıkça, iç sıcaklık katlanarak üstel olarak artar.
 
-Gelişmiş aygıt modelleri, JSON aygıt tanım dosyası ve ilgili JavaScript dosyalarından oluşan [kendi aygıt modellerinizi oluşturmanıza ve yüklemenize](iot-accelerators-device-simulation-advanced-device.md) olanak tanır.
+Gelişmiş cihaz modelleri, bir JSON cihaz tanımı dosyasından ve ilgili JavaScript dosyalarından oluşan [kendi cihaz modellerinizi oluşturup karşıya yüklemenizi](iot-accelerators-device-simulation-advanced-device.md) sağlar.
 
-Gelişmiş cihaz modelleri şunları sağlar:
+Gelişmiş cihaz modelleri şunları yapmanızı sağlar:
 
-* Telemetri türleri ile birlikte aygıttan gönderilen ileti biçimini belirtin.
-* Zaman içinde aygıtın durumunu koruyan telemetri değerleri oluşturmak için özel komut dosyası kullanın.
-* Benzetimli aygıtın yöntemlere nasıl yanıt veriş olduğunu belirtmek için özel komut dosyası kullanın.
+* Cihazdan, telemetri türleriyle birlikte gönderilen ileti biçimini belirtin.
+* Zaman içinde cihazın durumunu koruyacak telemetri değerlerini oluşturmak için özel betik kullanımı kullanın.
+* Sanal cihazın yöntemlere nasıl yanıt verdiğini belirtmek için özel betik kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Aygıt Simülasyonu çözüm hızlandırıcısını ve yeteneklerini öğrendiniz. Çözüm hızlandırıcısını kullanmaya başlamak için hızlı başlatmaya devam edin:
+Bu makalede cihaz benzetimi Çözüm Hızlandırıcısı ve özellikleri hakkında bilgi edindiniz. Çözüm hızlandırıcıyı kullanmaya başlamak için hızlı başlangıç ile devam edin:
 
 > [!div class="nextstepaction"]
-> [Azure'da bir IoT aygıt simülasyonu dağıtma ve çalıştırma](quickstart-device-simulation-deploy.md)
+> [Azure 'da IoT cihaz benzetimi dağıtma ve çalıştırma](quickstart-device-simulation-deploy.md)

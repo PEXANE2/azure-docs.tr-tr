@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d93de4ed758afb5e951bb5e19f4f7adb290e461c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67188374"
 ---
-Aşağıdaki tabloda, Linux genelleştirilmiş ve özel işletim sistemi görüntülerinin olası yükleme ve yakalama kombinasyonları listelenmiştir. Herhangi bir hata olmadan işleyecek kombinasyonlar Y ile gösterilir ve hata lar atan kombinasyonlar N ile gösterilir. Karşılaşılaca farklı hataların nedenleri ve çözümleri tablonun altında verilmiştir.
+Aşağıdaki tabloda, Linux Genelleştirilmiş ve özel işletim sistemi görüntülerinin olası karşıya yükleme ve yakalama birleşimleri listelenmektedir. Herhangi bir hata olmadan işleyecek birleşimler bir Y ile belirtilir ve hata oluşturacak olanlar bir N ile belirtilir. Çalıştıracağınız farklı hatalara yönelik nedenler ve çözümler tablonun altında verilmiştir.
 
-| İşletim Sistemi | Upload spec. | Yükleyin gen. | Yakalama spec. | General'i yakalayın. |
+| İşletim Sistemi | Özelliği yükleyin. | Karşıya yükleme gen. | Yakalama belirtimi. | Genel yakalama. |
 | --- | --- | --- | --- | --- |
 | Linux gen. |N<sup>1</sup> |E |N<sup>3</sup> |E |
-| Linux spec. |E |N<sup>2</sup> |E |N<sup>4</sup> |
+| Linux belirtimi. |E |N<sup>2</sup> |E |N<sup>4</sup> |
 

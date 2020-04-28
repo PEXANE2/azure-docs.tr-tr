@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 497a142639375cee78bb981a42f0db4047d6ed50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67188188"
 ---
 > [!TIP]
 > 
-> **Microsoft Azure Depolama Gezgini'ni deneyin**
+> **Microsoft Azure Depolama Gezgini deneyin**
 > 
-> [Microsoft Azure Depolama Gezgini,](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) Microsoft'un ücretsiz ve bağımsız bir uygulamasıdır. Windows, macOS ve Linux'taki Azure Depolama verileriyle görsel olarak çalışmak için kullanabilirsiniz.
+> [Microsoft Azure Depolama Gezgini](../articles/vs-azure-tools-storage-manage-with-storage-explorer.md) , Microsoft 'un ücretsiz ve tek başına uygulamasıdır. Windows, macOS ve Linux üzerinde Azure Depolama verileriyle görsel olarak çalışmak için bu uygulamayı kullanabilirsiniz.
 > 
 > 
 

@@ -1,6 +1,6 @@
 ---
-title: Grup bilgilerinizi edin - Azure Etkin Dizini | Microsoft Dokümanlar
-description: Azure Active Directory'yi kullanarak grubunuzun bilgilerini nasıl edinacağınız hakkında talimatlar.
+title: Grup bilgilerinizi düzenleme-Azure Active Directory | Microsoft Docs
+description: Azure Active Directory kullanarak grubunuzun bilgilerini düzenleme yönergeleri.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,46 +14,46 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dc06abca08b2522ac57552e85f7c1bac3ef854af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68561886"
 ---
-# <a name="edit-your-group-information-using-azure-active-directory"></a>Azure Etkin Dizini'ni kullanarak grup bilgilerinizi edin
+# <a name="edit-your-group-information-using-azure-active-directory"></a>Azure Active Directory kullanarak Grup bilgilerinizi düzenleme
 
-Azure Etkin Dizini 'ni (Azure AD) kullanarak, bir grubun adını, açıklamasını veya üyelik türünü güncelleştirmeyi de içeren ayarlarını değiştirebilirsiniz.
+Azure Active Directory (Azure AD) kullanarak, adını, açıklamasını veya üyelik türünü güncelleştirmek dahil olmak üzere bir grubun ayarlarını düzenleyebilirsiniz.
 
-## <a name="to-edit-your-group-settings"></a>Grup ayarlarınızı yeniden yapmak için
+## <a name="to-edit-your-group-settings"></a>Grup ayarlarınızı düzenlemek için
 1. Dizin için bir Genel yönetici hesabı kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
 
-2. **Azure Etkin Dizini'ni**seçin ve ardından **Gruplar'ı**seçin.
+2. **Azure Active Directory**' yi seçin ve ardından **gruplar**' ı seçin.
 
-    Tüm gruplar - **Tüm gruplar** sayfası görüntülenir ve tüm etkin gruplarınızı gösterir.
+    Tüm etkin gruplarınızı gösteren **gruplar-tüm gruplar** sayfası açılır.
 
-3. Gruplar **- Tüm gruplar** sayfasından, grup adının olabildiğince çoğunu **Arama** kutusuna yazın. Bu makalenin amaçları için, **MDM politikasını** arıyoruz - Batı grubu.
+3. **Gruplar-tüm gruplar** sayfasında, **arama** kutusuna, Grup adının çoğunu yazın. Bu makalenin amaçları doğrultusunda **MDM ilkesi-Batı** grubunu arıyoruz.
 
-    Arama **sonuçları,** siz daha fazla karakter yazdıkça güncelleyerek Arama kutusunun altında görünür.
+    **Arama sonuçları** , daha fazla karakter yazarken, ' ın altında görüntülenir.
 
-    ![Arama kutusunda arama metni bulunan tüm gruplar sayfası](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
+    ![Tüm gruplar sayfası, arama kutusunda arama metniyle](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
 
-4. Grup **MDM ilkesini**seçin - Batı ve ardından **Yönet** alanından **Özellikler'i** seçin.
+4. **MDM ilkesi-Batı**grubunu seçin ve ardından **Yönet** alanından **Özellikler** ' i seçin.
 
-    ![Üye seçeneği ve bilgilerin vurgulandığı Grup Genel Bakış sayfası](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
+    ![Gruba genel bakış sayfası, üye seçeneği ve bilgiler vurgulandı](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
-5. Genel **ayarlar** bilgilerini gerektiği gibi güncelleştirin:
+5. Aşağıdakiler dahil olmak üzere **Genel ayarlar** bilgilerini gerektiği şekilde güncelleştirin:
 
-    ![Bir grubun özellikleri ayarları](media/active-directory-groups-settings-azure-portal/group-properties-settings.png)
+    ![Bir grubun Özellikler ayarları](media/active-directory-groups-settings-azure-portal/group-properties-settings.png)
 
-    - **Grup adı.** Varolan grup adını edin.
+    - **Grup adı.** Var olan grup adını düzenleyin.
     
-    - **Grup açıklaması.** Varolan grup açıklamasını edin.
+    - **Grup açıklaması.** Mevcut Grup açıklamasını düzenleyin.
 
-    - **Grup türü.** Oluşturulduktan sonra grubun türünü değiştiremezsiniz. **Grup türünü**değiştirmek için grubu silmeniz ve yeni bir grup oluşturmanız gerekir.
+    - **Grup türü.** Oluşturulduktan sonra grup türünü değiştiremezsiniz. **Grup türünü**değiştirmek için, grubu silip yeni bir tane oluşturmanız gerekir.
     
-    - **Üyelik türü.** Üyelik türünü değiştirin. Kullanılabilir çeşitli üyelik türleri hakkında daha fazla bilgi için [bkz: Temel bir grup oluşturun ve Azure Active Directory portalını kullanarak üye ekleyin.](active-directory-groups-create-azure-portal.md)
+    - **Üyelik türü.** Üyelik türünü değiştirin. Kullanılabilir çeşitli üyelik türleri hakkında daha fazla bilgi için bkz. [nasıl yapılır: temel Grup oluşturma ve Azure Active Directory portalını kullanarak üye ekleme](active-directory-groups-create-azure-portal.md).
     
-    - **Nesne Kimliği.** Nesne Kimliğini değiştiremezsiniz, ancak grup için PowerShell komutlarınızda kullanmak üzere kopyalayabilirsiniz. PowerShell cmdlets kullanma hakkında daha fazla bilgi için [grup ayarlarını yapılandırmak için Azure Active Directory cmdlets'e](../users-groups-roles/groups-settings-v2-cmdlets.md)bakın.
+    - **Nesne KIMLIĞI.** Nesne KIMLIĞINI değiştiremezsiniz, ancak gruba ait PowerShell komutlarınız için kullanmak üzere kopyalayabilirsiniz. PowerShell cmdlet 'leri kullanma hakkında daha fazla bilgi için bkz. [Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet 'leri](../users-groups-roles/groups-settings-v2-cmdlets.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalelerde Azure Active Directory ile ilgili ek bilgi sağlanmıştır.
@@ -62,7 +62,7 @@ Bu makalelerde Azure Active Directory ile ilgili ek bilgi sağlanmıştır.
 
 - [Temel bir grup oluşturma ve üye ekleme](active-directory-groups-create-azure-portal.md)
 
-- [Bir gruptan üye ekleme veya kaldırma](active-directory-groups-members-azure-portal.md)
+- [Gruba üye ekleme veya gruptan üye kaldırma](active-directory-groups-members-azure-portal.md)
 
 - [Bir gruptaki kullanıcılar için dinamik kuralları yönetme](../users-groups-roles/groups-create-rule.md)
 
@@ -70,4 +70,4 @@ Bu makalelerde Azure Active Directory ile ilgili ek bilgi sağlanmıştır.
 
 - [Grupları kullanarak kaynaklara erişimi yönetme](active-directory-manage-groups.md)
 
-- [Azure Etkin Dizini'ne Azure aboneliği ni ilişkilendirme veya ekleme](active-directory-how-subscriptions-associated-directory.md)
+- [Azure Active Directory bir Azure aboneliği ilişkilendirin veya ekleyin](active-directory-how-subscriptions-associated-directory.md)

@@ -9,19 +9,19 @@ ms.date: 02/01/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1aca39a7ff162aa3c42fdb3ca5999c71091ec02e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67188104"
 ---
- Azure Bulut Kabuğu'nu kullanıyorsanız, 'Deneyin' seçeneğini tıkladıktan sonra Otomatik olarak Azure hesabınızda oturum açabilirsiniz. Yerel oturum açmak için PowerShell konsolunuzu yüksek ayrıcalıklarla açın ve bağlanmak için cmdlet çalıştırın.
+ Azure Cloud Shell kullanıyorsanız, ' dene ' ' ye tıkladıktan sonra Azure hesabınızda otomatik olarak oturum açın. Yerel olarak oturum açmak için, PowerShell konsolunuzu yükseltilmiş ayrıcalıklarla açın ve bağlanmak için cmdlet 'ini çalıştırın.
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-Birden fazla aboneliğiniz varsa, Azure aboneliklerinizin bir listesini alın.
+Birden fazla aboneliğiniz varsa Azure aboneliklerinizin bir listesini alın.
 
 ```azurepowershell-interactive
 Get-AzSubscription
