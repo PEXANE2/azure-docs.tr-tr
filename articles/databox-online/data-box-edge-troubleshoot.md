@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Kutusu Kenarı ile sorun gidermek için Azure portalını kullanın | Microsoft Dokümanlar
-description: Azure Veri Kutusu Kenarı sorunlarını nasıl gidereceklerini açıklar.
+title: Sorun gidermek için Azure portal kullanın Azure Data Box Edge | Microsoft Docs
+description: Azure Data Box Edge sorunları nasıl giderebileceğinizi açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 3a8d1f93930d2b298eeb7d10a73624b9a19bcc0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60756262"
 ---
 # <a name="troubleshoot-your-azure-data-box-edge-issues"></a>Azure Data Box Edge sorunlarınızı giderme 
 
-Bu makalede, Azure Veri Kutusu Kenarınızdaki sorunları nasıl gideriniz açıklanmaktadır. 
+Bu makalede Azure Data Box Edge sorunları nasıl giderebileceğiniz açıklanır. 
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -41,7 +41,7 @@ Cihaz hatalarını tanılamak ve gidermek için tanılama testlerini çalıştı
 
     Test başarısız olursa önerilen eylem URL'si gösterilir. URL'ye tıklayarak önerilen eylemi görüntüleyebilirsiniz.
  
-    ![Başarısız testler için uyarıları gözden geçirme](media/data-box-edge-troubleshoot/run-diag-3.png)
+    ![Başarısız testler için uyarıları gözden geçirin](media/data-box-edge-troubleshoot/run-diag-3.png)
 
 
 ## <a name="collect-support-package"></a>Destek paketi toplama
@@ -64,9 +64,9 @@ Yükleme ve yenileme işlemlerinde karşılaşılan hatalar ilgili hata dosyalar
 
 1. Hata dosyalarını görüntülemek için paylaşımınıza gidin ve içeriği görüntülemek için paylaşıma tıklayın. 
 
-      ![Paylaşım içeriğine bağlanma ve görüntüleme](media/data-box-edge-troubleshoot/troubleshoot-logs-1.png)
+      ![Paylaşılan içeriğe bağlanma ve içeriği görüntüleme](media/data-box-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. Microsoft _Veri Kutusu Kenar klasörünü_tıklatın. Bu klasör iki alt klasör içerir:
+2. _Microsoft Data Box Edge klasörüne_tıklayın. Bu klasör iki alt klasör içerir:
 
     - Karşıya yükleme hatalarının bulunduğu Upload klasörü.
     - Yenileme sırasında karşılaşılan hataların bulunduğu Refresh klasörü.

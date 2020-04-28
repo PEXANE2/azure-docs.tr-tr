@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Bağlantısı: Azure REKLAM'ına zaten sahipseniz | Microsoft Dokümanlar"
-description: Bu konu, varolan bir Azure AD kiracınız olduğunda Bağlan'ın nasıl kullanılacağını açıklar.
+title: "Azure AD Connect: zaten Azure AD 'ye sahipsiniz | Microsoft Docs"
+description: Bu konuda, mevcut bir Azure AD kiracınız olduğunda Connect 'in nasıl kullanılacağı açıklanmaktadır.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,62 +17,62 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3636b88b14cf7e76e4fb023434316e7ee31ded04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71336815"
 ---
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Varolan bir kiracınız varsa
-Azure AD Connect'in nasıl kullanılacağına dair konuların çoğu, yeni bir Azure AD kiracısıyla başladığınızı ve orada kullanıcı veya başka nesne bulunmadığını varsayar. Ancak bir Azure REKLAM kiracısıyla başladıysanız, kullanıcılar ve diğer nesnelerle doldurulduysanız ve şimdi Connect'i kullanmak istiyorsanız, bu konu tam size göre.
+# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: var olan bir kiracınız olduğunda
+Azure AD Connect kullanımı ile ilgili konuların çoğu yeni bir Azure AD kiracısıyla başladığınız ve orada hiç Kullanıcı veya başka nesne olmadığı varsayılır. Ancak, bir Azure AD kiracısı ile başladıysanız, bunu kullanıcılar ve diğer nesnelerle doldurduktan sonra da Bağlan ' ı kullanmak istiyorsanız, bu konu sizin için önemlidir.
 
 ## <a name="the-basics"></a>Temel bilgiler
-Azure AD'deki bir nesne bulutta (Azure AD) veya şirket içinde ustadır. Tek bir nesne için, Azure AD'deki bazı öznitelikleri ve diğer bazı öznitelikleri şirket içinde yönetemezsiniz. Her nesnenin, nesnenin yönetildiği yeri gösteren bir bayrağı vardır.
+Azure AD 'deki bir nesne, bulutta (Azure AD) veya şirket içinde ana kopyalı olabilir. Tek bir nesne için, bazı öznitelikleri şirket içi ve Azure AD içindeki bazı öznitelikleri yönetemezsiniz. Her nesne, nesnenin nerede yönetildiğini belirten bir bayrak içerir.
 
-Bazı kullanıcıları şirket içinde ve diğer kullanıcıları bulutta yönetebilirsiniz. Bu yapılandırma için ortak bir senaryo muhasebe çalışanları ve satış çalışanları nın bir karışımı olan bir kuruluştur. Muhasebe çalışanlarının şirket içi bir AD hesabı vardır, ancak satış çalışanlarının yok, Azure AD'de bir hesapları vardır. Bazı kullanıcıları şirket içinde, bazılarını da Azure AD'de yönetebilirsiniz.
+Şirket içinde ve diğer kullanıcıları bulutta yönetebilirsiniz. Bu yapılandırma için yaygın bir senaryo, hesap çalışanları ve satış çalışanları karışımını içeren bir kuruluştur. Muhasebe çalışanlarının şirket içi bir AD hesabı vardır, ancak satış çalışanları Azure AD 'de bir hesaba sahip olurlar. Şirket içi ve bazı kullanıcıları Azure AD 'de yönetirsiniz.
 
-Azure AD'de de şirket içi REKLAM'da bulunan kullanıcıları yönetmeye başladıysanız ve daha sonra Bağlantı'yı kullanmak istiyorsanız, göz önünde bulundurmanız gereken bazı ek endişeler vardır.
+Azure AD 'de bulunan ve şirket içi AD 'de bulunan kullanıcıları yönetmeye başladıysanız ve daha sonra Connect kullanmak istiyorsanız, dikkate almanız gereken bazı ek sorunlar vardır.
 
-## <a name="sync-with-existing-users-in-azure-ad"></a>Azure AD'deki mevcut kullanıcılarla eşitleme
-Azure AD Connect'i yüklediğinizde ve eşitlemeye başladığınızda, Azure AD eşitleme hizmeti (Azure AD'de) her yeni nesneyi denetler ve eşleşecek varolan bir nesne bulmaya çalışır. Bu işlem için kullanılan üç öznitelikleri vardır: **userPrincipalName**, **proxyAdresleri**ve **sourceAnchor**/**immutableID**. **userPrincipalName** ve **proxyAdresler** bir maç **yumuşak**bir eşleşme olarak bilinir. **sourceAnchor'daki** bir eşleşme **sert eşleşme**olarak bilinir. **ProxyAdresleri** için yalnızca **SMTP**ile değer atfetmek: , birincil e-posta adresi, değerlendirme için kullanılır.
+## <a name="sync-with-existing-users-in-azure-ad"></a>Azure AD 'de mevcut kullanıcılarla eşitleme
+Azure AD Connect yüklediğinizde ve eşitlemeye başladığınızda, Azure AD eşitleme hizmeti (Azure AD 'de) her yeni nesne üzerinde bir denetim yapar ve eşleştirilecek varolan bir nesneyi bulmaya çalışır. Bu işlem için kullanılan üç öznitelik vardır: **userPrincipalName**, **proxyAddresses**ve **sourcetutturucu**/**ImmutableID**. **UserPrincipalName** ve **proxyAddresses** ile bir eşleşme, **yumuşak eşleşme**olarak bilinir. **Sourcetutturucu** üzerinde bir eşleşme, **sabit eşleşme**olarak bilinir. **ProxyAddresses** özniteliği Için yalnızca **SMTP:**, birincil e-posta adresi olan değer değerlendirme için kullanılır.
 
-Eşleşme yalnızca Connect'ten gelen yeni nesneler için değerlendirilir. Varolan bir nesneyi, bu özniteliklerden herhangi birini eşleştireceği şekilde değiştirirseniz, bunun yerine bir hata görürsünüz.
+Eşleşme yalnızca, Connect 'ten gelen yeni nesneler için değerlendirilir. Varolan bir nesneyi bu özniteliklerin herhangi biriyle eşleşmesine olanak verecek şekilde değiştirirseniz, bunun yerine bir hata görürsünüz.
 
-Azure AD, Connect'ten gelen bir nesne için öznitelik değerlerinin aynı olduğu ve Azure AD'de zaten mevcut olan bir nesne bulursa, Azure AD'deki nesne Connect tarafından devralınır. Daha önce bulut tarafından yönetilen nesne şirket içinde yönetilen olarak işaretlenir. Azure AD'deki şirket içi AD değerine sahip tüm öznitelikler şirket içi değerle birlikte üzerine yazılır. Özel durum, bir özniteliğin şirket içinde **NULL** değeri ne zaman olmasıdır. Bu durumda, Azure AD'deki değer kalır, ancak yine de şirket içinde yalnızca başka bir şeyle değiştirebilirsiniz.
+Azure AD, bağlanmasından gelen bir nesne için öznitelik değerlerinin aynı olduğu ve Azure AD 'de zaten bulunduğu bir nesne bulursa, Azure AD 'deki nesne, Connect tarafından üzerinden alınır. Daha önce bulut tarafından yönetilen nesne, şirket içi yönetilen olarak işaretlenir. Şirket içi AD 'deki bir değere sahip Azure AD 'deki tüm özniteliklerin şirket içi değer ile üzerine yazılır. Özel durum, bir özniteliğin şirket içinde **null** değere sahip olduğu durumdur. Bu durumda, Azure AD 'deki değer kalır, ancak yine de şirket içinde yalnızca başka bir şeye değiştirebilirsiniz.
 
 > [!WARNING]
-> Azure AD'deki tüm öznitelikler şirket içi değere göre üzerine yazılacağınız için, şirket içinde iyi verilere sahip olduğundan emin olun. Örneğin, yalnızca Office 365'te e-posta adresini yönettiyseniz ve şirket içi AD DS'de güncel tutmadıysanız, AD DS'de bulunmayan Azure AD/Office 365'teki tüm değerleri kaybedersiniz.
+> Azure AD 'deki tüm özniteliklerin şirket içi değer tarafından üzerine yazılacağı için şirket içinde iyi veri bulunduğundan emin olun. Örneğin, yalnızca Office 365 ' de yönetilen e-posta adresiniz varsa ve şirket içi AD DS güncel tutulmazsa, AD DS Azure AD/Office 365 ' deki tüm değerleri kaybedersiniz.
 
 > [!IMPORTANT]
-> Her zaman ekspres ayarlar tarafından kullanılan parola eşitleme kullanıyorsanız, Azure AD'deki parola şirket içi AD'deki parolayla birlikte üzerine yazılır. Kullanıcılarınız farklı parolaları yönetmek için kullanılıyorsa, Connect'i yüklediğinizde şirket içi parolayı kullanmaları gerektiğini bildirmeniz gerekir.
+> Her zaman hızlı ayarlar tarafından kullanılan parola eşitleme ' yi kullanırsanız, Azure AD 'deki parolanın şirket içi AD 'deki parolayla üzerine yazılır. Kullanıcılarınız farklı parolaları yönetmek için kullanılıyorsa, Connect ' i yükledikten sonra şirket içi parolayı kullanmaları gerektiğini bilgilendirmeniz gerekir.
 
-Önceki bölüm ve uyarı planlamanızda dikkate alınmalıdır. Azure AD'de şirket içi AD DS'de yansıtılmayan birçok değişiklik yaptıysanız, nesnelerinizi Azure AD Connect ile eşitlemeden önce AD DS'yi güncelleştirilmiş değerlerle nasıl doldurabileceğinizi planlamanız gerekir.
+Önceki bölüm ve uyarı, planlamada dikkate alınmalıdır. Azure AD 'de, şirket içi AD DS yansıtılmamış çok sayıda değişiklik yaptıysanız, nesnelerinizi Azure AD Connect eşitlemeden önce AD DS güncelleştirilmiş değerlerle doldurmayı planlamanız gerekir.
 
-Nesnelerinizi yumuşak bir eşleşmeyle eşlediyseniz, **daha** sonra zor bir eşleşme kullanılabilmek için kaynak Anchor Azure AD'deki nesneye eklenir.
+Nesnelerinizi yumuşak eşleşme ile eşleştirdiniz, daha sonra sabit bir eşleşme kullanılabilmesi için Azure AD 'deki nesnesine **Sourcetutturucu** eklenir.
 
 >[!IMPORTANT]
-> Microsoft, Azure Active Directory'de şirket içi hesapları önceden varolan yönetim hesaplarıyla eşitlememenizi şiddetle önerir.
+> Microsoft, şirket içi hesapların Azure Active Directory önceden var olan yönetim hesaplarıyla eşitlenmesini kesinlikle tavsiye eder.
 
-### <a name="hard-match-vs-soft-match"></a>Sert maç vs Soft-match
-Connect'in yeni bir kurulumu için yumuşak ve sert eşleşme arasında pratik bir fark yoktur. Aradaki fark bir felaket kurtarma durumudur. Azure AD Connect ile sunucunuzu kaybettiyseniz, veri kaybetmeden yeni bir örneği yeniden yükleyebilirsiniz. İlk yükleme sırasında Connect'e kaynak Çapa'lı bir nesne gönderilir. Bu eşleşme daha sonra, Azure AD'de aynı şeyi yapmaktan çok daha hızlı olan istemci (Azure AD Connect) tarafından değerlendirilebilir. Zor eşleşme hem Connect hem de Azure AD tarafından değerlendirilir. Yumuşak bir eşleşme yalnızca Azure AD tarafından değerlendirilir.
+### <a name="hard-match-vs-soft-match"></a>Sabit eşleşme vs ile yumuşak eşleşme
+Yeni bir Connect yüklemesi için, yumuşak ve sabit eşleşme arasında pratik bir fark yoktur. Fark, bir olağanüstü durum kurtarma durumudur. Sunucunuzu Azure AD Connect kaybettiyseniz, verileri kaybetmeden yeni bir örneği yeniden yükleyebilirsiniz. İlk yüklemesi sırasında bağlanmak için Sourcetutturucuya sahip bir nesne gönderilir. Eşleşme daha sonra, Azure AD 'de aynı yapmaktan daha hızlı bir şekilde istemci (Azure AD Connect) tarafından değerlendirilir. Bir sabit eşleşme hem Connect hem de Azure AD tarafından değerlendirilir. Yumuşak eşleşme yalnızca Azure AD tarafından değerlendirilir.
 
-### <a name="other-objects-than-users"></a>Kullanıcılar dan diğer nesneler
-Posta özellikli gruplar ve kişiler için proxyAdres'leri temel alan yumuşak eşleşebilirsiniz. Yalnızca kaynakAnchor/immutableID'yi (PowerShell kullanarak) yalnızca Kullanıcılar üzerinde güncellebildiğiniz için zor eşleşme geçerli değildir. Posta yla etkin olmayan gruplar için şu anda yumuşak eşleşme veya zor eşleşme desteği yok.
+### <a name="other-objects-than-users"></a>Kullanıcılardan diğer nesneler
+Posta etkin gruplar ve kişiler için proxyAddresses temelinde geçici eşleştirme yapabilirsiniz. Yalnızca kullanıcılar için Sourcebağlayıcısını/ImmutableID 'ı (PowerShell kullanarak) güncelleştirebileceğinizden, sabit eşleşme geçerli değildir. Posta etkin olmayan gruplar için, şu anda, geçici eşleşme veya sabit eşleşme desteği yoktur.
 
-### <a name="admin-role-considerations"></a>Yönetici rol değerlendirmeleri
-Azure AD Connect, güvenilmeyen şirket içi kullanıcıların yönetici rolü olan bir bulut kullanıcısıyla eşleştirilmesini önlemek için şirket içi kullanıcı nesnelerini yönetici rolü olan nesnelerle eşleştirmez. Bu varsayılan olarak. Bu davranışı geçici olarak çözüme getirmek için aşağıdakileri yapabilirsiniz:
+### <a name="admin-role-considerations"></a>Yönetici rolü konuları
+Güvenilmeyen şirket içi kullanıcıların, yönetici rolüne sahip bir bulut kullanıcıyla eşleşmesini engellemek için Azure AD Connect, yönetici rolüne sahip nesneler ile şirket içi Kullanıcı nesneleriyle eşleşmeyecektir. Bu varsayılan olarak olur. Bu davranışa geçici bir çözüm için şunları yapabilirsiniz:
 
-1.  Dizin rollerini yalnızca bulut kullanıcı nesnesinden kaldırın.
-2.  Başarısız bir kullanıcı eşitleme denemesi varsa, buluttaki Karantina nesnesini zorsilin.
-3.  Eşitlemeyi tetikle.
-4.  Eşleç oluştuktan sonra dizin rollerini buluttaki kullanıcı nesnesine isteğe bağlı olarak ekleyin.
+1.  Dizin rollerini yalnızca bulutta bulunan kullanıcı nesnesinden kaldırın.
+2.  Başarısız bir Kullanıcı eşitleme denemesi varsa, bulutta karantinaya alınan nesneyi kalıcı olarak silin.
+3.  Bir eşitleme tetikleyin.
+4.  Eşleme gerçekleştikten sonra isteğe bağlı olarak, Dizin rollerini buluttaki kullanıcı nesnesine geri ekleyin.
 
 
 
-## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Azure AD'deki verilerden yeni bir şirket içi Active Directory oluşturun
-Bazı müşteriler Azure AD ile yalnızca buluta yönelik bir çözümle başlar ve şirket içi AD'leri yoktur. Daha sonra şirket içi kaynakları tüketmek ve Azure AD verilerine dayalı bir şirket içi REKLAM oluşturmak isterler. Azure AD Connect bu senaryo için size yardımcı olamaz. Şirket içinde kullanıcı oluşturmaz ve parolayı Azure AD'dekiyle aynı şirket içinde ayarlama olanağı yoktur.
+## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Azure AD 'de verilerden yeni bir şirket içi Active Directory oluşturma
+Bazı müşteriler Azure AD ile yalnızca bulutta yer alan bir çözümle başlar ve şirket içi bir AD içermez. Daha sonra, şirket içi kaynakları kullanmak ve Azure AD verilerine dayalı olarak şirket içi AD oluşturmak ister. Azure AD Connect, bu senaryo için size yardımcı olamaz. Şirket içinde Kullanıcı oluşturmaz ve şirket içi parolayı Azure AD ile aynı olarak ayarlama yeteneği yoktur.
 
-Şirket içi AD eklemeyi planlamanızın tek nedeni LOB'ları (Business'ın Satırı uygulamaları) desteklemekse, belki de bunun yerine [Azure AD etki alanı hizmetlerini](../../active-directory-domain-services/index.yml) kullanmayı düşünmelisiniz.
+Şirket içi AD eklemeyi planladığınız tek neden, LOBs 'yi (Iş kolu uygulamaları) destekliyoruz, ancak bunun yerine [Azure AD etki alanı Hizmetleri](../../active-directory-domain-services/index.yml) 'ni kullanmayı göz önünde bulundurmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

@@ -1,6 +1,6 @@
 ---
-title: PowerShell | Microsoft Dokümanlar'
-description: Azure Veri Gölü Depolama Gen1 ile HDInsight kümeleri oluşturmak ve kullanmak için Azure PowerShell'i kullanın
+title: PowerShell kullanarak Azure Data Lake Storage 1. varsayılan depolama alanı olarak HDInsight kümeleri oluşturma | Microsoft Docs '
+description: HDInsight kümelerini Azure Data Lake Storage 1. ile oluşturmak ve kullanmak için Azure PowerShell kullanma
 services: data-lake-store,hdinsight
 documentationcenter: ''
 author: twooley
@@ -13,50 +13,50 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: c57a45145d9abc43d0ca79839ea297dfc025db9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66161407"
 ---
-# <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>PowerShell'i kullanarak varsayılan depolama alanı olarak Azure Veri Gölü Depolama Gen1 ile HDInsight kümeleri oluşturun
+# <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>PowerShell kullanarak Azure Data Lake Storage 1. varsayılan depolama alanı olarak HDInsight kümeleri oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portal’ı kullanma](data-lake-store-hdinsight-hadoop-use-portal.md)
-> * [PowerShell'i kullanın (varsayılan depolama alanı için)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-> * [PowerShell'i kullanın (ek depolama alanı için)](data-lake-store-hdinsight-hadoop-use-powershell.md)
-> * [Kaynak Yöneticisi'ni Kullan](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+> * [Azure portalı kullanma](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [PowerShell kullanma (varsayılan depolama için)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+> * [PowerShell kullanma (ek depolama için)](data-lake-store-hdinsight-hadoop-use-powershell.md)
+> * [Kaynak Yöneticisi kullan](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
-Azure HDInsight kümelerini varsayılan depolama alanı olarak Azure Veri Gölü Depolama Gen1 ile yapılandırmak için Azure PowerShell'i nasıl kullanacağınızı öğrenin. Ek depolama alanı olarak Data Lake Storage Gen1 ile hdinsight kümesi oluşturma yönergeleri [için](data-lake-store-hdinsight-hadoop-use-powershell.md)bkz.
+Azure HDInsight kümelerini varsayılan depolama alanı olarak Azure Data Lake Storage 1. ile yapılandırmak için Azure PowerShell nasıl kullanacağınızı öğrenin. Ek depolama alanı olarak Data Lake Storage 1. HDInsight kümesi oluşturma yönergeleri için bkz. [ek depolama alanı olarak Data Lake Storage 1. Ile HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-powershell.md).
 
-Burada Veri Gölü Depolama Gen1 ile HDInsight kullanmak için bazı önemli hususlar şunlardır:
+HDInsight 'ı Data Lake Storage 1. ile kullanmayla ilgili bazı önemli noktalar şunlardır:
 
-* Varsayılan depolama olarak Veri Gölü Depolama Gen1 erişimi olan HDInsight kümeleri oluşturma seçeneği HDInsight sürüm 3.5 ve 3.6 için kullanılabilir.
+* HDInsight sürüm 3,5 ve 3,6 ' de varsayılan depolama alanı olarak Data Lake Storage 1. erişimi olan HDInsight kümeleri oluşturma seçeneği vardır.
 
-* Varsayılan depolama olarak Veri Gölü Depolama Gen1 erişimi olan HDInsight kümeleri oluşturma seçeneği HDInsight Premium kümeleri için *kullanılamaz.*
+* HDInsight Premium kümelerinde varsayılan depolama Data Lake Storage 1. erişimi olan HDInsight kümeleri oluşturma *seçeneği yoktur.*
 
-HDInsight'ı PowerShell'i kullanarak Data Lake Storage Gen1 ile çalışacak şekilde yapılandırmak için, sonraki beş bölümdeki yönergeleri izleyin.
+HDInsight 'ı PowerShell kullanarak Data Lake Storage 1. çalışacak şekilde yapılandırmak için sonraki beş bölümde yer alarak bulunan yönergeleri izleyin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu öğreticiye başlamadan önce aşağıdaki gereksinimleri karşıladığınızdan emin olun:
+Bu öğreticiye başlamadan önce, aşağıdaki gereksinimleri karşıladığınızdan emin olun:
 
-* **Azure aboneliği**: [Azure'dan ücretsiz deneme sürümü almaya](https://azure.microsoft.com/pricing/free-trial/)gidin.
-* **Azure PowerShell 1.0 veya üzeri**: [PowerShell'in nasıl yüklenir ve yapılandırılabildiğini](/powershell/azure/overview)görün.
-* **Windows Yazılım Geliştirme Kiti (SDK)**: Windows SDK'yı yüklemek [için Windows 10 için İndirme lere ve araçlara](https://dev.windows.com/downloads)gidin. SDK bir güvenlik sertifikası oluşturmak için kullanılır.
-* **Azure Active Directory hizmet sorumlusu**: Bu öğretici, Azure Etkin Dizin (Azure AD)'nde bir hizmet ilkesinin nasıl oluşturulabildiğini açıklar. Ancak, bir hizmet ilkesi oluşturmak için bir Azure REKLAM yöneticisi olmalısınız. Yöneticiyseniz, bu ön koşulu atlayabilir ve öğreticiye devam edebilirsiniz.
+* **Azure aboneliği**: [Azure Ücretsiz deneme sürümünü kullanmaya başlayın](https://azure.microsoft.com/pricing/free-trial/).
+* **Azure PowerShell 1,0 veya üzeri**: [PowerShell 'i yüklemek ve yapılandırmak için](/powershell/azure/overview)bkz..
+* **Windows yazılım geliştirme seti (SDK)**: Windows SDK yüklemek Için, [Windows 10 için indirmeler ve araçlar](https://dev.windows.com/downloads)'a gidin. SDK, bir güvenlik sertifikası oluşturmak için kullanılır.
+* **Hizmet sorumlusu Azure Active Directory**: Bu öğretici, Azure Active Directory (Azure AD) içinde hizmet sorumlusu oluşturma işlemini açıklar. Bununla birlikte, bir hizmet sorumlusu oluşturmak için bir Azure AD yöneticisi olmanız gerekir. Yöneticiyseniz, bu önkoşulu atlayıp öğreticiye devam edebilirsiniz.
 
     >[!NOTE]
-    >Yalnızca Bir Azure REKLAM yöneticisiyseniz bir hizmet ilkesi oluşturabilirsiniz. Veri Gölü Depolama Gen1 ile bir HDInsight kümesi oluşturamadan önce Azure AD yöneticinizin bir hizmet ilkesi oluşturması gerekir. Hizmet sorumlusu, [sertifikalı bir hizmet ilkesi oluştur'da](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)açıklandığı gibi bir sertifikayla oluşturulmalıdır.
+    >Yalnızca bir Azure AD yöneticisiyseniz bir hizmet sorumlusu oluşturabilirsiniz. Data Lake Storage 1. ile bir HDInsight kümesi oluşturabilmeniz için Azure AD yöneticinizin bir hizmet sorumlusu oluşturması gerekir. Hizmet sorumlusu, [sertifikayla birlikte hizmet sorumlusu oluşturma](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)bölümünde açıklandığı gibi bir sertifikayla oluşturulmalıdır.
     >
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. Nesil hesabı oluşturma
 
-Bir Veri Gölü Depolama Gen1 hesabı oluşturmak için aşağıdakileri yapın:
+Data Lake Storage 1. bir hesap oluşturmak için aşağıdakileri yapın:
 
-1. Masaüstünüzden bir PowerShell penceresi açın ve aşağıdaki parçacıkları girin. Oturum açmanız istendiğinde, abonelik yöneticilerinden veya sahiplerinden biri olarak oturum açın. 
+1. Masaüstünüzde bir PowerShell penceresi açın ve ardından aşağıdaki kod parçacıklarını girin. Oturum açmanız istendiğinde, abonelik yöneticileri veya sahiplerinden biri olarak oturum açın. 
 
         # Sign in to your Azure account
         Connect-AzAccount
@@ -71,10 +71,10 @@ Bir Veri Gölü Depolama Gen1 hesabı oluşturmak için aşağıdakileri yapın:
         Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
     > [!NOTE]
-    > Veri Gölü Depolama Gen1 kaynak sağlayıcısını kaydeder ve `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`benzer bir hata alırsanız, aboneliğiniz Veri Gölü Depolama Gen1 için beyaz listeye alınmayabilir. Veri Gölü Depolama Gen1 için Azure aboneliğinizi etkinleştirmek için, [Azure portalını kullanarak Azure Veri Gölü Depolama Gen1 ile başlayın'daki](data-lake-store-get-started-portal.md)yönergeleri izleyin.
+    > Data Lake Storage 1. kaynak sağlayıcısını kaydeder ve şuna benzer bir hata alırsanız `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`, aboneliğiniz Data Lake Storage 1. için beyaz listeye alınmamış olabilir. Data Lake Storage 1. için Azure aboneliğinizi etkinleştirmek üzere [Azure Portal kullanarak Azure Data Lake Storage 1. kullanmaya başlama](data-lake-store-get-started-portal.md)bölümündeki yönergeleri izleyin.
     >
 
-2. Veri Gölü Depolama Gen1 hesabı, bir Azure kaynak grubuyla ilişkilidir. Bir kaynak grubu oluşturarak başlayın.
+2. Bir Data Lake Storage 1. hesabı bir Azure Kaynak grubuyla ilişkilendirilir. Bir kaynak grubu oluşturarak başlayın.
 
         $resourceGroupName = "<your new resource group name>"
         New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
@@ -87,7 +87,7 @@ Bir Veri Gölü Depolama Gen1 hesabı oluşturmak için aşağıdakileri yapın:
         Tags              :
         ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
 
-3. Bir Veri Gölü Depolama Gen1 hesabı oluşturun. Belirttiğiniz hesap adı yalnızca küçük harfler ve sayılar içermelidir.
+3. Data Lake Storage 1. hesabı oluşturun. Belirttiğiniz hesap adı yalnızca küçük harf ve rakam içermelidir.
 
         $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 name>"
         New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
@@ -109,40 +109,40 @@ Bir Veri Gölü Depolama Gen1 hesabı oluşturmak için aşağıdakileri yapın:
         Location                    : East US 2
         Tags                        : {}
 
-4. Veri Gölü Depolama Gen1'i varsayılan depolama alanı olarak kullanmak, küme oluşturma sırasında kümeye özgü dosyaların kopyalandığı bir kök yolu belirtmenizi gerektirir. Snippet'teki **/clusters/hdiadlcluster** olan bir kök yolu oluşturmak için aşağıdaki cmdlets'i kullanın:
+4. Varsayılan depolama alanı olarak Data Lake Storage 1. kullanmak için küme oluşturma sırasında kümeye özgü dosyaların kopyalandığı bir kök yol belirtmeniz gerekir. Kod parçacığında **/Clusters/hdiadlcluster** olan bir kök yol oluşturmak için aşağıdaki cmdlet 'leri kullanın:
 
         $myrootdir = "/"
         New-AzDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/clusters/hdiadlcluster
 
 
-## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Veri Gölü Depolama Gen1'e rol tabanlı erişim için kimlik doğrulaması ayarlama
-Her Azure aboneliği bir Azure REKLAM varlığıyla ilişkilidir. Azure portalını veya Azure Kaynak Yöneticisi API'sini kullanarak abonelik kaynaklarına erişen kullanıcıların ve hizmetlerin öncelikle Azure AD ile kimlik doğrulaması yapması gerekir. Bir Azure kaynağında uygun rolü atayarak Azure aboneliklerine ve hizmetlerine erişim verilir. Hizmetler için, bir hizmet ilkesi Hizmeti Azure AD'de tanımlar.
+## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Data Lake Storage 1. için rol tabanlı erişim için kimlik doğrulamasını ayarlama
+Her Azure aboneliği bir Azure AD varlığı ile ilişkilendirilir. Azure portal veya Azure Resource Manager API 'sini kullanarak abonelik kaynaklarına erişen kullanıcı ve hizmetler öncelikle Azure AD ile kimlik doğrulaması yapılmalıdır. Azure abonelikleri ve Hizmetleri 'ne, Azure kaynağına uygun rol atanarak erişim verilir. Hizmet sorumlusu, hizmetler için Azure AD 'de hizmeti tanımlar.
 
-Bu bölümde, HDInsight gibi bir uygulama hizmetinin azure kaynağına (daha önce oluşturduğunuz Veri Gölü Depolama Gen1 hesabı) nasıl erişilen ler gösterilmiştir. Bunu, uygulama için bir hizmet ilkesi oluşturarak ve PowerShell üzerinden uygulama için roller atayarak yaparsınız.
+Bu bölümde, HDInsight gibi bir uygulama hizmetinin bir Azure kaynağına erişimi (daha önce oluşturduğunuz Data Lake Storage 1. hesabı) nasıl vereceğiniz gösterilmektedir. Bunu, uygulama için bir hizmet sorumlusu oluşturup PowerShell aracılığıyla ona roller atayarak yapabilirsiniz.
 
-Veri Gölü Depolama Gen1 için Active Directory kimlik doğrulaması ayarlamak için aşağıdaki iki bölümde görevleri gerçekleştirin.
+Data Lake Storage 1. için Active Directory kimlik doğrulaması ayarlamak için aşağıdaki iki bölümde bulunan görevleri gerçekleştirin.
 
 ### <a name="create-a-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika oluşturma
-Bu bölümdeki adımlara geçmeden önce [Windows SDK](https://dev.windows.com/en-us/downloads) yüklü olduğundan emin olun. Ayrıca, sertifikayı oluşturduğunuz *C:\mycertdir*gibi bir dizin oluşturmuş olmalısınız.
+Bu bölümdeki adımlarla devam etmeden önce [Windows SDK](https://dev.windows.com/en-us/downloads) yüklü olduğundan emin olun. Ayrıca, sertifikayı oluşturduğunuz *C:\mycertdir*gibi bir dizin oluşturmuş olmanız gerekir.
 
-1. PowerShell penceresinden, Windows SDK yüklediğiniz konuma gidin (genellikle, *C:\Program Files (x86)\Windows Kitleri\10\bin\x86)* ve kendi imzalı bir sertifika ve özel bir anahtar oluşturmak için [MakeCert][makecert] yardımcı programını kullanın. Aşağıdaki komutları kullanın:
+1. PowerShell penceresinden Windows SDK yüklediğiniz konuma gidin (genellikle, *C:\Program Files (x86) \Windows Kits\10\bin\x86*) ve otomatik olarak imzalanan bir sertifika ve özel anahtar oluşturmak için [MakeCert][makecert] yardımcı programını kullanın. Aşağıdaki komutları kullanın:
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir
 
         makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
 
-    Özel anahtar şifresini girmeniz istenir. Komut başarıyla yürütüldükten sonra, belirttiğiniz sertifika dizininde **CertFile.cer** ve **mykey.pvk'yi** görmeniz gerekir.
-2. MakeCert'in oluşturduğu .pvk ve .cer dosyalarını .pfx dosyasına dönüştürmek için [Pvk2Pfx][pvk2pfx] yardımcı programını kullanın. Şu komutu çalıştırın:
+    Özel anahtar parolasını girmeniz istenir. Komut başarıyla yürütüldükten sonra, belirttiğiniz sertifika dizininde **SertifikaDosyası. cer** ve **MyKey. PVK** görmeniz gerekir.
+2. MakeCert tarafından oluşturulan. PVK ve. cer dosyalarını bir. pfx dosyasına dönüştürmek için [Pvk2pfx][pvk2pfx] yardımcı programını kullanın. Şu komutu çalıştırın:
 
         pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 
-    Sizden istendiğinde, daha önce belirttiğiniz özel anahtar parolasını girin. **-po** parametresi için belirttiğiniz değer .pfx dosyasıyla ilişkili paroladır. Komut başarıyla tamamlandıktan sonra, belirttiğiniz sertifika dizininde bir **CertFile.pfx** de görmeniz gerekir.
+    İstendiğinde, daha önce belirttiğiniz özel anahtar parolasını girin. **-Po** parametresi için belirttiğiniz değer,. pfx dosyasıyla ilişkili paroladır. Komut başarıyla tamamlandıktan sonra, belirttiğiniz sertifika dizininde bir **SertifikaDosyası. pfx** de görmeniz gerekir.
 
-### <a name="create-an-azure-ad-and-a-service-principal"></a>Azure REKLAM ve hizmet ilkesi oluşturma
-Bu bölümde, bir Azure AD uygulaması için bir hizmet ilkesi oluşturur, hizmet ilkesine bir rol atar ve sertifika sağlayarak hizmet sorumlusu olarak kimlik doğrulaması verirsiniz. Azure AD'de bir uygulama oluşturmak için aşağıdaki komutları çalıştırın:
+### <a name="create-an-azure-ad-and-a-service-principal"></a>Azure AD ve hizmet sorumlusu oluşturma
+Bu bölümde, bir Azure AD uygulaması için hizmet sorumlusu oluşturur, hizmet sorumlusuna bir rol atayabilir ve bir sertifika sağlayarak hizmet sorumlusu olarak kimlik doğrulaması yapabilirsiniz. Azure AD 'de bir uygulama oluşturmak için aşağıdaki komutları çalıştırın:
 
-1. Aşağıdaki cmdletleri PowerShell konsol penceresine yapıştırın. **-DisplayName** özelliği için belirttiğiniz değerin benzersiz olduğundan emin olun. **-HomePage** ve **-IdentiferUris** değerleri yer tutucu değerleridir ve doğrulanmaz.
+1. Aşağıdaki cmdlet 'leri PowerShell konsol penceresine yapıştırın. **DisplayName** özelliği için belirttiğiniz değerin benzersiz olduğundan emin olun. **-Giriş sayfası** ve **-tanımlayıcı** ile ilgili değerler yer tutucu değerlerdir ve doğrulanmaz.
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
@@ -163,26 +163,26 @@ Bu bölümde, bir Azure AD uygulaması için bir hizmet ilkesi oluşturur, hizme
             -EndDate $certificatePFX.NotAfter
 
         $applicationId = $application.ApplicationId
-2. Uygulama kimliğini kullanarak bir hizmet sorumlusu oluşturun.
+2. Uygulama KIMLIĞINI kullanarak bir hizmet sorumlusu oluşturun.
 
         $servicePrincipal = New-AzADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
-3. Veri Gölü Depolama Gen1 köküne ve daha önce belirttiğiniz kök yolundaki tüm klasörlere hizmet temel erişimi verin. Aşağıdaki cmdlets kullanın:
+3. Data Lake Storage 1. köküne ve daha önce belirttiğiniz kök yolundaki tüm klasörlere hizmet sorumlusu erişimi verin. Aşağıdaki cmdlet 'leri kullanın:
 
         Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
         Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters -AceType User -Id $objectId -Permissions All
         Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters/hdiadlcluster -AceType User -Id $objectId -Permissions All
 
-## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-the-default-storage"></a>Varsayılan depolama alanı olarak Data Lake Storage Gen1 ile hdinsight Linux kümesi oluşturma
+## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-the-default-storage"></a>Varsayılan depolama alanı olarak Data Lake Storage 1. bir HDInsight Linux kümesi oluşturma
 
-Bu bölümde, varsayılan depolama alanı olarak Veri Gölü Depolama Gen1 ile hdinsight Hadoop Linux kümesi oluşturursunuz. Bu sürüm için HDInsight kümesi ve Veri Gölü Depolama Gen1 aynı konumda olmalıdır.
+Bu bölümde, varsayılan depolama alanı olarak Data Lake Storage 1. bir HDInsight Hadoop Linux kümesi oluşturacaksınız. Bu sürümde, HDInsight kümesi ve Data Lake Storage 1. aynı konumda olmalıdır.
 
-1. Abonelik kiracı kimliğini alın ve daha sonra kullanmak üzere depolayın.
+1. Abonelik kiracı KIMLIĞINI alın ve daha sonra kullanmak üzere saklayın.
 
         $tenantID = (Get-AzContext).Tenant.TenantId
 
-2. Aşağıdaki cmdlets kullanarak HDInsight kümesini oluşturun:
+2. Aşağıdaki cmdlet 'leri kullanarak HDInsight kümesini oluşturun:
 
         # Set these variables
 
@@ -212,20 +212,20 @@ Bu bölümde, varsayılan depolama alanı olarak Veri Gölü Depolama Gen1 ile h
                -CertificateFilePath $certificateFilePath `
                -CertificatePassword $password
 
-    Cmdlet başarıyla tamamlandıktan sonra küme ayrıntılarını listeleyen bir çıktı görmeniz gerekir.
+    Cmdlet başarıyla tamamlandıktan sonra, küme ayrıntılarını listeleyen bir çıktı görmeniz gerekir.
 
-## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Veri Gölü Depolama Gen1'i kullanmak için HDInsight kümesinde test işleri çalıştırın
-Bir HDInsight kümesini yapılandırıldıktan sonra, Veri Gölü Depolama Gen1'e erişebilmesini sağlamak için üzerinde test işleri çalıştırabilirsiniz. Bunu yapmak için, * \<küme kökü>/örnek/veri/sample.log*adresinde ki Veri Gölü Depolama Gen1'de zaten mevcut olan örnek verileri kullanan bir tablo oluşturmak için örnek bir Kovan işi çalıştırın.
+## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Data Lake Storage 1. kullanmak için HDInsight kümesinde test işleri çalıştırın
+Bir HDInsight kümesini yapılandırdıktan sonra, Data Lake Storage 1. erişebildiğinden emin olmak için test işlerini üzerinde çalıştırabilirsiniz. Bunu yapmak için örnek bir Hive işi çalıştırarak, Data Lake Storage 1. * \<*' de zaten bulunan örnek verileri kullanan bir tablo oluşturun>/example/Data/Sample.log.
 
-Bu bölümde, oluşturduğunuz HDInsight Linux kümesine Güvenli Kabuk (SSH) bağlantısı yaparsınız ve ardından örnek bir Hive sorgusu çalıştırırsınız.
+Bu bölümde, oluşturduğunuz HDInsight Linux kümesine bir Secure Shell (SSH) bağlantısı yaparsınız ve sonra örnek bir Hive sorgusu çalıştırırsınız.
 
-* Kümeye Bir SSH bağlantısı yapmak için bir Windows istemcisi kullanıyorsanız, [Windows'tan HDInsight'ta Linux tabanlı Hadoop ile SSH kullan'a](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)bakın.
-* Kümeye Bir SSH bağlantısı yapmak için bir Linux istemcisi kullanıyorsanız, [Linux'tan HDInsight'ta Linux tabanlı Hadoop ile SSH kullanın'a](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)bakın.
+* Kümeye SSH bağlantısı oluşturmak için bir Windows istemcisi kullanıyorsanız, bkz. [Windows 'Da HDInsight 'Ta Linux tabanlı Hadoop Ile SSH kullanma](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
+* Kümeye SSH bağlantısı oluşturmak için bir Linux istemcisi kullanıyorsanız, bkz. [Linux 'Tan HDInsight 'ta Linux tabanlı Hadoop Ile SSH kullanma](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Bağlantıyı kurduktan sonra aşağıdaki komutu kullanarak Hive komut satırı arabirimini (CLI) başlatın:
+1. Bağlantıyı yaptıktan sonra, aşağıdaki komutu kullanarak Hive komut satırı arabirimini (CLı) başlatın:
 
         hive
-2. Veri Gölü Depolama Gen1'deki örnek verileri kullanarak **araçlar** adında yeni bir tablo oluşturmak için aşağıdaki ifadeleri girmek için CLI'yi kullanın:
+2. Data Lake Storage 1. ' deki örnek verileri kullanarak **Araçlar** adlı yeni bir tablo oluşturmak için aşağıdaki deyimleri gırmek üzere CLI 'yi kullanın:
 
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -233,29 +233,29 @@ Bu bölümde, oluşturduğunuz HDInsight Linux kümesine Güvenli Kabuk (SSH) ba
         STORED AS TEXTFILE LOCATION 'adl:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
-    SSH konsolunda sorgu çıktısını görmeniz gerekir.
+    Sorgu çıkışını SSH konsolunda görmeniz gerekir.
 
     >[!NOTE]
-    >Önceki CREATE TABLE komutundaki örnek verilere `adl:///example/data/`giden `adl:///` yol küme kökü nerededir. Bu öğreticide belirtilen küme kökü örneğini takiben, `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster`komut . Kısa alternatifi kullanabilir veya küme köküne giden tam yolu sağlayabilirsiniz.
+    >Yukarıdaki CREATE TABLE komutundaki örnek verilerin yolu `adl:///example/data/`, burada `adl:///` küme köküdür. Bu öğreticide belirtilen küme köküne örnek olarak, komut olur `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster`. Daha kısa bir alternatif kullanabilir ya da küme köküne yönelik yolun tamamını sağlayabilirsiniz.
     >
 
-## <a name="access-data-lake-storage-gen1-by-using-hdfs-commands"></a>HDFS komutlarını kullanarak Veri Gölü Depolama Gen1'e erişin
-HDInsight kümesini Veri Gölü Depolama Gen1'i kullanacak şekilde yapılandırıldıktan sonra, depoya erişmek için Hadoop Distributed File System (HDFS) kabuk komutlarını kullanabilirsiniz.
+## <a name="access-data-lake-storage-gen1-by-using-hdfs-commands"></a>Data Lake Storage 1., bu komutları kullanarak erişim
+HDInsight kümesini Data Lake Storage 1. kullanacak şekilde yapılandırdıktan sonra, mağazaya erişmek için Hadoop Dağıtılmış Dosya Sistemi (,) kabuk komutlarını kullanabilirsiniz.
 
-Bu bölümde, oluşturduğunuz HDInsight Linux kümesine bir SSH bağlantısı yaparsınız ve ardından HDFS komutlarını çalıştırırsınız.
+Bu bölümde, oluşturduğunuz HDInsight Linux kümesine bir SSH bağlantısı yaparsınız ve sonra, bu komutu çalıştırırsınız.
 
-* Kümeye Bir SSH bağlantısı yapmak için bir Windows istemcisi kullanıyorsanız, [Windows'tan HDInsight'ta Linux tabanlı Hadoop ile SSH kullan'a](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)bakın.
-* Kümeye Bir SSH bağlantısı yapmak için bir Linux istemcisi kullanıyorsanız, [Linux'tan HDInsight'ta Linux tabanlı Hadoop ile SSH kullanın'a](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)bakın.
+* Kümeye SSH bağlantısı oluşturmak için bir Windows istemcisi kullanıyorsanız, bkz. [Windows 'Da HDInsight 'Ta Linux tabanlı Hadoop Ile SSH kullanma](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
+* Kümeye SSH bağlantısı oluşturmak için bir Linux istemcisi kullanıyorsanız, bkz. [Linux 'Tan HDInsight 'ta Linux tabanlı Hadoop Ile SSH kullanma](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Bağlantıyı kurduktan sonra, aşağıdaki HDFS dosya sistemi komutunu kullanarak Veri Gölü Depolama Gen1'deki dosyaları listeleyin.
+Bağlantıyı yaptıktan sonra, aşağıdaki bir dosya sistemi komutunu kullanarak Data Lake Storage 1. dosyaları listeleyin.
 
     hdfs dfs -ls adl:///
 
-Bazı dosyaları Veri `hdfs dfs -put` Gölü Depolama Gen1'e yüklemek ve dosyaların `hdfs dfs -ls` başarıyla yüklenip yüklenmediğini doğrulamak için komutu da kullanabilirsiniz.
+Ayrıca, Data Lake Storage 1. ' ye `hdfs dfs -put` bazı dosyaları yüklemek için komutunu kullanabilir ve ardından dosyaların başarıyla karşıya `hdfs dfs -ls` yüklenip yüklenmediğini doğrulamak için kullanabilirsiniz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Azure HDInsight kümeleriyle Veri Gölü Depolama Gen1'i kullanma](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [Azure portalı: Veri Gölü Depolama Gen1'i kullanmak için bir HDInsight kümesi oluşturun](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Azure HDInsight kümeleri ile Data Lake Storage 1. kullanma](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [Azure portal: kullanmak için HDInsight kümesi oluşturma Data Lake Storage 1.](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

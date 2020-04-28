@@ -1,6 +1,6 @@
 ---
-title: Azure İçe Alma/Dışa Aktarma işi için Destek bileti veya servis talebi oluşturma | Microsoft Dokümanlar
-description: İçe Alma/Dışa Aktarma işinizle ilgili sorunlar için destek isteğini nasıl günlüğe kaydedebilirsiniz öğrenin.
+title: Azure Içeri/dışarı aktarma işi için destek bileti veya durum oluştur | Microsoft Docs
+description: Içeri/dışarı aktarma işiniz ile ilgili sorunlar için destek isteğini günlüğe kaydetme hakkında bilgi edinin.
 services: storsimple
 author: alkohli
 ms.service: storage
@@ -9,62 +9,62 @@ ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 8361c32860d48b78c778ea5106ba04715fcc5f3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67621048"
 ---
-# <a name="open-a-support-ticket-for-an-importexport-job"></a>İthalat/İhracat işi için destek bileti açma
+# <a name="open-a-support-ticket-for-an-importexport-job"></a>Içeri/dışarı aktarma işi için bir destek bileti açın
 
-Alma/Dışa Aktarma hizmetinizde herhangi bir sorunla karşılaşırsanız, teknik destek için bir hizmet isteği oluşturabilirsiniz. Bu makale size yol vereb:
+Içeri/dışarı aktarma hizmetinizdeki herhangi bir sorunla karşılaşırsanız, teknik destek için bir hizmet isteği oluşturabilirsiniz. Bu makalede izlenecek yol gösterilmektedir:
 
 * Destek isteği oluşturma.
-* Portal içinden bir destek isteği yaşam döngüsünü nasıl yönetebilirsiniz.
+* Portalın içinden destek isteği yaşam döngüsünü yönetme.
 
 ## <a name="create-a-support-request"></a>Destek isteği oluşturma
 
-Destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
+Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
 
-1. İthalat/dışa aktarma işinize gidin. DESTEK **+ SORUN GIDERME** bölümüne gidin ve ardından **Yeni destek isteğini**tıklatın.
+1. İçeri/dışarı aktarma işinize gidin. **Destek + sorun giderme** Bölümü ' ne gidin ve ardından **Yeni destek isteği**' ne tıklayın.
      
     ![Temel Bilgiler](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
-2. **Yeni destek isteğinde** **Temeller'i**seçin. **Temel bilgilerde**aşağıdaki adımları yapın:
+2. **Yeni destek isteği**' nde **temel bilgiler**' i seçin. **Temel bilgiler**bölümünde aşağıdaki adımları uygulayın:
     
-    1. Sorun **türü** açılır listesinden **Teknik'i**seçin.
+    1. **Sorun türü** açılan listesinden **Teknik**' i seçin.
     2. **Aboneliğinizi**seçin.
-    3. **Hizmet**altında , Hizmetlerimi kontrol **edin.** Açılan listeden seçeneklerden birini seçebilirsiniz - **Depolama Hesap Yönetimi**, **Blob**, veya **Dosya**. 
-        - **Depolama Hesabı Yönetimi'ni**seçerseniz, **Kaynak**ve **Destek planını**seçin.
-            ![Depolama Hesabı Yönetimini Seçin](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
-        - **Blob'u**seçerseniz, **Kaynak,** **Kapsayıcı adları** (isteğe bağlı) ve **Destek planını**seçin.
-            ![Blob'u seçin](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
-        - **Dosya'yı**seçerseniz, **Kaynak,** **Dosya paylaşım adları** (isteğe bağlı) ve Destek **planı** ![Dosya seçin](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. **İleri**'ye tıklayın.
+    3. **Hizmet**altında **hizmetlerimi**denetleyin. Açılan listeden, seçeneklerden birini ( **depolama hesabı yönetimi**, **BLOB**veya **Dosya**) seçebilirsiniz. 
+        - **Depolama hesabı yönetimi**' ni seçerseniz **kaynak**ve **destek planı**' nı seçin.
+            ![Depolama hesabı yönetimi seçin](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
+        - **BLOB**' u seçerseniz **kaynak**, **kapsayıcı adları** (isteğe bağlı) ve **destek planı**' nı seçin.
+            ![Blob seçin](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
+        - **Dosya**' yı seçerseniz, **kaynak**, **dosya paylaşma adları** (isteğe bağlı) ve **destek planı** ![Dosya Seç ' i seçin.](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
+    4. **İleri**’ye tıklayın.
 
-3. **Yeni destek isteğinde,** Adım **2 Sorunu'nü**seçin. **Sorun'da,** aşağıdaki adımları yapın:
+3. **Yeni destek isteği**' nde **Adım 2 sorunu**' nı seçin. **Sorun**' da, aşağıdaki adımları uygulayın:
     
-    1. C - **Minimal etki**olarak **Önem Derecesi'ni** seçin. Gerekirse destek güncellenir.
-    2. **Veri Geçişi**olarak **Sorun türünü** seçin.
-    3. Alma - **Dışa Aktarma**olarak **Kategoriyi** seçin.
-    4. Sorun için bir **Başlık** ve daha fazla **Ayrıntı**sağlayın.
-    5. Sorunun başlangıç tarihini ve saatini sağlayın.
-    6. Dosya **yüklemesinde,** yüklemek istediğiniz diğer dosyalara göz atmak için klasör simgesini tıklatın.
-    7. **Tanı bilgilerini paylaş'ı**denetleyin.
-    8. **İleri**'ye tıklayın.
+    1. **Önem derecesi** ' ni **En düşük etkiler**olarak seçin. Gerekirse destek bu güncelleştirmeyi güncelleştirecektir.
+    2. **Veri geçişi**olarak **sorun türünü** seçin.
+    3. **Kategoriyi** **Içeri aktarma-dışarı aktarma**olarak seçin.
+    4. Sorun için bir **başlık** ve daha fazla **ayrıntı**sağlayın.
+    5. Sorunun başlangıç tarihini ve saatini belirtin.
+    6. Karşıya yüklemek istediğiniz diğer dosyalara gözatabilmeniz için **karşıya dosya yükleme**sırasında klasör simgesine tıklayın.
+    7. **Paylaşma tanılama bilgilerini**denetleyin.
+    8. **İleri**’ye tıklayın.
 
        ![Sorun](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
-4. **Yeni destek isteğinde,** Adım 3 **İletişim bilgilerini**tıklatın. **İletişim bilgileri,** aşağıdaki adımları yapmak:
+4. **Yeni destek isteği**' nde **3. adım iletişim bilgileri**' ne tıklayın. **İletişim bilgileri**bölümünde aşağıdaki adımları uygulayın:
 
-   1. İletişim **seçeneklerinde,** tercih ettiğiniz iletişim yöntemini (telefon veya e-posta) ve dili sağlayın. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
-   2. İletişim bilgileri, adınızı, e-posta, isteğe bağlı kişi, ülke / bölge sağlayın. Gelecekteki destek istekleri onay kutusu **için kişi değişikliklerini kaydet'i** seçin.
-   3. **Oluştur'u**tıklatın.
+   1. **İletişim seçeneklerinde**tercih ettiğiniz iletişim yönteminizi (telefon veya e-posta) ve dili girin. Yanıt süresi, abonelik planınıza göre otomatik olarak seçilir.
+   2. Iletişim bilgilerinde adınızı, e-postanızı, isteğe bağlı iletişim, ülke/bölge ' yi belirtin. **Gelecekteki destek istekleri için kişi değişikliklerini kaydet** onay kutusunu seçin.
+   3. **Oluştur**' a tıklayın.
    
        ![İletişim bilgileri](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
-      Microsoft Destek, daha fazla bilgi, tanı ve çözüm için size ulaşmak için bu bilgileri kullanır.
-      Talebinizi gönderdikten sonra, bir Destek mühendisi isteğinize devam etmek için en kısa sürede sizinle irtibata geçecektir.
+      Microsoft Desteği, bu bilgileri daha fazla bilgi, tanı ve çözüm için size ulaşmak üzere kullanacaktır.
+      İsteğinizi gönderdikten sonra bir destek mühendisi, isteğinize devam etmek için en kısa sürede sizinle iletişim kuracaktır.
 
 ## <a name="manage-a-support-request"></a>Destek isteğini yönetme
 
@@ -72,19 +72,19 @@ Bir destek bileti oluşturduktan sonra portal üzerinden bu biletin yaşam döng
 
 #### <a name="to-manage-your-support-requests"></a>Destek isteklerinizi yönetmek için
 
-1. Yardım ve destek sayfasına ulaşmak için **Gözat > Yardım + desteğe**gidin.
+1. Yardım ve destek sayfasına ulaşmak için, **> yardım ve destek**' e gidin.
 
     ![Destek isteklerini yönetme](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
 
-2. **Son destek isteklerinin** bir tabular listesi **Yardım + destek'te**görüntülenir.
+2. **Son destek isteklerinin** tablolu bir listesi **Yardım + Destek**bölümünde görüntülenir.
 
     ![Destek isteklerini yönetme](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
 
-3. Bir destek isteğini seçin ve tıklatın. Bu isteğin durumunu ve ayrıntılarını görüntüleyebilirsiniz. Bu isteği takip etmek istiyorsanız **+ Yeni iletiyi** tıklatın.
+3. Bir destek isteği seçin ve tıklayın. Bu istek için durumu ve ayrıntıları görüntüleyebilirsiniz. Bu istekte izlemek istiyorsanız **+ Yeni ileti** ' ya tıklayın.
 
     ![Destek isteklerini yönetme](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Alma/Dışa Aktarma hizmetiyle ilgili sorunları](storage-import-export-tool-troubleshooting-v1.md)nasıl gidereceklerini öğrenin.
+[İçeri/dışarı aktarma hizmetiyle ilgili sorunları nasıl giderebileceğinizi](storage-import-export-tool-troubleshooting-v1.md)öğrenin.

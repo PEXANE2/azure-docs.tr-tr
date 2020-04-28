@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect eşitleme hizmeti gölge öznitelikleri | Microsoft Dokümanlar
+title: Azure AD Connect eşitleme hizmeti gölge öznitelikleri | Microsoft Docs
 description: Azure AD Connect eşitleme hizmetinde gölge özniteliklerinin nasıl çalıştığını açıklar.
 services: active-directory
 documentationcenter: ''
@@ -17,63 +17,63 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60384718"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect eşitleme hizmeti gölge öznitelikleri
-Çoğu öznitelik, Azure AD'de şirket içi Active Directory'nizde olduğu gibi aynı şekilde temsil edilir. Ancak bazı özniteliklerin bazı özel kullanımları vardır ve Azure AD'deki öznitelik değeri Azure AD Connect'in eşitledüğünden farklı olabilir.
+Çoğu öznitelik, Azure AD 'de şirket içi Active Directory olduklarından aynı şekilde temsil edilir. Ancak bazı özniteliklerin bazı özel işlemesi vardır ve Azure AD 'de öznitelik değeri Azure AD Connect eşitlenenden farklı olabilir.
 
-## <a name="introducing-shadow-attributes"></a>Gölge özniteliklerini tanıtma
-Bazı özniteliklerin Azure AD'de iki gösterimi vardır. Hem şirket içi değer hem de hesaplanan değer depolanır. Bu ek özniteliklere gölge öznitelikleri denir. Bu davranışı gördüğünüz iki en yaygın öznitelikleri **userPrincipalName** ve **proxyAddress**vardır. Öznitelik değerlerindeki değişiklik, bu özniteliklerde doğrulanmamış etki alanlarını temsil eden değerler olduğunda gerçekleşir. Ancak Connect'teki eşitleme altyapısı gölge özniteliğindeki değeri okur, bu nedenle kendi bakış açısından, öznitelik Azure AD tarafından onaylanmıştır.
+## <a name="introducing-shadow-attributes"></a>Gölge öznitelikleri tanıtımı
+Bazı özniteliklerin Azure AD 'de iki temsili vardır. Hem şirket içi değer hem de hesaplanmış bir değer depolanır. Bu ek özniteliklere gölge öznitelikleri denir. Bu davranışı gördüğünüz en yaygın iki öznitelik **userPrincipalName** ve **ProxyAddress**' dir. Öznitelik değerlerindeki değişiklik, bu özniteliklerde doğrulanmamış etki alanlarını temsil eden değerler olduğunda gerçekleşir. Ancak Connect 'teki eşitleme altyapısı, gölge özniteliğinde değeri, perspektiften bu şekilde okur, öznitelik Azure AD tarafından onaylandı.
 
-Azure portalını kullanarak veya PowerShell ile gölge özniteliklerini göremezsiniz. Ancak kavramı anlamak, özniteliğin şirket içinde ve bulutta farklı değerlere sahip olduğu belirli senaryoları gidermenize yardımcı olur.
+Azure portal veya PowerShell 'i kullanarak gölge öznitelikleri göremezsiniz. Ancak kavramı anlamak, özniteliğin şirket içinde ve bulutta farklı değerlere sahip olduğu belirli senaryoları gidermenize yardımcı olur.
 
-Davranışı daha iyi anlamak için Fabrikam'daki şu örneğe bakın:  
+Davranışı daha iyi anlamak için Fabrikam ' dan bu örneğe bakın:  
 ![Etki Alanları](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
-Şirket içi Active Directory'lerinde birden çok UPN sonekleri vardır, ancak yalnızca birini doğrulayabiliyorlar.
+Şirket içi Active Directory birden çok UPN soneki vardır, ancak yalnızca bir tane doğrulanır.
 
 ### <a name="userprincipalname"></a>userPrincipalName
-Kullanıcı doğrulanmamış bir etki alanında aşağıdaki öznitelik değerlerine sahiptir:
+Kullanıcının doğrulanmamış bir etki alanında aşağıdaki öznitelik değerleri vardır:
 
 | Öznitelik | Değer |
 | --- | --- |
-| şirket içi kullanıcıPrincipalName | lee.sperry@fabrikam.com |
-| Azure AD gölgeSIKullanıcıPrincipalName | lee.sperry@fabrikam.com |
-| Azure AD kullanıcıPrincipalName | lee.sperry@fabrikam.onmicrosoft.com |
+| Şirket içi userPrincipalName | lee.sperry@fabrikam.com |
+| Azure AD shadowUserPrincipalName | lee.sperry@fabrikam.com |
+| Azure AD userPrincipalName | lee.sperry@fabrikam.onmicrosoft.com |
 
-UserPrincipalName özniteliği PowerShell kullanırken gördüğünüz değerdir.
+UserPrincipalName özniteliği, PowerShell kullanırken gördüğünüz değerdir.
 
-Gerçek şirket içi öznitelik değeri Azure AD'de depolandığından, fabrikam.com etki alanını doğruladığınızda, Azure AD kullanıcıPrincipalName özniteliğini gölgeUserPrincipalName'deki değerle güncelleştirir. Bu değerlerin güncelleştirilemesi için Azure AD Connect'ten herhangi bir değişikliği eşitlemeniz gerekmez.
+Gerçek şirket içi öznitelik değeri Azure AD 'de depolandığından, fabrikam.com etki alanını doğruladıktan sonra Azure AD, userPrincipalName özniteliğini shadowUserPrincipalName değeri ile güncelleştirir. Bu değerlerin güncelleştirilmesini sağlamak için Azure AD Connect yapılan değişiklikleri eşitlemeniz gerekmez.
 
 ### <a name="proxyaddresses"></a>proxyAddresses
-Yalnızca doğrulanmış etki alanları da dahil olmak üzere aynı işlem proxyAdresleri için de oluşur, ancak bazı ek mantık ile. Doğrulanmış etki alanları için denetim yalnızca posta kutusu kullanıcıları için olur. Posta yla etkinleştirilmiş bir kullanıcı veya kişi başka bir Exchange kuruluşunda bir kullanıcıyı temsil eder ve proxyAdreslerindeki herhangi bir değeri bu nesnelere ekleyebilirsiniz.
+Yalnızca doğrulanmış etki alanları da dahil olmak üzere aynı işlem, proxyAddresses için de, ancak bazı ek mantığlarla oluşur. Doğrulanan etki alanlarını denetleme yalnızca posta kutusu kullanıcıları için gerçekleşir. Posta etkin bir kullanıcı veya iletişim, başka bir Exchange kuruluşundaki bir kullanıcıyı temsil eder ve bu nesnelere proxyAddresses içinde herhangi bir değer ekleyebilirsiniz.
 
-Bir posta kutusu kullanıcısı için şirket içi veya Exchange Online'da yalnızca doğrulanmış etki alanları için değerler görüntülenir. Şuna benziyor olabilir:
+Şirket içi veya Exchange Online 'da posta kutusu kullanıcısı için yalnızca doğrulanmış etki alanı değerleri görünür. Şuna benzeyebilir:
 
 | Öznitelik | Değer |
 | --- | --- |
-| şirket içi proxyAdresler | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
-| Exchange Online proxyAdresleri | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
+| Şirket içi proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
+| Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-Bu durumda **\@smtp:abbie.spencer fabrikam.com** bu etki alanı doğrulanmadı ğından kaldırıldı. Ama Exchange de **SIP\@ekledi:abbie.spencer fabrikamonline.com**. Fabrikam, Lync/Skype'ı şirket içinde kullanmamıştır, ancak Azure AD ve Exchange Online buna hazırlanmıştır.
+Bu durumda, bu etki alanı doğrulanmadığından, **SMTP:\@Abbie. spencer fabrikam.com** kaldırılmıştır. Ancak Exchange, **SIP: Abbie. Spencer\@fabrikamonline.com**öğesini de ekledi. Fabrikam, şirket içi Lync/Skype kullanmadı, ancak Azure AD ve Exchange Online 'ı BT için hazırla.
 
-ProxyAdresler için bu mantık **ProxyCalc**olarak adlandırılır. ProxyCalc, kullanıcıüzerindeki her değişiklikle birlikte şu anda çağrılır:
+ProxyAddresses için bu mantık, **Proxycalc**olarak adlandırılır. ProxyCalc, şu durumlarda bir Kullanıcı üzerindeki her değişiklik ile çağrılır:
 
-- Kullanıcı, Exchange lisansı olmasa bile Exchange Online'ı içeren bir hizmet planı atanır. Örneğin, kullanıcıya Office E3 SKU atanır, ancak yalnızca SharePoint Online atanır. Posta kutunuz hala şirket içinde olsa bile bu durum geçerlidir.
-- Öznitelik msExchRecipientTypeDetails bir değeri vardır.
-- ProxyAdres'lerde veya userPrincipalName'de değişiklik yaparsınız.
+- Kullanıcı Exchange için lisanslı olmasa bile Exchange Online 'ı içeren bir hizmet planı atandı. Örneğin, kullanıcıya Office E3 SKU 'SU atanmışsa ancak SharePoint Online atanırsa. Bu, posta kutunuz hala şirket içi olsa bile geçerlidir.
+- MsExchRecipientTypeDetails özniteliği bir değere sahip.
+- ProxyAddresses veya userPrincipalName ' de bir değişiklik yaparsınız.
 
-ProxyCalc'ın bir kullanıcı üzerinde bir değişikliği işleme salması biraz zaman alabilir ve Azure AD Connect dışa aktarma işlemiyle eşzamanlı değildir.
+ProxyCalc, Kullanıcı üzerinde bir değişikliği işlemek için biraz zaman alabilir ve Azure AD Connect dışa aktarma işlemiyle zaman uyumlu değildir.
 
 > [!NOTE]
-> ProxyCalc mantığı, bu konuda belgelenmemiş gelişmiş senaryolar için bazı ek davranışlara sahiptir. Bu konu, davranışı anlamanız ve tüm iç mantığı belgelememeniz için sağlanır.
+> ProxyCalc mantığının, bu konuda belgelenmeyen gelişmiş senaryolar için bazı ek davranışları vardır. Bu konu, davranışı anlamanız ve tüm iç mantığın belgeleyeceği için verilmiştir.
 
-### <a name="quarantined-attribute-values"></a>Karantinaya alınmış öznitelik değerleri
-Yinelenen öznitelik değerleri olduğunda gölge öznitelikleri de kullanılır. Daha fazla bilgi için [yinelenen öznitelik esnekliğine](how-to-connect-syncservice-duplicate-attribute-resiliency.md)bakın.
+### <a name="quarantined-attribute-values"></a>Karantinaya alınan öznitelik değerleri
+Gölge öznitelikleri, yinelenen öznitelik değerleri olduğunda da kullanılır. Daha fazla bilgi için bkz. [yinelenen öznitelik dayanıklılığı](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Azure AD Connect eşitleme](how-to-connect-sync-whatis.md)
-* [Şirket içi kimliklerinizi Azure Etkin Dizini ile tümleştirme.](whatis-hybrid-identity.md)
+* [Şirket içi kimliklerinizi Azure Active Directory Ile tümleştirme](whatis-hybrid-identity.md).

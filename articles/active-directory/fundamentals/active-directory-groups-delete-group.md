@@ -1,6 +1,6 @@
 ---
-title: Grubu silme - Azure Etkin Dizini | Microsoft Dokümanlar
-description: Azure Etkin Dizini'ni kullanarak bir grubun nasıl silinene ilişkin yönergeler.
+title: Grubu silme-Azure Active Directory | Microsoft Docs
+description: Azure Active Directory kullanarak bir grubun nasıl silineceği hakkında yönergeler.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,38 +14,38 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdba55e0655a13e65e403f5da73fcb69db5dbca5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68561906"
 ---
-# <a name="delete-a-group-using-azure-active-directory"></a>Azure Etkin Dizini'ni kullanarak grubu silme
-Bir Azure Etkin Dizin (Azure AD) grubunu birçok nedenden dolayı silebilirsiniz, ancak genellikle sizin için olacaktır:
+# <a name="delete-a-group-using-azure-active-directory"></a>Azure Active Directory kullanarak bir grubu silme
+Herhangi bir sayıda nedenden dolayı Azure Active Directory (Azure AD) grubunu silebilirsiniz, ancak genellikle şunlar olur:
 
-- **Grup türünü** yanlış bir seçeneğin olarak ayarlayın.
+- **Grup türü** yanlış seçeneğe yanlış ayarlandı.
 
 - Yanlışlıkla yanlış veya yinelenen bir grup oluşturuldu. 
 
-- Artık gruba ihtiyacım yok.
+- Artık gruba gerek yok.
 
 ## <a name="to-delete-a-group"></a>Bir grubu silmek için
 1. Dizin için bir Genel yönetici hesabı kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
 
-2. **Azure Etkin Dizini'ni**seçin ve ardından **Gruplar'ı**seçin.
+2. **Azure Active Directory**' yi seçin ve ardından **gruplar**' ı seçin.
 
-3. **Gruplardan - Tüm gruplar** sayfasında, silmek istediğiniz grubu arayın ve seçin. Bu adımlar için **MDM politikasını**kullanacağız - Doğu .
+3. **Gruplar-tüm gruplar** sayfasında, silmek istediğiniz grubu arayıp seçin. Bu adımlar için **MDM ilkesi-Doğu**kullanacağız.
 
-    ![Gruplar-Tüm gruplar sayfası, grup adı vurgulanır](media/active-directory-groups-delete-group/group-all-groups-screen.png)
+    ![Gruplar-tüm gruplar sayfası, Grup adı vurgulanmış](media/active-directory-groups-delete-group/group-all-groups-screen.png)
 
-4. **MDM ilkesinde - Doğu Genel Bakış** sayfasında ve sonra **Sil'i**seçin.
+4. **MDM ilkesi-Doğu genel bakış** sayfasında, **Sil**' i seçin.
 
-    Grup, Azure Etkin Dizin kiracınızdan silinir.
+    Grup, Azure Active Directory kiracınızdan silinir.
 
-    ![MDM ilkesi - Doğu Genel Bakış sayfası, silme seçeneği vurgulanır](media/active-directory-groups-delete-group/group-overview-blade.png)
+    ![MDM ilkesi-Doğu genel bakış sayfası, silme seçeneği vurgulanmış](media/active-directory-groups-delete-group/group-overview-blade.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bir grubu yanlışlıkla silerseniz, yeniden oluşturabilirsiniz. Daha fazla bilgi için [temel bir grup oluşturma ve üye ekleme hakkında](active-directory-groups-create-azure-portal.md)bilgi alabiliyorum.
+- Bir grubu yanlışlıkla silerseniz, yeniden oluşturabilirsiniz. Daha fazla bilgi için bkz. [temel Grup oluşturma ve üye ekleme](active-directory-groups-create-azure-portal.md).
 
-- Bir Office 365 grubunu yanlışlıkla silerseniz, geri yükleyebilirsiniz. Daha fazla bilgi için [silinmiş bir Office 365 grubunu geri yükle'ye](../users-groups-roles/groups-restore-deleted.md)bakın.
+- Bir Office 365 grubunu yanlışlıkla silerseniz, geri yükleyebilirsiniz. Daha fazla bilgi için bkz. [silinen Office 365 grubunu geri yükleme](../users-groups-roles/groups-restore-deleted.md).

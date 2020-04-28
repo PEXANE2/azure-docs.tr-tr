@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Çözümleri sitesini kullanma - Azure | Microsoft Dokümanlar
-description: Çözüm hızlandırıcınızı dağıtmak için AzureIoTSolutions.com web sitesini nasıl kullanacağınızı açıklar.
+title: Azure IoT çözümleri sitesini kullanma-Azure | Microsoft Docs
+description: Çözüm hızlandırıcıyı dağıtmak için AzureIoTSolutions.com Web sitesinin nasıl kullanılacağını açıklar.
 author: dominicbetts
 manager: philmea
 ms.service: iot-accelerators
@@ -9,58 +9,58 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
 ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61447463"
 ---
-# <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Çözüm hızlandırıcınızı dağıtmak için azureiotsolutions.com sitesini kullanın
+# <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Çözüm hızlandırıcıyı dağıtmak için azureiotsolutions.com sitesini kullanın
 
-Azure IoT çözüm hızlandırıcılarını Azure aboneliğinize [AzureIoTSolutions.com.'dan](https://www.azureiotsolutions.com/Accelerators)dağıtabilirsiniz. AzureIoTSolutions.com hem Microsoft açık kaynak hem de iş ortağı çözüm hızlandırıcılarına ev sahipliği yapmaktadır. Bu çözüm hızlandırıcıları [Azure IoT Başvuru Mimarisi](https://aka.ms/iotrefarchitecture)ile uyumludur. Bir çözüm hızlandırıcısını demo veya üretim ortamı olarak hızla dağıtmak için siteyi kullanabilirsiniz.
+Azure IoT çözüm hızlandırıcılarına [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators)adresinden Azure aboneliğinize dağıtım yapabilirsiniz. AzureIoTSolutions.com, hem Microsoft açık kaynak hem de iş ortağı çözüm hızlandırıcılarını barındırır. Bu çözüm Hızlandırıcılar, [Azure IoT başvuru mimarisi](https://aka.ms/iotrefarchitecture)ile hizalanır. Siteyi kullanarak bir çözüm hızlandırıcıyı tanıtım veya üretim ortamı olarak hızlı bir şekilde dağıtabilirsiniz.
 
 ![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
 
 > [!TIP]
-> Dağıtım işlemi üzerinde daha fazla denetime ihtiyacınız varsa, [bir çözüm hızlandırıcıdağıtmak için CLI](iot-accelerators-remote-monitoring-deploy-cli.md)kullanabilirsiniz.
+> Dağıtım işlemi üzerinde daha fazla denetime ihtiyacınız varsa, [bir çözüm Hızlandırıcısı dağıtmak Için CLI](iot-accelerators-remote-monitoring-deploy-cli.md)'yi kullanabilirsiniz.
 
 Çözüm hızlandırıcılarını aşağıdaki yapılandırmalarda dağıtabilirsiniz:
 
-* **Standart**: Üretim ortamı nı geliştirmek için genişletilmiş bir altyapı dağıtımı. Azure Kapsayıcı Hizmeti, mikro hizmetleri çeşitli Azure sanal makinelerine dağır. Kubernetes mikro hizmetleri tek tek barındıran Docker kapsayıcılarını düzenler.
-* **Temel**: Bir gösteri veya dağıtımı sınamak için daha düşük maliyetli sürüm. Tüm mikro hizmetler tek bir Azure sanal makinesine dağıtılır.
-* **Yerel**: Test ve geliştirme için yerel bir makine dağıtımı. Bu yaklaşım, mikro hizmetleri yerel bir Docker kapsayıcısına dağıtır ve buluttaki IoT Hub, Azure Cosmos DB ve Azure depolama hizmetlerine bağlanır.
+* **Standart**: üretim ortamı geliştirmek için genişletilmiş altyapı dağıtımı. Azure Container Service mikro hizmetleri birkaç Azure sanal makinesine dağıtır. Kubernetes mikro hizmetleri tek tek barındıran Docker kapsayıcılarını düzenler.
+* **Temel**: bir tanıtım için düşük maliyetli bir sürüm veya bir dağıtımı test etmek için. Tüm mikro hizmetler tek bir Azure sanal makinesine dağıtılır.
+* **Yerel**: test ve geliştirme için yerel makine dağıtımı. Bu yaklaşım, mikro hizmetleri yerel bir Docker kapsayıcısına dağıtır ve bulutta IoT Hub, Azure Cosmos DB ve Azure Storage Services 'a bağlanır.
 
-Çözüm hızlandırıcılarının her biri, IoT Hub, Azure Akış Analizi ve Cosmos DB gibi Azure hizmetlerinin farklı bir birleşimini kullanır. Daha fazla bilgi için [AzureIoTSolutions.com'yi](https://www.azureiotsolutions.com/Accelerators) ziyaret edin ve bir çözüm hızlandırıcısı seçin.
+Her çözüm hızlandırıcılarının her biri, IoT Hub, Azure Stream Analytics ve Cosmos DB gibi farklı Azure hizmetleri birleşimini kullanır. Daha fazla bilgi için [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) adresini ziyaret edin ve bir çözüm Hızlandırıcısı seçin.
 
-## <a name="sign-in-at-azureiotsolutionscom"></a>azureiotsolutions.com'da oturum açın
+## <a name="sign-in-at-azureiotsolutionscom"></a>Azureiotsolutions.com adresinde oturum açın
 
-Bir çözüm hızlandırıcısı dağıtmadan önce, azure aboneliğiyle ilişkili kimlik bilgilerini kullanarak AzureIoTSolutions.com oturum açmanız gerekir. Hesabınız birden fazla Microsoft Azure Etkin Dizin (AD) kiracısıyla ilişkiliyse, kullanılacak dizini seçmek için **Hesap seçimi açılır düşüşünü** kullanabilirsiniz.
+Bir çözüm Hızlandırıcısını dağıtabilmeniz için önce, bir Azure aboneliğiyle ilişkili kimlik bilgilerini kullanarak AzureIoTSolutions.com adresinde oturum açmanız gerekir. Hesabınız birden fazla Microsoft Azure Active Directory (AD) kiracısıyla ilişkiliyse, kullanılacak dizini seçmek için **hesap seçme açılan listesini** kullanabilirsiniz.
 
-Çözüm hızlandırıcıları dağıtma, kullanıcıları yönetme ve Azure hizmetlerini yönetme izinleriniz, seçili dizindeki rolünüze bağlıdır. Çözüm hızlandırıcılarıyla ilişkili ortak Azure AD rolleri şunlardır:
+Çözüm hızlandırıcılarını dağıtma, kullanıcıları yönetme ve Azure hizmetlerini yönetme izinleriniz, seçili dizindeki rolünüze bağlıdır. Çözüm hızlandırıcılarına ilişkin ortak Azure AD rolleri şunlardır:
 
-* **Genel yönetici**: Azure AD kiracı başına birçok [genel yönetici](../active-directory/users-groups-roles/directory-assign-admin-roles.md) olabilir:
+* **Genel yönetici**: Azure AD kiracısı başına çok sayıda [genel yönetici](../active-directory/users-groups-roles/directory-assign-admin-roles.md) olabilir:
 
-  * Bir Azure AD kiracısı oluşturduğunuzda, varsayılan olarak bu kiracının genel yöneticisi olursunuz.
-  * Genel yönetici temel ve standart çözüm hızlandırıcıları dağıtabilir.
+  * Bir Azure AD kiracısı oluşturduğunuzda varsayılan olarak bu kiracının genel yöneticisi olursunuz.
+  * Genel yönetici, temel ve standart çözüm hızlandırıcılarını dağıtabilir.
 
-* **Etki alanı kullanıcısı**: Azure AD kiracıbaşına birçok etki alanı kullanıcısı olabilir. Etki alanı kullanıcısı temel bir çözüm hızlandırıcısı dağıtabilir.
+* **Etki alanı kullanıcısı**: Azure AD kiracısı başına çok sayıda etki alanı kullanıcısı olabilir. Bir etki alanı kullanıcısı, temel bir çözüm hızlandırıcıyı dağıtabilir.
 
-* **Konuk kullanıcı**: Azure AD kiracıbaşına çok sayıda konuk kullanıcı olabilir. Konuk kullanıcılar, Azure AD kiracısında bir çözüm hızlandırıcıdağıtamaz.
+* **Konuk Kullanıcı**: Azure AD kiracısı başına çok sayıda Konuk Kullanıcı olabilir. Konuk kullanıcılar, Azure AD kiracısında bir çözüm Hızlandırıcısı dağıtamaz.
 
-Azure AD'deki kullanıcılar ve roller hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
+Azure AD 'deki kullanıcılar ve roller hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-* [Azure Etkin Dizini'nde kullanıcı oluşturma](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
-* [Kullanıcıları uygulamalara atama](../active-directory/manage-apps/assign-user-or-group-access-portal.md)
+* [Azure Active Directory Kullanıcı oluşturma](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+* [Kullanıcılara uygulama atama](../active-directory/manage-apps/assign-user-or-group-access-portal.md)
 
 ## <a name="choose-your-device"></a>Cihazınızı seçin
 
-AzureIoTSolutions.com [sitesi, IoT aygıt kataloğu için Azure Sertifikalı'ya](https://catalog.azureiotsolutions.com/)bağlantılar bağlar.
+AzureIoTSolutions.com sitesi, [IoT Için Azure Sertifikalı cihaz kataloğuna](https://catalog.azureiotsolutions.com/)bağlantı sağlar.
 
-Katalog, IoT çözümünüzü oluşturmaya başlamak için çözüm hızlandırıcılarınıza bağlanabileceğiniz yüzlerce sertifikalı IoT donanım aygıtını listeler.
+Katalog, IoT çözümünüzü oluşturmaya başlamak için çözüm hızlandırıcılarınıza bağlanabilyebilmeniz için yüzlerce sertifikalı IoT donanım cihazını listeler.
 
-![Cihaz kataloğu](media/iot-accelerators-permissions/devicecatalog.png)
+![Cihaz Kataloğu](media/iot-accelerators-permissions/devicecatalog.png)
 
-Donanım üreticisiyseniz, Sertifikalı IoT programında Microsoft ile ortaklık yapma hakkında bilgi edinmek için **İş Ortağı Ol'u** tıklatın.
+Donanım üreticiniz kullanıyorsanız, IoT için sertifikalı bir programda Microsoft ile ortaklık hakkında bilgi edinmek için **Iş ortağı olun ' a** tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

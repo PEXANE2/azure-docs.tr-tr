@@ -1,6 +1,6 @@
 ---
-title: Azure Sanal Makinelerde önyükleme hatalarını giderme | Microsoft Dokümanlar
-description: Bu makale, Azure Sanal Makineleri önyükleme hataları gidermek için makalelere bağlantı yardımcı olur.
+title: Azure sanal makinelerinde önyükleme hatalarını giderme | Microsoft Docs
+description: Bu makale, Azure sanal makinelerinde önyükleme hatalarını gidermek için sizi makalelere bağlamanıza yardımcı olur.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,15 +13,15 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
 ms.openlocfilehash: 660c7fa0051654fd9b0012740ce7ed3ee1e91531
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71059179"
 ---
-# <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Azure Sanal Makineler önyükleme hatalarını giderme
+# <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Azure sanal makineler önyükleme hatalarında sorun giderme
 
-Bu makalede, Microsoft Azure'da bir Windows sanal makine (VM) başlattığınızda alabileceğiniz yaygın önyükleme hataları listelenmiştir. Hatalar hakkında daha fazla bilgi için **Önyükleme hataları ve çözümleri** bölümündeki makalelere bakın.
+Bu makalede, Microsoft Azure ' de bir Windows sanal makinesi (VM) başlattığınızda alabileceğiniz ortak önyükleme hataları listelenmektedir. Hatalar hakkında daha fazla bilgi için **önyükleme hataları ve çözümleri** bölümündeki makalelere bakın.
 
 ## <a name="boot-errors-and-solutions"></a>Önyükleme hataları ve çözümleri
 
@@ -36,5 +36,5 @@ Bu makalede, Microsoft Azure'da bir Windows sanal makine (VM) başlattığınız
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Önyükleme tanılamaları](boot-diagnostics.md)
-- [VM Seri Konsol](../windows/serial-console.md)
-- [Işletim sistemi diskini kurtarma VM'ine takarak Windows VM sorun giderme](../windows/troubleshoot-recovery-disks.md)
+- [VM seri konsolu](../windows/serial-console.md)
+- [İşletim sistemi diskini bir kurtarma VM 'sine ekleyerek bir Windows sanal makinesi sorunlarını giderme](../windows/troubleshoot-recovery-disks.md)

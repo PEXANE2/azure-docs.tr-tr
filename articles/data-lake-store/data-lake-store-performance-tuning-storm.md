@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gölü Depolama Gen1 Storm performans atonlama yönergeleri | Microsoft Dokümanlar
-description: Azure Veri Gölü Depolama Gen1 Storm performans atonlama yönergeleri
+title: Azure Data Lake Storage 1. fırtınası performansı ayarlama yönergeleri | Microsoft Docs
+description: Azure Data Lake Storage 1. fırtınası performansı ayarlama yönergeleri
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -13,129 +13,129 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61436486"
 ---
-# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight ve Azure Veri Gölü Depolama Gen1'de Storm için performans alamı kılavuzu
+# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight ve Azure Data Lake Storage 1. için performans ayarlama Kılavuzu
 
-Bir Azure Storm topolojisinin performansını ayarlarken göz önünde bulundurulması gereken faktörleri anlayın. Örneğin, emzitler ve cıvatalar tarafından yapılan işin özelliklerini anlamak önemlidir (iş G/Ç veya bellek yoğun olsun). Bu makalede, sık karşılaşılan sorunları giderme de dahil olmak üzere bir dizi performans tuning yönergeleri ni kapsar.
+Azure fırtınası topolojisinin performansını ayarladığınızda göz önünde bulundurmanız gereken faktörleri anlayın. Örneğin, Spog 'ler ve cıvatalar tarafından gerçekleştirilen işin özelliklerinin anlaşılması önemlidir (çalışmanın g/ç veya bellek yoğun olup olmadığı). Bu makalede, yaygın sorunları giderme dahil olmak üzere bir dizi performans ayarlama Kılavuzu ele alınmaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-* **Bir Azure Veri Gölü Depolama Gen1 hesabı.** Nasıl oluşturulacağına ilişkin talimatlar için [bkz.](data-lake-store-get-started-portal.md)
-* Veri Gölü Depolama Gen1 hesabına erişimi olan bir **Azure HDInsight kümesi.** Bkz. [Veri Gölü Depolama Gen1 ile hdinsight kümesi oluşturun.](data-lake-store-hdinsight-hadoop-use-portal.md) Küme için Uzak Masaüstü'nü etkinleştirdiğinizden emin olun.
-* **Veri Gölü Depolama Gen1'de Bir Fırtına kümesiçalıştırma.** Daha fazla bilgi için [HDInsight'ta Storm'a](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)bakın.
-* **Veri Gölü Depolama Gen1'de performans alamı yönergeleri.**  Genel performans kavramları için Bkz. [Veri Gölü Depolama Gen1 Performans Tuning Kılavuzu.](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)  
+* **Azure Data Lake Storage 1. hesabı**. Bir oluşturma hakkında yönergeler için bkz. Azure Data Lake Storage 1. kullanmaya [başlama](data-lake-store-get-started-portal.md).
+* Data Lake Storage 1. hesabına erişimi olan **bir Azure HDInsight kümesi** . Bkz. [Data Lake Storage 1. HDInsight kümesi oluşturma](data-lake-store-hdinsight-hadoop-use-portal.md). Küme için Uzak Masaüstü 'Nü etkinleştirdiğinizden emin olun.
+* **Data Lake Storage 1. bir fırtınası kümesi çalıştırılıyor**. Daha fazla bilgi için bkz. [HDInsight 'Ta fırtınası](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
+* **Data Lake Storage 1. performans ayarlama yönergeleri**.  Genel performans kavramları için [Data Lake Storage 1. performans ayarlama Kılavuzu](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)' na bakın.  
 
-## <a name="tune-the-parallelism-of-the-topology"></a>Topolojinin paralelliğini ayarlayın
+## <a name="tune-the-parallelism-of-the-topology"></a>Topolojinin paralelliğini ayarlama
 
-Data Lake Storage Gen1'e ve Bu G)'nin eşzamanlılıkını artırarak performansı artırabilirsiniz. Fırtına topolojisi paralelliği belirleyen bir dizi yapılandırmaya sahiptir:
-* İşçi işlemlerinin sayısı (çalışanlar VM'ler arasında eşit olarak dağıtılır).
-* Spout uygulayıcı örneklerinin sayısı.
-* Cıvata uygulayıcı örneklerinin sayısı.
-* Emzme görevlerinin sayısı.
-* Cıvata görev sayısı.
+G/ç 'nin eşzamanlılık düzeyini Data Lake Storage 1. artırarak performansı artırabilirsiniz. Bir fırtınası topolojisi paralelliği tespit eden bir yapılandırma kümesine sahiptir:
+* Çalışan işlem sayısı (çalışanlar VM 'lerde eşit olarak dağıtılır).
+* Spout yürütücü örneklerinin sayısı.
+* Rulo yürütücü örneklerinin sayısı.
+* Spout görevlerinin sayısı.
+* Cıvatın görevi sayısı.
 
-Örneğin, 4 VM ve 4 alt işlem, 32 spout yürütücüsü ve 32 spout görevi ve 256 cıvata yürütücüsü ve 512 cıvata görevi olan bir kümede aşağıdakileri göz önünde bulundurun:
+Örneğin, 4 VM ve 4 çalışan işlem, 32 Spout yürütmesi ve 32 Spout görevi ve 256 sürgüler ve 512 cıvatların bulunduğu bir kümede aşağıdakileri göz önünde bulundurun:
 
-Bir işçi düğümü olan her gözetmen, tek bir işçi Java sanal makine (JVM) işlemi vardır. Bu JVM işlemi 4 emzme ipliği ve 64 cıvata iş parçacığı yönetir. Her iş parçacığı içinde görevler sırayla çalıştırılır. Önceki yapılandırmada, her spout iş parçacığının 1 görevi vardır ve her cıvata iş parçacığının 2 görevi vardır.
+Çalışan düğümü olan her gözetmen, tek bir çalışan Java sanal makinesi (JVM) işlemine sahiptir. Bu JVM işlemi 4 Spout iş parçacığını ve 64 rulut iş parçacığını yönetir. Her iş parçacığı içinde görevler sırayla çalıştırılır. Yukarıdaki yapılandırmayla, her Spout iş parçacığının 1 görevi vardır ve her bir cıvacın iş parçacığının 2 görevi vardır.
 
-Storm'da, burada ilgili çeşitli bileşenler ve bunların sahip olduğunuz paralellik düzeyini nasıl etkilediği şunlardır:
-* Baş düğümü (Fırtınada Nimbus olarak adlandırılır) işleri göndermek ve yönetmek için kullanılır. Bu düğümlerin paralellik derecesi üzerinde hiçbir etkisi yoktur.
-* Gözetmen düğümleri. HDInsight'ta bu, bir alt düğüm Azure VM'ye karşılık gelir.
-* Alt görevler, VM'lerde çalışan Fırtına işlemleridir. Her işçi görevi bir JVM örneğine karşılık gelir. Storm, belirttiğiniz işçi işlem sayısını mümkün olduğunca eşit olarak işçi düğümlerine dağıtır.
-* Spout ve cıvata uygulayıcı örnekleri. Her uygulayıcı örnek, işçiler (JVM) içinde çalışan bir iş parçacığına karşılık gelir.
-* Fırtına görevleri. Bunlar, bu iş parçacıklarının her birinin çalıştırdığı mantıksal görevlerdir. Bu paralellik düzeyini değiştirmez, bu nedenle uygulayıcı başına birden çok görev gerekip gerekmediğini değerlendirmeniz gerekir.
+Bu durumda, dahil edilen çeşitli bileşenler ve sahip olduğunuz paralellik düzeyini nasıl etkilediği aşağıda verilmiştir:
+* İş göndermek ve yönetmek için baş düğüm (Nimbus ' de fırtınası olarak adlandırılır) kullanılır. Bu düğümlerin paralellik derecesi üzerinde hiçbir etkisi yoktur.
+* Gözetmen düğümleri. HDInsight 'ta, bu bir çalışan düğümü olan Azure VM 'sine karşılık gelir.
+* Çalışan görevleri VM 'lerde çalışan bir fırtınası işlemleridir. Her çalışan görevi bir JVM örneğine karşılık gelir. Fırtınası, belirttiğiniz çalışan işlem sayısını olabildiğince eşit şekilde çalışan düğümlere dağıtır.
+* Spout ve cıvam yürütücü örnekleri. Her yürütücü örneği çalışanlar içinde çalışan bir iş parçacığına karşılık gelir (JVM 'Ler).
+* Fırtınası görevleri. Bunlar, bu iş parçacıklarının her birinin çalıştırdığı mantıksal görevlerdir. Bu, paralellik düzeyini değiştirmez, bu nedenle yürütücü başına birden çok görev gerekip gerekmediğini değerlendirmelisiniz.
 
-### <a name="get-the-best-performance-from-data-lake-storage-gen1"></a>Data Lake Storage Gen1'den en iyi performansı elde edin
+### <a name="get-the-best-performance-from-data-lake-storage-gen1"></a>Data Lake Storage 1. en iyi performansı elde edin
 
-Data Lake Storage Gen1 ile çalışırken, aşağıdakileri yaparsanız en iyi performansı elde elabilirsiniz:
-* Küçük eklerinizi daha büyük boyutlarda (ideal olarak 4 MB) biraraya getirin.
-* Olabildiğince çok eşzamanlı istek yapın. Her cıvata iş parçacığı engelleme okuma yapıyor olduğundan, çekirdek başına 8-12 iş parçacığı aralığında bir yere sahip olmak istiyorum. Bu NIC ve CPU iyi kullanılmasını sağlar. Daha büyük bir VM daha eşzamanlı istekler sağlar.  
+Data Lake Storage 1. ile çalışırken, aşağıdakileri yaparsanız en iyi performansı elde edersiniz:
+* Küçük Birleşik değişikliklerinizi daha büyük boyutlara (ideal 4 MB) birleştirin.
+* Birçok eşzamanlı istek yapabilirsiniz. Her bir sürgüle iş parçacığı engelleme okumaları yaptığından, çekirdek başına 8-12 iş parçacığı aralığında bir yere sahip olmak istiyorsunuz. Bu, NIC 'i ve CPU 'YU iyi şekilde korur. Daha büyük bir VM daha fazla eşzamanlı istek sunar.  
 
 ### <a name="example-topology"></a>Örnek topoloji
 
-D13v2 Azure VM'li 8 altlık düğüm kümeniz olduğunu varsayalım. Bu VM 8 çekirdek, bu yüzden 8 işçi düğümleri arasında, 64 toplam çekirdek var.
+D13v2 Azure VM ile 8 çalışan düğüm kümeniz olduğunu varsayalım. Bu VM 8 çekirdeğe sahiptir, bu nedenle 8 çalışan düğümleri arasında toplam 64 çekirdeğe sahip olursunuz.
 
-Diyelim ki çekirdek başına 8 cıvata ipliği yapıyoruz. 64 çekirdek göz önüne alındığında, biz 512 toplam cıvata yürütme örnekleri (yani, iş parçacığı) istediğiniz anlamına gelir. Bu durumda, VM başına bir JVM ile başladığımızı ve eşzamanlılık elde etmek için esas olarak JVM içindeki iş parçacığı eşzamanlıbirimini kullandığımızı varsayalım. Bu, 8 alt görev (Azure VM başına bir) ve 512 cıvata yürütücüse ihtiyacımız olduğu anlamına gelir. Bu yapılandırma göz önüne alındığında, Storm her işçi düğümü 1 JVM vererek, işçi düğümleri (ayrıca süpervizör düğümleri olarak da bilinir) arasında eşit işçi dağıtmak için çalışır. Şimdi denetçiler içinde, Storm her bir süpervizör (yani, JVM) 8 konuları her vererek, amirler arasında eşit uygulayıcıları dağıtmak için çalışır.
+Çekirdek başına 8 rulumu iş parçacığı yaptık. Verilen 64 çekirdek, bu, 512 toplam (iş parçacığı). Bu durumda, sanal makine başına tek bir JVM ile başlayacağız ve genellikle eşzamanlılık elde etmek için JVM içinde eşzamanlılık iş parçacığı kullanır. Bu, 8 çalışan görevlerine (Azure VM başına bir tane) ve 512 cıvatörlerine ihtiyaç duyduğumuz anlamına gelir. Bu yapılandırma verildiğinde, fırtınası çalışanları çalışan düğümleri arasında eşit olarak (gözetmen düğümleri olarak da bilinir) dağıtmayı dener ve her çalışan düğümü 1 JVM 'yi verir. Artık süper vizörlerin içinde, fırtınası, her gözetmen (yani, JVM) 8 iş parçacığını sunarak, yürüticileri, her bir gözetmen (yani, JVM) 8 iş parçacığı arasında eşit olarak
 
-## <a name="tune-additional-parameters"></a>Ek parametreleri ayarlama
-Temel topolojiye sahip olduktan sonra, parametrelerden herhangi birini ayarlamak isteyip istemediğiniz göz önünde bulundurabilirsiniz:
-* **İşçi düğümü başına JVM sayısı.** Bellekte barındırdığınız büyük bir veri yapınız (örneğin, bir arama tablosu) varsa, her JVM ayrı bir kopya gerektirir. Alternatif olarak, daha az JVM'niz varsa, veri yapısını birçok iş parçacığı nda kullanabilirsiniz. Cıvata G/Ç için, JVM sayısı bu JVM'ler arasında eklenen iş parçacığı sayısı kadar bir fark yaratmaz. Basitlik için, işçi başına bir JVM olması iyi bir fikirdir. Cıvatanızın ne yaptığına veya hangi uygulama işlemine gereksinim duyduğunuza bağlı olarak, bu numarayı değiştirmeniz gerekebilir.
-* **Spout uygulayıcılarının sayısı.** Önceki örnek, Veri Gölü Depolama Gen1'e yazmak için cıvatakullandığından, emzme sayısı cıvata performansıyla doğrudan ilgili değildir. Ancak, işlem veya G / 0 miktarına bağlı olarak en iyi performans için emzitler ayarlamak için iyi bir fikirdir. Cıvataları meşgul edebilmek için yeterli emzme sahip olduğundan emin olun. Emzitlerin çıkış oranları cıvataların verimi ile eşleşmelidir. Gerçek yapılandırma emzme bağlıdır.
-* **Görev sayısı.** Her cıvata tek bir iplik olarak çalışır. Cıvata başına ek görevler herhangi bir ek eşzamanlılık sağlamaz. Onlar yarar sadece zaman tuple kabul süreci cıvata yürütme süresinin büyük bir kısmını alır olmasıdır. Cıvatadan bir onay göndermeden önce birçok tuples'ı daha büyük bir ekte gruplandırmak iyi bir fikirdir. Bu nedenle, çoğu durumda, birden çok görev ek bir avantaj sağlamaz.
-* **Yerel veya karışık gruplandırma.** Bu ayar etkinleştirildiğinde, aynı alt işlem içinde cıvatalara tuples gönderilir. Bu, süreçler arası iletişimi ve ağ çağrılarını azaltır. Bu en topolojiler için tavsiye edilir.
+## <a name="tune-additional-parameters"></a>Ek parametreleri ayarla
+Temel topolojiden sonra, parametrelerden herhangi birini ince ayar isteyip istemediğinizi göz önünde bulundurun:
+* **Çalışan düğümü başına JVM sayısı.** Bellekte barındırdığınızda büyük bir veri yapınız (örneğin, bir arama tablosu) varsa, her JVM ayrı bir kopya gerektirir. Alternatif olarak, daha az JVM varsa veri yapısını birçok iş parçacığı üzerinde kullanabilirsiniz. Cıvatanın g/ç için, JVM 'lerin sayısı bu JVM 'Ler genelinde eklenen iş parçacığı sayısı kadar farklılık yapmaz. Kolaylık olması açısından, çalışan başına bir JVM olması iyi bir fikirdir. Aradığınıza bağlı olarak veya ihtiyacınız olan uygulama işlemlerini, ancak bu numarayı değiştirmeniz gerekebilir.
+* **Spout yürüticileri sayısı.** Yukarıdaki örnek Data Lake Storage 1. yazmak için cıvatları kullandığından, spotların sayısı, doğrudan cıvatiye uygun değildir. Ancak, Spout 'daki işleme veya g/ç miktarına bağlı olarak en iyi performansı elde etmek iyi bir fikirdir. Cıvatları meşgul tutmaya yetecek kadar biriktirmeolduğunuzdan emin olun. Spotların çıkış ücretleri cıvatların verimlilik ile aynı olmalıdır. Gerçek yapılandırma Spout 'a bağlıdır.
+* **Görev sayısı.** Her bir sürgüsü tek bir iş parçacığı olarak çalışır. Her bir ek görev, ek eşzamanlılık sağlamaz. Yalnızca kullanım açısından, kayıt düzeni elde etmek için gereken tek zaman, rulonun yürütme süresinin büyük bir oranını alırsa. Daha fazla tanımlama grubunu daha büyük bir ekleme için, fiteleten bir onay göndermeden önce bu çok sayıda grubu gruplamak iyi bir fikirdir. Bu nedenle, çoğu durumda birden çok görev ek bir avantaj sağlamaz.
+* **Yerel veya karıştırma gruplandırması.** Bu ayar etkinleştirildiğinde, diziler aynı çalışan işlemi içinde cıvatlara gönderilir. Bu işlem işlemler arası iletişimi ve ağ çağrılarını azaltır. Bu çoğu topolojilerde önerilir.
 
-Bu temel senaryo iyi bir başlangıç noktasıdır. En iyi performansı elde etmek için önceki parametrelerde değişiklik yapmak için kendi verilerinizle test edin.
+Bu temel senaryo, iyi bir başlangıç noktasıdır. En iyi performansı elde etmek için yukarıdaki parametreleri ince ayar için kendi verilerinize test edin.
 
-## <a name="tune-the-spout"></a>Emziyi ayarlayın
+## <a name="tune-the-spout"></a>Spout ayarla
 
-Aşağıdaki ayarları emziyi ayarlamak için değiştirebilirsiniz.
+Spout 'yi ayarlamak için aşağıdaki ayarları değiştirebilirsiniz.
 
-- **Tuple zaman amı: topology.message.timeout.secs**. Bu ayar, bir iletinin başarısız olarak kabul edilmeden önce tamamlanması ve onay alması için gereken süreyi belirler.
+- **Demet zaman aşımı: topoloji. Message. Timeout. secs**. Bu ayar, bir iletinin tamamlanma süresini belirler ve başarısız kabul edilmeden önce onay alır.
 
-- **İşçi başına maksimum bellek işlemi: işçi.childopts**. Bu ayar, Java çalışanlarına ek komut satırı parametreleri belirtmenizi sağlar. Burada en sık kullanılan ayar, JVM'nin yığınına ayrılan maksimum belleği belirleyen XmX'tir.
+- **Çalışan işlemi başına en fazla bellek: Worker. childopts**. Bu ayar, Java çalışanlarına ek komut satırı parametreleri belirtmenizi sağlar. Burada en yaygın olarak kullanılan ayar, bir JVM 'nin yığınına ayrılan maksimum belleği belirleyen XmX ' dir.
 
-- **Max spout beklemede: topology.max.spout.pending**. Bu ayar, herhangi bir zamanda uç iş parçacığı başına uçarak (henüz topolojideki tüm düğümlerde kabul edilmeyen) uçabilen tupül sayısını belirler.
+- **Maksimum Spout bekliyor: topoloji. Max. Spout. Pending**. Bu ayar, herhangi bir zamanda Spout iş parçacığı başına uçuş (henüz topoloji olmayan tüm düğümlerde onaylanmamış) tanımlama gruplarının sayısını belirler.
 
-  Yapılacak iyi bir hesaplama, her bir tuples boyutunu tahmin etmektir. Sonra ne kadar bellek bir emmele iplik olduğunu anlamaya. Bu değere bölünen bir iş parçacığına ayrılan toplam bellek, size bekleyen maksimum parametre için üst sınırı vermelidir.
+  İçin iyi bir hesaplama, her bir tanımlama grubu için boyut tahminidir. Daha sonra, bir Spout iş parçacığının ne kadar bellek olduğunu anlamak. Bu değere bölünen bir iş parçacığına ayrılan toplam bellek, en fazla Spout bekleyen parametresi için üst sınır vermelidir.
 
-## <a name="tune-the-bolt"></a>Cıvatayı ayarlayın
-Veri Gölü Depolama Gen1'e yazarken, 4 MB'a bir boyut eşitleme ilkesi (istemci tarafında arabellek) ayarlayın. Bir yıkama veya hsync() sonra yalnızca arabellek boyutu bu değerde olduğunda gerçekleştirilir. İşçi VM'deki Veri Gölü Depolama Gen1 sürücüsü, açıkça bir hsync() gerçekleştirmediğiniz sürece bu arabelleği otomatik olarak yapar.
+## <a name="tune-the-bolt"></a>Sürgüsü ayarla
+Data Lake Storage 1. yazarken bir boyut eşitleme ilkesi (istemci tarafında arabellek) 4 MB olarak ayarlayın. Bir reçeteye göre veya HSync (), yalnızca arabellek boyutu bu değerde olduğunda gerçekleştirilir. Açıkça bir HSync () gerçekleştirmediğiniz müddetçe, çalışan VM 'deki Data Lake Storage 1. sürücüsü bu arabelleğe alma işlemini otomatik olarak yapar.
 
-Varsayılan Veri Gölü Depolama Gen1 Storm cıvatası, bu parametreyi ayarlamak için kullanılabilecek bir boyut eşitleme ilkesi parametresi (fileBufferSize) vardır.
+Varsayılan Data Lake Storage 1. fırtınası işareti, bu parametreyi ayarlamak için kullanılabilen bir boyut eşitleme ilkesi parametresine (fileBufferSize) sahiptir.
 
-I/O-yoğun topolojilerde, her cıvata iş parçacığının kendi dosyasına yazılması ve bir dosya döndürme ilkesinin (fileRotationSize) ayarlamının iyi bir fikirdir. Dosya belirli bir boyuta ulaştığında, akış otomatik olarak temizlenir ve yeni bir dosya yazılır. Döndürme için önerilen dosya boyutu 1 GB'dır.
+G/ç yoğunluklu topolojilerde, her bir soıt iş parçacığının kendi dosyasına yazması ve bir dosya döndürme ilkesi (fileRotationSize) ayarlaması iyi bir fikirdir. Dosya belirli bir boyuta ulaştığında, akış otomatik olarak temizlenir ve üzerine yeni bir dosya yazılır. Döndürme için önerilen dosya boyutu 1 GB 'tır.
 
-### <a name="handle-tuple-data"></a>Tuple verilerini işleme
+### <a name="handle-tuple-data"></a>Kayıt düzeni verilerini işleme
 
-Storm'da, bir spout cıvata tarafından açıkça kabul edilene kadar bir tuple üzerinde tutar. Cıvata tarafından bir tuple okunduysa ancak henüz kabul edilmemişse, emzit Veri Gölü Depolama Gen1 arka uçta kalıcı olmayabilir. Bir tuple kabul edildikten sonra, emzme cıvata tarafından kalıcılığı garanti edilebilir ve daha sonra hangi kaynaktan okunan kaynaktan kaynak verileri silebilir.  
+Bu durumda, Spout, cıvam tarafından açıkça onaylanana kadar bir kayıt düzeni üzerinde tutulur. Bir tanımlama grubu, cıvam tarafından okunmadıysa ancak henüz onaylanmadıysa, Spout Data Lake Storage 1. arka uca kalıcı olmayabilir. Bir tanımlama grubu onaylandıktan sonra Spout, cıvatanın sürekliliği olabilir ve sonra kaynak verileri okuma kaynağı olan herhangi bir kaynaktan silebilir.  
 
-Veri Gölü Depolama Gen1'de en iyi performans için, 4 MB tuple verisi cıvata arabelleği var. Sonra Bir 4-MB yazmak olarak Veri Gölü Depolama Gen1 arka ucuna yazın. Veriler mağazaya başarıyla yazıldıktan sonra (hflush()'ı arayarak), cıvata verileri emzmeye geri dönebilir. Burada verilen örnek cıvata budur. Ayrıca hflush() araması yapılmadan ve tuples kabul edilmeden önce daha fazla sayıda tuples tutmak da kabul edilebilir. Ancak, bu, emzittutması gereken uçuştaki tupül sayısını artırır ve bu nedenle JVM başına gereken bellek miktarını artırır.
+Data Lake Storage 1. en iyi performansı elde etmek için, cıvam arabelleği 4 MB 'lık kayıt verisi olmalıdır. Sonra Data Lake Storage 1. arka uca bir 4 MB yazma olarak yazın. Veriler depoya başarıyla yazıldıktan sonra (hflush () çağırarak, bu, verileri Spout 'e geri kabul edebilir. Burada sağlanan örnek bir sürgüsü aşağıda verilmiştir. Ayrıca, hflush () çağrısı yapılmadan ve tanımlama grupları onaylanmadan önce daha fazla sayıda tanımlama kümesini tutmak da kabul edilebilir. Bununla birlikte, bu, Spout 'ın tutması gereken Uçuş ve bu nedenle JVM başına gereken bellek miktarını artıran başlık sayısını artırır.
 
 > [!NOTE]
-> Uygulamalar, diğer performans dışı nedenlerden dolayı tuples'ı daha sık (veri boyutlarında 4 MB'dan az) kabul etme gereksinimi olabilir. Ancak, bu depolama arka sonuna G/Ç iş buzunu etkileyebilir. Bu tradeoff'u cıvatanın G/Ç performansına göre dikkatlice tartmaya devam edin.
+> Uygulamalar, diğer performans dışı nedenlerle, başlıkları daha sık (4 MB 'tan az veri boyutunda) kabul etmek için bir gereksinime sahip olabilir. Ancak bu, depolama arka ucunun g/ç verimini etkileyebilir. Bu zorunluluğunu getirir 'in, cıvatanın g/ç performansına karşı dikkatli bir şekilde karşılaştırın.
 
-Tuples gelen oranı yüksek değilse, bu nedenle 4-MB arabellek doldurmak için uzun bir zaman alır, bu tarafından hafifletici düşünün:
-* Cıvata sayısını azaltmak, böylece doldurmak için daha az arabellek vardır.
-* Bir hflush() her x floş veya her y milisaniye tetiklenir ve tuples şimdiye kadar birikmiş geri kabul edilir zaman tabanlı veya sayı tabanlı bir ilke olması.
+Tanımlama gruplarının gelen hızı yüksek değilse, 4 MB arabelleğin doldurulması uzun sürer, bunu şu şekilde değerlendirin:
+* Cıvatların sayısını azaltarak, doldurmanız gereken daha az arabellek vardır.
+* Her x temizlemesi veya her y milisaniyesi için bir hflush () tetiklendiği zaman tabanlı veya sayı tabanlı bir ilkeye sahip olmak ve şimdiye kadar toplanan başlıkların geri kabul edildiği.
 
-Bu durumda iş verimi daha düşük olduğunu unutmayın, ancak olayların yavaş bir oranda, maksimum iş bölümü zaten en büyük hedefi değildir. Bu azaltıcı etkenler, bir tuple'ın mağazaya akması için gereken toplam süreyi azaltmanıza yardımcı olur. Düşük bir olay oranıyla bile gerçek zamanlı bir ardışık hat lar istiyorsanız, bu önemli olabilir. Ayrıca, gelen tuple oranınız düşükse, topology.message.timeout_secs parametresini ayarlamanız gerektiğini, böylece tuples'ın arabelleğe alınırken veya işlenirken zaman ları uzatmadığını unutmayın.
+Bu durumda üretilen iş hacmi daha düşüktür, ancak yavaş bir olay oranı ile en fazla verimlilik, yine de en büyük amaç değildir. Bu azaltmaları, kayıt düzeni için gereken toplam süreyi, mağazaya akacak şekilde azaltmanıza yardımcı olur. Bu durum, düşük bir olay oranıyla bile gerçek zamanlı bir işlem hattı ister misiniz? Ayrıca, gelen kayıt tarifeniz düşükse, topoloji. Message. timeout_secs parametresini ayarlamanız gerektiğini unutmayın. bu nedenle, arabelleğe alınmış veya işlenen sırada tanımlama gruplarının zaman aşımına uğrar.
 
-## <a name="monitor-your-topology-in-storm"></a>Fırtına'da topolojinizi izleyin  
-Topolojiniz çalışırken, Fırtına kullanıcı arabiriminde izleyebilirsiniz. Burada bakmak için ana parametreler şunlardır:
+## <a name="monitor-your-topology-in-storm"></a>Topolojinizi fırtınası içinde izleyin  
+Topolojiniz çalışırken, bunu fırtınası Kullanıcı arabiriminde izleyebilirsiniz. Bakılacak ana parametreler şunlardır:
 
-* **Toplam işlem yürütme gecikmesi.** Bu, bir tuple'ın yayMak için aldığı ortalama süredir, cıvata tarafından işlenir ve kabul edilir.
+* **Toplam işlem yürütme gecikmesi.** Bu, bir tanımlama grubunun Spout tarafından, cıvata işlenen ve onaylanan ortalama süredir.
 
-* **Toplam cıvata işlemi gecikmesi.** Bu, bir onay alana kadar cıvatada tuple tarafından harcanan ortalama süredir.
+* **Toplam rulo işlem gecikmesi.** Bu, bir onay alana kadar, cıvata kayıt düzeni tarafından harcanan ortalama süredir.
 
-* **Toplam cıvata gecikmesi çalıştırın.** Bu, cıvata nın yürütme yönteminde harcadığı ortalama süredir.
+* **Toplam cıvata yürütme gecikmesi.** Bu, Execute yöntemindeki cıvatın harcadığı ortalama süredir.
 
-* **Başarısızlık sayısı.** Bu, zaman dolmadan önce tam olarak işlenemeyen tuples sayısını ifade eder.
+* **Başarısızlık sayısı.** Bu, zaman aşımına uğramadan önce tam olarak işlenemeyen tanımlama grubu sayısını ifade eder.
 
-* **Kapasite.** Bu, sisteminizin ne kadar yoğun olduğunu niçin ölçtüğünüzdür. Bu sayı 1 ise, cıvatalarınız olabildiğince hızlı çalışıyor. 1'den az ise, paralelliği artırın. 1'den büyükse, paralelliği azaltın.
+* **Kü.** Bu, sisteminizin ne kadar meşgul olduğunu gösteren bir ölçüdür. Bu sayı 1 ise, cıvatları, olabildiğince hızlı çalışır. 1 ' den küçükse paralellik düzeyini artırın. 1 ' den büyükse paralelliği azaltın.
 
 ## <a name="troubleshoot-common-problems"></a>Sık karşılaşılan sorunları giderme
-Sık karşılaşılan birkaç sorun giderme senaryosu aşağıda verilmiştir.
-* **Birçok tuples dışarı zamanlama vardır.** Darboğaz nerede olduğunu belirlemek için topolojideki her düğüme bakın. Bunun en yaygın nedeni cıvataların emzilere ayak uydurabilmeleridir. Bu, işlenmeyi beklerken iç arabellekleri tıkayan tuples yol açar. Zaman açığı değerini artırıcı veya bekleyen en büyük spout' u düşü
+Yaygın olarak karşılaşılan birkaç sorun giderme senaryosu aşağıda verilmiştir.
+* **Birçok tanımlama grubu zaman aşımına uğruyor.** Performans sorununa nerede olduğunu öğrenmek için topolojideki her düğüme bakın. Bunun en yaygın nedeni, cıvatların spokörlerle devam edebilmemelidir. Bu, işlenmek üzere bekleyen iç arabelleklerin iş gruplarını oluşturmayı sağlar. Zaman aşımı değerini artırmayı veya en fazla Spout bekletmeyi azaltmayı düşünün.
 
-* **Yüksek toplam işlem yürütme gecikmesi vardır, ancak düşük cıvata işlemi gecikmesi.** Bu durumda, tuples yeterince hızlı kabul edilmemektedir mümkündür. Yeterli sayıda bildirimde olup olmadığını kontrol edin. Başka bir olasılık da cıvatalar işlemeye başlamadan önce kuyrukta çok uzun süre beklemeleridir. Bekleyen maksimum spout azaltın.
+* **Yüksek toplam işlem yürütme gecikmesi vardır, ancak düşük bir işlem gecikmesi vardır.** Bu durumda, tanımlama gruplarının yeterince hızlı bir şekilde onaylanmaması mümkündür. Yeterli sayıda bildirimlerin olup olmadığını denetleyin. Diğer bir olasılık ise, cıvatları işlemeden önce kuyrukta çok uzun süre beklemelidir. En fazla Spout bekleyen değerini azaltın.
 
-* **Yüksek bir cıvata yürütme gecikmesi vardır.** Bu, cıvatanızın yürütme() yönteminin çok uzun sürdüğü anlamına gelir. Kodu optimize edin veya yazma boyutlarına ve floş davranışına bakın.
+* **Yüksek bir cıvata yürütme gecikmesi vardır.** Bu, cıvatlarınızın Execute () yönteminin çok uzun sürmesi anlamına gelir. Kodu iyileştirin veya yazma boyutlarına ve Temizleme davranışına bakın.
 
-### <a name="data-lake-storage-gen1-throttling"></a>Veri Gölü Depolama Gen1 azaltma
-Data Lake Storage Gen1 tarafından sağlanan bant genişliği sınırlarına ularsanız, görev hataları görebilirsiniz. Azaltma hataları için görev günlüklerini denetleyin. Kapsayıcı boyutunu artırarak paralelliği azaltabilirsiniz.    
+### <a name="data-lake-storage-gen1-throttling"></a>Data Lake Storage 1. azaltma
+Data Lake Storage 1. tarafından belirtilen bant genişliği sınırlarına ulaşırsanız, görev hatalarıyla karşılaşabilirsiniz. Azaltma hataları için görev günlüklerine bakın. Kapsayıcının boyutunu artırarak paralellik değerini azaltabilirsiniz.    
 
-Daraltılmış olup olmadığınızı kontrol etmek için istemci tarafında hata ayıklama günlüğe kaydetmeyi etkinleştirin:
+Kısıtlanıyor olup olmadığınızı denetlemek için istemci tarafında hata ayıklama günlüğünü etkinleştirin:
 
-1. **Ambari** > **Storm** > **Config** > Gelişmiş**fırtına-işçi-log4j**yılında, ** &lt;&gt; ** ** &lt;kök düzeyi="bilgi" kök&gt;düzeyi ="hata ayıklama"** değiştirin. Yapılandırmanın etkili olması için tüm düğümleri/hizmeti yeniden başlatın.
-2. Veri Gölü Depolama Gen1 azaltma özel durumlar için işçi düğümleri (altında&lt;/var/log/storm/worker-artifalar/ TopolojiAd&gt;/&lt;portu&gt;/worker.log) üzerinde Fırtına topoloji günlükleri izleyin.
+1. **Ambarı** > **fırtınası** > **Advanced storm-worker-log4j****Config** ** &lt;&gt; ** ** &lt;&gt;** yapılandırması Gelişmiş fırtınası-çalışan-Log4J ' de kök düzeyi = "info" öğesini root Level = "Debug" olarak değiştirin. >  Yapılandırmanın etkili olması için tüm düğümleri/hizmeti yeniden başlatın.
+2. Data Lake Storage 1. azaltma özel durumları için çalışan düğümlerdeki fırtınası topolojisi günlüklerini (&lt;/var/log/Storm/Worker-Artifacts/topologyıname&gt;&gt;/&lt;Port/Worker.log altında) izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Fırtına için ek performans tuning [bu blogda](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)başvurulabilir.
+[Bu blogda](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/), fırtınası için ek performans ayarlamaya başvurulabilir.
 
-Çalıştırmak için ek bir örnek için, [GitHub bu](https://github.com/hdinsight/storm-performance-automation)bakın.
+Çalıştırmak için ek bir örnek için bkz. [GitHub 'da bu](https://github.com/hdinsight/storm-performance-automation).

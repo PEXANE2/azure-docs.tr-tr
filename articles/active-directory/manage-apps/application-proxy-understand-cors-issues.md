@@ -1,6 +1,6 @@
 ---
-title: Azure AD Uygulama Proxy CORS sorunlarını anlama ve çözme
-description: Azure AD Application Proxy'de CORS'lerin anlaşılmasını ve CORS sorunlarının nasıl tanımlanıp çözüleceğini sağlar.
+title: Azure AD Uygulama Ara Sunucusu CORS sorunlarını anlama ve çözme
+description: Azure AD Uygulama Ara Sunucusu CORS 'yi anlama ve CORS sorunlarını belirleme ve çözme hakkında bilgiler sağlar.
 services: active-directory
 author: jeevanbisht
 manager: mtillman
@@ -12,109 +12,109 @@ ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
 ms.openlocfilehash: c49535ad11139ac5145d4f283374bf9cc6d71f52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72025793"
 ---
-# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory Application Proxy CORS sorunlarını anlama ve çözme
+# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory Uygulama Ara Sunucusu CORS sorunlarını anlama ve çözme
 
-[Orijinler arası kaynak paylaşımı (CORS),](https://www.w3.org/TR/cors/) azure Etkin Dizin Uygulama Proxy'si aracılığıyla yayımladığunuz uygulamalar ve API'ler için bazen zorluklar sunabilir. Bu makalede, Azure AD Uygulama Proxy CORS sorunları ve çözümleri anlatılmaktadır.
+[Çıkış noktaları arası kaynak paylaşımı (CORS)](https://www.w3.org/TR/cors/) bazen Azure Active Directory uygulama ara sunucusu aracılığıyla yayımladığınız uygulamalar ve API 'ler için zorluk sunabilir. Bu makalede Azure AD Uygulama Ara Sunucusu CORS sorunları ve çözümleri açıklanmaktadır.
 
-Tarayıcı güvenliği genellikle bir web sayfasının başka bir etki alanına AJAX istekleri yapmasını engeller. Bu kısıtlama ya *aynı kaynak ilkesi*olarak adlandırılır ve kötü amaçlı bir sitenin başka bir siteden gelen hassas verileri okumasını engeller. Ancak, bazen diğer sitelerin web API'nizi aramasına izin vermek isteyebilirsiniz. CORS, bir sunucunun aynı orijin ilkesini gevşetmesine ve diğerlerini reddederken bazı çapraz orijin isteklerine izin veren bir W3C standardıdır.
+Tarayıcı güvenliği genellikle bir Web sayfasının başka bir etki alanına AJAX istekleri yapmasını engeller. Bu kısıtlamaya *aynı-Origin ilkesi*adı verilir ve kötü amaçlı bir sitenin başka bir siteden hassas verileri okumasını önler. Ancak, bazen diğer sitelerin Web API 'nizi çağırmasını sağlamak isteyebilirsiniz. CORS, bir sunucunun aynı kaynaklı ilkeyi daha rahat ve bazı çapraz kaynak isteklerine izin veren bir W3C standardıdır.
 
-## <a name="understand-and-identify-cors-issues"></a>CORS sorunlarını anlama ve tanımlama
+## <a name="understand-and-identify-cors-issues"></a>CORS sorunlarını anlayın ve belirler
 
-Aynı şemaları, ana bilgisayarlar ve bağlantı noktaları[(RFC 6454)](https://tools.ietf.org/html/rfc6454)varsa, iki URL aynı kökene sahiptir:
+Aynı şemalara, ana bilgisayarlara ve bağlantı noktalarına ([RFC 6454](https://tools.ietf.org/html/rfc6454)) sahip olmaları durumunda iki URL aynı kaynağa sahiptir:
 
 -   http:\//contoso.com/foo.html
--   http:\//contoso.com/bar.html
+-   http:\//contoso.com/Bar.html
 
-Aşağıdaki URL'lerin önceki iki URL'den farklı kökenleri vardır:
+Aşağıdaki URL 'Lerin önceki iki değerden farklı kaynakları vardır:
 
--   http:\//contoso.net - Farklı etki alanı
--   http:\//contoso.com:9000/foo.html - Farklı bağlantı noktası
--   https:\//contoso.com/foo.html - Farklı şema
--   http:\//www.contoso.com/foo.html - Farklı alt etki alanı
+-   http:\//contoso.net-farklı etki alanı
+-   http:\//contoso.com:9000/foo.html-farklı bağlantı noktası
+-   https:\//contoso.com/foo.html-farklı düzen
+-   http:\//www.contoso.com/foo.html-farklı alt etki alanı
 
-Aynı kaynak ilkesi, doğru erişim denetimi üstbilgisini kullanmadıkları sürece uygulamaların diğer kaynaklardan gelen kaynaklara erişmesini engeller. CORS üstbilgisi yoksa veya yanlışsa, çapraz kaynak istekleri başarısız olur. 
+Aynı kaynak ilkesi, doğru erişim denetimi üstbilgilerini kullanmadıkları takdirde uygulamaların diğer kaynaklardan kaynaklara erişmesini önler. CORS üst bilgileri eksik veya yanlış ise, çapraz kaynak istekleri başarısız olur. 
 
-Tarayıcı hata ayıklama araçlarını kullanarak CORS sorunlarını belirleyebilirsiniz:
+CORS sorunlarını tarayıcı hata ayıklama araçlarını kullanarak tanımlayabilirsiniz:
 
-1. Tarayıcıyı başlatın ve web uygulamasına göz atın.
-1. Hata ayıklama konsoluna getirmek için **F12** tuşuna basın.
-1. Hareketi yeniden oluşturmaya çalışın ve konsol iletisini gözden geçirin. CORS ihlali, kaynakla ilgili bir konsol hatası na neden olabilir.
+1. Tarayıcıyı başlatın ve Web uygulamasına gidin.
+1. Hata ayıklama konsolunu açmak için **F12** tuşuna basın.
+1. İşlemi yeniden oluşturmaya çalışın ve konsol iletisini gözden geçirin. CORS ihlali, kaynak hakkında bir konsol hatası oluşturur.
 
-Aşağıdaki ekran görüntüsünde, **Try It** düğmesini seçmek, Access-Control-Allow-Origin üstbilgisinde https:\//corswebclient-contoso.msappproxy.net bulunmayan bir CORS hata iletisi neden oldu.
+Aşağıdaki ekran görüntüsünde, **TRY It** düğmesinin seçilmesi, https:\//Corswebclient-contoso.msappproxy.net 'in erişim-denetim-izin-Origin ÜSTBILGISINDE bulunamadığını belirten bir CORS hata iletisine neden oldu.
 
 ![CORS sorunu](./media/application-proxy-understand-cors-issues/image3.png)
 
-## <a name="cors-challenges-with-application-proxy"></a>Uygulama Proxy ile CORS zorlukları
+## <a name="cors-challenges-with-application-proxy"></a>Uygulama proxy 'Si ile CORS sorunları
 
-Aşağıdaki örnekte, tipik bir Azure AD Application Proxy CORS senaryosu gösterilmektedir. Dahili sunucu, **CORSWebService** web API denetleyicisi ve **CORSWebService**çağıran bir **CORSWebClient'ı** barındırıyor. **CORSWebClient'dan** **CORSWebService'e**bir AJAX isteği var.
+Aşağıdaki örnekte, tipik bir Azure AD Uygulama Ara Sunucusu CORS senaryosu gösterilmektedir. İç sunucu **corswebservice** Web API denetleyicisi ve **corswebservice**çağıran bir **corswebclient** barındırır. **Corswebclient** 'Dan **corswebservice**'a yönelik bir AJAX isteği var.
 
-![Şirket içi aynı köken isteği](./media/application-proxy-understand-cors-issues/image1.png)
+![Şirket içi aynı kaynak isteği](./media/application-proxy-understand-cors-issues/image1.png)
 
-CORSWebClient uygulaması, şirket içinde barındırdığınızda çalışır, ancak Azure AD Application Proxy aracılığıyla yayımlandığında yükleme yapmaz veya hatalar dan arınmış olur. CORSWebClient ve CORSWebService uygulamalarını Application Proxy aracılığıyla farklı uygulamalar olarak ayrı olarak yayınladıysanız, iki uygulama farklı etki alanlarında barındırılır. CORSWebClient'dan CORSWebService'e yapılan BIR AJAX isteği, başlangıç lar arası bir istektir ve başarısız olur.
+CORSWebClient uygulaması, şirket içinde barındırdığınızda çalışacaktır, ancak Azure AD Uygulama Ara Sunucusu aracılığıyla yayımlandığında yükleme veya hata giderme işlemleri başarısız olur. CORSWebClient ve CORSWebService uygulamalarını uygulama proxy 'Si aracılığıyla farklı uygulamalar olarak yayımladıysanız, iki uygulama farklı etki alanlarında barındırılır. CORSWebClient 'dan CORSWebService 'a yönelik bir AJAX isteği, bir çapraz kaynak isteği ve başarısız olur.
 
-![Uygulama Proxy CORS isteği](./media/application-proxy-understand-cors-issues/image2.png)
+![Uygulama proxy CORS isteği](./media/application-proxy-understand-cors-issues/image2.png)
 
-## <a name="solutions-for-application-proxy-cors-issues"></a>Uygulama Proxy CORS sorunları için çözümler
+## <a name="solutions-for-application-proxy-cors-issues"></a>Uygulama ara sunucusu CORS sorunları için çözümler
 
-Önceki CORS sorununu çeşitli yollardan herhangi biriyle çözebilirsiniz.
+Yukarıdaki CORS sorununu çeşitli yollarla çözebilirsiniz.
 
-### <a name="option-1-set-up-a-custom-domain"></a>Seçenek 1: Özel bir etki alanı ayarlama
+### <a name="option-1-set-up-a-custom-domain"></a>Seçenek 1: özel bir etki alanı ayarlama
 
-Uygulama kaynağı, kod veya üstbilgide değişiklik yapmak zorunda kalmadan aynı kaynaktan yayımlamak için Azure AD Application Proxy [özel etki alanını](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) kullanın. 
+Uygulama kaynakları, kod veya başlıklarda herhangi bir değişiklik yapmak zorunda kalmadan aynı kaynaktan yayımlamak için Azure AD Uygulama Ara Sunucusu [özel etki alanını](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) kullanın. 
 
-### <a name="option-2-publish-the-parent-directory"></a>Seçenek 2: Üst dizinin yayımla
+### <a name="option-2-publish-the-parent-directory"></a>Seçenek 2: üst dizini yayımlama
 
-Her iki uygulamanın üst dizinini yayımlayın. Web sunucusunda yalnızca iki uygulama nız varsa, bu çözüm özellikle iyi çalışır. Her uygulamayı ayrı ayrı yayımlamak yerine, aynı kaynakla sonuçlanan ortak ana dizininyayımlanabilir.
+Her iki uygulamanın üst dizinini yayımlayın. Bu çözüm, Web sunucusunda yalnızca iki uygulamanız varsa oldukça iyi bir şekilde geçerlidir. Her uygulamayı ayrı ayrı yayımlamak yerine, aynı kaynak ile sonuçlanan ortak üst dizini yayımlayabilirsiniz.
 
-Aşağıdaki örnekler, CORSWebClient uygulaması için portal Azure AD Application Proxy sayfasını gösterir.  **Dahili URL** *contoso.com/CORSWebClient*ayarlandığında, uygulama *contoso.com/CORSWebService* dizinine çapraz kökenli oldukları için başarılı isteklerde bulunamaz. 
+Aşağıdaki örneklerde CORSWebClient uygulaması için Portal Azure AD Uygulama Ara Sunucusu sayfası gösterilmektedir.  **Iç URL** *contoso.com/CORSWebClient*olarak ayarlandığında, uygulama, cross-Origin olduklarından *contoso.com/CORSWebService* dizinine başarılı istekler yapamaz. 
 
-![Uygulamayı tek tek yayımlama](./media/application-proxy-understand-cors-issues/image4.png)
+![Uygulamayı tek tek Yayımla](./media/application-proxy-understand-cors-issues/image4.png)
 
-Bunun yerine, hem *CORSWebClient* hem de *CORSWebService* dizinlerini içeren ana dizininyayımlaşması için **İç URL'yi** ayarlayın:
+Bunun yerine, hem *Corswebclient* hem de *corswebservice* dizinlerini içeren üst dizini yayımlamak için **İç URL 'yi** ayarlayın:
 
-![Üst dizini yayımlama](./media/application-proxy-understand-cors-issues/image5.png)
+![Üst dizini Yayımla](./media/application-proxy-understand-cors-issues/image5.png)
 
-Ortaya çıkan uygulama URL'leri CORS sorununu etkili bir şekilde çözer:
+Elde edilen uygulama URL 'Leri, CORS sorununu etkili bir şekilde çözümler:
 
 - https:\//corswebclient-contoso.msappproxy.net/CORSWebService
 - https:\//corswebclient-contoso.msappproxy.net/CORSWebClient
 
-### <a name="option-3-update-http-headers"></a>Seçenek 3: HTTP üstbilgilerini güncelleştir
+### <a name="option-3-update-http-headers"></a>Seçenek 3: HTTP üstbilgilerini güncelleştirme
 
-Web hizmetine, kaynak isteğiyle eşleşecek özel bir HTTP yanıt üstbilgisi ekleyin. Internet Information Services (IIS) bölümünde çalışan web siteleri için üstbilgiyi değiştirmek için IIS Manager'ı kullanın:
+Kaynak isteğiyle eşleşmesi için Web hizmetine özel bir HTTP yanıt üst bilgisi ekleyin. Internet Information Services (IIS) içinde çalışan Web siteleri için, üstbilgiyi değiştirmek için IIS Yöneticisi 'Ni kullanın:
 
-![IIS Manager'da özel yanıt üstbilgisi ekleme](./media/application-proxy-understand-cors-issues/image6.png)
+![IIS Yöneticisi 'nde özel yanıt üst bilgisi ekle](./media/application-proxy-understand-cors-issues/image6.png)
 
-Bu değişiklik herhangi bir kod değişikliği gerektirmez. Fiddler izlerinde doğrulayabilirsiniz:
+Bu değişiklik herhangi bir kod değişikliği gerektirmez. Bunu Fiddler izlerinde doğrulayabilirsiniz:
 
-**Üstbilgi Eklemesini Gönder**\
-HTTP/1.1 200 TAMAM\
-Önbellek Denetimi: önbellek yok\
-Pragma: önbellek yok\
-İçerik Türü: metin/düz; charset=utf-8\
-Süresi doluyor: -1\
-Vary: Kabul-Kodlama\
-Sunucu: Microsoft-IIS/8.5 Microsoft-HTTPAPI/2.0\
-**Erişim-Denetim-İzin-Origin:\:https //corswebclient-contoso.msappproxy.net**\
-X-AspNet-Sürüm: 4.0.30319\
-X-Powered-By: ASP.NET\
-İçerik Uzunluğu: 17
+**Üst bilgi eklemeyi gönder**\
+HTTP/1.1 200 TAMAM \
+Cache-Control: No-Cache \
+Pragma: No-Cache \
+İçerik türü: metin/düz; charset = UTF-8 \
+Süre sonu:-1 \
+Farklılık: kabul-kodlama \
+Sunucu: Microsoft-IIS/8.5 Microsoft-HTTPAPı/2.0 \
+**Erişim-denetim-Izin-kaynak: https\://corswebclient-contoso.msappproxy.net**\
+X-AspNet-sürüm: 4.0.30319 \
+X-destekli-by: ASP.NET \
+İçerik-Uzunluk: 17
 
-### <a name="option-4-modify-the-app"></a>Seçenek 4: Uygulamayı değiştirin
+### <a name="option-4-modify-the-app"></a>4. seçenek: uygulamayı değiştirme
 
-Uygun değerlerle Access-Control-Allow-Origin üstbilgisini ekleyerek uygulamanızı CORS'u destekleyecek şekilde değiştirebilirsiniz. Üstbilgi ekleme nin yolu uygulamanın kod diline bağlıdır. En çok çaba gerektirdiğinden, kodu değiştirmek en az önerilen seçenektir.
+Erişim-denetim-Izin-kaynak üst bilgisini ve uygun değerleri ekleyerek, uygulamanızı CORS 'yi destekleyecek şekilde değiştirebilirsiniz. Üstbilgiyi ekleme yöntemi uygulamanın kod diline bağlıdır. Kodu değiştirmek en az önerilen seçenektir, çünkü en fazla çaba gerektirir.
 
-### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>Seçenek 5: Erişim belirteci ömrünü uzatmak
+### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>Seçenek 5: erişim belirtecinin ömrünü uzatma
 
-Uygulamanızın kimlik doğrulamasına *login.microsoftonline.com* yönlendirilmesi ve erişim belirteci süresinin dolması gibi bazı CORS sorunları çözülemez. CORS çağrısı başarısız olur. Bu senaryo için geçici çözüm, kullanıcının oturumu sırasında süresinin dolmasını önlemek için erişim belirteci ömrünü uzatmaktır. Bunun nasıl yapılacağını hakkında daha fazla bilgi için Azure [AD'deki Yapılandırılabilir belirteç ömürleri](../develop/active-directory-configurable-token-lifetimes.md)hakkında bilgi alabiliyorum.
+Uygulamanızın kimlik doğrulaması için *login.microsoftonline.com* 'e yeniden yönlendirildiği ve erişim belirtecinin süresi dolduğu gıbı bazı CORS sorunları çözülemez. CORS çağrısı daha sonra başarısız olur. Bu senaryo için bir geçici çözüm olarak, bir kullanıcının oturumunda süresinin dolmasını engellemek için erişim belirtecinin kullanım ömrü genişletilir. Bunun nasıl yapılacağı hakkında daha fazla bilgi için bkz. [Azure AD 'de yapılandırılabilir belirteç yaşam süreleri](../develop/active-directory-configurable-token-lifetimes.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
-- [Öğretici: Azure Active Directory'de Application Proxy aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md) 
-- [Azure AD Uygulama Proxy dağıtımı planlama](application-proxy-deployment-plan.md) 
-- [Azure Active Directory Application Proxy aracılığıyla şirket içi uygulamalara uzaktan erişim](application-proxy.md) 
+- [Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md) 
+- [Azure AD Uygulama Ara Sunucusu dağıtımı planlayın](application-proxy-deployment-plan.md) 
+- [Azure Active Directory Uygulama Ara Sunucusu aracılığıyla şirket içi uygulamalara uzaktan erişim](application-proxy.md) 

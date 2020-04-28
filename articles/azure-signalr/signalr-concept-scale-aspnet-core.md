@@ -1,5 +1,5 @@
 ---
-title: Azure SignalR ile Core SignalRASP.NET ölçeklendirin
+title: Azure SignalR ile ASP.NET Core SignalR ölçeklendirme
 description: ASP.NET Core SignalR uygulamalarını ölçeklendirmek için Azure SignalR hizmetini kullanmaya genel bir bakış.
 author: sffamily
 ms.service: signalr
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 8a4012d204b6dafa1233e4ce3d878590120be47d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60640234"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>Azure SignalR Hizmeti ile ASP.NET Core SignalR uygulamalarını ölçeklendirme
@@ -37,7 +37,7 @@ Geçerli olabilecek başka bir neden ise gerçekten bir web uygulaması barınd�
 
 ## <a name="how-does-it-scale"></a>Nasıl ölçeklendirilir?
 
-SignalR'ı SQL Server, Azure Hizmet Veri Veri Tos'u veya Redis için Azure Önbelleği ile ölçeklendirmek yaygındır. Azure SignalR Hizmeti, ölçeklendirme yaklaşımını sizin yerinize ele alır. Performans ve maliyet, bu yaklaşımlarla benzerdir ve diğer hizmetlerdeki gibi karmaşık değildir. Tüm yapmanız gereken, hizmetiniz için birim sayısını güncelleştirmektir. Her birim en fazla 1000 istemci bağlantısını destekler.
+SignalR 'nin Redsıs için SQL Server, Azure Service Bus veya Azure önbelleğiyle ölçeklendirilmesi yaygındır. Azure SignalR Hizmeti, ölçeklendirme yaklaşımını sizin yerinize ele alır. Performans ve maliyet, bu yaklaşımlarla benzerdir ve diğer hizmetlerdeki gibi karmaşık değildir. Tüm yapmanız gereken, hizmetiniz için birim sayısını güncelleştirmektir. Her birim en fazla 1000 istemci bağlantısını destekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

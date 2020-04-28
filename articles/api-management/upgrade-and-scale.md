@@ -1,6 +1,6 @@
 ---
-title: Azure API Yönetimi örneğini yükseltme ve ölçeklendirme | Microsoft Dokümanlar
-description: Bu konu, Bir Azure API Yönetimi örneğinin nasıl yükseltileceği ve ölçeklendirileceği açıklanmaktadır.
+title: Azure API Management örneğini yükseltme ve ölçeklendirme | Microsoft Docs
+description: Bu konu, bir Azure API Management örneğinin nasıl yükseltileceğini ve ölçeklendirebileceğinizi açıklamaktadır.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,69 +12,69 @@ ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
 ms.openlocfilehash: 64649c86dbd3c3469247308bfc4dd0ed12e06949
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70018230"
 ---
-# <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Yönetimi örneğini yükseltme ve ölçeklendirme  
+# <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management örneğini yükseltme ve ölçeklendirme  
 
-Müşteriler, birimler ekleyerek ve kaldırarak bir Azure API Yönetimi (APIM) örneğini ölçeklendirebilir. Bir **birim** özel Azure kaynaklarından oluşur ve aylık bir dizi API çağrısı olarak ifade edilen belirli bir yük taşıma kapasitesine sahiptir. Bu sayı bir çağrı sınırını değil, kaba kapasite planlamasına izin verecek maksimum bir verim değerini temsil eder. Gerçek iş ortası ve gecikme sayının sayısı ve eşzamanlı bağlantı hızı, yapılandırılan ilkelerin türü ve sayısı, istek ve yanıt boyutları ve arka uç gecikmesi gibi etkenlere bağlı olarak büyük ölçüde değişir.
+Müşteriler, birim ekleyerek ve kaldırarak bir Azure API Management (APıM) örneğini ölçeklendirebilir. Bir **birim** adanmış Azure kaynaklarından oluşur ve ayda BIR dizi API çağrısı olarak ifade edilen belirli bir yük oluşturma kapasitesine sahiptir. Bu sayı, bir çağrı sınırını temsil etmez, ancak kaba kapasite planlamasına izin vermek için maksimum üretilen iş değeri. Gerçek aktarım hızı ve gecikme süresi, eşzamanlı bağlantı sayısı ve hızı, yapılandırılan ilkelerin türü ve sayısı, istek ve yanıt boyutları ve arka uç gecikmesi gibi etkenlere bağlı olarak farklılık gösterir.
 
-Her birimin kapasitesi ve fiyatı, birimin bulunduğu **katmana** bağlıdır. Dört katman arasında seçim yapabilirsiniz: **Geliştirici,** **Temel,** **Standart,** **Premium**. Bir katmandaki bir hizmetin kapasitesini artırmanız gerekiyorsa, bir birim eklemeniz gerekir. APIM örneğinde şu anda seçilen katman daha fazla birim eklenmesine izin vermiyorsa, daha üst düzey bir katmana yükseltmeniz gerekir.
+Her bir birimin kapasitesi ve fiyatı, birimin bulunduğu **katmana** bağlıdır. Dört katman arasından seçim yapabilirsiniz: **Geliştirici**, **temel**, **Standart**, **Premium**. Bir katman içindeki bir hizmetin kapasitesini artırmanız gerekiyorsa, bir birim eklemeniz gerekir. APıM Örneğinizde seçili olan katman daha fazla birim eklemeye izin vermediğinden, daha üst düzey bir katmana yükseltmeniz gerekir.
 
-Her birimin fiyatı ve kullanılabilir özellikler (örneğin, çok bölgeli dağıtım) APIM örneğiniz için seçtiğiniz katmana bağlıdır. [Fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) makalesi, birim başına fiyatı ve her katmanda elde ettiğiniz özellikleri açıklar. 
+Her bir birimin fiyatı ve kullanılabilir Özellikler (örneğin, çok bölgeli dağıtım), APıM örneğiniz için seçtiğiniz katmana bağlıdır. [Fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) makalesi, her katmanda alacağınız birim ve özellik başına fiyatı açıklar. 
 
 >[!NOTE]
->[Fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) makalesi, her katmandaki yaklaşık birim kapasite sayısını gösterir. Daha doğru sayılar elde etmek için API'leriniz için gerçekçi bir senaryoya bakmanız gerekir. Azure [API Yönetimi örnek makalesinin Kapasitesin'e](api-management-capacity.md) bakın.
+>[Fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) makalesi her katmandaki birim kapasitesini yaklaşık olarak gösterir. Daha doğru sayılar almak için API 'leriniz için gerçekçi bir senaryoya bakmanız gerekir. [Azure API Management örneği 'Nin kapasitesine](api-management-capacity.md) bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki adımları izlemek için şunları
+Bu makaledeki adımları izleyerek şunları yapmanız gerekir:
 
-+ Etkin bir Azure aboneliğine sahip olun.
++ Etkin bir Azure aboneliğiniz olmalıdır.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ APIM örneği var. Daha fazla bilgi için [bkz.](get-started-create-service-instance.md)
++ Bir APıM örneğiniz olmalıdır. Daha fazla bilgi için bkz. [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 
-+ [Azure API Yönetimi örneğinin Kapasite](api-management-capacity.md)kavramını anlayın.
++ [Azure API Management örneğinin kapasite](api-management-capacity.md)kavramını anlayın.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="upgrade-and-scale"></a>Yükseltme ve ölçeklendirme  
 
-Dört katman arasında seçim yapabilirsiniz: **Geliştirici,** **Temel,** **Standart** ve **Premium.** **Geliştirici** katmanı hizmeti değerlendirmek için kullanılmalıdır; üretim için kullanılmamalıdır. **Geliştirici** katmanında SLA yoktur ve bu katmanı ölçeklendiremezsiniz (birimleri ekleme/kaldırma). 
+Dört katman arasından seçim yapabilirsiniz: **Geliştirici**, **temel**, **Standart** ve **Premium**. **Geliştirici** katmanı, hizmeti değerlendirmek için kullanılmalıdır; üretim için kullanılmamalıdır. **Geliştirici** katmanının SLA 'sı yok ve bu katmanı ölçeklendiremezsiniz (birim Ekle/Kaldır). 
 
-**Temel,** **Standart** ve **Premium,** SLA'ya sahip ve ölçeklendirilebilen üretim katmanlarıdır. **Temel** katman, SLA'ya sahip en ucuz katmandır ve 2 adede kadar ölçeklendirilebilir, **Standart** katman dört adede kadar ölçeklendirilebilir. **Premium** katmanına istediğiniz sayıda birim ekleyebilirsiniz.
+**Temel**, **Standart** ve **Premium** SLA 'ya sahip olan ve ölçeklendirilebilen üretim katmanlarıdır. **Temel** katman SLA 'ya sahip olan ve 2 birime kadar ölçeklenebilen, **Standart** katman en fazla dört birime ölçeklendirilebilir olan en ucuz katmandır. **Premium** katmana istediğiniz sayıda birim ekleyebilirsiniz.
 
-**Premium** katman, tek bir Azure API Yönetimi örneğini istediğiniz sayıda Azure bölgesinde dağıtmanıza olanak tanır. Başlangıçta bir Azure API Yönetimi hizmeti oluşturduğunuzda, örnek yalnızca bir birim içerir ve tek bir Azure bölgesinde bulunur. İlk bölge **birincil** bölge olarak belirlenmiştir. Ek bölgeler kolayca eklenebilir. Bir bölge eklerken, ayırmak istediğiniz birim sayısını belirtirsiniz. Örneğin, **birincil** bölgede bir birim ve başka bir bölgede beş birim olabilir. Birim sayısını her bölgedeki trafiğe göre uyarlayabilirsiniz. Daha fazla bilgi için, [birden çok Azure bölgesine Azure API Yönetimi hizmeti örneğini nasıl dağıtılayabilirsiniz'](api-management-howto-deploy-multi-region.md)e bakın.
+**Premium** katman, Istenen sayıda Azure bölgesinde tek bir Azure API Management örneği dağıtmanıza olanak sağlar. İlk olarak bir Azure API Management hizmeti oluşturduğunuzda, örnek yalnızca bir birim içerir ve tek bir Azure bölgesinde bulunur. İlk bölge **birincil** bölge olarak atanır. Ek bölgeler kolayca eklenebilir. Bölge eklerken, ayırmak istediğiniz birim sayısını belirtirsiniz. Örneğin, **birincil** bölgede bir biriminiz ve başka bir bölgedeki beş birim olabilir. Birim sayısını her bölgedeki trafiğe uyarlayabilirsiniz. Daha fazla bilgi için bkz. [azure API Management hizmet örneğini birden çok Azure bölgesine dağıtma](api-management-howto-deploy-multi-region.md).
 
-Herhangi bir katmana yükseltme ve düşürme yapabilirsiniz. Yükseltme veya düşürmenin Premium katmandan Standard veya Basic'e düşürüldüğünde VNET'ler veya çok bölgeli dağıtım gibi bazı özellikleri kaldırabileceğini unutmayın.
-
-> [!NOTE]
-> Yükseltme veya ölçek lendirme işleminin uygulanması 15 ila 45 dakika sürebilir. Bittiğinde size bildirilir.
+Herhangi bir katmana ve sürümüne yükseltebilir ve buradan indirgeme yapabilirsiniz. Yükseltme veya eski sürüme düşürme, bazı özellikleri (örneğin, sanal ağlar veya çok bölgeli dağıtım), Premium katmandan standart veya temel sürümüne düşürülerek kaldırabileceğini unutmayın.
 
 > [!NOTE]
-> **Tüketim** katmanındaki API Yönetimi hizmeti, trafiğe göre otomatik olarak ölçeklendirilir.
+> Yükseltme veya ölçeklendirme işleminin uygulanması 15 ila 45 dakika sürebilir. İşiniz bittiğinde size bildirilir.
 
-## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>Yükseltme ve ölçeklendirme için Azure portalını kullanın
+> [!NOTE]
+> **Tüketim** katmanındaki API Management hizmeti trafiğe göre otomatik olarak ölçeklendirilir.
 
-![Azure portalında APIM'yi ölçeklendirin](./media/upgrade-and-scale/portal-scale.png)
+## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>Yükseltmek ve ölçeklendirmek için Azure portal kullanın
 
-1. [Azure portalındaki](https://portal.azure.com/)APIM örneğinize gidin.
-2. Menüden **Ölçek ve fiyatlandırma'yı** seçin.
-3. İstediğini seçin.
-4. Eklemek istediğiniz **birim** sayısını belirtin. Kaydırıcıyı kullanabilir veya birim sayısını yazabilirsiniz.  
-    **Premium** katmanı seçerseniz, öncelikle bir bölge seçmeniz gerekir.
+![Azure portal 'da APıM 'i ölçeklendirin](./media/upgrade-and-scale/portal-scale.png)
+
+1. [Azure Portal](https://portal.azure.com/)APIM örneğinize gidin.
+2. Menüden **ölçek ve fiyatlandırma '** yı seçin.
+3. İstediğiniz katmanı seçin.
+4. Eklemek istediğiniz **birim** sayısını belirtin. Kaydırıcıyı kullanabilir ya da birim sayısını yazabilirsiniz.  
+    **Premium** katmanı seçerseniz, önce bir bölge seçmeniz gerekir.
 5. **Kaydet**’e basın.
 
-## <a name="downtime-during-scaling-up-and-down"></a>Yukarı ve aşağı ölçekleme sırasında çalışmama süresi
-Geliştirici katmanından veya Geliştirici katmanından ölçekleme yapıyorsunuz, kapalı kalma süresi olacaktır. Aksi takdirde, hiçbir kesinti yoktur. 
+## <a name="downtime-during-scaling-up-and-down"></a>Ölçeği artırma ve azaltma sırasında kapalı kalma süresi
+Ya da geliştirici katmanına ölçeklendirebilirsiniz kapalı kalma süresi olacaktır. Aksi takdirde, kapalı kalma süresi yoktur. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Bir Azure API Management hizmeti örneğini birden fazla Azure bölgesine dağıtma](api-management-howto-deploy-multi-region.md)
-- [Azure API Yönetimi hizmeti örneğini otomatik olarak ölçeklendirme](api-management-howto-autoscale.md)
+- [Azure API Management hizmet örneğini otomatik olarak ölçeklendirme](api-management-howto-autoscale.md)

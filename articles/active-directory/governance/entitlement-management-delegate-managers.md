@@ -1,6 +1,6 @@
 ---
-title: Azure AD yetkilendirme yönetiminde paket yöneticilerine erişim için yetki erişimi yönetimini temsilcilendirme - Azure Etkin Dizin
-description: Bt yöneticilerinin erişim yönetimini paket yöneticilerine ve proje yöneticilerine erişmek için nasıl devratabileceğinizi öğrenin, böylece erişim kendileri yönetebilsinler.
+title: Azure AD Yetkilendirme Yönetimi 'nde paket yöneticilerine erişim yönetimi temsilcisi-Azure Active Directory
+description: BT yöneticilerinde erişim yönetimi yetkisini, erişimi yönetebilmeleri için paket yöneticilerine ve proje yöneticilerine erişme hakkında bilgi edinin.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,56 +17,56 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: efdc61b82a19cc5d370d6069e8c9dcd3ce5e8ae5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73174362"
 ---
-# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde paket yöneticilerine erişim için erişim yönetimini temsilcilendirme
+# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde paket yöneticilerine erişim yönetimine temsilci seçme
 
-Bir katalogdaki erişim paketlerinin oluşturulmasını ve yönetimini devretmek için, kullanıcıları erişim paketi yöneticisi rolüne eklersiniz. Erişim paketi yöneticileri, kullanıcıların bir katalogdaki kaynaklara erişim isteme leri gereğini biliyor olmalıdır. Örneğin, bir proje için katalog kullanılıyorsa, proje müşteri adayı bu katalog için bir erişim paketi yöneticisi olabilir.  Erişim paketi yöneticileri bir kataloğa kaynak ekleyemez, ancak bir katalogdaki erişim paketlerini ve ilkelerini yönetebilir.  Bir erişim paketi yöneticisine devredeyken, bu kişi aşağıdakitarihten sorumlu olabilir:
+Bir katalogdaki erişim paketlerinin oluşturulmasını ve yönetimini devretmek için, erişim paketi Yöneticisi rolüne kullanıcılar eklersiniz. Erişim paketi yöneticileri, kullanıcıların bir katalogdaki kaynaklara erişim istemesi gereksinimini öğrenmelidir. Örneğin, bir proje için bir katalog kullanılıyorsa, proje lideri bu katalog için bir erişim paketi yöneticisi olabilir.  Erişim paketi yöneticileri bir kataloğa kaynak ekleyemez, ancak erişim paketlerini ve ilkelerini bir katalogda yönetebilir.  Bir erişim paketi yöneticisine temsilci seçerken, bu kişi bundan sonra sorumlu olabilir:
 
-- Bir kullanıcının katalogdaki kaynaklara ne gibi rolleri olacaktır?
-- Kimler erişebilir
-- Erişim isteklerini kimin onaylaması gerekiyor
-- Projenin ne kadar süreceğü
+- Bir kullanıcının bir katalogdaki kaynaklara sahip olacağı roller
+- Erişime ihtiyacı olacak
+- Erişim isteklerini onaylaması gereken
+- Projenin en son ne kadar süre
 
-Bu video, erişim yönetimini katalog sahibinden erişim paketi yöneticisine nasıl devredeceğine genel bir bakış sağlar.
+Bu videoda, Katalog sahibinden, paket yöneticisine erişim için erişim yönetimini devretme konusunda genel bir bakış sunulmaktadır.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3Lq08]
 
-## <a name="as-a-catalog-owner-delegate-to-an-access-package-manager"></a>Katalog sahibi olarak, bir erişim paketi yöneticisine temsilci
+## <a name="as-a-catalog-owner-delegate-to-an-access-package-manager"></a>Bir katalog sahibi olarak, bir erişim paketi yöneticisine temsilci olarak
 
-Bir kullanıcıyı erişim paketi yöneticisi rolüne atamak için aşağıdaki adımları izleyin:
+Erişim paketi Yöneticisi rolüne bir kullanıcı atamak için aşağıdaki adımları izleyin:
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı yöneticisi veya Katalog sahibi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog sahibi
 
-1. Azure portalında **Azure Etkin Dizin'i** tıklatın ve ardından **Kimlik Yönetimi'ni**tıklatın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **Kataloglar'ı** tıklatın ve ardından yöneticilereklemek istediğiniz kataloğu açın.
+1. Sol taraftaki menüden **kataloglar** ' a tıklayın ve ardından Yöneticiler eklemek istediğiniz kataloğu açın.
 
-1. Sol menüde, **Roller ve yöneticiler'i**tıklatın.
+1. Sol taraftaki menüden **Roller ve yöneticiler**' e tıklayın.
 
-    ![Katalogrolleri ve yöneticileri](./media/entitlement-management-shared/catalog-roles-administrators.png)
+    ![Rolleri ve yöneticileri kataloglandırır](./media/entitlement-management-shared/catalog-roles-administrators.png)
 
-1. Bu rollerin üyelerini seçmek için **erişim paketi yöneticileri ekle'yi** tıklatın.
+1. Bu rollerin üyelerini seçmek için **erişim paketi yöneticileri Ekle** ' ye tıklayın.
 
-1. Bu üyeleri eklemek için **Seç'i** tıklatın.
+1. Bu üyeleri eklemek için **Seç** ' e tıklayın.
 
 ## <a name="remove-an-access-package-manager"></a>Erişim paketi yöneticisini kaldırma
 
-Bir kullanıcıyı erişim paketi yöneticisi rolünden kaldırmak için aşağıdaki adımları izleyin:
+Bir kullanıcıyı erişim paketi Yöneticisi rolünden kaldırmak için aşağıdaki adımları izleyin:
 
-**Önkoşul rolü:** Genel yönetici, Kullanıcı yöneticisi veya Katalog sahibi
+**Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog sahibi
 
-1. Azure portalında **Azure Etkin Dizin'i** tıklatın ve ardından **Kimlik Yönetimi'ni**tıklatın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
 
-1. Sol menüde **Kataloglar'ı** tıklatın ve ardından yöneticilereklemek istediğiniz kataloğu açın.
+1. Sol taraftaki menüden **kataloglar** ' a tıklayın ve ardından Yöneticiler eklemek istediğiniz kataloğu açın.
 
-1. Sol menüde, **Roller ve yöneticiler'i**tıklatın.
+1. Sol taraftaki menüden **Roller ve yöneticiler**' e tıklayın.
 
-1. Kaldırmak istediğiniz bir erişim paketi yöneticisinin yanına bir onay işareti ekleyin.
+1. Kaldırmak istediğiniz bir erişim paketi yöneticisinin yanına onay işareti ekleyin.
 
 1. **Kaldır**’a tıklayın.
 

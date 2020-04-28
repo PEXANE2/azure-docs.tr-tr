@@ -1,6 +1,6 @@
 ---
-title: azcopy tezgah | Microsoft Dokümanlar
-description: Bu makalede, azcopy tezgah komutu için referans bilgileri sağlar.
+title: AzCopy tezgahtır | Microsoft Docs
+description: Bu makale, AzCopy tezgahtır komutu için başvuru bilgileri sağlar.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,31 +9,31 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 8570bce87aeea5473b4aadf9bd30bc0a648a6f0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72518310"
 ---
 # <a name="azcopy-bench"></a>azcopy ortamı
 
-Test verilerini belirli bir hedefe yükleyerek bir performans ölçütü çalıştırın. Test verileri otomatik olarak oluşturulur.
+Test verilerini belirtilen hedefe yükleyerek bir performans kıyaslaması çalıştırır. Test verileri otomatik olarak oluşturulur.
 
-Kıyaslama komutu, aşağıdakiler dışında ,'kopya' olarak aynı yükleme işlemini yürütür:
+Kıyaslama komutu, ' kopya ' olarak aynı karşıya yükleme işlemini çalıştırır, ancak şunları hariç:
 
-  - Kaynak parametresi yok.  Komut yalnızca bir hedef URL gerektirir. Geçerli sürümde, bu hedef URL bir blob kapsayıcıbakın.
+  - Kaynak parametre yok.  Komut yalnızca bir hedef URL gerektirir. Geçerli sürümde, bu hedef URL bir blob kapsayıcısına başvurmalıdır.
   
-  - Yük, kaç dosyanın otomatik olarak oluşturulduğunu ve ne kadar büyük olduklarını kontrol eden komut satırı parametreleri tarafından açıklanır. Üretim süreci tamamen bellekte gerçekleşir. Disk kullanılmaz.
+  - Yük, kaç dosyanın otomatik olarak oluşturulduğunu ve ne kadar büyük olduğunu denetleyen komut satırı parametreleriyle açıklanır. Oluşturma işlemi tamamen bellekte gerçekleşir. Disk kullanılmıyor.
   
-  - Kopyalama komutu için kullanılabilen isteğe bağlı parametrelerden yalnızca birkaçı desteklenir.
+  - Kopyalama komutu için kullanılabilen isteğe bağlı parametrelerin yalnızca birkaçı desteklenir.
   
-  - Ek tanılar ölçülür ve raporlanır.
+  - Ek Tanılamalar ölçülür ve raporlanır.
   
-  - Varsayılan olarak, aktarılan veriler test çalışmasının sonunda silinir.
+  - Varsayılan olarak, aktarılan veriler Test çalıştırmasının sonunda silinir.
 
-Kıyaslama modu, maksimum verimi sağlayan paralel TCP bağlantı sayısına otomatik olarak uyum sağlar. Bu sayı sonunda görüntülenir. Otomatik ayarlamayı önlemek için, AZCOPY_CONCURRENCY_VALUE ortamı değişkenini belirli sayıda bağlantıya ayarlayın.
+Kıyaslama modu, en yüksek aktarım hızını sağlayan paralel TCP bağlantısı sayısına otomatik olarak ayarlanır. Bu numara sonda görüntülenir. Otomatik ayarlamayı engellemek için AZCOPY_CONCURRENCY_VALUE ortam değişkenini belirli sayıda bağlantı olarak ayarlayın.
 
-Tüm olağan kimlik doğrulama türleri desteklenir. Ancak, kıyaslama için en uygun yaklaşım genellikle bir SAS belirteci ile boş bir kapsayıcı oluşturmak ve SAS kimlik doğrulaması kullanmaktır.
+Tüm olağan kimlik doğrulama türleri desteklenir. Ancak, sınama için en kullanışlı yaklaşım genellikle SAS belirteciyle boş bir kapsayıcı oluşturmak ve SAS kimlik doğrulamasını kullanmaktır.
 
 ## <a name="examples"></a>Örnekler
 
@@ -41,41 +41,41 @@ Tüm olağan kimlik doğrulama türleri desteklenir. Ancak, kıyaslama için en 
 azcopy bench [destination] [flags]
 ```
 
-Varsayılan parametrelere sahip bir kıyaslama testi çalıştırın (1 Gbps'ye kadar olan karşılaştırma ağları için uygundur):'
+Varsayılan parametrelerle bir kıyaslama testi çalıştırın (ağları 1 GB/sn 'ye kadar sınama için uygun): '
 
-- azcopy tezgah "https://[hesap].blob.core.windows.net/[konteyner]? <SAS>"
+- AzCopy tezgahtır "https://[hesap]. blob. Core. Windows. net/[Container]? <SAS>"
 
-Her biri 2 GiB boyutunda olmak üzere 100 dosya yükleyen bir kıyaslama testi çalıştırın: (örneğin 10 Gbps gibi hızlı bir ağda kıyaslama için uygundur):'
+100 dosyalarını karşıya yükleyen bir kıyaslama testi çalıştırın, her 2 GiB boyutu: (hızlı bir ağda, örneğin 10 Gbps) için bir değerlendirme için uygundur: '
 
-- azcopy tezgah "https://[hesap].blob.core.windows.net/[konteyner]? <SAS>" --dosya sayısı 100 --dosya başına boyut 2G
+- AzCopy tezgahtır "https://[hesap]. blob. Core. Windows. net/[Container]? <SAS>" --File-Count 100--dosya başına
 
-Yukarıdaki gibi, ancak 50.000 dosya kullanın, her 8 MiB boyutunda ve md5 karp'larını hesaplamak (aynı şekilde --put-md5 bayrağı kopyalama komutu bunu yapar). Kıyaslama yaparken --put-md5'in amacı, MD5 hesaplamasının seçili dosya sayısı ve boyutu için iş ortasını etkileyip etkilemediğini test etmektir:
+Yukarıdaki gibi aynıdır, ancak 50.000 dosya kullanın, her 8 MIB bir boyut kullanır ve MD5 karmalarını hesaplar (--put-MD5 bayrağıyla bunu kopyalama komutunda yapar). Değerlendirme sırasında--put-MD5 amacı, MD5 hesaplamasının seçili dosya sayısı ve boyutu için üretilen iş üretimini etkileyip etkilemediğini test etsağlamaktır:
 
-- azcopy tezgah "https://[hesap].blob.core.windows.net/[konteyner]? <SAS>" --dosya sayısı 50000 --dosya başına boyut 8M --put-md5
+- AzCopy tezgahtır "https://[hesap]. blob. Core. Windows. net/[Container]? <SAS>" --File-Count 50000--dosya başına boyutu 8Dk--put-MD5
 
 ## <a name="options"></a>Seçenekler
 
-**--blob tipi** dize Hedefteki blob türünü tanımlar. Farklı blob türleri kıyaslama izin vermek için kullanılır. Kopyalama komutundaki aynı adlandırılmış parametreyle aynıdır (varsayılan "Algılama").
+**--BLOB türü** dize, hedefteki blob türünü tanımlar. Farklı blob türlerini benchişaretlemek için kullanılır. Copy komutunda aynı adlandırılmış parametre ile özdeş (varsayılan "Algıla").
 
-**--blok boyutu-mb** float Bu blok boyutunu kullanın (MiB'de belirtilir). Varsayılan, dosya boyutuna göre otomatik olarak hesaplanır. Ondalık kesirlere izin verilir - örneğin 0,25. Kopyalama komutundaki aynı adlandırılmış parametreyle aynıdır.
+**--blok-boyut-MB** float bu blok boyutunu kullanın (MIB 'de belirtilir). Varsayılan değer, dosya boyutuna göre otomatik olarak hesaplanır. Ondalık kesirlere izin verilir-ör. 0,25. Copy komutunda aynı adlandırılmış parametre ile özdeş.
 
-**--sil-test-verileri**  Doğruysa, kıyaslama verileri kıyaslama çalışmasının sonunda silinir.  Verileri hedefte tutmak istiyorsanız (örneğin, kıyaslama modu dışındaki el ile testler için kullanmak (varsayılan true) için yanlış olarak ayarlayın.
+**--Delete-test-Data**  Doğru ise, kıyaslama verileri kıyaslama çalıştırmasının sonunda silinir.  Verileri hedefteki tutmak istiyorsanız bu değeri false olarak ayarlayın. Örneğin, kıyaslama modu dışındaki el ile testler için kullanmak üzere (varsayılan doğru).
 
-**--dosya sayısı** uint Kullanılacak otomatik oluşturulan veri dosyalarının sayısı (varsayılan 100).
+**--File-Count** uint kullanılacak otomatik olarak oluşturulan veri dosyası sayısı (varsayılan 100).
 
-**-h, --yardım**  Tezgah için yardım
+**-h,--yardım**  Tezgahtır için yardım
 
-**--günlük düzeyi** dizesi Günlük dosyasının günlük ayrıntılılığını, kullanılabilir düzeyleri: INFO(tüm istek/yanıtlar), UYARI(yavaş yanıtlar), HATA (yalnızca başarısız istekler) ve NONE(çıkış günlüğü yok) olarak tanımlayın. (varsayılan "BİlGİ")
+**--günlük düzeyi** dize günlük dosyası, kullanılabilir düzeyler: bilgi (tüm istekler/yanıtlar), uyarı (yavaş yanıtlar), hata (yalnızca başarısız istekler) ve hiçbiri (çıktı günlüğü yok) için günlük ayrıntı düzeylerini tanımlar. (varsayılan "BILGI")
 
-**--put-md5**  Her dosyanın bir MD5 karma sını oluşturun ve karmayı hedef blob/dosyanın İçerik-MD5 özelliği olarak kaydedin. (Varsayılan olarak karma oluşturulmadı.) Kopyalama komutundaki aynı adlandırılmış parametreyle aynıdır.
+**--PUT-MD5**  Her bir dosyanın MD5 karmasını oluşturun ve karmayı hedef blob/dosyanın Content-MD5 özelliği olarak kaydedin. (Varsayılan olarak, karma oluşturulmaz.) Copy komutunda aynı adlandırılmış parametre ile özdeş.
 
-**--otomatik** olarak oluşturulan her veri dosyasının dosya başına boyut dize boyutu. K, M veya G. E.g. tarafından hemen takip edilen bir sayı olmalıdır. 12k veya 200G (varsayılan "250M").
+**--** her otomatik oluşturulan veri dosyasının dosya başına dize boyutu. Hemen arkasından K, M veya G gelen bir sayı olmalıdır. örn. 12k veya 200G (varsayılan "250M").
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
 
-**--kap-mbps uint32**  Transfer hızını saniyede megabit olarak kaplar. Anlık iş artışı kapaktan biraz farklı olabilir. Bu seçenek sıfıra ayarlanmışsa veya atlanırsa, iş elde etme kapaklı değildir.
+**--Cap-Mbps uint32**  Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.
 
-**--output türü** dize Komutun çıktısının biçimi. Seçenekler şunlardır: metin, json. Varsayılan değer 'metin'dir. (varsayılan "metin").
+**--komut çıktısının çıkış türü** dize biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer ' text ' değeridir. (varsayılan "metin").
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

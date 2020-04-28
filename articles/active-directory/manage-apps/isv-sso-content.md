@@ -1,6 +1,6 @@
 ---
 title: Çok kiracılı uygulamanız için SSO’yu etkinleştirme
-description: Azure etkin Dizin ile tümleştirme konusunda bağımsız yazılım satıcıları için kılavuz
+description: Bağımsız yazılım satıcılarının Azure Active Directory ile tümleştirilmesine yönelik kılavuz
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -13,52 +13,52 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4c89a83ade6305579e700afb86f0b9e3aca2695e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67795175"
 ---
-# <a name="enable-single-sign-on-for-your-multi-tenant-application"></a>Çok kiracılı uygulamanız için Tek Oturum Açma'yı etkinleştirin  
+# <a name="enable-single-sign-on-for-your-multi-tenant-application"></a>Çok kiracılı uygulamanız için çoklu oturum açmayı etkinleştirme  
 
-Uygulamanızı bir satın alma veya abonelik yoluyla diğer şirketler tarafından kullanılmak üzere sunduğunuzda, uygulamanızı kendi Azure kiracıları içindeki müşterilerin kullanımına sunarsınız. Bu, çok kiracılı bir uygulama oluşturma olarak bilinir. Bu konsepte genel bakış için [Azure'daki Çok Kiracılı Uygulamalar](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications) ve [Azure Etkin Dizini'nde Kiraya Vereme'ye](../develop/single-and-multi-tenant-apps.md)bakın.
+Uygulamanızı bir satın alma veya abonelik aracılığıyla diğer şirketler tarafından kullanılmak üzere sunmanızdan sonra, uygulamanızı kendi Azure kiracılarındaki müşteriler için kullanılabilir hale getirebilirsiniz. Bu, çok kiracılı bir uygulama oluşturma olarak bilinir. Bu kavram hakkında genel bilgi için bkz. [Azure 'Da çok kiracılı uygulamalar](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications) ve [Azure Active Directory içinde Kiralama](../develop/single-and-multi-tenant-apps.md).
 
-## <a name="what-is-single-sign-on"></a>Tek İşaret-On Nedir
+## <a name="what-is-single-sign-on"></a>Çoklu oturum açma nedir?
 
-Tek oturum açma (SSO), kullanıcılar Azure Active Directory ve diğer kimlikleri kullanarak uygulamalarda oturum açtıklarında güvenlik ve kolaylık sağlar. Bir uygulama SSO etkinleştirildiğinde, kullanıcıların bu uygulamaya erişmek için ayrı kimlik bilgileri girmeleri gerekmez. Tek oturum açmanın tam bir açıklaması için. [Azure Etkin Dizini'ndeki uygulamalarda tek oturum](what-is-single-sign-on.md)açma'ya bakın.
+Çoklu oturum açma (SSO), kullanıcılar Azure Active Directory ve diğer kimlikleri kullanarak uygulamalarda oturum açtığında güvenlik ve kolaylık sağlar. Bir uygulama SSO etkinken, kullanıcıların bu uygulamaya erişmek için ayrı kimlik bilgileri girmesi gerekmez. Çoklu oturum açma hakkında tam açıklama için. [Bkz. Azure Active Directory uygulamalarda çoklu oturum açma](what-is-single-sign-on.md).
 
-## <a name="why-enable-single-sign-on-in-your-application"></a>Uygulamanızda Neden Tek Oturum Açma'yı Etkinleştirin?
+## <a name="why-enable-single-sign-on-in-your-application"></a>Uygulamanızda çoklu oturum açma neden etkinleştirilsin?
 
-Çok kiracılı uygulamanızda SSO'yu etkinleştirmenin birçok avantajı vardır. Uygulamanız için SSO'yu etkinleştirdiğinizde:
+Çok kiracılı uygulamanızda SSO 'yu etkinleştirmenin pek çok avantajı vardır. Uygulamanız için SSO 'yu etkinleştirdiğinizde:
 
-* Uygulamanız, uygulamanızın Azure Active Directory'yi kullanan milyonlarca kuruluş tarafından bulunabildiği Azure Marketi'nde listelenebilir.
-  * Müşterilerin uygulamayı Azure AD ile hızlı bir şekilde yapılandırmasını sağlar.
+* Uygulamanız Azure Marketi 'nde listelenebilir ve bu, uygulamanızın Azure Active Directory kullanan milyonlarca kuruluş tarafından bulunabilir.
+  * Müşterilerin uygulamayı Azure AD ile hızlı bir şekilde yapılandırmasına olanak sağlar.
 
-* Uygulamanız Office 365 App Gallery, Office 365 App Launcher ve Microsoft Search içinde Office.com
+* Uygulamanız Office 365 uygulama galerisinde, Office 365 uygulama başlatıcısı ve Microsoft Search 'te Office.com üzerinde bulunabilir
 
-* Uygulamanız, Microsoft Graph'ta bulunan kullanıcı üretkenliğini artıran verilere erişmek için Microsoft Graph REST API'sini kullanabilir.
+* Uygulamanız, Microsoft Graph kullanılabilir kullanıcı üretkenliğini yönlendiren verilere erişmek için Microsoft Graph REST API kullanabilir.
 
-* Müşterileriniz için daha kolay hale getirerek destek maliyetlerini düşürürsunuz.
-  * Ortak müşterilerimiz için Azure AD ekibiyle birlikte üretilen uygulamaya özel belgeler benimsenmesini kolaylaştırır.
-  * Tek tıklatma SSO etkinse, müşterilerinizin BT Yöneticileri'nin uygulamanızı kuruluşlarında kullanılmak üzere nasıl yapılandıracaklarını öğrenmesi gerekmez.
+* Müşterileriniz için daha kolay hale getirerek destek maliyetlerini azaltırsınız.
+  * Karşılıklı müşterilerimiz için Azure AD ekibi ile uygulamaya özgü belge işbirliği, benimsemeyi kolaylaştırır.
+  * Tek tıklamayla SSO etkinse, müşterilerinizin BT yöneticileri, uygulamanızın kuruluşunuzda kullanılmak üzere nasıl yapılandırılacağını öğrenmek zorunda kalmaz.
 
-* Müşterilerinize çalışan ve konuk kimliklerinin kimlik doğrulamasını ve yetkilendirmesini tamamen yönetme olanağı sağlarsınız.
+* Müşterilerinizin kendi çalışan ve konuk kimliklerinin kimlik doğrulama ve yetkilendirme işlemlerini tamamen yönetmesine olanak sağlarsınız.
 
-  * Tüm hesap yönetimi ve uyumluluk sorumluluğunu niçin bu kimliklerin müşteri sahibine yükleniyor.
+  * Tüm hesap yönetimi ve uyumluluk sorumluluğunun bu kimliklerin müşteri sahibine yerleştirilmesi.
 
-  * Belirli kimlik sağlayıcıları, grupları veya kullanıcıların iş gereksinimlerini karşılaması için SSO'ları etkinleştirme veya devre dışı etme olanağı sağlar.
+  * Belirli kimlik sağlayıcıları, gruplar veya kullanıcılar için kendi iş ihtiyaçlarını karşılayacak SSO 'yu etkinleştirme veya devre dışı bırakma olanağı sağlar.
 
-* Pazarlanabilirliğinizi ve benimsenebilirliğinizi arttırırsınız. Birçok büyük kuruluş, çalışanlarının tüm uygulamalarda sorunsuz SSO deneyimlerine sahip olmasını (veya talip olmasını) gerektirir. SSO'nun kolay hale getirilmesi önemlidir.
+* Pazardan uyumluluk ve benimseme düzeyini artırırsınız. Birçok büyük kuruluş, çalışanlarının tüm uygulamalarda sorunsuz SSO deneyimleri yaşamalarına (veya amaçlayın) gerek duyar. SSO 'yu kolay hale getirmek önemlidir.
 
-* Son kullanıcı sürtünmesini azaltırsınız, bu da son kullanıcı kullanımını artırabilir ve gelirinizi artırır.
+* Son Kullanıcı artışını azaltırsınız. Bu, Son Kullanıcı kullanımını artırabilir ve gelirinizi artırabilir.
 
-## <a name="how-to-enable-single-sign-on-in-your-published-application"></a>Yayınlanan uygulamanızda Tek Oturum Açma'yı etkinleştirme
+## <a name="how-to-enable-single-sign-on-in-your-published-application"></a>Yayımlanmış uygulamanızda çoklu oturum açmayı etkinleştirme
 
-1. [Çok kiracılı uygulamanız için doğru federasyon protokolünü seçin.](isv-choose-multi-tenant-federation.md)
-1. Uygulamanızda SSO'yu uygulayın
-   - [Kimlik doğrulama desenleri hakkındaki yönergeye](../develop/v2-app-types.md) bakın
-   - OIDC ve OAuth protokolleri için [Azure etkin Dizin kodu örneklerine](../develop/sample-v2-code.md) bakın
-1. [Azure Kiracınızı oluşturun](isv-tenant-multi-tenant-app.md) ve uygulamanızı test edin
-1. [Sitenizde SSO belgeleri oluşturun ve yayınlayın.](isv-create-sso-documentation.md)
-1. Microsoft'un sitesinde belgeler oluşturmak için [başvuru kaydınızı](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) ve iş ortağınızı Microsoft ile gönderin.
-1. [Microsoft İş Ortağı Ağı'na katılın (ücretsiz) ve pazar agit planınızı oluşturun.](https://partner.microsoft.com/en-us/explore/commercial#gtm)
+1. [Çok kiracılı uygulamanız için doğru Federasyon protokolünü seçin](isv-choose-multi-tenant-federation.md).
+1. Uygulamanızda SSO uygulama
+   - Bkz. [kimlik doğrulama desenlerinde rehberlik](../develop/v2-app-types.md)
+   - OıDC ve OAuth protokolleri için bkz. [Azure Active Directory kod örnekleri](../develop/sample-v2-code.md)
+1. [Azure kiracınızı oluşturun](isv-tenant-multi-tenant-app.md) ve uygulamanızı test edin
+1. [SITENIZDE SSO belgeleri oluşturun ve yayımlayın](isv-create-sso-documentation.md).
+1. Microsoft 'un sitesinde belge oluşturmak için [uygulama listelemeyi ve iş ortaklarınızı](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) Microsoft Ile birlikte gönderebilirsiniz.
+1. [Microsoft iş ortağı ağı (ücretsiz) ekleyin ve pazara git planınızı oluşturun](https://partner.microsoft.com/en-us/explore/commercial#gtm).

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60456860"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Depolama Gezgini’ni Azure Dosya depolama ile kullanma
@@ -199,7 +199,7 @@ Aşağıdaki adımlar bir dosya paylaşımındaki dosyaları (ve klasörleri) y�
 
     - **Bir dosya paylaşımına dosya yükleme**
 
-        a.  Ana bölmenin araç çubuğunda **Yükle'yi**ve ardından açılan menüden **Dosyaları Yükle'yi** seçin.
+        a.  Ana bölmedeki araç çubuğunda **karşıya yükle**' yi ve ardından açılan menüden **dosyaları karşıya yükle** ' yi seçin.
 
         ![Dosyaları karşıya yükleme](media/vs-azure-tools-storage-explorer-files/image18.png)
         
@@ -207,11 +207,11 @@ Aşağıdaki adımlar bir dosya paylaşımındaki dosyaları (ve klasörleri) y�
 
         ![Dosya ekleme](media/vs-azure-tools-storage-explorer-files/image19.png)
 
-        c. **Yükle'yi**seçin.
+        c. **Karşıya yükle**' yi seçin.
 
     - **Bir dosya paylaşımına klasör yükleme**
         
-        a. Ana bölmenin araç **çubuğunda,** açılan menüden Yükle ve ardından **Klasörü Yükle'yi** seçin.
+        a. Ana bölmedeki araç çubuğunda **karşıya yükle**' yi ve ardından açılan menüden **klasörü karşıya yükle** ' yi seçin.
 
         ![Klasörü karşıya yükle menüsü](media/vs-azure-tools-storage-explorer-files/image20.png)
 
@@ -219,7 +219,7 @@ Aşağıdaki adımlar bir dosya paylaşımındaki dosyaları (ve klasörleri) y�
 
         c. İsteğe bağlı olarak, seçili klasörün içeriklerinin yükleneceği bir hedef klasör belirtin. Hedef klasör mevcut değilse, oluşturulur.
 
-        d. **Yükle'yi**seçin.
+        d. **Karşıya yükle**' yi seçin.
 
     - **Bir dosyayı yerel bilgisayarınıza indirme**
         
@@ -229,7 +229,7 @@ Aşağıdaki adımlar bir dosya paylaşımındaki dosyaları (ve klasörleri) y�
         
         c. **İndirilen dosyanın kaydedileceği konumu seçin** iletişim kutusunda, dosyanın indirilmesini istediğiniz konumu ve dosyaya vermek istediğiniz adı belirtin.
 
-        d. **Kaydet'i**seçin.
+        d. **Kaydet**’i seçin.
 
     - **Bir dosyayı yerel bilgisayarınızda açma**
         

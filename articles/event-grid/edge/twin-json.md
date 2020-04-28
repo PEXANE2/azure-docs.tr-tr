@@ -1,6 +1,6 @@
 ---
-title: Modül İkiz - Azure Olay Izgara IoT Edge | Microsoft Dokümanlar
-description: Modül Twin ile yapılandırma.
+title: Modül Ikizi-Azure Event Grid IoT Edge | Microsoft Docs
+description: Modül Ikizi aracılığıyla yapılandırma.
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -10,25 +10,25 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 5c23b9ef280a4a4e3458d279ecf060d2e3d50295
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72992151"
 ---
-# <a name="module-twin-json-schema"></a>Modül ikiz JSON şema
+# <a name="module-twin-json-schema"></a>Module ikizi JSON şeması
 
-IoT Edge'deki Event Grid, IoT Edge ekosistemiyle bütünleşir ve Modül İkiz üzerinden konu ve abonelik oluşturmayı destekler. Ayrıca, Modül İkiz'de bildirilen özelliklere tüm konuların ve olay aboneliklerinin geçerli durumunu bildirir.
+IoT Edge Event Grid, IoT Edge ekosistemiyle tümleştirilir ve Ikizi Module aracılığıyla konu ve abonelik oluşturmayı destekler. Ayrıca, tüm konuların ve olay aboneliklerinin geçerli durumunu, Ikizi modülündeki bildirilen özelliklere bildirir.
 
 > [!WARNING]
-> IoT Edge ekosistemindeki sınırlamalar nedeniyle, aşağıdaki json örneğindeki tüm dizi öğeleri json dizeleri olarak kodlanmıştır. Aşağıdaki `EventSubscription.Filter.EventTypes` `EventSubscription.Filter.AdvancedFilters` örnekte ve tuşlara bakın.
+> IoT Edge ekosistemindeki sınırlamalar nedeniyle, aşağıdaki JSON örnekteki tüm dizi öğeleri JSON dizeleri olarak kodlanır. Aşağıdaki `EventSubscription.Filter.EventTypes` örnekteki `EventSubscription.Filter.AdvancedFilters` ve anahtarlarına bakın.
 
-## <a name="desired-properties-json"></a>İstenilen özellikler JSON
+## <a name="desired-properties-json"></a>İstenen özellikler JSON
 
-* Konular bölümündeki her anahtar değer çiftinin değeri, konu oluştururken `Topic.Properties` API'de kullanılan JSON şemasına sahiptir.
-* **EventSubscriptions** bölümündeki her anahtar değer çiftinin değeri, konu oluştururken `EventSubscription.Properties` API'de kullanılan json şemasına sahiptir.
-* Bir konuyu silmek için, `null` değerini istenen özelliklere ayarlayın.
-* İstenilen özellikler üzerinden olay aboneliklerinin silmesi desteklenmez.
+* Konular bölümündeki her anahtar-değer çiftinin değeri, konu başlıkları oluştururken API üzerinde için `Topic.Properties` kullanılan JSON şemasına tamamen sahiptir.
+* **Eventabonelikler** bölümündeki her anahtar-değer çiftinin değeri, konu BAŞLıKLARı oluştururken API üzerinde için `EventSubscription.Properties` kullanılan JSON şemasına tamamen sahiptir.
+* Bir konuyu silmek için, değerini istenen özelliklerde olarak `null` ayarlayın.
+* Olay aboneliklerinin istenen özellikler aracılığıyla silinmesi desteklenmiyor.
 
 ```json
 {
@@ -79,13 +79,13 @@ IoT Edge'deki Event Grid, IoT Edge ekosistemiyle bütünleşir ve Modül İkiz �
 }
 ```
 
-## <a name="reported-properties-json"></a>Bildirilen özellikler JSON
+## <a name="reported-properties-json"></a>Raporlanan Özellikler JSON
 
-Modül ikizinin bildirilen özellikler bölümü aşağıdaki bilgileri içerir:
+İkizi modülünün bildirilen Özellikler bölümünde aşağıdaki bilgiler yer alır:
 
-* Modülün deposunda bulunan konular ve abonelikler kümesi
-* İstenilen konular/olay abonelikleri oluşturulurken karşılaşılan hatalar
-* Herhangi bir önyükleme hataları (istenilen özellikleri JSON ayrıştırma başarısız gibi)
+* Modülün deposunda mevcut olan konular ve abonelikler kümesi
+* İstenen konular/olay abonelikleri oluşturulurken karşılaşılan hatalar
+* Tüm önyükleme hataları (istenen özellikler JSON ayrıştırması başarısız oldu)
 
 ```json
 {

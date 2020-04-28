@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB sorgu dilinde Kİ
-description: Azure Cosmos DB'de SQL sistem fonksiyonu PI hakkında bilgi edinin.
+title: Azure Cosmos DB sorgu dilinde PI
+description: Azure Cosmos DB 'de SQL sistem işlevi PI hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 27832008e8922e339a648985192a58b111555bc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71349659"
 ---
 # <a name="pi-azure-cosmos-db"></a>PI (Azure Cosmos DB)
- PI sabit değerini verir.  
+ PI 'nin sabit değerini döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -23,13 +23,13 @@ ms.locfileid: "71349659"
 PI ()  
 ```  
    
-## <a name="return-types"></a>İade türleri
+## <a name="return-types"></a>Dönüş türleri
   
-  Sayısal bir ifade verir.  
+  Sayısal bir ifade döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnekte `PI`. değerini döndürür.  
+  Aşağıdaki örnek değerini döndürür `PI`.  
   
 ```sql
 SELECT PI() AS pi 
@@ -43,6 +43,6 @@ SELECT PI() AS pi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Matematiksel fonksiyonlar Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Matematik işlevleri Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB giriş](introduction.md)

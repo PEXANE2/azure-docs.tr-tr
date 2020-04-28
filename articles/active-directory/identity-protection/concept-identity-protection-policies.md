@@ -1,6 +1,6 @@
 ---
-title: Azure AD Kimlik Koruması ilkeleri
-description: Kimlik Koruması ile etkinleştirilen üç ilkeyi tanımlama
+title: Azure AD Kimlik Koruması İlkeleri
+description: Kimlik koruması ile etkinleştirilen üç ilkeyi tanımlama
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,47 +12,47 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a44e32efa3e38cf9c4df7dc00e3189c129db418
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72887422"
 ---
 # <a name="identity-protection-policies"></a>Kimlik Koruması ilkeleri
 
-Azure Etkin Dizin Kimlik Koruması, yöneticilerin etkinleştirmeyi seçebileceği üç varsayılan ilke içerir. Bu ilkeler sınırlı özelleştirme içerir, ancak çoğu kuruluş için geçerlidir. Tüm [ilkeler, acil durum erişiminiz veya kesme cam yöneticisi hesaplarınız](../users-groups-roles/directory-emergency-access.md)gibi kullanıcıları hariç taramaya olanak sağlar.
+Azure Active Directory Kimlik Koruması, yöneticilerin etkinleştirmek için seçebileceğiniz üç varsayılan ilke içerir. Bu ilkeler sınırlı özelleştirmeyi içerir ancak çoğu kuruluş için geçerlidir. Tüm ilkeler, [acil erişim veya kesme camı yönetici hesaplarınız](../users-groups-roles/directory-emergency-access.md)gibi kullanıcıların dışlanmasını sağlar.
 
 ![Kimlik Koruması ilkeleri](./media/concept-identity-protection-policies/identity-protection-policies.png)
 
 ## <a name="azure-mfa-registration-policy"></a>Azure MFA kayıt ilkesi
 
-Kimlik Koruması, kuruluşların oturum açma sırasında kayıt gerektiren Koşullu Erişim ilkesini kullanarak Azure Çok Faktörlü Kimlik Doğrulaması (MFA) kullanıma sunulmasına yardımcı olabilir. Bu iilenin etkinleştirilmesi, kuruluşunuzdaki yeni kullanıcıların ilk gün MFA'ya kaydolmasını sağlamanın harika bir yoludur. Çok faktörlü kimlik doğrulama, Kimlik Koruması içindeki risk olayları için kendi kendini düzeltme yöntemlerinden biridir. Kendi kendini düzeltme, kullanıcılarınızın yardım masası çağrı hacmini azaltmak için kendi başlarına harekete geçmelerine olanak tanır.
+Kimlik koruması, kuruluşların oturum açma sırasında kayıt gerektiren bir koşullu erişim ilkesi kullanarak Azure Multi-Factor Authentication (MFA) kullanıma sunmasına yardımcı olabilir. Bu ilkeyi etkinleştirmek, kuruluşunuzdaki yeni kullanıcıların ilk gününde MFA için kaydolmalarına emin olmanın harika bir yoludur. Multi-Factor Authentication, kimlik koruması kapsamındaki risk olayları için kendi kendine düzeltme yöntemlerinden biridir. Kendi kendini düzeltme, kullanıcılarınızın yardım masası çağrı birimini azaltmak için kendi başına işlem yapmasına olanak sağlar.
 
-Azure Çok Faktörlü Kimlik Doğrulama hakkında daha fazla bilgiyi makalede bulabilirsiniz, [Nasıl çalışır: Azure Çok Faktörlü Kimlik Doğrulama](../authentication/concept-mfa-howitworks.md).
+Azure Multi-Factor Authentication hakkında daha fazla bilgi makalesinde, nasıl çalıştığı hakkında daha fazla bilgi bulabilirsiniz [: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md).
 
 ## <a name="sign-in-risk-policy"></a>Oturum açma risk ilkesi
 
-Kimlik Koruması, hem gerçek zamanlı hem de çevrimdışı olarak her oturum açma sırasındaki sinyalleri analiz eder ve oturum açmanın kullanıcı tarafından gerçekleştirilme olasılığına bağlı olarak bir risk puanı hesaplar. Yöneticiler, kuruluş gereksinimlerini uygulamak için bu risk puanı sinyaline dayalı bir karar verebilir. Yöneticiler erişimi engellemeyi seçebilir, erişime izin verebilir veya erişime izin verebilir, ancak çok faktörlü kimlik doğrulaması gerektirebilir.
+Kimlik koruması, hem gerçek zamanlı hem de çevrimdışı olan her oturum açma işleminden gelen sinyalleri analiz eder ve oturum açma işleminin Kullanıcı tarafından gerçekleştirilmeme olasılığını temel alarak bir risk puanı hesaplar. Yöneticiler, kurumsal gereksinimleri zorlamak için bu risk puanı sinyaline dayalı bir karar verebilir. Yöneticiler erişimi engellemeyi, erişime izin vermeyi veya erişime izin vermeyi seçebilir ancak çok faktörlü kimlik doğrulaması gerektirir.
 
-Risk algılanırsa, kullanıcılar yöneticiler için gereksiz gürültüyü önlemek için riskli oturum açma olayını kendi kendine düzeltmek ve kapatmak için çok faktörlü kimlik doğrulama gerçekleştirebilir.
+Risk algılanırsa, kullanıcılar, yöneticilerin gereksiz gürültüsünü engellemek için riskli oturum açma olayını kendi kendine düzeltebileceği ve kapatan çok faktörlü kimlik doğrulaması gerçekleştirebilir.
 
 > [!NOTE] 
-> Oturum açma risk ilkesini tetiklemeden önce kullanıcıların Azure Çok Faktörlü Kimlik Doğrulaması'na daha önce kaydolmuş olması gerekir.
+> Kullanıcılar, oturum açma risk ilkesini tetiklemeden önce Azure Multi-Factor Authentication için önceden kaydolmalıdır.
 
-### <a name="custom-conditional-access-policy"></a>Özel Koşullu Erişim ilkesi
+### <a name="custom-conditional-access-policy"></a>Özel koşullu erişim ilkesi
 
-Yöneticiler ayrıca, atama koşulu olarak oturum açma riskini de içeren özel bir Koşullu Erişim ilkesi oluşturmayı da seçebilirler. Koşullu Erişim hakkında daha fazla bilgi makalede bulunabilir, [Koşullu Erişim nedir?](../conditional-access/overview.md)
+Yöneticiler, oturum açma riskini atama koşulu da dahil olmak üzere özel bir koşullu erişim ilkesi oluşturmayı da tercih edebilir. Koşullu erişim hakkında daha fazla bilgi makalesinde, [koşullu erişim nedir?](../conditional-access/overview.md)
 
-![Özel Koşullu Erişim oturum açma risk ilkesi](./media/concept-identity-protection-policies/identity-protection-custom-sign-in-policy.png)
+![Özel koşullu erişim oturum açma risk ilkesi](./media/concept-identity-protection-policies/identity-protection-custom-sign-in-policy.png)
 
 ## <a name="user-risk-policy"></a>Kullanıcı risk ilkesi
 
-Kimlik Koruması, bir kullanıcının davranışı için normal olduğuna inandığı şeyi hesaplayabilir ve bunu riskleri için kararları temel almak için kullanabilir. Kullanıcı riski, bir kimliğin tehlikeye girme olasılığının bir hesaplamasıdır. Yöneticiler, kuruluş gereksinimlerini uygulamak için bu risk puanı sinyaline dayalı bir karar verebilir. Yöneticiler erişimi engellemeyi, erişime izin vermeyi seçebilir, ancak [Azure AD self servis parola sıfırlamayı](../authentication/howto-sspr-deployment.md)kullanarak parola değişikliği gerektirebilir.
+Kimlik koruması, kullanıcının davranışı için ne düşündüğü için ne olduğunu hesaplayabilir ve bu durumu risk temelinde kararlara dayandırmak için kullanır. Kullanıcı riski, bir kimliğin tehlikeye düşmesi olasılığının bir hesaplanmasıdır. Yöneticiler, kurumsal gereksinimleri zorlamak için bu risk puanı sinyaline dayalı bir karar verebilir. Yöneticiler erişimi engellemeyi, erişime izin vermeyi veya erişime izin vermeyi seçebilir ancak [Azure AD self servis parola sıfırlama](../authentication/howto-sspr-deployment.md)kullanarak parola değişikliği gerektirir.
 
-Risk algılanırsa, kullanıcılar yöneticiler için gereksiz gürültüyü önlemek için self servis parola sıfırlama gerçekleştirebilir ve kullanıcı riski olayını kapatabilir.
+Risk algılanırsa, kullanıcılar self servis parola sıfırlama işlemini kendi kendine düzeltir ve yöneticiler için gereksiz paraziti engellemek için Kullanıcı riski olayını kapatabilir.
 
 > [!NOTE] 
-> Kullanıcıların, kullanıcı risk ilkesini tetiklemeden önce self servis parola sıfırlama için daha önce kaydolmuş olması gerekir.
+> Kullanıcılar, Kullanıcı risk ilkesini tetiklemeden önce self servis parola sıfırlama için önceden kaydolmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -60,6 +60,6 @@ Risk algılanırsa, kullanıcılar yöneticiler için gereksiz gürültüyü ön
 
 - [Azure Multi-Factor Authentication’ı etkinleştirme](../authentication/howto-mfa-getstarted.md)
 
-- [Azure Çok Faktörlü Kimlik Doğrulama kayıt ilkesini etkinleştirme](howto-identity-protection-configure-mfa-policy.md)
+- [Azure Multi-Factor Authentication kayıt ilkesini etkinleştirme](howto-identity-protection-configure-mfa-policy.md)
 
-- [Oturum açma ve kullanıcı risk ilkelerini etkinleştirme](howto-identity-protection-configure-risk-policies.md)
+- [Oturum açma ve Kullanıcı risk ilkelerini etkinleştir](howto-identity-protection-configure-risk-policies.md)

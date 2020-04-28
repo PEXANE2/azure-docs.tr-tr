@@ -1,6 +1,6 @@
 ---
-title: Windows Azure VM MimarisiNin İş Akışı | Microsoft Dokümanlar
-description: Bu makalede, bir hizmeti dağıttığınızda iş akışı işlemlerine genel bakış sağlanmış olur.
+title: Windows Azure VM mimarisinin iş akışı | Microsoft Docs
+description: Bu makalede bir hizmeti dağıtırken iş akışı işlemlerine genel bakış sağlanır.
 services: cloud-services
 documentationcenter: ''
 author: genlin
@@ -15,90 +15,90 @@ ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
 ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71162159"
 ---
-#    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure klasik VM Mimarisi iş akışı 
-Bu makalede, sanal makine gibi bir Azure kaynağını dağıttığınızda veya güncellediğinizde oluşan iş akışı işlemlerine genel bir bakış sağlanmaktadır. 
+#    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Klasik Microsoft Azure VM mimarisi iş akışı 
+Bu makalede, bir sanal makine gibi bir Azure kaynağını dağıtırken veya güncelleştirdiğinizde oluşan iş akışı işlemlerine genel bakış sunulmaktadır. 
 
 > [!NOTE]
 >Azure, kaynak oluşturmak ve bu kaynaklarla çalışmak için iki dağıtım modeli kullanır: Resource Manager ve klasik. Bu makale klasik dağıtım modelini incelemektedir.
 
-Aşağıdaki diyagram, Azure kaynaklarının mimarisini sunar.
+Aşağıdaki diyagramda Azure kaynakları mimarisi sunulmaktadır.
 
 ![Azure iş akışı](./media/cloud-services-workflow-process/workflow.jpg)
 
 ## <a name="workflow-basics"></a>İş akışı temelleri
    
-**A.** RDFE / FFE, kullanıcıdan kumaşa iletişim yoludur. RDFE (RedDog Front End), Visual Studio, Azure MMC vb. Yönetim Portalı ve Hizmet Yönetimi API'sinin ön ucu olan genel olarak açıklanmış API'dir.  Kullanıcıdan gelen tüm istekler RDFE'den geçer. FFE (Fabric Front End), RDFE'den gelen istekleri kumaş komutlarına çeviren katmandır. RDFE'den gelen tüm istekler ffe'den geçerek kumaş kontrolörlerine ulaşır.
+**A**. RDFE/FFE, kullanıcıdan dokuya yönelik iletişim yoludur. RDFE (RedDog Front End), Yönetim Portalı ve Visual Studio, Azure MMC gibi Hizmet Yönetim API'si ön ucu olan genel kullanıma açık bir API 'dir.  Kullanıcının tüm istekleri RDFE aracılığıyla gider. FFE (doku ön ucu), istekleri RDFE 'den doku komutlarına çeviren katmandır. RDFE 'den gelen tüm istekler, doku denetleyicilerine ulaşmak için FFE aracılığıyla gider.
 
-**B**. Kumaş denetleyicisi, veri merkezindeki tüm kaynakların korunmasından ve izlenmesinden sorumludur. Konuk Işletim Sistemi sürümü, servis paketi, hizmet yapılandırması ve hizmet durumu gibi bilgileri gönderen kumaş işletim sistemi üzerindeki kumaş ana bilgisayar temsilcileriyle iletişim kurar.
+**B**. Yapı denetleyicisi, veri merkezindeki tüm kaynakların korunmasından ve izlenmesinden sorumludur. Bu BT, Konuk işletim sistemi sürümü, hizmet paketi, hizmet yapılandırması ve hizmet durumu gibi bilgileri gönderen yapı işletim sistemi üzerinde Fabric Host aracılarıyla iletişim kurar.
 
-**C**. Host Agent Host OS'de yaşar ve Konuk İşletim Sistemi'ni kurmakve rolü amaçlanan bir hedef durumuna doğru güncelleştirmek ve Konuk aracıyla kalp atışı kontrolleri yapmak için Konuk Aracı (WindowsAzureGuestAgent) ile iletişim kurmakla sorumludur. Ana Bilgisayar Aracısı 10 dakika boyunca sinyal yanıtı almazsa, Ana Bilgisayar Aracısı Konuk İşletim'i yeniden başlatır.
+**C**. Konak Aracısı konak işletim sistemi üzerinde çalışır ve hedeflenen bir hedef durumuna doğru rolü güncelleştirmek ve konuk aracısında sinyal denetimleri yapmak için konuk işletim sistemini ayarlamaktan ve konuk aracısıyla iletişim kurmaktan sorumludur (WindowsAzureGuestAgent). Konak Aracısı 10 dakika boyunca sinyal yanıtı almazsa, konak Aracısı Konuk işletim sistemini yeniden başlatır.
 
-**C2**. WaAppAgent, WindowsAzureGuestAgent.exe'nin kurulumu, yapılandırılması ve güncellenmesiile sorumludur.
+**C2**. WaAppAgent, WindowsAzureGuestAgent. exe ' yi yüklemeden, yapılandırmadan ve güncelleştirmekten sorumludur.
 
-**D**.  WindowsAzureGuestAgent aşağıdakilerden sorumludur:
+**D**.  WindowsAzureGuestAgent, aşağıdakilerden sorumludur:
 
-1. Güvenlik duvarı, ACD'ler, LocalStorage kaynakları, hizmet paketi ve yapılandırma sı dahil olmak üzere Konuk İşletim Sistemi'ni yapılandırma ve sertifikalar.
-2. Rolün altında çalışacağı kullanıcı hesabı için SID'yi ayarlama.
-3. Rol durumunu kumaşa iletmek.
-4. WaHostBootstrapper başlangıç ve rolü hedef durumda olduğundan emin olmak için izleme.
+1. Konuk işletim sistemini, güvenlik duvarı, ACL 'Ler, LocalStorage kaynakları, hizmet paketi ve yapılandırma ve Sertifikalar dahil olmak üzere yapılandırma.
+2. Rolün altında çalışacağı kullanıcı hesabı için SID ayarlanıyor.
+3. Rol durumu dokuya bağlanıyor.
+4. WaHostBootstrapper başlatılıyor ve rolü hedef durumunda olduğundan emin olmak için izleme.
 
-**E**. WaHostBootstrapper sorumludur:
+**E**. WaHostBootstrapper şu şekilde sorumludur:
 
-1. Rol yapılandırmasını okuma ve rolü yapılandırmak ve çalıştırmak için tüm uygun görevleri ve süreçleri başlatma.
-2. Tüm alt süreçlerini izlemek.
-3. Rol barındırma işleminde StatusCheck olayını yükseltme.
+1. Rol yapılandırmasını okuma ve rolü yapılandırmak ve çalıştırmak için uygun tüm görev ve işlemleri başlatma.
+2. Tüm alt süreçlerini izleme.
+3. Rol konak işlemindeki StatusCheck olayı.
 
-**F**. Rol Tam IIS web rolü olarak yapılandırılırsa IISConfigurator çalışır (SDK 1.2 HWC rolleri için çalışmaz). Bu sorumludur:
+**F**. Rol tam bir IIS Web rolü olarak yapılandırıldıysa (SDK 1,2 HWC rolleri için çalıştırılmaz) IISConfigurator çalışır. Bundan sorumludur:
 
-1. Standart IIS hizmetlerinin başlatılması
-2. Web yapılandırmasında yeniden yazma modüllerini yapılandırma
-3. Hizmet modelinde yapılandırılan rol için AppPool'u ayarlama
-4. IIS günlüğe kaydetmeyi DiagnosticStore LocalStorage klasörüne işaret etmek için ayarlama
-5. İzinleri ve ADA'ları yapılandırma
-6. Web sitesi %roleroot%:\sitesroot\0'da bulunur ve AppPool IIS'yi çalıştırmak için bu konumu işaret eder. 
+1. Standart IIS Hizmetleri başlatılıyor
+2. Web yapılandırmasında yeniden yazma modülünü yapılandırma
+3. Hizmet modelinde yapılandırılan rol için AppPool 'ı ayarlama
+4. IIS günlüğünü DiagnosticStore LocalStorage klasörünü işaret etmek üzere ayarlama
+5. İzinleri ve ACL 'Leri yapılandırma
+6. Web sitesi% roleroot%: \sitesroot\0 konumunda bulunur ve AppPool IIS çalıştırmak için bu konuma işaret eder. 
 
-**G**. Başlangıç görevleri rol modeli tarafından tanımlanır ve WaHostBootstrapper tarafından başlatılır. Başlangıç görevleri arka planda eşit olarak çalışacak şekilde yapılandırılabilir ve ana bilgisayar bootstrapper başlangıç görevini başlatAcak ve ardından diğer başlangıç görevlerine devam edecek. Başlangıç görevleri, ana bilgisayar bootstrapper'ın başlangıç görevinin çalışmasını tamamlamasını ve bir sonraki başlangıç görevine devam etmeden önce başarı (0) çıkış kodunu döndürmesini bekleyeceği Basit (varsayılan) modda çalışacak şekilde de yapılandırılabilir.
+**G**. Başlangıç görevleri, rol modeli tarafından tanımlanır ve WaHostBootstrapper tarafından başlatılır. Başlangıç görevleri arka planda zaman uyumsuz olarak çalışacak şekilde yapılandırılabilir ve konak önyükleyici başlangıç görevini başlatır ve sonra diğer başlangıç görevlerinde devam eder. Başlangıç görevleri Ayrıca, ana bilgisayar önyükleyicisinin başlangıç görevinin çalışmasının bitmesini bekleneceği ve bir sonraki başlangıç görevine devam etmeden önce bir başarı (0) çıkış kodu döndürdüğü basit (varsayılan) modda çalışacak şekilde yapılandırılabilir.
 
-**H**. Bu görevler SDK'nın bir parçasıdır ve rolün hizmet tanımındaki (.csdef) eklentiler olarak tanımlanır. Başlangıç görevlerine genişletildiğinde, **DiagnosticsAgent** ve **RemoteAccessAgent** her biri biri normal diğeri **/blockBaşlangıç** parametresi olan iki başlangıç görevi tanımlaması açısından benzersizdir. Normal başlangıç görevi, rolün kendisi çalışırken arka planda çalıştırılabilmek için arka plan başlangıç görevi olarak tanımlanır. **/blockStartup** başlangıç görevi, WaHostBootstrapper'ın devam etmeden önce çıkmasını beklemesi için Basit bir başlangıç görevi olarak tanımlanır. **/blockStartup** görevi, normal görevin başlatmayı bitirmesini bekler ve sonra çıkar ve ana bilgisayar bootstrapper'ın devam etmesine izin verir. Bu, rol süreçleri başlamadan önce tanılama ve RDP erişiminin yapılandırılabilmeleri için yapılır (bu /blockStartup görevi aracılığıyla yapılır). Bu aynı zamanda tanılama ve RDP erişiminin, ana bilgisayar bootstrapper başlangıç görevlerini tamamladıktan sonra çalışmaya devam etmesini sağlar (bu Normal görev üzerinden yapılır).
+**H**. Bu görevler SDK 'nın bir parçasıdır ve rolün hizmet tanımında (. csdef) eklentiler olarak tanımlanır. Başlangıç görevlerine genişletildiğinde, **diagnosticsagent** ve **Remoteaccessagent** , her biri bir normal ve bir **/blockstartup** parametresine sahip olan iki başlangıç görevi tanımladıklarından benzersizdir. Normal başlangıç görevi, rolün kendisi çalışırken arka planda çalıştırılabilmesi için arka plan başlangıç görevi olarak tanımlanır. WaHostBootstrapper, devam etmeden önce çıkış yapmanızı beklemeleri için, **/Blockstartup** başlangıç görevi basit bir başlangıç görevi olarak tanımlanır. **/Blockstartup** görevi, normal görevin başlatma işleminin bitmesini bekler ve sonra ana bilgisayar önyükleyicisinin devam etmesine izin verir. Bu işlem, yapılandırma ve RDP erişiminin rol işleme başlamadan önce yapılandırılabilmesini sağlayacak (Bu,/blockStartup göreviyle yapılır). Bu Ayrıca, konak önyükleyici başlangıç görevlerini tamamladıktan sonra, tanılama ve RDP erişiminin çalışmaya devam etmesine olanak tanır (Bu normal görev üzerinden yapılır).
 
-**Ben**. WaWorkerHost normal işçi rolleri için standart ana bilgisayar işlemidir. Bu ana bilgisayar işlemi, OnBaşlat ve Çalıştır gibi tüm rolün DL'lerini ve giriş noktası kodunu barındırıyor.
+**I**. WaWorkerHost, normal çalışan rollerinin Standart ana bilgisayar işlemidir. Bu konak işlemi, tüm rolün dll 'Lerini ve OnStart ve Run gibi giriş noktası kodunu barındırır.
 
-**J**. WaWebHost, SDK 1.2 uyumlu Barındırılabilir Web Core'u (HWC) kullanacak şekilde yapılandırılırsa, web rolleri için standart ana bilgisayar işlemidir. Roller, öğeyi hizmet tanımından (.csdef) kaldırarak HWC modunu etkinleştirebilir. Bu modda, tüm hizmet kodu ve DL'ler WaWebHost işleminden çalışır. IIS (w3wp) kullanılmaz ve IIS Yöneticisi'nde yapılandırılan AppPools yoktur çünkü IIS WaWebHost.exe içinde barındırılır.
+**J**. WaWebHost, SDK 1,2 uyumlu Barındırılstable Web Core (HWC) kullanmak üzere yapılandırıldıysa Web rolleri için Standart ana bilgisayar işlemidir. Roller, hizmet tanımından (. csdef) öğeyi kaldırarak HWC modunu etkinleştirebilir. Bu modda, tüm hizmetin kodu ve DLL 'Leri WaWebHost işleminden çalıştırılır. IIS (W3wp) kullanılmaz ve IIS, WaWebHost. exe içinde barındırıldığından IIS Yöneticisi 'nde yapılandırılmış hiçbir AppPool yok.
 
-**K**. WaIISHost Tam IIS kullanan web rolleri için rol giriş noktası kodu için ana işlemdir. Bu **işlem, RoleEntryPoint** sınıfını kullanan ve kodu bu sınıftan (OnStart, Run, OnStop) yürüten bulunan ilk DLL'yi yükler. RoleEntryPoint sınıfında oluşturulan tüm **RoleEnvironment** olayları (StatusCheck ve Changed gibi) bu işlemde yükseltilir.
+**K**. WaIISHost, tam IIS kullanan Web rollerinin rol giriş noktası kodu için ana bilgisayar işlemidir. Bu işlem **Roleentrypoint** sınıfını kullanan bulunan ilk dll 'yi yükler ve kodu bu sınıftan yürütür (OnStart, Run, OnStop). RoleEntryPoint sınıfında oluşturulan tüm **Roleenvironment** olayları (StatusCheck ve Changed gibi) Bu işlemde tetiklenir.
 
-**L**. W3WP, rolün Tam IIS'yi kullanacak şekilde yapılandırılması durumunda kullanılan standart IIS alt işlemidir. Bu, IISConfigurator tarafından yapılandırılan AppPool'u çalıştırZ. Burada oluşturulan tüm RoleEnvironment olayları (StatusCheck ve Changed gibi) bu işlemde yükseltilir. Her iki işlemdeki olaylara abone olursanız RoleEnvironment olaylarının her iki konumda da (WaIISHost ve w3wp.exe) ateş edeceğini unutmayın.
+**L**. W3WP, rol tam IIS kullanmak üzere yapılandırıldıysa kullanılan standart IIS çalışan işlemidir. Bu, IISConfigurator 'dan yapılandırılan AppPool 'ı çalıştırır. Burada oluşturulan tüm RoleEnvironment olayları (StatusCheck ve Changed gibi) Bu işlemde oluşturulur. Her iki işlemde da olaylara abone olduğunuzda RoleEnvironment olaylarının her iki konumda (WaIISHost ve W3wp. exe) tetikleneceği unutulmamalıdır.
 
-## <a name="workflow-processes"></a>İş akışı süreçleri
+## <a name="workflow-processes"></a>İş akışı işlemi
 
-1. Kullanıcı, ".cspkg" ve ".cscfg" dosyalarını yüklemek, bir kaynağa durdurmasını veya yapılandırma değişikliği yapmasını söyleme gibi bir istekte bulunur. Bu, Azure portalı veya Visual Studio Publish özelliği gibi Hizmet Yönetimi API'sini kullanan bir araç aracılığıyla yapılabilir. Bu istek, abonelikle ilgili tüm işleri yapmak ve isteği FFE'ye iletmek için RDFE'ye gider. Bu iş akışı adımlarının geri kalanı yeni bir paket dağıtmak ve başlatmak için vardır.
-2. FFE doğru makine havuzunu bulur (müşteri girişine göre, yakınlık grubu veya coğrafi konum artı makine kullanılabilirliği gibi kumaştan giriş gibi) ve makine havuzundaki ana kumaş denetleyicisi ile iletişim kurar.
-3. Kumaş denetleyicisi kullanılabilir CPU çekirdekleri olan bir ana bilgisayar bulur (veya yeni bir ana bilgisayar alabilen). Servis paketi ve yapılandırma sıcağı sıcağı sıcağı sıcağı sıcağı sıcağı sıcağısı kopyalar ve kumaş denetleyicisi, paketi dağıtmak için ana bilgisayar işletim sistemi üzerindeki ana bilgisayar temsilcisiyle iletişim kurar (DIP'leri, bağlantı noktalarını, konuk işletim sistemi vb. yapılandırmayı).
-4. Ana bilgisayar aracısı Konuk İşletim Sistemi'ni başlatır ve konuk aracıyla (WindowsAzureGuestAgent) iletişim kurar. Ev sahibi, rolün hedef durumuna doğru çalıştığından emin olmak için konuk oyuncuya kalp atışları gönderir.
-5. WindowsAzureGuestAgent konuk işletim sistemi (güvenlik duvarı, ALA'lar, LocalStorage vb.) kurar, c:\Config için yeni bir XML yapılandırma dosyasını kopyalar ve ardından WaHostBootstrapper işlemini başlatır.
-6. Tam IIS web rolleri için, WaHostBootstrapper IISConfigurator başlar ve IIS web rolü için herhangi bir mevcut AppPools silmek için söyler.
-7. WaHostBootstrapper E:\RoleModel.xml'den **Başlangıç** görevlerini okur ve başlangıç görevlerini yürütmeye başlar. WaHostBootstrapper tüm Basit başlangıç görevleri bitmiş ve bir "başarı" mesajı döndü kadar bekler.
-8. Tam IIS web rolleri için WaHostBootstrapper IISConfigurator IIS AppPool yapılandırmak `E:\Sitesroot\<index>`için `<index>` söyler ve puan site `<Sites>` , nerede hizmet için tanımlanan öğelerin sayısına 0 tabanlı dizin.
-9. WaHostBootstrapper rol türüne bağlı olarak ana bilgisayar işlemini başlatacaktır:
-    1. **İşçi Rolü**: WaWorkerHost.exe başladı. WaHostBootstrapper OnStart() yöntemini yürütür. Döndükten sonra, WaHostBootstrapper Run() yöntemini yürütmeye başlar ve aynı anda rolü Hazır olarak işaretler ve yük dengeleyici döndürmesine koyar (InputEndpoints tanımlanırsa). WaHostBootsrapper sonra rol durumunu kontrol bir döngü gider.
-    1. **SDK 1.2 HWC Web Rolü**: WaWebHost başladı. WaHostBootstrapper OnStart() yöntemini yürütür. Döndükten sonra, WaHostBootstrapper Run() yöntemini yürütmeye başlar ve aynı anda Ready rolünü işaretler ve yük dengeleyici rotasyonuna koyar. WaWebHost bir ısınma isteği yayınlar (GET /do.rd_runtime_init). Tüm web istekleri WaWebHost.exe gönderilir. WaHostBootsrapper sonra rol durumunu kontrol bir döngü gider.
-    1. **Tam IIS Web Rolü:** aIISHost başlatılır. WaHostBootstrapper OnStart() yöntemini yürütür. Döndükten sonra Çalıştır() yöntemini yürütmeye başlar ve aynı anda Ready rolünü işaretler ve yük dengeleyici döndürmesine koyar. WaHostBootsrapper sonra rol durumunu kontrol bir döngü gider.
-10. Tam IIS web rolüne gelen web istekleri, IIS'nin W3WP işlemini başlatmasını ve istekle hizmet etmesini tetikler, aynı şirket içi IIS ortamında olduğu gibi.
+1. Bir Kullanıcı, ". cspkg" ve ". cscfg" dosyalarını karşıya yüklemek, bir kaynağa bir yapılandırma değişikliğini durdurmasına veya bir yapılandırma değişikliği yapmasına, vb. gibi bir istek yapar. Bu işlem, Visual Studio Publish özelliği gibi Hizmet Yönetim API'si kullanan Azure portal veya bir araç aracılığıyla yapılabilir. Bu istek, abonelikle ilgili tüm işleri yapmak için RDFE 'ye gider ve sonra isteği FFE ile iletişim kurar. Bu iş akışı adımlarının geri kalanı yeni bir paket dağıtmaktır ve başlatılır.
+2. FFE, doğru makine havuzunu bulur (benzeşim grubu veya coğrafi konum, dokudan makine kullanılabilirliği gibi) ve bu makine havuzundaki ana doku denetleyicisiyle iletişim kurar.
+3. Yapı denetleyicisi, kullanılabilir CPU çekirdekleri olan bir konak bulur (veya yeni bir konak çalıştırır). Hizmet paketi ve yapılandırma konağa kopyalanır ve yapı denetleyicisi, paketi dağıtmak için ana bilgisayar IŞLETIM sistemindeki ana bilgisayar aracısıyla iletişim kurar (DIP 'Ler, bağlantı noktaları, Konuk işletim sistemi vb.).
+4. Konak Aracısı Konuk işletim sistemini başlatır ve konuk aracısıyla iletişim kurar (WindowsAzureGuestAgent). Konak, rolün hedef durumuna doğru çalıştığından emin olmak için konuğa sinyal gönderir.
+5. WindowsAzureGuestAgent Konuk işletim sistemini (güvenlik duvarı, ACL 'Ler, LocalStorage vb.) ayarlar, yeni bir XML yapılandırma dosyasını c:\Config dosyasına kopyalar ve ardından WaHostBootstrapper işlemini başlatır.
+6. Tam IIS Web rolleri için, WaHostBootstrapper IISConfigurator 'ı başlatır ve web rolü için mevcut tüm uygulama havuzlarını IIS 'den silmesini söyler.
+7. WaHostBootstrapper, E:\RoleModel.xml konumundan **Başlangıç** görevlerini okur ve başlangıç görevlerini yürütmeye başlar. WaHostBootstrapper, tüm basit başlangıç görevlerinin bitmesini bekler ve bir "başarılı" iletisi döndürene kadar bekler.
+8. Tam IIS Web rolleri için WaHostBootstrapper, IISConfigurator 'ın IIS AppPool 'ı yapılandırmasını ve siteyi `E:\Sitesroot\<index>`' a işaret ettiğini, hizmet `<index>` için tanımlanan `<Sites>` öğe sayısına 0 tabanlı bir dizin olduğunu söyler.
+9. WaHostBootstrapper, rol türüne göre ana bilgisayar işlemini başlatacak:
+    1. **Çalışan rolü**: waworkerhost. exe başlatıldı. WaHostBootstrapper, OnStart () yöntemini yürütür. Başlatıldıktan sonra, WaHostBootstrapper Run () yöntemini yürütmeye başlar ve sonra aynı anda rolü hazırlayın ve yük dengeleyici dönüşe koyar (ınputendpoints tanımlanmışsa). Wahostbootsımber daha sonra rol durumunu denetleme döngüsüne gider.
+    1. **SDK 1,2 HWC web rolü**: wawebhost başlatıldı. WaHostBootstrapper, OnStart () yöntemini yürütür. Çağrıldıktan sonra, WaHostBootstrapper Run () yöntemini yürütmeye başlar ve sonra aynı anda rolü, yük dengeleyici döngüsüne koyar. Wawebhost bir ısınma isteği (Get/do. rd_runtime_init) yayınlar. Tüm Web istekleri WaWebHost. exe ' ye gönderilir. Wahostbootsımber daha sonra rol durumunu denetleme döngüsüne gider.
+    1. **Tam IIS Web rolü**: aiishost başlatıldı. WaHostBootstrapper, OnStart () yöntemini yürütür. Çağrıldıktan sonra, Run () yöntemini yürütmeye başlar ve sonra aynı anda rolü hazırlayın ve yük dengeleyici dönüşe koyar. Wahostbootsımber daha sonra rol durumunu denetleme döngüsüne gider.
+10. Tam bir IIS Web rolüne gelen Web istekleri, IIS 'yi W3WP işlemini başlatacak ve isteğe bağlı bir IIS ortamında olduğu gibi isteği sunacak şekilde tetikler.
 
-## <a name="log-file-locations"></a>Dosya konumlarını günlüğe kaydedin
+## <a name="log-file-locations"></a>Günlük dosyası konumları
 
 **WindowsAzureGuestAgent**
 
 - C:\Logs\AppAgentRuntime.Log.  
-Bu günlük, başlatmalar, duraklar ve yeni yapılandırmalar dahil olmak üzere hizmette yapılan değişiklikleri içerir. Hizmet değişmezse, bu günlük dosyasında büyük zaman boşlukları görmeyi bekleyebilirsiniz.
-- C:\Logs\WaAppAgent.Log.  
-Bu günlük durum güncelleştirmeleri ve sinyal bildirimleri içerir ve her 2-3 saniyede bir güncelleştirilir.  Bu günlük, örneğin durumunun tarihi bir görünümünü içerir ve örneğin Hazır durumunda olmadığını size söyler.
+Bu günlük başlatılır, duraklar ve yeni yapılandırma dahil olmak üzere hizmette yapılan değişiklikleri içerir. Hizmet değişmezse, bu günlük dosyasında büyük bir zaman boşlukları görmeyi bekleyebilir.
+- C:\logs\waappagent.log  
+Bu günlük durum güncelleştirmelerini ve sinyal bildirimlerini içerir ve her 2-3 saniyede bir güncelleştirilir.  Bu günlük, örneğin durumunun geçmiş bir görünümünü içerir ve örneğin, örnek ne zaman hazırlandıysa size bildirir.
  
 **WaHostBootstrapper**
 
@@ -108,11 +108,11 @@ Bu günlük durum güncelleştirmeleri ve sinyal bildirimleri içerir ve her 2-3
 
 `C:\Resources\Directory\<guid>.<role>\WaWebHost.log`
  
-**WaIISHost**
+**Waııshost**
 
 `C:\Resources\Directory\<deploymentID>.<role>\WaIISHost.log`
  
-**IISConfigurator**
+**Iısconfigurator**
 
 `C:\Resources\Directory\<deploymentID>.<role>\IISConfigurator.log`
  
@@ -120,7 +120,7 @@ Bu günlük durum güncelleştirmeleri ve sinyal bildirimleri içerir ve her 2-3
 
 `C:\Resources\Directory\<guid>.<role>.DiagnosticStore\LogFiles\W3SVC1`
  
-**Windows Olay günlükleri**
+**Windows olay günlükleri**
 
 `D:\Windows\System32\Winevt\Logs`
  

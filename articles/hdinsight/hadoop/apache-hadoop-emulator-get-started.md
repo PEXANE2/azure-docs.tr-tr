@@ -1,7 +1,7 @@
 ---
-title: Apache Hadoop kum havuzu, emülatör kullanmayı öğrenin - Azure HDInsight
-description: "Apache Hadoop ekosistemini kullanmayı öğrenmek için, Hortonworks'ten bir Hadoop sanal makinesi kurabilirsiniz. "
-keywords: hadoop emülatörü,hadoop kum havuzu
+title: Apache Hadoop korumalı alan kullanmayı öğrenin-Azure HDInsight
+description: 'Apache Hadoop ekosistemini kullanma hakkında bilgi edinmeye başlamak için bir Azure sanal makinesinde Hortonçalışmalardan bir Hadoop korumalı alanı ayarlayabilirsiniz. '
+keywords: Hadoop öykünücüsü, Hadoop korumalı alanı
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
@@ -10,63 +10,63 @@ ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
 ms.openlocfilehash: 47ee66393e3e1678576b12a70b767f35cb3bc635
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73044762"
 ---
-# <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Bir Apache Hadoop kum havuzu, sanal bir makine üzerinde bir emülatör ile başlayın
+# <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Sanal makinede öykünücü olan Apache Hadoop korumalı alan ile çalışmaya başlama
 
-Hadoop ekosistemi hakkında bilgi edinmek için Hortonworks'teki Apache Hadoop kum havuzunu sanal bir makineye nasıl yükleyeceğinizi öğrenin. Kum havuzu, Hadoop, Hadoop Distributed File System (HDFS) ve iş gönderimi hakkında bilgi edinmek için yerel bir geliştirme ortamı sağlar. Hadoop'u tanıdıktan sonra, bir HDInsight kümesi oluşturarak Azure'da Hadoop'u kullanmaya başlayabilirsiniz. Nasıl başlanınizle ilgili daha fazla bilgi için [HDInsight'ta Hadoop ile başlayın.](apache-hadoop-linux-tutorial-get-started.md)
+Hadoop ekosistemi hakkında bilgi edinmek için bir sanal makinede Hortonçalışmalardan Apache Hadoop korumalı alanı yüklemeyi öğrenin. Korumalı alan, Hadoop, Hadoop Dağıtılmış Dosya Sistemi (bir) ve iş gönderimi hakkında bilgi edinmek için yerel bir geliştirme ortamı sağlar. Hadoop 'u tanıdıktan sonra HDInsight kümesi oluşturarak Azure 'da Hadoop kullanmaya başlayabilirsiniz. Kullanmaya başlama hakkında daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Oracle VirtualBox](https://www.virtualbox.org/). Buradan indirin [here](https://www.virtualbox.org/wiki/Downloads)ve kurun.
+* [Oracle VirtualBox](https://www.virtualbox.org/). [Buradan](https://www.virtualbox.org/wiki/Downloads)indirin ve yükleyin.
 
-## <a name="download-and-install-the-virtual-machine"></a>Sanal makineyi indirin ve kurun
+## <a name="download-and-install-the-virtual-machine"></a>Sanal makineyi indir ve yükle
 
-1. [Cloudera indirmegöz](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html)atın.
+1. [Cloudera indirmelerine](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html)gidin.
 
-1. En son Hortonworks Sandbox'ı VM'den indirmek için **Yükleme Türünü Seç'in** altındaki **VIRTUALBOX'ı** tıklatın. Ürün leilgili formu oturum açın veya doldurun.
+1. Bir VM 'ye en son Hortonçalışmalar korumalı alanını indirmek için **yükleme türünü seçin** altında **VirtualBox** ' a tıklayın. Oturum açın veya ürün ilgi formunu doldurun.
 
-1. İndirmeye başlamak için **HDP SANDBOX (SON)** düğmesini tıklatın.
+1. İndirmeye başlamak için **HDP KORUMALı alan (en son)** düğmesine tıklayın.
 
-Kum havuzunun ayarlanmasıyla ilgili talimatlar için Bkz. [Sandbox Dağıtım ve Yükleme Kılavuzu.](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/)
+Korumalı alanı ayarlama hakkında yönergeler için bkz. [korumalı alan dağıtımı ve Install Guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/).
 
-Eski bir HDP sürümünü indirmek için, **Eski Sürümler**altındaki bağlantılara bakın.
+Eski bir HDP sürüm korumalı alanını indirmek için **eski sürümlerin**altındaki bağlantılara bakın.
 
-## <a name="start-the-virtual-machine"></a>Sanal makineyi başlatın
+## <a name="start-the-virtual-machine"></a>Sanal makineyi Başlat
 
-1. Oracle VM VirtualBox'ı açın.
-1. **Dosya** menüsünden **Cihazı İçe Aktar'ı**tıklatın ve ardından Hortonworks Sandbox görüntüsünü belirtin.
-1. Hortonworks Sandbox'ı seçin, **Başlat'ı**ve ardından **Normal Başlangıç'ı**tıklatın. Sanal makine önyükleme işlemini tamamladıktan sonra, oturum açma yönergelerini görüntüler.
+1. Oracle VM VirtualBox öğesini açın.
+1. **Dosya** menüsünde gereci **içeri aktar**' a tıklayın ve ardından Hortonçalışmalar korumalı alanı görüntüsünü belirtin.
+1. Hortonçalışmalar korumalı alanını seçin, **Başlat**' a ve ardından **normal Başlat**' a tıklayın. Sanal makine önyükleme işlemini tamamladıktan sonra oturum açma yönergelerini görüntüler.
 
-    ![virtualbox manager normal başlangıç](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
+    ![VirtualBox Manager normal başlangıç](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
-1. Bir web tarayıcısı açın ve görüntülenen `http://127.0.0.1:8888`URL'ye gidin (genellikle).
+1. Bir Web tarayıcısı açın ve görüntülenecek URL 'ye gidin (genellikle `http://127.0.0.1:8888`).
 
-## <a name="set-sandbox-passwords"></a>Sandbox parolalarını ayarlama
+## <a name="set-sandbox-passwords"></a>Korumalı alan parolalarını ayarla
 
-1. Hortonworks Sandbox sayfasının **başlangıç** adımından **Gelişmiş Seçenekleri Görüntüle'yi**seçin. SSH kullanarak kum havuzuna giriş yapmak için bu sayfadaki bilgileri kullanın. Sağlanan adı ve parolayı kullanın.
+1. Hortonçalışmalar korumalı alanı sayfasının **Başlarken** adımından **Gelişmiş seçenekleri görüntüle**' yi seçin. SSH kullanarak korumalı alanda oturum açmak için bu sayfadaki bilgileri kullanın. Belirtilen adı ve parolayı kullanın.
 
    > [!NOTE]
-   > Yüklü bir SSH istemciniz yoksa, sanal makine tarafından sağlanan web tabanlı SSH'yi **http://localhost:4200/** kullanabilirsiniz.
+   > Yüklü bir SSH istemciniz yoksa, üzerinde **http://localhost:4200/** sanal makine tarafından belirtilen Web tabanlı SSH 'yi kullanabilirsiniz.
 
-    SSH kullanarak ilk bağlandığınızda, kök hesabın parolasını değiştirmeniz istenir. SSH kullanarak oturum açtığınızda kullandığınız yeni bir parola girin.
+    SSH kullanarak ilk kez bağlandığınızda, kök hesabın parolasını değiştirmeniz istenir. SSH kullanarak oturum açtığınızda kullanabileceğiniz yeni bir parola girin.
 
 2. Oturum açtıktan sonra aşağıdaki komutu girin:
 
         ambari-admin-password-reset
 
-    İstendiğinde, Ambari yönetici hesabı için bir parola sağlayın. This is used when you access the Ambari Web UI.
+    İstendiğinde, ambarı yönetici hesabı için bir parola sağlayın. Bu, ambarı Web Kullanıcı arabirimine eriştiğinizde kullanılır.
 
-## <a name="use-hive-commands"></a>Kovan komutlarını kullanma
+## <a name="use-hive-commands"></a>Hive komutlarını kullanma
 
-1. SSH bağlantısından kum havuzuna, Kovan kabuğunu başlatmak için aşağıdaki komutu kullanın:
+1. Bir SSH bağlantısından korumalı alana, Hive kabuğu 'nu başlatmak için aşağıdaki komutu kullanın:
 
         hive
-2. Kabuk başladıktan sonra, kum havuzu yla birlikte sağlanan tabloları görüntülemek için aşağıdakileri kullanın:
+2. Kabuk başladıktan sonra, korumalı alan ile birlikte sunulan tabloları görüntülemek için aşağıdakileri kullanın:
 
         show tables;
 3. `sample_07` Tablodan 10 satır almak için aşağıdakileri kullanın:
@@ -75,8 +75,8 @@ Eski bir HDP sürümünü indirmek için, **Eski Sürümler**altındaki bağlant
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hortonworks Sandbox ile Visual Studio'yu nasıl kullanacağınızı öğrenin](../hdinsight-hadoop-emulator-visual-studio.md)
+* [Visual Studio 'Yu Hortonçalışmalar korumalı alanı ile nasıl kullanacağınızı öğrenin](../hdinsight-hadoop-emulator-visual-studio.md)
 
-* [Hortonworks Sandbox ipleri öğrenme](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Hortonçalışmalar korumalı alanının servis 'i öğrenme](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 
-* [Hadoop öğretici - HDP ile başlarken](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [Hadoop öğreticisi-HDP ile çalışmaya başlama](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB sorgu dilinde tür denetimi işlevleri
-description: Azure Cosmos DB'deki SQL sistem işlevlerini tür denetimi hakkında bilgi edinin.
+title: Azure Cosmos DB sorgu dilindeki tür denetimi işlevleri
+description: Azure Cosmos DB 'de SQL sistem işlevlerini denetleme türü hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,21 +8,21 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: cac8be4c39737ca209653532d00375c8c9bee48e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71349070"
 ---
 # <a name="type-checking-functions-azure-cosmos-db"></a>Tür denetimi işlevleri (Azure Cosmos DB)
 
-Tür denetimi işlevleri, SQL sorgusundaki ifade türünü denetlemenize sağlar. Değişken veya bilinmeyen öğelerin içindeki özelliklerin türlerini belirlemek için tür denetleme işlevlerini kullanabilirsiniz. 
+Tür denetimi işlevleri bir SQL sorgusu içindeki bir ifadenin türünü denetlemenizi sağlar. Değişken ya da bilinmiyor olduğunda, işlemler içindeki öğelerin içindeki özellik türlerini belirleyebilmek için tür denetimi işlevlerini kullanabilirsiniz. 
 
 ## <a name="functions"></a>İşlevler
 
-Desteklenen yerleşik tür denetleme işlevleri tablosu aşağıda veda edilmiştir:
+Desteklenen yerleşik tür denetleme işlevlerinin bir tablosu aşağıda verilmiştir:
 
-Aşağıdaki işlevler giriş değerlerine karşı tür denetimini destekler ve her biri boolean değerini döndürür.  
+Aşağıdaki işlevler, giriş değerlerine karşı tür denetimini destekler ve her biri bir Boole değeri döndürür.  
   
 ||||  
 |-|-|-|  
@@ -33,7 +33,7 @@ Aşağıdaki işlevler giriş değerlerine karşı tür denetimini destekler ve 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB'ye Giriş](introduction.md)
-- [Kullanıcı Tanımlı Fonksiyonlar](sql-query-udfs.md)
+- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB giriş](introduction.md)
+- [Kullanıcı tanımlı Işlevler](sql-query-udfs.md)
 - [Toplamalar](sql-query-aggregates.md)

@@ -1,6 +1,6 @@
 ---
-title: Filtre ağ trafiği - Azure PowerShell | Microsoft Dokümanlar
-description: Bu makalede, PowerShell'i kullanarak ağ trafiğini bir ağ güvenlik grubuyla bir alt ağa nasıl filtreuygulayabileceğinizi öğrenirsiniz.
+title: Ağ trafiğini filtrele-Azure PowerShell | Microsoft Docs
+description: Bu makalede, PowerShell kullanarak bir ağ güvenlik grubu ile ağ trafiğini bir alt ağa nasıl filtreleyeceğinizi öğreneceksiniz.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -18,13 +18,13 @@ ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: 08031bc2ac29ea77374e21c4ce6f7bcf6151bcad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66730029"
 ---
-# <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>PowerShell'i kullanan bir ağ güvenlik grubuyla ağ trafiğini filtreleme
+# <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>PowerShell kullanarak ağ trafiğini ağ güvenlik grubuyla filtreleme
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -35,11 +35,11 @@ Bir sanal ağ alt ağına gelen ve sanal ağ alt ağından giden ağ trafiğini,
 * Sanal makineleri (VM) bir alt ağa dağıtma
 * Trafik filtrelerini test etme
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure PowerShell modülü sürümü 1.0.0 veya daha sonra gerekir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azure PowerShell modülü sürümü 1.0.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 
@@ -47,7 +47,7 @@ Bir ağ güvenlik grubu, güvenlik kuralları içerir. Güvenlik kuralları, bir
 
 ### <a name="create-application-security-groups"></a>Uygulama güvenlik grupları oluşturma
 
-Önce [Yeni-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bu makalede oluşturulan tüm kaynaklar için bir kaynak grubu oluşturun. Aşağıdaki örnekte *eastus* konumunda bir kaynak grubu oluşturulmaktadır:
+Önce Bu makalede oluşturulan tüm kaynaklar için [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturun. Aşağıdaki örnekte *eastus* konumunda bir kaynak grubu oluşturulmaktadır:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
@@ -97,7 +97,7 @@ $mgmtRule = New-AzNetworkSecurityRuleConfig `
   -DestinationPortRange 3389
 ```
 
-Bu makalede, RDP (port 3389) *myAsgMgmtServers* VM için internete maruz kalmaktadır. Üretim ortamları için, 3389 bağlantı noktasını internete maruz bırakmak yerine, [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [özel](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ağ bağlantısı kullanarak yönetmek istediğiniz Azure kaynaklarına bağlanmanız önerilir.
+Bu makalede, *Myasgmgmtservers* sanal MAKINESI için RDP (bağlantı noktası 3389) internet 'e açıktır. Üretim ortamları için 3389 numaralı bağlantı noktasını Internet 'e sunmak yerine, bir [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [özel](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ağ bağlantısı kullanarak yönetmek istediğiniz Azure kaynaklarına bağlanmanız önerilir.
 
 ### <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
 
@@ -113,7 +113,7 @@ $nsg = New-AzNetworkSecurityGroup `
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile sanal ağ oluşturun. Aşağıdaki örnek *myVirtualNetwork* adlı bir sanal ağ oluşturur:
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun. Aşağıdaki örnek *myVirtualNetwork* adlı bir sanal ağ oluşturur:
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -123,7 +123,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)ile bir alt net yapılandırması oluşturun ve ardından [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)ile sanal ağa subnet yapılandırmasını yazın. Aşağıdaki örnek, sanal ağa *mySubnet* adlı bir alt ağ ekler ve *myNsg* ağ güvenlik grubunu onunla ilişkilendirir:
+[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)ile bir alt ağ yapılandırması oluşturun ve sonra alt ağ yapılandırmasını [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork)ile sanal ağa yazın. Aşağıdaki örnek, sanal ağa *mySubnet* adlı bir alt ağ ekler ve *myNsg* ağ güvenlik grubunu onunla ilişkilendirir:
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkSubnetConfig `
@@ -136,7 +136,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
-VM'leri oluşturmadan [önce, Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)ile alt ağ ile sanal ağ nesnesini alın:
+VM 'Leri oluşturmadan önce, [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork)ile alt ağa sahip sanal ağ nesnesini alın:
 
 ```powershell-interactive
 $virtualNetwork = Get-AzVirtualNetwork `
@@ -144,7 +144,7 @@ $virtualNetwork = Get-AzVirtualNetwork `
  -Resourcegroupname myResourceGroup
 ```
 
-[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)ile her VM için ortak bir IP adresi oluşturun:
+[New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress)Ile her VM için BIR genel IP adresi oluşturun:
 
 ```powershell-interactive
 $publicIpWeb = New-AzPublicIpAddress `
@@ -160,7 +160,7 @@ $publicIpMgmt = New-AzPublicIpAddress `
   -Name myVmMgmt
 ```
 
-[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)ile iki ağ arabirimi oluşturun ve ağ arabirimine ortak bir IP adresi atayın. Aşağıdaki örnek bir ağ arabirimi oluşturur, *myVmWeb* genel IP adresini onunla ilişkilendirir ve *myAsgWebServers* uygulama güvenlik grubunun bir üyesi yapar:
+[New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface)ile iki ağ arabirimi oluşturun ve ağ arabirimine BIR genel IP adresi atayın. Aşağıdaki örnek bir ağ arabirimi oluşturur, *myVmWeb* genel IP adresini onunla ilişkilendirir ve *myAsgWebServers* uygulama güvenlik grubunun bir üyesi yapar:
 
 ```powershell-interactive
 $webNic = New-AzNetworkInterface `
@@ -186,7 +186,7 @@ $mgmtNic = New-AzNetworkInterface `
 
 Daha sonraki bir adımda trafik filtrelemesini doğrulayabilmek için sanal ağda iki VM oluşturun.
 
-[New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)ile bir VM yapılandırması oluşturun, sonra [New-AzVM](/powershell/module/az.compute/new-azvm)ile VM oluşturun. Aşağıdaki örnek, web sunucusu olarak görev yapacak bir VM oluşturur. `-AsJob` seçeneği, sonraki adıma devam edebilmeniz için arka planda sanal makineyi oluşturur:
+[New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)Ile bir VM yapılandırması oluşturun ve ardından VM 'yi [New-azvm](/powershell/module/az.compute/new-azvm)ile oluşturun. Aşağıdaki örnek, web sunucusu olarak görev yapacak bir VM oluşturur. `-AsJob` seçeneği, sonraki adıma devam edebilmeniz için arka planda sanal makineyi oluşturur:
 
 ```azurepowershell-interactive
 # Create user object
@@ -242,7 +242,7 @@ Sanal makinenin oluşturulması birkaç dakika sürer. Azure VM oluşturma işle
 
 ## <a name="test-traffic-filters"></a>Trafik filtrelerini test etme
 
-Bir VM'nin genel IP adresini döndürmek için [Get-AzPublicIpAddress'i](/powershell/module/az.network/get-azpublicipaddress) kullanın. Aşağıdaki örnek,*myVmMgmt* sanal makinesinin genel IP adresini döndürür:
+Bir sanal makinenin genel IP adresini döndürmek için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) komutunu kullanın. Aşağıdaki örnek,*myVmMgmt* sanal makinesinin genel IP adresini döndürür:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -277,7 +277,7 @@ PowerShell’den *myVmWeb* sanal makinesine Microsoft IIS yüklemek için aşağ
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-IIS yüklemesi tamamlandıktan sonra *myVmWeb* sanal makinesinin bağlantısını kesmeniz durumunda *myVmMgmt* VM uzak masaüstü bağlantısında kalırsınız. IIS karşılama ekranını görüntülemek için bir internet tarayıcısı\/açın ve http: /myVmWeb adresine göz atın.
+IIS yüklemesi tamamlandıktan sonra *myVmWeb* sanal makinesinin bağlantısını kesmeniz durumunda *myVmMgmt* VM uzak masaüstü bağlantısında kalırsınız. IIS karşılama ekranını görüntülemek için bir internet tarayıcısı açın ve http:\//Myvmwebadresine gidin.
 
 *myVmMgmt* sanal makinesiyle bağlantıyı kesin.
 
@@ -294,7 +294,7 @@ Get-AzPublicIpAddress `
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık ihtiyaç duyulmadığında, kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için [Kaldır-AzResourceGroup'u](/powershell/module/az.resources/remove-azresourcegroup) kullanabilirsiniz:
+Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırabilirsiniz:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
@@ -302,6 +302,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir ağ güvenlik grubu oluşturdunuz ve sanal ağ alt ağıyla ilişkilendirdin. Ağ güvenlik grupları hakkında daha fazla bilgi edinmek bkz. [Ağ güvenlik grubuna genel bakış](security-overview.md) ve [Ağ güvenlik grubunu yönetme](manage-network-security-group.md).
+Bu makalede bir ağ güvenlik grubu oluşturdunuz ve bunu bir sanal ağ alt ağıyla ilişkilendirdiyseniz. Ağ güvenlik grupları hakkında daha fazla bilgi edinmek bkz. [Ağ güvenlik grubuna genel bakış](security-overview.md) ve [Ağ güvenlik grubunu yönetme](manage-network-security-group.md).
 
-Azure, varsayılan olarak trafiği alt ağlar arasında yönlendirir. Bunun yerine, alt ağlar arasındaki trafiği, örneğin, güvenlik duvarı olarak görev yapan bir VM aracılığıyla yönlendirmeyi seçebilirsiniz. Nasıl yapılacağını öğrenmek için [bkz.](tutorial-create-route-table-powershell.md)
+Azure, varsayılan olarak trafiği alt ağlar arasında yönlendirir. Bunun yerine, alt ağlar arasındaki trafiği, örneğin, güvenlik duvarı olarak görev yapan bir VM aracılığıyla yönlendirmeyi seçebilirsiniz. Nasıl yapılacağını öğrenmek için bkz. [yol tablosu oluşturma](tutorial-create-route-table-powershell.md).

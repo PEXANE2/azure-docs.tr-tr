@@ -1,6 +1,6 @@
 ---
-title: Uzaktan İzleme çözümü Edge cihazı eklemek - Azure | Microsoft Dokümanlar
-description: Bu makalede, Uzaktan İzleme çözüm hızlandırıcısına Bir IoT Edge aygıtının nasıl eklendiği açıklanmaktadır
+title: Uzaktan Izleme çözümü Edge cihazı ekleme-Azure | Microsoft Docs
+description: Bu makalede, bir IoT Edge cihazının uzaktan Izleme çözüm hızlandırıcısına nasıl ekleneceği açıklanmaktadır
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,47 +9,47 @@ services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0a42763ff47cccfa506acbbbd95d20d41eb0827f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72965384"
 ---
-# <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>Uzaktan İzleme çözüm hızlandırıcınıza bir IoT Edge cihazı ekleme
+# <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>Uzaktan Izleme çözüm hızlandırıcısına IoT Edge cihaz ekleme
 
-Çözüm hızlandırıcınıza bir [IoT Edge](../iot-edge/about-iot-edge.md) aygıtı eklemek için aşağıdaki iki adımı tamamlayın:
+Çözüm hızlandırıcısına [IoT Edge](../iot-edge/about-iot-edge.md) bir cihaz eklemek için aşağıdaki iki adımı izleyin:
 
-1. Uzaktan İzleme çözüm hızlandırıcı web Kullanıcı Arabirimi'nde **Aygıt Gezgini** sayfasındaki Edge aygıtını ekleyin.
-1. Edge cihazınıza IoT Edge çalışma süresini yükleyin.
+1. Edge cihazını, uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimindeki **Device Explorer** sayfasına ekleyin.
+1. IoT Edge çalışma zamanını Edge cihazınıza yükler.
 
-## <a name="add-the-iot-edge-device"></a>IoT Edge aygıtını ekleme
+## <a name="add-the-iot-edge-device"></a>IoT Edge cihazı ekleme
 
-Uzaktan İzleme çözüm hızlandırıcısına bir IoT Edge aygıtı eklemek için web Kullanıcı Arabirimi'ndeki **Aygıt Gezgini** sayfasına gidin ve **+ Yeni aygıtı**tıklatın.
+Uzaktan Izleme çözüm hızlandırıcısına IoT Edge bir cihaz eklemek için Web Kullanıcı arabirimindeki **Device Explorer** sayfasına gidin ve **+ yeni cihaz**' a tıklayın.
 
-Yeni **aygıt** panelinde, **IoT Edge aygıtını**seçin. Varsayılan değerleri diğer ayarlar için bırakabilirsiniz. Ardından **Apply** (Uygula) öğesine tıklayın:
+**Yeni cihaz** panelinde **IoT Edge cihaz**' ı seçin. Diğer ayarlar için varsayılan değerleri bırakabilirsiniz. Ardından **Apply** (Uygula) öğesine tıklayın:
 
-![IoT Edge cihazı ekle](media/iot-accelerators-remote-monitoring-add-edge-device/addedgedevice.png)
+![IoT Edge cihaz ekle](media/iot-accelerators-remote-monitoring-add-edge-device/addedgedevice.png)
 
-### <a name="alternative-ways-to-add-an-iot-edge-device"></a>IoT Edge aygıtı eklemenin alternatif yolları
+### <a name="alternative-ways-to-add-an-iot-edge-device"></a>IoT Edge cihaz eklemenin alternatif yolları
 
-Ayrıca, çözüm hızlandırıcınızda doğrudan IoT Hub örneğine bir IoT Edge cihazı kaydettirebilirsiniz. Bu nasıl yapIleTilebilme kılavuzlarından herhangi birini izlemeden önce çözüm hızlandırıcınızdaki IoT hub'ının adını bilmeniz gerekir:
+Çözüm hızlandırıcısında bir IoT Edge cihazını doğrudan IoT Hub örneğiyle kaydetmek de mümkündür. Bu nasıl yapılır kılavuzlarından herhangi birini izlemeden önce çözüm hızlandırıcısında IoT Hub 'ın adını bilmeniz gerekir:
 
-- [Azure portalından yeni bir Azure IoT Edge aygıtı kaydetme](../iot-edge/how-to-register-device.md#register-in-the-azure-portal)
-- [Azure CLI ile yeni bir Azure IoT Edge aygıtı kaydetme](../iot-edge/how-to-register-device.md#register-with-the-azure-cli)
-- [Visual Studio Kodu'ndan yeni bir Azure IoT Edge aygıtı kaydetme](../iot-edge/how-to-register-device.md#register-with-visual-studio-code)
+- [Azure portal yeni bir Azure IoT Edge cihazı kaydetme](../iot-edge/how-to-register-device.md#register-in-the-azure-portal)
+- [Azure CLı ile yeni bir Azure IoT Edge cihaz kaydetme](../iot-edge/how-to-register-device.md#register-with-the-azure-cli)
+- [Visual Studio Code 'tan yeni bir Azure IoT Edge cihazı kaydetme](../iot-edge/how-to-register-device.md#register-with-visual-studio-code)
 
-Bir aygıtı uzaktan izleme çözüm hızlandırıcısında doğrudan IoT hub'ına kaydettirdiğinizde, bu aygıt web Kullanıcı Arabirimi'ndeki **Aygıt Gezgini** sayfasında listelenir.
+Uzaktan Izleme çözüm hızlandırıcısında bir cihazı doğrudan IoT Hub ile kaydettiğinizde, Web Kullanıcı arabirimindeki **Device Explorer** sayfasında listelenir.
 
-## <a name="install-the-iot-edge-runtime"></a>IoT Edge çalışma süresini yükleme
+## <a name="install-the-iot-edge-runtime"></a>IoT Edge çalışma zamanını yükler
 
-Modülleri Edge cihazınıza dağıtmadan önce, IoT Edge çalışma süresini gerçek aygıta yüklemeniz gerekir. Aşağıdaki nasıl yapılacağını gösteren kılavuzlar, çalışma zamanının ortak aygıt platformlarına nasıl yüklenirolduğunu gösterir:
+Sınır cihazınıza modül dağıtabilmeniz için önce gerçek cihaza IoT Edge çalışma zamanını yüklemelisiniz. Aşağıdaki nasıl yapılır kılavuzlarında, çalışma zamanının ortak cihaz platformları üzerine nasıl yükleneceği gösterilmektedir:
 
-- [Azure IoT Edge çalışma süresini Linux'a yükleme (x64)](../iot-edge/how-to-install-iot-edge-linux.md)
-- [Azure IoT Edge çalışma süresini Linux'a yükleme (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge-linux-arm.md)
-- [Windows kapsayıcılarıyla kullanmak üzere Windows'da Azure IoT Edge çalışma süresini yükleme](../iot-edge/how-to-install-iot-edge-windows-with-windows.md)
-- [Linux kapsayıcılarıyla kullanmak üzere Windows'da Azure IoT Edge çalışma süresini yükleme](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
-- [Windows IoT Core'da IoT Edge çalışma süresini yükleme](../iot-edge/how-to-install-iot-core.md)
+- [Linux (x64) üzerinde Azure IoT Edge çalışma zamanını yükler](../iot-edge/how-to-install-iot-edge-linux.md)
+- [Linux 'ta Azure IoT Edge çalışma zamanı 'nı (ARM32v7/armhf) yükler](../iot-edge/how-to-install-iot-edge-linux-arm.md)
+- [Windows kapsayıcıları ile kullanmak için Windows üzerinde Azure IoT Edge çalışma zamanı 'nı yüklemek](../iot-edge/how-to-install-iot-edge-windows-with-windows.md)
+- [Linux kapsayıcılarıyla kullanmak için Windows 'a Azure IoT Edge çalışma zamanını yükler](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
+- [Windows IoT Core üzerinde IoT Edge çalışma zamanını yükler](../iot-edge/how-to-install-iot-core.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şimdi IoT Edge cihazınızı hazırladınız, bir sonraki adım modülleri ona dağıtmaktır. Uzaktan [İzleme çözüm hızlandırıcınıza bir IoT Edge paketi alma](iot-accelerators-remote-monitoring-import-edge-package.md)
+IoT Edge cihazınızı hazırladığınıza göre, bir sonraki adım buna modüller dağıtmaktır. Bkz. [IoT Edge paketini uzaktan izleme çözüm hızlandırıcısına alma](iot-accelerators-remote-monitoring-import-edge-package.md)

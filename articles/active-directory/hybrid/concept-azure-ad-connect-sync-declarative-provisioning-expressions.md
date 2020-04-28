@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Bildirimsel Sağlama İfadeleri | Microsoft Dokümanlar'
-description: Bildirimsel sağlama ifadelerini açıklar.
+title: 'Azure AD Connect: bildirime dayalı sağlama Ifadeleri | Microsoft Docs'
+description: Bildirim temelli sağlama ifadelerini açıklar.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,87 +17,87 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60245497"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect eşitlemi: Bildirimsel Sağlama İfadelerini Anlama
-Azure AD Connect eşitleme, ilk olarak Forefront Identity Manager 2010'da tanıtılan bildirimsel sağlama üzerine oluşturur. Derlenmiş kod yazmaya gerek kalmadan tam kimlik tümleştirme iş mantığınızı uygulamanızı sağlar.
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect eşitleme: bildirim temelli sağlama Ifadelerini anlama
+İlk olarak Forefront Identity Manager 2010 ' de tanıtılan bildirim temelli sağlama üzerinde Azure AD Connect eşitleme derlemeleri. Derlenmiş kod yazmak zorunda kalmadan, tüm kimlik Tümleştirme iş mantığınızı uygulamanıza olanak tanır.
 
-Bildirimsel sağlamanın önemli bir parçası öznitelik akışlarında kullanılan ifade dilidir. Kullanılan dil, Microsoft® Visual Basic® uygulamalar için bir alt kümesidir(VBA). Bu dil Microsoft Office'te kullanılır ve VBScript deneyimine sahip kullanıcılar da bunu tanıyacaktır. Bildirimsel Hüküm Veren İfade Dili yalnızca işlevleri kullanır ve yapılandırılmış bir dil değildir. Herhangi bir yöntem veya ifade yok. İşlevler bunun yerine program akışını ifade etmek için iç içe dir.
+Bildirim temelli sağlamanın önemli bir parçası, öznitelik akışlarında kullanılan ifade dilidir. Kullanılan dil, uygulamalar için Microsoft® Visual Basic® alt kümesidir (VBA). Bu dil Microsoft Office kullanılır ve VBScript deneyimi olan kullanıcılar da bunu tanır. Bildirim temelli sağlama Ifade dili yalnızca işlevleri kullanıyor ve yapılandırılmış bir dil değil. Yöntem veya deyim yok. İşlevler, Express program akışına iç içe geçmiş.
 
-Daha fazla bilgi için, [Office 2013 için Uygulamalar dil başvurusu için Visual Basic'e hoş geldiniz' e](https://msdn.microsoft.com/library/gg264383.aspx)bakın.
+Daha ayrıntılı bilgi için bkz. [Office 2013 için Visual Basic for Applications Dil başvurusuna hoş geldiniz](https://msdn.microsoft.com/library/gg264383.aspx).
 
-Öznitelikler güçlü bir şekilde yazılır. Bir işlev yalnızca doğru türün özniteliklerini kabul eder. Ayrıca büyük/küçük harf duyarlıdır. Hem işlev adları hem de öznitelik adları uygun kasaya sahip olmalıdır veya bir hata atılır.
+Öznitelikler kesin olarak türdedir. Bir işlev yalnızca doğru türdeki öznitelikleri kabul eder. Ayrıca büyük/küçük harfe duyarlıdır. Her iki işlev adı ve öznitelik adı uygun bir büyük harfe sahip olmalı veya bir hata oluşur.
 
-## <a name="language-definitions-and-identifiers"></a>Dil tanımları ve tanımlayıcılar
-* İşlevler parantez içinde bağımsız değişkenler tarafından izlenen bir ad var: FunctionName (bağımsız değişken 1, bağımsız değişken N).
-* Öznitelikler kare ayraçlarla tanımlanır: [öznitelikName]
-* Parametreler yüzde işaretleri ile tanımlanır: %ParameterName%
-* Dize sabitleri tırnak işaretleriyle çevrilidir: Örneğin, "Contoso" (Not: düz tırnak "" değil, akıllı tırnaklar "" kullanmanız gerekir "")
-* Sayısal değerler tırnak işaretleri olmadan ifade edilir ve ondalık olması beklenir. Hexadecimal değerler &H ile önceden belirlenmiştir. Örneğin, 98052, &HFF
-* Boolean değerleri sabitlerle ifade edilir: Doğru, Yanlış.
-* Yerleşik sabitler ve literals sadece kendi adlarıyla ifade edilir: NULL, CRLF, IgnoreThisFlow
+## <a name="language-definitions-and-identifiers"></a>Dil tanımları ve tanımlayıcıları
+* İşlevlerde bir ad, parantez içinde bağımsız değişkenler gelir: fonksiyonadı (bağımsız değişken 1, bağımsız değişken N).
+* Öznitelikler köşeli ayraç ile tanımlanır: [Öznitelikno]
+* Parametreler yüzde işaretleri ile tanımlanır:% ParameterName%
+* Dize sabitleri tırnak içine alınır: Örneğin, "contoso" (Not: düz tırnak ("") ve akıllı tırnak ("") kullanılmalıdır)
+* Sayısal değerler tırnak işareti olmadan ifade edilir ve Decimal olması beklenir. Onaltılık değerlere &H ön eki eklenir. Örneğin, 98052 &HFF
+* Boole değerleri sabitler: true, false ile ifade edilir.
+* Yerleşik sabitler ve sabit değerler yalnızca kendi adlarıyla ifade edilir: NULL, CRLF, ıgnorethisflow
 
 ### <a name="functions"></a>İşlevler
-Bildirimsel sağlama, öznitelik değerlerini dönüştürme olanağını etkinleştirmek için birçok işlev kullanır. Bu işlevler iç içe geçirilebilir, böylece bir işlevin sonucu başka bir işleve aktarılır.
+Bildirime dayalı sağlama, öznitelik değerlerini dönüştürme olasılığını sağlamak için birçok işlevi kullanır. Bu işlevler, bir işlevin sonucunun başka bir işleve geçirilmesi için iç içe geçebilir.
 
 `Function1(Function2(Function3()))`
 
-Fonksiyonların tam listesi [işlev referans](reference-connect-sync-functions-reference.md)bulunabilir.
+İşlevlerin tamamı listesi [işlev başvurusunda](reference-connect-sync-functions-reference.md)bulunabilir.
 
 ### <a name="parameters"></a>Parametreler
-Parametre, PowerShell kullanan bir Bağlayıcı veya yönetici tarafından tanımlanır. Parametreler genellikle sistemden sisteme farklı değerler içerir( örneğin kullanıcının bulunduğu etki alanının adı. Bu parametreler öznitelik akışlarında kullanılabilir.
+Bir parametre, bir bağlayıcı ya da PowerShell kullanan bir yönetici tarafından tanımlanır. Parametreler genellikle sistemden sisteme farklı değerler içerir, örneğin kullanıcının bulunduğu etki alanının adı. Bu parametreler, öznitelik akışlarında kullanılabilir.
 
-Active Directory Bağlayıcısı gelen Eşitleme Kuralları için aşağıdaki parametreleri sağladı:
+Active Directory Bağlayıcısı gelen eşitleme kuralları için aşağıdaki parametreleri sağladı:
 
 | Parametre Adı | Açıklama |
 | --- | --- |
-| Domain.Netbios |Şu anda ithal edilmekte olan alan adının Netbios formatı, örneğin FABRIKAMSALES |
-| Domain.FQDN |Şu anda içe aktarılan etki alanının FQDN biçimi, örneğin sales.fabrikam.com |
-| Domain.LDAP |Şu anda ithal edilmekte olan etki alanının LDAP biçimi, örneğin DC=sales,DC=fabrikam,DC=com |
-| Forest.Netbios |Şu anda ithal edilmekte olan orman adının Netbios formatı, örneğin FABRIKAMCORP |
-| Forest.FQDN |Şu anda içe aktarılmakta olan orman adının FQDN biçimi, örneğin fabrikam.com |
-| Orman.LDAP |Şu anda ithal edilmekte olan orman adının LDAP biçimi, örneğin DC=fabrikam,DC=com |
+| Domain. NetBIOS |Şu anda içeri aktarılmakta olan etki alanının NetBIOS biçimi, örneğin FABRIKAMSALES |
+| Domain. FQDN |Şu anda içeri aktarılmakta olan etki alanının FQDN biçimi, örneğin sales.fabrikam.com |
+| Domain. LDAP |Şu anda içeri aktarılmakta olan etki alanının LDAP biçimi; örneğin, DC = Sales, DC = Fabrikam, DC = com |
+| Forest. NetBIOS |Şu anda içeri aktarılmakta olan orman adının NetBIOS biçimi, örneğin FABRIKAMCORP |
+| Forest. FQDN |Şu anda içeri aktarılmakta olan orman adının FQDN biçimi, örneğin fabrikam.com |
+| Forest. LDAP |Şu anda içeri aktarılmakta olan orman adının LDAP biçimi; örneğin, DC = Fabrikam, DC = com |
 
-Sistem, şu anda çalışan Bağlayıcı'nın tanımlayıcısını almak için kullanılan aşağıdaki parametreyi sağlar:  
+Sistem şu anda çalışmakta olan bağlayıcının tanımlayıcısını almak için kullanılan aşağıdaki parametreyi sağlar:  
 `Connector.ID`
 
-Metaverse öznitelik etki alanını, kullanıcının bulunduğu etki alanının netbios adı ile dolduran bir örnek aşağıda verilmiştir:  
+Meta veri deposu özniteliği etki alanını, kullanıcının bulunduğu etki alanının NetBIOS adıyla dolduran bir örnek aşağıda verilmiştir:  
 `domain` <- `%Domain.Netbios%`
 
 ### <a name="operators"></a>İşleçler
 Aşağıdaki işleçler kullanılabilir:
 
-* **Karşılaştırma**: <, <=, <>, =, >, >=
-* **Matematik**: +, \*-, , -
-* **String**: & (concatenate)
-* **Mantıksal**: && (ve), || (veya)
-* **Değerlendirme sırası**: ( )
+* **Karşılaştırma**: <, <=,  <>, =, >, >=
+* **Matematik**: +,-, \*,-
+* **Dize**: & (Birleştir)
+* **Mantıksal**:  &&  (ve), | | veya
+* **Değerlendirme sırası**: ()
 
-Operatörler soldan sağa değerlendirilir ve aynı değerlendirme önceliğine sahiptir. Yani, \* (çarpan) önce değerlendirilmemiştir - (çıkarma). 2\*(5+3) 2\*5+3 ile aynı değildir. Parantez ( ) soldan sağa değerlendirme sırası uygun olmadığında değerlendirme sırasını değiştirmek için kullanılır.
+İşleçler soldan sağa değerlendirilir ve aynı değerlendirme önceliğine sahiptir. Diğer bir deyişle, \* (çarpan)-(çıkarma) öncesinde değerlendirilmez. 2\*(5 + 3), 2\*5 + 3 ile aynı değildir. Köşeli ayraçlar (), soldan sağa değerlendirme sırası uygun olmadığında değerlendirme sırasını değiştirmek için kullanılır.
 
-## <a name="multi-valued-attributes"></a>Çok değerli öznitelikler
-İşlevler hem tek değerli hem de çok değerli özniteliklerüzerinde çalışabilir. Çok değerli öznitelikler için, işlev her değer üzerinde çalışır ve her değer için aynı işlevi uygular.
+## <a name="multi-valued-attributes"></a>Çoklu değerli öznitelikler
+İşlevler hem tek değerli hem de birden çok değerli öznitelikler üzerinde çalışabilir. Çoklu değerli özniteliklerde, işlev her değer üzerinde çalışır ve her değere aynı işlevi uygular.
 
-Örnek:  
-`Trim([proxyAddresses])`proxyAddress özniteliğindeki her değerin bir Kırpma sını yapın.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"`Bir ile her @-signdeğer için, @contoso.cometki alanı değiştirin .  
-`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`SIP adresini arayın ve değerlerden kaldırın.
+Örneğin:  
+`Trim([proxyAddresses])`ProxyAddress özniteliğinde her bir değerin kırpılıp bir bölümünü yapın.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"`İle @-signher değer için etki alanını ile @contoso.comdeğiştirin.  
+`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`SIP-Address ' i bulun ve değerlerden kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Bildirimsel Hükmü Anlama'da](concept-azure-ad-connect-sync-declarative-provisioning.md)yapılandırma modeli hakkında daha fazla bilgi edinin.
-* [Varsayılan yapılandırmayı anlamada](concept-azure-ad-connect-sync-default-configuration.md)bildirimsel sağlamanın kullanıma hazır olarak nasıl kullanıldığını görün.
-* [Varsayılan yapılandırmada değişiklik yapma](how-to-connect-sync-change-the-configuration.md)konusunda bildirimsel hükmü kullanarak pratik bir değişiklik yapma şekline bakın.
+* [Bildirim temelli sağlamayı anlamak](concept-azure-ad-connect-sync-declarative-provisioning.md)için yapılandırma modeli hakkında daha fazla bilgi edinin.
+* [Varsayılan yapılandırmayı anlamak için](concept-azure-ad-connect-sync-default-configuration.md)bildirim temelli sağlama 'nın nasıl kullanıldığını görün.
+* [Varsayılan yapılandırmada değişiklik yapma konusunda](how-to-connect-sync-change-the-configuration.md)bildirim temelli sağlama kullanarak pratik bir değişiklik yapma konusuna bakın.
 
-**Genel bakış konuları**
+**Genel Bakış konuları**
 
-* [Azure AD Connect eşitlemesi: Eşitlemeyi anlama ve özelleştirme](how-to-connect-sync-whatis.md)
+* [Azure AD Connect eşitleme: eşitlemeyi anlama ve özelleştirme](how-to-connect-sync-whatis.md)
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)
 
 **Başvuru konuları**
 
-* [Azure AD Connect eşitlemi: İşlevler Başvurusu](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect Sync: Işlevler başvurusu](reference-connect-sync-functions-reference.md)
 

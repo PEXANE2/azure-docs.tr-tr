@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central için desteklenen tarayıcılar | Microsoft Dokümanlar
-description: Azure IoT Central'a modern masaüstü bilgisayarlar, tabletler ve tarayıcılar üzerinden erişilebilir. Bu makalede desteklenen tarayıcıların listesi özetlenir.
+title: Azure IoT Central için desteklenen tarayıcılar | Microsoft Docs
+description: Azure IoT Central modern masaüstleri, tabletler ve tarayıcılar arasında erişilebilir. Bu makalede desteklenen tarayıcıların listesi özetlenmektedir.
 author: lmasieri
 ms.author: lmasieri
 ms.date: 04/24/2019
@@ -9,17 +9,17 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 7d9429507e39d975c5534e33052c56d77eeb3eb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72949514"
 ---
 # <a name="supported-browsers-for-azure-iot-central"></a>Azure IoT Central için desteklenen tarayıcılar
 
 *Bu makale, işleçler, oluşturucular ve yöneticiler için geçerlidir.*
 
-Azure IoT Central'a çoğu modern masaüstü, tablet ve tarayıcıdan erişilebilir. Aşağıdaki makalede desteklenen tarayıcıların listesi ve gerekli bağlantı özetlenir.  
+Azure IoT Central en modern masaüstleri, tabletler ve tarayıcıların tamamında erişilebilir. Aşağıdaki makalede desteklenen tarayıcıların listesi ve gerekli bağlantı özetlenmektedir.  
 
 ## <a name="supported-browsers"></a>Desteklenen tarayıcılar
 İşletim sisteminizle uyumlu en güncel tarayıcıyı kullanmanızı öneririz. Aşağıdaki tarayıcılar desteklenir:

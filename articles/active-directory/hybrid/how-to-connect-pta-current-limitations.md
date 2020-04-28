@@ -1,8 +1,8 @@
 ---
-title: 'Azure AD Connect: Geçiş Kimlik Doğrulaması - Geçerli sınırlamalar | Microsoft Dokümanlar'
-description: Bu makalede, Azure Etkin Dizin (Azure AD) Geçiş Kimlik Doğrulaması'nın geçerli sınırlamaları açıklanmaktadır
+title: 'Azure AD Connect: geçişli kimlik doğrulaması-geçerli sınırlamalar | Microsoft Docs'
+description: Bu makalede Azure Active Directory (Azure AD) geçişli kimlik doğrulamanın geçerli sınırlamaları açıklanmaktadır
 services: active-directory
-keywords: Azure AD Connect Pass-through Authentication, yükleme Active Directory, Azure AD, SSO, Tek Oturum açma için gerekli bileşenler
+keywords: Azure AD Connect geçişli kimlik doğrulaması, Active Directory yüklemesi, Azure AD, SSO, çoklu oturum açma için gerekli bileşenler
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -17,49 +17,49 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97dc67d46b08bf5765c59806b45edd82f38720cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60347762"
 ---
-# <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Etkin Dizin Geçiş Kimlik Doğrulaması: Geçerli sınırlamalar
+# <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory geçişli kimlik doğrulaması: geçerli sınırlamalar
 
 >[!IMPORTANT]
->Azure Etkin Dizin (Azure AD) Geçiş Kimlik Doğrulaması ücretsiz bir özelliktir ve kullanmak için Azure AD'nin ücretli sürümlerine ihtiyacınız yoktur. Geçiş Kimlik Doğrulaması, [Microsoft Azure Almanya bulutu](https://www.microsoft.de/cloud-deutschland) veya [Microsoft Azure Devlet bulutu](https://azure.microsoft.com/features/gov/)nda değil, yalnızca dünya çapındaki Azure AD örneğinde kullanılabilir.
+>Azure Active Directory (Azure AD) geçişli kimlik doğrulaması, ücretsiz bir özelliktir ve Azure AD 'nin ücretli sürümlerinden birini kullanması gerekmez. Doğrudan kimlik doğrulaması, [Microsoft Azure Almanya bulutta](https://www.microsoft.de/cloud-deutschland) veya [Microsoft Azure Kamu bulutta](https://azure.microsoft.com/features/gov/)değil, Azure AD 'nin yalnızca dünya genelindeki örneğinde mevcuttur.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
 Aşağıdaki senaryolar desteklenir:
 
-- Web tarayıcısı tabanlı uygulamalarda kullanıcı oturum açma.
-- Exchange ActiveSync, EAS, SMTP, POP ve IMAP gibi eski protokolleri kullanarak Outlook istemcilerine kullanıcı oturum açma.
-- Eski Office istemci uygulamalarında ve [modern kimlik doğrulamasını](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)destekleyen Office uygulamalarında kullanıcı oturum açma: Office 2013 ve 2016 sürümleri.
-- PowerShell sürüm 1.0 ve diğerleri gibi eski protokol uygulamalarında kullanıcı oturum açma.
-- Azure AD, Windows 10 aygıtları için birleşiyor.
-- Çok Faktörlü Kimlik Doğrulama için uygulama parolaları.
+- Web tarayıcısı tabanlı uygulamalarda Kullanıcı oturum açma işlemleri.
+- Exchange ActiveSync, EAS, SMTP, POP ve IMAP gibi eski protokolleri kullanarak Outlook istemcilerinde Kullanıcı oturum açma işlemleri.
+- Eski Office istemci uygulamalarına ve [modern kimlik doğrulamayı](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)destekleyen Office uygulamalarına Kullanıcı oturum açma işlemleri: Office 2013 ve 2016 sürümleri.
+- PowerShell sürüm 1,0 ve diğerleri gibi eski protokol uygulamalarına Kullanıcı oturum açma işlemleri.
+- Windows 10 cihazları için Azure AD birleşimleri.
+- Multi-Factor Authentication için uygulama parolaları.
 
 ## <a name="unsupported-scenarios"></a>Desteklenmeyen senaryolar
 
-Aşağıdaki senaryolar _desteklenmez:_
+Aşağıdaki _senaryolar desteklenmez:_
 
-- [Sızdırılmış kimlik bilgilerine](../reports-monitoring/concept-risk-events.md#leaked-credentials)sahip kullanıcıların algılanması.
-- Azure AD Etki Alanı Hizmetleri'nin kiracıda etkinleştirilebilmesi için Parola Hash Eşitlemesi gerekir. Bu nedenle, Geçiş Kimlik Doğrulaması kullanan kiracılar _yalnızca_ Azure AD Etki Alanı Hizmetleri gerektiren senaryolar için çalışmaz.
-- Geçiş Kimlik [Doğrulaması, Azure AD Connect Health](whatis-hybrid-identity-health.md)ile tümleşik değildir.
+- [Sızdırılan kimlik bilgilerine](../reports-monitoring/concept-risk-events.md#leaked-credentials)sahip kullanıcıların algılanması.
+- Azure AD Domain Services kiracının etkin olması için Parola karması eşitlemesi gerekiyor. Bu nedenle doğrudan kimlik doğrulaması kullanan kiracılar _yalnızca_ Azure AD Domain Services ihtiyacı olan senaryolar için çalışmaz.
+- Geçişli kimlik doğrulaması [Azure AD Connect Health](whatis-hybrid-identity-health.md)ile tümleştirilmiştir.
 
 > [!IMPORTANT]
-> Yalnızca desteklenmeyen _senaryolar_ için geçici çözüm olarak (Azure AD Connect Health tümleştirmesi hariç), Azure AD Connect sihirbazındaki [İsteğe Bağlı özellikler](how-to-connect-install-custom.md#optional-features) sayfasında Parola Hash Senkronizasyonunu etkinleştirin.
+> _Yalnızca_ desteklenmeyen senaryolar (Azure AD Connect Health tümleştirme hariç) için geçici bir çözüm olarak, Azure AD Connect sihirbazındaki [isteğe bağlı özellikler](how-to-connect-install-custom.md#optional-features) sayfasında parola karması eşitlemesini etkinleştirin.
 > 
 > [!NOTE]
-> Parola Karma Eşitlemesini etkinleştirmek, şirket içi altyapınız kesintiye uğrarsa kimlik doğrulamayı başarısız bulma nızı sağlar. Geçiş Kimlik Doğrulama'dan Parola Hash Senkronizasyonuna geçiş otomatik değildir. Azure AD Connect'i kullanarak oturum açma yöntemini el ile değiştirmeniz gerekir. Azure AD Connect çalıştıran sunucu çökerse, Geçiş Kimlik Doğrulaması'nı kapatmak için Microsoft Desteği'nden yardım gerekir.
+> Parola karması eşitlemesini etkinleştirmek, şirket içi altyapınız kesintiye uğradıysanız kimlik doğrulama için yük devretme seçeneği sağlar. Geçiş kimlik doğrulamasından Parola karması eşitlemesine bu yük devretme işlemi otomatik değildir. Oturum açma yöntemini Azure AD Connect kullanarak el ile geçmeniz gerekir. Azure AD Connect çalıştıran sunucu devre dışı bırakılırsa doğrudan kimlik doğrulamasını kapatmak için Microsoft Desteği yardım almanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Hızlı başlangıç](how-to-connect-pta-quick-start.md): Azure AD Pass-through Authentication ile çalışmaya başlayın.
-- [AD FS'den Geçiş Kimlik Doğrulamasına geçiş](https://aka.ms/ADFSTOPTADPDownload) - AD FS'den (veya diğer federasyon teknolojilerinden) Geçiş Kimlik Doğrulaması'na geçiş için ayrıntılı bir kılavuz.
-- [Akıllı Kilitleme](../authentication/howto-password-smart-lockout.md): Kullanıcı hesaplarını korumak için kiracınızdaki Akıllı Kilitleme özelliğini nasıl yapılandırılabildiğini öğrenin.
-- [Teknik derin dalış](how-to-connect-pta-how-it-works.md): Geçiş Kimlik Doğrulama özelliğinin nasıl çalıştığını anlayın.
-- [Sık sorulan sorular](how-to-connect-pta-faq.md): Geçiş Kimlik Doğrulama özelliği hakkında sık sorulan soruların yanıtlarını bulun.
-- [Sorun Giderme](tshoot-connect-pass-through-authentication.md): Geçiş Kimlik Doğrulama özelliğiyle ilgili sık karşılaşılan sorunları nasıl çözeceğinizi öğrenin.
-- [Güvenlik derin dalış](how-to-connect-pta-security-deep-dive.md): Pass-through Kimlik Doğrulama özelliği hakkında derin teknik bilgi alın.
-- [Azure AD Sorunsuz SSO](how-to-connect-sso.md): Bu tamamlayıcı özellik hakkında daha fazla bilgi edinin.
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Yeni özellik isteklerini dosyalamak için Azure Active Directory Forum'u kullanın.
+- [Hızlı başlangıç](how-to-connect-pta-quick-start.md): Azure AD geçişli kimlik doğrulaması ile çalışmaya başlayın.
+- [AD FS 'den geçişli kimlik doğrulamaya geçiş](https://aka.ms/ADFSTOPTADPDownload) -AD FS (veya diğer Federasyon teknolojileri) üzerinden doğrudan kimlik doğrulamaya geçiş yapmak için ayrıntılı kılavuz.
+- [Akıllı kilitleme](../authentication/howto-password-smart-lockout.md): Kullanıcı hesaplarını korumak için kiracınızda akıllı kilitleme özelliğini nasıl yapılandıracağınızı öğrenin.
+- [Teknik derinlemesine](how-to-connect-pta-how-it-works.md)bakış: geçişli kimlik doğrulama özelliğinin nasıl çalıştığını anlayın.
+- [Sık sorulan sorular](how-to-connect-pta-faq.md): doğrudan kimlik doğrulama özelliği hakkında sık sorulan soruların yanıtlarını bulun.
+- [Sorun giderme](tshoot-connect-pass-through-authentication.md): doğrudan kimlik doğrulama özelliğiyle yaygın sorunları çözmeyi öğrenin.
+- [Güvenlik derinlemesine](how-to-connect-pta-security-deep-dive.md)bakış: doğrudan kimlik doğrulama özelliği hakkında ayrıntılı teknik bilgiler alın.
+- [Azure AD sorunsuz SSO](how-to-connect-sso.md): Bu tamamlayıcı özellik hakkında daha fazla bilgi edinin.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): yeni özellik isteklerini dosya olarak yüklemek Için Azure Active Directory forumunu kullanın.

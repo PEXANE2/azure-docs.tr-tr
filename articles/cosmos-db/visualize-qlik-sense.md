@@ -1,6 +1,6 @@
 ---
-title: Qlik Sense'i Azure Cosmos DB'ye bağlayın ve verilerinizi görselleştirin
-description: Bu makalede, Azure Cosmos DB'yi Qlik Sense'e bağlamak ve verilerinizi görselleştirmek için gereken adımlar açıklanmaktadır.
+title: Verilerinizi Azure Cosmos DB ve görselleştirmek için Qlik Sense bağlama
+description: Bu makalede, verilerinizi Qlik Sense ve görselleştirmeye Azure Cosmos DB bağlamak için gereken adımlar açıklanmaktadır.
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
@@ -8,76 +8,76 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 3a955060eb5f19544860c1c97abe1577084bef24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67985539"
 ---
-# <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Qlik Sense'i Azure Cosmos DB'ye bağlayın ve verilerinizi görselleştirin
+# <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Verilerinizi Azure Cosmos DB ve görselleştirmek için Qlik Sense bağlama
 
-Qlik Sense, farklı kaynaklardan gelen verileri tek bir görünümde birleştiren bir veri görselleştirme aracıdır. Qlik Sense, verilerinizdeki olası her ilişkiyi dizinler, böylece verilere anında bilgi edinebilirsiniz. Qlik Sense'i kullanarak Azure Cosmos DB verilerini görselleştirebilirsiniz. Bu makalede, Azure Cosmos DB'yi Qlik Sense'e bağlamak ve verilerinizi görselleştirmek için gereken adımlar açıklanmaktadır. 
+Qlik Sense, farklı kaynaklardaki verileri tek bir görünümde birleştiren bir veri görselleştirme aracıdır. Veriler hakkında anında Öngörüler elde edebilmeniz için verilerinize yönelik her olası ilişkiyi Qlik Sense olarak oluşturur. Qlik Sense kullanarak Azure Cosmos DB verileri görselleştirebilirsiniz. Bu makalede, verilerinizi Qlik Sense ve görselleştirmeye Azure Cosmos DB bağlamak için gereken adımlar açıklanmaktadır. 
 
 > [!NOTE]
-> Qlik Sense'in Azure Cosmos DB'sine bağlanması şu anda yalnızca MongoDB hesapları için SQL API ve Azure Cosmos DB'nin API'si için desteklenir.
+> Azure Cosmos DB Qlik Sense, SQL API ve yalnızca MongoDB hesapları için Azure Cosmos DB API 'SI için desteklenir.
 
-Qlik Sense'i Azure Cosmos DB'ye şu yolla bağlayabilirsiniz:
+İle Azure Cosmos DB Qlik Sense bağlayabilirsiniz:
 
-* Cosmos DB SQL API ODBC konektörü kullanarak.
+* ODBC bağlayıcısını kullanarak SQL API Cosmos DB.
 
-* Qlik Sense MongoDB bağlayıcısını kullanarak Azure Cosmos DB'nin MongoDB api'si (şu anda önizlemede).
+* Qlik Sense MongoDB bağlayıcısını (Şu anda önizleme aşamasında) kullanarak MongoDB için API Azure Cosmos DB.
 
-* Qlik Sense REST API konektörünü kullanarak Azure Cosmos DB'nin MongoDB ve SQL API api'si.
+* Qlik Sense 'de REST API bağlayıcısını kullanarak MongoDB ve SQL API için API Azure Cosmos DB.
 
-* Cosmos DB Mongo DB API Qlik Core için gRPC konektörü kullanarak.
-Bu makalede, ODBC bağlayıcısı kullanarak Cosmos DB SQL API'ye bağlanmanın ayrıntıları açıklanmaktadır.
+* Qlik Core için gRPC bağlayıcısını kullanarak Mongo DB API 'SI Cosmos DB.
+Bu makalede, ODBC bağlayıcısını kullanarak Cosmos DB SQL API 'sine bağlanma ayrıntıları açıklanmaktadır.
 
-Bu makalede, ODBC bağlayıcısı kullanarak Cosmos DB SQL API'ye bağlanmanın ayrıntıları açıklanmaktadır.
+Bu makalede, ODBC bağlayıcısını kullanarak Cosmos DB SQL API 'sine bağlanma ayrıntıları açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki yönergeleri izleyerek önce, aşağıdaki kaynakların hazır olduğundan emin olun:
+Bu makaledeki yönergeleri uygulamadan önce, aşağıdaki kaynakların size hazırlantığınızdan emin olun:
 
-* [Qlik Sense Desktop'ı](https://www.qlik.com/us/try-or-buy/download-qlik-sense) indirin veya [Qlik Sense pazar öğesini yükleyerek](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense)Azure'da Qlik Sense'i ayarlayın.
+* [Qlik Sense masaüstünü](https://www.qlik.com/us/try-or-buy/download-qlik-sense) Indirin veya [Qlik Sense Market öğesini yükleyerek](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense)Azure 'da Qlik Sense ayarlayın.
 
-* Video [oyunu verilerini](https://www.kaggle.com/gregorut/videogamesales)indirin, bu örnek veriler CSV formatındadır. Bu verileri bir Cosmos DB hesabında saklayacak ve Qlik Sense'de görselleştireceksiniz.
+* [Video oyun verilerini](https://www.kaggle.com/gregorut/videogamesales)indirin, bu örnek veriler CSV biçimindedir. Bu verileri bir Cosmos DB hesabında depolayacaksınız ve Qlik Sense içinde görselleştirebilirsiniz.
 
-* Hızlı başlangıç makalesinin hesap bölümünde açıklanan adımları kullanarak bir Azure Cosmos DB SQL API hesabı [oluşturun.](create-sql-api-dotnet.md#create-account)
+* Hızlı başlangıç makalesinin [Hesap oluşturma](create-sql-api-dotnet.md#create-account) bölümünde açıklanan adımları kullanarak Azure Cosmos DB BIR SQL API hesabı oluşturun.
 
-* [Bir veritabanı ve koleksiyon oluşturun](create-sql-api-java.md#add-a-container) – Koleksiyon oluşturma değerini 1000 RU/s olarak ayarla'yı kullanabilirsiniz. 
+* [Veritabanı ve koleksiyon oluşturma](create-sql-api-java.md#add-a-container) – koleksiyon verimlilik DEĞERINI 1000 ru/s olarak ayarlayabilirsiniz. 
 
-* Örnek video oyunu satış verilerini Cosmos DB hesabınıza yükleyin. Azure Cosmos DB veri geçiş aracını kullanarak verileri içe aktarabilir, [sıralı](import-data.md#SQLSeqTarget) veya toplu veri [aktarımını](import-data.md#SQLBulkTarget) yapabilirsiniz. Verilerin Cosmos DB hesabına aktarılması yaklaşık 3-5 dakika sürer.
+* Örnek video oyunu satış verilerini Cosmos DB hesabınıza yükleyin. Azure Cosmos DB veri geçiş aracını kullanarak verileri içeri aktarabilirsiniz, verileri [sıralı](import-data.md#SQLSeqTarget) veya [toplu olarak içeri aktarabilirsiniz](import-data.md#SQLBulkTarget) . Verilerin Cosmos DB hesabına aktarılması yaklaşık 3-5 dakika sürer.
 
-* ODBC sürücü makalesi [ile Cosmos DB'ye bağlanmadaki](odbc-driver.md) adımları kullanarak ODBC sürücüsünü indirin, yükleyin ve yapılandırın. Video oyunu verileri basit bir veri kümesidir ve şemayı yeniden ayarlamak zorunda değilsiniz, yalnızca varsayılan toplama eşleme şemasını kullanın.
+* ODBC sürücüsünü yükleme, yükleme ve yapılandırma [ile Cosmos DB bağlanma](odbc-driver.md) makalesindeki adımları uygulayın. Video oyunu verileri basit bir veri kümesidir ve şemayı düzenlemeniz gerekmez, varsayılan koleksiyon eşleme şemasını kullanmanız yeterlidir.
 
-## <a name="connect-qlik-sense-to-cosmos-db"></a>Qlik Sense'i Cosmos DB'ye bağlayın
+## <a name="connect-qlik-sense-to-cosmos-db"></a>Qlik Sense Cosmos DB bağlama
 
-1. Qlik Sense'i açın ve **yeni uygulama oluştur'u**seçin. Uygulamanız için bir ad sağlayın ve **Oluştur'u**seçin.
+1. Qlik Sense açın ve **Yeni uygulama oluştur**' u seçin. Uygulamanız için bir ad girin ve **Oluştur**' u seçin.
 
-   ![Yeni bir Qlik Sense uygulaması oluşturun](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
+   ![Yeni bir Qlik Sense uygulaması oluşturma](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
 
-2. Yeni uygulama başarıyla oluşturulduktan sonra, **Uygulamayı Aç'ı** seçin ve **dosyalardan ve diğer kaynaklardan veri ekle'yi**seçin. 
+2. Yeni uygulama başarıyla oluşturulduktan sonra, **uygulamayı aç** ' ı seçin ve **dosyalardan ve diğer kaynaklardan veri Ekle**' yi seçin. 
 
-3. Veri kaynaklarından, yeni bağlantı kurulum penceresini açmak için **ODBC'yi** seçin. 
+3. Veri kaynaklarından **ODBC** ' yi seçerek yeni bağlantı Kurulumu penceresini açın. 
 
-4. Kullanıcı **DSN'ye** geçin ve daha önce oluşturduğunuz ODBC bağlantısını seçin. Bağlantı için bir ad sağlayın ve **Oluştur'u**seçin. 
+4. **Kullanıcı DSN** ' ye geçin ve daha önce oluşturduğunuz ODBC bağlantısını seçin. Bağlantı için bir ad girin ve **Oluştur**' u seçin. 
 
    ![Yeni bağlantı oluşturma](./media/visualize-qlik-sense/create-new-connection.png)
 
-5. Bağlantıyı oluşturduktan sonra, veritabanını, video oyunu verilerinin bulunduğu koleksiyonu seçebilir ve ardından önizlemesini yapabilirsiniz.
+5. Bağlantıyı oluşturduktan sonra, video oyun verilerinin bulunduğu veritabanını, koleksiyonu ve ardından Önizleme seçeneğini belirleyebilirsiniz.
 
    ![Veritabanını ve koleksiyonu seçin](./media/visualize-qlik-sense/choose-database-and-collection.png) 
 
-6. Sonraki seçverileri Qlik Sense'e yüklemek için **veri ekle'yi** seçin. Qlik Sense'e veri yükledikten sonra, öngörüler oluşturabilir ve veriler üzerinde analiz ler gerçekleştirebilirsiniz. Bilgileri kullanabilir veya video oyunları satışlarını keşfederek kendi uygulamanızı oluşturabilirsiniz. Aşağıdaki resim gösterir 
+6. Sonra verileri Qlik Sense 'e yüklemek için **veri Ekle** ' yi seçin. Verileri Qlik Sense 'e yükledikten sonra öngörüler oluşturabilir ve veriler üzerinde analiz gerçekleştirebilirsiniz. Öngörüleri kullanabilir veya kendi uygulamanızı derleyebilir ve video oyunları satışları araştırın. Aşağıdaki görüntüde gösterilmektedir 
 
    ![Verileri görselleştirme](./media/visualize-qlik-sense/visualize-data.png)
 
-### <a name="limitations-when-connecting-with-odbc"></a>ODBC'ye bağlanırken sınırlamalar 
+### <a name="limitations-when-connecting-with-odbc"></a>ODBC ile bağlantı kurulurken sınırlamalar 
 
-Cosmos DB, geliştirici gereksinimleri ne olursa olsun modellenmiş sürücüleri içeren şemasız dağıtılmış bir veritabanıdır. ODBC sürücüsü, sütunları, veri türlerini ve diğer özellikleri çıkarmak için şema içeren bir veritabanı gerektirir. SQL API ANSI SQL olmadığından, normal SQL sorgusu veya ilişkisel özelliği olan DML sözdizimi Cosmos DB SQL API için geçerli değildir. Bu nedenle, ODBC sürücüsü aracılığıyla verilen SQL deyimleri, tüm yapılar için eşdeğerleri olmayan Cosmos DB'ye özgü SQL sözdizimine çevrilir. Bu çeviri sorunlarını önlemek için, ODBC bağlantısını kurarken bir şema uygulamanız gerekir. [ODBC sürücü](odbc-driver.md) makalesi ile bağlantı size şemayı yapılandırmanıza yardımcı olacak öneriler ve yöntemler sunar. Cosmos DB hesabındaki her veritabanı/koleksiyon için bu eşlemi oluşturduğunuzdan emin olun.
+Cosmos DB, geliştirici ihtiyaçlarına göre modellenen sürücülerle daha az dağıtılmış bir veritabanıdır. ODBC sürücüsü sütunları, veri türlerini ve diğer özellikleri çıkarması için şema içeren bir veritabanı gerektirir. SQL API 'si ANSI SQL olmadığından, normal SQL sorgusu veya ilişkisel özelliği olan DML sözdizimi Cosmos DB SQL API 'SI için geçerli değildir. Bu nedenle, ODBC sürücüsü aracılığıyla verilen SQL deyimleri, tüm yapılar için eşdeğerleri olmayan Cosmos DB özel SQL sözdizimine çevrilir. Bu çeviri sorunlarını engellemek için, ODBC bağlantısını ayarlarken bir şema uygulamanız gerekir. [ODBC sürücüsüne Bağlan](odbc-driver.md) makalesi, şemayı yapılandırmanıza yardımcı olacak öneriler ve yöntemler sunar. Cosmos DB hesabı içindeki her veritabanı/koleksiyon için bu eşlemeyi oluşturmayı unutmayın.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Power BI gibi farklı bir görselleştirme aracı kullanıyorsanız, aşağıdaki dokümandaki yönergeleri kullanarak bu araca bağlanabilirsiniz:
+Power BI gibi farklı bir görselleştirme aracı kullanıyorsanız, aşağıdaki belgedeki yönergeleri kullanarak buna bağlanabilirsiniz:
 
-* [Power BI konektörünü kullanarak Cosmos DB verilerini görselleştirin](powerbi-visualize.md)
+* [Power BI bağlayıcısını kullanarak Cosmos DB verileri görselleştirme](powerbi-visualize.md)

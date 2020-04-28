@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Kutusu Ağ Geçidi & Azure Veri Kutusu Kenarı 1906 sürüm notları| Microsoft Dokümanlar
-description: 1906 sürümünde çalışan Azure Veri Kutusu Ağ Geçidi ve Azure Veri Kutusu Kenarı için kritik açık sorunları ve çözümleri açıklar.
+title: Azure Data Box Gateway & Azure Data Box Edge 1906 sürüm notları | Microsoft Docs
+description: Azure Data Box Gateway için kritik açık sorunlar ve çözümleri ve 1906 sürümü çalıştıran Azure Data Box Edge açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,34 +9,34 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 69c905176a5beb1c7d442cd5f1a69161cd520c5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71099492"
 ---
-# <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Azure Veri Kutusu Kenarı ve Azure Veri Kutusu Ağ Geçidi 1906 sürüm notları
+# <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Azure Data Box Edge ve Azure Data Box Gateway 1906 sürüm notları
 
-Aşağıdaki sürüm notları, Azure Veri Kutusu Kenarı ve Azure Veri Kutusu Ağ Geçidi için 1906 sürümü için kritik açık sorunları ve çözülmüş sorunları tanımlar.
+Aşağıdaki sürüm notları, Azure Data Box Edge ve Azure Data Box Gateway için 1906 sürümüne yönelik kritik açık sorunları ve çözülmüş sorunları belirler.
 
-Sürüm notları sürekli olarak güncelleştirilir ve geçici çözüm gerektiren kritik sorunlar keşfedildikçe eklenir. Veri Kutusu Kenarı/Veri Kutusu Ağ Geçidi'ni dağıtmadan önce, sürüm notlarında yer alan bilgileri dikkatle inceleyin.
+Sürüm notları sürekli olarak güncelleştirilir ve geçici bir çözüm gerektiren kritik sorunlar keşfedildiğinde eklenirler. Data Box Edge/Data Box Gateway dağıtmadan önce, sürüm notlarında bulunan bilgileri dikkatle gözden geçirin.
 
-Bu sürüm yazılım sürümlerine karşılık gelir:
+Bu sürüm, yazılım sürümlerine karşılık gelir:
 
-- **Veri Kutusu Ağ Geçidi 1906 (1.6.978.743)**
-- **Veri Kutusu Kenar 1906 (1.6.978.743)**
+- **Data Box Gateway 1906 (1.6.978.743)**
+- **Data Box Edge 1906 (1.6.978.743)**
 
 > [!NOTE]
-> Güncelleştirme 1906 yalnızca yazılımın genel kullanılabilirliği (GA) veya 1905 sürümünü çalıştıran Veri Kutusu Kenarı aygıtlarına uygulanabilir.
+> Güncelleştirme 1906 yalnızca, yazılımın genel kullanılabilirlik (GA) veya 1905 sürümünü çalıştıran Data Box Edge cihazlara uygulanabilir.
 
 ## <a name="whats-new"></a>Yenilikler
 
-- **Kurtarma anahtarı yönetimi iş akışında hata düzeltmesi** - Önceki sürümde, kurtarma anahtarının uygulanmadığı bir hata vardı. Bu hata bu sürümde düzeltilir. Kurtarma anahtarı, aygıtın önyükleme yapmaması durumunda aygıttaki verileri kurtarmanızı sağladığından, bu güncelleştirmeyi uygulamanızı şiddetle öneririz. Daha fazla bilgi için, [Veri Kutusu Kenarı veya Veri Kutusu Ağ Geçidi'ni dağıtırken kurtarma anahtarını](data-box-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device)nasıl kaydedebilirsiniz.
-- **Alan Programlanabilir Kapı Dizisi (FPGA) günlük iyileştirmeleri** - 1905 sürümü, günlük ve Uyarı geliştirmeleri FPGA ile ilgili yapıldı. FPGA ile Edge bilgi işlem özelliğini kullanıyorsanız, bu Işlem Veri Kutusu Kenarı için gerekli bir güncelleştirme olmaya devam etmektedir. Daha fazla bilgi için, [Veri Kutusu Kenarı'ndaki Edge bilgi işlemle verileri nasıl dönüştürdüğünüze](data-box-edge-deploy-configure-compute-advanced.md)bakın.
+- **Kurtarma anahtarı yönetimi iş akışında hata onarımı** -önceki sürümde, kurtarma anahtarının uygulanmadığı bir hata oluştu. Bu hata bu sürümde düzeltilmiştir. Kurtarma anahtarı, cihazın önyüklenememe durumunda Cihazdaki verileri kurtarmanızı sağlayan bu güncelleştirmeyi uygulamanızı kesinlikle öneririz. Daha fazla bilgi için bkz. [Data Box Edge veya Data Box Gateway dağıtımı sırasında kurtarma anahtarını kaydetme](data-box-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device).
+- **Alan programlanabilir kapılı dizi (FPGA) günlüğü geliştirmeleri** -1905 sürümünden başlayarak, FPGA ile ilgili günlüğe kaydetme ve uyarı geliştirmeleri yapılmıştır. Bu, Edge işlem özelliğini FPGA ile kullanıyorsanız Data Box Edge için gerekli bir güncelleştirme olmaya devam eder. Daha fazla bilgi için bkz. [Data Box Edge Edge COMPUTE ile verileri dönüştürme](data-box-edge-deploy-configure-compute-advanced.md).
 
-## <a name="known-issues-in-ga-release"></a>GA sürümünde bilinen sorunlar
+## <a name="known-issues-in-ga-release"></a>GA sürümündeki bilinen sorunlar
 
-Bu sürüm için yeni bir sorun yayınlanmaz. Tüm sürüm sorunları önceki sürümlerden taşınmıştır kaydetti. Bilinen sorunların listesini görmek [için, GA sürümünde bilinen sorunlara](data-box-gateway-release-notes.md#known-issues-in-ga-release)gidin.
+Bu yayın için Not belirtilen yeni bir sorun yok. Belirtilen tüm sürüm sorunları önceki sürümlerden devredilir. Bilinen sorunların bir listesini görmek için, [ga sürümündeki bilinen sorunlara](data-box-gateway-release-notes.md#known-issues-in-ga-release)gidin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,6 +1,6 @@
 ---
-title: Azure Olay Izgarasından http bitiş noktasına olayları alma
-description: BIR HTTP bitiş noktasını nasıl doğrulayasınız, ardından Azure Olay Idamı'ndan Etkinlikleri nasıl alacağıve deserialize edin
+title: Azure Event Grid bir HTTP uç noktasına olay alma
+description: Bir HTTP uç noktasının nasıl doğrulanacağını, sonra Azure Event Grid olayların nasıl alınacağını ve seri durumdan kaldırılacağını açıklar
 services: event-grid
 author: banisadr
 manager: darosa
@@ -9,30 +9,30 @@ ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
 ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60803767"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP uç noktasına olayları alma
 
-Bu makalede, olay aboneliğinden olayları almak ve sonra olayları almak ve deserialize etmek için [bir HTTP bitiş noktasının](security-authentication.md#webhook-event-delivery) nasıl doğrulayacakları açıklanmaktadır. Bu makalede, gösterim amacıyla bir Azure İşlevi kullanılır, ancak uygulamanın nerede barındırıldığına bakılmaksızın aynı kavramlar geçerlidir.
+Bu makalede bir olay aboneliğinden olayları almak ve sonra olayları almak ve seri durumdan çıkarmak için [BIR HTTP uç noktasının nasıl doğrulanacağı](security-authentication.md#webhook-event-delivery) açıklanır. Bu makalede tanıtım amaçlı olarak bir Azure Işlevi kullanılmaktadır, ancak aynı kavramlar uygulamanın nerede barındırıldığından bağımsız olarak geçerlidir.
 
 > [!NOTE]
-> Olay Izgaralı bir Azure İşi'ni tetiklerken [bir Olay Izgara Tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) kullanmanız **önerilir.** Burada genel bir WebHook tetikleyici kullanımı gösterici.
+> Event Grid ile bir Azure Işlevi tetiklendiğinde [Event Grid tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) kullanmanız **önemle** önerilir. Burada genel Web kancası tetikleyicisi kullanımı gösterim amaçlıdır ' dir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-BIR HTTP tetiklenen işlevi olan bir işlev uygulaması gerekir.
+HTTP ile tetiklenen bir işlev içeren bir işlev uygulamasına ihtiyacınız vardır.
 
-## <a name="add-dependencies"></a>Bağımlılıkekleme
+## <a name="add-dependencies"></a>Bağımlılık Ekle
 
-.NET'te geliştiriyorsanız, `Microsoft.Azure.EventGrid` [Nuget paketi](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)için işlevinize [bir bağımlılık ekleyin.](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) Bu makaledeki örnekler sürüm 1.4.0 veya daha sonra gerektirir.
+.NET sürümünde geliştirme yapıyorsanız `Microsoft.Azure.EventGrid` [NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)için işlevinizin [bir bağımlılığını ekleyin](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) . Bu makaledeki örneklerde sürüm 1.4.0 veya üzeri bir sürüm gerekir.
 
-Diğer diller için [SDK'lar SDK'lar](./sdk-overview.md#data-plane-sdks) yayımlama başvurusu aracılığıyla kullanılabilir. Bu paketler gibi `EventGridEvent`yerel olay türleri `StorageBlobCreatedEventData`için `EventHubCaptureFileCreatedEventData`modeller var , , ve .
+Diğer dillere yönelik SDK 'lar, [SDK 'Ları Yayımla](./sdk-overview.md#data-plane-sdks) başvurusu aracılığıyla kullanılabilir. Bu paketler `EventGridEvent`, `StorageBlobCreatedEventData`, ve `EventHubCaptureFileCreatedEventData`gibi yerel olay türleri için modeller vardır.
 
-Azure İşlevinizdeki "Dosyaları Görüntüle" bağlantısına tıklayın (Azure işlevleri portalındaki en çok bölme) ve project.json adlı bir dosya oluşturun. Aşağıdaki içeriği dosyaya `project.json` ekleyin ve kaydedin:
+Azure işlevinizdeki "dosyaları görüntüle" bağlantısına tıklayın (Azure işlevleri portalındaki en sağdaki bölme) ve Project. JSON adlı bir dosya oluşturun. Aşağıdaki içeriği `project.json` dosyaya ekleyin ve kaydedin:
 
  ```json
 {
@@ -48,13 +48,13 @@ Azure İşlevinizdeki "Dosyaları Görüntüle" bağlantısına tıklayın (Azur
 
 ![NuGet paketi eklendi](./media/receive-events/add-dependencies.png)
 
-## <a name="endpoint-validation"></a>Bitiş noktası doğrulaması
+## <a name="endpoint-validation"></a>Uç nokta doğrulaması
 
-Yapmak istediğiniz ilk şey olayları `Microsoft.EventGrid.SubscriptionValidationEvent` ele almaktır. Bir kişi bir etkinliğe her abone olduğunda, Olay Izgarası veri yükünde bir `validationCode` doğrulama olayıyla bitiş noktasına gönderir. Bitiş noktası, [bitiş noktasının geçerli olduğunu ve size ait olduğunu kanıtlamak](security-authentication.md#webhook-event-delivery)için yanıt gövdesinde bunu yankılamak için gereklidir. WebHook tetiklenen İşlev yerine [Olay Izgara Tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) kullanıyorsanız, uç nokta doğrulaması sizin için işlenir. Bir üçüncü taraf API hizmeti [(Zapier](https://zapier.com) veya [IFTTT](https://ifttt.com/)gibi) kullanıyorsanız, doğrulama kodunu programlı bir şekilde yansıtamayabilirsiniz. Bu hizmetler için, abonelik doğrulama olayında gönderilen bir doğrulama URL'sini kullanarak aboneliği el ile doğrulayabilirsiniz. Tesisteki url'yi kopyalayın `validationUrl` ve bir REST istemcisi veya web tarayıcınız aracılığıyla bir GET isteği gönderin.
+Yapmak istediğiniz ilk şey olayları işler `Microsoft.EventGrid.SubscriptionValidationEvent` . Her biri bir olaya abone olduğunda, Event Grid veri yükünde bir olan bir `validationCode` doğrulama olayını uç noktaya gönderir. Uç noktanın [geçerli olduğunu ve size ait olduğunu kanıtlamak](security-authentication.md#webhook-event-delivery)için bu uç noktanın yanıt gövdesinde geri yankılanması gerekir. Web kancası tarafından tetiklenen bir Işlev yerine [Event Grid tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) kullanıyorsanız, uç nokta doğrulaması sizin için işlenir. Üçüncü taraf bir API hizmeti kullanıyorsanız ( [Zapier](https://zapier.com) veya [ifttt](https://ifttt.com/)gibi), doğrulama kodunu programlama yoluyla yankılanmayabilir. Bu hizmetler için abonelik doğrulama olayında gönderilen doğrulama URL 'sini kullanarak aboneliği el ile doğrulayabilirsiniz. Bu URL 'YI `validationUrl` özellikte kopyalayın ve bir rest istemcisi veya Web tarayıcınız aracılığıyla bir get isteği gönderin.
 
-C#'da `DeserializeEventGridEvents()` işlev Olay Izgara olaylarını deserialize eder. Olay verilerini StorageBlobCreatedEventData gibi uygun türe dönüştürür. Desteklenen `Microsoft.Azure.EventGrid.EventTypes` olay türlerini ve adlarını almak için sınıfı kullanın.
+C# ' de, `DeserializeEventGridEvents()` işlev Event Grid olaylarını serileştirir. Olay verilerini StorageBlobCreatedEventData gibi uygun tür olarak serileştirir. Desteklenen olay `Microsoft.Azure.EventGrid.EventTypes` türlerini ve adlarını almak için sınıfını kullanın.
 
-Doğrulama kodunu programlı bir şekilde yankılamak için aşağıdaki kodu kullanın. İlgili örnekleri Event [Grid Consumer örneğinde](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridConsumer)bulabilirsiniz.
+Doğrulama kodunu programlı bir şekilde yankılama için aşağıdaki kodu kullanın. [Event Grid tüketici örneğinde](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridConsumer)ilgili örnekleri bulabilirsiniz.
 
 ```csharp
 using System.Net;
@@ -117,7 +117,7 @@ module.exports = function (context, req) {
 
 ### <a name="test-validation-response"></a>Test doğrulama yanıtı
 
-Çözümlü olay, işlev için test alanına yapıştırarak doğrulama yanıtı işlevini test edin:
+İşlevin test alanına örnek olayı yapıştırarak doğrulama yanıtı işlevini test edin:
 
 ```json
 [{
@@ -134,13 +134,13 @@ module.exports = function (context, req) {
 }]
 ```
 
-Çalıştır'ı tıklattığınızda, Çıktı 200 `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` Tamam ve gövdede olmalıdır:
+Çalıştır ' a tıkladığınızda, çıktının 200 OK ve `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` gövdesinde olması gerekir:
 
 ![doğrulama yanıtı](./media/receive-events/validation-response.png)
 
-## <a name="handle-blob-storage-events"></a>Blob depolama olaylarını işleme
+## <a name="handle-blob-storage-events"></a>Blob Depolama olaylarını işle
 
-Şimdi, işlevi işlemek `Microsoft.Storage.BlobCreated`için genişletelim:
+Şimdi, işlevi işleyecek `Microsoft.Storage.BlobCreated`şekilde genişletelim:
 
 ```cs
 using System.Net;
@@ -213,9 +213,9 @@ module.exports = function (context, req) {
 
 ```
 
-### <a name="test-blob-created-event-handling"></a>Test Blob Oluşturulan olay işleme
+### <a name="test-blob-created-event-handling"></a>Test blobu oluşturulan olay işleme
 
-Test alanına bir [Blob depolama olayı](./event-schema-blob-storage.md#example-event) koyup çalıştırarak işlevin yeni işlevselliğini test edin:
+Test alanına bir [BLOB depolama olayı](./event-schema-blob-storage.md#example-event) yerleştirerek ve çalıştıran işlevin yeni işlevlerini test edin:
 
 ```json
 [{
@@ -243,21 +243,21 @@ Test alanına bir [Blob depolama olayı](./event-schema-blob-storage.md#example-
 }]
 ```
 
-İşlev günlüğündeki blob URL çıktısını görmeniz gerekir:
+Blob URL çıkışını işlev günlüğünde görmeniz gerekir:
 
-![Çıkış günlüğü](./media/receive-events/blob-event-response.png)
+![Çıktı günlüğü](./media/receive-events/blob-event-response.png)
 
-Ayrıca bir Blob depolama hesabı veya Genel Amaçlı V2 (GPv2) Depolama hesabı [oluşturarak, ekleme ve olay aboneliği](../storage/blobs/storage-blob-event-quickstart.md)ve işlev URL'sinin bitiş noktasını ayarlayarak test edebilirsiniz:
+Ayrıca, bir BLOB depolama hesabı veya Genel Amaçlı v2 (GPv2) depolama hesabı oluşturarak, [olay aboneliği ekleyerek ve](../storage/blobs/storage-blob-event-quickstart.md)bitiş noktasını işlev URL 'sine ayarlayarak da test edebilirsiniz:
 
 ![İşlev URL'si](./media/receive-events/function-url.png)
 
-## <a name="handle-custom-events"></a>Özel olayları işleme
+## <a name="handle-custom-events"></a>Özel olayları işle
 
-Son olarak, özel olayları da işleyebilmek için işlevi bir kez daha genişletin. 
+Son olarak, aynı zamanda özel olayları işleyebilmesi için işlevi bir kez daha genişletmenize izin verir. 
 
-C#'da, SDK olay veri türü türüne bir olay türü adı eşleme destekler. Özel `AddOrUpdateCustomEventMapping()` olayı eşlemek için işlevi kullanın.
+C# ' de SDK, olay türü adını olay veri türüne eşlemeyi destekler. Özel olayı `AddOrUpdateCustomEventMapping()` eşlemek için işlevini kullanın.
 
-Etkinliğiniz `Contoso.Items.ItemReceived`için bir çek ekleyin. Son kodunuz şu şekilde görünmelidir:
+Olaylarınız `Contoso.Items.ItemReceived`için bir denetim ekleyin. Son kodunuzun şöyle görünmesi gerekir:
 
 ```cs
 using System.Net;
@@ -346,9 +346,9 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="test-custom-event-handling"></a>Özel olay işlemeyi test etme
+### <a name="test-custom-event-handling"></a>Test özel olay işleme
 
-Son olarak, işlevinizin artık özel olay türünü işleyebileni test edin:
+Son olarak, işlevinizin artık özel olay türünü işleyebileceğini test edin:
 
 ```json
 [{
@@ -364,10 +364,10 @@ Son olarak, işlevinizin artık özel olay türünü işleyebileni test edin:
 }]
 ```
 
-Ayrıca, [Portal'dan CURL ile özel bir etkinlik göndererek](./custom-event-quickstart-portal.md) veya [Postacı](https://www.getpostman.com/)gibi bir bitiş noktasına gönderebilen herhangi bir hizmeti veya uygulamayı kullanarak [özel bir konuya göndererek](./post-to-custom-topic.md) bu işlevselliği canlı olarak test edebilirsiniz. İşlev URL'si olarak bitiş noktası ayarlanmış özel bir konu ve etkinlik aboneliği oluşturun.
+Ayrıca [, portaldan kıvrımlı ile özel bir olay göndererek](./custom-event-quickstart-portal.md) veya [Postman](https://www.getpostman.com/)gıbı bir uç noktaya nakledebileceğiniz herhangi bir hizmeti ya da uygulamayı kullanarak [özel bir konuya](./post-to-custom-topic.md) gönderim yaparak bu işlevselliği canlı olarak test edebilirsiniz. Işlev URL 'SI olarak ayarlanan uç nokta ile bir özel konu ve olay aboneliği oluşturun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure [Olay Izgara Yönetimini keşfedin ve SDK'ları Yayımlayın](./sdk-overview.md)
-* Özel bir konuya nasıl [yayınlayılamayı](./post-to-custom-topic.md) öğrenin
-* Blob depolama alanına [yüklenen görüntüleri yeniden boyutlandırma](resize-images-on-storage-blob-upload-event.md) gibi ayrıntılı Olay Izgara ve Fonksiyonlar öğreticilerinden birini deneyin
+* [Azure Event Grid yönetimini keşfet ve SDK 'Ları Yayımla](./sdk-overview.md)
+* [Özel bir konuya gönderi](./post-to-custom-topic.md) yapmayı öğrenin
+* Derinlemesine Event Grid ve Işlev öğreticilerinin [BLOB depolamaya yüklenen görüntüleri yeniden boyutlandırma](resize-images-on-storage-blob-upload-event.md) gibi öğreticilerden birini deneyin

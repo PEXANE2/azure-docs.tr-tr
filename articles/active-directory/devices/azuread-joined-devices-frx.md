@@ -1,6 +1,6 @@
 ---
 title: İlk çalıştırma sırasında Azure AD ile yeni bir Windows 10 cihazının katılımını sağlama | Microsoft Docs
-description: Kullanıcıların kutu dışı deneyim sırasında Azure AD Join'i nasıl ayarlayabilecekleri.
+description: Kullanıma hazır deneyim sırasında kullanıcıların Azure AD JOIN 'i nasıl ayarlayabilirler.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 384157828e9c816b150e40bf3f09b74578c4a98e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67482088"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Öğretici: İlk çalıştırma sırasında Azure AD ile yeni bir Windows 10 cihazını katma
@@ -39,7 +39,7 @@ Bu öğreticide ilk çalıştırma deneyimi sırasında bir cihazı nasıl Azure
 
 Windows 10 cihazını katmak için, cihaz kayıt hizmetinin cihazları kaydedebileceğiniz şekilde yapılandırılması gerekir. Azure AD kiracınızda cihazları katma iznini almanıza ek olarak, kayıtlı cihazların sayısının yapılandırılan maksimum değerden daha az olması gerekir. Daha fazla bilgi için, bkz. [cihaz ayarlarını yapılandır](device-management-azure-portal.md#configure-device-settings).
 
-Ayrıca kiracınız federasyonsa Kimlik sağlayıcınızın WS-Fed ve WS-Trust kullanıcı adı/parola uç noktasını desteklemesi GEREKİR. Bu, sürüm 1.3 veya 2005 olabilir. Bu protokol desteği, hem aygıtı Azure AD'ye katılmak hem de aygıtta parolayla oturum açabilmek için gereklidir.
+Ayrıca kiracınız federasyonsa Kimlik sağlayıcınızın WS-Fed ve WS-Trust kullanıcı adı/parola uç noktasını desteklemesi GEREKİR. Bu, sürüm 1.3 veya 2005 olabilir. Bu protokol desteği, hem cihazın Azure AD 'ye katılması hem de cihazda bir parolayla oturum açması için gereklidir.
 
 ## <a name="joining-a-device"></a>Bir cihazı katma
 
@@ -59,7 +59,7 @@ Ayrıca kiracınız federasyonsa Kimlik sağlayıcınızın WS-Fed ve WS-Trust k
 
     ![Oturum açma ekranı](./media/azuread-joined-devices-frx/03.png)
 
-1. Aygıtınız Azure AD'de eşleşen bir kiracı bulur. Federasyon etki alanındaysanız şirket içi Güvenli Belirteç Hizmeti (STS) sunucunuza, örneğin Active Directory Federasyon Hizmetleri (AD FS) sunucusuna yönlendirilirsiniz.
+1. Cihazınız Azure AD 'de eşleşen bir kiracı bulur. Federasyon etki alanındaysanız şirket içi Güvenli Belirteç Hizmeti (STS) sunucunuza, örneğin Active Directory Federasyon Hizmetleri (AD FS) sunucusuna yönlendirilirsiniz.
 1. Federasyon olmayan bir etki alanındaki bir kullanıcıysanız kimlik bilgilerinizi doğrudan Azure AD'de barındırılan sayfaya girin. 
 1. Çok faktörlü kimlik doğrulaması sınaması istenir. 
 1. Azure AD mobil cihaz yönetimine kayıt gerekip gerekmediğini belirler.

@@ -1,6 +1,6 @@
 ---
-title: Bağlı Fabrika çözümlerini özelleştirin - Azure | Microsoft Dokümanlar
-description: Bağlı Fabrika çözüm hızlandırıcısının davranışını nasıl özelleştirin.
+title: Bağlı fabrika çözümünü özelleştirme-Azure | Microsoft Docs
+description: Bağlı fabrika çözümü hızlandırıcısının davranışının nasıl özelleştirileceğine ilişkin bir açıklama.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,76 +10,76 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67080481"
 ---
-# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Bağlı Fabrika çözümünüzün OPC UA sunucularınızdaki verileri nasıl görüntülenebildiğini özelleştirme
+# <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Bağlı fabrika çözümünün OPC UA sunucularınızdan verileri nasıl görüntülediğini özelleştirin
 
-Bağlı Fabrika çözümü, çözüme bağlı OPC UA sunucularından gelen verileri toplar ve görüntüler. Çözümünüzde OPC UA sunucularına göz atabilir ve komutgönderebilirsiniz. OPC UA hakkında daha fazla bilgi için bkz. [Bağlı Fabrika SSS](iot-accelerators-faq-cf.md).
+Bağlı fabrika çözümü, çözüme bağlı olan OPC UA sunucularından verileri toplar ve görüntüler. Çözümünüzdeki OPC UA sunucularına gözatabilir ve bu sunuculara komut gönderebilirsiniz. OPC UA hakkında daha fazla bilgi için bkz. [Bağlı Fabrika SSS](iot-accelerators-faq-cf.md).
 
-Çözümdeki toplu verilere örnek olarak, fabrika, hat ve istasyon düzeylerindeki panoda görüntüleyebileceğiniz Genel Ekipman Verimliliği (OEE) ve Anahtar Performans Göstergeleri (KP'ler) verilebilir. Aşağıdaki ekran görüntüsü, **Münih** fabrikasında **üretim hattı 1,** **Montaj** istasyonu için OEE ve KPI değerlerini gösterir:
+Çözümdeki toplanan verilerin örnekleri, panoda, fabrika, hat ve istasyon düzeylerinde görüntüleyebileceğiniz genel ekipman verimliliği (OEE) ve ana performans göstergelerini (KPI 'Lar) içerir. Aşağıdaki ekran görüntüsünde, **Münih** Factory 'de **üretim satırı 1**' deki **derleme** İstasyonu için OEE ve KPI değerleri gösterilmektedir:
 
 ![Çözümdeki OEE ve KPI değerleri örneği][img-oee-kpi]
 
-Çözüm, *İstasyon*adı verilen OPC UA sunucularından belirli veri öğelerinden ayrıntılı bilgileri görüntülemenizi sağlar. Aşağıdaki ekran görüntüsü, belirli bir istasyondan üretilen öğe sayısının çizimlerini gösterir:
+Çözüm, *istasyon*olarak adlandırılan OPC UA sunucularındaki belirli veri öğelerinden ayrıntılı bilgileri görüntülemenize olanak sağlar. Aşağıdaki ekran görüntüsünde, belirli bir istasyondan üretilmiş öğe sayısının çizimleri gösterilmektedir:
 
-![Üretilen ürün sayısının çizimleri][img-manufactured-items]
+![Üretilmiş öğe sayısı çizimleri][img-manufactured-items]
 
-Grafiklerden birini tıklattığınızda, Zaman Serisi Öngörüleri 'ni (TSI) kullanarak verileri daha fazla keşfedebilirsiniz:
+Grafiklerinden birine tıklarsanız, Time Series Insights (TSI) kullanarak verileri daha fazla inceleyebilirsiniz:
 
-![Time Series Insights'ı kullanarak verileri keşfedin][img-tsi]
+![Time Series Insights kullanarak verileri araştırma][img-tsi]
 
-Bu makalede açıklanır:
+Bu makalede şunları açıklanmaktadır:
 
-- Verilerin çözümdeki çeşitli görünümler için nasıl kullanılabilir hale getirilir.
-- Çözümün verileri görüntüleme şeklini nasıl özelleştirebileceğiniz.
+- Veriler, çözümdeki çeşitli görünümlerde kullanılabilir hale getirilir.
+- Çözümün verileri görüntüleme şeklini nasıl özelleştirebileceğinizi öğrenin.
 
 ## <a name="data-sources"></a>Veri kaynakları
 
-Bağlı Fabrika çözümü, çözüme bağlı OPC UA sunucularından gelen verileri görüntüler. Varsayılan yükleme, fabrika simülasyonu çalıştıran birkaç OPC UA sunucusu içerir. Çözümünüze [ağ geçidi][lnk-connect-cf] üzerinden bağlanan kendi OPC UA sunucularınızı ekleyebilirsiniz.
+Bağlı fabrika çözümü, çözüme bağlı olan OPC UA sunucularından verileri görüntüler. Varsayılan yükleme, fabrika simülasyonu çalıştıran birkaç OPC UA sunucusu içerir. Çözümünüze [bir ağ geçidi üzerinden bağlanan] [lnk-Connect-CF] olan kendi OPC UA sunucularınızı ekleyebilirsiniz.
 
-Bağlı bir OPC UA sunucusunun panodaki çözümünüze gönderebileceği veri öğelerine göz atabilirsiniz:
+Bağlı bir OPC UA sunucusunun, panoda çözümünüze gönderemediği veri öğelerine gözatabiliriz:
 
-1. **OPC UA sunucu** görünümüne gitmek için **Tarayıcı'yı** seçin:
+1. **BIR OPC UA sunucusu seçin** görünümüne gitmek için **tarayıcı** ' yı seçin:
 
-    ![OPC UA sunucu görünümü seç'e gidin][img-select-server]
+    ![OPC UA sunucu görünümü seçin sayfasına gidin][img-select-server]
 
-1. Bir sunucu seçin ve **Bağlan'ı**tıklatın. Güvenlik uyarısı göründüğünde **Devam et'i** tıklatın.
+1. Bir sunucu seçin ve **Bağlan**' a tıklayın. Güvenlik Uyarısı göründüğünde **devam** ' a tıklayın.
 
     > [!NOTE]
-    > Bu uyarı, her sunucu için yalnızca bir kez görünür ve çözüm panosu ile sunucu arasında bir güven ilişkisi kurar.
+    > Bu uyarı her bir sunucu için yalnızca bir kez görünür ve çözüm panosu ile sunucu arasında bir güven ilişkisi kurar.
 
-1. Artık sunucunun çözüme gönderebileceği veri öğelerine göz atabilirsiniz. Çözüme gönderilen öğelerin onay işareti vardır:
+1. Artık sunucunun çözüme gönderemediği veri öğelerine gözatabiliriz. Çözüme gönderilen öğeler bir onay işaretine sahiptir:
 
-    ![Yayımlanmış öğeler][img-published]
+    ![Yayımlanan öğeler][img-published]
 
-1. Çözümde *Yöneticiyseniz,* Bağlı Fabrika çözümünde kullanılabilir hale getirmek için bir veri öğesi yayımlamayı seçebilirsiniz. Yönetici olarak, OPC UA sunucusundaki veri öğelerinin ve arama yöntemlerinin değerini de değiştirebilirsiniz.
+1. Çözümde *yöneticiyseniz* , bağlı fabrika çözümünde kullanılabilir hale getirmek için bir veri öğesi yayımlamayı seçebilirsiniz. Yönetici olarak, veri öğelerinin değerini ve OPC UA sunucusundaki çağrı yöntemlerini de değiştirebilirsiniz.
 
-## <a name="map-the-data"></a>Verileri haritala
+## <a name="map-the-data"></a>Verileri eşleme
 
-Bağlı Fabrika çözümü, yayınlanan veri öğelerini OPC UA sunucusundan çözümdeki çeşitli görünümlere eşler ve toplar. Bağlı Fabrika çözümü, çözümü sağlarken Azure hesabınıza dağıtılır. Visual Studio Connected Factory çözümündeki bir JSON dosyası bu haritalama bilgilerini depolar. Bağlı Fabrika Visual Studio çözümünde bu JSON yapılandırma dosyasını görüntüleyebilir ve değiştirebilirsiniz. Değişiklik yaptıktan sonra çözümü yeniden dağıtabilirsiniz.
+Bağlı fabrika çözümü, yayımlanan veri öğelerini OPC UA sunucusundan çözümdeki çeşitli görünümlere eşleştirir ve toplar. Bağlı fabrika çözümü, çözümü sağladığınızda Azure hesabınıza dağıtılır. Visual Studio bağlı fabrika çözümünde bir JSON dosyası bu eşleme bilgilerini depolar. Bu JSON yapılandırma dosyasını bağlı fabrika Visual Studio çözümünde görüntüleyebilir ve değiştirebilirsiniz. Bir değişiklik yaptıktan sonra çözümü yeniden dağıtabilirsiniz.
 
 Yapılandırma dosyasını şu şekilde kullanabilirsiniz:
 
-- Mevcut simüle edilmiş fabrikaları, üretim hatlarını ve istasyonları edin.
-- Çözüme bağlandığınız gerçek OPC UA sunucularından gelen verileri haritalayın.
+- Mevcut sanal fabrikaları, üretim satırlarını ve istasyonları düzenleyin.
+- Çözüme bağlandığınız gerçek OPC UA sunucularından verileri eşleyin.
 
-Belirli gereksinimlerinizi karşılamak için verileri eşleme ve toplama hakkında daha fazla bilgi için [Bağlı Fabrika çözüm hızlandırıcısını nasıl yapılandırılabilirsiniz. ](iot-accelerators-connected-factory-configure.md)
+Belirli gereksinimlerinizi karşılayacak verileri eşleme ve toplama hakkında daha fazla bilgi için bkz. [bağlı fabrika çözümü hızlandırıcıyı yapılandırma ](iot-accelerators-connected-factory-configure.md).
 
 ## <a name="deploy-the-changes"></a>Değişiklikleri dağıtma
 
-**ContosoTopologyDescription.json** dosyasında değişiklik yapmayı bitirdikten sonra, Bağlı Fabrika çözümlerini Azure hesabınıza yeniden dağıtmanız gerekir.
+**Contosotopologyıdescription. JSON** dosyasında değişiklik yapmayı tamamladığınızda, bağlı fabrika çözümünü Azure hesabınıza yeniden dağıtmanız gerekir.
 
-**Azure-iot'a bağlı fabrika** deposu, çözümü yeniden oluşturmak ve dağıtmak için kullanabileceğiniz bir **build.ps1** PowerShell komut dosyası içerir.
+**Azure IoT ile bağlantılı fabrika** deposu, çözümü yeniden oluşturup dağıtmak için kullanabileceğiniz bir **Build. ps1** PowerShell betiği içerir.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Aşağıdaki makaleleri okuyarak Bağlı Fabrika çözüm hızlandırıcısı hakkında daha fazla bilgi edinin:
+Aşağıdaki makaleleri okuyarak bağlı Factory Çözüm Hızlandırıcısı hakkında daha fazla bilgi edinin:
 
-* [azureiotsolutions.com sitesindeki izinler][lnk-permissions]
+* [Azureiotsolutions.com sitesindeki izinler][lnk-permissions]
 * [Bağlı Fabrika hakkında SSS](iot-accelerators-faq-cf.md)
 * [SSS][lnk-faq]
 

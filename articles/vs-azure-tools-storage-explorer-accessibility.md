@@ -1,6 +1,6 @@
 ---
-title: Azure Depolama Gezgini Erişilebilirliği (Önizleme) | Microsoft Dokümanlar
-description: Azure Depolama Gezgini Erişilebilirliği (Önizleme)
+title: Azure Depolama Gezgini erişilebilirliği (Önizleme) | Microsoft Docs
+description: Azure Depolama Gezgini erişilebilirliği (Önizleme)
 services: storage
 documentationcenter: na
 author: MrayermannMSFT
@@ -15,75 +15,75 @@ ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
 ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60457281"
 ---
 # <a name="storage-explorer-accessibility"></a>Depolama Gezgini Erişilebilirliği
 
-## <a name="screen-readers"></a>Ekran Okuyucular
+## <a name="screen-readers"></a>Ekran okuyucular
 
-Depolama Gezgini, Windows ve Mac'te ekran okuyucu kullanımını destekler. Her platform için aşağıdaki ekran okuyucular önerilir:
+Depolama Gezgini, Windows ve Mac üzerinde ekran okuyucu kullanımını destekler. Her platform için aşağıdaki ekran okuyucular önerilir:
 
-Platform | Ekran Okuyucu
+Platform | Ekran okuyucu
 ---------|--------------
-Windows  | Nvda
+Windows  | NVDA
 Mac      | Seslendirme
-Linux    | (ekran okuyucular Linux'ta desteklenmez)
+Linux    | (ekran okuyucular Linux üzerinde desteklenmez)
 
-Depolama Gezgini kullanırken erişilebilirlik sorunuyla karşılanırsanız, lütfen [GitHub'da bir sorun açın.](https://github.com/Microsoft/AzureStorageExplorer/issues)
+Depolama Gezgini kullanırken bir erişilebilirlik sorunuyla karşılaşırsanız lütfen [GitHub 'da bir sorun açın](https://github.com/Microsoft/AzureStorageExplorer/issues).
 
 ## <a name="zoom"></a>Zoom
 
-Yakınlaştırma yoluyla Depolama Gezgini'ndeki metni büyütebilirsiniz. Yakınlaştırmak için Yardım menüsünden **Yakınlaştır'a** tıklayın. Yakınlaştırma düzeyini varsayılan düzeye geri geri uzaklaştırmak ve sıfırlamak için Yardım menüsünü de kullanabilirsiniz.
+Yakınlaştırma aracılığıyla Depolama Gezgini metnin daha büyük olmasını sağlayabilirsiniz. Yakınlaştırmak için Yardım menüsünde **Yakınlaştır** ' a tıklayın. Ayrıca, yakınlaştırma düzeyini uzaklaştırmak ve varsayılan düzeye döndürmek için Yardım menüsünü de kullanabilirsiniz.
 
-![Yardım menüsünde yakınlaştırma seçenekleri][0]
+![Yardım menüsündeki yakınlaştırma seçenekleri][0]
 
-Yakınlaştırma ayarı çoğu UI öğesinin boyutunu artırır. Tüm Kullanıcı Arabirimi öğelerinin düzgün bir şekilde ölçeklendirildidiğinden emin olmak için işletim sisteminiz için büyük metin ve yakınlaştırma ayarlarını etkinleştirmeniz de önerilir.
+Yakınlaştırma ayarı, çoğu UI öğesinin boyutunu artırır. Tüm Kullanıcı arabirimi öğelerinin doğru ölçeklenmesini sağlamak için işletim sistemi için büyük metin ve yakınlaştırma ayarlarını da etkinleştirmeniz önerilir.
 
-## <a name="high-contrast-themes"></a>Yüksek Kontrastlı Temalar
+## <a name="high-contrast-themes"></a>Yüksek Karşıtlık Temaları
 
-Depolama Gezgini iki yüksek kontrastlı temaları vardır, **Yüksek KontrastLı Işık** ve **Yüksek Karşıtlık Koyu**. Temalar > Yardım menüsünden içeri alarak temanızı değiştirebilirsiniz.
+Depolama Gezgini iki yüksek karşıtlık teması, **yüksek karşıtlık ışığı** ve **koyu yüksek karşıtlık**. Yardım > Temalar menüsünden ' i seçerek temanızı değiştirebilirsiniz.
 
 ![Temalar alt menüsü][1]
 
-Tema ayarı çoğu UI öğesinin rengini değiştirir. Ayrıca, tüm UI öğelerinin düzgün bir şekilde renklendirilmesini sağlamak için işletim sisteminizin eşleşen yüksek kontrastlı temasını etkinleştirmeniz önerilir.
+Tema ayarı, çoğu UI öğesinin rengini değiştirir. Tüm Kullanıcı arabirimi öğelerinin düzgün şekilde renklendirildiğinden emin olmak için işletim sisteminin eşleşen Yüksek Karşıtlık temasını da etkinleştirmeniz önerilir.
 
 ## <a name="shortcut-keys"></a>Kısayol Tuşları
 
-### <a name="window-commands"></a>Pencere Komutları
+### <a name="window-commands"></a>Pencere komutları
 
 Komut       | Klavye kısayolu
 --------------|--------------------
-Yeni Pencere    | **Kontrol+Shift+N**
-Editörü Kapat  | **Kontrol+F4**
-Çık          | **Kontrol+Shift+W**
+Yeni pencere    | **Denetim + SHIFT + N**
+Düzenleyiciyi Kapat  | **Denetim + F4**
+Çık          | **Denetim + SHIFT + W**
 
-### <a name="navigation-commands"></a>Navigasyon Komutları
+### <a name="navigation-commands"></a>Gezinti komutları
 
 Komut                | Klavye kısayolu
 -----------------------|----------------------
-Sonraki Panele Odaklan       | **F6**
-Önceki Panele Odaklan   | **Shift+F6**
-Gezgin               | **Kontrol+Shift+E**
-Hesap Yönetimi     | **Kontrol+Shift+A**
-Yan Çubuğu Geçiş        | **Kontrol+B**
-Etkinlik Günlüğü           | **Kontrol+Shift+L**
-Eylemler ve Özellikler | **Kontrol+Shift+P**
-Güncel Editör         | **Kontrol+Ana Sayfa**
-Sonraki Editör            | **Denetim+Sayfa Aşağı**
-Önceki Editör        | **Denetim+Sayfa Yukarı**
+Sonraki panele odaklan       | **F6**
+Odağı önceki panel   | **Shift+F6**
+Gezgin               | **Denetim + SHIFT + E**
+Hesap Yönetimi     | **Denetim + SHIFT + A**
+Yan çubuğu aç        | **Denetim + B**
+Etkinlik Günlüğü           | **Denetim + SHIFT + L**
+Eylemler ve Özellikler | **Denetim + SHIFT + P**
+Geçerli düzenleyici         | **Denetim + giriş**
+Sonraki düzenleyici            | **Denetim + sayfa aşağı**
+Önceki düzenleyici        | **Denetim + sayfa yukarı**
 
-### <a name="zoom-commands"></a>Yakınlaştırma Komutları
+### <a name="zoom-commands"></a>Yakınlaştırma komutları
 
 Komut  | Klavye kısayolu
 ---------|------------------
-Yakınlaştırma  | **Kontrol+=**
-Uzaklaştırma | **Kontrol+-**
+Yakınlaştır  | **Denetim + =**
+Uzaklaştır | **Denetim +-**
 
-### <a name="blob-and-file-share-editor-commands"></a>Blob ve Dosya Paylaşım Düzenleyici Komutları
+### <a name="blob-and-file-share-editor-commands"></a>Blob ve dosya paylaşma Düzenleyicisi komutları
 
 Komut | Klavye kısayolu
 --------|--------------------
@@ -91,21 +91,21 @@ Geri    | **Alt+Sol Ok**
 İleri | **Alt+Sağ Ok**
 Yukarı      | **Alt+Yukarı Ok**
 
-### <a name="editor-commands"></a>Editör Komutları
+### <a name="editor-commands"></a>Düzenleyici komutları
 
 Komut | Klavye kısayolu
 --------|------------------
-Kopyala    | **Kontrol+C**
-Kes     | **Kontrol+X**
-Yapıştır   | **Kontrol+V**
-Yenile  | **Kontrol+R**
+Kopyala    | **Denetim + C**
+Kes     | **Denetim + X**
+Yapıştır   | **Denetim + V**
+Yenile  | **Denetim + R**
 
-### <a name="other-commands"></a>Diğer Komutlar
+### <a name="other-commands"></a>Diğer komutlar
 
 Komut                | Klavye kısayolu
 -----------------------|------------------
-Geliştirici Araçlarını Geçiş | **F12**
-Yeniden yükle                 | **Alt+Kontrol+R**
+Geliştirici Araçları değiştirme | **F12**
+Yeniden yükle                 | **Alt + Control + R**
 
 [0]: ./media/vs-azure-tools-storage-explorer-accessibility/Zoom.png
 [1]: ./media/vs-azure-tools-storage-explorer-accessibility/HighContrast.png

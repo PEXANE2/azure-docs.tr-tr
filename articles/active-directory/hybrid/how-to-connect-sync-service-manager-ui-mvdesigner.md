@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect MV Tasarımcısı | Microsoft Dokümanlar'
-description: Azure AD Connect için Eşitleme Hizmet Yöneticisi'ndeki Metaverse Designer sekmesini anlayın.
+title: Azure AD Connect MV Tasarımcısı | Microsoft Docs '
+description: Azure AD Connect için Synchronization Service Manager meta veri deposu Tasarımcısı sekmesini anlayın.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,19 +18,19 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d08454a0ad87adb97037517579f11ab976280425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60381371"
 ---
-# <a name="sync-service-manager-metaverse-designer"></a>Sync Servis Yöneticisi Metaverse Designer
+# <a name="sync-service-manager-metaverse-designer"></a>Service Manager meta veri deposu Tasarımcısı eşitleme
 
-![Eşitleme Servis Yöneticisi](./media/how-to-connect-sync-service-manager-ui-mvdesigner/mvdesigner.png)
+![Eşitleme Service Manager](./media/how-to-connect-sync-service-manager-ui-mvdesigner/mvdesigner.png)
 
-Çoğu müşteri için, burada yapılandırılacak hiçbir şey yoktur.
+Çoğu müşteri için burada yapılandırılacak bir şey yoktur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure AD [Connect eşitleme](how-to-connect-sync-whatis.md) yapılandırması hakkında daha fazla bilgi edinin.
+[Azure AD Connect eşitleme](how-to-connect-sync-whatis.md) yapılandırması hakkında daha fazla bilgi edinin.
 
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

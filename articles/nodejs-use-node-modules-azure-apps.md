@@ -1,6 +1,6 @@
 ---
-title: Node.js Modülleri ile Çalışma
-description: Azure Uygulama Hizmeti veya Bulut Hizmetleri kullanırken Node.js modülleriyle nasıl çalışacağınızı öğrenin.
+title: Node. js modülleriyle çalışma
+description: Azure App Service veya Cloud Services kullanırken Node. js modülleriyle çalışmayı öğrenin.
 services: ''
 documentationcenter: nodejs
 author: rloutlaw
@@ -15,77 +15,77 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
 ms.openlocfilehash: 61be6bcd957a4e81147d5ef472b8f850e5605e41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70309268"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Azure uygulamalarıyla Node.js Modüllerini kullanma
-Bu belge, Azure'da barındırılan uygulamalarla Node.js modüllerini kullanma konusunda kılavuz sağlar. Uygulamanızın bir modülün belirli bir sürümünü kullanmasını sağlamanın yanı sıra Azure ile yerel modülleri kullanma konusunda da kılavuzluk sağlar.
+Bu belge, Azure 'da barındırılan uygulamalarla Node. js modüllerini kullanma hakkında rehberlik sağlar. Uygulamanızın belirli bir modülün belirli bir sürümünü kullanmasını ve Azure ile yerel modüller kullanmasını sağlamaya yönelik rehberlik sağlar.
 
-Node.js modüllerini, **package.json** ve **npm-shrinkwrap.json** dosyalarını kullanmaya zaten aşinaysanız, aşağıdaki bilgiler bu makalede tartışılanların hızlı bir özetini sağlar:
+Node. js modüllerini, **Package. JSON** ve **NPM-shrınkwrap. JSON** dosyalarını kullanmayı zaten biliyorsanız, aşağıdaki bilgiler bu makalede ele alındıklarla ilgili hızlı bir Özet sağlar:
 
-* Azure App Service **package.json** ve **npm-shrinkwrap.json** dosyalarını anlar ve bu dosyalardaki girişlere göre modüller yükleyebilir.
+* Azure App Service **Package. JSON** ve **NPM-shrınkwrap. JSON** dosyalarını anladığından, bu dosyalardaki girişlere göre modüller yükleyebilirsiniz.
 
-* Azure Bulut Hizmetleri, tüm modüllerin geliştirme ortamına yüklenmesini ve **\_düğüm modülleri** dizininin dağıtım paketinin bir parçası olarak eklenmesini bekler. Bulut Hizmetleri'nde **package.json** veya **npm-shrinkwrap.json** dosyalarını kullanarak modül yükleme desteği sağlamak mümkündür; ancak, bu yapılandırma Bulut Hizmeti projeleri tarafından kullanılan varsayılan komut dosyalarının özelleştirilmesini gerektirir. Bu ortamı nasıl yapılandırılabildiğini gösteren bir örnek için, [düğüm modüllerini dağıtmamak için npm yüklemesini çalıştırmak için Azure Başlangıç görevine](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown) bakın
-
-> [!NOTE]
-> Bir VM'deki dağıtım deneyimi Sanal Makine tarafından barındırılan işletim sistemine bağlı olduğundan, Azure Sanal Makineler bu makalede açıklanmaz.
-> 
-> 
-
-## <a name="nodejs-modules"></a>Düğüm.js Modülleri
-Modüller, uygulamanız için özel işlevler sağlayan yüklenebilir JavaScript paketleridir. Modüller genellikle **npm** komut satırı aracı kullanılarak yüklenir, ancak bazı modüller (http modülü gibi) çekirdek Node.js paketinin bir parçası olarak sağlanır.
-
-Modüller yüklendiğinde, uygulama dizini yapınızın kökündeki **\_düğüm modülleri** dizininde depolanır. **Düğüm\_modülleri** dizinindeki her modül, bağlı olduğu tüm modülleri içeren kendi dizinini korur ve bu davranış bağımlılık zincirinin aşağısındaki her modül için tekrareder. Bu ortam, yüklü her modülün bağlı olduğu modüller için kendi sürüm gereksinimlerine sahip olmasını sağlar, ancak oldukça büyük bir dizin yapısına neden olabilir.
-
-Uygulamanızın bir parçası olarak **düğüm\_modülleri** dizinini dağıtmak, **bir package.json** veya **npm-shrinkwrap.json** dosyasını kullanmaya kıyasla dağıtımBoyutunu artırır; ancak, üretimde kullanılan modüllerin geliştirmede kullanılan modüllerle aynı olduğunu garanti eder.
-
-### <a name="native-modules"></a>Yerli Modüller
-Çoğu modül sadece düz metin JavaScript dosyaları olsa da, bazı modüller platforma özgü ikili görüntülerdir. Bu modüller yükleme zamanında, genellikle Python ve düğüm-gyp kullanılarak derlenir. Azure Bulut Hizmetleri, uygulamanın bir parçası olarak dağıtılan **\_düğüm modülleri** klasörüne güvendiğinden, yüklenen modüllerin bir parçası olarak yer alan tüm yerel modüller, windows geliştirme sistemine yüklenmiş ve derlenmiş olduğu sürece bir bulut hizmetinde çalışmalıdır.
-
-Azure Uygulama Hizmeti tüm yerel modülleri desteklemez ve modülleri belirli ön koşullara sahip derlerken başarısız olabilir. MongoDB gibi bazı popüler modüller isteğe bağlı yerel bağımlılıklara sahip ken ve onlar olmadan gayet iyi çalışırken, iki geçici çözüm bugün mevcut olan hemen hemen tüm yerel modüllerle başarılı oldu:
-
-* Tüm yerel modülün ön koşulları yüklü olan bir Windows makinesinde **npm yükleme** çalıştırın. Ardından, oluşturulan **\_düğüm modülleri** klasörünü uygulamanın bir parçası olarak Azure Uygulama Hizmeti'ne dağıtın.
-
-  * Derlemeden önce, yerel Düğüm.js yüklemenizin eşleşen mimariye sahip olup olmadığını ve sürümün Azure'da kullanılana mümkün olduğunca yakın olduğundan kontrol edin (geçerli değerler properties **process.arch** and **process.version'dan**çalışma zamanında denetlenebilir).
-
-* Azure Uygulama Hizmeti, dağıtım sırasında özel bash veya kabuk komutları yürütmek üzere yapılandırılabilir ve böylece özel komutları yürütme ve **npm yüklemenin** çalışma şeklini tam olarak yapılandırma fırsatı verir. Bu ortamın nasıl yapılandırılabildiğini gösteren bir video için [Kudu ile Özel Web Sitesi Dağıtım Komut Dosyaları'na](https://azure.microsoft.com/resources/videos/custom-web-site-deployment-scripts-with-kudu/)bakın.
-
-### <a name="using-a-packagejson-file"></a>package.json dosyakullanma
-
-**Package.json** dosyası, dağıtımın bir parçası olarak **\_düğüm modülleri** klasörünü eklemenizi gerektirmek yerine, barındırma platformunun bağımlılıkları yükleyebilmeleri için uygulamanızın gerektirdiği en üst düzey bağımlılıkları belirtmenin bir yoludur. Uygulama dağıtıldıktan sonra, **npm install** komutu **package.json** dosyasını ayrıştırmak ve listelenen tüm bağımlılıkları yüklemek için kullanılır.
-
-Geliştirme sırasında, modülleri yüklerken otomatik olarak **package.json** dosyanıza modül girişi eklerken **--kaydet,** **--kaydet, -kaydet**veya **isteğe bağlı** parametreleri kaydet' i kullanabilirsiniz. Daha fazla bilgi için [npm-install'a](https://docs.npmjs.com/cli/install)bakın.
-
-**package.json** dosyasıyla ilgili olası bir sorun, yalnızca üst düzey bağımlılıklar için sürümü belirtmesidir. Yüklü olan her modül, bağlı olduğu modüllerin sürümünü belirtebilir veya belirtmeyebilir ve bu nedenle geliştirmede kullanılandan farklı bir bağımlılık zincirine sahip olabilirsiniz.
+* Azure Cloud Services, dağıtım paketinin bir parçası olarak dahil edilecek tüm modüllerin geliştirme ortamında ve **düğüm\_modülleri** dizininde yüklü olmasını bekler. Cloud Services; ' de **Package. JSON** veya **NPM-shrınkwrap. JSON** dosyalarını kullanarak modül yükleme desteğini etkinleştirmek mümkündür; Ancak, bu yapılandırma, bulut hizmeti projeleri tarafından kullanılan varsayılan betiklerin özelleştirilmesini gerektirir. Bu ortamın nasıl yapılandırılacağı hakkında bir örnek için, [düğüm modüllerini dağıtmaktan kaçınmak üzere NPM yüklemesini çalıştırmak Için Azure başlangıç görevi](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown) ' ne bakın
 
 > [!NOTE]
-> Azure Uygulama Hizmeti'ne dağıtılırken, <b>package.json</b> dosyanız yerel bir modüle başvuruyorsa, uygulamayı Git kullanarak yayınlarken aşağıdaki örneğe benzer bir hata görebilirsiniz:
-> 
-> npm ERR! module-name@0.6.0yüklemek: 'düğüm-gyp yapıyapıyapı'
-> 
-> npm ERR! 'cmd "/c" "düğüm-gyp yapılandırma yapı"' ile başarısız oldu 1
+> Azure sanal makineleri bu makalede ele alınmamaktadır, çünkü bir VM 'deki dağıtım deneyimi, sanal makine tarafından barındırılan işletim sistemine bağımlıdır.
 > 
 > 
 
-### <a name="using-a-npm-shrinkwrapjson-file"></a>npm-shrinkwrap.json dosyakullanma
-**npm-shrinkwrap.json** **dosyası, package.json** dosyasının modül sürüm sınırlamalarını giderme girişimidir. **package.json** dosyası yalnızca üst düzey modüller için sürümler içerse de, **npm-shrinkwrap.json** dosyası tam modül bağımlılık zinciri için sürüm gereksinimlerini içerir.
+## <a name="nodejs-modules"></a>Node. js modülleri
+Modüller, uygulamanız için belirli işlevler sağlayan, yüklenebilir JavaScript paketlerdir. Modüller genellikle **NPM** komut satırı aracı kullanılarak yüklenir, ancak bazı modüller (http modülü gibi) çekirdek Node. js paketinin bir parçası olarak sağlanır.
 
-Uygulamanız üretime hazır olduğunda, sürüm gereksinimlerini kilitleyebilir ve **npm shrinkwrap** komutunu kullanarak bir **npm-shrinkwrap.json** dosyası oluşturabilirsiniz. Bu komut, düğüm **\_modülleri** klasöründe şu anda yüklü sürümleri kullanır ve bu sürümleri **npm-shrinkwrap.json** dosyasına kaydeder. Uygulama barındırma ortamına dağıtıldıktan sonra, **npm yükleme** komutu **npm-shrinkwrap.json** dosyasını ayrıştırmak ve listelenen tüm bağımlılıkları yüklemek için kullanılır. Daha fazla bilgi için [npm-shrinkwrap'a](https://docs.npmjs.com/cli/shrinkwrap)bakın.
+Modüller yüklendiğinde, uygulama dizin yapınızın kökündeki **düğüm\_modülleri** dizininde depolanır. **Düğüm\_modülleri** dizinindeki her modül, bağımlı olduğu tüm modülleri içeren kendi dizinini korur ve bu davranış her modül için bağımlılık zincirinin her bir şekilde yinelenir. Bu ortam, her modülün bağımlı olduğu modüller için kendi sürüm gereksinimlerine sahip olmasına olanak sağlar, ancak büyük bir dizin yapısına neden olabilir.
+
+Bir **Package. JSON** veya **NPM-shrınkwrap. JSON** dosyası ile karşılaştırıldığında, uygulamanızın bir parçası olarak **düğüm\_modülleri** dizininin dağıtılması dağıtım boyutunu artırır; Ancak, üretimde kullanılan modüllerin sürümlerinin geliştirmede kullanılan modüllerle aynı olduğundan emin olur.
+
+### <a name="native-modules"></a>Yerel modüller
+Çoğu modül basit metin JavaScript dosyalarıdır ancak bazı modüller platforma özgü ikili görüntülerdir. Bu modüller, genellikle Python ve Node-cayp kullanılarak, saat olarak derlenir. Azure Cloud Services, uygulamanın bir parçası olarak dağıtılmakta olan **düğüm\_modülleri** klasörüne güvendiğinden, yüklü modüllerin bir parçası olarak dahil edilen tüm yerel modüllerin bir Windows geliştirme sisteminde yüklü ve derlenmiş olduğu sürece bir bulut hizmetinde çalışması gerekir.
+
+Azure App Service tüm yerel modülleri desteklemez ve belirli önkoşullara sahip modüller derlenirken başarısız olabilir. MongoDB gibi bazı popüler modüller isteğe bağlı yerel bağımlılıklara sahip olur ve bunlar olmadan ince çalışır, günümüzde neredeyse tüm yerel modüllerle başarılı bir şekilde iki geçici çözüm sunulmaktadır:
+
+* Tüm yerel modülün ön koşullarını yüklemiş olan bir Windows makinesinde **NPM yükleme** çalıştırın. Ardından, oluşturulan **düğüm\_modülleri** klasörünü Azure App Service için uygulamanın bir parçası olarak dağıtın.
+
+  * Derlenirken önce, yerel Node. js yüklemenizin eşleşen mimariye sahip olup olmadığını ve sürümün Azure 'da kullanılan bir şekilde (geçerli değerler, çalışma zamanında, Özellikler **işlemi. Arch** ve **Process. Version**) denetlenebilmesini sağlar.
+
+* Azure App Service dağıtım sırasında özel bash veya Shell betikleri yürütmek üzere yapılandırılabilir, böylece özel komutları yürütme ve **NPM yüklemesinin** çalıştırılma biçimini tam olarak yapılandırma fırsatına sahip olursunuz. Bu ortamın nasıl yapılandırılacağını gösteren bir video için bkz. [kudu Ile özel Web sitesi dağıtım betikleri](https://azure.microsoft.com/resources/videos/custom-web-site-deployment-scripts-with-kudu/).
+
+### <a name="using-a-packagejson-file"></a>Bir Package. JSON dosyası kullanma
+
+**Package. JSON** dosyası, uygulamanızın gerektirdiği en üst düzey bağımlılıkları belirtmenin bir yoludur. böylece, barındırma platformu, dağıtım kapsamında **\_düğüm modülleri** klasörünü dahil etmeniz gerekmez. Uygulama dağıtıldıktan sonra, **Package. JSON** dosyasını ayrıştırmak ve listelenen tüm bağımlılıkları yüklemek için **NPM install** komutu kullanılır.
+
+Geliştirme sırasında, modüle **Package. JSON** dosyanıza otomatik olarak bir giriş eklemek üzere modüller yüklerken **--** Save, **--Save-dev**veya--Save- **isteğe bağlı** parametrelerini kullanabilirsiniz. Daha fazla bilgi için bkz. [NPM-Install](https://docs.npmjs.com/cli/install).
+
+**Package. JSON** dosyası ile ilgili olası bir sorun yalnızca en üst düzey bağımlılıklara yönelik sürümü belirtir. Yüklü her modül, bağımlı olduğu modüllerin sürümünü gösterebilir veya belirtemez ve bu nedenle, geliştirmede kullanılandan farklı bir bağımlılık zinciriyle bitebilmeniz mümkündür.
 
 > [!NOTE]
-> Azure Uygulama Hizmeti'ne dağıtılırken, <b>npm-shrinkwrap.json</b> dosyanız yerel bir modüle başvuruyorsa, uygulamayı Git kullanarak yayınlarken aşağıdaki örneğe benzer bir hata görebilirsiniz:
+> Azure App Service ' ye dağıtım yaparken, <b>Package. JSON</b> dosyanız yerel bir modüle başvuruyorsa, git kullanarak uygulamayı yayımlarken aşağıdaki örneğe benzer bir hata görebilirsiniz:
 > 
-> npm ERR! module-name@0.6.0yüklemek: 'düğüm-gyp yapıyapıyapı'
+> NPM hatası! module-name@0.6.0Install: ' node-cayp configure Build '
 > 
-> npm ERR! 'cmd "/c" "düğüm-gyp yapılandırma yapı"' ile başarısız oldu 1
+> NPM hatası! ' cmd "/c" "node-cayp configure derlemesi" ', 1 ile başarısız oldu
+> 
+> 
+
+### <a name="using-a-npm-shrinkwrapjson-file"></a>NPM-shrınkwrap. JSON dosyası kullanma
+**NPM-shrınkwrap. JSON** dosyası, **Package. JSON** dosyasının Modül sürümü oluşturma sınırlamalarını ele almak için bir girişimdir. **Package. JSON** dosyası yalnızca üst düzey modüllerin sürümlerini içerdiğinden, **NPM-shrınkwrap. JSON** dosyası tam modül bağımlılığı zincirinin sürüm gereksinimlerini içerir.
+
+Uygulamanız üretime hazırsanız, sürüm gereksinimlerini kilitleyebilir ve **NPM shrınkwrap** komutunu kullanarak **NPM-shrınkwrap. JSON** dosyası oluşturabilirsiniz. Bu komut, **düğüm\_modülleri** klasöründe yüklü olan sürümleri kullanır ve bu sürümleri **NPM-shrınkwrap. JSON** dosyasına kaydeder. Uygulama barındırma ortamına dağıtıldıktan sonra **NPM-shrınkwrap. JSON** dosyasını ayrıştırmak ve listelenen tüm bağımlılıkları yüklemek için **NPM install** komutu kullanılır. Daha fazla bilgi için bkz. [NPM-shrınkwrap](https://docs.npmjs.com/cli/shrinkwrap).
+
+> [!NOTE]
+> Azure App Service ' ye dağıtım yaparken, <b>NPM-shrınkwrap. JSON</b> dosyanız yerel bir modüle başvuruyorsa, git kullanarak uygulamayı yayımlarken aşağıdaki örneğe benzer bir hata görebilirsiniz:
+> 
+> NPM hatası! module-name@0.6.0Install: ' node-cayp configure Build '
+> 
+> NPM hatası! ' cmd "/c" "node-cayp configure derlemesi" ', 1 ile başarısız oldu
 > 
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık Azure ile Node.js modüllerini nasıl kullanacağınızı anladığınıza göre, [Node.js sürümünü](https://github.com/squillace/staging/blob/master/articles/nodejs-specify-node-version-azure-apps.md)nasıl belirtin, [bir Node.js web uygulaması oluşturup dağıtabileceğinizi ve](app-service/app-service-web-get-started-nodejs.md)Mac ve Linux için Azure Komut Satırı [Arabirimini nasıl kullanacağınızı](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)öğrenin.
+Azure ile Node. js modüllerini nasıl kullanacağınızı anladığınıza göre, Node. [js sürümünü belirtme](https://github.com/squillace/staging/blob/master/articles/nodejs-specify-node-version-azure-apps.md), [Node. js web uygulaması oluşturma ve dağıtma](app-service/app-service-web-get-started-nodejs.md)ve [Mac ve Linux için Azure komut satırı arabirimini kullanma](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)hakkında bilgi edinin.
 
 Daha fazla bilgi için bkz. [Node.js Geliştirici Merkezi](/azure/javascript/).
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Otomatik yükseltme | Microsoft Dokümanlar'
-description: Bu konu, Azure AD Connect eşitlemesinde yerleşik otomatik yükseltme özelliğini açıklar.
+title: 'Azure AD Connect: otomatik yükseltme | Microsoft Docs'
+description: Bu konuda Azure AD Connect eşitleme ' deki yerleşik otomatik yükseltme özelliği açıklanmaktadır.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,91 +17,91 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60349853"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Otomatik yükseltme
-Bu özellik build [1.1.105.0 (Şubat 2016'da yayımlandı)](reference-connect-version-history.md#111050)ile tanıtıldı.  Bu özellik [build 1.1.561'de](reference-connect-version-history.md#115610) güncelleştirildi ve şimdi daha önce desteklenmeyen ek senaryoları destekliyor.
+Bu özellik Build 1.1.105.0 ile tanıtılmıştır [(2016 Şubat tarihinde yayımlanmıştır)](reference-connect-version-history.md#111050).  Bu özellik [Build 1.1.561](reference-connect-version-history.md#115610) içinde güncelleştirildi ve artık daha önce desteklenmeyen ek senaryoları destekliyor.
 
 ## <a name="overview"></a>Genel Bakış
-**Otomatik yükseltme** özelliği yle Azure AD Connect yüklemenizin her zaman güncel olduğundan emin olmak hiç bu kadar kolay olmamıştı. Bu özellik, ekspres yüklemeler ve DirSync yükseltmeleri için varsayılan olarak etkinleştirilir. Yeni bir sürüm yayımlandığında, yüklemeniz otomatik olarak yükseltilir.
-Otomatik yükseltme varsayılan olarak aşağıdakiler için etkinleştirilir:
+Azure AD Connect yüklemenizin her zaman güncel olduğundan emin olmak, **otomatik yükseltme** özelliğiyle hiçbir zaman daha kolay olmamıştı. Bu özellik, hızlı yüklemeler ve DirSync yükseltmeleri için varsayılan olarak etkindir. Yeni bir sürüm yayınlandığında, yüklemeniz otomatik olarak yükseltilir.
+Otomatik yükseltme, aşağıdakiler için varsayılan olarak etkindir:
 
-* Express ayarları yükleme ve DirSync yükseltmeleri.
-* Express ayarlarının her zaman kullandığı SQL Express LocalDB'ı kullanın. SQL Express ile DirSync de LocalDB kullanın.
-* AD hesabı, Express ayarları ve DirSync tarafından oluşturulan varsayılan MSOL_ hesabıdır.
-* Metaverse'de 100.000'den az nesne var.
+* Hızlı ayarlar yükleme ve DirSync yükseltmeleri.
+* Express ayarlarının her zaman kullandığı SQL Express LocalDB 'yi kullanma. SQL Express ile DirSync, LocalDB de kullanır.
+* AD hesabı, Hızlı ayarlar ve DirSync tarafından oluşturulan varsayılan MSOL_ hesabıdır.
+* Meta veri deposunda 100.000 ' den az nesne var.
 
-Otomatik yükseltme nin geçerli durumu PowerShell cmdlet `Get-ADSyncAutoUpgrade`ile görüntülenebilir. Aşağıdaki durumlara sahiptir:
+Otomatik yükseltmenin geçerli durumu PowerShell cmdlet 'i `Get-ADSyncAutoUpgrade`ile görüntülenebilir. Aşağıdaki durumlara sahiptir:
 
 | Durum | Açıklama |
 | --- | --- |
-| Etkin |Otomatik yükseltme etkinleştirildi. |
-| Askıya alındı |Yalnızca sistem tarafından ayarlanır. Sistem **şu anda** otomatik yükseltmeleri almaya uygun değildir. |
-| Devre dışı |Otomatik yükseltme devre dışı bırakılır. |
+| Etkin |Otomatik yükseltme etkindir. |
+| Askıya alındı |Yalnızca sistem tarafından ayarlanır. Sistem **Şu anda** Otomatik yükseltmeleri almaya uygun değil. |
+| Devre dışı |Otomatik yükseltme devre dışı bırakıldı. |
 
-**Etkin** ve Devre **Dışı** `Set-ADSyncAutoUpgrade`arasında ' ile değiştirebilirsiniz. Yalnızca sistem askıya **alınan**durumu ayarlamalıdır.  Önce 1.1.750.0 Otomatik yükseltme durumu Askıya ayarlandı otomatik yükseltme durumu Otomatik yükseltme engelleyecek Bu işlev artık otomatik yükseltmeyi engellememesi için değiştirildi.
+İle `Set-ADSyncAutoUpgrade` **etkin** ve **devre dışı** arasında geçiş yapabilirsiniz. Yalnızca sistem durumu **askıya alındı**olarak ayarlanmalıdır.  1.1.750.0 öncesinde, set-ADSyncAutoUpgrade cmdlet 'i, otomatik yükseltme durumu askıya alındı olarak ayarlandıysa otomatik yükseltmeyi engeller. Bu işlev artık, yeniden yükseltme engellenmemesi için değişti.
 
-Otomatik yükseltme, yükseltme altyapısı için Azure AD Connect Health'i kullanıyor. Otomatik yükseltmenin çalışması için, [Office 365 URL'leri ve IP adres aralıklarında](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)belgelenen **Azure AD Connect Health** için proxy sunucunuzdaki URL'leri açtığınızdan emin olun.
+Otomatik yükseltme, yükseltme altyapısı için Azure AD Connect Health kullanıyor. Otomatik yükseltmenin çalışması için, proxy sunucunuzdaki URL 'Leri [Office 365 URL 'lerinde ve IP adresi aralıklarında](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)belgelendiği gibi **Azure AD Connect Health** açtığınızdan emin olun.
 
 
-**Eşitleme Hizmet Yöneticisi** Kullanıcı Arabirimi sunucuda çalışıyorsa, kullanıcı arabirimi kapatılana kadar yükseltme askıya alınır.
+**Synchronization Service Manager** Kullanıcı arabirimi sunucuda çalışıyorsa, Kullanıcı arabirimi kapatılıncaya kadar yükseltme askıya alınır.
 
 ## <a name="troubleshooting"></a>Sorun giderme
-Connect yüklemeniz kendisini beklendiği gibi yükseltmezse, sorunun ne olabileceğini öğrenmek için aşağıdaki adımları izleyin.
+Connect yüklemenizin kendisi beklendiği gibi yükseltmiyorsa, nelerin yanlış olduğunu öğrenmek için aşağıdaki adımları izleyin.
 
-İlk olarak, otomatik yükseltmenin yeni bir sürümün yayımlandığı ilk gün denenmesini beklememelisiniz. Yükseltme denenmeden önce kasıtlı bir rastgelelik vardır, bu nedenle yüklemeniz hemen yükseltilmezse paniğe kapılmayın.
+İlk olarak, otomatik yükseltmenin yeni bir sürüm Yayınlanma ilk günde denenmeye yönelik olması beklenmemelidir. Yüklemenizin hemen Yükseltilmemesi durumunda, bir yükseltme denenmeye başlamadan önce kasıtlı olarak rastgele bir değer vardır.
 
-Bir şeyin doğru olmadığını düşünüyorsanız, `Get-ADSyncAutoUpgrade` otomatik yükseltmenin etkin olduğundan emin olmak için önce çalıştırın.
+Bir şeyin doğru olmadığını düşünüyorsanız, otomatik yükseltmenin etkinleştirildiğinden emin olmak `Get-ADSyncAutoUpgrade` için ilk ' i çalıştırın.
 
-Ardından, proxy veya güvenlik duvarınızda gerekli URL'leri açtığınızdan emin olun. Otomatik güncelleştirme, [genel bakışta](#overview)açıklandığı gibi Azure AD Connect Health'i kullanıyor. Proxy kullanıyorsanız, Sağlık'ın [proxy sunucusu](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)kullanacak şekilde yapılandırıldığından emin olun. Ayrıca Azure AD'ye [Sistem Durumu bağlantısını](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) da test edin.
+Ardından, gerekli URL 'Leri ara sunucunuzda veya güvenlik duvarınızda açtığınızdan emin olun. Otomatik güncelleştirme, [genel bakış](#overview)bölümünde açıklandığı gibi Azure AD Connect Health kullanıyor. Proxy kullanıyorsanız, sistem durumunun bir [proxy sunucu](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)kullanacak şekilde yapılandırıldığından emin olun. Ayrıca, Azure AD ile [sistem durumu bağlantısını](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) test edin.
 
-Azure AD bağlantısı doğrulandıysa, olay günlüklerine bakma nın zamanı geldiğinden. Olay görüntüleyicisi başlatın ve **Uygulama** olay günlüğüne bakın. Kaynak Azure AD Connect **Yükseltmesi** ve olay id aralığı **300-399**için bir eventlog filtresi ekleyin.  
-![Otomatik yükseltme için Eventlog filtresi](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
+Azure AD 'nin bağlantısının doğrulanması ile Eventlogs 'a bakmamız zaman alabilir. Olay Görüntüleyicisini başlatın ve **uygulama** olay günlüğüne bakın. Kaynak **Azure AD Connect yükseltmesi** ve olay kimliği aralığı **300-399**için bir EventLog filtresi ekleyin.  
+![Otomatik yükseltme için olay günlüğü filtresi](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
-Artık otomatik yükseltme durumuyla ilişkili olay günlüklerini görebilirsiniz.  
-![Otomatik yükseltme için Eventlog filtresi](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  
+Artık otomatik yükseltme durumuyla ilişkili Eventlogs ' u görebilirsiniz.  
+![Otomatik yükseltme için olay günlüğü filtresi](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  
 
-Sonuç kodu, duruma genel bir bakış içeren bir önek vardır.
+Sonuç kodu, duruma genel bakış içeren bir ön eke sahiptir.
 
 | Sonuç kodu öneki | Açıklama |
 | --- | --- |
 | Başarılı |Yükleme başarıyla yükseltildi. |
-| Yükseltme İptal edildi |Geçici bir koşul yükseltmeyi durdurdu. Tekrar denenecek ve beklenti daha sonra başarılı olmasıdır. |
-| YükseltmeNotSupported |Sistem, sistemin otomatik olarak yükseltilmesine engel olan bir yapılandırmaya sahiptir. Devletin değişip değişmediğini görmek için yeniden denenecek, ancak beklenti sistemin el ile yükseltilmesi gerektiği. |
+| Yükseltme Iptal edildi |Geçici bir koşul yükseltmeyi durdurdu. Yeniden denenecek ve beklenmek, daha sonra başarılı olur. |
+| Yükseltilebilir nominal destekleniyor |Sistemin otomatik olarak yükseltilmesini engelleyen bir yapılandırması vardır. Durumun değiştiğini görmek için yeniden denenir, ancak beklentide sistemin el ile yükseltilmesi gerekir. |
 
-Burada bulduğunuz en yaygın iletilerin listesi vereceksiniz. Tümlerini listelemiyor, ancak sonuç iletisi sorunun ne olduğu konusunda açık olmalıdır.
+Burada, bulduğunuz en yaygın mesajların bir listesi verilmiştir. Tümünü listelemez, ancak sonuç iletisi sorunun ne olduğu konusunda açık olmalıdır.
 
-| Sonuç İletisi | Açıklama |
+| Sonuç Iletisi | Açıklama |
 | --- | --- |
-| **Yükseltme İptal edildi** | |
-| UpgradeAbortedCouldNotSetUpgradeMarker |Kayıt defterine yazamadı. |
-| YükseltmeAbortedInsufficientDatabasePermissions |Yerleşik yöneticiler grubunun veritabanına izinleri yoktur. Bu sorunu gidermek için Azure AD Connect'in en son sürümüne el ile yükseltin. |
-| YükseltmeAbortedInsufficientDiskSpace |Yükseltmeyi desteklemek için yeterli disk alanı yoktur. |
-| YükseltmeAbortedSecurityGroupsNotPresent |Eşitleme altyapısı tarafından kullanılan tüm güvenlik gruplarını bulup çözemedi. |
-| UpgradeAbortedServiceCanNotStarted |NT Hizmeti **Microsoft Azure AD Eşitlemesi** başlatılamamış. |
-| YükseltmeAbortedServiceCanNotBeStopped |NT Hizmeti **Microsoft Azure AD Eşitlemesi** duramadı. |
-| YükseltmeAbortedServiceIsNotRunning |NT Hizmeti **Microsoft Azure AD Eşitlemesi** çalışmıyor. |
-| YükseltmeAbortedSyncCycleDisabled |[Zamanlayıcıdaki](how-to-connect-sync-feature-scheduler.md) Eşitleme seçeneği devre dışı bırakıldı. |
-| YükseltmeAbortedSyncExeInUse |[Eşitleme hizmeti yöneticisi Kullanıcı UI](how-to-connect-sync-service-manager-ui.md) sunucuda açıktır. |
-| UpgradeAbortedSyncOrConfigurationInProgress |Yükleme sihirbazı çalışıyor veya zamanlayıcının dışında bir eşitleme zamanlandı. |
-| **YükseltmeNotSupported** | |
-| YükseltmeNotSupportedAdfsSignInMethod | Oturum açma yöntemi olarak Adfs'i seçtiniz. |
-| YükseltmeNotSupportedÖzelleştirilmişSyncRules |Yapılandırmaya kendi özel kurallarınızı eklediniz. |
-| YükseltmeNotSupportedDeviceWritebackEnabled |Aygıt geri [yazma](how-to-connect-device-writeback.md) özelliğini etkinleştirdin. |
-| YükseltmeNotSupportedGroupWritebackEtkin |Grup geri [yazma](how-to-connect-preview.md#group-writeback) özelliğini etkinleştirdin. |
-| YükseltmeNotSupportedInvalidPersistedState |Yükleme Express ayarları veya DirSync yükseltmesi değildir. |
-| YükseltmeNotSupportedMetaverseSizeExceeeded |Metaverse'de 100.000'den fazla nesne var. |
-| YükseltmeNotSupportedMultiForestSetup |Birden fazla ormana bağlanıyorsun. Ekspres kurulum yalnızca bir ormana bağlanır. |
-| YükseltmeNotSupportedNonLocalDbInstall |SQL Server Express LocalDB veritabanı kullanmıyorsunuz. |
-| YükseltmeNotSupportedNonMsolAccount |[AD DS Bağlayıcı hesabı](reference-connect-accounts-permissions.md#ad-ds-connector-account) artık varsayılan MSOL_ hesabı değildir. |
-| YükseltmeNotSupportedNotConfiguredSignInMethod | AAD Connect'i ayarlarken, oturum açma yöntemini seçerken *Yapılandırma yapmayı* seçtiniz. |
-| YükseltmeNotSupportedPtaSignInMethod | Oturum açma yöntemi olarak Geçiş Kimlik Doğrulaması'nı seçtiniz. |
-| YükseltmeNotSupportedStagingModeEnabled |Sunucu [evreleme modunda](how-to-connect-sync-staging-server.md)olarak ayarlanır. |
-| YükseltmeNotSupportedUserWritebackEnabled |Kullanıcı geri [yazma](how-to-connect-preview.md#user-writeback) özelliğini etkinleştirdin. |
+| **Yükseltme Iptal edildi** | |
+| UpgradeAbortedCouldNotSetUpgradeMarker |Kayıt defterine yazılamadı. |
+| UpgradeAbortedInsufficientDatabasePermissions |Yerleşik Yöneticiler grubunun veritabanı izinleri yok. Bu sorunu gidermek için Azure AD Connect en son sürümüne el ile yükseltin. |
+| UpgradeAbortedInsufficientDiskSpace |Bir yükseltmeyi desteklemek için yeterli disk alanı yok. |
+| UpgradeAbortedSecurityGroupsNotPresent |Eşitleme altyapısı tarafından kullanılan tüm güvenlik grupları bulunamadı ve çözümlenemedi. |
+| UpgradeAbortedServiceCanNotBeStarted |NT Service **Microsoft Azure AD eşitleme** başlatılamadı. |
+| UpgradeAbortedServiceCanNotBeStopped |NT Service **Microsoft Azure AD eşitleme** durdurulamadı. |
+| UpgradeAbortedServiceIsNotRunning |NT Service **Microsoft Azure AD eşitleme** çalışmıyor. |
+| UpgradeAbortedSyncCycleDisabled |[Zamanlayıcının](how-to-connect-sync-feature-scheduler.md) synccycle seçeneği devre dışı bırakıldı. |
+| UpgradeAbortedSyncExeInUse |[Eşitleme Hizmeti Yöneticisi Kullanıcı arabirimi](how-to-connect-sync-service-manager-ui.md) sunucuda açıktır. |
+| UpgradeAbortedSyncOrConfigurationInProgress |Yükleme Sihirbazı çalışıyor veya zamanlayıcı dışında bir eşitleme zamanlandı. |
+| **Yükseltilebilir nominal destekleniyor** | |
+| Yükseltildi ınttrsupportedaddfsignınmethod | Oturum açma yöntemi olarak ADFS 'yi seçtiniz. |
+| UpgradeNotSupportedCustomizedSyncRules |Yapılandırmaya kendi özel kurallarınızı eklediniz. |
+| Yükseltildi nominal Devicewritebackenabled |[Cihaz geri yazma](how-to-connect-device-writeback.md) özelliğini etkinleştirdiniz. |
+| 2. Paydatsupportedgroupwritebackenabled |[Grup geri yazma](how-to-connect-preview.md#group-writeback) özelliğini etkinleştirdiniz. |
+| UpgradeNotSupportedInvalidPersistedState |Yükleme bir hızlı ayarlar veya DirSync yükseltmesi değildir. |
+| UpgradeNotSupportedMetaverseSizeExceeeded |Meta veri deposunda 100.000 taneden fazla nesne var. |
+| 1 $ Supportedmultiforestsetup yükseltildi |Birden fazla ormana bağlanıyorsunuz. Hızlı Kurulum yalnızca bir ormana bağlanır. |
+| 1 $ Supportednonlocaldbınstall yükseltildi |SQL Server Express LocalDB veritabanı kullandeğilsiniz. |
+| Yükseltildi nominal olmayan Msolaccount |[AD DS bağlayıcı hesabı](reference-connect-accounts-permissions.md#ad-ds-connector-account) artık varsayılan MSOL_ hesabı değil. |
+| 1 $ Supportednotconfiguredsignınmethod yükseltildi | AAD Connect ayarlanırken, oturum açma yöntemini seçerken *yapılandırmayın* seçeneğini tercih edersiniz. |
+| IBir ısupportedptasignınmethod yükseltildi | Geçiş kimlik doğrulamasını oturum açma yöntemi olarak seçtiniz. |
+| Yükseltilebilir nominal Tsupportedstagingmodeenabled |Sunucu, [hazırlama modunda](how-to-connect-sync-staging-server.md)olacak şekilde ayarlanır. |
+| Şu değeri Yükseltsupporteduserwritebackenabled |[Kullanıcı geri yazma](how-to-connect-preview.md#user-writeback) özelliğini etkinleştirdiniz. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

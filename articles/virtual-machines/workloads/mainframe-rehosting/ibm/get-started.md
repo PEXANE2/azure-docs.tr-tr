@@ -1,6 +1,6 @@
 ---
-title: Azure'da IBM iş yükleri | Microsoft Dokümanlar
-description: Microsoft Azure'u kullanarak IBM z/OS iş yüklerinizi yeniden barındırmak için Microsoft iş ortaklarının ana bilgisayar emülatörlerini ve diğer hizmetleri kullanın.
+title: Azure 'da IBM iş yükleri | Microsoft Docs
+description: Microsoft Azure kullanarak IBM z/OS iş yüklerinizi yeniden barındırmak için Microsoft iş ortaklarından bir ana bilgisayar öykünücüsü ve diğer hizmetleri kullanın.
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
 documentationcenter: ''
@@ -13,31 +13,31 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 13c83c53cdad719d6a4bed4cc1852b85d62082e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68834590"
 ---
-# <a name="ibm-workloads-on-azure"></a>Azure'da IBM iş yükleri
+# <a name="ibm-workloads-on-azure"></a>Azure 'da IBM iş yükleri
 
-Z/OS'ye dayalı birçok IBM ana bilgisayar iş yükü, işlevsellik kaybı olmadan ve kullanıcılar temel sistemlerindeki değişiklikleri fark etmeden Azure'da çoğaltılabilir. Azure'da uygulamaları yeniden barındırmak, ihtiyacınız olan ana bilgisayar benzeri özelliklerin yanı sıra bulutun esnekliğini, kullanılabilirliğini ve olası maliyet tasarruflarını sağlar.
+Z/OS tabanlı pek çok IBM anabilgisayar iş yükü, hiçbir işlevsellik kaybı olmadan ve kullanıcıların temel sistemlerindeki değişikliklere yaşıyorsanız olmadan Azure 'da çoğaltılabilir. Azure 'da uygulamaların yeniden barındırılması, ihtiyacınız olan ana bilgisayar benzeri özellikleri ve bulutun potansiyeli, kullanılabilirliği ve potansiyel maliyet tasarrufunu sağlar.
 
-Azure, mevcut IBM ana bilgisayar ortamlarıyla tümleştirmeyi destekleyerek, anlamlı olan uygulamaları geçirmenize, gerektiğinde karma çözümler çalıştırmanıza ve zaman içinde geçiş yapmanızı sağlar. Azure için varolan ana bilgisayar tabanlı programları tamamen yeniden yazabiliyor olsanız da, bunları yeniden barındırmak daha yaygındır. Yeniden yazma, geçiş projelerine maliyet, karmaşıklık ve zaman ekler. Yeniden barındırma ile şunları yapabilirsiniz:
+Azure, mevcut IBM ana bilgisayar ortamları ile tümleştirmeyi destekler, bu sayede anlamlı olan applicates geçirmenize, gerektiğinde karma çözümler çalıştırmanıza ve zaman içinde geçiş yapmaya olanak tanır. Mevcut ana bilgisayar tabanlı programları Azure için tamamen yeniden yazabilirsiniz, ancak bunları yeniden barındırmak daha yaygındır. Yeniden yazma, geçiş projelerine maliyet, karmaşıklık ve zaman ekler. Yeniden barındırma ile şunları yapabilirsiniz:
 
-- Uygulamaları bulut tabanlı bir emülatöre taşıyın.
+- Uygulamaları bulut tabanlı bir öykünücüye taşıyın.
 
 - Veritabanını bulut tabanlı bir veritabanına geçirin.
 
-- Kod dönüştürme motorlarını kullanarak modülleri ve kodu değiştirin.
+- Kod dönüştürme altyapılarını kullanarak modülleri ve kodu değiştirin.
 
-Ayrıca, WebSphere ve MQ da dahil olmak üzere IBM yazılımı artık Azure Marketi'ndedir. IBM yazılımı lisansıyla, sanal bir makineyi hızla başlatmak için Azure tarafından sağlanan isteğe bağlı altyapı ölçeklemelerinden yararlanabilirsiniz.
+Ayrıca, WebSphere ve MQ dahil olmak üzere IBM Yazılımları artık Azure Marketi 'nde. IBM yazılım lisansıyla bir sanal makineyi hızlı bir şekilde başlatmak için Azure tarafından sunulan isteğe bağlı altyapı ölçeklendirmesinden yararlanabilirsiniz.
 
-IBM ana bilgisayar sistemlerini Azure'a geçirmenize yardımcı olmak için kapsamlı bir iş ortağı ekosistemi kullanılabilir. Çoğu, uygulamaları aşamalı olarak yeniden yazmaya veya değiştirmeye başlamadan önce mümkün olan her yerde yeniden kullanmanın pragmatik bir yaklaşımını izler. [Azure Ana Bilgisayar Geçiş merkezi'ndeki](https://azure.microsoft.com/migration/mainframe/)iş ortaklarından daha fazla rehberlik ve yardım alın.
+IBM ana bilgisayar sistemlerini Azure 'a geçirmenize yardımcı olacak kapsamlı bir iş ortağı ekosistemi mevcuttur. En iyi şekilde, yeniden yazma veya uygulamaları değiştirme gibi aşamalı bir dağıtımda alanlarında önce mümkün olan her yerde yeniden kullanma kolay bir yaklaşımını izler. [Azure ana bilgisayar geçiş merkezi](https://azure.microsoft.com/migration/mainframe/)' nde iş ortaklarından daha fazla rehberlik ve yardım alın.
 
 **Sonraki adımlar**
 
-- [Ana bilgisayar göçü: mitler ve gerçekler](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [Azure'da IBM zD&T geliştirme/test ortamını yükleme](./install-ibm-z-environment.md)
-- [IBM zD&T v1'de Uygulama Geliştiricileri Kontrollü Dağıtım (ADCD) kurma](./demo.md)
-- [Azure'da IBM DB2 pureScale](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
+- [Ana bilgisayar geçişi: Myon ve olgular](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
+- [Azure 'da IBM zD&T geliştirme ve test ortamı 'nı yükler](./install-ibm-z-environment.md)
+- [IBM zD&T v1 'de uygulama geliştiricileri denetimli dağıtımı (ADCD) ayarlama](./demo.md)
+- [Azure 'da IBM DB2 pureScale](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)

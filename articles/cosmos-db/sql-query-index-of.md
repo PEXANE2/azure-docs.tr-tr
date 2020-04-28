@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde INDEX_OF
-description: Azure Cosmos DB'de SQL sistem fonksiyonu INDEX_OF hakkında bilgi edinin.
+description: Azure Cosmos DB INDEX_OF SQL sistem işlevi hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 50e489fdf57398d486b07944782ecbb3fd1d6a43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71350994"
 ---
 # <a name="index_of-azure-cosmos-db"></a>INDEX_OF (Azure Cosmos DB)
- İlk belirtilen dize ifadesi içinde ikinci dize ifadesinin ilk oluşumunun başlangıç konumunu döndürür veya dize bulunamazsa -1.  
+ İlk belirtilen dize ifadesinde ikinci dize ifadesinin ilk örneğinin başlangıç konumunu döndürür veya dize bulunamazsa-1.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -26,20 +26,20 @@ INDEX_OF(<str_expr1>, <str_expr2> [, <numeric_expr>])
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *str_expr1*  
-   Aranacak dize ifadesidir.  
+   , Aranacak dize ifadesidir.  
   
 *str_expr2*  
-   Aranacak dize ifadesidir.  
+   , Aranacak dize ifadesidir.  
 
-*numeric_expr* Aramanın başlatacağı konumu ayarlayan isteğe bağlı sayısal ifade. *str_expr1'da* ilk pozisyon 0'dır. 
+*numeric_expr* Aramanın başlayacağı konumu ayarlayan isteğe bağlı sayısal ifade. *Str_expr1* ilk konum 0 ' dır. 
   
-## <a name="return-types"></a>İade türleri
+## <a name="return-types"></a>Dönüş türleri
   
-  Sayısal bir ifade verir.  
+  Sayısal bir ifade döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnekte "abc" içindeki çeşitli alt dizeleri dizini döndürür.  
+  Aşağıdaki örnek, "abc" içindeki çeşitli alt dizelerin dizinini döndürür.  
   
 ```sql
 SELECT INDEX_OF("abc", "ab") AS i1, INDEX_OF("abc", "b") AS i2, INDEX_OF("abc", "c") AS i3 
@@ -53,6 +53,6 @@ SELECT INDEX_OF("abc", "ab") AS i1, INDEX_OF("abc", "b") AS i2, INDEX_OF("abc", 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB giriş](introduction.md)

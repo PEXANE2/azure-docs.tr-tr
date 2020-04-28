@@ -1,6 +1,6 @@
 ---
-title: Azure'da SAP HANA'da olağanüstü durum kurtarma ilkeleri ve hazırlık (Büyük Örnekler) | Microsoft Dokümanlar
-description: Azure'da SAP HANA'da olağanüstü durum kurtarma ilkeleri ve hazırlık (Büyük Örnekler)
+title: Azure 'da SAP HANA olağanüstü durum kurtarma ilkeleri ve hazırlığı (büyük örnekler) | Microsoft Docs
+description: Azure 'da SAP HANA olağanüstü durum kurtarma ilkeleri ve hazırlığı (büyük örnekler)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -14,96 +14,96 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70101252"
 ---
-# <a name="disaster-recovery-principles"></a>Olağanüstü Durum Kurtarma ilkeleri
+# <a name="disaster-recovery-principles"></a>Olağanüstü durum kurtarma ilkeleri
 
-HANA Büyük Örnekleri, farklı Azure bölgelerindeki HANA Büyük Örnek damgaları arasında olağanüstü durum kurtarma işlevi sunar. Örneğin, ABD'nin Batı Bölgesi Azure'da HANA Büyük Örnek birimlerini dağıtıyorsanız, ABD Doğu bölgesindeki HANA Büyük Örnek birimlerini olağanüstü durum kurtarma birimleri olarak kullanabilirsiniz. Daha önce de belirtildiği gibi, olağanüstü durum kurtarma otomatik olarak yapılandırılmaz, çünkü DR bölgesindeki başka bir HANA Büyük Örnek birimi için ödeme niz gerekmektedir. Olağanüstü durum kurtarma kurulumu ölçeklendirmenin yanı sıra ölçeklendirme kurulumları için de çalışır. 
+HANA büyük örnekler, farklı Azure bölgelerindeki HANA büyük örnek damgaları arasında bir olağanüstü durum kurtarma işlevselliği sunar. Örneğin, Azure 'un ABD Batı bölgesinde HANA büyük örnek birimleri dağıtırsanız, ABD Doğu bölgesindeki HANA büyük örnek birimlerini olağanüstü durum kurtarma birimleri olarak kullanabilirsiniz. Daha önce belirtildiği gibi, olağanüstü durum kurtarma, DR bölgesindeki başka bir HANA büyük örnek birimi için ödeme yapmanızı gerektirdiğinden otomatik olarak yapılandırılmaz. Olağanüstü durum kurtarma kurulumu, ölçek artırma ve genişleme kurulumları için de çalışır. 
 
-Şimdiye kadar dağıtılan senaryolarda, müşteriler yüklü bir HANA örneğini kullanan üretim dışı sistemleri çalıştırmak için DR bölgesindeki birimi kullanır. HANA Büyük Örnek ünitesi, üretim amacıyla kullanılan SKU ile aynı SKU'ya ait olmalıdır. Aşağıdaki resim, Azure üretim bölgesindeki sunucu birimi ile olağanüstü durum kurtarma bölgesi arasındaki disk yapılandırmasının nasıl göründüğünü gösterir:
+Şimdiye kadar dağıtılan senaryolarda, müşteriler, yüklü bir HANA örneği kullanan üretim dışı sistemleri çalıştırmak için DR bölgesindeki birimi kullanır. HANA büyük örnek birimi, üretim amaçları için kullanılan SKU ile aynı SKU 'da olmalıdır. Aşağıdaki görüntüde, Azure üretim bölgesindeki sunucu birimi ile olağanüstü durum kurtarma bölgesi arasındaki disk yapılandırmasının nasıl göründüğü gösterilmektedir:
 
-![Disk açısından DR kurulum yapılandırması](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_setup.PNG)
+![Disk bakış noktasından DR kurulum yapılandırması](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_setup.PNG)
 
-Bu genel bakış grafiğinde gösterildiği gibi, daha sonra ikinci bir disk birimleri kümesi sipariş etmeniz gerekir. Hedef disk birimleri, olağanüstü durum kurtarma birimlerindeki üretim örneğinin üretim hacimleri ile aynı boyuttadır. Bu disk birimleri, olağanüstü durum kurtarma sitesindeki HANA Büyük Örnek sunucu birimiyle ilişkilidir. Aşağıdaki birimler üretim bölgesinden DR sitesine çoğaltılır:
+Bu genel bakış grafiğinde gösterildiği gibi, ikinci bir disk birimi kümesi sipariş etmeniz gerekir. Hedef disk birimleri, olağanüstü durum kurtarma birimlerindeki üretim örneği için üretim birimleriyle aynı boyutlardır. Bu disk birimleri, olağanüstü durum kurtarma sitesindeki HANA büyük örnek sunucusu birimiyle ilişkilendirilir. Aşağıdaki birimler, üretim bölgesinden DR sitesine çoğaltılır:
 
-- /hana/veri
-- /hana/logbackups 
-- /hana/shared (/usr/sap içerir)
+- /Hana/Data
+- /Hana/logbackups 
+- /Hana/Shared (/usr/SAP içerir)
 
-SAP HANA işlem günlüğü, bu birimlerden geri yükleme nin yapıldığı şekilde gerekli olmadığından / hana/günlük hacmi çoğaltılamaz. 
+Bu birimlerden geri yükleme işleminin tamamlanması için SAP HANA işlem günlüğü gerekli olmadığından,/Hana/log birimi çoğaltılmaz. 
 
-Sunulan olağanüstü durum kurtarma işlevinin temeli, HANA Büyük Örnek altyapısı tarafından sunulan depolama çoğaltma işlevidir. Depolama tarafında kullanılan işlevsellik, depolama biriminde değişiklikler meydana geldikçe, eşzamanlı bir şekilde çoğalan sabit bir değişiklik akışı değildir. Bunun yerine, bu birimlerin anlık görüntüleri düzenli olarak oluşturulan gerçeğine dayanan bir mekanizmadır. Zaten çoğaltılmış anlık görüntü ile henüz çoğaltılmadı yeni bir anlık görüntü arasındaki delta, daha sonra olağanüstü durum kurtarma sitesine hedef disk birimlerine aktarılır.  Bu anlık görüntüler birimlerde depolanır ve olağanüstü durum kurtarma başarısız olması durumunda, bu birimlerde geri yüklenmeleri gerekir.  
+Sunulan olağanüstü durum kurtarma işlevinin temeli, HANA büyük örnek altyapısının sunduğu depolama çoğaltma işlevidir. Depolama tarafında kullanılan işlevsellik, depolama biriminde değişiklikler olduğu için zaman uyumsuz olarak çoğaltılan değişikliklerin sabit bir akışı değildir. Bunun yerine, bu birimlerin anlık görüntülerinin düzenli olarak oluşturulduğu olguyu temel alan bir mekanizmadır. Zaten çoğaltılan bir anlık görüntü ve henüz çoğaltılmamış yeni bir anlık görüntü arasındaki Delta, daha sonra olağanüstü durum kurtarma sitesine hedef disk birimlerine aktarılır.  Bu anlık görüntüler birimlerde depolanır ve bir olağanüstü durum kurtarma yük devretmesi varsa, bu birimlerde geri yüklenmesi gerekir.  
 
-Birimin tüm verilerinin ilk aktarımı, veri miktarı anlık görüntüler arasındaki deltalardan daha küçük hale gelmeden önce olmalıdır. Sonuç olarak, DR sitesindeki birimler üretim alanında gerçekleştirilen birim anlık görüntülerinin her birini içerir. Sonuç olarak, bu DR sistemini, üretim sistemini geri almadan kayıp verileri kurtarmak için daha önceki bir duruma ulaşmak için kullanabilirsiniz.
+Birimin tüm verilerinin ilk aktarımı, veri miktarı, anlık görüntüler arasında değişimleri 'tan daha küçük hale gelmelidir. Sonuç olarak, DR sitesindeki birimler üretim sitesinde gerçekleştirilen birim anlık görüntülerinin her birini içerir. Son olarak, bu DR sistemini kullanarak, kayıp verileri kurtarmak için üretim sistemini geri almadan önceki bir duruma sahip olabilirsiniz.
 
-Bir HANA Büyük Örnek biriminde birden fazla bağımsız SAP HANA örneği içeren bir MCOD dağıtımı varsa, tüm SAP HANA örneklerinin depolamayı DR tarafına çoğaltması beklenmektedir.
+Tek bir HANA büyük örnek biriminde birden çok bağımsız SAP HANA örneğine sahip bir MCOD dağıtımı varsa, tüm SAP HANA örneklerinin DR tarafında çoğaltılan depolamayı elde etmek beklenmektedir.
 
-HANA System Replication'ı üretim sitenizde yüksek kullanılabilirlik işlevselliği olarak kullandığınız ve DR sitesi için depolama tabanlı çoğaltma kullandığınız durumlarda, birincil siteden DR örneğine kadar her iki düğümün hacimleri çoğaltılır. Dr'ye hem birincil hem de ikincil çoğaltmayı karşılamak için DR sitesinde ek depolama alanı (birincil düğümle aynı boyutta) satın almalısınız. 
+HANA sistem çoğaltmasını üretim sitenizde yüksek kullanılabilirliğe sahip bir işlev olarak kullandığınız ve DR sitesi için depolama tabanlı çoğaltma kullandığınız durumlarda, birincil siteden DR örneğine olan düğümlerin her iki düğümün birimi çoğaltılır. Hem birincil hem de ikincil bilgisayardan DR 'ye çoğaltma sağlamak için DR sitesinde ek depolama alanı (birincil düğümle aynı boyut) satın almalısınız. 
 
 
 
 >[!NOTE]
->HANA Büyük Örnek depolama çoğaltma işlevi, depolama anlık görüntülerini yansıtıyor ve çoğaltıyor. Bu makalenin Yedekleme ve geri yükleme bölümünde tanıtılan depolama anlık görüntülerini gerçekleştirmezseniz, olağanüstü durum kurtarma sitesinde herhangi bir çoğaltma olamaz. Depolama anlık görüntü yürütme olağanüstü durum kurtarma sitesine depolama çoğaltma için bir ön koşuldur.
+>HANA büyük örnek depolama çoğaltma işlevi, depolama anlık görüntülerini yansıtmakta ve çoğaltmakta. Bu makalenin yedekleme ve geri yükleme bölümünde tanıtılan depolama anlık görüntülerini gerçekleştirmezseniz, olağanüstü durum kurtarma sitesine herhangi bir çoğaltma yapılamaz. Depolama anlık görüntüsü yürütme, olağanüstü durum kurtarma sitesine depolama çoğaltması için bir önkoşuldur.
 
 
 
 ## <a name="preparation-of-the-disaster-recovery-scenario"></a>Olağanüstü durum kurtarma senaryosunun hazırlanması
-Bu senaryoda, üretim Azure bölgesinde HANA Büyük Örnekleri üzerinde çalışan bir üretim sisteminiz vardır. İzleyen adımlar için, hana sisteminin SID'sinin "PRD" olduğunu ve DR Azure bölgesindeki HANA Büyük Örnekleri'nde çalışan bir üretim dışı sisteme sahip olduğunuzu varsayalım. İkincisi için, onun SID olduğunu varsayalım "TST." Aşağıdaki resim bu yapılandırmayı gösterir:
+Bu senaryoda, üretim Azure bölgesindeki HANA büyük örneklerde çalışan bir üretim sisteminiz vardır. Aşağıdaki adımlarda, bu HANA sisteminin SID 'sinin "PRD" olduğunu ve DR Azure bölgesindeki HANA büyük örneklerinde çalışan bir üretim dışı sisteminiz olduğunu varsayalım. İkincisi için, SID 'sinin "TST" olduğunu varsayalım. Aşağıdaki görüntüde bu yapılandırma gösterilmektedir:
 
-![DR kurulumunun başlangıcı](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start1.PNG)
+![DR kurulumu 'nu başlatma](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start1.PNG)
 
-Sunucu örneği ek depolama birimi kümesiyle önceden sipariş edilmemişse, Azure Hizmet Yönetimi'ndeki SAP HANA, tst'yi çalıştırdığınız HANA Büyük Örnek birimine üretim yinelemesi için hedef olarak ek birim kümesini bağlar HANA örneği. Bu amaçla, üretim HANA örneğinIN SID sağlamanız gerekir. Azure Hizmet Yönetimi'ndeki SAP HANA bu birimlerin ekini doğruladıktan sonra, bu birimleri HANA Büyük Örnek birimine takmanız gerekir.
+Sunucu örneği zaten ek depolama birimi kümesi ile sıralanmışsa, Azure hizmet yönetimi üzerindeki SAP HANA, ek birim kümesini, TST HANA örneğini çalıştırdığınız HANA büyük örnek birimine üretim çoğaltması için hedef olarak ekler. Bu amaçla, üretim HANA örneğinizin SID 'sini sağlamanız gerekir. Azure hizmet yönetimi üzerindeki SAP HANA bu birimlerin eklenmesini onayladıktan sonra, bu birimleri HANA büyük örnek birimine bağlamanız gerekir.
 
 ![DR kurulumu sonraki adım](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start2.PNG)
 
-Bir sonraki adım, TST HANA örneğini çalıştırdığınız DR Azure bölgesindeki HANA Büyük Örnek birimine ikinci SAP HANA örneğini yüklemenizdir. Yeni yüklenen SAP HANA örneğinin aynı SID'ye sahip olması gerekir. Oluşturulan kullanıcıların üretim örneğinin sahip olduğu UID ve Grup Kimliği'ne sahip olması gerekir. Ayrıntılar için [Yedekleme'yi](hana-backup-restore.md) okuyun ve geri yükleyin. Yükleme başarılı olduysa, şunları yapmanız gerekir:
+Sonraki adım, ikinci SAP HANA örneğini, TST HANA örneğini çalıştırdığınız DR Azure bölgesindeki HANA büyük örnek birimine yüklemenize yöneliktir. Yeni yüklenen SAP HANA örneğinin aynı SID 'ye sahip olması gerekir. Oluşturulan kullanıcıların, üretim örneği ile aynı UID ve grup KIMLIĞINE sahip olması gerekir. Ayrıntılar için [yedekleme ve geri yükleme](hana-backup-restore.md) konusunu okuyun. Yükleme başarılı olursa şunları yapmanız gerekir:
 
-- [Yedekleme ve geri yükleme](hana-backup-restore.md)de açıklanan depolama anlık görüntü hazırlama adım 2 çalıştırın.
-- Henüz yapmadıysanız HANA Büyük Örnek biriminin DR birimi için ortak bir anahtar oluşturun. [Yedekleme ve geri](hana-backup-restore.md)yüklemede açıklanan depolama anlık görüntü hazırlama adım 3'e bakın.
-- *HANABackupCustomerDetails.txt'yi* yeni HANA örneğiyle koruyun ve depolamaya bağlantının doğru çalışıp çalışmadığını test edin.  
-- DR Azure bölgesindeki HANA Büyük Örnek biriminde yeni yüklenen SAP HANA örneğini durdurun.
-- Bu PRD birimlerini çıkarın ve Azure Hizmet Yönetimi'nde SAP HANA ile iletişime geçin. Birimler, depolama çoğaltma hedefi olarak işlev görürken erişilebilir olamadığı için üniteye monte edilemiyor.  
+- [Yedekleme ve geri yükleme](hana-backup-restore.md)bölümünde açıklanan depolama anlık görüntüsü hazırlığının 2. adımını yürütün.
+- Henüz yapmadıysanız, HANA büyük örnek birimi DR birimi için ortak anahtar oluşturun. [Yedekleme ve geri yükleme](hana-backup-restore.md)bölümünde açıklanan depolama anlık görüntüsü hazırlığının 3. adımına bakın.
+- *Hanabackupcustomerdetails. txt dosyasını* yeni Hana örneğiyle koruyun ve depolamanın bağlantısının düzgün çalışıp çalışmadığını test edin.  
+- DR Azure bölgesindeki HANA büyük örnek biriminde yeni yüklenen SAP HANA örneğini durdurun.
+- Bu PRD birimlerini çıkarın ve Azure hizmet yönetiminde SAP HANA başvurun. Depolama çoğaltma hedefi olarak çalışırken erişilebilir olmadıkları için birimler birime bağlı kalamazlar.  
 
-![Çoğaltma oluşturmadan önce DR kurulum adımı](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![Çoğaltma kurulmadan önce DR Kurulum adımı](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
-İşlemekibi, üretim Azure bölgesindeki PRD birimleri yle DR Azure bölgesindeki PRD birimleri arasındaki çoğaltma ilişkisini kurar.
+İşlemler ekibi, üretim Azure bölgesindeki PRD birimleri ve DR Azure bölgesindeki PRD birimleri arasındaki çoğaltma ilişkisini belirler.
 
 >[!IMPORTANT]
->/hana/log birimi çoğaltılamaz, çünkü çoğaltılan SAP HANA veritabanını olağanüstü durum kurtarma sitesinde tutarlı bir duruma geri yüklemek gerekli değildir.
+>Yinelenen SAP HANA veritabanının olağanüstü durum kurtarma sitesinde tutarlı bir duruma geri yüklenmesi gerekli olmadığından,/Hana/log birimi çoğaltılmaz.
 
-Ardından, olağanüstü durum durumunda RTO ve RPO'nuza ulaşmak için depolama anlık görüntü yedekleme zamanlamasını ayarlayın veya ayarlayın. Kurtarma noktası hedefini en aza indirmek için HANA Büyük Örnek hizmetinde aşağıdaki çoğaltma aralıklarını ayarlayın:
-- Birleşik anlık görüntü (anlık görüntü türü **hana)** tarafından kapsanan birimler için, her 15 dakikada bir olağanüstü durum kurtarma sitesindeeşdeğer depolama hacmi hedeflerine çoğaltmak için ayarlayın.
-- Hareket günlüğü yedekleme hacmi (anlık görüntü türü **günlükleri),** her 3 dakikada bir olağanüstü durum kurtarma sitesindeeşdeğer depolama hacmi hedeflerine çoğaltmak için ayarlayın.
+Sonra, olağanüstü durum durumunda RTO ve RPO 'nize ulaşmak için depolama anlık görüntü yedekleme zamanlamasını ayarlayın veya ayarlayın. Kurtarma noktası hedefini en aza indirmek için, HANA büyük örnek hizmetinde aşağıdaki çoğaltma aralıklarını ayarlayın:
+- Birleşik anlık görüntü (Snapshot Type **Hana**) tarafından kapsanan birimler için, her 15 dakikada bir, olağanüstü durum kurtarma sitesindeki eşdeğer depolama birimi hedeflerine yineleme olarak ayarlanır.
+- İşlem günlüğü yedekleme birimi (anlık görüntü türü **günlükleri**) için, olağanüstü durum kurtarma sitesindeki her 3 dakikada bir, aynı depolama birimi hedeflerine Yinele olarak ayarlayın.
 
 Kurtarma noktası hedefini en aza indirmek için aşağıdakileri ayarlayın:
-- **Hana** tipi depolama anlık görüntüsünü gerçekleştirin (bkz. "Adım 7: Anlık görüntüleri gerçekleştirin") her 30 dakikada bir ila 1 saat.
-- SAP HANA hareket günlüğü yedeklemelerini her 5 dakikada bir gerçekleştirin.
-- Günlükleri **logs** tür depolama anlık her 5-15 dakikada bir gerçekleştirin. Bu aralık süresi ile, yaklaşık 15-25 dakika bir RPO elde.
+- Bir **Hana** türü depolama anlık görüntüsü gerçekleştirin (bkz. "adım 7: anlık görüntü gerçekleştirme") her 30 dakikada 1 saat.
+- Her 5 dakikada bir SAP HANA işlem günlüğü yedeklemesi gerçekleştirin.
+- Her 5-15 dakikada bir **günlük** türü depolama anlık görüntüsü gerçekleştirin. Bu Aralık döneminde 15-25 dakikalık bir RPO 'SU elde edersiniz.
 
-Bu kurulumla, işlem günlüğü yedeklemeleri, depolama anlık görüntüleri ve HANA işlem günlüğü yedekleme hacmi ve /hana/veri çoğaltma ve /hana/paylaşılan (/usr/sap içerir) bu grafikte gösterilen verilere benzeyebilir:
+Bu kurulumla, işlem günlüğü yedeklemeleri, depolama anlık görüntüleri ve HANA işlem günlüğü yedekleme birimi ve/Hana/Data 'ın çoğaltılması ve/Hana/Shared (/usr/SAP), bu grafikte gösterilen verilere benzeyebilir:
 
- ![Hareket günlüğü yedekleme anlık görüntüsü ile zaman eksenindeki anlık ayna arasındaki ilişki](./media/hana-overview-high-availability-disaster-recovery/snapmirror.PNG)
+ ![Bir zaman eksenindeki bir işlem günlüğü yedekleme anlık görüntüsü ve yaslama görüntüsü arasındaki ilişki](./media/hana-overview-high-availability-disaster-recovery/snapmirror.PNG)
 
-Olağanüstü durum kurtarma durumunda daha da iyi bir RPO elde etmek için, Azure'daki SAP HANA'daki HANA işlem günlüğü yedeklemelerini diğer Azure bölgesine kopyalayabilirsiniz. Bu daha fazla RPO azaltma elde etmek için aşağıdaki adımları gerçekleştirin:
+Olağanüstü durum kurtarma durumunda daha iyi bir RPO elde etmek için, Azure 'daki SAP HANA HANA işlem günlüğü yedeklemelerini diğer Azure bölgesine kopyalayabilirsiniz. Bu ek RPO azaltmasına ulaşmak için aşağıdaki adımları gerçekleştirin:
 
-1. HANA hareket günlüğünü mümkün olduğunca sık /hana/logbackups'a yedekle.
-1. Hareket günlüğü yedeklemelerini NFS paylaşımbarındırılan Azure sanal makinelerine kopyalamak için rsync'i kullanın. SANAL M'ler Azure üretim bölgesinde ve DR bölgelerindeki Azure sanal ağlarında dır. Her iki Azure sanal ağını da üretim HANA Large Instances' ı Azure' a bağlayan devreye bağlamanız gerekir. [HANA Büyük Örnekler bölümüyle olağanüstü durum kurtarma için Ağ göz önünde bulundurulması](#Network-considerations-for-disaster recovery-with-HANA-Large-Instances) gereken grafiklere bakın. 
-1. Bölgedeki hareket günlüğü yedeklemelerini NFS dışa aktarılan depolama alanına bağlı VM'de tutun.
-1. Bir felaket başarısız durumda, felaket kurtarma sitesinde NFS payı üzerinde daha yakın zamanda alınan işlem günlüğü yedeklemeleri ile /hana/logbackups hacminde bulduğunuz işlem günlüğü yedeklemeleri tamam. 
-1. DR bölgesine kaydedilebilen en son yedeklemeye geri yüklemek için bir hareket günlüğü yedeklemesi başlatın.
+1. HANA işlem günlüğünü/Hana/logbackupiçin mümkün olduğunca sık yedekleyin.
+1. NFS paylaşımında barındırılan Azure sanal makinelerine işlem günlüğü yedeklerini kopyalamak için rsync kullanın. VM 'Ler Azure sanal ağlarında ve DR bölgelerinde bulunur. Üretim HANA büyük örneklerini Azure 'a bağlayan bağlantı hattına her iki Azure sanal ağını de bağlamanız gerekir. [Hana büyük örneklerle olağanüstü durum kurtarma Için ağ hususları](#Network-considerations-for-disaster recovery-with-HANA-Large-Instances) bölümünde grafiklere bakın. 
+1. İşlem günlüğü yedeklemelerini, sanal makinenin NFS tarafından içe aktarılmış depolama alanına bağlı bölgede saklayın.
+1. Olağanüstü durum yük devretme durumunda, olağanüstü durum kurtarma sitesindeki NFS paylaşımında daha önce gerçekleştirilen işlem günlüğü yedeklemelerini daha fazla alan,/Hana/logbackups birimi üzerinde bulduğunuz işlem günlüğü yedeklerini tamamlar. 
+1. DR bölgesine kaydedilebilecek en son yedeklemeye geri yüklemek için bir işlem günlüğü yedeklemesi başlatın.
 
-HANA Büyük Örnek işlemleri çoğaltma ilişkisi kurulumonaylamak ve yürütme depolama anlık görüntü yedekleri başlattığınızda, veri çoğaltma başlar.
+HANA büyük örnek işlemleri çoğaltma ilişkisi kurulumunu doğrulamaktadır ve yürütme depolama anlık görüntü yedeklemelerini başlattığınızda, veri çoğaltma başlar.
 
-![Çoğaltma oluşturmadan önce DR kurulum adımı](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start4.PNG)
+![Çoğaltma kurulmadan önce DR Kurulum adımı](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start4.PNG)
 
-Çoğaltma ilerledikçe, DR Azure bölgelerindeki PRD birimlerindeki anlık görüntüler geri yüklenmez. Sadece saklanır. Birimler böyle bir durumda monte edilmişse, PRD SAP HANA örneği DR Azure bölgesindeki sunucu birimine yüklendikten sonra bu birimleri kaldırdığınız durumu temsil eder. Ayrıca, henüz geri yüklenmemiş depolama yedeklemelerini de temsil eder.
+Çoğaltma ilerledikçe, DR Azure bölgelerindeki PRD birimlerindeki anlık görüntüler geri yüklenmez. Bunlar yalnızca depolanır. Birimler böyle bir duruma bağlanmışsa, PRD SAP HANA örneği DR Azure bölgesindeki sunucu birimine yüklendikten sonra bu birimleri bağladığınız durumu temsil eder. Bunlar, henüz geri yüklenmemiş depolama yedeklemelerini de temsil eder.
 
-Bir hata varsa, en son depolama anlık görüntüsü yerine eski bir depolama anlık görüntüsüne geri yüklemeyi de seçebilirsiniz.
+Yük devretme işlemi varsa, en son depolama anlık görüntüsü yerine daha eski bir depolama anlık görüntüsüne geri yüklemeyi de tercih edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Olağanüstü durum kurtarma başarısız yordamı.](hana-failover-procedure.md)
+- [Olağanüstü durum kurtarma yük devretme yordamına](hana-failover-procedure.md)bakın.

@@ -1,6 +1,6 @@
 ---
-title: .NET - Azure Depolama ile depolanmış bir erişim ilkesi tanımlama
-description: .NET istemci kitaplığını kullanarak depolanmış bir erişim ilkesini nasıl tanımlayın öğrenin.
+title: .NET-Azure depolama ile depolanan bir erişim ilkesi tanımlama
+description: .NET istemci kitaplığını kullanarak depolanan bir erişim ilkesini nasıl tanımlayacağınızı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,31 +10,31 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 272d676d0a5a55262b1c68d0bae9a9ab229df72c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68990747"
 ---
-# <a name="define-a-stored-access-policy-with-net"></a>.NET ile depolanmış bir erişim ilkesi tanımlama
+# <a name="define-a-stored-access-policy-with-net"></a>.NET ile depolanan bir erişim ilkesi tanımlama
 
-Depolanan erişim ilkesi, sunucu tarafındaki hizmet düzeyi paylaşılan erişim imzaları (SAS) üzerinde ek bir denetim düzeyi sağlar. Depolanmış bir erişim ilkesinin tanımlanması, paylaşılan erişim imzalarını gruplandırmaya ve ilke tarafından bağlı paylaşılan erişim imzaları için ek kısıtlamalar sağlamaya hizmet eder. Bir SAS'ın başlangıç saatini, son kullanma saatini veya izinlerini değiştirmek veya yayımlandıktan sonra iptal etmek için depolanmış bir erişim ilkesini kullanabilirsiniz.
+Depolanan erişim ilkesi, sunucu tarafında hizmet düzeyi paylaşılan erişim imzaları (SAS) üzerinde ek bir denetim düzeyi sağlar. Depolanan erişim ilkesini tanımlama, paylaşılan erişim imzalarını gruplamak ve ilke tarafından bağlanan paylaşılan erişim imzaları için ek kısıtlamalar sağlamak için kullanılır. Bir SAS için başlangıç zamanını, süre sonu zamanını veya izinleri değiştirmek ya da verildikten sonra iptal etmek için bir saklı erişim ilkesi kullanabilirsiniz.
   
- Aşağıdaki depolama kaynakları depolanan erişim ilkelerini destekler:  
+ Aşağıdaki depolama kaynakları, depolanan erişim ilkelerini destekler:  
   
-- Blob kaplar  
+- Blob kapsayıcıları  
 - Dosya paylaşımları  
 - Kuyruklar  
 - Tablolar  
   
 > [!NOTE]
-> Kapsayıcıda depolanan bir erişim ilkesi, kapsayıcının kendisine veya içerdiği lekelere izin veren paylaşılan bir erişim imzasıyla ilişkilendirilebilir. Benzer şekilde, bir dosya paylaşımında depolanan bir erişim ilkesi, paylaşımın kendisine veya içerdiği dosyalara izin veren paylaşılan bir erişim imzasıyla ilişkilendirilebilir.  
+> Kapsayıcıda depolanan bir erişim ilkesi, kapsayıcının kendisine veya içerdiği bloblara izin veren bir paylaşılan erişim imzası ile ilişkilendirilebilir. Benzer şekilde, bir dosya paylaşımında depolanan erişim ilkesi, paylaşım için izinleri veren paylaşılan erişim imzasıyla veya içerdiği dosyalar ile ilişkilendirilebilir.  
 >
-> Depolanan erişim ilkeleri yalnızca bir hizmet SAS için desteklenir. Saklanan erişim ilkeleri hesap SAS veya kullanıcı delegasyonu SAS için desteklenmez.  
+> Depolanan erişim ilkeleri yalnızca bir hizmet SAS için desteklenir. Saklı erişim ilkeleri, hesap SAS veya Kullanıcı temsili SAS için desteklenmez.  
 
-## <a name="create-a-stored-access-policy"></a>Depolanmış erişim ilkesi oluşturma
+## <a name="create-a-stored-access-policy"></a>Depolanan erişim ilkesi oluşturma
 
-Aşağıdaki kod, bir kapsayıcıüzerinde depolanmış bir erişim ilkesi oluşturur. Kapsayıcıda veya blobs üzerinde bir hizmet SAS için kısıtlamalar belirtmek için erişim ilkesini kullanabilirsiniz.
+Aşağıdaki kod, bir kapsayıcıda depolanan erişim ilkesi oluşturur. Kapsayıcıda veya Bloblarında bir hizmet sa 'Sı kısıtlamalarını belirtmek için erişim ilkesini kullanabilirsiniz.
 
 ```csharp
 private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer container, string policyName)
@@ -60,6 +60,6 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Paylaşılan erişim imzalarını (SAS) kullanarak Azure Depolama kaynaklarına sınırlı erişim izni verme](storage-sas-overview.md)
+- [Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](storage-sas-overview.md)
 - [Depolanan erişim ilkesi tanımlama](/rest/api/storageservices/define-stored-access-policy)
 

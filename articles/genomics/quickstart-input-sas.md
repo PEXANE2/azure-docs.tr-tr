@@ -1,7 +1,7 @@
 ---
-title: Paylaşılan erişim imzalarını kullanarak iş akışı
+title: Paylaşılan erişim imzalarını kullanan iş akışı
 titleSuffix: Microsoft Genomics
-description: Bu makalede, depolama hesabı anahtarları yerine paylaşılan erişim imzaları (SAS) kullanarak Microsoft Genomics hizmetine iş akışı nasıl gönderilen gösteriş gösterilmiştir.
+description: Bu makalede, depolama hesabı anahtarları yerine paylaşılan erişim imzaları (SAS) kullanılarak Microsoft Genomiks hizmetine bir iş akışı gönderme gösterilmektedir.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72248579"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Depolama hesabı anahtarı yerine SAS kullanarak Microsoft Genomiks’e iş akışını gönderme 
 
-Bu makalede, depolama hesabı anahtarları yerine [paylaşılan erişim imzaları (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) içeren bir config.txt dosyasını kullanarak Microsoft Genomics hizmetine iş akışının nasıl gönderilen gösteriş gösteriş göstermektedir. Config.txt dosyasında görünür depolama hesabı anahtarı olmasıyla ilgili güvenlik endişeleri varsa bu özellik yararlı olabilir. 
+Bu makalede, depolama hesabı anahtarları yerine [paylaşılan erişim imzaları (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) içeren bir config. txt dosyası kullanılarak Microsoft Genomiks hizmetine bir iş akışı gönderme gösterilmektedir. Config.txt dosyasında görünür depolama hesabı anahtarı olmasıyla ilgili güvenlik endişeleri varsa bu özellik yararlı olabilir. 
 
-Bu makalede `msgen` istemcisini yükleyip çalıştırdığınız ve Azure Depolama’yı kullanma konusunda bilgi sahibi olduğunuz kabul edilmektedir. Sağlanan örnek verileri kullanarak başarılı bir şekilde bir iş akışı gönderdiyseniz, bu makaleye devam etmeye hazırsınız. 
+Bu makalede `msgen` istemcisini yükleyip çalıştırdığınız ve Azure Depolama’yı kullanma konusunda bilgi sahibi olduğunuz kabul edilmektedir. Belirtilen örnek verileri kullanarak bir iş akışını başarıyla gönderdiyseniz, bu makaleye devam etmeye hazırsınızdır. 
 
 ## <a name="what-is-a-sas"></a>SAS nedir?
 [Paylaşılan erişim imzası (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. Bir SAS ile hesap anahtarlarınızı paylaşmadan depolama hesabınızdaki kaynaklara erişim verebilirsiniz. Bu, uygulamalarınızda paylaşılan erişim imzaları kullanmanın anahtar noktasıdır. SAS, hesap anahtarlarınızı tehlikeye atmadan depolama kaynaklarınızı paylaşmanın güvenli bir yoludur.
@@ -53,10 +53,10 @@ Bir SAS belirteci, Azure Depolama Gezini kullanılarak veya program aracılığ�
 
 Giriş dosyaları için SAS kapsamı belirli giriş dosyası (blob) olarak belirlenmelidir. Bir SAS belirteci oluşturmak için [bu yönergeleri](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer) izleyin. SAS oluşturduktan sonra, ekranda sorgu dizesini içeren tam URL'nin yanı sıra sorgu dizesinin kendisi sağlanır ve bu değerler kopyalanabilir.
 
- ![Genomik SAS Depolama Kaşifi](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Genomik SAS Depolama Kaşifi")
+ ![Genomiksas Depolama Gezgini](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Genomiksas Depolama Gezgini")
 
 
-### <a name="set-up-create-a-sas-programmatically"></a>Kurulum: Programlı bir SAS oluşturma
+### <a name="set-up-create-a-sas-programmatically"></a>Kurulumu: program aracılığıyla SAS oluşturma
 
 Azure Depolama SDK'sı kullanarak bir SAS oluşturmak için [.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), [Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) ve [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage) dahil birkaç dilde mevcut olan belgelere bakın. 
 
@@ -66,7 +66,7 @@ SDK olmadan bir SAS oluşturmak için SAS sorgu dizesi, SAS kimlik doğrulaması
 ## <a name="add-the-sas-to-the-configtxt-file"></a>SAS’yi config.txt dosyasına ekleme
 Bir SAS sorgu dizesini kullanarak Microsoft Genomiks hizmeti aracılığıyla iş akışı çalıştırmak için, config.txt dosyasını düzenleyerek config.txt dosyasındaki anahtarları kaldırın. Ardından, SAS sorgu dizesini (`?` ile başlar) resimde gösterildiği gibi çıkış kapsayıcısı adına ekleyin. 
 
-![Genomik SAS config](./media/quickstart-input-sas/genomics-sas-config.png "Genomik SAS config")
+![Genomiksas yapılandırması](./media/quickstart-input-sas/genomics-sas-config.png "Genomiksas yapılandırması")
 
 Aşağıdaki komutla iş akışınızı göndermek için Microsoft Genomiks Python istemcisini kullanın ve giriş blob adlarının her birine karşılık gelen SAS sorgu dizesini ekleyin:
 
@@ -77,7 +77,7 @@ msgen submit -f [full path to your config file] -b1 [name of your first paired e
 ### <a name="if-adding-the-input-file-names-to-the-configtxt-file"></a>config.txt dosyasına giriş dosya adlarını ekliyorsanız
 Alternatif olarak, resimde gösterildiği gibi SAS sorgu belirteçleri eklenerek, eşlenmiş uç okuma dosyalarının adları config.txt dosyasına doğrudan eklenebilir:
 
-![Genomik SAS config blobnames](./media/quickstart-input-sas/genomics-sas-config-blobnames.png "Genomik SAS config blobnames")
+![Genomiksas yapılandırması blobadları](./media/quickstart-input-sas/genomics-sas-config-blobnames.png "Genomiksas yapılandırması blobadları")
 
 Bu örnekte, `-b1` ve `-b2` komutlarını çıkarıp aşağıdaki komutu kullanarak Microsoft Genomiks Python istemcisiyle iş akışınızı gönderin:
 

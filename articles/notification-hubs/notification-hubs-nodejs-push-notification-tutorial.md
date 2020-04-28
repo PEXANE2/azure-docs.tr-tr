@@ -1,7 +1,7 @@
 ---
-title: Azure Bildirim Hub'ları ve Node.js ile anında iletme bildirimleri gönderme
-description: Bir Düğüm.js uygulamasından anında iletme bildirimleri göndermek için Bildirim Hub'larını nasıl kullanacağınızı öğrenin.
-keywords: push notification,push bildirimleri,düğüm.js push,ios push
+title: Azure Notification Hubs ve Node. js ile anında iletme bildirimleri gönderme
+description: Bir Node. js uygulamasından anında iletme bildirimleri göndermek için Notification Hubs nasıl kullanacağınızı öğrenin.
+keywords: anında iletme bildirimi, anında iletme bildirimleri, Node. js push, iOS anında iletme
 services: notification-hubs
 documentationcenter: nodejs
 author: sethmanheim
@@ -18,24 +18,24 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71213199"
 ---
-# <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Bildirim Hub'ları ve Node.js ile anında iletme bildirimleri gönderme
+# <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs ve Node. js ile anında iletme bildirimleri gönderme
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
 > [!IMPORTANT]
-> Bu öğreticiyi tamamlamak için etkin bir Azure hesabınızın olması gerekir. Hesabınız yoksa, [Azure Ücretsiz Deneme](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)Sürümü aracılığıyla birkaç dakika içinde ücretsiz bir deneme hesabı oluşturun.
+> Bu öğreticiyi tamamlamak için etkin bir Azure hesabınızın olması gerekir. Hesabınız yoksa [Azure Ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)ile yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturun.
 
-Bu kılavuz, doğrudan bir [Düğüm.js](https://nodejs.org) uygulamasından Azure Bildirim Hub'ları yardımıyla anında iletme bildirimlerinin nasıl gönderileceğini gösterir.
+Bu kılavuz, doğrudan bir [Node. js](https://nodejs.org) uygulamasından Azure Notification Hubs yardımıyla anında iletme bildirimleri göndermeyi gösterir.
 
-Kapsanan senaryolar arasında aşağıdaki platformlardaki uygulamalara anında iletme bildirimleri gönderilmesi yer almaktadır:
+Kapsamındaki senaryolar aşağıdaki platformlarda uygulamalara anında iletme bildirimleri göndermeyi içerir:
 
 - Android
 - iOS
@@ -44,73 +44,73 @@ Kapsanan senaryolar arasında aşağıdaki platformlardaki uygulamalara anında 
 
 ## <a name="notification-hubs"></a>Notification Hubs
 
-Azure Bildirim Hub'ları, mobil cihazlara anında iletme bildirimleri göndermek için kullanımı kolay, çok platformlu, ölçeklenebilir bir altyapı sağlar. Hizmet altyapısıyla ilgili ayrıntılar için [Azure Bildirim Hub'ları](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) sayfasına bakın.
+Azure Notification Hubs, mobil cihazlara anında iletme bildirimleri göndermek için kullanımı kolay, çok platformlu ve ölçeklenebilir bir altyapı sağlar. Hizmet altyapısı hakkında daha fazla bilgi için bkz. [Azure Notification Hubs](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) sayfası.
 
-## <a name="create-a-nodejs-application"></a>Düğüm Oluşturma.js Uygulaması
+## <a name="create-a-nodejs-application"></a>Node. js uygulaması oluşturma
 
-Bu öğreticinin ilk adımı yeni bir boş Düğüm.js uygulaması oluşturmaktır. Bir [Node.js Cloud Service][Node.js Cloud Service] Düğüm.js uygulaması oluşturma yla [Create and deploy a Node.js application to Azure Web Site][nodejswebsite]ilgili talimatlar için bkz. [Web Site with WebMatrix][webmatrix]
+Bu öğreticideki ilk adım yeni bir boş Node. js uygulaması oluşturmaktır. Node. js uygulaması oluşturmayla ilgili yönergeler için bkz. [Node. js uygulaması oluşturma ve dağıtma][nodejswebsite]. Windows PowerShell kullanarak Node. [js bulut hizmeti][Node.js Cloud Service] veya [WebMatrix ile Web sitesi][webmatrix].
 
-## <a name="configure-your-application-to-use-notification-hubs"></a>Uygulamanızı Bildirim Hub'larını Kullanacak Şekilde Yapılandırın
+## <a name="configure-your-application-to-use-notification-hubs"></a>Uygulamanızı kullanmak için yapılandırma Notification Hubs
 
-Azure Bildirim Hub'larını kullanmak için, anında iletme bildirimi REST hizmetleriyle iletişim kuran yerleşik bir yardımcı kitaplıklar kümesi içeren Düğüm.js [azure paketini](https://www.npmjs.com/package/azure)indirmeniz ve kullanmanız gerekir.
+Azure Notification Hubs kullanmak için, anında iletme bildirimi REST hizmetleriyle iletişim kuran yerleşik bir dizi yardımcı kitaplık içeren node. js [Azure paketini](https://www.npmjs.com/package/azure)indirip kullanmanız gerekir.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Paketi almak için Düğüm Paket Yöneticisi'ni (NPM) kullanın
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Paketi edinmek için düğüm Paket Yöneticisi 'Ni (NPM) kullanın
 
 1. **PowerShell** (Windows), **Terminal** (Mac) veya **Bash** (Linux) gibi bir komut satırı arabirimi kullanın ve boş uygulamanızı oluşturduğunuz klasöre gidin.
 2. Komut `npm install azure-sb` penceresinde yürütün.
-3. Bir `node_modules` klasörün oluşturulduğunu `dir` doğrulamak için komutu `ls` el ile çalıştırabilirsiniz.
-4. Bu klasörün içinde, Bildirim Hub'ına erişmek için gereken kitaplıkları içeren **azure** paketini bulun.
+3. Bir `node_modules` klasörün oluşturulduğunu doğrulamak için `ls` veya `dir` komutunu el ile çalıştırabilirsiniz.
+4. Bu klasörün içinde, Bildirim Hub 'ına erişmeniz gereken kitaplıkları içeren **Azure** paketini bulun.
 
 > [!NOTE]
-> Resmi [NPM blogunda NPM](https://blog.npmjs.org/post/85484771375/how-to-install-npm)yükleme hakkında daha fazla bilgi edinebilirsiniz.
+> Resmi [NPM bloguna](https://blog.npmjs.org/post/85484771375/how-to-install-npm)NPM 'yi yükleme hakkında daha fazla bilgi edinebilirsiniz.
 
-### <a name="import-the-module"></a>Modülü alma
-Metin düzenleyicisi kullanarak, uygulama `server.js` dosyasının üst bölümüne aşağıdakileri ekleyin:
+### <a name="import-the-module"></a>Modülü içeri aktar
+Bir metin düzenleyicisi kullanarak, uygulamanın `server.js` dosyasının en üstüne aşağıdakileri ekleyin:
 
 ```javascript
 var azure = require('azure-sb');
 ```
 
-### <a name="set-up-an-azure-notification-hub-connection"></a>Azure Bildirim Hub bağlantısı ayarlama
+### <a name="set-up-an-azure-notification-hub-connection"></a>Azure Notification Hub bağlantısı kurma
 
-Nesne, `NotificationHubService` bildirim hub'larıyla çalışmanızı sağlar. Aşağıdaki kod, bildirim `NotificationHubService` hub'ı için `hubname`bir nesne oluşturur. Azure modülünün içe `server.js` aktarılması için deyimden sonra dosyanın üst kısmına ekleyin:
+Nesnesi `NotificationHubService` , Bildirim Hub 'ları ile çalışmanıza olanak sağlar. Aşağıdaki kod, adlı `NotificationHubService` `hubname`Bildirim Hub 'ı için bir nesne oluşturur. Azure modülünü içeri aktarma ifadesinden sonra `server.js` dosyanın üst kısmına yakın bir şekilde ekleyin:
 
 ```javascript
 var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 ```
 
-Aşağıdaki adımları `connectionstring` gerçekleştirerek [Azure portalından] bağlantı değerini edinin:
+Aşağıdaki adımları gerçekleştirerek `connectionstring` [Azure Portal] bağlantı değerini alın:
 
-1. Sol daki gezinti bölmesinde **Gözat'ı**tıklatın.
-2. **Bildirim Hub'larını**seçin ve ardından örnek için kullanmak istediğiniz hub'ı bulun. Yeni bir Bildirim Hub'ı oluşturma konusunda yardıma ihtiyacınız [varsa, Windows Mağazası'na Başlarken öğreticisine](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) başvurabilirsiniz.
-3. **Ayarlar'ı**seçin.
-4. Erişim **İlkeleri'ni**tıklatın. Hem paylaşılan hem de tam erişim bağlantı dizelerini görürsünüz.
+1. Sol gezinti bölmesinde, **Araştır**' a tıklayın.
+2. **Notification Hubs**' yi seçin ve ardından örnek için kullanmak istediğiniz hub 'ı bulun. Yeni bir Bildirim Hub 'ı oluşturmaya yönelik yardıma ihtiyacınız varsa [Windows Mağazası başlangıç öğreticisine](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) başvurabilirsiniz.
+3. **Ayarlar**' ı seçin.
+4. **Erişim ilkeleri**' ne tıklayın. Hem paylaşılan hem de tam erişimli bağlantı dizelerini görürsünüz.
 
-![Azure portalı - Bildirim Hub'ları](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
+![Azure portal Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> Ayrıca, [Azure PowerShell](/powershell/azureps-cmdlets-docs) tarafından sağlanan **Get-AzureSbNamespace** cmdlet'ini veya Azure Komut Satırı [Arabirimi (Azure CLI)](../cli-install-nodejs.md)ile azure **sb ad alanı göster** komutunu kullanarak bağlantı dizesini de alabilirsiniz.
+> Bağlantı dizesini, [Azure PowerShell](/powershell/azureps-cmdlets-docs) tarafından sunulan **Get-AzureSbNamespace** cmdlet 'Ini veya Azure [komut satırı arabirimi (Azure CLI)](../cli-install-nodejs.md)ile **Azure SB ad alanı göster** komutunu kullanarak da alabilirsiniz.
 
 ## <a name="general-architecture"></a>Genel mimari
 
-Nesne, `NotificationHubService` belirli aygıtlara ve uygulamalara anında iletme bildirimleri göndermek için aşağıdaki nesne örneklerini ortaya çıkarır:
+Nesnesi `NotificationHubService` , belirli cihazlara ve uygulamalara anında iletme bildirimleri göndermek için aşağıdaki nesne örneklerini kullanıma sunar:
 
-- **Android** - `GcmService` mevcut nesne, kullanın`notificationHubService.gcm`
-- **iOS** - `ApnsService` erişilebilen nesneyi kullanın`notificationHubService.apns`
-- **Windows Phone** - `MpnsService` kullanılabilir nesne, kullanın`notificationHubService.mpns`
-- **Evrensel Windows Platformu** `WnsService` - kullanılabilir nesne, kullanın`notificationHubService.wns`
+- **Android** -şu adreste `GcmService` bulunan nesnesini kullanın:`notificationHubService.gcm`
+- **iOS** -şu adresten `ApnsService` erişilebilen nesnesini kullanın:`notificationHubService.apns`
+- **Windows Phone** -şu adreste `MpnsService` bulunan nesnesini kullanın:`notificationHubService.mpns`
+- **Evrensel Windows platformu** -şu adreste `WnsService` bulunan nesnesini kullanın:`notificationHubService.wns`
 
-### <a name="how-to-send-push-notifications-to-android-applications"></a>Nasıl yapilir: Android uygulamalarına anında iletme bildirimleri gönderme
+### <a name="how-to-send-push-notifications-to-android-applications"></a>Nasıl yapılır: Android uygulamalarına anında iletme bildirimleri gönderme
 
-Nesne, `GcmService` Android `send` uygulamalarına anında iletme bildirimleri göndermek için kullanılabilecek bir yöntem sağlar. Yöntem `send` aşağıdaki parametreleri kabul eder:
+Nesnesi `GcmService` , Android uygulamalarına `send` anında iletme bildirimleri göndermek için kullanılabilecek bir yöntem sağlar. `send` Yöntemi aşağıdaki parametreleri kabul eder:
 
-- **Etiketler** - etiket tanımlayıcısı. Etiket sağlanmazsa, bildirim tüm istemcilere gönderilir.
-- **Yük** - iletinin JSON veya ham dize yükü.
-- **Geri arama** - geri arama işlevi.
+- **Etiketler** -etiket tanımlayıcısı. Hiçbir etiket sağlanmazsa, bildirim tüm istemcilere gönderilir.
+- **Yük** -iletinin JSON veya ham dize yükü.
+- **Geri arama** -geri çağırma işlevi.
 
-Taşıma yükü biçimi hakkında daha fazla bilgi için [Taşıma Yükü belgelerine](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)bakın.
+Yük biçimi hakkında daha fazla bilgi için bkz. [Yük belgeleri](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload).
 
-Aşağıdaki kod, `GcmService` tüm kayıtlı `NotificationHubService` istemcilere anında iletme bildirimi göndermek için ortaya çıkan örneği kullanır.
+Aşağıdaki kod, `NotificationHubService` tüm kayıtlı `GcmService` istemcilere anında iletme bildirimi göndermek için tarafından sunulan örneğini kullanır.
 
 ```javascript
 var payload = {
@@ -125,17 +125,17 @@ notificationHubService.gcm.send(null, payload, function(error){
 });
 ```
 
-### <a name="how-to-send-push-notifications-to-ios-applications"></a>Nasıl yapilir: iOS uygulamalarına anında iletme bildirimleri gönderme
+### <a name="how-to-send-push-notifications-to-ios-applications"></a>Nasıl yapılır: iOS uygulamalarına anında iletme bildirimleri gönderme
 
-Yukarıda açıklanan Android uygulamalarında olduğu `ApnsService` gibi, `send` nesne de iOS uygulamalarına anında iletme bildirimleri göndermek için kullanılabilecek bir yöntem sağlar. Yöntem `send` aşağıdaki parametreleri kabul eder:
+Yukarıda açıklanan Android uygulamalarıyla aynı şekilde, `ApnsService` nesnesi iOS uygulamalarına anında iletme `send` bildirimleri göndermek için kullanılabilecek bir yöntem sağlar. `send` Yöntemi aşağıdaki parametreleri kabul eder:
 
-- **Etiketler** - etiket tanımlayıcısı. Etiket sağlanmazsa, bildirim tüm istemcilere gönderilir.
-- **Yük** - iletinin JSON veya dize yükü.
-- **Geri arama** - geri arama işlevi.
+- **Etiketler** -etiket tanımlayıcısı. Hiçbir etiket sağlanmazsa, bildirim tüm istemcilere gönderilir.
+- **Yük** -iletinin JSON veya dize yükü.
+- **Geri arama** -geri çağırma işlevi.
 
-Taşıma biçimi hakkında daha fazla bilgi için Yerel [ve Anında Nakış Bildirim Programlama Kılavuzu](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) belgesinin Bildirim **Yükü** bölümüne bakın.
+Yük biçimi hakkında daha fazla bilgi için, [yerel ve anında Iletme bildirimi Programlama Kılavuzu](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) belgesinin **bildirim yükü** bölümüne bakın.
 
-Aşağıdaki kod, `ApnsService` tüm istemcilere `NotificationHubService` bir uyarı iletisi göndermek için ortaya çıkan örneği kullanır:
+Aşağıdaki kod, `NotificationHubService` tüm istemcilere `ApnsService` bir uyarı iletisi göndermek için tarafından sunulan örneği kullanır:
 
 ```javascript
 var payload={
@@ -148,20 +148,20 @@ notificationHubService.apns.send(null, payload, function(error){
 });
 ```
 
-### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>Nasıl yapilir: Windows Phone uygulamalarına anında iletme bildirimleri gönderme
+### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>Nasıl yapılır: Windows Phone uygulamalarına anında iletme bildirimleri gönderme
 
-Nesne, `MpnsService` Windows `send` Phone uygulamalarına anında iletme bildirimleri göndermek için kullanılabilecek bir yöntem sağlar. Yöntem `send` aşağıdaki parametreleri kabul eder:
+Nesnesi `MpnsService` , Windows Phone uygulamalarına `send` anında iletme bildirimleri göndermek için kullanılabilecek bir yöntem sağlar. `send` Yöntemi aşağıdaki parametreleri kabul eder:
 
-- **Etiketler** - etiket tanımlayıcısı. Etiket sağlanmazsa, bildirim tüm istemcilere gönderilir.
-- **Yük** - iletinin XML yükü.
-- **TargetName** -  `toast` Tost bildirimleri için TargetName. `token`döşeme bildirimleri için.
-- **BildirimSınıfı** - Bildirimin önceliği. Geçerli değerler için [bir sunucu belgesinden Push bildirimleri](https://msdn.microsoft.com/library/hh221551.aspx) **HTTP Üstbilgi Öğeleri** bölümüne bakın.
-- **Seçenekler** - isteğe bağlı istek üstbilgi.
-- **Geri arama** - geri arama işlevi.
+- **Etiketler** -etiket tanımlayıcısı. Hiçbir etiket sağlanmazsa, bildirim tüm istemcilere gönderilir.
+- **Yük** -iletinin XML yükü.
+- **TargetName** -  `toast` Bildirimler için TargetName. `token`kutucuk bildirimleri için.
+- **Notificationclass** -bildirimin önceliği. Geçerli değerler için [bir sunucu belgesinden anında iletme bildirimlerinin](https://msdn.microsoft.com/library/hh221551.aspx) **http üst bilgi öğeleri** bölümüne bakın.
+- **Seçenekler** -isteğe bağlı istek üst bilgileri.
+- **Geri arama** -geri çağırma işlevi.
 
-Geçerli `TargetName` `NotificationClass` ve üstbilgi seçeneklerinin listesi için, [sunucu sayfasından Push bildirimlerine](https://msdn.microsoft.com/library/hh221551.aspx) göz atın.
+Geçerli `TargetName` `NotificationClass` ve üst bilgi seçeneklerinin bir listesi için, [bir sunucu sayfasından anında iletme bildirimlerine](https://msdn.microsoft.com/library/hh221551.aspx) göz atın.
 
-Aşağıdaki örnek kod, `MpnsService` tost `NotificationHubService` push bildirimi göndermek için maruz kalan örneği kullanır:
+Aşağıdaki örnek kod, `MpnsService` `NotificationHubService` bildirim gönderimi bildirimi göndermek için tarafından sunulan örneği kullanır:
 
 ```javascript
 var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
@@ -174,17 +174,17 @@ notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
 
 ### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>Nasıl yapılır: Evrensel Windows Platformu (UWP) uygulamalarına anında iletme bildirimleri gönderme
 
-Nesne, `WnsService` Evrensel `send` Windows Platformu uygulamalarına anında iletme bildirimleri göndermek için kullanılabilecek bir yöntem sağlar.  Yöntem `send` aşağıdaki parametreleri kabul eder:
+Nesnesi `WnsService` , Evrensel Windows platformu uygulamalarına `send` anında iletme bildirimleri göndermek için kullanılabilecek bir yöntem sağlar.  `send` Yöntemi aşağıdaki parametreleri kabul eder:
 
-- **Etiketler** - etiket tanımlayıcısı. Etiket sağlanmazsa, bildirim tüm kayıtlı istemcilere gönderilir.
-- **Yük** - XML ileti yükü.
-- **Türü** - bildirim türü.
-- **Seçenekler** - isteğe bağlı istek üstbilgi.
-- **Geri arama** - geri arama işlevi.
+- **Etiketler** -etiket tanımlayıcısı. Hiçbir etiket sağlanmazsa, bildirim tüm kayıtlı istemcilere gönderilir.
+- **Yük** -XML iletisi yükü.
+- **Tür** -bildirim türü.
+- **Seçenekler** -isteğe bağlı istek üst bilgileri.
+- **Geri arama** -geri çağırma işlevi.
 
-Geçerli türlerin ve istek üstbilgilerinin listesi [için, Anında Bildirim hizmeti isteği ve yanıt üstbilgisini](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx)görün.
+Geçerli türlerin ve İstek üstbilgilerinin listesi için bkz. [anında iletme bildirimi hizmeti isteği ve yanıt üst bilgileri](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
 
-Aşağıdaki kod, `WnsService` bir UWP `NotificationHubService` uygulamasına tost push bildirimi göndermek için maruz kalan örneği kullanır:
+Aşağıdaki kod, `NotificationHubService` UWP uygulamasına `WnsService` bildirim anında iletme bildirimi göndermek için tarafından sunulan örneğini kullanır:
 
 ```javascript
 var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
@@ -197,10 +197,10 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Yukarıdaki örnek parçacıklar, çok çeşitli aygıtlara anında iletme bildirimleri sunmak için kolayca hizmet altyapısı oluşturmanıza olanak tanır. Node.js ile Bildirim Hub'larını kullanmanın temellerini öğrendiğinize göre, bu yetenekleri nasıl daha da genişletebileceğiniz hakkında daha fazla bilgi edinmek için bu bağlantıları izleyin.
+Yukarıdaki örnek kod parçacıkları, çok çeşitli cihazlara anında iletme bildirimleri iletmek için kolayca hizmet altyapısını oluşturmanızı sağlar. Artık Node. js ile Notification Hubs kullanmanın temellerini öğrendiğinize göre, bu özellikleri daha fazla nasıl genişletebileceğinizi öğrenmek için bu bağlantıları izleyin.
 
-- [Azure Bildirim Hub'ları](https://msdn.microsoft.com/library/azure/jj927170.aspx)için MSDN Başvurusu'na bakın.
-- Daha fazla örnek ve uygulama ayrıntıları için GitHub'daki Düğüm deposu [için Azure SDK'yı] ziyaret edin.
+- Bkz. [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx)Için MSDN Başvurusu.
+- Daha fazla örnek ve uygulama ayrıntıları için GitHub 'daki [düğüm deposu Için Azure SDK 'sını] ziyaret edin.
 
 [Node için Azure SDK]: https://github.com/WindowsAzure/azure-sdk-for-node
 [Next Steps]: #nextsteps
@@ -232,4 +232,4 @@ Yukarıdaki örnek parçacıklar, çok çeşitli aygıtlara anında iletme bildi
 [webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
-[Azure Portalı]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com

@@ -1,6 +1,6 @@
 ---
-title: "REST API: Azure Veri Gölü Depolama Gen1'de hesap yönetimi işlemleri | Microsoft Dokümanlar"
-description: Veri Gölü Depolama Gen1 hesabında hesap yönetimi işlemleri gerçekleştirmek için Azure Veri Gölü Depolama Gen1 ve WebHDFS REST API'yi kullanın
+title: 'REST API: Azure Data Lake Storage 1. üzerinde hesap yönetimi işlemleri | Microsoft Docs'
+description: Data Lake Storage 1. hesapta hesap yönetim işlemlerini gerçekleştirmek için Azure Data Lake Storage 1. ve WebileREST API kullanın
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 97fe33309f36cd7545f8c9d6c2d34671641caa1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60877121"
 ---
-# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API'yi kullanarak Azure Veri Gölü Depolama Gen1'de hesap yönetimi işlemleri
+# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API kullanarak Azure Data Lake Storage 1. hesap yönetimi işlemleri
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
@@ -27,24 +27,24 @@ ms.locfileid: "60877121"
 >
 >
 
-Bu makalede, REST API'sini kullanarak Azure Veri Gölü Depolama Gen1'de hesap yönetimi işlemlerinin nasıl gerçekleştirildirileceğini öğreneceksiniz. Hesap yönetimi işlemleri arasında bir Veri Gölü Depolama Gen1 hesabı oluşturma, Veri Gölü Depolama Gen1 hesabı nın silmesi vb. yer alır. REST API kullanarak Veri Gölü Depolama Gen1'de dosya sistemi işlemlerinin nasıl gerçekleştirileceklerine ilişkin talimatlar için, [REST API'yi kullanarak Veri Gölü Depolama Gen1'deki Dosya Sistemi işlemlerine](data-lake-store-data-operations-rest-api.md)bakın.
+Bu makalede, REST API kullanarak Azure Data Lake Storage 1. hesap yönetim işlemlerini nasıl gerçekleştireceğinizi öğreneceksiniz. Hesap yönetimi işlemleri Data Lake Storage 1. hesap oluşturmayı, Data Lake Storage 1. hesabı silmeyi vb. içerir. REST API kullanarak Data Lake Storage 1. dosya sistemi işlemlerinin nasıl gerçekleştirileceği hakkında yönergeler için bkz. [REST API kullanarak Data Lake Storage 1. dosya sistemi işlemleri](data-lake-store-data-operations-rest-api.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 * **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
-* **[cURL](https://curl.haxx.se/)**. Bu makalede, bir Veri Gölü Depolama Gen1 hesabına karşı REST API çağrıları yapmak için nasıl göstermek için cURL kullanır.
+* **[kıvır](https://curl.haxx.se/)**. Bu makalede, bir Data Lake Storage 1. hesabına yönelik REST API çağrılarının nasıl yapılacağını göstermek için kıvrımlı kullanılır.
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Azure Active Directory'yi kullanarak nasıl kimlik doğrulaması gerçekleştiririm?
 Azure Active Directory'yi kullanarak kimlik doğrulaması gerçekleştirmek üzere iki yaklaşımdan faydalanabilirsiniz:
 
-* Uygulamanızın son kullanıcı kimlik doğrulaması için (etkileşimli), [.NET SDK'yı kullanarak Veri Gölü Depolama Gen1 ile son kullanıcı kimlik doğrulaması'na](data-lake-store-end-user-authenticate-rest-api.md)bakın.
-* Uygulamanız için servise hizmet kimlik doğrulaması (etkileşimli olmayan) için , [.NET SDK'yı kullanarak Veri Gölü Depolama Gen1 ile hizmete hizmet kimlik doğrulaması'na](data-lake-store-service-to-service-authenticate-rest-api.md)bakın.
+* Uygulamanızda (etkileşimli) Son Kullanıcı kimlik doğrulaması için bkz. [.NET SDK kullanarak Data Lake Storage 1. Ile Son Kullanıcı kimlik doğrulaması](data-lake-store-end-user-authenticate-rest-api.md).
+* Uygulamanıza yönelik hizmetten hizmete kimlik doğrulaması için (etkileşimli olmayan), bkz. [.NET SDK kullanarak Data Lake Storage 1. ile hizmetten hizmete kimlik doğrulaması](data-lake-store-service-to-service-authenticate-rest-api.md).
 
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. Nesil hesabı oluşturma
 Bu işlem, [burada](https://docs.microsoft.com/rest/api/datalakestore/accounts/create) tanımlanan REST API çağrısını temel alır.
 
-Aşağıdaki cURL komutunu kullanın. ** \<Storagegengen1name>'yi** Veri Gölü Depolama Gen1 adınız ile değiştirin.
+Aşağıdaki cURL komutunu kullanın. ** \<Yourstoragegen1name>** değiştirin Data Lake Storage 1. adı.
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstoragegen1name>?api-version=2015-10-01-preview -d@"C:\temp\input.json"
 
@@ -58,10 +58,10 @@ Yukarıdaki komutta; \<`REDACTED`\> öğesini daha önce aldığınız yetkilend
     "properties": {}
     }    
 
-## <a name="delete-a-data-lake-storage-gen1-account"></a>Veri Gölü Depolama Gen1 hesabını silme
+## <a name="delete-a-data-lake-storage-gen1-account"></a>Data Lake Storage 1. hesabı silme
 Bu işlem, [burada](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete) tanımlanan REST API çağrısını temel alır.
 
-Bir Veri Gölü Depolama Gen1 hesabını silmek için aşağıdaki cURL komutunu kullanın. ** \<Storagegengen1name>'yi** Data Lake Storage Gen1 hesap adınız ile değiştirin.
+Bir Data Lake Storage 1. hesabını silmek için aşağıdaki kıvrımlı komutunu kullanın. ** \<Yourstoragegen1name>** değerini Data Lake Storage 1. hesap adınızla değiştirin.
 
     curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstoragegen1name>?api-version=2015-10-01-preview
 
@@ -72,9 +72,9 @@ Aşağıdaki kod parçacığı gibi bir çıktı görmeniz gerekir:
     ...
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [REST API kullanarak Veri Gölü Depolama Gen1 dosya sistemi işlemleri](data-lake-store-data-operations-rest-api.md).
+* [REST API kullanarak Data Lake Storage 1. dosya sistemi işlemleri](data-lake-store-data-operations-rest-api.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Azure Veri Göl Depolama Gen1 REST API Başvuru](https://docs.microsoft.com/rest/api/datalakestore/)
-* [Azure Veri Gölü Depolama Gen1 ile uyumlu Açık Kaynak Büyük Veri uygulamaları](data-lake-store-compatible-oss-other-applications.md)
+* [Azure Data Lake Storage 1. REST API başvurusu](https://docs.microsoft.com/rest/api/datalakestore/)
+* [Azure Data Lake Storage 1. uyumlu açık kaynak büyük veri uygulamaları](data-lake-store-compatible-oss-other-applications.md)
 

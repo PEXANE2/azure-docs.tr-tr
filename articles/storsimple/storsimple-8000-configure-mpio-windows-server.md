@@ -1,6 +1,6 @@
 ---
-title: StorSimple cihazınız için MPIO'nuzu yapılandırın | Microsoft Dokümanlar
-description: Windows Server 2012 R2 çalıştıran bir ana bilgisayara bağlı StorSimple aygıtınız için Multipath G/Ç'yi (MPIO) nasıl yapılandırıştırılabildiğini açıklar.
+title: StorSimple cihazınız için MPIO 'YU yapılandırma | Microsoft Docs
+description: Windows Server 2012 R2 çalıştıran bir konağa bağlı olan StorSimple cihazınız için çok yollu g/ç 'yi (MPIO) nasıl yapılandıracağınızı açıklar.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,180 +15,180 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
 ms.openlocfilehash: eda134257edb851eea076459b44e02fc59028f46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60363402"
 ---
-# <a name="configure-multipath-io-for-your-storsimple-device"></a>StorSimple cihazınız için Multipath G/Ç'yi yapılandırın
+# <a name="configure-multipath-io-for-your-storsimple-device"></a>StorSimple cihazınız için çok yollu g/ç yapılandırma
 
-Bu öğretici, Windows Server 2012 R2 çalıştıran ve StorSimple fiziksel aygıtına bağlı bir ana bilgisayarda Multipath I/O (MPIO) özelliğini yüklemek ve kullanmak için izlemeniz gereken adımları açıklar. Bu makaledeki kılavuz yalnızca StorSimple 8000 serisi fiziksel aygıtlar için geçerlidir. MPIO şu anda StorSimple Cloud Appliance'da desteklenmez.
+Bu öğreticide, Windows Server 2012 R2 çalıştıran ve StorSimple fiziksel cihazına bağlı bir konakta çok yollu g/ç (MPIO) özelliğini yüklemek ve kullanmak için izlemeniz gereken adımlar açıklanmaktadır. Bu makaledeki kılavuz yalnızca StorSimple 8000 serisi fiziksel cihazları için geçerlidir. MPIO, StorSimple Cloud Appliance Şu anda desteklenmiyor.
 
-Microsoft, windows server'daki Multipath G/Ç (MPIO) özelliği için, yüksek oranda kullanılabilir, hataya dayanıklı iSCSI ağ yapılandırmaları oluşturmaya yardımcı olmak için destek oluştursun. MPIO, sunucu ve depolama aygıtı arasında mantıksal yollar oluşturmak için gereksiz fiziksel yol bileşenlerini (bağdaştırıcılar, kablolar ve anahtarlar) kullanır. Mantıksal bir yolun başarısız olmasına neden olan bir bileşen hatası varsa, çok yol lu mantık, uygulamaların verilerine erişebilmeleri için G/Ç için alternatif bir yol kullanır. Ayrıca yapılandırmanıza bağlı olarak, MPIO tüm bu yollar daki yükü yeniden dengeleyerek performansı artırabilir. Daha fazla bilgi için [MPIO'ya genel bakış](https://technet.microsoft.com/library/cc725907.aspx "MPIO genel bakış ve özellikleri")bakın.
+Microsoft, Windows Server 'daki çok yollu g/ç (MPIO) özelliği için, yüksek oranda kullanılabilir, hataya dayanıklı Iscsı ağ yapılandırmalarına yönelik destek oluşturulmuştur. MPIO, sunucu ile depolama cihazı arasında mantıksal yollar oluşturmak için gereksiz fiziksel yol bileşenleri (bağdaştırıcılar, kablolar ve anahtarlar) kullanır. Bir bileşen hatası varsa, bir mantıksal yolun başarısız olmasına neden olan çok yol mantığı, uygulamaların verilerine erişmeye devam edebilmesi için g/ç için alternatif bir yol kullanır. Ayrıca, yapılandırmanıza bağlı olarak, bu yolların tamamında yükü yeniden dengeleyerek MPIO performansı da iyileştirebilir. Daha fazla bilgi için bkz. [MPIO 'ya genel bakış](https://technet.microsoft.com/library/cc725907.aspx "MPIO genel bakış ve Özellikler").
 
-StorSimple çözümünüzün yüksek kullanılabilirliği için MPIO, StorSimple cihazınızda yapılandırılmalıdır. MPIO, Windows Server 2012 R2 çalıştıran ana bilgisayar sunucularınıza yüklendiğinde, sunucular bir bağlantı, ağ veya arabirim hatasına tolerans gösterebilirsiniz.
+StorSimple çözümünüzün yüksek kullanılabilirliği için, StorSimple cihazınızda MPIO yapılandırılmalıdır. Windows Server 2012 R2 çalıştıran ana bilgisayar sunucularınız üzerinde MPIO yüklendiğinde, sunucular bir bağlantı, ağ veya arabirim hatasına göre zaman alabilir.
 
-## <a name="mpio-configuration-summary"></a>MPIO yapılandırma özeti
+## <a name="mpio-configuration-summary"></a>MPIO Yapılandırma Özeti
 
-MPIO, Windows Server'da isteğe bağlı bir özelliktir ve varsayılan olarak yüklenmez. Sunucu Yöneticisi aracılığıyla bir özellik olarak yüklenmesi gerekir.
+MPIO, Windows Server 'da isteğe bağlı bir özelliktir ve varsayılan olarak yüklenmez. Sunucu Yöneticisi aracılığıyla bir özellik olarak yüklenmesi gerekir.
 
-StorSimple cihazınızda MPIO'yı yapılandırmak için aşağıdaki adımları izleyin:
+StorSimple cihazınızda MPIO 'YU yapılandırmak için aşağıdaki adımları izleyin:
 
-* Adım 1: Windows Server ana bilgisayara MPIO yükleme
-* Adım 2: StorSimple birimleri için MPIO'yı yapılandırın
-* Adım 3: StorBasit montaj birimleri ana bilgisayarda
-* Adım 4: Yüksek kullanılabilirlik ve yük dengeleme için MPIO'yı yapılandırın
+* 1. Adım: Windows Server konağına MPIO 'YU yüklemeyin
+* 2. Adım: StorSimple birimlerine yönelik MPIO yapılandırma
+* 3. Adım: konağa StorSimple birimleri bağlama
+* 4. Adım: MPIO 'YU yüksek kullanılabilirlik ve yük dengeleme için yapılandırma
 
-Önceki adımların her biri aşağıdaki bölümlerde ele alınmıştır.
+Yukarıdaki adımların her biri aşağıdaki bölümlerde ele alınmıştır.
 
-## <a name="step-1-install-mpio-on-the-windows-server-host"></a>Adım 1: Windows Server ana bilgisayara MPIO yükleme
+## <a name="step-1-install-mpio-on-the-windows-server-host"></a>1. Adım: Windows Server konağına MPIO 'YU yüklemeyin
 
-Bu özelliği Windows Server ana bilgisayarınıza yüklemek için aşağıdaki yordamı tamamlayın.
+Bu özelliği Windows Server konağa yüklemek için aşağıdaki yordamı izleyin.
 
-#### <a name="to-install-mpio-on-the-host"></a>Ana bilgisayara MPIO yüklemek için
+#### <a name="to-install-mpio-on-the-host"></a>Konakta MPIO 'YU yüklemek için
 
-1. Windows Server ana bilgisayarınızda Sunucu Yöneticisi'ni açın. Varsayılan olarak, Server Manager, Yöneticiler grubunun bir üyesi Windows Server 2012 R2 veya Windows Server 2012 çalıştıran bir bilgisayarda oturum açtığında başlar. Sunucu Yöneticisi zaten açık değilse, **Sunucu Yöneticisi'> başlat'ı**tıklatın.
+1. Windows Server ana bilgisayarınızda Sunucu Yöneticisi açın. Varsayılan olarak, Sunucu Yöneticisi, Yöneticiler grubunun bir üyesi Windows Server 2012 R2 veya Windows Server 2012 çalıştıran bir bilgisayarda oturum açtığında başlatılır. Sunucu Yöneticisi zaten açık değilse, **> başlat Sunucu Yöneticisi**' e tıklayın.
    
    ![Sunucu Yöneticisi](./media/storsimple-configure-mpio-windows-server/IC740997.png)
 
-2. **Rol ve özellikler > Ekle'yi > Server Manager'ı**tıklatın. Bu, **Rol ve Özellikler Ekle** sihirbazını başlatır.
+2. **Rol ve özellik eklemek > Sunucu Yöneticisi > Pano**' ya tıklayın. Bu, **rol ve özellik ekleme** Sihirbazı 'nı başlatır.
    
-   ![Roller ve Özellikler Sihirbazı Ekle 1](./media/storsimple-configure-mpio-windows-server/IC740998.png)
-3. Rol **ve Özellikler Ekle** sihirbazında aşağıdaki adımları gerçekleştirin:
+   ![Rol ve Özellik Ekleme Sihirbazı 1](./media/storsimple-configure-mpio-windows-server/IC740998.png)
+3. **Rol ve özellik ekleme** Sihirbazı 'nda aşağıdaki adımları gerçekleştirin:
    
    1. **Başlamadan önce** sayfasında **İleri**'ye tıklayın.
-   2. Yükleme **türü seç** sayfasında, **Rol tabanlı veya özellik tabanlı** yüklemenin varsayılan ayarını kabul edin. **İleri**'ye tıklayın.
+   2. **Yükleme türünü seçin** sayfasında **rol tabanlı veya özellik tabanlı** yükleme için varsayılan ayarı kabul edin. **İleri**’ye tıklayın.
    
-       ![Roller ve Özellikler Sihirbazı Ekle 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
-   3. Hedef **sunucu** seç **sayfasında, sunucu havuzundan sunucu seçin'i**seçin. Ana bilgisayar sunucunuz otomatik olarak keşfedilmelidir. **İleri**'ye tıklayın.
+       ![Rol ve Özellik Ekleme Sihirbazı 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
+   3. **Hedef sunucuyu seçin** sayfasında, **Sunucu havuzundan bir sunucu seçin**' i seçin. Ana bilgisayar sunucunuz otomatik olarak keşfedilmelidir. **İleri**’ye tıklayın.
    4. **Sunucu rolleri seç** sayfasında, **İleri** öğesine tıklayın.
-   5. Özellikleri **Seç** sayfasında **Multipath G/Ç'yi**seçin ve **İleri'yi**tıklatın.
+   5. **Özellikleri Seç** sayfasında **çok yollu g/ç**' yi seçin ve **İleri**' ye tıklayın.
    
-       ![Roller ve Özellikler Sihirbazı 5 Ekle](./media/storsimple-configure-mpio-windows-server/IC741000.png)
-   6. Yükleme **seçimlerini onayla** sayfasında, seçimi onaylayın ve gerekirse hedef sunucuyu aşağıda gösterildiği gibi **otomatik olarak yeniden başlat'ı**seçin. **Yükle'yi**tıklatın.
+       ![Rol ve Özellik Ekleme Sihirbazı 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
+   6. **Yükleme seçimlerini Onayla** sayfasında, seçimi onaylayın ve **gerekirse hedef sunucuyu otomatik olarak yeniden Başlat**' ı seçin. **Install**'a tıklayın.
    
-       ![Roller ve Özellikler Sihirbazı Ekle 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
+       ![Rol ve Özellik Ekleme Sihirbazı 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
    7. Yükleme tamamlandığında size bildirilir. Sihirbazı kapatmak için **Kapat**'a tıklayın.
    
-       ![Roller ve Özellikler Sihirbazı Ekle 9](./media/storsimple-configure-mpio-windows-server/IC741002.png)
+       ![Rol ve Özellik Ekleme Sihirbazı 9](./media/storsimple-configure-mpio-windows-server/IC741002.png)
 
-## <a name="step-2-configure-mpio-for-storsimple-volumes"></a>Adım 2: StorSimple birimleri için MPIO'yı yapılandırın
+## <a name="step-2-configure-mpio-for-storsimple-volumes"></a>2. Adım: StorSimple birimlerine yönelik MPIO yapılandırma
 
-MPIO, StorSimple birimlerini tanımlamak için yapılandırılmalıdır. MPIO'yu StorSimple birimlerini tanıyacak şekilde yapılandırmak için aşağıdaki adımları gerçekleştirin.
+MPIO, StorSimple birimlerini tanımlayacak şekilde yapılandırılmalıdır. MPIO 'YU StorSimple birimlerini tanıyacak şekilde yapılandırmak için aşağıdaki adımları uygulayın.
 
-#### <a name="to-configure-mpio-for-storsimple-volumes"></a>StorSimple birimleri için MPIO yapılandırmak için
+#### <a name="to-configure-mpio-for-storsimple-volumes"></a>StorSimple birimlerine yönelik MPIO yapılandırmak için
 
-1. **MPIO yapılandırmasını**açın. **Server Manager > Pano > Araçları > MPIO'ya**tıklayın.
-2. **MPIO Özellikleri** iletişim kutusunda, **Çoklu Yolları Keşfet** sekmesini seçin.
-3. **iSCSI aygıtları için destek ekle'yi**seçin ve sonra **Ekle'yi**tıklatın.  
-   ![MPIO Özellikleri Çoklu Yolları Keşfedin](./media/storsimple-configure-mpio-windows-server/IC741003.png)
+1. **MPIO yapılandırmasını**açın. **Sunucu Yöneticisi > pano > araçlar > MPIO**' ya tıklayın.
+2. **MPIO özellikleri** Iletişim kutusunda **çok yollarla bul** sekmesini seçin.
+3. **İSCSI cihazları için destek ekle**' yi seçin ve ardından **Ekle**' ye tıklayın.  
+   ![MPIO özellikleri çoklu yolları bulur](./media/storsimple-configure-mpio-windows-server/IC741003.png)
 4. İstendiğinde sunucuyu yeniden başlatın.
-5. **MPIO Özellikleri** iletişim **Add** **kutusunda, MPIO Aygıtlar** sekmesini tıklatın.
-    </br>![MPIO Özellikleri MPIO Cihazlar](./media/storsimple-configure-mpio-windows-server/IC741004.png)
-6. **MPIO Desteği Ekle** iletişim kutusuna, **Aygıt Donanım Kimliği'nin**altında cihazınızın seri numarasını girin. Cihaz seri numarasını almak için StorSimple Device Manager hizmetinize erişin. **Aygıtlar > Panosuna**gidin. Aygıt seri numarası, aygıt panosunun sağ **Hızlı Bakış** bölmesinde görüntülenir.
+5. **MPIO özellikleri** Iletişim kutusunda **MPIO cihazları** sekmesine tıklayın. **Ekle**' ye tıklayın.
+    </br>![MPIO özellikleri MPIO cihazları](./media/storsimple-configure-mpio-windows-server/IC741004.png)
+6. **MPIO desteği ekle** Iletişim kutusunda **cihaz donanım kimliği**' nin altında, cihazınızın seri numarasını girin. Cihaz seri numarasını almak için, StorSimple Aygıt Yöneticisi hizmetinize erişin. **Cihazlara > panosu**' na gidin. Cihaz seri numarası, cihaz panosunun sağ **Hızlı bakış** bölmesinde görüntülenir.
     </br>
-    ![MPIO Desteği Ekle](./media/storsimple-configure-mpio-windows-server/IC741005.png)
+    ![MPIO desteği ekle](./media/storsimple-configure-mpio-windows-server/IC741005.png)
 7. İstendiğinde sunucuyu yeniden başlatın.
 
-## <a name="step-3-mount-storsimple-volumes-on-the-host"></a>Adım 3: StorBasit montaj birimleri ana bilgisayarda
+## <a name="step-3-mount-storsimple-volumes-on-the-host"></a>3. Adım: konağa StorSimple birimleri bağlama
 
-MPIO Windows Server'da yapılandırıldıktan sonra, StorSimple aygıtında oluşturulan birim(ler) monte edilebilir ve artıklık için MPIO'dan yararlanabilir. Bir ses düzeyi takmak için aşağıdaki adımları gerçekleştirin.
+Windows Server 'da MPIO yapılandırıldıktan sonra, StorSimple cihazında oluşturulan birimler bağlanabilir ve daha sonra artıklık için MPIO 'dan yararlanabilir. Bir birimi bağlamak için aşağıdaki adımları gerçekleştirin.
 
-#### <a name="to-mount-volumes-on-the-host"></a>Ana bilgisayara hacim ler monte etmek için
+#### <a name="to-mount-volumes-on-the-host"></a>Konakta birimleri bağlamak için
 
-1. Windows Server ana bilgisayarda **iSCSI Başlatıcı Özellikleri** penceresini açın. **ISCSI Başlatıcısı > Server Manager > Pano > Araçlar'ı**tıklatın.
-2. **iSCSI Başlatıcı Özellikleri** iletişim kutusunda, Bulma sekmesini tıklatın ve ardından **Hedef Portalı Bul'u**tıklatın.
-3. Hedef **Portalı Keşfet** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
+1. Windows Server konağında **Iscsı Başlatıcısı özellikleri** penceresini açın. **Sunucu Yöneticisi > pano > araçlar > Iscsı Başlatıcısı**' na tıklayın.
+2. **Iscsı Başlatıcısı özellikleri** Iletişim kutusunda bulma sekmesine tıklayın ve ardından **hedef portalı bul**' a tıklayın.
+3. **Hedef portalı bul** iletişim kutusunda, aşağıdaki adımları gerçekleştirin:
    
-   1. StorSimple cihazınızın VERİ bağlantı noktasının IP adresini girin (örneğin, DATA 0'ı girin).
-   2. **iSCSI Başlatıcı Özellikleri** iletişim kutusuna dönmek için **Tamam'ı** tıklatın.
+   1. StorSimple cihazınızın VERI bağlantı noktasının IP adresini girin (örneğin, VERILERI 0 girin).
+   2. **Iscsı Başlatıcısı özellikleri** iletişim kutusuna dönmek için **Tamam** ' ı tıklatın.
      
       > [!IMPORTANT]
-      > **iSCSI bağlantıları için özel bir ağ kullanıyorsanız, özel ağa bağlı DATA bağlantı noktasının IP adresini girin.**
+      > **Iscsı bağlantıları için özel bir ağ kullanıyorsanız, özel ağa bağlı olan VERI bağlantı noktasının IP adresini girin.**
     
-4. Cihazınızdaki ikinci bir ağ arabirimi (örneğin, DATA 1) için 2-3 adımlarını yineleyin. Bu arabirimlerin iSCSI için etkinleştirilmesi gerektiğini unutmayın. Daha fazla bilgi için [bkz.](storsimple-8000-modify-device-config.md#modify-network-interfaces)
-5. **iSCSI Başlatıcı Özellikleri** iletişim kutusundaki **Hedefler** sekmesini seçin. **Keşfedilen Hedefler**altında StorSimple cihaz hedef IQN görmelisiniz.
+4. Cihazınızdaki ikinci bir ağ arabirimi (örneğin, VERI 1) için 2-3 adımları yineleyin. Bu arabirimlerin Iscsı için etkinleştirilmesi gerektiğini aklınızda bulundurun. Daha fazla bilgi için bkz. [ağ arabirimlerini değiştirme](storsimple-8000-modify-device-config.md#modify-network-interfaces).
+5. **Iscsı Başlatıcısı özellikleri** Iletişim kutusunda **hedefler** sekmesini seçin. **Bulunan hedefler**altında StorSimple CIHAZ hedefi IQN 'sini görmeniz gerekir.
 
-   ![iSCSI Başlatıcı Özellikleri Hedefleri Sekmesi](./media/storsimple-configure-mpio-windows-server/IC741007.png)
+   ![Iscsı başlatıcı özellikleri hedefler sekmesi](./media/storsimple-configure-mpio-windows-server/IC741007.png)
    
-6. StorSimple aygıtınızla bir iSCSI oturumu oluşturmak için **Bağlan'ı** tıklatın. **Hedefe Bağlan** iletişim kutusu görüntülenir.
-7. Hedefe **Bağlan** iletişim **kutusunda, çok onay** kutusunu etkinleştir'i seçin. **Gelişmiş**'e tıklayın.
-8. Gelişmiş **Ayarlar** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
+6. StorSimple cihazunuzla bir Iscsı oturumu oluşturmak için **Bağlan** ' a tıklayın. **Hedefe Bağlan** iletişim kutusu görüntülenir.
+7. **Hedefe Bağlan** iletişim kutusunda **Çoklu yolu etkinleştir** onay kutusunu işaretleyin. **Gelişmiş**'e tıklayın.
+8. **Gelişmiş ayarlar** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
    
-   1. Yerel **Bağdaştırıcı** açılır listesinde **Microsoft iSCSI Başlatıcısı'nı**seçin.
-   2. **Başlatıcı IP** açılır listesinde ana bilgisayarip inip adresini seçin.
-   3. Hedef **Portal** IP açılır listesinde, aygıt arabiriminin IP'sini seçin.
-   4. **iSCSI Başlatıcı Özellikleri** iletişim kutusuna dönmek için **Tamam'ı** tıklatın.
-9. **Özellikler**'e tıklayın. **Özellikler** iletişim kutusunda Oturum **Ekle'yi**tıklatın.
-10. Hedefe **Bağlan** iletişim **kutusunda, çok onay** kutusunu etkinleştir'i seçin. **Gelişmiş**'e tıklayın.
-11. Gelişmiş **Ayarlar** iletişim kutusunda:
+   1. **Yerel bağdaştırıcı** açılan listesinde, **Microsoft iSCSI başlatıcısı**' nı seçin.
+   2. **BAŞLATıCı IP** açılan listesinde, konağın IP adresini seçin.
+   3. **Hedef portal** IP 'si açılan listesinde, CIHAZ arabiriminin IP 'sini seçin.
+   4. **Iscsı Başlatıcısı özellikleri** iletişim kutusuna dönmek için **Tamam** ' ı tıklatın.
+9. **Özellikler**'e tıklayın. **Özellikler** Iletişim kutusunda **oturum Ekle**' ye tıklayın.
+10. **Hedefe Bağlan** iletişim kutusunda **Çoklu yolu etkinleştir** onay kutusunu işaretleyin. **Gelişmiş**'e tıklayın.
+11. **Gelişmiş ayarlar** iletişim kutusunda:
 
-    1. Yerel **bağdaştırıcı** açılır listesinde Microsoft iSCSI Başlatıcısı'nı seçin.
-    2. **Başlatıcı IP** açılır listesinde, ana bilgisayara karşılık gelen IP adresini seçin. Bu durumda, aygıttaki iki ağ arabirimini ana bilgisayardaki tek bir ağ arabirimine bağlarsınız. Bu nedenle, bu arabirim ilk oturum için sağlanan aynıdır.
-    3. Hedef **Portal IP** açılır listesinde, aygıtta etkinleştirilen ikinci veri arabiriminin IP adresini seçin.
-    4. iSCSI Başlatıcı Özellikleri iletişim kutusuna dönmek için **Tamam'ı** tıklatın. Hedefe ikinci bir oturum eklediniz.
-12. **Server Manager > Pano > Bilgisayar Yönetimi'ne**yönlendirerek Bilgisayar **Yönetimini** açın. Sol bölmede, **Depolama > Disk Yönetimi'ni**tıklatın. Bu ana bilgisayar tarafından görülebilen StorSimple aygıtında oluşturulan birim, **Disk Yönetimi** altında yeni disk(ler) olarak görünür.
-13. Diski başlatma ve yeni bir birim oluşturun. Biçimlendirme işlemi sırasında, 64 KB'lik bir blok boyutu seçin.
+    1. **Yerel bağdaştırıcı** açılan listesinde, Microsoft iSCSI Başlatıcısı ' nı seçin.
+    2. **BAŞLATıCı IP** açılan listesinde, konağa KARŞıLıK gelen IP adresini seçin. Bu durumda, aygıttaki iki ağ arabirimini konaktaki tek bir ağ arabirimine bağlanıyorsunuz. Bu nedenle, bu arabirim ilk oturum için belirtilen ile aynıdır.
+    3. **Hedef portal IP 'si** açılan listesinde, cihazda etkinleştirilen ikinci VERI arabiriminin IP adresini seçin.
+    4. Iscsı Başlatıcısı özellikleri iletişim kutusuna dönmek için **Tamam** ' ı tıklatın. Hedefe ikinci bir oturum eklediniz.
+12. Bilgisayar Yönetimi **> Sunucu Yöneticisi > panosuna**giderek **Bilgisayar Yönetimi** 'ni açın. Sol bölmede, **depolama > disk yönetimi**' ne tıklayın. StorSimple cihazında oluşturulan ve bu konakta görülebilen birim, **disk yönetimi** altında yeni disk (ler) olarak görüntülenir.
+13. Diski başlatın ve yeni bir birim oluşturun. Biçim işlemi sırasında 64 KB 'lik bir blok boyutu seçin.
     
     ![Disk Yönetimi](./media/storsimple-configure-mpio-windows-server/IC741008.png)
-14. **Disk Yönetimi**altında, **Disk'e** sağ tıklayın ve **Özellikleri**seçin.
-15. StorSimple Model #### **Multi-Path Disk Aygıt Özellikleri** iletişim kutusunda **MPIO** sekmesini tıklatın.
+14. **Disk yönetimi**altında, **diske** sağ tıklayın ve **Özellikler**' i seçin.
+15. StorSimple modeli # # # # **Çoklu yol disk cihazı özellikleri** Iletişim kutusunda **MPIO** sekmesine tıklayın.
     
-    ![StorSimple 8100 Çok Disk DeviceProp.](./media/storsimple-configure-mpio-windows-server/IC741009.png)
-16. **DSM Adı** bölümünde **Ayrıntılar'ı** tıklatın ve parametrelerin varsayılan parametrelere ayarlandığından doğrulayın. Varsayılan parametreler şunlardır:
+    ![StorSimple 8100 Multi-Path disk DeviceProp.](./media/storsimple-configure-mpio-windows-server/IC741009.png)
+16. **DSM adı** bölümünde **Ayrıntılar** ' a tıklayın ve parametrelerin varsayılan parametrelere ayarlandığını doğrulayın. Varsayılan parametreler şunlardır:
     
-    * Yol Doğrulama Dönemi = 30
-    * Yeniden Deneme Sayısı = 3
-    * PDO Kaldırma Süresi = 20
-    * Yeniden Deneme Aralığı = 1
-    * Yol Verify Etkin = İşaretlenmemiş.
+    * Yol doğrulama dönemi = 30
+    * Yeniden deneme sayısı = 3
+    * PDO kaldırma dönemi = 20
+    * Yeniden deneme aralığı = 1
+    * Path Verify etkin = Işaretlenmemiş.
 
 > [!NOTE]
 > **Varsayılan parametreleri değiştirmeyin.**
 
 
-## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>Adım 4: Yüksek kullanılabilirlik ve yük dengeleme için MPIO'yı yapılandırın
+## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>4. Adım: MPIO 'YU yüksek kullanılabilirlik ve yük dengeleme için yapılandırma
 
-Çok yol tabanlı yüksek kullanılabilirlik ve yük dengelemesi için, kullanılabilir farklı yolları bildirmek için el ile birden çok oturum eklenmelidir. Örneğin, ana bilgisayarda iSCSI ağına bağlı iki arabirimi varsa ve aygıtın iSCSI ağına bağlı iki arabirimi varsa, uygun yol permütasyonlarıyla yapılandırılan dört oturum gerekir (her DATA arabirimi ve ana bilgisayar arabirimi farklı bir IP alt netindedir ve routable değildir).
+Çoklu yol tabanlı yüksek kullanılabilirlik ve yük dengeleme için, kullanılabilir farklı yolları bildirmek üzere birden çok oturumun el ile eklenmesi gerekir. Örneğin, konağın Iscsı ağına bağlı iki arabirimi varsa ve cihazın Iscsı ağına bağlı iki arabirimi varsa, doğru yol permütasyon ile yapılandırılmış dört oturum olması gerekir (her bir VERI arabirimi ve konak arabirimi farklı bir IP alt ağlardadır ve yönlendirilebilir değilse, yalnızca iki oturum gerekir).
 
-**Aygıt ve uygulama ana bilgisayarınız arasında en az 8 etkin paralel oturum alabildiğinizi öneririz.** Bu, Windows Server sisteminizde 4 ağ arabirimi etkinleştirilerek elde edilebilir. Windows Server ana makinenizdeki donanım veya işletim sistemi düzeyinde ağ sanallaştırma teknolojileri aracılığıyla fiziksel ağ arabirimlerini veya sanal arabirimleri kullanın. Aygıttaki iki ağ arabirimi ile bu yapılandırma 8 etkin oturuma neden olur. Bu yapılandırma, aygıt ve bulut iş akışını optimize etmesine yardımcı olur.
+**Cihaz ile uygulama ana bilgisayarınız arasında en az 8 etkin paralel oturum olmasını öneririz.** Bu, Windows Server sisteminizde 4 ağ arabirimi etkinleştirilerek elde edilebilir. Windows Server konağındaki donanım veya işletim sistemi düzeyinde ağ sanallaştırma teknolojileri aracılığıyla fiziksel ağ arabirimlerini veya sanal arabirimleri kullanın. Cihazdaki iki ağ arabirimi ile bu yapılandırma 8 etkin oturum oluşmasına neden olur. Bu yapılandırma cihaz ve bulut aktarım hızını iyileştirmenize yardımcı olur.
 
 > [!IMPORTANT]
-> **1 GbE ve 10 GbE ağ arabirimlerini karıştırmamanızı öneririz. İki ağ arabirimi kullanıyorsanız, her iki arabirim de aynı türde olmalıdır.**
+> **1 GbE ve 10 GbE ağ arabirimlerini karıştırabilmeniz önerilir. İki ağ arabirimi kullanıyorsanız, her iki arabirimin de özdeş türde olması gerekir.**
 
-Aşağıdaki yordam, iki ağ arabirimine sahip bir StorSimple aygıtı iki ağ arabirimine sahip bir ana bilgisayara bağlandığında oturumların nasıl ekleyeceğini açıklar. Bu size sadece 4 seans verir. Dört ağ arabirimine sahip bir ana bilgisayara bağlı iki ağ arabirimi olan bir StorSimple aygıtıyla aynı yordamı kullanın. Burada açıklanan 4 oturum yerine 8 yapılandırmanız gerekir.
+Aşağıdaki yordamda, iki ağ arabirimi olan bir StorSimple cihazı iki ağ arabirimi içeren bir konağa bağlı olduğunda oturum ekleme işlemi açıklanmaktadır. Bu size yalnızca 4 oturum sağlar. Dört ağ arabirimine sahip bir konağa bağlı iki ağ arabirimine sahip olan bir StorSimple aygıtıyla aynı yordamı kullanın. Burada açıklanan 4 oturumu yerine 8 ' i yapılandırmanız gerekecektir.
 
-### <a name="to-configure-mpio-for-high-availability-and-load-balancing"></a>Yüksek kullanılabilirlik ve yük dengeleme için MPIO'yı yapılandırmak için
+### <a name="to-configure-mpio-for-high-availability-and-load-balancing"></a>Yüksek kullanılabilirlik ve yük dengeleme için MPIO 'YU yapılandırmak için
 
-1. Hedefin keşfini gerçekleştirin: **iSCSI Başlatıcı Özellikleri** iletişim kutusunda, **Discovery** sekmesinde, **Portalı Bul'u**tıklatın.
-2. Hedefe **Bağlan** iletişim kutusuna aygıt ağı arabirimlerinden birinin IP adresini girin.
-3. **iSCSI Başlatıcı Özellikleri** iletişim kutusuna dönmek için **Tamam'ı** tıklatın.
-4. **iSCSI Başlatıcı Özellikleri** iletişim kutusunda, **Hedefler** sekmesini seçin, keşfedilen hedefi vurgulayın ve sonra **Bağlan'ı**tıklatın. **Hedefe Bağlan** iletişim kutusu görüntülenir.
-5. Hedefe **Bağlan** iletişim kutusunda:
+1. Hedef bulmayı gerçekleştirin: **Iscsı Başlatıcısı özellikleri** Iletişim kutusundaki **bulma** sekmesinde, **portalı bul**' a tıklayın.
+2. **Hedefe Bağlan** iletişim kutusunda, cihaz ağ ARABIRIMLERINDEN birinin IP adresini girin.
+3. **Iscsı Başlatıcısı özellikleri** iletişim kutusuna dönmek için **Tamam** ' ı tıklatın.
+4. **Iscsı Başlatıcısı özellikleri** Iletişim kutusunda **hedefler** sekmesini seçin, bulunan hedefi vurgulayın ve sonra **Bağlan**' a tıklayın. **Hedefe Bağlan** iletişim kutusu görüntülenir.
+5. **Hedefe Bağlan** iletişim kutusunda:
    
-   1. **Bu bağlantıyı** sık kullanılan hedefler listesine eklemek için varsayılan seçili hedef ayarı bırakın. Bu, aygıtın bu bilgisayar her yeniden başlatında bağlantıyı otomatik olarak yeniden başlatmaya kalkışmasını sağlar.
-   2. Çok **yolu Etkinleştir** onay kutusunu seçin.
+   1. **Bu bağlantıyı** en sık kullanılan hedefler listesine eklemek için varsayılan seçili hedef ayarını bırakın. Bu, bu bilgisayar her yeniden başlatıldığında cihazın otomatik olarak bağlantıyı yeniden başlatmasını denemesini sağlar.
+   2. **Çoklu yolu etkinleştir** onay kutusunu seçin.
    3. **Gelişmiş**'e tıklayın.
-6. Gelişmiş **Ayarlar** iletişim kutusunda:
+6. **Gelişmiş ayarlar** iletişim kutusunda:
    
-   1. Yerel **Bağdaştırıcı** açılır listesinde **Microsoft iSCSI Başlatıcısı'nı**seçin.
-   2. **Initiator IP** açılır listesinde, ana bilgisayardaki ilk arabirime karşılık gelen IP adresini (iSCSI arabirimi) seçin.
-   3. Hedef **Portal IP** açılır listesinde, aygıtta etkinleştirilen ilk veri arabiriminin IP adresini seçin.
-   4. iSCSI Başlatıcı Özellikleri iletişim kutusuna dönmek için **Tamam'ı** tıklatın.
-7. **Özellikler'i**tıklatın ve **Özellikler** iletişim kutusunda **Oturum Ekle'yi**tıklatın.
-8. Hedefe **Bağlan** iletişim kutusunda, çok **yollu onay** kutusunu etkinleştir'i seçin ve sonra **Gelişmiş'i**tıklatın.
-9. Gelişmiş **Ayarlar** iletişim kutusunda:
+   1. **Yerel bağdaştırıcı** açılan listesinde, **Microsoft iSCSI başlatıcısı**' nı seçin.
+   2. **BAŞLATıCı IP** açılan listesinde, konaktaki ilk arabirime (iSCSI arabirimi) KARŞıLıK gelen IP adresini seçin.
+   3. **Hedef portal IP 'si** açılan listesinde, cihazda etkinleştirilen ilk VERI arabiriminin IP adresini seçin.
+   4. Iscsı Başlatıcısı özellikleri iletişim kutusuna dönmek için **Tamam** ' ı tıklatın.
+7. **Özellikler**' e tıklayın ve **Özellikler** iletişim kutusunda **oturum Ekle**' ye tıklayın.
+8. **Hedefe Bağlan** iletişim kutusunda **Çoklu yolu etkinleştir** onay kutusunu işaretleyin ve ardından **Gelişmiş**' e tıklayın.
+9. **Gelişmiş ayarlar** iletişim kutusunda:
    
-   1. Yerel **bağdaştırıcı** açılır listesinde **Microsoft iSCSI Başlatıcısı'nı**seçin.
-   2. **Initiator IP** açılır listesinde, ana bilgisayardaki ikinci iSCSI arabirimine karşılık gelen IP adresini seçin.
-   3. Hedef **Portal IP** açılır listesinde, aygıtta etkinleştirilen ikinci veri arabiriminin IP adresini seçin.
-   4. **iSCSI Başlatıcı Özellikleri** iletişim kutusuna dönmek için **Tamam'ı** tıklatın. Şimdi hedefe ikinci bir oturum eklediniz.
-10. Hedefe ek oturumlar (yollar) eklemek için 8-10 adımlarını yineleyin. Ana bilgisayarda iki arabirim ve aygıtta iki arabirim ile toplam dört oturum ekleyebilirsiniz.
-11. istenen oturumları (yolları) ekledikten sonra, **iSCSI Başlatıcı Özellikleri** iletişim kutusuna, hedefi seçin ve **Özellikler'i**tıklatın. **Özellikler** iletişim kutusunun Oturumlar sekmesinde, olası yol permütasyonlarına karşılık gelen dört oturum tanımlayıcısını not edin. Bir oturumu iptal etmek için, oturum tanımlayıcısının yanındaki onay kutusunu seçin ve ardından **Bağlantıyı Kes'i**tıklatın.
-12. Oturumlar içinde sunulan aygıtları görüntülemek için **Aygıtlar** sekmesini seçin. Seçili bir aygıt için MPIO ilkesini yapılandırmak için **MPIO'yu**tıklatın. **Aygıt Ayrıntıları** iletişim kutusu görüntülenir. **MPIO** sekmesinde, uygun Yük **Dengesi Politikası** ayarlarını seçebilirsiniz. **Etkin** veya **Bekleme** yol türünü de görüntüleyebilirsiniz.
+   1. **Yerel bağdaştırıcı** açılan listesinde, **Microsoft iSCSI başlatıcısı**' nı seçin.
+   2. **BAŞLATıCı IP** açılan listesinde, konaktaki ikinci iSCSI arabirimine KARŞıLıK gelen IP adresini seçin.
+   3. **Hedef portal IP 'si** açılan listesinde, cihazda etkinleştirilen ikinci VERI arabiriminin IP adresini seçin.
+   4. **Iscsı Başlatıcısı özellikleri** iletişim kutusuna dönmek için **Tamam** ' ı tıklatın. Hedefe şimdi ikinci bir oturum eklediniz.
+10. Hedefe ek oturumlar (yollar) eklemek için 8-10 arası adımları tekrarlayın. Konakta iki arabirim ve iki cihazda, toplam dört oturum ekleyebilirsiniz.
+11. İstenen oturumlar (yollar) eklendikten sonra, **Iscsı Başlatıcısı özellikleri** iletişim kutusunda hedefi seçin ve **Özellikler**' e tıklayın. **Özellikler** Iletişim kutusunun Oturumlar sekmesinde, olası yol permütasyonlara karşılık gelen dört oturum tanımlayıcısını unutmayın. Bir oturumu iptal etmek için, oturum tanımlayıcısının yanındaki onay kutusunu işaretleyin ve ardından **bağlantıyı kes**' e tıklayın.
+12. Oturumlar içinde sunulan cihazları görüntülemek için **cihazlar** sekmesini seçin. Seçili bir cihaz için MPIO ilkesini yapılandırmak üzere **MPIO**' ya tıklayın. **Cihaz ayrıntıları** iletişim kutusu görüntülenir. **MPIO** sekmesinde, uygun **Yük Dengeleme İlkesi** ayarlarını seçebilirsiniz. **Etkin** veya **bekleme** yol türünü de görüntüleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[StorSimple aygıt yapılandırmanızı değiştirmek için StorSimple Device Manager hizmetini kullanma](storsimple-8000-modify-device-config.md)hakkında daha fazla bilgi edinin.
+StorSimple [cihaz yapılandırmanızı değiştirmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-modify-device-config.md)hakkında daha fazla bilgi edinin.
 

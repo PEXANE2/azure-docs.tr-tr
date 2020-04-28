@@ -1,6 +1,6 @@
 ---
-title: Azure Uygulama Ağ Geçidi Kaynak Durumu genel bakış
-description: Bu makale, Azure Uygulama Ağ Geçidi için kaynak durumu özelliğine genel bir bakıştır
+title: Azure Application Gateway Kaynak Durumu genel bakış
+description: Bu makale, Azure Application Gateway kaynak sistem durumu özelliğine genel bakış
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,57 +8,57 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67659508"
 ---
-# <a name="azure-application-gateway-resource-health-overview"></a>Azure Uygulama Ağ Geçidi Kaynak Durumu genel bakış
+# <a name="azure-application-gateway-resource-health-overview"></a>Azure Application Gateway Kaynak Durumu genel bakış
 
-[Azure Kaynak Durumu](../service-health/resource-health-overview.md), kaynaklarınızı etkileyen Azure hizmeti sorunlarını tanılayıp gerekli desteği almanıza yardımcı olur. Kaynaklarınızın mevcut ve geçmiş sağlık durumu hakkında sizi bilgilendirir. Ve sorunları azaltmanıza yardımcı olmak için teknik destek sağlar.
+[Azure Kaynak Durumu](../service-health/resource-health-overview.md), kaynaklarınızı etkileyen Azure hizmeti sorunlarını tanılayıp gerekli desteği almanıza yardımcı olur. Kaynaklarınızın geçerli ve geçmiş durumu hakkında bilgi verir. Ayrıca, sorunları azaltmanıza yardımcı olacak teknik destek sağlar.
 
-Uygulama Ağ Geçidi için Kaynak Durumu, ağ geçiditarafından yayılan sinyallere güvenerek sağlıklı olup olmadığını değerlendirir. Ağ geçidi sağlıksızsa, Kaynak Durumu sorunun kaynağını belirlemek için ek bilgileri çözümler. Ayrıca, Microsoft'un gerçekleştirdiği eylemleri veya sorunu gidermek için neler yapabileceğinizi de tanımlar.
+Application Gateway için Kaynak Durumu, sağlıklı olup olmadığını değerlendirmek üzere ağ geçidi tarafından yayılan sinyallere bağımlıdır. Ağ Geçidi sağlıksız ise, Kaynak Durumu sorunun kaynağını belirlemede ek bilgileri analiz eder. Ayrıca, Microsoft 'un aldığı veya sorunu çözmek için yapabileceğiniz işlemleri de tanımlar.
 
-Sağlık durumunun nasıl değerlendirildiği hakkında daha fazla bilgi için [Azure Kaynak Durumu'ndaki](../service-health/resource-health-checks-resource-types.md#microsoftnetworkapplicationgateways)kaynak türlerinin ve sistem durumu denetimlerinin tam listesini gözden geçirin.
+Sistem durumunun değerlendirilme hakkında daha fazla bilgi için, [Azure Kaynak durumu](../service-health/resource-health-checks-resource-types.md#microsoftnetworkapplicationgateways)içindeki kaynak türlerinin ve sistem durumu denetimlerinin tam listesini gözden geçirin.
 
 
-Uygulama Ağ Geçidi için sistem durumu aşağıdaki durumlardan biri olarak görüntülenir:
+Application Gateway sistem durumu aşağıdaki durumlardan biri olarak görüntülenir:
 
 ## <a name="available"></a>Kullanılabilir
 
-**Kullanılabilir** durum, hizmetin kaynağın sistem durumunu etkileyen herhangi bir olay algılamadığı anlamına gelir. Ağ geçidinin son 24 saat içinde planlanmamış kapalı kalma sürelerinden kurtarıldığı **durumlarda, son olarak çözümlenen** bildirimi görürsünüz.
+**Kullanılabilir** bir durum, hizmetin kaynağın sistem durumunu etkileyen herhangi bir olay algılamadığı anlamına gelir. Son 24 saat boyunca ağ geçidinin planlanmamış kapalı kalma süresinden kurtarıldığı durumlarda **en son çözümlenen** bildirimi görürsünüz.
 
-![Kullanılabilir sağlık durumu](media/resource-health-overview/available-full.png)
+![Kullanılabilir sistem durumu](media/resource-health-overview/available-full.png)
 
 ## <a name="unavailable"></a>Kullanılamaz
 
-**Kullanılamayan** durum, hizmetin ağ geçidinin sistem durumunu etkileyen devam eden bir platform veya platform dışı olay algıladığını anlamına gelir.
+**Kullanılamayan** bir durum, hizmetin ağ geçidinin sistem durumunu etkileyen devam eden bir platform veya platform olmayan bir olay algıladığı anlamına gelir.
 
-### <a name="platform-events"></a>Platform etkinlikleri
+### <a name="platform-events"></a>Platform olayları
 
-Platform olayları, Azure altyapısının birden çok bileşeni tarafından tetiklenir. Bunlar hem zamanlanmış eylemleri (örneğin, planlı bakım) hem de beklenmeyen olayları (örneğin, planlanmamış bir ana bilgisayar yeniden başlatma) içerir.
+Platform olayları, Azure altyapısının birden çok bileşeni tarafından tetiklenir. Hem zamanlanmış eylemler (örneğin, planlı bakım) hem de beklenmeyen olaylar (örneğin, planlanmamış bir konak yeniden başlatması) içerirler.
 
-Kaynak Durumu olay ve kurtarma işlemi hakkında ek ayrıntılar sağlar. Etkin bir Microsoft destek sözleşmeniz olmasa bile desteğe başvurmanızı da sağlar.
+Kaynak Durumu, olay ve kurtarma işlemi hakkında ek ayrıntılar sağlar. Ayrıca etkin bir Microsoft destek anlaşmanız olmasa bile destek ile iletişim kurabilmenizi sağlar.
 
 ![Kullanılamayan durum](media/resource-health-overview/unavailable.png)
 
 ## <a name="unknown"></a>Bilinmiyor
 
-**Bilinmeyen** sistem durumu, Kaynak Durumu'nun ağ geçidi hakkında 10 dakikadan uzun süredir bilgi almadığını gösterir. Bu durum, ağ geçidinin durumunun kesin bir göstergesi değildir. Ancak sorun giderme işleminde önemli bir veri noktasıdır.
+**Bilinmeyen** sistem durumu kaynak durumu, ağ geçidi hakkında 10 dakikadan uzun süredir bilgi almamış olduğunu gösterir. Bu durum, ağ geçidinin durumunun kesin bir göstergesidir. Ancak sorun giderme sürecinde önemli bir veri noktasıdır.
 
-Ağ geçidi beklendiği gibi çalışıyorsa, durum birkaç dakika sonra **Kullanılabilir** olarak değişir.
+Ağ Geçidi beklendiği gibi çalışıyorsa, durum birkaç dakika sonra **kullanılabilir** olarak değişir.
 
-Sorunlarla karşınızda, **Bilinmeyen** sağlık durumu platformdaki bir olayın ağ geçidini etkilediğini düşündürebilir.
+Sorun yaşıyorsanız, **Bilinmeyen** sistem durumu, platformda bir olayın ağ geçidini etkilemesini önerebilir.
 
 ![Bilinmeyen durum](media/resource-health-overview/unknown.png)
 
 ## <a name="degraded"></a>Düzeyi düşürüldü
 
-**Bozulmuş** sistem durumu, ağ geçidinizin hala kullanılabilir olmasına rağmen performans kaybı algıladığınızı gösterir.
+**Düşürülmüş** sistem durumu, ağ geçidinizin hala kullanım için kullanılabilir olsa da performans kaybı algıladı.
 
-![Degrated durumu](media/resource-health-overview/degraded.png)
+![Düşürülmüş durum](media/resource-health-overview/degraded.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorun giderme Uygulaması Ağ Geçidi Web Uygulaması Güvenlik Duvarı (WAF) hakkında bilgi edinmek için Azure [Uygulama Ağ Geçidi için Sorun Giderme Web Uygulaması Güvenlik Duvarı (WAF)](web-application-firewall-troubleshoot.md)bakın.
+Application Gateway Web uygulaması güvenlik duvarı (WAF) sorunlarını giderme hakkında bilgi edinmek için bkz. [Azure Application Gateway Için Web uygulaması güvenlik duvarı (WAF) sorunlarını giderme](web-application-firewall-troubleshoot.md).

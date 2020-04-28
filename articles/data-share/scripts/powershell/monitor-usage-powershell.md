@@ -1,6 +1,6 @@
 ---
-title: "PowerShell komut dosyası: Azure Veri Paylaşımı'nın kullanımını izleyin | Microsoft Dokümanlar"
-description: Bu PowerShell komut dosyası, gönderilen bir veri paylaşımının kullanım ölçümlerini alır.
+title: 'PowerShell betiği: Azure veri paylaşımının kullanımını Izleme | Microsoft Docs'
+description: Bu PowerShell betiği, gönderilen bir veri paylaşımının kullanım ölçümlerini alır.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 0a4084d309dd0160970f1c03540705b310eb8e75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70307200"
 ---
-# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Gönderilen veri paylaşımının kullanımını izlemek için PowerShell'i kullanın
+# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Gönderilen veri paylaşımının kullanımını izlemek için PowerShell 'i kullanma
 
-Bu PowerShell komut dosyası, gönderilen bir veri paylaşımının eşitlemelerini listeleyerek ve belirli bir eşitlemenin ayrıntılarını alarak veri kullanımını izler.
+Bu PowerShell betiği, gönderilen bir veri paylaşımının eşitlemelerini listeleyerek ve belirli bir eşitlemenin ayrıntılarını alarak veri kullanımını izler.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -44,12 +44,12 @@ Bu betik şu komutları kullanır:
 
 | Komut | Notlar |
 |---|---|
-| [Get-AzDataShareSynchronization](/powershell/module/az.datashare/get-azdatasharesynchronization?view=azps-2.6.0) | Bir hissedeki eşitlemeleri listele. |
-| [Get-AzDataShareSynchronizationAyrıntılar](/powershell/module/az.datashare/get-azdatasharesynchronizationdetail?view=azps-2.6.0) | Hisse eşitlemesi eşitleme ayrıntılarını alır. |
+| [Get-Azdatasharesynleştirme](/powershell/module/az.datashare/get-azdatasharesynchronization?view=azps-2.6.0) | Bir paylaşımdaki eşitlemeleri listeleyin. |
+| [Get-Azdatasharesynitizationdetails](/powershell/module/az.datashare/get-azdatasharesynchronizationdetail?view=azps-2.6.0) | Bir paylaşma eşitlemesinin eşitleme ayrıntılarını alır. |
 |||
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure PowerShell hakkında daha fazla bilgi için bkz. [Azure PowerShell belgeleri](https://docs.microsoft.com/powershell/).
 
-Ek Azure Veri Paylaşımı PowerShell komut dosyası örnekleri [Azure Veri Paylaşımı PowerShell örneklerinde](../../samples-powershell.md)bulunabilir.
+Ek Azure veri paylaşımının PowerShell betiği örnekleri, [Azure veri paylaşımında PowerShell örnekleri](../../samples-powershell.md)bölümünde bulunabilir.

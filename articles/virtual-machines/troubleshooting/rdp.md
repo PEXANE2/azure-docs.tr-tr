@@ -1,6 +1,6 @@
 ---
-title: Azure'daki Windows VM'leri için RDP sorunlarını giderme | Microsoft Dokümanlar
-description: Windows VM'ler için Azure'da RDP sorunlarını giderin.
+title: Azure 'da Windows VM 'Leri için RDP sorunlarını giderme | Microsoft Docs
+description: Windows VM 'Leri için Azure 'da RDP sorunlarını giderin.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,15 +15,15 @@ ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
 ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71057281"
 ---
-# <a name="troubleshoot-rdp-issues"></a>SORUN Giderme RDP sorunları
+# <a name="troubleshoot-rdp-issues"></a>RDP sorunlarını giderme
 
-VM'ye bağlantı kurmak için RDP oluşturma yla ilgili aşağıdaki sorunlar bu bölümde ele alınmıştır:
+Bu bölümde, bir VM bağlantısı için RDP oluşturmayla ilgili aşağıdaki sorunlar ele alınmıştır:
 
 - [RDP’yi sıfırlama](reset-rdp.md)
 - [RDP sorunlarını giderme](troubleshoot-rdp-connection.md)
@@ -41,7 +41,7 @@ VM'ye bağlantı kurmak için RDP oluşturma yla ilgili aşağıdaki sorunlar bu
 - [Sanal makinede statik IP kaynaklı RDP hatasına yönelik sorun giderme](troubleshoot-rdp-static-ip.md)
 - [Sanal makinede NIC’nin devre dışı bırakılması kaynaklı RDP hatasına yönelik sorun giderme](troubleshoot-rdp-nic-disabled.md)
 - [Güvenli Mod’dan kaynaklanan RDP hatalarına yönelik sorun giderme](troubleshoot-rdp-safe-mode.md)
-- [Azure VM'de konuk işletim sistemi Güvenlik Duvarını devre dışı bırakın](disable-guest-os-firewall-windows.md)
+- [Azure VM'de konuk işletim sistemi Güvenlik Duvarını devre dışı bırakma](disable-guest-os-firewall-windows.md)
 - [Konuk işletim sisteminde güvenlik duvarı kuralını etkinleştirme veya devre dışı bırakma](enable-disable-firewall-rule-guest-os.md)
 - [Konuk işletim sistemi güvenlik duvarı gelen trafiği engelliyor](guest-os-firewall-blocking-inbound-traffic.md)
 - [Konuk işletim sistemi güvenlik duvarı yanlış yapılandırılmış](guest-os-firewall-misconfigured.md) 

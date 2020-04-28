@@ -1,6 +1,6 @@
 ---
 title: Spark’taki Azure Cosmos DB Cassandra API’si tablolarında toplama işlemlerini
-description: Bu makale, Spark'tan Azure Cosmos DB Cassandra API tablolarına karşı temel toplama işlemlerini kapsar
+description: Bu makalede Spark 'tan Azure Cosmos DB Cassandra API tablolarına yönelik temel toplama işlemleri ele alınmaktadır
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4fbb86f4fbda9b8e521f7465bb8bb3d18602ca13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60894195"
 ---
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Spark’taki Azure Cosmos DB Cassandra API’si tablolarında toplama işlemlerini 
@@ -20,7 +20,7 @@ ms.locfileid: "60894195"
 Bu makalede Spark'tan Azure Cosmos DB Cassandra API tablolarında temel toplama işlemlerini gerçekleştirme adımları anlatılmaktadır. 
 
 > [!NOTE]
-> Sunucu tarafı filtreleme ve sunucu tarafı toplama şu anda Azure Cosmos DB Cassandra API'de desteklenmez.
+> Sunucu tarafında filtreleme ve sunucu tarafı toplama şu anda Azure Cosmos DB Cassandra API desteklenmiyor.
 
 ## <a name="cassandra-api-configuration"></a>Cassandra API yapılandırması
 
@@ -48,7 +48,7 @@ spark.conf.set("spark.cassandra.concurrent.reads", "512")
 spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
-## <a name="sample-data-generator"></a>Örnek veri üreteci
+## <a name="sample-data-generator"></a>Örnek veri Oluşturucu
 
 ```scala
 // Generate a simple dataset containing five values
@@ -67,39 +67,39 @@ booksDF.write
   .save()
 ```
 
-## <a name="count-operation"></a>Sayma işlemi
+## <a name="count-operation"></a>Sayım işlemi
 
 
-### <a name="rdd-api"></a>RDD API
+### <a name="rdd-api"></a>RDD APı 'SI
 
 ```scala
 sc.cassandraTable("books_ks", "books").count
 ```
 
-**Çıkış:**
+**Çıktıların**
 ```
 res48: Long = 5
 ```
 
-### <a name="dataframe-api"></a>Veri çerçevesi API'si
+### <a name="dataframe-api"></a>Dataframe API 'SI
 
-Veri çerçevelerine karşı sayım şu anda desteklenmez.  Aşağıdaki örnekte, veri çerçevesi geçici çözüm olarak belleğe kalıcı olarak sonra bir veri çerçevesi sayısının nasıl yürütüldüldişler gösterilmektedir.
+Veri çerçevelerine karşı say Şu anda desteklenmiyor.  Aşağıdaki örnek, geçici bir çözüm olarak veri çerçevesini bellekten kalıcı hale geçtikten sonra bir dataframe sayısının nasıl yürütüleceğini göstermektedir.
 
-"Bellek dışı" sorunlara girmemek için aşağıdaki kullanılabilir seçeneklerden bir [depolama seçeneği]( https://spark.apache.org/docs/2.2.0/rdd-programming-guide.html#which-storage-level-to-choose) seçin:
+"Bellek yetersiz" sorunlarından kaçınmak için aşağıdaki kullanılabilir seçeneklerden bir [depolama seçeneği]( https://spark.apache.org/docs/2.2.0/rdd-programming-guide.html#which-storage-level-to-choose) belirleyin:
 
-* MEMORY_ONLY: Bu varsayılan depolama seçeneğidir. RDD'yi JVM'de deserialized Java nesneleri olarak depolar. RDD belleğe sığmazsa, bazı bölümler önbelleğe alınmaz ve her ihtiyaç duyulduğunda anında yeniden hesaplanır.
+* MEMORY_ONLY: varsayılan depolama seçeneğidir. RDD 'YI, JVM 'de Serisi kaldırılan Java nesneleri olarak depolar. RDD belleğe uygun değilse, bazı bölümler önbelleğe alınmaz ve her gerektiğinde yeniden hesaplanır.
 
-* MEMORY_AND_DISK: RDD'yi JVM'de seri olarak depolanmış Java nesneleri olarak saklar. RDD belleğe sığmazsa, diske sığmayan bölümleri depolayın ve gerektiğinde depoladıkları konumdan okuyun.
+* MEMORY_AND_DISK: RDD 'YI, JVM 'de Serisi kaldırılan Java nesneleri olarak depolar. RDD belleğe uygun değilse, diske sığmayan bölümleri ve gerektiğinde bunları depotıkları konumdan okuyun.
 
-* MEMORY_ONLY_SER (Java/Scala): RDD'yi seri java nesneleri olarak depolar- bölüm başına bir bayt lık dizi. Bu seçenek, özellikle hızlı bir serializer kullanırken, ancak okunması daha yoğun cpu kullanırken, deserialized nesnelerle karşılaştırıldığında yer verimlidir.
+* MEMORY_ONLY_SER (Java/Scala): RDD 'yi serileştirilmiş Java nesneleri olarak depolar-bölüm başına bir baytlık dizi. Bu seçenek, özellikle hızlı bir seri hale getirici kullanılırken, ancak daha fazla CPU kullanımı daha fazla olması halinde, serisi kaldırılan nesneler ile karşılaştırıldığında boşluk açısından etkilidir.
 
-* MEMORY_AND_DISK_SER (Java/Scala): Bu depolama seçeneği MEMORY_ONLY_SER gibidir, tek fark, gerektiğinde yeniden hesaplamak yerine disk bellene sığmayacak bölümleri dökmesidir.
+* MEMORY_AND_DISK_SER (Java/Scala): Bu depolama seçeneği MEMORY_ONLY_SER gibidir, tek fark, ihtiyaç duyulduklarında onları yeniden hesaplama yerine DISK belleğine sığmayan bölümleri taşmanızdır.
 
 * DISK_ONLY: RDD bölümlerini yalnızca diskte depolar.
 
-* MEMORY_ONLY_2, MEMORY_AND_DISK_2...: Yukarıdaki düzeylerle aynı, ancak her bölümü iki küme düğümünde çoğaltıyor.
+* MEMORY_ONLY_2, MEMORY_AND_DISK_2...: Yukarıdaki düzeyler ile aynı, ancak her bölümü iki küme düğümünde çoğaltır.
 
-* OFF_HEAP (deneysel): MEMORY_ONLY_SER benzer, ancak verileri yığın dışı bellekte depolar ve önceden etkinleştirilebilmek için yığın dışı bellek gerektirir. 
+* OFF_HEAP (deneysel): MEMORY_ONLY_SER benzer, ancak verileri yığın dışı bellekte depolar ve daha önce etkin olması için yığın dışı bellek gerektirir. 
 
 ```scala
 //Workaround
@@ -136,18 +136,18 @@ select count(*) from books_vw;
 
 ## <a name="average-operation"></a>Ortalama işlem
 
-### <a name="rdd-api"></a>RDD API
+### <a name="rdd-api"></a>RDD APı 'SI
 
 ```scala
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Double) => c).mean
 ```
 
-**Çıkış:**
+**Çıktıların**
 ```
 res24: Double = 16.016000175476073
 ```
 
-### <a name="dataframe-api"></a>Veri çerçevesi API'si
+### <a name="dataframe-api"></a>Dataframe API 'SI
 
 ```scala
 spark
@@ -159,7 +159,7 @@ spark
   .show
 ```
 
-**Çıkış:**
+**Çıktıların**
 ```
 +------------------+
 |   avg(book_price)|
@@ -173,25 +173,25 @@ spark
 ```sql
 select avg(book_price) from books_vw;
 ```
-**Çıkış:**
+**Çıktıların**
 ```
 16.016000175476073
 ```
 
-## <a name="min-operation"></a>Min operasyonu
+## <a name="min-operation"></a>Min işlemi
 
-### <a name="rdd-api"></a>RDD API
+### <a name="rdd-api"></a>RDD APı 'SI
 
 ```scala
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Float) => c).min
 ```
 
-**Çıkış:**
+**Çıktıların**
 ```
 res31: Float = 11.33
 ```
 
-### <a name="dataframe-api"></a>Veri çerçevesi API'si
+### <a name="dataframe-api"></a>Dataframe API 'SI
 
 ```scala
 spark
@@ -203,7 +203,7 @@ spark
   .show
 ```
 
-**Çıkış:**
+**Çıktıların**
 ```
 +---------------+
 |min(book_price)|
@@ -218,20 +218,20 @@ spark
 select min(book_price) from books_vw;
 ```
 
-**Çıkış:**
+**Çıktıların**
 ```
 11.33
 ```
 
-## <a name="max-operation"></a>Maksimum işlem
+## <a name="max-operation"></a>En fazla işlem
 
-### <a name="rdd-api"></a>RDD API
+### <a name="rdd-api"></a>RDD APı 'SI
 
 ```scala
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Float) => c).max
 ```
 
-### <a name="dataframe-api"></a>Veri çerçevesi API'si
+### <a name="dataframe-api"></a>Dataframe API 'SI
 
 ```scala 
 spark
@@ -243,7 +243,7 @@ spark
   .show
 ```
 
-**Çıkış:**
+**Çıktıların**
 ```
 +---------------+
 |max(book_price)|
@@ -257,25 +257,25 @@ spark
 ```sql
 select max(book_price) from books_vw;
 ```
-**Çıkış:**
+**Çıktıların**
 ```
 22.45
 ```
 
-## <a name="sum-operation"></a>Toplam işlemi
+## <a name="sum-operation"></a>Toplam işlem
 
-### <a name="rdd-api"></a>RDD API
+### <a name="rdd-api"></a>RDD APı 'SI
 
 ```scala
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Float) => c).sum
 ```
 
-**Çıkış:**
+**Çıktıların**
 ```
 res46: Double = 80.08000087738037
 ```
 
-### <a name="dataframe-api"></a>Veri çerçevesi API'si
+### <a name="dataframe-api"></a>Dataframe API 'SI
 
 ```scala
 spark
@@ -286,7 +286,7 @@ spark
   .agg(sum("book_price"))
   .show
 ```
-**Çıkış:**
+**Çıktıların**
 ```
 +-----------------+
 |  sum(book_price)|
@@ -301,28 +301,28 @@ spark
 select sum(book_price) from books_vw;
 ```
 
-**Çıkış:**
+**Çıktıların**
 ```
 80.08000087738037
 ```
 
-## <a name="top-or-comparable-operation"></a>Üst veya karşılaştırılabilir işlem
+## <a name="top-or-comparable-operation"></a>Popüler veya karşılaştırılabilir işlem
 
-### <a name="rdd-api"></a>RDD API
+### <a name="rdd-api"></a>RDD APı 'SI
 
 ```scala
 val readCalcTopRDD = sc.cassandraTable("books_ks", "books").select("book_name","book_price").sortBy(_.getFloat(1), false)
 readCalcTopRDD.zipWithIndex.filter(_._2 < 3).collect.foreach(println)
 //delivers the first top n items without collecting the rdd to the driver.
 ```
-**Çıkış:**
+**Çıktıların**
 ```
 (CassandraRow{book_name: A sign of four, book_price: 22.45},0)
 (CassandraRow{book_name: The adventures of Sherlock Holmes, book_price: 19.83},1)
 (CassandraRow{book_name: The memoirs of Sherlock Holmes, book_price: 14.22},2)
 readCalcTopRDD: org.apache.spark.rdd.RDD[com.datastax.spark.connector.CassandraRow] = MapPartitionsRDD[430] at sortBy at command-2371828989676374:1
 ```
-### <a name="dataframe-api"></a>Veri çerçevesi API'si
+### <a name="dataframe-api"></a>Dataframe API 'SI
 
 ```scala
 import org.apache.spark.sql.functions._
@@ -341,7 +341,7 @@ readBooksDF.explain
 readBooksDF.show
 ```
 
-**Çıkış:**
+**Çıktıların**
 ```
 == Physical Plan ==
 TakeOrderedAndProject(limit=3, orderBy=[book_price#1840 DESC NULLS LAST], output=[book_name#1839,book_price#1840])
@@ -366,6 +366,6 @@ select book_name,book_price from books_vw order by book_price desc limit 3;
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tablo kopyalama işlemlerini gerçekleştirmek için bkz:
+Tablo kopyalama işlemlerini gerçekleştirmek için bkz.:
 
 * [Tablo kopyalama işlemleri](cassandra-spark-table-copy-ops.md)

@@ -1,5 +1,5 @@
 ---
-title: Birden çok Azure REKLAM'ı tek bir AD FS ile fesatlaştırıyor - Azure
+title: Birden çok Azure AD 'yi tek AD FS federasyona ekleme-Azure
 description: Bu belgede, birden çok Azure AD’yi tek bir AD FS ile nasıl birleştirebileceğinizi öğreneceksiniz.
 keywords: federasyon, ADFS, AD FS, birden çok kiracı, tek AD FS, bir ADFS, çok kiracılı federasyon, çok ormanlı adfs, aad bağlantısı, federasyon oluşturma, kiracılar arası federasyon
 services: active-directory
@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9122e3a7af2230dc0f68e72b28891d488b01a80a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65137825"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Azure AD’nin birden çok örneğini tek bir AD FS örneği ile birleştirme
@@ -46,13 +46,13 @@ contoso.com’daki AD FS’nin fabrikam.com’da kullanıcıların kimliklerini 
  
 ## <a name="step-2-modify-contosocom-federation-settings"></a>2. Adım: contoso.com federasyon ayarlarını değiştirme 
  
-AD FS'ye aktarılan tek bir etki alanı\:için varsayılan veren kümesi "http //ADFSServiceFQDN/adfs/services/trust", örneğin, `http://fs.contoso.com/adfs/services/trust`. Azure Active Directory, federasyona eklenen her etki alanı için benzersiz bir veren gerektirir. İki etki alanı aynı AD FS tarafından federasyona ekleneceğinden, AD FS’nin Azure Active Directory ile birleştirdiği her etki alanında benzersiz olması için veren değerinin değiştirilmesi gerekir. 
+AD FS Federal tek bir etki alanı için varsayılan veren kümesi, örneğin,\: `http://fs.contoso.com/adfs/services/trust`"http/Adfsservicefqdn/ADFS/Services/Trust" dır. Azure Active Directory, federasyona eklenen her etki alanı için benzersiz bir veren gerektirir. İki etki alanı aynı AD FS tarafından federasyona ekleneceğinden, AD FS’nin Azure Active Directory ile birleştirdiği her etki alanında benzersiz olması için veren değerinin değiştirilmesi gerekir. 
  
-AD FS sunucusunda Azure AD PowerShell'i açın (MSOnline modülünün yüklü olduğundan emin olun) ve aşağıdaki adımları gerçekleştirin:
+AD FS sunucusunda Azure AD PowerShell ' i açın (MSOnline modülünün yüklü olduğundan emin olun) ve aşağıdaki adımları gerçekleştirin:
  
 contoso.com etki alanını içeren Azure Active Directory’ye bağlanın: Connect-MsolService contoso.com için federasyon ayarlarını güncelleştirin: Update-MsolFederatedDomain -DomainName contoso.com –SupportMultipleDomain
  
-Etki alanı federasyonu ayarında veren kuruluş\:"http //contoso.com/adfs/services/trust" olarak değiştirilir ve Azure AD Relying Party Trust'ın UPN sonekine dayalı olarak doğru verenId değerini vermesi için bir verme talebi kuralı eklenir.
+Etki alanı Federasyon ayarındaki veren "http\://contoso.com/ADFS/Services/Trust" olarak değiştirilir ve Azure AD bağlı olan taraf GÜVENININ, UPN sonekine göre doğru ıssuerıd değerini vermesi için bir verme talebi kuralı eklenir.
  
 ## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>3. adım: fabrikam.com’u AD FS ile birleştirin
  
@@ -66,4 +66,4 @@ fabrikam.com yönetilen etki alanını federasyon etki alanına dönüştürün:
 Yukarıdaki işlem, fabrikam.com etki alanını aynı AD FS ile birleştirir. Her iki etki alanı için de Get-MsolDomainFederationSettings komutunu kullanarak etki alanı ayarlarını doğrulayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Etkin Dizini ile Etkin Dizini Bağlayın](whatis-hybrid-identity.md)
+[Azure Active Directory ile Active Directory bağlama](whatis-hybrid-identity.md)

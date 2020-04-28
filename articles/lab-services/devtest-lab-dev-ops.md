@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs ve DevOps Entegrasyonu | Microsoft Dokümanlar
-description: Kurumsal bir ortamda sürekli tümleştirme (CI)/ sürekli teslimat (CD) boru hatları içinde Azure DevTest Labs laboratuvarlarını nasıl kullanacağınızı öğrenin.
+title: Azure DevTest Labs ve DevOps tümleştirmesi | Microsoft Docs
+description: Bir kurumsal ortamdaki sürekli tümleştirme (CI)/sürekli teslim (CD) işlem hatları içinde Azure DevTest Labs laboratuvarlarını nasıl kullanacağınızı öğrenin.
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -14,47 +14,47 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: spelluru
 ms.openlocfilehash: 62c44bfea28d47d7c32aa7ef440a40d45c314683
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67078930"
 ---
-# <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Azure DevTest Labs ve Azure DevOps entegrasyonu
-DevOps, yazılım geliştirme (Dev) ile bir sistem için operasyonlar (Ops) entegre eden bir yazılım geliştirme metodolojisidir. Bu sistem, iş hedefleriyle uyumlu yeni özellikler, güncelleştirmeler ve düzeltmeler sunabilir. Bu metodoloji, hedeflere, kullanım kalıplarını ve müşteri geri bildirimlerine dayalı yeni özellikler tasarlamaktan her şeyi kapsar; sorunlar oluştuğunda sistemi düzeltmek, kurtarmak ve sertleştirmek. Bu metodolojinin kolayca tanımlanan bir bileşeni sürekli entegrasyon (CI)/ sürekli teslimat (CD) boru hattıdır. BIR CI/CD ardışık işlem, sistemi üretmek için oluşturma, sınama ve dağıtımı içeren bir dizi adım aracılığıyla bir commit'den bilgi, kod ve kaynak alır. Bu makalede, bir kuruluş ortamında bir boru hattı içindeki laboratuvarları etkili bir şekilde kullanmanın farklı yolları üzerinde duruluyor. 
+# <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Azure DevTest Labs ve Azure DevOps tümleştirmesi
+DevOps, bir sistem için yazılım geliştirmeyi (dev) işlemler (OPS) ile tümleştiren yazılım geliştirme yöntemledir. Bu sistem, iş hedeflerine göre hizalamadaki yeni özellikleri, güncelleştirmeleri ve düzeltmeleri teslim edebilir. Bu metodolojide, hedeflere, kullanım düzenlerine ve müşteri geri bildirimlerine göre yeni özellikler tasarlamadan her şey yer alır. sorunları ortaya çıktığında sistemi düzeltmek, kurtarmak ve sağlamlaştırma. Bu metodolojide kolayca tanımlanmış bir bileşen, sürekli tümleştirme (CI)/sürekli teslim (CD) ardışık düzeni. Bir CI/CD işlem hattı, sistemi oluşturmak için derleme, test ve dağıtım içeren bir dizi adım aracılığıyla bilgi, kod ve kaynak alır. Bu makale, bir kurumsal ortamdaki bir işlem hattı içinde laboratuvarları etkin bir şekilde kullanmanın farklı yollarına odaklanır. 
 
-## <a name="benefits-of-using-labs-in-devops-workflow"></a>DevOps iş akışında laboratuvar kullanmanın faydaları 
+## <a name="benefits-of-using-labs-in-devops-workflow"></a>DevOps iş akışında Labs kullanmanın avantajları 
 
 ### <a name="focused-access"></a>Odaklanmış erişim 
-Bir laboratuarı bileşen olarak kullanmak, belirli bir ekosistemin sınırlı bir grup insanla ilişki yemesine olanak tanır. Genellikle, ortak bir alanda veya belirli bir özellikte çalışan bir ekip veya grup, onlara atanmış bir laboratuara sahip olur.   
+Laboratuvar bir bileşen olarak kullanılması, belirli bir ekosistemin sınırlı bir kişi grubuyla ilişkilendirilmesine izin verir. Genellikle, ortak bir alanda veya belirli bir özellikte çalışan bir ekip veya gruba bir laboratuvar atanmış olur.   
 
 ### <a name="infrastructure-replication-in-the-cloud"></a>Bulutta altyapı çoğaltma 
-Geliştirici, kaynak kodu ve araçları içeren bir geliştirme kutusu içeren bir geliştirme ekosistemini hızla ayarlayabilir. Geliştirici, üretim yapılandırması ile neredeyse aynı olan bir ortam da oluşturabilir. Bu daha hızlı iç döngü geliştirme ile yardımcı olur. 
+Geliştirici, kaynak kodu ve araçları olan bir geliştirici kutusu içeren bir geliştirme ekosistemi hızlıca ayarlayabilir. Geliştirici ayrıca üretim yapılandırmasıyla neredeyse özdeş olan bir ortam oluşturabilir. Daha hızlı iç döngü geliştirmeye yardımcı olur. 
 
 ### <a name="pre-production"></a>Üretim öncesi 
-CI/CD ardışık boru hattında bir laboratuvara sahip olmak, birden fazla farklı üretim öncesi ortamın veya makinelerin eşzamanlı test için aynı anda çalışmasını kolaylaştırır. Yapı aracıları gibi farklı destek altyapıları bir laboratuvar içinde dağıtılabilir ve yönetilebilir. 
+CI/CD ardışık düzeninde bir laboratuvarın olması, zaman uyumsuz test için aynı anda birden çok farklı üretim öncesi ortama veya makineye sahip olmayı kolaylaştırır. Yapı aracıları gibi farklı destek altyapıları, bir laboratuvar içinde dağıtılabilir ve yönetilebilir. 
 
 ## <a name="devops-with-devtest-labs"></a>DevTest Labs ile DevOps 
 
-### <a name="development--operation"></a>Geliştirme / Operasyon 
-Laboratuvar, özellik alanında çalışan bir ekibe odaklanmalıdır. Bu ortak odak, araçlar, komut dosyaları veya Kaynak Yöneticisi şablonları gibi alana özgü kaynakların paylaşılmasına olanak tanır. Olumsuz etkileri daha küçük bir grupla sınırlandırırken daha hızlı değişikliklere olanak sağlar. Bu paylaşılan kaynaklar, geliştiricinin gerekli tüm kod, araç ve yapılandırmayla geliştirme VM'leri oluşturmasına olanak sağlar. Bunlar dinamik olarak oluşturulabilir veya özelleştirmelerle temel görüntüler oluşturan bir sisteme sahip olabilir. Geliştirici yalnızca VM'ler oluşturmakla kalmamış, aynı zamanda laboratuvarda uygun Azure kaynaklarını oluşturmak için gerekli şablonları temel alan DevTest Labs ortamları oluşturabilir. Herhangi bir değişiklik veya yıkıcı çalışma başka kimseyi etkilemeden laboratuvar ortamına karşı yapılabilir. Ürünün müşterinin makinesine yüklenmiş bağımsız bir sistem olduğu senaryoyu düşünün. Bu senaryoda, DevTest Labs, kodların daha hızlı iç döngü testi için yapıları kullanarak ek yazılım yüklemeyi ve müşteri yapılandırmalarını önceden oluşturmayı içeren VM oluşturmayı geliştirmiştir. 
+### <a name="development--operation"></a>Geliştirme/Işlem 
+Laboratuvar, bir özellik alanında çalışan bir takıma odaklanmalıdır. Bu ortak odak, Araçlar, betikler veya Kaynak Yöneticisi şablonları gibi alana özgü kaynakların paylaşılmasına olanak sağlar. Negatif etkileri daha küçük bir grup ile sınırlandırırken daha hızlı değişikliklere izin verir. Bu paylaşılan kaynaklar, geliştiricilerin tüm gerekli kod, araç ve yapılandırmayla geliştirme VM 'Leri oluşturmalarına olanak tanır. Bunlar dinamik olarak ya da özelleştirmelerle temel görüntüler oluşturan bir sisteme sahip olabilir. Geliştirici VM 'Ler oluşturmayabilir, ancak aynı zamanda laboratuarda uygun Azure kaynaklarını oluşturmak için gerekli şablonları temel alan DevTest Labs ortamları oluşturabilirler. Herhangi bir değişiklik veya zararlı iş, başka bir şeyi etkilemeden laboratuar ortamına karşı yapılabilir. Ürünün, müşterinin makinesinde yüklü olan tek başına bir sistem olduğu senaryoyu göz önünde bulundurun. Bu senaryoda, DevTest Labs, derleme kullanarak ek yazılım yüklemeyi ve kodun daha hızlı iç döngüsü testi için önceden oluşturulan müşteri yapılandırmasını içeren sanal makine oluşturmayı iyileştirmiştir. 
   
-## <a name="cicd-pipeline"></a>CI/CD boru hattı 
-CI/CD ardışık, DevOps'teki kodu geliştiricinin çekme isteğinden hareket ettiren, varolan kodla bütünleştiren ve üretim ekosistemine dağıtan kritik bileşenlerden biridir. Tüm kaynakların laboratuarda olması gerekmez. Örneğin, bir Jenkins ana bilgisayar daha kalıcı bir kaynak olarak laboratuvar dışında kurulabilir. Laboratuvarları boru hattına entegre etmenin bazı özel örnekleri aşağıda verilmiştir. 
+## <a name="cicd-pipeline"></a>CI/CD işlem hattı 
+CI/CD işlem hattı, bir geliştiricinin çekme isteğinden kod taşıyan, mevcut kodla tümleştiren ve bunu üretim ekosistemine dağıtan, DevOps 'daki kritik bileşenlerden biridir. Tüm kaynakların laboratuvar dahilinde olması gerekmez. Örneğin, bir Jenkins ana bilgisayarı daha kalıcı bir kaynak olarak laboratuvar dışında ayarlanabilir. Labs 'in işlem hattına tümleştirilmesine özgü bazı örnekler aşağıda verilmiştir. 
 
-### <a name="build"></a>Oluşturma 
-Yapı boru hattı, serbest bırakma boru hattına teslim edilecek şekilde birlikte test edilecek bir bileşen paketi oluşturmaya odaklanmıştır. Laboratuvarlar, yapı aracıları ve diğer destek kaynakları için konum olarak yapı ardışık hattının bir parçası olabilir. Altyapıyı dinamik olarak oluşturma yeteneğine sahip olmak daha fazla denetim sağlar. Bir laboratuvarda birden çok ortama sahip olma özelliği sayesinde, her yapı, belirli yapının kaynaklarını benzersiz olarak tanımlamak için yapı kimliğini ortam bilgilerinin bir parçası olarak kullanırken eş zamanlı olarak çalıştırılabilir.   
+### <a name="build"></a>Yapı 
+Yapı işlem hattı, sürüm ardışık düzenine dönmek için birlikte test edilecek bir bileşen paketi oluşturmaya odaklanır. Laboratuvarlar derleme işlem hattının parçası olarak yapı aracılarının ve diğer destek kaynaklarının bir parçası olabilir. Altyapıyı dinamik olarak oluşturma yeteneğinin daha fazla denetim sağlar. Laboratuarda birden çok ortam kullanabilme sayesinde her derleme zaman uyumsuz olarak çalıştırılabilir ve bu durumda, kaynakları belirli bir yapıda benzersiz şekilde tanımlamak için ortam bilgilerinin parçası olarak yapı KIMLIĞI kullanılıyor olabilir.   
 
-Yapı aracıları için, laboratuvarın erişimi kısıtlama yeteneği güvenliği artırır ve kazara bozulma olasılığını azaltır.  
+Yapı aracılarında, laboratuvarın erişimi kısıtlama özelliği güvenliği artırır ve yanlışlıkla bozulma olasılığını azaltır.  
 
-### <a name="test"></a>Test 
-DevTest Labs, otomatik ve manuel sınama için kullanılabilecek Azure Kaynağının (VM'ler, ortamlar) oluşturulmasını otomatikleştirmek için bir CI/CD ardışık kuruluşunu sağlar. VM'ler, sınama için gerekli olan farklı özel yapılandırmaları oluşturmak için yapı işlemindeki bilgileri kullanan yapılar veya formüller kullanılarak oluşturulur.   
+### <a name="test"></a>Test etme 
+DevTest Labs, bir CI/CD işlem hattının otomatik ve el ile test için kullanılabilen Azure Kaynak (VM 'Ler, ortamlar) oluşturulmasını otomatik hale getirmeye olanak tanır. VM 'Ler, test için gereken farklı özel yapılandırmaların oluşturulması için derleme işlemindeki bilgileri kullanan yapıtlar veya formüller kullanılarak oluşturulur.   
 
 ### <a name="release"></a>Yayınla 
-DevTest Labs, kod dağıtılmadan önce sürüm bölümünde doğrulama için yaygın olarak kullanılır. Yapı bölümündeki sınamaya benzer. Üretim kaynakları DevTest Labs içinde dağıtılmamalıdır. 
+DevTest Labs genellikle yayın bölümünde kod dağıtılmadan önce doğrulama için kullanılır. Yapı bölümünde test etmek benzerdir. Üretim kaynakları DevTest Labs içinde dağıtılmamalıdır. 
 
 ### <a name="customization"></a>Özelleştirme 
-Azure DevOps'lerde, belirli laboratuarlarda VM'lerin ve ortamların manipülasyonuna izin veren varolan görevler vardır. Azure DevOps Hizmetleri CI/CD ardışık hattını yönetmenin bir yolu olsa da, laboratuarı REST API'lerini arama, PowerShell komut dosyalarını çalıştırma veya Azure CLI'yi kullanma olanağını destekleyen herhangi bir sisteme entegre edebilirsiniz. 
+Azure DevOps 'da, belirli laboratuvarlarda VM 'lerin ve ortamların kullanılmasına izin veren mevcut görevler vardır. Azure DevOps Services CI/CD işlem hattını yönetmenin bir yolu olsa da laboratuvarı, REST API 'Leri çağırma, PowerShell betikleri yürütme veya Azure CLı kullanma yeteneğini destekleyen herhangi bir sistemle tümleştirilebilir. 
 
-Bazı CI/CD boru hattı yöneticileri, Azure ve DevTest Labs içindeki kaynakları yönetebilen mevcut açık kaynak eklentilerine sahipken. Ardışık nedenin belirli gereksinimlerine uyacak şekilde bazı özel komut dosyası kullanmanız gerekebilir.  Bunu göz önünde bulundurarak, bir görevi yürürken, bir hizmet yöneticisi laboratuvara erişmek için uygun rolü kullanır. Hizmet sorumlusunun genellikle katılımcının laboratuvara rol erişimine ihtiyacı vardır. Daha fazla bilgi için azure [DevTests Laboratuvarlarını Azure DevOps sürekli tümleştirme ve teslim boru hattınıza entegre edin.](devtest-lab-integrate-ci-cd-vsts.md) 
+Bazı CI/CD işlem hattı yöneticilerinin Azure ve DevTest Labs içindeki kaynakları yönetebilen mevcut açık kaynaklı eklentileri vardır. İşlem hattının belirli ihtiyaçlarını karşılamak için bazı özel komut dosyaları kullanmanız gerekebilir.  Göz önünde bulundurularak, bir görevi yürütürken, laboratuvara erişim kazanmak için uygun rolle bir hizmet sorumlusu kullanılır. Hizmet sorumlusu genellikle laboratuvara katkıda bulunan rol erişimine ihtiyaç duyuyor. Daha fazla bilgi için bkz. Azure [DevOps laboratuvarlarını Azure DevOps sürekli tümleştirme ve teslim ardışık düzeni Ile tümleştirme](devtest-lab-integrate-ci-cd-vsts.md). 
  

@@ -1,6 +1,6 @@
 ---
-title: Karma kimlik tasarımı - yönetim görevleri Azure | Microsoft Dokümanlar
-description: Koşullu Erişim denetimi ile Azure Etkin Dizin, kullanıcının kimliğini doğrularken ve uygulamaya erişime izin vermeden önce seçtiğiniz belirli koşulları denetler. Bu koşullar yerine getirildiğinde, kullanıcı nın kimliği doğrulanır ve uygulamaya erişime izin verilir.
+title: Karma kimlik tasarımı-yönetim görevleri Azure | Microsoft Docs
+description: Koşullu erişim denetimi ile, kullanıcının kimliğini doğrularken ve uygulamaya erişim izni vermeden önce seçtiğiniz belirli koşulları denetler Azure Active Directory. Bu koşullar karşılandığında, kullanıcının kimliği doğrulanır ve uygulamaya erişim izni verilir.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,53 +18,53 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67109377"
 ---
-# <a name="plan-for-hybrid-identity-lifecycle"></a>Hibrit Kimlik Yaşam Döngüsü Planı
-Kimlik, kurumsal mobilitenin ve uygulamaya erişim stratejinizin temellerinden biridir. İster mobil cihazınızda ister SaaS uygulamanızda oturum açın, kimliğiniz her şeye erişmeniz için anahtardır. En üst düzeyde, kimlik yönetimi çözümü, kaynakları sağlama işlemini otomatikleştirmeyi ve merkezileştirmeyi içeren kimlik depolarınız arasında birleştirici ve eşitleme yi kapsar. Kimlik çözümü şirket içi ve bulut genelinde merkezi bir kimlik olmalı ve aynı zamanda merkezi kimlik doğrulamayı sürdürmek ve dış kullanıcılar ve işletmelerle güvenli bir şekilde paylaşmak ve işbirliği yapmak için bir tür kimlik federasyonu kullanmalıdır. Kaynaklar işletim sistemlerinden uygulamalardan bir kuruluştaki veya kuruluşa bağlı kişilere kadar değişir. Kuruluş yapısı, sağlama politikaları ve prosedürlerine uyacak şekilde değiştirilebilir.
+# <a name="plan-for-hybrid-identity-lifecycle"></a>Karma kimlik yaşam döngüsünü planlayın
+Kimlik, kurumsal mobilite ve uygulama erişim stratejinizin temel ilerinden biridir. Mobil cihazınızda veya SaaS uygulamanızda oturum açıp etmeksizin, kimliğiniz her şeye erişim kazanmanız gereken anahtardır. En yüksek düzeyde, bir kimlik yönetimi çözümü, kaynak sağlama işlemini otomatik hale getirme ve oluşturma sürecini merkezileştirme dahil olmak üzere kimlik havuzlarınız arasında ifet ve eşitlemeyi kapsar. Kimlik çözümü, şirket içinde ve bulutta merkezi bir kimlik olmalıdır ve ayrıca merkezi kimlik doğrulamasını sürdürmek ve dış kullanıcılar ve işletmeler ile güvenli bir şekilde paylaşmak ve işbirliği yapmak için bir dizi Kimlik Federasyonu kullanır. Kaynaklar, işletim sistemlerinden ve uygulamalardan gelen kişilere veya bir kuruluşa bağlı olarak değişir. Kuruluş yapısı, sağlama ilkelerine ve yordamlarına uyum sağlayacak şekilde değiştirilebilir.
 
-Ayrıca, kullanıcılarınızı üretken tutmak için self servis deneyimleri sunarak güçlendirecek bir kimlik çözümüne sahip olmak da önemlidir. Kimlik çözümünüz, kullanıcılara erişmeleri gereken tüm kaynaklarda tek oturum açma olanağı sağlıyorsa daha sağlamdır. Tüm düzeylerdeki yöneticiler, kullanıcı kimlik bilgilerini yönetmek için standart yordamlar kullanabilir. Bazı yönetim düzeyleri, tedarik yönetimi çözümünün genişliğine bağlı olarak azaltılabilir veya ortadan kaldırılabilir. Ayrıca, yönetim yeteneklerini çeşitli kuruluşlar arasında el ile veya otomatik olarak güvenli bir şekilde dağıtabilirsiniz. Örneğin, bir etki alanı yöneticisi yalnızca bu etki alanında ki kişilere ve kaynaklara hizmet verebilir. Bu kullanıcı yönetim ve sağlama görevleri yapabilir, ancak iş akışları oluşturma gibi yapılandırma görevleri yapmaya yetkili değildir.
+Ayrıca, kullanıcılarınızı üretken tutmaya yönelik self servis deneyimleri sunarak kullanıcılarınıza güç sağlamak için gereken bir kimlik çözümü olması da önemlidir. Kimlik çözümünüz, erişmesi gereken tüm kaynaklardaki kullanıcılar için çoklu oturum açma imkanı sağladığından daha sağlam hale gelir. Tüm düzeylerde Yöneticiler, Kullanıcı kimlik bilgilerini yönetmek için standartlaştırılmış yordamlar kullanabilir. Bazı yönetim düzeyleri, sağlama yönetimi çözümünün enine ' ına bağlı olarak azaltılabilir veya ortadan kaldırılabilir. Ayrıca, çeşitli kuruluşlar arasında el ile veya otomatik olarak yönetim özellikleri dağıtabilirsiniz. Örneğin, bir etki alanı Yöneticisi yalnızca ilgili etki alanındaki kişileri ve kaynakları kullanabilir. Bu kullanıcı yönetim ve sağlama görevleri gerçekleştirebilir, ancak iş akışları oluşturma gibi yapılandırma görevlerini yapmak için yetkilendirilmemiş.
 
-## <a name="determine-hybrid-identity-management-tasks"></a>Karma Kimlik Yönetimi Görevlerini Belirleme
-Kuruluşunuzda yönetim görevlerini dağıtmak, yönetimin doğruluğunu ve etkinliğini artırır ve bir kuruluşun iş yükü dengesini geliştirir. Aşağıda sağlam bir kimlik yönetim sistemi tanımlayan pivotlar vepivotlar yer alıyor.
+## <a name="determine-hybrid-identity-management-tasks"></a>Karma kimlik yönetimi görevlerini belirleme
+Kuruluşunuzda yönetim görevlerinin dağıtılması, yönetimin doğruluğunu ve verimliliğini artırır ve bir kuruluşun iş yükünün bakiyesini geliştirir. Güçlü bir kimlik yönetimi sistemini tanımlayan özetler aşağıda verilmiştir.
 
- ![kimlik yönetimi hususları](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
+ ![kimlik yönetimi konuları](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
 
-Karma kimlik yönetimi görevlerini tanımlamak için, karma kimliği benimseyecek olan kuruluşun bazı temel özelliklerini anlamanız gerekir. Kimlik kaynakları için kullanılan mevcut depoları anlamak önemlidir. Bu temel öğeleri bilerek, temel gereksinimleri olacak ve size Kimlik çözümü için daha iyi bir tasarım kararı götürecek daha ayrıntılı sorular sormak gerekir dayalı.  
+Karma kimlik yönetimi görevlerini tanımlamak için, kuruluşun karma kimliği benimseme bazı önemli özelliklerini anlamanız gerekir. Kimlik kaynakları için kullanılan geçerli depoların anlaşılması önemlidir. Bu temel öğeleri bilerek temel gereksinimleri elde edersiniz ve size, kimlik çözümünüz için daha iyi bir tasarım kararı veren daha ayrıntılı sorular sormanız gerekecektir.  
 
-Bu gereksinimleri tanımlarken, en azından aşağıdaki soruların yanıtlanmasını sağlayın
+Bu gereksinimleri tanımlarken, en azından aşağıdaki sorulara yanıt verildiğinden emin olun
 
 * Sağlama seçenekleri: 
   
   * Karma kimlik çözümü sağlam bir hesap erişim yönetimi ve sağlama sistemini destekliyor mu?
-  * Kullanıcılar, gruplar ve parolalar nasıl yönetilecek?
+  * Kullanıcılar, gruplar ve parolalar nasıl yönetilir?
   * Kimlik yaşam döngüsü yönetimi yanıt veriyor mu? 
-    * Parola güncellemeleri hesabının askıya alınması ne kadar sürer?
-* Lisans yönetimi: 
+    * Parola güncelleştirmeleri hesabını askıya alma ne kadar sürer?
+* Lisans Yönetimi: 
   
   * Karma kimlik çözümü lisans yönetimini işliyor mu?
-    * Evet ise, hangi yetenekler kullanılabilir?
-  * Çözüm grup tabanlı lisans yönetimini işliyor mu? 
+    * Yanıt Evet ise, hangi özellikler mevcuttur?
+  * Çözüm grup tabanlı lisans yönetimini mi işleyecek? 
   
-    * Evet ise, buna bir güvenlik grubu atamak mümkün mü? 
-    * Evet ise, bulut yönetmeni grubun tüm üyelerine otomatik olarak lisans atar mı? 
-    * Bir kullanıcı daha sonra gruba eklenirse veya gruptan kaldırılırsa, bir lisans uygun şekilde otomatik olarak atanacak veya kaldırılırsa ne olur? 
+    * Yanıt Evet ise, buna bir güvenlik grubu atamak mümkün midir? 
+    * Yanıt Evet ise, bulut dizini grubun tüm üyelerine otomatik olarak lisans atayacaktır mi? 
+    * Bir Kullanıcı daha sonra gruba eklendiyse veya gruptan kaldırılırsa ne olur? bir lisans otomatik olarak atanır veya uygun şekilde kaldırılır. 
 * Diğer üçüncü taraf kimlik sağlayıcılarıyla tümleştirme:
-  * Bu karma çözüm, tek oturum açma uygulamak için üçüncü taraf kimlik sağlayıcılarıyla entegre edilebilir mi?
-  * Tüm farklı kimlik sağlayıcılarını uyumlu bir kimlik sisteminde birletmek mümkün mü?
-  * Evet ise, nasıl ve hangileri ve hangi yetenekleri mevcuttur?
+  * Bu karma çözüm, çoklu oturum açma uygulamak için üçüncü taraf kimlik sağlayıcılarıyla tümleştirilebilir mi?
+  * Tüm farklı kimlik sağlayıcılarını birlikte bulunan bir kimlik sistemine birleştirmek mümkün mü?
+  * Yanıtınız evet ise nasıl ve ne olacak ve hangi özellikler mevcuttur?
 
-## <a name="synchronization-management"></a>Senkronizasyon Yönetimi
-Bir kimlik yöneticisinin amaçlarından biri, tüm kimlik sağlayıcılarını getirebilmek ve senkronize tutmak. Yetkili bir ana kimlik sağlayıcısına göre verileri eşitlenmiş tutarsınız. Karma kimlik senaryosunda, senkronize bir yönetim modeliyle, şirket içi sunucudaki tüm kullanıcı ve aygıt kimliklerini yönetir ve hesapları ve isteğe bağlı olarak bulutparolalarını eşitlersiniz. Kullanıcı, bulutta olduğu gibi şirket içine aynı parolayı girer ve oturum açma sırasında parola kimlik çözümü tarafından doğrulanır. Bu model bir dizin eşitleme aracı kullanır.
+## <a name="synchronization-management"></a>Eşitleme yönetimi
+Tüm kimlik sağlayıcılarını getirebilmek ve bunları eşitlenmiş halde tutmak için bir Identity Manager hedeflerinden biri. Verileri bir yetkili ana kimlik sağlayıcısına göre eşitlenmiş halde tutabilirsiniz. Bir karma kimlik senaryosunda, eşitlenmiş bir yönetim modeliyle tüm Kullanıcı ve cihaz kimliklerini şirket içi sunucuda yönetebilir ve hesapları ve isteğe bağlı olarak parolaları buluta eşitleyebilirsiniz. Kullanıcı, bulutta olduğu gibi şirket içinde aynı parolayı girer ve oturum açma sırasında parola kimlik çözümü tarafından doğrulanır. Bu model bir dizin eşitleme aracı kullanır.
 
-![dizin](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) eşitlemi Uygun tasarım için karma kimlik çözümünüzün senkronizasyonu aşağıdaki soruların yanıtlanmasını sağlar:
-*    Karma kimlik çözümü için kullanılabilir eşitleme çözümleri nelerdir?
-*    Mevcut yeteneklere ilişkin tek işaret nedir?
-*    B2B ve B2C arasındaki kimlik federasyonu seçenekleri nelerdir?
+![uygun tasarıma](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) dizin eşitlemesi karma kimlik çözümünüzün eşitlenmesi aşağıdaki soruların yanıtlanmasına dikkat edin:
+*    Karma kimlik çözümü için kullanılabilen eşitleme çözümleri nelerdir?
+*    Çoklu oturum açma özellikleri kullanılabilir mi?
+*    B2B ve B2C arasında kimlik Federasyonu seçenekleri nelerdir?
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Karma kimlik yönetimi benimseme stratejisini belirleme](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)

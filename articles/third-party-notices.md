@@ -1,29 +1,29 @@
 ---
-title: Yasal uyarılar
-description: Azure belgeleri için yasal uyarılar
+title: Yasal Bildirimler
+description: Azure belgeleri için yasal bildirimler
 author: SyntaxC4
 ms.author: cfowler
 ms.service: azure
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.openlocfilehash: b68d521ba3ec678dad49273f0bd2fdfa5ceabee1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72750416"
 ---
 # <a name="legal-notices"></a>Yasal Uyarılar
 
-Microsoft ve katkıda bulunanlar, [Creative Commons Attribution 4.0 International Public License](https://creativecommons.org/licenses/by/4.0/legalcode)kapsamında bu depodaki Microsoft belgelerine ve diğer içeriğe lisans verir ve [MIT Lisansı](https://opensource.org/licenses/MIT)altındaki depodaki herhangi bir kod için lisans verir.
+Microsoft ve tüm katkıda bulunanlar, [Creative Commons Attribution 4,0 Uluslararası genel lisansı](https://creativecommons.org/licenses/by/4.0/legalcode)kapsamında Microsoft belgelerine ve bu depodaki diğer içeriklere bir lisans verir ve size izin [lisansı](https://opensource.org/licenses/MIT)kapsamında depodaki tüm kodlar için lisans verir.
 
 Belgelerde sözü geçen Microsoft, Windows, Microsoft Azure ve/veya diğer Microsoft ürünleri, ABD’de ve/veya diğer ülkelerde Microsoft’un ticari ya da tescilli ticari markaları olabilir.
 Bu projeye yönelik lisanslar ile Microsoft adları, logoları ya da ticari markalarından herhangi birini kullanma hakkı tanınmaz.
-Microsoft'un genel ticari marka [https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653)yönergelerini .
+Microsoft 'un genel ticari marka yönergeleri adresinde [https://go.microsoft.com/fwlink/?LinkID=254653](https://go.microsoft.com/fwlink/?LinkID=254653)bulunabilir.
 
-Gizlilik bilgileri şu adreste bulunabilir:[https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
+Gizlilik bilgilerini şurada bulabilirsiniz:[https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
 
 Microsoft ve tüm katkıda bulunanlar, ilgili telif hakları, patentleri veya ticari markaları kapsamında; dolaylı olarak, hukuki engel yoluyla veya başka bir şekilde sağlanan diğer tüm haklarını saklı tutar.
 
-Go gopher Renee [Fransızca](https://reneefrench.blogspot.com/)tarafından tasarlanmıştır.
-Tasarım Creative Commons [3.0 Atıflar lisansı](https://creativecommons.org/licenses/by/3.0/us/)altında lisanslanmıştır.
+Go Gopher, [Renee Fransızca](https://reneefrench.blogspot.com/)tarafından tasarlanmıştır.
+Tasarım, [Creative Commons 3,0 Attributions lisansı](https://creativecommons.org/licenses/by/3.0/us/)kapsamında lisanslanır.

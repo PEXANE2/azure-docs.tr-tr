@@ -1,6 +1,6 @@
 ---
-title: Azure Etkin Dizin denetim günlüğü şemasını Azure Monitörü'nde yorumlama | Microsoft Dokümanlar
-description: Azure Monitörü'nde kullanılmak üzere Azure AD denetim günlüğü şemasını açıklayın
+title: Azure Izleyici 'de Azure Active Directory Denetim günlüğü şemasını yorumlama | Microsoft Docs
+description: Azure Izleyici 'de kullanılmak üzere Azure AD denetim günlüğü şemasını açıkla
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68987951"
 ---
-# <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Azure Denetimi şemalarını Azure Monitörü'nde yorumlama (önizleme)
+# <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Azure Izleyici 'de Azure AD denetim günlükleri şemasını yorumlama (Önizleme)
 
-Bu makalede, Azure Monitor'da Azure Etkin Dizin (Azure AD) denetim günlüğü şeması açıklanmaktadır. Her bir günlük girişi metin olarak depolanır ve aşağıdaki iki örnekte gösterildiği gibi JSON blob olarak biçimlendirilir: 
+Bu makalede, Azure Izleyici 'de Azure Active Directory (Azure AD) denetim günlüğü şeması açıklanmaktadır. Her bir günlük girişi, aşağıdaki iki örnekte gösterildiği gibi, metin olarak depolanır ve JSON blobu olarak biçimlendirilir: 
 
 ```json
 { 
@@ -150,34 +150,34 @@ Bu makalede, Azure Monitor'da Azure Etkin Dizin (Azure AD) denetim günlüğü �
 | Alan adı | Açıklama |
 |------------|-------------|
 | time       | Tarih ve saat (UTC). |
-| operationName | Operasyonun adı. |
+| operationName | İşlemin adı. |
 | operationVersion | İstemci tarafından istenen REST API sürümü. |
-| category | Şu anda *Denetim* desteklenen tek değerdir. |
-| tenantId | Günlüklerle ilişkili kiracı GUID. |
-| resultType | İşlemin sonucu. Sonuç *Başarı* veya *Başarısızlık*olabilir. |
-| resultSignature |  Bu alan eşlenmemiş ve güvenli bir şekilde yok sayabilirsiniz. | 
-| resultDescription | Varsa, sonucun ek bir açıklaması. | 
-| durationMs |  Bu alan eşlenmemiş ve güvenli bir şekilde yok sayabilirsiniz. |
-| callerIpAddress | İstekte bulundu müşterinin IP adresi. | 
-| correlationId | İstemci tarafından geçirilen isteğe bağlı bir GUID. İstemci tarafı işlemlerini sunucu tarafındaki işlemlerle ilişkilendirmenize yardımcı olabilir ve hizmetleri kapsayan günlükleri takip ederken kullanışlıdır. |
-| identity | İstekte bulunduğunuzda sunulan belirtecikimlik. Kimlik bir kullanıcı hesabı, sistem hesabı veya hizmet sorumlusu olabilir. |
-| düzey | İleti türü. Denetim günlükleri için, düzey her zaman *Bilgilendirme*dir. |
+| category | Şu anda, *Denetim* desteklenen tek değerdir. |
+| Değerine | Günlüklerle ilişkili kiracı GUID 'SI. |
+| resultType | İşlemin sonucu. Sonuç, *başarılı* veya *başarısız*olabilir. |
+| resultSignature |  Bu alan eşlenmeyecek ve güvenle yoksayabilirsiniz. | 
+| resultDescription | Sonucun ek açıklaması (kullanılabiliyorsa). | 
+| durationMs |  Bu alan eşlenmeyecek ve güvenle yoksayabilirsiniz. |
+| callerIpAddress | İsteği yapan istemcinin IP adresi. | 
+| correlationId | İstemci tarafından geçirilen isteğe bağlı bir GUID. İstemci tarafı işlemlerini sunucu tarafı işlemleriyle ilişkilendirmenize yardımcı olabilir ve hizmetleri kapsayan günlükleri izlerken yararlıdır. |
+| identity | İsteği yaptığınızda sunulan belirtecin kimliği. Kimlik bir kullanıcı hesabı, sistem hesabı veya hizmet sorumlusu olabilir. |
+| düzey | İleti türü. Denetim günlükleri için, düzey her zaman *bilgilendirme amaçlıdır*. |
 | location | Veri merkezinin konumu. |
-| properties | Denetim günlüğüyle ilgili desteklenen özellikleri listeler. Daha fazla bilgi için sonraki tabloya bakın. | 
+| properties | Bir denetim günlüğü ile ilişkili desteklenen özellikleri listeler. Daha fazla bilgi için sonraki tabloya bakın. | 
 
 <br>
 
 | Özellik adı | Açıklama |
 |---------------|-------------|
-| DenetimEventKategori | Denetim olayının türü. *Bu Kullanıcı Yönetimi,* *Uygulama Yönetimi*veya başka bir tür olabilir.|
-| Kimlik Türü | Türü *Uygulama* veya *Kullanıcı*olabilir. |
-| İşlem Türü | Türü *Ekle*, *Güncelleştir*, *Sil*olabilir . veya *Diğer*. |
-| Hedef Kaynak Türü | İşlemin gerçekleştirildiğini hedef kaynak türünü belirtir. Tür *Uygulama*, *Kullanıcı*, *Rol*, *Politika* olabilir | 
-| Hedef Kaynak Adı | Hedef kaynağın adı. Bir uygulama adı, bir rol adı, kullanıcı anaadı veya bir hizmet ana adı olabilir. |
-| ek Hedefler | Belirli işlemler için ek özellikleri listeler. Örneğin, bir güncelleştirme işlemi için, eski değerler ve yeni değerler *hedefGüncelLeştirilmiş Özellikler*altında listelenir. | 
+| AuditEventCategory | Denetim olayının türü. *Kullanıcı yönetimi*, *uygulama yönetimi*veya başka bir tür olabilir.|
+| Kimlik türü | Tür *uygulama* veya *Kullanıcı*olabilir. |
+| İşlem Türü | Tür *ekleme*, *güncelleştirme*, *silme*olabilir. ya da *diğer*. |
+| Hedef kaynak türü | İşlemin gerçekleştirildiği hedef kaynak türünü belirtir. Tür *uygulama*, *Kullanıcı*, *rol*, *ilke* olabilir | 
+| Hedef kaynak adı | Hedef kaynağın adı. Bir uygulama adı, rol adı, Kullanıcı asıl adı veya hizmet asıl adı olabilir. |
+| additionalTargets | Belirli işlemler için ek özellikleri listeler. Örneğin, bir güncelleştirme işlemi için, eski değerler ve yeni değerler *Targetupdatedproperties*altında listelenir. | 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Monitor'da oturum açma günlüklerini şema yorumlama](reference-azure-monitor-sign-ins-log-schema.md)
+* [Azure Izleyici 'de oturum açma günlüğü şemasını yorumlama](reference-azure-monitor-sign-ins-log-schema.md)
 * [Azure tanılama günlükleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Sık sorulan sorular ve bilinen sorunlar](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

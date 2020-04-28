@@ -1,26 +1,26 @@
 ---
-title: PostgreSQL için Azure Veritabanına minimum kapalı kalma süresi geçişi - Tek Sunucu
-description: Bu makalede, Bir PostgreSQL veritabanının Azure Veritabanı için Azure Veritabanı'na en az kesintiyle geçişinin Nasıl Yapılacağını, Azure Veritabanı Geçiş Hizmeti'ni kullanarak PostgreSQL - Single Server için Azure Veritabanı'na nasıl yapılacağını açıklar.
+title: PostgreSQL için Azure veritabanı 'na en az kapalı kalma süresi-tek sunucu
+description: Bu makalede, Azure veritabanı geçiş hizmeti kullanılarak bir PostgreSQL veritabanının Azure veritabanı 'na PostgreSQL için Azure veritabanı 'na en az kapalı kalma süresi nasıl gerçekleştireceğiniz açıklanır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 93cd390889c023adf1c30a8470e1c2298598439e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65067522"
 ---
-# <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanına minimum kapalı kalma süresi geçişi - Tek Sunucu
-[Azure Veritabanı Geçiş Hizmeti](https://aka.ms/get-dms) (DMS) için yeni tanıtılan sürekli **eşitleme özelliğini** kullanarak PostgreSQL için Azure Veritabanı'na en az kapalı kalma süresiyle PostgreSQL geçişleri gerçekleştirebilirsiniz. Bu işlevsellik, uygulamatarafından tahakkuk eden kapalı kalma süresini sınırlar.
+# <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'na en az kapalı kalma süresi-tek sunucu
+[Azure veritabanı geçiş hizmeti](https://aka.ms/get-dms) (DMS) için yeni sunulan **sürekli eşitleme özelliğini** kullanarak PostgreSQL için Azure veritabanı 'na geçiş işlemini en az kapalı kalma süresine sahip olabilirsiniz. Bu işlevsellik, uygulama tarafından tahakkuk eden kesinti süresini sınırlandırır.
 
 ## <a name="overview"></a>Genel Bakış
-Azure DMS, şirket içi bir yüklemenizi PostgreSQL için Azure Veritabanı'na gerçekleştirir ve uygulama çalışmaya devam ederken yeni işlemleri sürekli olarak Azure ile eşitler. Veriler hedef Azure tarafında yakaladıktan sonra, uygulamayı kısa bir süre (minimum kapalı kalma süresi) durdurursunuz, son veri toplusunu beklersiniz (uygulama yeni bir trafik almak için etkili bir şekilde kullanılamayana kadar uygulamayı durdurun) hedefte yukarı ve ardından bağlantı dizenizi Azure'a işaret etmek için güncelleştirin. İşinizi bitirdiğinizde, uygulamanız Azure'da canlı olacak!
+Azure DMS, şirket içinde PostgreSQL için Azure veritabanı 'na ilk kez yük gerçekleştirir ve ardından uygulama çalışmaya devam ederken yeni işlemleri sürekli olarak Azure 'a eşitler. Veriler hedef Azure tarafında tamamlandıktan sonra, uygulamayı kısa bir süre (en düşük kapalı kalma süresi) durdurur, son veri toplu iş için bekleyin (uygulamanın yeni bir trafiği almak için etkin hale gelene kadar uygulamayı durdurmanız gerekir) ve ardından Bağlantı dizenizi Azure 'a işaret etmek üzere güncelleştirin. İşiniz bittiğinde, uygulamanız Azure 'da canlı olacaktır!
 
-![Azure Veritabanı Geçiş Hizmeti ile sürekli eşitleme](./media/howto-migrate-online/ContinuousSync.png)
+![Azure veritabanı geçiş hizmeti ile sürekli eşitleme](./media/howto-migrate-online/ContinuousSync.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- PostgreSQL uygulamalarını PostgreSQL için Azure Veritabanı'na nasıl geçirilen gösteren bir demo içeren Microsoft Azure ile video [Uygulama Modernizasyonunu](https://medius.studios.ms/Embed/Video/BRK2102?sid=BRK2102)görüntüleyin.
-- [DMS kullanarak PostgreSQL sonrası çevrimiçi için PostgreSQL'i Azure Veritabanına Geçir](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)başlıklı öğreticiye bakın.
+- PostgreSQL uygulamalarının PostgreSQL için Azure veritabanı 'na nasıl geçirileceğini gösteren bir demo içeren [Microsoft Azure ile video uygulaması Modernleştirmesini](https://medius.studios.ms/Embed/Video/BRK2102?sid=BRK2102)görüntüleyin.
+- [DMS kullanarak PostgreSQL for PostgreSQL Için Azure veritabanı 'Na geçiş](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)öğreticisine bakın.

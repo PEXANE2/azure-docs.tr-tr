@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Printix ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Printix arasında tek oturum açma işlemlerini nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: Printix ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Printix arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,225 +16,225 @@ ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e883833f7998c073b574c892ed5c7777e01faab4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "62111466"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-printix"></a>Öğretici: Printix ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-printix"></a>Öğretici: Printix ile tümleştirme Azure Active Directory
 
-Bu eğitimde, Printix'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Bu öğreticide, Printix 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
 
-Printix'i Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Printix 'i Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-- Printix erişimi olan Azure AD'de denetim yapabilirsiniz
-- Kullanıcılarınızın Azure REKLAM hesaplarıyla Printix'e (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz
-- Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı
+- Azure AD 'de Printix erişimi olan denetimi yapabilirsiniz
+- Kullanıcılarınızın Azure AD hesaplarıyla Printix (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz
+- Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişiminin ve tek oturum açmanın ne olduğunu](../manage-apps/what-is-single-sign-on.md)görün.
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Printix ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini Printix ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
 - Azure AD aboneliği
-- Printix tek oturum açma özellikli abonelik
+- Bir Printix çoklu oturum açma etkin aboneliği
 
 > [!NOTE]
-> Bu öğreticideki adımları sınamak için bir üretim ortamı kullanmanızı önermiyoruz.
+> Bu öğreticideki adımları test etmek için, üretim ortamının kullanılmasını önermiyoruz.
 
-Bu öğreticideki adımları sınamak için aşağıdaki önerileri izlemeniz gerekir:
+Bu öğreticideki adımları test etmek için aşağıdaki önerileri izlemeniz gerekir:
 
-- Gerekli olmadıkça üretim ortamınızı kullanmayın.
-- Azure AD deneme ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık deneme sürümü alabilirsiniz.
+- Gerekli olmadığı takdirde üretim ortamınızı kullanmayın.
+- Azure AD deneme ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık deneme sürümü edinebilirsiniz.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
-Bu öğreticide, bir test ortamında Azure AD tek oturum açma test ini sınayın. Bu öğreticide özetlenen senaryo iki ana yapı taştan oluşur:
+Bu öğreticide, Azure AD çoklu oturum açmayı test ortamında test edersiniz. Bu öğreticide özetlenen senaryo iki ana yapı blobundan oluşur:
 
 1. Galeriden Printix ekleme
-1. Azure AD'yi yapılandırma ve test etme tek oturum açma
+1. Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
 ## <a name="adding-printix-from-the-gallery"></a>Galeriden Printix ekleme
-Printix'in Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Printix'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Printix 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeriden Printix ' i yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-**Galeriden Printix eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Printix eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın. 
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın. 
 
     ![Active Directory][1]
 
-1. Kurumsal **uygulamalara**gidin. Sonra **Tüm uygulamalargidin.**
+1. **Kurumsal uygulamalar**'a gidin. Ardından **tüm uygulamalara**gidin.
 
     ![Uygulamalar][2]
     
-1. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+1. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Uygulamalar][3]
 
-1. Arama kutusunda **Printix**yazın.
+1. Arama kutusuna **Printix**yazın.
 
     ![Azure AD test kullanıcısı oluşturma](./media/printix-tutorial/tutorial_printix_search.png)
 
-1. Sonuç panelinde **Printix'i**seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+1. Sonuçlar panelinde, **Printix**' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
     ![Azure AD test kullanıcısı oluşturma](./media/printix-tutorial/tutorial_printix_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD'yi yapılandırma ve test etme tek oturum açma
-Bu bölümde, "Britta Simon" adlı bir test kullanıcısına göre Printix ile Azure AD tek oturum açma işlemini yapılandırın ve sınarsınız.
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+Bu bölümde, "Britta Simon" adlı bir test kullanıcısına göre Printix ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 
-Tek oturum açmanın işe yaraması için Azure AD'nin Printix'teki karşı kullanıcının Azure AD'deki bir kullanıcı için ne olduğunu bilmesi gerekir. Başka bir deyişle, Printix'teki bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi nin kurulması gerekir.
+Çoklu oturum açma için, Azure AD 'nin, Printix 'teki karşıdaki kullanıcının Azure AD 'deki bir kullanıcıya ne olduğunu bilmeleri gerekir. Diğer bir deyişle, bir Azure AD kullanıcısı ve Printix içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
-Printix'te, bağlantı ilişkisini kurmak için Azure AD'deki **kullanıcı adının** değerini **Kullanıcı adı** değeri olarak atayın.
+Printix ' **te, bağlantı** ilişkisini oluşturmak için **Kullanıcı ADıNıN** değerini Azure AD ' de Kullanıcı adı olarak atayın.
 
-Printix ile Azure AD oturum açma işlemlerini yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açmayı, Printix ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırma.](#configuring-azure-ad-single-sign-on)**
-1. Azure **[AD test kullanıcısını](#creating-an-azure-ad-test-user)** Britta Simon ile Azure AD tek oturum açma işlemini test etmek için oluşturma.
-1. **[Printix test kullanıcısı oluşturma](#creating-a-printix-test-user)** - Printix'te kullanıcının Azure AD gösterimine bağlı Britta Simon'ın bir örneğine sahip olmak.
-1. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atama.](#assigning-the-azure-ad-test-user)**
-1. **[Tek Oturum Açma'yı test](#testing-single-sign-on)** etme - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD çoklu oturum açma yapılandırması](#configuring-azure-ad-single-sign-on)** , kullanıcılarınızın bu özelliği kullanmasına olanak tanımak için.
+1. **[Azure AD test kullanıcısı oluşturma](#creating-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test etme.
+1. **[Bir printix test kullanıcısı oluşturmak](#creating-a-printix-test-user)** için, kullanıcının Azure AD gösterimine bağlı olan Printta Simon 'da Britta Simon 'a sahip olun.
+1. Azure AD **[Test kullanıcısına atama](#assigning-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak Için Britta Simon 'u etkinleştirmek için.
+1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı test etme](#testing-single-sign-on)** .
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD oturum açma yapılandırma
+### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturumunu etkinleştirin ve Printix uygulamanızda tek oturum açma'yı yapılandırırsınız.
+Bu bölümde, Azure AD Azure portal 'de çoklu oturum açmayı etkinleştirin ve Printix uygulamanızda çoklu oturum açmayı yapılandırın.
 
-**Printix ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları gerçekleştirin:**
+**Azure AD 'de Printix ile çoklu oturum açmayı yapılandırmak için aşağıdaki adımları uygulayın:**
 
-1. Azure portalında, **Printix** uygulama tümleştirme sayfasında **Tek oturum açma'yı**tıklatın.
+1. Azure portal, **Printix** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' ya tıklayın.
 
-    ![Tek İşaret-On'u Yapılandır][4]
+    ![Çoklu oturum açmayı yapılandırma][4]
 
-1. Tek **oturum açma** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML tabanlı Oturum** Açma olarak **Mod'u** seçin.
+1. Çoklu oturum **açma iletişim kutusunda** , çoklu oturum açmayı etkinleştirmek için **SAML tabanlı oturum açma** olarak **mod** ' u seçin.
  
-    ![Tek İşaret-On'u Yapılandır](./media/printix-tutorial/tutorial_printix_samlbase.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_samlbase.png)
 
-1. **Printix Etki Alanı ve URL'ler** bölümünde aşağıdaki adımları gerçekleştirin:
+1. **Printix etki alanı ve URL 'ler** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Tek İşaret-On'u Yapılandır](./media/printix-tutorial/tutorial_printix_url.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_url.png)
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<subdomain>.printix.net`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.printix.net`
 
     > [!NOTE] 
-    > Değer gerçek değil. Değeri gerçek Oturum Açma URL'si ile güncelleştirin. Değeri almak için [Printix İstemci destek ekibine](mailto:support@printix.net) başvurun. 
+    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Printix istemci desteği ekibine](mailto:support@printix.net) başvurun. 
  
-1. **SAML İmzalama Sertifikası** bölümünde **Metadata XML'i** tıklatın ve ardından meta veri dosyasını bilgisayarınıza kaydedin.
+1. **SAML Imzalama sertifikası** bölümünde **metadata XML** ' e tıklayın ve ardından meta veri dosyasını bilgisayarınıza kaydedin.
 
-    ![Tek İşaret-On'u Yapılandır](./media/printix-tutorial/tutorial_printix_certificate.png) 
+    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_certificate.png) 
 
-1. **Kaydet** düğmesini tıklatın.
+1. **Kaydet** düğmesine tıklayın.
 
-    ![Tek İşaret-On'u Yapılandır](./media/printix-tutorial/tutorial_general_400.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_general_400.png)
 
-1. Printix kiracınızda yönetici olarak oturum açın.
+1. Yönetici olarak Printix kiracınızda oturum açın.
 
-1. Üstteki menüde, sağ üst köşedeki simgeyi tıklatın ve "**Kimlik Doğrulama**" seçeneğini belirleyin.
+1. Üstteki menüden sağ üst köşedeki simgeye tıklayın ve "**kimlik doğrulaması**" seçeneğini belirleyin.
    
-    ![Tek İşaret-On'u Yapılandır](./media/printix-tutorial/tutorial_printix_06.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_06.png)
 
-1. **Kurulum** sekmesinde **Azure/Office 365 kimlik doğrulamasını etkinleştir'i** seçin
+1. **Kurulum** sekmesinde **Azure/Office 365 kimlik doğrulamasını etkinleştir** ' i seçin.
    
-    ![Tek İşaret-On'u Yapılandır](./media/printix-tutorial/tutorial_printix_07.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_07.png)
 
-1. **Azure** sekmesinde, "**Federasyon meta veri belgesi**" nin textbox'ına federasyon meta veri URL'sini girdi. 
+1. **Azure** sekmesinde, Federasyon meta verileri URL 'Sini "**Federasyon meta verileri belgesi**" metin kutusuna girin. 
 
-    Azure AD'den indirdiğiniz meta data xml dosyasını [Printix destek ekibine](mailto:support@printix.net)takın. Sonra xml dosyasını yüklerler ve federasyon meta veri URL'si sağlarlar.
+    Azure AD 'den [Printix destek ekibine](mailto:support@printix.net)indirdiğiniz meta veri xml dosyasını ekleyin. Ardından, XML dosyasını karşıya yükler ve bir Federasyon meta veri URL 'SI sağlar.
    
-    ![Tek İşaret-On'u Yapılandır](./media/printix-tutorial/tutorial_printix_08.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_08.png)
    
-1. "**Test**" butonuna tıklayın ve test başarılı olursa "**Tamam**" düğmesine tıklayın.
+1. "**Test**" düğmesine tıklayın ve test başarılı olduysa "**Tamam**" düğmesine tıklayın.
    
-     Azure etkin dizin sayfası **test** düğmesini tıklattıktan sonra gösterecektir. "Test başarılı oldu" burada, Azure test hesabınızın kimlik bilgilerini girdikten sonra "Test edilen Ayarlar Tamam" iletisi açılır. Ardından **Tamam** düğmesini tıklatın.
+     Azure Active Directory sayfası, **Test** düğmesine tıklandıktan sonra gösterilir. "Test başarılı oldu" burada Azure test hesabınızın kimlik bilgilerini girdikten sonra bir "ayarlar test edildi" iletisi açılır. Ardından **Tamam** düğmesine tıklayın.
    
-    ![Tek İşaret-On'u Yapılandır](./media/printix-tutorial/tutorial_printix_09.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_09.png)
 
-1. "**Kimlik Doğrulama**" sayfasındaki **Kaydet** düğmesini tıklatın.
+1. "**Kimlik doğrulama**" sayfasında **Kaydet** düğmesine tıklayın.
 
 
 > [!TIP]
-> Artık uygulamayı kurarken [Azure portalında](https://portal.azure.com)bu talimatların kısa bir sürümünü okuyabilirsiniz!  **Active Directory > Enterprise Applications** bölümünden bu uygulamayı ekledikten sonra, **Tek Oturum Açma** sekmesine tıklayın ve en alttaki **Yapılandırma** bölümünden katıştırılmış belgelere erişin. Gömülü dokümantasyon özelliği hakkında daha fazla bilgi için burada: [Azure AD gömülü belgeler]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Artık, uygulamayı ayarlarken [Azure Portal](https://portal.azure.com)içinde bu yönergelerin kısa bir sürümünü okuyabilirsiniz!  Bu uygulamayı **Active Directory > kurumsal uygulamalar** bölümünden ekledikten sonra, yalnızca **Çoklu oturum açma** sekmesine tıklayın ve en alttaki **yapılandırma** bölümünde yer alan katıştırılmış belgeye erişin. Katıştırılmış belge özelliği hakkında daha fazla bilgi için şu adımları bulabilirsiniz: [Azure AD Embedded belgeleri]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-![Azure AD Kullanıcısı Oluşturma][100]
+![Azure AD kullanıcısı oluşturma][100]
 
-**Azure AD'de bir test kullanıcısı oluşturmak için aşağıdaki adımları gerçekleştirin:**
+**Azure AD 'de bir test kullanıcısı oluşturmak için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti bölmesinde **bulunan Azure portalında** **Azure Etkin Dizin simgesini** tıklatın.
+1. **Azure Portal**, sol gezinti bölmesinde **Azure Active Directory** simgesine tıklayın.
 
     ![Azure AD test kullanıcısı oluşturma](./media/printix-tutorial/create_aaduser_01.png) 
 
-1. Kullanıcı listesini görüntülemek için **Kullanıcılara ve gruplara** gidin ve **Tüm kullanıcıları**tıklatın.
+1. Kullanıcıların listesini göstermek için **Kullanıcılar ve gruplar** ' a gidin ve **tüm kullanıcılar**' a tıklayın.
     
     ![Azure AD test kullanıcısı oluşturma](./media/printix-tutorial/create_aaduser_02.png) 
 
-1. **Kullanıcı** iletişim kutusunu açmak için iletişim kutusunun üst kısmında **Ekle'yi** tıklatın.
+1. **Kullanıcı** iletişim kutusunu açmak için iletişim kutusunun üst kısmındaki **Ekle** ' ye tıklayın.
  
     ![Azure AD test kullanıcısı oluşturma](./media/printix-tutorial/create_aaduser_03.png) 
 
-1. **Kullanıcı** iletişim sayfasında aşağıdaki adımları gerçekleştirin:
+1. **Kullanıcı** iletişim sayfasında, aşağıdaki adımları uygulayın:
  
     ![Azure AD test kullanıcısı oluşturma](./media/printix-tutorial/create_aaduser_04.png) 
 
-    a. **Ad** metin **kutusuna BrittaSimon**yazın.
+    a. **Ad** metin kutusuna **Brittasıon**yazın.
 
-    b. Kullanıcı **adı** metin kutusuna BrittaSimon'Un **e-posta adresini** yazın.
+    b. **Kullanıcı adı** metin kutusuna Brittasıon **e-posta adresini** yazın.
 
-    c. **Parolayı Göster'i** seçin ve **Parola'nın**değerini yazın.
+    c. **Parolayı göster** ' i seçin ve **parola**değerini yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
  
-### <a name="creating-a-printix-test-user"></a>Printix test kullanıcısı oluşturma
+### <a name="creating-a-printix-test-user"></a>Bir Printix test kullanıcısı oluşturma
 
-Bu bölümün amacı Printix Britta Simon adlı bir kullanıcı oluşturmaktır. Printix, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler.
+Bu bölümün amacı, Printix 'te Britta Simon adlı bir Kullanıcı oluşturmaktır. Printix, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler.
 
-Bu bölümde sizin için bir eylem öğesi yoktur. Henüz yoksa Printix'e erişme girişimi sırasında yeni bir kullanıcı oluşturulur. 
+Bu bölümde sizin için herhangi bir eylem öğesi yok. Henüz yoksa Printix erişimi denemesi sırasında yeni bir Kullanıcı oluşturulur. 
 
 > [!NOTE]
 > Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [Printix destek ekibine](mailto:support@printix.net)başvurmanız gerekir.
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+### <a name="assigning-the-azure-ad-test-user"></a>Azure AD test kullanıcısına atama
 
-Bu bölümde, Printix'e erişim izni vererek Britta Simon'ın Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, Printtix 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirirsiniz.
 
-![Kullanıcı Ata][200] 
+![Kullanıcı ata][200] 
 
-**Britta Simon'ı Printix'e atamak için aşağıdaki adımları gerçekleştirin:**
+**Printix 'e Britta Simon atamak için aşağıdaki adımları uygulayın:**
 
-1. Azure portalında, uygulamalar görünümünü açın ve ardından dizin görünümüne gidin ve **Kurumsal uygulamalara** gidin ve ardından **Tüm uygulamaları**tıklatın.
+1. Azure portal, uygulamalar görünümünü açın ve ardından dizin görünümüne gidip **Kurumsal uygulamalar** ' a gidin ve ardından **tüm uygulamalar**' a tıklayın.
 
-    ![Kullanıcı Ata][201] 
+    ![Kullanıcı ata][201] 
 
-1. Uygulamalar listesinde **Printix'i**seçin.
+1. Uygulamalar listesinde, **Printix**' i seçin.
 
-    ![Tek İşaret-On'u Yapılandır](./media/printix-tutorial/tutorial_printix_app.png) 
+    ![Çoklu oturum açmayı yapılandırma](./media/printix-tutorial/tutorial_printix_app.png) 
 
-1. Soldaki menüde Kullanıcılar **ve gruplar'ı**tıklatın.
+1. Soldaki menüde **Kullanıcılar ve gruplar**' a tıklayın.
 
-    ![Kullanıcı Ata][202] 
+    ![Kullanıcı ata][202] 
 
-1. **Ekle** düğmesini tıklatın. Ardından **Atama Ekle** iletişim kutusunda Kullanıcılar **ve gruplar** seçin.
+1. **Ekle** düğmesine tıklayın. Sonra **atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Kullanıcı Ata][203]
+    ![Kullanıcı ata][203]
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin.
+1. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' u seçin.
 
-1. Kullanıcılar ve **gruplar** iletişim kutusunda **Seç** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** Iletişim kutusunda **Seç** düğmesine tıklayın.
 
-1. **Atama Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
     
-### <a name="testing-single-sign-on"></a>Tek oturum açma yı test etme
+### <a name="testing-single-sign-on"></a>Çoklu oturum açmayı test etme
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki Printix döşemesini tıklattığınızda, Printix uygulamanızda otomatik olarak oturum açmış olmalısınız.
+Erişim panelinde Printix kutucuğuna tıkladığınızda, Printix uygulamanızda otomatik olarak oturum açmış olmanız gerekir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](tutorial-list.md)
+* [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 

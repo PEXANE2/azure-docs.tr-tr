@@ -1,6 +1,6 @@
 ---
-title: Karma kimlik tasarımı - veri koruma stratejisi Azure | Microsoft Dokümanlar
-description: Tanımladığınız iş gereksinimlerini karşılamak için karma kimlik çözümünüz için veri koruma stratejisini tanımlarsınız.
+title: Karma kimlik tasarımı-veri koruma stratejisi Azure | Microsoft Docs
+description: Tanımladığınız iş gereksinimlerini karşılamak üzere karma kimlik çözümünüz için veri koruma stratejisini tanımlarsınız.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,155 +18,155 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0186d862968259aae73071cfecd7d62443d0256
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67109365"
 ---
-# <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için veri koruma stratejisini tanımlayın
-Bu görevde, tanımladığınız iş gereksinimlerini karşılamak için karma kimlik çözümünüz için veri koruma stratejisini tanımlarsınız:
+# <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için veri koruma stratejisini tanımlama
+Bu görevde, karma kimlik çözümünüz için veri koruma stratejisini, içinde tanımladığınız iş gereksinimlerini karşılayacak şekilde tanımlayacaksınız:
 
 * [Veri koruma gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
 * [İçerik yönetimi gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)
 * [Erişim denetimi gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)
 * [Olay yanıtı gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-incident-response-requirements.md)
 
-## <a name="define-data-protection-options"></a>Veri koruma seçeneklerini tanımlama
-[Dizin eşitleme gereksinimlerini](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)belirleyin'de açıklandığı gibi, Microsoft Azure AD şirket içi Active Directory Domain Services (AD DS) ile senkronize olabilir. Bu tümleştirme, kuruluşların kurumsal kaynaklara erişmeye çalışırken kullanıcıların kimlik bilgilerini doğrulamak için Azure AD'yi kullanmasına olanak tanır. Bunu her iki senaryo için de yapabilirsiniz: şirket içinde ve bulutta veri. Azure AD'deki verilere erişim, bir güvenlik belirteci hizmeti (STS) aracılığıyla kullanıcı kimlik doğrulaması gerektirir.
+## <a name="define-data-protection-options"></a>Veri koruma seçeneklerini tanımlayın
+[Dizin eşitleme gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)bölümünde açıklandığı gibi Microsoft Azure AD, şirket içi Active Directory Domain Services (AD DS) ile eşitlenebilir. Bu tümleştirme, kuruluşların şirket kaynaklarına erişmeye çalışırken kullanıcıların kimlik bilgilerini doğrulamak için Azure AD 'yi kullanmasına olanak sağlar. Bunu her iki senaryo için de yapabilirsiniz: bekleyen veriler şirket içinde ve bulutta. Azure AD 'deki verilere erişim, bir güvenlik belirteci hizmeti (STS) aracılığıyla Kullanıcı kimlik doğrulaması gerektirir.
 
-Kimlik doğrulaması alındıktan sonra, kullanıcı ana adı (UPN) kimlik doğrulama belirtecinden okunur. Daha sonra, yetkilendirme sistemi çoğaltılan bölümü ve kullanıcının etki alanına karşılık gelen kapsayıcıyı belirler. Kullanıcının varlığı, etkin durumu ve rolü hakkındaki bilgiler, yetkilendirme sisteminin bu oturumda kullanıcı için hedef kiracıya erişimin izin verilip verilmediğini belirlemesine yardımcı olur. Belirli yetkili eylemler (özellikle kullanıcı ve parola sıfırlama oluşturma) kiracı yöneticinin uyumluluk çabalarını veya soruşturmalarını yönetmek için kullandığı bir denetim izi oluşturur.
+Kimliği doğrulandıktan sonra, Kullanıcı asıl adı (UPN) kimlik doğrulama belirtecinden okundu. Ardından, yetkilendirme sistemi, çoğaltılan bölümü ve kullanıcının etki alanına karşılık gelen kapsayıcıyı belirler. Kullanıcının varlığı, etkin durumu ve rolü hakkındaki bilgiler, yetkilendirme sisteminin, bu oturumdaki Kullanıcı için hedef kiracıya erişimin yetkilendirilip yetkilendirilmediğini belirlemesine yardımcı olur. Belirli yetkili eylemler (özellikle, Kullanıcı ve parola sıfırlama oluşturma) bir kiracı yöneticisinin daha sonra uyumluluk çabalarını veya araştırmacıyı yönetmek için kullandığı bir denetim izi oluşturun.
 
-Veri hacmi, bant genişliği kullanılabilirliği veya diğer hususlar nedeniyle, şirket içi veri merkezinizden Internet bağlantısı üzerinden verileri Azure Depolama'ya taşımak her zaman mümkün olmayabilir. [Azure Depolama İçe Alma/Dışa Aktarma Hizmeti,](../../storage/common/storage-import-export-service.md) blob depolamasına büyük hacimli verileri yerleştirmek/almak için donanım tabanlı bir seçenek sağlar. [BitLocker şifreli](https://technet.microsoft.com/library/dn306081#BKMK_BL2012R2) sabit disk sürücülerini doğrudan bulut operatörlerinin içeriği depolama hesabınıza yüklediği veya size geri dönmek için Azure verilerinizi sürücülerinize indirebilecekleri bir Azure veri merkezine göndermenize olanak tanır. Bu işlem için yalnızca şifreli diskler kabul edilir (iş kurulumu sırasında hizmetin kendisi tarafından oluşturulan BitLocker anahtarı kullanılarak). BitLocker tuşu Azure'a ayrı olarak sağlanır ve böylece bant anahtarı paylaşımı sağlanır.
+Şirket içi veri merkezinizdeki verileri bir Internet bağlantısı üzerinden Azure depolama 'ya taşımak, veri hacmi, bant genişliği kullanılabilirliği veya diğer konular nedeniyle her zaman uygulanabilir olmayabilir. [Azure Storage içeri/dışarı aktarma hizmeti](../../storage/common/storage-import-export-service.md) , blob depolamada büyük miktarlarda veri yerleştirme/alma için donanım tabanlı bir seçenek sağlar. Cloud [-şifrelenen](https://technet.microsoft.com/library/dn306081#BKMK_BL2012R2) sabit disk sürücülerinizi doğrudan bulut işletmenlerinin depolama hesabınıza yüklendiği bir Azure veri merkezine göndermenizi sağlar veya size dönmek için Azure verilerinizi sürücülerinizde indirebilir. Bu işlem için yalnızca şifrelenmiş diskler kabul edilir (iş kurulumu sırasında hizmet tarafından oluşturulan bir BitLocker anahtarı kullanılarak). BitLocker anahtarı ayrı olarak Azure 'a sağlanır ve bu sayede bant dışı anahtar paylaşımı sağlanır.
 
-Aktarım sırasındaki veriler farklı senaryolarda gerçekleşebildiğinden, Microsoft Azure'un kiracıların trafiğini birbirinden ayırmak için [sanal ağ](https://azure.microsoft.com/documentation/services/virtual-network/) kullandığını ve ana bilgisayar ve konuk düzeyindegüvenlik duvarları, IP paket filtreleme, bağlantı noktası engelleme ve HTTPS bitiş noktaları gibi ölçüleri kullandığını bilmek de önemlidir. Ancak, Azure'un altyapıdan altyapıya ve altyapıdan müşteriye (şirket içi) dahil olduğu dahili iletişimlerinin çoğu da şifrelenir. Bir diğer önemli senaryo da Azure veri merkezleri içindeki iletişimler; Microsoft, hiçbir VM'nin başka bir sinin IP adresini taklit edemeyebileceğinden veya kulak misafiri olamayacağımdan emin olmak için ağları yönetir. TLS/SSL, Azure Depolama veya SQL Veritabanlarına erişirken veya Bulut Hizmetlerine bağlanırken kullanılır. Bu durumda, müşteri yöneticisi bir TLS/SSL sertifikası almak ve kiracı altyapısına dağıtmakla yükümlüdür. Aynı dağıtımda Sanal Makineler arasında veya Microsoft Azure Sanal Ağı üzerinden tek bir dağıtımda kiracılar arasında hareket eden veri trafiği, HTTPS, SSL/TLS veya diğerleri gibi şifreli iletişim protokolleri aracılığıyla korunabilir.
+Yoldaki veriler farklı senaryolarda gerçekleşeceğinizden, Ayrıca, Microsoft Azure kiracıların bir diğerinden yalıtmak için [sanal ağ](https://azure.microsoft.com/documentation/services/virtual-network/) kullandığını, ana bilgisayar ve konuk düzeyinde güvenlik DUVARLARı, IP paket filtrelemesi, bağlantı noktası engelleme ve HTTPS uç noktaları gibi ölçüler oluşturmayı da unutmayın. Ancak, Azure 'un altyapıdan altyapıya ve altyapıdan müşteriye (Şirket içi) de dahil olmak üzere iç iletişimleri büyük bir olasılıkla şifrelenir. Diğer önemli senaryolar, Azure veri merkezlerindeki iletişimlerdir; Microsoft, ağları, başka bir VM 'nin IP adresi üzerinde taklit veya gizlice dinmeyeceğini güvence altına almak için yönetir. Azure depolama veya SQL veritabanlarına erişirken veya Cloud Services bağlanırken TLS/SSL kullanılır. Bu durumda, müşteri yöneticisi bir TLS/SSL sertifikası edinmekten ve kiracı altyapısına dağıtmaya sorumludur. Aynı dağıtımdaki sanal makineler arasında veya Microsoft Azure Sanal Ağ aracılığıyla tek bir dağıtımda bulunan kiracılar arasında taşınan veri trafiği, HTTPS, SSL/TLS veya diğerleri gibi şifreli iletişim protokolleri aracılığıyla korunabilir.
 
-[Veri koruma gereksinimlerini belirley'deki](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)soruları nasıl yanıtladığınıza bağlı olarak, verilerinizi nasıl korumak istediğinizi ve karma kimlik çözümünüzün bu işlemde size nasıl yardımcı olabileceğini belirleyebilmelisiniz. Aşağıdaki tablo, her veri koruma senaryosu için kullanılabilen Azure tarafından desteklenen seçenekleri gösterir.
+[Veri koruma gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)içindeki soruların nasıl yanıtlandığına bağlı olarak, verilerinizi nasıl korumak istediğinizi ve hibrit kimlik çözümünün bu işlemle size nasıl yardımcı olacağını belirleyebilmelisiniz. Aşağıdaki tabloda, Azure tarafından desteklenen ve her bir veri koruma senaryosunda kullanılabilen seçenekler gösterilmektedir.
 
-| Veri koruma seçenekleri | Bulutta istirahat te | Tesis içinde istirahat | Transit halinde |
+| Veri koruma seçenekleri | Bulutta kalan | Şirket içi bekleyen | Yoldaki |
 | --- | --- | --- | --- |
 | BitLocker Sürücü Şifrelemesi |X |X | |
-| Sql Server veritabanlarını şifrelemek için |X |X | |
-| VM-vm Şifreleme | | |X |
+| Veritabanlarını şifrelemek için SQL Server |X |X | |
+| VM 'den VM 'ye şifreleme | | |X |
 | SSL/TLS | | |X |
 | VPN | | |X |
 
 > [!NOTE]
-> Her Azure hizmetinin uyumlu olduğu sertifikalar hakkında daha fazla bilgi için [Microsoft Azure Güven Merkezi'nde](https://azure.microsoft.com/support/trust-center/) [Uyumluluk özelliğini](https://azure.microsoft.com/support/trust-center/services/) okuyun.
-> Veri koruma seçenekleri çok katmanlı bir yaklaşım kullandığından, bu seçenekler arasında karşılaştırma bu görev için geçerli değildir. Verilerin her durumu için kullanılabilen tüm seçeneklerden yararlandığınızdan emin olun.
+> Her bir Azure hizmetinin uyumlu olduğu sertifikalar hakkında daha fazla bilgi edinmek için [Microsoft Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/) ' nde [özelliğe göre uyumluluğu](https://azure.microsoft.com/support/trust-center/services/) okuyun.
+> Veri koruma seçenekleri çok katmanlı bir yaklaşım kullandığından, bu seçenekler arasındaki karşılaştırma bu görev için geçerli değildir. Verilerin her durumu için kullanılabilen tüm seçenekleri kullandığınızdan emin olun.
 >
 >
 
-## <a name="define-content-management-options"></a>İçerik yönetimi seçeneklerini tanımlama
+## <a name="define-content-management-options"></a>İçerik yönetimi seçeneklerini tanımlayın
 
-Karma kimlik altyapısını yönetmek için Azure AD'yi kullanmanın bir avantajı da, işlemin son kullanıcıaçısından tamamen saydam olmasıdır. Kullanıcı paylaşılan bir kaynağa erişmeye çalışır, kaynak kimlik doğrulaması gerektirir, kullanıcı belirteci elde etmek ve kaynağa erişmek için Azure AD'ye bir kimlik doğrulama isteği göndermesi zorundadır. Tüm bu işlem, kullanıcı etkileşimi olmadan arka planda gerçekleşir. 
+Karma kimlik altyapısını yönetmek için Azure AD kullanmanın avantajlarından biri, işlemin son kullanıcının perspektifinden tamamen saydam olmasını sağlar. Kullanıcı, paylaşılan bir kaynağa erişmeyi dener, kaynak kimlik doğrulaması gerektirir, kullanıcının belirteci edinmek ve kaynağa erişmesi için Azure AD 'ye bir kimlik doğrulama isteği gönderebilmesi gerekir. Bu işlemin tamamı, Kullanıcı etkileşimi olmadan arka planda gerçekleşir. 
 
-Veri gizliliği yle ilgili olan kuruluşlar genellikle çözümleri için veri sınıflandırması gerektirir. Mevcut şirket içi altyapıları zaten veri sınıflandırmasını kullanıyorsa, Kullanıcının kimliği için ana depo olarak Azure AD'yi kullanmak mümkündür. Veri sınıflandırması için şirket içinde kullanıldığı yaygın bir araç, Windows Server 2012 R2 için [Veri Sınıflandırma Araç Seti](https://msdn.microsoft.com/library/Hh204743.aspx) olarak adlandırılır. Bu araç, özel bulutunuzdaki dosya sunucularında verileri tanımlamaya, sınıflandırmaya ve korumaya yardımcı olabilir. Bu görevi gerçekleştirmek için Windows Server 2012'de [Otomatik Dosya Sınıflandırmasını](https://technet.microsoft.com/library/hh831672.aspx) kullanmak da mümkündür.
+Veri gizliliği hakkında sorun olan kuruluşlar, genellikle çözümü için veri sınıflandırması gerektirir. Mevcut şirket içi altyapınız zaten veri sınıflandırması kullanıyorsa, kullanıcının kimliğinin ana deposu olarak Azure AD 'yi kullanmak mümkündür. Veri sınıflandırması için şirket içinde kullanılan ortak bir araç, Windows Server 2012 R2 için [veri sınıflandırma araç seti](https://msdn.microsoft.com/library/Hh204743.aspx) olarak adlandırılır. Bu araç, özel bulutunuzda dosya sunucularındaki verileri tanımlamak, sınıflandırmak ve korumak için yardımcı olabilir. Bu görevi gerçekleştirmek için Windows Server 2012 ' de [Otomatik dosya sınıflandırmasını](https://technet.microsoft.com/library/hh831672.aspx) kullanmak da mümkündür.
 
-Kuruluşunuzun yerinde veri sınıflandırması yoksa, ancak şirket içinde yeni Sunucular eklemeden hassas dosyaları koruması gerekiyorsa, Microsoft [Azure Hakları Yönetimi Hizmetini](https://technet.microsoft.com/library/JJ585026.aspx)kullanabilirler.  Azure RMS, dosyalarınızın ve e-postalarınızın güvenliğini sağlamaya yardımcı olmak için şifreleme, kimlik ve yetkilendirme ilkeleri kullanır ve telefonlar, tabletler ve bilgisayarlar gibi birden çok cihazda çalışır. Azure RMS bir bulut hizmeti olduğundan, korumalı içeriği onlarla paylaşmadan önce güvenleri diğer kuruluşlarla açıkça yapılandırmanız gerekmez. Zaten bir Office 365 veya bir Azure AD dizinine sahiplerse, kuruluşlar arası işbirliği otomatik olarak desteklenir. Azure Active Directory Senkronizasyon Hizmetleri (AAD Syncnization) veya Azure AD Connect'i kullanarak, Azure RMS'nin şirket içi Etkin Dizin hesaplarınız için ortak bir kimliği desteklemesi için gereken dizin özniteliklerini yalnızca eşitleyebilirsiniz.
+Kuruluşunuzda veri sınıflandırması yoksa ancak yeni sunucular eklemek zorunda kalmadan hassas dosyaları korumaları gerekiyorsa, Microsoft [Azure Rights Management hizmetini](https://technet.microsoft.com/library/JJ585026.aspx)kullanabilirler.  Azure RMS, dosyalarınızı ve e-postanızı güvenli hale getirmeye yardımcı olmak için şifreleme, kimlik ve yetkilendirme ilkelerini kullanır ve telefon, tablet ve bilgisayar gibi birden çok cihazda çalışmaktadır. Azure RMS bir bulut hizmeti olduğundan, korumalı içeriği bunlarla paylaşmadan önce diğer kuruluşlarla güvenleri açıkça yapılandırmaya gerek yoktur. Zaten bir Office 365 veya bir Azure AD dizinine sahiplerse, kuruluşlar arası işbirliği otomatik olarak desteklenir. Ayrıca, Azure Active Directory Eşitleme Hizmetleri (AAD Eşitleme) veya Azure AD Connect kullanarak, şirket içi Active Directory hesaplarınız için ortak bir kimlik desteklemek üzere yalnızca Azure RMS ihtiyaç duyacağı Dizin özniteliklerini de eşzamanlı hale getirebilirsiniz.
 
-İçerik yönetiminin önemli bir parçası, kimin hangi kaynağa erişene kadar erişene kadar erişene kadar, kimlik yönetimi çözümü için zengin bir günlük leme yeteneğinin önemli olduğunu anlamaktır. Azure AD, şular dahil olmak üzere 30 gün boyunca günlük sağlar:
+İçerik yönetiminin önemli bir bölümü, kimin hangi kaynağa eriştiğini öğrenmektir. bu nedenle, kimlik yönetimi çözümü için zengin bir günlüğe kaydetme özelliği önemlidir. Azure AD, aşağıdakiler dahil olmak üzere 30 gün boyunca günlük sağlar:
 
-* Rol üyeliğindeki değişiklikler (ör. kullanıcı Global Admin rolüne eklendi)
-* Kimlik bilgisi güncelleştirmeleri (ör. parola değişiklikleri)
-* Etki alanı yönetimi (ör. özel bir etki alanını doğrulama, etki alanını kaldırma)
+* Rol üyeliğindeki değişiklikler (örn. genel yönetici rolüne eklenen Kullanıcı)
+* Kimlik bilgisi güncelleştirmeleri (örn: parola değişiklikleri)
+* Etki alanı yönetimi (örn. özel etki alanını doğrulama, etki alanını kaldırma)
 * Uygulamaları ekleme veya kaldırma
-* Kullanıcı yönetimi (ör. kullanıcı ekleme, kaldırma, güncelleme)
-* Lisans ekleme veya kaldırma
+* Kullanıcı Yönetimi (örn. bir kullanıcı ekleme, kaldırma, güncelleştirme)
+* Lisansları ekleme veya kaldırma
 
 > [!NOTE]
-> Azure'da günlük açma özellikleri hakkında daha fazla bilgi için [Microsoft Azure Güvenlik ve Denetim Günlüğü Yönetimi'ni](https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf) okuyun.
-> [İçerik yönetimi gereksinimlerini belirley'deki](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)soruları nasıl yanıtladığınıza bağlı olarak, içeriğin karma kimlik çözümünde nasıl yönetilmesini istediğinizi belirleyebilmelisiniz. Tablo 6'da açıklanan tüm seçenekler Azure AD ile tümleştirme yeteneğine sahip olsa da, hangisinin işletme gereksinimlerinize daha uygun olduğunu tanımlamak önemlidir.
+> Azure 'da günlüğe kaydetme özellikleri hakkında daha fazla bilgi için [Microsoft Azure Güvenlik ve denetim günlük yönetimini](https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf) okuyun.
+> [İçerik yönetimi gereksinimlerini belirleme](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)içindeki soruların nasıl yanıtlandığına bağlı olarak, karma kimlik çözümünüzde içeriğin nasıl yönetilmesini istediğinizi belirleyebilmelisiniz. Tablo 6 ' da kullanıma sunulan tüm seçenekler Azure AD ile tümleştirilmesine karşın, iş gereksinimleriniz için ne kadar uygun olduğunu tanımlamak önemlidir.
 >
 >
 
 | İçerik yönetimi seçenekleri | Yararları | Dezavantajlar |
 | --- | --- | --- |
-| Merkezi şirket içi (Active Directory Rights Management Server) |Verilerin sınıflandırılmasından sorumlu sunucu altyapısı üzerinde tam denetim <br> Windows Server'da yerleşik yetenek, ekstra lisans veya abonelik gerekmez <br> Karma bir senaryoda Azure AD ile tümleştirilebilir <br> Exchange Online ve SharePoint Online gibi Microsoft Çevrimiçi hizmetlerinde bilgi hakları yönetimi (IRM) yeteneklerinin yanı sıra Office 365'i destekler <br> Exchange Server, SharePoint Server ve Windows Server ve Dosya Sınıflandırma Altyapısı (FCI) çalıştıran dosya sunucuları gibi şirket içi Microsoft sunucu ürünlerini destekler. |BT Sunucuya sahip olduğundan, daha yüksek bakım (güncelleştirmeleri, yapılandırmayı ve olası yükseltmeleri takip edin <br> Şirket içinde sunucu altyapısı gerektirme<br> Azure özelliklerinden yerel olarak yararlanmaz |
-| Bulutta merkezileştirilmiş (Azure RMS) |Şirket içi çözüme göre yönetilmesi daha kolay <br> Hibrit bir senaryoda AD DS ile entegre edilebilir <br>  Azure AD ile tam entegre <br> Hizmeti dağıtmak için şirket içinde sunucu gerektirmez <br> Exchange Server, SharePoint, Server gibi şirket içi Microsoft sunucu ürünlerini ve Windows Server ve Dosya Sınıflandırması, Altyapı (FCI) çalıştıran dosya sunucularını destekler <br> BT, BYOK yeteneği ile kiracı anahtarı üzerinde tam kontrole sahip olabilir. |Kuruluşunuzun RMS'yi destekleyen bir bulut aboneliği olmalıdır <br> Kuruluşunuzun RMS için kullanıcı kimlik doğrulamasını desteklemek için bir Azure REKLAM dizinine sahip olması gerekir |
-| Karma (Azure RMS ile entegre, Şirket Içi Aktif Dizin Hakları Yönetimi Sunucusu) |Bu senaryo, hem şirket içinde hem de bulutta merkezi leştirilmiş avantajları biriktirir. |Kuruluşunuzun RMS'yi destekleyen bir bulut aboneliği olmalıdır <br> Kuruluşunuzun RMS için kullanıcı kimlik doğrulamasını desteklemek için bir Azure REKLAM dizinine sahip olması gerekir, <br> Azure bulut hizmeti ile şirket içi altyapı arasında bağlantı gerektirir |
+| Merkezi şirket içi (Active Directory Rights Management sunucusu) |Verileri sınıflandırmaktan sorumlu sunucu altyapısı üzerinde tam denetim <br> Windows Server 'da yerleşik yetenek, ek lisans veya abonelik gerekmez <br> Bir karma senaryoda Azure AD ile tümleştirilebilir <br> Exchange Online ve SharePoint Online gibi Microsoft Online hizmetlerinde ve Office 365 ' de bilgi hakları yönetimi (ıRM) özelliklerini destekler <br> Exchange Server, SharePoint Server gibi şirket içi Microsoft sunucu ürünlerini ve Windows Server ve dosya sınıflandırma altyapısını (FCı) çalıştıran dosya sunucularını destekler. |Sunucunun sahibi olduğu için daha yüksek bakım (güncelleştirmeler, yapılandırma ve olası yükseltmelerden haberdar olma) <br> Şirket içi sunucu altyapısı gerektir<br> Yerel olarak Azure özelliklerinden faydalanır |
+| Bulutta Merkezi (Azure RMS) |Şirket içi çözümle karşılaştırıldığında daha kolay yönetilebilir <br> Karma bir senaryoda AD DS tümleştirilebilirler <br>  Azure AD ile tam olarak tümleşik <br> Hizmeti dağıtmak için şirket içi bir sunucu gerektirmez <br> Exchange Server, SharePoint, Server ve Windows Server ve dosya sınıflandırması, altyapı (FCı) çalıştıran dosya sunucuları gibi şirket içi Microsoft sunucu ürünlerini destekler <br> Bu, BYOK özelliği ile kiracının anahtarı üzerinde tamamen denetime sahip olabilir. |Kuruluşunuzun RMS 'yi destekleyen bir bulut aboneliği olmalıdır <br> RMS için Kullanıcı kimlik doğrulamasını desteklemek üzere kuruluşunuzun bir Azure AD dizini olmalıdır |
+| Karma (Azure RMS, şirket Içi Active Directory Rights Management sunucusu ile tümleşik) |Bu senaryo, merkezi olarak şirket içinde ve bulutta bulunan avantajları birikir. |Kuruluşunuzun RMS 'yi destekleyen bir bulut aboneliği olmalıdır <br> Kuruluşunuzun RMS için Kullanıcı kimlik doğrulamasını desteklemesi için bir Azure AD dizinine sahip olması gerekir. <br> Azure bulut hizmeti ile şirket içi altyapı arasında bağlantı gerektirir |
 
-## <a name="define-access-control-options"></a>Erişim denetimi seçeneklerini tanımlama
-Azure AD'de bulunan kimlik doğrulama, yetkilendirme ve erişim denetimi özelliklerinden yararlanarak, şirketinizin merkezi bir kimlik deposu kullanmasına olanak sağlarken, kullanıcıların ve iş ortaklarının aşağıdaki şekilde gösterildiği gibi tek oturum açma (SSO) kullanmasına izin verebilirsiniz:
+## <a name="define-access-control-options"></a>Erişim denetimi seçeneklerini tanımlayın
+Azure AD 'de bulunan kimlik doğrulama, yetkilendirme ve erişim denetimi yeteneklerini kullanarak, şirketinizin bir merkezi kimlik deposu kullanmasını etkinleştirerek, kullanıcıların ve iş ortaklarının aşağıdaki şekilde gösterildiği gibi çoklu oturum açma (SSO) kullanmasına izin verebilirsiniz:
 
-![merkezi yönetim](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
+![Merkezi Yönetim](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
 
-Merkezi yönetim ve diğer dizinlerle tam entegrasyon
+Merkezi Yönetim ve diğer dizinlerle tam tümleştirme
 
-Azure Active Directory, binlerce SaaS uygulamasına ve şirket içi web uygulamalarına tek oturum açma sağlar. Azure [Etkin Dizin federasyonu uyumluluk listesine bakın:](how-to-connect-fed-compatibility.md) Microsoft tarafından sınanan SSO üçüncü taraf hakkında daha fazla ayrıntı için tek oturum açma makalesi uygulamak için kullanılabilecek üçüncü taraf kimlik sağlayıcıları. Bu özellik, kuruluşun kimlik ve erişim yönetimini denetlerken çeşitli B2B senaryoları uygulamasına olanak tanır. Ancak, B2B tasarım işlemi sırasında, iş ortağı tarafından kullanılan kimlik doğrulama yöntemini anlamak ve bu yöntemin Azure tarafından destekleniyorsa doğrulamak önemlidir. Şu anda, aşağıdaki yöntemler Azure AD tarafından desteklenir:
+Azure Active Directory binlerce SaaS uygulamasına ve şirket içi Web uygulamalarına çoklu oturum açma olanağı sunar. Microsoft tarafından test edilmiş SSO üçüncü tarafı hakkında daha fazla bilgi için Azure Active Directory bkz. [Federasyon uyumluluk listesi: çoklu oturum açma makalesini uygulamak için kullanılabilecek üçüncü taraf kimlik sağlayıcıları](how-to-connect-fed-compatibility.md) . Bu özellik, kuruluşun kimlik ve erişim yönetiminin denetimini tutarken çeşitli B2B senaryolarını uygulamasına olanak sağlar. Ancak, B2B tasarlama işlemi sırasında, iş ortağı tarafından kullanılan kimlik doğrulama yöntemini anlamak ve bu yöntemin Azure tarafından desteklenip desteklenmediğini doğrulamak önemlidir. Şu anda aşağıdaki yöntemler Azure AD tarafından desteklenmektedir:
 
-* Güvenlik İddiası Biçimlendirme Dili (SAML)
+* Security Assertion Markup Language (SAML)
 * OAuth
 * Kerberos
 * Belirteçler
 * Sertifikalar
 
 > [!NOTE]
-> Azure'daki her protokol ve yetenekleri hakkında daha fazla bilgi için [Azure Active Directory Authentication Protocols'u](https://msdn.microsoft.com/library/azure/dn151124.aspx) okuyun.
+> her protokol ve Azure 'un özellikleri hakkında daha fazla ayrıntıyı öğrenmek için [Azure Active Directory kimlik doğrulama protokollerini](https://msdn.microsoft.com/library/azure/dn151124.aspx) okuyun.
 >
 >
 
-Mobil iş uygulamaları, Azure AD desteğini kullanarak, çalışanların kurumsal Active Directory kimlik bilgileriyle mobil uygulamalarında oturum açmalarına olanak sağlamak için aynı kolay Mobil Hizmetler kimlik doğrulama deneyimini kullanabilir. Bu özellik sayesinde Azure AD, Mobil Hizmetler'de zaten desteklenen diğer kimlik sağlayıcılarıyla birlikte (Microsoft Hesapları, Facebook Kimliği, Google Kimliği ve Twitter Kimliği dahil) bir kimlik sağlayıcısı olarak desteklenir. Şirket içi uygulamalar, şirketin AD DS'inde bulunan kullanıcının kimlik bilgilerini kullanıyorsa, buluttan gelen iş ortakları ve kullanıcılardan erişim saydam olmalıdır. Kullanıcının Koşullu Erişim denetimini (bulut tabanlı) web uygulamalarına, web API'sına, Microsoft bulut hizmetlerine, üçüncü taraf SaaS uygulamalarına ve yerel (mobil) istemci uygulamalarına yönetebilir ve güvenlik, denetim ve raporlama avantajlarından tek bir Yer. Ancak, uygulamanın üretim dışı bir ortamda veya sınırlı sayıda kullanıcıyla doğrulanması önerilir.
+Mobil iş uygulamaları, Azure AD desteğini kullanarak, çalışanların mobil uygulamalarında kurumsal Active Directory kimlik bilgileriyle oturum açmalarına olanak tanımak için aynı kolay Mobile Services kimlik doğrulama deneyimini kullanabilir. Bu özellik ile Azure AD, zaten desteklenen diğer kimlik sağlayıcılarının (Microsoft hesapları, Facebook ID, Google ID ve Twitter ID) yanı sıra Mobile Services bir kimlik sağlayıcısı olarak desteklenir. Şirket içi uygulamalar kullanıcının şirket AD DS bulunan kimlik bilgilerini kullanıyorsa, iş ortaklarının ve buluttan gelen kullanıcıların erişimi saydam olmalıdır. Kullanıcının koşullu erişim denetimini (bulut tabanlı) Web uygulamaları, Web API 'SI, Microsoft bulut Hizmetleri, üçüncü taraf SaaS uygulamaları ve yerel (mobil) istemci uygulamaları için yönetebilir ve güvenlik, denetleme, tek bir yerde raporlama avantajlarına sahip olabilirsiniz. Ancak, uygulamayı üretim dışı bir ortamda veya sınırlı sayıda kullanıcıyla doğrulamanız önerilir.
 
 > [!TIP]
-> Azure AD'nin AD DS'nin sahip olduğu gibi Grup İlkesi olmadığını belirtmek önemlidir. Aygıtlar için ilkeyi uygulamak için [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx)gibi bir mobil aygıt yönetimi çözümüne ihtiyacınız vardır.
+> Azure AD 'nin AD DS sahip olduğu grup ilkesi sahip olmadığından bahsetmek önemlidir. Cihazlara ilke zorlamak için [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx)gibi bir mobil cihaz yönetimi çözümüne ihtiyacınız vardır.
 >
 >
 
-Kullanıcının kimliği Azure AD kullanılarak doğrulandıktan sonra, kullanıcının sahip olduğu erişim düzeyini değerlendirmek önemlidir. Kullanıcının bir kaynak üzerinde sahip olduğu erişim düzeyi değişebilir. Azure AD, bazı kaynaklara erişimi denetleyerek ek bir güvenlik katmanı ekleyebilirken, kaynağın kendisinin dosya sunucusunda bulunan dosyalar için erişim denetimi gibi ayrı ayrı kendi erişim denetim listesine sahip olabileceğini unutmayın. Aşağıdaki şekil, karma bir senaryoda sahip olabileceğiniz erişim denetimi düzeylerini özetler:
+Kullanıcının kimliği Azure AD kullanarak doğrulandıktan sonra, kullanıcının sahip olduğu erişim düzeyini değerlendirmek önemlidir. Kullanıcının bir kaynak üzerinde sahip olduğu erişim düzeyi farklılık gösterebilir. Azure AD bazı kaynaklara erişimi denetleyerek ek bir güvenlik katmanı ekleyebilirken, kaynağın kendisinin bir dosya sunucusunda bulunan dosyalar için erişim denetimi gibi kendi erişim denetimi listesine de ayrıca sahip olabileceğini aklınızda bulundurun. Aşağıdaki şekil, karma bir senaryoda sahip olduğunuz erişim denetimi düzeylerini özetler:
 
-![erişim kontrolü](./media/plan-hybrid-identity-design-considerations/accesscontrol.png)
+![erişim denetimi](./media/plan-hybrid-identity-design-considerations/accesscontrol.png)
 
-Şekil X'te gösterilen diyagramdaki her etkileşim, Azure AD tarafından karşılanabilecek bir erişim denetimi senaryosunu temsil eder. Aşağıda her senaryonun bir açıklaması var:
+Şekil X ' te gösterilen diyagramdaki her etkileşim, Azure AD tarafından kapsanacak bir erişim denetimi senaryosunu temsil eder. Aşağıda her senaryonun açıklamasına sahipsiniz:
 
-1. Şirket içinde barındırılan uygulamalara Koşullu Erişim: Windows Server 2012 R2 ile AD FS kullanacak şekilde yapılandırılan uygulamalar için erişim ilkelerine sahip kayıtlı aygıtlar kullanabilirsiniz.
+1. Şirket içinde barındırılan uygulamalara koşullu erişim: Windows Server 2012 R2 ile AD FS kullanmak üzere yapılandırılmış uygulamalar için erişim ilkeleriyle kayıtlı cihazları kullanabilirsiniz.
 
-2. Azure portalına Erişim Denetimi: Azure, rol tabanlı erişim denetimi (RBAC)'ı kullanarak portala erişimi denetlemenizi de sağlar. Bu yöntem, şirketin azure portalında bir kişinin yapabileceği işlem sayısını kısıtlamasına olanak tanır. PORTALa erişimi denetlemek için RBAC'ı kullanarak BT Yöneticileri aşağıdaki erişim yönetimi yaklaşımlarını kullanarak erişimi devredebilir:
+2. Azure portal Access Control: Azure, rol tabanlı erişim denetimi (RBAC) kullanarak portala erişimi denetlemenize de olanak tanır. Bu yöntem, şirketin Azure portal bir bireyin izin veren işlem sayısını kısıtlayabilmesini sağlar. BT yöneticileri, portala erişimi denetlemek için RBAC kullanarak, aşağıdaki erişim yönetimi yaklaşımlarını kullanarak erişim yetkisi verebilir:
 
-   - Grup tabanlı rol ataması: Yerel Etkin Dizininizden senkronize edilebilen Azure REKLAM gruplarına erişim atayabilirsiniz. Bu, kuruluşunuzun grupları yönetmek için takım lama ve işlemlerde yaptığı mevcut yatırımlardan yararlanmanızı sağlar. Azure AD Premium'un temsilci grup yönetimi özelliğini de kullanabilirsiniz.
-   - Azure'da yerleşik rolleri kullanın: Kullanıcıların ve grupların yalnızca işlerini yapmak için gereken görevleri yapma iznine sahip olmalarını sağlamak için üç rol (Sahip, Katılımcı ve Okuyucu) kullanabilirsiniz.
-   -  Kaynaklara parçalı erişim: Belirli bir abonelik, kaynak grubu veya web sitesi veya veritabanı gibi tek bir Azure kaynağı için kullanıcılara ve gruplara roller atayabilirsiniz. Bu şekilde, kullanıcıların gereksinim duydukları tüm kaynaklara erişebilmesini ve yönetmeleri gerekmeyen kaynaklara erişmemelerini sağlayabilirsiniz.
+   - Grup tabanlı rol atama: Azure AD gruplarına, yerel Active Directory eşitlenemeyen erişim atayabilirsiniz. Bu, kuruluşunuzun araç yönetiminde yaptığı mevcut yatırımlardan ve grupları yönetmek için süreçlerden yararlanmanızı sağlar. Azure AD Premium için temsilci Grup Yönetimi özelliğini de kullanabilirsiniz.
+   - Azure 'da yerleşik roller kullanın: kullanıcıların ve grupların yalnızca işlerini yapmak için gereken görevleri yapmak için izne sahip olduğundan emin olmak için, sahip, katkıda bulunan ve okuyucu olmak üzere üç rol kullanabilirsiniz.
+   -  Kaynaklara ayrıntılı erişim: belirli bir abonelik, kaynak grubu veya bir Web sitesi ya da veritabanı gibi tek bir Azure kaynağı için kullanıcılara ve gruplara roller atayabilirsiniz. Bu şekilde, kullanıcıların ihtiyaç duydukları tüm kaynaklara erişimi olduğundan ve yönetilmesi gerekmeyen kaynaklara erişimleri olduğundan emin olabilirsiniz.
 
    > [!NOTE]
-   > Uygulamalar oluşturuyorsanız ve bunlar için erişim denetimini özelleştirmek istiyorsanız, yetkilendirme için Azure AD Uygulama Rolleri'ni de kullanabilirsiniz. Bu özelliği kullanmak için uygulamanızı nasıl oluşturkullanacağınıza ilişkin bu [WebApp-RoleClaims-DotNet örneğini](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) inceleyin.
+   > Uygulama oluşturuyorsanız ve bunlara yönelik erişim denetimini özelleştirmek istiyorsanız, Azure AD uygulama rollerini yetkilendirme için kullanmak da mümkündür. Bu özelliği kullanmak için uygulamanızı derlemek üzere bu [WebApp-Roleclaim-DotNet örneğini](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) gözden geçirin.
 
 
-3. Microsoft Intune ile Office 365 uygulamaları için Koşullu Erişim: BT yöneticileri, şirket kaynaklarını güvence altına almak için Koşullu Erişim aygıt ilkeleri sağlarken, uyumlu aygıtlarda bilgi çalışanlarının hizmetlere erişmesine izin verebilir. 
+3. Microsoft Intune ile Office 365 uygulamaları için koşullu erişim: BT yöneticileri kurumsal kaynakların güvenliğini sağlamak için koşullu erişim cihaz ilkeleri sağlayabilir, ancak aynı zamanda uyumlu cihazlardaki bilgi çalışanlarının hizmetlere erişmesine izin verir. 
   
-4. Saas uygulamaları için Koşullu Erişim: [Bu özellik,](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) uygulama başına çok faktörlü kimlik doğrulama erişim kurallarını ve güvenilir bir ağda olmayan kullanıcılar için erişimi engelleme olanağını yapılandırmanızı sağlar. Çok faktörlü kimlik doğrulama kurallarını uygulamaya atanan tüm kullanıcılara veya yalnızca belirtilen güvenlik grupları içindeki kullanıcılara uygulayabilirsiniz. Kullanıcılar, uygulamaya kuruluşun ağındaki bir IP adresinden erişiyorsa, çok faktörlü kimlik doğrulama gereksiniminin dışında tutulabilir.
+4. SaaS uygulamaları için koşullu erişim: [Bu özellik](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) , uygulama başına Multi-Factor Authentication erişim kurallarını ve güvenilen bir ağda olmayan kullanıcılara erişimi engelleme olanağını yapılandırmanıza olanak tanır. Multi-Factor Authentication kurallarını uygulamaya atanan tüm kullanıcılara veya yalnızca belirtilen güvenlik grupları içindeki kullanıcılara uygulayabilirsiniz. Kullanıcılar, uygulamaya kuruluşun ağı içinde olan bir IP adresinden erişiyorsa Multi-Factor Authentication gereksiniminden dışlanırlar.
 
-Erişim denetimi seçenekleri çok katmanlı bir yaklaşım kullandığından, bu seçenekler arasında karşılaştırma bu görev için geçerli değildir. Kaynaklarınıza erişimi denetlemenizi gerektiren her senaryo için kullanılabilen tüm seçeneklerden yararlandığınızdan emin olun.
+Access Control seçenekleri çok katmanlı bir yaklaşım kullandığından, bu seçenekler arasındaki karşılaştırma bu görev için geçerli değildir. Kaynaklarınızın erişimini denetlemenizi gerektiren her senaryo için kullanılabilen tüm seçenekleri kullandığınızdan emin olun.
 
-## <a name="define-incident-response-options"></a>Olay yanıt seçeneklerini tanımlama
-Azure AD, kullanıcının etkinliğini izleyerek BT'ye ortamdaki olası güvenlik risklerini kimlikle mesken deyardımcı olabilir. BT, kuruluşunuzun dizininin bütünlüğü ve güvenliği hakkında görünürlük kazanmak için Azure AD Access ve Kullanım raporlarını kullanabilir. Bu bilgilerle, bir BT yöneticisi olası güvenlik risklerinin nerede olabileceğini daha iyi belirleyebilir, böylece bu riskleri azaltmayı yeterince planlayabilirler.  [Azure AD Premium aboneliğinde,](../fundamentals/active-directory-get-started-premium.md) BT'nin bu bilgileri almasına olanak tanıyan bir dizi güvenlik raporu vardır. [Azure AD raporları](../reports-monitoring/overview-reports.md) aşağıdaki gibi sınıflandırılır:
+## <a name="define-incident-response-options"></a>Olay yanıtı seçeneklerini tanımlayın
+Azure AD, kullanıcının etkinliğini izleyerek bu BT ortamında potansiyel güvenlik risklerini kimlik konusunda yardımcı olabilir. Kuruluşunuzun dizininin bütünlüğünden ve güvenliğine ilişkin görünürlük elde etmek için Azure AD erişim ve kullanım raporlarını kullanabilir. Bu bilgilerle, bir BT Yöneticisi, olası güvenlik risklerini daha iyi bir şekilde belirleyebilir ve bu da riskleri hafifletmek için yeterli planlayabilirler.  [Azure AD Premium aboneliğin](../fundamentals/active-directory-get-started-premium.md) , bu bilgileri elde etmek için etkinleştirebileceği bir güvenlik raporları kümesi vardır. [Azure AD raporları](../reports-monitoring/overview-reports.md) aşağıdaki şekilde kategorilere ayrılır:
 
-* **Anomali raporları**: Anormal olduğu tespit edilen oturum açma olaylarını içerir. Amaç, bu tür etkinliklerden haberdar olmanızı sağlamak ve bir olayın şüpheli olup olmadığını belirlemenizi sağlamaktır.
-* **Tümleşik Uygulama raporu**: Bulut uygulamalarının kuruluşunuzda nasıl kullanıldığına ilişkin öngörüler sağlar. Azure Active Directory, binlerce bulut uygulamasıyla tümleştirme sunar.
-* **Hata raporları**: Dış uygulamalara hesap verirken oluşabilecek hataları belirtin.
-* **Kullanıcıya özel raporlar**: Belirli bir kullanıcı için cihaz/oturum açma etkinlik verilerini görüntüleyin.
-* **Etkinlik günlükleri**: Son 24 saat, son 7 gün veya son 30 gün içinde denetlenen tüm olayların yanı sıra grup etkinliği değişiklikleri, parola sıfırlama ve kayıt etkinliği nin kaydını içerir.
+* **Anomali raporları**: anormal olarak bulunan oturum açma olaylarını içerir. Amaç, Bu etkinlikten haberdar olmanız ve bir olayın şüpheli olup olmadığı konusunda bir belirleme yapmanız sağlamaktır.
+* **Tümleşik uygulama raporu**: bulut uygulamalarının kuruluşunuzda kullanılma şekli hakkında öngörüler sağlar. Azure Active Directory binlerce bulut uygulaması ile tümleştirme sunar.
+* **Hata raporları**: hesapların dış uygulamalara hazırlanması sırasında oluşabilecek hataları belirtin.
+* **Kullanıcıya özel raporlar**: belirli bir kullanıcı için cihaz/oturum açma etkinlik verilerini görüntüler.
+* **Etkinlik günlükleri**: son 24 saat, son 7 gün veya son 30 gün içindeki tüm denetlenen olayların kaydını, Ayrıca grup etkinliği değişikliklerini ve parola sıfırlama ve kayıt etkinliğini içerir.
 
 > [!TIP]
-> Bir servis talebi üzerinde çalışan Olay Yanıtı ekibine de yardımcı olabilecek bir diğer rapor da [sızdırılmış kimlik bilgileri](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials/) raporu olan kullanıcıdır. Bu rapor, sızdırılan kimlik bilgileri listesi ile kiracınız arasındaki eşleşmeleri yüzleşir.
+> Aynı zamanda, [kimlik bilgilerinin sızmış](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials/) olduğu olay yanıt ekibinin Kullanıcı tarafından da çalışmasına yardımcı olabilecek başka bir rapor. Bu rapor, sızdırılan kimlik bilgileri listesi ve kiracınız arasındaki tüm eşleşmeleri yüzeyler.
 >
 
 
-Azure AD'de bir olay yanıtı soruşturması sırasında kullanılabilecek diğer önemli yerleşik raporlar şunlardır:
+Azure AD 'de bir olay yanıtı araştırması sırasında kullanılabilen diğer önemli yerleşik raporlar ve şunları yapabilirsiniz:
 
-* **Parola sıfırlama etkinliği**: yöneticiye kuruluşta parola sıfırlamanın ne kadar etkin bir şekilde kullanıldığına ilişkin bilgiler sağlar.
-* **Parola sıfırlama kaydı etkinliği**: kullanıcıların parola sıfırlama yöntemlerini hangi yöntemleri kaydettiklerini ve hangi yöntemleri seçtiklerini anlamalarını sağlar.
-* **Grup etkinliği**: Access Paneli'nde başlatılan grup (ör. eklenen veya kaldırılan kullanıcılar) değişikliklerin geçmişini sağlar.
+* **Parola sıfırlama etkinliği**: kuruluşta etkin olmayan parola sıfırlamasının nasıl kullanıldığı hakkında öngörüler sağlar.
+* **Parola sıfırlama kayıt etkinliği**: kullanıcıların parola sıfırlama yöntemlerini ve hangi yöntemleri seçtikleri hakkında öngörüler sağlar.
+* **Grup etkinliği**: erişim panelinde başlatılan grupta yapılan değişikliklerin bir geçmişini (örn. eklenen veya kaldırılan kullanıcılar) sağlar.
 
-Bir Olay Yanıtı araştırma sürecinde kullanabileceğiniz Azure AD Premium'un temel raporlama özelliğine ek olarak, BT aşağıdakiler gibi bilgileri elde etmek için Denetim Raporu'ndan da yararlanabilir:
+Olay yanıtı araştırma işlemi sırasında kullanabileceğiniz Azure AD Premium çekirdek raporlama özelliğine ek olarak, şu gibi bilgileri almak için denetim raporundan de yararlanabilir:
 
-* Rol üyeliğindeki değişiklikler (örneğin, kullanıcı Global Yönetici rolüne eklendi)
+* Rol üyeliğindeki değişiklikler (örneğin, Kullanıcı, genel yönetici rolüne eklendi)
 * Kimlik bilgisi güncelleştirmeleri (örneğin, parola değişiklikleri)
-* Etki alanı yönetimi (örneğin, özel bir etki alanını doğrulama, etki alanını kaldırma)
+* Etki alanı yönetimi (örneğin, özel etki alanını doğrulama, etki alanını kaldırma)
 * Uygulamaları ekleme veya kaldırma
-* Kullanıcı yönetimi (örneğin, bir kullanıcıyı ekleme, kaldırma, güncelleme)
-* Lisans ekleme veya kaldırma
+* Kullanıcı Yönetimi (örneğin, bir kullanıcı ekleme, kaldırma, güncelleştirme)
+* Lisansları ekleme veya kaldırma
 
-Olay yanıtı seçenekleri çok katmanlı bir yaklaşım kullandığından, bu seçenekler arasında karşılaştırma bu görev için geçerli değildir. Şirketinizin olay yanıt sürecinin bir parçası olarak Azure AD raporlama özelliğini kullanmanızı gerektiren her senaryo için kullanılabilen tüm seçeneklerden yararlandığınızdan emin olun.
+Olay yanıtı seçenekleri çok katmanlı bir yaklaşım kullandığından, bu seçenekler arasındaki karşılaştırma bu görev için geçerli değildir. Azure AD raporlama özelliğini şirketinizin olay yanıtı işleminin bir parçası olarak kullanmanızı gerektiren her senaryo için kullanılabilen tüm seçenekleri kullandığınızdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Karma kimlik yönetimi görevlerini belirleme](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)

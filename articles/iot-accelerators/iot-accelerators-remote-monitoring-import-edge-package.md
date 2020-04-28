@@ -1,6 +1,6 @@
 ---
-title: Uzaktan İzleme çözümü alma Edge paketi - Azure | Microsoft Dokümanlar
-description: Bu makalede, Uzaktan İzleme çözüm hızlandırıcısına bir IoT Edge paketinin nasıl aktarılacak
+title: Uzaktan Izleme çözümü içeri aktarma Edge paketi-Azure | Microsoft Docs
+description: Bu makalede, bir IoT Edge paketini uzaktan Izleme çözüm hızlandırıcısına aktarma işlemi açıklanır
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,48 +9,48 @@ services: iot-accelerators
 ms.date: 10/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: 34222f396ed3c43932371aa9f64a459bb2a5dd0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61443020"
 ---
-# <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>Uzaktan İzleme çözüm hızlandırıcınıza bir IoT Edge paketi alma
+# <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>Uzaktan Izleme çözüm hızlandırıcısına IoT Edge paketini içeri aktarın
 
-Dağıtım bildirimi, bir IoT Edge aygıtına dağıtılan modülleri tanımlar. Bu makalede, kuruluşunuzdaki bir geliştiricinin dağıtım bildirimini zaten oluşturduğunu varsayar. Bir geliştiricinin nasıl bir bildirim oluşturduğunu öğrenmek için aşağıdaki IoT Edge nasıl yapılsın makalelerine bakın:
+Dağıtım bildirimi, IoT Edge cihaza dağıtılacak modülleri tanımlar. Bu makalede, kuruluşunuzdaki bir geliştiricinin zaten dağıtım bildirimi oluşturduğu varsayılmaktadır. Bir geliştiricinin bildirim oluşturma hakkında bilgi edinmek için aşağıdaki IoT Edge nasıl yapılır makalelerinden birine bakın:
 
-- [Azure portalından Azure IoT Edge modüllerini dağıtma](../iot-edge/how-to-deploy-modules-portal.md)
-- [Azure CLI ile Azure IoT Edge modüllerini dağıtma](../iot-edge/how-to-deploy-modules-cli.md)
-- [Azure IoT Edge modüllerini Visual Studio Kodundan dağıtma](../iot-edge/how-to-deploy-modules-vscode.md)
+- [Azure portal Azure IoT Edge modüllerini dağıtma](../iot-edge/how-to-deploy-modules-portal.md)
+- [Azure CLı ile Azure IoT Edge modülleri dağıtma](../iot-edge/how-to-deploy-modules-cli.md)
+- [Visual Studio Code Azure IoT Edge modüllerini dağıtma](../iot-edge/how-to-deploy-modules-vscode.md)
 
-Geliştirici, geliştirme ortamında bir dağıtım bildirimi oluşturur ve sınar. Hazır olduğunuzda, bildirimi Uzaktan İzleme çözüm hızlandırıcınıza aktarabilirsiniz.
+Geliştirici bir geliştirme ortamında dağıtım bildirimi oluşturur ve test eder. Hazırsanız, bildirimi uzaktan Izleme çözüm hızlandırıcısına aktarabilirsiniz.
 
-## <a name="export-a-manifest"></a>Bir manifesto verme
+## <a name="export-a-manifest"></a>Bildirimi dışarı aktarma
 
-Geliştirme ortamınızdan dağıtım bildirimini dışa aktarmak için Azure portalını kullanın:
+Dağıtım bildirimini geliştirme ortamınızdan dışarı aktarmak için Azure portal kullanın:
 
-1. Azure portalında, IoT Edge aygıtlarınızı geliştirmek ve test etmek için kullandığınız IoT hub'ına gidin. **IoT Edge'i** ve ardından **IoT Edge dağıtımlarını**tıklatın: ![IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/iotedge.png)
+1. Azure portal, IoT Edge cihazlarınızı geliştirmek ve test etmek için kullandığınız IoT Hub 'ına gidin. **IoT Edge** ' ye tıklayın ve ardından **dağıtımlar IoT Edge**: ![IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/iotedge.png)
 
-1. Kullanmak istediğiniz dağıtım yapılandırmasına sahip dağıtımı tıklatın. **Dağıtım Ayrıntıları** sayfası ![görüntüler: IoT Edge dağıtım ayrıntıları](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
+1. Kullanmak istediğiniz dağıtım yapılandırmasını içeren dağıtıma tıklayın. **Dağıtım ayrıntıları** sayfası şunu görüntüler: ![IoT Edge dağıtım ayrıntıları](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
 
-1. **IoT Edge manifestosu İndir'e**tıklayın : ![Dağıtım bildirimini indirin](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
+1. **IoT Edge bildirim yükle**' ye ![tıklayın: dağıtım bildirimini indir](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
 
-1. JSON dosyasını **deploymentmanifest.json**adlı yerel bir dosya olarak kaydedin.
+1. JSON dosyasını **DeploymentManifest. JSON**adlı yerel bir dosya olarak kaydedin.
 
-Şimdi dağıtım bildirimini içeren bir dosyanız var. Sonraki bölümde, bu bildirimi paket olarak Uzaktan İzleme çözümüne aktarın.
+Artık dağıtım bildirimini içeren bir dosyanız vardır. Sonraki bölümde, bu bildirimi uzak Izleme çözümüne bir paket olarak içeri aktarırsınız.
 
-## <a name="import-a-package"></a>Paket alma
+## <a name="import-a-package"></a>Bir paketi içeri aktar
 
-Bir Kenar dağıtım bildirimini paketi olarak çözüme almak için aşağıdaki adımları izleyin:
+Bir uç dağıtım bildirimini çözümünüze paket olarak içeri aktarmak için aşağıdaki adımları izleyin:
 
-1. Uzaktan İzleme **Packages** web Kullanıcı Arama ![Hizmeti:Paketler sayfasında paketler sayfasına gidin](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
+1. Uzaktan Izleme Web Kullanıcı arabirimindeki **paketler** sayfasına gidin: ![paketler sayfası](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
 
-1. **+ Yeni Paket'i**tıklatın, paket türü olarak **Kenar Bildirimi'ni** seçin ve önceki bölümde kaydettiğiniz ![ **deploymentmanifest.json** dosyasını seçmek için **Gözat'ı** tıklatın: Manifesto'yu seçin](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
+1. **+ Yeni paket**' e tıklayın, paket türü olarak **Edge bildirimi** ' ni seçin ve önceki bölümde kaydettiğiniz **DeploymentManifest. JSON** dosyasını seçmek için **Araştır** ' a tıklayın: ![bildirim Seç](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
 
-1. Paketi Uzaktan İzleme çözümünüze eklemek için ![ **Yükle'yi** tıklatın: Yüklenen paket](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
+1. Paketi uzaktan Izleme çözümünüze eklemek için **karşıya yükle** ' ye tıklayın: ![paket yüklendi](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
 
-Şimdi paket olarak bir IoT Edge dağıtım bildirimi yükledin. **Dağıtımlar** sayfasında, bu paketi bağlı IoT Edge aygıtlarınıza dağıtabilirsiniz.
+Artık bir IoT Edge dağıtım bildirimini paket olarak yüklediniz. **Dağıtımlar** sayfasında, bu paketi bağlı IoT Edge cihazlarınıza dağıtabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uzaktan İzleme çözümünden modülleri Bir IoT Edge cihazına dağıtmayı öğrendiğiniz için, bir sonraki adım [IoT Edge](../iot-edge/about-iot-edge.md)hakkında daha fazla bilgi edinmektir.
+Artık modülleri uzaktan Izleme çözümünün bir IoT Edge cihazına dağıtmayı öğrendiğinize göre, bir sonraki adım [IoT Edge](../iot-edge/about-iot-edge.md)hakkında daha fazla bilgi edineceksiniz.

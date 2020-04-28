@@ -1,6 +1,6 @@
 ---
-title: İş Görünümü& İş Tarayıcısı'nı kullanma - Azure Veri Gölü Analizi
-description: Bu makalede, Azure Veri Gölü Analizi işleri için İş Tarayıcısı ve İş Görünümü nasıl kullanılacağı açıklanmaktadır.
+title: İş & Iş görünümünü kullanın-Azure Data Lake Analytics
+description: Bu makalede Azure Data Lake Analytics işleri için Iş tarayıcısının ve Iş görünümünün nasıl kullanılacağı açıklanır.
 ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
@@ -8,165 +8,165 @@ ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
 ms.openlocfilehash: 2d33a6ec5ff6b687913914e9433b85765aaa7aec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71309945"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics için İş Tarayıcısı’nı ve İş Görünümü’nü kullanma
-Azure Veri Gölü Analizi hizmet arşivleri bir sorgu deposunda iş gönderdi. Bu makalede, geçmiş iş bilgilerini bulmak için Visual Studio için Azure Veri Gölü Araçlarında İş Tarayıcısı ve İş Görünümü'nü nasıl kullanacağınızı öğreneceksiniz. 
+Azure Data Lake Analytics hizmeti bir sorgu deposunda gönderilen işleri arşivler. Bu makalede, geçmiş iş bilgilerini bulmak için Visual Studio için Azure Data Lake Araçları ' de Iş tarayıcısını ve Iş görünümünü nasıl kullanacağınızı öğreneceksiniz. 
 
-Varsayılan olarak, Data Lake Analytics hizmeti işleri 30 gün boyunca arşivler. Son kullanma süresi, özelleştirilmiş son kullanma ilkesini yapılandırarak Azure portalından yapılandırılabilir. Son kullanma tarihinden sonra iş bilgilerine erişemeyeceksiniz. 
+Varsayılan olarak, Data Lake Analytics hizmeti işleri 30 gün boyunca arşivler. Süre sonu dönemi, özelleştirilmiş süre sonu ilkesi yapılandırılarak Azure portal yapılandırılabilir. Süre dolduktan sonra iş bilgilerine erişemeyeceksiniz. 
 
 ## <a name="prerequisites"></a>Ön koşullar
-[Visual Studio ön koşullar için Veri Gölü Araçları'na](data-lake-analytics-data-lake-tools-get-started.md#prerequisites)bakın.
+Bkz. [Visual Studio için Data Lake araçları önkoşulları](data-lake-analytics-data-lake-tools-get-started.md#prerequisites).
 
-## <a name="open-the-job-browser"></a>İş Tarayıcısını Aç
-Visual Studio'da **Sunucu Gezgini>Azure>Data Lake Analytics>İşler** aracılığıyla İş Tarayıcısı'na erişin.  İş Tarayıcısını kullanarak, bir Data Lake Analytics hesabının sorgu deposuna erişebilirsiniz. İş Tarayıcısı, temel iş bilgilerini gösteren sorgu deposunu ve sağda ayrıntılı iş bilgilerini gösteren İş Görünümü'nu görüntüler.
+## <a name="open-the-job-browser"></a>Iş tarayıcısını açın
+Visual Studio 'da>iş **Data Lake Analytics>Azure>Sunucu Gezgini** aracılığıyla iş tarayıcısına erişin.  Iş tarayıcısını kullanarak bir Data Lake Analytics hesabının sorgu deposuna erişebilirsiniz. İş tarayıcısı, temel iş bilgilerini göstererek ve ayrıntılı iş bilgilerini gösteren doğru iş görünümünü gösteren sorgu deposunu sol tarafta görüntüler.
 
-## <a name="job-view"></a>İş Görünümü
-İş Görünümü, bir işin ayrıntılı bilgilerini gösterir. Bir işi açmak için, İş Tarayıcısı'ndaki bir işi çift tıklatabilir veya İş Görünümü'nü tıklatarak Veri Gölü menüsünden açabilirsiniz. İş URL'si ile doldurulan bir iletişim kutusu görmeniz gerekir.
+## <a name="job-view"></a>İş görünümü
+İş görünümü bir işin ayrıntılı bilgilerini gösterir. Bir işi açmak için iş tarayıcısında bir işe çift tıklayabilir veya Iş görünümü ' ne tıklayarak Data Lake menüsünden açabilirsiniz. İş URL 'SI ile doldurulmuş bir iletişim kutusu görmeniz gerekir.
 
-![Veri Gölü Araçları Görsel Stüdyo İş Tarayıcısı](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view.png)
+![Data Lake araçları Visual Studio Iş tarayıcısı](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view.png)
 
-İş Görünümü şunları içerir:
+İş görünümü şunları içerir:
 
 * İş Özeti
   
-    Çalışan işlerle ilgili daha yeni bilgileri görmek için İş Görünümünü yenileyin.
+    Çalışan işlerin daha güncel bilgilerini görmek için Iş görünümünü yenileyin.
   
-  * İş Durumu (grafik):
+  * İş durumu (grafik):
     
-      İş Durumu, iş aşamalarını özetler:
+      İş durumu iş aşamalarını özetler:
     
-      ![Azure Veri Gölü Analizi iş aşamaları durumu](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
+      ![Azure Data Lake Analytics iş aşamaları durumu](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
     
-    * Hazırlama: Komut dosyanızı buluta yükleyin, derleme hizmetini kullanarak komut dosyasını derleyip optimize edin.
-    * Sıraya alındı: İşler yeterli kaynak beklerken sıralanır veya işler hesap sınırlaması başına en fazla eşzamanlı işleri aşar. Öncelik ayarı sıralı işlerin sırasını belirler - sayı ne kadar düşükse, öncelik de o kadar yüksek olur.
-    * Çalışma: İş aslında Data Lake Analytics hesabınızda çalışıyor.
-    * Sonuçlandırma: İş tamamlıyor (örneğin, dosyayı sonuçlandırın.
+    * Hazırlama: komut dosyanızı buluta yükleyin, derleme hizmetini kullanarak betiği derleyip en iyi duruma getirme.
+    * Kuyruğa Alınan: Işler, yeterli kaynak beklerken sıraya alınır veya işler hesap başına maksimum eşzamanlı iş sayısını aşırlar. Öncelik ayarı sıraya alınan işlerin sırasını belirler. sayı ne kadar düşükse öncelik o kadar yüksektir.
+    * Çalışıyor: iş aslında Data Lake Analytics hesabınızda çalışır.
+    * Sonlandırılıyor: iş Tamamlanıyor (örneğin, dosya sonlandırılıyor).
       
-      İş her aşamada başarısız olabilir. Örneğin, Hazırlama aşamasındaki derleme hataları, Sıraya Aşamasındaki zaman alakart hataları ve Çalışan aşamasındaki yürütme hataları vb.
-  * Temel Bilgiler
+      İş her aşamada başarısız olabilir. Örneğin, hazırlama aşamasında derleme hataları, sıraya alınan aşamadaki zaman aşımı hataları ve çalıştırma aşamasında yürütme hataları vb.
+  * Temel bilgiler
     
-      Temel iş bilgileri, İş Özeti panelinin alt kısmında gösterir.
+      Temel iş bilgileri, Iş Özeti panelinin alt bölümünde gösterilir.
     
-      ![Azure Veri Gölü Analizi iş aşamaları durumu](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
+      ![Azure Data Lake Analytics iş aşamaları durumu](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
     
-    * İş Sonucu: Başarılı veya başarısız oldu. İş her aşamada başarısız olabilir.
-    * Toplam Süre: Gönderme süresi ile bitiş saati arasındaki duvar saati süresi (süresi).
-    * Toplam İşlem Süresi: Her vertex yürütme süresinin toplamı, bunu işin yalnızca bir tepe noktası içinde yürütüldettiği zaman olarak düşünebilirsiniz. Vertex hakkında daha fazla bilgi edinmek için Toplam Vertices bakın.
-    * Gönder/Başlangıç/Bitiş Saati: Data Lake Analytics hizmetinin iş gönderimi aldığı/işe başladığı/işi başarılı bir şekilde bitirtiği veya çalıştırdığı saat.
-    * Derleme/Sıralı/Çalışan: Hazırlama/Sıraya/Çalıştırma aşamasında harcanan duvar saati süresi.
-    * Hesap: İşi çalıştırmak için kullanılan Veri Gölü Analizi hesabı.
-    * Yazar: İşi gönderen kullanıcı, gerçek bir kişinin hesabı veya sistem hesabı olabilir.
-    * Öncelik: İşin önceliği. Sayı ne kadar düşükse, öncelik de o kadar yüksektir. Yalnızca kuyruktaki işlerin sırasını etkiler. Daha yüksek bir öncelik belirlemek, çalışan işleri engellemez.
-    * Paralellik: İstenen maksimum eşzamanlı Azure Veri Gölü Analiz Birimi (ADLAUs), diğer adıyla tepe ler. Şu anda, bir tepe noktası iki sanal çekirdek ve altı GB RAM ile bir VM eşittir, ancak bu gelecekteki Data Lake Analytics güncellemeleri yükseltilebilir.
-    * Bayt Sol: İş tamamlanana kadar işlenmesi gereken baytlar.
-    * Bayt okuma/yazma: İşe başladığından beri okunan/yazılan baytlar.
-    * Toplam tepe: İş iş birçok parçaya ayrılır, işin her parçası bir tepe noktası denir. Bu değer, işin kaç parçadan oluştuğunu açıklar. Bir tepe noktalarını temel bir işlem birimi olarak düşünebilirsiniz, diğer adıyla Azure Veri Gölü Analiz Birimi (ADLAU) ve vertices paralellik içinde çalıştırılabilir. 
-    * Tamamlanan/Çalıştırma/Başarısız: Tamamlanan/çalışan/başarısız olan vertices sayısı. Vertices hem kullanıcı kodu ve sistem hataları nedeniyle başarısız olabilir, ancak sistem otomatik olarak birkaç kez vertices başarısız oldu. Tepe noktası yeniden denedikten sonra hala başarısız olursa, tüm iş başarısız olur.
-* İş Grafiği
+    * İş sonucu: başarılı veya başarısız oldu. İş her aşamada başarısız olabilir.
+    * Toplam süre: gönderme saati ile bitiş saati arasındaki duvar saati zamanı (süre).
+    * Toplam Işlem süresi: her köşe yürütme zamanının toplamı, bunu işin yalnızca bir köşede yürütüldüğü zaman olarak kabul edebilirsiniz. Köşe hakkında daha fazla bilgi edinmek için toplam köşelere bakın.
+    * Gönderme/başlatma/bitiş saati: Data Lake Analytics hizmetinin iş gönderimini aldığı/işi çalıştırmaya başladığı saat veya işi başarıyla sonlandırıyorsa zaman.
+    * Derleme/sıraya alınmış/çalışıyor: hazırlama/sıraya alma/çalıştırma aşamasında harcanan duvar saati zamanı.
+    * Hesap: işi çalıştırmak için kullanılan Data Lake Analytics hesabı.
+    * Yazar: işi gönderen Kullanıcı, gerçek bir kişinin hesabı veya sistem hesabı olabilir.
+    * Öncelik: işin önceliği. Sayı ne kadar düşükse öncelik o kadar yüksektir. Yalnızca kuyruktaki işlerin sırasını etkiler. Daha yüksek bir öncelik ayarlamak işleri çalıştırmayı engellemez.
+    * Paralellik: istenen en fazla eşzamanlı Azure Data Lake Analytics birimi sayısı (adlaus), diğer adıyla köşeleri. Şu anda, bir köşe iki sanal çekirdekli ve altı GB RAM 'e sahip bir VM 'ye eşittir, ancak gelecekte Data Lake Analytics güncelleştirmelerde yükseltilecektir.
+    * Kalan bayt: iş tamamlanana kadar işlenmesi gereken baytlar.
+    * Okunan/yazılan bayt sayısı: iş çalışmaya başladıktan sonra okunan/yazılan baytlar.
+    * Toplam köşeler: iş çok sayıda iş parçasına bölündüğü her iş parçasına köşe denir. Bu değer, işin kaç iş parçasının oluştuğunu açıklar. Bir köşeyi temel işlem birimi, diğer adıyla Azure Data Lake Analytics birimi (adlau) olarak düşünebilirsiniz ve köşeler paralellik halinde çalıştırılabilir. 
+    * Tamamlandı/çalışıyor/başarısız: tamamlanan/çalışan/başarısız köşelerin sayısı. Köşeler her iki Kullanıcı kodu ve sistem hatası nedeniyle başarısız olabilir, ancak sistem yeniden denemeler birkaç kez otomatik olarak başarısız olur. Yeniden denedikten sonra köşe hala başarısız olursa, tüm iş başarısız olur.
+* İş grafiği
   
-    U-SQL komut dosyası, giriş verilerini çıktı verilerine dönüştürme mantığını temsil eder. Komut dosyası derlenir ve Hazırlama aşamasında fiziksel bir yürütme planına optimize edilir. İş Grafiği fiziksel yürütme planını göstermektir.  Aşağıdaki diyagram işlemi göstermektedir:
+    U-SQL betiği, giriş verilerini çıkış verilerine dönüştürme mantığını temsil eder. Betik derlenir ve hazırlama aşamasında fiziksel bir yürütme planına iyileştirilir. İş grafiği, fiziksel yürütme planını gösteriyoruz.  Aşağıdaki diyagramda işlem gösterilmektedir:
   
-    ![Azure Veri Gölü Analizi iş aşamaları durumu](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-logical-to-physical-plan.png)
+    ![Azure Data Lake Analytics iş aşamaları durumu](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-logical-to-physical-plan.png)
   
-    Bir iş birçok parçaya ayrılır. Her bir eserin adı Vertex. Tepeler Super Vertex (aka sahne) olarak gruplandırılır ve İş Grafiği olarak görselleştirilmiştir. İş grafiğindeki yeşil sahne levhaları aşamaları gösterir.
+    Bir iş, çok sayıda iş parçasına bölünmüştür. Her iş parçasına köşe denir. Köşeler süper köşe (aka aşaması) olarak gruplandırılır ve Iş grafiği olarak görselleştirilebilir. İş grafiğindeki yeşil aşama plagrafları, aşamaları gösterir.
   
-    Bir aşamadaki her tepe noktası, aynı verilerin farklı parçalarıyla aynı tür işler yapıyor. Örneğin, bir TB verisi içeren bir dosyanız varsa ve ondan yüzlerce tepe bilgisi okunuyorsa, her biri bir yığın okuyor. Bu vertices aynı aşamada gruplandırılır ve aynı giriş dosyasının farklı parçaları üzerinde aynı işi yapıyor.
+    Bir aşamadaki her köşe, aynı verilerin farklı parçaları ile aynı türde çalışmalardır. Örneğin, bir TB veri içeren bir dosyanız varsa ve bunlardan oluşan yüzlerce köşe varsa, bunların her biri bir öbek okur. Bu köşeler aynı aşamada gruplandırılır ve aynı giriş dosyasının farklı parçaları üzerinde aynı çalışma yapılır.
   
   * <a name="state-information"></a>Aşama bilgileri
     
-      Belirli bir aşamada, bazı sayılar pankartta gösterilir.
+      Belirli bir aşamada, plat kartında bazı sayılar gösterilir.
     
-      ![Azure Veri Gölü Analizi iş grafiği aşaması](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-stage.png)
+      ![Azure Data Lake Analytics iş grafiği aşaması](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-stage.png)
     
-    * SV1 Özü: Bir sayı ve işlem yöntemi ile adlandırılan bir aşamanın adı.
-    * 84 vertices: Bu aşamada vertices toplam sayısı. Şekil, bu aşamada kaç parçanın bölündüğügösterir.
-    * 12.90 s/vertex: Bu aşama için ortalama vertex yürütme süresi. Bu rakam SUM (her vertex yürütme süresi) / (toplam Vertex sayısı) ile hesaplanır. Bu da demek oluyor ki, paralellik içinde yürütülen tüm tepeleri atayabilirseniz, tüm aşama 12.90'da tamamlanır. Ayrıca bu aşamada tüm iş seri yapılırsa, maliyet * AVG zaman #vertices olacağı anlamına gelir.
-    * 850.895 satır yazılmış: Bu aşamada yazılan toplam satır sayısı.
-    * R/W: Bu aşamada baytolarak okunan/yazılan veri miktarı.
-    * Renkler: Renkler farklı tepe noktası durumunu belirtmek için sahnede kullanılır.
+    * SV1 Ayıkla: bir sayı ve işlem yöntemi tarafından adlandırılan bir aşamanın adı.
+    * 84 köşeler: Bu aşamadaki köşelerin toplam sayısı. Şekil, bu aşamada kaç iş parçasının bölüneceğini gösterir.
+    * 12,90 s/köşe: Bu aşamanın ortalama köşe yürütme süresi. Bu şekil SUM (her köşe yürütme süresi)/(Toplam köşe sayısı) tarafından hesaplanır. Paralellik olarak yürütülen tüm köşeleri atayabiliyorsanız, tüm aşamanın 12,90 s içinde tamamlandığı anlamına gelir. Ayrıca, bu aşamadaki tüm işler hizmet dışı olarak tamamlandığında, maliyetin #vertices * ort saat olacağını da gösterir.
+    * 850.895 satır yazıldı: Bu aşamada yazılan toplam satır sayısı.
+    * R/W: Bu aşamada bayt cinsinden okunan/yazılan veri miktarı.
+    * Renkler: renkler farklı köşe durumunu göstermek için aşamada kullanılır.
       
-      * Yeşil, tepe noktasının başarılı olduğunu gösterir.
-      * Turuncu tepe noktasının yeniden denendiğini gösterir. Yeniden denenen tepe noktası başarısız oldu ancak sistem tarafından otomatik ve başarılı bir şekilde yeniden denendi ve genel aşama başarıyla tamamlandı. Tepe noktası yeniden denenmiş ancak yine de başarısız olduysa, renk kırmızıya döner ve tüm iş başarısız olur.
-      * Kırmızı, belirli bir tepe noktasının sistem tarafından birkaç kez yeniden denendiği ancak yine de başarısız olduğu anlamına gelen başarısız olduğunu gösterir. Bu senaryo, tüm işin başarısız olmasını neden olur.
-      * Mavi belli bir tepe noktasının aktolduğu anlamına gelir.
-      * Beyaz tepe noktasının Beklediğini gösterir. Bir ADLAU kullanılabilir olduğunda tepe noktası zamanlanmayı bekliyor olabilir veya giriş verileri hazır olmadığı için giriş bekliyor olabilir.
+      * Yeşil, köşe 'nin başarılı olduğunu gösterir.
+      * Turuncu, köşeyi yeniden denendiğini gösterir. Yeniden denenen köşe başarısız oldu, ancak sistem tarafından otomatik olarak ve başarıyla yeniden denendi ve genel aşama başarıyla tamamlandı. Köşe yeniden denenip hala başarısız olduysa, renk kırmızıya dönüşür ve tüm iş başarısız oldu.
+      * Red başarısız oldu, bu, belirli bir köşenin sistem tarafından birkaç kez yeniden denendiğini ancak hala başarısız olduğunu gösterir. Bu senaryo, tüm işin başarısız olmasına neden olur.
+      * Mavi, belirli bir köşe 'nin çalıştığı anlamına gelir.
+      * Beyaz, köşeyi beklediğini gösterir. Bir ADLAU kullanılabilir hale geldiğinde köşe zamanlanmayı bekliyor olabilir veya giriş verileri hazır olmadığından giriş bekleniyor olabilir.
       
-      Fare imlecinizi tek bir duruma göre gezdirerek sahne için daha fazla ayrıntı bulabilirsiniz:
+      Fare imlecinizi tek bir duruma getirerek, aşama hakkında daha fazla ayrıntı bulabilirsiniz:
       
-      ![Azure Veri Gölü Analizi iş grafiği aşama ayrıntıları](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-stage-details.png)
-  * Vertices: Vertices ayrıntıları açıklar, örneğin, toplam kaç vertices, kaç vertices tamamlanmış, onlar başarısız veya hala çalışan / bekliyor, vb.
-  * Veriler çapraz/iç bölmede okunur: Dosyalar ve veriler dağıtılmış dosya sisteminde birden çok bölmede depolanır. Buradaki değer, aynı bölmede veya çapraz bölmede ne kadar veri okunduğunu açıklar.
-  * Toplam işlem süresi: Sahnedeki her tepe noktası yürütme süresinin toplamı, sahnedeki tüm çalışmaların tek bir tepe noktası içinde yürütülmesi durumunda zaman olarak düşünebilirsiniz.
-  * Yazılan/okunan veriler ve satırlar: Ne kadar veri veya satırın okunduğunu/yazıldığını veya okunması gerektiğini gösterir.
-  * Vertex okuma hataları: Verileri okurken kaç tepe noktasının başarısız olduğunu açıklar.
-  * Vertex yinelenen atar: Bir tepe noktası çok yavaş çalışırsa, sistem aynı çalışma parçasını çalıştırmak için birden çok vertices zamanlayabilir. Redüktif vertices bir kez vertices başarıyla tamamlandığında atılır. Vertex yinelenen aşamalarında yineleme olarak atılır vertices sayısını kaydeder.
-  * Vertex iptalleri: Tepe noktası başarılı oldu, ancak daha sonra bazı nedenlerden dolayı yeniden çalıştırıldı. Örneğin, aşağı vertex ara giriş verilerini kaybederse, yukarı akış vertex'inin yeniden çalışmasını ister.
-  * Vertex zamanlama yürütmeleri: Vertices zamanlanmış toplam süre.
-  * Min/Average/Max Vertex veri okuma: Her tepe noktası nın minimum/ortalama/maksimum okuma verisi.
-  * Süre: Bir sahnenin aldığı duvar saati saati, bu değeri görmek için profil yüklemeniz gerekir.
+      ![Azure Data Lake Analytics iş grafiği aşama ayrıntıları](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-stage-details.png)
+  * Köşeler: köşelerin ayrıntılarını açıklar; Örneğin, toplam cinsinden kaç köşe, tamamlanan köşe sayısı, ne başarısız veya hala çalışıyor/bekliyor, vb.
+  * Veri okuma/şirket içi Pod: dosyalar ve veriler, dağıtılmış dosya sisteminde birden çok sayıda Pod 'de depolanır. Buradaki değer, aynı Pod veya Cross Pod 'da ne kadar veri okunduğunu açıklar.
+  * Toplam işlem süresi: aşamadaki her köşe yürütme zamanının toplamı, bu süreyi, aşamadaki tüm çalışmalar yalnızca bir köşede yürütülürse yapılacak süre olarak kabul edebilirsiniz.
+  * Yazılan/okunan veriler ve satırlar: ne kadar veri ya da satır okunup yazıldığını veya okunmayı belirtir.
+  * Köşe okuma sorunları: verileri okurken kaç köşe başarısız olduğunu açıklar.
+  * Köşe yinelemesi atımı: bir köşe çok yavaş çalışırsa, sistem aynı iş parçasını çalıştırmak için birden çok köşe zamanlayabilir. Köşelerden biri başarıyla tamamlandıktan sonra, Reductant köşeleri atılır. Köşe yinelemesi atma, aşamada çoğaltılan olarak atılan köşelerin sayısını kaydeder.
+  * Köşe iptal edilecek: köşe başarılı oldu, ancak bazı nedenlerden dolayı daha sonra yeniden çalıştırın. Örneğin, aşağı akış köşesi ara giriş verilerini kaybederse, yukarı akış köşesinin yeniden çalıştırılması istenir.
+  * Köşe zamanlaması yürütmeleri: köşelerin zamanlandığı toplam süre.
+  * En az/ortalama/en fazla köşe verisi okuma: her köşenin veri okuma en düşük/ortalama/en yüksek değeri.
+  * Süre: bir aşamanın zaman içindeki duvar saati zamanı, bu değeri görmek için profil yüklemeniz gerekir.
   * İş Kayıttan Yürütme
     
-      Data Lake Analytics işleri yürütür ve vertices başlatıldığında, durdurulduğu, başarısız olduğu ve nasıl yeniden denendiği gibi işlerin vertices çalışan bilgileri arşivler. Tüm bilgiler sorgu deposunda otomatik olarak günlüğe kaydedilir ve İş Profilinde depolanır. İş Görünümü'ndeki "Load Profile" aracılığıyla İş Profilini indirebilir ve İş Profilini indirdikten sonra İş Oynatma'yı görüntüleyebilirsiniz.
+      Data Lake Analytics işleri çalıştırır ve köşelerin başlatıldığı, durdurulduğu, başarısız olduğu ve nasıl yeniden denendikleri gibi, vb. gibi işlerin çalışma bilgilerini arşivler. Tüm bilgiler otomatik olarak sorgu deposunda günlüğe kaydedilir ve Iş profilinde depolanır. İş profilini, iş görünümündeki "profil yükle" aracılığıyla indirebilir ve iş profilini indirdikten sonra Işi kayıttan yürütmeyi görüntüleyebilirsiniz.
     
-      İş Oynatma kümede ne olduğunu bir özet görselleştirme. Bu iş yürütme ilerleme izlemek ve görsel olarak çok kısa bir süre içinde performans anomalileri ve darboğazları (daha az 30s genellikle) tespit yardımcı olur.
-  * İş Isı Haritası Ekranı 
+      İş kayıttan yürütme, kümede ne olduğuna ilişkin bir Epitome görselleştirmedir. Bu, iş yürütme ilerlemesini izlemenize ve çok kısa bir süre içinde (genellikle 30 ' dan az) performans sorunlarını ve darboğazları tespit etmenize yardımcı olur.
+  * İş ısı haritası ekranı 
     
-      İş Isı Haritası, İş Grafiği'ndeki Ekran açılır geçitten seçilebilir. 
+      İş ısı haritası, Iş grafiğinde görüntü açılan menüsünden seçilebilir. 
     
-      ![Azure Veri Gölü Analizi iş grafiği yığın harita ekranı](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-heat-map-display.png)
+      ![Azure Data Lake Analytics iş grafiği yığın eşlemesi görüntüsü](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-heat-map-display.png)
     
-      Bir işin G/Ç, zaman ve iş artışı ısı haritasını gösterir, bu haritada işin çoğu zaman nerede zaman geçirdiğini veya işinizin G/Ç sınır işi olup olmadığını ve benzeri bir iş olduğunu görebilirsiniz.
+      İş için g/ç, zaman ve üretilen iş ısı haritasını gösterir. Bu, işin en fazla ne kadar zaman harcadığını veya işinizin bir g/ç sınırı işi olup olmadığını bulabilir.
     
-      ![Azure Veri Gölü Analizi iş grafiği yığın harita örneği](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-heat-map-example.png)
+      ![Azure Data Lake Analytics iş grafiği yığın eşleme örneği](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-heat-map-example.png)
     
-    * İlerleme: İş yürütme süreci, bkz.
-    * Okunan/yazılan veriler: Her aşamada okunan/yazılan toplam verinin ısı haritası.
-    * Hesaplama süresi: SUM'un ısı haritası (her vertex yürütme süresi), sahnedeki tüm çalışmaların yalnızca 1 tepe noktası ile yürütülmesi durumunda bunun ne kadar süreceğini düşünebilirsiniz.
-    * Düğüm başına ortalama yürütme süresi: SUM'un ısı haritası (her tepe noktası yürütme süresi) / (Vertex Sayısı). Bu da demek oluyor ki, paralellik içinde yürütülen tüm tepe leri atayabilirseniz, tüm aşama bu zaman diliminde tamamlanacak.
-    * Giriş/Çıkış verimi: Her aşamanın giriş/çıkış veriminin ısı haritası, işinizin bu yolla G/Ç'ye bağlı bir iş olup olmadığını doğrulayabilirsiniz.
-* Meta veri işlemleri
+    * İlerleme: iş yürütme ilerleme durumu, bkz. aşama bilgileri içindeki bilgiler.
+    * Okunan/yazılan veriler: her aşamada okunan/yazılan toplam veri ısı haritası.
+    * İşlem süresi: SUM (her köşe yürütme süresi) Için ısı haritası, aşamadaki tüm çalışmalar yalnızca 1 köşe ile yürütülürse ne kadar süreceğine göz önüne alabilirsiniz.
+    * Düğüm başına ortalama yürütme süresi: TOPLAMıN (her köşe yürütme süresi)/(köşe numarası) ısı haritası. Bu, paralellik olarak yürütülen tüm köşeleri atayabilmeniz durumunda tüm aşamanın bu zaman çerçevesinde yapılacağını gösterir.
+    * Giriş/çıkış işleme: her bir aşamanın giriş/çıkış işleme ısı haritası, işinizin bu aracılığıyla g/ç bağlantılı bir iş olup olmadığını doğrulayabilirsiniz.
+* Meta veri Işlemleri
   
-    U-SQL komut dosyanızda veritabanı oluşturma, tablo bırakma vb. bazı meta veri işlemleri gerçekleştirebilirsiniz. Bu işlemler derlemeden sonra Meta data işleminde gösterilir. İddiaları bulabilir, varlıklar oluşturabilir, varlıkları burada bırakabilirsiniz.
+    U-SQL betiğinizdeki veritabanı oluşturma, tablo bırakma vb. gibi bazı meta veri işlemlerini gerçekleştirebilirsiniz. Bu işlemler, derlemeden sonra meta veri Işleminde gösterilir. Onaylamalar bulabilir, varlık oluşturabilir, varlıkları buradan bırakabilirsiniz.
   
-    ![Azure Veri Gölü Analizi İş Görünümü meta veri işlemleri](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-metadata-operations.png)
-* Devlet Tarihi
+    ![Azure Data Lake Analytics Iş görünümü meta verileri işlemleri](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-metadata-operations.png)
+* Durum geçmişi
   
-    Durum Geçmişi de İş Özeti görselleştirilmiş, ancak burada daha fazla bilgi alabilirsiniz. İşin ne zaman hazırlandığı, sıraya alındığı, çalışmaya başladığı, bittiği gibi ayrıntılı bilgileri bulabilirsiniz. Ayrıca, işin kaç kez derlendiğini (CcsGirişimleri: 1), gerçekte kümeye gönderilen iş ne zaman (Ayrıntı: kümeye iş gönderme) vb.
+    Durum geçmişi Ayrıca Iş özetinde görselleştirilebilir, ancak burada daha fazla ayrıntı edinebilirsiniz. İşin hazırlandığı, kuyruğa alındığı, çalışmaya başladığı, ne zaman sona erdiği gibi ayrıntılı bilgileri bulabilirsiniz. Ayrıca, işin ne kadar zaman derlendiğini (CcsAttempts: 1), ne zaman kümeye (ayrıntı: bir işi kümeye dağıtma), vb.
   
-    ![Azure Veri Gölü Analizi İş Görünümü durum geçmişi](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-state-history.png)
+    ![Azure Data Lake Analytics Iş görünümü durumu geçmişi](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-state-history.png)
 * Tanılama
   
-    Araç, iş yürütmeyi otomatik olarak tanılar. İşinizde bazı hatalar veya performans sorunları olduğunda uyarılar alırsınız. Burada tam bilgi almak için Profil indirmeniz gerektiğini lütfen unutmayın. 
+    Araç, iş yürütmeyi otomatik olarak tanılar. İşlerinizde bazı hatalar veya performans sorunları olduğunda uyarılar alacaksınız. Burada tam bilgi edinmek için profili indirmeniz gerektiğini lütfen unutmayın. 
   
-    ![Azure Veri Gölü Analizi İş Görünümü tanılama](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-diagnostics.png)
+    ![Azure Data Lake Analytics Iş görünümü tanılaması](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-diagnostics.png)
   
-  * Uyarılar: Derleyici uyarısı ile burada bir uyarı gösterir. Uyarı göründükten sonra daha fazla ayrıntı yada "x issue(s)" bağlantısını tıklayabilirsiniz.
-  * Vertex çok uzun vadede: Herhangi bir tepe zaman (5 saat diyelim) biterse, sorunlar burada bulunacaktır.
-  * Kaynak kullanımı: İhtiyacızdan daha fazla veya yeterli Parallelism tahsis varsa, sorunları burada bulabilirsiniz. Ayrıca daha fazla ayrıntı görmek ve daha iyi bir kaynak ayırma bulmak için "varsa" senaryoları gerçekleştirmek için Kaynak kullanımını tıklatabilirsiniz (daha fazla ayrıntı için bu kılavuza bakın).
-  * Bellek denetimi: Herhangi bir tepe noktası 5 GB'tan fazla bellek kullanıyorsa, sorunlar burada bulunur. Sistem sınırlaması daha fazla bellek kullanırsa iş yürütme sistem tarafından öldürülebilir.
+  * Uyarılar: bir uyarı, derleyici uyarısıyla burada görünür. Uyarı göründükten sonra daha fazla ayrıntı edinmek için "x sorun (ler)" bağlantısına tıklayabilirsiniz.
+  * Köşe çok uzun çalışıyor: herhangi bir köşe zaman aşımına uğrar (5 saat), bu sorunlar burada bulunur.
+  * Kaynak kullanımı: daha fazla veya ihtiyaktan yeterince paralellik ayırdıysanız, sorunlar burada bulunur. Ayrıca, daha fazla ayrıntı görmek için kaynak kullanımı ' na tıklayabilir ve daha iyi bir kaynak ayırmayı bulmak için durum senaryoları gerçekleştirebilirsiniz (daha fazla ayrıntı için bu kılavuza bakın).
+  * Bellek denetimi: herhangi bir köşe 5 GB 'den fazla bellek kullanıyorsa, bu sorunlar burada bulunur. Sistem sınırlamasından daha fazla bellek kullanıyorsa, iş yürütmesi sistem tarafından sonlandırılabilir.
 
-## <a name="job-detail"></a>İş Detayı
-İş Ayrıntısı, Komut Dosyası, Kaynaklar ve Vertex Yürütme Görünümü de dahil olmak üzere işin ayrıntılı bilgilerini gösterir.
+## <a name="job-detail"></a>İş ayrıntısı
+İş ayrıntısı, iş betiği, kaynaklar ve köşe yürütme görünümü dahil olmak üzere işin ayrıntılı bilgilerini gösterir.
 
-![Azure Veri Gölü Analizi iş detayı](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-details.png)
+![Azure Data Lake Analytics iş ayrıntısı](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-details.png)
 
-* Betik
+* Komut Dosyası
   
-    İşin U-SQL komut dosyası sorgu deposunda depolanır. Orijinal U-SQL komut dosyasını görüntüleyebilir ve gerekirse yeniden gönderebilirsiniz.
+    İşin U-SQL betiği sorgu deposunda depolanır. Özgün U-SQL betiğini görüntüleyebilir ve gerekirse yeniden gönderebilirsiniz.
 * Kaynaklar
   
-    Sorgu deposunda depolanan iş derleme çıktılarını Kaynaklar aracılığıyla bulabilirsiniz. Örneğin, İş Grafiğini, kaydettiğiniz montajları vb. göstermek için kullanılan "cebir.xml"i burada bulabilirsiniz.
-* Tepe noktası yürütme görünümü
+    Sorgu deposunda depolanan iş derleme çıktılarını kaynaklar aracılığıyla bulabilirsiniz. Örneğin, Iş grafiğini, kaydettiğiniz derlemeleri vb. göstermek için kullanılan "algeköşeli. xml" öğesini bulabilirsiniz.
+* Köşe yürütme görünümü
   
-    Bu vertices yürütme ayrıntıları gösterir. İş Profili, toplam veri okuma/yazma, çalışma zamanı, durum gibi her vertex yürütme günlüğünü arşivler. Bu görünüm sayesinde, bir işin nasıl çalıştırılabildiği hakkında daha fazla bilgi edinebilirsiniz. Daha fazla bilgi için [bkz.](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+    Köşe yürütme ayrıntılarını gösterir. Iş profili, toplam veri okuma/yazma, çalışma zamanı, durum vb. gibi her köşe yürütme günlüğünü arşivler. Bu görünüm aracılığıyla, bir işin nasıl çalıştığı hakkında daha fazla bilgi edinebilirsiniz. Daha fazla bilgi için bkz. [Visual Studio için Data Lake araçları 'Nda köşe yürütme görünümünü kullanma](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * Tanılama bilgilerini günlüğe kaydetmek için bkz. [Azure Data Lake Analytics için tanılama günlüklerine erişme](data-lake-analytics-diagnostic-logs.md)
 * Daha karmaşık bir sorgu görmek için [Azure Data Lake Analytics'i kullanarak Web sitesi günlüklerini çözümleme](data-lake-analytics-analyze-weblogs.md) makalesine bakın.
-* Vertex yürütme görünümünü kullanmak [için](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md) bkz.
+* Köşe yürütme görünümünü kullanmak için bkz [. Visual Studio için Data Lake araçları 'Nda köşe yürütme görünümünü kullanma](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 

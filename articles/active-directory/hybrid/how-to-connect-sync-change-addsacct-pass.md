@@ -1,8 +1,8 @@
 ---
-title: 'Azure AD Connect eşitlemi: AD DS hesap parolasını değiştirme | Microsoft Dokümanlar'
-description: Bu konu belgesi, AD DS hesabının parolası değiştirildikten sonra Azure AD Connect'in nasıl güncelleştirilebildiğini açıklar.
+title: 'Eşitleme Azure AD Connect: AD DS hesabı parolasını değiştirme | Microsoft Docs'
+description: Bu konu belgesi, AD DS hesabının parolası değiştirildikten sonra Azure AD Connect nasıl güncelleştirileceğini açıklar.
 services: active-directory
-keywords: AD DS hesabı, Active Directory hesabı, şifre
+keywords: AD DS hesabı, Active Directory hesabı, parola
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -18,43 +18,43 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60241617"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>AD DS hesap parolasını değiştirme
-AD DS hesabı, Azure AD Connect tarafından şirket içi Active Directory ile iletişim kurmak için kullanılan kullanıcı hesabı anlamına gelir. AD DS hesabının parolasını değiştirirseniz, Azure AD Bağlantı Eşitleme Hizmetini yeni parolayla güncelleştirmeniz gerekir. Aksi takdirde, Eşitleme artık şirket içi Active Directory ile doğru eşitlenemez ve aşağıdaki hatalarla karşılaşırsınız:
+AD DS hesabı, şirket içi Active Directory iletişim kurmak için Azure AD Connect tarafından kullanılan Kullanıcı hesabını ifade eder. AD DS hesabının parolasını değiştirirseniz, Azure AD Connect eşitleme hizmetini yeni parolayla güncelleştirmeniz gerekir. Aksi takdirde, eşitleme artık şirket içi Active Directory doğru şekilde eşitlenemez ve aşağıdaki hatalarla karşılaşacaksınız:
 
-* Eşitleme Hizmet Yöneticisi'nde, şirket içi AD ile yapılan herhangi bir içe aktarma veya dışa aktarma işlemi **başlangıç kimlik bilgileri** hatası olmadan başarısız olur.
+* Synchronization Service Manager, şirket içi AD ile herhangi bir içeri veya dışarı aktarma işlemi, **başlatma kimlik bilgileri olmadan** hata vererek başarısız olur.
 
-* Windows Olay Görüntüleyicisi altında, uygulama olay günlüğü **Olay Kimliği 6000** ile ilgili bir hata içerir ve **'Yönetim aracısı "contoso.com" kimlik bilgileri geçersiz olduğu için çalışmadı'** iletisi.
+* Windows Olay Görüntüleyicisi altında, uygulama olay günlüğü **olay kimliği 6000** ve ileti **' ' contoso.com "Yönetim Aracısı, kimlik bilgileri geçersiz olduğundan çalıştırılamadı**.
 
 
-## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>AD DS hesabı için yeni parola ile Eşitleme Hizmeti nasıl güncellenir?
-Eşitleme Hizmetini yeni parolayla güncelleştirmek için:
+## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>AD DS hesabı için yeni parolayla eşitleme hizmetini güncelleştirme
+Eşitleme hizmetini yeni parolayla güncelleştirmek için:
 
-1. Eşitleme Hizmet Yöneticisi'ni başlatın (START → Eşitleme Hizmeti).
-</br>![Eşitleme Servis Yöneticisi](./media/how-to-connect-sync-change-addsacct-pass/startmenu.png)  
+1. Synchronization Service Manager başlatın (→ eşitleme hizmetini başlatın).
+</br>![Eşitleme Service Manager](./media/how-to-connect-sync-change-addsacct-pass/startmenu.png)  
 
 2. **Bağlayıcılar** sekmesine gidin.
 
-3. Parolasının değiştirildiği AD DS hesabına karşılık gelen **AD Bağlayıcısı'nı** seçin.
+3. Parolasının değiştiği AD DS hesabına karşılık gelen **ad bağlayıcısını** seçin.
 
-4. **Eylemler**altında, **Özellikleri**seçin.
+4. **Eylemler**altında **Özellikler**' i seçin.
 
-5. Açılan iletişim kutusunda Etkin **Dizin Ormanı'na Bağlan'ı**seçin:
+5. Açılır iletişim kutusunda **Active Directory ormana Bağlan**' ı seçin:
 
-6. Ad DS hesabının yeni parolasını **Parola** metin kutusuna girin.
+6. **Parola** metin kutusuna AD DS hesabının yeni parolasını girin.
 
-7. Yeni parolayı kaydetmek ve açılır pencere iletişim kutusunu kapatmak için **Tamam'ı** tıklatın.
+7. Yeni parolayı kaydetmek ve açılır iletişim kutusunu kapatmak için **Tamam** ' ı tıklatın.
 
-8. Windows Service Control Manager altında Azure AD Connect Eşitleme Hizmetini yeniden başlatın. Bu, eski parolaya yapılan herhangi bir başvurunun bellek önbelleğinden kaldırıldığından emin olmak içindir.
+8. Windows hizmet denetimi Yöneticisi altında Azure AD Connect eşitleme hizmetini yeniden başlatın. Bu, eski parolaya yapılan herhangi bir başvurunun bellek önbelleğinden kaldırılmasını sağlamaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-**Genel bakış konuları**
+**Genel Bakış konuları**
 
-* [Azure AD Connect eşitlemesi: Eşitlemeyi anlama ve özelleştirme](how-to-connect-sync-whatis.md)
+* [Azure AD Connect eşitleme: eşitlemeyi anlama ve özelleştirme](how-to-connect-sync-whatis.md)
 
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)

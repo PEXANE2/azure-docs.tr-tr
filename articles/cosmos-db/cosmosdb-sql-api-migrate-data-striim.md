@@ -1,6 +1,6 @@
 ---
-title: Striim kullanarak verileri Azure Cosmos DB SQL API hesabına geçirin
-description: Verileri Oracle veritabanından Azure Cosmos DB SQL API hesabına geçirmek için Striim'i nasıl kullanacağınızı öğrenin.
+title: Anlık ileti kullanarak Azure Cosmos DB SQL API hesabına veri geçirme
+description: Bir Oracle veritabanından Azure Cosmos DB bir SQL API hesabına veri geçirmek için nasıl çaba ım kullanacağınızı öğrenin.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,92 +8,92 @@ ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 36ba9e2d3385184f32876a6d067b58f7c21a90bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71003282"
 ---
-# <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Striim kullanarak verileri Azure Cosmos DB SQL API hesabına geçirin
+# <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Anlık ileti kullanarak Azure Cosmos DB SQL API hesabına veri geçirme
  
-Azure pazarındaki Striim görüntüsü, veri ambarlarından veritabanlarından Azure'a sürekli gerçek zamanlı veri hareketi sunar. Verileri hareket ettirirken, satır içi denormalleştirme, veri dönüşümü, gerçek zamanlı analiz ve veri raporlama senaryoları etkinleştirme gerçekleştirebilirsiniz. Kurumsal verileri sürekli olarak Azure Cosmos DB SQL API'ye taşımak için Striim ile başlamak kolaydır. Azure, Striim'i dağıtmayı ve verileri Azure Cosmos DB'ye taşımayı kolaylaştıran bir pazar teklifi sunar. 
+Azure Marketi 'ndeki çarpıcı anlık ileti resmi, veri ambarlarından ve veritabanlarından Azure 'a sürekli gerçek zamanlı veri hareketi sunar. Verileri taşırken, satır içi normalleştirmeyi, veri dönüştürmeyi ve gerçek zamanlı analizleri ve veri raporlama senaryolarını sağlayabilirsiniz. Kurumsal verileri sürekli olarak Azure Cosmos DB SQL API 'sine taşımaya kadar hızlı bir şekilde çalışmaya başlamak kolaydır. Azure, hızlı anlık ileti dağıtmayı ve verilerin Azure Cosmos DB geçişini kolaylaştıran bir market teklifi sunar. 
 
-Bu makalede, verileri **Oracle veritabanından** **Azure Cosmos DB SQL API hesabına**geçirmek için Striim'in nasıl kullanılacağı gösterilmektedir.
+Bu makalede, verileri bir **Oracle veritabanından** **Azure Cosmos DB bir SQL API hesabına**geçirmek için nasıl çaba ım kullanılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure aboneliğiniz](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-* Bazı verilerin yer alan şirket içinde çalışan bir Oracle veritabanı.
+* Şirket içinde, içindeki bazı verilerle çalışan bir Oracle veritabanı.
 
-## <a name="deploy-the-striim-marketplace-solution"></a>Striim pazar çözümü dağıtın
+## <a name="deploy-the-striim-marketplace-solution"></a>Çarpıcı anlık ileti marketi çözümünü dağıtma
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/)oturum açın.
 
-1. Azure marketinde **kaynak oluştur'u** ve **Striim'i** arayın'ı seçin. İlk seçeneği seçin ve **oluşturun.**
+1. **Kaynak oluştur** ' u seçin ve Azure Marketi 'nde **anlık ileti** araması yapın. İlk seçeneği seçin ve **oluşturun**.
 
-   ![Striim pazar öğesi bul](./media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png)
+   ![Çarpıcı anlık ileti marketi öğesi bulun](./media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png)
 
-1. Ardından, Striim örneğinin yapılandırma özelliklerini girin. Striim ortamı sanal bir makinede dağıtılır. Temel **ler** bölmesinden **VM kullanıcı adı**, **VM parolası** (bu parola VM'ye SSH için kullanılır) girin. **Aboneliğinizi,** **Kaynak Grubunuzu**ve Striim'i dağıtmak istediğiniz **konum ayrıntılarını** seçin. Tamamlandıktan sonra **Tamam'ı**seçin.
+1. Sonra, çaba anlık ileti örneğinin yapılandırma özelliklerini girin. Çalışır durumda anlık ileti ortamı bir sanal makinede dağıtılır. **Temel bilgiler** bölmesinden VM **Kullanıcı adı**' nı, **VM PAROLASıNı** gırın (Bu parola VM 'ye SSH için kullanılır). E-mesajlaşma dağıtmak istediğiniz **abonelik**, **kaynak grubu**ve **konum ayrıntılarınızı** seçin. Tamamlandıktan sonra **Tamam**' ı seçin.
 
-   ![Striim için temel ayarları yapılandırma](./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png)
+   ![Çarpıcı anlık ileti için temel ayarları yapılandırma](./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png)
 
-1. **Striim Cluster ayarları** bölmesinde, Striim dağıtım türünü ve sanal makine boyutunu seçin.
+1. **Anlık Ileti kümesi ayarları** bölmesinde, çaba anlık ileti dağıtımı türünü ve sanal makine boyutunu seçin.
 
    |Ayar | Değer | Açıklama |
    | ---| ---| ---|
-   |Striim dağıtım türü |Tek Başına | Striim **Bağımsız** veya **Küme** dağıtım türlerinde çalıştırılabilir. Bağımsız mod, Striim sunucusunu tek bir sanal makineye dağıtır ve veri hacminize bağlı olarak VM'lerin boyutunu seçebilirsiniz. Küme modu, Striim sunucusunu seçili boyuta sahip iki veya daha fazla VM'ye dağıtır. 2'den fazla düğüme sahip küme ortamları otomatik yüksek kullanılabilirlik ve başarısızlık sunar.</br></br> Bu eğitimde, Bağımsız seçeneğini seçebilirsiniz. Varsayılan "Standard_F4s" boyutu VM kullanın.  | 
-   | Striim kümesinin adı|    <Striim_cluster_Name>|  Striim kümesinin adı.|
-   | Striim küme parolası|   <Striim_cluster_password>|  Küme için parola.|
+   |Anlık ileti dağıtım türü |Tek Başına | Anlık ileti, **tek başına** veya **küme** dağıtım türlerinde çalıştırılabilir. Tek başına modu, tek bir sanal makineye çok anlık ileti sunucusu dağıtır ve veri biriminize bağlı olarak VM 'lerin boyutunu seçebilirsiniz. Küme modu, her iki veya daha fazla VM üzerinde, bir veya daha fazla sanal makine için, seçilen boyuta sahip 2 ' den fazla düğümü olan küme ortamları otomatik yüksek kullanılabilirlik ve yük devretme sağlar.</br></br> Bu öğreticide tek başına seçeneğini belirleyebilirsiniz. Varsayılan "Standard_F4s" boyut VM 'sini kullanın.  | 
+   | Çarpıcı anlık ileti kümesinin adı|    <Striim_cluster_Name>|  Çarpıcı anlık ileti kümesinin adı.|
+   | Anlık ileti kümesi parolası|   <Striim_cluster_password>|  Küme için parola.|
 
-   Formu doldurduktan sonra devam etmek için **Tamam'ı** seçin.
+   Formu doldurduktan sonra devam etmek için **Tamam** ' ı seçin.
 
-1. **Striim erişim ayarları** bölmesinde, **Ortak IP adresini** (varsayılan değerleri seçin), **Striim için alan adı, Striim**UI'ye giriş yapmak için kullanmak istediğiniz **Yönetici parolasını** yapılandırın. Bir VNET ve Subnet yapılandırın (varsayılan değerleri seçin). Ayrıntıları doldurduktan sonra devam etmek için **Tamam'ı** seçin.
+1. **Anlık ileti erişimi ayarları** bölmesinde, **genel IP adresini** (varsayılan değerleri seçin), her şeye **yönelik etki alanı adını**, çarpıcı ım Kullanıcı arabiriminde oturum açmak için kullanmak istediğiniz **yönetici parolasını** yapılandırın. VNET ve alt ağ yapılandırın (varsayılan değerleri seçin). Ayrıntıları doldurduktan sonra devam etmek için **Tamam** ' ı seçin.
 
-   ![Striim erişim ayarları](./media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png)
+   ![Anlık ileti erişim ayarları](./media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png)
 
-1. Azure dağıtımı doğrulayacak ve her şeyin iyi göründüğünden emin olacak; doğrulamanın tamamlanması birkaç dakika sürer. Doğrulama tamamlandıktan sonra **Tamam'ı**seçin.
+1. Azure dağıtımı doğrular ve her şeyin iyi göründüğünden emin olur; doğrulamanın tamamlanmasının birkaç dakika sürer. Doğrulama tamamlandıktan sonra **Tamam**' ı seçin.
   
-1. Son olarak, kullanım koşullarını gözden geçirin ve Striim örneğini oluşturmak için **Oluştur'u** seçin. 
+1. Son olarak kullanım koşullarını gözden geçirin ve **Oluştur** ' u seçerek çarpıcı anlık ileti örneğinizi oluşturun. 
 
 ## <a name="configure-the-source-database"></a>Kaynak veritabanını yapılandırma 
 
-Bu bölümde, Oracle veritabanını veri hareketi için kaynak olarak yapılandırırsınız.  Oracle'a bağlanmak için [Oracle JDBC sürücüsüne](https://www.oracle.com/technetwork/database/features/jdbc/jdbc-ucp-122-3110062.html) ihtiyacınız vardır. Kaynak Oracle veritabanınızdaki değişiklikleri okumak için [LogMiner](https://www.oracle.com/technetwork/database/features/availability/logmineroverview-088844.html) veya [XStream API'lerini](https://docs.oracle.com/cd/E11882_01/server.112/e16545/xstrm_intro.htm#XSTRM72647)kullanabilirsiniz. Oracle JDBC sürücüsü, Oracle veritabanından verileri okumak, yazmak veya kalıcı olarak striim'in Java sınıfında bulunmalıdır.
+Bu bölümde, Oracle veritabanını veri taşıma kaynağı olarak yapılandırırsınız.  Oracle 'a bağlanmak için [Oracle JDBC sürücüsüne](https://www.oracle.com/technetwork/database/features/jdbc/jdbc-ucp-122-3110062.html) ihtiyacınız olacak. Kaynak Oracle veritabanınızdan değişiklikleri okumak için [LogMiner](https://www.oracle.com/technetwork/database/features/availability/logmineroverview-088844.html) ya da [XStream API 'lerini](https://docs.oracle.com/cd/E11882_01/server.112/e16545/xstrm_intro.htm#XSTRM72647)kullanabilirsiniz. Oracle veritabanı 'ndaki verileri okumak, yazmak veya sürdürmek için, bir mini ım 'in Java sınıfsıya 'da Oracle JDBC sürücüsü bulunmalıdır.
 
-[Ojdbc8.jar](https://www.oracle.com/technetwork/database/features/jdbc/jdbc-ucp-122-3110062.html) sürücüsünü yerel makinenize indirin. Daha sonra Striim kümesine yüklersiniz.
+[Ojdbc8. jar](https://www.oracle.com/technetwork/database/features/jdbc/jdbc-ucp-122-3110062.html) sürücüsünü yerel makinenize indirin. Bunu daha sonra çaba anlık ileti kümesine yükleyeceksiniz.
 
 ## <a name="configure-the-target-database"></a>Hedef veritabanını yapılandırma
 
-Bu bölümde, veri hareketinin hedefi olarak Azure Cosmos DB SQL API hesabını yapılandırırsınız.
+Bu bölümde, Azure Cosmos DB SQL API hesabını veri taşıma hedefi olarak yapılandıracaksınız.
 
-1. Azure portalını kullanarak bir [Azure Cosmos DB SQL API hesabı](create-cosmosdb-resources-portal.md) oluşturun.
+1. Azure portal kullanarak [Azure Cosmos DB BIR SQL API hesabı](create-cosmosdb-resources-portal.md) oluşturun.
 
-1. Azure Cosmos hesabınızdaki **Veri Gezgini** bölmesine gidin. Yeni bir kapsayıcı oluşturmak için **Yeni Kapsayıcı'yı** seçin. *Ürünleri* ve *siparişleri* Oracle veritabanından Azure Cosmos DB'ye geçirdiğinizi varsayalım. **Siparişler**adlı bir kapsayıcı ile **StriimDemo** adlı yeni bir veritabanı oluşturun. Kapsayıcıyı **1000 RUs** ile sağlama (bu örnekte 1000 RUs kullanılır, ancak iş yükünüz için tahmin edilen iş bilgili iş bilgisini kullanmanız gerekir) ve **/ORDER_ID** bölüm anahtarı olarak. Bu değerler kaynak verilerinize bağlı olarak değişir. 
+1. Azure Cosmos hesabınızdaki **Veri Gezgini** bölmesine gidin. Yeni kapsayıcı oluşturmak için **yeni kapsayıcı** ' yı seçin. Oracle veritabanından Azure Cosmos DB ' ye *ürün* ve *sipariş* verileri geçirmekte olduğunuz varsayılmaktadır. **Orders**adlı bir kapsayıcı ile **ilginç imdemo** adlı yeni bir veritabanı oluşturun. Kapsayıcıyı **1000** ru ile sağlayın (bu örnek 1000 ru kullanır, ancak iş yükünüz için tahmin edilen aktarım hızını kullanmanız gerekir) ve **/Order_Id** bölüm anahtarı olarak. Bu değerler, kaynak verilerinize göre farklılık gösterir. 
 
    ![SQL API hesabı oluşturma](./media/cosmosdb-sql-api-migrate-data-striim/create-sql-api-account.png)
 
-## <a name="configure-oracle-to-azure-cosmos-db-data-flow"></a>Oracle'ı Azure Cosmos DB veri akışına yapılandırma
+## <a name="configure-oracle-to-azure-cosmos-db-data-flow"></a>Oracle 'ı veri akışı Azure Cosmos DB için yapılandırma
 
-1. Şimdi Striim'e geri dönelim. Striim ile etkileşime girmeden önce, daha önce indirdiğiniz Oracle JDBC sürücüsünü yükleyin.
+1. Şimdi anlık ileti almaya geri bakalım. Bir anlık ileti ile etkileşime geçmeden önce, daha önce indirdiğiniz Oracle JDBC sürücüsünü yükleyebilirsiniz.
 
-1. Azure portalında dağıttığınız Striim örneğine gidin. Üst menü çubuğundaki **Bağlan** düğmesini ve **SSH** sekmesinden Bağlan düğmesini seçin, **VM yerel hesap** alanını kullanarak Giriş'teki URL'yi kopyalayın.
+1. Azure portal dağıttığınız çarpıcı anlık ileti örneğine gidin. Üstteki menü çubuğunda **Bağlan** düğmesini seçin ve **SSH** sekmesinden **VM yerel hesabı alanını kullanarak oturum açma** içindeki URL 'yi kopyalayın.
 
-   ![SSH URL'sini alın](./media/cosmosdb-sql-api-migrate-data-striim/get-ssh-url.png)
+   ![SSH URL 'sini al](./media/cosmosdb-sql-api-migrate-data-striim/get-ssh-url.png)
 
-1. Yeni bir terminal penceresi açın ve Azure portalından kopyaladığınız SSH komutunu çalıştırın. Bu makalede, MacOS terminalkullanır, bir Windows makinede PuTTY veya farklı bir SSH istemcisi kullanarak benzer yönergeleri izleyebilirsiniz. İstendiğinde, devam etmek için **evet** yazın ve önceki adımda sanal makine için ayarladığınız **parolayı** girin.
+1. Yeni bir Terminal penceresi açın ve Azure portal kopyaladığınız SSH komutunu çalıştırın. Bu makale bir MacOS 'ta Terminal kullanır, bir Windows makinesinde PuTTY veya farklı bir SSH istemcisi kullanarak benzer yönergeleri izleyebilirsiniz. İstendiğinde, devam etmek için **Evet** yazın ve önceki adımda sanal makine için ayarladığınız **parolayı** girin.
 
-   ![Striim VM'ye bağlanın](./media/cosmosdb-sql-api-migrate-data-striim/striim-vm-connect.png)
+   ![E-mesajlaşma sanal makinesine bağlanma](./media/cosmosdb-sql-api-migrate-data-striim/striim-vm-connect.png)
 
-1. Şimdi, daha önce indirdiğiniz **ojdbc8.jar** dosyasını kopyalamak için yeni bir terminal sekmesi açın. Kavanoz dosyasını yerel makinenizden Azure'da çalışan Striim örneğinin tmp klasörüne kopyalamak için aşağıdaki SCP komutunu kullanın:
+1. Şimdi, daha önce indirdiğiniz **ojdbc8. jar** dosyasını kopyalamak için yeni bir Terminal sekmesi açın. Aşağıdaki SCP komutunu kullanarak jar dosyasını yerel makinenizden Azure 'da çalışan Çabaım örneğinin tmp klasörüne kopyalayın:
 
    ```bash
    cd <Directory_path_where_the_Jar_file_exists> 
    scp ojdbc8.jar striimdemo@striimdemo.westus.cloudapp.azure.com:/tmp
    ```
 
-   ![Jar dosyasını konum makinesinden Striim'e kopyalayın](./media/cosmosdb-sql-api-migrate-data-striim/copy-jar-file.png)
+   ![Jar dosyasını konum makinesinden, anlık ım 'e kopyalayın](./media/cosmosdb-sql-api-migrate-data-striim/copy-jar-file.png)
 
-1. Ardından, SSH'yi Striim örneğine ve Giriş'i sudo olarak yaptığınız pencereye geri gidin. **Ojdbc8.jar** dosyasını **/tmp** dizininden Striim örneğinizin **lib** dizinine aşağıdaki komutlarla taşıyın:
+1. Daha sonra, çarpıcı anlık ileti örneği için SSH yaptığınız ve sudo olarak oturum açmanın bulunduğu pencereye geri gidin. **Ojdbc8. jar** dosyasını **/tmp** dizininden, aşağıdaki komutları kullanarak, diğer anlık ileti örneğinizin **lib** dizinine taşıyın:
 
    ```bash
    sudo su
@@ -102,10 +102,10 @@ Bu bölümde, veri hareketinin hedefi olarak Azure Cosmos DB SQL API hesabını 
    chmod +x ojdbc8.jar
    ```
 
-   ![Jar dosyasını lib klasörüne taşıma](./media/cosmosdb-sql-api-migrate-data-striim/move-jar-file.png)
+   ![Jar dosyasını LIB klasörüne taşı](./media/cosmosdb-sql-api-migrate-data-striim/move-jar-file.png)
 
 
-1. Aynı terminal penceresinden, aşağıdaki komutları çalıştırarak Striim sunucusunu yeniden başlatın:
+1. Aynı Terminal penceresinde, aşağıdaki komutları yürüterek Çabaım sunucusunu yeniden başlatın:
 
    ```bash
    Systemctl stop striim-node
@@ -114,89 +114,89 @@ Bu bölümde, veri hareketinin hedefi olarak Azure Cosmos DB SQL API hesabını 
    Systemctl start striim-node
    ```
  
-1. Striim'in başlaması bir dakika sürer. Durumu görmek istiyorsanız, aşağıdaki komutu çalıştırın: 
+1. Kısa ım 'in başlaması bir dakika sürer. Durumu görmek isterseniz, aşağıdaki komutu çalıştırın: 
 
    ```bash
    tail -f /opt/striim/logs/striim-node.log
    ```
 
-1. Şimdi Azure'a geri gidin ve Striim VM'nizin Genel IP adresini kopyalayın. 
+1. Şimdi Azure 'a geri gidin ve çarpıcı ım VM 'nizin genel IP adresini kopyalayın. 
 
-   ![Striim VM IP adresini kopyala](./media/cosmosdb-sql-api-migrate-data-striim/copy-public-ip-address.png)
+   ![Çalışır anlık ileti VM IP adresini kopyala](./media/cosmosdb-sql-api-migrate-data-striim/copy-public-ip-address.png)
 
-1. Striim'in Web UI'sine gitmek için tarayıcıda yeni bir sekme açın ve ardından genel IP'yi kopyalayın: 9080. Azure portalında belirttiğiniz yönetici parolasıyla birlikte **yönetici** kullanıcı adını kullanarak oturum açın.
+1. E-postayla Web Kullanıcı arabirimine gitmek için, bir tarayıcıda yeni bir sekme açın ve ardından genel IP 'yi kopyalayın: 9080. **Yönetici** Kullanıcı adını kullanarak, Azure Portal belirttiğiniz yönetici parolasıyla birlikte oturum açın.
 
-   ![Striim'de oturum açın](./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png)
+   ![Anlık ileti almak için oturum açın](./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png)
 
-1. Şimdi Striim'in ana sayfasına geleceksin. Üç farklı bölmeleri vardır - **Panolar**, **Uygulamalar**, ve **SourcePreview**. Panolar bölmesi, verileri gerçek zamanlı olarak taşımanızı ve görselleştirmenizi sağlar. Uygulamalar bölmesi akış veri ardışık alanlarınızı veya veri akışlarınızı içerir. Sayfanın sağ tarafında, verilerinizi taşımadan önce önizebileceğiniz SourcePreview yer nizdedir.
+1. Şimdi bir ım ana sayfasına ulaşacağız. **Panolar**, **uygulamalar**ve **sourcepreview**olmak üzere üç farklı bölme vardır. Panolar bölmesi, verileri gerçek zamanlı olarak taşımanızı ve görselleştirmenizi sağlar. Uygulamalar bölmesi, akış verileri işlem hatlarınızı veya veri akışlarını içerir. Sayfanın sağ tarafında, verilerinizi taşımadan önce önizlemeniz için SourcePreview bulunur.
 
-1. **Uygulamalar** bölmesini seçin, şimdilik bu bölmeye odaklanacağız. Striim hakkında bilgi edinmek için kullanabileceğiniz çeşitli örnek uygulamalar vardır, ancak bu makalede kendi uygulamamızı oluşturabilirsiniz. Sağ üst köşedeki **Uygulama Ekle** düğmesini seçin.
+1. **Uygulamalar** bölmesini seçin, şimdilik bu bölmeye odaklanacağız. Anlık ileti alma hakkında bilgi edinmek için kullanabileceğiniz çeşitli örnek uygulamalar vardır, ancak bu makalede kendinizuzu oluşturacaksınız. Sağ üst köşedeki **Uygulama Ekle** düğmesini seçin.
 
-   ![Striim uygulamasını ekle](./media/cosmosdb-sql-api-migrate-data-striim/add-striim-app.png)
+   ![Çarpıcı anlık ileti uygulaması ekleme](./media/cosmosdb-sql-api-migrate-data-striim/add-striim-app.png)
 
-1. Striim uygulamaları oluşturmak için birkaç farklı yolu vardır. Varolan bir şablonla başlamak için **Şablonla Başlat'ı** seçin.
+1. Çarpıcı anlık ileti uygulamaları oluşturmanın birkaç farklı yolu vardır. Mevcut bir şablonla başlamak için **şablonla Başlat** ' ı seçin.
 
-   ![Uygulamayı şablonla başlatın](./media/cosmosdb-sql-api-migrate-data-striim/start-with-template.png)
+   ![Uygulamayı şablonla Başlat](./media/cosmosdb-sql-api-migrate-data-striim/start-with-template.png)
 
-1. Arama **şablonları** alanında "Cosmos" yazın ve **Hedef: Azure Cosmos DB'yi** seçin ve ardından **Azure Cosmos DB'ye Oracle CDC'yi**seçin.
+1. **Şablonları ara** alanında "Cosmos" yazın ve **hedef: Azure Cosmos DB** SEÇIN ve ardından **Oracle CDC Azure Cosmos DB**seçin.
 
-   ![Cosmos DB için Oracle CDC'yi seçin](./media/cosmosdb-sql-api-migrate-data-striim/oracle-cdc-cosmosdb.png)
+   ![Cosmos DB Oracle CDC 'yi seçin](./media/cosmosdb-sql-api-migrate-data-striim/oracle-cdc-cosmosdb.png)
 
-1. Bir sonraki sayfada, başvurunuzu adlandırın. **OraToCosmosDB** gibi bir ad sağlayabilir ve sonra **Kaydet'i**seçebilirsiniz.
+1. Sonraki sayfada, uygulamanızı adlandırın. **Oratocosmosdb** gibi bir ad sağlayabilir ve ardından **Kaydet**' i seçebilirsiniz.
 
-1. Ardından, kaynak Oracle örneğinizin kaynak yapılandırmasını girin. **Kaynak Adı**için bir değer girin. Kaynak adı Striim uygulaması için sadece bir adlandırma kuralı, **src_onPremOracle**gibi bir şey kullanabilirsiniz. Kaynak **parametreleri URL**, **Kullanıcı Adı**, **Şifre**, Oracle verileri okumak için okuyucu olarak **LogMiner** seçin geri kalanı için değerleri girin. Devam etmek için **İleri**’yi seçin.
+1. Ardından, kaynak Oracle örneğinizin kaynak yapılandırmasını girin. **Kaynak adı**için bir değer girin. Kaynak adı, gitim uygulaması için yalnızca bir adlandırma kuralıdır, **src_onPremOracle**gibi bir ad kullanabilirsiniz. Geri kalan kaynak parametreleri **URL 'si**, **Kullanıcı adı**, **parola**değerlerini girin, Oracle 'Dan verileri okumak için okuyucu olarak **LogMiner** ' ı seçin. Devam etmek için **İleri**’yi seçin.
 
-   ![Kaynak parametrelerini yapılandırma](./media/cosmosdb-sql-api-migrate-data-striim/configure-source-parameters.png)
+   ![Kaynak parametrelerini Yapılandır](./media/cosmosdb-sql-api-migrate-data-striim/configure-source-parameters.png)
 
-1. Striim ortamınızı kontrol edecek ve kaynak Oracle örneğinize bağlanabilmesini, doğru ayrıcalıklara sahip olduğundan ve CDC'nin düzgün şekilde yapılandırıldığından emin olacaktır. Tüm değerler doğrulandıktan sonra **İleri'yi**seçin.
+1. Anlık ileti, ortamınızı denetlecektir ve kaynak Oracle örneğinizle bağlantı kurmak için doğru ayrıcalıklara sahip olduğundan ve CDC 'nin doğru şekilde yapılandırıldığından emin olmanızı sağlar. Tüm değerler doğrulandıktan sonra **İleri**' yi seçin.
 
-   ![Kaynak parametrelerini doğrulama](./media/cosmosdb-sql-api-migrate-data-striim/validate-source-parameters.png)
+   ![Kaynak parametrelerini doğrula](./media/cosmosdb-sql-api-migrate-data-striim/validate-source-parameters.png)
 
-1. Geçirmek istediğiniz Oracle veritabanından tabloları seçin. Örneğin, Siparişler tablosunu seçelim ve **İleri'yi**seçelim. 
+1. Geçirmek istediğiniz Oracle veritabanından tabloları seçin. Örneğin, Orders tablosunu seçip **İleri**' yi seçelim. 
 
-   ![Kaynak tabloları seçin](./media/cosmosdb-sql-api-migrate-data-striim/select-source-tables.png)
+   ![Kaynak tabloları Seç](./media/cosmosdb-sql-api-migrate-data-striim/select-source-tables.png)
 
-1. Kaynak tabloyu seçtikten sonra, eşleme ve filtreleme gibi daha karmaşık işlemler yapabilirsiniz. Bu durumda, azure cosmos DB'de kaynak tablonuzun bir kopyasını oluşturursunuz. Bu nedenle, hedefi yapılandırmak için **İleri'yi** seçin
+1. Kaynak tabloyu seçtikten sonra eşleme ve filtreleme gibi daha karmaşık işlemler gerçekleştirebilirsiniz. Bu durumda, yalnızca Azure Cosmos DB kaynak tablonuzun bir çoğaltmasını oluşturacaksınız. Bu nedenle, hedefi yapılandırmak için **İleri** ' yi seçin
 
-1. Şimdi, hedefi yapılandıralım:
+1. Şimdi hedefi yapılandıralim:
 
-   * **Hedef Adı** - Hedef için dostça bir ad sağlayın. 
-   * **Giriş Gönderen** - Açılan listeden, kaynak Oracle yapılandırmasında oluşturduğunuz giriş akışını seçin. 
-   * **Koleksiyonlar**- Hedef Azure Cosmos DB yapılandırma özelliklerini girin. Koleksiyonlar sözdizimi **SourceSchema.SourceTable, TargetDatabase.TargetContainer**olduğunu. Bu örnekte, değer "SİsteM" olacaktır. SİPARİş, StriimDemo.Orders". 
-   * **AccessKey** - Azure Cosmos hesabınızın Birincil Anahtarı.
-   * **ServiceEndpoint** – Azure Cosmos hesabınızın URI'si, Azure portalının **Keys** bölümünde bulunabilir. 
+   * **Hedef adı** -hedef için bir kolay ad sağlayın. 
+   * **Giriş kaynağı** -açılan listeden, kaynak Oracle yapılandırmasında oluşturduğunuz bir giriş akışını seçin. 
+   * **Koleksiyonlar**-hedef Azure Cosmos DB yapılandırma özelliklerini girin. Koleksiyonlar sözdizimi, **sourceschema. SourceTable, TargetDatabase. TargetContainer '** dir. Bu örnekte, değer "SISTEM" olur. SIPARIŞLER, Ilginç tanıtım. Orders ". 
+   * **AccessKey** -Azure Cosmos hesabınızın PrimaryKey 'i.
+   * **ServiceEndpoint** – Azure Cosmos hesabınızın URI 'si, Azure Portal **anahtarlar** bölümü altında bulunabilir. 
 
-   **Kaydet** ve **İleri'yi**seçin.
+   **Kaydet** ve **İleri ' yi**seçin.
 
-   ![Hedef parametreleri yapılandırma](./media/cosmosdb-sql-api-migrate-data-striim/configure-target-parameters.png)
+   ![Hedef parametrelerini Yapılandır](./media/cosmosdb-sql-api-migrate-data-striim/configure-target-parameters.png)
 
 
-1. Ardından, akış uygulamalarınızı oluşturmak için kutu konektörlerini sürükleyip çıkarabileceğiniz akış tasarımcısına ulaşacaksınız. Bu noktada akışta herhangi bir değişiklik yapmazsınız. bu nedenle Uygulamayı **Dağıt** düğmesini seçerek uygulamayı dağıtın.
+1. Daha sonra akış tasarlayıcısından geleceksiniz ve akış uygulamalarınızı oluşturmak için kutu bağlayıcılarını sürükleyip bırakabilirsiniz. Akışta bu noktada herhangi bir değişiklik yapamazsınız. Bu nedenle uygulamayı **Dağıt** düğmesini seçerek uygulamayı dağıtın.
  
    ![Uygulamayı dağıtma](./media/cosmosdb-sql-api-migrate-data-striim/deploy-app.png)
 
-1. Dağıtım penceresinde, uygulamanızın belirli bölümlerini dağıtım topolojinizin belirli bölümlerinde çalıştırmak isteyip istemediğinizbelirtebilirsiniz. Azure üzerinden basit bir dağıtım topolojisinde çalışmaya devam ettiğimizden, varsayılan seçeneği kullanırız.
+1. Dağıtım penceresinde, uygulamanızın belirli kısımlarını dağıtım topolojinizin belirli bölümlerinde çalıştırmak istediğinizi belirtebilirsiniz. Azure aracılığıyla basit bir dağıtım topolojisinde çalıştığımız için varsayılan seçeneği kullanacağız.
 
-   ![Varsayılan seçeneği kullanma](./media/cosmosdb-sql-api-migrate-data-striim/deploy-using-default-option.png)
+   ![Varsayılan seçeneği kullanın](./media/cosmosdb-sql-api-migrate-data-striim/deploy-using-default-option.png)
 
-1. Dağıttıktan sonra, akış üzerinden akan verileri görmek için akışı önizleyebilirsiniz. **Dalga** simgesini ve yanındaki göz küresini seçin. Üst menü çubuğunda **Dağıtılan** düğmesini seçin ve **Uygulamayı Başlat'ı**seçin.
+1. Dağıttıktan sonra, veri akışını görmek için akışın önizlemesini görüntüleyebilirsiniz. Yanındaki **dalga** simgesini ve eyebol simgesini seçin. Üstteki menü çubuğunda **dağıtılan** düğmesini seçin ve **Uygulamayı Başlat**' ı seçin.
 
-   ![Uygulamayı başlatın](./media/cosmosdb-sql-api-migrate-data-striim/start-app.png)
+   ![Uygulamayı başlatma](./media/cosmosdb-sql-api-migrate-data-striim/start-app.png)
 
-1. Bir **CDC (Change Data Capture)** okuyucu kullanarak, Striim veritabanında yalnızca yeni değişiklikler alır. Kaynak tablolarınızda veri akışı varsa, bunu görürsünüz. Ancak, bu bir demo tablo olduğundan, kaynak herhangi bir uygulamaya bağlı değildir. Örnek bir veri üreteci kullanıyorsanız, Oracle veritabanınıza bir olaylar zinciri ekleyebilirsiniz.
+1. **CDC (değişiklik verilerini yakalama)** okuyucusunu kullanarak, anlık ileti, veritabanında yalnızca yeni değişiklikler seçer. Kaynak Tablolarınızda veri akışı varsa, bunu görürsünüz. Ancak, bu bir demo tablosu olduğundan, kaynak herhangi bir uygulamaya bağlı değildir. Örnek veri Oluşturucu kullanıyorsanız, Oracle veritabanınıza bir olay zinciri ekleyebilirsiniz.
 
-1. Striim platformundan akan verileri göreceksiniz. Striim, tablonuzla ilişkili tüm meta verileri de alır ve bu da verileri izlemek ve verilerin doğru hedefe indiğinden emin olmak için yararlıdır.
+1. Çarpıcı anlık ileti platformunda veri akışını görürsünüz. Anlık ileti, tablonuz ile ilişkili tüm meta verileri de alır ve bu da verileri izlemek ve verilerin doğru hedefte olmasını sağlamak için yararlıdır.
 
-   ![CDC boru hattını yapılandırma](./media/cosmosdb-sql-api-migrate-data-striim/configure-cdc-pipeline.png)
+   ![CDC ardışık düzeni yapılandırma](./media/cosmosdb-sql-api-migrate-data-striim/configure-cdc-pipeline.png)
 
-1. Son olarak, Azure'da oturum açalım ve Azure Cosmos hesabınıza gidelim. Veri Gezgini'ni yenileyin ve verilerin geldiğini görebilirsiniz.  
+1. Son olarak Azure 'da oturum açalım ve Azure Cosmos hesabınıza gitmeniz gerekir. Veri Gezgini yenileyin ve verilerin geldiğini görebilirsiniz.  
 
-   ![Azure'da geçirilen verileri doğrulama](./media/cosmosdb-sql-api-migrate-data-striim/portal-validate-results.png)
+   ![Azure 'da geçirilen verileri doğrulama](./media/cosmosdb-sql-api-migrate-data-striim/portal-validate-results.png)
 
-Azure'daki Striim çözümlerini kullanarak, Oracle, Cassandra, MongoDB ve diğer çeşitli kaynaklardan verileri sürekli olarak Azure Cosmos DB'ye aktarabilirsiniz. Daha fazla bilgi için Lütfen [Striim web sitesini](https://www.striim.com/)ziyaret edin, [Striim ücretsiz 30 günlük deneme indirmek](https://go2.striim.com/download-free-trial), ve Striim ile geçiş yolu kurarken herhangi bir sorun için, bir destek isteği [dosyası.](https://go2.striim.com/request-support-striim)
+Azure 'da çabam çözümünü kullanarak verileri, Oracle, Cassandra, MongoDB gibi çeşitli kaynaklardan sürekli olarak Azure Cosmos DB Azure Cosmos DB ve çeşitli diğer kaynaklardan sürekli olarak geçirebilirsiniz. Daha fazla bilgi edinmek için lütfen bir anlık ileti [Web sitesini](https://www.striim.com/)ziyaret edin, [ücretsiz bir 30 günlük deneme sürümü indirin](https://go2.striim.com/download-free-trial)ve geçiş yolunu sorunsuz bir şekilde ayarlarken bir [destek isteği yapın.](https://go2.striim.com/request-support-striim)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Verileri Azure Cosmos DB SQL API'ye aktarıyorsanız, [Striim kullanarak verileri Cassandra API hesabına nasıl geçirebilirsiniz](cosmosdb-cassandra-api-migrate-data-striim.md)
+* Azure Cosmos DB SQL API 'sine veri geçiriyorsanız, bkz. [anlık ileti kullanarak verileri Cassandra API hesabına geçirme](cosmosdb-cassandra-api-migrate-data-striim.md)
 
-* [Azure Cosmos DB ölçümleri ile verilerinizi izleyin ve hata ayıklama](use-metrics.md)
+* [Azure Cosmos DB ölçümleriyle verilerinizi izleyin ve hatalarını ayıklayın](use-metrics.md)

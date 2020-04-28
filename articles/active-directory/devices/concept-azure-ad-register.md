@@ -1,6 +1,6 @@
 ---
-title: Azure AD kayıtlı aygıtlar nelerdir?
-description: Aygıt kimlik yönetiminin ortamınızdaki kaynaklara erişen aygıtları yönetmenize nasıl yardımcı olabileceğini öğrenin.
+title: Azure AD kayıtlı cihazlar nelerdir?
+description: Cihaz kimlik yönetimi 'nin ortamınızdaki kaynaklara erişen cihazları yönetmenize nasıl yardımcı olabileceğini öğrenin.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,54 +12,54 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7e2a8cad7cd4410a95a6ebd60ada22de456737bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67462765"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD kayıtlı cihazlar
 
-Azure AD'ye kayıtlı cihazların amacı, kullanıcılarınıza Kendi Aygıtınızı Getir (BYOD) veya mobil cihaz senaryoları için destek sağlamaktır. Bu senaryolarda, bir kullanıcı kişisel bir aygıtı kullanarak kuruluşunuzun Azure Etkin Dizin denetimkaynaklarına erişebilir.
+Azure AD kayıtlı cihazların hedefi, kullanıcılarınıza kendi cihazını getir (KCG) veya mobil cihaz senaryoları için destek sağlar. Bu senaryolarda, bir Kullanıcı kişisel bir cihaz kullanarak kuruluşunuzun Azure Active Directory denetimli kaynaklarına erişebilir.
 
-|   | Azure AD Kayıtlı |
+|   | Azure AD kayıtlı |
 | --- | --- |
-| **Tanım** | Kuruluş hesabının aygıtta oturum açmasına gerek kalmadan Azure AD'ye kaydoldu |
-| **Birincil hedef kitle** | Aşağıdaki kriterlere sahip tüm kullanıcılar için geçerlidir: |
+| **Tanım** | Kurumsal hesabın cihazda oturum açması gerekmeden Azure AD 'ye kayıtlı |
+| **Birincil hedef kitle** | Aşağıdaki ölçütlere sahip tüm kullanıcılar için geçerlidir: |
 |   | Kendi cihazını getir (KCG) |
 |   | Mobil cihazlar |
-| **Cihaz sahipliği** | Kullanıcı veya Kuruluş |
+| **Cihaz sahipliği** | Kullanıcı veya kuruluş |
 | **İşletim Sistemleri** | Windows 10, iOS, Android ve MacOS |
-| **Sağlanıyor** | Windows 10 – Ayarlar |
+| **Sağlanıyor** | Windows 10 – ayarlar |
 |   | iOS/Android – Şirket Portalı veya Microsoft Authenticator uygulaması |
 |   | MacOS – Şirket Portalı |
-| **Cihaz oturum açma seçenekleri** | Son kullanıcı yerel kimlik bilgileri |
+| **Cihaz oturum açma seçenekleri** | Son Kullanıcı yerel kimlik bilgileri |
 |   | Parola |
 |   | Windows Hello |
 |   | PIN |
-|   | Diğer cihazlar için biyometri veya Desen |
-| **Cihaz yönetimi** | Mobil Aygıt Yönetimi (örnek: Microsoft Intune) |
+|   | Diğer cihazlar için Biyometri veya desenler |
+| **Cihaz yönetimi** | Mobil cihaz yönetimi (örnek: Microsoft Intune) |
 |   | Mobil Uygulama Yönetimi |
-| **Temel işlevler** | SSO'dan bulut kaynaklarına |
-|   | Intune'a kaydolduğunda Koşullu Erişim |
-|   | Uygulama koruma ilkesi ile Koşullu Erişim |
-|   | Microsoft Authenticator uygulamasıyla Telefon oturum açmaolanağı sağlar |
+| **Temel işlevler** | Bulut kaynaklarına SSO |
+|   | Intune 'a kaydolduktan sonra koşullu erişim |
+|   | Uygulama koruma ilkesi aracılığıyla koşullu erişim |
+|   | Microsoft Authenticator App ile telefonla oturum açma imkanı sunar |
 
 ![Azure AD kayıtlı cihazlar](./media/concept-azure-ad-register/azure-ad-registered-device.png)
 
-Azure AD kayıtlı aygıtları, Windows 10 aygıtındaki Microsoft hesabı gibi yerel bir hesabı kullanmak üzere oturum açmış, ancak ayrıca kuruluş kaynaklarına erişmek için bir Azure AD hesabı da eklenmiştir. Kuruluştaki kaynaklara erişim, bu Azure REKLAM hesabına ve aygıt kimliğine uygulanan Koşullu Erişim ilkelerine bağlı olarak daha da sınırlanabilir.
+Azure AD kayıtlı cihazlar, bir Windows 10 cihazında Microsoft hesabı gibi yerel bir hesap kullanmak için oturum açtı, ancak ek olarak kuruluş kaynaklarına erişim için bir Azure AD hesabı eklenmiş. Kuruluştaki kaynaklara erişim, bu Azure AD hesabına ve cihaz kimliğine uygulanan koşullu erişim ilkelerine göre daha da sınırlı olabilir.
 
-Yöneticiler, Microsoft Intune gibi Mobil Aygıt Yönetimi (MDM) araçlarını kullanarak bu Azure AD kayıtlı aygıtları güvenli hale getirebilir ve daha fazla denetleyebilir. MDM, depolama alanının şifrelenmesi, parola karmaşıklığı ve güvenlik yazılımının güncel tutulması gibi kuruluş için gerekli yapılandırmaları zorlamak için bir araç sağlar. 
+Yöneticiler, Microsoft Intune gibi mobil cihaz yönetimi (MDM) araçlarını kullanarak bu Azure AD kayıtlı cihazlarını güvenli ve daha fazla denetleyebilir. MDM, kuruluşun şifreli, parola karmaşıklığı ve güvenlik yazılımlarının güncel olmasını gerektiren yapılandırmaların zorunlu tutulması için bir yol sağlar. 
 
-Azure AD kaydı, bir iş uygulamasına ilk kez erişirken veya Windows 10 Ayarları menüsünü el ile kullanırken gerçekleştirilebilir. 
+Azure AD kaydı, bir iş uygulamasına ilk kez veya Windows 10 ayarları menüsünü kullanarak el ile erişirken gerçekleştirilebilir. 
 
 ## <a name="scenarios"></a>Senaryolar
 
-Kuruluşunuzdaki bir kullanıcı e-posta araçlarına erişmek, zaman iptalini bildirmek ve ev bilgisayarından kayıt tan yararlanmak ister. Kuruluşunuz, Intune uyumlu bir aygıttan erişim gerektiren koşullu erişim ilkesinin arkasında bu araçlara sahiptir. Kullanıcı kuruluş hesabını ekler ve ev bilgisayarlarını Azure AD ile kaydeder ve kullanıcının kaynaklarına erişmesi için gerekli Intune ilkeleri uygulanır.
+Kuruluşunuzdaki bir kullanıcı e-posta, raporlama saati ve avantajları için ana PC 'lerden araçlara erişmek istiyor. Kuruluşunuz, Intune ile uyumlu bir cihazdan erişim gerektiren bir koşullu erişim ilkesinin arkasındaki bu araçlara sahiptir. Kullanıcı kuruluş hesabını ekler ve ev bilgisayarlarını Azure AD 'ye kaydeder ve kullanıcılara kaynaklarına erişim izni vermek için gerekli Intune ilkeleri zorlanır.
 
-Başka bir kullanıcı köklü olmuştur kendi kişisel Android telefonda kendi kurumsal e-posta erişmek istiyor. Şirketiniz uyumlu bir aygıt gerektirir ve köklü aygıtları engellemek için bir Intune uyumluluk ilkesi oluşturmuştur. Çalışanın bu aygıttaki kuruluş kaynaklarına erişmeleri durdurulur.
+Başka bir Kullanıcı, kendi kişisel Android telefonlarından kökü belirtilen şirket e-postasına erişmek istiyor. Şirketiniz uyumlu bir cihaz gerektiriyor ve köklü cihazları engellemek için bir Intune uyumluluk ilkesi oluşturdu. Çalışan, bu cihazdaki kurumsal kaynaklara erişimi durdurdu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portalını kullanarak aygıt kimliklerini yönetme](device-management-azure-portal.md)
-- [Azure AD'de eski aygıtları yönetme](manage-stale-devices.md)
+- [Azure portal kullanarak cihaz kimliklerini yönetme](device-management-azure-portal.md)
+- [Azure AD 'de eski cihazları yönetme](manage-stale-devices.md)

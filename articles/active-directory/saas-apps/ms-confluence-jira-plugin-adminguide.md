@@ -1,6 +1,6 @@
 ---
-title: Atlassian Jira/Confluence yönetici kılavuzu - Azure Active Directory| Microsoft Dokümanlar
-description: Atlassian Jira ve Azure Etkin Dizinle Birleştirme (Azure AD) ile Birlikte kullanımı için yönetici kılavuzu.
+title: Atlaseli Jira/Confluence Yönetici Kılavuzu-Azure Active Directory | Microsoft Docs
+description: Azure Active Directory (Azure AD) ile Atlaseli Jira ve Confluence kullanımı için Yönetici Kılavuzu..
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,229 +16,229 @@ ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73161202"
 ---
-# <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory için Atlassian Jira ve Confluence yönetici kılavuzu
+# <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory için atlasme Jira ve Confluence Yönetici Kılavuzu
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Etkin Dizin (Azure AD) tek oturum açma (SSO) eklentisi, Microsoft Azure AD müşterilerinin Atlassian Jira ve Confluence Server tabanlı ürünlerde oturum açmaları için iş veya okul hesaplarını kullanmalarını sağlar. Saml 2.0 tabanlı SSO'su uygular.
+Azure Active Directory (Azure AD) çoklu oturum açma (SSO) eklentisi, Microsoft Azure AD müşterilerin Atlasme Jira ve Confsunucu tabanlı ürünlerde oturum açmasını sağlamak için iş veya okul hesaplarını kullanmasına olanak sağlar. SAML 2,0 tabanlı SSO 'yu uygular.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Kullanıcılar Atlassian Jira veya Confluence uygulamasında oturum açmak istediklerinde, oturum açma sayfasında Azure AD ile **Giriş'i** görürler. Bunu seçtiklerinde, Azure AD kuruluşu oturum açma sayfasını (diğer bir deyişle, çalışmaları veya okul hesabı) kullanarak oturum açmaları gerekir.
+Kullanıcılar Atlaseli Jira veya Confluence uygulamasında oturum açmak istediklerinde, oturum açma sayfasında **Azure AD 'ye oturum aç** düğmesini görür. Bunu seçerken, Azure AD organizasyonu oturum açma sayfasını (yani, iş veya okul hesabı) kullanarak oturum açması gerekir.
 
-Kullanıcılar kimlik doğrulaması yaptıktan sonra, uygulamada oturum açabilmeleri gerekir. İş veya okul hesapları için kimlik ve parolayla kimlik lerini zaten doğruladılarsa, doğrudan uygulamada oturum açmaktadırlar. 
+Kullanıcıların kimliği doğrulandıktan sonra, uygulamada oturum açabilmeleri gerekir. İş veya okul hesabı için KIMLIK ve parolayla kimlik doğrulaması yapılmış olmaları durumunda, doğrudan uygulamada oturum açın. 
 
-Jira ve Confluence'da oturum açma çalışmaları. Kullanıcılar Jira uygulamasında oturum açarsa ve Confluence aynı tarayıcı penceresinde açılırsa, diğer uygulamanın kimlik bilgilerini sağlamaları gerekmez. 
+Oturum açma, Jira ve Confluence üzerinde çalışmaktadır. Kullanıcılar Jira uygulamasında oturum açtıysa ve Confluence aynı tarayıcı penceresinde açılırsa, diğer uygulama için kimlik bilgilerini sağlamak zorunda kalmaz. 
 
-Kullanıcılar ayrıca iş veya okul hesabı altında My Apps üzerinden Atlassian ürününe de ulaşabilirsiniz. Kimlik bilgileri istenmeden oturum alabilmeleri gerekir.
+Kullanıcılar ayrıca iş veya okul hesabı kapsamındaki uygulamalarım aracılığıyla Atlasme ürününe de alabilirler. Kimlik bilgileri istenmeden oturum açmış olmaları gerekir.
 
 > [!NOTE]
-> Kullanıcı sağlama eklentisi aracılığıyla yapılmaz.
+> Kullanıcı hazırlama, eklenti aracılığıyla yapılmaz.
 
 ## <a name="audience"></a>Hedef kitle
 
-Jira ve Confluence yöneticileri, Azure AD'yi kullanarak SSO'yu etkinleştirmek için eklentiyi kullanabilir.
+Jira ve Confluence yöneticileri, Azure AD 'yi kullanarak SSO 'yu etkinleştirmek için eklentiyi kullanabilir.
 
 ## <a name="assumptions"></a>Varsayımlar
 
 * Jira ve Confluence örnekleri HTTPS etkindir.
-* Kullanıcılar zaten Jira veya Confluence oluşturulur.
-* Kullanıcıların Jira veya Confluence'da atanmış rolleri vardır.
-* Yöneticiler eklentiyi yapılandırmak için gereken bilgilere erişebilir.
-* Jira veya Confluence şirket ağı dışında da kullanılabilir.
-* Eklenti Jira ve Confluence sadece şirket içi sürümü ile çalışır.
+* Kullanıcılar zaten Jira veya Confluence içinde oluşturulmuş.
+* Kullanıcıların Jira veya Confluence 'de atanan rolleri vardır.
+* Yöneticilerin, eklentiyi yapılandırmak için gereken bilgilere erişimi vardır.
+* Jira veya Confluence, şirket ağı dışında da kullanılabilir.
+* Eklenti yalnızca Jira ve Confluence 'ın şirket içi sürümü ile birlikte çalışarak.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Eklentiyi yüklemeden önce aşağıdaki bilgilere dikkat edin:
+Eklentiyi yüklemeden önce aşağıdaki bilgileri aklınızda edin:
 
-* Jira ve Confluence, Windows 64 bit sürümünde yüklenir.
-* Jira ve Confluence sürümleri HTTPS özelliklidir.
-* Jira ve Confluence internet üzerinden mevcuttur.
-* Jira ve Confluence için yönetici kimlik bilgileri hazır.
-* Azure AD için yönetici kimlik bilgileri hazırdır.
-* WebSudo Jira ve Confluence devre dışı bırakılır.
+* Jira ve Confluence, Windows 64 bit sürümüne yüklenmiştir.
+* Jira ve Confluence sürümleri HTTPS etkindir.
+* Internet 'te Jira ve Confluence vardır.
+* Jira ve Confluence için yönetici kimlik bilgileri yerinde.
+* Azure AD için yönetici kimlik bilgileri yerinde.
+* WebSudo, Jira 'da ve Confluence 'de devre dışı bırakıldı.
 
-## <a name="supported-versions-of-jira-and-confluence"></a>Jira ve Confluence desteklenen sürümleri
+## <a name="supported-versions-of-jira-and-confluence"></a>Desteklenen Jira ve Confluence sürümleri
 
-Eklenti Jira ve Confluence aşağıdaki sürümlerini destekler:
+Eklenti, Jira ve Confluence 'ın aşağıdaki sürümlerini destekler:
 
-* Jira Çekirdek ve Yazılım: 6.0 için 7.12
-* Jira Servis Masası: 3.0.0 - 3.5.0
-* JIRA da 5.2 destekler. Daha fazla ayrıntı [için, JIRA 5.2 için Microsoft Azure Active Directory tek oturum açma'yı](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial) tıklatın
-* Biraraya: 5.0 - 5.10
-* Birleştirme: 6.0.1
-* Birleştirme: 6.1.1
-* Biraraya gelmesi: 6.2.1
-* Biraraya gelmesi: 6.3.4
-* Biraraya gelmesi: 6.4.0
-* Biraraya gelmesi: 6.5.0
-* Biraraya gelmesi: 6.6.2
-* Biraraya gelmesi: 6.7.0
-* Biraraya gelmesi: 6.8.1
-* Kesişme: 6.9.0
-* Birleştirme: 6.10.0
-* Kesişme: 6.11.0
-* Kesişme: 6.12.0
+* Jira Core ve Software: 6,0-7,12
+* Jira Service Desk: 3.0.0 to 3.5.0
+* JIRA Ayrıca 5,2 'yi destekler. Daha fazla ayrıntı için [Microsoft Azure Active Directory JIRA 5,2 için çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial) 'yı tıklatın
+* Confluence: 5,0-5,10
+* Confluence: 6.0.1
+* Confluence: 6.1.1
+* Confluence: 6.2.1
+* Confluence: 6.3.4
+* Confluence: 6.4.0
+* Confluence: 6.5.0
+* Confluence: 6.6.2
+* Confluence: 6.7.0
+* Confluence: 6.8.1
+* Confluence: 6.9.0
+* Confluence: 6.10.0
+* Confluence: 6.11.0
+* Confluence: 6.12.0
 
 ## <a name="installation"></a>Yükleme
 
-Eklentiyi yüklemek için aşağıdaki adımları izleyin:
+Eklentiyi yüklemek için şu adımları izleyin:
 
-1. Yönetici olarak Jira veya Confluence örneğinize oturum açın.
+1. Jira veya Confluence örneğiniz için yönetici olarak oturum açın.
 
-2. Jira/Confluence yönetim konsoluna gidin ve **Eklentileri**seçin.
+2. Jira/Confluence yönetim konsoluna gidin **ve eklentiler ' i seçin.**
 
-3. Microsoft Download Center'dan, Confluence için Jira/ Microsoft[SAML SSO Eklentisi için Microsoft SAML SSO Eklentisini indirin.](https://www.microsoft.com/download/details.aspx?id=56503) [Microsoft SAML SSO Plugin for Jira](https://www.microsoft.com/download/details.aspx?id=56506)
+3. Microsoft İndirme Merkezi ' nden,/ [Confluence için Jira Microsoft SAML SSO eklentisi](https://www.microsoft.com/download/details.aspx?id=56503) [için Microsoft SAML SSO eklentisini](https://www.microsoft.com/download/details.aspx?id=56506)indirin.
 
    Eklentinin uygun sürümü arama sonuçlarında görünür.
 
-4. Eklentiyi seçin ve Universal Plug-in Manager (UPM) yükler.
+4. Eklentiyi seçin ve evrensel Eklenti Yöneticisi (UPı) onu yüklenir.
 
-Eklenti yüklendikten sonra, **Eklentileri Yönet'in** **Kullanıcı Yüklü Eklentileri** bölümünde görünür.
+Eklenti yüklendikten sonra, eklentileri **Yönet**' in **Kullanıcı tarafından yüklenen eklentiler** bölümünde görüntülenir.
 
 ## <a name="plug-in-configuration"></a>Eklenti yapılandırması
 
-Eklentiyi kullanmaya başlamadan önce yapılandırmanız gerekir. Eklentiyi seçin, **Yapılandırma** düğmesini seçin ve yapılandırma ayrıntılarını sağlayın.
+Eklentiyi kullanmaya başlamadan önce, onu yapılandırmanız gerekir. Eklentiyi seçin, **Yapılandır** düğmesini seçin ve yapılandırma ayrıntılarını sağlayın.
 
-Aşağıdaki resim, hem Jira hem de Confluence'da yapılandırma ekranını gösterir:
+Aşağıdaki görüntüde hem Jira hem de Confluence içindeki yapılandırma ekranı gösterilmektedir:
 
 ![Eklenti yapılandırma ekranı](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-* **Meta veri URL'si**: Azure AD'den federasyon meta verilerini almak için URL.
+* **Meta veri URL 'si**: Azure AD 'den Federasyon meta verilerini almaya yönelik URL.
 
-* **Tanımlayıcılar**: Azure AD'nin isteğin kaynağını doğrulamak için kullandığı URL. Azure AD'deki **Tanımlayıcı** öğesiyle eşler. Eklenti otomatik olarak bu URL'yi https://*\<etki alanı:port>*/olarak türetir.
+* **Tanımlayıcılar**: Azure AD 'nin isteğin kaynağını doğrulamak IÇIN kullandığı URL. Azure AD 'de **tanımlayıcı** öğeyle eşlenir. Eklenti bu URL 'yi otomatik olarak https://*\<etki alanı: bağlantı noktası>* olarak türetir.
 
-* **Yanıt URL'si**: SAML oturum açma işlemini başlatan kimlik sağlayıcınızdaki (IdP) yanıt URL'si. Azure AD'deki **YanıtURL** öğesiyle eşlenir. Eklenti bu URL'yi otomatik olarak https://*\<etki alanı *olarak türetir: port>/eklentiler/servlet/saml/auth.
+* **Yanıt URL 'si**: SAML oturum açma işlemini başlatan kimlik sağlayıcınızdaki (IDP) yanıt URL 'si. Azure AD 'de **yanıt URL 'si** öğesine eşlenir. Eklenti bu URL 'yi otomatik olarak https://*\<etki alanı: bağlantı noktası>*/plugins/servlet/SAML/autholarak türetir.
 
-* **URL'de Oturum Aç**: IDP'nizde SAML oturum açma işlemini başlatan oturum açma URL'si. Azure AD'deki **Oturum Açma** öğesiyle eşler. Eklenti bu URL'yi otomatik olarak https://*\<etki alanı *olarak türetir: port>/eklentiler/servlet/saml/auth.
+* **Oturum açma URL 'si**: SAML oturum açma Işlemini Başlatan IDP 'inizdeki oturum açma URL 'si. Azure AD 'de **oturum açma** öğesiyle eşlenir. Eklenti bu URL 'yi otomatik olarak https://*\<etki alanı: bağlantı noktası>*/plugins/servlet/SAML/autholarak türetir.
 
-* **IdP Entity ID**: IdP'nizin kullandığı varlık kimliği. Meta veri URL'si çözüldüğünde bu kutu doldurulur.
+* **IDP VARLıK kimliği**: IDP 'nizin KULLANDıĞı varlık kimliği. Meta veri URL 'SI çözümlendiğinde bu kutu doldurulur.
 
-* **Giriş URL'si**: IdP'nizden oturum açma URL'si. Bu kutu, meta veri URL'si çözüldüğünde Azure AD'den doldurulur.
+* **Oturum açma URL 'si**: IDP 'nizden oturum açma URL 'si. Bu kutu, meta veri URL 'SI çözümlendiğinde Azure AD 'den doldurulur.
 
-* **Giriş URL'si**: IdP'nizden giriş URL'si. Bu kutu, meta veri URL'si çözüldüğünde Azure AD'den doldurulur.
+* **Oturum kapatma URL 'si**: IDP 'nizden oturum kapatma URL 'si. Bu kutu, meta veri URL 'SI çözümlendiğinde Azure AD 'den doldurulur.
 
-* **X.509 Belgesi**: IdP'nizin X.509 sertifikası. Bu kutu, meta veri URL'si çözüldüğünde Azure AD'den doldurulur.
+* **X. 509.440 sertifikası**: IDP 'nin X. 509.440 sertifikasıdır. Bu kutu, meta veri URL 'SI çözümlendiğinde Azure AD 'den doldurulur.
 
-* **Giriş Düğmesi Adı**: Kuruluşunuzun oturum açma sayfasında kullanıcıların görmesini istediği oturum açma düğmesinin adı.
+* **Oturum açma düğmesi adı**: kuruluşunuzun kullanıcıların oturum açma sayfasında görmesini istediğini oturum açma düğmesinin adı.
 
-* **SAML Kullanıcı Kimliği Konumları**: SAML yanıtında Jira veya Confluence kullanıcı kimliğinin beklendiği konum. **NameID'de** veya özel bir öznitelik adında olabilir.
+* **SAML Kullanıcı kimliği konumları**: SAML yanıtında Jira veya Confluence Kullanıcı kimliğinin beklenen konumu. Bu, **NameID** içinde veya özel bir öznitelik adında olabilir.
 
-* **Öznitelik Adı**: Kullanıcı kimliğinin beklendiği öznitelik adı.
+* **Öznitelik adı**: Kullanıcı kimliğinin beklenildiği özniteliğin adı.
 
-* **Ev Alemi Bulma etkinleştirin**: Şirket Active Directory Federation Services (AD FS) tabanlı oturum açma kullanıyorsa seçimi yapmak.
+* **Giriş bölgesi bulmayı etkinleştir**: Şirket Active Directory Federasyon Hizmetleri (AD FS) (AD FS) tabanlı oturum açma kullanıyorsa yapılacak seçim.
 
-* **Alan Adı**: Oturum açma AD FS tabanlıysa alan adı.
+* **Etki alanı adı**: oturum açma AD FS tabanlı etki alanı adı.
 
-* **Tek Oturum Açma'yı Etkinleştir**: Bir kullanıcı Jira veya Confluence'dan oturum açınca Azure AD'den oturum açmak istiyorsanız yapacak seçim.
+* **Çoklu**oturum açmayı etkinleştir: Kullanıcı Jira veya confluya oturumunu KAPATTıĞıNDA Azure AD 'den oturumu kapatmak istiyorsanız yapılacak seçim.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-* **Birden çok sertifika hatası alasınız**: Azure AD'de oturum açın ve uygulama aleyhine kullanılabilen birden çok sertifikayı kaldırın. Yalnızca bir sertifikanın bulunduğundan emin olun.
+* **Birden çok sertifika hatası**alıyorsunuz: Azure AD 'de oturum açın ve uygulamada bulunan birden çok sertifikayı kaldırın. Yalnızca bir sertifikanın bulunduğundan emin olun.
 
-* **Azure AD'de bir sertifikanın süresi dolmak üzeredir**: Eklentiler sertifikanın otomatik olarak devrine dikkat eder. Sertifikanın süresi dolmak üzereyken, yeni bir sertifika etkin olarak işaretlendi ve kullanılmayan sertifikalar silinmelidir. Bir kullanıcı bu senaryoda Jira'da oturum açmaya çalıştığında, eklenti yeni sertifikayı getirir ve kaydeder.
+* **Azure AD 'de bir sertifika sona ermek üzere**: Eklentiler, sertifikanın otomatik olarak geçişine karşı bir işlem gerçekleştirir. Bir sertifikanın kullanım süreleri dolduğunda, yeni bir sertifika etkin olarak işaretlenmelidir ve kullanılmayan sertifikalar silinmelidir. Bu senaryoda bir Kullanıcı Jira 'da oturum açmaya çalıştığında, eklenti yeni sertifikayı getirir ve kaydeder.
 
-* **WebSudo'yu devre dışı kaltın (güvenli yönetici oturumunu devre dışı kılabilir)**:
+* **WebSudo 'ı devre dışı bırakmak istiyorsunuz (güvenli Yönetici oturumunu devre dışı bırak)**:
 
-  * Jira için güvenli yönetici oturumları (diğer bir süre önce yönetim işlevlerine erişmeden önce parola onayı) varsayılan olarak etkinleştirilir. Jira örneğinde bu yeteneği kaldırmak istiyorsanız, jira-config.properties dosyanızda aşağıdaki satırı belirtin:`ira.websudo.is.disabled = true`
+  * Jira için güvenli yönetici oturumları (diğer bir deyişle, yönetim işlevlerine erişmeden önce parola onayı) varsayılan olarak etkinleştirilir. Jira örneğinizdeki bu özelliği kaldırmak istiyorsanız, Jira-config. Properties dosyanızda aşağıdaki satırı belirtin:`ira.websudo.is.disabled = true`
 
-  * Confluence [için, Confluence destek sitesindeki](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)adımları izleyin.
+  * Confluence için, [Confluence support sitesindeki](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)adımları izleyin.
 
-* **Meta veri URL'si tarafından doldurulması gereken alanlar doldurulmuyor:**
+* **Meta veri URL 'si tarafından doldurulması beklenen alanlar doldurulmuyor**:
 
-  * URL'nin doğru olup olmadığını kontrol edin. Doğru kiracı ve uygulama kimliğinin eşleyip haritalandırılmamasA olup olmadığını kontrol edin.
+  * URL 'nin doğru olup olmadığını denetleyin. Doğru kiracı ve uygulama KIMLIĞINI eşleştirdiyseniz denetleyin.
 
-  * Bir tarayıcıya URL girin ve federasyon meta data XML'i alıp almadığınızı görün.
+  * URL 'YI bir tarayıcıda girin ve Federasyon meta veri XML 'sini alıp almadıysanız bakın.
 
-* **Bir iç sunucu hatası var:** Yüklemenin günlük dizinindeki günlükleri gözden geçirin. Kullanıcı Azure AD SSO'yu kullanarak oturum açmaya çalışırken hata alıyorsanız, günlükleri destek ekibiyle paylaşabilirsiniz.
+* **Bir iç sunucu hatası var**: yüklemenin günlük dizinindeki günlükleri gözden geçirin. Kullanıcı Azure AD SSO 'yu kullanarak oturum açmaya çalışırken hata alıyorsanız, günlükleri destek ekibi ile paylaşabilirsiniz.
 
-* **Kullanıcı oturum açmaya çalıştığında "Kullanıcı Kimliği bulunamadı" hatası var:** Jira veya Confluence'da kullanıcı kimliğini oluşturun.
+* **Kullanıcı oturum açmayı denediğinde bir "Kullanıcı kimliği bulunamadı" hatası var**: Jira veya Confluence IÇINDE Kullanıcı kimliği oluşturma.
 
-* **Azure AD'de "Uygulama bulunamadı" hatası var: Azure AD'de**uygulamaya uygun URL'nin eşolup olmadığını görün.
+* **Azure AD 'de "uygulama bulunamadı" hatası**: ilgili URL 'nın Azure AD 'de uygulamayla eşlenip eşlenmediğinden bkz..
 
-* **Desteğe ihtiyacınız var:** [Azure AD SSO Tümleştirme Ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)ulaşın. Takım 24-48 iş saatinde yanıt verir.
+* **Desteğe ihtiyacınız vardır**: [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)ulaşın. Takım, 24-48 iş saatlerinde yanıt verir.
 
-  Azure portal kanalı üzerinden Microsoft ile destek bileti de artırabilirsiniz.
+  Ayrıca, Azure portal kanal aracılığıyla Microsoft ile destek bileti de oluşturabilirsiniz.
 
 ## <a name="plug-in-faq"></a>Eklenti SSS
 
-Bu eklentiyle ilgili herhangi bir sorgunuz varsa lütfen aşağıdaki SSS'lere bakın.
+Bu eklentiyle ilgili herhangi bir sorgunuz varsa lütfen SSS bölümüne bakın.
 
-### <a name="what-does-the-plug-in-do"></a>Eklenti ne işe yarıyor?
+### <a name="what-does-the-plug-in-do"></a>Eklenti ne yapar?
 
-Eklenti, Atlassian Jira (Jira Core, Jira Software, Jira Service Desk dahil) ve Confluence şirket içi yazılımlar için tek oturum açma (SSO) özelliği sağlar. Eklenti, kimlik sağlayıcısı (IdP) olarak Azure Active Directory (Azure AD) ile çalışır.
+Eklenti, Atlaseli Jira için çoklu oturum açma (SSO) özelliği sağlar (Jira Core, Jira Software, Jira Service Desk dahil) ve şirket içi yazılım yazılımı. Eklenti, kimlik sağlayıcısı (IDP) olarak Azure Active Directory (Azure AD) ile birlikte kullanılabilir.
 
-### <a name="which-atlassian-products-does-the-plug-in-work-with"></a>Eklenti hangi Atlassian ürünleriyle çalışır?
+### <a name="which-atlassian-products-does-the-plug-in-work-with"></a>Eklentiye hangi Atlasme ürünleri çalışıyor?
 
-Eklenti Jira ve Confluence'ın şirket içi sürümleriyle çalışır.
+Eklenti, Jira ve Confluence 'ın şirket içi sürümleriyle birlikte çalışarak.
 
 ### <a name="does-the-plug-in-work-on-cloud-versions"></a>Eklenti bulut sürümlerinde çalışıyor mu?
 
-Hayır. Eklenti, Jira ve Confluence'ın yalnızca şirket içi sürümlerini destekler.
+Hayır. Eklenti yalnızca Jira ve Confluence 'ın şirket içi sürümlerini destekler.
 
-### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>Jira ve Confluence'ın hangi sürümlerini destekliyor?
+### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>Jira ve Confluence 'ın hangi sürümleri eklentiyi destekler?
 
 Eklenti bu sürümleri destekler:
 
-* Jira Çekirdek ve Yazılım: 6.0 için 7.12
-* Jira Servis Masası: 3.0.0 - 3.5.0
-* JIRA da 5.2 destekler. Daha fazla ayrıntı [için, JIRA 5.2 için Microsoft Azure Active Directory tek oturum açma'yı](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial) tıklatın
-* Biraraya: 5.0 - 5.10
-* Birleştirme: 6.0.1
-* Birleştirme: 6.1.1
-* Biraraya gelmesi: 6.2.1
-* Biraraya gelmesi: 6.3.4
-* Biraraya gelmesi: 6.4.0
-* Biraraya gelmesi: 6.5.0
-* Biraraya gelmesi: 6.6.2
-* Biraraya gelmesi: 6.7.0
-* Biraraya gelmesi: 6.8.1
-* Kesişme: 6.9.0
-* Birleştirme: 6.10.0
-* Kesişme: 6.11.0
-* Kesişme: 6.12.0
+* Jira Core ve Software: 6,0-7,12
+* Jira Service Desk: 3.0.0 to 3.5.0
+* JIRA Ayrıca 5,2 'yi destekler. Daha fazla ayrıntı için [Microsoft Azure Active Directory JIRA 5,2 için çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial) 'yı tıklatın
+* Confluence: 5,0-5,10
+* Confluence: 6.0.1
+* Confluence: 6.1.1
+* Confluence: 6.2.1
+* Confluence: 6.3.4
+* Confluence: 6.4.0
+* Confluence: 6.5.0
+* Confluence: 6.6.2
+* Confluence: 6.7.0
+* Confluence: 6.8.1
+* Confluence: 6.9.0
+* Confluence: 6.10.0
+* Confluence: 6.11.0
+* Confluence: 6.12.0
 
-### <a name="is-the-plug-in-free-or-paid"></a>Eklenti ücretsiz mi yoksa ücretli mi?
+### <a name="is-the-plug-in-free-or-paid"></a>Eklenti ücretsizdir veya ödensin mi?
 
-Bu ücretsiz bir eklenti.
+Bu, ücretsiz bir eklentidir.
 
-### <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>Eklentiyi dağıttıktan sonra Jira veya Confluence'ı yeniden başlatmam gerekiyor mu?
+### <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>Eklentiyi dağıttıktan sonra Jira veya Confluence 'ı yeniden başlatmem gerekir mi?
 
-Yeniden başlatma gerekmez. Eklentiyi hemen kullanmaya başlayabilirsiniz.
+Yeniden başlatma gerekli değildir. Eklentiyi hemen kullanmaya başlayabilirsiniz.
 
-### <a name="how-do-i-get-support-for-the-plug-in"></a>Eklenti için nasıl destek alabilirim?
+### <a name="how-do-i-get-support-for-the-plug-in"></a>Eklentiye yönelik destek almak Nasıl yaparım? mı?
 
-Bu eklenti için gereken her türlü destek için [Azure AD SSO Tümleştirme Ekibi'ne](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) ulaşabilirsiniz. Takım 24-48 iş saatinde yanıt verir.
+Bu eklenti için gereken her türlü destek için [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) ulaşabilirsiniz. Takım, 24-48 iş saatlerinde yanıt verir.
 
-Azure portal kanalı üzerinden Microsoft ile destek bileti de artırabilirsiniz.
+Ayrıca, Azure portal kanal aracılığıyla Microsoft ile destek bileti de oluşturabilirsiniz.
 
-### <a name="would-the-plug-in-work-on-a-mac-or-ubuntu-installation-of-jira-and-confluence"></a>Plug-in Jira ve Confluence bir Mac veya Ubuntu yükleme üzerinde çalışır mı?
+### <a name="would-the-plug-in-work-on-a-mac-or-ubuntu-installation-of-jira-and-confluence"></a>Eklenti, Jira ve Confluence 'ın Mac veya Ubuntu yüklemesinde çalışıyor mu?
 
-Eklentiyi sadece Jira ve Confluence'ın 64 bit Windows Server yüklemelerinde test ettik.
+Eklentiyi yalnızca Jira ve Confluence 'ın 64 bitlik Windows Server yüklemelerinde test ediyoruz.
 
-### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>Eklenti, Azure AD dışındaki IdP'lerle çalışıyor mu?
+### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>Eklenti, Azure AD 'den farklı IDPs ile mi çalışıyor?
 
-Hayır. Yalnızca Azure AD ile çalışır.
+Hayır. Yalnızca Azure AD ile birlikte kullanılabilir.
 
-### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>Eklenti SAML'nin hangi sürümüyle çalışır?
+### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>Eklenti hangi SAML sürümü ile çalışıyor?
 
-Bu SAML 2.0 ile çalışır.
+SAML 2,0 ile birlikte çalışarak.
 
-### <a name="does-the-plug-in-do-user-provisioning"></a>Eklenti kullanıcı sağlama yapar mı?
+### <a name="does-the-plug-in-do-user-provisioning"></a>Eklenti Kullanıcı sağlamasını yapar mi?
 
-Hayır. Eklenti sadece SAML 2.0 tabanlı SSO sağlar. Kullanıcı, SSO oturum açmadan önce uygulamada sağlanmalıdır.
+Hayır. Eklenti yalnızca SAML 2,0 tabanlı SSO sağlar. Kullanıcının SSO oturum açmadan önce uygulamada sağlanması gerekmez.
 
-### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>Jira ve Confluence'ın eklenti destek kümesi sürümleri var mı?
+### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>Eklenti Jira ve Confluence 'ın küme sürümlerini destekliyor mu?
 
-Hayır. Eklenti Jira ve Confluence'ın şirket içi sürümleriyle çalışır.
+Hayır. Eklenti, Jira ve Confluence 'ın şirket içi sürümleriyle birlikte çalışarak.
 
-### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>Eklenti Jira ve Confluence HTTP sürümleri ile çalışır mı?
+### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>Eklenti, Jira ve Confluence 'ın HTTP sürümleriyle birlikte çalışıyor mu?
 
-Hayır. Eklenti yalnızca HTTPS özellikli yüklemelerle çalışır.
+Hayır. Eklenti yalnızca HTTPS etkin yüklemelerle birlikte kullanılabilir.

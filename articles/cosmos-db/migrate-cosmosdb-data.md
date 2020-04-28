@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme
-description: Bu doküman, 100'lerdir terabaytlık veriyi Cosmos DB'ye nasıl geçirebileceğinizi açıklar
+description: Bu belge, Cosmos DB terabaytlık verileri nasıl geçirebileceğinizi açıklar
 author: bharathsreenivas
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,41 +8,41 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: bharathb
 ms.openlocfilehash: 69b400eb7838c986ac6f275da58c7457179ebea6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72880214"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme 
 
 Azure Cosmos DB terabaytlarca veriyi depolayabilir. Üretim iş yükünüzü Azure Cosmos DB’ye taşımak için büyük ölçekli bir veri geçişi yapabilirsiniz. Bu makalede büyük ölçekli verileri Azure Cosmos DB’ye geçirmenin zorlukları açıklanır; zorluklarda size yardımcı olan ve verileri Azure Cosmos DB’ye geçiren araç tanıtılır. Müşteri, bu örnek olay incelemesinde Cosmos DB SQL API kullandı.  
 
-İş yükünün tamamını Azure Cosmos DB'ye geçirmeden önce, bölüm anahtar seçimi, sorgu performansı ve veri modelleme gibi bazı yönlerini doğrulamak için bir veri alt kümesini geçirebilirsiniz. Kavram kanıtını doğruladıktan sonra, tüm iş yükünü Azure Cosmos DB'ye taşıyabilirsiniz.  
+İş yükünün tamamını Azure Cosmos DB geçirmeden önce bölüm anahtarı seçimi, sorgu performansı ve veri modelleme gibi bazı yönleri doğrulamak üzere bir veri alt kümesini geçirebilirsiniz. Kavram kanıtı 'nı doğruladıktan sonra, tüm iş yükünü Azure Cosmos DB taşıyabilirsiniz.  
 
-## <a name="tools-for-data-migration"></a>Veri geçişi için araçlar 
+## <a name="tools-for-data-migration"></a>Veri geçiş araçları 
 
-Azure Cosmos DB geçiş stratejileri şu anda API seçimine ve verilerin boyutuna bağlı olarak farklılık göstermektedir. Veri modellemesini, sorgu performansını, bölüm anahtar seçimini vb. doğrulamak için daha küçük veri kümelerini geçirmek için [Veri Geçiş Aracı'nı](import-data.md) veya [Azure Veri Fabrikası'nın Azure Cosmos DB bağlayıcısını](../data-factory/connector-azure-cosmos-db.md)seçebilirsiniz. Spark'ı biliyorsanız, verileri geçirmek için [Azure Cosmos DB Spark bağlayıcısını](spark-connector.md) da kullanmayı seçebilirsiniz.
+Azure Cosmos DB geçiş stratejileri Şu anda API seçimine ve verilerin boyutuna göre farklılık gösterir. Daha küçük veri kümelerini geçirmek için – veri modelleme, sorgu performansı, bölüm anahtarı seçimi vb. için [veri geçiş aracını](import-data.md) veya [Azure Data Factory Azure Cosmos DB bağlayıcısını](../data-factory/connector-azure-cosmos-db.md)seçebilirsiniz. Spark hakkında bilginiz varsa, verileri geçirmek için [Azure Cosmos DB Spark bağlayıcısını](spark-connector.md) kullanmayı da tercih edebilirsiniz.
 
-## <a name="challenges-for-large-scale-migrations"></a>Büyük ölçekli göçler için zorluklar 
+## <a name="challenges-for-large-scale-migrations"></a>Büyük ölçekli geçişlere yönelik sorunlar 
 
-Verileri Azure Cosmos DB'ye geçirmek için varolan araçlar, özellikle büyük ölçeklerde belirgin hale gelen bazı sınırlamalara sahiptir:
+Azure Cosmos DB veri taşımaya yönelik mevcut araçlar, özellikle büyük ölçeklerde görünen bazı sınırlamalara sahiptir:
 
- * **Sınırlı ölçeklendirme yetenekleri**: Terabaytlarca veriyi mümkün olan en kısa sürede Azure Cosmos DB'ye geçirmek ve sağlanan tüm iş ortasını etkin bir şekilde tüketmek için, geçiş istemcilerinin süresiz olarak ölçeklendirme yeteneğine sahip olması gerekir.  
+ * **Sınırlı ölçek genişletme özellikleri**: terabaytlarca veri Azure Cosmos DB, mümkün olduğunca hızlı bir şekilde geçiş yapmak ve sağlanan tüm üretilen iş verimini etkin bir şekilde kullanmak için, geçiş istemcilerinin sonsuza kadar ölçeklendirme yeteneği olmalıdır.  
 
-* **İlerleme izleme ve kontrol işaretleme eksikliği**: Geçiş ilerlemesini izlemek ve büyük veri kümelerini geçirerken kontrol işaretetme yapmak önemlidir. Aksi takdirde, geçiş sırasında oluşan herhangi bir hata geçişi durdurur ve işlemi sıfırdan başlatmanız gerekir. %99'u tamamlanmışken tüm geçiş sürecini yeniden başlatmak verimli olmaz.  
+* **İlerleme izlemenin ve onay durumunun olmaması**: geçiş işleminin ilerlemesini izlemek ve büyük veri kümelerini geçirirken denetim noktası sağlamak önemlidir. Aksi takdirde, geçiş sırasında oluşan herhangi bir hata geçişi durdurur ve işlemi sıfırdan başlatmanız gerekir. %99 zaten tamamlandığında geçiş işleminin tamamını yeniden başlatmak üretken değildir.  
 
-* **Ölü harf sırası nın olmaması**: Büyük veri kümeleri içinde, bazı durumlarda kaynak verilerin bölümlerinde sorunlar olabilir. Ayrıca, istemci veya ağ ile geçici sorunlar olabilir. Bu durumlardan biri tüm geçiş başarısız neden olmamalıdır. Geçiş araçlarının çoğu, aralıklı sorunlara karşı koruma sağlayan sağlam yeniden deneme özelliklerine sahip olsa da, her zaman yeterli değildir. Örneğin, kaynak veri belgelerinin %0,01'inden azının boyutu 2 MB'dan büyükse, belge yazmanın Azure Cosmos DB'de başarısız olmasına neden olur. İdeal olarak, geçiş aracının bu 'başarısız' belgeleri geçiş sonrası işlenebilen başka bir ölü harf kuyruğuna devam etmesi yararlıdır. 
+* **Sahipsiz sıra olmaması**durumunda: büyük veri kümeleri içinde, bazı durumlarda kaynak verilerin bölümleriyle ilgili sorunlar olabilir. Ayrıca, istemci veya ağla ilgili geçici sorunlar da olabilir. Bu durumların herhangi biri, geçişin tamamının başarısız olmasına neden olmamalıdır. Çoğu geçiş aracının aralıklı sorunlara karşı koruma sağlayan güçlü yeniden deneme özellikleri olsa da, her zaman yeterince olmaz. Örneğin, kaynak veri belgelerinin% 0,01 ' sinden azı boyutu 2 MB 'tan fazlaysa, Azure Cosmos DB belge yazma işlemi başarısız olur. En ideal olarak, geçiş aracının bu ' başarısız ' belgelerini başka bir atılacak ileti kuyruğuna kalıcı hale getirmek için, geçiş sonrası işlenebilen yararlı bir seçenektir. 
 
-Bu sınırlamaların çoğu Azure Veri fabrikası, Azure Veri Geçişi hizmetleri gibi araçlar için düzeltiliyor. 
+Azure Data Factory, Azure Data Migration hizmetleri gibi araçlar için bu sınırlamaların birçoğu düzeltilmekte. 
 
-## <a name="custom-tool-with-bulk-executor-library"></a>Toplu yürütme kitaplığı ile özel araç 
+## <a name="custom-tool-with-bulk-executor-library"></a>Toplu yürütücü kitaplığı ile özel araç 
 
-Yukarıdaki bölümde açıklanan zorluklar, kolayca birden fazla örnek arasında ölçeklenebilir ve geçici hatalara dayanıklı özel bir araç kullanılarak çözülebilir. Ayrıca, özel araç duraklatmak ve çeşitli denetim noktalarında geçiş devam edebilirsiniz. Azure Cosmos DB, bu özelliklerden bazılarını içeren [toplu yürütme kitaplığını](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) zaten sağlar. Örneğin, toplu yürütme kitaplığı zaten geçici hataları işlemek için işlevselliğe sahiptir ve düğüm başına yaklaşık 500 K RUs tüketmek için tek bir düğümdeki iş parçacıklarını ölçeklendirebilir. Toplu yürütme kitaplığı da bir denetim noktası biçimi olarak bağımsız olarak işletilen mikro toplu olarak kaynak veri kümesi bölümlere.  
+Yukarıdaki bölümde açıklanan zorluklar, birden çok örneğe kolayca ölçeklenebilen ve geçici hatalara dayanıklı olan özel bir araç kullanılarak çözülebilir. Ayrıca, özel araç çeşitli denetim noktalarında geçişi duraklatabilir ve devam edebilir. Azure Cosmos DB, bu özelliklerden bazılarını içeren [toplu yürütücü kitaplığını](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) zaten sağlıyor. Örneğin, toplu yürütücü kitaplığı geçici hataları işlemeye yönelik işlevlere zaten sahiptir ve düğüm başına 500 K ru 'yi kullanmak için tek bir düğümdeki iş parçacıklarını ölçeklendirebilirler. Toplu yürütücü kitaplığı ayrıca kaynak veri kümesini, bir denetim noktası olarak bağımsız olarak çalıştırılan mikro toplu işlemlere da bölümler.  
 
-Özel araç toplu yürütme kitaplığını kullanır ve birden çok istemci arasında ölçekleme ve yutma işlemi sırasında hataları izlemek için destekler. Bu aracı kullanmak için kaynak verilerin Azure Veri Gölü Depolama (ADLS)'deki farklı dosyalara bölünmesi gerekir, böylece farklı geçiş çalışanları her dosyayı alıp Azure Cosmos DB'ye alabilir. Özel araç, ADLS'deki her bir kaynak dosya için geçiş ilerlemesiyle ilgili meta verileri depolayan ve bunlarla ilişkili hataları izleyen ayrı bir koleksiyon kullanır.  
+Özel araç, toplu yürütücü kitaplığını kullanır ve birden çok istemcide ölçeklendirmeyi destekler ve alma işlemi sırasında hataları izler. Bu aracı kullanmak için, kaynak verilerin Azure Data Lake Storage (ADLS) içindeki farklı dosyalara bölümlenmesi gerekir, böylece farklı geçiş çalışanları her dosyayı seçip Azure Cosmos DB içine alabilir. Özel araç, ADLS içindeki her bir kaynak dosya için geçiş ilerlemesiyle ilgili meta verileri depolayan ayrı bir koleksiyon kullanır ve bunlarla ilişkili tüm hataları izler.  
 
-Aşağıdaki resimde bu özel aracı kullanarak geçiş işlemi açıklanır. Araç bir sanal makine kümesiüzerinde çalışıyor ve her sanal makine, kaynak veri bölümlerinden birini kiralamak için Azure Cosmos DB'deki izleme koleksiyonunu sorgular. Bu işlem yapıldıktan sonra, kaynak veri bölümü araç tarafından okunur ve toplu yürütme kitaplığı kullanılarak Azure Cosmos DB'ye yutulrülür. Ardından, izleme koleksiyonu veri alım işleminin ilerlemesini ve karşılaşılan hataları kaydetmek için güncelleştirilir. Bir veri bölümü işlendikten sonra, araç bir sonraki kullanılabilir kaynak bölümü için sorgu yapmaya çalışır. Tüm veriler geçirilene kadar sonraki kaynak bölümü işlemeye devam ediyor. Aracın kaynak [koduna buradan](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)ulaşabilirsiniz.  
+Aşağıdaki görüntüde, bu özel aracı kullanan geçiş işlemi açıklanmaktadır. Araç bir sanal makine kümesi üzerinde çalışıyor ve her sanal makine, kaynak veri bölümlerinden birinde kira almak için Azure Cosmos DB 'de izleme koleksiyonunu sorgular. Bu işlem yapıldıktan sonra, kaynak veri bölümü araç tarafından okunarak toplu yürütücü kitaplığı kullanılarak Azure Cosmos DB alınır. Daha sonra, izleme koleksiyonu veri alımı ilerlemesini ve karşılaşılan hatalarla karşılaştıracak şekilde güncelleştirilir. Bir veri bölümü işlendikten sonra araç, bir sonraki kullanılabilir kaynak bölümü sorgulamaya çalışır. Tüm veriler geçirilene kadar sonraki kaynak bölümü işlemeye devam eder. Araç için kaynak kodu [buradan](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)edinebilirsiniz.  
 
  
 ![Geçiş Aracı Kurulumu](./media/migrate-cosmosdb-data/migrationsetup.png)
@@ -50,7 +50,7 @@ Aşağıdaki resimde bu özel aracı kullanarak geçiş işlemi açıklanır. Ar
 
  
 
-İzleme koleksiyonu aşağıdaki örnekte gösterildiği gibi belgeleri içerir. Bu tür belgeleri kaynak verilerdeki her bölüm için bir tane görürsünüz.  Her belge, konumu, geçiş durumu ve hataları (varsa) gibi kaynak veri bölümü için meta verileri içerir:  
+İzleme koleksiyonu, aşağıdaki örnekte gösterildiği gibi belgeler içerir. Bu tür belgeleri kaynak verilerdeki her bölüm için bir tane görürsünüz.  Her belge, kaynak veri bölümünün konumu, geçiş durumu ve hataları (varsa) gibi meta verileri içerir:  
 
 ```json
 { 
@@ -82,37 +82,37 @@ Aşağıdaki resimde bu özel aracı kullanarak geçiş işlemi açıklanır. Ar
 ```
  
 
-## <a name="prerequisites-for-data-migration"></a>Veri geçişi için ön koşullar 
+## <a name="prerequisites-for-data-migration"></a>Veri taşıma önkoşulları 
 
-Veri geçişi başlamadan önce göz önünde bulundurulması gereken birkaç ön koşul vardır:  
+Veri geçişi başlamadan önce göz önünde bulundurmanız gereken birkaç önkoşul vardır:  
 
 #### <a name="estimate-the-data-size"></a>Veri boyutunu tahmin edin:  
 
-Kaynak veri boyutu, Azure Cosmos DB'deki veri boyutuyla tam olarak eşlenemeyebilir. Azure Cosmos DB'deki veri boyutlarını denetlemek için kaynaktan birkaç örnek belge eklenebilir. Örnek belge boyutuna bağlı olarak, Azure Cosmos DB geçiş sonrası toplam veri boyutu tahmin edilebilir. 
+Kaynak veri boyutu, Azure Cosmos DB veri boyutuyla tam olarak eşlenmeyebilir. Verilerin boyutunu Azure Cosmos DB denetlemek için kaynaktan birkaç örnek belge eklenebilir. Örnek belge boyutuna bağlı olarak, geçiş sonrası Azure Cosmos DB toplam veri boyutu tahmin edilebilir. 
 
-Örneğin, Azure Cosmos DB'de geçişten sonraki her belge 1 KB civarındaysa ve kaynak veri kümesinde yaklaşık 60 milyar belge varsa, Bu, Azure Cosmos DB'deki tahmini boyutun 60 TB'ye yakın olacağı anlamına gelir. 
+Örneğin, Azure Cosmos DB geçiş sonrasında her belge 1 KB 'ın etrafında ve kaynak veri kümesinde 60.000.000.000 belge etrafında varsa, Azure Cosmos DB içindeki tahmini boyutun 60 TB 'a yakın olması anlamına gelir. 
 
  
 
-#### <a name="pre-create-containers-with-enough-rus"></a>Yeterli RUs'lu kapları önceden oluşturun: 
+#### <a name="pre-create-containers-with-enough-rus"></a>Yeterli ru ile kapsayıcıları önceden oluşturun: 
 
-Azure Cosmos DB depolama alanını otomatik olarak ölçeklendirse de, en küçük kapsayıcı boyutundan başlamak tavsiye edilmez. Daha küçük kapsayıcılar daha düşük iş kullanılabilirliğine sahiptir, bu da geçişin tamamlanmasının çok daha uzun süreceği anlamına gelir. Bunun yerine, son veri boyutuna (önceki adımda tahmin edildiği gibi) sahip kapsayıcılar oluşturmak ve geçiş iş yükünün sağlanan iş kaynağının tam olarak tüketdiğinden emin olmak yararlıdır.  
+Azure Cosmos DB depolamayı otomatik olarak ölçeklendirse de en küçük kapsayıcı boyutundan başlamak önerilmez. Daha küçük kapsayıcılar düşük verimlilik kullanılabilirliğine sahiptir, bu da geçişin tamamlanması çok daha uzun sürer. Bunun yerine, kapsayıcıları son veri boyutuyla (önceki adımda tahmini olarak) oluşturmak ve geçiş iş yükünün sağlanan aktarım hızını tam olarak kullandığından emin olmak yararlıdır.  
 
-Önceki adımda. veri boyutunun 60 TB civarında olduğu tahmin edildiğinden, tüm veri kümesini karşılamak için en az 2,4 M RUs'luk bir kapsayıcı gereklidir.  
+Bir önceki adımda. veri boyutunun 60 TB 'lık bir yerinde olması tahmin edildiğinden, tüm veri kümesinin tamamına uyum sağlaması için en az 2,4 e ru kapsayıcısının bir kapsayıcısı gerekir.  
 
  
 
 #### <a name="estimate-the-migration-speed"></a>Geçiş hızını tahmin edin: 
 
-Geçiş iş yükünün, sağlanan iş yükünün tamamını tüketebileceğini varsayarsak, bu arada sağlanan geçiş hızının bir tahminini sağlar. Önceki örneği devam ederken, Azure Cosmos DB SQL API hesabına 1 KB belge yazmak için 5 RUs gerekir.  2,4 milyon RUs saniyede 480.000 belge (veya 480 MB/sn) transferine izin verir. Bu, 60 TB'nin tam geçişinin 125.000 saniye veya yaklaşık 34 saat süreceği anlamına gelir.  
+Geçiş iş yükünün sağlanan tüm üretilen işi tükettiği kabul edildiğinde, sağlanan genelinde geçiş hızının bir tahmini sağlanır. Önceki örneğe devam edildiğinde, 1 KB 'lık bir belgeyi Azure Cosmos DB SQL API hesabına yazmak için 5 ru gerekir.  2.400.000 ru, saniye başına 480.000 belge aktarımına (veya 480 MB/sn) izin verebilir. Bu, 60 TB 'ın tüm geçişinin 125.000 saniye veya yaklaşık 34 saat süreleceği anlamına gelir.  
 
-Geçişin bir gün içinde tamamlanmasını istiyorsanız, sağlanan iş buzun 5 milyon RUs'a çıkarılması gerekir. 
+Geçişin bir gün içinde tamamlanmasını istemeniz durumunda, sağlanan aktarım hızını 5.000.000 ru olarak artırmanız gerekir. 
 
  
 
-#### <a name="turn-off-the-indexing"></a>Dizin oluşturmayı kapatın:  
+#### <a name="turn-off-the-indexing"></a>Dizinlemeyi kapat:  
 
-Geçişin mümkün olan en kısa sürede tamamlanması gerektiğinden, alınan belgelerin her biri için dizin oluşturmak için harcanan zamanı ve RUS'ları en aza indirmesi tavsiye edilir.  Azure Cosmos DB tüm özellikleri otomatik olarak dizine alır, dizin oluşturmayı seçili birkaç terime en aza indirmek veya geçiş seyri için tamamen kapatmak faydalıdır. IndexingMode'u aşağıda gösterildiği gibi yok olarak değiştirerek kapsayıcının dizin oluşturma ilkesini kapatabilirsiniz:  
+Geçişin mümkün olan en kısa sürede tamamlanması gerektiğinden, alınan her belge için dizin oluştururken harcanan zamanı ve ru 'yi en aza indirmek önerilir.  Tüm özellikleri otomatik olarak dizine Azure Cosmos DB, seçilen birkaç terim için dizin oluşturmayı en aza indirmek veya geçiş işlemi için tamamen devre dışı bırakmak çok önemlidir. Dizin oluşturma ilkesini aşağıda gösterildiği gibi ındexingmode değerini None olarak değiştirerek devre dışı bırakabilirsiniz:  
 
  
 ```
@@ -122,34 +122,34 @@ Geçişin mümkün olan en kısa sürede tamamlanması gerektiğinden, alınan b
 ```
  
 
-Geçiş tamamlandıktan sonra dizin oluşturmayı güncelleştirebilirsiniz.  
+Geçiş işlemi tamamlandıktan sonra, dizin oluşturmayı güncelleştirebilirsiniz.  
 
 ## <a name="migration-process"></a>Geçiş süreci 
 
-Ön koşullar tamamlandıktan sonra, verileri aşağıdaki adımlarla geçirebilirsiniz:  
+Önkoşullar tamamlandıktan sonra, aşağıdaki adımlarla veri geçirebilirsiniz:  
 
-1. Önce verileri kaynaktan Azure Blob Depolama'ya aktarın. Geçiş hızını artırmak için, farklı kaynak bölümleri arasında paralelleştirmek yararlıdır. Geçişe başlamadan önce, kaynak veri kümesi 200 MB boyutunda büyüklüğe sahip dosyalara bölümlere kaydedilmelidir.   
+1. İlk olarak verileri kaynaktan Azure Blob depolamaya aktarın. Geçişin hızını artırmak için, farklı kaynak bölümleri genelinde paralel hale getirmek yararlı olur. Geçişe başlamadan önce, kaynak veri kümesinin 200 MB boyutunda boyuttaki dosyalara bölümlenmesi gerekir.   
 
-2. Toplu yürütme kitaplığı, tek bir istemci VM'de 500.000 RUs tüketmek için ölçeklenebilir. Kullanılabilir iş ortası 5 milyon RUs olduğundan, Azure Cosmos veritabanınızın bulunduğu bölgede 10 Ubuntu 16,04 VM (Standard_D32_v3) sağlanmalıdır. Bu VM'leri geçiş aracı ve ayarları dosyasıyla birlikte hazırlamalısınız.  
+2. Toplu yürütücü kitaplığı, tek bir istemci sanal makinesinde 500.000 ru 'yi kullanmak için ölçeklenebilir. Kullanılabilir üretilen iş hacmi 5.000.000 ru olduğundan, Azure Cosmos veritabanınızın bulunduğu bölgede 10 Ubuntu 16,04 VM (Standard_D32_v3) sağlanması gerekir. Bu VM 'Leri geçiş aracı ve ayarlar dosyası ile hazırlamanız gerekir.  
 
-3. İstemci sanal makinelerinden birinde sıra adımını çalıştırın. Bu adım, ADLS kapsayıcısını tarayan ve kaynak veri kümesinin bölüm dosyalarının her biri için bir ilerleme izleme belgesi oluşturan izleme koleksiyonu oluşturur.  
+3. İstemci sanal makinelerinden birinde sıra adımını çalıştırın. Bu adım, ADLS kapsayıcısını tarayan ve kaynak veri kümesinin bölüm dosyalarının her biri için bir ilerleme izleme belgesi oluşturan izleme koleksiyonunu oluşturur.  
 
-4. Ardından, tüm istemci VM'lerde alma adımını çalıştırın. İstemcilerin her biri bir kaynak bölümüne sahip çıkabilir ve verilerini Azure Cosmos DB'ye alabilir. Tamamlandıktan ve durumu izleme koleksiyonunda güncelleştirildikten sonra, istemciler izleme koleksiyonundaki bir sonraki kullanılabilir kaynak bölümü için sorgu layabilir.  
+4. Sonra, tüm istemci VM 'lerinde içeri aktarma adımını çalıştırın. İstemcilerin her biri, kaynak bölümde sahipliği alabilir ve verilerini Azure Cosmos DB içine alabilir. Tamamlandıktan sonra ve durumu izleme koleksiyonunda güncelleştirildikten sonra, istemciler daha sonra izleme koleksiyonundaki bir sonraki kullanılabilir kaynak bölümünü sorgulayabilir.  
 
-5. Bu işlem, kaynak bölüm kümesi nin tamamı yutulana kadar devam eder. Tüm kaynak bölümleri işlendikten sonra, araç aynı izleme koleksiyonundaki hata düzeltme modunda yeniden çalıştırılmalıdır. Bu adım, hatalar nedeniyle yeniden işlenmesi gereken kaynak bölümleri tanımlamak için gereklidir.  
+5. Bu işlem, tüm kaynak bölüm kümesine alınana kadar devam eder. Tüm kaynak bölümler işlendikten sonra, araç aynı izleme koleksiyonundaki hata düzeltme modunda yeniden çalıştırmanız gerekir. Bu adım, hatalar nedeniyle yeniden işlenmesi gereken kaynak bölümleri belirlemek için gereklidir.  
 
-6. Bu hatalardan bazıları kaynak verilerdeki yanlış belgelerden kaynaklanıyor olabilir. Bunlar tanımlanmalı ve düzeltilmelidir. Ardından, bunları reingest için başarısız bölümlerde alma adımı yeniden gerekir. 
+6. Bu hatalardan bazıları, kaynak verilerdeki hatalı belgelerden kaynaklanıyor olabilir. Bunlar tanımlanmalıdır ve düzeltilir. Ardından, başarısız olan bölümlerde içeri aktarma adımını yeniden çalıştırmanız gerekir. 
 
-Geçiş tamamlandıktan sonra, Azure Cosmos DB'deki belge sayısının kaynak veritabanındaki belge sayısıyla aynı olduğunu doğrulayabilirsiniz. Bu örnekte, Azure Cosmos DB'deki toplam boyut 65 terabayt'a çıktı. Geçiş sonrası, dizin oluşturma seçici olarak açılabilir ve RUS iş yükünün işlemlerinin gerektirdiği düzeye düşürülebilir.
+Geçiş tamamlandıktan sonra, Azure Cosmos DB içindeki belge sayısı, kaynak veritabanındaki belge sayısıyla aynı olduğunu doğrulayabilirsiniz. Bu örnekte, Azure Cosmos DB toplam boyut 65 terabayt olarak etkinleştirilir. Geçiş sonrası, dizin oluşturma seçime bağlı olarak açılabilir ve RUs iş yükünün işlemleri için gereken düzeye düşürülemez.
 
-## <a name="contact-the-azure-cosmos-db-team"></a>Azure Cosmos DB ekibiyle iletişim kurun
-Büyük veri kümelerini Azure Cosmos DB'ye başarıyla geçirmek için bu kılavuzu izleyebiliyor olsanız da, büyük ölçekli geçişler için veri modellemesini ve genel bir mimari incelemesini doğrulamak için Azure Cosmos DB ürün ekibine ulaşmanız önerilir. Ürün ekibi, veri kümenize ve iş yükünüzü temel alınca, sizin için geçerli olabilecek diğer performans ve maliyet optimizasyonları da önerebilir. Büyük ölçekli geçişlerle ilgili yardım için Azure Cosmos DB ekibine başvurmak için, aşağıda gösterildiği gibi "Genel Danışma" sorun türü ve "Büyük (TB+) geçişler" alt türü altında bir destek bileti açabilirsiniz.
+## <a name="contact-the-azure-cosmos-db-team"></a>Azure Cosmos DB ekibine başvurun
+Büyük veri kümelerini Azure Cosmos DB başarılı bir şekilde geçirmek için bu kılavuzu takip edebilir, ancak büyük ölçekli geçişler için, veri modellemeyi ve genel mimari incelemesini doğrulamak üzere Azure Cosmos DB ürün ekibine ulaşmanıza önerilir. Veri kümeniz ve iş yükünüze göre, ürün ekibi sizin için geçerli olabilecek diğer performans ve maliyet iyileştirmeleri de önerebilir. Büyük ölçekli geçişlerle yardım için Azure Cosmos DB ekibine başvurmak için, aşağıda gösterildiği gibi "genel danışmanlık" sorun türü ve "büyük (TB +) geçişleri" sorun alt türü altında bir destek bileti açabilirsiniz.
 
-![Geçiş Destek Konusu](./media/migrate-cosmosdb-data/supporttopic.png)
+![Geçiş desteği konusu](./media/migrate-cosmosdb-data/supporttopic.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [.NET](bulk-executor-dot-net.md) ve [Java'daki](bulk-executor-java.md)toplu yürütme kitaplığını tüketen örnek uygulamaları deneyerek daha fazla bilgi edinin. 
-* Toplu uygulayıcı kitaplığı, daha fazla bilgi edinmek için Azure [Cosmos DB Spark bağlayıcısı](spark-connector.md) makalesine bakın.  
-* Büyük ölçekli geçişlerde ek yardım için "Genel Danışma" sorun türü ve "Büyük (TB+) geçişler" sorun alt türü altında bir destek bileti açarak Azure Cosmos DB ürün ekibine başvurun. 
+* [.Net](bulk-executor-dot-net.md) ve [Java](bulk-executor-java.md)'daki toplu yürütücü kitaplığını kullanan örnek uygulamaları deneyerek daha fazla bilgi edinin. 
+* Toplu yürütücü kitaplığı, Cosmos DB Spark Bağlayıcısı ile tümleşiktir, daha fazla bilgi edinmek için bkz. [Azure Cosmos DB Spark Bağlayıcısı](spark-connector.md) makalesi.  
+* Büyük ölçekli geçişlerle ilgili ek yardım için "genel Danışma belgesi" sorun türü ve "büyük (TB +) geçişleri" sorun alt türü altında bir destek bileti açarak Azure Cosmos DB ürün ekibine başvurun. 

@@ -1,6 +1,6 @@
 ---
-title: Bulut Çözüm Sağlayıcıları için ExpressRoute - Azure | Microsoft Dokümanlar
-description: Bu makalede, Azure hizmetlerini ve ExpressRoute'u sundukları hizmetlere dahil etmek isteyen Bulut Çözüm Sağlayıcıları için bilgiler sağlanmaktadır.
+title: Bulut çözümü sağlayıcıları için ExpressRoute-Azure | Microsoft Docs
+description: Bu makalede, Azure hizmetleri ve ExpressRoute 'un teklifleriyle birleştirmek isteyen bulut çözümü sağlayıcıları için bilgiler sağlanmaktadır.
 services: expressroute
 author: richcar
 ms.service: expressroute
@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
 ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67849254"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Bulut Çözüm Sağlayıcıları (CSP) için ExpressRoute

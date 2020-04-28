@@ -1,6 +1,6 @@
 ---
-title: Karma kimlik tasarımı - olay yanıt gereksinimleri Azure | Microsoft Dokümanlar
-description: Olası tehditleri belirlemek ve azaltmak için eylemlerde bulunmak üzere BT tarafından yararlanılabilen karma kimlik çözümü için izleme ve raporlama yeteneklerini belirlemek
+title: Karma kimlik tasarımı-olay yanıtı gereksinimleri Azure | Microsoft Docs
+description: Olası tehditleri belirlemek ve azaltmak üzere eylemler gerçekleştirmek için yararlanılabilir tarafından kullanılabilecek karma kimlik çözümü için izleme ve raporlama özelliklerini belirleme
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,49 +18,49 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52b5e37c29e4b3df3f171f683266b5d0a3e0c95d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67109287"
 ---
-# <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için olay yanıt gereksinimlerini belirleme
-Büyük veya orta ölçekli kuruluşlar büyük olasılıkla BT'nin olay düzeyine göre harekete geçtirene yardımcı olmak için bir [güvenlik olayı yanıtına](https://technet.microsoft.com/library/cc700825.aspx) sahip olacaktır. Kimlik yönetim sistemi, hedefe karşı belirli bir eylemi kimin gerçekleştirdiğini belirlemeye yardımcı olmak için kullanılabildiği için olay yanıtlama sürecinde önemli bir bileşendir. Karma kimlik çözümü, olası bir tehdidi belirlemek ve azaltmak için eylemlerde bulunmak için BT tarafından yararlanılabilen izleme ve raporlama yetenekleri sağlayabilmelidir. Tipik bir olay yanıt planında planın bir parçası olarak aşağıdaki aşamalara sahip olursunuz:
+# <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için olay yanıtı gereksinimlerini belirleme
+Büyük veya orta ölçekli kuruluşlar, olay düzeyine göre işlem yapmanıza yardımcı olmak için bir [güvenlik olayı yanıtı](https://technet.microsoft.com/library/cc700825.aspx) oluşturacaktır. Kimlik yönetimi sistemi, hedefte belirli bir eylemi gerçekleştirmeyen kişileri tanımlamaya yardımcı olmak üzere kullanılabilir olduğundan, olay yanıtı sürecinde önemli bir bileşendir. Karma kimlik çözümü, olası bir tehdidi belirlemek ve azaltmak üzere eylemler gerçekleştirmek için yararlanılabilir olabilecek izleme ve raporlama özellikleri sağlayabilmelidir. Tipik bir olay yanıt planında, planın bir parçası olarak aşağıdaki aşamalara sahip olursunuz:
 
 1. İlk değerlendirme.
 2. Olay iletişimi.
-3. Hasar kontrolü ve risk azaltma.
-4. Ne kadar uzlaşma cılız ve şiddet olduğunu niçin tanımlama.
-5. Kanıt ların korunması.
-6. İlgili taraflara bildirim.
+3. Hasar denetimi ve risk azaltma.
+4. Ne kadar risk ve önem derecesine sahip olduğunu tanımlama.
+5. Kanıt koruma.
+6. Uygun taraflara bildirim.
 7. Sistem kurtarma.
-8. Belge.
+8. Belgelerle.
 9. Hasar ve maliyet değerlendirmesi.
-10. Süreç ve plan revizyonu.
+10. İşleme ve plan düzeltmesi.
 
-Ne kadar uzlaşmacı ve önem alanı olduğunun tanımlanması sırasında, gizliliği ihlal edilen sistemleri, erişilen dosyaları belirlemek ve bu dosyaların duyarlılığını belirlemek gerekecektir. Karma kimlik sisteminiz, bu değişiklikleri yapan kullanıcıyı tanımlamanıza yardımcı olmak için bu gereksinimleri yerine getirebilmelidir. 
+Tehlikeye atımı ve önem derecesine sahip olduğunu belirlemek için, tehlikeye girmiş olan sistemleri, erişilen dosyaları ve bu dosyaların duyarlılığını belirlemek için gerekli olacaktır. Karma kimlik sisteminiz, bu değişiklikleri yapan kullanıcıyı tanımlamaya yardımcı olması için bu gereksinimleri yerine getirebilmelidir. 
 
 ## <a name="monitoring-and-reporting"></a>İzleme ve raporlama
-Çoğu zaman kimlik sistemi, sistem denetim ve raporlama yetenekleri yerleşik ise, ilk değerlendirme aşamasında da yardımcı olabilir. İlk değerlendirme sırasında BT Yöneticisi şüpheli bir etkinliği tanımlayabilmeli veya sistem önceden yapılandırılmış bir göreve dayanarak bu etkinliği otomatik olarak tetikleyebilmeli. Birçok etkinlik olası bir saldırıyı gösterebilir, ancak diğer durumlarda, kötü yapılandırılmış bir sistem bir saldırı algılama sisteminde bir dizi yanlış pozitife yol açabilir. 
+Çoğu zaman, sistemin denetim ve raporlama özelliklerine yerleşik olması durumunda kimlik sistemi ilk değerlendirme aşamasında de yardımcı olabilir. İlk değerlendirme sırasında, BT yöneticisinin şüpheli bir etkinliği belirleyebilmesi veya sistemin önceden yapılandırılmış bir göreve göre otomatik olarak tetikleyebilmesi gerekir. Birçok etkinlik olası bir saldırıyı belirtebilir, ancak başka durumlarda, hatalı yapılandırılmış bir sistem, yetkisiz giriş algılama sisteminde bir dizi hatalı pozitif sonuç oluşmasına neden olabilir. 
 
-Kimlik yönetim sistemi, BT yöneticilerinin bu şüpheli etkinlikleri tanımlamasına ve bildirmesine yardımcı olmalıdır. Genellikle bu teknik gereksinimler, tüm sistemlerin izlenmesi ve olası tehditleri vurgulayabilecek bir raporlama yeteneğine sahip olarak yerine getirilebilir. Olay yanıtı gereksinimlerini göz önünde bulundurarak karma kimlik çözümünüzü tasarlamanıza yardımcı olmak için aşağıdaki soruları kullanın:
+Kimlik yönetimi sistemi, BT yöneticilerine bu şüpheli etkinlikleri tanımlamak ve raporlamak için yardımcı olmalıdır. Genellikle bu teknik gereksinimler, tüm sistemleri izleyerek ve olası tehditleri vurgulayabileceği bir raporlama yeteneği sunarak yerine getirilir. Önemli olay yanıtı gereksinimlerini göz önünde bulundurarak karma kimlik çözümünüzü tasarlamanıza yardımcı olması için aşağıdaki soruları kullanın:
 
-* Şirketinizin bir güvenlik olayı tepkisi var mı?
-  * Evet ise, geçerli kimlik yönetim sistemi sürecin bir parçası olarak kullanılır mı?
-* Şirketinizin farklı cihazlardaki kullanıcıların şüpheli oturum açma girişimlerini tanımlaması gerekiyor mu?
-* Şirketinizin tehlikeye atabilecek olası kullanıcı kimlik bilgilerini algılaması gerekiyor mu?
-* Şirketinizin kullanıcıerişimini ve eylemini denetlemesi gerekiyor mu?
-* Şirketinizin bir kullanıcının parolasını ne zaman sıfırladığını bilmesi gerekiyor mu?
+* Şirketinizin bir güvenlik olayı yanıtı var mı?
+  * Yanıt Evet ise, işlemin bir parçası olarak kullanılan geçerli kimlik yönetimi sistemidir mı?
+* Şirketinizin farklı cihazlarda kullanıcılardan gelen şüpheli oturum açma girişimlerini belirlemesi gerekiyor mu?
+* Şirketinizin olası güvenliği aşılmış kullanıcının kimlik bilgilerini algılaması gerekiyor mu?
+* Şirketinizin kullanıcının erişimini ve eylemini denetlemesi gerekiyor mu?
+* Bir kullanıcının parolasını sıfırladığında şirketiniz tarafından bilinsin mi?
 
 ## <a name="policy-enforcement"></a>İlke zorlama
-Hasar kontrolü ve risk azaltma-fazı sırasında, bir saldırının gerçek ve potansiyel etkilerini hızlı bir şekilde azaltmak önemlidir. Bu noktada yapacağınız bu eylem, küçük ve büyük bir eylem arasındaki farkı yaratabilir. Tam yanıt, kuruluşunuza ve karşılaştığınız saldırının niteliğine bağlıdır. İlk değerlendirmede bir hesabın gizliliğinin ihlal edildiği sonucuna varsa, bu hesabı engellemek için ilke uygulamanız gerekir. Bu, kimlik yönetim sisteminin yararlanılabildiği bir örnek. Devam eden bir olaya tepki vermek için politikaların nasıl uygulanacağını göz önünde bulundurarak karma kimlik çözümünüzü tasarlamanıza yardımcı olmak için aşağıdaki soruları kullanın:
+Hasar denetimi ve risk azaltma aşamasında, bir saldırının gerçek ve potansiyel etkileri hızla azaltılmanız önemlidir. Bu noktada yapacağınız eylem, küçük ve birincil bir nokta arasındaki farkı yapabilir. Tam yanıt kuruluşunuza ve yüzünüzü sunan saldırının doğasına göre değişir. İlk değerlendirme bir hesabın güvenliğinin aşıldığını sonuçlandırdığında, bu hesabı engellemek için ilkeyi zorunlu kılabilirsiniz. Bu, kimlik yönetimi sisteminin yararlanılabilir olacağı tek bir örnektir. Sürekli bir olaya tepki vermek üzere ilkelerin nasıl zorlanacağını göz önünde bulundurarak, karma kimlik çözümünüzü tasarlamanıza yardımcı olması için aşağıdaki soruları kullanın:
 
-* Şirketinizin, gerektiğinde kullanıcıların ağa erişimini engelleyen politikaları var mı?
-  * Evet ise, mevcut çözüm benimseyeceğiniz karma kimlik yönetim sistemiyle bütünleşir mi?
-* Şirketinizin karantinada olan kullanıcılar için Koşullu Erişim'i uygulaması gerekiyor mu? 
+* Şirketiniz, kullanıcıların ağa erişmesini engellemek için gereken ilkelere sahip mi?
+  * Yanıt Evet ise, geçerli çözüm benimsemek istediğiniz karma kimlik yönetimi sistemiyle tümleştirilmesine mi?
+* Şirketinizin Karantinadaki kullanıcılar için koşullu erişimi zorlaması gerekiyor mu? 
 
 > [!NOTE]
-> Her yanıtı not almayı unutmayın ve yanıtın arkasındaki mantığı anladığınızdan emin olun. [Veri koruma stratejisini tanımlayın,](plan-hybrid-identity-design-considerations-data-protection-strategy.md) mevcut seçeneklerin ve her seçeneğin avantajlarının/dezavantajlarının üzerinden geçecektir.  Bu soruları yanıtlayarak, işletme ihtiyaçlarınıza en uygun seçeneği seçecektir.
+> Her yanıtı not almayı unutmayın ve yanıtın arkasındaki mantığı anladığınızdan emin olun. [Veri koruma stratejisini tanımlama](plan-hybrid-identity-design-considerations-data-protection-strategy.md) , kullanılabilir seçenekler ve her seçeneğin olumlu/olumsuz yönleri üzerinden alınacaktır.  Bu sorulara yanıt vererek, iş gereksinimlerinize en uygun seçeneği seçersiniz.
 > 
 > 
 

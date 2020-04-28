@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory| ile otomatik kullanıcı sağlama için Concur'u yapılandırın| Microsoft Dokümanlar"
-description: Azure Active Directory ve Concur arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Concur yapılandırma | Microsoft Docs'
+description: Azure Active Directory ve Concur arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,114 +16,114 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60280474"
 ---
-# <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Concur'u yapılandır
+# <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Concur yapılandırma
 
-Bu öğreticinin amacı, Azure AD'den Concur'a kullanıcı hesaplarını otomatik olarak sağlamak ve sağlamamak için Concur ve Azure AD'de gerçekleştirmeniz gereken adımları size göstermektir.
+Bu öğreticinin amacı, Azure AD 'de Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Concur ve Azure AD 'de gerçekleştirmeniz gereken adımları gösterir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, zaten aşağıdaki öğelere sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
 
-*   Azure Etkin dizin kiracı.
-*   Concur tek oturum açma özellikli abonelik.
-*   Team Admin izinleriyle aynı fikirde olan bir kullanıcı hesabı.
+*   Azure Active Directory kiracısı.
+*   Concur çoklu oturum açma etkin aboneliği.
+*   Ekip Yöneticisi izinlerine sahip bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-concur"></a>Kullanıcıları Concur'a atama
+## <a name="assigning-users-to-concur"></a>Kullanıcıları Concur atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için "atamalar" adlı bir kavram kullanır. Otomatik kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya "atanmış" kullanıcılar ve gruplar eşitlenir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim alacağını belirleyebilmek için "atamalar" adlı bir kavram kullanır. Otomatik Kullanıcı hesabı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya "atanmış" olan kullanıcılar ve gruplar eşitlenir.
 
-Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların Concur uygulamanıza erişilmesi gereken kullanıcıları temsil edeceğine karar vermeniz gerekir. Karar verildikten sonra, bu kullanıcıları aşağıdaki talimatları izleyerek Concur uygulamanıza atayabilirsiniz:
+Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Concur uygulamanıza erişmesi gereken kullanıcıları temsil ettiğini belirlemeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları Concur uygulamanıza atayabilirsiniz:
 
-[Bir kurumsal uygulamaya kullanıcı veya grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Kurumsal uygulamaya Kullanıcı veya Grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-concur"></a>Kullanıcılarını Concur'a atamak için önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-concur"></a>Kullanıcıları Concur 'e atamaya yönelik önemli ipuçları
 
-*   Sağlama yapılandırmasını sınamak için tek bir Azure AD kullanıcısının Concur'a atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
+*   Sağlama yapılandırmasını test etmek için tek bir Azure AD kullanıcısına yarışma atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-*   Bir kullanıcıyı Concur'a atarken, geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan Erişim" rolü sağlama için çalışmaz.
+*   Bir kullanıcıyı Concur 'e atarken geçerli bir kullanıcı rolü seçmeniz gerekir. "Varsayılan erişim" rolü sağlama için çalışmaz.
 
-## <a name="enable-user-provisioning"></a>Kullanıcı sağlamayı etkinleştirme
+## <a name="enable-user-provisioning"></a>Kullanıcı sağlamayı etkinleştir
 
-Bu bölüm, Azure REKLAM'ınızı Concur'un kullanıcı hesabı sağlama API'sine bağlamanız ve sağlama hizmetini Azure AD'deki kullanıcı ve grup atamasına bağlı olarak Concur'da atanmış kullanıcı hesapları oluşturacak, güncelleştirecek ve devre dışı edecek şekilde yapılandırmak için size rehberlik eder.
+Bu bölümde, Azure AD 'nizi Concur Kullanıcı hesabı sağlama API 'sine bağlama ve sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup atamasına göre Concur ' de atanan kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı bırakmak için yapılandırma işlemi kılavuzluk eder.
 
 > [!Tip] 
-> [Azure portalında](https://portal.azure.com)sağlanan yönergeleri izleyerek, Eşzamanlı olarak SAML tabanlı Tek Oturum Açma özelliğini de etkinleştirmeyi seçebilirsiniz. Tek oturum açma, otomatik sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
+> Ayrıca, [Azure Portal](https://portal.azure.com)' de sağlanan yönergeleri Izleyerek, Concur için SAML tabanlı çoklu oturum açma 'yı da etkinleştirebilirsiniz. Çoklu oturum açma özelliği otomatik sağlanmadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
-### <a name="to-configure-user-account-provisioning"></a>Kullanıcı hesabı sağlama yapılandırmak için:
+### <a name="to-configure-user-account-provisioning"></a>Kullanıcı hesabı sağlamayı yapılandırmak için:
 
-Bu bölümün amacı, Active Directory kullanıcı hesaplarının Concur'a nasıl sağlanabildiğini ana hatlar.
+Bu bölümün amacı, Active Directory Kullanıcı hesaplarının hazırlığını sağlamayı nasıl etkinleştireceğinizi özetler.
 
-Gider Hizmeti'ndeki uygulamaları etkinleştirmek için, bir Web Hizmeti Yöneticisi profilinin uygun şekilde kurulumu ve kullanımı olmalıdır. T&E yönetim işlevleri için kullandığınız mevcut yönetici profilinize WS Yöneticisi rolünü eklemeyin.
+Gider hizmetindeki uygulamaları etkinleştirmek için, bir Web hizmeti yönetici profilinin doğru bir şekilde kurulması ve kullanılması gerekir. WS yönetici rolünü T&E yönetim işlevleri için kullandığınız mevcut yönetici profiline eklemeyin.
 
-Concur Danışmanları veya istemci yöneticisi farklı bir Web Hizmeti Yöneticisi profili oluşturmalı ve İstemci yöneticisi web hizmetleri yöneticisi işlevleri (örneğin, uygulamaları etkinleştirmek) için bu profili kullanmalıdır. Bu profiller istemci yöneticinin günlük T&E yönetici profilinden ayrı tutulmalıdır (T&E yönetici profili WSAdmin rolüne atanmamalıdır).
+Concur danışmanları veya istemci Yöneticisi farklı bir Web hizmeti yönetici profili oluşturmalı ve Istemci yöneticisinin Web Hizmetleri Yöneticisi işlevleri için bu profili kullanması gerekir (örneğin, uygulamaları etkinleştirme). Bu profillerin istemci yöneticisinin günlük T&E yönetici profilinden ayrı tutulması gerekir (T&E yönetici profilinde WSAdmin rolü atanmamalıdır).
 
-Uygulamayı etkinleştirmek için kullanılacak profili oluşturduğunuzda, kullanıcı profili alanlarına istemci yöneticisinin adını girin. Bu, profile sahiplik atar. Bir veya daha fazla profil oluşturulduktan sonra, istemcinin Web Hizmetleri menüsündeki Bir İş Ortağı Uygulaması için "*Etkinleştir*" düğmesini tıklatmak için bu profille oturum açması gerekir.
+Uygulamayı etkinleştirmek için kullanılacak profili oluştururken, Kullanıcı profili alanlarına istemci yöneticisinin adını girin. Bu, sahipliği profile atar. Bir veya daha fazla profil oluşturulduktan sonra, Web Hizmetleri menüsünde bir Iş ortağı uygulamasının "*Etkinleştir*" düğmesine tıklayarak istemcinin bu profille oturum açması gerekir.
 
-Aşağıdaki nedenlerle, bu eylem normal T&E uygulaması için kullandıkları profil ile yapılmamalıdır.
+Aşağıdaki nedenlerden dolayı bu eylem, normal T&E yönetimi için kullandıkları profille yapılmamalıdır.
 
-* İstemci, bir uygulama etkinleştirildikten sonra görüntülenen diyalog penceresinde *"Evet"* seçeneğini tıklayan kişi olmalıdır. Bu tıklama, istemcinin İş Ortağı uygulamasının verilerine erişmeye istekli olduğunu kabul eder, bu nedenle siz veya İş Ortağı bu Evet düğmesini tıklatamazsınız.
+* İstemci, bir uygulama etkinleştirildikten sonra görüntülenen iletişim penceresinde "*Evet*" i tıkladığı bir değer olmalıdır. Bu, istemcinin Iş ortağı uygulamasının verilerine erişmesini istediğinden emin olur, böylece siz veya Iş ortağı bu Evet düğmesine tıklamamasını sağlar.
 
-* T&E yönetici profilini kullanarak bir uygulamayı etkinleştiren bir istemci yöneticisi şirketten ayrılırsa (profilin devre dışı bırakılması ile sonuçlanır), uygulama başka bir etkin WS Yönetici profili yle etkinleştirilene kadar bu profili kullanan herhangi bir uygulama çalışmaz. Bu nedenle farklı WS Yönetici profilleri oluşturmanız gerekir.
+* T&E yönetici profilini kullanarak bir uygulamayı etkinleştirmiş bir istemci yöneticisi şirketten ayrılırsa (profilin devre dışı bırakılmakta olması halinde), bu profil kullanılarak etkinleştirilen tüm uygulamalar, uygulama başka bir etkin WS yönetici profiliyle etkinleştirilene kadar çalışmaz. Bu nedenle ayrı WS Yönetici profilleri oluşturmanız gerekir.
 
-* Bir yönetici şirketten ayrılırsa, ws yöneticisi profiline ilişkili ad, bu profilin etkinleştirilmesi gerekmediği için etkinleştirilen uygulamayı etkilemeden istenirse yedek yönetici olarak değiştirilebilir.
+* Bir yönetici şirketten ayrılırsa, bu profile izin verilmediğinden, WS yönetici profiliyle ilişkili ad, etkin uygulamayı etkilemeden istenirse değiştirme Yöneticisi olarak değiştirilebilir.
 
-**Kullanıcı sağlama yapılandırmak için aşağıdaki adımları gerçekleştirin:**
+**Kullanıcı sağlamayı yapılandırmak için aşağıdaki adımları uygulayın:**
 
-1. **Concur** kiracınıza oturum açın.
+1. **Concur** kiracınızda oturum açın.
 
-2. **Yönetim** menüsünden **Web Hizmetleri'ni**seçin.
+2. **Yönetim** menüsünden **Web Hizmetleri**' ni seçin.
    
-    ![Aynı fikirde kiracı](./media/concur-provisioning-tutorial/IC721729.png "Aynı fikirde kiracı")
+    ![Concur kiracısı](./media/concur-provisioning-tutorial/IC721729.png "Concur kiracısı")
 
-3. Sol tarafta, Web **Hizmetleri** bölmesinden **İş Ortağı Uygulamasını Etkinleştir'i**seçin.
+3. Sol tarafta, **Web Hizmetleri** bölmesinden **Iş ortağı uygulamasını etkinleştir**' i seçin.
    
-    ![Ortak Uygulamasını Etkinleştir](./media/concur-provisioning-tutorial/ic721730.png "Ortak Uygulamasını Etkinleştir")
+    ![Iş ortağı uygulamasını etkinleştir](./media/concur-provisioning-tutorial/ic721730.png "Iş ortağı uygulamasını etkinleştir")
 
-4. Uygulamayı **Etkinleştir** listesinden **Azure Etkin Dizini'ni**seçin ve ardından **Etkinleştir'i**tıklatın.
+4. **Uygulamayı etkinleştir** listesinden **Azure Active Directory**' yi seçin ve ardından **Etkinleştir**' e tıklayın.
    
     ![Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
 
-5. **Eylemi Onayla** iletişim kutusunu kapatmak için **Evet'i** tıklatın.
+5. **Eylemi Onayla** iletişim kutusunu kapatmak için **Evet** ' i tıklatın.
    
     ![Eylemi Onayla](./media/concur-provisioning-tutorial/ic721732.png "Eylemi Onayla")
 
-6. Azure [portalında,](https://portal.azure.com)Tüm uygulamalar > **Azure Active Directory > Enterprise Apps'a** göz atın.
+6. [Azure portal](https://portal.azure.com) **Azure Active Directory > Enterprise Apps > tüm uygulamalar** bölümüne gidin.
 
-7. Tek oturum açma için Concur'u zaten yapılandırmışsanız, arama alanını kullanarak Concur örneğini arayın. Aksi takdirde, uygulama galerisinde **Ekle** ve **Concur'u** arayın'ı seçin. Arama sonuçlarından Concur'u seçin ve uygulama listenize ekleyin.
+7. Zaten çoklu oturum açma için Concur yapılandırdıysanız arama alanını kullanarak Concur örneğinizi arayın. Aksi takdirde, **Ekle** ' yi seçin ve uygulama galerisinde **Concur** araması yapın. Arama sonuçlarından Concur ' ı seçin ve uygulama listenize ekleyin.
 
-8. Concur örneğini seçin ve ardından **Sağlama** sekmesini seçin.
+8. Concur örneğinizi seçin ve **sağlama** sekmesini seçin.
 
-9. Sağlama **Modunu** **Otomatik**olarak ayarlayın. 
+9. **Sağlama modunu** **Otomatik**olarak ayarlayın. 
  
-    ![Sağlama](./media/concur-provisioning-tutorial/provisioning.png)
+    ![alınıyor](./media/concur-provisioning-tutorial/provisioning.png)
 
-10. Yönetici **Kimlik Bilgileri** bölümünün altında, Kullanıcı **adını** ve Concur yöneticinizin **parolasını** girin.
+10. **Yönetici kimlik bilgileri** bölümü altında, **Kullanıcı adını** ve Concur yöneticinizin **parolasını** girin.
 
-11. Azure portalında, Azure AD'nin Concur uygulamanıza bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Concur hesabınızın Team Admin izinlerine sahip olduğundan emin olun.
+11. Azure portal Azure AD 'nin Concur uygulamanıza bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Concur hesabınızın Takım Yöneticisi izinlerine sahip olduğundan emin olun.
 
-12. **Bildirim E-postaalanında** ödeme hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin.
+12. **Bildirim e-postası** alanında sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin.
 
-13. **Kaydet'i tıklatın.**
+13. Kaydet ' e tıklayın **.**
 
-14. Eşlemeler bölümünde, Aynı fikirde olmak **üzere Azure Etkin Dizin Kullanıcılarını Eşitle'yi seçin.**
+14. Eşlemeler bölümünde **Azure Active Directory Kullanıcıları Concur olarak eşitler** ' ı seçin.
 
-15. **Öznitelik Eşlemeleri** bölümünde, Azure AD'den Concur'a eşitlenen kullanıcı özniteliklerini gözden geçirin. **Eşleç** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için Concur'daki kullanıcı hesaplarıyla eşleşecek şekilde kullanılır. Herhangi bir değişiklik yapmak için Kaydet düğmesini seçin.
+15. **Öznitelik eşlemeleri** bölümünde, Azure AD 'Den Concur ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Concur içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için Kaydet düğmesini seçin.
 
-16. Aynı fikirde olmak için Azure AD sağlama hizmetini etkinleştirmek **On** **için, Ayarlar** bölümünde **KiSama Durumunu**
+16. Concur için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin
 
-17. **Kaydet'i tıklatın.**
+17. Kaydet ' e tıklayın **.**
 
-Artık bir test hesabı oluşturabilirsiniz. Hesabın Concur ile senkronize edildiğini doğrulamak için 20 dakika kadar bekleyin.
+Artık bir test hesabı oluşturabilirsiniz. Hesabın Concur ile eşitlendiğinden emin olmak için 20 dakikaya kadar bekleyin.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](tutorial-list.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-* [Tek Oturum Açma'yı Yapılandır](concur-tutorial.md)
+* [Çoklu oturum açmayı yapılandırma](concur-tutorial.md)
 

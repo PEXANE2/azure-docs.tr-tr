@@ -1,6 +1,6 @@
 ---
-title: HPC uygulamalarını ölçekleme - Azure Sanal Makineler | Microsoft Dokümanlar
-description: Azure VM'lerde HPC uygulamalarını nasıl ölçeklendireceklerini öğrenin.
+title: HPC uygulamalarını ölçeklendirme-Azure sanal makineleri | Microsoft Docs
+description: Azure VM 'lerinde HPC uygulamalarını ölçeklendirmeyi öğrenin.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -13,37 +13,37 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: 00d5b86c8cae01d342d55b7ad20ec59c3f7530bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67707833"
 ---
-# <a name="scaling-hpc-applications"></a>HPC uygulamalarını ölçekleme
+# <a name="scaling-hpc-applications"></a>HPC uygulamalarını ölçeklendirme
 
-Azure'daki HPC uygulamalarının en iyi ölçeklendirme ve ölçeklendirme performansı, belirli iş yükü için performans ayarı ve optimizasyon denemeleri gerektirir. Bu bölüm ve VM serisine özel sayfalar, uygulamalarınızı ölçekleme için genel kılavuz sunar.
+Azure üzerinde HPC uygulamalarının en iyi ölçeği artırma ve genişleme performansı, belirli bir iş yükü için performans ayarlama ve iyileştirme denemeleri gerektirir. Bu bölüm ve VM dizisine özgü sayfalar, uygulamalarınızın ölçeklendirilmesine yönelik genel rehberlik sunar.
 
 ## <a name="compiling-applications"></a>Uygulamaları derleme
 
-Gerekli olmasa da, uygun optimizasyon bayrakları ile uygulamaları derleme HB ve HC serisi VM'lerde en iyi ölçeklendirme performansı sağlar.
+Gerekli olmasa da, uygun iyileştirme bayraklarıyla uygulamaları derlemek, HB ve HC Serisi VM 'lerde en iyi genişleme performansını sağlar.
 
-### <a name="amd-optimizing-cc-compiler"></a>AMD Optimize C/C++ Derleyici
+### <a name="amd-optimizing-cc-compiler"></a>AMD Iyileştirmeli C/C++ derleyicisi
 
-AMD Optimize Edici C/C++ Derleyici (AOCC) derleyici sistemi, küresel optimizasyon, vektörelleştirme, yordamlar arası analizler, döngü dönüşümleri ve kod oluşturmayı içeren yüksek düzeyde gelişmiş optimizasyonlar, çoklu iş parçacığı ve işlemci desteği sunar. AOCC derleyici ikilileri, GNU C Library (glibc) sürüm 2.17 ve üzeri olan Linux sistemleri için uygundur. Derleyici paketi c/c++ derleyicisi (clang), fortran derleyicisi (FlANŞ) ve Clang (Dragon Egg) için fortran ön ucundan oluşur.
+AMD Iyileştirmeli C/C++ derleyicisi (AOCC) derleyicisi sistemi, genel iyileştirme, vektörleştirme, işlem tabanlı çözümlemeler, döngü dönüştürmeleri ve kod oluşturma içeren yüksek düzeyde gelişmiş iyileştirmeler, çok iş parçacıklı ve işlemci desteği sunar. AOCC derleyicisi ikili dosyaları, GNU C Kitaplığı (OCBC) sürüm 2,17 ve üzeri olan Linux sistemleri için uygundur. Derleyici paketi bir C/C++ derleyicisi (Clang), bir FORTRAN derleyicisi (FLANG) ve FORTRAN ön ucu ile Clang (Ejegg) oluşur.
 
 ### <a name="clang"></a>Clang
 
-Clang, ön işleme, ayrıştırma, optimizasyon, kod oluşturma, derleme ve bağlama işleme yi işleyen bir C, C++ve Objective-C derleyicisidir. Clang, `-march=znver1` AMD'nin Zen tabanlı x86 mimarisi için en iyi kod oluşturma ve atonlama sağlamak için bayrağı destekler.
+Clang, bir C, C++ ve amaç-C derleyicisi, ön işleme, ayrıştırma, iyileştirme, kod oluşturma, derleme ve bağlamayı işleme. Clang, `-march=znver1` AMD 'nin Zen tabanlı x86 mimarisi için en iyi kod oluşturmayı ve ayarlamayı etkinleştirme bayrağını destekler.
 
-### <a name="flang"></a>FLANŞ
+### <a name="flang"></a>FLANG
 
-FLANG derleyicisi, AOCC paketine yeni eklenen (Nisan 2018'de eklendi) ve geliştiricilerin indirip test etmesi için ön sürümdedir. Fortran 2008 dayanarak, AMD FlLANG GitHub sürümünühttps://github.com/flangcompiler/flang)genişletir ( . FlANS derleyicisi tüm Clang derleyici seçeneklerini ve flanş'a özel derleyici seçeneklerinin ek sayısını destekler.
+FLANG derleyicisi, AOCC Suite 'e son eklenen bir ektir (2018 Nisan 'a eklenmiştir) ve şu anda geliştiricilerin indirmesi ve test etmek için önceden yayın sürümündedir. FORTRAN 2008 temelinde, AMD, FLANG 'nin GitHub sürümünü genişletiyor (https://github.com/flangcompiler/flang). FLANG derleyicisi, tüm Clang derleyici seçeneklerini ve ek sayıda FLANG özel derleyici seçeneğini destekler.
 
 ### <a name="dragonegg"></a>DragonEgg
 
-DragonEgg BU LLVM projeile GCC optimize ve kod jeneratörleri yerine bir gcc eklentisi. AOCC ile birlikte gelen DragonEgg gcc-4.8.x ile çalışır, x86-32/x86-64 hedefleri için test edilmiş ve başarıyla çeşitli Linux platformlarında kullanılmıştır.
+DragonEgg, GCC 'nin en iyi hale icilerini ve kod oluşturucularını LLVM projesinden değiştiren bir GCC eklentisidir. AOCC ile birlikte gelen DragonEgg, GCC-4.8. x ile birlikte çalışarak, x86-32/x86-64 hedefleri için test edilmiştir ve bu, çeşitli Linux platformlarında başarıyla kullanıldı.
 
-GFortran, GCC GIMPLE ara gösterimini (IR) oluşturan ön işleme, ayrıştırma ve anlamsal analizden sorumlu Fortran programlarının gerçek ön sonudur. DragonEgg gnu eklentisi, GFortran derleme akışı na takılı. GNU eklenti API'sini uygular. Plugin mimarisi ile, DragonEgg derleme farklı aşamalarında sürüş, derleyici sürücü olur.  İndirme ve yükleme yönergelerini takip ettikten sonra Dragon Egg aşağıdakileri kullanarak çağrılabilir: 
+GFortran, GCC GIMPLE ara gösterimini (IR) oluşturan ön işleme, ayrıştırma ve anlam analizinden sorumlu olan FORTRAN programlarının gerçek ön ucunda. DragonEgg, GFortran derleme akışına takmak üzere bir GNU eklentisidir. GNU eklentisi API 'sini uygular. Eklenti mimarisi sayesinde, DragonEgg derleyici sürücüsü haline gelir ve bu da derlemenin farklı aşamalarını kullanır.  İndirme ve yükleme yönergelerinden sonra, aşağıdaki kullanılarak bir Ejpg çağrılabilir: 
 
 ```bash
 $ gfortran [gFortran flags] 
@@ -52,22 +52,22 @@ $ gfortran [gFortran flags]
    -c xyz.f90 $ clang -O3 -lgfortran -o xyz xyz.o $./xyz
 ```
    
-### <a name="pgi-compiler"></a>PGI Derleyici
-PGI Topluluk Sürümü ver. 17 AMD EPYC ile çalışmak için teyit edilebedilir. STREAM'in PGI tarafından derlenmiş bir sürümü platformun tam bellek bant genişliği sunar. Yeni Community Edition 18.10 (Kasım 2018) aynı şekilde iyi çalışması gerekir. Aşağıda Intel Derleyicisi ile en iyi şekilde derleyici için örnek CLI:
+### <a name="pgi-compiler"></a>PGI derleyicisi
+PGI Community Edition sürümü. 17, AMD EPYıC ile çalışmayı onayladı. STREAM 'in bir PGI derlenmiş sürümü, platformun tam bellek bant genişliğini sunar. Yeni Community Edition 18,10 (Kasım 2018) de aynı şekilde çalışır. Aşağıda Intel derleyicisi ile en iyi şekilde derleyiciye örnek CLı verilmiştir:
 
 ```bash
 pgcc $(OPTIMIZATIONS_PGI) $(STACK) -DSTREAM_ARRAY_SIZE=800000000 stream.c -o stream.pgi
 ```
 
-### <a name="intel-compiler"></a>Intel Derleyici
-Intel Derleyici ver. 18 AMD EPYC ile çalışmak için teyit edilir. Aşağıda Intel Derleyicisi ile en iyi şekilde derleyici için örnek CLI olduğunu.
+### <a name="intel-compiler"></a>Intel derleyicisi
+Intel derleyicisi ver. 18, AMD EPYıC ile çalışmayı onayladı. Aşağıda Intel derleyicisi ile en iyi şekilde derleyiciye örnek CLı verilmiştir.
 
 ```bash
 icc -o stream.intel stream.c -DSTATIC -DSTREAM_ARRAY_SIZE=800000000 -mcmodel=large -shared-intel -Ofast –qopenmp
 ```
 
-### <a name="gcc-compiler"></a>GCC Derleyici 
-HPC için AMD, GCC derleyicisi 7.3 veya daha yeni yi önerir. RHEL/CentOS 7.4 ile birlikte verilen 4.8.5 gibi eski sürümler önerilmez. GCC 7.3 ve daha yeni, HPL, HPCG ve DGEMM testlerinde önemli ölçüde daha yüksek performans sağlayacaktır.
+### <a name="gcc-compiler"></a>GCC derleyicisi 
+HPC için AMD, GCC derleyicisi 7,3 veya daha yeni bir sürümü önerir. RHEL/CentOS 7,4 ile 4.8.5 dahil olmak üzere eski sürümlerin kullanılması önerilmez. GCC 7,3 ve üzeri, HPL, HPCG ve DGEMM testlerinde önemli ölçüde daha yüksek performans sağlar.
 
 ```bash
 gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
@@ -75,15 +75,15 @@ gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 
 ## <a name="scaling-applications"></a>Ölçeklendirme uygulamaları 
 
-En iyi uygulama ölçekleme verimliliği, performansı ve tutarlılığı için aşağıdaki öneriler geçerlidir:
+En iyi uygulama ölçeklendirme verimliliği, performansı ve tutarlılığı için aşağıdaki öneriler geçerlidir:
 
-* Sıralı sabitleme yaklaşımını kullanarak 0-59 çekirdeklere pin işlemleri (otomatik denge yaklaşımının aksine). 
-* Numa/Core/HwThread tarafından bağlama varsayılan bağlama daha iyidir.
-* Karma paralel uygulamalar (OpenMP+MPI) için CCX başına 4 iş parçacığı ve 1 MPI sıralaması kullanın.
-* Saf MPI uygulamaları için, optimum performans için CCX başına 1-4 MPI sıralaması ile denemeler.
-* Bellek bant genişliğine karşı aşırı duyarlılığa sahip bazı uygulamalar, CCX başına daha az sayıda çekirdek kullanmaktan yararlanabilir. Bu uygulamalar için, CCX başına 3 veya 2 çekirdek kullanmak bellek bant genişliği çekişmelerini azaltabilir ve daha yüksek gerçek performans veya daha tutarlı ölçeklenebilirlik sağlayabilir. Özellikle, MPI Allreduce bundan yararlanabilir.
-* Önemli ölçüde daha büyük ölçekli çalışır için UD veya hibrit RC+UD aktarımları kullanılması önerilir. Birçok MPI kitaplıkları/çalışma zamanı kitaplıkları bunu dahili olarak yapar (UCX veya MVAPICH2 gibi). Büyük ölçekli çalıştırmalar için aktarım yapılandırmalarınızı kontrol edin.
+* Sıralı sabitleme yaklaşımını (bir otomatik dengeleme yaklaşımına karşılık olarak) kullanarak işlem çekirdekleri 0-59. 
+* NUMA/çekirdek/HwThread 'e göre bağlama varsayılan bağlamadan daha iyidir.
+* Karma paralel uygulamalar (OpenMP + MPı) için, 4 iş parçacığı ve CCX başına 1 MPı derecesi kullanın.
+* Saf MPı uygulamaları için en iyi performans için her CCX için 1-4 MPı derecelendirimiyle deneyin.
+* Bellek bant genişliğine karşı çok fazla duyarlılık içeren bazı uygulamalar, CCX başına azaltılmış sayıda çekirdek kullanmaktan faydalanabilir. Bu uygulamalar için, CCX başına 3 veya 2 çekirdek kullanılması, bellek bant genişliği çekişmesini azaltabilir ve gerçek zamanlı performansı veya daha tutarlı ölçeklenebilirlik elde edebilir. Özellikle de bu durum bundan faydalanabilir.
+* Önemli ölçüde daha büyük ölçek çalıştırmaları için, UD veya hibrit RC + UD taşımalarını kullanmanız önerilir. Birçok MPı Kitaplığı/çalışma zamanı kitaplığı bunu dahili olarak (UCX veya MVAPICH2 gibi) ister. Büyük ölçekli çalıştırmalar için aktarım yapılandırmalarınızı denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure'da [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.
+Azure 'da [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) hakkında daha fazla bilgi edinin.

@@ -13,10 +13,10 @@ ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: d376672336845958fb6434a78177f42aca938229
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70081961"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure Sanal Makinelerinde SQL Server'a Genel Bakış (Linux)
@@ -49,7 +49,7 @@ Kullanmaya başlamak için, gerekli olan sürüm ve işletim sisteminizle birlik
 
 Linux üzerinde SQL Server yapılandırdıktan sonra veritabanı altyapısı paketini ve gereksinimlerinize bağlı olarak çeşitli isteğe bağlı paketleri yüklersiniz. SQL Server için Linux sanal makine görüntüleri birçok paketi otomatik olarak sizin için yükler. Aşağıdaki tabloda her dağıtımda yüklenen paketler gösterilmektedir.
 
-| Dağıtım | [Veritabanı Altyapısı](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Araçlar](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server Agent](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Tam Metin Araması](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA eklentisi](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
+| Dağıtım | [Veritabanı Altyapısı](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Araçlar](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server Agent](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Tam metin arama](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA eklentisi](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
 | RHEL | ![evet](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![evet](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![evet](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![evet](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![evet](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![hayır](./media/sql-server-linux-virtual-machines-overview/no.png) |
 | SLES | ![evet](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![evet](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![evet](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![evet](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![hayır](./media/sql-server-linux-virtual-machines-overview/no.png) | ![hayır](./media/sql-server-linux-virtual-machines-overview/no.png) |
@@ -65,9 +65,9 @@ Linux üzerinde SQL Server yapılandırdıktan sonra veritabanı altyapısı pak
 
 * [Microsoft Azure Depolama'ya Giriş](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>Ağ Oluşturma
+### <a name="networking"></a>Ağ
 
-* [Sanal Ağa genel bakış](../../../virtual-network/virtual-networks-overview.md)
+* [Sanal ağa genel bakış](../../../virtual-network/virtual-networks-overview.md)
 * [Azure'da IP adresleri](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Azure portalda Tam Etki Alanı Adı oluşturma](../portal-create-fqdn.md)
 

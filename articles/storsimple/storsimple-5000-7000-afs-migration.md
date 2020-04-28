@@ -1,6 +1,6 @@
 ---
-title: StorSimple 5000-7000 serisindeki verileri Azure Dosya Eşitleme| Microsoft Dokümanlar
-description: StorSimple 5000/7000 serisindeki verilerin Azure Dosya Eşitlemi'ne (AFS) nasıl geçirilmeye devam edilebildiğini açıklar.
+title: StorSimple 5000-7000 serilerinden verileri Azure Dosya Eşitleme 'e geçirin | Microsoft Docs
+description: StorSimple 5000/7000 serisinden Azure Dosya Eşitleme (AFS) öğesine nasıl veri geçirileceği açıklanmaktadır.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,93 +14,93 @@ ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65150747"
 ---
-# <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Verileri StorSimple 5000-7000 serisinden Azure Dosya Eşitleme'ye geçirin
+# <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>StorSimple 5000-7000 serilerinden verileri Azure Dosya Eşitleme 'e geçirme
 
 > [!IMPORTANT]
-> 9 Temmuz 2019'da StorSimple 5000/7000 serisi destek (EOS) durumuna ulaşacak. StorSimple 5000/7000 serisi müşterilerin belgede açıklanan alternatiflerden birine geçiş yapmanızı öneririz.
+> 9 Temmuz 2019 ' de, StorSimple 5000/7000 Serisi destek (EOS) durumunun sonuna ulaşacaktır. StorSimple 5000/7000 Serisi müşterilerinin belgede açıklanan alternatifden birine geçiş yapmanızı öneririz.
 
-Veri aktarımı, verileri bir depolama konumundan diğerine taşıma işlemidir. Bu, bir kuruluşun geçerli verilerinin bir aygıttan başka bir aygıta tam bir kopyasını (tercihen etkin uygulamaları bozmadan veya devre dışı bırakmadan) yapmayı ve ardından tüm giriş/çıktı (G/Ç) etkinliğini yeni aygıta yönlendirmeyi gerektirir. 
+Veri geçişi, verileri bir depolama konumundan diğerine taşıma işlemidir. Bu, bir kuruluşun geçerli verilerinin bir cihazdan başka bir cihaza (tercihen etkin uygulamaları bozmadan veya devre dışı bırakmaksızın) ve ardından tüm giriş/çıkış (g/ç) etkinliğini yeni cihaza yeniden yönlendirmeden tam bir kopyasını yapmayı gerektirir. 
 
-StorSimple 5000 ve 7000 serisi depolama cihazları Temmuz 2019'da hizmete son verilecektir. Bu, Microsoft'un Temmuz 2019'dan sonra StorSimple 5000/7000 serisinin donanım ve yazılımLarını artık destekleyemeyeceği anlamına gelir. Bu aygıtları kullanan müşteriler StorSimple verilerini Azure'daki diğer karma depolama çözümlerine aktarmalıdır. Bu makale, StorSimple 5000/7000 serisi aygıtındaki verilerin Azure Dosya Eşitlemi'ne (AFS) geçişini kapsar.
+StorSimple 5000 ve 7000 Serisi depolama cihazları hizmet sonuna kadar, 2019. Bu, Microsoft 'un 2019 Haziran 'dan sonra StorSimple 5000/7000 Serisi için donanım ve yazılımı desteklemeye artık erişememesi anlamına gelir. Bu cihazları kullanan müşteriler, StorSimple verilerini Azure 'daki diğer karma depolama çözümlerine geçirmelidir. Bu makalede, StorSimple 5000/7000 Serisi cihazından Azure Dosya Eşitleme (AFS) sürümüne veri geçişi ele alınmaktadır.
 
 ## <a name="intended-audience"></a>Hedef kitle
 
-Bu makale, veri merkezinde StorSimple 5000/7000 serisi cihazların dağıtımı ve yönetiminden sorumlu bilgi teknolojisi (BT) uzmanları ve bilgi çalışanları için hazırlanmıştır. Dosya sunucusu iş yükleri için StorSimple aygıtlarını kullanan müşteriler (Windows Server ile) bu geçiş yolunu özellikle çekici bulabilir. Azure Dosya Eşitleme özelliklerinin kuruluşunuz için iyi çalıştığını düşünüyorsanız, bu makale StorSimple'dan bu çözümlere nasıl geçeceğinizi anlamanıza yardımcı olur.
+Bu makale, veri merkezi 'nde StorSimple 5000/7000 serisi cihazları dağıtmaktan ve yönetmekten sorumlu Bilişim Teknolojileri (BT) uzmanlarına ve bilgi çalışanlarına yöneliktir. Dosya sunucusu iş yükleri (Windows Server ile) için StorSimple cihazlarını kullanan müşteriler bu geçiş yolunu özellikle çekici bir şekilde bulabilir. Azure Dosya Eşitleme özelliklerinin kuruluşunuz için uygun olduğunu düşünüyorsanız, bu makale StorSimple 'tan bu çözümlere nasıl taşınacağını anlamanıza yardımcı olur.
 
-## <a name="migration-considerations"></a>Geçiş sırasında dikkat edilmesi gerekenler
+## <a name="migration-considerations"></a>Geçiş fikirleri
 
-Bu işlem, depolama alanı için StorSimple birimi kullanarak Windows dosya paylaşımını yapılandırmış müşteriler için çalışır. Verileri StorSimple 5000/7000'den Azure Dosya Eşitlemeye geçirmek, bu dosya paylaşım konumunu [Sunucu Bitiş Noktasına](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) dönüştürmeyi ve ardından yerel olarak bağlı olan sürücüleri yeni konumunuz olacak başka bir bitiş noktası olarak kullanmayı içerir. 
+Bu işlem, depolama için bir StorSimple birimi kullanarak Windows dosya paylaşımının yapılandırdığı müşteriler için geçerlidir. StorSimple 5000/7000 ' den Azure Dosya Eşitleme veri geçişi, bu dosya paylaşımının konumunu bir [sunucu uç noktasına](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) dönüştürmeyi ve ardından yerel olarak eklenmiş sürücüleri başka bir uç nokta olarak kullanmayı, daha sonra yeni konumunuz olacak şekilde kullanmanızı içerir. 
 
-AFS'ye taşınırken aşağıdaki noktalar göz önünde bulundurulmalıdır:
+AFS 'ye geçiş yaparken aşağıdaki noktaların göz önünde bulundurulmalıdır:
 
-1. Azure Dosyaları'nda şu anda 5 TB/paylaşım kısıtlaması vardır. Bu kısıtlama, birden çok Azure Dosyası paylaşımına yayılan verilerle Azure Dosya Eşitlemi kullanılarak aşılabilir. Daha fazla bilgi için [Azure Dosyaları dağıtımı için Veri büyüme modelini](https://docs.microsoft.com/azure/storage/files/storage-files-planning)gözden geçirin.
-2. Bu geçiş, veri kopyası şirket içi aygıttan yapıldığından, birincil veri kümesinin tamamını şirket içi aygıta indirir. Bu aktarıma uyum sağlamak için yeterli bant genişliğine sahip olduğundan emin olun.
-3. Bu işlem, zaten oluşturulmuş anlık görüntüleri korumaz. Yalnızca birincil verileri aktarır. İşlem, ilişkili bant genişliği şablonlarını veya yedekleme ilkelerini de korumaz. Veriler Azure Dosyası paylaşımında geçirildikten sonra yedekleme ilkelerini ayarlamak için [Azure Yedekleme'yi kullanın.](https://docs.microsoft.com/azure/backup/backup-azure-files)
-4. StorSimple birinci taraf donanımı sağlar. Ancak, Azure Dosyaları/Azure Dosya Eşitlemi ile kendi yerel Windows Server donanımınızı yerel önbellek olarak kullanırsınız. Seçtiğiniz veri kümesini yerel tutmak için yeterli depolama kapasitesine sahip olduğundan emin olmalısınız. Katmanlama ve gerekli boş alan hedefini ayarlama hakkında daha fazla bilgi için Azure [Dosya Eşitlemi'ni dağıtırken sunucu bitiş noktasının nasıl oluşturulturolduğunu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)gözden geçirin. 
-5. StorSimple'dan değişiklik gösterince [Azure Dosya Eşitlemi fiyatlandırmasını](https://azure.microsoft.com/pricing/details/storage/files/) gözden geçirin. AFS StorSimple gibi çoğaltma ve sıkıştırma yok.
+1. Azure dosyaları şu anda 5 TB/Share kısıtlamasına sahiptir. Bu kısıtlama, birden çok Azure dosya paylaşımı arasında veri yayarak Azure Dosya Eşitleme kullanarak aşılabilecek. Daha fazla bilgi için [Azure dosyaları dağıtımı Için veri büyüme modelini](https://docs.microsoft.com/azure/storage/files/storage-files-planning)inceleyin.
+2. Bu geçiş, şirket içi cihazdan veri kopyası yapıldığından, tüm birincil veri kümesini şirket içi bir cihaza indirir. Bu aktarıma uyum sağlamak için yeterli bant genişliğine sahip olduğunuzdan emin olun.
+3. Bu işlem, zaten oluşturulmuş olan anlık görüntüleri korumaz. Yalnızca birincil verileri geçirir. İşlem ayrıca ilişkili bant genişliği şablonlarını veya yedekleme ilkelerini korumaz. Azure dosya paylaşımında veriler geçirildikten sonra yedekleme ilkelerini ayarlamak için [Azure Backup kullanın](https://docs.microsoft.com/azure/backup/backup-azure-files) .
+4. StorSimple birinci taraf donanımlar sağlar. Ancak, Azure dosyaları/Azure Dosya Eşitleme ile yerel önbellek olarak kendi yerel Windows Server donanımınızı kullanıyorsunuz. Seçtiğiniz yerel veri kümesini tutmak için yeterli depolama kapasitesine sahip olduğunuzdan emin olmanız gerekir. Katmanlama ve gereken boş alan hedefini ayarlama hakkında daha fazla bilgi için, [Azure dosya eşitleme dağıtımı sırasında sunucu uç noktası oluşturma](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal)konusunu inceleyin. 
+5. StorSimple 'tan farklı olduğundan [Azure dosya eşitleme için fiyatlandırmayı](https://azure.microsoft.com/pricing/details/storage/files/) gözden geçirin. AFS, StorSimple gibi yinelenenleri kaldırma ve sıkıştırmaya sahip değildir.
 
-## <a name="migration-prerequisites"></a>Geçiş ön koşulları
+## <a name="migration-prerequisites"></a>Geçiş önkoşulları
 
-Burada, eski 5000 veya 7000 serisi aygıtınız için Azure Dosya Eşitle'ye geçiş ön koşulları bulacaksınız. Başlamadan önce şunları yaptığınızdan emin olun:
+Burada, Azure Dosya Eşitleme için eski 5000 veya 7000 Serisi cihazınız için geçiş önkoşullarını bulacaksınız. Başlamadan önce şunları sağlayın:
 
-- Yazılım sürümü v2.1.1.518 veya daha sonra çalışan bir StorSimple 5000/7000 serisi cihaza erişim. Önceki sürümler desteklenmez. StorSimple cihazınızın web Kullanıcı Arabirimi'nin sağ üst köşesinde çalışan yazılım sürümünü görüntülemeniz gerekir.  
-    Cihazınız v2.1.1.518 çalışmıyorsa, lütfen sisteminizi gerekli minimum sürüme yükseltin. Ayrıntılı talimatlar için [sisteminizi v2.1.1.518'e yükseltin'e](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)bakın.
-- Kaynak aygıtta çalışan etkin yedekleme işlerini denetleyin. Buna StorSimple Veri Koruma Konsolu ana bilgisayardaki işler de dahildir. Geçerli işlerin tamamlanmasını bekleyin. 
-- StorSimple 5000-7000 serisi cihazınıza bağlı bir Windows Server ana bilgisayarına erişim. Ana bilgisayar, [Azure Dosya Eşitleme birlikte çalışabilirliğinde](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)açıklandığı gibi desteklenen bir Windows Server sürümünü çalıştırıyor olmalıdır.
-- StorBasit birimler ana bilgisayara monte edilir ve dosya paylaşımları içerir.
-- Ana bilgisayar, yerel olarak önbelleğe alınan verilerinizi tutmak için yeterli yerel depolama alanına sahiptir.
-- Azure Dosya Eşitlemeyi dağıtmak için kullanacağınız Azure aboneliğine sahip düzeyinde erişim. Sahip veya yönetici düzeyinde izinleriniz yoksa eşitleme grubunuz için bir bulut bitiş noktası oluştururken sorunlarla karşılaşabilirsiniz.
-- Eşitlemek istediğiniz bir Azure Dosya Paylaşımı ile genel amaçlı bir [v2 depolama hesabına](https://docs.microsoft.com/azure/storage/common/storage-account-overview) erişim. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
-  - Azure Dosya Paylaşımı Nasıl [Oluşturulur?](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)
+- Yazılım sürümü v 2.1.1.518 veya üstünü çalıştıran bir StorSimple 5000/7000 Serisi cihaza erişim. Önceki sürümler desteklenmez. StorSimple cihazınızın Web Kullanıcı arabiriminin sağ üst köşesinde, çalıştıran yazılım sürümü görüntülenmelidir.  
+    Cihazınız v 2.1.1.518 çalıştırıyorsa, lütfen sisteminizi gerekli en düşük sürüme yükseltin. Ayrıntılı yönergeler için [sisteminizi v 2.1.1.518 'ye yükseltme](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)bölümüne bakın.
+- Kaynak cihazda çalışan tüm etkin yedekleme işlerini denetleyin. Bu, StorSimple veri koruma konsolu ana bilgisayarındaki işleri içerir. Geçerli işlerin tamamlanmasını bekleyin. 
+- StorSimple 5000-7000 Serisi cihazınıza bağlı bir Windows Server konağına erişin. Konağın [Azure dosya eşitleme birlikte çalışabilirlik](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)bölümünde açıklandığı gibi desteklenen bir Windows Server sürümü çalıştırması gerekir.
+- StorSimple birimleri konağa bağlanır ve dosya paylaşımları içerir.
+- Konağın yerel olarak önbelleğe alınmış verilerinizi tutmak için yeterli yerel depolama alanı vardır.
+- Azure Dosya Eşitleme dağıtmak için kullanacağınız Azure aboneliğine sahip düzeyi erişimi. Sahip veya yönetici düzeyi izinleriniz yoksa, eşitleme grubunuz için bir bulut uç noktası oluştururken sorunlarla karşılaşabilirsiniz.
+- Eşitlemek istediğiniz bir Azure dosya paylaşımıyla [genel amaçlı v2 depolama hesabına](https://docs.microsoft.com/azure/storage/common/storage-account-overview) erişim. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+  - [Azure dosya paylaşımının](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)nasıl oluşturulacağı.
 
 ## <a name="migration-process"></a>Geçiş süreci
 
-StorSimple 5000-7000'den AFS'ye veri aktarmak iki aşamalı bir işlemdir:
-1.  StorSimple birimlerinin Azure Dosyaları paylaşımına monte edildiği şirket içi dosya sunucusundaki verileri çoğaltın.  Çoğaltma, yüklediğiniz bir AFS aracısı üzerinden yapılır.
-2.  StorSimple cihazının bağlantısını kesin. Yerel diskler daha sonra yerel önbellek olarak hareket eder.
+StorSimple 5000-7000 ' den AFS 'ye veri geçirme iki adımlı bir işlemdir:
+1.  StorSimple birimlerinin bir Azure dosya paylaşımında takılı olduğu şirket içi dosya sunucusundan verileri çoğaltın.  Çoğaltma, yüklediğiniz bir AFS Aracısı aracılığıyla yapılır.
+2.  StorSimple cihazını sökün. Yerel diskler daha sonra yerel önbellek işlevi görür.
 
 ### <a name="migration-steps"></a>Geçiş adımları
 
-StorSimple birimlerinde yapılandırılan Windows dosya paylaşımını Azure Dosya Eşitleme paylaşımına geçirmek için aşağıdaki adımları gerçekleştirin. 
-1.  Bu adımları, StorSimple birimlerinin monte edildiği aynı Windows Server ana bilgisayarda gerçekleştirin veya farklı bir sistem kullanın. 
-    - [Windows Server'ı Azure Dosya Eşitlemi ile kullanmaya hazırlayın.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#prepare-windows-server-to-use-with-azure-file-sync)
-    - [Azure Dosya Eşitleme aracısını yükleyin.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#install-the-azure-file-sync-agent)
-    - [Depolama Eşitleme hizmetini dağıtın.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service) 
-    - [Windows Server'ı Depolama Eşitleme hizmetiyle kaydedin.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service) 
-    - [Eşitleme grubu ve bulut bitiş noktası oluşturun.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint) Ana bilgisayardan geçirilmesi gereken her Windows dosya paylaşımı için eşitleme gruplarının yapılması gerekir.
-    - [Sunucu bitiş noktası oluşturun.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint) Yolu, dosya paylaşım verilerinizi içeren StorSimple biriminin yolu olarak belirtin. Örneğin, StorSimple birimi sürücüise `J`ve verileriniz bulunursa, `J:/<myafsshare>`bu yolu sunucu bitiş noktası olarak ekleyin. **Seviyeyi** Devre **Dışı**Olarak Bırakın.
-2.  Dosya sunucusu eşitlemeyi tamamlanana kadar bekleyin. Belirli bir eşitleme grubundaki her sunucu için şunları unutmayın:
-    - Hem yükleme hem de karşıdan yükleme için Son Deneme Eşitleme için zaman damgaları yenidir.
-    - Durum hem yükleme hem de indirme için yeşildir.
-    - **Eşitleme Etkinliği,** eşitlemek için çok az dosya kaldığını veya hiç dosya kalmadığını gösterir.
-    - **Eşitlemeyen Dosyalar** hem yükleme hem de indirme için 0'dır.
-    Sunucu eşitlemeyi tamamlandığında daha fazla bilgi için [Azure Dosya Eşitlemeyi Sorun Giderme'ye](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#how-do-i-know-if-my-servers-are-in-sync-with-each-other)gidin. Eşitleme, veri boyutunuza ve bant genişliğinize bağlı olarak birkaç saat ile günler arasında sürebilir. Eşitleme tamamlandıktan sonra, tüm verileriniz Güvenli bir şekilde Azure Dosya Paylaşımı'nda dır. 
-3.  StorSimple birimlerindeki paylaşımlara gidin. Bir paylaşım seçin, sağ tıklayın ve **Özellikler'i**seçin. **Güvenlik**altındaki paylaşım izinlerine dikkat edin. Bu izinlerin sonraki adımda yeni paya el ile uygulanması gerekir.
-4.  Aynı Windows Server ana bilgisayarını mı yoksa farklı bir ana bilgisayar mı kullandığınıza bağlı olarak, sonraki adımlar farklı olacaktır.
+StorSimple birimlerinde yapılandırılmış Windows dosya paylaşımının Azure Dosya Eşitleme bir paylaşıma geçirilmesi için aşağıdaki adımları gerçekleştirin. 
+1.  Bu adımları, StorSimple birimlerinin bağlı olduğu Windows Server ana bilgisayarında gerçekleştirin veya farklı bir sistem kullanın. 
+    - [Windows Server 'ı Azure dosya eşitleme ile kullanılacak şekilde hazırlayın](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#prepare-windows-server-to-use-with-azure-file-sync).
+    - [Azure dosya eşitleme aracısını yükler](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#install-the-azure-file-sync-agent).
+    - [Depolama eşitleme hizmeti 'Ni dağıtın](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service). 
+    - [Windows Server 'ı depolama eşitleme hizmeti Ile kaydedin](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service). 
+    - [Bir eşitleme grubu ve bir bulut uç noktası oluşturun](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint). Konaktan geçirilmesi gereken her Windows dosya paylaşımında eşitleme gruplarının yapılması gerekir.
+    - [Sunucu uç noktası oluşturun](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). Dosya paylaşma verilerinizi içeren StorSimple biriminin yolu olarak yolunu belirtin. Örneğin, StorSimple birimi sürücü `J`ise ve verileriniz ' de `J:/<myafsshare>`yer alıyorsa, bu yolu sunucu uç noktası olarak ekleyin. **Katmanlamayı** **devre dışı**olarak bırakın.
+2.  Dosya sunucusu eşitlemesi tamamlanana kadar bekleyin. Belirli bir eşitleme grubundaki her bir sunucu için şunları yaptığınızdan emin olun:
+    - Hem karşıya yükleme hem de indirme için denenen son eşitlemeye ilişkin zaman damgaları son tarih.
+    - Durum hem karşıya yükleme hem de indirme için yeşil olur.
+    - **Eşitleme etkinliği** , eşitlenmek üzere kalan çok az veya hiç dosya gösterir.
+    - **Dosya eşitleme** , hem karşıya yükleme hem de indirme için 0 ' dır.
+    Sunucu eşitlemesi tamamlandığında hakkında daha fazla bilgi için [Azure dosya eşitleme sorun giderme](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#how-do-i-know-if-my-servers-are-in-sync-with-each-other)bölümüne gidin. Eşitleme, veri boyutunuza ve bant genişliğine bağlı olarak birkaç saat ile gün sürebilir. Eşitleme tamamlandıktan sonra tüm verileriniz Azure dosya paylaşımında güvenli bir şekilde gerçekleştirilir. 
+3.  StorSimple birimlerindeki paylaşımlara gidin. Bir paylaşma seçin, sağ tıklayın ve **Özellikler**' i seçin. **Güvenlik**altındaki paylaşma izinlerini aklınızda yapın. Sonraki adımda bu izinlerin yeni paylaşıma el ile uygulanması gerekir.
+4.  Aynı Windows Server konağını mı yoksa farklı bir tane mi kullandığınıza bağlı olarak, sonraki adımlar farklı olacaktır.
 
-    Farklı bir Windows Server ana bilgisayar kullanıyorsanız bu adımı atlayın ve bir sonraki adıma geçin. AFS için aynı Windows Dosya Sunucusu'nu kullanıyorsanız, şimdi birkaç dakikalık bir kapalı kalma süresi yle karşılaşırsınız. 
-    - **Kapalı kalma süresi başlar** - *Adım 1F'de*oluşturduğunuz sunucu bitiş noktasını silin. 
-    - Verilerin ileriye dönük olarak ikamet etmesini istediğiniz yol ile yeni bir sunucu bitiş noktası oluşturun.
-    - Sunucu bitiş noktası Sağlıklı olarak gösterdiğinde (bu işlem birkaç dakika sürebilir), verileri bu yeni konumda görürsünüz. Artık Windows Server ana bilgisayarınızı bu yeni konumdan dosyalara hizmet edecek şekilde yapılandırabilirsiniz. - **Kapalı kalma süresi sona erer.**
-5.  Azure Dosya Eşitlemesi için başka bir Windows Dosya Sunucusu kullanıyorsanız, herhangi bir kapalı kalma süresi yaşamazsınız. 
-    - StorSimple aygıtı yerine önbellek olarak kullanmaya hazır olduğunuz yerel depolama yolunu içeren başka bir sunucu bitiş noktası ekleyin. 
-    - Birkaç dakika içinde yeni sunucuda dosyaları görmek mümkün olacak. StorSimple cihazınızdan istediğiniz zaman ana bilgisayardaki bu yeni konuma geçiş yapmakta özgürsunuz.
+    Farklı bir Windows Server Konağı kullanıyorsanız, bu adımı atlayın ve sonraki adıma gidin. AFS için aynı Windows dosya sunucusunu kullanıyorsanız, artık birkaç dakika kapalı kalma süresine sahip olursunuz. 
+    - **Kapalı kalma süresi başlar** - *Adım 1f*içinde oluşturduğunuz sunucu uç noktasını silin. 
+    - Verilerin ileri doğru olmasını istediğiniz yolu içeren yeni bir sunucu uç noktası oluşturun.
+    - Sunucu uç noktası sağlıklı olarak gösterildikten sonra (Bu işlem birkaç dakika sürebilir), bu yeni konumdaki verileri görürsünüz. Artık Windows Server konağını, dosyaları bu yeni konumdan sunacak şekilde yapılandırabilirsiniz. - **Kapalı kalma süresi sona erer**.
+5.  Azure Dosya Eşitleme için başka bir Windows dosya sunucusu kullanıyorsanız, herhangi bir kesinti yaşanmaz. 
+    - StorSimple cihazı yerine önbellek olarak kullanmaya hazırlanmakta olduğunuz yerel depolamanın yolunu içeren başka bir sunucu uç noktası ekleyin. 
+    - Yeni sunucudaki dosyaları birkaç dakika içinde görebileceksiniz. StorSimple cihazınızdan herhangi bir zamanda bu yeni konuma geçiş yapmak ücretsizdir.
 
     > [!TIP] 
-    > Bu yeni dosya paylaşımını, kesintiyi en aza indirmek için, değiştirdiği yle aynı ada ve aynı yolla yapılandırmayı düşünün. DFS-N kullanıyorsanız, bu yapılandırmada değişiklik yapmanızı gerektirebilir.
-6.  *3. adımda*belirtildiği gibi paylaşım izinlerini yeniden yapılandırın.
+    > Bu yeni dosya paylaşımının aynı ada ve aynı yol ile aynı şekilde yapılandırılmasını, kesintiyi en aza indirmek için göz önünde bulundurun. DFS-N kullanılıyorsa, bu, yapılandırmada değişiklik yapmanız gerekebilir.
+6.  *Adım 3*' te belirtilen paylaşım izinlerini yeniden yapılandırın.
 
-Veri geçişi sırasında herhangi bir sorunla karşılaşırsanız, lütfen [Microsoft Destek'e başvurun.](storsimple-8000-contact-microsoft-support.md) 
+Veri geçişi sırasında herhangi bir sorunla karşılaşırsanız lütfen [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md). 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-AFS sizin için doğru çözüm değilse, [StorSimple 5000-7000 serisindeki verileri 8000 serisi bir cihaza](storsimple-8000-migrate-from-5000-7000.md)nasıl geçirin.
+AFS sizin için doğru çözüm değilse, [StorSimple 5000-7000 serilerinden bir 8000 serisi cihaza veri geçirmeyi](storsimple-8000-migrate-from-5000-7000.md)öğrenin.
 

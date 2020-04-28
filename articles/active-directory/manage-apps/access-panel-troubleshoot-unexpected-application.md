@@ -1,6 +1,6 @@
 ---
-title: Uygulamalar erişim panelinde nasıl görünür | Microsoft Dokümanlar
-description: Access Paneli'nde bir uygulamanın neden göründüğünü giderme
+title: Uygulamalar erişim panelinde nasıl görünür? | Microsoft Docs
+description: Uygulamanın erişim panelinde neden görüneceği sorunlarını giderme
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,141 +17,141 @@ ms.author: mimart
 ms.reviewr: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa8ea75cc7fda05326c802c25a91d025b66b5ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65784406"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>Uygulamalar erişim panelinde nasıl görünür?
 
-Erişim Paneli, Azure Etkin Dizini'nde (Azure AD) çalışan bir kullanıcının Azure AD yöneticisinin kendilerine erişim izni verdiği bulut tabanlı uygulamaları görüntülemesini ve başlatmasını sağlayan web tabanlı bir portaldır. Bu uygulamalar Azure AD portalında kullanıcı adına yapılandırılır. Yönetici, uygulamayı doğrudan kullanıcıya veya kullanıcının kullanıcının Access Paneli'nde görünmesine neden olan bir gruba sağlayabilir.
+Erişim paneli, Azure Active Directory (Azure AD) ' de iş veya okul hesabı olan bir kullanıcının Azure AD yöneticisinin erişim izni verdiği bulut tabanlı uygulamaları görüntülemesini ve başlatmasını sağlayan Web tabanlı bir portaldır. Bu uygulamalar, Azure AD portalındaki Kullanıcı adına yapılandırılır. Yönetici, uygulamayı kullanıcıya doğrudan veya kullanıcının erişim panelinde görünen uygulamanın bir parçası olan bir gruba sağlayabilir.
 
-## <a name="general-issues-to-check-first"></a>Önce kontrol etmek için genel konular
+## <a name="general-issues-to-check-first"></a>Önce denetlenecek genel sorunlar
 
--   Bir uygulama kullanıcının üyesi olduğu bir kullanıcıdan veya gruptan kaldırıldıysa, uygulamanın kaldırılıp kaldırılıp kaldırılıp kaldırılmadı sını görmek için birkaç dakika sonra kullanıcının Access Paneli'nde oturum açma ve çıkma yapmayı deneyin.
+-   Bir uygulama, Kullanıcı üyesi olan bir kullanıcı veya gruptan kaldırılmışsa, uygulamanın kaldırılıp kaldırılmadığını görmek için birkaç dakika sonra kullanıcının erişim paneline yeniden oturum açmayı deneyin.
 
--   Bir lisans bir kullanıcıdan veya gruptan kaldırıldıysa, kullanıcı bu kullanıcının üyesiyse, yapılacak değişikliklerin boyutuna ve karmaşıklığına bağlı olarak bu işlem uzun sürebilir. Erişim Paneli'nde oturum açmadan önce ek süre bekleyin.
+-   Bir kullanıcı veya gruptan bir lisans kaldırılmışsa, Kullanıcı bu grubun bir üyesi olduğundan, değişikliklerin yapılabilmesi için grubun boyutuna ve karmaşıklığına bağlı olarak bu işlem uzun zaman alabilir. Erişim panelinde oturum açmadan önce ek zamana izin verin.
 
 ## <a name="problems-related-to-assigning-applications-to-users"></a>Kullanıcılara uygulama atama ile ilgili sorunlar
 
-Bir kullanıcı, daha önce atanmış olduğundan, Access Paneli'nde bir uygulama görüyor olabilir. Aşağıdakileri denetlemenin bazı yolları şunlardır:
+Bir Kullanıcı daha önce kendisine atanmış olduğu için erişim panelinde bir uygulama görüyor olabilir. Aşağıda denetlenecek bazı yollar verilmiştir:
 
--   [Uygulamaya bir kullanıcıatanıp atanmadı denetleme](#check-if-a-user-is-assigned-to-the-application)
+-   [Bir kullanıcının uygulamaya atanıp atanmadığını denetleyin](#check-if-a-user-is-assigned-to-the-application)
 
--   [Kullanıcının uygulamayla ilgili bir lisans altında olup olmadığını denetleme](#check-if-a-user-is-under-a-license-related-to-the-application)
-
-
-### <a name="check-if-a-user-is-assigned-to-the-application"></a>Uygulamaya bir kullanıcıatanıp atanmadı denetleme
-
-Uygulamaya bir kullanıcı atanıp atanmadı kontrol etmek için aşağıdaki adımları izleyin:
-
-1. Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
-
-2. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
-
-3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
-
-4. Azure Active Directory sol navigasyon menüsünden **Kurumsal Uygulamalar'ı** tıklatın.
-
-5. **tüm uygulamalarınızın** listesini görüntülemek için Tüm Uygulamalar'ı tıklatın.
-
-6. Söz konusu uygulamanın adını **arayın.**
-
-7. **Kullanıcılar ve gruplar'ı**tıklatın.
-
-8. Kullanıcınızın uygulamaya atanıp atanmadı olup olmadığını kontrol edin.
-
-   * Kullanıcıyı uygulamadan kaldırmak istiyorsanız, **kullanıcının satırını tıklatın** ve **sil'i**seçin.
-
-### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>Kullanıcının uygulamayla ilgili bir lisans altında olup olmadığını denetleme
-
-Bir kullanıcının atanmış lisanslarını denetlemek için aşağıdaki adımları izleyin:
-
-1. Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
-
-2. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
-
-3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
-
-4. gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
-
-5. **tüm kullanıcıları**tıklatın.
-
-6. İlgilendiğiniz kullanıcıyı **arayın** ve seçmek için **satırı tıklatın.**
-
-7. kullanıcının şu anda hangi lisansları atadığını görmek için **Lisanslar'ı** tıklatın.
-
-   * Kullanıcı bir Office lisansına atanmışsa, bu, Birinci Taraf Office uygulamalarının kullanıcının Erişim Paneli'nde görünmesini sağlar.
-
-## <a name="problems-related-to-assigning-applications-to-groups"></a>Gruplara uygulama atanması ile ilgili sorunlar
-
-Kullanıcı, uygulamaya atanan bir grubun parçası olduğundan, Access Paneli'nde bir uygulama görüyor olabilir. Aşağıdakileri denetlemenin bazı yolları şunlardır:
-
--   [Kullanıcının grup üyeliklerini kontrol edin](#check-a-users-group-memberships)
-
--   [Kullanıcının lisansa atanmış bir grubun üyesi olup olmadığını denetleme](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
-
-### <a name="check-a-users-group-memberships"></a>Kullanıcının grup üyeliklerini kontrol edin
-
-Bir grubun üyeliğini denetlemek için aşağıdaki adımları izleyin:
-
-1. Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
-
-2. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
-
-3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
-
-4. gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
-
-5. **tüm kullanıcıları**tıklatın.
-
-6. İlgilendiğiniz kullanıcıyı **arayın** ve seçmek için **satırı tıklatın.**
-
-7. **Gruplar'ı tıklatın.**
-
-8. Kullanıcınızın uygulamaya atanan bir Grubun parçası olup olmadığını kontrol edin.
-
-   * Kullanıcıyı gruptan kaldırmak istiyorsanız, grubun **satırını tıklatın** ve sil'i seçin.
-
-### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>Kullanıcının lisansa atanmış bir grubun üyesi olup olmadığını denetleme
-
-1. Azure [**portalını**](https://portal.azure.com/) açın ve Global Administrator olarak oturum **açın.**
-
-2. Ana sol gezinme menüsünün üst kısmındaki **Tüm hizmetleri** tıklatarak Azure **Etkin Dizin Uzantısı'nı** açın.
-
-3. Filtre arama kutusuna **"Azure Etkin Dizini"** yazın ve **Azure Etkin Dizin** öğesini seçin.
-
-4. gezinti menüsünde **Kullanıcılar ve gruplar'ı** tıklatın.
-
-5. **tüm kullanıcıları**tıklatın.
-
-6. İlgilendiğiniz kullanıcıyı **arayın** ve seçmek için **satırı tıklatın.**
-
-7. **Gruplar'ı tıklatın.**
-
-8. belirli bir grubun satırını tıklatın.
-
-9. grubun hangi lisansları ona atadığını görmek için **Lisanslar'ı** tıklatın.
-
-   * Grup bir Office lisansına atanmışsa, bu, bazı Birinci Taraf Office uygulamalarının kullanıcının Erişim Paneli'nde görünmesini sağlayabilir.
+-   [Kullanıcının uygulamayla ilgili bir lisansın altında olup olmadığını denetleyin](#check-if-a-user-is-under-a-license-related-to-the-application)
 
 
-## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Bu sorun giderme adımları sorunu çözmüyorsa
+### <a name="check-if-a-user-is-assigned-to-the-application"></a>Bir kullanıcının uygulamaya atanıp atanmadığını denetleyin
 
-varsa aşağıdaki bilgileri içeren bir destek bileti açın:
+Bir kullanıcının uygulamaya atanıp atanmadığını denetlemek için şu adımları izleyin:
 
--   Korelasyon hatası kimliği
+1. [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** olarak oturum açın.
 
--   UPN (kullanıcı e-posta adresi)
+2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
+
+3. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
+
+4. Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' a tıklayın.
+
+5. tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' a tıklayın.
+
+6. Söz konusu uygulamanın adını **arayın** .
+
+7. **Kullanıcılar ve gruplar**' a tıklayın.
+
+8. Kullanıcının uygulamaya atanıp atanmadığından emin olun.
+
+   * Kullanıcıyı uygulamadan kaldırmak istiyorsanız, kullanıcının satırına tıklayın ve **Sil** **' i** seçin.
+
+### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>Kullanıcının uygulamayla ilgili bir lisansın altında olup olmadığını denetleyin
+
+Bir kullanıcının atanmış lisanslarını denetlemek için şu adımları izleyin:
+
+1. [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** olarak oturum açın.
+
+2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
+
+3. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
+
+4. Gezinti menüsünde **Kullanıcılar ve gruplar** ' a tıklayın.
+
+5. **tüm kullanıcılar**' a tıklayın.
+
+6. İlgilendiğiniz kullanıcıyı **arayın** ve seçilecek **satıra tıklayın** .
+
+7. kullanıcının şu anda hangi lisansları atandığını görmek için **lisanslar** ' a tıklayın.
+
+   * Kullanıcı bir Office lisansına atanırsa, bu, birinci taraf Office uygulamalarının kullanıcının erişim panelinde görünmesini sağlar.
+
+## <a name="problems-related-to-assigning-applications-to-groups"></a>Gruplara uygulama atama ile ilgili sorunlar
+
+Bir Kullanıcı, uygulamanın atandığı bir grubun parçası olduklarından, erişim panelinde bir uygulama görüyor olabilir. Aşağıda denetlenecek bazı yollar verilmiştir:
+
+-   [Kullanıcının grup üyeliklerini denetleme](#check-a-users-group-memberships)
+
+-   [Kullanıcının bir lisansa atanan bir grubun üyesi olup olmadığını denetleyin](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
+
+### <a name="check-a-users-group-memberships"></a>Kullanıcının grup üyeliklerini denetleme
+
+Bir grubun üyeliğini denetlemek için şu adımları izleyin:
+
+1. [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** olarak oturum açın.
+
+2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
+
+3. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
+
+4. Gezinti menüsünde **Kullanıcılar ve gruplar** ' a tıklayın.
+
+5. **tüm kullanıcılar**' a tıklayın.
+
+6. İlgilendiğiniz kullanıcıyı **arayın** ve seçilecek **satıra tıklayın** .
+
+7. Gruplar ' a tıklayın **.**
+
+8. Kullanıcının uygulamaya atanan bir grubun parçası olup olmadığını denetleyin.
+
+   * Kullanıcıyı gruptan kaldırmak istiyorsanız, grubun **satırına tıklayın ve Sil ' i** seçin.
+
+### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>Kullanıcının bir lisansa atanan bir grubun üyesi olup olmadığını denetleyin
+
+1. [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** olarak oturum açın.
+
+2. Sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i tıklatarak **Azure Active Directory uzantısını** açın.
+
+3. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
+
+4. Gezinti menüsünde **Kullanıcılar ve gruplar** ' a tıklayın.
+
+5. **tüm kullanıcılar**' a tıklayın.
+
+6. İlgilendiğiniz kullanıcıyı **arayın** ve seçilecek **satıra tıklayın** .
+
+7. Gruplar ' a tıklayın **.**
+
+8. belirli bir grubun satırına tıklayın.
+
+9. grubun hangi lisansa atandığını görmek için **lisanslar** ' a tıklayın.
+
+   * Grup bir Office lisansına atanırsa, bu, bazı birinci taraf Office uygulamalarının kullanıcının erişim panelinde görünmesini sağlayabilir.
+
+
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Bu sorun giderme adımları sorunu gidermezse
+
+varsa, aşağıdaki bilgilerle bir destek bileti açın:
+
+-   Bağıntı hata KIMLIĞI
+
+-   UPN (Kullanıcı e-posta adresi)
 
 -   Kiracı Kimliği
 
 -   Tarayıcı türü
 
--   Hata oluşur sırasında saat dilimi ve saat/zaman dilimi oluşur
+-   Hata sırasında saat dilimi ve zaman/zaman dilimi
 
--   Kemancı izleri
+-   Fiddler izlemeleri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Uygulamaları Azure Active Directory ile yönetme](what-is-application-management.md)

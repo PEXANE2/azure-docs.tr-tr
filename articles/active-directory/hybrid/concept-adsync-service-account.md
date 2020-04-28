@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: ADSync hizmet hesabı | Microsoft Dokümanlar'
-description: Bu konu, ADSync hizmet hesabını açıklar ve hesapla ilgili en iyi uygulamaları sağlar.
+title: 'Azure AD Connect: ADSync hizmet hesabı | Microsoft Docs'
+description: Bu konu, ADSync hizmet hesabını açıklar ve firmayla ilgili en iyi yöntemleri sağlar.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,62 +16,62 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f228da5afc5998d8fa59ce2d720cec4c9f955b67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67478725"
 ---
 # <a name="adsync-service-account"></a>AD Eşitleme hizmeti hesabı
-Azure AD Connect, Active Directory ve Azure Active Directory arasında eşitleme düzenleyen bir şirket içi hizmet yükler.  Microsoft Azure AD Sync eşitleme hizmeti (ADSync), şirket içi ortamınızdaki bir sunucuda çalışır.  Hizmetkimlik bilgileri Express yüklemelerinde varsayılan olarak ayarlanır, ancak kuruluş güvenlik gereksinimlerinizi karşılayacak şekilde özelleştirilebilir.  Bu kimlik bilgileri şirket içi ormanlarınıza veya Azure Etkin Dizininize bağlanmak için kullanılmaz.
+Azure AD Connect, Active Directory ve Azure Active Directory arasındaki eşitlemeyi düzenleyen bir şirket içi hizmeti yüklüyor.  Microsoft Azure AD eşitleme eşitleme hizmeti (ADSync), şirket içi ortamınızdaki bir sunucuda çalışır.  Hizmetin kimlik bilgileri hızlı yüklemelerde varsayılan olarak ayarlanır ancak kuruluş güvenlik gereksinimlerinizi karşılayacak şekilde özelleştirilebilir.  Bu kimlik bilgileri, şirket içi ormanlarınız veya Azure Active Directory bağlanmak için kullanılmaz.
 
-ADSync hizmet hesabını seçmek, Azure AD Connect'i yüklemeden önce karar vermek için önemli bir planlama kararıdır.  Yüklemeden sonra kimlik bilgilerini değiştirmeye yönelik herhangi bir girişim, hizmetin başlatılamamasına, eşitleme veritabanına erişimi kaybetmesine ve bağlı dizinlerinizle (Azure ve AD DS) kimlik doğrulamasına neden olur.  Özgün kimlik bilgileri geri yüklenene kadar eşitleme oluşmaz.
+ADSync hizmeti hesabını seçmek, Azure AD Connect yüklemeden önce yapmanız için önemli bir planlama karardır.  Yüklemeden sonra kimlik bilgilerini değiştirme girişimleri, hizmetin başlamalamaması, eşitleme veritabanına erişiminin kaybedilmesi ve bağlı dizinlerinizde kimlik doğrulaması başarısız olur (Azure ve AD DS).  Özgün kimlik bilgileri geri yüklenene kadar hiçbir eşitleme gerçekleşmeyecektir.
 
 ## <a name="the-default-adsync-service-account"></a>Varsayılan ADSync hizmet hesabı
 
-Bir üye sunucuda çalıştırıldığında, AdSync hizmeti Sanal Hizmet Hesabı (VSA) bağlamında çalışır.  Ürün sınırlaması nedeniyle, etki alanı denetleyicisine yüklendiğinde özel bir hizmet hesabı oluşturulur.  Express ayarları hizmet hesabı kuruluş güvenlik gereksinimlerinizi karşılamıyorsa, Özelleştir seçeneğini seçerek Azure AD Connect'i dağıtın.  Ardından kuruluşunuzun gereksinimlerini karşılayan hizmet hesabı seçeneğini seçin.
+Bir üye sunucuda çalıştırıldığında, AdSync hizmeti bir sanal hizmet hesabı (VSA) bağlamında çalışır.  Bir ürün sınırlaması nedeniyle, bir etki alanı denetleyicisine yüklendiğinde özel bir hizmet hesabı oluşturulur.  Hızlı ayarlar hizmet hesabı kurumsal güvenlik gereksinimlerinizi karşılamıyorsa, özelleştirme seçeneğini belirleyerek Azure AD Connect dağıtın.  Ardından, kuruluşunuzun gereksinimlerini karşılayan hizmet hesabı seçeneğini belirleyin.
 
 >[!NOTE]
->Etki alanı denetleyicisi üzerine yüklendiğinde varsayılan hizmet hesabı Etki Alanı\AAD_InstallationIdentifier biçimindedir.  Bu hesabın parolası rasgele oluşturulur ve kurtarma ve parola döndürme için önemli zorluklar sunar.  Microsoft, bağımsız veya grup Yönetilen Hizmet Hesabı (sMSA / gMSA) kullanmak için bir etki alanı denetleyicisi üzerinde ilk yükleme sırasında hizmet hesabı özelleştirme önerir
+>Bir etki alanı denetleyicisine yüklendiğinde varsayılan hizmet hesabı, etki alanı \ AAD_InstallationIdentifier formundadır.  Bu hesabın parolası rastgele oluşturulmuştur ve kurtarma ve parola dönüşüyle ilgili önemli zorluk gösterir.  Microsoft, bir etki alanı denetleyicisinde ilk yükleme sırasında tek başına veya grup tarafından yönetilen hizmet hesabı (sMSA/gMSA) kullanmak için hizmet hesabını özelleştirmeyi önerir
 
-|Azure AD Connect konumu|Oluşturulan hizmet hesabı|
+|Azure AD Connect konumu|Hizmet hesabı oluşturuldu|
 |-----|-----|
-|Üye Sunucu|NT SERVICE\ADSync|
-|Etki Alanı Denetleyicisi|Etki alanı\AAD_74dc30c01e80 (nota bakınız)|
+|Üye sunucu|NT SERVICE\ADSync|
+|Etki Alanı Denetleyicisi|Etki alanı \ AAD_74dc30c01e80 (nota bakın)|
 
-## <a name="custom-adsync-service-accounts"></a>Özel ADSync hizmet hesapları
-Microsoft, ADSync hizmetini Sanal Hizmet Hesabı veya bağımsız veya grup Yönetilen Hizmet Hesabı bağlamında çalıştırmayı önerir.  Etki alanı yöneticiniz, belirli kuruluş güvenlik gereksinimlerinizi karşılamak üzere sağlanan bir hizmet hesabı oluşturmayı da seçebilir.   Yükleme sırasında kullanılan servis hesabını özelleştirmek için aşağıdaki Ekspres Ayarlar sayfasındaki Özelleştir seçeneğini belirleyin.   Aşağıdaki seçenekler mevcuttur:
+## <a name="custom-adsync-service-accounts"></a>Özel ADSync hizmeti hesapları
+Microsoft, ADSync hizmetini bir sanal hizmet hesabı ya da tek başına veya grup tarafından yönetilen hizmet hesabı bağlamında çalıştırmayı önerir.  Etki alanı yöneticiniz, belirli kurumsal güvenlik gereksinimlerinizi karşılamak için sağlanan bir hizmet hesabı oluşturmayı da seçebilir.   Yükleme sırasında kullanılan hizmet hesabını özelleştirmek için aşağıdaki hızlı ayarlar sayfasında Özelleştir seçeneğini belirleyin.   Aşağıdaki seçenekler mevcuttur:
 
-- varsayılan hesap – Azure AD Connect, hizmet hesabını yukarıda açıklandığı şekilde sağlayacaktır
-- yönetilen hizmet hesabı – yöneticiniz tarafından sağlanan bağımsız veya grup MSA kullanın
-- etki alanı hesabı – yöneticiniz tarafından sağlanan bir etki alanı hizmeti hesabı kullanın
+- Varsayılan hesap – Azure AD Connect, yukarıda açıklandığı gibi hizmet hesabı sağlayacak
+- yönetilen hizmet hesabı – yöneticiniz tarafından sağlanan tek başına veya grup MSA kullanın
+- etki alanı hesabı – yöneticiniz tarafından sağlanan bir etki alanı hizmet hesabı kullanın
 
 ![](media/concept-adsync-service-account/adsync1.png)
 
 ![](media/concept-adsync-service-account/adsync2.png)
 
-## <a name="diagnosing-adsync-service-account-changes"></a>ADSync hizmet hesabı değişikliklerini tanılama
-Yüklemeden sonra ADSync hizmetinin kimlik bilgilerini değiştirmek, hizmetin başlatılamamasına, eşitleme veritabanına erişimi kaybetmesine ve bağlı dizinlerinizle (Azure ve AD DS) kimlik doğrulamasına neden olur.  Yeni ADSync hizmet hesabına veritabanı erişimi vermek bu sorundan kurtarmak için yeterli değildir. Özgün kimlik bilgileri geri yüklenene kadar eşitleme oluşmaz.
+## <a name="diagnosing-adsync-service-account-changes"></a>ADSync hizmeti hesap değişikliklerini tanılama
+Yükleme sonrasında ADSync hizmeti için kimlik bilgilerini değiştirmek, hizmetin başlamamasına, eşitleme veritabanına erişimi kaybetmesini ve bağlı dizinlerinizde (Azure ve AD DS) kimlik doğrulaması başarısız olmasına neden olur.  Yeni ADSync hizmet hesabına veritabanı erişimi verilmesi bu sorundan kurtulmak için yeterli değil. Özgün kimlik bilgileri geri yüklenene kadar hiçbir eşitleme gerçekleşmeyecektir.
 
-ADSync hizmeti başlatılamadığında olay günlüğüne bir hata düzeyi iletisi verir.  İletinin içeriği yerleşik veritabanının (localdb) veya tam SQL'in kullanılıp kullanılmadığına bağlı olarak değişir.  Aşağıda, mevcut olabilecek olay günlüğü girişlerinin örnekleri verilmiştir.
+ADSync hizmeti, başlayamayacak olan olay günlüğüne hata düzeyi iletisi yayımlayacak.  İletinin içeriği, yerleşik veritabanının (LocalDB) veya tam SQL 'in kullanımda olmasına bağlı olarak değişir.  Aşağıda, mevcut olabilecek olay günlüğü girişlerinin örnekleri verilmiştir.
 
 ### <a name="example-1"></a>Örnek 1
 
-AdSync hizmeti şifreleme anahtarları bulunamadı ve yeniden oluşturuldu.  Bu sorun düzeltilene kadar eşitleme oluşmaz.
+AdSync hizmeti şifreleme anahtarları bulunamadı ve yeniden oluşturuldu.  Bu sorun düzeltilene kadar eşitleme gerçekleşmeyecektir.
 
-Bu Sorunu Giderme AdSync hizmeti Oturum Açma kimlik bilgileri değiştirilirse Microsoft Azure AD Sync şifreleme anahtarlarına erişilemez hale gelir.  Kimlik bilgileri değiştirildiyse, Oturum Açma hesabını özgün olarak yapılandırılan değerine (ör. NT SERVICE\AdSync) ve hizmeti yeniden başlatın.  Bu, AdSync hizmetinin doğru çalışmasını hemen geri yüklenir.
+Bu sorun giderilir Microsoft Azure AD Eşitleme şifreleme anahtarları, AdSync hizmeti oturum açma kimlik bilgileri değiştirilirse erişilemez duruma gelir.  Kimlik bilgileri değiştirilmişse, oturum açma hesabını ilk yapılandırılmış değerine (örn.) yeniden değiştirmek için hizmetler uygulamasını kullanın. NT SERVICE\AdSync) ve hizmeti yeniden başlatın.  Bu, AdSync hizmetinin doğru işlemini hemen geri yükler.
 
 Daha fazla bilgi için lütfen aşağıdaki [makaleye](https://go.microsoft.com/fwlink/?linkid=2086764) bakın.
 
 ### <a name="example-2"></a>Örnek 2
 
-Yerel veritabanına (localdb) bağlantı kurulamadığından hizmet başlatılamadı.
+Yerel veritabanı (LocalDB) bağlantısı kurulamadığından hizmet başlatılamadı.
 
-Sorun giderme Bu Sorunu Microsoft Azure AD Eşitleme hizmeti, AdSync hizmeti Oturum Açma kimlik bilgileri değiştirilirse yerel veritabanı sağlayıcısına erişim iznini kaybeder.  Kimlik bilgileri değiştirildiyse, Oturum Açma hesabını orijinal olarak yapılandırılan değerine (ör. NT SERVICE\AdSync) ve hizmeti yeniden başlatın.  Bu, AdSync hizmetinin doğru çalışmasını hemen geri yüklenir.
+Bu sorun giderilir Microsoft Azure AD eşitleme hizmeti, AdSync hizmeti oturum açma kimlik bilgileri değiştirilirse yerel veritabanı sağlayıcısına erişim iznini kaybedecektir.  Kimlik bilgileri değiştirilmişse, oturum açma hesabını ilk yapılandırılmış değerine (örn.) yeniden değiştirmek için hizmetler uygulamasını kullanın. NT SERVICE\AdSync) ve hizmeti yeniden başlatın.  Bu, AdSync hizmetinin doğru işlemini hemen geri yükler.
 
 Daha fazla bilgi için lütfen aşağıdaki [makaleye](https://go.microsoft.com/fwlink/?linkid=2086764) bakın.
 
-Ek Ayrıntılar Aşağıdaki hata bilgileri sağlayıcı tarafından döndürüldü:
+Ek ayrıntılar sağlayıcı tarafından aşağıdaki hata bilgileri döndürüldü:
  
 
 ``` 

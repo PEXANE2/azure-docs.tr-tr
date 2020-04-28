@@ -1,7 +1,7 @@
 ---
 title: Birden çok giriş kullanarak iş akışı gönderme
 titleSuffix: Microsoft Genomics
-description: Bu makalede, giriş dosyanız aynı örnekten birden çok FASTQ veya BAM dosyası ysa, Microsoft Genomics hizmetine iş akışı nasıl gönderilen gösteriş gösterilmiştir.
+description: Bu makalede, giriş dosyanız aynı örnekten birden fazla FASTQ veya Baa dosyası olduğunda Microsoft Genomiks hizmetine bir iş akışı gönderme işlemi gösterilmektedir.
 services: genomics
 ms.service: genomics
 author: grhuynh
@@ -10,19 +10,19 @@ ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.openlocfilehash: b426015906a8e17674123c0c3ad2fccb9c43798f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72248561"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Aynı örnekten birden fazla giriş kullanarak iş akışı gönderme
 
-Bu makalede, giriş dosyanız **aynı örnekten gelen**birden çok FASTQ veya BAM dosyası ysa, Microsoft Genomics hizmetine iş akışı nasıl gönderilen bir iş akışı gösteriş gösterir. Örneğin, sıralayıcı üzerinde birden çok şeritte **aynı örneği** çalıştırdıysanız, sıralayıcı her şerit için bir çift FASTQ dosyası çıkarabilir. Hizalama ve varyant aramadan önce bu FASTQ dosyalarını birleştirmek yerine, bu girişlerin tümünü `msgen` istemcisine doğrudan gönderebilirsiniz. `msgen` istemcisinin çıktıları, .bam, .bai, .vcf dosyalarından oluşan **tek bir küme** olur. 
+Bu makalede, giriş dosyanız **aynı örnekten gelen**bırden çok fastq veya Baa dosyası olduğunda Microsoft Genomiks hizmetine bir iş akışı gönderme işlemi gösterilmektedir. Örneğin, sıralayıcı üzerinde birden çok şeritte **aynı örneği** çalıştırdıysanız, sıralayıcı her şerit için bir çift FASTQ dosyası çıkarabilir. Hizalama ve varyant aramadan önce bu FASTQ dosyalarını birleştirmek yerine, bu girişlerin tümünü `msgen` istemcisine doğrudan gönderebilirsiniz. `msgen` istemcisinin çıktıları, .bam, .bai, .vcf dosyalarından oluşan **tek bir küme** olur. 
 
 Ancak aynı gönderide FASTQ ve BAM dosyalarını bir arada **kullanamayacağınızı** unutmayın. Ayrıca, birden çok kişiden birden çok FASTQ veya BAM dosyası **gönderemezsiniz**. 
 
-Bu makalede `msgen` istemcisini yükleyip çalıştırdığınız ve Azure Depolama’yı kullanma konusunda bilgi sahibi olduğunuz kabul edilmektedir. Sağlanan örnek verileri kullanarak başarılı bir şekilde bir iş akışı gönderdiyseniz, bu makaleye devam etmeye hazırsınız. 
+Bu makalede `msgen` istemcisini yükleyip çalıştırdığınız ve Azure Depolama’yı kullanma konusunda bilgi sahibi olduğunuz kabul edilmektedir. Belirtilen örnek verileri kullanarak bir iş akışını başarıyla gönderdiyseniz, bu makaleye devam etmeye hazırsınızdır. 
 
 
 ## <a name="multiple-bam-files"></a>Birden fazla BAM dosyası

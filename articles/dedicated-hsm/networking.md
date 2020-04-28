@@ -1,6 +1,6 @@
 ---
-title: Ağ la ilgili hususlar - Azure Özel HSM | Microsoft Dokümanlar
-description: Azure Özel HSM dağıtımları için geçerli ağ dikkatlerine genel bakış
+title: Ağ değerlendirmeleri-Azure ayrılmış HSM | Microsoft Docs
+description: Azure ayrılmış HSM dağıtımları için geçerli olan ağ konularına genel bakış
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,83 +13,83 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70881276"
 ---
-# <a name="azure-dedicated-hsm-networking"></a>Azure Özel HSM ağ
+# <a name="azure-dedicated-hsm-networking"></a>Azure ayrılmış HSM ağı
 
-Azure Özel HSM, son derece güvenli bir ağ ortamı gerektirir. Bu, Azure bulutundan müşterinin BT ortamına (şirket içi), dağıtılmış uygulamaları kullanarak veya yüksek kullanılabilirlik senaryoları için geçerlidir. Azure Ağı bunu sağlar ve ele alınması gereken dört ayrı alan vardır.
+Azure ayrılmış HSM, yüksek güvenlikli bir ağ ortamı gerektirir. Bu, Azure bulutunun şirket BT ortamına (Şirket içi), dağıtılmış uygulamalar kullanılarak veya yüksek kullanılabilirlik senaryolarında olup olmadığı doğru bir şekilde yapılır. Azure ağ bunu sağlar ve değinilmesi gereken dört farklı alan vardır.
 
-- Azure'da Sanal Ağınızda (VNet) HSM aygıtları oluşturma
-- HSM aygıtlarının yapılandırması ve yönetimi için şirket içi bulut tabanlı kaynaklara bağlanma
-- Uygulamalar ve HSM aygıtları arasında bağlantı kurmak için sanal ağlar oluşturma ve bağlama
-- İletişim kurmak ve aynı zamanda yüksek kullanılabilirlik senaryolarını etkinleştirmek için bölgeler arasında sanal ağları bağlama
+- Azure 'da sanal ağınız (VNet) içinde HSM cihazları oluşturma
+- HSM cihazlarının yapılandırması ve yönetimi için şirket içinde bulut tabanlı kaynaklara bağlanma
+- Bağlama ve bağlantı temelli uygulama kaynakları ve HSM cihazları için sanal ağlar oluşturma ve bağlama
+- Ağlarda iletişim kurmak için sanal ağları bölgeler arasında bağlama ve ayrıca yüksek kullanılabilirlik senaryolarını etkinleştirme
 
-## <a name="virtual-network-for-your-dedicated-hsms"></a>Özel HSM'leriniz için sanal ağ
+## <a name="virtual-network-for-your-dedicated-hsms"></a>Adanmış HSM 'niz için sanal ağ
 
-Özel HSM'ler sanal ağa entegre edilir ve azure'da müşterilerin kendi özel ağına yerleştirilir. Bu, sanal ağdaki sanal makinelerden veya bilgi işlem kaynaklarından aygıtlara erişim sağlar.  
-Azure hizmetlerini sanal ağa ve sağladığı yeteneklere entegre etme hakkında daha fazla bilgi için Azure hizmetleri için [Sanal ağa](../virtual-network/virtual-network-for-azure-services.md) bakın.
+Adanmış HSM 'ler bir sanal ağla tümleşiktir ve müşterilere Azure 'da özel ağa yerleştirilir. Bu, sanal makinelerden cihazlara veya sanal ağdaki işlem kaynaklarına erişim sağlar.  
+Azure hizmetlerini sanal ağla ve sağladığı yeteneklere tümleştirme hakkında daha fazla bilgi için bkz. [Azure hizmetleri Için sanal ağ](../virtual-network/virtual-network-for-azure-services.md) belgeleri.
 
 ### <a name="virtual-networks"></a>Sanal ağlar
 
-Özel bir HSM aygıtı sağlamadan önce, müşterilerin önce Azure'da bir Sanal Ağ oluşturmaları veya müşteri aboneliğinde zaten var olan bir ağı kullanmaları gerekir. Sanal ağ, Özel HSM aygıtının güvenlik çevresini tanımlar. Sanal ağlar oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](../virtual-network/virtual-networks-overview.md)bakın.
+Özel bir HSM cihazını sağlamadan önce, müşterilerin ilk olarak bir Azure Ağa gelen oluşturması veya müşteriler aboneliğinde zaten mevcut olan bir tane kullanması gerekir. Sanal ağ, adanmış HSM cihazı için güvenlik çevre birimi tanımlar. Sanal ağlar oluşturma hakkında daha fazla bilgi için bkz. [sanal ağ belgeleri](../virtual-network/virtual-networks-overview.md).
 
 ### <a name="subnets"></a>Alt ağlar
 
-Alt ağlar, sanal ağı, içine yerleştirdiğiniz Azure kaynakları tarafından kullanılabilir ayrı adres alanlarına böler. Özel HSM'ler sanal ağdaki bir alt ağa dağıtılır. Müşterinin alt ağına dağıtılan her özel HSM aygıtı, bu alt ağdan özel bir IP adresi alır. HSM aygıtının dağıtıldığı alt ağ, hizmete açıkça devredilmesi gerekir: Microsoft.HardwareSecurityModules/dedicatedHSMs. Bu, alt ağa dağıtım için HSM hizmetine belirli izinler verir. Özel HSM'ler delegasyonu, alt ağa belirli ilke kısıtlamaları uygular. Ağ Güvenlik Grupları (NSG'ler) ve Kullanıcı Tanımlı Yollar (ÜDS) şu anda devredilen alt ağlarda desteklenmemektedir. Sonuç olarak, bir alt ağ özel HSM'lere devredildikten sonra, yalnızca HSM kaynaklarını dağıtmak için kullanılabilir. Diğer müşteri kaynaklarının alt ağa gönderilmesi başarısız olur.
+Alt ağlar sanal ağı, yerleştirdiğiniz Azure kaynakları tarafından kullanılabilen ayrı adres alanlarına bölüler. Adanmış HSM 'ler, sanal ağdaki bir alt ağa dağıtılır. Müşterinin alt ağına dağıtılan her bir adanmış HSM aygıtı, bu alt ağdan özel bir IP adresi alır. HSM cihazının dağıtıldığı alt ağın hizmete açıkça atanmış olması gerekir: Microsoft. HardwareSecurityModules/ayrılmış Atedhsms. Bu, alt ağa dağıtım için HSM hizmetine bazı izinler verir. Adanmış HSM 'lerin temsilciliğini, alt ağda belirli ilke kısıtlamalarını uygular. Ağ güvenlik grupları (NSG 'ler) ve Kullanıcı tanımlı yollar (UDRs) Şu anda temsilci alt ağlarda desteklenmez. Sonuç olarak, bir alt ağ adanmış HSM 'ler için temsilci seçildikten sonra yalnızca HSM kaynaklarını dağıtmak için kullanılabilir. Diğer müşteri kaynaklarının alt ağa dağıtılması başarısız olur.
 
 
 ### <a name="expressroute-gateway"></a>ExpressRoute ağ geçidi
 
-Geçerli mimarinin gereksinimi, HSM aygıtının Azure'a entegrasyonunu etkinleştirmek için bir HSM aygıtının yerleştirilmesi gereken müşteri alt ağına bir ER ağ geçidiyapılandırmasıdır. Bu ER ağ geçidi, şirket içi konumları Azure'daki müşterilere hsm aygıtlarına bağlamak için kullanılamaz.
+Geçerli mimarinin gereksinimi, HSM cihazının Azure ile tümleştirilmesini sağlamak için bir HSM cihazının yerleştirilmesi gereken müşteriler alt ağındaki bir ER ağ geçidinin yapılandırılmasına neden olur. Bu ER Gateway, şirket içi konumları Azure 'daki müşterilerin HSM cihazlarına bağlamak için kullanılamaz.
 
-## <a name="connecting-your-on-premises-it-to-azure"></a>Şirket içi BT'nizi Azure'a bağlama
+## <a name="connecting-your-on-premises-it-to-azure"></a>Şirket içi BT hesabınızı Azure 'a bağlama
 
-Bulut tabanlı kaynaklar oluştururken, şirket içi BT kaynaklarına özel bir bağlantı için tipik bir gereksinimdir. Özel HSM durumunda, bu ağırlıklı olarak HSM istemci yazılımı için HSM aygıtları yapılandırmak için ve aynı zamanda yedekleme ve analiz için HSM'lerden günlükleri çekme gibi etkinlikler için olacaktır. Burada önemli bir karar noktası seçenekler olduğu gibi bağlantının doğasıdır.  Azure bulutundaki kaynaklarla (HSM'ler dahil) güvenli iletişim gerektiren birden fazla şirket içi kaynak olacağından, en esnek seçenek Site'den Siteye VPN'dir. Bu, bir müşteri kuruluşunun bağlantıyı kolaylaştırmak için bir VPN aygıtına sahip olmasını gerektirir. Tek bir yönetim iş istasyonu gibi şirket içinde yalnızca tek bir uç nokta varsa, Site'ye noktadan sayfavpn bağlantısı kullanılabilir.
-Bağlantı seçenekleri hakkında daha fazla bilgi için [VPN Ağ Geçidi planlama seçeneklerine](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable)bakın.
+Bulut tabanlı kaynaklar oluştururken, şirket içi BT kaynaklarına geri bir özel bağlantı için tipik bir gereksinimdir. Bu özel HSM söz konusu olduğunda, HSM istemci yazılımının HSM cihazlarını yapılandırması ve ayrıca yedekleme ve günlükleri gibi etkinlikler ve analiz için HSMs 'tan günlük çekme işlemleri için ağırlıklı olacaktır. Burada önemli bir karar noktası, seçenekler olduğu gibi bağlantının doğasına alınır.  Azure bulutundaki kaynaklarla (HSM 'ler dahil) güvenli iletişim gerektiren birden çok şirket içi kaynak olacağı için, en esnek seçenek siteden siteye VPN 'dir. Bu, bir müşteri kuruluşunun bağlantıyı kolaylaştırmak için bir VPN cihazına sahip olmasını gerektirir. Bir noktadan siteye VPN bağlantısı, tek bir yönetim iş istasyonu gibi yalnızca şirket içi tek bir uç nokta varsa kullanılabilir.
+Bağlantı seçenekleri hakkında daha fazla bilgi için bkz. [VPN Gateway planlama seçenekleri](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable).
 
 > [!NOTE]
-> Şu anda, ExpressRoute şirket içi kaynaklara bağlantı için bir seçenek değildir. Ayrıca, yukarıda açıklandığı gibi kullanılan ExpressRoute Ağ Geçidi'nin şirket içi altyapıya bağlantılar için olmadığı da unutulmamalıdır.
+> Şu anda ExpressRoute, şirket içi kaynaklarla bağlantı için bir seçenek değildir. Ayrıca, yukarıda açıklanan ExpressRoute ağ geçidinin şirket içi altyapıyla bağlantı için değil, aynı zamanda kullanılması da not edilmelidir.
 
 ### <a name="point-to-site-vpn"></a>Noktadan Siteye VPN
 
-Noktadan siteye Sanal Özel Ağ, şirket içinde tek bir uç noktaya güvenli bağlantının en basit biçimidir. Azure tabanlı özel HSM'ler için yalnızca tek bir yönetim iş istasyonuna sahip olmak istiyorsanız, bu durum alakalı olabilir.
+Noktadan siteye sanal özel ağ, şirket içi tek bir uç noktaya yönelik güvenli bağlantının en basit biçimidir. Bu, yalnızca Azure tabanlı adanmış HSM 'ler için tek bir yönetim iş istasyonuna sahip olmak istiyorsanız ilgili olabilir.
 
 ### <a name="site-to-site-vpn"></a>Siteler arası VPN
 
-Siteden siteye Sanal Özel Ağ, Azure tabanlı Özel HSM'ler ile şirket içi BT'niz arasında güvenli iletişim sağlar. Bunu yapmak için bir neden HSM's şirket içinde bir yedekleme tesisi olan ve yedekleme çalıştırmak için ikisi arasında bir bağlantı gerekir.
+Siteden siteye sanal özel ağ, Azure tabanlı adanmış HSM 'ler ve şirket içi BT 'niz arasında güvenli iletişim sağlar. Bunu yapmak için bir neden, HSM 'nin şirket içi olarak bir yedekleme tesisi olmasını ve yedeklemeyi çalıştırmak için iki ile arasında bağlantı olmasını gerektirir.
 
 ## <a name="connecting-virtual-networks"></a>Sanal ağları bağlama
 
-Özel HSM için tipik bir dağıtım mimarisi, HSM aygıtlarının oluşturulduğu ve sağlandığı tek bir sanal ağ ve ilgili alt ağla başlar. Aynı bölge içinde, Özel HSM'den yararlanacak uygulama bileşenleri için ek sanal ağlar ve alt ağlar olabilir. Bu ağlar arasında iletişimi etkinleştirmek için Sanal Ağ Eşlemesini kullanırız.
+Adanmış HSM için tipik bir dağıtım mimarisi, tek bir sanal ağ ve HSM cihazlarının oluşturulduğu ve sağlandığı ilgili alt ağ ile başlar. Aynı bölge içinde, özel HSM 'yi kullanacak uygulama bileşenleri için ek sanal ağlar ve alt ağlar da olabilir. Bu ağlar genelinde iletişimi etkinleştirmek için sanal ağ eşlemesi kullanırız.
 
 ### <a name="virtual-network-peering"></a>Sanal ağ eşleme
 
-Bir bölgede bir birinin kaynaklarına erişilmesi gereken birden çok sanal ağ varsa, Sanal Ağ Eşleme aralarında güvenli iletişim kanalları oluşturmak için kullanılabilir.  Sanal ağ eşleme, yalnızca güvenli iletişim sağlamakla kalmıyor, aynı zamanda Azure'daki kaynaklar arasında düşük gecikme li ve yüksek bant genişliğine bağlı bağlantılar da sağlar.
+Her birinin kaynağına erişmesi gereken bir bölgede birden çok sanal ağ olduğunda, aralarında güvenli iletişim kanalları oluşturmak için sanal ağ eşlemesi kullanılabilir.  Sanal ağ eşlemesi yalnızca güvenli iletişim sağlamaz, ancak Azure 'daki kaynaklar arasında düşük gecikmeli ve yüksek bant genişliğine sahip bağlantılar sağlar.
 
-![ağ eşleme](media/networking/peering.png)
+![ağ eşlemesi](media/networking/peering.png)
 
-## <a name="connecting-across-azure-regions"></a>Azure Bölgeleri arasında bağlanma
+## <a name="connecting-across-azure-regions"></a>Azure bölgeleri arasında bağlantı kurma
 
-HSM aygıtları, yazılım kitaplıkları aracılığıyla trafiği alternatif bir HSM'ye yönlendirme yeteneğine sahiptir. Aygıtlar arızalanırsa veya aygıta erişim kaybolursa trafik yeniden yönlendirmesi yararlıdır. Bölgesel düzey hata senaryoları, diğer bölgelerde HSM'ler dağıtılarak ve bölgeler arasında sanal ağlar arasında iletişimi etkinleştirerek azaltılabilir.
+HSM cihazlarının, trafiği alternatif bir HSM 'ye yeniden yönlendirmek için yazılım kitaplıkları aracılığıyla yeteneği vardır. Cihazların başarısız olması veya bir cihaza erişimin kaybolması durumunda trafik yeniden yönlendirme yararlı olur. Bölgesel düzey hata senaryoları, diğer bölgelerde HSM 'ler dağıtarak ve bölgeler arasında sanal ağlar arasındaki iletişimi etkinleştirerek azaltılabilir.
 
-### <a name="cross-region-ha-using-vpn-gateway"></a>VPN ağ geçidini kullanarak çapraz bölge HA
+### <a name="cross-region-ha-using-vpn-gateway"></a>Çapraz bölge HA VPN Gateway kullanma
 
-Genel olarak dağıtılan uygulamalar veya yüksek kullanılabilirlik bölgesel başarısız senaryoları için, bölgeler arasında sanal ağları bağlamak gerekir. Azure Özel HSM ile, iki sanal ağ arasında güvenli bir tünel sağlayan bir VPN Ağ Geçidi kullanılarak yüksek kullanılabilirlik elde edilebilir. VPN Ağ Geçidi'ni kullanarak Vnet-to-Vnet bağlantıları hakkında daha fazla bilgi için VPN Ağ Geçidi nedir başlıklı makaleye [bakın?](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)
+Küresel olarak dağıtılan uygulamalarda veya yüksek kullanılabilirlik bölgesel yük devretme senaryolarında, sanal ağların bölgeler arasında bağlanması gerekir. Azure ayrılmış HSM ile, yüksek kullanılabilirlik, iki sanal ağ arasında güvenli bir tünel sağlayan bir VPN Gateway kullanılarak elde edilebilir. VPN Gateway kullanarak VNET-VNET bağlantıları hakkında daha fazla bilgi için [VPN Gateway nedir?](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V) başlıklı makaleye bakın.
 
 > [!NOTE]
-> Global Vnet eşleme şu anda Özel HSM'ler ile bölgeler arası bağlantı senaryolarında kullanılamaz ve bunun yerine VPN ağ geçidi kullanılmalıdır. 
+> Genel VNET eşlemesi Şu anda adanmış HSM 'ler ile bölgeler arası bağlantı senaryolarında kullanılamaz ve bunun yerine VPN Gateway kullanılmalıdır. 
 
-![global-vnet](media/networking/global-vnet.png)
+![Küresel VNET](media/networking/global-vnet.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Sık sorulan sorular](faq.md)
 - [Desteklenebilirlik](supportability.md)
 - [Yüksek kullanılabilirlik](high-availability.md)
-- [Fiziksel Güvenlik](physical-security.md)
+- [Fiziksel güvenlik](physical-security.md)
 - [İzleme](monitoring.md)
 - [Dağıtım mimarisi](deployment-architecture.md)

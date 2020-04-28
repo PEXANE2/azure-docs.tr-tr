@@ -1,6 +1,6 @@
 ---
-title: SendGrid e-posta hizmeti (PHP) nasıl kullanılır | Microsoft Dokümanlar
-description: Azure'daki SendGrid e-posta hizmetiyle nasıl e-posta gönderebildiğini öğrenin. PHP ile yazılmış kod örnekleri.
+title: SendGrid e-posta hizmetini kullanma (PHP) | Microsoft Docs
+description: Azure 'da SendGrid e-posta hizmeti ile e-posta gönderme hakkında bilgi edinin. PHP 'de yazılan kod örnekleri.
 documentationcenter: php
 services: ''
 manager: sendgrid
@@ -16,44 +16,44 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67870905"
 ---
-# <a name="how-to-use-the-sendgrid-email-service-from-php"></a>PHP'den SendGrid E-posta Hizmeti Nasıl Kullanılır?
+# <a name="how-to-use-the-sendgrid-email-service-from-php"></a>PHP 'den SendGrid e-posta hizmetini kullanma
 
-Bu kılavuz, Azure'daki SendGrid e-posta hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirililebildiğini gösterir. Örnekler PHP ile yazılmıştır.
-Kapsanan senaryolar arasında **e-posta oluşturma,** **e-posta gönderme**ve **ek ekleme**yer almaktadır. SendGrid ve e-posta gönderme hakkında daha fazla bilgi için [Sonraki Adımlar](#next-steps) bölümüne bakın.
+Bu kılavuzda, Azure 'da SendGrid e-posta hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Örnekler PHP 'de yazılmıştır.
+Kapsanan senaryolar, **e-posta**oluşturma, **e-posta gönderme**ve **Ek ekleme**içerir. SendGrid ve e-posta gönderme hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
 
-## <a name="what-is-the-sendgrid-email-service"></a>SendGrid E-posta Hizmeti nedir?
-SendGrid, özel entegrasyonu kolaylaştıran esnek API'lerin yanı sıra güvenilir [işlemsel e-posta teslimi,]ölçeklenebilirlik ve gerçek zamanlı analiz sağlayan bulut tabanlı bir [e-posta hizmetidir.] Sık kullanılan SendGrid kullanım senaryoları şunlardır:
+## <a name="what-is-the-sendgrid-email-service"></a>SendGrid e-posta hizmeti nedir?
+SendGrid, özel tümleştirmeyi kolaylaştıran esnek API 'lerle birlikte güvenilir [işlem e-posta teslimi], ölçeklenebilirlik ve gerçek zamanlı çözümlemeler sağlayan [bulut tabanlı bir e-posta hizmetidir] . Ortak SendGrid kullanım senaryoları şunları içerir:
 
-* Müşterilere otomatik olarak makbuz gönderme
-* Müşterilere aylık e-el ilanları ve özel teklifler göndermek için dağıtım listeleri nin yönetilmesi
+* Müşterilere alındıları otomatik olarak gönderme
+* Aylık e-Fliers ve özel teklifler göndermek için dağıtım listelerini yönetme
 * Engellenen e-posta ve müşteri yanıt verme gibi şeyler için gerçek zamanlı ölçümler toplama
-* Eğilimleri belirlemeye yardımcı olacak raporlar oluşturma
+* Eğilimleri belirlemesine yardımcı olmak için raporlar oluşturma
 * Müşteri sorgularını iletme
-* Uygulamanızdan gelen e-posta bildirimleri
+* Uygulamanızdan e-posta bildirimleri
 
-Daha fazla bilgi [https://sendgrid.com][https://sendgrid.com]için bkz.
+Daha fazla bilgi için bkz [https://sendgrid.com][https://sendgrid.com]..
 
-## <a name="create-a-sendgrid-account"></a>SendGrid Hesabı Oluşturma
+## <a name="create-a-sendgrid-account"></a>SendGrid hesabı oluşturma
 
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="using-sendgrid-from-your-php-application"></a>PHP Uygulamanızdan SendGrid'i Kullanma
+## <a name="using-sendgrid-from-your-php-application"></a>PHP uygulamanızdan SendGrid kullanma
 
-Bir Azure PHP uygulamasında SendGrid'i kullanmak için özel yapılandırma veya kodlama gerektirmez. SendGrid bir hizmet olduğundan, bir bulut uygulamasından şirket içi bir uygulamadan erişilebildiği şekilde erişilebilir.
+Azure PHP uygulamasında SendGrid kullanılması için özel yapılandırma veya kodlama gerekmez. SendGrid bir hizmet olduğundan, şirket içi bir uygulamadan olduğu gibi bir bulut uygulamasından tamamen aynı şekilde erişilebilir.
 
-## <a name="how-to-send-an-email"></a>Nasıl Yapılsın: E-posta Gönder
+## <a name="how-to-send-an-email"></a>Nasıl yapılır: e-posta gönderme
 
-SMTP veya SendGrid tarafından sağlanan Web API'sini kullanarak e-posta gönderebilirsiniz.
+SMTP veya SendGrid tarafından belirtilen Web API 'sini kullanarak e-posta gönderebilirsiniz.
 
-### <a name="smtp-api"></a>SMTP API
+### <a name="smtp-api"></a>SMTP APı 'SI
 
-SendGrid SMTP API'yi kullanarak e-posta göndermek için, PHP uygulamalarından e-posta göndermek için bileşen tabanlı bir kitaplık olan *Swift Mailer'ı*kullanın. [Swift Mailer kitaplığı](https://swiftmailer.symfony.com/) v5.3.0 'ı indirebilirsiniz (Swift Mailer'ı yüklemek için [Composer'ı] kullanın). `Swift\_SmtpTransport`Kitaplıkla e-posta göndermek, ,, `Swift\_Mailer` `Swift\_Message` ve sınıflar örnekleri oluşturmayı, `Swift\_Mailer::send` uygun özellikleri ayarlamayı ve yöntemi çağırmayı içerir.
+SendGrid SMTP API 'sini kullanarak e-posta göndermek için, PHP uygulamalarından e-posta göndermek için bileşen tabanlı bir kitaplık olan *Swift Göndericisini*kullanın. [Swift posta kitaplığı](https://swiftmailer.symfony.com/) v 5.3.0 'ı Indirebilirsiniz (Swift Göndericisini yüklemek Için [besteci] kullanın). Kitaplığı ile e-posta `Swift\_SmtpTransport`göndermek,, `Swift\_Mailer`, ve `Swift\_Message` sınıflarının örneklerini oluşturmayı, uygun özellikleri ayarlamayı ve `Swift\_Mailer::send` yöntemini çağırmayı içerir.
 
 ```php
 <?php
@@ -118,7 +118,7 @@ SendGrid SMTP API'yi kullanarak e-posta göndermek için, PHP uygulamalarından 
 ```
 
 ### <a name="web-api"></a>Web API
-SendGrid Web API'sini kullanarak e-posta göndermek için PHP'nin [kıvırma işlevini][curl function] kullanın.
+SendGrid Web API 'sini kullanarak e-posta göndermek için PHP 'nin [kıvrımlı işlevini][curl function] kullanın.
 
 ```php
 <?php
@@ -160,13 +160,13 @@ SendGrid Web API'sini kullanarak e-posta göndermek için PHP'nin [kıvırma iş
  print_r($response);
 ```
 
-SendGrid'in Web API'si REST API'ye çok benzer, ancak çoğu çağrıda hem GET hem de POST fiilleri birbirinin yerine kullanılabildiğinden, gerçekten güvenilir bir API değildir.
+SendGrid 'in Web API 'SI REST API oldukça benzerdir, ancak çoğu çağrıda hem GET hem de POST fiilleri birbirinin yerine kullanılabilir.
 
-## <a name="how-to-add-an-attachment"></a>Nasıl Yapılır: Ek Ekleme
+## <a name="how-to-add-an-attachment"></a>Nasıl yapılır: ek ekleme
 
-### <a name="smtp-api"></a>SMTP API
+### <a name="smtp-api"></a>SMTP APı 'SI
 
-SMTP API kullanarak bir eki göndermek, Swift Mailer ile bir e-posta göndermek için örnek komut dosyasına ek bir kod satırı içerir.
+SMTP API 'sini kullanarak ek göndermek, Swift gönderimiyle bir e-posta göndermek için örnek betiğe bir ek kod satırı içerir.
 
 ```php
 <?php
@@ -239,11 +239,11 @@ Ek kod satırı aşağıdaki gibidir:
  $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName('file_name'));
 ```
 
-Bu kod satırı nesneüzerinde ekleme `Swift\_Message` yöntemiçağırır ve `fromPath` bir `Swift\_Attachment` iletiyi almak ve eklemek için sınıfta statik yöntemi kullanır.
+Bu kod satırı, `Swift\_Message` nesnesine Attach metodunu çağırır ve bir dosyayı almak ve bir iletiye `fromPath` eklemek için `Swift\_Attachment` sınıfında static yöntemi kullanır.
 
 ### <a name="web-api"></a>Web API
 
-Web API'sini kullanarak ek göndermek, Web API'sını kullanarak e-posta göndermeye çok benzer. Ancak, aşağıdaki örnekte parametre dizisinin bu öğeyi içermesi gerektiğini unutmayın:
+Web API 'sini kullanarak ek göndermek, Web API 'sini kullanarak e-posta göndermeye çok benzer. Ancak, aşağıdaki örnekte parametre dizisinin bu öğeyi içermesi gerektiğini unutmayın:
 
 ```php
     'files['.$fileName.']' => '@'.$filePath.'/'.$fileName
@@ -297,13 +297,13 @@ Web API'sini kullanarak ek göndermek, Web API'sını kullanarak e-posta gönder
  print_r($response);
 ```
 
-## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Nasıl Kullanılır: Altlayıcıları, İzlemeyi ve Analizleri Etkinleştirmek için Filtreleri Kullanın
+## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Nasıl yapılır: altbilgileri, Izlemeyi ve analizlerini etkinleştirmek için filtreleri kullanma
 
-SendGrid *filtreleri*kullanarak ek e-posta işlevselliği sağlar. Bunlar, tıklama izlemeyi etkinleştirme, Google analitiği, abonelik izleme gibi belirli işlevleri etkinleştirmek için bir e-posta iletisine eklenebilecek ayarlardır.
+SendGrid, *filtrelerin*kullanımı aracılığıyla ek e-posta işlevselliği sağlar. Bunlar, tıklama izleme, Google Analytics, abonelik izleme gibi belirli işlevleri etkinleştirmek için bir e-posta iletisine eklenebilen ayarlardır.
 
-Filtreler, filtreler özelliği ni kullanarak iletiye uygulanabilir. Her filtre, filtreye özgü ayarlar içeren bir karma ile belirtilir. Aşağıdaki örnek, altbilgi filtresini etkinleştirive e-posta iletisinin altına eklenecek bir kısa mesaj belirtir. Bu örnekte [sendgrid-php kitaplığını]kullanacağız.
+Filtreler, filtreler özelliği kullanılarak bir iletiye uygulanabilir. Her filtre filtreye özgü ayarları içeren bir karmayla belirtilir. Aşağıdaki örnek, alt bilgi filtresini sağlar ve e-posta iletisinin altına eklenecek bir kısa mesaj belirtir. Bu örnekte, [SendGrid-php kitaplığı]kullanacağız.
 
-Kitaplığı yüklemek için [Besteci'yi] kullanın:
+Kitaplığı yüklemek için [besteci] kullanın:
 
 ```bash
 php composer.phar require sendgrid/sendgrid 2.1.1
@@ -408,13 +408,13 @@ php composer.phar require sendgrid/sendgrid 2.1.1
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-SendGrid E-posta hizmetinin temellerini öğrendiğiniz için, daha fazla bilgi edinmek için bu bağlantıları takip edin.
+SendGrid e-posta hizmetinin temellerini öğrendiğinize göre, daha fazla bilgi edinmek için bu bağlantıları izleyin.
 
 * SendGrid belgeleri:<https://sendgrid.com/docs>
 * SendGrid PHP kitaplığı:<https://github.com/sendgrid/sendgrid-php>
 * Azure müşterileri için SendGrid özel teklifi:<https://sendgrid.com/windowsazure.html>
 
-Daha fazla bilgi için [PHP Geliştirici Merkezi'ne](https://azure.microsoft.com/develop/php/)de bakın.
+Daha fazla bilgi için bkz. [php Geliştirici Merkezi](https://azure.microsoft.com/develop/php/).
 
 [https://sendgrid.com]: https://sendgrid.com
 [https://sendgrid.com/transactional-email/pricing]: https://sendgrid.com/transactional-email/pricing
@@ -423,6 +423,6 @@ Daha fazla bilgi için [PHP Geliştirici Merkezi'ne](https://azure.microsoft.com
 [http://swiftmailer.org/download]: http://swiftmailer.org/download
 [curl function]: https://php.net/curl
 [bulut tabanlı e-posta hizmeti]: https://sendgrid.com/email-solutions
-[işlemsel e-posta teslimi]: https://sendgrid.com/transactional-email
-[sendgrid-php kütüphanesi]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
+[işlem e-posta teslimi]: https://sendgrid.com/transactional-email
+[SendGrid-php kitaplığı]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
 [Oluşturucu]: https://getcomposer.org/download/

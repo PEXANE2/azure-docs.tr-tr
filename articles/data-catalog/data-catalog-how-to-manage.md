@@ -1,67 +1,67 @@
 ---
-title: Azure Veri Kataloğu'nda veri varlıklarını yönetme
-description: Makalede, Azure Veri Kataloğu'nda kayıtlı veri varlıklarının görünürlüğünü ve sahipliğini nasıl denetleneeceğimi vurgulamaktadır.
+title: Azure Veri Kataloğu 'nda veri varlıklarını yönetme
+description: Makale, Azure Veri Kataloğu 'nda kayıtlı veri varlıklarının görünürlüğünü ve sahipliğini denetlemeyi vurgular.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 9905ed72ec54304bbdb0f7ee607cbb013fc645bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68736338"
 ---
-# <a name="manage-data-assets-in-azure-data-catalog"></a>Azure Veri Kataloğu'nda veri varlıklarını yönetme
+# <a name="manage-data-assets-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda veri varlıklarını yönetme
 ## <a name="introduction"></a>Giriş
-Azure Veri Kataloğu, analiz yapmak ve karar vermek için ihtiyacınız olan veri kaynaklarını kolayca keşfedebilmeniz ve anlayabilirsiniz. Bu keşif yetenekleri, siz ve diğer kullanıcılar mevcut veri kaynaklarının en geniş aralığını bulup anlayınca en büyük etkiyi yaratır. Bu öğeler göz önünde bulundurularak, Veri Kataloğu'nun varsayılan davranışı, tüm kayıtlı veri kaynaklarının tüm katalog kullanıcıları tarafından görülebilmesi ve bulunabilmesiiçindir.
+Azure Veri Kataloğu, veri kaynağı bulma için tasarlanmıştır, böylece analiz yapmak ve kararlar almak için ihtiyaç duyduğunuz veri kaynaklarını kolayca bulabilir ve anlayabilmenizi sağlayabilirsiniz. Bu bulma özellikleri, siz ve diğer kullanıcılar en geniş kullanılabilir veri kaynaklarını bulabilir ve anladıysanız en büyük etkiyi yapar. Bu öğeler göz önünde bulundurularak, veri kataloğu 'nun varsayılan davranışı tüm kayıtlı veri kaynaklarının tüm katalog kullanıcıları tarafından görünür ve bulunabilir olmasını sağlar.
 
-Veri Kataloğu, verilerin kendisine erişmenizi sağlamaz. Veri erişimi, veri kaynağının sahibi tarafından denetlenir. Veri Kataloğu ile veri kaynaklarını keşfedebilir ve katalogda kayıtlı kaynaklarla ilgili meta verileri görüntüleyebilirsiniz.
+Veri Kataloğu size verilerin kendisi için erişim sağlamaz. Veri erişimi, veri kaynağının sahibi tarafından denetlenir. Veri Kataloğu ile veri kaynaklarını bulabilir ve kataloğa kayıtlı kaynaklarla ilgili meta verileri görüntüleyebilirsiniz.
 
-Ancak, veri kaynaklarının yalnızca belirli kullanıcılar veya belirli grupların üyeleri tarafından görülebileceği durumlar olabilir. Bu tür senaryolarda, kullanıcılar katalogdaki kayıtlı veri varlıklarının sahipliğini alabilir ve sahip oldukları varlıkların görünürlüğünü denetleyebilir.
+Ancak, veri kaynaklarının yalnızca belirli kullanıcılara veya belirli grupların üyelerine görünebileceği durumlar olabilir. Bu tür senaryolarda, kullanıcılar katalog içinde kayıtlı veri varlıklarının sahipliğini alabilir ve ardından sahip oldukları varlıkların görünürlüğünü denetleyebilir.
 
 > [!NOTE]
-> Bu makalede açıklanan işlevsellik yalnızca Azure Veri Kataloğu'nun Standart Sürümü'nde kullanılabilir. Free Edition, sahiplik ve veri varlığı görünürlüğünü kısıtlama özellikleri sağlamaz.
+> Bu makalede açıklanan işlevsellik yalnızca Azure Veri Kataloğu 'nun standart sürümünde kullanılabilir. Ücretsiz sürüm, sahiplik ve veri varlık görünürlüğünü kısıtlama olanağı sağlamaz.
 >
 >
 
 ## <a name="manage-ownership-of-data-assets"></a>Veri varlıklarının sahipliğini yönetme
-Varsayılan olarak, Veri Kataloğu'nda kayıtlı veri varlıkları sahipsiz. Catalog'a erişim izni olan herhangi bir kullanıcı bu varlıkları keşfedebilir ve açıklama ekleyebilir. Kullanıcılar sahipsiz veri varlıklarının sahipliğini alabilir ve sahip oldukları varlıkların görünürlüğünü sınırlayabilir.
+Varsayılan olarak, veri kataloğunda kayıtlı olan veri varlıkları sahiplenmemiş. Kataloğa erişim izni olan tüm kullanıcılar bu varlıkları bulabilir ve bunlara ek açıklama ekleyebilir. Kullanıcılar, sahip olunan veri varlıklarının sahipliğini alabilir ve ardından sahip oldukları varlıkların görünürlüğünü sınırlayabilir.
 
-Veri Kataloğu'ndaki bir veri kıymetine sahip olunduğunda, yalnızca sahipler tarafından yetkilendirilen kullanıcılar varlığı keşfedebilir ve meta verilerini görüntüleyebilir ve yalnızca sahipler varlığı katalogdan silebilir.
+Veri Kataloğu 'ndaki bir veri varlığı aitse, yalnızca sahipleri tarafından yetkilendirilmiş kullanıcılar varlığı bulabilir ve meta verilerini görüntüleyebilir ve yalnızca sahipler varlığı katalogdan silebilir.
 
 > [!NOTE]
-> Veri Kataloğu'nda sahiplik yalnızca katalogda depolanan meta verileri etkiler. Sahiplik, temel veri kaynağına herhangi bir izin vermez.
+> Veri kataloğunda sahiplik yalnızca Katalogda depolanan meta verileri etkiler. Sahiplik, temel alınan veri kaynağında hiçbir izni karşılamıyor.
 >
 >
 
 ### <a name="take-ownership"></a>Sahipliği alın
-Kullanıcılar, Veri Kataloğu portalındaki **Sahiplik Al** seçeneğini seçerek veri varlıklarının sahipliğini alabilir. Sahipsiz bir veri varlığının sahipliğini almak için özel izinler gerekmez. Herhangi bir kullanıcı sahipsiz bir veri varlığının sahipliğini alabilir.
+Kullanıcılar veri kataloğu portalındaki **sahipliğini al** seçeneğini belirleyerek veri varlıklarının sahipliğini alabilir. Sahip olmayan bir veri varlığının sahipliğini almak için özel izin gerekmez. Herhangi bir Kullanıcı, sahipsiz olmayan bir veri varlığının sahipliğini alabilir.
 
-### <a name="add-owners-and-co-owners"></a>Sahiplerini ve ortak sahiplerini ekleme
-Bir veri kıymetine zaten sahip olunmuşsa, diğer kullanıcılar yalnızca sahiplenilemez. Bunlar, mevcut bir sahip tarafından ortak olarak eklenmelidir. Herhangi bir sahip ortak olarak ek kullanıcılar veya güvenlik grupları ekleyebilirsiniz.
+### <a name="add-owners-and-co-owners"></a>Sahipler ve ikincil sahipler ekleme
+Bir veri varlığı zaten aitse, diğer kullanıcılar sahiplik alamaz. Bunlar, mevcut bir sahibe ait ikincil sahipler olarak eklenmelidir. Herhangi bir sahip, ikincil sahipler olarak ek kullanıcılar veya güvenlik grupları ekleyebilir.
 
 > [!NOTE]
-> Sahip olunan herhangi bir veri kıymetinin sahibi olarak en az iki kişinin olması en iyi yöntemdir.
+> Sahip olunan herhangi bir veri varlığı için en az iki bireye sahip olmak en iyi uygulamadır.
 >
 >
 
-### <a name="remove-owners"></a>Sahipleri kaldırma
-Herhangi bir varlık sahibinin ortak sahiplerini ekleyebileceği gibi, herhangi bir varlık sahibi de herhangi bir ortak sahibini kaldırabilir.
+### <a name="remove-owners"></a>Sahipleri kaldır
+Herhangi bir varlık sahibi ortak sahipler ekleyebilen gibi, herhangi bir varlık sahibi ortak sahibi kaldırabilir.
 
-Sahibi olarak kendilerini kaldıran bir varlık sahibi artık varlığı yönetemez. Varlık sahibi kendilerini sahip olarak kaldırırsa ve başka ortak sahip yoksa, varlık sahipsiz bir duruma geri döner.
+Kendilerini bir sahip olarak kaldıran bir varlık sahibi varlığı artık yönetemez. Varlık sahibi kendisini bir sahip olarak kaldırırsa ve başka ortak sahipler yoksa, varlık sahipsiz duruma geri döner.
 
-## <a name="control-visibility"></a>Görünürlüğü kontrol edin
-Veri varlık sahipleri sahip oldukları veri varlıklarının görünürlüğünü denetleyebilir. Tüm Veri Kataloğu kullanıcılarının veri varlığını keşfedip görüntülebildiği varsayılan olarak görünürlüğü kısıtlamak için, varlık sahibi varlık için özelliklerde Bu Kullanıcılar & **Herkes'ten** **Sahiplere** görünürlük ayarını ayarlayabilir. Sahipleri daha sonra belirli kullanıcılar ve güvenlik grupları ekleyebilirsiniz.
+## <a name="control-visibility"></a>Denetim görünürlüğü
+Veri varlık sahipleri, sahip oldukları veri varlıklarının görünürlüğünü denetleyebilir. Tüm veri kataloğu kullanıcılarının veri varlığını bulabileceği ve görüntüleyebildiği varsayılan olarak Görünürlüğü kısıtlamak için varlık sahibi, varlığın özelliklerindeki **Bu kullanıcılara &** **Herkes** ' deki görünürlük ayarını değiştirebilir. Artık sahipler belirli kullanıcıları ve güvenlik gruplarını ekleyebilirler.
 
 > [!NOTE]
-> Mümkün olduğunda, varlık sahipliği ve görünürlük izinleri tek tek kullanıcılara değil, güvenlik gruplarına atanmalıdır.
+> Mümkün olduğunda, varlık sahipliğinin ve görünürlük izinlerinin ayrı kullanıcılara değil güvenlik gruplarına atanması gerekir.
 >
 >
 
 ## <a name="catalog-administrators"></a>Katalog yöneticileri
-Veri Kataloğu yöneticileri, katalogdaki tüm varlıkların dolaylı olarak ortak sahipleridir. Varlık sahipleri yöneticilerin görünürlüğünü kaldıramaz ve yöneticiler katalogdaki tüm veri varlıklarının sahipliğini ve görünürlüğünü yönetebilir.
+Veri Kataloğu yöneticileri, katalogdaki tüm varlıkların örtük olarak ortak sahipileridir. Varlık sahipleri, yöneticilerin görünürlüğünü kaldıramaz ve Yöneticiler, katalogdaki tüm veri varlıklarının sahipliğini ve görünürlüğünü yönetebilir.
 
 ## <a name="summary"></a>Özet
-Meta verilere ve veri varlık keşfine kadar veri kataloğu crowdsourcing modeli tüm katalog kullanıcılarının katkıda bulunmasını ve keşfetmesini sağlar. Veri Kataloğu'nun Standart Sürümü, belirli veri varlıklarının görünürlüğünü ve kullanımını sınırlamak için sahiplik ve yönetim için tasarlanmıştır.
+Veri Kataloğu, meta verilere ve veri varlığı bulmaya yönelik modeli, tüm katalog kullanıcılarının katkıda bulunmasını ve bulmasını sağlar. Veri Kataloğu 'nun standart sürümü, belirli veri varlıklarının görünürlüğünü ve kullanımını sınırlamak üzere sahiplik ve yönetim için tasarlanmıştır.

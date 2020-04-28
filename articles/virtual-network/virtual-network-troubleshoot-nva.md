@@ -1,6 +1,6 @@
 ---
-title: Azure'da sorun giderme ağı sanal cihaz sorunları | Microsoft Dokümanlar
-description: Azure'da ağ sanal cihaz sorunlarını nasıl gidereceklerini öğrenin.
+title: Azure 'da ağ sanal gereç sorunlarını giderme | Microsoft Docs
+description: Azure 'da ağ sanal gereç sorunlarını nasıl giderebileceğinizi öğrenin.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -15,64 +15,64 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
 ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71056828"
 ---
-# <a name="network-virtual-appliance-issues-in-azure"></a>Azure'da ağ sanal cihaz sorunları
+# <a name="network-virtual-appliance-issues-in-azure"></a>Azure 'da ağ sanal gereç sorunları
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Microsoft Azure'da üçüncü taraf Network Virtual Appliance (NVA) kullanırken VM veya VPN bağlantısı sorunları ve hatalarıyla karşılaşabilirsiniz. Bu makale, NVA yapılandırmaları için temel Azure Platformu gereksinimlerini doğrulamanıza yardımcı olacak temel adımlar sağlar.
+Microsoft Azure içinde üçüncü taraf ağ sanal gereci (NVA) kullanırken VM veya VPN bağlantı sorunları ve hatalarıyla karşılaşabilirsiniz. Bu makalede, NVA yapılandırmalarının temel Azure platform gereksinimlerini doğrulamanıza yardımcı olacak temel adımlar sağlanmaktadır.
 
-Üçüncü taraf NV'ler için teknik destek ve Azure platformuyla tümleştirmeleri NVA satıcısı tarafından sağlanır.
+Üçüncü taraf NVA 'lar için teknik destek ve Azure platformuyla tümleştirme, NVA satıcısı tarafından sağlanır.
 
 > [!NOTE]
-> NVA içeren bir bağlantı veya yönlendirme sorununz varsa, doğrudan [NVA satıcısına başvurmalısınız.](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)
+> Bir NVA içeren bir bağlantı veya yönlendirme sorununuz varsa, doğrudan [NVA satıcısına başvurmanız](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) gerekir.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="checklist-for-troubleshooting-with-nva-vendor"></a>NVA satıcısıyla sorun giderme için denetim listesi
+## <a name="checklist-for-troubleshooting-with-nva-vendor"></a>NVA satıcısı ile sorun giderme için denetim listesi
 
-- NVA VM yazılımı için yazılım güncellemeleri
-- Hizmet Hesabı kurulumu ve işlevselliği
-- Trafiği NVA'ya yönlendiren sanal ağ alt ağlarında kullanıcı tanımlı rotalar (ÜDR)
-- NVA'dan trafiği yönlendiren sanal ağ alt ağlarında UdR'lar
-- NVA içindeki yönlendirme tabloları ve kuralları (örneğin, NIC1'den NIC2'ye kadar)
-- Ağ trafiğini alma ve göndermeyi doğrulamak için NVA NIC'leri izleme
-- Standart SKU ve Genel IP'ler kullanırken, trafiğin NVA'ya yönlendirilmesiiçin bir NSG ve açık bir kural oluşturulmalıdır.
+- NVA VM yazılımı için yazılım güncelleştirmeleri
+- Hizmet hesabı kurulumu ve işlevleri
+- Trafiği NVA 'ya yönlendiren sanal ağ alt ağlarında Kullanıcı tanımlı yollar (UDRs)
+- NVA 'dan trafiği yönlendirecek sanal ağ alt ağlarında UDRs
+- NVA içindeki tabloları ve kuralları yönlendirme (örneğin, NIC1 ile NIC2 arasında)
+- Ağ trafiğinin alınmasını ve gönderilmesini doğrulamak için NVA NIC 'lerde izleme
+- Standart SKU ve genel IP 'Ler kullanırken, trafiğin NVA 'ya yönlendirilmesine izin vermek için bir NSG oluşturulup oluşturulmuş ve açık bir kural olmalıdır.
 
 ## <a name="basic-troubleshooting-steps"></a>Temel sorun giderme adımları
 
-- Temel yapılandırmayı kontrol edin
-- NVA performansını kontrol edin
-- Gelişmiş ağ sorun giderme
+- Temel yapılandırmayı denetleme
+- NVA performansını denetle
+- Gelişmiş ağ sorunlarını giderme
 
-## <a name="check-the-minimum-configuration-requirements-for-nvas-on-azure"></a>Azure'daki NV'ler için minimum yapılandırma gereksinimlerini kontrol edin
+## <a name="check-the-minimum-configuration-requirements-for-nvas-on-azure"></a>Azure 'da NVA 'lar için en düşük yapılandırma gereksinimlerini denetleyin
 
-Her NVA'nın Azure'da düzgün çalışması için temel yapılandırma gereksinimleri vardır. Aşağıdaki bölümde bu temel yapılandırmaları doğrulamak için adımlar sağlar. Daha fazla bilgi için [NVA satıcısına başvurun.](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)
+Her NVA, Azure 'da doğru şekilde çalışması için temel yapılandırma gereksinimlerine sahiptir. Aşağıdaki bölümde, bu temel yapılandırmaların doğrulanması için gereken adımlar sağlanmaktadır. Daha fazla bilgi için, [NVA satıcısına başvurun](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-**NVA'da IP iletme özelliğinin etkin olup olmadığını kontrol edin**
+**NVA 'da IP iletmenin etkinleştirilip etkinleştirilmediğini denetleyin**
 
 Azure portalı kullanma
 
-1. [Azure portalında](https://portal.azure.com)NVA kaynağını bulun, Ağ'ı seçin ve ardından Ağ arabirimini seçin.
-2. Ağ arabirimi sayfasında IP yapılandırmasını seçin.
-3. IP iletmenin etkin olduğundan emin olun.
+1. [Azure Portal](https://portal.azure.com)NVA kaynağını bulun, ağ ' ı seçin ve ağ arabirimini seçin.
+2. Ağ arabirimi sayfasında IP yapılandırması ' nı seçin.
+3. IP iletimi özelliğinin etkinleştirildiğinden emin olun.
 
 PowerShell kullanma
 
-1. PowerShell'i açın ve ardından Azure hesabınızda oturum açın.
-2. Aşağıdaki komutu çalıştırın (parantez içinde bulunan değerleri bilgilerinizle değiştirin):
+1. PowerShell 'i açın ve Azure hesabınızda oturum açın.
+2. Aşağıdaki komutu çalıştırın (parantez içine alınmış değerleri, bilgilerinizi değiştirin):
 
    ```powershell
    Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
    ```
 
-3. **EnableIPForwarding** özelliğini kontrol edin.
-4. IP iletme etkin değilse, etkinleştirmek için aşağıdaki komutları çalıştırın:
+3. **Enableipiletime** özelliğini denetleyin.
+4. IP iletimi etkinleştirilmemişse, etkinleştirmek için aşağıdaki komutları çalıştırın:
 
    ```powershell
    $nic2 = Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
@@ -83,23 +83,23 @@ PowerShell kullanma
    NetworkSecurityGroup : null
    ```
 
-**Standart SKU Pubilc IP kullanırken NSG'yi kontrol edin** Standart SKU ve Genel IP'ler kullanırken, NVA trafiğine izin vermek için bir NSG ve açık bir kural oluşturulmalıdır.
+**Standart SKU Pobilc IP 'si kullanılırken NSG 'Yi denetle** Standart SKU ve genel IP 'Ler kullanırken, NVA 'ya giden trafiğe izin vermek için bir NSG oluşturulup oluşturulmuş ve açık bir kural olmalıdır.
 
-**Trafiğin NVA'ya yönlendirilip yönlendirilemeyeceğini kontrol edin**
+**Trafiğin NVA 'ya yönlendirilip yönlendirilmeyeceğini denetleyin**
 
-1. [Azure portalında](https://portal.azure.com), **Ağ İzleyicisini**aç, **Next Hop'u**seçin.
-2. Trafiği NVA'ya yönlendirecek şekilde yapılandırılan bir VM ve bir sonraki atlamayı görüntülemek için bir hedef IP adresi belirtin. 
-3. NVA **bir sonraki atlama**olarak listelenmiyorsa, Azure rota tablolarını denetleyin ve güncelleştirin.
+1. [Azure Portal](https://portal.azure.com), **Ağ İzleyicisi**'Ni açın, **sonraki atlama**' yi seçin.
+2. Trafiği NVA 'ya yönlendirmek üzere yapılandırılmış bir VM ve sonraki atlamanın görüntüleneceği bir hedef IP adresi belirtin. 
+3. NVA bir **sonraki atlama**olarak listelenmiyorsa Azure yol tablolarını denetleyin ve güncelleştirin.
 
-**Trafiğin NVA'ya ulaşıp ulaşamayacağını kontrol edin**
+**Trafiğin NVA 'ya erişip erişemeyeceğini denetleyin**
 
-1. [Azure portalında](https://portal.azure.com) **Ağ İzleyicisi'ni**açın ve **ardından IP Akışını Doğrula'yı**seçin. 
-2. NVA'nın VM ve IP adresini belirtin ve ardından trafiğin herhangi bir Ağ güvenlik grupları (NSG) tarafından engellenip engellenmediğini kontrol edin.
-3. Trafiği engelleyen bir NSG kuralı varsa, NSG'yi **etkili güvenlik** kurallarında bulun ve trafiğin geçmesine izin verecek şekilde güncelleştirin. Ardından IP Akışını Yeniden **Doğrula'yı** çalıştırın ve VM'den dahili veya harici IP adresinize TCP iletişimlerini test etmek için **Bağlantı sorun giderini** kullanın.
+1. [Azure Portal](https://portal.azure.com)' de, **Ağ İzleyicisi**' ni açın ve **IP akışı doğrulaması**' nı seçin. 
+2. NVA 'nın sanal makinesini ve IP adresini belirtin ve ardından trafiğin herhangi bir ağ güvenlik grubu (NSG) tarafından engellenip engellenmediğini kontrol edin.
+3. Trafiği engelleyen bir NSG kuralı varsa, NSG 'yi **etkin güvenlik** kuralları ' nda bulun ve trafiğin geçmesine izin vermek için güncelleştirin. Ardından **IP akışını doğrulayın** ve **bağlantı sorunlarını** , VM 'den iç veya dış IP adresinizden gelen TCP iletişimlerini test etmek için kullanın.
 
-**NVA ve VM'lerin beklenen trafiği dinleyip dinlemediğini kontrol edin**
+**NVA ve VM 'Lerin beklenen trafik için dinleme yapıp yapmadığını denetleyin**
 
-1. RDP veya SSH kullanarak NVA'ya bağlanın ve aşağıdaki komutu çalıştırın:
+1. RDP veya SSH kullanarak NVA 'ya bağlanın ve ardından aşağıdaki komutu çalıştırın:
 
     Windows için:
 
@@ -108,38 +108,38 @@ PowerShell kullanma
     Linux için:
 
         netstat -an | grep -i listen
-2. Sonuçlarda listelenen NVA yazılımı tarafından kullanılan TCP bağlantı noktasını görmüyorsanız, bu bağlantı noktalarına ulaşan trafiği dinlemek ve bunlara yanıt vermek için Uygulamayı NVA ve VM'de yapılandırmanız gerekir. [Gerektiğinde yardım için NVA satıcısına başvurun.](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)
+2. Sonuçlarda listelenen NVA yazılımı tarafından kullanılan TCP bağlantı noktasını görmüyorsanız, bu bağlantı noktalarına ulaşan trafiği dinlemek ve yanıtlamak için NVA ve VM 'de uygulamayı yapılandırmanız gerekir. [Gerektiğinde yardım almak için NVA satıcısına başvurun](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-## <a name="check-nva-performance"></a>NVA Performansını Kontrol Edin
+## <a name="check-nva-performance"></a>NVA performansını denetle
 
-### <a name="validate-vm-cpu"></a>VM CPU'u doğrula
+### <a name="validate-vm-cpu"></a>VM CPU 'sunu doğrulama
 
-CPU kullanımı yüzde 100'e yaklaşırsa, ağ paketi düşüşlerini etkileyen sorunlarla karşılaşabilirsiniz. VM'niz, Azure portalında belirli bir zaman aralığı için ortalama CPU raporediyor. CPU ani sırasında, konuk VM'deki hangi işlemin yüksek CPU'ya neden olduğunu araştırın ve mümkünse azlayın. Ayrıca VM'yi daha büyük bir SKU boyutuna yeniden boyutlandırmanız veya sanal makine ölçeği kümesi için örnek sayısını artırmanız veya CPU kullanımında otomatik ölçeklendirmeye ayarlamanız da gerekebilir. Bu sorunlardan biri için, gerektiğinde [yardım için NVA satıcısına başvurun.](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)
+CPU kullanımı yüzde 100 ' e yakınsa, ağ paketi düşünü etkileyen sorunlarla karşılaşabilirsiniz. VM 'niz Azure portal belirli bir zaman aralığı için Ortalama CPU bildiriyor. CPU ani bir işlem sırasında, Konuk VM 'deki hangi işlemin yüksek CPU 'ya neden olduğunu araştırın ve mümkünse bu işlemi azaltabilirsiniz. Ayrıca, VM 'yi daha büyük bir SKU boyutu veya sanal makine ölçek kümesi için yeniden boyutlandırmanız, örnek sayısını artırmanız veya CPU kullanımında Otomatik ölçeklendirmeye ayarlamanız gerekebilir. Bu sorunlardan biri için gerektiğinde [Yardım için NVA satıcısına başvurun](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-### <a name="validate-vm-network-statistics"></a>VM Ağ istatistiklerini doğrulama
+### <a name="validate-vm-network-statistics"></a>VM ağ istatistiklerini doğrulama
 
-VM ağı ani artışlar kullanıyorsa veya yüksek kullanım sürelerini gösteriyorsa, daha yüksek üretim özellikleri elde etmek için VM'nin SKU boyutunu da artırmanız gerekebilir. Hızlandırılmış Ağ özelliğini etkinleştirerek VM'yi yeniden dağıtabilirsiniz. NVA'nın Hızlandırılmış Ağ özelliğini destekleyip desteklemediğini doğrulamak için gerektiğinde [yardım için NVA satıcısına başvurun.](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)
+VM ağı artışlar kullanıyorsa veya yüksek kullanım dönemlerini gösteriyorsa, daha yüksek aktarım hızı özellikleri elde etmek için VM 'nin SKU boyutunu artırmanız de gerekebilir. Ayrıca, hızlandırılmış ağ özelliğinin etkin olmasını sağlayarak VM 'yi yeniden dağıtabilirsiniz. NVA 'nın hızlandırılmış ağ özelliğini destekleyip desteklemediğini doğrulamak için, gerektiğinde [Yardım IÇIN NVA satıcısına başvurun](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
-## <a name="advanced-network-administrator-troubleshooting"></a>Gelişmiş ağ yöneticisi sorun giderme
+## <a name="advanced-network-administrator-troubleshooting"></a>Gelişmiş Ağ Yöneticisi sorun giderme
 
-### <a name="capture-network-trace"></a>Ağ izleme yakalama
-**[PsPing](https://docs.microsoft.com/sysinternals/downloads/psping)** veya **Nmap'i**çalıştırırken kaynak VM, NVA ve hedef VM'de eşzamanlı bir ağ izlemesini yakalayın ve izlemeyi durdurun.
+### <a name="capture-network-trace"></a>Ağ izlemesini yakala
+**[Psping](https://docs.microsoft.com/sysinternals/downloads/psping)** veya **Nmap**'i çalıştırırken kaynak VM 'de, NVA 'da ve hedef VM 'de eşzamanlı bir ağ izlemesi yakalayın ve ardından izlemeyi durdurun.
 
-1. Eşzamanlı ağ izlemesini yakalamak için aşağıdaki komutu çalıştırın:
+1. Eşzamanlı bir ağ izlemesi yakalamak için aşağıdaki komutu çalıştırın:
 
    **Windows için**
 
-   netsh trace start capture=yes tracefile=c:\server_IP.etl scenario=netconnection
+   Netsh Trace start Capture = Yes TraceFile = c:\ server_IP. etl senaryo = NetConnection
 
    **Linux için**
 
-   sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
+   sudo tcpdump-S0-ı eth0-X-w vmtrace. Cap
 
-2. Kaynak VM'den hedef VM'ye **PsPing** veya **Nmap** kullanın (örneğin: `PsPing 10.0.0.4:80` veya). `Nmap -p 80 10.0.0.4`
-3. [Network Monitor](https://www.microsoft.com/download/details.aspx?id=4865) veya tcpdump kullanarak hedef VM'den ağ izlemesini açın. **PsPing** veya **Nmap'i** çalıştırdığınız Kaynak VM'nin `IPv4.address==10.0.0.4 (Windows netmon)` IP'si `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` için (Linux) bir görüntü filtresi uygulayın.
+2. Kaynak VM 'den hedef VM 'ye **Psping** veya **Nmap** kullanın (örneğin: `PsPing 10.0.0.4:80` veya `Nmap -p 80 10.0.0.4`).
+3. [Ağ İzleyicisi](https://www.microsoft.com/download/details.aspx?id=4865) veya tcpdump kullanarak hedef VM 'den ağ izlemesini açın. `IPv4.address==10.0.0.4 (Windows netmon)` Ya `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` da (Linux) gibi, **Psping** veya **Nmap** çalıştıran kaynak VM 'nin IP 'si için bir görüntüleme filtresi uygulayın.
 
-### <a name="analyze-traces"></a>İzleri analiz et
+### <a name="analyze-traces"></a>İzlemeleri çözümle
 
-Arka uç VM izlemesine gelen paketleri görmüyorsanız, büyük olasılıkla bir NSG veya UDR müdahale veya NVA yönlendirme tabloları yanlıştır.
+Arka uç VM izlemesine gelen paketleri görmüyorsanız, büyük olasılıkla bir NSG veya UDR engelliyor olabilir ya da NVA yönlendirme tabloları yanlış olur.
 
-Gelen paketleri görüyorsanız ancak yanıt yoksa, VM uygulaması veya güvenlik duvarı sorununu çözmeniz gerekebilir. Bu sorunlardan biri için, [gerektiğinde yardım için NVA satıcısına başvurun.](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)
+Gelen paketleri görüyorsanız ancak yanıt yoksa, VM uygulaması veya güvenlik duvarı sorununu çözmeniz gerekebilir. Bu sorunlardan biri için [gerektiğinde yardım almak üzere NVA satıcısına başvurun](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).

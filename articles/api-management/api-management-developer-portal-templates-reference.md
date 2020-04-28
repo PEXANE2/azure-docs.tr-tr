@@ -1,6 +1,6 @@
 ---
-title: Azure API Yönetimi Geliştiricisi portalı şablonları | Microsoft Dokümanlar
-description: Azure API Yönetimi'nde bir dizi şablonkullanarak geliştirici portal sayfalarının içeriğini nasıl özelleştireceğimiz öğrenin.
+title: Azure API Management geliştirici portalı şablonları | Microsoft Docs
+description: Azure API Management 'de bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmeyi öğrenin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73176796"
 ---
 # <a name="developer-portal-templates"></a>Geliştirici portalı şablonları
 
-Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içeriklerini yapılandıran bir dizi şablon kullanarak özelleştirme olanağı sağlar. [DotLiquid](http://dotliquidmarkup.org/) sözdizimini ve [Tasarımcılar için DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)gibi seçtiğiniz düzenleyiciyi ve sağlanan yerelleştirilmiş [String kaynakları,](api-management-template-resources.md#strings) [Glyph kaynakları](api-management-template-resources.md#glyphs)ve Sayfa [denetimleri](api-management-page-controls.md)kümesini kullanarak, bu şablonları kullanarak uygun gördüğünüz sayfaların içeriğini yapılandırmak için büyük bir esnekliğe sahipsiniz.  
+Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. Bu şablonları kullanarak uygun gördüğünüz şekilde, sayfanın içeriğini yapılandırmak için [dotsıvı](http://dotliquidmarkup.org/) Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar için dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)ile birlikte kullanabilirsiniz.  
   
-Şablonlarla çalışma hakkında daha fazla bilgi için, [şablonları kullanarak API Yönetimi geliştirici portalını nasıl özelleştireceğime](api-management-developer-portal-templates.md)bakın.  
+Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [şablonları kullanarak API Management Geliştirici Portalını Özelleştirme](api-management-developer-portal-templates.md).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -36,23 +36,23 @@ Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içerikleri
     -   [API listesi](api-management-api-templates.md#APIList)  
     -   [İşlem](api-management-api-templates.md#Product)  
     -   [Kod örnekleri](api-management-api-templates.md#CodeSamples)  
-        -   [Curl](api-management-api-templates.md#Curl)  
-        -   [C #](api-management-api-templates.md#CSharp)  
+        -   [Kıvr](api-management-api-templates.md#Curl)  
+        -   [, #](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  
-        -   [Javascript](api-management-api-templates.md#JavaScript)  
+        -   [JavaScript](api-management-api-templates.md#JavaScript)  
         -   [Amaç C](api-management-api-templates.md#ObjectiveC)  
         -   [PHP](api-management-api-templates.md#PHP)  
         -   [Python](api-management-api-templates.md#Python)  
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [Ürünler](api-management-product-templates.md)  
     -   [Ürün listesi](api-management-product-templates.md#ProductList)  
-    -   [Ürün](api-management-product-templates.md#Product)  
+    -   [Ürünüyle](api-management-product-templates.md#Product)  
 -   [Uygulamalar](api-management-application-templates.md)  
-    -   [Başvuru listesi](api-management-application-templates.md#ProductList)  
+    -   [Uygulama listesi](api-management-application-templates.md#ProductList)  
     -   [Uygulama](api-management-application-templates.md#Application)  
 -   [Sorunlar](api-management-issue-templates.md)  
     -   [Sorun listesi](api-management-issue-templates.md#IssueList)  
--   [Kullanıcı Profili](api-management-user-profile-templates.md)  
+-   [Kullanıcı profili](api-management-user-profile-templates.md)  
     -   [Profil](api-management-user-profile-templates.md#Profile)  
     -   [Abonelikler](api-management-user-profile-templates.md#Subscriptions)  
     -   [Uygulamalar](api-management-user-profile-templates.md#Applications)  

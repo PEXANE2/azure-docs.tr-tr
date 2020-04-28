@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde ST_ISVALIDDETAILED
-description: Azure Cosmos DB'de SQL sistem fonksiyonu ST_ISVALIDDETAILED hakkında bilgi edinin.
+description: Azure Cosmos DB ST_ISVALIDDETAILED SQL sistem işlevi hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9e640c223c2fef844b9b53e1f4afa3a5d398c8c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71349346"
 ---
 # <a name="st_isvaliddetailed-azure-cosmos-db"></a>ST_ISVALIDDETAILED (Azure Cosmos DB)
- Belirtilen GeoJSON Point, Polygon veya LineString ifadesi geçerliyse ve geçersizse de dize değeri olarak neden varsa Boolean değeri içeren bir JSON değeri döndürür.  
+ Belirtilen GeoJSON noktası, çokgen veya LineString ifadesi geçerliyse Boole değeri içeren bir JSON değeri döndürür ve geçersiz ise, bir dize değeri olarak neden olur.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -26,15 +26,15 @@ ST_ISVALIDDETAILED(<spatial_expr>)
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *spatial_expr*  
-   Bir GeoJSON noktası veya çokgen ifadesidir.  
+   Bir GeoJSON noktası ya da çokgen ifadesi.  
   
-## <a name="return-types"></a>İade türleri
+## <a name="return-types"></a>Dönüş türleri
   
-  Belirtilen GeoJSON noktası veya çokgen ifadesi geçerliyse ve geçersizse, ayrıca dize değeri olarak nedeni ise Boolean değeri içeren bir JSON değeri döndürür.  
+  Belirtilen GeoJSON noktası ya da çokgen ifadesi geçerliyse Boole değeri içeren bir JSON değeri döndürür ve geçersiz ise, bir dize değeri olarak neden olur.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek kullanarak `ST_ISVALIDDETAILED`geçerliliği (ayrıntılarla) nasıl denetleriz.  
+  Aşağıdaki örnek kullanarak `ST_ISVALIDDETAILED`geçerliliği denetleme (ayrıntılarla).  
   
 ```sql
 SELECT ST_ISVALIDDETAILED({   
@@ -56,6 +56,6 @@ SELECT ST_ISVALIDDETAILED({
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Mekansal işlevler Azure Cosmos DB](sql-query-spatial-functions.md)
-- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Uzamsal işlevler Azure Cosmos DB](sql-query-spatial-functions.md)
+- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB giriş](introduction.md)

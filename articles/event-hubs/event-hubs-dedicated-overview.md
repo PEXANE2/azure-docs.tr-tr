@@ -1,6 +1,6 @@
 ---
-title: Özel etkinlik merkezlerine genel bakış - Azure Etkinlik Hub'ları | Microsoft Dokümanlar
-description: Bu makalede, etkinlik hub'larının tek kiracılı dağıtımları sunan özel Azure Etkinlik Hub'larına genel bir bakış sunulmaktadır.
+title: Adanmış Olay Hub 'larına genel bakış-Azure Event Hubs | Microsoft Docs
+description: Bu makalede, özel Azure Event Hubs, Olay Hub 'larının tek kiracılı dağıtımlarını sunan bir genel bakış sunulmaktadır.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -16,92 +16,92 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: f67be1d31125b21048deca4d9cafcc76f4ffc3b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72516753"
 ---
-# <a name="overview-of-event-hubs-dedicated"></a>Özel Etkinlik Hub'larına Genel Bakış
+# <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Ayrılmış genel bakış
 
-*Olay Hub'ları kümeleri,* en zorlu akış gereksinimlerine sahip müşteriler için tek kiracılı dağıtımlar sunar. Bu tek kiracılı teklif %99,99 SLA garantilidir ve yalnızca Özel fiyatlandırma katmanımızda mevcuttur. Bir Olay Hub'ları kümesi, garantili kapasite ve saniyenin altı gecikmesi ile saniyede milyonlarca olay meydana getirebilir. Adanmış küme içinde oluşturulan ad alanları ve etkinlik hub'ları, Standart teklifin tüm özelliklerini ve daha fazlasını içerir, ancak giriş sınırı olmadan. Ayrıca, veri akışlarını Azure Depolama veya Azure Veri Gölü'ne otomatik olarak toplu olarak ekleyip günlüğe kaydetmenize olanak tanıyan popüler [Event Hubs Capture](event-hubs-capture-overview.md) özelliğini de ek ücret ödemeden içerir. 
+*Event Hubs kümeler* en zorlu akış gereksinimlerine sahip müşteriler için tek kiracılı dağıtımlar sağlar. Bu tek kiracılı teklifin% 99,99 bir SLA 'Sı vardır ve yalnızca adanmış fiyatlandırma katmanımızda kullanılabilir. Bir Event Hubs kümesi, garantili kapasite ve alt saniyelik gecikme süresiyle saniyede milyonlarca olayı alabilir. Adanmış küme içinde oluşturulan ad alanları ve Olay Hub 'ları, standart teklifin tüm özelliklerini ve daha fazlasını içerir, ancak herhangi bir giriş sınırı olmadan. Ayrıca, ek bir ücret ödemeden popüler [Event Hubs yakalama](event-hubs-capture-overview.md) özelliğini de içerir, böylece veri akışlarını otomatik olarak Azure depolama 'ya veya Azure Data Lake günlüğe kaydedebilirsiniz. 
 
-Kümeler, önceden tahsis edilmiş bir CPU ve bellek kaynağı olan **Kapasite Birimleri (CUs)** tarafından karşılanır ve faturalandırılır. Her küme için 1, 2, 4, 8, 12, 16 veya 20 CUs satın alabilirsiniz. CU başına ne kadar yutup aktarabileceğiniz, üretici ve tüketici sayısı, yük şekli, çıkış oranı gibi çeşitli faktörlere bağlıdır (daha fazla ayrıntı için aşağıdaki kıyaslama sonuçlarına bakın). 
+Kümeler, önceden ayrılmış bir CPU ve bellek kaynakları miktarı olan **Kapasite birimleri (cu düzeyinde kapsanır)** tarafından sağlanır ve faturalandırılır. Her küme için 1, 2, 4, 8, 12, 16 veya 20 cu düzeyinde kapsanır satın alabilirsiniz. Her CU için alma ve akış alma işlemlerinin sayısı, üreticileri ve tüketiciler, yük şekli, çıkış oranı (daha fazla ayrıntı için aşağıdaki kıyaslama sonuçlarına bakın) gibi çeşitli faktörlere bağlıdır. 
 
 > [!NOTE]
-> Tüm Event Hub kümeleri varsayılan olarak Kafka özelliklidir ve mevcut Kafka tabanlı uygulamalarınız tarafından kullanılabilecek Kafka uç noktalarını destekler. Kafka'nın kümenizde etkin olması Kafka dışı kullanım durumlarınızı etkilemez; Kafka'yı bir küme üzerinde devre dışı kalmanız için bir seçenek ya da gerek yoktur.
+> Tüm Event Hubs kümeleri varsayılan olarak Kafka etkindir ve var olan Kafka tabanlı uygulamalarınız tarafından kullanılabilecek Kafka uç noktalarını destekler. Kümenizde Kafka etkin olma, Kafka olmayan kullanım örneklerini etkilemez; bir küme üzerinde Kafka devre dışı bırakılması gerekmez veya bu bir seçenek yoktur.
 
-## <a name="why-dedicated"></a>Neden Adanmış?
+## <a name="why-dedicated"></a>Neden ayrılmış?
 
-Özel Etkinlik Hub'ları, kurumsal düzeyde kapasiteye ihtiyaç duyan müşteriler için üç cazip avantaj sunar:
+Adanmış Event Hubs, kurumsal düzeyde kapasiteye ihtiyaç duyan müşteriler için üç etkileyici avantaj sunar:
 
-#### <a name="single-tenancy-guarantees-capacity-for-better-performance"></a>Tek kira, daha iyi performans için kapasiteyi garanti eder
+#### <a name="single-tenancy-guarantees-capacity-for-better-performance"></a>Tek kiracı, daha iyi performans için kapasiteyi garanti eder
 
-Özel küme, kapasiteyi tam ölçekte garanti eder ve trafikteki herhangi bir patlamayı karşılamak için tam dayanıklı depolama ve ikinci gecikme ye sahip gigabaytlara kadar veri akışı sağlayabilir. 
+Adanmış bir küme, tam ölçekte kapasiteyi garanti eder ve trafikte herhangi bir patlama sağlamak için tam olarak dayanıklı depolama ve alt saniyelik gecikme süresiyle çok sayıda akış verisi alabilir. 
 
-#### <a name="inclusive-and-exclusive-access-to-features"></a>Özelliklere kapsamlı ve özel erişim 
-Özel teklif, ek ücret ödemeden Capture gibi özelliklerin yanı sıra Bring Your Own Key (BYOK) gibi yaklaşan özelliklere özel erişim içerir. Hizmet ayrıca yük dengeleme, işletim sistemi güncelleştirmeleri, güvenlik yamaları ve müşteri için bölümleme yönetir, böylece altyapı bakımına daha az zaman ve istemci tarafı özellikleri oluşturmaya daha fazla zaman ayırabilirsiniz.  
+#### <a name="inclusive-and-exclusive-access-to-features"></a>Özelliklere dahil ve özel erişim 
+Adanmış teklif, ek bir ücret ödemeden yakalama gibi özellikleri ve Kendi Anahtarını Getir (BYOK) gibi yakında sunulacak özelliklere özel erişimi de içerir. Hizmet Ayrıca, altyapı bakımı üzerinde daha az zaman harcayabilmeniz ve istemci tarafı Özellikler oluştururken daha fazla zaman harcamanız için yük dengelemeyi, işletim sistemi güncelleştirmelerini, güvenlik düzeltme eklerini ve Bölümlendirmeyi yönetir.  
 
-#### <a name="cost-savings"></a>Maliyet Tasarrufu
-Yüksek giriş hacimlerinde (>100 TUs), bir kümenin saat başına maliyeti, Standart teklifteki benzer miktardaki üretim birimi satın almaktan önemli ölçüde daha azdır.
+#### <a name="cost-savings"></a>Maliyet tasarrufları
+Yüksek giriş birimlerinde (>100 lik), standart sunumdaki karşılaştırılabilir üretilen iş birimi miktarı satın almadan bir küme maliyeti saat başına önemli ölçüde küçüktür.
 
 
-## <a name="event-hubs-dedicated-quotas-and-limits"></a>Etkinlik Merkezleri Özel Kotalar ve Limitler
+## <a name="event-hubs-dedicated-quotas-and-limits"></a>Event Hubs Ayrılmış kotaları ve limitleri
 
-Etkinlik Hub'ları Özel teklifi, en az 4 saatlik kullanımla sabit bir aylık fiyata faturalandırılır. Özel katman, Standart planın tüm özelliklerini sunar, ancak kurumsal ölçek kapasitesi ve zorlu iş yüküne sahip müşteriler için sınırlar sunar. 
+Event Hubs Ayrılmış teklif, en az 4 saatlik kullanım ile sabit bir aylık fiyatla faturalandırılır. Adanmış katman, standart planın tüm özelliklerini sunar, ancak yoğun iş yükleri olan müşterilere yönelik kurumsal ölçekli kapasite ve sınırlara sahiptir. 
 
 | Özellik | Standart | Ayrılmış |
 | --- |:---:|:---:|
-| Bant genişliği | 20 TOS (en fazla 40 TUs) | 20 cus |
+| Bant genişliği | 20 s (40 'e kadar) | 20 cu düzeyinde kapsanır |
 | Ad Alanları |  1 | CU başına 50 |
-| Event Hubs |  Ad alanı başına 10 | Ad alanı başına 1000 |
-| Giriş olayları | Milyon etkinlik başına ödeme | Dahil |
-| İleti Boyutu | 1 Milyon Bayt | 1 Milyon Bayt |
-| Bölümler | Etkinlik Hub'ı başına 32 | Etkinlik Hub başına 1024 |
-| Tüketici grupları | Etkinlik Hub'ı başına 20 | CU başına sınır yok, etkinlik hub'ı başına 1000 |
-| Aracılı bağlantılar | 1.000 dahil, 5.000 max | 100 K dahil ve maksimum |
-| İleti Bekletme | 7 gün, TU başına 84 GB dahil | 90 gün, CU başına 10 TB dahil |
+| Event Hubs |  ad alanı başına 10 | ad alanı başına 1000 |
+| Giriş olayları | Milyon olay başına ödeme | Dahil |
+| İleti boyutu | 1.000.000 bayt | 1.000.000 bayt |
+| Bölümler | Olay Hub 'ı başına 32 | Olay Hub 'ı başına 1024 |
+| Tüketici grupları | Olay Hub 'ı başına 20 | Her saniyedeki limit yok, Olay Hub 'ı başına 1000 |
+| Aracılı bağlantılar | 1.000 dahil, en fazla 5.000 | 100 K dahil ve maks |
+| İleti bekletme | 7 gün, TU başına 84 GB dahil | 90 gün, CU başına 10 TB dahildir |
 | Capture | Saat başına ödeme | Dahil |
 
-## <a name="how-to-onboard"></a>Gemiye nasıl binilir?
+## <a name="how-to-onboard"></a>Ekleme
 
-[Azure Portalı](https://aka.ms/eventhubsclusterquickstart) üzerinden [bir Olay Hub'ları kümesi oluşturmaya](event-hubs-dedicated-cluster-create-portal.md) yarayacak self servis deneyimi artık Önizleme'de. Özel Etkinlik Hub'larına binme konusunda herhangi bir sorunuz varsa veya yardıma ihtiyacınız varsa, lütfen [Etkinlik Hub'ları ekibiyle](mailto:askeventhubs@microsoft.com)iletişime geçin.
+[Azure portalı](https://aka.ms/eventhubsclusterquickstart) aracılığıyla [bir Event Hubs kümesi oluşturmaya](event-hubs-dedicated-cluster-create-portal.md) yönelik self servis deneyimi artık önizlemededir. Sorularınız varsa veya Event Hubs Ayrılmış için yardıma ihtiyacınız varsa, lütfen [Event Hubs ekibine](mailto:askeventhubs@microsoft.com)başvurun.
 
 ## <a name="faqs"></a>SSS
 
-#### <a name="what-can-i-achieve-with-a-cluster"></a>Bir kümeyle ne yapabilirim?
+#### <a name="what-can-i-achieve-with-a-cluster"></a>Bir küme ile neler elde edebilirim?
 
-Bir Etkinlik Hub'ları kümesi için, ne kadar yutup akış yapabileceğiniz, üreticileriniz, tüketicileriniz, sindirip işleme oranınız ve çok daha fazlası gibi çeşitli etkenlere bağlıdır. 
+Bir Event Hubs kümesi için, alma ve akış alma işlemleri, üreticileri, Tüketicileriniz, geri alma ve işleme alma ücreti ve çok daha fazlası gibi çeşitli faktörlere bağlıdır. 
 
-Aşağıdaki tablo, testlerimiz sırasında elde ettiğimiz kıyaslama sonuçlarını gösterir:
+Aşağıdaki tabloda, sınamamız sırasında elde ettiğimiz kıyaslama sonuçları gösterilmektedir:
 
-| Yük şekli | Alıcı | Giriş bant genişliği| İletileri girin | Çıkış bant genişliği | Çıkış mesajları | Toplam TUs | CU başına TUs |
+| Yük şekli | Alıcıların | Giriş bant genişliği| Giriş iletileri | Çıkış bant genişliği | Çıkış iletileri | Toplam DTU | CU başına DTU |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB toplu iş | 2 | 400 MB/sn | 400k ileti/sn | 800 MB/sn | 800k ileti/sn | 400 TUs | 100 tüs | 
-| 10x10KB toplu iş | 2 | 666 MB/sn | 66.6k ileti/sn | 1,33 GB/sn | 133k ileti/sn | 666 TUs | 166 TUs |
-| 6x32KB toplu iş | 1 | 1,05 GB/sn | 34k mesajlar / sn | 1,05 GB/sn | 34k ileti/sn | 1000 TUs | 250 TÜs |
+| 100x1KB toplu işleri | 2 | 400 MB/sn | 400k İleti/sn | 800 MB/sn | 800k İleti/sn | 400 tüs | 100 tüs | 
+| 10x10KB toplu işlem | 2 | 666 MB/sn | 66.6 k iletisi/sn | 1,33 GB/sn | 133k İleti/sn | 666 tüs | 166 tüs |
+| 6x32KB toplu işleri | 1 | 1,05 GB/sn | 34k İleti/sn | 1,05 GB/sn | 34k İleti/sn | 1000 tüs | 250 tüs |
 
-Testte aşağıdaki kriterler kullanılmıştır:
+Sınamada, aşağıdaki ölçütler kullanılmıştır:
 
-- Dört kapasite birimi (CUs) içeren özel katmanlı Olay Hub'ları kümesi kullanıldı. 
-- Yutma için kullanılan olay hub'ı 200 bölümden osahipti. 
-- Yutulan veriler, tüm bölümlerden alan iki alıcı uygulaması tarafından alındı.
+- Dört Kapasite birimi (cu düzeyinde kapsanır) içeren bir adanmış katman Event Hubs kümesi kullanıldı. 
+- Alma işlemi için kullanılan olay hub 'ının 200 bölümü vardı. 
+- Alınan veriler, tüm bölümlerden alınan iki alıcı uygulaması tarafından alındı.
 
-#### <a name="can-i-scale-updown-my-cluster"></a>Kümemi büyütebilir miyim/küçültebilir miyim?
+#### <a name="can-i-scale-updown-my-cluster"></a>Kümemin ölçeğini artırma/azaltma yapabilir miyim?
 
-Oluşturulduktan sonra kümeler en az 4 saatlik kullanım için faturalandırılır. Self servis deneyiminin Önizleme sürümünde, Kümenizi yukarı veya aşağı ölçeklendirmek için Teknik > Kotası > *Özel Kümeyi Ölçeklendirme veya Küçültme Isteği* altındaki Olay Hub'ları ekibine bir destek [isteği](https://ms.portal.azure.com/#create/Microsoft.Support) gönderebilirsiniz. Kümenizi küçültme isteğinin tamamlanması 7 gün kadar sürebilir. 
+Oluşturulduktan sonra, kümeler en az 4 saatlik kullanım için faturalandırılır. Self Servis deneyiminin önizleme sürümünde, Event Hubs ekibine teknik > kota > bir [destek talebi](https://ms.portal.azure.com/#create/Microsoft.Support) göndererek, kümenizin ölçeğini yukarı veya aşağı ölçeklendirmek üzere *ayrılmış kümeyi ölçeğini büyütme veya küçültme isteğinde* bulunabilir. Kümenizi ölçeklendirmek için isteğin tamamlanması 7 güne kadar sürebilir. 
 
-#### <a name="how-will-geo-dr-work-with-my-cluster"></a>Geo-DR kümemle nasıl çalışacak?
+#### <a name="how-will-geo-dr-work-with-my-cluster"></a>Kümemdeki coğrafi ve DR nasıl çalışır?
 
-Bir ad alanını, Adanmış katman kümesi altında, Adanmış katman kümesi altında başka bir ad alanıyla coğrafi olarak eşleştirebilirsiniz. Üretim limiti hatalara neden olacak uyumsuz olacağından, Standart teklifimizde bir ad alanıyla Özel katman ad alanı eşleştirmeyi teşvik etmeyiz. 
+Ayrılmış katman kümesi altında başka bir ad alanı ile ayrılmış katman kümesi altında bir ad alanını coğrafi olarak eşleştirin. Aktarım hızı sınırı uyumsuz olacağı için standart Teklifimizde bir ad alanı ile adanmış katman ad alanını eşleştirmeyi öneririz. 
 
-#### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Standart ad alanlarımı Adanmış katman kümesine ait olacak şekilde geçirebilir miyim?
-Şu anda olay hub'larınızı Standart ad alanından Özel bir adaktan geçirmek için otomatik bir geçiş işlemini destekliyoruz. 
+#### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Standart ad alanlarımı adanmış katman kümesine ait olacak şekilde geçirebilir miyim?
+Şu anda, Olay Hub 'larınızın verilerini standart bir ad alanından adanmış bir şekilde geçirmek için otomatik bir geçiş işlemini desteklemiyoruz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel Etkinlik Hub'ları hakkında ek bilgi almak için Microsoft satış temsilcinize veya Microsoft Destek'e başvurun. Ayrıca aşağıdaki bağlantıları ziyaret ederek bir küme oluşturabilir veya Etkinlik Hub'ları fiyatlandırma katmanları hakkında daha fazla bilgi edinebilirsiniz:
+Event Hubs Ayrılmış hakkında daha fazla bilgi edinmek için Microsoft satış temsilcinizle veya Microsoft Desteği başvurun. Ayrıca, aşağıdaki bağlantıları ziyaret ederek bir küme oluşturabilir veya Event Hubs fiyatlandırma katmanları hakkında daha fazla bilgi edinebilirsiniz:
 
-- [Azure Portalı'nda Etkinlik Hub'ları kümesi oluşturma](https://aka.ms/eventhubsclusterquickstart) 
-- [Olay Hub'ları Özel fiyatlandırma](https://azure.microsoft.com/pricing/details/event-hubs/). Ayrıca, Etkinlik Hub'larına Özel kapasite hakkında ek bilgi almak için Microsoft satış temsilcinize veya Microsoft Destek'e başvurabilirsiniz.
-- [Olay Hub'ları SSS](event-hubs-faq.md) fiyatlandırma bilgilerini içerir ve Olay Hub'ları hakkında sık sorulan bazı soruları yanıtlar.
+- [Azure portalı aracılığıyla Event Hubs kümesi oluşturma](https://aka.ms/eventhubsclusterquickstart) 
+- [Event Hubs ayrılmış fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/). Ayrıca, Event Hubs Ayrılmış kapasitesi hakkında ek ayrıntılar almak için Microsoft satış temsilcinizle veya Microsoft Desteği başvurabilirsiniz.
+- [Event HUBS SSS](event-hubs-faq.md) , fiyatlandırma bilgilerini içerir ve Event Hubs hakkında sık sorulan bazı sorulara yanıt verir.

@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 serisi donanım bileşen değiştirme | Microsoft Dokümanlar
-description: StorSimple cihazının PCM'leri, pil, denetleyici modülleri, EBOD denetleyicileri, disk sürücüleri ve şasisinin güvenli bir şekilde nasıl değiştirilebildiğini açıklar.
+title: StorSimple 8000 serisi donanım bileşeni değiştirme | Microsoft Docs
+description: Bir StorSimple cihazının PCMs, pil, denetleyici modülleri, EBOD denetleyicilerini, disk sürücülerinizi ve kasalarını güvenle nasıl değiştireceğiniz açıklanır.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -16,91 +16,91 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60321826"
 ---
-# <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınızdaki donanım bileşenini değiştirme
+# <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazındaki bir donanım bileşenini değiştirme
 
 ## <a name="overview"></a>Genel Bakış
-Donanım bileşeni değiştirme öğreticileri, Microsoft Azure StorSimple 8000 serisi cihazınızın donanım bileşenlerini ve bunları kaldırmak ve değiştirmek için gereken adımları açıklar. Bu makalede, güvenlik simgeleri açıklanır, ayrıntılı öğreticiler için işaretçiler sağlar ve değiştirilebilir bileşenleri listeler.
+Donanım bileşeni değiştirme öğreticileri Microsoft Azure StorSimple 8000 serisi cihazınızın donanım bileşenlerini ve bunları kaldırmak ve değiştirmek için gereken adımları anlatmaktadır. Bu makalede güvenlik simgeleri açıklanmakta, ayrıntılı öğreticilere işaretçiler sağlanmıştır ve değiştirilebilen bileşenler listelenir.
 
 > [!IMPORTANT]
-> Herhangi bir StorSimple bileşenini kaldırmaya veya değiştirmeye çalışmadan önce, [güvenlik simgesi kurallarını](#safety-icon-conventions) ve diğer güvenlik [önlemlerini](storsimple-safety.md)gözden aldığınızdan emin olun.
+> Herhangi bir StorSimple bileşenini kaldırmaya veya değiştirmeye çalışmadan önce, [Güvenlik simgesi kurallarını](#safety-icon-conventions) ve diğer [güvenlik önlemlerini](storsimple-safety.md)gözden geçirdiğinizden emin olun.
 
 
 ### <a name="safety-icon-conventions"></a>Güvenlik simgesi kuralları
-Aşağıdaki tabloda bu öğreticilerde kullanılan güvenlik simgeleri açıklanmaktadır. Cihaz bileşenlerini kaldırmak ve değiştirmek için adımlardan geçerken bu güvenlik simgelerine dikkat edin.
+Aşağıdaki tabloda, bu öğreticilerde kullanılan güvenlik simgeleri açıklanmaktadır. Cihaz bileşenlerini kaldırma ve değiştirme adımlarını izleyerek bu güvenlik simgelerine yakın bir şekilde dikkat edin.
 
 | Simge | Metin | Ek bilgiler |
 |:--- |:--- |:--- |
-| ![Uyarı simgesi](./media/storsimple-hardware-component-replacement/Warning.png) |**Tehlike!** |Kaçınılmaması halinde ölümle veya ciddi yaralanmalara yol açabilecek tehlikeli bir durumu gösterir. Bu sinyal sözcüğü en uç durumlarla sınırlıdır. |
-| ![Uyarı simgesi](./media/storsimple-hardware-component-replacement/Warning.png) |**Uyarı!** |Kaçınılmaması halinde ölüm veya ciddi yaralanmalara yol açabilecek tehlikeli bir durumu gösterir. |
-| ![Dikkat simgesi](./media/storsimple-hardware-component-replacement/Caution.png) |**Dikkat!** |Kaçınılmaması halinde küçük veya orta derecede yaralanmaya neden olabilecek tehlikeli bir durumu gösterir. |
-| ![Bildirim simgesi](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**Fark:** |Önemli kabul edilen, ancak tehlikeyle ilgili olmayan bilgileri gösterir. |
-| ![Elektrik şoku simgesi](./media/storsimple-hardware-component-replacement/Electric.png) |**Elektrik Çarpması Tehlikesi** |Yüksek voltajı gösterir. |
-| ![Ağır ağırlık simgesi](./media/storsimple-hardware-component-replacement/Weight.png) |**Ağır Ağırlık** | |
-| ![Kullanıcı yada servis edilebilen parçalar simgesi yok](./media/storsimple-hardware-component-replacement/NoUserServiceableParts.png) |**Kullanıcı ServisiNe Uygun Parça Yok** |Düzgün bir şekilde eğitilmedikçe erişmeyin. |
-| ![Talimatları okuma simgesi](./media/storsimple-hardware-component-replacement/ReadInstructions.png) |**Önce Tüm Talimatları Okuyun** | |
-| ![İpucu tehlike simgesi](./media/storsimple-hardware-component-replacement/TipHazard.png) |**İpucu Tehlike** | |
+| ![Uyarı simgesi](./media/storsimple-hardware-component-replacement/Warning.png) |**OLMA TEHLIKESI!** |Önedilmediği durumlarda, ölüm veya ciddi bir yaralama oluşmasına neden olan tehlikeli bir durum belirtir. Bu sinyal sözcüğü, en Extreme durumlarla sınırlıdır. |
+| ![Uyarı simgesi](./media/storsimple-hardware-component-replacement/Warning.png) |**WARNING!** |Önedilmediği durumlarda, ölüm veya ciddi bir yaralama oluşmasına neden olabilecek tehlikeli bir durum belirtir. |
+| ![Uyarı simgesi](./media/storsimple-hardware-component-replacement/Caution.png) |**DIKKATLI!** |Önedilmediği durumlarda küçük veya orta bir yaralanmaya neden olabilecek tehlikeli bir durum belirtir. |
+| ![Bildirim simgesi](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**DEĞIŞTIRILEBILECEĞINI** |Önemli kabul edilen, ancak tehlike ile ilgili olmayan bilgileri gösterir. |
+| ![Elektrik sarsıntı simgesi](./media/storsimple-hardware-component-replacement/Electric.png) |**Elektrik şok hasar** |Yüksek voltaj gösterir. |
+| ![Ağır ağırlık simgesi](./media/storsimple-hardware-component-replacement/Weight.png) |**Ağır ağırlık** | |
+| ![Kullanıcı hizmet verebilir parçası yok simgesi](./media/storsimple-hardware-component-replacement/NoUserServiceableParts.png) |**Hiçbir Kullanıcı hizmet konusu parçası yok** |Uygun şekilde Eğitilmediğiniz müddetçe bu erişimi kullanmayın. |
+| ![Yönergeleri oku simgesi](./media/storsimple-hardware-component-replacement/ReadInstructions.png) |**Önce tüm yönergeleri okuyun** | |
+| ![İpucu rastlantı simgesi](./media/storsimple-hardware-component-replacement/TipHazard.png) |**İpucu hasar** | |
 
 ### <a name="before-you-begin"></a>Başlamadan önce
-Bu eğitimde kullanılan cihazınız ve güvenlik simgeleri hakkındaki güvenlik bilgilerini edin. Tam bilgi için [StorSimple cihazınızı güvenli bir şekilde yükleyin ve çalıştırın.](storsimple-safety.md) StorSimple cihazınızı işlemeden önce [Güvenlik önlemlerini](storsimple-safety.md#handling-precautions) gözden geçirdiğinizden emin olun.
+Bu öğreticide, cihazınız ve güvenlik Simgeleriniz hakkındaki güvenlik bilgilerini öğrenmeye çalışın. Tüm bilgiler için [, güvenli bir şekilde yüklemek ve StorSimple cihazınızı çalıştırmak](storsimple-safety.md) sayfasına gidin. StorSimple cihazınızı oluşturmadan önce [güvenlik önlemlerinizi](storsimple-safety.md#handling-precautions) gözden geçirdiğinizden emin olun.
 
 Bir bileşeni değiştirmeyi denemeden önce aşağıdaki bilgileri göz önünde bulundurun.
 
-![Uyarı](./media/storsimple-hardware-component-replacement/Warning.png) ![Simgesi Elektrik](./media/storsimple-hardware-component-replacement/Electric.png) Şok Ukonu **UYARI!**
+![Uyarı simgesi](./media/storsimple-hardware-component-replacement/Warning.png) ![elektrik sarsıntı](./media/storsimple-hardware-component-replacement/Electric.png) simgesi **uyarısı!**
 
-* StorSimple cihazınızın modüllerini ve bileşenlerini kullanırken elektrostatik deşarj veya antistatik paspas kullanarak kendinizi düzgün bir şekilde topraklayın.
-* Herhangi bir devreye dokunmayın. Devreleri açığa çıkaran bileşenleri kullanırken verilen tutamaçları ve kılavuzları kullanın.
+* StorSimple cihazınızın modüllerini ve bileşenlerini işlerken, elektrostatik bir ücret veya antistatik bir işlem kullanarak kendinizi doğru şekilde yapın.
+* Herhangi bir devresi dokunmayın. Bir devre ortaya çıkarabilecek bileşenleri işlerken sağlanan tutamaçları ve kılavuzlarını kullanın.
 
-![Uyarı](./media/storsimple-hardware-component-replacement/Warning.png) ![Simgesi](./media/storsimple-hardware-component-replacement/NoticeIcon.png) Bildirimi Simge **DİkKAT:**
+![Uyarı simgesi](./media/storsimple-hardware-component-replacement/Warning.png) ![bildirim simgesi](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **bildirimi:**
 
-Bir modülü değiştirdiğinizde, **kasanın arkasında boş bir yuva asla bırakmayın.** Sorun kısmını kaldırmadan önce yedek veya boş bir modül edinin.
+Bir modülü değiştirdiğinizde, **hiçbir zaman kutunun arkada boş bir yuva bırakmayın**. Sorun parçasını kaldırmadan önce bir değiştirme veya boş modül alın.
 
 ## <a name="hardware-component-replacement-procedures"></a>Donanım bileşeni değiştirme yordamları
-StorSimple 8000 serisi cihazınız birincil ve/veya EBOD muhafazalarında birkaç eklenti modülünden oluşur. 8100 tek bir birincil kasaya sahipken, 8600 birincil kasası ve EBOD muhafazası olan çift kasalı bir cihazdır.
+StorSimple 8000 serisi cihazınız, birincil ve/veya EBOD kasaları içindeki çeşitli eklenti modüllerinden oluşur. 8100, tek bir birincil muhafaza içerir, ancak 8600 birincil bir kutu ve EBOD kasası içeren çift bir muhafaza aygıtıdır.
 
-Cihazınızdaki ana donanım bileşenleri aşağıdaki tablolarda özetlenmiştir. İlişkili öğreticiye gitmek için **Değiştirme yordamı** sütunundaki bağlantıyı tıklatın.
+Cihazınızdaki ana donanım bileşenleri aşağıdaki tablolarda özetlenmektedir. İlgili öğreticiye gitmek için **değiştirme yordamı** sütunundaki bağlantıya tıklayın.
 
-| Bileşenler | # Şimdiki Zaman | Eklenti modülü mü? | Değiştirme prosedürü |
+| Bileşenler | # Var | Eklenti modülü | Değiştirme yordamı |
 |:--- |:--- |:--- |:--- |
-| Kasa |1 |Hayır |[StorSimple cihazınızdaki şasiyi değiştirin](storsimple-8000-chassis-replacement.md) |
-| Birincil denetleyiciler |2 |Evet |[StorSimple cihazınızda bir denetleyici modüldeğiştirme](storsimple-8000-controller-replacement.md) |
-| 764W Güç ve Soğutma Modülleri (PCM' ler) |2 |Evet |[StorSimple cihazınızın güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md) |
-| Yedek pil |2 |Evet |[StorSimple cihazınızın yedek pil modülünü değiştirme](storsimple-8000-battery-replacement.md) |
-| Disk sürücüleri |12 |Evet |[StorSimple cihazınızda bir disk sürücüsüdeğiştirme](storsimple-8000-disk-drive-replacement.md) |
+| Kasa |1 |Hayır |[StorSimple cihazınızda kasayı değiştirme](storsimple-8000-chassis-replacement.md) |
+| Birincil denetleyiciler |2 |Yes |[StorSimple cihazınızda bir denetleyici modülünü değiştirme](storsimple-8000-controller-replacement.md) |
+| 764W güç ve soğutma modülleri (PCMs) |2 |Yes |[StorSimple cihazınızın güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md) |
+| Yedekleme pili |2 |Yes |[StorSimple cihazınızın yedek pil modülünü değiştirme](storsimple-8000-battery-replacement.md) |
+| Disk sürücüleri |12 |Yes |[StorSimple cihazınızda bir disk sürücüsünü değiştirme](storsimple-8000-disk-drive-replacement.md) |
 
-**Tablo 1** Birincil kasadaki donanım bileşenleri
+**Tablo 1** Birincil kasada donanım bileşenleri
 
-Birincil kasa ve EBOD muhafazası G/Ç modüllerinde farklılık gösterir. Ayrıca, PCM'ler farklı watt var. Birincil kasadaki PC'ler 764 W, EBOD kasasındakiler ise 580 W'dır. Birincil kasadaki PCM'ler de yedek pil modülü içerir.
+Birincil kutu ve EBOD Kasası, g/ç modülleriyle farklılık gösterir. Ayrıca, PCMs 'de farklı bir wattage vardır. Birincil kasadaki PCMs 764 W, ancak EBOD muhafazaları 580 W ' tır. Birincil kasadaki PCMs, yedekleme pil modülünü de içerir.
 
-| Bileşenler | # Şimdiki Zaman | Eklenti modülü mü? | Değiştirme prosedürü |
+| Bileşenler | # Var | Eklenti modülü | Değiştirme yordamı |
 |:--- |:--- |:--- |:--- |
-| Kasa |1 |Hayır |[StorSimple cihazınızdaki şasiyi değiştirin](storsimple-8000-chassis-replacement.md) |
-| EBOD denetleyicileri |2 |Evet |[StorSimple cihazınızda bir EBOD denetleyicisi değiştirme](storsimple-8000-ebod-controller-replacement.md) |
-| 580W Güç ve Soğutma Modülleri (PCM' ler) |2 |Evet |[StorSimple cihazınızın güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md) |
-| Disk sürücüleri |12 |Evet |[StorSimple cihazınızda bir disk sürücüsüdeğiştirme](storsimple-8000-disk-drive-replacement.md) |
+| Kasa |1 |Hayır |[StorSimple cihazınızda kasayı değiştirme](storsimple-8000-chassis-replacement.md) |
+| EBOD denetleyicileri |2 |Yes |[StorSimple cihazınızda bir EBOD denetleyicisini değiştirme](storsimple-8000-ebod-controller-replacement.md) |
+| 580W güç ve soğutma modülleri (PCMs) |2 |Yes |[StorSimple cihazınızın güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md) |
+| Disk sürücüleri |12 |Yes |[StorSimple cihazınızda bir disk sürücüsünü değiştirme](storsimple-8000-disk-drive-replacement.md) |
 
-**Tablo 2** EBOD kasasındaki donanım bileşenleri
+**Tablo 2** EBOD muhafazasında donanım bileşenleri
 
-Cihazdaki eklenti modülleri aşağıdaki ön ve arka diyagramlarda vurgulanır. Değiştirme gerekiyorsa, çeşitli eklenti modüllerinin konumunu belirlemek için bu diyagramları kullanabilirsiniz. Ön diyagram disk sürücülerini, EBOD kasasının ve birincil kasanın arka diyagramlarını gösterir ve eklenti modüllerini gösterir.
+Cihazdaki eklenti modülleri aşağıdaki ön ve arka diyagramlarda vurgulanır. Bu diyagramları, bir değiştirme gerekliyse çeşitli eklenti modüllerinin konumunu tespit etmek için kullanabilirsiniz. Ön diyagram, disk sürücüleri ve EBOD kasası ve birincil kutunun arka şemaları, eklenti modüllerini gösterir.
 
-![Disk sürücüleri ile cihazın ön paneli](./media/storsimple-hardware-component-replacement/IC741028.png)
+![Disk sürücüleri olan cihazın ön bölmesi](./media/storsimple-hardware-component-replacement/IC741028.png)
 
-**Şekil 1** Cihazın ön
+**Şekil 1** Cihazın önü
 
 | Etiketle | Açıklama |
 |:--- |:--- |
-| 0 - 11 |Disk sürücüleri (toplam 12) |
+| 0 - 11 |Disk sürücüleri (Toplam 12) |
 
-Hem birincil kasa hem de EBOD muhafazası tahrik taşıyıcı modüllerine sahiptir. Şasi evler on iki 3.5 " disk sürücüler bir 3 tarafından 4 formatında düzenlenmiş.
+Hem birincil kutu hem de EBOD Kasası, sürücü taşıyıcı modüllerdir. Kasa on iki 3,5 "disk sürücüsü 3 x 4 biçimde düzenlenmiştir.
 
-![Cihaz birincil muhafaza modüllerinin arka düzlemi](./media/storsimple-hardware-component-replacement/IC740994.png)
+![Cihaz birincil kutu modüllerinin geri düzlemi](./media/storsimple-hardware-component-replacement/IC740994.png)
 
-**Şekil 2** Birincil muhafazanın arkası
+**Şekil 2** Birincil Kasası geri
 
 | Etiketle | Açıklama |
 |:--- |:--- |
@@ -109,31 +109,31 @@ Hem birincil kasa hem de EBOD muhafazası tahrik taşıyıcı modüllerine sahip
 | 3 |Denetleyici 0 |
 | 4 |Denetleyici 1 |
 
-![Cihaz EBOD muhafaza eklentisi modüllerinin arka düzlemi](./media/storsimple-hardware-component-replacement/IC769599.png)
+![Cihaz EBOD Kasası eklenti modüllerinin geri düzlemi](./media/storsimple-hardware-component-replacement/IC769599.png)
 
-**Şekil 3** EBOD kasasının arkası
+**Şekil 3** EBOD Kasası geri
 
 | Etiketle | Açıklama |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
-| 3 |EBOD Denetleyici 0 |
-| 4 |EBOD Denetleyici 1 |
+| 3 |EBOD denetleyicisi 0 |
+| 4 |EBOD denetleyicisi 1 |
 
 ## <a name="field-replaceable-units"></a>Alan değiştirilebilir birimler
-StorSimple cihazınız için aşağıdaki alan değiştirilebilir birimler (FRUs) mevcuttur:
+StorSimple cihazınız için aşağıdaki alan değiştirilebilir birimler (FRU) kullanılabilir:
 
-* Şasi (entegre operasyon paneli dahil)
+* Kasa (tümleşik işlemler paneli dahil)
 * 764 W AC PCM
 * 580 W AC PCM
-* Sürücü taşıyıcı modülüne sahip sabit disk sürücüsü
+* Sürücü taşıyıcısı modülü ile sabit disk sürücüsü
 * Denetleyici modülü
 * EBOD denetleyici modülü
-* Yedek pil modülü
-* Raf montaj ray kiti
+* Yedekleme Pil modülü
+* Raf bağlama demiryolu seti
 
-Bu değiştirme birimlerinden herhangi birini sipariş etmek için lütfen [Microsoft Destek'e başvurun.](storsimple-8000-contact-microsoft-support.md)
+Bu değiştirme birimlerinden herhangi birini sıralamak için lütfen [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
-StorSimple donanım bileşenini değiştirmeye çalışmadan önce tüm [güvenlik bilgilerini](storsimple-safety.md) gözden geçirin.
+StorSimple donanım bileşenini değiştirmeyi denemeden önce tüm [güvenlik bilgilerini](storsimple-safety.md) gözden geçirin.
 

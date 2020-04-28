@@ -1,6 +1,6 @@
 ---
-title: Ses ve SMS için Twilio Nasıl Kullanılır (.NET) | Microsoft Dokümanlar
-description: Azure'daki Twilio API hizmetiyle nasıl telefon görüşmesi yapacağınızı ve SMS mesajı göndermeyi öğrenin. .NET'te yazılan kod örnekleri.
+title: Ses ve SMS için Twilio kullanma (.NET) | Microsoft Docs
+description: Azure 'da bir telefon araması yapmayı ve Twilio API hizmetiyle SMS iletisi göndermenizi öğrenin. .NET dilinde yazılan kod örnekleri.
 services: ''
 documentationcenter: .net
 author: georgewallace
@@ -13,50 +13,50 @@ ms.topic: article
 ms.date: 04/24/2015
 ms.author: gwallace
 ms.openlocfilehash: 22b33d7b4b0ff69a2e751cadff70453f73ed4f8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69876813"
 ---
-# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Azure'dan ses ve SMS özellikleri için Twilio nasıl kullanılır?
-Bu kılavuz, Azure'daki Twilio API hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirildirilebildiğini gösterir. Kapsanan senaryolar arasında telefon görüşmesi yapmak ve Kısa Mesaj Hizmeti (SMS) mesajı göndermek yer almaktadır. Twilio hakkında daha fazla bilgi ve uygulamalarınızda ses ve SMS kullanmak için [Sonraki adımlar](#NextSteps) bölümüne bakın.
+# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Azure 'dan ses ve SMS özellikleri için Twilio kullanma
+Bu kılavuzda, Azure 'da Twilio API hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Kapsanan senaryolar, telefon araması yapmayı ve kısa mesaj hizmeti (SMS) iletisi göndermeyi içerir. Twilio hakkında daha fazla bilgi edinmek ve uygulamalarınızda sesli ve SMS kullanma hakkında daha fazla bilgi için [sonraki adımlar](#NextSteps) bölümüne bakın.
 
 ## <a name="what-is-twilio"></a><a id="WhatIs"></a>Twilio nedir?
-Twilio, iş iletişiminin geleceğine güç vererek geliştiricilerin ses, VoIP ve mesajlaşmayı uygulamalara yerleştirmesini sağlıyor. Bulut tabanlı, küresel bir ortamda ihtiyaç duyulan tüm altyapıyı sanallaştırarak Twilio iletişim API platformu aracılığıyla ortaya çıkarırlar. Uygulamalar oluşturmak için basit ve ölçeklenebilir. Gittikçe öde fiyatlandırmasıyla esnekliğin keyfini çıkarın ve bulut güvenilirliğinden yararlanın.
+Twilio, iş iletişiminin geleceği güçleştir, geliştiricilerin uygulamalara ses, VoIP ve mesajlaşma ekleme imkanı sağlar. Bulut tabanlı, genel bir ortamda gereken tüm altyapıyı sanallaştırırlar ve bu, Twilio Communications API platformu aracılığıyla kullanıma sunmaktadır. Uygulamalar derleme ve ölçeklenebilir basittir. Kullandıkça Öde fiyatlandırmasıyla esneklikten yararlanın ve bulut güveninden yararlanın.
 
-**Twilio Voice,** uygulamalarınızın telefon görüşmesi yapmasına ve almasını sağlar. **Twilio SMS,** uygulamalarınızın SMS gönderip almasını sağlar. **Twilio Client** herhangi bir telefon, tablet veya tarayıcıdan VoIP aramaları yapmanızı sağlar ve WebRTC'yi destekler.
+**Twilio Voice** , uygulamalarınızın telefon araması yapmasına ve almasına izin verir. **TWILIO SMS** , uygulamalarınızın SMS iletileri göndermesini ve almasını sağlar. **Twilio istemcisi** , herhangi bir telefonda, tabletten veya tarayıcıdan VoIP çağrısı yapmanıza ve WebRTC 'yi desteketmenize olanak tanır.
 
-## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio Fiyatlandırma ve Özel Teklifler
-Azure müşterilerine [özel](https://www.twilio.com/azure)bir teklif alır: Twilio Hesabınızı yükselttiğinde ücretsiz $10 Twilio Kredisi. Bu Twilio Kredisi herhangi bir Twilio kullanımına uygulanabilir (telefon numaranızın ve mesajınızın veya arama hedefinizin konumuna bağlı olarak 1000'e kadar SMS mesajı göndermeye veya 1000'e kadar gelen Sesli dakika almaya eşdeğer 10$'lık kredi). Bu Twilio kredi nizi kullanın ve [twilio.com/azure'dan](https://twilio.com/azure)başlayın.
+## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio fiyatlandırması ve özel teklifler
+Azure müşterileri özel bir [teklif](https://www.twilio.com/azure)alır: Twilio hesabınızı yükselttiğinizde Twilio kredisi $10. Bu Twilio kredisi herhangi bir Twilio kullanımına uygulanabilir (telefon numaranız ve iletinizin ya da çağrı hedefinin konumuna bağlı olarak, 1.000 SMS ileti veya en fazla 1000 gelen ses dakikası alma için $10 kredi eşdeğeri). Bu Twilio kredilerini kullanın ve [Twilio.com/Azure](https://twilio.com/azure)adresinden başlayın.
 
-Twilio bir öde-as-you-go hizmetidir. Kurulum ücreti yoktur ve hesabınızı istediğiniz zaman kapatabilirsiniz. Daha fazla ayrıntıyı [Twilio Fiyatlandırma](https://www.twilio.com/voice/pricing)adresinde bulabilirsiniz.
+Twilio, Kullandıkça Öde hizmetidir. Bir kurulum ücreti yoktur ve hesabınızı dilediğiniz zaman kapatabilirsiniz. Daha fazla ayrıntı için [Twilio fiyatlandırmayı](https://www.twilio.com/voice/pricing)bulabilirsiniz.
 
 ## <a name="concepts"></a><a id="Concepts"></a>Kavramlar
-Twilio API, uygulamalar için ses ve SMS işlevselliği sağlayan restful API'dir. İstemci kitaplıkları birden çok dilde kullanılabilir; bir liste [için, Bkz. Twilio API Kitaplıkları.][twilio_libraries]
+Twilio API 'si, uygulamalar için ses ve SMS işlevselliği sağlayan bir Reststeme API 'sidir. İstemci kitaplıkları birden çok dilde kullanılabilir; bir liste için bkz. [TWILIO API Libraries][twilio_libraries].
 
-Twilio API'nin temel yönleri Twilio fiilleri ve Twilio Markup Language (TwiML) 'dir.
+Twilio API 'sinin önemli yönleri, Twilio Verbs ve Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio fiilleri
-API, Twilio fiillerini kullanır; örneğin, ** &lt;Say&gt; ** fiili Twilio'ya bir çağrıda sesli bir ileti iletmesini söyler.
+API, Twilio fiillerini kullanır; Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için ** &lt;söyleyin&gt; ** .
 
-Aşağıda Twilio fiillerinin bir listesi vetifer.  [Twilio Markup Language belgeleri](https://www.twilio.com/docs/api/twiml)aracılığıyla diğer fiiller ve yetenekler hakkında bilgi edinin.
+Aşağıda, Twilio fiillerinin bir listesi verilmiştir.  [Twilio biçimlendirme dili belgeleri](https://www.twilio.com/docs/api/twiml)aracılığıyla diğer fiiller ve yetenekler hakkında bilgi edinin.
 
-* `<Dial>`: Arayan ı başka bir telefona bağlar.
-* `<Gather>`: Telefon tuş takımı üzerinde girilen sayısal rakamları toplar.
-* `<Hangup>`: Aramayı bitirir.
+* `<Dial>`: Çağrıyı başka bir telefona bağlar.
+* `<Gather>`: Telefon tuş takımında girilen sayısal rakamları toplar.
+* `<Hangup>`: Bir çağrıyı sonlandırır.
 * `<Play>`: Bir ses dosyası çalar.
-* `<Pause>`: Belirli sayıda saniye sessizce bekler.
-* `<Record>`: Arayanın sesini kaydeder ve kaydı içeren bir dosyanın URL'sini döndürür.
-* `<Redirect>`: Bir arama veya SMS'in denetimini farklı bir URL'den TwiML'e aktarın.
-* `<Reject>`: Twilio numaranıza gelen bir aramayı faturalandırmadan reddeder
-* `<Say>`: Metni, aramada yapılan konuşmaya dönüştürür.
-* `<Sms>`: SMS mesajı gönderir.
+* `<Pause>`: Belirtilen saniye sayısı için sessizce bekler.
+* `<Record>`: Arayanın sesini kaydeder ve kaydı içeren bir dosyanın URL 'sini döndürür.
+* `<Redirect>`: Bir çağrının veya SMS denetiminin denetimini, farklı bir URL 'de TwiML 'ye aktarır.
+* `<Reject>`: Twilio numaranızı faturalandırma olmadan gelen çağrıyı reddeder
+* `<Say>`: Bir çağrıda yapılan metni konuşmaya dönüştürür.
+* `<Sms>`: SMS iletisi gönderir.
 
 ### <a name="twiml"></a>TwiML
-TwiML, Twilio'ya bir çağrıveya SMS'in nasıl işlenirolduğunu bildiren Twilio fiillerine dayanan XML tabanlı talimatlar kümesidir.
+TwiML, bir çağrıyı veya SMS 'yi nasıl işleyebileceğini bilgilendirmek için Twilio fiillerini temel alan XML tabanlı yönergelerin bir kümesidir.
 
-Örnek olarak, aşağıdaki TwiML metni **Hello World'ü** konuşmaya dönüştürür.
+Örnek olarak, aşağıdaki TwiML metin **Merhaba Dünya** konuşmaya dönüştürür.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -65,56 +65,56 @@ TwiML, Twilio'ya bir çağrıveya SMS'in nasıl işlenirolduğunu bildiren Twili
 </Response>
 ```
 
-Uygulamanız Twilio API'yi aradığında, API parametrelerinden biri TwiML yanıtını döndüren URL'dir. Geliştirme amacıyla, uygulamalarınız tarafından kullanılan TwiML yanıtlarını sağlamak için Twilio tarafından sağlanan URL'leri kullanabilirsiniz. Ayrıca, TwiML yanıtlarını oluşturmak için kendi URL'lerinizi barındırabilirsiniz ve başka bir seçenek de **TwiMLResponse** nesnesini kullanmaktır.
+Uygulamanız Twilio API 'sini çağırdığında, API parametrelerinden biri TwiML yanıtını döndüren URL 'dir. Geliştirme amacıyla, uygulamalarınız tarafından kullanılan TwiML yanıtlarını sağlamak için Twilio tarafından sağlanmış URL 'Leri kullanabilirsiniz. Ayrıca, TwiML yanıtlarını oluşturmak için kendi URL 'nizi barındırabilir ve **Twimlresponse** nesnesini kullanmak diğer bir seçenektir.
 
-Twilio fiilleri, öznitelikleri ve TwiML hakkında daha fazla bilgi için Bkz. [TwiML][twiml]. Twilio API hakkında daha fazla bilgi için [Twilio API'ye][twilio_api]bakın.
+Twilio fiilleri, öznitelikleri ve TwiML hakkında daha fazla bilgi için bkz. [twiml][twiml]. Twilio API 'SI hakkında daha fazla bilgi için bkz. [TWILIO API][twilio_api].
 
-## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>Twilio Hesabı Oluşturma
-Bir Twilio hesabı almaya hazır olduğunuzda, [Try Twilio'ya][try_twilio]kaydolun. Ücretsiz bir hesapla başlayabilir ve hesabınızı daha sonra yükseltebilirsiniz.
+## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>Twilio hesabı oluşturma
+Bir Twilio hesabı almaya hazırsanız, [TRY Twilio][try_twilio]' de kaydolun. Ücretsiz bir hesapla başlayabilir ve hesabınızı daha sonra yükseltebilirsiniz.
 
-Bir Twilio hesabına kaydolduğunuzda, bir hesap kimliği ve kimlik doğrulama belirteci alırsınız. Her ikisi de Twilio API aramaları yapmak için gerekli olacaktır. Hesabınıza yetkisiz erişimi önlemek için kimlik doğrulama belirtecinizi güvende tutun. Hesap kimliğiniz ve kimlik doğrulama belirteciniz, sırasıyla **ACCOUNT SID** ve **AUTH TOKEN**etiketli alanlarda, [Twilio hesap sayfasında][twilio_account]görüntülenebilir.
+Bir Twilio hesabı için kaydolduğunuzda, bir hesap KIMLIĞI ve bir kimlik doğrulama belirteci alırsınız. Twilio API çağrıları yapmak için her ikisi de gerekecektir. Hesabınıza yetkisiz erişimi engellemek için kimlik doğrulama belirtecinizi güvende tutun. Hesap KIMLIĞINIZ ve kimlik doğrulama belirteciniz, sırasıyla **Hesap SID 'si** ve **kimlik doğrulama belirteci**etiketli alanlarda [Twilio hesabı sayfasında][twilio_account]görüntülenebilir.
 
-## <a name="create-an-azure-application"></a><a id="create_app"></a>Azure Uygulaması Oluşturma
-Twilio özellikli bir uygulamaya ev sahipliği yapan bir Azure uygulaması, diğer Azure uygulamalarından farklı değildir. Twilio .NET kitaplığını ekleyin ve rolü Twilio .NET kitaplıklarını kullanacak şekilde yapılandırın.
-İlk Azure projesi oluşturma hakkında daha fazla bilgi için [Visual Studio ile Azure projesi oluşturma][vs_project]'ya bakın.
+## <a name="create-an-azure-application"></a><a id="create_app"></a>Azure uygulaması oluşturma
+Twilio özellikli bir uygulamayı barındıran bir Azure uygulaması, diğer hiçbir Azure uygulamasından farklı değildir. Twilio .NET kitaplığını ekler ve rolü Twilio .NET kitaplıklarını kullanacak şekilde yapılandırırsınız.
+İlk Azure projesi oluşturma hakkında daha fazla bilgi için bkz. [Visual Studio Ile Azure projesi oluşturma][vs_project].
 
-## <a name="configure-your-application-to-use-twilio-libraries"></a><a id="configure_app"></a>Twilio Kitaplıklarını Kullanacak Şekilde Uygulamanızı Yapılandırın
-Twilio, TwiML yanıtları oluşturmak için Twilio REST API ve Twilio Client ile etkileşim kurmanın basit ve kolay yollarını sağlamak için Twilio'nun çeşitli yönlerini saran bir dizi .NET yardımcı kitaplığı sağlar.
+## <a name="configure-your-application-to-use-twilio-libraries"></a><a id="configure_app"></a>Uygulamanızı Twilio kitaplıklarını kullanacak şekilde yapılandırma
+Twilio, bir dizi .NET yardımcı kitaplığı sağlar ve bu sayede Twilio REST API ve Twilio Istemcisiyle etkileşimde bulunmak için basit ve kolay yollar sunar.
 
 Twilio .NET geliştiricileri için beş kitaplık sağlar:
 
 | Kitaplık | Açıklama |
 | --- | --- |
-| Twilio.API | Twilio REST API'yi dost bir .NET kitaplığında saran çekirdek Twilio kütüphanesi. Bu kitaplık .NET, Silverlight ve Windows Phone 7 için kullanılabilir. |
-| Twilio.TwiML | TwiML biçimlendirmesi oluşturmak için .NET dostu bir yol sağlar. |
-| Twilio.MVC | MVC'ASP.NET kullanan geliştiriciler için bu kitaplık bir TwilioController, TwiML ActionResult ve istek doğrulama özniteliği içerir. |
-| Twilio.WebMatrix | Microsoft'un ücretsiz WebMatrix geliştirme aracını kullanan geliştiriciler için bu kitaplık, çeşitli Twilio eylemleri için Jilet sözdizimi yardımcıları içerir. |
-| Twilio.Client.Capability | Twilio Client JavaScript SDK ile kullanılmak üzere Yetenek belirteç jeneratörü içerir. |
+| Twilio. API | Kolay bir .NET kitaplığında Twilio REST API sarmalayan çekirdek Twilio kitaplığı. Bu kitaplık .NET, Silverlight ve Windows Phone 7 ' de kullanılabilir. |
+| Twilio. TwiML | TwiML biçimlendirmesi oluşturmak için .NET kolay bir yol sağlar. |
+| Twilio. MVC | ASP.NET MVC kullanan geliştiriciler için, bu kitaplık bir TwilioController, TwiML eylem sonucu ve istek doğrulama özniteliği içerir. |
+| Twilio. WebMatrix | Microsoft 'un ücretsiz WebMatrix geliştirme aracı kullanan geliştiriciler için, bu kitaplık çeşitli Twilio eylemleri için Razor söz dizimi yardımcıları içerir. |
+| Twilio. Client. Capability | Twilio Istemci JavaScript SDK 'Sı ile kullanmak için yetenek belirteci oluşturucuyu içerir. |
 
 > [!Important]
-> Tüm kitaplıklar .NET 3.5, Silverlight 4 veya Windows Phone 7 veya daha sonra gerektirir.
+> Tüm kitaplıklar .NET 3,5, Silverlight 4 veya Windows Phone 7 veya üstünü gerektirir.
 
-Bu kılavuzda sağlanan örnekler Twilio.API kitaplığını kullanır.
+Bu kılavuzda sağlanan örnekler Twilio. API kitaplığını kullanır.
 
-Kütüphaneler, Visual Studio 2010 için 2015'e kadar mevcut [olan NuGet paket yöneticisi uzantısı kullanılarak yüklenebilir.](https://www.twilio.com/docs/csharp/install)  Kaynak kodu [GitHub][twilio_github_repo]barındırılan , kitaplıkları kullanmak için tam belgeler içeren bir Wiki içerir.
+Kitaplıklar, Visual Studio 2010 ' de 2015 ' ye kadar olan [NuGet Paket Yöneticisi uzantısı kullanılarak yüklenebilir](https://www.twilio.com/docs/csharp/install) .  Kaynak kodu, kitaplıkları kullanmaya yönelik tüm belgeleri içeren bir wiki içeren [GitHub][twilio_github_repo]üzerinde barındırılır.
 
-Varsayılan olarak, Microsoft Visual Studio 2010 NuGet sürümü 1.2 yükler. Twilio kitaplıklarının yüklenmesi için NuGet veya üstü sürüm 1.6'yı gerektirir. NuGet'i yükleme veya güncelleme [https://nuget.org/][nuget]hakkında bilgi için bkz.
+Microsoft Visual Studio 2010, varsayılan olarak NuGet 'in 1,2 sürümünü yüklüyor. Twilio kitaplıklarını yükleme, NuGet veya üzeri sürüm 1,6 gerektirir. NuGet 'i yükleme veya güncelleştirme hakkında daha fazla bilgi [https://nuget.org/][nuget]için bkz..
 
 > [!NOTE]
-> NuGet'in en son sürümünü yüklemek için önce Visual Studio Extension Manager'ı kullanarak yüklenen sürümü kaldırmanız gerekir. Bunun için Visual Studio'u yönetici olarak çalıştırmanız gerekir. Aksi takdirde, Kaldır düğmesi devre dışı bırakılır.
+> NuGet 'in en son sürümünü yüklemek için, önce Visual Studio Uzantı Yöneticisi 'Ni kullanarak yüklü sürümü kaldırmanız gerekir. Bunu yapmak için, Visual Studio 'Yu yönetici olarak çalıştırmanız gerekir. Aksi takdirde, Kaldır düğmesi devre dışıdır.
 >
 >
 
-### <a name="to-add-the-twilio-libraries-to-your-visual-studio-project"></a><a id="use_nuget"></a>Visual Studio projenize Twilio kitaplıklarını eklemek için:
-1. Visual Studio'da çözümünüzü açın.
-2. Sağ tıklatma **Başvuruları**.
-3. **NuGet Paketlerini Yönet'e tıklayın...**
-4. **Online'ı**tıklatın.
-5. Arama çevrimiçi kutusunda, *twilio*yazın.
-6. Twilio paketini **yükle'yi** tıklatın.
+### <a name="to-add-the-twilio-libraries-to-your-visual-studio-project"></a><a id="use_nuget"></a>Twilio kitaplıklarını Visual Studio projenize eklemek için:
+1. Çözümünüzü Visual Studio 'da açın.
+2. **Başvurular**' a sağ tıklayın.
+3. **NuGet Paketlerini Yönet...** öğesine tıklayın.
+4. **Çevrimiçi**' e tıklayın.
+5. Çevrimiçi ara kutusuna *Twilio*yazın.
+6. Twilio paketindeki **Install** (Aç) düğmesine tıklayın.
 
-## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>Nasıl yapılır: Giden arama yapma
-Aşağıda, **CallResource** sınıfını kullanarak giden aramanın nasıl yapılacağını gösterilmektedir. Bu kod, Twilio İşaretdili Dili (TwiML) yanıtını döndürmek için Twilio tarafından sağlanan bir site de kullanır. Ve telefon numaraları **to** **için** değerlerinizi değiştirin ve kodu çalıştırmadan önce Twilio hesabınız için **telefon** numarasını doğruladığınızdan emin olun.
+## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>Nasıl yapılır: giden çağrı yapma
+Aşağıda, **Callresource** sınıfını kullanarak nasıl giden bir çağrının yapılacağı gösterilmektedir. Bu kod ayrıca Twilio biçimlendirme dili (TwiML) yanıtını döndürmek için Twilio tarafından sağlanmış bir site kullanır. Değerlerini bir veya daha **fazla telefon** **numarası ile değiştirin** ve kodu çalıştırmadan önce Twilio **hesabınızın telefon numarasını** doğrulayın.
 
 ```csharp
 // Use your account SID and authentication token instead
@@ -139,12 +139,12 @@ var call = CallResource.Create(
     }
 ```
 
-**CallResource.Create** yöntemine geçirilen parametreler hakkında daha fazla [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls]bilgi için bkz.
+**Callresource. Create** yöntemine geçirilen parametreler hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls]..
 
-Belirtildiği gibi, bu kod TwiML yanıtını döndürmek için Twilio tarafından sağlanan bir site kullanır. Bunun yerine TwiML yanıtı sağlamak için kendi sitenizi kullanabilirsiniz. Daha fazla bilgi için [bkz: Kendi web sitenizden TwiML yanıtları sağlayın.](#howto_provide_twiml_responses)
+Belirtildiği gibi, bu kod TwiML yanıtını döndürmek için Twilio tarafından sağlanmış bir site kullanır. Bunun yerine, TwiML yanıtını sağlamak için kendi sitenizi kullanabilirsiniz. Daha fazla bilgi için, bkz. [nasıl yapılır: kendi web sitenizde TwiML yanıtları sağlama](#howto_provide_twiml_responses).
 
-## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Nasıl yapılsın: SMS mesajı gönder
-Aşağıdaki ekran görüntüsü, **MessageResource** sınıfını kullanarak SMS iletisinin nasıl gönderilebildiğini gösterir. **Numaradan sms** mesajları göndermek için deneme hesapları için Twilio tarafından sağlanmaktadır. Kodu çalıştırmadan önce Twilio hesabınız için **numara** doğrulanmalıdır.
+## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Nasıl yapılır: SMS iletisi gönderme
+Aşağıdaki ekran görüntüsünde, **Messageresource** sınıfı kullanılarak SMS iletisinin nasıl gönderileceği gösterilmektedir. **Kimden** numarası, TWILIO tarafından SMS iletileri göndermek için deneme hesapları için sağlanır. Kodu çalıştırmadan önce, Twilio hesabınız için **-** Number için doğrulama yapılmalıdır.
 
 ```csharp
 // Use your account SID and authentication token instead
@@ -170,16 +170,16 @@ catch (TwilioException ex)
 }
 ```
 
-## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Nasıl?
-Başvurunuz Twilio API'ye bir çağrı başlattığında -örneğin, **CallResource.Create** yöntemi aracılığıyla - Twilio isteğinizi TwiML yanıtı döndürmesi beklenen bir URL'ye gönderir. [Nasıl Yapılır: Giden arama yapma](#howto_make_call) örneği, yanıtı döndürmek için [https://twimlets.com/message][twimlet_message_url] Twilio tarafından sağlanan URL'yi kullanır.
+## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Nasıl yapılır: kendi web sitenizde TwiML yanıtları sağlama
+Uygulamanız Twilio API 'sine bir çağrı başlattığında (örneğin, **Callresource. Create** yöntemi-Twilio) Isteğinizi TwiML yanıtı döndürmesi beklenen bir URL 'ye gönderir. [Nasıl yapılır: giden bir çağrının nasıl](#howto_make_call) yapılacağını, yanıtı döndürmek için Twilio tarafından sağlanmış URL [https://twimlets.com/message][twimlet_message_url] 'yi kullanır.
 
 > [!NOTE]
-> TwiML web hizmetleri tarafından kullanılmak üzere tasarlanmış olsa da, Tarayıcınızda TwiML görüntüleyebilirsiniz. Örneğin, boş [https://twimlets.com/message][twimlet_message_url] `<Response>` bir öğeyi görmek için tıklatın; başka bir örnek [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) olarak, `<Response>` bir &lt;Say&gt; öğesi içeren bir öğeyi görmek için tıklatın.
+> TwiML, Web Hizmetleri tarafından kullanılmak üzere tasarlanırken, tarayıcınızda TwiML 'yi görüntüleyebilirsiniz. Örneğin, boş `<Response>` bir [https://twimlets.com/message][twimlet_message_url] öğeyi görmek için tıklayın; başka bir örnek olarak, [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) bir &lt;deyin&gt; öğesi `<Response>` içeren bir öğeyi görmek için tıklayın.
 >
 
-Twilio tarafından sağlanan URL'ye güvenmek yerine, HTTP yanıtlarını döndüren kendi URL sitenizi oluşturabilirsiniz. Siteyi HTTP yanıtlarını döndüren herhangi bir dilde oluşturabilirsiniz. Bu konu, URL'yi ASP.NET genel bir işleyiciden barındıracağınız varsayar.
+Twilio tarafından sağlanmış URL 'ye güvenmek yerine, HTTP yanıtlarını döndüren kendi URL sitenizi oluşturabilirsiniz. Siteyi, HTTP yanıtlarını döndüren herhangi bir dilde oluşturabilirsiniz. Bu konu, URL 'YI bir ASP.NET genel işleyicisinden barındırdığınızı varsayar.
 
-Aşağıdaki ASP.NET İşleyici, çağrıda **Merhaba Dünya** yazan bir TwiML yanıtı hazırlatır.
+Aşağıdaki ASP.NET Işleyicisi, çağrıda **Merhaba Dünya** bildiren bir TwiML yanıtı öğelerini.
 
 ```csharp
 using System.Text;
@@ -215,7 +215,7 @@ namespace WebRole1
 }
 ```
     
-Yukarıdaki örnekten de görebileceğiniz gibi, TwiML yanıtı sadece bir XML belgesidir. Twilio.TwiML kitaplığı sizin için TwiML oluşturacak sınıflar içerir. Aşağıdaki örnek, yukarıda gösterildiği gibi eşdeğer yanıtı üretir, ancak **VoiceResponse** sınıfını kullanır.
+Yukarıdaki örnekte görebileceğiniz gibi, TwiML yanıtı yalnızca bir XML belgesidir. Twilio. TwiML kitaplığı sizin için TwiML 'yi oluşturacak sınıfları içerir. Aşağıdaki örnek, yukarıda gösterildiği gibi eşdeğer yanıtı üretir, ancak **VoiceResponse** sınıfını kullanır.
 
 ```csharp
 using System.Web;
@@ -251,9 +251,9 @@ namespace WebRole1
 }
 ```
 
-TwiML hakkında daha fazla [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml)bilgi için bkz.
+TwiML hakkında daha fazla bilgi için bkz [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml)..
 
-TwiML yanıtları sağlamanın bir yolunu ayarladıktan sonra, bu URL'yi **CallResource.Create** yöntemine geçirebilirsiniz. Örneğin, Bir Azure bulut hizmetine dağıtılan MyTwiML adlı bir web uygulamanız varsa ve ASP.NET İşleyicinizin adı mytwiml.ashx ise, URL aşağıdaki kod örneğinde gösterildiği gibi **CallResource.Create'e** geçirilebilir:
+TwiML yanıtları sağlamak için bir yol ayarladıktan sonra, bu URL 'YI **Callresource. Create** metoduna geçirebilirsiniz. Örneğin, bir Azure bulut hizmetine dağıtılan MyTwiML adlı bir Web uygulamanız varsa ve ASP.NET Işleyicinizin adı mytwiml. ashx ise, URL şu kod örneğinde gösterildiği gibi **Callresource. Create** öğesine geçirilebilir:
 
 ```csharp
 // This sample uses the sandbox number provided by Twilio to make the call.
@@ -265,7 +265,7 @@ var call = CallResource.Create(
     }
 ```
 
-Twilio'nun Azure'da ASP.NET kullanma hakkında daha fazla bilgi için, [Azure'daki bir web rolünde Twilio'su kullanarak nasıl telefon görüşmesi yapılacağını][howto_phonecall_dotnet]öğrenin.
+Azure 'da ASP.NET ile Twilio kullanma hakkında daha fazla bilgi için bkz. [Azure 'da bir Web rolünde nasıl bir telefon araması yapılır?][howto_phonecall_dotnet].
 
 [!INCLUDE [twilio-additional-services-and-next-steps](../includes/twilio-additional-services-and-next-steps.md)]
 
