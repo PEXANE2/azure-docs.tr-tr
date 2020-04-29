@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Kutusu Kenarı, Azure Veri Kutusu Ağ Geçidi | Microsoft Dokümanlar
-description: Veri Kutusu Kenarı veya Veri Kutusu Ağ Geçidi siparişinizle ilgili sorunlar için destek isteğini nasıl günlüğe kaydedin.
+title: Azure Data Box Edge için günlük desteği bileti Azure Data Box Gateway | Microsoft Docs
+description: Data Box Edge veya Data Box Gateway emirleriniz ile ilgili sorunlar için destek isteğini günlüğe kaydetme hakkında bilgi edinin.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,76 +9,76 @@ ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
 ms.openlocfilehash: c93a2e2f3162891e72cf6d57f3df6c3ceaf0c7fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80064981"
 ---
-# <a name="open-a-support-ticket-for-azure-data-box-edge-and-azure-data-box-gateway"></a>Azure Veri Kutusu Kenarı ve Azure Veri Kutusu Ağ Geçidi için destek bileti açma
+# <a name="open-a-support-ticket-for-azure-data-box-edge-and-azure-data-box-gateway"></a>Azure Data Box Edge ve Azure Data Box Gateway için bir destek bileti açın
 
-Bu makale, her ikisi de Azure Veri Kutusu Kenarı/Azure Veri Kutusu Ağ Geçidi hizmeti tarafından yönetilen Azure Veri Kutusu Kenarı ve Azure Veri Kutusu Ağ Geçidi için geçerlidir. Hizmetinizle ilgili herhangi bir sorunla karşılaşırsanız, teknik destek için bir hizmet isteği oluşturabilirsiniz. Bu makale size yol vereb:
+Bu makale, Azure Data Box Edge/Azure Data Box Gateway hizmeti tarafından yönetilen Azure Data Box Edge ve Azure Data Box Gateway için geçerlidir. Hizmetinize ilişkin herhangi bir sorunla karşılaşırsanız, teknik destek için bir hizmet isteği oluşturabilirsiniz. Bu makalede izlenecek yol gösterilmektedir:
 
 * Destek isteği oluşturma.
-* Portal içinden bir destek isteği yaşam döngüsünü nasıl yönetebilirsiniz.
+* Portalın içinden destek isteği yaşam döngüsünü yönetme.
 
 ## <a name="create-a-support-request"></a>Destek isteği oluşturma
 
-Destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
+Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
 
-1. Veri Kutusu Kenarı veya Veri Kutusu Ağ Geçidi siparişinize gidin. Destek **+ sorun giderme** bölümüne gidin ve ardından **Yeni destek isteğini**seçin.
+1. Data Box Edge veya Data Box Gateway sıraya gidin. **Destek + sorun giderme** Bölümü ' ne gidin ve **Yeni destek isteği**' ni seçin.
    
-2. **Temel ler** sekmesinde Yeni **destek isteğinde**aşağıdaki adımları izleyin:
+2. **Yeni destek isteğinde**, **temel bilgiler** sekmesinde aşağıdaki adımları uygulayın:
     
-    1. Sorun **türü** açılır listesinden **Teknik'i**seçin.
+    1. **Sorun türü** açılan listesinden **Teknik**' i seçin.
     2. **Aboneliğinizi**seçin.
-    3. **Hizmet**altında , Hizmetlerimi kontrol **edin.** Açılan listeden Veri **Kutusu Kenarı ve Veri Kutusu Ağ Geçidi'ni**seçin.
-    4. **Kaynağınızı**seçin. Bu, siparişinizin adına karşılık gelir.
-    5. Karşılaştığınız sorunun kısa bir **özetini** sağlayın. 
-    6. Sorun **türünü**seçin.
-    7. Seçtiğiniz sorun türüne bağlı olarak, karşılık gelen Bir **Sorun alt türü**seçin.
-    8. **Sonraki'ni seçin: Çözümler >>. **
+    3. **Hizmet**altında **hizmetlerimi**denetleyin. Açılan listeden **Data Box Edge ve Data Box Gateway**' u seçin.
+    4. Kaynağınızı seçin **.** Bu, siparişinizin adına karşılık gelir.
+    5. Yaşadığınız sorunun kısa bir **özetini** sağlar. 
+    6. **Sorun türünü**seçin.
+    7. Seçtiğiniz sorun türüne göre ilgili bir **sorun alt türünü**seçin.
+    8. **İleri ' yi seçin: çözümler >>**.
 
         ![Temel Bilgiler](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
 
-3. **Ayrıntılar** sekmesinde aşağıdaki adımları izleyin:
+3. **Ayrıntılar** sekmesinde aşağıdaki adımları uygulayın:
     
-    1. Sorunun başlangıç tarihini ve saatini sağlayın.
-    2. Sorununuzun **açıklaması** nı temin edin.
-    3. Dosya **yüklemesinde,** yüklemek istediğiniz diğer dosyalara göz atmak için klasör simgesini seçin.
-    4. **Tanı bilgilerini paylaş'ı**denetleyin.
-    5. Aboneliğinize bağlı olarak, **destek planı** otomatik olarak doldurulur.
-    6. Açılan listeden **Önem'i**seçin.
-    7. Tercih **edilen kişi yöntemini**belirtin.
-    8. **Yanıt saatleri** abonelik planınıza göre otomatik olarak seçilir.
-    9. Destek için tercih edilen dili sağlayın.
-    10. İletişim **bilgileri,** adınızı, e-posta, telefon, isteğe bağlı kişi, ülke / bölge sağlayın. Microsoft Destek bu bilgileri daha fazla bilgi, tanı ve çözüm için size ulaşmak için kullanır. 
-    11. **Sonraki'ni Seçin: Gözden Geçirin + >>Oluştur. **
+    1. Sorunun başlangıç tarihini ve saatini belirtin.
+    2. Sorununuz için bir **Açıklama** sağlayın.
+    3. Karşıya yüklemek istediğiniz diğer dosyalara gözatabilmeniz için **karşıya dosya yükleme**bölümünde klasör simgesini seçin.
+    4. **Paylaşma tanılama bilgilerini**denetleyin.
+    5. Aboneliğiniz temelinde, bir **destek planı** otomatik olarak doldurulur.
+    6. Açılan listeden **önem derecesi**' ni seçin.
+    7. **Tercih edilen bir iletişim yöntemi**belirtin.
+    8. **Yanıt saatleri** , abonelik planınıza göre otomatik olarak seçilir.
+    9. Destek için tercih ettiğiniz dili sağlayın.
+    10. **İletişim bilgilerinde**adınızı, e-postanızı, telefonunuzu, isteğe bağlı iletişim, ülke/bölge ' yi belirtin. Microsoft Desteği, bu bilgileri daha fazla bilgi, tanılama ve çözümleme için size ulaşmak üzere kullanır. 
+    11. **İleri ' yi seçin: gözden geçir + oluştur >>**.
 
         ![Sorun](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-2.png)
 
-4. Gözden **Geçir + Oluştur** sekmesinde Destek biletiyle ilgili bilgileri gözden geçirin. **Oluştur'u**seçin. 
+4. **Gözden geçir + oluştur** sekmesinde destek bileti ile ilgili bilgileri gözden geçirin. **Oluştur**’u seçin. 
 
     ![Sorun](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
 
-    Destek biletini oluşturduktan sonra, bir Destek mühendisi isteğinize devam etmek için en kısa sürede sizinle irtibata geçecektir.
+    Destek bileti oluşturduktan sonra bir destek mühendisi, isteğinize devam etmek için en kısa sürede sizinle iletişim kuracaktır.
 
-## <a name="get-hardware-support"></a>Donanım desteği alın
+## <a name="get-hardware-support"></a>Donanım desteğini al
 
-Bu bilgiler yalnızca Veri Kutusu Kenarı aygıtı için geçerlidir. Donanım sorunlarını bildirme işlemi aşağıdaki gibidir:
+Bu bilgiler yalnızca Data Box Edge cihaz için geçerlidir. Donanım sorunlarını bildirme işlemi aşağıdaki gibidir:
 
-1. Donanım sorunu için Azure portalından destek bileti açın. **Sorun türü altında,** Veri Kutusu Kenar **Donanımı'nı**seçin. **Donanım hatası**olarak Sorun **alt türünü** seçin. 
+1. Bir donanım sorunu için Azure portal bir destek bileti açın. **Sorun türü**altında **donanım Data Box Edge**' yi seçin. **Sorun alt türünü** **donanım hatası**olarak seçin. 
 
     ![Donanım sorunu](./media/data-box-edge-contact-microsoft-support/data-box-edge-hardware-issue-1.png)
 
-    Destek biletini oluşturduktan sonra, bir Destek mühendisi isteğinize devam etmek için en kısa sürede sizinle irtibata geçecektir. 
+    Destek bileti oluşturduktan sonra bir destek mühendisi, isteğinize devam etmek için en kısa sürede sizinle iletişim kuracaktır. 
 
-2. Microsoft Destek bunun bir donanım sorunu olduğunu belirlerse, aşağıdaki eylemlerden biri oluşur: 
+2. Microsoft Desteği bunun bir donanım sorunu olduğunu belirlerse, aşağıdaki eylemden biri oluşur: 
 
-    - Başarısız donanım parçası için bir Alan Değiştirme Ünitesi (FRU) gönderilir. Şu anda, güç kaynağı ünitesi desteklenen tek FRU olduğunu. 
-    - Başka bir parça hatası için, Microsoft tam sistem değiştirme (FSR) veya aygıt değiştirme yapar.
+    - Başarısız donanım bölümü için bir alan değiştirme birimi (FRU) gönderilir. Şu anda, güç kaynağı birimi desteklenen tek FRU. 
+    - Diğer tüm bölüm hataları için, Microsoft tam sistem değişikliği (FSR) veya bir cihaz takas işlemini yapar.
 
-3. Destek bileti yerel saatle 16:30'dan (Pazartesi'den Cuma'ya) önce yükseltilirse, bir sonraki iş günü bir FRU veya tam cihaz değişimi gerçekleştirmek için bulunduğunuz yere bir teknisyen gönderilir.
+3. Bir destek bileti 4:30 PM yerel saatinden (Pazartesi 'Den Cuma 'ya) önce ortaya çıktığında, bir FRU teknisyen, bir FRU veya tam cihaz değişikliği gerçekleştirmek için bir sonraki iş günü yerine konumunuza gönderilir.
 
 ## <a name="manage-a-support-request"></a>Destek isteğini yönetme
 
@@ -86,18 +86,18 @@ Bir destek bileti oluşturduktan sonra portal üzerinden bu biletin yaşam döng
 
 #### <a name="to-manage-your-support-requests"></a>Destek isteklerinizi yönetmek için
 
-1. Yardım ve destek sayfasına ulaşmak için **Gözat > Yardım + desteğe**gidin.
+1. Yardım ve destek sayfasına ulaşmak için, **> yardım ve destek**' e gidin.
 
     ![Destek isteklerini yönetme](./media/data-box-edge-contact-microsoft-support/data-box-edge-manage-support-request-1.png)   
 
-2. **Son destek isteklerinin** bir tabular listesi **Yardım + destek'te**görüntülenir.
+2. **Son destek isteklerinin** tablolu bir listesi **Yardım + Destek**bölümünde görüntülenir.
 
     <!--[Manage support requests](./media/data-box-edge-contact-microsoft-support/data-box-edge-support-request-1.png)--> 
 
-3. Bir destek isteğini seçin ve tıklatın. Bu isteğin durumunu ve ayrıntılarını görüntüleyebilirsiniz. Bu isteği takip etmek istiyorsanız **+ Yeni iletiyi** tıklatın.
+3. Bir destek isteği seçin ve tıklayın. Bu istek için durumu ve ayrıntıları görüntüleyebilirsiniz. Bu istekte izlemek istiyorsanız **+ Yeni ileti** ' ya tıklayın.
 
    
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri Kutusu Kenarı ile ilgili sorunları nasıl [gidereceklerini](data-box-edge-troubleshoot.md)öğrenin.
-[Veri Kutusu Ağ Geçidi ile ilgili sorunları](data-box-gateway-troubleshoot.md)nasıl gidereceklerini öğrenin.
+[Data Box Edge ilgili sorunları nasıl giderebileceğinizi](data-box-edge-troubleshoot.md)öğrenin.
+[Data Box Gateway ilgili sorunları nasıl giderebileceğinizi](data-box-gateway-troubleshoot.md)öğrenin.

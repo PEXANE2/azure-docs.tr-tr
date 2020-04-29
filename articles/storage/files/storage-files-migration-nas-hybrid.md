@@ -1,6 +1,6 @@
 ---
-title: Azure Dosya Eşitlemi için şirket içi NAS geçişi
-description: Dosyaları şirket içi Ağ Bağlı Depolama (NAS) konumundan Azure Dosya Eşitlemi ve Azure dosya paylaşımlarıyla karma bulut dağıtımına nasıl geçirebilirsiniz öğrenin.
+title: Azure Dosya Eşitleme için şirket içi NAS geçişi
+description: Şirket içi ağ bağlantılı bir depolama (NAS) konumundan Azure Dosya Eşitleme ve Azure dosya paylaşımlarında karma bulut dağıtımına dosya geçirmeyi öğrenin.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
@@ -8,118 +8,118 @@ ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 7b0c7a30580d3863a78e85b8b45287a598bbf394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80247359"
 ---
-# <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Ağ Bağlı Depolama 'dan (NAS) Azure Dosya Eşitleme ile karma bulut dağıtımına geçiş
+# <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Ağ bağlantılı depolamadan (NAS) Azure Dosya Eşitleme ile karma bulut dağıtımına geçiş
 
-Azure Dosya Eşitlemesi Doğrudan Bağlı Depolama (DAS) konumlarında çalışır ve Ağ Bağlı Depolama (NAS) konumlarına eşitlenmeyi desteklemez.
-Bu gerçek, dosyalarınızın geçişini gerekli kılar ve bu makale, böyle bir geçişin planlanması ve yürütülmesi nde size yol gösterecektir.
+Azure Dosya Eşitleme doğrudan bağlı depolama (DAS) konumlarında çalışarak ağa bağlı depolama (NAS) konumlarına eşitlemeyi desteklemez.
+Bu olgu, dosyalarınızın bir geçişini yapar ve bu makalede böyle bir geçişin planlanması ve yürütülmesi sırasında size kılavuzluk eder.
 
 ## <a name="migration-goals"></a>Geçiş hedefleri
 
-Amaç, NAS cihazınızdaki paylaşımları bir Windows Server'a taşımaktır. Ardından, karma bulut dağıtımı için Azure Dosya Eşitleme'yi kullanın. Bu geçiş, geçiş sırasında üretim verilerinin bütünlüğünü ve kullanılabilirliğini garanti eden bir şekilde yapılmalıdır. İkincisi, normal bakım pencerelerine sığabilmesi veya sadece biraz aşabilmesi için kapalı kalma süresini en aza kadar tutmayı gerektirir.
+Amaç, NAS gerecinizde sahip olduğunuz paylaşımları bir Windows sunucusuna taşımaktır. Ardından karma bulut dağıtımı için Azure Dosya Eşitleme kullanın. Bu geçişin, üretim verilerinin bütünlüğünü ve geçiş sırasında kullanılabilirliğini garanti eden bir şekilde yapılması gerekir. İkinci olarak, kapalı kalma süresinin en az bir süre içinde tutulması gerekir, böylece normal bakım pencereleri içine sığacak veya yalnızca biraz daha fazla olabilir.
 
 ## <a name="migration-overview"></a>Geçişe genel bakış
 
-Azure Dosyaları [geçiş genel bakışı makalesinde](storage-files-migration-overview.md)de belirtildiği gibi, doğru kopyalama aracını ve yaklaşımını kullanmak önemlidir. NAS cihazınız SMB hisselerini doğrudan yerel ağınız üzerinde ifşa ediyor. Yerleşik Windows Server olan RoboCopy, bu geçiş senaryosunda dosyalarınızı taşımanın en iyi yoludur.
+Azure dosyaları [geçişine genel bakış makalesinde](storage-files-migration-overview.md)belirtildiği gibi, doğru kopyalama aracını ve yaklaşımı kullanmak önemlidir. NAS gereç, SMB paylaşımlarını doğrudan yerel ağınızda kullanıma sunmaktadır. Windows Server 'da bulunan RoboCopy, dosyalarınızı bu geçiş senaryosunda taşımanın en iyi yoludur.
 
-- Aşama 1: [Kaç Azure dosyası na ihtiyacınız olduğunu belirleyin](#phase-1-identify-how-many-azure-file-shares-you-need)
-- Aşama 2: [Uygun bir Windows Server'ı şirket içinde sağlama](#phase-2-provision-a-suitable-windows-server-on-premises)
-- Aşama 3: [Azure Dosya Eşitleme bulut kaynağını dağıtma](#phase-3-deploy-the-azure-file-sync-cloud-resource)
-- Aşama 4: [Azure depolama kaynaklarını dağıtma](#phase-4-deploy-azure-storage-resources)
-- Aşama 5: [Azure Dosya Eşitleme aracısını dağıtma](#phase-5-deploy-the-azure-file-sync-agent)
-- 6. Aşama: [Windows Sunucusunda Azure Dosya Eşitlemeyi'ni Yapılandırma](#phase-6-configure-azure-file-sync-on-the-windows-server)
-- Faz 7: [Robocopy](#phase-7-robocopy)
-- Faz 8: [Kullanıcı kesme](#phase-8-user-cut-over)
+- 1. Aşama: [kaç Azure dosya paylaşımına ihtiyacınız olduğunu belirleme](#phase-1-identify-how-many-azure-file-shares-you-need)
+- 2. Aşama: [Şirket içinde uygun bir Windows Server sağlama](#phase-2-provision-a-suitable-windows-server-on-premises)
+- 3. Aşama: [Azure dosya eşitleme bulut kaynağını dağıtma](#phase-3-deploy-the-azure-file-sync-cloud-resource)
+- 4. Aşama: [Azure depolama kaynaklarını dağıtma](#phase-4-deploy-azure-storage-resources)
+- 5. Aşama: [Azure dosya eşitleme aracısını dağıtma](#phase-5-deploy-the-azure-file-sync-agent)
+- 6. Aşama: [Windows Server 'da Azure dosya eşitleme yapılandırma](#phase-6-configure-azure-file-sync-on-the-windows-server)
+- 7. Aşama: [Robocopy](#phase-7-robocopy)
+- 8. Aşama: [Kullanıcı tarafından kesilen](#phase-8-user-cut-over)
 
-## <a name="phase-1-identify-how-many-azure-file-shares-you-need"></a>Aşama 1: Kaç Azure dosyası na ihtiyacınız olduğunu belirleyin
+## <a name="phase-1-identify-how-many-azure-file-shares-you-need"></a>1. Aşama: kaç Azure dosya paylaşımına ihtiyacınız olduğunu belirleme
 
 [!INCLUDE [storage-files-migration-namespace-mapping](../../../includes/storage-files-migration-namespace-mapping.md)]
 
-## <a name="phase-2-provision-a-suitable-windows-server-on-premises"></a>Aşama 2: Uygun bir Windows Server'ı şirket içinde sağlama
+## <a name="phase-2-provision-a-suitable-windows-server-on-premises"></a>2. Aşama: şirket içinde uygun bir Windows Server sağlama
 
-* Sanal makine veya fiziksel sunucu olarak en az 2012R2 olarak bir Windows Server 2019 oluşturun. Windows Server hata kümesi de desteklenir.
-* Doğrudan Bağlı Depolama (DESTEKLENMEYEn NAS ile karşılaştırıldığında DAS) sağlama veya ekleme.
+* Bir sanal makine veya fiziksel sunucu olarak en az 2012R2 ' de bir Windows Server 2019 oluşturun. Windows Server yük devretme kümesi de desteklenir.
+* Doğrudan bağlı depolama alanı sağlayın veya ekleyin (desteklenmeyen bir şekilde, NAS ile karşılaştırıldığında).
 
-    Azure Dosya Eşitlemeleri [bulut katmanlama](storage-sync-cloud-tiering.md) özelliğini kullanıyorsanız, sağlama yaptığınız depolama alanı miktarı NAS aygıtınızda şu anda kullandığınızdan daha küçük olabilir.
-    Ancak, dosyalarınızı daha sonraki bir aşamada daha büyük NAS alanından daha küçük Windows Server birimine kopyaladiğinizde, toplu olarak çalışmanız gerekir:
+    Azure dosya eşitleme [bulut katmanlama](storage-sync-cloud-tiering.md) özelliğini kullanıyorsanız, sağladığınız depolama alanı miktarı, şu anda NAS gerecinizde kullandığınızdan daha küçük olabilir.
+    Ancak, daha sonraki bir aşamada, daha büyük bir NAS alanından dosyalarınızı daha küçük bir Windows Server birimine kopyaladığınızda, toplu iş ' de çalışmanız gerekir:
 
-    1. Diske sığan bir dosya kümesini taşıma
-    2. dosya eşitleme ve bulut katmanlama nın devreye salet
-    3. birimde daha fazla boş alan oluşturulduğunda, bir sonraki dosya toplu dosyasına devam edin. 
+    1. Diske sığan bir dosya kümesini taşıyın
+    2. dosya eşitlemeye ve bulut katmanlamasına izin ver
+    3. birimde daha fazla boş alan oluşturulduğunda, sonraki dosya toplu iş ile devam edin. 
     
-    Dosyalarınızın NAS cihazında kapladığını Windows Server'da eşdeğer alanı sağlayarak bu toplu işlem yaklaşımını önleyebilirsiniz. NAS / Windows'da deduplication düşünün. Bu yüksek miktarda depolama alanını Windows Server'ınıza kalıcı olarak işlemek istemiyorsanız, geçişten sonra ve bulut katmanlama ilkelerini ayarlamadan önce ses boyutunu küçültebilirsiniz. Bu, Azure dosya paylaşımlarınızın şirket içi daha küçük bir önbelleğini oluşturur.
+    Dosyalarınızın NAS gereci üzerinde kaplayacağı Windows Server üzerinde eşdeğer alanı sağlayarak bu toplu işleme yaklaşımına engel olabilirsiniz. NAS/Windows üzerinde Yinelenenleri kaldırmayı göz önünde bulundurun. Bu yüksek miktarda depolama alanını Windows sunucunuza kalıcı olarak kaydetmek istemiyorsanız, geçişten sonra ve bulut katmanlama ilkelerini ayarlamadan önce birim boyutunu azaltabilirsiniz. Bu, Azure dosya paylaşımlarınızın daha küçük bir şirket içi önbelleği oluşturur.
 
-Dağıttığınız Windows Server'ın kaynak yapılandırması (işlem ve RAM) çoğunlukla eşitlediğiniz öğe (dosya ve klasör) sayısına bağlıdır. Herhangi bir endişeniz varsa daha yüksek bir performans yapılandırması ile devam öneririz.
+Dağıttığınız Windows Server 'ın kaynak yapılandırması (işlem ve RAM), genellikle eşitlendirilecektir öğe sayısına (dosya ve klasör) bağlıdır. Herhangi bir endişeniz varsa daha yüksek performans yapılandırması yapmanızı öneririz.
 
-[Bir Windows Server'ı eşitlemeniz gereken öğe (dosya ve klasörler) sayısına göre nasıl boyutlandırabileceğinizi öğrenin.](storage-sync-files-planning.md#recommended-system-resources)
+[Eşitleme yapmanız gereken öğe sayısına (dosya ve klasör) göre bir Windows Server 'ın nasıl boyutlandıralınacağını öğrenin.](storage-sync-files-planning.md#recommended-system-resources)
 
 > [!NOTE]
-> Daha önce bağlanan makale, sunucu belleği (RAM) için bir aralık içeren bir tablo sunar. Sunucunuz için daha küçük sayıya yönelebilirsiniz, ancak ilk eşitlemenin önemli ölçüde daha fazla zaman almasını bekleyebilirsiniz.
+> Daha önce bağlanılan makalede, sunucu belleği (RAM) için bir aralığa sahip bir tablo sunulmaktadır. Sunucunuz için daha küçük bir sayıya yaklaşmayı, ancak ilk eşitlemenin çok daha uzun sürmeyeceğini tahmin edebilirsiniz.
 
-## <a name="phase-3-deploy-the-azure-file-sync-cloud-resource"></a>Aşama 3: Azure Dosya Eşitleme bulut kaynağını dağıtma
+## <a name="phase-3-deploy-the-azure-file-sync-cloud-resource"></a>3. Aşama: Azure Dosya Eşitleme bulut kaynağını dağıtma
 
 [!INCLUDE [storage-files-migration-deploy-afs-sss](../../../includes/storage-files-migration-deploy-azure-file-sync-storage-sync-service.md)]
 
-## <a name="phase-4-deploy-azure-storage-resources"></a>Aşama 4: Azure depolama kaynaklarını dağıtma
+## <a name="phase-4-deploy-azure-storage-resources"></a>4. Aşama: Azure depolama kaynaklarını dağıtma
 
-Bu aşamada, Aşama 1'deki eşleme tablosuna başvurun ve bunları doğru sayıda Azure depolama hesabı ve dosya paylaşımı sağlamak için kullanın.
+Bu aşamada, 1. Aşama ' daki eşleme tablosuna başvurun ve bunların içinde doğru sayıda Azure depolama hesabı ve dosya paylaşımı sağlamak için bunu kullanın.
 
 [!INCLUDE [storage-files-migration-provision-azfs](../../../includes/storage-files-migration-provision-azure-file-share.md)]
 
-## <a name="phase-5-deploy-the-azure-file-sync-agent"></a>Aşama 5: Azure Dosya Eşitleme aracısını dağıtma
+## <a name="phase-5-deploy-the-azure-file-sync-agent"></a>5. Aşama: Azure Dosya Eşitleme aracısını dağıtma
 
 [!INCLUDE [storage-files-migration-deploy-afs-agent](../../../includes/storage-files-migration-deploy-azure-file-sync-agent.md)]
 
-## <a name="phase-6-configure-azure-file-sync-on-the-windows-server"></a>6. Aşama: Windows Sunucusunda Azure Dosya Eşitlemeyi'ni Yapılandırma
+## <a name="phase-6-configure-azure-file-sync-on-the-windows-server"></a>6. Aşama: Windows Server 'da Azure Dosya Eşitleme yapılandırma
 
-Kayıtlı şirket içi Windows Server'ınız bu işlem için hazır ve internete bağlı olmalıdır.
+Kayıtlı şirket içi Windows Server, bu işlem için önceden ve internet 'e bağlı olmalıdır.
 
 [!INCLUDE [storage-files-migration-configure-sync](../../../includes/storage-files-migration-configure-sync.md)]
 
 > [!IMPORTANT]
-> Bulut katmanlama, yerel sunucunun bulutta depolanandan daha az depolama kapasitesine sahip olmasına ve ancak tam ad alanına sahip olmasına olanak tanıyan AFS özelliğidir. Yerel olarak ilginç veriler de hızlı erişim performansı için yerel olarak önbelleğe aledilir. Bulut katmanlama, Azure Dosya Eşitleme "sunucu bitiş noktası" başına isteğe bağlı bir özelliktir.
+> Bulut katmanlaması, yerel sunucunun bulutta depolankıyasla daha az depolama kapasitesine sahip olmasına izin veren, ancak tam ad alanı kullanılabilir olan AFS özelliğidir. Yerel olarak ilginç veriler de hızlı erişim performansı için yerel olarak önbelleğe alınır. Bulut katmanlama, Azure Dosya Eşitleme "sunucu uç noktası" başına isteğe bağlı bir özelliktir.
 
 > [!WARNING]
-> Windows sunucu hacminizde NAS aygıtında kullandığınız verilerden daha az depolama alanı sağlarsanız, bulut katmanlama zorunludur. Bulut katmanlamayı açmazsanız, sunucunuz tüm dosyaları depolamak için yer açmaz. Geçiş için geçici olarak katmanlama ilkenizi %99 hacimboş alana ayarlayın. Geçiş tamamlandıktan sonra bulut katmanlama ayarlarınıza geri dönüp daha uzun vadeli bir yararlı düzeye ayarladıktan emin olun.
+> Windows Server biriminizde, NAS gereci üzerinde kullanılan verilerinize kıyasla daha az depolama alanı sağladıysanız, bulut katmanlaması zorunludur. Bulut katmanlamayı açmazsanız, sunucunuz tüm dosyaları depolamak için alan boşaltmaz. Geçiş için geçici olarak %99 birim boş alana kadar katmanlama ilkenizi ayarlayın. Geçiş tamamlandıktan sonra bulut katmanlama ayarlarınıza döndiğinizden emin olun ve daha uzun süreli bir kullanışlı düzeye ayarlayın.
 
-Eşitleme grubu oluşturma adımlarını ve eşitleme için yapılandırılması gereken tüm Azure dosya paylaşımları / sunucu konumları için eşleşen sunucu klasörünün sunucu bitiş noktası olarak eklenmesiadımlarını yineleyin.
+Eşitleme grubu oluşturma adımlarını ve eşleşen sunucu klasörünün, eşitleme için yapılandırılması gereken tüm Azure dosya paylaşımları/sunucu konumları için sunucu uç noktası olarak eklenmesi ' nı tekrarlayın.
 
-Tüm sunucu uç noktaları oluşturulduktan sonra eşitleme çalışır. Bir test dosyası oluşturabilir ve sunucu konumunuzdan bağlı Azure dosya paylaşımına eşitlediğini görebilirsiniz (eşitleme grubundaki bulut bitiş noktası tarafından açıklandığı gibi).
+Tüm sunucu uç noktaları oluşturulduktan sonra eşitleme çalışır. Bir test dosyası oluşturabilir ve sunucu konumunuzda bağlı Azure dosya paylaşımında (eşitleme grubundaki bulut uç noktasında açıklandığı gibi) eşitlemeyi görebilirsiniz.
 
-Her iki konum, sunucu klasörleri ve Azure dosya paylaşımları boştur ve her iki konumda da veri bekliyor. Bir sonraki adımda, dosyaları buluta taşımak için Dosyaları Azure Dosya Eşitlemi için Windows Server'a kopyalamaya başlarsınız. Bulut katmanlamayı etkinleştirdiyseniz, yerel birim(ler) üzerinde kapasiteniz biterse, sunucu dosyaları katmanlandırmaya başlar.
+Her iki konum, sunucu klasörleri ve Azure dosya paylaşımları başka bir yerde boş ve her iki konumda da veri bekliyor. Bir sonraki adımda, dosyaları buluta taşımak için Azure Dosya Eşitleme Windows Server 'a kopyalamaya başlayacaksınız. Bulut katmanlamayı etkinleştirdiyseniz, sunucu daha sonra katman dosyalarına başlar, ancak yerel birimde kapasiteniz tükenmelidir.
 
-## <a name="phase-7-robocopy"></a>Faz 7: Robocopy
+## <a name="phase-7-robocopy"></a>7. Aşama: RoboCopy
 
-Temel geçiş yaklaşımı, NAS aygıtınızdan Windows Server'ınıza bir RoboCopy ve Azure dosya paylaşımlarına Azure Dosya Eşitlemidir.
+Temel geçiş yaklaşımı, NAS gerecinizden Windows sunucunuza yönelik bir RoboCopy ve Azure dosya paylaşımlarına Azure Dosya Eşitleme.
 
 İlk yerel kopyayı Windows Server hedef klasörünüze çalıştırın:
 
-* NAS cihazınızın ilk konumunu belirleyin.
-* Üzerinde Azure Dosya Eşitlemi yapılandırılan Windows Server'daki eşleşen klasörü tanımlayın.
-* RoboCopy kullanarak kopyayı başlatın
+* NAS gerecinizdeki ilk konumu belirler.
+* Windows Server 'da zaten Azure Dosya Eşitleme yapılandırılmış olan eşleşen klasörü belirler.
+* RoboCopy kullanarak kopyayı başlatma
 
-Aşağıdaki RoboCopy komutu, NAS depolama alanınızdaki dosyaları Windows Server hedef klasörünüze kopyalar. Windows Server bunu Azure dosya paylaşımı(lar) ile senkronize eder. 
+Aşağıdaki RoboCopy komutu, dosyaları NAS depolamadan Windows Server hedef klasörünüze kopyalayacaktır. Windows Server onu Azure dosya paylaşımıyla eşitler. 
 
-Windows Server'ınızda dosyalarınızın NAS aygıtında olduğundan daha az depolama alanı sağlarsanız, bulut katmanlamayı yapılandırmış sınız demektir. Yerel Windows Server birimi dolduğunda, [bulut katmanlama](storage-sync-cloud-tiering.md) devreye girer ve zaten başarıyla eşitlenmiş dosyaları katmanlar. Bulut katmanlama, NAS cihazından kopyayı devam ettirmeye yetecek kadar alan oluşturur. Bulut katmanlama, neyin senkronize edildiğini görmek ve %99 birim boş alana ulaşmak için disk alanını boşaltmak için saatte bir kontrol eder.
-RoboCopy'nin dosyaları bulut ve katmanla yerel olarak eşitlediğinizden daha hızlı hareket ettirerek yerel disk alanının tükenmeolasılığı mümkündür. RoboCopy başarısız olur. Bunu engelleyen bir sırayla paylaşımlar üzerinde çalışmanız önerilir. Örneğin, tüm paylaşımlar için RoboCopy işlerini aynı anda başlatmamak veya yalnızca Windows Server'daki geçerli boş alan miktarına uyan paylaşımları birkaç ı setmek için taşımamak.
+Windows Server 'da dosyalarınızın NAS gerecinden daha az depolama alanı sağladıysanız, bulut katmanlaması yapılandırmış olursunuz. Yerel Windows Server birimi tam aldığından, [bulut katmanlaması](storage-sync-cloud-tiering.md) , zaten zaten eşitlenmiş olan ve katman dosyalarını açacaktır. Bulut katmanlaması, bir kopyanın NAS gerecinden devam etmesi için yeterli alan oluşturacak. Bulut katmanlaması, %99 birim boş alana ulaşmak için ne eşitlendiğini ve disk alanını boşaltmak için bir saatte bir kez kontrol eder.
+Bu, RoboCopy, buluta ve katmana yerel olarak eşitlenebilmeniz ve bu nedenle yerel disk alanı tükendiğinden dosyaları daha hızlı taşıbilirler. RoboCopy başarısız olacak. Paylaşımlar üzerinde bunu önleyen bir sırayla çalışmanız önerilir. Örneğin, aynı anda tüm paylaşımlar için RoboCopy işlerini başlatmaktan veya yalnızca Windows Server 'daki geçerli boş alan miktarına uygun olan paylaşımları birkaç kez bahsetmez.
 
 ```console
 Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
-Arka plan:
+Arka plan
 
 :::row:::
    :::column span="1":::
       /MT
    :::column-end:::
    :::column span="1":::
-      RoboCopy'nin çok iş parçacığı çalışmasını sağlar. Varsayılan değer 8, en fazla 128.
+      RoboCopy 'nin çoklu iş parçacıklı çalıştırmasına izin verir. Varsayılan 8 ' dir, Max 128 ' dir.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -127,15 +127,15 @@ Arka plan:
       /UNILOG:\<dosya adı\>
    :::column-end:::
    :::column span="1":::
-      UNICODE olarak LOG dosyasına durum çıktıları (varolan günlüğün üzerine yazar).
+      GÜNLÜK dosyasının durumunu UNICODE olarak çıkış (varolan günlüğün üzerine yaz).
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /TEE
+      /T
    :::column-end:::
    :::column span="1":::
-      Konsol penceresine çıkan çıktılar. Bir günlük dosyasına çıktı ile birlikte kullanılır.
+      Konsol penceresine çıkış. Günlük dosyasına çıktılarla birlikte kullanılır.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -143,23 +143,23 @@ Arka plan:
       /B
    :::column-end:::
    :::column span="1":::
-      RoboCopy'i yedek bir uygulamanın kullanacağı modda çalıştırır. RoboCopy'nin geçerli kullanıcının izinleri olmayan dosyaları taşımasına olanak tanır.
+      RoboCopy, bir yedekleme uygulamasının kullanacağı modda çalıştırır. RoboCopy 'nin geçerli kullanıcının izinleri olmayan dosyaları taşımasına izin verir.
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /MIR
+      /MıR
    :::column-end:::
    :::column span="1":::
-      Bu RoboCopy komutu birkaç kez, sırayla aynı hedef / hedef üzerinde çalıştırmak için izin verir. Daha önce kopyalanan ları tanımlar ve atlar. Yalnızca değişiklikler, eklemeler ve "*siler*" son çalıştırmadan bu yana gerçekleşen işlenir. Komut daha önce çalıştırılmadığı takdirde, hiçbir şey atlanır. */MIR* bayrağı hala etkin olarak kullanılan ve değişen kaynak konumlar için mükemmel bir seçenektir.
+      Aynı hedefte/hedefte sırayla bu RoboCopy komutunu birkaç kez çalıştırmaya izin verir. Ne önce kopyalanmış olduğunu tanımlar ve onu atlar. Yalnızca değişiklikler, ekler ve "*silmeler*" işlenir. Bu, son çalıştırmasından bu yana yapılır. Komut daha önce çalıştırılmadıysa hiçbir şey atlanamaz. */MIR* bayrağı, hala etkin olarak kullanılan ve değişen kaynak konumları için mükemmel bir seçenektir.
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /COPY:copyflag[s]
+      /COPY: copyflag [s]
    :::column-end:::
    :::column span="1":::
-      dosya kopyasının doğruluğu (varsayılan /COPY:DAT' dır), kopya bayrakları: D=Data, A=Öznitelikler, T=Zaman damgaları, S=Security=NTFS AKLAR, O=Sahip bilgileri, U=aUditing bilgi
+      dosya kopyasının doğruluğu (varsayılan:/COPY: DAT), kopya bayrakları: D = veri, A = öznitelikler, T = zaman damgaları, S = güvenlik = NTFS ACL 'Leri, O = sahip bilgileri, U = denetim bilgileri
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -167,65 +167,65 @@ Arka plan:
       /COPYALL
    :::column-end:::
    :::column span="1":::
-      TÜM dosya bilgilerini KOPYALA (/COPY:DATSOU'ya eşdeğer)
+      Tüm dosya bilgilerini kopyala (/COPY: DATSOU ile eşdeğer)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /DCOPY:copyflag[s]
+      /DCOPY: copyflag [s]
    :::column-end:::
    :::column span="1":::
-      dizinlerin kopyası için sadakat (varsayılan dır /DCOPY:DA), kopya bayrakları: D=Data, A=Öznitelikler, T=Zaman damgaları
+      dizinlerin kopyasına uygunluk (varsayılan:/DCOPY: DA), kopyalama bayrakları: D = veri, A = öznitelikler, T = zaman damgaları
    :::column-end:::
 :::row-end:::
 
-## <a name="phase-8-user-cut-over"></a>Faz 8: Kullanıcı kesme
+## <a name="phase-8-user-cut-over"></a>8. Aşama: Kullanıcı tarafından kesilen
 
-RoboCopy komutunu ilk kez çalıştırdığınızda, kullanıcılarınız ve uygulamalarınız HALA NAS'taki dosyalara erişiyor ve bunları değiştirme potansiyeline sahip. RoboCopy'nin bir dizini işlemesi, bir sonrakine geçmesi ve kaynak konumdaki (NAS) bir kullanıcının bu geçerli RoboCopy çalışmasında işlenmeyecek bir dosya eklemesi, değiştirmesi veya siler. Bu beklenen bir davranıştır.
+RoboCopy komutunu ilk kez çalıştırdığınızda, kullanıcılarınız ve uygulamalarınız hala NAS 'daki dosyalara erişiyor ve bu dosyaları değiştirebilir. Bu, RoboCopy bir dizin işledi, bir sonrakine geçer ve ardından kaynak konumdaki (NAS) bir Kullanıcı, bu geçerli RoboCopy çalıştırmasında işlenmeyecek bir dosyayı ekler, değiştirir veya siler. Bu beklenen bir davranıştır.
 
-İlk çalıştırma, azure dosya eşitlemi aracılığıyla verilerin büyük bir kısmını Windows Server'ınıza ve buluta taşımakla ilgilidir. Bu ilk kopya, bağlı olarak uzun zaman alabilir:
+İlk çalıştırma, Azure Dosya Eşitleme aracılığıyla verilerin toplu olarak Windows sunucunuza ve buluta taşınması ile ilgilidir. Bu ilk kopya, şu değere bağlı olarak uzun zaman alabilir:
 
 * indirme bant genişliğiniz
-* yükleme bant genişliği
-* yerel ağ hızı ve RoboCopy iş parçacığı sayısının onunla en uygun şekilde eşleştiğinin sayısı
-* RoboCopy ve Azure Dosya Eşitlemi tarafından işlenmesi gereken öğelerin (dosya ve klasörler) sayısı
+* karşıya yükleme bant genişliği
+* Yerel ağ hızı ve RoboCopy iş parçacıklarının sayısının ne kadar en iyi şekilde eşleştiğini
+* RoboCopy ve Azure Dosya Eşitleme tarafından işlenmesi gereken öğe sayısı (dosya ve klasörler)
 
 İlk çalıştırma tamamlandıktan sonra, komutu yeniden çalıştırın.
 
-İkinci kez daha hızlı bitecek, çünkü yalnızca son çalıştırmadan bu yana meydana gelen değişiklikleri taşıması gerekiyor. Bu ikinci çalıştırma sırasında, yine de, yeni değişiklikler birikebilir.
+İkinci kez daha hızlı bitecektir çünkü yalnızca son çalıştırmasından bu yana gerçekleşen değişiklikleri taşıması yeterlidir. Bu ikinci çalıştırma sırasında, yeni değişiklikler birikmeye devam edebilir.
 
-Belirli bir konum için RoboCopy'i tamamlamak için gereken sürenin kapalı kalma süresi için kabul edilebilir bir pencere içinde olduğundan emin olana kadar bu işlemi yineleyin.
+Belirli bir konum için bir RoboCopy için gereken süre miktarının, kapalı kalma süresi için kabul edilebilir bir pencere dahilinde olduğundan memnun olana kadar bu işlemi tekrarlayın.
 
-Kapalı kalma süresini kabul edilebilir gördüğünüzde ve NAS konumunu çevrimdışı almaya hazır olduğunuzda: Kullanıcı erişimini çevrimdışına almak için, kullanıcıların konuma artık erişemeyeceği veya başka uygun adımlar atamayacak şekilde paylaşım kökündeki ALA'ları değiştirme seçeneğiniz vardır NAS'ınızdaki bu klasörde içeriğin değişmesini önler.
+Kapalı kalma süresini kabul ediyorsanız ve NAS konumunu çevrimdışı duruma getirmek için hazırladınız: Kullanıcı erişimini çevrimdışı duruma getirmek için, paylaşma kökündeki ACL 'Leri değiştirme seçeneğine sahip olursunuz. bu şekilde, kullanıcılar konuma erişemez veya içeriği NAS 'unuzda bu klasörde değiştirilmesini engelleyen herhangi bir uygun adımı alamaz.
 
-Son bir RoboCopy turu çalıştırın. Gözden kaçırılmış olabilecek her türlü değişikliği alacak.
-Bu son adımın ne kadar süreceği, RoboCopy tonu nun hızına bağlıdır. Önceki çalıştırmanın ne kadar sürdüğünü ölçerek süreyi (kapalı kalma sürenize eşittir) tahmin edebilirsiniz.
+Bir son RoboCopy Round çalıştırın. Bu işlem, kaçırılmış olabilecek tüm değişiklikleri seçer.
+Bu son adımın ne kadar süreceği, RoboCopy taramasının hızına bağlıdır. Önceki çalıştırmanın ne kadar sürdüğünü ölçerek süreyi tahmin edebilirsiniz (kapalı kalma süresine eşittir).
 
-Windows Server klasöründe bir paylaşım oluşturun ve büyük olasılıkla DFS-N dağıtımınızı buna işaret edecek şekilde ayarlayın. NAS SMB paylaşımınızdaki yle aynı hisse düzeyi izinlerini ayarladıklarından emin olun. Kurumsal sınıf bir etki alanı birleştirilmiş NAS varsa, o zaman kullanıcı SID'ler otomatik olarak kullanıcılar Active Directory ve RoboCopy kopyaları dosyaları ve meta verileri tam sadakat olarak var olarak eşleşir. NAS'ınızda yerel kullanıcıları kullandıysanız, bu kullanıcıları Windows Server yerel kullanıcıları olarak yeniden oluşturmanız ve RoboCopy'nin windows server'ınıza taşındığı yeni Windows Server yerel kullanıcılarının SID'lerine taşındığını haritalanız gerekir.
+Windows Server klasöründe bir paylaşma oluşturun ve büyük olasılıkla DFS-N dağıtımınızı bunu işaret etmek üzere ayarlayın. Aynı paylaşma düzeyi izinlerini, NAS SMB paylaşımınızda olduğu gibi ayarladığınızdan emin olun. Kurumsal sınıf etki alanına katılmış bir NAS olsaydıysanız, kullanıcılar Active Directory ' de mevcut olduğu için Kullanıcı SID 'Leri otomatik olarak eşleştirecektir ve RoboCopy dosya ve meta verileri tam uygunlukta kopyalar. NAS 'inizdeki yerel kullanıcıları kullandıysanız, bu kullanıcıları Windows Server yerel kullanıcıları olarak yeniden oluşturmanız ve Windows Server 'a taşınan mevcut SID RoboCopy 'nin yeni, Windows Server yerel kullanıcılarınızın SID 'Lerine eşlenmesi gerekir.
 
-Bir hisse/hisse grubunu ortak bir kök veya hacime dönüştürmeyi bitirdiniz. (Faz 1'deki haritanıza bağlı olarak)
+Paylaşımı/paylaşım gruplarını ortak bir köke veya birime geçirmeyi tamamladınız. (1. aşama ile eşleştirmeye bağlı olarak)
 
-Bu kopyalardan birkaçını paralel olarak çalıştırmayı deneyebilirsiniz. Aynı anda bir Azure dosya paylaşımının kapsamını işleme nizi öneririz.
+Bu kopyaların birkaçını paralel olarak çalıştırmayı deneyebilirsiniz. Tek seferde bir Azure dosya paylaşımının kapsamını işlemeyi öneririz.
 
 > [!WARNING]
-> Nas'ınızdaki tüm verileri Windows Server'a taşıdıktan ve geçişiniz tamamlandıktan sonra: Azure portalındaki ***tüm*** eşitleme gruplarına dönün ve bulut katmanlama hacmi boş alan yüzdesi değerini önbellek kullanımı için daha uygun bir şeye ayarlayın, örneğin %20. 
+> Ortamınızdaki tüm verileri Windows Server 'a taşıdınız ve geçiş işlemi tamamlandıktan sonra: Azure portal ***Tüm*** eşitleme gruplarına geri dönün ve bulut katmanlama birimi boş alan yüzdesi değerini önbellek kullanımına daha uygun bir şekilde ayarlayın, %20 deyin. 
 
-Bulut katmanlama birim boş alan ilkesi, birim düzeyinde hareket eder ve bu politikadan eşitleme olarak birden fazla sunucu uç noktası olabilir. Boş alanı tek bir sunucu bitiş noktasında ayarlamayı unutursanız, eşitleme en kısıtlayıcı kuralı uygulamaya devam edecek ve %99 boş disk alanını tutmaya çalışır ve yerel önbelleğin beklediğiniz gibi performans sergilememesini sağlar. Amacınız yalnızca nadiren erişilen, arşiv verileri içeren bir birim için ad alanına sahip olmak olmadığı sürece ve depolama alanının geri kalanını başka bir senaryo için ayırmış sınız.
+Bulut katmanlama birimi boş alan ilkesi, büyük olasılıkla birden çok sunucu uç noktası ile eşitlenmesi olan bir birim düzeyinde çalışır. Tek bir sunucu uç noktasında boş alanı ayarlamayı unutursanız, eşitleme en kısıtlayıcı kuralı uygulamaya devam eder ve %99 boş disk alanı tutmaya çalışır ve bu da, yerel önbelleğin bekleneceği gibi yapılmadığından bu işlemi gerçekleştirmeyecektir. Amacınız yalnızca nadiren erişilen ve arşiv verileri içeren bir birimin ad alanına sahip olmadığı ve diğer bir senaryo için depolama alanının geri kalanını ayırdığınız durumlar dışında.
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-Karşınıza çıkan en olası sorun, RoboCopy komutunun Windows Server tarafında *"Ses tam"* ile başarısız olmasıdır. Bulut katmanlama, senkronize olan yerel Windows Server diskindeki içeriği boşaltmak için her saat bir hareket eder. Amacı hacim üzerinde% 99 boş alana ulaşmaktır.
+' De çalıştırabileceğiniz en olası sorun, RoboCopy komutunun Windows Server tarafında *"Volume Full"* ile başarısız olmasına neden olur. Bulut katmanlaması, eşitlenen yerel Windows Server diskinden içerik boşaltmak için saatte bir kez davranır. Amaç, birimdeki %99 boş alana ulaşmaktır.
 
-Eşitleme ilerleme ve bulut katmanlama disk alanı kadar serbest sağlar. Bunu Windows Server'ınızda Dosya Gezgini'nde gözlemleyebilirsiniz.
+Eşitleme ilerleme durumu ve bulut katmanlaması için disk alanının serbest olmasına izin verin. Bunu, Windows sunucunuzdaki dosya Gezgini ' nde gözlemleyebilirsiniz.
 
-Windows Server'ınız yeterli kullanılabilir kapasiteye sahipolduğunda, komutu yeniden çalıştırmak sorunu çözecektir. Bu duruma düştüğünde hiçbir şey kırılmaz ve güvenle ilerleyemezsiniz. Komutu tekrar çalıştırmanın sakıncası tek sonuçtur.
+Windows Server 'da yeterli kullanılabilir kapasite varsa, komutun yeniden çalıştırılması sorunu çözmeyecektir. Bu durumla karşılaşdığınızda hiçbir şey kesilmez ve güvenle ilerlemebilirsiniz. Komutu yeniden çalıştırmanın bir nedeni tek sonucudur.
 
-Azure Dosya Eşitleme sorunlarını gidermek için aşağıdaki bölümdeki bağlantıyı kontrol edin.
+Sorun giderme Azure Dosya Eşitleme sorunları için aşağıdaki bölümdeki bağlantıyı denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure dosya paylaşımları ve Azure Dosya Eşitlemi hakkında keşfedilecek daha çok şey var. Aşağıdaki makaleler gelişmiş seçenekleri, en iyi uygulamaları anlamalarına yardımcı olur ve sorun giderme yardımı da içerir. Bu makaleler, azure [dosya paylaşımı belgelerine](storage-files-introduction.md) uygun şekilde bağlantı sağlar.
+Azure dosya paylaşımları ve Azure Dosya Eşitleme hakkında daha fazla bilgi bulabilirsiniz. Aşağıdaki makalelerde gelişmiş seçenekler, en iyi uygulamalar ve ayrıca sorun giderme yardımı da yer almanıza yardımcı olur. Bu makaleler, [Azure dosya paylaşma belgelerini](storage-files-introduction.md) uygun şekilde bağlar.
 
-* [AFS'ye genel bakış](https://aka.ms/AFS)
+* [AFS genel bakış](https://aka.ms/AFS)
 * [AFS dağıtım kılavuzu](storage-files-deployment-guide.md)
-* [AFS sorun giderme](storage-sync-files-troubleshoot.md)
+* [AFS sorunlarını giderme](storage-sync-files-troubleshoot.md)

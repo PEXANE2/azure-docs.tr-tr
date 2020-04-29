@@ -1,7 +1,7 @@
 ---
-title: Dahili bir Temel Yük Dengeleyicisi Oluşturma - Azure CLI
+title: İç temel Load Balancer oluşturma-Azure CLı
 titleSuffix: Azure Load Balancer
-description: Bu makalede, Azure CLI kullanarak bir iç yük dengeleyicisi nasıl oluşturulacak öğrenin
+description: Bu makalede, Azure CLı kullanarak iç yük dengeleyici oluşturmayı öğrenin
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: allensu
 ms.openlocfilehash: 51df1936e5d8725b2243e7c0084973370139c540
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79457020"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Azure CLI kullanarak sanal makinelerin yük dengelemesi için iç yük dengeleyici oluşturma
@@ -62,7 +62,7 @@ Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabil
 
 ### <a name="create-the-load-balancer"></a>Yük dengeleyiciyi oluşturma
 
-Az ağ lb ile bir iç Yük Dengeleyici **myFrontEnd**adlı bir frontend IP yapılandırması içeren **myLoadBalancer** , özel bir IP adresi **10.0.0.7 ile ilişkili **myBackEndPool** adlı bir arka uç havuzu [oluşturun.](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest)
+"* Kısmına 10.0.0.7" özel IP adresi ile ilişkili **Mybackendpool** adlı bir arka uç havuzu olan **myön uç**adlı ön uç IP **yapılandırmasını içeren,** [az Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) adlı bir iç Load Balancer oluşturun.
 
 ```azurecli-interactive
   az network lb create \
@@ -131,7 +131,7 @@ Bu örnekte, yük dengeleyici için arka uç sunucular olarak kullanılacak iki 
 
 ### <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
 
-[az vm kullanılabilirlik seti oluşturmak](/cli/azure/network/nic) ile bir kullanılabilirlik kümesi oluşturma
+[Az VM AVAILABILITY bilityset Create](/cli/azure/network/nic) komutunu kullanarak bir kullanılabilirlik kümesi oluşturun
 
 ```azurecli-interactive
   az vm availability-set create \

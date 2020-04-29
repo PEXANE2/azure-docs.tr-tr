@@ -1,6 +1,6 @@
 ---
-title: Kullanılabilirlik grubunu farklı bölgeler arasında yapılandırma
-description: Bu makalede, Azure sanal makinelerde farklı bir bölgede çoğaltma ile bir SQL Server kullanılabilirlik grubu nasıl yapılandırılabilen açıklanmaktadır.
+title: Kullanılabilirlik grubunu farklı bölgelerde yapılandırma
+description: Bu makalede, Azure sanal makinelerinde farklı bir bölgedeki bir çoğaltmayla SQL Server kullanılabilirlik grubunun nasıl yapılandırılacağı açıklanmaktadır.
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
@@ -16,123 +16,123 @@ ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 8ca871a6f525d4e68ce70060e6faddbcfc8e1f3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80060122"
 ---
-# <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Farklı bölgelerdeki Azure SQL Server sanal makinelerinde kullanılabilirlik grubunu yapılandırma
+# <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Farklı bölgelerde Azure SQL Server sanal makinelerde bir kullanılabilirlik grubu yapılandırma
 
-Bu makalede, uzak bir Azure konumundaki Azure sanal makinelerde sql server her zaman kullanılabilirlik grubu yinelemesinde nasıl yapılandırılanın açıklanmaktadır. Olağanüstü durum kurtarmayı desteklemek için bu yapılandırmayı kullanın.
+Bu makalede, uzak bir Azure konumundaki Azure sanal makinelerinde SQL Server Always on kullanılabilirlik grubu çoğaltmasının nasıl yapılandırılacağı açıklanmaktadır. Olağanüstü durum kurtarmayı desteklemek için bu yapılandırmayı kullanın.
 
-Bu makale, Kaynak Yöneticisi modundaAzure Sanal Makineler için geçerlidir.
+Bu makale Kaynak Yöneticisi modundaki Azure sanal makineleri için geçerlidir.
 
-Aşağıdaki resim, Azure sanal makinelerinde kullanılabilirlik grubunun yaygın olarak dağıtılmasını gösterir:
+Aşağıdaki görüntüde, Azure sanal makinelerinde bir kullanılabilirlik grubunun ortak dağıtımı gösterilmektedir:
 
    ![Kullanılabilirlik Grubu](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic.png)
 
-Bu dağıtımda, tüm sanal makineler tek bir Azure bölgesindedir. Kullanılabilirlik grubu yinelemeleri SQL-1 ve SQL-2'de otomatik hata ile eşzamanlı işlemeye sahip olabilir. Bu mimariyi oluşturmak için [Kullanılabilirlik Grubu şablonuna veya öğreticiye](virtual-machines-windows-portal-sql-availability-group-overview.md)bakın.
+Bu dağıtımda, tüm sanal makineler tek bir Azure bölgesidir. Kullanılabilirlik grubu çoğaltmalarının, SQL-1 ve SQL-2 ' de otomatik yük devretme ile zaman uyumlu yürütmesi olabilir. Bu mimariyi derlemek için bkz. [kullanılabilirlik grubu şablonu veya öğreticisi](virtual-machines-windows-portal-sql-availability-group-overview.md).
 
-Azure bölgesine erişilemiyorsa, bu mimari kapalı kalma sürelerine karşı savunmasızdır. Bu güvenlik açığının üstesinden gelmek için farklı bir Azure bölgesine yineleme ekleyin. Aşağıdaki diyagram, yeni mimarinin nasıl görüneceğini gösterir:
+Bu mimari, Azure bölgesinin erişilemez hale gelmesi durumunda kapalı kalma süresine karşı savunmasız kalır. Bu güvenlik açığını aşmak için, farklı bir Azure bölgesine bir çoğaltma ekleyin. Aşağıdaki diyagramda yeni mimarinin nasıl görüneceğine gösterilmektedir:
 
-   ![Kullanılabilirlik Grubu DR](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic-dr.png)
+   ![Kullanılabilirlik grubu DR](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic-dr.png)
 
-Önceki diyagramda SQL-3 adı verilen yeni bir sanal makine gösterilmektedir. SQL-3 farklı bir Azure bölgesindedir. SQL-3, Windows Server Failover Cluster'a eklenir. SQL-3 kullanılabilirlik grubu yinelemebarındırabilir. Son olarak, SQL-3 için Azure bölgesinin yeni bir Azure yük dengeleyicisi olduğunu unutmayın.
+Yukarıdaki diyagramda, SQL-3 adlı yeni bir sanal makine gösterilmektedir. SQL-3 farklı bir Azure bölgesidir. SQL-3, Windows Server yük devretme kümesine eklenir. SQL-3, bir kullanılabilirlik grubu çoğaltmasını barındırabilir. Son olarak, SQL-3 için Azure bölgesinin yeni bir Azure yük dengeleyiciye sahip olduğuna dikkat edin.
 
 >[!NOTE]
-> Birden fazla sanal makine aynı bölgede olduğunda Azure kullanılabilirlik kümesi gereklidir. Bölgede yalnızca bir sanal makine varsa, kullanılabilirlik kümesi gerekli değildir. Sanal bir makineyi yalnızca oluşturma sırasında bir kullanılabilirlik kümesine yerleştirebilirsiniz. Sanal makine zaten bir kullanılabilirlik kümesindeyse, daha sonra ek bir yineleme için sanal bir makine ekleyebilirsiniz.
+> Aynı bölgede birden fazla sanal makine olduğunda bir Azure kullanılabilirlik kümesi gereklidir. Bölgede yalnızca bir sanal makine varsa, kullanılabilirlik kümesi gerekli değildir. Bir sanal makineyi bir kullanılabilirlik kümesine, oluşturma zamanında yerleştirebilirsiniz. Sanal makine zaten bir kullanılabilirlik kümesinde ise, daha sonra ek bir çoğaltma için bir sanal makine ekleyebilirsiniz.
 
-Bu mimaride, uzak bölgedeki yineleme normalde kullanılabilirlik modu ve el ile başarısız modu ile yapılandırılır.
+Bu mimaride, uzak bölgedeki Çoğaltma normalde zaman uyumsuz tamamlama kullanılabilirliği moduyla ve el ile yük devretme moduyla yapılandırılır.
 
-Kullanılabilirlik grubu yinelemeleri farklı Azure bölgelerindeki Azure sanal makinelerinde olduğunda, her bölge şunları gerektirir:
+Kullanılabilirlik grubu çoğaltmaları farklı Azure bölgelerindeki Azure sanal makinelerdeyse her bölge şunları gerektirir:
 
-* Sanal ağ ağ geçidi
-* Sanal ağ ağ geçidi bağlantısı
+* Bir sanal ağ geçidi
+* Bir sanal ağ geçidi bağlantısı
 
-Aşağıdaki diyagram, ağların veri merkezleri arasında nasıl iletişim kurduğunu gösterir.
+Aşağıdaki diyagramda, ağların veri merkezleri arasında nasıl iletişim kurduğu gösterilmektedir.
 
    ![Kullanılabilirlik Grubu](./media/virtual-machines-windows-portal-sql-availability-group-dr/01-vpngateway-example.png)
 
 >[!IMPORTANT]
->Bu mimari, Azure bölgeleri arasında çoğaltılan veriler için giden veri ücretlerine neden olur. Bkz. [Bant Genişliği Fiyatlandırması.](https://azure.microsoft.com/pricing/details/bandwidth/)  
+>Bu mimari, Azure bölgeleri arasında çoğaltılan veriler için giden veri ücretleri doğurur. Bkz. [bant genişliği fiyatlandırması](https://azure.microsoft.com/pricing/details/bandwidth/).  
 
-## <a name="create-remote-replica"></a>Uzak yineleme oluşturma
+## <a name="create-remote-replica"></a>Uzak çoğaltma oluştur
 
-Uzak bir veri merkezinde yineleme oluşturmak için aşağıdaki adımları yapın:
+Uzak bir veri merkezinde çoğaltma oluşturmak için aşağıdaki adımları uygulayın:
 
-1. [Yeni bölgede sanal ağ oluşturun.](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)
+1. [Yeni bölgede bir sanal ağ oluşturun](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network).
 
-1. [Azure portalını kullanarak VNet'ten VNet'e bağlantı yapılandırıyor.](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+1. [Azure Portal kullanarak VNET-VNet bağlantısı yapılandırın](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
 
    >[!NOTE]
-   >Bazı durumlarda, VNet-to-VNet bağlantısını oluşturmak için PowerShell'i kullanmanız gerekebilir. Örneğin, farklı Azure hesapları kullanıyorsanız, portaldaki bağlantıyı yapılandıramazsınız. Bu durumda [bkz.](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+   >Bazı durumlarda, sanal ağdan sanal ağa bağlantı oluşturmak için PowerShell kullanmanız gerekebilir. Örneğin, farklı Azure hesapları kullanıyorsanız, portalda bağlantıyı yapılandıramazsınız. Bu durumda bkz. [Azure Portal kullanarak VNET-VNet bağlantısı yapılandırma](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
 
-1. [Yeni bölgede bir etki alanı denetleyicisi oluşturun.](../../../active-directory/active-directory-new-forest-virtual-machine.md)
+1. [Yeni bölgede bir etki alanı denetleyicisi oluşturun](../../../active-directory/active-directory-new-forest-virtual-machine.md).
 
-   Bu etki alanı denetleyicisi, birincil sitedeki etki alanı denetleyicisi kullanılamıyorsa kimlik doğrulaması sağlar.
+   Birincil sitedeki etki alanı denetleyicisi kullanılamıyorsa, bu etki alanı denetleyicisi kimlik doğrulaması sağlar.
 
-1. [Yeni bölgede bir SQL Server sanal makine oluşturun.](virtual-machines-windows-portal-sql-server-provision.md)
+1. [Yeni bölgede SQL Server sanal makine oluşturun](virtual-machines-windows-portal-sql-server-provision.md).
 
-1. [Yeni bölgede ağda bir Azure yük dengeleyicisi oluşturun.](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
+1. [Yeni bölgedeki ağda bir Azure yük dengeleyici oluşturun](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer).
 
-   Bu yük dengeleyicisi şunları yapmalı:
+   Bu yük dengeleyici şunları içermelidir:
 
-   - Yeni sanal makineyle aynı ağda ve alt ağda olun.
-   - Kullanılabilirlik grubu dinleyicisi için statik bir IP adresine sahip olmak.
-   - Yük dengeleyicisi ile aynı bölgede yalnızca sanal makinelerden oluşan bir arka uç havuzu ekleyin.
-   - IP adresine özgü bir TCP bağlantı noktası sondası kullanın.
-   - Aynı bölgede SQL Server'a özgü bir yük dengeleme kuralına sahip olun.  
-   - Arka uç havuzundaki sanal makineler tek bir kullanılabilirlik kümesinin veya sanal makine ölçeği kümesinin parçası değilse Standart Yük Dengeleyicisi olun. Ek bilgi incelemesi için [Azure Yük Dengeleyici Standardına genel bakış.](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)
+   - Yeni sanal makine ile aynı ağ ve alt ağ içinde olmalıdır.
+   - Kullanılabilirlik grubu dinleyicisi için bir statik IP adresi vardır.
+   - Yük dengeleyiciyle aynı bölgedeki yalnızca sanal makinelerden oluşan bir arka uç havuzu ekleyin.
+   - IP adresine özgü bir TCP bağlantı noktası araştırması kullanın.
+   - Aynı bölgedeki SQL Server özel bir yük dengeleme kuralına sahip olmalıdır.  
+   - Arka uç havuzundaki sanal makineler tek bir kullanılabilirlik kümesinin ya da sanal makine ölçek kümesinin bir parçası değilse, bir Standart Load Balancer olun. Daha fazla bilgi için [Azure Load Balancer standart genel bakış ' a](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)bakın.
 
-1. [Yeni SQL Server'a Failover Kümeleme özelliği ekleyin.](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms)
+1. [Yeni SQL Server Yük Devretme Kümelemesi özelliği ekleyin](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms).
 
-1. [Etki alanına yeni SQL Server katılın.](virtual-machines-windows-portal-sql-availability-group-prereq.md#joinDomain)
+1. [Yeni SQL Server etki alanına ekleyin](virtual-machines-windows-portal-sql-availability-group-prereq.md#joinDomain).
 
-1. [Etki alanı hesabı kullanacak yeni SQL Server hizmet hesabını ayarlayın.](virtual-machines-windows-portal-sql-availability-group-prereq.md#setServiceAccount)
+1. [Yeni SQL Server hizmet hesabını bir etki alanı hesabı kullanacak şekilde ayarlayın](virtual-machines-windows-portal-sql-availability-group-prereq.md#setServiceAccount).
 
-1. [Yeni SQL Server'ı Windows Server Failover Cluster'a ekleyin.](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode)
+1. [Yeni SQL Server Windows Server yük devretme kümesine ekleyin](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode).
 
 1. Kümeye bir IP adresi kaynağı ekleyin.
 
-   Failover Cluster Manager'da IP adresi kaynağını oluşturabilirsiniz. Kümenin adını seçin, ardından **Küme Çekirdek Kaynakları** altında küme adını sağ tıklatın ve **Özellikler'i**seçin: 
+   IP adresi kaynağını Yük Devretme Kümesi Yöneticisi ' de oluşturabilirsiniz. Kümenin adını seçin, ardından küme **çekirdek kaynakları** altında küme adına sağ tıklayın ve **Özellikler**' i seçin: 
 
    ![Küme özellikleri](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-name-properties.png)
 
-   **Özellikler** iletişim kutusunda, **IP Adresi**altında **Ekle'yi** seçin ve ardından uzak ağ bölgesinden küme adının IP adresini ekleyin. **IP Adresi** iletişim kutusunda **Tamam'ı** seçin ve ardından yeni IP adresini kaydetmek için **Küme Özellikleri** iletişim kutusunda tekrar **Tamam'ı** seçin... 
+   **Özellikler** iletişim kutusunda, **IP adresi**altında **Ekle** ' yi seçin ve ardından uzak ağ bölgesinden küme adının IP adresini ekleyin. **IP adresi** Iletişim kutusunda **Tamam** ' ı SEÇIN ve ardından yeni IP adresini kaydetmek için **küme özellikleri** iletişim kutusunda yeniden **Tamam** ' ı seçin. 
 
-   ![Küme IP ekle](./media/virtual-machines-windows-portal-sql-availability-group-dr/add-cluster-ip-address.png)
+   ![Küme IP 'si Ekle](./media/virtual-machines-windows-portal-sql-availability-group-dr/add-cluster-ip-address.png)
 
 
-1. IP adresini çekirdek küme adı için bağımlılık olarak ekleyin.
+1. IP adresini çekirdek küme adı için bir bağımlılık olarak ekleyin.
 
-   Küme özelliklerini bir kez daha açın ve **Bağımlılıklar** sekmesini seçin. İki IP adresi için bir OR bağımlılığını yapılandırın: 
+   Küme özelliklerini daha sonra açın ve **Bağımlılıklar** sekmesini seçin. iki IP adresi IÇIN bir veya bağımlılığı yapılandırın: 
 
    ![Küme özellikleri](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-ip-dependencies.png)
 
 1. Kümedeki kullanılabilirlik grubu rolüne bir IP adresi kaynağı ekleyin. 
 
-   Failover Cluster Manager'da kullanılabilirlik grubu rolünü sağ tıklatın, Kaynak Ekle, **Daha Fazla Kaynak** **ekleyin'i**seçin ve **IP Adresi'ni**seçin.
+   Yük Devretme Kümesi Yöneticisi ' de kullanılabilirlik grubu rolüne sağ tıklayın, **Kaynak Ekle**, **daha fazla kaynak**ve **IP adresi**Seç ' i seçin.
 
-   ![IP Adresi Oluşturma](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
+   ![IP adresi oluştur](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
-   Bu IP adresini aşağıdaki gibi yapılandırın:
+   Bu IP adresini şu şekilde yapılandırın:
 
    - Uzak veri merkezinden ağı kullanın.
-   - IP adresini yeni Azure yük bakiyesinden atayın. 
+   - IP adresini yeni Azure Yük dengeleyicisinden atayın. 
 
-1. Dinleyici istemci erişim noktası (ağ adı) kümesi için bir bağımlılık olarak IP adresi kaynağı ekleyin.
+1. IP adresi kaynağını, dinleyici istemci erişim noktası (ağ adı) kümesine yönelik bir bağımlılık olarak ekleyin.
 
-   Aşağıdaki ekran görüntüsü, düzgün yapılandırılmış bir IP adresi küme kaynağını gösterir:
+   Aşağıdaki ekran görüntüsünde düzgün yapılandırılmış bir IP adresi küme kaynağı gösterilmektedir:
 
    ![Kullanılabilirlik Grubu](./media/virtual-machines-windows-portal-sql-availability-group-dr/50-configure-dependency-multiple-ip.png)
 
    >[!IMPORTANT]
-   >Küme kaynak grubu her iki IP adresini de içerir. Her iki IP adresi de dinleyici istemci erişim noktası için bağımlılıklardır. Küme bağımlılık yapılandırmasında **OR** işleci kullanın.
+   >Küme kaynak grubu her iki IP adresini de içerir. Her iki IP adresi de dinleyici istemci erişim noktası için bağımlılıklardır. Küme bağımlılığı yapılandırmasında **or** işlecini kullanın.
 
-1. [PowerShell'de küme parametrelerini ayarlayın.](virtual-machines-windows-portal-sql-availability-group-tutorial.md#setparam)
+1. [PowerShell 'de küme parametrelerini ayarlayın](virtual-machines-windows-portal-sql-availability-group-tutorial.md#setparam).
 
-PowerShell komut dosyasını, yeni bölgedeki yük dengeleyicisinde yapılandırdığınız küme ağ adı, IP adresi ve sonda bağlantı noktasıyla çalıştırın.
+PowerShell betiğini, yeni bölgedeki yük dengeleyicide yapılandırdığınız küme ağ adı, IP adresi ve araştırma bağlantı noktasıyla çalıştırın.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
@@ -145,60 +145,60 @@ PowerShell komut dosyasını, yeni bölgedeki yük dengeleyicisinde yapılandır
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
-1. SQL Server Configuration Manager'daki yeni SQL Server'da [Her Zaman Kullanılabilirlik Gruplarında'yı etkinleştirin.](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server)
+1. SQL Server Yapılandırma Yöneticisi yeni SQL Server, [Always on kullanılabilirlik grupları 'nı etkinleştirin](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server).
 
-1. [Yeni SQL Server'da güvenlik duvarı bağlantı noktalarını açın.](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)
+1. [Yeni SQL Server güvenlik duvarı bağlantı noktalarını açın](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
 
-   Açmanız gereken bağlantı noktası numaraları ortamınıza bağlıdır. Yansıtma uç noktası ve Azure yük dengeleyici sabunu sondası için bağlantı noktalarını açın.
+   Açmanız gereken bağlantı noktası numaraları ortamınıza bağlıdır. Yansıtma uç noktası ve Azure Yük Dengeleyici Sistem durumu araştırması için bağlantı noktalarını açın.
 
 
-1. [Yeni SQL Server'daki kullanılabilirlik grubuna yineleme ekleyin.](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio)
+1. [Yeni SQL Server kullanılabilirlik grubuna bir çoğaltma ekleyin](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio).
 
-   Uzak bir Azure bölgesindeki bir yineleme için, el ile başarısız olan eşzamanlı çoğaltma için ayarlayın.  
+   Uzak bir Azure bölgesindeki bir çoğaltma için el ile yük devretme ile zaman uyumsuz çoğaltma için ayarlayın.  
 
 ## <a name="set-connection-for-multiple-subnets"></a>Birden çok alt ağ için bağlantı ayarlama
 
-Uzak veri merkezindeki yineleme kullanılabilirlik grubunun bir parçasıdır, ancak farklı bir alt ağdadır. Bu yineleme birincil yineleme haline gelirse, uygulama bağlantısı zaman-outs oluşabilir. Bu davranış, çoklu alt ağ dağıtımında şirket içi kullanılabilirlik grubuyla aynıdır. İstemci uygulamalarından bağlantılara izin vermek için istemci bağlantısını güncelleştirin veya küme ağ adı kaynağında ad çözümlemesi yapılandırın.
+Uzak veri merkezindeki çoğaltma, kullanılabilirlik grubunun bir parçasıdır ancak farklı bir alt ağda yer alabilir. Bu çoğaltma birincil çoğaltma olursa, uygulama bağlantısı zaman aşımları meydana gelebilir. Bu davranış, çok alt ağ dağıtımında şirket içi kullanılabilirlik grubuyla aynıdır. İstemci uygulamalarından gelen bağlantılara izin vermek için, istemci bağlantısını güncelleştirin ya da küme ağ adı kaynağında ad çözümlemesi önbelleğe alma 'yı yapılandırın.
 
-Tercihen, istemci bağlantı dizeleri `MultiSubnetFailover=Yes`ayarlamak için güncelleştirin. Bkz. [MultiSubnetFailover ile Bağlanma.](https://msdn.microsoft.com/library/gg471494#Anchor_0)
+Tercihen, ayarlanacak `MultiSubnetFailover=Yes`istemci bağlantı dizelerini güncelleştirin. Bkz. [MultiSubnetFailover Ile bağlanma](https://msdn.microsoft.com/library/gg471494#Anchor_0).
 
-Bağlantı dizelerini değiştiremiyorsanız, ad çözümlemesi önbelleğe alınmış olarak yapılandırabilirsiniz. Zaman çıkış hatasına bakın [ve çok alt ağ ortamında bir SQL Server 2012 AlwaysOn kullanılabilirlik grubu dinleyicisine bağlanamazsınız.](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)
+Bağlantı dizelerini değiştiremeyeceğiniz takdirde ad çözümlemesi önbelleği yapılandırabilirsiniz. Bkz. [zaman aşımı hatası ve çok alt ağ ortamında SQL Server 2012 AlwaysOn kullanılabilirlik grubu dinleyicisine bağlanamazsınız](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av).
 
-## <a name="fail-over-to-remote-region"></a>Uzak bölgeye geçme
+## <a name="fail-over-to-remote-region"></a>Uzak bölgeye yük devretme
 
-Dinleyicibağlantısını uzak bölgeye sınamak için, çoğaltmadan uzak bölgeye geçebilirsiniz. Yineleme eşzamanlı olsa da, failover olası veri kaybına karşı savunmasızdır. Veri kaybı olmadan başarısız olmak için kullanılabilirlik modunu eşzamanlı olarak değiştirin ve failover modunu otomatik olarak ayarlayın. Aşağıdaki adımları kullanın:
+Uzak bölgeye dinleyici bağlantısını test etmek için çoğaltmayı uzak bölgeye devreder. Çoğaltma zaman uyumsuz olsa da, yük devretme olası veri kaybına karşı savunmasız olur. Veri kaybı olmadan yük devretmek için kullanılabilirlik modunu eşzamanlı olarak değiştirin ve yük devretme modunu otomatik olarak ayarlayın. Aşağıdaki adımları kullanın:
 
-1. **Object**Explorer'da, birincil yinelemeyi barındıran SQL Server örneğine bağlanın.
-1. **AlwaysOn Kullanılabilirlik Grupları**altında, **Kullanılabilirlik Grupları,** kullanılabilirlik grubunuzun sağ tıklatın ve **Özellikleri**tıklatın.
-1. **Genel** sayfada, **Kullanılabilirlik Yinelemeleri**altında, Dr sitesindeki ikincil yinelemeyi **Synchronous Commit** kullanılabilirlik modunu ve **Otomatik** başarısızlık modunu kullanacak şekilde ayarlayın.
-1. Yüksek kullanılabilirlik için birincil yineleme ile aynı sitede ikincil bir yineleme varsa, bu **yinelemeyi Asynchronous Commit** ve **Manual**olarak ayarlayın.
+1. **Nesne Gezgini**' de, birincil çoğaltmayı barındıran SQL Server örneğine bağlanın.
+1. **AlwaysOn kullanılabilirlik grupları**, **kullanılabilirlik grupları**' nın altında, kullanılabilirlik grubunuza sağ tıklayın ve **Özellikler**' e tıklayın.
+1. **Genel** sayfasında, **kullanılabilirlik ÇOĞALTMALARı**altında, Dr sitesindeki Ikincil çoğaltmayı, **zaman uyumlu tamamlama** kullanılabilirlik modunu ve **Otomatik** yük devretme modunu kullanacak şekilde ayarlayın.
+1. Yüksek kullanılabilirlik için birincil çoğaltmayla aynı sitede ikincil bir çoğaltmeniz varsa, bu çoğaltmayı **zaman uyumsuz işlemeye** ve **el ile**ayarlayın.
 1. Tamam'a tıklayın.
-1. **Object Explorer'da**kullanılabilirlik grubunu sağ tıklatın ve **Panoyu Göster'i**tıklatın.
-1. Panoda, DR sitesindeki yinelemenin eşitlenmiş olduğundan doğrulayın.
-1. **Object Explorer'da**kullanılabilirlik grubunu sağ tıklatın ve **Failover'ı tıklatın...** seçeneğini tıklatın. SQL Server Management Studios, SQL Server üzerinde başarısız olmak için bir sihirbaz açar.  
-1. **İleri'yi**tıklatın ve DR sitesindeki SQL Server örneğini seçin. Tekrar **İleri**'ye tıklayın.
-1. DR sitesindeki SQL Server örneğine bağlanın ve **İleri'yi**tıklatın.
-1. **Özet** sayfasında, ayarları doğrulayın ve **Bitir'i**tıklatın.
+1. **Nesne Gezgini**, kullanılabilirlik grubuna sağ tıklayın ve **panoyu göster**' e tıklayın.
+1. Panoda, DR sitesindeki çoğaltmanın eşitlendiğinden emin olun.
+1. **Nesne Gezgini**, kullanılabilirlik grubuna sağ tıklayın ve **Yük devretme...** öğesine tıklayın. SQL Server Management Studios, SQL Server yük devretmek için bir sihirbaz açar.  
+1. **İleri**' ye tıklayın ve DR sitesindeki SQL Server örneğini seçin. Tekrar **İleri**'ye tıklayın.
+1. DR sitesindeki SQL Server örneğine bağlanın ve **İleri**' ye tıklayın.
+1. **Özet** sayfasında, ayarları doğrulayın ve **son**' a tıklayın.
 
-Bağlantıyı test ettikten sonra, birincil yinelemeyi birincil veri merkezinize taşıyın ve kullanılabilirlik modunu normal çalışma ayarlarına geri ayarlayın. Aşağıdaki tablo, bu belgede açıklanan mimari için normal çalışma ayarlarını gösterir:
+Bağlantıyı test ettikten sonra birincil çoğaltmayı birincil veri merkezinize geri taşıyın ve kullanılabilirlik modunu normal işletim ayarlarına geri doğru ayarlayın. Aşağıdaki tabloda, bu belgede açıklanan mimarinin normal işletimsel ayarları gösterilmektedir:
 
-| Konum | Sunucu Örneği | Rol | Kullanılabilirlik Modu | Failover Modu
+| Konum | Sunucu örneği | Rol | Kullanılabilirlik modu | Yük devretme modu
 | ----- | ----- | ----- | ----- | -----
-| Birincil veri merkezi | SQL-1 | Birincil | Zaman uyumlu | Automatic
-| Birincil veri merkezi | SQL-2 | İkincil | Zaman uyumlu | Automatic
-| İkincil veya uzak veri merkezi | SQL-3 | İkincil | Zaman uyumsuz | El ile
+| Birincil veri merkezi | SQL-1 | Birincil | Zaman Uyumlu | Automatic
+| Birincil veri merkezi | SQL-2 | İkincil | Zaman Uyumlu | Automatic
+| İkincil veya uzak veri merkezi | SQL-3 | İkincil | Zaman Uyumsuz | El ile
 
 
-### <a name="more-information-about-planned-and-forced-manual-failover"></a>Planlı ve zorunlu el ile başarısız lık hakkında daha fazla bilgi
+### <a name="more-information-about-planned-and-forced-manual-failover"></a>Planlı ve zorlamalı el ile yük devretme hakkında daha fazla bilgi
 
 Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
 
-- [Kullanılabilirlik Grubunun (SQL Server) Planlı Manuel Hata Yapma](https://msdn.microsoft.com/library/hh231018.aspx)
-- [Kullanılabilirlik Grubunun (SQL Server) Zorla El İle Başarısız Lığı Gerçekleştirme](https://msdn.microsoft.com/library/ff877957.aspx)
+- [Kullanılabilirlik grubunun planlı bir el Ile yük devretmesini gerçekleştirme (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
+- [Kullanılabilirlik grubunun zorla el Ile yük devretmesini gerçekleştirme (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
 
-## <a name="additional-links"></a>Ek Linkler
+## <a name="additional-links"></a>Ek bağlantılar
 
-* [Her Zaman Kullanılabilirlik Gruplarında](https://msdn.microsoft.com/library/hh510230.aspx)
-* [Azure Sanal Makineler](https://docs.microsoft.com/azure/virtual-machines/windows/)
-* [Azure Yük Dengeleyicileri](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
-* [Azure Kullanılabilirlik Setleri](../manage-availability.md)
+* [Always on kullanılabilirlik grupları](https://msdn.microsoft.com/library/hh510230.aspx)
+* [Azure sanal makineleri](https://docs.microsoft.com/azure/virtual-machines/windows/)
+* [Azure yük dengeleyiciler](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
+* [Azure kullanılabilirlik kümeleri](../manage-availability.md)

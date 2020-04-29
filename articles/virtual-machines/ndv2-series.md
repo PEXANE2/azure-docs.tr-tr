@@ -1,6 +1,6 @@
 ---
-title: NDv2 serisi - Azure Sanal Makineler
-description: NDv2 serisi VM'ler için teknik özellikler.
+title: NDv2-Series-Azure sanal makineleri
+description: NDv2 serisi VM 'Ler için Özellikler.
 services: virtual-machines
 author: vikancha
 ms.service: virtual-machines
@@ -8,57 +8,57 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 8a2d275501816dd504130b255b73a752c5615f0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80247291"
 ---
-# <a name="updated-ndv2-series"></a>Güncelleştirilmiş NDv2 serisi
+# <a name="updated-ndv2-series"></a>NDv2-Series güncelleştirildi
 
-NDv2 serisi sanal makine, gpu ailesine en zorlu GPU hızlandırılmış yapay gaz, makine öğrenimi, simülasyon ve HPC iş yüklerinin ihtiyaçları için tasarlanmış yeni bir ektir.
+NDv2 serisi sanal makine, en zorlu GPU hızlandırmalı AI, makine öğrenimi, simülasyon ve HPC iş yüklerinin ihtiyaçları için tasarlanan GPU ailesine yeni bir ektir.
 
-NDv2 8 NVIDIA Tesla V100 NVLINK bağlı GPU, her biri 32 GB GPU bellek ile desteklenmektedir. Her NDv2 VM ayrıca 40 non-HyperThreaded Intel Xeon Platinum 8168 (Skylake) çekirdek ve 672 GiB sistem belleği vardır.
+NDv2, her biri 32 GB GPU belleği bulunan 8 NVıDıA Tesla V100 NVLINK bağlantılı GPU 'Lar tarafından desteklenir. Her NDv2 VM 'nin ayrıca 40 hiper olmayan Intel Xeon Platinum 8168 (ufuk Gölü) çekirdeği ve 672 GiB sistem belleği vardır.
 
-NDv2 örnekleri, CUDA GPU tarafından optimize edilmiş hesaplama çekirdeklerini kullanan HPC ve AI iş yükleri ve TensorFlow, Pytorch, Caffe, RAPIDS ve diğer Gibi GPU ivmesini 'kullanıma hazır' olarak destekleyen birçok AI, ML ve analiz araçları için mükemmel performans sağlar Çerçeve.
+NDv2 örnekleri, CUDA GPU ile iyileştirilmiş hesaplama kernels ' lerini ve Masorflow, Pytorch, Caffe, RAPıDS ve diğer çerçeveler gibi GPU hızlandırmasını destekleyen birçok AI, ML ve analiz aracını kullanan HPC ve AI iş yükleri için mükemmel bir performans sağlar.
 
-Kritik olarak, NDv2 hem hesaplama açısından yoğun ölçeklendirme (VM başına 8 GPU'dan yararlanma) hem de ölçeklendirme (birlikte çalışan birden fazla VM'den yararlanma) iş yükleri için tasarlanmıştır. NDv2 serisi şimdi 100-Gigabit InfiniBand EDR arka uç ağ destekler, HPC VM HB serisi mevcut benzer, AI ve ML için dağıtılmış eğitim de dahil olmak üzere paralel senaryolar için yüksek performanslı kümeleme izin vermek. Bu arka uç ağı, NVIDIA'nın NCCL2 kitaplıkları tarafından kullanılanlar da dahil olmak üzere tüm büyük InfiniBand protokollerini destekler ve GPU'ların sorunsuz bir şekilde kümelanmasına olanak tanır.
+Kritik öneme sahip olan NDv2, her iki hesaplama için de (VM başına 8 GPU) ve genişleme (birden fazla VM birlikte çalışan çok sayıda sanal makine) iş yükleri için oluşturulmuştur. NDv2 serisi artık, AI ve ML için dağıtılmış eğitim dahil olmak üzere paralel senaryolar için yüksek performanslı Kümelemeye izin veren 100-Gigabit InfiniBand EDR arka uç ağını destekler. Bu arka uç ağı, NVıDıA 'nin NCCL2 kitaplıkları tarafından çalıştırılan ve GPU 'Ların sorunsuz kümelemesine izin veren tüm önemli InfiniBand protokollerini destekler.
 
-> ND40rs_v2 VM'de [InfiniBand'ı etkinleştirirken](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) lütfen 4.7-1.0.0.1 Mellanox OFED sürücüsünü kullanın.
+> ND40rs_v2 VM 'de [InfiniBand etkinleştirilirken](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) lütfen 4.7-1.0.0.1 Mellanox ofed sürücüsünü kullanın.
 >
-> Artan GPU belleği nedeniyle, yeni ND40rs_v2 [VM, Generation 2 VM'lerin](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) ve pazar yeri görüntülerinin kullanılmasını gerektirir. 
+> Daha fazla GPU belleği nedeniyle, yeni ND40rs_v2 VM [2. nesil sanal makinelerin](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) ve Market görüntülerinin kullanılmasını gerektirir. 
 >
-> Lütfen dikkat: GPU başına 16 GB belleğe sahip ND40s_v2 artık önizleme için kullanılamaz ve güncelleştirilmiş ND40rs_v2 tarafından eklenmiştir.
+> Lütfen unutmayın: GPU başına 16 GB bellek içeren ND40s_v2 artık önizleme için kullanılamaz ve güncelleştirilmiş ND40rs_v2 yerini almıştır.
 
 <br>
 
-Premium Depolama: Desteklenen
+Premium Depolama: desteklenir
 
-Premium Depolama önbelleğe alma: Desteklenen
+Premium depolama önbelleği: desteklenir
 
-Canlı Geçiş: Desteklenmiyor
+Dinamik Geçiş: desteklenmiyor
 
-Bellek Koruma Güncelleştirmeleri: Desteklenmiyor
+Güncelleştirmeleri koruyan bellek: desteklenmiyor
 
-InfiniBand: Desteklenen
+InfiniBand: destekleniyor
 
-| Boyut | Sanal işlemci | Bellek: GiB | Geçici Depolama (SSD): GiB | GPU | GPU Bellek: GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | Maksimum ağ bant genişliği | En fazla NIC |
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD): GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS-MB/sn | En yüksek ağ bant genişliği | En fazla NIC |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink) | 32 | 32 | 80000 / 800 | 24000 Mbps | 8 |
+| Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink) | 32 | 32 | 80000/800 | 24000 Mbps | 8 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="supported-operating-systems-and-drivers"></a>Desteklenen işletim sistemleri ve sürücüler
 
-Azure N serisi VM'lerin GPU özelliklerinden yararlanmak için NVIDIA GPU sürücülerinin yüklenmesi gerekir.
+Azure N serisi VM 'lerin GPU yeteneklerini avantajlarından yararlanmak için NVıDıA GPU sürücüleri yüklenmelidir.
 
-[NVIDIA GPU Sürücü Uzantısı,](./extensions/hpccompute-gpu-linux.md) n serisi VM'ye uygun NVIDIA CUDA veya GRID sürücülerini yükler. Azure portalını veya Azure PowerShell veya Azure Kaynak Yöneticisi şablonları gibi araçları kullanarak uzantıyı yükleyin veya yönetin. VM uzantıları hakkında genel bilgi için [Azure sanal makine uzantıları ve özelliklerine](./extensions/overview.md)bakın.
+[NVıDıA GPU sürücü uzantısı](./extensions/hpccompute-gpu-linux.md) , bir N serisi VM 'ye uygun NVIDIA CUDA veya kılavuz sürücülerini yükleme. Azure portal veya Azure PowerShell veya Azure Resource Manager şablonları gibi araçları kullanarak uzantıyı yükler veya yönetir. VM uzantıları hakkında genel bilgi için bkz. [Azure sanal makine uzantıları ve özellikleri](./extensions/overview.md).
 
-NVIDIA GPU sürücülerini el ile yüklemeyi seçerseniz, [Linux için N serisi GPU sürücü kurulumuna](./linux/n-series-driver-setup.md)bakın.
+NVıDıA GPU sürücülerini el ile yüklemeyi tercih ederseniz bkz. [Linux Için N SERISI GPU sürücü kurulumu](./linux/n-series-driver-setup.md).
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 
-- [Genel amaç](sizes-general.md)
+- [Genel amaçlı](sizes-general.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
 - [Depolama için iyileştirilmiş](sizes-storage.md)
 - [GPU için iyileştirilmiş](sizes-gpu.md)
@@ -67,4 +67,4 @@ NVIDIA GPU sürücülerini el ile yüklemeyi seçerseniz, [Linux için N serisi 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure bilgi [işlem birimlerinin (ACU)](acu.md) Azure SK'leri genelinde bilgi işlem performansını karşılaştırmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinin.
+Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

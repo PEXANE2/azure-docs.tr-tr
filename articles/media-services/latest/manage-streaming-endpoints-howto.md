@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services v3 ile akış uç noktalarını yönetme
-description: Bu makalede, Azure Media Services v3 ile akış uç noktalarının nasıl yönetilen gösterildiği gösterilmiştir.
+description: Bu makalede, Azure Media Services v3 ile akış uç noktalarının nasıl yönetileceği gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,27 +15,27 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
 ms.openlocfilehash: 75ba2ad87eabd7ff6b0625ad95ab24a8ae58dd0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79461053"
 ---
-# <a name="manage-streaming-endpoints-with--media-services-v3"></a>Medya Hizmetleri v3 ile akış uç noktalarını yönetme
+# <a name="manage-streaming-endpoints-with--media-services-v3"></a>Media Services v3 ile akış uç noktalarını yönetme
 
-Medya Hizmetleri hesabınız **oluşturulduğunda,** **Durduruldu** durumunda hesabınıza varsayılan Bir Akış [Bitiş Noktası](streaming-endpoint-concept.md) eklenir. İçeriğinizi akışa başlamak ve [dinamik paketleme](dynamic-packaging-overview.md) ve dinamik [şifrelemeden](content-protection-overview.md)yararlanmak için, içeriği aktarmak istediğiniz akış bitiş **noktasının Çalışan** durumunda olması gerekir.
+Media Services hesabınız oluşturulduğunda hesabınıza **durdurulmuş** durumda bir **varsayılan** [akış uç noktası](streaming-endpoint-concept.md) eklenir. İçeriğinizi akışa almak ve [dinamik paketleme](dynamic-packaging-overview.md) ile [dinamik şifrelemeden](content-protection-overview.md)yararlanmak için içerik akışı yapmak Istediğiniz akış uç noktasının **çalışıyor** durumda olması gerekir.
 
-Bu makalede, farklı teknolojileri kullanarak akış bitiş noktanızda [başlangıç](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) komutunu nasıl çalıştırabileceğinizgösterilmektedir. 
+Bu makalede, farklı teknolojiler kullanarak akış uç noktanıza [Başlangıç](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) komutunun nasıl yürütüleceği gösterilmektedir. 
  
 > [!NOTE]
-> Yalnızca Akış Bitiş Noktanız çalışırken faturalandırılırsınız.
+> Yalnızca akış uç noktanız çalışır durumdaysa faturalandırılırsınız.
     
 ## <a name="prerequisites"></a>Ön koşullar
 
-Inceleme: 
+İncelemeyi 
 
-* [Medya Hizmetleri kavramları](concepts-overview.md)
-* [Akış Bitiş Noktası kavramı](streaming-endpoint-concept.md)
+* [Media Services kavramlar](concepts-overview.md)
+* [Akış uç noktası kavramı](streaming-endpoint-concept.md)
 * [Dinamik paketleme](dynamic-packaging-overview.md)
 
 ## <a name="use-rest"></a>REST kullanma
@@ -46,18 +46,18 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 Daha fazla bilgi için bkz. 
 
-* [Bir StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) başvuru belgesi başlatın.
-* Akış bitiş noktasını başlatmak eşzamanlı bir işlemdir. 
+* [Streammingendpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) başvuru belgelerini başlatın.
+* Akış uç noktası başlatıldığında zaman uyumsuz bir işlemdir. 
 
-    Uzun süren işlemleri izleme hakkında bilgi [için, uzun süren işlemlere](media-services-apis-overview.md)bakın.
-* Bu [Postacı koleksiyonu,](https://github.com/Azure-Samples/media-services-v3-rest-postman/blob/master/Postman/Media%20Services%20v3.postman_collection.json) akış bitiş noktasının nasıl başlatılalabildiğini de içeren birden çok REST işleminin örneklerini içerir.
+    Uzun süre çalışan işlemlerin nasıl izleneceği hakkında bilgi için bkz. [uzun süreli işlemler](media-services-apis-overview.md).
+* Bu [Postman koleksiyonu](https://github.com/Azure-Samples/media-services-v3-rest-postman/blob/master/Postman/Media%20Services%20v3.postman_collection.json) , akış uç noktasının nasıl başlatılacağı hakkında daha fazla Rest işlemi örnekleri içerir.
 
 ## <a name="use-the-azure-portal"></a>Azure portalı kullanma 
  
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
-1. Azure Medya Hizmetleri hesabınıza gidin.
-1. Sol **bölmede, Akış Uç Noktaları'nı**seçin.
-1. Başlatmak istediğiniz akış bitiş noktasını seçin ve ardından **Başlat'ı**seçin.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. Azure Media Services hesabınıza gidin.
+1. Sol bölmede, **akış uç noktaları**' nı seçin.
+1. Başlatmak istediğiniz akış uç noktasını seçin ve ardından **Başlat**' ı seçin.
 
 ## <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
@@ -70,7 +70,7 @@ az ams streaming-endpoint start [--account-name]
                                 [--subscription]
 ```
 
-Daha fazla bilgi için [az ams streaming-endpoint start'a](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start)bakın.
+Daha fazla bilgi için bkz. [az AMS streaming-Endpoint start](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start).
 
 ## <a name="use-sdks"></a>SDK’ları kullanma
 
@@ -84,7 +84,7 @@ if (streamingEndpoint.resourceState() != StreamingEndpointResourceState.RUNNING)
 }
 ```
 
-[Java kod örneğinin](https://github.com/Azure-Samples/media-services-v3-java/blob/master/DynamicPackagingVODContent/StreamHLSAndDASH/src/main/java/sample/StreamHLSAndDASH.java#L128)tamamına bakın.
+Bkz. [Java kod örneği](https://github.com/Azure-Samples/media-services-v3-java/blob/master/DynamicPackagingVODContent/StreamHLSAndDASH/src/main/java/sample/StreamHLSAndDASH.java#L128).
 
 ### <a name="net"></a>.NET
 
@@ -99,11 +99,11 @@ if (streamingEndpoint != null)
     }
 ```
 
-[.NET kod örneğinin](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/DynamicPackagingVODContent/StreamHLSAndDASH/Program.cs#L112)tamamına bakın.
+[.NET kod örneğine](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/DynamicPackagingVODContent/StreamHLSAndDASH/Program.cs#L112)ilişkin tüm örnekleri inceleyin.
 
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Medya Hizmetleri v3 OpenAPI Belirtimi (Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
-* [Akış Bitiş Noktası işlemleri](https://docs.microsoft.com/rest/api/media/streamingendpoints)
+* [Media Services v3 Openapı belirtimi (Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
+* [Akış uç noktası işlemleri](https://docs.microsoft.com/rest/api/media/streamingendpoints)

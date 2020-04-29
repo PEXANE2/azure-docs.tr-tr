@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory'de hizmete hizmet uygulamaları
-description: Bu uygulama türü için hangi hizmet-servis uygulamalarını ve protokol akışı, kayıt ve belirteç sona erme ile ilgili temel bilgileri açıklar.
+title: Azure Active Directory 'de hizmetten hizmete uygulamalar
+description: Bu uygulama türü için hizmet-hizmet uygulamalarını ve protokol akışı, kayıt ve belirteç süre sonu hakkındaki temel bilgileri açıklar.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,61 +14,61 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 179034533d90dbbb6ca362fc6f72996f32873729
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154772"
 ---
-# <a name="service-to-service-apps"></a>Servise servis uygulamaları
+# <a name="service-to-service-apps"></a>Hizmetten hizmete uygulamalar
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Servise hizmet uygulamaları, bir web API'sinden kaynak alması gereken bir daemon veya sunucu uygulaması olabilir. Bu bölüme uygulanan iki alt senaryo vardır:
+Hizmetten hizmete uygulamalar, bir Web API 'sinden kaynak alması gereken bir Daemon veya sunucu uygulamasıdır. Bu bölüm için uygulanan iki alt senaryo vardır:
 
-- OAuth 2.0 istemci kimlik bilgileri hibe türü üzerine inşa edilmiş bir web API aramak için gereken bir daemon
+- OAuth 2,0 istemci kimlik bilgileri verme türü üzerine inşa edilen bir Web API 'sini çağırması gereken bir Daemon
 
-    Bu senaryoda, birkaç şeyi anlamak önemlidir. İlk olarak, uygulamanın kendi kimliğine sahip olmasını gerektiren bir daemon uygulaması ile kullanıcı etkileşimi mümkün değildir. Daemon uygulamasına örnek olarak toplu iş veya arka planda çalışan bir işletim sistemi hizmeti örnektir. Bu tür bir uygulama, uygulama kimliğini kullanarak ve Uygulama Kimliğini, kimlik bilgilerini (parola veya sertifika) ve uygulama kimliği URI'yi Azure AD'ye sunarak bir erişim belirteci ister. Başarılı kimlik doğrulamasından sonra daemon, Azure AD'den bir erişim jetonu alır ve bu jeton web API'sını aramak için kullanılır.
+    Bu senaryoda, birkaç şeyi anlamak önemlidir. İlk olarak, Kullanıcı etkileşimi, uygulamanın kendi kimliğine sahip olmasını gerektiren bir Daemon uygulamasıyla mümkün değildir. Bir Daemon uygulamasına bir örnek, bir toplu iş veya arka planda çalışan bir işletim sistemi hizmetidir. Bu tür bir uygulama, uygulama kimliğini kullanarak bir erişim belirteci ister ve uygulama KIMLIĞI, kimlik bilgileri (parola veya sertifika) ve uygulama KIMLIĞI URI 'sini Azure AD 'ye sunuyor. Başarılı kimlik doğrulamasından sonra, Daemon, Azure AD 'den bir erişim belirteci alır ve bu, daha sonra Web API 'sini çağırmak için kullanılır.
 
-- OAuth 2.0 On-Behalf-Of taslak belirtimi üzerine inşa edilmiş bir web API'si çağırması gereken bir sunucu uygulaması (web API gibi)
+- Bir Web API 'sini çağırması gereken (örneğin, bir Web API 'SI) bir sunucu uygulaması (örneğin, OAuth 2,0)
 
-    Bu senaryoda, bir kullanıcının yerel bir uygulamada kimlik doğrulaması yaptığını ve bu yerel uygulamanın bir web API'sini çağırması gerektiğini düşünün. Azure AD, web API'sını aramak için Bir JWT erişim belirteci yayınlar. Web API'sinin başka bir akış aşağı web API'sini çağırması gerekiyorsa, kullanıcının kimliğini devretmek ve ikinci katman web API'sine kimlik doğrulamak için akış adına kullanabilir.
+    Bu senaryoda, bir kullanıcının yerel uygulama üzerinde kimlik doğrulaması yapıldığını ve bu yerel uygulamanın bir Web API 'SI çağırması gerektiğini düşünün. Azure AD, Web API 'sini çağırmak için bir JWT erişim belirteci yayınlar. Web API 'sinin başka bir aşağı akış Web API 'SI çağırması gerekiyorsa, kullanıcının kimliğini devretmek ve ikinci katman Web API 'sine kimlik doğrulaması yapmak için şirket adına akışını kullanabilir.
 
 ## <a name="diagram"></a>Diyagram
 
-![Web API diyagramına Daemon veya Sunucu Uygulaması](./media/authentication-scenarios/daemon-server-app-to-web-api.png)
+![Web API diyagramına arka plan programı veya sunucu uygulaması](./media/authentication-scenarios/daemon-server-app-to-web-api.png)
 
 ## <a name="protocol-flow"></a>Protokol akışı
 
-### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>OAuth 2.0 müşteri kimlik bilgileri hibe ile başvuru kimliği
+### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>OAuth 2,0 istemci kimlik bilgileri izni ile uygulama kimliği
 
-1. İlk olarak, sunucu uygulamasının etkileşimli oturum açma iletişim kutusu gibi herhangi bir insan etkileşimi olmadan Azure AD ile kimliği doğrulanması gerekir. Kimlik bilgisi, Uygulama Kimliği ve uygulama kimliği URI'yi sağlayarak Azure AD'nin belirteç bitiş noktasına bir istekte bulunarak bu isteği yapar.
-1. Azure AD uygulamanın kimliğini doğrular ve web API'sını aramak için kullanılan bir JWT erişim belirteci döndürür.
-1. HTTPS üzerinden, web uygulaması, web API'ya isteğin Yetkilendirme başlığında "Taşıyıcı" ibaresi bulunan JWT dizesini eklemek için döndürülen JWT erişim belirteci kullanır. Web API sonra JWT belirteci doğrular ve doğrulama başarılı olursa, istenen kaynak döndürür.
+1. İlk olarak, sunucu uygulamasının, etkileşimli oturum açma iletişim kutusu gibi herhangi bir insan etkileşimi olmadan Azure AD ile kimlik doğrulaması yapması gerekir. Kimlik bilgisini, uygulama KIMLIĞINI ve uygulama KIMLIĞI URI 'sini sağlayarak Azure AD 'nin belirteç uç noktası için bir istek yapar.
+1. Azure AD uygulamanın kimliğini doğrular ve Web API 'sini çağırmak için kullanılan bir JWT erişim belirteci döndürür.
+1. HTTPS üzerinden Web uygulaması, isteğin yetkilendirme üstbilgisinde Web API 'sine bir "taşıyıcı" atamaya sahip JWT dizesini eklemek için döndürülen JWT erişim belirtecini kullanır. Web API 'SI daha sonra JWT belirtecini doğrular ve doğrulama başarılı olursa, istenen kaynağı döndürür.
 
-### <a name="delegated-user-identity-with-oauth-20-on-behalf-of-draft-specification"></a>OAuth 2.0 Taslak Şartnamesi Ile Temsilci kullanıcı kimliği
+### <a name="delegated-user-identity-with-oauth-20-on-behalf-of-draft-specification"></a>Kullanıcı kimliği, OAuth 2,0 için isteğe bağlı taslak belirtimi ile verildi
 
-Aşağıda tartışılan akış, bir kullanıcının başka bir uygulamada (yerel bir uygulama gibi) kimlik doğrulandığını ve kullanıcı kimliğinin birinci katmanweb API'sine erişim belirteci elde etmek için kullanıldığını varsayar.
+Aşağıda ele alınan akış, bir kullanıcının başka bir uygulamada (yerel bir uygulama gibi) kimlik doğrulamasının yapıldığını ve ilk katman Web API 'sine bir erişim belirteci almak için Kullanıcı kimliğinin kullanıldığını varsayar.
 
-1. Yerel uygulama, erişim belirtecisini birinci katmanweb API'sine gönderir.
-1. Birinci katmandaki web API'si, Azure AD'nin belirteç bitiş noktasına, Uygulama Kimliği ve kimlik bilgilerinin yanı sıra kullanıcının erişim belirteci sağlayan bir istek gönderir. Ayrıca, istek, web API'sinin orijinal kullanıcı adına bir akış aşağı web API'sını çağırmak için yeni belirteçler istediğini belirten on_behalf_of bir parametreyle gönderilir.
-1. Azure AD, birinci katman web API'sine erişmek için birinci katman web API izinlerine sahip olduğunu doğrular ve isteği doğrulayarak JWT erişim jetonunu ve Birinci katman web API'sine JWT yenileme belirteci döndürer.
-1. HTTPS üzerinden, birinci katman web API'si, istekte Yetkilendirme üstbilgisine belirteç dizesini ekleyerek ikinci katman web API'sını çağırır. Birinci katmanweb API'si, erişim belirteci ve yenileme belirteçleri geçerli olduğu sürece ikinci katman web API'sını aramaya devam edebilir.
+1. Yerel uygulama, erişim belirtecini ilk katman Web API 'sine gönderir.
+1. Birinci katman Web API 'SI, Azure AD 'nin belirteç uç noktasına bir istek göndererek uygulama KIMLIĞI ve kimlik bilgilerinin yanı sıra kullanıcının erişim belirtecini sağlar. Ayrıca, istek, Web API 'sinin özgün kullanıcı adına bir aşağı akış Web API 'SI çağırmak için yeni belirteçler istediğini belirten bir on_behalf_of parametresiyle gönderilir.
+1. Azure AD, birinci katman Web API 'sinin ikinci katman Web API 'sine erişim izinleri olduğunu doğrular ve isteği doğrular, bir JWT erişim belirteci ve bir JWT yenileme belirtecini birinci katman Web API 'sine döndürür.
+1. HTTPS üzerinden ilk katman Web API 'SI, isteğin yetkilendirme üstbilgisine belirteç dizesini ekleyerek ikinci katmanlı Web API 'sini çağırır. İlk katman Web API 'SI, erişim belirteci ve yenileme belirteçleri geçerli olduğu sürece ikinci katmanlı Web API 'sini çağırmaya devam edebilir.
 
 ## <a name="code-samples"></a>Kod örnekleri
 
-Daemon veya Sunucu Uygulaması için Kod örneklerine bakın Web API senaryoları: [Sunucu veya Web API'ye Daemon Uygulaması](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+Web API senaryolarında arka plan programı veya sunucu uygulaması için kod örneklerine bakın: [sunucu veya Daemon uygulaması Web API 'si](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 ## <a name="app-registration"></a>Uygulama kaydı
 
-* Tek kiracı - Hem uygulama kimliği hem de temsilci kullanıcı kimliği örnekleri için, daemon veya sunucu uygulamasının Azure AD'de aynı dizine kaydedilmesi gerekir. Web API' si, daemon veya sunucunun kaynaklarına erişimini sınırlamak için kullanılan bir dizi izini ortaya çıkaracak şekilde yapılandırılabilir. Devredilen bir kullanıcı kimliği türü kullanılıyorsa, sunucu uygulamasının istenen izinleri seçmesi gerekir. Uygulama kaydı için **API İzin** sayfasında, izin **ekle'yi** seçtikten ve API ailesini seçtikten sonra, **Temsilci lik izinlerini**seçin ve ardından izinlerinizi seçin. Uygulama kimlik türü kullanılıyorsa bu adım gerekli değildir.
-* Çok kiracılı - İlk olarak, daemon veya sunucu uygulaması işlevsel olması için gereken izinleri belirtmek için yapılandırılır. Bu gerekli izin listesi, hedef dizindeki bir kullanıcı veya yönetici uygulamaya onay verdiğinde bir iletişim kutusunda gösterilir ve bu da uygulamayı kuruluşunun kullanımına sunar. Bazı uygulamalar yalnızca, kuruluştaki herhangi bir kullanıcının izin verebileceği kullanıcı düzeyinde izinler gerektirir. Diğer uygulamalar, kuruluştaki bir kullanıcının izin veremeyeceği yönetici düzeyinde izinler gerektirir. Yalnızca bir dizin yöneticisi, bu düzeyde izin gerektiren uygulamalara izin verebilir. Kullanıcı veya yönetici izin verdiğinde, web API'lerinin her ikisi de kendi dizinde kaydedilir.
+* Tek kiracı-hem uygulama kimliği hem de temsilci Kullanıcı kimliği durumları Için, arka plan veya sunucu uygulamasının Azure AD 'de aynı dizine kaydedilmesi gerekir. Web API 'SI, arka plan programı veya sunucunun kaynaklarına erişimini sınırlandırmak için kullanılan bir izin kümesini açığa çıkarmak üzere yapılandırılabilir. Yetkilendirilmiş bir kullanıcı kimliği türü kullanılıyorsa, sunucu uygulamasının istenen izinleri seçmesini gerekir. Uygulama kaydı için **API izin** sayfasında, **izin Ekle** ' yi seçtikten sonra API ailesini seçtikten sonra, **temsilci izinleri**' ni seçin ve ardından izinlerinizi seçin. Uygulama kimliği türü kullanılıyorsa bu adım gerekli değildir.
+* Çok kiracılı-Birincisi, Daemon veya sunucu uygulaması, işlevsel olması gereken izinleri belirtecek şekilde yapılandırılmıştır. Bu gerekli izinler listesi, hedef dizindeki bir kullanıcı veya yönetici uygulamaya izin verdiği zaman bir iletişim kutusunda gösterilir. Bu, kuruluş tarafından kullanılabilir hale gelir. Bazı uygulamalar yalnızca, kuruluştaki herhangi bir kullanıcının izin verebileceği Kullanıcı düzeyi izinler gerektirir. Diğer uygulamalar, kuruluştaki bir kullanıcının onay veremediği yönetici düzeyinde izinler gerektirir. Bu izin düzeyini gerektiren uygulamalara yalnızca bir dizin Yöneticisi izin verebilir. Kullanıcı veya yönetici, Web API 'lerinin her ikisi de kendi dizinine kaydedilir.
 
-## <a name="token-expiration"></a>Belirteç sona ermesi
+## <a name="token-expiration"></a>Belirteç süre sonu
 
-İlk uygulama bir JWT erişim belirteci almak için yetkilendirme kodunu kullandığında, aynı zamanda bir JWT yenileme belirteci alır. Erişim belirteci süresi dolduğunda, yenileme belirteci kimlik bilgileri istenmeden kullanıcının yeniden kimlik doğrulaması için kullanılabilir. Bu yenileme belirteci daha sonra kullanıcının kimliğini doğrulamak için kullanılır ve bu da yeni bir erişim belirteci ve yenibelirtere neden olur.
+İlk uygulama bir JWT erişim belirteci almak için yetkilendirme kodunu kullandığında, ayrıca bir JWT yenileme belirteci alır. Erişim belirtecinin süresi dolarsa, kimlik bilgileri istenmeden Kullanıcı kimliğini yeniden doğrulamak için yenileme belirteci kullanılabilir. Bu yenileme belirteci daha sonra kullanıcının kimliğini doğrulamak için kullanılır, bu da yeni bir erişim belirteci ve yenileme belirteci ile sonuçlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Diğer Uygulama [türleri ve senaryoları](app-types.md) hakkında daha fazla bilgi edinin
-- Azure AD [kimlik doğrulama temelleri](v1-authentication-scenarios.md) hakkında bilgi edinin
+- Diğer [uygulama türleri ve senaryolar](app-types.md) hakkında daha fazla bilgi edinin
+- Azure AD [kimlik doğrulaması temelleri](v1-authentication-scenarios.md) hakkında bilgi edinin

@@ -1,43 +1,43 @@
 ---
-title: Hizmet Yönetimi Bağlayıcısı için web uygulaması oluşturun
-description: Azure'daki BT Hizmet Yönetimi Bağlayıcısı'na bağlanmak ve ITSM iş öğelerini merkezi olarak izlemek ve yönetmek için otomatik bir komut dosyası kullanarak bir Service Manager Web uygulaması oluşturun.
+title: Service Management Connector için Web uygulaması oluşturma
+description: Azure 'da BT Hizmet Yönetimi Bağlayıcısı bağlanmak için otomatikleştirilmiş bir komut dosyası kullanarak Service Manager bir Web uygulaması oluşturun ve ıTSM iş öğelerini merkezi olarak izleyin ve yönetin.
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
 ms.openlocfilehash: decb674c2b55b93a81169c540ee04713bdf2799e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80054848"
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script"></a>Otomatik komut dosyasını kullanarak Service Manager Web uygulamasını oluşturma
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>Otomatikleştirilmiş betiği kullanarak Service Manager Web uygulaması oluşturma
 
-Service Manager örneğiniz için Web uygulamasını oluşturmak için aşağıdaki komut dosyasını kullanın. Service Manager bağlantısı hakkında daha fazla bilgi burada: [Service Manager Web uygulaması](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+Service Manager örneğiniz için Web uygulaması oluşturmak üzere aşağıdaki betiği kullanın. Service Manager bağlantısı hakkında daha fazla bilgi şu şekildedir: [Service Manager Web uygulaması](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
-Aşağıdaki gerekli ayrıntıları sağlayarak komut dosyasını çalıştırın:
+Aşağıdaki gerekli ayrıntıları sağlayarak betiği çalıştırın:
 
 - Azure abonelik ayrıntıları
 - Kaynak grubu adı
 - Konum
-- Service Manager sunucu ayrıntıları (sunucu adı, etki alanı, kullanıcı adı ve parola)
-- Web uygulamanız için site adı öneki
-- ServiceBus İsim Alanı.
+- Sunucu ayrıntılarını Service Manager (sunucu adı, etki alanı, Kullanıcı adı ve parola)
+- Web uygulamanız için site adı ön eki
+- ServiceBus ad alanı.
 
-Komut dosyası, belirttiğiniz adı kullanarak Web uygulamasını oluşturur (benzersiz hale getirmek için birkaç ek dizeyle birlikte). Bu Web **uygulaması URL,** **istemci kimliği**ve **istemci gizli**oluşturur.
+Betik, belirttiğiniz adı kullanarak Web uygulamasını oluşturur (benzersiz hale getirmek için birkaç ek dize ile birlikte). **Web uygulaması URL 'sini**, **istemci kimliğini**ve **istemci gizli**anahtarını oluşturur.
 
-Bu değerleri kaydedin, BT Hizmeti Yönetimi Bağlayıcısı ile bağlantı oluşturduğunuzda bu değerlere ihtiyacınız olacaktır.
+Bu değerleri kaydedin, BT Hizmet Yönetimi Bağlayıcısı bir bağlantı oluşturduğunuzda bu değerlere ihtiyacınız olur.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
- Windows Yönetim Çerçevesi 5.0 veya üzeri.
-Windows 10 varsayılan olarak 5.1 vardır. [Çerçeveyi buradan](https://www.microsoft.com/download/details.aspx?id=50395)indirebilirsiniz:
+ Windows Management Framework 5,0 veya üzeri.
+Windows 10 varsayılan olarak 5,1 ' dir. Çerçeveyi [buradan](https://www.microsoft.com/download/details.aspx?id=50395)indirebilirsiniz:
 
-Aşağıdaki komut dosyasını kullanın:
+Aşağıdaki betiği kullanın:
 
 ```powershell
 ####################################

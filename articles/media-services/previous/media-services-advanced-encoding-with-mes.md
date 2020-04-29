@@ -1,6 +1,6 @@
 ---
-title: MES hazır ayarlarını özelleştirerek gelişmiş kodlama gerçekleştirin | Microsoft Dokümanlar
-description: Bu konu, Media Encoder Standart görev hazır ayarlarını özelleştirerek gelişmiş kodlamanın nasıl gerçekleştirilini gösterir.
+title: MES ön ayarlarını özelleştirerek gelişmiş kodlama gerçekleştirme | Microsoft Docs
+description: Bu konu, Media Encoder Standard görev önayarlarını özelleştirerek gelişmiş kodlamanın nasıl gerçekleştirileceğini gösterir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,49 +15,49 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 5f7611fd9df207df51fa0e51218d8a234583b1f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79529792"
 ---
-# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>MES hazır ayarlarını özelleştirerek gelişmiş kodlama gerçekleştirin 
+# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>MES ön ayarlarını özelleştirerek gelişmiş kodlama gerçekleştirme 
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu konu, Media Encoder Standart ön ayarlarını nasıl özelleştiriştirilir gösterir. Özel hazır ayarlar konusunu [kullanarak Media Encoder Standard ile kodlama,](media-services-custom-mes-presets-with-dotnet.md) bir kodlama görevi ve bu görevi yürüten bir iş oluşturmak için .NET'in nasıl kullanılacağını gösterir. Önceden ayarlanmış bir özelliği özelleştirdikten sonra, kodlama görevine özel hazır ayarları tedarik edin. 
+Bu konuda Media Encoder Standard önayarlarının nasıl özelleştirileceği gösterilmektedir. [Özel ön ayarları kullanarak Media Encoder Standard kodlama](media-services-custom-mes-presets-with-dotnet.md) , bir kodlama görevi ve bu görevi yürüten bir iş oluşturmak için .net 'in nasıl kullanılacağını gösterir. Bir önayarı özelleştirdikten sonra kodlama görevine özel ön ayarları sağlayın. 
 
-XML önceden ayarlanmış kullanıyorsanız, aşağıdaki XML örneklerinde gösterildiği gibi öğelerin sırasını koruduğumdan emin olun (örneğin, KeyFrameInterval SceneChangeDetection'dan önce gelmelidir).
+XML önayarı kullanıyorsanız, aşağıdaki XML örneklerinde gösterildiği gibi öğelerin sırasını koruduğunuzdan emin olun (örneğin, keyFrameInterval, manzara 'nin önüne gelmelidir).
 
 > [!NOTE] 
-> Media Encoder Standard'ın gelişmiş Media Services v2 özelliklerinin çoğu şu anda v3'te bulunmamaktadır. Daha fazla bilgi için [özellik boşluklarına](https://docs.microsoft.com/azure/media-services/latest/media-services-v2-vs-v3#feature-gaps-with-respect-to-v2-apis)bakın.
+> Media Encoder Standard Gelişmiş Media Services V2 özelliklerinin birçoğu şu anda v3 'de kullanılamaz. Daha fazla bilgi için bkz. [özellik boşlukları](https://docs.microsoft.com/azure/media-services/latest/media-services-v2-vs-v3#feature-gaps-with-respect-to-v2-apis).
 
 ## <a name="support-for-relative-sizes"></a>Göreli boyutlar için destek
 
-Küçük resimler oluştururken, her zaman piksellerde çıkış genişliği ve yüksekliği belirtmeniz gerekmez. Bunları yüzdeolarak, aralıkta belirtebilirsiniz [1%, ..., %100].
+Küçük resim oluştururken, her zaman piksel cinsinden çıkış genişliğini ve yüksekliğini belirtmeniz gerekmez. Bunları yüzde cinsinden, [1%,..., %100] aralığında belirtebilirsiniz.
 
-### <a name="json-preset"></a>JSON hazır
+### <a name="json-preset"></a>JSON önceden ayarı
     "Width": "100%",
     "Height": "100%"
 
-### <a name="xml-preset"></a>XML ön ayar
+### <a name="xml-preset"></a>XML önayarı
     <Width>100%</Width>
     <Height>100%</Height>
 
 ## <a name="generate-thumbnails"></a><a id="thumbnails"></a>Küçük resim oluşturma
 
-Bu bölümde, küçük resimler oluşturan bir önceden ayarnasıl özelleştirilen gösterilmektedir. Aşağıda tanımlanan önceden ayarlanmış, dosyanızı nasıl kodlamak istediğinize ilişkin bilgilerin yanı sıra küçük resimler oluşturmak için gereken bilgileri de içerir. [Bu](media-services-mes-presets-overview.md) bölümü belgeleyen MES önceden ayarlarından herhangi birini alabilir ve küçük resimler oluşturan kod ekleyebilirsiniz.  
+Bu bölümde, küçük resim üreten bir önayarın nasıl özelleştirileceği gösterilmektedir. Aşağıda tanımlanan önceden tanımlı ayar, dosyanızın nasıl kodlanacağını ve küçük resim oluşturmak için gereken bilgileri içerir. [Bu](media-services-mes-presets-overview.md) bölümde belgelenen mes ön ayarlarından herhangi birini alabilir ve küçük resimler üreten kodlar ekleyebilirsiniz.  
 
 > [!NOTE]
-> Aşağıdaki önceden ayarlanmış **SceneChangeDetection** ayarı yalnızca tek bir bit hızıvideo kodlama iseniz doğru ayarlanabilir. Çok bit hızında bir videoya kodlar ve **SceneChangeDetection'ı** doğru ayarlarsanız, kodlayıcı bir hata döndürür.  
+> Aşağıdaki ön ayarda bulunan **manzara** , tek bir bit hızlı videoya kodlarken yalnızca true olarak ayarlanabilir. Çoklu bit hızına sahip bir videoya kodlarken ve **manzara** ' i true olarak ayarlarsanız, kodlayıcı bir hata döndürür.  
 >
 >
 
-Şema hakkında bilgi için [bu](media-services-mes-schema.md) konuya bakın.
+Şema hakkında daha fazla bilgi için [Bu](media-services-mes-schema.md) konuya bakın.
 
-[Dikkat Edilmesi Gerekenler](#considerations) bölümünü gözden geçirin.
+[Konular](#considerations) bölümünü gözden geçirdiğinizden emin olun.
 
-### <a name="json-preset"></a><a id="json"></a>JSON hazır
+### <a name="json-preset"></a><a id="json"></a>JSON önceden ayarı
     {
       "Version": 1.0,
       "Codecs": [
@@ -157,7 +157,7 @@ Bu bölümde, küçük resimler oluşturan bir önceden ayarnasıl özelleştiri
     }
 
 
-### <a name="xml-preset"></a><a id="xml"></a>XML ön ayar
+### <a name="xml-preset"></a><a id="xml"></a>XML önayarı
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -234,25 +234,25 @@ Bu bölümde, küçük resimler oluşturan bir önceden ayarnasıl özelleştiri
 
 Aşağıdaki noktalara dikkat edilmelidir:
 
-* Başlangıç/Adım/Aralık için açık zaman damgalarının kullanılması, giriş kaynağının en az 1 dakika uzunluğunda olduğunu varsayar.
-* Jpg/Png/BmpImage öğeleri Başlangıç, Adım ve Aralık dize özelliklerine sahiptir – bunlar şu şekilde yorumlanabilir:
+* Başlangıç/adım/Aralık için açık zaman damgalarının kullanımı, giriş kaynağının en az 1 dakika uzunluğunda olduğunu varsayar.
+* JPG/PNG/Bmpımage öğelerinde başlangıç, adım ve Aralık dizesi öznitelikleri vardır; bunlar şöyle yorumlanabilecek:
 
-  * Çerçeve Numarası negatif olmayan tümsalar, örneğin "Başlangıç": "120",
-  * %-suffixed olarak ifade edilirse kaynak süresine göre, örneğin "Başlangıç": "%15", OR
-  * HH:MM:SS olarak ifade edilirse zaman damgası... biçimi, örneğin "Başlat" : "00:01:00"
+  * Negatif olmayan tamsayılarla çerçeve numarası, örneğin "Başlat": "120",
+  * %-Sonfixed olarak ifade edilen kaynak süresine göreli, örneğin "Başlat": "15%" veya
+  * SS: DD: SS olarak ifade edilen zaman damgası... biçim, örneğin "Başlat": "00:01:00"
 
-    Notaları istediğiniz gibi karıştırıp eşleştirebilirsiniz.
+    Gösterimleri sizin için karıştırabilir ve eşleştirebilirsiniz.
 
-    Ayrıca, Başlat ayrıca özel bir Makro destekler:{Best}, içerik NOT ilk "ilginç" çerçevebelirlemek için çalışır: (Başlat {Best} olarak ayarlandığında Adım ve Aralık yoksayılır)
-  * Varsayılanlar: Başlat:{En Iyi}
-* Çıkış biçiminin her Görüntü biçimi için açıkça sağlanması gerekir: Jpg/Png/BmpFormat. Mevcut olduğunda, MES JpgFormat ve benzeri JpgVideo eşleşir. OutputFormat, görüntü çıktıbiçimleri için (bir ve yalnızca bir kez) bulunması gereken yeni bir görüntü kodlayıcıya özgü Makro: {Index}'i sunar.
+    Ayrıca, Başlat, içerik notunun ilk "ilginç" çerçevesini belirlemeyi deneyen {Best} özel makrosunu da destekler: (başlatma {En Iyi} olarak ayarlandığında adım ve Aralık yok sayılır)
+  * Varsayılanlar: başlangıç: {En Iyi}
+* Her görüntü biçimi için çıkış biçiminin açıkça sağlanması gerekir: jpg/png/BmpFormat. Mevcut olduğunda, JpgVideo ile JpgFormat arasında devam eder. OutputFormat, görüntü çıkış biçimleri için mevcut olması gereken (bir kez ve yalnızca bir kez) yeni bir görüntü codec bileşeni ({Index}) sunuyor.
 
-## <a name="trim-a-video-clipping"></a><a id="trim_video"></a>Videoyu kırpma (kırpma)
-Bu bölümde, girişin asma dosya veya isteğe bağlı dosya olarak adlandırılan giriş videosunu kırpmak veya kırpmak için kodlayıcı hazır ayarlarını değiştirme hakkında dır. Kodlayıcı, canlı bir akıştan yakalanan veya arşivlenmiş bir varlığı kesmek veya kesmek için de kullanılabilir – bunun ayrıntıları [bu blogda](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)mevcuttur.
+## <a name="trim-a-video-clipping"></a><a id="trim_video"></a>Video kırpma (kırpma)
+Bu bölümde, girişin bir so dosyası veya isteğe bağlı dosya olduğu giriş videosunu kırpmak veya kırpmak için Kodlayıcı ön ayarlarını değiştirme hakkında bilgi verilir. Kodlayıcı, canlı bir akıştan yakalanan veya arşivlenen bir varlığı kırpmak veya kırpmak için de kullanılabilir. bunun ayrıntıları [Bu blogda](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)alınabilir.
 
-Videolarınızı kırpmak [için, bu](media-services-mes-presets-overview.md) bölümde belgelenen MES hazır ayarlarından herhangi birini alabilir ve **Kaynaklar** öğesini değiştirebilirsiniz (aşağıda gösterildiği gibi). Başlangıç Zamanı'nın değerinin giriş videosunun mutlak zaman damgaları ile eşleşmesi gerekir. Örneğin, giriş videosunun ilk karesinde 12:00:10.000'lik bir zaman damgası varsa, Başlangıç Saati en az 12:00:10.000 ve daha büyük olmalıdır. Aşağıdaki örnekte, giriş videosunun sıfır başlangıç zaman damgası olduğunu varsayıyoruz. **Kaynaklar** önceden ayarlanmış başında yerleştirilmelidir.
+Videolarınızı kırpmak için, [Bu](media-services-mes-presets-overview.md) bölümü belgelenen mes ön ayarlarından herhangi birini alabilir ve **kaynaklar** öğesini (aşağıda gösterildiği gibi) değiştirebilirsiniz. StartTime değerinin, giriş videosunun mutlak zaman damgalarına uyması gerekir. Örneğin, giriş videosunun ilk karesinde 12:00:10.000 zaman damgası varsa StartTime, en az 12:00:10.000 ve daha büyük olmalıdır. Aşağıdaki örnekte, giriş videosunun, sıfır başlangıç zaman damgasına sahip olduğunu varsayalım. **Kaynaklar** , önayarın başlangıcına yerleştirilmelidir.
 
-### <a name="json-preset"></a><a id="json"></a>JSON hazır
+### <a name="json-preset"></a><a id="json"></a>JSON önceden ayarı
     {
       "Version": 1.0,
       "Sources": [
@@ -371,8 +371,8 @@ Videolarınızı kırpmak [için, bu](media-services-mes-presets-overview.md) b�
       ]
     }
 
-### <a name="xml-preset"></a>XML ön ayar
-Videolarınızı kırpmak [için, burada](media-services-mes-presets-overview.md) belgelenen MES hazır ayarlarından herhangi birini alabilir ve **Kaynaklar** öğesini değiştirebilirsiniz (aşağıda gösterildiği gibi).
+### <a name="xml-preset"></a>XML önayarı
+Videolarınızı kırpmak için [burada](media-services-mes-presets-overview.md) belgelenen mes ön ayarlarından herhangi birini alabilir ve **kaynaklar** öğesini (aşağıda gösterildiği gibi) değiştirebilirsiniz.
 
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -489,13 +489,13 @@ Videolarınızı kırpmak [için, burada](media-services-mes-presets-overview.md
       </Outputs>
     </Preset>
 
-## <a name="create-an-overlay"></a><a id="overlay"></a>Bindirme oluşturma
+## <a name="create-an-overlay"></a><a id="overlay"></a>Bir kaplama oluşturma
 
-Media Encoder Standardı, bir görüntüyü varolan bir videonun üzerine bindirmenize olanak tanır. Şu anda, aşağıdaki biçimleri desteklenir: png, jpg, gif ve bmp. Aşağıda tanımlanan önceden ayarlanmış, video bindirmesinin temel bir örneğidir.
+Media Encoder Standard, görüntünün var olan bir videonun üzerinde yer almasına olanak tanır. Şu anda şu biçimler desteklenir: PNG, jpg, GIF ve BMP. Aşağıda tanımlanan önceden tanımlı, video kaplamasıyla temel bir örnektir.
 
-Önceden ayarlanmış bir dosya tanımlamaya ek olarak, Medya Hizmetleri'ne varlıktaki hangi dosyanın bindirme görüntüsü olduğunu ve hangi dosyanın görüntüyü üzerine koymak istediğiniz kaynak video olduğunu da bilmeniz gerekir. Video dosyası **birincil** dosya olmalıdır.
+Önceden ayarlanmış bir dosya tanımlamaya ek olarak, varlık içindeki hangi dosyanın yer kaplayan görüntü olduğunu ve görüntünün üzerine eklemek istediğiniz kaynak video olduğunu Media Services de bilmeniz gerekir. Video dosyası, **birincil** dosya olmalıdır.
 
-.NET kullanıyorsanız, [bu](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) konuda tanımlanan .NET örneğine aşağıdaki iki işlevi ekleyin. **UploadMediaFilesFromFolder** işlevi dosyaları bir klasörden yükler (örneğin, BigBuckBunny.mp4 ve Image001.png) ve mp4 dosyasını kıymetin birincil dosyası olarak ayarlar. **EncodeWithOverlay** işlevi, kodlama görevini oluşturmak için ona geçirilen özel önceden ayarlanmış dosyayı (örneğin, aşağıdaki ön ayar) kullanır.
+.NET kullanıyorsanız, [Bu](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) konuda açıklanan .net örneğine aşağıdaki iki işlevi ekleyin. **Uploadmediafilesfromfolder** işlevi bir klasörden dosya yükler (örneğin, Bigbuckpaskalya. mp4 ve ımage001. png) ve MP4 dosyasını varlıktaki birincil dosya olacak şekilde ayarlar. **EncodeWithOverlay** işlevi, kodlama görevini oluşturmak için kendisine geçirilen özel önceden ayarlanmış dosyayı (örneğin, izleyen ön ayar) kullanır.
 
 
     static public IAsset UploadMediaFilesFromFolder(string folderPath)
@@ -553,13 +553,13 @@ Media Encoder Standardı, bir görüntüyü varolan bir videonun üzerine bindir
 > [!NOTE]
 > Geçerli sınırlamalar:
 >
-> Bindirme opaklık ayarı desteklenmez.
+> Kaplama geçirgenliği ayarı desteklenmiyor.
 >
-> Kaynak video dosyanız ve bindirme görüntü dosyanızın aynı varlıkta olması gerekir ve video dosyasının bu kıymetteki birincil dosya olarak ayarlanması gerekir.
+> Kaynak video dosyanızın ve kaplama görüntü dosyasının aynı varlık içinde olması gerekir ve video dosyasının bu varlık içinde birincil dosya olarak ayarlanması gerekir.
 >
 >
 
-### <a name="json-preset"></a>JSON hazır
+### <a name="json-preset"></a>JSON önceden ayarı
     {
       "Version": 1.0,
       "Sources": [
@@ -635,7 +635,7 @@ Media Encoder Standardı, bir görüntüyü varolan bir videonun üzerine bindir
     }
 
 
-### <a name="xml-preset"></a>XML ön ayar
+### <a name="xml-preset"></a>XML önayarı
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Sources>
@@ -696,14 +696,14 @@ Media Encoder Standardı, bir görüntüyü varolan bir videonun üzerine bindir
     </Preset>
 
 
-## <a name="insert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>Girişte ses yoksa sessiz bir ses parçası ekleme
-Varsayılan olarak, kodlayıcıya yalnızca video içeren ve ses içermeyen bir giriş gönderirseniz, çıkış kıymeti yalnızca video verileri içeren dosyalar içerir. Bazı oyuncular bu tür çıkış akışlarını işleyebilir. Bu ayarı, kodlayıcıyı bu senaryoda çıktıya sessiz bir ses parçası eklemeye zorlamak için kullanabilirsiniz.
+## <a name="insert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>Girişte ses olmadığında sessiz bir ses izi ekleyin
+Varsayılan olarak, yalnızca video içeren ve ses içermeyen kodlayıcıya bir giriş gönderirseniz, çıkış varlığı yalnızca video verilerini içeren dosyaları içerir. Bazı oyuncular bu tür çıkış akışlarını işleyemeyebilir. Bu ayarı, kodlayıcının Bu senaryodaki çıkışa sessiz ses izi eklemesini zorlamak için kullanabilirsiniz.
 
-Girişte ses olmadığında sessiz ses parçası içeren bir varlık üretmeye kodlayıcıyı zorlamak için "InsertSilenceIfNoAudio" değerini belirtin.
+Bir giriş sesi olmadığında, kodlayıcının sessiz ses izi içeren bir varlık üretmesine zorlamak için "ınsertsilenceifnoaudio" değerini belirtin.
 
-[Bu](media-services-mes-presets-overview.md) bölümde belgelenen MES hazır ayarlarından herhangi birini alabilir ve aşağıdaki değişiklikleri yapabilirsiniz:
+[Bu](media-services-mes-presets-overview.md) bölümde belgelenen mes ön ayarlarından herhangi birini alabilir ve aşağıdaki değişikliği yapabilirsiniz:
 
-### <a name="json-preset"></a>JSON hazır
+### <a name="json-preset"></a>JSON önceden ayarı
     {
       "Channels": 2,
       "SamplingRate": 44100,
@@ -712,19 +712,19 @@ Girişte ses olmadığında sessiz ses parçası içeren bir varlık üretmeye k
       "Condition": "InsertSilenceIfNoAudio"
     }
 
-### <a name="xml-preset"></a>XML ön ayar
+### <a name="xml-preset"></a>XML önayarı
     <AACAudio Condition="InsertSilenceIfNoAudio">
       <Channels>2</Channels>
       <SamplingRate>44100</SamplingRate>
       <Bitrate>96</Bitrate>
     </AACAudio>
 
-## <a name="disable-auto-de-interlacing"></a><a id="deinterlacing"></a>Otomatik bağlantıyı devre dışı açma
-Müşteriler, interlace içeriğinin otomatik olarak silinmesini istiyorlarsa hiçbir şey yapmak zorunda değildir. Otomatik de-interlacing olduğunda (varsayılan) MES interlaced çerçeveler ve sadece de-interlaces çerçeveler interlaced olarak işaretlenmiş otomatik algılama yapar.
+## <a name="disable-auto-de-interlacing"></a><a id="deinterlacing"></a>Otomatik taramayı devre dışı bırak
+Taramasız içerik otomatik olarak titreşimsiz olmasını istiyorsanız müşterilerin hiçbir şey yapması gerekmez. Otomatik tarama açık olduğunda (varsayılan), aralıklı çerçevelerin otomatik olarak algılanmasını ve yalnızca titreşimli interlaces çerçevelerini aralıklı olarak işaretlenir.
 
-Otomatik bağlantı yıkıntma kapatabilirsiniz. Bu seçenek önerilmez.
+Otomatik taramayı devre dışı bırakabilirsiniz. Bu seçenek önerilmez.
 
-### <a name="json-preset"></a>JSON hazır
+### <a name="json-preset"></a>JSON önceden ayarı
     "Sources": [
     {
      "Filters": {
@@ -735,7 +735,7 @@ Otomatik bağlantı yıkıntma kapatabilirsiniz. Bu seçenek önerilmez.
     }
     ]
 
-### <a name="xml-preset"></a>XML ön ayar
+### <a name="xml-preset"></a>XML önayarı
     <Sources>
     <Source>
       <Filters>
@@ -747,10 +747,10 @@ Otomatik bağlantı yıkıntma kapatabilirsiniz. Bu seçenek önerilmez.
     </Sources>
 
 
-## <a name="audio-only-presets"></a><a id="audio_only"></a>Yalnızca ses ekia ayarı
-Bu bölümde yalnızca sese özel iki MES ön ayarı gösteriş vardır: AAC Audio ve AAC Kaliteli Ses.
+## <a name="audio-only-presets"></a><a id="audio_only"></a>Yalnızca ses önayarları
+Bu bölümde, yalnızca iki sesli MES önayarları gösterilmektedir: AAC audio ve AAC Iyi kalitede ses.
 
-### <a name="aac-audio"></a>AAC Ses
+### <a name="aac-audio"></a>AAC ses
     {
       "Version": 1.0,
       "Codecs": [
@@ -772,7 +772,7 @@ Bu bölümde yalnızca sese özel iki MES ön ayarı gösteriş vardır: AAC Aud
       ]
     }
 
-### <a name="aac-good-quality-audio"></a>AAC Kaliteli Ses
+### <a name="aac-good-quality-audio"></a>AAC Iyi kalitede ses
     {
       "Version": 1.0,
       "Codecs": [
@@ -794,26 +794,26 @@ Bu bölümde yalnızca sese özel iki MES ön ayarı gösteriş vardır: AAC Aud
       ]
     }
 
-## <a name="concatenate-two-or-more-video-files"></a><a id="concatenate"></a>İki veya daha fazla video dosyalarını birleştirir
+## <a name="concatenate-two-or-more-video-files"></a><a id="concatenate"></a>İki veya daha fazla video dosyasını birleştirme
 
-Aşağıdaki örnek, iki veya daha fazla video dosyasını birleştirmek için nasıl bir ön ayar oluşturabileceğinizi göstermektedir. En yaygın senaryo, ana videoya bir üstbilgi veya römork eklemek istediğinizde. Amaçlanan kullanım, birlikte düzenlenen video dosyalarının özellikleri (video çözünürlüğü, kare hızı, ses parça sayısı, vb.) paylaşmasıdır. Farklı kare hızlarında veya farklı ses parçalarıyla video karıştırmamaya dikkat edin.
+Aşağıdaki örnek, iki veya daha fazla video dosyasını birleştirmek için nasıl önayar oluşturabileceğiniz gösterilmektedir. En yaygın senaryo, ana videoya bir üst bilgi veya bir artbilgisi eklemek istemektir. Tasarlanan kullanım, video dosyalarının birlikte düzenlenme özelliği (video çözünürlüğü, çerçeve oranı, ses izleme sayısı vb.) ile düzenlenme amaçlıdır. Farklı kare hızlarındaki videoları veya farklı sayıda ses parçasını karıştırmamak için dikkatli olmanız gerekir.
 
 >[!NOTE]
->Konsültasyon özelliğinin mevcut tasarımı, giriş video kliplerinin çözünürlük, kare hızı vb. açısından tutarlı olmasını bekler. 
+>Birleştirme özelliğinin geçerli tasarımı, giriş video kliplerinin çözümleme, kare hızı vb. bakımından tutarlı olmasını bekler. 
 
-### <a name="requirements-and-considerations"></a>Gereksinimler ve hususlar
+### <a name="requirements-and-considerations"></a>Gereksinimler ve önemli noktalar
 
-* Giriş videolarının yalnızca bir ses parçası olmalıdır.
-* Giriş videolarının tümü aynı kare hızına sahip olmalıdır.
-* Videolarınızı ayrı varlıklara yüklemeniz ve videoları her varlığın birincil dosyası olarak ayarlamanız gerekir.
+* Giriş videolarının yalnızca bir ses izi olmalıdır.
+* Giriş videolarının hepsi aynı kare hızına sahip olmalıdır.
+* Videolarınızı ayrı varlıklara yüklemeniz ve videoları her bir varlığın birincil dosyası olarak ayarlamanız gerekir.
 * Videolarınızın süresini bilmeniz gerekir.
-* Aşağıda önceden ayarlanmış örnekler, tüm giriş videolarının sıfır lık bir zaman damgası ile başladığını varsayar. Videoların başlangıç zaman damgası farklısa, genellikle canlı arşivlerde olduğu gibi Başlangıç Zamanı değerlerini değiştirmeniz gerekir.
-* JSON önceden ayarlanmış giriş varlıklarının AssetID değerlerine açık başvurular yapar.
-* Örnek kod, JSON önceden ayarlandığını varsayar, örneğin "C:\supportFiles\preset.json". Ayrıca, iki video dosyası yükleyerek iki varlığın oluşturulduğunu ve ortaya çıkan AssetID değerlerini bildiğinizi varsayar.
-* Kod snippet ve JSON ön ayar iki video dosyası concatenating bir örnek gösterir. İkiden fazla videoya şu şekilde uzatabilirsiniz:
+* Aşağıdaki önceden ayarlanmış örneklerde, tüm giriş videolarının sıfır zaman damgasıyla başlayacağı varsayılır. Videolarda farklı başlangıç zaman damgası varsa, genellikle canlı Arşivlerle ilgili olduğu gibi StartTime değerlerini değiştirmeniz gerekir.
+* JSON önceden ayarı, giriş varlıklarının AssetID değerlerine açık başvurular yapar.
+* Örnek kod, JSON önayarının "C:\supportfiles\preset.exe" gibi yerel bir dosyaya kaydedildiğini varsayar. Ayrıca iki video dosyası karşıya yüklendiğinde iki varlık oluşturulduğunu ve sonuç AssetID değerlerini bildiğinizi varsayar.
+* Kod parçacığı ve JSON önceden kümesi, iki video dosyasını birleştirerek bir örnek gösterir. Bunu iki videoya göre genişletebilirsiniz:
 
-  1. Arama görevi. InputAssets.Add() sırayla, daha fazla video eklemek için tekrar tekrar.
-  2. Aynı sırada daha fazla giriş ekleyerek JSON'daki "Kaynaklar" öğesine karşılık gelen düzenlemeyapma.
+  1. Görev çağrılıyor. Inputassets. daha fazla video eklemek için art arda. Add ().
+  2. Aynı sırada daha fazla girdi ekleyerek JSON 'daki "Sources" öğesinde karşılık gelen düzenlemeler yapılıyor.
 
 ### <a name="net-code"></a>.NET kodu
 
@@ -848,9 +848,9 @@ Aşağıdaki örnek, iki veya daha fazla video dosyasını birleştirmek için n
     job.Submit();
     job.GetExecutionProgressTask(CancellationToken.None).Wait();
 
-### <a name="json-preset"></a>JSON hazır
+### <a name="json-preset"></a>JSON önceden ayarı
 
-Özel ön ayarınızı, biraraya getirmek istediğiniz varlıkların kimlikleri ve her video için uygun zaman dilimiyle güncelleştirin.
+Özel ön ayarlarınızı, birleştirmek istediğiniz varlıkların kimlikleriyle ve her video için uygun zaman segmentiyle güncelleştirin.
 
     {
       "Version": 1.0,
@@ -904,24 +904,24 @@ Aşağıdaki örnek, iki veya daha fazla video dosyasını birleştirmek için n
       ]
     }
 
-## <a name="crop-videos-with-media-encoder-standard"></a><a id="crop"></a>Videoları Media Encoder Standard ile kırpma
-Media [Encoder Standart](media-services-crop-video.md) konu ile Kırpma videoları bakın.
+## <a name="crop-videos-with-media-encoder-standard"></a><a id="crop"></a>Media Encoder Standard ile videoları kırpma
+[Media Encoder Standard ile videoları kırpın](media-services-crop-video.md) konusuna bakın.
 
-## <a name="insert-a-video-track-when-input-has-no-video"></a><a id="no_video"></a>Girişte video yokken video parçası ekleme
+## <a name="insert-a-video-track-when-input-has-no-video"></a><a id="no_video"></a>Girişte video yoksa video izlemesi ekleyin
 
-Varsayılan olarak, kodlayıcıya yalnızca ses içeren ve video içermeyen bir giriş gönderirseniz, çıkış kıymeti yalnızca ses verileri içeren dosyalar içerir. Azure Media Player da dahil olmak üzere bazı oyuncular [(buna](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)bakın) bu tür akışları işleyebilir. Bu ayarı, kodlayıcıyı bu senaryodaki çıktıya tek renkli bir video parçası eklemeye zorlamak için kullanabilirsiniz.
+Varsayılan olarak, yalnızca ses içeren ve video içermeyen kodlayıcıya bir giriş gönderirseniz, çıkış varlığı yalnızca ses verileri içeren dosyaları içerir. Azure Media Player dahil bazı oyuncular (bkz. [Bu) bu](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)akışları işleyemeyebilir. Bu ayarı, kodlayıcının Bu senaryodaki çıktıya tek renkli bir video izlemesi eklemesini zorlamak için kullanabilirsiniz.
 
 > [!NOTE]
-> Kodlayıcıyı bir çıktı video parçası eklemeye zorlamak, çıktı Varlığının boyutunu ve bu nedenle kodlama Görevi için tahakkuk eden maliyeti artırır. Bu artış aylık ücretleri üzerinde sadece mütevazı bir etkisi olduğunu doğrulamak için testler çalıştırmalısınız.
+> Bir çıktı eklemek için kodlayıcıyı zorlamak, çıkış varlığının boyutunu artırır ve bu nedenle kodlama görevi için ücret uygulanır. Bu sonuçta elde edilen artışın yalnızca aylık ücretlerinizde bir VAST etkisi olduğunu doğrulamak için testler çalıştırmalısınız.
 >
 
-### <a name="inserting-video-at-only-the-lowest-bitrate"></a>Yalnızca en düşük bit hızında video ekleme
+### <a name="inserting-video-at-only-the-lowest-bitrate"></a>Videoyu yalnızca en düşük bit hızında ekleme
 
-Video dosyaları ve yalnızca ses dosyalarının bir karışımını içeren akış için giriş kataloğunuzun tamamını kodlamak için ["H264 Multiple Bitrate 720p"](media-services-mes-preset-h264-multiple-bitrate-720p.md) gibi birden çok bit hızı kodlama ön kümesi kullandığınızı varsayalım. Bu senaryoda, girişte video yoksa, her çıktı bit hızına video eklemek yerine kodlayıcıyı yalnızca en düşük bit hızında tek renkli bir video parçası eklemeye zorlamak isteyebilirsiniz. Bunu başarmak için **InsertBlackIfNoVideoBottomLayerOnly** bayrağını kullanmanız gerekir.
+Video dosyalarının ve yalnızca ses dosyalarının bir karışımını içeren, akış için tüm giriş kataloğunuzun kodlanmasını sağlamak için ["H264 çoklu bit hızı 720p"](media-services-mes-preset-h264-multiple-bitrate-720p.md) gibi birden çok bit hızı kodlamalı bir ön ayar kullandığınızı varsayalım. Bu senaryoda, girişte video yoksa, kodlayıcının her çıkış bit hızında video ekleme yerine yalnızca en düşük bit hızında bir tek renkli video izlemesi eklemesini zorlamak isteyebilirsiniz. Bunu başarmak için, **ınsertblackıce** ' ı kullanın.
 
-[Bu](media-services-mes-presets-overview.md) bölümde belgelenen MES hazır ayarlarından herhangi birini alabilir ve aşağıdaki değişiklikleri yapabilirsiniz:
+[Bu](media-services-mes-presets-overview.md) bölümde belgelenen mes ön ayarlarından herhangi birini alabilir ve aşağıdaki değişikliği yapabilirsiniz:
 
-#### <a name="json-preset"></a>JSON hazır
+#### <a name="json-preset"></a>JSON önceden ayarı
     {
           "KeyFrameInterval": "00:00:02",
           "StretchMode": "AutoSize",
@@ -931,9 +931,9 @@ Video dosyaları ve yalnızca ses dosyalarının bir karışımını içeren ak�
           ]
     }
 
-#### <a name="xml-preset"></a>XML ön ayar
+#### <a name="xml-preset"></a>XML önayarı
 
-XML kullanırken, **AACAudio**bir öznitelik olarak **H264Video** öğesi ve Condition ="InsertSilenceIfNoAudio" bir öznitelik olarak Condition="InsertBlackIfNoVideoOnly" kullanın.
+XML kullanırken, **H264Video** öğesi ve Condition = "ınsertsilenceifnoses" özniteliği olarak bir Attribute olarak "ınsertblackıce ıfnovideobottomlayeronly" **kullanın.**
 
 ```
 . . .
@@ -959,12 +959,12 @@ XML kullanırken, **AACAudio**bir öznitelik olarak **H264Video** öğesi ve Con
 . . .
 ```
 
-### <a name="inserting-video-at-all-output-bitrates"></a>Tüm çıkış bit hızlarında video ekleme
-Video dosyaları ve yalnızca ses dosyalarının bir karışımını içeren akış için giriş kataloğunuzun tamamını kodlamak için ["H264 Multiple Bitrate 720p"](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) gibi birden çok bit hızı kodlama sıyrık kullandığınızı varsayalım. Bu senaryoda, girişte video yoksa, kodlayıcıyı tüm çıkış bit hızlarına tek renkli bir video parçası eklemeye zorlamak isteyebilirsiniz. Bu, çıktı Varlıklarınızın video parçaları ve ses parçaları sayısına göre homojen olmasını sağlar. Bunu başarmak için "InsertBlackIfNoVideo" bayrağını belirtmeniz gerekir.
+### <a name="inserting-video-at-all-output-bitrates"></a>Tüm çıkış bittarifelerinde video ekleme
+Video dosyalarının ve yalnızca ses dosyalarının bir karışımını içeren akış için tüm giriş kataloğunuzu kodlamak amacıyla ["H264 çoklu bit hızı 720p"](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) gibi birden çok bit hızı kodlamalı bir ön ayar kullandığınızı varsayalım. Bu senaryoda, girişte hiçbir video yoksa, kodlayıcının tüm çıkış bittarifelerinde tek renkli bir video izlemesi eklemesini zorlamak isteyebilirsiniz. Bu, çıkış varlıklarınızın video izlemelerinin ve ses izlemelerinin sayısına göre tüm hogenlerin olmasını sağlar. Bunu başarmak için, "ınsertblackıce Ifnovideo" bayrağını belirtmeniz gerekir.
 
-[Bu](media-services-mes-presets-overview.md) bölümde belgelenen MES hazır ayarlarından herhangi birini alabilir ve aşağıdaki değişiklikleri yapabilirsiniz:
+[Bu](media-services-mes-presets-overview.md) bölümde belgelenen mes ön ayarlarından herhangi birini alabilir ve aşağıdaki değişikliği yapabilirsiniz:
 
-#### <a name="json-preset"></a>JSON hazır
+#### <a name="json-preset"></a>JSON önceden ayarı
     {
           "KeyFrameInterval": "00:00:02",
           "StretchMode": "AutoSize",
@@ -974,9 +974,9 @@ Video dosyaları ve yalnızca ses dosyalarının bir karışımını içeren ak�
           ]
     }
 
-#### <a name="xml-preset"></a>XML ön ayar
+#### <a name="xml-preset"></a>XML önayarı
 
-XML kullanırken, **AACAudio'ya**öznitelik olarak Durum="InsertBlackIfNoVideo" kullanın **H264Video** öğesine ve Condition="InsertSilenceIfNoAudio"ya öznitelik olarak .
+XML kullanırken, "ınsertblackıce Ifnovideo" öğesini **H264Video** öğesi için bir öznitelik olarak ve Condition = "ınsertsilenceifnoses" öğesini **aacaudio**öğesine bir öznitelik olarak kullanın.
 
 ```
 . . .
@@ -1003,9 +1003,9 @@ XML kullanırken, **AACAudio'ya**öznitelik olarak Durum="InsertBlackIfNoVideo" 
 ```
 
 ## <a name="rotate-a-video"></a><a id="rotate_video"></a>Videoyu döndürme
-[Media Encoder Standardı](media-services-dotnet-encode-with-media-encoder-standard.md) 0/90/180/270 açıları ile döndürmeyi destekler. Varsayılan davranış, gelen video dosyasındaki döndürme meta verilerini algılamaya ve bunu telafi etmeye çalıştığı "Otomatik" dir. [Bu](media-services-mes-presets-overview.md) bölümde tanımlanan hazır ayarlardan birine aşağıdaki **Kaynaklar** öğesini ekleyin:
+[Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) , 0/90/180/270 açılara dönüşü destekler. Varsayılan davranış, gelen video dosyasındaki döndürme meta verilerini algılamaya ve bunu dengedenemeye çalıştığı "Auto" dır. Aşağıdaki **kaynaklar** öğesini [Bu](media-services-mes-presets-overview.md) bölümde tanımlanan önayarlardan birine ekleyin:
 
-### <a name="json-preset"></a>JSON hazır
+### <a name="json-preset"></a>JSON önceden ayarı
     "Sources": [
     {
       "Streams": [],
@@ -1017,7 +1017,7 @@ XML kullanırken, **AACAudio'ya**öznitelik olarak Durum="InsertBlackIfNoVideo" 
     "Codecs": [
 
     ...
-### <a name="xml-preset"></a>XML ön ayar
+### <a name="xml-preset"></a>XML önayarı
     <Sources>
            <Source>
           <Streams />
@@ -1027,9 +1027,9 @@ XML kullanırken, **AACAudio'ya**öznitelik olarak Durum="InsertBlackIfNoVideo" 
         </Source>
     </Sources>
 
-Ayrıca, döndürme telafisi tetiklendiğinde, kodlayıcının ön ayardaki Genişlik ve Yükseklik ayarlarını nasıl yorumladığı hakkında daha fazla bilgi için [bu](media-services-mes-schema.md#PreserveResolutionAfterRotation) konuya bakın.
+Ayrıca, kodlayıcının, döndürme tazminatı tetiklendiğinde ön ayarda genişlik ve yükseklik ayarlarını nasıl yorumlayacağına ilişkin daha fazla bilgi için [Bu](media-services-mes-schema.md#PreserveResolutionAfterRotation) konuya bakın.
 
-Giriş videosunda döndürme meta verilerini yok saymak için kodlayıcıya "0" değerini gösterebilirsiniz.
+"0" değerini, giriş videosunda, varsa döndürme meta verilerini yok saymaya işaret etmek için kullanabilirsiniz.
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -1038,4 +1038,4 @@ Giriş videosunda döndürme meta verilerini yok saymak için kodlayıcıya "0" 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca Bkz.
-[Medya Hizmetleri Kodlama Genel Bakış](media-services-encode-asset.md)
+[Media Services kodlamaya genel bakış](media-services-encode-asset.md)

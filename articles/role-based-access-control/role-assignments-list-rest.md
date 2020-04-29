@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC ve REST API'sini kullanarak rol atamalarını listele
-description: Kullanıcıların, grupların, hizmet ilkelerinin veya yönetilen kimliklerin Azure rol tabanlı erişim denetimi (RBAC) ve REST API'yi kullanarak hangi kaynaklara erişebildiğini nasıl belirleyeceğimiz öğrenin.
+title: Azure RBAC ve REST API kullanarak rol atamalarını listeleyin
+description: Kullanıcıların, grupların, hizmet sorumlularının veya yönetilen kimliklerin Azure rol tabanlı erişim denetimi (RBAC) ve REST API kullanarak hangi kaynakların erişimi olduğunu nasıl belirleyebileceğinizi öğrenin.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -16,22 +16,22 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: a494e7fd4c9fb79faa6a1d8cb2c3c871796ccdc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062148"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Azure RBAC ve REST API'sini kullanarak rol atamalarını listele
+# <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Azure RBAC ve REST API kullanarak rol atamalarını listeleyin
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Bu makalede, REST API'yi kullanarak rol atamalarının nasıl listeleniyi açıklanmaktadır.
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Bu makalede, REST API kullanarak rol atamalarının nasıl listeleneceğini açıklanmaktadır.
 
 > [!NOTE]
-> Kuruluşunuz, [Azure temsilcili kaynak yönetimini](../lighthouse/concepts/azure-delegated-resource-management.md)kullanan bir hizmet sağlayıcısına dış kaynak yönetim işlevleri veriyorsa, bu hizmet sağlayıcısı tarafından yetkilendirilen rol atamaları burada gösterilmez.
+> Kuruluşunuzun, [Azure tarafından yetkilendirilen kaynak yönetimi](../lighthouse/concepts/azure-delegated-resource-management.md)kullanan bir hizmet sağlayıcısına dış kaynaklı yönetim işlevleri varsa, bu hizmet sağlayıcısı tarafından yetkilendirilen rol atamaları burada gösterilmez.
 
 ## <a name="list-role-assignments"></a>Rol atamalarını listeleme
 
-RBAC'da, erişimi listelemek için rol atamalarını listelersiniz. Rol atamalarını listelemek için [Rol Atamaları - Liste](/rest/api/authorization/roleassignments/list) REST API'lerinden birini kullanın. Sonuçlarınızı hassaslaştırmak için bir kapsam ve isteğe bağlı bir filtre belirtirsiniz.
+RBAC 'de, erişimi listelemek için rol atamalarını listeleyin. Rol atamalarını listelemek için, [rol atamaları-liste](/rest/api/authorization/roleassignments/list) REST API 'lerinden birini kullanın. Sonuçlarınızı iyileştirmek için bir kapsam ve isteğe bağlı bir filtre belirtirsiniz.
 
 1. Aşağıdaki istekle başlayın:
 
@@ -39,7 +39,7 @@ RBAC'da, erişimi listelemek için rol atamalarını listelersiniz. Rol atamalar
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter={filter}
     ```
 
-1. URI *içinde,{scope}* rolünü atamalarını listelemek istediğiniz kapsamla değiştirin.
+1. URI içinde, *{scope}* değerini rol atamalarını listelemek istediğiniz kapsamla değiştirin.
 
     > [!div class="mx-tableFixed"]
     > | Kapsam | Tür |
@@ -49,19 +49,19 @@ RBAC'da, erişimi listelemek için rol atamalarını listelersiniz. Rol atamalar
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Kaynak grubu |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Kaynak |
 
-    Önceki örnekte, microsoft.web bir Uygulama Hizmeti örneğine başvuran bir kaynak sağlayıcısıdır. Benzer şekilde, diğer kaynak sağlayıcılarını kullanabilir ve kapsamı belirtebilirsiniz. Daha fazla bilgi için Azure [Kaynak sağlayıcıları ve türleri ve](../azure-resource-manager/management/resource-providers-and-types.md) desteklenen Azure Kaynak Yöneticisi kaynak sağlayıcısı [işlemlerine](resource-provider-operations.md)bakın.  
+    Önceki örnekte, Microsoft. Web bir App Service örneğine başvuran bir kaynak sağlayıcıdır. Benzer şekilde, diğer herhangi bir kaynak sağlayıcısını kullanabilir ve kapsamı belirtebilirsiniz. Daha fazla bilgi için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md) ve desteklenen [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md).  
      
-1. Rol atama listesini filtrelemek için uygulamak istediğiniz koşulla *{filter}* değiştirin.
+1. *{Filter}* değerini, rol atama listesini filtrelemek için uygulamak istediğiniz koşulla değiştirin.
 
     > [!div class="mx-tableFixed"]
     > | Filtre | Açıklama |
     > | --- | --- |
-    > | `$filter=atScope()` | Alt kapsamlarda rol atamaları hariç, yalnızca belirtilen kapsam için rol atamaları listeler. |
-    > | `$filter=assignedTo('{objectId}')` | Belirli bir kullanıcı veya hizmet sorumlusu için rol atamalarını listeler.<br/>Kullanıcı rol ataması olan bir grubun üyesiyse, bu rol ataması da listelenir. Bu filtre gruplar için geçişli dir, bu da kullanıcı bir grubun üyesiyse ve bu grup rol ataması olan başka bir grubun üyesiyse, bu rol atamasının da listelendiği anlamına gelir.<br/>Bu filtre yalnızca bir kullanıcı veya hizmet sorumlusu için bir nesne kimliği kabul eder. Bir grup için nesne kimliği geçemezsiniz. |
-    > | `$filter=atScope()+and+assignedTo('{objectId}')` | Belirtilen kullanıcı veya hizmet sorumlusu için ve belirtilen kapsamda rol atamalarını listeler. |
-    > | `$filter=principalId+eq+'{objectId}'` | Belirli bir kullanıcı, grup veya hizmet sorumlusu için rol atamalarını listeler. |
+    > | `$filter=atScope()` | Alt kapsamlardaki rol atamalarını dahil etmez, yalnızca belirtilen kapsam için rol atamalarını listeler. |
+    > | `$filter=assignedTo('{objectId}')` | Belirtilen kullanıcı veya hizmet sorumlusu için rol atamalarını listeler.<br/>Kullanıcı, rol ataması olan bir grubun üyesiyse, bu rol ataması da listelenir. Bu filtre, Kullanıcı bir grubun üyesiyse ve bu grup rol ataması olan başka bir grubun üyesiyse, bu rol atamasının de listelenmediği anlamına gelen gruplar için geçişlidir.<br/>Bu filtre yalnızca bir kullanıcı veya hizmet sorumlusu için bir nesne KIMLIĞI kabul eder. Bir grup için nesne KIMLIĞI geçirilemez. |
+    > | `$filter=atScope()+and+assignedTo('{objectId}')` | Belirtilen kullanıcı veya hizmet sorumlusu veya belirtilen kapsamda rol atamalarını listeler. |
+    > | `$filter=principalId+eq+'{objectId}'` | Belirtilen kullanıcı, Grup veya hizmet sorumlusu için rol atamalarını listeler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure RBAC ve REST API'sini kullanarak rol atamaları ekleme veya kaldırma](role-assignments-rest.md)
+- [Azure RBAC ve REST API kullanarak rol atamaları ekleme veya kaldırma](role-assignments-rest.md)
 - [Azure REST API Başvurusu](/rest/api/azure/)

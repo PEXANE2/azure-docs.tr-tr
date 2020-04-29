@@ -1,69 +1,69 @@
 ---
-title: PowerShell ve şablonile kaynakları dağıtma
-description: Kaynakları Azure'a dağıtmak için Azure Kaynak Yöneticisi'ni ve Azure PowerShell'i kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
+title: PowerShell ve şablon ile kaynakları dağıtma
+description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure PowerShell kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: e595aa8f86a24e59c8e00d24ea8e9dcb0875a8f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80153276"
 ---
-# <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>ARM şablonları ve Azure PowerShell ile kaynakları dağıtma
+# <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>ARM şablonları ve Azure PowerShell kaynak dağıtma
 
-Kaynaklarınızı Azure'a dağıtmak için Azure Kaynak Yöneticisi (ARM) şablonlarıyla Azure PowerShell'i nasıl kullanacağınızı öğrenin. Azure çözümlerinizi dağıtma ve yönetme kavramları hakkında daha fazla bilgi için [şablon dağıtımına genel bakış](overview.md)bölümüne bakın.
+Kaynaklarınızı Azure 'a dağıtmak için Azure Resource Manager (ARM) şablonlarıyla Azure PowerShell nasıl kullanacağınızı öğrenin. Azure çözümlerinizi dağıtma ve yönetme kavramları hakkında daha fazla bilgi için bkz. [şablon dağıtımına genel bakış](overview.md).
 
 ## <a name="deployment-scope"></a>Dağıtım kapsamı
 
-Dağıtımınızı bir kaynak grubuna, abonelike, yönetim grubuna veya kiracıya hedefleyebilirsiniz. Çoğu durumda, bir kaynak grubuna dağıtım hedefleceksiniz. İlkeleri ve rol ödevlerini daha geniş bir kapsamda uygulamak için abonelik, yönetim grubu veya kiracı dağıtımlarını kullanın. Bir aboneye dağıtılırken, bir kaynak grubu oluşturabilir ve ona kaynak dağıtabilirsiniz.
+Dağıtımınızı bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracıya hedefleyebilirsiniz. Çoğu durumda, dağıtımı bir kaynak grubuna hedefleyebilirsiniz. Daha büyük bir kapsamda ilke ve rol atamaları uygulamak için abonelik, yönetim grubu veya kiracı dağıtımlarını kullanın. Bir aboneliğe dağıtırken, bir kaynak grubu oluşturabilir ve kaynakları buna dağıtabilirsiniz.
 
 Dağıtımın kapsamına bağlı olarak, farklı komutlar kullanırsınız.
 
-Bir kaynak **grubuna**dağıtmak için [Yeni-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanın:
+Bir **kaynak grubuna**dağıtmak Için, [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)kullanın:
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
 ```
 
-Bir **aboneğe**dağıtmak için Yeni-AzSubscriptionDeployment'ı kullanın:
+Bir **aboneliğe**dağıtmak Için, New-AzSubscriptionDeployment kullanın:
 
 ```azurepowershell
 New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
 ```
 
-Abonelik düzeyi dağıtımları hakkında daha fazla bilgi için [bkz.](deploy-to-subscription.md)
+Abonelik düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](deploy-to-subscription.md).
 
-Bir yönetim **grubuna**dağıtmak için [Yeni-AzManagementGroupDeployment'ı](/powershell/module/az.resources/New-AzManagementGroupDeployment)kullanın.
+Bir **yönetim grubuna**dağıtmak Için, [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)' ı kullanın.
 
 ```azurepowershell
 New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
 ```
 
-Yönetim grubu düzeyindeki dağıtımlar hakkında daha fazla bilgi için [bkz.](deploy-to-management-group.md)
+Yönetim grubu düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [Yönetim grubu düzeyinde kaynak oluşturma](deploy-to-management-group.md).
 
-**Kiracıya**dağıtmak için [Yeni-AzTenantDeployment'ı](/powershell/module/az.resources/new-aztenantdeployment)kullanın.
+Bir **kiracıya**dağıtmak Için, [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment)kullanın.
 
 ```azurepowershell
 New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
 ```
 
-Kiracı düzeyindeki dağıtımlar hakkında daha fazla bilgi için [bkz.](deploy-to-tenant.md)
+Kiracı düzeyinde dağıtımlar hakkında daha fazla bilgi için bkz. [kiracı düzeyinde kaynak oluşturma](deploy-to-tenant.md).
 
-Bu makaledeki örneklerkaynak grubu dağıtımlarını kullanır.
+Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Dağıtmak için bir şablona ihtiyacınız var. Zaten bir tane yoksa, Azure Quickstart [şablonları](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) repo'dan bir örnek şablon indirin ve kaydedin. Bu makalede kullanılan yerel dosya adı **c:\MyTemplates\azuredeploy.json**.
+Dağıtılacak bir şablonunuz olması gerekir. Henüz bir hesabınız yoksa Azure hızlı başlangıç şablonları deposundan bir [örnek şablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) indirip kaydedin. Bu makalede kullanılan yerel dosya adı **c:\MyTemplates\azuredeploy.JSON**' dir.
 
-Şablonları dağıtmak için Azure Bulut Kabuğu'nu kullanmadığınız sürece, Azure PowerShell'i yüklemeniz ve Azure'a bağlanmanız gerekir:
+Şablonları dağıtmak için Azure Cloud Shell kullanmadığınız takdirde, Azure PowerShell yüklemeniz ve Azure 'a bağlanmanız gerekir:
 
-- **Azure PowerShell cmdlets'i yerel bilgisayarınıza yükleyin.** Daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlayın](/powershell/azure/get-started-azureps).
-- ** [Connect-AZAccount'ı](/powershell/module/az.accounts/connect-azaccount)kullanarak Azure'a bağlanın.** Birden çok Azure aboneliğiniz varsa, [Set-AzContext'ı](/powershell/module/Az.Accounts/Set-AzContext)da çalıştırmanız gerekebilir. Daha fazla bilgi için [bkz.](/powershell/azure/manage-subscriptions-azureps)
+- **Azure PowerShell cmdlet 'lerini yerel bilgisayarınıza yükler.** Daha fazla bilgi için bkz. [Azure PowerShell kullanmaya başlayın](/powershell/azure/get-started-azureps).
+- ** [Connect-Azaccount](/powershell/module/az.accounts/connect-azaccount)kullanarak Azure 'a bağlanın**. Birden çok Azure aboneliğiniz varsa, [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)' i de çalıştırmanız gerekebilir. Daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](/powershell/azure/manage-subscriptions-azureps).
 
-## <a name="deploy-local-template"></a>Yerel şablonu dağıtma
+## <a name="deploy-local-template"></a>Yerel şablon dağıt
 
-Aşağıdaki örnek bir kaynak grubu oluşturur ve yerel makinenizden bir şablon dağıtır. Kaynak grubunun adı yalnızca alfasayısal karakterler, dönemler, alt çizerler, tireler ve parantez içerebilir. 90 karaktere kadar olabilir. Bir dönemde bitmez.
+Aşağıdaki örnek, bir kaynak grubu oluşturur ve yerel makinenizden bir şablon dağıtır. Kaynak grubunun adı yalnızca alfasayısal karakterler, noktalar, alt çizgiler, kısa çizgiler ve parantezler içerebilir. En fazla 90 karakter olabilir. Nokta ile bitemez.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -78,9 +78,9 @@ Dağıtımın tamamlanması birkaç dakika sürebilir.
 
 ## <a name="deploy-remote-template"></a>Uzak şablonu dağıtma
 
-ARM şablonlarını yerel makinenizde depolamak yerine, bunları harici bir konumda saklamayı tercih edebilirsiniz. Şablonları kaynak denetim deposunda (GitHub gibi) depolayabilirsiniz. Veya, kuruluşunuzdaki paylaşılan erişim için bunları bir Azure depolama hesabında saklayabilirsiniz.
+ARM şablonlarını yerel makinenizde depolamak yerine, bunları bir dış konumda depolamayı tercih edebilirsiniz. Şablonları bir kaynak denetimi deposunda (GitHub gibi) saklayabilirsiniz. Ya da, bunları kuruluşunuzda paylaşılan erişim için bir Azure depolama hesabında saklayabilirsiniz.
 
-Harici bir şablon dağıtmak için **TemplateUri** parametresini kullanın. Örnek şablonu GitHub'dan dağıtmak için uri'yi örnekte kullanın.
+Dış şablon dağıtmak için **Templateuri** parametresini kullanın. Örnek şablonu GitHub 'dan dağıtmak için örnekteki URI 'yi kullanın.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -91,13 +91,13 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Önceki örnek, şablonunuz hassas verileri içermemelidir, çünkü çoğu senaryo için çalışır şablon için kamuya açık bir URI gerektirir. Hassas verileri (yönetici parolası gibi) belirtmeniz gerekiyorsa, bu değeri güvenli bir parametre olarak geçirin. Ancak, şablonunuzun herkese açık olmasını istemiyorsanız, şablonu özel bir depolama kapsayıcısında depolayarak şablonu koruyabilirsiniz. Paylaşılan erişim imzası (SAS) belirteci gerektiren bir şablonu dağıtma hakkında bilgi [için](secure-template-with-sas-token.md)bkz. Öğreticiye geçmek için [bkz: Öğretici: Azure Anahtar Kasasını ARM şablon dağıtımına entegre edin.](template-tutorial-use-key-vault.md)
+Önceki örnekte, şablon için genel olarak erişilebilir bir URI gerekir ve bu, şablonunuz önemli verileri içermemelidir. Gizli veriler (yönetici parolası gibi) belirtmeniz gerekiyorsa, bu değeri güvenli bir parametre olarak geçirin. Ancak, şablonunuzun herkese açık bir şekilde erişilebilir olmasını istemiyorsanız, bunu özel bir depolama kapsayıcısında depolayarak koruyabilirsiniz. Paylaşılan erişim imzası (SAS) belirteci gerektiren bir şablonu dağıtma hakkında daha fazla bilgi için bkz. [özel şablonu SAS belirteci Ile dağıtma](secure-template-with-sas-token.md). Öğreticiye gitmek için bkz. [öğretici: ARM şablon dağıtımında Azure Key Vault tümleştirme](template-tutorial-use-key-vault.md).
 
-## <a name="deploy-from-azure-cloud-shell"></a>Azure Bulut BulutU Kabuğundan Dağıtma
+## <a name="deploy-from-azure-cloud-shell"></a>Azure Cloud Shell dağıtma
 
-Şablonunuzu dağıtmak için [Azure Bulut Kabuğu'nu](https://shell.azure.com) kullanabilirsiniz. Harici bir şablon dağıtmak için şablonun URI'sini sağlayın. Yerel bir şablon dağıtmak için öncelikle şablonunuzu Bulut Shell'inizin depolama hesabına yüklemeniz gerekir. Dosyayı kabuğuna yüklemek için, kabuk penceresinden **Dosyaları Yükle/İndir** menüsü simgesini seçin.
+Şablonunuzu dağıtmak için [Azure Cloud Shell](https://shell.azure.com) kullanabilirsiniz. Dış şablon dağıtmak için şablonun URI 'sini sağlayın. Yerel bir şablon dağıtmak için, önce şablonunuzu Cloud Shell depolama hesabına yüklemeniz gerekir. Dosyaları kabuğa yüklemek için kabuk penceresinden **dosyaları karşıya yükle/indir** menü simgesini seçin.
 
-Bulut kabuğunu açmak için [https://shell.azure.com](https://shell.azure.com)aşağıdaki kod bölümünden Try-It'e göz atın veya **Try-It'i** seçin:
+Cloud Shell 'i açmak için, aşağıdaki kod [https://shell.azure.com](https://shell.azure.com)bölümünden öğesine gidin veya **deneyin** ' i seçin:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -108,15 +108,15 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Kodu kabuğun içine yapıştırmak için kabuğun içine sağ tıklayın ve ardından **Yapıştır'ı**seçin.
+Kodu kabuğa yapıştırmak için, kabuğun içine sağ tıklayıp **Yapıştır**' ı seçin.
 
-## <a name="pass-parameter-values"></a>Geçiş parametresi değerleri
+## <a name="pass-parameter-values"></a>Parametre değerlerini geçir
 
-Parametre değerlerini geçmek için satır içinde parametreler ilerler veya parametre dosyasını kullanabilirsiniz.
+Parametre değerlerini geçirmek için satır içi parametreleri ya da bir parametre dosyasını kullanabilirsiniz.
 
-### <a name="inline-parameters"></a>Satır dışı parametreler
+### <a name="inline-parameters"></a>Satır içi parametreler
 
-Satır dışı parametreleri geçirmek için, `New-AzResourceGroupDeployment` komutu ile parametre adlarını sağlayın. Örneğin, bir dize ve diziyi şablona geçirmek için şunları kullanın:
+Satır içi parametreleri geçirmek için, `New-AzResourceGroupDeployment` komutuyla parametrenin adlarını sağlayın. Örneğin, bir şablona bir dize ve dizi geçirmek için şunu kullanın:
 
 ```powershell
 $arrayParam = "value1", "value2"
@@ -126,7 +126,7 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -exampleArray $arrayParam
 ```
 
-Ayrıca dosyanın içeriğini alabilir ve bu içeriği satır satırlı parametre olarak sağlayabilirsiniz.
+Ayrıca dosyanın içeriğini alabilir ve bu içeriği satır içi bir parametre olarak sağlayabilirsiniz.
 
 ```powershell
 $arrayParam = "value1", "value2"
@@ -136,9 +136,9 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -exampleArray $arrayParam
 ```
 
-Yapılandırma değerleri sağlamanız gerektiğinde dosyadan parametre değeri almak yararlıdır. Örneğin, [bir Linux sanal makinesi için bulut-init değerleri](../../virtual-machines/linux/using-cloud-init.md)sağlayabilirsiniz.
+Bir dosyadan parametre değeri alma, yapılandırma değerleri sağlamanız gerektiğinde faydalıdır. Örneğin, [bir Linux sanal makinesi için Cloud-init değerleri](../../virtual-machines/linux/using-cloud-init.md)sağlayabilirsiniz.
 
-Bir dizi nesnenin geçmesi gerekiyorsa, PowerShell'de karma tablolar oluşturun ve bunları bir diziye ekleyin. Dağıtım sırasında bu diziyi parametre olarak geçirin.
+Nesneler dizisini geçirmeniz gerekiyorsa, PowerShell 'de karma tablolar oluşturun ve bunları bir diziye ekleyin. Dağıtım sırasında bu diziyi bir parametre olarak geçirin.
 
 ```powershell
 $hash1 = @{ Name = "firstSubnet"; AddressPrefix = "10.0.0.0/24"}
@@ -151,11 +151,11 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 
 ### <a name="parameter-files"></a>Parametre dosyaları
 
-Komut dosyanızdaki satır değerleri olarak parametreleri geçirmek yerine, parametre değerlerini içeren bir JSON dosyasını kullanmayı daha kolay bulabilirsiniz. Parametre dosyası yerel bir dosya veya erişilebilir bir URI ile harici bir dosya olabilir.
+Komut dosyanıza satır içi değer olarak parametre geçirmek yerine, parametre değerlerini içeren bir JSON dosyası kullanmayı daha kolay bulabilirsiniz. Parametre dosyası yerel bir dosya veya erişilebilir bir URI 'ye sahip bir dış dosya olabilir.
 
-Parametre dosyası hakkında daha fazla bilgi için [kaynak yöneticisi parametre dosyası oluştur'a](parameter-files.md)bakın.
+Parametre dosyası hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi parametre dosyası oluşturma](parameter-files.md).
 
-Yerel bir parametre dosyasını geçmek için **TemplateParameterFile** parametresini kullanın:
+Yerel bir parametre dosyasını geçirmek için **Templateparameterfile** parametresini kullanın:
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -163,7 +163,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 
-Harici bir parametre dosyasını geçmek için **TemplateParameterUri** parametresini kullanın:
+Dış parametre dosyasını geçirmek için **Templateparameteruri** parametresini kullanın:
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -171,16 +171,16 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
 ```
 
-## <a name="test-template-deployments"></a>Şablon dağıtımlarını test edin
+## <a name="test-template-deployments"></a>Test şablonu dağıtımları
 
-Şablonunuzu ve parametre değerlerinizi gerçekten kaynak dağıtmadan sınamak için [Test-AzResourceGroupDeployment'ı](/powershell/module/az.resources/test-azresourcegroupdeployment)kullanın. 
+Şablon ve parametre değerlerinizi hiçbir kaynağı gerçekten dağıtmadan test etmek için, [Test-AzResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment)kullanın. 
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\azuredeploy.json -storageAccountType Standard_GRS
 ```
 
-Hata algılanmamışsa, komut yanıt olmadan tamamlanır. Bir hata algılanırsa, komut bir hata iletisi döndürür. Örneğin, depolama hesabı SKU için yanlış bir değer geçen, aşağıdaki hatayı döndürür:
+Herhangi bir hata algılanmazsa, komut yanıt olmadan sonlanır. Bir hata algılanırsa, komut bir hata mesajı döndürür. Örneğin, depolama hesabı SKU 'SU için yanlış bir değer geçirilerek aşağıdaki hata döndürülür:
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName testgroup `
@@ -193,7 +193,7 @@ Message : Deployment template validation failed: 'The provided value 'badSku' fo
 Details :
 ```
 
-Şablonunuzda sözdizimi hatası varsa, komut şablonu ayrışdıramayacağını belirten bir hata döndürür. İleti, ayrıştma hatasının satır numarasını ve konumunu gösterir.
+Şablonunuzda bir sözdizimi hatası varsa, komut, şablonu ayrıştıramadığını belirten bir hata döndürür. İleti, ayrıştırma hatasının satır numarasını ve konumunu gösterir.
 
 ```powershell
 Test-AzResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
@@ -202,7 +202,7 @@ Test-AzResourceGroupDeployment : After parsing a value an unexpected character w
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bir hata aldığınızda başarılı bir dağıtıma geri dönmek [için, başarılı dağıtımhatasında Rollback'i](rollback-on-error.md)görün.
-- Kaynak grubunda bulunan ancak şablonda tanımlanmayan kaynakların nasıl işleyeceğini belirtmek için Azure [Kaynak Yöneticisi dağıtım modlarına](deployment-modes.md)bakın.
-- Şablonunuzdaparametrelerin nasıl tanımlandığını anlamak için [bkz.](template-syntax.md)
-- SAS belirteci gerektiren bir şablonu dağıtma hakkında bilgi [için](secure-template-with-sas-token.md)bkz.
+- Hata aldığınızda başarılı bir dağıtıma geri dönmek için, [başarılı bir dağıtımda hata durumunda geri alma](rollback-on-error.md)konusuna bakın.
+- Kaynak grubunda var olan, ancak şablonda tanımlanmamış kaynakların nasıl işleneceğini belirtmek için bkz. [Azure Resource Manager Dağıtım modları](deployment-modes.md).
+- Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+- SAS belirteci gerektiren bir şablonu dağıtma hakkında daha fazla bilgi için bkz. [özel şablonu SAS belirteci Ile dağıtma](secure-template-with-sas-token.md).

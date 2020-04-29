@@ -1,7 +1,7 @@
 ---
 title: Hizmet kaynağınızı bölgeler arasında taşıma
 titleSuffix: Azure Cognitive Search
-description: Bu makalede, Azure Bilişsel Arama kaynaklarınızı Azure bulutundaki bir bölgeden diğerine nasıl taşıyacağınızı gösterecektir.
+description: Bu makalede, Azure Bilişsel Arama kaynaklarınızı Azure bulutundaki bir bölgeden diğerine nasıl taşıyacağınız gösterilmektedir.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -10,38 +10,38 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 03/24/2020
 ms.openlocfilehash: 00f16d11f7a9cd276772eda5e91d6e117ada8c9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80246315"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Bilişsel Arama hizmetinizi başka bir Azure bölgesine taşıyın
 
-Bazen müşteriler, bir arama hizmetini başka bir bölgeye taşıma hakkında sorular sorar. Şu anda, bu göreve yardımcı olacak yerleşik bir mekanizma veya araç bulunmamaktadır, ancak bu makale, aynı sonuca ulaşmak için el ile ilgili adımları anlamanıza yardımcı olabilir.
+Bazen, müşteriler bir arama hizmetini başka bir bölgeye taşımayı ister. Şu anda, bu görevle ilgili yardım almak için yerleşik bir mekanizma veya araç yoktur, ancak bu makale aynı sonucu elde etmek için el ile yapılan adımları anlamanıza yardımcı olabilir.
 
 > [!NOTE]
-> Azure portalında, tüm hizmetlerin bir **Dışa Aktarma şablonu komutu** var. Azure Bilişsel Arama söz konusu olduğunda, bu komut bir hizmetin temel bir tanımını (ad, konum, katman, yineleme ve bölüm sayısı) üretir, ancak hizmetiniçeriğini tanımaz veya anahtarlar, roller veya günlükler üzerinde taşımaz. Komut olsa da, bir arama hizmetini taşımak için kullanmanızı önermiyoruz.
+> Azure portal, tüm hizmetlerin bir **şablonu dışarı aktar** komutu vardır. Azure Bilişsel Arama söz konusu olduğunda, bu komut bir hizmetin temel tanımını (ad, konum, katman, çoğaltma ve bölüm sayısı) üretir, ancak hizmetinizin içeriğini tanımaz, ya da anahtar, rol ya da Günlükler üzerinde devam etmez. Komut var olsa da, bir arama hizmeti taşımak için kullanılması önerilmez.
 
-## <a name="guidance-for-moving-a-service"></a>Bir hizmeti taşıma kılavuzu
+## <a name="guidance-for-moving-a-service"></a>Hizmeti taşımaya yönelik kılavuz
 
-1. Azure Bilişsel Arama'dan daha fazlasını taşımanız gerektiğinde, bir hizmetin yerini değiştirmenin tam etkisini anlamak için bağımlılıkları ve ilgili hizmetleri belirleyin.
+1. Yalnızca Azure Bilişsel Arama daha fazlasını taşımanız gerekiyorsa, bir hizmetin yeniden konumlandırılmalarından tam etkileri anlamak için bağımlılıkları ve ilgili hizmetleri belirler.
 
-   Azure Depolama günlüğe kaydetme, bilgi deposu oluşturma için kullanılır ve AI zenginleştirme ve dizin oluşturma için yaygın olarak kullanılan bir dış veri kaynağıdır. Bilişsel Hizmetler AI zenginleştirme bir bağımlılıktır. AI zenginleştirme kullanıyorsanız, hem Bilişsel Hizmetler hem de arama hizmetiniz aynı bölgede olmalıdır.
+   Azure depolama, günlüğe kaydetme, bilgi deposu oluşturma, yaygın olarak kullanılan bir dış veri kaynağı ve AI zenginleştirme ve dizin oluşturma için kullanılır. Bilişsel hizmetler, AI zenginleştirme 'nin bir bağımlılığı. Yalnızca bilişsel hizmetler ve arama hizmetinizin, AI zenginleştirme kullanıyorsanız aynı bölgede olması gerekir.
 
-1. Ne taşıyacağını bilmek için hizmetteki tüm nesnelerin bir envanterini oluşturun: dizinler, eşanlamlı haritalar, dizinleyiciler, veri kaynakları, beceri kümeleri. Günlük günlüğe kaydetmeyi etkinleştirdikten sonra, geçmiş bir kayıt için ihtiyaç duyabileceğiniz raporları oluşturun ve arşivleyin.
+1. Ne taşınacağını bilmeniz için hizmette tüm nesnelerin envanterini oluşturun: dizinler, eş anlamlı haritalar, Dizin oluşturucular, veri kaynakları, becerileri. Günlüğe kaydetmeyi etkinleştirdiyseniz, bir geçmiş kaydı için ihtiyaç duyduğunuz tüm raporları oluşturun ve arşivleyin.
 
-1. Azure Bilişsel Arama'nın yanı sıra yeni bölgedeki ilgili hizmetlerin kullanılabilirliğini sağlamak için yeni bölgedeki fiyatlandırmayı ve kullanılabilirliği denetleyin. Özelliklerin çoğu tüm bölgelerde kullanılabilir, ancak bazı önizleme özellikleri sınırlı kullanılabilirliğe sahiptir.
+1. Yeni bölgedeki Azure Bilişsel Arama ve ilgili hizmetlerin kullanılabilirliğini sağlamak için fiyatlandırma ve kullanılabilirliği denetleyin. Özelliklerin büyük bölümü tüm bölgelerde kullanılabilir, ancak bazı Önizleme özelliklerinin kısıtlı kullanılabilirliği vardır.
 
-1. Yeni bölgede bir hizmet oluşturun ve varolan dizinler, eşanlamlı lar, dizin oluşturup, veri kaynakları ve beceri kümelerini kaynak kodundan yeniden yayımlayın. Varolan adı yeniden kullanamamak için hizmet adlarının benzersiz olması gerektiğini unutmayın. Bilişsel Hizmetlerbağlantılarının aynı bölge gereksinimi açısından hala geçerli olup olmadığını görmek için her skillset'i denetleyin. Ayrıca, bilgi depoları oluşturulduysa, farklı bir hizmet kullanıyorsanız Azure Depolama'nın bağlantı dizelerini denetleyin.
+1. Yeni bölgede bir hizmet oluşturun ve mevcut dizinler, eş anlamlı eşlemeler, Dizin oluşturucular, veri kaynakları ve becerileri kaynak kodundan yeniden yayımlayın. Mevcut adı yeniden kullanabilmeniz için hizmet adlarının benzersiz olması gerektiğini unutmayın. Bilişsel hizmetler bağlantılarının aynı bölge gereksinimi bakımından hala geçerli olup olmadığını görmek için her beceri denetleyin. Ayrıca, bilgi depoları oluşturulduysa, farklı bir hizmet kullanıyorsanız Azure Storage bağlantı dizelerini kontrol edin.
 
-1. Varsa dizinleri ve bilgi depolarını yeniden yükleyin. JSON verilerini bir dizin içine itmek için uygulama kodunu veya belgeleri dış kaynaklardan çekmek için dizin leyicileri yeniden çalıştırmak için kullanırsınız. 
+1. Varsa dizinleri ve bilgi depolarını yeniden yükleyin. JSON verilerini bir dizine göndermek için uygulama kodunu kullanacaksınız veya dış kaynaklardan gelen belgeleri çekmek için dizin oluşturucularının yeniden çalıştırılması gerekir. 
 
 1. Günlüğe kaydetmeyi etkinleştirin ve bunları kullanıyorsanız, güvenlik rollerini yeniden oluşturun.
 
-1. Yeni hizmet adını ve API anahtarlarını kullanmak ve tüm uygulamaları test etmek için istemci uygulamalarını ve test paketlerini güncelleştirin.
+1. İstemci uygulamalarını ve test paketlerini yeni hizmet adı ve API anahtarlarını kullanacak şekilde güncelleştirin ve tüm uygulamaları test edin.
 
-1. Yeni hizmet tam olarak sınandıktan ve çalışmaya başladıktan sonra eski hizmeti silin.
+1. Yeni hizmet tam olarak sınandıktan ve çalışır duruma getirildikten sonra eski hizmeti silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

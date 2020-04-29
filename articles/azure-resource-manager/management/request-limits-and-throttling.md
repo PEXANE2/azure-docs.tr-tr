@@ -1,124 +1,124 @@
 ---
 title: İstek sınırları ve azaltma
-description: Abonelik sınırlarına ulaşıldığında Azure Kaynak Yöneticisi istekleriyle azaltmanın nasıl kullanılacağını açıklar.
+description: Abonelik sınırlarına ulaşıldığında Azure Resource Manager isteklerle azaltma kullanımını açıklar.
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80239356"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager isteklerini azaltma
 
-Bu makalede, Azure Kaynak Yöneticisi'nin istekleri nasıl azalttıaçıklanmıştır. Sınıra ulaşmadan önce kalan istek sayısını nasıl izleyeceğinizi ve sınıra ulaştığınızda nasıl yanıt verilebildiğinizi gösterir.
+Bu makalede, Azure Resource Manager isteklerinin nasıl kısıtlanmakta olduğu açıklanır. Sınıra ulaşmadan önce kalan isteklerin sayısını ve sınıra ulaştığınızda yanıt vermeyi nasıl izleyeceğinizi gösterir.
 
-Azaltma iki düzeyde olur. Azure Kaynak Yöneticisi, abonelik ve kiracı isteklerini daraltır. İstek, abonelik ve kiracı için azaltma sınırları altındaysa, Kaynak Yöneticisi isteği kaynak sağlayıcısına yönlendirir. Kaynak sağlayıcısı, işlemlerine uygun olarak uyarlanan azaltma sınırlarını uygular. Aşağıdaki resim, istek kullanıcıdan Azure Kaynak Yöneticisi'ne ve kaynak sağlayıcısına giderken azaltmanın nasıl uygulandığını gösterir.
+Kısıtlama iki düzeyde gerçekleşir. Abonelik ve kiracı için istekleri kısıtlar Azure Resource Manager. İstek, abonelik ve kiracı için azaltma limitlerinin altındaysa, Kaynak Yöneticisi isteği kaynak sağlayıcısına yönlendirir. Kaynak sağlayıcı, işlemlerine uyarlanmış azaltma sınırlarını uygular. Aşağıdaki görüntüde, bir istek kullanıcıdan Azure Resource Manager ve kaynak sağlayıcısına geçtiğinde, kısıtlama nasıl uygulanacağını gösterir.
 
-![Azaltma isteği](./media/request-limits-and-throttling/request-throttling.svg)
+![İstek azaltma](./media/request-limits-and-throttling/request-throttling.svg)
 
-## <a name="subscription-and-tenant-limits"></a>Abonelik ve kiracı limitleri
+## <a name="subscription-and-tenant-limits"></a>Abonelik ve kiracı sınırları
 
-Her abonelik düzeyi ve kiracı düzeyindeki işlem azaltma sınırlarına tabidir. Abonelik istekleri, aboneliğinizdeki kaynak gruplarını almak gibi abonelik kimliğinizi geçirmeyi içeren istekleriiçerir. Kiracı istekleri, geçerli Azure konumlarını alma gibi abonelik kimliğinizi içermez.
+Her abonelik düzeyi ve kiracı düzeyindeki işlem, azaltma sınırlarına tabidir. Abonelik istekleri, aboneliğinizdeki kaynak gruplarını alma gibi abonelik KIMLIĞINIZI geçirmeyi içerir. Kiracı istekleri, geçerli Azure konumlarını alma gibi abonelik KIMLIĞINIZI içermez.
 
-Saat başına varsayılan azaltma sınırları aşağıdaki tabloda gösterilir.
+Saat başına varsayılan azaltma sınırları aşağıdaki tabloda gösterilmiştir.
 
 | Kapsam | İşlemler | Sınır |
 | ----- | ---------- | ------- |
-| Abonelik | Okur | 12000 |
-| Abonelik | Silme | 15000 |
-| Abonelik | Yazar | 1200 |
-| Kiracı | Okur | 12000 |
-| Kiracı | Yazar | 1200 |
+| Abonelik | okuma | 12000 |
+| Abonelik | /Delete | 15000 |
+| Abonelik | blok | 1200 |
+| Kiracı | okuma | 12000 |
+| Kiracı | blok | 1200 |
 
 Bu sınırların kapsamı, istekleri yapan güvenlik sorumlusu ve abonelik kimliği veya kiracı kimliğine göre belirlenir. İstekleriniz birden fazla güvenlik sorumlusundan geliyorsa, abonelik veya kiracıdaki sınırınız saatte 12.000 ve 1.200’den büyüktür.
 
-Bu sınırlar her Azure Kaynak Yöneticisi örneği için geçerlidir. Her Azure bölgesinde birden çok örnek vardır ve Azure Kaynak Yöneticisi tüm Azure bölgelerine dağıtılır.  Yani, uygulamada, sınırları bu limitler daha yüksektir. Bir kullanıcıdan gelen istekler genellikle Azure Kaynak Yöneticisi'nin farklı örnekleri tarafından işlenir.
+Bu sınırlar her Azure Resource Manager örneği için geçerlidir. Her Azure bölgesinde birden çok örnek vardır ve Azure Resource Manager tüm Azure bölgelerine dağıtılır.  Bu nedenle, uygulamada sınırlar Bu limitlerden daha yüksektir. Bir kullanıcının istekleri genellikle farklı Azure Resource Manager örnekleri tarafından işlenir.
 
-## <a name="resource-provider-limits"></a>Kaynak sağlayıcı sınırları
+## <a name="resource-provider-limits"></a>Kaynak sağlayıcısı sınırları
 
-Kaynak sağlayıcıları kendi azaltma sınırlarını uygular. Kaynak Yöneticisi ana kimlik ve Kaynak Yöneticisi örneğine göre daraldığından, kaynak sağlayıcısı önceki bölümdeki varsayılan sınırlardan daha fazla istek alabilir.
+Kaynak sağlayıcıları kendi azaltma sınırlarını uygular. Kaynak Yöneticisi asıl KIMLIĞE ve Kaynak Yöneticisi örneğine göre kısıtladığından, kaynak sağlayıcısı önceki bölümde varsayılan limitlerden daha fazla istek alabilir.
 
-Bu bölümde, yaygın olarak kullanılan bazı kaynak sağlayıcıların azaltma sınırları açıklanabilir.
+Bu bölümde, yaygın olarak kullanılan bazı kaynak sağlayıcılarının azaltma sınırları ele alınmaktadır.
 
-### <a name="storage-throttling"></a>Depolama azaltma
+### <a name="storage-throttling"></a>Depolama alanı azaltma
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 ### <a name="network-throttling"></a>Ağ kapasitesi azaltma
 
-Microsoft.Network kaynak sağlayıcısı aşağıdaki azaltma sınırlarını uygular:
+Microsoft. Network kaynak sağlayıcısı aşağıdaki kısıtlama sınırlarını uygular:
 
 | İşlem | Sınır |
 | --------- | ----- |
-| yazmak / silme (PUT) | 5 dakikada 1000 |
-| okuyun (GET) | 5 dakikada 10000 |
+| yazma/silme (PUT) | 5 dakikada 1000 |
+| okuma (GET) | 5 dakikada 10000 |
 
 ### <a name="compute-throttling"></a>İşlem azaltma
 
-Bilgi işlem işlemleri için azaltma sınırları hakkında bilgi için Bkz. [Sorun Giderme API azaltma hataları - Bilgi İşlem](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md).
+İşlem işlemlerine yönelik azaltma sınırları hakkında bilgi için bkz. [API azaltma hataları sorunlarını giderme-işlem](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md).
 
-Sanal makine ölçek kümesi içindeki sanal makine örneklerini denetlemek için [Sanal Makine Ölçeği Kümeleri işlemlerini](/rest/api/compute/virtualmachinescalesetvms)kullanın. Örneğin, Sanal [Makine Ölçeği Kümesi VM'leri](/rest/api/compute/virtualmachinescalesetvms/list) kullanın - Sanal makine örneklerinin güç durumunu kontrol etmek için parametreleri içeren listeyi kullanın. Bu API istek sayısını azaltır.
+Sanal makine ölçek kümesi içindeki sanal makine örneklerini denetlemek için, [Sanal Makine Ölçek Kümeleri işlemlerini](/rest/api/compute/virtualmachinescalesetvms)kullanın. Örneğin, sanal makine örneklerinin güç durumunu denetlemek için [sanal makine ölçek kümesi VM 'leri-](/rest/api/compute/virtualmachinescalesetvms/list) parametreleri ile Listele seçeneğini kullanın. Bu API, istek sayısını azaltır.
 
 ### <a name="azure-resource-graph-throttling"></a>Azure Kaynak Grafiği azaltma
 
-[Azure Kaynak Grafiği,](../../governance/resource-graph/overview.md) işlemleriiçin istek sayısını sınırlar. Bu makalede, kalan istekleri belirlemek ve sınıra ulaşıldığında nasıl yanıt verilebildiğini belirlemek için atılan adımlar Kaynak Grafiği için de geçerlidir. Ancak, Kaynak Grafiği kendi sınırını ve sıfırlama hızını ayarlar. Daha fazla bilgi için kaynak [grafiği azaltma üstbilgilerine](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers)bakın.
+[Azure Kaynak Grafiği](../../governance/resource-graph/overview.md) , istek sayısını işlemlerine göre sınırlandırır. Kalan istekleri ve sınıra ulaşıldığında nasıl yanıt verileceğini öğrenmek için bu makaledeki adımlar kaynak grafı için de geçerlidir. Ancak, kaynak grafiği kendi sınırını ve sıfırlama oranını ayarlar. Daha fazla bilgi için bkz. [Kaynak Grafiği azaltma üstbilgileri](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers).
 
 ## <a name="error-code"></a>Hata kodu
 
-Sınıra ulaştığınızda, HTTP durum kodu **429 Çok fazla istek**alırsınız. Yanıt, uygulamanızın bir sonraki isteği göndermeden önce beklemesi gereken (veya uyuması gereken) saniye sayısını belirten bir **Yeniden Deneme-Sonra** değeri içerir. Yeniden deneme değeri dolmadan önce bir istek gönderirseniz, isteğiniz işleme edilmez ve yeni bir yeniden deneme değeri döndürülür.
+Sınıra ulaştığınızda, **429 çok fazla Istek**http durum kodunu alırsınız. Yanıt, bir sonraki isteği göndermeden önce uygulamanızın beklemesi gereken saniye sayısını (veya uyku) belirten bir **yeniden deneme** değeri içerir. Yeniden deneme değeri geçmeden önce bir istek gönderirseniz isteğiniz işlenmez ve yeni bir yeniden deneme değeri döndürülür.
 
-Belirtilen süreyi bekledikten sonra Azure bağlantınızı kapatıp yeniden açabilirsiniz. Bağlantıyı sıfırlayarak, Azure Kaynak Yöneticisi'nin farklı bir örneğine bağlanabilirsiniz.
+Belirtilen süre bekledikten sonra Azure bağlantınızı kapatıp yeniden açabilirsiniz. Bağlantıyı sıfırlayarak, farklı bir Azure Resource Manager örneğine bağlanabilirsiniz.
 
-Azure SDK kullanıyorsanız, SDK'nın otomatik yeniden deneme yapılandırması olabilir. Daha fazla bilgi [için Azure hizmetleri için Yeniden Deneme kılavuzuna](/azure/architecture/best-practices/retry-service-specific)bakın.
+Azure SDK kullanıyorsanız, SDK otomatik yeniden deneme yapılandırmasına sahip olabilir. Daha fazla bilgi için bkz. [Azure hizmetleri Için yeniden deneme Kılavuzu](/azure/architecture/best-practices/retry-service-specific).
 
-Bazı kaynak sağlayıcıları geçici bir sorunu bildirmek için 429 döndürün. Sorun, doğrudan isteğinizden kaynaklanamayan aşırı yükleme durumu olabilir. Veya, hedef kaynağın veya bağımlı kaynağın durumu hakkında geçici bir hata temsil edebilir. Örneğin, hedef kaynak başka bir işlem tarafından kilitlendiğinde ağ kaynak sağlayıcısı 429'u **Yeniden DeneebilirErrorDueToAnotherOperation** hata koduyla birlikte döndürür. Hatanın azaltmadan mı yoksa geçici bir durumdan mı kaynaklandığını belirlemek için yanıttaki hata ayrıntılarını görüntüleyin.
+Bazı kaynak sağlayıcıları geçici bir sorunu raporlamak için 429 döndürür. Bu sorun, isteğiniz tarafından doğrudan neden olmayan bir aşırı yükleme koşulu olabilir. Ya da, hedef kaynağın veya bağımlı kaynağın durumu hakkında geçici bir hata temsil eder. Örneğin, ağ kaynak sağlayıcısı, hedef kaynak başka bir işlem tarafından kilitlendiğinde **RetryableErrorDueToAnotherOperation** hata kodu ile 429 döndürür. Hatanın azaltma veya geçici bir koşuldan mi geldiğini öğrenmek için yanıtta hata ayrıntılarını görüntüleyin.
 
 ## <a name="remaining-requests"></a>Kalan istekler
 
-Yanıt üstbilgilerini inceleyerek kalan istek sayısını belirleyebilirsiniz. Okuma istekleri, kalan okuma isteği sayısı için üstbilgide bir değer döndürün. Yazma istekleri, kalan yazma istekleri sayısı için bir değer içerir. Aşağıdaki tabloda, bu değerler için inceleyebileceğiniz yanıt üstbilgiaçıklanmaktadır:
+Yanıt üstbilgilerini inceleyerek kalan isteklerin sayısını belirleyebilirsiniz. Okuma istekleri, kalan okuma isteklerinin sayısı için üst bilgide bir değer döndürür. Yazma istekleri, kalan yazma isteklerinin sayısı için bir değer içerir. Aşağıdaki tabloda, bu değerler için inceleyebileceğiniz yanıt üstbilgileri açıklanmaktadır:
 
-| Yanıt üstbilgi | Açıklama |
+| Yanıt üst bilgisi | Açıklama |
 | --- | --- |
-| x-ms-ratelimit-kalan-abonelik-okuma |Abonelik kapsamı kalan okumalar. Bu değer okundu işlemlerinde döndürülür. |
-| x-ms-ratelimit-kalan-abonelik-yazma |Abonelik kapsamı kalan yazıyor. Bu değer yazma işlemlerinde döndürülür. |
-| x-ms-ratelimit-kalan-kiracı-okuma |Kiracı kapsamlı kalan okumaları |
-| x-ms-ratelimit-kalan-kiracı-yazıyor |Kiracı kapsamlı kalan yazıyor |
-| x-ms-ratelimit-kalan-abonelik-kaynak-istekleri |Abonelik kapsamı namına kaynak türü istekleri kaldı.<br /><br />Bu üstbilgi değeri yalnızca bir hizmet varsayılan sınırı geçersiz kılırsa döndürülür. Kaynak Yöneticisi, aboneliğin okuması veya yazması yerine bu değeri ekler. |
-| x-ms-ratelimit-kalan-abonelik-kaynak-varlıklar-okuyun |Abonelik kapsamı namına kaynak türü toplama istekleri kaldı.<br /><br />Bu üstbilgi değeri yalnızca bir hizmet varsayılan sınırı geçersiz kılırsa döndürülür. Bu değer, kalan toplama isteklerinin (liste kaynakları) sayısını sağlar. |
-| x-ms-ratelimit-kalan-kiracı-kaynak istekleri |Kiracı kapsamlı kaynak türü istekleri kaldı.<br /><br />Bu üstbilgi yalnızca kiracı düzeyindeki istekler için ve yalnızca bir hizmet varsayılan sınırı geçersiz kılırsa eklenir. Kaynak Yöneticisi, kiracının okuması veya yazması yerine bu değeri ekler. |
-| x-ms-ratelimit-kalan-kiracı-kaynak-varlıklar-okuma |Kiracı kapsamlı kaynak türü toplama istekleri kaldı.<br /><br />Bu üstbilgi yalnızca kiracı düzeyindeki istekler için ve yalnızca bir hizmet varsayılan sınırı geçersiz kılırsa eklenir. |
+| x-MS-ratelimit-kalan-abonelik-okumalar |Abonelik kapsamlı okuma kaldı. Bu değer, okuma işlemlerinde döndürülür. |
+| x-MS-ratelimit-kalan-abonelik-yazmaları |Abonelik kapsamlı yazmaları kaldı. Bu değer, yazma işlemlerinde döndürülür. |
+| x-MS-ratelimit-kalan-kiracı-okuma |Kalan kiracı kapsamlı okuma sayısı |
+| x-MS-ratelimit-kalan-kiracı-yazma |Kiracı kapsamlı yazmaları kaldı |
+| x-MS-ratelimit-kalan-abonelik-Resource-Requests |Abonelik kapsamlı kaynak türü istekleri kaldı.<br /><br />Bu üstbilgi değeri yalnızca bir hizmet varsayılan sınırı geçersiz kılmışsa döndürülür. Kaynak Yöneticisi, abonelik okuma veya yazma işlemleri yerine bu değeri ekler. |
+| x-MS-ratelimit-kalan-abonelik-Resource-Entities-oku |Abonelik kapsamlı kaynak türü toplama istekleri kaldı.<br /><br />Bu üstbilgi değeri yalnızca bir hizmet varsayılan sınırı geçersiz kılmışsa döndürülür. Bu değer, kalan koleksiyon isteklerinin (liste kaynakları) sayısını sağlar. |
+| x-MS-ratelimit-kalan-kiracı-kaynak-istekler |Kiracı kapsamlı kaynak türü istekleri kaldı.<br /><br />Bu üst bilgi yalnızca kiracı düzeyindeki istekler için ve yalnızca bir hizmet varsayılan sınırı geçersiz kılmışsa eklenir. Kaynak Yöneticisi kiracı okuma veya yazma işlemleri yerine bu değeri ekler. |
+| x-MS-ratelimit-kalan-Tenant-Resource-Entities-oku |Kiracı kapsamlı kaynak türü toplama istekleri kaldı.<br /><br />Bu üst bilgi yalnızca kiracı düzeyindeki istekler için ve yalnızca bir hizmet varsayılan sınırı geçersiz kılmışsa eklenir. |
 
-Kaynak sağlayıcısı, kalan istekler hakkında bilgi içeren yanıt üstbilgilerini de döndürebilir. Bilgi İşlem kaynak sağlayıcısı tarafından döndürülen yanıt üstbilgileri hakkında bilgi için [bkz.](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md#call-rate-informational-response-headers)
+Kaynak sağlayıcı ayrıca, kalan istekler hakkında bilgi içeren yanıt üstbilgilerini de döndürebilir. Işlem kaynak sağlayıcısı tarafından döndürülen yanıt üstbilgileri hakkında daha fazla bilgi için bkz. [çağrı hızı bilgilendirici yanıt üst bilgileri](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md#call-rate-informational-response-headers).
 
-## <a name="retrieving-the-header-values"></a>Üstbilgi değerlerini alma
+## <a name="retrieving-the-header-values"></a>Üst bilgi değerleri alınıyor
 
-Bu üstbilgi değerlerini kodunuzda veya komut dosyanızda almak, herhangi bir üstbilgi değerini almaktan farklı değildir. 
+Kodunuzda veya betiğinizdeki Bu üstbilgi değerlerinin alınması herhangi bir üst bilgi değerini almaktan farklı değildir. 
 
-Örneğin, **C#**'da, aşağıdaki kodla **yanıt** adlı bir **HttpWebResponse** nesnesinden üstbilgi değerini alırsınız:
+Örneğin, **C#**' de, aşağıdaki kodla **Yanıtla** adlı bir **HttpWebResponse** nesnesinden üst bilgi değerini alırsınız:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-**PowerShell'de**üstbilgi değerini invoke-WebRequest işleminden alırsınız.
+**PowerShell**'de, bir Invoke-WebRequest işleminden üst bilgi değerini alırsınız.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-Tam bir PowerShell örneği [için, Abonelik için Kaynak Yöneticisi Sınırlarını Denetle'ye](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)bakın.
+Tüm PowerShell örnekleri için bkz. [bir abonelik için Kaynak Yöneticisi sınırlarını denetleme](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
 
-Hata ayıklama için kalan istekleri görmek istiyorsanız, **PowerShell** cmdlet'inizin **-Hata Ayıklama** parametresini sağlayabilirsiniz.
+Hata ayıklama için geri kalan istekleri görmek isterseniz, **PowerShell** cmdlet 'inizdeki **-Debug** parametresini sağlayabilirsiniz.
 
 ```powershell
 Get-AzResourceGroup -Debug
 ```
 
-Aşağıdaki yanıt değeri de dahil olmak üzere birçok değer döndürür:
+Aşağıdaki yanıt değeri de dahil olmak üzere çok sayıda değer döndürür:
 
 ```output
 DEBUG: ============================ HTTP RESPONSE ============================
@@ -137,7 +137,7 @@ Yazma sınırlarını almak için bir yazma işlemi kullanın:
 New-AzResourceGroup -Name myresourcegroup -Location westus -Debug
 ```
 
-Aşağıdaki değerler de dahil olmak üzere birçok değer döndürür:
+Aşağıdaki değerler dahil olmak üzere çok sayıda değer döndürür:
 
 ```output
 DEBUG: ============================ HTTP RESPONSE ============================
@@ -150,13 +150,13 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
-**Azure CLI'de,** daha ayrıntılı seçeneği kullanarak üstbilgi değerini alırsınız.
+**Azure CLI**'de, daha ayrıntılı seçeneğini kullanarak üst bilgi değerini alırsınız.
 
 ```azurecli
 az group list --verbose --debug
 ```
 
-Aşağıdaki değerler de dahil olmak üzere birçok değer döndürür:
+Aşağıdaki değerler dahil olmak üzere çok sayıda değer döndürür:
 
 ```output
 msrest.http_logger : Response status: 200
@@ -176,7 +176,7 @@ Yazma sınırlarını almak için bir yazma işlemi kullanın:
 az group create -n myresourcegroup --location westus --verbose --debug
 ```
 
-Aşağıdaki değerler de dahil olmak üzere birçok değer döndürür:
+Aşağıdaki değerler dahil olmak üzere çok sayıda değer döndürür:
 
 ```output
 msrest.http_logger : Response status: 201
@@ -191,6 +191,6 @@ msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Tam bir PowerShell örneği [için, Abonelik için Kaynak Yöneticisi Sınırlarını Denetle'ye](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)bakın.
-* Sınırlar ve kotalar hakkında daha fazla bilgi için [Azure abonelik ve hizmet sınırları, kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md)bölümüne bakın.
-* Eşzamanlı REST isteklerini işleme hakkında bilgi edinmek için [eşsenkronize Azure işlemlerini izleyin'e](async-operations.md)bakın.
+* Tüm PowerShell örnekleri için bkz. [bir abonelik için Kaynak Yöneticisi sınırlarını denetleme](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+* Sınırlamalar ve Kotalar hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+* Zaman uyumsuz REST isteklerini işleme hakkında bilgi edinmek için bkz. [zaman uyumsuz Azure Işlemlerini izleme](async-operations.md).

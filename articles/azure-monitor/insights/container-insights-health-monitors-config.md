@@ -1,81 +1,81 @@
 ---
-title: Kapsayıcılar sistem durumu monitörleri yapılandırması için Azure Monitörü | Microsoft Dokümanlar
-description: Bu makalede, kapsayıcılar için Azure Monitor'daki sistem durumu monitörlerinin ayrıntılı yapılandırmasını açıklayan içerik sağlanmaktadır.
+title: Kapsayıcılar için Azure Izleyici durum izleyici yapılandırması | Microsoft Docs
+description: Bu makale, kapsayıcılar için Azure Izleyici 'de sistem durumu izleyicilerinin ayrıntılı yapılandırmasını açıklayan içerik sağlar.
 ms.topic: conceptual
 ms.date: 12/01/2019
 ms.openlocfilehash: 99ea6e96f5a8a486784cb3d633a6e031b60eaad7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80055713"
 ---
-# <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Kapsayıcılar için Azure Monitörü sistem durumu izleme yapılandırma kılavuzu
+# <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Kapsayıcılar için Azure Izleyici durum izleyici yapılandırma kılavuzu
 
-Monitörler, kapsayıcılar için Azure Monitor'daki sistem durumunu ölçmenin ve hataları algılamanın birincil öğesidir. Bu makale, sağlık durumunun nasıl ölçüldüğü ve [Sağlık (önizleme)](container-insights-health.md) özelliğiyle Kubernetes kümenizin sistem durumunu izlemek ve raporlamak için sistem durumu modelini oluşturan öğeleri anlamanıza yardımcı olur.
+İzleyiciler, Azure Izleyici 'de kapsayıcılar için sistem durumunu ölçmeye ve hataları algılamaya yönelik birincil öğedir. Bu makale, sağlık durumu [(Önizleme)](container-insights-health.md) özelliği Ile Kubernetes kümenizin sistem durumunu izlemek ve raporlamak için sistem durumunun ölçülme ve sistem durumu modelini oluşturan öğelerin kavramlarını anlamanıza yardımcı olur.
 
 >[!NOTE]
->Sistem Durumu özelliği şu anda genel önizlemede.
+>Sistem durumu özelliği şu anda genel önizlemede.
 >
 
 ## <a name="monitors"></a>İzleyiciler
 
-İzleyici, yönetilen bir nesnenin bazı yönlerinin sağlığını ölçer. İzleyicilerin her biri iki veya üç sistem durumuna sahiptir. Bir izleyici belirli bir zamanda potansiyel durumlarının sadece birinde olabilir. Kapsayıcı aracı tarafından yüklenen bir monitör, sağlıklı bir duruma başharfe çevrilir. Durum yalnızca başka bir durum için belirtilen koşullar algılanırsa değişir.
+İzleyici, yönetilen bir nesnenin bazı yönlerinin sağlığını ölçer. İzleyicilerin her biri iki veya üç sistem durumuna sahiptir. Bir izleyici belirli bir zamanda potansiyel durumlarının sadece birinde olabilir. Kapsayıcılı aracı tarafından yüklenen bir izleyici, sağlıklı bir duruma başlatılır. Durum yalnızca, başka bir durum için belirtilen koşullar algılandığında değişir.
 
-Belirli bir nesnenin genel sistem durumu sahip olduğu izleyicilerinin her birinin sistem durumundan yararlanılarak belirlenir. Bu hiyerarşi, kapsayıcılar için Azure Monitor'daki Sistem Durumu Hiyerarşisi bölmesinde gösterilmiştir. Sistem durumunun nasıl yuvarlandığıyla ilgili ilke, toplu monitörlerin yapılandırmasının bir parçasıdır.
+Belirli bir nesnenin genel sistem durumu sahip olduğu izleyicilerinin her birinin sistem durumundan yararlanılarak belirlenir. Bu hiyerarşi, kapsayıcılar için Azure Izleyici 'de sistem durumu hiyerarşisi bölmesinde gösterilmiştir. Sistem durumunun alındığı ilke toplam izleyici yapılandırmasının bir parçasıdır.
 
-## <a name="types-of-monitors"></a>Monitör türleri
+## <a name="types-of-monitors"></a>İzleyici türleri
 
 |İzleme | Açıklama | 
 |--------|-------------|
-| Birim monitörü |Birim izleme, kaynağın veya uygulamanın bazı yönünü ölçer. Bu, kaynağın performansını veya kullanılabilirliğini belirlemek için bir performans sayacını denetler. |
-|Toplam Monitör | Agrega, tek bir sağlık toplu sağlık durumu sağlamak için birden çok monitör grubunu izler. Birim monitörler genellikle belirli bir toplu monitör altında yapılandırılır. Örneğin, bir Düğüm toplam monitörü Düğüm CPU kullanımı, bellek kullanımı ve Düğüm durumunun durumunu yukarı yuvarlar.
+| Birim izleyicisi |Birim izleyicisi bir kaynağın veya uygulamanın bazı yönlerini ölçer. Bu, kaynağın performansını veya kullanılabilirliğini belirlemede bir performans sayacı denetleniyor olabilir. |
+|Toplam Izleyici | Toplama izleyicileri, tek bir sistem durumu toplu sistem durumu sağlamak için birden çok monitörü gruplar. Birim izleyicileri genellikle belirli bir toplam izleyici altında yapılandırılır. Örneğin, bir düğüm toplama izleyicisi, düğüm CPU kullanımı, bellek kullanımı ve düğüm durumunun durumunu toplar.
  |
 
-### <a name="aggregate-monitor-health-rollup-policy"></a>Toplu izleme durumu toplama ilkesi
+### <a name="aggregate-monitor-health-rollup-policy"></a>Toplam izleme sistem durumu toplama ilkesi
 
-Her bir toplu monitör, altındaki monitörlerin durumunu temel alan toplam monitörün durumunu belirlemek için kullanılan mantık olan bir sistem durumu toplama ilkesi tanımlar. Toplu bir monitör için olası sistem durumu toplama ilkeleri aşağıdaki gibidir:
+Her toplam izleyici, altındaki izleyicilerin sistem durumunu temel alarak toplam izleyicinin durumunu belirlemede kullanılan mantık olan bir sistem durumu toplama ilkesi tanımlar. Bir toplam izleyici için olası durum toplama ilkeleri aşağıdaki gibidir:
 
-#### <a name="worst-state-policy"></a>En kötü devlet ilkesi
+#### <a name="worst-state-policy"></a>En kötü durum ilkesi
 
-Toplu izlemenin durumu, çocuk monitörünün durumuyla en kötü sağlık durumuyla eşleşir. Bu, toplu izleyenler tarafından kullanılan en yaygın ilkedir.
+Toplam izleyicinin durumu, en kötü sistem durumu ile alt izleyicinin durumuyla eşleşir. Bu, toplam izleyiciler tarafından kullanılan en yaygın ilkedir.
 
-![Toplu monitör toplama en kötü durum örneği](./media/container-insights-health-monitoring-cfg/aggregate-monitor-rollup-worstof.png)
+![Toplu izleyici toplamasının en kötü durumu örneği](./media/container-insights-health-monitoring-cfg/aggregate-monitor-rollup-worstof.png)
 
 ### <a name="percentage-policy"></a>Yüzde ilkesi
 
-Kaynak nesne, en iyi durumda hedef nesnelerin belirli bir yüzdesi tek bir üyenin en kötü durumu eşleşir. Bu ilke, hedef nesnenin sağlıklı kabul edilemesi için hedef nesnelerin belirli bir yüzdesinin sağlıklı olması gerektiğinde kullanılır. Yüzde ilkesi monitörleri durumun önem derecesini azalan sırada sıralar ve toplam monitörün durumu En kötü N%durumu olarak hesaplanır (N yapılandırma parametresi *StateThresholdPercentage*tarafından belirlenir).
+Kaynak nesne, en iyi durumda, belirtilen hedef nesne yüzdesinin tek bir üyesinin en kötü durumuyla eşleşir. Bu ilke, hedef nesnenin sağlıklı olarak kabul edilmesi için belirli bir hedef nesne yüzdesi sağlıklı olması gereken durumlarda kullanılır. Yüzde ilkesi izleyicileri durum önem derecesine göre azalan sırada sıralar ve toplam izleyicinin durumu,% N ' nin en kötü durumu olarak hesaplanır (N, *Statethresholdpercentage*yapılandırma parametresi tarafından dikte edilir).
 
-Örneğin, bir kapsayıcı görüntünün beş kapsayıcı örneği olduğunu varsayalım ve bunların tek tek durumları **Kritik**, **Uyarı**, **Sağlıklı**, **Sağlıklı**, **Sağlıklı**.  Kapsayıcı CPU kullanım monitörünün durumu **Kritik**olacaktır , çünkü kapsayıcıların %90'ının en kötü durumu önem inen önem sırasına göre sıralandığında **kritiktir.**
+Örneğin, bir kapsayıcı görüntüsünün beş kapsayıcı örneği olduğunu ve bireysel durumlarının **kritik**, **Uyarı**, **sağlıklı**, **sağlıklı**, **sağlıklı**olduğunu varsayalım.  Kapsayıcıların %90 en kötü durumu azalan önem derecesine göre **sıralandığında, KAPSAYıCı** CPU kullanımı Izleyicisinin durumu **kritik**olur.
 
 ## <a name="understand-the-monitoring-configuration"></a>İzleme yapılandırmasını anlama
 
-Kapsayıcılar için Azure Monitor, aşağıdaki gibi yapılandırılan bir dizi önemli izleme senaryosu içerir.
+Kapsayıcılar için Azure Izleyici, aşağıdaki gibi yapılandırılmış bir dizi anahtar izleme senaryosu içerir.
 
-### <a name="unit-monitors"></a>Birim monitörler
+### <a name="unit-monitors"></a>Birim izleyicileri
 
-|**Monitör adı** | Monitör türü | **Açıklama** | **Parametre** | **Değer** |
+|**İzleyici adı** | İzleyici türü | **Açıklama** | **Parametre** | **Deeri** |
 |-----------------|--------------|-----------------|---------------|-----------|
-|Düğüm Bellek Kullanımı |Birim monitörü |Bu monitör, cadvisor bildirilen verileri kullanarak her dakika bir düğümün bellek kullanımını değerlendirir. |Ardışık ÖrneklerForStateTransition<br> Failifgreaterthanpercentage<br> Warnifgreaterthanpercentage | 3<br> 90<br> 80  ||
-|Düğüm CPU Kullanımı |Birim Monitörü |Bu monitör, cadvisor bildirilen verileri kullanarak düğümün CPU kullanımını her dakika denetler. | Ardışık ÖrneklerForStateTransition<br> Failifgreaterthanpercentage<br> Warnifgreaterthanpercentage | 3<br> 90<br> 80  ||
-|Düğüm Durumu |Birim monitörü |Bu monitör, Kubernetes tarafından bildirilen düğüm koşullarını denetler.<br> Şu anda aşağıdaki düğüm koşulları kontrol edilir: Disk Basıncı, Bellek Basıncı, PID Basıncı, Disk Dışında, Ağ kullanılamıyor, düğüm için hazır durum.<br> Yukarıdaki koşullar dışında, Disk veya *Ağ* *Kullanılamaz* dışında **doğruysa,** monitör **Kritik** durumuna değişir.<br> **Hazır** durumu dışında başka koşullar **da doğruysa,** monitör **Uyarı** durumuna dönüşür. | NodeConditionTypeForFailedState | outofdisk,networkavailable ||
-|Konteyner bellek kullanımı |Birim monitörü |Bu monitör, kapsayıcı örneklerinin Bellek kullanımının (RSS) sistem durumu durumunu raporeder.<br> Her örneği tek bir eşikle karşılaştıran ve Configuration parametresi Tarafından belirlenen basit bir karşılaştırma **gerçekleştirirArdIsakÖrneklerForStateTransition**yapılandırması.<br> Durumu, kapsayıcı nın (StateThresholdPercentage) örneklerinin %90'ının en kötü durumu olarak hesaplanır ve kapsayıcı sağlık durumunun (yani Kritik, Uyarı, Sağlıklı) azalan önem sırasına göre sıralanır.<br> Bir kapsayıcı örneğinden kayıt alınmazsa, kapsayıcı örneğinin sistem durumu **Bilinmiyor**olarak bildirilir ve **Kritik** durum üzerinde sıralama sırasına göre daha yüksek önceliğe sahiptir.<br> Her bir kapsayıcı örneğinin durumu yapılandırmada belirtilen eşikler kullanılarak hesaplanır. Kullanım kritik eşiğin (%90) üzerindeyse, kritik eşikten daha azsa (%90) örnek **Kritik** durumdadır ancak uyarı eşiğinin (%80) üzerinde, o zaman örnek bir **Uyarı** durumundadır. Aksi takdirde, **Sağlıklı** durumdadır. |Ardışık ÖrneklerForStateTransition<br> FailiflessThanPercentage<br> Durum Eşik Yüzdesi<br> Warnifgreaterthanpercentage| 3<br> 90<br> 90<br> 80 ||
-|Konteyner CPU kullanımı |Birim monitörü |Bu monitör, kapsayıcı örneklerinin CPU kullanımının sistem durumu durumunu birleştirdi.<br> Her örneği tek bir eşikle karşılaştıran ve Configuration parametresi Tarafından belirlenen basit bir karşılaştırma **gerçekleştirirArdIsakÖrneklerForStateTransition**yapılandırması.<br> Durumu, kapsayıcı nın (StateThresholdPercentage) örneklerinin %90'ının en kötü durumu olarak hesaplanır ve kapsayıcı sağlık durumunun (yani Kritik, Uyarı, Sağlıklı) azalan önem sırasına göre sıralanır.<br> Bir kapsayıcı örneğinden kayıt alınmazsa, kapsayıcı örneğinin sistem durumu **Bilinmiyor**olarak bildirilir ve **Kritik** durum üzerinde sıralama sırasına göre daha yüksek önceliğe sahiptir.<br> Her bir kapsayıcı örneğinin durumu yapılandırmada belirtilen eşikler kullanılarak hesaplanır. Kullanım kritik eşiğin (%90) üzerindeyse, kritik eşikten daha azsa (%90) örnek **Kritik** durumdadır ancak uyarı eşiğinin (%80) üzerinde, o zaman örnek bir **Uyarı** durumundadır. Aksi takdirde, **Sağlıklı** durumdadır. |Ardışık ÖrneklerForStateTransition<br> FailiflessThanPercentage<br> Durum Eşik Yüzdesi<br> Warnifgreaterthanpercentage| 3<br> 90<br> 90<br> 80 ||
-|Sistem iş yükü bölmeleri hazır |Birim monitörü |Bu izleme, belirli bir iş yükündeki hazır durumdaki bölmelerin yüzdesini temel alan durumu raporlar. Kapsüllerin %100'ünden azı **Sağlıklı** bir durumdaysa durumu **Kritik** olarak ayarlanır |Ardışık ÖrneklerForStateTransition<br> FailiflessThanPercentage |2<br> 100 ||
-|Kube API durumu |Birim monitörü |Bu monitör, Kube API hizmetinin durumunu bildirir. Kube API bitiş noktası nın kullanılamaması durumunda monitör kritik durumdadır. Bu özel monitör için durum, kube-api sunucusu için 'düğümler' bitiş noktasına bir sorgu yaparak belirlenir. Ok yanıt kodu dışında herhangi bir şey, monitörü **Kritik** duruma değiştirir. | Yapılandırma özelliği yok |||
+|Düğüm bellek kullanımı |Birim izleyicisi |Bu izleyici, cadvizörü raporlanan verileri kullanarak bir düğümün bellek kullanımını dakikada bir değerlendirir. |ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
+|Düğüm CPU kullanımı |Birim Izleyicisi |Bu izleyici, cadvizörü tarafından bildirilen verileri kullanarak her dakikada düğümün CPU kullanımını denetler. | ConsecutiveSamplesForStateTransition<br> FailIfGreaterThanPercentage<br> WarnIfGreaterThanPercentage | 3<br> 90<br> 80  ||
+|Düğüm durumu |Birim izleyicisi |Bu izleyici, Kubernetes tarafından bildirilen düğüm koşullarını denetler.<br> Şu anda şu düğüm koşulları denetlenir: disk baskısı, bellek baskısı, PID baskısı, disk dışı, Ağ kullanılamıyor, düğüm için hazır durum.<br> Yukarıdaki koşulların dışında, *disk* veya *ağ kullanılamaz* **durumdaysa, izleyici** **kritik** duruma geçer.<br> Başka herhangi bir koşul varsa **, bu,** **Ready** durumu dışında, izleyici **Uyarı** durumuna geçer. | NodeConditionTypeForFailedState | outofdisk, networkunavailable ||
+|Kapsayıcı bellek kullanımı |Birim izleyicisi |Bu izleyici, kapsayıcının örneklerinin bellek kullanımının (RSS) Birleşik sistem durumunu bildirir.<br> Her örneği tek bir eşikle karşılaştıran ve **ConsecutiveSamplesForStateTransition**yapılandırma parametresiyle belirtilen basit bir karşılaştırma gerçekleştirir.<br> Bu durum, kapsayıcının sistem durumunun önem derecesine (yani kritik, uyarı, sağlıklı) göre azalan düzende sıralanmış kapsayıcı (StateThresholdPercentage) örneklerinin %90 ' inin en kötü durumu olarak hesaplanır.<br> Bir kapsayıcı örneğinden bir kayıt alınmadığında, kapsayıcı örneğinin sistem durumu **bilinmiyor**olarak bildirilir ve sıralama düzeninde **kritik** durum üzerinde daha yüksek önceliğe sahiptir.<br> Her kapsayıcı örneğinin durumu, yapılandırmada belirtilen eşikler kullanılarak hesaplanır. Kullanım kritik eşiğin üzerindeyse (%90%), örnek kritik eşikten küçükse örnek **kritik** bir durumdaydı (%90) Ancak uyarı eşiğinin (%80%) daha büyük olması durumunda örnek bir **Uyarı** durumundadır. Aksi takdirde, **sağlıklı** durumda olur. |ConsecutiveSamplesForStateTransition<br> Failiflessıof yüzdesi<br> StateThresholdPercentage<br> WarnIfGreaterThanPercentage| 3<br> 90<br> 90<br> 80 ||
+|Kapsayıcı CPU kullanımı |Birim izleyicisi |Bu izleyici, kapsayıcının örneklerinin CPU kullanımının Birleşik sistem durumunu bildirir.<br> Her örneği tek bir eşikle karşılaştıran ve **ConsecutiveSamplesForStateTransition**yapılandırma parametresiyle belirtilen basit bir karşılaştırma gerçekleştirir.<br> Bu durum, kapsayıcının sistem durumunun önem derecesine (yani kritik, uyarı, sağlıklı) göre azalan düzende sıralanmış kapsayıcı (StateThresholdPercentage) örneklerinin %90 ' inin en kötü durumu olarak hesaplanır.<br> Bir kapsayıcı örneğinden bir kayıt alınmadığında, kapsayıcı örneğinin sistem durumu **bilinmiyor**olarak bildirilir ve sıralama düzeninde **kritik** durum üzerinde daha yüksek önceliğe sahiptir.<br> Her kapsayıcı örneğinin durumu, yapılandırmada belirtilen eşikler kullanılarak hesaplanır. Kullanım kritik eşiğin üzerindeyse (%90%), örnek kritik eşikten küçükse örnek **kritik** bir durumdaydı (%90) Ancak uyarı eşiğinin (%80%) daha büyük olması durumunda örnek bir **Uyarı** durumundadır. Aksi takdirde, **sağlıklı** durumda olur. |ConsecutiveSamplesForStateTransition<br> Failiflessıof yüzdesi<br> StateThresholdPercentage<br> WarnIfGreaterThanPercentage| 3<br> 90<br> 90<br> 80 ||
+|Sistem iş yükü Pod hazırlanıyor |Birim izleyicisi |Bu izleyici, belirli bir iş yükünde yer alan Pod yüzdesine göre durumu raporlar. Yük %100 ' den daha **az bir durumda** ise, durumu **kritik** olarak ayarlanır |ConsecutiveSamplesForStateTransition<br> Failiflessıof yüzdesi |2<br> 100 ||
+|Kuto API durumu |Birim izleyicisi |Bu izleyici, kuin API hizmetinin durumunu raporlar. Kume API uç noktasının kullanılamadığı durumlarda İzleyici kritik bir durumda. Bu izleyici için, bu durum, kuin API sunucusu için ' düğümler ' uç noktasına bir sorgu yapılarak belirlenir. Tamam yanıt kodu dışında bir şey izleyiciyi **kritik** bir duruma geçirir. | Yapılandırma özelliği yok |||
 
-### <a name="aggregate-monitors"></a>Agrega monitörler
+### <a name="aggregate-monitors"></a>Toplam izleyiciler
 
-|**Monitör adı** | **Açıklama** | **Algoritma** |
+|**İzleyici adı** | **Açıklama** | **Algoritma** |
 |-----------------|-----------------|---------------|
-|Node |Bu monitör tüm düğüm monitörlerinin toplamıdır. En kötü sağlık durumu ile çocuk monitörünün durumu eşleşir:<br> Düğüm CPU kullanımı<br> Düğüm bellek kullanımı<br> Düğüm Durumu | En kötü|
-|Düğüm havuzu |Bu monitör, düğüm havuzu *aracı havuzundaki*tüm düğümlerin birleştirilmiş sistem durumunu bildirir. Bu durum düğüm havuzunda düğümlerin% 80 en kötü durumuna dayalı olan üç devlet monitör, düğüm durumların şiddeti azalan sırayla sıralanır (yani, Kritik, Uyarı, Sağlıklı).|Yüzde |
-|Düğümler (Düğüm havuzunun üst öğesi) |Bu, tüm düğüm havuzlarının toplam monitörüdür. Durumu, alt monitörlerinin en kötü durumuna (diğer bir deyişle kümede bulunan düğüm havuzlarına) dayanır. |En kötü |
-|Küme (düğümlerin üst öğesi/<br> Kubernetes altyapısı) |Bu, çocuk monitörünün durumuyla en kötü sağlık durumuyla, yani kubernetes altyapısı ve düğümleriyle eşleşen üst monitördür. |En kötü |
-|Kubernetes altyapısı |Bu, kümenin yönetilen altyapı bileşenlerinin sistem durumu durumunu birleştirdi. durumu, çocuk monitörü durumları yani kube-sistem iş yükleri ve API Server durumu 'en kötü' olarak hesaplanır. |En kötü|
-|Sistem iş yükü |Bu monitör, kube-sistem iş yükünün sistem durumunu bildirir. Bu monitör, çocuk monitörünün durumuyla en kötü sağlık durumuyla, yani hazır durumdaki Podlarla (monitör ve iş yükündeki **kapsayıcılar)** eşleşir. |En kötü |
-|Kapsayıcı |Bu, belirli bir iş yükünde bir kapsayıcının genel sağlık durumunu bildirir. Bu monitör, en kötü sağlık durumu ile çocuk monitörün durumu eşleşir, cpu **kullanımı** ve **Bellek kullanımı** monitörleri. |En kötü |
+|Node |Bu izleyici, tüm düğüm izlemelerinin bir toplamasından oluşur. En kötü sistem durumu ile alt izleyicinin durumuyla eşleşir:<br> Düğüm CPU kullanımı<br> Düğüm bellek kullanımı<br> Düğüm durumu | En kötü|
+|Düğüm havuzu |Bu izleyici, düğüm havuzu *agentpool*içindeki tüm düğümlerin Birleşik sistem durumunu bildirir. Bu üç durum izleyicisine sahiptir ve bu durum, düğüm havuzundaki düğümlerin %80 ' üne ait olan, düğüm durumlarının önem derecesine göre azalan düzende (yani, kritik, uyarı, sağlıklı) sıralanmıştır.|Yüzde |
+|Düğümler (düğüm havuzunun üst öğesi) |Bu, tüm düğüm havuzlarının bir toplam izleyicisine sahiptir. Durumu, alt izlemelerinin (yani kümede bulunan düğüm havuzlarının) en kötü durumuna bağlıdır. |En kötü |
+|Küme (düğümlerin üst öğesi/<br> Kubernetes altyapısı) |Bu, Kubernetes altyapısı ve düğümleri olan en kötü sistem durumu ile alt izleyicinin durumuyla eşleşen ana izleyicidir. |En kötü |
+|Kubernetes altyapısı |Bu izleyici, kümenin yönetilen altyapı bileşenlerinin Birleşik sistem durumunu bildirir. durumu, kendi alt izleme durumları olan ' en kötü ', kuas sistem iş yükleri ve API sunucusu durumu olarak hesaplanır. |En kötü|
+|Sistem iş yükü |Bu izleyici, bir KUIN sistem iş yükünün sistem durumunu bildirir. Bu izleyici, en kötü sistem durumu ile alt izleyicinin durumuyla eşleşir, bu durum, hazırlama **durumunda** (izleyici ve iş yükünde kapsayıcılar). |En kötü |
+|Kapsayıcı |Bu izleyici, belirli bir iş yükünde bir kapsayıcının genel sistem durumunu bildirir. Bu izleyici, **CPU kullanımı** ve **bellek kullanımı** izleyicileri olan en kötü sistem durumu ile alt izleyicinin durumuyla eşleşir. |En kötü |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kubernetes kümenizin sistem durumu durumunu görüntüleme hakkında bilgi edinmek için [monitör küme durumunu](container-insights-health.md) görüntüleyin.
+Kubernetes kümenizin sistem durumunu görüntüleme hakkında bilgi edinmek için [izleyici küme durumunu](container-insights-health.md) görüntüleyin.

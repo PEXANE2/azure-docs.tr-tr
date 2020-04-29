@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Brivo Onair Identity Konektörünü yapılandırın | Microsoft Dokümanlar'
-description: Azure Active Directory'yi otomatik olarak brivo Onair Identity Connector'a otomatik olarak sağlama ve sağlamadan çıkarma için nasıl yapılandırılamayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Brivo onair Identity bağlayıcısını yapılandırma | Microsoft Docs'
+description: Kullanıcı hesaplarını Brivo onair Identity bağlayıcısını otomatik olarak sağlamak ve yeniden sağlamak üzere Azure Active Directory nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,150 +16,150 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
 ms.openlocfilehash: f3c1e7337c0ce07b7fbebb9f954deeb75f0b9584
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80246662"
 ---
-# <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Brivo Onair Kimlik Konektörü yapılandırın
+# <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Brivo onair Identity bağlayıcısını yapılandırma
 
-Bu öğreticinin amacı, Azure AD'yi otomatik olarak sağlamak ve kullanıcıları ve/veya grupları Brivo Onair Identity Connector'a sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için Brivo Onair Identity Connector ve Azure Active Directory 'de (Azure AD) gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, Kullanıcı ve/veya grupları Brivo onair Identity Connector 'a otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Brivo onair Identity Bağlayıcısı ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* Azure AD kiracı
-* [Brivo Onair Kimlik Bağlayıcısı kiracı](https://www.brivo.com/lp/quote)
-* Üst Düzey Yönetici izinleri ile Brivo Onair Kimlik Bağlayıcısı bir kullanıcı hesabı.
+* Bir Azure AD kiracısı
+* [Brivo onair Identity bağlayıcı kiracısı](https://www.brivo.com/lp/quote)
+* Üst düzey yönetici izinleriyle Brivo onair Identity bağlayıcısında bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-brivo-onair-identity-connector"></a>Kullanıcıları Brivo Onair Identity Connector'a atama
+## <a name="assigning-users-to-brivo-onair-identity-connector"></a>Kullanıcıları Brivo onair Identity Connector 'a atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların Brivo Onair Identity Connector'a erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları brivo Onair Identity Connector'a buradaki talimatları izleyerek atayabilirsiniz:
-* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Brivo onair Identity Connector 'a erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Brivo onair Identity Connector 'a atayabilirsiniz:
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-brivo-onair-identity-connector"></a>Brivo Onair Identity Connector'a kullanıcı atamak için önemli ipuçları
+## <a name="important-tips-for-assigning-users-to-brivo-onair-identity-connector"></a>Brivo onair Identity Connector 'a Kullanıcı atamaya yönelik önemli ipuçları
 
-* Otomatik kullanıcı sağlama yapılandırmasını test etmek için brivo Onair Identity Connector'a tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için Brivo onair Identity bağlayıcısına tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcıyı Brivo Onair Identity Connector'a atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Bir kullanıcıyı Brivo onair Identity bağlayıcısına atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="setup-brivo-onair-identity-connector-for-provisioning"></a>Kurulum Brivo Onair Kimlik Bağlayıcısı sağlanması için
+## <a name="setup-brivo-onair-identity-connector-for-provisioning"></a>Sağlama için Brivo onair Identity bağlayıcısını ayarlayın
 
-1.    [Brivo Onair Identity Connector Yönetici Konsolunuzda](https://acs.brivo.com/login/)oturum açın. Hesap **> Hesap Ayarları'na**gidin.
+1.    [Brivo ONAIR Identity Connector yönetici konsolunda](https://acs.brivo.com/login/)oturum açın. Hesap **> hesap ayarları**' na gidin.
 
-    ![Brivo Onair Kimlik Konektörü Yönetici Konsolu](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
+    ![Brivo onair Identity Connector Yönetici Konsolu](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
 
-2.  Azure **AD** sekmesine tıklayın. Azure **REKLAM** ayrıntıları sayfasında üst düzey yönetici hesabınızın parolasını yeniden girin. **Gönder'e**tıklayın.
+2.  **Azure AD** sekmesine tıklayın. **Azure AD** ayrıntıları sayfasında, üst düzey yönetici hesabınızın parolasını yeniden girin. **Gönder**' e tıklayın.
 
-    ![Brivo Onair Kimlik Konektörü azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
+    ![Brivo onair Identity Bağlayıcısı Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
-3.    **Token'i kopyala** düğmesine tıklayın ve **Gizli Belirteci**kaydedin. Bu değer, Azure portalındaki Brivo Onair Identity Connector uygulamanızın Sağlama sekmesinde Gizli Belirteç alanına girilir.
+3.    **Belirteç Kopyala** düğmesine tıklayın ve **gizli belirteç**kaydedin. Bu değer, Azure portal Brivo onair Identity bağlayıcı uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
 
-    ![Brivo Onair Kimlik Konektörü belirteci](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
+    ![Brivo onair Identity bağlayıcı belirteci](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
 
-## <a name="add-brivo-onair-identity-connector-from-the-gallery"></a>Galeriden Brivo Onair Identity Connector ekle
+## <a name="add-brivo-onair-identity-connector-from-the-gallery"></a>Galeriden Brivo onair Identity bağlayıcısını ekleyin
 
-Brivo Onair Identity Connector'ı Azure AD ile otomatik kullanıcı sağlama için yapılandırmadan önce, Azure AD uygulama galerisinden Brivo Onair Identity Connector'ı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Azure AD ile otomatik Kullanıcı sağlaması için Brivo onair Identity bağlayıcısını yapılandırmadan önce Azure AD uygulama galerisindeki Brivo onair Identity bağlayıcısını yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden Brivo Onair Identity Bağlayıcısı eklemek için aşağıdaki adımları gerçekleştirin:**
+**Azure AD Uygulama Galerisi 'nden Brivo onair Identity Bağlayıcısı eklemek için aşağıdaki adımları uygulayın:**
 
-1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Brivo Onair Identity Connector'ı**girin, sonuç panelinde **Brivo Onair Identity Connector'ı** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **Brivo ONAIR Identity Connector**girin, sonuçlar panelinde **Brivo onair Identity Connector** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-    ![Brivo Onair Kimlik Konektörü sonuç listesinde](common/search-new-app.png)
+    ![Sonuçlar listesinde Brivo onair Identity Bağlayıcısı](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-brivo-onair-identity-connector"></a>Otomatik kullanıcı sağlamanın Brivo Onair Identity Connector'a yapılandırılması 
+## <a name="configuring-automatic-user-provisioning-to-brivo-onair-identity-connector"></a>Brivo onair Identity Connector 'a otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak Brivo Onair Identity Connector'daki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Brivo onair Identity Bağlayıcısı 'nda kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırma adımları adım adım kılavuzluk eder.
 
-### <a name="to-configure-automatic-user-provisioning-for-brivo-onair-identity-connector-in-azure-ad"></a>Azure AD'de Brivo Onair Identity Connector için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-brivo-onair-identity-connector-in-azure-ad"></a>Azure AD 'de Brivo onair Identity bağlayıcısının otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Brivo Onair Identity Connector'ı**seçin.
+2. Uygulamalar listesinde **Brivo onair Identity Bağlayıcısı**' nı seçin.
 
-    ![Uygulamalar listesindeki Brivo Onair Identity Connector bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Brivo onair Identity bağlayıcı bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümü `https://scim.brivo.com/ActiveDirectory/v2/` altında, **Kiracı URL'ye**giriş . **Gizli Belirteç'te**daha önce alınan **SCIM Kimlik Doğrulama Belirteci** değerini girdi. Azure AD'nin Brivo Onair Identity Connector'a bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Brivo Onair Identity Connector hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://scim.brivo.com/ActiveDirectory/v2/` **kiracı URL 'sini**girin. **Gizli belirteçte**daha önce alınan **SCIM kimlik doğrulama belirteci** değerini girin. Azure AD 'nin Brivo onair Identity bağlayıcısına bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Brivo onair Identity bağlayıcı hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**'e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Brivo Onair Identity Connector'a Senkronize Et'i**seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Brivo onair Identity Connector**' a eşitler ' ı seçin.
 
-    ![Brivo Onair Kimlik Konektörü Kullanıcı Haritalamaları](media/brivo-onair-identity-connector-provisioning-tutorial/user-mappings.png )
+    ![Brivo onair Identity Bağlayıcısı Kullanıcı eşlemeleri](media/brivo-onair-identity-connector-provisioning-tutorial/user-mappings.png )
 
-9. Azure AD'den Brivo Onair Identity Connector'a eşitlenen kullanıcı özniteliklerini **Atföz Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Brivo Onair Identity Connector'daki kullanıcı hesaplarıyla eşleşecek şekilde kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde Azure AD 'Den Brivo onair Identity Connector 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Brivo ONAIR Identity Connector 'daki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Brivo Onair Kimlik Konektörü Kullanıcı Özellikleri](media/brivo-onair-identity-connector-provisioning-tutorial/user-attributes.png)
+    ![Brivo onair Identity Bağlayıcısı Kullanıcı öznitelikleri](media/brivo-onair-identity-connector-provisioning-tutorial/user-attributes.png)
 
-10. **Eşlemeler** bölümünde, **Azure Etkin Dizin Gruplarını Brivo Onair Identity Connector'a Senkronize Et'i**seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Brivo onair Identity Connector olarak eşitler**' ı seçin.
 
-    ![Brivo Onair Kimlik Konektörü Grup Haritalamaları](media/brivo-onair-identity-connector-provisioning-tutorial/group-mappings.png)
+    ![Brivo onair Identity bağlayıcı grubu eşlemeleri](media/brivo-onair-identity-connector-provisioning-tutorial/group-mappings.png)
 
-11. Azure AD'den Brivo Onair Identity Connector'a, **Öznitelik Eşleme** bölümünde senkronize edilen grup özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Brivo Onair Identity Connector'daki gruplarla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+11. **Öznitelik eşleme** bölümünde Azure AD 'Den Brivo onair Identity Connector ile eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Brivo ONAIR Identity Connector 'daki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Brivo Onair Kimlik Konektörü Grup Özellikleri](media/brivo-onair-identity-connector-provisioning-tutorial/group-attributes.png)
+    ![Brivo onair Identity bağlayıcı grubu öznitelikleri](media/brivo-onair-identity-connector-provisioning-tutorial/group-attributes.png)
 
-12. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-13. Brivo Onair Identity Connector için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Sağlama Durumunu** **Ayarı** olarak değiştirin.
+13. Brivo onair Identity Connector için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-14. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Brivo Onair Identity Connector'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. **Ayarlar** bölümünde **kapsamda** Istenen değerleri seçerek Brivo onair Identity bağlayıcısına sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-15. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. Brivo Onair Identity Connector'daki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan ilerlemeyi izlemek ve sağlama etkinlik raporuna olan bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerlemeyi izlemek için **eşitleme ayrıntıları** bölümünü ve Brivo onair Identity Connector ÜZERINDE Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinlik raporuna yönelik bağlantıları takip edebilirsiniz.
 
-Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
+Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v3 .NET'i kullanarak bir ilkenin imzalama anahtarı nı alma
-description: Bu konu, Media Services v3 .NET SDK'yı kullanarak varolan ilkeden imza anahtarının nasıl alınış edildiğini gösterir.
+title: Azure Media Services v3 .NET kullanarak bir ilkeden imzalama anahtarı alın
+description: Bu konuda, Media Services v3 .NET SDK kullanılarak mevcut ilkeden nasıl imza anahtarı alınacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,31 +13,31 @@ ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 2dea262fadb61adc9e219b76f9ac048c11e650d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80065971"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>Var olan ilkeden imzalama anahtarı alma
 
-v3 API’nin temel tasarım ilkelerinden biri API’yi daha güvenli hale getirmektir. v3 API'ler **Get** or **List** işlemlerindeki sırları veya kimlik bilgilerini döndürmez. Ayrıntılı açıklamaya buradan bakın: Daha fazla bilgi için [RBAC ve Medya Hizmetleri hesaplarına](rbac-overview.md) bakın
+v3 API’nin temel tasarım ilkelerinden biri API’yi daha güvenli hale getirmektir. v3 API 'Leri, **Get** veya **list** işlemlerinde gizli dizileri veya kimlik bilgilerini döndürmez. Ayrıntılı açıklamayı burada görebilirsiniz: daha fazla bilgi Için bkz. [RBAC ve Media Services hesapları](rbac-overview.md)
 
-Bu makaledeki örnek, varolan ilkeden bir imzalama anahtarı almak için .NET'in nasıl kullanılacağını gösterir. 
+Bu makaledeki örnekte, mevcut ilkeden imzalama anahtarı almak için .NET kullanımı gösterilmektedir. 
  
 ## <a name="download"></a>İndirme 
 
-Aşağıdaki komutu kullanarak makinenize tam .NET örneğini içeren bir GitHub deposunu klonla:  
+Aşağıdaki komutu kullanarak, tam .NET örneğini içeren bir GitHub deposunu makinenize kopyalayın:  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
  ```
  
-Secrets örnek contentKeyPolicy [EncryptWithDRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) klasöründe yer almaktadır.
+Gizli dizileri olan ContentKeyPolicy, [Encryptwithdrm](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) klasöründe bulunur.
 
-## <a name="get-contentkeypolicy-with-secrets"></a>Secrets ile ContentKeyPolicy alın 
+## <a name="get-contentkeypolicy-with-secrets"></a>Gizli dizileri olan ContentKeyPolicy al 
 
-Anahtara ulaşmak için, aşağıdaki örnekte gösterildiği gibi **GetPolicyPropertiesWithSecretsAsync'i**kullanın.
+Anahtarı almak için aşağıdaki örnekte gösterildiği gibi **Getpolicypropertieswithsecretsasync**öğesini kullanın.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetOrCreateContentKeyPolicy)]
 

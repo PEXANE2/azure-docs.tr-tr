@@ -1,51 +1,51 @@
 ---
-title: Azure Geliştirme Alanları için proje hazırlama nasıl çalışır?
+title: Projeyi Azure Dev Spaces için hazırlama
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: Azure Geliştirme Alanları ile projenizi hazırlamanın nasıl çalıştığını açıklar
-keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler
+description: Projenizin Azure Dev Spaces çalışma ile nasıl hazırlanıldığını açıklar
+keywords: azds. YAML, Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
 ms.openlocfilehash: 24a54fffdc8e94493d2a4a9aeb1c5f02dcd192b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241640"
 ---
-# <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Azure Geliştirme Alanları için proje hazırlama nasıl çalışır?
+# <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Projeyi Azure Dev Spaces için hazırlama
 
-Azure Geliştirme Alanları, Kubernetes uygulamalarını hızla tekrarlayıp hata ayıklamanın ve bir Azure Kubernetes Hizmeti (AKS) kümesinde ekibinizle işbirliği yapmanın birden çok yolunu sağlar. Dev Spaces, projeniz için Dockerfiles ve Helm grafikleri oluşturabilir. Dev Spaces ayrıca AKS'deki Kubernetes uygulamalarınızı dağıtmak, çalıştırmak ve hata ayıklama için bir yapılandırma dosyası oluşturur ve kullanır. Tüm bu dosyalar uygulamanızın kodunda bulunur ve sürüm kontrol sisteminize eklenebilir.
+Azure Dev Spaces, Kubernetes uygulamalarının hızla yinelenemez ve hata ayıklamanın yanı sıra Azure Kubernetes hizmeti (AKS) kümesinde ekibinizle işbirliği yapmak için birden çok yol sağlar. Geliştirme alanları, projeniz için Dockerfiles ve Help grafikleri oluşturabilir. Dev Spaces Ayrıca AKS 'te Kubernetes uygulamalarınızı dağıtmak, çalıştırmak ve hata ayıklamak için bir yapılandırma dosyası oluşturur ve kullanır. Bu dosyaların tümü uygulamanızın koduyla birlikte bulunur ve sürüm denetim sisteminize eklenebilir.
 
-Bu makalede, Dev Spaces ile AKS'de çalışmaya projenizi hazırlamak ne olur açıklar.
+Bu makalede, projenizi dev Spaces ile AKS 'de çalışmaya hazırlarken ne olacağı açıklanmaktadır.
 
 ## <a name="prepare-your-code"></a>Kodunuzu hazırlayın
 
-Uygulamanızı bir geliştirme alanında çalıştırmak için, kaplanması ve Kubernetes'e nasıl dağıtılması gerektiğini tanımlamanız gerekir. Uygulamanızı kapsayıcı hale getirmek için bir Dockerfile'a ihtiyacınız var. Uygulamanızın Kubernetes'e nasıl dağıtılanını tanımlamak için bir [Miğfer grafiğine](https://docs.helm.sh/)ihtiyacınız vardır. Uygulamanız için hem Dockerfile hem de Miğfer grafiği oluşturmaya `prep` yardımcı olmak için istemci tarafı araçları komutu sağlar:
+Uygulamanızı bir geliştirme alanında çalıştırmak için Kapsayıcılı olması gerekir ve Kubernetes 'e nasıl dağıtılması gerektiğini tanımlamanız gerekir. Uygulamanızı konteynize etmek için bir Dockerfile gerekir. Uygulamanızın Kubernetes 'e nasıl dağıtıldığını tanımlamak için bir [HELI grafiğine](https://docs.helm.sh/)ihtiyacınız vardır. Uygulamanız için hem Dockerfile hem de Held grafiği oluşturmaya yardımcı olmak için, istemci tarafı araçları şu `prep` komutu sağlar:
 
 ```cmd
 azds prep --enable-ingress
 ```
 
-Komut `prep` projenizdeki dosyalara bakar ve uygulamanızı Kubernetes'te çalıştırmak için Dockerfile ve Helm grafiğini oluşturmaya çalışır. Şu `prep` anda, komut aşağıdaki dilleri içeren bir Dockerfile ve Helm grafiği oluşturur:
+Komut `prep` , projenizdeki dosyalara bakar ve uygulamanızı Kubernetes 'te çalıştırmak Için Dockerfile ve helk grafiğini oluşturmaya çalışır. Şu anda `prep` komut şu dilleri Içeren bir Dockerfile ve HELI grafiği oluşturacak:
 
 * Java
 * Node.js
 * .NET Core
 
-Komutu `prep` kaynak kodu içeren bir dizinden çalıştırmanız *gerekir.* Komutu `prep` doğru dizinden çalıştırmak, istemci tarafındaki aracın dili tanımlamasına ve uygulamanızı kapsayıcılaştırmak için uygun bir Dockerfile oluşturmasına olanak tanır. Komutu `prep` Java projeleri için *pom.xml* dosyası içeren bir dizinden de çalıştırabilirsiniz.
+Komutunu kaynak kodu içeren bir dizinden çalıştırmanız *gerekir.* `prep` `prep` Komutu doğru dizinden çalıştırmak, istemci tarafı araçlarının dili belirlemesine ve uygulamanızı kapsayıtacak uygun bir Dockerfile oluşturmasına izin verir. Ayrıca, `prep` Java projeleri için bir *Pod. xml* dosyası içeren bir dizinden komutunu çalıştırabilirsiniz.
 
-Kaynak kodu `prep` içermeyen dizinden komutçalıştırArsanız, istemci tarafı aracı Dockerfile oluşturmaz. Ayrıca bir hata söyleyerek görüntüler: *Dockerfile desteklenmeyen dil nedeniyle oluşturulamadı.* İstemci tarafı takım proje türünü tanımıyorsa, bu hata da oluşur.
+`prep` Komutunu kaynak kodu içermeyen dizinden çalıştırırsanız, istemci tarafı araçları Dockerfile oluşturmaz. Ayrıca, *Desteklenmeyen bir dil nedeniyle Dockerfile*oluşturulamadı hatası görüntülenir. Bu hata, istemci tarafı araçları proje türünü tanımadığı zaman da oluşur.
 
-Komutu `prep` çalıştırdığınızda, `--enable-ingress` bayrağı belirtme seçeneğiniz var. Bu bayrak, denetleyiciye bu hizmet için internet erişimine uygun bir bitiş noktası oluşturmasını söyler. Bu bayrağı belirtmezseniz, hizmete yalnızca küme nin içinden veya istemci tarafındaki araç için oluşturulan localhost tüneli kullanılarak erişilebilir. Oluşturulan Miğfer grafiğini güncelleştirerek `prep` komutu çalıştırdıktan sonra bu davranışı etkinleştirebilir veya devre dışı kullanabilirsiniz.
+`prep` Komutunu çalıştırdığınızda, `--enable-ingress` bayrağını belirtme seçeneğiniz vardır. Bu bayrak, denetleyiciye bu hizmet için internet 'ten erişilebilen bir uç nokta oluşturmasını söyler. Bu bayrağı belirtmezseniz, hizmete yalnızca küme içinden veya istemci tarafı araçları tarafından oluşturulan localhost tüneli kullanılarak erişilebilir. Oluşturulan Held grafiğini güncelleştirerek `prep` komutu çalıştırdıktan sonra bu davranışı etkinleştirebilir veya devre dışı bırakabilirsiniz.
 
-Komut, `prep` projenizde varolan Dockerfiles veya Helm grafiklerini değiştirmez. Varolan bir Dockerfile veya Helm grafiği komut tarafından oluşturulan `prep` dosyalarla `prep` aynı adlandırma kuralını kullanırsa, komut bu dosyaları oluşturmayı atlar. Aksi takdirde, `prep` komut varolan dosyaların yanı sıra kendi Dockerfile veya Helm grafik oluşturur.
+Bu `prep` komut, projenizde mevcut olan Dockerfiles veya Held grafiklerini değiştirmez. Mevcut bir Dockerfile veya HELI grafiği, `prep` komutu tarafından oluşturulan dosyalarla aynı adlandırma kuralını kullanıyorsa, `prep` komut bu dosyaları oluşturmayı atlar. Aksi takdirde, `prep` komut, var olan dosyalar üzerinde kendi Dockerfile veya Held grafiğini oluşturacaktır.
 
 > [!IMPORTANT]
-> Azure Dev Spaces, kodunuzu oluşturmak ve çalıştırmak için projeniz için Dockerfile ve Miğfer grafiğini kullanır, ancak projenin oluşturulma ve çalışma şeklini değiştirmek istiyorsanız bu dosyaları değiştirebilirsiniz.
+> Azure Dev Spaces, kodunuzu derlemek ve çalıştırmak için projeniz için Dockerfile ve HELI grafiğini kullanır, ancak projenin nasıl oluşturulduğunu ve çalıştırılacağını değiştirmek istiyorsanız bu dosyaları değiştirebilirsiniz.
 
-Komut, `prep` projenizin `azds.yaml` kökünde bir dosya da oluşturur. Azure Dev Spaces bu dosyayı uygulamanızı oluşturmak, yüklemek, yapılandırmak ve çalıştırmak için kullanır. Bu yapılandırma dosyası Dockerfile ve Helm grafiğinizin konumunu listeler ve ayrıca bu yapıların üzerinde ek yapılandırma sağlar.
+Bu `prep` komut Ayrıca projenizin kökünde bir `azds.yaml` dosya oluşturur. Azure Dev Spaces uygulamanızı derlemek, yüklemek, yapılandırmak ve çalıştırmak için bu dosyayı kullanır. Bu yapılandırma dosyası, Dockerfile ve Held grafiğinin konumunu listeler ve ayrıca bu yapıtların üstünde ek yapılandırma sağlar.
 
-Burada bir örnek azds.yaml dosyası kullanılarak oluşturulan [.NET Çekirdek örnek uygulaması:](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend)
+[.NET Core örnek uygulaması](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend)kullanılarak oluşturulan bir azds. YAML dosyası aşağıda verilmiştir:
 
 ```yaml
 kind: helm-release
@@ -92,19 +92,19 @@ configurations:
         - [dotnet, build, --no-restore, -c, "${BUILD_CONFIGURATION:-Debug}"]
 ```
 
-Komut tarafından oluşturulan `azds.yaml` dosya, basit, tek proje geliştirme senaryosu için çalışmak üzere tasarlanmıştır. `prep` Belirli projenizkarmaşıklığı artırdıysa, komutu çalıştırdıktan sonra bu `prep` dosyayı güncelleştirmeniz gerekebilir. Örneğin, projeniz geliştirme veya hata ayıklama gereksinimlerinize bağlı olarak yapı veya başlatma sürecinizde bazı değişiklikler gerektirebilir. Projenizde birden çok yapı işlemi veya farklı bir yapı içeriği gerektiren birden çok uygulama nız da olabilir.
+`prep` Komut tarafından oluşturulan `azds.yaml` dosya basit, tek proje geliştirme senaryosunda çalışmak üzere tasarlanmıştır. Belirli projeniz karmaşıklığa sahipse, `prep` komutunu çalıştırdıktan sonra bu dosyayı güncelleştirmeniz gerekebilir. Örneğin, projeniz geliştirme veya hata ayıklama gereksinimlerinize göre derleme veya başlatma işleminde bazı değişiklikler yapılmasını gerektirebilir. Ayrıca, projenizde birden çok derleme işlemi veya farklı derleme içeriği gerektiren birden fazla uygulamanız olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kodunuzu geliştirme alanınızda çalıştırma hakkında daha fazla bilgi edinmek için [Azure Dev Spaces ile kodunuzu çalıştırmanın nasıl çalıştığını][how-it-works-up]öğrenin.
+Geliştirme alanınızda kodunuzu çalıştırma hakkında daha fazla bilgi edinmek için bkz. [Azure dev Spaces ile kodunuzu çalıştırma nasıl çalışır?][how-it-works-up].
 
-Projenizi Azure Geliştirme Alanı'na hazırlamak için Azure Geliştirme Alanları'nı kullanmaya başlamak için aşağıdaki hızlı başlangıçlara bakın:
+Projenizi Azure dev alanı için hazırlamak üzere Azure Dev Spaces kullanmaya başlamak için aşağıdaki hızlı başlangıçlara bakın:
 
-* [Visual Studio Code ve Java ile hızla yineleyip hata ayıklama][quickstart-java]
-* [Visual Studio Code ve .NET ile hızla yineleyip hata ayıklama][quickstart-netcore]
-* [Visual Studio Code ve Node.js ile hızla yineleyin ve hata ayıklama][quickstart-node]
-* [Visual Studio ve .NET Core ile hızla yineleyin ve hata ayıklama][quickstart-vs]
-* [Kubernetes üzerinde bir uygulama geliştirmek için CLI kullanma][quickstart-cli]
+* [Visual Studio Code ve Java ile hızlıca yineleme ve hata ayıklama][quickstart-java]
+* [Visual Studio Code ve .NET ile hızla yineleme ve hata ayıklama][quickstart-netcore]
+* [Visual Studio Code ve Node. js ile hızlıca yineleme ve hata ayıklama][quickstart-node]
+* [Visual Studio ve .NET Core ile hızla yineleme ve hata ayıklama][quickstart-vs]
+* [Kubernetes 'te uygulama geliştirmek için CLı kullanma][quickstart-cli]
 
 [how-it-works-up]: how-dev-spaces-works-up.md
 [quickstart-cli]: quickstart-cli.md

@@ -1,6 +1,6 @@
 ---
 title: Windows için Azure VM uzantıları ve özellikleri
-description: Azure sanal makineleri için hangi uzantıların kullanılabileceğini ve sağladıklarına veya geliştirdiklerine göre gruplandırılan uzantıları öğrenin.
+description: Azure sanal makineleri için neler sundukları veya iyileştirebilecekleri ile gruplanan uzantıları öğrenin.
 services: virtual-machines-windows
 documentationcenter: ''
 author: axayjo
@@ -16,67 +16,67 @@ ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cd6439bf1b1f52b8e63819e8e519fc4971d1bc2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80066847"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows için sanal makine uzantıları ve özellikleri
 
 Azure sanal makine (VM) uzantıları, dağıtım sonrası yapılandırma ve Azure VM'lerinde otomasyon görevleri sunan küçük uygulamalardır. Örneğin bir sanal makinede yazılım yüklemesi gerekiyorsa, virüsten koruma gerekiyorsa veya içinde bir betik çalıştırılacaksa VM uzantısı kullanılabilir. Azure VM uzantıları Azure CLI, PowerShell, Azure Resource Manager şablonları ve Azure portal ile çalıştırılabilir. Uzantılar yeni bir VM dağıtımıyla paketlenebilir veya var olan herhangi bir sistemde çalıştırılabilir.
 
-Bu makalede, VM uzantılarına genel bakış, Azure VM uzantılarını kullanmak için ön koşullar ve VM uzantılarının nasıl algılanıp, yöneteceğimize ve kaldırılacaklarına ilişkin kılavuzlar yer almaktadır. Bu makalede, her biri benzersiz bir yapılandırmaya sahip birçok VM uzantısı bulunduğundan genelleştirilmiş bilgiler sağlanmaktadır. Uzantıya özgü ayrıntılar, her belgede tek tek uzantıya özgü bulunabilir.
+Bu makalede VM uzantılarına genel bakış, Azure VM uzantıları kullanma önkoşulları ve VM uzantılarının algılanması, yönetilmesi ve kaldırılması ile ilgili yönergeler sunulmaktadır. Bu makalede birçok VM Uzantısı kullanılabildiği için, her biri potansiyel olarak benzersiz bir yapılandırma olan Genelleştirilmiş bilgiler sağlanmaktadır. Uzantıya özgü ayrıntılar, tek tek uzantıya özgü her belge içinde bulunabilir.
 
  
 
-## <a name="use-cases-and-samples"></a>Servis taleplerini ve örneklerini kullanma
+## <a name="use-cases-and-samples"></a>Kullanım örnekleri ve örnekler
 
-Her biri belirli bir kullanım örneğine sahip birkaç farklı Azure VM uzantısı mevcuttur. Bazı örnekler:
+Birçok farklı Azure VM uzantısı, her biri belirli bir kullanım durumu ile kullanılabilir. Bazı örnekler:
 
-- PowerShell İstenilen Durum yapılandırmalarını Windows için DSC uzantısı olan bir VM'ye uygulayın. Daha fazla bilgi için Bkz. [Azure İstenilen Durum yapılandırma uzantısı.](dsc-overview.md)
-- Log Analytics Agent VM uzantısı ile bir VM'nin izlemeyi yapılandırın. Daha fazla bilgi için azure [vm'lerini Azure Monitor günlüklerine bağlayın'](../../log-analytics/log-analytics-azure-vm-extension.md)a bakın.
-- Chef'i kullanarak Azure VM'yi yapılandırın. Daha fazla bilgi için Bkz. [Chef ile Azure VM dağıtımını otomatikleştirin.](../../chef/chef-automation.md)
-- Azure altyapınızın izleme denetimini Datadog uzantısı ile yapılandırın. Daha fazla bilgi için [Datadog bloguna](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)bakın.
+- PowerShell Istenen durum yapılandırmasını Windows için DSC uzantısına sahip bir VM 'ye uygulayın. Daha fazla bilgi için bkz. [Azure Istenen durum yapılandırması uzantısı](dsc-overview.md).
+- Log Analytics Aracısı VM uzantısıyla bir VM 'nin izlenmesini yapılandırın. Daha fazla bilgi için bkz. [Azure VM 'leri Azure izleyici günlüklerine bağlama](../../log-analytics/log-analytics-azure-vm-extension.md).
+- Chef kullanarak bir Azure VM yapılandırın. Daha fazla bilgi için bkz. [Chef Ile Azure VM dağıtımını otomatikleştirme](../../chef/chef-automation.md).
+- Dataköpek uzantısıyla Azure altyapınızı izlemeyi yapılandırın. Daha fazla bilgi için bkz. [Dataköpek blogu](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 
-İşleme özel uzantılara ek olarak, hem Windows hem de Linux sanal makineleri için özel komut dosyası uzantısı kullanılabilir. Windows için Özel Komut Dosyası uzantısı, herhangi bir PowerShell komut dosyasının VM'de çalıştırılmasına izin verir. Özel komut dosyaları, yerel Azure araçlarının sağlayabileceğinin ötesinde yapılandırma gerektiren Azure dağıtımları tasarlamak için yararlıdır. Daha fazla bilgi için [Windows VM Özel Komut Dosyası uzantısına](custom-script-windows.md)bakın.
+İşleme özgü uzantılara ek olarak, hem Windows hem de Linux sanal makineleri için özel bir betik uzantısı vardır. Windows için özel Betik uzantısı, bir VM 'de herhangi bir PowerShell betiğinin çalıştırılmasını sağlar. Özel betikler, yerel Azure araçlarının sağlayabildiklerinin ötesinde yapılandırılması gereken Azure dağıtımlarını tasarlamak için yararlıdır. Daha fazla bilgi için bkz. [WINDOWS VM özel Betik uzantısı](custom-script-windows.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-VM'deki uzantıyı işlemek için Azure Windows Aracısı'nın yüklü olması gerekir. Bazı bireysel uzantıların kaynaklara erişim veya bağımlılıklar gibi ön koşulları vardır.
+SANAL makinede uzantıyı işlemek için Azure Windows aracısının yüklü olması gerekir. Bazı ayrı uzantılar, kaynaklara veya bağımlılıklara erişim gibi önkoşullara sahiptir.
 
 ### <a name="azure-vm-agent"></a>Azure VM aracısı
 
-Azure VM aracısı, Bir Azure VM ile Azure kumaş denetleyicisi arasındaki etkileşimleri yönetir. VM aracısı, VM uzantılarının çalıştırılması da dahil olmak üzere Azure VM'lerini dağıtmanın ve yönetmenin birçok işlevsel yönüne sorumludur. Azure VM aracısı Azure Marketi görüntülerine önceden yüklenir ve desteklenen işletim sistemlerine el ile yüklenebilir. Windows için Azure VM aracısı, Windows Guest aracısı olarak bilinir.
+Azure VM Aracısı, bir Azure VM ile Azure yapı denetleyicisi arasındaki etkileşimleri yönetir. VM Aracısı, çalışan VM uzantıları dahil olmak üzere Azure VM 'Leri dağıtmanın ve yönetmenin pek çok işlevsel yönünden sorumludur. Azure VM Aracısı, Azure Market görüntülerine önceden yüklenir ve desteklenen işletim sistemlerine el ile yüklenebilir. Windows için Azure VM Aracısı Windows Konuk Aracısı olarak bilinir.
 
-Desteklenen işletim sistemleri ve yükleme yönergeleri hakkında daha fazla bilgi için [Azure sanal makine aracısı'na](agent-windows.md)bakın.
+Desteklenen işletim sistemleri ve yükleme yönergeleri hakkında daha fazla bilgi için bkz. [Azure sanal makine Aracısı](agent-windows.md).
 
-#### <a name="supported-agent-versions"></a>Desteklenen aracı sürümleri
+#### <a name="supported-agent-versions"></a>Desteklenen Aracı sürümleri
 
-Mümkün olan en iyi deneyimi sağlamak için, aracının minimum sürümleri vardır. Daha fazla bilgi için [bu makaleye](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)bakın.
+Mümkün olan en iyi deneyimi sağlamak için aracının en düşük sürümü vardır. Daha fazla bilgi için [Bu makaleye](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)bakın.
 
-#### <a name="supported-oses"></a>Desteklenen OS'ler
+#### <a name="supported-oses"></a>Desteklenen Işletim sistemleri
 
-Windows Guest aracısı birden çok os'ta çalışır, ancak uzantıları çerçeve, uzantıları OS'ler için bir sınırı vardır. Daha fazla bilgi için [bu makaleye](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
+Windows Konuk Aracısı birden çok OSes üzerinde çalışır, ancak uzantı çerçevesinin uzantıları bu uzantılara yönelik bir sınıra sahiptir. Daha fazla bilgi için [Bu makaleye](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
 )bakın.
 
-Bazı uzantılar tüm Işletim Sistemi'lerde desteklenmez ve *'Desteklenmeyen Işletim Sistemi' hata kodu 51'i*yayabilir. Desteklenebilirlik için tek tek uzantı belgelerini kontrol edin.
+Bazı uzantılar tüm Işletim sistemlerinde desteklenmez ve *51 hata kodu, ' desteklenmeyen işletim sistemi '* verilebilir. Desteklenebilirliği için bağımsız uzantı belgelerini denetleyin.
 
 #### <a name="network-access"></a>Ağ erişimi
 
-Uzantı paketleri Azure Depolama uzantısı deposundan indirilir ve uzantı durumu yüklemeleri Azure Depolama'ya nakledilir. Aracıların [desteklenen](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) sürümünü kullanıyorsanız, aracı iletişimi için Azure kumaş denetleyicisine yönlendirmek için aracıyı kullanabileceğiniz gibi, Aracının VM bölgesindeki Azure Depolama'ya erişmesine izin vermeniz gerekmez (özel IP [168.63.129.16'daki](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)ayrıcalıklı kanal aracılığıyla HostGAPlugin özelliği). Aracının desteklenmeyen bir sürümündeyseniz, VM'den o bölgedeki Azure depolama alanına giden erişime izin verebilirsiniz.
+Uzantı paketleri Azure Storage uzantı deposundan indirilir ve uzantı durumu karşıya yüklemeleri Azure depolama 'ya gönderilir. Aracıların [desteklenen](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) sürümünü kullanıyorsanız, sanal makine bölgesinde Azure depolama 'ya erişime izin vermeniz gerekmez, çünkü aracıyı aracı Iletişimleri için Azure Fabric denetleyicisi 'Ne (HostGAPlugin özelliği, özel IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)üzerinde ayrıcalıklı kanal aracılığıyla) yeniden yönlendirmek için kullanabilir. Aracının desteklenmeyen bir sürümü kullanıyorsanız, VM 'den o bölgedeki Azure depolama 'ya giden erişime izin vermeniz gerekir.
 
 > [!IMPORTANT]
-> Konuk güvenlik duvarını kullanarak veya proxy ile *168.63.129.16* erişimi engellediyseniz, uzantılar yukarıdakilerden bağımsız olarak başarısız olur. 80, 443 ve 32526 bağlantı noktaları gereklidir.
+> Konuk güvenlik duvarını veya bir ara sunucu kullanarak *168.63.129.16* 'e erişimi engellediğiniz takdirde, uzantılar yukarıdakilerden bağımsız olarak başarısız olur. 80, 443 ve 32526 bağlantı noktaları gereklidir.
 
-Aracılar yalnızca uzantı paketlerini ve raporlama durumunu indirmek için kullanılabilir. Örneğin, bir uzantı yüklemesi GitHub'dan (Özel Komut Dosyası) komut dosyası indirmesi gerekiyorsa veya Azure Depolama 'ya (Azure Yedeklemesi) erişmesi gerekiyorsa, ek güvenlik duvarı/Ağ Güvenlik Grubu bağlantı noktalarının açılması gerekir. Kendi başlarına uygulamalar olduğundan, farklı uzantıların farklı gereksinimleri vardır. Azure Depolama veya Azure Etkin Dizin'e erişim gerektiren uzantılar için, [Azure NSG Hizmet](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) Etiketleri'ni kullanarak Depolama veya AzureActiveDirectory'ye erişime izin verebilirsiniz.
+Aracılar yalnızca uzantı paketleri ve raporlama durumunu indirmek için kullanılabilir. Örneğin, bir uzantı yüklemesinin GitHub 'dan (özel betik) bir betiği indirmesi veya Azure depolama 'ya (Azure Backup) erişmesi gerekiyorsa, ek güvenlik duvarı/ağ güvenlik grubu bağlantı noktalarının açılması gerekir. Farklı uzantılar, kendi sağında uygulamalar olduklarından farklı gereksinimlere sahiptir. Azure depolama veya Azure Active Directory erişimi gerektiren uzantılar için, [Azure NSG hizmeti etiketlerini](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) depolama veya AzureActiveDirectory kullanarak erişime izin verebilirsiniz.
 
-Windows Guest Agent üzerinden aracı trafik isteklerini yönlendirmek için proxy sunucu desteği yok, bu da Windows Guest Agent internet veya IP üzerinden Ana Bilgisayar kaynakları erişmek için özel proxy (varsa) güvenecektir anlamına gelir 168.63.129.16.
+Windows Konuk Aracısı, aracı trafik isteklerini aracılığıyla yeniden yönlendirebilmeniz için proxy sunucu desteğine sahip değildir. Bu, Windows Konuk aracısının internet üzerindeki kaynaklara veya IP 168.63.129.16 üzerinden ana bilgisayar üzerinde erişim için özel ara sunucunuza (varsa) bağlı olacağı anlamına gelir.
 
-## <a name="discover-vm-extensions"></a>VM uzantılarını keşfedin
+## <a name="discover-vm-extensions"></a>VM uzantılarını bulma
 
-Azure VM'leri ile kullanabileceğiniz birçok farklı VM uzantısı vardır. Tam bir liste yi görmek için [Get-AzVMExtensionImage'ı](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage)kullanın. Aşağıdaki *örnekte, WestUS* konumundaki tüm kullanılabilir uzantılar listelenmektedir:
+Azure VM'leri ile kullanabileceğiniz birçok farklı VM uzantısı vardır. Tam listeyi görmek için [Get-Azvmextensionımage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage)komutunu kullanın. Aşağıdaki örnek, *WestUS* konumundaki tüm kullanılabilir uzantıları listeler:
 
 ```powershell
 Get-AzVmImagePublisher -Location "WestUS" | `
@@ -84,21 +84,21 @@ Get-AzVMExtensionImageType | `
 Get-AzVMExtensionImage | Select Type, Version
 ```
 
-## <a name="run-vm-extensions"></a>VM uzantılarını çalıştırma
+## <a name="run-vm-extensions"></a>VM uzantılarını Çalıştır
 
-Azure VM uzantıları varolan VM'lerde çalışır, bu da zaten dağıtılmış bir VM'de yapılandırma değişiklikleri yapmanız veya bağlantı kurtarmanız gerektiğinde yararlıdır. VM uzantıları, Azure Kaynak Yöneticisi şablon dağıtımlarıyla da birlikte kullanılabilir. Azure VM'leri, Kaynak Yöneticisi şablonlarına sahip uzantılar kullanarak dağıtım sonrası müdahale olmadan dağıtılabilir ve yapılandırılabilir.
+Azure VM uzantıları, mevcut VM 'lerde çalışır, bu, önceden dağıtılmış bir VM 'de yapılandırma değişiklikleri yapmanız veya bağlantıyı kurtarmanız gerektiğinde yararlı olur. VM uzantıları, Azure Resource Manager şablon dağıtımları ile de paketlenmiştir. Azure VM 'Leri, Kaynak Yöneticisi şablonlarıyla birlikte uzantıları kullanarak dağıtım sonrası müdahalesi olmadan dağıtılabilir ve yapılandırılabilir.
 
-Aşağıdaki yöntemler, bir uzantıyı varolan bir VM'ye karşı çalıştırmak için kullanılabilir.
+Aşağıdaki yöntemler mevcut bir VM 'ye karşı bir uzantı çalıştırmak için kullanılabilir.
 
 ### <a name="powershell"></a>PowerShell
 
-Tek tek uzantıları çalıştırmak için çeşitli PowerShell komutları vardır. Listeyi görmek için [Uzan'da Komut Al](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) ve filtreyi kullanın: *Extension*
+Tek tek uzantıları çalıştırmak için çeşitli PowerShell komutları vardır. Bir listeyi görmek için, [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) ve *EXTENSION*FILTER kullanın:
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
 ```
 
-Bu, aşağıdakilere benzer çıktı sağlar:
+Bu, aşağıdakine benzer bir çıktı sağlar:
 
 ```powershell
 CommandType     Name                                          Version    Source
@@ -118,7 +118,7 @@ Cmdlet          Set-AzVMSqlServerExtension                    4.5.0      Az.Comp
 Cmdlet          Set-AzVmssDiskEncryptionExtension             4.5.0      Az.Compute
 ```
 
-Aşağıdaki örnek, Bir GitHub deposundan hedef sanal makineye bir komut dosyası indirmek ve sonra komut dosyası çalıştırmak için Özel Komut Dosyası uzantısı kullanır. Özel Komut Dosyası uzantısı hakkında daha fazla bilgi için Bkz. [Özel Komut Dosyası uzantısıgenel bakış.](custom-script-windows.md)
+Aşağıdaki örnek, bir GitHub deposundan hedef sanal makineye bir betiği indirmek için özel betik uzantısını kullanır ve ardından betiği çalıştırır. Özel Betik uzantısı hakkında daha fazla bilgi için bkz. [Özel Betik uzantısına genel bakış](custom-script-windows.md).
 
 ```powershell
 Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
@@ -127,7 +127,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-Aşağıdaki örnekte, VM Access uzantısı, windows vm'nin yönetim parolasını geçici bir parolaya sıfırlamak için kullanılır. VM Access uzantısı hakkında daha fazla bilgi için [Windows VM'deki Uzak Masaüstü hizmetini sıfırla'ya](../windows/reset-rdp.md)bakın. Bunu çalıştırdıktan sonra, ilk girişte parolayı sıfırlamanız gerekir:
+Aşağıdaki örnekte, VM erişimi uzantısı bir Windows sanal makinesinin yönetici parolasını geçici bir parolaya sıfırlamak için kullanılır. VM erişimi uzantısı hakkında daha fazla bilgi için bkz. [WINDOWS VM 'de Uzak Masaüstü hizmetini sıfırlama](../windows/reset-rdp.md). Bunu çalıştırdığınızda, ilk oturum açmada parolayı sıfırlamanız gerekir:
 
 ```powershell
 $cred=Get-Credential
@@ -137,22 +137,22 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-Komut `Set-AzVMExtension` herhangi bir VM uzantısı başlatmak için kullanılabilir. Daha fazla bilgi için [Set-AzVMExtension başvurusuna](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)bakın.
+`Set-AzVMExtension` Komut HERHANGI bir VM uzantısını başlatmak için kullanılabilir. Daha fazla bilgi için bkz. [set-Azvmexgerme başvurusu](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
-VM uzantıları, Azure portalı üzerinden varolan bir VM'ye uygulanabilir. Portaldaki VM'yi seçin, **Uzantıları**seçin, ardından **Ekle'yi**seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin.
+VM uzantıları, mevcut bir VM 'ye Azure portal aracılığıyla uygulanabilir. Portalda VM 'yi seçin, **Uzantılar**' ı seçin ve **Ekle**' yi seçin. Kullanılabilir uzantılar listesinden istediğiniz uzantıyı seçin ve sihirbazdaki yönergeleri izleyin.
 
-Aşağıdaki örnek, Azure portalından Microsoft Kötü Amaçlı Yazılımdan Koruma uzantısının yüklenmesini gösterir:
+Aşağıdaki örnekte, Microsoft kötü amaçlı yazılımdan koruma uzantısının Azure portal yüklemesi gösterilmektedir:
 
-![Kötü amaçlı yazılımdan koruma uzantısı yükleme](./media/features-windows/installantimalwareextension.png)
+![Kötü amaçlı yazılımdan koruma uzantısını yükler](./media/features-windows/installantimalwareextension.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 
-VM uzantıları bir Azure Kaynak Yöneticisi şablonuna eklenebilir ve şablonun dağıtımıyla yürütülebilir. Bir uzantıyı şablonla dağıttığınızda, tam olarak yapılandırılmış Azure dağıtımları oluşturabilirsiniz. Örneğin, aşağıdaki JSON, bir Kaynak Yöneticisi şablonundan alınır, yük dengeli VM'ler kümesi ve Azure SQL veritabanı dağıtır ve her VM'ye bir .NET Core uygulaması yükler. VM uzantısı yazılım yükleme ilgilenir.
+VM uzantıları, bir Azure Resource Manager şablonuna eklenebilir ve şablonun dağıtımıyla birlikte yürütülür. Bir uzantıyı bir şablon ile dağıttığınızda, tam olarak yapılandırılmış Azure dağıtımları oluşturabilirsiniz. Örneğin, bir Kaynak Yöneticisi şablonundan aşağıdaki JSON alınır bir yük dengeli VM 'Ler ve bir Azure SQL veritabanı dağıtır ve ardından her VM 'ye bir .NET Core uygulaması yükler. VM uzantısı, yazılım yüklemesini üstlenir.
 
-Daha fazla bilgi için [kaynak yöneticisi şablonuna](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)bakın.
+Daha fazla bilgi için bkz. [tam kaynak yöneticisi şablonu](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
 
 ```json
 {
@@ -184,13 +184,13 @@ Daha fazla bilgi için [kaynak yöneticisi şablonuna](https://github.com/Micros
 }
 ```
 
-Kaynak Yöneticisi şablonları oluşturma hakkında daha fazla bilgi için bkz. Windows [VM uzantılarıyla Azure Kaynak Yöneticisi şablonları yazma.](../windows/template-description.md#extensions)
+Kaynak Yöneticisi şablonları oluşturma hakkında daha fazla bilgi için bkz. [WINDOWS VM uzantıları Ile yazma Azure Resource Manager şablonları](../windows/template-description.md#extensions).
 
-## <a name="secure-vm-extension-data"></a>Güvenli VM uzantısı verileri
+## <a name="secure-vm-extension-data"></a>VM Uzantısı verilerini güvenli hale getirme
 
-Bir VM uzantısı çalıştırdığınızda, kimlik bilgileri, depolama hesabı adları ve depolama hesabı erişim anahtarları gibi hassas bilgileri eklemek gerekebilir. Birçok VM uzantısı, verileri şifreleyen ve yalnızca hedef VM'nin içindeki şifresini çözen korumalı bir yapılandırma içerir. Her uzantı belirli bir korumalı yapılandırma şeması vardır ve her biri uzantıya özgü belgelerde ayrıntılı olarak açıklanır.
+Bir VM Uzantısı çalıştırdığınızda kimlik bilgileri, depolama hesabı adları ve depolama hesabı erişim anahtarları gibi hassas bilgileri eklemek gerekebilir. Birçok VM uzantısı, verileri şifreleyen ve yalnızca hedef VM 'nin şifresini çözdüğü korumalı bir yapılandırma içerir. Her uzantının belirli bir korumalı yapılandırma şeması vardır ve her biri uzantıya özgü belgelerde ayrıntılıdır.
 
-Aşağıdaki örnek, Windows için Özel Komut Dosyası uzantısının bir örneğini gösterir. Yürütülecek komut bir kimlik bilgileri kümesi içerir. Bu örnekte, yürütülecek komut şifrelenmez:
+Aşağıdaki örnek, Windows için özel betik uzantısının bir örneğini gösterir. Yürütülecek komut bir kimlik bilgileri kümesi içerir. Bu örnekte, yürütülecek komut şifrelenmemiştir:
 
 ```json
 {
@@ -220,7 +220,7 @@ Aşağıdaki örnek, Windows için Özel Komut Dosyası uzantısının bir örne
 }
 ```
 
-Özelliği **nizli yapılandırmaya taşımak,** aşağıdaki örnekte gösterildiği gibi yürütme dizesini korur: **protected**
+Aşağıdaki örnekte gösterildiği gibi, komutu, **korumalı** yapılandırmaya özelliği **yürütmek üzere** taşımak, yürütme dizesinin güvenliğini sağlar:
 
 ```json
 {
@@ -252,26 +252,26 @@ Aşağıdaki örnek, Windows için Özel Komut Dosyası uzantısının bir örne
 }
 ```
 
-Uzantıları kullanan bir Azure IaaS VM'de, sertifikalar **_konsolunda, Windows Azure CRP Sertifika Üreteci_** konusuna sahip sertifikalar görebilirsiniz. Klasik RDFE VM'de, bu sertifikalar **_Uzantılar için Windows Azure Hizmet Yönetimi_** konusuna sahiptir.
+Uzantılar kullanan bir Azure IaaS sanal makinesinde, sertifikalar konsolunda, **_Windows Azure CRP sertifika Oluşturucu_** olan sertifikalar ' ı görebilirsiniz. Klasik bir RDFE sanal makinesinde bu sertifikaların, **_Uzantılar Için Windows Azure hizmet yönetimi_** konu adı vardır.
 
-Bu sertifikalar, uzantılar tarafından kullanılan korumalı ayarların (parola, diğer kimlik bilgileri) aktarılması sırasında VM ve ana bilgisayar arasındaki iletişimi güvence altına alarmaktadır. Sertifikalar Azure kumaş denetleyicisi tarafından oluşturulur ve VM Aracısı'na aktarılır. VM'yi her gün durdurur ve çalıştırın, kumaş denetleyicisi tarafından yeni bir sertifika oluşturulabilir. Sertifika bilgisayarın Kişisel sertifika deposunda depolanır. Bu sertifikalar silinebilir. VM Aracısı gerekirse sertifikaları yeniden oluşturur.
+Bu sertifikalar, uzantılar tarafından kullanılan korumalı ayarların (parola, diğer kimlik bilgileri) aktarılması sırasında VM ile ana bilgisayar arasındaki iletişimin güvenliğini güvence altına alın. Sertifikalar Azure yapı denetleyicisi tarafından oluşturulur ve VM aracısına geçirilir. VM 'yi her gün durdurup başlatırsanız, yapı denetleyicisi tarafından yeni bir sertifika oluşturulabilir. Sertifika, bilgisayarın kişisel sertifikalar deposunda depolanır. Bu sertifikalar silinebilir. VM Aracısı gerekirse sertifikaları yeniden oluşturur.
 
-### <a name="how-do-agents-and-extensions-get-updated"></a>Aracılar ve uzantılar nasıl güncellenir?
+### <a name="how-do-agents-and-extensions-get-updated"></a>Aracılar ve uzantılar nasıl güncelleştirilir?
 
-Aracılar ve Uzantılar aynı güncelleştirme mekanizmasını paylaşır. Bazı güncelleştirmeler ek güvenlik duvarı kuralları gerektirmez.
+Aracılar ve uzantılar aynı güncelleştirme mekanizmasını paylaşır. Bazı güncelleştirmeler ek güvenlik duvarı kuralları gerektirmez.
 
-Bir güncelleştirme kullanılabilir olduğunda, yalnızca uzantılarda bir değişiklik olduğunda vm'ye yüklenir ve aşağıdakiler gibi diğer VM Modeli değişiklikleri yapılır:
+Bir güncelleştirme kullanılabilir olduğunda, yalnızca Uzantılardaki bir değişiklik olduğunda VM 'de ve diğer VM modeli değiştikçe şu şekilde değişir:
 
 - Veri diskleri
-- Uzantılar
-- Önyükleme tanılama konteyneri
-- Konuk İşletim Sistemi sırları
+- Uzantıları
+- Önyükleme tanılaması kapsayıcısı
+- Konuk işletim sistemi gizli dizileri
 - VM boyutu
 - Ağ profili
 
-Yayıncılar güncelleştirmeleri farklı zamanlarda bölgelere kullanılabilir hale getirmektedir, bu nedenle farklı sürümlerde farklı bölgelerdeki VM'lere sahip olabilirsiniz.
+Yayımcılar, güncelleştirmeleri farklı zamanlarda bölgelere uygun hale getirir, böylece farklı sürümlerde farklı bölgelerde sanal makinelere sahip olabilirsiniz.
 
-#### <a name="listing-extensions-deployed-to-a-vm"></a>VM'ye Dağıtılan Uzantıları Listeleme
+#### <a name="listing-extensions-deployed-to-a-vm"></a>Bir VM 'ye dağıtılan uzantıları listeleme
 
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM"
@@ -286,15 +286,15 @@ Microsoft.Compute     CustomScriptExtension                1.9
 
 #### <a name="agent-updates"></a>Aracı güncelleştirmeleri
 
-Windows Konuk Aracısı yalnızca *Uzantı İşleme kodu*içerir, *Windows Provisioning kodu* ayrıdır. Windows Konuk Aracısını kaldırabilirsiniz. Pencere Konuk Aracısı'nın otomatik güncelleştirmesini devre dışı kaldıramazsınız.
+Windows Konuk Aracısı yalnızca *uzantı işleme kodu*Içerir, *Windows sağlama kodu* ayrı olur. Windows Konuk Aracısı 'nı kaldırabilirsiniz. Pencere Konuk aracısının otomatik güncelleştirilmesini devre dışı bırakılamaz.
 
-*Uzantı İşleme kodu,* Azure dokusuyla iletişim kurmak ve yüklemeler, durum bildirme, tek tek uzantıları güncelleştirme ve bunları kaldırma gibi VM uzantıları işlemlerini işlemekten sorumludur. Güncelleştirmeler güvenlik düzeltmeleri, hata düzeltmeleri ve *Uzantı İşleme kodundaki*geliştirmeleri içerir.
+*Uzantı işleme kodu* , Azure dokusuna iletişim kurmaktan ve Yüklemeler, raporlama durumu, tek tek uzantıları güncelleştirme ve bunları KALDıRMA gibi VM uzantıları işlemlerinin işlenmesine yöneliktir. Güncelleştirmeler, güvenlik düzeltmelerini, hata düzeltmelerini ve *uzantı işleme koduna*yönelik geliştirmeleri içerir.
 
-Hangi sürümü çalıştırdığınızı denetlemek için [yüklü Windows Konuk Aracısını Algılama'ya](agent-windows.md#detect-the-vm-agent)bakın.
+Çalıştırdığınız sürümü denetlemek için bkz. [yüklü Windows Konuk aracısını algılama](agent-windows.md#detect-the-vm-agent).
 
 #### <a name="extension-updates"></a>Uzantı güncelleştirmeleri
 
-Bir uzantı güncelleştirmesi kullanılabilir olduğunda, Windows Guest Agent uzantıyı karşıdan yüklenir ve yükseltir. Otomatik uzantı güncelleştirmeleri *Minor* veya *Hotfix'tir.* Uzantıyı siz lerle birlikte verirken *Küçük* güncelleştirmeleri devre dışı kılabilir veya devre dışı kullanabilirsiniz. Aşağıdaki örnek, otomatik YükseltmeMinorVersion ile Kaynak Yöneticisi şablonundaki küçük sürümleri niçin otomatik olarak yükselteceklerini *gösterir": doğru,'*:
+Bir uzantı güncelleştirmesi kullanılabilir olduğunda, Windows Konuk Aracısı uzantıyı indirir ve yükseltir. Otomatik uzantı güncelleştirmeleri, *küçük* veya *Düzeltme*olabilir. Uzantıyı sağladığınızda uzantıların *küçük* güncelleştirmelerini kabul edebilir veya devre dışı bırakabilirsiniz. Aşağıdaki örnek, bir Kaynak Yöneticisi şablonundaki alt sürümlerin otomatik olarak *': true, '* ile nasıl yükseltilleceğini gösterir:
 
 ```json
     "properties": {
@@ -309,20 +309,20 @@ Bir uzantı güncelleştirmesi kullanılabilir olduğunda, Windows Guest Agent u
     },
 ```
 
-En son küçük sürüm hata düzeltmelerini almak için, uzantı dağıtımlarınızda her zaman otomatik güncelleştirmeyi seçmeniz önerilir. Güvenlik veya anahtar hata düzeltmeleri taşıyan Hotfix güncelleştirmeleri devre dışı kalınamaz.
+En son küçük sürüm hata düzeltmelerini almak için, uzantı dağıtımlarınızda her zaman otomatik güncelleştirme ' yi seçmeniz önemle tavsiye edilir. Güvenlik veya anahtar hata düzeltmelerini taşıyan düzeltme güncelleştirmeleri devre dışı bırakılamaz.
 
-### <a name="how-to-identify-extension-updates"></a>Uzantı güncelleştirmeleri nasıl tanımlanır?
+### <a name="how-to-identify-extension-updates"></a>Uzantı güncelleştirmelerini belirleme
 
-#### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Bir VM'de otomatik YükseltmeMinorVersion ile uzanTıolup olmadığını belirleme
+#### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Uzantının, bir VM 'de oto Upgrademinorversion ile ayarlanmış olup olmadığını belirleme
 
-Uzantın 'autoUpgradeMinorVersion' ile sağlanmış olup olmadığını VM modelinden görebilirsiniz. Kontrol etmek için [Get-AzVm'i](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) kullanın ve kaynak grubunu ve VM adını aşağıdaki gibi sağlayın:
+Uzantının ' oto Upgrademinorversion ' ile sağlanması durumunda VM modelinden bakabilirsiniz. Denetlemek için [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) ' i kullanın ve kaynak grubunu ve VM adını şu şekilde sağlayın:
 
 ```powerShell
  $vm = Get-AzVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
  $vm.Extensions
 ```
 
-Aşağıdaki örnek *çıktı, autoUpgradeMinorVersion'un* *doğru*olarak ayarladığını gösterir:
+Aşağıdaki örnek çıktıda, ' *true*' olarak ayarlanmış *olan bir çıktı* gösterilmektedir:
 
 ```powershell
 ForceUpdateTag              :
@@ -332,11 +332,11 @@ TypeHandlerVersion          : 1.9
 AutoUpgradeMinorVersion     : True
 ```
 
-#### <a name="identifying-when-an-autoupgrademinorversion-occurred"></a>OtomatikYükseltmeMinorVersion'un ne zaman oluştuğunu tanımlama
+#### <a name="identifying-when-an-autoupgrademinorversion-occurred"></a>Bir bir bir bir bir bir bir bir oto Upgrademinorversion
 
-Uzantıiçin bir güncelleştirmenin ne zaman gerçekleştiğini görmek için *C:\WindowsAzure\Logs\WaAppAgent.log* adresindeki VM'deki aracı günlüklerini inceleyin
+Uzantıya yönelik bir güncelleştirmenin ne zaman oluştuğunu görmek için, *C:\windowsazure\logs\waappagent.log* konumundaki VM 'deki aracı günlüklerini gözden geçirin.
 
-Aşağıdaki örnekte, VM *Microsoft.Compute.CustomScriptExtension 1.8* yüklü vardı. Bir düzeltme sürüm *1.9*için kullanılabilir:
+Aşağıdaki örnekte, VM 'de *Microsoft. COMPUTE. CustomScriptExtension 1,8* yüklü. *1,9*sürümüne bir düzeltme sunuldu:
 
 ```powershell
 [INFO]  Getting plugin locations for plugin 'Microsoft.Compute.CustomScriptExtension'. Current Version: '1.8', Requested Version: '1.9'
@@ -345,39 +345,39 @@ Aşağıdaki örnekte, VM *Microsoft.Compute.CustomScriptExtension 1.8* yüklü 
 
 ## <a name="agent-permissions"></a>Aracı izinleri
 
-Görevlerini gerçekleştirmek için aracının Yerel *Sistem*olarak çalışması gerekir.
+Görevlerini gerçekleştirmek için aracının *yerel sistem*olarak çalıştırılması gerekir.
 
-## <a name="troubleshoot-vm-extensions"></a>Sorun Giderme VM uzantıları
+## <a name="troubleshoot-vm-extensions"></a>VM uzantılarının sorunlarını giderme
 
-Her VM uzantısı, uzantıya özgü sorun giderme adımları olabilir. Örneğin, Özel Komut Dosyası uzantısını kullandığınızda, komut dosyası yürütme ayrıntıları, uzantıntın çalıştırıldığı VM'de yerel olarak bulunabilir. Uzantıya özgü sorun giderme adımları uzantıya özgü belgelerde ayrıntılı olarak açıklanır.
+Her VM uzantısının uzantıya özgü sorun giderme adımları olabilir. Örneğin, Özel Betik uzantısını kullandığınızda, komut dosyası yürütme ayrıntıları, uzantının çalıştırıldığı VM 'de yerel olarak bulunabilir. Uzantıya özgü tüm sorun giderme adımları uzantıya özgü belgelerde ayrıntılıdır.
 
 Aşağıdaki sorun giderme adımları tüm VM uzantıları için geçerlidir.
 
-1. Windows Guest Agent Log'u kontrol etmek için, uzantınız *C:\WindowsAzure\Logs\WaAppAgent.log'da* sağlanan etkinlikteki lere bakın
+1. Windows Konuk Aracısı günlüğünü denetlemek için, uzantınızın *C:\windowsazure\logs\waappagent.log* dizininde sağlanması durumunda etkinliğe bakın.
 
-2. *C:\WindowsAzure\Logs\Plugins extensionName>\<* daha fazla bilgi için gerçek uzantı günlüklerini kontrol edin
+2. *C:\windowsazure\logs\eklentiler\<ExtensionName* ' de daha fazla ayrıntı için gerçek uzantı günlüklerine bakın>
 
-3. Hata kodları, bilinen sorunlar vb. için uzantıya özgü belge sorun giderme bölümlerini denetleyin.
+3. Hata kodları, bilinen sorunlar vb. için uzantıya özgü belge sorunlarını giderme bölümlerini denetleyin.
 
-4. Sistem kayıtlarına bak. Özel paket yöneticisi erişimi gerektiren başka bir uygulamanın uzun süre devam eden yüklemesi gibi uzantıyı etkileyebilecek diğer işlemleri denetleyin.
+4. Sistem günlüklerine bakın. Uzantıya sahip olabilecek, Özel Paket Yöneticisi erişimi gerektiren başka bir uygulamanın uzun süre çalışan yüklemesi gibi diğer işlemleri denetleyin.
 
 ### <a name="common-reasons-for-extension-failures"></a>Uzantı hatalarının yaygın nedenleri
 
-1. Uzantıları çalıştırmak için 20 dakika var (özel durumlar CustomScript uzantıları, Şef ve 90 dakika var DSC vardır). Dağıtımınız bu zamanı aşarsa, zaman aşımı olarak işaretlenir. Bunun nedeni, düşük kaynak VM'leri, diğer VM yapılandırmaları/uzantı sağlamaya çalışırken yüksek miktarda kaynak tüketen görevleri başlatmadan kaynaklanabilir.
+1. Uzantıların çalışması için 20 dakika vardır (özel durumlar CustomScript Extensions, Chef ve 90 dakikalık bir DSC 'Dir). Dağıtımınız bu saati aşarsa, zaman aşımı olarak işaretlenir. Bunun nedeni, düşük kaynak VM 'lerinin, diğer VM yapılandırmalarının/başlangıç görevlerinin, uzantının sağlamaya çalıştığı yüksek miktarda kaynak tüketiyor olmasından kaynaklanabilir.
 
-2. Asgari ön koşullar yerine getirilmedi. Bazı uzantıların HPC görüntüleri gibi VM SKU'lara bağımlı olduğu vardır. Uzantılar, Azure Depolama alanıyla veya kamu hizmetlerine iletişim kurmak gibi belirli ağ erişimi gereksinimleri gerektirebilir. Diğer örnekler paket depolarına erişim, disk alanının tükenmesi veya güvenlik kısıtlamaları olabilir.
+2. En düşük önkoşul karşılanmadı. Bazı uzantıların, HPC görüntüleri gibi VM SKU 'Larında bağımlılıkları vardır. Uzantılar, Azure depolama veya ortak hizmetlere iletişim gibi belirli ağ erişim gereksinimleri gerektirebilir. Diğer örnekler paket depolarına, yetersiz disk alanı veya güvenlik kısıtlamalarına erişebilir.
 
-3. Özel paket yöneticisi erişimi. Bazı durumlarda, her ikisinin de paket yöneticisine özel erişime ihtiyaç duyduğu uzun soluklu bir VM yapılandırması ve uzantı yüklemesi çakışıyor olabilir.
+3. Özel Paket Yöneticisi erişimi. Bazı durumlarda, büyük bir çalışan VM yapılandırması ve dahili uzantı yüklemesi ile karşılaşmanız, burada her ikisinin de paket yöneticisine özel erişime ihtiyacı olabilir.
 
-### <a name="view-extension-status"></a>Uzantı durumunu görüntüleme
+### <a name="view-extension-status"></a>Uzantı durumunu görüntüle
 
-VM uzantısı bir VM'ye karşı çalıştırıldıktan sonra, uzantı durumunu döndürmek için [Get-AzVM'yi](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) kullanın. *Alt durumlar[0]* uzantı sağlamanın başarılı olduğunu, yani VM'ye başarılı bir şekilde dağıtılmış olduğunu, ancak VM içindeki uzantının yürütülmesinin başarısız olduğunu gösterir, *Alt Durumlar[1]*.
+VM uzantısı bir VM 'ye karşı çalıştırıldıktan sonra, uzantı durumunu döndürmek için [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) ' yi kullanın. *Alt durumlar [0]* uzantı sağlama işleminin başarılı olduğunu, yani VM 'ye başarıyla dağıtıldığını gösterir, ancak uzantının VM içinde yürütülmesi başarısız oldu, *alt durumlar [1]*.
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
 ```
 
-Çıktı aşağıdaki örnek çıktıya benzer:
+Çıktı aşağıdaki örnek çıkışına benzer:
 
 ```powershell
 Extensions[0]           :
@@ -403,31 +403,31 @@ Extensions[0]           :
     Message             : Finished executing command
 ```
 
-Uzantı yürütme durumu Azure portalında da bulunabilir. Uzantının durumunu görüntülemek için VM'yi seçin, **Uzantıları**seçin ve ardından istediğiniz uzantıyı seçin.
+Uzantı yürütme durumu Azure portal da bulunabilir. Bir uzantının durumunu görüntülemek için VM 'yi seçin, **Uzantılar**' ı seçin ve ardından istediğiniz uzantıyı seçin.
 
-### <a name="rerun-vm-extensions"></a>VM uzantılarını yeniden çalıştırın
+### <a name="rerun-vm-extensions"></a>VM uzantılarını yeniden çalıştır
 
-VM uzantısının yeniden çalıştırılması gereken durumlar olabilir. Bir uzantıyı kaldırarak ve ardından istediğiniz yürütme yöntemiyle uzantıyı yeniden çalıştırarak yeniden çalıştırabilirsiniz. Uzantıyı kaldırmak için [Remove-AzVMExtension'ı](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension) aşağıdaki gibi kullanın:
+Bir VM uzantısının yeniden çalıştırılması gereken durumlar olabilir. Bir uzantıyı kaldırarak yeniden çalıştırabilir ve sonra uzantıyı seçtiğiniz bir yürütme yöntemiyle yeniden çalıştırabilirsiniz. Bir uzantıyı kaldırmak için [Remove-Azvmexgerkomutunu](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension) aşağıdaki gibi kullanın:
 
 ```powershell
 Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"
 ```
 
-Azure portalındaki bir uzantıyı aşağıdaki gibi kaldırabilirsiniz:
+Azure portal bir uzantıyı aşağıdaki gibi da kaldırabilirsiniz:
 
 1. Bir VM seçin.
-2. **Uzantıları**seçin.
-3. İstenilen uzantıyı seçin.
-4. **Kaldır'ı**seçin.
+2. **Uzantılar**' ı seçin.
+3. İstediğiniz uzantıyı seçin.
+4. **Kaldır**' ı seçin.
 
 ## <a name="common-vm-extensions-reference"></a>Ortak VM uzantıları başvurusu
 | Uzantı adı | Açıklama | Daha fazla bilgi |
 | --- | --- | --- |
-| Windows için Özel Betik Uzantısı |Komut dosyalarını Azure sanal makinesine karşı çalıştırma |[Windows için Özel Betik Uzantısı](custom-script-windows.md) |
-| Windows için DSC Uzantısı |PowerShell DSC (Istenilen Durum Yapılandırması) uzantısı |[Windows için DSC Uzantısı](dsc-overview.md) |
-| Azure Tanılama Uzantısı |Azure Tanılama'yı Yönetme |[Azure Tanılama Uzantısı](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Azure VM Erişim Uzantısı |Kullanıcıları ve kimlik bilgilerini yönetme |[Linux için VM Erişim Uzantısı](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Windows için Özel Betik Uzantısı |Azure sanal makinesinde betikleri çalıştırma |[Windows için Özel Betik Uzantısı](custom-script-windows.md) |
+| Windows için DSC Uzantısı |PowerShell DSC (Istenen durum yapılandırması) uzantısı |[Windows için DSC Uzantısı](dsc-overview.md) |
+| Azure Tanılama Uzantısı |Azure Tanılama Yönet |[Azure Tanılama uzantısı](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
+| Azure VM erişimi uzantısı |Kullanıcıları ve kimlik bilgilerini yönetme |[Linux için VM erişimi uzantısı](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VM uzantıları hakkında daha fazla bilgi için [Azure sanal makine uzantılarına ve özelliklere genel bakış](overview.md)alabakın.
+VM uzantıları hakkında daha fazla bilgi için bkz. [Azure sanal makine uzantılarına ve özelliklerine genel bakış](overview.md).

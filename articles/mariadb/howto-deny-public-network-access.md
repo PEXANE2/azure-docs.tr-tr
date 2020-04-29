@@ -1,46 +1,46 @@
 ---
-title: Genel Ağ Erişimini Reddet - Azure portalı - MariaDB için Azure Veritabanı
-description: MariaDB için Azure Veritabanınız için Azure portalı kullanarak Genel Ağ Erişimini Reddet'i nasıl yapılandıracaklarını öğrenin
+title: Ortak ağ erişimini reddetme-Azure portal-MariaDB için Azure veritabanı
+description: MariaDB için Azure veritabanınız için Azure portal kullanarak genel ağ erişimini reddetme işlemini nasıl yapılandıracağınızı öğrenin
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 87b6033e486e9009573436628d0183c8a022aced
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79375245"
 ---
-# <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>Azure portalını kullanarak MariaDB için Azure Veritabanında Genel Ağ Erişimini Reddetme
+# <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda genel ağ erişimini reddetme
 
-Bu makalede, MariaDB sunucusu için bir Azure Veritabanını tüm genel yapılandırmaları reddetmek ve ağ güvenliğini daha da artırmak için yalnızca özel uç noktalar üzerinden bağlantılara izin verecek şekilde nasıl yapılandırabileceğiniz açıklanmaktadır.
+Bu makalede, bir MariaDB sunucusu için Azure veritabanı 'nı tüm genel yapılandırmaların erişimini reddedecek ve yalnızca özel uç noktalar aracılığıyla ağ güvenliğini artırmak üzere yalnızca bağlantılara izin verecek şekilde nasıl yapılandırabileceğiniz açıklanmaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu nasıl yapılacağını kılavuzunu tamamlamak için şunları yapmanız gerekir:
+Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
-* [MariaDB için Bir Azure Veritabanı](quickstart-create-MariaDB-server-database-using-azure-portal.md)
+* [MariaDB Için Azure veritabanı](quickstart-create-MariaDB-server-database-using-azure-portal.md)
 
-## <a name="set-deny-public-network-access"></a>Genel Ağ Erişimini Reddet'i Ayarla
+## <a name="set-deny-public-network-access"></a>Ortak ağ erişimini reddet ayarla
 
-MariaDB sunucusu Nungenel Ağ Erişimini Reddet'i ayarlamak için aşağıdaki adımları izleyin:
+MariaDB sunucusunu genel ağ erişimini engelle ' yi ayarlamak için şu adımları izleyin:
 
-1. Azure [portalında,](https://portal.azure.com/)MariaDB sunucusu için mevcut Azure Veritabanınızı seçin.
+1. [Azure Portal](https://portal.azure.com/), var olan MariaDB sunucusu Için Azure veritabanınızı seçin.
 
-1. MariaDB sunucu sayfasında, **Ayarlar**altında bağlantı güvenliği yapılandırma sayfasını açmak için **Bağlantı güvenliğini** tıklatın.
+1. MariaDB sunucusu sayfasında, **Ayarlar**altında **bağlantı güvenliği** ' ne tıklayarak bağlantı güvenliği yapılandırması sayfasını açın.
 
-1. Ortak Ağ Erişimini Reddet'te, MariaDB sunucunuz için genel erişimi reddetmek için **Evet'i** seçin.
+1. Ortak ağ erişimini engelle ' de, MariaDB sunucunuz için genel erişimi Reddet ' i etkinleştirmek için **Evet** ' i seçin.
 
-    ![MariaDB Ağ erişimini reddet için Azure Veritabanı](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
+    ![MariaDB için Azure veritabanı ağ erişimini reddet](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
 
 1. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
-1. Bildirim, bağlantı güvenlik ayarının başarıyla etkinleştirildiğini onaylar.
+1. Bildirim, bağlantı güvenliği ayarının başarıyla etkinleştirildiğini onaylanır.
 
-    ![MariaDB Ağ erişim başarısını reddet için Azure Veritabanı](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
+    ![MariaDB için Azure veritabanı ağ erişimini reddetme başarılı](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ölçümler [de nasıl uyarı oluşturacağınız](howto-alert-metric.md)hakkında bilgi edinin.
+[Ölçümler üzerinde uyarılar oluşturma](howto-alert-metric.md)hakkında bilgi edinin.

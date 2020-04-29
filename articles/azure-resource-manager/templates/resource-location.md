@@ -1,24 +1,24 @@
 ---
 title: Şablon kaynak konumu
-description: Azure Kaynak Yöneticisi şablonunda kaynak konumunun nasıl ayarlanır olduğunu açıklar.
+description: Azure Resource Manager şablonunda kaynak konumunun nasıl ayarlanacağını açıklar.
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.openlocfilehash: a8324dac1232eecd5624e5f1dc0e6656295c0a10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156438"
 ---
 # <a name="set-resource-location-in-arm-template"></a>ARM şablonunda kaynak konumunu ayarlama
 
-Bir Azure Kaynak Yöneticisi (ARM) şablonu dağıtırken, her kaynak için bir konum sağlamanız gerekir. Konumun kaynak grubu konumuyla aynı konumda olması gerekmez.
+Bir Azure Resource Manager (ARM) şablonu dağıtıldığında, her kaynak için bir konum sağlamanız gerekir. Konumun kaynak grubu konumuyla aynı konumda olması gerekmez.
 
-## <a name="get-available-locations"></a>Kullanılabilir konumları alın
+## <a name="get-available-locations"></a>Kullanılabilir konumları al
 
-Farklı kaynak türleri farklı konumlarda desteklenir. Bir kaynak türü için desteklenen konumları almak için Azure PowerShell veya Azure CLI'yi kullanın.
+Farklı konumlarda farklı kaynak türleri desteklenir. Kaynak türü için desteklenen konumları almak üzere Azure PowerShell veya Azure CLı kullanın.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes `
@@ -36,11 +36,11 @@ az provider show \
 
 ---
 
-## <a name="use-location-parameter"></a>Konum parametresi kullanma
+## <a name="use-location-parameter"></a>Konum parametresini kullan
 
-Şablonunuzu dağıtırken esneklik sağlamak için, kaynakların konumunu belirtmek için bir parametre kullanın. Parametrenin varsayılan değerini ' `resourceGroup().location`olarak ayarlama
+Şablonunuzun dağıtımı sırasında esneklik sağlamak için, kaynakların konumunu belirtmek için bir parametre kullanın. Parametresinin varsayılan değerini olarak `resourceGroup().location`ayarlayın.
 
-Aşağıdaki örnekte, parametre olarak belirtilen bir konuma dağıtılan bir depolama hesabı gösterilmektedir:
+Aşağıdaki örnekte, parametresi olarak belirtilen bir konuma dağıtılan bir depolama hesabı gösterilmektedir:
 
 ```json
 {
@@ -95,5 +95,5 @@ Aşağıdaki örnekte, parametre olarak belirtilen bir konuma dağıtılan bir d
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Şablon işlevlerinin tam listesi için [Azure Kaynak Yöneticisi şablon işlevlerine](template-functions.md)bakın.
-* Şablon dosyaları hakkında daha fazla bilgi için [bkz.](template-syntax.md)
+* Şablon işlevlerinin tam listesi için bkz. [Azure Resource Manager şablon işlevleri](template-functions.md).
+* Şablon dosyaları hakkında daha fazla bilgi için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).

@@ -1,6 +1,6 @@
 ---
-title: Commercial Marketplace teklifinizin yayın durumunu kontrol edin
-description: Microsoft İş Ortağı Merkezi'ndeki Commercial Marketplace aracılığıyla bir teklifi yayımlamak için gereken doğrulama, sertifika ve önizleme adımlarının durumunu denetleyin.
+title: Ticari Market teklifinizin Yayımlanma durumunu kontrol edin
+description: Microsoft Iş Ortağı Merkezi 'nde ticari Market aracılığıyla bir teklif yayımlamak için gereken doğrulama, sertifika ve önizleme adımlarının durumunu kontrol edin.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,141 +8,141 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: 012a574887d9980e0c71c3af84ff70ca8d31312c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80275688"
 ---
-# <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Commercial Marketplace teklifinizin yayın durumunu kontrol edin
+# <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Ticari Market teklifinizin Yayımlanma durumunu kontrol edin
 
-İş Ortağı Merkezi'ndeki Ticari Pazar Yeri [portalının](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) **Teklif genel bakış** sekmesinde geçerli **Yayımlama durumunuzu** görüntüleyebilirsiniz.
+Geçerli **Yayımlama durumunuzu** Iş Ortağı Merkezi 'Nde [ticari Market portalının](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) **teklif genel bakış** sekmesinde görüntüleyebilirsiniz.
 
-Her teklif için aşağıdaki durum göstergelerinden biri görüntülenmelidir.
+Her teklif için aşağıdaki durum göstergelerden biri görüntülenmelidir.
 
 | **Durum**    | **Açıklama**  |
 | :---------- | :-------------------|
-| **Taslak** | Teklif oluşturuldu, ancak yayınlanmadı. |
-| **Devam eden yayımlama** | Teklif/Plan, yayımlama sürecinin adımlarını tamamlıyor. |
-| **Dikkat gerekli** | Microsoft tarafından veya yayımlama adımlarından herhangi biri tarafından sertifikalandırılım sırasında kritik bir sorun keşfedildi. |
-| **Önizleme** | Teklif Microsoft tarafından onaylandı ve şimdi yayıncı tarafından son doğrulama bekliyor. Teklifi canlı yapmak için canlı yayına geçin'i seçin. |
-| **Canlı** | Teklif pazarda canlı ve görülebilir ve müşteriler tarafından elde edilebedilir. |
-| **Bekleyen stop satmak** | Yayımcı teklif veya plan "satış" olarak seçti, ancak eylem henüz tamamlanmadı. |
-| **Pazarda mevcut değil** | Pazarda daha önce yayınlanmış bir teklif/plan kaldırıldı. |
+| **Taslak** | Teklif oluşturuldu ancak yayımlanmadı. |
+| **Yayımlama devam ediyor** | Teklif/plan, yayımlama sürecinin adımları aracılığıyla kendi yolunda çalışmaktadır. |
+| **İlgilenilmesi gerekiyor** | Microsoft tarafından veya herhangi bir yayımlama adımında sertifika sırasında kritik bir sorun bulundu. |
+| **Önizleme** | Teklif Microsoft tarafından sertifikalandıralındı ve şimdi yayımcı tarafından nihai bir doğrulamayı bekler. Teklifi canlı hale getirmek için canlı git ' i seçin. |
+| **Canlı** | Teklif, Market 'te canlı olur ve müşteriler tarafından görülebilir ve elde edilebilir. |
+| **Satışı durdur bekleniyor** | Yayımcı, teklif veya planda "satışı Durdur" seçeneğini seçti, ancak eylem henüz tamamlanmadı. |
+| **Market 'te yok** | Market 'te daha önce yayınlanmış bir teklif/plan kaldırılmıştır. |
 
 ## <a name="automated-validation"></a>Otomatik doğrulama
 
-Yayımlama işlemindeki ilk adım, otomatik doğrulama kümesidir. Her doğrulama adımı, teklifinizin oluşturulmasında etkinleştirmeyi seçtiğiniz bir özelliğe karşılık gelir. Bu özellik etkinleştirilemediyse, doğrulama bir sonraki yayımlama adımına atlar. Yayımlama durumu onaylanmadan önce her doğrulama denetiminin tamamlanması gerekir.
+Yayımlama işlemindeki ilk adım bir otomatik doğrulama kümesidir. Her doğrulama adımı, teklifinizin oluşturulmasında etkinleştirmeyi seçtiğiniz bir özelliğe karşılık gelir. Bu özellik etkinleştirilmemişse, doğrulama sonraki yayımlama adımından önce atlar. Yayımlama durumu onaylanmadan önce her doğrulama denetiminin tamamlanması gerekir.
 
-- **Teklif satın alma akışı kurulumu (10 dk <)**
+- **Teklif satın alma akışı kurulumu (<10 dk)**
 
-Bu adımda, azure portalı üzerinden müşteriler tarafından satın alındığında teklifinizin yerine getirilebileceğinden emin oluruz. Bu adım yalnızca Microsoft üzerinden satılan teklifler için geçerlidir.
+Bu adımda, teklif Azure portal aracılığıyla müşteriler tarafından satın alındığında teklifinizin karşılanabileceği güvence altına alınır. Bu adım yalnızca Microsoft ile satılan teklifler için geçerlidir.
 
-- **Test sürüşü veri doğrulaması (~5 dk)**
+- **Sınama sürücüsü veri doğrulaması (~ 5 dakika)**
 
-Bu adımda, teklifin test sürüşü Teknik yapılandırma bölümünde sağladığınız verileri doğrularız. Test sürüşü işlevselliği test edilir ve onaylanır. Bu adım yalnızca test sürüşü etkinleştirilmiş teklifler için geçerlidir.
+Bu adımda, teklifinin test sürücüsü teknik yapılandırma bölümünde belirttiğiniz verileri doğrulayacağız. Sınama sürücüsü işlevselliği test edilir ve onaylanır. Bu adım yalnızca bir test sürücüsü etkin olan teklifler için geçerlidir.
 
-- **Test sürüşü sağlama (~30 dk)**
+- **Sınama sürücüsü sağlama (~ 30 dakika)**
 
-Bu adımda, önceki adımda test sürücünüzün verilerini ve işlevselliğini doğruladıktan sonra, test sürücünüzün örneklerini müşteri kullanımına hazır olacak şekilde dağıtıp çoğaltıyoruz.  Bu adım yalnızca test sürüşü etkinleştirilmiş teklifler için geçerlidir.
+Bu adımda, önceki adımda test sürücünüzün verileri ve işlevlerini doğruladıktan sonra, test sürücünüzün örneklerini dağıtıp çoğaltarak müşteri kullanımına hazırlarız.  Bu adım yalnızca bir test sürücüsü etkin olan teklifler için geçerlidir.
 
-- **Müşteri adayı yönetimi doğrulama ve kayıt (15 dk <)**
+- **Müşteri adayı yönetimi doğrulama ve kayıt (<15 dk)**
 
-Bu adımda, müşteri adayı yönetim sisteminizin Teklif kurulumunda sağlanan ayrıntılara bağlı olarak müşteri müşteri adaylarını alabileceğini onaylıyoruz. Bu adım yalnızca Müşteri Adayı yönetimi etkinleştirilmiş teklifler için geçerlidir.
+Bu adımda, müşteri adayı yönetim sisteminizin müşteri adaylarını teklif kurulumunda belirtilen ayrıntılara göre alabileceği onaylanır. Bu adım yalnızca, lider yönetimi etkinleştirilmiş teklifler için geçerlidir.
 
 ## <a name="certification"></a>Sertifika
 
-Yayınlanmadan önce, İş Ortağı Merkezi'ndeki Commercial Marketplace'e sunulan tekliflerin onaylanması gerekmektedir. Gönderilen teklifler, [Azure Marketi sertifika ilkelerine](https://docs.microsoft.com/legal/marketplace/general-policies)karşı bir denetim de dahil olmak üzere bazı otomatik ve diğerleri el kitabından sıkı bir testten geçer. Teklif gönderimleri, yayımlama akışındaki bir sonraki adıma geçmeden önce sertifika almaya uygun olarak işaretlenmelidir.
+Yayımlanmadan önce, Iş Ortağı Merkezi 'nde ticari Market 'e gönderilen tekliflerin sertifikalı olması gerekir. Gönderilen, [Azure Marketi sertifika ilkelerine](https://docs.microsoft.com/legal/marketplace/general-policies)yönelik bir denetim de dahil olmak üzere, daha kapsamlı bir test, bazı otomatikleştirilmiş ve diğer el ile bir kılavuz sunar Teklif gönderimlerinin, yayımlama akışında bir sonraki adıma geçmeden önce sertifika için uygun olarak işaretlenmesi gerekir.
 
-### <a name="types-of-validation-that-take-place-during-certification"></a>Sertifikalama sırasında gerçekleşen doğrulama türleri
+### <a name="types-of-validation-that-take-place-during-certification"></a>Sertifika sırasında gerçekleşen doğrulama türleri
 
-Sunulan her teklif için sertifika sürecine dahil edilen üç doğrulama düzeyi vardır.
+Gönderilen her teklif için sertifika işlemine dahil edilen üç doğrulama düzeyi vardır.
 
-- Yayıncı iş uygunluğu
+- Yayımcı iş uygunluğu
 - İçerik doğrulama
 - Teknik doğrulama
 
-#### <a name="publisher-business-eligibility"></a>Yayıncı iş uygunluğu
+#### <a name="publisher-business-eligibility"></a>Yayımcı iş uygunluğu
 
-Her teklif türü, yayımcının karşılaması gereken bir dizi temel uygunluk ölçütlerini denetler. Uygunluk kriterleri yayıncının MPN durumunu, düzenlenen yetkinlikleri, yetkinlik düzeylerini vb. içerebilir.
+Her teklif türü, yayımcının karşılaması gereken bir temel uygunluk ölçütü kümesini denetler. Uygunluk ölçütleri, yayımcının MPN durumunu, Uzmanlıklar, Uzmanlıklar düzeylerini, vb. içerebilir.
 
 #### <a name="content-validation"></a>İçerik doğrulama
 
-İçerik doğrulama sırasında, teklifinizi oluşturduğunuzda girilen bilgiler kalite ve alaka düzeyi açısından denetlenir. Bu denetimler, pazar yeri listeleme ayrıntıları, fiyatlandırma, kullanılabilirlik, ilişkili planlar, vb. için girişlerinizi inceler. Azure Marketi ve/veya AppSource giriş kriterlerini karşılamak için teklifinizin şunları içerdiğini doğrularız:
+İçerik doğrulaması sırasında, teklifinizi oluştururken girilen bilgiler kalite ve ilgi açısından denetlenir. Bu denetimler Market listeleme ayrıntıları, fiyatlandırma, kullanılabilirlik, ilişkili planlar vb. için girdilerinizi gözden geçirir. Azure Marketi ve/veya AppSource listeleme ölçütlerini karşılamak için teklifinizin şunları içerdiğini doğrulayacağız:
 
-- teklifi doğru bir şekilde açıklayan bir başlık;
+- teklifi doğru şekilde açıklayan bir başlık;
 - kapsamlı bir genel bakış ve değer teklifi sağlayan iyi yazılmış açıklamalar;
-- kaliteli ekran görüntüleri ve beraberindeki videolar; Ve
-- teklifin Microsoft platformlarını ve araçlarını nasıl kullandığına ilişkin bir açıklama.
+- kaliteli ekran görüntüleri ve ilgili videolar; '
+- Teklifin Microsoft platformlarını ve araçlarını nasıl kullandığını gösteren bir açıklama.
 
-[Genel listeleme politikalarını](https://docs.microsoft.com/legal/marketplace/certification-policies#100-general)okuyarak içerik doğrulama ölçütleri hakkında daha fazla bilgi edinin.
+[Genel listeleme ilkelerini](https://docs.microsoft.com/legal/marketplace/certification-policies#100-general)okuyarak içerik doğrulama ölçütleriyle ilgili daha fazla bilgi edinin.
 
 #### <a name="technical-validation"></a>Teknik doğrulama
 
-Teknik doğrulama sırasında, teklif (paket veya ikili) aşağıdaki kontrollerden geçer.
-- Kötü amaçlı yazılımlar için taranan
-- Ağ aramaları izlenir
-- Paket analiz edildi
-- Teklifin gerçek işlevselliğinin kapsamlı olarak taranması
+Teknik doğrulama sırasında, teklif (paket veya ikili) aşağıdaki denetimleri altına girer.
+- Kötü amaçlı yazılım için tarandı
+- İzlenen ağ çağrıları
+- Paket çözümlendi
+- Teklifin gerçek işlevlerinin tam taranması
 
-Teklif, sağlam olduğundan emin olmak için çeşitli platformlarda ve sürümlerde test edilir.
+Teklif, güçlü olduğundan emin olmak için çeşitli platformlar ve sürümler arasında test edilir.
 
-Bu belgenin Teknik yapılandırma bölümünde teklifiniz için gereken belirli yapılandırma ayrıntılarını gözden geçirin.
+Bu belgenin teknik yapılandırma bölümünde teklifiniz için gereken belirli yapılandırma ayrıntılarını gözden geçirin.
 
-### <a name="certification-failure-report"></a>Sertifika hatası raporu
+### <a name="certification-failure-report"></a>Sertifika hata raporu
 
-İnceleme tamamlandıktan sonra, teklifiniz sertifikayı geçtiyse, yayımlama sürecinde bir sonraki adıma geçer. Teklifiniz giriş, teknik veya ilke denetimlerinden herhangi birinde başarısız olduysa veya bu tür bir teklifi göndermeye uygun değilseniz, bir sertifika hatası raporu oluşturulur ve size e-posta ile gönderir.
+Gözden geçirmeyi tamamladıktan sonra, teklifiniz sertifikayı geçirirse yayımlama sürecinde bir sonraki adıma geçer. Teklifiniz hiçbir liste, teknik veya ilke denetimini başarısız olduysa ya da bu türden bir teklif göndermeye uygun değilseniz, bir sertifika hatası raporu oluşturulur ve size gönderilir.
 
-Bu rapor, gözden geçirme notları ile birlikte başarısız olan tüm ilkelerin açıklamalarını içerir. Bu e-posta raporunu gözden geçirin, herhangi bir sorunu ele alın, gerektiğinde teklifinizi güncelleyin ve İş Merkezi'ndeki [Ticari Pazar Portalı'nı](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) kullanarak teklifi yeniden gönderin. (Teklifi, sertifikayı geçene kadar gerektiği kadar yeniden gönderebilirsiniz).
+Bu rapor, gözden geçirme notlarıyla birlikte başarısız olan ilkelerin açıklamalarını içerir. Bu e-posta raporunu gözden geçirin, herhangi bir sorunu çözün, sizin teklifinizde gereken güncelleştirmeleri yapın ve teklifi Iş Ortağı Merkezi ' nde [ticari Market portalı](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) 'nı kullanarak yeniden gönderin. (Sertifikayı, sertifika geçirmeden önce gerektiği kadar çok kez yeniden gönderebilirsiniz).
 
 ## <a name="preview-creation"></a>Önizleme oluşturma
 
-Önizleme **oluşturma** adımı sırasında, teklifinizin yalnızca teklifinizin Önizleme bölümünde belirttiğiniz hedef kitletarafından erişilebilir bir sürümünü oluştururuz.
+**Önizleme oluşturma** adımı sırasında teklifinizin yalnızca teklifinizin Önizleme bölümünde belirttiğiniz kitlelerin erişebileceği bir sürümünü oluşturacağız.
 
 >[!Note]
-> Bu adımı, kuruluşunuz dışındaki kişilere bir teklifte görünürlük sağlamak için kullanmayın. Bunun yerine **Özel Teklif** seçeneğini kullanın. Bu noktada, teklifiniz tam olarak test edilmemiş ve doğrulanmamıştır ve dış dağıtım için hazır değildir.
+> Bu adımı, kuruluşunuzun dışındaki kişileri bir teklifle görünürlüğe yönelik olarak sunmak için kullanmayın. Bunun yerine **özel teklif** seçeneğini kullanın. Bu noktada, teklifiniz tam olarak sınanmamıştır ve doğrulanmaz ve dağıtım dışı için hazırlanma.
 
-## <a name="publisher-approval"></a>Yayıncı onayı
+## <a name="publisher-approval"></a>Yayımcı onayı
 
-Bu adımda, son yayımlama adımından önce teklif önizlemenizi gözden geçirmeniz ve onaylamanız için size bir istek gönderilecektir.
+Bu adımda, son yayımlama adımından önce teklif önizlemeyi gözden geçirmeniz ve onaylamanız için bir istek ile e-postayla gönderilir.
 
-Teklifinizi Microsoft aracılığıyla satmayı seçtiyseniz, bu önizleme onay aşamasında gereksinimlerinizi karşıladığından emin olmak için teklifinizin edinisini ve dağıtımını test edebilirsiniz. Teklifiniz henüz halka açık pazarda sunulmayacaktır. Bu önizlemeyi test edip onayladıktan sonra, [**Teklife Genel Bakış**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) panosunda **Go-Live'ı** seçmeniz gerekir.
+Teklifinizi Microsoft aracılığıyla satmayı seçtiyseniz, bu Önizleme onay aşaması sırasında gereksinimlerinizi karşıladığından emin olmak için teklifinizin Alım ve dağıtımını test edebilirsiniz. Teklifiniz henüz genel Market 'te kullanılamayacak. Bu önizlemeyi test edin ve onayladıktan sonra [**teklif genel bakış**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) panosunda **Go-Live** ' ı seçmeniz gerekir.
 
-Bu önizleme aşamasında teklifte değişiklik yapmak istiyorsanız, yeni bir önizleme yayınlamak için düzenleyebilir ve yeniden gönderebilirsiniz. Makaleye bakın Daha fazla değişiklik hakkında ayrıntılar için [varolan pazar teklifini](#update-existing-marketplace-offers) güncelleştirin.
+Bu önizleme aşamasında teklifte değişiklik yapmak istiyorsanız, yeni bir önizleme yayınlamak için düzenleyebilir ve yeniden gönderebilirsiniz. Daha fazla değişiklik hakkında daha fazla bilgi için [mevcut Market tekliflerini güncelleştirme](#update-existing-marketplace-offers) makalesine bakın.
 
-Teklifiniz zaten yayındaysa ve pazarda herkese açıksa, [**TeklifE Genel Bakış**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) panosunda **Go-live'ı** seçene kadar yaptığınız güncellemeler geçerli olmaz.
+Teklifiniz zaten canlı ve Market 'te herkese açık ise, [**teklif genel bakış**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) panosundaki canlı **çalış** ' ı seçene kadar yaptığınız tüm güncelleştirmeler canlı olmaz.
 
-### <a name="publish-offer-to-the-public"></a>Teklifi halka yayınlama
+### <a name="publish-offer-to-the-public"></a>Teklifi herkese Yayımla
 
-Partner Center'da oturum açın ve teklife erişin. **Teklif'e genel bakış** sayfasına yönlendirilirsiniz. Bu sayfanın üst **kısmında, canlı git**seçeneği göreceksiniz. **Canlı Git'i** seçin ve onaylandıktan sonra teklif herkese yayınlanmaya başlayacaktır. Teklif canlı olduğunda bir e-posta bildirimi alırsınız.
+Iş Ortağı Merkezi ' nde oturum açın ve teklifine erişin. **Teklif genel bakış** sayfasına yönlendirilirsiniz. Bu sayfanın en üstünde, **canlı go**için bir seçenek görürsünüz. **Canlı git '** i seçin ve onayladıktan sonra teklif herkese yayınlanmasına başlayacaktır. Teklif canlı olduğunda bir e-posta bildirimi alacaksınız.
 
 ## <a name="publish"></a>Yayımlama
 
-Artık teklifinizle **birlikte yaşamaya devam** etmeyi seçtiğinize göre, teklifi pazarda kullanıma sunmak için, canlı teklifin teklifin önizleme sürümü gibi yapılandırıldığından emin olmak için aşamalı olarak verilecek bir dizi son doğrulama denetimi vardır.
+Teklifinizle **canlı çalışmaya** ve Market 'te kullanılabilir hale getirmeyi seçtiğinizden, canlı teklifin teklifin önizleme sürümü gibi yapılandırıldığından emin olmak için bir dizi son doğrulama denetimi vardır.
 
-- **Teklif satın alma akışı kurulumu (10 dk >)**
+- **Teklif satın alma akışı kurulumu (>10 dk)**
 
-Bu adımda, azure portalı üzerinden müşteriler tarafından satın alındığında teklifinizin yerine getirilebileceğinden emin oluruz. Bu adım yalnızca Microsoft üzerinden satılan teklifler için geçerlidir.
+Bu adımda, teklif Azure portal aracılığıyla müşteriler tarafından satın alındığında teklifinizin karşılanabileceği güvence altına alınır. Bu adım yalnızca Microsoft ile satılan teklifler için geçerlidir.
 
-- **Test sürüşü veri doğrulaması (~5 dk)**
+- **Sınama sürücüsü veri doğrulaması (~ 5 dakika)**
 
-Bu adımda, teklifin test sürüşü Teknik yapılandırma bölümünde sağladığınız verileri doğrularız. Test sürüşü işlevselliği test edilir ve onaylanır. Bu adım yalnızca test sürüşü etkinleştirilmiş teklifler için geçerlidir.
+Bu adımda, teklifinin test sürücüsü teknik yapılandırma bölümünde belirttiğiniz verileri doğrulayacağız. Sınama sürücüsü işlevselliği test edilir ve onaylanır. Bu adım yalnızca bir test sürücüsü etkin olan teklifler için geçerlidir.
 
-- **Test sürüşü sağlama (~30 dk)**
+- **Sınama sürücüsü sağlama (~ 30 dakika)**
 
-Bu adımda, test sürüşünüzün örneklerini müşteri kullanımına hazır olacak şekilde dağıtıp çoğaltıyoruz.  Bu adım yalnızca test sürüşü etkinleştirilmiş teklifler için geçerlidir.
+Bu adımda, test sürücünüzün örneklerini dağıtıp çoğaltarak müşteri kullanımına hazırlarız.  Bu adım yalnızca bir test sürücüsü etkin olan teklifler için geçerlidir.
 
-- **Müşteri adayı yönetimi doğrulama ve kayıt (15 dk >)**
+- **Müşteri adayı yönetimi doğrulama ve kayıt (>15 dk)**
 
-Bu adımda, müşteri adayı yönetim sisteminizin Teklif kurulumunda sağlanan ayrıntılara bağlı olarak müşteri müşteri adaylarını alabileceğini onaylıyoruz. Bu adım yalnızca Müşteri Adayı yönetimi etkinleştirilmiş teklifler için geçerlidir.
+Bu adımda, müşteri adayı yönetim sisteminizin müşteri adaylarını teklif kurulumunda belirtilen ayrıntılara göre alabileceği onaylanır. Bu adım yalnızca, lider yönetimi etkinleştirilmiş teklifler için geçerlidir.
 
-- **Son yayın (>30 dakika)**
+- **Son yayımlama (>30 dakika)**
 
-Bu adımda, teklifinizin pazarda herkese açık olmasını sağlıyoruz.
+Bu adımda, teklifinizin Market 'te herkese açık hale geldiğini güvence altına sunuyoruz.
 
-## <a name="update-existing-marketplace-offers"></a>Mevcut pazar tekliflerinin güncelleştirin
+## <a name="update-existing-marketplace-offers"></a>Mevcut Market tekliflerini güncelleştir
 
-Daha önce yayımlamış olduğunuz bir teklifte değişiklik yapmak istiyorsanız, önce varolan teklifi güncelleştirmeniz ve ardından yeniden yayımlamanız gerekir.
+Önceden yayımladığınız bir teklifte değişiklik yapmak istiyorsanız, önce mevcut teklifi güncelleştirmeniz ve sonra yeniden yayımlamanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

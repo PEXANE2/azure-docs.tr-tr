@@ -1,6 +1,6 @@
 ---
-title: Rota ağ trafiği - Azure CLI | Microsoft Dokümanlar
-description: Bu makalede, Azure CLI'yi kullanarak ağ trafiğini bir rota tablosuyla nasıl yönlendireceklerini öğrenin.
+title: Yönlendirme ağ trafiği-Azure CLı | Microsoft Docs
+description: Bu makalede, Azure CLı kullanarak bir yönlendirme tablosu ile ağ trafiğini yönlendirmeyi öğrenin.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -18,13 +18,13 @@ ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 5fa94b93e081ab6334c39b848068f50682f5f1f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235062"
 ---
-# <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Azure CLI'yi kullanarak ağ trafiğini bir rota tablosuyla yönlendirme
+# <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Azure CLı kullanarak bir yönlendirme tablosu ile ağ trafiğini yönlendirme
 
 Azure varsayılan olarak bir sanal ağ içindeki tüm alt ağlar arasında gerçekleşen trafiği otomatik olarak yönlendirir. Azure’ın varsayılan yönlendirmesini geçersiz kılmak için kendi yönlendirmelerinizi oluşturabilirsiniz. Örneğin, bir ağ sanal gereci üzerinden alt ağlar arasındaki trafiği yönlendirmek isteyebilirsiniz. Bu makalede şunları öğreneceksiniz:
 
@@ -36,7 +36,7 @@ Azure varsayılan olarak bir sanal ağ içindeki tüm alt ağlar arasında gerç
 * Sanal makineleri (VM) farklı alt ağlara dağıtma
 * NVA aracılığıyla trafiği bir alt ağdan başka birine yönlendirme
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -44,7 +44,7 @@ CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç i�
 
 ## <a name="create-a-route-table"></a>Yönlendirme tablosu oluşturma
 
-Bir rota tablosu oluşturmadan önce, bu makalede oluşturulan tüm kaynaklar için [az grubu oluşturduğu](/cli/azure/group) bir kaynak grubu oluşturun. 
+Bir rota tablosu oluşturabilmeniz için önce Bu makalede oluşturulan tüm kaynaklar için [az Group Create](/cli/azure/group) ile bir kaynak grubu oluşturun. 
 
 ```azurecli-interactive
 # Create a resource group.
@@ -53,7 +53,7 @@ az group create \
   --location eastus
 ```
 
-az ağ rota tablosu oluşturmak ile bir rota [tablosu oluşturun.](/cli/azure/network/route-table#az-network-route-table-create) Aşağıdaki örnek, *myRouteTablePublic*adlı bir rota tablosu oluşturur. 
+[Az Network Route-Table Create](/cli/azure/network/route-table#az-network-route-table-create)komutuyla bir yol tablosu oluşturun. Aşağıdaki örnek *Myroutetablepublic*adlı bir yol tablosu oluşturur. 
 
 ```azurecli-interactive
 # Create a route table
@@ -64,7 +64,7 @@ az network route-table create \
 
 ## <a name="create-a-route"></a>Yönlendirme oluşturma
 
-Az ağ rota tablosu rotası oluşturmak ile rota tablosunda bir rota [oluşturun.](/cli/azure/network/route-table/route#az-network-route-table-route-create) 
+Rota tablosunda [az Network Route-Table Route Create](/cli/azure/network/route-table/route#az-network-route-table-route-create)komutuyla bir yol oluşturun. 
 
 ```azurecli-interactive
 az network route-table route create \
@@ -78,7 +78,7 @@ az network route-table route create \
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Yönlendirme tablosunu bir alt ağ ile ilişkilendirme
 
-Bir rota tablosunu bir alt ağla ilişkilendirebilmek için sanal bir ağ ve alt ağ oluşturmanız gerekir. [Az ağ vnet oluşturmak](/cli/azure/network/vnet)ile bir alt net ile sanal ağ oluşturun.
+Bir rota tablosunu bir alt ağ ile ilişkilendirebilmeniz için önce bir sanal ağ ve alt ağ oluşturmanız gerekir. [Az Network VNET Create](/cli/azure/network/vnet)komutuyla bir alt ağa sahip bir sanal ağ oluşturun.
 
 ```azurecli-interactive
 az network vnet create \
@@ -89,7 +89,7 @@ az network vnet create \
   --subnet-prefix 10.0.0.0/24
 ```
 
-[az ağ vnet subnet oluşturmak](/cli/azure/network/vnet/subnet)ile iki ek alt ağ oluşturun.
+[Az Network VNET subnet Create](/cli/azure/network/vnet/subnet)ile iki ek alt ağ oluşturun.
 
 ```azurecli-interactive
 # Create a private subnet.
@@ -107,7 +107,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-*MyRouteTablePublic* rota tablosunu *az* network [vnet subnet güncellemesi](/cli/azure/network/vnet/subnet)ile Genel alt netle ilişkilendirin.
+*Myroutetablepublic* yol tablosunu [az Network VNET subnet Update](/cli/azure/network/vnet/subnet)ile *ortak* alt ağ ile ilişkilendirin.
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -121,7 +121,7 @@ az network vnet subnet update \
 
 NVA; yönlendirme, güvenlik duvarı oluşturma veya WAN iyileştirmesi gibi ağ işlevlerini gerçekleştiren bir VM'dir.
 
-[Az vm oluşturmak](/cli/azure/vm)ile *DMZ* alt net bir NVA oluşturun. Bir VM oluşturduğunuzda, Azure varsayılan olarak VM'ye genel bir IP adresi oluşturur ve atar. Parametre, `--public-ip-address ""` VM'nin internetten bağlanması gerekmediği için Azure'a vm'ye genel bir IP adresi oluşturmamasını ve atamasını bildirir. SSH anahtarları, varsayılan anahtar konumunda zaten mevcut değilse komut bunları oluşturur. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
+[Az VM Create](/cli/azure/vm)komutuyla *DMZ* alt ağında bir NVA oluşturun. Bir VM oluşturduğunuzda, Azure varsayılan olarak VM 'ye genel bir IP adresi oluşturur ve atar. `--public-ip-address ""` PARAMETRESI, VM 'nin internet 'ten bağlanması gerektiğinden, Azure 'un VM 'ye genel bir IP adresi oluşturmasını ve atamasını sağlar. SSH anahtarları, varsayılan anahtar konumunda zaten mevcut değilse komut bunları oluşturur. Belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
 
 ```azurecli-interactive
 az vm create \
@@ -134,9 +134,9 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Sanal makinenin oluşturulması birkaç dakika sürer. Azure VM'yi oluşturmayı bitirip VM ile ilgili çıktıyı döndürene kadar bir sonraki adıma devam etmeyin. 
+Sanal makinenin oluşturulması birkaç dakika sürer. Azure VM 'yi oluşturmayı bitirene ve VM hakkında çıkış döndürünceye kadar sonraki adıma devam etmez. 
 
-Bir ağ arabiriminin kendi IP adresini hedeflemeden kendisine gönderilen ağ trafiğini iletebilmesi için, ağ arabiriminde IP iletme özelliğinin etkinleştirilmiş olması gerekir. [Az network nic güncellemesi](/cli/azure/network/nic)ile ağ arabirimi için IP iletmesini etkinleştirin.
+Bir ağ arabiriminin kendi IP adresini hedeflemeden kendisine gönderilen ağ trafiğini iletebilmesi için, ağ arabiriminde IP iletme özelliğinin etkinleştirilmiş olması gerekir. [Az Network Nic Update](/cli/azure/network/nic)ile ağ ARABIRIMI için IP iletmeyi etkinleştirin.
 
 ```azurecli-interactive
 az network nic update \
@@ -145,7 +145,7 @@ az network nic update \
   --ip-forwarding true
 ```
 
-VM içindeki işletim sistemi veya VM içinde çalışan bir uygulama da ağ trafiğini iletebilmelidir. [Az vm uzatma seti](/cli/azure/vm/extension)ile VM işletim sistemi içinde IP iletme etkinleştirin:
+VM içindeki işletim sistemi veya VM içinde çalışan bir uygulama da ağ trafiğini iletebilmelidir. [Az VM Extension set](/cli/azure/vm/extension)ile VM 'nin işletim SISTEMI içinde IP iletmeyi etkinleştirin:
 
 ```azurecli-interactive
 az vm extension set \
@@ -160,9 +160,9 @@ Komutun yürütülmesi bir dakika kadar sürebilir.
 
 ## <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
-Daha sonraki bir adımda *NVA* üzerinden Ortak alt ağdan gelen trafiğin *Özel* alt ağına yönlendirildiğini doğrulamak için sanal ağda iki VM oluşturun. 
+*Genel* alt ağdan gelen trafiğin, sonraki bir adımda NVA aracılığıyla *özel* alt ağa yönlendirildiğini doğrulayabilmek Için sanal ağda iki VM oluşturun. 
 
-Az vm oluşturmak ile *Ortak* alt net bir [VM oluşturun.](/cli/azure/vm) Parametre, Azure'un `--no-wait` arka planda komutu yürütmesini sağlar, böylece bir sonraki komuta devam edebilirsiniz. Bu makaleyi kolaylaştırmak için bir parola kullanılır. Anahtarlar genellikle üretim dağıtımlarında kullanılır. Anahtarları kullanıyorsanız, SSH aracıyönlendirmeyi de yapılandırmanız gerekir. Daha fazla bilgi için SSH istemcinizin belgelerine bakın. Aşağıdaki `<replace-with-your-password>` komutu seçtiğiniz bir parolayla değiştirin.
+[Az VM Create](/cli/azure/vm)komutuyla *ortak* alt ağda bir VM oluşturun. `--no-wait` Parametresi, bir sonraki komuta devam edebilmeniz için Azure 'un arka planda komutu yürütmesine olanak sağlar. Bu makaleyi kolaylaştırmak için bir parola kullanılır. Anahtarlar genellikle üretim dağıtımlarında kullanılır. Anahtarları kullanıyorsanız, SSH Aracısı iletmeyi da yapılandırmanız gerekir. Daha fazla bilgi için SSH istemcinizin belgelerine bakın. Aşağıdaki `<replace-with-your-password>` komutta yerine, seçtiğiniz parolayla değiştirin.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -191,7 +191,7 @@ az vm create \
   --admin-password $adminPassword
 ```
 
-Sanal makinenin oluşturulması birkaç dakika sürer. VM oluşturulduktan sonra, Azure CLI aşağıdaki örneğe benzer bilgileri gösterir: 
+Sanal makinenin oluşturulması birkaç dakika sürer. VM oluşturulduktan sonra Azure CLı, aşağıdaki örneğe benzer bilgiler gösterir: 
 
 ```output
 {
@@ -206,25 +206,25 @@ Sanal makinenin oluşturulması birkaç dakika sürer. VM oluşturulduktan sonra
 }
 ```
 
-**publicIpAddress** değerini not alın. Bu adres, daha sonraki bir adımda VM'ye internetten erişmek için kullanılır.
+**publicIpAddress** değerini not alın. Bu adres, sonraki bir adımda sanal makineye internet 'ten erişmek için kullanılır.
 
 ## <a name="route-traffic-through-an-nva"></a>Trafiği NVA üzerinden yönlendirme
 
-*myVmPrivate* VM ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. * \<PublicIpAddress>'yi* VM'nizin genel IP adresiyle değiştirin. Yukarıdaki örnekte, IP adresi *13.90.242.231'dir.*
+*MyVmPrivate* VM Ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın. * \<Publicıpaddress>* değerini sanal makinenizin genel IP adresiyle değiştirin. Yukarıdaki örnekte, IP adresi *13.90.242.231*' dir.
 
 ```bash
 ssh azureuser@<publicIpAddress>
 ```
 
-Parola istendiğinde, seçtiğiniz parolayı sanal [makineler oluştur'a](#create-virtual-machines)girin.
+Parola istendiğinde, [sanal makineler oluştur](#create-virtual-machines)bölümünde seçtiğiniz parolayı girin.
 
-*myVmPrivate* VM'ye izleme rotası yüklemek için aşağıdaki komutu kullanın:
+İzleme yolunu *myVmPrivate* VM 'ye yüklemek için aşağıdaki komutu kullanın:
 
 ```bash
 sudo apt-get install traceroute
 ```
 
-*MyVmPrivate* VM'den *myVmPublic* VM'ye ağ trafiği için yönlendirmeyi test etmek için aşağıdaki komutu kullanın.
+*MyVmPublic* VM 'sine yönelik ağ trafiğine yönelik yönlendirmeyi test etmek için aşağıdaki komutu kullanın *myVmPrivate* VM.
 
 ```bash
 traceroute myVmPublic
@@ -237,21 +237,21 @@ traceroute to myVmPublic (10.0.0.4), 30 hops max, 60 byte packets
 1  10.0.0.4 (10.0.0.4)  1.404 ms  1.403 ms  1.398 ms
 ```
 
-Trafiğin *myVmPrivate* sanal makinesinden *myVmPublic* sanal makinesine doğrudan yönlendirildiğini görebilirsiniz. Azure'un varsayılan rotaları, trafiği doğrudan alt ağlar arasında yönlendirin. 
+Trafiğin *myVmPrivate* sanal makinesinden *myVmPublic* sanal makinesine doğrudan yönlendirildiğini görebilirsiniz. Azure 'un varsayılan yolları, trafiği doğrudan alt ağlar arasında yönlendirir. 
 
-*myVmPrivate* VM'den *myVmPublic* VM'ye SSH için aşağıdaki komutu kullanın:
+*MyVmPrivate* VM 'den *MYVMPUBLIC* VM 'ye SSH eklemek için aşağıdaki komutu kullanın:
 
 ```bash
 ssh azureuser@myVmPublic
 ```
 
-*myVmPublic* VM'ye izleme rotası yüklemek için aşağıdaki komutu kullanın:
+İzleme yolunu *myVmPublic* VM 'ye yüklemek için aşağıdaki komutu kullanın:
 
 ```bash
 sudo apt-get install traceroute
 ```
 
-*MyVmPublic* VM'den *myVmPrivate* VM'ye ağ trafiği için yönlendirmeyi test etmek için aşağıdaki komutu kullanın.
+*MyVmPrivate* VM 'sine yönelik ağ trafiğine yönelik yönlendirmeyi test etmek için aşağıdaki komutu kullanın *myVmPublic* VM.
 
 ```bash
 traceroute myVmPrivate
@@ -267,11 +267,11 @@ traceroute to myVmPrivate (10.0.1.4), 30 hops max, 60 byte packets
 
 İlk atlamanın, NVA özel IP adresi olan 10.0.2.4 olduğunu görebilirsiniz. İkinci atlama ise *myVmPrivate* sanal makinesinin özel IP adresi olan 10.0.1.4’tür. *myRouteTablePublic* yönlendirme tablosuna eklenip *Genel* alt ağ ile ilişkilendirilen yönlendirme, Azure’un trafiği doğrudan *Özel* alt ağına yönlendirmek yerine NVA aracılığıyla yönlendirmesine neden olmuştur.
 
-SSH oturumlarını hem *myVmPublic* hem de *myVmPrivate* VM'lere kapatın.
+SSH oturumlarını hem *myVmPublic* hem de *myVmPrivate* VM 'lerine kapatın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekmediğinde, kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için [az grubu silme'yi](/cli/azure/group) kullanın.
+Artık gerekli değilse, [az Group Delete](/cli/azure/group) ' i kullanarak kaynak grubunu ve içerdiği tüm kaynakları kaldırın.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -279,6 +279,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir rota tablosu oluşturdunuz ve bir alt ağla ilişkilendirdin. Bir genel alt ağdan özel alt ağa trafiği yönlendiren basit bir NVA oluşturdunuz. [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking)’ten güvenlik duvarı ve WAN iyileştirme gibi ağ işlevleri gerçekleştiren, önceden yapılandırılmış çeşitli NVA’lar dağıtın. Yönlendirme hakkında daha fazla bilgi için bkz. [Yönlendirmeye genel bakış](virtual-networks-udr-overview.md) ve [Yönlendirme tablosunu yönetme](manage-route-table.md).
+Bu makalede bir rota tablosu oluşturdunuz ve bir alt ağ ile ilişkilendirdiyseniz. Bir genel alt ağdan özel alt ağa trafiği yönlendiren basit bir NVA oluşturdunuz. [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking)’ten güvenlik duvarı ve WAN iyileştirme gibi ağ işlevleri gerçekleştiren, önceden yapılandırılmış çeşitli NVA’lar dağıtın. Yönlendirme hakkında daha fazla bilgi için bkz. [Yönlendirmeye genel bakış](virtual-networks-udr-overview.md) ve [Yönlendirme tablosunu yönetme](manage-route-table.md).
 
-Bir sanal ağ içinde çok sayıda Azure kaynağına dağıtabilmenize karşın, bazı Azure PaaS hizmetlerinin kaynakları bir sanal ağa dağıtılamaz. Yine de, bazı Azure PaaS hizmetlerinin kaynaklarına erişimi yalnızca bir sanal ağ alt ağından gelecek trafikle kısıtlayabilirsiniz. Nasıl yapılacağını öğrenmek [için](tutorial-restrict-network-access-to-resources-cli.md)bkz.
+Bir sanal ağ içinde çok sayıda Azure kaynağına dağıtabilmenize karşın, bazı Azure PaaS hizmetlerinin kaynakları bir sanal ağa dağıtılamaz. Yine de, bazı Azure PaaS hizmetlerinin kaynaklarına erişimi yalnızca bir sanal ağ alt ağından gelecek trafikle kısıtlayabilirsiniz. Nasıl yapılacağını öğrenmek için bkz. [PaaS kaynaklarına ağ erişimini kısıtlama](tutorial-restrict-network-access-to-resources-cli.md).

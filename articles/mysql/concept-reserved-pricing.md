@@ -1,83 +1,83 @@
 ---
-title: Ayrılmış kapasiteye sahip işlem için ön ödeme - MySQL için Azure Veritabanı
-description: Ayrılmış kapasiteye sahip MySQL işlem kaynakları için Azure Veritabanı için ön ödeme
+title: Ayrılmış kapasiteye sahip işlem için ön ödeme-MySQL için Azure veritabanı
+description: Ayrılmış kapasiteye sahip MySQL için Azure veritabanı işlem kaynakları için ön ödeme
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 78c8750de7189bad33e9bbc766a3d7543a646f6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159362"
 ---
-# <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip MySQL işlem kaynakları için Azure Veritabanı için ön ödeme
+# <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip MySQL için Azure veritabanı işlem kaynakları için ön ödeme
 
-MySQL için Azure Veritabanı artık işlem kaynakları için ön ödeme yaparak, istediğiniz kadar öde fiyatlarıyla karşılaştırıldığında paradan tasarruf etmenizi sağlıyor. MySQL için Azure Veritabanı rezerve etme kapasitesiyle, işlem maliyetlerinde önemli bir indirim elde etmek için mysql sunucusunda bir veya üç yıllık bir süre için ön taahhütte bulunabilirsiniz. MySQL ayrılmış kapasite için Azure Veritabanı'nı satın almak için Azure bölgesini, dağıtım türünü, performans katmanını ve terimini belirtmeniz gerekir. </br>
+MySQL için Azure veritabanı artık, Kullandıkça Öde fiyatlarına kıyasla işlem kaynakları için ön ödeme yaparak paradan tasarruf etmenize yardımcı olur. MySQL için Azure veritabanı kapasitesi için, işlem maliyetlerine göre önemli bir indirim elde etmek üzere MySQL Server 'da bir veya üç yıllık dönem için bir ön taahhüt yaparsınız. MySQL için Azure veritabanı 'na ayrılan kapasiteyi satın almak için Azure bölgesini, dağıtım türünü, performans katmanını ve terimi belirtmeniz gerekir. </br>
 
-MySQL sunucuları için rezervasyonu belirli Azure Veritabanına atamanız gerekmez. MySQL için veya yeni dağıtılanlar için zaten çalışan bir Azure Veritabanı, ayrılmış fiyatlandırmadan otomatik olarak yararlanır. Bir rezervasyon satın alarak, bir veya üç yıllık bir süre için işlem maliyetleri için ön ödeme yapıyorsunuz. Bir rezervasyon satın alır almaz, MySQL bilgisayar için Azure veritabanı, rezervasyon öznitelikleriyle eşleşen ücretler artık kullandıkça öde fiyatlarıüzerinden ücretlendirilmez. Rezervasyon, MySQL Veritabanı sunucusuyla ilişkili yazılım, ağ veya depolama ücretlerini kapsamaz. Rezervasyon döneminin sonunda, faturalandırma avantajının süresi doluyor ve MySQL için Azure Veritabanı size ödeme fiyatından faturalandırılır. Rezervasyonlar otomatik olarak yenilemez. Fiyatlandırma bilgileri için [MySQL ayrılmış kapasite teklifi için Azure Veritabanı'na](https://azure.microsoft.com/pricing/details/mysql/)bakın. </br>
+Ayırmayı, MySQL için belirli Azure veritabanı sunucularına atamanız gerekmez. Zaten bir MySQL için Azure veritabanı veya yeni dağıtılmış olanlar, ayrılmış fiyatlandırma avantajını otomatik olarak alır. Bir rezervasyon satın alarak, bir veya üç yıllık bir dönem için işlem maliyetleri için ön ödeme yaparsınız. Bir rezervasyon satın alarak, rezervasyon öznitelikleriyle eşleşen MySQL için Azure veritabanı işlem ücretleri artık Kullandıkça Öde tarifelerine göre ücretlendirilir. Bir ayırma, MySQL veritabanı sunucusuyla ilişkili yazılım, ağ veya depolama ücretlerini kapsamaz. Rezervasyon döneminin sonunda, faturalandırma avantajı sona erer ve MySQL için Azure veritabanı, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Ayırmalar otomatik olarak yenilemez. Fiyatlandırma bilgileri için bkz. [MySQL Için Azure veritabanı ayrılmış kapasite teklifi](https://azure.microsoft.com/pricing/details/mysql/). </br>
 
-Azure [portalında](https://portal.azure.com/)MySQL ayrılmış kapasite için Azure Veritabanı'nı satın alabilirsiniz. Ayrılmış kapasiteyi satın almak için:
+MySQL için Azure veritabanı ayrılmış kapasitesini [Azure Portal](https://portal.azure.com/)satın alabilirsiniz. Ayrılmış kapasiteyi satın almak için:
 
-* Kullandıkça öde oranlarına sahip en az bir Kurumsal veya bireysel abonelik için sahip rolünde olmalısınız.
-* Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Veya bu ayar devre dışı bırakılmışsa, abonelikte bir EA Yöneticisi olmalısınız.
-* Bulut Çözüm Sağlayıcısı (CSP) programı için, MySQL ayrılmış kapasite için azure veritabanını yalnızca yönetici aracılar veya satış temsilcileri satın alabilir. </br>
+* Kullandıkça Öde tarifesine sahip en az bir kuruluş veya ayrı bir abonelik için sahip rolünde olmanız gerekir.
+* Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
+* Bulut çözümü sağlayıcısı (CSP) programı için, yalnızca yönetici aracıları veya satış aracıları, MySQL için Azure veritabanı ayrılmış kapasitesini satın alabilir. </br>
 
-Kurumsal müşterilerin ve Sizden Önce Öde müşterilerinin rezervasyon satın alımları için nasıl ücretlendirildikine ilişkin ayrıntılar, [Kurumsal kaydınız için Azure rezervasyon kullanımını anlayın](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ve [Kullan-Kaç'a Göre Aboneliğiniz için Azure rezervasyon kullanımını anlayın.](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+Kurumsal müşterilerin ve kullandıkça öde müşterilerinin, rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkındaki ayrıntılar, bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ve [Kullandıkça Öde aboneliğiniz için Azure rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
 
 
 ## <a name="determine-the-right-database-size-before-purchase"></a>Satın almadan önce doğru veritabanı boyutunu belirleme
 
-Rezervasyon un boyutu, belirli bir bölge içinde varolan veya yakında dağıtılacak sunucu tarafından kullanılan ve aynı performans katmanı ve donanım oluşturmayı kullanan toplam işlem miktarına dayanmalıdır.</br>
+Ayırma boyutu, belirli bir bölgedeki mevcut veya kısa süreli dağıtılan sunucu tarafından kullanılan ve aynı performans katmanını ve donanım üretimini kullanan toplam işlem miktarına bağlı olmalıdır.</br>
 
-Örneğin, genel bir amaç, Gen5 - 32 vCore MySQL veritabanı ve iki bellek optimize, Gen5 - 16 vCore MySQL veritabanları çalıştırdığınızı varsayalım. Ayrıca, önümüzdeki ay içinde ek bir genel amaç, Gen5 - 32 vCore veritabanı sunucusu ve bir bellek optimize, Gen5 - 16 vCore veritabanı sunucusu dağıtmak için plan varsayalım. Bu kaynaklara en az 1 yıl boyunca ihtiyacınız olacağını bildiğinizi varsayalım. Bu durumda, bir 64 (2x32) vCores, tek veritabanı genel amaçlı 1 yıl rezervasyon - Gen5 ve 48 (2x16 + 16) tek veritabanı bellek için 1 yıl rezervasyon optimize - Gen5 satın almalısınız
+Örneğin, bir genel amaç, 5. nesil – 32 sanal çekirdek MySQL veritabanı ve iki bellek için iyileştirilmiş, 5. nesil – 16 sanal çekirdek MySQL veritabanları kullandığınızı varsayalım. Ayrıca, bir sonraki ay içinde, ek bir genel amaç, 5. nesil – 32 sanal çekirdek veritabanı sunucusu ve bir bellek için iyileştirilmiş, 5. nesil – 16 sanal çekirdek veritabanı sunucusu arasında dağıtmayı planladığınızı varsayalım. En az 1 yılda bu kaynaklara ihtiyacınız olacağını bildiğinizi varsayalım. Bu durumda, tek veritabanı belleği için iyileştirilmiş-5. nesil için 64 (2x32) sanal çekirdekleri, tek veritabanı için 1 yıl ayırma genel amaçlı-5. nesil ve 48 (2x16 + 16) sanal çekirdek 1 yıl ayırması satın almalısınız
 
 
-## <a name="buy-azure-database-for-mysql-reserved-capacity"></a>MySQL ayrılmış kapasite için Azure Veritabanı satın alın
+## <a name="buy-azure-database-for-mysql-reserved-capacity"></a>MySQL için Azure veritabanı ayrılmış kapasitesi satın alın
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
-2. **Tüm hizmetler** > **rezervasyonlarını**seçin.
-3. Satın alma rezervasyonları bölmesinde **Ekle'yi** seçin ve MySQL veritabanlarınız için yeni bir rezervasyon satın almak **için MySQL için Azure Veritabanı'nı** seçin.
-4. Gerekli alanları doldurun. Seçtiğiniz özniteliklerle eşleşen varolan veya yeni veritabanları ayrılmış kapasite indirimini almaya hak kazanır. İndirimalan MySQL sunucuları için Azure Veritabanınızın gerçek sayısı, seçilen kapsam ve miktara bağlıdır.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
+2. **Tüm hizmet** > **ayırmaları**' ni seçin.
+3. **Ekle** ' yi seçin ve ardından satın alma rezervasyonları bölmesinde MySQL **için Azure veritabanı** ' nı seçerek MySQL veritabanlarınız için yeni bir ayırma satın alabilirsiniz.
+4. Gerekli alanları doldur. ' Yi seçtiğiniz özniteliklerle eşleşen mevcut veya yeni veritabanları, ayrılmış kapasite indirimi elde etmek için nitelendir ' ı seçin. İskontoyu alan MySQL için Azure veritabanı sunucularınızın gerçek sayısı, seçilen kapsama ve miktara bağlıdır.
 
 
 ![Ayrılmış fiyatlandırmaya genel bakış](media/concepts-reserved-pricing/mysql-reserved-price.png)
 
 
-Aşağıdaki tabloda gerekli alanları açıklanmaktadır.
+Aşağıdaki tablo gerekli alanları açıklar.
 
 | Alan | Açıklama |
 | :------------ | :------- |
-| Abonelik   | MySQL için Azure Veritabanı için ödeme yapmak için kullanılan abonelik, ayrılmış kapasite rezervasyonu. Abonelikteki ödeme yöntemi, MySQL ayrılmış kapasite rezervasyonu için Azure Veritabanı için ön maliyetlerden ücretlendirilir. Abonelik türü bir kurumsal sözleşme (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya gidilecek kadar öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) ile bireysel bir anlaşma olmalıdır. Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Gittikçe öde fiyatlandırmasına sahip tek bir abonelik için, ücretler abonelikteki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
-| Kapsam | vCore rezervasyonun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Seçerseniz: </br></br> **Paylaşılan,** vCore rezervasyon indirimi, faturalandırma bağlamınızdaki tüm aboneliklerde çalışan MySQL sunucuları için Azure Veritabanı'na uygulanır. Kurumsal müşteriler için paylaşılan kapsam kayıttır ve kayıt içindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik,** vCore rezervasyon indirimi bu abonelikteki MySQL sunucuları için Azure Veritabanı'na uygulanır. </br></br> **Tek kaynak grubu,** rezervasyon indirimi seçili abonelikteki MySQL sunucuları için Azure Veritabanı'na ve bu abonelik içindeki seçili kaynak grubuna uygulanır.
-| Bölge | MySQL için Azure Veritabanı tarafından kapsanan Azure bölgesi, kapasite rezervasyonu için ayrılmıştır.
-| Dağıtım Türü | Rezervasyonu satın almak istediğiniz MySQL kaynak türü için Azure Veritabanı.
-| Performans Katmanı | MySQL sunucuları için Azure Veritabanı için hizmet katmanı.
+| Abonelik   | MySQL için Azure veritabanı ayrılmış kapasite ayırması için ödeme yapmak üzere kullanılan abonelik. Abonelikteki ödeme yöntemi, MySQL için Azure veritabanı ayrılmış kapasite rezervasyonu için ön maliyetler üzerinden ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
+| Kapsam | VCore rezervasyonunun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Sanal**çekirdek ayırma indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan MySQL sunucuları Için Azure veritabanı 'na uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik**, sanal çekirdek ayırma indirimi Bu abonelikteki MySQL sunucuları Için Azure veritabanı 'na uygulanır. </br></br> **Tek kaynak grubu**, rezervasyon indirimi seçili abonelikteki MySQL sunucuları Için Azure veritabanı ve bu abonelikteki seçili kaynak grubu için geçerlidir.
+| Bölge | MySQL için Azure veritabanı ayrılmış kapasite rezervasyonu kapsamındaki Azure bölgesi.
+| Dağıtım türü | Ayırmasını satın almak istediğiniz MySQL için Azure veritabanı kaynak türü.
+| Performans katmanı | MySQL için Azure veritabanı sunucuları için hizmet katmanı.
 | Sözleşme Dönemi | Bir yıl
-| Miktar | MySQL için Azure Veritabanı'nda satın alınan işlem kaynaklarının miktarı ayrılmış kapasite rezervasyonu. Miktar, seçili Azure bölgesinde ve Performans katmanında rezerve edilen ve faturalandırma indirimini alacak bir dizi vCore'dur. Örneğin, Doğu ABD bölgesinde Gen5 16 vCores'un toplam bilgi işlem kapasitesine sahip MySQL sunucuları için bir Azure Veritabanı çalıştırıyor veya çalıştırmayı planlıyorsanız, tüm sunucuların yararını en üst düzeye çıkarmak için miktarı 16 olarak belirtirsiniz.
+| Miktar | MySQL için Azure veritabanı için satın alınan işlem kaynakları miktarı ayrılmış kapasite ayırması. Bu miktar, seçili Azure bölgesindeki ve performans katmanındaki, ayrılan ve fatura iskontosunu alacak olan sanal çekirdekler sayısıdır. Örneğin, Doğu ABD bölgesinde 5. nesil 16 sanal çekirdeklerinin toplam işlem kapasitesine sahip bir MySQL için Azure veritabanı sunucusunu çalıştırıyorsanız veya çalıştırmayı planlıyorsanız, tüm sunucuların avantajını en üst düzeye çıkarmak için miktarı 16 olarak belirtirsiniz.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 
-Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure ayırmaları Için self servis değişimlerinin ve para iadesi](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
 
-## <a name="vcore-size-flexibility"></a>vCore boyut esnekliği
+## <a name="vcore-size-flexibility"></a>vCore boyutu esnekliği
 
-vCore boyut esnekliği, ayrılmış kapasite avantajını kaybetmeden bir performans katmanı ve bölge içinde yukarı veya aşağı ölçeklendirmenize yardımcı olur. 
+vCore boyutu esnekliği, ayrılan kapasite avantajını kaybetmeden bir performans katmanı ve bölgesi içinde ölçeği büyütme veya küçültme olanakları sağlar. 
 
-## <a name="need-help--contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
+## <a name="need-help--contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun
 
-Sorularınız varsa veya yardıma ihtiyacınız varsa, [bir destek isteği oluşturun.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-vCore rezervasyon indirimi, MySQL için Azure Veritabanı ile eşleşen MySQL sunucuları için Azure Veritabanı sayısına otomatik olarak uygulanır. MySQL ayrılmış kapasite rezervasyonu için Azure veritabanının kapsamını Azure portalı, PowerShell, CLI veya API üzerinden güncelleştirebilirsiniz. </br></br>
-MySQL için Azure Veritabanı'nı nasıl yöneteceksiniz?
+VCore ayırma indirimi, MySQL için Azure veritabanı 'na ayrılan kapasite ayırma kapsamı ve öznitelikleri ile eşleşen MySQL sunucularının Azure veritabanı sayısına otomatik olarak uygulanır. MySQL için Azure veritabanı 'nın kapsamını Azure portal, PowerShell, CLı veya API aracılığıyla ayrılmış kapasite ayırma için güncelleştirebilirsiniz. </br></br>
+MySQL için Azure veritabanı 'na ayrılan kapasiteyi yönetme hakkında bilgi edinmek için bkz. MySQL için Azure veritabanı ayrılmış kapasitesi.
 
 Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-* [Azure Rezervasyonları nedir?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+* [Azure ayırmaları nelerdir](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)?
 * [Azure Ayırmalarını yönetme](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
 * [Azure Ayrılmış Sanal Makine Örnekleri indirimini anlama](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
 * [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mysql)

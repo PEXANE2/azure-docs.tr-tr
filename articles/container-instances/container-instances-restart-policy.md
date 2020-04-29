@@ -1,26 +1,26 @@
 ---
-title: Çalıştırma sonrası görevler için ilkeyi yeniden başlatma
-description: Yapı, test veya görüntü oluşturma işleri gibi tamamlanmak üzere çalışan görevleri yürütmek için Azure Kapsayıcı Örnekleri'ni nasıl kullanacağınızı öğrenin.
+title: Bir kez çalıştır görevi için yeniden başlatma ilkesi
+description: Derleme, test veya görüntü işleme işlerinde olduğu gibi, tamamlama için çalışan görevleri yürütmek üzere Azure Container Instances nasıl kullanacağınızı öğrenin.
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: 8ef4ef228038242f53abc8041470f7f596ab1157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80131503"
 ---
-# <a name="run-containerized-tasks-with-restart-policies"></a>Kapsayıcıgörevleri yeniden başlatma ilkeleriyle çalıştırma
+# <a name="run-containerized-tasks-with-restart-policies"></a>Yeniden başlatma ilkeleriyle Kapsayıcılı görevleri çalıştırma
 
 Azure Container Instances’da hızla ve kolayca kapsayıcı dağıtma olanağı, bir kapsayıcı örneğinde derleme, test ve görüntü işleme gibi tek kez çalıştırılan görevlerin yürütülmesi için cazip bir platform sağlar.
 
 Yapılandırılabilen bir yeniden başlatma ilkesiyle kapsayıcıların işlemleri tamamlandıktan sonra durdurulmasını belirtebilirsiniz. Kapsayıcı örnekleri saniyelik olarak faturalandığından, yalnızca görevinizi çalıştıran kapsayıcının çalıştığı süre boyunca kullanılan işlem kaynakları için ücret ödersiniz.
 
-Bu makalede sunulan örneklerde Azure CLI kullanılır. Azure CLI sürümü 2.0.21 veya daha büyük [yerel olarak yüklü][azure-cli-install]olmalı veya Azure Bulut [BulutU'nda](../cloud-shell/overview.md)CLI'yi kullanmalısınız.
+Bu makalede sunulan örneklerde Azure CLı kullanılır. [Yerel olarak][azure-cli-install]Azure CLI sürüm 2.0.21 veya üstünü yüklemiş olmanız veya [Azure Cloud Shell](../cloud-shell/overview.md)CLI 'yi kullanmanız gerekir.
 
 ## <a name="container-restart-policy"></a>Kapsayıcı yeniden başlatma ilkesi
 
-Azure Kapsayıcı Örnekleri'nde bir [kapsayıcı grubu](container-instances-container-groups.md) oluşturduğunuzda, üç yeniden başlatma ilkesi ayarlarından birini belirtebilirsiniz.
+Azure Container Instances ' de bir [kapsayıcı grubu](container-instances-container-groups.md) oluşturduğunuzda, üç yeniden başlatma ilkesi ayarlarından birini belirtebilirsiniz.
 
 | Yeniden başlatma ilkesi   | Açıklama |
 | ---------------- | :---------- |
@@ -28,9 +28,9 @@ Azure Kapsayıcı Örnekleri'nde bir [kapsayıcı grubu](container-instances-con
 | `Never` | Kapsayıcı grubundaki kapsayıcılar hiçbir zaman yeniden başlatılmaz. Kapsayıcılar en fazla bir kez çalışır. |
 | `OnFailure` | Kapsayıcı grubundaki kapsayıcılar yalnızca kapsayıcıda yürütülen işlem başarısız olduğunda (sıfır olmayan çıkış kodu ile sonlandırıldığında) yeniden başlatılır. Kapsayıcılar en az bir kez çalıştırılır. |
 
-## <a name="specify-a-restart-policy"></a>Yeniden başlatma ilkesi ni belirtin
+## <a name="specify-a-restart-policy"></a>Yeniden başlatma ilkesi belirtin
 
-Yeniden başlatma ilkesini nasıl belirtdiğiniz, Azure CLI, Azure PowerShell cmdlets veya Azure portalı gibi kapsayıcı örneklerinizi nasıl oluşturduğunuza bağlıdır. Azure CLI'de az `--restart-policy` kapsayıcı oluştur'u çağırdığınızda parametreyi [belirtin.][az-container-create]
+Yeniden başlatma ilkesi nasıl belirttiğinizde, Azure CLı, Azure PowerShell cmdlet 'leri veya Azure portal gibi kapsayıcı örneklerinizi nasıl oluşturacağınız üzerine bağlıdır. Azure CLı 'da [az Container Create][az-container-create]öğesini `--restart-policy` çağırdığınızda parametresini belirtin.
 
 ```azurecli-interactive
 az container create \
@@ -40,11 +40,11 @@ az container create \
     --restart-policy OnFailure
 ```
 
-## <a name="run-to-completion-example"></a>Tamamlama örneğine çalıştırın
+## <a name="run-to-completion-example"></a>Tamamlanma için Çalıştır örneği
 
-Yeniden başlatma ilkesini iş başında görmek için, Microsoft [aci-wordcount][aci-wordcount-image] görüntüsünden `OnFailure` bir kapsayıcı örneği oluşturun ve yeniden başlatma ilkesini belirtin. Bu örnek kapsayıcı, varsayılan olarak, Shakespeare's [Hamlet](http://shakespeare.mit.edu/hamlet/full.html)metnini analiz eden bir Python komut dosyası çalışır, STDOUT için en yaygın 10 kelime yazar ve sonra çıkar.
+Yeniden başlatma ilkesini eylemde görmek için Microsoft [aci-WORDCOUNT][aci-wordcount-image] görüntüsünden bir kapsayıcı örneği oluşturun ve `OnFailure` yeniden başlatma ilkesini belirtin. Bu örnek kapsayıcı, varsayılan olarak, Shakespeare 'ın [hamine](http://shakespeare.mit.edu/hamlet/full.html)ait metni analiz ederek en sık kullanılan 10 sözcüğü stdout 'a yazar ve ardından çıkar ' a bir Python betiği çalıştırır.
 
-Örnek kapsayıcıyı aşağıdaki [az kapsayıcı oluşturma][az-container-create] komutuyla çalıştırın:
+Aşağıdaki [az Container Create][az-container-create] komutuyla örnek kapsayıcıyı çalıştırın:
 
 ```azurecli-interactive
 az container create \
@@ -54,7 +54,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Azure Container Instances kapsayıcıyı başlatır ve kapsayıcıdaki uygulama (veya bu durumda betik) çıkış yaptığında durdurur. Azure Kapsayıcı Örnekleri, yeniden başlatma ilkesi `Never` olan `OnFailure`bir kapsayıcıyı durdurduğunda veya kapsayıcının durumu **Sonlandırıldı**olarak ayarlandığında. [Az kapsayıcı göster][az-container-show] komutu yla bir kapsayıcının durumunu kontrol edebilirsiniz:
+Azure Container Instances kapsayıcıyı başlatır ve kapsayıcıdaki uygulama (veya bu durumda betik) çıkış yaptığında durdurur. Azure Container Instances, yeniden başlatma ilkesi `Never` veya `OnFailure`olan bir kapsayıcıyı durdurulduğunda, kapsayıcının durumu **sonlandırıldı**olarak ayarlanır. [Az Container Show][az-container-show] komutuyla bir kapsayıcının durumunu kontrol edebilirsiniz:
 
 ```azurecli-interactive
 az container show \
@@ -69,7 +69,7 @@ az container show \
 "Terminated"
 ```
 
-Örnek kapsayıcının durumunda *Sonlandırıldı* ifadesi göründüğünde kapsayıcı günlüklerini görüntüleyerek görev çıktısını görebilirsiniz. Komut dosyasının çıktısını görüntülemek için [az kapsayıcı günlükleri][az-container-logs] komutunu çalıştırın:
+Örnek kapsayıcının durumunda *Sonlandırıldı* ifadesi göründüğünde kapsayıcı günlüklerini görüntüleyerek görev çıktısını görebilirsiniz. Betiğin çıkışını görüntülemek için [az Container logs][az-container-logs] komutunu çalıştırın:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
@@ -90,13 +90,13 @@ az container logs --resource-group myResourceGroup --name mycontainer
  ('HAMLET', 386)]
 ```
 
-Bu örnek, komut dosyasının STDOUT'a gönderdiği çıktıyı gösterir. Ancak kapsayıcı görevleriniz, bunun yerine çıktılarını daha sonra almak üzere kalıcı depolamaalanına yazabilir. Örneğin, bir [Azure dosya paylaşımına.](container-instances-mounting-azure-files-volume.md)
+Bu örnek, komut dosyasının STDOUT 'a gönderdiği çıktıyı gösterir. Ancak Kapsayıcılı görevleriniz, daha sonra almak üzere çıkışını kalıcı depolamaya yazabilir. Örneğin, bir [Azure dosya paylaşımında](container-instances-mounting-azure-files-volume.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Birkaç kapsayıcıyla büyük bir veri kümesini toplu işleme gibi görev tabanlı [senaryolar,](container-instances-environment-variables.md) çalışma zamanında özel ortam değişkenlerinden veya [komut satırlarından](container-instances-start-command.md) yararlanabilir.
+Birkaç kapsayıcı içeren büyük bir veri kümesini toplu işleme gibi görev tabanlı senaryolar, çalışma zamanında özel [ortam değişkenlerinden](container-instances-environment-variables.md) veya [komut satırlarından](container-instances-start-command.md) faydalanabilir.
 
-Tamamlanınacak şekilde çalışan kapsayıcılarınızın çıktısını nasıl devam ettirileceğiyle ilgili ayrıntılar için Azure [Kapsayıcı Örnekleri ile Azure dosya paylaşımı nı montaj'a](container-instances-mounting-azure-files-volume.md)bakın.
+Tamamlanmayı çalıştıran kapsayıcılarınızın çıkışını kalıcı hale getirme hakkında daha fazla bilgi için, bkz. [Azure Container Instances bir Azure dosya paylaşma bağlama](container-instances-mounting-azure-files-volume.md).
 
 <!-- LINKS - External -->
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount

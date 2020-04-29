@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri ile içeriğinizi koruyun | Microsoft Dokümanlar
-description: Bu makalede, Azure Media Services v2 ile içerik koruma genel bir bakış sağlar.
+title: İçeriğinizi Azure Media Services koruyun | Microsoft Docs
+description: Bu makalede Azure Media Services V2 ile içerik korumasına genel bakış sunulmaktadır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,113 +15,113 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 88e0e1c18722fd86e79fc1fa7722b59b3cb8966a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460968"
 ---
 # <a name="content-protection-overview"></a>İçerik korumaya genel bakış 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
-Depolama, işleme ve teslim yoluyla bilgisayarınızı terk eden andan itibaren medyanızı güvenli hale getirmek için Azure Medya Hizmetleri'ni kullanabilirsiniz. Media Services ile canlı ve isteğe bağlı içeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya üç büyük dijital haklar yönetimi (DRM) sisteminden herhangi biriyle dinamik olarak şifrelenmiş olarak teslim edebilirsiniz: Microsoft PlayReady, Google Widevine ve Apple FairPlay. Medya Hizmetleri ayrıca yetkili müşterilere AES anahtarları ve DRM (PlayReady, Widevine ve FairPlay) lisansları sunmak için bir hizmet sağlar. 
+Ortamınızı, depolama, işleme ve teslim aracılığıyla bilgisayarınızdan ayrıldığı zamandan korumak için Azure Media Services kullanabilirsiniz. Media Services ile canlı ve isteğe bağlı içeriğinizi Gelişmiş Şifreleme Standardı (AES-128) veya üç ana dijital hak yönetimi (DRM) sisteminden (Microsoft PlayReady, Google Widevine ve Apple FairPlay ile) dinamik olarak dağıtabilirsiniz. Media Services, yetkili istemcilere AES anahtarları ve DRM (PlayReady, Widevine ve FairPlay) lisanslarını sunmaya yönelik bir hizmet sağlar. 
 
-Aşağıdaki resim, Medya Hizmetleri içerik koruma iş akışını göstermektedir: 
+Aşağıdaki görüntüde içerik koruma iş akışı Media Services gösterilmektedir: 
 
 ![PlayReady ile koruma](./media/media-services-content-protection-overview/media-services-content-protection-with-multi-drm.png)
 
-Bu makalede, Medya Hizmetleri ile içerik korumasını anlamakla ilgili kavramlar ve terminoloji açıklanmaktadır. Makale ayrıca içeriğin nasıl korunabildiğini tartışan makalelere bağlantılar da sağlar. 
+Bu makalede, Media Services ile içerik korumayı anlamak için ilgili kavramlar ve terminoloji açıklanmaktadır. Makale Ayrıca içeriği nasıl koruyabileceğinizi tartışan makalelere bağlantılar sağlar. 
 
 ## <a name="dynamic-encryption"></a>Dinamik şifreleme
 
-PlayReady, Widevine veya FairPlay kullanarak AES net tuşu veya DRM şifrelemesi ile dinamik olarak şifrelenmiş içeriğinizi sunmak için Medya Hizmetlerini kullanabilirsiniz. İçerik AES açık anahtarıyla şifrelenir ve HTTPS üzerinden gönderilirse, istemciye ulaşana kadar net değildir. 
+Media Services, PlayReady, Widevine veya FairPlay kullanarak, içeriğinizi AES şifresiz anahtar veya DRM şifrelemesi ile dinamik olarak dağıtmak için kullanabilirsiniz. İçerik AES şifresiz anahtarla şifrelenirse ve HTTPS üzerinden gönderildiğinde, istemciye ulaşıncaya kadar net değildir. 
 
 Her şifreleme yöntemi aşağıdaki akış protokollerini destekler:
  
-- AES: MPEG-DASH, Düzgün Akış ve HLS
-- PlayReady: MPEG-DASH, Düzgün Akış ve HLS
+- AES: MPEG-DASH, Kesintisiz Akış ve HLS
+- PlayReady: MPEG-DASH, Kesintisiz Akış ve HLS
 - Widevine: MPEG-DASH
 - FairPlay: HLS
 
-Aşamalı karşıdan yüklemelerde şifreleme desteklenmez. 
+Aşamalı indirmelerde şifreleme desteklenmez. 
 
-Bir varlığı şifrelemek için, bir şifreleme içerik anahtarını kıymetinizle ilişkilendirmeniz ve ayrıca anahtar için bir yetkilendirme ilkesi yapılandırmanız gerekir. İçerik anahtarları Media Services tarafından belirtilebilir veya otomatik olarak oluşturulabilir.
+Bir varlığı şifrelemek için bir şifreleme içerik anahtarını varlığınızla ilişkilendirmeniz ve ayrıca anahtar için bir Yetkilendirme İlkesi yapılandırmanız gerekir. İçerik anahtarları belirtilebilir veya Media Services tarafından otomatik olarak oluşturulabilir.
 
-Ayrıca varlığın teslim ilkesini yapılandırmanız gerekir. Depolama yla şifrelenmiş bir kıymeti akışaltına almak istiyorsanız, varlık teslim ilkesini yapılandırarak bu kıymeti nasıl teslim etmek istediğinizi belirttiğinizi unutmayın.
+Ayrıca varlığın teslim ilkesini de yapılandırmanız gerekir. Depolama ile şifrelenen bir varlığı akışa almak istiyorsanız, varlık teslim ilkesini yapılandırarak nasıl teslim etmek istediğinizi belirttiğinizden emin olun.
 
-Bir akış bir oynatıcı tarafından istendiğinde, Medya Hizmetleri AES clear tuşu veya DRM şifrelemesi kullanarak içeriğinizi dinamik olarak şifrelemek için belirtilen anahtarı kullanır. Akışın şifresini çözmek için oynatıcı anahtarı Media Services anahtar teslim hizmetinden ister. Kullanıcının anahtarı almaya yetkili olup olmadığına karar vermek için, hizmet anahtar için belirlediğiniz yetkilendirme ilkelerini değerlendirir.
+Bir akış bir oyuncu tarafından istendiğinde, Media Services AES şifresiz anahtar veya DRM şifrelemesini kullanarak içeriğinizi dinamik olarak şifrelemek için belirtilen anahtarı kullanır. Akışın şifresini çözmek için, Player anahtarı Media Services anahtar teslim hizmetinden ister. Kullanıcının anahtarı almak için yetkilendirilip yetkilendirilmeyeceğine karar vermek için, hizmet anahtar için belirttiğiniz yetkilendirme ilkelerini değerlendirir.
 
-## <a name="aes-128-clear-key-vs-drm"></a>AES-128 net anahtar vs DRM
-Müşteriler genellikle AES şifreleme si mi yoksa DRM sistemi mi kullanmaları gerektiğini merak ederler. İki sistem arasındaki temel fark, AES şifrelemesi ile içerik anahtarının istemciye şifrelenmemiş bir biçimde ("açık olarak") iletilmesidir. Sonuç olarak, içeriği şifrelemek için kullanılan anahtar, istemcideki bir ağ izinde düz metin olarak görüntülenebilir. AES-128 net anahtar şifrelemesi, görüntüleyenin güvenilir bir taraf olduğu kullanım durumları için uygundur (örneğin, çalışanlar tarafından görüntülenecek bir şirket içinde dağıtılan şirket videolarının şifrelenmesi).
+## <a name="aes-128-clear-key-vs-drm"></a>AES-128 şifresiz anahtar ve DRM
+Müşteriler genellikle AES şifrelemesi mi yoksa bir DRM sistemi mi kullanacağınızı merak ediyor. İki sistem arasındaki birincil fark, AES şifrelemesi ile içerik anahtarının istemciye şifrelenmemiş bir biçimde ("açık") aktarıldıysa. Sonuç olarak, içeriği şifrelemek için kullanılan anahtar, istemci üzerindeki bir ağ izlemede düz metin olarak görüntülenebilir. AES-128 şifresiz anahtar şifrelemesi, görüntüleyicisinin güvenilir bir taraf olduğu (örneğin, bir şirkette şirket içinde dağıtılan şirket videolarını, çalışanlar tarafından görüntülenmek üzere şifreleme) kullanım durumları için uygundur.
 
-PlayReady, Widevine ve FairPlay'in tümü AES-128 net anahtar şifrelemesine kıyasla daha yüksek düzeyde şifreleme sağlar. İçerik anahtarı şifreli bir biçimde iletilir. Ayrıca, şifre çözme, kötü amaçlı bir kullanıcının saldırmasının daha zor olduğu işletim sistemi düzeyinde güvenli bir ortamda işlenir. DRM, görüntüleyenin güvenilir bir taraf olmadığı ve en yüksek düzeyde güvenlik gerektiren kullanım durumları için önerilir.
+PlayReady, Widevine ve FairPlay All, AES-128 şifresiz anahtar şifrelemeye kıyasla daha yüksek düzeyde şifreleme sağlar. İçerik anahtarı şifreli bir biçimde iletilir. Ayrıca, şifre çözme, işletim sistemi düzeyinde güvenli bir ortamda işlenir ve bu, kötü niyetli bir kullanıcının saldırılarına karşı daha zordur. Görüntüleyici 'nin güvenilir bir taraf olmadığı ve en yüksek düzeyde güvenlik düzeyi gerektiren kullanım durumları için DRM önerilir.
 
 ## <a name="storage-encryption"></a>Depolama şifrelemesi
-AES 256 bit şifreleme kullanarak temiz içeriğinizi yerel olarak şifrelemek için depolama şifrelemesini kullanabilirsiniz. Daha sonra, istirahatte şifrelenmiş olarak depolandığı Azure Depolama'ya yükleyebilirsiniz. Depolama şifrelemesi ile korunan varlıklar otomatik olarak şifrelenmez ve kodlamadan önce şifreli bir dosya sistemine yerleştirilir. Varlıklar, yeni bir çıktı varlığı olarak geri yüklemeden önce isteğe bağlı olarak yeniden şifrelenir. Depolama şifrelemesi için birincil kullanım örneği, yüksek kaliteli giriş ortam dosyalarınızı diskte güçlü şifreleme yle güvence altına almak istediğinizde olur.
+AES 256 bit şifrelemeyi kullanarak açık içeriğinizi yerel olarak şifrelemek için depolama şifrelemesini kullanabilirsiniz. Daha sonra bu dosyayı Azure depolama 'ya yükleyebilirsiniz ve burada şifreli olarak depolanır. Depolama şifrelemesi ile korunan varlıklar, kodlama öncesinde otomatik olarak şifrelenmez ve şifreli bir dosya sistemine yerleştirilir. Varlıklar, yeni bir çıkış varlığı olarak geri yüklenmeden önce isteğe bağlı olarak yeniden şifrelenir. Depolama şifrelemesi için birincil kullanım örneği, yüksek kaliteli giriş medya dosyalarınızı diskte bekleyen bir şekilde güçlü şifreleme ile güvenli hale getirmek istediğinizde kullanılır.
 
-Depolama yla şifrelenmiş bir varlık sunmak için, Medya Hizmetleri'nin içeriğinizi nasıl teslim etmek istediğinizi bilmesi için varlığın teslim politikasını yapılandırmanız gerekir. Varlığınız akış aramadan önce, akış sunucusu belirtilen teslim ilkesini (örneğin, AES, ortak şifreleme veya şifreleme olmadan) kullanarak içeriğinizin şifresini çözer ve akışı sağlar.
+Depolama ile şifrelenen bir varlık sağlamak için, varlığın teslim ilkesini, Media Services içeriğinizi nasıl teslim etmek istediğinizi bilmek üzere yapılandırmanız gerekir. Varlığınızın akışı silinmeden önce, akış sunucusu belirtilen teslim ilkesini (örneğin, AES, ortak şifreleme veya şifreleme olmadan) kullanarak içeriğinizi çözer ve akışlar.
 
 ## <a name="types-of-encryption"></a>Şifreleme türleri
-PlayReady ve Widevine ortak şifreleme (AES TO modu) kullanır. FairPlay, AES CBC modu şifrelemesi kullanır. AES-128 net anahtar şifrelemesi zarf şifrelemekullanır.
+PlayReady ve Widevine, ortak şifrelemeyi (AES Mrk modu) kullanır. FairPlay, AES CBC modu şifrelemesini kullanır. AES-128 Clear anahtar şifrelemesi, zarf şifrelemesini kullanır.
 
-## <a name="licenses-and-keys-delivery-service"></a>Lisanslar ve anahtarteslim hizmeti
-Medya Hizmetleri, DRM (PlayReady, Widevine, FairPlay) lisanslarını ve AES anahtarlarını yetkili müşterilere teslim etmek için önemli bir teslimat hizmeti sunar. Lisanslarınız ve anahtarlarınız için yetkilendirme ve kimlik doğrulama ilkelerini yapılandırmak için .NET için [Azure portalını](media-services-portal-protect-content.md), REST API veya Media Services SDK'yı kullanabilirsiniz.
+## <a name="licenses-and-keys-delivery-service"></a>Lisanslar ve anahtarlar teslim hizmeti
+Media Services, yetkili istemcilere DRM (PlayReady, Widevine, FairPlay) lisanslarını ve AES anahtarlarını sunmaya yönelik bir anahtar teslim hizmeti sağlar. Lisanslar ve anahtarlarınız için yetkilendirme ve kimlik doğrulama ilkelerini yapılandırmak üzere .NET için [Azure Portal](media-services-portal-protect-content.md), REST API veya Media Services SDK 'sını kullanabilirsiniz.
 
 ## <a name="control-content-access"></a>İçerik erişimini denetleme
-İçerik anahtarı yetkilendirme ilkesini yapılandırarak içeriğinize kimlerin erişebileceğini kontrol edebilirsiniz. İçerik anahtarı yetkilendirme ilkesi açık veya belirteç kısıtlamasını destekler.
+İçerik anahtarı yetkilendirme ilkesini yapılandırarak içeriğinizi kimlerin erişebileceğini denetleyebilirsiniz. İçerik anahtarı yetkilendirme ilkesi, açık ya da belirteç kısıtlamasını destekler.
 
-### <a name="open-authorization"></a>Açık yetkilendirme
+### <a name="open-authorization"></a>Yetkilendirmeyi aç
 Açık bir yetkilendirme ilkesiyle, içerik anahtarı herhangi bir istemciye gönderilir (kısıtlama yoktur).
 
-### <a name="token-authorization"></a>Belirteç yetkilendirmesi
-Belirteç kısıtlamalı yetkilendirme ilkesiyle, içerik anahtarı yalnızca anahtar/lisans isteğinde geçerli bir JSON Web belirteci (JWT) veya basit bir web belirteci (SWT) sunan bir istemciye gönderilir. Bu belirteç bir güvenlik belirteci hizmeti (STS) tarafından verilmelidir. Azure Etkin Dizini STS olarak kullanabilir veya özel bir STS dağıtabilirsiniz. STS belirtilmiş anahtar ve belirteç kısıtlama yapılandırmasında belirttiğiniz sorun talepleri ile imzalanmış bir belirteç oluşturmak için yapılandırılmalıdır. Ortam Hizmetleri anahtar teslim hizmeti, belirteç geçerliyse ve belirteçteki talepler anahtar/lisans için yapılandırılanlarla eşleşirse, istenen anahtarı/lisansı istemciye geri verir.
+### <a name="token-authorization"></a>Belirteç yetkilendirme
+Belirteç kısıtlı yetkilendirme ilkesiyle, içerik anahtarı yalnızca anahtar/lisans isteğinde geçerli bir JSON Web Token (JWT) veya basit Web belirteci (SWT) sunan bir istemciye gönderilir. Bu belirtecin bir güvenlik belirteci hizmeti (STS) tarafından verilmesi gerekir. Azure Active Directory STS olarak kullanabilir veya özel bir STS dağıtımı yapabilirsiniz. STS, belirtilen anahtarla imzalanmış bir belirteç oluşturacak ve belirteç kısıtlama yapılandırmasında belirttiğiniz talepler verecek şekilde yapılandırılmalıdır. Media Services anahtar teslim hizmeti, belirteç geçerliyse ve belirteçteki talepler anahtar/lisans için yapılandırılananlarla eşleşiyorsa istemciye istenen anahtarı/lisansı döndürür.
 
-Belirteç kısıtlı ilkesini yapılandırdığınızda, birincil doğrulama anahtarını, vereni ve hedef kitle parametrelerini belirtmeniz gerekir. Birincil doğrulama anahtarı, belirteçle imzalandığı anahtarı içerir. İhraççı, belirteci veren güvenli belirteç hizmetidir. Bazen kapsam olarak adlandırılan hedef kitle, belirteciveya belirteç erişim eizin kaynağının amacını açıklar. Medya Hizmetleri anahtar teslim hizmeti, belirteçteki bu değerlerin şablondaki değerlerle eşleştirdiğini doğrular.
+Belirteç kısıtlı ilkesini yapılandırırken, birincil doğrulama anahtarını, verenin ve hedef kitle parametrelerini belirtmeniz gerekir. Birincil doğrulama anahtarı, belirtecin imzalandığı anahtarı içerir. Veren, belirteci veren güvenli belirteç hizmetidir. Bazen kapsam olarak adlandırılan hedef kitle, belirtecin amacını veya belirtecin erişim yetkisi aldığı kaynağı açıklar. Media Services anahtar teslim hizmeti, belirteçteki bu değerlerin şablondaki değerlerle eşleştiğini doğrular.
 
-### <a name="token-replay-prevention"></a>Belirteç tekrar önleme
+### <a name="token-replay-prevention"></a>Belirteç yeniden yürütme engellemesi
 
-*Token Yeniden Oynatma Önleme* özelliği, Medya Hizmetleri müşterilerinin bir anahtar veya lisans istemek için aynı belirteçlerin kaç kez kullanılabileceğini belirlemesine olanak tanır. Müşteri, belirteç tespinin lisans veya anahtar almak için kaç kez kullanılabileceğinibelirtebilen bir tür `urn:microsoft:azure:mediaservices:maxuses` talebi ekleyebilir. Anahtar Teslimi'ne aynı belirteç içeren sonraki tüm istekler yetkisiz bir yanıt döndürecektir. DrM [örneğine](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)talebin nasıl ekleyeceğinize bakın.
+*Belirteç yeniden yürütme engellemesi* özelliği, Media Services müşterilerin aynı belirtecin bir anahtar veya lisans istemek için kaç kez kullanılabileceği konusunda bir sınır ayarlamasına olanak tanır. Müşteri, belirtecin bir lisans ya da anahtar `urn:microsoft:azure:mediaservices:maxuses` almak için kaç kez kullanılabileceğini, belirteçte bir tür talep ekleyebilir. Anahtar teslimine aynı belirtece sahip sonraki tüm istekler, yetkisiz bir yanıt verecektir. Bkz. isteği [DRM örneğine](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)ekleme.
  
 #### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* Müşteriler belirteç üretimi üzerinde kontrole sahip olmalıdır. İddianın belirteç tesine yerleştirilmesi gerekir.
-* Bu özelliği kullanırken, son kullanma süresi, istek alındığı andan itibaren bir saatten fazla olan belirteçlere sahip istekler yetkisiz bir yanıtla reddedilir.
-* Belirteçler, imzalarıyla benzersiz bir şekilde tanımlanır. Taşıma yükündeki herhangi bir değişiklik (örneğin, son kullanma süresine veya talepte güncelleştirme) belirteç imzasını değiştirir ve Anahtar Tesliminin daha önce rastlamadığını yeni bir belirteç olarak sayılır.
-* Belirteç müşteri tarafından ayarlanan `maxuses` değeri aşmışsa oynatma başarısız olur.
-* Bu özellik, varolan tüm korumalı içerik için kullanılabilir (yalnızca verilen belirteç değiştirilmelidir).
-* Bu özellik hem JWT hem de SWT ile çalışır.
+* Müşterilerin belirteç oluşturma üzerinde denetimi olmalıdır. Talebin kendisini belirtece yerleştirilmesi gerekir.
+* Bu özellik kullanılırken, zaman aşımı süresi, isteğin alındığı zamandan bir saatten fazla olan istekleri yetkisiz bir Yanıtla reddedilir.
+* Belirteçler, imzaları tarafından benzersiz şekilde tanımlanır. Yükte yapılan herhangi bir değişiklik (örneğin, sona erme saati veya talebin güncelleştirilmesi) belirtecin imzasını değiştirir ve anahtar tesliminin daha önce geldiği yeni bir belirteç olarak sayılır.
+* Belirteç müşteri tarafından ayarlanan `maxuses` değeri aşarsa kayıttan yürütme başarısız olur.
+* Bu özellik, var olan tüm korumalı içerik (yalnızca verilen belirtecin değiştirilmesi gerekir) için kullanılabilir.
+* Bu özellik hem JWT hem de SWT ile birlikte kullanılabilir.
 
-## <a name="streaming-urls"></a>Akış URL'leri
-Varlığınız birden fazla DRM ile şifrelenmişse, akış URL'sinde bir şifreleme etiketi kullanın: (format='m3u8-aapl', encryption='xxx').
+## <a name="streaming-urls"></a>Akış URL 'Leri
+Varlığınız birden fazla DRM ile şifrelendiyse, akış URL 'sinde bir şifreleme etiketi kullanın: (format = 'm 3u8-AAPL ', ENCRYPTION = ' xxx ').
 
 Aşağıdaki noktalara dikkat edilmelidir:
 
-* En fazla birden fazla şifreleme türü belirtilebilir.
-* Varlığa yalnızca bir şifreleme uygulandıysa, şifreleme türü URL'de belirtilmesi ne kadar önemli değildir.
-* Şifreleme türü büyük/küçük harf duyarsız.
+* Birden fazla şifreleme türü belirtilemez.
+* Varlığa yalnızca bir şifreleme uygulanmışsa, şifreleme türünün URL 'de belirtilmesi gerekmez.
+* Şifreleme türü, büyük/küçük harfe duyarlıdır.
 * Aşağıdaki şifreleme türleri belirtilebilir:
 
-  * **cenc**: PlayReady veya Widevine için (ortak şifreleme)
-  * **cbcs-aapl**: FairPlay için (AES CBC şifreleme)
-  * **cbc**: AES zarf şifrelemesi için
+  * **CENC**: PlayReady veya Widevine (ortak şifreleme) için
+  * **CBCS-AAPL**: Fairplay IÇIN (AES CBC şifrelemesi)
+  * **CBC**: AES zarf şifrelemesi için
 
 ## <a name="additional-notes"></a>Ek notlar
 
-* Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Aşağıdaki makaleler, içerik koruma ile başlamanıza yardımcı olacak sonraki adımları açıklar:
+Aşağıdaki makaleler, içerik korumasına başlamanıza yardımcı olacak sonraki adımları anlatmaktadır:
 
-* [Depolama şifrelemesi ile koruyun](media-services-rest-storage-encryption.md)
-* [AES şifrelemeile koruyun](media-services-protect-with-aes128.md)
-* [PlayReady ve/veya Widevine ile koruyun](media-services-protect-with-playready-widevine.md)
-* [FairPlay ile koruyun](media-services-protect-hls-with-FairPlay.md)
+* [Depolama şifrelemesi ile koruma](media-services-rest-storage-encryption.md)
+* [AES şifrelemesi ile koruma](media-services-protect-with-aes128.md)
+* [PlayReady ve/veya Widevine ile koruma](media-services-protect-with-playready-widevine.md)
+* [FairPlay ile koruma](media-services-protect-hls-with-FairPlay.md)
 
 ## <a name="related-links"></a>İlgili bağlantılar
 
-* [JWT belirteç kimlik doğrulaması](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
-* [Azure Medya Hizmetleri OWIN MVC tabanlı uygulamayı Azure Active Directory ile tümleştirin ve JWT iddialarına göre içerik anahtarı teslimini kısıtlayın](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
+* [JWT belirteci kimlik doğrulaması](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
+* [Azure Media Services OWIN MVC tabanlı uygulama Azure Active Directory ve JWT taleplerine göre içerik anahtarı teslimini tümleştirin](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
 [content-protection]: ./media/media-services-content-protection-overview/media-services-content-protection.png

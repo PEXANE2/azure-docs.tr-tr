@@ -1,6 +1,6 @@
 ---
-title: Azure IoT çözümünden bir IoT Tak ve Çalıştır Önizleme aygıtıyla etkileşimde Microsoft Dokümanlar
-description: Bir çözüm geliştiricisi olarak, IoT Tak ve Çalıştır aygıtlarıyla etkileşimde kalmak için SDK hizmetini nasıl kullanacağınız hakkında bilgi edinin.
+title: Azure IoT çözümünden IoT Tak ve Kullan önizleme cihazından etkileşim kurma | Microsoft Docs
+description: Çözüm geliştiricisi olarak, IoT Tak ve Kullan cihazlarıyla etkileşim kurmak için hizmet SDK 'sını kullanma hakkında bilgi edinin.
 author: Philmea
 ms.author: philmea
 ms.date: 12/26/2019
@@ -10,19 +10,19 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: e349aadfd629202b1c8cdb5c53a88e0a6c2e06de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159226"
 ---
-# <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>Bir IoT Tak ve Çalıştır Önizleme aygıtına bağlanma ve bunlarla etkileşimkurma
+# <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>IoT Tak ve Kullan önizleme cihazına bağlanma ve bunlarla etkileşim kurma
 
-Bu nasıl yapılabilir kılavuzu, IoT Çözümünüzün IoT Tak ve Çalıştır Önizleme aygıtlarıyla nasıl etkileşimde olabileceğini gösteren Düğüm hizmeti SDK'daki örnekleri nasıl kullanacağınızı gösterir.
+Bu nasıl yapılır Kılavuzu, IoT çözümünüzün IoT Tak ve Kullan önizleme cihazlarıyla nasıl etkileşime gireceğini gösteren düğüm hizmeti SDK 'sında örnekleri nasıl kullanacağınızı gösterir.
 
-[IoT Tak ve Çalıştır cihazını çözümünüze](quickstart-connect-pnp-device-solution-node.md) hızlı bir şekilde bağlamayı tamamlamadıysanız, bunu hemen yapmalısınız. Hızlı başlangıç, SDK'yı nasıl indirip yükleyip bazı örnekleri çalıştırabileceğinizi gösterir.
+[Iot Tak ve kullan cihazını çözüm](quickstart-connect-pnp-device-solution-node.md) hızlı başlangıç için tamamlamadıysanız, bunu şimdi yapmanız gerekir. Hızlı başlangıç, SDK 'nın nasıl indirileceği ve yükleneceğine ilişkin bazı örnekleri nasıl çalıştıracağınızı gösterir.
 
-Hizmet örneklerini çalıştırmadan önce, yeni bir terminal açın, klonlanmış deponuzun kök klasörüne gidin, **digitaltwins/quickstarts/service** klasörüne gidin ve bağımlılıkları yüklemek için aşağıdaki komutu çalıştırın:
+Hizmet örneklerini çalıştırmadan önce yeni bir Terminal açın, klonlanmış deponuzdaki kök klasöre gidin, **digitaltwins/quickbaşlangıçlar/hizmet** klasörüne gidin ve ardından bağımlılıkları yüklemek için aşağıdaki komutu çalıştırın:
 
 ```cmd/sh
 npm install
@@ -30,31 +30,31 @@ npm install
 
 ## <a name="run-the-service-samples"></a>Hizmet örneklerini çalıştırma
 
-Düğüm.js hizmeti SDK'nın yeteneklerini keşfetmek için aşağıdaki örnekleri kullanın. Ortam değişkeninin `IOTHUB_CONNECTION_STRING` kullandığınız kabukta ayarlandığınızdan emin olun:
+Node. js hizmet SDK 'sının yeteneklerini araştırmak için aşağıdaki örnekleri kullanın. `IOTHUB_CONNECTION_STRING` Ortam değişkeninin kullandığınız kabukta ayarlandığından emin olun:
 
-### <a name="retrieve-a-digital-twin-and-list-the-interfaces"></a>Dijital ikiz alın ve arayüzleri listele
+### <a name="retrieve-a-digital-twin-and-list-the-interfaces"></a>Dijital ikizi alma ve arabirimleri listeleme
 
-**get_digital_twin.js,** aygıtınızla ilişkili dijital ikizi alır ve bileşenini komut satırına yazdırır. Başarılı olmak için çalışan bir aygıt örneği gerektirmez.
+**get_digital_twin. js** , cihazınız ile ilişkili dijital ikizi alır ve kendi bileşenini komut satırında yazdırır. Çalışan bir cihaz örneğinin başarılı olması gerekmez.
 
-**get_digital_twin_interface_instance.js,** aygıtınızla ilişkili tek bir dijital ikiz arabirimi örneğini alır ve komut satırına yazdırır. Cihaz örneğinin çalışmasını gerektirmez.
+**get_digital_twin_interface_instance. js** , cihazınız ile ilişkili dijital ikizi tek bir arabirim örneğini alır ve komut satırına yazdırır. Cihaz örneğinin çalıştırılmasını gerektirmez.
 
-### <a name="get-and-set-properties-using-the-node-service-sdk"></a>Düğüm hizmeti SDK'yı kullanarak özellikleri alın ve ayarlayın
+### <a name="get-and-set-properties-using-the-node-service-sdk"></a>Düğüm hizmeti SDK 'sını kullanarak özellikleri edinme ve ayarlama
 
-**update_digital_twin.js,** tam bir yama kullanarak cihazınızın dijital ikizinde yazılabilir bir özelliği güncelleştirir. İsterseniz birden çok arabirimde birden çok özelliği güncelleştirebilirsiniz. Başarılı olması için aygıt örneğinin aynı anda çalışıyor olması gerekir. Başarı, aygıt örneğinin, servis örneğinin terminalde güncelleştirilmiş bir dijital ikizi yazdırma özelliğini güncelleştirmeyle ilgili bir şey yazdırıyor gibi görünüyor.
+**update_digital_twin. js** , tam bir düzeltme eki kullanarak cihazlarınızın dijital ikizi yazılabilir bir özelliğini güncelleştirir. İsterseniz birden fazla arabirimde birden çok özelliği güncelleştirebilirsiniz. Bu işlemin başarılı olması için, cihaz örneğinin aynı anda çalışıyor olması gerekir. Başarı, cihaz örneği, bir özelliği güncelleştirme ile ilgili bir şeyi, terminalde güncelleştirilmiş bir dijital ikizi yazdırırken hizmet örneğini güncelleştiren bir şey gibi görünüyor.
 
-### <a name="send-a-command-and-retrieve-the-response-using-the-node-service-sdk"></a>Bir komut gönderin ve Düğüm hizmeti SDK kullanarak yanıtı alın
+### <a name="send-a-command-and-retrieve-the-response-using-the-node-service-sdk"></a>Düğüm hizmeti SDK 'sını kullanarak bir komut gönderin ve yanıtı alın
 
-**invoke_command.js** cihazınızın dijital ikizinde eşzamanlı bir komut çağırır. Başarılı olması için aygıt örneğinin aynı anda çalışıyor olması gerekir. Başarı, aygıt örneğinin bir komutu kabul etme yle ilgili bir şey yazdırması ve servis istemcisinin terminaldeki komutun sonucunu yazdırması gibi görünüyor.
+**invoke_command. js** , cihazınızda dijital ikizi zaman uyumlu bir komutu çağırır. Bu işlemin başarılı olması için, cihaz örneğinin aynı anda çalışıyor olması gerekir. Başarı, cihaz örneği bir komutun ele aldığı bir şeyi ve hizmet istemcisini terminalde komutun sonucunu yazdırmakta olduğu gibi görünüyor.
 
-### <a name="connect-to-the-public-repository-and-retrieve-a-model-definition-using-the-node-service-sdk"></a>Genel depoya bağlanın ve Düğüm hizmeti SDK'yı kullanarak bir model tanımı alın
+### <a name="connect-to-the-public-repository-and-retrieve-a-model-definition-using-the-node-service-sdk"></a>Düğüm hizmeti SDK 'sını kullanarak ortak depoya bağlanma ve model tanımı alma
 
-Hizmet ve aygıt örnekleri yle aynı yönergeleri kullanarak aşağıdaki ortam değişkenini ayarlamanız gerekir:
+Hizmet ve cihaz örnekleri ile aynı yönergeleri kullanarak, aşağıdaki ortam değişkenini ayarlamanız gerekir:
 
 * `AZURE_IOT_MODEL_REPOSITORY_CONNECTION_STRING`
 
-Bu bağlantı dizesini, **Şirket deponuz**için Bağlantı **dizeleri** sekmesinde [IoT için Azure Sertifikalı portalında](https://preview.catalog.azureiotsolutions.com) bulabilirsiniz.
+Bu bağlantı dizesini, **Şirket deponuzdaki** **bağlantı dizeleri** sekmesinde [IoT için Azure sertifikası](https://preview.catalog.azureiotsolutions.com) 'nda bulabilirsiniz.
 
-Bağlantı dizesi aşağıdaki örnek gibi görünür:
+Bağlantı dizesi aşağıdaki örneğe benzer şekilde görünür:
 
 ```text
 HostName={repo host name};RepositoryId={repo ID};SharedAccessKeyName={repo key ID};SharedAccessKey={repo key secret}
@@ -66,11 +66,11 @@ Bu dört ortam değişkenini ayarladıktan sonra, örneği diğer örnekleri ça
 node model_repo.js
 ```
 
-Bu **örnek, ModelDiscovery** arabirimini karşıdan yükler ve bu modeli terminalde yazdırır.
+Bu örnek, **Modeldiscovery** arabirimini indirir ve bu modeli terminalde yazdırır.
 
-### <a name="run-queries-in-iot-hub-based-on-capability-models-and-interfaces"></a>IoT Hub'da sorguları yetenek modellerine ve arabirimlerine göre çalıştırma
+### <a name="run-queries-in-iot-hub-based-on-capability-models-and-interfaces"></a>Yetenek modellerine ve arabirimlere göre IoT Hub sorguları çalıştırın
 
-IoT Hub sorgu `HAS_INTERFACE` dili `HAS_CAPABILITYMODEL` destekler ve aşağıdaki örneklerde gösterildiği gibi:
+IoT Hub sorgu dili aşağıdaki örneklerde `HAS_INTERFACE` gösterildiği `HAS_CAPABILITYMODEL` gibi ve destekler:
 
 ```sql
 select * from devices where HAS_INTERFACE('id without version', version)
@@ -80,20 +80,20 @@ select * from devices where HAS_INTERFACE('id without version', version)
 select * from devices where HAS_CAPABILITYMODEL('id without version', version)
 ```
 
-### <a name="creating-digital-twin-routes"></a>Dijital ikiz rotalar oluşturma
+### <a name="creating-digital-twin-routes"></a>Dijital ikizi rotaları oluşturma
 
-Çözümünüz, dijital ikiz değiştirme olaylarıyla ilgili bildirimler alabilir. Bu bildirimlere abone olmak için, bildirimleri blob depolama, Olay Hub'ları veya Hizmet Veri Merkezi kuyruğu gibi bir uç noktaya göndermek için [IoT Hub yönlendirme özelliğini](../iot-hub/iot-hub-devguide-endpoints.md) kullanın.
+Çözümünüz, dijital ikizi değişiklik olaylarının bildirimlerini alabilir. Bu bildirimlere abone olmak için, bildirimleri BLOB depolama, Event Hubs veya Service Bus kuyruğu gibi bir uç noktaya göndermek için [IoT Hub yönlendirme özelliğini](../iot-hub/iot-hub-devguide-endpoints.md) kullanın.
 
-Dijital ikiz rota oluşturmak için:
+Dijital ikizi yolu oluşturmak için:
 
-1. Azure portalında IoT Hub kaynağınıza gidin.
-1. **İleti yönlendirme'yi**seçin.
-1. **Rotalar** sekmesinde **Ekle'yi**seçin.
-1. **Ad** alanına bir değer girin ve bir **Bitiş Noktası**seçin. Bir bitiş noktası yapılandırmadıysanız, **bitiş noktası ekle'yi**seçin.
-1. Veri **kaynağı** açılır durumda, **Dijital İkiz Değiştirme Olayları'nı**seçin.
-1. **Kaydet'i**seçin.
+1. Azure portal IoT Hub kaynağına gidin.
+1. **İleti yönlendirmeyi**seçin.
+1. **Rotalar** sekmesinde **Ekle**' yi seçin.
+1. **Ad** alanına bir değer girin ve bir **uç nokta**seçin. Bir uç nokta yapılandırmadıysanız, **uç nokta Ekle**' yi seçin.
+1. **Veri kaynağı** açılır penceresinde **dijital ikizi değişiklik olayları**' nı seçin.
+1. **Kaydet**’i seçin.
 
-Aşağıdaki JSON, dijital ikiz değiştirme olayının bir örneğini gösterir:
+Aşağıdaki JSON bir Digital ikizi değişiklik olayına bir örnek göstermektedir:
 
 ```json
 {
@@ -140,4 +140,4 @@ Aşağıdaki JSON, dijital ikiz değiştirme olayının bir örneğini gösterir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık IoT Tak ve Çalıştır aygıtlarınızla etkileşimedebilen servis çözümleri hakkında bilgi edindiğinize göre, önerilen bir sonraki adım [Model keşfi](concepts-model-discovery.md)hakkında bilgi edinmektir.
+IoT Tak ve Kullan cihazlarınızla etkileşime geçen hizmet çözümlerini öğrendiğinize göre, bir sonraki adım [model bulma](concepts-model-discovery.md)hakkında bilgi edinecek.

@@ -1,106 +1,106 @@
 ---
 title: Azure Otomasyonu’nda kaynak denetimi tümleştirmesi
-description: Bu makalede, Azure Otomasyonu'nda GitHub ile kaynak denetimi tümleştirmesi açıklanmaktadır.
+description: Bu makalede, Azure Otomasyonu 'nda GitHub ile kaynak denetimi tümleştirmesi açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
 ms.openlocfilehash: 166902978d1641458f18aeee6269c8d819e85233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80132920"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Otomasyonu’nda kaynak denetimi tümleştirmesi
 
- Azure Otomasyon'daki kaynak denetimi tümleştirmesi, kaynak denetim deponuzdan tek yönlü eşitleme sağlar. Kaynak denetimi, runbook'larınızı GitHub veya Azure Depoları kaynak denetim deposunuzdaki komut dosyalarıyla Otomasyon hesabınızda güncel tutmanıza olanak tanır. Bu özellik, geliştirme ortamınızda test edilmiş kodu üretim Otomasyonu hesabınıza tanıtmayı kolaylaştırır.
+ Azure Otomasyonu 'nda kaynak denetimi tümleştirmesi, kaynak denetimi deponuzdan tek yönlü eşitlemeyi destekler. Kaynak denetimi, GitHub veya Azure Repos kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larınızı güncel tutmanızı sağlar. Bu özellik, geliştirme ortamınızda test edilmiş kodu Üretim otomasyon hesabınıza yükseltmeyi kolaylaştırır.
  
- Kaynak denetimi tümleştirmesi, ekibinizle kolayca işbirliği yapmanızı, değişiklikleri izlemenizi ve runbook'larınızın önceki sürümlerine geri dönmenizi sağlar. Örneğin, kaynak denetimi, kaynak denetimindeki farklı dalları geliştirme, test ve üretim Otomasyon hesaplarınızla eşitlemenize olanak tanır. 
+ Kaynak denetimi tümleştirmesi, ekibinizle kolayca işbirliği yapmanıza, değişiklikleri izlemenize ve Runbook 'larınızın önceki sürümlerine geri döndürmenize olanak tanır. Örneğin, kaynak denetimi, kaynak denetimindeki farklı dalları geliştirme, test ve üretim Otomasyon hesaplarınızla eşitlemenize olanak tanır. 
 
 >[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma runbook çalışanınız hakkında az Module yükleme yönergeleri için bkz. [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Otomasyon hesabınız için, [Azure Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](automation-update-azure-modules.md)' yi kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
-## <a name="source-control-types"></a>Kaynak kontrol türleri
+## <a name="source-control-types"></a>Kaynak Denetim türleri
 
-Azure Otomasyonu üç tür kaynak denetimini destekler:
+Azure Otomasyonu üç tür kaynak denetimi destekler:
 
 * GitHub
-* Azure Deposu (Git)
+* Azure Repos (git)
 * Azure Repos (TFVC)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Kaynak denetim deposu (GitHub veya Azure Repos)
-* Bir [Run As hesabı](manage-runas-account.md)
-* Modül de dahil olmak üzere Otomasyon hesabınızdaki [en son Azure modülleri](automation-update-azure-modules.md) (Az modülü eşdeğeri) `AzureRM.Profile` `Az.Accounts`
+* Kaynak denetimi deposu (GitHub veya Azure Repos)
+* [Farklı Çalıştır hesabı](manage-runas-account.md)
+* Otomasyon hesabınızda `Az.Accounts` modül dahil [en son Azure modülleri](automation-update-azure-modules.md) (az Module eşdeğeri) `AzureRM.Profile`
 
 > [!NOTE]
-> Kaynak denetimi eşitleme işleri kullanıcının Otomasyon hesabı altında çalıştırılır ve diğer Otomasyon işleri ile aynı oranda faturalandırılır.
+> Kaynak denetimi eşitleme işleri, kullanıcının Otomasyon hesabı altında çalışır ve diğer otomasyon işleriyle aynı hızda faturalandırılır.
 
 ## <a name="configuring-source-control"></a>Kaynak denetimini yapılandırma
 
-Bu bölümde, Otomasyon hesabınız için kaynak denetiminin nasıl yapılandırılabildiğini anlatınız. Azure portalını veya PowerShell'i kullanabilirsiniz.
+Bu bölümde Otomasyon hesabınız için kaynak denetiminin nasıl yapılandırılacağı açıklanır. Azure portal veya PowerShell kullanabilirsiniz.
 
-### <a name="configure-source-control-in-azure-portal"></a>Azure portalında kaynak denetimini yapılandırma
+### <a name="configure-source-control-in-azure-portal"></a>Azure portal kaynak denetimini yapılandırma
 
-Kaynak denetimini Azure portalını kullanarak yapılandırmak için bu yordamı kullanın.
+Azure portal kullanarak kaynak denetimini yapılandırmak için bu yordamı kullanın.
 
-1. Otomasyon hesabınızda **Kaynak Denetimi'ni** seçin ve **Ekle'yi**tıklatın.
+1. Otomasyon hesabınızda, **kaynak denetimi** ' ni seçin ve **Ekle**' ye tıklayın.
 
-    ![Kaynak denetimini seçin](./media/source-control-integration/select-source-control.png)
+    ![Kaynak denetimi seçin](./media/source-control-integration/select-source-control.png)
 
-2. **Kaynak Denetimi türünü**seçin, ardından Kimlik **Doğrulaması'yı**tıklatın. 
+2. **Kaynak denetim türünü**seçin ve ardından **kimlik doğrula**' ya tıklayın. 
 
-3. Bir tarayıcı penceresi açılır ve oturum açmanızı ister. Kimlik doğrulamasını tamamlamak için istemleri izleyin.
+3. Bir tarayıcı penceresi açılır ve oturum açmanızı ister. Kimlik doğrulamasını tamamlamaya yönelik istemleri izleyin.
 
-4. Kaynak Denetimi Özeti sayfasında, aşağıda tanımlanan kaynak denetimi özelliklerini doldurmak için alanları kullanın. Bittiğinde **Kaydet'i** tıklatın. 
+4. Kaynak denetimi Özeti sayfasında, alanları, aşağıda tanımlanan kaynak denetimi özelliklerini dolduracak şekilde kullanın. İşiniz bittiğinde **Kaydet** ' e tıklayın. 
 
     |Özellik  |Açıklama  |
     |---------|---------|
-    |Kaynak denetim adı     | Kaynak denetimi için dostça bir ad. Bu ad yalnızca harf ve sayı içermelidir.        |
-    |Kaynak kontrol türü     | Kaynak kontrol mekanizması türü. Kullanılabilen seçenekler:</br> * GitHub</br>* Azure Deposu (Git)</br> * Azure Depoları (TFVC)        |
-    |Depo     | Deponun veya projenin adı. İlk 200 depo alınır. Bir depo aramak için, alana adı yazın ve **GitHub'da Ara'yı**tıklatın.|
-    |Dal     | Kaynak dosyaları çekmek için hangi şube. TFVC kaynak denetim türü için şube hedeflemesi kullanılamaz.          |
-    |Klasör yolu     | Eşitlemek için runbook'ları içeren klasör, örneğin, **/Runbook'lar.** Yalnızca belirtilen klasördeki runbook'lar eşitlenir. Özyineleme desteklenmez.        |
-    |Otomatik Eşitleme<sup>1</sup>     | Kaynak denetim deposunda işleme yapıldığında otomatik eşitlemenin açık veya kapalı olması.        |
-    |Runbook'u Yayımla     | Kaynak denetiminden eşitleme den sonra runbook'ların otomatik olarak yayımlanıp yayınlansın ve aksi takdirde Kapalı'nın ayarı.           |
-    |Açıklama     | Kaynak denetimi yle ilgili ek ayrıntıları belirten metin.        |
+    |Kaynak Denetim adı     | Kaynak denetimi için kolay bir ad. Bu ad yalnızca harf ve rakam içermelidir.        |
+    |Kaynak Denetim türü     | Kaynak denetimi mekanizmasının türü. Kullanılabilen seçenekler:</br> * GitHub</br>* Azure Repos (git)</br> * Azure Repos (TFVC)        |
+    |Depo     | Deponun veya projenin adı. İlk 200 depo alınır. Bir depoyu aramak için alana adı yazın ve **GitHub 'Da ara**' yı tıklatın.|
+    |Dal     | Kaynak dosyaları çekilecek dal. TFVC kaynak denetimi türü için dal hedefleme kullanılamıyor.          |
+    |Klasör yolu     | Eşitlenmesi gereken runbook 'ları içeren klasör, örneğin, **/runbook**'lar. Yalnızca belirtilen klasördeki runbook 'lar eşitlenir. Özyineleme desteklenmiyor.        |
+    |Otomatik eşitleme<sup>1</sup>     | Kaynak denetim deposunda bir kayıt yapıldığında otomatik eşitlemeyi açan veya kapatan ayar.        |
+    |Runbook 'U Yayımla     | Runbook 'lar kaynak denetiminden eşitlemeden sonra otomatik olarak yayımlanıyorsa ve aksi takdirde, ' nin ayarlanması.           |
+    |Açıklama     | Kaynak denetimi ile ilgili ek ayrıntıları belirten metin.        |
 
-    <sup>1</sup> Kaynak denetimi tümleştirmesini Azure Repos ile yapılandırırken Otomatik Eşitleme'yi etkinleştirmek için bir Proje Yöneticisi olmalısınız.
+    <sup>1</sup> Azure Repos ile kaynak denetimi tümleştirmesini yapılandırırken otomatik eşitlemeyi etkinleştirmek Için bir proje yöneticisi olmanız gerekir.
 
-   ![Kaynak denetim özeti](./media/source-control-integration/source-control-summary.png)
+   ![Kaynak denetimi Özeti](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Kaynak denetim deponuzun girişi, Azure portalı için girişinizden farklı olabilir. Kaynak denetimini yapılandırırken kaynak denetim deponuzun doğru hesabıyla oturum açtığınızdan emin olun. Bir şüphe varsa, tarayıcınızda yeni bir sekme açın, **dev.azure.com,** **visualstudio.com**veya **github.com'dan**çıkış yapın ve kaynak denetimine yeniden bağlanmayı deneyin.
+> Kaynak denetimi deponuz için oturum açma Azure portal, oturum açınızdan farklı olabilir. Kaynak denetimini yapılandırırken kaynak denetimi deponuzun doğru hesabıyla oturum açtığınızdan emin olun. Şüpheli bir sorun varsa, tarayıcınızda yeni bir sekme açın, **dev.Azure.com**, **VisualStudio.com**veya **GitHub.com**oturumunu açın ve kaynak denetimine yeniden bağlanmayı deneyin.
 
-### <a name="configure-source-control-in-powershell"></a>PowerShell'de kaynak denetimini yapılandırma
+### <a name="configure-source-control-in-powershell"></a>PowerShell 'de kaynak denetimini yapılandırma
 
-PowerShell'i Azure Otomasyonu'nda kaynak denetimini yapılandırmak için de kullanabilirsiniz. Bu işlem için PowerShell cmdlets kullanmak için, kişisel erişim belirteci (PAT) gerekir. Kaynak kontrol bağlantısını oluşturmak için [New-AzAutomationSourceControl](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0
-) cmdlet'i kullanın. Bu cmdlet PAT için güvenli bir dize gerektirir. Güvenli bir dize oluşturmayı öğrenmek için [ConvertTo-SecureString'e](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)bakın.
+Azure Otomasyonu 'nda kaynak denetimi yapılandırmak için PowerShell de kullanabilirsiniz. Bu işlem için PowerShell cmdlet 'lerini kullanmak için bir kişisel erişim belirteci (PAT) gereklidir. Kaynak denetimi bağlantısını oluşturmak için [New-AzAutomationSourceControl](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0
+) cmdlet 'ini kullanın. Bu cmdlet, PAT için güvenli bir dize gerektirir. Güvenli dize oluşturma hakkında bilgi edinmek için bkz. [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
 
-Aşağıdaki alt bölümlerde GitHub, Azure Repos (Git) ve Azure Repos (TFVC) için kaynak denetim bağlantısının PowerShell oluşturulması gösterilmiştir. 
+Aşağıdaki alt bölümlerde, GitHub, Azure Repos (git) ve Azure Repos (TFVC) için kaynak denetimi bağlantısının PowerShell oluşturması gösterilmektedir. 
 
-#### <a name="create-source-control-connection-for-github"></a>GitHub için kaynak denetim bağlantısı oluşturma
+#### <a name="create-source-control-connection-for-github"></a>GitHub için kaynak denetimi bağlantısı oluşturma
 
 ```powershell-interactive
 New-AzAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accountname>/<reponame>.git -SourceType GitHub -FolderPath "/MyRunbooks" -Branch master -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
 ```
 
-#### <a name="create-source-control-connection-for-azure-repos-git"></a>Azure Repos (Git) için kaynak denetimi bağlantısı oluşturma
+#### <a name="create-source-control-connection-for-azure-repos-git"></a>Azure Repos için kaynak denetimi bağlantısı oluşturma (git)
 
 > [!NOTE]
-> Azure Repos (Git), önceki biçimlerde kullanılan **visualstudio.com**yerine **dev.azure.com** erişen bir URL kullanır. Eski URL `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` biçimi amortismana alınır, ancak yine de desteklenir. Yeni biçim tercih edilir.
+> Azure Repos (git), önceki biçimlerde kullanılan **VisualStudio.com**yerine **dev.Azure.com** 'e erişen bir URL kullanır. Eski URL biçimi `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` kullanım dışıdır ancak hala desteklenir. Yeni biçim tercih edilir.
 
 
 ```powershell-interactive
 New-AzAutomationSourceControl -Name SCReposGit -RepoUrl https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname> -SourceType VsoGit -AccessToken <secureStringofPAT> -Branch master -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
 ```
 
-#### <a name="create-source-control-connection-for-azure-repos-tfvc"></a>Azure Repos (TFVC) için kaynak denetim bağlantısı oluşturma
+#### <a name="create-source-control-connection-for-azure-repos-tfvc"></a>Azure Repos için kaynak denetimi bağlantısı oluşturma (TFVC)
 
 > [!NOTE]
-> Azure Repos (TFVC), önceki biçimlerde kullanılan visualstudio.com yerine **dev.azure.com** erişen **bir**URL kullanır. Eski URL `https://<accountname>.visualstudio.com/<projectname>/_versionControl` biçimi amortismana alınır, ancak yine de desteklenir. Yeni biçim tercih edilir.
+> Azure Repos (TFVC), önceki biçimlerde kullanılan **VisualStudio.com**yerine **dev.Azure.com** erişen bir URL kullanır. Eski URL biçimi `https://<accountname>.visualstudio.com/<projectname>/_versionControl` kullanım dışıdır ancak hala desteklenir. Yeni biçim tercih edilir.
 
 ```powershell-interactive
 New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname> -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
@@ -108,52 +108,52 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 
 #### <a name="personal-access-token-pat-permissions"></a>Kişisel erişim belirteci (PAT) izinleri
 
-Kaynak denetimi, PAT'ler için bazı minimum izinler gerektirir. Aşağıdaki alt bölümler, GitHub ve Azure Repos için gereken minimum izinleri içerir.
+Kaynak denetimi, PATs için bazı minimum izinleri gerektirir. Aşağıdaki alt bölümler, GitHub ve Azure Repos için gereken en düşük izinleri içerir.
 
-##### <a name="minimum-pat-permissions-for-github"></a>GitHub için minimum PAT izinleri
+##### <a name="minimum-pat-permissions-for-github"></a>GitHub için en düşük PAT izinleri
 
-Aşağıdaki tablo, GitHub için gereken minimum PAT izinlerini tanımlar. GitHub'da BIR PAT oluşturma hakkında daha fazla bilgi [için](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)bkz.
+Aşağıdaki tabloda, GitHub için gereken en düşük PAT izinleri tanımlanmaktadır. GitHub 'da bir PAT oluşturma hakkında daha fazla bilgi için, bkz. [komut satırı için kişisel erişim belirteci oluşturma](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
 |Kapsam  |Açıklama  |
 |---------|---------|
 |**`repo`**     |         |
-|`repo:status`     | İşişleme durumuna erişin         |
+|`repo:status`     | Erişim yapma durumu         |
 |`repo_deployment`      | Erişim dağıtım durumu         |
-|`public_repo`     | Ortak depolara erişin         |
+|`public_repo`     | Genel depolara erişin         |
 |**`admin:repo_hook`**     |         |
-|`write:repo_hook`     | Depo kancaları yazma         |
-|`read:repo_hook`|Depo kancalarını okuyun|
+|`write:repo_hook`     | Depo kancalarını Yaz         |
+|`read:repo_hook`|Depo kancalarını okuma|
 
-##### <a name="minimum-pat-permissions-for-azure-repos"></a>Azure Depoları için minimum PAT izinleri
+##### <a name="minimum-pat-permissions-for-azure-repos"></a>Azure Repos için en düşük PAT izinleri
 
-Aşağıdaki liste, Azure Repos'ları için gereken minimum PAT izinlerini tanımlar. Azure Repos'ta BIR PAT oluşturma hakkında daha fazla bilgi için [bkz.](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)
+Aşağıdaki liste Azure Repos için gereken en düşük PAT izinlerini tanımlar. Azure Repos bir PAT oluşturma hakkında daha fazla bilgi için bkz. [kişisel erişim belirteçleriyle erişim kimlik doğrulaması](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
-| Kapsam  |  Erişim Türü  |
+| Kapsam  |  Erişim türü  |
 |---------| ----------|
 | `Code`      | Okuma  |
 | `Project and team` | Okuma |
 | `Identity` | Okuma     |
 | `User profile` | Okuma     |
 | `Work items` | Okuma    |
-| `Service connections` | Okuma, sorgula, yönetme<sup>1</sup>    |
+| `Service connections` | Oku, sorgula, Yönet<sup>1</sup>    |
 
-<sup>1</sup> `Service connections` İzin yalnızca otomatik senkronizasyonu etkinleştirdiyseniz gereklidir.
+<sup>1</sup> `Service connections` izin yalnızca, oto eşitlemesini etkinleştirdiyseniz gereklidir.
 
-## <a name="synchronizing"></a>Eşitleme
+## <a name="synchronizing"></a>Iz
 
-Kaynak denetimiyle eşitlemek için aşağıdaki adımları izleyin. 
+Kaynak denetimiyle eşitlenmek için bu adımları izleyin. 
 
-1. Kaynak denetim sayfasındaki tablodan kaynağı seçin. 
+1. Kaynak denetimi sayfasındaki tablodan kaynağı seçin. 
 
-2. Eşitleme işlemini başlatmak için **Eşitlemeyi Başlat'ı** tıklatın. 
+2. Eşitleme işlemini başlatmak için **Eşitlemeyi Başlat** ' a tıklayın. 
 
-3. **Eşitleme işleri** sekmesini tıklatarak geçerli eşitleme işinin veya öncekilerin durumunu görüntüleyin. 
+3. **Eşitleme işleri** sekmesine tıklayarak geçerli eşitleme işinin durumunu veya önceki olanları görüntüleyin. 
 
-4. Kaynak **Denetimi** açılır menüsünde bir kaynak denetim mekanizması seçin.
+4. **Kaynak denetimi** açılan menüsünde, bir kaynak denetim mekanizması seçin.
 
     ![Eşitleme durumu](./media/source-control-integration/sync-status.png)
 
-5. Bir işi tıklatmak, iş çıktısını görüntülemenizi sağlar. Aşağıdaki örnek, kaynak denetimi eşitleme işinden gelen çıktıdır.
+5. Bir işi tıklatmak, iş çıktısını görüntülemenize izin verir. Aşağıdaki örnek, bir kaynak denetimi eşitleme işinin çıktıdır.
 
     ```output
     ===================================================================
@@ -185,29 +185,29 @@ Kaynak denetimiyle eşitlemek için aşağıdaki adımları izleyin.
 
     ```
 
-6. Kaynak Denetimi Eşitleme İş Özeti sayfasındaki **Tüm Günlükler** seçilerek ek günlüğe kaydetme kullanılabilir. Bu ek günlük girişleri, kaynak denetimi kullanırken ortaya çıkabilecek sorunları gidermenize yardımcı olabilir.
+6. Kaynak denetimi eşitleme Işi Özeti sayfasında **Tüm Günlükler** seçilerek ek günlüğe kaydetme kullanılabilir. Bu ek günlük girişleri, kaynak denetimi kullanılırken oluşabilecek sorunları gidermenize yardımcı olabilir.
 
-## <a name="disconnecting-source-control"></a>Kaynak denetiminin kesilmesi
+## <a name="disconnecting-source-control"></a>Kaynak denetiminin bağlantısı kesiliyor
 
-Kaynak denetim deposundan bağlantı kesmek için:
+Kaynak denetim deposundan bağlantıyı kesmek için:
 
-1. Otomasyon hesabınızda **Hesap Ayarları** altında Kaynak **denetimi** açın.
+1. Otomasyon hesabınızda **Hesap ayarları** altında **kaynak denetimi** ' ni açın.
 
-2. Kaldırmak için kaynak denetim mekanizmasını seçin. 
+2. Kaldırılacak kaynak denetim mekanizmasını seçin. 
 
-3. Kaynak Denetimi Özeti sayfasında **Sil'i**tıklatın.
+3. Kaynak denetimi Özeti sayfasında **Sil**' e tıklayın.
 
 ## <a name="handling-encoding-issues"></a>Kodlama sorunlarını işleme
 
-Kaynak denetim deponuzda birden çok kişi farklı düzenleyicilerkullanarak runbook'ları düzenliyorsa, kodlama sorunları oluşabilir. Bu durum hakkında daha fazla bilgi edinmek [için, kodlama sorunlarının Yaygın nedenleri bölümüne](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)bakın.
+Farklı düzenleyiciler kullanarak kaynak denetim deponuzdaki runbook 'ları birden çok kişi düzenliyorsanız, kodlama sorunları oluşabilir. Bu durumla ilgili daha fazla bilgi edinmek için bkz. [kodlama sorunlarının yaygın nedenleri](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
 
-## <a name="updating-the-pat"></a>PAT'in güncellenmesi
+## <a name="updating-the-pat"></a>PAT güncelleştiriliyor
 
-Şu anda, kaynak denetiminde PAT'i güncelleştirmek için Azure portalını kullanamazsınız. PAT'nizin süresi dolduğunda veya iptal edildiğinde, kaynak denetimini yeni bir erişim belirteciyle şu yollardan biriyle güncelleyebilirsiniz:
+Şu anda, kaynak denetimindeki PAT 'yi güncelleştirmek için Azure portal kullanamazsınız. PAT süreniz dolduğunda veya iptal edildiğinde, kaynak denetimini şu yollarla yeni bir erişim belirteciyle güncelleştirebilirsiniz:
 
-* REST [API'yi](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update)kullanın.
-* [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet kullanın.
+* [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update)kullanın.
+* [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) cmdlet 'ini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Runbook türleri ve bunların avantajları ve sınırlamaları hakkında daha fazla bilgi edinmek için [Azure Otomasyon runbook türlerine](automation-runbook-types.md)bakın.
+Runbook türleri ve bunların avantajları ve sınırlamaları hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu runbook türleri](automation-runbook-types.md).

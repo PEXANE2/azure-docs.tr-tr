@@ -1,52 +1,52 @@
 ---
-title: Sürücüler ve araçlar uyumluluğu - MariaDB için Azure Veritabanı
-description: Bu makalede, MariaDB için Azure Veritabanı ile uyumlu MariaDB sürücüleri ve yönetim araçları açıklanmaktadır.
+title: Sürücüler ve araçlar uyumluluğu-MariaDB için Azure veritabanı
+description: Bu makalede, MariaDB için Azure veritabanı ile uyumlu olan MariaDB sürücüleri ve yönetim araçları açıklanmaktadır.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a0cee198f028fd90e04dac15e98d7cd33aee9201
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79532357"
 ---
-# <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı ile uyumlu MariaDB sürücüleri ve yönetim araçları
+# <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>MariaDB sürücüleri ve yönetim araçları MariaDB için Azure veritabanı ile uyumlu
 
-Bu makalede, MariaDB için Azure Veritabanı ile uyumlu sürücüler ve yönetim araçları açıklanmaktadır.
+Bu makalede, MariaDB için Azure veritabanı ile uyumlu olan sürücüler ve yönetim araçları açıklanmaktadır.
 
-## <a name="mariadb-drivers"></a>MariaDB Sürücüler
+## <a name="mariadb-drivers"></a>MariaDB sürücüleri
 
-MariaDB için Azure Veritabanı, MariaDB sunucusunun topluluk sürümünü kullanır. Bu nedenle, programlama dilleri ve sürücüleri geniş bir yelpazede ile uyumludur. MariaDB'nin API'si ve protokolü MySQL tarafından kullanılanlarla uyumludur. Bu, MySQL ile çalışan bağlayıcıların MariaDB ile de çalışması gerektiği anlamına gelir.
+MariaDB için Azure veritabanı, MariaDB sunucusunun Community sürümünü kullanır. Bu nedenle, çok çeşitli programlama dilleri ve sürücüleriyle uyumludur. MariaDB 'nin API 'SI ve Protokolü MySQL tarafından kullanılanlarla uyumludur. Bu, MySQL ile çalışan bağlayıcıların de MariaDB ile çalışması gerektiği anlamına gelir.
 
-Amaç, MariaDB sürücülerinin en son üç versiyonunu desteklemektir ve MariaDB sürücülerinin işlevselliğini ve kullanılabilirliğini sürekli olarak geliştirmek için açık kaynak topluluğundan yazarlarla birlikte çalışmalar devam etmektedir. MariaDB 10.2 için Azure Veritabanı ile uyumlu olduğu tespit edilen ve test edilmiş sürücülerin listesi aşağıdaki tabloda verilmiştir:
+Amaç, en son üç sürümü MariaDB sürücülerini destekliyoruz ve MariaDB sürücülerinin işlevlerini ve kullanılabilirliğini sürekli olarak geliştirmek üzere açık kaynaklı topluluktaki yazarlarla ilgili çalışmalar devam eder. Aşağıdaki tabloda, test edilmiş ve MariaDB 10,2 için Azure veritabanı ile uyumlu olarak bulunan sürücülerin bir listesi verilmiştir:
 
-**Sürücü** | **Bağlantılar** | **Uyumlu Sürümler** | **Uyumsuz Sürümler** | **Notlar**
+**Sürücü** | **Bağlantılar** | **Uyumlu sürümler** | **Uyumsuz sürümler** | **Notlar**
 ---|---|---|---|---
-PHP | https://secure.php.net/downloads.php | 5.5, 5.6, 7.x | 5.3 | SSL MySQLi ile PHP 7.0 bağlantısı için bağlantı dizesinde MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT ekleyin. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> PDO seti: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` yanlış seçeneği.
-.NET | [GitHub'da MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [Nuget'ten kurulum paketi](https://www.nuget.org/packages/MySqlConnector/) | 0.27 ve sonrası | 0.26.5 ve öncesi |
-MySQL Bağlayıcısı/NET | [MySQL Bağlayıcısı/NET](https://github.com/mysql/mysql-connector-net) | 8.0, 7.0, 6.10 |  | Bir kodlama hatası, UTF8 olmayan bazı Windows sistemlerinde bağlantıların başarısız lığa neden olabilir.
-Node.js |  [GitHub üzerinde MySQLjs](https://github.com/mysqljs/mysql/) <br> NPM'den kurulum paketi:<br> NPM'den çalıştırın `npm install mysql` | 2.15 | 2.14.1 ve öncesi
-GO | https://github.com/go-sql-driver/mysql/releases | 1.3, 1.4 | 1.2 ve öncesi | Sürüm `allowNativePasswords=true` 1.3 için bağlantı dizesinde kullanın. Sürüm 1.4 bir `allowNativePasswords=true` düzeltme içerir ve artık gerekli değildir.
-Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2.0, 2.1, 2.2 | 1.2.2 ve öncesi |
-Java | https://downloads.mariadb.org/connector-java/ | 2.1, 2.0, 1.6 | 1.5.5 ve öncesi |
+PHP | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5.3 | SSL ile PHP 7,0 bağlantısı için, bağlantı dizesinde MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT ekleyin. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> PDO set: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` seçenek false.
+.NET | [GitHub 'da MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [NuGet 'den yükleme paketi](https://www.nuget.org/packages/MySqlConnector/) | 0,27 ve sonrası | 0.26.5 ve öncesi |
+MySQL Bağlayıcısı/ağı | [MySQL Bağlayıcısı/ağı](https://github.com/mysql/mysql-connector-net) | 8,0, 7,0, 6,10 |  | Bir kodlama hatası, bazı UTF8 olmayan Windows sistemlerinde bağlantıların başarısız olmasına neden olabilir.
+Node.js |  [GitHub üzerinde MySQLjs](https://github.com/mysqljs/mysql/) <br> NPM 'den yükleme paketi:<br> NPM 'den Çalıştır `npm install mysql` | 2.15 | 2.14.1 ve öncesi
+GO | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 ve öncesi | Sürüm `allowNativePasswords=true` 1,3 için bağlantı dizesinde kullanın. Sürüm 1,4, bir çözüm içerir `allowNativePasswords=true` ve artık gerekli değildir.
+Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2,0, 2,1, 2,2 | 1.2.2 ve öncesi |
+Java | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 ve öncesi |
 
 ## <a name="management-tools"></a>Yönetim Araçları
 
-Uyumluluk avantajı veritabanı yönetim araçlarını da genişletir. Veritabanı işleme kullanıcı izinleri sınırları içinde çalıştığı sürece, varolan araçlarınız MariaDB için Azure Veritabanı ile çalışmaya devam etmelidir. Test edilmiş ve MariaDB 10.2 için Azure Veritabanı ile uyumlu olduğu tespit edilen üç yaygın veritabanı yönetim aracı aşağıdaki tabloda listelenmiştir:
+Uyumluluk avantajı veritabanı yönetim araçlarına da genişletilir. Veritabanı düzenlemesi Kullanıcı izinlerinin sınırlandırmaları içinde çalıştığı sürece mevcut araçlarınız, MariaDB için Azure veritabanı ile çalışmaya devam etmelidir. Daha önce sınanmış ve MariaDB 10,2 için Azure veritabanı ile uyumlu olmak üzere bulunan üç ortak veritabanı yönetim aracı aşağıdaki tabloda listelenmiştir:
 
-| | **MySQL Çalışma Tezgahı 6.x ve yukarı** | **Navicat 12** | **PHPMyAdmin 4.x ve yukarı**
+| | **MySQL çalışma ekranı 6. x ve yukarı** | **Navicat 12** | **PHPMyAdmin 4. x ve yukarı**
 ---|---|---|---
-Oluşturma, Güncelleme, Okuma, Yazma, Silme | X | X | X
-SSL Bağlantısı | X | X | X
-SQL Query Otomatik Tamamlama | X | X |
-İçe Aktarma ve Verme Verileri | X | X | X
-Birden Çok Biçime Dışa Aktarma | X | X | X
+Oluşturma, güncelleştirme, okuma, yazma, silme | X | X | X
+SSL bağlantısı | X | X | X
+SQL sorgu otomatik tamamlama | X | X |
+Verileri içeri ve dışarı aktarma | X | X | X
+Birden çok biçime aktar | X | X | X
 Yedekleme ve Geri Yükleme |  | X |
-Sunucu Parametrelerini Görüntüle | X | X | X
-İstemci Bağlantılarını Görüntüle | X | X | X
+Sunucu parametrelerini görüntüle | X | X | X
+Istemci bağlantılarını görüntüle | X | X | X
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

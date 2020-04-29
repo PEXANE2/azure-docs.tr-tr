@@ -1,6 +1,6 @@
 ---
-title: v1.0 uygulama türleri | Azure
-description: Azure Active Directory v2.0 bitiş noktası tarafından desteklenen uygulama ve senaryo türlerini açıklar.
+title: V 1.0 'daki uygulama türleri | Mavisi
+description: Azure Active Directory v 2.0 uç noktası tarafından desteklenen uygulama ve senaryoların türlerini açıklar.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,70 +14,70 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: c290cbf36fd53d5afb5fd805cda896fb6879bb4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154959"
 ---
-# <a name="application-types-in-v10"></a>v1.0'daki uygulama türleri
+# <a name="application-types-in-v10"></a>V 1.0 'daki uygulama türleri
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Azure Active Directory (Azure AD), endüstri standardı protokoller OAuth 2.0 veya OpenID Connect'e dayalı olarak çeşitli modern uygulama mimarileri için kimlik doğrulamayı destekler.
+Azure Active Directory (Azure AD), endüstri standardı protokoller OAuth 2,0 veya OpenID Connect temelinde çeşitli modern uygulama mimarilerinin kimlik doğrulamasını destekler.
 
-Aşağıdaki diyagram, senaryoları ve uygulama türlerini ve farklı bileşenlerin nasıl eklenebilirolduğunu gösterir:
+Aşağıdaki diyagramda senaryolar ve uygulama türleri ve farklı bileşenlerin nasıl eklenebileceği gösterilmektedir:
 
 ![Uygulama Türleri ve senaryolar](./media/authentication-scenarios/application-types-scenarios.png)
 
 Azure AD tarafından desteklenen beş birincil uygulama senaryosu şunlardır:
 
-- **[Tek sayfalı uygulama (SPA)](single-page-application.md)**: Bir kullanıcının Azure AD tarafından güvenli tek sayfalık bir uygulamada oturum açması gerekir.
-- **[Web tarayıcısı web uygulaması](web-app.md)**: Bir kullanıcının Azure AD tarafından güvenli bir web uygulamasında oturum açması gerekir.
-- **[Web API'ye yerel uygulama](native-app.md)**: Telefonda, tablette veya bilgisayarda çalışan yerel bir uygulamanın, Azure AD tarafından güvenli bir web API'sinden kaynak elde etmek için kullanıcının kimliğini doğrulaması gerekir.
-- **[Web uygulamasından web API'ye](web-api.md)**: Bir web uygulamasının Azure AD tarafından güvenli bir web API'sinden kaynak alması gerekir.
-- **[Daemon veya sunucu uygulaması web API](service-to-service.md)** için : Bir daemon uygulaması veya hiçbir web kullanıcı arayüzü olmayan bir sunucu uygulaması Azure AD tarafından güvenli bir web API kaynakları almak gerekir.
+- **[Tek sayfalı uygulama (Spa)](single-page-application.md)**: kullanıcının Azure AD tarafından güvenliği sağlanmış tek sayfalı bir uygulamada oturum açması gerekir.
+- Web **[uygulamasına Web tarayıcısı](web-app.md)**: bir kullanıcının Azure AD tarafından güvenliği sağlanmış bir Web uygulamasında oturum açması gerekir.
+- **[Yerel uygulama Web API 'sine](native-app.md)**: bir telefonda, tablette veya bilgisayar üzerinde çalışan yerel bir uygulamanın, Azure AD tarafından güvenliği sağlanmış BIR Web API 'sinden kaynak alması için bir kullanıcının kimliğini doğrulaması gerekir.
+- Web **[uygulaması Web API 'si](web-api.md)**: bir Web UYGULAMASıNıN Azure AD ile güvenliği sağlanmış BIR Web API 'sinden kaynak alması gerekir.
+- **[Web API 'sine yönelik Daemon veya sunucu uygulaması](service-to-service.md)**: Web Kullanıcı arabirimi olmayan bir Daemon uygulamasının veya bir sunucu UYGULAMASıNıN Azure AD tarafından güvenliği sağlanmış BIR Web API 'sinden kaynak alması gerekir.
 
-Her uygulama türü hakkında daha fazla bilgi edinmek ve kodla çalışmaya başlamadan önce üst düzey senaryoları anlamak için bağlantıları izleyin. Ayrıca v1.0 bitiş noktası veya v2.0 bitiş noktası ile çalışan belirli bir uygulama yazarken bilmeniz gereken farklar hakkında bilgi edinebilirsiniz.
+Her uygulama türü hakkında daha fazla bilgi edinmek ve kodla çalışmaya başlamadan önce üst düzey senaryoları anlamak için bağlantıları izleyin. Ayrıca, v 1.0 Endpoint veya v 2.0 uç noktası ile birlikte çalışarak belirli bir uygulamayı yazarken bilmeniz gereken farklılıklar hakkında bilgi edinebilirsiniz.
 
 > [!NOTE]
-> v2.0 bitiş noktası tüm Azure REKLAM senaryolarını ve özelliklerini desteklemez. v2.0 bitiş noktasını kullanıp kullanmadığınızı belirlemek için [v2.0 sınırlamaları](../develop/active-directory-v2-limitations.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)hakkında bilgi edinin.
+> V 2.0 uç noktası tüm Azure AD senaryolarını ve özelliklerini desteklemez. V 2.0 uç noktasını kullanmanız gerekip gerekmediğini öğrenmek için, [v 2.0 sınırlamalarını](../develop/active-directory-v2-limitations.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)okuyun.
 
-Burada açıklanan uygulamaları ve senaryoları çeşitli dilleri ve platformları kullanarak geliştirebilirsiniz. Bunların hepsi kod örnekleri kılavuzunda bulunan tam kod örnekleri ile desteklidir: [senaryoya göre v1.0 kod örnekleri](sample-v1-code.md) ve [senaryoya göre v2.0 kod örnekleri.](../develop/sample-v2-code.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) Kod örneklerini doğrudan ilgili [GitHub örnek depolarından](https://github.com/Azure-Samples?q=active-directory)da indirebilirsiniz.
+Çeşitli diller ve platformlar kullanılarak burada açıklanan uygulama ve senaryolardan herhangi birini geliştirebilirsiniz. Bunlar, kod örnekleri kılavuzunda bulunan tüm kod örnekleri tarafından desteklenir, senaryoya göre [v 1.0 kod örnekleri](sample-v1-code.md) ve [senaryoya göre v 2.0 kod örnekleri](../develop/sample-v2-code.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json). Kod örneklerini doğrudan ilgili [GitHub örnek depolarından](https://github.com/Azure-Samples?q=active-directory)da indirebilirsiniz.
 
-Ayrıca, uygulamanızın uçtan uca bir senaryonun belirli bir parçasına veya kesimine ihtiyacı varsa, çoğu durumda bu işlevsellik bağımsız olarak eklenebilir. Örneğin, web API çağıran yerel bir uygulamanız varsa, web API'sini de çağıran bir web uygulamasını kolayca ekleyebilirsiniz.
+Ayrıca, uygulamanız bir uçtan uca senaryonun belirli bir parçasına veya kesimine ihtiyacı varsa, çoğu durumda işlevsellik bağımsız olarak eklenebilirler. Örneğin, bir Web API 'SI çağıran yerel bir uygulamanız varsa, Web API 'sini de çağıran bir Web uygulamasını kolayca ekleyebilirsiniz.
 
 ## <a name="app-registration"></a>Uygulama kaydı
 
-### <a name="registering-an-app-that-uses-the-azure-ad-v10-endpoint"></a>Azure AD v1.0 bitiş noktasını kullanan bir uygulamayı kaydetme
+### <a name="registering-an-app-that-uses-the-azure-ad-v10-endpoint"></a>Azure AD v 1.0 uç noktasını kullanan bir uygulamayı kaydetme
 
-Azure AD kimlik doğrulamasına dış kaynak sağlayan tüm uygulamaların bir dizinde kaydedilmesi gerekir. Bu adım, Azure AD'ye bulunduğunuz URL, kimlik doğrulamadan sonra yanıt gönderilecek URL, uygulamanızı tanımlamak için URI ve daha fazlası dahil olmak üzere uygulamanız hakkında bilgi verebiçerir. Bu bilgiler birkaç önemli nedenden dolayı gereklidir:
+Azure AD 'de kimlik doğrulaması yapan herhangi bir uygulamanın bir dizine kaydedilmesi gerekir. Bu adım, Azure AD 'nin bulunduğu URL 'yi, kimlik doğrulamasından sonra yanıtları göndermek için URL 'yi, uygulamanızı tanımlayacak URI 'yi ve daha fazlasını içeren, uygulamanız hakkında bilgi ister. Bu bilgiler, bazı önemli nedenlerle gereklidir:
 
-* Azure AD'nin oturum açma veya belirteçleri değiş tokuş ederken uygulamayla iletişim kurması gerekir. Azure AD ile uygulama arasında aktarılan bilgiler şunlardır:
+* Azure AD 'de oturum açma veya belirteçleri değiştirme sırasında uygulamayla iletişim kurması gerekir. Azure AD ile uygulama arasında geçirilen bilgiler şunları içerir:
   
-  * **Uygulama Kimliği URI** - Bir uygulama için tanımlayıcı. Bu değer, arayan kişinin hangi uygulama için bir belirteç istediğini belirtmek için kimlik doğrulama sırasında Azure AD'ye gönderilir. Ayrıca, bu değer, uygulamanın hedeflenen hedef olduğunu bilmesi için belirtecine dahil edilir.
-  * **URL'yi Yanıtla** ve **URI'yi Yeniden Yönlendirme** - Bir web API'sı veya web uygulaması için Yanıtla URL'si, Azure AD'nin kimlik doğrulama yanıtını göndereceği ve kimlik doğrulamanın başarılı olup olmadığını gösteren bir belirteç de dahil olmak üzere konumudur. Yerel bir uygulama için Redirect URI, Azure AD'nin kullanıcı aracısını OAuth 2.0 isteğiyle yeniden yönlendireceği benzersiz bir tanımlayıcıdır.
-  * **Uygulama Kimliği** - Uygulama kaydedildiğinde Azure AD tarafından oluşturulan bir uygulamanın kimliği. Bir yetkilendirme kodu veya belirteç istenirken, Uygulama Kimliği ve Anahtarı kimlik doğrulaması sırasında Azure AD'ye gönderilir.
-  * **Anahtar** - Web API'sını aramak için Azure AD'ye kimlik doğrulaması yaparken Uygulama Kimliği ile birlikte gönderilen anahtar.
-* Azure AD'nin, uygulamanın dizin verilerinize, kuruluşunuzdaki diğer uygulamalara ve benzeri uygulamalara erişmek için gerekli izinlere sahip olduğundan emin olması gerekir.
+  * **Uygulama kimliği URI 'si** -bir uygulama için tanımlayıcı. Bu değer, arayanın hangi uygulamayı bir belirteç istediğini göstermek için kimlik doğrulama sırasında Azure AD 'ye gönderilir. Ayrıca, uygulamanın amaçlanan hedef olduğunu bilmesi için bu değer belirtece dahil edilir.
+  * **Yanıt URL 'si** ve **yeniden yönlendirme URI 'si** -bir Web API 'si veya Web uygulaması için, kimlik doğrulaması başarılı olursa belirteç de dahIl olmak üzere Azure AD 'nin kimlik doğrulama yanıtını göndereceği konumdur. Yerel bir uygulama için, yeniden yönlendirme URI 'SI, Azure AD 'nin bir OAuth 2,0 isteğindeki Kullanıcı aracısını yeniden yönlendireceği benzersiz bir tanımlayıcıdır.
+  * **Uygulama kimliği** -uygulama KAYDEDILDIĞINDE Azure AD tarafından oluşturulan BIR uygulamanın kimliği. Bir yetkilendirme kodu veya belirteci istenirken, kimlik doğrulama sırasında Azure AD 'ye uygulama KIMLIĞI ve anahtarı gönderilir.
+  * **Anahtar** -BIR Web API 'sini çağırmak IÇIN Azure AD kimlik doğrulaması yapılırken BIR uygulama kimliğiyle birlikte gönderilen anahtar.
+* Azure AD 'nin, uygulamanın dizin verilerinize, kuruluşunuzdaki diğer uygulamalara ve benzeri bir erişim için gerekli izinlere sahip olduğundan emin olması gerekir.
 
-Ayrıntılar [için, bir uygulamayı](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)nasıl kaydedin öğrenin.
+Ayrıntılar için, [bir uygulamayı nasıl kaydedeceğinizi](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)öğrenin.
 
 ## <a name="single-tenant-and-multi-tenant-apps"></a>Tek kiracılı ve çok kiracılı uygulamalar
 
-Azure AD ile geliştirilebilen ve tümleştirilebilen iki uygulama kategorisi olduğunu anladığınızda sağlama daha net hale gelir:
+Azure AD ile geliştirilebilen ve tümleştirilebilen iki uygulama kategorisi olduğunu anladığınızda, sağlama daha anlaşılır hale gelir:
 
-* **Tek kiracı uygulaması** - Tek bir kiracı uygulaması tek bir kuruluşta kullanılmak üzere tasarlanmıştır. Bunlar genellikle bir kurumsal geliştirici tarafından yazılmış iş satırı (LoB) uygulamalarıdır. Tek bir kiracı uygulamasının yalnızca tek bir dizinde kullanıcılar tarafından erişilmesi gerekir ve sonuç olarak yalnızca tek bir dizinde sağlanması gerekir. Bu uygulamalar genellikle kuruluştaki bir geliştirici tarafından kaydedilir.
-* **Çok kiracılı uygulama** - Çok kiracılı bir uygulama, tek bir kuruluşta değil, birçok kuruluşta kullanılmak üzere tasarlanmıştır. Bunlar genellikle bağımsız bir yazılım satıcısı (ISV) tarafından yazılmış hizmet olarak yazılım (SaaS) uygulamalarıdır. Çok kiracılı uygulamaların kullanılacağı her dizinde sağlanması gerekir ve bu da kullanıcı veya yöneticinin bunları kaydetme iznini gerektirir. Bu onay işlemi, bir uygulama dizine kaydedildiğinde başlar ve Grafik API'sine veya belki de başka bir web API'sine erişim verilir. Farklı bir kuruluştan bir kullanıcı veya yönetici uygulamayı kullanmak için kaydolduğunda, uygulamanın gerektirdiği izinleri görüntüleyen bir iletişim kutusu sunulur. Kullanıcı veya yönetici daha sonra, uygulamaya belirtilen verilere erişim sağlayan ve son olarak uygulamayı dizinine kaydeden uygulamayı onaylayabilir. Daha fazla bilgi için, [Bkz. Onay Çerçevesigenel Bakış.](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
+* **Tek kiracılı uygulama** -tek bir kiracı uygulaması tek bir kuruluşta kullanılmak üzere tasarlanmıştır. Bunlar, genellikle kurumsal bir geliştirici tarafından yazılan iş kolu (LoB) uygulamalardır. Tek bir kiracı uygulamasına yalnızca bir dizindeki kullanıcılar tarafından erişilmesi gerekir ve sonuç olarak yalnızca bir dizinde sağlanması gerekir. Bu uygulamalar genellikle kuruluştaki bir geliştirici tarafından kaydedilir.
+* **Çok kiracılı uygulama** -çok kiracılı bir uygulama, yalnızca bir kuruluş değil birçok kuruluşta kullanılmak üzere tasarlanmıştır. Bunlar, genellikle bağımsız bir yazılım satıcısı (ISV) tarafından yazılan hizmet olarak yazılım (SaaS) uygulamalardır. Çok kiracılı uygulamaların kullanılacağı her dizinde sağlanması gerekir, bu da Kullanıcı veya yönetici tarafından kaydolmak için onay gerektirir. Bu onay işlemi, bir uygulama dizine kaydedildiğinde başlar ve Graph API veya belki başka bir Web API 'sine erişim izni verilir. Farklı bir kuruluştan Kullanıcı veya yönetici uygulamayı kullanmak üzere kaydolduğunda, uygulamanın gerektirdiği izinleri görüntüleyen bir iletişim kutusu görüntülenir. Kullanıcı veya yönetici daha sonra uygulamaya izin verebilir, bu da uygulamanın belirtilen verilere erişmesini sağlar ve son olarak uygulamayı kendi dizinine kaydeder. Daha fazla bilgi için bkz. [onay çerçevesine genel bakış](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 
-### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>Tek kiracı veya çok kiracılı uygulamalar geliştirirken dikkat edilmesi gereken ek noktalar
+### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>Tek kiracılı veya çok kiracılı uygulamalar geliştirirken dikkat edilecek ek noktalar
 
-Tek bir kiracı uygulaması yerine çok kiracılı bir uygulama geliştirirken bazı ek hususlar ortaya çıkar. Örneğin, uygulamanızı birden çok dizindeki kullanıcılar tarafından kullanılabilir hale getiriyorsanız, hangi kiracıda olduklarını belirlemek için bir mekanizmaya ihtiyacınız vardır. Tek bir kiracı uygulamasıyalnızca bir kullanıcı için kendi dizininde bakmak gerekirken, çok kiracılı bir uygulamanın Azure AD'deki tüm dizinlerden belirli bir kullanıcıyı tanımlaması gerekir. Bu görevi gerçekleştirmek için Azure AD, kiracıya özgü bir bitiş noktası yerine çok kiracılı uygulamaların oturum açma isteklerini yönlendirebileceği ortak bir kimlik doğrulama bitiş noktası sağlar. Bu bitiş `https://login.microsoftonline.com/common` noktası Azure AD'deki tüm dizinler içindir, `https://login.microsoftonline.com/contoso.onmicrosoft.com`kiracıya özgü bir bitiş noktası ise. Oturum açma, imzalama ve belirteç doğrulaması sırasında birden çok kiracıyı işlemek için gerekli mantığa ihtiyacınız olduğundan, uygulamanızı geliştirirken göz önünde bulundurulması gereken ortak bitiş noktası özellikle önemlidir.
+Tek bir kiracı uygulaması yerine çok kiracılı bir uygulama geliştirilirken bazı ek konular ortaya çıkar. Örneğin, uygulamanızı birden çok dizindeki kullanıcılar için kullanılabilir hale getiriyorsanız, hangi kiracının bulunduğunu belirlemeniz için bir mekanizmaya ihtiyacınız vardır. Tek bir kiracı uygulamasının bir kullanıcı için kendi dizinine bakması gerekir, ancak çok kiracılı bir uygulamanın Azure AD 'deki tüm dizinlerden belirli bir kullanıcıyı tanımlaması gerekir. Bu görevi gerçekleştirmek için Azure AD, herhangi bir çok kiracılı uygulamanın kiracıya özgü bir uç nokta yerine, oturum açma isteklerini doğrudan yönlendirbildiği ortak bir kimlik doğrulama uç noktası sağlar. Bu uç nokta `https://login.microsoftonline.com/common` , Azure AD 'deki tüm dizinlere yöneliktir, ancak kiracıya özgü bir uç nokta `https://login.microsoftonline.com/contoso.onmicrosoft.com`olabilir. Genellikle, oturum açma, oturum kapatma ve belirteç doğrulama sırasında birden çok kiracıyı işlemek için gerekli mantığın olması gerekeceğinden, genel uç nokta, uygulamanızı geliştirirken göz önünde bulundurmanız önemlidir.
 
-Şu anda tek bir kiracı uygulaması geliştiriyorsanız ancak birçok kuruluş için kullanılabilir hale getirmek istiyorsanız, çok kiracılı olabilir hale getirmek için uygulamada ve Azure AD'deki yapılandırmasında kolayca değişiklik yapabilirsiniz. Ayrıca Azure AD, ister tek bir kiracıda ister çok kiracılı uygulamada kimlik doğrulaması sağlıyor olun, tüm dizinlerdeki tüm belirteçler için aynı imzalama anahtarını kullanır.
+Şu anda tek bir kiracı uygulaması geliştirmekte, ancak bunu birçok kuruluşta kullanılabilir hale getirmek istiyorsanız, Azure AD 'de uygulamada ve yapılandırmada kolayca değişiklikler yapabilir ve bunu çok kiracılı hale getirebilirsiniz. Ayrıca, Azure AD, tek bir kiracıda veya çok kiracılı bir uygulamada kimlik doğrulaması sağlayıp sağlamaktan bağımsız olarak tüm dizinlerdeki tüm belirteçler için aynı imza anahtarını kullanır.
 
-Bu belgede listelenen her senaryo, sağlama gereksinimlerini açıklayan bir alt bölüm içerir. Azure AD'de bir uygulama sağlama hakkında daha ayrıntılı bilgi ve tek ve çok kiracılı uygulamalar arasındaki farklar için daha fazla bilgi için [uygulamaları Azure Etkin Dizini ile tümleştirme](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) konusuna bakın. Azure AD'deki yaygın uygulama senaryolarını anlamak için okumaya devam edin.
+Bu belgede listelenen her senaryo, sağlama gereksinimlerini açıklayan bir alt bölüm içerir. Azure AD 'de bir uygulama sağlama ve tek ve çok kiracılı uygulamalar arasındaki farklılıklar hakkında daha ayrıntılı bilgi için bkz. daha fazla bilgi için [uygulamaları Azure Active Directory tümleştirme](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) . Azure AD 'deki yaygın uygulama senaryolarını anlamak için okumaya devam edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Diğer Azure AD [kimlik doğrulama temelleri](v1-authentication-scenarios.md) hakkında daha fazla bilgi edinin
+- Diğer Azure AD [kimlik doğrulaması temelleri](v1-authentication-scenarios.md) hakkında daha fazla bilgi edinin

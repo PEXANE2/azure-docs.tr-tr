@@ -1,86 +1,86 @@
 ---
-title: Yeniden yönlendirme yle bağlan - MySQL için Azure Veritabanı
-description: Bu makalede, yeniden yönlendirme ile MySQL için Azure Veritabanı'na bağlanmak için uygulamanızı nasıl yapılandırabileceğiniz açıklanmaktadır.
+title: Yeniden yönlendirme ile bağlanma-MySQL için Azure veritabanı
+description: Bu makalede, uygulamanızı yeniden yönlendirme ile MySQL için Azure veritabanı 'na bağlanmak üzere nasıl yapılandırabileceğiniz açıklanmaktadır.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: f987d5d9640c3bfef61320df379a68eae2f4712b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80246344"
 ---
-# <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Yeniden yönlendirme ile MySQL için Azure Veritabanına bağlanın
+# <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Yönlendirme ile MySQL için Azure veritabanı 'na bağlanma
 
-Bu konu, mysql sunucusu için Azure Veritabanınızın yeniden yönlendirme moduyla nasıl bağlanılsüreceğini açıklar. Yeniden yönlendirme, uygulamaların doğrudan arka uç sunucu düğümlerine bağlanmasına izin vererek istemci uygulamaları ve MySQL sunucuları arasındaki ağ gecikmesini azaltmayı amaçlar.
+Bu konuda, MySQL için Azure veritabanı sunucusuna yeniden yönlendirme moduyla bir uygulamanın nasıl bağlanacağı açıklanmaktadır. Uygulamaların doğrudan arka uç sunucu düğümlerine bağlanmasına izin vererek istemci uygulamaları ve MySQL sunucuları arasındaki ağ gecikmesini azaltmak için amaçlar 'yi yeniden yönlendirme.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-[Azure portalında](https://portal.azure.com)oturum açın. MySQL sunucusu için 5.6, 5.7 veya 8.0 motor sürümüiçeren bir Azure Veritabanı oluşturun. Ayrıntılar için, [Portal'dan MySQL sunucusu için Azure Veritabanı nasıl oluşturulur](quickstart-create-mysql-server-database-using-azure-portal.md) veya [CLI kullanarak MySQL sunucusu için Azure Veritabanı nasıl oluşturulur'a](quickstart-create-mysql-server-database-using-azure-cli.md)bakın.
+[Azure Portal](https://portal.azure.com) oturum açın. Altyapı sürümü 5,6, 5,7 veya 8,0 olan MySQL için Azure veritabanı sunucusu oluşturun. Ayrıntılar için [Portal 'Dan MySQL Için Azure veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-portal.md) veya [CLI kullanarak MySQL için Azure veritabanı sunucusu oluşturma](quickstart-create-mysql-server-database-using-azure-cli.md)bölümüne bakın.
 
-Yeniden yönlendirme şu anda yalnızca MySQL sunucusu için Azure Veritabanınızda **SSL etkinleştirildiğinde** desteklenir. SSL'nin nasıl yapılandırılabildiğini öğrenmek [için MySQL için Azure Veritabanı ile SSL kullanma bilgisine](howto-configure-ssl.md#step-3--enforcing-ssl-connections-in-azure)bakın.
+Yönlendirme şu anda yalnızca, MySQL için Azure veritabanı sunucunuzda **SSL etkinleştirildiğinde** desteklenir. SSL 'yi yapılandırma hakkında ayrıntılı bilgi için bkz. [MySQL Için Azure veritabanı Ile SSL kullanma](howto-configure-ssl.md#step-3--enforcing-ssl-connections-in-azure).
 
 ## <a name="php"></a>PHP
 
 PHP uygulamalarında yeniden yönlendirme desteği, Microsoft tarafından geliştirilen [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) uzantısı aracılığıyla kullanılabilir. 
 
-mysqlnd_azure uzantısı PECL üzerinden PHP uygulamalarına eklemek için kullanılabilir ve son derece yüklemek ve resmi olarak yayınlanan [PECL paketi](https://pecl.php.net/package/mysqlnd_azure)ile uzantısı yapılandırmak için tavsiye edilir.
+Mysqlnd_azure uzantısı,,,,,,,,,,, bir,,, bir, ve resmi olarak yayımlanmış bir [paket](https://pecl.php.net/package/mysqlnd_azure)aracılığıyla, uzantıyı yüklemek ve yapılandırmak önemle önerilir.
 
 > [!IMPORTANT]
-> PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) uzantısı yeniden yönlendirme desteği şu anda önizleme de.
+> PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) uzantısında yeniden yönlendirme desteği şu anda önizleme aşamasındadır.
 
 ### <a name="redirection-logic"></a>Yeniden yönlendirme mantığı
 
 >[!IMPORTANT]
-> Yönlendirme mantığı/davranış başlangıç sürümü 1.1.0 güncelleştirildi ve **sürüm 1.1.0+ kullanılması önerilir.**
+> Yeniden yönlendirme mantığı/davranışı 1.1.0 sürümü güncelleştirildi ve **1.1.0 + sürümünün kullanılması önerilir**.
 
-Yeniden yönlendirme `mysqlnd_azure.enableRedirect`davranışı. Aşağıdaki **tabloda, sürüm 1.1.0+** ile başlayan bu parametrenin değerine göre yeniden yönlendirme davranışı özetlenir.
+Yeniden yönlendirme davranışı değerine göre belirlenir `mysqlnd_azure.enableRedirect`. Aşağıdaki tabloda, **1.1.0 + sürümündeki**bu parametrenin değerine göre yeniden yönlendirme davranışı özetlenmektedir.
 
-mysqlnd_azure uzantının (sürüm 1.0.0-1.0.3) eski bir sürümünü kullanıyorsanız, yeniden yönlendirme `mysqlnd_azure.enabled`davranışı . Geçerli değerler `off` (aşağıdaki tabloda özetlenen davranış gibi davranır) `on` ve `preferred` (aşağıdaki tabloda gibi davranır).  
+Mysqlnd_azure uzantısının (sürüm 1.0.0-1.0.3) eski bir sürümünü kullanıyorsanız, yeniden yönlendirme davranışı değerine göre belirlenir `mysqlnd_azure.enabled`. Geçerli değerler şunlardır `off` (aşağıdaki tabloda özetlenen davranış olarak benzer şekilde davranır) ve `on` (aşağıdaki tabloda olduğu gibi `preferred` davranır).  
 
-|**mysqlnd_azure.enableRedirect değeri**| **Davranış**|
+|**mysqlnd_azure. enableRedirect değeri**| **Davranış**|
 |----------------------------------------|-------------|
-|`off` veya `0`|Yeniden yönlendirme kullanılmaz. |
-|`on` veya `1`|- MySQL sunucusu için Azure Veritabanı'nda SSL etkin değilse, bağlantı yapılmaz. Aşağıdaki hata döndürülür: *"mysqlnd_azure.enableRedirect açık, ancak SSL seçeneği bağlantı dizesinde ayarlanmaz. Yeniden yönlendirme sadece SSL ile mümkündür."*<br>- MySQL sunucusunda SSL etkinse, ancak sunucuda yeniden yönlendirme desteklenmiyorsa, ilk bağlantı iptal edilir ve aşağıdaki hata döndürülür: *"MySQL sunucusunda yeniden yönlendirme etkinleştirilemediği veya ağ paketi yeniden yönlendirme protokolüne uymadığı* için bağlantı iptal edilir."<br>- MySQL sunucusu yeniden yönlendirmeyi destekliyorsa, ancak yeniden yönlendirilen bağlantı herhangi bir nedenle başarısız olursa, ilk proxy bağlantısını da iptal edin. Yeniden yönlendirilen bağlantının hatasını döndürün.|
-|`preferred` veya `2`<br> (varsayılan değer)|- mysqlnd_azure mümkünse yeniden yönlendirme kullanır.<br>- Bağlantı SSL kullanmıyorsa, sunucu yeniden yönlendirmeyi desteklemez veya proxy bağlantısı hala geçerli yken, yeniden yönlendirilen bağlantı herhangi bir önemli olmayan nedenle bağlanamazsa, ilk proxy bağlantısına geri döner.|
+|`off` veya `0`|Yeniden yönlendirme kullanılmayacak. |
+|`on` veya `1`|-MySQL için Azure veritabanı sunucusunda SSL etkinleştirilmemişse, bağlantı yapılmaz. Şu hata döndürülecek: *"mysqlnd_azure. enableRedirect açık, ancak SSL seçeneği bağlantı dizesinde ayarlanmadı. Yeniden yönlendirme yalnızca SSL ile yapılabilir. "*<br>-MySQL sunucusunda SSL etkinse ancak sunucuda yeniden yönlendirme desteklenmiyorsa, ilk bağlantı iptal edilir ve şu hata döndürülür: *"yönlendirme, MySQL sunucusunda etkin olmadığından veya ağ paketi yeniden yönlendirme protokolü ile uyumlu olmadığından, bağlantı iptal edildi."*<br>-MySQL sunucusu yeniden yönlendirmeyi destekliyorsa, ancak yeniden yönlendirilen bağlantı herhangi bir nedenden dolayı başarısız olursa, ilk ara sunucu bağlantısını da iptal edin. Yeniden yönlendirilen bağlantının hatasını döndürür.|
+|`preferred` veya `2`<br> (varsayılan değer)|-mysqlnd_azure mümkünse yeniden yönlendirmeyi kullanacaktır.<br>-Bağlantı SSL kullanmıyorsa, sunucu yeniden yönlendirmeyi desteklemez veya proxy bağlantısı hala geçerli bir değer olduğu sürece yeniden yönlendirilen bağlantı önemli olmayan bir nedenle bağlanamaz, ilk proxy bağlantısına geri dönecektir.|
 
-Belgenin sonraki bölümleri, uzantının `mysqlnd_azure` PECL kullanarak nasıl yüklenir ve bu parametrenin değerini nasıl ayarlayacaklarını ana hatlar.
+Belgenin sonraki bölümlerinde, bu parametrenin değerini nasıl yükleyeceğiniz `mysqlnd_azure` ve bu parametrenin değeri nasıl ayarlanacağı ana hatlarıyla gösterilir.
 
 ### <a name="ubuntu-linux"></a>Ubuntu Linux
 
 #### <a name="prerequisites"></a>Ön koşullar 
-- PHP versiyonları 7.2.15+ ve 7.3.2+
-- PHP ARMUT 
-- php-mysql
-- SSL etkin MySQL sunucusu için Azure Veritabanı
+- PHP sürümleri 7.2.15 + ve 7.3.2 +
+- PHP PEAR 
+- PHP-MySQL
+- SSL özellikli MySQL için Azure veritabanı sunucusu
 
-1. PECL ile [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) [yükleyin.](https://pecl.php.net/package/mysqlnd_azure) Sürüm 1.1.0+ kullanılması önerilir.
+1. [Mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) [,](https://pecl.php.net/package/mysqlnd_azure) 1.1.0 + sürümünün kullanılması önerilir.
 
     ```bash
     sudo pecl install mysqlnd_azure
     ```
 
-2. Aşağıdaki leri çalıştırarak`extension_dir`uzantı dizini ( ) bulun:
+2. Aşağıdaki çalıştırarak uzantı dizinini (`extension_dir`) bulun:
 
     ```bash
     php -i | grep "extension_dir"
     ```
 
-3. Dizinleri döndürülen klasöre `mysqlnd_azure.so` değiştirin ve bu klasörde bulunduğundan emin olun. 
+3. Dizini döndürülen klasöre değiştirin ve bu klasörde bulunduğundan `mysqlnd_azure.so` emin olun. 
 
-4. .ini dosyaları nın klasörünü aşağıdakileri çalıştırarak bulun: 
+4. Aşağıdaki çalıştırarak. ini dosyaları klasörünü bulun: 
 
     ```bash
     php -i | grep "dir for additional .ini files"
     ```
 
-5. Dizinleri bu döndürülen klasörde değiştirin. 
+5. Dizinleri bu döndürülen klasör olarak değiştirin. 
 
-6. Için `mysqlnd_azure`yeni bir .ini dosyası oluşturun. Modüller ini dosyalarının ad sırasına göre yüklendiğinden, ismin alfabe sırasının mysqnld'den sonra olduğundan emin olun. Örneğin, .ini adlı `mysqlnd` `10-mysqlnd.ini`ise, mysqlnd ini `20-mysqlnd-azure.ini`olarak adlandırın .
+6. İçin `mysqlnd_azure`yeni bir. ini dosyası oluşturun. Modüller, INI dosyalarının ad sırasına göre yüklendiğinden, bu adın alfabetik sırasının mysqnld ' den sonra olduğundan emin olun. Örneğin,. ini `mysqlnd` adlandırılmışsa `10-mysqlnd.ini`, mysqlnd ini olarak `20-mysqlnd-azure.ini`adlandırın.
 
-7. Yeni .ini dosyasında, yeniden yönlendirmeyi etkinleştirmek için aşağıdaki satırları ekleyin.
+7. Yeni. ini dosyası içinde yeniden yönlendirmeyi etkinleştirmek için aşağıdaki satırları ekleyin.
 
     ```bash
     extension=mysqlnd_azure
@@ -90,50 +90,50 @@ Belgenin sonraki bölümleri, uzantının `mysqlnd_azure` PECL kullanarak nasıl
 ### <a name="windows"></a>Windows
 
 #### <a name="prerequisites"></a>Ön koşullar 
-- PHP versiyonları 7.2.15+ ve 7.3.2+
-- php-mysql
-- SSL etkin MySQL sunucusu için Azure Veritabanı
+- PHP sürümleri 7.2.15 + ve 7.3.2 +
+- PHP-MySQL
+- SSL özellikli MySQL için Azure veritabanı sunucusu
 
-1. Aşağıdaki komutu çalıştırarak PHP'nin x64 veya x86 sürümünü çalıştırıp çalıştırmadığınızı belirleyin:
+1. Aşağıdaki komutu çalıştırarak PHP 'nin x64 veya x86 sürümünü çalıştırıp çalıştırmadığını belirleyebilirsiniz:
 
     ```cmd
     php -i | findstr "Thread"
     ```
 
-2. PHP sürümünüzle eşleşen mysqlnd_azure [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) DLL'nin ilgili x64 veya x86 sürümünü [PECL'den](https://pecl.php.net/package/mysqlnd_azure) indirin. Sürüm 1.1.0+ kullanılması önerilir.
+2. PHP sürümünüz ile eşleşen bir [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) [DLL 'nin karşılık](https://pecl.php.net/package/mysqlnd_azure) gelen x64 veya x86 sürümünü indirin. 1.1.0 + sürümünün kullanılması önerilir.
 
-3. Zip dosyasını ayıklayın ve `php_mysqlnd_azure.dll`DLL adlı bulun.
+3. ZIP dosyasını ayıklayın ve adlı `php_mysqlnd_azure.dll`dll dosyasını bulun.
 
-4. Aşağıdaki komutu çalıştırarak uzantı dizini (`extension_dir`) bulun:
+4. Aşağıdaki komutu çalıştırarak uzantı dizinini`extension_dir`() bulun:
 
     ```cmd
     php -i | find "extension_dir"
     ```
 
-5. Dosyayı `php_mysqlnd_azure.dll` adım 4'te döndürülen dizine kopyalayın. 
+5. `php_mysqlnd_azure.dll` Dosyayı 4. adımda döndürülen dizine kopyalayın. 
 
-6. Aşağıdaki komutu kullanarak `php.ini` dosyayı içeren PHP klasörünü bulun:
+6. Aşağıdaki komutu kullanarak `php.ini` dosyayı içeren php klasörünü bulun:
 
     ```cmd
     php -i | find "Loaded Configuration File"
     ```
 
-7. Yeniden `php.ini` yönlendirmeyi etkinleştirmek için dosyayı değiştirin ve aşağıdaki ek satırları ekleyin. 
+7. `php.ini` Dosyayı değiştirin ve yeniden yönlendirmeyi etkinleştirmek için aşağıdaki ek satırları ekleyin. 
 
-    Dinamik Uzantılar bölümü altında: 
+    Dinamik uzantılar bölümünde: 
     ```cmd
     extension=mysqlnd_azure
     ```
     
-    Modül Ayarları bölümünde:     
+    Modül ayarları bölümünde:     
     ```cmd 
     [mysqlnd_azure]
     mysqlnd_azure.enableRedirect = on/off/preferred
     ```
 
-### <a name="confirm-redirection"></a>Yeniden yönlendirmeyi onaylayın
+### <a name="confirm-redirection"></a>Yeniden yönlendirmeyi Onayla
 
-Ayrıca, yeniden yönlendirmenin aşağıdaki örnek PHP koduyla yapılandırıldığı da onaylayabilirsiniz. Çağrılan `mysqlConnect.php` bir PHP dosyası oluşturun ve aşağıdaki kodu yapıştırın. Sunucu adını, kullanıcı adını ve parolayı kendi adınızile güncelleştirin. 
+Yeniden yönlendirmeyi de aşağıdaki örnek PHP kodu ile yapılandırıldığını doğrulayabilirsiniz. Adlı `mysqlConnect.php` bir php dosyası oluşturun ve aşağıdaki kodu yapıştırın. Sunucu adını, Kullanıcı adını ve parolayı kendi kendinize güncelleştirin. 
  
  ```php
 <?php
@@ -158,4 +158,4 @@ $db_name = 'testdb';
  ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bağlantı dizeleri hakkında daha fazla bilgi için [Bağlantı Dizeleri'ne](howto-connection-string.md)bakın.
+Bağlantı dizeleri hakkında daha fazla bilgi için bkz. [bağlantı dizeleri](howto-connection-string.md).

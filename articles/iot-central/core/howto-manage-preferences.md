@@ -1,6 +1,6 @@
 ---
-title: Kişisel tercihlerinizi IoT Central'da yönetin | Microsoft Dokümanlar
-description: IoT Central uygulamanızda dil ve tema değiştirme gibi kişisel başvuru tercihlerinizi nasıl yönetebilirsiniz?
+title: IoT Central kişisel tercihlerinizi yönetin | Microsoft Docs
+description: IoT Central uygulamanızda dil ve temayı değiştirme gibi kişisel uygulama tercihlerinizi yönetme.
 author: lmasieri
 ms.author: lmasieri
 ms.date: 07/10/2019
@@ -9,34 +9,34 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: e2b0dbe8b7738a8c4c551eccca72897bbf1594b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80157900"
 ---
-# <a name="manage-your-personal-application-preferences"></a>Kişisel başvuru tercihlerinizi yönetme
+# <a name="manage-your-personal-application-preferences"></a>Kişisel uygulama tercihlerinizi yönetin
 
 *Bu makale, işleçler, oluşturucular ve yöneticiler için geçerlidir.*
 
-IoT Central, uygulamalarınızı ihtiyacınıza uyacak şekilde özelleştirme esnekliği sağlar. Ayrıca, kendi görünümünüzü özelleştirmek için kullanıcı başına bazı esneklikler de sağlıyoruz. Bu makalede, bir kullanıcının profiline uygulayabileceği çeşitli özelleştirme seçenekleri açıklanmaktadır.
+IoT Central, uygulamalarınızı gereksinimlerinize uyacak şekilde özelleştirme esnekliği sağlar. Ayrıca kendi görünümünüzü özelleştirmek için Kullanıcı başına temelinde bir esneklik sunuyoruz. Bu makalede, bir kullanıcının profiline uygulayabileceği çeşitli özelleştirme seçenekleri açıklanmaktadır.
 
 ## <a name="changing-language"></a>Dili değiştirme
 
-IoT Central birden çok dilde desteklenir. Üst teki gezinti çubuğundaki ayarlar simgesindeki **dil seçiciyi** kullanarak tercih ettiğiniz dili değiştirebilirsiniz. Dilinizi değiştirdikten sonra, IoT Central seçiminizi hatırlar ve tüm uygulamalarınızda uygular. Uygulama içinde özelleştirme bu tür pano görüntüleri yerelleştirilmiş değildir.
+Birden çok dilde IoT Central desteklenir. En üst gezinti çubuğundaki ayarlar simgesine ait **dil seçicisini** kullanarak tercih ettiğiniz dili geçirebilirsiniz. Dilinizi değiştirdikten sonra, IoT Central seçiminizi anımsar ve tüm uygulamalarınızda uygular. Uygulama içerisindeki Pano görüntüleri için özelleştirme yerelleştirilmez.
 
-## <a name="changing-theme"></a>Teması değiştirme
+## <a name="changing-theme"></a>Temayı değiştirme
 
-Hem karanlık tema hem de ışık teması için desteğimiz var. Işık teması varsayılan olsa da, üst gezinti çubuğundaki ayarlar simgesini seçerek teonu değiştirebilirsiniz.
+Koyu tema ve açık tema için destek sunuyoruz. Işık teması varsayılan değer olsa da, üst gezinti çubuğundaki ayarlar simgesini seçerek temayı değiştirebilirsiniz.
 
-![IoT Merkezi tema seçici](media/howto-manage-preferences/settings.png)
+![IoT Central teması Seçicisi](media/howto-manage-preferences/settings.png)
 
 > [!NOTE]
-> Yöneticiniz uygulama için özel bir tema yapılandıysa, açık ve koyu renk temalar arasında seçim yapma seçeneği kullanılamaz.
+> Yönetici, uygulama için özel bir tema yapılandırmışsa açık ve koyu temalar arasında seçim yapmak için kullanılabilir değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IoT Central'da profilinizi nasıl yöneteceğimize dair öğrendiğinize göre, önerilen bir sonraki adım şudur:
+Azure IoT Central profilinizi nasıl yönetebileceğinizi öğrendiğinize göre, aşağıda önerilen sonraki adım verilmiştir:
 
 > [!div class="nextstepaction"]
 > [Canlı sohbeti açma/kapatma](howto-show-hide-chat.md)

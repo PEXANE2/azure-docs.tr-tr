@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight'ta Jupyter ile Python paketleri için komut dosyası eylemi
-description: Harici python paketlerini kullanmak için HDInsight Spark kümeleri ile kullanılabilen Jupyter dizüstü bilgisayarları yapılandırmak için komut dosyası eyleminin nasıl kullanılacağına ilişkin adım adım yönergeler.
+title: Azure HDInsight üzerinde jupi ile Python paketleri için betik eylemi
+description: Betik eyleminin nasıl kullanılacağına ilişkin adım adım yönergeler, HDInsight Spark kümeleri ile birlikte sunulan jupi not defterlerini dış Python paketleri kullanacak şekilde yapılandırma.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,150 +8,150 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: 659af8b85cb3736d663e79676b04af8041aeabfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80129655"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Betik Eylemi kullanarak Azure HDInsight üzerinde Python ortamını güvenli bir şekilde yönetin
 
 > [!div class="op_single_selector"]
-> * [Hücre büyüsünü kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [Komut Dosyası Eylemini Kullanma](apache-spark-python-package-installation.md)
+> * [Hücre Magic 'i kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
+> * [Betik eylemini kullanma](apache-spark-python-package-installation.md)
 
-HDInsight'ın Spark kümesinde anaconda Python 2.7 ve Python 3.5 olmak üzere iki yerleşik Python yüklemesi vardır. Bazı durumlarda, müşterilerin harici Python paketleri veya başka bir Python sürümü yükleme gibi Python ortamını özelleştirmeleri gerekir. Bu makalede, HDInsight'ta bir [Apache Spark](./apache-spark-overview.md) kümesi için Python ortamlarını güvenli bir şekilde yönetme nin en iyi uygulamasını gösteriyoruz.
+HDInsight, Spark kümesinde, Anaconda Python 2,7 ve Python 3,5 ' de iki yerleşik Python yüklemelerine sahiptir. Bazı durumlarda, müşterilerin, dış Python paketleri veya başka bir Python sürümü yükleme gibi Python ortamını özelleştirmesi gerekir. Bu makalede, HDInsight 'ta bir [Apache Spark](./apache-spark-overview.md) kümesi için Python ortamlarını güvenli bir şekilde yönetmeye yönelik en iyi uygulama gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md). HDInsight'ta zaten bir Kıvılcım kümeniz yoksa, küme oluşturma sırasında komut dosyası eylemlerini çalıştırabilirsiniz. Özel komut [dosyası eylemlerinin nasıl kullanılacağıyla](../hdinsight-hadoop-customize-cluster-linux.md)ilgili belgeleri ziyaret edin.
+HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md). HDInsight üzerinde zaten bir Spark kümeniz yoksa, küme oluşturma sırasında betik eylemleri çalıştırabilirsiniz. [Özel Betik eylemlerinin kullanımı](../hdinsight-hadoop-customize-cluster-linux.md)hakkındaki belgeleri ziyaret edin.
 
-## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>HDInsight kümelerinde kullanılan açık kaynak yazılım desteği
+## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>HDInsight kümelerinde kullanılan açık kaynaklı yazılım desteği
 
-Microsoft Azure HDInsight hizmeti, Apache Hadoop çevresinde oluşturulmuş açık kaynak teknolojilerinden oluşan bir ekosistem kullanır. Microsoft Azure, açık kaynak teknolojileri için genel bir destek düzeyi sağlar. Daha fazla bilgi için [Azure Destek SSS web sitesine](https://azure.microsoft.com/support/faq/)bakın. HDInsight hizmeti, yerleşik bileşenler için ek bir destek düzeyi sağlar.
+Microsoft Azure HDInsight hizmeti Apache Hadoop etrafında oluşturulmuş açık kaynaklı teknolojilerin ekosistemini kullanır. Microsoft Azure, açık kaynaklı teknolojiler için genel bir destek düzeyi sağlar. Daha fazla bilgi için bkz. [Azure DESTEĞI SSS Web sitesi](https://azure.microsoft.com/support/faq/). HDInsight hizmeti, yerleşik bileşenler için ek bir destek düzeyi sağlar.
 
-HDInsight hizmetinde kullanılabilen iki tür açık kaynak bileşeni vardır:
+HDInsight hizmetinde bulunan iki tür açık kaynaklı bileşen vardır:
 
 |Bileşen |Açıklama |
 |---|---|
-|Yerleşik|Bu bileşenler HDInsight kümelerine önceden yüklenir ve kümenin temel işlevselliğini sağlar. Örneğin, Apache Hadoop İP Kaynak Yöneticisi, Apache Hive sorgu dili (HiveQL) ve Mahout kitaplığı bu kategoriye aittir. [HDInsight tarafından sağlanan Apache Hadoop küme sürümlerinde yeni olan](../hdinsight-component-versioning.md)küme bileşenlerinin tam listesi mevcuttur.|
-|Özel|Kümenin bir kullanıcısı olarak, toplulukta bulunan veya sizin oluşturduğunuz herhangi bir bileşeni iş yükler veya iş yüklersiniz.|
+|Yerleşik|Bu bileşenler HDInsight kümelerinde önceden yüklenir ve kümenin temel işlevlerini sağlar. Örneğin, Apache Hadoop YARN Kaynak Yöneticisi, Apache Hive sorgu dili (HiveQL) ve Mahout kitaplığı bu kategoriye aittir. Tüm küme bileşenleri listesi, [HDInsight tarafından sağlanan Apache Hadoop kümesi sürümlerindeki yenilikler](../hdinsight-component-versioning.md)bölümünde bulunur.|
+|Özel|Kümenin bir kullanıcısı olarak, kuruluşunuzda bulunan veya sizin tarafınızdan oluşturulan herhangi bir bileşeni iş yükünüze yükleyebilir veya kullanabilirsiniz.|
 
 > [!IMPORTANT]
-> HDInsight kümesiyle sağlanan bileşenler tam olarak desteklenir. Microsoft Destek, bu bileşenlerle ilgili sorunları yalıtmaya ve çözmeye yardımcı olur.
+> HDInsight kümesiyle birlikte sunulan bileşenler tam olarak desteklenmektedir. Microsoft Desteği, bu bileşenlerle ilgili sorunları yalıtmaya ve çözmeye yardımcı olur.
 >
-> Özel bileşenler, sorunu daha fazla gidermenize yardımcı olmak için ticari olarak makul destek alır. Microsoft desteği sorunu çözebilir VEYA bu teknolojiiçin derin uzmanlık bulunan açık kaynak teknolojileri için kullanılabilir kanallardan bağlantı kurmanızı isteyebilir. Örneğin, kullanılabilir birçok topluluk sitesi vardır, örneğin: [HDInsight için MSDN forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Ayrıca Apache projeleri, [https://apache.org](https://apache.org)örneğin proje siteleri var: [Hadoop](https://hadoop.apache.org/).
+> Özel bileşenler, sorunu gidermeye yardımcı olmak için ticari açıdan makul destek alır. Microsoft desteği sorunu çözebiliyor olabilir veya bu teknoloji için derin uzmanlığın bulunduğu açık kaynaklı teknolojiler için kullanılabilir kanalları ister. Örneğin, şu şekilde kullanılabilecek birçok topluluk sitesi vardır: [HDInsight Için MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Ayrıca Apache projelerinin üzerinde [https://apache.org](https://apache.org)proje siteleri vardır, örneğin: [Hadoop](https://hadoop.apache.org/).
 
 ## <a name="understand-default-python-installation"></a>Varsayılan Python yüklemesini anlama
 
-HDInsight Spark kümesi Anaconda kurulumu ile oluşturulur. Kümede anaconda Python 2.7 ve Python 3.5 olmak üzere iki Python yüklemesi vardır. Aşağıdaki tabloda Spark, Livy ve Jupyter için varsayılan Python ayarları gösterilmektedir.
+HDInsight Spark kümesi, Anaconda yüklemesiyle oluşturulur. Kümede, Anaconda Python 2,7 ve Python 3,5 olmak üzere iki Python yüklemesi vardır. Aşağıdaki tabloda Spark, Livy ve Jupyıter için varsayılan Python ayarları gösterilmektedir.
 
-| |Python 2.7|Python 3.5|
+| |Python 2,7|Python 3,5|
 |----|----|----|
 |Yol|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Varsayılan olarak 2,7 olarak ayarlandı|Yok|
-|Livy|Varsayılan olarak 2,7 olarak ayarlandı|Yok|
+|Spark|Varsayılan olarak 2,7 ayarlanır|Yok|
+|Livy|Varsayılan olarak 2,7 ayarlanır|Yok|
 |Jupyter|PySpark çekirdeği|PySpark3 çekirdeği|
 
-## <a name="safely-install-external-python-packages"></a>Harici Python paketlerini güvenli bir şekilde yükleyin
+## <a name="safely-install-external-python-packages"></a>Dış Python paketlerini güvenle yükler
 
-HDInsight kümesi yerleşik Python ortamına bağlıdır, hem Python 2.7 hem de Python 3.5. Bu varsayılan yerleşik ortamlara özel paketlerin doğrudan yüklenmesi beklenmeyen kitaplık sürüm değişikliklerine neden olabilir ve kümeyi daha da bozabilir. Spark uygulamalarınız için özel harici Python paketlerini güvenli bir şekilde yüklemek için aşağıdaki adımları izleyin.
+HDInsight kümesi, Python 2,7 ve Python 3,5 yerleşik Python ortamına bağlıdır. Özel paketleri bu varsayılan yerleşik ortamlara doğrudan yüklemek beklenmeyen kitaplık sürümü değişikliklerine neden olabilir ve kümeyi daha fazla kesebilir. Spark uygulamalarınız için özel dış Python paketlerini güvenli bir şekilde yüklemek için aşağıdaki adımları izleyin.
 
-1. Conda kullanarak Python sanal ortamı oluşturun. Sanal ortam, başkalarını kırmadan projeleriniz için yalıtılmış bir alan sağlar. Python sanal ortamını oluştururken, kullanmak istediğiniz python sürümünü belirtebilirsiniz. Python 2.7 ve 3.5'i kullanmak isteseniz bile sanal ortam oluşturmanız gerektiğini unutmayın. Bu, kümenin varsayılan ortamının kırılmadığından emin olmak içindir. Python sanal ortamı oluşturmak için aşağıdaki komut dosyası ile tüm düğümler için kümenizde komut dosyası eylemleri çalıştırın.
+1. Conda kullanarak Python sanal ortamı oluşturun. Sanal bir ortam, başka bir yere kırçıkmadan projeleriniz için yalıtılmış bir alan sağlar. Python sanal ortamını oluştururken, kullanmak istediğiniz Python sürümünü belirtebilirsiniz. Python 2,7 ve 3,5 ' i kullanmak istiyor olsanız bile yine de sanal ortam oluşturmanız gerektiğini unutmayın. Bu, kümenin varsayılan ortamının bromıyor olduğundan emin olmak için kullanılır. Python sanal ortamı oluşturmak için aşağıdaki betiği içeren tüm düğümler için kümenizde betik eylemleri çalıştırın.
 
-    -   `--prefix`bir kozalsanal ortamın yaşadığı bir yol belirtir. Burada belirtilen yola bağlı olarak daha fazla değiştirilmesi gereken birkaç configs vardır. Bu örnekte, kümezaten py35 denilen mevcut bir sanal ortam avarladığı için py35new'yi kullanırız.
-    -   `python=`sanal ortam için Python sürümünü belirtir. Bu örnekte, kümenin içinde yerleşik olduğu sürüm le aynı sürüm olan sürüm 3.5'i kullanırız. Sanal ortamı oluşturmak için diğer Python sürümlerini de kullanabilirsiniz.
-    -   `anaconda`anaconda paketleri sanal ortamda yüklemek için anaconda olarak package_spec belirtir.
+    -   `--prefix`bir Conda sanal ortamının yaşadığı bir yolu belirtir. Burada belirtilen yola göre daha fazla değiştirilmesi gereken birkaç yapılandırma vardır. Bu örnekte, küme zaten py35 adlı mevcut bir sanal ortama sahip olduğu için py35new kullanıyoruz.
+    -   `python=`sanal ortam için Python sürümünü belirtir. Bu örnekte, içinde yerleşik olarak bulunan kümeyle aynı sürüme sahip sürüm 3,5 ' i kullanırız. Sanal ortam oluşturmak için diğer Python sürümlerini de kullanabilirsiniz.
+    -   `anaconda`sanal ortama Anaconda paketleri yüklemek için package_spec, Anaconda olarak belirtir.
     
     ```bash
     sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes
     ```
 
-2. Gerekirse oluşturulan sanal ortama harici Python paketleri yükleyin. Dış Python paketleri yüklemek için aşağıda komut dosyası ile tüm düğümler için kümenizde komut dosyası eylemleri çalıştırın. Sanal ortam klasörüne dosya yazmak için burada sudo ayrıcalığına sahip olmanız gerekir.
+2. Gerekirse, oluşturulan sanal ortama dış Python paketleri yükler. Dış Python paketlerini yüklemek için aşağıdaki betiği içeren tüm düğümler için kümenizde betik eylemleri çalıştırın. Sanal ortam klasörüne dosya yazmak için burada sudo ayrıcalığına sahip olmanız gerekir.
 
-    Paket [dizininde](https://pypi.python.org/pypi) kullanılabilir paketlerin tam listesini arayabilirsiniz. Ayrıca diğer kaynaklardan kullanılabilir paketlerin bir listesini alabilirsiniz. Örneğin, [conda-forge](https://conda-forge.org/feedstocks/)aracılığıyla kullanılabilir paketleri yükleyebilirsiniz.
+    Kullanılabilir paketlerin tüm listesi için [paket dizininde](https://pypi.python.org/pypi) arama yapabilirsiniz. Ayrıca, diğer kaynaklardan kullanılabilir paketlerin bir listesini alabilirsiniz. Örneğin, [Conda-Forge](https://conda-forge.org/feedstocks/)aracılığıyla kullanıma sunulan paketleri yükleyebilirsiniz.
 
     En son sürümü olan bir kitaplığı yüklemek istiyorsanız aşağıdaki komutu kullanın:
 
-    - Conda kanallarını kullanın:
+    - Conda kanalını kullanın:
 
-        -   `seaborn`yüklemek istediğiniz paket adıdır.
-        -   `-n py35new`oluşturulan sanal ortam adını belirtin. Sanal ortam oluşturmanıza bağlı olarak adı değiştirdiğinizden emin olun.
+        -   `seaborn`, yüklemek istediğiniz paket adıdır.
+        -   `-n py35new`Yeni oluşturulan sanal ortam adını belirtin. Sanal ortam oluşturmaya göre adı karşılık geldiğinden emin olun.
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
         ```
 
-    - Veya PyPi repo' `seaborn` `py35new` su, değiştir ve buna karşılık kullanın:
+    - Ya da PyPi depoyu, değişiklik `seaborn` ve `py35new` karşılık geleni kullanın:
         ```bash
         sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
         ```
 
     Belirli bir sürümü olan bir kitaplık yüklemek istiyorsanız aşağıdaki komutu kullanın:
 
-    - Conda kanallarını kullanın:
+    - Conda kanalını kullanın:
 
-        -   `numpy=1.16.1`yüklemek istediğiniz paket adı ve sürümüdür.
-        -   `-n py35new`oluşturulan sanal ortam adını belirtin. Sanal ortam oluşturmanıza bağlı olarak adı değiştirdiğinizden emin olun.
+        -   `numpy=1.16.1`, yüklemek istediğiniz paket adı ve sürümdür.
+        -   `-n py35new`Yeni oluşturulan sanal ortam adını belirtin. Sanal ortam oluşturmaya göre adı karşılık geldiğinden emin olun.
 
         ```bash
         sudo /usr/bin/anaconda/bin/conda install numpy=1.16.1 -n py35new --yes
         ```
 
-    - Veya PyPi repo' `numpy==1.16.1` `py35new` su, değiştir ve buna karşılık kullanın:
+    - Ya da PyPi depoyu, değişiklik `numpy==1.16.1` ve `py35new` karşılık geleni kullanın:
 
         ```bash
         sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
         ```
 
-    Sanal ortam adını bilmiyorsanız, kümenin baş düğümüne SSH yapabilir ve `/usr/bin/anaconda/bin/conda info -e` tüm sanal ortamları göstermek için çalıştırabilirsiniz.
+    sanal ortam adını bilmiyorsanız, kümenin baş düğümüne SSH gönderebilir ve tüm sanal ortamları göstermek için çalıştırabilirsiniz `/usr/bin/anaconda/bin/conda info -e` .
 
-3. Kıvılcım ve Livy configs değiştirin ve oluşturulan sanal ortama işaret.
+3. Spark ve Livy yapılandırmalarını değiştirip oluşturulan sanal ortama işaret edin.
 
-    1. Ambari UI'yi açın, Spark2 sayfasına, Configs sekmesine gidin.
+    1. Ambarı Kullanıcı arabirimini açın, Spark2 Page, configs sekmesine gidin.
 
-        ![Ambari ile Kıvılcım ve Livy config değiştirin](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
+        ![Spark ve Livy yapılandırmasını, ambarı aracılığıyla değiştirme](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
 
-    2. Gelişmiş livy2-env genişletin, alt kısmında ifadeler aşağıda ekleyin. Sanal ortamı farklı bir önek ile yüklediyseniz, yolu buna göre değiştirin.
+    2. Advanced livy2-env ' yi genişletin, altta aşağıdaki deyimleri ekleyin. Sanal ortamı farklı bir önek ile yüklediyseniz, yolu karşılık gelenle değiştirin.
 
         ```
         export PYSPARK_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
 
-        ![Ambari ile Livy config değiştirin](./media/apache-spark-python-package-installation/ambari-livy-config.png)
+        ![Ambarı aracılığıyla Livy yapılandırmasını değiştirme](./media/apache-spark-python-package-installation/ambari-livy-config.png)
 
-    3. Gelişmiş spark2-env'i genişletin, alttaki mevcut ihracat PYSPARK_PYTHON deyimini değiştirin. Sanal ortamı farklı bir önek ile yüklediyseniz, yolu buna göre değiştirin.
+    3. Advanced spark2-env ' ı genişletin, en altta bulunan dışarı aktarma PYSPARK_PYTHON ifadesini değiştirin. Sanal ortamı farklı bir önek ile yüklediyseniz, yolu karşılık gelenle değiştirin.
 
         ```
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
-        ![Ambari ile Kıvılcım config değiştirin](./media/apache-spark-python-package-installation/ambari-spark-config.png)
+        ![Spark config 'i ambarı aracılığıyla değiştirme](./media/apache-spark-python-package-installation/ambari-spark-config.png)
 
-    4. Değişiklikleri kaydedin ve etkilenen hizmetleri yeniden başlatın. Bu değişikliklerin Spark2 hizmetinin yeniden başlatılması gerekir. Ambari UI gerekli bir yeniden başlatma anımsatıcısını ister, etkilenen tüm hizmetleri yeniden başlatmak için Yeniden Başlat'ı tıklatın.
+    4. Değişiklikleri kaydedin ve etkilenen hizmetleri yeniden başlatın. Bu değişikliklerin Spark2 hizmetinin yeniden başlatılması gerekir. Ambarı Kullanıcı arabirimi gerekli bir yeniden başlatma anımsatıcısı ister, tüm etkilenen hizmetleri yeniden başlatmak için yeniden Başlat 'a tıklayın.
 
-        ![Ambari ile Kıvılcım config değiştirin](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![Spark config 'i ambarı aracılığıyla değiştirme](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
-4. Jupyter'da yeni oluşturulan sanal ortamı kullanmak isterseniz. Jupyter configs'i değiştirip Jupyter'ı yeniden başlatmalısın. Jupyter'ı yeni oluşturulan sanal ortama çekmek için aşağıdaki ifadeyle tüm üstbilgi düğümlerinde komut dosyası eylemleri çalıştırın. Sanal ortamınız için belirttiğiniz önek yolunu değiştirdiğinizden emin olun. Bu komut dosyası eylemini çalıştırdıktan sonra, bu değişikliği kullanılabilir hale getirmek için Ambari UI aracılığıyla Jupyter hizmetini yeniden başlatın.
+4. Jupyıter üzerinde yeni oluşturulan sanal ortamı kullanmak istiyorsanız. Jupi yapılandırmalarını öğesini değiştirmeniz ve jupyıter 'ı yeniden başlatmanız gerekir. Jupi 'yi yeni oluşturulan sanal ortama işaret etmek için aşağıdaki deyimle tüm üst bilgi düğümlerinde betik eylemlerini çalıştırın. Sanal ortamınız için belirttiğiniz önek için yolu değiştirdiğinizden emin olun. Bu betik eylemini çalıştırdıktan sonra, bu değişikliği kullanılabilir hale getirmek için ambarı Kullanıcı arabirimi aracılığıyla Jupyıter hizmetini yeniden başlatın.
 
     ```bash
     sudo sed -i '/python3_executable_path/c\ \"python3_executable_path\" : \"/usr/bin/anaconda/envs/py35new/bin/python3\"' /home/spark/.sparkmagic/config.json
     ```
 
-    Jupyter Notebook'taki Python ortamını aşağıdaki kodu çalıştırarak iki kez onaylayabilirsiniz:
+    Aşağıdaki kodu çalıştırarak Jupyter Notebook Python ortamını iki kez doğrulayabilirsiniz:
 
-    ![Jupyter Notebook'ta Python sürümünü kontrol edin](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
+    ![Jupyter Notebook Python sürümünü denetle](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
 
 ## <a name="known-issue"></a>Bilinen sorun
 
-Anaconda sürüm 4.7.11, 4.7.12 ve 4.8.0 için bilinen bir hata vardır. Komut dosyası eylemlerinizi asılı `"Collecting package metadata (repodata.json): ...working..."` ve `"Python script has been killed due to timeout after waiting 3600 secs"`başarısız görürseniz. [Bu komut dosyasını](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) karşıdan yükleyebilir ve sorunu gidermek için tüm düğümlerde komut dosyası eylemleri olarak çalıştırabilirsiniz.
+Anaconda Version 4.7.11, 4.7.12 ve 4.8.0 için bilinen bir hata vardır. Betik eylemlerinizin askıda olduğunu `"Collecting package metadata (repodata.json): ...working..."` ve ile `"Python script has been killed due to timeout after waiting 3600 secs"`başarısız olduğunu görürseniz. Sorunu çözebilmeniz için [bu betiği](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) indirebilir ve tüm düğümlerde betik eylemleri olarak çalıştırabilirsiniz.
 
-Anaconda sürümünüzü denetlemek için, küme üstbilgi düğümüne SSH yapabilir ve çalıştırabilirsiniz. `/usr/bin/anaconda/bin/conda --v`
+Anaconda sürümünüzü denetlemek için, küme üst bilgisi düğümüne SSH oluşturabilir ve çalıştırabilirsiniz `/usr/bin/anaconda/bin/conda --v`.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
-* [BI ile Apache Spark: HDInsight'ta Spark'ı BI araçlarıyla kullanarak etkileşimli veri analizi yapın](apache-spark-use-bi-tools.md)
+* [BI ile Apache Spark: bı araçlarıyla HDInsight 'ta Spark kullanarak etkileşimli veri çözümlemesi gerçekleştirme](apache-spark-use-bi-tools.md)
 * [Azure HDInsight’ta Apache Spark kümesi kaynaklarını yönetme](apache-spark-resource-manager.md)
 * [HDInsight’ta bir Apache Spark kümesinde çalışan işleri izleme ve hata ayıklama](apache-spark-job-debugging.md)

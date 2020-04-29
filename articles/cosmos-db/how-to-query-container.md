@@ -1,39 +1,39 @@
 ---
 title: Azure Cosmos DB'de kapsayıcıları sorgulama
-description: Bölüm içi ve çapraz bölüm sorgularını kullanarak Azure Cosmos DB'deki kapsayıcıları nasıl sorgulayın
+description: Bölüm içi ve çapraz bölüm sorgularını kullanarak Azure Cosmos DB kapsayıcıları sorgulama hakkında bilgi edinin
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 3/18/2019
 ms.author: mjbrown
 ms.openlocfilehash: 299980b67caaea85fbfb40cb1a30ee50fa32d0f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80131389"
 ---
-# <a name="query-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısı sorgula
+# <a name="query-an-azure-cosmos-container"></a>Azure Cosmos kapsayıcısını sorgulama
 
-Bu makalede, Azure Cosmos DB'de bir kapsayıcının (koleksiyon, grafik veya tablo) nasıl sorgulanır. Özellikle, Azure Cosmos DB'de bölüm içi ve çapraz bölme sorgularının nasıl çalıştığını kapsar.
+Bu makalede, Azure Cosmos DB bir kapsayıcının (koleksiyon, grafik veya tablo) nasıl sorgulanacağı açıklanmaktadır. Özellikle, Bölüm içi ve çapraz bölüm sorgularının Azure Cosmos DB içinde nasıl çalıştığını ele alır.
 
 ## <a name="in-partition-query"></a>Bölüm içi sorgu
 
-Kapsayıcılardan veri sorgularken, sorguda bir bölüm anahtarı filtresi belirtiliyorsa, Azure Cosmos DB sorguyu otomatik olarak en iyi duruma getirer. Sorguyu, filtrede belirtilen bölüm anahtar değerlerine karşılık gelen [fiziksel bölümlere](partition-data.md#physical-partitions) yönlendirir.
+Kapsayıcılardan veri sorguladığınızda, sorguda bir bölüm anahtarı filtresi belirtilmişse Azure Cosmos DB sorgu otomatik olarak optimize eder. Sorguyu, filtrede belirtilen bölüm anahtarı değerlerine karşılık gelen [fiziksel bölümlere](partition-data.md#physical-partitions) yönlendirir.
 
-Örneğin, aşağıdaki sorguyu bir eşitlik filtresi `DeviceId`ile düşünün. Bu sorguya bölümlenmiş bir kapsayıcıda `DeviceId`çalıştırılırsak, bu sorgu tek bir fiziksel bölüme filtre uygular.
+Örneğin, aşağıdaki sorguyu üzerinde `DeviceId`bir eşitlik filtresiyle göz önünde bulundurun. Bu sorguyu üzerinde `DeviceId`bölümlenen bir kapsayıcıda çalıştırırsanız, bu sorgu tek bir fiziksel bölüme filtre uygulanır.
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
 ```
 
-Önceki örnekte olduğu gibi, bu sorgu da tek bir bölüme filtre olur. Ek filtrenin `Location` eklenmesi bunu değiştirmez:
+Önceki örnekte olduğu gibi, bu sorgu da tek bir bölüme filtre de sağlar. Üzerinde `Location` ek filtre ekleme bunu değiştirmez:
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
 ```
 
-Burada, bölüm anahtarında aralık filtresi olan ve tek bir fiziksel bölüme kapsamlandırılmayacak bir sorgu ve sorgu verem. Bölüm içi sorgu olmak için, sorgunun bölüm anahtarını içeren bir eşitlik filtresine sahip olması gerekir:
+Bölüm anahtarında Aralık filtresi bulunan ve tek bir fiziksel bölüm kapsamına alınmayacak bir sorgu aşağıda verilmiştir. Bölüm içi bir sorgu olması için sorgunun, Bölüm anahtarını içeren bir eşitlik filtresi olması gerekir:
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
@@ -41,67 +41,67 @@ Burada, bölüm anahtarında aralık filtresi olan ve tek bir fiziksel bölüme 
 
 ## <a name="cross-partition-query"></a>Bölümler arası sorgu
 
-Aşağıdaki sorguda bölüm anahtarında filtre yok`DeviceId`( ). Bu nedenle, her bölümün dizinine karşı çalıştırıldığı tüm fiziksel bölümlere hayran olmalıdır:
+Aşağıdaki sorguda, Bölüm anahtarında (`DeviceId`) bir filtre yok. Bu nedenle, her bir bölümün dizininde çalıştığı tüm fiziksel bölümlere karşı bir yelpamalıdır:
 
 ```sql
     SELECT * FROM c WHERE c.Location = 'Seattle`
 ```
 
-Her fiziksel bölümün kendi dizini vardır. Bu nedenle, bir kapsayıcı üzerinde bir çapraz bölüm sorgusu çalıştırdığınızda, etkili fiziksel bölüm *başına* bir sorgu çalıştırın. Azure Cosmos DB, sonuçları farklı fiziksel bölümlerde otomatik olarak toplar.
+Her fiziksel bölümün kendi dizini vardır. Bu nedenle, bir kapsayıcıda çapraz bölümlü bir sorgu çalıştırdığınızda fiziksel bölüm *başına* bir sorgu verimli bir şekilde çalıştırıyorsunuz demektir. Azure Cosmos DB, sonuçları farklı fiziksel bölümler arasında otomatik olarak toplar.
 
-Farklı fiziksel bölümlerdeki dizinler birbirinden bağımsızdır. Azure Cosmos DB'de genel dizin yoktur.
+Farklı fiziksel bölümlerdeki dizinler diğerinden bağımsızdır. Azure Cosmos DB genel dizin yok.
 
 ## <a name="parallel-cross-partition-query"></a>Paralel bölümler arası sorgu
 
-Azure Cosmos DB SDKs 1.9.0 ve daha sonra paralel sorgu yürütme seçeneklerini destekler. Paralel bölümler arası sorgular, düşük gecikme süreli bölümler arası sorgular yürütmenize olanak tanır.
+Azure Cosmos DB SDK 'Ları 1.9.0 ve üzeri paralel sorgu yürütme seçeneklerini destekler. Paralel bölümler arası sorgular, düşük gecikme süreli bölümler arası sorgular yürütmenize olanak tanır.
 
 Aşağıdaki parametreleri ayarlayarak paralel sorgu yürütme işlemini yönetebilirsiniz:
 
-- **MaxConcurrency**: Kapsayıcının bölümlerine en fazla eşzamanlı ağ bağlantısı sayısını ayarlar. Bu özelliği `-1`, SDK paralellik derecesini yönetir olarak ayarlarsanız.  `MaxConcurrency` Ayarlı `0`ise, kapsayıcının bölümlerine tek bir ağ bağlantısı vardır.
+- **MaxConcurrency**: kapsayıcının bölümlerine en fazla eşzamanlı ağ bağlantısı sayısını ayarlar. Bu özelliği olarak `-1`AYARLARSANıZ, SDK paralellik derecesini yönetir. Olarak `MaxConcurrency` `0`ayarlanırsa, kapsayıcının bölümlerine tek bir ağ bağlantısı vardır.
 
-- **MaxBufferedItemCount**: Sorgu gecikme süresiyle istemci tarafı bellek kullanımı arasında denge kurar. Bu seçenek atlanırsa veya -1 olarak ayarlanırsa, SDK paralel sorgu yürütme sırasında arabelleğe alınan madde sayısını yönetir.
+- **MaxBufferedItemCount**: Sorgu gecikme süresiyle istemci tarafı bellek kullanımı arasında denge kurar. Bu seçenek atlanırsa veya-1 ' e ayarlanırsa, SDK paralel sorgu yürütme sırasında arabelleğe alınan öğe sayısını yönetir.
 
-Azure Cosmos DB'nin bölümler arası sorguları paralelleştirme yeteneği nedeniyle, sorgu gecikmesi genellikle ölçeklendirilir ve sistem [fiziksel bölümler](partition-data.md#physical-partitions)ekler. Ancak, toplam fiziksel bölüm sayısı arttıkça RU ücreti önemli ölçüde artacaktır.
+Azure Cosmos DB, bölümler arası sorguları paralel hale getirmek özelliği nedeniyle, sistemin [fiziksel bölümler](partition-data.md#physical-partitions)eklemesi sırasında sorgu gecikmesi genellikle iyi ölçeklenecektir. Ancak, toplam fiziksel bölüm sayısı arttıkça RU ücreti önemli ölçüde artar.
 
-Bir çapraz bölüm sorgusu çalıştırdığınızda, aslında tek tek fiziksel bölüm başına ayrı bir sorgu yapıyorsunuz. Çapraz bölümsorguları dizin kullanır, varsa, yine de bölüm içi sorgular kadar verimli değildir.
+Bir çapraz bölüm sorgusu çalıştırdığınızda, aslında ayrı ayrı fiziksel bölüm başına ayrı bir sorgu oluşturursunuz. Çapraz bölümleme sorguları sorguları, varsa dizini kullanır, ancak bunlar, Bölüm içi sorgularda neredeyse verimli değildir.
 
 ## <a name="useful-example"></a>Yararlı örnek
 
-Aşağıda, bölümler arası sorguları daha iyi anlamak için bir benzetme ve
+Bölümler arası sorguları daha iyi anlamak için bir benzerleme vurguladı şunlardır:
 
-Farklı apartman komplekslerine paket teslim etmek zorunda bir teslimat sürücüsü olduğunu düşünelim. Her apartman kompleksinde, tesis bünyesinde ikamet edenin tüm birim numaralarının olduğu bir liste vardır. Her apartman kompleksini fiziksel bir bölümle ve her listeyi fiziksel bölümün diziniyle karşılaştırabiliriz.
+Farklı grup oluşturma için paketler sunmaları gereken bir teslim sürücünüz olduğunu düşünelim. Her grup karmaşık, şirket içinde tüm yerleşik birim numaralarına sahip olan bir liste içerir. Her bir grubu bir fiziksel bölüm ve her bir liste için fiziksel bölümün diziniyle karşılaştırabiliriz.
 
-Bu örneği kullanarak bölüm içi ve çapraz bölüm sorgularını karşılaştırabiliriz:
+Bu örneği kullanarak Bölüm içi ve çapraz bölüm sorgularını karşılaştırabiliriz:
 
 ### <a name="in-partition-query"></a>Bölüm içi sorgu
 
-Teslimat sürücüsü doğru apartman kompleksi (fiziksel bölüm) biliyorsa, o zaman hemen doğru binaya sürücü olabilir. Sürücü, apartman kompleksinin yerleşik birim numaraları (dizin) listesini kontrol edebilir ve uygun paketleri hızlı bir şekilde teslim edebilir. Bu durumda, sürücü herhangi bir zaman veya çaba kontrol etmek ve herhangi bir paket alıcılar orada yaşayan görmek için bir apartman kompleksine sürüş harcamaz.
+Teslim sürücüsü doğru grup karmaşık olduğunu biliyorsa (fiziksel bölüm), bu durumda doğru binaya hemen sürücü olabilir. Sürücü, yerleşik birim numaraları (Dizin) için Grup karmaınızın listesini denetleyebilir ve uygun paketleri hızla teslim edebilir. Bu durumda, sürücü, bir grup için karmaşık olan herhangi bir zamanda veya çabaya yol görmez.
 
-### <a name="cross-partition-query-fan-out"></a>Çapraz bölme sorgusu (fan-out)
+### <a name="cross-partition-query-fan-out"></a>Bölümler arası sorgu (fan)
 
-Teslimat sürücüsü doğru apartman kompleksini (fiziksel bölüm) bilmiyorsa, her bir apartmana gidip, ikamet edenin birim numaralarının tümüyle (dizin) listeyi kontrol etmeleri gerekir. Her apartman kompleksine vardıklarında, her sakinin adres listesini kullanabilecekler. Ancak, herhangi bir paket alıcılar orada yaşayan olsun ya da olmasın, her apartman kompleksinin listesini kontrol etmek gerekir. Bölümler arası sorgular bu şekilde çalışır. Dizin kullanabilirler (her bir kapıyı çalmalarına gerek yoktur), her fiziksel bölüm için dizini ayrı ayrı denetlemeleri gerekir.
+Teslim sürücüsü doğru grup karmaşık (fiziksel bölüm) ' i bilmiyor ise, her bir grup oluşturmaya yönelik olarak disk oluşturmak ve listeyi tüm yerleşik birim numaralarıyla (Dizin) kontrol etmek gerekir. Her apartman karmaşıkına ulaştıktan sonra, bunların her bir yerleşik adres listesini yine de kullanabiliyor. Bununla birlikte, herhangi bir paket alıcılarının da orada yoksa, her grup karmasın listesini denetmaları gerekir. Bu, çapraz bölüm sorgularının çalışma şekli olur. Dizini (Her kapıda gizlenmesi gerekmez) kullandıklarında, her fiziksel bölümün dizinini ayrı ayrı denetlemesi gerekir.
 
 ### <a name="cross-partition-query-scoped-to-only-a-few-physical-partitions"></a>Çapraz bölüm sorgusu (yalnızca birkaç fiziksel bölüme kapsamlı)
 
-Teslimat sürücüsü tüm paket alıcılarının belirli bir kaç apartman kompleksi içinde yaşadığını biliyorsa, her birine gitmek zorunda kalmazlar. Birkaç apartman kompleksleri için sürüş ederken hala sadece tek bir bina ziyaret daha fazla iş gerektirir, teslimat sürücüsü hala önemli zaman ve çaba kaydeder. Bir sorgunun filtresinde `IN` anahtar kelimeyle birlikte bölüm anahtarı varsa, yalnızca ilgili fiziksel bölümün veri dizinlerini denetler.
+Teslim sürücüsü, tüm paket alıcılarının belirli bir birkaç grup içinde canlı olduğunu biliyorsa, her biri için bir kez sürücü gerekmez. Birkaç grup oluşturma ile birlikte, yalnızca tek bir bina ziyaret etenden daha fazla iş gerektirecektir, teslim sürücüsü hala önemli bir zaman ve çaba tasarrufu sağlar. Bir sorgu, `IN` anahtar sözcüğü ile filtresinde bölüm anahtarına sahipse, yalnızca ilgili fiziksel bölümün veri dizinlerini kontrol eder.
 
 ## <a name="avoiding-cross-partition-queries"></a>Bölümler arası sorgulardan kaçınma
 
-Çoğu kapsayıcı için, bazı çapraz bölüm sorguları olması kaçınılmazdır. Bazı çapraz bölüm sorguları olması ok! Neredeyse tüm sorgu işlemleri bölümler arasında (hem mantıksal bölüm tuşları hem de fiziksel bölümler) desteklenir. Azure Cosmos DB ayrıca sorgu yürütmefiziksel bölümler arasında paralelleştirmek için sorgu motoru ve istemci SDKs birçok optimizasyonları vardır.
+Çoğu kapsayıcı için bazı bölümler arası sorgulara sahip olursunuz. Bazı çapraz bölüm sorgularının olması Tamam! Neredeyse tüm sorgu işlemleri bölümler arasında desteklenir (mantıksal bölüm anahtarları ve fiziksel bölümler). Azure Cosmos DB Ayrıca, sorgu altyapısında ve istemci SDK 'lerinde, fiziksel bölümlerde sorgu yürütmeye paralel hale getirmek için birçok iyileştirme vardır.
 
-Çoğu okuma ağırlıklı senaryoda, sorgu filtrelerinizdeki en yaygın özelliği seçmenizi öneririz. Ayrıca, bölüm anahtarınızın diğer bölüm [anahtarı seçimi en iyi uygulamalarına](partitioning-overview.md#choose-partitionkey)uyduduğundan emin olmalısınız.
+Çoğu okuma ağır senaryosunda, sorgu filtrelerinizin en yaygın özelliğini seçmeniz önerilir. Ayrıca bölüm anahtarınızın diğer [bölüm anahtarı seçim en iyi uygulamalarına](partitioning-overview.md#choose-partitionkey)uyduğundan emin olun.
 
-Bölümler arası sorgulardan kaçınmak genellikle yalnızca büyük kapsayıcılarla ilgili önemlidir. Fiziksel bölümdeki hiçbir öğe sorgunun filtresiyle eşleşmese bile, sonuçlar için fiziksel bir bölümün dizinini her kontrol ettiğinizde en az 2,5 RU ücretlendirilirsiniz. Bu nedenle, yalnızca bir (veya yalnızca birkaç) fiziksel bölüm varsa, çapraz bölüm sorguları bölüm içi sorgulardan önemli ölçüde daha fazla RU tüketmez.
+Çapraz bölüm sorgularının genellikle büyük kapsayıcılarla önemli olması önlenir. Fiziksel bölümde sorgu filtresiyle eşleşen hiçbir öğe olmasa bile, her bir fiziksel bölümün bir dizinini her denetleyişinizde en az 2,5 RU yaklaşık bir ücret ödersiniz. Bu nedenle, yalnızca bir (veya yalnızca birkaç) fiziksel bölümünüz varsa, çapraz bölüm sorguları Bölüm içi sorgulardan çok daha fazla RU 'yi tüketmez.
 
-Fiziksel bölüm sayısı, sağlanan RU'ların miktarına bağlıdır. Her fiziksel bölüm 10.000'e kadar ru'ya izin verir ve 50 GB'a kadar veri depolayabilir. Azure Cosmos DB, fiziksel bölümleri sizin için otomatik olarak yönetir. Kapsayıcınızdaki fiziksel bölüm sayısı, sağlanan iş ve tüketilen depolamanıza bağlıdır.
+Fiziksel bölüm sayısı, sağlanan RU miktarına bağlıdır. Her bir fiziksel bölüm, sağlanan en fazla 10.000 RU 'ya izin verir ve en fazla 50 GB veri saklayabilir. Azure Cosmos DB fiziksel bölümleri sizin için otomatik olarak yönetecektir. Kapsayıcıdaki fiziksel bölüm sayısı, sağlanan aktarım hızına ve tüketilen depolamaya bağımlıdır.
 
-İş yükünüz aşağıdaki ölçütleri karşılıyorsa, bölümler arası sorgulardan kaçınmayı denemelisiniz:
-- 30.000'den fazla RU'nun sağlanmasını planlıyorsunuz.
-- 100 GB'dan fazla veri depolamayı planlıyorsunuz
+İş yükünüz aşağıdaki ölçütleri karşılıyorsa, bölümler arası sorgulardan kaçınmaya çalışın:
+- 30.000 RU 'ın üzerinde sağlanmış olduğunu planlayın
+- 100 GB 'den fazla veri depolamayı planlayın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Cosmos DB'de bölümleme hakkında bilgi edinmek için aşağıdaki makalelere bakın:
+Azure Cosmos DB bölümlendirme hakkında bilgi edinmek için aşağıdaki makalelere bakın:
 
 - [Azure Cosmos DB'de bölümleme](partitioning-overview.md)
 - [Azure Cosmos DB'de yapay bölümleme anahtarları](synthetic-partition-keys.md)

@@ -1,49 +1,49 @@
 ---
-title: Azure Monitörü'nde kiracılar arası Azure etkinlik günlükleri
-description: Azure Etkinlik Günlüğü'nden veri toplamak ve farklı bir kiracıda Azure Monitor'daki Bir Günlük Analizi çalışma alanına göndermek için Olay Hub'larını ve Mantık Uygulamalarını kullanın.
+title: Azure Izleyici 'de çapraz kiracı Azure etkinlik günlükleri
+description: Event Hubs ve Logic Apps kullanarak Azure etkinlik günlüğünden veri toplayın ve farklı bir kiracıda Azure Izleyici 'de bir Log Analytics çalışma alanına gönderin.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
 ms.openlocfilehash: d2f794365e15768dbf47647f2d9a8d08d5e8ba3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80055735"
 ---
-# <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Azure Etkin Dizin kiracılarında Azure Etkinliği günlüklerini Azure Monitörü'nde topla (eski)
+# <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Azure etkinlik günlüklerini Azure Active Directory kiracılar genelinde Azure Izleyici 'ye toplayın (eski)
 
 > [!NOTE]
-> Bu makalede, Azure Etkinliği günlüğünü Azure kiracıları arasında bir Günlük Analizi çalışma alanında toplanacak şekilde yapılandırmak için eski yöntem açıklanmaktadır.  Artık, kaynak günlüklerini nasıl topladığınıza benzer bir tanıa ayarını kullanarak Günlük Analizi çalışma alanında Etkinlik günlüğü toplayabilirsiniz. Azure [Monitörü'nde Günlük Analizi çalışma alanında Azure etkinlik günlüklerini topla ve analiz edin.](activity-log-collect.md)
+> Bu makalede, Azure kiracılarında Azure etkinlik günlüğü 'nü bir Log Analytics çalışma alanında toplanacak şekilde yapılandırmaya yönelik eski yöntem açıklanmaktadır.  Artık, kaynak günlüklerini topladığınıza benzer bir tanılama ayarı kullanarak, etkinlik günlüğünü bir Log Analytics çalışma alanında toplayabilirsiniz. Bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure etkinlik günlüklerini toplayın ve çözümleyin](activity-log-collect.md).
 
 
-Bu makale, Logic Apps için Azure Log Analytics Data Collector bağlayıcısını kullanarak Azure Web Günlüğü Günleme çalışma alanına Azure Etkinlik Günlükleri toplama yöntemini hızlandırıyor. Günlükleri farklı bir Azure Etkin Dizin kiracısında bir çalışma alanına göndermeniz gerektiğinde bu makaledeki işlemi kullanın. Örneğin yönetilen bir servis sağlayıcısıysanız, müşterinin aboneliğinden etkinlik günlüklerini toplamak ve bunları kendi aboneliğinizdeki bir Log Analytics çalışma alanında depolamak isteyebilirsiniz.
+Bu makalede, Logic Apps için Azure Log Analytics veri toplayıcı Bağlayıcısı 'nı kullanarak Azure Izleyici 'deki bir Log Analytics çalışma alanında Azure etkinlik günlüklerini toplamak için bir yöntem adımları açıklanır. Farklı bir Azure Active Directory kiracısındaki bir çalışma alanına Günlükler göndermeniz gerektiğinde bu makaledeki işlemi kullanın. Örneğin yönetilen bir servis sağlayıcısıysanız, müşterinin aboneliğinden etkinlik günlüklerini toplamak ve bunları kendi aboneliğinizdeki bir Log Analytics çalışma alanında depolamak isteyebilirsiniz.
 
-Log Analytics çalışma alanı aynı Azure aboneliğinde veya farklı bir abonelikte veya aynı Azure Etkin Dizinindeyse, Azure Etkinliği günlüklerini toplamak için [Azure Monitörü'ndeki Azure İşananlığına giriş günlerini topla ve Azure İşantisi çalışma alanında Azure etkinlik günlüklerini analiz etme](activity-log-collect.md) adımlarını kullanın.
+Log Analytics çalışma alanı aynı Azure aboneliğinde veya farklı bir abonelikte ancak aynı Azure Active Directory, Azure etkinlik günlüklerini toplamak için Azure [izleyici 'de Azure etkinlik Log Analytics günlüklerini toplayın ve çözümleyin](activity-log-collect.md) bölümündeki adımları kullanın.
 
 ## <a name="overview"></a>Genel Bakış
 
 Bu senaryoda kullanılan strateji, Azure Etkinlik Günlüğü'nün olayları bir [Olay Hub'ına](../../event-hubs/event-hubs-about.md) göndermesini sağlamaktır ve burada bir [Mantıksal Uygulama](../../logic-apps/logic-apps-overview.md) bunları Log Analytics çalışma alanınıza gönderir. 
 
-![etkinlik günlüğünden Log Analytics çalışma alanına veri akışının görüntüsü](media/collect-activity-logs-subscriptions/data-flow-overview.png)
+![Etkinlik günlüğünden Log Analytics çalışma alanına veri akışı görüntüsü](media/collect-activity-logs-subscriptions/data-flow-overview.png)
 
 Bu yaklaşımın avantajları şunlardır:
-- Azure Etkinlik Günlüğü Olay Hub'ına akış yaptığından gecikme süresi düşüktür.  Mantık Uygulaması daha sonra tetiklenir ve verileri çalışma alanına gönderir. 
+- Azure Etkinlik Günlüğü Olay Hub'ına akış yaptığından gecikme süresi düşüktür.  Daha sonra mantıksal uygulama tetiklenir ve çalışma alanına verileri gönderir. 
 - Çok az kod gerekir ve dağıtılması gereken sunucu altyapısı yoktur.
 
 Bu makalede şu işlemleri yapmanız için size yol gösterilir:
 1. Olay Hub'ı oluşturma. 
 2. Azure Etkinlik Günlüğü dışarı aktarma profilini kullanarak etkinlik günlüklerini Olay Hub'ına aktarma.
-3. Olay Hub'ından okumak ve olayları Log Analytics çalışma alanına göndermek için bir Mantık Uygulaması oluşturun.
+3. Olay Hub 'ından okumak ve Log Analytics çalışma alanına olay göndermek için bir mantıksal uygulama oluşturun.
 
 ## <a name="requirements"></a>Gereksinimler
 Aşağıda bu senaryoda kullanılan Azure kaynaklarıyla ilgili gereksinimler verilmiştir.
 
 - Olay Hub'ı ad alanının, günlükleri yayan abonelikle aynı abonelikte yer alması gerekmez. Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun erişim izinleri olmalıdır. Aynı Azure Active Directory'de birden çok aboneliğiniz varsa, tüm aboneliklerin etkinlik günlüklerini tek bir olay hub'ına gönderebilirsiniz.
 - Mantıksal Uygulama olay hub'ından farklı bir abonelikte yer alabilir ve aynı Azure Active Directory'de yer alması gerekmez. Mantıksal Uygulama, Olay Hub'ından okumak için Olay Hub'ının paylaşılan erişim anahtarını kullanır.
-- Log Analytics çalışma alanı Mantıksal Uygulama'dan farklı bir abonelikte ve Azure Active Directory'de yer alabilir, ama işlemi basitleştirmek için bunların aynı abonelikte yer almasını öneririz. Logic App, Log Analytics çalışma alanı kimliğini ve anahtarını kullanarak çalışma alanına gönderir.
+- Log Analytics çalışma alanı Mantıksal Uygulama'dan farklı bir abonelikte ve Azure Active Directory'de yer alabilir, ama işlemi basitleştirmek için bunların aynı abonelikte yer almasını öneririz. Mantıksal uygulama, Log Analytics çalışma alanı KIMLIĞINI ve anahtarını kullanarak çalışma alanına gönderilir.
 
 
 
@@ -51,7 +51,7 @@ Aşağıda bu senaryoda kullanılan Azure kaynaklarıyla ilgili gereksinimler ve
 
 <!-- Follow the steps in [how to create an Event Hubs namespace and Event Hub](../../event-hubs/event-hubs-create.md) to create your event hub. -->
 
-1. Azure portalında, **Nesnelerin** > **Internet of Things** > Kaynağı**İnterneti Etkinlik Hub'ları**oluştur'u seçin.
+1. Azure Portal **kaynak** > oluştur**nesnelerin interneti** > **Event Hubs**' yı seçin.
 
    ![Market yeni olay hub'ı](media/collect-activity-logs-subscriptions/marketplace-new-event-hub.png)
 
@@ -78,7 +78,7 @@ Etkinlik Günlüğü akışını etkinleştirmek için bir Olay Hub'ı Ad Alanı
 
 Günlükleri yayan abonelikten farklı bir abonelikte yer alan olay hub'ı ad alanını kullanabilirsiniz; ancak aboneliklerin aynı Azure Active Directory'de olması gerekir. Ayarı yapılandıran kullanıcının her iki aboneliğe erişmek için uygun RBAC'si olmalıdır. 
 
-1. Azure portalında, **Etkinlik Günlüğü'nü izleyin'i** > **Activity Log**seçin.
+1. Azure Portal,**etkinlik günlüğünü** **İzle** > ' yi seçin.
 3. Sayfanın üst kısmındaki **Dışarı Aktar** düğmesine tıklayın.
 
    ![azure izlemenin gezinti resmi](media/collect-activity-logs-subscriptions/activity-log-blade.png)
@@ -94,13 +94,13 @@ Günlükleri yayan abonelikten farklı bir abonelikte yer alan olay hub'ı ad al
 
 ## <a name="step-3---create-logic-app"></a>3. Adım - Mantıksal Uygulama'yı oluşturma
 
-Etkinlik günlükleri etkinlik merkezine yazıldıktan sonra, günlükleri etkinlik merkezinden toplamak ve Bunları Log Analytics çalışma alanına yazmak için bir Mantık Uygulaması oluşturursunuz.
+Etkinlik günlükleri Olay Hub 'ına yazıldıktan sonra, günlükleri Olay Hub 'ından toplayıp Log Analytics çalışma alanına yazacak bir mantıksal uygulama oluşturursunuz.
 
 Mantıksal Uygulama şunları içerir:
 - Olay Hub'ından okumak için [Olay Hub'ı bağlayıcı](https://docs.microsoft.com/connectors/eventhubs/) tetikleyicisi.
 - JSON olaylarını ayıklamak için [JSON Ayrıştır eylemi](../../logic-apps/logic-apps-content-type.md).
 - JSON'u bir nesneye dönüştürmek için [Oluştur eylemi](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action).
-- Log Analytics, verileri Log Analytics çalışma alanına göndermek için [veri bağlayıcısı gönderir.](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/)
+- Log Analytics verileri Log Analytics çalışma alanına [göndermek için veri Bağlayıcısı gönder](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) .
 
    ![mantıksal uygulamalarda olay hub'ı tetikleyicisi ekleme resmi](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
@@ -116,7 +116,7 @@ Olay Hub'ı adını ve bağlantı dizesini almak için, [Event Hubs ad alanı iz
 
 ### <a name="create-a-new-blank-logic-app"></a>Yeni boş bir Mantıksal Uygulama oluşturma
 
-1. Azure portalında, **kaynak** > **Kurumsal Tümleştirme** > **Mantığı Uygulaması**Oluştur'u seçin.
+1. Azure Portal **kaynak** > oluştur**kurumsal tümleştirme** > **mantıksal uygulama**' yı seçin.
 
     ![Yeni mantıksal uygulama Market](media/collect-activity-logs-subscriptions/marketplace-new-logic-app.png)
 
@@ -130,10 +130,10 @@ Olay Hub'ı adını ve bağlantı dizesini almak için, [Event Hubs ad alanı iz
    | Abonelik   | Mantıksal uygulamayı içerecek olan Azure aboneliğini seçin. |
    | Kaynak Grubu | Mantıksal uygulama için var olan bir Azure kaynak grubunu seçin veya yeni grup oluşturun. |
    | Konum       | Mantıksal uygulamanızın dağıtılacağı veri merkezi bölgesini seçin. |
-   | Log Analytics  | Log Analytics çalışma alanında mantık uygulamanızın her çalışmasının durumunu günlüğe kaydetmek istiyorsanız seçin.  |
+   | Log Analytics  | Mantıksal uygulamanızın her çalıştırmasının durumunu Log Analytics çalışma alanında günlüğe kaydetmek istiyorsanız seçin.  |
 
     
-3. **Oluştur'u**seçin. **Dağıtım Başarılı** bildirimi görüntülendiğinde, Mantıksal Uygulamanızı açmak için **Kaynağa git**'e tıklayın.
+3. **Oluştur**’u seçin. **Dağıtım Başarılı** bildirimi görüntülendiğinde, Mantıksal Uygulamanızı açmak için **Kaynağa git**'e tıklayın.
 
 4. **Şablonlar** bölümünde **Boş Mantıksal Uygulama**'yı seçin. 
 
@@ -147,7 +147,7 @@ Logic Apps Tasarımcısı'nda mantıksal uygulama iş akışınızı başlatmak 
 
    ![mantıksal uygulamalarda olay hub'ı tetikleyicisi ekleme resmi](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
 
-2. Kimlik bilgileri istendiğinde, Event Hubs ad alanınıza bağlanın. Bağlantınızın adını ve kopyaladığınız bağlantı dizesini girin.  **Oluştur'u**seçin.
+2. Kimlik bilgileri istendiğinde, Event Hubs ad alanınıza bağlanın. Bağlantınızın adını ve kopyaladığınız bağlantı dizesini girin.  **Oluştur**’u seçin.
 
    ![mantıksal uygulamalarda olay hub'ı bağlantısı ekleme resmi](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-connection.png)
 
@@ -161,9 +161,9 @@ Logic Apps Tasarımcısı'nda mantıksal uygulama iş akışınızı başlatmak 
 
 ### <a name="add-parse-json-action"></a>JSON Ayrıştır eylemi ekleme
 
-Olay Hub'ından gelen çıkış bir JSON yükü ve bir kayıt dizisi içerir. [Ayrıştırma JSON](../../logic-apps/logic-apps-content-type.md) eylemi, Log Analytics çalışma alanına göndermek için sadece bir dizi kaydı ayıklamak için kullanılır.
+Olay Hub'ından gelen çıkış bir JSON yükü ve bir kayıt dizisi içerir. [JSON Ayrıştır](../../logic-apps/logic-apps-content-type.md) eylemi, yalnızca Log Analytics çalışma alanına göndermek için kayıt dizisini ayıklamak üzere kullanılır.
 
-1. **Yeni adıma** > tıklayın**Eylem ekle**
+1. **Yeni adım** > **Eylem Ekle** ' ye tıklayın
 2. Arama kutusuna filtreniz için *json ayrıştır* yazın. **Veri İşlemleri - JSON Ayrıştır** eylemini seçin.
 
    ![logic apps'e json ayrıştır eylemi ekleme](media/collect-activity-logs-subscriptions/logic-apps-add-parse-json-action.png)
@@ -275,7 +275,7 @@ Olay Hub'ından gelen çıkış bir JSON yükü ve bir kayıt dizisi içerir. [A
 ### <a name="add-compose-action"></a>Oluştur eylemi ekleme
 [Oluştur](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action) eylemi JSON çıkışını alır ve Log Analytics eylemi tarafından kullanılabilecek bir nesne oluşturur.
 
-1. **Yeni adıma** > tıklayın**Eylem ekle**
+1. **Yeni adım** > **Eylem Ekle** ' ye tıklayın
 2. Filtreniz için *oluştur* yazın ve ardından **Veri İşlemleri - Oluştur** eylemini seçin.
 
     ![Oluştur eylemi ekleme](media/collect-activity-logs-subscriptions/logic-apps-add-compose-action.png)
@@ -284,14 +284,14 @@ Olay Hub'ından gelen çıkış bir JSON yükü ve bir kayıt dizisi içerir. [A
 
 
 ### <a name="add-log-analytics-send-data-action"></a>Log Analytics Veri Gönder eylemi ekleme
-[Azure Log Analytics Data Collector](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) eylemi nesneyi Oluşturma eyleminden alır ve bir Log Analytics çalışma alanına gönderir.
+[Azure Log Analytics veri toplayıcı](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) eylemi, nesneyi oluşturma eyleminden alır ve bir Log Analytics çalışma alanına gönderir.
 
-1. **Yeni adıma** > tıklayın**Eylem ekle**
+1. **Yeni adım** > **Eylem Ekle** ' ye tıklayın
 2. Filtreniz için *log analytics* yazın ver ardından **Azure Log Analytics Veri Toplayıcısı - Veri Gönder** eylemini seçin.
 
    ![logic apps'e log analytics veri gönder eylemini ekleme](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
-3. Bağlantınız için bir ad girin ve Log Analytics çalışma alanınızın **Çalışma Alanı Kimliği**'ni ve **Çalışma Alanı Anahtarı**'nı yapıştırın.  **Oluştur'u**tıklatın.
+3. Bağlantınız için bir ad girin ve Log Analytics çalışma alanınızın **Çalışma Alanı Kimliği**'ni ve **Çalışma Alanı Anahtarı**'nı yapıştırın.  **Oluştur**' a tıklayın.
 
    ![logic apps'e log analytics bağlantısını ekleme](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 
@@ -302,7 +302,7 @@ Olay Hub'ından gelen çıkış bir JSON yükü ve bir kayıt dizisi içerir. [A
    |Ayar        | Değer           | Açıklama  |
    |---------------|---------------------------|--------------|
    |JSON İsteği gövdesi  | **Oluştur** eyleminden **Çıkış** | Oluştur eyleminin gövdesinden kayıtları alır. |
-   | Özel Günlük Adı | AzureActivity | Aktarılan verileri tutmak için Log Analytics çalışma alanında oluşturmak üzere özel günlük tablosunun adı. |
+   | Özel Günlük Adı | AzureActivity | İçeri aktarılan verileri tutmak için Log Analytics çalışma alanında oluşturulacak özel günlük tablosunun adı. |
    | Saat oluşturma alanı | time | **time** için JSON alanını seçmeyin - yalnızca time sözcüğünü yazın. JSON alanını seçerseniz, tasarımcı **Veri Gönder** eylemini *For Each* döngüsüne sokar ve siz bunu istemezsiniz. |
 
 
@@ -327,7 +327,7 @@ Son adım Log Analytics çalışma alanını denetleyip verilerin beklendiği gi
 3.  **Günlük Araması** kutucuğuna tıklayın ve Günlük Araması bölmesinde, sorgu alanında `AzureActivity_CL` yazıp Enter tuşuna basın veya sorgu alanının sağındaki arama düğmesine tıklayın. Özel günlüğünüze *AzureActivity* adını vermediyseniz, seçtiğiniz adı yazın ve sonuna `_CL` ekleyin.
 
 >[!NOTE]
-> Log Analytics çalışma alanına ilk kez yeni bir özel günlük gönderildiğinde, özel günlüğün aranabilir olması bir saat kadar sürebilir.
+> Log Analytics çalışma alanına ilk kez yeni bir özel günlük gönderildiğinde, özel günlüğün aranabilir olması bir saate kadar sürebilir.
 
 >[!NOTE]
 > Etkinlik günlükleri bir özel tabloya yazılır ve [Etkinlik Günlüğü çözümünde](./activity-log-collect.md) görüntülenmez.
@@ -337,7 +337,7 @@ Son adım Log Analytics çalışma alanını denetleyip verilerin beklendiği gi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir Etkinlik Hub'ından Azure Etkinlik Günlüklerini okumak ve bunları analiz için Log Analytics çalışma alanına göndermek için bir mantık uygulaması oluşturdunuz. Panooluşturma da dahil olmak üzere bir çalışma alanında verileri görselleştirme hakkında daha fazla bilgi edinmek için, verileri Görselleştir öğreticisini inceleyin.
+Bu makalede, bir olay hub 'ından Azure etkinlik günlüklerini okumak ve bunları analiz için Log Analytics çalışma alanına göndermek üzere bir mantıksal uygulama oluşturdunuz. Panolar oluşturma da dahil olmak üzere bir çalışma alanındaki verileri görselleştirme hakkında daha fazla bilgi edinmek için verileri görselleştirmeye yönelik öğreticiyi inceleyin.
 
 > [!div class="nextstepaction"]
 > [Günlük Araması verilerini görselleştirme öğreticisi](./../../azure-monitor/learn/tutorial-logs-dashboards.md)

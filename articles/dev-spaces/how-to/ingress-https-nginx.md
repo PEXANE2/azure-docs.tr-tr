@@ -1,33 +1,33 @@
 ---
-title: Özel bir NGINX giriş denetleyicisi kullanın ve HTTPS'yi yapılandırın
+title: Özel NGıNX giriş denetleyicisi kullanma ve HTTPS 'yi yapılandırma
 services: azure-dev-spaces
 ms.date: 12/10/2019
 ms.topic: conceptual
-description: Azure Dev Spaces'i özel bir NGINX giriş denetleyicisi kullanacak şekilde nasıl yapılandırılabildiğini ve bu giriş denetleyicisini kullanarak HTTPS'yi yapılandırmayı öğrenin
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, Miğfer, servis kafesi, servis örgü yönlendirme, kubectl, k8s
+description: Azure Dev Spaces özel bir NGıNX giriş denetleyicisi kullanmak üzere yapılandırmayı ve bu giriş denetleyicisini kullanarak HTTPS 'yi yapılandırmayı öğrenin
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 ms.openlocfilehash: 0fe9fec263b72ac06839b58fdc5b0142a724718c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80155456"
 ---
-# <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Özel bir NGINX giriş denetleyicisi kullanın ve HTTPS'yi yapılandırın
+# <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Özel NGıNX giriş denetleyicisi kullanma ve HTTPS 'yi yapılandırma
 
-Bu makalede, azure dev spaces'i özel bir NGINX giriş denetleyicisi kullanmak üzere nasıl yapılandırdığınız gösterilmektedir. Bu makalede, https kullanmak için bu özel giriş denetleyicisi nasıl yapılandırılabildiğinizi de gösterilmektedir.
+Bu makalede, Azure Dev Spaces özel bir NGıNX giriş denetleyicisi kullanmak üzere nasıl yapılandırılacağı gösterilmektedir. Bu makalede ayrıca, bu özel giriş denetleyicisinin HTTPS kullanmak üzere nasıl yapılandırılacağı gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Hesabınız yoksa [ücretsiz bir hesap][azure-account-create] oluşturabilirsiniz.
 * [Yüklü Azure CLI][az-cli].
-* [Azure Geliştirme Alanları ile Azure Kubernetes Hizmeti (AKS) kümesi etkinleştirildi.][qs-cli]
-* [kubectl][kubectl] yüklü.
-* [Helm 3 yüklü][helm-installed].
-* [DNS Bölgesi][dns-zone]olan özel bir [etki alanı.][custom-domain]  Bu makalede, özel etki alanı ve DNS Bölgesi AKS kümenizle aynı kaynak grubunda olduğunu varsayar, ancak farklı bir kaynak grubunda özel bir etki alanı ve DNS Bölgesi kullanmak mümkündür.
+* [Azure dev Spaces etkinleştirilmiş Azure Kubernetes hizmeti (AKS) kümesi][qs-cli].
+* [kubectl][kubectl] yüklendi.
+* [Held 3 yüklendi][helm-installed].
+* [DNS bölgesi][dns-zone]olan [özel bir etki alanı][custom-domain] .  Bu makalede, özel etki alanı ve DNS bölgesinin AKS kümeniz ile aynı kaynak grubunda olduğu varsayılır, ancak farklı bir kaynak grubunda özel bir etki alanı ve DNS bölgesi kullanmak mümkündür.
 
-## <a name="configure-a-custom-nginx-ingress-controller"></a>Özel bir NGINX giriş denetleyicisi yapılandırma
+## <a name="configure-a-custom-nginx-ingress-controller"></a>Özel NGıNX giriş denetleyicisi yapılandırma
 
-[Kubectl][kubectl], Kubernetes komut satırı istemcisi kullanarak kümenize bağlanın. `kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials][az-aks-get-credentials] komutunu kullanın. Bu komut kimlik bilgilerini karşıdan yükler ve Kubernetes CLI'yi bunları kullanacak şekilde yapılandırır.
+Kubernetes komut satırı istemcisi olan [kubectl][kubectl]kullanarak kümenize bağlanın. `kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials][az-aks-get-credentials] komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKS
@@ -41,13 +41,13 @@ NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
 
-NGINX giriş denetleyicisi Helm grafiği içeren [resmi kararlı Helm deposunu][helm-stable-repo]ekleyin.
+NGıNX giriş denetleyicisi HELI grafiğini içeren [resmi kararlı Held deposunu][helm-stable-repo]ekleyin.
 
 ```console
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-NGINX giriş denetleyicisi için bir Kubernetes `helm`ad alanı oluşturun ve kullanarak yükleyin.
+NGıNX giriş denetleyicisi için bir Kubernetes ad alanı oluşturun ve öğesini kullanarak `helm`çalıştırın.
 
 ```console
 kubectl create ns nginx
@@ -55,19 +55,19 @@ helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
 
 > [!NOTE]
-> Yukarıdaki örnek, giriş denetleyiciniz için genel bir bitiş noktası oluşturur. Giriş denetleyiciniz için özel bir bitiş noktası kullanmanız gerekiyorsa, *--set controller.service.ek açıklamaları ekleyin." service\\\\.beta\\.kubernetes .io/azure-load-balancer-internal"=true* parametre to the helm *install* komutu. Örnek:
+> Yukarıdaki örnek, giriş denetleyiciniz için genel bir uç nokta oluşturur. Bunun yerine giriş denetleyicinizde özel bir uç nokta kullanmanız gerekiyorsa, *--set Controller. Service. açıklamalarını ekleyin. " Service\\. Beta\\. Kubernetes\\. IO/Azure-Load-dengeleyici-Internal "= true* parametresi, *helk install* komutuna. Örneğin:
 > ```console
 > helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
 > ```
-> Bu özel bitiş noktası, AKS kümenizin dağıtıldığı sanal ağ içinde ortaya çıkarır.
+> Bu özel uç nokta, AKS kümesinin dağıtıldığı sanal ağ içinde kullanıma sunulur.
 
-[Kubectl get][kubectl-get]kullanarak NGINX giriş kontrol hizmetinin IP adresini alın.
+[Kubectl Get][kubectl-get]kullanarak NGINX giriş DENETLEYICISI hizmetinin IP adresini alın.
 
 ```console
 kubectl get svc -n nginx --watch
 ```
 
-Örnek çıktı, *nginx* ad alanındaki tüm hizmetlerin IP adreslerini gösterir.
+Örnek çıktı, *NGINX* ad alanındaki tüm hizmetlerin IP adreslerini gösterir.
 
 ```console
 NAME                                  TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                      AGE
@@ -77,7 +77,7 @@ nginx-nginx-ingress-default-backend   ClusterIP      10.0.210.231   <none>      
 nginx-nginx-ingress-controller        LoadBalancer   10.0.19.39     MY_EXTERNAL_IP   80:31314/TCP,443:30521/TCP   26s
 ```
 
-Az *A* [Network dns kaydını kullanarak][az-network-dns-record-set-a-add-record]NGINX hizmetinin harici IP adresiyle DNS bölgenize a kaydı ekleyin.
+[Az Network DNS Record-set A Add-Record][az-network-dns-record-set-a-add-record]kullanılarak, NGINX HIZMETININ dış IP adresiyle DNS bölgenize *bir* kayıt ekleyin.
 
 ```azurecli
 az network dns record-set a add-record \
@@ -87,20 +87,20 @@ az network dns record-set a add-record \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
-Yukarıdaki örnek, *MY_CUSTOM_DOMAIN* DNS bölgesine *bir A* kaydı ekler.
+Yukarıdaki örnek *MY_CUSTOM_DOMAIN* DNS bölgesine *bir* kayıt ekler.
 
-Bu makalede, Azure [Dev](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) Spaces kullanarak göstermek için Azure Dev Spaces Bike Paylaşımı örnek uygulamasını kullanırsınız. Uygulamayı GitHub'dan klonla ve dizinine gidin:
+Bu makalede, Azure Dev Spaces kullanmayı göstermek için [Azure dev Spaces bisiklet paylaşımı örnek uygulamasını](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) kullanacaksınız. Uygulamayı GitHub 'dan kopyalayıp dizinine gidin:
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-[Values.yaml'ı][values-yaml] açın ve aşağıdaki güncelleştirmeleri yapın:
-* *<REPLACE_ME_WITH_HOST_SUFFIX>* tüm örneklerini nginx ile *değiştirin. *etki alanınızı *MY_CUSTOM_DOMAIN*için kullanmaya MY_CUSTOM_DOMAIN. 
-* *kubernetes.io/ingress.class değiştirin: traefik-azds # Dev Spaces-kubernetes.io/ingress.class* ile *özel: nginx # Özel Ingress*. 
+[Values. YAML][values-yaml] dosyasını açın ve aşağıdaki güncelleştirmeleri yapın:
+* *<REPLACE_ME_WITH_HOST_SUFFIX>* tüm örneklerini *NGINX ile değiştirin. MY_CUSTOM_DOMAIN* *MY_CUSTOM_DOMAIN*için etki alanınızı kullanma. 
+* *Kubernetes.io/ingress.class: traefik-azds # dev Spaces-* *Kubernetes.io/ingress.class: NGINX # Custom*girişi ile değiştirin. 
 
-Aşağıda güncelleştirilmiş `values.yaml` bir dosya örneği verilmiştir:
+Aşağıda güncelleştirilmiş `values.yaml` bir dosyaya örnek verilmiştir:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -123,13 +123,13 @@ gateway:
 
 Değişikliklerinizi kaydedin ve dosyayı kapatın.
 
-Örnek uygulamanızla *dev* alanını `azds space select`oluşturun.
+Kullanarak `azds space select`örnek uygulamanızla *geliştirme* alanı oluşturun.
 
 ```console
 azds space select -n dev -y
 ```
 
-Örnek uygulamayı kullanarak `helm install`dağıtın.
+Kullanarak `helm install`örnek uygulamayı dağıtın.
 
 ```console
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
@@ -137,13 +137,13 @@ helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 
 Yukarıdaki örnek, örnek uygulamayı *dev* ad alanına dağıtır.
 
-Örnek uygulamaya erişmek için URL'leri `azds list-uris`görüntüleyin.
+Kullanarak `azds list-uris`örnek uygulamaya erişmek Için URL 'leri görüntüleyin.
 
 ```console
 azds list-uris
 ```
 
-Aşağıdaki çıktı, url'leri `azds list-uris`.
+Aşağıdaki çıktıda, ' den `azds list-uris`örnek URL 'ler gösterilmektedir.
 
 ```console
 Uri                                                  Status
@@ -152,19 +152,19 @@ http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Genel URL'yi komuttan açarak *bikesharingweb* hizmetine `azds list-uris` gidin. Yukarıdaki örnekte, *bikesharingweb* hizmetinin genel `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`URL'si .
+`azds list-uris` KOMUTTAN ortak URL 'yi açarak *bıkesharingweb* hizmetine gidin. Yukarıdaki örnekte, *bıkesharingweb* hizmeti 'nin `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`genel URL 'si.
 
 > [!NOTE]
-> *Bikesharingweb* hizmeti yerine bir hata sayfası görürseniz, *values.yaml* dosyasındaki *hem kubernetes.io/ingress.class* ek açıklamasını **hem de** ana bilgisayarı güncelleştirdiğinizi doğrulayın.
+> *Bıkesharingweb* hizmeti yerine bir hata sayfası görürseniz, *values. yaml* dosyasındaki *Kubernetes.io/ingress.Class* ek açıklamasını ve **konağını güncelleştirdiğinizi** doğrulayın.
 
-Dev `azds space select` altında bir alt boşluk *dev* oluşturmak ve çocuk dev alanına erişmek için URL'leri listelemek için komutu kullanın.
+Geliştirme altında `azds space select` bir alt alan oluşturmak için komutunu kullanın *dev* ve alt geliştirme alanına erişmek için URL 'leri listeleyin.
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-Aşağıdaki çıktı, *azureuser1* alt `azds list-uris` geliştirme alanında örnek uygulamaya erişmek için örnek URL'leri gösterir.
+Aşağıdaki çıktı, *azureuser1* alt geliştirme alanındaki örnek `azds list-uris` uygulamaya erişmek Için ' den örnek URL 'leri gösterir.
 
 ```console
 Uri                                                  Status
@@ -173,11 +173,11 @@ http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Komutun ortak URL'sini açarak *azureuser1* alt geliştirme alanında `azds list-uris` *bikesharingweb* hizmetine gidin. Yukarıdaki örnekte, *azureuser1* alt dev alanında *bikesharingweb* hizmeti için `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`ortak URL' dir.
+Komuttan ortak URL 'yi açarak azureuser1 alt geliştirme alanında *bıkesharingweb* hizmetine gidin. *azureuser1* `azds list-uris` Yukarıdaki örnekte, *azureuser1* alt dev Space 'teki `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` *bıkesharingweb* hizmetinin genel URL 'si.
 
-## <a name="configure-the-nginx-ingress-controller-to-use-https"></a>NGINX giriş denetleyicisini HTTPS kullanacak şekilde yapılandırın
+## <a name="configure-the-nginx-ingress-controller-to-use-https"></a>NGıNX giriş denetleyicisini HTTPS kullanacak şekilde yapılandırma
 
-NGINX giriş denetleyicinizi HTTPS kullanacak şekilde yapılandırırken TLS sertifikasının yönetimini otomatikleştirmek için [sertifika yöneticisini][cert-manager] kullanın. Sertifika `helm` *grafiğini* yüklemek için kullanın.
+NGıNX giriş denetleyicinizi HTTPS kullanacak şekilde yapılandırırken TLS sertifikasının yönetimini otomatikleştirmek için [CERT-Manager][cert-manager] kullanın. `helm` *Certmanager* grafiğini yüklemek için kullanın.
 
 ```console
 kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace nginx
@@ -187,7 +187,7 @@ helm repo update
 helm install cert-manager --namespace nginx --version v0.12.0 jetstack/cert-manager --set ingressShim.defaultIssuerName=letsencrypt --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-Bir `letsencrypt-clusterissuer.yaml` dosya oluşturun ve e-posta adresinizle e-posta alanını güncelleştirin.
+Bir `letsencrypt-clusterissuer.yaml` dosya oluşturun ve e-posta alanını e-posta adresiniz ile güncelleştirin.
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -207,7 +207,7 @@ spec:
 ```
 
 > [!NOTE]
-> Test etmek için *ClusterIssuer'ınız*için kullanabileceğiniz bir [evreleme sunucusu][letsencrypt-staging-issuer] da vardır.
+> Test için, *Kümevereninizi*için kullanabileceğiniz bir [hazırlama sunucusu][letsencrypt-staging-issuer] da vardır.
 
 Uygulamak `kubectl` `letsencrypt-clusterissuer.yaml`için kullanın.
 
@@ -215,7 +215,7 @@ Uygulamak `kubectl` `letsencrypt-clusterissuer.yaml`için kullanın.
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace nginx
 ```
 
-*Sertifika yöneticisi* ve HTTPS'yi kullanmak için ayrıntıları içerecek şekilde [values.yaml'yi][values-yaml] güncelleştirin. Aşağıda güncelleştirilmiş `values.yaml` bir dosya örneği verilmiştir:
+, *CERT-Manager* ve https kullanımına ilişkin ayrıntıları dahil etmek için [values. YAML][values-yaml] 'yi güncelleştirin. Aşağıda güncelleştirilmiş `values.yaml` bir dosyaya örnek verilmiştir:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -246,19 +246,19 @@ gateway:
       secretName: dev-gateway-secret
 ```
 
-Örnek uygulamayı kullanarak `helm`yükseltin:
+Şunu kullanarak `helm`örnek uygulamayı yükseltin:
 
 ```console
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
 ```
 
-*Dev/azureuser1* alt alanında örnek uygulamaya gidin ve HTTPS'yi kullanmak için yönlendirilenlerinizi fark edin. Ayrıca, sayfanın yükyük olduğunu, ancak tarayıcının bazı hatalar gösterdiğini de unutmayın. Tarayıcı konsolununaçılması, hatanın HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili olduğunu gösterir. Örnek:
+*Geliştirme/azureuser1* alt alanındaki örnek uygulamaya gıdın ve HTTPS kullanmak üzere yönlendirildiğini unutmayın. Ayrıca sayfanın yüklendiğine, ancak tarayıcıda bazı hataların gösterildiğine dikkat edin. Tarayıcı konsolu 'nu açmak, HTTP kaynaklarını yüklemeye çalışan bir HTTPS sayfasıyla ilgili hatayı gösterir. Örneğin:
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-Bu hatayı düzeltmek için [BikeSharingWeb/azds.yaml'yi][azds-yaml] aşağıdakilere benzer şekilde güncelleyin:
+Bu hatayı onarmak için aşağıdaki şekilde [Bıkesharingweb/azds. YAML][azds-yaml] 'yi güncelleştirin:
 
 ```yaml
 ...
@@ -276,7 +276,7 @@ Bu hatayı düzeltmek için [BikeSharingWeb/azds.yaml'yi][azds-yaml] aşağıdak
 ...
 ```
 
-[BikeSharingWeb/package.json'ı][package-json] *url* paketi için bağımlılıkla güncelleştirin.
+[Bıkesharingweb/Package. JSON][package-json] ' i, *URL* paketi için bir bağımlılık ile güncelleştirin.
 
 ```json
 {
@@ -288,7 +288,7 @@ Bu hatayı düzeltmek için [BikeSharingWeb/azds.yaml'yi][azds-yaml] aşağıdak
 ...
 ```
 
-HTTPS'yi kullanmak için [BikeSharingWeb/lib/helpers.js'deki][helpers-js] *getApiHostAsync* yöntemini güncelleştirin:
+[Bıkesharingweb/lib/yardımcılar. js][helpers-js] ' de *Getapihostasync* yöntemini HTTPS kullanacak şekilde güncelleştirin:
 
 ```javascript
 ...
@@ -305,21 +305,21 @@ HTTPS'yi kullanmak için [BikeSharingWeb/lib/helpers.js'deki][helpers-js] *getAp
 ...
 ```
 
-Dizin `BikeSharingWeb` gidin ve `azds up` güncelleştirilmiş *BikeSharingWeb* hizmeti çalıştırmak için kullanın.
+`BikeSharingWeb` Dizinine gidin ve güncelleştirilmiş *Bikesharingweb* hizmetinizi çalıştırmak için kullanın `azds up` .
 
 ```console
 cd ../BikeSharingWeb/
 azds up
 ```
 
-*Dev/azureuser1* alt alanında örnek uygulamaya gidin ve herhangi bir hata olmadan HTTPS'yi kullanmak için yönlendirilenifark edin.
+*Geliştirme/azureuser1* alt alanındaki örnek uygulamaya gidin ve herhangi bir hata olmadan https kullanmaya yönlendirildiğini görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Geliştirme Alanları'nın birden çok kapsayıcıda daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda farklı sürümlerle veya kod dallarıyla çalışarak ortak geliştirmeyi nasıl basitleştirebileceğinizi öğrenin.
+Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda kodunuzun farklı sürümleriyle veya dallarıyla çalışarak işbirliğine dayalı geliştirmeyi nasıl kolaylaştırabileceğinizi öğrenin.
 
 > [!div class="nextstepaction"]
-> [Azure Geliştirme Alanlarında ekip geliştirme][team-development-qs]
+> [Azure Dev Spaces 'de takım geliştirme][team-development-qs]
 
 
 [az-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest

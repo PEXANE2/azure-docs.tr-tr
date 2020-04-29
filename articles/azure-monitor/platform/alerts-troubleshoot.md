@@ -1,246 +1,246 @@
 ---
-title: Azure Monitör uyarılarını ve bildirimlerini sorun giderme
-description: Azure Monitor uyarıları ve olası çözümlerle ilgili sık karşılaşılan sorunlar.
+title: Azure Izleyici uyarıları ve bildirimleri sorunlarını giderme
+description: Azure Izleyici uyarıları ve olası çözümlerle ilgili yaygın sorunlar.
 author: ofirmanor
 ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
 ms.openlocfilehash: beb47f961c6f24453bd49aa5807c9d801fc199a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80132337"
 ---
-# <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Monitor uyarılarındaki sorun giderme sorunları 
+# <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Izleyici uyarıları sorunlarını giderme 
 
-Bu makalede, Azure İzleme uyarılarında sık karşılaşılan sorunlar anlatılmaktadır.
+Bu makalede, Azure Izleyici uyarı ' nda yaygın sorunlar ele alınmaktadır.
 
-Azure Monitor uyarıları, izleme verilerinizde önemli koşullar bulunduğunda sizi proaktif olarak bilgilendirir. Sisteminizin kullanıcıları bunları fark etmeden önce sorunları tanımlamanızı ve çözmenizi sağlar. Uyarı hakkında daha fazla bilgi için Microsoft [Azure'daki uyarılara genel bakış](alerts-overview.md)bölümüne bakın.
+İzleme verilerinizde önemli koşullar bulunduğunda Azure Izleyici uyarıları size önceden bildirimde bulunur. Bunlar, sisteminizin kullanıcıları tarafından bildirilmeksizin sorunları tanımlamanızı ve adreslerinizi belirlemenizi sağlar. Uyarı hakkında daha fazla bilgi için bkz. [Microsoft Azure uyarılara genel bakış](alerts-overview.md).
 
-## <a name="action-or-notification-on-my-alert-did-not-work-as-expected"></a>Uyarımdaki eylem veya bildirim beklendiği gibi çalışmadı
+## <a name="action-or-notification-on-my-alert-did-not-work-as-expected"></a>Uyarımda eylem veya bildirim beklendiği gibi çalışmadı
 
-Azure portalında bir uyarı görebiliyorsanız, ancak bazı eylemleri veya bildirimleri ile ilgili bir sorununuz varsa, aşağıdaki bölümlere bakın.
+Azure portal tetiklenen bir uyarı görebilir, ancak bazı eylemler veya bildirimleriyle ilgili bir sorun yaşıyorsanız, aşağıdaki bölümlere bakın.
 
-## <a name="did-not-receive-expected-email"></a>Beklenen e-postayı almadım
+## <a name="did-not-receive-expected-email"></a>Beklenen e-posta alınamadı
 
-Azure portalında bir uyarı görebiliyor, ancak bu konuda yapılandırdığınız e-postayı almadıysanız aşağıdaki adımları izleyin: 
+Azure portal tetiklenen bir uyarı görebilir, ancak bununla ilgili olarak yapılandırdığınız e-postayı almadıysanız, şu adımları izleyin: 
 
-1. **E-posta bir [eylem kuralı](alerts-action-rules.md)tarafından bastırıldı mı?** 
+1. **E-posta bir [eylem kuralı](alerts-action-rules.md)tarafından gizlendi**mu? 
 
-    Portaldaki uyarıyı tıklayarak kontrol edin ve bastırılmış [eylem gruplarıiçin](action-groups.md)geçmiş sekmesine bakın: 
+    Portalda tetiklenen uyarıya tıklayarak ve gizlenen [eylem grupları](action-groups.md)için geçmiş sekmesine göz atın: 
 
-    ![Uyarı eylem kuralı bastırma geçmişi](media/alerts-troubleshoot/history-action-rule.png)
+    ![Uyarı eylem kuralı gizleme geçmişi](media/alerts-troubleshoot/history-action-rule.png)
 
-1. **Eylem türü "E-posta Azure Kaynak Yöneticisi Rolü" mi?**
+1. **"E-posta Azure Resource Manager rolü" eyleminin türüdür mi?**
 
-    Bu eylem yalnızca abonelik kapsamında ki Azure Kaynak Yöneticisi rol atamalarına ve *Kullanıcı*türüne bakar.  Rolü kaynak düzeyinde veya kaynak grubu düzeyinde değil, abonelik düzeyinde atadığınızdan emin olun.
+    Bu eylem yalnızca abonelik kapsamındaki ve *Kullanıcı*türünde Azure Resource Manager rol atamalarına bakar.  Rolü, kaynak düzeyinde veya kaynak grubu düzeyinde değil, abonelik düzeyinde atamış olduğunuzdan emin olun.
 
-1. **E-posta sunucunuz ve posta kutunuz harici e-postaları kabul ediyor mu?**
+1. **E-posta sunucunuz ve posta kutunuz dış e-postaları kabul ediyor mu**
 
-    Bu üç adresten gelen e-postaların engellenmediğini doğrulayın:
+    Bu üç adresten e-postaların engellenmediğinden emin olun:
       - azure-noreply@microsoft.com  
       - azureemail-noreply@microsoft.com
       - alerts-noreply@mail.windowsazure.com
 
-    Dahili posta listelerinin veya dağıtım listelerinin harici e-posta adreslerinden gelen e-postaları engellemesi yaygındır. Yukarıdaki e-posta adreslerini beyaz listeye almanız gerekir.  
-    Test etmek için, eylem grubuna normal bir iş e-posta adresi (posta listesi değil) ekleyin ve uyarıların bu e-postaya gelip gelmediğini görün. 
+    İç posta listelerinin veya dağıtım listelerinin, dış e-posta adreslerinden gelen e-postaları engellemesi yaygındır. Yukarıdaki e-posta adreslerini beyaz listeye almanız gerekir.  
+    Test etmek için, eylem grubuna düzenli bir iş e-posta adresi (posta listesi değil) ekleyin ve uyarıların bu e-postaya ulaştığını görün. 
 
-1. **E-posta gelen kutusu kuralları veya spam filtresi tarafından işlendi mi?** 
+1. **E-posta gelen kutusu kuralları veya bir istenmeyen posta Filtresi tarafından işlendi mi?** 
 
-    Bu e-postaları silen veya bir yan klasöre taşıyacak gelen kutusu kuralları olmadığını doğrulayın. Örneğin, gelen kutusu kuralları konuyla ilgili belirli gönderenleri veya belirli sözcükleri yakalayabilir.
+    Bu e-postaları silen veya bir yan klasöre taşıdığınız bir gelen kutusu kuralı olmadığından emin olun. Örneğin, gelen kutusu kuralları söz konusu gönderenleri veya ilgili belirli sözcükleri yakalayabilir.
 
-    Ayrıca, kontrol edin:
+    Ayrıca, şunu denetleyin:
     
-      - e-posta istemcinizin spam ayarları (Outlook, Gmail gibi)
-      - gönderenin sınırları / spam ayarları / e-posta sunucunuzun karantina ayarları (Exchange, Office 365, G-suite gibi)
-      - varsa e-posta güvenlik cihazınızın ayarları (Barracuda, Cisco gibi). 
+      - e-posta istemciniz (Outlook, Gmail gibi) istenmeyen posta ayarları
+      - Gönderici, e-posta sunucunuzun (Exchange, Office 365, G-Suite gibi) sınırlarını/istenmeyen posta ayarlarını/karantina ayarlarını
+      - varsa, e-posta güvenlik gerecinizin ayarları (Barrampada gibi). 
 
-1. **Eylem grubundan yanlışlıkla aboneliğinizi iptal mi edildiniz?** 
+1. **Yanlışlıkla eylem grubundan aboneliği kaldırtınız mı?** 
 
-    Uyarı e-postaları, eylem grubundan aboneliği iptal etmek için bir bağlantı sağlar. Bu eylem grubundan yanlışlıkla aboneliğinizi iptal edip etmediğinizi kontrol etmek için aşağıdakilerden biri:
+    Uyarı e-postaları, eylem grubundan abonelik kaldırma için bir bağlantı sağlar. Yanlışlıkla bu eylem grubuna abone olunmuş olup olmadığınızı denetlemek için şunlardan birini yapın:
 
-    1. Portaldaki eylem grubunu açın ve Durum sütununa bakın:
+    1. Portalda eylem grubunu açın ve durum sütununu kontrol edin:
 
     ![eylem grubu durum sütunu](media/alerts-troubleshoot/action-group-status.png)
 
-    2. Abonelikten çıkma onayı için e-postanızda arama yapın:
+    2. Abonelik kaldırma onayı için e-postanızı arayın:
 
-    ![uyarı eylem grubundan aboneliği ni iptal](media/alerts-troubleshoot/unsubscribe-action-group.png)
+    ![Uyarı eylem grubundan abone olunmaz](media/alerts-troubleshoot/unsubscribe-action-group.png)
 
-    Yeniden abone olmak için – aldığınız abonelikten çıkma onay e-postasındaki bağlantıyı kullanın veya e-posta adresini eylem grubundan kaldırın ve sonra tekrar ekleyin. 
+    Yeniden abone olmak için, aldığınız abonelik kaldırma onayı e-postasında bağlantıyı kullanın veya eylem grubundan e-posta adresini kaldırın ve tekrar ekleyin. 
  
-1. **Tek bir e-posta adresine giden birçok e-posta nedeniyle sınırlı olarak derecelendirildiniz mi?** 
+1. **Tek bir e-posta adresine giderken çok sayıda e-posta olduğundan sınırlı derecelendirdiniz mi?** 
 
-    E-posta oranı, her e-posta adresine her saat başı en fazla 100 e-posta ile [sınırlıdır.](alerts-rate-limiting.md) Bu eşiği geçerseniz, ek e-posta bildirimleri bırakılır.  E-posta adresinizin geçici olarak sınırlandığını belirten bir ileti olup olmadığını kontrol edin: 
+    E-posta, her bir e-posta adresine her saat 100 'den fazla e-posta ile [sınırlandırılmıştır](alerts-rate-limiting.md) . Bu eşiği geçirirseniz, ek e-posta bildirimleri bırakılır.  E-posta adresinizin geçici olarak sınırlı olduğunu belirten bir ileti aldığınızı denetleyin: 
  
-   ![E-posta oranı sınırlı](media/alerts-troubleshoot/email-paused.png)
+   ![E-posta hızı sınırlı](media/alerts-troubleshoot/email-paused.png)
 
-   Yüksek hacimli bildirimleri ücret sınırlaması olmadan almak istiyorsanız, webhook, mantık uygulaması, Azure işlevi veya otomasyon runbook'ları gibi hiçbiri oran sınırlı olmayan farklı bir eylem kullanmayı düşünün. 
+   Hız sınırlaması olmadan yüksek hacimli bildirimler almak isterseniz, Web kancası, mantıksal uygulama, Azure işlevi veya Otomasyon Runbook 'ları gibi farklı bir eylem kullanmayı düşünün; hiçbiri hız sınırlı değildir. 
 
-## <a name="did-not-receive-expected-sms-voice-call-or-push-notification"></a>Beklenen SMS, sesli arama veya anında iletme bildirimi almadı
+## <a name="did-not-receive-expected-sms-voice-call-or-push-notification"></a>Beklenen SMS, sesli çağrı veya anında iletme bildirimi almadı
 
-Portalda bir uyarı görebiliyorsanız, ancak bu konuda yapılandırdığınız SMS, sesli arama veya anında iletme bildirimini almadıysanız aşağıdaki adımları izleyin: 
+Portalda tetiklenen bir uyarı görebilir, ancak bununla ilgili olarak yapılandırdığınız SMS, sesli çağrı veya anında iletme bildirimini almazsanız, şu adımları izleyin: 
 
-1. **Eylem bir [eylem kuralı](alerts-action-rules.md)tarafından bastırıldı mı?** 
+1. **Eylem bir [eylem kuralı](alerts-action-rules.md)tarafından gizlendi mu?** 
 
-    Portaldaki uyarıyı tıklayarak kontrol edin ve bastırılmış [eylem gruplarıiçin](action-groups.md)geçmiş sekmesine bakın: 
+    Portalda tetiklenen uyarıya tıklayarak ve gizlenen [eylem grupları](action-groups.md)için geçmiş sekmesine göz atın: 
 
-    ![Uyarı eylem kuralı bastırma geçmişi](media/alerts-troubleshoot/history-action-rule.png)
+    ![Uyarı eylem kuralı gizleme geçmişi](media/alerts-troubleshoot/history-action-rule.png)
 
-   Bu kasıtsız sayılsaydı, eylem kuralını değiştirebilir, devre dışı edebilir veya silebilirsiniz.
+   Bu, istenmeden, eylem kuralını değiştirebilir, devre dışı bırakabilir veya silebilirsiniz.
  
-1. **SMS / ses: Telefon numaranız doğru mu?**
+1. **SMS/Voice: telefon numaranız doğru mu?**
 
-   Ülke koduveya telefon numarasındaki yazım hataları için SMS eylemini kontrol edin. 
+   Ülke kodunda veya telefon numarasında yazım hataları için SMS eylemini denetleyin. 
  
-1. **SMS / ses: Eğer oranı sınırlı oldu mu?** 
+1. **SMS/Voice: hız sınırlı mi?** 
 
-    SMS ve sesli aramalar, telefon numarası başına her beş dakikada bir birden fazla bildirimle sınırlıdır. Bu eşiği geçerseniz, bildirimler bırakılır. 
+    SMS ve seslendirme, her telefon numarası için beş dakikada bir bildirim ile sınırlı orandır. Bu eşiği geçirirseniz, bildirimler bırakılır. 
 
-      - Sesli arama – arama geçmişinizi kontrol edin ve önceki beş dakika içinde Azure'dan farklı bir arama nız olup olmadığını görün. 
-      - SMS - Telefon numaranızın fiyatının sınırlı olduğunu belirten bir mesaj için SMS geçmişinizi kontrol edin. 
+      - Sesli çağrı – önceki beş dakika içinde, Azure 'dan farklı bir çağrı olup olmadığınızı kontrol edin. 
+      - SMS-telefon numaranız oranının sınırlı olduğunu belirten bir ileti için SMS geçmişinizi kontrol edin. 
 
-    Yüksek hacimli bildirimleri ücret sınırlaması olmadan almak istiyorsanız, webhook, mantık uygulaması, Azure işlevi veya otomasyon runbook'ları gibi hiçbiri oran sınırlı olmayan farklı bir eylem kullanmayı düşünün. 
+    Hız sınırlaması olmadan yüksek hacimli bildirimler almak isterseniz, Web kancası, mantıksal uygulama, Azure işlevi veya Otomasyon Runbook 'ları gibi farklı bir eylem kullanmayı düşünün; hiçbiri hız sınırlı değildir. 
  
-1. **SMS: Eylem grubundan yanlışlıkla aboneliğinizi iptal mi edildiniz?**
+1. **SMS: yanlışlıkla eylem grubundan aboneliği Kaldırtınız mı?**
 
-    SMS geçmişinizi açın ve bu belirli eylem grubundan (Action_group_short_name yanıtını kullanarak) veya tüm eylem gruplarından (STOP yanıtını kullanarak) SMS gönderimini devre dışı bırakıp bırakmadığınızı kontrol edin. Yeniden abone olmak için, ilgili SMS komutunu (ENABLE action_group_short_name veya START) gönderin veya SMS eylemini eylem grubundan kaldırın ve sonra tekrar ekleyin.  Daha fazla bilgi [için, eylem gruplarında SMS uyarı davranışına](alerts-sms-behavior.md)bakın.
+    SMS geçmişinizi açın ve bu özel eylem grubundan (devre dışı bırakma action_group_short_name yanıtı kullanılarak) veya tüm eylem gruplarından (durdurma yanıtı kullanılarak) SMS teslimini kabul ettiyseniz emin olun. Yeniden abone olmak için ilgili SMS komutunu gönderin (action_group_short_name veya Başlat 'ı ETKINLEŞTIRIN) ya da eylem grubundan SMS eylemini kaldırın ve tekrar ekleyin.  Daha fazla bilgi için bkz. [eylem gruplarında SMS uyarı davranışı](alerts-sms-behavior.md).
 
-1. **Telefonunuzdaki bildirimleri yanlışlıkla engellediniz mi?**
+1. **Telefonunuzdaki bildirimleri yanlışlıkla engellemiş musunuz?**
 
-   Çoğu cep telefonu, belirli telefon numaralarından veya kısa kodlardan gelen aramaları veya SMS'leri veya belirli uygulamalardan (Azure mobil uygulaması gibi) gelen anında iletme bildirimlerini engellemenize olanak tanır. Telefonunuzdaki bildirimleri yanlışlıkla engelleyip engellemediğinizi kontrol etmek için, telefonunuzun işletim sistemi ve modeline özel belgelerde arama yapın veya farklı bir telefon ve telefon numarasıyla test edin. 
+   Çoğu cep telefonu, belirli telefon numaralarının veya kısa kodlardan gelen çağrıları veya SMS 'yi engellemeniz ya da belirli uygulamalardan (Azure mobil uygulaması gibi) anında iletme bildirimlerini engellemeyi sağlar. Telefonunuzdaki bildirimleri yanlışlıkla engellediğinizden emin olmak için, belgeleri telefon işletim sisteminiz ve modeliniz için özel olarak arayın veya farklı bir telefon ve telefon numarasıyla test edin. 
 
-## <a name="expected-another-type-of-action-to-trigger-but-it-did-not"></a>Tetiklemek için başka bir eylem türü bekleniyor, ancak vermedi 
+## <a name="expected-another-type-of-action-to-trigger-but-it-did-not"></a>Tetiklenecek başka bir eylem türü bekleniyordu, ancak 
 
-Portalda bir uyarı görebiliyorsanız, ancak yapılandırılan eylemi tetiklenmiyorsa, aşağıdaki adımları izleyin: 
+Portalda tetiklenen bir uyarı görürseniz, ancak yapılandırılan eylemi tetikleyemediyseniz, şu adımları izleyin: 
 
-1. **Eylem bir eylem kuralı tarafından bastırıldı mı?** 
+1. **Eylem bir eylem kuralı tarafından gizlendi mu?** 
 
-    Portaldaki uyarıyı tıklayarak kontrol edin ve bastırılmış [eylem gruplarıiçin](action-groups.md)geçmiş sekmesine bakın: 
+    Portalda tetiklenen uyarıya tıklayarak ve gizlenen [eylem grupları](action-groups.md)için geçmiş sekmesine göz atın: 
 
-    ![Uyarı eylem kuralı bastırma geçmişi](media/alerts-troubleshoot/history-action-rule.png)
+    ![Uyarı eylem kuralı gizleme geçmişi](media/alerts-troubleshoot/history-action-rule.png)
  
-    Bu kasıtsız sayılsaydı, eylem kuralını değiştirebilir, devre dışı edebilir veya silebilirsiniz. 
+    Bu, istenmeden, eylem kuralını değiştirebilir, devre dışı bırakabilir veya silebilirsiniz. 
 
-1. **Bir webhook tetiklemedi mi?**
+1. **Web kancası tetiklenemedi mi?**
 
-    1. **Kaynak IP adresleri engellendi mi?**
+    1. **Kaynak IP adresleri engellensin mi?**
     
-       Webhook'un çağrıldığı [IP adreslerini](action-groups.md#action-specific-information) beyaz listele.
+       Web kancasının çağrıldığı [IP adreslerini](action-groups.md#action-specific-information) beyaz listeye ekleyin.
 
-    1. **Webhook bitiş noktası doğru çalışıyor mu?**
+    1. **Web kancası uç noktası düzgün çalışıyor mu?**
 
-       Yapılandırdığınız webhook bitiş noktasının doğru olduğunu ve bitiş noktasının doğru çalıştığını doğrulayın. Webhook günlüklerinizi veya enstrümanınızın kodunu kontrol edin, böylece araştırabilirsiniz (örneğin, gelen yükü kaydedin). 
+       Yapılandırdığınız Web kancası uç noktasının doğru olduğunu ve uç noktanın doğru çalıştığını doğrulayın. Web kancası günlüklerinizi denetleyin veya kodunu araştırın (örneğin, gelen yükü günlüğe kaydedin). 
 
-    1. **Slack'i mi yoksa Microsoft Teams'i mi arıyorsunuz?**  
-    Bu uç noktaların her biri belirli bir JSON biçimi bekler. Bunun yerine bir mantık uygulaması eylemi yapılandırmak için [bu yönergeleri](action-groups-logic-app.md) izleyin.
+    1. **Bolluk veya Microsoft ekipleri mı arıyorsunuz?**  
+    Bu uç noktaların her biri belirli bir JSON biçimi bekliyor. Bunun yerine bir mantıksal uygulama eylemi yapılandırmak için [Bu yönergeleri](action-groups-logic-app.md) izleyin.
 
-    1. **Webhook yanıt vermiyor veya geri döndü hataları oldu mu?** 
+    1. **Web kancası yanıt vermiyor veya hata verdi mı?** 
 
-        Bir webhook yanıt için zaman dilimimiz 10 saniyedir. Webhook araması, aşağıdaki HTTP durum kodları döndürüldüğünde en fazla iki kez daha denenecektir: 408, 429, 503, 504 veya HTTP bitiş noktası yanıt vermiyor. İlk yeniden deneme 10 saniye sonra yapılır. İkinci ve son tekrar deneme 100 saniye sonra gerçekleşir. İkinci yeniden deneme başarısız olursa uç nokta hiçbir eylem grubu için 30 dakika boyunca bir daha çağrılmaz.
+        Web kancası yanıtı için zaman aşımı süresi 10 saniyedir. Aşağıdaki HTTP durum kodları döndürüldüğünde Web kancası çağrısı iki ek kez yeniden denenir: 408, 429, 503, 504, ya da HTTP uç noktası yanıt vermez. İlk yeniden deneme 10 saniye sonra yapılır. İkinci ve son yeniden deneme 100 saniye sonra gerçekleşir. İkinci yeniden deneme başarısız olursa uç nokta hiçbir eylem grubu için 30 dakika boyunca bir daha çağrılmaz.
 
-## <a name="action-or-notification-happened-more-than-once"></a>Eylem veya bildirim birden fazla kez oldu 
+## <a name="action-or-notification-happened-more-than-once"></a>Eylem veya bildirim birden çok kez gerçekleşti 
 
-Bir uyarı için birden fazla kez bir uyarı (e-posta veya SMS gibi) bildirimi aldıysanız veya uyarının eylemi (webhook veya Azure işlevi gibi) birden çok kez tetiklendiyse aşağıdaki adımları izleyin: 
+Bir uyarı (e-posta veya SMS gibi) için bir defadan fazla bildirim aldıysanız veya uyarının eylemi (Web kancası veya Azure işlevi gibi) birden çok kez tetikleniyorsa, aşağıdaki adımları izleyin: 
 
 1. **Gerçekten aynı uyarı mı?** 
 
-    Bazı durumlarda, aynı anda birden fazla benzer uyarı ateşlenir. Yani, aynı uyarı birçok kez eylemlerini tetikledi gibi görünebilir. Örneğin, bir etkinlik günlüğü uyarı kuralı, olay durumu alanında filtre uygulanmayarak hem bir olay başladığında hem de tamamlandığında (başarılı veya başarısız) ateş lenecek şekilde yapılandırılabilir. 
+    Bazı durumlarda, aynı anda birden çok benzer uyarı tetiklenir. Bu nedenle, aynı uyarının eylemlerini birden çok kez tetikledi gibi görünebilir. Örneğin, bir etkinlik günlüğü uyarı kuralı hem bir olay başlatıldığında hem de tamamlandığında (başarılı veya başarısız) olay durumu alanında filtrelemeden başlatılacak şekilde yapılandırılabilir. 
 
-    Bu eylemlerin veya bildirimlerin farklı uyarılardan gelip gelmediğini kontrol etmek için, zaman damgası ve uyarı kimliği veya korelasyon kimliği gibi uyarı ayrıntılarını inceleyin. Alternatif olarak, portaldaki uyarı listesini kontrol edin. Bu durumda, uyarı kuralı mantığını uyarlamanız veya uyarı kaynağını yapılandırmanız gerekir. 
+    Bu eylemlerin veya bildirimlerin farklı uyarılardan geldiğini denetlemek için, zaman damgası ve uyarı kimliği ya da onun bağıntı kimliği gibi uyarı ayrıntılarını inceleyin. Alternatif olarak, portalda tetiklenen uyarıların listesini kontrol edin. Bu durumda, uyarı kuralı mantığını uyarlamanız veya başka türlü uyarı kaynağını yapılandırmanız gerekir. 
 
-1. **Eylem birden çok eylem grubunda yineler mi?** 
+1. **Eylem birden çok eylem grubunda yineleme mi?** 
 
-    Bir uyarı ateşlendiğinde, eylem gruplarının her biri bağımsız olarak işlenir. Bu nedenle, birden çok tetiklenen eylem grubunda bir eylem (e-posta adresi gibi) görünüyorsa, eylem grubu başına bir kez çağrılır. 
+    Bir uyarı harekete geçirildiğinde, eylem gruplarının her biri bağımsız olarak işlenir. Bu nedenle, birden çok tetiklenen eylem grubunda bir eylem (örneğin, e-posta adresi) görünürse, her eylem grubu için bir kez çağırılır. 
 
-    Hangi eylem gruplarının tetikleniyi denetlediğini denetlemek için uyarı geçmişi sekmesini denetleyin. Uyarı kuralında tanımlanan her iki eylem grubu ve eylem kurallarına göre uyarıya eklenen eylem grupları vardır: 
+    Hangi eylem gruplarının tetikleneceğini denetlemek için uyarı geçmişi sekmesini kontrol edin. Uyarı kuralında her iki eylem grubunun de tanımlı olduğunu ve eyleme eylem kurallarına göre eylem gruplarının eklendiğini görürsünüz: 
 
     ![Birden çok eylem grubunda yinelenen eylem](media/alerts-troubleshoot/action-repeated-multi-action-groups.png)
 
-## <a name="action-or-notification-has-an-unexpected-content"></a>Eylem veya bildirim beklenmeyen bir içeriğe sahiptir
+## <a name="action-or-notification-has-an-unexpected-content"></a>Eylem veya bildirimin beklenmedik bir içeriği vardır
 
-Uyarıyı aldıysanız, ancak bazı alanlarının eksik veya yanlış olduğuna inanıyorsanız aşağıdaki adımları izleyin: 
+Uyarıyı aldıysanız ancak bazı alanlarının eksik veya yanlış olduğunu düşünüyorsanız, şu adımları izleyin: 
 
-1. **Eylem için doğru biçimi seçtiniz mi?** 
+1. **Eylem için doğru biçimi mi seçdunuz?** 
 
-    Her eylem türü (e-posta, webhook, vb) iki biçimi vardır - varsayılan, eski biçimi ve [yeni ortak şema biçimi.](alerts-common-schema.md) Bir eylem grubu oluşturduğunuzda, eylem başına istediğiniz biçimi belirtirsiniz – eylem gruplarındaki farklı eylemlerin farklı biçimleri olabilir. 
+    Her eylem türü (e-posta, Web kancası vb.) iki formata sahiptir: varsayılan, eski biçimi ve [daha yeni ortak şema biçimi](alerts-common-schema.md). Bir eylem grubu oluşturduğunuzda, eylem başına istediğiniz biçimi belirtirsiniz – eylem gruplarındaki farklı eylemler farklı biçimlerde olabilir. 
 
-    Örneğin, webhook eylemi için: 
+    Örneğin, Web kancası eylemi için: 
 
-    ![webhook eylem şema seçeneği](media/alerts-troubleshoot/webhook.png)
+    ![Web kancası eylemi şema seçeneği](media/alerts-troubleshoot/webhook.png)
 
-    Eylem düzeyinde belirtilen biçimin beklediğiniz şey olup olmadığını denetleyin. Örneğin, uyarılara (webhook, işlev, mantık uygulaması, vb.) yanıt veren, bir biçim bekleyen, ancak daha sonra eylemde sizin veya başka bir kişinin farklı bir biçim belirlediği bir kod geliştirmiş olabilirsiniz.  
+    Eylem düzeyinde belirtilen biçimin beklediğiniz şey olup olmadığını denetleyin. Örneğin, uyarılara (Web kancası, işlev, mantıksal uygulama, vb.) yanıt veren kodu geliştirmiş olabilirsiniz, tek bir biçim bekleniyor, ancak daha sonra sizin veya başka bir kişi farklı bir biçim belirtti.  
 
-    Ayrıca, günlük [arama uyarıları](alerts-log-webhook.md) (hem Uygulama İstatistikleri ve günlük analitiği), [metrik uyarılar](alerts-metric-near-real-time.md#payload-schema)için , ortak uyarı [şeması](alerts-common-schema-definitions.md)için , ve amortismana klasik [metrik uyarılar](alerts-webhooks.md) [için, aktivite günlüğü uyarıları](activity-log-alerts-webhook.md)için yük biçimini (JSON) kontrol edin.
+    Ayrıca, [etkinlik günlüğü uyarıları](activity-log-alerts-webhook.md)için yük BIÇIMINI (JSON), [günlük araması uyarılarını](alerts-log-webhook.md) (hem Application Insights hem de Log Analytics), [ölçüm uyarıları](alerts-metric-near-real-time.md#payload-schema)için [ortak uyarı şeması](alerts-common-schema-definitions.md)için ve kullanım dışı bırakılmış olan [Klasik ölçüm uyarıları](alerts-webhooks.md)için denetleyin.
 
  
-1. **Etkinlik günlüğü uyarıları: Etkinlik günlüğünde bulunan bilgiler var mı?** 
+1. **Etkinlik günlüğü uyarıları: etkinlik günlüğünde bilgiler var mı?** 
 
-    [Etkinlik günlüğü uyarıları,](activity-log-alerts.md) Azure kaynakları oluşturma, güncelleme veya silme, hizmet durumu ve kaynak durumu etkinlikleri veya Azure Danışmanı ve Azure İlkesi'nden elde edilen bulgular gibi Azure Etkinlik Günlüğü'ne yazılan olaylara dayanan uyarılardır. Etkinlik günlüğüne dayalı bir uyarı aldıysanız, ancak ihtiyacınız olan bazı alanlar eksik veya yanlışsa, önce etkinlik günlüğündeki olayları denetleyin. Azure kaynağı, etkinlik günlüğü olayında aradığınız alanları yazmadıysa, bu alanlar ilgili uyarıya dahil edilmez. 
+    [Etkinlik günlüğü uyarıları](activity-log-alerts.md) , Azure etkinlik günlüğüne yazılan olayları temel alan uyarılardır; Azure kaynaklarını oluşturma, güncelleştirme veya silme, hizmet durumu ve kaynak durumu olayları, Azure Advisor ve Azure ilkesinden bulgular gibi olaylar. Etkinlik günlüğüne dayalı bir uyarı aldıysanız ancak ihtiyacınız olan bazı alanlar eksik ya da yanlış ise, önce etkinlik günlüğündeki olayları kontrol edin. Azure kaynağı, etkinlik günlüğü olayında Aradığınız alanları yazmadığından, bu alanlar ilgili uyarıya dahil edilmez. 
 
 ## <a name="action-rule-is-not-working-as-expected"></a>Eylem kuralı beklendiği gibi çalışmıyor 
 
-Portalda bir uyarı görebiliyorsanız, ancak ilgili bir eylem kuralı beklendiği gibi çalışmadıysa, aşağıdaki adımları izleyin: 
+Portalda tetiklenen bir uyarı görürseniz, ancak ilgili bir eylem kuralı beklendiği gibi çalışmadı, şu adımları izleyin: 
 
 1. **Eylem kuralı etkin mi?** 
 
-    İlgili eylem rolünün etkin olduğunu doğrulamak için eylem kuralı durum sütununa bakın. 
+    İlgili eylem rolünün etkinleştirildiğini doğrulamak için eylem kuralı durumu sütununu kontrol edin. 
 
-    ![Grafik](media/alerts-troubleshoot/action-rule-status.png) 
+    ![sel](media/alerts-troubleshoot/action-rule-status.png) 
 
-    Etkin değilse, eylem kuralını seçip Etkinleştir'i tıklatarak etkinleştirebilirsiniz. 
+    Etkin değilse, seçerek ve Etkinleştir ' i tıklatarak eylem kuralını etkinleştirebilirsiniz. 
 
-1. **Bu bir hizmet sağlık uyarısı mı?** 
+1. **Hizmet durumu uyarısı mı?** 
 
-    Hizmet durumu uyarıları (izleme hizmeti = "Hizmet Durumu") eylem kurallarından etkilenmez. 
+    Hizmet durumu uyarıları (Monitor Service = "hizmet durumu") eylem kurallarından etkilenmez. 
 
-1. **Eylem kuralı tetikte mi hareket etti?** 
+1. **Eylem kuralı Uyarınıza göre mi çalışıyor?** 
 
-    Portaldaki uyarıyı tıklayarak eylem kuralının uyarınızı işleyip işlemediğini kontrol edin ve geçmiş sekmesine bakın.
+    Portalda tetiklenen uyarıya tıklayarak eylem kuralının uyarısında işlenip işlenmeyeceğini denetleyin ve geçmiş sekmesine bakın.
 
-    Aşağıda, tüm eylem gruplarını bastıran eylem kuralıörneği verilmiştir: 
+    Tüm eylem gruplarını gizleme eylem kuralına bir örnek aşağıda verilmiştir: 
  
-     ![Uyarı eylem kuralı bastırma geçmişi](media/alerts-troubleshoot/history-action-rule.png)
+     ![Uyarı eylem kuralı gizleme geçmişi](media/alerts-troubleshoot/history-action-rule.png)
 
-    Başka bir eylem grubu ekleyen bir eylem kuralı örneği aşağıda verilmiştir:
+    Başka bir eylem grubu ekleyen bir eylem kuralına örnek aşağıda verilmiştir:
 
     ![Birden çok eylem grubunda yinelenen eylem](media/alerts-troubleshoot/action-repeated-multi-action-groups.png)
  
 
-1. **Eylem kuralı kapsamı ve filtresi ateşlenen uyarıyla eşleşir mi?** 
+1. **Eylem kuralı kapsamı ve filtresi tetiklenen uyarıyla eşleşiyor mu?** 
 
-    Eylem kuralının ateşlenmiş olması gerektiğini, ancak ateş etmemiş olması gerektiğini düşünüyorsanız, ancak ateş etmemiş olması gerektiğini düşünüyorsanız, eylem kuralı kapsamını ve filtre koşullarını, ateşlenen uyarının özelliklerine göre dikkatle inceleyin. 
+    Eylem kuralının tetikleneceğini, ancak olmadığını veya tetiklenmemesi gerektiğini, ancak tetiklenmemesi gerektiğini, ancak harekete geçirilen uyarının özelliklerine ve Filtre koşullarını dikkatle inceleyin. 
 
 
-## <a name="how-to-find-the-alert-id-of-a-fired-alert"></a>Ateşlenen bir uyarının uyarı kimliğini bulma
+## <a name="how-to-find-the-alert-id-of-a-fired-alert"></a>Tetiklenen bir uyarının uyarı kimliğini bulma
 
-Belirli bir uyarı yla ilgili bir servis talebi açarken (örneğin, e-posta bildirimini almadıysanız), uyarı kimliğini sağlamanız gerekir. 
+Belirli bir tetiklenen uyarı (örneğin, e-posta bildirimini almadıysanız) ile ilgili bir durum açılırken, uyarı kimliğini sağlamanız gerekir. 
 
-Bulmak için aşağıdaki adımları izleyin:
+Bulmak için şu adımları izleyin:
 
-1. Azure portalında, ateşlenen uyarılar listesine gidin ve bu özel uyarıyı bulun. Filtreleri, yerini bulmanıza yardımcı olması için kullanabilirsiniz. 
+1. Azure portal, tetiklenen uyarılar listesine gidin ve söz konusu uyarıyı bulun. Bu filtreleri bulmanıza yardımcı olması için kullanabilirsiniz. 
 
-1. Uyarı ayrıntılarını açmak için uyarıyı tıklatın. 
+1. Uyarı ayrıntılarını açmak için uyarıya tıklayın. 
 
-1. Siz bulana kadar ilk sekmenin (özet sekmesi) uyarı alanlarında aşağı kaydırın ve kopyalayın. Bu alan da kullanabileceğiniz bir "Panoya kopyala" yardımcı düğmesini içerir.  
+1. İlk sekmenin uyarı alanlarını (Özet sekmesi) bulana kadar aşağı kaydırın ve kopyalayın. Bu alan Ayrıca, kullanabileceğiniz bir "panoya kopyala" yardımcı düğmesine de sahiptir.  
 
     ![uyarı kimliğini bul](media/alerts-troubleshoot/get-alert-id.png)
 
-## <a name="problem-creating-updating-or-deleting-action-rules-in-the-azure-portal"></a>Azure portalında eylem kuralları oluşturma, güncelleştirme veya silme sorunu
+## <a name="problem-creating-updating-or-deleting-action-rules-in-the-azure-portal"></a>Azure portal eylem kuralları oluşturma, güncelleştirme veya silme sorunu
 
-Bir [eylem kuralı](alerts-action-rules.md)oluşturmaya, güncelleştirmeye veya silmeye çalışırken bir hata aldıysanız, aşağıdaki adımları izleyin: 
+Bir [eylem kuralı](alerts-action-rules.md)oluşturmaya, güncelleştirmeye veya silmeye çalışırken bir hata alırsanız, şu adımları izleyin: 
 
-1. **İzin hatası aldınız mı?**  
+1. **Bir izin hatası mı alıyorsunuz?**  
 
-     [İzleme Katılımcısı yerleşik rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)veya eylem kuralları ve uyarılarıyla ilgili belirli izinlere sahip olmalısınız.
+     [Izleme katılımcısı yerleşik rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)ya da eylem kurallarıyla ve uyarılarla ilgili belirli izinlere sahip olmanız gerekir.
 
-1. **Eylem kuralı parametrelerini doğruladınız mı?**  
+1. **Eylem kuralı parametrelerini doğrulamadınız mı?**  
 
-    Eylem [kuralı belgelerini](alerts-action-rules.md)veya [PowerShell Set-AzActionRule](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Set-AzActionRule?view=azps-3.5.0) komutunu kontrol edin. 
+    [Eylem kuralı belgelerini](alerts-action-rules.md)veya [PowerShell set-azactionrule komutunu eylem kuralını](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Set-AzActionRule?view=azps-3.5.0) denetleyin. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Günlük uyarısı kullanıyorsanız, [Sorun Giderme Günlüğü Uyarıları'na](alert-log-troubleshoot.md)da bakın.
-- Yukarıdaki kılavuzla sorununuzu çözüp çözmediğinizi kontrol etmek için [Azure portalına](https://portal.azure.com) geri dön 
+- Günlük uyarısı kullanılıyorsa, bkz. [sorun giderme günlüğü uyarıları](alert-log-troubleshoot.md).
+- Yukarıdaki kılavuzdan sorununuzu çözmişseniz olup olmadığınızı denetlemek için [Azure Portal](https://portal.azure.com) geri dönün 

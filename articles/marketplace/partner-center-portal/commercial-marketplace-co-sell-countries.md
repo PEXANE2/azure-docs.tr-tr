@@ -1,6 +1,6 @@
 ---
 title: Ortak satış ülke ve bölge kodları | Azure Marketi
-description: Teklifinizin Co-sell sayfasında kişi bilgilerini sağlarken bu iki harfli ülke/bölge kodlarını kullanın.
+description: Teklifinizin ortak satış sayfasında iletişim bilgilerini sağlarken, bu iki harfli ülke/bölge kodlarını kullanın.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,33 +8,33 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80277065"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Ortak satış ülke ve bölge kodları
 
-[Teklifinizin Co-sell sayfasında kişi bilgilerini sağlarken](commercial-marketplace-co-sell.md)bu iki harfli ülke/bölge kodlarını kullanın.
+[Teklifinizin ortak satış sayfasında iletişim bilgilerini sağlarken](commercial-marketplace-co-sell.md), bu iki harfli ülke/bölge kodlarını kullanın.
 
-İlgili kişi tüm Ülkeleri/Bölgeleri kapsıyorsa, "OOO" adlı üç harf kodunu kullanın.
+Kişi tüm ülkeleri/bölgeleri kapsıyorsa, "OOO" üç harfli kodu kullanın.
 
-Bir kişi birden fazla Ülke/Bölge kapsıyorsa, virgülle ayrılmış iki harf kodunun her birini girin (örneğin, tırnak işareti olmadan "ABD, CA, FR" girin).
+Bir kişi birden fazla ülke/bölge kapsıyorsa, iki harfli her birini virgülle ayırarak girin (örneğin, tırnak işaretleri olmadan "ABD, CA, FR" yazın).
 
-## <a name="countryregion-table"></a>Ülke/Bölge tablosu
+## <a name="countryregion-table"></a>Ülke/bölge tablosu
 
-|   Ülke/Bölge Adı               |   ISO-2   |
+|   Ülke/bölge adı               |   ISO-2   |
 |-------------------------------------|-----------|
-| Genel bağlantılar                     | Ooo       |
+| Küresel kişiler                     | OOO       |
 | Afganistan                         | AF        |
-| Åland Adaları                       | Ax        |
+| Bir i Adaları                       | 'TE        |
 | Arnavutluk                             | AL        |
 | Cezayir                             | DZ        |
 | Amerikan Samoası                      | AS        |
 | Andorra                             | AD        |
 | Angola                              | AO        |
-| Antarktika                          | Aq        |
+| Antarktika                          | AQ        |
 | Antigua ve Barbuda                 | AG        |
 | Arjantin                           | AR        |
 | Ermenistan                             | AM        |
@@ -53,12 +53,12 @@ Bir kişi birden fazla Ülke/Bölge kapsıyorsa, virgülle ayrılmış iki harf 
 | Bermuda                             | BM        |
 | Butan                              | BT        |
 | Bolivya                             | BO        |
-| Bonaire                             | Bq        |
+| Bonaire                             | BQ        |
 | Bosna Hersek              | BA        |
 | Botsvana                            | BW        |
-| Bouvet Adası                       | Bv        |
+| Bouvet Adası                       | BV        |
 | Brezilya                              | BR        |
-| Britanya Hint Okyanusu Toprakları      | ıo        |
+| Britanya Hint Okyanusu Toprakları      | IO        |
 | Britanya Virjin Adaları              | VG        |
 | Brunei                              | BN        |
 | Bulgaristan                            | BG        |
@@ -71,59 +71,59 @@ Bir kişi birden fazla Ülke/Bölge kapsıyorsa, virgülle ayrılmış iki harf 
 | Kayman Adaları                      | KY        |
 | Orta Afrika Cumhuriyeti            | CF        |
 | Çad                                | TD        |
-| Çekya                             | CZ        |
+| Czechia                             | CZ        |
 | Şili                               | CL        |
 | Çin                               | CN        |
 | Christmas Adası                    | CX        |
 | Cocos (Keeling) Adaları             | CC        |
 | Kolombiya                            | CO        |
-| Komorlar                             | Km        |
-| Kongo Cumhuriyeti                               | Cg        |
+| Komorlar                             | KM        |
+| Kongo Cumhuriyeti                               | ILETISI        |
 | Kongo (KDC)                         | CD        |
-| Cook Adaları                        | Ck        |
+| Cook Adaları                        | STOKLAMA        |
 | Kosta Rika                          | CR        |
 | Fildişi Sahili (Côte d'Ivoire)                       | CI        |
 | Hırvatistan                             | HR        |
 | Küba                                | CU        |
-| Curaçao                             | Cw        |
+| Curaçao                             | FIILI        |
 | Kıbrıs                              | CY        |
 | Danimarka                             | DK        |
-| Cibuti                            | Dj        |
+| Cibuti                            | DJ        |
 | Dominika                            | DM        |
 | Dominik Cumhuriyeti                  | DO        |
 | Ekvador                             | EC        |
 | Mısır                               | EG        |
 | El Salvador                         | SV        |
-| Ekvator Ginesi                   | Gq        |
+| Ekvator Ginesi                   | GQ        |
 | Eritre                             | ER        |
 | Estonya                             | EE        |
 | eSwatini                            | SZ        |
 | Etiyopya                            | ET        |
-| Faroe Adaları                       | Fo        |
+| Faroe Adaları                       | INFO        |
 | Fiji                                | FJ        |
 | Finlandiya                             | FI        |
 | Fransa                              | GS        |
 | Fransız Ginesi                       | GF        |
 | Fransız Polinezyası                    | PF        |
-| Fransız Güney Toprakları         | Tf        |
+| Fransız Güney Toprakları         | The        |
 | Gabon                               | GA        |
 | Gambiya                              | GM        |
 | Gürcistan                             | GE        |
 | Almanya                             | DE        |
 | Gana                               | GH        |
-| Cebelitarık                           | Gı        |
+| Cebelitarık                           | ANACAĞı        |
 | Yunanistan                              | GR        |
-| Grönland                           | Gl        |
-| Grenada                             | Gd        |
+| Grönland                           | G        |
+| Grenada                             | GD        |
 | Guadalupe                          | GP        |
 | Guam                                | GU        |
 | Guatemala                           | GT        |
-| Guernsey                            | Gg        |
+| Guernsey                            | GG        |
 | Gine                              | GN        |
-| Gine-Bissau                       | Gw        |
+| Gine-Bissau                       | GW        |
 | Guyana                              | GY        |
 | Haiti                               | HT        |
-| Heard Adası ve McDonald Adaları   | Hm        |
+| Heard Adası ve McDonald Adaları   | HM        |
 | Honduras                            | HN        |
 | Hong Kong ÖİB                       | HK        |
 | Macaristan                             | HU        |
@@ -138,12 +138,12 @@ Bir kişi birden fazla Ülke/Bölge kapsıyorsa, virgülle ayrılmış iki harf 
 | İtalya                               | BT        |
 | Jamaika                             | JM        |
 | Japonya                               | JP        |
-| Jersey                              | Je        |
+| Jersey                              | HARFI        |
 | Ürdün                              | JO        |
 | Kazakistan                          | KZ        |
 | Kenya                               | KE        |
 | Kiribati                            | KI        |
-| Kore (Güney)                       | KR        |
+| Kore dili (Güney)                       | KR        |
 | Kuveyt                              | KW        |
 | Kırgızistan                          | KG        |
 | Laos                                | LA        |
@@ -187,7 +187,7 @@ Bir kişi birden fazla Ülke/Bölge kapsıyorsa, virgülle ayrılmış iki harf 
 | Nijer                               | NE        |
 | Nijerya                             | NG        |
 | Niue                                | NU        |
-| Norfolk Adası                      | Nf        |
+| Norfolk Adası                      | NF        |
 | Kuzey Kore                         | KP        |
 | Kuzey Mariana Adaları            | MP        |
 | Kuzey Makedonya                     | MK        |
@@ -197,11 +197,11 @@ Bir kişi birden fazla Ülke/Bölge kapsıyorsa, virgülle ayrılmış iki harf 
 | Palau                               | PW        |
 | Filistin Yönetimi               | PS        |
 | Panama                              | PA        |
-| Papua Yeni Gine                    | Sayfa        |
+| Papua Yeni Gine                    | PG        |
 | Paraguay                            | PY        |
 | Peru                                | PE        |
 | Filipinler                         | PH        |
-| Pitcairn Adaları                    | Pn        |
+| Pitcairn Adaları                    | DÖNÜŞTÜRME        |
 | Polonya                              | PL        |
 | Portekiz                            | PT        |
 | Porto Riko                         | PR        |
@@ -210,35 +210,35 @@ Bir kişi birden fazla Ülke/Bölge kapsıyorsa, virgülle ayrılmış iki harf 
 | Romanya                             | RO        |
 | Rusya                              | RU        |
 | Rwanda                              | RW        |
-| Aziz Barthélemy                    | BL        |
+| Saint Barthélimy                    | BL        |
 | Saint Kitts ve Nevis               | KN        |
-| Saint Lucia                         | Lc        |
-| Saint Martin                        | Mf        |
-| Aziz Pierre ve Miquelon           | PM        |
+| Saint Lucia                         | LC        |
+| Saint Martin                        | MF        |
+| Saint Pierre ve Miquelon           | PM        |
 | Saint Vincent ve Grenadinler    | VC        |
 | Samoa                               | WS        |
-| San Marino                          | Sm        |
-| São Tomé ve Príncipe               | ST        |
+| San Marino                          | SM        |
+| Sao Tome ve Principe               | ST        |
 | Suudi Arabistan                        | SA        |
 | Senegal                             | SN        |
 | Sırbistan                              | RS        |
 | Seyşeller                          | SC        |
 | Sierra Leone                        | SL        |
 | Singapur                           | SG        |
-| Sint Maarten                        | Sx        |
+| Sint Maarten                        | KÖK        |
 | Slovakya                            | SK        |
 | Slovenya                            | SI        |
-| Solomon Adaları                     | Sb        |
+| Solomon Adaları                     | Ise        |
 | Somali                             | SO        |
 | Güney Afrika                        | ZA        |
-| Güney Georgia ve Güney Sandwich Adaları | Gs    |
+| Güney Georgia ve Güney Sandwich Adaları | NESNESIDIR    |
 | Güney Sudan                         | SS        |
 | İspanya                               | ES        |
 | Sri Lanka                           | LK        |
-| St Helena, Yükseliş, Tristan da Cunha | SH     |
+| Saint Helena, Ascension ve Tristan da Cunha | SH     |
 | Sudan                               | SD        |
 | Surinam                            | SR        |
-| Svalbard                            | Sj        |
+| Svalbard                            | SJ        |
 | İsveç                              | SE        |
 | İsviçre                         | CH        |
 | Suriye                               | SY        |
@@ -248,7 +248,7 @@ Bir kişi birden fazla Ülke/Bölge kapsıyorsa, virgülle ayrılmış iki harf 
 | Tayland                            | TH        |
 | Timor-Leste                         | TL        |
 | Togo                                | TG        |
-| Tokelau                             | Tk        |
+| Tokelau                             | TK        |
 | Tonga                               | Hedef        |
 | Trinidad ve Tobago                 | TT        |
 | Tunus                             | TN        |
@@ -262,19 +262,19 @@ Bir kişi birden fazla Ülke/Bölge kapsıyorsa, virgülle ayrılmış iki harf 
 | Birleşik Krallık                      | GB        |
 | Amerika Birleşik Devletleri                       | ABD        |
 | Uruguay                             | UY        |
-| ABD Dış Adaları               | UM        |
-| ABD Virjin Adaları                 | VI        |
+| ABD harici Adaları               | UM        |
+| ABD Virgin Adaları                 | VI        |
 | Özbekistan                          | UZ        |
-| Vanuatu                             | Vu        |
-| Vatikan                        | VA        |
+| Vanuatu                             | Vu & lt        |
+| Vatikan şehri                        | VA        |
 | Venezuela                           | VE        |
 | Vietnam                             | VN        |
 | Wallis ve Futuna                   | WF        |
-| Yemen                               | YE        |
+| Yemen                               | Vet        |
 | Zambiya                              | ZM        |
 | Zimbabve                            | ZW        |
 |   |   |   |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Partner Center'da ortak satış seçeneği](./commercial-marketplace-co-sell.md)hakkında bilgi edinin.
+- [Iş Ortağı Merkezi 'nde ortak satış seçeneği](./commercial-marketplace-co-sell.md)hakkında bilgi edinin.

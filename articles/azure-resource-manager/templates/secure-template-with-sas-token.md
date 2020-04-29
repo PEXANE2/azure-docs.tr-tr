@@ -1,24 +1,24 @@
 ---
-title: SAS belirteci yle şablonu güvenli bir şekilde dağıtın
-description: SAS belirteci tarafından korunan bir Azure Kaynak Yöneticisi şablonuyla kaynakları Azure'a dağıtın. Azure PowerShell ve Azure CLI'yi gösterir.
+title: SAS belirteci ile güvenli bir şekilde şablon dağıtın
+description: Bir SAS belirteci ile korunan Azure Resource Manager şablonuyla Azure 'a kaynak dağıtın. Azure PowerShell ve Azure CLı gösterir.
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156404"
 ---
-# <a name="deploy-private-arm-template-with-sas-token"></a>SAS belirteciyle özel ARM şablonu dağıtma
+# <a name="deploy-private-arm-template-with-sas-token"></a>SAS belirteci ile özel ARM şablonu dağıtma
 
-Azure Kaynak Yöneticisi (ARM) şablonunuz bir depolama hesabında bulunduğunda, şablona erişimi herkese açık hale getirmemek için kısıtlayabilirsiniz. Şablon için paylaşılan bir erişim imzası (SAS) belirteci oluşturarak ve dağıtım sırasında bu belirteci sağlayarak güvenli bir şablona erişebilirsiniz. Bu makalede, SAS belirteci olan bir şablondağıtmak için Azure PowerShell veya Azure CLI nasıl kullanılacağı açıklanmaktadır.
+Azure Resource Manager (ARM) şablonunuz bir depolama hesabında bulunuyorsa, genel olarak ortaya çıkarmamak için şablona erişimi kısıtlayabilirsiniz. Şablon için bir paylaşılan erişim imzası (SAS) belirteci oluşturarak ve dağıtım sırasında bu belirteci sağlayarak güvenli bir şablona erişirsiniz. Bu makalede, bir SAS belirteci ile şablon dağıtmak için Azure PowerShell veya Azure CLı 'nın nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="create-storage-account-with-secured-container"></a>Güvenli kapsayıcıile depolama hesabı oluşturma
+## <a name="create-storage-account-with-secured-container"></a>Güvenli kapsayıcı ile depolama hesabı oluşturma
 
-Aşağıdaki komut dosyası, genel erişim kapalı bir depolama hesabı ve kapsayıcı oluşturur.
+Aşağıdaki betik, ortak erişim kapatılmış bir depolama hesabı ve kapsayıcısı oluşturur.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -61,11 +61,11 @@ az storage container create \
 
 ---
 
-## <a name="upload-template-to-storage-account"></a>Şablonu depolama hesabına yükleme
+## <a name="upload-template-to-storage-account"></a>Şablonu depolama hesabına yükle
 
-Artık şablonunuzu depolama hesabına yüklemeye hazırsınız. Kullanmak istediğiniz şablona giden yolu sağlayın.
+Şimdi, şablonunuzu depolama hesabına yüklemeye hazırsınız demektir. Kullanmak istediğiniz şablonun yolunu belirtin.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzStorageBlobContent `
@@ -85,15 +85,15 @@ az storage blob upload \
 
 ---
 
-## <a name="provide-sas-token-during-deployment"></a>Dağıtım sırasında SAS belirteci sağlama
+## <a name="provide-sas-token-during-deployment"></a>Dağıtım sırasında SAS belirteci sağla
 
-Bir depolama hesabında özel bir şablon dağıtmak için bir SAS belirteci oluşturun ve şablon için URI'ye ekleyin. Dağıtımı tamamlamak için yeterli zaman tanımak için son kullanma süresini ayarlayın.
+Bir depolama hesabında özel bir şablon dağıtmak için bir SAS belirteci oluşturun ve şablon için URI 'sine dahil edin. Dağıtım işleminin tamamlanmasına yetecek sürenin sona ereceği süre sonu süresini ayarlayın.
 
 > [!IMPORTANT]
-> Şablonu içeren blob yalnızca hesap sahibi tarafından erişilebilir. Ancak, blob için bir SAS belirteci oluşturduğunuzda, blob bu URI olan herkes için erişilebilir. Başka bir kullanıcı URI'yi yakalarsa, bu kullanıcı şablona erişebilir. SAS belirteci, şablonlarınıza erişimi sınırlamanın iyi bir yoludur, ancak parolalar gibi hassas verileri doğrudan şablona eklememelisiniz.
+> Şablonu içeren Blobun yalnızca hesap sahibi tarafından erişilebilir. Ancak, blob için bir SAS belirteci oluşturduğunuzda, blob bu URI 'ye sahip herkes tarafından erişilebilir. Başka bir Kullanıcı URI 'yi kesirse, bu kullanıcı şablona erişebilir. SAS belirteci, şablonlarınıza erişimi sınırlayan iyi bir yoldur, ancak parolalar gibi hassas verileri doğrudan şablonda içermemelidir.
 >
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 # get the URI with the SAS token
@@ -136,9 +136,9 @@ az deployment group create \
 
 ---
 
-Bağlantılı şablonlarla birlikte SAS belirteci kullanma örneği [için](linked-templates.md)bkz.
+Bağlı şablonlar içeren bir SAS belirteci kullanmanın bir örneği için bkz. [Azure Resource Manager ile bağlantılı şablonlar kullanma](linked-templates.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Şablonları dağıtmaya giriş için [bkz.](deploy-powershell.md)
-* Şablondaki parametreleri tanımlamak için [bkz.](template-syntax.md#parameters)
+* Şablonları dağıtmaya giriş için bkz. [ARM şablonlarıyla kaynak dağıtma ve Azure PowerShell](deploy-powershell.md).
+* Şablonda parametreleri tanımlamak için bkz. [yazma şablonları](template-syntax.md#parameters).

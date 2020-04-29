@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gölü Depolama Gen2'deki dosyalar & AÇ'lar için JavaScript'i kullanma
-description: Hiyerarşik ad alanı (HNS) etkinleştirilmiş depolama hesaplarında dizinleri ve dosya ve dizin erişim denetim listelerini (ACL) yönetmek için JavaScript için Azure Depolama Veri Gölü istemci kitaplığını kullanın.
+title: Azure Data Lake Storage 2. & ACL 'Leri için JavaScript kullanma
+description: Hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında dizinleri ve dosya ve Dizin erişim denetim listelerini (ACL) yönetmek için JavaScript için Azure depolama Data Lake istemci kitaplığı 'nı kullanın.
 author: normesta
 ms.service: storage
 ms.date: 03/20/2020
@@ -9,44 +9,44 @@ ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: 04d0d23bdbdaeda6a4823c900badb3133ba9eeae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80061549"
 ---
-# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Veri Gölü Depolama Gen2'deki dizinleri, dosyaları ve ACD'leri yönetmek için JavaScript'i kullanın
+# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. içinde dizinleri, dosyaları ve ACL 'Leri yönetmek için JavaScript kullanın
 
-Bu makalede, hiyerarşik ad alanı (HNS) etkin leştirilmiş depolama hesaplarında dizinler, dosyalar ve izinler oluşturmak ve yönetmek için JavaScript'in nasıl kullanılacağı gösterilmektedir. 
+Bu makalede, hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında Dizin, dosya ve izinleri oluşturmak ve yönetmek için JavaScript 'In nasıl kullanılacağı gösterilmektedir. 
 
-[Paket (Düğüm Paket Yöneticisi)](https://www.npmjs.com/package/@azure/storage-file-datalake) | [Örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples) | [Geri Bildirimde](https://github.com/Azure/azure-sdk-for-java/issues)
+[Paket (düğüm paketi Yöneticisi)](https://www.npmjs.com/package/@azure/storage-file-datalake) | [örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples) | [geribildirim sağlar](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 > [!div class="checklist"]
 > * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-> * Hiyerarşik ad alanı (HNS) etkinleştirilmiş bir depolama hesabı. Oluşturmak için [bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
-> * Bu paketi bir Düğüm.js uygulamasında kullanıyorsanız, Node.js 8.0.0 veya daha yüksek bir
+> * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
+> * Bu paketi bir Node. js uygulamasında kullanıyorsanız, Node. js 8.0.0 veya üzeri gerekir.
 
 ## <a name="set-up-your-project"></a>Projenizi ayarlama
 
-Bir terminal penceresi açarak ve ardından aşağıdaki komutu yazarak JavaScript için Veri Gölü istemci kitaplığını yükleyin.
+Bir Terminal penceresi açarak ve ardından aşağıdaki komutu yazarak JavaScript için Data Lake istemci kitaplığı 'nı yüklersiniz.
 
 ```javascript
 npm install @azure/storage-file-datalake
 ```
 
-Bu `storage-file-datalake` deyimi kod dosyanızın en üstüne yerleştirerek paketi içeri aktarın. 
+Bu ifadeyi `storage-file-datalake` kod dosyanızın en üstüne yerleştirerek paketi içeri aktarın. 
 
 ```javascript
 const AzureStorageDataLake = require("@azure/storage-file-datalake");
 ```
 
-## <a name="connect-to-the-account"></a>Hesaba bağlanın 
+## <a name="connect-to-the-account"></a>Hesaba Bağlan 
 
-Bu makaledeki parçacıkları kullanmak için depolama hesabını temsil eden bir **DataLakeServiceClient** örneği oluşturmanız gerekir. 
+Bu makaledeki kod parçacıklarını kullanmak için depolama hesabını temsil eden bir **DataLakeServiceClient** örneği oluşturmanız gerekir. 
 
-### <a name="connect-by-using-an-account-key"></a>Hesap anahtarı nı kullanarak bağlanma
+### <a name="connect-by-using-an-account-key"></a>Hesap anahtarı kullanarak bağlan
 
 Bu, bir hesaba bağlanmanın en kolay yoludur. 
 
@@ -67,13 +67,13 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 
 ```
 > [!NOTE]
-> Bu yetkilendirme yöntemi yalnızca Node.js uygulamaları için çalışır. Kodunuzu bir tarayıcıda çalıştırmayı planlıyorsanız, Azure Active Directory (AD) kullanarak yetki verebilirsiniz. 
+> Bu yetkilendirme yöntemi yalnızca Node. js uygulamaları için geçerlidir. Kodunuzu bir tarayıcıda çalıştırmayı planlıyorsanız, Azure Active Directory (AD) kullanarak yetkilendirme yapabilirsiniz. 
 
-### <a name="connect-by-using-azure-active-directory-ad"></a>Azure Etkin Dizin (AD) kullanarak bağlanın
+### <a name="connect-by-using-azure-active-directory-ad"></a>Azure Active Directory kullanarak bağlanma (AD)
 
-Uygulamanızın kimliğini Azure AD ile doğrulamak [için JS için Azure kimlik istemcisi kitaplığını](https://www.npmjs.com/package/@azure/identity) kullanabilirsiniz.
+Uygulamanızın kimliğini Azure AD ile doğrulamak için [Azure Identity Client Library for js](https://www.npmjs.com/package/@azure/identity) ' i kullanabilirsiniz.
 
-Bu örnek, bir istemci kimliği, istemci sırrı ve kiracı kimliği kullanarak bir **DataLakeServiceClient** örneği oluşturur.  Bu değerleri almak için, [istemci uygulamasından gelen istekleri yetkilendirmek için Azure AD'den bir belirteç edinin'e](../common/storage-auth-aad-app.md)bakın.
+Bu örnek, bir istemci KIMLIĞI, bir istemci parolası ve bir kiracı KIMLIĞI kullanarak bir **DataLakeServiceClient** örneği oluşturur.  Bu değerleri almak için bkz. [bir istemci uygulamasından istekleri yetkilendirmek Için Azure AD 'den belirteç alma](../common/storage-auth-aad-app.md).
 
 ```javascript
 function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantID) {
@@ -88,13 +88,13 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 ```
 
 > [!NOTE]
-> Daha fazla örnek için, JS belgeleri [için Azure kimlik istemcisi kitaplığına](https://www.npmjs.com/package/@azure/identity) bakın.
+> Daha fazla örnek için bkz. [js Için Azure kimlik istemci kitaplığı](https://www.npmjs.com/package/@azure/identity) belgeleri.
 
 ## <a name="create-a-file-system"></a>Dosya sistemi oluşturma
 
-Dosya sistemi, dosyalarınız için bir kapsayıcı görevi görür. **Bir FileSystemClient** örneği alarak ve sonra **FileSystemClient.Create** yöntemini arayarak bir tane oluşturabilirsiniz.
+Dosya sistemi dosyalarınız için bir kapsayıcı olarak davranır. Bir **filesystemclient** örneği alarak ve sonra **Filesystemclient. Create** metodunu çağırarak bir tane oluşturabilirsiniz.
 
-Bu örnek, .. `my-file-system` 
+Bu örnek adlı `my-file-system`bir dosya sistemi oluşturur. 
 
 ```javascript
 async function CreateFileSystem(datalakeServiceClient) {
@@ -110,9 +110,9 @@ async function CreateFileSystem(datalakeServiceClient) {
 
 ## <a name="create-a-directory"></a>Dizin oluşturma
 
-**Dizin Istemcisi** örneği alarak ve ardından **DirectoryClient.create** yöntemini arayarak bir dizin başvurusu oluşturun.
+Bir **directoryclient** örneği alarak ve sonra **directoryclient. Create** metodunu çağırarak bir dizin başvurusu oluşturun.
 
-Bu örnek, dosya `my-directory` sistemine adlandırılmış bir dizin ekler. 
+Bu örnek, bir dosya sistemine `my-directory` adlı bir dizin ekler. 
 
 ```javascript
 async function CreateDirectory(fileSystemClient) {
@@ -126,9 +126,9 @@ async function CreateDirectory(fileSystemClient) {
 
 ## <a name="rename-or-move-a-directory"></a>Bir dizini yeniden adlandırma veya taşıma
 
-**Dizin Istemcisi.yeniden adlandırma** yöntemini arayarak bir dizini yeniden adlandırın veya taşıyın. İstenilen dizin bir parametre yolunu geçirin. 
+**Directoryclient. Rename** metodunu çağırarak bir dizini yeniden adlandırın veya taşıyın. İstenen dizinin yolunu bir parametre olarak geçirin. 
 
-Bu örnek, bir alt dizinin adını `my-directory-renamed`yeniden adlandırır.
+Bu örnek, bir alt dizini ada `my-directory-renamed`yeniden adlandırır.
 
 ```javascript
 async function RenameDirectory(fileSystemClient) {
@@ -139,7 +139,7 @@ async function RenameDirectory(fileSystemClient) {
 }
 ```
 
-Bu örnek, adlı `my-directory-renamed` `my-directory-2`bir dizinin alt dizinine adlı bir dizin taşır. 
+Bu örnek adlı dizini adlı `my-directory-renamed` `my-directory-2`bir dizinin alt dizinine taşır. 
 
 ```javascript
 async function MoveDirectory(fileSystemClient) {
@@ -152,9 +152,9 @@ async function MoveDirectory(fileSystemClient) {
 
 ## <a name="delete-a-directory"></a>Bir dizini silme
 
-**DizinIstemci.delete** yöntemini arayarak bir dizini silin.
+**Directoryclient. Delete** yöntemini çağırarak bir dizini silin.
 
-Bu örnek, adlı `my-directory`bir dizini siler.   
+Bu örnek adlı `my-directory`bir dizini siler.   
 
 ```javascript
 async function DeleteDirectory(fileSystemClient) {
@@ -165,12 +165,12 @@ async function DeleteDirectory(fileSystemClient) {
 }
 ```
 
-## <a name="manage-a-directory-acl"></a>Bir dizin ACL yönetme
+## <a name="manage-a-directory-acl"></a>Dizin ACL 'sini yönetme
 
-Bu örnek alır ve sonra adlı `my-directory`bir dizinin ACL ayarlar. Bu örnek, sahibi kullanıcıya okuma, yazma ve izinleri yürütme izni verir, sahip grubuna yalnızca okuma ve yürütme izinleri verir ve tüm diğerlerine okuma erişimi sağlar.
+Bu örnek, adlı `my-directory`BIR dizinin ACL 'sini alır ve ayarlar. Bu örnek, sahip olan kullanıcıya okuma, yazma ve yürütme izinlerini verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma erişimini sağlar.
 
 > [!NOTE]
-> Uygulamanız Azure Etkin Dizini 'ni (Azure AD) kullanarak erişime izin veriyorsa, uygulamanızın erişimi yetkilendirmek için kullandığı güvenlik ilkesine [Depolama Blob Veri Sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunları değiştirmenin etkileri hakkında daha fazla bilgi edinmek için [Azure Veri Gölü Depolama Gen2'de Erişim denetimine](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)bakın.
+> Uygulamanız Azure Active Directory (Azure AD) kullanarak erişim yetkisi alıyorsa, uygulamanızın erişim yetkisi vermek için kullandığı güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın.
 
 ```javascript
 async function ManageDirectoryACLs(fileSystemClient) {
@@ -219,11 +219,11 @@ async function ManageDirectoryACLs(fileSystemClient) {
 }
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>Dosyayı dizine yükleme
+## <a name="upload-a-file-to-a-directory"></a>Dizine dosya yükleme
 
-İlk olarak, bir dosya okuyun. Bu örnek, Düğüm.js `fs` modüllerini kullanır. Ardından, FileClient örneğini oluşturarak ve ardından **FileClient.create** yöntemini arayarak hedef dizinde bir dosya başvurusu **oluşturun.** **FileClient.append** yöntemini arayarak dosya yükleyin. **FileClient.flush** yöntemini arayarak yüklemeyi tamamladığından emin olun.
+İlk olarak bir dosya okuyun. Bu örnek Node. js `fs` modülünü kullanır. Ardından, bir **fileclient** örneği oluşturup, sonra **fileclient. Create** metodunu çağırarak hedef dizinde bir dosya başvurusu oluşturun. **Fileclient. Append** metodunu çağırarak bir dosyayı karşıya yükleyin. **Fileclient. Flush** yöntemini çağırarak karşıya yüklemeyi tamamladığınızdan emin olun.
 
-Bu örnek, bir metin dosyasını `my-directory`adlı bir dizine yükler.
+Bu örnek, bir metin dosyasını adlı `my-directory`bir dizine yükler. '
 
 ```javascript
 async function UploadFile(fileSystemClient) {
@@ -247,12 +247,12 @@ async function UploadFile(fileSystemClient) {
 }
 ```
 
-## <a name="manage-a-file-acl"></a>Dosyayı ACL yönetme
+## <a name="manage-a-file-acl"></a>Dosya ACL 'sini yönetme
 
-Bu örnek alır ve sonra adlı `upload-file.txt`bir dosyanın ACL ayarlar. Bu örnek, sahibi kullanıcıya okuma, yazma ve izinleri yürütme izni verir, sahip grubuna yalnızca okuma ve yürütme izinleri verir ve tüm diğerlerine okuma erişimi sağlar.
+Bu örnek, adlı `upload-file.txt`BIR dosyanın ACL 'sini alır ve ayarlar. Bu örnek, sahip olan kullanıcıya okuma, yazma ve yürütme izinlerini verir, sahip olan gruba yalnızca okuma ve yürütme izinleri verir ve diğerlerinin tüm okuma erişimini sağlar.
 
 > [!NOTE]
-> Uygulamanız Azure Etkin Dizini 'ni (Azure AD) kullanarak erişime izin veriyorsa, uygulamanızın erişimi yetkilendirmek için kullandığı güvenlik ilkesine [Depolama Blob Veri Sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunları değiştirmenin etkileri hakkında daha fazla bilgi edinmek için [Azure Veri Gölü Depolama Gen2'de Erişim denetimine](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)bakın.
+> Uygulamanız Azure Active Directory (Azure AD) kullanarak erişim yetkisi alıyorsa, uygulamanızın erişim yetkisi vermek için kullandığı güvenlik sorumlusuna [Depolama Blobu veri sahibi rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunların nasıl değiştirileceği hakkında daha fazla bilgi edinmek için [Azure Data Lake Storage 2. erişim denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)' ne bakın.
 
 ```javascript
 async function ManageFileACLs(fileSystemClient) {
@@ -301,12 +301,12 @@ await fileClient.setAccessControl(acl);
 }
 ```
 
-## <a name="download-from-a-directory"></a>Bir dizinden indirin
+## <a name="download-from-a-directory"></a>Bir dizinden indir
 
-İlk olarak, indirmek istediğiniz dosyayı temsil eden bir **FileSystemClient** örneği oluşturun. Dosyayı okumak için **FileSystemClient.read** yöntemini kullanın. O zaman dosyayı yaz. Bu örnek, bunu yapmak `fs` için Düğüm.js modüllerini kullanır. 
+İlk olarak, indirmek istediğiniz dosyayı temsil eden bir **Filesystemclient** örneği oluşturun. Dosyayı okumak için **Filesystemclient. Read** metodunu kullanın. Sonra dosyayı yazın. Bu örnek, bunu yapmak için Node `fs` . js modülünü kullanır. 
 
 > [!NOTE]
-> Bu dosyayı indirme yöntemi yalnızca Node.js uygulamaları için çalışır. Kodunuzu bir tarayıcıda çalıştırmayı planlıyorsanız, bunu bir tarayıcıda nasıl yapacağınıza bir örnek olarak JavaScript okuma dosyası [için Azure Depolama Dosyası Veri Gölü istemci kitaplığına](https://www.npmjs.com/package/@azure/storage-file-datalake) bakın. 
+> Dosya indirme yöntemi yalnızca Node. js uygulamaları için geçerlidir. Kodunuzu bir tarayıcıda çalıştırmayı planlıyorsanız, bunu bir tarayıcıda nasıl yapacağınızı gösteren bir örnek için bkz. [JavaScript için istemci kitaplığı Data Lake Azure Storage dosyası](https://www.npmjs.com/package/@azure/storage-file-datalake) . 
 
 ```javascript
 async function DownloadFile(fileSystemClient) {
@@ -341,7 +341,7 @@ async function DownloadFile(fileSystemClient) {
 
 ## <a name="list-directory-contents"></a>Dizin içeriğini listeleme
 
-Bu örnek, adlı `my-directory`bir dizinde bulunan her dizin ve dosyanın adlarını yazdırır.
+Bu örnek, adlı `my-directory`bir dizinde bulunan her bir dizin ve dosyanın adlarını yazdırır.
 
 ```javascript
 async function ListFilesInDirectory(fileSystemClient) {
@@ -360,6 +360,6 @@ async function ListFilesInDirectory(fileSystemClient) {
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Paket (Düğüm Paket Yöneticisi)](https://www.npmjs.com/package/@azure/storage-file-datalake)
+* [Paket (düğüm Paket Yöneticisi)](https://www.npmjs.com/package/@azure/storage-file-datalake)
 * [Örnekler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
-* [Geri bildirimde](https://github.com/Azure/azure-sdk-for-java/issues)
+* [Geri bildirimde bulunun](https://github.com/Azure/azure-sdk-for-java/issues)

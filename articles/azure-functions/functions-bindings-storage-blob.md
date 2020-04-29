@@ -1,53 +1,53 @@
 ---
-title: Azure İşlevleri için Azure Blob depolama tetikleyicisi ve bağlama
-description: Azure İşlevlerinde Azure Blob depolama tetikleyicisini ve bağlamaları kullanmayı öğrenin.
+title: Azure Işlevleri için Azure Blob depolama tetikleyicisi ve bağlamaları
+description: Azure Işlevleri 'nde Azure Blob depolama tetikleyiciyi ve bağlamalarını kullanmayı öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 6950f1dd81ef2c70f2c45fb4c547ed7676067790
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277238"
 ---
-# <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure İşlevleri için Azure Blob depolama ciltlerine genel bakış
+# <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure Işlevlerine yönelik Azure Blob depolama bağlamaları genel bakış
 
-Azure İşlevler, [tetikleyiciler ve bağlamalar](./functions-triggers-bindings.md)aracılığıyla [Azure Depolama](https://docs.microsoft.com/azure/storage/) ile tümleşir. Blob depolama ile tümleştirme, blob verilerindeki değişikliklere tepki veren işlevlerin yanı sıra okuma ve yazma değerlerine de katkıda bulunan işlevler oluşturmanıza olanak tanır.
+Azure Işlevleri [, Tetikleyiciler ve bağlamalar](./functions-triggers-bindings.md)aracılığıyla [Azure depolama](https://docs.microsoft.com/azure/storage/) ile tümleşir. BLOB depolama ile tümleştirme, blob verilerinde değişikliklere tepki veren işlevler ve okuma ve yazma değerlerini oluşturmanızı sağlar.
 
 | Eylem | Tür |
 |---------|---------|
-| Blob depolama verisi değiştikçe bir işlev çalıştırma | [Tetikleyici](./functions-bindings-storage-blob-trigger.md) |
-| Bir işlevde blob depolama verilerini okuma | [Giriş bağlama](./functions-bindings-storage-blob-input.md) |
-| Blob depolama verilerini yazmak için bir işlevin izin ver |[Çıkış bağlama](./functions-bindings-storage-blob-output.md) |
+| BLOB depolama veri değişiklikleri olarak bir işlev çalıştırma | [Tetikleyici](./functions-bindings-storage-blob-trigger.md) |
+| Bir işlevde BLOB depolama verilerini okuma | [Giriş bağlama](./functions-bindings-storage-blob-input.md) |
+| Bir işlevin BLOB depolama verilerini yazmasına izin ver |[Çıkış bağlama](./functions-bindings-storage-blob-output.md) |
 
-## <a name="add-to-your-functions-app"></a>Fonksiyonlar uygulamanıza ekleme
+## <a name="add-to-your-functions-app"></a>Işlevler uygulamanıza ekleme
 
-### <a name="functions-2x-and-higher"></a>Fonksiyonlar 2.x ve üzeri
+### <a name="functions-2x-and-higher"></a>İşlevler 2. x ve üzeri
 
-Tetikleyici ve bağlamalarla çalışmak, uygun pakete başvurmanızı gerektirir. NuGet paketi .NET sınıf kitaplıkları için kullanılırken, uzantı paketi diğer tüm uygulama türleri için kullanılır.
+Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Diğer tüm uygulama türleri için Uzantı paketi kullanıldığında, .NET sınıf kitaplıkları için NuGet paketi kullanılır.
 
-| Dil                                        | Tarafından ekle...                                   | Açıklamalar 
+| Dil                                        | Ekleme ölçütü...                                   | Açıklamalar 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | [NuGet paketini]yükleme , sürüm 3.x | |
-| C# Script, Java, JavaScript, Python, PowerShell | [Uzantı paketini] kaydetme          | [Azure Araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) Visual Studio Code ile kullanılması önerilir. |
-| C# Script (yalnızca Azure portalında çevrimiçi)         | Bağlama ekleme                            | İşlev uygulamanızı yeniden yayımlamak zorunda kalmadan varolan bağlama uzantılarını güncelleştirmek için [bkz.] |
+| C#                                              | [NuGet paketi]yükleniyor, sürüm 3. x | |
+| C# betiği, Java, JavaScript, Python, PowerShell | [Uzantı paketi] kaydediliyor          | [Azure Araçları uzantısının](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) Visual Studio Code ile kullanılması önerilir. |
+| C# betiği (yalnızca çevrimiçi-Azure portal)         | Bağlama ekleme                            | İşlev uygulamanızı yeniden yayımlamak zorunda kalmadan mevcut bağlama uzantılarını güncelleştirmek için bkz. [uzantılarınızı güncelleştirme]. |
 
 [core tools]: ./functions-run-local.md
-[uzatma paketi]: ./functions-bindings-register.md#extension-bundles
+[Uzantı paketi]: ./functions-bindings-register.md#extension-bundles
 [NuGet paketi]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
-[Uzantılarınızı güncelleştirin]: ./install-update-binding-extensions-manual.md
+[Uzantılarınızı güncelleştirme]: ./install-update-binding-extensions-manual.md
 [Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>İşlevler 1.x
 
-Fonksiyonlar 1.x uygulamaları otomatik olarak [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet paketi, sürüm 2.x bir başvuru var.
+1. x uygulamalarının [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet paketine, sürüm 2. x 'e başvuran bir başvurusu otomatik olarak vardır.
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Blob depolama verileri değiştiğinde bir işlev çalıştırma](./functions-bindings-storage-blob-trigger.md)
-- [Bir işlev çalıştığında blob depolama verilerini okuyun](./functions-bindings-storage-blob-input.md)
-- [Bir işlevden blob depolama verilerini yazma](./functions-bindings-storage-blob-output.md)
+- [BLOB depolama verileri değiştiğinde bir işlev Çalıştır](./functions-bindings-storage-blob-trigger.md)
+- [Bir işlev çalıştığında BLOB depolama verilerini okuma](./functions-bindings-storage-blob-input.md)
+- [Bir işlevden BLOB depolama verileri yazma](./functions-bindings-storage-blob-output.md)

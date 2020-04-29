@@ -1,7 +1,7 @@
 ---
-title: 'PCA Tabanlı Anomali Algılama: Modül Referans'
+title: 'PCA tabanlı anomali algılama: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Temel Bileşen Analizine (PCA) dayalı bir anomali algılama modeli oluşturmak için PCA Tabanlı Anomali Algılama modüllerini nasıl kullanacağınızı öğrenin.
+description: Birincil bileşen analizine (PCA) dayalı bir anomali algılama modeli oluşturmak için PCA tabanlı anomali algılama modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,86 +10,86 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 0672b9769feae65c73a6f752a268968a7bad9e4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502990"
 ---
 # <a name="pca-based-anomaly-detection"></a>PCA Tabanlı Anomali Algılama
 
-Bu makalede, Temel Bileşen Analizi'ne (PCA) dayalı bir anormallik algılama modeli oluşturmak için Azure Machine Learning tasarımcısında (önizleme) **PCA Tabanlı Anomali Algılama** modülünün nasıl kullanılacağı açıklanmaktadır.
+Bu makalede, sorumlu bileşen analizine (PCA) dayalı bir anomali algılama modeli oluşturmak için Azure Machine Learning tasarımcısında (Önizleme) **PCA tabanlı anomali algılama** modülünün nasıl kullanılacağı açıklanır.
 
-Bu modül, geçerli işlemler gibi bir sınıftan eğitim verilerini almanın kolay olduğu, ancak hedeflenen anomalilerden yeterli örnek almanın zor olduğu senaryolarda bir model oluşturmanıza yardımcı olur. 
+Bu modül, geçerli işlemler gibi bir sınıftan eğitim verileri elde etmek, ancak hedeflenen bozukluklar için yeterli örnek elde etmek zor olan senaryolarda bir model oluşturmanıza yardımcı olur. 
 
-Örneğin, sahte işlemleri algılamak için, çoğu zaman yeterli dolandırıcılık örneğine sahip değilsiniz, ancak iyi işlemlere ilişkin birçok örneğiniz vardır. **PCA Tabanlı Anomali Algılama** modülü, "normal" bir sınıfın ne olduğunu belirlemek için mevcut özellikleri analiz ederek ve anomalileri temsil eden durumları belirlemek için mesafe ölçümleri uygulayarak sorunu çözer. Bu, varolan dengesiz verileri kullanarak bir model eğitmenizini sağlar.
+Örneğin, sahte işlemleri algılamak için çok daha fazla sahtekarlık konusunda eğitmeniz gerekmez, ancak çok sayıda iyi işlem örneği vardır. **PCA tabanlı anomali algılama** modülü, "normal" bir sınıfı neyin oluşturduğunu belirlemek için kullanılabilir özellikleri çözümleyerek sorunu çözer ve anormallikleri temsil eden durumları belirlemek için mesafe ölçümleri uygulama. Bu, mevcut imdenli verileri kullanarak bir modeli eğmenizi sağlar.
 
-## <a name="more-about-principal-component-analysis"></a>Ana Bileşen Analizi hakkında daha fazla bilgi
+## <a name="more-about-principal-component-analysis"></a>Sorumlu bileşen analizi hakkında daha fazla bilgi
 
-Sık sık PCA olarak kısaltılır *Ana Bileşen Analizi,* makine öğreniminde kurulmuş bir tekniktir. PCA, verilerin iç yapısını ortaya çıkardığı ve verilerdeki varyansı açıkladığı için araştırmacı veri analizinde sık lıkla kullanılır.
+Genelde PCA için kısaltılmış olan *sorumlu bileşen analizi*, Machine Learning 'de belirlenmiş bir tekniktir. PCA, verilerin iç yapısını açığa çıkardığından ve verilerdeki varyansı anlatan araştırmacı veri analizinde sıklıkla kullanılır.
 
-PCA, birden çok değişken içeren verileri analiz ederek çalışır. Değişkenler arasındaki bağıntıları arar ve sonuçlardaki farklılıkları en iyi yakalayan değerlerin birleşimini belirler. Bu birleştirilmiş özellik *değerleri, ana bileşenler*olarak adlandırılan daha kompakt bir özellik alanı oluşturmak için kullanılır.
+PCA birden çok değişken içeren verileri analiz ederek işe yarar. Değişkenler arasında bağıntılar arar ve sonuçların farklarını en iyi şekilde yakalayan değerlerin birleşimini belirler. Bu Birleşik özellik değerleri, *sorumlu bileşenleri*olarak adlandırılan daha kompakt bir özellik alanı oluşturmak için kullanılır.
 
-Anomali tespiti için her yeni giriş analiz edilir ve anomali algılama algoritması normalleştirilmiş bir yeniden yapılandırma hatasıyla birlikte eigenvectors üzerindeki projeksiyonunu hesaplar. Normalleştirilmiş hata anomali skoru olarak kullanılır. Hata ne kadar yüksekse, örnek o kadar anormaldir.
+Anomali algılama için, her yeni giriş çözümlenir ve anomali algılama algoritması, bir normalleştirilmiş yeniden oluşturma hatasıyla birlikte eigenvektörlerin projeksiyonunu hesaplar. Normalleştirilmiş hata, anomali puanı olarak kullanılır. Hatanın ne kadar yüksekse, örnek de o kadar fazla olur.
 
-PCA'nın nasıl çalıştığı ve anomali tespiti uygulaması hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
+PCA 'nın nasıl çalıştığı hakkında daha fazla bilgi edinmek ve anomali algılama için uygulama hakkında daha fazla bilgi için şu İncelemeleri inceleyin:
 
-- [Ana bileşen çözümlemesi için randomize](https://arxiv.org/abs/0809.2274)algoritma. Rokhlin, Szlan ve Tygert
+- [Sorumlu bileşen analizi için rastgele bir algoritma](https://arxiv.org/abs/0809.2274). Rokhlin, Szlan ve Tygert
 
-- [Rasgelelik ile Yapı Bulma: Yaklaşık Matris Ayrıştırma oluşturma için Olasılıksal Algoritmalar](http://users.cms.caltech.edu/~jtropp/papers/HMT11-Finding-Structure-SIREV.pdf) (PDF indir). Halko, Martinsson ve Tropp.
+- [Rastgele olan yapıyı bulma: yaklaşık matris Dekompozisyonlarını (PDF indirmesi) oluşturmak Için dayalı algoritmaları](http://users.cms.caltech.edu/~jtropp/papers/HMT11-Finding-Structure-SIREV.pdf) . Halko, Martinsson ve Tropp.
 
-## <a name="how-to-configure-pca-anomaly-detection"></a>PCA Anomali Algılama nasıl yapılandırılır
+## <a name="how-to-configure-pca-anomaly-detection"></a>PCA anomali algılamasını yapılandırma
 
-1. PcA **Tabanlı Anomali Algılama** modüllerini tasarımcıdaki boru hattınıza ekleyin. Bu modülü **Anomali Algılama** kategorisinde bulabilirsiniz.
+1. Tasarımcıdaki işlem hattınızla **PCA tabanlı anomali algılama** modülünü ekleyin. Bu modülü **anomali algılama** kategorisinde bulabilirsiniz.
 
-2. **PCA Tabanlı Anomali Algılama** modülünün sağ panelinde, **Eğitim modu** seçeneğini tıklayın ve modeli belirli bir parametre kümesini kullanarak eğitmek mi istediğinizi veya en iyi parametreleri bulmak için bir parametre süpürme kullanmak isteyip istemediğinizi belirtin.
+2. **PCA tabanlı anomali algılama** modülünün sağ panelinde, **eğitim modu** seçeneğine tıklayın ve belirli bir parametre kümesini kullanarak modeli eğmek isteyip istemediğinizi belirtin veya en iyi parametreleri bulmak için bir parametre süpürme kullanın.
 
-    - **Tek Parametre**: Modeli nasıl yapılandırmak istediğinizi biliyorsanız bu seçeneği seçin ve bağımsız değişken olarak belirli bir değer kümesi sağlayın.
+    - **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız ve bağımsız değişken olarak belirli bir değer kümesi sağlamak için bu seçeneği belirleyin.
 
-3. **PCA'da kullanılacak bileşen sayısı**: Çıktı yapmak istediğiniz çıktı özelliklerinin veya bileşenlerin sayısını belirtin.
+3. **PCA 'da kullanılacak bileşen sayısı**: çıktı özelliklerinin sayısını veya çıkış yapmak istediğiniz bileşenleri belirtin.
 
-    Kaç bileşenin dahil edilemeyekarar verilebilen karar, PCA kullanarak deneme tasarımının önemli bir parçasıdır. Genel kılavuz, değişkenler olduğu gibi aynı sayıda PCA bileşeni eklememeniz gerektiğidir. Bunun yerine, bazı daha az sayıda bileşenle başlayıp bazı ölçütler karşılanana kadar bunları artırmalısınız.
+    Kaç bileşen ekleneceğini gösteren karar, PCA kullanarak deneme tasarımının önemli bir parçasıdır. Genel rehberlik, değişkenlerle aynı sayıda PCA bileşenini içermemelidir. Bunun yerine, bazı ölçütlere göre daha az sayıda bileşen ile başlamalı ve bunları artırmanız gerekir.
 
-    Çıktı bileşenlerinin sayısı veri kümesinde bulunan özellik sütunlarının sayısından **az** olduğunda en iyi sonuçlar elde edilir.
+    En iyi sonuçlar, çıktı bileşenleri sayısı, veri kümesinde bulunan özellik sütunlarının sayısından **az** olduğunda elde edilir.
 
-4. Randomize PCA eğitimi sırasında gerçekleştirecek aşırı örnekleme miktarını belirtin. Anomali algılama problemlerinde, dengesiz veriler standart PCA tekniklerinin uygulanmasını zorlaştırır. Bir miktar aşırı örnekleme belirterek, hedef örneklerin sayısını artırabilirsiniz.
+4. Rastgele PCA eğitimi sırasında gerçekleştirilecek fazla örnekleme miktarını belirtin. Anomali algılama sorunlarında, imdengeli veriler standart PCA tekniklerini uygulamayı zorlaştırır. Bir miktar fazla örnekleme belirterek, hedef örneklerin sayısını artırabilirsiniz.
 
-    1 belirtirseniz, aşırı örnekleme yapılmaz. 1'den yüksek bir değer belirtirseniz, modeli eğitmek için ek örnekler oluşturulur.
+    1 belirtirseniz, aşırı örnekleme yapılmaz. 1 ' den yüksek bir değer belirtirseniz, modele eğitim içinde kullanmak için ek örnekler üretilir.
 
-    Parametre süpürme kullanıp kullanmadığınıza bağlı olarak iki seçenek vardır:
+    Bir parametre süpürme kullanılmasına bağlı olarak iki seçenek vardır:
 
-    - **Randomize PCA için aşırı örnekleme parametresi**: Azınlık sınıfının normal sınıfa göre aşırı örnekleme oranını temsil eden tek bir tam sayı yazın. (Tek **parametre** eğitim yöntemini kullanırken kullanılabilir.)
+    - **Rastgele PCA Için aşırı örnekleme parametresi**: normal sınıf üzerinde minınlik sınıfının fazla örneklemenin oranını temsil eden tek bir tam sayı yazın. ( **Tek parametreli** eğitim yöntemi kullanılırken kullanılabilir.)
 
     > [!NOTE]
-    > Aşırı örneklenmiş veri kümesini görüntüleyemezsiniz. PCA ile aşırı örneklemenin nasıl kullanıldığı hakkında daha fazla bilgi için [teknik notlara](#technical-notes)bakın.
+    > Aşırı örneklenmiş veri kümesini görüntüleyemezsiniz. Eksik örnekleme 'nın PCA ile nasıl kullanıldığı hakkında daha fazla bilgi için bkz. [Teknik notlar](#technical-notes).
 
-5. **Giriş özelliğini normalleştirme ortalamasını etkinleştir**: Tüm giriş özelliklerini ortalama sıfıra normalleştirmek için bu seçeneği seçin. PCA'nın amacı değişkenler arasındaki farkı en üst düzeye çıkarmak olduğundan, normalleştirme veya sıfıra kadar ölçeklendirme genellikle PCA için önerilir.
+5. **Giriş özelliği ortalama normalleştirmeyi etkinleştir**: tüm giriş özelliklerini sıfır ortalaması ile normalleştirmek için bu seçeneği belirleyin. PCA 'nın hedefi, değişkenler arasındaki varyansı en üst düzeye çıkarmaktır.
 
-     Bu seçenek varsayılan olarak seçilidir. Değerler zaten farklı bir yöntem veya ölçek kullanılarak normalleştirilmişse bu seçeneği seçin.
+     Bu seçenek varsayılan olarak seçilidir. Değerler farklı bir yöntem veya ölçek kullanılarak normalleştirilmeye alınmış ise bu seçeneğin seçimini kaldırın.
 
-6. Etiketli bir eğitim veri kümesini ve eğitim modüllerinden birini bağlayın:
+6. Etiketli eğitim veri kümesini ve eğitim modüllerden birini bağlayın:
 
-    - Tek **Parametre** **için eğitmen oluştur seçeneğini** ayarlarsanız, Tren [Anomali Algılama Modeli](train-anomaly-detection-model.md) modüllerini kullanın.
+    - **Tek parametre**olarak bir Itme **modu oluştur** seçeneğini ayarlarsanız, [anomali algılama modeli](train-anomaly-detection-model.md) modülünü kullanın.
 
-7. Boru hattını gönderin.
+7. İşlem hattını gönderme.
 
 ## <a name="results"></a>Sonuçlar
 
-Eğitim tamamlandığında, ya eğitilmiş modeli kaydedebilir veya anomali puanlarını tahmin etmek için [Puan Modeli](score-model.md) modülüne bağlayabilirsiniz.
+Eğitim tamamlandığında, eğitilen modeli kaydedebilir veya anomali puanları Tahmin etmek için bunu [puan modeli](score-model.md) modülüne bağlayabilirsiniz.
 
-Bir anomali algılama modelinin sonuçlarının değerlendirilmesi bazı ek adımlar gerektirir:
+Anomali algılama modelinin sonuçlarını değerlendirmek için bazı ek adımlar gerekir:
 
-1. Her iki veri kümesinde de bir puan sütunu olduğundan emin olun
+1. Bir puan sütununun her iki veri kümelerinde da kullanılabilir olduğundan emin olun
 
-    Bir anomali algılama modelini değerlendirmeye ve "Karşılaştırmak için puanlı veri kümesinde puan sütunu yok" hatasını almaya çalışırsanız, bu, etiket sütunu içeren ancak olasılık puanı içermeyen tipik bir değerlendirme veri kümesi kullandığınız anlamına gelir. Anormal algılama modelleri için şema çıktısı ile eşleşen ve **Puanlı Etiketler** ve **Puanlı Olasılıklar** sütunu içeren bir veri kümesi seçmeniz gerekir.
+    Anomali algılama modelini değerlendirmeye çalışırsanız ve hatayı elde ediyorsanız, "Karşılaştırılacak bir veri kümesinde puan sütunu yok" olarak, bir etiket sütunu içeren, ancak olasılık puanı içermeyen tipik bir değerlendirme veri kümesi kullandığınız anlamına gelir. Bir Puanlanı algılama modelinin şema çıkışıyla eşleşen bir veri kümesi seçmeniz gerekir. Bu, bir **puanlanmış Etiketler** ve **puanlanmış olasılıkların** sütunu içerir.
 
-2. Etiket sütunlarının işaretli olduğundan emin olun
+2. Etiket sütunlarının işaretlendiğinden emin olun
 
-    Bazen etiket sütunuyla ilişkili meta veriler ardışık etki hattı grafiğinde kaldırılır. Bu durumda, iki anomali algılama modelinin sonuçlarını karşılaştırmak için [Model'i değerlendir](evaluate-model.md) modülünü kullandığınızda, "Puanlı veri kümesinde etiket sütunu yok" veya "Karşılaştırılması gereken veri kümesinde etiket sütunu yoktur" hatasını alabilirsiniz.
+    Bazen, etiket sütunuyla ilişkili meta veriler ardışık düzen grafiğinde kaldırılır. Bu durumda, iki anomali algılama modelinin sonuçlarını karşılaştırmak için [modeli değerlendir](evaluate-model.md) modülünü kullandığınızda, "puanlanmış veri kümesinde etiket sütunu yok" veya "Karşılaştırılacak bir veri kümesinde etiket sütunu yok" hatasını alabilirsiniz.
 
-    [Modeli Değerlendir](evaluate-model.md) modülünden önce Meta veri modüllerini [edit](edit-metadata.md) ekleyerek bu hatayı önleyebilirsiniz. Sınıf sütununu seçmek için sütun seçiciyi kullanın ve **Alanlar** açılır listesinde **Etiket'i**seçin.
+    [Modeli değerlendir](evaluate-model.md) modülünden önce [meta veri düzenleme](edit-metadata.md) modülünü ekleyerek bu hatadan kaçınabilirsiniz. Sütun seçiciyi kullanarak sınıf sütununu seçin ve **alanlar** açılan listesinde **etiket**' i seçin.
 
-3. Etiket sütun kategorilerini 1 (pozitif, normal) ve 0 (negatif, anormal) olarak ayarlamak için [Execute Python Script'i](execute-python-script.md) kullanın.
+3. Etiket sütunu kategorilerini 1 (pozitif, normal) ve 0 (negatif, olağan dışı) olarak ayarlamak için [Python betiğini Yürüt](execute-python-script.md) ' ü kullanın.
 
     ````
     label_column_name = 'XXX'
@@ -100,11 +100,11 @@ Bir anomali algılama modelinin sonuçlarının değerlendirilmesi bazı ek adı
     
 ## <a name="technical-notes"></a>Teknik notlar
 
-Bu algoritma, normal sınıfı içeren alt uzayı yaklaşık olarak pca kullanır. Altuzay, veri covariance matrisinin üst özdeğerleri ile ilişkili özvektörler tarafından yayılılır. Her yeni giriş için, anomali dedektörü önce eigenvectors üzerindeki projeksiyonunu hesaplar ve sonra normalleştirilmiş yeniden yapılandırma hatasını hesaplar. Bu hata anomali skorudur. Hata ne kadar yüksekse, örnek o kadar anormaldir. Normal alanın nasıl hesaplandırılabildiğini öğrenmek [Principal Component Analysis](https://wikipedia.org/wiki/Principal_component_analysis) için bkz. 
+Bu algoritma, normal sınıfını içeren alt boşluğu yaklaşık olarak almak için PCA kullanır. Alt boşluk, veri Kovaryans matrisin en üst eigendeğerleriyle ilişkili eigenvektörler tarafından yayıldır. Anomali algılayıcısı, her yeni giriş için ilk olarak eigenvektörlerin projeksiyonunu hesaplar ve normalleştirilmiş yeniden oluşturma hatasını hesaplar. Bu hata anomali puandır. Hatanın ne kadar yüksekse, örnek de daha fazla olur. Normal alanın hesaplanma hakkında daha fazla bilgi için bkz. Vikipedi: [Principal bileşen analizi](https://wikipedia.org/wiki/Principal_component_analysis) 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
 
-Tasarımcı modüllerine özgü hataların listesi [için tasarımcının özel durumları ve hata kodlarına bakın (önizleme).'](designer-error-codes.md)
+Tasarımcı modüllerine özgü hataların listesi için bkz. [Tasarımcı Için özel durumlar ve hata kodları (Önizleme)](designer-error-codes.md) . ' '

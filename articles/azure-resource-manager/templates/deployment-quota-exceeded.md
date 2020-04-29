@@ -1,34 +1,34 @@
 ---
 title: Dağıtım kotası aşıldı
-description: Kaynak grubu geçmişinde 800'den fazla dağıtım alabildiğini açıklayan hata.
+description: Kaynak grubu geçmişinde 800 ' den fazla dağıtıma sahip olma hatasının nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
 ms.date: 10/04/2019
 ms.openlocfilehash: 919cd9a3482401cd47516e2677b0bf58387488b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80245098"
 ---
-# <a name="resolve-error-when-deployment-count-exceeds-800"></a>Dağıtım sayısı 800'ü aştığında hatayı giderme
+# <a name="resolve-error-when-deployment-count-exceeds-800"></a>Dağıtım sayısı 800 ' i aştığında hatayı çözümle
 
-Her kaynak grubu, dağıtım geçmişinde 800 dağıtımla sınırlıdır. Bu makalede, izin verilen 800 dağıtımı aşacağı için bir dağıtım başarısız olduğunda aldığınız hatayı açıklanır. Bu hatayı gidermek için, kaynak grubu geçmişinden dağıtımları silin. Bir dağıtımı geçmişten sildim, dağıtılan kaynakların hiçbirini etkilemez.
+Her kaynak grubu, dağıtım geçmişinde 800 dağıtım ile sınırlıdır. Bu makalede, izin verilen 800 dağıtımlarını aşacağından bir dağıtım başarısız olduğunda aldığınız hata açıklanmaktadır. Bu hatayı çözmek için kaynak grubu geçmişinden dağıtımları silin. Bir dağıtımı geçmişten silmek, dağıtılan kaynakların hiçbirini etkilemez.
 
 ## <a name="symptom"></a>Belirti
 
-Dağıtım sırasında, geçerli dağıtımın 800 dağıtım kotasını aşacağını belirten bir hata alırsınız.
+Dağıtım sırasında, geçerli dağıtımın 800 dağıtım kotasını aşalacağını belirten bir hata alırsınız.
 
 ## <a name="solution"></a>Çözüm
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Dağıtımları geçmişten silmek için [az dağıtım grubu silme](/cli/azure/group/deployment) komutunu kullanın.
+Geçmişten dağıtımları silmek için [az Deployment Group Delete](/cli/azure/group/deployment) komutunu kullanın.
 
 ```azurecli-interactive
 az deployment group delete --resource-group exampleGroup --name deploymentName
 ```
 
-Beş günden eski tüm dağıtımları silmek için şunları kullanın:
+Beş günden eski olan tüm dağıtımları silmek için şunu kullanın:
 
 ```azurecli-interactive
 startdate=$(date +%F -d "-5days")
@@ -40,7 +40,7 @@ do
 done
 ```
 
-Dağıtım geçmişindeki geçerli sayıyı aşağıdaki komutla alabilirsiniz:
+Aşağıdaki komutla dağıtım geçmişinde geçerli sayıyı edinebilirsiniz:
 
 ```azurecli-interactive
 az deployment group list --resource-group exampleGroup --query "length(@)"
@@ -48,13 +48,13 @@ az deployment group list --resource-group exampleGroup --query "length(@)"
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Dağıtımları geçmişten silmek için [Kaldır-AzKaynakGrubuDağıtım](/powershell/module/az.resources/remove-azresourcegroupdeployment) komutunu kullanın.
+Geçmişten dağıtımları silmek için [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) komutunu kullanın.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name deploymentName
 ```
 
-Beş günden eski tüm dağıtımları silmek için şunları kullanın:
+Beş günden eski olan tüm dağıtımları silmek için şunu kullanın:
 
 ```azurepowershell-interactive
 $deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object Timestamp -lt ((Get-Date).AddDays(-5))
@@ -64,15 +64,15 @@ foreach ($deployment in $deployments) {
 }
 ```
 
-Dağıtım geçmişindeki geçerli sayıyı aşağıdaki komutla alabilirsiniz:
+Aşağıdaki komutla dağıtım geçmişinde geçerli sayıyı edinebilirsiniz:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup).Count
 ```
 
-## <a name="third-party-solutions"></a>Üçüncü taraf çözümleri
+## <a name="third-party-solutions"></a>Üçüncü taraf çözümler
 
-Aşağıdaki dış çözümler belirli senaryoları ele alatır:
+Aşağıdaki dış çözümlere özel senaryolar ele verilmiştir:
 
 * [Azure Logic Apps ve PowerShell çözümleri](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
-* [Azdevops Uzantısı](https://github.com/christianwaha/AzureDevOpsExtensionCleanRG)
+* [AzDevOps uzantısı](https://github.com/christianwaha/AzureDevOpsExtensionCleanRG)

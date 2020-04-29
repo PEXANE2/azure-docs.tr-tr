@@ -1,41 +1,41 @@
 ---
-title: Linux'taki uygulamalar için sertifikaları yapılandırma
-description: Linux kümesinde Service Fabric çalışma zamanı ile uygulamanızın sertifikalarını yapılandırın
+title: Linux 'ta uygulamalar için sertifikaları yapılandırma
+description: Linux kümesinde Service Fabric çalışma zamanına sahip uygulamanıza yönelik sertifikaları yapılandırın
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: pepogors
 ms.openlocfilehash: 802e76614f51e1f6479a311e61a49d83b8125546
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282581"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux kümelerinde sertifikalar ve güvenlik
 
-Bu makalede, Linux kümelerinde X.509 sertifikaları yapılandırma hakkında bilgi sağlar.
+Bu makalede, Linux kümelerinde X. 509.440 sertifikalarını yapılandırma hakkında bilgi sağlanır.
 
-## <a name="location-and-format-of-x509-certificates-on-linux-nodes"></a>Linux düğümlerinde X.509 sertifikalarının konumu ve biçimi
+## <a name="location-and-format-of-x509-certificates-on-linux-nodes"></a>Linux düğümlerinde X. 509.440 sertifikalarının konumu ve biçimi
 
-Service Fabric genellikle X.509 sertifikalarının Linux küme düğümlerinde */var/lib/sfcerts* dizininde bulunmasını bekler. Bu küme sertifikaları, istemci sertifikaları, vb için geçerlidir. Bazı durumlarda, sertifikalar için *var/lib/sfcerts* klasörü dışında bir konum belirtebilirsiniz. Örneğin, Hizmet Kumaşı Java SDK kullanılarak oluşturulmuş Güvenilir Hizmetler ile, uygulamaya özel bazı sertifikalar için yapılandırma paketi (Settings.xml) aracılığıyla farklı bir konum belirtebilirsiniz. Daha fazla bilgi için [yapılandırma paketinde (Settings.xml) başvurulan Sertifikalar'a](#certificates-referenced-in-the-configuration-package-settingsxml)bakın.
+Service Fabric, genellikle Linux küme düğümlerinde */var/lib/sfcerts* dizininde X. 509.440 sertifikalarının bulunmasını bekler. Bu, küme sertifikalarının, istemci sertifikalarının vb. için geçerlidir. Bazı durumlarda, sertifikalar için *var/lib/sfcert* klasöründen farklı bir konum belirtebilirsiniz. Örneğin, Service Fabric Java SDK 'Sı kullanılarak oluşturulan Reliable Services, uygulamaya özgü bazı sertifikaların yapılandırma paketiyle (Settings. xml) farklı bir konum belirtebilirsiniz. Daha fazla bilgi edinmek için bkz. [yapılandırma paketinde başvurulan Sertifikalar (Settings. xml)](#certificates-referenced-in-the-configuration-package-settingsxml).
 
-Service Fabric, Linux kümeleri için sertifikaların hem sertifika hem de özel anahtar içeren bir .pem dosyası veya sertifikayı ve özel anahtarı içeren bir .key dosyası içeren bir .crt dosyası olarak bulunmasını bekler. Tüm dosyalar PEM formatında olmalıdır. 
+Linux kümeleri için Service Fabric, sertifikaların hem sertifikayı hem de özel anahtarı içeren bir. ped dosyası olarak veya sertifikayı içeren bir. CRT dosyası olarak veya özel anahtarı içeren bir. Key dosyası olarak mevcut olmasını bekler. Tüm dosyalar pek biçiminde olmalıdır. 
 
-Sertifikanızı Azure Key Vault'tan Kaynak [Yöneticisi şablonu](./service-fabric-cluster-creation-create-template.md) veya [PowerShell](https://docs.microsoft.com/powershell/module/az.servicefabric/?view=azps-2.6.0) komutları kullanarak yüklerseniz, sertifika her düğümde */var/lib/sfcerts* dizininde doğru biçimde yüklenir. Bir sertifikayı başka bir yöntemle yüklerseniz, sertifikanın küme düğümlerine doğru şekilde yüklendiğinden emin olmalısınız.
+Sertifikanızı, bir [Kaynak Yöneticisi şablonu](./service-fabric-cluster-creation-create-template.md) veya [PowerShell](https://docs.microsoft.com/powershell/module/az.servicefabric/?view=azps-2.6.0) komutları kullanarak Azure Key Vault yüklerseniz, sertifika her bir düğümdeki */var/lib/sfcerts* dizininde doğru biçimde yüklenir. Bir sertifikayı başka bir yöntemle yüklerseniz, sertifikanın küme düğümlerine doğru yüklendiğinden emin olmalısınız.
 
-## <a name="certificates-referenced-in-the-application-manifest"></a>Başvuru bildiriminde başvurulan sertifikalar
+## <a name="certificates-referenced-in-the-application-manifest"></a>Uygulama bildiriminde başvurulan sertifikalar
 
-Uygulama bildiriminde belirtilen sertifikalar, örneğin [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) veya [**EndpointCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element) öğeleri aracılığıyla */var/lib/sfcerts* dizininde bulunmalıdır. Uygulama bildiriminde sertifikabelirtmek için kullanılan öğeler bir yol özniteliği almaz, bu nedenle sertifikaların varsayılan dizinde bulunması gerekir. Bu öğeler isteğe bağlı bir **X509StoreName** özniteliği alır. Varsayılan değer, Linux düğümleri üzerindeki */var/lib/sfcerts* dizinine işaret eden "My"dir. Başka bir değer bir Linux kümesi üzerinde tanımsızdır. Linux kümelerinde çalışan uygulamalar için **X509StoreName** özniteliğini atlanızır. 
+Uygulama bildiriminde belirtilen sertifikaların (örneğin, [**Secretscercertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) veya [**endpointcertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element) öğelerinden) */var/lib/sfcerts* dizininde bulunması gerekir. Uygulama bildiriminde sertifikaları belirtmek için kullanılan öğeler bir yol özniteliği almaz, bu nedenle sertifikaların varsayılan dizinde mevcut olması gerekir. Bu öğeler isteğe bağlı bir **X509StoreName** özniteliği alır. Varsayılan değer, Linux düğümlerinde */var/lib/sfcerts* dizinini gösteren "My" ("My") ' dir. Linux kümesinde başka herhangi bir değer tanımsızdır. Linux kümelerinde çalışan uygulamalar için **X509StoreName** özniteliğini atlamanızı öneririz. 
 
-## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>Yapılandırma paketinde başvurulan sertifikalar (Settings.xml)
+## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>Yapılandırma paketinde başvurulan Sertifikalar (Settings. xml)
 
-Bazı hizmetler [için, ConfigPackage'da](./service-fabric-application-and-service-manifests.md) X.509 sertifikalarını yapılandırabilirsiniz (varsayılan olarak Ayarlar.xml). Örneğin, Service Fabric .NET Core veya Java SDK'ları ile oluşturulmuş Güvenilir Hizmetler hizmetleri için RPC kanallarını güvenli hale getirmek için kullanılan sertifikaları beyan ettiğinizde durum böyledir. Yapılandırma paketinde sertifikalara başvurmanın iki yolu vardır. Destek .NET Core ve Java SDK'ları arasında değişir.
+Bazı hizmetlerde, [Configpackage](./service-fabric-application-and-service-manifests.md) (varsayılan olarak, Settings. xml) ' de X. 509.440 sertifikalarını yapılandırabilirsiniz. Örneğin, Service Fabric .NET Core veya Java SDK 'Ları ile oluşturulan Reliable Services Hizmetleri için RPC kanallarının güvenliğini sağlamak için kullanılan sertifikaları bildirdiğinizde bu durum söz konusu olur. Yapılandırma paketindeki sertifikalara başvurmanın iki yolu vardır. Destek, .NET Core ve Java SDK 'Ları arasında farklılık gösterir.
 
 ### <a name="using-x509-securitycredentialstype"></a>X509 SecurityCredentialsType kullanma
 
-.NET veya Java SDK'ları with, **SecurityCredentialsType**için **X509** belirtebilirsiniz. Bu `X509Credentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) türüne karşılık gelir `SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
+.NET veya Java SDK 'Ları Ile **Securitycredentialstype**için **x509** belirtebilirsiniz. Bu[(.net](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)[Java)](https://docs.microsoft.com/java/api/system.fabric.x509credentials) `SecurityCredentials` `X509Credentials` [türünde (](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/.net Java) buna karşılık gelir.
 
-**X509** başvurusu sertifikayı bir sertifika deposunda bulur. Aşağıdaki XML, sertifikanın konumunu belirtmek için kullanılan parametreleri gösterir:
+**X509** başvurusu, sertifikayı bir sertifika deposunda konumlandırır. Aşağıdaki XML, sertifikanın konumunu belirtmek için kullanılan parametreleri gösterir:
 
 ```xml
     <Parameter Name="SecurityCredentialsType" Value="X509" />
@@ -43,11 +43,11 @@ Bazı hizmetler [için, ConfigPackage'da](./service-fabric-application-and-servi
     <Parameter Name="CertificateStoreName" Value="My" />
 ```
 
-Linux'ta çalışan bir hizmet için **LocalMachine**/Sertifikaların varsayılan konumuolan */var/lib/sfcerts* dizinine işaret**ediyor.** Linux **için, CertificateStoreLocation** ve **CertificateStoreName'nin** diğer kombinasyonları tanımsızdır. 
+Linux üzerinde çalışan bir hizmet için, **LocalMachine**/**My** , */var/lib/sfcerts* dizinini, sertifikalar için varsayılan konuma yönlendirir. Linux için, **Certificatestorelocation** ve **CertificateStoreName** 'in diğer birleşimleri tanımsızdır. 
 
-**SertifikaStoreLocation** parametresi için **LocalMachine'i** her zaman belirtin. Varsayılan olarak "Benim" olarak da **belirttiğinden, CertificateStoreName** parametresini belirtmenize gerek yoktur. **X509** referansı ile sertifika dosyaları küme düğümündeki */var/lib/sfcerts* dizininde yer almalıdır.  
+Her zaman **Certificatestorelocation** parametresi için **LocalMachine** belirtin. Varsayılan "My" olarak ayarlandığından **CertificateStoreName** parametresinin belirtilmesi gerekmez. **X509** başvurusuyla, sertifika dosyalarının küme düğümündeki */var/lib/sfcerts* dizininde bulunması gerekir.  
 
-Aşağıdaki XML, bu stili temel alan bir **TransportSettings** bölümünü gösterir:
+Aşağıdaki XML, bu stile dayalı bir **TransportSettings** bölümünü gösterir:
 
 ```xml
 <Section Name="HelloWorldStatefulTransportSettings">
@@ -64,16 +64,16 @@ Aşağıdaki XML, bu stili temel alan bir **TransportSettings** bölümünü gö
 
 ### <a name="using-x509_2-securitycredentialstype"></a>X509_2 SecurityCredentialsType kullanma
 
-Java SDK ile **SecurityCredentialsType**için **X509_2** belirtebilirsiniz. Bu `X509Credentials2` `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) türüne karşılık gelir ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
+Java SDK 'Sı ile **Securitycredentialstype**için **X509_2** belirtebilirsiniz. Bu `X509Credentials2` [, (Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2) `SecurityCredentials` [) türüne](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)karşılık gelir. 
 
-**X509_2** bir başvuruyla, bir yol parametresi belirtirsiniz, böylece sertifikayı */var/lib/sfcerts*dışındaki bir dizinde bulabilirsiniz.  Aşağıdaki XML, sertifikanın konumunu belirtmek için kullanılan parametreleri gösterir: 
+Bir **X509_2** başvurusuyla, sertifikayı */var/lib/sfcerts*dışında bir dizinde bulabilmeniz için bir yol parametresi belirtirsiniz.  Aşağıdaki XML, sertifikanın konumunu belirtmek için kullanılan parametreleri gösterir: 
 
 ```xml
      <Parameter Name="SecurityCredentialsType" Value="X509_2" />
      <Parameter Name="CertificatePath" Value="/path/to/cert/BD1C71E248B8C6834C151174DECDBDC02DE1D954.crt" />
 ```
 
-Aşağıdaki XML, bu stili temel alan bir **TransportSettings** bölümünü gösterir.
+Aşağıdaki XML, bu stile dayalı bir **TransportSettings** bölümünü gösterir.
 
 ```xml
 <!--Section name should always end with "TransportSettings".-->
@@ -88,13 +88,13 @@ Aşağıdaki XML, bu stili temel alan bir **TransportSettings** bölümünü gö
 ```
 
 > [!NOTE]
-> Sertifika, önceki XML'de .crt dosyası olarak belirtilir. Bu, aynı konumda özel anahtarı içeren bir .key dosyası da olduğu anlamına gelir.
+> Sertifika, önceki XML 'de bir. CRT dosyası olarak belirtilir. Bu, aynı konumda özel anahtarı içeren bir. Key dosyası da olduğu anlamına gelir.
 
-## <a name="configure-a-reliable-services-app-to-run-on-linux-clusters"></a>Güvenilir Hizmetler uygulamasını Linux kümelerinde çalışacak şekilde yapılandırma
+## <a name="configure-a-reliable-services-app-to-run-on-linux-clusters"></a>Reliable Services uygulamasını Linux kümelerinde çalışacak şekilde yapılandırma
 
-Service Fabric SDK'lar, platformdan yararlanmak için Service Fabric çalışma zamanı API'leri ile iletişim kurmanızı sağlar. Bu işlevi güvenli Linux kümelerinde kullanan herhangi bir uygulamayı çalıştırdığınızda, uygulamanızı Hizmet Kumaşı çalışma süresiyle doğrulamak için kullanabileceği bir sertifikayla yapılandırmanız gerekir. .NET Core veya Java SDK'ları kullanılarak yazılmış Service Fabric Reliable Service hizmetlerini içeren uygulamalar bu yapılandırmayı gerektirir. 
+Service Fabric SDK 'Ları, platformdan yararlanmak için Service Fabric çalışma zamanı API 'Leriyle iletişim kurmanıza olanak tanır. Güvenli Linux kümelerinde bu işlevselliği kullanan herhangi bir uygulamayı çalıştırdığınızda, uygulamanızı Service Fabric çalışma zamanına göre doğrulamak için kullanabileceği bir sertifika ile yapılandırmanız gerekir. .NET Core veya Java SDK 'Ları kullanılarak yazılan Service Fabric güvenilir hizmet hizmetleri içeren uygulamalar bu yapılandırmayı gerektirir. 
 
-Bir uygulamayı yapılandırmak için, *ApplicationManifest.xml* dosyasındaki **ApplicationManifest** etiketinin altında bulunan **Sertifikalar** etiketinin altına bir [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) öğesi ekleyin. Aşağıdaki XML, parmak izinden başlandı bir sertifika gösterir: 
+Bir uygulamayı yapılandırmak için, *ApplicationManifest. xml* dosyasındaki **ApplicationManifest** etiketinin altında bulunan **Sertifikalar** etiketinin altına bir [**secretscercertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) öğesi ekleyin. Aşağıdaki XML, parmak izi tarafından başvurulan bir sertifikayı gösterir: 
 
 ```xml
    <Certificates>
@@ -102,7 +102,7 @@ Bir uygulamayı yapılandırmak için, *ApplicationManifest.xml* dosyasındaki *
    </Certificates>   
 ```
 
-Küme sertifikasına veya her küme düğümüne yüklediğiniz bir sertifikaya başvuruda bulunabilirsiniz. Linux'ta sertifika dosyaları */var/lib/sfcerts* dizininde bulunmalıdır. Daha fazla bilgi için, [Linux düğümlerinde X.509 sertifikalarının konumu ve biçimine](#location-and-format-of-x509-certificates-on-linux-nodes)bakın.
+Küme sertifikasına veya her bir küme düğümüne yüklediğiniz bir sertifikaya başvurabilirsiniz. Linux 'ta, sertifika dosyalarının */var/lib/sfcerts* dizininde mevcut olması gerekir. Daha fazla bilgi edinmek için bkz. [Linux düğümlerinde X. 509.440 sertifikalarının konumu ve biçimi](#location-and-format-of-x509-certificates-on-linux-nodes).
 
 
 

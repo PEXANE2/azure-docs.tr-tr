@@ -3,50 +3,50 @@ title: Azure Dev Spaces nasıl çalışır?
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: Azure Dev Spaces'e güç veren süreçleri açıklar
-keywords: Azure Dev Alanlar, Dev Alanlar, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler
+description: Güç Azure Dev Spaces olan süreçler açıklanmaktadır
+keywords: Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
 ms.openlocfilehash: 99b0b3309d115b450bfca94871b6defd885349fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80234979"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces nasıl çalışır?
 
-Bir Kubernetes uygulaması geliştirmek zor olabilir. Docker ve Kubernetes yapılandırma dosyalarına ihtiyacınız var. Uygulamanızı yerel olarak nasıl sınayabileceğinizi ve diğer bağımlı hizmetlerle nasıl etkileşimde bulunduğunuzu bulmanız gerekir. Birden çok hizmeti aynı anda ve bir geliştirici ekibiyle aynı anda geliştirme ve sınama işlemlerini ele almanız gerekebilir.
+Bir Kubernetes uygulamasının geliştirilmesi zor olabilir. Docker ve Kubernetes yapılandırma dosyalarına ihtiyacınız vardır. Uygulamanızı yerel olarak test etme ve diğer bağımlı hizmetlerle etkileşim kurma hakkında bilgi almanız gerekir. Birden çok hizmeti aynı anda ve bir geliştirici ekibi ile geliştirmeyi ve test etmeyi işlemeniz gerekebilir.
 
-Azure Geliştirme Alanları, Kubernetes uygulamalarını hızla tekrarlayıp hata ayıklamanız ve ekibinizle işbirliği yapmak için birden çok yol sağlar. Bu makalede, Azure Geliştirme Alanları'nın neler yapabileceği ve nasıl çalıştığı açıklanmaktadır.
+Azure Dev Spaces, Kubernetes uygulamalarını hızla yinelemek ve hata ayıklamanın yanı sıra ekibinizle işbirliği yapmak için birden çok yol sağlar. Bu makalede Azure Dev Spaces ne yapabilecekleri ve nasıl çalıştığı açıklanmaktadır.
 
-## <a name="rapidly-iterate-and-debug-your-kubernetes-application"></a>Kubernetes uygulamanızı hızla yineleyin ve hata ayıklanın
+## <a name="rapidly-iterate-and-debug-your-kubernetes-application"></a>Kubernetes uygulamanızda hızlıca yineleme yapın ve hata ayıklayın
 
-Azure Dev Spaces, AKS kümeniz bağlamında Kubernetes uygulamanızı geliştirme, test etme ve yineleme çabasını azaltır. Bu çaba azaltma geliştiricilerin uygulamalarının iş mantığına odaklanmalarını ve hizmetlerini Kubernetes'te çalışacak şekilde yapılandırmamalarını sağlar.
+Azure Dev Spaces, Kubernetes uygulamanızı geliştirme, test etme ve AKS kümeniz bağlamında yineleme çabaları azaltır. Çabadaki Bu azalma, geliştiricilerin kendi uygulamalarının iş mantığına odaklanmasını ve hizmetlerini Kubernetes 'de çalışacak şekilde yapılandırmamasını sağlar.
 
-### <a name="connect-your-development-machine-to-aks"></a>Geliştirme makinenizi AKS'ye bağlayın
+### <a name="connect-your-development-machine-to-aks"></a>Geliştirme makinenizi AKS 'e bağlama
 
-Azure Dev Spaces ile geliştirme bilgisayarınızı AKS kümenize bağlayarak geliştirme bilgisayarınızda kümeüzerinde çalışıyormuş gibi kod çalıştırmanızı ve hata ayıklamanızı sağlayabilirsiniz. Azure Dev Spaces, geliştirme makineniz ile küme arasındaki trafiği yeniden yönlendirmek için uzak bir aracı görevi gören bir bölmeyi kümenizde çalıştırarak bağlı AKS kümeniz arasındaki trafiği yeniden yönlendirir. Bu trafik yeniden yönlendirmesi, geliştirme bilgisayarınızdaki kodun ve AKS kümenizde çalışan hizmetlerin aynı AKS kümesindeymüş gibi iletişim kurmasına olanak tanır. Geliştirme makinenizi AKS'ye bağlama hakkında daha fazla bilgi için [geliştirme bilgisayarınızı AKS kümenize bağlamanın nasıl çalıştığını][how-it-works-connect]görün.
+Azure Dev Spaces ile geliştirme bilgisayarınızı AKS kümenize bağlayabilirsiniz ve bu kodda, geliştirme bilgisayarınızda, küme üzerinde çalışıyor gibi bir kod çalıştırmanıza ve hata ayıklamanıza olanak sağlayabilirsiniz. Azure Dev Spaces, kuruluşunuzda geliştirme makineniz ve küme arasında trafiği yeniden yönlendirmek için uzak bir aracı görevi gören bir pod çalıştırarak bağlı AKS kümeniz arasında trafiği yeniden yönlendirir. Bu trafik yeniden yönlendirme, AKS kümenizde çalışan geliştirme ve hizmetinizdeki kodların aynı AKS kümenizle gibi iletişim kurmasına olanak tanır. Geliştirme makinenizi AKS 'e bağlama hakkında daha fazla bilgi için bkz. [geliştirme BILGISAYARıNıZı aks kümenize bağlama nasıl yapılır?][how-it-works-connect].
 
-### <a name="run-your-code-in-aks"></a>Kodunuzu AKS'de çalıştırın
+### <a name="run-your-code-in-aks"></a>Kodunuzu AKS 'de çalıştırın
 
-Azure Geliştirme Alanları ile geliştirme bilgisayarınızla AKS kümeniz arasındaki trafiği yeniden yönlendirmenin yanı sıra kodunuzu doğrudan AKS'de yapılandırabilir ve hızlı bir şekilde çalıştırabilirsiniz. Visual Studio, Visual Studio Code veya Azure Dev Spaces CLI ile Azure Dev alanları kodunuzu kümelemek için yükler ve ardından oluşturur ve çalıştırır. Azure Dev alanları, kod değişikliklerini akıllıca eşitleyebilir ve değişiklikleri gerektiği gibi yansıtacak şekilde hizmetinizi yeniden başlatabilir. Kodunuzu çalıştırırken, yapı günlükleri ve HTTP izleri istemcinize geri aktarılır, böylece ilerlemeyi izleyebilir ve sorunları tanılayabilirsiniz. Visual Studio ve Visual Studio Code'daki hata ayıklayıcıyı Java, Node.js ve .NET Core hizmetlerine eklemek için Azure Dev Spaces'i de kullanabilirsiniz. Daha fazla bilgi için Azure [Dev Spaces için proje hazırlamanın nasıl çalıştığını,][how-it-works-prep]Azure Dev Spaces ile [kodunuzu çalıştırmanın nasıl çalıştığını][how-it-works-up]ve Azure Dev Spaces ile [kodunuzu uzaktan hata ayıklamanın nasıl çalıştığını][how-it-works-remote-debugging]öğrenin.
+Geliştirme bilgisayarınız ile AKS kümeniz arasında trafiği yeniden yönlendirmeye ek olarak, Azure Dev Spaces, kodunuzu doğrudan AKS içinde yapılandırabilir ve hızlı bir şekilde çalıştırabilirsiniz. Visual Studio, Visual Studio Code veya Azure Dev Spaces CLı ile Azure dev Spaces, kodunuzu kümenize yükleyecek, sonra derleyip çalıştıracak. Azure dev Spaces Ayrıca kod değişikliklerini açabilir ve gerekirse değişiklikleri yansıtacak şekilde hizmetinizi yeniden başlatabilir. Kodunuzu çalıştırırken, derleme günlükleri ve HTTP izlemeleri, ilerleme durumunu izleyip sorunları tanılamanıza olanak tanıyacak şekilde istemcisine geri akışı sağlar. Visual Studio 'da hata ayıklayıcıyı iliştirmek ve Java, Node. js ve .NET Core hizmetlerine Visual Studio Code Azure Dev Spaces de kullanabilirsiniz. Daha fazla bilgi için bkz. [bir projenin Azure dev Spaces nasıl][how-it-works-prep]çalıştığı, [kodunuzun Azure dev Spaces nasıl çalıştığı][how-it-works-up]ve [Azure dev Spaces ile kodunuzda uzaktan hata ayıklamanın][how-it-works-remote-debugging]nasıl çalıştığı.
 
 ## <a name="team-development"></a>Takım geliştirme
 
-Azure Geliştirme Alanları, ekiplerin uygulamaları üzerinde aynı AKS kümesiüzerinde kesintiye uğramadan verimli bir şekilde çalışmalarına yardımcı olur.
+Azure Dev Spaces, takımların, uygulamaları kesintiye uğramadan aynı AKS kümesi üzerinde verimli bir şekilde çalışmasına yardımcı olur.
 
-### <a name="intelligent-routing-between-dev-spaces"></a>Dev boşluklar arasında akıllı yönlendirme
+### <a name="intelligent-routing-between-dev-spaces"></a>Geliştirme alanları arasında akıllı yönlendirme
 
-Azure Dev Spaces ile bir takım bulut yerel bir uygulama çalıştıran tek bir AKS kümesini paylaşabilir ve takımın diğer geliştirme alanlarına müdahale etmeden geliştirebileceği, test edebileceği ve hata ayıklayabileceği yalıtılmış dev alanları oluşturabilir. Uygulamanın temel sürümü kök geliştirme alanında çalışır. Ekip üyeleri daha sonra, uygulamadaki geliştirme, test ve hata ayıklama değişiklikleri için kök alanını temel alana göre bağımsız alt geliştirme alanları oluşturur. Dev Spaces'teki yönlendirme özellikleri sayesinde, alt geliştirme alanları isteklerini alt geliştirme alanında çalışan hizmetler ile üst dev alanı arasında yönlendirebilir. Bu yönlendirme, geliştiricilerin üst alandaki bağımlı hizmetleri yeniden kullanırken bir hizmetin kendi sürümünü çalıştırmasına olanak tanır. Her alt alanın, işbirliği için başkaları tarafından paylaşılabilen ve erişilebilen benzersiz bir URL'si vardır. Azure Dev Spaces'te yönlendirmenin nasıl çalıştığı hakkında daha fazla bilgi için Azure [Dev Spaces'te yönlendirmenin nasıl çalıştığını][how-it-works-routing]öğrenin.
+Azure Dev Spaces, bir takım bulut Yerel uygulaması çalıştıran tek bir AKS kümesini paylaşabilir ve takımın diğer geliştirme alanlarını etkilemeden, test ve hata ayıklayabilecekleri yalıtılmış dev alanları oluşturabilir. Uygulamanın temel bir sürümü kök dev alanında çalışır. Daha sonra ekip üyeleri, uygulamada geliştirme, test ve hata ayıklama değişiklikleri için kök alana göre bağımsız alt geliştirme alanları oluşturur. Geliştirme alanları 'ndaki yönlendirme özellikleri sayesinde, alt dev alanları, istekleri alt dev alanı ve üst dev alanı üzerinde çalışan hizmetler arasında yönlendirebilir. Bu yönlendirme, geliştiricilerin ana alandan bağımlı hizmetleri yeniden kullanırken bir hizmetin kendi sürümünü çalıştırmasına olanak tanır. Her alt alan kendi benzersiz URL 'sine sahiptir ve bu, başkaları tarafından işbirliği için paylaşılabilir ve erişilebilir. Yönlendirmenin Azure Dev Spaces nasıl çalıştığı hakkında daha fazla bilgi için, bkz. [yönlendirmenin Azure dev Spaces nasıl çalıştığı][how-it-works-routing].
 
-### <a name="live-testing-an-open-pull-request"></a>Açık çekme isteğini canlı test etme
+### <a name="live-testing-an-open-pull-request"></a>Açık çekme isteğini canlı olarak test etme
 
-Azure Dev Alanları ile GitHub Eylemleri'ni, birleştirmeden önce doğrudan kümenizde çekme isteğinde uygulamanızda yapılan değişiklikleri test etmek için de kullanabilirsiniz. Azure Dev Spaces, uygulamanın gözden geçirici sürümünü kümenize otomatik olarak dağıtarak yazarın ve diğer ekip üyelerinin tüm uygulama bağlamında değişiklikleri gözden geçirmesine olanak tanır. Azure Dev Spaces yönlendirme özelliklerini kullanarak, uygulamanın bu inceleme sürümü diğer geliştirme alanlarını etkilemeden kümenize de dağıtılır. Tüm bu özellikler çekme isteklerini güvenle onaylamanızı ve birleştirmenizi sağlar. GitHub Eylemleri ve Azure Dev Alanları örneğini görmek için, [Azure Kubernetes Hizmeti & GitHub Eylemleri'ne][pr-flow]bakın.
+Ayrıca, birleştirme işleminden önce doğrudan kümenizdeki bir çekme isteğinde uygulamanızdaki değişiklikleri test etmek için Azure Dev Spaces ile GitHub eylemleri de kullanabilirsiniz. Azure Dev Spaces, uygulamanın bir gözden geçirme sürümünü kümenize otomatik olarak dağıtabilir, bu da yazarın ve diğer takım üyelerinin tüm uygulamanın bağlamındaki değişiklikleri gözden geçirmesine izin verir. Azure Dev Spaces yönlendirme yeteneklerini kullanarak, uygulamanın bu gözden geçirme sürümü diğer geliştirme alanlarını etkilemeden kümenize de dağıtılır. Bu yeteneklerin hepsi, çekme isteklerini güvenle onaylayıp birleştirebilmeniz için izin verir. GitHub eylemleri ve Azure Dev Spaces örneğini görmek için bkz. [GitHub eylemleri & Azure Kubernetes Service][pr-flow].
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yerel geliştirme makinenizi AKS kümenize bağlamaya başlamak [için][connect]bkz.
+Yerel geliştirme makinenizi AKS kümenize bağlamaya başlamak için bkz. [geliştirme makinenizi BIR aks kümesine bağlama][connect].
 
-Ekip geliştirme için Azure Geliştirme Alanları'nı kullanmaya başlamak için [Azure Dev Spaces'te ekip geliştirmeye][quickstart-team] bakın.
+Takım geliştirmesi için Azure Dev Spaces kullanmaya başlamak için Azure Dev Spaces hızlı başlangıçta [Takım geliştirme][quickstart-team] bölümüne bakın.
 
 [connect]: how-to/connect.md
 [how-it-works-connect]: how-dev-spaces-works-connect.md

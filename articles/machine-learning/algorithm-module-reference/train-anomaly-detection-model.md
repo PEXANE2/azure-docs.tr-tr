@@ -1,7 +1,7 @@
 ---
-title: 'Tren Anomali Algılama Modeli: Modül Referansı'
+title: 'Anomali algılama modeli eğitme: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Eğitimli bir anomali algılama modeli oluşturmak için Tren Anomali Algılama Modeli modüllerini nasıl kullanacağınızı öğrenin.
+description: Eğitimli anomali algılama modeli oluşturmak için anomali algılama modeli modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,50 +10,50 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 78ed2d85729cce94e8dfa579545f558d2cfe4651
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502977"
 ---
-# <a name="train-anomaly-detection-model"></a>Tren Anomali Algılama Modeli
+# <a name="train-anomaly-detection-model"></a>Anomali Algılama Modeli Eğitme
 
-Bu makalede, eğitilmiş bir anormallik algılama modeli oluşturmak için Azure Machine Learning tasarımcısındaki (önizleme) **Tren Anomali Algılama Modeli** modülünün nasıl kullanılacağı açıklanmaktadır.
+Bu makalede, eğitilen bir algılama modeli oluşturmak için Azure Machine Learning tasarımcısında (Önizleme) **anomali algılama modeli** modülünün nasıl kullanılacağı açıklanır.
 
-Modül, anomali algılama modeli ve etiketsiz veri kümesi için bir dizi model parametresini girdi olarak alır. Eğitim verileri için bir dizi etiketle birlikte eğitimli bir anomali algılama modelini döndürür.  
+Modül, anomali algılama modeli için bir model parametreleri kümesi ve etiketli olmayan bir veri kümesi olarak alır. Eğitim verileri için bir Etiketler kümesiyle birlikte eğitilen bir algılama modeli döndürür.  
 
-Tasarımcıda sağlanan anomali algılama algoritmaları hakkında daha fazla bilgi için aşağıdaki konulara bakın: 
+Tasarımcıda sunulan anomali algılama algoritmaları hakkında daha fazla bilgi için şu konulara bakın: 
 
 + [PCA Tabanlı Anomali Algılama](pca-based-anomaly-detection.md)  
 
-## <a name="how-to-configure-train-anomaly-detection-model"></a>Tren Anomali Algılama Modeli nasıl yapılandırılır? 
+## <a name="how-to-configure-train-anomaly-detection-model"></a>Tren anomali algılama modelini yapılandırma 
 
-1.  Tren **Anomali Algılama Modeli** modüllerini tasarımcıda boru hattınıza ekleyin. Bu modülü **Anomali Algılama** kategorisinde bulabilirsiniz.
+1.  Tasarımcı 'daki işlem hattınızı **eğitme algılama modeli** modülünü ekleyin. Bu modülü **anomali algılama** kategorisinde bulabilirsiniz.
 
-2. [PCA Tabanlı Anomali Algılama](pca-based-anomaly-detection.md) gibi anomali tespiti için tasarlanmış modüllerden birini bağlayın
+2. [PCA tabanlı anomali algılama](pca-based-anomaly-detection.md) gibi anomali algılama için tasarlanan modüllerden birini bağlayın
 
-    Diğer model türleri desteklenmez; ardışık hattı çalıştıran hata alırsınız: Tüm modeller aynı öğrenci türüne sahip olmalıdır.  
+    Diğer model türleri desteklenmez; işlem hattını çalıştırırken şu hatayı alırsınız: tüm modeller aynı Learner türüne sahip olmalıdır.  
 
-3.  Etiket sütununu seçerek ve algoritmaya özgü diğer parametreleri ayarlayarak anomali algılama modüllerini yapılandırın.  
+3.  Etiket sütununu seçerek ve algoritmaya özgü diğer parametreleri ayarlayarak anomali algılama modülünü yapılandırın.  
 
-4.  **Tren Anomali Algılama Modeli'nin**sağ girişine bir eğitim veri seti takın.  
+4.  **Anomali algılama modelini eğmek**için doğru girişe eğitim veri kümesi ekleyin.  
 
-5.  Boru hattını gönderin.  
+5.  İşlem hattını gönderme.  
 
 ## <a name="results"></a>Sonuçlar
 
 Eğitim tamamlandıktan sonra:
 
-+ Modelin parametrelerini görüntülemek için modülü sağ tıklatın ve **Visualize'ı**seçin. 
++ Modelin parametrelerini görüntülemek için modüle sağ tıklayın ve **Görselleştir**' i seçin. 
 
-+ Öngörüler oluşturmak için Yeni giriş verileriyle [Puan Modeli'ni](score-model.md) kullanın.
++ Tahmin oluşturmak için, [puan modelini](score-model.md) yeni giriş verileriyle kullanın.
 
-+ Eğitilen modelin anlık görüntüsünü kaydetmek için modülü seçin ve sağ paneldeki **Çıktılar+günlükler** sekmesinin altındaki **Kayıt veri kümesi** simgesine tıklayın.   
++ Eğitilen modelin anlık görüntüsünü kaydetmek için modülünü seçin ve sağ paneldeki **çıktılar + Günlükler** sekmesinde yer alan **veri kümesini kaydet** simgesine tıklayın.   
 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
 
-Tasarımcı modüllerine özgü hataların listesi [için tasarımcının özel durumları ve hata kodlarına bakın (önizleme).](designer-error-codes.md)
+Tasarımcı modüllerine özgü hataların listesi için bkz. [Tasarımcı Için özel durumlar ve hata kodları (Önizleme)](designer-error-codes.md) .
 '

@@ -1,24 +1,24 @@
 ---
 title: Bir değişkenin birden çok örneğini tanımlama
-description: Bir değişken oluştururken birden çok kez yeniden sıralamak için Azure Kaynak Yöneticisi şablonundaki kopyalama işlemini kullanın.
+description: Bir değişken oluştururken birden çok kez yinelemek için Azure Resource Manager şablonda kopyalama işlemini kullanın.
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: ed0c2d87c48a18b0a065f6c76e1e69142a9df048
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80153310"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>ARM şablonlarında değişken yineleme
 
-Bu makalede, Azure Kaynak Yöneticisi (ARM) şablonunuzda bir değişken için birden fazla değer oluşturmasınız gösterilmektedir. **Şablonunuzun** değişkenler bölümüne kopya öğesi ekleyerek, dağıtım sırasında bir değişkenin öğe sayısını dinamik olarak ayarlayabilirsiniz. Ayrıca şablon sözdizimini yinelemek zorunda kalmaktan da kaçının.
+Bu makalede, Azure Resource Manager (ARM) şablonunuzda bir değişken için birden fazla değer oluşturma gösterilmektedir. Şablonunuzun değişkenler bölümüne **Copy** öğesini ekleyerek, dağıtım sırasında bir değişken için öğe sayısını dinamik olarak ayarlayabilirsiniz. Ayrıca, şablon söz dizimini yinelemek zorunda kalmaktan kaçının.
 
-Ayrıca [kaynaklar,](copy-resources.md) [kaynak özellikleri](copy-properties.md)ve [çıktıları](copy-outputs.md)ile kopya kullanabilirsiniz.
+Ayrıca, [kaynak, bir kaynaktaki Özellikler](copy-properties.md)ve [çıktılar](copy-outputs.md) [ile kopyalama](copy-resources.md)özelliğini de kullanabilirsiniz.
 
 ## <a name="variable-iteration"></a>Değişken yineleme
 
-Kopyalama öğesi aşağıdaki genel biçime sahiptir:
+Copy öğesi aşağıdaki genel biçime sahiptir:
 
 ```json
 "copy": [
@@ -30,11 +30,11 @@ Kopyalama öğesi aşağıdaki genel biçime sahiptir:
 ]
 ```
 
-**Ad** özelliği döngütanımlayan herhangi bir değerdir. **Sayım** özelliği değişken için istediğiniz yineleme sayısını belirtir.
+**Name** özelliği, döngüsünü tanımlayan herhangi bir değerdir. **Count** özelliği, değişken için istediğiniz yineleme sayısını belirtir.
 
-**Giriş** özelliği, yinelemek istediğiniz özellikleri belirtir. **Giriş** özelliğindeki değerden oluşturulmuş bir dizi öğe oluşturursunuz. Tek bir özellik (dize gibi) veya çeşitli özelliklere sahip bir nesne olabilir.
+**Input** özelliği, yinelemek istediğiniz özellikleri belirtir. **Giriş** özelliğindeki değerden oluşturulan bir dizi öğe oluşturun. Tek bir Özellik (bir dize gibi) veya birkaç özelliği olan bir nesnesi olabilir.
 
-Aşağıdaki örnek, dize değerleri dizisinin nasıl oluşturulabildiğini gösterir:
+Aşağıdaki örnek dize değerleri dizisinin nasıl oluşturulacağını gösterir:
 
 ```json
 {
@@ -65,7 +65,7 @@ Aşağıdaki örnek, dize değerleri dizisinin nasıl oluşturulabildiğini gös
 }
 ```
 
-Önceki şablon aşağıdaki değerlere sahip bir dizi döndürür:
+Önceki şablon, aşağıdaki değerlere sahip bir dizi döndürür:
 
 ```json
 [
@@ -77,7 +77,7 @@ Aşağıdaki örnek, dize değerleri dizisinin nasıl oluşturulabildiğini gös
 ]
 ```
 
-Sonraki örnek, ad, diskSizeGB ve diskIndex olmak üzere üç özellisi olan bir nesne dizisinin nasıl oluşturulabildiğini gösterir.
+Sonraki örnekte, üç özelliklere (Name, diskSizeGB ve DiskIndex) sahip bir nesne dizisinin nasıl oluşturulacağı gösterilmektedir.
 
 ```json
 {
@@ -112,7 +112,7 @@ Sonraki örnek, ad, diskSizeGB ve diskIndex olmak üzere üç özellisi olan bir
 }
 ```
 
-Önceki örnek, aşağıdaki değerlere sahip bir dizi döndürür:
+Yukarıdaki örnek aşağıdaki değerlere sahip bir dizi döndürür:
 
 ```json
 [
@@ -145,10 +145,10 @@ Sonraki örnek, ad, diskSizeGB ve diskIndex olmak üzere üç özellisi olan bir
 ```
 
 > [!NOTE]
-> Değişken yineleme bir ofset bağımsız değişkeni destekler. Ofset, copyIndex('diskNames', 1 gibi yinelemenin adından sonra gelmelidir. Ofset değeri sağlamazsanız, ilk örnek için varsayılan olarak 0'a kadar dır.
+> Değişken yineleme, bir fark bağımsız değişkenini destekler. Konum, Copyındex (' diskNames ', 1) gibi yinelemenin adından sonra gelmelidir. Bir fark değeri sağlamazsanız, ilk örnek için varsayılan değer 0 ' dır.
 >
 
-Bir değişken içindeki kopyalama öğesini de kullanabilirsiniz. Aşağıdaki örnek, değerlerinden biri olarak bir dizi olan bir nesne oluşturur.
+Ayrıca, bir değişken içinde Copy öğesini de kullanabilirsiniz. Aşağıdaki örnek, değerlerinden biri olarak bir dizi içeren bir nesnesi oluşturur.
 
 ```json
 {
@@ -186,7 +186,7 @@ Bir değişken içindeki kopyalama öğesini de kullanabilirsiniz. Aşağıdaki 
 }
 ```
 
-Önceki örnek aşağıdaki değerlere sahip bir nesneyi döndürür:
+Yukarıdaki örnek, aşağıdaki değerlere sahip bir nesne döndürür:
 
 ```json
 {
@@ -221,7 +221,7 @@ Bir değişken içindeki kopyalama öğesini de kullanabilirsiniz. Aşağıdaki 
 }
 ```
 
-Sonraki örnek, değişkenlerle kopyayı kullanabileceğiniz farklı yolları gösterir.
+Sonraki örnekte, değişkenleri ile kopyalama kullanmanın farklı yolları gösterilmektedir.
 
 ```json
 {
@@ -295,28 +295,28 @@ Sonraki örnek, değişkenlerle kopyayı kullanabileceğiniz farklı yolları g�
 }
 ```
 
-## <a name="copy-limits"></a>Kopyalama sınırları
+## <a name="copy-limits"></a>Sınırları Kopyala
 
-Sayım 800'i geçemez.
+Sayım 800 ' i aşamaz.
 
-Sayı negatif sayı olamaz. Azure PowerShell 2.6 veya sonraki sürümlerle, Azure CLI 2.0.74 veya sonraki sürümlerle veya REST API sürümü **2019-05-10** veya daha yeni bir şablon uyguluyorsanız, sayıyı sıfıra ayarlayabilirsiniz. PowerShell, CLI ve REST API'nin önceki sürümleri nde sayım için sıfır desteklenmez.
+Sayı negatif bir sayı olamaz. Azure PowerShell 2,6 veya üzeri, Azure CLı 2.0.74 veya üzeri ya da REST API sürüm **2019-05-10** veya üzeri bir şablon dağıtırsanız, sayıyı sıfıra ayarlayabilirsiniz. PowerShell, CLı ve REST API 'nin önceki sürümleri Count için sıfırı desteklemez.
 
-## <a name="example-templates"></a>Örnek şablonlar
+## <a name="example-templates"></a>Örnek Şablonlar
 
-Aşağıdaki örnekler, bir değişken için birden fazla değer oluşturmak için yaygın senaryoları gösterir.
+Aşağıdaki örneklerde, bir değişken için birden fazla değer oluşturmak için yaygın senaryolar gösterilmektedir.
 
 |Şablon  |Açıklama  |
 |---------|---------|
-|[Kopya değişkenleri](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Değişkenler üzerinde eşitlenmenin farklı yollarını gösterir. |
-|[Birden çok güvenlik kuralı](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Bir ağ güvenlik grubuna çeşitli güvenlik kuralları dağıtLar. Güvenlik kurallarını bir parametreden inşa eder. Parametre için [birden çok NSG parametre dosyasına](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)bakın. |
+|[Değişkenleri Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Değişkenlerde yinelemenin farklı yollarını gösterir. |
+|[Çoklu güvenlik kuralları](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Bir ağ güvenlik grubuna birkaç güvenlik kuralı dağıtır. Bir parametreden güvenlik kuralları oluşturur. Parametresi için bkz. [birden çok NSG parametre dosyası](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir öğreticiye geçmek için [Bkz. Öğretici: ARM şablonlarını kullanarak birden çok kaynak örneği oluşturun.](template-tutorial-create-multiple-instances.md)
-* Kopyalama öğesinin diğer kullanımları için bkz:
-  * [ARM şablonlarında kaynak yinelemesi](copy-resources.md)
-  * [ARM şablonlarında özellik yinelemesi](copy-properties.md)
-  * [ARM şablonlarında çıkış yinelemesi](copy-outputs.md)
-* Şablonun bölümleri hakkında bilgi edinmek istiyorsanız, [Bkz.](template-syntax.md)
-* Şablonunuzu nasıl dağıtılayarak dağıtılayacaklarını öğrenmek için [bkz.](deploy-powershell.md)
+* Öğreticiye gitmek için bkz. [öğretici: ARM şablonları kullanarak birden çok kaynak örneği oluşturma](template-tutorial-create-multiple-instances.md).
+* Copy öğesinin diğer kullanımları için bkz.:
+  * [ARM şablonlarındaki kaynak yinelemesi](copy-resources.md)
+  * [ARM şablonlarındaki Özellik yinelemesi](copy-properties.md)
+  * [ARM şablonlarındaki çıkış yinelemesi](copy-outputs.md)
+* Bir şablonun bölümleri hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [ARM şablonları yazma](template-syntax.md).
+* Şablonunuzu dağıtmayı öğrenmek için bkz. [ARM şablonuyla uygulama dağıtma](deploy-powershell.md).
 

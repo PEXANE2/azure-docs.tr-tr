@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi uyarıları için şemalar
-description: Bu makalede, güvenlik uyarıları için Azure Güvenlik Merkezi tarafından kullanılan farklı şemalar açıklanmaktadır.
+title: Azure Güvenlik Merkezi uyarıları şemaları
+description: Bu makalede, Azure Güvenlik Merkezi tarafından güvenlik uyarıları için kullanılan farklı şemalar açıklanmaktadır.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,23 +13,23 @@ ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
 ms.openlocfilehash: 19ca17f66f6818ed4c3ef532e2030cc03f0e73ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062960"
 ---
-# <a name="security-alerts-schemas"></a>Güvenlik şemaları uyarır
+# <a name="security-alerts-schemas"></a>Güvenlik uyarıları şemaları
 
-Güvenlik Merkezi kaynaklarına yönelik tehditleri algıladığında Azure Güvenlik Merkezi'nin standart katmanının kullanıcıları güvenlik uyarıları alır.
+Güvenlik Merkezi, kaynakları için tehditler algıladığında, Azure Güvenlik Merkezi 'nin standart katmanının kullanıcıları güvenlik uyarıları alır.
 
-Bu güvenlik uyarılarını Azure Güvenlik Merkezi'nin **Tehdit Koruması** sayfalarında veya şu gibi harici araçlar aracılığıyla görüntüleyebilirsiniz:
+Bu güvenlik uyarılarını Azure Güvenlik Merkezi 'nin **tehdit koruması** sayfalarında veya gibi dış araçlarla görüntüleyebilirsiniz:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) - Microsoft'un bulut ayarı olan SIEM'i. Sentinel Bağlayıcısı, Azure Güvenlik Merkezi'nden uyarılar alır ve bunları Azure Sentinel için [Log Analytics çalışma alanına](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) gönderir.
-- Üçüncü taraf SIEM'ler - [Azure Etkinlik Hub'larına](https://docs.microsoft.com/azure/event-hubs/)veri göndermek için Güvenlik Merkezi'nin [sürekli dışa aktarma](continuous-export.md) araçlarını kullanın. Ardından Olay Hub verilerinizi bir üçüncü taraf SIEM ile tümleştirin.
-- [REST API](https://docs.microsoft.com/rest/api/securitycenter/) - Uyarılara erişmek için REST API kullanıyorsanız, [çevrimiçi Uyarılar API belgelerine](https://docs.microsoft.com/rest/api/securitycenter/alerts)bakın.
+- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) -Microsoft 'un bulutu-NATIVE SIEM. Sentinel Bağlayıcısı, Azure Güvenlik Merkezi 'ndeki uyarıları alır ve Azure Sentinel için [Log Analytics çalışma alanına](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) gönderir.
+- Üçüncü taraf Sıems- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)'a veri göndermek Için Güvenlik Merkezi 'nin [sürekli dışarı aktarma](continuous-export.md) araçları 'nı kullanın. Ardından, Olay Hub 'ınızı verilerinizi bir üçüncü taraf SıEM ile tümleştirin.
+- [REST API](https://docs.microsoft.com/rest/api/securitycenter/) -uyarılara erişmek için REST API kullanıyorsanız, [çevrimiçi uyarılar API 'si belgelerine](https://docs.microsoft.com/rest/api/securitycenter/alerts)bakın.
 
-Uyarıları kullanmak için herhangi bir programyöntemi kullanıyorsanız, sizinle alakalı alanları bulmak için doğru şemaya ihtiyacınız vardır. Ayrıca, bir Olay Hub'ına dışa aktarıyorsanız veya genel HTTP bağlayıcılarıyla İş Akışı Otomasyonu'nu tetiklemeye çalışıyorsanız, JSON nesnelerini düzgün bir şekilde ayrışdırmak için şemaları kullanın.
+Uyarıları tüketmek için herhangi bir programlama yöntemi kullanıyorsanız, sizin için uygun olan alanları bulmak için doğru şemaya ihtiyacınız olacaktır. Ayrıca, bir olay hub 'ına veriyorsanız veya genel HTTP bağlayıcılarıyla Iş akışı Otomasyonu tetiklemeye çalışıyorsanız, JSON nesnelerini doğru şekilde ayrıştırmak için şemaları kullanın.
 
 >[!IMPORTANT]
 > Şema bu senaryoların her biri için biraz farklıdır, bu nedenle aşağıdaki ilgili sekmeyi seçtiğinizden emin olun.
@@ -38,17 +38,17 @@ Uyarıları kullanmak için herhangi bir programyöntemi kullanıyorsanız, sizi
 ## <a name="the-schemas"></a>Şemalar 
 
 
-### <a name="workflow-automation-and-continuous-export-to-event-hub"></a>[İş akışı otomasyonu ve Event Hub'a sürekli ihracat](#tab/schema-continuousexport)
+### <a name="workflow-automation-and-continuous-export-to-event-hub"></a>[Olay Hub 'ına iş akışı otomasyonu ve sürekli dışarı aktarma](#tab/schema-continuousexport)
 
-### <a name="sample-json-for-alerts-sent-to-logic-apps-event-hub-and-third-party-siems"></a>Logic Apps, Event Hub ve üçüncü taraf SIEM'lere gönderilen uyarılar için örnek JSON
+### <a name="sample-json-for-alerts-sent-to-logic-apps-event-hub-and-third-party-siems"></a>Logic Apps, Olay Hub 'ına ve üçüncü taraf Sıems 'ye gönderilen uyarılar için örnek JSON
 
-Aşağıda uyarı olaylarının şemasını bulacaksınız:
+Aşağıda, iletilen uyarı olaylarının şemasını bulacaksınız:
 
-- Güvenlik Merkezi'nin iş akışı otomasyonunda yapılandırılan Azure Mantık Uygulaması örnekleri
-- Güvenlik Merkezi'nin sürekli dışa aktarma özelliğini kullanan Azure Etkinlik Merkezi
+- Güvenlik Merkezi 'nin iş akışı Otomasyonu 'nda yapılandırılmış Azure Logic App örnekleri
+- Güvenlik Merkezi 'nin sürekli dışarı aktarma özelliğini kullanan Azure Olay Hub 'ı
 
-İş akışı otomasyonu özelliği hakkında daha fazla bilgi için [uyarılara ve önerilere verilen yanıtları otomatikleştir'e](workflow-automation.md)bakın.
-Sürekli dışa aktarma hakkında daha fazla bilgi için [Dışa Aktarma uyarıları ve önerilerine](continuous-export.md)bakın.
+İş akışı Otomasyonu özelliği hakkında daha fazla bilgi için bkz. [uyarıların ve önerilerin yanıtlarını otomatikleştirme](workflow-automation.md).
+Sürekli dışa aktarma hakkında daha fazla bilgi için bkz. [uyarıları ve önerileri dışarı aktarma](continuous-export.md).
 
 [!INCLUDE [Workflow schema](../../includes/security-center-alerts-schema-workflow-automation.md)]
 
@@ -57,11 +57,11 @@ Sürekli dışa aktarma hakkında daha fazla bilgi için [Dışa Aktarma uyarıl
 
 ### <a name="azure-sentinel-and-log-analytics-workspaces"></a>[Azure Sentinel ve Log Analytics çalışma alanları](#tab/schema-sentinel)
 
-Sentinel Bağlayıcısı, Azure Güvenlik Merkezi'nden uyarılar alır ve bunları Azure Sentinel için Log Analytics Çalışma Alanına gönderir. 
+Sentinel Bağlayıcısı, Azure Güvenlik Merkezi 'ndeki uyarıları alır ve Azure Sentinel için Log Analytics çalışma alanına gönderir. 
 
-Güvenlik Merkezi uyarılarını kullanarak bir Sentinel vakası veya olay oluşturmak için, aşağıda gösterilen bu uyarılar için şemaya ihtiyacınız vardır. 
+Güvenlik Merkezi uyarılarını kullanarak bir Sentinel Case veya olay oluşturmak için aşağıda gösterilen uyarıların şemasına ihtiyacınız vardır. 
 
-Azure Sentinel hakkında daha fazla bilgi için [belgelere](https://docs.microsoft.com/azure/sentinel/)bakın.
+Azure Sentinel hakkında daha fazla bilgi için [belgelerine](https://docs.microsoft.com/azure/sentinel/)bakın.
 
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
@@ -70,14 +70,14 @@ Azure Sentinel hakkında daha fazla bilgi için [belgelere](https://docs.microso
 
 ### <a name="azure-activity-log"></a>[Azure Etkinlik Günlüğü](#tab/schema-activitylog)
 
-Azure Güvenlik Merkezi, Azure Etkinlik Günlüğü'nde etkinlik olarak Güvenlik uyarıları oluşturdu.
+Azure Güvenlik Merkezi, Azure etkinlik günlüğünde oluşturulan güvenlik uyarılarını olaylar olarak denetler.
 
-Etkinliği Etkinleştir'le uyarı olayını gösterildiği gibi arayarak Etkinlik Günlüğü'ndeki güvenlik uyarılarını görüntüleyebilirsiniz:
+Uyarı etkinleştir olayını gösterildiği gibi arayarak etkinlik günlüğündeki güvenlik uyarıları olaylarını görüntüleyebilirsiniz:
 
-[![Etkinleştir Uyarısı olayı için Etkinlik günlüğünde arama](media/alerts-schemas/sample-activity-log-alert.png)](media/alerts-schemas/sample-activity-log-alert.png#lightbox)
+[![Uyarı etkinleştir olayının etkinlik günlüğünde aranıyor](media/alerts-schemas/sample-activity-log-alert.png)](media/alerts-schemas/sample-activity-log-alert.png#lightbox)
 
 
-### <a name="sample-json-for-alerts-sent-to-azure-activity-log"></a>Azure Etkinlik Günlüğü'ne gönderilen uyarılar için örnek JSON
+### <a name="sample-json-for-alerts-sent-to-azure-activity-log"></a>Azure etkinlik günlüğüne gönderilen uyarılar için örnek JSON
 
 ```json
 {
@@ -138,53 +138,53 @@ Etkinliği Etkinleştir'le uyarı olayını gösterildiği gibi arayarak Etkinli
 }
 ```
 
-### <a name="the-data-model-of-the-schema"></a>Şema veri modeli
+### <a name="the-data-model-of-the-schema"></a>Şemanın veri modeli
 
 |Alan|Açıklama|
 |----|----|
-|**Kanal**|Sabit, "Operasyon"|
-|**correlationId**|Azure Güvenlik Merkezi uyarı kimliği|
-|**Açıklama**|Uyarının açıklaması|
-|**olayDataId**|Bkz. korelasyonId|
-|**eventName**|Değer ve yerelleştirilmiş Değer alt alanları uyarı görüntü adı içerir|
-|**category**|Değer ve yerelleştirilmiş Değer alt alanları sabittir - "Güvenlik"|
-|**olayTimestamp**|Uyarının oluşturulduğu zaman için UTC zaman damgası|
-|**Kimliği**|Tam nitelikli uyarı kimliği|
-|**Düzey**|Sabit, "Bilgi"|
-|**operationId**|Bkz. korelasyonId|
-|**operationName**|Değer alanı sabittir - "Microsoft.Security/locations/alerts/activate/action", ve yerelleştirilmiş değer "Uyarıyı Etkinleştir" olacaktır (kullanıcı yerelalanı nın yerelleştirilmiş olması olasıdır)|
-|**resourceGroupName**|Kaynak grup adını içerecektir|
-|**kaynakProviderName**|Değer ve yerelleştirilmiş Değer alt alanları sabittir - "Microsoft.Security"|
-|**resourceType**|Değer ve yerelleştirilmiş Değer alt alanları sabittir - "Microsoft.Security/konumları/uyarıları"|
-|**Resourceıd**|Tam nitelikli Azure kaynak kimliği|
-|**durum**|Değer ve yerelleştirilmiş Değer alt alanları sabittir - "Etkin"|
-|**altDurum**|Değer ve yerelleştirilmiş Değer alt alanları boş|
-|**teslimTimestamp**|Etkinlik Günlüğü'ne olay göndermeUTC zaman damgası|
-|**subscriptionId**|Gizliliği ihlal edilen kaynağın abonelik kimliği|
-|**Özellikler**|Uyarıile ilgili ek özelliklerden oluşan bir JSON çantası. Bunlar bir uyarıdan diğerine değişebilir, ancak aşağıdaki alanlar tüm uyarılarda görünür:<br>- şiddeti: Saldırının şiddeti<br>- tehlikeye Varlık: tehlikeye kaynağın adı<br>- düzeltme Adımları: Yapılacak düzeltme adımları dizisi<br>- niyet: Uyarının öldürme zinciri niyeti. Olası niyetler [Niyetler tablosunda](alerts-reference.md#intentions) belgelenmiştir|
-|**relatedEtkinlikler**|Sabit - boş dizi|
+|**lardan**|Sabit, "Işlem"|
+|**correlationId**|Azure Güvenlik Merkezi uyarı KIMLIĞI|
+|**açıklaması**|Uyarının açıklaması|
+|**Eventdataıd**|Bkz. CorrelationId|
+|**eventName**|Value ve localizedValue alt alanları, uyarı görünen adını içerir|
+|**alan**|Value ve localizedValue alt alanları sabittir-"güvenlik"|
+|**eventTimestamp**|Uyarının oluşturulduğu zamana ilişkin UTC zaman damgası|
+|**numarasını**|Tam olarak nitelenmiş uyarı KIMLIĞI|
+|**düzeyde**|Sabit, "bilgilendirme"|
+|**operationId**|Bkz. CorrelationId|
+|**operationName**|Değer alanı sabittir-"Microsoft. Security/Locations/Alerts/Activate/Action" ve yerelleştirilmiş değer "uyarıyı etkinleştir" (büyük olasılıkla Kullanıcı yerel ayarı için yerelleştirilmiş olabilir) olacaktır|
+|**resourceGroupName**|Kaynak grubu adını dahil eder|
+|**resourceProviderName**|Value ve localizedValue alt alanları sabittir-"Microsoft. Security"|
+|**resourceType**|Value ve localizedValue alt alanları sabittir-"Microsoft. Security/Locations/Alerts"|
+|**RESOURCEID**|Tam Azure Kaynak KIMLIĞI|
+|**durumlarına**|Value ve localizedValue alt alanları sabittir-"etkin"|
+|**Dosya**|Value ve localizedValue alt alanları boş|
+|**submissionTimestamp**|Etkinlik günlüğüne olay gönderimi UTC zaman damgası|
+|**SubscriptionID**|Güvenliği aşılmış kaynağın abonelik KIMLIĞI|
+|**özelliklerinin**|Uyarıyla ilgili ek özelliklerin JSON paketi. Bunlar bir uyarıdan diğerine değişebilir, ancak aşağıdaki alanlar tüm uyarılarda görünür:<br>-önem derecesi: saldırının önem derecesi<br>-Compromısedentity: güvenliği aşılmış kaynağın adı<br>-Düzeltmelere Ationsteps: gerçekleştirilecek düzeltme adımları dizisi<br>-Amaç: uyarının Kill zinciri hedefi. Olası amaçlar, [amaçları tablosunda](alerts-reference.md#intentions) belgelenmiştir|
+|**relatedEvents**|Sabit boş dizi|
 |||
 
 
 
 
 
-### <a name="ms-graph-api"></a>[MS Grafik API](#tab/schema-graphapi)
+### <a name="ms-graph-api"></a>[MS Graph API](#tab/schema-graphapi)
 
-Microsoft Graph, Microsoft 365'te veri ve istihbarata açılan ağ geçididir. Office 365, Windows 10 ve Enterprise Mobility + Security'deki muazzam miktardaki verilere erişmek için kullanabileceğiniz birleşik bir programlanabilirlik modeli sağlar. Milyonlarca kullanıcıyla etkileşimde bulunan kuruluşlar ve tüketiciler için uygulamalar oluşturmak için Microsoft Graph'taki veri zenginliğini kullanın.
+Microsoft Graph, Microsoft 365 veri ve zeka ağ geçidindir. Office 365, Windows 10 ve Enterprise Mobility + Security 'daki çok fazla veri miktarına erişmek için kullanabileceğiniz Birleşik bir programlama modeli sağlar. Milyonlarca kullanıcıyla etkileşime geçen kuruluşlar ve tüketiciler için uygulama derlemek üzere Microsoft Graph içindeki çok sayıda veriyi kullanın.
 
-MS Graph'a gönderilen güvenlik uyarıları için şema ve JSON gösterimi [Microsoft Graph belgelerinde](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0)mevcuttur.
+MS Graph 'e gönderilen güvenlik uyarıları için şema ve JSON temsili [Microsoft Graph belgelerinde](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0)bulunabilir.
 
 ---
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Güvenlik Merkezi'nin tehdit koruma araçlarının güvenlik uyarı bilgileri gönderirken kullandığı şemalar açıklanmıştır.
+Bu makalede, Azure Güvenlik Merkezi 'nin tehdit koruması araçlarının güvenlik uyarısı bilgilerini gönderirken kullandığı şemalar açıklanmaktadır.
 
-Güvenlik Merkezi'nin dışından güvenlik uyarılarına erişme yolları hakkında daha fazla bilgi için aşağıdaki sayfalara bakın:
+Dışındaki güvenlik merkezi 'nden güvenlik uyarılarına erişme yolları hakkında daha fazla bilgi için aşağıdaki sayfalara bakın:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) - Microsoft'un bulut ayarı olan SIEM
-- [Azure Etkinlik Hub'ları](https://docs.microsoft.com/azure/event-hubs/) - Microsoft'un tamamen yönetilen, gerçek zamanlı veri alma hizmeti
-- Güvenlik Merkezi'nin [sürekli ihracat özelliği](continuous-export.md)
-- [Log Analytics çalışma alanları](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) - Azure Monitor günlük verilerini veri ve yapılandırma bilgilerini içeren bir kapsayıcı olan Log Analytics çalışma alanında saklar
+- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) -Microsoft 'un bulutu-NATIVE SIEM
+- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) -Microsoft 'un tam olarak yönetilen, gerçek zamanlı veri alma hizmeti
+- Güvenlik Merkezi 'nin [sürekli dışarı aktarma özelliği](continuous-export.md)
+- [Log Analytics çalışma alanları](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) -Azure izleyici, günlük verilerini, veri ve yapılandırma bilgilerini içeren bir kapsayıcı olan bir Log Analytics çalışma alanında depolar
