@@ -1,6 +1,6 @@
 ---
-title: Sunucular için Azure Arkını yönetme (önizleme) aracısını
-description: Bu makalede, Bağlı Makine aracısı sunucular için Azure Arc'ın yaşam döngüsü sırasında genellikle gerçekleştireceğiniz farklı yönetim görevleri açıklanmaktadır.
+title: Sunucular için Azure yayı yönetme (Önizleme) Aracısı
+description: Bu makalede, sunuculara bağlı makine Aracısı için Azure Arc yaşam döngüsü boyunca genellikle gerçekleştirdiğiniz farklı yönetim görevleri açıklanır.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
@@ -9,65 +9,65 @@ ms.author: magoedte
 ms.date: 04/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 5ad2127b4cb9da3ca83aa04bd1885908a88dba62
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81308967"
 ---
-# <a name="managing-and-maintaining-the-connected-machine-agent"></a>Bağlı Makine aracısını yönetme ve sürdürme
+# <a name="managing-and-maintaining-the-connected-machine-agent"></a>Bağlı makine aracısını yönetme ve sürdürme
 
-Windows veya Linux için sunucular için Azure Arc (önizleme) Bağlı Makine aracısını ilk kez dağıtımından sonra, aracıyı yeniden yapılandırmanız, yükseltmeniz veya kullanım ömrü içinde emeklilik aşamasına ulaşmışsa bilgisayardan kaldırmanız gerekebilir. Bu rutin bakım görevlerini el ile veya otomasyon yoluyla kolayca yönetebilirsiniz, bu da hem operasyonel hatayı hem de giderleri azaltır.
+Windows veya Linux için, sunucular için Azure Arc 'ın (Önizleme) bağlı makine aracısının ilk dağıtımından sonra, aracıyı yeniden yapılandırmanız, yükseltmeniz veya yaşam döngüsünün kullanımdan kaldırılması aşamasına ulaştıysa bilgisayardan kaldırmanız gerekebilir. Bu rutin bakım görevlerini el ile veya Otomasyon aracılığıyla kolayca yönetebilirsiniz, bu da hem işlemsel hata hem de giderleri azaltır.
 
-## <a name="upgrading-agent"></a>Aracıyı yükseltme
+## <a name="upgrading-agent"></a>Aracı yükseltiliyor
 
-Windows ve Linux için Azure Bağlantılı Makine aracısı, gereksinimlerinize bağlı olarak el ile veya otomatik olarak en son sürüme yükseltilebilir. Aşağıdaki tabloda aracı yükseltme gerçekleştirmek için desteklenen yöntemler açıklanmaktadır.
+Windows ve Linux için Azure bağlı makine Aracısı, gereksinimlerinize bağlı olarak, en son sürüme el ile veya otomatik olarak yükseltilebilir. Aşağıdaki tabloda, aracı yükseltmesini gerçekleştirmek için desteklenen yöntemler açıklanmıştır.
 
 | İşletim sistemi | Yükseltme yöntemi |
 |------------------|----------------|
 | Windows | El ile<br> Windows Update |
 | Ubuntu | [Apt](https://help.ubuntu.com/lts/serverguide/apt.html) |
-| SUSE Linux Enterprise Server | [zypper](https://en.opensuse.org/SDB:Zypper_usage_11.3) |
-| RedHat Enterprise, Amazon, CentOS Linux | [Yum](https://wiki.centos.org/PackageManagement/Yum) | 
+| SUSE Linux Enterprise Server | [Zypper](https://en.opensuse.org/SDB:Zypper_usage_11.3) |
+| RedHat Enterprise, Amazon, CentOS Linux | [yum](https://wiki.centos.org/PackageManagement/Yum) | 
 
 ### <a name="windows-agent"></a>Windows aracısı
 
-Aracı, Windows makinesindeki aracıyı en son sürüme güncellemek için Microsoft Update'ten edinilebilir ve varolan yazılım güncelleştirme yönetimi işleminizi kullanarak dağıtılabilir. Komut İstemi'nden, komut dosyasından veya başka bir otomasyon çözümünden veya ui `AzureConnectedMachine.msi`sihirbazından yürütülerek el ile çalıştırılabilir. 
+Bir Windows makinesindeki aracıyı en son sürüme güncelleştirmek için, aracı Microsoft Update kullanılabilir ve var olan yazılım güncelleştirme yönetimi işleminiz kullanılarak dağıtılabilir. Komut Isteminden, bir komut dosyası veya başka bir Otomasyon çözümünden veya yürüterek `AzureConnectedMachine.msi`Kullanıcı arabirimi sihirbazından el ile de çalıştırılabilir. 
 
 > [!NOTE]
-> * Aracıyı yükseltmek için *Yönetici* izinlerine sahip olmalısınız.
-> * El ile yükseltmek için önce Yükleyici paketini hedef sunucudaki bir klasöre veya paylaşılan bir ağ klasöründen indirmeniz ve kopyalamanız gerekir. 
+> * Aracıyı yükseltmek için *yönetici* izinlerinizin olması gerekir.
+> * El ile yükseltmek için, önce yükleyici paketini indirmeniz ve hedef sunucudaki bir klasöre veya paylaşılan bir ağ klasöründen kopyalamanız gerekir. 
 
-Windows Installer paketleri için komut satırı seçeneklerini bilmiyorsanız, [Msiexec standart komut satırı seçeneklerini](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options) ve [Msiexec komut satırı seçeneklerini gözden geçirin.](https://docs.microsoft.com/windows/win32/msi/command-line-options)
+Windows Installer paketlerine yönelik komut satırı seçeneklerini tanımıyorsanız, [msiexec standart komut satırı seçeneklerini](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options) ve [msiexec komut satırı seçeneklerini](https://docs.microsoft.com/windows/win32/msi/command-line-options)gözden geçirin.
 
-#### <a name="to-upgrade-using-the-setup-wizard"></a>Kurulum Sihirbazı'nı kullanarak yükseltme yapmak için
+#### <a name="to-upgrade-using-the-setup-wizard"></a>Kurulum Sihirbazı 'Nı kullanarak yükseltmek için
 
-1. Yönetim haklarına sahip bir hesapla bilgisayarda oturum açın.
+1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Kurulum Sihirbazı'nı başlatmak için **AzureConnectedMachineAgent.msi'yi** çalıştırın.
+2. Kurulum sihirbazını başlatmak için **AzureConnectedMachineAgent. msi** dosyasını yürütün.
 
-Kurulum Sihirbazı, önceki bir sürümün var olup olmadığını keşfeder ve aracının yükseltmesini otomatik olarak gerçekleştirir. Yükseltme tamamlandığında, Kurulum Sihirbazı otomatik olarak kapanır.
+Kurulum Sihirbazı önceki bir sürümün mevcut olup olmadığını bulur ve sonra otomatik olarak aracının yükseltmesini gerçekleştirir. Yükseltme tamamlandığında, Kurulum Sihirbazı otomatik olarak kapanır.
 
 #### <a name="to-upgrade-from-the-command-line"></a>Komut satırından yükseltmek için
 
-1. Yönetim haklarına sahip bir hesapla bilgisayarda oturum açın.
+1. Yönetici haklarına sahip bir hesapla bilgisayarda oturum açın.
 
-2. Aracıyı sessizce yükseltmek ve `C:\Support\Logs` klasörde bir kurulum günlüğü dosyası oluşturmak için aşağıdaki komutu çalıştırın.
+2. Aracıyı sessizce yükseltmek ve `C:\Support\Logs` klasörde bir kurulum günlük dosyası oluşturmak için aşağıdaki komutu çalıştırın.
 
     ```dos
     msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentupgradesetup.log"
     ```
 
-### <a name="linux-agent"></a>Linux aracısı
+### <a name="linux-agent"></a>Linux Aracısı
 
-Bir Linux makinesindeki aracıyı en son sürüme güncellemek için iki komut içerir. Yerel paket dizini depolardan en son kullanılabilir paketlerin listesiyle güncelleştirmek için bir komut ve yerel paketi yükseltmek için bir komut. 
+Bir Linux makinesindeki aracıyı en son sürüme güncelleştirmek için, iki komut içerir. Yerel paket dizinini depolardan en son kullanılabilir paketler listesiyle ve yerel paketi yükseltmek için bir komuttan güncelleştiren bir komut. 
 
 > [!NOTE]
-> Aracıyı yükseltmek için *kök* erişim izinlerine veya Sudo'yu kullanarak hakları yüksek bir hesaba sahip olmalısınız.
+> Aracıyı yükseltmek için, *kök* erişim Izinleriniz veya sudo kullanılarak yükseltilmiş haklara sahip bir hesapla olması gerekir.
 
-#### <a name="upgrade-ubuntu"></a>Yükseltme Ubuntu
+#### <a name="upgrade-ubuntu"></a>Ubuntu 'ı yükselt
 
-1. Yerel paket dizini depolarda yapılan en son değişikliklerle güncelleştirmek için aşağıdaki komutu çalıştırın:
+1. Yerel paket dizinini depolarda yapılan en son değişikliklerle güncelleştirmek için aşağıdaki komutu çalıştırın:
 
     ```bash
     apt update
@@ -81,9 +81,9 @@ Bir Linux makinesindeki aracıyı en son sürüme güncellemek için iki komut i
 
 Paketlerin yüklenmesi ve kaldırılması gibi [apt](https://help.ubuntu.com/lts/serverguide/apt.html) komutunun eylemleri `/var/log/dpkg.log` günlük dosyasında günlüğe kaydedilir.
 
-#### <a name="upgrade-red-hatcentosamazon-linux"></a>Kırmızı Şapka/CentOS/Amazon Linux'u Yükselt
+#### <a name="upgrade-red-hatcentosamazon-linux"></a>Red Hat/CentOS/Amazon Linux 'u yükselt
 
-1. Yerel paket dizini depolarda yapılan en son değişikliklerle güncelleştirmek için aşağıdaki komutu çalıştırın:
+1. Yerel paket dizinini depolarda yapılan en son değişikliklerle güncelleştirmek için aşağıdaki komutu çalıştırın:
 
     ```bash
     yum check-update
@@ -95,11 +95,11 @@ Paketlerin yüklenmesi ve kaldırılması gibi [apt](https://help.ubuntu.com/lts
     yum update
     ```
 
-Paketlerin yüklenmesi ve kaldırılması gibi [yum](https://access.redhat.com/articles/yum-cheat-sheet) komutunun eylemleri `/var/log/yum.log` günlük dosyasında günlüğe kaydedilir. 
+Paketlerin yüklenmesi ve kaldırılması gibi, [yıum](https://access.redhat.com/articles/yum-cheat-sheet) komutunun eylemleri `/var/log/yum.log` günlük dosyasında günlüğe kaydedilir. 
 
-#### <a name="upgrade-suse-linux-enterprise"></a>SUSE Linux Kurumsal yükseltme
+#### <a name="upgrade-suse-linux-enterprise"></a>SUSE Linux Enterprise 'ı yükseltme
 
-1. Yerel paket dizini depolarda yapılan en son değişikliklerle güncelleştirmek için aşağıdaki komutu çalıştırın:
+1. Yerel paket dizinini depolarda yapılan en son değişikliklerle güncelleştirmek için aşağıdaki komutu çalıştırın:
 
     ```bash
     zypper refresh
@@ -111,108 +111,108 @@ Paketlerin yüklenmesi ve kaldırılması gibi [yum](https://access.redhat.com/a
     zypper update
     ```
 
-[Zypper](https://en.opensuse.org/Portal:Zypper) komutunun paketlerin yüklenmesi ve kaldırılması gibi eylemleri `/var/log/zypper.log` günlük dosyasında günlüğe kaydedilir. 
+Paketlerin yüklenmesi ve kaldırılması gibi [zypper](https://en.opensuse.org/Portal:Zypper) komutunun eylemleri `/var/log/zypper.log` günlük dosyasında günlüğe kaydedilir. 
 
 ## <a name="about-the-azcmagent-tool"></a>Azcmagent aracı hakkında
 
-Azcmagent aracı (Azcmagent.exe), yükleme sırasında sunucular (önizleme) Bağlı Makine aracısı için Azure Arc'ı yapılandırmak veya yüklemeden sonra aracının ilk yapılandırmasını değiştirmek için kullanılır. Azcmagent.exe aracıyı özelleştirmek ve durumunu görüntülemek için komut satırı parametreleri sağlar:
+Azcmagent Tool (Azcmagent. exe), yükleme sırasında sunucu aracısına bağlı makine aracısını yapılandırmak veya yükleme sonrasında aracının başlangıç yapılandırmasını değiştirmek için kullanılır. Azcmagent. exe aracıyı özelleştirmek ve durumunu görüntülemek için komut satırı parametreleri sağlar:
 
-* **Bağlan** - Makineyi Azure Arc'a bağlamak için
+* **Bağlan** -makineyi Azure yaya bağlamak için
 
-* **Bağlantıyı kesmek** - Makineyi Azure Arc'tan ayırmak için
+* **Bağlantıyı kes** -makinenin Azure Arc bağlantısını kesmek için
 
-* **Yeniden bağlanma** - Bağlantısı kesilen bir makineyi Azure Arc'a yeniden bağlamak için
+* **Yeniden bağlan** -bağlantısı kesilen bir makineyi Azure yaya yeniden bağlamak için
 
-* **Göster** - Aracı durumunu ve yapılandırma özelliklerini (Kaynak Grubu adı, Abonelik Kimliği, sürüm, vb.) görüntüleyin ve aracıyla ilgili bir sorunu gidermede yardımcı olabilir.
+* Aracıda bir sorunu gidermeye yardımcı olabilecek aracı durumunu ve yapılandırma özelliklerini (kaynak grubu adı, abonelik KIMLIĞI, sürüm vb. **) görüntüleyin.**
 
-* **-h veya --help** - Kullanılabilir komut satırı parametrelerini gösterir
+* **-h veya--help** -kullanılabilir komut satırı parametrelerini gösterir
 
-    Örneğin, **Yeniden Bağlanma** parametresi için ayrıntılı `azcmagent reconnect -h`yardım görmek için . 
+    Örneğin, **reconnect** parametresinin ayrıntılı yardımını görmek için, yazın `azcmagent reconnect -h`. 
 
-* **-v veya --verbose** - Verbose günlüğe kaydetmeyi etkinleştir
+* **-v veya--verbose** -ayrıntılı günlüğü etkinleştir
 
-Etkileşimli olarak oturum açtığınızda el ile **Bağlan,** **Bağlantıyı Kes**ve **Yeniden Bağlanma** gerçekleştirebilir veya birden çok aracıda bulunan aynı hizmet ilkesini kullanarak veya Microsoft kimlik platformu [erişim jetonunda](../../active-directory/develop/access-tokens.md)otomatikleştirebilirsiniz. Makineyi sunucular için Azure Arc'a kaydettirmek için bir hizmet ilkesi kullanmadıysanız (önizleme), bir hizmet sorumlusu oluşturmak için aşağıdaki [makaleye](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) bakın.
+Etkileşimli olarak oturum açtığınızda bir **bağlanma**, **bağlantısını kesme**ve el ile **yeniden bağlanma** gerçekleştirebilir veya birden çok aracı eklemek için kullandığınız hizmet sorumlusunu veya Microsoft Identity Platform [erişim belirtecini](../../active-directory/develop/access-tokens.md)kullanarak otomatik hale getirebilirsiniz. Makineyi sunucular için Azure Arc (Önizleme) ile kaydettirmek üzere bir hizmet sorumlusu kullanmıyorsanız, hizmet sorumlusu oluşturmak için aşağıdaki [makaleye](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) bakın.
 
 ### <a name="connect"></a>Bağlan
 
-Bu parametre, Azure Kaynak Yöneticisi'nde makineyi temsil eden bir kaynağın Azure'da oluşturulduğunu belirtir. Kaynak belirtilen abonelik ve kaynak grubundadır ve makineyle ilgili veriler `--location` ayar tarafından belirtilen Azure bölgesinde depolanır. Varsayılan kaynak adı belirtilmemişse bu makinenin ana adıdır.
+Bu parametre, makinenin Azure 'da oluşturulduğunu temsil eden Azure Resource Manager bir kaynak belirtir. Kaynak, belirtilen abonelikte ve kaynak grubunda bulunur ve makineyle ilgili veriler, bu `--location` ayar tarafından belirtilen Azure bölgesinde saklanır. Belirtilmemişse, varsayılan kaynak adı bu makinenin ana bilgisayar adıdır.
 
-Makinenin sistem tarafından atanan kimliğine karşılık gelen bir sertifika daha sonra karşıdan yüklenir ve yerel olarak depolanır. Bu adım tamamlandıktan sonra, Azure Bağlı Makine Meta veri Hizmeti ve Konuk Yapılandırma Aracısı sunucular için Azure Arc ile eşitleme yapmaya başlar (önizleme).
+Makinenin sistem tarafından atanan kimliğine karşılık gelen bir sertifika indirilir ve yerel olarak depolanır. Bu adım tamamlandıktan sonra, Azure bağlı makine Metadata Service ve konuk yapılandırma Aracısı sunucular için Azure Arc (Önizleme) ile eşitlemeye başlar.
 
-Bir hizmet sorumlusu kullanarak bağlanmak için aşağıdaki komutu çalıştırın:
+Hizmet sorumlusu kullanarak bağlanmak için aşağıdaki komutu çalıştırın:
 
 `azcmagent connect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
 
-Bir erişim belirteci kullanarak bağlanmak için aşağıdaki komutu çalıştırın:
+Erişim belirteci kullanarak bağlanmak için aşağıdaki komutu çalıştırın:
 
 `azcmagent connect --access-token <> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
 
-Yüksek oturum açmış kimlik bilgilerinize (etkileşimli) bağlanmak için aşağıdaki komutu çalıştırın:
+Yükseltilmiş oturum açma kimlik bilgilerinizle (etkileşimli) bağlanmak için aşağıdaki komutu çalıştırın:
 
 `azcmagent connect --tenant-id <TenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
 
 ### <a name="disconnect"></a>Bağlantıyı kes
 
-Bu parametre, Makineyi temsil eden Azure Kaynak Yöneticisi'ndeki bir kaynağın Azure'da silinip silindiğini belirtir. Aracıyı makineden silmez, bu ayrı bir adım olarak yapılmalıdır. Makinenin bağlantısı kesildikten sonra, sunucular için Azure Arc'a yeniden `azcmagent connect` kaydetmek istiyorsanız (önizleme), Azure'da bunun için yeni bir kaynak oluşturulması için kullanın.
+Bu parametre, Azure 'da makinenin silindiğini temsil eden Azure Resource Manager bir kaynak belirtir. Aracıyı makineden silmez, bu işlem ayrı bir adım olarak yapılmalıdır. Makinenin bağlantısı kesildikten sonra, sunucuları için Azure Arc (Önizleme) ile yeniden kaydetmek istiyorsanız, Azure 'da için yeni bir kaynak oluşturulmasını `azcmagent connect` kullanın.
 
-Bir hizmet sorumlusu kullanarak bağlantıyı kesmek için aşağıdaki komutu çalıştırın:
+Hizmet sorumlusu kullanarak bağlantıyı kesmek için aşağıdaki komutu çalıştırın:
 
 `azcmagent disconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
 
-Bir erişim jetonu kullanarak bağlantıyı kesmek için aşağıdaki komutu çalıştırın:
+Erişim belirteci kullanarak bağlantıyı kesmek için aşağıdaki komutu çalıştırın:
 
 `azcmagent disconnect --access-token <accessToken>`
 
-Yükseltilmiş oturum açmış kimlik bilgilerinizle (etkileşimli) bağlantınızı kesmek için aşağıdaki komutu çalıştırın:
+Yükseltilmiş oturum açma kimlik bilgilerinizle (etkileşimli) bağlantıyı kesmek için aşağıdaki komutu çalıştırın:
 
 `azcmagent disconnect --tenant-id <tenantID>`
 
 ### <a name="reconnect"></a>Yeniden bağlan
 
-Bu parametre, zaten kayıtlı olan veya bağlı olan makineyi sunucular için Azure Arc'a yeniden bağlar (önizleme). Makinenin süresinin dolması için makine en az 45 gün kapalıysa bu gerekli olabilir. Bu parametre, bu makineyi temsil eden Azure Kaynak Yöneticisi kaynağına karşılık gelen yeni kimlik bilgilerini almak için sağlanan kimlik doğrulama seçeneklerini kullanır.
+Bu parametre, zaten kayıtlı veya bağlı makineyi sunucular için Azure Arc (Önizleme) ile yeniden bağlar. Bu, makinenin süresi en az 45 gün, sertifikanın süresi dolduğunda gerekli olabilir. Bu parametre, bu makineyi temsil eden Azure Resource Manager kaynağına karşılık gelen yeni kimlik bilgilerini almak için belirtilen kimlik doğrulama seçeneklerini kullanır.
 
-Bu komut, [Azure Bağlı Makine Onboarding](overview.md#required-permissions) rolünden daha yüksek ayrıcalıklar gerektirir.
+Bu komut, [Azure bağlı makine ekleme](overview.md#required-permissions) rolünden daha yüksek ayrıcalıklar gerektirir.
 
-Bir hizmet sorumlusu kullanarak yeniden bağlanmak için aşağıdaki komutu çalıştırın:
+Hizmet sorumlusu kullanarak yeniden bağlanmak için aşağıdaki komutu çalıştırın:
 
 `azcmagent reconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
 
-Erişim jetonu kullanarak yeniden bağlanmak için aşağıdaki komutu çalıştırın:
+Erişim belirteci kullanarak yeniden bağlanmak için aşağıdaki komutu çalıştırın:
 
 `azcmagent reconnect --access-token <accessToken>`
 
-Yüksek oturum açmış kimlik bilgilerinizle (etkileşimli) yeniden bağlanmak için aşağıdaki komutu çalıştırın:
+Yükseltilmiş oturum açma kimlik bilgilerinizle (etkileşimli) yeniden bağlanmak için aşağıdaki komutu çalıştırın:
 
 `azcmagent reconnect --tenant-id <tenantID>`
 
-## <a name="remove-the-agent"></a>Aracıyı kaldırma
+## <a name="remove-the-agent"></a>Aracıyı Kaldırma
 
-Windows veya Linux'a Bağlı Makine aracısını makineden kaldırmak için aşağıdaki yöntemlerden birini gerçekleştirin. Aracıyı kaldırmak, makineyi sunucular için Arc ile birlikte kaldırmaz (önizleme), bu, makineyi Azure'da yönetmeniz gerektiğinde gerçekleştirdiğiniz ayrı bir işlemdir.
+Windows veya Linux bağlı makine aracısını makineden kaldırmak için aşağıdaki yöntemlerden birini gerçekleştirin. Aracıyı kaldırmak, makinenin sunucular için Arc (Önizleme) kaydını kaldırmadığından, artık Azure 'da makineyi yönetmeniz gerekmiyorsa gerçekleştirdiğiniz ayrı bir işlemdir.
 
 ### <a name="windows-agent"></a>Windows aracısı
 
-Aşağıdaki yöntemlerin her ikisi de aracıyı kaldırır, ancak makinedeki *C:\Program Files\AzureConnectedMachineAgent* klasörünü kaldırmaz.
+Aşağıdaki yöntemlerin her ikisi de aracıyı kaldırır, ancak makinede *C:\Program Files\AzureConnectedMachineAgent* klasörünü kaldırmaz.
 
-#### <a name="uninstall-from-control-panel"></a>Denetim Panelinden Kaldır
+#### <a name="uninstall-from-control-panel"></a>Denetim masasından kaldır
 
 1. Windows aracısını makineden kaldırmak için aşağıdakileri yapın:
 
-    a. Yönetici izinleri olan bir hesapla bilgisayarda oturum açın.  
-    b. **Denetim**Masası'nda, Programlar **ve Özellikler'i**seçin.  
-    c. **Programlar ve Özellikler'de**Azure Bağlı **Makine Aracısı'nı**seçin , **Kaldır**'ı seçin ve ardından **Evet'i**seçin.  
+    a. Yönetici izinlerine sahip bir hesapla bilgisayarda oturum açın.  
+    b. **Denetim Masası**'nda **Programlar ve Özellikler**' i seçin.  
+    c. **Programlar ve Özellikler**' de **Azure bağlı makine Aracısı**' nı seçin, **Kaldır**' ı seçin ve **Evet**' i seçin.  
 
     >[!NOTE]
-    > Ayrıca **AzureConnectedMachineAgent.msi** yükleyici paketini çift tıklatarak aracı kurulum sihirbazını çalıştırabilirsiniz.
+    > Ayrıca, **AzureConnectedMachineAgent. msi** yükleyici paketini çift tıklayarak da aracı kurulum sihirbazını çalıştırabilirsiniz.
 
-#### <a name="uninstall-from-the-command-line"></a>Komut satırından kaldırma
+#### <a name="uninstall-from-the-command-line"></a>Komut satırından kaldır
 
-Aracıyı Komut İstemi'nden el ile kaldırmak veya komut dosyası gibi otomatik bir yöntem kullanmak için aşağıdaki örneği kullanabilirsiniz. Öncelikle, uygulama paketinin temel tanımlayıcısı olan bir GUID olan ürün kodunu işletim sisteminden almanız gerekir. Kaldırma Msiexec.exe komut satırı kullanılarak gerçekleştirilir `msiexec /x {Product Code}`- .
+Aracıyı komut Isteminden el ile kaldırmak veya betik gibi otomatikleştirilmiş bir yöntemi kullanmak için aşağıdaki örneği kullanabilirsiniz. İlk olarak, işletim sisteminden uygulama paketinin asıl tanımlayıcısı olan bir GUID olan ürün kodunu almanız gerekir. Kaldırma işlemi, Msiexec. exe komut satırı- `msiexec /x {Product Code}`kullanılarak gerçekleştirilir.
     
-1. Kayıt Defteri Düzenleyicisi'ni açın.
+1. Kayıt defteri düzenleyicisini açın.
 
-2. Kayıt defteri `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`anahtarı altında, ürün kodunu arayın ve kopyalayın GUID.
+2. Kayıt defteri anahtarı `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`altında ürün kodu GUID 'sini bulup kopyalayın.
 
-3. Daha sonra aşağıdaki örnekleri kullanarak Msiexec kullanarak aracıyı kaldırabilirsiniz:
+3. Daha sonra aşağıdaki örnekleri kullanarak, msiexec 'i kullanarak aracıyı kaldırabilirsiniz:
 
    * Komut satırı türünden:
 
@@ -220,7 +220,7 @@ Aracıyı Komut İstemi'nden el ile kaldırmak veya komut dosyası gibi otomatik
        msiexec.exe /x {product code GUID} /qn
        ```
 
-   * PowerShell'i kullanarak aynı adımları gerçekleştirebilirsiniz:
+   * PowerShell kullanarak aynı adımları gerçekleştirebilirsiniz:
 
        ```powershell
        Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
@@ -229,12 +229,12 @@ Aracıyı Komut İstemi'nden el ile kaldırmak veya komut dosyası gibi otomatik
        ForEach-Object {MsiExec.exe /x "$($_.PsChildName)" /qn}
        ```
 
-### <a name="linux-agent"></a>Linux aracısı
+### <a name="linux-agent"></a>Linux Aracısı
 
 > [!NOTE]
-> Aracıyı kaldırmak için *kök* erişim izinlerine veya Sudo kullanarak hakları yüksek bir hesaba sahip olmalısınız.
+> Aracıyı kaldırmak için, *kök* erişim Izinleriniz veya sudo kullanılarak yükseltilmiş haklara sahip bir hesapla olması gerekir.
 
-Linux aracısını kaldırmak için kullanılacak komut Linux işletim sistemine bağlıdır.
+Linux aracısını kaldırmak için, kullanılacak komut Linux işletim sistemine bağlıdır.
 
 - Ubuntu için aşağıdaki komutu çalıştırın:
 
@@ -254,10 +254,10 @@ Linux aracısını kaldırmak için kullanılacak komut Linux işletim sistemine
     sudo zypper remove azcmagent
     ```
 
-## <a name="unregister-machine"></a>Kayıt dışı makine
+## <a name="unregister-machine"></a>Makinenin kaydını sil
 
-Azure'da destekleyici hizmetlerle makineyi yönetmeyi durdurmayı planlıyorsanız, sunucular için Arc ile makinenin kaydını çıkarmak için aşağıdaki adımları gerçekleştirin (önizleme). Bağlı Makine aracısını makineden çıkarmadan önce veya sonra bu adımları gerçekleştirebilirsiniz.
+Makinenin Azure 'da destekleyici hizmetler ile yönetilmesini durdurmayı planlıyorsanız, makinenin sunucular için Arc (Önizleme) ile kaydını silmek için aşağıdaki adımları gerçekleştirin. Bu adımları, bağlı makine aracısını makineden kaldırdıktan önce veya sonra yapabilirsiniz.
 
-1. [Azure portalına](https://aka.ms/hybridmachineportal)giderek sunucular için Azure Arc'ı açın (önizleme).
+1. [Azure Portal](https://aka.ms/hybridmachineportal)giderek sunucular Için Azure yay (Önizleme) öğesini açın.
 
-2. Listedeki makineyi seçin, elipsleri seçin (**...**), ve sonra **Sil'i**seçin.
+2. Listeden makineyi seçin, üç nokta (**...**) simgesini seçin ve **Sil**' i seçin.

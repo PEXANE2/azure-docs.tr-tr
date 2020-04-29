@@ -16,89 +16,89 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
 ms.openlocfilehash: f72ef8cc5161bd6f885249e7d39344a57fa2368e
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311410"
 ---
-# <a name="azure-security-center-for-iot-event-aggregation"></a>IoT olay toplama için Azure Güvenlik Merkezi
+# <a name="azure-security-center-for-iot-event-aggregation"></a>IoT olay toplaması için Azure Güvenlik Merkezi
 
-Azure Güvenlik Merkezi IoT güvenlik aracıları yerel cihazınızdan veri ve sistem olayları toplar ve bu verileri işleme ve analiz için Azure bulutuna gönderir. Güvenlik aracısı, yeni işlem ve yeni bağlantı olayları da dahil olmak üzere birçok türde aygıt olayı toplar. Hem yeni işlem hem de yeni bağlantı olayları bir saniye içinde bir aygıtta sık sık oluşabilir ve sağlam ve kapsamlı güvenlik açısından önemli olmakla birlikte, güvenlik aracılarının göndermek zorunda kaldığı ileti sayısı IoT Hub kotanıza ve maliyet sınırlarınıza hızla ulaşabilir veya aşabilir. Ancak, bu olaylar cihazınızı korumak için çok önemli olan son derece değerli güvenlik bilgileri içerir.
+IoT güvenlik aracıları için Azure Güvenlik Merkezi, yerel cihazınızdan veri ve sistem olayları toplar ve bu verileri işleme ve analiz için Azure bulutuna gönderir. Güvenlik Aracısı, yeni işlem ve yeni bağlantı olayları dahil olmak üzere birçok cihaz olayı türünü toplar. Yeni işlem ve yeni bağlantı olaylarının her ikisi de bir cihazda ikinci olarak sıklıkla meydana gelebilir ve güçlü ve kapsamlı güvenlik için önemli olsa da, güvenlik aracılarının göndermeye zorlanacağı ileti sayısı, IoT Hub kotasına ve maliyet sınırlarına hızlı bir şekilde ulaşabilir veya bu sınıra ulaşabilirler. Ancak, bu olaylar, cihazınızı korumak için önemli olan önemli ölçüde önemli güvenlik bilgilerini içerir.
 
-Aygıtlarınızı korurken ek kotayı ve maliyetleri azaltmak için, IoT Aracıları için Azure Güvenlik Merkezi bu tür olayları toplar.
+Cihazların korunmasını sağlarken ek kotayı ve maliyetleri azaltmak için, IoT aracıları için Azure Güvenlik Merkezi bu tür olayları toplar.
 
-Olay toplama varsayılan olarak **Açık** ve önerilmese de, herhangi bir zamanda el ile **kapatılabilir.**
+Olay toplama varsayılan olarak **açıktır** , ancak önerilmese de dilediğiniz zaman el **ile kapatılabilir.**
 
 Toplama şu anda aşağıdaki olay türleri için kullanılabilir:
 
 * ProcessCreate
-* BağlantıOluşturma
+* ConnectionCreate
 * ProcessTerminate (yalnızca Windows)
 
 ## <a name="how-does-event-aggregation-work"></a>Olay toplama nasıl çalışır?
 
-Olay toplama **açık**bırakıldığında, IoT aracıları için Azure Güvenlik Merkezi aralık dönemi veya zaman penceresi için olayları toplar.
-Ara verme süresi geçtikten sonra, aracı daha fazla analiz için toplu olayları Azure bulutuna gönderir.
-Toplu olaylar, Azure bulutuna gönderilene kadar bellekte depolanır.
+Olay toplama bırakıldığında, IoT aracıları için Azure Güvenlik **Merkezi, Aralık**dönemi veya zaman penceresi için olayları toplar.
+Aralık süresi geçtikten sonra, aracı, toplanan olayları daha fazla analiz için Azure bulutuna gönderir.
+Toplanan olaylar, Azure bulutuna gönderilene kadar bellekte depolanır.
 
-Aracının bellek ayak izini azaltmak için, aracı zaten bellekte tutulan bir benzer olay toplar zaman, aracı bu özel olayın isabet sayısını artırır. Toplama süresi penceresi geçtiğinde, aracı, oluşan her belirli olay türünün isabet sayısını gönderir. Olay toplama sadece olay toplanan her tür hit sayıları toplama.
+Aracının bellekte zaten tutulmakta olan bir olay ile aynı olayı topladığında aracının bellek parmak izini azaltmak için, aracı bu belirli olayın isabet sayısını artırır. Toplama zamanı penceresi geçtiğinde, aracı oluşan her bir olay türünün isabet sayısını gönderir. Olay toplama, yalnızca toplanan her bir olay türünün isabet sayısı toplamını verir.
 
-Olaylar yalnızca aşağıdaki koşullar yerine getirildiğinde aynı kabul edilir:
+Olaylar yalnızca aşağıdaki koşullar karşılandığında özdeş olarak değerlendirilir:
 
-* ProcessCreate olayları - **commandLine**, **yürütülebilir**, **kullanıcı adı**ve **userid** aynıdır
-* ConnectionCreate olaylar - **commandLine**, **userId**, **yön**, **yerel adres,** **uzak adres**, **protokolü ve hedef **bağlantı noktası** aynı olduğunda
-* ProcessTerminate olayları - **yürütülebilir** ve **çıkış durumu** aynı olduğunda
+* ProcessCreate olayları- **commandLine**, **çalıştırılabilir**, **Kullanıcı adı**ve Kullanıcı **kimliği** aynı olduğunda
+* ConnectionCreate olayları- **commandLine**, **UserID**, **Direction**, **Yerel adres**, **uzak adres**, * * protokolü ve **hedef bağlantı noktası** aynı olduğunda
+* ProcessTerminate olayları- **yürütülebilir** ve **Çıkış durumu** aynı olduğunda
 
-### <a name="working-with-aggregated-events"></a>Toplu etkinliklerle çalışma
+### <a name="working-with-aggregated-events"></a>Toplu olaylarla çalışma
 
-Toplama sırasında, toplanmayan olay özellikleri atılır ve 0 değeri yle günlük analitiğinde görünür.
+Toplama sırasında, toplanmayan olay özellikleri atılır ve Log Analytics 'te 0 değeri ile görüntülenir.
 
-* ProcessCreate olayları - **processId**ve **parentProcessId** 0 olarak ayarlanır
-* BağlantıCreate olayları - **processId**ve **kaynak bağlantı noktası** 0 olarak ayarlanır
+* ProcessCreate olayları- **İşlemKimliği**ve **ParentProcessId** 0 olarak ayarlanır
+* ConnectionCreate olayları- **İşlemKimliği**ve **kaynak bağlantı noktası** 0 olarak ayarlanır
 
 ## <a name="event-aggregation-based-alerts"></a>Olay toplama tabanlı uyarılar
 
-Analizden sonra, Azure Güvenlik Merkezi IoT şüpheli toplu olaylar için güvenlik uyarıları oluşturur. Toplanan olaylardan oluşturulan uyarılar, her bir toplu olay için yalnızca bir kez görüntülenir.
+Analiz sonrasında IoT için Azure Güvenlik Merkezi, şüpheli toplanmış olaylar için güvenlik uyarıları oluşturur. Toplanan olaylardan oluşturulan uyarılar, toplanan her olay için yalnızca bir kez görünür.
 
-Her olay için toplama başlangıç zamanı, bitiş saati ve isabet sayısı, soruşturmalar sırasında kullanılmak üzere Log Analytics'teki olay **ExtraDetails** alanında günlüğe kaydedilir.
+Her olay için toplama başlangıç zamanı, bitiş zamanı ve isabet sayısı, araştırmalar sırasında kullanılmak üzere Log Analytics içindeki olay **Extradetails** alanında günlüğe kaydedilir.
 
-Her bir araya yapılan olay, toplanan uyarıların 24 saatlik bir dönemini temsil eder. Her olayın sol üst kısmındaki olay seçenekleri menüsünü kullanarak, her bir toplu olayı tek tek **görevden** alabilirsiniz.
+Her toplanmış olay, toplanan uyarıların 24 saatlik bir dönemini temsil eder. Her olayın sol üst kısmındaki olay seçenekleri menüsünü kullanarak, toplanan her bir olayı **kapatabilirsiniz** .
 
-## <a name="event-aggregation-twin-configuration"></a>Olay toplama ikiz yapılandırma
+## <a name="event-aggregation-twin-configuration"></a>Event toplamasını ikizi yapılandırması
 
-**Azureiotsecurity** modülünün ikiz kimliğinin [aracı yapılandırma nesnesi](how-to-agent-configuration.md) içinde IoT olay toplama için Azure Güvenlik Merkezi yapılandırmayapılandırmasına değişiklik yapın.
+**Azureiotsecurity** modülünün Module ikizi kimliğinin [Aracı yapılandırma nesnesi](how-to-agent-configuration.md) içindeki IoT olay toplaması için Azure Güvenlik Merkezi yapılandırmasında değişiklikler yapın.
 
 | Yapılandırma adı | Olası değerler | Ayrıntılar | Açıklamalar |
 |:-----------|:---------------|:--------|:--------|
-| toplamaEnabledProcessCreate | boole | Olay oluşturma etkinliklerini etkinleştirme / devre dışı bırakma |
-| toplamaIntervalProcessCreate | ISO8601 Timespan dizesi | Olay oluşturma işlemi için toplama aralığı |
-| toplamaEnabledConnectionCreate | boole| Bağlantı oluşturma olayları için olay toplamayı etkinleştirme / devre dışı bırakma |
-| toplamaIntervalConnectionCreate | ISO8601 Timespan dizesi | Bağlantı oluşturma olayları için toplama aralığı |
-| toplamaEtkinSüreçSon | boole | İşlem sonlandırma olayları için olay toplamayı etkinleştirme / devre dışı bırakma | Yalnızca Windows|
-| toplamaIntervalProcessTerminate | ISO8601 Timespan dizesi | İşlem sonlandırma olayları için toplama aralığı | Yalnızca Windows|
+| aggregationEnabledProcessCreate | boole | İşlem oluşturma olayları için olay toplamayı etkinleştir/devre dışı bırak |
+| Aggregationınterprocesscreate | ISO8601 TimeSpan dizesi | İşlem oluşturma olayları için toplama aralığı |
+| aggregationEnabledConnectionCreate | boole| Bağlantı oluşturma olayları için olay toplamayı etkinleştir/devre dışı bırak |
+| Aggregationınterconnectioncreate | ISO8601 TimeSpan dizesi | Bağlantı oluşturma olayları için toplama aralığı |
+| aggregationEnabledProcessTerminate | boole | İşlem sonlandırma olayları için olay toplamayı etkinleştir/devre dışı bırak | Yalnızca Windows|
+| Aggregationınterınsterminate | ISO8601 TimeSpan dizesi | İşlem sonlandırma olayları için toplama aralığı | Yalnızca Windows|
 |
 
 ## <a name="default-configurations-settings"></a>Varsayılan yapılandırma ayarları
 
 | Yapılandırma adı | Varsayılan değerler |
 |:-----------|:---------------|
-| toplamaEnabledProcessCreate | true |
-| toplamaIntervalProcessCreate | "PT1H"|
-| toplamaEnabledConnectionCreate | true |
-| toplamaIntervalConnectionCreate | "PT1H"|
-| toplamaEtkinSüreçSon | true |
-| toplamaIntervalProcessTerminate | "PT1H"|
+| aggregationEnabledProcessCreate | true |
+| Aggregationınterprocesscreate | PT1H|
+| aggregationEnabledConnectionCreate | true |
+| Aggregationınterconnectioncreate | PT1H|
+| aggregationEnabledProcessTerminate | true |
+| Aggregationınterınsterminate | PT1H|
 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, IoT güvenlik aracısı toplama için Azure Güvenlik Merkezi'ni ve kullanılabilir olay yapılandırma seçeneklerini öğrendiniz.
+Bu makalede IoT güvenlik Aracısı toplaması için Azure Güvenlik Merkezi ve kullanılabilir olay yapılandırma seçenekleri hakkında bilgi edindiniz.
 
-IoT dağıtımı için Azure Güvenlik Merkezi'ni kullanmaya devam etmek için aşağıdaki makaleleri kullanın:
+IoT dağıtımı için Azure Güvenlik Merkezi 'ni kullanmaya devam etmek için aşağıdaki makaleleri kullanın:
 
-- [Güvenlik aracısı kimlik doğrulama yöntemlerini](concept-security-agent-authentication-methods.md) anlama
-- Bir güvenlik [aracısı](how-to-deploy-agent.md) seçme ve dağıtma
-- IoT hizmeti ön [koşulları](service-prerequisites.md) için Azure Güvenlik Merkezi'ni inceleyin
-- [IoT Hub'ınızda Azure Güvenlik Merkezi ioT hizmetini](quickstart-onboard-iot-hub.md) nasıl etkinleştirin öğrenin
-- [IoT SSS](resources-frequently-asked-questions.md) için Azure Güvenlik Merkezi'nden hizmet hakkında daha fazla bilgi edinin
+- [Güvenlik Aracısı kimlik doğrulama yöntemlerini](concept-security-agent-authentication-methods.md) anlama
+- [Güvenlik aracısını](how-to-deploy-agent.md) seçme ve dağıtma
+- IoT [hizmeti önkoşulları](service-prerequisites.md) Için Azure Güvenlik Merkezi 'ni gözden geçirin
+- [IoT Hub IoT hizmeti Için Azure Güvenlik Merkezi 'ni nasıl etkinleştirebileceğinizi](quickstart-onboard-iot-hub.md) öğrenin
+- [IoT Için Azure Güvenlik Merkezi](resources-frequently-asked-questions.md) 'nden hizmet hakkında daha fazla bilgi edinin

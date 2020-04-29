@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Oracle Cloud Infrastructure Console'u yapılandırın | Microsoft Dokümanlar"
-description: Azure AD'den Oracle Cloud Infrastructure Console'a kullanıcı hesaplarını otomatik olarak nasıl sağlayıp geçici olarak sağmayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Oracle bulut altyapı konsolunu yapılandırma | Microsoft Docs'
+description: Azure AD 'den Oracle bulut altyapısı konsoluna Kullanıcı hesaplarını otomatik olarak sağlamayı ve sağlamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,177 +16,177 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: Zhchia
 ms.openlocfilehash: 5aa33529a1957b6e7728b3a87bacf6bb91d987ae
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81378957"
 ---
-# <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Oracle Cloud Infrastructure Console'u yapılandırın
+# <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Oracle bulut altyapı konsolunu yapılandırma
 
-Bu öğretici, otomatik kullanıcı sağlama yapılandırmak için hem Oracle Cloud Infrastructure Console hem de Azure Active Directory (Azure AD) işlemlerinde gerçekleştirmeniz gereken adımları açıklar. Azure AD, yapılandırıldığınızda, Azure AD Sağlama hizmetini kullanarak kullanıcıları ve grupları [Oracle Cloud Infrastructure Console'a](https://www.oracle.com/cloud/free/?source=:ow:o:p:nav:0916BCButton&intcmp=:ow:o:p:nav:0916BCButton) otomatik olarak hükümler ve hükümlerden arındırma sağlar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../manage-apps/user-provisioning.md)bkz. 
+Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için hem Oracle bulut altyapısı konsolunda hem de Azure Active Directory (Azure AD) gerçekleştirmeniz gereken adımlar açıklanmaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmetini kullanarak kullanıcıları ve grupları [Oracle bulut altyapısı konsoluna](https://www.oracle.com/cloud/free/?source=:ow:o:p:nav:0916BCButton&intcmp=:ow:o:p:nav:0916BCButton) otomatik olarak sağlar ve hazırlar. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Desteklenen yetenekler
 > [!div class="checklist"]
-> * Oracle Cloud Infrastructure Console'da kullanıcı oluşturma
-> * Artık erişim gerektirmeyen kullanıcıları Oracle Cloud Infrastructure Console'da kaldırma
-> * Kullanıcı özniteliklerini Azure AD ve Oracle Cloud Infrastructure Console arasında senkronize tutma
-> * Oracle Cloud Infrastructure Console'da sağlama grupları ve grup üyelikleri
-> * Oracle Cloud Infrastructure Console için [tek oturum](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial) açma (önerilir)
+> * Oracle bulut altyapısı konsolunda kullanıcı oluşturma
+> * Oracle bulut altyapısı konsolundaki kullanıcıları artık erişim gerektirdiklerinde kaldırın
+> * Kullanıcı özniteliklerinin Azure AD ile Oracle bulut altyapı konsolu arasında eşitlenmiş olmasını sağlama
+> * Oracle bulut altyapısı konsolunda grupları ve grup üyeliklerini sağlama
+> * Oracle bulut altyapı konsolu 'nda [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial) (önerilir)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* [Azure AD kiracı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Sağlama yapılandırma [izniyle](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) Azure AD'deki bir kullanıcı hesabı (örn. Uygulama Yöneticisi, Bulut Uygulama yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
-* Bir Oracle Bulut Altyapı Denetimi [kiracı.](https://www.oracle.com/cloud/sign-in.html?intcmp=OcomFreeTier&source=:ow:o:p:nav:0916BCButton)
-* Yönetici izinleri içeren Oracle Cloud Infrastructure Control'deki bir kullanıcı hesabı.
+* [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örn. uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
+* Oracle bulut altyapısı denetim [kiracısı](https://www.oracle.com/cloud/sign-in.html?intcmp=OcomFreeTier&source=:ow:o:p:nav:0916BCButton).
+* Oracle bulut altyapısı denetimindeki yönetici izinleriyle bir kullanıcı hesabı.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
-1. Sağlama [hizmetinin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
-2. [Kimler in provizyon kapsamına](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)alınacağını belirleyin.
-3. Azure AD [ile Oracle Cloud Infrastructure Console arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlenemeye devam edin. 
+1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
+2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
+3. [Azure AD Ile Oracle bulut altyapısı konsolu arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="step-2-configure-oracle-cloud-infrastructure-console-to-support-provisioning-with-azure-ad"></a>2. Adım Oracle Cloud Infrastructure Console'u Azure AD ile sağlamayı destekleyecek şekilde yapılandırın
+## <a name="step-2-configure-oracle-cloud-infrastructure-console-to-support-provisioning-with-azure-ad"></a>2. Adım Oracle bulut altyapı konsolunu Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
 
-1. Oracle Cloud Infrastructure Console'un yönetici portalına giriş yapın. Ekranın sol üst köşesinde Kimlik **> Federasyonu**gidin.
+1. Oracle bulut altyapısı konsolunun yönetici portalında oturum açın. Ekranın sol üst köşesinde **kimlik > Federasyonu**' ne gidin.
 
-    ![Oracle Admin](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/identity.png)
+    ![Oracle Yöneticisi](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/identity.png)
 
-2. Oracle Identity Cloud Service Console'un yanındaki sayfada görüntülenen URL'ye tıklayın.
+2. Oracle Identity Cloud Service konsolunun yanındaki sayfada görünen URL 'ye tıklayın.
 
-    ![Oracle URL'si](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/url.png)
+    ![Oracle URL 'SI](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/url.png)
 
-3. Yeni bir kimlik sağlayıcısı oluşturmak için **Kimlik Sağlayıcı Ekle'yi** tıklatın. Kiracı URL'sinin bir parçası olarak kullanılmak üzere IdP kimliğini kaydedin. OAuth Client ve Grant IDCS Identity Domain Administrator AppRole oluşturmak için **Uygulamalar** sekmesinin yanındaki artı simgesine tıklayın.
+3. Yeni bir kimlik sağlayıcısı oluşturmak için **kimlik sağlayıcısı ekle** ' ye tıklayın. Kiracı URL 'sinin bir parçası olarak kullanılacak IDP kimliğini kaydedin. Bir OAuth Istemcisi oluşturmak ve ıDCS kimlik alanı yöneticisi AppRole sağlamak için **uygulamalar** sekmesinin yanındaki artı simgesine tıklayın.
 
-    ![Oracle Bulut Simgesi](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/add.png)
+    ![Oracle bulut simgesi](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/add.png)
 
-4. Uygulamanızı yapılandırmak için aşağıdaki ekran görüntülerini izleyin. Yapılandırma yapıldıktan sonra **Kaydet'e**tıklayın.
+4. Uygulamanızı yapılandırmak için aşağıdaki ekran görüntülerini izleyin. Yapılandırma tamamlandıktan sonra **Kaydet**' e tıklayın.
 
-    ![Oracle Yapılandırması](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/configuration.png)
+    ![Oracle yapılandırması](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/configuration.png)
 
-    ![Oracle Jeton Verme Politikası](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/token-issuance.png)
+    ![Oracle belirteci verme Ilkesi](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/token-issuance.png)
 
-5. Uygulamanızın yapılandırmalar sekmesi altında istemci kimliği ve istemci sırrı almak için **Genel Bilgiler** seçeneğini genişletin.
+5. Uygulamanızın konfigürasyonlar sekmesinde, istemci KIMLIĞINI ve istemci gizli anahtarını almak için **genel bilgiler** seçeneğini genişletin.
 
-    ![Oracle belirteç üretimi](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/general-information.png)
+    ![Oracle belirteci oluşturma](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/general-information.png)
 
-6. Gizli bir belirteç Base64 kodlamak için istemci kimliği ve istemci gizli biçiminde **istemci kimliği:Client Secret**. Gizli jetonu kaydet. Bu değer, Azure portalındaki Oracle Cloud Infrastructure Console uygulamanızın sağlama sekmesinde **Gizli Belirteç** alanına girilir.
+6. Gizli bir belirteç oluşturmak için istemci KIMLIĞINI ve istemci gizli anahtarını istemci **kimliği: Istemci parolası**biçiminde kodlayın. Gizli dizi belirtecini kaydedin. Bu değer, Azure portal Oracle bulut altyapısı konsol uygulamanızın sağlama sekmesinde bulunan **gizli dizi belirteci** alanına girilecektir.
 
-## <a name="step-3-add-oracle-cloud-infrastructure-console-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Oracle Bulut Altyapı Konsolu ekleme
+## <a name="step-3-add-oracle-cloud-infrastructure-console-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD Uygulama Galerisi 'nden Oracle bulut altyapısı konsolunu ekleme
 
-Oracle Cloud Infrastructure Console'a sağlama yı yönetmeye başlamak için Azure AD uygulama galerisinden Oracle Cloud Infrastructure Console'u ekleyin. Daha önce SSO için Oracle Cloud Infrastructure Console kurulumu varsa, aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. [Burada](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)galeriden bir uygulama ekleme hakkında daha fazla bilgi edinin. 
+Oracle bulut altyapısı konsoluna sağlamayı yönetmeye başlamak için Azure AD uygulama galerisinden Oracle bulut altyapısı konsolunu ekleyin. Daha önce, SSO için Oracle bulut altyapısı konsolunu ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin. 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Tedarik kapsamına kimlerde olacağını tanımlama 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Sağlama kapsamında kim olacağını tanımlama 
 
-Azure AD sağlama hizmeti, uygulamaya yapılan atamaya ve kullanıcının/ grubun özniteliklerine göre kimin sağlanacak kapsamını kapsamanızı sağlar. Atamaya göre uygulamanız için kimlerin sağlanacak kapsamını seçerseniz, uygulamayı zedelektirler ve kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca kullanıcı nın veya grubun özelliklerine göre kimlerin sağlanacak kapsamını seçerseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
+Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup özniteliklerine göre sağlanacak olan kapsamlarına olanak tanır. Atamaya göre uygulamanıza sağlanacak kapsamı tercih ederseniz, uygulamayı kullanıcılara ve gruplara atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca Kullanıcı veya grubun özniteliklerine göre sağlanacak olan kapsamı tercih ederseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
 
-* Kullanıcıları ve grupları Oracle Cloud Infrastructure Console'a atarken Varsayılan **Erişim**dışında bir rol seçmeniz gerekir. Varsayılan Erişim rolüne sahip kullanıcılar sağlama nın dışında tutulur ve sağlama günlüklerinde etkin bir şekilde hak sahibi olmadığı şeklinde işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolüyse, ek roller eklemek için [uygulama bildirimini](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) güncelleştirebilirsiniz. 
+* Oracle bulut altyapısı konsoluna Kullanıcı ve grup atarken **varsayılan erişim**dışında bir rol seçmelisiniz. Varsayılan erişim rolüne sahip kullanıcılar sağlanmasından çıkarılır ve sağlama günlüklerinde etkin değil olarak işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolü ise, ek roller eklemek için [uygulama bildirimini güncelleştirebilirsiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
 
-* Küçük başla. Herkese kullanıma başlamadan önce küçük bir kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanmış kullanıcılara ve gruplara ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu denetleyebilirsiniz. Kapsam tüm kullanıcılar ve gruplar için ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
+* Küçük Başlat. Herkese sunulmadan önce küçük bir Kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-oracle-cloud-infrastructure-console"></a>5. Adım. Otomatik kullanıcı sağlamayı Oracle Cloud Altyapı Konsolu'na yapılandırma 
+## <a name="step-5-configure-automatic-user-provisioning-to-oracle-cloud-infrastructure-console"></a>5. Adım. Oracle bulut altyapısı konsoluna otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak TestApp'teki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
 
-### <a name="to-configure-automatic-user-provisioning-for-oracle-cloud-infrastructure-console-in-azure-ad"></a>Azure AD'de Oracle Cloud Infrastructure Console için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-oracle-cloud-infrastructure-console-in-azure-ad"></a>Azure AD 'de Oracle bulut altyapısı konsoluna yönelik otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Oracle Cloud Infrastructure Console'u**seçin.
+2. Uygulamalar listesinde **Oracle Cloud Infrastructure konsolu**' nu seçin.
 
-    ![Uygulamalar listesindeki Oracle Cloud Infrastructure Console bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesinde Oracle Cloud Infrastructure konsol bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümüne, **Kiracı URL'sini** biçime `https://<IdP ID>.identity.oraclecloud.com/admin/v1` girdi. Örneğin, `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`. Gizli Belirteç'te daha önce alınan gizli belirteç değerini **girdi.** Azure AD'nin Oracle Cloud Infrastructure Console'a bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Oracle Cloud Infrastructure Console hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde **kiracı URL** 'sini biçimde `https://<IdP ID>.identity.oraclecloud.com/admin/v1` girin. Örneğin, `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`. Gizli belirteç değerini **gizli belirteçte**daha önce alındı olarak girin. Azure AD 'nin Oracle bulut altyapısı konsoluna bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Oracle Cloud Infrastructure konsolu hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Sağlama](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
+    ![alınıyor](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
 
-6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve **bir hata olduğunda e-posta bildirimi gönder'i** seçin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet'i**seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Oracle Cloud Infrastructure Console'a Senkronize Et'i**seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Oracle bulut altyapısı konsolu ile eşitler**' ı seçin.
 
-9. Azure AD'den Oracle Cloud Infrastructure Console'a eşitlenen kullanıcı özniteliklerini **Atfetme-Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Oracle Cloud Infrastructure Console'daki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. [Eşleşen hedef özniteliği](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, Oracle Cloud Infrastructure Console API'nin bu özniteliğe bağlı olarak kullanıcıları filtrelemeyi desteklediğinden emin olmanız gerekir. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde, Azure AD 'Den Oracle bulut altyapısı konsoluna eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Oracle bulut altyapısı konsolundaki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, Oracle bulut altyapısı konsolu API 'sinin, bu özniteliğe göre kullanıcıların filtrelemesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
       |Öznitelik|Tür|
       |---|---|
       |displayName|Dize|
       |userName|Dize|
-      |Etkin|Boole|
+      |bkz|Boole|
       |başlık|Dize|
-      |e-postalar[yazın eq "iş"].value|Dize|
-      |tercihDil|Dize|
-      |name.givenName|Dize|
-      |name.familyName|Dize|
-      |adresleri[yazın eq "iş"].biçimlendirilmiş|Dize|
-      |adresleri[yazın eq "iş"].yerellik|Dize|
-      |adresleri[yazın eq "iş"].region|Dize|
-      |adresleri[yazın eq "iş"].postalCode|Dize|
-      |adresleri[yazın eq "iş"].ülke|Dize|
-      |adresleri[yazın eq "iş"].streetAddress|Dize|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|Dize|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|Dize|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|Dize|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|Dize|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Başvuru|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|Dize|
-      |urn:ietf:params:scim:schemas:oracle:idcs:extension:user:User:bypassNotification|Boole|
-      |urn:ietf:params:scim:schemas:oracle:idcs:extension:user:user:isFederatedUser|Boole|
+      |e-postalar [tür EQ "iş"]. değer|Dize|
+      |preferredLanguage|Dize|
+      |ad.|Dize|
+      |Name. familyName|Dize|
+      |adresler [tür EQ "iş"]. biçimlendirildi|Dize|
+      |adresler [tür EQ "iş"]. konum|Dize|
+      |adresler [tür EQ "iş"]. bölge|Dize|
+      |adresler [tür EQ "iş"]. PostaKodu|Dize|
+      |adresler [tür EQ "iş"]. ülke|Dize|
+      |adresler [tür EQ "Work"]. streetAddress|Dize|
+      |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: employeeNumber|Dize|
+      |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|Dize|
+      |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: costCenter|Dize|
+      |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Bölüm|Dize|
+      |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Başvuru|
+      |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Organization|Dize|
+      |urn: IETF: params: Scim: schemas: Oracle: IDCs: Extension: User: User: bypassNotification|Boole|
+      |urn: IETF: params: Scim: schemas: Oracle: IDCs: Extension: User: User: ısfederateduser|Boole|
 
-10. **Eşlemeler** bölümünde, **Azure Etkin Dizin Gruplarını Oracle Cloud Infrastructure Console'a Senkronize Et'i**seçin.
+10. **Eşlemeler** bölümünde, **Azure Active Directory grupları Oracle bulut altyapısı konsolu olarak eşitler**' ı seçin.
 
-11. Azure AD'den Oracle Cloud Infrastructure Console'a eşitlenen grup özniteliklerini **Öznitelik-Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Oracle Cloud Infrastructure Console'daki gruplarla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+11. **Öznitelik eşleme** bölümünde, Azure AD 'Den Oracle bulut altyapısı konsoluna eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Oracle bulut altyapısı konsolundaki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
       |Öznitelik|Tür|
       |---|---|
       |displayName|Dize|
-      |externalId|Dize|
+      |externalID|Dize|
       |üyeler|Başvuru|
 
-12. Kapsam filtrelerini yapılandırmak [için, Kapsam](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-13. Oracle Cloud Infrastructure Console için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **KiSama Durumunu** **Ayarı** olarak değiştirin.
+13. Oracle bulut altyapısı konsolu için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-14. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Oracle Cloud Infrastructure Console'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. **Ayarlar** bölümünde **kapsam** Içinde Istenen değerleri seçerek Oracle bulut altyapısı konsoluna sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-15. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve grupların ilk eşitleme döngüsünü başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki döngülere göre ilk çevrimin gerçekleşmesi daha uzun sürer. 
+Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm Kullanıcı ve grupların ilk eşitleme döngüsünü başlatır. İlk döngü daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki Döngülerde yerine daha uzun sürer. 
 
 ## <a name="step-6-monitor-your-deployment"></a>6. Adım. Dağıtımınızı izleme
 Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
-* Hangi kullanıcıların başarılı veya başarısız bir şekilde sağlandığını belirlemek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanma
-* Sağlama döngüsünün durumunu ve tamamlanmasına ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) kontrol edin
-* Sağlama yapılandırması sağlıksız bir durumda gibi görünüyorsa, uygulama karantinaya alınır. Karantina durumları hakkında daha fazla bilgi [için burada.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
+* Hangi kullanıcıların başarıyla sağlandığını veya başarısız olduğunu öğrenmek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
+* Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) denetleyin
+* Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Buradaki](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantina durumları hakkında daha fazla bilgi edinin.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)

@@ -1,6 +1,6 @@
 ---
-title: C# kullanarak Önizleme ortamından verileri sorgula - Azure Time Series Insights | Microsoft Dokümanlar
-description: C# ile yazılmış bir uygulamayı kullanarak Azure Time Series Insights ortamından verileri nasıl sorgulayayın öğrenin.
+title: C# Azure Time Series Insights kullanarak bir önizleme ortamından veri sorgulama | Microsoft Docs
+description: C# dilinde yazılmış bir uygulama kullanarak Azure Time Series Insights ortamından verileri sorgulamayı öğrenin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,60 +12,60 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: fbc2cbc29cb23a21e7d3713091fc22f01bb1b15a
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81379824"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Azure Zaman Serisi Öngörüleri Önizleme ortamından C kullanarak verileri sorgula #
+# <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>C kullanarak Azure Time Series Insights Preview ortamından veri sorgulama #
 
-Bu C# örneği, Azure Zaman Serisi Öngörüleri Önizleme ortamlarında [Önizleme Veri Erişim API'lerinden](https://docs.microsoft.com/rest/api/time-series-insights/preview) gelen verilerin nasıl sorgulanır olduğunu gösterir.
+Bu C# örneği, Azure Time Series Insights Preview ortamlarındaki veri [erişimi API 'lerinde](https://docs.microsoft.com/rest/api/time-series-insights/preview) verilerin nasıl sorgulanacağını gösterir.
 
 > [!TIP]
-> Önizleme C# kod [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)örneklerini ' de görüntüleyin.
+> Preview C# kod örneklerini adresinde [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)görüntüleyin.
 
 ## <a name="summary"></a>Özet
 
-Aşağıdaki örnek kod aşağıdaki özellikleri gösterir:
+Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 
-* [Azure AutoRest'ten](https://github.com/Azure/AutoRest)SDK otomatik üretimi için destek.
-* [Microsoft.IdentityModel.Clients.ActiveDirectory'i](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)kullanarak Azure Active Directory aracılığıyla erişim jetonu nasıl elde edilir?
-* Sonraki Data Access API isteklerinin `Authorization` üstbilgisinde bu edinilmiş erişim belirteci geçmek için nasıl. 
-* Örnek, HTTP isteklerinin aşağıdakilere nasıl yapıldığını gösteren bir konsol arabirimi sağlar:
+* [Azure otomatik Rest](https://github.com/Azure/AutoRest)'ten SDK otomatik oluşturma desteği.
+* [Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)kullanarak Azure Active Directory aracılığıyla erişim belirteci alma.
+* Bu alınan erişim belirtecini sonraki veri erişimi API isteklerinin `Authorization` üst bilgisinde geçirme. 
+* Örnek, HTTP isteklerinin ' de nasıl yapıldığını gösteren bir konsol arabirimi sağlar:
 
-    * [Önizleme Ortamları API](https://docs.microsoft.com/rest/api/time-series-insights/preview#preview-environments-apis)
-        * [Ortamların Kullanılabilirlik API'si alın](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) ve [Olay Şeması API'si Alın](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema)
-    * [Önizleme Sorgusu API'sı](https://docs.microsoft.com/rest/api/time-series-insights/preview#query-apis)
-        * [Olaylar API alın,](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#getevents) [Seri API alın](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#getseries)ve [Toplu Serisi API alın](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregateseries)
-    * [Zaman Serisi Model API'leri](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregateseries)
-        * [Hiyerarşiler API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeserieshierarchies/get) ve [Hiyerarşileri Toplu API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeserieshierarchies/executebatch) alın
-        * [Türleri API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/get) ve [Türleri Toplu API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/executebatch) alın
-        * [Örnek API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/get) ve [Örnekler Toplu API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/executebatch) alın
-* Gelişmiş [Arama](https://docs.microsoft.com/rest/api/time-series-insights/preview#search-features) ve [TSX](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) özellikleri.
+    * [Önizleme ortamları API 'SI](https://docs.microsoft.com/rest/api/time-series-insights/preview#preview-environments-apis)
+        * [Ortamların kullanılabilirlik API 'Sini al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) ve [olay şeması API 'si al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema)
+    * [Preview sorgu API 'SI](https://docs.microsoft.com/rest/api/time-series-insights/preview#query-apis)
+        * [Olayları al API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#getevents), [seri API 'Si al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#getseries)ve [toplama serisi API 'si al](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregateseries)
+    * [Zaman serisi modeli API 'Leri](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregateseries)
+        * [Hiyerarşilerin API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeserieshierarchies/get) ve [hiyerarşileri al Batch API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeserieshierarchies/executebatch)
+        * [Türleri al API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/get) ve [türler Batch API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/executebatch)
+        * [Örnekleri al API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/get) ve [örnekleri Batch API 'si](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/executebatch)
+* Gelişmiş [arama](https://docs.microsoft.com/rest/api/time-series-insights/preview#search-features) ve [TSX](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) özellikleri.
 
 ## <a name="prerequisites-and-setup"></a>Önkoşullar ve kurulum
 
-Örnek kodu derlemeden ve çalıştırmadan önce aşağıdaki adımları tamamlayın:
+Örnek kodu derleyip çalıştırmadan önce aşağıdaki adımları gerçekleştirin:
 
-1. [Önizleme Azure Zaman Serisi Öngörüleri](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) ortamını sağlama.
-1. Azure Zaman Serisi Öngörüleri ortamınızı Azure Etkin Dizini için [Kimlik Doğrulama ve yetkilendirmede](time-series-insights-authentication-and-authorization.md)açıklandığı şekilde yapılandırın. 
-1. Zaman Serisi Öngörüleri Önizleme istemci bağımlılıklarını oluşturmak için [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) belirtildiği gibi [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) çalıştırın.
-1. `TSIPreviewDataPlaneclient.sln` Çözümü açın ve `DataPlaneClientSampleApp` Visual Studio'da varsayılan proje olarak ayarlayın.
-1. [Aşağıda](#project-dependencies) açıklanan adımları kullanarak gerekli proje bağımlılıklarını yükleyin ve `.exe` örneği yürütülebilir bir dosyaya derleyin.
-1. Dosyayı `.exe` çift tıklatarak çalıştırın.
+1. [Bir önizleme Azure Time Series Insights ortamı sağlayın](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) .
+1. [Kimlik doğrulama ve yetkilendirme](time-series-insights-authentication-and-authorization.md)bölümünde açıklandığı gibi, Azure Active Directory için Azure Time Series Insights ortamınızı yapılandırın. 
+1. Time Series Insights Preview istemci bağımlılıklarını oluşturmak için [README.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) Içinde belirtilen [GenerateCode. bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) dosyasını çalıştırın.
+1. `TSIPreviewDataPlaneclient.sln` Çözümü açın ve Visual Studio `DataPlaneClientSampleApp` 'da varsayılan proje olarak ayarlayın.
+1. [Aşağıda](#project-dependencies) açıklanan adımları kullanarak gerekli proje bağımlılıklarını yükler ve örneği yürütülebilir `.exe` bir dosyaya derleyin.
+1. `.exe` Dosyayı çift tıklayarak çalıştırın.
 
 ## <a name="project-dependencies"></a>Proje bağımlılıkları
 
-Visual Studio'nun en yeni sürümünü kullanmanız önerilir:
+Visual Studio 'nun en yeni sürümünü kullanmanız önerilir:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - Sürüm 16.4.2+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) -sürüm 16.4.2 +
 
-Örnek [kod, packages.config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClientSampleApp/packages.config) dosyasında görüntülenebilen birkaç gerekli bağımlılık vardır.
+Örnek kodun, [Packages. config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClientSampleApp/packages.config) dosyasında görüntülenebilen birkaç gerekli bağımlılığı vardır.
 
-**Yapı** > **Çözüm** seçeneğini seçerek paketleri Visual Studio 2019'dan indirin. 
+**Build** > **Build Solution** seçeneğini seçerek paketleri Visual Studio 2019 ' de indirin. 
 
-Alternatif olarak, [NuGet 2.12+](https://www.nuget.org/)kullanarak her paketi ekleyin. Örneğin:
+Alternatif olarak, [NuGet 2.12 +](https://www.nuget.org/)kullanarak her bir paketi ekleyin. Örneğin:
 
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 4.5.1`
 
@@ -74,11 +74,11 @@ Alternatif olarak, [NuGet 2.12+](https://www.nuget.org/)kullanarak her paketi ek
 [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-preview-sample/DataPlaneClientSampleApp/Program.cs)]
 
 > [!NOTE]
-> * Kod örneği varsayılan ortam değişkenleri değiştirilmeden yürütülebilir.
-> * Kod örneği bir .NET çalıştırılabilir konsol uygulamasına derlenir.
+> * Kod örneği, varsayılan ortam değişkenlerini değiştirmeksizin yürütülebilir.
+> * Kod örneği bir .NET yürütülebilir konsol uygulamasına Derlenecek.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sorgulama hakkında daha fazla bilgi edinmek için [Sorgu API başvurularını](https://docs.microsoft.com/rest/api/time-series-insights/preview-query)okuyun.
+- Sorgulama hakkında daha fazla bilgi edinmek için [sorgu API 'si başvurusunu](https://docs.microsoft.com/rest/api/time-series-insights/preview-query)okuyun.
 
-- [SDK istemcisini kullanarak bir JavaScript uygulamasını](https://github.com/microsoft/tsiclient) Time Series Insights'a nasıl bağlandığımı okuyun.
+- Time Series Insights için [istemci SDK 'sını kullanarak bir JavaScript uygulamasının nasıl bağlanacağını](https://github.com/microsoft/tsiclient) okuyun.

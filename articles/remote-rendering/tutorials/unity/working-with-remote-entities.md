@@ -1,43 +1,43 @@
 ---
 title: Unity’de uzak varlıklarla çalışma
-description: ARR varlıklarıyla nasıl çalışılı şören öğretici.
+description: ARR varlıklarıyla çalışmayı gösteren öğretici.
 author: florianborn71
 ms.author: flborn
 ms.date: 02/01/2020
 ms.topic: tutorial
 ms.openlocfilehash: db1f6a53121e05b29f7e3441af027985a141bc2e
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81310202"
 ---
-# <a name="tutorial-working-with-remote-entities-in-unity"></a>Öğretici: Unity içinde uzak varlıklarla çalışma
+# <a name="tutorial-working-with-remote-entities-in-unity"></a>Öğretici: Unity 'de uzak varlıklarla çalışma
 
-[Öğretici: Sıfırdan bir Unity projesi ayarlamak,](project-setup.md) Azure Uzaktan İşleme ile çalışmak üzere yeni bir Unity projesinin nasıl yapılandırılabildiğini gösterdi. Bu eğitimde, her ARR kullanıcısının ihtiyaç duyduğu en yaygın işlevselliğe bir göz atıyoruz.
+[Öğretici: sıfırdan bir Unity projesini ayarlama](project-setup.md) , yeni bir Unity projesinin Azure uzaktan işleme ile çalışması için nasıl yapılandırılacağını gösterdi. Bu öğreticide, her ARR kullanıcısına ihtiyacı olan en yaygın işlevselliğe göz atacağız.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
-> * Ray dökümlerini kullanarak nesneleri seçin.
-> * Renk rengi, seçim durumu ve görünürlük gibi nesne durumlarını geçersiz kılın.
+> * Işlarını kullanarak nesneleri seçin.
+> * Renk tonu rengi, seçim durumu ve görünürlük gibi nesne durumlarını geçersiz kılın.
 > * Uzak varlıkları silin.
-> * Uzak varlıkları hareket ettirin.
-> * Nesnelerin içine bakmak için kesilmiş düzlemleri kullanın.
+> * Uzak varlıkları etrafında taşıyın.
+> * Nesneleri içine bakmak için kesme düzlemleri kullanın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Bu öğretici Öğretici üstüne [oluşturur: sıfırdan bir Birlik projesi kurma](project-setup.md).
+* Bu öğretici, öğreticinin en üstünde oluşturulur [: bir Unity projesini sıfırdan ayarlama](project-setup.md).
 
 > [!TIP]
-> [ARR örnekleri deposu,](https://github.com/Azure/azure-remote-rendering) başvuru olarak kullanabileceğiniz *Unity* klasöründeki tüm öğreticiler için hazırlanmış Unity projeleri içerir.
+> [ARR örnekleri deposu](https://github.com/Azure/azure-remote-rendering) , *Unity* klasöründe başvuru olarak kullanabileceğiniz tüm öğreticiler için hazırlanan Unity projelerini içerir.
 
-## <a name="pick-objects"></a>Nesneleri seçme
+## <a name="pick-objects"></a>Nesneleri Seç
 
-Nesnelerle etkileşime gitmek istiyoruz, bu yüzden ihtiyacımız olan ilk şey, fare imlecinin altındaki nesneleri seçmektir.
+Nesnelerle etkileşim kurmak istiyoruz, bu nedenle ihtiyaç duyduğumuz ilk şey, fare imleci altında nesne çekiyor.
 
-**RemoteRaycaster** adında yeni bir [komut dosyası](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) oluşturun ve tüm içeriğini aşağıdaki kodla değiştirin:
+**Remoteraycaster** adlı [Yeni bir betik](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) oluşturun ve tüm içeriğini aşağıdaki kodla değiştirin:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -109,20 +109,20 @@ public class RemoteRaycaster : MonoBehaviour
 }
 ```
 
-Bu bileşeni sahnenizdeki *RemoteRendering* nesnesine ekleyin.
+Bu bileşeni sahnenin *RemoteRendering* nesnesine ekleyin.
 
 > [!WARNING]
 >
-> *RemoteRaycaster* bileşeni, aynı nesneye bir *ARRServiceUnity* bileşeninin eklenmesini gerektirir. *ARRServiceUnity,* bazı ARR işlevlerine daha kolay erişmek için yardımcı bir sınıftır. Ancak, sahnede bu bileşenin yalnızca tek bir örneği olabilir. Bu nedenle, aynı *GameObject'e ARRServiceUnity* gerektiren tüm bileşenleri eklediğinizden emin olun.
-> Birden çok oyun nesnesinden ARR işlevine erişmek istiyorsanız, *ARRServiceUnity* bileşenini yalnızca birine ekleyin ve diğer komut dosyalarında buna başvurun veya ARR işlevine doğrudan erişin.
+> *Remoteraycaster* bileşeni, bir *ARRServiceUnity* bileşeninin aynı nesneye bağlı olmasını gerektirir. *ARRServiceUnity* , bazı ARR işlevlerine daha kolay erişmek için yardımcı bir sınıftır. Ancak, sahnede bu bileşenin yalnızca tek bir örneği olabilir. Bu nedenle, *ARRServiceUnity* gerektiren tüm bileşenleri aynı gameobject öğesine eklediğinizden emin olun.
+> Birden çok oyun nesnesinden ARR işlevselliğine erişmek istiyorsanız, *ARRServiceUnity* bileşenini yalnızca bunlardan birine ekleyin ve diğer betiklerdeki başvuru ya da ARR işlevselliğine doğrudan erişin.
 
-Play tuşuna basın, oturuma bağlanın ve bir model yükleyin. Şimdi olay yerindeki nesneleri işaret edin ve konsol çıkışını izleyin. Üzerinde gezindiğiniz her parçanın nesne adını yazdırmalıdır.
+Oynat ' a basın, oturuma bağlanın ve model yükleyin. Şimdi sahnenin nesnelerine işaret edin ve konsol çıkışını izleyin. Üzerine geldiğinizde her parçanın nesne adını yazdırmalıdır.
 
-## <a name="highlight-objects"></a>Nesneleri vurgulama
+## <a name="highlight-objects"></a>Nesneleri Vurgula
 
-Bir sonraki adım olarak, kullanıcının işaret ettiği bir modelin hangi bölümlerini görsel geri bildirimvermek istiyoruz. Bunu başarmak için, seçtiğimiz varlığa [hiyerarşik Bir BiçimGeçersiz Bileşen](../../overview/features/override-hierarchical-state.md) ekliyoruz. Bu bileşen, bir nesneüzerindeki çeşitli özellikleri etkinleştirmek veya devre dışı bırakmak için kullanılabilir. Burada bir renk tonu ayarlamak ve [anahat işleme etkinleştirmek](../../overview/features/outlines.md)için kullanabilirsiniz.
+Bir sonraki adımda, bir modelin Kullanıcı tarafından işaret ettiği parçalarını görsel geri bildirimde bulunmak istiyoruz. Bunu başarmak için, çekdiğimiz varlığa bir [HierarchicalStateOverrideComponent](../../overview/features/override-hierarchical-state.md) ekler. Bu bileşen, bir nesnedeki çeşitli özellikleri etkinleştirmek veya devre dışı bırakmak için kullanılabilir. Burada, renk tonu ayarlamak ve [ana hat işlemeyi](../../overview/features/outlines.md)etkinleştirmek için kullanırız.
 
-**RemoteModelEntity** adlı başka bir komut dosyası dosyası oluşturun ve içeriğini aşağıdaki kodla değiştirin:
+**Remotemodelentity** adlı başka bir betik dosyası oluşturun ve içeriğini şu kodla değiştirin:
 
 ```csharp
 using System.Collections;
@@ -192,11 +192,11 @@ public class RemoteModelEntity : MonoBehaviour
 }
 ```
 > [!CAUTION]
-> Aşağıdaki kod tarafından programlı olarak atanacağı için bu komut dosyasını herhangi bir oyun nesnesine atamayın.
+> Aşağıdaki kod tarafından programlı olarak atanabileceği için, bu betiği herhangi bir oyun nesnesine atamayın.
 
-Sırada, RemoteRaycaster bileşenini az önce *RemoteModelEntity* seçtiğimiz nesneye eklemek için *RemoteRaycaster'ımızı* genişletmemiz gerekiyor.
+Daha sonra, yeni çekdiğimiz nesneye *Remotemodelentity* bileşeni eklemek için *Remoterdecaster* ' ı genişletireceğiz.
 
-**RemoteRaycaster** uygulamasına aşağıdaki kodu ekleyin ve yinelenen işlevleri kaldırın:
+Aşağıdaki kodu **Remoteraycaster** uygulamasına ekleyin ve yinelenen işlevleri kaldırın:
 
 ```csharp
     private RemoteModelEntity focusedModel = null;
@@ -242,11 +242,11 @@ Sırada, RemoteRaycaster bileşenini az önce *RemoteModelEntity* seçtiğimiz n
     }
 ```
 
-Projenizi çalıştırın ve bir modeli işaret edin, kırmızı bir renk tonu ve beyaz seçim anahattı elde görmeniz gerekir.
+Projenizi çalıştırın ve bir model üzerine gelin, kırmızı bir renk tonu ve beyaz seçim anahattı elde edip görmemeniz gerekir.
 
-## <a name="isolate-the-selected-object"></a>Seçili nesneyi yalıtma
+## <a name="isolate-the-selected-object"></a>Seçilen nesneyi ayır
 
-[Hiyerarşik StateOverrideBileşeni'nin](../../overview/features/override-hierarchical-state.md) bir diğer kullanımı da görünürlüğü geçersiz kılabilme yeteneğidir. Bu, seçili bir nesneyi modelin geri kalanından yalıtmanızı sağlar. **RemoteModelEntity** komut dosyasını açın, aşağıdaki kodu ekleyin ve yinelenen işlevleri kaldırın:
+[HierarchicalStateOverrideComponent](../../overview/features/override-hierarchical-state.md) 'in başka bir kullanımı, görünürlüğü geçersiz kılabilme olanağıdır. Bu, seçilen bir nesneyi modelin geri kalanından ayırmanıza olanak sağlar. **Remotemodelentity** betiğini açın, aşağıdaki kodu ekleyin ve yinelenen işlevleri kaldırın:
 
 ```csharp
     private bool isolated = false;
@@ -304,9 +304,9 @@ Projenizi çalıştırın ve bir modeli işaret edin, kırmızı bir renk tonu v
     }
 ```
 
-Bu kod, hiyerarşideki en üstteki nesnede bir durum geçersiz kılma bileşenine dayanır ve bu da tüm nesneleri görünmez kılar. Daha sonra, bir nesneyi görünür kılmak için seçili nesnedeki görünürlüğü yeniden geçersiz kılar. Bu nedenle, kök nesnesi bir durum geçersiz kılma bileşeni oluşturmamız gerekir.
+Bu kod, hiyerarşideki en üstteki nesnede bir durum geçersiz kılma bileşenine sahip olmayı kullanır ve bu da tüm nesneleri görünmez hale getirir. Ardından, bir nesneyi görünür hale getirmek için seçili nesnede görünürlüğü yeniden geçersiz kılar. Bu nedenle, kök nesnesinde bir durum geçersiz kılma bileşeni oluşturuyoruz.
 
-**RemoteRendering** komut dosyasını açın ve *LoadModel* işlevinin üst kısmında aşağıdaki kodu ekleyin:
+**RemoteRendering** betiğini açın ve aşağıdaki kodu *LoadModel* işlevinin üst kısmına ekleyin:
 
 ```csharp
     public async void LoadModel()
@@ -319,7 +319,7 @@ Bu kod, hiyerarşideki en üstteki nesnede bir durum geçersiz kılma bileşenin
     }
 ```
 
-Sonunda görünürlüğü geçişin bir yolunu bulmalıyız. **RemoteRaycaster** komut dosyasını açın ve *Güncelleştirme* işlevini değiştirin:
+Son olarak, görünürlüğü değiştirmek için bir yol gerekir. **Remoteraycaster** betiğini açın ve *Update* işlevini değiştirin:
 
 ```csharp
     private void Update()
@@ -340,15 +340,15 @@ Sonunda görünürlüğü geçişin bir yolunu bulmalıyız. **RemoteRaycaster**
     }
 ```
 
-Kodu çalıştırın ve modelin bir bölümüne sağ tıklayın. Modelin geri kalanı kaybolur ve yalnızca vurgulanan parça görünür kalır.
+Kodu çalıştırın ve modelin bir bölümüne sağ tıklayın. Modelin geri kalanı kaybolur ve yalnızca vurgulanan parça görünür olur.
 
 ## <a name="remove-gameobject-instances-of-remote-entities"></a>Uzak varlıkların GameObject örneklerini kaldırma
 
-Kodun nesneleri oluşturmaya devam ettiğini fark etmiş olabilirsiniz, ancak bunları asla temizlemez. Bu nesne hiyerarşisi panelinde de görülebilir. Simülasyon sırasında uzak nesne hiyerarşisini genişletdiğinizde, modelin yeni bir bölümünün üzerinde her gezindiğinizde daha fazla nesnenin göründüğünü görebilirsiniz.
+Kodun nesne oluşturma, ancak hiçbir şekilde temizlemenin devam etmeme olduğunu fark etmiş olabilirsiniz. Bu ayrıca nesne hiyerarşisi panelinde de görünür. Simülasyon sırasında uzak nesne hiyerarşisini genişlettikten sonra, modelin yeni bir bölümünün üzerine geldiğinizde daha fazla ve daha fazla nesne görünmesini sağlayabilirsiniz.
 
-Bir sahnede çok sayıda nesneolması performansı olumsuz etkiler. Artık gerekli olmayan nesneleri her zaman temizlemeniz gerekir.
+Sahnede birçok nesnenin olması, performansı olumsuz etkiler. Artık gerekmeyen nesneleri her zaman temizlemeniz gerekir.
 
-Aşağıdaki kodu **RemoteRaycaster** komut dosyasına ekleyin ve yinelenen işlevleri kaldırın:
+Aşağıdaki kodu, **Remoteraycaster** betiğine ekleyin ve yinelenen işlevleri kaldırın:
 
 ```csharp
     private void ClearFocus()
@@ -370,9 +370,9 @@ Aşağıdaki kodu **RemoteRaycaster** komut dosyasına ekleyin ve yinelenen işl
     }
 ```
 
-## <a name="move-objects"></a>Nesneleri taşıma
+## <a name="move-objects"></a>Nesneleri taşı
 
-Bir sonraki adım olarak, seçili bir nesneyi hareket ettirmek istiyoruz. **RemoteRaycaster** komut dosyasına bu kodu ekleyin ve yinelenen işlevi kaldırın:
+Bir sonraki adım olarak, seçili bir nesneyi etrafında taşımak istiyoruz. **Remoteraycaster** betiğinden, bu kodu ekleyin ve yinelenen işlevi kaldırın:
 
 ```csharp
     private Vector3 lastPosition = Vector3.zero;
@@ -412,9 +412,9 @@ Bir sonraki adım olarak, seçili bir nesneyi hareket ettirmek istiyoruz. **Remo
 ```
 
 > [!IMPORTANT]
-> Bu kodu çalıştırdığınızda, hiçbir şey olmadığını fark edeceksiniz. Bunun nedeni, bir nesnenin dönüşümünü değiştirmenin, performans nedenleriyle durum değişikliğini sunucuya otomatik olarak eşitlemesidir. Bunun yerine, bu durum değişikliğini sunucuya el ile itmeniz veya *RemoteEntitySyncObject* bileşeninde **SyncEveryFrame'i** etkinleştirmeniz gerekir.
+> Bu kodu çalıştırırsanız hiçbir şeyin gerçekleşmediğine dikkat edin. Bunun nedeni, bir nesnenin dönüşümünü değiştirmenin, performans nedenleriyle durum değişikliğini sunucu ile otomatik olarak eşitlememeleridir. Bunun yerine, bu durum değişikliğini sunucuya el ile göndermeniz ya da *Remoteentitysyncobject* bileşeninde **SyncEveryFrame** etkinleştirmeniz gerekir.
 
-**RemoteModelEntity** komut dosyasını açın ve şu satırı ekleyin:
+**Remotemodelentity** betiğini açın ve şu satırı ekleyin:
 
 ```csharp
     public void OnEnable()
@@ -425,15 +425,15 @@ Bir sonraki adım olarak, seçili bir nesneyi hareket ettirmek istiyoruz. **Remo
     }
 ```
 
-Kodu yeniden çalıştırdığınızda, bir nesneye sol tıklatıp sürükleyebilmelisiniz.
+Kodu yeniden çalıştırmak için bir nesneye Sol tıklayıp sürükleyebilirsiniz.
 
 ## <a name="add-a-cut-plane"></a>Kesme düzlemi ekleme
 
-Biz bu öğretici denemek istediğiniz son özelliği, [kesme düzlemleri](../../overview/features/cut-planes.md)kullanıyor. Kesilmiş bir düzlem, işlenmiş nesnelerin parçalarını keser, çünkü bunların içine bakabilirsiniz.
+Bu öğreticide denemek istediğimiz son özellik, [kesme düzlemleri](../../overview/features/cut-planes.md)kullanıyor. Kesilen bir düzlem, işlenen nesnelerin parçalarını, bunların içine bakabilmeniz için keser.
 
-**CutPlane**sahnesinde yeni bir GameObject oluşturun. Yeni bir komut dosyası oluşturun ve **RemoteCutPlane**adını alın. Bileşeni yeni GameObject'e ekleyin.
+Sahnede yeni bir Oyunobject oluşturun **CutPlane**. Yeni bir betik oluşturun ve **RemoteCutPlane**çağırın. Bileşeni yeni Oyunobject öğesine ekleyin.
 
-Komut dosyası dosyasını açın ve içeriğini aşağıdaki kodla değiştirin:
+Komut dosyasını açın ve içeriğini şu kodla değiştirin:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -487,11 +487,11 @@ public class RemoteCutPlane : MonoBehaviour
 }
 ```
 
-Kodunuzu şimdi çalıştırdığınızda, modelin düzlem tarafından nasıl açık kesildiğini görmeniz gerekir. *CutPlane* nesnesini seçebilir ve *Sahne* penceresinde taşıyıp döndürebilirsiniz. Kesilen düzlem nesnesini devre dışı bırakarak kesme düzlemini değiştirebilirsiniz.
+Kodunuzu şimdi çalıştırdığınızda, modelin düzlem tarafından nasıl açık olduğunu görmeniz gerekir. *CutPlane* nesnesini seçebilir ve *sahne* penceresinde taşıyabilir ve döndürebilirsiniz. Kesilen düzlemi nesnesini devre dışı bırakarak kesme düzlemini açıp kapatabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık uzak nesnelerle etkileşim kurmak için en önemli işlevselliği biliyorsunuz. Bir sonraki öğreticide, bir sahnenin görünümünü özelleştirmeye bir göz atacağız.
+Artık uzak nesnelerle etkileşimde bulunmak için en önemli işlevselliği öğrenmiş olursunuz. Bir sonraki öğreticide sahnenin görünümünü özelleştirmek için bir göz atacağız.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Çevre ve malzeme değiştirme](changing-environment-and-materials.md)
+> [Öğretici: ortamı ve malzemeleri değiştirme](changing-environment-and-materials.md)

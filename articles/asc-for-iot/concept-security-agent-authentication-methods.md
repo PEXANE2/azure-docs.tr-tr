@@ -1,6 +1,6 @@
 ---
-title: Güvenlik aracısı kimlik doğrulama yöntemleri
-description: IoT için Azure Güvenlik Merkezi hizmetini kullanırken kullanılabilen farklı kimlik doğrulama yöntemleri hakkında bilgi edinin.
+title: Güvenlik Aracısı kimlik doğrulama yöntemleri
+description: IoT hizmeti için Azure Güvenlik Merkezi 'ni kullanırken kullanılabilecek farklı kimlik doğrulama yöntemleri hakkında bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 0d9d51292c3cae9634af917819b558cdfd2fa04b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311508"
 ---
-# <a name="security-agent-authentication-methods"></a>Güvenlik aracısı kimlik doğrulama yöntemleri
+# <a name="security-agent-authentication-methods"></a>Güvenlik Aracısı kimlik doğrulama yöntemleri
 
-Bu makalede, IoT Hub ile kimlik doğrulaması yapmak için AzureIoTSecurity aracısıyla kullanabileceğiniz farklı kimlik doğrulama yöntemleri açıklanmaktadır.
+Bu makalede, IoT Hub kimlik doğrulaması yapmak için AzureIoTSecurity aracısında kullanabileceğiniz farklı kimlik doğrulama yöntemleri açıklanmaktadır.
 
-IoT Hub'daki Azure Güvenlik Merkezi IoT için binen her cihaz için bir güvenlik modülü gereklidir. Aygıtın kimliğini doğrulamak için Azure Güvenlik Merkezi ioT için iki yöntemden birini kullanabilir. Mevcut IoT çözümünüz için en uygun yöntemi seçin.
+IoT Hub IoT için Azure Güvenlik Merkezi 'ndeki her cihaz eklendi için bir güvenlik modülü gereklidir. Cihazın kimliğini doğrulamak için IoT için Azure Güvenlik Merkezi iki yöntemden birini kullanabilir. Mevcut IoT çözümünüz için en iyi şekilde çalışacak yöntemi seçin.
 
 > [!div class="checklist"]
 > * SecurityModule seçeneği
@@ -34,50 +34,50 @@ IoT Hub'daki Azure Güvenlik Merkezi IoT için binen her cihaz için bir güvenl
 
 ## <a name="authentication-methods"></a>Kimlik doğrulama yöntemleri
 
-AzureIoTSecurity aracısının kimlik doğrulaması gerçekleştirmesi için iki yöntem:
+AzureIoTSecurity aracısının kimlik doğrulaması gerçekleştirmesi için iki yöntemi:
 
-- **SecurityModule** kimlik doğrulama modu<br>
-Aracı, aygıt kimliğinden bağımsız olarak güvenlik modülü kimliği kullanılarak kimlik doğrulanır.
-Güvenlik aracısının güvenlik modülü (yalnızca simetrik anahtar) aracılığıyla özel bir kimlik doğrulama yöntemi kullanmasını istiyorsanız, bu kimlik doğrulama türünü kullanın.
+- **Securitymodule** kimlik doğrulama modu<br>
+Aracının kimliği, cihaz kimliğinden bağımsız olarak güvenlik modülü kimliği kullanılarak doğrulanır.
+Güvenlik aracısının güvenlik modülü aracılığıyla adanmış bir kimlik doğrulama yöntemi kullanmasını istiyorsanız bu kimlik doğrulaması türünü kullanın (yalnızca simetrik anahtar).
 
-- **Aygıt** kimlik doğrulama modu<br>
-Bu yöntemde, güvenlik aracısı önce aygıt kimliğiyle kimlik doğrular. İlk kimlik doğrulamadan sonra, IoT aracısı için Azure Güvenlik Merkezi, aygıtın kimlik doğrulama verilerini içeren REST API'sini kullanarak IoT Hub'ına **REST** çağrısı gerçekleştirir. Azure Güvenlik Merkezi IoT aracısı için daha sonra güvenlik modülü kimlik doğrulama yöntemini ve verilerini IoT Hub'ından ister. Son adımda, Azure Güvenlik Merkezi IoT aracısı için Azure Güvenlik Merkezi, IoT modülü için Azure Güvenlik Merkezi'ne karşı bir kimlik doğrulaması gerçekleştirir.
+- **Cihaz** kimlik doğrulama modu<br>
+Bu yöntemde, güvenlik aracısının ilk olarak cihaz kimliğiyle kimliğini doğrular. İlk kimlik doğrulamasından sonra IoT Aracısı için Azure Güvenlik Merkezi, REST API cihaz kimlik doğrulama verileriyle birlikte IoT Hub bir **rest** çağrısı yapar. IoT Aracısı için Azure Güvenlik Merkezi, IoT Hub güvenlik modülü kimlik doğrulama yöntemini ve verileri ister. Son adımda IoT Aracısı için Azure Güvenlik Merkezi, IoT modülü için Azure Güvenlik Merkezi 'Ne karşı bir kimlik doğrulaması gerçekleştirir.
 
-Güvenlik aracısının varolan bir aygıt kimlik doğrulama yöntemini (kendi imzalı sertifika veya simetrik anahtar) yeniden kullanmasını istiyorsanız, bu kimlik doğrulama türünü kullanın.
+Güvenlik aracısının mevcut bir cihaz kimlik doğrulama yöntemini (otomatik olarak imzalanan sertifika veya simetrik anahtar) yeniden kullanmasını istiyorsanız bu kimlik doğrulaması türünü kullanın.
 
-Yapılandırmayı öğrenmek için [Güvenlik aracısı yükleme parametrelerine](#security-agent-installation-parameters) bakın.
+' Nin nasıl yapılandırılacağını öğrenmek için bkz. [Güvenlik Aracısı yükleme parametreleri](#security-agent-installation-parameters) .
 
-## <a name="authentication-methods-known-limitations"></a>Bilinen sınırlamaları doğrulama yöntemleri
+## <a name="authentication-methods-known-limitations"></a>Kimlik doğrulama yöntemleri bilinen sınırlamalar
 
-- **SecurityModule** kimlik doğrulama modu yalnızca simetrik anahtar kimlik doğrulamasını destekler.
-- CA Imzalı sertifika **Aygıt** kimlik doğrulama modu tarafından desteklenmez.
+- **Securitymodule** kimlik doğrulama modu yalnızca simetrik anahtar kimlik doğrulamasını destekler.
+- CA Imzalı sertifika, **cihaz** kimlik doğrulama modu tarafından desteklenmiyor.
 
-## <a name="security-agent-installation-parameters"></a>Güvenlik aracısı yükleme parametreleri
+## <a name="security-agent-installation-parameters"></a>Güvenlik Aracısı yükleme parametreleri
 
-[Bir güvenlik aracısı dağıtılırken,](how-to-deploy-agent.md)kimlik doğrulama ayrıntıları bağımsız değişken olarak sağlanmalıdır.
+[Bir güvenlik Aracısı dağıtıldığında](how-to-deploy-agent.md), kimlik doğrulaması ayrıntıları bağımsız değişken olarak sağlanmalıdır.
 Bu bağımsız değişkenler aşağıdaki tabloda belgelenmiştir.
 
-|Linux Parametre Adı | Windows Parametre Adı | Steno Parametresi |Açıklama|Seçenekler|
+|Linux parametre adı | Windows parametre adı | Toplu parametre |Açıklama|Seçenekler|
 |---------------------|---------------|---------|---------------|---------------|
-|kimlik doğrulama-kimlik|Kimlik DoğrulamaKimliği|Auı|Kimlik doğrulama kimliği| **Güvenlik Modülü** veya **Cihaz**|
-|kimlik doğrulama yöntemi|Authenticationmethod|Aum|Kimlik doğrulama Yöntemi|**SymmetricKey** veya **SelfSignedCertificate**|
-|dosya yolu|Filepath|f|Sertifika veya simetrik anahtarı içeren dosya için mutlak tam yol| |
-|ana bilgisayar adı|Ana bilgisayar adı|Hn|FQDN of the IoT Hub|Örnek: ContosoIotHub.azure-devices.net|
-|cihaz kimliği|DeviceId|Di|Cihaz Kimliği|Örnek: MyDevice1|
-|sertifika-konum türü|SertifikaKonum Türü|Cl|Sertifika depolama konumu|**LocalFile** veya **Store**|
+|kimlik doğrulama-kimlik|Authenticationıdentity|AUI|Kimlik doğrulama kimliği| **Securitymodule** veya **cihaz**|
+|Authentication-yöntemi|AuthenticationMethod|AUD|Kimlik doğrulama Yöntemi|**SymmetricKey** veya **Selfsignedcertificate**|
+|dosya yolu|Null|f|Sertifikayı veya simetrik anahtarı içeren dosyanın mutlak tam yolu| |
+|konak adı|Ana bilgisayar adı|hn|IoT Hub FQDN 'SI|Örnek: ContosoIotHub.azure-devices.net|
+|cihaz kimliği|DeviceId|içerik|Cihaz Kimliği|Örnek: MyDevice1|
+|Sertifika-konum-tür|CertificateLocationKind|CL|Sertifika depolama konumu|**YerelDosya** veya **Mağaza**|
 |
 
-Yükle güvenlik aracısı komut dosyası kullanılırken, aşağıdaki yapılandırma otomatik olarak gerçekleştirilir. Güvenlik aracısının kimlik doğrulamasını el ile demi etmek için config dosyasını edin.
+Güvenlik aracısının yüklenmesi betiği kullanılırken, aşağıdaki yapılandırma otomatik olarak gerçekleştirilir. Güvenlik Aracısı kimlik doğrulamasını el ile düzenlemek için yapılandırma dosyasını düzenleyin.
 
-## <a name="change-authentication-method-after-deployment"></a>Dağıtımdan sonra kimlik doğrulama yöntemini değiştirme
+## <a name="change-authentication-method-after-deployment"></a>Dağıtımdan sonra kimlik doğrulama yöntemini değiştir
 
-Yükleme komut dosyası olan bir güvenlik aracısı dağıtılırken, yapılandırma dosyası otomatik olarak oluşturulur.
+Bir güvenlik Aracısı yükleme betiği ile dağıtıldığında, bir yapılandırma dosyası otomatik olarak oluşturulur.
 
-Dağıtımdan sonra kimlik doğrulama yöntemlerini değiştirmek için yapılandırma dosyasının el ile düzenlenmesi gerekir.
+Dağıtımdan sonra kimlik doğrulama yöntemlerini değiştirmek için yapılandırma dosyasını el ile düzenlemeniz gerekir.
 
-### <a name="c-based-security-agent"></a>C# tabanlı güvenlik aracısı
+### <a name="c-based-security-agent"></a>C# tabanlı güvenlik Aracısı
 
-Aşağıdaki parametrelerle _Authentication.config'i_ edin:
+_Authentication. config dosyasını_ aşağıdaki parametrelerle düzenleyin:
 
 ```xml
 <Authentication>
@@ -90,9 +90,9 @@ Aşağıdaki parametrelerle _Authentication.config'i_ edin:
 </Authentication>
 ```
 
-### <a name="c-based-security-agent"></a>C tabanlı güvenlik aracısı
+### <a name="c-based-security-agent"></a>C tabanlı güvenlik Aracısı
 
-_LocalConfiguration.json'u_ aşağıdaki parametrelerle düzenleme:
+_Localconfiguration. JSON öğesini_ şu parametrelerle düzenleyin:
 
 ```json
 "Authentication" : {
@@ -106,6 +106,6 @@ _LocalConfiguration.json'u_ aşağıdaki parametrelerle düzenleme:
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Güvenlik ajanlarına genel bakış](security-agent-architecture.md)
-- [Güvenlik aracısı dağıtma](how-to-deploy-agent.md)
+- [Güvenlik aracılarına genel bakış](security-agent-architecture.md)
+- [Güvenlik aracısını dağıt](how-to-deploy-agent.md)
 - [Ham güvenlik verilerine erişme](how-to-security-data-access.md)

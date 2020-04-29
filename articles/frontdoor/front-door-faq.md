@@ -1,6 +1,6 @@
 ---
-title: Azure Ön Kapı - Sık Sorulan Sorular
-description: Bu sayfa, Azure Ön Kapı hakkında sık sorulan soruların yanıtlarını sağlar
+title: Azure ön kapısı-sık sorulan sorular
+description: Bu sayfa, Azure ön kapısı hakkında sık sorulan soruların yanıtlarını sağlar
 services: frontdoor
 documentationcenter: ''
 author: sohamnchatterjee
@@ -12,158 +12,158 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
 ms.openlocfilehash: e2785baab27f5bfc996b57607816062195a19b2b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81313765"
 ---
-# <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Ön Kapı için sık sorulan sorular
+# <a name="frequently-asked-questions-for-azure-front-door"></a>Azure ön kapısı hakkında sık sorulan sorular
 
-Bu makalede, Azure Ön Kapı özellikleri ve işlevleri yle ilgili sık sorulan sorular yanıtlanmaktadır. Sorunuzun cevabını göremiyorsanız, aşağıdaki kanallardan (artan sırada) bizimle iletişime geçebilirsiniz:
+Bu makalede, Azure ön kapı özellikleri ve işlevselliği hakkında sık sorulan sorular yanıtlanmaktadır. Sorunuzun yanıtını görmüyorsanız, aşağıdaki kanallarla (yürüyen sırada) bizimle iletişim kurmanız gerekir:
 
-1. Bu makalenin yorum bölümü.
-2. [Azure Ön Kapı UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025).
-3. **Microsoft Desteği:** **Azure portalında, Yardım** sekmesinde yeni bir destek isteği oluşturmak için Yardım + **destek** düğmesini seçin ve ardından Yeni **destek isteğini**seçin.
+1. Bu makalenin açıklamalar bölümü.
+2. [Azure ön kapı UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025).
+3. **Microsoft desteği:** Yeni bir destek isteği oluşturmak için, Azure portal **Yardım** sekmesinde **Yardım + Destek** düğmesini seçin ve ardından **Yeni destek isteği**' ni seçin.
 
 ## <a name="general"></a>Genel
 
 ### <a name="what-is-azure-front-door"></a>Azure Front Door nedir?
 
-Azure Ön Kapı, uygulamalarınız için çeşitli katman 7 yük dengeleme özellikleri sunan bir Uygulama Dağıtım Ağıdır (ADN). Dinamik alan ivmesi (DSA) ve neredeyse gerçek zamanlı arıza ile küresel yük dengeleme sağlar. Azure tarafından tamamen yönetilen yüksek kullanılabilir ve ölçeklenebilir bir hizmettir.
+Azure ön kapısı, uygulamalarınız için çeşitli katman 7 yük dengeleme özellikleri sunan bir hizmet olarak Uygulama Teslim Ağı (ADN). Neredeyse gerçek zamanlı yük devretme ile genel yük dengeleme ile birlikte dinamik site hızlandırma (DSA) sağlar. Azure tarafından tam olarak yönetilen, yüksek oranda kullanılabilir ve ölçeklenebilir bir hizmettir.
 
-### <a name="what-features-does-azure-front-door-support"></a>Azure Ön Kapı hangi özellikleri destekler?
+### <a name="what-features-does-azure-front-door-support"></a>Azure ön kapısı hangi özellikleri destekler?
 
-Azure Ön Kapı dinamik site ivmesini (DSA), TLS/SSL boşaltma ve bitişten uca TLS, Web Application Güvenlik Duvarı, çerez tabanlı oturum afinitesini, url yol tabanlı yönlendirmeyi, ücretsiz sertifikaları ve birden çok etki alanı yönetimini ve diğerlerini destekler. Desteklenen özelliklerin tam listesi için Azure [Ön Kapısı'na Genel Bakış'a](front-door-overview.md)bakın.
+Azure ön kapısının dinamik site hızlandırma (DSA), TLS/SSL boşaltma ve uçtan uca TLS, Web uygulaması güvenlik duvarı, tanımlama bilgisi tabanlı oturum benzeşimi, URL yolu tabanlı yönlendirme, ücretsiz sertifikalar ve birden çok etki alanı yönetimi ve diğerleri desteklenir. Desteklenen özelliklerin tam listesi için bkz. [Azure ön kapısına genel bakış](front-door-overview.md).
 
-### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Azure Ön Kapı ile Azure Uygulama Ağ Geçidi arasındaki fark nedir?
+### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Azure ön kapısı ve Azure Application Gateway arasındaki fark nedir?
 
-Hem Ön Kapı hem de Uygulama Ağ Geçidi katman 7 (HTTP/HTTPS) yük dengeleyicileri olsa da, birincil fark, Ön Kapı'nın küresel bir hizmet, uygulama ağ geçidinin ise bölgesel bir hizmet olmasıdır. Ön Kapı bölgeler arasında farklı ölçek birimleriniz/kümeleriniz/damga birimleriniz arasındaki dengeyi yükleyebilirken, Application Gateway ölçek birimi içinde bulunan VM'leriniz/kaplarınız vb. arasındaki dengeyi yüklemenize olanak tanır.
+Hem ön kapı hem de Application Gateway katman 7 (HTTP/HTTPS) yük dengeleyiciler olsa da, birincil fark ön kapısının küresel bir hizmettir, ancak Application Gateway bölgesel bir hizmettir. Ön kapı, bölgelere göre farklı ölçek birimleriniz/kümeleriniz/damga birimleri arasında yük dengeleyebilmesini sağlarken, Application Gateway sanal makinelerleriniz/kapsayıcılarınız arasında (ölçek birimi içinde) yük dengelemesi yapmanıza olanak sağlar.
 
-### <a name="when-should-we-deploy-an-application-gateway-behind-front-door"></a>Ön Kapının arkasına ne zaman uygulama ağ geçidi konuşlandırmalıyız?
+### <a name="when-should-we-deploy-an-application-gateway-behind-front-door"></a>Ön kapı arkasında Application Gateway ne zaman dağıtıyoruz?
 
-Ön Kapı arkasında Uygulama Ağ Geçidi kullanmanız gereken temel senaryolar şunlardır:
+Birinci kapıdan Application Gateway kullanılması gereken önemli senaryolar şunlardır:
 
-- Ön Kapı sadece küresel düzeyde yol tabanlı yük dengeleme gerçekleştirebilir ancak sanal ağ (VNET) içinde denge trafiğini daha da yüklemek istiyorsa, uygulama ağ geçidini kullanmalıdır.
-- Ön Kapı VM/konteyner düzeyinde çalışmadığından, Bağlantı Boşaltma yapamaz. Ancak, Uygulama Ağ Geçidi Bağlantı Boşaltma yapmanızı sağlar. 
-- AFD'nin arkasındaki Uygulama Ağ Geçidi ile %100 TLS/SSL boşaltma elde edilebilir ve sanal ağları (VNET) içinde yalnızca HTTP isteklerini yönlendirebilirsiniz.
-- Ön Kapı ve Uygulama Ağ Geçidi hem destek oturum afinite. Ön Kapı, kullanıcı oturumundan sonraki trafiği aynı kümeye veya belirli bir bölgeye yönlendirebilirken, Application Gateway trafiği küme içindeki aynı sunucuya yönlendirebilir.  
+- Ön kapı, yalnızca genel düzeyde yol tabanlı yük dengelemesi gerçekleştirebilir, ancak biri sanal ağı (VNET) içinde daha da fazla yük dengelemek isterse, Application Gateway kullanmaları gerekir.
+- Ön kapı bir VM/kapsayıcı düzeyinde çalışmadığından bağlantı boşaltma yapılamaz. Ancak Application Gateway bağlantı boşaltma yapmanıza olanak sağlar. 
+- AFD 'ın arkasındaki Application Gateway, biri %100 TLS/SSL yük boşaltma elde edebilir ve yalnızca kendi sanal ağı (VNET) içinde HTTP isteklerini yönlendirebilir.
+- Ön kapı ve Application Gateway her ikisi de oturum benzeşimini destekler. Ön kapı sonraki trafiği bir kullanıcı oturumundan, belirli bir bölgedeki aynı kümeye veya arka uca yönlendirebilir. Application Gateway, trafiği küme içindeki aynı sunucuya yönlendirebilir.  
 
-### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Azure Yük Bakiyesi'ni Ön Kapının arkasına dağıtabilir miyiz?
+### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Ön kapıdan Azure Load Balancer dağıtabilir.
 
-Azure Ön Kapı'nın trafiği yönlendirmek için herkese açık bir VIP'ye veya herkese açık bir DNS adına ihtiyacı vardır. Ön Kapı arkasında bir Azure Yük Dengeleyicisi dağıtmak yaygın bir kullanım örneğidir.
+Azure ön kapısının trafiği yönlendirmek için genel bir VIP veya genel olarak kullanılabilir bir DNS adı olması gerekir. Ön kapıdan Azure Load Balancer dağıtım yaygın kullanım durumdur.
 
-### <a name="what-protocols-does-azure-front-door-support"></a>Azure Ön Kapı hangi protokolleri destekler?
+### <a name="what-protocols-does-azure-front-door-support"></a>Azure ön kapısı hangi protokolleri destekler?
 
-Azure Ön Kapı HTTP, HTTPS ve HTTP/2'yi destekler.
+Azure ön kapısı, HTTP, HTTPS ve HTTP/2 destekler.
 
-### <a name="how-does-azure-front-door-support-http2"></a>Azure Ön Kapı HTTP/2'yi nasıl destekler?
+### <a name="how-does-azure-front-door-support-http2"></a>Azure ön kapısının HTTP/2 desteği nasıl desteklenir?
 
-HTTP/2 protokol desteği yalnızca Azure Ön Kapı'ya bağlanan istemciler tarafından kullanılabilir. Arka uç havuzunda arka uçlara iletişim HTTP/1.1 üzerindedir. HTTP/2 desteği varsayılan olarak etkinleştirilir.
+HTTP/2 protokolü desteği yalnızca Azure ön kapısına bağlanan istemciler tarafından kullanılabilir. Arka uç havuzundaki arka uçlarla iletişim HTTP/1.1 üzerinden yapılır. HTTP/2 desteği varsayılan olarak etkindir.
 
-### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Arka uç havuzunun bir parçası olarak bugün hangi kaynaklar desteklenmektedir?
+### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Bugün arka uç havuzunun bir parçası olarak hangi kaynaklar desteklenir?
 
-Arka uç havuzları Depolama, Web Uygulaması, Kubernetes örneklerinden veya genel bağlantıya sahip diğer özel ana bilgisayar adlarından oluşabilir. Azure Ön Kapı, arka uçların genel bir IP veya genel olarak çözülebilir bir DNS ana bilgisayar adı aracılığıyla tanımlanmasını gerektirir. Arka uç havuzlarının üyeleri, genel bağlantıya sahip oldukları sürece bölgeler, bölgeler ve hatta Azure dışında olabilir.
+Arka uç havuzları depolama, Web uygulaması, Kubernetes örnekleri veya ortak bağlantısı olan diğer özel ana bilgisayar adından oluşabilir. Azure ön kapısı, arka uçların genel bir IP veya genel olarak çözümlenebilen bir DNS ana bilgisayar aracılığıyla tanımlanmasını gerektirir. Arka uç havuzlarının üyeleri, genel bağlantı sahibi oldukları sürece bölgeler, bölgeler veya Azure dışında olabilir.
 
 ### <a name="what-regions-is-the-service-available-in"></a>Hizmet hangi bölgelerde kullanılabilir?
 
-Azure Ön Kapı genel bir hizmettir ve belirli bir Azure bölgesine bağlı değildir. Ön Kapı oluştururken belirtmeniz gereken tek konum, kaynak grubu için meta verilerin nerede depolanacağını temel olarak belirten kaynak grubu konumudur. Ön Kapı kaynağının kendisi küresel bir kaynak olarak oluşturulur ve yapılandırma tüm POP'lara (Varoluş Noktası) genel olarak dağıtılır. 
+Azure ön kapısı küresel bir hizmettir ve belirli bir Azure bölgesine bağlı değildir. Ön kapı oluştururken belirtmeniz gereken tek konum, temel olarak kaynak grubu için meta verilerin depolanacağı yeri belirleyen kaynak grubu konumudur. Ön kapı kaynağı bir genel kaynak olarak oluşturulur ve yapılandırma tüm pop 'Lara (varlık noktası) genel olarak dağıtılır. 
 
-### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Azure Ön Kapı için POP konumları nelerdir?
+### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Azure ön kapısının POP konumları nelerdir?
 
-Azure Ön Kapı, Microsoft'tan gelen Azure CDN ile aynı POP (Point of Presence) konumları listesine sahiptir. POP'larımızın tam listesi [için, Microsoft'un Azure CDN POP konumlarını](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)lütfen incelikle incebaşvurun.
+Azure ön kapısının, Microsoft 'tan Azure CDN aynı POP (varlık noktası) konumları listesi vardır. Pop 'larımızın tüm listesi için, lütfen [Microsoft 'tan Azure CDN pop konumlarına](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)başvurur.
 
-### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure Ön Kapı, uygulamam için özel bir dağıtım mı yoksa müşteriler arasında mı paylaşılıyor?
+### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure ön kapısı, Uygulamam için adanmış bir dağıtım mi yoksa müşteriler arasında mi paylaşılıyor?
 
-Azure Ön Kapı, dünya çapında dağıtılan çok kiracılı bir hizmettir. Bu nedenle, Ön Kapı altyapısı tüm müşterileri arasında paylaşılır. Ancak, bir Ön Kapı profili oluşturarak, uygulamanız için gereken özel yapılandırmayı tanımlarsınız ve Ön Kapınızda yapılan hiçbir değişiklik diğer Ön Kapı yapılandırmalarını etkilemez.
+Azure ön kapısı, küresel olarak dağıtılmış çok kiracılı bir hizmettir. Bu nedenle, ön kapıya ait altyapı tüm müşterileri arasında paylaşılır. Bununla birlikte, ön kapılı bir profil oluşturarak uygulamanız için gerekli olan özel yapılandırmayı tanımlarsınız ve ön kapıda diğer ön kapı yapılandırmalarında hiçbir değişiklik yapılmaz.
 
-### <a name="is-http-https-redirection-supported"></a>HTTP->HTTPS yeniden yönlendirmesi desteklendi mi?
+### <a name="is-http-https-redirection-supported"></a>HTTP->HTTPS yeniden yönlendirmesi destekleniyor mu?
 
-Evet. Aslında, Azure Ön Kapı ana bilgisayar, yol ve sorgu dize yönlendirmesinin yanı sıra URL yeniden yönlendirmesinin bir parçasını destekler. [URL yeniden yönlendirmesi](front-door-url-redirect.md)hakkında daha fazla bilgi edinin. 
+Evet. Azure ön kapısının yanı sıra ana bilgisayar, yol ve sorgu dizesi yeniden yönlendirmeyi ve URL yeniden yönlendirme 'nin bir parçasını destekler. [URL yeniden yönlendirme](front-door-url-redirect.md)hakkında daha fazla bilgi edinin. 
 
-### <a name="in-what-order-are-routing-rules-processed"></a>Yönlendirme kuralları hangi sırayla işlenir?
+### <a name="in-what-order-are-routing-rules-processed"></a>Yönlendirme kuralları hangi sırada işlendi?
 
-Ön Kapınız için rotalar sipariş edilmez ve en iyi eşleşmeye göre belirli bir rota seçilir. Ön Kapı istekleri yönlendirme [kuralıyla nasıl eşleştme](front-door-route-matching.md)hakkında daha fazla bilgi edinin.
+Ön kapılarınızın rotaları sıralı değildir ve en iyi eşleşme temelinde belirli bir rota seçilir. [Ön kapısının bir yönlendirme kuralına yönelik Istekleri nasıl eşleştirtiği](front-door-route-matching.md)hakkında daha fazla bilgi edinin.
 
-### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Arka ucuma erişimi yalnızca Azure Ön Kapı'ya nasıl kilitlerim?
+### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Nasıl yaparım? arka ucuma erişimi yalnızca Azure ön kapısına kilitler mi?
 
-Yalnızca belirli Ön Kapınızdan trafiği kabul etmek için başvurunuzu kilitlemek için arka uçiçin IP ALA'ları ayarlamanız ve ardından arka ponponunızdaki trafiği Ön Kapı tarafından gönderilen üstbilginin 'X-Azure-FDID' başlığının belirli değeriyle sınırlamanız gerekir. Bu adımlar aşağıdaki gibi ayrıntılı olarak açıklanmıştır:
+Uygulamanızı yalnızca belirli ön kapıdan gelen trafiği kabul edecek şekilde kilitlemek için, arka ucunuz için IP ACL 'Lerini ayarlamanız ve ardından arka ucunuzdaki trafiği ön kapıya göre gönderilen ' X-Azure-FDıD ' üstbilgisinin belirli bir değeriyle kısıtlamanız gerekir. Bu adımlar aşağıdaki şekilde ayrıntılı olarak verilmiştir:
 
-- Arka uçlarınız için IP YAPıŞTıRmayı yapılandırın ve yalnızca Azure Ön Kapı'nın arka uç IP adres alanından ve Azure'un altyapı hizmetlerinden gelen trafiği kabul edin. Arka uçunuzu karıştırmak için aşağıdaki IP ayrıntılarına bakın:
+- Arka uçlarınızın IP adresini, Azure ön kapısından gelen trafiği ve yalnızca Azure 'un altyapı hizmetlerini kabul edecek şekilde yapılandırın. Arka ucunuzu hızlandırma için aşağıdaki IP ayrıntılarına bakın:
  
-    - Ön Kapının IPv4 arka uç IP adresi aralığı için [Azure IP Aralıkları ve Hizmet Etiketleri](https://www.microsoft.com/download/details.aspx?id=56519) bölümünde *AzureFrontDoor.Backend* bölümüne bakın veya [ağ güvenlik gruplarınızda](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) veya [Azure Güvenlik Duvarı](https://docs.microsoft.com/azure/firewall/service-tags)ile *AzureFrontDoor.Backend* hizmet etiketini de kullanabilirsiniz.
-    - Servis etiketinde kaplanmış ken Front Door'un **IPv6** arka uç IP alanı, Azure IP aralıkları JSON dosyasında listelenmez. Açık IPv6 adres aralığı arıyorsanız, şu anda`2a01:111:2050::/44`
-    - Azure'un sanallaştırılmış ana bilgisayar IP adresleri `168.63.129.16` aracılığıyla temel altyapı [hizmetleri:](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) ve`169.254.169.254`
+    - Ön kapıdaki IPv4 arka uç IP adresi aralığı için [Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519) bölümündeki *azurefrontkapısı. arka* uç bölümüne bakın veya Ayrıca, [ağ güvenlik gruplarında](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) veya [Azure Güvenlik Duvarı](https://docs.microsoft.com/azure/firewall/service-tags)Ile *azurefrontkapısı. arka uç* hizmet etiketini de kullanabilirsiniz.
+    - Hizmet etiketinde kapsanan ön kapıdaki **IPv6** arka uç IP alanı, Azure IP aralıkları json dosyasında listelenmez. Açık IPv6 adres aralığı arıyorsanız şu anda şu şekilde sınırlıdır`2a01:111:2050::/44`
+    - Sanallaştırılmış ana bilgisayar IP adresleri aracılığıyla Azure 'un [temel altyapı hizmetleri](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) : `168.63.129.16` ve`169.254.169.254`
 
     > [!WARNING]
-    > Front Door'un arka uç IP alanı daha sonra değişebilir, ancak bu olmadan önce [Azure IP Aralıkları ve Hizmet Etiketleri](https://www.microsoft.com/download/details.aspx?id=56519)ile entegre olacağımızı garanti edeceğiz. Herhangi bir değişiklik veya güncelleme için [Azure IP Aralıkları ve Hizmet](https://www.microsoft.com/download/details.aspx?id=56519) Etiketleri'ne abone olmamızı öneririz.
+    > Ön kapısının arka uç IP alanı daha sonra değişebilir, ancak [Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519)ile tümleştirilebilmemiz için bu işlem yapılmadan önce bu şekilde daha önce de olur. Herhangi bir değişiklik veya güncelleştirme için [Azure IP aralıklarına ve hizmet etiketlerine](https://www.microsoft.com/download/details.aspx?id=56519) abone olmanızı öneririz.
 
--    API sürümü `2020-01-01` veya daha yüksek olan Ön Kapınızda GET işlemi gerçekleştirin. API aramasında, alan `frontdoorID` arayın. Gelen üstbilgideki '**X-Azure-FDID**' i ön kapı ile arka uca gönderilen `frontdoorID`üstbilgideki filtreleme, alanın değeri yle birlikte. 
+-    API sürümü `2020-01-01` veya üzeri Ile ön kapıda bir get işlemi gerçekleştirin. API çağrısında `frontdoorID` alan ara. '**X-Azure-FDıD**' gelen başlığına, ön kapıdan arka ucunuza, alanın `frontdoorID`değerine göre değer ile gönderilen filtre uygulayın. 
 
-### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Herhangi bir IP benim Ön Kapı ömrü boyunca değişebilir mi?
+### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Her noktaya yayın IP 'nin ön kapımın ömrü boyunca değiştirilmesini mi?
 
-Ön Kapınızın ön uç anycast IP'si genellikle değişmemelidir ve Ön Kapının ömrü boyunca statik kalabilir. Ancak, aynı garanti **yoktur.** Lütfen IP üzerinde herhangi bir doğrudan bağımlılık almayın.
+Ön kapılarınızın ön uç noktaya yayın IP 'si genellikle değişmemelidir ve ön kapısının ömrü boyunca statik kalabilir. Ancak, aynı için **garanti yoktur** . Lütfen IP üzerinde hiçbir doğrudan bağımlılık almaz.
 
-### <a name="does-azure-front-door-support-static-or-dedicated-ips"></a>Azure Ön Kapı statik veya özel IP'leri destekliyor mu?
+### <a name="does-azure-front-door-support-static-or-dedicated-ips"></a>Azure ön kapısı statik veya ayrılmış IP 'Leri destekliyor mu?
 
-Hayır, Azure Ön Kapı şu anda statik veya özel ön uç herhangi bir ip'leri desteklemez. 
+Hayır, Azure ön kapısı şu anda statik veya adanmış ön uç her noktaya IP 'Leri desteklemiyor. 
 
-### <a name="does-azure-front-door-support-x-forwarded-for-headers"></a>Azure Ön Kapı x iletili üstbilgi desteği veriyor mu?
+### <a name="does-azure-front-door-support-x-forwarded-for-headers"></a>Azure ön kapısının x-iletilmiş-üstbilgiler için destek ister misiniz?
 
-Evet, Azure Ön Kapı X-Forwarded-For, X-Forwarded-Host ve X-Forwarded-Proto üstlelerini destekler. X-Forwarded-For için başlık zaten mevcutsa, Ön Kapı istemci soket IP'sini ona ekler. Aksi takdirde, değer olarak istemci soket IP ile üstbilgi ekler. X-Forwarded-Host ve X-Forwarded-Proto için değer geçersiz kılınır.
+Evet, Azure ön kapısı X-Iletilen-for, X-Iletilmiş-Host ve X-Iletilmiş-proto üst bilgilerini destekler. X-Iletilen için-üst bilgi zaten mevcutsa, ön kapı istemci yuvasını IP 'ye ekler. Aksi takdirde, üst bilgiyi istemci yuva IP 'si ile ilgili değer olarak ekler. X-Iletilen-Host ve X-Iletilen-proto için değer geçersiz kılınır.
 
-Ön Kapı [desteklenen HTTP başlıkları](front-door-http-headers-protocol.md)hakkında daha fazla bilgi edinin.  
+[Ön kapı desteklenen http üstbilgileri](front-door-http-headers-protocol.md)hakkında daha fazla bilgi edinin.  
 
-### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-does-my-front-door-still-work-when-being-updated"></a>Azure Ön Kapı'nın dağıtılması ne kadar sürer? Güncellenirken Ön Kapım hala çalışıyor mu?
+### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-does-my-front-door-still-work-when-being-updated"></a>Azure ön kapısının dağıtılması ne kadar sürer? Ön kapım güncelleştirilirken çalışmaya devam ediyor mu?
 
-Yeni bir Ön Kapı oluşturma veya varolan bir Ön Kapı herhangi bir güncelleştirme küresel dağıtım için yaklaşık 3 ila 5 dakika sürer. Bu, yaklaşık 3 ila 5 dakika içinde Ön Kapı yapılandırmanızın tüm KÜRESEL POP'larımıza dağıtılacayaçalışacağı anlamına gelir.
+Yeni bir ön kapı oluşturma veya var olan bir ön kapıdaki herhangi bir güncelleştirme, genel dağıtım için yaklaşık 3 ila 5 dakika sürer. Bu, yaklaşık 3 ila 5 dakika içinde, ön kapı yapılandırmanızın tüm pop 'larda küresel olarak dağıtılmasını sağlar.
 
-Not - Özel TLS/SSL sertifika güncellemelerinin tüm dünyada dağıtılması yaklaşık 30 dakika sürer.
+Note-özel TLS/SSL sertifika güncelleştirmelerinin küresel olarak dağıtılması yaklaşık 30 dakika sürer.
 
-Rotalar veya arka uç havuzları vb. için yapılan tüm güncellemeler sorunsuzdur ve (yeni yapılandırma doğruysa) sıfır kapalı kalma süresine neden olur. Sertifika güncelleştirmeleri de atomiktir ve 'AFD Yönetilen'den 'Kendi sertifikanızı kullanın' veya tam tersi bir geçiş yapmadıkça herhangi bir kesintiye neden olmaz.
+Yolların veya arka uç havuzlarındaki veya her türlü güncelleştirme sorunsuz ve sıfır kapalı kalma süresine neden olur (yeni yapılandırma doğruysa). Sertifika güncelleştirmeleri de atomik olur ve ' AFD yönetilen ' değerinden ' kendi sertifikanızı kullanın ' veya bunun tersini yapmadan hiçbir kesinti olmaz.
 
 
 ## <a name="configuration"></a>Yapılandırma
 
-### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Azure Ön Kapı sanal ağdaki trafiği yükleyebilir veya yönlendirebilir mi?
+### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Azure ön kapısının yük dengelemesi yapabilir veya trafiği bir sanal ağ içinde yönlendirebilir mi?
 
-Azure Ön Kapı (AFD), trafiği yönlendirmek için genel bir IP veya genel olarak çözülebilir bir DNS adı gerektirir. Bu nedenle, cevap hiçbir AFD doğrudan bir sanal ağ içinde yönlendiremez, ancak arada bir Uygulama Ağ Geçidi veya Azure Yük Dengeleyici kullanarak bu senaryoyu çözecektir.
+Azure ön kapısı (AFD), trafiği yönlendirmek için genel IP veya genel olarak çözümlenebilen bir DNS adı gerektirir. Bu nedenle, yanıt hiçbir AFD doğrudan bir sanal ağ içinde yönlendirilemez, ancak arasında bir Application Gateway veya Azure Load Balancer kullanmak bu senaryoyu çözmeyecektir.
 
-### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure Ön Kapı için çeşitli zaman zaman ları ve sınırlamaları nelerdir?
+### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure ön kapısının çeşitli zaman aşımları ve limitleri nelerdir?
 
-Azure Ön Kapı için belgelenen tüm [zaman zaman ları ve sınırlamaları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits)hakkında bilgi edinin.
+[Azure ön kapısının tüm belgelenmiş zaman aşımları ve limitleri](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits)hakkında bilgi edinin.
 
 ## <a name="performance"></a>Performans
 
-### <a name="how-does-azure-front-door-support-high-availability-and-scalability"></a>Azure Ön Kapı yüksek kullanılabilirliği ve ölçeklenebilirliği nasıl destekler?
+### <a name="how-does-azure-front-door-support-high-availability-and-scalability"></a>Azure ön kapısının yüksek kullanılabilirliği ve ölçeklenebilirliği nasıl destekler?
 
-Azure Ön Kapı, uygulamanızın ölçeklenebilirlik gereksinimlerini karşılamak için büyük hacimlerde kapasiteye sahip, küresel olarak dağıtılan çok kiracılı bir platformdur. Microsoft'un küresel ağının kenarından teslim edilen Front Door, tüm uygulamanız ve bölgeler veya farklı bulutlar arasında tek tek mikro hizmetler üzerinde başarısız olmamanızı sağlayan küresel yük dengeleme özelliği sağlar.
+Azure ön kapısı, uygulamanızın ölçeklenebilirlik ihtiyaçlarını karşılamak için çok büyük hacimli kapasiteye sahip, küresel olarak dağıtılmış çok kiracılı bir platformdur. Microsoft 'un küresel ağı kenarından sunulan ön kapı, tüm uygulamanızı veya hatta tek tek mikro hizmetleri bölge veya farklı bulutlar üzerinde yük devredebilmeniz için genel yük dengeleme özelliği sunar.
 
 ## <a name="tls-configuration"></a>TLS yapılandırması
 
-### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Azure Ön Kapı tarafından hangi TLS sürümleri desteklenir?
+### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Azure ön kapısının hangi TLS sürümleri desteklenir?
 
-Eylül 2019'dan sonra oluşturulan tüm Ön Kapı profilleri varsayılan minimum tls 1.2'yi kullanır.
+Eylül 2019 ' den sonra oluşturulan tüm ön kapılı profiller varsayılan en düşük düzeyde TLS 1,2 ' i kullanır.
 
-Ön Kapı TLS versiyonları 1.0, 1.1 ve 1.2 destekler. TLS 1.3 henüz desteklenmedi.
+Ön kapı 1,0, 1,1 ve 1,2 TLS sürümlerini destekler. TLS 1,3 henüz desteklenmiyor.
 
-### <a name="what-certificates-are-supported-on-azure-front-door"></a>Azure Ön Kapı'da hangi sertifikalar desteklenir?
+### <a name="what-certificates-are-supported-on-azure-front-door"></a>Azure ön kapıda hangi sertifikalar destekleniyor?
 
-Ön Kapı özel etki alanında güvenli bir şekilde içerik sunmak için HTTPS protokolünü etkinleştirmek için Azure Ön Kapı tarafından yönetilen bir sertifika yı veya kendi sertifikanızı kullanmayı seçebilirsiniz.
-Ön Kapı yönetilen opsiyon, Digicert üzerinden standart bir TLS/SSL sertifikası sunar ve Ön Kapı'nın Anahtar Kasasında saklanır. Kendi sertifikanızı kullanmayı seçerseniz, desteklenen bir CA'dan bir sertifikaya binebilirsiniz ve standart bir TLS, genişletilmiş doğrulama sertifikası ve hatta joker karakter sertifikası olabilirsiniz. Kendi imzalı sertifikalar desteklenmez. [Özel bir etki alanı için HTTPS'yi nasıl etkinleştireceklerini](https://aka.ms/FrontDoorCustomDomainHTTPS)öğrenin.
+HTTPS protokolünü bir ön kapı özel etki alanında güvenli bir şekilde teslim etmek üzere etkinleştirmek için, Azure ön kapısının yönettiği veya kendi sertifikanızı kullanan bir sertifikayı kullanmayı seçebilirsiniz.
+Ön kapı yönetimli seçeneği, DigiCert aracılığıyla standart bir TLS/SSL sertifikası sağlar ve ön kapı Key Vault depolanır. Kendi sertifikanızı kullanmayı seçerseniz, desteklenen bir CA 'dan bir sertifika ekleyebilirsiniz ve standart bir TLS, genişletilmiş doğrulama sertifikası ya da bir joker karakter sertifikası olabilir. Otomatik olarak imzalanan sertifikalar desteklenmez. [Özel bir etki alanı IÇIN https 'yi etkinleştirmeyi](https://aka.ms/FrontDoorCustomDomainHTTPS)öğrenin.
 
-### <a name="does-front-door-support-autorotation-of-certificates"></a>Ön Kapı sertifikaların otomatik olarak döndürülmesini destekliyor mu?
+### <a name="does-front-door-support-autorotation-of-certificates"></a>Ön kapı, sertifikaların oto döndürmesini destekliyor mu?
 
-Ön Kapı yönetilen sertifika seçeneği için, sertifikalar Ön Kapı tarafından otomatik olarak döndürülür. Bir Ön Kapı yönetilen sertifikası kullanıyorsanız ve sertifikanın son kullanma tarihinin 60 günden az olduğunu görüyorsanız, bir destek bileti gönderin.
-</br>Kendi özel TLS/SSL sertifikanız için otomatik döndürme desteklenmez. Belirli bir özel etki alanı için ilk kez nasıl ayarlandığının benzer şekilde, Ön Kapı'yı Key Vault'unuzdadoğru sertifika sürümüne doğru şekilde ayarlamanız ve Ön Kapı servis müdürünün hala Key Vault'a erişebilmesini sağlamanız gerekir. Front Door tarafından güncelleştirilen bu güncelleştirilmiş sertifika kullanıma alma işlemi atomiktir ve sertifikanın özne adı veya SAN'ın değişmemesi koşuluyla herhangi bir üretim etkisine neden olmaz.
+Ön kapı tarafından yönetilen sertifika seçeneği için sertifikalar ön kapıya göre oto döndürülür. Ön kapılı yönetilen bir sertifika kullanıyorsanız ve sertifikanın süre sonu tarihinin 60 günden daha az olduğunu görürseniz, bir destek bileti dosyası kullanın.
+</br>Kendi özel TLS/SSL sertifikanız için, oto döndürme desteklenmez. Belirli bir özel etki alanı için ilk kez ayarlamaya benzer şekilde, ön kapıyı Key Vault doğru sertifika sürümüne işaret etmeniz ve ön kapıdaki hizmet sorumlusunun Key Vault hala erişime sahip olduğundan emin olmanız gerekir. Bu sertifika dağıtım işlemi ön kapıya göre güncelleştirilmiş olduğundan, sertifika için konu adı veya SAN sağlanmadığından hiçbir üretim etkisi olmaz.
 
-### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Azure Ön Kapı tarafından desteklenen mevcut şifreleme paketleri nelerdir?
+### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Azure ön kapısının desteklediği geçerli şifre paketleri nelerdir?
 
-TLS1.2 için aşağıdaki şifre paketleri desteklenir
+TLS 1.2 için aşağıdaki şifre paketleri desteklenir
 
 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 
-TLS1.0/1.1 özellikli özel etki alanları kullanırken aşağıdaki şifre paketleri desteklenir:
+TLS 1.0/1.1 özellikli özel etki alanları kullanılırken aşağıdaki şifre paketleri desteklenir:
 
 - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
@@ -186,54 +186,54 @@ TLS1.0/1.1 özellikli özel etki alanları kullanırken aşağıdaki şifre pake
 - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 
-### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>TLS Protokolü sürümlerini denetlemek için TLS ilkesini yapılandırabilir miyim?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>TLS protokolü sürümlerini denetlemek için TLS ilkesini yapılandırabilir miyim?
 
-Azure Portalı veya [Azure REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)üzerinden özel etki alanı HTTPS ayarlarında Azure Ön Kapı'da minimum TLS sürümünü yapılandırabilirsiniz. Şu anda, 1.0 ve 1.2 arasında seçim yapabilirsiniz.
+Azure ön kapıdaki en düşük TLS sürümünü, Azure portal veya [azure REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)aracılığıyla özel etkı alanı https ayarlarında yapılandırabilirsiniz. Şu anda 1,0 ve 1,2 arasında seçim yapabilirsiniz.
 
-### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Front Door'u yalnızca belirli şifre süitlerini destekleyecek şekilde yapılandırabilir miyim?
+### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Ön kapıyı yalnızca belirli şifre paketlerini destekleyecek şekilde yapılandırabilir miyim?
 
-Hayır, belirli şifre paketleri için Ön Kapı yapılandırma sı desteklenmez. Ancak, Sertifika Yetkilisinizden kendi özel TLS/SSL sertifikanızı (Verisign, Entrust veya Digicert deyin) alabilir ve sertifikayı oluşturduğunuzda belirli şifre paketleriişaretli olabilirsiniz. 
+Hayır, belirli şifre paketleri için ön kapıyı yapılandırma desteklenmiyor. Bununla birlikte, Sertifika yetkilinizden (Verisign, Entrust veya DigiCert) kendi özel TLS/SSL sertifikanızı alabilir ve oluşturduğunuz sırada sertifika üzerinde işaretlenmiş belirli şifre paketlerine sahip olabilirsiniz. 
 
-### <a name="does-front-door-support-ocsp-stapling"></a>Ön Kapı OCSP zımbalatması destekliyor mu?
+### <a name="does-front-door-support-ocsp-stapling"></a>Ön kapı, OCSP zımbalamayı destekliyor mu?
 
-Evet, OCSP zımbalaması Varsayılan olarak Ön Kapı tarafından desteklenir ve yapılandırma gerekmez.
+Evet, OCSP zımbalama, ön kapıya göre varsayılan olarak desteklenir ve herhangi bir yapılandırma gerekmez.
 
-### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Azure Ön Kapı, trafiğin arka uçta yeniden şifrelemesini de destekliyor mu?
+### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Azure ön kapısının arka uca trafiği yeniden şifrelemeyi de destekliyor mu?
 
-Evet, Azure Ön Kapı TLS/SSL boşaltmayı destekler ve trafiği arka uca yeniden şifreleyen TLS'yi uçtan uca destekler. Aslında, arka uç bağlantıları genel IP üzerinden gerçekleştiğinden, ön kapınızı https'yi yönlendirme protokolü olarak kullanacak şekilde yapılandırmanız önerilir.
+Evet, Azure ön kapısı TLS/SSL yük boşaltma 'yı destekler ve arka uca trafiği yeniden şifreler. Aslında, arka uca bağlantıların ortak IP 'si üzerinden gerçekleşmesi nedeniyle, ön Kapıınızı iletme protokolü olarak HTTPS kullanacak şekilde yapılandırmanız önerilir.
 
-### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Front Door, HTTPS bağlantısı için arka uçta kendi imzalı sertifikaları destekliyor mu?
+### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Ön kapı, HTTPS bağlantısı için arka uçta otomatik olarak imzalanan sertifikaları destekliyor mu?
 
-Hayır, kendi imzalı sertifikalar Ön Kapı'da desteklenmez ve kısıtlama her ikisi için de geçerlidir:
+Hayır, kendinden imzalı sertifikalar ön kapıda desteklenmez ve kısıtlama her ikisi için de geçerlidir:
 
-1. **Arka Uçlar**: Trafiği HTTPS veya HTTPS sistem durumu sondası olarak iletirken veya önbelleğe alma kuralları önbelleğe alınmış olarak yönlendirme kuralları için önbelleği kaynaktan doldururken kendi imzalı sertifikaları kullanamazsınız.
-2. **Frontend**: Kendi özel TLS/SSL sertifikanızı kullanarak özel etki alanınızda HTTPS'yi etkinleştirmeniz için kendi imzalı sertifikaları kullanamazsınız.
+1. **Backends**: trafiği, önbelleğe alma etkin olan yönlendirme KURALLARı için HTTPS veya https sistem durumu araştırmaları olarak iletirken veya önbellekten çıkış kaynağı olarak doldurarak otomatik olarak imzalanan sertifikalar kullanamazsınız.
+2. **Ön uç**: özel etkı alanında https 'yi etkinleştirmek için kendı özel TLS/SSL sertifikanızı kullanırken otomatik olarak imzalanan sertifikalar kullanamazsınız.
 
-### <a name="why-is-https-traffic-to-my-backend-failing"></a>Arka uça https trafiği neden başarısız oluyor?
+### <a name="why-is-https-traffic-to-my-backend-failing"></a>Arka ucumun HTTPS trafiği neden başarısız oluyor?
 
-İster sistem sondaları ister yönlendirme istekleri için olsun, arka uca başarılı HTTPS bağlantılarına sahip olmak için, HTTPS trafiğinin başarısız olmasının iki nedeni olabilir:
+Arka ucunuza, sistem durumu araştırmalarının veya isteklerin iletilmesi için başarılı HTTPS bağlantıları sağlamak için, HTTPS trafiğinin başarısız olmasının iki nedeni olabilir:
 
-1. **Sertifika konusu adı uyuşmazlığı**: HTTPS bağlantıları için, Ön Kapı arka uçünüzün arka uç ana bilgisayar adı ile eşleşen konu adı(lar) içeren geçerli bir CA'dan sertifika sunmasını bekler. Örnek olarak, arka uç ana adınızı `myapp-centralus.contosonews.net` n için ayarlanmışsa ve TLS el sıkışması `*myapp-centralus*.contosonews.net` sırasında arka uçunuzda sunduğu sertifikada ne konu adı varsa, `myapp-centralus.contosonews.net` Ön Kapı bağlantıyı reddeder ve bir hataya neden olur. 
-    1. **Çözüm**: Uyumluluk açısından önerilmese de, Ön Kapınız için sertifika özne adı denetimini devre dışı bırakarak bu hatayı geçici olarak çözebilirsiniz. Bu, Azure portalındaki Ayarlar ve API'deki BackendPoolsSettings altında bulunur.
-2. **Geçersiz CA'dan arka uç barındırma sertifikası**: Ön Kapı ile arka uçta yalnızca geçerli [CA'lardan](/azure/frontdoor/front-door-troubleshoot-allowed-ca) alınan sertifikalar kullanılabilir. İç CA'lardan veya kendi imzalı sertifikalardan sertifikalara izin verilmez.
+1. **Sertifika konu adı uyumsuzluğu**: ön kapı, HTTPS bağlantıları için arka uç ana bilgisayar adı ile eşleşen GEÇERLI bir CA 'dan sertifika sunuyor. Örnek olarak, arka uç ana bilgisayar adı olarak ayarlanmışsa `myapp-centralus.contosonews.net` ve TLS el sıkışması sırasında arka ucunuzun temsil etmediği sertifika, ilgili `myapp-centralus.contosonews.net` ada `*myapp-centralus*.contosonews.net` sahip değilse, ön kapı bağlantıyı reddeder ve bir hatayla sonuçlanır. 
+    1. **Çözüm**: bir uyumluluk açısından önerilmemekle karşı, ön kapılarınız için sertifika konu adı denetimini devre dışı bırakarak bu hatayı geçici olarak yapabilirsiniz. Bu, Azure portal ayarları altında ve API 'deki BackendPoolsSettings altında bulunur.
+2. **GEÇERSIZ CA 'Dan arka uç barındırma sertifikası**: yalnızca [geçerli CA](/azure/frontdoor/front-door-troubleshoot-allowed-ca) 'Lardan sertifikalar, ön kapılı arka uçta kullanılabilir. İç CA 'Ların veya otomatik olarak imzalanan sertifikaların sertifikalara izin verilmez.
 
 ## <a name="diagnostics-and-logging"></a>Tanılama ve günlüğe kaydetme
 
-### <a name="what-types-of-metrics-and-logs-are-available-with-azure-front-door"></a>Azure Ön Kapı'da ne tür ölçümler ve günlükler kullanılabilir?
+### <a name="what-types-of-metrics-and-logs-are-available-with-azure-front-door"></a>Azure ön kapısının hangi türlerde ölçüm ve Günlükler vardır?
 
-Günlükler ve diğer tanılama özellikleri hakkında bilgi için, [Ön Kapı için Izleme ölçümleri ve günlükleri](front-door-diagnostics.md)bakın.
+Günlükler ve diğer tanılama özellikleri hakkında bilgi için bkz. [ön kapıda izleme ölçümleri ve günlükleri](front-door-diagnostics.md).
 
 ### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>Tanılama günlüklerinde bekletme ilkesi nedir?
 
-Tanılama günlükleri müşteri depolama hesabına akar ve müşteriler bekletme ilkesini tercihlerine göre ayarlayabilir. Tanılama günlükleri bir Olay Hub'ına veya Azure Monitör günlüklerine de gönderilebilir. Daha fazla bilgi için [Azure Ön Kapı Tanılama'ya](front-door-diagnostics.md)bakın.
+Tanılama günlükleri, müşteriler depolama hesabına akar ve müşteriler, saklama ilkesini tercihe göre ayarlayabilir. Tanılama günlükleri, bir olay hub 'ına veya Azure Izleyici günlüklerine de gönderilebilir. Daha fazla bilgi için bkz. [Azure ön kapı tanılama](front-door-diagnostics.md).
 
-### <a name="how-do-i-get-audit-logs-for-azure-front-door"></a>Azure Ön Kapı için denetim günlüklerini nasıl alabilirim?
+### <a name="how-do-i-get-audit-logs-for-azure-front-door"></a>Azure ön kapısına yönelik denetim günlüklerini almak Nasıl yaparım? mı?
 
-Azure Ön Kapı için denetim günlükleri kullanılabilir. Portalda, denetim günlüğüne erişmek için Ön Kapınızın menü kutusunda **Etkinlik Günlüğü'nü** tıklatın. 
+Azure ön kapısına yönelik denetim günlükleri mevcuttur. Portalda, ön kapılarınızın menü dikey penceresinde **etkinlik günlüğü** ' ne tıklayarak denetim günlüğüne erişin. 
 
-### <a name="can-i-set-alerts-with-azure-front-door"></a>Azure Ön Kapı ile uyarılar ayarlayabilir miyim?
+### <a name="can-i-set-alerts-with-azure-front-door"></a>Azure ön kapısına sahip uyarıları ayarlayabilir miyim?
 
-Evet, Azure Ön Kapı destek uyarıları yapar. Uyarılar ölçümlere göre yapılandırılır. 
+Evet, Azure ön kapısı uyarıları destekler. Uyarılar, ölçümler üzerinde yapılandırılır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Güvenlik aracısı mimarisi
-description: IoT için Azure Güvenlik Merkezi'nde kullanılan aracılar için güvenlik aracımimarisini anlayın.
+title: Güvenlik Aracısı mimarisi
+description: IoT hizmeti için Azure Güvenlik Merkezi 'nde kullanılan aracılar için güvenlik Aracısı mimarisini anlayın.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,51 +16,51 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 9029ece923b7cda09c7a57d07736791e241c9e70
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310678"
 ---
-# <a name="security-agent-reference-architecture"></a>Güvenlik aracısı başvuru mimarisi
+# <a name="security-agent-reference-architecture"></a>Güvenlik Aracısı başvuru mimarisi
 
-Azure Güvenlik Merkezi ioT hub üzerinden güvenlik verilerini kaydeden, işleyen, toplayan ve gönderen güvenlik aracıları için başvuru mimarisi sağlar.
+IoT için Azure Güvenlik Merkezi, IoT Hub aracılığıyla güvenlik verilerini günlüğe kaydetmek, işlemek, toplamak ve göndermek için kullanılan güvenlik aracıları için başvuru mimarisi sağlar.
 
-Güvenlik aracıları kısıtlı bir IoT ortamında çalışacak şekilde tasarlanmıştır ve tükettikleri kaynaklarla karşılaştırıldığında sağladıkları değerler açısından son derece özelleştirilebilir.
+Güvenlik aracıları kısıtlanmış bir IoT ortamında çalışacak şekilde tasarlanmıştır ve kullandıkları kaynaklarla karşılaştırıldığında bunların sağladığı değer bakımından yüksek düzeyde özelleştirilebilir.
 
 Güvenlik aracıları aşağıdaki özellikleri destekler:
 
-- Temel İşletim Sisteminden (Linux, Windows) ham güvenlik olaylarını toplayın. Kullanılabilir güvenlik veri toplayıcıları hakkında daha fazla bilgi edinmek [için IoT aracı yapılandırması için Azure Güvenlik Merkezi'ne](how-to-agent-configuration.md)bakın.
+- Temel Işletim sisteminden (Linux, Windows) ham güvenlik olayları toplayın. Kullanılabilir güvenlik veri toplayıcıları hakkında daha fazla bilgi edinmek için bkz. [IoT Aracısı yapılandırması Için Azure Güvenlik Merkezi](how-to-agent-configuration.md).
 
-- Ham güvenlik olaylarını IoT Hub üzerinden gönderilen iletilere toplar.
+- Ham güvenlik olaylarını IoT Hub aracılığıyla gönderilen iletilere toplayın.
 
-- Varolan aygıt kimliğiyle veya özel bir modül kimliğiyle kimlik doğrulaması. Daha fazla bilgi edinmek için [Güvenlik aracısı kimlik doğrulama yöntemlerine](concept-security-agent-authentication-methods.md) bakın.
+- Mevcut cihaz kimliğiyle veya ayrılmış bir modül kimliğiyle kimlik doğrulaması yapın. Daha fazla bilgi için bkz. [Güvenlik Aracısı kimlik doğrulama yöntemleri](concept-security-agent-authentication-methods.md) .
 
-- **Azureiotsecurity** modülü ikizi kullanarak uzaktan yapılandırın. Daha fazla bilgi için [bkz.](how-to-agent-configuration.md)
+- **Azureiotsecurity** modülünün kullanımı üzerinden uzaktan yapılandırma ikizi. Daha fazla bilgi için bkz. [IoT Aracısı Için Azure Güvenlik Merkezi 'Ni yapılandırma](how-to-agent-configuration.md).
 
-Azure Güvenlik Merkezi IoT Güvenlik aracıları açık kaynak proje olarak geliştirilmiştir ve GitHub'dan edinilebilir:
+IoT güvenlik aracıları için Azure Güvenlik Merkezi, açık kaynaklı projeler olarak geliştirilmiştir ve GitHub 'dan kullanılabilir:
 
 - [IoT C tabanlı aracı için Azure Güvenlik Merkezi](https://github.com/Azure/Azure-IoT-Security-Agent-C)
 - [IoT C# tabanlı aracı için Azure Güvenlik Merkezi](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
-## <a name="agent-supported-platforms"></a>Aracı destekli platformlar
+## <a name="agent-supported-platforms"></a>Aracılı desteklenen platformlar
 
-Azure Security Center for IoT, 32bit ve 64bit Windows için farklı yükleyici aracıları sunarken, 32bit ve 64bit Linux için de aynı sıyrık. Aşağıdaki tabloya göre her aygıtınız için doğru aracı yükleyiciye sahip olduğundan emin olun:
+IoT için Azure Güvenlik Merkezi, 32 bit ve 64bit Windows için farklı yükleyici aracıları ve 32bit ve 64bit Linux için de aynıdır. Aşağıdaki tabloya göre cihazlarınızın her biri için doğru aracı yükleyicisine sahip olduğunuzdan emin olun:
 
 | Mimari | Linux | Windows |    Ayrıntılar|
 |----------|----------------------------------------------|-------------|-------------------------------------------|
-| 32 bit  | C  | C#  ||
-| 64bit  | C# veya C           | C#      | C aracısını daha kısıtlı veya minimum aygıt kaynaklarına sahip aygıtlar için kullanmanızı öneririz.|
+| bit  | C  | C#  ||
+| 64  | C# veya C           | C#      | Daha kısıtlı veya en az cihaz kaynağı olan cihazlar için C Aracısı kullanmanızı öneririz.|
 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, IoT güvenlik aracısı mimarisi için Azure Güvenlik Merkezi'ni ve kullanılabilir yükleyicileri öğrendiniz.
+Bu makalede IoT güvenlik Aracısı mimarisi ve kullanılabilir yükleyiciler için Azure Güvenlik Merkezi hakkında bilgi edindiniz.
 
-IoT dağıtımı için Azure Güvenlik Merkezi'ni kullanmaya devam etmek için aşağıdaki makaleleri kullanın:
+IoT dağıtımı için Azure Güvenlik Merkezi 'ni kullanmaya devam etmek için aşağıdaki makaleleri kullanın:
 
-- [Güvenlik aracısı kimlik doğrulama yöntemlerini](concept-security-agent-authentication-methods.md) anlama
-- Bir güvenlik [aracısı](how-to-deploy-agent.md) seçme ve dağıtma
-- IoT [hizmeti ön koşulları](service-prerequisites.md) için Azure Güvenlik Merkezi'ni inceleyin
-- [IoT Hub'ınızda Azure Güvenlik Merkezi IoT hizmetini nasıl etkinleştirmenizi](quickstart-onboard-iot-hub.md) öğrenin
-- [IoT SSS](resources-frequently-asked-questions.md) için Azure Güvenlik Merkezi'nden hizmet hakkında daha fazla bilgi edinin
+- [Güvenlik Aracısı kimlik doğrulama yöntemlerini](concept-security-agent-authentication-methods.md) anlama
+- [Güvenlik aracısını](how-to-deploy-agent.md) seçme ve dağıtma
+- IoT [hizmeti önkoşulları](service-prerequisites.md) Için Azure Güvenlik Merkezi 'ni gözden geçirin
+- [IoT Hub IoT hizmeti Için Azure Güvenlik Merkezi 'ni nasıl etkinleştirebileceğinizi](quickstart-onboard-iot-hub.md) öğrenin
+- [IoT Için Azure Güvenlik Merkezi](resources-frequently-asked-questions.md) 'nden hizmet hakkında daha fazla bilgi edinin

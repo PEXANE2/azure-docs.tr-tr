@@ -1,6 +1,6 @@
 ---
 title: Güvenlik aracıları olmadan hizmet
-description: IoT hizmeti için Azure Güvenlik Merkezi'nin yerleşik iş akışıyla başlayın.
+description: IoT hizmeti için Azure Güvenlik Merkezi 'nin yerleşik iş akışını kullanmaya başlayın.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,28 +16,28 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 175ed3b06e9d2b0293dd6c72e9a0713ca01be4a3
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310901"
 ---
-# <a name="get-started-with-built-in-iot-hub-integration"></a>Dahili IoT Hub tümleştirmesiyle başlayın
+# <a name="get-started-with-built-in-iot-hub-integration"></a>Yerleşik IoT Hub tümleştirmeyle çalışmaya başlama
 
-Bu seçenek, IoT güvenlik aracıları için Azure Güvenlik Merkezi'ni kullanmadan hizmeti kullanmanıza olanak tanır.
+Bu seçenek, IoT güvenlik aracıları için Azure Güvenlik Merkezi 'ni kullanmadan hizmeti kullanmanıza olanak sağlar.
 
 ## <a name="enable-built-in-iot-hub-integration"></a>Yerleşik IoT Hub tümleştirmesini etkinleştirme
 
-Cihazınızın kimlik yönetimini, cihazınızı buluta ve bulutu aygıt iletişim düzenlerine izlemeyi etkinleştirmek için hizmeti başlatmak için aşağıdakileri yapın:
+Cihaz kimlik yönetimi, cihazınızı buluta ve buluttan cihaza iletişim desenlerine izlemeyi etkinleştirmek için, hizmeti başlatmak üzere aşağıdakileri yapın:
 
-1. **IoT Hub'ınızı**açın.
-1. Güvenlik **genel bakış** menüsünü seçin.
-1. **IoT çözümünüzü güvenli** hale ve biniş formunu doldurun.
+1. **IoT Hub**açın.
+1. **Güvenlik genel bakış** menüsünü seçin.
+1. **IoT çözümünüzü güvenli hale** getirin ve ekleme formunu doldurun.
 
-Tebrikler! IoT Hub'ınızda Azure Güvenlik Merkezi IoT hizmetini etkinleştirme yi tamamladınız.
+Tebrikler! IoT Hub IoT hizmeti için Azure Güvenlik Merkezi 'ni etkinleştirmeyi tamamladınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Çözümünüzü](quickstart-configure-your-solution.md) yapılandırın
-- [Güvenlik modülleri oluşturma](quickstart-create-security-twin.md)
-- Özel [uyarıları](quickstart-create-custom-alerts.md) yapılandırma
+- [Güvenlik modülleri oluştur](quickstart-create-security-twin.md)
+- [Özel uyarıları](quickstart-create-custom-alerts.md) yapılandırma

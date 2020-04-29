@@ -1,6 +1,6 @@
 ---
 title: Güvenlik önerileri
-description: IoT için Azure Güvenlik Merkezi'nde güvenlik önerileri kavramı ve bunların nasıl kullanıldığı hakkında bilgi edinin.
+description: Güvenlik önerileri kavramı ve IoT için Azure Güvenlik Merkezi 'nde nasıl kullanıldıkları hakkında bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,56 +16,56 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: 213595ac69efc90ec855b2891641e1f00bd1ba92
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311555"
 ---
 # <a name="security-recommendations"></a>Güvenlik önerileri
 
-Azure Güvenlik Merkezi IoT, Azure kaynaklarınızı ve IoT aygıtlarınızı tarar ve saldırı yüzeyinizi azaltmak için güvenlik önerileri sunar.
-Güvenlik önerileri uygulanabilir ve müşterilerin güvenlik en iyi uygulamalarına uymalarına yardımcı olmayı amaçlamaktadır.
+IoT için Azure Güvenlik Merkezi, Azure kaynaklarınızı ve IoT cihazlarınızı tarar ve saldırı yüzeyinizi azaltmak için güvenlik önerileri sağlar.
+Güvenlik önerileri, müşterilerin en iyi güvenlik uygulamalarına uymak için eyleme dönüştürülebilir ve hedeflenir.
 
-Bu makalede, IoT Hub ve/veya IoT aygıtlarınızda tetiklenebilecek önerilerin bir listesini bulacaksınız.
+Bu makalede, IoT Hub ve/veya IoT cihazlarınızda tetiklenebilecek önerilerin bir listesini bulacaksınız.
 
 ## <a name="recommendations-for-iot-devices"></a>IoT cihazları için öneriler
 
-Cihaz önerileri, cihaz güvenlik duruşunu iyileştirmek için öngörüler ve öneriler sağlar.
+Cihaz önerileri, cihaz güvenlik duruşunu geliştirmek için Öngörüler ve öneriler sağlar.
 
 | Severity | Adı                                                      | veri kaynağı | Açıklama                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Orta   | Aygıttaki Bağlantı Noktalarını Aç                                      | Aracı       | Cihazda bir dinleme bitiş noktası bulundu.                                                                                                                                                        |
-| Orta   | Zincirlerden birinde bulunan izin verilen güvenlik duvarı ilkesi. | Aracı       | İzin verilen güvenlik duvarı ilkesi bulundu (GIRIŞ/OUTPUT). Güvenlik duvarı ilkesi varsayılan olarak tüm trafiği reddetmeli ve aygıtla/aygıttan gerekli iletişimi sağlamak için kurallar tanımlamalıdır.                               |
-| Orta   | Giriş zincirinde izin verilen güvenlik duvarı kuralı bulundu     | Aracı       | Güvenlik duvarında çok çeşitli IP adresleri veya bağlantı noktaları için izin veren bir desen içeren bir kural bulundu.                                                                                    |
-| Orta   | Çıkış zincirinde izin verilen güvenlik duvarı kuralı bulundu    | Aracı       | Güvenlik duvarında çok çeşitli IP adresleri veya bağlantı noktaları için izin veren bir desen içeren bir kural bulundu.                                                                                   |
-| Orta   | Çalışma sistemi taban çizgisi doğrulaması başarısız oldu           | Aracı       | Cihaz [CIS Linux kriterlerine](https://www.cisecurity.org/cis-benchmarks/)uymaz.                                                                                                        |
+| Orta   | Cihazda bağlantı noktalarını açma                                      | Aracı       | Cihazda bir dinleme uç noktası bulundu.                                                                                                                                                        |
+| Orta   | Zincirden birinde izin veren güvenlik duvarı ilkesi bulundu. | Aracı       | İzin verilen güvenlik duvarı ilkesi bulundu (GIRIŞ/çıkış). Güvenlik duvarı ilkesi varsayılan olarak tüm trafiği reddetmelidir ve cihaza/cihazdan gerekli iletişime izin vermek için kurallar tanımlar.                               |
+| Orta   | Giriş zincirindeki izin veren güvenlik duvarı kuralı bulundu     | Aracı       | Çok sayıda IP adresi veya bağlantı noktası aralığı için izin veren bir model içeren güvenlik duvarındaki bir kural bulundu.                                                                                    |
+| Orta   | Çıkış zincirindeki izin veren güvenlik duvarı kuralı bulundu    | Aracı       | Çok sayıda IP adresi veya bağlantı noktası aralığı için izin veren bir model içeren güvenlik duvarındaki bir kural bulundu.                                                                                   |
+| Orta   | İşlem sistemi temel doğrulaması başarısız oldu           | Aracı       | Cihaz, [CIS Linux kıyaslamalarıyla](https://www.cisecurity.org/cis-benchmarks/)uyumlu değil.                                                                                                        |
 
-### <a name="operational-recommendations-for-iot-devices"></a>IoT cihazları için operasyonel öneriler
+### <a name="operational-recommendations-for-iot-devices"></a>IoT cihazları için işletimsel öneriler
 
-Operasyonel öneriler, güvenlik aracıyapılandırmasını geliştirmek için öngörüler ve öneriler sağlar.
+İşletimsel öneriler, güvenlik Aracısı yapılandırmasını geliştirmek için Öngörüler ve öneriler sağlar.
 
 | Severity | Adı                                    | veri kaynağı | Açıklama                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
-| Düşük      | Aracı kullanılmayan iletiler gönderir          | Aracı       | Son 24 saat içinde güvenlik mesajlarının %10'u veya daha fazlası 4 KB'den daha küçüktü.  |
-| Düşük      | Güvenlik ikiz yapılandırması en iyi değil | Aracı       | Güvenlik ikiz yapılandırması en iyi değildir.                                        |
-| Düşük      | Güvenlik ikiz yapılandırma çakışması    | Aracı       | Çakışmalar güvenlik ikiz yapılandırmasında tespit edildi. |                          |
+| Düşük      | Aracı unutilized iletileri gönderiyor          | Aracı       | Son 24 saat boyunca 10 KB veya daha fazla güvenlik iletisi 4 KB 'tan daha küçük.  |
+| Düşük      | Güvenlik ikizi yapılandırması en uygun değil | Aracı       | Güvenlik ikizi yapılandırması en uygun değildir.                                        |
+| Düşük      | Güvenlik ikizi yapılandırması çakışması    | Aracı       | Güvenlik ikizi yapılandırmasında çakışmalar tanımlandı. |                          |
 |
 
 ## <a name="recommendations-for-iot-hub"></a>IoT Hub için öneriler
 
-Öneri uyarıları, ortamınızın güvenlik duruşunu iyileştirmek için eylemler için öngörü ve öneriler sağlar.
+Öneri uyarıları, ortamınızın güvenlik duruşunu iyileştirecek eylemler için Öngörüler ve öneriler sağlar.
 
 | Severity | Adı                                                     | veri kaynağı | Açıklama                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Yüksek     | Birden çok aygıt tarafından kullanılan özdeş kimlik doğrulama kimlik bilgileri | IoT Hub     | IoT Hub kimlik doğrulama kimlik bilgileri birden çok aygıt tarafından kullanılır. Bu, yasal bir aygıtın kimliğine bürünen gayri meşru bir aygıtı gösterebilir. Yinelenen kimlik bilgisi kullanımı, kötü amaçlı bir aktörün aygıt kimliğe bürünme riskini artırır. |
-| Orta   | Varsayılan IP filtresi ilkesi reddedilmelidir                  | IoT Hub     | IP filtresi yapılandırması, izin verilen trafik için tanımlanmış kuralları olmalıdır ve varsayılan olarak varsayılan olarak diğer tüm trafiği reddetmelidir.                                                                                                     |
-| Orta   | IP filtre kuralı büyük IP aralığı içerir                   | IoT Hub     | İzin ver IP filtresi kural kaynağı IP aralığı çok büyüktür. Aşırı izin verilen kurallar, IoT hub'ınızı kötü niyetli aktörlere maruz bırakabilir.                                                                                       |
-| Düşük      | IoT Hub'da tanılama günlüklerini etkinleştirme                       | IoT Hub     | Günlükleri etkinleştirin ve bir yıla kadar saklayın. Günlükleri saklama, bir güvenlik olayı meydana geldiğinde veya ağınız tehlikeye girdiğinde, araştırma amacıyla etkinlik izlerini yeniden oluşturmanıza olanak tanır.                                       |
+| Yüksek     | Birden çok cihaz tarafından kullanılan özdeş kimlik doğrulama kimlik bilgileri | IoT Hub     | IoT Hub kimlik doğrulama kimlik bilgileri birden çok cihaz tarafından kullanılır. Bu, meşru bir cihazın kimliğine bürünerek uygun bir cihaz olduğunu gösterebilir. Yinelenen kimlik bilgileri kullanımı, kötü niyetli bir aktör tarafından cihaz kimliğe bürünme riskini artırır. |
+| Orta   | Varsayılan IP filtresi ilkesi reddetme olmalıdır                  | IoT Hub     | IP filtresi yapılandırması, izin verilen trafik için tanımlı kurallara sahip olmalıdır ve varsayılan olarak tüm diğer trafiği varsayılan olarak reddeder.                                                                                                     |
+| Orta   | IP filtresi kuralı, büyük IP aralığı içeriyor                   | IoT Hub     | Bir izin verme IP filtresi kuralı kaynak IP aralığı çok büyük. Aşırı izin veren kurallar, IoT Hub 'ınızı kötü amaçlı aktörlerin kullanımına açabilir.                                                                                       |
+| Düşük      | IoT Hub tanılama günlüklerini etkinleştirme                       | IoT Hub     | Günlükleri etkinleştirin ve bir yıla kadar saklayın. Günlükleri koruma, bir güvenlik olayı gerçekleştiğinde veya ağınızın güvenliği tehlikeye atılırsa araştırma amaçlarıyla etkinlik izlerini yeniden oluşturmayı sağlar.                                       |
 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- IoT hizmeti için Azure Güvenlik Merkezi [Genel Bakış](overview.md)
-- Güvenlik verilerinize nasıl [erişilenleri](how-to-security-data-access.md) öğrenin
-- [Bir aygıtı araştırma](how-to-investigate-device.md) hakkında daha fazla bilgi edinin
+- IoT hizmeti için Azure Güvenlik Merkezi ['Ne genel bakış](overview.md)
+- [Güvenlik verilerinize erişme](how-to-security-data-access.md) hakkında bilgi edinin
+- [Cihazı araştırma](how-to-investigate-device.md) hakkında daha fazla bilgi edinin

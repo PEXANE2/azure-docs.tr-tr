@@ -1,6 +1,6 @@
 ---
-title: Sorun giderme güvenlik aracısı başlatma (Linux)
-description: Linux için IoT güvenlik aracıları için Azure Güvenlik Merkezi ile çalışma sorun giderme.
+title: Güvenlik Aracısı Başlangıç (Linux) sorunlarını giderme
+description: Linux için IoT güvenlik aracıları için Azure Güvenlik Merkezi ile çalışma sorunlarını giderin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,114 +16,114 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
 ms.openlocfilehash: 935a99dd34b0a4e3d4970e8d91f9332d2bc1489a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310562"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>Güvenlik aracısı sorun giderme kılavuzu (Linux)
 
-Bu makalede, güvenlik aracısı başlatma işleminde olası sorunların nasıl çözüleceğini açıklar.
+Bu makalede, güvenlik Aracısı Başlangıç sürecinde olası sorunların nasıl giderileceği açıklanmaktadır.
 
-IoT aracısı için Azure Güvenlik Merkezi, yüklemeden hemen sonra kendi kendine başlar. Aracı başlatma işlemi yerel yapılandırmayı okumayı, Azure IoT Hub'ına bağlanmayı ve uzak ikiz yapılandırmasını almaişlemini içerir. Bu adımlardan herhangi birinde başarısız olmak güvenlik aracısının başarısız olmasıyla ilgili olabilir.
+IoT aracısının kendisi için Azure Güvenlik Merkezi, yüklemeden hemen sonra başlar. Aracı başlatma işlemi, yerel yapılandırmayı okumayı, Azure IoT Hub bağlanmayı ve uzak ikizi yapılandırmasını almayı içerir. Bu adımlardan herhangi birinde hata, güvenlik aracısının başarısız olmasına neden olabilir.
 
-Bu sorun giderme kılavuzunda şunları öğreneceksiniz:
+Bu sorun giderme kılavuzunda şunları nasıl yapacağınızı öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Güvenlik aracısı çalışıyorsa doğrulama
-> * Güvenlik aracısı hatalarını alma
-> * Güvenlik aracısı hatalarını anlama ve düzeltme
+> * Güvenlik aracısının çalışıp çalışmadığını doğrulama
+> * Güvenlik Aracısı hatalarını al
+> * Güvenlik Aracısı hatalarını anlayın ve düzeltin
 
-## <a name="validate-if-the-security-agent-is-running"></a>Güvenlik aracısı çalışıyorsa doğrulama
+## <a name="validate-if-the-security-agent-is-running"></a>Güvenlik aracısının çalışıp çalışmadığını doğrulama
 
-1. Doğrulamak için güvenlik aracısı çalışıyor, aracıyı yükledikten sonra birkaç dakika bekleyin ve aşağıdaki komutu çalıştırın.
+1. Güvenlik aracısının çalıştığını doğrulamak için, aracıyı yükledikten sonra birkaç dakika bekleyin ve aşağıdaki komutu çalıştırın.
      <br>
 
-    **C ajanı**
+    **C Aracısı**
 
     ```bash
     grep "ASC for IoT Agent initialized" /var/log/syslog
     ```
 
-    **C# aracısı**
+    **C# Aracısı**
 
     ```bash
     grep "Agent is initialized!" /var/log/syslog
     ```
 
-1. Komut boş bir satır döndürürse, güvenlik aracısı başarıyla başedemedi.
+1. Komut boş bir satır döndürürse, güvenlik Aracısı başarıyla başlatılamadı.
 
-## <a name="force-stop-the-security-agent"></a>Güvenlik ajanını durdurmaya zorlama
+## <a name="force-stop-the-security-agent"></a>Güvenlik aracısını durdurmayı zorla
 
-Güvenlik aracısının başlatamadığı durumlarda, aşağıdaki komutla aracıyı durdurun ve aşağıdaki hata tablosuna devam edin:
+Güvenlik aracısının başlayaamadığı durumlarda, aşağıdaki komutla aracıyı durdurun ve aşağıdaki hata tablosuna ilerleyin:
 
 ```bash
 systemctl stop ASCIoTAgent.service
 ```
 
-## <a name="get-security-agent-errors"></a>Güvenlik aracısı hatalarını alma
+## <a name="get-security-agent-errors"></a>Güvenlik Aracısı hatalarını al
 
-1. Aşağıdaki komutu çalıştırarak güvenlik aracısı hata(ları) alın:
+1. Aşağıdaki komutu çalıştırarak güvenlik Aracısı hata (ler) i alın:
 
     ```bash
     grep ASCIoTAgent /var/log/syslog
     ```
 
-1. Güvenlik aracısı al komutu, Azure Güvenlik Merkezi tarafından oluşturulan tüm günlükleri IoT aracısı için alır. Hataları anlamak ve düzeltme için doğru adımları atmak için aşağıdaki tabloyu kullanın.
+1. Güvenlik aracısını al hatası komutu, IoT Aracısı için Azure Güvenlik Merkezi tarafından oluşturulan tüm günlükleri alır. Hataları anlamak ve düzeltme için doğru adımları uygulamak üzere aşağıdaki tabloyu kullanın.
 
 > [!Note]
-> Hata günlükleri kronolojik sırada gösterilir. Düzeltmenize yardımcı olmak için her hatanın zaman damgasını not edin.
+> Hata günlükleri kronolojik sırada gösterilir. Düzeltbaşlamanıza yardımcı olması için her bir hatanın zaman damgasını unutmayın.
 
 ## <a name="restart-the-agent"></a>Aracıyı yeniden başlatın
 
-1. Bir güvenlik aracısı hatasını bulup düzelttikten sonra, aşağıdaki komutu çalıştırarak aracıyı yeniden başlatmayı deneyin.
+1. Bir güvenlik Aracısı hatasını bulduktan ve düzelttikten sonra, aşağıdaki komutu çalıştırarak aracıyı yeniden başlatmayı deneyin.
 
     ```bash
     systemctl restart ASCIoTAgent.service
     ```
 
-1. Aracı başlangıç işleminde başarısız olmaya devam ederse, durdurma yı almak ve hataları almak için önceki işlemi yineleyin.
+1. Durdur işlemini almak ve aracı başlatma işlemini başarısız olmaya devam ederse hataları almak için önceki işlemi tekrarlayın.
 
-## <a name="understand-security-agent-errors"></a>Güvenlik aracısı hatalarını anlama
+## <a name="understand-security-agent-errors"></a>Güvenlik Aracısı hatalarını anlama
 
-Güvenlik aracısı hatalarının çoğu aşağıdaki biçimde görüntülenir:
+Güvenlik Aracısı hatalarının çoğu aşağıdaki biçimde görüntülenir:
 
 ```
 Azure Security Center for IoT agent encountered an error! Error in: {Error Code}, reason: {Error sub code}, extra details: {error specific details}
 ```
 
-| Hata Kodu | Hata alt kodu | Hata ayrıntıları | İyileştirici C | İyileştirici C # |
+| Hata Kodu | Hata alt kodu | Hata ayrıntıları | C 'yi düzelt | C 'yi düzelt # |
 |:-----------|:---------------|:--------|:------------|:------------|
-| Yerel Yapılandırma | Eksik yapılandırma | Yerel yapılandırma dosyasında bir yapılandırma eksik. Hata iletisi hangi anahtarın eksik olduğunu belirtmelidir. | /var/LocalConfiguration.json dosyasına eksik anahtarı ekleyin, ayrıntılar için [cs-localconfig-reference'a](azure-iot-security-local-configuration-c.md) bakın.| General.config dosyasına eksik anahtarı ekleyin, ayrıntılar için [c#-localconfig-reference'a](azure-iot-security-local-configuration-csharp.md) bakın. |
-| Yerel Yapılandırma | Cant Parse Yapılandırma | Yapılandırma değeri ayrıştısı olamaz. Hata iletisi hangi anahtarın ayrışdırılamaması gerektiğini belirtmelidir. Değer beklenen türde olmadığından veya değer aralık dışında olduğundan yapılandırma değeri ayrıştırılamaz. | /var/LocalConfiguration.json dosyasındaki anahtarın değerini yerel Yapılandırma şemasıyla eşleşecek şekilde düzeltin, ayrıntılar için [c#-localconfig-reference'a](azure-iot-security-local-configuration-csharp.md) bakın. |  General.config dosyasındaki anahtarın değerini şemayla eşleşecek şekilde düzeltin, ayrıntılar için [cs-localconfig-reference'a](azure-iot-security-local-configuration-c.md) bakın.|
-| Yerel Yapılandırma | Dosya Biçimi | Yapılandırma dosyasını ayrışdırmak için başarısız oldu. | Yapılandırma dosyası bozuk, aracıyı karşıdan yükleyin ve yeniden yükleyin. | |
-| Uzaktan Yapılandırma | Zaman aşımı | Aracı, zaman zaman dilimi içinde azureiotsecurity modülü ikizini getiremedi. | Kimlik doğrulama yapılandırmanın doğru olduğundan emin olun ve yeniden deneyin. | Aracı, azureiotsecurity modülü ikizini zaman araları içinde getiremedi. | Kimlik doğrulama yapılandırmanın doğru olduğundan emin olun ve yeniden deneyin. |
-| Kimlik Doğrulaması | Dosya Yok | Verilen yoldaki dosya yok. | Dosyanın verilen yolda bulunduğundan emin olun veya **LocalConfiguration.json** dosyasına gidin ve **FilePath** yapılandırmasını değiştirin. | Dosyanın verilen yolda bulunduğundan emin olun veya **Authentication.config** dosyasına gidin ve **filePath** yapılandırmasını değiştirin.|
-| Kimlik Doğrulaması | Dosya İzni | Aracının dosyayı açmak için yeterli izinleri yok. | **Asciotagent** kullanıcısına verilen yolda dosyadaki okuma izinlerini verin. | Dosyaya erişilebilir olduğundan emin olun. |
-| Kimlik Doğrulaması | Dosya Biçimi | Verilen dosya doğru biçimde değil. | Dosyanın doğru biçimde olduğundan emin olun. Desteklenen dosya türleri .pfx ve .pem'dir. | Dosyanın geçerli bir sertifika dosyası olduğundan emin olun. |
-| Kimlik Doğrulaması | Yetkisiz | Aracı, verilen kimlik bilgileriyle IoT Hub'a karşı kimlik doğrulaması yapamazdı. | Yerel Yapılandırma dosyasında kimlik doğrulama yapılandırmasını doğrulayın, kimlik doğrulama yapılandırmasını gözden geçirin ve tüm ayrıntıların doğru olduğundan emin olun, dosyadaki sırrın kimlik doğrulamasıyla eşleştiğini doğrulayın. | Kimlik doğrulama yapılandırmasını Authentication.config'de doğrulayın, kimlik doğrulama yapılandırmasını gözden geçirin ve tüm ayrıntıların doğru olduğundan emin olun, ardından dosyadaki sırrın kimlik doğrulamasıyla eşleştiğini doğrulayın.
-| Kimlik Doğrulaması | Bulunamadı | Cihaz / modül bulundu. | Kimlik doğrulama yapılandırmasını doğrulayın - ana bilgisayar adının doğru olduğundan, aygıtın IoT Hub'Da olduğundan ve azureiotsecurity ikiz modülüne sahip olduğundan emin olun. |  Kimlik doğrulama yapılandırmasını doğrulayın - ana bilgisayar adının doğru olduğundan, aygıtın IoT Hub'Da olduğundan ve azureiotsecurity ikiz modülüne sahip olduğundan emin olun. |
-| Kimlik Doğrulaması | Eksik Yapılandırma | *Authentication.config* dosyasında bir yapılandırma eksik. Hata iletisi hangi anahtarın eksik olduğunu belirtmelidir. | *LocalConfiguration.json* dosyasına eksik anahtarı ekleyin.| *Authentication.config* dosyasına eksik anahtarı ekleyin, ayrıntılar için [c#-localconfig-reference'a](azure-iot-security-local-configuration-csharp.md) bakın. |
-| Kimlik Doğrulaması | Cant Parse Yapılandırma | Yapılandırma değeri ayrıştısı olamaz. Hata iletisi hangi anahtarın ayrışdırılamaması gerektiğini belirtmelidir. Değer beklenen türde olmadığından veya değer aralık dışında olduğundan yapılandırma değeri ayrıştırılamaz. |**LocalConfiguration.json** dosyasındaki anahtarın değerini düzeltin. |Şemaya uyacak şekilde **Authentication.config** dosyasındaki anahtarın değerini düzeltin, ayrıntılar için [cs-localconfig-reference'a](azure-iot-security-local-configuration-c.md) bakın.|
+| Yerel yapılandırma | Eksik yapılandırma | Yerel yapılandırma dosyasında bir yapılandırma eksik. Hata iletisi hangi anahtarın eksik olduğunu durumdur. | Eksik anahtarı/var/localconfiguration.exe dosyasına ekleyin, Ayrıntılar için [CS-localconfig-Reference](azure-iot-security-local-configuration-c.md) bölümüne bakın.| Eksik anahtarı genel. config dosyasına ekleyin, Ayrıntılar için [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) bölümüne bakın. |
+| Yerel yapılandırma | Yapılandırma ayrıştırması yapılamıyor | Yapılandırma değeri ayrıştırılamıyor. Hata iletisi hangi anahtarın ayrıştırılamadığına yönelik olmalıdır. Değer beklenen türde olmadığından veya değer Aralık dışında olduğundan, bir yapılandırma değeri ayrıştırılamaz. | /Var/localconfiguration.exe dosyasındaki anahtarın değerini LocalConfiguration şemasıyla eşleşecek şekilde düzelttikten sonra Ayrıntılar için [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) bölümüne bakın. |  Genel. config dosyasındaki anahtarın değerini, şemayla eşleşecek şekilde düzeltir, Ayrıntılar için [CS-localconfig-Reference](azure-iot-security-local-configuration-c.md) bölümüne bakın.|
+| Yerel yapılandırma | Dosya Biçimi | Yapılandırma dosyası ayrıştırılamadı. | Yapılandırma dosyası bozuk, aracıyı indirip yeniden yükleyin. | |
+| Uzaktan yapılandırma | Zaman aşımı | Aracı, zaman aşımı süresi içinde ikizi azureiotsecurity modülünü getiremedi. | Kimlik doğrulama yapılandırmasının doğru olduğundan emin olun ve yeniden deneyin. | Aracı, zaman aşımı süresi içinde ikizi azureiotsecurity modülünü getiremedi. | Kimlik doğrulama yapılandırmasının doğru olduğundan emin olun ve yeniden deneyin. |
+| Kimlik Doğrulaması | Dosya yok | Verilen yoldaki dosya yok. | Dosyanın belirtilen yolda mevcut olduğundan emin olun veya **localconfiguration. JSON** dosyasına gidin ve **FilePath** yapılandırmasını değiştirin. | Dosyanın belirtilen yolda mevcut olduğundan emin olun veya **Authentication. config** dosyasına gidin ve **FilePath** yapılandırmasını değiştirin.|
+| Kimlik Doğrulaması | Dosya Izni | Aracı, dosyayı açmak için yeterli izinlere sahip değil. | **Asciotagent** kullanıcısına verilen yoldaki dosya üzerinde okuma izinleri verin. | Dosyanın erişilebilir olduğundan emin olun. |
+| Kimlik Doğrulaması | Dosya Biçimi | Verilen dosya doğru biçimde değil. | Dosyanın doğru biçimde olduğundan emin olun. Desteklenen dosya türleri. pfx ve. ped. | Dosyanın geçerli bir sertifika dosyası olduğundan emin olun. |
+| Kimlik Doğrulaması | Yetkisiz | Aracı verilen kimlik bilgileriyle IoT Hub karşı kimlik doğrulaması yapamadı. | LocalConfiguration dosyasında kimlik doğrulama yapılandırmasını doğrulayın, kimlik doğrulama yapılandırması ' na gidin ve tüm ayrıntıların doğru olduğundan emin olun, dosyadaki gizli dizinin kimliği doğrulanmış kimlikle eşleştiğini doğrulayın. | Authentication. config dosyasında kimlik doğrulama yapılandırmasını doğrulayın, kimlik doğrulama yapılandırması ' na gidin ve tüm ayrıntıların doğru olduğundan emin olun, ardından dosyadaki gizli dizinin kimliği doğrulanmış kimlikle eşleştiğini doğrulayın.
+| Kimlik Doğrulaması | Bulunamadı | Cihaz/modül bulundu. | Kimlik doğrulama yapılandırmasını doğrulama-ana bilgisayar adının doğru olduğundan, cihazın IoT Hub olduğundan ve bir azureiotsecurity ikizi modülüne sahip olduğundan emin olun. |  Kimlik doğrulama yapılandırmasını doğrulama-ana bilgisayar adının doğru olduğundan, cihazın IoT Hub olduğundan ve bir azureiotsecurity ikizi modülüne sahip olduğundan emin olun. |
+| Kimlik Doğrulaması | Eksik yapılandırma | *Authentication. config* dosyasında bir yapılandırma eksik. Hata iletisi hangi anahtarın eksik olduğunu durumdur. | *Localconfiguration. JSON* dosyasına eksik anahtarı ekleyin.| Eksik anahtarı *Authentication. config* dosyasına ekleyin, Ayrıntılar için [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) bölümüne bakın. |
+| Kimlik Doğrulaması | Yapılandırma ayrıştırması yapılamıyor | Yapılandırma değeri ayrıştırılamıyor. Hata iletisi hangi anahtarın ayrıştırılamadığına yönelik olmalıdır. Değer beklenen türde olmadığından veya değer Aralık dışında olduğundan, bir yapılandırma değeri ayrıştırılamıyor. |**Localconfiguration. JSON** dosyasındaki anahtarın değerini düzeltir. |**Authentication. config** dosyasındaki anahtarın değerini şemayla eşleşecek şekilde düzeltir, Ayrıntılar için [CS-localconfig-Reference](azure-iot-security-local-configuration-c.md) bölümüne bakın.|
 |
 
 ## <a name="restart-the-agent"></a>Aracıyı yeniden başlatın
 
-1. Bir güvenlik aracısı hatasını bulup düzelttikten sonra, aşağıdaki komutu çalıştırarak aracıyı yeniden başlatın:
+1. Bir güvenlik Aracısı hatasını bulduktan ve düzelttikten sonra, aşağıdaki komutu çalıştırarak aracıyı yeniden başlatın:
 
     ```bash
     systemctl restart ASCIoTAgent.service
     ```
 
-1. Gerekirse, aracıyı durdurmaya zorlamak için önceki işlemleri tekrarlayın ve aracı başlangıç işleminde başarısız olmaya devam ederse hataları alın.
+1. Gerekirse, aracıyı durdurmayı zorlamak ve aracı başlatma işlemini başarısız olmaya devam ederse hataları almak için önceki işlemleri tekrarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- IoT hizmetine [Genel Bakış](overview.md) için Azure Güvenlik Merkezi'ni okuyun
-- IoT [Mimarisi](architecture.md) için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin
-- IoT [hizmeti](quickstart-onboard-iot-hub.md) için Azure Güvenlik Merkezi'ni etkinleştirme
-- IoT hizmeti [SSS](resources-frequently-asked-questions.md) için Azure Güvenlik Merkezi'ni okuyun
-- Ham güvenlik [verilerine](how-to-security-data-access.md) nasıl erişin gerektiğini öğrenin
+- IoT hizmetine [genel bakış](overview.md) Için Azure Güvenlik Merkezi 'ni okuyun
+- IoT [mimarisi](architecture.md) Için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin
+- IoT [hizmeti](quickstart-onboard-iot-hub.md) Için Azure Güvenlik Merkezi 'ni etkinleştirme
+- IoT hizmeti için Azure Güvenlik Merkezi [SSS](resources-frequently-asked-questions.md) makalesini okuyun
+- [Ham güvenlik verilerine](how-to-security-data-access.md) erişme hakkında bilgi edinin
 - [Önerileri](concept-recommendations.md) anlama
 - Güvenlik [uyarılarını](concept-security-alerts.md) anlama

@@ -1,6 +1,6 @@
 ---
 title: Özelleştirilebilir güvenlik uyarıları
-description: IoT özellikleri ve hizmetleri için Azure Güvenlik Merkezi'ni kullanarak özelleştirilebilir güvenlik uyarıları ve önerilen düzeltme hakkında bilgi edinin.
+description: IoT özellikleri ve hizmeti için Azure Güvenlik Merkezi 'ni kullanarak özelleştirilebilir güvenlik uyarıları ve önerilen düzeltme hakkında bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,54 +15,54 @@ ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
 ms.openlocfilehash: 3b39d70c60a4c9701d0a8bafde17b241fe01cc46
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311631"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>IoT için Azure Güvenlik Merkezi güvenlik uyarıları
 
-Azure Güvenlik Merkezi IoT, kötü amaçlı etkinlikler konusunda sizi uyarmak için gelişmiş analitik ve tehdit istihbaratını kullanarak IoT çözümünüzü sürekli olarak analiz eder.
+IoT için Azure Güvenlik Merkezi, gelişmiş analiz ve tehdit bilgilerini kullanarak, kötü amaçlı etkinliklerle ilgili uyarı almak için IoT çözümünüzü sürekli olarak analiz eder.
 
-Uyarıların benzersiz kuruluş dağıtımınızda ve ortamınızda potansiyel uzlaşmanın en etkili göstergeleri olarak hareket etmesini sağlamak için beklenen aygıt davranışı hakkındaki bilginize dayalı özel uyarılar oluşturmanızı öneririz.
+Uyarıların, benzersiz kurumsal dağıtımda ve yatay olarak olası güvenliğin en verimli göstergeleri olarak davranmasını sağlamak için beklenen cihaz davranışı hakkındaki bilginiz temelinde özel uyarılar oluşturmanızı öneririz.
 
-IoT uyarıları için Azure Güvenlik Merkezi'nin aşağıdaki listesi, beklenen IoT Hub'ınıza ve/veya aygıt davranışınıza bağlı olarak sizin tarafından tanımlanabilir. Her uyarının nasıl özelleştirilenhakkında daha fazla bilgi için [bkz.](quickstart-create-custom-alerts.md)
+IoT uyarıları için Azure Güvenlik Merkezi 'nin aşağıdaki listesi, beklenen IoT Hub ve/veya cihaz davranışına göre tanımlanabilir. Her uyarının nasıl özelleştirileceği hakkında daha fazla ayrıntı için bkz. [özel uyarılar oluşturma](quickstart-create-custom-alerts.md).
 
-## <a name="iot-hub-alerts-available-for-customization"></a>Özelleştirme için kullanılabilir IoT Hub uyarıları
+## <a name="iot-hub-alerts-available-for-customization"></a>IoT Hub uyarılarını özelleştirmek için kullanılabilir
 
 | Severity | Uyarı adı | Veri kaynağı | Açıklama | Önerilen düzeltme|
 |---|---|---|---|---|
-| Düşük      | Özel uyarı - AMQP protokolündeki aygıt iletilerine bulut sayısı izin verilen aralığın dışındadır          | IoT Hub     | Belirli bir zaman penceresindeki aygıt iletilerine bulut sayısı (AMQP protokolü) şu anda yapılandırılmış ve izin verilen aralığın dışındadır.||
-| Düşük      | Özel uyarı - AMQP protokolündeki aygıt iletilerine reddedilen bulut sayısı izin verilen aralığın dışındadır | IoT Hub     | Aygıt tarafından reddedilen aygıt iletilerine bulut sayısı (AMQP protokolü), belirli bir zaman penceresi içinde şu anda yapılandırılmış ve izin verilen aralığın dışındadır.||
-| Düşük      | Özel uyarı - AMQP protokolündeki bulut iletilerine aygıt sayısı izin verilen aralığın dışındadır      | IoT Hub     | Belirli bir zaman penceresinde ki iletileri (AMQP protokolü) buluta ayarlayacak aygıt miktarı, şu anda yapılandırılmış ve izin verilen aralığın dışındadır.|   |
-| Düşük      | Özel uyarı - doğrudan yöntem çağrılarının sayısı izin verilen aralığın dışında | IoT Hub     | Belirli bir zaman penceresi içinde çağrılan doğrudan yöntemin miktarı, şu anda yapılandırılmış ve izin verilen aralığın dışındadır.||
-| Düşük      | Özel uyarı - dosya yükleme sayısı izin verilen aralığın dışında | IoT Hub     | Belirli bir zaman penceresindeki dosya yüklemelerinin miktarı, şu anda yapılandırılmış ve izin verilen aralığın dışındadır.| |
-| Düşük      | Özel uyarı - HTTP protokolündeki aygıt iletilerine bulut sayısı izin verilen aralığın dışındadır | IoT Hub     | Bir zaman penceresindeki aygıt iletilerine (HTTP protokolü) bulut miktarı yapılandırılan izin verilen aralıkta değil                                  |
-| Düşük      | Özel uyarı - HTTP protokolündeki aygıt iletilerine reddedilen bulut sayısı izin verilen aralıkta değil | IoT Hub     | Belirli bir zaman penceresindeki aygıt iletilerine (HTTP protokolü) bulut miktarı, şu anda yapılandırılmış ve izin verilen aralığın dışındadır. |
-| Düşük      | Özel uyarı - HTTP protokolündeki iletileri buluta alan aygıt sayısı izin verilen aralığın dışındadır | IoT Hub| Belirli bir zaman penceresinde iletileri buluta ayarlayacak aygıt miktarı (HTTP protokolü) şu anda yapılandırılmış ve izin verilen aralığın dışındadır.|    |
-| Düşük      | Özel uyarı - MQTT protokolündeki aygıt iletilerine bulut sayısı izin verilen aralığın dışındadır | IoT Hub     | Belirli bir zaman penceresindeki aygıt iletilerine (MQTT protokolü) bulut miktarı, şu anda yapılandırılmış ve izin verilen aralığın dışındadır.|   |
-| Düşük      | Özel uyarı - MQTT protokolündeki aygıt iletilerine reddedilen bulut sayısı izin verilen aralığın dışındadır | IoT Hub     | Belirli bir zaman penceresi içinde aygıt tarafından reddedilen aygıt iletilerine (MQTT protokolü) bulut miktarı, şu anda yapılandırılan ve izin verilen aralığın dışındadır. |
-| Düşük      | Özel uyarı - MQTT protokolündeki bulut iletilerine aygıt sayısı izin verilen aralığın dışındadır          | IoT Hub     | Belirli bir zaman penceresindeki bulut iletilerine (MQTT protokolü) aygıtın miktarı, şu anda yapılandırılmış ve izin verilen aralığın dışındadır.|
-| Düşük      | Özel uyarı - komut sırası temizleme sayısı izin verilen aralığın dışında                               | IoT Hub     | Belirli bir zaman penceresindeki komut sırası temizleme miktarı, şu anda yapılandırılmış ve izin verilen aralığın dışındadır.||
-| Düşük      | Özel uyarı - modül ikiz güncelleştirmelerinin sayısı izin verilen aralığın dışındadır                                       | IoT Hub     | Belirli bir zaman penceresindeki modül ikiz güncelleştirmelerinin miktarı, şu anda yapılandırılmış ve izin verilen aralığın dışındadır.|
-| Düşük      | Özel uyarı - yetkisiz işlem sayısı izin verilen aralığın dışında  | IoT Hub     | Belirli bir zaman penceresindeki yetkisiz işlemlerin miktarı, şu anda yapılandırılmış ve izin verilen aralığın dışındadır.|
+| Düşük      | Özel uyarı-AMQP protokolündeki cihaz iletilerinin bulut sayısı izin verilen aralığın dışında          | IoT Hub     | Belirli bir zaman penceresi içindeki bulut-cihaz iletileri (AMQP Protokolü) sayısı, şu anda yapılandırılmış ve izin verilen aralığın dışında.||
+| Düşük      | Özel uyarı-AMQP protokolündeki cihaz iletilerine reddedilen bulut sayısı izin verilen aralığın dışında | IoT Hub     | Cihaz tarafından reddedilen bulut-cihaz iletileri (AMQP Protokolü) sayısı, belirli bir zaman penceresi içinde yapılandırılmış ve izin verilen aralığın dışında.||
+| Düşük      | Özel uyarı-AMQP protokolündeki bulut iletilerine yönelik cihaz sayısı izin verilen aralığın dışında      | IoT Hub     | Belirli bir zaman penceresi içindeki bulut iletilerine (AMQP Protokolü) cihaz miktarı Şu anda yapılandırılmış ve izin verilen aralığın dışında.|   |
+| Düşük      | Özel uyarı-çağıran doğrudan Yöntem sayısı izin verilen aralığın dışında | IoT Hub     | Belirli bir zaman penceresi içinde doğrudan yöntem çağıran miktarı Şu anda yapılandırılmış ve izin verilen aralığın dışında.||
+| Düşük      | Özel uyarı-dosya yükleme sayısı izin verilen aralığın dışında | IoT Hub     | Belirli bir zaman penceresi içindeki dosya karşıya yükleme miktarı Şu anda yapılandırılmış ve izin verilen aralığın dışında.| |
+| Düşük      | Özel uyarı-HTTP protokolündeki cihaz iletileri için bulut sayısı izin verilen aralığın dışında | IoT Hub     | Bir zaman penceresinde bulut-cihaz iletileri (HTTP protokolü) miktarı yapılandırılmış izin verilen aralıkta değil                                  |
+| Düşük      | Özel uyarı-HTTP protokolündeki cihaz iletilerine reddedilen bulut sayısı izin verilen aralıkta değil | IoT Hub     | Belirli bir zaman penceresi içindeki bulut-cihaz iletileri (HTTP protokolü) miktarı Şu anda yapılandırılmış ve izin verilen aralığın dışında. |
+| Düşük      | Özel uyarı-HTTP protokolündeki bulut iletilerine yönelik cihaz sayısı izin verilen aralığın dışında | IoT Hub| Belirli bir zaman penceresi içindeki bulut iletilerine (HTTP protokolü) cihaz miktarı Şu anda yapılandırılmış ve izin verilen aralığın dışında.|    |
+| Düşük      | Özel uyarı-MQTT protokolünde cihaz iletilerine yönelik bulut sayısı izin verilen aralığın dışında | IoT Hub     | Belirli bir zaman penceresi içindeki bulut-cihaz iletileri (MQTT Protokolü) miktarı Şu anda yapılandırılmış ve izin verilen aralığın dışında.|   |
+| Düşük      | Özel uyarı-MQTT protokolünde cihaz iletilerine reddedilen bulut sayısı izin verilen aralığın dışında | IoT Hub     | Belirli bir zaman penceresi içinde cihaz tarafından reddedilen bulut ve cihaz iletileri (MQTT Protokolü) miktarı Şu anda yapılandırılmış ve izin verilen aralığın dışında. |
+| Düşük      | Özel uyarı-MQTT protokolünde bulut iletilerine yönelik cihaz sayısı izin verilen aralığın dışında          | IoT Hub     | Belirli bir zaman penceresi içindeki bulut iletilerine (MQTT Protokolü) cihaz miktarı Şu anda yapılandırılmış ve izin verilen aralığın dışında.|
+| Düşük      | Özel uyarı-komut kuyruğu temizler sayısı izin verilen aralığın dışında                               | IoT Hub     | Komut kuyruğunun miktarı belirli bir zaman penceresi içinde temizler ve şu anda yapılandırılmış ve izin verilen aralığın dışında.||
+| Düşük      | Özel uyarı-modül ikizi güncelleştirmelerinin sayısı izin verilen aralığın dışında                                       | IoT Hub     | Belirli bir zaman penceresi içindeki modül ikizi güncelleştirmelerinin miktarı Şu anda yapılandırılmış ve izin verilen aralığın dışında.|
+| Düşük      | Özel uyarı-yetkisiz işlem sayısı izin verilen aralığın dışında  | IoT Hub     | Belirli bir zaman penceresi içindeki yetkisiz işlem miktarı Şu anda yapılandırılmış ve izin verilen aralığın dışında.|
 |
 
-## <a name="agent-alerts-available-for-customization"></a>Özelleştirme için kullanılabilir aracı uyarıları
+## <a name="agent-alerts-available-for-customization"></a>Özelleştirme için kullanılabilir Aracı uyarıları
 
 | Severity | Uyarı adı | Veri kaynağı | Açıklama | Önerilen düzeltme|
 |---|---|---|---|---|
-| Düşük      | Özel uyarı - etkin bağlantı sayısı izin verilen aralığın dışında  | Aracı       | Belirli bir zaman penceresindeki etkin bağlantı sayısı, şu anda yapılandırılmış ve izin verilen aralığın dışındadır.|  Aygıt günlüklerini incele. Bağlantının nereden kaynaklandığını öğrenin ve iyi huylu veya kötü niyetli olup olmadığını belirleyin. Kötü amaçlı yazılım varsa, olası kötü amaçlı yazılımları kaldırın ve kaynağı anlayın. İyi huyluysa, kaynağı izin verilen bağlantı listesine ekleyin.  |
-| Düşük      | Özel uyarı - IZIN verilmeyen bir IP'ye oluşturulan giden bağlantı                             | Aracı       | İzin verilen IP listenizin dışında bir IP'ye giden bağlantı oluşturuldu. |Aygıt günlüklerini incele. Bağlantının nereden kaynaklandığını öğrenin ve iyi huylu veya kötü niyetli olup olmadığını belirleyin. Kötü amaçlı yazılım varsa, olası kötü amaçlı yazılımları kaldırın ve kaynağı anlayın. İyi huyluysa, kaynağı izin verilen IP listesine ekleyin.                        |
-| Düşük      | Özel uyarı - başarısız yerel giriş sayısı izin verilen aralığın dışında                               | Aracı       | Belirli bir zaman penceresinde ki başarısız yerel girişlerin miktarı, şu anda yapılandırılmış ve izin verilen aralığın dışındadır. |   |
-| Düşük      | Özel uyarı - izin verilen kullanıcı listesinde olmayan bir kullanıcının girişi | Aracı       | İzin verilen kullanıcı listenizin dışında, aygıtta oturum açan yerel bir kullanıcı.|  Ham veri kaydediyorsanız, günlük analitiği hesabınıza gidin ve cihazı araştırmak, kaynağı belirlemek ve bu ayarlar için izin verme/engelleme listesini düzeltmek için verileri kullanın. Ham verileri şu anda kaydetmiyorsanız, aygıta gidin ve bu ayarlar için izin/engelleme listesini düzeltin.|
-| Düşük      | Özel uyarı - izin verilmeyen bir işlem yürütüldü | Aracı       | Aygıtta izin verilmeyen bir işlem yürütüldü. |Ham veri kaydediyorsanız, günlük analitiği hesabınıza gidin ve cihazı araştırmak, kaynağı belirlemek ve bu ayarlar için izin verme/engelleme listesini düzeltmek için verileri kullanın. Ham verileri şu anda kaydetmiyorsanız, aygıta gidin ve bu ayarlar için izin/engelleme listesini düzeltin.  |
+| Düşük      | Özel uyarı-etkin bağlantı sayısı izin verilen aralığın dışında  | Aracı       | Belirli bir zaman penceresi içindeki etkin bağlantı sayısı, şu anda yapılandırılmış ve izin verilen aralığın dışında.|  Cihaz günlüklerini araştırın. Bağlantının nereden geldiğini öğrenin ve zararsız veya kötü amaçlı olup olmadığını öğrenin. Kötü amaçlı, olası kötü amaçlı yazılımları kaldırın ve kaynağı anlayın. Benign ise, kaynağı izin verilen bağlantı listesine ekleyin.  |
+| Düşük      | Özel uyarı-izin verilmeyen bir IP 'ye giden bağlantı oluşturuldu                             | Aracı       | İzin verilen IP listenizin dışında bir IP 'ye giden bağlantı oluşturuldu. |Cihaz günlüklerini araştırın. Bağlantının nereden geldiğini öğrenin ve zararsız veya kötü amaçlı olup olmadığını öğrenin. Kötü amaçlı, olası kötü amaçlı yazılımları kaldırın ve kaynağı anlayın. Benign ise, kaynağı izin verilen IP listesine ekleyin.                        |
+| Düşük      | Özel uyarı-başarısız yerel oturum açma sayısı izin verilen aralığın dışında                               | Aracı       | Belirli bir zaman penceresi içindeki başarısız olan yerel oturum açma miktarı, yapılandırılmış ve izin verilen aralığın dışında. |   |
+| Düşük      | Özel uyarı-izin verilen kullanıcı listesinde olmayan bir kullanıcının oturum açması | Aracı       | İzin verilen Kullanıcı listenizin dışında, cihazda oturum açmış yerel bir kullanıcı.|  Ham verileri kaydediyorsanız, Log Analytics hesabınıza gidip cihazı araştırmak için verileri kullanın, kaynağı belirleyip, bu ayarlar için izin verme/engelleme listesini onarın. Şu anda ham verileri kaydettiğinizden cihaza gidin ve bu ayarlar için izin verme/engelleme listesini onarın.|
+| Düşük      | Özel uyarı-izin verilmeyen bir işlem yürütüldü | Aracı       | Cihazda izin verilmeyen bir işlem yürütüldü. |Ham verileri kaydediyorsanız, Log Analytics hesabınıza gidip cihazı araştırmak için verileri kullanın, kaynağı belirleyip, bu ayarlar için izin verme/engelleme listesini onarın. Şu anda ham verileri kaydettiğinizden cihaza gidin ve bu ayarlar için izin verme/engelleme listesini onarın.  |
 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Uyarıyı nasıl [özelleştirinizi](quickstart-create-custom-alerts.md) öğrenin
-- IoT hizmeti için Azure Güvenlik Merkezi [Genel Bakış](overview.md)
-- Güvenlik verilerinize nasıl [erişilenleri](how-to-security-data-access.md) öğrenin
-- [Bir aygıtı araştırma](how-to-investigate-device.md) hakkında daha fazla bilgi edinin
+- [Bir uyarıyı özelleştirmeyi](quickstart-create-custom-alerts.md) öğrenin
+- IoT hizmeti için Azure Güvenlik Merkezi ['Ne genel bakış](overview.md)
+- [Güvenlik verilerinize erişme](how-to-security-data-access.md) hakkında bilgi edinin
+- [Cihazı araştırma](how-to-investigate-device.md) hakkında daha fazla bilgi edinin

@@ -1,6 +1,6 @@
 ---
-title: Linux C aracısı & yükleyin
-description: IoT aracısı için Azure Güvenlik Merkezi'ni hem 32 bit hem de 64 bit Linux'a nasıl yükleyin öğrenin.
+title: Linux C Aracısı 'nı Install & Deploy
+description: IoT Aracısı için Azure Güvenlik Merkezi 'ni 32-bit ve 64 bit Linux 'ta yüklemeyi öğrenin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: d9f9602a19a266c70b17422e90566f72de2978f6
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311201"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Linux için IoT için Azure Güvenlik Merkezi C tabanlı güvenlik aracısını dağıtma
 
-Bu kılavuz, IoT C tabanlı güvenlik aracısı için Azure Güvenlik Merkezi'nin Linux'a nasıl yüklenir ve dağıtılanın.
+Bu kılavuzda, Linux üzerinde IoT C tabanlı güvenlik aracısına yönelik Azure Güvenlik Merkezi 'nin nasıl yükleneceği ve dağıtılacağı açıklanmaktadır.
 
 Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz:
 
@@ -36,64 +36,64 @@ Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Diğer platformlar ve aracı tatları için [bkz.](how-to-deploy-agent.md)
+Diğer platformlar ve aracı türleri için bkz. [doğru güvenlik aracısını seçme](how-to-deploy-agent.md).
 
 1. Güvenlik aracısını dağıtmak için, yüklemek istediğiniz makinede (sudo) yerel yönetici hakları gereklidir.
 
-1. Aygıt için [bir güvenlik modülü oluşturun.](quickstart-create-security-twin.md)
+1. Cihaz için [bir güvenlik modülü oluşturun](quickstart-create-security-twin.md) .
 
 ## <a name="installation"></a>Yükleme
 
 Güvenlik aracısını yüklemek ve dağıtmak için aşağıdaki iş akışını kullanın:
 
-1. [GitHub'dan](https://aka.ms/iot-security-github-c)makinenize en son sürümü indirin.
+1. [GitHub](https://aka.ms/iot-security-github-c)'dan makinenize en son sürümü indirin.
 
 1. Paketin içeriğini ayıklayın ve _/src/installation_ klasörüne gidin.
 
-1. Aşağıdaki komutu çalıştırarak **InstallSecurityAgent komut dosyasına** çalışan izinler ekleyin:
+1. Aşağıdaki komutu çalıştırarak **ınstallsecurityagent betiğine** çalışan izinleri ekleyin:
 
    ```
    chmod +x InstallSecurityAgent.sh
    ```
 
-1. Sonra, çalıştırın:
+1. Sonra, şunu çalıştırın:
 
    ```
    ./InstallSecurityAgent.sh -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -i
    ```
 
-   Kimlik doğrulama parametreleri hakkında daha fazla bilgi için [kimlik doğrulamayı nasıl yapılandırılabilirsiniz.](concept-security-agent-authentication-methods.md)
+   Kimlik doğrulama parametreleri hakkında daha fazla bilgi için bkz. [kimlik doğrulamasını yapılandırma](concept-security-agent-authentication-methods.md) .
 
-Bu komut dosyası aşağıdaki işlevi gerçekleştirir:
+Bu betik aşağıdaki işlevi gerçekleştirir:
 
-1. Ön koşulları yükler.
+1. Önkoşulları kurar.
 
 1. Bir hizmet kullanıcısı ekler (etkileşimli oturum açma devre dışı).
 
-1. Aracıyı **Daemon** olarak yükler - aygıtın servis yönetimi için **sistemli** kullandığını varsayar.
+1. Aracıyı bir **Daemon** olarak yükleme-cihazın hizmet yönetimi için **systemd** 'yi kullandığını varsayar.
 
-1. Aracıyı sağlanan kimlik doğrulama parametreleriyle yapılandırır.
+1. Aracıyı, belirtilen kimlik doğrulama parametreleriyle yapılandırır.
 
-Ek yardım için komut dosyasını –yardım parametresi ile çalıştırın:
+Ek Yardım için, – help parametresiyle betiği çalıştırın:
 
 ```./InstallSecurityAgent.sh --help```
 
 ### <a name="uninstall-the-agent"></a>Aracıyı kaldırın
 
-Aracıyı kaldırmak için komut dosyasını –-kaldır parametresi ile çalıştırın:
+Aracıyı kaldırmak için--Uninstall parametresiyle betiği çalıştırın:
 
 ```./InstallSecurityAgent.sh -–uninstall```
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Çalıştırarak dağıtım durumunu denetleyin:
+Aşağıdakileri çalıştırarak dağıtım durumunu denetleyin:
 
 ```systemctl status ASCIoTAgent.service```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- IoT hizmetine [Genel Bakış](overview.md) için Azure Güvenlik Merkezi'ni okuyun
-- IoT [Mimarisi](architecture.md) için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin
+- IoT hizmetine [genel bakış](overview.md) Için Azure Güvenlik Merkezi 'ni okuyun
+- IoT [mimarisi](architecture.md) Için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin
 - [Hizmeti](quickstart-onboard-iot-hub.md) etkinleştirme
-- [SSS'yi](resources-frequently-asked-questions.md) okuyun
+- [SSS](resources-frequently-asked-questions.md) 'yi okuyun
 - [Güvenlik uyarılarını](concept-security-alerts.md) anlama

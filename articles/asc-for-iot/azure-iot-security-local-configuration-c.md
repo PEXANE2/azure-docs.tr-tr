@@ -1,6 +1,6 @@
 ---
-title: Güvenlik aracısı yerel yapılandırma (C)
-description: C için aracı yerel yapılandırmaları için Azure Güvenlik Merkezi hakkında bilgi edinin.
+title: Güvenlik Aracısı yerel yapılandırması (C)
+description: C için yerel aracı yapılandırmalarına yönelik Azure Güvenlik Merkezi hakkında bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,44 +16,44 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: cd344b9bebb69af210c482f46af6b2dd7edf7816
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311701"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>LocalConfiguration.json dosyasını anlama - C aracısı
 
-Azure Güvenlik Merkezi ioT güvenlik aracısı için yerel bir yapılandırma dosyasından yapılandırmalar kullanır.
-Güvenlik aracısı, aracı nın başlatılmasında yapılandırmayı bir kez okur.
-Yerel yapılandırma dosyasında bulunan yapılandırma kimlik doğrulama yapılandırması ve diğer aracıyla ilgili yapılandırmaları içerir.
-Dosya, JSON gösterimindeki "Anahtar Değer" çiftlerinde yapılandırmalar içerir ve aracı yüklendiğinde yapılandırmalar doldurulur.
+IoT güvenlik Aracısı için Azure Güvenlik Merkezi, yerel bir yapılandırma dosyasından yapılandırmaları kullanır.
+Güvenlik Aracısı, aracıyı başlatma sırasında yapılandırmayı bir kez okur.
+Yerel yapılandırma dosyasında bulunan yapılandırma, kimlik doğrulama yapılandırması ve aracıyla ilgili diğer yapılandırmaları içerir.
+Dosya, JSON gösteriminde "anahtar-değer" çiftleri içinde yapılandırma içerir ve aracı yüklendiğinde yapılandırma doldurulur.
 
-Varsayılan olarak, dosya şu adreste bulunur: /var/ASCIoTAgent/LocalConfiguration.json
+Varsayılan olarak, dosya şu konumda bulunur:/var/asciotagent/localconfiguration.exe
 
-Aracı yeniden başlatıldığında yapılandırma dosyasında değişiklikler gerçekleşir.
+Yapılandırma dosyasındaki değişiklikler aracı yeniden başlatıldığında gerçekleşir.
 
-## <a name="security-agent-configurations-for-c"></a>C için güvenlik aracısı yapılandırmaları
+## <a name="security-agent-configurations-for-c"></a>C için güvenlik Aracısı yapılandırması
 
-| Yapılandırma Adı | Olası değerler | Ayrıntılar |
+| Yapılandırma adı | Olası değerler | Ayrıntılar |
 |:-----------|:---------------|:--------|
-| AgentId | GUID | Aracı Benzersiz tanımlayıcı |
-| TriggerdEventsInterval | ISO8601 dize | Tetiklenen olaylar koleksiyonu için zamanlayıcı aralığı |
-| Connectiontimeout | ISO8601 dize | IoThub bağlantısızamansız hale gelmeden önceki zaman dilimi |
-| Kimlik Doğrulaması | JsonNesne | Kimlik doğrulama yapılandırması. Bu nesne, IoTHub'a karşı kimlik doğrulama için gereken tüm bilgileri içerir |
-| Kimlik | "DPS", "Güvenlik Modülü", "Aygıt" | Kimlik doğrulama kimliği - DPS üzerinden kimlik doğrulama yapılıyorsa DPS, güvenlik modülü kimlik bilgileri veya aygıt üzerinden kimlik doğrulama sı aygıtla gerçekse Güvenlik Modülü |
-| Authenticationmethod | "SasToken", "SelfSignedCertificate" | kimlik doğrulama için kullanıcı sırrı - Kullanım sırrı Simetrik bir anahtarsa SasToken'ı seçin, gizli kendi imzalı bir sertifikaysa kendi imzalı sertifikayı seçin  |
-| Filepath | Dosyaya giden yol (dize) | Kimlik doğrulama sırrını içeren dosyaya giden yol |
-| Ana bilgisayar adı | string | Azure iot hub'ının ana bilgisayar adı. genellikle <benim-hub>.azure-devices.net |
-| DeviceId | string | Aygıtın kimliği (Azure IoT Hub'ında kayıtlı olarak) |
-| Dps | JsonNesne | DPS ile ilgili yapılandırmalar |
-| IDScope | string | DPS'nin kimlik kapsamı |
-| RegistrationId | string  | DPS cihaz kayıt kimliği |
-| Günlüğe kaydetme | JsonNesne | Aracı logger ilgili yapılandırmaları |
-| SystemLoggerMinimumŞiddet | 0 <= <sayısı = 4 | günlük iletileri eşit ve bu önemin üzerinde /var/log/syslog 'a kaydedilir (0 en düşük önem derecesidir) |
-| TeşhisEventMinimumSeverity | 0 <= <sayısı = 4 | günlük iletileri eşit ve bu önemin üzerinde tanılama olayları olarak gönderilecektir (0 en düşük önem derecesidir) |
+| AgentId | GUID | Aracı benzersiz tanımlayıcısı |
+| TriggerdEventsInterval | ISO8601 dizesi | Tetiklenen olaylar koleksiyonu için Zamanlayıcı aralığı |
+| ConnectionTimeout | ISO8601 dizesi | Iothub bağlantısı zaman aşımına uğramadan önce geçen süre |
+| Kimlik Doğrulaması | JsonObject | Kimlik doğrulama yapılandırması. Bu nesne, ıothub 'e göre kimlik doğrulaması için gereken tüm bilgileri içerir |
+| Kimlik | "DPS", "SecurityModule", "cihaz" | Kimlik doğrulama kimliği-DPS, kimlik doğrulaması, cihaz kimlik bilgileriyle kimlik doğrulama yapılırsa güvenlik modülü kimlik bilgileri veya cihaz aracılığıyla yapılırsa SecurityModule |
+| AuthenticationMethod | "SasToken", "SelfSignedCertificate" | kimlik doğrulaması için Kullanıcı parolası-gizli anahtar kullan seçeneği bir simetrik anahtaralıysa, sır otomatik olarak imzalanan bir sertifika ise, otomatik olarak imzalanan sertifika seçeneğini belirleyin  |
+| Null | Dosya yolu (dize) | Kimlik doğrulama parolasını içeren dosyanın yolu |
+| Ana bilgisayar adı | string | Azure IoT Hub 'ının konak adı. genellikle <-hub>. azure-devices.net |
+| DeviceId | string | Cihazın KIMLIĞI (Azure IoT Hub kayıtlı olarak) |
+| DPS | JsonObject | DPS ilgili yapılandırma |
+| IDScope | string | DPS KIMLIK kapsamı |
+| RegistrationId | string  | DPS cihaz kayıt KIMLIĞI |
+| Günlüğe Kaydetme | JsonObject | Aracı günlükçüsü ile ilgili yapılandırma |
+| Systemloggerminimumönem derecesi | 0 <= sayı <= 4 | Bu önem derecesine sahip ve yukarıdaki günlük iletileri,/var/log/Syslog dizinine kaydedilir (en düşük önem derecesi 0 ' dır) |
+| DiagnosticEventMinimumSeverity | 0 <= sayı <= 4 | Bu önem derecesine sahip olan ve yukarıdaki günlük iletileri, tanılama olayları olarak gönderilir (en düşük önem derecesi 0 ' dır) |
 
-## <a name="security-agent-configurations-code-example"></a>Güvenlik aracısı yapılandırmaları kod örneği
+## <a name="security-agent-configurations-code-example"></a>Güvenlik Aracısı yapılandırma kodu örneği
 
 ```JSON
 {
@@ -82,10 +82,10 @@ Aracı yeniden başlatıldığında yapılandırma dosyasında değişiklikler g
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- IoT hizmetine [Genel Bakış](overview.md) için Azure Güvenlik Merkezi'ni okuyun
-- IoT [Mimarisi](architecture.md) için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin
-- IoT [hizmeti](quickstart-onboard-iot-hub.md) için Azure Güvenlik Merkezi'ni etkinleştirme
-- IoT hizmeti [SSS](resources-frequently-asked-questions.md) için Azure Güvenlik Merkezi'ni okuyun
-- Ham güvenlik [verilerine](how-to-security-data-access.md) nasıl erişin gerektiğini öğrenin
+- IoT hizmetine [genel bakış](overview.md) Için Azure Güvenlik Merkezi 'ni okuyun
+- IoT [mimarisi](architecture.md) Için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin
+- IoT [hizmeti](quickstart-onboard-iot-hub.md) Için Azure Güvenlik Merkezi 'ni etkinleştirme
+- IoT hizmeti için Azure Güvenlik Merkezi [SSS](resources-frequently-asked-questions.md) makalesini okuyun
+- [Ham güvenlik verilerine](how-to-security-data-access.md) erişme hakkında bilgi edinin
 - [Önerileri](concept-recommendations.md) anlama
 - Güvenlik [uyarılarını](concept-security-alerts.md) anlama

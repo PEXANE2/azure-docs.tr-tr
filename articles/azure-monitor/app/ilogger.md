@@ -1,35 +1,35 @@
 ---
-title: ILogger - Azure Application Insights ile .NET izleme günlüklerini keşfedin
-description: ASP.NET Core ve Console uygulamalarına sahip Azure Application Insights ILogger sağlayıcısını kullanma örnekleri.
+title: Azure Application Insights ILogger ile .NET izleme günlüklerini keşfet
+description: Azure Application Insights ILogger sağlayıcısını ASP.NET Core ve konsol uygulamalarıyla kullanma örnekleri.
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 33effe9cfec6d766d573617ff03b58564e5b34d1
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81313653"
 ---
-# <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>.NET Core ILogger günlükleri için ApplicationInsightsLoggerProvider
+# <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>.NET Core ıllogger günlükleri için Applicationınsightsloggerprovider
 
-ASP.NET Core, farklı türde yerleşik ve üçüncü taraf günlük sağlayıcılarıyla çalışan bir günlük API'sini destekler. Günlük, **Log()** veya *ILogger* örneklerinde bunun bir varyantını arayarak yapılır. Bu makalede, ILogger konsol ve ASP.NET Core uygulamaları günlükleri yakalamak için *ApplicationInsightsLoggerProvider* nasıl kullanılacağını göstermektedir. Bu makalede ayrıca ApplicationInsightsLoggerProvider'ın diğer Application Insights telemetrisiyle nasıl entegre olduğu açıklanmaktadır.
-Daha fazla bilgi için [ASP.NET Core'da Oturum Açma'ya](https://docs.microsoft.com/aspnet/core/fundamentals/logging)bakın.
+ASP.NET Core, farklı türlerde yerleşik ve üçüncü taraf günlük sağlayıcılarla birlikte çalışarak günlüğe kaydetme API 'sini destekler. Günlüğe kaydetme, **günlük ()** veya *ıllogger* örneklerine ait bir değişken çağırarak yapılır. Bu makalede, *Applicationınsightsloggerprovider* ' ın konsol ve ASP.NET Core uygulamalarında ILogger günlüklerini yakalamak için nasıl kullanılacağı gösterilmektedir. Bu makalede, Applicationınsightsloggerprovider 'ın diğer Application Insights telemetrisi ile nasıl tümleştirildiğini de açıklanmaktadır.
+Daha fazla bilgi için bkz. [oturum açma ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
 
-## <a name="aspnet-core-applications"></a>ASP.NET Çekirdek uygulamaları
+## <a name="aspnet-core-applications"></a>ASP.NET Core uygulamalar
 
-ApplicationInsightsLoggerProvider, [microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) sürüm 2.7.1 (ve daha sonra) her iki yöntem üzerinden normal Application Insights izlemeyi açtığınızda varsayılan olarak etkinleştirilir:
+Applicationınsightsloggerprovider, yöntemlerden birini kullanarak düzenli Application Insights izlemeyi açtığınızda [Microsoft. ApplicationInsights. Aspnet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) Version 2.7.1 (ve üzeri) içinde varsayılan olarak etkindir:
 
-- IWebHostBuilder (Şimdi eski) **üzerinde UseApplicationInsights** uzantısı yöntemi arayarak
-- IServiceCollection'da **AddApplicationInsightsTelemetry** uzantı yöntemini arayarak
+- Iwebhostbuilder üzerinde **Useapplicationınsights** genişletme yöntemini çağırarak (artık kullanılmıyor)
+- Ivicecollection üzerinde **Addavpplicationınsiıstelemetry** genişletme yöntemini çağırarak
 
-ILogger, ApplicationInsightsLoggerProvider'ın yakaladığı şeyin, toplanan diğer telemetrilerle aynı yapılandırmaya tabi olduğunu kaydeder. Onlar TelemetryInitializers ve Telemetriİşlemciler aynı seti var, aynı TelemetryChannel kullanmak, ve ilişkili ve diğer telemetri gibi aynı şekilde örneklenir. Sürüm 2.7.1 veya daha yeni sürüm kullanıyorsanız, ILogger günlüklerini yakalamak için herhangi bir işlem yapmanız gerekmez.
+Applicationınsightsloggerprovider yakalamaları, toplanan diğer telemetriyle aynı yapılandırmaya tabidir. Aynı TelemetryInitializers ve TelemetryProcessors kümesine sahiptir, aynı TelemetryChannel kullanır ve bağıntılı ve örneklenir ve diğer telemetriyle aynı şekilde örneklenir. Sürüm 2.7.1 veya üstünü kullanıyorsanız, ıllogger günlüklerini yakalamak için herhangi bir eylem gerekmez.
 
-Yalnızca *Uyarı* veya daha yüksek ILogger günlükleri (tüm [kategorilerden)](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#log-category)varsayılan olarak Uygulama Öngörüleri'ne gönderilir. Ancak [bu davranışı değiştirmek için filtreler uygulayabilirsiniz.](#control-logging-level) **Program.cs** veya **Startup.cs**ILogger günlüklerini yakalamak için ek adımlar gereklidir. (Bkz. [ASP.NET Core uygulamalarında Startup.cs ve Program.cs iLogger günlüklerini yakalama](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
+Yalnızca *Uyarı* veya daha yüksek bir ILogger günlüğü (tüm [Kategoriler](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#log-category)) varsayılan olarak Application Insights gönderilir. Ancak, [Bu davranışı değiştirmek için filtre uygulayabilirsiniz](#control-logging-level). **Program.cs** veya **Startup.cs**' den ıllogger günlüklerini yakalamak için ek adımlar gereklidir. (Bkz. [ASP.NET Core uygulamalarında Startup.cs ve program.cs ' den ILogger günlüklerini yakalama](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
 
-Microsoft.ApplicationInsights.AspNet SDK'nın önceki bir sürümünü kullanıyorsanız veya applicationinsightsLoggerProvider'ı başka bir Application Insights izlemeden kullanmak istiyorsanız, aşağıdaki yordamı kullanın:
+Microsoft. ApplicationInsights. AspNet SDK 'sının önceki bir sürümünü kullanıyorsanız veya başka bir Application Insights izleme olmadan yalnızca Applicationınsightsloggerprovider kullanmak istiyorsanız aşağıdaki yordamı kullanın:
 
-1. NuGet paketini yükleyin:
+1. NuGet paketini yükler:
 
    ```xml
        <ItemGroup>
@@ -37,7 +37,7 @@ Microsoft.ApplicationInsights.AspNet SDK'nın önceki bir sürümünü kullanıy
        </ItemGroup>
    ```
 
-1. Burada gösterildiği gibi **Program.cs** değiştirin:
+1. **Program.cs** burada gösterildiği gibi değiştirin:
 
    ```csharp
    using Microsoft.AspNetCore;
@@ -73,7 +73,7 @@ Microsoft.ApplicationInsights.AspNet SDK'nın önceki bir sürümünü kullanıy
    }
    ```
 
-Adım 2'deki kod `ApplicationInsightsLoggerProvider`yapılandırır. Aşağıdaki kod, günlükleri göndermek için `ILogger` kullanan bir örnek Denetleyici sınıfını gösterir. Günlükler Application Insights tarafından yakalanır.
+2. adımdaki kod yapılandırır `ApplicationInsightsLoggerProvider`. Aşağıdaki kod, günlükleri göndermek için kullanılan `ILogger` örnek bir denetleyici sınıfını gösterir. Günlükler Application Insights tarafından yakalanır.
 
 ```csharp
 public class ValuesController : ControllerBase
@@ -101,14 +101,14 @@ public class ValuesController : ControllerBase
 }
 ```
 
-### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>ASP.NET Core uygulamalarında Startup.cs ve Program.cs iLogger günlüklerini yakalama
+### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>ASP.NET Core uygulamalarda Startup.cs ve Program.cs ' den ILogger günlüklerini yakala
 
 > [!NOTE]
-> Core 3.0 ve daha sonra ASP.NET, artık `ILogger` Startup.cs ve Program.cs enjekte etmek mümkün değildir. Daha https://github.com/aspnet/Announcements/issues/353 fazla bilgi için bkz.
+> ASP.NET Core 3,0 ve üzeri sürümlerde, artık Startup.cs ve Program.cs içinde ekleme `ILogger` yapılamaz. Daha https://github.com/aspnet/Announcements/issues/353 fazla ayrıntı için bkz..
 
-Yeni ApplicationInsightsLoggerProvider, uygulama başlatma ardışık hattının başlarından itibaren günlükleri yakalayabilir. ApplicationInsightsLoggerProvider, Application Insights'ta (sürüm 2.7.1'den başlayarak) otomatik olarak etkinleştirilse de, daha sonra boru hattında ayarlanmış bir enstrümantasyon anahtarı yoktur. Bu nedenle, yalnızca **Denetleyici/diğer**sınıflardan gelen günlükler yakalanır. **Program.cs** ve **kendisi Startup.cs** başlayan her günlüğü yakalamak için ApplicationInsightsLoggerProvider için bir enstrümantasyon anahtarını açıkça etkinleştirmeniz gerekir. Ayrıca, *telemetryConfiguration* tam olarak **Program.cs** veya **Startup.cs** kendisi oturum açma değil. Yani bu günlükleri InMemoryChannel, hiçbir örnekleme ve standart telemetri initializatörleri veya işlemciler kullanan bir minimum yapılandırma olacaktır.
+Yeni Applicationınsightsloggerprovider, uygulama başlatma ardışık düzeninde günlüklerin erken yakalanmasını sağlayabilir. Applicationınsightsloggerprovider, Application Insights (sürüm 2.7.1 ile başlayarak) otomatik olarak etkin olsa da, ardışık düzende daha sonra bir izleme anahtarı ayarlanmamış. Bu nedenle, yalnızca **Denetleyici**/diğer sınıflardan Günlükler yakalanır. **Program.cs** ve **Startup.cs** ile başlayan her günlüğü yakalamak Için, Applicationınsightsloggerprovider için bir izleme anahtarını açıkça etkinleştirmeniz gerekir. Ayrıca, **program.cs** veya **Startup.cs** içinden oturum açtığınızda *TelemetryConfiguration* tam olarak ayarlanamaz. Bu nedenle, bu Günlükler ınmemorychannel, örnekleme olmadan ve standart telemetri başlatıcıları ya da işlemciler kullanan minimum yapılandırmaya sahip olur.
 
-Aşağıdaki **örnekler, Program.cs** ve **Startup.cs**ile bu yeteneği göstermektedir.
+Aşağıdaki örneklerde bu özellik **program.cs** ve **Startup.cs**ile gösterilmektedir.
 
 #### <a name="example-programcs"></a>Örnek Program.cs
 
@@ -198,29 +198,29 @@ public class Startup
 }
 ```
 
-## <a name="migrate-from-the-old-applicationinsightsloggerprovider"></a>Eski ApplicationInsightsLoggerProvider'dan geçiş yap
+## <a name="migrate-from-the-old-applicationinsightsloggerprovider"></a>Eski Applicationınsightsloggerprovider 'dan geçiş
 
-Microsoft.ApplicationInsights.AspNet SDK sürümleri önce 2.7.1 artık eski bir günlük sağlayıcısı destekledi. Bu sağlayıcı, ILoggerFactory'nin **AddApplicationInsights()** uzantı yöntemi yle etkinleştirildi. İki adım içeren yeni sağlayıcıya geçiş yapmanızı öneririz:
+2.7.1 Before Microsoft. ApplicationInsights. AspNet SDK sürümleri, artık kullanımdan kalkmış bir günlüğe kaydetme sağlayıcısı destekliyordu. Bu sağlayıcı, ıloggerfactory 'nin **Addadınsights ()** genişletme yöntemi aracılığıyla etkinleştirildi. Yeni sağlayıcıya geçiş yapmanızı öneririz, bu iki adımdan oluşur:
 
-1. Çift günlüğe kaydetmeyi önlemek için **Başlangıç.Configure()** yönteminden *ILoggerFactory.AddApplicationInsights()* çağrısını kaldırın.
-2. Yeni sağlayıcı tarafından saygı göreilmeyeceklerinden, koddaki tüm filtreleme kurallarını yeniden uygulayın. *ILoggerFactory.AddApplicationInsights()* overloads minimum LogLevel veya filtre işlevleri aldı. Yeni sağlayıcıile, filtreleme günlük çerçevesinin bir parçasıdır. Application Insights sağlayıcısı tarafından yapılmaz. Yani *iLoggerFactory.AddApplicationInsights()* aşırı yükleri üzerinden sağlanan herhangi bir filtre kaldırılmalıdır. Ve filtreleme kuralları [Denetim günlük düzeyi](#control-logging-level) yönergeleriizden izleyerek sağlanmalıdır. Günlüğe kaydetmeyi filtrelemek için *appsettings.json* kullanıyorsanız, her ikisi de aynı sağlayıcı takma adı olan *ApplicationInsights'ı*kullandığından, yeni sağlayıcıyla çalışmaya devam edecektir.
+1. Çift günlüğü önlemek için, **Başlangıç. configure ()** yönteminden *ıloggerfactory. Addavpplicationınsights ()* çağrısını kaldırın.
+2. Yeni sağlayıcı tarafından dikkate alınmadığından, koddaki filtreleme kurallarını yeniden uygulayın. *Iloggerfactory. Addadpplicationınsights ()* aşırı yüklemeleri en düşük LogLevel veya filtre işlevleri yaptı. Yeni sağlayıcı ile filtreleme, günlük çerçevesinin bir parçasıdır. Application Insights sağlayıcısı tarafından yapılmaz. Bu nedenle, *ıloggerfactory. Addadpplicationınsights ()* aşırı yüklemeleri ile sunulan tüm filtreler kaldırılmalıdır. Ve filtreleme kuralları [Denetim günlüğü düzeyi](#control-logging-level) yönergeleriyle aşağıdaki şekilde sağlanmalıdır. Günlüğe kaydetmeyi filtrelemek için *appSettings. JSON* kullanırsanız, her ikisi de aynı sağlayıcı diğer adı, *ApplicationInsights*' ı kullandığından, yeni sağlayıcıyla çalışmaya devam edecektir.
 
-Eski sağlayıcıyı kullanmaya devam edebilirsiniz. (Yalnızca ana sürüm değişikliğiyle 3 olarak kaldırılır. *xx*.) Ancak aşağıdaki nedenlerden dolayı yeni sağlayıcıya geçiş yapmanızı öneririz:
+Eski sağlayıcıyı kullanmaya devam edebilirsiniz. (Yalnızca ana sürüm 3 ' e değişmeyecektir. *xx*.) ancak aşağıdaki nedenlerden dolayı yeni sağlayıcıya geçiş yapmanızı öneririz:
 
-- Önceki sağlayıcı [günlük kapsamları](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-scopes)için destek yoksun. Yeni sağlayıcıda, kapsamdaki özellikler otomatik olarak toplanan telemetriye özel özellikler olarak eklenir.
-- Günlükler artık uygulama başlangıç ardışık bölümünde çok daha erken yakalanabilir. **Program** ve **Başlangıç** sınıflarından günlükler artık yakalanabilir.
-- Yeni sağlayıcı ile filtreleme çerçeve düzeyinde yapılır. Kullanıcı bilgileri sağlayıcısına, Konsol, Hata Ayıklama gibi yerleşik sağlayıcılar da dahil olmak üzere diğer sağlayıcılarla aynı şekilde filtre uygulayabilirsiniz. Aynı filtreleri birden çok sağlayıcıya da uygulayabilirsiniz.
-- ASP.NET Core (2.0 ve sonrası) olarak, [günlük sağlayıcıları etkinleştirmek](https://github.com/aspnet/Announcements/issues/255) için önerilen yolu kendi içinde iLoggingBuilder uzantısı yöntemleri kullanarak **Program.cs.**
+- Önceki sağlayıcıda [günlük kapsamları](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-scopes)desteği eksik. Yeni sağlayıcıda, kapsamdaki Özellikler otomatik olarak toplanan telemetriye özel özellikler olarak eklenir.
+- Günlükler artık uygulama başlatma ardışık düzeninde daha önce yakalanamaz. **Program** ve **Başlangıç** sınıflarının günlükleri artık yakalanabilir.
+- Yeni sağlayıcı ile, filtreleme, çerçeve düzeyinde yapılır. Application Insights sağlayıcıya, konsol, hata ayıklama vb. gibi yerleşik sağlayıcılar da dahil olmak üzere, diğer sağlayıcılarla aynı şekilde filtre uygulayabilirsiniz. Aynı filtreleri birden çok sağlayıcıya da uygulayabilirsiniz.
+- ASP.NET Core (2,0 ve üzeri) ' de, [günlüğe kaydetme sağlayıcılarının etkinleştirilmesi](https://github.com/aspnet/Announcements/issues/255) için önerilen yol, **program.cs** içinde ILoggingBuilder üzerindeki genişletme yöntemlerini kullanmaktır.
 
 > [!Note]
-> Yeni sağlayıcı, NETSTANDARD2.0 veya daha yenisini hedefleyen uygulamalar için kullanılabilir. [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) sürüm 2.14.0'dan itibaren ,.NET Framework NET461 veya sonraki uygulamaları hedefleyen uygulamalar için yeni sağlayıcı da kullanılabilir. Uygulamanız .NET Core 1.1 gibi eski .NET Core sürümlerini hedefliyorsa veya .NET Framework'u NET46'dan daha az hedefliyorsa, eski sağlayıcıyı kullanmaya devam edin.
+> Yeni sağlayıcı, NETSTANDARD 2.0 veya üstünü hedefleyen uygulamalar tarafından kullanılabilir. [Microsoft. ApplicationInsights. Aspnet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) sürümü 2.14.0 ve sonraki sürümlerde, yeni sağlayıcı, .NET Framework NET461 veya üstünü hedefleyen uygulamalar için de kullanılabilir. Uygulamanız .NET Core 1,1 gibi eski .NET Core sürümlerini hedefliyorsa veya NET46 'den daha az .NET Framework hedefliyorsa, eski sağlayıcıyı kullanmaya devam edin.
 
 ## <a name="console-application"></a>Konsol uygulaması
 
 > [!NOTE]
-> Herhangi bir Konsol Uygulamaları için Uygulama Öngörüleri (ILogger ve diğer Uygulama İstatistikleri telemetri) etkinleştirmek için kullanılabilecek [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) adlı yeni bir Uygulama Öngörüleri SDK vardır. Bu paketi ve ilişkili talimatları [buradan](../../azure-monitor/app/worker-service.md)kullanmanız önerilir.
+> Herhangi bir konsol uygulaması için Application Insights (ILogger ve diğer Application Insights telemetri) etkinleştirmek üzere kullanılan [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) adlı yenı bir SDK Application Insights. Bu paketin ve ilgili yönergelerin [burada](../../azure-monitor/app/worker-service.md)kullanılması önerilir.
 
-Aşağıdaki kod, ILogger izlemelerini Application Insights'a göndermek üzere yapılandırılan örnek bir konsol uygulamasını gösterir.
+Aşağıdaki kod, Application Insights için ILogger izlemeleri gönderecek şekilde yapılandırılmış örnek bir konsol uygulamasını gösterir.
 
 Yüklenen paketler:
 
@@ -278,15 +278,15 @@ class Program
 }
 ```
 
-Bu örnekte bağımsız `Microsoft.Extensions.Logging.ApplicationInsights`paket kullanır. Varsayılan olarak, bu yapılandırma Uygulama Öngörüleri veri göndermek için "çıplak minimum" TelemetriYapılandırma kullanır. Minimum, InMemoryChannel'ın kullanılan kanal olduğu anlamına gelir. Örnekleme ve standart TelemetriInitializers yok. Aşağıdaki örnekte görüldüğü gibi, bu davranış bir konsol uygulaması için geçersiz kılınabilir.
+Bu örnek tek başına paketini `Microsoft.Extensions.Logging.ApplicationInsights`kullanır. Bu yapılandırma varsayılan olarak, Application Insights veri göndermek için "en az" TelemetryConfiguration kullanır. En az, ınmemorychannel 'ın kullanılan kanal olduğu anlamına gelir. Örnekleme yok ve standart TelemetryInitializers yok. Aşağıdaki örnekte gösterildiği gibi, bu davranış bir konsol uygulaması için geçersiz kılınabilir.
 
-Bu ek paketi yükleyin:
+Bu ek paketi yüklemelisiniz:
 
 ```xml
 <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel" Version="2.9.1" />
 ```
 
-Aşağıdaki bölümde, hizmetleri kullanarak varsayılan Telemetri Yapılandırması nasıl geçersiz kılını **gösterilmektedir. TelemetryConfiguration>() yöntemini yapılandırın.\<** Bu örnek, `ServerTelemetryChannel` örnekleme yi ve örneklemeyi ayarlar. TelemetriConfiguration'a özel bir ITelemetryInitializer ekler.
+Aşağıdaki bölümde, hizmetler kullanılarak varsayılan TelemetryConfiguration nasıl geçersiz kılındığı gösterilmektedir **. TelemetryConfiguration\<> () metodunu yapılandırın** . Bu örnek `ServerTelemetryChannel` , ve örneklemeyi belirler. TelemetryConfiguration 'e özel bir ılemetrybaşlatıcısı ekler.
 
 ```csharp
     // Create the DI container.
@@ -317,15 +317,15 @@ Aşağıdaki bölümde, hizmetleri kullanarak varsayılan Telemetri Yapılandır
     Thread.Sleep(1000);
 ```
 
-## <a name="control-logging-level"></a>Günlük düzeyini denetleme
+## <a name="control-logging-level"></a>Denetim günlüğü düzeyi
 
-Core *ILogger* infra ASP.NET [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-filtering)uygulamak için yerleşik bir mekanizma vardır. Bu, Application Insights sağlayıcısı da dahil olmak üzere her kayıtlı sağlayıcıya gönderilen günlükleri denetlemenize olanak tanır. Filtreleme yapılandırmada (genellikle bir *appsettings.json* dosyası kullanılarak) veya kod olarak yapılabilir. Bu tesis çerçevenin kendisi tarafından sağlanmaktadır. Uygulama Öngörüleri sağlayıcısına özgü değildir.
+ASP.NET Core *ILogger* Infra, [günlük filtrelemeyi](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-filtering)uygulamak için yerleşik bir mekanizmaya sahiptir. Bu, Application Insights sağlayıcısı da dahil olmak üzere, kayıtlı her sağlayıcıya gönderilen günlükleri denetlemenize olanak tanır. Filtreleme, yapılandırmada (genellikle bir *appSettings. JSON* dosyası kullanılarak) veya kodda yapılabilir. Bu özellik Framework 'ün kendisi tarafından sağlanır. Application Insights sağlayıcıya özgü değildir.
 
-Aşağıdaki örnekler ApplicationInsightsLoggerProvider için filtre kuralları uygular.
+Aşağıdaki örnekler Applicationınsightsloggerprovider öğesine filtre kuralları uygular.
 
-### <a name="create-filter-rules-in-configuration-with-appsettingsjson"></a>appsettings.json ile yapılandırmada filtre kuralları oluşturma
+### <a name="create-filter-rules-in-configuration-with-appsettingsjson"></a>AppSettings. JSON ile yapılandırmada filtre kuralları oluşturma
 
-ApplicationInsightsLoggerProvider için sağlayıcı diğer `ApplicationInsights`adı . *appsettings.json'un* aşağıdaki bölümü, günlük sağlayıcılarına genellikle *Uyarı* düzeyinde ve yukarıda oturum açmalarını bildirir. Daha sonra düzeyinde `ApplicationInsightsLoggerProvider` *Hata* ve yukarıda "Microsoft" ile başlayan günlük kategorileri geçersiz kılar.
+Applicationınsightsloggerprovider için sağlayıcı diğer adı `ApplicationInsights`. *AppSettings. JSON* ' nin aşağıdaki bölümü, günlüğe kaydetme sağlayıcılarının genel olarak *Uyarı* ve yukarıdaki düzeyde günlüğe kaydedilmesini sağlar. Daha sonra "Microsoft `ApplicationInsightsLoggerProvider` " ile başlayan ve yukarıdaki düzey *hata* ve yukarıdaki günlük kategorilerini geçersiz kılar.
 
 ```json
 {
@@ -344,7 +344,7 @@ ApplicationInsightsLoggerProvider için sağlayıcı diğer `ApplicationInsights
 
 ### <a name="create-filter-rules-in-code"></a>Kodda filtre kuralları oluşturma
 
-Aşağıdaki kod snippet uyarı *ve* tüm kategorilerden yukarıda ve *Hata* ve yukarıda için "Microsoft" ile `ApplicationInsightsLoggerProvider`başlayacak kategorilerden günlükleri yapılandırır. Bu yapılandırma *appsettings.json*önceki bölümde aynıdır.
+Aşağıdaki kod parçacığı, *Uyarı* ve yukarıdaki kayıtları tüm kategorilerden ve *hata* Için ve yukarıdaki "Microsoft" ile başlayan kategorilerden bir şekilde `ApplicationInsightsLoggerProvider`yapılandırır. Bu yapılandırma, *appSettings. JSON*içindeki önceki bölümde bulunan ile aynıdır.
 
 ```csharp
     WebHost.CreateDefaultBuilder(args)
@@ -358,17 +358,17 @@ Aşağıdaki kod snippet uyarı *ve* tüm kategorilerden yukarıda ve *Hata* ve 
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-### <a name="what-are-the-old-and-new-versions-of-applicationinsightsloggerprovider"></a>ApplicationInsightsLoggerProvider'ın eski ve yeni sürümleri nelerdir?
+### <a name="what-are-the-old-and-new-versions-of-applicationinsightsloggerprovider"></a>Applicationınsightsloggerprovider 'ın eski ve yeni sürümleri nelerdir?
 
-[Microsoft.ApplicationInsights.AspNet SDK,](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) **ILoggerFactory** uzantı yöntemleri yle etkinleştirilen yerleşik bir ApplicationInsightsLoggerProvider (Microsoft.ApplicationInsights.AspNetCore.Logging.ApplicationInsightsLoggerProvider) dahil etti. Bu sağlayıcı sürüm 2.7.1'den eski olarak işaretlenmiştir. Bir sonraki ana sürüm değişikliğinde tamamen kaldırılacaktır. [Microsoft.ApplicationInsights.AspNetCore 2.6.1](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) paketinin kendisi eski değildir. İsteklerin, bağımlılıkların ve benzeri taleplerin izlenmesini sağlamak için gereklidir.
+[Microsoft. ApplicationInsights. Aspnet SDK 'sı](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) , **ıloggerfactory** uzantı yöntemleri aracılığıyla etkinleştirilen yerleşik bir applicationınsightsloggerprovider (Microsoft. ApplicationInsights. Aspnetcore. Logging. Applicationınsightsloggerprovider) içeriyordu. Bu sağlayıcı, 2.7.1 sürümünden kullanılmıyor olarak işaretlendi. Bu, bir sonraki ana sürüm değişikliğine tamamen kaldırılacak. [Microsoft. ApplicationInsights. AspNetCore 2.6.1](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) paketinin kendisi artık kullanılmıyor. İsteklerin, bağımlılıkların ve benzeri izlemenin etkinleştirilmesi gerekir.
 
-Önerilen alternatif yeni bağımsız paket [Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights), geliştirilmiş bir ApplicationInsightsLoggerProvider (Microsoft.Extensions.Logging.ApplicationInsights.ApplicationInsightsLoggerProvider) ve bunu etkinleştirmek için ILoggerBuilder uzantı yöntemleri içerir.
+Önerilen alternatif, [Microsoft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights), gelişmiş bir applicationınsightsloggerprovider (Microsoft. Extensions. log. ApplicationInsights. Applicationınsightsloggerprovider) ve bunu etkinleştirmek Için ıloggerbuilder üzerinde uzantı yöntemleri içeren yeni tek başına pakettir.
 
-[Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) sürüm 2.7.1 yeni pakete bağımlı dır ve ILogger'ın otomatik olarak yakalanmasını sağlar.
+[Microsoft. ApplicationInsights. Aspnet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) sürümü 2.7.1, yeni pakete bir bağımlılık alır ve ILogger yakalama 'yı otomatik olarak sunar.
 
-### <a name="why-are-some-ilogger-logs-shown-twice-in-application-insights"></a>Uygulama Bilgileri'nde neden bazı ILogger günlükleri iki kez gösteriliyor?
+### <a name="why-are-some-ilogger-logs-shown-twice-in-application-insights"></a>Neden bazı ILogger günlükleri Application Insights iki kez gösteriliyor?
 
-ApplicationInsightsLoggerProvider'ın `AddApplicationInsights` eski (şimdi eski) sürümüne sahipseniz, yineleme `ILoggerFactory`oluşabilir. Yapılandırma yönteminizde aşağıdakileri olup olmadığını kontrol **edin** ve kaldırın:
+' `AddApplicationInsights` `ILoggerFactory`İ çağırarak, Applicationınsightsloggerprovider 'ın eski (artık eski) sürümüne sahipseniz çoğaltma gerçekleşebilir. **Yapılandırma** yönteminizin aşağıdakilere sahip olup olmadığını denetleyin ve kaldırın:
 
 ```csharp
  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -378,7 +378,7 @@ ApplicationInsightsLoggerProvider'ın `AddApplicationInsights` eski (şimdi eski
  }
 ```
 
-Visual Studio'dan hata ayıklama yaparken çift `EnableDebugLogger` oturum açma yla karşılaşırsanız, Aşağıdaki gibi Uygulama Öngörüleri sağlayan kodda *yanlış* olarak ayarlayın. Bu yineleme ve düzeltme yalnızca uygulamayı hata ayıklarken alakalıdır.
+Visual Studio 'da hata ayıklarken çift günlüğe kaydetmeye karşılaşırsanız, Application Insights aşağıdaki gibi `EnableDebugLogger` , kodda *false* olarak ayarlayın. Bu yineleme ve düzeltme yalnızca uygulamanın hatalarını ayıklarken geçerlidir.
 
 ```csharp
  public void ConfigureServices(IServiceCollection services)
@@ -390,9 +390,9 @@ Visual Studio'dan hata ayıklama yaparken çift `EnableDebugLogger` oturum açma
  }
 ```
 
-### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>[Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) sürüm 2.7.1'e güncelledim ve ILogger'daki günlükler otomatik olarak yakalanır. Bu özelliği tamamen nasıl kapatacağım?
+### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>[Microsoft. ApplicationInsights. Aspnet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) sürüm 2.7.1 'e güncelleştirdim ve ILogger günlüklerinden Günlükler otomatik olarak yakalanır. Bu özelliği tamamen kapatmak Nasıl yaparım?.
 
-Günlüklerin genel olarak nasıl filtre uygulandığını görmek için [Denetim günlüğü düzeyi](../../azure-monitor/app/ilogger.md#control-logging-level) bölümüne bakın. Kapatma ApplicationInsightsLoggerProvider için: `LogLevel.None`
+Günlükleri genel olarak filtrelemeye bakmak için [Denetim günlüğü düzeyi](../../azure-monitor/app/ilogger.md#control-logging-level) bölümüne bakın. Applicationınsightsloggerprovider 'ı kapatmak için şunu kullanın `LogLevel.None`:
 
 **Kod:**
 
@@ -401,7 +401,7 @@ Günlüklerin genel olarak nasıl filtre uygulandığını görmek için [Deneti
                       ("", LogLevel.None);
 ```
 
-**Config olarak:**
+**Yapılandırmada:**
 
 ```json
 {
@@ -413,13 +413,13 @@ Günlüklerin genel olarak nasıl filtre uygulandığını görmek için [Deneti
 }
 ```
 
-### <a name="why-do-some-ilogger-logs-not-have-the-same-properties-as-others"></a>Neden bazı ILogger günlükleri diğerleri ile aynı özelliklere sahip değil mi?
+### <a name="why-do-some-ilogger-logs-not-have-the-same-properties-as-others"></a>Bazı ILogger günlükleri neden başkalarıyla aynı özelliklere sahip değil?
 
-Application Insights, diğer tüm telemetriler için kullanılan aynı Telemetri Yapılandırmasını kullanarak ILogger günlüklerini yakalar ve gönderir. Ama bir istisna var. Varsayılan olarak, **Program.cs** veya **Startup.cs**oturum açtığınızda TelemetryConfiguration tam olarak ayarlanmaz. Bu yerlerden gelen günlükler varsayılan yapılandırmaya sahip olmayacaktır, bu nedenle tüm TelemetryInitializers ve TelemetryProcessors çalıştırılamayacak.
+Application Insights, tüm diğer telemetri için kullanılan aynı TelemetryConfiguration kullanarak ILogger günlüklerini yakalar ve gönderir. Ancak bir özel durum var. TelemetryConfiguration, **program.cs** veya **Startup.cs**oturumunu açtığınızda varsayılan olarak tam olarak ayarlanamaz. Bu yerlerdeki Günlükler varsayılan yapılandırmaya sahip olmayacaktır, bu nedenle tüm TelemetryInitializers ve TelemetryProcessors çalıştırmazlar.
 
-### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-i-want-to-log-some-additional-custom-telemetry-manually-how-should-i-do-that"></a>Ben bağımsız paket Microsoft.Extensions.Logging.ApplicationInsights kullanıyorum ve bazı ek özel telemetri el ile günlüğe kaydetmek istiyorum. Bunu nasıl yapmalıyım?
+### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-i-want-to-log-some-additional-custom-telemetry-manually-how-should-i-do-that"></a>Microsoft. Extensions. Logging. ApplicationInsights tek başına paketini kullanıyorum ve bazı ek özel telemetrisi el ile günlüğe kaydetmek istiyorum. Bunu nasıl yapmalıyım?
 
-Bağımsız paketi kullandığınızda, `TelemetryClient` DI kapsayıcısına enjekte edilmez, bu nedenle logger sağlayıcısının kullandığı yapılandırmanın yeni bir örneğini `TelemetryClient` oluşturmanız ve aşağıdaki kodun gösterdiği gibi aynı yapılandırmayı kullanmanız gerekir. Bu, aynı yapılandırmanın tüm özel telemetrilerin yanı sıra ILogger'ın telemetrileri için kullanılmasını sağlar.
+Tek başına paketini kullandığınızda, `TelemetryClient` dı kapsayıcısına eklenmiş değildir, bu nedenle, aşağıdaki kodda gösterildiği gibi, yeni bir örneğini oluşturmanız `TelemetryClient` ve günlükçü sağlayıcısı tarafından kullanılan yapılandırmayı kullanmanız gerekir. Bu, tüm özel telemetri ve ILogger telemetri açısından aynı yapılandırmanın kullanılmasını sağlar.
 
 ```csharp
 public class MyController : ApiController
@@ -437,23 +437,23 @@ public class MyController : ApiController
 ```
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.AspNetCore paketini Application Insights'ı etkinleştirmek için `TelemetryClient` kullanıyorsanız, doğrudan oluşturucuya ulaşmak için bu kodu değiştirin. Örneğin, bu [SSS'ye](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#frequently-asked-questions)bakın.
+> Application Insights etkinleştirmek için Microsoft. ApplicationInsights. AspNetCore paketini kullanırsanız, bu kodu doğrudan oluşturucuda almak `TelemetryClient` için değiştirin. Bir örnek için [Bu SSS](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#frequently-asked-questions)bölümüne bakın.
 
 
-### <a name="what-application-insights-telemetry-type-is-produced-from-ilogger-logs-or-where-can-i-see-ilogger-logs-in-application-insights"></a>ILogger günlüklerinden hangi Uygulama Öngörüleri telemetri türü üretilir? Veya Uygulama İstatistikleri'nde ILogger günlüklerini nerede görebiliyorum?
+### <a name="what-application-insights-telemetry-type-is-produced-from-ilogger-logs-or-where-can-i-see-ilogger-logs-in-application-insights"></a>ILogger günlüklerinden hangi Application Insights telemetri türü üretildi? Ya da Application Insights içinde ıllogger günlüklerini nereden görebilirim?
 
-ApplicationInsightsLoggerProvider ILogger günlüklerini yakalar ve onlardan TraceTelemetry oluşturur. ILogger'da **Log()** yöntemine bir Özel Durum nesnesi aktarılırsa, TraceTelemetry yerine *ExceptionTelemetry* oluşturulur. Bu telemetri öğeleri, portal, analitik veya Visual Studio yerel hata ayıklayıcı dahil olmak üzere Uygulama Öngörüleri için diğer TraceTelemetry veya ExceptionTelemetry ile aynı yerlerde bulunabilir.
+Applicationınsightsloggerprovider, ILogger günlüklerini yakalar ve bunlardan Izlenetelemetriyi oluşturur. ILogger üzerinde **log ()** yöntemine bir özel durum nesnesi geçirilirse, Tracetelemetri yerine *exceptiontelemetri* oluşturulur. Bu telemetri öğeleri Portal, analiz veya Visual Studio yerel hata ayıklayıcı da dahil olmak üzere Application Insights yönelik diğer Izleme telemetrisi veya Exceptiontelemetrisi ile aynı yerlerde bulunabilir.
 
-Her zaman TraceTelemetry göndermek isterseniz, bu snippet kullanın:```builder.AddApplicationInsights((opt) => opt.TrackExceptionsAsExceptionTelemetry = false);```
+Her zaman Izlenetelemetriyi göndermek isterseniz şu kod parçacığını kullanın:```builder.AddApplicationInsights((opt) => opt.TrackExceptionsAsExceptionTelemetry = false);```
 
-### <a name="i-dont-have-the-sdk-installed-and-i-use-the-azure-web-apps-extension-to-enable-application-insights-for-my-aspnet-core-applications-how-do-i-use-the-new-provider"></a>SDK yüklü değil ve ASP.NET Çekirdek uygulamalarım için Uygulama Öngörüleri'ni etkinleştirmek için Azure Web Uygulamaları uzantısını kullanıyorum. Yeni sağlayıcıyı nasıl kullanırım? 
+### <a name="i-dont-have-the-sdk-installed-and-i-use-the-azure-web-apps-extension-to-enable-application-insights-for-my-aspnet-core-applications-how-do-i-use-the-new-provider"></a>SDK yüklü değil ve ASP.NET Core Uygulamalarım için Application Insights etkinleştirmek üzere Azure Web Apps uzantısını kullanıyorum. Yeni sağlayıcıyı kullanmak Nasıl yaparım? mı? 
 
-Azure Web Apps'taki Uygulama Öngörüleri uzantısı yeni sağlayıcıyı kullanır. Uygulamanız için *appsettings.json* dosyasındaki filtreleme kurallarını değiştirebilirsiniz.
+Azure Web Apps Application Insights uzantısı yeni sağlayıcıyı kullanır. Uygulamanızın *appSettings. JSON* dosyasındaki filtreleme kurallarını değiştirebilirsiniz.
 
-### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-enabling-application-insights-provider-by-calling-builderaddapplicationinsightsikey-is-there-an-option-to-get-an-instrumentation-key-from-configuration"></a>Microsoft.Extensions.Logging.ApplicationInsights paketini kullanıyorum ve oluşturucuyu arayarak Application Insights sağlayıcısını **etkinleştiriyorum. AddApplicationInsights("ikey")**. Yapılandırmadan bir enstrümantasyon anahtarı almak için bir seçenek var mı?
+### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-enabling-application-insights-provider-by-calling-builderaddapplicationinsightsikey-is-there-an-option-to-get-an-instrumentation-key-from-configuration"></a>Tek başına Microsoft. Extensions. Logging. ApplicationInsights paketini kullanıyorum ve oluşturucuyu çağırarak Application Insights sağlayıcısı etkinleştiriliyor **. Addadınsights ("Ikey")**. Yapılandırmadan bir izleme anahtarı almak için bir seçenek var mı?
 
 
-Program.cs ve appsettings.json'u aşağıdaki gibi değiştirin:
+Program.cs ve appSettings. JSON öğesini aşağıdaki şekilde değiştirin:
 
    ```csharp
    public class Program
@@ -475,7 +475,7 @@ Program.cs ve appsettings.json'u aşağıdaki gibi değiştirin:
    }
    ```
 
-   İlgili `appsettings.json`bölüm:
+   İlgili bölümün konusu `appsettings.json`:
 
    ```json
    {
@@ -483,7 +483,7 @@ Program.cs ve appsettings.json'u aşağıdaki gibi değiştirin:
    }
    ```
 
-Bu kod yalnızca bağımsız bir günlük sağlayıcısı kullandığınızda gereklidir. Düzenli Application Insights izleme için, enstrümantasyon anahtarı yapılandırma yolundan otomatik olarak yüklenir *ApplicationInsights: Instrumentationkey*. Appsettings.json şu na benzemelidir:
+Bu kod yalnızca bir tek başına günlük sağlayıcısı kullandığınızda gereklidir. Düzenli Application Insights izleme için, izleme anahtarı, *ApplicationInsights: ınstrumentationkey*yapılandırma yolundan otomatik olarak yüklenir. AppSettings. JSON şöyle görünmelidir:
 
    ```json
    {
@@ -498,5 +498,5 @@ Bu kod yalnızca bağımsız bir günlük sağlayıcısı kullandığınızda ge
 
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 
-* [ASP.NET Core'da Oturum Açma](https://docs.microsoft.com/aspnet/core/fundamentals/logging)
-* [.NET, Uygulama Öngörüleri'ndeki izleme günlükleri](../../azure-monitor/app/asp-net-trace-logs.md)
+* [ASP.NET Core oturum açma](https://docs.microsoft.com/aspnet/core/fundamentals/logging)
+* [Application Insights .NET izleme günlükleri](../../azure-monitor/app/asp-net-trace-logs.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure ölçeği kümesi şablonundaki özel bir görüntüye başvuru
-description: Varolan Azure Sanal Makine Ölçeği Seti şablonuna özel bir görüntü nasıl ekleyeceğinizi öğrenin
+title: Azure ölçek kümesi şablonunda özel bir görüntüye başvurma
+description: Var olan bir Azure sanal makine ölçek kümesi şablonuna nasıl özel görüntü ekleneceğini öğrenin
 author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: mimckitt
 ms.openlocfilehash: 3965090239949b5e1116ceebe427728e49ffafe4
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273707"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Azure ölçek kümesi şablonuna özel görüntü ekleme
 
-Bu makalede, özel görüntüdağıtmak için [temel ölçek kümesi şablonu](virtual-machine-scale-sets-mvss-start.md) nasıl değiştirilen gösterir.
+Bu makalede, [temel ölçek kümesi şablonunun](virtual-machine-scale-sets-mvss-start.md) özel görüntüden dağıtılması için nasıl değiştirileceği gösterilmektedir.
 
 ## <a name="change-the-template-definition"></a>Şablon tanımını değiştirme
-Önceki [bir makalede](virtual-machine-scale-sets-mvss-start.md) temel bir ölçek kümesi şablonu oluşturmuştuk. Şimdi bu önceki şablonu kullanacağız ve özel bir görüntüden bir ölçek kümesi dağıtan bir şablon oluşturmak için değiştireceğiz.  
+Önceki bir [makalede](virtual-machine-scale-sets-mvss-start.md) temel bir ölçek kümesi şablonu oluşturduk. Şimdi bu şablonu kullanacağız ve özel görüntüden ölçek kümesi dağıtan bir şablon oluşturacak şekilde değiştirirsiniz.  
 
 ### <a name="creating-a-managed-disk-image"></a>Yönetilen disk görüntüsü oluşturma
 
-Zaten özel yönetilen bir disk görüntü (tür `Microsoft.Compute/images`bir kaynak) varsa, o zaman bu bölümü atlayabilirsiniz.
+Zaten özel bir yönetilen disk görüntünüz (türünde `Microsoft.Compute/images`bir kaynağınız) varsa, bu bölümü atlayabilirsiniz.
 
-İlk olarak, `sourceImageVhdUri` Azure Depolama'daki genelleştirilmiş blob'a URI olan ve dağıtılabilmek için özel görüntü içeren bir parametre ekleyin.
+İlk olarak, Azure `sourceImageVhdUri` depolama 'daki Genelleştirilmiş blob 'un dağıtım yapılacak özel görüntüyü içeren URI 'si olan bir parametre ekleyin.
 
 
 ```diff
@@ -44,7 +44,7 @@ Zaten özel yönetilen bir disk görüntü (tür `Microsoft.Compute/images`bir k
    "variables": {},
 ```
 
-Ardından, URI'de `sourceImageVhdUri` `Microsoft.Compute/images`bulunan genelleştirilmiş blob'a dayalı yönetilen disk görüntüsü olan bir tür kaynağı ekleyin. Bu görüntü, onu kullanan ölçek kümesiyle aynı bölgede olmalıdır. Görüntünün özelliklerinde işletim sistemi türünü, blobun konumunu `sourceImageVhdUri` (parametreden) ve depolama hesabı türünü belirtin:
+Ardından, URI `sourceImageVhdUri`konumunda bulunan Genelleştirilmiş blobu `Microsoft.Compute/images`temel alan yönetilen disk görüntüsü olan türünde bir kaynak ekleyin. Bu görüntü, onu kullanan ölçek kümesiyle aynı bölgede olmalıdır. Görüntünün özelliklerinde işletim sistemi türünü, Blobun konumunu ( `sourceImageVhdUri` parametresinden) ve depolama hesabı türünü belirtin:
 
 ```diff
    "resources": [
@@ -71,7 +71,7 @@ Ardından, URI'de `sourceImageVhdUri` `Microsoft.Compute/images`bulunan genelle�
 
 ```
 
-Ölçek kümesi kaynağında, `dependsOn` ölçek kümesi bu görüntüden dağıtmaya çalışmadan önce görüntünün oluşturulduğundan emin olmak için özel görüntüye atıfta bulunan bir yan tümce ekleyin:
+Ölçek kümesi kaynağında, ölçek kümesi bu görüntüden `dependsOn` dağıtmayı denemeden önce görüntünün oluşturulduğundan emin olmak için özel görüntüye başvuran bir yan tümce ekleyin:
 
 ```diff
        "location": "[resourceGroup().location]",
@@ -86,9 +86,9 @@ Ardından, URI'de `sourceImageVhdUri` `Microsoft.Compute/images`bulunan genelle�
 
 ```
 
-### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>Yönetilen disk görüntüsünü kullanmak için ölçek kümesi özelliklerini değiştirme
+### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>Ölçek kümesi özelliklerini yönetilen disk görüntüsünü kullanacak şekilde değiştirme
 
-Ölçek `imageReference` kümesinde, `storageProfile`bir platform görüntüsünün yayımcısını, teklifini, sku'sunu ve `id` sürümünü `Microsoft.Compute/images` belirtmek yerine, kaynağın aşağıdakileri belirtin:
+`imageReference` Ölçek `storageProfile`kümesinde, bir platform görüntüsünün Yayımcı, teklif, SKU 'su ve sürümünü belirtmek yerine, `id` `Microsoft.Compute/images` kaynağın şunu belirtin:
 
 ```json
          "virtualMachineProfile": {
@@ -100,7 +100,7 @@ Ardından, URI'de `sourceImageVhdUri` `Microsoft.Compute/images`bulunan genelle�
            "osProfile": {
 ```
 
-Bu örnekte, `resourceId` aynı şablonda oluşturulan görüntünün kaynak kimliğini almak için işlevi kullanın. Yönetilen disk görüntüsünü önceden oluşturduysanız, bunun yerine bu görüntünün kimliğini sağlamanız gerekir. Bu kimlik formdan olmalıdır: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
+Bu örnekte, aynı şablonda oluşturulan `resourceId` görüntünün kaynak kimliğini almak için işlevini kullanın. Yönetilen disk görüntüsünü önceden oluşturduysanız bunun yerine söz konusu görüntünün KIMLIĞINI sağlamanız gerekir. Bu KIMLIK şu biçimde olmalıdır: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar

@@ -1,5 +1,5 @@
 ---
-title: Telefon numarası (önizleme) için SMS oturum açma kullanıcı deneyimi - Azure AD
+title: Telefon numarası için SMS oturum açma kullanıcı deneyimi (Önizleme)-Azure AD
 description: Yeni veya mevcut telefon numaraları için SMS oturum açma kullanıcı deneyimi hakkında daha fazla bilgi edinin
 services: active-directory
 author: curtand
@@ -13,63 +13,63 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: e5369247fc1e31bafb158e83a54bf8badf721d0d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81378840"
 ---
-# <a name="use-your-phone-number-as-a-user-name-preview"></a>Telefon numaranızı kullanıcı adı olarak kullanma (önizleme)
+# <a name="use-your-phone-number-as-a-user-name-preview"></a>Telefon numaranızı Kullanıcı adı olarak kullanma (Önizleme)
 
-Bir aygıtı kaydettirmek, telefonunuzun kuruluşunuzun hizmetlerine erişmesine izin verir ve kuruluşunuzun telefonunuza erişmesine izin vermez. Yöneticiyseniz, Yapılandırma'da daha fazla bilgi bulabilir [ve SMS tabanlı kimlik doğrulaması için kullanıcıları etkinleştirebilirsiniz.](../authentication/howto-authentication-sms-signin.md)
+Bir cihazın kaydedilmesi, kuruluşunuzun hizmetlerine yönelik telefondan erişim sağlar ve kuruluşunuzun telefonunuza erişmesine izin vermez. Yönetici değilseniz, [SMS tabanlı kimlik doğrulaması için kullanıcıları yapılandırma ve etkinleştirme](../authentication/howto-authentication-sms-signin.md)bölümünde daha fazla bilgi bulabilirsiniz.
 
-Kuruluşunuz SMS oturum açma'yı kullanıma sunmuyorsa, hesabınıza bir telefon kaydederken bunun için bir seçenek görmezsiniz.  
+Kuruluşunuz kullanılabilir SMS oturum açma yapmadıysa, hesabınız ile telefon kaydedilirken bir seçenek görmezsiniz.  
 
 ## <a name="when-you-have-a-new-phone-number"></a>Yeni bir telefon numaranız olduğunda
 
-Yeni bir telefon veya yeni bir numara alır sanız ve sms oturum açabilirsiniz bir kuruluşa kaydederseniz, normal telefon kayıt işlemi yle karşılaşırsınız:
+Yeni bir telefon veya yeni numara alırsanız ve bunu SMS oturum açma 'nın kullanılabildiği bir kuruluşa kaydettiğinizde, normal telefon kayıt işlemine karşılaşırsınız:
 
-1. **Yöntem Ekle'yi**seçin.
+1. **Add metodunu**seçin.
 1. **Telefon**seçin.
-1. Telefon numarasını girin ve **bana bir kod gönder'i**seçin.
-1. Kodu girdikten sonra **İleri'yi**seçin.
-1. "SMS doğrulandı" yazan bir istem görürsünüz. Telefonunuz başarıyla kaydedildi."
+1. Telefon numarası girin ve **bana bir kod**seçin.
+1. Kodu girdikten sonra **İleri**' yi seçin.
+1. "SMS doğrulandı" ifadesini bildiren bir istem görürsünüz. Telefonunuz başarıyla kaydedildi. "
 
 > [!Important]
-> Önizlemede bilinen bir sorun nedeniyle, kısa bir süre için telefon numarası eklemek SMS oturum açma için numarayı kaydetmez. Eklenen numarayla oturum açmanız ve ardından SMS oturum açma için numarayı kaydetmek için istemleri izlemeniz gerekir.
+> Önizlemedeki bilinen bir sorundan dolayı telefon numarası eklenirken kısa bir süre için SMS oturum açma numarası kayıt etmez. Ek numara ile oturum açmanız ve sonra SMS oturum açma için numarayı kaydetmek üzere istemleri izlemeniz gerekir.
 
 ### <a name="when-the-phone-number-is-in-use"></a>Telefon numarası kullanımda olduğunda
 
-Kuruluşunuzdaki başka birinin kullandığı bir telefon numarasını kullanmaya çalışırsanız, aşağıdaki iletiyi görürsünüz:
+Kuruluşunuzdaki başka birinin kullandığı bir telefon numarası kullanmayı denerseniz, aşağıdaki iletiyi görürsünüz:
 
-![Telefon numaranız zaten kullanıldığında hata iletisi](media/sms-sign-in-explainer/sms-sign-in-error.png)
+![Telefon numaranız zaten kullanıldığında oluşan hata iletisi](media/sms-sign-in-explainer/sms-sign-in-error.png)
 
-Sorunu düzeltmek için yöneticinize ulaşın.
+Sorunu gidermek için yöneticinize ulaşın.
 
-## <a name="when-you-have-an-existing-number"></a>Varolan bir numaranız varsa
+## <a name="when-you-have-an-existing-number"></a>Mevcut bir numaranız varsa
 
-Zaten bir kuruluşla bir telefon numarası kullanıyorsanız ve kullanıcı adı kullanılabilir hale geldikçe telefon numaranızı kullanıyorsanız, aşağıdaki adımlar oturum açmanıza yardımcı olabilir.
+Zaten bir kuruluşla telefon numarası kullanıyorsanız ve telefon numaranızı Kullanıcı adı olarak kullanıyorsanız, aşağıdaki adımlar oturum açmanıza yardımcı olabilir.
 
-1. SMS oturum açma kullanılabilir olduğunda, SMS oturum açma için telefon numarasını etkinleştirmek isteyip istediğinizi soran bir başlık görüntülenir:
+1. SMS oturum açma kullanılabilir olduğunda, SMS oturum açma için telefon numarasını etkinleştirmek isteyip istemediğinizi soran bir başlık görüntülenir:
 
     [![](media/sms-sign-in-explainer/sms-sign-in-banner.png "Banner to enable SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-banner.png#lightbox)
 
-1. Ayrıca, telefon yöntemi döşemesindeki bakıcıyı seçerseniz **Etkinleştir** düğmesi görüntülenir:
+1. Ayrıca, telefon yöntemi kutucuğunda giriş işaretini seçerseniz bir **Etkinleştir** düğmesi görünür:
 
     [![](media/sms-sign-in-explainer/sms-sign-in-phone-method.png "Banner to enable SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-phone-method.png#lightbox)
 
-1. Yöntemi etkinleştirmek için **Etkinleştir'i**seçin. Eylemi onaylamanız istenir:
+1. Yöntemi etkinleştirmek için **Etkinleştir**' i seçin. Eylemi onaylamanız istenir:
 
-    ![Bir telefon numarası için SMS oturum açmayı etkinleştirmek için onay iletişim kutusu](media/sms-sign-in-explainer/sms-sign-in-confirmation.png)
+    ![Telefon numarası için SMS oturum açmayı etkinleştirmek üzere onay iletişim kutusu](media/sms-sign-in-explainer/sms-sign-in-confirmation.png)
 
 1. **Etkinleştir**’i seçin.
 
 ## <a name="when-you-remove-your-phone-number"></a>Telefon numaranızı kaldırdığınızda
 
-1. Telefon numarasını silmek için, SMS oturum açma yöntemi ndeki telefon döşemesindeki sil düğmesini seçin.
+1. Telefon numarasını silmek için SMS oturum açma telefonu yöntemi kutucuğunda Sil düğmesini seçin.
 
     [![](media/sms-sign-in-explainer/sms-sign-in-delete-method.png "Banner to delete SMS sign-in for a phone number")](media/sms-sign-in-explainer/sms-sign-in-delete-method.png#lightbox)
 
-2. Eylemi onaylamak istendiğinde **Tamam'ı**seçin.
+2. Eylemi onaylamanız istendiğinde **Tamam**' ı seçin.
 
-Varsayılan oturum açma yöntemi olarak kullanılan bir telefon numarasını kaldıramaz. Numarayı kaldırmak için varsayılan oturum açma yöntemini değiştirmeniz ve ardından telefon numarasını yeniden kaldırmanız gerekir.
+Varsayılan oturum açma yöntemi olarak kullanımda olan bir telefon numarasını kaldıramazsınız. Sayıyı kaldırmak için, varsayılan oturum açma yöntemini değiştirmeniz ve sonra telefon numarasını yeniden kaldırmanız gerekir.

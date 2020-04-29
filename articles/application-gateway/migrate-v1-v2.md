@@ -1,6 +1,6 @@
 ---
-title: v1'den v2'ye geçiş - Azure Uygulama Ağ Geçidi
-description: Bu makalede, Azure Uygulama Ağ Geçidi ve Web Uygulaması Güvenlik Duvarı'nı v1'den v2'ye nasıl geçirebilirsiniz
+title: V1 'den v2 'ye geçiş-Azure Application Gateway
+description: Bu makalede, Azure Application Gateway ve Web uygulaması güvenlik duvarı 'Nı v1 'den v2 'ye nasıl geçirebileceğiniz gösterilmektedir
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,74 +8,74 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
 ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312044"
 ---
-# <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Uygulama Ağ Geçidi'ni ve Web Uygulaması Güvenlik Duvar'ı v1'den v2'ye geçirin
+# <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway ve Web uygulaması güvenlik duvarını v1 'den v2 'ye geçirme
 
-[Azure Uygulama Ağ Geçidi ve Web Uygulaması Güvenlik Duvarı (WAF) v2](application-gateway-autoscaling-zone-redundant.md) artık kullanılabilir durumda olup, otomatik ölçekleme ve kullanılabilirlik bölgesi artıklığı gibi ek özellikler sunar. Bununla birlikte mevcut v1 ağ geçitleri v2'ye otomatik olarak yükseltilmez. V1'den v2'ye geçiş yapmak istiyorsanız, bu makaledeki adımları izleyin.
+[Azure Application Gateway ve Web uygulaması güvenlik duvarı (WAF) v2](application-gateway-autoscaling-zone-redundant.md) artık kullanılabilir, otomatik ölçeklendirme ve kullanılabilirlik bölgesi artıklığı gibi ek özellikler sunar. Bununla birlikte mevcut v1 ağ geçitleri v2'ye otomatik olarak yükseltilmez. V1 'den v2 'ye geçiş yapmak istiyorsanız, bu makaledeki adımları izleyin.
 
-Bir geçişin iki aşaması vardır:
+Bir geçişte iki aşama vardır:
 
-1. Yapılandırmayı geçirin
+1. Yapılandırmayı geçirme
 2. İstemci trafiğini geçirme
 
-Bu makalede, yapılandırma geçişi kapsar. İstemci trafiği geçişi, özel ortamınıza bağlı olarak değişir. Ancak, bazı üst düzey, genel öneriler [sağlanır.](#migrate-client-traffic)
+Bu makalede yapılandırma geçişi ele alınmaktadır. İstemci trafiği geçişi, özel ortamınıza bağlı olarak farklılık gösterir. Ancak, bazı üst düzey genel öneriler [sağlanır](#migrate-client-traffic).
 
 ## <a name="migration-overview"></a>Geçişe genel bakış
 
-Aşağıdakileri yapan bir Azure PowerShell komut dosyası kullanılabilir:
+Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 
 * Belirttiğiniz bir sanal ağ alt ağında yeni bir Standard_v2 veya WAF_v2 ağ geçidi oluşturur.
-* V1 Standard veya WAF ağ geçidiyle ilişkili yapılandırmayı yeni oluşturulan Standard_V2 veya WAF_V2 ağ geçidine sorunsuz bir şekilde kopyalar.
+* V1 standardı veya WAF ağ geçidi ile ilişkili yapılandırmayı, yeni oluşturulan Standard_V2 veya WAF_V2 ağ geçidine sorunsuzca kopyalar.
 
-### <a name="caveatslimitations"></a>Uyarılar\Sınırlamalar
+### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* Yeni v2 ağ geçidiyeni genel ve özel IP adreslerine sahiptir. Varolan v1 ağ geçidiyle ilişkili IP adreslerini sorunsuz bir şekilde v2'ye taşımak mümkün değildir. Ancak, varolan (tahsis edilmemiş) bir genel veya özel IP adresini yeni v2 ağ geçidine ayırabilirsiniz.
-* V1 ağ geçidinizin bulunduğu sanal ağınızdaki başka bir alt ağ için bir IP adres alanı sağlamanız gerekir. Komut dosyası, v1 ağ geçidi olan varolan alt ağlarda v2 ağ geçidi oluşturamaz. Ancak, varolan alt ağ zaten bir v2 ağ geçidi varsa, yeterli IP adresi alanı olması koşuluyla çalışmaya devam edebilir.
-* TLS/SSL yapılandırmasını geçirmek için v1 ağ geçidinizde kullanılan tüm TLS/SSL sertifikalarını belirtmeniz gerekir.
-* V1 ağ geçidiniz için FIPS modu etkinleştirilmişse, yeni v2 ağ geçidinize geçirilmez. FIPS modu v2'de desteklenmez.
-* v2 IPv6'yı desteklemez, bu nedenle IPv6 etkin v1 ağ geçitleri geçirilemiyor. Komut dosyasını çalıştırın, tamamlanmamış olabilir.
-* v1 ağ geçidinde yalnızca özel bir IP adresi varsa, komut dosyası yeni v2 ağ geçidi için ortak bir IP adresi ve özel bir IP adresi oluşturur. v2 ağ geçitleri şu anda yalnızca özel IP adreslerini desteklemiyor.
-* Harfler, basamaklar, tireler ve alt çizilmeler dışında herhangi bir ad içeren üstbilgi uygulamanıza geçirilmez. Bu yalnızca üstbilgi adları için geçerlidir, üstbilgi değerleri için değil. Bu v1 bir kırılma değişikliğidir.
+* Yeni v2 ağ geçidinde yeni ortak ve özel IP adresleri vardır. Mevcut v1 ağ geçidiyle ilişkili IP adreslerini sorunsuz bir şekilde v2 'ye taşımak mümkün değildir. Ancak, yeni V2 ağ geçidine var olan (ayrılmamış) ortak veya özel IP adresi ayırabilirsiniz.
+* V1 ağ geçidinizin bulunduğu sanal ağınız içindeki başka bir alt ağ için bir IP adresi alanı sağlamanız gerekir. Betik, zaten v1 ağ geçidine sahip olan mevcut alt ağlarda V2 ağ geçidini oluşturamaz. Ancak, var olan alt ağda zaten bir V2 ağ geçidi varsa, bu, yeterli IP adresi alanı sağlanabileceği için hala çalışabilir.
+* Bir TLS/SSL yapılandırmasını geçirmek için v1 ağ geçidinizdeki kullanılan tüm TLS/SSL sertifikalarını belirtmeniz gerekir.
+* V1 ağ geçidiniz için FIPS modunu etkinleştirdiyseniz, bu, yeni V2 ağ geçidize geçirilmez. FIPS modu v2 'de desteklenmez.
+* v2 IPv6 desteklemez, bu nedenle IPv6 etkin v1 ağ geçitleri geçirilmez. Betiği çalıştırırsanız, bu tamamlanmamış olabilir.
+* V1 ağ geçidinde yalnızca bir özel IP adresi varsa, betik bir genel IP adresi ve yeni V2 ağ geçidi için özel bir IP adresi oluşturur. V2 ağ geçitleri Şu anda yalnızca özel IP adreslerini desteklemez.
+* Harf, rakam, kısa çizgi ve alt çizgi dışında bir şey içeren adlara sahip üstbilgiler uygulamanıza geçirilmiyor. Bu, üst bilgi değerleri değil yalnızca üst bilgi adları için geçerlidir. Bu, v1 'den bir son değişiklik.
 
-## <a name="download-the-script"></a>Komut dosyasını indirin
+## <a name="download-the-script"></a>Betiği indir
 
-[PowerShell Galerisi'nden](https://www.powershellgallery.com/packages/AzureAppGWMigration)geçiş komut dosyasını indirin.
+[PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureAppGWMigration)geçiş betiğini indirin.
 
-## <a name="use-the-script"></a>Komut dosyasını kullanma
+## <a name="use-the-script"></a>Betiği kullan
 
-Yerel PowerShell ortamı kurulumunuza ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:
+Yerel PowerShell ortamınız kuruluma ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:
 
-* Azure Az modülleri yüklü değilse veya Azure Az modüllerini kaldırmakta sakınca görmüyorsanız, en iyi seçenek `Install-Script` komut dosyasını çalıştırma seçeneğini kullanmaktır.
-* Azure Az modüllerini saklamanız gerekiyorsa, en iyi seçenek komut dosyasını indirip doğrudan çalıştırmaktır.
+* Azure az modules yüklü değilse veya Azure az modüllerini kaldırmayı bilmiyorsanız, en iyi seçenek betiği çalıştırmak için `Install-Script` seçeneğini kullanmaktır.
+* Azure az modules tutmanız gerekiyorsa, en iyi sonuç, betiği indirmek ve doğrudan çalıştırmak olacaktır.
 
-Azure Az modüllerinin yüklü olup olmadığını belirlemek `Get-InstalledModule -Name az`için çalıştırın. Yüklü Az modülleri görmüyorsanız, `Install-Script` yöntemi kullanabilirsiniz.
+Azure az modules yüklü olup olmadığınızı öğrenmek için çalıştırın `Get-InstalledModule -Name az`. Yüklü az modül görmüyorsanız, `Install-Script` yöntemini kullanabilirsiniz.
 
-### <a name="install-using-the-install-script-method"></a>Install-Script yöntemini kullanarak yükleme
+### <a name="install-using-the-install-script-method"></a>Install-Script metodunu kullanarak install
 
-Bu seçeneği kullanmak için bilgisayarınızda Azure Az modüllerinin yüklü olmaması gerekir. Yüklüyse, aşağıdaki komut bir hata görüntüler. Azure Az modüllerini kaldırabilir veya komut dosyasını el ile indirip çalıştırmak için diğer seçeneği kullanabilirsiniz.
+Bu seçeneği kullanmak için, bilgisayarınızda Azure az modules yüklü olmamalıdır. Yüklüyse, aşağıdaki komut bir hata görüntüler. Azure az modüller ' i kaldırabilir veya betiği el ile indirmek ve çalıştırmak için diğer seçeneği kullanabilirsiniz.
   
-Komut dosyasını aşağıdaki komutla çalıştırın:
+Betiği aşağıdaki komutla çalıştırın:
 
 `Install-Script -Name AzureAppGWMigration`
 
-Bu komut aynı zamanda gerekli Az modüllerini de yükler.  
+Bu komut ayrıca gerekli az modülleri de yüklüyor.  
 
-### <a name="install-using-the-script-directly"></a>Komut dosyasını kullanarak doğrudan yükleme
+### <a name="install-using-the-script-directly"></a>Betiği kullanarak doğrudan yüklemeyi
 
-Bazı Azure Az modülleriniz yüklüyse ve bunları kaldıramıyorsanız (veya kaldırmak istemiyorsanız), komut dosyası indirme bağlantısındaki **Manuel İndir** sekmesini kullanarak komut dosyasını el ile indirebilirsiniz. Komut dosyası ham nupkg dosyası olarak indirilir. Bu nupkg dosyasından komut dosyasını yüklemek için Bkz. [Manuel Paket İndir.](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)
+Bazı Azure az modülleriniz varsa ve bunları kaldıramıyorsanız (veya kaldırmak istemiyorsanız), betik indirme bağlantısındaki **El Ile indir** sekmesini kullanarak betiği el ile indirebilirsiniz. Betik, ham nupkg dosyası olarak indirilir. Betiği bu nupkg dosyasından yüklemek için bkz. [El Ile paket indirme](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
 
 Betiği çalıştırmak için:
 
-1. Azure'a bağlanmak için kullanın. `Connect-AzAccount`
+1. Azure `Connect-AzAccount` 'a bağlanmak için kullanın.
 
-1. Az `Import-Module Az` modüllerini almak için kullanın.
+1. Az `Import-Module Az` modülleri içeri aktarmak için kullanın.
 
-1. Gerekli `Get-Help AzureAppGWMigration.ps1` parametreleri incelemek için çalıştırın:
+1. Gerekli `Get-Help AzureAppGWMigration.ps1` parametreleri incelemek için ' i çalıştırın:
 
    ```
    AzureAppGwMigration.ps1
@@ -89,21 +89,21 @@ Betiği çalıştırmak için:
     -validateMigration -enableAutoScale
    ```
 
-   Komut dosyası için parametreler:
-   * **resourceId: [String]: Gerekli** - Bu, varolan Standart v1 veya WAF v1 ağ geçidiniz için Azure Kaynak Kimliği'dir. Bu dize değerini bulmak için Azure portalına gidin, uygulama ağ geçidinizi veya WAF kaynağınızı seçin ve ağ geçidi için **Özellikler** bağlantısını tıklatın. Kaynak Kimliği bu sayfada yer alır.
+   Betik için Parametreler:
+   * **RESOURCEID: [dize]: gerekli** -bu, mevcut standart v1 veya WAF v1 ağ geçidiniz Için Azure kaynak kimliğidir. Bu dize değerini bulmak için Azure portal gidin, Application Gateway veya WAF kaynağını seçin ve ağ geçidinin **Özellikler** bağlantısına tıklayın. Kaynak KIMLIĞI bu sayfada bulunur.
 
-     Kaynak Kimliğini almak için aşağıdaki Azure PowerShell komutlarını da çalıştırabilirsiniz:
+     Kaynak KIMLIĞINI almak için aşağıdaki Azure PowerShell komutlarını da çalıştırabilirsiniz:
 
      ```azurepowershell
      $appgw = Get-AzApplicationGateway -Name <v1 gateway name> -ResourceGroupName <resource group Name> 
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [String]: Gerekli** - Bu, yeni v2 ağ geçidinizi içeren yeni bir alt ağ geçidi için ayırdığınız (veya ayırmak istediğiniz) IP adresi alanıdır. Bu, CIDR gösteriminde belirtilmelidir. Örneğin: 10.0.0.0/24. Bu alt ağı önceden oluşturmanız gerekmez. Komut dosyası yoksa sizin için oluşturur.
-   * **appgwName: [String]: İsteğe bağlı**. Bu, yeni Standard_v2 veya WAF_v2 ağ geçidinin adı olarak kullanacağınız bir dizedir. Bu parametre sağlanmazsa, varolan v1 ağ geçidinizin adı eklenmiş *_v2* sonekiyle birlikte kullanılır.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: İsteğe bağlı**.  V1 ağ geçidinizdeki TLS/SSL sertifikalarını temsil etmek için oluşturduğunuz PSApplicationGatewaySslCertificate nesnelerinin virgülden ayrılmış bir listesi yeni v2 ağ geçidine yüklenmelidir. Standart v1 veya WAF v1 ağ geçidiniz için yapılandırılan TLS/SSL sertifikalarınızın her biri için, burada `New-AzApplicationGatewaySslCertificate` gösterilen komut aracılığıyla yeni bir PSApplicationGatewaySslCertificate nesnesi oluşturabilirsiniz. TLS/SSL Cert dosyanıza ve şifrenize giden yola ihtiyacınız vardır.
+   * **Subnetaddressrange: [dize]: gereklidir** -bu, yeni V2 ağ geçidinizi içeren yeni bir alt ağ için ayrılan (veya ayırmak ISTEDIĞINIZ) IP adres alanıdır. Bu, CıDR gösteriminde belirtilmelidir. Örneğin: 10.0.0.0/24. Bu alt ağı önceden oluşturmanız gerekmez. Bu komut dosyası, yoksa sizin için oluşturur.
+   * **Appgwname: [dize]: Isteğe bağlı**. Bu, yeni Standard_v2 veya ağ geçidi WAF_v2 için ad olarak kullanmak üzere belirttiğiniz bir dizedir. Bu parametre sağlanmazsa, mevcut v1 ağ geçidinizin adı, sonek *_v2* eklenmiş olarak kullanılır.
+   * **Sslcertificates: [PSApplicationGatewaySslCertificate]: Isteğe bağlı**.  V1 ağ Geçidinizden TLS/SSL sertifikalarını temsil etmek için oluşturduğunuz PSApplicationGatewaySslCertificate nesnelerinin virgülle ayrılmış bir listesi, yeni V2 ağ geçidine yüklenmiş olmalıdır. Standart v1 veya WAF v1 ağ geçidiniz için yapılandırılmış her bir TLS/SSL sertifikalarınızın her biri için burada gösterilen `New-AzApplicationGatewaySslCertificate` komut aracılığıyla yeni bir PSApplicationGatewaySslCertificate nesnesi oluşturabilirsiniz. TLS/SSL sertifika dosyanızın ve parolanın yolu gereklidir.
 
-     Bu parametre yalnızca v1 ağ geçidiniz veya WAF'ınız için yapılandırılan HTTPS dinleyicileriniz yoksa isteğe bağlıdır. En az bir HTTPS dinleyici kurulumunuz varsa, bu parametreyi belirtmeniz gerekir.
+     Bu parametre yalnızca v1 Gateway veya WAF için HTTPS dinleyicilerinin yapılandırılmış olması durumunda isteğe bağlıdır. En az bir HTTPS dinleyicisi kurulumuna sahipseniz, bu parametreyi belirtmeniz gerekir.
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -115,23 +115,23 @@ Betiği çalıştırmak için:
         -Password $password
       ```
 
-     Önceki örnekte `$mySslCert1, $mySslCert2` bu parametrenin değerleri olarak komut dosyasına geçebilirsiniz (virgülden ayrılmış).
-   * **güvenilirRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: İsteğe bağlı**. V2 ağ geçidinizden arka uç örneklerinizi doğrulamak için [Güvenilen Kök sertifikalarını](ssl-overview.md) temsil etmek üzere oluşturduğunuz PSApplicationGatewayTrustedRootCertificate nesnelerinin virgülle ayrılmış listesi.
+     Önceki örnekte, betikteki Bu parametre için değer olarak `$mySslCert1, $mySslCert2` (virgülle ayrılmış) geçiş yapabilirsiniz.
+   * **Trustedrootcertificates: [PSApplicationGatewayTrustedRootCertificate]: Isteğe bağlı**. V2 ağ Geçidinizden arka uç örneklerinizin kimlik doğrulaması için [güvenilir kök sertifikaları](ssl-overview.md) temsil etmek üzere oluşturduğunuz PSApplicationGatewayTrustedRootCertificate nesnelerinin virgülle ayrılmış bir listesi.
    
       ```azurepowershell
       $certFilePath = ".\rootCA.cer"
       $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
       ```
 
-      PSApplicationGatewayTrustedRootCertificate nesnelerinin bir listesini oluşturmak için Bkz. [Yeni-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
-   * **privateIpAddress: [String]: İsteğe bağlı**. Yeni v2 ağ geçidinizle ilişkilendirmek istediğiniz belirli bir özel IP adresi.  Bu, yeni v2 ağ geçidiniz için ayırdığınız VNet'ten olmalıdır. Bu belirtilmemişse, komut dosyası v2 ağ geçidiniz için özel bir IP adresi ayırır.
-   * **publicIpResourceId: [String]: İsteğe bağlı**. Aboneliğinizde, yeni v2 ağ geçidine ayırmak istediğiniz mevcut genel IP adresi (standart SKU) kaynağının kaynak Kimliği. Bu belirtilmemişse, komut dosyası aynı kaynak grubuna yeni bir genel IP ayırır. Adı *-IP* eklenen v2 ağ geçidinin adıdır.
-   * **doğrulamaMigration: [switch]: İsteğe bağlı**. Komut dosyasının v2 ağ geçidi oluşturma ve yapılandırma kopyasından sonra bazı temel yapılandırma karşılaştırma doğruları yapmasını istiyorsanız bu parametreyi kullanın. Varsayılan olarak, hiçbir doğrulama yapılır.
-   * **EnableAutoScale: [switch]: İsteğe bağlı**. Komut dosyasının oluşturulduktan sonra yeni v2 ağ geçidinde Otomatik Ölçekleme'yi etkinleştirmesini istiyorsanız bu parametreyi kullanın. Varsayılan olarak, Otomatik Ölçekleme devre dışı bırakılır. Yeni oluşturulan v2 ağ geçidinde her zaman el ile etkinleştirebilirsiniz.
+      PSApplicationGatewayTrustedRootCertificate nesnelerinin bir listesini oluşturmak için, bkz. [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
+   * **Privateıpaddress: [dize]: Isteğe bağlı**. Yeni v2 ağ geçidiniz ile ilişkilendirmek istediğiniz belirli bir özel IP adresi.  Bu, yeni V2 ağ geçidiniz için ayırdığınız VNet 'ten olmalıdır. Bu belirtilmemişse, betik V2 ağ geçidiniz için özel bir IP adresi ayırır.
+   * **Publicıpresourceıd: [dize]: Isteğe bağlı**. Yeni v2 ağ geçidine ayırmak istediğiniz aboneliğinizdeki mevcut genel IP adresi (Standart SKU) kaynağının RESOURCEID değeri. Bu belirtilmemişse, komut dosyası aynı kaynak grubunda yeni bir genel IP ayırır. Ad, V2 ağ geçidinin adı *-IP* olarak eklenir.
+   * **Validatemigration: [anahtar]: Isteğe bağlı**. Betiğin V2 ağ geçidi oluşturulduktan ve yapılandırma kopyasından sonra bazı temel yapılandırma karşılaştırma doğrulamaları kullanmasını istiyorsanız bu parametreyi kullanın. Varsayılan olarak, doğrulama yapılmaz.
+   * **Enableotomatik ölçeklendirme: [anahtar]: Isteğe bağlı**. Betiğin oluşturulduktan sonra yeni V2 ağ geçidinde otomatik ölçeklendirmeyi etkinleştirmesini istiyorsanız bu parametreyi kullanın. Varsayılan olarak otomatik ölçeklendirme devre dışıdır. Daha sonra yeni oluşturulan V2 ağ geçidinde el ile etkinleştirebilirsiniz.
 
-1. Uygun parametreleri kullanarak komut dosyasını çalıştırın. Bitirmesi beş ila yedi dakika sürebilir.
+1. Uygun parametreleri kullanarak betiği çalıştırın. Tamamlanması beş ila yedi dakika sürebilir.
 
-    **Örnek**
+    **Örneğinde**
 
    ```azurepowershell
    AzureAppGWMigration.ps1 `
@@ -145,59 +145,59 @@ Betiği çalıştırmak için:
       -validateMigration -enableAutoScale
    ```
 
-## <a name="migrate-client-traffic"></a>İstemci trafiğini geçirin
+## <a name="migrate-client-traffic"></a>İstemci trafiğini geçirme
 
-İlk olarak, komut dosyasının v1 ağ geçidinizden tam yapılandırmaile birlikte yeni bir v2 ağ geçidi ni başarıyla oluşturacağından çift kontrol edin. Bunu Azure portalından doğrulayabilirsiniz.
+İlk olarak, betiğin v1 ağ Geçidinizden başarıyla geçirilen tam yapılandırmayla yeni bir V2 ağ geçidini başarıyla oluşturduğunu kontrol edin. Bunu Azure portal doğrulayabilirsiniz.
 
-Ayrıca, el ile test olarak v2 ağ geçidi üzerinden trafik küçük bir miktar gönderin.
+Ayrıca, V2 ağ geçidinden el ile test olarak küçük miktarda trafik gönderebilirsiniz.
   
-Geçerli uygulama ağ geçidinizin (Standart) istemci trafiğini alabileceği birkaç senaryo ve her biri için önerilerimiz aşağıda verilmiştir:
+Burada, geçerli uygulama ağ geçidinizin (Standart) istemci trafiği alabileceği ve her biri için önerdiğimiz birkaç senaryo verilmiştir:
 
-* **Standart v1 veya WAF v1 ağ geçidinizle ilişkili ön uç IP adresini (A kaydı nı kullanarak) işaret eden özel bir DNS bölgesi (örneğin, contoso.com).**
+* **Standart v1 veya WAF v1 ağ geçidiniz ile ilişkili ön uç IP adresini (örneğin, bir kayıt kullanarak) gösteren özel BIR DNS bölgesi (örneğin, contoso.com)**.
 
-    DNS kaydınızı, Standard_v2 uygulama ağ geçidinizle ilişkili ön uç IP veya DNS etiketini işaret etmek için güncelleştirebilirsiniz. DNS kaydınızda yapılandırılan TTL'ye bağlı olarak, tüm istemci trafiğinizin yeni v2 ağ geçidinize geçiş etmesi biraz zaman alabilir.
-* **V1 ağ geçidinizle ilişkili DNS etiketine (örneğin: CNAME *myappgw.eastus.cloudapp.azure.com* kaydı myappgw.eastus.cloudapp.azure.com) işaret eden özel bir DNS bölgesi (örneğin, contoso.com).**
+    DNS kaydınızı, Standard_v2 Application Gateway ile ilişkili olan ön uç IP 'sini veya DNS etiketini işaret etmek üzere güncelleştirebilirsiniz. DNS kaydınıza yapılandırılan TTL 'ye bağlı olarak, tüm istemci trafiğiniz yeni V2 ağ geçidinize geçirilmesi biraz zaman alabilir.
+* **V1 ağ geçidiniz ile ILIŞKILI DNS etiketine işaret eden (örneğin: CNAME kaydı kullanarak *myappgw.eastus.cloudapp.Azure.com* ) özel bir DNS bölgesi**.
 
-   İki seçeneğiniz var:
+   İki seçeneğiniz vardır:
 
-  * Uygulama ağ geçidinizde genel IP adresleri kullanıyorsanız, trafiği (ağırlıklı trafik yönlendirme yöntemi) yeni v2 ağ geçidine artımlı olarak yönlendirmek için Trafik Yöneticisi profilini kullanarak kontrollü, parçalı geçiş yapabilirsiniz.
+  * Uygulama ağ geçidiniz üzerinde genel IP adresleri kullanıyorsanız, trafiği (ağırlıklı trafik yönlendirme yöntemi) yeni V2 ağ geçidine artımlı yönlendirmek için bir Traffic Manager profili kullanarak denetimli, ayrıntılı bir geçiş yapabilirsiniz.
 
-    Bunu, [Trafik Yöneticisi profiline](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)hem v1 hem de v2 uygulama ağ geçitlerinin DNS etiketlerini ekleyerek ve özel DNS kaydınızı (örneğin,) `www.contoso.com`Trafik Yöneticisi etki alanına (örneğin, contoso.trafficmanager.net) cnameederek yapabilirsiniz.
-  * Veya, yeni v2 uygulama ağ geçidinin DNS etiketini işaret etmek için özel etki alanı DNS kaydınızı güncelleştirebilirsiniz. DNS kaydınızda yapılandırılan TTL'ye bağlı olarak, tüm istemci trafiğinizin yeni v2 ağ geçidinize geçiş etmesi biraz zaman alabilir.
-* **Müşterileriniz uygulama ağ geçidinizin ön uç IP adresine bağlanır.**
+    Bu, hem v1 hem de v2 uygulama ağ geçitlerinin DNS etiketlerini [Traffic Manager profiline](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)ekleyerek ve özel DNS kaydınızı ( `www.contoso.com`örneğin, contoso.trafficmanager.net) Traffic Manager etki alanına (örneğin,) ekleyerek yapabilirsiniz.
+  * Ya da, özel etki alanı DNS kaydınızı, yeni v2 Application Gateway 'in DNS etiketini işaret etmek üzere güncelleştirebilirsiniz. DNS kaydınıza yapılandırılan TTL 'ye bağlı olarak, tüm istemci trafiğiniz yeni V2 ağ geçidinize geçirilmesi biraz zaman alabilir.
+* **İstemcileriniz, uygulama ağ geçidinizin ön uç IP adresine bağlanır**.
 
-   Yeni oluşturulan v2 uygulama ağ geçidiyle ilişkili IP adresini(es) kullanmak için müşterilerinizi güncelleştirin. IP adreslerini doğrudan kullanmamanızı öneririz. Kendi özel DNS bölgenize (örneğin, contoso.com) CNAME yapabileceğiniz uygulama ağ geçidinizle ilişkili DNS ad etiketini (örneğin, yourgateway.eastus.cloudapp.azure.com) kullanmayı düşünün.
+   İstemcilerinizi, yeni oluşturulan v2 uygulama ağ geçidiyle ilişkili IP adreslerini kullanacak şekilde güncelleştirin. IP adreslerini doğrudan kullanmanızı öneririz. Kendi özel DNS bölgeniz için CNAME olarak kullanabileceğiniz (örneğin, contoso.com), uygulama ağ geçidiniz ile ilişkili DNS adı etiketini (örneğin, yourgateway.eastus.cloudapp.azure.com) kullanmayı göz önünde bulundurun.
 
 ## <a name="common-questions"></a>Sık sorulan sorular
 
-### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Azure PowerShell komut dosyasında yapılandırmayı v1'den v2'ye geçirmek için herhangi bir sınırlama var mı?
+### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Yapılandırmayı v1 'den v2 'ye geçirmek için Azure PowerShell betiğiyle ilgili herhangi bir sınırlama var mı?
 
-Evet. Bkz. [Uyarılar/Sınırlamalar.](#caveatslimitations)
+Evet. Bkz. [Uyarılar/sınırlamalar](#caveatslimitations).
 
-### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>Bu makale ve Azure PowerShell komut dosyası Application Gateway WAF ürünü için de geçerli mi? 
+### <a name="is-this-article-and-the-azure-powershell-script-applicable-for-application-gateway-waf-product-as-well"></a>Bu makale ve Azure PowerShell betiği Application Gateway WAF ürünü için de geçerlidir mi? 
 
 Evet.
 
-### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Azure PowerShell komut dosyası, v1 ağ geçidimden yeni oluşturulan v2 ağ geçidine giden trafik te de geçiş yapıyor mu?
+### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Azure PowerShell betiği, v1 ağ geçidden yeni oluşturulan V2 ağ geçidine trafik üzerinde de geçiş yapar mi?
 
-Hayır. Azure PowerShell komut dosyası yalnızca yapılandırmayı geçirtir. Gerçek trafik geçişi sizin sorumluluğunuzda dır ve sizin kontrolünüzdedir.
+Hayır. Azure PowerShell betiği yalnızca yapılandırmayı geçirir. Gerçek trafik geçişi, sizin ve denetiminizin sorumluluğundadır.
 
-### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Azure PowerShell komut dosyası tarafından oluşturulan yeni v2 ağ geçidi, şu anda v1 ağ geçidim tarafından sunulan tüm trafiği işlemek için uygun şekilde boyutlandırılır mı?
+### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>, Azure PowerShell betiği tarafından oluşturulan yeni V2 ağ geçidi, şu anda v1 ağ geçidim tarafından sunulan tüm trafiği işleyecek şekilde boyutlandırılabilir mı?
 
-Azure PowerShell komut dosyası, varolan v1 ağ geçidinizdeki trafiği işlemek için uygun boyuta sahip yeni bir v2 ağ geçidi oluşturur. Otomatik ölçekleme varsayılan olarak devre dışı bırakılır, ancak komut dosyasını çalıştırdığınızda Otomatik Ölçekleme'yi etkinleştirebilirsiniz.
+Azure PowerShell betiği, mevcut v1 ağ geçidinizdeki trafiği işlemek için uygun boyutta yeni bir V2 ağ geçidi oluşturur. Otomatik ölçeklendirme varsayılan olarak devre dışıdır, ancak betiği çalıştırdığınızda otomatik ölçeklendirmeyi etkinleştirebilirsiniz.
 
-### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>V1 ağ geçidimi Azure depolama alanına günlük göndermek için yapılandırıldım. Komut dosyası da v2 için bu yapılandırmayı çoğaltıyor mu?
+### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Azure depolama 'ya Günlükler göndermek için v1 ağ Geçidimi yapılandırdım. Komut dosyası bu yapılandırmayı v2 için de çoğaltsın mı?
 
-Hayır. Komut dosyası v2 için bu yapılandırmayı çoğaltmaz. Günlük yapılandırmasını geçirilen v2 ağ geçidine ayrı olarak eklemeniz gerekir.
+Hayır. Betik, v2 için bu yapılandırmayı çoğaltmaz. Günlük yapılandırmasını geçirilen V2 ağ geçidine ayrı olarak eklemeniz gerekir.
 
-### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>Bu komut dosyası, Azure KeyVault'a yüklenen sertifikaları destekliyor mu?
+### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>Bu betik, Azure Anahtar Kasası 'na yüklenen sertifikaları destekliyor mu?
 
-Hayır. Şu anda komut dosyası KeyVault sertifikaları desteklemiyor. Ancak, bu gelecekteki bir sürümü için kabul ediliyor.
+Hayır. Şu anda betik, anahtar kasasındaki sertifikaları desteklemez. Bununla birlikte, gelecekteki bir sürüm için bu kabul edilir.
 
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Ben bu komut dosyası kullanarak bazı sorunlar la karşılaştı. Nasıl yardım alabilirim?
+### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Bu betiği kullanmayla ilgili bazı sorunlarla karşılaştım. Nasıl yardım alabilirim?
   
-Azure Desteği ile appgwmigrationsup@microsoft.combir destek servis talebi açmak için e-posta gönderebilir veya her ikisini de yapabilirsiniz.
+Adresine appgwmigrationsup@microsoft.combir e-posta gönderebilir, Azure desteğiyle bir destek talebi açabilir veya her ikisini de yapabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Uygulama Ağ Geçidi v2 hakkında bilgi edinin](application-gateway-autoscaling-zone-redundant.md)
+[Application Gateway v2 hakkında bilgi edinin](application-gateway-autoscaling-zone-redundant.md)

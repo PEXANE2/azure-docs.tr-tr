@@ -1,6 +1,6 @@
 ---
-title: Azure Uygulama Ağ Geçidi'nde TLS'nin sonuna kadar etkinleştirme
-description: Bu makale, TLS desteğini sona erdirmek için Uygulama Ağ Geçidi'nin sonuna genel bir bakıştır.
+title: Azure Application Gateway uçtan uca TLS 'yi etkinleştirme
+description: Bu makale, uçtan uca TLS desteğine Application Gateway bir genel bakıştır.
 services: application-gateway
 author: amsriva
 ms.service: application-gateway
@@ -8,108 +8,108 @@ ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
 ms.openlocfilehash: ae80b49c3bfb40743665768622d3f4a8a6990c12
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311859"
 ---
-# <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Uygulama Ağ Geçidi ile TLS sonlandırma ve bitiş tls genel bakış
+# <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Application Gateway ile TLS sonlandırmasına ve uçtan uca TLS 'ye Genel Bakış
 
-Daha önce Güvenli Soket katmanı (SSL) olarak bilinen Aktarım Katmanı Güvenliği (TLS), bir web sunucusu ve tarayıcı arasında şifreli bir bağlantı kurmak için standart güvenlik teknolojisidir. Bu bağlantı, web sunucusu ve tarayıcılar arasında geçirilen tüm verilerin gizli ve şifreli kalmasını sağlar. Uygulama ağ geçidi, hem ağ geçidinde HEM TLS sonlandırmayı hem de UC'dan uca TLS şifrelemesini destekler.
+Daha önce Güvenli Yuva Katmanı (SSL) olarak bilinen Aktarım Katmanı Güvenliği (TLS), bir Web sunucusu ve tarayıcı arasında şifrelenmiş bir bağlantı kurmak için standart güvenlik teknolojisidir. Bu bağlantı, Web sunucusu ve tarayıcıları arasında geçirilen tüm verilerin özel ve şifreli kalmasını sağlar. Application Gateway, ağ geçidinde hem TLS sonlandırmasını hem de uçtan uca TLS şifrelemesini destekler.
 
 ## <a name="tls-termination"></a>TLS sonlandırma
 
-Uygulama Ağ Geçidi, trafiğin genellikle arka uç sunucularına şifrelenmemiş olarak aktığı ağ geçidinde TLS sonlandırmayı destekler. Uygulama ağ geçidinde TLS sonlandırma yapmanın birçok avantajı vardır:
+Application Gateway, ağ geçidinde TLS sonlandırmasını destekler, bu da akış genellikle arka uç sunucularına şifrelenmemiş olarak akar. Uygulama ağ geçidinde TLS sonlandırmanın çeşitli avantajları vardır:
 
-- **Geliştirilmiş performans** – TLS şifre çözme yaparken en büyük performans ilk el sıkışmadır. Performansı artırmak için, şifre çözme işini yapan sunucu TLS oturum ii'lerini önbelleğe alıyor ve TLS oturum biletlerini yönetir. Bu uygulama ağ geçidinde yapılırsa, aynı istemciden gelen tüm istekler önbelleğe alınan değerleri kullanabilir. Arka uç sunucularında yapılıyorsa, istemcinin istekleri her farklı sunucuya her gidişinde istemcinin yeniden kimlik doğrulaması gerekir. TLS biletlerinin kullanımı bu sorunu azaltmaya yardımcı olabilir, ancak tüm istemciler tarafından desteklenmez ve yapılandırmak ve yönetmek zor olabilir.
-- **Arka uç sunucularının daha iyi kullanımı** – SSL/TLS işleme çok CPU yoğun, ve anahtar boyutları arttıkça daha yoğun hale geliyor. Bu çalışmayı arka uç sunucularından kaldırmak, içerik sunarak en verimli oldukları şeye odaklanmalarını sağlar.
-- **Akıllı yönlendirme** – Uygulama ağ geçidi trafiğin şifresini çözerek üstbilgi, URI gibi istek içeriğine erişebilir ve istekleri yönlendirmek için bu verileri kullanabilir.
-- **Sertifika yönetimi** – Sertifikaların yalnızca satın alınması ve uygulama ağ geçidine yüklenmesi gerekir ve tüm arka uç sunucularında değil. Bu hem zaman hem de para tasarrufu sağlar.
+- **İyileştirilmiş performans** : TLS şifre çözme işlemi gerçekleştirirken en büyük performans isabet ilk anlaşma olur. Performansı artırmak için şifre çözme yapan sunucu TLS oturum kimliklerini önbelleğe alır ve TLS oturum biletlerini yönetir. Uygulama ağ geçidinde Bu yapıldığında, aynı istemciden gelen tüm istekler önbelleğe alınmış değerleri kullanabilir. Arka uç sunucuları üzerinde yapıldıysa, istemci istekleri her seferinde farklı bir sunucuya her gitilişinde, istemcinin kimliği yeniden doğrulanır. TLS biletleri kullanımı bu sorunu azaltmaya yardımcı olabilir, ancak tüm istemciler tarafından desteklenmez ve yapılandırılması ve yönetilmesi zor olabilir.
+- **Arka uç sunucularının daha iyi kullanımı** – SSL/TLS Işleme çok CPU yoğun ve anahtar boyutları artdıkça daha yoğun hale geliyor. Bu çalışmanın arka uç sunucularından kaldırılması, içerik teslimi için en verimli olduklarında odaklanmalarını sağlar.
+- **Akıllı yönlendirme** : trafiğin şifresini çözerek, uygulama ağ geçidinin üst BILGILER, URI gibi istek içeriğine erişimi vardır ve bu verileri istekleri yönlendirmek için kullanabilir.
+- **Sertifika yönetimi** – sertifikaların yalnızca uygulama ağ geçidinde satın alınması ve yüklenmesi gerekir ve bu, arka uç sunucuları için kullanılamaz. Bu hem zaman hem de para tasarrufu sağlar.
 
-TLS sonlandırma yapılandırması için, uygulama ağ geçidinin TLS/SSL protokol belirtimine göre simetrik bir anahtar elde etmesini sağlamak için dinleyiciye bir TLS/SSL sertifikası eklenmesi gerekir. Simetrik anahtar daha sonra ağ geçidine gönderilen trafiği şifrelemek ve çözmek için kullanılır. TLS/SSL sertifikasının Kişisel Bilgi Alışverişi (PFX) formatında olması gerekir. Bu dosya biçimi, trafiğin şifreleme ve şifre çözme gerçekleştirmek için uygulama ağ geçidi tarafından gerekli olan özel anahtarı dışa aktarmanızı sağlar.
+TLS sonlandırmayı yapılandırmak için, uygulama ağ geçidinin, TLS/SSL protokol belirtimine göre bir simetrik anahtar türemesini sağlamak üzere dinleyiciye bir TLS/SSL sertifikası eklenmesi gerekir. Daha sonra simetrik anahtar, ağ geçidine gönderilen trafiği şifrelemek ve şifresini çözmek için kullanılır. TLS/SSL sertifikasının kişisel bilgi değişimi (PFX) biçiminde olması gerekir. Bu dosya biçimi, trafiğin şifrelemesini ve şifresini çözmeyi gerçekleştirmek üzere uygulama ağ geçidi için gereken özel anahtarı dışarı aktarma olanağı sağlar.
 
 > [!NOTE] 
 >
-> Uygulama ağ geçidi, yeni bir sertifika oluşturmak veya sertifika yetkilisine sertifika isteği göndermek için herhangi bir yetenek sağlamaz.
+> Application Gateway, yeni bir sertifika oluşturmak veya bir sertifika yetkilisine sertifika isteği göndermek için herhangi bir özellik sağlamaz.
 
 TLS bağlantısının çalışması için TLS/SSL sertifikasının aşağıdaki koşulları karşıladığından emin olmanız gerekir:
 
-- Geçerli tarih ve saatin sertifikadaki "Geçerliden" ve "Geçerliye" tarih aralığında olması.
+- Geçerli tarih ve saatin, sertifikadaki "geçerlilik tarihi" ve "geçerli bitiş" tarih aralığı içinde olması.
 - Sertifikanın "Ortak Ad" (CN) değeri, istekteki ana bilgisayar üst bilgisiyle eşleşiyor. Örneğin istemci isteğinin hedefi `https://www.contoso.com/` ise CN `www.contoso.com` olmalıdır.
 
 ### <a name="certificates-supported-for-tls-termination"></a>TLS sonlandırma için desteklenen sertifikalar
 
-Uygulama ağ geçidi aşağıdaki sertifika türlerini destekler:
+Application Gateway aşağıdaki sertifika türlerini destekler:
 
-- CA (Sertifika Yetkilisi) sertifikası: CA sertifikası, sertifika yetkilisi (CA) tarafından verilen dijital sertifikadır
-- EV (Genişletilmiş Doğrulama) sertifikası: EV sertifikası, endüstri standardı sertifika yönergelerine uygun bir sertifikadır. Bu tarayıcı bulucu çubuğu yeşil açmak ve şirket adını da yayımlamak.
-- Joker Karakter Sertifikası: Bu sertifika, *.site.com'a dayalı olarak alt etki alanınızın *'in yerini alacağı herhangi bir alt etki alanını destekler. Ancak, site.com desteklemez, bu nedenle kullanıcıların önde gelen "www" yazmadan web sitenize erişmesi durumunda, joker karakter sertifikası bunu kapsamaz.
-- Kendi İmzalı sertifikalar: İstemci tarayıcılar bu sertifikalara güvenmez ve kullanıcıyı sanal hizmetin sertifikasının güven zincirinin bir parçası olmadığı konusunda uyarır. Kendi imzalı sertifikalar, yöneticilerin istemcileri denetlediği ve tarayıcının güvenlik uyarılarını güvenle atlayabildiği sınama veya ortamlar için iyidir. Üretim iş yükleri hiçbir zaman kendi imzalı sertifikalar kullanmamalıdır.
+- CA (sertifika yetkilisi) sertifikası: CA sertifikası, bir sertifika yetkilisi (CA) tarafından verilen dijital bir sertifikadır
+- EV (Genişletilmiş Doğrulama) sertifikası: EV sertifikası, sektör standardı sertifika yönergelerine uygun bir sertifikadır. Bu, tarayıcı Konumlandırıcı çubuğunun yeşil olacağını açıp şirket adını da yayımlayacak.
+- Joker karakter sertifikası: Bu sertifika, alt etki alanınızın * yerini alacak *. site.com bağlı olarak herhangi bir sayıda alt etki alanını destekler. Ancak, site.com desteği yoktur, bu nedenle kullanıcıların Web sitenize önde gelen "www" yazısı olmadan erişmesi durumunda joker karakter sertifikası bunu kapsamaz.
+- Otomatik olarak Imzalanan Sertifikalar: Istemci tarayıcıları bu sertifikalara güvenmez ve sanal hizmetin sertifikasının bir güven zincirinin parçası olmadığı konusunda kullanıcıyı uyarır. Otomatik olarak imzalanan sertifikalar, yöneticilerin istemcileri denetladığı ve tarayıcının güvenlik uyarılarını güvenle atlayabileceği test veya ortamlar için uygundur. Üretim iş yükleri hiçbir şekilde otomatik olarak imzalanan sertifikalar kullanmamalıdır.
 
-Daha fazla bilgi için [tls sonlandırmayı uygulama ağ geçidiyle yapılandırmaya](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)bakın.
+Daha fazla bilgi için bkz. [Application Gateway Ile TLS sonlandırmayı yapılandırma](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
 ### <a name="size-of-the-certificate"></a>Sertifikanın boyutu
-Desteklenen maksimum TLS/SSL sertifika boyutunu bilmek için [Uygulama Ağ Geçidi sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits) bölümünü kontrol edin.
+Desteklenen en yüksek TLS/SSL sertifika boyutunu bildirmek için [Application Gateway sınırları](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits) bölümünü denetleyin.
 
-## <a name="end-to-end-tls-encryption"></a>TLS şifrelemesi sona erecek
+## <a name="end-to-end-tls-encryption"></a>Uçtan uca TLS şifrelemesi
 
-Bazı müşteriler arka uç sunucularına şifrelenmemiş iletişim ihya etmek istemeyebilir. Bunun nedeni, güvenlik gereksinimleri, uyumluluk gereksinimleri veya uygulamanın yalnızca güvenli bağlantı kabul etmesi olabilir. Bu tür uygulamalar için uygulama ağ geçidi, TLS şifrelemesini sona erdirmeyi destekler.
+Bazı müşteriler arka uç sunucularıyla şifrelenmemiş iletişim olmayabilir. Bunun nedeni, güvenlik gereksinimleri, uyumluluk gereksinimleri veya uygulamanın yalnızca güvenli bağlantı kabul etmesi olabilir. Uygulama ağ geçidi, bu tür uygulamalarda uçtan uca TLS şifrelemesini destekler.
 
-Ucto end TLS, uygulama ağ geçidinin sağladığı Katman 7 yük dengeleme özelliklerinden yararlanırken hassas verileri şifreli arka uca güvenli bir şekilde iletmenizi sağlar. Bu özelliklerin bazıları tanımlama bilgisi temelli oturum benzeşimi, URL tabanlı yönlendirme, sitelere göre yönlendirme desteği veya X-Forwarded-* üst bilgilerini ekleyebilmedir.
+Uçtan uca TLS, önemli verileri arka uca şifrelenmiş olarak güvenli bir şekilde iletmenizi sağlarken, Application Gateway 'in sağladığı katman 7 Yük Dengeleme özelliklerinin avantajlarından faydalanarak devam edebilir. Bu özelliklerin bazıları tanımlama bilgisi temelli oturum benzeşimi, URL tabanlı yönlendirme, sitelere göre yönlendirme desteği veya X-Forwarded-* üst bilgilerini ekleyebilmedir.
 
-TlS iletişim modu uçarak yapılandırıldığında, uygulama ağ geçidi ağ geçidindeki TLS oturumlarını sonlandırır ve kullanıcı trafiğinin şifresini çözer. Ardından trafiğin yönlendirileceği uygun arka uç havuzunu seçmek için yapılandırılan kuralları uygular. Uygulama ağ geçidi daha sonra arka uç sunucusuna yeni bir TLS bağlantısı başlatır ve isteği arka uca aktarmadan önce arka uç sunucusunun ortak anahtar sertifikasını kullanarak verileri yeniden şifreler. Web sunucusundan alınan herhangi bir yanıt, son kullanıcıya dönerken aynı süreci izler. Ucto end TLS, [backend http ayarı](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) ile HTTPS'ye protokol ayarı ayarlayarak etkinleştirilir ve bu da daha sonra bir arka uç havuzuna uygulanır.
+Application Gateway, uçtan uca TLS iletişim modu ile yapılandırıldığında, ağ geçidinde TLS oturumlarını sonlandırır ve kullanıcı trafiğinin şifresini çözer. Ardından trafiğin yönlendirileceği uygun arka uç havuzunu seçmek için yapılandırılan kuralları uygular. Ardından Application Gateway, arka uç sunucusuyla yeni bir TLS bağlantısı başlatır ve isteği arka uca iletmeden önce arka uç sunucusunun ortak anahtar sertifikasını kullanarak verileri yeniden şifreler. Web sunucusundan alınan herhangi bir yanıt, son kullanıcıya dönerken aynı süreci izler. Uçtan uca TLS, [arka uç http ayarında](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) protokol ayarı https olarak ayarlanarak etkinleştirilir ve bu daha sonra arka uç havuzuna uygulanır.
 
-TLS ilkesi hem ön uç hem de arka uç trafiği için geçerlidir. Ön uçta, Application Gateway sunucu gibi davranır ve ilkeyi uygular. Arka uçta, Application Gateway istemci gibi davranır ve TLS el sıkışması sırasında tercih olarak protokol/şifre bilgilerini gönderir.
+TLS ilkesi hem ön uç hem de arka uç trafiği için geçerlidir. Ön uçta, Application Gateway sunucu olarak davranır ve ilkeyi uygular. Arka uçta Application Gateway istemci olarak davranır ve TLS el sıkışması sırasında iletişim kuralı/şifreleme bilgilerini tercih olarak gönderir.
 
-Uygulama ağ geçidi yalnızca, sertifikalarını uygulama ağ geçidiyle beyaz listeye alan veya sertifikaları CN sertifikasının HTTP arka uç ayarlarında ana bilgisayar adı ile eşleştiği tanınmış CA yetkilileri tarafından imzalanan arka uç örnekleriyle iletişim kurar. Bunlar arasında Azure App hizmeti web uygulamaları ve Azure API Yönetimi gibi güvenilir Azure hizmetleri yer almaktadır.
+Application Gateway yalnızca uygulama ağ geçidi ile sertifikası olan veya sertifikaları, sertifika CN 'nin HTTP arka uç ayarlarındaki ana bilgisayar adıyla eşleştiği bilinen CA yetkilileri tarafından imzalanmış olan arka uç örnekleriyle iletişim kurar. Bunlar Azure App Service Web Apps ve Azure API Management gibi güvenilir Azure hizmetlerini içerir.
 
-Arka uç havuzundaki üyelerin sertifikaları iyi bilinen CA yetkilileri tarafından imzalanmıyorsa, arka uç havuzunda uçtan uca TLS etkinleştirilmiş her örnek, güvenli iletişim sağlamak için bir sertifika ile yapılandırılmalıdır. Sertifikanın eklenmesi, uygulama ağ geçidinin yalnızca bilinen arka uç örnekleriyle iletişim kurmasını sağlar. Bu, uçlardan uca iletişimi daha da güvence altına alar.
-
-> [!NOTE] 
->
-> Azure App hizmeti web uygulamaları ve Azure API Yönetimi gibi güvenilir Azure hizmetleri için kimlik doğrulama sertifikası kurulumu gerekmez.
+Arka uç havuzundaki üyelerin sertifikaları iyi bilinen CA yetkilileri tarafından imzalanmamışsa, arka uç havuzundaki her bir örnek için uçtan uca TLS etkinleştirilir, güvenli iletişime izin veren bir sertifikayla yapılandırılmalıdır. Sertifikayı eklemek, Application Gateway 'in yalnızca bilinen arka uç örnekleriyle iletişim kuracağını sağlar. Bu, uçtan uca iletişimin güvenliğini sağlar.
 
 > [!NOTE] 
 >
-> Arka uç sunucularının kimliğini doğrulamak için **Backend HTTP Ayarı'na** eklenen sertifika, uygulama ağ geçidinde TLS sonlandırma için **dinleyiciye** eklenen sertifikayla aynı veya gelişmiş güvenlik için farklı olabilir.
+> Azure App Service Web Apps ve Azure API Management gibi güvenilir Azure hizmetleri için kimlik doğrulama sertifikası kurulumu gerekli değildir.
 
-![tls senaryosu nun sonuna kadar][1]
+> [!NOTE] 
+>
+> Arka uç sunucularının kimliğini doğrulamak için **arka uç http ayarına** eklenen sertifika, Application Gateway 'de TLS sonlandırma için **dinleyiciye** eklenen sertifikayla aynı veya geliştirilmiş güvenlik için farklı olabilir.
 
-Bu örnekte, TLS1.2 kullanan istekler, TLS uçuç kullanılarak Pool1'deki arka uç sunucularına yönlendirilir.
+![uçtan uca TLS senaryosu][1]
 
-## <a name="end-to-end-tls-and-whitelisting-of-certificates"></a>TLS ve sertifikaların beyaz listesi sona erecek
+Bu örnekte, TLS 1.2 kullanan istekler, uçtan uca TLS kullanılarak Pool1 içinde arka uç sunucularına yönlendirilir.
 
-Uygulama ağ geçidi, yalnızca sertifikalarını uygulama ağ geçidiyle güvenilir listeye aldırmış, bilinen arka uç örnekleriyle iletişim kurar. Sertifikaların güvenilir listeye alınmasını etkinleştirmek için, arka uç sunucusu sertifikalarının ortak anahtarlarını uygulama ağ geçidine (kök sertifika değil) yüklemeniz gerekir. Bunun ardından, yalnızca bilinen ve güvenilir listeye alınmış arka uçlara yönelik bağlantılara izin verilir. Geriye kalan arka uçlar, ağ geçidi hatasına neden olur. Otomatik olarak imzalanan sertifikalar, yalnızca test amaçlarına yöneliktir ve üretim iş yükleri için önerilmez. Bu tür sertifikalar, kullanılmadan önce önceki adımlarda açıklandığı gibi uygulama ağ geçidi ile beyaz listeye alınmalıdır.
+## <a name="end-to-end-tls-and-whitelisting-of-certificates"></a>Uçtan uca TLS ve sertifikaların beyaz listesi
+
+Uygulama ağ geçidi, yalnızca sertifikalarını uygulama ağ geçidiyle güvenilir listeye aldırmış, bilinen arka uç örnekleriyle iletişim kurar. Sertifikaların güvenilir listeye alınmasını etkinleştirmek için, arka uç sunucusu sertifikalarının ortak anahtarlarını uygulama ağ geçidine (kök sertifika değil) yüklemeniz gerekir. Bunun ardından, yalnızca bilinen ve güvenilir listeye alınmış arka uçlara yönelik bağlantılara izin verilir. Geriye kalan arka uçlar, ağ geçidi hatasına neden olur. Otomatik olarak imzalanan sertifikalar, yalnızca test amaçlarına yöneliktir ve üretim iş yükleri için önerilmez. Bu tür sertifikalar, kullanılmadan önce önceki adımlarda açıklandığı şekilde uygulama ağ geçidiyle beyaz listeye eklenmelidir.
 
 > [!NOTE]
-> Azure Uygulama Hizmeti gibi güvenilir Azure hizmetleri için kimlik doğrulama sertifikası kurulumu gerekmez.
+> Azure App Service gibi güvenilir Azure hizmetleri için kimlik doğrulama sertifikası kurulumu gerekli değildir.
 
-## <a name="end-to-end-tls-with-the-v2-sku"></a>v2 SKU ile TLS'yi sona erdirmek
+## <a name="end-to-end-tls-with-the-v2-sku"></a>V2 SKU 'SU ile uçtan uca TLS
 
-Kimlik Doğrulama Sertifikaları amortismana uymuş ve Uygulama Ağ Geçidi v2 SKU'daki Güvenilir Kök Sertifikaları ile değiştirilmiştir. Birkaç önemli farkla kimlik doğrulama sertifikalarına benzer şekilde çalışırlar:
+Kimlik doğrulama sertifikaları kullanım dışı bırakılmıştır ve Application Gateway v2 SKU 'sunda güvenilen kök sertifikalarla değiştirilmiştir. Bunlar benzer şekilde, birkaç temel farklılık ile kimlik doğrulama sertifikalarına benzer şekilde çalışır:
 
-- CN'si HTTP arka uç ayarlarındaki ana bilgisayar adı ile eşleşen tanınmış CA yetkilileri tarafından imzalanmış sertifikalar, TLS'nin sona ermesi için ek bir adım gerektirmez. 
+- HTTP arka uç ayarlarındaki ana bilgisayar adıyla eşleşen ve bilinen CA yetkilileri tarafından imzalanan sertifikaların, uçtan uca TLS 'nin çalışması için ek bir adım gerekmez. 
 
-   Örneğin, arka uç sertifikaları iyi bilinen bir CA tarafından verilmişse ve cn contoso.com varsa ve arka uç http ayarının ana bilgisayar alanı da contoso.com olarak ayarlanmışsa, ek adım gerekmez. Arka uç http ayar protokolünü HTTPS olarak ayarlayabilirsiniz ve hem sistem durumu sondası hem de veri yolu TLS etkin olacaktır. Azure Uygulama Hizmeti'ni veya diğer Azure web hizmetlerini arka uç olarak kullanıyorsanız, bunlar atüre güvenle de güvenilir ve TLS'nin sona ermesi için başka adım gerekmez.
+   Örneğin, arka uç sertifikaları tanınmış bir CA tarafından verildiyse ve bir contoso.com CN 'si varsa ve arka uç http ayarının ana bilgisayar alanı da contoso.com olarak ayarlanmışsa ek bir adım gerekmez. Arka uç http ayar protokolünü HTTPS olarak ayarlayabilirsiniz ve hem durum araştırması hem de veri yolu TLS etkin olur. Arka ucunuz olarak Azure App Service veya diğer Azure Web hizmetlerini kullanıyorsanız, bunlar da örtülü olarak güvenilirdir ve uçtan uca TLS için başka bir adım gerekmez.
    
 > [!NOTE] 
 >
-> BIR TLS/SSL sertifikasının güvenilir olması için, arka uç sunucusunun sertifikasının Application Gateway'in güvenilir deposunda bulunan bir CA tarafından verilmiş olması gerekir.Sertifika güvenilir bir CA tarafından verilmediyse, Uygulama Ağ Geçidi daha sonra, verilen CA sertifikasının güvenilir bir CA tarafından verilip verilmeyeceğini ve güvenilir bir CA bulunana (bu noktada güvenilir, güvenli bir bağlantı kurulacak) veya güvenilir bir CA bulunamayana (bu noktada Uygulama Ağ Geçidi'nin arka uç sağlıksız olarak işaretlenebileceği) olup olmadığını denetler. Bu nedenle, arka uç sunucu sertifikası hem kök hem de ara CAs içeren önerilir.
+> Bir TLS/SSL sertifikasının güvenilir olması için, arka uç sunucusunun bu sertifikasının Application Gateway güvenilen deposunda bulunan bir CA tarafından verilmiş olması gerekir. sertifika, güvenilir bir CA tarafından verilmediği zaman, Application Gateway veren CA sertifikasının güvenilen bir CA tarafından verildiğini ve bu şekilde güvenilen bir CA 'nın bulunana (güvenilen, güvenli bağlantı kurulabileceği) veya güvenilir bir CA 'nın bulununcaya kadar (Bu noktada Application Gateway arka ucunu sağlıksız olarak işaretleyecek) göz atın. Bu nedenle, arka uç sunucu sertifikasının hem kök hem de ara CA 'Ları içermesi önerilir.
 
-- Sertifika kendi kendine imzalanmışsa veya bilinmeyen aracılar tarafından imzalanmışsa, v2 SKU'da TLS'nin sona ermesini sağlamak için güvenilir bir kök sertifika tanımlanmalıdır. Uygulama Ağ Geçidi yalnızca, Sunucu sertifikasının kök sertifikası, arka uçtaki güvenilen kök sertifikaları listesindehavuzla ilişkili http ayarındaki biriyle eşleşen arka uçlarla iletişim kurar.
+- Sertifika kendinden imzalıysa veya bilinmeyen aracılar tarafından imzalanmışsa, v2 SKU 'sunda uçtan uca TLS 'yi etkinleştirmek için güvenilen bir kök sertifika tanımlanmalıdır. Application Gateway, yalnızca sunucu sertifikasının kök sertifikası, havuzla ilişkili arka uç http ayarındaki güvenilen kök sertifikalar listesinden biriyle eşleşen arka uçları ile iletişim kurar.
 
 > [!NOTE] 
 >
-> İmzalanan sertifika, sertifika zincirinin bir parçası olmalıdır. V2 SKU'da zincirsiz tek bir kendi imzalı sertifika desteklenmez.
+> Otomatik olarak imzalanan sertifika, bir Sertifika zincirinin parçası olmalıdır. V2 SKU 'sunda, zinciri olmayan tek bir otomatik olarak imzalanan sertifika desteklenmez.
 
-- Kök sertifika eşleşmesine ek olarak, Uygulama Ağ Geçidi, arka uç http ayarında belirtilen Ana Bilgisayar ayarı, arka uç sunucusunun TLS/SSL sertifikası tarafından sunulan ortak ad (CN) ile eşleşirse de doğrular. Arka uça TLS bağlantısı kurmaya çalışırken, Application Gateway sunucu adı göstergesi (SNI) uzantısını arka uç http ayarında belirtilen Ana Bilgisayar'a ayarlar.
-- Arka uç http ayarında Ana Bilgisayar alanı yerine **ana bilgisayar adı** seçilirse, SNI üstbilgisi her zaman arka uç havuzuFQDN'ye ayarlanır ve arka uç sunucusu TLS/SSL sertifikasındaki CN, FQDN ile eşleşmelidir. IP'leri olan arka uç havuz üyeleri bu senaryoda desteklenmez.
-- Kök sertifika, arka uç Sunucu sertifikalarından 64 kodlanmış bir kök sertifikadır.
+- Kök sertifika eşleştirmesinin yanı sıra Application Gateway, arka uç http ayarında belirtilen ana bilgisayar ayarının, arka uç sunucusunun TLS/SSL sertifikası tarafından sunulan ortak ad (CN) ile eşleşip eşleşmediğini da doğrular. Arka uca bir TLS bağlantısı kurmaya çalışırken Application Gateway, arka uç http ayarında belirtilen konağa Sunucu Adı Belirtme (SNı) uzantısını ayarlar.
+- Arka uç http ayarında konak alanı yerine **arka uç adresinden seçim ana bilgisayar adı** seçilirse, SNI üstbilgisi her zaman arka uç havuzu FQDN 'sine ayarlanır ve arka uç sunucusu TLS/SSL sertifikasındaki CN 'nın FQDN 'siyle eşleşmesi gerekir. Bu senaryoda, IP ile arka uç havuzu üyeleri desteklenmez.
+- Kök sertifika, arka uç sunucu sertifikalarından gelen Base64 kodlamalı bir kök sertifikadır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-TLS'nin sonuna kadar olduğunu öğrendikten sonra, [PowerShell ile Uygulama Ağ Geçidi'ni kullanarak TLS'yi](application-gateway-end-to-end-ssl-powershell.md) sonuna kadar yapılandırın.
+Uçtan uca TLS hakkında bilgi aldıktan sonra uçtan uca TLS kullanarak bir uygulama ağ geçidi oluşturmak için [PowerShell ile Application Gateway kullanarak uçtan uca TLS 'Yi yapılandırma](application-gateway-end-to-end-ssl-powershell.md) bölümüne gidin.
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: PowerShell'i kullanarak birden çok genel IP adresiyle Azure Güvenlik Duvarı'nı dağıtma
-description: Bu makalede, Azure PowerShell'i kullanarak birden çok genel IP adresine sahip bir Azure Güvenlik Duvarı'nı nasıl dağıtabileceğinizi öğreneceksiniz.
+title: PowerShell kullanarak birden çok genel IP adresi ile Azure Güvenlik Duvarı dağıtma
+description: Bu makalede, Azure PowerShell kullanarak birden çok genel IP adresi ile Azure Güvenlik Duvarı dağıtmayı öğreneceksiniz.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,29 +8,29 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.author: victorh
 ms.openlocfilehash: 21f645e64c9944ed102f538710ea6facc26c7e83
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81314025"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Azure PowerShell'i kullanarak birden çok IP adresiyle Azure Firewall dağıtma
 
-Bu özellik aşağıdaki senaryoları sağlar:
+Bu özellik aşağıdaki senaryolara izin vermez:
 
-- **DNAT** - Birden çok standart bağlantı noktası örneğini arka uç sunucularınıza çevirebilirsiniz. Örneğin, iki genel IP adresiniz varsa, her iki IP adresi için de TCP bağlantı noktası 3389'u (RDP) çevirebilirsiniz.
-- **SNAT** - Giden SNAT bağlantıları için ek bağlantı noktaları kullanılabilir ve bu da SNAT bağlantı noktası tükenmesi potansiyelini azaltır. Şu anda, Azure Güvenlik Duvarı bağlantı için kullanılacak kaynak genel IP adresini rasgele seçer. Ağınızda herhangi bir alt akış filtresi varsa, güvenlik duvarınızla ilişkili tüm genel IP adreslerine izin verebilirsiniz.
+- **DNAT** -birden çok standart bağlantı noktası örneğini arka uç sunucularınıza çevirebilirsiniz. Örneğin, iki genel IP adresiniz varsa, TCP bağlantı noktası 3389 ' ü (RDP) her iki IP adresi için de çevirebilirsiniz.
+- **SNAT** -giden SNAT bağlantıları için ek bağlantı noktaları kullanılabilir ve bu, SNAT bağlantı noktası tükenmesi potansiyelini azaltır. Azure Güvenlik Duvarı şu anda bir bağlantı için kullanılacak kaynak genel IP adresini rastgele seçer. Ağınızda herhangi bir aşağı akış filtresi varsa, güvenlik duvarınızdan ilişkili tüm genel IP adreslerine izin vermeniz gerekir.
  
-Birden çok genel IP adresine sahip Azure Güvenlik Duvarı, Azure portalı, Azure PowerShell, Azure CLI, REST ve şablonlar aracılığıyla kullanılabilir. En fazla 100 genel IP adresine sahip bir Azure Güvenlik Duvarı dağıtabilirsiniz.
+Birden çok genel IP adresine sahip Azure Güvenlik Duvarı Azure portal, Azure PowerShell, Azure CLı, REST ve şablonlar aracılığıyla kullanılabilir. Azure Güvenlik Duvarı 'Nı en fazla 100 genel IP adresi ile dağıtabilirsiniz.
 
-Aşağıdaki Azure PowerShell örnekleri, Azure Güvenlik Duvarı için genel IP adreslerini nasıl yapılandırabileceğinizi, ekleyebileceğiniz ve kaldırabileceğinizi gösterir.
+Aşağıdaki Azure PowerShell örneklerde, Azure Güvenlik Duvarı için genel IP adreslerini nasıl yapılandırabileceğiniz, ekleyebileceğiniz ve kaldırabilmeniz gösterilmektedir.
 
 > [!NOTE]
-> Azure Güvenlik Duvarı genel IP adresi yapılandırma sayfasından ilk ipConfiguration'ı kaldıramazsınız. IP adresini değiştirmek istiyorsanız Azure PowerShell'i kullanabilirsiniz.
+> İlk IP adresini Azure Güvenlik Duvarı genel IP adresi yapılandırması sayfasından kaldıramazsınız. IP adresini değiştirmek istiyorsanız Azure PowerShell kullanabilirsiniz.
 
-## <a name="create-a-firewall-with-two-or-more-public-ip-addresses"></a>İki veya daha fazla genel IP adresiyle bir güvenlik duvarı oluşturma
+## <a name="create-a-firewall-with-two-or-more-public-ip-addresses"></a>İki veya daha fazla genel IP adresi ile bir güvenlik duvarı oluşturun
 
-Bu örnek, iki genel IP adresine sahip sanal ağ *vnet'ine* bağlı bir güvenlik duvarı oluşturur.
+Bu örnek, iki genel IP adresi ile sanal ağ *VNET* 'e eklenmiş bir güvenlik duvarı oluşturur.
 
 ```azurepowershell
 $rgName = "resourceGroupName"
@@ -61,9 +61,9 @@ New-AzFirewall `
   -PublicIpAddress @($pip1, $pip2)
 ```
 
-## <a name="add-a-public-ip-address-to-an-existing-firewall"></a>Varolan bir güvenlik duvarına genel IP adresi ekleme
+## <a name="add-a-public-ip-address-to-an-existing-firewall"></a>Mevcut bir güvenlik duvarına genel IP adresi ekleme
 
-Bu örnekte, genel IP adresi *azFwPublicIp1* güvenlik duvarına eklenir.
+Bu örnekte, *azFwPublicIp1* genel IP adresi güvenlik duvarına iliştirilir.
 
 ```azurepowershell
 $pip = New-AzPublicIpAddress `
@@ -82,9 +82,9 @@ $azFw.AddPublicIpAddress($pip)
 $azFw | Set-AzFirewall
 ```
 
-## <a name="remove-a-public-ip-address-from-an-existing-firewall"></a>Genel BIR IP adresini varolan bir güvenlik duvarından kaldırma
+## <a name="remove-a-public-ip-address-from-an-existing-firewall"></a>Mevcut bir güvenlik duvarındaki genel IP adresini kaldırma
 
-Bu örnekte, genel IP adresi *azFwPublicIp1* güvenlik duvarından ayrılmıştır.
+Bu örnekte, *azFwPublicIp1* genel IP adresi güvenlik duvarından ayrılır.
 
 ```azurepowershell
 $pip = Get-AzPublicIpAddress `
@@ -102,4 +102,4 @@ $azFw | Set-AzFirewall
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hızlı başlangıç: Birden çok genel IP adresiyle bir Azure Güvenlik Duvarı oluşturma - Kaynak Yöneticisi şablonu](quick-create-multiple-ip-template.md)
+* [Hızlı başlangıç: birden çok genel IP adresi ile Azure Güvenlik Duvarı oluşturma-Kaynak Yöneticisi şablonu](quick-create-multiple-ip-template.md)

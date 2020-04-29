@@ -1,6 +1,6 @@
 ---
-title: Azure Web Uygulaması Güvenlik Duvarı - Sık Sorulan Sorular
-description: Bu makalede, Azure Ön Kapı'da Web Uygulaması Güvenlik Duvarı hakkında sık sorulan soruların yanıtlarını sağlar
+title: Azure Web uygulaması güvenlik duvarı-sık sorulan sorular
+description: Bu makale, Azure ön kapısının Web uygulaması güvenlik duvarı hakkında sık sorulan soruların yanıtlarını sağlar
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -9,72 +9,72 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: victorh
 ms.openlocfilehash: fefbb038cec0c061f1fd191a77164880372555a0
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81314316"
 ---
-# <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure Ön Kapı Hizmetinde Azure Web Uygulaması Güvenlik Duvarı için sık sorulan sorular
+# <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure ön kapı hizmeti 'nde Azure Web uygulaması güvenlik duvarı hakkında sık sorulan sorular
 
-Bu makalede, Azure web uygulaması güvenlik duvarı (WAF) özellikleri ve işlevleri yle ilgili sık sorulan sorular yanıtlanmaktadır. 
+Bu makalede, Azure Web uygulaması güvenlik duvarı (WAF) özellikleri ve işlevleri hakkında sık sorulan sorular yanıtlanmaktadır. 
 
 ## <a name="what-is-azure-waf"></a>Azure WAF nedir?
 
-Azure WAF, web uygulamalarınızı SQL enjeksiyonu, site ler arası komut dosyası uygulama ve diğer web açıkları gibi yaygın tehditlere karşı korumaya yardımcı olan bir web uygulaması güvenlik duvarıdır. Web uygulamalarınıza erişimi denetlemek için özel ve yönetilen kuralların bir birleşiminden oluşan bir WAF ilkesi tanımlayabilirsiniz.
+Azure WAF, Web uygulamalarınızı SQL ekleme, siteler arası komut dosyası oluşturma ve diğer web siteleri gibi yaygın tehditlere karşı korumanıza yardımcı olan bir Web uygulaması güvenlik duvarıdır. Web uygulamalarınıza erişimi denetlemek için özel ve yönetilen kuralların birleşiminden oluşan bir WAF ilkesi tanımlayabilirsiniz.
 
-Uygulama Ağ Geçidi'nde veya Azure Ön Kapılar'da barındırılan web uygulamalarına Azure WAF ilkesi uygulanabilir.
+Azure WAF ilkesi, Application Gateway veya Azure ön kapılarında barındırılan Web uygulamalarına uygulanabilir.
 
-## <a name="what-is-waf-on-azure-front-door"></a>Azure Ön Kapı'da WAF nedir? 
+## <a name="what-is-waf-on-azure-front-door"></a>Azure ön kapıda WAF nedir? 
 
-Azure Ön Kapı, son derece ölçeklenebilir, küresel olarak dağıtılmış bir uygulama ve içerik dağıtım ağıdır. Azure WAF, Ön Kapı ile entegre edildiğinde, hizmet reddi ve hedeflenen uygulama saldırılarını Azure ağ kenarında durdurur, sanal ağınıza girmeden önce saldırı kaynaklarına yakın olur, performanstan ödün vermeden koruma sağlar.
+Azure ön kapısı, yüksek düzeyde ölçeklenebilir, global olarak dağıtılmış bir uygulama ve içerik teslim ağı. Azure WAF, ön kapıya tümleştirildiğinde hizmet reddi ve hedeflenen uygulama saldırılarını, Sanal ağınızı girmeden önce, saldırı kaynaklarına yakın bir şekilde kapatır ve performanstan ödün vermeden koruma sunar.
 
-## <a name="does-azure-waf-support-https"></a>Azure WAF HTTPS'yi destekliyor mu?
+## <a name="does-azure-waf-support-https"></a>Azure WAF, HTTPS 'yi destekliyor mu?
 
-Ön Kapı TLS boşaltma sunuyor. WAF, Front Door ile yerel olarak entegre edilmiştir ve bir isteği şifresi çözüldükten sonra inceleyebilir.
+Ön kapı, TLS boşaltma sağlar. WAF, ön kapıya yerel olarak tümleşiktir ve şifresi çözüledikten sonra bir isteği inceleyebilir.
 
-## <a name="does-azure-waf-support-ipv6"></a>Azure WAF IPv6'yı destekliyor mu?
+## <a name="does-azure-waf-support-ipv6"></a>Azure WAF, IPv6 'Yı destekliyor mu?
 
 Evet. IPv4 ve IPv6 için IP kısıtlaması yapılandırabilirsiniz.
 
-## <a name="how-up-to-date-are-the-managed-rule-sets"></a>Yönetilen kural kümeleri ne kadar güncel?
+## <a name="how-up-to-date-are-the-managed-rule-sets"></a>Yönetilen kural kümeleri güncel değil mi?
 
-Değişen tehdit ortamına ayak uydurmak için elimizden geleni yapıyoruz. Yeni bir kural güncelleştirildikten sonra, yeni bir sürüm numarasıyla Varsayılan Kural Kümesi'ne eklenir.
+Tehdit Yatayı değiştirmekle en iyi şekilde haberdar ediyoruz. Yeni bir kural güncelleştirildikten sonra, varsayılan kural kümesine yeni bir sürüm numarasıyla eklenir.
 
-## <a name="what-is-the-propagation-time-if-i-make-a-change-to-my-waf-policy"></a>WAF politikamda değişiklik yaparsam yayılma süresi nedir?
+## <a name="what-is-the-propagation-time-if-i-make-a-change-to-my-waf-policy"></a>WAF ilkenizde bir değişiklik yaptım zaman yayma süresi nedir?
 
-Bir WAF ilkesinin küresel olarak dağıtılması genellikle yaklaşık 5 dakika sürer ve genellikle daha erken tamamlar.
+Bir WAF ilkesini küresel olarak dağıtmak yaklaşık 5 dakika sürer ve genellikle daha erken tamamlanır.
 
 ## <a name="can-waf-policies-be-different-for-different-regions"></a>WAF ilkeleri farklı bölgeler için farklı olabilir mi?
 
-Front Door ile entegre edildiğinde, WAF küresel bir kaynaktır. Aynı yapılandırma tüm Ön Kapı konumlarında geçerlidir.
+Ön kapıda tümleştirildiğinde WAF genel bir kaynaktır. Tüm ön kapı konumlarında aynı yapılandırma geçerlidir.
  
-## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>Arka ucuma erişimi yalnızca Ön Kapı'dan olmak için nasıl sınırlandırebilirim?
+## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>Nasıl yaparım? arka uca erişimi yalnızca ön kapıdan olacak şekilde sınırlayın mi?
 
-IP Erişim Kontrol Listesi'ni arka uçunuzda, yalnızca Ön Kapı giden IP adresi aralıklarına izin vermek ve Internet'ten doğrudan erişimi reddetmek için yapılandırabilirsiniz. Hizmet etiketleri, sanal ağınızda kullanmanız için desteklenir. Ayrıca, X-Forwarded-Host HTTP üstbilgi alanının web uygulamanız için geçerli olduğunu da doğrulayabilirsiniz.
+Arka uçınızdan IP Access Control listesini, yalnızca ön kapı giden IP adresi aralıklarına izin vermek ve Internet 'ten doğrudan erişimi reddetmek için yapılandırabilirsiniz. Sanal ağınızda kullanabilmeniz için hizmet etiketleri desteklenir. Ayrıca, X ile Iletilen ana bilgisayar HTTP üst bilgisi alanının Web uygulamanız için geçerli olduğunu doğrulayabilirsiniz.
 
-## <a name="which-azure-waf-options-should-i-choose"></a>Hangi Azure WAF seçeneklerini seçmeliyim?
+## <a name="which-azure-waf-options-should-i-choose"></a>Hangi Azure WAF seçeneklerini seçmem gerekir?
 
-Azure'da WAF ilkeleri uygularken iki seçenek vardır. Azure Ön Kapılı WAF, dünya çapında dağıtılan, kenar güvenlik çözümüdür. Waf uygulama ağ geçidi ile bölgesel, özel bir çözümdür. Genel performans ve güvenlik gereksinimlerinize göre bir çözüm seçmenizi öneririz. Daha fazla bilgi için [Azure'un uygulama teslim paketiyle Yük dengeleme'ye](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite)bakın.
+Azure 'da WAF İlkeleri uygulanırken iki seçenek vardır. Azure ön kapısına sahip WAF, küresel olarak dağıtılmış bir uç güvenlik çözümüdür. Application Gateway ile WAF, bölgesel ve adanmış bir çözümdür. Genel performans ve güvenlik gereksinimlerinize göre bir çözüm seçmenizi öneririz. Daha fazla bilgi için bkz. [Azure 'un uygulama teslim paketiyle Yük Dengeleme](https://docs.microsoft.com/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite).
 
 
-## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>Tüm entegre platformlarda aynı WAF özelliklerini destekliyor musunuz?
+## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>Tümleştirilen tüm platformlarda aynı WAF özelliklerini destekliyor musunuz?
 
-Şu anda, ModSec CRS 2.2.9, CRS 3.0 ve CRS 3.1 kuralları yalnızca Uygulama Ağ Geçidi'ndeki WAF ile desteklenir. Hız sınırlayıcı, coğrafi filtreleme ve Azure yönetilen Varsayılan Kural Kümesi kuralları yalnızca Azure Ön Kapı'daki WAF ile desteklenir.
+Şu anda ModSec sp_configure 2.2.9, sp_configure 3,0 ve yukarı 3,1 kuralları yalnızca Application Gateway WAF ile desteklenir. Hız sınırlaması, coğrafi filtreleme ve Azure tarafından yönetilen varsayılan kural kümesi kuralları yalnızca Azure ön kapıda WAF ile desteklenir.
 
-## <a name="is-ddos-protection-integrated-with-front-door"></a>DDoS koruması Ön Kapı ile entegre midir? 
+## <a name="is-ddos-protection-integrated-with-front-door"></a>DDoS koruması ön kapıla tümleşiktir mı? 
 
-Azure ağ kenarlarında genel olarak dağıtılan Azure Ön Kapı, büyük hacimli saldırıları emebilir ve coğrafi olarak yalıtabilir. İmzaları bilinen http(ler) saldırılarını otomatik olarak engellemek ve sınırlamak için özel WAF ilkesi oluşturabilirsiniz. Dahası, arka uçlarınızın dağıtıldığı VNet'te DDoS Koruma Standardını etkinleştirebilirsiniz. Azure DDoS Koruma Standardı müşterileri, bir saldırı sırasında anında yardım almak için maliyet koruması, SLA garantisi ve DDoS Hızlı Müdahale Ekibi'nden uzmanlara erişim gibi ek avantajlardan yararlanır.
+Azure ağ kenarlarında küresel olarak dağıtılan Azure ön kapısı, büyük hacimli saldırıları artışlarını devralarak ve coğrafi olarak yalıtabilir. Bilinen imzaları olan http (ler) saldırılarını otomatik olarak engellemek ve derecelendirmek için özel WAF ilkesi oluşturabilirsiniz. Daha fazla bilgi için arka uçlarınızın dağıtıldığı VNet üzerinde DDoS koruma standardını etkinleştirebilirsiniz. Azure DDoS koruması standart müşterileri, bir saldırı sırasında anında yardım almak için maliyet koruması, SLA garantisi ve DDoS hızlı yanıt ekibinden uzmanlara erişim gibi ek avantajlar sağlar.
 
-## <a name="why-do-additional-requests-above-the-threshold-configured-for-my-rate-limit-rule-get-passed-to-my-backend-server"></a>Neden oran sınırı kuralım için yapılandırılan eşiğin üzerindeki ek istekler arka uç sunucuma geçirilir?
+## <a name="why-do-additional-requests-above-the-threshold-configured-for-my-rate-limit-rule-get-passed-to-my-backend-server"></a>Hız sınırı kuralı için yapılandırılan eşiğin üzerinde neden ek istekler, arka uç sunucuma geçirilir?
 
-Bir oran sınırı kuralı herhangi bir istemci IP adresinden anormal yüksek trafik sınırlayabilir. Bir dakika veya beş dakikalık bir süre boyunca istemci IP adresinden izin verilen web isteklerinin sayısına bir eşik göre yapılandırabilirsiniz. Parçalı hız denetimi için, hız sınırlaması HTTP(S) parametre eşleştirmegibi ek eşleşme koşullarıyla birleştirilebilir. 
+Bir hız sınırı kuralı, anormal yüksek trafiği herhangi bir istemci IP adresinden sınırlayabilir. Bir dakikalık veya beş dakikalık bir süre boyunca istemci IP adresinden izin verilen Web isteği sayısında bir eşik yapılandırabilirsiniz. Ayrıntılı hız denetimi için, hız sınırlaması, HTTP (S) parametre eşleşmesi gibi ek eşleşme koşullarıyla birleştirilebilir. 
 
-Aynı istemciden gelen istekler genellikle aynı Ön Kapı sunucusuna ulaşır. Bu durumda, eşiğin üzerindeki ek isteklerin hemen engellendiğini görürsünüz. 
+Aynı istemciden gelen istekler genellikle aynı ön kapı sunucusuna ulaşır. Bu durumda, eşiğin üzerindeki ek isteklerin hemen engellendiğini görürsünüz. 
 
-Ancak, aynı istemciden gelen isteklerin, fiyat sınırı sayacını henüz yenilememiş farklı bir Ön Kapı sunucusuna ulaşması mümkündür. Örneğin, istemci her istek için yeni bir bağlantı açabilir ve eşik düşüktür. Bu durumda, yeni Ön Kapı sunucusuna ilk istek oran sınırı denetimi nden geçer. Bir oran sınırı eşiği genellikle herhangi bir istemci IP adresinden hizmet reddi saldırılarına karşı savunmak için yüksek ayarlanır. Çok düşük bir eşik için, eşiğin üzerinde ek isteklerin geçtiğini görebilirsiniz.
+Ancak, aynı istemciden gelen istekler, henüz hız limiti sayacını yenilemeyen farklı bir ön kapıya sahip sunucuya gelebilir. Örneğin, istemci her istek için yeni bir bağlantı açabilir ve eşik düşüktür. Bu durumda, yeni ön kapı sunucusuna yapılan ilk istek hız limiti denetimini geçiyordu. Bir hız sınırı eşiği, genellikle herhangi bir istemci IP adresinden hizmet reddi saldırılarına karşı savunacak şekilde ayarlanır. Çok düşük bir eşik için, eşiğin üzerindeki ek istekleri daha fazla bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure [Web Uygulaması Güvenlik Duvarı](../overview.md)hakkında bilgi edinin.
-- [Azure Ön Kapı](../../frontdoor/front-door-overview.md)hakkında daha fazla bilgi edinin.
+- [Azure Web uygulaması güvenlik duvarı](../overview.md)hakkında bilgi edinin.
+- [Azure ön kapısı](../../frontdoor/front-door-overview.md)hakkında daha fazla bilgi edinin.
