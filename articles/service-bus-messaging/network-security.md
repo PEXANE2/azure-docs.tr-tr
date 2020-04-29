@@ -1,6 +1,6 @@
 ---
-title: Azure Servis Veri Servisi için ağ güvenliği
-description: Bu makalede, hizmet etiketleri, IP güvenlik duvarı kuralları, hizmet bitiş noktaları ve özel uç noktaları gibi ağ güvenliği özellikleri açıklanmaktadır.
+title: Azure Service Bus için ağ güvenliği
+description: Bu makalede hizmet etiketleri, IP güvenlik duvarı kuralları, hizmet uç noktaları ve özel uç noktalar gibi ağ güvenlik özellikleri açıklanmaktadır.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -13,90 +13,90 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: aschhab
 ms.openlocfilehash: 95f8c2a3b47b59bab7df909be43dacdb1f9c58f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79479286"
 ---
-# <a name="network-security-for-azure-service-bus"></a>Azure Servis Veri Servisi için ağ güvenliği 
-Bu makalede, Azure Hizmet Veri Servisi ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
+# <a name="network-security-for-azure-service-bus"></a>Azure Service Bus için ağ güvenliği 
+Bu makalede, Azure Service Bus ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
 
 - Hizmet etiketleri
-- IP Güvenlik Duvarı kuralları
-- Ağ hizmeti uç noktaları
-- Özel uç noktalar (önizleme)
+- IP güvenlik duvarı kuralları
+- Ağ Hizmeti uç noktaları
+- Özel uç noktalar (Önizleme)
 
 
 ## <a name="service-tags"></a>Hizmet etiketleri
-Hizmet etiketi, belirli bir Azure hizmetinin IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketinin kapsadığı adres önekleri yönetir ve adresler değiştikçe servis etiketini otomatik olarak günceller ve sık sık ağ güvenliği kurallarına yönelik güncelleştirmelerin karmaşıklığını en aza indirir. Hizmet etiketleri hakkında daha fazla bilgi için [Hizmet etiketleriyle ilgili genel bakış](../virtual-network/service-tags-overview.md)adabakın.
+Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve ağ güvenlik kuralları için sık sık güncelleştirmelerin karmaşıklığını en aza indirir. Hizmet etiketleri hakkında daha fazla bilgi için bkz. [hizmet etiketlerine genel bakış](../virtual-network/service-tags-overview.md).
 
-[Ağ güvenlik gruplarında](../virtual-network/security-overview.md#security-rules) veya [Azure Güvenlik Duvarı'nda](../firewall/service-tags.md)ağ erişim denetimlerini tanımlamak için hizmet etiketlerini kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adresleri yerine hizmet etiketlerini kullanın. Bir kuralın uygun *kaynak* veya *hedef* alanında servis etiketi adını (örneğin **ServiceBus)** belirterek, ilgili hizmetin trafiğine izin verebilir veya reddedebilirsiniz.
+[Ağ güvenlik gruplarında](../virtual-network/security-overview.md#security-rules) veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanın. Bir kuralın uygun *kaynak* veya *hedef* alanındaki hizmet etiketi adını (örneğin, **ServiceBus**) belirterek, karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz.
 
-| Hizmet etiketi | Amaç | Gelen veya giden kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir misiniz? |
+| Hizmet etiketi | Amaç | Gelen veya giden trafiği kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir mi? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ServiceBus** | Premium hizmet katmanını kullanan Azure Servis Veri Servisi trafiği. | Giden | Evet | Evet |
+| **ServiceBus** | Premium hizmet katmanını kullanan trafiği Azure Service Bus. | Giden | Yes | Yes |
 
 
 ## <a name="ip-firewall"></a>IP güvenlik duvarı 
-Varsayılan olarak, Hizmet Veri Servisi ad alanlarına, istek geçerli kimlik doğrulama ve yetkilendirmeyle birlikte geldiği sürece internetten erişilebilir. IP güvenlik duvarı ile, [cidr (Classless Etki Alanı Yönlendirmesi)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir iPv4 adresi kümesi veya IPv4 adres aralıklarıyla daha da kısıtlayabilirsiniz.
+Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, Service Bus ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir dizi IPv4 adresi veya IPv4 adres aralığı ile sınırlayabilirsiniz.
 
-Bu özellik, Azure Servis Veri Tos'unyalnızca belirli tanınmış sitelerden erişilmesi gereken senaryolarda yararlıdır. Güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, Hizmet Veri Yolu'nun [Azure Ekspres Rotası][ekspres rotası] ile kullanılması durumunda, yalnızca şirket içi altyapı IP adreslerinizden veya kurumsal bir NAT ağ geçidinin adreslerinden gelen trafiğe izin vermek için bir **güvenlik duvarı kuralı** oluşturabilirsiniz. 
+Bu özellik, Azure Service Bus yalnızca belirli bilinen sitelerden erişilebilir olması gereken senaryolarda yararlıdır. Güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, [Azure Express Route] [Express-Route] ile Service Bus kullanırsanız, yalnızca şirket içi altyapı IP adreslerinizin veya bir kurumsal NAT ağ geçidinin adreslerinden gelen trafiğe izin vermek için bir **güvenlik duvarı kuralı** oluşturabilirsiniz. 
 
-IP güvenlik duvarı kuralları Hizmet Veri Servisi ad alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokol kullanarak istemcilerden gelen tüm bağlantılar için geçerlidir. Hizmet Veri Gönderisi ad alanında izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimi yetkisiz olarak reddedilir. Yanıtta IP kuralından bahsedilmez. Sırayla IP filtresi kuralları uygulanır ve IP adresiyle eşleşen ilk kural kabul veya reddetme eylemini belirler.
+IP güvenlik duvarı kuralları Service Bus ad alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokolü kullanarak istemcilerden gelen tüm bağlantılara uygulanır. Service Bus ad alanındaki izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimleri yetkisiz olarak reddedilir. Yanıt, IP kuralından bahsetmiyor. IP filtresi kuralları sırasıyla uygulanır ve IP adresiyle eşleşen ilk kural kabul etme veya reddetme eylemini belirler.
 
-Daha fazla bilgi için, [Hizmet Veri Servisi ad alanı için IP güvenlik duvarını nasıl yapılandırabilirsiniz](service-bus-ip-filtering.md)
+Daha fazla bilgi için bkz. [Service Bus ad alanı IÇIN IP güvenlik duvarını yapılandırma](service-bus-ip-filtering.md)
 
-## <a name="network-service-endpoints"></a>Ağ hizmeti uç noktaları
-Servis Veri Yolu'nun [Sanal Ağ (VNet) hizmet bitiş noktalarıyla](service-bus-service-endpoints.md) tümleştirilmesi, sanal ağlara bağlı sanal makineler gibi iş yüklerinden mesajlaşma yeteneklerine güvenli erişim sağlar ve ağ trafik yolu her iki uçta da güvenli hale gelir.
+## <a name="network-service-endpoints"></a>Ağ Hizmeti uç noktaları
+[Sanal ağ (VNet) hizmet uç noktaları](service-bus-service-endpoints.md) ile Service Bus tümleştirmesi, sanal ağlara bağlı sanal makineler gibi iş yüklerinden, her iki uçta da güvenli hale getirilen ağ trafiği yolu ile güvenli erişim sağlar.
 
-En az bir sanal ağ altağ hizmeti bitiş noktasına bağlanacak şekilde yapılandırıldıktan sonra, ilgili Servis Veri Aracı ad alanı artık herhangi bir yerden değil, yetkili sanal ağ(lar) trafiğini kabul eder. Sanal ağ açısından bakıldığında, Hizmet Veri Sitesi ad alanını hizmet bitiş noktasına bağlama, sanal ağ alt ağından mesajlaşma hizmetine yalıtılmış bir ağ tünelini yapılandırır.
+En az bir sanal ağ alt ağ hizmeti uç noktasına bağlanacak şekilde yapılandırıldıktan sonra, ilgili Service Bus ad alanı artık herhangi bir yerden trafiği kabul etmez, ancak yetkilendirilmiş sanal ağ (ler) i. Sanal ağ perspektifinden bir Service Bus ad alanını bir hizmet uç noktasına bağlamak, sanal ağ alt ağından mesajlaşma hizmetine yalıtılmış bir ağ tüneli yapılandırır.
 
-Sonuç, ileti hizmeti bitiş noktasının genel BIR IP aralığında olmasına rağmen, alt ağa bağlı iş yükleri ile ilgili Service Bus ad alanı arasındaki özel ve yalıtılmış bir ilişkidir.
+Sonuç olarak, alt ağa ve ilgili Service Bus ad alanıyla ilişkili olan iş yükleri arasında özel ve yalıtılmış bir ilişki vardır. Bu, bir genel IP aralığında yer alan mesajlaşma hizmeti uç noktasının observable ağ adresi artma.
 
 > [!IMPORTANT]
-> Sanal Ağlar yalnızca [Premium katman](service-bus-premium-messaging.md) Hizmet Veri Günü ad alanlarında desteklenir.
+> Sanal ağlar yalnızca [Premium katmanda](service-bus-premium-messaging.md) Service Bus ad alanlarında desteklenir.
 > 
-> Servis Veri Servisi ile VNet hizmet bitiş noktalarını kullanırken, Standart ve Premium katman Hizmet Veri Mes'ü ad alanlarını karıştıran uygulamalarda bu uç noktaları etkinleştirmemelisiniz. Standart katman VNet'leri desteklemediği için. Bitiş noktası yalnızca Premium katman ad alanlarıyla sınırlıdır.
+> VNet hizmet uç noktalarını Service Bus kullanılırken, standart ve Premium katman Service Bus ad alanlarını karıştıran uygulamalarda bu uç noktaları etkinleştirmemelisiniz. Standart katman VNET 'leri desteklemediğinden. Uç nokta yalnızca Premium katman ad alanları ile kısıtlıdır.
 
 ### <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet tümleştirmesi tarafından etkinleştirilen gelişmiş güvenlik senaryoları 
 
-Sıkı ve bölümlere ayrılmış güvenlik gerektiren ve sanal ağ alt ağlarının bölümlere ayrılmış hizmetler arasındaki segmentasyonu sağladığı çözümler, genellikle bu bölmelerde bulunan hizmetler arasında genellikle iletişim yolları gerektirir.
+Sıkı ve compartmenbir güvenlik gerektiren ve sanal ağ alt ağlarının, compartmenhizmeti arasında segmentleme sağladığı çözümler, genellikle bu bölmeleri bulunan hizmetler arasında iletişim yollarına gerek duyar.
 
-TCP/IP üzerinden HTTPS taşıyanlar da dahil olmak üzere bölmeler arasındaki herhangi bir anlık IP rotası, ağ katmanındaki güvenlik açıklarından yararlanma riski taşır. Mesajlaşma hizmetleri, iletilerin taraflar arasında geçiş sırasında diske bile yazıldığı tamamen yalıtımlı iletişim yolları sağlar. Her ikisi de aynı Hizmet Veri Yolu örneğine bağlı olan iki farklı sanal ağdaki iş yükleri, iletiler aracılığıyla verimli ve güvenilir bir şekilde iletişim kurabilir ve ilgili ağ yalıtımsınır bütünlüğü korunur.
+TCP/IP üzerinden HTTPS 'yi yürüten bu dahil olmak üzere, bölmeleri arasındaki tüm anında IP rotası, üzerindeki ağ katmanından güvenlik açıklarına karşı yararlanma riskini taşır. Mesajlaşma Hizmetleri, iletiler, taraflar arasında geçiş yaparken iletilerin diske yazıldığı, tamamen yalıtılmış iletişim yolları sağlar. Aynı Service Bus örneğine bağlanan iki ayrı sanal ağdaki iş yükleri iletiler aracılığıyla verimli ve güvenilir bir şekilde iletişim kurabilir, ancak ilgili ağ yalıtımı sınır bütünlüğü korunur.
  
-Bu, güvenliğe duyarlı bulut çözümlerinizin yalnızca Azure endüstri lideri güvenilir ve ölçeklenebilir eşzamanlı mesajlaşma özelliklerine erişmedikleri, aynı zamanda artık mesajlaşmayı güvenli çözüm bölmeleri arasında iletişim yolları oluşturmak için kullanabileceği anlamına gelir. HTTPS ve diğer TLS güvenlikli soket protokolleri de dahil olmak üzere eşler arası iletişim moduyla ulaşılabileceklerden daha güvenlidir.
+Bu, güvenlik duyarlı bulut çözümlerinizin yalnızca Azure sektör lideri güvenilir ve ölçeklenebilir zaman uyumsuz mesajlaşma özelliklerine erişim elde edemeyeceği anlamına gelir, ancak artık HTTPS ve diğer TLS güvenlikli yuva protokolleri de dahil olmak üzere herhangi bir eşler arası iletişim moduyla ulaşılabilir 'dan daha güvenli olan güvenli çözüm bölmeleri arasında iletişim yolları oluşturmak için mesajlaşma kullanabilir.
 
-### <a name="bind-service-bus-to-virtual-networks"></a>Servis Veri Toplarını Sanal Ağlara Bağlama
+### <a name="bind-service-bus-to-virtual-networks"></a>Service Bus sanal ağlara bağlama
 
-*Sanal ağ kuralları,* Azure Hizmet Veri Servisi sunucunuzun belirli bir sanal ağ alt ağından bağlantıları kabul edip etmediğini kontrol eden güvenlik duvarı güvenlik özelliğidir.
+*Sanal ağ kuralları* , Azure Service Bus sunucunuzun belirli bir sanal ağ alt ağından gelen bağlantıları kabul edip etmediğini denetleyen güvenlik duvarı güvenlik özelliğidir.
 
-Hizmet Veri Sitesi ad alanını sanal ağa bağlamaiki aşamalı bir işlemdir. Öncelikle bir Sanal **Ağ** alt ağında bir Sanal Ağ hizmet bitiş noktası oluşturmanız ve hizmet bitiş noktasına genel [bakışta](service-bus-service-endpoints.md)açıklandığı gibi **Microsoft.ServiceBus** için etkinleştirmeniz gerekir. Hizmet bitiş noktasını ekledikten sonra, Servis Veri Sitesi ad alanını **sanal ağ kuralıyla**ona bağlarsınız.
+Bir Service Bus ad alanını bir sanal ağa bağlamak iki adımlı bir işlemdir. Önce bir sanal ağ alt ağında bir **sanal ağ hizmeti uç noktası** oluşturmanız ve [hizmet uç noktasına genel bakış](service-bus-service-endpoints.md)bölümünde açıklandığı gibi **Microsoft. ServiceBus** için etkinleştirmeniz gerekir. Hizmet uç noktasını ekledikten sonra, Service Bus ad alanını bir **sanal ağ kuralıyla**bağlayın.
 
-Sanal ağ kuralı, Hizmet Veri Mesle'nin ad alanının sanal ağ alt ağıyla ilişkisidir. Kural olsa da, alt ağa bağlı tüm iş yüklerine Hizmet Veri Yolundan ad alanına erişim izni verilir. Service Bus'un kendisi hiçbir zaman giden bağlantılar kurmaz, erişim sağlaması gerekmez ve bu nedenle bu kuralı etkinleştirerek alt ağınıza erişim izni verilmez.
+Sanal ağ kuralı, bir sanal ağ alt ağıyla Service Bus ad alanının bir ilişkidir. Kural var olsa da, alt ağa erişen tüm iş yükleri Service Bus ad alanına erişim izni verilir. Service Bus kendisi hiçbir şekilde giden bağlantı oluşturmaz, erişim elde etmek zorunda değildir ve bu nedenle bu kuralı etkinleştirerek alt ağınız için hiçbir şekilde erişim izni verilmez.
 
-Daha fazla bilgi için, [Hizmet Veri Sitesi ad alanı için sanal ağ hizmeti bitiş noktalarını nasıl yapılandırabilirsiniz](service-bus-service-endpoints.md)
+Daha fazla bilgi için bkz. [Service Bus ad alanı için sanal ağ hizmet uç noktalarını yapılandırma](service-bus-service-endpoints.md)
 
 ## <a name="private-endpoints"></a>Özel uç noktalar
 
-Azure Özel Bağlantı Hizmeti, Azure hizmetlerine (örneğin, Azure Servis Veri Mes'i, Azure Cosmos Depolama ve Azure Cosmos DB) ve Azure barındırılan müşteri/iş ortağı hizmetlerine sanal **ağınızdaki özel** bir bitiş noktası üzerinden erişmenizi sağlar.
+Azure özel bağlantı hizmeti, Azure hizmetlerine (örneğin, Azure Service Bus, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki **özel bir uç nokta** üzerinden erişmenizi sağlar.
 
-Özel bitiş noktası, sizi Azure Özel Bağlantısı ile çalışan bir hizmete özel ve güvenli bir şekilde bağlayan bir ağ arabirimidir. Özel bitiş noktası, VNet'inizden gelen özel bir IP adresini kullanır ve hizmeti VNet'inize etkin bir şekilde getirir. Hizmete giden tüm trafik özel bitiş noktasından yönlendirilebilir, bu nedenle ağ geçidi, NAT aygıtları, ExpressRoute veya VPN bağlantıları veya genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağıörneğine bağlanarak erişim denetiminde en yüksek parçalılık düzeyini sağlayabilirsiniz.
+Özel uç nokta, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmete giden tüm trafik özel uç nokta aracılığıyla yönlendirilebilir, bu nedenle ağ geçitleri, NAT cihazları, ExpressRoute veya VPN bağlantıları ya da genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağı örneğine bağlanarak, erişim denetimi için en yüksek düzeyde ayrıntı düzeyi sağlayabilirsiniz.
 
-Daha fazla bilgi için Azure [Özel Bağlantı nedir?](../private-link/private-link-overview.md)
+Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/private-link-overview.md)
 
 > [!NOTE]
-> Bu özellik, Azure Hizmet Veri Servisi'nin **birinci sınıf** katmanıyla desteklenir. Premium katman hakkında daha fazla bilgi için [Service Bus Premium ve Standart mesajlaşma katmanları](service-bus-premium-messaging.md) makalesine bakın.
+> Bu özellik, Azure Service Bus **Premium** katmanıyla desteklenir. Premium katmanı hakkında daha fazla bilgi için, [Service Bus Premium ve standart mesajlaşma katmanları](service-bus-premium-messaging.md) makalesine bakın.
 >
-> Bu özellik şu anda **önizlemede.** 
+> Bu özellik şu anda **Önizleme**aşamasındadır. 
 
 
-Daha fazla bilgi için, [Hizmet Veri Aracı ad alanı için özel uç noktaları nasıl yapılandırılabilirsiniz](private-link-service.md)
+Daha fazla bilgi için bkz. [Service Bus ad alanı için özel uç noktaları yapılandırma](private-link-service.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
-- [Hizmet Veri Sesi ad alanı için IP güvenlik duvarı nasıl yapılandırılabilen](service-bus-ip-filtering.md)
-- [Hizmet Veri Sitesi ad alanı için sanal ağ hizmeti bitiş noktaları nasıl yapılandırılır?](service-bus-service-endpoints.md)
-- [Hizmet Veri Servisi ad alanı için özel uç noktaları yapılandırma](private-link-service.md)
+- [Service Bus ad alanı için IP güvenlik duvarını yapılandırma](service-bus-ip-filtering.md)
+- [Service Bus ad alanı için sanal ağ hizmet uç noktalarını yapılandırma](service-bus-service-endpoints.md)
+- [Service Bus ad alanı için özel uç noktaları yapılandırma](private-link-service.md)
